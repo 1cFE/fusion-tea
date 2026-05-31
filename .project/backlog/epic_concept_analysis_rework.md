@@ -33,7 +33,7 @@ The concept-analysis pipeline produces per-concept LCOE numbers that look compar
 - Each `analysis.md` has one **Design Point block**: one named plant, its native scale, its source citations; every LCOE parameter on the page describes that unit.
 - Each `model_setup.py` is a short, ordered four-step script: spec → native forward → override registry → 1 GWe NOAK forward. No re-passed library defaults.
 - Every override is a six-field record (`account / value / enabled / provenance / source / rationale`); flipping `enabled: False` reverts that account to the library's answer.
-- Archetype, archetype-fit grade, and comparables are pre-computed project-level tables read by the orchestrator, not invented at runtime.
+- Archetype, archetype-fit grade, comparables, and the design-point selection (named plant, `P_native`) are pre-computed project-level tables — batch-populated and hand-verified before analyze runs — read by the orchestrator, not invented at runtime.
 - `model_critic` is a standalone tool invokable against any concept directory at any time.
 - `concept_explorer` reads each concept's `result_1gw` at exactly 1000 MWe, reached by the same two-knob mechanism — comparison is apples-to-apples by construction.
 
@@ -42,7 +42,8 @@ The concept-analysis pipeline produces per-concept LCOE numbers that look compar
 ## Success Criteria
 
 - [ ] 1costingFE accepts non-integer `n_mod > 0`; override scaling under the two-knob call is verified by test.
-- [ ] Ontology, archetype-fit, and comparables tables exist as the single source of truth; consumed by orchestrator and prompts.
+- [ ] Ontology, archetype-fit, comparables, and design-point tables exist as the single source of truth; consumed by orchestrator and prompts.
+- [ ] All four tables are batch-populated and hand-verified before analyze runs; the design-point table fixes the named plant and `P_native` per concept, and `analyze` reads (does not choose) them.
 - [ ] Every non-`None` fit-grade concept has a regenerated `analysis.md` with a Design Point block and a regenerated `model_setup.py` matching the four-step shape.
 - [ ] Every regenerated `model_setup.py` exposes `model`, `result`, `result_1gw` at module level; `result_1gw` is reached by the two-knob call at `net_electric_mw=1000`.
 - [ ] Override registry validator enforces six-field entries; AST validator enforces the module-level contract and the `net_electric_mw=1000` call shape.
@@ -56,17 +57,20 @@ The concept-analysis pipeline produces per-concept LCOE numbers that look compar
 
 > Each item below names the files touched and the general success criteria only. Mechanism, data shapes, and any cross-cutting design decisions are deferred to that item's own `spec.md` / `design.md`.
 >
-> **Sequencing principle**: the high-risk bets in this rework are agent-driven (Design Point extraction, override honesty, critic acuity), not coding. Phase 0 front-loads cheap, throwaway probes that exercise those bets *before* any plumbing is built, so the plumbing in Phase 1 is designed against what the prompts actually need — and so bet failure is caught on day 2, not day 7.
+> **Sequencing principle**: the high-risk bets in this rework are agent-driven (Design Point extraction, override honesty, critic acuity), not coding. Phase 0 front-loaded a cheap throwaway probe (Item 1) that exercised those bets *before* any plumbing was built, so bet failure would be caught on day 2, not day 7.
+>
+> **Phase 0 status (2026-05-31)**: Item 1 is complete and did its job — its biggest output was the *design change* it motivated, moving design-point selection upstream behind a human-verified gate (folded into Item 5). That change converted the top agent-driven risk (selection coherence) from a silent-failure mode into a graceful-degradation one, which retired the rationale for the follow-on probes. Items 2 and 3 are therefore **superseded**, not pending: their residual signal is recovered downstream (Item 5's per-row verification gate; the Item 10 pilot; on-demand `model_critic`) at no extra cost. Phase 0 is effectively done at Item 1. The one carried-forward obligation is the "reshape, do not copy" note on the Item 1 prompts (see Items 8 and 9).
 
 ---
 
-## Phase 0 — De-risk the agent-driven bets (~2 days, mostly throwaway)
+## Phase 0 — De-risk the agent-driven bets (~1 day; Item 1 only — Items 2 & 3 superseded)
 
-### Item 1: End-to-End Manual Prototype (one concept)
+### Item 1: End-to-End Manual Prototype (one concept) — ✅ COMPLETE (2026-05-30)
 
 **Type**: Research / Throwaway
-**Effort**: ~1 day
+**Effort**: ~1 day (actual: ~1 day)
 **Dependencies**: None.
+**Deliverable**: [`.project/active/concept-rework-prototype/findings.md`](../active/concept-rework-prototype/findings.md) (commit 1f21630)
 
 **What this is**: a hand-driven walkthrough of the rework on a single concept, with everything stubbed or hand-written. No helpers, no validators, no template files, no CLI subcommands. Goal is signal, not artifacts.
 
@@ -74,9 +78,9 @@ The concept-analysis pipeline produces per-concept LCOE numbers that look compar
 
 1. **Two-knob mechanism produces sensible numbers** — `forward(net=1000, n_mod=1000/P, override_reference_mw=P)` gives comparable per-account values once overrides scale through.
 2. **Library carries the default story** — for most concepts at most accounts, the bare library answer (given good spec inputs) is close enough that the override registry stays small. If a real concept needs 30 overrides, the framing collapses.
-3. **Agent can identify a Design Point from a dossier** — one named plant, native scale, source-cited, *coherently*. (Stability across re-runs is Item 2's job; this item just tests "can it do it once".)
+3. **Agent can identify a Design Point from a dossier** — one named plant, native scale, source-cited, *coherently*. (Stability across re-runs was originally Item 2's job — now superseded, since selection moved behind the human-verified gate; this item tested "can it do it once".)
 4. **Agent populates overrides honestly** — `value`, `provenance`, `source`, `rationale` actually trace to company-stated numbers, not LLM dressing-up of library defaults.
-5. **`model_critic` finds real issues** — looking at the artifacts, the critic surfaces things worth acting on, not generic boilerplate. (Acuity against *existing* artifacts is Item 3's job; this item just tests it against the prototype's freshly-made artifacts.)
+5. **`model_critic` finds real issues** — looking at the artifacts, the critic surfaces things worth acting on, not generic boilerplate. (Acuity against *existing* artifacts was originally Item 3's job — now superseded, since the critic is cheap on-demand; this item tested it against the prototype's freshly-made artifacts.)
 6. **Determinism-upstream is worth the up-front cost** — having the archetype-fit and comparables rows pre-populated noticeably tightens the analyze and critic prompts. If we don't feel the difference, the table layer needs re-justification.
 
 **Activities**:
@@ -88,54 +92,58 @@ The concept-analysis pipeline produces per-concept LCOE numbers that look compar
 - Write a short findings doc.
 
 **Success Criteria**:
-- [ ] Findings doc enumerates each of the six bets above with a verdict: **held / wobbled / broke**, with a one-paragraph "what we saw" per bet.
-- [ ] If bet #1 (override scaling under two-knob) held empirically, Item 4 scope shrinks to "formalize as test"; if it broke, Item 4 scope grows and the fix is informed by what we saw.
-- [ ] Hand-drafted prompts (analyze, model_setup discipline note, critic) are saved as the starting point for Items 8 and 9.
+- [x] Findings doc enumerates each of the six bets above with a verdict: **held / wobbled / broke**, with a one-paragraph "what we saw" per bet.
+- [x] If bet #1 (override scaling under two-knob) held empirically, Item 4 scope shrinks to "formalize as test"; if it broke, Item 4 scope grows and the fix is informed by what we saw. *(Wobbled — Item 4 scope grew, see below.)*
+- [x] Hand-drafted prompts (analyze, model_setup discipline note, critic) are saved as the starting point for Items 8 and 9.
 
-**Kill switch**: if bet #3 (Design Point extraction is incoherent) or bet #4 (overrides come back as dressed-up library defaults with no real provenance) breaks, **stop and rethink** before committing to Phase 1.
+**Kill switch**: if bet #3 (Design Point extraction is incoherent) or bet #4 (overrides come back as dressed-up library defaults with no real provenance) breaks, **stop and rethink** before committing to Phase 1. *(Neither broke — proceed to Phase 1.)*
 
-**Deliverables**:
-- `.project/active/concept-rework-prototype/findings.md`
-- Throwaway artifacts under `/tmp/` or a scratch dir; do not pollute `analyses/`.
+**Outcomes — six-bet verdicts** (full write-up in `findings.md`):
+
+| Bet | Verdict | Implication |
+|---|---|---|
+| 1. Two-knob override scaling | wobbled | `_scale_overrides` runs its reference forward at the caller's `n_mod`, inflating C220101/C220106 overrides ~47%. Item 4 must land the fix, not just write a test (mechanical ~5-line change). |
+| 2. Library carries default story | held | Library-bare 1 GWe LCOE = 146 $/MWh (at P_native=233) — defensibly NOAK-range. Override count for High fit was 4 — within rubric. |
+| 3. Design Point extraction | held | Sonnet correctly picked ARC 2015 233 MWe over SPARC and the 2025 400 MWe target on its first attempt, citing the design's stated selection rule. |
+| 4. Override honesty | wobbled (bidirectional) | LLM honest on provenance but used wrong account-code namespace and underproposed; operator hand-write over-claimed `direct` for derived values. A `provenance` validator + cross-artifact consistency check (new finding for Item 7) covers both directions. |
+| 5. Critic acuity | held strongly | Independent critic (cold, no session context) caught the very `P_native` mismatch the operator introduced (analysis.md 233 vs model_setup.py 400), plus three other specific issues. Not boilerplate. |
+| 6. Determinism upstream | held (mild signal, single-concept) | Single-concept evidence only. With Item 2 superseded, this bet is now confirmed in-flight during Item 5 (the design-point/comparables tables on Med/Low-fit concepts) and the Item 10 pilot, rather than by a standalone probe. |
+
+**Knock-on scope adjustments to Phase 1**:
+- **Item 4** scope grows: "formalize as test" → "fix `_scale_overrides` + test" (still ~0.25–0.5 d).
+- **Item 7** absorbs a new cross-artifact-consistency validator: `P_native` and `provenance` labels must match between `analysis.md` and `model_setup.py`.
+- **Item 8** unchanged effort but the starting prompt needs canonical 1costingFE account-code schema injection (~2h) and an explicit per-account walk-through pass (~2h).
+- **Item 9** unchanged effort but the starting prompt needs an explicit scope boundary (artifact review, not source review — the critic raised a sourcing concern that wasn't actionable from the artifacts alone).
+
+**Deliverables produced**:
+- `.project/active/concept-rework-prototype/findings.md` — six-bet verdicts + self-review
+- `.project/active/concept-rework-prototype/prompts/{analyze_v2,model_critic}.md` — Item 8 / Item 9 starting points
+- `.project/active/concept-rework-prototype/tables/{archetype_fit,comparables}.csv` — upstream-table seeds (one row each for concept 01)
+- `.project/active/concept-rework-prototype/artifacts/{analysis.md, model_setup.py, model_output.txt, critic_review.md, probe_override_scaling.{py,txt}}`
+
+(Stored under `.project/active/` rather than `/tmp/` so the prototype survives the session and stays inspectable while Phase 1 specs are being written.)
+
+> ⚠ **Item 1 prompts: reshape, do not copy.** The `analyze_v2.md` draft conflates design-point *selection* with quantitative *extraction* (it chose `P_native=233` itself). Under the post-2026-05-31 design these are two surfaces: a design-point **proposal** prompt (Item 5, feeds the human-verified table) and an **extraction** analyze prompt that reads `P_native` as a fixed input (Item 8). The `model_critic.md` draft likewise predates the artifact-vs-source scope boundary the findings flagged (Item 9). Use these drafts as *content* starting points; do not productionize their structure as-is. This is the one obligation carried forward from the superseded Items 2 & 3.
 
 ---
 
-### Item 2: Prompt-Stability Probe
+### Item 2: Prompt-Stability Probe — ⊘ SUPERSEDED (2026-05-31)
 
-**Type**: Research / Throwaway
-**Effort**: ~0.5 day
-**Dependencies**: Item 1 (reuses the analyze prompt draft).
+**Why superseded**: This probe was designed for the *old* workflow, where `analyze` chose the design point and its run-to-run selection stability was a Phase 1 go/no-go. The design-point-selection-upfront decision (folded into Item 5 on 2026-05-31) moved selection into a batch-proposed, **human-verified** upstream table — so selection can no longer fail silently; it degrades gracefully (a weak proposal just means more human effort at the gate, caught on every row). The residual bet — quantitative-extraction stability *given a fixed design point* — is lower-risk (pinning the plant makes extraction easier, not harder) and is exercised for free during Item 5's batch-populate-then-hand-verify and the Item 10 pilot, which spans High/Med/Low fit. There is no remaining failure mode a standalone Phase 0 probe catches more cheaply than those two gates.
 
-**What this is**: re-run the Item 1 analyze prompt twice on 2–3 *additional* concepts (spanning likely-Med and likely-Low archetype fit), and diff the outputs run-to-run.
+Equally decisive: the Item 1 hand-drafted analyze prompt *conflates* selection and extraction (it chose `P_native` itself). Running this probe against that prompt as-is would test the old shape; reshaping it first to the selection/extraction split is Item 8 work. Doing a throwaway split here just to run a low-value probe is the half-measure this decision rejects.
 
-**Success Criteria**:
-- [ ] For each concept, Design Point name and `P_native` are stable across repeated runs (or instability is characterized — which fields drift, by how much).
-- [ ] Override candidate sets overlap meaningfully across runs (or non-overlap is characterized).
-- [ ] Findings folded into the Item 1 doc as a stability addendum.
-
-**Kill switch**: if stability is poor and the cause isn't an easy prompt fix, the "specify one named plant" framing needs re-design before Phase 1.
-
-**Deliverables**:
-- Updates to `.project/active/concept-rework-prototype/findings.md`.
+**Net**: cancelled. The signal it would have produced is recovered downstream (Item 5 verification gate; Item 10 pilot) at no extra cost. See the "Item 1 prompts: reshape, do not copy" note on Item 8.
 
 ---
 
-### Item 3: Critic Acuity Probe (against existing artifacts)
+### Item 3: Critic Acuity Probe (against existing artifacts) — ⊘ SUPERSEDED (2026-05-31)
 
-**Type**: Research / Throwaway
-**Effort**: ~0.5 day
-**Dependencies**: Item 1 (reuses the critic prompt draft). Can run parallel to Item 2.
+**Why superseded**: Item 1 already cleared the critic-acuity bet (#5) with *strong* signal — run cold with no session context, the critic caught the very `P_native` mismatch the operator introduced plus three other specific issues, not boilerplate. The remaining delta this item would have added (critic vs. *existing un-regenerated* concepts) is near-zero-cost to discover just-in-time: `model_critic` is standalone and on-demand by design, so if it underperforms in the wild you find out the first time you run it — with no plumbing committed and nothing to roll back. The "catch it cheaply before building" rationale doesn't apply to a tool that's already cheap to run after building.
 
-**What this is**: point the hand-drafted `model_critic` prompt at 2–3 *existing* (un-regenerated) concept directories — ones where we already know inconsistencies live. Mock-feed fit grade and comparables by hand.
+Also, like Item 2, this probe would run the Item 1 critic prompt as-is, which predates the selection/extraction split and lacks the artifact-vs-source scope boundary the findings flagged. Reshaping it is Item 9 work.
 
-**Success Criteria**:
-- [ ] For each concept, the critic surfaces at least one of the known inconsistencies (and we record which it misses).
-- [ ] Findings folded into the Item 1 doc as a critic-acuity addendum.
-
-**Kill switch**: if the critic produces only generic boilerplate, the standalone-critic bet is weaker than the design assumes — Phase 1's Item 8 needs a rethink (e.g. fold critique back into `assess` rather than standalone).
-
-**Deliverables**:
-- Updates to `.project/active/concept-rework-prototype/findings.md`.
+**Net**: cancelled. Critic acuity is covered by Item 1's strong signal plus on-demand use from Item 9 onward. See the "Item 1 prompts: reshape, do not copy" note on Item 9.
 
 ---
 
@@ -177,18 +185,41 @@ So the reference frame matches what the analyst writes the override against — 
 ### Item 5: Deterministic Project Tables + Comparables Sanity-Check
 
 **Type**: Implementation
-**Effort**: 1–1.5 days
-**Dependencies**: Item 1 (Phase 0 findings sanity-check the table schemas before all 38 rows are populated). Parallel with Item 4.
+**Effort**: 1.5–2 days (up from 1–1.5: adds the design-point table and the batch-populate-then-hand-verify gate across four tables).
+**Dependencies**: Item 1 (Phase 0 findings sanity-check the table schemas before all rows are populated). Parallel with Item 4.
+
+**What this is**: build the four upstream project-level tables that the rest of the pipeline reads as the single source of truth, **batch-populate** them, and **hand-verify each** before any concept's `analyze` stage runs. The four tables are *not* populated the same way — the method follows how much of each is deterministic vs. judgment. Do not apply one uniform "batch-LLM then verify" pass to all four; two of them have a different correct path.
+
+**The four tables and their population methods**:
+
+1. **Ontology table** — confinement type, fuel, taxonomy traits. *Method:* batch agent extraction, then hand-verify against the dossier. Mostly factual / cross-checkable; low judgment. **Populated first** — comparables derives from it.
+2. **Archetype-fit table** — `ConfinementConcept` enum value + fit grade (`High` / `Med` / `Low` / `None`). *Method:* **reshape** the existing hand-authored enum-map ([`enum-map`](../research/20260509-1costingfe-enum-map.md)) — re-pin to the current 1costingFE commit and re-grade its Rank 1/2/3 ranking into the four-grade vocabulary. Rank 2 ("notable architectural strain") splits across Med and Low per concept; that split is the judgment hand-verification settles. **Not** a from-scratch batch pass — re-batching discards existing hand judgment.
+3. **Comparables table** — comparable-concept set per concept. *Method:* **deterministic derivation** from the ontology table (a script, not an agent); hand-verify the derivation, not per-row LLM judgment. An LLM batch pass here reintroduces the runtime nondeterminism the rework exists to remove.
+4. **Design-point table** (new — folds in the design-point-selection-upfront decision) — the *selection* of the one named plant per concept: design name, maturity tier, `P_native`, primary source citations, one-line selection rationale. *Method:* batch agent proposal from each dossier, then **hand-verify each row**. This is the most judgment-heavy table and the gate matters most here — `P_native` drives `n_mod = 1000/P_native` and the entire cost projection (Phase 0: ARC at 233 vs 400 MWe moved 1 GWe LCOE from 668 to 403 $/MWh).
+
+**Selection vs. extraction seam**: the design-point table carries only the *selection* (which plant, `P_native`, sources). The full quantitative description (geometry / physics / performance) is still extracted downstream by `analyze`, against the plant the table has fixed. `analyze` reads the named plant and `P_native` as inputs and never chooses or re-derives them — the same contract as `Comparables:`.
+
+**Population order (a DAG, not four independent passes)**:
+```
+ontology (batch-extract + verify) ──> comparables (derive + verify)
+archetype-fit (reshape enum-map + re-grade + verify)      [independent]
+design-point (batch-propose + verify each row)            [independent]
+```
 
 **Files touched** (new, location TBD in spec):
 - Ontology table.
-- Archetype-fit table (seedable from [`enum-map`](../research/20260509-1costingfe-enum-map.md)).
-- Comparables table (or derivation script reading ontology).
+- Archetype-fit table (reshaped from [`enum-map`](../research/20260509-1costingfe-enum-map.md)).
+- Comparables table (derivation script reading ontology).
+- Design-point table.
+- Design-point batch-proposal prompt (reads dossier → proposes one row; output is reviewed at the gate). This is the *selection half* carved out of the Item 1 `analyze_v2.md` draft — reshape that logic into a standalone proposal prompt; do not carry the conflated selection+extraction structure forward (see the reshape note on Item 1).
 - Comparables sanity-check script.
 
 **Success Criteria**:
-- [ ] All three tables exist and cover every concept.
-- [ ] Sanity-check script produces structured output for an LLM reviewer (not a verdict) on a hand-fed pair of concepts.
+- [ ] All four tables exist and cover every concept.
+- [ ] Each table is batch-populated by its correct method (factual extraction / enum-map reshape / deterministic derivation / dossier proposal) and hand-verified; the verification gate is documented per table.
+- [ ] Design-point table fixes one named plant and `P_native` per non-`None` concept, with primary sources and a selection rationale; every row is human-signed-off.
+- [ ] Comparables are derived deterministically from the ontology (no runtime LLM judgment).
+- [ ] Sanity-check script produces structured output for an LLM reviewer (not a verdict) on a hand-fed pair of concepts. (This is the *downstream* result-review surface — distinct from the upstream table-verification gate above.)
 
 ---
 
@@ -200,14 +231,14 @@ So the reference frame matches what the analyst writes the override against — 
 
 **Files touched** (in `exploration/concept_analysis/scripts/`):
 - `lib/concepts.py` (replace hard-coded archetype mapping with table read).
-- `lib/frontmatter.py` (new fields + `Reuses` → `Comparables` rename).
+- `lib/frontmatter.py` (new fields + `Reuses` → `Comparables` rename; design-point selection fields — named plant, maturity tier, `P_native` — emitted from the design-point table).
 - `lib/loop.py` (minimal — drop dependence on dropped validators).
 - `run_analysis.py` (new subcommands: regenerate-concept, init-tables).
 - Knock-on `Reuses` renames across `lib/`.
 
 **Success Criteria**:
 - [ ] Archetype routing reads the table; freeform vs costingfe is determined by `fit_grade`.
-- [ ] New frontmatter fields emitted and pre-populated from the upstream tables.
+- [ ] New frontmatter fields emitted and pre-populated from the upstream tables, including the design-point selection (named plant, maturity tier, `P_native`) from the design-point table — populated by the orchestrator, not editable by the analyzing agent.
 - [ ] Regenerate-concept and init-tables subcommands run end-to-end on a dry-run target.
 
 ---
@@ -225,6 +256,7 @@ So the reference frame matches what the analyst writes the override against — 
 **Success Criteria**:
 - [ ] A regenerated `model_setup.py` can be written as a short, ordered script against the shared helpers, with no per-concept duplication of the two-knob forward pattern or the override-registry → `cost_overrides` translation.
 - [ ] Validators enforce the design's module-level contract (`model`, `result`, `result_1gw` at module level; `result_1gw` reached at `net_electric_mw=1000`) and the override-registry shape; fragile regex validators are removed.
+- [ ] Validators enforce design-point coherence: `P_native` agrees three ways — the design-point table row, the `analysis.md` Design Point block, and `model_setup.py` — and each shared override's `provenance` label matches between `analysis.md` and `model_setup.py`. (Phase 0 self-review surfaced both as real, AST-checkable drift modes — operator picked `P_native=400` against an analysis that said 233, and mislabeled `derived` overrides as `direct`.)
 - [ ] Loop runs cleanly on a dry-run without the dropped validators.
 
 ---
@@ -232,8 +264,8 @@ So the reference frame matches what the analyst writes the override against — 
 ### Item 8: Prompt Template Rework
 
 **Type**: Implementation
-**Effort**: 1–1.5 days (down from 1.5–2: Phase 0's hand-drafts are the starting point).
-**Dependencies**: Items 1 (productionizes the Phase 0 hand-drafts), 5, 6, 7.
+**Effort**: 1–1.5 days (down from 1.5–2: Phase 0's hand-drafts are the content starting point).
+**Dependencies**: Items 1 (**reshapes — does not copy** — the Phase 0 hand-drafts: split selection out to Item 5's proposal prompt, keep extraction here; see the reshape note on Item 1), 5, 6, 7.
 
 **Files touched** (in `exploration/concept_analysis/prompt_templates/`):
 - `analysis_v2.md` + `output_template.md`.
@@ -246,7 +278,8 @@ So the reference frame matches what the analyst writes the override against — 
 
 **Success Criteria**:
 - [ ] Dry-run on one concept produces an `analysis.md` containing the Design Point block and a `model_setup.py` matching the four-step shape.
-- [ ] `analysis.md`'s Design Point block carries the *full* specification of the target design point — every field downstream needs (name, maturity tier, `P_native`, geometry/physics/performance values, override provenance per account) is explicit and source-cited. Nothing required downstream is left implicit.
+- [ ] `analysis_v2.md` prompt takes the design-point *selection* (named plant, maturity tier, `P_native`, primary sources) as a fixed input from the design-point table / frontmatter — it does **not** choose or re-derive the plant. Its job is the quantitative *extraction* for that fixed plant.
+- [ ] `analysis.md`'s Design Point block carries the *full* specification of the target design point — every field downstream needs (name, maturity tier, `P_native`, geometry/physics/performance values, override provenance per account) is explicit and source-cited. The selection fields match the design-point table row; the geometry/physics/performance values are the extracted quantitative description. Nothing required downstream is left implicit.
 - [ ] `model_setup_costingfe.md` prompt instructs the agent to **start by identifying the target design point from `analysis.md`** — reading `P_native`, the spec kwargs, and override provenance labels directly from the Design Point block rather than re-deriving them from the dossier.
 - [ ] `analysis_v2.md` prompt pins override `account` identifiers to the canonical 1costingFE namespace (`C220101`, `C220103`, `CAS27`, etc.) by injecting the account-code list as a schema. (Phase 0 finding: LLM defaulted to `CAS22.1.3`-style codes that would silently miss in the `cost_overrides` dict.)
 - [ ] `analysis_v2.md` prompt walks override discovery as an explicit per-account checklist over the canonical CAS accounts ("does the dossier name a quantity, mass, or unit cost for this account?") rather than open-ended discovery. (Phase 0 finding: open-ended discovery underproposed — analyze step surfaced 2 of 4 findable overrides for ARC.)
@@ -260,8 +293,8 @@ So the reference frame matches what the analyst writes the override against — 
 ### Item 9: `model_critic` Standalone Tool
 
 **Type**: Code/Integration
-**Effort**: 0.5–1 day (down from 1: Phase 0's hand-drafted critic prompt is the starting point).
-**Dependencies**: Items 1 (productionizes the Phase 0 critic prompt), 5.
+**Effort**: 0.5–1 day (down from 1: Phase 0's hand-drafted critic prompt is the content starting point).
+**Dependencies**: Items 1 (**reshapes — does not copy** — the Phase 0 critic prompt: add the artifact-vs-source scope boundary the findings flagged; see the reshape note on Item 1), 5.
 
 **Files touched** (in `exploration/concept_analysis/`):
 - `scripts/agents/model_critic.py` (new).
@@ -270,6 +303,7 @@ So the reference frame matches what the analyst writes the override against — 
 
 **Success Criteria**:
 - [ ] `model_critic` runs against active **and** archived concept directories with no loop-state dependency and writes one review document next to the artifacts.
+- [ ] The critic prompt scopes the review to the *artifacts* (analysis.md, model_setup.py, results), not the dossier sources — Phase 0 surfaced an out-of-scope sourcing critique that wasn't actionable from the artifacts alone.
 
 ---
 
@@ -356,15 +390,15 @@ So the reference frame matches what the analyst writes the override against — 
 **Item Dependency Graph**:
 ```
 Phase 0 — De-risk
-  Item 1 (E2E manual prototype)
+  Item 1 (E2E manual prototype) ✅ COMPLETE
+     │   ↳ motivated the design-point-upfront change (folded into Item 5)
+     │   ⊘ Item 2 (prompt-stability) SUPERSEDED — selection now human-gated
+     │   ⊘ Item 3 (critic acuity)   SUPERSEDED — Item 1 cleared bet #5; critic is on-demand
      │
-     ├──> Item 2 (prompt-stability probe)
-     └──> Item 3 (critic acuity probe)
-     │
-     │   [KILL SWITCH: review findings before Phase 1]
+     │   [Phase 0 effectively complete at Item 1 — proceed to Phase 1]
      ▼
 Phase 1 — Plumbing
-  Item 4 (library prereqs)   Item 5 (tables + sanity check)
+  Item 4 (library prereqs)   Item 5 (4 tables + design-point gate + sanity check)
                                           │
                               ┌───────────┼───────────┐
                               ▼           ▼           ▼
@@ -393,11 +427,11 @@ Phase 3 — Aspirational
 
 | Risk | Impact | Mitigation |
 |------|--------|------------|
-| Agent can't reliably extract a coherent Design Point from a dossier | **High** — specification layer never settles; whole rework rests on this | Item 1 probes this on day 1 with a throwaway prompt; Item 2 tests stability across re-runs. Kill switch if it breaks. |
-| Agent populates overrides as dressed-up library defaults rather than honest provenance | **High** — accountability story is theater | Item 1 inspects override provenance by hand on the prototype concept. Kill switch if provenance is fabricated. |
-| `model_critic` rubber-stamps rather than finds issues | High — independent-review story collapses | Item 3 points the critic at known-bad existing artifacts before any productionization. Phase 1's Item 9 reshapes if the standalone framing doesn't hold. |
-| 1costingFE override-scaling under the two-knob call doesn't behave as design assumes | High — invalidates the cost-projection invariant | Item 1 exercises it empirically on a real concept; Item 4 formalizes the test (and fixes if needed). |
-| New prompt structure produces lower-quality `analysis.md` than current free-form template | Med — pilot exposes; bulk regen amplifies | Phase 0 prototype + stability probe surface this on day 2, not day 7. Item 10 (pilot) spans High/Med/Low fit before bulk. |
+| Agent can't reliably extract a coherent Design Point from a dossier | **High** — specification layer never settles; whole rework rests on this | Item 1 probed this (bet #3, held). Design-point *selection* is now a batch-proposed, **human-verified** upstream table (Item 5), so a bad selection is caught at the gate before any expensive stage runs — it degrades gracefully (more human effort), not silently. This is why Item 2's stability probe was superseded. |
+| Agent populates overrides as dressed-up library defaults rather than honest provenance | **High** — accountability story is theater | Item 1 inspected override provenance by hand (bet #4, wobbled-bidirectional — held on direction). Item 7's `provenance` validator + cross-artifact consistency check now enforces it both ways (LLM over-claiming and operator over-claiming). |
+| `model_critic` rubber-stamps rather than finds issues | High — independent-review story collapses | Item 1 cleared this (bet #5, held strongly — caught the operator's real `P_native` mismatch cold). `model_critic` is on-demand by design, so any in-the-wild weakness surfaces the first time it runs, at no committed cost — which is why Item 3 was superseded rather than gated. |
+| 1costingFE override-scaling under the two-knob call doesn't behave as design assumes | High — invalidates the cost-projection invariant | Item 1 exercised it empirically (bet #1, wobbled — root cause traced); Item 4 lands the `_scale_overrides` fix + test. |
+| New prompt structure produces lower-quality `analysis.md` than current free-form template | Med — pilot exposes; bulk regen amplifies | Item 8 dry-run on one concept gates shape; Item 10 (pilot) spans High/Med/Low fit before bulk. (The standalone stability probe that would have caught this earlier was superseded; the pilot is the surviving gate.) |
 | Snapshot of preserved User-Decisions misses content | Med — analyst rework lost | Item 10 documents the snapshot procedure; Item 11 follows it mechanically. |
 | Dropped regex validators leave silent contract gaps | Med — bad shapes ship | New `model_setup.py` and override-registry checks in Item 7 cover the structural invariants; structured assess/review output in Item 8 covers the rest. |
 | Bulk regeneration cost (LLM tokens) blows past expectations | Low — budget known | Pilot establishes per-concept cost; user is not cost-sensitive per project memory. |
@@ -406,15 +440,15 @@ Phase 3 — Aspirational
 
 ## Timeline
 
-**Total Effort**: ~10–14 days (Phase 0 ~2 d, Phase 1 ~6–9 d, Phase 2 ~2.5–3.5 d)
+**Total Effort**: ~9.5–13.5 days (Phase 0 ~1 d done, Phase 1 ~6.5–9.5 d, Phase 2 ~2.5–3.5 d)
 
 | Item | Effort | Phase | Dependencies |
 |------|--------|-------|--------------|
-| Item 1: E2E manual prototype | ~1 d | 0 | — |
-| Item 2: Prompt-stability probe | ~0.5 d | 0 | Item 1 |
-| Item 3: Critic acuity probe | ~0.5 d | 0 | Item 1 (parallel with Item 2) |
+| Item 1: E2E manual prototype | ~1 d | 0 | — *(✅ complete)* |
+| ~~Item 2: Prompt-stability probe~~ | — | 0 | ⊘ superseded — selection now human-gated |
+| ~~Item 3: Critic acuity probe~~ | — | 0 | ⊘ superseded — Item 1 cleared bet #5; critic on-demand |
 | Item 4: Library preconditions | 0.5–1 d | 1 | Item 1 |
-| Item 5: Tables + sanity check | 1–1.5 d | 1 | Item 1 (parallel with Item 4) |
+| Item 5: Tables (×4) + sanity check | 1.5–2 d | 1 | Item 1 (parallel with Item 4) |
 | Item 6: Pipeline glue | 1–1.5 d | 1 | Item 5 |
 | Item 7: Helpers + validators | 1–1.5 d | 1 | Items 1, 4, 5 |
 | Item 8: Prompt rework | 1–1.5 d | 1 | Items 1, 5, 6, 7 |
@@ -423,7 +457,7 @@ Phase 3 — Aspirational
 | Item 11: Bulk regeneration | 1–1.5 d | 2 | Item 10 |
 | Item 12: Native-scale projection (aspirational) | ~1–2 d per family | 3 | Item 11 |
 
-**Phase 0 gate**: review Item 1's findings doc before committing to Phase 1. If a key bet broke, redirect — don't just plow into the plumbing.
+**Phase 0 gate**: passed. Item 1's findings cleared the kill-switch bets (#3, #4, #5) and motivated the design-point-upfront change. Items 2 & 3 are superseded (see Phase 0 status note). Proceed to Phase 1.
 
 **Phase 3 status**: aspirational. Does not block Phase 2 sign-off. Effort is per-family and scales with how many families we want to publish native-scale numbers for.
 
@@ -441,5 +475,5 @@ Items 4 and 5 can run in parallel; Items 7 and 9 can run in parallel after their
 
 ---
 
-**Last Updated**: 2026-05-30
-**Next Action**: Spec Item 1 (E2E manual prototype) — get signal on the agent-driven bets before committing to any plumbing.
+**Last Updated**: 2026-05-31
+**Next Action**: Enter Phase 1. Phase 0 is complete (Item 1; Items 2 & 3 superseded). Start Items 4 (library `_scale_overrides` fix + non-integer `n_mod`) and 5 (build the four tables, incl. the new design-point table, with the batch-populate-then-hand-verify gate) — they run in parallel. Carry forward the one obligation: reshape, don't copy, the Item 1 prompts (Items 5/8/9).

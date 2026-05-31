@@ -55,7 +55,7 @@ The costing library, given the design point's geometry and physics and an archet
 
 ### 3. Determinism upstream beats judgment downstream.
 
-Anything that can be settled by a pre-computed project-level table — what archetype a concept maps to, how well that mapping fits, who the concept's comparables are — should be settled there. Asking the analyzing or reviewing agent to invent these at runtime makes every concept's review subtly different and harder to audit.
+Anything that can be settled by a pre-computed, human-verified project-level table — what archetype a concept maps to, how well that mapping fits, who the concept's comparables are, and which named plant is the design point — should be settled there. Asking the analyzing or reviewing agent to invent these at runtime makes every concept's review subtly different and harder to audit. The design-point selection is the highest-leverage of these — it fixes `P_native`, which drives the entire cost projection — so it carries the strongest case for an upstream table behind a human gate, not a runtime agent choice.
 
 ### 4. Every override is one accountable, toggleable claim.
 
@@ -71,7 +71,7 @@ Cross-concept comparison happens at one fixed projection — a hypothetical 1 GW
 
 - The two-knob library scaling — output power for the shared plant, module count for the reactor island — carries the entire cost projection. No parallel cost rollup, no ad-hoc scaling helpers in the per-concept files.
 - The costing library is the cost source of truth. The per-concept setup files contribute only the specification and a small set of provenance-marked overrides.
-- Three upfront project-level tables (archetype mapping, fit grade, comparables) replace the runtime LLM judgments they currently substitute for. Determinism here makes every downstream review consistent.
+- Four upfront project-level tables (ontology, archetype-fit, comparables, design-point) replace the runtime LLM judgments they currently substitute for. They are batch-populated and hand-verified before any concept's analyze stage runs. Determinism here makes every downstream review consistent — and moving the design-point *selection* upstream catches the highest-leverage error before the expensive stages spend tokens.
 - The critic is a standalone tool, not a pipeline stage. The pipeline loop has one fewer moving part, and the critic can be run against any concept's artifacts at any time, regardless of loop state.
 
 ---
@@ -84,13 +84,20 @@ Cross-concept comparison happens at one fixed projection — a hypothetical 1 GW
 
 A structured section inside each `analysis.md`, positioned immediately adjacent to the LCOE-parameters section. Fields: design name, maturity tier, native plant power `P_native`, key geometry / physics / performance values, primary source citations. Every parameter in the surrounding LCOE-parameters section describes the same unit named here.
 
-### Project-Level Tables (upstream input — assumed to exist)
+The *selection* fields (design name, maturity tier, `P_native`, primary sources) are copied from the human-verified design-point table — the `analyze` stage does not choose them. The block's job downstream of selection is to carry the full quantitative description of that fixed plant; its selection fields must match the design-point table row.
 
-Three tables, populated and maintained outside this rework's scope:
+### Project-Level Tables (upstream input — batch-populated and hand-verified before analyze runs)
 
-- **Ontology table** — one row per concept; confinement type, fuel, taxonomy traits.
-- **Archetype-fit table** — one row per concept; the `ConfinementConcept` enum value, and a fit grade (`High` / `Med` / `Low` / `None`). `None` routes to the freeform branch (out of scope).
-- **Comparables table** — one row per concept; the comparable-concept set, derived from the ontology and the 1costingFE family by the orchestrator.
+Four tables, one row per concept, populated in a batch up front and hand-verified before any concept's `analyze` / `model_setup` stage spends tokens. Each is the single source of truth for the judgment it carries; the analyzing agent reads them and does not re-derive them. The four are **not** populated the same way — the method follows how much of each is deterministic vs. judgment:
+
+- **Ontology table** — confinement type, fuel, taxonomy traits. Mostly factual and cross-checkable against the dossiers. *Population:* batch agent extraction, then hand-verify against the dossier. Populated first — comparables derives from it.
+- **Archetype-fit table** — the `ConfinementConcept` enum value and a fit grade (`High` / `Med` / `Low` / `None`); `None` routes to the freeform branch (out of scope). *Population:* reshape the existing hand-authored enum-map (`.project/research/20260509-1costingfe-enum-map.md`) — re-pin it to the current 1costingFE commit and re-grade its Rank 1/2/3 ranking into the four-grade vocabulary. Rank 2 ("notable architectural strain") splits across Med and Low per concept; that split is the judgment hand-verification must settle. This is a reshape, **not** a from-scratch batch pass — re-batching would discard existing hand judgment.
+- **Comparables table** — the comparable-concept set, derived from the ontology and the 1costingFE family. *Population:* deterministic derivation from the ontology table (a script, not an agent); hand-verification checks the derivation, not per-row LLM judgment. Keeping this deterministic is the point — an LLM batch pass would reintroduce the runtime nondeterminism the rework exists to remove.
+- **Design-point table** — the *selection* of the one named plant per concept: design name, maturity tier, native plant power `P_native`, primary source citations, and a one-line selection rationale. *Population:* batch agent proposal from each dossier, then hand-verify each row. This is the most judgment-heavy table and the one the gate matters most for — `P_native` alone swings the comparison number substantially (Phase 0: ARC at 233 vs 400 MWe moved 1 GWe LCOE from 668 to 403 $/MWh).
+
+**Selection vs. extraction seam.** The design-point table carries only the *selection* — which plant, its maturity, `P_native`, sources. The full quantitative description (geometry / physics / performance values) is still extracted by `analyze`, against the plant the table has already fixed. `analyze` reads the named plant and `P_native` as inputs (the same way it reads `Comparables:`) and never chooses or re-derives them. This keeps the 1:1 coupling between the Design Point block and the LCOE parameters intact while moving the high-leverage *choice* upstream behind a human gate.
+
+**Two distinct human-in-loop surfaces — do not conflate.** Hand-verification of these four tables is an *upstream* gate, before analyze runs. The deterministic comparables sanity-check (run in the `assess` stage) is a *downstream* review surface that examines each concept's `result_1gw` per-account breakdown against its neighbors after `model_setup` runs. Both exist; they review different things at different times.
 
 ### `model_setup.py`
 
@@ -181,6 +188,7 @@ The downstream comparison tool continues to read `model`, `result`, and `result_
 - `model_setup.py` does not pass any library default as if it were a deliberate input. It passes only the design point's specification and the override registry.
 - Every override is a complete registry entry (all six fields). No bare numbers passed into `cost_overrides`.
 - `Comparables:` frontmatter is populated by the orchestrator from the comparables table. The analyzing agent does not edit it.
+- The design-point selection (named plant, maturity tier, `P_native`, primary sources) is owned by the human-verified design-point table. The `analyze` stage reads it; the Design Point block's selection fields and `model_setup.py`'s `P_native` must both match the table row.
 - `model_critic` runs against any concept directory at any time, with no dependency on pipeline state.
 
 ---
@@ -246,6 +254,7 @@ The explorer imports each `model_setup.py` and reads `model`, `result`, and `res
 
 **Settled here:**
 - Two-layer split (specification vs cost projection) and the two-knob mechanism reaching one fixed 1 GWe NOAK target.
+- Four upstream tables (ontology, archetype-fit, comparables, design-point), batch-populated and hand-verified before analyze runs, each with its own population method (factual extraction / enum-map reshape / deterministic derivation / dossier proposal). Design-point *selection* (incl. `P_native`) moves upstream behind the human gate; quantitative extraction stays in `analyze`.
 - The 1costingFE invariants the rework depends on (listed in Required Invariants).
 - Override entry shape (six fields) and toggle semantics.
 - `model_critic` as a standalone sibling tool, not a loop stage.
