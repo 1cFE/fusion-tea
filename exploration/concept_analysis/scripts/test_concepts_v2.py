@@ -335,7 +335,7 @@ def test_loop_make_frontmatter_call_site_accepts_record(tmp_path):
     assert fm["Comparison-Status"] == "costingfe"
 
 
-def test_loop_model_setup_vars_use_library_hints_and_empty_placeholders(tmp_path):
+def test_loop_model_setup_vars_use_library_hints_and_contract_blocks(tmp_path):
     from lib.loop import build_model_vars
 
     record = _by_id()["01-hts-compact-tokamak"]
@@ -345,9 +345,12 @@ def test_loop_model_setup_vars_use_library_hints_and_empty_placeholders(tmp_path
     assert result is not None
     template_name, vars_dict = result
     assert template_name == "model_setup_costingfe.md"
-    # Item 6→8 hazard A: placeholders, not real paths.
-    assert vars_dict["defaults_path"] == ""
-    assert vars_dict["mapping_notes"] == ""
+    # Item 8 Phase 4: defaults_path / mapping_notes are dropped (the rewritten
+    # template no longer references them); the contract blocks are added.
+    assert "defaults_path" not in vars_dict
+    assert "mapping_notes" not in vars_dict
+    assert "design_point_block" in vars_dict
+    assert "canonical_accounts" in vars_dict
     assert vars_dict["costingfe_concept"] == "TOKAMAK"
     assert vars_dict["costingfe_fuel"] == "DT"
     assert vars_dict["example_path"].endswith("dt_tokamak.py")

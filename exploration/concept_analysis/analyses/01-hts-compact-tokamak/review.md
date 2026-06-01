@@ -1,79 +1,136 @@
-# Review: HTS Compact Tokamak
+# Review: HTS Compact Tokamak (Commonwealth Fusion / ARC)
 
 **Iteration:** 1
-**Date:** 2026-04-05
+**Date:** 2026-05-31
 **Files reviewed:** analysis.md, model_setup.py
-**Source documents:** 5 files (arc-reactor-specifications.md, sparc-icrf-heating-paper.md, arc-power-conversion-studies.md, cfs-2025-2026-updates.md, osti-etdeweb-servlets-purl-20261446.md)
+**Source documents:** 14 files
 
 ---
 
 ## Strategic Assessment
 
-### 1. Modeling Approach
+### 1. Design-Point Coherence
 
-The analysis makes a defensible and well-reasoned departure from a full structured CAS build. The ARC cost database (Sorbom 2015) covers only three fabricated subsystems — vacuum vessel, blanket, and magnet/structure — and explicitly excludes balance of plant. Attempting a structured CAS breakdown without that foundation would produce false precision. The decision to use three targeted cost overrides (C220103 for REBCO coils, C220104 for LHCD+ICRF heating, CAS27 for FLiBe fill) anchored to published ARC data, with framework defaults filling remaining accounts, is the right call given available information.
+Clean and consistent end to end. The frontmatter selection (ARC 2015 "Conservative
+Pilot" phase, paper-concept, `P_native = 233`, grounding high) is reproduced
+verbatim in the top-of-body Design Point block, carried unedited into Section 5
+("at its native scale of 233 MWe net"), and into `model_setup.py`
+(`P_native = 233.0`, commented "copied from the analysis Design Point block").
+Section 5 describes exactly *one* named plant. The 233 MWe / Qe = 3.5 / 1100 K /
+~46% Brayton figures are confirmed in the primary source (arc-reactor-specifications.md
+§2), and the analysis is unusually disciplined about the design-point-vs-program
+hazard: it explicitly quarantines the current commercial 400 MWe Virginia ARC as a
+*separate* future design point (Section 2, Challenge 2; Data Gap #1) rather than
+letting program-era numbers leak into the parameters.
 
-The three cost overrides are each correctly sourced and calculated. The REBCO coil computation (5,730 km at 250 A/m, NOAK $50/kAm, 8× manufacturing markup) is traceable to arc-reactor-specifications.md §4.1. The heating split (25 MW LHCD at $4.0M/MW + 13.6 MW ICRF at $4.1494M/MW, no NBI) is consistent with both arc-reactor-specifications.md §5.1 and the SPARC ICRF paper. The FLiBe fill (950 t × $154/kg NOAK) correctly flags the Araiinejad & Shirvan (2025) source and acknowledges the 20% learning rate assumption.
+The one place coherence is imperfect is the interaction between `P_native = 233`
+and the thermal efficiency. 233 MWe is *defined* by the 46%-efficiency
+conservative-Pilot point; the FNSF/demonstrated-material point at ~40% yields 190
+MWe. The model holds net electric at 233 MWe but leaves `eta_th` at the ~40%
+library default (the right call under the "aspirational efficiency is not grounds
+to override" contract, and the analysis reasons this out well in the
+`model_setup.py` header). The residual is that the native run describes a hybrid —
+233 MWe net *at* 40% — that matches neither published phase, and mildly oversizes
+the thermal plant. The effect is genuinely small (the η_th sweep shows only
+199.0 → 194.6 $/MWh across 40–50%, ~2%) and is disclosed via that sweep, so this
+is a clarity nit, not a coherence failure. Physics-characteristic overrides are
+otherwise correctly withheld: neither `eta_th` nor `eta_de` is overridden, and the
+spec contains no library-default re-passing.
 
-One structural tension exists in the power conversion modeling. The ARC abstract (arc-reactor-specifications.md) specifies a helium Brayton cycle at 46% efficiency for the conservative Pilot phase (1100 K outlet), and notes the FNSF phase uses a Brayton at ~40% efficiency for Pnet = 190 MWe. The model uses 46% net efficiency (eta_th=0.46) from the Colliva et al./power-conversion-studies source, which applied a supercritical Rankine cycle to the FNSF phase with 565°C intermediate FLiBe conditions. These two sources disagree on both cycle type and temperature conditions for the phases they analyze. The analysis acknowledges this complexity and recommends supercritical Rankine, which is defensible as the more recent independent thermodynamic analysis — but the 270 MWe net output modeled does not precisely match either source's calculated outputs (190, 233, or 261 MWe from the ARC paper phases; the Colliva study finds ~297 MWe gross for the FNSF phase at 46% net). This inconsistency is flagged in the model comments but not fully resolved.
+### 2. Override Discipline
 
-The minor radius parameter (plasma_t=1.13 m) correctly uses the machine parameter table value from arc-reactor-specifications.md (Table 6: a = 1.13 m, aspect ratio 3), not the abstract's rounded 1.1 m. This is the right choice and is consistent with the paper's detailed design section.
+This is the strongest dimension of the analysis, and it is exemplary. All entries
+are six-field, use canonical account codes (`C220103`, `C220101`, `CAS27`,
+`C220108` — all present in the library CAS22 detail; no invented `CAS22.1.3`-style
+codes; the "22.1.3" string in Section 1 is correctly attributed to the pyFECONS
+*source's* numbering, not used as an override account). Provenance is `derived`
+for all four with the honest justification that quantity and unit price are
+published-direct but the CPI escalation makes the delivered figure derived; the
+CPI factor (1.33) and the arithmetic are shown in every rationale. The Section 5b
+YAML and the `model_setup.py` `overrides` list carry identical accounts, values
+(as expressions, e.g. `5200.0 * 1.33`), enabled flags, and provenance.
 
-The identification of the three primary scaling axes — REBCO tape cost ($/kAm), capacity factor (%), and regulatory multiplier (discrete 1.0× vs. 2.2×) — correctly captures the structure of the LCOE uncertainty space for this concept. The capacity factor sweep (50–90%) and REBCO price sweep (NOAK $50/kAm through 6× NOAK at $300/kAm) are appropriately ranged. The REBCO scenarios correctly convert from $/m to $/kAm and show the computation chain transparently.
+I verified every figure against Table 10–11 of the source:
 
-The ARIES-AT BOP transfer caveat (Section 5) is particularly well-executed. The analysis correctly identifies which CAS accounts transfer cleanly (CAS-20, -21, -24) and which require independent treatment (CAS-22 turbine plant), and articulates *why* — the SiC/PbLi/Brayton vs. FLiBe/Rankine architecture difference. This level of sourcing granularity is appropriate for a first-pass analysis and avoids a common systematic error in tokamak cost modeling.
+- **C220103** ($5,200M): magnet/structure subtotal upper bound $5.1–5.2B; the
+  $4.6B/4,350t SS316LN cage, $380M copper winding, and $100–210M REBCO tape are
+  all in the table. The central thesis — that the library's conductor-length
+  pricing undercounts the ARC magnet ~7–10× because it misses the structural-steel
+  cage — is borne out by the model itself (native library C220103 = 989 vs override
+  6,916 per module).
+- **C220101** ($108.1M): first wall $4.03M + Be multiplier $4.1M + Inconel blanket
+  tank $100M. Correct.
+- **CAS27** ($147.5M): 958t FLiBe × $154/kg. Correct.
+- **C220108** ($17.5M): the deferred-divertor placeholder. Correct.
 
-The FLiBe chemistry plant gap (Gap #15) is correctly flagged as a truly-unknown additive BOP cost with no ARIES analogue. This is an intellectually honest acknowledgment that the analysis cannot close this line item from available sources.
+The disabled C220108 entry is a model of override discipline: enabling it would
+*lower* the account below the library default ($23.3M vs $56.3M) on the basis of an
+explicitly incomplete placeholder for an undesigned subsystem, in the
+non-conservative direction, while the narrative rates ARC's divertor difficulty as
+"between ITER and reactor designs." Keeping it as a documented-but-disabled
+candidate and routing it to Data Gap #2 as an *upward* sensitivity is exactly
+right. Equally careful: the walkthrough notes correctly diagnose the $183M
+inner-VV-wall figure as an OCR artifact (the $92M VV subtotal only closes with the
+corrected ~$17.6M) and fold C220106 into the library default to avoid
+double-counting against C220101. Enabled count (3) sits inside the stated High
+archetype-fit band (0–4), and there is no un-evidenced re-passing of defaults.
 
-### 2. Strategic Positioning
+### 3. Family-Delta vs Fixed Comparables
 
-The cross-concept notes (Section 7) correctly characterize ARC's position in the landscape. The comparison with ST-E1 (concept 21) is the right primary comparator — both HTS REBCO D-T tokamaks, with the key axis being aspect ratio and field strategy. The observation that ARC's $5.56B is magnet-structure-dominated while ST-E1 with lower field trades magnet cost for volume is correct and consequential for cross-concept cost modeling.
+Specific, correct, and honest about confidence. Section 7 walks all four *fixed*
+comparables by name with named subsystems and signed cost directions, not generic
+novelty claims. The 21-spherical-tokamak-hts contrast (the only comparable with an
+approved analysis) is the deepest and is accurate against that synthesis: ARC's
+A=3.0 / B0=9.2 T / 23 T-peak high-field path carries a magnet-cost penalty vs
+ST-E1's A=2.3 / 5.25 T path; FLiBe-immersion vs outboard liquid-Li is correctly
+characterized as cost-neutral-but-risk-divergent (ARC trades beryllium + 90% Li-6
+supply burden for breeding-geometry robustness); and ARC's quasi-steady operation
+is correctly credited against ST-E1's pulsed thermal-storage requirement. The
+28/29/33 deltas are appropriately flagged as inferred/low-confidence given the
+absence of approved source data, rather than overclaimed. The closing
+"reconciling compactness with high $/kWe" paragraph is a genuine strength: it
+pre-empts the obvious misreading by explaining that the compactness win is a
+per-unit-*fusion*-power advantage versus the low-field path that does not survive
+translation to $/kWe once the structural cage and low engineering gain are costed.
 
-The contrast with Helion (concept 08) is handled appropriately: near-zero cost structure overlap, with the shared element being REBCO supply chain for HTS magnets. The cross-referencing with MagLIF (concept 07) on FLiBe shared challenges (MHD, tritium extraction, radiation compatibility) identifies a real research leverage point.
+### 4. Two-Knob Projection & Model Integrity
 
-The analysis correctly characterizes the compact HTS high-field strategy as primarily a CAPEX mitigation strategy — not an O&M or regulatory mitigation. This framing holds across all three tokamak-class concepts reviewed so far and will be important for consistent cross-concept positioning in Stage 2.
+`model_setup.py` uses the four-step helper form correctly: module-level `spec`,
+`P_native`, `model`, `overrides`, then
+`result, result_1gw = run_native_and_1gw(...)` with no inline two-knob `forward()`
+and no `# DEFAULT:` re-passes. (The one `model.forward()` call is the η_th
+sensitivity sweep, a legitimate distinct purpose, not a re-implementation of the
+two-knob path.) The figures transcribe faithfully: native 199.0 $/MWh /
+16,092 $/kW and the 1 GWe projection 543.7 $/MWh / 51,884 $/kW match the analysis
+Section 7 prose.
 
-The "1/3 the cost of ARIES-RS at ~1/4 the output" benchmark from arc-reactor-specifications.md §6 is cited, and the analysis correctly notes this is component-fabricated cost only (excluding BOP, indirect, financing). The inference that a full plant cost would be "substantially higher" per kWe is well-supported. The analysis resists the temptation to take the ARC paper's cost claim at face value, which is the right analytical stance.
+The projection LCOE (~544 $/MWh, ~$52/W) is extreme but *correct and coherent*
+given the inputs: it is driven by the well-grounded $6.9B-per-module magnet
+override compounded by stacking ~4.29 × 233 MWe modules to reach 1 GWe with no
+cross-unit economy of scale. The analysis owns this explicitly rather than
+treating it as a discrepancy, which is the right posture. One contract-level
+subtlety worth a reader's attention (not a defect of this analysis): by design the
+native reference excludes the overrides, so the native 199 $/MWh is the *bare
+library* number and the headline magnet override only enters at the 1 GWe knob.
+Section 7 quotes the two side by side; a half-sentence noting that native is the
+un-overridden reference would prevent a reader from misreading 199 as ARC's
+override-corrected native cost.
 
-One framing gap: the analysis does not address where ARC sits relative to the broader fusion cost landscape in terms of $/kWe. The ARIES-AT benchmark (~5¢/kWh at ~2000–2003 USD for 1,000 MWe) is noted, but the analysis does not draw the implication that ARC, being ~1/4 the output at a disputed fraction of the CAPEX, faces a size-scale LCOE disadvantage that REBCO cost reduction must overcome. This connection is implicit in the sensitivity analysis but could be made more explicit in the strategic framing.
+### 5. Risk, Uncertainty & Data Sufficiency
 
-### 3. Risk and Uncertainty Framing
-
-The risk inventory is comprehensive and correctly ranked. The ordering — magnet cost dominance → capacity factor → FLiBe blanket behavior → I-mode extrapolation → LHCD system → regulatory framework → O&M — places the highest-impact items first.
-
-The three testable hypotheses (Section 2) are a structural strength of the analysis. Framing REBCO cost as a necessary condition (Hypothesis 1), capacity factor as the primary LCOE lever (Hypothesis 2), and I-mode as a necessary condition for economic viability — not just physics viability (Hypothesis 3) — organizes the uncertainty space in a way that supports prioritized sensitivity analysis.
-
-The I-mode risk framing is notably sharp. The analysis correctly identifies that if I-mode is not accessible at ARC's design point (0.55 MW/m²/n₂₀ at 9.2 T, above the published I-mode experimental range), net output could drop from ~261 MWe to ~80–100 MWe while capital cost remains essentially fixed — a 2.5–3× $/kWe penalty. This is a risk that most concept analyses in this family miss or understate.
-
-The beryllium supply chain analysis (Section 4) is a valuable addition that most TEA analyses omit. The extrapolation that a 10-plant fleet would require ~3,000 tonnes/year of Be against a current global production of ~300 tonnes/year correctly identifies this as a gating constraint for fleet-scale deployment. However, the 950 tonnes of FLiBe per reactor implies approximately 75 tonnes of Be per reactor (FLiBe is LiF·BeF₂, with Be comprising roughly 8% by weight), not "~300 tonnes/year of Be per plant." This arithmetic warrants a check — the analysis's claim should be verified against the molecular weight fractions.
-
-The tritium supply framing (Section 4) is accurate. The CANDU retirement timeline tension and the "no margin for breeding shortfalls in the early commercial phase" characterization are correct. The TBR ≥ 1.1 (optimizable to ~1.22) value is directly verified in arc-reactor-specifications.md §5.4.
-
-The regulatory risk treatment (Section 2, Challenge 6; Gap #13) correctly flags the NRC 2023 Part 30 decision as favorable but notes that detailed rulemaking is incomplete. The Araiinejad & Shirvan (2025) 2.2× building cost multiplier under Part 50 is cited in the model's unmodeled risk list, and the model correctly applies the Part 30 baseline (no multiplier). Modeling this as a discrete scenario branch rather than a continuous parameter is correct.
-
-One underweighted risk: the demountable TF coil joint technology. The analysis acknowledges this in Section 3 (HTS Magnets subsection) noting that joints were "only bench-top tested at 77 K without background field" as of the 2015 paper. However, the maintenance schedule — which drives capacity factor — depends critically on how fast demountable coil operations can be performed at 23 T peak field conditions with full radiation hardening. This is both a TRL gap and a direct LCOE lever, but it appears in Section 3 without explicit connection to the capacity factor sensitivity in Hypothesis 2.
-
-### 4. Data Sufficiency
-
-The data availability rating of "Rich" is justified for the source domain. The CFS/ARC concept has more peer-reviewed published technical content than any other private fusion concept. The five ingested source documents cover reactor dimensions, magnet specifications, FLiBe blanket design, component-level costs, ICRF physics basis, power conversion thermodynamics, current construction status, and an independent benchmark (ARIES-AT).
-
-The gap inventory (Section 6, 15 items) is thorough and correctly typed (blocking vs. important vs. nice-to-have; proprietary vs. truly-unknown vs. not-yet-sourced). The two blocking gaps — full plant capital cost and capacity factor — are correctly identified and their blocking status is justified. The analysis cannot produce a defensible LCOE point estimate without capacity factor; the model's 80% baseline is explicitly flagged as uncertain.
-
-The analysis is appropriately honest about what the 2015 paper's cost estimate does and does not cover: "While a full costing of the ARC reactor is beyond the scope of this paper..." is quoted directly. The inference that BOP could double-to-triple component cost (per ITER analogues) is the right order-of-magnitude warning, even if imprecise.
-
-A minor data verification note: the analysis consistently cites the REBCO tape requirement as 5,730 km from arc-reactor-specifications.md §4.1. This figure is verified in the source (Table listing TF + PF coil requirements). The critical current of 250 A/m at 20 K, 20 T is cited in the model_setup.py but the source table in arc-reactor-specifications.md appears to list current per unit width rather than per unit length — the exact parameterization (A/m vs. A/m-width vs. kA/m) should be confirmed to ensure the kAm calculation is correct. This is a minor traceability question, not a finding of error.
-
-The ARIES-AT source (osti-etdeweb-servlets-purl-20261446.md) was a gap-filling addition in iter-04. Its integration into the BOP caveat analysis (Section 5) is correctly executed. The analysis correctly notes that the ARIES-AT COE of 5¢/kWh (~$50/MWh) is from approximately 2000–2003 USD and cannot be compared directly to contemporary LCOE estimates without inflation adjustment.
-
-### 5. Cross-Concept Consistency
-
-No prior approved syntheses exist against which to check consistency. Internal consistency across the analysis is strong. The REBCO supply chain analysis in Section 4 is consistent with the magnet cost dominance discussion in Section 2. The capacity factor discussion in Section 2 (Hypothesis 2) is consistent with the sensitivity sweep in model_setup.py. The regulatory multiplier scenario in Section 2 is consistent with its treatment in model_setup.py's unmodeled risks.
-
-The claim that ARC's HTS magnet approach requires REBCO at "~$10/kA-m" for commercial viability is consistent across Sections 2, 4, and the model sensitivity sweep. The model's NOAK baseline at $50/kAm is labeled as the commercial viability threshold — which at 5× the ultimate target ($10/kAm) suggests the model's NOAK baseline is itself optimistic. The analysis acknowledges this implicitly but could make the gap between the $50/kAm model baseline and the $10/kAm ultimate target more explicit in the strategic framing.
-
-The cross-concept Section 7 notes that the ST-E1 analysis (concept 21) uses ARC as an analogue for magnet cost structure. This creates a dependency: if ARC's REBCO cost assumptions are revised, they should propagate to concept 21. This is an appropriate model dependency to flag for the cross-concept consistency check in Stage 2.
-
-The shared D-T tokamak cost structure pattern — CAPEX dominance by magnets + blanket + structure, capacity factor as primary LCOE lever, regulatory cost adder as scenario branch — is correctly identified as spanning all three reviewed tokamak-class concepts (ARC, ST-E1, and implicitly the ARIES benchmarks). This is a sound architectural pattern for Stage 2 cross-concept modeling.
+Thorough and honest. Section 2 ranks challenges by LCOE impact and correctly
+identifies the structure-dominated magnet account as the critical modeling hazard.
+Section 3 gives defensible per-subsystem TRL ranges (FLiBe blanket TRL 2–3,
+tritium cycle 3–4, divertor 4–6 and undesigned, REBCO magnets 5–7) that are
+neither inflated nor dismissive. The 11-item Data Gap inventory is appropriately
+typed (proprietary / derivable / truly-unknown) and the critical gaps —
+commercial-ARC parameters, divertor design, η_th materials contingency, O&M,
+replacement cadence, thermal storage — are surfaced with concrete source
+recommendations rather than buried. Availability is correctly flagged as the
+highest-elasticity lever (the native sensitivity confirms −0.92), and the analysis
+sensibly argues for modeling maintenance as scheduled FO&M per Schwartz et al.
+rather than a flat de-rate. Nothing here rises to a research-blocking gap; the data
+sufficiency ("Rich") rating is justified by the unusually complete 2015 cost table.
 
 ---
 
@@ -81,44 +138,48 @@ The shared D-T tokamak cost structure pattern — CAPEX dominance by magnets + b
 
 VERDICT: PROCEED
 
-This analysis is strategically sound. The modeling approach correctly diagnoses the limits of available ARC cost data and responds with a calibrated set of targeted overrides plus framework defaults, rather than false-precision structured costing. The risk inventory is comprehensive, correctly ordered, and framed around testable hypotheses. The cross-concept positioning is coherent. The gap inventory is thorough and honestly typed. The primary structural concerns — power conversion cycle parameter consistency and the Be content arithmetic — are minor corrections that do not alter the strategic conclusions or the LCOE sensitivity structure.
+This analysis is strategically sound. Design-point coherence is clean and the
+program-vs-design-point hazard is well quarantined; override discipline is
+exemplary, with every enabled figure verified against the source cost table and a
+textbook disabled-candidate treatment of the divertor; the family-delta is
+specific, signed, and honest about confidence; the two-knob model uses the helper
+correctly and the high projection LCOE is a reasoned consequence of a well-grounded
+override rather than an error; and the risk/data-sufficiency treatment is thorough
+and self-aware. The only items are minor clarity improvements that do not warrant a
+stage1 re-run.
 
 ---
 
 ## Minor Fixes (PROCEED only)
 
-### PA-1: Power conversion cycle consistency — phase, cycle type, and net output
-- **Category:** inconsistency
-- **Severity:** minor
-- **Location:** analysis.md §5 (LCOE-Relevant Parameters table, Net electric output row; Modeling Approach sub-section); model_setup.py lines 87–95
-- **Finding:** The ARC paper (arc-reactor-specifications.md abstract and §2) specifies a helium Brayton cycle for the FNSF/Pilot phases, with net outputs of 190 MWe (FNSF, 900 K, ~40% Brayton), 233 MWe (conservative Pilot, 1100 K, ~46% Brayton), and 261 MWe (aggressive Pilot, 1200 K). The Colliva et al. / arc-power-conversion-studies.md source applies a supercritical Rankine cycle to the FNSF phase at 565°C intermediate conditions and finds ~297 MWe gross (46% net efficiency). The model uses eta_th=0.46 (from the Rankine study) with net_electric_mw=270 (described as "aggressive pilot rounded up"), but 46% efficiency in the ARC paper corresponds to the conservative Pilot Brayton cycle at 1100 K — not the Rankine analysis of FNSF conditions. The three-way mix of phase, cycle type, and efficiency is not fully reconciled in analysis.md, leaving the power balance basis ambiguous.
-- **Proposed Fix:** Add a dedicated reconciliation note in analysis.md §5 (Modeling Approach) that explicitly states: (a) the 2015 ARC paper uses Brayton for efficiency estimates; (b) the Colliva/arc-power-conversion-studies source uses Rankine for the FNSF phase and recommends it as superior; (c) the model adopts the Rankine conclusion (46% net) as the preferred cycle per the independent thermodynamic study, applied to the aggressive Pilot phase output target (270 MWe); (d) the resulting power balance is approximate because the two sources use different intermediate conditions (900 K vs. 565°C). Flag this as a modeling caveat, not an error.
-- **Decision:** _[USER FILLS IN: agree | reject | alternative]_
-- **User Notes:** _[USER FILLS IN]_
-
-### PA-2: Beryllium content arithmetic in supply chain analysis
-- **Category:** factual-concern
-- **Severity:** minor
-- **Location:** analysis.md §4, FLiBe supply chain paragraph
-- **Finding:** The analysis states "~300 tonnes/year of Be per plant or ~3,000 tonnes/year for a 10-plant fleet." FLiBe (LiF·BeF₂) has molecular weight ~33.0 (Li=6.9, F=19×2=38, Be=9.0, F=19×2=38 → LiF = 25.9, BeF₂ = 47.0, total = 72.9 g/mol). Beryllium fraction by mass = 9.0/72.9 ≈ 12.3%. At 950 tonnes FLiBe per reactor, Be content = ~117 tonnes/reactor, not ~300 tonnes. At a fleet of 10 reactors: ~1,170 tonnes/year of Be, not ~3,000. The conclusion (exceeds global production by a meaningful factor) may still hold depending on fleet ramp rate — current global Be production is ~300 tonnes/year, so 10 plants at ~117 t each would require ~4× current production — but the specific figures cited appear to be overestimates by roughly 2.5×.
-- **Proposed Fix:** Recalculate Be content from FLiBe molecular weight fractions: Be = 9.0/(6.9 + 19.0 + 9.0 + 38.0) = 9.0/72.9 ≈ 12.3% by mass. Update the per-plant and fleet-scale Be figures accordingly, and verify whether the "exceeds global production by an order of magnitude" characterization still holds at corrected figures. Retain the qualitative conclusion if supported, but correct the numbers.
-- **Decision:** _[USER FILLS IN: agree | reject | alternative]_
-- **User Notes:** _[USER FILLS IN]_
-
-### PA-3: Demountable coil joint risk — connection to capacity factor gap
+### PA-1: Note the η_th / P_native consistency wrinkle in the native run
 - **Category:** improvement
 - **Severity:** minor
-- **Location:** analysis.md §3 (HTS Magnets subsection), §2 (Hypothesis 2)
-- **Finding:** The demountable TF coil joint technology is correctly identified as a TRL gap in Section 3 (joints bench-top tested at 77 K without background field), but this risk is not explicitly linked to Hypothesis 2 (capacity factor dominance). The ability to replace vacuum vessel modules quickly — the entire strategic argument for demountable coils — depends on joint operations at 23 T peak field under activation conditions being reliably fast. If joint operations take weeks rather than hours, the maintenance schedule advantage evaporates and capacity factor falls. This connection between TRL gap and primary LCOE lever should be made explicit.
-- **Proposed Fix:** Add one sentence in the HTS Magnets subsection linking the joint TRL gap to the capacity factor sensitivity: e.g., "Joint reliability and speed of operation under reactor conditions is a prerequisite for ARC's claimed maintenance schedule advantage; if coil exchange takes weeks per event rather than days, the 80% capacity factor baseline is not achievable regardless of other subsystem performance."
+- **Location:** analysis.md §5 (η_th row / note) and model_setup.py header
+- **Finding:** `P_native = 233` MWe is the conservative-Pilot output *at* ~46%
+  efficiency, but the native model run holds 233 MWe net while using the ~40%
+  library default for `eta_th` (the FNSF point is actually 190 MWe / 40%). The
+  native reference therefore describes a 233 MWe / 40% hybrid that matches neither
+  published phase and mildly oversizes the thermal plant. The choice to not
+  override aspirational efficiency is correct and the LCOE impact is ~2% (per the
+  existing sweep), but the residual mismatch is currently implicit.
+- **Proposed Fix:** Add one sentence (Section 5 note or `model_setup.py` header)
+  stating that net electric is held at the 233 MWe conservative-Pilot value while
+  `eta_th` stays at the demonstrated-material library default, so the native
+  thermal sizing is mildly conservative, with the η_th sweep bounding the effect.
 - **Decision:** _[USER FILLS IN: agree | reject | alternative]_
 - **User Notes:** _[USER FILLS IN]_
 
-### PA-4: REBCO kAm calculation — clarify current density parameterization
-- **Category:** factual-concern
+### PA-2: Clarify that native LCOE excludes the overrides
+- **Category:** improvement
 - **Severity:** minor
-- **Location:** model_setup.py lines 56–62; analysis.md §5 (REBCO tape materials cost row, Notes column)
-- **Finding:** The model computes total kAm as (5,730 km × 1,000 m/km) × (250 A/m ÷ 1,000) = 1,432,500 kA-m. The 250 A/m figure is cited as "A/m at 20 K, 20 T" but REBCO tape critical current is typically specified in A/mm-width or A/cm-width (a per-unit-tape-width metric), not A per linear meter of tape length. If 250 is actually 250 A/mm-width, and typical tape width is ~4 mm, then Ic per tape meter ≈ 1,000 A/m-length, and total kAm would be ~5.7 million kAm — a 4× difference. The arc-reactor-specifications.md table specifying this figure should be checked for units. Analysis.md §5 notes column says "250 A/m at 20K, 20T" without unit clarification.
-- **Proposed Fix:** Verify the units of the 250 A/m figure against arc-reactor-specifications.md §4.1 (the table or figure that specifies REBCO tape critical current). If the figure is per mm-width, update the kAm computation accordingly and recalculate C220103. Document the unit interpretation explicitly in the model_setup.py comment for this parameter.
+- **Location:** analysis.md §7 (reconciliation paragraph)
+- **Finding:** By the two-knob contract the native reference (199 $/MWh,
+  16,092 $/kW) is the bare library number; the central C220103 magnet override only
+  enters the 1 GWe projection. Quoting the native and projection figures side by
+  side risks a reader interpreting 199 as ARC's override-corrected native cost.
+- **Proposed Fix:** Add a half-sentence noting that the native figure is the
+  un-overridden library reference and that the structure-dominated magnet override
+  is reflected only in the 1 GWe projection.
 - **Decision:** _[USER FILLS IN: agree | reject | alternative]_
 - **User Notes:** _[USER FILLS IN]_

@@ -40,12 +40,21 @@ from lib.sources import find_sources, format_source_list
 from lib.state import clear_staleness, propagate_staleness
 from lib.step_runner import prepare_step
 from lib.templating import fill_template
+from lib.prompt_blocks import (
+    canonical_accounts_block,
+    design_point_block,
+    fit_grade_band_line,
+)
 from lib.validators import (
     chain_validators,
+    check_override_count_vs_fit_grade,
     has_model_category_findings,
     make_file_modified_validator,
+    validate_design_point_coherence,
     validate_feedback_verdict,
+    validate_model_setup_contract,
     validate_non_empty,
+    validate_override_registry,
     validate_python_syntax,
 )
 
@@ -311,10 +320,9 @@ def _split_findings(text: str) -> list[str]:
     Returns a list of stripped finding blocks (each starting with '### F-N:').
     Non-finding preamble (VERDICT line, etc.) is excluded.
     """
-    from lib.validators import FINDING_HEADER_RE
+    from lib.validators import _split_finding_blocks
 
-    parts = re.split(r"(?=^### F-\d+:)", text, flags=re.MULTILINE)
-    return [p.strip() for p in parts if FINDING_HEADER_RE.match(p)]
+    return [b.strip() for b in _split_finding_blocks(text)]
 
 
 def extract_findings(feedback_path: Path | None) -> str:
@@ -629,18 +637,13 @@ def _run_model_in_iteration(
     )
     # ctx.proceed is always True here (dry_run=False, no skip).
 
-    # --- Validator selection (FR-C5, FR-C6) ---
-    if prior_model_path:
-        # Feedback pass: tiered validation based on finding categories
-        if has_model_category_findings(model_feedback):
-            file_modified = make_file_modified_validator(model_script)
-            validator = chain_validators(file_modified, validate_python_syntax)
-        else:
-            # All findings are analysis-only — model MAY change but isn't required to
-            validator = validate_python_syntax
-    else:
-        # Cold start: syntax only
-        validator = validate_python_syntax
+    # --- Validator selection (FR-C5, FR-C6; Item 8 FR-26) ---
+    validator = select_model_setup_validator(
+        prior_model_path=prior_model_path,
+        model_feedback=model_feedback,
+        model_script=model_script,
+        is_costingfe=template_name.startswith("model_setup_costingfe"),
+    )
 
     result = invoke_claude_validated(
         ctx.prompt_text, cwd=CONCEPT_ANALYSIS_DIR,
@@ -682,6 +685,62 @@ def _run_model_in_iteration(
         return True, False
 
 
+def _validate_model_setup_contract_strict(text: str) -> "ValidationResult":
+    """Adapter: ``validate_model_setup_contract`` with ``strict_helper_only=True``.
+
+    Item 7's contract validator takes keyword-only switches, so it cannot be
+    chained directly into ``chain_validators`` (which expects
+    ``Callable[[str], ValidationResult]``). This thin adapter pins the strict
+    helper-only mode (FR-26: the generated file MUST use the helper form, not an
+    inline two-knob ``forward()``) and carries a readable ``__name__`` for the
+    validation log.
+    """
+    return validate_model_setup_contract(text, strict_helper_only=True)
+
+
+_validate_model_setup_contract_strict.__name__ = "validate_model_setup_contract_strict"
+
+
+def select_model_setup_validator(
+    *,
+    prior_model_path: str,
+    model_feedback: str,
+    model_script: Path,
+    is_costingfe: bool = True,
+) -> "Validator":
+    """Pick the model-setup output-gate validator chain (Item 8 FR-26).
+
+    Three mode branches, exactly as before — edit-pass-with-model-findings,
+    edit-pass-analysis-only, and cold-start. For the **costingfe** path the
+    strict contract gate (``validate_model_setup_contract(strict_helper_only=
+    True)``) and the override-registry gate (``validate_override_registry``) are
+    now chained onto **all three**, not just the edit-pass branch — the
+    cold-start path is where the first ``model_setup.py`` lands, and without
+    gating there a malformed cold-start file would escape the contract entirely.
+
+    The **freeform** path (an epic non-goal: ``model_setup_freeform*.md`` is not
+    reworked) keeps syntax-only validation — the costingfe four-step / helper
+    contract does not describe a freeform script, so applying it there would
+    reject every legitimate freeform model.
+    """
+    if prior_model_path and has_model_category_findings(model_feedback):
+        # Feedback pass with model-category findings: the file must actually
+        # change, and stay valid Python, before the structural gates run.
+        base = chain_validators(
+            make_file_modified_validator(model_script), validate_python_syntax
+        )
+    else:
+        # Edit-pass-analysis-only OR cold-start: syntax only as the base.
+        base = validate_python_syntax
+
+    if not is_costingfe:
+        return base
+
+    return chain_validators(
+        base, _validate_model_setup_contract_strict, validate_override_registry
+    )
+
+
 def build_model_vars(
     concept: dict,
     model_path: Path,
@@ -718,20 +777,22 @@ def build_model_vars(
             "company": concept.get("Company", ""),
             "analysis_path": str(analysis_path),
             "example_path": hints["example_path"],
-            # defaults_path / mapping_notes are retired: the library auto-loads
-            # per-archetype defaults from the enum, and notes migrated to
-            # archetype_fit.fit_rationale. Item 6→8 hazard A: ship empty
-            # placeholders so model_setup_costingfe.md still renders; Item 8's
-            # prompt rewrite removes both the variables and these keys together.
-            "defaults_path": "",
+            # defaults_path / mapping_notes retired in Phase 4: the library
+            # auto-loads per-archetype defaults from the enum and mapping notes
+            # migrated to archetype_fit.fit_rationale. The rewritten
+            # model_setup_costingfe(.md/_edit.md) no longer reference them, so the
+            # keys are dropped here in the same atomic-swap unit (FR-29).
             "readme_path": str(COSTINGFE_README_PATH),
             "costing_constants_path": str(COSTINGFE_CONSTANTS_PATH),
             "costingfe_concept": hints["costingfe_concept"],
             "costingfe_fuel": hints["costingfe_fuel"],
-            "mapping_notes": "",
             "output_path": str(model_path),
             "model_feedback": model_feedback,
             "prior_model_path": prior_model_path,
+            # Item 8: the model-setup prompt's "read the Design Point block"
+            # step consumes the same pre-rendered blocks as analyze.
+            "design_point_block": design_point_block(concept),
+            "canonical_accounts": canonical_accounts_block(concept),
         }
     else:
         template_name = "model_setup_freeform_edit.md" if edit_mode else "model_setup_freeform.md"
@@ -746,6 +807,89 @@ def build_model_vars(
         }
 
     return template_name, vars_dict
+
+
+def _count_enabled_overrides(model_setup_text: str) -> int:
+    """Count ``enabled: True`` entries in a model_setup.py ``overrides`` list.
+
+    Static AST read of the module-level ``overrides = [ {...}, ... ]`` literal —
+    no execution. Returns 0 on a syntax error or a missing/non-literal overrides
+    binding (the coherence feed is advisory, so an un-countable file simply
+    contributes a zero count rather than raising).
+    """
+    import ast
+
+    try:
+        tree = ast.parse(model_setup_text)
+    except SyntaxError:
+        return 0
+    for node in ast.walk(tree):
+        if not isinstance(node, ast.Assign):
+            continue
+        if not any(isinstance(t, ast.Name) and t.id == "overrides" for t in node.targets):
+            continue
+        if not isinstance(node.value, ast.List):
+            return 0
+        count = 0
+        for elt in node.value.elts:
+            if not isinstance(elt, ast.Dict):
+                continue
+            for key, val in zip(elt.keys, elt.values):
+                if (
+                    isinstance(key, ast.Constant)
+                    and key.value == "enabled"
+                    and isinstance(val, ast.Constant)
+                    and val.value is True
+                ):
+                    count += 1
+        return count
+    return 0
+
+
+def build_coherence_flags(
+    concept: dict, iter_dir: Path, analysis_path: Path
+) -> str:
+    """Render the advisory coherence flags for the assess prompt (Item 8 FR-27).
+
+    Net-new flag-feed surface (the design notes there was none — the standalone
+    ``comparables_sanity_check.py`` was never wired into the loop). Runs Item 7's
+    multi-input coherence checks against the iteration's artifacts and renders
+    their ``details`` as a short bullet list the LLM reviewer interprets:
+
+    * ``validate_design_point_coherence`` — three legs (design_point.csv row,
+      model_setup.py text, analysis.md text) agree on P_native and shared-account
+      provenance.
+    * ``check_override_count_vs_fit_grade`` — enabled-override count vs. the
+      archetype-fit grade.
+
+    Returns ``""`` when there is nothing to check yet — no model_setup.py in the
+    iteration, or the concept has no design-point row. The checks flag; they do
+    not gate.
+    """
+    dp_row = concept.get("design_point")
+    model_setup_path = iter_dir / "model_setup.py"
+    if dp_row is None or not model_setup_path.exists():
+        return ""
+
+    model_text = model_setup_path.read_text(encoding="utf-8")
+    analysis_text = (
+        analysis_path.read_text(encoding="utf-8") if analysis_path.exists() else None
+    )
+
+    lines: list[str] = []
+
+    coherence = validate_design_point_coherence(
+        concept["_id"], model_text, dp_row, analysis_text
+    )
+    prefix = "" if coherence.valid else "FLAG: "
+    lines.append(f"- {prefix}{coherence.details}")
+
+    count = check_override_count_vs_fit_grade(
+        concept.get("fit_grade", ""), _count_enabled_overrides(model_text)
+    )
+    lines.append(f"- {count.details}")
+
+    return "\n".join(lines)
 
 
 def _run_assess(
@@ -771,6 +915,16 @@ def _run_assess(
         "analysis_path": str(analysis_path),
         "feedback_path": str(feedback_path),
         "model_output_path": str(model_output) if model_output.exists() else "",
+        # Item 8 FR-27: net-new flag-feed. The coherence checks compute and
+        # flag (they do not gate); the rewritten assessment.md surfaces them to
+        # the LLM reviewer. Empty when there is nothing to check yet
+        # (analysis-only iteration / no model_setup.py / no design-point row).
+        "coherence_flags": build_coherence_flags(concept, iter_dir, analysis_path),
+        # Item 8 Phase 4: the override-count rubric the rewritten assessment.md
+        # checks against (FR-18). Single-sourced from FIT_GRADE_OVERRIDE_BAND via
+        # the same renderer the analyze prompt uses, so the band cannot drift
+        # between the two prompts.
+        "fit_grade_band": fit_grade_band_line(concept),
     }
     if common_vars and "concept_landscape" in common_vars:
         assess_vars["concept_landscape"] = common_vars["concept_landscape"]
@@ -915,7 +1069,7 @@ def _get_review_feedback(concept_dir: Path) -> str | None:
     Returns feedback text content (caller writes to iter-N/pre_feedback.md),
     or None if review.md has no extractable corrective actions.
     """
-    from lib.validators import REVIEW_VERDICT_RE, CORRECTIVE_ACTIONS_RE
+    from lib.validators import _verdict_token
 
     review_path = concept_dir / "review.md"
     if not review_path.exists():
@@ -923,27 +1077,31 @@ def _get_review_feedback(concept_dir: Path) -> str | None:
 
     text = review_path.read_text(encoding="utf-8")
 
-    # Verify this is a REVISE review
-    verdict_match = REVIEW_VERDICT_RE.search(text)
-    if not verdict_match or verdict_match.group(1) != "REVISE":
+    # Verify this is a REVISE review (line-anchored verdict, not regex).
+    if _verdict_token(text, frozenset({"PROCEED", "REVISE"})) != "REVISE":
         return None
 
-    # Extract everything from "## Corrective Actions" to end or next ## section
-    ca_match = CORRECTIVE_ACTIONS_RE.search(text[verdict_match.end():])
-    if not ca_match:
+    # Extract everything from the "## Corrective Actions" heading to the next
+    # top-level "## " heading (or end of file), excluding the heading line.
+    lines = text.splitlines()
+    ca_idx = next(
+        (i for i, ln in enumerate(lines)
+         if ln.strip().startswith("## Corrective Actions")),
+        None,
+    )
+    if ca_idx is None:
         return None
-
-    ca_start = verdict_match.end() + ca_match.end()
-    # Find next ## header (not ###) or end of file
-    next_section = re.search(r"^## ", text[ca_start:], re.MULTILINE)
-    ca_text = text[ca_start:ca_start + next_section.start()] if next_section else text[ca_start:]
-
-    if not ca_text.strip():
+    end = next(
+        (j for j in range(ca_idx + 1, len(lines)) if lines[j].startswith("## ")),
+        len(lines),
+    )
+    ca_text = "\n".join(lines[ca_idx + 1:end]).strip()
+    if not ca_text:
         return None
 
     # Format as feedback — VERDICT: FINDINGS so the analysis agent's
     # feedback-pass parser recognizes it
-    return f"VERDICT: FINDINGS\n\n{ca_text.strip()}\n"
+    return f"VERDICT: FINDINGS\n\n{ca_text}\n"
 
 
 def _update_canonical_files(

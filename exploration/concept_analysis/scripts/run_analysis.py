@@ -59,6 +59,7 @@ from lib.concepts import (
     load_legacy_table,
     resolve_concepts,
     resolve_one,
+    runnability,
 )
 from lib.iteration import read_loop_state
 from lib.state import clear_staleness, get_concept_state, get_extraction_state, get_iteration_summary
@@ -74,6 +75,12 @@ from lib.sources import (
     slugify_source,
 )
 from lib.landscape import build_concept_landscape, extract_iter_count
+from lib.prompt_blocks import (
+    canonical_accounts_block,
+    comparables_block,
+    design_point_block,
+    fit_grade_band_line,
+)
 from lib.memory import (
     find_approved,
     find_approved_syntheses,
@@ -85,7 +92,7 @@ from lib.claude import invoke_claude_validated, run_model
 from lib.loop import build_model_vars, extract_findings, run_stage1_loop
 from lib.step_runner import prepare_step, StepContext
 from lib.validators import (
-    REVIEW_VERDICT_RE,
+    _verdict_token,
     make_file_modified_validator,
     validate_feedback_verdict,
     validate_non_empty,
@@ -420,6 +427,15 @@ def _build_common_vars(concept: dict, concepts: list[dict] | None = None) -> dic
         "analysis_path": str(analysis_path),
         "memory_context": memory_context,
         "concept_landscape": landscape,
+        # Item 8: pre-rendered contract blocks the rewritten analyze prompt
+        # consumes (design_point selection, per-archetype account schema,
+        # fixed comparables, fit-grade override-count rubric). The discipline
+        # lives at this variable boundary so the LLM's job collapses to
+        # extraction + judgment, not search + choice.
+        "design_point_block": design_point_block(concept),
+        "canonical_accounts": canonical_accounts_block(concept),
+        "comparables_block": comparables_block(concept),
+        "fit_grade_band": fit_grade_band_line(concept),
     }
 
 
@@ -595,10 +611,10 @@ def cmd_review(concepts: list[dict], args: argparse.Namespace) -> None:
         # Detect verdict from the validated review file (not stdout). The
         # validator already guaranteed a VERDICT line is present.
         review_text = review_path.read_text(encoding="utf-8")
-        verdict_match = REVIEW_VERDICT_RE.search(review_text)
-        if verdict_match and verdict_match.group(1) == "PROCEED":
+        verdict = _verdict_token(review_text, frozenset({"PROCEED", "REVISE"}))
+        if verdict == "PROCEED":
             review_status = "proceed"
-        elif verdict_match and verdict_match.group(1) == "REVISE":
+        elif verdict == "REVISE":
             review_status = "revise"
         else:
             # Should be unreachable post-validation, but keep a defensive

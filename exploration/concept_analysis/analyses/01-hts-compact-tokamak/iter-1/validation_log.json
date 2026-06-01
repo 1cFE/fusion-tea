@@ -1,0 +1,29 @@
+[
+  {
+    "timestamp": "2026-06-01T01:37:55.761969+00:00",
+    "step": "cold-start",
+    "attempt": 1,
+    "validator": "validate_non_empty",
+    "passed": true,
+    "details": "Non-empty (36004 chars)",
+    "validated_text_preview": "## Design Point\n\n- Name: ARC 2015 Conservative Pilot phase (Sorbom et al.)\n- Maturity: paper-concept\n- P_native: 233 MWe\n- Grounding: high\n- Primary sources:\n  - knowledge/concept_research/01-hts-compact-tokamak/iter-03/sources/arc-reactor-specifications.md\n  - knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/arc-power-conversion-studies.md\n\n---\n\n## Section 1: Availability of Data\n\n**Rating: Rich**\n\nThe HTS compact tokamak is, with the exception of large public-program tokamaks "
+  },
+  {
+    "timestamp": "2026-06-01T01:41:36.910516+00:00",
+    "step": "model-setup",
+    "attempt": 1,
+    "validator": "validate_python_syntax+validate_model_setup_contract_strict+validate_override_registry",
+    "passed": true,
+    "details": "All validators passed",
+    "validated_text_preview": "\"\"\"1costingfe model: HTS Compact Tokamak (Commonwealth Fusion / ARC) (Commonwealth Fusion Systems).\n\nDesign point: ARC 2015 \"Conservative Pilot\" phase (Sorbom et al. 2015), 233 MWe net.\nThe plasma/machine hardware is identical across the FNSF / conservative-Pilot /\naggressive-Pilot phases; only the blanket outlet temperature and resulting thermal\nefficiency change. Cost overrides are grounded in the paper's FY2014 subsystem\ncost tables (Tables 10-11), escalated CPI-U FY2014->2024 (x1.33).\n\nNote "
+  },
+  {
+    "timestamp": "2026-06-01T01:45:28.654661+00:00",
+    "step": "assess",
+    "attempt": 1,
+    "validator": "validate_feedback_verdict",
+    "passed": true,
+    "details": "Feedback format valid (verdict: FINDINGS)",
+    "validated_text_preview": "VERDICT: FINDINGS\n\nThe analysis is coherent on the design point (P_native = 233 MWe is identical\nacross the Design Point block, Section 5, and `model_setup.py`), the override\ncount (4) sits inside the High archetype-fit band, the family-delta prose engages\nthe four fixed comparables with named subsystems and cost directions, and the\ntwo-knob model is correctly structured (`run_native_and_1gw`, real\nparameter-driven CAS values, the C220103 magnet override correctly dominating\nCAS22 \u2248 65% of 1 GWe"
+  }
+]

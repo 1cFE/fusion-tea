@@ -118,9 +118,11 @@ model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
 result = model.forward(net_electric_mw=P_native, n_mod=1, noak=True, **spec)
 
 # 3. Override registry — entries written with `result`'s computed
-#    accounts in hand. Each entry is a final per-module value at
-#    design-point reference; the reasoning chain (including any
-#    arithmetic against the library's computed value) is in rationale.
+#    accounts in hand. Each `value` is a per-module quantity at the
+#    design-point reference: a literal, a constant expression (e.g.
+#    260.0 * 1.34), or — for a relative override — an expression over
+#    the native `result` (e.g. 0.70 * result.costs.cas21). Provenance,
+#    not literal-ness, is what the six fields and the critic enforce.
 overrides = [
     {"account": "C220103", "value": 6901.0, "enabled": True,
      "provenance": "direct", "source": "...", "rationale": "..."},
@@ -157,7 +159,7 @@ A single registry record:
 }
 ```
 
-`value` is always a plain number at design-point per-module. If the analyst's reasoning is "70% of the library's computed value of $X," the analyst does the multiplication at write-time, writes the resulting number, and captures the chain in `rationale`. The registry does not carry an expression language.
+`value` is a per-module quantity at the design-point reference (one module at native power). It may be a literal, a constant arithmetic expression that documents its own derivation (e.g. `260.0 * 1.34` for a published cost inflated by CPI), or — for a *relative* override defined as a function of the library's own computation — an expression over the native `result` (e.g. `0.70 * result.costs.cas21`, "70% of the library's computed value because the company states a 30% prefab reduction"). For relative overrides the expression form is the correct one: a frozen literal would silently go stale when the library updates. Reference the native `result` (the `n_mod=1`, `P_native` frame), never `result_1gw`. What makes an override legitimate is its *provenance* — company data, direct or derived, recorded in the six fields and checked by `model_critic` — not whether `value` is a literal. A syntax rule cannot tell an evidence-backed relative override from an un-evidenced fudge (both are `0.70 * <library value>`), so the registry does not constrain `value` to a literal; the discipline lives in the provenance fields and the rationale, not in the value's form.
 
 Toggle semantics: when `enabled=False`, the entry is omitted from the `cost_overrides` dict passed to `forward()`, and the library computes that account from specification.
 

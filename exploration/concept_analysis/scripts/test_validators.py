@@ -6,12 +6,9 @@ from pathlib import Path
 
 from lib.validators import (
     CORRECTIVE_ACTIONS_RE,
-    FEEDBACK_VERDICT_RE,
     FINDING_CATEGORY_RE,
-    FINDING_HEADER_RE,
-    PROPOSED_ACTION_RE,
-    REVIEW_VERDICT_RE,
     ValidationResult,
+    _verdict_token,
     chain_validators,
     has_model_category_findings,
     validate_feedback_verdict,
@@ -21,47 +18,10 @@ from lib.validators import (
 # ---------------------------------------------------------------------------
 # Shared regex constant tests
 # ---------------------------------------------------------------------------
-
-
-class TestFeedbackVerdictRE:
-    def test_pass(self):
-        assert FEEDBACK_VERDICT_RE.search("VERDICT: PASS\n")
-
-    def test_findings(self):
-        assert FEEDBACK_VERDICT_RE.search("VERDICT: FINDINGS\n")
-
-    def test_extracts_group(self):
-        m = FEEDBACK_VERDICT_RE.search("VERDICT: PASS\n")
-        assert m.group(1) == "PASS"
-
-    def test_rejects_unknown_verdict(self):
-        assert not FEEDBACK_VERDICT_RE.search("VERDICT: MAYBE\n")
-
-    def test_rejects_trailing_text(self):
-        assert not FEEDBACK_VERDICT_RE.search("VERDICT: PASS — all goals met\n")
-
-    def test_allows_trailing_whitespace(self):
-        assert FEEDBACK_VERDICT_RE.search("VERDICT: PASS   \n")
-
-    def test_multiline(self):
-        text = "Some preamble\nVERDICT: FINDINGS\n\n### F-1: stuff"
-        m = FEEDBACK_VERDICT_RE.search(text)
-        assert m and m.group(1) == "FINDINGS"
-
-    def test_indented_does_not_match(self):
-        assert not FEEDBACK_VERDICT_RE.search("  VERDICT: PASS\n")
-
-
-class TestFindingHeaderRE:
-    def test_simple(self):
-        assert FINDING_HEADER_RE.search("### F-1: Title here")
-
-    def test_multi_digit(self):
-        assert FINDING_HEADER_RE.search("### F-12: Title")
-
-    def test_findall(self):
-        text = "### F-1: A\nstuff\n### F-2: B\nmore"
-        assert len(FINDING_HEADER_RE.findall(text)) == 2
+# The verdict / finding-header / proposed-action constants were deleted in
+# Item 8 Phase 4 (FR-28); their behaviour now lives in the line-anchored helpers
+# (covered by test_parsers_new_format.py). Only the two surviving constants
+# (FINDING_CATEGORY_RE, CORRECTIVE_ACTIONS_RE) are exercised here.
 
 
 class TestFindingCategoryRE:
@@ -79,38 +39,12 @@ class TestFindingCategoryRE:
         assert m and m.group(1) == "model"
 
 
-class TestReviewVerdictRE:
-    def test_proceed(self):
-        m = REVIEW_VERDICT_RE.search("VERDICT: PROCEED\n")
-        assert m and m.group(1) == "PROCEED"
-
-    def test_revise(self):
-        m = REVIEW_VERDICT_RE.search("VERDICT: REVISE\n")
-        assert m and m.group(1) == "REVISE"
-
-    def test_rejects_pass(self):
-        assert not REVIEW_VERDICT_RE.search("VERDICT: PASS\n")
-
-    def test_rejects_trailing_text(self):
-        assert not REVIEW_VERDICT_RE.search("VERDICT: PROCEED with caution\n")
-
-
 class TestCorrectiveActionsRE:
     def test_matches(self):
         assert CORRECTIVE_ACTIONS_RE.search("## Corrective Actions\n")
 
     def test_with_content_after(self):
         assert CORRECTIVE_ACTIONS_RE.search("## Corrective Actions\n\n### F-1:")
-
-
-class TestProposedActionRE:
-    def test_matches(self):
-        m = PROPOSED_ACTION_RE.search("### PA-1: Fix the thing")
-        assert m and m.group(1) == "PA-1" and m.group(2) == "Fix the thing"
-
-    def test_multi_digit(self):
-        m = PROPOSED_ACTION_RE.search("### PA-12: Another fix")
-        assert m and m.group(1) == "PA-12"
 
 
 # ---------------------------------------------------------------------------
@@ -311,7 +245,7 @@ class TestValidateReviewVerdictRealFiles:
         for f in files:
             text = f.read_text(encoding="utf-8")
             # Only test files that have new-format VERDICT line
-            if not REVIEW_VERDICT_RE.search(text):
+            if _verdict_token(text, frozenset({"PROCEED", "REVISE"})) is None:
                 continue
             result = validate_review_verdict(text)
             assert result.valid, f"{f}: {result.details}"
@@ -970,10 +904,25 @@ class TestOverrideCountVsFitGrade:
         r = check_override_count_vs_fit_grade("Med", 0)
         assert r.valid and _flagged(r)
 
-    def test_low_with_some_is_quiet(self):
+    def test_low_below_band_flagged(self):
+        """Low band is 6–12; 3 corrections is below it → flag (too few)."""
         from lib.validators import check_override_count_vs_fit_grade
 
         r = check_override_count_vs_fit_grade("Low", 3)
+        assert r.valid and _flagged(r)
+
+    def test_low_within_band_quiet(self):
+        """Low fit with a count inside the 6–12 band stays quiet."""
+        from lib.validators import check_override_count_vs_fit_grade
+
+        r = check_override_count_vs_fit_grade("Low", 8)
+        assert r.valid and not _flagged(r)
+
+    def test_med_within_band_quiet(self):
+        """Med band is 3–8; a mid-band count stays quiet."""
+        from lib.validators import check_override_count_vs_fit_grade
+
+        r = check_override_count_vs_fit_grade("Med", 5)
         assert r.valid and not _flagged(r)
 
     def test_none_grade_quiet(self):
@@ -982,9 +931,10 @@ class TestOverrideCountVsFitGrade:
         r = check_override_count_vs_fit_grade("None", 0)
         assert r.valid and not _flagged(r)
 
-    def test_boundary_high_eight_quiet(self):
-        """Threshold is strictly greater-than 8 — High+8 stays quiet."""
+    def test_boundary_band_single_sourced(self):
+        """High band upper bound now comes from FIT_GRADE_OVERRIDE_BAND (0–4),
+        not a bare threshold: High+4 quiet, High+5 flagged."""
         from lib.validators import check_override_count_vs_fit_grade
 
-        r = check_override_count_vs_fit_grade("High", 8)
-        assert r.valid and not _flagged(r)
+        assert not _flagged(check_override_count_vs_fit_grade("High", 4))
+        assert _flagged(check_override_count_vs_fit_grade("High", 5))

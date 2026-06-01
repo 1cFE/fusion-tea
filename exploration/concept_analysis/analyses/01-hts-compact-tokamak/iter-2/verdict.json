@@ -3,18 +3,25 @@
   "verdict": "FAIL",
   "finding_count": 1,
   "feedback_source": "assess",
-  "model_ran": false,
-  "model_ok": false,
+  "model_ran": true,
+  "model_ok": true,
   "research_ran": false,
+  "merged_assess": false,
   "sources": [
     "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-03/sources/arc-reactor-specifications.md",
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-03/sources/arc-reactor-specifications.orig.md",
     "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-03/sources/sparc-icrf-heating-paper.md",
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-03/sources/sparc-icrf-heating-paper.orig.md",
     "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/arc-power-conversion-studies.md",
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/arc-power-conversion-studies.orig.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/arxiv-2405-01514.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/arxiv-2503-23048.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/arxiv-2601-21724.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/arxiv-2602-19389.md",
     "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/cfs-2025-2026-updates.md",
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/cfs-2025-2026-updates.orig.md"
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/osti-etdeweb-servlets-purl-10149275.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/osti-etdeweb-servlets-purl-20261446.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/osti-servlets-purl-1305833.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/osti-servlets-purl-1820946.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/sciencedirect-science-article-pii-s092037961930835x.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/sciencedirect-science-article-pii-s2772830725000390.md"
   ],
-  "timestamp": "2026-03-30T03:46:50.543658+00:00"
+  "timestamp": "2026-06-01T01:53:05.064474+00:00"
 }

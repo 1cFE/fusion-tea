@@ -1,7 +1,30 @@
 VERDICT: FINDINGS
 
-### F-1: BOP modeling guidance doesn't account for ARC-specific BOP additions
-- **Target:** Section 5 (Modeling Approach) and Section 7 (differentiator table, FLiBe blanket row)
-- **Finding:** Section 7 correctly identifies that the FLiBe liquid blanket "adds chemical processing plant" as a novel cost that doesn't exist in conventional ARIES-class designs (which use solid ceramic breeders with a conventional steam BOP). However, the Section 5 modeling approach recommends estimating BOP using "ARIES-AT or ARIES-RS CAS fractions" without noting that ARC's BOP includes this ARC-specific subsystem. ARIES analogues have no FLiBe chemistry plant or molten-salt tritium extraction system in their BOP cost structure. Applying ARIES BOP fractions directly would systematically underestimate ARC's BOP cost by omitting a real cost line. The Section 6 gap inventory notes BOP cost as gap #1 and recommends ARIES analogues, but does not flag this structural mismatch.
-- **Recommendation:** In the Section 5 modeling approach, add a note identifying the FLiBe chemistry and tritium extraction plant as an ARC-specific BOP addition with no direct ARIES analogue. Recommend treating it as a separate cost line (truly-unknown) in the Section 6 gap inventory, distinct from the ARIES-borrowable BOP fractions. The ARIES fraction guidance should be scoped to "conventional BOP accounts (power conversion, buildings, electrical systems)" and the FLiBe plant flagged as an additive ARC-specific cost requiring independent estimation.
+The analysis is strong on override discipline, family-delta concreteness, and
+data-gap honesty, and the cross-artifact P_native / override-count / provenance
+checks all hold. One design-point coherence gap in the model is worth one pass.
+
+### F-1: Native run uses the library-default thermal efficiency (~40%), not the named design point's 46%
+- **Target:** model_setup.py `spec` dict (add `eta_th`)
+- **Category:** model
+- **Finding:** The named design point is explicitly the ARC 2015 *conservative-Pilot*
+  phase — 233 MWe net **at η_th ≈ 46%** (1100 K blanket outlet), which is what
+  distinguishes it from the FNSF phase (190 MWe at ~40%). Section 5 records
+  η_th = 46% as the design-point value. But `model_setup.py` leaves `eta_th` to
+  the library default in the native forward, and the eta_th sweep confirms the
+  headline native point is computed at 0.40 (`eta_th=0.40 → LCOE 199.0`, which
+  equals the reported "Native LCOE = 199.0"; the 0.46 case is 194.6). So the
+  native reference number that propagates downstream describes the FNSF-material
+  operating point, not the 233 MWe conservative-Pilot point the dossier selected.
+  The docstring defends this by analogy to override discipline ("aspirational
+  published efficiency is not grounds to override the archetype default"), but
+  η_th is a design-point physics *spec* parameter that defines this plant's
+  operating point — not a cost-account override. Leaving it at the library
+  default silently substitutes a different phase of the machine while still
+  labeling it 233 MWe.
+- **Recommendation:** Set `eta_th=0.46` in the `spec` dict so the native forward
+  computes the named conservative-Pilot point (Section 5's stated value), and
+  keep the existing 0.40–0.50 sweep with 0.40 labeled as the demonstrated-material
+  FNSF floor. The LCOE impact is small (~2%), but it makes the native headline
+  describe the one plant the dossier names rather than a lower-efficiency phase.
 - **Priority:** important

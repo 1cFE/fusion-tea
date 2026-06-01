@@ -447,12 +447,19 @@ def _check_interface(model_path: Path) -> None:
     )
 
     if uses_costingfe:
-        # costingfe path: check for module-level 'result = ...'
-        if not re.search(r"^result\s*=", source, re.MULTILINE):
+        # costingfe path: the explorer reads module-level `result` (and
+        # `result_1gw`). Accept both the legacy inline `result = model.forward(...)`
+        # and the Item-8 four-step helper form `result, result_1gw =
+        # run_native_and_1gw(...)` (tuple-unpack binds `result` just the same).
+        has_result = re.search(r"^result\b[^=]*=", source, re.MULTILINE) or (
+            "run_native_and_1gw" in source
+        )
+        if not has_result:
             print(
                 f"WARNING: interface: {model_path.name} uses costingfe but has no "
-                "module-level 'result = model.forward(...)'. The concept explorer "
-                "requires this for extraction.",
+                "module-level `result` binding (inline `result = model.forward(...)` "
+                "or `result, result_1gw = run_native_and_1gw(...)`). The concept "
+                "explorer requires this for extraction.",
                 file=sys.stderr,
             )
     else:

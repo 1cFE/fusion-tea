@@ -17,28 +17,108 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable
 
+from lib.canonical_accounts import fit_grade_band
+
 # ---------------------------------------------------------------------------
 # Shared regex constants
 # ---------------------------------------------------------------------------
+# The verdict / finding-header / proposed-action MULTILINE-regex constants were
+# retired in Item 8 Phase 4 (FR-28) in favour of the line-anchored helpers
+# below; only these two remain, for the few callers that still want a plain
+# pattern.
 
-# Feedback format (assessment, source-integration)
-FEEDBACK_VERDICT_RE = re.compile(r"^VERDICT:\s*(PASS|FINDINGS)\s*$", re.MULTILINE)
-FINDING_HEADER_RE = re.compile(r"^### F-\d+:", re.MULTILINE)
+# Category tag on a finding bullet (`- **Category:** analysis|model`).
 FINDING_CATEGORY_RE = re.compile(
     r"^\-\s+\**Category:?\**:?\s*(analysis|model)", re.MULTILINE
 )
+# Review "## Corrective Actions" section heading.
+CORRECTIVE_ACTIONS_RE = re.compile(r"^## Corrective Actions", re.MULTILINE)
+
+# ---------------------------------------------------------------------------
+# Line-anchored parsing helpers (Item 8, Phase 2)
+# ---------------------------------------------------------------------------
+# These are the internals of the five named parsers (parse_verdict_from_feedback,
+# has_model_category_findings, validate_feedback_verdict, validate_review_verdict,
+# parse_proposed_actions): simple per-line scanning instead of MULTILINE regex.
+# Item 8 Phase 4 deleted the legacy verdict/header/proposed-action constants and
+# rewired their last direct users (loop.py / run_analysis.py review paths) onto
+# these helpers, discharging Item 7's FR-9. Behavior and return shapes are
+# preserved per signal_contract.md — only the mechanism changed.
+
+
+def _header_id(line: str, kind: str) -> str | None:
+    """If ``line`` is a ``### <kind>-N:`` header, return ``"<kind>-N"`` else None.
+
+    ``kind`` is ``"F"`` (findings) or ``"PA"`` (proposed actions). Line-anchored:
+    matches the stripped line, the digits between the prefix and the colon must
+    be all-digits and non-empty.
+    """
+    s = line.strip()
+    prefix = f"### {kind}-"
+    if not s.startswith(prefix):
+        return None
+    rest = s[len(prefix):]
+    num, sep, _ = rest.partition(":")
+    if sep != ":" or not num.isdigit():
+        return None
+    return f"{kind}-{num}"
+
+
+def _verdict_token(text: str, allowed: frozenset[str]) -> str | None:
+    """Return the first ``VERDICT: <TOKEN>`` token (TOKEN in ``allowed``).
+
+    Line-anchored, ``search``-equivalent to the old ``^VERDICT:\\s*(...)\\s*$``
+    constants: scans line by line, the stripped line must read exactly
+    ``VERDICT: <token>`` (any inter-token whitespace, nothing trailing). A
+    ``VERDICT:`` line whose token is not in ``allowed`` (e.g. trailing prose) is
+    skipped, not matched — so ``VERDICT: PASS — all goals met`` is rejected and a
+    later well-formed verdict line still wins.
+    """
+    for raw in text.splitlines():
+        key, sep, val = raw.strip().partition(":")
+        if sep == ":" and key.strip() == "VERDICT" and val.strip() in allowed:
+            return val.strip()
+    return None
 
 
 def _split_finding_blocks(text: str) -> list[str]:
-    """Split feedback text into individual F-N finding blocks."""
-    blocks = re.split(r"(?=^### F-\d+:)", text, flags=re.MULTILINE)
-    return [b for b in blocks if FINDING_HEADER_RE.match(b)]
+    """Split feedback text into individual ``### F-N:`` finding blocks.
+
+    Line-anchored: a block runs from one finding header line up to (but not
+    including) the next finding header line, or end of text.
+    """
+    lines = text.splitlines(keepends=True)
+    starts = [i for i, ln in enumerate(lines) if _header_id(ln, "F")]
+    blocks: list[str] = []
+    for idx, start in enumerate(starts):
+        end = starts[idx + 1] if idx + 1 < len(starts) else len(lines)
+        blocks.append("".join(lines[start:end]))
+    return blocks
 
 
-# Review format
-REVIEW_VERDICT_RE = re.compile(r"^VERDICT:\s*(PROCEED|REVISE)\s*$", re.MULTILINE)
-CORRECTIVE_ACTIONS_RE = re.compile(r"^## Corrective Actions", re.MULTILINE)
-PROPOSED_ACTION_RE = re.compile(r"^### (PA-\d+):\s*(.+)$", re.MULTILINE)
+def _count_findings(text: str) -> int:
+    """Count ``### F-N:`` finding headers in ``text`` (line-anchored)."""
+    return sum(1 for ln in text.splitlines() if _header_id(ln, "F"))
+
+
+def _finding_category(block: str) -> str | None:
+    """Return the ``analysis`` / ``model`` Category of a finding block, or None.
+
+    Line-anchored and tolerant of the bold-marker variants the old
+    ``FINDING_CATEGORY_RE`` accepted (``- **Category:** model`` and
+    ``- **Category**: model``). The first token after the colon is the value.
+    """
+    for raw in block.splitlines():
+        s = raw.strip()
+        if not s.startswith("-"):
+            continue
+        body = s.lstrip("-").replace("*", "").strip()
+        key, sep, val = body.partition(":")
+        if sep == ":" and key.strip().lower() == "category":
+            first = val.strip().split()[0].lower() if val.strip() else ""
+            if first in ("analysis", "model"):
+                return first
+    return None
 
 # ---------------------------------------------------------------------------
 # Validation protocol
@@ -69,8 +149,8 @@ def validate_feedback_verdict(text: str) -> ValidationResult:
     2. If FINDINGS: at least one ### F-N: block
     3. If FINDINGS: each finding has a Category field (analysis|model)
     """
-    verdict_match = FEEDBACK_VERDICT_RE.search(text)
-    if not verdict_match:
+    verdict = _verdict_token(text, frozenset({"PASS", "FINDINGS"}))
+    if verdict is None:
         return ValidationResult(
             valid=False,
             fix_message=(
@@ -80,11 +160,11 @@ def validate_feedback_verdict(text: str) -> ValidationResult:
                 "at the start of the line, with no extra text). "
                 "Please re-write the feedback file with the correct format."
             ),
-            details="No VERDICT line found matching ^VERDICT:\\s*(PASS|FINDINGS)$",
+            details="No VERDICT line found matching `VERDICT: PASS|FINDINGS`",
         )
 
-    if verdict_match.group(1) == "FINDINGS":
-        findings = FINDING_HEADER_RE.findall(text)
+    if verdict == "FINDINGS":
+        findings = _count_findings(text)
         if not findings:
             return ValidationResult(
                 valid=False,
@@ -100,8 +180,7 @@ def validate_feedback_verdict(text: str) -> ValidationResult:
         finding_blocks = _split_finding_blocks(text)
         missing_cat = []
         for block in finding_blocks:
-            cat = FINDING_CATEGORY_RE.search(block)
-            if not cat:
+            if _finding_category(block) is None:
                 header = block.split("\n", 1)[0].strip()
                 missing_cat.append(header)
 
@@ -118,10 +197,9 @@ def validate_feedback_verdict(text: str) -> ValidationResult:
                 details=f"Missing Category on: {headers}",
             )
 
-    verdict_type = verdict_match.group(1)
     return ValidationResult(
         valid=True,
-        details=f"Feedback format valid (verdict: {verdict_type})",
+        details=f"Feedback format valid (verdict: {verdict})",
     )
 
 
@@ -133,8 +211,8 @@ def validate_review_verdict(text: str) -> ValidationResult:
     2. If REVISE: ## Corrective Actions section exists
     3. If REVISE: at least one ### F-N: block under Corrective Actions
     """
-    verdict_match = REVIEW_VERDICT_RE.search(text)
-    if not verdict_match:
+    verdict = _verdict_token(text, frozenset({"PROCEED", "REVISE"}))
+    if verdict is None:
         return ValidationResult(
             valid=False,
             fix_message=(
@@ -143,12 +221,17 @@ def validate_review_verdict(text: str) -> ValidationResult:
                 "`VERDICT: PROCEED` or `VERDICT: REVISE` (on its own line). "
                 "Please re-write the review file with the correct verdict."
             ),
-            details="No VERDICT line matching ^VERDICT:\\s*(PROCEED|REVISE)$",
+            details="No VERDICT line matching `VERDICT: PROCEED|REVISE`",
         )
 
-    if verdict_match.group(1) == "REVISE":
-        ca_match = CORRECTIVE_ACTIONS_RE.search(text)
-        if not ca_match:
+    if verdict == "REVISE":
+        lines = text.splitlines()
+        ca_idx = next(
+            (i for i, ln in enumerate(lines)
+             if ln.strip().startswith("## Corrective Actions")),
+            None,
+        )
+        if ca_idx is None:
             return ValidationResult(
                 valid=False,
                 fix_message=(
@@ -161,10 +244,9 @@ def validate_review_verdict(text: str) -> ValidationResult:
                 details="VERDICT: REVISE but no ## Corrective Actions section",
             )
 
-        # Check for F-N blocks after Corrective Actions
-        ca_text = text[ca_match.start():]
-        findings = FINDING_HEADER_RE.findall(ca_text)
-        if not findings:
+        # Check for F-N blocks after the Corrective Actions heading.
+        ca_text = "\n".join(lines[ca_idx:])
+        if _count_findings(ca_text) == 0:
             return ValidationResult(
                 valid=False,
                 fix_message=(
@@ -175,10 +257,9 @@ def validate_review_verdict(text: str) -> ValidationResult:
                 details="## Corrective Actions exists but contains no ### F-N: blocks",
             )
 
-    verdict_type = verdict_match.group(1)
     return ValidationResult(
         valid=True,
-        details=f"Review format valid (verdict: {verdict_type})",
+        details=f"Review format valid (verdict: {verdict})",
     )
 
 
@@ -311,10 +392,10 @@ def has_model_category_findings(feedback_text: str) -> bool:
         return False
 
     for block in finding_blocks:
-        cat_match = FINDING_CATEGORY_RE.search(block)
-        if cat_match is None:
+        category = _finding_category(block)
+        if category is None:
             return True  # Missing category → conservative, treat as model
-        if cat_match.group(1) == "model":
+        if category == "model":
             return True
 
     return False
@@ -742,8 +823,6 @@ def validate_override_registry(text: str) -> ValidationResult:
 # LLM reviewer, not hard gates.
 # ---------------------------------------------------------------------------
 
-# A textbook-fit concept needing more than this many overrides is suspicious.
-_HIGH_FIT_MANY_THRESHOLD = 8
 # Relative tolerance for P_native agreement (so 233 == 233.0 but 400 != 233).
 _PNATIVE_REL_TOL = 0.001
 
@@ -935,35 +1014,54 @@ def check_override_count_vs_fit_grade(
 ) -> ValidationResult:
     """Advisory smell check: archetype-fit grade vs. number of enabled overrides.
 
-    Flags the two suspicious combinations and stays quiet otherwise. This is
-    **advisory** — ``valid`` is always ``True``; a flag rides in ``details``
-    (prefixed ``FLAG:``) for the LLM reviewer / model_critic to weigh. It never
-    hard-fails a run.
+    Flags when the enabled-override count falls **outside** the expected band for
+    the concept's archetype-fit grade. The band is ``FIT_GRADE_OVERRIDE_BAND``
+    (via ``fit_grade_band``) — the single source also rendered into the analyze /
+    assessment prompt rubric (``fit_grade_band_line``), so this automated flag and
+    the instruction the LLM was given ("expect L–H; flag if outside this band")
+    cannot disagree. This is **advisory** — ``valid`` is always ``True``; a flag
+    rides in ``details`` (prefixed ``FLAG:``) for the LLM reviewer / model_critic
+    to weigh. It never hard-fails a run.
 
-    - **High** fit + more than ``_HIGH_FIT_MANY_THRESHOLD`` overrides: a
-      textbook-fit concept that still needs many corrections suggests the
-      archetype is wrong or the overrides are unjustified.
-    - **Low/Med** fit + zero overrides: a poor-fit concept with no corrections
-      suggests the library answer is being trusted where it shouldn't be.
+    - Count **above** the band (e.g. High fit with > 4): a better-fit concept
+      needing this many corrections suggests the archetype is wrong or the
+      overrides over-reach.
+    - Count **below** the band (e.g. Low fit with < 6): a poorer-fit concept with
+      this few corrections suggests the library default is being trusted where the
+      archetype says it shouldn't be. (High's band floor is 0, so High never
+      flags for too-few.)
+
+    A ``"None"`` / unknown grade (freeform-routed concepts) has no band and stays
+    quiet.
     """
-    grade = (fit_grade or "").strip().lower()
-
-    if grade == "high" and enabled_count > _HIGH_FIT_MANY_THRESHOLD:
+    band = fit_grade_band(fit_grade)
+    if band is None:
         return ValidationResult(
             valid=True,
             details=(
-                f"FLAG: High archetype fit with {enabled_count} enabled overrides "
-                f"(> {_HIGH_FIT_MANY_THRESHOLD}) — a textbook-fit concept needing "
-                f"this many corrections suggests the archetype is wrong or the "
-                f"overrides are over-reaching."
+                f"Override count ({enabled_count}) — no fit-grade band for "
+                f"{fit_grade or 'unknown'} fit"
             ),
         )
-    if grade in {"low", "med", "medium"} and enabled_count == 0:
+
+    low, high = band
+    if enabled_count > high:
         return ValidationResult(
             valid=True,
             details=(
-                f"FLAG: {fit_grade} archetype fit with zero overrides — a poor-fit "
-                f"concept with no corrections suggests the library default is being "
+                f"FLAG: {fit_grade} archetype fit with {enabled_count} enabled "
+                f"overrides (expected {low}–{high}) — a better-fit concept needing "
+                f"this many corrections suggests the archetype is wrong or the "
+                f"overrides over-reach."
+            ),
+        )
+    if enabled_count < low:
+        return ValidationResult(
+            valid=True,
+            details=(
+                f"FLAG: {fit_grade} archetype fit with {enabled_count} enabled "
+                f"overrides (expected {low}–{high}) — a poorer-fit concept with "
+                f"this few corrections suggests the library default is being "
                 f"trusted where the archetype says it shouldn't be."
             ),
         )
@@ -971,7 +1069,7 @@ def check_override_count_vs_fit_grade(
     return ValidationResult(
         valid=True,
         details=(
-            f"Override count ({enabled_count}) consistent with "
-            f"{fit_grade or 'unknown'} archetype fit"
+            f"Override count ({enabled_count}) consistent with {fit_grade} "
+            f"archetype fit (expected {low}–{high})"
         ),
     )
