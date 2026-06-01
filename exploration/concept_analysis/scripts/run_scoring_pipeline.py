@@ -42,17 +42,41 @@ def get_concept_ids() -> list[str]:
     return ids
 
 
-def run_for_concept(concept_id: str, stage: str, model: str, timeout: int) -> tuple[str, str, bool]:
+def stage_flags(stage: str, max_passes: int | None = None) -> list[str]:
+    """Per-stage subprocess flags appended after the common ``--model``/``--timeout``.
+
+    Scoring stages (synthesize and friends) keep their historical ``--force`` —
+    and synthesize additionally keeps ``--skip-review-gate`` — so the existing
+    scoring pipeline's subprocess invocation is unchanged. The Item 11 batch
+    stages diverge:
+
+    - ``analyze`` cold-starts cleanly (``--force``) and carries ``--max-passes``.
+    - ``model-critic`` takes NEITHER ``--force`` nor ``--max-passes`` (its
+      argparser rejects ``--force``), so it gets no extra flags.
+    """
+    if stage == "analyze":
+        return ["--force", "--max-passes", str(max_passes if max_passes is not None else 3)]
+    if stage == "model-critic":
+        return []
+    # Scoring stages: --force everywhere, --skip-review-gate only for synthesize.
+    flags = ["--force"]
+    if stage == "synthesize":
+        flags.append("--skip-review-gate")
+    return flags
+
+
+def run_for_concept(
+    concept_id: str, stage: str, model: str, timeout: int,
+    max_passes: int | None = None,
+) -> tuple[str, str, bool]:
     """Run a pipeline stage for a single concept. Returns (concept_id, output, success)."""
     cmd = [
         "uv", "run", "python", str(RUN_ANALYSIS),
         stage, concept_id,
         "--model", model,
         "--timeout", str(timeout),
-        "--force",
+        *stage_flags(stage, max_passes),
     ]
-    if stage == "synthesize":
-        cmd.append("--skip-review-gate")
 
     try:
         result = subprocess.run(
@@ -89,6 +113,7 @@ def run_parallel_stage(
     workers: int,
     model: str,
     timeout: int,
+    max_passes: int | None = None,
 ) -> tuple[list[str], list[str]]:
     """Run a stage in parallel batches. Returns (succeeded, failed) concept IDs."""
     succeeded = []
@@ -103,7 +128,7 @@ def run_parallel_stage(
 
     with ProcessPoolExecutor(max_workers=workers) as executor:
         futures = {
-            executor.submit(run_for_concept, cid, stage, model, timeout): cid
+            executor.submit(run_for_concept, cid, stage, model, timeout, max_passes): cid
             for cid in concept_ids
         }
 

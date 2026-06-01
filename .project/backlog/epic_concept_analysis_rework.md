@@ -390,11 +390,18 @@ Explicitly NOT marked (user-rejected during verification): constellation scatter
 
 ---
 
-### Item 11: Bulk Regeneration
+### Item 11: Bulk Regeneration — ◐ INFRASTRUCTURE COMPLETE (regen runs operator-driven, 2026-05-31)
 
 **Type**: Execution
 **Effort**: 1–1.5 days (revised up modestly: ~1.5–2 d; Item 10's pilot was deferred, so Item 11 absorbs the discovery work the pilot would have caught at smaller scale)
 **Dependencies**: Item 10 *(code-only Phases 1–2 satisfied; pilot phases deferred — see Item 10 status. Bulk regen now also functions as the first non-trivial exercise of the new pipeline across concept variety, taking on the risk profile the pilot was meant to absorb.)*
+
+**Implementation summary (2026-05-31).** Reframed during speccing away from a "run-all orchestrator": the operator drives regeneration in small hand-picked batches with a human checkpoint after the critic ("running 31 concepts unattended is not going to turn out well"). The work item therefore delivered the *missing infrastructure* plus the archive habit and status conveniences, not an automated full-chain bulk run. Spec/plan: `.project/active/concept-rework-bulk-regeneration/`. Three deliverables, all shipped:
+- **Parallel batch runner** (`scripts/run_regen_batch.py`): fans out `analyze --max-passes N` then `model-critic` over an *explicit* concept list via the reused `run_scoring_pipeline.py` `ProcessPoolExecutor` machinery (generalized `run_for_concept` with a per-stage `stage_flags()` helper; scoring invocation byte-for-byte unchanged). Stops after the critic; no run-all default; no downstream automation.
+- **Bulk archive** (commit `3f28671`): `git mv`'d the 30 regeneratable old-pipeline concepts' pipeline artifacts to `archive/concept_analysis_pre_rework/{cid}/` (1318 tracked files, all renames → history retained). Excluded concept 01 (already on the new pipeline) and the 9 freeform concepts; left `design-points/` (regen input) and human `review.md` at the live path. Live dirs are cold-start ready.
+- **`status` cost columns** (`lib/model_stats.py` + `cmd_status`): `P_native` (frontmatter) + native LCOE + `result_1gw` LCOE (module-loaded from the three-forward `model_setup.py`, explorer pattern), blank for concepts without a live three-forward model.
+
+Tests: `test_regen_batch.py` (7) + `test_status_stats.py` (4) pass; full scripts suite 423 passed / 5 skipped / 4 pre-existing unrelated `test_concepts_v2.py` data-state failures. **What remains is operator-driven**: the actual `run_regen_batch.py` passes over each batch (the success criteria below). The discovery work Item 10's pilot deferred surfaces during those real batches, folded back into templates/helpers/validators as found.
 
 **Files touched**:
 - Regenerated artifacts under `exploration/concept_analysis/analyses/` for every non-`None` fit-grade concept.
@@ -403,9 +410,9 @@ Explicitly NOT marked (user-rejected during verification): constellation scatter
 
 **Out of Scope**: freeform concepts — both `fit_grade=None` (architecture has no enum analog) and the new `fit_grade != None`-but-no-`P_native` route (architecture mappable but no published plant). Both are asterisked in the explorer and not regenerated here.
 
-**Success Criteria**:
-- [ ] Every non-`None` concept has fresh artifacts conforming to the new contract; validators pass.
-- [ ] Cross-concept comparison view shows uniform `result_1gw @ 1000 MWe` semantics across all non-freeform concepts.
+**Success Criteria** *(infrastructure shipped; these two criteria are met progressively as the operator runs `run_regen_batch.py` over each batch)*:
+- [ ] Every non-`None` concept has fresh artifacts conforming to the new contract; validators pass. *(tooling ready; pending operator batches)*
+- [ ] Cross-concept comparison view shows uniform `result_1gw @ 1000 MWe` semantics across all non-freeform concepts. *(pending operator batches)*
 
 ---
 

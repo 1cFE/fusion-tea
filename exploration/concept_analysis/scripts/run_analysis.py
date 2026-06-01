@@ -50,6 +50,7 @@ from lib.paths import (
     TEMPLATES_DIR,
 )
 from lib.frontmatter import make_frontmatter, parse_frontmatter, update_frontmatter_field
+from lib.model_stats import load_concept_stats
 from lib.templating import fill_template
 from lib.concepts import (
     Runnability,
@@ -153,8 +154,9 @@ def cmd_status(concepts: list[dict], args: argparse.Namespace) -> None:
         "stale":         "E*",
     }
 
-    print(f"{'ID':<45} {'Concept Name':<40} {'State':<6} {'Extr':<4} {'Iterations'}")
-    print("-" * 130)
+    print(f"{'ID':<45} {'Concept Name':<40} {'State':<6} {'Extr':<4} "
+          f"{'P_nat':>6} {'Native':>8} {'1GWe':>8} {'Iterations'}")
+    print("-" * 150)
 
     counts = {s: 0 for s in state_symbols}
     stale_count = 0
@@ -185,7 +187,18 @@ def cmd_status(concepts: list[dict], args: argparse.Namespace) -> None:
             extracted_count += 1
             extraction_stale_count += 1
 
-        print(f"{c['_id']:<45} {c['Concept Name']:<40} {sym:<6} {ext_sym:<4} {iter_summary or ''}")
+        # FR-7 cost stats: P_native (frontmatter) + native/1GWe LCOE (module-load).
+        stats = load_concept_stats(ANALYSES_DIR / c["_id"])
+        pn = f"{stats.p_native:.0f}" if stats.p_native is not None else "-"
+        nl = f"{stats.native_lcoe:.0f}" if stats.native_lcoe is not None else "-"
+        gl = f"{stats.result_1gw_lcoe:.0f}" if stats.result_1gw_lcoe is not None else "-"
+
+        # Truncate the name so the numeric columns stay aligned (some names > 40).
+        name = c["Concept Name"]
+        name = (name[:39] + "…") if len(name) > 40 else name
+
+        print(f"{c['_id']:<45} {name:<40} {sym:<6} {ext_sym:<4} "
+              f"{pn:>6} {nl:>8} {gl:>8} {iter_summary or ''}")
 
     ext_summary = ""
     if extracted_count:
@@ -202,6 +215,8 @@ def cmd_status(concepts: list[dict], args: argparse.Namespace) -> None:
           + ext_summary)
     print("\nLegend: A=approved  S=synthesized  R=reviewed  I{N}=iterating(N iterations)  "
           "G=gap-checked  -=not-started  *=stale downstream  E=extracted  E*=extraction stale")
+    print("Stats: P_nat=design reference plant size (MWe)  Native=native LCOE ($/MWh)  "
+          "1GWe=result_1gw LCOE ($/MWh)  (-=no three-forward model_setup.py)")
 
 
 # ---------------------------------------------------------------------------
