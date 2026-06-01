@@ -420,7 +420,7 @@ _VALID_PROVENANCE = {"direct", "derived"}
 def _target_names(node: ast.expr) -> list[str]:
     """Flatten an assignment target into the simple ``Name`` ids it binds.
 
-    Handles tuple/list unpacking (``result, result_1gw = ...``); ignores
+    Handles tuple/list unpacking (``native, result_1gw = ...``); ignores
     attribute/subscript targets (they bind no bare name).
     """
     if isinstance(node, ast.Name):
@@ -512,11 +512,16 @@ def validate_model_setup_contract(
 ) -> ValidationResult:
     """Enforce the module-level contract of a ``model_setup.py`` via AST.
 
-    Requires module-level ``model``, ``result``, and ``result_1gw`` bindings,
-    and that ``result_1gw`` is reached by one of two recognized forms:
+    Requires module-level ``model``, ``generic``, ``native``, and ``result_1gw``
+    bindings (the three-forward contract). ``generic`` MUST be bound by
+    ``generic = generic_reference(...)`` (forward 1, overrides off — the
+    reference a relative override is written against). ``native`` and
+    ``result_1gw`` (forwards 2 & 3, overrides on) must be reached by one of two
+    recognized forms:
 
-    - **helper form** — ``result, result_1gw = run_native_and_1gw(...)``
-    - **inline form**  — ``result_1gw = <model>.forward(net_electric_mw=1000, ...)``
+    - **helper form** — ``native, result_1gw = run_native_and_1gw(...)``
+    - **inline form**  — ``result_1gw = <model>.forward(net_electric_mw=1000,
+      ...)`` with ``native`` bound separately
 
     ``strict_helper_only=True`` (Item 8 flips this on) accepts only the helper
     form, so a generated file can't silently regress to a hand-rolled forward.
@@ -539,24 +544,46 @@ def validate_model_setup_contract(
 
     bindings = _module_bindings(tree)
     bound = {name for names, _ in bindings for name in names}
-    missing = [n for n in ("model", "result", "result_1gw") if n not in bound]
+    missing = [
+        n for n in ("model", "generic", "native", "result_1gw") if n not in bound
+    ]
     if missing:
         return ValidationResult(
             valid=False,
             fix_message=(
                 f"model_setup.py is missing required module-level name(s): "
-                f"{', '.join(missing)}. The file MUST bind `model`, `result`, "
-                f"and `result_1gw` at module level (the explorer reads `result` "
-                f"and `result_1gw`)."
+                f"{', '.join(missing)}. The file MUST bind `model`, `generic`, "
+                f"`native`, and `result_1gw` at module level (the three-forward "
+                f"contract: `generic` overrides-off, `native` overrides-on at "
+                f"design scale, `result_1gw` overrides-on at 1 GWe)."
             ),
             details=f"Missing module-level binding(s): {', '.join(missing)}",
         )
 
-    # Classify how result_1gw is bound.
+    # `generic` MUST be the standalone overrides-off forward, bound via
+    # generic_reference() — not a hand-rolled forward. It is the reference a
+    # relative override is written against, so it must precede the registry.
+    generic_ok = any(
+        names == ["generic"] and _is_call_to_name(value, "generic_reference")
+        for names, value in bindings
+    )
+    if not generic_ok:
+        return ValidationResult(
+            valid=False,
+            fix_message=(
+                "model_setup.py must bind `generic` via the shared helper: "
+                "`generic = generic_reference(model, spec, P_native)` (the "
+                "overrides-off forward a relative override references). A "
+                "hand-rolled `generic = model.forward(...)` is not accepted."
+            ),
+            details="generic not bound via generic_reference()",
+        )
+
+    # Classify how native / result_1gw are bound.
     form: str | None = None
     for names, value in bindings:
-        if "result_1gw" in names:
-            if "result" in names and _is_call_to_name(value, "run_native_and_1gw"):
+        if "native" in names and "result_1gw" in names:
+            if _is_call_to_name(value, "run_native_and_1gw"):
                 form = "helper"
                 break
     if form is None and not strict_helper_only:
@@ -571,25 +598,28 @@ def validate_model_setup_contract(
             return ValidationResult(
                 valid=False,
                 fix_message=(
-                    "model_setup.py must bind `result_1gw` via the shared helper: "
-                    "`result, result_1gw = run_native_and_1gw(model, spec, "
-                    "overrides, P_native)`. A hand-rolled inline `forward(...)` is "
-                    "not accepted in strict mode."
+                    "model_setup.py must bind `native` and `result_1gw` via the "
+                    "shared helper: `native, result_1gw = run_native_and_1gw("
+                    "model, spec, overrides, P_native)`. A hand-rolled inline "
+                    "`forward(...)` is not accepted in strict mode."
                 ),
-                details="result_1gw not bound via run_native_and_1gw (strict mode)",
+                details=(
+                    "native, result_1gw not bound via run_native_and_1gw "
+                    "(strict mode)"
+                ),
             )
         return ValidationResult(
             valid=False,
             fix_message=(
-                "model_setup.py must bind `result_1gw` either via "
-                "`result, result_1gw = run_native_and_1gw(...)` or via an inline "
-                "`result_1gw = model.forward(net_electric_mw=1000, ...)` call. "
-                "Neither was found (an inline forward must pass "
-                "`net_electric_mw=1000`)."
+                "model_setup.py must bind `native` and `result_1gw` either via "
+                "`native, result_1gw = run_native_and_1gw(...)` or via an inline "
+                "`result_1gw = model.forward(net_electric_mw=1000, ...)` call "
+                "(with `native` bound separately). Neither was found (an inline "
+                "forward must pass `net_electric_mw=1000`)."
             ),
             details=(
-                "result_1gw bound by neither the helper tuple-unpack nor an "
-                "inline forward(net_electric_mw=1000)"
+                "native/result_1gw bound by neither the helper tuple-unpack nor "
+                "an inline forward(net_electric_mw=1000)"
             ),
         )
 
@@ -658,10 +688,12 @@ def validate_override_registry(text: str) -> ValidationResult:
     literals where **every** entry (regardless of ``enabled``) has all six
     fields and ``provenance ∈ {direct, derived}``, with no two entries
     sharing an ``account``. ``value`` may be a number, a constant numeric
-    expression (e.g. ``260.0 * 1.34``), or an expression over the native
-    ``result`` (a *relative* override, e.g. ``0.70 * result.costs.cas21``);
-    it MUST NOT reference ``result_1gw`` (wrong reference frame). For
-    ``result``-referencing values the numeric type is enforced at runtime
+    expression (e.g. ``260.0 * 1.34``), or an expression over ``generic``
+    (a *relative* override, e.g. ``0.70 * generic.costs.cas21``); it MUST NOT
+    reference ``native``, ``result_1gw``, or ``result`` (wrong reference
+    frame — a relative override is written against the bare library value,
+    not an overrides-on forward or the removed two-forward name). For
+    ``generic``-referencing values the numeric type is enforced at runtime
     when ``model_setup.py`` executes — provenance, not literal-ness, is what
     makes an override legitimate (see the design doc, Override Entry).
     """
@@ -732,22 +764,27 @@ def validate_override_registry(text: str) -> ValidationResult:
             )
 
         # value: a number, a constant numeric expression (e.g. 260.0 * 1.34),
-        # or an expression over the native `result` (relative overrides, e.g.
-        # 0.70 * result.costs.cas21). Provenance — not literal-ness — is what
+        # or an expression over `generic` (relative overrides, e.g.
+        # 0.70 * generic.costs.cas21). Provenance — not literal-ness — is what
         # makes an override legitimate (design doc, Override Entry).
         value_node = fields["value"]
         referenced = {
             n.id for n in ast.walk(value_node) if isinstance(n, ast.Name)
         }
-        if "result_1gw" in referenced:
+        bad_frame = referenced & {"native", "result_1gw", "result"}
+        if bad_frame:
             return ValidationResult(
                 valid=False,
                 fix_message=(
-                    f"{label} `value` references `result_1gw`. A relative override "
-                    f"must reference the native `result` (the n_mod=1 / P_native "
-                    f"reference frame), not the 1 GWe projection."
+                    f"{label} `value` references `{sorted(bad_frame)[0]}`. A "
+                    f"relative override must reference `generic` — the overrides-off "
+                    f"library value at the n_mod=1 / P_native reference frame — not "
+                    f"an overrides-on forward (`native` / `result_1gw`) or the "
+                    f"removed two-forward `result`."
                 ),
-                details=f"{label} value references result_1gw (frame error)",
+                details=(
+                    f"{label} value references {sorted(bad_frame)} (frame error)"
+                ),
             )
         if not referenced:
             # No runtime references → must be a statically-numeric literal or a
@@ -758,13 +795,13 @@ def validate_override_registry(text: str) -> ValidationResult:
                     valid=False,
                     fix_message=(
                         f"{label} `value` must be a number, a constant numeric "
-                        f"expression (e.g. 260.0 * 1.34), or an expression over the "
-                        f"native `result` (e.g. 0.70 * result.costs.cas21). Strings "
+                        f"expression (e.g. 260.0 * 1.34), or an expression over "
+                        f"`generic` (e.g. 0.70 * generic.costs.cas21). Strings "
                         f"and non-numeric literals are not allowed."
                     ),
                     details=f"{label} value is not numeric and references no runtime value",
                 )
-        # else: references `result` (or another runtime name) → relative
+        # else: references `generic` (or another runtime name) → relative
         # override; numeric type is enforced at runtime on module execution.
 
         # provenance: one of the allowed tokens.

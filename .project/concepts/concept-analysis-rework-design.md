@@ -101,7 +101,7 @@ Four tables, one row per concept, populated in a batch up front and hand-verifie
 
 ### `model_setup.py`
 
-A short, ordered four-step script. The order is load-bearing — the native pass produces the library values that the override step reasons against.
+A short, ordered three-forward script (five steps). The order is load-bearing — the generic (overrides-off) pass produces the library values that the override step reasons against. The three forwards each move exactly one dimension: `generic` → `native` is the pure override effect at fixed scale; `native` → `result_1gw` is pure replication scaling at fixed overrides.
 
 ```python
 # 1. Specification — design-point inputs (geometry / physics / performance).
@@ -112,26 +112,38 @@ P_native = ...   # design-point net electric power, MWe
 
 model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
 
-# 2. Native forward — library's bare answer for the specified plant,
-#    single module. Gives the analyst the per-account values they
-#    need to reason about when defining overrides.
-result = model.forward(net_electric_mw=P_native, n_mod=1, noak=True, **spec)
+# 2. Generic forward (overrides OFF) — the library's bare answer for the
+#    specified plant, single module. Gives the analyst the per-account values
+#    they reason about when defining overrides, and is the reference a relative
+#    override is written against.
+generic = model.forward(net_electric_mw=P_native, n_mod=1, noak=True, **spec)
 
-# 3. Override registry — entries written with `result`'s computed
-#    accounts in hand. Each `value` is a per-module quantity at the
-#    design-point reference: a literal, a constant expression (e.g.
-#    260.0 * 1.34), or — for a relative override — an expression over
-#    the native `result` (e.g. 0.70 * result.costs.cas21). Provenance,
-#    not literal-ness, is what the six fields and the critic enforce.
+# 3. Override registry — entries written with `generic`'s computed accounts in
+#    hand. Each `value` is a per-module quantity at the design-point reference:
+#    a literal, a constant expression (e.g. 260.0 * 1.34), or — for a relative
+#    override — an expression over `generic` (e.g. 0.70 * generic.costs.cas21).
+#    Provenance, not literal-ness, is what the six fields and the critic enforce.
 overrides = [
     {"account": "C220103", "value": 6901.0, "enabled": True,
      "provenance": "direct", "source": "...", "rationale": "..."},
     ...
 ]
 
-# 4. 1 GWe NOAK forward — the standardized cost projection. Library
-#    scales each override from the design-point reference to the
-#    target (net=1000, n_mod=1000/P_native).
+# 4. Native forward (overrides ON, same scale) — the concept's actual cost at
+#    its own design point. `generic` → `native` isolates the override effect.
+native = model.forward(
+    net_electric_mw=P_native,
+    n_mod=1,
+    noak=True,
+    cost_overrides={o["account"]: o["value"] for o in overrides if o["enabled"]},
+    override_reference_mw=P_native,
+    **spec,
+)
+
+# 5. 1 GWe NOAK forward (overrides ON, projected) — the standardized cost
+#    projection. Library scales each override from the design-point reference to
+#    the target (net=1000, n_mod=1000/P_native). `native` → `result_1gw` is the
+#    pure replication effect.
 result_1gw = model.forward(
     net_electric_mw=1000,
     n_mod=1000 / P_native,
@@ -142,7 +154,11 @@ result_1gw = model.forward(
 )
 ```
 
-Module-level contract for `concept_explorer`: `model`, `result`, `result_1gw` are all importable at module level. No change from today.
+(In the production shape these forwards are issued by the shared helper:
+`generic = generic_reference(model, spec, P_native)` then
+`native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)`.)
+
+Module-level contract for `concept_explorer`: `model`, `generic`, `native`, `result_1gw` are all importable at module level. `result_1gw` is the standardized cross-concept number; `generic`/`native` give the per-concept override-effect decomposition.
 
 ### Override Entry
 
@@ -159,17 +175,17 @@ A single registry record:
 }
 ```
 
-`value` is a per-module quantity at the design-point reference (one module at native power). It may be a literal, a constant arithmetic expression that documents its own derivation (e.g. `260.0 * 1.34` for a published cost inflated by CPI), or — for a *relative* override defined as a function of the library's own computation — an expression over the native `result` (e.g. `0.70 * result.costs.cas21`, "70% of the library's computed value because the company states a 30% prefab reduction"). For relative overrides the expression form is the correct one: a frozen literal would silently go stale when the library updates. Reference the native `result` (the `n_mod=1`, `P_native` frame), never `result_1gw`. What makes an override legitimate is its *provenance* — company data, direct or derived, recorded in the six fields and checked by `model_critic` — not whether `value` is a literal. A syntax rule cannot tell an evidence-backed relative override from an un-evidenced fudge (both are `0.70 * <library value>`), so the registry does not constrain `value` to a literal; the discipline lives in the provenance fields and the rationale, not in the value's form.
+`value` is a per-module quantity at the design-point reference (one module at native power). It may be a literal, a constant arithmetic expression that documents its own derivation (e.g. `260.0 * 1.34` for a published cost inflated by CPI), or — for a *relative* override defined as a function of the library's own computation — an expression over `generic` (e.g. `0.70 * generic.costs.cas21`, "70% of the library's computed value because the company states a 30% prefab reduction"). For relative overrides the expression form is the correct one: a frozen literal would silently go stale when the library updates. Reference `generic` (the overrides-off `n_mod=1`, `P_native` frame), never `native` or `result_1gw`. What makes an override legitimate is its *provenance* — company data, direct or derived, recorded in the six fields and checked by `model_critic` — not whether `value` is a literal. A syntax rule cannot tell an evidence-backed relative override from an un-evidenced fudge (both are `0.70 * <library value>`), so the registry does not constrain `value` to a literal; the discipline lives in the provenance fields and the rationale, not in the value's form.
 
 Toggle semantics: when `enabled=False`, the entry is omitted from the `cost_overrides` dict passed to `forward()`, and the library computes that account from specification.
 
 ### `model_critic`
 
-A standalone tool, invoked by name against any concept directory. Reads the design point block, override registry, archetype-fit grade, comparables, and the two result objects. Writes one document: headline issues with brief rationale up top, detailed reasoning traces below. Writes nothing else. Downstream use of the document is the user's call.
+A standalone tool, invoked by name against any concept directory. Reads the design point block, override registry, archetype-fit grade, comparables, and the three forward objects (`generic`, `native`, `result_1gw`). Writes one document: headline issues with brief rationale up top, detailed reasoning traces below. Writes nothing else. Downstream use of the document is the user's call.
 
 ### `concept_explorer` contract (preserved)
 
-The downstream comparison tool continues to read `model`, `result`, and `result_1gw` as module-level attributes of each `model_setup.py`. No change.
+The downstream comparison tool reads `result_1gw` (the standardized cross-concept number) as a module-level attribute of each `model_setup.py`, with `generic` and `native` additionally available for a per-concept override-effect decomposition. (Explorer code changes are Item 10; shipped concept files keep `result` until regenerated.)
 
 ---
 

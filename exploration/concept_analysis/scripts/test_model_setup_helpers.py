@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
-"""Tests for lib/model_setup_helpers.py — the shared four-step model_setup API.
+"""Tests for lib/model_setup_helpers.py — the shared three-forward model_setup API.
 
 Oracle: the Phase 0 prototype for concept 01-hts-compact-tokamak, re-pinned
-against the Item-4 fixed library at the standardized lifetime (40 yr):
+against the Item-4 fixed library at the standardized lifetime (40 yr). The
+three forwards (each one dimension apart):
 
-    native (P_native=233, n_mod=1, no overrides)   LCOE = 174.5 $/MWh
-    1 GWe projection, library-bare (no overrides)   LCOE = 137.2 $/MWh
-    1 GWe projection, all four overrides on          LCOE = 584.5 $/MWh
+    generic (P_native=233, n_mod=1, overrides off)   LCOE = 174.5 $/MWh
+    native  (P_native=233, n_mod=1, overrides on)    LCOE = 629.0 $/MWh
+    result_1gw (1 GWe projection, overrides on)      LCOE = 584.5 $/MWh
 
-See .project/active/concept-rework-helpers-validators/design.md (Validation
-Approach) for the re-pin provenance.
+    1 GWe projection, library-bare (no overrides)    LCOE = 137.2 $/MWh
+
+See .project/active/concept-rework-three-forward-contract/design.md (Validation
+Approach) for the pinned-oracle provenance.
 """
 
 from __future__ import annotations
@@ -20,6 +23,7 @@ from costingfe.validation import CostingInput, default_availability
 
 from lib.model_setup_helpers import (
     enabled_overrides,
+    generic_reference,
     print_cas_breakdown,
     run_native_and_1gw,
 )
@@ -107,17 +111,22 @@ class SpyModel:
 class TestOracle:
     def test_oracle_concept01(self):
         model = _tokamak_model()
-        result, result_1gw = run_native_and_1gw(
+        generic = generic_reference(model, ARC_SPEC, P_NATIVE)
+        native, result_1gw = run_native_and_1gw(
             model, ARC_SPEC, ARC_OVERRIDES, P_NATIVE
         )
-        assert result.costs.lcoe == pytest.approx(174.5, abs=0.5)  # native
-        assert result_1gw.costs.lcoe == pytest.approx(584.5, abs=0.5)  # all-on
+        assert generic.costs.lcoe == pytest.approx(174.5, abs=0.5)  # overrides OFF
+        assert native.costs.lcoe == pytest.approx(629.0, abs=0.5)  # overrides ON, 233 MWe
+        assert result_1gw.costs.lcoe == pytest.approx(584.5, abs=0.5)  # all-on, 1 GWe
 
     def test_empty_overrides_is_library_bare(self):
-        """No overrides → the 1 GWe projection is the library-bare answer."""
+        """No overrides → native == generic, and the 1 GWe projection is the
+        library-bare answer."""
         model = _tokamak_model()
-        result, result_1gw = run_native_and_1gw(model, ARC_SPEC, [], P_NATIVE)
-        assert result.costs.lcoe == pytest.approx(174.5, abs=0.5)
+        generic = generic_reference(model, ARC_SPEC, P_NATIVE)
+        native, result_1gw = run_native_and_1gw(model, ARC_SPEC, [], P_NATIVE)
+        assert generic.costs.lcoe == pytest.approx(174.5, abs=0.5)
+        assert native.costs.lcoe == pytest.approx(generic.costs.lcoe)  # empty ⇒ equal
         assert result_1gw.costs.lcoe == pytest.approx(137.2, abs=0.5)
 
 
@@ -149,12 +158,19 @@ class TestForwardKwargShape:
                 assert call["net_electric_mw"] == 1000.0
                 assert call["n_mod"] == pytest.approx(1000.0 / P_NATIVE)
 
-    def test_native_call_omits_override_kwargs(self):
+    def test_native_call_passes_overrides(self):
+        """The native forward is now overrides-ON at the design point: it carries
+        the enabled overrides and override_reference_mw=P_native (FR-3)."""
         spy = SpyModel()
         run_native_and_1gw(spy, ARC_SPEC, ARC_OVERRIDES, P_NATIVE)
         native = next(c for c in spy.calls if c["net_electric_mw"] == P_NATIVE)
-        assert "cost_overrides" not in native
-        assert "override_reference_mw" not in native
+        assert native["override_reference_mw"] == P_NATIVE
+        assert native["cost_overrides"] == {
+            "C220103": 6901.0,
+            "C220101": 348.0,
+            "C220106": 123.0,
+            "CAS27": 146.0,
+        }
 
     def test_projection_passes_override_reference_mw(self):
         spy = SpyModel()
@@ -200,8 +216,8 @@ class TestPNative1000Collapses:
 
     def test_native_equals_projection(self):
         model = _tokamak_model()
-        result, result_1gw = run_native_and_1gw(model, ARC_SPEC, [], 1000.0)
-        assert result.costs.lcoe == pytest.approx(result_1gw.costs.lcoe)
+        native, result_1gw = run_native_and_1gw(model, ARC_SPEC, [], 1000.0)
+        assert native.costs.lcoe == pytest.approx(result_1gw.costs.lcoe)
 
 
 # ---------------------------------------------------------------------------
@@ -242,10 +258,11 @@ class TestPrintCasBreakdown:
         import re
 
         model = _tokamak_model()
-        result, result_1gw = run_native_and_1gw(
+        generic = generic_reference(model, ARC_SPEC, P_NATIVE)
+        native, result_1gw = run_native_and_1gw(
             model, ARC_SPEC, ARC_OVERRIDES, P_NATIVE
         )
-        print_cas_breakdown(result, result_1gw, ARC_OVERRIDES)
+        print_cas_breakdown(generic, native, result_1gw, ARC_OVERRIDES)
         out = capsys.readouterr().out
         # run_model greps this exact pattern from model_setup.py stdout.
         m = re.search(r"LCOE:\s*([\d.]+)\s*\$/MWh", out)

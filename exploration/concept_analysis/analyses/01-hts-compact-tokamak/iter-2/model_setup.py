@@ -30,7 +30,9 @@ sys.path.insert(0, str(_SCRIPTS))
 
 from costingfe import ConfinementConcept, CostModel, Fuel
 from costingfe.validation import CostingInput, default_availability
-from lib.model_setup_helpers import run_native_and_1gw, print_cas_breakdown
+from lib.model_setup_helpers import (
+    generic_reference, run_native_and_1gw, print_cas_breakdown,
+)
 
 # 1. Specification — design-point inputs only, at native scale.
 spec = dict(
@@ -53,6 +55,11 @@ P_native = 233.0   # MWe — copied from the analysis Design Point block
 
 # 2. Model.
 model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+
+# 2b. Generic forward — overrides OFF, design-point scale. The library's bare
+# answer for a reactor this size, and the reference a relative override would be
+# written against (these overrides are all absolute, so none reference it here).
+generic = generic_reference(model, spec, P_native)
 
 # 3. Override registry — six fields per entry, transcribed from Section 5b.
 overrides = [
@@ -106,11 +113,11 @@ overrides = [
 ]
 
 # 4. Both forwards via the shared helper (native + 1 GWe NOAK projection).
-result, result_1gw = run_native_and_1gw(
+native, result_1gw = run_native_and_1gw(
     model, spec=spec, overrides=overrides, p_native=P_native,
 )
 
-print_cas_breakdown(result, result_1gw, overrides)
+print_cas_breakdown(generic, native, result_1gw, overrides)
 
 # ── Sensitivity: thermal efficiency (analysis Gap 3 / Section 5) ─────────────
 # ARC's 233 MWe rests on an aspirational 1100 K / ~46% Brayton cycle; the
@@ -130,10 +137,10 @@ for _eta in [0.40, 0.43, 0.46, 0.50]:
         "  <- FNSF demonstrated floor" if _eta == 0.40 else "")
     print(f"  eta_th={_eta:.2f}: LCOE={_r.costs.lcoe:.1f} $/MWh{_mark}")
 
-# ── Sensitivity (JAX autodiff) on the native design point ────────────────────
-sens = model.sensitivity(result.params)
+# ── Sensitivity (JAX autodiff) on the generic (overrides-off) design point ───
+sens = model.sensitivity(generic.params)
 
-print("\nSensitivity (elasticity = %LCOE / %param) — native design point")
+print("\nSensitivity (elasticity = %LCOE / %param) — generic design point")
 print("\nEngineering levers:")
 for k, v in sorted(sens["engineering"].items(), key=lambda x: abs(x[1]), reverse=True):
     print(f"  {k:<36} {v:+.4f}")

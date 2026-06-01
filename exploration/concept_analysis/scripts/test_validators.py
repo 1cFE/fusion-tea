@@ -539,22 +539,35 @@ class TestHasModelCategoryFindings:
 # Item 7 — structural model_setup.py validators (AST-based).
 # ---------------------------------------------------------------------------
 
-# The Phase 0 prototype is the live oracle for the *inline* form.
+# The Phase 0 prototype is the (two-forward) oracle for the override registry —
+# its overrides are all constants, so it still passes the registry validator.
+# It is NOT a valid three-forward *contract* fixture (it binds `result`, not
+# `generic`/`native`); the contract fixtures below supply that shape.
 PROTOTYPE_PATH = (
     Path(__file__).parents[3]
     / ".project/active/concept-rework-prototype/artifacts/model_setup.py"
 )
 PROTOTYPE_TEXT = PROTOTYPE_PATH.read_text(encoding="utf-8")
 
-# The production (Item 8) shape — the four-step helper form. Inlined here as a
-# fixture so the dual-form path can't silently pass only the prototype.
+# The three-forward integration fixture (prompt <-> validator agreement check).
+FIXTURES = Path(__file__).parent / "tests" / "fixtures"
+CONCEPT01_THREE_FORWARD = (FIXTURES / "concept01_model_setup.py").read_text(
+    encoding="utf-8"
+)
+
+# The production (Item 8) shape — the three-forward helper form. Inlined here as
+# a fixture so the dual-form path is exercised on a real generated shape.
 HELPER_FORM_TEXT = '''\
-from lib.model_setup_helpers import run_native_and_1gw, print_cas_breakdown
+from lib.model_setup_helpers import (
+    generic_reference, run_native_and_1gw, print_cas_breakdown,
+)
 from costingfe import ConfinementConcept, CostModel, Fuel
 
 spec = dict(R0=3.3, plasma_t=1.13, elon=1.84, eta_th=0.46, p_input=38.6)
 P_native = 233.0
 model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+
+generic = generic_reference(model, spec, P_native)
 
 overrides = [
     {"account": "C220103", "value": 6901.0, "enabled": True,
@@ -563,28 +576,94 @@ overrides = [
      "provenance": "derived", "source": "Araiinejad 2025", "rationale": "FLiBe"},
 ]
 
-result, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
 
 if __name__ == "__main__":
-    print_cas_breakdown(result, result_1gw, overrides)
+    print_cas_breakdown(generic, native, result_1gw, overrides)
+'''
+
+# Three-forward inline form — `generic` still via generic_reference (mandatory),
+# but `native` / `result_1gw` are hand-rolled forwards (the non-strict escape
+# hatch). Strict mode rejects this; non-strict accepts it.
+INLINE_FORM_TEXT = '''\
+from lib.model_setup_helpers import generic_reference
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(R0=3.3, plasma_t=1.13, elon=1.84, eta_th=0.46, p_input=38.6)
+P_native = 233.0
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native = model.forward(
+    net_electric_mw=233.0, n_mod=1, cost_overrides={}, override_reference_mw=233.0,
+)
+result_1gw = model.forward(
+    net_electric_mw=1000, n_mod=4.3, cost_overrides={}, override_reference_mw=233.0,
+)
 '''
 
 # Broken contract variants ---------------------------------------------------
 
-MISSING_RESULT_1GW = '''\
+# Helper form with `native` dropped from the tuple-unpack (only result_1gw).
+MISSING_NATIVE = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(R0=3.3)
+P_native = 233.0
 model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
-result = model.forward(net_electric_mw=233.0, n_mod=1)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+# The old two-forward residue — binds `result`/`result_1gw`, never `generic`/`native`.
+TWO_FORWARD_RESIDUE = '''\
+from lib.model_setup_helpers import run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(R0=3.3)
+P_native = 233.0
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+overrides = []
+result, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+MISSING_RESULT_1GW = '''\
+from lib.model_setup_helpers import generic_reference
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+spec = dict(R0=3.3)
+P_native = 233.0
+generic = generic_reference(model, spec, P_native)
+native = model.forward(net_electric_mw=233.0, n_mod=1, cost_overrides={})
 '''
 
 INLINE_NO_NET_1000 = '''\
+from lib.model_setup_helpers import generic_reference
 model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
-result = model.forward(net_electric_mw=233.0, n_mod=1)
+spec = dict(R0=3.3)
+P_native = 233.0
+generic = generic_reference(model, spec, P_native)
+native = model.forward(net_electric_mw=233.0, n_mod=1, cost_overrides={})
 result_1gw = model.forward(net_electric_mw=500.0, n_mod=2.0)
 '''
 
-HAS_DEFAULT_COMMENT = '''\
+# `generic` hand-rolled (not via generic_reference) — rejected even non-strict.
+GENERIC_NOT_VIA_HELPER = '''\
 model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
-result = model.forward(net_electric_mw=233.0, n_mod=1)
+generic = model.forward(net_electric_mw=233.0, n_mod=1)
+native = model.forward(net_electric_mw=233.0, n_mod=1, cost_overrides={})
+result_1gw = model.forward(net_electric_mw=1000, n_mod=4.3)
+'''
+
+HAS_DEFAULT_COMMENT = '''\
+from lib.model_setup_helpers import generic_reference
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+spec = dict(R0=3.3)
+P_native = 233.0
+generic = generic_reference(model, spec, P_native)
+native = model.forward(net_electric_mw=233.0, n_mod=1, cost_overrides={})
 result_1gw = model.forward(
     net_electric_mw=1000,
     availability=0.85,  # DEFAULT: library default re-passed
@@ -594,10 +673,10 @@ result_1gw = model.forward(
 
 
 class TestModelSetupContract:
-    def test_accepts_inline_prototype(self):
+    def test_accepts_inline_three_forward(self):
         from lib.validators import validate_model_setup_contract
 
-        r = validate_model_setup_contract(PROTOTYPE_TEXT)
+        r = validate_model_setup_contract(INLINE_FORM_TEXT)
         assert r.valid, r.details
         assert "inline" in r.details
 
@@ -611,7 +690,7 @@ class TestModelSetupContract:
     def test_strict_rejects_inline(self):
         from lib.validators import validate_model_setup_contract
 
-        r = validate_model_setup_contract(PROTOTYPE_TEXT, strict_helper_only=True)
+        r = validate_model_setup_contract(INLINE_FORM_TEXT, strict_helper_only=True)
         assert not r.valid
 
     def test_strict_accepts_helper(self):
@@ -620,12 +699,36 @@ class TestModelSetupContract:
         r = validate_model_setup_contract(HELPER_FORM_TEXT, strict_helper_only=True)
         assert r.valid, r.details
 
+    def test_rejects_missing_native(self):
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(MISSING_NATIVE)
+        assert not r.valid
+        assert "native" in r.details
+
+    def test_rejects_two_forward_residue(self):
+        """A file still binding only `result`/`result_1gw` (the old shape) is
+        rejected — it lacks `generic` and `native`."""
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(TWO_FORWARD_RESIDUE)
+        assert not r.valid
+        assert "generic" in r.details and "native" in r.details
+
     def test_rejects_missing_result_1gw(self):
         from lib.validators import validate_model_setup_contract
 
         r = validate_model_setup_contract(MISSING_RESULT_1GW)
         assert not r.valid
         assert "result_1gw" in r.details
+
+    def test_rejects_generic_not_via_helper(self):
+        """`generic` must come from generic_reference(), not a hand-rolled forward."""
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(GENERIC_NOT_VIA_HELPER)
+        assert not r.valid
+        assert "generic" in r.details
 
     def test_rejects_inline_without_net_1000(self):
         from lib.validators import validate_model_setup_contract
@@ -682,10 +785,17 @@ overrides = [
 ]
 '''
 
-RESULT_RELATIVE_VALUE = '''\
+GENERIC_RELATIVE_VALUE = '''\
 overrides = [
-    {"account": "C220101", "value": 0.70 * result.costs.cas21, "enabled": True,
+    {"account": "C220101", "value": 0.70 * generic.costs.cas21, "enabled": True,
      "provenance": "derived", "source": "s", "rationale": "30% prefab reduction"},
+]
+'''
+
+NATIVE_VALUE = '''\
+overrides = [
+    {"account": "C220101", "value": 0.70 * native.costs.cas21, "enabled": True,
+     "provenance": "derived", "source": "s", "rationale": "wrong frame"},
 ]
 '''
 
@@ -693,6 +803,13 @@ RESULT_1GW_VALUE = '''\
 overrides = [
     {"account": "C220101", "value": 0.70 * result_1gw.costs.cas21, "enabled": True,
      "provenance": "derived", "source": "s", "rationale": "wrong frame"},
+]
+'''
+
+RESULT_VALUE = '''\
+overrides = [
+    {"account": "C220101", "value": 0.70 * result.costs.cas21, "enabled": True,
+     "provenance": "derived", "source": "s", "rationale": "removed two-forward name"},
 ]
 '''
 
@@ -757,22 +874,44 @@ class TestOverrideRegistry:
         r = validate_override_registry(CONST_EXPRESSION_VALUE)
         assert r.valid, r.details
 
-    def test_accepts_result_relative_value(self):
-        # A relative override referencing the native `result` is allowed; its
-        # numeric type is enforced at runtime, not statically.
+    def test_accepts_generic_relative_value(self):
+        # A relative override referencing `generic` (the overrides-off library
+        # value) is allowed; its numeric type is enforced at runtime, not
+        # statically.
         from lib.validators import validate_override_registry
 
-        r = validate_override_registry(RESULT_RELATIVE_VALUE)
+        r = validate_override_registry(GENERIC_RELATIVE_VALUE)
         assert r.valid, r.details
 
+    def test_rejects_native_frame(self):
+        # Referencing `native` is a frame error — a relative override must be
+        # written against `generic`, not the overrides-on design-point forward.
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(NATIVE_VALUE)
+        assert not r.valid
+        assert "native" in r.details
+        assert "generic" in r.fix_message
+
     def test_rejects_result_1gw_frame(self):
-        # Referencing `result_1gw` is a frame error — overrides are written at
-        # the native (n_mod=1 / P_native) reference, not the 1 GWe projection.
+        # Referencing `result_1gw` is a frame error — overrides are written
+        # against `generic`, not the 1 GWe projection.
         from lib.validators import validate_override_registry
 
         r = validate_override_registry(RESULT_1GW_VALUE)
         assert not r.valid
         assert "result_1gw" in r.details
+        assert "generic" in r.fix_message
+
+    def test_rejects_result_frame(self):
+        # `result` is the removed two-forward name; referencing it is a frame
+        # error (and would NameError at runtime).
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(RESULT_VALUE)
+        assert not r.valid
+        assert "result" in r.details
+        assert "generic" in r.fix_message
 
     def test_rejects_provenance_guess(self):
         from lib.validators import validate_override_registry
@@ -792,6 +931,31 @@ class TestOverrideRegistry:
 
         r = validate_override_registry(NO_OVERRIDES)
         assert not r.valid
+
+
+# ---------------------------------------------------------------------------
+# Three-forward integration — a real concept-01 model_setup.py (the shape the
+# model-setup prompt instructs) must pass BOTH AST gates. This is the
+# prompt<->validator agreement check (acceptance tests 1 & 2): if it fails, the
+# prompt shape and the validators have diverged.
+# ---------------------------------------------------------------------------
+
+
+class TestThreeForwardIntegration:
+    def test_concept01_threeforward_passes_contract(self):
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(
+            CONCEPT01_THREE_FORWARD, strict_helper_only=True
+        )
+        assert r.valid, r.details
+        assert "helper" in r.details
+
+    def test_concept01_threeforward_passes_registry(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(CONCEPT01_THREE_FORWARD)
+        assert r.valid, r.details
 
 
 # ---------------------------------------------------------------------------

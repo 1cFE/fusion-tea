@@ -28,7 +28,7 @@ This is the last opportunity to catch contract-level bugs cheaply. Bulk regen (I
 
 - **Bet:** Three to five concepts spanning the two-axes grid surface most cross-concept failure modes; the marginal value of a sixth pilot row is low relative to the cost of an extra regen + critic pass.
 - **Bet:** The pilot's job is *finding* problems, not certifying success. A "clean" pilot that surfaces zero fold-backs is a weak signal, not a strong one — the report's first-class output is the issue list, not a green checkmark.
-- **Constraint:** The explorer's module-level contract (`model`, `result`, `result_1gw`) is preserved; the change is to *stop tolerating* a missing `result_1gw`, not to redefine the surface.
+- **Constraint:** The explorer reads against the three-forward module-level contract (`model`, `generic`, `native`, `result_1gw`); Item 10's change is to *stop tolerating* a missing `result_1gw` and drop the `result_1gw → result` fallback, not to redefine the surface. (`result` is removed by the three-forward contract item; the explorer's primary number is still `result_1gw`.)
 - **Constraint:** `Confinement-Family:` (and the other Item 6 frontmatter fields: `Archetype`, `Archetype-Fit`, `Comparison-Status`, `Design-Point-*`, `Grounding-Confidence`) are read from frontmatter only — never from body prose. The body-prose regex (`extract_explorer_data.py:89, 287, 579`) is removed.
 - **Constraint:** Human-authored content under each pilot concept's directory (notably `review.md`, plus any other artifact known to carry hand-written content) is **snapshotted before regeneration** and not overwritten. The snapshot procedure documented here is what Item 11 will follow mechanically.
 - **Constraint:** Asterisking of `grounding_confidence: low` rows reuses the existing asterisk pattern already used for `fit_grade=None` / archetype-bespoke concepts in the comparison view — it is not a new visual idiom.
@@ -135,7 +135,7 @@ Most of the substantive decisions live in the epic Item 10 success-criteria bloc
 ### Core Functionality
 
 - [ ] FR-1 / FR-2: `git grep` against `extract_explorer_data.py` finds no body-prose `**Confinement Family**:` regex; every orchestrator-owned field the explorer consumes is read from frontmatter.
-- [ ] FR-3: Removing `result_1gw` from a regenerated pilot `model_setup.py` (test fixture) makes the explorer raise rather than silently use `result`.
+- [ ] FR-3: Removing `result_1gw` from a regenerated pilot `model_setup.py` (test fixture) makes the explorer raise rather than silently degrading (under the three-forward contract there is no `result` to fall back to).
 - [ ] FR-4: The explorer's per-concept output records the verified `n_mod` and `net_electric_mw` for each pilot row; injecting a mismatched value in a fixture makes ingestion fail.
 - [ ] FR-5: Pilot composition documented in `pilot_report.md` lists each chosen concept with its `fit_grade` and `Grounding-Confidence` and confirms the grid coverage.
 - [ ] FR-6 / FR-7: Snapshot directory exists for each pilot concept and contains the pre-regen artifacts; post-regen, those artifacts are present in the concept directory unchanged (byte-identical to the snapshot copy).

@@ -25,7 +25,7 @@ Rewrite the analyze / model-setup / assess / review prompt templates so the new 
 - **Item 5 selection prompt (out of scope):** `exploration/concept_analysis/prompt_templates/design_point_proposal.md`
 - **Item 6 frontmatter writer:** `exploration/concept_analysis/scripts/lib/frontmatter.py:146-169`
 - **Library account namespace:** `~/1cfe/1costingfe/src/costingfe/layers/{costs.py,cas22.py}`
-- **Item 7 helper signature:** `scripts/lib/model_setup_helpers.py::run_native_and_1gw` — `run_native_and_1gw(model, spec, overrides, p_native, *, noak=True) → (result, result_1gw)`
+- **Item 7 helper signature:** `scripts/lib/model_setup_helpers.py::run_native_and_1gw` — `run_native_and_1gw(model, spec, overrides, p_native, *, noak=True) → (native, result_1gw)`
 - **Item 7 output-gate validators (resolve by symbol; Item 7's working tree is moving):** `validators.py::validate_model_setup_contract` (with `strict_helper_only` switch), `validators.py::validate_override_registry`, `validators.py::validate_design_point_coherence`, `validators.py::check_override_count_vs_fit_grade`
 - **Wire points being swapped (resolve by symbol):** `lib/loop.py` model-setup output-gate selection (today: lines 632–644, three branches; resolve by reading the `# --- Validator selection ---` comment), `lib/loop.py::_run_assess`, `lib/iteration.py::parse_verdict_from_feedback`, `lib/validators.py::has_model_category_findings`, `lib/sources.py::parse_proposed_actions`
 
@@ -63,7 +63,7 @@ From the library: `TOKAMAK, STELLARATOR, MIRROR, DIPOLE, LASER_IFE, ZPINCH, HEAV
 
 ### Validator status (Item 7 territory)
 
-`lib/validators.py` is 920 lines today; Item 7 owns its rework. The Item 8 design treats it as: "produce a shape Item 7 can check." Specifically, Item 7's known incoming validators (per epic Item 7 SC) are: AST contract (`model`, `result`, `result_1gw` at module level; `net_electric_mw=1000` call shape), override-registry six-field validator, `P_native` cross-artifact (analysis ↔ model_setup ↔ design_point.csv), `provenance` label cross-artifact match. The prompts must make all four trivially checkable.
+`lib/validators.py` is 920 lines today; Item 7 owns its rework. The Item 8 design treats it as: "produce a shape Item 7 can check." Specifically, Item 7's known incoming validators (per epic Item 7 SC) are: AST contract (`model`, `generic`, `native`, `result_1gw` at module level; `net_electric_mw=1000` call shape), override-registry six-field validator, `P_native` cross-artifact (analysis ↔ model_setup ↔ design_point.csv), `provenance` label cross-artifact match. The prompts must make all four trivially checkable.
 
 ### Item 1 prototype prompt — what survives, what doesn't
 
@@ -144,7 +144,7 @@ The assessment prompt emits a markdown block with explicit anchored headings (`#
 
 ### Bet 7: Generated `model_setup.py` uses Item 7's `run_native_and_1gw` helper — not an inline two-knob `forward()`
 
-Item 7 ships `run_native_and_1gw(model, spec, overrides, p_native, *, noak=True) → (result, result_1gw)` and a `strict_helper_only=True` switch on `validate_model_setup_contract` that rejects the inline form. The model-setup prompt emits the helper-call form. Step 4 of the four-step structure is a one-liner: `result, result_1gw = run_native_and_1gw(model, spec=spec, overrides=overrides, p_native=P_native)`. This is what makes FR-10 and Item 7's contract validator agree.
+Item 7 ships `run_native_and_1gw(model, spec, overrides, p_native, *, noak=True) → (native, result_1gw)` and a `strict_helper_only=True` switch on `validate_model_setup_contract` that rejects the inline form. The model-setup prompt emits the helper-call form. The overrides-on step of the three-forward structure is a one-liner: `native, result_1gw = run_native_and_1gw(model, spec=spec, overrides=overrides, p_native=P_native)`, preceded by the mandatory `generic = generic_reference(model, spec, P_native)` line. This is what makes FR-10 and Item 7's contract validator agree.
 
 **Why the helper rather than inline:** the helper centralises the `availability` / `lifetime_yr` library-default sourcing and the `override_reference_mw=p_native` discipline. Every generated file calling the helper inherits the same call shape; the contract validator's strict mode is what *enforces* that uniformity. Inline two-knob forwards across 36+ regenerated files would drift; the helper is the single chokepoint that keeps them honest.
 
@@ -222,7 +222,7 @@ upstream tables (Item 5)  →  frontmatter (Item 6)  →  common_vars (Item 8 + 
 1. **Selection is read, not chosen.** Every analyze invocation receives `Design-Point-Name`, `Design-Point-Maturity`, `P-Native`, `Grounding-Confidence` as substitution variables sourced from frontmatter; the prompt forbids overriding any of them.
 2. **Canonical account codes only.** Every override `account` field emitted by the analyze step (and consumed by the model-setup step) is a string drawn from `get_canonical_accounts(concept.archetype_enum)`. No `CAS22.1.3`-style codes.
 3. **Six-field override entries.** Every entry in both `analysis.md`'s Override Candidates YAML and `model_setup.py`'s `overrides` list contains all six fields (`account / value / enabled / provenance / source / rationale`). Missing fields are a validator-rejection.
-4. **Four-step `model_setup.py` shape — helper form only.** Spec dict + `P_native` → `model = CostModel(...)` → six-field override list → `result, result_1gw = run_native_and_1gw(model, spec=spec, overrides=overrides, p_native=P_native)`. `model`, `result`, `result_1gw` at module level. `validate_model_setup_contract(..., strict_helper_only=True)` is the structural enforcer; inline two-knob `forward()` is rejected.
+4. **Three-forward `model_setup.py` shape — helper form only.** Spec dict + `P_native` → `model = CostModel(...)` → `generic = generic_reference(model, spec, P_native)` → six-field override list → `native, result_1gw = run_native_and_1gw(model, spec=spec, overrides=overrides, p_native=P_native)`. `model`, `generic`, `native`, `result_1gw` at module level. `validate_model_setup_contract(..., strict_helper_only=True)` is the structural enforcer; inline two-knob `forward()` is rejected.
 5. **No re-passed library defaults in `spec`.** `availability`, `lifetime_yr`, `interest_rate`, `inflation_rate` MUST NOT appear in the generated `spec` dict. The helper sources `availability` / `lifetime_yr` from the library internally. Archetype-default-but-physics-overridable fields (`eta_th`, `eta_de`) appear only when the design point cites a physics-grounded distinct value.
 6. **Cross-artifact coherence is testable.** `P_native` in the analysis Design Point block, `P_native` in the model_setup constants, and `P_native` in `design_point.csv` are identical strings post-prompt-rewrite. The same override `account` appears in both the analysis YAML and the model_setup `overrides` list with the same `provenance` label. `validate_design_point_coherence` checks all three legs at assess time.
 7. **Frontmatter is orchestrator-owned.** No prompt edits, adds, or removes a frontmatter field. (Already an Item 6 invariant; restated here because the rewritten analyze prompt is the most likely place to violate it.)
@@ -256,11 +256,11 @@ Bet 2's "right after the Design Point block" is corrected here to "right after S
 
 ### `prompt_templates/model_setup_costingfe.md` (rewritten)
 
-The model-setup prompt. Instructs the LLM to start by reading the Design Point block + Override Candidates from `analysis.md`; emit the four-step script with literal canonical structure; forbid `# DEFAULT: …` comments; enforce module-level `model` / `result` / `result_1gw`; emit step 4 as `result, result_1gw = run_native_and_1gw(model, spec=spec, overrides=overrides, p_native=P_native)` and forbid the inline two-knob `forward()` form (Bet 7). References `costingfe_concept` / `costingfe_fuel` / `example_path` (existing common_vars keys) and `design_point_block` / `canonical_accounts` (new).
+The model-setup prompt. Instructs the LLM to start by reading the Design Point block + Override Candidates from `analysis.md`; emit the three-forward script with literal canonical structure; forbid `# DEFAULT: …` comments; enforce module-level `model` / `generic` / `native` / `result_1gw`; emit the mandatory `generic = generic_reference(model, spec, P_native)` line and `native, result_1gw = run_native_and_1gw(model, spec=spec, overrides=overrides, p_native=P_native)`, and forbid the inline two-knob `forward()` form (Bet 7). References `costingfe_concept` / `costingfe_fuel` / `example_path` (existing common_vars keys) and `design_point_block` / `canonical_accounts` (new).
 
 ### `prompt_templates/model_setup_costingfe_edit.md` (rewritten)
 
-Feedback-pass variant. Edits an existing four-step `model_setup.py` against assessment findings; preserves the structure.
+Feedback-pass variant. Edits an existing three-forward `model_setup.py` against assessment findings; preserves the structure.
 
 ### `prompt_templates/assessment.md` (rewritten)
 
@@ -419,7 +419,7 @@ overrides:
 
 ### Four-step `model_setup.py` literal (per spec FR-10) — helper form
 
-The model-setup prompt shows the LLM the four-step canonical structure as a single template comment block — not a fragmented "step 1 do X / step 2 do Y" set of instructions. Step 4 is a one-liner against the helper:
+The model-setup prompt shows the LLM the three-forward canonical structure as a single template comment block — not a fragmented "step 1 do X / step 2 do Y" set of instructions. The `generic` line and the helper call are one-liners:
 
 ```python
 # 1. Specification — design-point inputs, native scale.
@@ -429,6 +429,10 @@ P_native = ...                                      # MWe — from analysis.md
 # 2. Model.
 model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
 
+# 2b. Generic forward (overrides OFF) — mandatory; the reference a relative
+#     override is written against.
+generic = generic_reference(model, spec, P_native)
+
 # 3. Override registry — six fields per entry.
 overrides = [
     {"account": "C220103", "value": 6901.0, "enabled": True,
@@ -436,8 +440,8 @@ overrides = [
     ...
 ]
 
-# 4. Both forwards via the helper.
-result, result_1gw = run_native_and_1gw(
+# 4. Overrides-on forwards via the helper (native + 1 GWe NOAK projection).
+native, result_1gw = run_native_and_1gw(
     model, spec=spec, overrides=overrides, p_native=P_native,
 )
 ```
@@ -528,7 +532,7 @@ Before any prompt is changed, each rewritten parser is exercised against (a) han
 ### End-to-end (dry-run gates per spec)
 
 1. **Analyze dry-run on concept 01 (ARC, High fit, well-grounded).** Inspect the generated `analysis.md` against acceptance criteria: Design Point block selection matches frontmatter; quantitative table describes the named plant; Override Candidates YAML has six-field entries with canonical account codes; family-delta against the comparables list is concrete; no leftover `Reuses:` references.
-2. **Model-setup dry-run on the same regenerated `analysis.md`.** Inspect the generated `model_setup.py`: four-step structure literally present; step 4 calls `run_native_and_1gw(...)` (no inline `forward()`); `model`, `result`, `result_1gw` at module level; no `# DEFAULT:` comments; `spec` dict contains only design-point-specified inputs; `availability` / `lifetime_yr` / `interest_rate` / `inflation_rate` absent. `validate_model_setup_contract(..., strict_helper_only=True)` accepts.
+2. **Model-setup dry-run on the same regenerated `analysis.md`.** Inspect the generated `model_setup.py`: three-forward structure literally present; a mandatory `generic = generic_reference(...)` line and `native, result_1gw = run_native_and_1gw(...)` (no inline `forward()`); `model`, `generic`, `native`, `result_1gw` at module level; no `# DEFAULT:` comments; `spec` dict contains only design-point-specified inputs; `availability` / `lifetime_yr` / `interest_rate` / `inflation_rate` absent. `validate_model_setup_contract(..., strict_helper_only=True)` accepts.
 3. **Assessment dry-run on the regenerated pair.** Verdict parses cleanly via the rewritten parser; findings reference design-point coherence and override discipline; override count band check + design-point coherence check flag into the LLM reviewer as expected.
 4. **Full-loop dry-run on ARC, green end-to-end.** The atomic-swap acceptance gate. New prompts + rewritten parsers + wired contract validators + `strict_helper_only=True` + coherence checks. Loop runs continue/stop decisions correctly through verdict tokens; PA-action ingest still produces the nine-key dicts; no references to removed regex constants remain. Discharges Item 7's FR-9.
 5. **Comparison-view dry-run.** Feed the dry-run `model_setup.py` to `concept_explorer/extract_explorer_data.py`. `result_1gw` is at exactly 1000 MWe; `Confinement-Family:` resolves from frontmatter; no fallback paths exercised.
@@ -550,7 +554,7 @@ Before any prompt is changed, each rewritten parser is exercised against (a) han
 - Design Point block placement: top-of-body selection block + Section 5 quantitative description (Bet 4(c)).
 - Two finding Categories (`analysis | model`); no third.
 - The four parsers' return shapes per `signal_contract.md`; their call sites do not move.
-- Step 4 of generated `model_setup.py` = `result, result_1gw = run_native_and_1gw(...)`; inline two-knob `forward()` is rejected by `strict_helper_only=True`.
+- Generated `model_setup.py` binds `generic = generic_reference(...)` then `native, result_1gw = run_native_and_1gw(...)`; inline two-knob `forward()` is rejected by `strict_helper_only=True`.
 - Atomic swap (FR-29): single merge unit; no intermediate "new prompt + old parser" state.
 
 ### Open (plan-stage decisions)

@@ -27,14 +27,17 @@ from lib.prompt_blocks import (
     fit_grade_band_line,
 )
 
-# A conformant helper-form model_setup.py (Item 7 contract + six-field registry).
+# A conformant three-forward helper-form model_setup.py (Item 7 contract +
+# six-field registry).
 HELPER_FORM = '''\
-from lib.model_setup_helpers import run_native_and_1gw
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
 from costingfe import ConfinementConcept, CostModel, Fuel
 
 spec = dict(R0=3.3, plasma_t=1.13, elon=1.84)
 P_native = 233.0
 model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+
+generic = generic_reference(model, spec, P_native)
 
 overrides = [
     {"account": "C220103", "value": 6901.0, "enabled": True,
@@ -43,14 +46,22 @@ overrides = [
      "provenance": "derived", "source": "Araiinejad 2025", "rationale": "FLiBe"},
 ]
 
-result, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
 '''
 
-# An inline two-knob forward — rejected by strict_helper_only=True.
+# A three-forward inline form (`native`/`result_1gw` hand-rolled) — rejected by
+# strict_helper_only=True. `generic` is still via generic_reference (mandatory).
 INLINE_FORM = '''\
+from lib.model_setup_helpers import generic_reference
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(R0=3.3)
+P_native = 233.0
 model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
-result = model.forward(net_electric_mw=233.0, n_mod=1)
-result_1gw = model.forward(net_electric_mw=1000, n_mod=4.3, override_reference_mw=233.0)
+
+generic = generic_reference(model, spec, P_native)
+native = model.forward(net_electric_mw=233.0, n_mod=1, cost_overrides={}, override_reference_mw=233.0)
+result_1gw = model.forward(net_electric_mw=1000, n_mod=4.3, cost_overrides={}, override_reference_mw=233.0)
 overrides = []
 '''
 

@@ -128,7 +128,7 @@ has exactly six fields. Account codes are canonical library codes only.
 ```yaml
 overrides:
   - account: C220103          # canonical 1costingFE code from the schema
-    value: 6901.0             # number, or expression (e.g. 260.0 * 1.34, or 0.70 * result.costs.cas21)
+    value: 6901.0             # number, or expression (e.g. 260.0 * 1.34, or relative: 0.70 * generic.costs.cas21)
     enabled: true
     provenance: derived       # direct | derived
     source: "arc-reactor-specifications.md §6"
@@ -139,7 +139,8 @@ overrides:
 
 Omit the entry entirely for any account with no company-grounded data — do not
 emit disabled placeholders for un-evidenced accounts. Relative `value`
-expressions reference the **native** `result`, never `result_1gw`.
+expressions reference the library's bare overrides-off cost
+(`generic.costs.cas21`), never `native` or `result_1gw`.
 
 ### Section 6: Data Gap Inventory
 

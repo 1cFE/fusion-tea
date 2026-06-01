@@ -2,25 +2,29 @@
 
 ## Mode: Feedback Pass (Edit Existing Model)
 
-An existing four-step model from a prior iteration has been copied to `{{output_path}}`.
+An existing three-forward model from a prior iteration has been copied to `{{output_path}}`.
 
 **Your task**: Read the existing model at `{{prior_model_path}}` and apply
 **targeted edits** based on the assessment findings below. Use the Edit tool — do
 NOT rewrite the file from scratch, and do NOT restructure conforming code.
 
-## Preserve the four-step contract
+## Preserve the three-forward contract
 
 The file already follows the canonical shape; keep it:
 1. `spec` dict (design-point inputs only) + `P_native`
 2. `model = CostModel(...)`
-3. `overrides = [ ... ]` — six-field registry entries
-4. `result, result_1gw = run_native_and_1gw(model, spec=spec, overrides=overrides, p_native=P_native)`
+3. `generic = generic_reference(model, spec, P_native)` — the mandatory
+   overrides-off forward (forward 1), the reference a relative override is written against
+4. `overrides = [ ... ]` — six-field registry entries
+5. `native, result_1gw = run_native_and_1gw(model, spec=spec, overrides=overrides, p_native=P_native)`
 
-with `model`, `result`, `result_1gw` at module level and the `print_cas_breakdown(...)`
-call retained. Do not convert the helper call into an inline two-knob `forward()`
-(the contract validator rejects it), and do not re-introduce `# DEFAULT:` comments
-or the uniform financial parameters (`availability`, `lifetime_yr`, `interest_rate`,
-`inflation_rate`) into `spec`.
+with `model`, `generic`, `native`, `result_1gw` at module level and the
+`print_cas_breakdown(generic, native, result_1gw, overrides)` call retained. Do
+not convert the helper call into an inline two-knob `forward()` (the contract
+validator rejects it), do not drop the mandatory `generic` line, and do not
+re-introduce `# DEFAULT:` comments or the uniform financial parameters
+(`availability`, `lifetime_yr`, `interest_rate`, `inflation_rate`) into `spec`.
+A relative override references `generic` (never `native` or `result_1gw`).
 
 **Rules**:
 - Preserve all existing sweeps, scenarios, and sensitivity analyses unless a

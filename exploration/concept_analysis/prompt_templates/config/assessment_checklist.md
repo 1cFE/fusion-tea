@@ -45,12 +45,13 @@ most impactful gaps.
       penalty, neutral, or honestly "unknown").
 
 ## 5. Two-Knob Projection & Model Integrity
-- [ ] If `model_setup.py` exists: it uses the four-step helper form
-      (`result, result_1gw = run_native_and_1gw(...)`), with `model`, `result`,
-      `result_1gw` at module level — not an inline two-knob `forward()`.
-- [ ] `result` reflects real parameter-driven computation (CAS values are not
-      hardcoded constants or all-zero placeholders); sensitivity results, if
-      present, show non-trivial variation.
+- [ ] If `model_setup.py` exists: it uses the three-forward helper form — a
+      mandatory `generic = generic_reference(...)` line plus
+      `native, result_1gw = run_native_and_1gw(...)`, with `model`, `generic`,
+      `native`, `result_1gw` at module level — not an inline two-knob `forward()`.
+- [ ] `native` / `result_1gw` reflect real parameter-driven computation (CAS
+      values are not hardcoded constants or all-zero placeholders); sensitivity
+      results, if present, show non-trivial variation.
 - [ ] The model's LCOE is plausible (right order of magnitude) for this concept
       type, and its dominant cost drivers match the analysis narrative's emphasis.
 

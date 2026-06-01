@@ -164,7 +164,7 @@ No `ConceptData` is emitted for `pending-design-point`; the comparison view simp
                                                         │  Comparison-Status      ◄── single asterisk signal
                                                         │  P-Native / Grounding-Confidence
                                                         ▼
-  model_setup.py (four-step shape, helper-form)  ──►  module-level: model, result, result_1gw
+  model_setup.py (three-forward shape, helper-form)  ──►  module-level: model, generic, native, result_1gw
                                                         │
                                                         ▼
 [Item 10 — explorer adapter, this work item]

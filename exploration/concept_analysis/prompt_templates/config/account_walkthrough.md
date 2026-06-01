@@ -24,8 +24,11 @@ Then decide:
   - `value` — a plain number, a self-documenting constant expression (e.g.
     `260.0 * 1.34` for a CPI-adjusted published cost), or — for a *relative*
     override defined as a fraction of the library's own computation — an
-    expression over the **native** `result` (e.g. `0.70 * result.costs.cas21`).
-    Relative overrides MUST reference the native `result`, never `result_1gw`.
+    expression over the library's bare overrides-off cost, written as
+    `0.70 * generic.costs.cas21`. (In `model_setup.py`, `generic` is the
+    mandatory `generic_reference(model, spec, P_native)` line placed before the
+    overrides list; the model-setup prompt has the mechanics.) A relative
+    `value` MUST reference `generic`, never `native` or the 1 GWe projection.
   - `enabled` — `true` if this departure should be active in the baseline run.
   - `provenance` — `direct` (company published the exact figure, or a published
     quantity × a published unit price) or `derived` (you assembled it from a
