@@ -93,6 +93,21 @@
     return node;
   }
 
+  // Item 10 / Bet 2: render an amber warning glyph next to the concept name
+  // when the orchestrator routed the concept as costingfe-asterisked
+  // (Grounding-Confidence: low). Used wherever a concept name is rendered.
+  // Returns null when no marker is needed so callers can pass the result to
+  // `append()` unconditionally.
+  function lowGroundingMarker(concept) {
+    if (!concept || !concept.asterisk_in_comparison) return null;
+    const span = el("span", "low-grounding-marker", "⚠"); // ⚠
+    span.title =
+      "Low grounding: design-point rests on company-stated or single-source " +
+      "numbers — interpret the cost number with caution.";
+    span.setAttribute("aria-label", "Low-grounding design point");
+    return span;
+  }
+
   function append(parent, ...children) {
     for (const c of children) {
       if (c != null) parent.appendChild(c);
@@ -260,7 +275,7 @@
       removeBtn.textContent = "×";
       removeBtn.addEventListener("click", () => removeConcept(conceptId));
 
-      append(chip, badge, nameSpan, removeBtn);
+      append(chip, badge, nameSpan, lowGroundingMarker(concept), removeBtn);
       barEl.appendChild(chip);
     }
 
@@ -351,6 +366,9 @@
       };
       const familyBadge = el("span", familyInfo.cls, familyInfo.label);
 
+      // Picker reads from the manifest, which does not currently carry
+      // asterisk_in_comparison — surfacing the asterisk here would require
+      // extending ConceptManifestEntry. Out of Phase 2 scope.
       append(item, nameSpan, familyBadge);
 
       if (entry.company) {
@@ -590,7 +608,12 @@
         label: concept.confinement_family,
         cls: "badge badge-nonstandard",
       };
-      append(header, el("span", null, concept.name), el("span", familyInfo.cls, familyInfo.label));
+      append(
+        header,
+        el("span", null, concept.name),
+        lowGroundingMarker(concept),
+        el("span", familyInfo.cls, familyInfo.label),
+      );
       cell.appendChild(header);
 
       // Cell content area

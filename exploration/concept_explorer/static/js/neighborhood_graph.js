@@ -121,8 +121,15 @@ var NeighborhoodGraph = (function () {
     }
   }
 
+  function lowGroundingMarkup(concept) {
+    if (!concept || !concept.asterisk_in_comparison) return "";
+    return ' <span class="low-grounding-marker" title="Low grounding: design-point' +
+      ' rests on company-stated or single-source numbers — interpret with caution."' +
+      ' aria-label="Low-grounding design point">⚠</span>';
+  }
+
   function tooltipCenter(concept) {
-    var lines = ["<strong>" + esc(concept.name) + "</strong>"];
+    var lines = ["<strong>" + esc(concept.name) + "</strong>" + lowGroundingMarkup(concept)];
     if (concept.company) lines.push(esc(concept.company));
     var hier = concept.mfe_topology || concept.ife_driver || concept.mif_method || concept.non_standard_mechanism;
     var famLabel = FAMILY_LABELS[concept.confinement_family] || concept.confinement_family;
@@ -132,14 +139,14 @@ var NeighborhoodGraph = (function () {
 
   function tooltipNeighbor(concept, score) {
     var famLabel = FAMILY_LABELS[concept.confinement_family] || concept.confinement_family;
-    return "<strong>" + esc(concept.name) + "</strong><br>" +
+    return "<strong>" + esc(concept.name) + "</strong>" + lowGroundingMarkup(concept) + "<br>" +
       esc(famLabel) + " &middot; " + Math.round(score * 100) + "% similar<br>" +
       "<span style='color:#6e7681;font-size:11px'>Click to compare &middot; Double-click to explore</span>";
   }
 
   function tooltipBridgeNode(concept) {
     var famLabel = FAMILY_LABELS[concept.confinement_family] || concept.confinement_family;
-    return "<strong>" + esc(concept.name) + "</strong><br>" +
+    return "<strong>" + esc(concept.name) + "</strong>" + lowGroundingMarkup(concept) + "<br>" +
       esc(famLabel) + "<br>" +
       "<span style='color:#6e7681;font-size:11px'>Double-click to explore</span>";
   }

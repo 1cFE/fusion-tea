@@ -96,6 +96,18 @@
       nameMap[concepts[c].concept_id] = concepts[c].name;
     }
 
+    // Merge per-concept manifest flags onto registry entries so downstream
+    // views (NeighborhoodGraph, TaxonomyCards) can read asterisk_in_comparison
+    // without a second fetch.
+    var manifestConceptsForFlags = (manifestData && manifestData.concepts) || [];
+    for (var mf = 0; mf < manifestConceptsForFlags.length; mf++) {
+      var mfEntry = manifestConceptsForFlags[mf];
+      if (_registry[mfEntry.concept_id]) {
+        _registry[mfEntry.concept_id].asterisk_in_comparison =
+          !!mfEntry.asterisk_in_comparison;
+      }
+    }
+
     // Share registry with TaxonomyCards for bridge family badge lookups
     TaxonomyCards.setRegistry(_registry);
 

@@ -28,7 +28,7 @@ from exploration.concept_explorer.extract_explorer_data import (  # noqa: E402
     load_parameter_display_registry,
     load_parameter_metadata,
     parse_concept_id,
-    parse_confinement_family,
+    _to_confinement_family,
     parse_frontmatter,
     parse_status,
     run_extraction,
@@ -149,10 +149,14 @@ def _make_concept_dir(
     concept_dir.mkdir(exist_ok=True)
 
     if with_analysis:
+        # Map legacy `confinement` text (e.g. "IFE (Inertial Fusion Energy)") to
+        # the enum value Item 6 frontmatter expects.
+        family_key = confinement.strip().split()[0].upper() if confinement else "NONSTANDARD"
         (concept_dir / "analysis.md").write_text(
             f"---\nID: {concept_id}-test-concept\n"
-            f"Concept: {name}\nCompany: {company}\nStatus: {status}\n---\n\n"
-            f"**Confinement Family**: {confinement}\n\nSome analysis text.\n",
+            f"Concept: {name}\nCompany: {company}\nStatus: {status}\n"
+            f"Confinement-Family: {family_key}\n---\n\n"
+            f"Some analysis text.\n",
             encoding="utf-8",
         )
 
@@ -218,21 +222,23 @@ class TestParseFrontmatter:
         assert parse_frontmatter(p) == {}
 
 
-class TestParseConfinementFamily:
+class TestToConfinementFamily:
     @pytest.mark.parametrize(
-        "line,expected",
+        "raw,expected",
         [
-            ("**Confinement Family**: MFE — Tokamak", ConfinementFamily.MFE),
-            ("**Confinement Family**: IFE (Inertial Fusion Energy)", ConfinementFamily.IFE),
-            ("**Confinement Family**: MIF (Magneto-Inertial Fusion)", ConfinementFamily.MIF),
-            ("**Confinement Family**: Other (Acoustic)", ConfinementFamily.NONSTANDARD),
-            ("No family line at all", ConfinementFamily.NONSTANDARD),
+            ("MFE", ConfinementFamily.MFE),
+            ("IFE", ConfinementFamily.IFE),
+            ("MIF", ConfinementFamily.MIF),
+            ("NONSTANDARD", ConfinementFamily.NONSTANDARD),
+            ("mfe", ConfinementFamily.MFE),  # case-insensitive
+            (" IFE ", ConfinementFamily.IFE),  # strip
+            ("BOGUS", ConfinementFamily.NONSTANDARD),  # unknown → fallback
+            (None, ConfinementFamily.NONSTANDARD),  # missing → fallback
+            ("", ConfinementFamily.NONSTANDARD),
         ],
     )
-    def test_extraction(self, tmp_path: Path, line: str, expected: ConfinementFamily) -> None:
-        p = tmp_path / "analysis.md"
-        p.write_text(f"---\n---\n{line}\n")
-        assert parse_confinement_family(p) == expected
+    def test_mapping(self, raw: Any, expected: ConfinementFamily) -> None:
+        assert _to_confinement_family(raw) == expected
 
 
 class TestParseStatus:
@@ -257,7 +263,7 @@ class TestExtractCostingfe:
         result = _make_forward_result()
         model = _make_mock_model()
         concept_dir = _make_concept_dir(tmp_path, with_model_setup=True)
-        mock_module = types.SimpleNamespace(model=model, result=result)
+        mock_module = types.SimpleNamespace(model=model, result=result, result_1gw=result)
 
         with patch(
             "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
@@ -284,7 +290,7 @@ class TestExtractCostingfe:
         result = _make_forward_result()
         model = _make_mock_model()
         concept_dir = _make_concept_dir(tmp_path)
-        mock_module = types.SimpleNamespace(model=model, result=result)
+        mock_module = types.SimpleNamespace(model=model, result=result, result_1gw=result)
 
         with patch(
             "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
@@ -309,7 +315,7 @@ class TestExtractCostingfe:
         result = _make_forward_result()
         model = _make_mock_model()
         concept_dir = _make_concept_dir(tmp_path)
-        mock_module = types.SimpleNamespace(model=model, result=result)
+        mock_module = types.SimpleNamespace(model=model, result=result, result_1gw=result)
 
         with patch(
             "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
@@ -350,7 +356,7 @@ class TestExtractCostingfe:
         result = _make_forward_result()
         model = _make_mock_model()
         concept_dir = _make_concept_dir(tmp_path)
-        mock_module = types.SimpleNamespace(model=model, result=result)
+        mock_module = types.SimpleNamespace(model=model, result=result, result_1gw=result)
 
         with patch(
             "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
@@ -378,7 +384,7 @@ class TestExtractCostingfe:
         result = _make_forward_result()
         model = _make_mock_model()
         concept_dir = _make_concept_dir(tmp_path)
-        mock_module = types.SimpleNamespace(model=model, result=result)
+        mock_module = types.SimpleNamespace(model=model, result=result, result_1gw=result)
 
         yaml_override = {
             "availability": ParameterMetadata(
@@ -418,7 +424,7 @@ class TestExtractCostingfe:
         result = _make_forward_result()
         model = _make_mock_model()
         concept_dir = _make_concept_dir(tmp_path)
-        mock_module = types.SimpleNamespace(model=model, result=result)
+        mock_module = types.SimpleNamespace(model=model, result=result, result_1gw=result)
 
         with patch(
             "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
@@ -534,7 +540,7 @@ class TestDisplayRegistry:
         result = _make_forward_result()
         model = _make_mock_model()
         concept_dir = _make_concept_dir(tmp_path)
-        mock_module = types.SimpleNamespace(model=model, result=result)
+        mock_module = types.SimpleNamespace(model=model, result=result, result_1gw=result)
 
         # Per-concept yaml provides a full ParameterMetadata for availability
         per_concept = {
@@ -716,7 +722,7 @@ class TestRoutingDetection:
 
         result = _make_forward_result()
         model = _make_mock_model()
-        mock_module = types.SimpleNamespace(model=model, result=result)
+        mock_module = types.SimpleNamespace(model=model, result=result, result_1gw=result)
 
         with patch(
             "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
@@ -1010,7 +1016,7 @@ class TestParameterMetadataWarning:
         result = _make_forward_result()
         model = _make_mock_model()
         concept_dir = _make_concept_dir(tmp_path)
-        mock_module = types.SimpleNamespace(model=model, result=result)
+        mock_module = types.SimpleNamespace(model=model, result=result, result_1gw=result)
 
         with patch(
             "exploration.concept_explorer.extract_explorer_data.load_module_from_path",

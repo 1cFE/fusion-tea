@@ -31,7 +31,7 @@ The concept-analysis pipeline produces per-concept LCOE numbers that look compar
 
 **Future State**:
 - Each `analysis.md` has one **Design Point block**: one named plant, its native scale, its source citations; every LCOE parameter on the page describes that unit.
-- Each `model_setup.py` is a short, ordered four-step script: spec → native forward → override registry → 1 GWe NOAK forward. No re-passed library defaults.
+- Each `model_setup.py` is a short, ordered three-forward script: spec → generic (overrides-off) forward → override registry → native (overrides-on) forward → 1 GWe NOAK forward. No re-passed library defaults.
 - Every override is a six-field record (`account / value / enabled / provenance / source / rationale`); flipping `enabled: False` reverts that account to the library's answer.
 - Archetype, archetype-fit grade, comparables, and the design-point selection (named plant, `P_native`) are pre-computed project-level tables — batch-populated and hand-verified before analyze runs — read by the orchestrator, not invented at runtime.
 - `model_critic` is a standalone tool invokable against any concept directory at any time.
@@ -44,8 +44,8 @@ The concept-analysis pipeline produces per-concept LCOE numbers that look compar
 - [ ] 1costingFE accepts non-integer `n_mod > 0`; override scaling under the two-knob call is verified by test.
 - [ ] Ontology, archetype-fit, comparables, and design-point tables exist as the single source of truth; consumed by orchestrator and prompts.
 - [ ] All four tables are batch-populated and hand-verified before analyze runs; the design-point table fixes the named plant and `P_native` per concept, and `analyze` reads (does not choose) them.
-- [ ] Every non-`None` fit-grade concept has a regenerated `analysis.md` with a Design Point block and a regenerated `model_setup.py` matching the four-step shape.
-- [ ] Every regenerated `model_setup.py` exposes `model`, `result`, `result_1gw` at module level; `result_1gw` is reached by the two-knob call at `net_electric_mw=1000`.
+- [ ] Every non-`None` fit-grade concept has a regenerated `analysis.md` with a Design Point block and a regenerated `model_setup.py` matching the three-forward shape.
+- [ ] Every regenerated `model_setup.py` exposes `model`, `generic`, `native`, `result_1gw` at module level; `result_1gw` is reached by the two-knob call at `net_electric_mw=1000`.
 - [ ] Override registry validator enforces six-field entries; AST validator enforces the module-level contract and the `net_electric_mw=1000` call shape.
 - [ ] `model_critic` runs cleanly against an archived concept (no loop-state dependency).
 - [ ] `concept_explorer` reads `result_1gw` from every costingfe concept with no fallback path; `Confinement-Family:` is read from frontmatter, not body prose.
@@ -274,6 +274,8 @@ design-point (batch-propose + verify each row)            [independent]
 - `lib/model_setup_helpers.py` (new shared utility module).
 - `lib/validators.py` (drop the regex-on-LLM-markdown validators; add new contract checks for `model_setup.py` and the override registry).
 
+> ⚠ **Contract superseded (2026-05-31, three-forward corrective item).** The criteria below record Item 7's *as-shipped* two-forward contract (`model`/`result`/`result_1gw`; the then-four-step `HELPER_FORM_TEXT`). The corrective item `.project/active/concept-rework-three-forward-contract/` revised this to the **three-forward** contract: `run_native_and_1gw` now returns `(native, result_1gw)` (`native` = overrides-on), `generic` is a mandatory standalone line via `generic_reference`, the validators require `model`/`generic`/`native`/`result_1gw`, and relative overrides reference `generic`. The `[x]` records are kept verbatim as the historical Item 7 delivery.
+
 **Success Criteria**:
 - [x] A regenerated `model_setup.py` can be written as a short, ordered script against the shared helpers, with no per-concept duplication of the two-knob forward pattern or the override-registry → `cost_overrides` translation. *(`lib/model_setup_helpers.py`: `run_native_and_1gw` + `Override` + `enabled_overrides` + `print_cas_breakdown`; the four-step `HELPER_FORM_TEXT` fixture demonstrates the shape. Bulk regeneration of real concepts is Item 8/10.)*
 - [x] Validators enforce the design's module-level contract (`model`, `result`, `result_1gw` at module level; `result_1gw` reached at `net_electric_mw=1000`) and the override-registry shape. *(`validate_model_setup_contract` + `validate_override_registry`, AST-based, dual-form. **Regex-validator removal is NOT done here** — sequenced with Item 8 per design Decision 1; `signal_contract.md` pins the return shapes Item 8 must preserve.)*
@@ -285,6 +287,8 @@ design-point (batch-propose + verify each row)            [independent]
 **Tracked nits (surfaced during Item 7, not Item 7 deliverables):**
 - ~~**Stale `override_reference_mw` lines in `concept-analysis-rework.md`** (Concept 6) said "`override_reference_mw` is not used."~~ **RESOLVED (2026-05-31):** Concept 6 now states "`override_reference_mw` IS passed, set to `P_native`" at all three sites, consistent with the Phase 0 prototype, the Critical Success Factor, the Item 4 `_scale_overrides` fix, and the Item 7 helper.
 - **Design wording `result_1gw.params.n_mod`** treats `params` as an object; it is actually a `dict` (`result_1gw.params["n_mod"]`). Affects the explorer (Item 10), not Item 7. Fix the design/explorer wording when Item 10 is taken up.
+
+**Post-completion fix — relative-override ordering bug (2026-05-31):** The prompts (Item 8) and helper (Item 7) advertised relative overrides as `value: 0.70 * result.costs.cas21` (a fraction of the library's own cost), but the four-step shape binds `result` only at the Step-4 helper call — *after* the `overrides` list (Step 3) that references it. Emitted literally, that raises `NameError`; worse, both structural validators **passed** the broken file (the override-registry check defers numeric-ness to runtime, the contract check only inspects how `result_1gw` is bound), so the failure surfaced only on execution. Fix (Option A — simplest, no deferred expressions): added `generic_reference(model, spec, p_native)` to `lib/model_setup_helpers.py` — a bare native forward (`net=p_native, n_mod=1`, no overrides, library-sourced `availability`/`lifetime_yr`) that an analyst calls *before* the overrides list, then references as `0.70 * ref.costs.cas21`. `run_native_and_1gw` now computes its own `result` via the same helper, so `ref` and `result` are identical (the duplicate native forward is deliberate and of no consequence). Prompt examples in `model_setup_costingfe.md` (new optional Step 2b + Hard Rule 5), `config/account_walkthrough.md`, and `output_template.md` §5b were swapped from `result.costs.cas21` to `ref.costs.cas21`. No validator change needed — the override-registry check already accepts any `Name` reference except `result_1gw`. Verified: 98 tests green (`test_model_setup_helpers.py` + `test_validators.py`); end-to-end smoke confirmed `ref == result` and a relative override flowing through the 1 GWe forward.
 
 ---
 
@@ -318,6 +322,8 @@ design-point (batch-propose + verify each row)            [independent]
 
 **Implementation summary (2026-05-31):** Shipped as the FR-29 atomic swap. Phase 1 — `lib/canonical_accounts.py` (16-enum per-archetype account schema + `validate_against_library()` + `FIT_GRADE_OVERRIDE_BAND`). Phase 2 — five parser internals rewritten to line-anchored scanning, signal_contract shapes preserved. Phase 3 — `lib/prompt_blocks.py` + loop wiring (strict helper-only contract gate on all three model-setup branches, `coherence_flags` into assess). Phase 4 — all 10 in-scope templates rewritten + new `config/account_walkthrough.md`; four FR-28 regex constants deleted and their last users rewired onto the line-anchored helpers (discharges Item 7's **FR-9**); `defaults_path`/`mapping_notes` dropped; `fit_grade_band` wired into assess. Phase 5 — ARC (concept 01) end-to-end pilot on **Opus** passed **every** spec AC: conforming Design Point block + §5b six-field override YAML with canonical codes, four-step helper-form `model_setup.py` accepted by the strict contract validator, `eta_th` correctly left to the library (FR-13), `result_1gw` at exactly 1000 MWe, override-toggle 160.7↔543.7 $/MWh, all four parsers signal_contract-correct, explorer extracts at 1 GWe with no fallback. One fold-back fix: `claude.py::_check_interface` regex now recognizes the helper tuple-unpack. Full scripts suite 405 passed / 5 skipped / 4 pre-existing unrelated `test_concepts_v2.py` data-state failures. Spec: `.project/active/concept-rework-prompt-templates/` (spec/design/plan/pilot_report). One tuning candidate noted for the Item 10 pilot: `assessment.md`/`quality_standards.md` could signal more strongly that an aspirational efficiency is not a finding.
 
+**Post-completion fix (2026-05-31):** the relative-override examples in `model_setup_costingfe.md`, `config/account_walkthrough.md`, and `output_template.md` §5b were non-runnable as shipped (`result` referenced before it is bound). Fixed via the `generic_reference` helper + a `ref.costs.cas21` pattern — see the "Post-completion fix — relative-override ordering bug" note under Item 7 for the full write-up.
+
 ---
 
 ### Item 9: `model_critic` Standalone Tool
@@ -341,32 +347,54 @@ design-point (batch-propose + verify each row)            [independent]
 
 ## Phase 2 — Pilot + bulk rollout
 
-### Item 10: Explorer Adapter + Pilot Regeneration
+### Item 10: Explorer Adapter + Pilot Regeneration — ◐ PARTIAL (Phases 1–2 complete, Phases 3–5 deferred, 2026-05-31)
 
 **Type**: Code/Integration + Execution
 **Effort**: 1.5–2 days
 **Dependencies**: Items 4, 6, 7, 8, 9.
+**Spec / design / plan**: `.project/active/concept-rework-explorer-pilot/`
 
-**Files touched**:
-- `exploration/concept_explorer/extract_explorer_data.py` (frontmatter read; drop `result_1gw` fallback; fractional `n_mod` verification; narrative-extraction prompt).
-- New artifacts under `exploration/concept_analysis/analyses/` for 3–5 pilot concepts spanning High / Med / Low archetype-fit.
-- `pilot_report.md` in the work-item directory.
+**Implementation summary (2026-05-31).** Code-only phases of the work item shipped; pilot regeneration phases skipped at user direction. The explorer is now adapted to the new orchestrator contract and the low-grounding signal is surfaced across the explorer UI, but no actual concepts were regenerated under this item — concepts 01, 14, 08, 26 will go through the pipeline as part of Item 11's bulk pass (with the pilot's go/no-go gating function effectively waived).
+
+**Phase 1 — Explorer Adapter + Unit Tests (✅ complete).** `extract_explorer_data.py` rewritten as a strict consumer of Item 6's frontmatter:
+- Body-prose `parse_confinement_family` regex removed; replaced with `_to_confinement_family(raw) -> ConfinementFamily` reading `Confinement-Family` from frontmatter (case-tolerant; missing/unknown → NONSTANDARD).
+- `verify_two_knob(result_1gw, p_native, concept_id, *, tolerance_rel=1e-9)` enforces `net_electric_mw == 1000` and `n_mod == 1000 / P_native`; raises `ExtractionError` on mismatch (FR-4).
+- `result_1gw` is now unconditionally required in `extract_costingfe` — the legacy `result_1gw if not None else result` fallback is gone (FR-3, stricter than spec; aligned with the dropped Bet 6 gate's "un-migrated concepts fail naturally until Item 11" posture).
+- Dispatch (`run_extraction`) reads `Comparison-Status` and: skips `pending-design-point` with an explicit per-row message + end-of-run summary (Bet 8); cross-checks `costingfe`/`costingfe-asterisked` and `freeform-deferred` against the import-source heuristic and raises on disagreement (Bet 7).
+- `ConceptData.asterisk_in_comparison: bool` populated from `Comparison-Status == "costingfe-asterisked"`.
+- Tests: 13 new tests in `exploration/concept_explorer/tests/test_extract_adapter.py` covering strict-consumer, two-knob, routing cross-check, pending-design-point skip, asterisk flag. Existing `test_extraction.py` updated for the new fixture shape (61/61). Pre-existing 4 `test_concepts_v2.py` `StopIteration` failures on `pending` records confirmed unrelated.
+
+**Phase 2 — Low-grounding marker across the explorer UI (✅ complete, scope expanded).** Plan called for a small grey asterisk on `/compare` only; operator review during eyeball verification rejected that as too weak. Shipped treatment is an amber ⚠ glyph (`.low-grounding-marker` class) on five surfaces:
+- All Concepts cards (`/`)
+- Compare chips + landscape-cell headers (`/compare`)
+- Taxonomy card side panel (`/taxonomy`)
+- Concept hero (`/concept/{id}`)
+- Neighborhood graph node tooltip on hover (`/taxonomy` focused-concept view)
+
+Explicitly NOT marked (user-rejected during verification): constellation scatter dots, cytoscape graph node border, concept picker dropdown on `/compare`. `ConceptManifestEntry.asterisk_in_comparison` added so the manifest carries the flag to every consumer of `/api/manifest`; `taxonomy.js` merges it into the registry by `concept_id` so downstream views read it without a second fetch.
+
+**Phases 3–5 — pilot regeneration (⊘ DEFERRED, 2026-05-31).** Skipped at user direction. These phases would have:
+- Run the archive → regen → critic → restore → ingest procedure on concept 01 (P3, smoke test) and 14 / 08 / 26 (P4, fit × grounding grid coverage).
+- Surfaced fold-backs into Items 7 / 8 / 9 *before* bulk rollout.
+- Written `pilot_report.md` with per-row observations + cross-cutting findings + fold-back dispositions.
+
+**Net effect**: the contract adaptation and UI signal are in place. The pilot's job — finding contract-level bugs against four varied rows before they amplify 25× under bulk — was not done. Risks the pilot would have caught (DHE3 surfacing Item 4 gaps; `n_mod < 1` regime on concept 26; `model_critic` acuity outside ARC) move into Item 11 as "discover at bulk-regen time, fold back if found".
 
 **Success Criteria**:
-- [ ] Explorer reads every pilot concept without a fallback path; family field resolves from frontmatter.
-- [ ] Every pilot `result_1gw` is at exactly `net_electric_mw=1000` via the two-knob mechanism.
-- [ ] Human-entered content (`review.md` and any other known human-authored artifact) is preserved before regeneration.
-- [ ] Concepts with `grounding_confidence: low` are visually asterisked in the comparison view (existing asterisk pattern already used for `fit_grade=None`); the user can tell at a glance which numbers are well-grounded vs poorly-grounded without reading the trace.
-- [ ] Pilot set spans the **two-axes grid**: High/Med/Low `fit_grade` × high/medium/low `grounding_confidence`. At minimum: one High-fit-high-grounding (e.g. ARC), one Low-fit-medium-grounding (e.g. Helion Orion), one Low-fit-low-grounding (e.g. Cortex, if it has any `P_native` at all). This exercises the asterisk path and confirms the orchestrator's two-axes routing from Item 6.
-- [ ] Pilot report enumerates issues found and any fixes folded back into templates/helpers/validators before bulk rollout.
+- [x] Explorer reads every pilot concept without a fallback path; family field resolves from frontmatter. *(adapter behavior verified by unit tests; not exercised against real regenerated pilot concepts)*
+- [ ] Every pilot `result_1gw` is at exactly `net_electric_mw=1000` via the two-knob mechanism. *(verify_two_knob is shipped, no pilot concepts run through it under this item)*
+- [ ] Human-entered content (`review.md` and any other known human-authored artifact) is preserved before regeneration. *(procedure documented in design.md / plan.md; no pilot rows executed)*
+- [x] Concepts with `grounding_confidence: low` are visually marked in the comparison view, **and** on All Concepts cards, the taxonomy card, the concept hero, and graph node tooltips. *(scope expanded from spec; shipped as amber ⚠ rather than asterisk)*
+- [ ] Pilot set spans the two-axes grid: High/Med/Low fit × grounding. *(deferred; pilot not run)*
+- [ ] Pilot report enumerates issues found and any fixes folded back into templates/helpers/validators before bulk rollout. *(no pilot, no report; risks roll into Item 11)*
 
 ---
 
 ### Item 11: Bulk Regeneration
 
 **Type**: Execution
-**Effort**: 1–1.5 days
-**Dependencies**: Item 10.
+**Effort**: 1–1.5 days (revised up modestly: ~1.5–2 d; Item 10's pilot was deferred, so Item 11 absorbs the discovery work the pilot would have caught at smaller scale)
+**Dependencies**: Item 10 *(code-only Phases 1–2 satisfied; pilot phases deferred — see Item 10 status. Bulk regen now also functions as the first non-trivial exercise of the new pipeline across concept variety, taking on the risk profile the pilot was meant to absorb.)*
 
 **Files touched**:
 - Regenerated artifacts under `exploration/concept_analysis/analyses/` for every non-`None` fit-grade concept.

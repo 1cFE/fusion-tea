@@ -130,8 +130,19 @@
       heroEl.appendChild(ph);
     }
 
-    // Name
-    left.appendChild(el("h1", "hero__name", concept.name));
+    // Name (+ low-grounding marker if applicable)
+    const nameEl = el("h1", "hero__name", concept.name);
+    if (concept.asterisk_in_comparison) {
+      const marker = document.createElement("span");
+      marker.className = "low-grounding-marker";
+      marker.textContent = "⚠";
+      marker.title =
+        "Low grounding: design-point rests on company-stated or single-source " +
+        "numbers — interpret the cost number with caution.";
+      marker.setAttribute("aria-label", "Low-grounding design point");
+      nameEl.appendChild(marker);
+    }
+    left.appendChild(nameEl);
 
     // Meta row: family badge + company
     const meta = el("div", "hero__meta");
