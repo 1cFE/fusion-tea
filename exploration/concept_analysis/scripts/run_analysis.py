@@ -52,6 +52,7 @@ from lib.paths import (
 from lib.frontmatter import make_frontmatter, parse_frontmatter, update_frontmatter_field
 from lib.templating import fill_template
 from lib.concepts import (
+    Runnability,
     get_comparison_status,
     is_costingfe_runnable,
     load_concepts,
@@ -1535,19 +1536,24 @@ _REGEN_STAGES = ["analyze", "model-setup", "review", "synthesize", "score", "app
 
 
 def _regen_refusal_reason(record: dict) -> str | None:
-    """Return a state-specific refusal reason, or None if the concept is runnable."""
-    if is_costingfe_runnable(record):
+    """Return a state-specific refusal reason, or None if the concept is runnable.
+
+    Dispatches on the shared ``Runnability`` enum (Phase 1 of model_critic) so
+    the four-state policy lives in one place; this function owns regen's
+    tool-specific phrasing only.
+    """
+    state = runnability(record)
+    if state is Runnability.RUNNABLE:
         return None
-    status = get_comparison_status(record)
-    if status == "freeform-deferred":
+    if state is Runnability.FREEFORM_DEFERRED:
         if record.get("fit_grade") == "None":
             return "fit_grade=None — freeform, out of scope to model (Item 11)"
         return ("freeform by judgment (listed in design_point_freeform_routes.md) — "
                 "out of scope to model (Item 11)")
-    if status == "pending-design-point":
+    if state is Runnability.PENDING_DESIGN_POINT:
         return ("pending-design-point — design-point row missing in Item 5's batch; "
                 "populate design_point.csv first")
-    return f"not costingfe-runnable (comparison-status={status})"
+    return f"not costingfe-runnable (comparison-status={get_comparison_status(record)})"
 
 
 def _regen_namespace(cid: str) -> argparse.Namespace:
@@ -1621,6 +1627,35 @@ def cmd_regenerate_concept(records: list[dict], args: argparse.Namespace) -> Non
     cmd_score(records, ns)
     cmd_approve(records, ns)
     print(f"regenerate-concept {cid}: complete.")
+
+
+# ---------------------------------------------------------------------------
+# model-critic — single-concept standalone judgment review
+# ---------------------------------------------------------------------------
+
+
+def cmd_model_critic(records: list[dict], args: argparse.Namespace) -> None:
+    """Run model_critic against one concept; refuse non-runnable states.
+
+    Resolves the concept via ``resolve_one`` (same pattern as
+    ``regenerate-concept``) and delegates to ``agents.model_critic.run`` which
+    owns the Runnability dispatch + tool-local refusal copy. Exits non-zero on
+    refusal or failure; ``--dry-run`` prints the rendered prompt and exits 0.
+    """
+    from agents.model_critic import run as critic_run
+
+    matches = resolve_one(records, args.concept)
+    if not matches:
+        raise ValueError(
+            f"No concept matching '{args.concept}' — needs an archetype_fit.csv row")
+    if len(matches) > 1:
+        detail = ", ".join(m["concept_id"] for m in matches)
+        raise ValueError(f"Ambiguous '{args.concept}' matched: {detail}")
+    record = matches[0]
+
+    rc = critic_run(record, model=args.model, timeout=args.timeout, dry_run=args.dry_run)
+    if rc != 0:
+        sys.exit(rc)
 
 
 # ---------------------------------------------------------------------------
@@ -1774,6 +1809,17 @@ def build_parser() -> argparse.ArgumentParser:
     p_regen.add_argument("--keep-gap-report", action="store_true",
                          help="Skip gap-check and preserve the existing gap_report.md")
 
+    # -- model-critic --
+    p_critic = sub.add_parser(
+        "model-critic",
+        help="Standalone judgment review of one concept; writes one versioned review doc")
+    p_critic.add_argument("concept", help="Concept ID (must have an archetype_fit.csv row)")
+    p_critic.add_argument("--model", default="sonnet", help="Claude model (default: sonnet)")
+    p_critic.add_argument("--timeout", type=int, default=900,
+                          help="Claude invocation timeout in seconds")
+    p_critic.add_argument("--dry-run", action="store_true",
+                          help="Print the rendered prompt and exit; no Claude call, no file written")
+
     return parser
 
 
@@ -1798,6 +1844,7 @@ def main() -> None:
         "heatmap": cmd_heatmap,
         "init-tables": cmd_init_tables,
         "regenerate-concept": cmd_regenerate_concept,
+        "model-critic": cmd_model_critic,
     }
 
     # Loader dispatch split (design.md "CLI dispatch split"). Orchestrator

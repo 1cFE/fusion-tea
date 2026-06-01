@@ -13,6 +13,7 @@ Two loaders live here, by design:
 """
 
 import csv
+import enum
 import re
 from pathlib import Path
 
@@ -104,6 +105,48 @@ def get_comparison_status(record: dict) -> str:
         return "pending-design-point"
     grounding = (dp.get("grounding_confidence") or "").strip().lower()
     return "costingfe-asterisked" if grounding == "low" else "costingfe"
+
+
+class Runnability(enum.Enum):
+    """Shared four-state classifier for "may a costingfe-shaped tool run here?".
+
+    Wraps ``get_comparison_status`` so callers (``cmd_regenerate_concept``,
+    ``cmd_model_critic``, …) can dispatch on a typed enum while owning their
+    own tool-specific refusal copy. The four-state distinction (per Item 6,
+    design.md Invariant #7) is preserved — ``FREEFORM_DEFERRED`` and
+    ``PENDING_DESIGN_POINT`` are distinct values so a caller cannot conflate
+    "judged out of scope" with "data not yet populated".
+
+      * ``RUNNABLE`` — wraps both ``costingfe`` and ``costingfe-asterisked``.
+      * ``FREEFORM_DEFERRED`` — wraps ``freeform-deferred``.
+      * ``PENDING_DESIGN_POINT`` — wraps ``pending-design-point``.
+      * ``NOT_COSTINGFE`` — defensive catch-all for any future status string
+        that isn't one of the four currently produced; never reached today,
+        but keeps the dispatch total and signals a bug rather than silently
+        treating an unknown state as runnable.
+    """
+
+    RUNNABLE = "runnable"
+    FREEFORM_DEFERRED = "freeform_deferred"
+    PENDING_DESIGN_POINT = "pending_design_point"
+    NOT_COSTINGFE = "not_costingfe"
+
+
+def runnability(record: dict) -> Runnability:
+    """Classify a record into the shared ``Runnability`` enum.
+
+    Thin wrapper over ``get_comparison_status``; the policy lives there. This
+    is the single dispatch surface every costingfe-shaped tool consumes; each
+    tool owns its own refusal phrasing keyed on the returned enum value.
+    """
+    status = get_comparison_status(record)
+    if status in ("costingfe", "costingfe-asterisked"):
+        return Runnability.RUNNABLE
+    if status == "freeform-deferred":
+        return Runnability.FREEFORM_DEFERRED
+    if status == "pending-design-point":
+        return Runnability.PENDING_DESIGN_POINT
+    return Runnability.NOT_COSTINGFE
 
 
 def is_costingfe_runnable(record: dict) -> bool:
