@@ -31,7 +31,6 @@ spec = dict(
     R0=3.3,
     plasma_t=1.13,
     elon=1.84,
-    eta_th=0.46,
     p_input=38.6,
 )
 P_native = 233.0   # MWe — ARC 2015 conservative Pilot phase (Sorbom Table 1)

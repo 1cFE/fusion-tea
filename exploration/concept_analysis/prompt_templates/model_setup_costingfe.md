@@ -157,12 +157,49 @@ print_cas_breakdown(generic, native, result_1gw, overrides)
    bare overrides-off answer at the design point — do NOT reference `native` or
    `result_1gw` (overrides-on; wrong reference frame) or `result` (the removed
    two-forward name); the validator rejects all three.
-6. **Physics-characteristic params** (`eta_th`, `eta_de`) go in `spec` only when
-   the design point has a *legitimately different* value backed by archetype-
-   specific physics (e.g. Helion direct conversion → non-thermal cycle). A
-   company-published "optimistic" number is NOT a reason to override the library
-   default. Test: "does the library's archetype default fail to represent this
-   concept's physics?" — if no, leave it to the library.
+
+   **`value` is in M$ (megadollars)** — never raw dollars. The validator rejects
+   any literal value above 50,000 (= $50 B per CAS account) as a raw-$ unit
+   error. If you mean $20M, write `value: 20.0`, NOT `20.0e6`.
+
+   **Derived rollup accounts are forbidden as override targets.** The library
+   computes `C220111 = installation_frac × (C220101+…+C220110)` and the
+   `Cxxx000` rollups as coefficient × sub-totals; overriding their rolled-up
+   dollars bypasses the formula and locks a stale snapshot. To express
+   "this concept assembles more simply," override the *coefficient* via
+   `costing_overrides: {installation_frac: ...}`, not the C220111 dollars.
+   The validator rejects C220111, C220000, C220100, C220200, C220300,
+   C220400, C220500, C220600, C220700.
+
+   **Disabled overrides MUST carry a `blocked_by` issue link.** Any entry
+   with `enabled: False` must also include a 7th field `blocked_by:
+   "<org>/<repo>#<issue>"` (e.g. `"1cFE/1costingfe#42"`) pointing at an open
+   tracker issue. This routes library-side findings ("this account should be
+   zero for dipoles," "library default is wrong") to a tracker instead of
+   letting them die in the `rationale` text. The validator rejects disabled
+   entries without `blocked_by`, and `blocked_by` strings that don't match
+   `org/repo#NN`.
+6. **Power-conversion efficiencies are ENUM-driven — never in `spec`.** `eta_th`,
+   `eta_de`, and `eta_dec` are the efficiencies of specific conversion hardware
+   (thermal cycle, magnetic DEC, inductive DEC). They are owned by costingfe and
+   determined by the concept's `PowerCycle` ENUM (for `eta_th`) and per-`ConfinementConcept`
+   YAML defaults (for `eta_de` / `eta_dec`). To express a *different* value,
+   add an ENUM member upstream in costingfe (a new `PowerCycle` variant, or a
+   refined `ConfinementConcept`) — never override the efficiency directly in
+   `spec`. A company-published "optimistic" number is NOT a reason to override
+   the library default; neither is "this concept does direct conversion" (the
+   correct expression is the concept's ENUM choice + `f_dec`, see Rule 6b).
+   Discipline test: "to express a different efficiency, would I add an ENUM
+   value upstream?" — if yes, that's the right path; if you're tempted to set
+   the kwarg directly in `spec`, stop and use the ENUM instead.
+
+6b. **`f_dec` (DEC fraction) MAY appear in `spec` with provenance.** `f_dec`
+   is the *fraction of fusion power routed through DEC* — a physics+architecture
+   property, not a hardware-efficiency claim. Two concepts in the same ENUM
+   can legitimately differ on `f_dec` (e.g. one mirror has end-cell DEC, another
+   doesn't). Override with the same six-field provenance record as any other
+   override, sourced from the concept's published architecture (not from
+   efficiency claims).
 7. **Sweeps / sensitivity `print()` output is allowed** below the steps; only
    `generic`, `native`, and `result_1gw` are the standardized forwards. Do not add
    `scaled_headline` and do not compute sensitivities for `result_1gw`.

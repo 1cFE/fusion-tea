@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Tests for lib/validators.py — shared regex constants and output validators."""
 
-import re
 from pathlib import Path
 
 from lib.validators import (
@@ -563,7 +562,7 @@ from lib.model_setup_helpers import (
 )
 from costingfe import ConfinementConcept, CostModel, Fuel
 
-spec = dict(R0=3.3, plasma_t=1.13, elon=1.84, eta_th=0.46, p_input=38.6)
+spec = dict(R0=3.3, plasma_t=1.13, elon=1.84, p_input=38.6)
 P_native = 233.0
 model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
 
@@ -589,7 +588,7 @@ INLINE_FORM_TEXT = '''\
 from lib.model_setup_helpers import generic_reference
 from costingfe import ConfinementConcept, CostModel, Fuel
 
-spec = dict(R0=3.3, plasma_t=1.13, elon=1.84, eta_th=0.46, p_input=38.6)
+spec = dict(R0=3.3, plasma_t=1.13, elon=1.84, p_input=38.6)
 P_native = 233.0
 model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
 
@@ -824,7 +823,7 @@ DUP_ACCOUNT = '''\
 overrides = [
     {"account": "C220103", "value": 6901.0, "enabled": True,
      "provenance": "derived", "source": "s", "rationale": "r"},
-    {"account": "C220103", "value": 42.0, "enabled": False,
+    {"account": "C220103", "value": 42.0, "enabled": True,
      "provenance": "direct", "source": "s", "rationale": "r"},
 ]
 '''
@@ -1102,3 +1101,264 @@ class TestOverrideCountVsFitGrade:
 
         assert not _flagged(check_override_count_vs_fit_grade("High", 4))
         assert _flagged(check_override_count_vs_fit_grade("High", 5))
+
+
+# ---------------------------------------------------------------------------
+# OpenStar-surfaced override-side validators (F1, F2, F4, F5a, F5b).
+#
+# Each fixture below shows the minimum-viable model_setup.py shape that
+# isolates the rule being tested. The shared assumptions (`generic` from
+# generic_reference, helper-form `native`/`result_1gw`) match the contract
+# fixtures above; only the registry/spec contents differ.
+# ---------------------------------------------------------------------------
+
+
+_F1_RAW_DOLLARS = '''\
+overrides = [
+    {"account": "C220105", "value": 20.0e6, "enabled": True,
+     "provenance": "derived", "source": "s", "rationale": "raw-$ typo"},
+]
+'''
+
+_F1_NEGATIVE_RAW_DOLLARS = '''\
+overrides = [
+    {"account": "C220105", "value": -20.0e6, "enabled": True,
+     "provenance": "derived", "source": "s", "rationale": "negative raw $"},
+]
+'''
+
+_F1_AT_BOUND = '''\
+overrides = [
+    {"account": "C220103", "value": 50000.0, "enabled": True,
+     "provenance": "direct", "source": "s", "rationale": "at the bound, OK"},
+]
+'''
+
+_F2_WRONG_ACCOUNT_FOR_ARCHETYPE = '''\
+overrides = [
+    {"account": "C220109", "value": 100.0, "enabled": True,
+     "provenance": "direct", "source": "s",
+     "rationale": "DIPOLE has no DEC; C220109 not in archetype set"},
+]
+'''
+
+_F2_VALID_ACCOUNT_FOR_DIPOLE = '''\
+overrides = [
+    {"account": "C220103", "value": 100.0, "enabled": True,
+     "provenance": "direct", "source": "s", "rationale": "valid"},
+]
+'''
+
+_F4_DISABLED_NO_BLOCKED_BY = '''\
+overrides = [
+    {"account": "C220103", "value": 100.0, "enabled": False,
+     "provenance": "direct", "source": "s",
+     "rationale": "disabled but no blocked_by"},
+]
+'''
+
+_F4_DISABLED_BAD_BLOCKED_BY = '''\
+overrides = [
+    {"account": "C220103", "value": 100.0, "enabled": False,
+     "provenance": "direct", "source": "s",
+     "rationale": "wrong shape",
+     "blocked_by": "this is not org/repo#NN"},
+]
+'''
+
+_F4_DISABLED_VALID_BLOCKED_BY = '''\
+overrides = [
+    {"account": "C220103", "value": 100.0, "enabled": False,
+     "provenance": "direct", "source": "s",
+     "rationale": "OK",
+     "blocked_by": "1cFE/1costingfe#42"},
+]
+'''
+
+_F5A_ROLLUP_C220111 = '''\
+overrides = [
+    {"account": "C220111", "value": 50.0, "enabled": True,
+     "provenance": "derived", "source": "s",
+     "rationale": "installation labor"},
+]
+'''
+
+_F5A_ROLLUP_C220000 = '''\
+overrides = [
+    {"account": "C220000", "value": 1000.0, "enabled": True,
+     "provenance": "derived", "source": "s",
+     "rationale": "CAS22 grand rollup"},
+]
+'''
+
+_F5B_SPEC_HAS_ETA_TH = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(R0=3.3, plasma_t=1.13, eta_th=0.46, p_input=38.6)
+P_native = 233.0
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+_F5B_SPEC_HAS_INTEREST_RATE = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(R0=3.3, plasma_t=1.13, p_input=38.6, interest_rate=0.05)
+P_native = 233.0
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+_F5B_SPEC_HAS_F_DEC_OK = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(R0=3.3, plasma_t=1.13, p_input=38.6, f_dec=0.4)
+P_native = 233.0
+model = CostModel(concept=ConfinementConcept.MIRROR, fuel=Fuel.DT)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+
+class TestF1MagnitudeBound:
+    """F1 — raw-$ unit error catch (|value| > 5e4 M$)."""
+
+    def test_rejects_raw_dollars(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F1_RAW_DOLLARS)
+        assert not r.valid
+        assert "M$" in r.fix_message
+        msg = r.fix_message
+        assert "raw" in msg.lower() or "20.0e6" in msg or "20000000" in msg
+
+    def test_rejects_negative_raw_dollars(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F1_NEGATIVE_RAW_DOLLARS)
+        assert not r.valid
+
+    def test_accepts_value_at_bound(self):
+        # 50000 is the upper bound; everything <= passes.
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F1_AT_BOUND)
+        assert r.valid, r.details
+
+
+class TestF2ArchetypeAccountWhitelist:
+    """F2 — archetype-canonical account check (opt-in via kwarg)."""
+
+    def test_rejects_account_not_in_dipole_set(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(
+            _F2_WRONG_ACCOUNT_FOR_ARCHETYPE, archetype_enum="DIPOLE"
+        )
+        assert not r.valid
+        assert "C220109" in r.fix_message
+        assert "DIPOLE" in r.fix_message
+
+    def test_accepts_account_in_dipole_set(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(
+            _F2_VALID_ACCOUNT_FOR_DIPOLE, archetype_enum="DIPOLE"
+        )
+        assert r.valid, r.details
+
+    def test_no_archetype_kwarg_skips_check(self):
+        # Backward compat: when archetype_enum is None, F2 is a no-op.
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F2_WRONG_ACCOUNT_FOR_ARCHETYPE)
+        assert r.valid, r.details
+
+    def test_unknown_archetype_enum_errors(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(
+            _F2_VALID_ACCOUNT_FOR_DIPOLE, archetype_enum="NOT_AN_ENUM"
+        )
+        assert not r.valid
+        assert "NOT_AN_ENUM" in r.fix_message
+
+
+class TestF4BlockedByRequired:
+    """F4 — disabled overrides must carry a tracker link."""
+
+    def test_rejects_disabled_without_blocked_by(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F4_DISABLED_NO_BLOCKED_BY)
+        assert not r.valid
+        assert "blocked_by" in r.fix_message
+
+    def test_rejects_malformed_blocked_by(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F4_DISABLED_BAD_BLOCKED_BY)
+        assert not r.valid
+        assert "org/repo" in r.fix_message or "org" in r.fix_message
+
+    def test_accepts_valid_blocked_by(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F4_DISABLED_VALID_BLOCKED_BY)
+        assert r.valid, r.details
+
+
+class TestF5aForbiddenRollupAccounts:
+    """F5a — derived rollups cannot be overridden at the dollar level."""
+
+    def test_rejects_c220111(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F5A_ROLLUP_C220111)
+        assert not r.valid
+        assert "C220111" in r.fix_message
+        assert "installation_frac" in r.fix_message
+
+    def test_rejects_c220000_rollup(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F5A_ROLLUP_C220000)
+        assert not r.valid
+        assert "C220000" in r.fix_message
+        assert "constituent" in r.fix_message or "C220101" in r.fix_message
+
+
+class TestF5bSpecForbiddenKeys:
+    """F5b — spec dict cannot carry ENUM-owned efficiencies or financial knobs."""
+
+    def test_rejects_eta_th_in_spec(self):
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F5B_SPEC_HAS_ETA_TH)
+        assert not r.valid
+        assert "eta_th" in r.fix_message
+        assert "PowerCycle" in r.fix_message
+
+    def test_rejects_interest_rate_in_spec(self):
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F5B_SPEC_HAS_INTEREST_RATE)
+        assert not r.valid
+        assert "interest_rate" in r.fix_message
+        assert "library" in r.fix_message.lower()
+
+    def test_accepts_f_dec_in_spec(self):
+        # f_dec is a physics/architecture property, NOT an efficiency claim;
+        # the prompt template explicitly allows it.
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F5B_SPEC_HAS_F_DEC_OK)
+        assert r.valid, r.details

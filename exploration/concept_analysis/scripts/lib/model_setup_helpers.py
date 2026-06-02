@@ -43,12 +43,16 @@ _LIBRARY_LIFETIME_YR: float = CostingInput.model_fields["lifetime_yr"].default
 _PROJECTION_NET_MWE: float = 1000.0
 
 
-class Override(TypedDict):
+class Override(TypedDict, total=False):
     """One cost-override registry entry.
 
-    Kept as a plain dict literal (not a dataclass) so ``enabled_overrides`` can
-    subscript it and ``validate_override_registry`` can read it as an
-    ``ast.Dict`` — see design Decision 3.
+    Six required fields + one conditionally-required field. Kept as a plain
+    dict literal (not a dataclass) so ``enabled_overrides`` can subscript it
+    and ``validate_override_registry`` can read it as an ``ast.Dict`` — see
+    design Decision 3. The ``total=False`` permits the optional
+    ``blocked_by`` key; ``validate_override_registry`` enforces *which*
+    fields are required where (the six are always required; ``blocked_by``
+    is required when ``enabled is False``).
     """
 
     account: str  # CAS code, e.g. "C220103"
@@ -57,6 +61,9 @@ class Override(TypedDict):
     provenance: str  # "direct" | "derived"
     source: str  # citation
     rationale: str  # why this override departs from the library default
+    # Required iff enabled is False — points the finding at an open tracker
+    # issue so it doesn't die in `rationale` prose. Format: "<org>/<repo>#<NN>".
+    blocked_by: str
 
 
 def enabled_overrides(overrides: list[Override]) -> dict[str, float]:
