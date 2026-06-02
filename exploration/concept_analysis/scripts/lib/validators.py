@@ -649,6 +649,59 @@ def _default_comment_linenos(text: str) -> set[int]:
     return out
 
 
+def _allowed_spec_keys() -> set[str]:
+    """F7 allow-list: legitimate ``spec`` kwargs that ``forward()`` consumes.
+
+    The source of truth is the library's pydantic ``CostingInput`` schema
+    (costingfe.validation). Anything outside this set is silently dropped by
+    the library's input-validation filter at ``forward()`` time — exactly
+    the failure mode that bit concept 04 (``laser_pulse_energy_kJ=30.0``
+    never reached the model; the library fell back to YAML defaults).
+
+    We subtract two groups from the raw schema:
+      * ``_SPEC_FORBIDDEN_KEYS`` — keys F5b already rejects (ENUM-owned
+        efficiencies, library-owned financial knobs)
+      * framework kwargs the three-forward helper passes itself
+        (``concept`` / ``fuel`` / ``net_electric_mw`` / ``availability`` /
+        ``lifetime_yr`` / ``n_mod`` / ``cost_overrides`` / etc.)
+
+    Imported lazily so callers that never trigger F7 don't pay the import
+    cost (consistent with the F2 archetype-whitelist pattern).
+    """
+    from costingfe.validation import CostingInput
+
+    framework_kwargs = {
+        "concept", "fuel", "net_electric_mw", "availability", "lifetime_yr",
+        "n_mod", "construction_time_yr", "interest_rate", "inflation_rate",
+        "noak", "cost_overrides", "costing_overrides",
+    }
+    return (
+        set(CostingInput.model_fields)
+        - set(_SPEC_FORBIDDEN_KEYS)
+        - framework_kwargs
+    )
+
+
+def _suggest_spec_key(unknown: str, allowed: set[str]) -> str | None:
+    """Closest-match suggestion for an unknown spec key.
+
+    Compares the unknown key against the allowed set with normalization
+    (lowercase, underscore-stripped) so ``laser_pulse_energy_kJ`` and
+    ``e_driver_mj`` can be matched on structural similarity even though
+    one is camel-case-with-suffix and the other is snake-case-bare. Returns
+    the original-cased suggestion if anything scored >= 0.5 similarity, else
+    None (the caller still prints the full allow-list as a fallback).
+    """
+    from difflib import get_close_matches
+
+    def _norm(s: str) -> str:
+        return s.lower().replace("_", "")
+
+    norm_map = {_norm(a): a for a in allowed}
+    hits = get_close_matches(_norm(unknown), list(norm_map), n=1, cutoff=0.5)
+    return norm_map[hits[0]] if hits else None
+
+
 def _spec_dict_keys(node: ast.expr) -> list[str]:
     """Extract the keys named in a module-level ``spec`` binding.
 
@@ -835,6 +888,36 @@ def validate_model_setup_contract(
                 details=(
                     f"spec contains forbidden key(s) "
                     f"{forbidden_hits!r}"
+                ),
+            )
+
+        # F7 — `spec` key whitelist against the library's CostingInput schema.
+        # Anything outside that schema (minus what F5b forbids and minus
+        # framework kwargs) is silently dropped by forward()'s input filter.
+        # Reject with a difflib-suggested canonical match plus the full
+        # allow-list.
+        allowed = _allowed_spec_keys()
+        unknown = [k for k in spec_keys if k not in allowed]
+        if unknown:
+            suggestions = {
+                k: _suggest_spec_key(k, allowed) for k in unknown
+            }
+            sugg_str = ", ".join(
+                f"{k!r} → {v!r}" if v else f"{k!r} → (no close match)"
+                for k, v in suggestions.items()
+            )
+            return ValidationResult(
+                valid=False,
+                fix_message=(
+                    f"`spec` contains unknown key(s) {unknown!r} that "
+                    f"`forward()` would silently drop. Use canonical "
+                    f"CostingInput field names (units per the costingfe "
+                    f"YAML defaults). Suggestions: {sugg_str}. Full "
+                    f"allow-list: {sorted(allowed)}."
+                ),
+                details=(
+                    f"spec contains unknown key(s) {unknown!r} "
+                    f"(silently dropped by forward())"
                 ),
             )
 

@@ -1481,3 +1481,107 @@ class TestF6GenericChainWhitelist:
         r = validate_override_registry(_F6_BAD_CAS22_KEY)
         assert not r.valid
         assert "NOT_AN_ACCOUNT" in r.fix_message
+
+
+# ---------------------------------------------------------------------------
+# F7 — `spec` key whitelist against CostingInput.model_fields.
+# Concept 04 (laser-icf) was the prosecutor's fixture: its `spec` carried
+# `laser_pulse_energy_kJ=30.0, rep_rate_hz=1.0, target_gain=200.0` — none of
+# which are CostingInput fields, all of which were silently dropped at
+# forward() time, leaving the library to use its YAML defaults (1.4 MJ /
+# 10 Hz derived from the engineering Q balance instead of the McKenzie
+# 30 kJ / 1 Hz design point).
+# ---------------------------------------------------------------------------
+
+
+# Concept 04's literal regen output (verbatim from the bulk run):
+_F7_CONCEPT_04_LITERAL = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(
+    laser_pulse_energy_kJ=30.0,
+    rep_rate_hz=1.0,
+    target_gain=200.0,
+    p_input=50.0,
+)
+P_native = 500.0
+model = CostModel(concept=ConfinementConcept.LASER_IFE, fuel=Fuel.PB11)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+
+_F7_ALL_VALID_SPEC = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(
+    R0=3.3,
+    plasma_t=1.13,
+    p_input=38.6,
+    n_e=1e20,
+    T_e=15.0,
+)
+P_native = 233.0
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+
+_F7_BOGUS_SINGLE_KEY = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(R0=3.3, plasma_t=1.13, bogus_key=42.0)
+P_native = 233.0
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+
+class TestF7SpecKeyWhitelist:
+    """F7 — reject `spec` keys outside CostingInput's authoritative schema."""
+
+    def test_rejects_concept04_spec_verbatim(self):
+        # Concept 04's literal regen carried three keys forward() drops:
+        #   laser_pulse_energy_kJ  — not in CostingInput at all
+        #                            (e_driver_mj is derived, not settable)
+        #   rep_rate_hz            — should be f_rep
+        #   target_gain            — not in CostingInput; closest is p_target
+        # F7 must flag all three. difflib's suggester finds at least the
+        # target_gain → p_target match; the full allow-list (which includes
+        # f_rep) is printed as the authoritative fallback.
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F7_CONCEPT_04_LITERAL)
+        assert not r.valid
+        for k in ("laser_pulse_energy_kJ", "rep_rate_hz", "target_gain"):
+            assert k in r.fix_message
+        # At least one difflib suggestion fires (target_gain → p_target):
+        assert "p_target" in r.fix_message
+        # And the canonical allow-list contains the real rep-rate field:
+        assert "f_rep" in r.fix_message
+        # The error explicitly names the failure mode:
+        assert "silently drop" in r.fix_message
+
+    def test_accepts_all_valid_spec(self):
+        # A spec containing only real CostingInput field names passes.
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F7_ALL_VALID_SPEC)
+        assert r.valid, r.details
+
+    def test_rejects_single_bogus_key(self):
+        # One bad key among valid ones is still rejected.
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F7_BOGUS_SINGLE_KEY)
+        assert not r.valid
+        assert "bogus_key" in r.fix_message
+        assert "allow-list" in r.fix_message.lower()
