@@ -39,6 +39,11 @@ not the C220111 dollar amount.
 **Disabled overrides must carry a `blocked_by` field** matching `<org>/<repo>#<NN>`
 (e.g. `"1cFE/1costingfe#42"`) so library-side findings route to a tracker
 instead of dying in the rationale text.
+**Every override must declare `cost_basis: "noak"` (strict).** The framework runs
+`noak=True`; any other vintage (`foak`, `conceptual_design`, `vendor_target`,
+`unspecified`) is rejected. If your source publishes a non-NOAK value, either
+(a) disable + `blocked_by`, (b) apply a documented learning-curve adjustment in
+`rationale` and declare `cost_basis: "noak"`, or (c) file a tracker issue.
 
 **Rules**:
 - Preserve all existing sweeps, scenarios, and sensitivity analyses unless a

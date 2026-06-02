@@ -60,12 +60,12 @@ generic = generic_reference(model, spec, P_native)
 # 3. Override registry — six fields per entry, transcribed from Section 5b.
 overrides = [
     {"account": "C220103", "value": 1.34 * generic.cas22_detail["C220103"], "enabled": True,
-     "provenance": "derived",
+     "cost_basis": "noak", "provenance": "derived",
      "source": "arxiv-2602-20564-dt-dipole-power-plants.md §Table 5, §2.3.1",
      "rationale": "Simpson et al. specify 4,320 km REBCO tape for the full core magnet, with sacrificial section (~20% of coil) replaced annually. The design includes tungsten neutron shield (1,760 t), B₄C (82 t), WC (168 t), and SS316LN structure (351 t) that must be replaced with the sacrificial section. The library default for C220103 prices HTS coils based on conductor but does not account for an in-plasma neutron shield or annual replacement cycle. The override multiplier 1.34 (34% increase) reflects: (1) added tungsten shield mass (~$53M at $30/kg for 1,760 t) amortized over sacrificial lifetime, (2) B₄C/WC shield layers (~$10M combined), and (3) annual replacement labor/hot-cell costs vs. one-time installation."},
 
     {"account": "CAS70", "value": 0.05 * generic.cas22_detail["C220103"], "enabled": True,
-     "provenance": "derived",
+     "cost_basis": "noak", "provenance": "derived",
      "source": "arxiv-2602-20564-dt-dipole-power-plants.md §Table 8, §4.3",
      "rationale": "The sacrificial REBCO section and neutron shield tiles require annual replacement (1.2 year lifetime per Table 8). This creates a recurring O&M cost distinct from the library's default CAS70 model, which assumes staffing-based O&M without major component replacement. Annual replacement cost = (Sacrificial REBCO + tungsten tiles + hot-cell labor) / plant lifetime. Estimating conservatively: sacrificial section is ~5% of full magnet capital cost per year (1.2 year lifetime ≈ annual). The override sets CAS70 additive to 5% of C220103 annually, reflecting this replacement burden."},
 ]

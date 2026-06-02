@@ -200,6 +200,24 @@ print_cas_breakdown(generic, native, result_1gw, overrides)
    letting them die in the `rationale` text. The validator rejects disabled
    entries without `blocked_by`, and `blocked_by` strings that don't match
    `org/repo#NN`.
+
+   **Every override MUST declare `cost_basis: "noak"` (strict).** The
+   framework runs `noak=True` everywhere; only NOAK-vintage values compose
+   correctly with that target. Any other value (`foak`,
+   `conceptual_design`, `vendor_target`, `unspecified`, …) is rejected.
+   If your source publishes a non-NOAK number (e.g. Sorbom 2015's
+   `$1.06M/tonne` mass scaling, NIF's actual FOAK cost, a paper without
+   FOAK/NOAK labels at all), you have three honest options:
+   (a) **defer to the library default** — disable the override and cite a
+       tracker issue in `blocked_by`;
+   (b) **adjust to NOAK with documented derivation** in `rationale` (apply
+       a learning-curve factor with explicit reasoning, e.g. *"$5.1B
+       Sorbom 2014 × 0.2 (10× learning: REBCO conductor + structural-fab
+       mass mfg, 2014→2026) = $1.02B NOAK"*) and declare `cost_basis:
+       "noak"`;
+   (c) **file a tracker issue** if the strict rule misses a genuine case.
+   Do NOT mark `cost_basis: "noak"` to silence the validator if the
+   methodological reconciliation hasn't been done in `rationale`.
 6. **Power-conversion efficiencies are ENUM-driven — never in `spec`.** `eta_th`,
    `eta_de`, and `eta_dec` are the efficiencies of specific conversion hardware
    (thermal cycle, magnetic DEC, inductive DEC). They are owned by costingfe and

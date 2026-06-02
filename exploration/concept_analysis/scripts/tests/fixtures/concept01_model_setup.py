@@ -45,18 +45,18 @@ generic = generic_reference(model, spec, P_native)
 # 3. Override registry — six-field entries.
 overrides = [
     {"account": "C220103", "value": 6901.0, "enabled": True,
-     "provenance": "derived", "source": "arc-reactor-specifications.md §6 (Sorbom 2015)",
+     "cost_basis": "noak", "provenance": "derived", "source": "arc-reactor-specifications.md §6 (Sorbom 2015)",
      "rationale": "Magnet+structure fabricated cost, 2014 USD inflated x1.34."},
     {"account": "C220106", "value": 123.0, "enabled": True,
-     "provenance": "derived", "source": "arc-reactor-specifications.md §6 (Sorbom 2015)",
+     "cost_basis": "noak", "provenance": "derived", "source": "arc-reactor-specifications.md §6 (Sorbom 2015)",
      "rationale": "Double-walled Inconel-718 vacuum vessel, $92M 2014 x1.34."},
     {"account": "CAS27", "value": 146.0, "enabled": True,
-     "provenance": "derived", "source": "arc-reactor-specifications.md §6; Araiinejad 2025",
+     "cost_basis": "noak", "provenance": "derived", "source": "arc-reactor-specifications.md §6; Araiinejad 2025",
      "rationale": "950 t FLiBe x $154/kg NOAK = $146M."},
     # Relative override — references the mandatory `generic` line (overrides-off
     # library value), exercising the generic-frame rule.
     {"account": "C220101", "value": 0.70 * generic.costs.cas21, "enabled": True,
-     "provenance": "derived", "source": "arc-reactor-specifications.md §6 (Sorbom 2015)",
+     "cost_basis": "noak", "provenance": "derived", "source": "arc-reactor-specifications.md §6 (Sorbom 2015)",
      "rationale": "30% structure-cost reduction from modular fab; 0.70 x library CAS21."},
 ]
 

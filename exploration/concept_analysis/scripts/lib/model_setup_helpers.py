@@ -61,6 +61,12 @@ class Override(TypedDict, total=False):
     provenance: str  # "direct" | "derived"
     source: str  # citation
     rationale: str  # why this override departs from the library default
+    # F8 strict — only "noak" is admitted. The framework runs noak=True;
+    # any other vintage (foak, conceptual_design, vendor_target,
+    # unspecified, ...) is rejected. The analyst either declares NOAK and
+    # stands behind any vintage conversion done in `rationale`, or
+    # disables the override and rides the library default.
+    cost_basis: str  # must equal "noak"
     # Required iff enabled is False — points the finding at an open tracker
     # issue so it doesn't die in `rationale` prose. Format: "<org>/<repo>#<NN>".
     blocked_by: str

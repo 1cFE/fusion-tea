@@ -413,8 +413,31 @@ def has_model_category_findings(feedback_text: str) -> bool:
 
 _REQUIRED_OVERRIDE_FIELDS = {
     "account", "value", "enabled", "provenance", "source", "rationale",
+    "cost_basis",
 }
 _VALID_PROVENANCE = {"direct", "derived"}
+
+# F8 — strict NOAK-only cost_basis. The framework always runs `noak=True`
+# (Reid's helper-signature lockout). An override value carries its own
+# vintage assumption that the framework cannot infer; the only way an
+# override value composes correctly with the rest of a NOAK projection is
+# if the analyst commits to a NOAK declaration for it. The strict rule:
+# every override MUST carry `cost_basis: "noak"`. Anything else (FOAK,
+# conceptual-design, unspecified, vendor-target, ...) is rejected.
+#
+# The redirect tells the analyst three honest options:
+#   (1) defer to library default (disable + blocked_by tracker issue),
+#   (2) apply a documented learning-curve / vintage adjustment in the
+#       rationale and stand behind the result as NOAK,
+#   (3) open a tracker issue if the strict rule misses a genuine case.
+#
+# The motivating case is concept 01 (ARC): the analyst transcribed Sorbom
+# 2015 Table 11's $5.1B magnet/structure subtotal verbatim. Sorbom's
+# methodology ($1.06M/tonne mass scaling from pre-2010 paper reactors)
+# pre-dates the FOAK/NOAK convention and cannot honestly be marked NOAK
+# — strict F8 forces the analyst to either reconcile (option 2) or defer
+# to the library's NOAK $/kA*m calculation (option 1).
+_VALID_COST_BASIS = {"noak"}
 
 # F1 — magnitude bound. Override `value` is denominated in M$, so a sane upper
 # bound is ~$50 B per CAS account. Anything larger is almost certainly raw $
@@ -1254,6 +1277,36 @@ def validate_override_registry(
                     f"{sorted(_VALID_PROVENANCE)} (got {provenance!r})."
                 ),
                 details=f"{label} provenance invalid: {provenance!r}",
+            )
+
+        # F8 — strict cost_basis: only "noak" is admitted. The framework
+        # runs `noak=True`; the override value must compose correctly with
+        # that target. The analyst either declares NOAK (and stands behind
+        # any vintage conversion done in `rationale`), defers to library
+        # default, or files a tracker issue.
+        try:
+            cost_basis = ast.literal_eval(fields["cost_basis"])
+        except (ValueError, SyntaxError, TypeError):
+            cost_basis = None
+        if cost_basis not in _VALID_COST_BASIS:
+            return ValidationResult(
+                valid=False,
+                fix_message=(
+                    f"{label} `cost_basis={cost_basis!r}` is not admitted. "
+                    f"The framework runs noak=True; only "
+                    f"`cost_basis: \"noak\"` overrides are accepted. "
+                    f"Either (a) disable the override and rely on the "
+                    f"library default (with `enabled: False` + a "
+                    f"`blocked_by` tracker link), (b) apply a documented "
+                    f"learning-curve or vintage adjustment in the "
+                    f"rationale and stand behind the result as NOAK, or "
+                    f"(c) open a tracker issue if the strict rule misses "
+                    f"a genuine case."
+                ),
+                details=(
+                    f"{label} cost_basis {cost_basis!r} not in "
+                    f"{sorted(_VALID_COST_BASIS)}"
+                ),
             )
 
         # account: a string, for duplicate detection.

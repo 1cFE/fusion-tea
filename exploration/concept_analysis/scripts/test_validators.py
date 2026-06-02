@@ -570,9 +570,17 @@ generic = generic_reference(model, spec, P_native)
 
 overrides = [
     {"account": "C220103", "value": 6901.0, "enabled": True,
-     "provenance": "derived", "source": "Sorbom 2015", "rationale": "magnet"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "Sorbom 2015",
+
+     "rationale": "magnet"},
     {"account": "CAS27", "value": 146.0, "enabled": True,
-     "provenance": "derived", "source": "Araiinejad 2025", "rationale": "FLiBe"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "Araiinejad 2025",
+
+     "rationale": "FLiBe"},
 ]
 
 native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
@@ -773,58 +781,94 @@ overrides = [
 NONNUMERIC_VALUE = '''\
 overrides = [
     {"account": "C220103", "value": "6901", "enabled": True,
-     "provenance": "derived", "source": "s", "rationale": "r"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "r"},
 ]
 '''
 
 CONST_EXPRESSION_VALUE = '''\
 overrides = [
     {"account": "C220103", "value": 5150 * 1.34, "enabled": True,
-     "provenance": "derived", "source": "s", "rationale": "r"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "r"},
 ]
 '''
 
 GENERIC_RELATIVE_VALUE = '''\
 overrides = [
     {"account": "C220101", "value": 0.70 * generic.costs.cas21, "enabled": True,
-     "provenance": "derived", "source": "s", "rationale": "30% prefab reduction"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "30% prefab reduction"},
 ]
 '''
 
 NATIVE_VALUE = '''\
 overrides = [
     {"account": "C220101", "value": 0.70 * native.costs.cas21, "enabled": True,
-     "provenance": "derived", "source": "s", "rationale": "wrong frame"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "wrong frame"},
 ]
 '''
 
 RESULT_1GW_VALUE = '''\
 overrides = [
     {"account": "C220101", "value": 0.70 * result_1gw.costs.cas21, "enabled": True,
-     "provenance": "derived", "source": "s", "rationale": "wrong frame"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "wrong frame"},
 ]
 '''
 
 RESULT_VALUE = '''\
 overrides = [
     {"account": "C220101", "value": 0.70 * result.costs.cas21, "enabled": True,
-     "provenance": "derived", "source": "s", "rationale": "removed two-forward name"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "removed two-forward name"},
 ]
 '''
 
 PROVENANCE_GUESS = '''\
 overrides = [
     {"account": "C220103", "value": 6901.0, "enabled": True,
-     "provenance": "guess", "source": "s", "rationale": "r"},
+     "cost_basis": "noak", "provenance": "guess",
+
+     "source": "s",
+
+     "rationale": "r"},
 ]
 '''
 
 DUP_ACCOUNT = '''\
 overrides = [
     {"account": "C220103", "value": 6901.0, "enabled": True,
-     "provenance": "derived", "source": "s", "rationale": "r"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "r"},
     {"account": "C220103", "value": 42.0, "enabled": True,
-     "provenance": "direct", "source": "s", "rationale": "r"},
+     "cost_basis": "noak", "provenance": "direct",
+
+     "source": "s",
+
+     "rationale": "r"},
 ]
 '''
 
@@ -966,7 +1010,11 @@ MS_233 = '''\
 P_native = 233.0
 overrides = [
     {"account": "C220103", "value": 6901.0, "enabled": True,
-     "provenance": "direct", "source": "s", "rationale": "r"},
+     "cost_basis": "noak", "provenance": "direct",
+
+     "source": "s",
+
+     "rationale": "r"},
 ]
 '''
 
@@ -974,7 +1022,11 @@ MS_400 = '''\
 P_native = 400.0
 overrides = [
     {"account": "C220103", "value": 6901.0, "enabled": True,
-     "provenance": "direct", "source": "s", "rationale": "r"},
+     "cost_basis": "noak", "provenance": "direct",
+
+     "source": "s",
+
+     "rationale": "r"},
 ]
 '''
 
@@ -1116,28 +1168,43 @@ class TestOverrideCountVsFitGrade:
 _F1_RAW_DOLLARS = '''\
 overrides = [
     {"account": "C220105", "value": 20.0e6, "enabled": True,
-     "provenance": "derived", "source": "s", "rationale": "raw-$ typo"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "raw-$ typo"},
 ]
 '''
 
 _F1_NEGATIVE_RAW_DOLLARS = '''\
 overrides = [
     {"account": "C220105", "value": -20.0e6, "enabled": True,
-     "provenance": "derived", "source": "s", "rationale": "negative raw $"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "negative raw $"},
 ]
 '''
 
 _F1_AT_BOUND = '''\
 overrides = [
     {"account": "C220103", "value": 50000.0, "enabled": True,
-     "provenance": "direct", "source": "s", "rationale": "at the bound, OK"},
+     "cost_basis": "noak", "provenance": "direct",
+
+     "source": "s",
+
+     "rationale": "at the bound, OK"},
 ]
 '''
 
 _F2_WRONG_ACCOUNT_FOR_ARCHETYPE = '''\
 overrides = [
     {"account": "C220109", "value": 100.0, "enabled": True,
-     "provenance": "direct", "source": "s",
+     "cost_basis": "noak", "provenance": "direct",
+
+     "source": "s",
+
      "rationale": "DIPOLE has no DEC; C220109 not in archetype set"},
 ]
 '''
@@ -1145,14 +1212,21 @@ overrides = [
 _F2_VALID_ACCOUNT_FOR_DIPOLE = '''\
 overrides = [
     {"account": "C220103", "value": 100.0, "enabled": True,
-     "provenance": "direct", "source": "s", "rationale": "valid"},
+     "cost_basis": "noak", "provenance": "direct",
+
+     "source": "s",
+
+     "rationale": "valid"},
 ]
 '''
 
 _F4_DISABLED_NO_BLOCKED_BY = '''\
 overrides = [
     {"account": "C220103", "value": 100.0, "enabled": False,
-     "provenance": "direct", "source": "s",
+     "cost_basis": "noak", "provenance": "direct",
+
+     "source": "s",
+
      "rationale": "disabled but no blocked_by"},
 ]
 '''
@@ -1160,7 +1234,7 @@ overrides = [
 _F4_DISABLED_BAD_BLOCKED_BY = '''\
 overrides = [
     {"account": "C220103", "value": 100.0, "enabled": False,
-     "provenance": "direct", "source": "s",
+     "cost_basis": "noak", "provenance": "direct", "source": "s",
      "rationale": "wrong shape",
      "blocked_by": "this is not org/repo#NN"},
 ]
@@ -1169,7 +1243,7 @@ overrides = [
 _F4_DISABLED_VALID_BLOCKED_BY = '''\
 overrides = [
     {"account": "C220103", "value": 100.0, "enabled": False,
-     "provenance": "direct", "source": "s",
+     "cost_basis": "noak", "provenance": "direct", "source": "s",
      "rationale": "OK",
      "blocked_by": "1cFE/1costingfe#42"},
 ]
@@ -1178,7 +1252,10 @@ overrides = [
 _F5A_ROLLUP_C220111 = '''\
 overrides = [
     {"account": "C220111", "value": 50.0, "enabled": True,
-     "provenance": "derived", "source": "s",
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
      "rationale": "installation labor"},
 ]
 '''
@@ -1186,7 +1263,10 @@ overrides = [
 _F5A_ROLLUP_C220000 = '''\
 overrides = [
     {"account": "C220000", "value": 1000.0, "enabled": True,
-     "provenance": "derived", "source": "s",
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
      "rationale": "CAS22 grand rollup"},
 ]
 '''
@@ -1374,7 +1454,11 @@ class TestF5bSpecForbiddenKeys:
 _F6_C220103_NOT_ON_COSTS = '''\
 overrides = [
     {"account": "C220103", "value": 0.75 * generic.costs.c220103, "enabled": True,
-     "provenance": "derived", "source": "s", "rationale": "stellarator hallucination 1"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "stellarator hallucination 1"},
 ]
 '''
 
@@ -1382,23 +1466,28 @@ overrides = [
 _F6_FAKE_ROLLUP_NAME = '''\
 overrides = [
     {"account": "C220103", "value": 0.85 * generic.costs.cas22_reactor_equipment_total,
-     "enabled": True, "provenance": "derived", "source": "s",
-     "rationale": "stellarator hallucination 2"},
+     "enabled": True, "cost_basis": "noak", "provenance": "derived",
+ "source": "s",
+ "rationale": "stellarator hallucination 2"},
 ]
 '''
 
 _F6_VALID_CAS22_DETAIL = '''\
 overrides = [
     {"account": "C220103", "value": 0.85 * generic.cas22_detail["C220103"],
-     "enabled": True, "provenance": "derived", "source": "s",
-     "rationale": "the correct CAS22 sub-account pattern"},
+     "enabled": True, "cost_basis": "noak", "provenance": "derived",
+ "source": "s",
+ "rationale": "the correct CAS22 sub-account pattern"},
 ]
 '''
 
 _F6_VALID_COSTS_ROLLUP = '''\
 overrides = [
     {"account": "C220101", "value": 0.70 * generic.costs.cas21, "enabled": True,
-     "provenance": "derived", "source": "s",
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
      "rationale": "the correct top-level rollup pattern"},
 ]
 '''
@@ -1406,7 +1495,10 @@ overrides = [
 _F6_BARE_GENERIC_OK = '''\
 overrides = [
     {"account": "C220101", "value": generic.costs.cas22, "enabled": True,
-     "provenance": "direct", "source": "s",
+     "cost_basis": "noak", "provenance": "direct",
+
+     "source": "s",
+
      "rationale": "bare access to cas22 rollup"},
 ]
 '''
@@ -1414,15 +1506,20 @@ overrides = [
 _F6_UNKNOWN_TOP_LEVEL = '''\
 overrides = [
     {"account": "C220101", "value": 0.5 * generic.bogus_attr, "enabled": True,
-     "provenance": "derived", "source": "s", "rationale": "unknown top-level"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "unknown top-level"},
 ]
 '''
 
 _F6_BAD_CAS22_KEY = '''\
 overrides = [
     {"account": "C220103", "value": generic.cas22_detail["NOT_AN_ACCOUNT"],
-     "enabled": True, "provenance": "direct", "source": "s",
-     "rationale": "subscript key not a valid CAS22 code"},
+     "enabled": True, "cost_basis": "noak", "provenance": "direct",
+ "source": "s",
+ "rationale": "subscript key not a valid CAS22 code"},
 ]
 '''
 
@@ -1585,3 +1682,85 @@ class TestF7SpecKeyWhitelist:
         assert not r.valid
         assert "bogus_key" in r.fix_message
         assert "allow-list" in r.fix_message.lower()
+
+
+# ---------------------------------------------------------------------------
+# F8 — strict cost_basis: NOAK-only. Concept 01 (ARC) was the prosecutor's
+# fixture: its C220103 override transcribed Sorbom 2015's $5.1B verbatim,
+# but Sorbom's $1.06M/tonne mass scaling pre-dates the FOAK/NOAK
+# convention. The framework runs noak=True; the only honest answer is
+# either (a) defer to library, (b) adjust to NOAK with documented
+# derivation, or (c) file a tracker for a new variant.
+# ---------------------------------------------------------------------------
+
+
+_F8_MISSING_COST_BASIS = '''\
+overrides = [
+    {"account": "C220103", "value": 100.0, "enabled": True,
+     "provenance": "direct", "source": "s", "rationale": "no cost_basis"},
+]
+'''
+
+_F8_FOAK_REJECTED = '''\
+overrides = [
+    {"account": "C220103", "value": 5100.0, "enabled": True,
+     "cost_basis": "foak", "provenance": "derived",
+     "source": "Sorbom 2015", "rationale": "vintage-unspecified academic"},
+]
+'''
+
+_F8_CONCEPTUAL_REJECTED = '''\
+overrides = [
+    {"account": "C220103", "value": 5100.0, "enabled": True,
+     "cost_basis": "conceptual_design", "provenance": "derived",
+     "source": "Sorbom 2015", "rationale": "$1.06M/tonne scaling"},
+]
+'''
+
+_F8_NOAK_ACCEPTED = '''\
+overrides = [
+    {"account": "C220103", "value": 1020.0, "enabled": True,
+     "cost_basis": "noak", "provenance": "derived",
+     "source": "Sorbom 2015 + 5x learning curve derivation",
+     "rationale": "$5.1B Sorbom 2014 conceptual x 0.2 (10x learning curve "
+                  "applied: REBCO 2014-2026 + structural fab mass mfg) = $1.02B NOAK"},
+]
+'''
+
+
+class TestF8CostBasisNoakOnly:
+    """F8 — strict NOAK-only cost_basis; everything else is rejected."""
+
+    def test_rejects_missing_cost_basis(self):
+        # Field-shape rejection: missing required field "cost_basis".
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F8_MISSING_COST_BASIS)
+        assert not r.valid
+        assert "cost_basis" in r.fix_message
+
+    def test_rejects_foak(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F8_FOAK_REJECTED)
+        assert not r.valid
+        assert "foak" in r.fix_message
+        # Redirect must mention the three options:
+        assert "library default" in r.fix_message
+        assert "learning" in r.fix_message.lower() or "vintage" in r.fix_message.lower()
+        assert "noak" in r.fix_message.lower()
+
+    def test_rejects_conceptual_design(self):
+        # Any value other than "noak" is rejected (no hedge categories).
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F8_CONCEPTUAL_REJECTED)
+        assert not r.valid
+        assert "conceptual_design" in r.fix_message
+
+    def test_accepts_explicit_noak(self):
+        # cost_basis: "noak" + documented learning-curve derivation = accepted.
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F8_NOAK_ACCEPTED)
+        assert r.valid, r.details
