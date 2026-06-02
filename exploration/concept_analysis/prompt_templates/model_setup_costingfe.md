@@ -145,6 +145,29 @@ print_cas_breakdown(generic, native, result_1gw, overrides)
    financial / operating-economics parameters in `spec`: `availability`,
    `lifetime_yr`, `interest_rate`, `inflation_rate` are library-owned and MUST
    NOT appear. The helper sources `availability` / `lifetime_yr` from the library.
+
+   **Archetype-specific spec key blocklist (workarounds for known library
+   bugs).** Some spec keys must NOT be passed for specific archetypes until
+   the underlying library issue is fixed. Even if your concept's published
+   design point has a value for one of these keys, **do NOT transcribe it
+   into `spec`** — rely on the YAML default (which is a calibrated effective
+   value, not the geometric one). Document the omission with a comment
+   citing the tracker issue.
+
+   - **DIPOLE** (`{{costingfe_concept}} == "DIPOLE"`): do **NOT** pass
+     `plasma_volume`. The MFE radiation calc in `physics.py` treats
+     `plasma_volume` as a uniform integrator (`P_brems ∝ n_e² × T_e^0.5 ×
+     Z_eff × V`), which is calibrated for tokamak / stellarator profiles
+     (200–1,000 m³, relatively flat). Dipole plasmas are highly stratified
+     (Hasegawa-Mauel: `n ∝ R⁻⁴`, `T ∝ R⁻⁸ᐟ³`) with the radiating core
+     <10% of the geometric volume. Passing Simpson's geometric 13,600 m³
+     drives the inverse power balance to manufacture `p_fus ≈ 2,775 MW`
+     and `p_input ≈ 846 MW` to compensate (vs Simpson's 667 / 44.5), and
+     every CAS22 account that scales with `p_th` inflates by ~2.5×. The
+     DIPOLE YAML's `plasma_volume = 200` default is an effective
+     calibration value (not the geometric volume) that produces sane
+     `p_fus ≈ 700 MW`. Library issue: **1cFE/1costingfe#24** (proposed
+     fix: `radiation_peaking_factor` field).
 4. **No `# DEFAULT: ...` comments.** An account you don't override is already
    handled by the library — do not re-pass or annotate defaults. Cite the source
    for the values you *do* set with a normal inline comment.
