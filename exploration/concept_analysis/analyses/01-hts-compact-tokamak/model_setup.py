@@ -24,19 +24,13 @@ from lib.model_setup_helpers import (
 # 1. Specification — design-point inputs only, at native scale.
 #    Geometry / physics / power. NO library-default re-passing.
 spec = dict(
-    R0=3.3,              # arc-reactor-specifications.md §3.1 Table 1
-    a=1.1,               # arc-reactor-specifications.md §3.1 Table 1
-    elon=1.84,           # arc-reactor-specifications.md §3.2.1 Table 1
-    triang=0.50,         # arc-reactor-specifications.md §3.2.1 Table 1
-    B0=9.2,              # arc-reactor-specifications.md §3.1 (on-axis field)
-    Ip=7.8,              # arc-reactor-specifications.md Table 1 (MA)
-    p_fus=525.0,         # arc-reactor-specifications.md §3.2.1 (MW)
-    p_input=38.0,        # arc-reactor-specifications.md §3.2.1 (13.6 MW ICRF + 25 MW LHCD)
-    blanket_t=0.85,      # arc-reactor-specifications.md §3.1 (inboard blanket/shield)
-    n_e20=1.3,           # arc-reactor-specifications.md §3.2.1 (volume-average, 10^20 m^-3)
-    T_e_keV=13.9,        # arc-reactor-specifications.md §3.2.1 (volume-average)
+    R0=3.3,              # arc-reactor-specifications.md §Abstract, Table 1 (major radius)
+    plasma_t=1.1,        # arc-reactor-specifications.md §Abstract, Table 1 (minor radius a)
+    elon=1.8,            # arc-reactor-specifications.md Table 1 (elongation kappa)
+    B=9.2,               # arc-reactor-specifications.md §Abstract, Table 1 (on-axis field, Conservative Pilot)
+    p_input=38.6,        # arc-reactor-specifications.md §Abstract (ICRF 13.6 MW + LHCD 25 MW)
 )
-P_native = 233.0         # MWe — arc-reactor-specifications.md §2 Conservative Pilot phase
+P_native = 233.0         # MWe — arc-reactor-specifications.md §2
 
 # 2. Model.
 model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
@@ -48,29 +42,59 @@ model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
 generic = generic_reference(model, spec, P_native)
 
 # 3. Override registry — six fields per entry, transcribed from Section 5b.
+#
+# NOTE: The analysis Section 5b originally identified three override candidates
+# (C220103, C220104, CAS27), but all are disabled or removed:
+# - C220103 and CAS27: DISABLED because they violate Hard Rule 6 (strict cost_basis="noak"
+#   requirement). The Sorbom et al. 2015 values are FOAK estimates, and NOAK adjustment
+#   methodology (CPI + learning curves) must be reconciled with the library's own scaling
+#   to avoid double-counting. Per Hard Rule 6 option (a): defer to library default when
+#   source is FOAK and NOAK adjustment is uncertain.
+# - C220104: REMOVED entirely (per F-2) because it provided a quantity (38.6 MW) rather
+#   than a dollar cost. The auxiliary heating power is already captured in spec["p_input"],
+#   and the library computes C220104 from p_input and its own ICRF/LHCD unit cost model.
 overrides = [
-    # C220103 (HTS coil) override DISABLED pending vintage discipline (fusion-tea#38,
-    # strict F8: only `cost_basis: noak` overrides are admitted).
-    # Sorbom 2015 Table 11 publishes $5.1B-$5.2B for the magnet/structure subtotal,
-    # but the methodology is vintage-unspecified academic conceptual-design cost
-    # via $1.06M/tonne mass scaling from pre-2010 paper reactors (FIRE/BPX/PCASTS/
-    # ARIES-RS), with no learning curve applied. The framework runs `noak=True`;
-    # the library's NOAK $/kA*m x 8x markup path produces ~$516M for ARC, which
-    # sits within the CFS SPARC NOAK target band. Defer to library default until
-    # fusion-tea#38 lands the strict F8 cost_basis check.
-    {"account": "C220103", "value": 5100.0, "enabled": False,
-     "cost_basis": "noak", "provenance": "derived", "source": "arc-reactor-specifications.md §6 Table 11",
-     "rationale": "Sorbom et al. 2015 provide a bottom-up magnet cost: 5730 km REBCO tape at $36-198/m (2014 USD) = $103M-$206M material, plus 4350 t SS316LN structure ($42M), 358 t copper ($3.03M), $1.06M/tonne fabrication scaling -> $5.1B-$5.2B fabricated. The $1.06M/tonne scaling averages four pre-2010 conceptual designs (FIRE, BPX, PCASTS, ARIES-RS) with no FOAK/NOAK label and no learning curve applied. Sorbom himself does not classify the value as NOAK. Library default for HTS coils uses calibrated $/kA*m at NOAK (~$516M for ARC at b_center=12T, r_bore=1.85m, 8x tokamak markup) which is consistent with CFS's published SPARC magnet program targets. Defer to library default until fusion-tea#38 lands the strict F8 `cost_basis: noak` requirement (forcing the analyst to either apply a documented learning curve to Sorbom's number or rely on the library default).",
-     "blocked_by": "1cFE/fusion-tea#38"},
-
-    {"account": "C220104", "value": 38.0, "enabled": True,
-     "cost_basis": "noak", "provenance": "direct", "source": "arc-reactor-specifications.md §3.2.1",
-     "rationale": "ARC Conservative Pilot: 38 MW external heating (13.6 MW ICRF + ~25 MW LHCD). Directly published for design point. Library would scale from plasma volume/fusion power; ARC's current-drive-dominated heating (63% bootstrap fraction) requires explicit override."},
-
-    {"account": "CAS27", "value": 160.0, "enabled": False,
-     "cost_basis": "noak", "provenance": "derived", "source": "arc-reactor-specifications.md §6 Table 11",
-     "rationale": "FLiBe inventory: 950 tonnes at $154/kg (2014 USD) = $146M material (initial blanket fill, distinct from blanket structure C220101). However, $154/kg is 2014 vintage and FLiBe not produced at industrial scale. Library may already include blanket material inventory in C220101; enabling risks double-counting. If enabled: adjust to 2024 USD ($146M × 1.31 ≈ $191M), but FLiBe learning curve (Araiinejad 2025 ~20% learning rate) could drive to $120–150M at NOAK. Use $160M midpoint if needed.",
-     "blocked_by": "1cFE/1costingfe#1"},
+    {
+        "account": "C220103",
+        "value": 5150.0,
+        "enabled": False,
+        "cost_basis": "noak",
+        "provenance": "derived",
+        "source": "arc-reactor-specifications.md §6, Table 11",
+        "rationale": (
+            "Sorbom et al. 2015 Table 11 reports fabricated cost for 'Magnet/structure' "
+            "of $5.1B–5.2B (midpoint $5.15B) in FY2014 dollars. This encompasses the "
+            "REBCO TF coils (5,730 km tape at $36–198/m → $206M–1,134M materials) plus "
+            "5,670 tonnes of stainless steel 316LN magnet structure at $1.06M/tonne "
+            "fabricated cost. However, this is a FOAK estimate with uncertain NOAK "
+            "adjustment. Per Hard Rule 6, deferring to library default pending "
+            "methodological reconciliation of Sorbom's FOAK value with library's NOAK "
+            "target. CPI adjustment from FY2014 to 2024 is ~1.26; learning-curve "
+            "reduction for NOAK would be ~0.7-0.8 (20% per doubling), but double-counting "
+            "with library's own scaling must be avoided."
+        ),
+        "blocked_by": "1cFE/1costingfe#101",
+    },
+    {
+        "account": "CAS27",
+        "value": 183.0,
+        "enabled": False,
+        "cost_basis": "noak",
+        "provenance": "derived",
+        "source": "arc-reactor-specifications.md §6, Table 10",
+        "rationale": (
+            "FLiBe inventory: 1,190 tonnes at $154/kg (Sorbom et al. 2015, FY2014 "
+            "dollars) = $183M material cost. Sorbom notes 'Since the TiH₂ is in powder "
+            "form and the FLiBe is liquid, the fabricated cost for components made from "
+            "these materials was set equal to the material cost,' so fabricated cost is "
+            "also ~$183M. However, this is a FOAK estimate. CPI adjustment to 2024: "
+            "$183M × 1.26 ≈ $231M. A 20% learning rate (per Araiinejad & Shirvan 2025) "
+            "would reduce the $154/kg unit cost to ~$120/kg at 10× cumulative FLiBe "
+            "production. Per Hard Rule 6, deferring to library default pending "
+            "methodological reconciliation of FOAK vs NOAK adjustment."
+        ),
+        "blocked_by": "1cFE/1costingfe#103",
+    },
 ]
 
 # 4. Overrides-on forwards via the shared helper (native + 1 GWe NOAK projection).
