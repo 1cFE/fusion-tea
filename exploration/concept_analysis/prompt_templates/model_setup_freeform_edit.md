@@ -11,6 +11,12 @@ An existing model from a prior iteration has been copied to `{{output_path}}`.
 - Maintain the existing code structure and organization
 - Add new content incrementally — do not restructure working code
 - Every change must be traceable to a specific finding or a direct consequence of one
+- **Native scale only**: do NOT add or restore a `scaled_headline` dict or any
+  `(p_native/1000)^(1-α)` extrapolation. Freeform models report at the
+  concept's native power. If the prior model contains such code, remove it as
+  part of the edit. The headline LCOE line must read
+  `LCOE: <value> $/MWh   (freeform, native-scale only)` so cross-concept
+  tables can flag it.
 
 {{#if model_feedback}}
 ## Assessment Findings
