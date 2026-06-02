@@ -145,6 +145,29 @@ print_cas_breakdown(generic, native, result_1gw, overrides)
    financial / operating-economics parameters in `spec`: `availability`,
    `lifetime_yr`, `interest_rate`, `inflation_rate` are library-owned and MUST
    NOT appear. The helper sources `availability` / `lifetime_yr` from the library.
+
+   **Archetype-specific spec key blocklist (workarounds for known library
+   bugs).** Some spec keys must NOT be passed for specific archetypes until
+   the underlying library issue is fixed. Even if your concept's published
+   design point has a value for one of these keys, **do NOT transcribe it
+   into `spec`** — rely on the YAML default (which is a calibrated effective
+   value, not the geometric one). Document the omission with a comment
+   citing the tracker issue.
+
+   - **DIPOLE** (`{{costingfe_concept}} == "DIPOLE"`): do **NOT** pass
+     `plasma_volume`. The MFE radiation calc in `physics.py` treats
+     `plasma_volume` as a uniform integrator (`P_brems ∝ n_e² × T_e^0.5 ×
+     Z_eff × V`), which is calibrated for tokamak / stellarator profiles
+     (200–1,000 m³, relatively flat). Dipole plasmas are highly stratified
+     (Hasegawa-Mauel: `n ∝ R⁻⁴`, `T ∝ R⁻⁸ᐟ³`) with the radiating core
+     <10% of the geometric volume. Passing Simpson's geometric 13,600 m³
+     drives the inverse power balance to manufacture `p_fus ≈ 2,775 MW`
+     and `p_input ≈ 846 MW` to compensate (vs Simpson's 667 / 44.5), and
+     every CAS22 account that scales with `p_th` inflates by ~2.5×. The
+     DIPOLE YAML's `plasma_volume = 200` default is an effective
+     calibration value (not the geometric volume) that produces sane
+     `p_fus ≈ 700 MW`. Library issue: **1cFE/1costingfe#24** (proposed
+     fix: `radiation_peaking_factor` field).
 4. **No `# DEFAULT: ...` comments.** An account you don't override is already
    handled by the library — do not re-pass or annotate defaults. Cite the source
    for the values you *do* set with a normal inline comment.
@@ -153,16 +176,92 @@ print_cas_breakdown(generic, native, result_1gw, overrides)
    ∈ `{direct, derived}`, no two entries sharing an `account`. `value` may be a
    number, a constant expression (e.g. `260.0 * 1.34`), or a **relative** override
    expressed as a fraction of the library's own cost: reference the mandatory
-   `generic` line, e.g. `0.70 * generic.costs.cas21`. `generic` is the library's
-   bare overrides-off answer at the design point — do NOT reference `native` or
-   `result_1gw` (overrides-on; wrong reference frame) or `result` (the removed
-   two-forward name); the validator rejects all three.
-6. **Physics-characteristic params** (`eta_th`, `eta_de`) go in `spec` only when
-   the design point has a *legitimately different* value backed by archetype-
-   specific physics (e.g. Helion direct conversion → non-thermal cycle). A
-   company-published "optimistic" number is NOT a reason to override the library
-   default. Test: "does the library's archetype default fail to represent this
-   concept's physics?" — if no, leave it to the library.
+   `generic` line. `generic` is the library's bare overrides-off answer at the
+   design point — do NOT reference `native` or `result_1gw` (overrides-on; wrong
+   reference frame) or `result` (the removed two-forward name); the validator
+   rejects all three.
+
+   **Two relative-override patterns are accepted**, each tied to where the
+   library actually stores the value:
+
+   ```python
+   # Top-level CAS rollup (CostResult attribute):
+   {"account": "C220101", "value": 0.70 * generic.costs.cas21, ...}
+
+   # Per-account CAS22 sub-account (cas22_detail dict):
+   {"account": "C220103", "value": 0.85 * generic.cas22_detail["C220103"], ...}
+   ```
+
+   The library exposes top-level CAS rollups (`cas10`, `cas21`, `cas22`, …,
+   `cas70`, `cas80`, `cas90`, `total_capital`, `lcoe`, `overnight_cost`) as
+   attributes on `generic.costs`. The CAS22 sub-accounts (`C220101`–`C220112`,
+   plus rollup/plant-aggregate keys `C220000`, `C220200`–`C220700`) live as
+   **dict keys** under `generic.cas22_detail`, **not** as attributes —
+   `generic.costs.c220103` does NOT exist (the validator rejects it). Pick the
+   pattern that matches the storage shape: top-level `cas21`, `cas22`, … →
+   `generic.costs.<name>`; per-account `C220xxx` →
+   `generic.cas22_detail["C220xxx"]`.
+
+   **`value` is in M$ (megadollars)** — never raw dollars. The validator rejects
+   any literal value above 50,000 (= $50 B per CAS account) as a raw-$ unit
+   error. If you mean $20M, write `value: 20.0`, NOT `20.0e6`.
+
+   **Derived rollup accounts are forbidden as override targets.** The library
+   computes `C220111 = installation_frac × (C220101+…+C220110)` and the
+   `Cxxx000` rollups as coefficient × sub-totals; overriding their rolled-up
+   dollars bypasses the formula and locks a stale snapshot. To express
+   "this concept assembles more simply," override the *coefficient* via
+   `costing_overrides: {installation_frac: ...}`, not the C220111 dollars.
+   The validator rejects C220111, C220000, C220100, C220200, C220300,
+   C220400, C220500, C220600, C220700.
+
+   **Disabled overrides MUST carry a `blocked_by` issue link.** Any entry
+   with `enabled: False` must also include a 7th field `blocked_by:
+   "<org>/<repo>#<issue>"` (e.g. `"1cFE/1costingfe#42"`) pointing at an open
+   tracker issue. This routes library-side findings ("this account should be
+   zero for dipoles," "library default is wrong") to a tracker instead of
+   letting them die in the `rationale` text. The validator rejects disabled
+   entries without `blocked_by`, and `blocked_by` strings that don't match
+   `org/repo#NN`.
+
+   **Every override MUST declare `cost_basis: "noak"` (strict).** The
+   framework runs `noak=True` everywhere; only NOAK-vintage values compose
+   correctly with that target. Any other value (`foak`,
+   `conceptual_design`, `vendor_target`, `unspecified`, …) is rejected.
+   If your source publishes a non-NOAK number (e.g. Sorbom 2015's
+   `$1.06M/tonne` mass scaling, NIF's actual FOAK cost, a paper without
+   FOAK/NOAK labels at all), you have three honest options:
+   (a) **defer to the library default** — disable the override and cite a
+       tracker issue in `blocked_by`;
+   (b) **adjust to NOAK with documented derivation** in `rationale` (apply
+       a learning-curve factor with explicit reasoning, e.g. *"$5.1B
+       Sorbom 2014 × 0.2 (10× learning: REBCO conductor + structural-fab
+       mass mfg, 2014→2026) = $1.02B NOAK"*) and declare `cost_basis:
+       "noak"`;
+   (c) **file a tracker issue** if the strict rule misses a genuine case.
+   Do NOT mark `cost_basis: "noak"` to silence the validator if the
+   methodological reconciliation hasn't been done in `rationale`.
+6. **Power-conversion efficiencies are ENUM-driven — never in `spec`.** `eta_th`,
+   `eta_de`, and `eta_dec` are the efficiencies of specific conversion hardware
+   (thermal cycle, magnetic DEC, inductive DEC). They are owned by costingfe and
+   determined by the concept's `PowerCycle` ENUM (for `eta_th`) and per-`ConfinementConcept`
+   YAML defaults (for `eta_de` / `eta_dec`). To express a *different* value,
+   add an ENUM member upstream in costingfe (a new `PowerCycle` variant, or a
+   refined `ConfinementConcept`) — never override the efficiency directly in
+   `spec`. A company-published "optimistic" number is NOT a reason to override
+   the library default; neither is "this concept does direct conversion" (the
+   correct expression is the concept's ENUM choice + `f_dec`, see Rule 6b).
+   Discipline test: "to express a different efficiency, would I add an ENUM
+   value upstream?" — if yes, that's the right path; if you're tempted to set
+   the kwarg directly in `spec`, stop and use the ENUM instead.
+
+6b. **`f_dec` (DEC fraction) MAY appear in `spec` with provenance.** `f_dec`
+   is the *fraction of fusion power routed through DEC* — a physics+architecture
+   property, not a hardware-efficiency claim. Two concepts in the same ENUM
+   can legitimately differ on `f_dec` (e.g. one mirror has end-cell DEC, another
+   doesn't). Override with the same six-field provenance record as any other
+   override, sourced from the concept's published architecture (not from
+   efficiency claims).
 7. **Sweeps / sensitivity `print()` output is allowed** below the steps; only
    `generic`, `native`, and `result_1gw` are the standardized forwards. Do not add
    `scaled_headline` and do not compute sensitivities for `result_1gw`.

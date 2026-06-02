@@ -413,8 +413,190 @@ def has_model_category_findings(feedback_text: str) -> bool:
 
 _REQUIRED_OVERRIDE_FIELDS = {
     "account", "value", "enabled", "provenance", "source", "rationale",
+    "cost_basis",
 }
 _VALID_PROVENANCE = {"direct", "derived"}
+
+# F8 — strict NOAK-only cost_basis. The framework always runs `noak=True`
+# (Reid's helper-signature lockout). An override value carries its own
+# vintage assumption that the framework cannot infer; the only way an
+# override value composes correctly with the rest of a NOAK projection is
+# if the analyst commits to a NOAK declaration for it. The strict rule:
+# every override MUST carry `cost_basis: "noak"`. Anything else (FOAK,
+# conceptual-design, unspecified, vendor-target, ...) is rejected.
+#
+# The redirect tells the analyst three honest options:
+#   (1) defer to library default (disable + blocked_by tracker issue),
+#   (2) apply a documented learning-curve / vintage adjustment in the
+#       rationale and stand behind the result as NOAK,
+#   (3) open a tracker issue if the strict rule misses a genuine case.
+#
+# The motivating case is concept 01 (ARC): the analyst transcribed Sorbom
+# 2015 Table 11's $5.1B magnet/structure subtotal verbatim. Sorbom's
+# methodology ($1.06M/tonne mass scaling from pre-2010 paper reactors)
+# pre-dates the FOAK/NOAK convention and cannot honestly be marked NOAK
+# — strict F8 forces the analyst to either reconcile (option 2) or defer
+# to the library's NOAK $/kA*m calculation (option 1).
+_VALID_COST_BASIS = {"noak"}
+
+# F1 — magnitude bound. Override `value` is denominated in M$, so a sane upper
+# bound is ~$50 B per CAS account. Anything larger is almost certainly raw $
+# written where M$ was expected (the OpenStar `C220105: 20.0e6` bug). The bound
+# is *generous* — real fusion plant capitals (CAS22 total ~$5–20 B) sit far
+# below it; only an off-by-1e6 unit error trips the threshold.
+_MAX_OVERRIDE_VALUE_MUSD = 5e4
+
+# F5a — derived rollup accounts that the library computes from coefficients ×
+# constituent sub-accounts. Overriding the rollup dollars short-circuits the
+# library formula and locks a stale snapshot. The structural lever lives in
+# `costing_overrides` (a CostingConstants float) or in the constituent
+# sub-account overrides; we redirect the author to the right knob.
+# Map: account_code -> (why_forbidden, structural_redirect).
+_FORBIDDEN_OVERRIDE_ACCOUNTS: dict[str, tuple[str, str]] = {
+    "C220111": (
+        "derived: installation_frac x (C220101 + ... + C220110)",
+        "set installation_frac via costing_overrides instead of overriding the "
+        "rolled-up dollars",
+    ),
+    "C220000": (
+        "CAS22 grand rollup",
+        "override constituent C220101 ... C220112",
+    ),
+    "C220100": (
+        "CAS22.1 sub-rollup",
+        "override constituent C220101 ... C220112",
+    ),
+    "C220200": (
+        "CAS22.2 sub-rollup",
+        "override C220201 / C220202",
+    ),
+    "C220300": (
+        "CAS22.3 sub-rollup",
+        "override the constituent C220300 items",
+    ),
+    "C220400": (
+        "CAS22.4 sub-rollup",
+        "override the constituent C220400 items",
+    ),
+    "C220500": (
+        "CAS22.5 sub-rollup",
+        "override the constituent C220500 items",
+    ),
+    "C220600": (
+        "CAS22.6 sub-rollup",
+        "override the constituent C220600 items",
+    ),
+    "C220700": (
+        "CAS22.7 sub-rollup",
+        "override the constituent C220700 items",
+    ),
+}
+
+# F4 — `blocked_by` format when an override is disabled. Allows org/repo#NN.
+_BLOCKED_BY_RE = re.compile(r"^[\w\-.]+/[\w\-.]+#\d+$")
+
+# F6 — `generic.<chain>` attribute whitelist. `generic` is a ``ForwardResult``
+# (the bare overrides-off forward). A relative override like
+# ``0.70 * generic.<chain>`` must reference a real attribute or no value comes
+# out. Two stellarator regens shipped with hallucinated attribute paths
+# (``generic.costs.c220103`` and ``generic.costs.cas22_reactor_equipment_total``)
+# because the prompt template's only example used a top-level CostResult
+# attribute and the LLM extrapolated incorrectly for CAS22 sub-accounts. F6
+# walks the value AST and checks every ``generic.X`` chain against the actual
+# library schema.
+
+# Top-level attributes of ``ForwardResult`` (costingfe/types.py:300).
+_GENERIC_TOP_ATTRS: set[str] = {
+    "power_table",
+    "costs",
+    "params",
+    "overridden",
+    "cas22_detail",
+    "plasma_state",
+}
+
+# Valid attribute names on ``CostResult`` (costingfe/types.py:233).
+_COST_RESULT_ATTRS: set[str] = {
+    "cas10",
+    "cas20",
+    "cas21",
+    "cas22",
+    "cas23",
+    "cas24",
+    "cas25",
+    "cas26",
+    "cas27",
+    "cas28",
+    "cas29",
+    "cas30",
+    "cas40",
+    "cas50",
+    "cas60",
+    "cas70",
+    "cas71",
+    "cas72",
+    "cas80",
+    "cas90",
+    "total_capital",
+    "lcoe",
+    "overnight_cost",
+}
+
+# Valid keys for the ``cas22_detail`` dict (cas22.py return dict).
+_CAS22_DETAIL_KEYS: set[str] = {
+    # Per-account
+    "C220101", "C220102", "C220103", "C220104", "C220105", "C220106",
+    "C220107", "C220108", "C220109", "C220110", "C220111", "C220112",
+    # Sub-line informational entries
+    "C220106_vessel", "C220106_pump",
+    # Rollups + plant-aggregates
+    "C220000", "C220100",
+    "C220200", "C220300", "C220400", "C220500", "C220600", "C220700",
+}
+
+# F5b — forbidden ``spec`` keys. The helper-form three-forward contract takes
+# `spec = dict(...)` and `**spec`-splats it into `forward()`. That makes the
+# spec dict a back-door for kwargs that should NOT be authored per-concept:
+#   * ENUM-owned power-conversion efficiencies (eta_th, eta_de, eta_dec) —
+#     these are determined by the concept's PowerCycle ENUM (for eta_th) and
+#     per-ConfinementConcept YAML defaults (for eta_de/eta_dec). Expressing
+#     a different value belongs upstream as a new ENUM variant, not as an
+#     in-spec keyword.
+#   * Library-owned financial / operating knobs (interest_rate, inflation_rate,
+#     construction_time_yr, availability, lifetime_yr). These are sourced by
+#     the helper from the library defaults; appearing in `spec` defeats Reid's
+#     structural lockout.
+# Map: spec_key -> structural_redirect.
+_SPEC_FORBIDDEN_KEYS: dict[str, str] = {
+    "eta_th": (
+        "ENUM-owned by PowerCycle; add a new PowerCycle variant in costingfe "
+        "rather than overriding in spec"
+    ),
+    "eta_de": (
+        "ENUM-owned by ConfinementConcept YAML; change the per-concept YAML "
+        "default in costingfe rather than overriding in spec"
+    ),
+    "eta_dec": (
+        "ENUM-owned by PowerCycle (pulsed DEC); add a new PowerCycle variant "
+        "in costingfe rather than overriding in spec"
+    ),
+    "interest_rate": (
+        "library-owned; let forward()'s default carry it"
+    ),
+    "inflation_rate": (
+        "library-owned; let forward()'s default carry it"
+    ),
+    "construction_time_yr": (
+        "library-owned; let forward()'s default carry it"
+    ),
+    "availability": (
+        "library-owned; sourced by the helper from default_availability(concept)"
+    ),
+    "lifetime_yr": (
+        "library-owned; sourced by the helper from "
+        "CostingInput.lifetime_yr.default"
+    ),
+}
 
 
 def _target_names(node: ast.expr) -> list[str]:
@@ -488,6 +670,85 @@ def _default_comment_linenos(text: str) -> set[int]:
     except (tokenize.TokenError, IndentationError):
         pass  # advisory only — never block on a tokenizer hiccup
     return out
+
+
+def _allowed_spec_keys() -> set[str]:
+    """F7 allow-list: legitimate ``spec`` kwargs that ``forward()`` consumes.
+
+    The source of truth is the library's pydantic ``CostingInput`` schema
+    (costingfe.validation). Anything outside this set is silently dropped by
+    the library's input-validation filter at ``forward()`` time — exactly
+    the failure mode that bit concept 04 (``laser_pulse_energy_kJ=30.0``
+    never reached the model; the library fell back to YAML defaults).
+
+    We subtract two groups from the raw schema:
+      * ``_SPEC_FORBIDDEN_KEYS`` — keys F5b already rejects (ENUM-owned
+        efficiencies, library-owned financial knobs)
+      * framework kwargs the three-forward helper passes itself
+        (``concept`` / ``fuel`` / ``net_electric_mw`` / ``availability`` /
+        ``lifetime_yr`` / ``n_mod`` / ``cost_overrides`` / etc.)
+
+    Imported lazily so callers that never trigger F7 don't pay the import
+    cost (consistent with the F2 archetype-whitelist pattern).
+    """
+    from costingfe.validation import CostingInput
+
+    framework_kwargs = {
+        "concept", "fuel", "net_electric_mw", "availability", "lifetime_yr",
+        "n_mod", "construction_time_yr", "interest_rate", "inflation_rate",
+        "noak", "cost_overrides", "costing_overrides",
+    }
+    return (
+        set(CostingInput.model_fields)
+        - set(_SPEC_FORBIDDEN_KEYS)
+        - framework_kwargs
+    )
+
+
+def _suggest_spec_key(unknown: str, allowed: set[str]) -> str | None:
+    """Closest-match suggestion for an unknown spec key.
+
+    Compares the unknown key against the allowed set with normalization
+    (lowercase, underscore-stripped) so ``laser_pulse_energy_kJ`` and
+    ``e_driver_mj`` can be matched on structural similarity even though
+    one is camel-case-with-suffix and the other is snake-case-bare. Returns
+    the original-cased suggestion if anything scored >= 0.5 similarity, else
+    None (the caller still prints the full allow-list as a fallback).
+    """
+    from difflib import get_close_matches
+
+    def _norm(s: str) -> str:
+        return s.lower().replace("_", "")
+
+    norm_map = {_norm(a): a for a in allowed}
+    hits = get_close_matches(_norm(unknown), list(norm_map), n=1, cutoff=0.5)
+    return norm_map[hits[0]] if hits else None
+
+
+def _spec_dict_keys(node: ast.expr) -> list[str]:
+    """Extract the keys named in a module-level ``spec`` binding.
+
+    Recognizes the two shapes the prompt template tolerates:
+
+    * ``spec = dict(R0=7.1, plasma_volume=1.36e4, p_input=44.5)`` — a call to
+      the ``dict`` builtin with keyword arguments. Each ``kw.arg`` is a key.
+    * ``spec = {"R0": 7.1, "plasma_volume": 1.36e4}`` — a dict literal with
+      string-constant keys.
+
+    Returns an empty list for anything else (e.g. a runtime-built dict);
+    F5b is intentionally a literal-shape check, not a tracing one.
+    """
+    if isinstance(node, ast.Call) and (
+        isinstance(node.func, ast.Name) and node.func.id == "dict"
+    ):
+        return [kw.arg for kw in node.keywords if kw.arg is not None]
+    if isinstance(node, ast.Dict):
+        out: list[str] = []
+        for key in node.keys:
+            if isinstance(key, ast.Constant) and isinstance(key.value, str):
+                out.append(key.value)
+        return out
+    return []
 
 
 def _forward_kwarg_linenos(tree: ast.Module) -> set[int]:
@@ -623,6 +884,66 @@ def validate_model_setup_contract(
             ),
         )
 
+    # F5b — forbidden ``spec`` keys. The spec dict is `**spec`-splatted into
+    # forward() via the helper, so it's a back-door for keys that belong
+    # upstream (ENUM-owned efficiencies) or are library-owned (financial
+    # knobs Reid already structurally locks out of the helper signature).
+    # Walk the module-level ``spec = ...`` binding's RHS dict literal and
+    # reject any forbidden key with a structural-redirect hint.
+    spec_node: ast.expr | None = None
+    for names, value in bindings:
+        if names == ["spec"]:
+            spec_node = value
+            break
+    if spec_node is not None:
+        spec_keys = _spec_dict_keys(spec_node)
+        forbidden_hits = [k for k in spec_keys if k in _SPEC_FORBIDDEN_KEYS]
+        if forbidden_hits:
+            first = forbidden_hits[0]
+            redirect = _SPEC_FORBIDDEN_KEYS[first]
+            return ValidationResult(
+                valid=False,
+                fix_message=(
+                    f"`spec` contains forbidden key(s) "
+                    f"{forbidden_hits!r}. `{first}` is not authorable here — "
+                    f"{redirect}."
+                ),
+                details=(
+                    f"spec contains forbidden key(s) "
+                    f"{forbidden_hits!r}"
+                ),
+            )
+
+        # F7 — `spec` key whitelist against the library's CostingInput schema.
+        # Anything outside that schema (minus what F5b forbids and minus
+        # framework kwargs) is silently dropped by forward()'s input filter.
+        # Reject with a difflib-suggested canonical match plus the full
+        # allow-list.
+        allowed = _allowed_spec_keys()
+        unknown = [k for k in spec_keys if k not in allowed]
+        if unknown:
+            suggestions = {
+                k: _suggest_spec_key(k, allowed) for k in unknown
+            }
+            sugg_str = ", ".join(
+                f"{k!r} → {v!r}" if v else f"{k!r} → (no close match)"
+                for k, v in suggestions.items()
+            )
+            return ValidationResult(
+                valid=False,
+                fix_message=(
+                    f"`spec` contains unknown key(s) {unknown!r} that "
+                    f"`forward()` would silently drop. Use canonical "
+                    f"CostingInput field names (units per the costingfe "
+                    f"YAML defaults). Suggestions: {sugg_str}. Full "
+                    f"allow-list: {sorted(allowed)}."
+                ),
+                details=(
+                    f"spec contains unknown key(s) {unknown!r} "
+                    f"(silently dropped by forward())"
+                ),
+            )
+
     details = f"model_setup contract valid (result_1gw via {form} form)"
 
     if warn_on_default_comments:
@@ -681,21 +1002,129 @@ def _const_numeric(node: ast.expr) -> int | float | None:
     return None
 
 
-def validate_override_registry(text: str) -> ValidationResult:
+def _validate_generic_chain(value_node: ast.expr) -> str | None:
+    """F6 — walk ``value_node`` for every ``generic.<chain>`` reference and
+    verify it against the library's ``ForwardResult`` / ``CostResult`` schema.
+
+    Returns an error fix-message if any chain is invalid (with a redirect
+    hint), or ``None`` if every ``generic``-rooted access resolves to a real
+    attribute. Catches the two stellarator-regen failure modes (``generic.
+    costs.c220103`` and ``generic.costs.cas22_reactor_equipment_total``)
+    structurally.
+
+    Two patterns are validated:
+
+    * ``generic.<top>[.<sub>]`` — the top attribute must be in
+      ``_GENERIC_TOP_ATTRS``; if the top is ``costs``, the sub must be in
+      ``_COST_RESULT_ATTRS``.
+    * ``generic.cas22_detail["<key>"]`` — the subscript key must be in
+      ``_CAS22_DETAIL_KEYS``.
+
+    Bare ``generic`` references (no attribute / subscript) are allowed; deeper
+    chains under ``power_table`` / ``params`` / ``overridden`` are
+    permissively allowed past the first level (the validator only knows the
+    schema two levels deep). Errors carry both the offending path and a
+    redirect that names the correct attribute / subscript style.
+    """
+    for node in ast.walk(value_node):
+        # Pattern A: attribute chain rooted at `generic`.
+        if isinstance(node, ast.Attribute):
+            chain: list[str] = []
+            cursor: ast.expr = node
+            while isinstance(cursor, ast.Attribute):
+                chain.append(cursor.attr)
+                cursor = cursor.value
+            if not (isinstance(cursor, ast.Name) and cursor.id == "generic"):
+                continue
+            chain.reverse()  # outermost → innermost
+            top = chain[0]
+            if top not in _GENERIC_TOP_ATTRS:
+                # Possible cas22 sub-account hallucination at the top level.
+                cas22_hint = ""
+                if top.upper().startswith("C2201") and top.upper() in _CAS22_DETAIL_KEYS:
+                    cas22_hint = (
+                        f' Did you mean `generic.cas22_detail["{top.upper()}"]`?'
+                    )
+                return (
+                    f"`generic.{top}` is not a valid ForwardResult attribute. "
+                    f"Valid top-level attributes: "
+                    f"{', '.join(sorted(_GENERIC_TOP_ATTRS))}.{cas22_hint}"
+                )
+            if top == "costs" and len(chain) >= 2:
+                sub = chain[1]
+                if sub not in _COST_RESULT_ATTRS:
+                    hint = ""
+                    if sub.upper().startswith("C2201") and sub.upper() in _CAS22_DETAIL_KEYS:
+                        hint = (
+                            f' For CAS22 sub-accounts use '
+                            f'`generic.cas22_detail["{sub.upper()}"]` '
+                            f"(CostResult only exposes the rolled-up `cas22`)."
+                        )
+                    return (
+                        f"`generic.costs.{sub}` is not a valid CostResult "
+                        f"attribute. Valid: "
+                        f"{', '.join(sorted(_COST_RESULT_ATTRS))}.{hint}"
+                    )
+        # Pattern B: subscript on `generic.cas22_detail`.
+        if isinstance(node, ast.Subscript):
+            subject = node.value
+            if not (
+                isinstance(subject, ast.Attribute)
+                and subject.attr == "cas22_detail"
+                and isinstance(subject.value, ast.Name)
+                and subject.value.id == "generic"
+            ):
+                continue
+            key_node = node.slice
+            if isinstance(key_node, ast.Constant) and isinstance(
+                key_node.value, str
+            ):
+                key = key_node.value
+                if key not in _CAS22_DETAIL_KEYS:
+                    return (
+                        f'`generic.cas22_detail[{key!r}]` — {key!r} is not a '
+                        f"valid CAS22 sub-account key. Valid keys: "
+                        f"{', '.join(sorted(_CAS22_DETAIL_KEYS))}."
+                    )
+    return None
+
+
+def validate_override_registry(
+    text: str,
+    *,
+    archetype_enum: str | None = None,
+) -> ValidationResult:
     """Enforce the shape of the ``overrides`` registry via AST.
 
     Requires a module-level ``overrides = [ {...}, ... ]`` list of dict
     literals where **every** entry (regardless of ``enabled``) has all six
-    fields and ``provenance ∈ {direct, derived}``, with no two entries
-    sharing an ``account``. ``value`` may be a number, a constant numeric
-    expression (e.g. ``260.0 * 1.34``), or an expression over ``generic``
-    (a *relative* override, e.g. ``0.70 * generic.costs.cas21``); it MUST NOT
-    reference ``native``, ``result_1gw``, or ``result`` (wrong reference
-    frame — a relative override is written against the bare library value,
-    not an overrides-on forward or the removed two-forward name). For
-    ``generic``-referencing values the numeric type is enforced at runtime
-    when ``model_setup.py`` executes — provenance, not literal-ness, is what
-    makes an override legitimate (see the design doc, Override Entry).
+    required fields and ``provenance ∈ {direct, derived}``, with no two
+    entries sharing an ``account``. ``value`` may be a number, a constant
+    numeric expression (e.g. ``260.0 * 1.34``), or an expression over
+    ``generic`` (a *relative* override, e.g. ``0.70 * generic.costs.cas21``);
+    it MUST NOT reference ``native``, ``result_1gw``, or ``result`` (wrong
+    reference frame). For ``generic``-referencing values the numeric type is
+    enforced at runtime when ``model_setup.py`` executes — provenance, not
+    literal-ness, is what makes an override legitimate (design doc,
+    Override Entry).
+
+    OpenStar-surfaced extensions (see ``validation_reviews/12-openstar-*``):
+
+    * **F1 magnitude bound** — literal-numeric ``value`` must satisfy
+      ``|value| <= 5e4`` M$. The OpenStar `C220105: 20.0e6` raw-$ bug shipped
+      twice because no check caught the off-by-1e6 unit error.
+    * **F2 archetype account whitelist** — when ``archetype_enum`` is
+      supplied, ``account`` must appear in the concept's
+      ``canonical_accounts.get_canonical_accounts(enum)`` set. Errors carry
+      the one-line semantic so "wrong account" mistakes (C220105 vs C220106
+      for vessel cost) surface with the right redirect.
+    * **F4 blocked_by required when ``enabled: False``** — disabled entries
+      must carry a 7th field ``blocked_by: "org/repo#NN"`` so library-side
+      findings flow to a tracker instead of dying in code comments.
+    * **F5a forbidden-rollup accounts** — accounts that the library computes
+      as ``coefficient × sub-totals`` (C220111, Cxxx000 rollups) cannot be
+      overridden at the dollar level; the redirect points at the coefficient
+      or constituent accounts.
     """
     try:
         tree = ast.parse(text)
@@ -786,11 +1215,25 @@ def validate_override_registry(text: str) -> ValidationResult:
                     f"{label} value references {sorted(bad_frame)} (frame error)"
                 ),
             )
+        # F6 — `generic.<chain>` schema whitelist. Any `generic.X` access in
+        # the value expression must resolve to a real attribute on
+        # ForwardResult / CostResult, or to a real key on cas22_detail.
+        # Catches the stellarator-regen hallucinations (e.g.
+        # `generic.costs.c220103`) structurally.
+        if "generic" in referenced:
+            chain_err = _validate_generic_chain(value_node)
+            if chain_err is not None:
+                return ValidationResult(
+                    valid=False,
+                    fix_message=f"{label} {chain_err}",
+                    details=f"{label} invalid generic.<chain>: {chain_err}",
+                )
         if not referenced:
             # No runtime references → must be a statically-numeric literal or a
             # constant arithmetic expression. (Catches strings, lists, dicts,
             # booleans, and typoed values.)
-            if _const_numeric(value_node) is None:
+            literal_value = _const_numeric(value_node)
+            if literal_value is None:
                 return ValidationResult(
                     valid=False,
                     fix_message=(
@@ -800,6 +1243,23 @@ def validate_override_registry(text: str) -> ValidationResult:
                         f"and non-numeric literals are not allowed."
                     ),
                     details=f"{label} value is not numeric and references no runtime value",
+                )
+            # F1 — magnitude bound. Override values are denominated in M$;
+            # a literal above 5e4 (= $50 B) is almost certainly raw $ written
+            # where M$ was expected (the OpenStar C220105: 20.0e6 bug).
+            if abs(literal_value) > _MAX_OVERRIDE_VALUE_MUSD:
+                return ValidationResult(
+                    valid=False,
+                    fix_message=(
+                        f"{label} `value={literal_value:g}` exceeds the "
+                        f"magnitude bound of {_MAX_OVERRIDE_VALUE_MUSD:g} M$. "
+                        f"Override values are denominated in M$; did you write "
+                        f"raw dollars by mistake (e.g. 20.0e6 instead of 20.0)?"
+                    ),
+                    details=(
+                        f"{label} value {literal_value:g} > "
+                        f"{_MAX_OVERRIDE_VALUE_MUSD:g} M$ (raw-$ unit error?)"
+                    ),
                 )
         # else: references `generic` (or another runtime name) → relative
         # override; numeric type is enforced at runtime on module execution.
@@ -819,6 +1279,36 @@ def validate_override_registry(text: str) -> ValidationResult:
                 details=f"{label} provenance invalid: {provenance!r}",
             )
 
+        # F8 — strict cost_basis: only "noak" is admitted. The framework
+        # runs `noak=True`; the override value must compose correctly with
+        # that target. The analyst either declares NOAK (and stands behind
+        # any vintage conversion done in `rationale`), defers to library
+        # default, or files a tracker issue.
+        try:
+            cost_basis = ast.literal_eval(fields["cost_basis"])
+        except (ValueError, SyntaxError, TypeError):
+            cost_basis = None
+        if cost_basis not in _VALID_COST_BASIS:
+            return ValidationResult(
+                valid=False,
+                fix_message=(
+                    f"{label} `cost_basis={cost_basis!r}` is not admitted. "
+                    f"The framework runs noak=True; only "
+                    f"`cost_basis: \"noak\"` overrides are accepted. "
+                    f"Either (a) disable the override and rely on the "
+                    f"library default (with `enabled: False` + a "
+                    f"`blocked_by` tracker link), (b) apply a documented "
+                    f"learning-curve or vintage adjustment in the "
+                    f"rationale and stand behind the result as NOAK, or "
+                    f"(c) open a tracker issue if the strict rule misses "
+                    f"a genuine case."
+                ),
+                details=(
+                    f"{label} cost_basis {cost_basis!r} not in "
+                    f"{sorted(_VALID_COST_BASIS)}"
+                ),
+            )
+
         # account: a string, for duplicate detection.
         try:
             account = ast.literal_eval(fields["account"])
@@ -831,6 +1321,100 @@ def validate_override_registry(text: str) -> ValidationResult:
                 details=f"{label} account is not a string literal",
             )
         accounts.append(account)
+
+        # F5a — forbidden-rollup accounts. The library computes these as
+        # coefficient × sub-totals; overriding the rolled-up dollars locks a
+        # stale snapshot and bypasses the formula. Redirect to the coefficient
+        # or constituent accounts.
+        if account in _FORBIDDEN_OVERRIDE_ACCOUNTS:
+            why, redirect = _FORBIDDEN_OVERRIDE_ACCOUNTS[account]
+            return ValidationResult(
+                valid=False,
+                fix_message=(
+                    f"{label} `account={account!r}` is a forbidden override "
+                    f"target ({why}). {redirect.capitalize()}."
+                ),
+                details=(
+                    f"{label} forbidden-rollup account {account} ({why})"
+                ),
+            )
+
+        # F2 — canonical-account whitelist. When the caller supplies the
+        # concept's archetype enum, the account must appear in the per-
+        # archetype canonical list (`get_canonical_accounts(enum)`). Catches
+        # the OpenStar "C220105 (foundation) vs C220106 (vessel)" confusion
+        # by pointing the author at the right code.
+        if archetype_enum is not None:
+            # Import here to keep `lib.canonical_accounts` an optional
+            # dependency of `validate_override_registry` — callers that don't
+            # pass `archetype_enum` don't pay the import cost.
+            from lib.canonical_accounts import get_canonical_accounts
+
+            try:
+                canonical = {row.account: row for row in
+                             get_canonical_accounts(archetype_enum)}
+            except KeyError as exc:
+                return ValidationResult(
+                    valid=False,
+                    fix_message=(
+                        f"Unknown archetype enum {archetype_enum!r} passed to "
+                        f"validate_override_registry — {exc}"
+                    ),
+                    details=f"Unknown archetype_enum: {archetype_enum!r}",
+                )
+            if account not in canonical:
+                hint_codes = sorted(canonical)
+                return ValidationResult(
+                    valid=False,
+                    fix_message=(
+                        f"{label} `account={account!r}` is not in the canonical "
+                        f"{archetype_enum} account set. Valid accounts for this "
+                        f"archetype: {', '.join(hint_codes)}."
+                    ),
+                    details=(
+                        f"{label} account {account} not in canonical "
+                        f"{archetype_enum} set"
+                    ),
+                )
+
+        # F4 — `blocked_by` required when an override is disabled. Disabled
+        # entries must point at an open tracker issue so the finding flows
+        # somewhere instead of dying in a code comment (OpenStar's "F-1
+        # library bug" misdiagnosis sat in `rationale` for two iterations).
+        try:
+            enabled = ast.literal_eval(fields["enabled"])
+        except (ValueError, SyntaxError, TypeError):
+            enabled = None
+        if enabled is False:
+            blocked_by_node = fields.get("blocked_by")
+            if blocked_by_node is None:
+                return ValidationResult(
+                    valid=False,
+                    fix_message=(
+                        f"{label} has `enabled: False` but no `blocked_by` "
+                        f"field. Disabled overrides MUST cite an open tracker "
+                        f"issue: add `blocked_by: \"<org>/<repo>#<issue>\"` "
+                        f"(e.g. \"1cFE/1costingfe#42\") so the finding routes "
+                        f"to a tracker instead of dying in the rationale."
+                    ),
+                    details=f"{label} disabled but no blocked_by field",
+                )
+            try:
+                blocked_by = ast.literal_eval(blocked_by_node)
+            except (ValueError, SyntaxError, TypeError):
+                blocked_by = None
+            if not isinstance(blocked_by, str) or not _BLOCKED_BY_RE.match(blocked_by):
+                return ValidationResult(
+                    valid=False,
+                    fix_message=(
+                        f"{label} `blocked_by={blocked_by!r}` must match "
+                        f"`<org>/<repo>#<issue>` (e.g. \"1cFE/1costingfe#42\")."
+                    ),
+                    details=(
+                        f"{label} blocked_by {blocked_by!r} does not match "
+                        f"org/repo#NN"
+                    ),
+                )
 
     duplicates = sorted({a for a in accounts if accounts.count(a) > 1})
     if duplicates:

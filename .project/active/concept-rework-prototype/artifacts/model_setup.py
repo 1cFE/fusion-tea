@@ -94,7 +94,7 @@ overrides = [
         "account": "C220103",
         "value": 6901.0,        # 5150 M$ (2014) × 1.34
         "enabled": True,
-        "provenance": "derived",
+        "cost_basis": "noak", "provenance": "derived",
         "source": "arc-reactor-specifications.md §6 (Sorbom 2015)",
         "rationale": (
             "ARC's published fabricated magnet+structure cost is $5.1–5.2B 2014 USD "
@@ -110,7 +110,7 @@ overrides = [
         "account": "C220101",
         "value": 348.0,         # 260 M$ (2014) × 1.34
         "enabled": True,
-        "provenance": "derived",
+        "cost_basis": "noak", "provenance": "derived",
         "source": "arc-reactor-specifications.md §6 (Sorbom 2015)",
         "rationale": (
             "ARC's FLiBe liquid-immersion blanket is a published $260 M$ 2014 USD "
@@ -123,7 +123,7 @@ overrides = [
         "account": "C220106",
         "value": 123.0,         # 92 M$ (2014) × 1.34
         "enabled": True,
-        "provenance": "derived",
+        "cost_basis": "noak", "provenance": "derived",
         "source": "arc-reactor-specifications.md §6 (Sorbom 2015)",
         "rationale": (
             "ARC's double-walled Inconel-718 vacuum vessel is $92 M$ 2014 USD "
@@ -136,7 +136,7 @@ overrides = [
         "account": "CAS27",
         "value": 146.0,
         "enabled": True,
-        "provenance": "derived",
+        "cost_basis": "noak", "provenance": "derived",
         "source": "arc-reactor-specifications.md §6 (quantity); Araiinejad 2025 (price)",
         "rationale": (
             "950 t FLiBe (published quantity) × $154/kg NOAK (Araiinejad & Shirvan 2025, "

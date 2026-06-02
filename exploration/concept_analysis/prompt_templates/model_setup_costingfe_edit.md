@@ -24,7 +24,34 @@ not convert the helper call into an inline two-knob `forward()` (the contract
 validator rejects it), do not drop the mandatory `generic` line, and do not
 re-introduce `# DEFAULT:` comments or the uniform financial parameters
 (`availability`, `lifetime_yr`, `interest_rate`, `inflation_rate`) into `spec`.
+**Do not re-introduce power-conversion efficiencies (`eta_th`, `eta_de`,
+`eta_dec`) into `spec`** — these are ENUM-driven; the way to express a
+different value is to add an upstream ENUM member in costingfe, not a per-
+concept override. `f_dec` (DEC fraction) MAY appear in `spec` with provenance —
+it's a physics+architecture property, not a hardware-efficiency claim.
 A relative override references `generic` (never `native` or `result_1gw`).
+
+**Archetype-specific spec key blocklist (library-bug workarounds).** Until library issues are
+fixed, some spec keys must not be passed for specific archetypes — even when the published design
+point has a value for them. If the prior model contains any of these keys in `spec`, **remove
+them** as part of this edit:
+- **DIPOLE**: remove `plasma_volume` if present. The MFE radiation calc treats `plasma_volume`
+  as a uniform integrator and over-counts radiation for dipole-peaked profiles. Library issue:
+  **1cFE/1costingfe#24**. Document the removal with a brief comment citing the issue.
+
+**Override values are M$, never raw dollars** (validator rejects `|value| > 5e4`).
+**Derived rollup accounts cannot be overridden**: C220111, C220000, C220100,
+C220200, C220300, C220400, C220500, C220600, C220700. To express "this concept
+assembles more simply," override `installation_frac` via `costing_overrides`,
+not the C220111 dollar amount.
+**Disabled overrides must carry a `blocked_by` field** matching `<org>/<repo>#<NN>`
+(e.g. `"1cFE/1costingfe#42"`) so library-side findings route to a tracker
+instead of dying in the rationale text.
+**Every override must declare `cost_basis: "noak"` (strict).** The framework runs
+`noak=True`; any other vintage (`foak`, `conceptual_design`, `vendor_target`,
+`unspecified`) is rejected. If your source publishes a non-NOAK value, either
+(a) disable + `blocked_by`, (b) apply a documented learning-curve adjustment in
+`rationale` and declare `cost_basis: "noak"`, or (c) file a tracker issue.
 
 **Rules**:
 - Preserve all existing sweeps, scenarios, and sensitivity analyses unless a

@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Tests for lib/validators.py — shared regex constants and output validators."""
 
-import re
 from pathlib import Path
 
 from lib.validators import (
@@ -563,7 +562,7 @@ from lib.model_setup_helpers import (
 )
 from costingfe import ConfinementConcept, CostModel, Fuel
 
-spec = dict(R0=3.3, plasma_t=1.13, elon=1.84, eta_th=0.46, p_input=38.6)
+spec = dict(R0=3.3, plasma_t=1.13, elon=1.84, p_input=38.6)
 P_native = 233.0
 model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
 
@@ -571,9 +570,17 @@ generic = generic_reference(model, spec, P_native)
 
 overrides = [
     {"account": "C220103", "value": 6901.0, "enabled": True,
-     "provenance": "derived", "source": "Sorbom 2015", "rationale": "magnet"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "Sorbom 2015",
+
+     "rationale": "magnet"},
     {"account": "CAS27", "value": 146.0, "enabled": True,
-     "provenance": "derived", "source": "Araiinejad 2025", "rationale": "FLiBe"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "Araiinejad 2025",
+
+     "rationale": "FLiBe"},
 ]
 
 native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
@@ -589,7 +596,7 @@ INLINE_FORM_TEXT = '''\
 from lib.model_setup_helpers import generic_reference
 from costingfe import ConfinementConcept, CostModel, Fuel
 
-spec = dict(R0=3.3, plasma_t=1.13, elon=1.84, eta_th=0.46, p_input=38.6)
+spec = dict(R0=3.3, plasma_t=1.13, elon=1.84, p_input=38.6)
 P_native = 233.0
 model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
 
@@ -774,58 +781,94 @@ overrides = [
 NONNUMERIC_VALUE = '''\
 overrides = [
     {"account": "C220103", "value": "6901", "enabled": True,
-     "provenance": "derived", "source": "s", "rationale": "r"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "r"},
 ]
 '''
 
 CONST_EXPRESSION_VALUE = '''\
 overrides = [
     {"account": "C220103", "value": 5150 * 1.34, "enabled": True,
-     "provenance": "derived", "source": "s", "rationale": "r"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "r"},
 ]
 '''
 
 GENERIC_RELATIVE_VALUE = '''\
 overrides = [
     {"account": "C220101", "value": 0.70 * generic.costs.cas21, "enabled": True,
-     "provenance": "derived", "source": "s", "rationale": "30% prefab reduction"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "30% prefab reduction"},
 ]
 '''
 
 NATIVE_VALUE = '''\
 overrides = [
     {"account": "C220101", "value": 0.70 * native.costs.cas21, "enabled": True,
-     "provenance": "derived", "source": "s", "rationale": "wrong frame"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "wrong frame"},
 ]
 '''
 
 RESULT_1GW_VALUE = '''\
 overrides = [
     {"account": "C220101", "value": 0.70 * result_1gw.costs.cas21, "enabled": True,
-     "provenance": "derived", "source": "s", "rationale": "wrong frame"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "wrong frame"},
 ]
 '''
 
 RESULT_VALUE = '''\
 overrides = [
     {"account": "C220101", "value": 0.70 * result.costs.cas21, "enabled": True,
-     "provenance": "derived", "source": "s", "rationale": "removed two-forward name"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "removed two-forward name"},
 ]
 '''
 
 PROVENANCE_GUESS = '''\
 overrides = [
     {"account": "C220103", "value": 6901.0, "enabled": True,
-     "provenance": "guess", "source": "s", "rationale": "r"},
+     "cost_basis": "noak", "provenance": "guess",
+
+     "source": "s",
+
+     "rationale": "r"},
 ]
 '''
 
 DUP_ACCOUNT = '''\
 overrides = [
     {"account": "C220103", "value": 6901.0, "enabled": True,
-     "provenance": "derived", "source": "s", "rationale": "r"},
-    {"account": "C220103", "value": 42.0, "enabled": False,
-     "provenance": "direct", "source": "s", "rationale": "r"},
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "r"},
+    {"account": "C220103", "value": 42.0, "enabled": True,
+     "cost_basis": "noak", "provenance": "direct",
+
+     "source": "s",
+
+     "rationale": "r"},
 ]
 '''
 
@@ -967,7 +1010,11 @@ MS_233 = '''\
 P_native = 233.0
 overrides = [
     {"account": "C220103", "value": 6901.0, "enabled": True,
-     "provenance": "direct", "source": "s", "rationale": "r"},
+     "cost_basis": "noak", "provenance": "direct",
+
+     "source": "s",
+
+     "rationale": "r"},
 ]
 '''
 
@@ -975,7 +1022,11 @@ MS_400 = '''\
 P_native = 400.0
 overrides = [
     {"account": "C220103", "value": 6901.0, "enabled": True,
-     "provenance": "direct", "source": "s", "rationale": "r"},
+     "cost_basis": "noak", "provenance": "direct",
+
+     "source": "s",
+
+     "rationale": "r"},
 ]
 '''
 
@@ -1102,3 +1153,614 @@ class TestOverrideCountVsFitGrade:
 
         assert not _flagged(check_override_count_vs_fit_grade("High", 4))
         assert _flagged(check_override_count_vs_fit_grade("High", 5))
+
+
+# ---------------------------------------------------------------------------
+# OpenStar-surfaced override-side validators (F1, F2, F4, F5a, F5b).
+#
+# Each fixture below shows the minimum-viable model_setup.py shape that
+# isolates the rule being tested. The shared assumptions (`generic` from
+# generic_reference, helper-form `native`/`result_1gw`) match the contract
+# fixtures above; only the registry/spec contents differ.
+# ---------------------------------------------------------------------------
+
+
+_F1_RAW_DOLLARS = '''\
+overrides = [
+    {"account": "C220105", "value": 20.0e6, "enabled": True,
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "raw-$ typo"},
+]
+'''
+
+_F1_NEGATIVE_RAW_DOLLARS = '''\
+overrides = [
+    {"account": "C220105", "value": -20.0e6, "enabled": True,
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "negative raw $"},
+]
+'''
+
+_F1_AT_BOUND = '''\
+overrides = [
+    {"account": "C220103", "value": 50000.0, "enabled": True,
+     "cost_basis": "noak", "provenance": "direct",
+
+     "source": "s",
+
+     "rationale": "at the bound, OK"},
+]
+'''
+
+_F2_WRONG_ACCOUNT_FOR_ARCHETYPE = '''\
+overrides = [
+    {"account": "C220109", "value": 100.0, "enabled": True,
+     "cost_basis": "noak", "provenance": "direct",
+
+     "source": "s",
+
+     "rationale": "DIPOLE has no DEC; C220109 not in archetype set"},
+]
+'''
+
+_F2_VALID_ACCOUNT_FOR_DIPOLE = '''\
+overrides = [
+    {"account": "C220103", "value": 100.0, "enabled": True,
+     "cost_basis": "noak", "provenance": "direct",
+
+     "source": "s",
+
+     "rationale": "valid"},
+]
+'''
+
+_F4_DISABLED_NO_BLOCKED_BY = '''\
+overrides = [
+    {"account": "C220103", "value": 100.0, "enabled": False,
+     "cost_basis": "noak", "provenance": "direct",
+
+     "source": "s",
+
+     "rationale": "disabled but no blocked_by"},
+]
+'''
+
+_F4_DISABLED_BAD_BLOCKED_BY = '''\
+overrides = [
+    {"account": "C220103", "value": 100.0, "enabled": False,
+     "cost_basis": "noak", "provenance": "direct", "source": "s",
+     "rationale": "wrong shape",
+     "blocked_by": "this is not org/repo#NN"},
+]
+'''
+
+_F4_DISABLED_VALID_BLOCKED_BY = '''\
+overrides = [
+    {"account": "C220103", "value": 100.0, "enabled": False,
+     "cost_basis": "noak", "provenance": "direct", "source": "s",
+     "rationale": "OK",
+     "blocked_by": "1cFE/1costingfe#42"},
+]
+'''
+
+_F5A_ROLLUP_C220111 = '''\
+overrides = [
+    {"account": "C220111", "value": 50.0, "enabled": True,
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "installation labor"},
+]
+'''
+
+_F5A_ROLLUP_C220000 = '''\
+overrides = [
+    {"account": "C220000", "value": 1000.0, "enabled": True,
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "CAS22 grand rollup"},
+]
+'''
+
+_F5B_SPEC_HAS_ETA_TH = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(R0=3.3, plasma_t=1.13, eta_th=0.46, p_input=38.6)
+P_native = 233.0
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+_F5B_SPEC_HAS_INTEREST_RATE = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(R0=3.3, plasma_t=1.13, p_input=38.6, interest_rate=0.05)
+P_native = 233.0
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+_F5B_SPEC_HAS_F_DEC_OK = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(R0=3.3, plasma_t=1.13, p_input=38.6, f_dec=0.4)
+P_native = 233.0
+model = CostModel(concept=ConfinementConcept.MIRROR, fuel=Fuel.DT)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+
+class TestF1MagnitudeBound:
+    """F1 — raw-$ unit error catch (|value| > 5e4 M$)."""
+
+    def test_rejects_raw_dollars(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F1_RAW_DOLLARS)
+        assert not r.valid
+        assert "M$" in r.fix_message
+        msg = r.fix_message
+        assert "raw" in msg.lower() or "20.0e6" in msg or "20000000" in msg
+
+    def test_rejects_negative_raw_dollars(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F1_NEGATIVE_RAW_DOLLARS)
+        assert not r.valid
+
+    def test_accepts_value_at_bound(self):
+        # 50000 is the upper bound; everything <= passes.
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F1_AT_BOUND)
+        assert r.valid, r.details
+
+
+class TestF2ArchetypeAccountWhitelist:
+    """F2 — archetype-canonical account check (opt-in via kwarg)."""
+
+    def test_rejects_account_not_in_dipole_set(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(
+            _F2_WRONG_ACCOUNT_FOR_ARCHETYPE, archetype_enum="DIPOLE"
+        )
+        assert not r.valid
+        assert "C220109" in r.fix_message
+        assert "DIPOLE" in r.fix_message
+
+    def test_accepts_account_in_dipole_set(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(
+            _F2_VALID_ACCOUNT_FOR_DIPOLE, archetype_enum="DIPOLE"
+        )
+        assert r.valid, r.details
+
+    def test_no_archetype_kwarg_skips_check(self):
+        # Backward compat: when archetype_enum is None, F2 is a no-op.
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F2_WRONG_ACCOUNT_FOR_ARCHETYPE)
+        assert r.valid, r.details
+
+    def test_unknown_archetype_enum_errors(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(
+            _F2_VALID_ACCOUNT_FOR_DIPOLE, archetype_enum="NOT_AN_ENUM"
+        )
+        assert not r.valid
+        assert "NOT_AN_ENUM" in r.fix_message
+
+
+class TestF4BlockedByRequired:
+    """F4 — disabled overrides must carry a tracker link."""
+
+    def test_rejects_disabled_without_blocked_by(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F4_DISABLED_NO_BLOCKED_BY)
+        assert not r.valid
+        assert "blocked_by" in r.fix_message
+
+    def test_rejects_malformed_blocked_by(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F4_DISABLED_BAD_BLOCKED_BY)
+        assert not r.valid
+        assert "org/repo" in r.fix_message or "org" in r.fix_message
+
+    def test_accepts_valid_blocked_by(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F4_DISABLED_VALID_BLOCKED_BY)
+        assert r.valid, r.details
+
+
+class TestF5aForbiddenRollupAccounts:
+    """F5a — derived rollups cannot be overridden at the dollar level."""
+
+    def test_rejects_c220111(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F5A_ROLLUP_C220111)
+        assert not r.valid
+        assert "C220111" in r.fix_message
+        assert "installation_frac" in r.fix_message
+
+    def test_rejects_c220000_rollup(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F5A_ROLLUP_C220000)
+        assert not r.valid
+        assert "C220000" in r.fix_message
+        assert "constituent" in r.fix_message or "C220101" in r.fix_message
+
+
+class TestF5bSpecForbiddenKeys:
+    """F5b — spec dict cannot carry ENUM-owned efficiencies or financial knobs."""
+
+    def test_rejects_eta_th_in_spec(self):
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F5B_SPEC_HAS_ETA_TH)
+        assert not r.valid
+        assert "eta_th" in r.fix_message
+        assert "PowerCycle" in r.fix_message
+
+    def test_rejects_interest_rate_in_spec(self):
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F5B_SPEC_HAS_INTEREST_RATE)
+        assert not r.valid
+        assert "interest_rate" in r.fix_message
+        assert "library" in r.fix_message.lower()
+
+    def test_accepts_f_dec_in_spec(self):
+        # f_dec is a physics/architecture property, NOT an efficiency claim;
+        # the prompt template explicitly allows it.
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F5B_SPEC_HAS_F_DEC_OK)
+        assert r.valid, r.details
+
+
+# ---------------------------------------------------------------------------
+# F6 — `generic.<chain>` schema whitelist. The two stellarator-regen
+# hallucinations from concepts 05 + 09 are the prosecutor's fixtures here.
+# ---------------------------------------------------------------------------
+
+
+# Concept 05 (planar-coil-stellarator) iter-1 actual code:
+_F6_C220103_NOT_ON_COSTS = '''\
+overrides = [
+    {"account": "C220103", "value": 0.75 * generic.costs.c220103, "enabled": True,
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "stellarator hallucination 1"},
+]
+'''
+
+# Concept 09 (qi-stellarator-hts) iter-1 actual code:
+_F6_FAKE_ROLLUP_NAME = '''\
+overrides = [
+    {"account": "C220103", "value": 0.85 * generic.costs.cas22_reactor_equipment_total,
+     "enabled": True, "cost_basis": "noak", "provenance": "derived",
+ "source": "s",
+ "rationale": "stellarator hallucination 2"},
+]
+'''
+
+_F6_VALID_CAS22_DETAIL = '''\
+overrides = [
+    {"account": "C220103", "value": 0.85 * generic.cas22_detail["C220103"],
+     "enabled": True, "cost_basis": "noak", "provenance": "derived",
+ "source": "s",
+ "rationale": "the correct CAS22 sub-account pattern"},
+]
+'''
+
+_F6_VALID_COSTS_ROLLUP = '''\
+overrides = [
+    {"account": "C220101", "value": 0.70 * generic.costs.cas21, "enabled": True,
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "the correct top-level rollup pattern"},
+]
+'''
+
+_F6_BARE_GENERIC_OK = '''\
+overrides = [
+    {"account": "C220101", "value": generic.costs.cas22, "enabled": True,
+     "cost_basis": "noak", "provenance": "direct",
+
+     "source": "s",
+
+     "rationale": "bare access to cas22 rollup"},
+]
+'''
+
+_F6_UNKNOWN_TOP_LEVEL = '''\
+overrides = [
+    {"account": "C220101", "value": 0.5 * generic.bogus_attr, "enabled": True,
+     "cost_basis": "noak", "provenance": "derived",
+
+     "source": "s",
+
+     "rationale": "unknown top-level"},
+]
+'''
+
+_F6_BAD_CAS22_KEY = '''\
+overrides = [
+    {"account": "C220103", "value": generic.cas22_detail["NOT_AN_ACCOUNT"],
+     "enabled": True, "cost_basis": "noak", "provenance": "direct",
+ "source": "s",
+ "rationale": "subscript key not a valid CAS22 code"},
+]
+'''
+
+
+class TestF6GenericChainWhitelist:
+    """F6 — reject hallucinated `generic.<attr>` chains; accept real ones."""
+
+    def test_rejects_c220103_on_costs(self):
+        # Concept 05's literal regen output: `0.75 * generic.costs.c220103`.
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F6_C220103_NOT_ON_COSTS)
+        assert not r.valid
+        assert "c220103" in r.fix_message
+        # Redirect hint must point at the real path:
+        assert 'cas22_detail["C220103"]' in r.fix_message
+
+    def test_rejects_fake_rollup_name(self):
+        # Concept 09's literal regen output:
+        # `0.85 * generic.costs.cas22_reactor_equipment_total`.
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F6_FAKE_ROLLUP_NAME)
+        assert not r.valid
+        assert "cas22_reactor_equipment_total" in r.fix_message
+
+    def test_accepts_valid_cas22_detail(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F6_VALID_CAS22_DETAIL)
+        assert r.valid, r.details
+
+    def test_accepts_valid_costs_rollup(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F6_VALID_COSTS_ROLLUP)
+        assert r.valid, r.details
+
+    def test_accepts_bare_generic_chain(self):
+        # Not multiplied by anything — still a valid reference.
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F6_BARE_GENERIC_OK)
+        assert r.valid, r.details
+
+    def test_rejects_unknown_top_level_attr(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F6_UNKNOWN_TOP_LEVEL)
+        assert not r.valid
+        assert "bogus_attr" in r.fix_message
+
+    def test_rejects_bad_cas22_subscript_key(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F6_BAD_CAS22_KEY)
+        assert not r.valid
+        assert "NOT_AN_ACCOUNT" in r.fix_message
+
+
+# ---------------------------------------------------------------------------
+# F7 — `spec` key whitelist against CostingInput.model_fields.
+# Concept 04 (laser-icf) was the prosecutor's fixture: its `spec` carried
+# `laser_pulse_energy_kJ=30.0, rep_rate_hz=1.0, target_gain=200.0` — none of
+# which are CostingInput fields, all of which were silently dropped at
+# forward() time, leaving the library to use its YAML defaults (1.4 MJ /
+# 10 Hz derived from the engineering Q balance instead of the McKenzie
+# 30 kJ / 1 Hz design point).
+# ---------------------------------------------------------------------------
+
+
+# Concept 04's literal regen output (verbatim from the bulk run):
+_F7_CONCEPT_04_LITERAL = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(
+    laser_pulse_energy_kJ=30.0,
+    rep_rate_hz=1.0,
+    target_gain=200.0,
+    p_input=50.0,
+)
+P_native = 500.0
+model = CostModel(concept=ConfinementConcept.LASER_IFE, fuel=Fuel.PB11)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+
+_F7_ALL_VALID_SPEC = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(
+    R0=3.3,
+    plasma_t=1.13,
+    p_input=38.6,
+    n_e=1e20,
+    T_e=15.0,
+)
+P_native = 233.0
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+
+_F7_BOGUS_SINGLE_KEY = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(R0=3.3, plasma_t=1.13, bogus_key=42.0)
+P_native = 233.0
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+
+class TestF7SpecKeyWhitelist:
+    """F7 — reject `spec` keys outside CostingInput's authoritative schema."""
+
+    def test_rejects_concept04_spec_verbatim(self):
+        # Concept 04's literal regen carried three keys forward() drops:
+        #   laser_pulse_energy_kJ  — not in CostingInput at all
+        #                            (e_driver_mj is derived, not settable)
+        #   rep_rate_hz            — should be f_rep
+        #   target_gain            — not in CostingInput; closest is p_target
+        # F7 must flag all three. difflib's suggester finds at least the
+        # target_gain → p_target match; the full allow-list (which includes
+        # f_rep) is printed as the authoritative fallback.
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F7_CONCEPT_04_LITERAL)
+        assert not r.valid
+        for k in ("laser_pulse_energy_kJ", "rep_rate_hz", "target_gain"):
+            assert k in r.fix_message
+        # At least one difflib suggestion fires (target_gain → p_target):
+        assert "p_target" in r.fix_message
+        # And the canonical allow-list contains the real rep-rate field:
+        assert "f_rep" in r.fix_message
+        # The error explicitly names the failure mode:
+        assert "silently drop" in r.fix_message
+
+    def test_accepts_all_valid_spec(self):
+        # A spec containing only real CostingInput field names passes.
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F7_ALL_VALID_SPEC)
+        assert r.valid, r.details
+
+    def test_rejects_single_bogus_key(self):
+        # One bad key among valid ones is still rejected.
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F7_BOGUS_SINGLE_KEY)
+        assert not r.valid
+        assert "bogus_key" in r.fix_message
+        assert "allow-list" in r.fix_message.lower()
+
+
+# ---------------------------------------------------------------------------
+# F8 — strict cost_basis: NOAK-only. Concept 01 (ARC) was the prosecutor's
+# fixture: its C220103 override transcribed Sorbom 2015's $5.1B verbatim,
+# but Sorbom's $1.06M/tonne mass scaling pre-dates the FOAK/NOAK
+# convention. The framework runs noak=True; the only honest answer is
+# either (a) defer to library, (b) adjust to NOAK with documented
+# derivation, or (c) file a tracker for a new variant.
+# ---------------------------------------------------------------------------
+
+
+_F8_MISSING_COST_BASIS = '''\
+overrides = [
+    {"account": "C220103", "value": 100.0, "enabled": True,
+     "provenance": "direct", "source": "s", "rationale": "no cost_basis"},
+]
+'''
+
+_F8_FOAK_REJECTED = '''\
+overrides = [
+    {"account": "C220103", "value": 5100.0, "enabled": True,
+     "cost_basis": "foak", "provenance": "derived",
+     "source": "Sorbom 2015", "rationale": "vintage-unspecified academic"},
+]
+'''
+
+_F8_CONCEPTUAL_REJECTED = '''\
+overrides = [
+    {"account": "C220103", "value": 5100.0, "enabled": True,
+     "cost_basis": "conceptual_design", "provenance": "derived",
+     "source": "Sorbom 2015", "rationale": "$1.06M/tonne scaling"},
+]
+'''
+
+_F8_NOAK_ACCEPTED = '''\
+overrides = [
+    {"account": "C220103", "value": 1020.0, "enabled": True,
+     "cost_basis": "noak", "provenance": "derived",
+     "source": "Sorbom 2015 + 5x learning curve derivation",
+     "rationale": "$5.1B Sorbom 2014 conceptual x 0.2 (10x learning curve "
+                  "applied: REBCO 2014-2026 + structural fab mass mfg) = $1.02B NOAK"},
+]
+'''
+
+
+class TestF8CostBasisNoakOnly:
+    """F8 — strict NOAK-only cost_basis; everything else is rejected."""
+
+    def test_rejects_missing_cost_basis(self):
+        # Field-shape rejection: missing required field "cost_basis".
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F8_MISSING_COST_BASIS)
+        assert not r.valid
+        assert "cost_basis" in r.fix_message
+
+    def test_rejects_foak(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F8_FOAK_REJECTED)
+        assert not r.valid
+        assert "foak" in r.fix_message
+        # Redirect must mention the three options:
+        assert "library default" in r.fix_message
+        assert "learning" in r.fix_message.lower() or "vintage" in r.fix_message.lower()
+        assert "noak" in r.fix_message.lower()
+
+    def test_rejects_conceptual_design(self):
+        # Any value other than "noak" is rejected (no hedge categories).
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F8_CONCEPTUAL_REJECTED)
+        assert not r.valid
+        assert "conceptual_design" in r.fix_message
+
+    def test_accepts_explicit_noak(self):
+        # cost_basis: "noak" + documented learning-curve derivation = accepted.
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F8_NOAK_ACCEPTED)
+        assert r.valid, r.details
