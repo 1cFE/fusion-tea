@@ -472,6 +472,65 @@ _FORBIDDEN_OVERRIDE_ACCOUNTS: dict[str, tuple[str, str]] = {
 # F4 — `blocked_by` format when an override is disabled. Allows org/repo#NN.
 _BLOCKED_BY_RE = re.compile(r"^[\w\-.]+/[\w\-.]+#\d+$")
 
+# F6 — `generic.<chain>` attribute whitelist. `generic` is a ``ForwardResult``
+# (the bare overrides-off forward). A relative override like
+# ``0.70 * generic.<chain>`` must reference a real attribute or no value comes
+# out. Two stellarator regens shipped with hallucinated attribute paths
+# (``generic.costs.c220103`` and ``generic.costs.cas22_reactor_equipment_total``)
+# because the prompt template's only example used a top-level CostResult
+# attribute and the LLM extrapolated incorrectly for CAS22 sub-accounts. F6
+# walks the value AST and checks every ``generic.X`` chain against the actual
+# library schema.
+
+# Top-level attributes of ``ForwardResult`` (costingfe/types.py:300).
+_GENERIC_TOP_ATTRS: set[str] = {
+    "power_table",
+    "costs",
+    "params",
+    "overridden",
+    "cas22_detail",
+    "plasma_state",
+}
+
+# Valid attribute names on ``CostResult`` (costingfe/types.py:233).
+_COST_RESULT_ATTRS: set[str] = {
+    "cas10",
+    "cas20",
+    "cas21",
+    "cas22",
+    "cas23",
+    "cas24",
+    "cas25",
+    "cas26",
+    "cas27",
+    "cas28",
+    "cas29",
+    "cas30",
+    "cas40",
+    "cas50",
+    "cas60",
+    "cas70",
+    "cas71",
+    "cas72",
+    "cas80",
+    "cas90",
+    "total_capital",
+    "lcoe",
+    "overnight_cost",
+}
+
+# Valid keys for the ``cas22_detail`` dict (cas22.py return dict).
+_CAS22_DETAIL_KEYS: set[str] = {
+    # Per-account
+    "C220101", "C220102", "C220103", "C220104", "C220105", "C220106",
+    "C220107", "C220108", "C220109", "C220110", "C220111", "C220112",
+    # Sub-line informational entries
+    "C220106_vessel", "C220106_pump",
+    # Rollups + plant-aggregates
+    "C220000", "C220100",
+    "C220200", "C220300", "C220400", "C220500", "C220600", "C220700",
+}
+
 # F5b — forbidden ``spec`` keys. The helper-form three-forward contract takes
 # `spec = dict(...)` and `**spec`-splats it into `forward()`. That makes the
 # spec dict a back-door for kwargs that should NOT be authored per-concept:
@@ -837,6 +896,93 @@ def _const_numeric(node: ast.expr) -> int | float | None:
     return None
 
 
+def _validate_generic_chain(value_node: ast.expr) -> str | None:
+    """F6 — walk ``value_node`` for every ``generic.<chain>`` reference and
+    verify it against the library's ``ForwardResult`` / ``CostResult`` schema.
+
+    Returns an error fix-message if any chain is invalid (with a redirect
+    hint), or ``None`` if every ``generic``-rooted access resolves to a real
+    attribute. Catches the two stellarator-regen failure modes (``generic.
+    costs.c220103`` and ``generic.costs.cas22_reactor_equipment_total``)
+    structurally.
+
+    Two patterns are validated:
+
+    * ``generic.<top>[.<sub>]`` — the top attribute must be in
+      ``_GENERIC_TOP_ATTRS``; if the top is ``costs``, the sub must be in
+      ``_COST_RESULT_ATTRS``.
+    * ``generic.cas22_detail["<key>"]`` — the subscript key must be in
+      ``_CAS22_DETAIL_KEYS``.
+
+    Bare ``generic`` references (no attribute / subscript) are allowed; deeper
+    chains under ``power_table`` / ``params`` / ``overridden`` are
+    permissively allowed past the first level (the validator only knows the
+    schema two levels deep). Errors carry both the offending path and a
+    redirect that names the correct attribute / subscript style.
+    """
+    for node in ast.walk(value_node):
+        # Pattern A: attribute chain rooted at `generic`.
+        if isinstance(node, ast.Attribute):
+            chain: list[str] = []
+            cursor: ast.expr = node
+            while isinstance(cursor, ast.Attribute):
+                chain.append(cursor.attr)
+                cursor = cursor.value
+            if not (isinstance(cursor, ast.Name) and cursor.id == "generic"):
+                continue
+            chain.reverse()  # outermost → innermost
+            top = chain[0]
+            if top not in _GENERIC_TOP_ATTRS:
+                # Possible cas22 sub-account hallucination at the top level.
+                cas22_hint = ""
+                if top.upper().startswith("C2201") and top.upper() in _CAS22_DETAIL_KEYS:
+                    cas22_hint = (
+                        f' Did you mean `generic.cas22_detail["{top.upper()}"]`?'
+                    )
+                return (
+                    f"`generic.{top}` is not a valid ForwardResult attribute. "
+                    f"Valid top-level attributes: "
+                    f"{', '.join(sorted(_GENERIC_TOP_ATTRS))}.{cas22_hint}"
+                )
+            if top == "costs" and len(chain) >= 2:
+                sub = chain[1]
+                if sub not in _COST_RESULT_ATTRS:
+                    hint = ""
+                    if sub.upper().startswith("C2201") and sub.upper() in _CAS22_DETAIL_KEYS:
+                        hint = (
+                            f' For CAS22 sub-accounts use '
+                            f'`generic.cas22_detail["{sub.upper()}"]` '
+                            f"(CostResult only exposes the rolled-up `cas22`)."
+                        )
+                    return (
+                        f"`generic.costs.{sub}` is not a valid CostResult "
+                        f"attribute. Valid: "
+                        f"{', '.join(sorted(_COST_RESULT_ATTRS))}.{hint}"
+                    )
+        # Pattern B: subscript on `generic.cas22_detail`.
+        if isinstance(node, ast.Subscript):
+            subject = node.value
+            if not (
+                isinstance(subject, ast.Attribute)
+                and subject.attr == "cas22_detail"
+                and isinstance(subject.value, ast.Name)
+                and subject.value.id == "generic"
+            ):
+                continue
+            key_node = node.slice
+            if isinstance(key_node, ast.Constant) and isinstance(
+                key_node.value, str
+            ):
+                key = key_node.value
+                if key not in _CAS22_DETAIL_KEYS:
+                    return (
+                        f'`generic.cas22_detail[{key!r}]` — {key!r} is not a '
+                        f"valid CAS22 sub-account key. Valid keys: "
+                        f"{', '.join(sorted(_CAS22_DETAIL_KEYS))}."
+                    )
+    return None
+
+
 def validate_override_registry(
     text: str,
     *,
@@ -963,6 +1109,19 @@ def validate_override_registry(
                     f"{label} value references {sorted(bad_frame)} (frame error)"
                 ),
             )
+        # F6 — `generic.<chain>` schema whitelist. Any `generic.X` access in
+        # the value expression must resolve to a real attribute on
+        # ForwardResult / CostResult, or to a real key on cas22_detail.
+        # Catches the stellarator-regen hallucinations (e.g.
+        # `generic.costs.c220103`) structurally.
+        if "generic" in referenced:
+            chain_err = _validate_generic_chain(value_node)
+            if chain_err is not None:
+                return ValidationResult(
+                    valid=False,
+                    fix_message=f"{label} {chain_err}",
+                    details=f"{label} invalid generic.<chain>: {chain_err}",
+                )
         if not referenced:
             # No runtime references → must be a statically-numeric literal or a
             # constant arithmetic expression. (Catches strings, lists, dicts,

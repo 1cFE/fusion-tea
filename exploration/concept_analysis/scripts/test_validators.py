@@ -1362,3 +1362,122 @@ class TestF5bSpecForbiddenKeys:
 
         r = validate_model_setup_contract(_F5B_SPEC_HAS_F_DEC_OK)
         assert r.valid, r.details
+
+
+# ---------------------------------------------------------------------------
+# F6 — `generic.<chain>` schema whitelist. The two stellarator-regen
+# hallucinations from concepts 05 + 09 are the prosecutor's fixtures here.
+# ---------------------------------------------------------------------------
+
+
+# Concept 05 (planar-coil-stellarator) iter-1 actual code:
+_F6_C220103_NOT_ON_COSTS = '''\
+overrides = [
+    {"account": "C220103", "value": 0.75 * generic.costs.c220103, "enabled": True,
+     "provenance": "derived", "source": "s", "rationale": "stellarator hallucination 1"},
+]
+'''
+
+# Concept 09 (qi-stellarator-hts) iter-1 actual code:
+_F6_FAKE_ROLLUP_NAME = '''\
+overrides = [
+    {"account": "C220103", "value": 0.85 * generic.costs.cas22_reactor_equipment_total,
+     "enabled": True, "provenance": "derived", "source": "s",
+     "rationale": "stellarator hallucination 2"},
+]
+'''
+
+_F6_VALID_CAS22_DETAIL = '''\
+overrides = [
+    {"account": "C220103", "value": 0.85 * generic.cas22_detail["C220103"],
+     "enabled": True, "provenance": "derived", "source": "s",
+     "rationale": "the correct CAS22 sub-account pattern"},
+]
+'''
+
+_F6_VALID_COSTS_ROLLUP = '''\
+overrides = [
+    {"account": "C220101", "value": 0.70 * generic.costs.cas21, "enabled": True,
+     "provenance": "derived", "source": "s",
+     "rationale": "the correct top-level rollup pattern"},
+]
+'''
+
+_F6_BARE_GENERIC_OK = '''\
+overrides = [
+    {"account": "C220101", "value": generic.costs.cas22, "enabled": True,
+     "provenance": "direct", "source": "s",
+     "rationale": "bare access to cas22 rollup"},
+]
+'''
+
+_F6_UNKNOWN_TOP_LEVEL = '''\
+overrides = [
+    {"account": "C220101", "value": 0.5 * generic.bogus_attr, "enabled": True,
+     "provenance": "derived", "source": "s", "rationale": "unknown top-level"},
+]
+'''
+
+_F6_BAD_CAS22_KEY = '''\
+overrides = [
+    {"account": "C220103", "value": generic.cas22_detail["NOT_AN_ACCOUNT"],
+     "enabled": True, "provenance": "direct", "source": "s",
+     "rationale": "subscript key not a valid CAS22 code"},
+]
+'''
+
+
+class TestF6GenericChainWhitelist:
+    """F6 — reject hallucinated `generic.<attr>` chains; accept real ones."""
+
+    def test_rejects_c220103_on_costs(self):
+        # Concept 05's literal regen output: `0.75 * generic.costs.c220103`.
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F6_C220103_NOT_ON_COSTS)
+        assert not r.valid
+        assert "c220103" in r.fix_message
+        # Redirect hint must point at the real path:
+        assert 'cas22_detail["C220103"]' in r.fix_message
+
+    def test_rejects_fake_rollup_name(self):
+        # Concept 09's literal regen output:
+        # `0.85 * generic.costs.cas22_reactor_equipment_total`.
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F6_FAKE_ROLLUP_NAME)
+        assert not r.valid
+        assert "cas22_reactor_equipment_total" in r.fix_message
+
+    def test_accepts_valid_cas22_detail(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F6_VALID_CAS22_DETAIL)
+        assert r.valid, r.details
+
+    def test_accepts_valid_costs_rollup(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F6_VALID_COSTS_ROLLUP)
+        assert r.valid, r.details
+
+    def test_accepts_bare_generic_chain(self):
+        # Not multiplied by anything — still a valid reference.
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F6_BARE_GENERIC_OK)
+        assert r.valid, r.details
+
+    def test_rejects_unknown_top_level_attr(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F6_UNKNOWN_TOP_LEVEL)
+        assert not r.valid
+        assert "bogus_attr" in r.fix_message
+
+    def test_rejects_bad_cas22_subscript_key(self):
+        from lib.validators import validate_override_registry
+
+        r = validate_override_registry(_F6_BAD_CAS22_KEY)
+        assert not r.valid
+        assert "NOT_AN_ACCOUNT" in r.fix_message

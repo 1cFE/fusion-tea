@@ -153,10 +153,31 @@ print_cas_breakdown(generic, native, result_1gw, overrides)
    ∈ `{direct, derived}`, no two entries sharing an `account`. `value` may be a
    number, a constant expression (e.g. `260.0 * 1.34`), or a **relative** override
    expressed as a fraction of the library's own cost: reference the mandatory
-   `generic` line, e.g. `0.70 * generic.costs.cas21`. `generic` is the library's
-   bare overrides-off answer at the design point — do NOT reference `native` or
-   `result_1gw` (overrides-on; wrong reference frame) or `result` (the removed
-   two-forward name); the validator rejects all three.
+   `generic` line. `generic` is the library's bare overrides-off answer at the
+   design point — do NOT reference `native` or `result_1gw` (overrides-on; wrong
+   reference frame) or `result` (the removed two-forward name); the validator
+   rejects all three.
+
+   **Two relative-override patterns are accepted**, each tied to where the
+   library actually stores the value:
+
+   ```python
+   # Top-level CAS rollup (CostResult attribute):
+   {"account": "C220101", "value": 0.70 * generic.costs.cas21, ...}
+
+   # Per-account CAS22 sub-account (cas22_detail dict):
+   {"account": "C220103", "value": 0.85 * generic.cas22_detail["C220103"], ...}
+   ```
+
+   The library exposes top-level CAS rollups (`cas10`, `cas21`, `cas22`, …,
+   `cas70`, `cas80`, `cas90`, `total_capital`, `lcoe`, `overnight_cost`) as
+   attributes on `generic.costs`. The CAS22 sub-accounts (`C220101`–`C220112`,
+   plus rollup/plant-aggregate keys `C220000`, `C220200`–`C220700`) live as
+   **dict keys** under `generic.cas22_detail`, **not** as attributes —
+   `generic.costs.c220103` does NOT exist (the validator rejects it). Pick the
+   pattern that matches the storage shape: top-level `cas21`, `cas22`, … →
+   `generic.costs.<name>`; per-account `C220xxx` →
+   `generic.cas22_detail["C220xxx"]`.
 
    **`value` is in M$ (megadollars)** — never raw dollars. The validator rejects
    any literal value above 50,000 (= $50 B per CAS account) as a raw-$ unit
