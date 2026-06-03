@@ -29,7 +29,13 @@ from lib.model_setup_helpers import (
 # are disclosed for the CHARM commercial plant." The design point is
 # operator-authored with no public specifications. The spec dict is empty
 # because no design-point inputs are available.
-spec = dict()
+spec = dict(
+    r_bore=2.75,         # = plasma_t (1.5m library default) + radial build
+                         # (blanket_t 0.6 + ht_shield_t 0.25 + structure_t 0.15
+                         # + vessel_t 0.1 = 1.10m). Axisymmetric solenoidal
+                         # coils for an open-ended mirror; library defaults
+                         # r_bore to 1.85m which under-sizes the coil bore.
+)
 P_native = 150.0         # MWe — Design Point specification
 
 # 2. Model.
@@ -155,4 +161,11 @@ native, result_1gw = run_native_and_1gw(
     model, spec=spec, overrides=overrides, p_native=P_native,
 )
 
-print_cas_breakdown(generic, native, result_1gw, overrides)
+print_cas_breakdown(generic, native, result_1gw, overrides, data_grounded=False)
+# data_grounded=False: Pale Blue Fusion has disclosed no quantitative reactor
+# parameters for the CHARM commercial plant (geometry, fields, densities,
+# temperatures, confinement times, fusion power per analysis.md §5). The spec
+# dict is empty by necessity, so the LCOE would otherwise reflect pure MIRROR
+# YAML defaults rather than CHARM's actual design. Headline LCOE lines emit
+# (NOT ENOUGH DATA FOR THIS CONCEPT); CAS22 breakdown below still prints so
+# a reviewer can see what library defaults produced.

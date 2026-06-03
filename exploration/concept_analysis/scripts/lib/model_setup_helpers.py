@@ -180,7 +180,10 @@ _CAS_ROWS: list[tuple[str, str]] = [
 ]
 
 
-def print_cas_breakdown(generic, native, result_1gw, overrides: list[Override]) -> None:
+def print_cas_breakdown(
+    generic, native, result_1gw, overrides: list[Override],
+    *, data_grounded: bool = True,
+) -> None:
     """Print the generic / native / 1 GWe CAS breakdown for human inspection.
 
     Leads with the standardized 1 GWe projection LCOE on a line matching
@@ -190,17 +193,40 @@ def print_cas_breakdown(generic, native, result_1gw, overrides: list[Override]) 
     first match is always the projection. The three columns let a reviewer read
     the override effect (``generic → native``) and the replication effect
     (``native → result_1gw``) separately.
+
+    ``data_grounded=False`` is the honest-output mode for concepts whose
+    ``spec`` is empty (entirely library YAML defaults) because the company has
+    not disclosed any reactor design point — currently concept 06 (Pale Blue
+    Fusion CHARM) and concept 19 (Zephyr orbital levitated dipole). In that
+    mode the three LCOE lines (1 GWe / Native / Generic) emit a
+    ``(NOT ENOUGH DATA FOR THIS CONCEPT)`` marker instead of a numeric value
+    so the headline number does not silently propagate library-default
+    artifacts as if they were grounded analyses. The Overnight + CAS22
+    breakdown still prints below so a reviewer can see what the library
+    YAML defaults produced for the chosen ConfinementConcept; the headline
+    LCOE simply refuses to make a claim about the actual concept.
+
+    ``run_model``'s LCOE regex (``re.search`` on ``LCOE:\\s*([\\d.]+)\\s*\\$/MWh``)
+    degrades gracefully on the non-numeric marker (no match → empty LCOE
+    string in the loop progress line), so this doesn't break any caller.
     """
-    # Headline: the standardized cross-concept number (grepped by run_model).
-    print(f"LCOE: {result_1gw.costs.lcoe:.1f} $/MWh   (1 GWe NOAK projection)")
-    print(
-        f"Native LCOE = {native.costs.lcoe:.1f} $/MWh   "
-        f"(P_native, n_mod=1, overrides on)"
-    )
-    print(
-        f"Generic LCOE = {generic.costs.lcoe:.1f} $/MWh   "
-        f"(P_native, n_mod=1, overrides off)"
-    )
+    # Headline LCOEs — numeric mode (data grounded) or marker mode (not grounded).
+    if data_grounded:
+        # Headline: the standardized cross-concept number (grepped by run_model).
+        print(f"LCOE: {result_1gw.costs.lcoe:.1f} $/MWh   (1 GWe NOAK projection)")
+        print(
+            f"Native LCOE = {native.costs.lcoe:.1f} $/MWh   "
+            f"(P_native, n_mod=1, overrides on)"
+        )
+        print(
+            f"Generic LCOE = {generic.costs.lcoe:.1f} $/MWh   "
+            f"(P_native, n_mod=1, overrides off)"
+        )
+    else:
+        _ungrounded = "(NOT ENOUGH DATA FOR THIS CONCEPT)"
+        print(f"LCOE: {_ungrounded}")
+        print(f"Native LCOE = {_ungrounded}")
+        print(f"Generic LCOE = {_ungrounded}")
     print(
         f"Overnight: generic {generic.costs.overnight_cost:.0f} $/kW   "
         f"native {native.costs.overnight_cost:.0f} $/kW   "
