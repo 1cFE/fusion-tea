@@ -159,6 +159,31 @@ print_cas_breakdown(generic, native, result_1gw, overrides)
    `lifetime_yr`, `interest_rate`, `inflation_rate` are library-owned and MUST
    NOT appear. The helper sources `availability` / `lifetime_yr` from the library.
 
+   **Low archetype-fit concepts: populate `spec` anyway.** When
+   `Archetype-Fit: Low` (the closest available `ConfinementConcept` does
+   not perfectly match the concept's architecture — e.g. modelling a p-B11
+   FRC as `MIRROR` because the library has no `STEADY_FRC + PB11`
+   calibration, or modelling an orbital-cycling levitated dipole as the
+   stationary `DIPOLE`), still populate `spec` with the concept's
+   published or inferred design-point values using the canonical-spec-key
+   glossary above. Leaving `spec` empty produces the *worst possible*
+   cost number — the library runs pure archetype YAML defaults at
+   `P_native`, which encode "some generic mirror" or "some generic
+   dipole" rather than this concept's actual machine.
+
+   The geometry and physics fields (`R0`, `chamber_length`, `plasma_t`,
+   `B`, `b_center`, `n_e`, `T_e`, `eta_p`, `p_input`, `plasma_volume`)
+   are the right place to express the concept's actual scale, even when
+   archetype-fit is Low. Cost-side overrides (the override registry in
+   Step 3) are where you express how the library's archetype cost
+   structure deviates from the concept's true cost story — that's where
+   the "Low fit" caveat properly belongs.
+
+   When mapping non-canonical concept-specific kwargs (e.g. Realta's
+   `l_c`, `B_0c`, `P_NBI`) onto canonical names, document the mapping in
+   inline comments and explicitly note any fields that have no canonical
+   equivalent and were intentionally dropped.
+
    **Archetype-specific spec key blocklist (workarounds for known library
    bugs).** Some spec keys must NOT be passed for specific archetypes until
    the underlying library issue is fixed. Even if your concept's published
