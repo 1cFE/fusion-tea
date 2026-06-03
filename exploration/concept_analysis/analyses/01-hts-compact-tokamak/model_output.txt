@@ -1,13 +1,14 @@
-LCOE: 133.7 $/MWh   (1 GWe NOAK projection)
-Native LCOE = 171.7 $/MWh   (P_native, n_mod=1, overrides on)
+warning: `VIRTUAL_ENV=C:\Users\mallo\AppData\Local\Python\pythoncore-3.14-64` does not match the project environment path `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv` and will be ignored; use `--active` to target the active environment instead
+LCOE: 166.6 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 204.7 $/MWh   (P_native, n_mod=1, overrides on)
 Generic LCOE = 171.7 $/MWh   (P_native, n_mod=1, overrides off)
-Overnight: generic 13431 $/kW   native 13431 $/kW   1 GWe 11242 $/kW
+Overnight: generic 13431 $/kW   native 16700 $/kW   1 GWe 14510 $/kW
 
 CAS               generic           native            1 GWe
 --------------------------------------------------------
 CAS10                16.6             16.6             17.2
 CAS21               304.0            304.0            304.0
-CAS22              1588.5           1588.5           6565.5
+CAS22              1588.5           2102.4           8771.1
 CAS23                69.6             69.6            298.5
 CAS24                29.6             29.6            127.2
 CAS25                18.0             18.0             77.4
@@ -15,22 +16,22 @@ CAS26                30.1             30.1            129.0
 CAS27                 3.5              3.5              3.5
 CAS28                 5.0              5.0              5.0
 CAS29                 0.0              0.0              0.0
-CAS30               409.7            409.7           1502.0
+CAS30               409.7            512.4           1943.1
 CAS40                18.8             18.8             18.8
-CAS50               131.7            131.7            381.1
-CAS60               504.6            504.6           1812.4
+CAS50               131.7            153.8            475.9
+CAS60               504.6            627.3           2339.4
 CAS70                63.0             63.0            151.3
 CAS80                 0.2              0.2              0.9
-CAS90               234.7            234.7            843.2
+CAS90               234.7            291.9           1088.4
 --------------------------------------------------------
-TOTAL              3129.5           3129.5          11241.6
+TOTAL              3129.5           3891.1          14510.1
 
 --- CAS22 sub-account detail (overrides marked) ---
 code            generic       native        1 GWe  flag
-C220000          1588.5       1588.5       6565.5
+C220000          1588.5       2102.4       8771.1
 C220101           136.2        136.2        136.2
 C220102            91.2         91.2         91.2
-C220103           516.1        516.1        516.1
+C220103           516.1       1030.0       1030.0  <-- OVERRIDE
 C220104           272.7        272.7        272.7
 C220105            10.1         10.1         10.1
 C220106            48.8         48.8         48.8
