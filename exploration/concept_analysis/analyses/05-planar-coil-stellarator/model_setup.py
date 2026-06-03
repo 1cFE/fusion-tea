@@ -30,7 +30,14 @@ spec = dict(
     plasma_volume=418.0, # plasma volume [m³] — arxiv Table 1
     eta_p=0.027,         # plasma beta — arxiv Table 1 (2.7%)
     f_rad=1.4,           # ISS04 confinement factor — arxiv Table 1, §3.5
-    p_input=958.0,       # fusion power [MW] — arxiv Table 1
+    p_input=2.5,         # auxiliary heating wallplug [MW] — arxiv §4.4
+                         # (1 MW impurity-control ECRH + ignition overhead).
+                         # NOT fusion power: p_fus is computed by the library
+                         # via the inverse power balance and is not settable
+                         # through spec. Prior regen mis-set this to fusion
+                         # power 958 MW (arxiv Table 1), which back-solved to
+                         # p_fus ≈ 4.7 GW for a 390 MWe plant and inflated
+                         # LCOE to ~$304/MWh. F9 now blocks p_input/P_native > 0.5.
 )
 P_native = 390.0       # MWe — copied from the analysis Design Point block
 

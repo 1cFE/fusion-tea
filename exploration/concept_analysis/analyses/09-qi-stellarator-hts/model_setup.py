@@ -29,7 +29,14 @@ spec = dict(
     plasma_volume=448.0, # plasma volume [m³] — stellaris-design-details.md §Table 1
     elon=1.0,            # elongation — stellarators typically ~1 (analysis §5 parameter table)
     eta_p=0.0276,        # plasma beta (2.76%) — stellaris-design-details.md §2.3
-    p_input=2700.0,      # fusion power [MW] — stellaris-design-details.md §Table 1
+    p_input=50.0,        # auxiliary heating wallplug [MW] — stellaris-design-
+                         # details.md §2.6, Table 1 (50 MW ECRH at 230-240 GHz).
+                         # NOT fusion power: p_fus is computed by the library
+                         # via the inverse power balance and is not settable
+                         # through spec. Prior regen mis-set this to fusion
+                         # power 2700 MW, which back-solved to p_fus ≈ 13 GW
+                         # for a 1000 MWe plant and inflated LCOE to ~$303/MWh.
+                         # F9 now blocks p_input/P_native > 0.5.
 )
 P_native = 1000.0        # MWe — copied from the analysis Design Point block
 

@@ -32,6 +32,16 @@ for reference:
 
 {{canonical_accounts}}
 
+### Canonical `spec` field glossary (spec keys must come from here)
+
+Use ONLY the canonical fields below when authoring the `spec` dict — these are
+the kwargs `CostingInput` accepts for this archetype. The glossary tells you what
+each field means, what unit the library expects, and which common confusions to
+avoid (`p_fus` vs `p_input`, `B` vs `b_center`, kJ vs MJ, etc.). Read the
+"Common confusions" block before writing `spec`.
+
+{{canonical_spec_keys}}
+
 ## Required Reading (supporting)
 
 - **Closest example (pattern to imitate):** `{{example_path}}`
@@ -89,13 +99,16 @@ from lib.model_setup_helpers import (
 
 # 1. Specification — design-point inputs only, at native scale.
 #    Geometry / physics / power. NO library-default re-passing.
+#    Use ONLY the canonical field names below (see archetype spec-key glossary
+#    rendered after this block); names like B0, laser_pulse_energy_kJ,
+#    rep_rate_hz, or target_gain are not in CostingInput and would be
+#    silently dropped at forward() time. F7 (validator) catches this.
 spec = dict(
     R0=...,        # arc-reactor-specifications.md §Geometry
     plasma_t=...,
     elon=...,
-    B0=...,
-    p_input=...,
-    # ... only parameters the design point actually specifies
+    p_input=...,   # AUXILIARY HEATING wallplug (MW), NOT fusion power
+    # ... only canonical CostingInput fields the design point actually specifies
 )
 P_native = ...     # MWe — copied from the analysis Design Point block
 

@@ -84,5 +84,15 @@ parameters if an analysis finding implies the model's assumptions are wrong.
 
 {{canonical_accounts}}
 
+### Canonical `spec` field glossary (for any new/changed spec key)
+
+If your edit touches the `spec` dict (adding/renaming/replacing a field),
+the new key MUST come from the glossary below. Read the "Common confusions"
+block before editing — most prior errors (concept 05/09 fusion-vs-heating
+mix-up, dipole `plasma_volume` regression, kJ-vs-MJ driver-energy mistakes)
+trace back to ignoring these warnings.
+
+{{canonical_spec_keys}}
+
 ## Output
 Write changes to: `{{output_path}}`

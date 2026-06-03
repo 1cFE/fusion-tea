@@ -79,6 +79,7 @@ from lib.sources import (
 from lib.landscape import build_concept_landscape, extract_iter_count
 from lib.prompt_blocks import (
     canonical_accounts_block,
+    canonical_spec_keys_block,
     comparables_block,
     design_point_block,
     fit_grade_band_line,
@@ -450,6 +451,7 @@ def _build_common_vars(concept: dict, concepts: list[dict] | None = None) -> dic
         # extraction + judgment, not search + choice.
         "design_point_block": design_point_block(concept),
         "canonical_accounts": canonical_accounts_block(concept),
+        "canonical_spec_keys": canonical_spec_keys_block(concept),
         "comparables_block": comparables_block(concept),
         "fit_grade_band": fit_grade_band_line(concept),
     }
