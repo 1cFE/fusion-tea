@@ -112,6 +112,21 @@ spec = dict(
 )
 P_native = ...     # MWe — copied from the analysis Design Point block
 
+# Toroidal coil-cost requirement (TOKAMAK / STELLARATOR only):
+#   `plasma_t` is REQUIRED. 1costingfe's bilinear coil cost model computes
+#   C220103 ∝ B × R₀ × r_coil, where r_coil = vessel_or =
+#   plasma_t + blanket_t + ht_shield_t + structure_t + vessel_t. If the
+#   source publishes only major radius R₀ and aspect ratio A, derive
+#   `plasma_t = R₀ / A`. Leaving plasma_t unset falls back to the YAML
+#   default (1.1m tokamak / 1.8m stellarator) which over-states most
+#   published commercial designs.
+#
+# `r_bore` is silently unused for toroidal devices under the bilinear
+# model (kept in YAML for backcasting compat only). Do NOT pass
+# `r_bore = R₀` in spec for TOKAMAK / STELLARATOR; it's a no-op.
+# Loop devices (MIRROR, FRC, DIPOLE, PULSED) still use r_bore for the
+# r² coil model and must set it explicitly.
+
 # 2. Model.
 model = CostModel(concept=ConfinementConcept.{{costingfe_concept}}, fuel=Fuel.{{costingfe_fuel}})
 

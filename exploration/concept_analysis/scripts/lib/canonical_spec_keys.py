@@ -59,7 +59,11 @@ _GEOMETRY: dict[str, SpecKey] = {
     ),
     "plasma_t": SpecKey(
         "plasma_t", "m",
-        "Plasma minor radius (tokamak/stellarator) or plasma column radius (mirror)",
+        "Plasma minor radius `a` (tokamak/stellarator) or plasma column radius (mirror). "
+        "If the source publishes only R0 and aspect ratio A, derive `plasma_t = R0 / A`. "
+        "REQUIRED for TOKAMAK/STELLARATOR — drives r_coil = vessel_or in the bilinear "
+        "coil cost; YAML default (1.1m tokamak / 1.8m stellarator) over-states most "
+        "published commercial designs.",
         "0.05-2 (most MFE); larger for dipole-class spherical plasmas",
         "DIPOLE-class plasmas can be 10-25 m; tokamak/stellarator stay 0.05-3.",
     ),

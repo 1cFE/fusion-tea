@@ -157,7 +157,16 @@ def run_native_and_1gw(
 
     result_1gw = model.forward(
         net_electric_mw=_PROJECTION_NET_MWE,
-        n_mod=_PROJECTION_NET_MWE / p_native,
+        # Round to nearest integer module count and clamp to >=1. 1costingfe's
+        # CostingInput declares n_mod as a strict int (ge=1), which rejects the
+        # raw float division on every concept where P_native does not exactly
+        # divide _PROJECTION_NET_MWE. The 1 GWe projection is a comparison
+        # convenience, not a real plant design point — the precise n_mod value
+        # has no analytical meaning beyond "how many of this module to reach
+        # 1 GWe", so int(round(...)) is faithful enough. Concepts whose native
+        # scale already exceeds 1 GWe (e.g. Helias at 1500 MWe) collapse to
+        # n_mod=1 and the 1 GWe column reports a de-rated single-module figure.
+        n_mod=max(1, int(round(_PROJECTION_NET_MWE / p_native))),
         availability=availability,
         lifetime_yr=lifetime_yr,
         noak=noak,

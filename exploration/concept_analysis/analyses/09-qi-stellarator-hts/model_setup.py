@@ -27,6 +27,7 @@ spec = dict(
     R0=12.0,             # major radius [m] — stellaris-design-details.md §Table 1
     B=5.86,              # on-axis magnetic field [T] — stellaris-design-details.md §Table 3
     plasma_volume=448.0, # plasma volume [m³] — stellaris-design-details.md §Table 1
+    plasma_t=1.38,       # minor radius `a` [m] — derived from V = 2π²·R₀·a² with R₀=12m and plasma_volume=448 m³ → a≈1.38m. Drives r_coil = vessel_or in the bilinear coil cost (1costingfe master 52d95b9+).
     elon=1.0,            # elongation — stellarators typically ~1 (analysis §5 parameter table)
     eta_p=0.0276,        # plasma beta (2.76%) — stellaris-design-details.md §2.3
     p_input=50.0,        # auxiliary heating wallplug [MW] — stellaris-design-

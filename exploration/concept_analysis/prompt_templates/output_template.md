@@ -106,18 +106,26 @@ block at the top.
 
 | Parameter | Value | Source | Confidence | Note |
 |-----------|-------|--------|------------|------|
-| R0 | … | … | … | … |
-| a (minor radius) | … | … | … | … |
-| elongation | … | … | … | … |
-| B0 | … | … | … | … |
-| B_peak | … | … | … | … |
-| fusion_power_MW | … | … | … | … |
-| net_electric_MWe | … (must equal P_native) | … | … | … |
-| p_input_MW | … | … | … | … |
+| R0 | … | … | … | spec key: `R0` |
+| a (minor radius) | … | … | … | spec key: `plasma_t`. If source gives only R0 and aspect ratio A, compute as `a = R0 / A`. |
+| elongation | … | … | … | spec key: `elon` |
+| B0 (on-axis field) | … | … | … | spec key: `B` (NOT `B0` — the canonical name is `B`) |
+| B_peak (on conductor) | … | … | … | informational only — not a spec key; library uses on-axis B for ampere-meter quantity |
+| fusion_power_MW | … | … | … | informational only — `p_fus` is back-solved by the library from `p_input` + `P_native`; do NOT put `p_fus` in spec |
+| net_electric_MWe | … (must equal P_native) | … | … | drives `P_native` (and module count at the 1 GWe comparison) |
+| p_input_MW | … | … | … | spec key: `p_input` — auxiliary heating wallplug, NOT fusion power |
 | … (concept-distinctive knob: e.g. compression ratio for MIF, target gain for IFE) | … | … | … | … |
 
 Every value MUST cite a specific source. Values without a source must be flagged
 `[inferred]`, `[analogue]`, or `[estimated]` with stated reasoning.
+
+The **Note** column in the table above lists the canonical `spec` key (the kwarg
+name 1costingfe's `forward()` actually consumes). Three transcription bugs the
+strict kwarg validator on 1costingfe master will reject:
+
+- `B0` → must be `B` (on-axis field; canonical name is `B`)
+- `a` or `plasma_vol` → must be `plasma_t` / `plasma_volume`
+- `p_fus` in spec → drop entirely (library back-solves it from `p_input` + `P_native`)
 
 ### Section 5b: Override Candidates
 

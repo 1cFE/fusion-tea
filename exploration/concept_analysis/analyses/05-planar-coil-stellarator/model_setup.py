@@ -28,6 +28,7 @@ spec = dict(
     B=6.0,               # on-axis magnetic field [T] — arxiv Table 1
     elon=1.0,            # elongation — stellarators are typically ~1
     plasma_volume=418.0, # plasma volume [m³] — arxiv Table 1
+    plasma_t=1.63,       # minor radius `a` [m] — derived from V = 2π²·R₀·a² with R₀=8m and plasma_volume=418 m³ → a≈1.63m. Drives r_coil = vessel_or in the bilinear coil cost (1costingfe master 52d95b9+).
     eta_p=0.027,         # plasma beta — arxiv Table 1 (2.7%)
     f_rad=1.4,           # ISS04 confinement factor — arxiv Table 1, §3.5
     p_input=2.5,         # auxiliary heating wallplug [MW] — arxiv §4.4
