@@ -1,0 +1,37 @@
+proposal:
+  concept_id: 36-helical-coil-stellarator
+  design_name: "HESTIA Fusion Pilot Plant — reference operating case (Miyazawa & Goto, Phys. Plasmas 2023)"
+  maturity_tier: paper-concept
+  grounding_confidence: high
+  p_native_mwe: 70.4
+  primary_sources:
+    - knowledge/concept_research/36-helical-coil-stellarator/iter-01/sources/aip-2023-paper-abstract.md
+    - knowledge/concept_research/36-helical-coil-stellarator/iter-01/sources/helical-fusion-technology-overview.md
+  selection_rationale: |
+    HESTIA (the Helical Fusion Pilot Plant) is the only design in the company's public portfolio with a
+    fully computed parameter set: Table I of Miyazawa & Goto (2023) gives P_net = 70.4 MWe via the
+    HELICOSOPE systems code, along with geometry (R₀ = 7.8 m, a_c = 1.87 m, B_c = 8.0 T), engineering
+    gain (Q_eng = 2.0), cost estimate ($5B, 1990s prices), and fuel (DT with liquid metal TBR blanket).
+    The "50 MWe class" headline in the abstract is the design bracket; 70.4 MWe is the computed design
+    value, confirmed by the body text ("maximum net electrical output is 70 MWe") and the Section V
+    summary ("demonstrate 70 MWe of net electricity generation"). The FOAK commercial plant in Table I
+    has P_net = 103 MW but incomplete geometry (major radius "—"), making HESTIA the better-grounded
+    single-plant selection. This is a single-unit architecture; P_native is the plant net output, not a
+    per-module value.
+  alternatives_considered:
+    - design: "SOARHER (alternative FPP candidate)"
+      reason_rejected: "no Table I entry; only a stated nominal 50 MWe output with no computed parameters, no geometry, no cost estimate"
+      sensitivity_implication: >
+        If picked instead, P_native would be lower (50 vs 70.4 MWe) → more modules at 1 GWe → 1 GWe
+        LCOE shifts up. SOARHER's more conservative technology stack (NI STARS conductor, molten-salt
+        blanket) may reduce execution risk but the design is too underdocumented to ground a cost
+        projection; revisit only if Helical Fusion publishes a SOARHER parameter set.
+    - design: "FOAK commercial plant (Table I, Miyazawa & Goto 2023)"
+      reason_rejected: "incomplete geometry in the publication (major radius '—', cost '—'); HESTIA is the more completely specified design"
+      sensitivity_implication: >
+        If picked instead, P_native rises substantially (103 vs 70.4 MWe) → fewer modules at 1 GWe →
+        1 GWe LCOE shifts down. Worth revisiting if Helical Fusion publishes engineering parameters for
+        the FOAK plant following HESTIA operation.
+    - design: "HESTIA-Primary (prototype, Table I)"
+      reason_rejected: "non-nuclear hydrogen-only device; no electrical output by design (P_net = 0)"
+      sensitivity_implication: "n/a — no P_native; cannot serve as a design point under any scenario"

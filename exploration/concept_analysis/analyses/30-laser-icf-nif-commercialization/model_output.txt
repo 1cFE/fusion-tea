@@ -1,169 +1,51 @@
-Laser ICF — NIF Commercialization (D-T) | Inertia Enterprises
-Native design: 1500 MWe | 10 Hz | Indirect drive (Hybrid-E target)
-LCOE:          128.0 $/MWh | Overnight: 5482 $/kW
-Fusion:        5246 MW | Net: 1500 MW | Q_eng: 2.37
-Q_sci (target gain): 52.5  [model-derived; stated threshold >30]
-Driver E/shot: 10.00 MJ  [stated Inertia design: 10 MJ]
+warning: `VIRTUAL_ENV=C:\Users\mallo\AppData\Local\Python\pythoncore-3.14-64` does not match the project environment path `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv` and will be ignored; use `--active` to target the active environment instead
+LCOE: 65.4 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 59.8 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 59.8 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 4795 $/kW   native 4795 $/kW   1 GWe 5112 $/kW
 
-Code     Account                              M$
-------------------------------------------------
-CAS10    Preconstruction                    19.8
-CAS21    Buildings                        1101.5
-CAS22    Reactor Plant Equipment          3076.5
-CAS23    Turbine Plant                     512.9
-CAS24    Electrical Plant                  218.4
-CAS25    Miscellaneous                     133.0
-CAS26    Heat Rejection                    197.0
-CAS27    Special Materials                  22.5
-CAS28    Digital Twin                        5.0
-CAS29    Contingency                         0.0
-CAS30    Indirect Costs                   1053.4
-CAS40    Owner's Costs                      47.8
-CAS50    Supplementary                     509.6
-CAS60    IDC                              1325.8
-CAS70    O&M (annualized)                  597.8
-CAS80    Fuel (annualized)                   1.3
-CAS90    Financial                         662.7
-------------------------------------------------
-         Total Capital                    8223.0
+CAS               generic           native            1 GWe
+--------------------------------------------------------
+CAS10                19.8             19.8             18.5
+CAS21               957.8            957.8            694.7
+CAS22              2755.0           2755.0           1982.6
+CAS23               395.3            395.3            263.5
+CAS24               168.4            168.4            112.2
+CAS25               102.5            102.5             68.3
+CAS26               170.8            170.8            113.9
+CAS27                22.5             22.5             15.0
+CAS28                 5.0              5.0              5.0
+CAS29                 0.0              0.0              0.0
+CAS30               915.4            915.4            651.1
+CAS40                47.8             47.8             39.0
+CAS50               473.3            473.3            324.3
+CAS60              1159.7           1159.7            824.3
+CAS70               127.7            127.7            103.1
+CAS80                 1.1              1.1              0.7
+CAS90               539.5            539.5            383.5
+--------------------------------------------------------
+TOTAL              7193.1           7193.1           5112.4
 
-CAS22 sub-accounts:
-  C220101       280.8 M$
-  C220102       196.1 M$
-  C220103         0.0 M$
-  C220104      1000.0 M$
-  C220105        13.0 M$
-  C220106        49.2 M$
-  C220107        50.0 M$
-  C220108       475.6 M$
-  C220109         0.0 M$
-  C220110       120.8 M$
-  C220111       278.0 M$
-  C220112         0.0 M$
-  C220200       302.4 M$
-  C220300         6.3 M$
-  C220400        11.3 M$
-  C220500       159.4 M$
-  C220600        15.9 M$
-  C220700       117.6 M$
-  C220000 (Total)     3076.5 M$
-
-1 GWe scaled:  LCOE = 145.8 $/MWh | Overnight = 5830 $/kW
-
-Key Assumptions and Uncertainties:
-  q_eng = 2.370    UNCERTAIN: anchored to e_driver_mj = 10 MJ (stated design)
-                   Model-derived Q_sci ≈ 52.5 for 1,500 MWe closure (§S2
-                   simplified ~56 omits mn=1.1 neutron multiplier benefit)
-                   Stated >30 threshold → ~440 MWe/system (model); ~350 MWe
-                   (§S2 simplified; omits mn). Modular architecture required.
-  eta_th = 0.45    UNCERTAIN: LLNL LIFE analogue; Inertia has not published value
-  avail = 0.75     canonical per scoring_framework.md §Plant availability (Pulsed IFE, D-T); previously 0.80
-  C220104 = $1.0B  UNCERTAIN: $100/J NOAK laser; FOAK estimate $7–10B at $700–1,000/J
-    Diode frac ~1/3  (Haefner 2023): diodes ~$333M NOAK, other laser ~$667M NOAK
-    Diode lifetime:  target 14–20 GShots; current ~7–10× short (1.4–2.9 GShots)
-    Replacement int: ~4.4–9.2 yrs (current-gen); ~44–63 yrs (if target met)
-    Periodic capex:  ~$1.0–2.3B over 30-yr life — NOT included in O&M model
-  om_cost_dt=309   UNCERTAIN: inflated from 52 to capture ~$315M/yr target materials
-                   ($1/target × 315M targets/yr at 10 Hz); goal unverified
-
-Sensitivity (elasticity = %LCOE / %param)
-------------------------------------------------
-
-Engineering levers:
-  availability                         -0.9751
-  q_eng                                -0.3915
-  construction_time_yr                 +0.2580
-  eta_th                               -0.1465
-  plasma_t                             +0.1395
-  eta_pin                              +0.0869
-  blanket_t                            +0.0623
-  mn                                   -0.0495
-  ht_shield_t                          +0.0137
-  f_sub                                -0.0072
-  vessel_t                             +0.0058
-  f_rep                                -0.0055
-  structure_t                          +0.0022
-  p_trit                               -0.0009
-  p_house                              -0.0004
-  p_target                             -0.0002
-  p_pump                               -0.0001
-  dd_f_T                               +0.0000
-  dd_f_He3                             +0.0000
-  dhe3_dd_frac                         +0.0000
-  dhe3_f_T                             +0.0000
-  dhe3_f_He3                           +0.0000
-  f_rad                                +0.0000
-  eta_dec                              +0.0000
-
-Financial:
-  interest_rate                        +0.4024
-  inflation_rate                       +0.1895
-
-Costing constants (top 15):
-  om_cost_dt                           +0.4561
-  driver_laser_per_mw                  +0.0880
-  indirect_fraction                    +0.0798
-  blanket_unit_cost_dt                 +0.0577
-  target_factory_base                  +0.0523
-  turbine_per_mw                       +0.0507
-  installation_frac                    +0.0268
-  core_lifetime_dt                     -0.0238
-  electric_per_mw                      +0.0216
-  shield_unit_cost                     +0.0216
-  heat_rej_per_mw                      +0.0195
-  fuel_recovery                        -0.0172
-  fuel_handling_dt_base                +0.0154
-  decom_provision_dt                   +0.0148
-  remote_handling_dt_base              +0.0133
-
-Q_sci Sweep (e_driver_mj = 10 MJ fixed, single-system, 1,500 MWe design):
-    Q_sci    Net MWe   q_eng   LCOE $/MWh  Notes
-  -----------------------------------------------------------------
-     30.0        441   1.416          271  ← stated threshold (shortfall)
-     35.0        677   1.633          204  
-     40.0        913   1.848          170  
-     45.0       1148   2.059          149  
-     50.0       1384   2.268          134  ← closure (~1,500 MWe)
-     52.5       1502   2.372          128  ← closure (~1,500 MWe)
-     56.0       1667   2.515          121  above design target
-     60.0       1856   2.678          114  above design target
-
-  Physics note: model gives ~440 MWe at Q_sci=30 (neutron multiplier mn=1.1
-  adds ~10% thermal power vs. the §S2 simplified formula giving ~350 MWe).
-  Closure at 1,500 MWe: Q_sci ≈ 52.5 (model) vs. §S2 simplified ~56.
-  LCOE at threshold (Q_sci=30): driven by low capacity factor at ~440 MWe
-LIFE Heritage Calibration (OSTI-1022881, Anklam 2011, 2011$, ~900 MWe):
-  LIFE COE:               $69/MWh
-  Laser fraction:         30% (~$21/MWh; ~40% of capital)
-  Target fuel:            $110M/yr at ~900 MWe
-  Non-fuel O&M:           ~19% (~$13/MWh)
-  Capital fraction:       ~60% of COE
-  LIFE thermal eff:       44%  [model uses 45%]
-  LIFE first-unit avail:  70%  [model uses NOAK 75%]
-  Target cost cross-check (scaled to 1500 MWe):
-    LIFE basis x(1500/900):  $183M/yr
-    Model ($1/tgt x315M/yr): $315M/yr  [1.7x LIFE basis]
-    Goodin ($0.41 NOAK):     $215M/yr  [1.2x LIFE basis]
-
-Laser Cost Scenario Sweep (FOAK -> NOAK, 10 MJ system, 1,500 MWe):
-  Scenario                                     C220104 M$   LCOE $/MWh    OC $/kW  Notes
-  ------------------------------------------------------------------------------------------
-  FOAK  ($700/J x 10 MJ = $7.0B)                     7000        200.7      11410  <- first-of-a-kind
-  Early ($500/J x 10 MJ = $5.0B)                     5000        176.5       9434
-  Mid   ($300/J x 10 MJ = $3.0B)                     3000        152.3       7458
-  NOAK  ($100/J x 10 MJ = $1.0B)                     1000        128.0       5482  <- base case
-
-Diode Replacement Periodic Capital (annualized LCOE adder, not in base O&M):
-  Diode capital (NOAK, 1/3 of $1B C220104): $333M
-  Annual energy at 1500 MWe / 75% avail: 9855 GWh/yr
-  Scenario                                             Interval    M$/yr   Adder $/MWh   Total LCOE
-  -------------------------------------------------------------------------------------------------
-  Current-gen short (4.4 yr, 1.4 GShot lifetime)           4.4yr     75.8           7.7        135.7
-  Current-gen long  (9.2 yr, 2.9 GShot lifetime)           9.2yr     36.2           3.7        131.7
-  Target-met short (44 yr, 14 GShot lifetime)             44.0yr      7.6           0.8        128.8
-  Target-met long  (63 yr, 20 GShot lifetime)             63.0yr      5.3           0.5        128.6
-
-  Base LCOE (no diode replacement): 128.0 $/MWh
-  Current-gen diode replacement adds $3.7-$7.7/MWh
-  (2.9%-6.0% of base LCOE).
-  Closing the 7-10x lifetime gap would reduce adder to <$0.77/MWh.
+--- CAS22 sub-account detail (overrides marked) ---
+code            generic       native        1 GWe  flag
+C220000          2755.0       2755.0       1982.6
+C220101           257.8        257.8        202.1
+C220102           180.0        180.0        141.1
+C220103             0.0          0.0          0.0
+C220104           868.2        868.2        567.5
+C220105            11.4         11.4          9.3
+C220106            42.7         42.7         33.4
+C220106_pump          0.6          0.6          0.4
+C220106_vessel         42.1         42.1         33.0
+C220107            21.2         21.2         13.8
+C220108           396.4        396.4        298.4
+C220109             0.0          0.0          0.0
+C220110           106.1        106.1         86.6
+C220111           263.7        263.7        189.3
+C220112             0.0          0.0          0.0
+C220200           298.4        298.4        205.5
+C220300            16.9         16.9         15.1
+C220400             9.8          9.8          6.5
+C220500           159.4        159.4        120.0
+C220600            15.9         15.9         11.5
+C220700           107.2        107.2         82.3

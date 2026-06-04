@@ -1,0 +1,42 @@
+proposal:
+  concept_id: 03-laser-icf-liquid-jet-target
+  design_name: "Nano-Sun 1 MHz reactor scenario (Kharzeev, Levitt, Trallero-Herrero 2025, arXiv:2503.15531)"
+  maturity_tier: paper-concept
+  grounding_confidence: low
+  p_native_mwe: 0.30
+  primary_sources:
+    - knowledge/concept_research/03-laser-icf-liquid-jet-target/iter-01/sources/arxiv-2503-nanoshell-paper.md
+    - knowledge/concept_research/03-laser-icf-liquid-jet-target/iter-01/sources/cortex-fusion-website.md
+  selection_rationale: |
+    The nanoshell preprint (arXiv:2503.15531), co-authored by Cortex founder Jacob Levitt, is the only
+    Cortex-attributed source with an implied electrical output. Its "Released energy" section projects
+    P_fusion ~ 1 MW at f = 1 MHz and N_s-p = 10^6 nanoshells/pulse. With the paper's stated electrical
+    conversion efficiency κ ~ 30% and laser power consumption 3 kW, net electrical output is approximately
+    0.30 MWe (Q ~ 100). No named reactor design exists anywhere in the Cortex public record; this number
+    is a back-of-envelope scenario calculation in a theoretical preprint whose core physics (plasmonic
+    field enhancement producing fusion) is unvalidated and unreviewed. Two hybrid fusion-fission SMR
+    patent applications (US 63/792,117, US 63/802,958) listed on the company website may describe more
+    mature and higher-output designs, but their content is not available in the current research materials.
+  alternatives_considered:
+    - design: "Modern Small Modular Hybrid Fusion-Fission Reactor (US patent application 63/792,117)"
+      reason_rejected: "Patent text not available in research materials; P_native cannot be established from title alone"
+      sensitivity_implication: >
+        If the patent describes an SMR-scale design, P_native could rise substantially — SMR-class outputs
+        in the 50–300 MWe range are typical for this technology class → far fewer modules at 1 GWe → 1 GWe
+        LCOE shifts down materially. Ingesting this patent would likely force a re-selection and change the
+        comparison number by 2–3 orders of magnitude.
+    - design: "D2O-Moderated Hybrid Fusion-Fission Reactor with Direct Brayton Cycle (US patent application 63/802,958)"
+      reason_rejected: "Patent text not available in research materials; P_native cannot be established from title alone"
+      sensitivity_implication: >
+        Same direction as US 63/792,117 — if P_native is at SMR scale (50–300 MWe), the 1 GWe LCOE shifts
+        down substantially. The Brayton cycle specification suggests a more complete engineering concept;
+        if distinct design parameters appear in this patent, it may supersede US 63/792,117 as the
+        preferred design point.
+    - design: "Levitt 2023 quantum-Zeno ¹⁶O(2p,γ)¹⁸Ne water fusion reactor (arXiv:2308.07417)"
+      reason_rejected: "Entirely different fusion mechanism from D-D nanoshell concept; no stated P_native in MWe"
+      sensitivity_implication: >
+        Not a directly comparable alternative — represents a different concept row, not a different power
+        level of the same design. No directional sensitivity for the D-D nanoshell design point.
+    - design: "kHz liquid-sheet neutron source demonstrator (Knight et al., HPLSE 2024)"
+      reason_rejected: "Independent academic experiment with no Cortex affiliation; neutron source with no electrical output"
+      sensitivity_implication: "n/a — not a power plant design and not a Cortex concept."

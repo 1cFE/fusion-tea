@@ -1,0 +1,26 @@
+proposal:
+  concept_id: 25-heavy-ion-beam-icf
+  design_name: "HYLIFE-II baseline single-chamber design (LLNL, OSTI 7021072)"
+  maturity_tier: proposed-commercial
+  grounding_confidence: high
+  p_native_mwe: 940
+  primary_sources:
+    - knowledge/concept_research/25-heavy-ion-beam-icf/iter-01/sources/hif-technology-overview.md
+    - knowledge/concept_research/25-heavy-ion-beam-icf/iter-02/sources/hif-recent-research-compilation.md
+  selection_rationale: |
+    HYLIFE-II is the most completely documented HIF power plant design in the public literature,
+    with published engineering parameters (5 MJ driver, FLiBe blanket, 6 Hz rep rate), a direct
+    cost estimate for the accelerator driver ($570M), and an LCOE estimate of 6.5 c/kWh (early-1990s
+    dollars) in the LLNL final report (OSTI 7021072). The baseline single-chamber design at 940 MWe
+    represents a complete, self-contained plant (recirculating induction driver + one target chamber
+    + FLiBe blanket + steam Rankine cycle) and is the natural replication unit. HIBALL was rejected
+    because its documented output is a 3.8 GWe multi-chamber plant total, which is inoperable as a
+    P_native for the 1 GWe normalization (n_mod < 1), and no standalone per-chamber design was
+    documented separately.
+  alternatives_considered:
+    - design: "HIBALL plant (KfK-3202, 1985) — 3.8 GWe multi-chamber total"
+      reason_rejected: plant total is far above 1 GWe normalization point; no standalone per-chamber design documented; older design (1985) with less detailed economics than HYLIFE-II
+      sensitivity_implication: "if a future search finds an explicit single-chamber HIBALL design point (~950 MWe estimated from 4-chamber total), P_native would be comparable to HYLIFE-II → modest effect on n_mod, but blanket choice changes from FLiBe to LiPb → cost structure shift worth probing if HIBALL per-chamber design is recovered"
+    - design: "HYLIFE-II multi-chamber scaling study (OSTI 10170594) — ~1,934 MWe plant total"
+      reason_rejected: not a standalone design; the multi-chamber study layers economics on the same 940 MWe chamber — treating the plant total as P_native would inflate the module size beyond what the underlying engineering describes
+      sensitivity_implication: "if the multi-chamber plant total (1,934 MWe) were mistakenly used as P_native, n_mod at 1 GWe drops below 1 — the 1 GWe normalization cannot be reached with a single unit; this variant is relevant only for fleet-level cost learning studies, not the 1 GWe LCOE comparison"

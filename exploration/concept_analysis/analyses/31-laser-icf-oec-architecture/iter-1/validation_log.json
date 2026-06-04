@@ -1,29 +1,29 @@
 [
   {
-    "timestamp": "2026-04-20T17:52:25.572237+00:00",
+    "timestamp": "2026-06-04T18:28:08.281574+00:00",
     "step": "cold-start",
     "attempt": 1,
     "validator": "validate_non_empty",
     "passed": true,
-    "details": "Non-empty (46440 chars)",
-    "validated_text_preview": "# D1+ Analysis: Laser ICF - OEC Architecture (D-T) (Blue Laser Fusion)\n\n**Concept**: Laser ICF with Optical Enhancement Cavity + Coherent Beam Combining \u2014 D-T fuel\n**Company**: Blue Laser Fusion (BLF), Goleta, CA / Tokyo\n**Founder**: Shuji Nakamura (2014 Nobel Laureate, inventor of blue LED)\n**Driver Architecture**: CBC fiber lasers + OEC (LIGO-derived), 5 MJ UV at 1\u201310 Hz\n**Confinement Family**: IFE \u2014 Direct Drive, Shock Ignition\n\n---\n\n## Section 1: Availability of Data\n\n**Rating: Moderate**\n\nB"
+    "details": "Non-empty (34728 chars)",
+    "validated_text_preview": "## Design Point\n\n- Name: BLF OEC Reactor, 10 Hz design point (Sunahara et al., 2025)\n- Maturity: paper-concept\n- P_native: 2820 MWe\n- Grounding: medium\n- Primary sources:\n  - knowledge/concept_research/31-laser-icf-oec-architecture/iter-01/sources/optics-express-2025-paper.md\n  - knowledge/concept_research/31-laser-icf-oec-architecture/iter-01/sources/blf-website-and-news.md\n\n## 1. Availability of Data\n\n**Rating: Limited**\n\nThe BLF OEC Reactor concept rests on a single peer-reviewed publication "
   },
   {
-    "timestamp": "2026-04-20T18:00:09.539762+00:00",
+    "timestamp": "2026-06-04T18:33:34.946384+00:00",
     "step": "model-setup",
     "attempt": 1,
-    "validator": "validate_python_syntax",
+    "validator": "validate_python_syntax+validate_model_setup_contract_strict+validate_override_registry",
     "passed": true,
-    "details": "Valid Python syntax",
-    "validated_text_preview": "\"\"\"Laser ICF - OEC Architecture (D-T) \u2014 Blue Laser Fusion (BLF) 1costingfe model.\n\nUsage:\n    uv run python model_setup.py              # print results to terminal\n    uv run python model_setup.py | tee model_output.txt  # also save for synthesis stage\n\nConcept: Blue Laser Fusion (BLF) reactor using Coherent Beam Combining (CBC) fiber lasers\ninjected into Optical Enhancement Cavities (OEC, LIGO-derived) to deliver 5 MJ UV (350 nm)\nto D-T targets at 1\u201310 Hz. Shock ignition scheme targeting gain G"
+    "details": "All validators passed",
+    "validated_text_preview": "\"\"\"1costingfe model: Laser ICF OEC Architecture (BLF) (Blue Laser Fusion).\n\nUsage:\n    uv run python model_setup.py              # print results\n    uv run python model_setup.py | tee model_output.txt\n\"\"\"\nimport sys\nfrom pathlib import Path\n\n# Make the shared three-forward helper importable regardless of where this file\n# lives (concept dir or iter-N/ dir): walk up to the scripts/ root.\n_SCRIPTS = next(\n    p / \"scripts\"\n    for p in Path(__file__).resolve().parents\n    if (p / \"scripts\" / \"lib\""
   },
   {
-    "timestamp": "2026-04-20T18:01:34.790502+00:00",
+    "timestamp": "2026-06-04T18:35:13.096218+00:00",
     "step": "assess",
     "attempt": 1,
     "validator": "validate_feedback_verdict",
     "passed": true,
     "details": "Feedback format valid (verdict: FINDINGS)",
-    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: Rep-rate sensitivity claim contradicted by model output\n- **Target:** Section 7 (TEA implications) and model sensitivity sweep\n- **Category:** model\n- **Finding:** Section 7 states that rep rate is \"the single most leveraged LCOE parameter in the model \u2014 even more than gain,\" and describes a complex viability boundary in (G, f) space where 1 Hz operation is barely viable at G=160 while 10 Hz operation tolerates G\u226580. The model's sensitivity sweep directly contradicts "
+    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: Zero overrides for Low archetype-fit when comparable-derived bracketing data exists\n- **Target:** Section 5b (Override Candidates) and model_setup.py overrides list\n- **Category:** analysis\n- **Finding:** The analysis concludes zero enabled overrides and defends this as a data-availability problem, but the family-delta prose in Section 7 itself cites published $/J figures for comparable laser drivers \u2014 Inertia DPSSL at $700\u20131000/J (concept 26) and Xcimer KrF at $60\u201380"
   }
 ]

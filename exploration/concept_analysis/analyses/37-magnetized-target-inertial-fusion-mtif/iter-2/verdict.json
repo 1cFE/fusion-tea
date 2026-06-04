@@ -2,17 +2,18 @@
   "iteration": 2,
   "verdict": "FAIL",
   "finding_count": 3,
-  "feedback_source": "research",
+  "feedback_source": "assess",
   "model_ran": true,
   "model_ok": true,
-  "research_ran": true,
-  "merged_assess": true,
+  "research_ran": false,
+  "merged_assess": false,
   "sources": [
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/37-magnetized-target-inertial-fusion-mtif/iter-01/sources/nearstar-website-summary.md",
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/37-magnetized-target-inertial-fusion-mtif/iter-02/sources/en-wiki-railgun.md",
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/37-magnetized-target-inertial-fusion-mtif/iter-02/sources/iopscience-10-1088-1741-4326-ac2dbe.md",
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/37-magnetized-target-inertial-fusion-mtif/iter-02/sources/nationalacademies-read-18289-chapter-5.md",
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/37-magnetized-target-inertial-fusion-mtif/iter-02/sources/nearstar-energy-capture-research.md"
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\37-magnetized-target-inertial-fusion-mtif\\iter-01\\sources\\nearstar-mtif-technical-overview.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\37-magnetized-target-inertial-fusion-mtif\\iter-01\\sources\\nearstar-website-summary.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\37-magnetized-target-inertial-fusion-mtif\\iter-02\\sources\\en-wiki-railgun.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\37-magnetized-target-inertial-fusion-mtif\\iter-02\\sources\\iopscience-10-1088-1741-4326-ac2dbe.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\37-magnetized-target-inertial-fusion-mtif\\iter-02\\sources\\nationalacademies-read-18289-chapter-5.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\37-magnetized-target-inertial-fusion-mtif\\iter-02\\sources\\nearstar-energy-capture-research.md"
   ],
-  "timestamp": "2026-05-18T06:11:02.478038+00:00"
+  "timestamp": "2026-06-04T17:35:49.021494+00:00"
 }

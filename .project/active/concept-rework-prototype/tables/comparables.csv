@@ -1,0 +1,2 @@
+concept_id,comparables,derivation
+01-hts-compact-tokamak,"21-spherical-tokamak-hts; 28-hts-tokamak-full-hts; 29-negative-triangularity-tokamak; 33-state-backed-tokamak-best","Same TOKAMAK enum + DT fuel. Closest neighbor is 21 (spherical, also HTS REBCO). 28/29 are tokamak geometric variants in same family; 33 is ARIES-class large conventional tokamak benchmark."

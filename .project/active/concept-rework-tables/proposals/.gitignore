@@ -1,0 +1,5 @@
+# Regenerable artifacts — not committed to keep the working area light.
+# The audit content lives in *.trace.md and *.proposal.yaml.
+*.raw.json
+*.prompt.md
+batch.log

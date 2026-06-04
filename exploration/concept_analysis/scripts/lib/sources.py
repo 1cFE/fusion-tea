@@ -161,51 +161,70 @@ def format_source_list(sources: list[Path]) -> str:
 def parse_proposed_actions(review_path: Path) -> list[dict]:
     """Parse Proposed Actions from review.md.
 
-    Returns list of dicts with keys: id, description, category, severity,
-    location, finding, proposed_fix, decision, user_notes.
+    Returns list of dicts with the nine keys: id, description, category,
+    severity, location, finding, proposed_fix, decision, user_notes.
+
+    Item 8 rewrote the internals from the legacy proposed-action MULTILINE regex
+    constant to line-anchored scanning; the ``list[dict]`` / nine-key return shape is
+    preserved per signal_contract.md (the decisions block assembled in
+    run_analysis.py reads all nine).
     """
-    from lib.validators import PROPOSED_ACTION_RE
+    from lib.validators import _header_id
 
     text = review_path.read_text(encoding="utf-8")
-    actions = []
+    lines = text.splitlines()
 
-    matches = list(PROPOSED_ACTION_RE.finditer(text))
-    for i, m in enumerate(matches):
-        start = m.end()
-        end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
-        block = text[start:end]
+    # Locate every ``### PA-N: <title>`` header line and its block span.
+    headers = [
+        (i, _header_id(ln, "PA"), ln.strip())
+        for i, ln in enumerate(lines)
+        if _header_id(ln, "PA")
+    ]
 
-        action = {
-            "id": m.group(1),
-            "description": m.group(2).strip(),
-        }
+    field_map = [
+        ("Category", "category"),
+        ("Severity", "severity"),
+        ("Location", "location"),
+        ("Finding", "finding"),
+        ("Proposed Fix", "proposed_fix"),
+        ("Decision", "decision"),
+        ("User Notes", "user_notes"),
+    ]
 
-        # Extract fields from **Key:** Value pattern
-        for field_key, dict_key in [
-            ("Category", "category"),
-            ("Severity", "severity"),
-            ("Location", "location"),
-            ("Finding", "finding"),
-            ("Proposed Fix", "proposed_fix"),
-            ("Decision", "decision"),
-            ("User Notes", "user_notes"),
-        ]:
-            field_pattern = re.compile(
-                rf"^\-\s*\*\*{re.escape(field_key)}:\*\*\s*(.+)$",
-                re.MULTILINE,
-            )
-            field_match = field_pattern.search(block)
-            if field_match:
-                val = field_match.group(1).strip()
-                # Strip italic placeholder markers
-                if val.startswith("_[") and val.endswith("]_"):
-                    val = ""  # unfilled placeholder
-                elif val.startswith("_") and val.endswith("_"):
-                    val = ""
-                action[dict_key] = val
-            else:
-                action[dict_key] = ""
+    actions: list[dict] = []
+    for idx, (start, pa_id, header_line) in enumerate(headers):
+        end = headers[idx + 1][0] if idx + 1 < len(headers) else len(lines)
+        # Description is the text after the colon on the header line.
+        description = header_line.split(":", 1)[1].strip()
+        block_lines = lines[start + 1:end]
 
+        action = {"id": pa_id, "description": description}
+        for field_key, dict_key in field_map:
+            action[dict_key] = _extract_field_value(block_lines, field_key)
         actions.append(action)
 
     return actions
+
+
+def _extract_field_value(block_lines: list[str], field_key: str) -> str:
+    """Return the value of a ``- **<field_key>:** value`` line, or ``""``.
+
+    Line-anchored: scans each line for a bullet whose bold key matches
+    ``field_key`` (tolerating ``**Key:**`` and ``**Key**:``). Unfilled italic
+    placeholders (``_[...]_`` / ``_..._``) collapse to ``""``.
+    """
+    for raw in block_lines:
+        s = raw.strip()
+        if not s.startswith("-"):
+            continue
+        body = s.lstrip("-").replace("*", "").strip()
+        key, sep, val = body.partition(":")
+        if sep != ":" or key.strip().lower() != field_key.lower():
+            continue
+        val = val.strip()
+        if val.startswith("_[") and val.endswith("]_"):
+            return ""  # unfilled placeholder
+        if val.startswith("_") and val.endswith("_"):
+            return ""
+        return val
+    return ""

@@ -1,0 +1,45 @@
+proposal:
+  concept_id: 04-laser-icf
+  design_name: "HB11 Energy 500 MWe technoeconomic model scenario (McKenzie et al. 2023)"
+  maturity_tier: paper-concept
+  grounding_confidence: low
+  p_native_mwe: 500
+  primary_sources:
+    - knowledge/concept_research/04-laser-icf/iter-03/sources/link-10-1007-s10894-023-00349-9/output.md
+    - knowledge/concept_research/04-laser-icf/iter-01/sources/hb11-patent-reactor-design.md
+  selection_rationale: |
+    No named commercial plant design exists in HB11 Energy's published portfolio. The most
+    specific electrical output figure traceable to a company source is the 500 MWe scenario
+    used in McKenzie et al. 2023 (J. Fusion Energ. 42:17), HB11's formal peer-reviewed
+    technoeconomic paper, where 500 MW is the baseline for calculating recirculating power
+    requirements (f = 0.10, η = 20% laser efficiency). This is a scenario calculation, not a
+    committed plant design — there is no accompanying geometry, named architecture, or fuel
+    cycle throughput for the 500 MW figure. The company's 1 GW website target is rejected as
+    a marketing aspiration with no published parameters of any kind. The patent reactor
+    (US10410752B2) is rejected as a P_native source because it describes a single reaction
+    unit with no commercial plant-level aggregation or net electrical figure. The 500 MWe is
+    treated as a single-plant value; there is no documented multi-module architecture in the
+    sources, so n_mod = 1000/500 = 2 in the 1 GWe projection. The design point is asterisked
+    as poorly grounded in the comparison view.
+  alternatives_considered:
+    - design: "Patent reactor concept, single unit (US10410752B2, Hora 2018)"
+      reason_rejected: "No net P_native stated for a commercial plant; describes one reaction
+        chamber with gross per-shot energy but no plant-level aggregation or net electrical
+        figure"
+      sensitivity_implication: |
+        If the per-chamber patent architecture were used to derive a P_native (e.g. 1 GJ/shot
+        at 1 Hz with direct electrostatic conversion → several hundred MWe net per chamber
+        depending on assumed efficiency), the resulting p_native_mwe could be in a broadly
+        similar range to 500 MWe depending on assumed laser recirculating power. Direction of
+        change is uncertain — no net figure is specified. Worth revisiting only if a plant-level
+        analysis of the patent architecture is published with an explicit net figure.
+    - design: "HB11 website 1 GW baseload target (company communications 2021–2025)"
+      reason_rejected: "Purely aspirational marketing communications with no engineering
+        parameters; less specific than McKenzie 2023 scenario which carries explicit
+        technoeconomic assumptions"
+      sensitivity_implication: |
+        If picked instead, P_native would rise substantially from 500 to 1000 MWe → only one
+        module needed at 1 GWe scale → 1 GWe LCOE would shift down (fixed reactor island costs
+        spread over a larger single plant). Worth probing if the company ever publishes
+        engineering parameters for a 1 GW design, at which point the 1 GW target would
+        supersede the 2023 scenario.

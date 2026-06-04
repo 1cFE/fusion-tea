@@ -77,7 +77,18 @@ var TaxonomyCards = (function () {
 
     // Header
     var header = el("div", "taxonomy-card__header");
-    header.appendChild(el("div", "taxonomy-card__name", concept.name));
+    var nameEl = el("div", "taxonomy-card__name", concept.name);
+    if (concept.asterisk_in_comparison) {
+      var marker = document.createElement("span");
+      marker.className = "low-grounding-marker";
+      marker.textContent = "⚠";
+      marker.title =
+        "Low grounding: design-point rests on company-stated or single-source " +
+        "numbers — interpret the cost number with caution.";
+      marker.setAttribute("aria-label", "Low-grounding design point");
+      nameEl.appendChild(marker);
+    }
+    header.appendChild(nameEl);
     if (concept.company) {
       header.appendChild(el("div", "taxonomy-card__company", concept.company));
     }

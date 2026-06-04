@@ -1,0 +1,38 @@
+proposal:
+  concept_id: 31-laser-icf-oec-architecture
+  design_name: "BLF OEC Reactor, 10 Hz design point (Sunahara et al., 2025)"
+  maturity_tier: paper-concept
+  grounding_confidence: medium
+  p_native_mwe: 2820
+  primary_sources:
+    - knowledge/concept_research/31-laser-icf-oec-architecture/iter-01/sources/optics-express-2025-paper.md
+    - knowledge/concept_research/31-laser-icf-oec-architecture/iter-01/sources/blf-website-and-news.md
+  selection_rationale: |
+    The BLF portfolio contains a single published reactor concept: a 500-module CBC-OEC
+    direct-drive shock ignition plant described in Sunahara et al. (2025). The design
+    spans a 1–10 Hz repetition-rate range with P_grid ranging from 102 MWe to 2820 MWe
+    for the same physical hardware. The 10 Hz case is selected as P_native because it is
+    the paper's commercial design point (Table 2 labels it the "reactor value"), the only
+    operating mode with an economically viable recirculating power fraction (f_re = 0.170),
+    and the case for which the power balance and efficiency chain are fully worked out. The
+    1 Hz case (102 MWe) is not a distinct design — it is the marginal lower bound of the
+    same hardware, with f_re = 0.426. P_native = 2820 MWe is a single-chamber design;
+    n_mod = 1000/2820 ≈ 0.35 means the 1 GWe comparison represents a proportionally
+    scaled-down version of this reactor.
+  alternatives_considered:
+    - design: "BLF OEC Reactor, 1 Hz operating point (Sunahara et al., 2025)"
+      reason_rejected: economically marginal — f_re = 0.426 at 1 Hz; not the commercial design target
+      sensitivity_implication: >
+        If picked instead, P_native drops substantially (102 vs 2820 MWe) → n_mod rises
+        to ~9.8 → many more plants needed for 1 GWe → 1 GWe LCOE shifts sharply up from
+        high fixed-cost multiplication. Represents the same capital base producing 27× less
+        output. Worth probing in scenarios where 10 Hz operation proves unachievable — the
+        G and rep-rate viability cliff must be explored jointly, not independently.
+    - design: "BLF '~1 GWe commercial plant' (BLF website)"
+      reason_rejected: not a distinct engineering design — no Table 2 parameters, geometry, or efficiency values published for an intermediate-rep-rate case
+      sensitivity_implication: >
+        If ~1 GWe is taken as P_native instead of the 10 Hz full-power case, P_native
+        is substantially lower → n_mod rises toward ~1 → 1 GWe LCOE shifts modestly upward
+        relative to the 10 Hz baseline. Worth revisiting if BLF publishes engineering
+        parameters for a distinct 1 GWe commercial design with its own rep rate and
+        efficiency chain.

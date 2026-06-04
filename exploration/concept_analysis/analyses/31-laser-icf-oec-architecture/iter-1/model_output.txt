@@ -1,116 +1,50 @@
-Laser ICF - OEC Architecture (D-T) — Blue Laser Fusion (BLF)
-Native: 2800 MWe @ 10 Hz | NOAK | avail=75% | 30 yr
+LCOE: 92.9 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 70.2 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 70.2 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 5323 $/kW   native 5323 $/kW   1 GWe 6642 $/kW
 
-LCOE:      48.2 $/MWh
-Overnight: 3183 $/kW
-Fusion:    7672 MW | Net: 2800 MW
-Q_eng:     5.69 | Q_sci: 160.3  (paper: G=160)
-E_laser:   4.79 MJ/shot (UV) | E_wallplug: 47.9 MJ/shot
-Rec. frac: 17.6%  (paper: 17.0%)
-
-Code     Account                              M$
-------------------------------------------------
-CAS10    Preconstruction                    23.0
-CAS21    Buildings                        1486.5
-CAS22    Reactor Plant Equipment          2984.3
-CAS23    Turbine Plant                     671.4
-CAS24    Electrical Plant                  286.0
-CAS25    Miscellaneous                     174.1
-CAS26    Heat Rejection                    263.7
-CAS27    Special Materials                  42.0
-CAS28    Digital Twin                        5.0
-CAS29    Contingency                         0.0
-CAS30    Indirect Costs                    985.5
-CAS40    Owner's Costs                      65.3
-CAS50    Supplementary                     762.2
-CAS60    IDC                              1163.5
-CAS70    O&M (annualized)                  166.2
-CAS80    Fuel (annualized)                   3.2
-CAS90    Financial                         718.2
-------------------------------------------------
-         Total Capital                    8912.3
-
-CAS22 Reactor Plant Equipment detail:
+CAS               generic           native            1 GWe
 --------------------------------------------------------
-  C220101  First Wall / LiPb Blanket               334.5
-  C220102  Shield                                  233.6
-  C220104  CBC-OEC Laser Driver                    382.9
-  C220105  Primary Structure                        14.9
-  C220106  Vacuum System                            57.8
-  C220107  Power Supplies (pulsed cap bank)         23.9
-  C220108  Target Factory (cryo D-T Hz-rate)       574.3
-  C220110  Remote Handling                         138.2
-  C220111  Installation                            246.4
-  C220200  Coolant Systems                         527.5
-  C220300  Aux Cooling                              19.9
-  C220400  Rad Waste                                15.1
-  C220500  Fuel Handling (tritium)                 246.7
-  C220600  Other Equipment                          26.2
-  C220700  I&C                                     142.1
-  C220000  CAS22 Total                            2984.3
+CAS10                23.0             23.0             18.5
+CAS21              1583.6           1583.6            670.4
+CAS22              6512.0           6512.0           3066.0
+CAS23               708.0            708.0            251.1
+CAS24               301.5            301.5            106.9
+CAS25               183.5            183.5             65.1
+CAS26               305.9            305.9            108.5
+CAS27                42.3             42.3             15.0
+CAS28                 5.0              5.0              5.0
+CAS29                 0.0              0.0              0.0
+CAS30              1928.4           1928.4            857.6
+CAS40                65.5             65.5             39.0
+CAS50               931.9            931.9            367.9
+CAS60              2420.1           2420.1           1070.8
+CAS70               345.8            345.8            193.0
+CAS80                 2.0              2.0              0.7
+CAS90              1125.9           1125.9            498.2
+--------------------------------------------------------
+TOTAL             15010.8          15010.8           6641.7
 
-1 GW Comparison (scaled from 2800 MWe):
-  Net: 1000 MWe | LCOE: 61.8 $/MWh | Overnight: 3817 $/kW
-
-Key Assumptions:
-  G (target gain)   = 160       LOW CONFIDENCE — projected beyond CBET-mitigated baseline;
-                                no multi-MJ experimental validation; blocking uncertainty
-  η_pin (laser)     = 10%       UNCERTAIN — CW fiber laser claim; pulsed 10 Hz undemonstrated
-  η_th (conversion) = 44%       MEDIUM — He Brayton plausible; DEC η=44% is TRL 1–2 theory
-  f_rep             = 10 Hz     design point; Hz-rate cryo target injection is unsolved
-  availability      = 75%       UNCERTAIN — not stated in paper; conservative for IFE
-  C220104 laser cost: DEFAULT ($8M/MW DPSSL) — TRULY UNKNOWN for OEC architecture
-  C220108 target fac: DEFAULT ($244M base)  — UNCERTAIN; NIF targets cost >$1M each
-  C220109 DEC cost:   NOT MODELED           — TRULY UNKNOWN; TRL 1–2; no prototype
-  OEC mirror cost:    NOT MODELED separately — embedded in C220104; should be much higher
-  First-wall repl:    DEFAULT blanket lifetime — TRULY UNKNOWN for pulsed dry-wall IFE
-
-Sensitivity (elasticity = %LCOE / %param):
-------------------------------------------------
-
-Engineering levers:
-  availability                         -0.9570
-  construction_time_yr                 +0.2667
-  eta_th                               -0.2575
-  plasma_t                             +0.2219
-  q_eng                                -0.1957
-  blanket_t                            +0.0996
-  mn                                   -0.0941
-  eta_pin                              +0.0544
-  ht_shield_t                          +0.0214
-  f_sub                                -0.0123
-  vessel_t                             +0.0090
-  f_rep                                -0.0034
-  structure_t                          +0.0034
-  p_trit                               -0.0012
-  p_cryo                               +0.0009
-  p_house                              -0.0005
-  p_pump                               -0.0001
-  p_target                             -0.0001
-  dd_f_T                               +0.0000
-  dd_f_He3                             +0.0000
-  dhe3_dd_frac                         +0.0000
-  dhe3_f_T                             +0.0000
-  f_rad                                +0.0000
-  eta_dec                              +0.0000
-
-Financial:
-  interest_rate                        +0.6600
-  inflation_rate                       +0.0571
-
-Costing constants (top 15):
-  om_cost_dt                           +0.1428
-  indirect_fraction                    +0.1045
-  blanket_unit_cost_dt                 +0.0927
-  target_factory_base                  +0.0827
-  driver_laser_per_mw                  +0.0551
-  core_lifetime_dt                     -0.0395
-  decom_provision_dt                   +0.0371
-  electric_per_mw                      +0.0370
-  shield_unit_cost                     +0.0336
-  fuel_recovery                        -0.0329
-  fuel_handling_dt_base                +0.0312
-  installation_frac                    +0.0311
-  misc_per_mw                          +0.0225
-  remote_handling_dt_base              +0.0199
-  startup_fuel_dt                      +0.0117
+--- CAS22 sub-account detail (overrides marked) ---
+code            generic       native        1 GWe  flag
+C220000          6512.0       6512.0       3066.0
+C220101          1578.6       1578.6        847.5
+C220102           905.7        905.7        486.2
+C220103             0.0          0.0          0.0
+C220104          1308.3       1308.3        442.1
+C220105            56.0         56.0         33.3
+C220106           211.4        211.4        113.3
+C220106_pump          1.1          1.1          0.4
+C220106_vessel        210.4        210.4        112.9
+C220107            31.9         31.9         10.8
+C220108           596.1        596.1        288.5
+C220109             0.0          0.0          0.0
+C220110           141.9        141.9         84.5
+C220111           676.2        676.2        322.9
+C220112             0.0          0.0          0.0
+C220200           536.2        536.2        204.5
+C220300            21.2         21.2         14.9
+C220400            17.6         17.6          6.2
+C220500           247.9        247.9        120.0
+C220600            26.4         26.4         11.5
+C220700           156.5        156.5         79.8

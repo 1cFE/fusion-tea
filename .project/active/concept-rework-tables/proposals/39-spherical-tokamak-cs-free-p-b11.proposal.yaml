@@ -1,0 +1,24 @@
+proposal:
+  concept_id: 39-spherical-tokamak-cs-free-p-b11
+  route_to_freeform: true
+  reason: >
+    ENN's published portfolio consists of two experimental devices (EXL-50U and EHL-2),
+    neither of which produces electrical output by design. EHL-2 — the most advanced
+    device, currently in construction — is explicitly a physics-verification machine
+    targeting Ti₀ ≈ 30 keV to establish the p-B11 reaction rate basis; it has no
+    blanket, no power conversion system, and no stated P_native. The ENN roadmap frames
+    EHL-2 as one step toward "a subsequent p-B11 burning plasma device" but names no
+    such device and publishes no commercial plant parameters of any kind. No MWe figure
+    for a commercial ENN design — not even an informal estimate or scenario projection —
+    appears in any source walked.
+  designs_considered:
+    - design: EXL-50U (operational experimental ST)
+      reason_no_p_native: physics demonstrator only; no electrical output by design
+    - design: EHL-2 (He-Long-2, in design/construction)
+      reason_no_p_native: >
+        physics-verification device targeting Ti₀ ≈ 30 keV; no blanket or power
+        conversion system; no P_native stated anywhere in published sources
+    - design: ENN commercial p-B11 power plant (unnamed)
+      reason_no_p_native: >
+        no named commercial design exists; ENN roadmap alludes to a future
+        burning-plasma device without publishing any parameters

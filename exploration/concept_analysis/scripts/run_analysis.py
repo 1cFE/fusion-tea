@@ -22,19 +22,25 @@ import re
 import shutil
 import subprocess
 import sys
+import tempfile
 import time
 from datetime import date
 from pathlib import Path
 
 from lib.paths import (
     ANALYSES_DIR,
+    ARCHETYPE_FIT_PATH,
     BRIEF_PATH,
+    COMPARABLES_PATH,
     CONCEPT_ANALYSIS_DIR,
     COSTINGFE_DIR,
+    DESIGN_POINT_PATH,
     EXTRACT_OUTPUT,
     FREEFORM_EXEMPLAR_PATH,
+    FREEFORM_ROUTES_PATH,
     HANDWRITTEN_DIR,
     MEMORY_DIR,
+    ONTOLOGY_PATH,
     PHASE_1A_DIR,
     REPO_ROOT,
     RESEARCH_DIR,
@@ -44,13 +50,18 @@ from lib.paths import (
     TEMPLATES_DIR,
 )
 from lib.frontmatter import make_frontmatter, parse_frontmatter, update_frontmatter_field
+from lib.model_stats import load_concept_stats
 from lib.templating import fill_template
 from lib.concepts import (
-    COSTINGFE_MAPPING,
-    FAMILY_KEY_MAP,
-    load_table,
+    Runnability,
+    get_comparison_status,
+    is_costingfe_runnable,
+    load_concepts,
+    load_freeform_routes,
+    load_legacy_table,
     resolve_concepts,
     resolve_one,
+    runnability,
 )
 from lib.iteration import read_loop_state
 from lib.state import clear_staleness, get_concept_state, get_extraction_state, get_iteration_summary
@@ -66,6 +77,13 @@ from lib.sources import (
     slugify_source,
 )
 from lib.landscape import build_concept_landscape, extract_iter_count
+from lib.prompt_blocks import (
+    canonical_accounts_block,
+    canonical_spec_keys_block,
+    comparables_block,
+    design_point_block,
+    fit_grade_band_line,
+)
 from lib.memory import (
     find_approved,
     find_approved_syntheses,
@@ -77,7 +95,7 @@ from lib.claude import invoke_claude_validated, run_model
 from lib.loop import build_model_vars, extract_findings, run_stage1_loop
 from lib.step_runner import prepare_step, StepContext
 from lib.validators import (
-    REVIEW_VERDICT_RE,
+    _verdict_token,
     make_file_modified_validator,
     validate_feedback_verdict,
     validate_non_empty,
@@ -137,8 +155,9 @@ def cmd_status(concepts: list[dict], args: argparse.Namespace) -> None:
         "stale":         "E*",
     }
 
-    print(f"{'ID':<45} {'Concept Name':<40} {'State':<6} {'Extr':<4} {'Iterations'}")
-    print("-" * 130)
+    print(f"{'ID':<45} {'Concept Name':<40} {'State':<6} {'Extr':<4} "
+          f"{'P_nat':>6} {'Native':>8} {'1GWe':>8} {'Iterations'}")
+    print("-" * 150)
 
     counts = {s: 0 for s in state_symbols}
     stale_count = 0
@@ -169,7 +188,18 @@ def cmd_status(concepts: list[dict], args: argparse.Namespace) -> None:
             extracted_count += 1
             extraction_stale_count += 1
 
-        print(f"{c['_id']:<45} {c['Concept Name']:<40} {sym:<6} {ext_sym:<4} {iter_summary or ''}")
+        # FR-7 cost stats: P_native (frontmatter) + native/1GWe LCOE (module-load).
+        stats = load_concept_stats(ANALYSES_DIR / c["_id"])
+        pn = f"{stats.p_native:.0f}" if stats.p_native is not None else "-"
+        nl = f"{stats.native_lcoe:.0f}" if stats.native_lcoe is not None else "-"
+        gl = f"{stats.result_1gw_lcoe:.0f}" if stats.result_1gw_lcoe is not None else "-"
+
+        # Truncate the name so the numeric columns stay aligned (some names > 40).
+        name = c["Concept Name"]
+        name = (name[:39] + "…") if len(name) > 40 else name
+
+        print(f"{c['_id']:<45} {name:<40} {sym:<6} {ext_sym:<4} "
+              f"{pn:>6} {nl:>8} {gl:>8} {iter_summary or ''}")
 
     ext_summary = ""
     if extracted_count:
@@ -186,6 +216,8 @@ def cmd_status(concepts: list[dict], args: argparse.Namespace) -> None:
           + ext_summary)
     print("\nLegend: A=approved  S=synthesized  R=reviewed  I{N}=iterating(N iterations)  "
           "G=gap-checked  -=not-started  *=stale downstream  E=extracted  E*=extraction stale")
+    print("Stats: P_nat=design reference plant size (MWe)  Native=native LCOE ($/MWh)  "
+          "1GWe=result_1gw LCOE ($/MWh)  (-=no three-forward model_setup.py)")
 
 
 # ---------------------------------------------------------------------------
@@ -412,6 +444,16 @@ def _build_common_vars(concept: dict, concepts: list[dict] | None = None) -> dic
         "analysis_path": str(analysis_path),
         "memory_context": memory_context,
         "concept_landscape": landscape,
+        # Item 8: pre-rendered contract blocks the rewritten analyze prompt
+        # consumes (design_point selection, per-archetype account schema,
+        # fixed comparables, fit-grade override-count rubric). The discipline
+        # lives at this variable boundary so the LLM's job collapses to
+        # extraction + judgment, not search + choice.
+        "design_point_block": design_point_block(concept),
+        "canonical_accounts": canonical_accounts_block(concept),
+        "canonical_spec_keys": canonical_spec_keys_block(concept),
+        "comparables_block": comparables_block(concept),
+        "fit_grade_band": fit_grade_band_line(concept),
     }
 
 
@@ -587,10 +629,10 @@ def cmd_review(concepts: list[dict], args: argparse.Namespace) -> None:
         # Detect verdict from the validated review file (not stdout). The
         # validator already guaranteed a VERDICT line is present.
         review_text = review_path.read_text(encoding="utf-8")
-        verdict_match = REVIEW_VERDICT_RE.search(review_text)
-        if verdict_match and verdict_match.group(1) == "PROCEED":
+        verdict = _verdict_token(review_text, frozenset({"PROCEED", "REVISE"}))
+        if verdict == "PROCEED":
             review_status = "proceed"
-        elif verdict_match and verdict_match.group(1) == "REVISE":
+        elif verdict == "REVISE":
             review_status = "revise"
         else:
             # Should be unreachable post-validation, but keep a defensive
@@ -1381,6 +1423,259 @@ def cmd_heatmap(concepts: list[dict], args: argparse.Namespace) -> None:
 
 
 # ---------------------------------------------------------------------------
+# init-tables — coverage validation gate (read-only; does not generate)
+# ---------------------------------------------------------------------------
+
+_CONCEPT_DIR_RE = re.compile(r"^\d+[a-z]?-")
+
+
+def _csv_ids(path: Path) -> set[str]:
+    """Return the set of ``concept_id`` values in a table CSV (empty if absent)."""
+    if not Path(path).exists():
+        return set()
+    with open(path, newline="", encoding="utf-8-sig") as f:
+        return {row["concept_id"].strip() for row in csv.DictReader(f)
+                if row.get("concept_id", "").strip()}
+
+
+def _disk_concept_ids(research_dir: Path) -> set[str]:
+    """Concept directories under ``research_dir`` (filtered to the slug grammar)."""
+    if not Path(research_dir).exists():
+        return set()
+    return {d.name for d in Path(research_dir).iterdir()
+            if d.is_dir() and _CONCEPT_DIR_RE.match(d.name)}
+
+
+def _validate_tables(
+    research_dir: Path,
+    ontology_path: Path,
+    archetype_fit_path: Path,
+    comparables_path: Path,
+    design_point_path: Path,
+    freeform_routes_path: Path,
+) -> tuple[list[str], list[str]]:
+    """Validate table coverage. Returns ``(errors, summary_lines)``.
+
+    Strict (errors → non-zero exit):
+      * all four table CSVs exist;
+      * every on-disk concept dir appears in ontology.csv AND archetype_fit.csv;
+      * no ontology/archetype_fit row references a concept with no dir;
+      * comparables.csv / design_point.csv reference only known concepts.
+
+    Warning-only (summary, never fails): design-point coverage — pending rows are
+    expected while Item 5's batch runs.
+    """
+    errors: list[str] = []
+    summary: list[str] = []
+
+    missing_files = [str(p) for p in
+                     (ontology_path, archetype_fit_path, comparables_path, design_point_path)
+                     if not Path(p).exists()]
+    if missing_files:
+        return [f"missing table file: {p}" for p in missing_files], summary
+
+    disk = _disk_concept_ids(research_dir)
+    ont_ids = _csv_ids(ontology_path)
+    af_ids = _csv_ids(archetype_fit_path)
+    comp_ids = _csv_ids(comparables_path)
+    dp_ids = _csv_ids(design_point_path)
+
+    for cid in sorted(disk - ont_ids):
+        errors.append(f"concept dir not in ontology.csv: {cid}")
+    for cid in sorted(disk - af_ids):
+        errors.append(f"concept dir not in archetype_fit.csv: {cid}")
+    for cid in sorted(ont_ids - disk):
+        errors.append(f"ontology.csv row has no concept dir: {cid}")
+    for cid in sorted(af_ids - disk):
+        errors.append(f"archetype_fit.csv row has no concept dir: {cid}")
+    for cid in sorted(comp_ids - ont_ids):
+        errors.append(f"comparables.csv references unknown concept: {cid}")
+    for cid in sorted(dp_ids - ont_ids):
+        errors.append(f"design_point.csv references unknown concept: {cid}")
+
+    # Coverage summary (warning-only). Mappable = fit_grade != None.
+    mappable: set[str] = set()
+    if Path(archetype_fit_path).exists():
+        with open(archetype_fit_path, newline="", encoding="utf-8-sig") as f:
+            for row in csv.DictReader(f):
+                cid = row.get("concept_id", "").strip()
+                if cid and (row.get("fit_grade", "").strip() != "None"):
+                    mappable.add(cid)
+    freeform = load_freeform_routes() if Path(freeform_routes_path) == Path(FREEFORM_ROUTES_PATH) \
+        else _freeform_from(freeform_routes_path)
+    pending = mappable - dp_ids - freeform
+    summary.append(
+        f"design-point coverage: {len(dp_ids & mappable)}/{len(mappable)} mappable "
+        f"concepts have a row; {len(pending)} pending; {len(freeform)} judged-freeform "
+        f"(freeform-routes file {'present' if Path(freeform_routes_path).exists() else 'absent'})"
+    )
+    if pending:
+        summary.append("  pending: " + ", ".join(sorted(pending)))
+    return errors, summary
+
+
+def _freeform_from(path: Path) -> set[str]:
+    """Parse freeform concept_ids from an arbitrary path (test-injection helper)."""
+    if not Path(path).exists():
+        return set()
+    text = Path(path).read_text(encoding="utf-8")
+    return set(re.findall(r"\b(\d{2}[a-z]?-[a-z][a-z0-9-]+)", text))
+
+
+def cmd_init_tables(_records: list[dict], _args: argparse.Namespace) -> None:
+    """Validate the four tables exist and cover every concept (read-only)."""
+    errors, summary = _validate_tables(
+        RESEARCH_DIR, ONTOLOGY_PATH, ARCHETYPE_FIT_PATH,
+        COMPARABLES_PATH, DESIGN_POINT_PATH, FREEFORM_ROUTES_PATH,
+    )
+    for line in summary:
+        print(line)
+    if errors:
+        print(f"\ninit-tables FAILED — {len(errors)} coverage error(s):", file=sys.stderr)
+        for e in errors:
+            print(f"  - {e}", file=sys.stderr)
+        sys.exit(1)
+    print("init-tables OK — ontology + archetype_fit cover every concept dir.")
+
+
+# ---------------------------------------------------------------------------
+# regenerate-concept — delete-and-rebuild sequencer (four-state-aware guard)
+# ---------------------------------------------------------------------------
+
+# Artifacts removed before a real regeneration (relative to analyses/<id>/).
+_REGEN_RM_FILES = [
+    "analysis.md", "model_setup.py", "model_output.txt",
+    "synthesis.md", "review.md", "address_log.md", "research_log.json",
+]
+_REGEN_RM_DIRS = ["prompts"]  # iter-* handled separately by glob
+
+_REGEN_STAGES = ["analyze", "model-setup", "review", "synthesize", "score", "approve"]
+
+
+def _regen_refusal_reason(record: dict) -> str | None:
+    """Return a state-specific refusal reason, or None if the concept is runnable.
+
+    Dispatches on the shared ``Runnability`` enum (Phase 1 of model_critic) so
+    the four-state policy lives in one place; this function owns regen's
+    tool-specific phrasing only.
+    """
+    state = runnability(record)
+    if state is Runnability.RUNNABLE:
+        return None
+    if state is Runnability.FREEFORM_DEFERRED:
+        if record.get("fit_grade") == "None":
+            return "fit_grade=None — freeform, out of scope to model (Item 11)"
+        return ("freeform by judgment (listed in design_point_freeform_routes.md) — "
+                "out of scope to model (Item 11)")
+    if state is Runnability.PENDING_DESIGN_POINT:
+        return ("pending-design-point — design-point row missing in Item 5's batch; "
+                "populate design_point.csv first")
+    return f"not costingfe-runnable (comparison-status={get_comparison_status(record)})"
+
+
+def _regen_namespace(cid: str) -> argparse.Namespace:
+    """A Namespace that drives a single-concept stage run with re-run forced."""
+    return argparse.Namespace(
+        concepts=[cid], family=None, all_remaining=False,
+        model="sonnet", timeout=900, dry_run=False, force=True,
+        max_passes=3, add_passes=None, feedback=None, resume=False,
+        research=False, max_research_searches=5, max_research_extractions=3,
+        skip_review_gate=False,
+    )
+
+
+def cmd_regenerate_concept(records: list[dict], args: argparse.Namespace) -> None:
+    """Delete prior artifacts and re-run the costingfe stage chain for one concept.
+
+    Hard-requires an ``archetype_fit.csv`` row (the concept must resolve to a
+    record) and refuses unless ``is_costingfe_runnable`` with a state-specific
+    reason. ``--dry-run`` prints the stage sequence and writes a temp frontmatter
+    (verifying table → record → frontmatter wiring end-to-end) without deleting
+    anything or invoking an LLM — the Item 6 acceptance boundary.
+    """
+    matches = resolve_one(records, args.concept)
+    if not matches:
+        raise ValueError(
+            f"No concept matching '{args.concept}' — needs an archetype_fit.csv row")
+    if len(matches) > 1:
+        detail = ", ".join(m["concept_id"] for m in matches)
+        raise ValueError(f"Ambiguous '{args.concept}' matched: {detail}")
+    record = matches[0]
+    cid = record["concept_id"]
+
+    reason = _regen_refusal_reason(record)
+    if reason is not None:
+        print(f"regenerate-concept refuses {cid}: {reason}", file=sys.stderr)
+        sys.exit(1)
+
+    stages = ([] if args.keep_gap_report else ["gap-check"]) + _REGEN_STAGES
+
+    if args.dry_run:
+        print(f"regenerate-concept {cid} (DRY RUN) — comparison-status="
+              f"{get_comparison_status(record)}")
+        print("  stage sequence:")
+        for s in stages:
+            print(f"    - {s}")
+        with tempfile.NamedTemporaryFile("w", suffix=".md", delete=False) as tf:
+            tf.write(make_frontmatter(record))
+            tmp_path = tf.name
+        print(f"  wrote temp frontmatter (wiring check): {tmp_path}")
+        return
+
+    # Real run: delete prior artifacts, then sequence the stages directly.
+    concept_dir = ANALYSES_DIR / cid
+    rm_files = list(_REGEN_RM_FILES)
+    if not args.keep_gap_report:
+        rm_files.append("gap_report.md")
+    for name in rm_files:
+        (concept_dir / name).unlink(missing_ok=True)
+    for d in _REGEN_RM_DIRS:
+        shutil.rmtree(concept_dir / d, ignore_errors=True)
+    for itd in concept_dir.glob("iter-*"):
+        shutil.rmtree(itd, ignore_errors=True)
+
+    ns = _regen_namespace(cid)
+    if not args.keep_gap_report:
+        cmd_gap_check(records, ns)
+    cmd_analyze(records, ns)
+    cmd_model_setup(records, ns)
+    cmd_review(records, ns)
+    cmd_synthesize(records, ns)
+    cmd_score(records, ns)
+    cmd_approve(records, ns)
+    print(f"regenerate-concept {cid}: complete.")
+
+
+# ---------------------------------------------------------------------------
+# model-critic — single-concept standalone judgment review
+# ---------------------------------------------------------------------------
+
+
+def cmd_model_critic(records: list[dict], args: argparse.Namespace) -> None:
+    """Run model_critic against one concept; refuse non-runnable states.
+
+    Resolves the concept via ``resolve_one`` (same pattern as
+    ``regenerate-concept``) and delegates to ``agents.model_critic.run`` which
+    owns the Runnability dispatch + tool-local refusal copy. Exits non-zero on
+    refusal or failure; ``--dry-run`` prints the rendered prompt and exits 0.
+    """
+    from agents.model_critic import run as critic_run
+
+    matches = resolve_one(records, args.concept)
+    if not matches:
+        raise ValueError(
+            f"No concept matching '{args.concept}' — needs an archetype_fit.csv row")
+    if len(matches) > 1:
+        detail = ", ".join(m["concept_id"] for m in matches)
+        raise ValueError(f"Ambiguous '{args.concept}' matched: {detail}")
+    record = matches[0]
+
+    rc = critic_run(record, model=args.model, timeout=args.timeout, dry_run=args.dry_run)
+    if rc != 0:
+        sys.exit(rc)
+
+
+# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
@@ -1517,14 +1812,37 @@ def build_parser() -> argparse.ArgumentParser:
     # -- heatmap --
     p_heatmap = sub.add_parser("heatmap", help="Generate HTML heatmap from calibrated scores")
 
+    # -- init-tables --
+    sub.add_parser("init-tables",
+                   help="Validate the four upstream tables exist and cover every concept")
+
+    # -- regenerate-concept --
+    p_regen = sub.add_parser(
+        "regenerate-concept",
+        help="Delete prior artifacts and re-run the costingfe stage chain for one concept")
+    p_regen.add_argument("concept", help="Concept ID (must have an archetype_fit.csv row)")
+    p_regen.add_argument("--dry-run", action="store_true",
+                         help="Print the stage sequence and verify wiring; no rm, no LLM")
+    p_regen.add_argument("--keep-gap-report", action="store_true",
+                         help="Skip gap-check and preserve the existing gap_report.md")
+
+    # -- model-critic --
+    p_critic = sub.add_parser(
+        "model-critic",
+        help="Standalone judgment review of one concept; writes one versioned review doc")
+    p_critic.add_argument("concept", help="Concept ID (must have an archetype_fit.csv row)")
+    p_critic.add_argument("--model", default="sonnet", help="Claude model (default: sonnet)")
+    p_critic.add_argument("--timeout", type=int, default=900,
+                          help="Claude invocation timeout in seconds")
+    p_critic.add_argument("--dry-run", action="store_true",
+                          help="Print the rendered prompt and exit; no Claude call, no file written")
+
     return parser
 
 
 def main() -> None:
     parser = build_parser()
     args = parser.parse_args()
-
-    table = load_table()
 
     dispatch = {
         "list": cmd_list,
@@ -1541,11 +1859,25 @@ def main() -> None:
         "extract-scores": cmd_extract_scores,
         "calibrate": cmd_calibrate,
         "heatmap": cmd_heatmap,
+        "init-tables": cmd_init_tables,
+        "regenerate-concept": cmd_regenerate_concept,
+        "model-critic": cmd_model_critic,
     }
+
+    # Loader dispatch split (design.md "CLI dispatch split"). Orchestrator
+    # handlers consume the four-table ConceptRecords; scoring/heatmap handlers
+    # consume legacy-only architecture columns (Fuel, MFE Topology, …) that the
+    # new tables intentionally do not carry — passing records there would
+    # silently zero every scoring derivation. Not a superset; do not unify.
+    LEGACY_TABLE_COMMANDS = {"score", "calibrate", "extract-scores", "heatmap"}
+    if args.command in LEGACY_TABLE_COMMANDS:
+        data = load_legacy_table()
+    else:
+        data = load_concepts()
 
     handler = dispatch[args.command]
     try:
-        handler(table, args)
+        handler(data, args)
     except ValueError as exc:
         # Library code (resolve_concepts, resolve_source_names) raises
         # ValueError on user-facing errors. The CLI layer owns the exit

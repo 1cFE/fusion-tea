@@ -1,0 +1,28 @@
+proposal:
+  concept_id: 32-laser-icf-french-national
+  design_name: "GenF TARANIS commercial reactor, 2050 target (GenF website / Ribeyre et al. 2025)"
+  maturity_tier: paper-concept
+  grounding_confidence: low
+  p_native_mwe: 1000
+  primary_sources:
+    - knowledge/concept_research/32-laser-icf-french-national/iter-01/sources/genf-website-technology.md
+    - knowledge/concept_research/32-laser-icf-french-national/iter-01/sources/aip-advances-ribeyre-2025.md
+  selection_rationale: |
+    The GenF 2050 commercial plant is the only design in the portfolio with a stated P_native:
+    the technology page commits to "1GW of power" for a single-chamber commercial reactor entering
+    service in the 2050s, and Ribeyre et al. (2025), co-authored by GenF employees, explicitly
+    builds its reactor systems model around Pe,grid = 1 GWe as the reference output. The design
+    is a single-module architecture (one reaction chamber at 10 Hz, not a fleet of smaller units),
+    so P_native is the full plant output at 1000 MWe. The TARANIS Phase 3 demonstrator is the
+    only other candidate but has no published P_native — "premiers mégawatts" in 2040 is a
+    milestone description, not a design-point number.
+  alternatives_considered:
+    - design: "TARANIS demonstrator, 2040 (first-megawatts unit)"
+      reason_rejected: no specific P_native published; "premiers mégawatts" is a qualitative
+        milestone with no committed electrical output
+      sensitivity_implication: >
+        If a P_native were later published for the demonstrator (likely in the range of
+        tens to low hundreds of MWe), it would be substantially lower than 1000 MWe →
+        more modules at 1 GWe → 1 GWe LCOE shifts up relative to the commercial-plant
+        selection. Worth revisiting when GenF publishes demonstrator specifications (expected
+        post-2027 after Phase 1 completes).

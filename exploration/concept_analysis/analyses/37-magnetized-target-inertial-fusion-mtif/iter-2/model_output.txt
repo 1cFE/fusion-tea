@@ -1,184 +1,50 @@
-=================================================================
-MTIF D-D — NearStar Fusion
-(MAG_TARGET / DD — native 200 MWe, 40 % availability, 30 yr)
-=================================================================
+LCOE: 56.6 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 155.0 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 155.0 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 11862 $/kW   native 11862 $/kW   1 GWe 5269 $/kW
 
-*** ALL RESULTS HIGHLY SPECULATIVE — see Key Assumptions ***
-*** D-D ignition physics for this geometry is undemonstrated ***
+CAS               generic           native            1 GWe
+--------------------------------------------------------
+CAS10                14.1             14.1             14.6
+CAS21               187.0            187.0            187.0
+CAS22               155.3            155.3           2702.0
+CAS23                14.8             14.8            296.5
+CAS24                 6.3              6.3            126.3
+CAS25                 3.8              3.8             76.9
+CAS26                 6.4              6.4            128.1
+CAS27                 0.1              0.1              0.1
+CAS28                 5.0              5.0              5.0
+CAS29                 0.0              0.0              0.0
+CAS30                75.8             75.8            704.4
+CAS40                 6.9              6.9              6.9
+CAS50                21.9             21.9            171.9
+CAS60                95.6             95.6            849.5
+CAS70                13.2             13.2             25.0
+CAS80                 0.1              0.1              1.0
+CAS90                44.5             44.5            395.2
+--------------------------------------------------------
+TOTAL               593.1            593.1           5269.2
 
-LCOE:            189.3 $/MWh
-Overnight cost:  6661 $/kW
-Fusion power:    801 MW
-Net electric:    200 MWe
-Q_eng:           3.00
-
-Code     Account                              M$
-------------------------------------------------
-CAS10    Preconstruction                    14.5
-CAS21    Buildings                         278.2
-CAS22    Reactor Plant Equipment           565.5
-CAS23    Turbine Plant                      59.3
-CAS24    Electrical Plant                   25.3
-CAS25    Miscellaneous                      15.4
-CAS26    Heat Rejection                     29.3
-CAS27    Special Materials                   0.4
-CAS28    Digital Twin                        5.0
-CAS29    Contingency                         0.0
-CAS30    Indirect Costs                    130.4
-CAS40    Owner's Costs                      13.9
-CAS50    Supplementary                      63.1
-CAS60    IDC                               132.0
-CAS70    O&M (annualized)                   25.2
-CAS80    Fuel (annualized)                   0.1
-CAS90    Financial                         107.4
-------------------------------------------------
-         Total Capital                    1332.2
-
-CAS22 sub-accounts:
-  C220101        27.6 M$
-  C220102        26.1 M$
-  C220103        96.8 M$
-  C220104        62.2 M$
-  C220105         2.9 M$
-  C220106         9.0 M$
-  C220107        41.5 M$
-  C220108       105.0 M$
-  C220109         0.0 M$
-  C220110        27.4 M$
-  C220111        55.8 M$
-  C220112         0.0 M$
-  C220200        51.9 M$
-  C220300         0.9 M$
-  C220400         1.7 M$
-  C220500        19.4 M$
-  C220600         3.2 M$
-  C220700        34.1 M$
-  C220000       565.5 M$
-
-=================================================================
-Scaled to 1 GWe (per-account scaling from 200 MWe native)
-=================================================================
-LCOE:            115.6 $/MWh
-Overnight cost:  4318 $/kW
-Fusion power:    3999 MW
-Net electric:    1000 MWe
-Q_eng:           3.00
-
-=================================================================
-Key Assumptions (all HIGHLY UNCERTAIN)
-=================================================================
-
-PHYSICS (blocking gaps — concept viability not established):
-  D-D ignition:    Undemonstrated for railgun-driven magnetized target.
-                   D-D cross-section ~100x lower than D-T at 10–30 keV.
-                   No NearStar gain target, simulation, or experiment published.
-  Required gain:   ~100–300 target fusion gain implied by energy balance at
-                   1 Hz, >1 MJ driver, ~35% thermal efficiency.
-                   (analysis.md §S2, Challenge 2)
-  Rail lifetime:   Documented defense-program rail life: ~12 shots (early systems)
-                   to a contested ~400 shots at unconfirmed full power; Navy 3,000-shot
-                   development target not achieved before program cancellation (2021).
-                   Plant requirement: ~840 million shots over 30 years (1 Hz, 40% CF).
-                   Gap: 6–7 orders of magnitude vs. demonstrated; 5 orders vs. target.
-                   Source: en-wiki-railgun.md; analysis.md §S2, Challenge 3
-
-ASSUMED (no public source):
-  Net power:       200 MWe — speculative; no NearStar design-point disclosed.
-  eta_pin:         0.25 — midpoint of 20–40% experimental railgun range.
-  Availability:    0.40 — dominated by rail replacement (pessimistic estimate).
-  eta_th:          0.35 — subcritical Rankine, inferred from coal retrofit framing.
-  All capital costs: framework defaults (no NearStar subsystem data available).
-  Driver cost:     driver_mag_target_per_mw default ($3 M$/MW_driver, pneumatic
-                   piston calibration) — likely underestimates railgun capital.
-
-GENUINE ADVANTAGES (relative to D-T concepts):
-  No tritium startup inventory (~1 kg at >$35,000/g avoided).
-  No REBCO superconducting tape (no external magnets).
-  No lithium-6 enrichment or breeding blanket.
-  No beryllium neutron multiplier.
-  Secondary D-D tritium inventory is small (no primary T breeding cycle).
-
-=================================================================
-Sensitivity (elasticity = %ΔLCOE / %Δparam) — native 200 MWe
-=================================================================
-
-Engineering levers:
-  availability                         -0.9939
-  q_eng                                -0.3335
-  construction_time_yr                 +0.2219
-  eta_th                               -0.1555
-  plasma_t                             +0.0902
-  eta_pin                              +0.0546
-  blanket_t                            +0.0395
-  f_rep                                -0.0375
-  mn                                   -0.0295
-  ht_shield_t                          +0.0136
-  f_sub                                -0.0100
-  vessel_t                             +0.0088
-  p_house                              -0.0044
-  structure_t                          +0.0039
-  p_target                             -0.0022
-  dd_f_T                               -0.0013
-  p_pump                               -0.0012
-  p_trit                               -0.0011
-  dd_f_He3                             +0.0007
-  dhe3_dd_frac                         +0.0000
-  dhe3_f_T                             +0.0000
-  dhe3_f_He3                           +0.0000
-  f_rad                                +0.0000
-  eta_dec                              +0.0000
-
-Financial:
-  interest_rate                        +0.6305
-  inflation_rate                       +0.0688
-
-Costing constants (top 15):
-  om_cost_dd                           +0.1869
-  target_factory_base                  +0.0949
-  indirect_fraction                    +0.0893
-  driver_mag_target_per_mw             +0.0562
-  installation_frac                    +0.0442
-  c_cap_allin_per_joule                +0.0375
-  blanket_unit_cost_dd                 +0.0280
-  remote_handling_dd_base              +0.0247
-  shield_unit_cost                     +0.0236
-  electric_per_mw                      +0.0204
-  fuel_handling_dd_base                +0.0154
-  fuel_recovery                        -0.0141
-  decom_provision_dd                   +0.0125
-  misc_per_mw                          +0.0124
-  construction_insurance_frac          +0.0112
-
-=================================================================
-Rail Consumable O&M — delta-LCOE ($/MWh) above framework CAS70
-Native 200 MWe, 40% availability, 1 Hz, 30 yr plant life
-Shots/yr: 12,623,040   Energy/yr: 700,800 MWh
-=================================================================
-    Replacement cost    Rail life (shots/rail)
-                            12      400    3,000     100k
-                       (early) (doc ub) (target) (aspire)
------------------------------------------------------------------
-  $     1,000/swap     1,501      45       6       0
-  $    10,000/swap    15,010     450      60       2
-  $   100,000/swap   150,103   4,503     600      18
-  $ 1,000,000/swap  1,501,027  45,031   6,004     180
-
-  Framework CAS70 (baseline O&M):  ~25 M$/yr → ~36 $/MWh at 200 MWe, 40% CF
-  Breakeven rail life for +10 $/MWh penalty at $10k/swap:
-    18,012 shots/rail  (vs. documented max ~400 shots)
-
-=================================================================
-Driver Capital Cost Scenarios — Railgun vs. Pneumatic Piston Baseline
-Native 200 MWe; all other parameters held at baseline values
-Baseline: driver_mag_target_per_mw = 3.0 M$/MW_driver
-=================================================================
-    Mult    M$/MW_driver    LCOE ($/MWh)       ΔLCOE
--------------------------------------------------------
-  1×                 3.0           189.3  [pneumatic piston baseline]
-  2×                 6.0           200.0  +10.6 $/MWh
-  5×                15.0           231.9  +42.6 $/MWh
-  10×                30.0           285.1  +95.8 $/MWh
-
-  Railgun analog: BAE/GA EML systems cost $10s–100s M$ per installation
-  at << 1 Hz duty cycle. NearStar requires 1 Hz continuous: 5–10× may
-  underestimate long-run NOAK railgun capital at commercial duty cycle.
+--- CAS22 sub-account detail (overrides marked) ---
+code            generic       native        1 GWe  flag
+C220000           155.3        155.3       2702.0
+C220101            11.1         11.1         11.1
+C220102            10.5         10.5         10.5
+C220103             0.0          0.0          0.0
+C220104            14.2         14.2         14.2
+C220105             1.4          1.4          1.4
+C220106             4.2          4.2          4.2
+C220106_pump          0.3          0.3          0.3
+C220106_vessel          3.9          3.9          3.9
+C220107             7.9          7.9          7.9
+C220108            39.8         39.8         39.8
+C220109             0.0          0.0          0.0
+C220110            13.7         13.7         13.7
+C220111            14.4         14.4         14.4
+C220112             0.0          0.0          0.0
+C220200            16.4         16.4        208.2
+C220300             0.2          0.2          4.1
+C220400             0.4          0.4          7.4
+C220500             7.4          7.4         60.0
+C220600             1.0          1.0         11.5
+C220700            12.7         12.7         88.9

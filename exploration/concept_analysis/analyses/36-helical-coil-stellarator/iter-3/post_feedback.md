@@ -1,22 +1,53 @@
-VERDICT: FINDINGS
+VERDICT: PASS
 
-### F-1: H-factor sweep LCOE delta implausibly small — r_coil likely not propagated from scaled geometry
-- **Target:** Model output — H-FACTOR SCENARIO SWEEP section; model_setup.py coil cost computation
-- **Category:** model
-- **Finding:** The H-factor sweep reports only +$12.6/MWh (1.1% relative) when H drops from 1.3 to 1.0, despite the machine scaling to V_ratio=1.188 (linear scale=1.059, R₀: 7.80→8.26 m). r_coil is the dominant cost driver (elasticity=1.36, C220103=71% of RPE), and r_coil should scale linearly with machine geometry (the coil winding radius grows with R₀). A 5.9% increase in R₀ propagated through r_coil should produce approximately 1.36 × 5.9% × 1164 ≈ $93/MWh LCOE increase — roughly 7× larger than the $12.6 shown. The model caveat "True penalty may be larger if higher-field or different current-drive strategy is needed" is correct but understates the discrepancy by a large factor. The most likely cause is that the H-factor scenario sweep updates plasma volume but does not recompute r_coil from the new machine geometry, decoupling the dominant cost driver from the confinement scaling. This materially understates the H-factor risk: the analysis classifies H as a blocking uncertainty, but the sweep suggests it contributes ~1% LCOE, which is inconsistent.
-- **Recommendation:** In model_setup.py, verify that r_coil (the coil winding radius) is recomputed from the scaled machine geometry (R₀, a) in the H-factor scenario sweep rather than held at the H=1.3 baseline value. If r_coil is a derived parameter, propagate the new R₀=8.26 m through to r_coil before computing LCOE. Re-run the sweep and report the corrected delta. If the corrected penalty is ~$80–100/MWh as expected, update the sweep table and add it to the LCOE range discussion; a ~8% H-factor penalty at the lower bound aligns with the blocking risk characterization in the analysis.
-- **Priority:** blocking
+The analysis and model adequately satisfy the pipeline contract across all five checklist areas:
 
-### F-2: Analysis Section 2 LCOE range does not incorporate the physics-forward primary result
-- **Target:** Section 2 — "Anchored LCOE range — lower and upper bounds"
-- **Category:** analysis
-- **Finding:** The Section 2 LCOE range presents ~$1,160/MWh as its central lower bound and $1,750–1,850/MWh as its upper bound. The model output has since designated the physics-forward result (Q=13 fixed, η_th=50%, P_net=52.3 MWe, LCOE=1,532.7 $/MWh) as the primary figure for cross-concept comparison and explicitly warns "not the back-solved 70.4 MWe figure." The analysis narrative never references 1,532.7 $/MWh. A reader of the analysis alone will cite $1,160/MWh as the primary estimate; a reader of the model output will cite $1,533/MWh — a $370/MWh (32%) gap on the same concept, for the same design point, with the same efficiency assumption. The analysis framing was written before the model clarified this distinction and needs to be updated.
-- **Recommendation:** Update the Section 2 "Anchored LCOE range" paragraph to present three clearly labeled figures: (1) 1,164 $/MWh — ARIES-framework floor, back-solved (Q_sci>13, not the published design point); (2) 1,533 $/MWh — design-consistent physics-forward result (Q=13, η_th=50%, P_net=52 MWe), primary figure for cross-concept comparison; (3) 1,801 $/MWh — published-cost upper bound ($10B inflation-adjusted anchor). The FOAK figure (~$700–1,000/MWh) should be retained but clearly labeled as a separate design point (103 MWe, Q_eng=2.3), not part of the FPP LCOE range.
-- **Priority:** important
+## Design-Point Coherence
+- The Design Point block at lines 24-32 correctly copies the frontmatter fields: name ("HESTIA Fusion Pilot Plant — reference operating case"), maturity (paper-concept), P_native (70.4 MWe), and grounding (high).
+- Section 5 parameter table (lines 218-245) describes the named design point at its native scale. All quantitative parameters trace to the Miyazawa & Goto 2023 paper. No roadmap aspiration or different machine substituted.
+- `P_native` is coherent across the Design Point block (line 28: "70.4 MWe"), Section 5 table (line 229: "70.4 MWe"), and `model_setup.py` line 33 (`P_native = 70.4`). The coherence flag confirms 3-leg consistency.
 
-### F-3: eta_th elasticity in sensitivity table not informative at back-solved operating point — needs explicit flag
-- **Target:** Model output — Sensitivity (elasticity) table, engineering levers section
-- **Category:** model
-- **Finding:** The main sensitivity table reports eta_th elasticity = -0.085, computed at the back-solved 70.4 MWe operating point where the framework compensates eta_th changes by adjusting Q_sci upward, suppressing the apparent sensitivity. The sCO₂ scenario sweep at Q=13 (physics-forward) shows eta_th is existential: LCOE rises from 1,533 to 4,514 $/MWh as eta_th drops from 50% to 38%, with design closure failing entirely below ~33%. A reader comparing elasticities across portfolio concepts using the sensitivity table will rank eta_th as a negligible lever (0.085), far below r_coil (1.36) and availability (0.97). This is accurate for the back-solved operating point but deeply misleading for this concept's actual risk profile — sCO₂ efficiency is the primary structural uncertainty identified by the analysis, and the sensitivity table gives no indication of this. The sCO₂ scenario sweep section correctly handles the issue but is separated from the sensitivity table in a way that allows the table to be read in isolation.
-- **Recommendation:** Add an inline annotation to the eta_th row in the sensitivity table: "[back-solved operating point — NOT INFORMATIVE; see sCO₂ EFFICIENCY SCENARIO SWEEP: LCOE range 1533–4514 $/MWh over 50%→38%]". Alternatively, add a warning note directly below the sensitivity table header stating that for this concept, eta_th sensitivity is suppressed at the back-solved operating point and must be read from the scenario sweep. This prevents the table from being used to deprioritize the sCO₂ risk when comparing concepts in the portfolio.
-- **Priority:** important
+## Override Discipline
+- Section 5b (lines 259-351) defines six override candidates. Each entry has the required six fields (account, value, enabled, provenance, source, rationale).
+- Only one override is `enabled: true` — C220108 (divertor) = 0.0 at lines 307-318.
+- The enabled override uses a canonical account code (C220108 exists in the 1costingFE schema's stellarator CAS22 accounts).
+- `provenance: direct` is appropriate — the AIP paper explicitly states "Individual divertor systems are not required in HESTIA" (lines 311-313, sourced to aip-2023-paper-abstract.md §II.C).
+- No uniform financial/operating parameters appear in `spec` or the registry (the spec dict at model_setup.py lines 26-32 contains only geometry and physics inputs; no `availability`, `lifetime_yr`, or interest rates).
+- The override appears in both the analysis YAML (lines 307-318) and the model_setup.py overrides list (lines 59-67) with the **same** `provenance: "direct"` label.
+
+## Override Count vs. Archetype-Fit
+- Enabled override count: 1 (C220108 = 0).
+- Archetype-fit grade: High (frontmatter line 10).
+- Expected band for High fit: 0–4 enabled overrides.
+- **1 falls within the band.** The coherence flag confirms: "Override count (1) consistent with High archetype fit (expected 0–4)."
+- The single enabled override is well-justified: the liquid metal free-surface blanket eliminates the need for a separate divertor, a company-published design choice with direct textual evidence.
+
+## Family-Delta Concreteness
+- Section 7 (lines 388-455) compares HESTIA against the **fixed** comparables list (05-planar-coil-stellarator, 09-qi-stellarator-hts, 10-large-scale-stellarator, 20a-type-one-stellarator, 20b-renaissance-stellarator). Each subsection names a specific comparable and articulates the delta.
+- Cost directions are stated:
+  - vs. 05 Planar-Coil: "manufacturing premium per meter... but may require less total conductor length... net cost effect is ambiguous" (lines 398-399).
+  - vs. 05 on blanket: "cost advantage by eliminating C220108... penalty if corrosion forces frequent module replacement" (lines 401-404).
+  - vs. 09/10 on continuous vs. modular coils: "Ambiguous... HESTIA's continuous-coil approach is novel and has no cost precedent" (lines 414).
+  - vs. 09/10 on confinement: "Conditional. If H = 1.3 validates, cost advantage via simpler coils; if H = 1.0, requires larger machine, erasing advantage" (lines 418-420).
+  - vs. 20a/20b on manufacturing: "Ambiguous. All three betting on different HTS cost curves" (lines 430).
+  - vs. 20b on blanket: "Slight advantage to HESTIA if single-phase liquid metal proves manageable; penalty if corrosion forces frequent replacement" (lines 436-437).
+- No generic "this is novel" framing. Each delta names a subsystem (coils, blanket, ECRH, confinement enhancement) and attaches a cost consequence (advantage, penalty, neutral, ambiguous, conditional).
+
+## Two-Knob Projection & Model Integrity
+- `model_setup.py` uses the three-forward helper form:
+  - `generic = generic_reference(model, spec, P_native)` at line 54 (mandatory reference).
+  - `native, result_1gw = run_native_and_1gw(model, spec=spec, overrides=overrides, p_native=P_native)` at lines 70-72.
+  - `model`, `generic`, `native`, `result_1gw` are module-level (lines 48, 54, 70).
+- No inline two-knob `forward()` call.
+- The model output (model_output.txt) shows non-trivial parameter-driven computation:
+  - Native LCOE = 1021.0 $/MWh vs. 1 GWe LCOE = 904.1 $/MWh — economies of scale are reflected (not hardcoded).
+  - CAS values are not zero placeholders: CAS22 varies from generic 4152.6 M$ to 1 GWe 56493.1 M$ (magnets scale with machine size), CAS23/24/25/26 all scale proportionally.
+  - The C220108 override is visible: `generic = 36.6 M$`, `native/1 GWe = 0.0 M$` with `<-- OVERRIDE` flag (line 40).
+- LCOE order of magnitude is plausible for a stellarator concept at this maturity. 904 $/MWh (1 GWe NOAK) is high but reasonable for a design with unvalidated confinement enhancement (H = 1.3), novel HTS coil manufacturing (WISE conductor), and immature liquid metal blanket technology. The analysis emphasizes these uncertainties (Section 1 "moderate data availability," Section 2 flags flexible HTS scaling and liquid metal corrosion as high-impact challenges, Section 3 lists TRL 3-4 for HTS coils and blanket). The model's dominant cost drivers (CAS22 = 56.5 B$ at 1 GWe, 66% of overnight) match the narrative emphasis on HTS magnets as the largest capital cost item.
+
+## Minor Observations (not findings, purely informational)
+- The model's 1 GWe LCOE (904 $/MWh) is significantly higher than the AIP paper's claimed ~$1.22/kWh (1990s basis, lines 89 and analysis line 363), but the paper's figure excludes O&M, financing, decommissioning, and is stated in 1990s dollars without inflation adjustment. The analysis correctly flags this discrepancy in Section 2 (lines 88-96) and Data Gap #9 (lines 371). The library's LCOE includes all standard accounts and is current-year dollars, so the 10× difference is not implausible given the accounting and inflation gaps.
+- The analysis is transparent about data limitations: Section 1 rates availability as "Moderate" and lists five key data gaps (lines 44-51), Section 6 enumerates 20 data gaps with criticality ratings, and Section 5b explicitly states "no company-grounded unit cost" for C220103/C220104/C220101/CAS23/CAS27 (lines 262-350). This honest accounting of uncertainty is appropriate for a paper-concept design with a single-source cost estimate.
+- The family-delta section (Section 7) engages all five fixed comparables and articulates HESTIA's positioning within the stellarator landscape. The shared advantages (no disruptions, steady-state, no central solenoid) and shared challenges (3D coil complexity, lower power density, unvalidated scenarios) are clearly stated (lines 438-455). This satisfies the family-delta concreteness criterion.
+
+No findings. The iteration passes all checklist criteria.

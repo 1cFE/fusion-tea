@@ -1,29 +1,29 @@
 [
   {
-    "timestamp": "2026-04-20T19:17:15.050329+00:00",
+    "timestamp": "2026-06-04T06:21:12.857127+00:00",
     "step": "feedback-pass",
     "attempt": 1,
     "validator": "validate_file_modified",
     "passed": true,
     "details": "File content changed",
-    "validated_text_preview": "---\nID: 27-polywell\nConcept: Polywell (D-T)\nCompany: EMC2\nStatus: draft\nCreated: 2026-04-20\nApproved-Date:\nReuses: []\n---\n\n# D1+ Analysis: Polywell (D-T)\n\n**Concept**: Polywell (D-T)\n**Company**: EMC2 (Energy Matter Conversion Corporation)\n**Confinement Family**: Electrostatic (magnetic-cusp electron confinement, electrostatic ion acceleration)\n**Analysis Date**: 2026-04-20\n\n---\n\n## Section 1: Availability of Data\n\n**Rating: Limited**\n\nThe Polywell has a longer experimental history than most non"
+    "validated_text_preview": "---\nID: 27-polywell\nConcept: Polywell (EMC2)\nCompany: EMC2\nStatus: draft\nCreated: 2026-06-03\nApproved-Date:\nConfinement-Family: MFE\nArchetype: POLYWELL\nArchetype-Fit: Med\nComparison-Status: freeform-deferred\nComparables: []\n---\n\n## Design Point\n\n**Reference Design**: Park et al. (2025) D-T reactor scaling study\n**Native Scale**: ~290 MWe net electric (derived from 980 MW fusion power, 45% thermal efficiency, 78 MW electron beam injection)\n**Maturity**: Theoretical scaling (Q=10 physics model, no"
   },
   {
-    "timestamp": "2026-04-20T19:20:47.763501+00:00",
+    "timestamp": "2026-06-04T06:22:19.039523+00:00",
     "step": "model-setup",
     "attempt": 1,
-    "validator": "validate_file_modified+validate_python_syntax",
+    "validator": "validate_file_modified+validate_python_syntax+validate_model_setup_contract_strict+validate_override_registry",
     "passed": true,
     "details": "All validators passed",
-    "validated_text_preview": "\"\"\"\nPolywell (D-T) First-Pass LCOE Model\n======================================\n1cFE First Pass Concept Analysis\nConcept: Polywell (D-T) \u2014 Electrostatic/Magnetic Cusp Confinement\nCompany: EMC2 (Energy Matter Conversion Corporation)\n\nThe Polywell is a magnetic cusp device that traps electrons electrostatically\nto form a virtual cathode (Wiffleball), then uses the resulting electrostatic\nwell to confine and accelerate D-T ions to fusion temperatures. The reactor\ndesign is based on the Park et al. "
+    "validated_text_preview": "\"\"\"1costingfe model: Polywell (EMC2) (EMC2).\n\nUsage:\n    uv run python model_setup.py              # print results\n    uv run python model_setup.py | tee model_output.txt\n\"\"\"\nimport sys\nfrom pathlib import Path\n\n# Make the shared three-forward helper importable regardless of where this file\n# lives (concept dir or iter-N/ dir): walk up to the scripts/ root.\n_SCRIPTS = next(\n    p / \"scripts\"\n    for p in Path(__file__).resolve().parents\n    if (p / \"scripts\" / \"lib\" / \"model_setup_helpers.py\").e"
   },
   {
-    "timestamp": "2026-04-20T19:24:15.455175+00:00",
+    "timestamp": "2026-06-04T06:23:59.468562+00:00",
     "step": "assess",
     "attempt": 1,
     "validator": "validate_feedback_verdict",
     "passed": true,
     "details": "Feedback format valid (verdict: FINDINGS)",
-    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: Branch A scenario is described in the analysis but absent from the model's scenario table\n- **Target:** Model scenario comparison / coupled \u03b3 sweep\n- **Category:** model\n- **Finding:** Section 2 explicitly defines two distinct operational responses to \u03b3=0.2 and calculates specific net outputs: Branch A (fixed 980 MW fusion, beam doubles to 156 MW \u2192 net ~220 MWe) and Branch B (fixed beam at 78 MW, fusion halves to 490 MW \u2192 net ~125 MWe). The section warns against confl"
+    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: Blocking finding from iter-2 not addressed \u2014 model still uses wrong fuel type\n- **Target:** model_setup.py line 62\n- **Category:** model\n- **Finding:** The iter-2 feedback identified that `model = CostModel(concept=ConfinementConcept.POLYWELL, fuel=Fuel.PB11)` (line 62) fundamentally misrepresents the D-T design point documented throughout the analysis. This was marked **blocking priority**. The model has NOT been corrected \u2014 line 62 still reads `fuel=Fuel.PB11` inste"
   }
 ]

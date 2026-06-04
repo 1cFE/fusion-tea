@@ -1,29 +1,39 @@
 [
   {
-    "timestamp": "2026-05-18T05:46:22.092971+00:00",
+    "timestamp": "2026-06-04T17:48:33.838625+00:00",
     "step": "cold-start",
     "attempt": 1,
     "validator": "validate_non_empty",
     "passed": true,
-    "details": "Non-empty (38764 chars)",
-    "validated_text_preview": "# D1+ Analysis: Spherical Tokamak - CS-free p-B11 (ENN Energy)\n\n**Concept**: Central-solenoid-free spherical tokamak targeting p-B11 aneutronic fusion with direct energy conversion\n**Company**: ENN Energy (ENN Group subsidiary, China)\n**Current Devices**: EXL-50U (operating), EHL-2 (in design)\n**Confinement Family**: MFE \u2014 Spherical Tokamak\n\n---\n\n## Section 1: Availability of Data\n\n**Rating: Opaque**\n\nENN Energy has published an arXiv roadmap paper and an EHL-2 physics design overview, but no co"
+    "details": "Non-empty (46894 chars)",
+    "validated_text_preview": "## Design Point\n\n(No design-point row for this concept yet \u2014 selection is upstream-pending. Do not invent one.)\n\n## 1. Availability of Data\n\n**Rating: Limited**\n\nENN Energy has published a conceptual roadmap paper for proton-boron-11 fusion using a spherical tokamak geometry (arXiv 2401.11338, Physics of Plasmas 31, 062507, 2024) and detailed physics design parameters for their experimental device EHL-2. The company's public website provides milestone updates (EXL-50U achieved 1 MA plasma curren"
   },
   {
-    "timestamp": "2026-05-18T05:50:51.285499+00:00",
+    "timestamp": "2026-06-04T17:49:44.145438+00:00",
     "step": "model-setup",
     "attempt": 1,
-    "validator": "validate_python_syntax",
-    "passed": true,
-    "details": "Valid Python syntax",
-    "validated_text_preview": "\"\"\"Spherical Tokamak - CS-free p-B11 (ENN Energy) \u2014 SPECULATIVE LCOE placeholder.\n\nModeling approach\n-----------------\nSPECULATIVE PLACEHOLDER \u2014 ENN has published no commercial plant study.  All\nplant-level parameters (major radius, net electric output, Q value, fuel cycle\ndetails) are analyst assumptions built from scaled ST geometry (EHL-2 reference),\np-B11 physics analogues, and cross-concept comparison with analysis\n21-spherical-tokamak-hts.\n\nThe p-B11 Lawson criterion is unresolved experime"
+    "validator": "validate_python_syntax+validate_model_setup_contract_strict+validate_override_registry",
+    "passed": false,
+    "details": "Missing module-level binding(s): generic, native, result_1gw",
+    "validated_text_preview": "\"\"\"1costingfe model: Spherical Tokamak CS-Free PB11 (ENN) (ENN Energy).\n\nCRITICAL LIMITATION: This concept has no published commercial plant design.\nEHL-2 is a physics experiment (R0=1.05m, B0=3T, Ti0~30keV) with no net power\noutput, no energy conversion system, and no cost data. The analysis explicitly\nstates \"No design point exists for this concept\" and \"No overrides proposed.\"\n\nThis script is NON-FUNCTIONAL by design \u2014 it demonstrates the contract shape\nfor future use when ENN publishes a com",
+    "fix_message_sent": "Note: This is attempt 2 of 3.\n\nIMPORTANT: Write your output to the file: C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\39-spherical-tokamak-cs-free-p-b11\\iter-1\\model_setup.py\n\nmodel_setup.py is missing required module-level name(s): generic, native, result_1gw. The file MUST bind `model`, `generic`, `native`, and `result_1gw` at module level (the three-forward contract: `generic` overrides-off, `native` overrides-on at design scale, `result_1gw` overrides-on at 1 GWe)."
   },
   {
-    "timestamp": "2026-05-18T05:53:48.149054+00:00",
+    "timestamp": "2026-06-04T17:51:33.325639+00:00",
+    "step": "model-setup",
+    "attempt": 2,
+    "validator": "validate_python_syntax+validate_model_setup_contract_strict+validate_override_registry",
+    "passed": true,
+    "details": "All validators passed",
+    "validated_text_preview": "\"\"\"1costingfe model: Spherical Tokamak CS-Free PB11 (ENN) (ENN Energy).\n\nCRITICAL LIMITATION: This concept has no published commercial plant design.\nEHL-2 is a physics experiment (R0=1.05m, B0=3T, Ti0~30keV) with no net power\noutput, no energy conversion system, and no cost data. The analysis explicitly\nstates (Section 5): \"No design point exists for this concept\" and (Section 5b):\n\"No overrides proposed.\"\n\nThis script uses EHL-2 experimental device parameters and an EXPLORATORY\nP_native=500 MWe"
+  },
+  {
+    "timestamp": "2026-06-04T17:52:56.589196+00:00",
     "step": "assess",
     "attempt": 1,
     "validator": "validate_feedback_verdict",
     "passed": true,
     "details": "Feedback format valid (verdict: FINDINGS)",
-    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: DEC-failure scenario branch missing \u2014 the concept's central economic hypothesis is untested\n- **Target:** model_setup.py (sensitivity sweep / scenario branches)\n- **Category:** model\n- **Finding:** The analysis identifies direct energy conversion failure as potentially fatal to the economic case (Section 2, item 2: \"without this advantage, a p-B11 plant needs ~10\u201330\u00d7 higher plasma performance... while capturing energy at lower efficiency than a D-T thermal plant \u2014 mak"
+    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: Model LCOE contradicts analysis narrative on physics penalties\n- **Target:** model_output.txt LCOE values and model_setup.py exploratory-status commentary\n- **Category:** model\n- **Finding:** The model outputs LCOE = 37.0 $/MWh (1 GWe) and 45.8 $/MWh (native 500 MWe), but the analysis extensively documents that p-B11 physics imposes severe penalties: 15\u00d7 worse Lawson criterion (ne\u03c4T \u2265 1.5\u00d710\u00b2\u00b2 m\u207b\u00b3s vs D-T's ~10\u00b2\u00b9), 200-300 keV operating temperature (vs D-T's 10-20 keV"
   }
 ]

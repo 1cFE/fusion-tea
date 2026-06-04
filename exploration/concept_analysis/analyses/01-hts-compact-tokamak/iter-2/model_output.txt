@@ -1,0 +1,126 @@
+LCOE: 543.7 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 199.0 $/MWh   (P_native reference, n_mod=1, no overrides)
+Overnight: native 16092 $/kW   1 GWe 51884 $/kW
+
+CAS         native (P_nat, n=1)       1 GWe (two-knob)
+--------------------------------------------------------
+CAS10                      16.6                   17.2
+CAS21                     304.0                  304.0
+CAS22                    2006.9                33793.7
+CAS23                      69.6                  298.5
+CAS24                      29.6                  127.2
+CAS25                      18.0                   77.4
+CAS26                      30.1                  129.0
+CAS27                       3.5                  196.2
+CAS28                       5.0                    5.0
+CAS29                       0.0                    0.0
+CAS30                     493.3                 6986.2
+CAS40                      18.8                   18.8
+CAS50                     149.6                 1565.9
+CAS60                     604.5                 8365.0
+CAS70                      63.7                  155.8
+CAS80                       0.2                    0.9
+CAS90                     281.2                 3891.8
+--------------------------------------------------------
+TOTAL                    3749.5                51884.1
+
+--- CAS22 sub-account detail (overrides marked) ---
+code             native        1 GWe  flag
+C220000          2006.9      33793.7
+C220101           141.6        143.8  <-- OVERRIDE
+C220102            94.3         94.3
+C220103           989.2       6916.0  <-- OVERRIDE
+C220104           156.4        156.4
+C220105            10.5         10.5
+C220106            50.2         50.2
+C220107            38.5         38.5
+C220108            56.3         56.3
+C220109             0.0          0.0
+C220110            89.0         89.0
+C220111           227.6        227.6
+C220112             0.0          0.0
+C220200            57.7        208.3
+C220300            12.4         15.5
+C220400             1.7          7.4
+C220500            43.3        120.0
+C220600             3.6         11.5
+C220700            34.6         89.3
+
+eta_th sweep (native 233 MWe; 40% = FNSF demonstrated floor, 46% = conservative-Pilot target):
+  eta_th=0.40: LCOE=199.0 $/MWh  <- FNSF demonstrated floor
+  eta_th=0.43: LCOE=196.7 $/MWh
+  eta_th=0.46: LCOE=194.6 $/MWh  <- conservative-Pilot target
+  eta_th=0.50: LCOE=192.2 $/MWh
+
+Sensitivity (elasticity = %LCOE / %param) — native design point
+
+Engineering levers:
+  availability                         -0.9218
+  r_coil                               +0.7262
+  b_max                                +0.3631
+  construction_time_yr                 +0.3188
+  R0                                   +0.1661
+  elon                                 +0.1661
+  eta_th                               -0.1639
+  blanket_t                            +0.1241
+  plasma_t                             +0.0930
+  eta_pin                              -0.0572
+  p_input                              +0.0558
+  p_lhcd                               +0.0367
+  mn                                   -0.0246
+  p_icrf                               +0.0207
+  vessel_t                             +0.0201
+  ht_shield_t                          +0.0199
+  p_cool                               +0.0101
+  fuel_recovery                        -0.0100
+  f_sub                                +0.0078
+  p_trit                               +0.0074
+  structure_t                          +0.0063
+  p_house                              +0.0030
+  p_cryo                               +0.0029
+  p_coils                              +0.0015
+  p_pump                               +0.0007
+  burn_fraction                        -0.0001
+  eta_p                                -0.0000
+  dd_f_T                               +0.0000
+  dd_f_He3                             +0.0000
+  dhe3_dd_frac                         +0.0000
+  dhe3_f_T                             +0.0000
+  eta_de                               +0.0000
+  q95                                  +0.0000
+  f_GW                                 +0.0000
+  B                                    +0.0000
+  T_e                                  +0.0000
+  n_e                                  +0.0000
+  Z_eff                                +0.0000
+  plasma_volume                        +0.0000
+  R_w                                  +0.0000
+  T_edge                               +0.0000
+  tau_ratio                            +0.0000
+  M_ion                                +0.0000
+  lambda_q                             +0.0000
+  disruption_rate_base                 +0.0000
+  disruption_steepness                 +0.0000
+  disruption_damage                    +0.0000
+  disruption_downtime                  +0.0000
+
+Financial:
+  interest_rate                        +0.7817
+  inflation_rate                       +0.0402
+
+Costing constants (top 15):
+  indirect_fraction                    +0.1297
+  blanket_unit_cost_dt                 +0.1092
+  om_cost_dt                           +0.1047
+  core_lifetime_dt                     -0.0776
+  installation_frac                    +0.0733
+  divertor_base                        +0.0434
+  heating_lhcd_per_mw                  +0.0367
+  shield_unit_cost                     +0.0346
+  remote_handling_dt_base              +0.0327
+  heating_icrf_per_mw                  +0.0207
+  vessel_unit_cost                     +0.0184
+  power_supplies_base                  +0.0141
+  fuel_handling_dt_base                +0.0139
+  construction_insurance_frac          +0.0115
+  electric_per_mw                      +0.0098

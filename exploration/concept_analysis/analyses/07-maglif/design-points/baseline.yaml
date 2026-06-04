@@ -1,0 +1,59 @@
+proposal:
+  concept_id: 07-maglif
+  design_name: "Z-IFE reference plant, 10-chamber 0.1 Hz baseline (Olson et al. 2006, SAND2006-7148)"
+  maturity_tier: paper-concept
+  grounding_confidence: medium
+  p_native_mwe: 1000
+  primary_sources:
+    - knowledge/concept_research/07-maglif/iter-02/sources/z-ife-sand2006-7148-thermal-cycles.md
+    - knowledge/concept_research/07-maglif/iter-01/sources/z-ife-power-plant-concept.md
+  selection_rationale: |
+    The Z-IFE reference plant (SAND2006-7148, Olson et al. 2006) is the only published
+    systems-level cost model for a MagLIF/Z-pinch-class commercial power plant and is
+    therefore the most mature design with the best published quantitative data. It
+    documents chamber geometry (4 m radius, 80 cm FLiBe blanket, 20 cm 6061-T6 Al
+    first wall), driver architecture (LTD, 12,600 cavities, $372M), thermal cycle
+    (combined Brayton-Rankine at 42%), D-T fuel, and COE as a function of rep rate.
+    Pacific Fusion's 250 MWe commercial scenario is the company's stated aspirational
+    target but traces to a single informal CTO interview quote with no published
+    geometry, thermal cycle, or engineering architecture — grounding would be low.
+    The DS has no electrical output by design. The 10-chamber 0.1 Hz baseline is the
+    study's explicitly designated reference case. P_native = 1000 MWe for the full
+    reference plant; the LTD driver is shared across 10 chambers in rotation, making
+    the whole plant the natural replication unit rather than a per-chamber module.
+  alternatives_considered:
+    - design: "Pacific Fusion DS (Demonstration System)"
+      reason_rejected: no electrical output by design; pure gain demonstrator
+      sensitivity_implication: "n/a — the DS has no P_native and cannot be used as a design point."
+    - design: "Pacific Fusion '~250 MWe' commercial scenario (LeChien, April 2025)"
+      reason_rejected: single informal CTO quote; no published engineering parameters
+      sensitivity_implication: >
+        If picked instead, P_native drops substantially (250 vs 1000 MWe) → more
+        modules at 1 GWe → 1 GWe LCOE shifts up. The Z-IFE study shows the 500 MWe
+        case sits above 10 ¢/kWeh at all modeled rep rates, so a 250 MWe first plant
+        would carry materially higher LCOE than the 1000 MWe reference. This is the
+        most consequential sensitivity in the candidate set; if Pacific Fusion publishes
+        a 250 MWe plant design with engineering parameters, re-select.
+    - design: "Z-IFE optimized case, 1-chamber 0.5 Hz, frozen-FLiBe RTL (Olson et al. 2006)"
+      reason_rejected: relies on frozen-FLiBe RTL technology that was undemonstrated in 2006 and remains undemonstrated today
+      sensitivity_implication: >
+        If picked instead, P_native is unchanged (1000 MWe) but the assumed rep rate
+        is higher (0.5 vs 0.1 Hz) → same module count but substantially lower COE
+        (7.0 vs ~20 ¢/kWeh). Worth probing once frozen-FLiBe RTL technology is
+        validated; if demonstrated, would materially improve the 1 GWe LCOE estimate.
+    - design: "Z-IFE economy-of-scale case, 2-chamber 0.5 Hz, 2000 MWe (Olson et al. 2006)"
+      reason_rejected: larger-plant economy-of-scale variant rather than the reference design point
+      sensitivity_implication: >
+        If picked instead, P_native rises (2000 MWe) → fewer modules at 1 GWe →
+        1 GWe LCOE shifts down (5.7 vs ~20 ¢/kWeh). Captures the upper bound of
+        economies of scale from the study; worth probing if commercial deployment
+        targets multi-GWe scale.
+    - design: "Fuse Energy Apeiron I (hybrid fusion-fission)"
+      reason_rejected: hybrid fusion-fission architecture; not pure MagLIF commercial power
+      sensitivity_implication: >
+        If picked instead, P_native is similar (~1000 MWe) but the power cycle is
+        fundamentally different (150× fission amplification at Q << 1). The LCOE
+        structure would differ substantially — no tritium breeding blanket required,
+        but a uranium/actinide fission circuit instead. Applicable if the concept
+        scope is extended to include Fuse's near-term hybrid path, which does not
+        require full fusion ignition.

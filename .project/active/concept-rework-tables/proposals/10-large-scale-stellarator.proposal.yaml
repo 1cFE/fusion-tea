@@ -1,0 +1,57 @@
+proposal:
+  concept_id: 10-large-scale-stellarator
+  design_name: "GIGA commercial fusion power plant (Gauss Fusion CDR, 2025)"
+  maturity_tier: proposed-commercial
+  grounding_confidence: medium
+  p_native_mwe: 1000
+  primary_sources:
+    - knowledge/concept_research/10-large-scale-stellarator/iter-02/sources/gauss-fusion-cdr-review-2026.md
+    - knowledge/concept_research/10-large-scale-stellarator/iter-02/sources/gauss-fusion-partnerships-2025.md
+    - knowledge/concept_research/10-large-scale-stellarator/iter-01/sources/helias-reactor-context.md
+  selection_rationale: |
+    GIGA is the only company-led, CDR-complete commercial design in the large-scale
+    HELIAS-lineage QI stellarator class. The CDR was submitted to the German government
+    in October 2025 and reviewed by a 13-person international expert panel in early 2026,
+    marking the formal transition to engineering phase — the most mature development status
+    of any design in this concept category. The 1 GWe net electric target is the company's
+    stated commercial output (the "GIGA" plant name denotes gigawatt-class), consistent
+    with the publicly stated 3 GWth thermal target and the ~33–35% thermal conversion
+    efficiency documented for the HELIAS precursor class in published IAEA proceedings.
+    P_native is a single-module, single-plant value: GIGA is a single large stellarator
+    (not a multi-module array), so 1000 MWe is the natural unit.
+  alternatives_considered:
+    - design: "Helios preconceptual design (Thea Energy, Swanson et al. arXiv 2512.08027, Dec 2024)"
+      reason_rejected: >-
+        Compact planar-coil QA stellarator (R=8m) — architecturally distinct from the
+        large-scale non-planar modular QI class this concept represents; preconceptual
+        stage rather than CDR; lower archetype fit
+      sensitivity_implication: >-
+        If picked instead, P_native drops substantially (390 vs 1000 MWe) →
+        significantly more modules at 1 GWe → 1 GWe LCOE shifts up from more reactor
+        islands. Worth revisiting if Thea Energy advances to a CDR-level design and the
+        taxonomy reclassifies compact QA stellarators under this concept entry.
+    - design: "HSR4/18 academic HELIAS reactor (Beidler et al., IAEA proceedings)"
+      reason_rejected: >-
+        Academic paper concept superseded by GIGA; no company development or CDR behind
+        it; GIGA is the direct commercial successor with HTS upgrades
+      sensitivity_implication: >-
+        If picked instead, P_native shifts slightly lower (inferred ~950 vs 1000 MWe) →
+        modestly more modules at 1 GWe → 1 GWe LCOE shifts marginally up. Directional
+        impact is small; sensitivity probe is unlikely to change conclusions.
+    - design: "HSR5/22 academic HELIAS reactor (Beidler et al., IAEA proceedings)"
+      reason_rejected: >-
+        Larger 5-period variant (22m radius, 50 coils); IPP explicitly chose HSR4/18
+        as the more compact and cost-effective design, and GIGA follows the 4-period
+        lineage; no company development
+      sensitivity_implication: >-
+        If picked instead, P_native rises modestly (~1050 vs 1000 MWe) → slightly
+        fewer modules at 1 GWe → 1 GWe LCOE shifts marginally down. Directional
+        impact is small given the modest size difference.
+    - design: "HELIAS 5-B EUROfusion academic concept (blanket studies phase)"
+      reason_rejected: >-
+        No net electric output stated in available sources; only blanket mechanical
+        design paper ingested; cannot assign defensible P_native
+      sensitivity_implication: >-
+        HELIAS 5-B is a 5-fold concept, likely ~3 GWth class similar to HSR5/22;
+        if a published net electric figure surfaces, it would likely fall in the
+        950-1050 MWe range and have minimal directional impact on the design point.

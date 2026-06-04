@@ -1,0 +1,30 @@
+proposal:
+  concept_id: 05-planar-coil-stellarator
+  design_name: "Helios preconceptual design (Swanson et al. 2025, arXiv:2512.08027)"
+  maturity_tier: paper-concept
+  grounding_confidence: high
+  p_native_mwe: 390
+  primary_sources:
+    - knowledge/concept_research/05-planar-coil-stellarator/iter-01/sources/thea-energy-helios-arxiv-2512-08027.md
+    - knowledge/concept_research/05-planar-coil-stellarator/iter-02/sources/thea-energy-doe-certification-jan2026.md
+    - knowledge/concept_research/05-planar-coil-stellarator/iter-01/sources/thea-energy-website-and-press.md
+  selection_rationale: |
+    Helios is Thea Energy's only published fusion power plant design and the only candidate
+    with a documented P_native. Table 1 of arXiv:2512.08027 states 390 MWe net electric
+    output, derived from a complete thermal cycle: 1,094 MW total thermal × ~40% gross
+    efficiency = 438 MWe gross − 48 MWe facility parasitic load = 390 MWe net. The design
+    is a single-unit stellarator (not multi-module), so P_native is the full plant output.
+    DOE Milestone certification (January 13, 2026) provides independent expert validation
+    of the physics and engineering basis, making this the most externally reviewed design
+    in the current concept batch.
+  alternatives_considered:
+    - design: "Helios speculative 25 T variant (~1,000 MWe)"
+      reason_rejected: "scaling note only — no engineering design, no geometry changes documented; explicitly labeled hypothetical contingent on undemonstrated tape performance"
+      sensitivity_implication: |
+        If the 25 T variant were taken as a design point, P_native would rise roughly 2.5×
+        → fewer modules at 1 GWe → 1 GWe LCOE would shift downward. Worth revisiting only
+        if REBCO manufacturers publish demonstrated 25 T on-tape performance and Thea
+        releases an engineering design around that operating point.
+    - design: "Eos (D-D neutron source demonstrator)"
+      reason_rejected: "no electrical output by design — demonstration device only"
+      sensitivity_implication: "n/a — Eos has no P_native and cannot be a cost-projection target"

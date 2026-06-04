@@ -1,0 +1,45 @@
+proposal:
+  concept_id: 01-hts-compact-tokamak
+  design_name: "ARC 2015 Conservative Pilot phase (Sorbom et al.)"
+  maturity_tier: paper-concept
+  grounding_confidence: high
+  p_native_mwe: 233
+  primary_sources:
+    - knowledge/concept_research/01-hts-compact-tokamak/iter-03/sources/arc-reactor-specifications.md
+    - knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/arc-power-conversion-studies.md
+  selection_rationale: |
+    The ARC 2015 Conservative Pilot phase (Sorbom et al.) is the pilot plant design point for
+    the CFS HTS compact tokamak concept. SPARC has no electrical output by design and is
+    excluded. The 400 MWe Virginia target (CFS 2025–2026 communications) has no published
+    engineering parameters and cannot be adopted as a design point. Among the three 2015 ARC
+    phases sharing the same geometry (R0=3.3m, a=1.1m, B0=9.2T, Pf=525MW, D-T fuel), the
+    Conservative Pilot phase (blanket outlet 1100 K, Brayton ~46%, Pnet=233 MW, Qe=3.5) is
+    chosen over the FNSF phase (190 MWe) because the latter is framed as an FNSF experimental
+    facility at conservative material limits rather than the pilot plant design point, and over
+    the Aggressive Pilot (261 MWe) because that phase requires 1200 K blanket materials the
+    paper explicitly flags as speculative and undemonstrated. The Conservative Pilot is the
+    paper's headlined design range (~200–250 MWe) and the standard reference in the literature
+    for ARC's pilot plant capability.
+  alternatives_considered:
+    - design: "ARC 2015 FNSF phase (Sorbom et al.)"
+      reason_rejected: primarily an FNSF experimental phase at conservative material limits, not the pilot plant design point
+      sensitivity_implication: >
+        If picked instead, P_native would be lower (190 vs 233 MWe) → more modules at 1 GWe
+        → 1 GWe LCOE shifts up. Worth probing if the cost analysis is specifically scoped to
+        the FNSF duty cycle rather than the commercial pilot plant mission.
+    - design: "ARC 2015 Aggressive Pilot phase (Sorbom et al.)"
+      reason_rejected: requires 1200 K blanket materials explicitly flagged as speculative in the 2015 paper
+      sensitivity_implication: >
+        If picked instead, P_native would be higher (261 vs 233 MWe) → fewer modules at 1 GWe
+        → 1 GWe LCOE shifts down. Worth probing if high-temperature blanket materials (>1100 K
+        in FLiBe-compatible alloys) are demonstrated at scale.
+    - design: "SPARC (CFS, under construction)"
+      reason_rejected: no electrical output by design; burning plasma demonstrator only
+      sensitivity_implication: "n/a — SPARC has no P_native and cannot be used as a design point."
+    - design: "ARC 400 MWe (CFS 2025–2026 Virginia commercial target)"
+      reason_rejected: no published engineering parameters; power figure from press coverage only
+      sensitivity_implication: >
+        If CFS publishes engineering parameters for the 400 MWe Virginia design, P_native would
+        be substantially higher (400 vs 233 MWe) → fewer modules at 1 GWe → 1 GWe LCOE shifts
+        down significantly. This is the most consequential sensitivity in the candidate set and
+        the primary watch item for design-point revision.

@@ -1,86 +1,146 @@
-# 1costingfe Model Update: Magnetized Target Inertial Fusion - MTIF (D-D)
+# 1costingfe Model Update: MTIF (Magneto-Inertial Fusion Technologies)
 
 ## Mode: Feedback Pass (Edit Existing Model)
 
-An existing model from a prior iteration has been copied to `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/37-magnetized-target-inertial-fusion-mtif/iter-2/model_setup.py`.
+An existing three-forward model from a prior iteration has been copied to `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\37-magnetized-target-inertial-fusion-mtif\iter-2\model_setup.py`.
 
-**Your task**: Read the existing model at `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/37-magnetized-target-inertial-fusion-mtif/iter-2/model_setup.py` and apply targeted edits based on the assessment findings below. Use the Edit tool to make changes — do NOT rewrite the file from scratch.
+**Your task**: Read the existing model at `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\37-magnetized-target-inertial-fusion-mtif\iter-2\model_setup.py` and apply
+**targeted edits** based on the assessment findings below. Use the Edit tool — do
+NOT rewrite the file from scratch, and do NOT restructure conforming code.
+
+## Preserve the three-forward contract
+
+The file already follows the canonical shape; keep it:
+1. `spec` dict (design-point inputs only) + `P_native`
+2. `model = CostModel(...)`
+3. `generic = generic_reference(model, spec, P_native)` — the mandatory
+   overrides-off forward (forward 1), the reference a relative override is written against
+4. `overrides = [ ... ]` — six-field registry entries
+5. `native, result_1gw = run_native_and_1gw(model, spec=spec, overrides=overrides, p_native=P_native)`
+
+with `model`, `generic`, `native`, `result_1gw` at module level and the
+`print_cas_breakdown(generic, native, result_1gw, overrides)` call retained. Do
+not convert the helper call into an inline two-knob `forward()` (the contract
+validator rejects it), do not drop the mandatory `generic` line, and do not
+re-introduce `# DEFAULT:` comments or the uniform financial parameters
+(`availability`, `lifetime_yr`, `interest_rate`, `inflation_rate`) into `spec`.
+**Do not re-introduce power-conversion efficiencies (`eta_th`, `eta_de`,
+`eta_dec`) into `spec`** — these are ENUM-driven; the way to express a
+different value is to add an upstream ENUM member in costingfe, not a per-
+concept override. `f_dec` (DEC fraction) MAY appear in `spec` with provenance —
+it's a physics+architecture property, not a hardware-efficiency claim.
+A relative override references `generic` (never `native` or `result_1gw`).
+
+**Low archetype-fit concepts: do not empty `spec`.** When the frontmatter
+declares `Archetype-Fit: Low`, the prior model may still have a populated `spec`
+expressing the concept's actual geometry / physics using canonical kwargs (even
+where the archetype isn't a perfect cost match). **Preserve those entries** and
+only edit specific fields if a finding calls for it. Replacing a populated
+low-fit `spec` with `spec = dict()` is a regression — the library would fall
+back to pure archetype YAML defaults that carry zero signal for this concept's
+actual machine. Cost-side overrides (the registry below) are where the "Low
+fit" caveat properly lives.
+
+**Archetype-specific spec key blocklist (library-bug workarounds).** Until library issues are
+fixed, some spec keys must not be passed for specific archetypes — even when the published design
+point has a value for them. If the prior model contains any of these keys in `spec`, **remove
+them** as part of this edit:
+- **DIPOLE**: remove `plasma_volume` if present. The MFE radiation calc treats `plasma_volume`
+  as a uniform integrator and over-counts radiation for dipole-peaked profiles. Library issue:
+  **1cFE/1costingfe#24**. Document the removal with a brief comment citing the issue.
+
+**Override values are M$, never raw dollars** (validator rejects `|value| > 5e4`).
+**Derived rollup accounts cannot be overridden**: C220111, C220000, C220100,
+C220200, C220300, C220400, C220500, C220600, C220700. To express "this concept
+assembles more simply," override `installation_frac` via `costing_overrides`,
+not the C220111 dollar amount.
+**Disabled overrides must carry a `blocked_by` field** matching `<org>/<repo>#<NN>`
+(e.g. `"1cFE/1costingfe#42"`) so library-side findings route to a tracker
+instead of dying in the rationale text.
+**Every override must declare `cost_basis: "noak"` (strict).** The framework runs
+`noak=True`; any other vintage (`foak`, `conceptual_design`, `vendor_target`,
+`unspecified`) is rejected. If your source publishes a non-NOAK value, either
+(a) disable + `blocked_by`, (b) apply a documented learning-curve adjustment in
+`rationale` and declare `cost_basis: "noak"`, or (c) file a tracker issue.
 
 **Rules**:
-- Preserve ALL existing sweeps, scenarios, parameters, and sensitivity analyses unless a finding specifically says to change them
-- Maintain the existing code structure and organization
-- Add new content incrementally — do not restructure working code
-- Every change must be traceable to a specific finding or a direct consequence of one
+- Preserve all existing sweeps, scenarios, and sensitivity analyses unless a
+  finding specifically says to change them.
+- Add content incrementally; every change must be traceable to a specific finding
+  or a direct consequence of one.
+- Any override you add or change uses a **canonical** account code (schema below)
+  and the six-field shape; keep `provenance` honest and show derivation arithmetic
+  in `rationale`.
 
 
 ## Assessment Findings
 
-The following findings were raised by the assessor. Focus on findings tagged `Category: model`. Findings tagged `Category: analysis` are informational — they describe prose changes the analysis agent is handling. You may still adjust model parameters if an analysis finding implies the model's assumptions are wrong.
+Focus on findings tagged `Category: model`. Findings tagged `Category: analysis`
+are informational (the analysis agent handles prose), but you may adjust model
+parameters if an analysis finding implies the model's assumptions are wrong.
 
-### F-1: Navy railgun cancellation absent from TRL and viability framing
-- **Target:** Section 3 (Plasma-Armature Railgun Driver subsystem block)
-- **Category:** analysis
-- **Finding:** The analysis presents defense hypervelocity railgun programs (U.S. Navy, BAE Systems, General Atomics EML) as the primary technology analogue for NearStar's driver, and uses them to support the TRL 3-4 rating. The Wikipedia railgun source documents that the U.S. Navy canceled all railgun R&D in its 2021 budget after spending approximately $500M over 17 years, citing unresolved technical challenges including rail durability and rate-of-fire. This cancellation is the most authoritative external signal about whether even defense-scale railgun development — which has far less demanding duty-cycle requirements than commercial fusion (10 shots/minute vs. 1 Hz continuous, months of campaign vs. 30-year plant life) — can be brought to operational viability. The analysis does not mention the program cancellation, leaving the impression that the defense programs are ongoing proof-of-concept efforts rather than programs that have been terminated for the same reasons that threaten NearStar's concept.
-- **Recommendation:** In the Section 3 "Plasma-Armature Railgun Driver" subsection, add a note that the U.S. Navy terminated railgun R&D funding in 2021 (~$500M, 17 years) after concluding that barrel durability and rate-of-fire targets could not be met. Frame this as the strongest available external signal on railgun maturity: the defense programs represent the best-resourced analogue effort, with much less demanding operational requirements than NearStar, and they did not achieve the engineering thresholds needed. Adjust the TRL framing accordingly — TRL 3-4 remains correct but the "on the path to higher TRL" implication should be removed given program termination.
+### F-1: Override registry cross-artifact inconsistency
+- **Target:** model_setup.py overrides list
+- **Category:** model
+- **Finding:** The analysis Section 5b documents two disabled override candidates (C220107 capacitor bank at $20M, CAS21 retrofit savings at 0.70× generic) with complete six-field entries (account, value, enabled: false, provenance: derived, source, rationale). The model_setup.py overrides list is empty with only a comment stating "All overrides disabled due to insufficient company-grounded data." While both artifacts agree that zero overrides are *enabled*, the analysis registry captures disabled candidates for traceability and the model does not. This breaks the cross-artifact consistency requirement: disabled overrides should appear in both locations with identical account codes and provenance labels.
+- **Recommendation:** Copy the two disabled override entries from analysis Section 5b into the model_setup.py overrides list as Python dictionaries. Preserve all six fields (account, value, enabled: False, provenance: "derived", source, rationale) for each entry. The comment about insufficient data can remain above the list.
 - **Priority:** important
 
-### F-2: Rail lifetime characterization is optimistic relative to documented evidence
-- **Target:** Section 2 (Challenge 3: Railgun wear and replacement rate) and Section 3 (Plasma-Armature Railgun Driver, "On paper only" / "Missing at scale" bullets)
+### F-2: Med archetype-fit with zero enabled overrides requires explicit justification
+- **Target:** Section 5b (Override Candidates) — closing paragraph
 - **Category:** analysis
-- **Finding:** Section 2 states that "Rail lifetimes in defense hypervelocity research programs are typically measured in hundreds to a few thousand shots at these velocities." The Wikipedia railgun source provides more specific and more pessimistic documentation: initial designs achieved only 12 full-power shots before requiring service; the Navy's most recent milestone as of 2014 was "over 400 shots" with the caveat that ONR would not confirm these were full-power shots; the Navy's stated development goal was 3,000 shots at 6 rounds/minute, which was never demonstrated before program cancellation. The analysis's "hundreds to a few thousand" characterization is on the optimistic end of the documented range and does not capture the contested nature of even the 400-shot milestone. The O&M note in Section 3 also uses 10^5 shots as the hypothetical floor for rail-replacement frequency ("if rails last 10^5 shots, replacement required every ~28 hours") — this is six to seven orders of magnitude above what defense programs actually achieved, making the already-alarming O&M calculation conservative in the wrong direction.
-- **Recommendation:** Update Section 2, Challenge 3 to replace "hundreds to a few thousand shots" with a more precise characterization: documented defense program rail life ranges from ~12 shots (early systems) to a contested ~400 shots at unconfirmed full power, with a development target of 3,000 shots that was not achieved before program cancellation. Update the O&M note in Section 3 to replace 10^5 with 400 as the "historically optimistic" upper bound from documented defense programs — this makes the replacement cadence calculation (~2 hours instead of ~28 hours) far more alarming and better reflects actual evidence.
+- **Finding:** The coherence flags correctly report "Med archetype fit with 0 enabled overrides (expected 3–8) — a poorer-fit concept with this few corrections suggests the library default is being trusted where the archetype says it shouldn't be." The analysis closing paragraph acknowledges the discrepancy ("Zero enabled overrides. Expected band for Med archetype-fit is 3–8") and attributes it to "extreme opacity of NearStar's public materials," stating "Almost no quantitative cost, performance, or engineering data has been disclosed." While this is factually accurate, the justification does not address *why Med archetype-fit was assigned* if the data is too opaque to support even the minimum expected corrections. A Med-fit concept should have *some* company-grounded deltas from the library default; if the company has published nothing, the archetype-fit grade itself may be too generous, or the library's MAG_TARGET defaults are accidentally well-aligned with NearStar's unpublished design.
+- **Recommendation:** Add one sentence to the closing paragraph explicitly addressing why Med archetype-fit is appropriate despite zero overrides. Options: (1) "The Med fit reflects that the MAG_TARGET library defaults (pulsed MIF at ~1 Hz, D-D fuel option, liquid-metal first wall) architecturally match NearStar's stated approach, even though no company-specific cost or performance data has been published to warrant corrections," or (2) if the archetype-fit is upstream-fixed and not revisable, state "The upstream-assigned Med fit anticipates future disclosure; the current zero-override state will shift to 3–8 enabled overrides once NearStar publishes driver cost, target fabrication, or chamber engineering data."
 - **Priority:** important
 
-### F-3: IFE capsule fabrication cost benchmarks absent from Section 5 gap discussion
-- **Target:** Section 5 (Missing Parameters — capsule fabrication cost per shot row) and Section 6 (Gap 7)
+### F-3: Section 7 comparables engagement is incomplete due to empty comparables list
+- **Target:** Section 7 (Family-Delta vs Comparables)
 - **Category:** analysis
-- **Finding:** Section 5 identifies per-shot capsule fabrication cost as an important missing parameter, noting that "IFE target fabrication literature provides lower bound" without giving any numbers. The National Academies IFE Chapter 5 source provides concrete benchmarks: conventional ICF target fabrication currently costs thousands of dollars per target; power plant economics require a target cost of $0.25–$0.50 per shot; achieving this requires approximately a 10,000× reduction from current research-scale costs, and factory-model projections from the chemical batch-processing industry suggest 17–35 cents per target is achievable at mass-production scale. NearStar's capsule design (50 g, pre-magnetized, cryogenic fuel geometry, must survive Mach 30 launch) is substantially more complex than conventional ICF pellets, so these numbers are a lower bound rather than a direct estimate. At 28 million shots/year, even $0.50/capsule yields $14M/year in capsule cost — a non-trivial operating cost line that deserves quantitative context.
-- **Recommendation:** Update the Section 5 "capsule fabrication cost per shot" row to cite the NAS IFE benchmark: ICF targets must reach $0.25–$0.50/shot for power plant viability (currently at ~$1,000+/target, requiring ~10,000× reduction). Note that NearStar's capsule is structurally more complex than ICF pellets (pre-magnetized, 50 g, must survive railgun launch), so $0.25–0.50 is a lower bound and NearStar's target will need to be substantially cheaper per-unit relative to its complexity. Update Section 6, Gap 7 similarly to replace the vague "IFE target fabrication literature provides lower bound" with the specific NAS figures.
+- **Finding:** The section opens with "No comparable concept in the corpus for this design point" and proceeds to describe deltas against MIF/IFE analogs (MagLIF, laser ICF, General Fusion pneumatic MTF). The analysis correctly identifies that NearStar's hypervelocity railgun-driven MTIF is architecturally unique and engages the closest neighbors. However, the comparables list in frontmatter is empty (`Comparables: []`), and the section does not explain *why* the fixed comparables list is empty or whether the upstream comparison-status (`costingfe-asterisked`) means the comparable-set assignment is deferred. If the empty list is intentional (no sufficiently similar concept exists), the section should state this upfront before proceeding to the analogs. If the list is incomplete and will be populated later, state that.
+- **Recommendation:** Add one sentence immediately after the opening "No comparable concept" statement: "The upstream comparables list is empty because no other surveyed concept combines hypervelocity projectile impact, magnetized target compression, and D-D fuel — the three defining architectural choices that drive NearStar's cost structure. The analogs discussed below (MagLIF, laser ICF, pneumatic MTF) share subsets of these features but diverge on driver technology or fuel cycle, making direct cost comparison inappropriate without company-disclosed data."
 - **Priority:** minor
 
----
 
-## Source Notes
+## Reference
 
-- **en-wiki-railgun.md**: Material. Provides specific rail lifetime data (12–400 shots documented), system efficiency anchor (~20% overall for naval planning), program history including Navy cancellation in 2021, and rate-of-fire achievements (5 Hz demonstrated at 185 g/shot in 1995, 0.167 Hz for heavy rounds). Directly relevant to Sections 2, 3, 5, 6.
-- **iopscience-10-1088-1741-4326-ac2dbe.md**: Not usable. File contains only a CAPTCHA/access denial page — no scientific content was extracted. Cannot assess.
-- **nationalacademies-read-18289-chapter-5.md**: Partially material. Contains no MTIF or magnetized target fusion content; exclusively covers conventional IFE (laser direct/indirect, heavy-ion, Z-pinch). Provides IFE economic benchmarks (5–10 ¢/kWh COE target, $0.25–$0.50/shot target fabrication goal, 70–80% capacity factor target) useful as comparative context but not as direct inputs to the NearStar analysis.
+- **Concept Analysis (Design Point + Section 5b overrides):** `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\37-magnetized-target-inertial-fusion-mtif\analysis.md`
+- **Example (pattern):** `\home\reid\1cfe\1costingfe\examples\dt_tokamak.py`
+- **README:** `\home\reid\1cfe\1costingfe\README.md`
+- **Costing Constants:** `\home\reid\1cfe\1costingfe\src\costingfe\data\defaults\costing_constants.yaml`
+- **Concept mapping:** `ConfinementConcept.MAG_TARGET`, `Fuel.DD`
 
----
+### Canonical account schema (for any new/changed override)
 
-## Carried-Forward Assessment Findings
+| Account | What it costs | Applies when |
+| --- | --- | --- |
+| `C220101` | First wall, blanket & neutron multiplier (DT: tritium-breeding blanket; DD/aneutronic: energy-capture blanket) | always (for this archetype) |
+| `C220102` | Radiation shield (sized to neutron wall loading; scales down for low-neutron fuels) | always (for this archetype) |
+| `C220103` | Confinement magnets / coils (HTS-REBCO conductor + winding + cryostat) | always (for this archetype) |
+| `C220104` | Supplementary plasma heating (steady-state) or primary pulsed driver (laser/accelerator/gun) | primary pulsed driver (laser/accelerator/gun) on $/J of driver energy; electrical-drive concepts cost it in C220107 |
+| `C220105` | Primary structure — gravity supports, thermal shields, inter-coil structure, machine base | always (for this archetype) |
+| `C220106` | Vacuum system — vessel, port extensions, cryopumps, leak detection | always (for this archetype) |
+| `C220107` | Power supplies (steady-state magnet supplies / switchgear) or pulsed-power capacitor bank ($/J stored) | pulsed-power capacitor bank on $/J stored — usually the dominant driver cost for electrically-driven pulsed schemes |
+| `C220108` | Divertor (steady-state, W monoblock cassettes) or target factory (IFE/MIF target manufacturing) | high-rep-rate target manufacturing factory (IFE/MIF) |
+| `C220109` | Direct energy converter (electrostatic for mirror/FRC exhaust, or inductive DEC on a pulsed driver) | only if the design point uses direct energy conversion (directed axial exhaust or an inductive DEC stage) |
+| `C220110` | Remote handling & maintenance equipment (rad-hardening tier x vessel geometry) | always (for this archetype) |
+| `C220111` | Reactor-equipment installation & assembly (fraction of the CAS22 subtotal) | always (for this archetype) |
+| `CAS21` | Buildings & site structures (reactor, turbine, hot cell, balance-of-plant) | always (for this archetype) |
+| `CAS23` | Turbine plant equipment (thermal cycle; zero for direct-conversion / eta_th=0 plants) | zero if the design point is direct-conversion (no thermal cycle) |
+| `CAS24` | Electric plant equipment (switchyard, transformers, plant distribution) | always (for this archetype) |
+| `CAS26` | Heat rejection system (cooling towers, circulating water) | always (for this archetype) |
+| `CAS27` | Special materials — initial reactor material inventory / blanket fill (distinct from C220101 structure) | always (for this archetype) |
+| `CAS70` | Annualized O&M + scheduled component replacement (staffing-based) | always (for this archetype) |
+| `CAS80` | Annualized fuel cost — consumables and enriched-isotope procurement | always (for this archetype) |
 
-The following findings were flagged by the prior assessment but have not yet been addressed (they were carried forward across a source-integration pass). Address these alongside the source-integration findings above.
+### Canonical `spec` field glossary (for any new/changed spec key)
 
-### F-1: Rail replacement O&M captured only as availability loss, not as an explicit cost
-- **Target:** Model (CAS70 / O&M), cross-referenced to Section 2 (Challenge 3) and Section 5 (missing parameters table, "Rail lifetime and replacement cost — blocking")
-- **Category:** model
-- **Finding:** The analysis correctly identifies rail replacement as the dominant OPEX differentiator (Section 2.3: every ~28 hours at 10^5-shot rail life). The model's CAS70 shows only $25.2 M$/year O&M for 200 MWe — consistent with a generic fusion O&M scaling, not a concept where the primary consumable is replaced every day. The rail replacement penalty enters the model only through reduced availability (0.40), which reduces energy production; but the actual replacement labor, materials, and downtime cost appears to have no explicit cost line. At 1 Hz, even a modest rail unit cost creates a per-year replacement bill that would dominate O&M and should be a top-sensitivity parameter. Instead, `om_cost_dd` (elasticity +0.19) is the only O&M lever and it follows D-D generic scaling rather than a rail-replacement-specific formulation.
-- **Recommendation:** Add a per-shot rail consumable cost parameter to the model (analogous to `target_factory_base` for capsule fabrication but representing rail erosion material and replacement labor). Run a sensitivity sweep over rail unit replacement cost and rail lifetime shots to produce a two-dimensional cost map. Update Section 2.3 with the implied O&M range from the sweep, stating the breakeven rail life (shots per replacement) at which O&M becomes economically tractable.
-- **Priority:** blocking
+If your edit touches the `spec` dict (adding/renaming/replacing a field),
+the new key MUST come from the glossary below. Read the "Common confusions"
+block before editing — most prior errors (concept 05/09 fusion-vs-heating
+mix-up, dipole `plasma_volume` regression, kJ-vs-MJ driver-energy mistakes)
+trace back to ignoring these warnings.
 
-### F-2: Driver capital cost calibrated for pneumatic pistons, not railgun
-- **Target:** Model (CAS22 driver sub-account, `driver_mag_target_per_mw`), cross-referenced to Section 2 (Challenge 3) and Section 7 (comparison to General Fusion concept 14)
-- **Category:** model
-- **Finding:** The model output explicitly acknowledges this: "`driver_mag_target_per_mw` default ($3 M$/MW_driver, pneumatic piston calibration) — likely underestimates railgun capital." The railgun driver is the primary architectural differentiator from General Fusion's pneumatic approach and is the novel capital system in this concept. Using a pneumatic piston calibration understates a key cost penalty: plasma-armature railguns at 10 km/s operate far outside the regime of pneumatic actuators (different energy storage topology, pulsed-power infrastructure, high-current switching, precision firing circuits). Railgun capital costs in defense programs are measured in $10s–100s M$ per installation at much lower duty cycles than required here. The current calibration may underestimate driver CAS22 contribution by a factor of several.
-- **Recommendation:** Add a railgun driver cost scenario branch with a multiplier range relative to the pneumatic piston baseline (e.g., 2×, 5×, 10× of `driver_mag_target_per_mw`). Anchor the lower bound using defense electromagnetic launcher program cost data (Navy/DARPA EML programs), which provide at least order-of-magnitude capital estimates for pulsed-power railgun systems. Report the LCOE sensitivity to this multiplier explicitly in the model output.
-- **Priority:** important
-
-### F-3: Highest-sensitivity parameters not stated as testable propositions with breakeven thresholds
-- **Target:** Section 2 (Modeling Approach / Challenges) and the analysis's framing of key hypotheses
-- **Category:** analysis
-- **Finding:** The sensitivity analysis shows `availability` (elasticity −0.994) and `q_eng` (elasticity −0.334) as by far the dominant LCOE levers. The analysis narrative in Section 2 identifies the correct physical challenges (D-D ignition, energy balance, rail wear) but does not connect them to these parameters as breakeven conditions. There is no statement of the form: "At availability = 0.40, LCOE is ~190 $/MWh; a commercially viable LCOE (~50–80 $/MWh) requires availability ≥ 0.80, which requires rail lifetime ≥ N shots — approximately X orders of magnitude beyond the demonstrated defense program data." Without this framing, the analysis identifies risks but does not structure them as testable propositions that the cost model can evaluate.
-- **Recommendation:** Add a paragraph in Section 2 (or a new modeling-recommendation sub-section) that (a) names availability and Q_eng as the two dominant LCOE levers from the sensitivity analysis, (b) states the breakeven availability and Q_eng values required for LCOE below a target threshold (e.g., 80 $/MWh), and (c) converts those breakeven values into physical requirements (rail shots per replacement, minimum fusion gain) that can be compared directly to the state of the art. This converts narrative challenges into testable modeling hypotheses.
-- **Priority:** important
-
-
-## Reference Files
-
-- **Concept Analysis:** `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/37-magnetized-target-inertial-fusion-mtif/analysis.md`
-- **Example:** `/home/reid/1cfe/1costingfe/examples/dt_tokamak.py`
-- **Defaults:** `/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/mif_mag_target.yaml`
-- **README:** `/home/reid/1cfe/1costingfe/README.md`
-- **Costing Constants:** `/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml`
+{{canonical_spec_keys}}
 
 ## Output
-Write changes to: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/37-magnetized-target-inertial-fusion-mtif/iter-2/model_setup.py`
+Write changes to: `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\37-magnetized-target-inertial-fusion-mtif\iter-2\model_setup.py`

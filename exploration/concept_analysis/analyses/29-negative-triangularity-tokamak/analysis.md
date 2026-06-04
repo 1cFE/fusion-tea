@@ -1,388 +1,569 @@
 ---
 ID: 29-negative-triangularity-tokamak
-Concept: Negative Triangularity Tokamak
+Concept: Negative-Triangularity Tokamak
 Company: Firefly Fusion
 Status: draft
-Created: 2026-04-19
+Created: 2026-06-04
 Approved-Date:
-Reuses: [21-spherical-tokamak-hts]
+Confinement-Family: MFE
+Archetype: TOKAMAK
+Archetype-Fit: High
+Comparison-Status: costingfe
+Comparables:
+  - 01-hts-compact-tokamak
+  - 21-spherical-tokamak-hts
+  - 28-hts-tokamak-full-hts
+  - 33-state-backed-tokamak-best
+Design-Point-Name: MANTA NT Fusion Pilot Plant (Rutherford et al. 2024)
+Design-Point-Maturity: paper-concept
+P-Native: 90
+Grounding-Confidence: high
 ---
 
-# D1+ Analysis: Negative Triangularity Tokamak (Firefly Fusion)
+## Design Point
 
-**Concept**: Negative Triangularity (NT) HTS Tokamak — D-T fuel
-**Company**: Firefly Fusion (Lausanne/Cadarache; founded 2024)
-**Prototype**: LUCIOLE (copper magnets, pre-commercial)
-**Confinement Family**: MFE — Tokamak (Negative Triangularity)
+- Name: MANTA NT Fusion Pilot Plant (Rutherford et al. 2024)
+- Maturity: paper-concept
+- P_native: 90 MWe
+- Grounding: high
+- Primary sources:
+  - knowledge/concept_research/29-negative-triangularity-tokamak/iter-02/sources/manta-reference-design.md
+  - knowledge/concept_research/29-negative-triangularity-tokamak/iter-01/sources/greyb-firefly-interview.md
 
----
+## 1. Availability of Data
 
-## Section 1: Availability of Data
+**Rating: Moderate**
 
-**Rating: Limited**
+The negative-triangularity tokamak concept benefits from two distinct data streams: academic reactor design studies and limited early-stage commercial disclosure. The academic literature provides detailed physics and engineering parameters for reactor-scale NT machines, while commercial sources (Firefly Fusion) offer minimal technical detail beyond high-level targets.
 
-The NT tokamak concept sits in an unusual position: the underlying plasma physics is moderately well-documented through independent academic work, but Firefly Fusion itself — the only private company developing this approach — is effectively opaque. The "Limited" rating reflects that a published reference design (MANTA) exists and provides real engineering anchors, but Firefly has disclosed almost no proprietary parameters and the concept remains less experimentally validated than conventional positive-triangularity tokamaks.
+**Academic Design Studies (Rich):**
+The MANTA reference design (Rutherford et al. 2024) provides comprehensive reactor-level parameters, cost breakdowns, and engineering specifications for a 90 MWe NT pilot plant. The study includes plasma physics parameters, magnet specifications, blanket configuration, divertor design, operational cycle, overnight cost assessment ($3.4B), and LCOE projections ($396/MWh for a scaled 550 MW version). This represents one of the most detailed publicly available tokamak cost studies published in recent years, comparable in depth to ARC or SPARC conceptual designs.
 
-**Published reference design:**
-The MANTA study (Rutherford et al. 2024, MIT/community authors) is the single most important data source for this analysis. MANTA is a community-authored conceptual design for an NT ARC-class pilot plant producing 450 MW fusion power at Q=11.5 with a net electrical output of 90 MWe. It provides a complete plant parameter set, systems-level cost breakdown (overnight cost $3.4B), and LCOE projections. The MANTA team explicitly positions NT as enabling a "simpler, conventional divertor" compared to positive-triangularity devices [manta-reference-design.md §Abstract]. MANTA is the primary engineering foundation for this analysis.
+Supporting academic work includes:
+- Ball, Balestri, and Coda (2024) on ohmic-only NT operation, demonstrating that high-field NT tokamaks could potentially eliminate auxiliary heating systems entirely at Q > 10
+- Experimental validation data from DIII-D (General Atomics) and TCV (EPFL/SPC) demonstrating NT plasma stability, ELM-free operation, and improved heat exhaust at laboratory scale
 
-> "Systems-level economic analysis estimates an overnight cost of US$3.4 billion, meeting the NASEM FPP requirement that this first-of-a-kind be less than US$5 billion."
-> — manta-reference-design.md, §Abstract
+**Commercial Sources (Opaque):**
+Firefly Fusion (founded 2024) has disclosed only high-level parameters through a GreyB interview with CEO Rustem Ospanov: major radius 2-2.5 m, magnetic field 10-12 T, target Q > 5, fusion power 50-100 MW with 20-30 MW heating input. No cost data, detailed engineering specifications, blanket choice, or plant-scale performance targets have been released. The company website (as of March 2026) provides team bios and advisor affiliations but no technical documentation.
 
-**Physics basis — ohmic NT feasibility:**
-Balestri, Ball, and Coda (2024) — co-authored by Firefly co-founder Justin Ball — provides the physics basis for the most radical NT economic argument: that a compact, high-field NT tokamak could operate with ohmic heating alone, eliminating auxiliary heating systems entirely. The paper demonstrates analytically and numerically that for a MANTA-class device at the Greenwald density limit, ohmic heating alone could achieve Q ≈ 500, compared to Q ≈ 30 with 40 MW external heating [ball-balestri-ohmic-nt-paper.md §Numerical results]. For a SPARC-class device, ohmic NT achieves Q = 80 vs. Q ≈ 12 for heated positive-triangularity H-mode. These results are from a zero-dimensional power balance model — not validated in a burning plasma — but they represent the most quantitatively specific claim available for Firefly's underlying hypothesis.
+**Data Gaps:**
+- No published Firefly-specific reactor design or cost estimate
+- Limited NT experimental database at reactor-relevant parameters (high beta_N, high density, radiative divertor operation)
+- Uncertainty in NT confinement scaling laws — H_NA = 2.0 for ohmic NT plasmas is extrapolated from small experiments (TCV, DIII-D)
+- No disclosed blanket choice or tritium breeding strategy from Firefly
+- Manufacturing cost estimates for NT-specific coil geometry and divertor configuration are preliminary
 
-**Compact copper-magnet NT pre-conceptual design:**
-Guizzo et al. (2025) presents a pre-conceptual engineering design study for a compact copper-magnet NT tokamak device at demonstrator scale: R₀ = 1 m, a = 0.27 m, Bₜ = 3 T, Iₚ = 0.75 MA, with 16 demountable copper TF coils and 8 PF coils operating at maximum currents of 1 MA each [arxiv-2501-14682.md]. The study analyzes vertical stability, PF coil force limits, and mechanical loads during current quench events, demonstrating that passive stabilizing plates (high-field side and/or low-field side) reduce vertical instability growth rates by approximately 75% in NT geometry. The paper concludes that "the key capabilities required of a dedicated NT tokamak experiment can be realized with existing copper magnet technologies." This constitutes an intermediate engineering data point between current experiments (TCV/DIII-D, non-burning small plasmas) and the MANTA commercial-scale design — specifically at the scale and magnet technology level of Firefly's LUCIOLE prototype target. This is the most directly comparable published engineering study to LUCIOLE.
+The MANTA design provides a credible reference point for NT tokamak economics, but it is an academic study, not a commercial plant design. The analysis below uses MANTA as the design-point proxy given the absence of Firefly technical publications.
 
-**Experimental validation of NT physics:**
-NT plasma behavior has been studied on DIII-D (General Atomics) and TCV (EPFL/SPC). Firefly's collaboration with DIII-D is documented, focused on "diagnostics, edge physics, and control strategies" for NT plasmas [firefly-fusion-diii-d-collaboration.md]. These experiments validate the core NT claim — that L-mode confinement in NT is enhanced relative to conventional L-mode — but do not reach burning-plasma or reactor-relevant parameters.
+## 2. Challenges in Capturing System Function
 
-**Firefly Fusion transparency:**
-Firefly has disclosed: CEO background (Rustem Ospanov, CERN/Fermilab experimental physics); device target parameters (R=2–2.5 m, B=10–12 T HTS, Q>5, P_fusion=50–100 MW); prototype name (LUCIOLE); approach (copper magnets for LUCIOLE, HTS for commercial); and key advisors (Kikuchi — NT plasma expert; Bucalossi — WEST director; Huguet — former ITER/JET director) [greyb-firefly-interview.md, firefly-fusion-diii-d-collaboration.md]. The March 2026 company website discloses no technical parameters beyond general mission statements [firefly-website-2026.md].
+**Ranked LCOE Modeling Challenges (Highest Impact First):**
 
-> "Firefly's mission is to rapidly demonstrate burning plasmas by building an affordable, actively-cooled copper-magnet tokamak as a first step toward commercial fusion deployment"
-> — firefly-fusion-diii-d-collaboration.md
+### 1. HTS Magnet Cost and Lifetime (High Impact, Medium-High Uncertainty)
 
-**Independent analyses:**
-No independent TEA exists specifically for NT tokamaks. The MANTA study is the closest. Standard MFE tokamak TEA tools (PROCESS/UKAEA, Araiinejad & Shirvan 2025, ARIES studies) apply to the underlying tokamak architecture but do not incorporate NT-specific modifications to divertor cost structure or heating system reduction.
+> "turbine efficiency, magnet cost and replacement time are the most critical upfront and lifetime cost drivers, respectively."
+> — manta-reference-design.md, §1 Abstract
 
-**Key data gaps limiting this analysis:**
-1. Firefly has no published plasma parameter set — all Firefly-specific parameters are aspirational statements from press materials
-2. No commercial-scale NT tokamak plant study exists — MANTA targets 90 MWe net, far below commercial viability
-3. NT confinement at burning-plasma conditions is unvalidated — all experimental data is from non-burning L-mode plasmas
-4. Firefly's blanket design, tritium breeding approach, and power conversion cycle are entirely undisclosed
+The MANTA design has TF coil costs of $1,500M — 44% of the $3.4B overnight cost. REBCO tape cost assumptions ($40/kA·m) and fabrication factors (5× material cost for superconducting components) carry large uncertainty ranges. A ±50% sensitivity sweep on REBCO cost keeps overnight cost below $5B, but the learning curve for large-scale REBCO production is unproven at fusion plant demand levels (>5,000 km per reactor).
 
----
+Magnet lifetime sets the replacement cycle: PF2 requires replacement every ~2 full-power years due to neutron damage, driving an 88% availability assumption. TF coil lifetime is projected at >1,000 megawatt-years but lacks experimental validation under 14 MeV neutron flux at high fluence (>50 dpa).
 
-## Section 2: Challenges in Capturing System Function
+**Modeling Challenge:** Magnet cost scales with REBCO tape performance (J_c at high field), structural material choices (Inconel 718 vs. alternatives), and manufacturing learning curves. Lifetime depends on neutron damage accumulation in tape, insulation radiation hardening, and quench protection system reliability — all TRL 5-6 at best for fusion conditions.
 
-The NT tokamak shares the standard D-T tokamak LCOE modeling challenges (magnet cost uncertainty, capacity factor, blanket and tritium cycle maturity) but adds several NT-specific uncertainties. The NT geometry also introduces a potential economic *advantage* — if divertor simplification and heating elimination are validated — that is equally hard to quantify. Challenges are ranked by impact on LCOE uncertainty.
+### 2. NT Confinement Scaling Uncertainty (High Impact, High Uncertainty)
 
-**1. NT confinement scaling to burning-plasma conditions — the physics anchor is unvalidated (Impact: Critical)**
+> "Compared to positive triangularity, negative triangularity is far less understood. While MANTA's success in meeting the NASEM targets together with previous work show the plausibility of NT pilot/power plants, further experimental data, especially with regards to radiative ELM-free plasmas, is required to provide greater confidence that NT can scale to a reactor-class tokamak."
+> — manta-reference-design.md, §8 Conclusion
 
-The entire NT economic case rests on the claim that NT L-mode confinement, as observed on TCV and DIII-D, scales favorably to reactor conditions. The MANTA study explicitly acknowledges this: "Compared to positive triangularity, negative triangularity is far less understood... Further experimental data, especially with regards to radiative ELM-free plasmas, is required to provide greater confidence that NT can scale to a reactor-class tokamak" [manta-reference-design.md §8]. The confinement factors H_NA (ohmic enhancement for NT), H_98 (H-mode-equivalent scaling), and H_89 used in Ball et al. "represent the biggest uncertainty in predicting how a NT plasma will behave" [ball-balestri-ohmic-nt-paper.md §Appendix B]. If NT confinement does not maintain its advantage at high plasma pressure and high-Z impurity concentrations, the key cost-reduction claims collapse. There is no analogue for this uncertainty in conventional tokamak analysis — ITER, SPARC, and ARC all extrapolate from a much richer H-mode database.
+The MANTA design assumes H_98y2 = 1.44 based on DIII-D NT campaign data, but the scaling database is thin. Ball et al. use H_NA = 2.0 for ohmic NT plasmas, extrapolated from TCV experiments. The confinement advantage claimed for NT — enabling ohmic-only operation at Q = 500 in MANTA parameters — is entirely dependent on these extrapolations holding at reactor scale.
 
-**2. Net electric output is very low — commercial scaling path unknown (Impact: Critical)**
+> "These three confinement factors [H_NA, H_98, H_89] represent the biggest uncertainty in predicting how a NT plasma will behave... Since no existing scaling law incorporates NT with sufficiently broad applicability, one is forced to account for NT by choosing representative confinement enhancement factors."
+> — ball-balestri-ohmic-nt-paper.md, §Appendix B
 
-MANTA, the primary reference design, produces only 90 MWe net from 450 MW fusion power. The Q_e (electrical gain) of 2.4 is better than break-even but far from commercial viability. MANTA's own LCOE projection for a scaled 550 MW device over 30 years is US$396/MWh — roughly 3× offshore wind costs. The natural commercial benchmark for a mature positive-triangularity tokamak is ARIES-ACT ACT1: a 10th-of-a-kind 1000 MWe advanced PT tokamak with SiC composite structure and a self-cooled PbLi blanket achieving 58% thermal efficiency in a Brayton cycle, with a COE of $64.3/MWh [osti-servlets-purl-1178069.md §Executive Summary]. The more conservative ACT2 (DCLL blanket, RAFM steel, 45% efficiency) reaches $64.4/MWh. These two brackets define the $64/MWh range that an NT commercial plant would need to approach — a ~6× gap from MANTA's pilot-plant $396/MWh figure. The MANTA authors identify the path to viability as requiring: extended magnet lifetimes (56% LCOE reduction), higher thermal efficiency via elevated operating temperatures, and fusion power approaching 1 GW [manta-reference-design.md §7.2]. Commercial thermal efficiency analogues from ARIES-ACT suggest 45–58% is achievable depending on blanket architecture and structural material choice — MANTA's FLiBe outlet temperatures are likely to bound the NT commercial plant in the 45–55% range rather than the full 58% (which requires SiC composite structure). None of these parameters are characterized for Firefly's smaller 50–100 MW fusion power target, which would produce even less net electricity at similar recirculating power fractions. There is currently no credible path from Firefly's stated design point to commercial LCOE targets without major upscaling and technology improvements.
+**Modeling Challenge:** If NT confinement does not scale as predicted, the design point may require larger size (higher R0), higher magnetic field (higher magnet cost), or external heating systems (negating the cost advantage). The confinement uncertainty propagates into fusion power, Q, and therefore LCOE.
 
-**3. Ohmic-only hypothesis: compelling but unvalidated (Impact: High)**
+### 3. Tritium Breeding Ratio and FLiBe Blanket Integration (Medium-High Impact, Medium Uncertainty)
 
-Ball et al.'s central result — that NT L-mode at high density can achieve Q ≈ 500 with zero auxiliary heating — depends on the ohmic confinement enhancement factor H_NA = 2 being sustained in a reactor-scale plasma. The paper notes this is based on "a preliminary analysis of the TCV NT database" [ball-balestri-ohmic-nt-paper.md §Appendix B]. If H_NA ≈ 1 (no enhancement relative to standard ohmic scaling), ohmic heating at compact device sizes may be insufficient to reach burning-plasma conditions, and a full auxiliary heating system (40–100 MW, ~$100–500M capital) would be required. The difference between Q ≈ 500 (ohmic) and Q ≈ 12 (full heating) has enormous implications for recirculating power fraction and operating cost. This uncertainty cannot currently be resolved without experiments on larger NT devices.
+The MANTA design uses a liquid immersion FLiBe blanket with TBR = 1.15. This is an unconventional blanket architecture for tokamaks — the FLiBe flows toroidally around the entire vacuum vessel in a continuous tank, serving dual purpose as breeder, coolant, and shield.
 
-**4. Dominant cost driver unchanged — TF coils are ~44% of plant cost (Impact: High)**
+> "A liquid immersion blanket, consisting of molten 2LiF·BeF₂ (FLiBe) flowing down and around the vacuum vessel in a toroidally continuous tank, was selected due to the improved reactor serviceability and enhanced TBR relative to traditional blanket designs that rely on tritium breeding modules inside the vacuum vessel containing significant amounts of non-breeding structural material."
+> — manta-reference-design.md, §5.1
 
-MANTA shows that the toroidal field coil cost ($1.5B of $3.4B total) is the single largest cost driver, completely independent of the NT geometry choice [manta-reference-design.md §7.1]. NT's economic benefits — divertor simplification, heating elimination — address secondary cost categories, not the dominant driver. Any NT cost model must first anchor the magnet cost correctly (which depends on REBCO tape pricing, coil geometry, and field strength) before NT-specific savings become meaningful. The NT-vs.-PT cost differential may be 10–30% of total plant cost if divertor and heating advantages materialize, but the magnet cost floor creates a hard lower bound that NT cannot overcome.
+This architecture trades high TBR for integration complexity:
+- V-4Cr-4Ti vacuum vessel must be compatible with FLiBe at operating temperature (assumed compatible if MoF₆ dissolved for self-healing Mo barrier)
+- 169 metric tonnes of FLiBe at $169/kg = $29M material cost, but supply chain readiness is TRL 3-4
+- Tritium extraction from flowing molten salt at kg/day rates is unproven at scale
+- Liquid blanket access and maintenance procedures differ from modular solid breeder schemes (ITER TBM baseline)
 
-> "The toroidal field coil cost and replacement time are the most critical upfront and lifetime cost drivers, respectively."
-> — manta-reference-design.md, §Abstract
+**Modeling Challenge:** Blanket cost ($380M in MANTA) depends on V-4Cr-4Ti fabrication at scale, FLiBe procurement and enrichment (Li-6), and tritium processing system complexity. TBR = 1.15 provides margin, but real-world breeding performance under neutron flux with impurities, temperature gradients, and tritium burnup has not been demonstrated.
 
-**5. Divertor simplification — real but requires careful framing (Impact: Moderate)**
+### 4. Divertor Heat Load and Replacement Cycle (Medium Impact, Low-Medium Uncertainty for NT specifically)
 
-The most concrete NT economic advantage is the simpler divertor. NT geometry moves the X-points to larger major radius, enabling radiative exhaust at very low scrape-off-layer power. MANTA achieves P_SOL = 23.5 MW for 450 MW fusion power — an exhaust fraction of only 5.2%, compared to 15–25% for a typical positive-triangularity design [manta-reference-design.md §3].
+NT offers a significant advantage here:
 
-The advantage requires careful framing for TEA purposes. Advanced PT divertors with optimized geometry can also achieve low heat flux: ARIES-ACT edge plasma simulations show that a perpendicular (orthogonal) plate with wide-slot geometry achieves ~2 MW/m² at >95% radiated power fraction (fully detached plasma) — comparable to MANTA's 2.8 MW/m² [osti-servlets-purl-1127358.md §Section II]. The ARIES-ACT ACT1 systems-analysis reference value of 13.7 MW/m² and ACT2's 10 MW/m² correspond to the ITER-style inclined-plate configuration operating at 75–90% radiated power fraction, not the optimized PT divertor result. The NT advantage is therefore not that low heat flux is uniquely achievable in NT: the advantage is that NT achieves it *passively* — from its inherently low P_SOL fraction — with a *conventional* tungsten monoblock divertor operating well within demonstrated endurance limits. The equivalent PT result achieving comparable heat flux requires 90–95% radiated power fraction in the divertor (requiring active impurity seeding), specialized orthogonal plate geometry, and complex plasma control for high radiated power fraction operation — engineering complexity that itself carries capital cost and operational risk.
+> "MANTA's divertor already operates in a far less challenging environment than that of other reactor-class tokamaks. This is a direct result of MANTA's ability to maintain a low P_SOL and high n_sep."
+> — manta-reference-design.md, §3.2
 
-The TEA implication: NT eliminates advanced divertor engineering costs (specialized plate geometry, impurity seeding systems, high radiated power fraction control), not merely the heat flux number. This translates to lower divertor capital cost, fewer system-level constraints on plasma operation, and potentially higher availability from a simpler maintenance cycle — not a unique heat flux number that PT cannot match.
+MANTA's P_SOL = 23.5 MW vs. 83 MW for ARC V1 (positive triangularity). The divertor target metrics M₁ = 57.3 MW·T/m and M₂ = 70.7 are far below conventional tokamaks (ARC V1: M₁ = 263, M₂ = 707; EU-DEMO: M₁ = 98.9, M₂ = 1580).
 
-> "MANTA's radiative and NT operation permits a much simpler, conventional divertor to meet the reactor power exhaust challenge"
-> — manta-reference-design.md, §3
+**Modeling Challenge:** Despite NT's physics advantage, the divertor still requires tungsten monoblock cassettes on CuCrZr heat sinks, remote replacement infrastructure, and scheduled downtime. MANTA assumes a $150M divertor capital cost. The replacement frequency is less critical than for PT tokamaks but still contributes to capacity factor limits (79% effective availability including thermal storage duty cycle and maintenance).
 
-**6. Quasi-steady pulsed operation — thermal buffering cost (Impact: Moderate)**
+### 5. Ohmic-Only Operation Feasibility (Low-Medium Impact, High Uncertainty)
 
-Like ARC-class conventional tokamaks, MANTA operates with ~15-minute inductive pulses and 2-minute inter-pulse dwell periods. The pulsed thermal output requires molten-salt thermal energy storage to produce a steady grid output. This thermal buffer system is a capital cost item absent from steady-state designs; its sizing and cost for the specific NT design point have not been published separately from MANTA's overall plant cost. The 15-min pulse / 2-min dwell cycle yields ~88% duty cycle thermally, but the ~37% capacity factor in MANTA reflects additional planned maintenance downtime. The cost model adopts the project-canonical availability of **0.85** for the commercial-scale central case (MCF quasi-steady D-T per scoring_framework.md §Plant availability), rather than a concept-specific estimate; this ensures cross-concept LCOE comparisons within the MCF / pulsed-IFE family are on a common footing. NT's simpler divertor and reduced P_SOL may support an upside excursion toward 0.90–0.92, but no published NT availability target exists to justify a Tier-A override.
+Ball et al. demonstrate that high-Q NT tokamaks could eliminate auxiliary heating entirely:
 
-**7. NT vertical stability — intrinsically more challenging than PT, requires dedicated engineering hardware (Impact: Moderate)**
+> "In the limit of devices that can ignite, there is clearly no need for any external heating systems... Both cases reach the same fusion power P_fus ≃ 1.0 GW. However, the Ohmic scenario has a fusion gain of Q ≃ 500, while the case heated with external power of P_ext = 40MW has Q ≃ 30."
+> — ball-balestri-ohmic-nt-paper.md, §Analytic results
 
-NT geometry is intrinsically less vertically stable than equivalent positive-triangularity equilibria. Markovičiūtė et al. (2024) confirm that NT equilibria are "less vertically stable than equivalent positive triangularity (PT) configurations," with vertical stability degraded at higher poloidal beta — precisely the regime of interest for high-performance NT operation [arxiv-2401-15217.md §Abstract]. Unlike PT, where outboard passive conducting plates are standard, NT tokamaks require careful optimization of stabilizer plate positioning. The study demonstrates that informed placement of passive outboard plates reduces vertical instability growth rates to 16% of their baseline value. Inboard passive plates are uniquely enabled in NT geometry (because the X-points move outboard), providing additional spatial separation between vertical stabilization hardware and active coils — a design flexibility not available in PT. Engineering implication: passive conducting plate infrastructure is an NT-specific cost item that does not appear in MANTA's cost breakdown and is absent from conventional PT tokamak cost estimates used as analogues. MANTA does not address vertical stability engineering in detail [manta-reference-design.md], representing a gap in its cost accounting for this NT-specific challenge.
+If validated, this eliminates $370M of ICRF heating capital cost and tens of MW of recirculating power. However, MANTA's reference design retains 40 MW of ICRF heating, suggesting the community has not yet converged on ohmic-only as a baseline strategy.
 
----
+**Modeling Challenge:** Ohmic-only operation is attractive but unproven at reactor scale. If it works, LCOE drops significantly (higher Q, lower capex, lower opex). If it doesn't, the design defaults to MANTA's auxiliary-heated configuration. This is a binary fork in the design space.
 
-## Section 3: Maturity of Key Subsystems and Components
+### 6. Capacity Factor and Remote Maintenance (Medium Impact, Medium Uncertainty)
 
-Ordered from least mature (highest risk) to most mature.
+MANTA's environmental cycle is set by PF2 replacement every ~2 full-power years, with 2-month maintenance downtime per replacement. Combined with thermal storage duty cycle (90%) and maintenance schedule (88%), effective availability is ~79%.
 
----
+> "MANTA's environmental cycle is therefore set by PF2, which will require replacement every ~2 full-power years."
+> — manta-reference-design.md, §4.3
 
-**NT Confinement at Reactor Scale — TRL 2–3**
+The demountable TF coil design allows vertical access to PF coils and vacuum vessel, but the remote handling system is "very uncertain" per the study.
 
-- **Demonstrated**: NT L-mode plasmas on TCV (EPFL/SPC) and DIII-D (General Atomics) confirming enhanced L-mode confinement vs. positive triangularity, absence of ELMs in NT geometry, and improved heat exhaust. Firefly collaboration with DIII-D focuses on "diagnostics, edge physics, and control strategies" [firefly-fusion-diii-d-collaboration.md]. MANTA uses H_98 = 1.44 as the design confinement factor, supported by TCV/DIII-D data.
-- **On paper only**: NT confinement at high fusion power densities (α-particle heating regime). Radiative ELM-free operation with high impurity seeding at reactor-relevant density and temperature. Ohmic NT operation with H_NA ≥ 2 confinement enhancement at compact high-field conditions [ball-balestri-ohmic-nt-paper.md §Appendix B]. Device-scale NT plasma control strategy at reactor-relevant elongation and poloidal beta.
-- **Pre-conceptual design published (partial de-risk)**: Guizzo et al. (2025) demonstrates that a copper-magnet NT demonstrator device (R₀=1m, Bₜ=3T, Iₚ=0.75MA, 16 demountable TF coils) can achieve ~75% growth rate reduction in vertical instability through passive stabilizing plates, and concludes the "key capabilities required of a dedicated NT tokamak experiment can be realized with existing copper magnet technologies" [arxiv-2501-14682.md]. This partially de-risks the demonstrator phase: the vertical stability challenge and coil engineering are no longer solely theoretical at LUCIOLE scale.
-- **Missing at scale**: Burning-plasma NT experiment at reactor-relevant Q. Demonstration that NT confinement advantage persists with high alpha-particle pressure. Validation of density peaking predictions (MANTA's TGLF model "has shown significant variability" [manta-reference-design.md §2.2.2]). NT disruption characterization at high plasma current and energy. Vertical stability validation in NT geometry at reactor-relevant elongation and poloidal beta (MANTA-scale; demonstrator-scale engineering is now published but reactor-scale gap remains) [arxiv-2401-15217.md §Abstract].
+**Modeling Challenge:** Capacity factor drives revenue and amortization. The 79% assumption is aggressive for a first-of-a-kind plant with undemonstrated remote handling at full neutron activation levels. Downside risk to 60-70% would increase LCOE proportionally.
 
----
+## 3. Maturity of Key Subsystems and Components
 
-**FLiBe Liquid Immersion Blanket — TRL 2–3**
+**Listed in ascending order of maturity (least mature first):**
 
-- **Demonstrated**: Small-scale FLiBe chemistry experiments. ITER Test Blanket Module program includes helium-cooled and liquid-metal breeder concepts. Lab-scale tritium breeding from lithium.
-- **On paper only**: Full-scale FLiBe liquid immersion blanket as implemented in MANTA — toroidally continuous tank serving as breeder, coolant, and shield simultaneously with TBR = 1.15 [manta-reference-design.md §5.1]. Self-healing molybdenum barrier via MoF₆ in FLiBe. FLiBe-compatible vacuum vessel V-4Cr-4Ti corrosion and compatibility at operating temperature.
-- **Missing at scale**: Continuous tritium extraction from FLiBe at kg/day throughput. FLiBe-to-molten-salt heat exchanger at commercial scale ("low technological readiness level" explicitly noted in MANTA [manta-reference-design.md §6.3]). 14 MeV neutron irradiation database for V-4Cr-4Ti vacuum vessel at fusion-relevant fluence.
+### Integrated FLiBe Liquid Immersion Blanket (TRL 2-3)
 
----
+- **On paper only**: Toroidally continuous liquid blanket with FLiBe flowing around vacuum vessel in external tank
+- **Demonstrated**: Small-scale molten salt experiments (MSRE), FLiBe material property measurements, compatibility tests with vanadium alloys under non-neutron conditions
+- **Missing at scale**: Full-scale liquid blanket with 14 MeV neutron flux, tritium extraction from flowing FLiBe at kg/day rates, thermal-structural-fluid-tritium coupled integration under tokamak pulsed operation, V-4Cr-4Ti vacuum vessel fabrication at multi-hundred-tonne scale
 
-**Tritium Fuel Cycle — TRL 3–4**
+The FLiBe blanket is architecturally distinct from ITER's modular solid breeder test blanket modules. No tokamak has operated with a liquid immersion blanket at any scale.
 
-- **Demonstrated**: Lab-scale tritium handling. MANTA designs around 75g reserve inventory and 440g startup inventory [manta-reference-design.md §5.4]. JET and TFTR operated gram-level tritium inventories.
-- **On paper only**: Closed-loop kg/day-scale tritium breeding and extraction from FLiBe. MANTA acknowledges "a fully functioning tritium fuel cycle has yet to be developed or tested, so the following model employs conservative estimates" [manta-reference-design.md §5.4].
-- **Missing at scale**: Industrial tritium processing for FLiBe-cooled NT tokamak. Demonstrated TBR > 1.0 under realistic conditions with blanket penetrations for diagnostics and heating access.
+### NT Plasma Confinement Scaling at Reactor Parameters (TRL 3-4)
 
----
+- **Demonstrated**: ELM-free NT plasmas at DIII-D and TCV with improved heat exhaust, L-mode-like edge stability at high normalized pressure (β_N ~ 3.5 on DIII-D), H_98y2 ~ 1.0-1.5 in diverted NT configurations
+- **On paper only**: H_98y2 = 1.44 at reactor density, temperature, and power; sustained radiative divertor operation in NT at high Greenwald fraction (f_GW = 0.88); H_NA = 2.0 for ohmic-only NT operation enabling Q = 500
+- **Missing at scale**: High-power NT plasma operation (P_fus > 10 MW), long-pulse NT burn (>100 s), validation of confinement scaling laws with reactor-relevant heating, current drive, and impurity seeding
 
-**Heating and Current Drive — TRL 3–5 (if ohmic-only); TRL 5–7 (if ICRF required)**
+> "The most essential area of future work will be continuing NT studies on existing devices."
+> — manta-reference-design.md, §8 Conclusion
 
-- **Demonstrated**: MANTA uses 40 MW ICRF (He-3 minority at 110 MHz) for auxiliary heating — mature technology at 40 MW scale on JET, WEST, and other tokamaks. Ohmic heating is the oldest plasma heating method and universally demonstrated. Firefly's "microwaves" claim [venture-kick-profile.md] may indicate ECRH, though MANTA uses ICRF.
-- **On paper only**: Ohmic-only burning-plasma NT operation — the Ball et al. scenario [ball-balestri-ohmic-nt-paper.md §Numerical results] has never been attempted at any scale. Q = 500 from ohmic heating is a theoretical extrapolation from 0D power balance.
-- **Missing at scale**: Validated ohmic ignition (or near-ignition) at compact high-field NT conditions. If ICRF is required: continuous-wave ICRF antenna design surviving the fusion neutron environment with multi-year lifetime. MANTA notes detailed antenna design was "outside the scope of this study" [manta-reference-design.md §2.1].
+### Tritium Fuel Cycle for FLiBe Blanket (TRL 3-4)
 
----
+- **Demonstrated**: Lab-scale tritium extraction from molten salts (LIBRA experiments in Japan), tritium handling loops at gram-per-day rates (TFTR, JET legacy)
+- **On paper only**: Closed-loop tritium processing at kg/day scale from FLiBe with <1% losses, integration with tokamak pulsed burn cycle (15-min pulses with 2-min inter-pulse), inventory management in flowing liquid breeder with thermal gradients
+- **Missing at scale**: Industrial-scale tritium extraction from FLiBe (TBD technology — bubbling, permeation, molten salt distillation?), low-inventory storage compatible with liquid breeder chemistry, permeation barriers for V-4Cr-4Ti vacuum vessel, accountability and loss detection in liquid breeder systems
 
-**Remote Maintenance System — TRL 4–6**
+The MANTA design produces 1.8 kg tritium/year net. The extraction efficiency, inventory control, and permeation loss rates are critical unknowns.
 
-- **Demonstrated**: ITER remote handling prototypes at full scale. MANTA's design explicitly incorporates demountable TF coils to enable rapid component replacement; PF2 coil requires replacement approximately every 2 full-power-years [manta-reference-design.md §5.2, Table 7].
-- **On paper only**: Complete remote maintenance cycle for MANTA or Firefly design — blanket module extraction, PF coil replacement, vacuum vessel exchange at the ~2-year cycle time driven by PF2 lifetime limits.
-- **Missing at scale**: Radiation-hardened robotics for NT tokamak geometry with demountable TF coil architecture. Remote maintenance cycle time validation against availability targets.
+### Demountable REBCO HTS TF Coils (TRL 5-6)
 
----
+- **Demonstrated**: Full-scale non-demountable REBCO TF coils at 20 T (CFS SPARC magnet, tested and delivered Jan 2026), demountable joints for REBCO tape demonstrated at small scale (MIT PSFC), large-bore HTS coils under mechanical and thermal loads (Tokamak Energy Demo4 at 11.8 T)
+- **On paper only**: 18-coil demountable TF coil set with joints at each coil for maintenance access, non-insulated winding at J_c = 1000 A/mm² at 25 K and 25 T, quench protection and resistive lead design for demountable operation
+- **Missing at scale**: Reliable joint resistance at fusion-relevant current density over thousands of thermal and mechanical cycles, radiation-hardened REBCO tape and insulation at >50 dpa neutron fluence, long-term fatigue and delamination resistance in window-pane geometry, manufacturing at >5,000 km REBCO tape per reactor
 
-**HTS Magnets (REBCO) — TRL 6–7**
+> "While a detailed quench resilience analysis is outside the scope of this paper, given the evolving nature of the field, quench resilience needs are..."
+> — manta-reference-design.md, §4.1
 
-- **Demonstrated**: MANTA's REBCO-based design targets 11 T at 47.2 kA with 40% margin to critical current, 20 K liquid hydrogen cooling, non-insulated TF coils [manta-reference-design.md §4]. CFS demonstrated a 20 T REBCO single coil (2021). Tokamak Energy Demo4 achieved 11.8 T in a complete 14 TF + 2 PF coil set (2025). Firefly targets 10–12 T HTS for commercial plants [greyb-firefly-interview.md].
-- **On paper only**: NT-specific TF coil geometry — MANTA uses 18 TF coils with demountable joints; the connection between demountability and NT plasma shape imposes specific coil geometry constraints not faced by conventional tokamaks.
-- **Missing at scale**: REBCO tape performance under cumulative 14 MeV neutron + gamma irradiation at commercial plant fluence. MANTA estimates REBCO tolerance to 3×10²² n/m² but notes this is extrapolated [manta-reference-design.md §4]. Full-plant REBCO tape volume at 11 T not published for MANTA.
+### Remote Handling and Maintenance (TRL 4-5)
 
----
+- **Demonstrated**: ITER remote handling prototypes and full-scale mock-ups for blanket and divertor cassette exchange, radiation-hardened robotics at TRL 6-7 for fission hot cells
+- **On paper only**: Integrated remote maintenance scheme for demountable NT tokamak with vertical TF coil removal, PF coil replacement inside TF bore, and liquid blanket drain/fill procedures under activation
+- **Missing at scale**: Radiation-hardened remote handling at fusion activation levels (14 MeV neutrons produce higher activation than fission), demonstrated 2-month PF coil replacement turnaround time, remote seal/joint assembly for demountable TF coils under tritium contamination
 
-**Divertor — TRL 5–7 (with NT advantage)**
+> "The design of a such a system for a fusion power plant is very uncertain; this would be a valuable area for future research."
+> — manta-reference-design.md, Table C1 notes
 
-- **Demonstrated**: Tungsten monoblock divertors tested at >10–20 MW/m² in WEST, GLADIS, DTT. NT's low P_SOL (23.5 MW for 450 MW fusion) creates a substantially more benign divertor environment than comparable positive-triangularity designs. DIII-D experiments confirm NT reduces divertor heat flux significantly.
-- **On paper only**: Conventional tungsten divertor at MANTA conditions — the design simply requires what tokamak programs have nearly demonstrated, because NT's low P_SOL keeps peak heat flux below established limits.
-- **Missing at scale**: Long-term divertor lifetime under NT operating conditions at burning plasma. Remote replacement mechanism in MANTA/Firefly geometry.
+### Tungsten Monoblock Divertor (TRL 6-7)
 
----
+- **Demonstrated**: ITER-style tungsten monoblock divertors tested at 10-20 MW/m² heat flux in facilities (WEST, GLADIS, DTT prototypes), detached/radiative divertor operation demonstrated on multiple tokamaks (DIII-D, JET, ASDEX Upgrade)
+- **On paper only**: NT-specific double-null divertor geometry with reduced M₁ and M₂ metrics, sustained operation at P_SOL = 23.5 MW with radiative detachment
+- **Missing at scale**: Long-duration operation at NT-relevant heat fluxes under neutron damage (10-20 MW/m² for thousands of hours), large-area W-monoblock manufacturing with consistent quality, remote replacement cassette design for NT divertor geometry
 
-**Balance of Plant — TRL 7–8 (BOP) / TRL 3–4 (FLiBe–molten-salt interface)**
+The divertor is a relative strength for NT tokamaks due to low P_SOL, but the component maturity is comparable to conventional tokamaks.
 
-- **Demonstrated**: Steam Rankine cycle at GW scale. Molten-salt secondary loops in concentrated solar (NaNO₃/KNO₃ binary salt is the CSP standard, the same as MANTA's secondary loop [manta-reference-design.md §6.3]).
-- **On paper only**: Integration of FLiBe primary loop with NaNO₃/KNO₃ secondary via molten-salt heat exchanger at fusion-plant scale. Thermal energy storage buffer sized for MANTA's 15-min/2-min pulse cycle.
-- **Missing at scale**: Molten-salt heat exchanger technology for FLiBe-to-secondary coupling — MANTA explicitly notes "low technological readiness level" [manta-reference-design.md §6.3]. Tritium permeation through heat exchanger surfaces.
+### ICRF Heating System (TRL 7-8)
 
----
+- **Demonstrated**: MW-class ICRF systems routinely operated on existing tokamaks (JET, ASDEX Upgrade), ITER ICRF system under construction (20 MW coupled power per launcher)
+- **On paper only**: 40 MW coupled ICRF power at 110 MHz with He-3 minority heating in NT plasma (MANTA specification)
+- **Missing at scale**: Continuous-wave ICRF operation at 40 MW total power in NT plasma geometry (if auxiliary heating retained), long-term reliability under neutron background, integration with NT divertor and first wall
 
-## Section 4: Key Materials and Supply Chain Considerations
+If ohmic-only operation is validated, this subsystem can be eliminated entirely.
 
-**REBCO Superconducting Tape — Critical Bottleneck (shared with HTS tokamak family)**
+### PF Coils and Central Solenoid (TRL 6-7)
 
-MANTA's TF coils require REBCO tape at 11 T, 47.2 kA, with 40% margin to critical current. Total tape demand for a full MANTA-scale plant has not been published but is on the order of thousands of km, comparable to ARC-class designs. REBCO production is ramping but remains at thousands km/year globally vs. 5,000+ km needed per plant [01-hts-compact-tokamak analysis, Section 4]. The MANTA cost sensitivity study showed ±50% variation in REBCO tape cost produces bounded overall plant cost uncertainty (within the $5B NASEM cap) [manta-reference-design.md §7.1, Fig. 25]. This relative insensitivity occurs because TF coil cost is dominated by quantity of tape, not unit price at the margin; however, it does not eliminate the supply-chain volume constraint.
+- **Demonstrated**: Large-scale PF coils with REBCO HTS (CFS SPARC CS prototype), insulated PIT-VIPER-like cables for low AC losses in pulsed operation
+- **On paper only**: PF coils inside demountable TF coils (enabled by TF demountability), PF2 replacement cycle every ~2 full-power years
+- **Missing at scale**: Demonstrated PF coil neutron lifetime under 14 MeV flux, in-bore replacement procedures for activated PF coils, AC loss management for 15-min pulse / 2-min inter-pulse cycle over decades
 
-**FLiBe (2LiF·BeF₂) — Supply Chain Constrained by Beryllium**
+### Vacuum Vessel and In-Vessel Structures (TRL 6-7)
 
-MANTA uses FLiBe as the liquid immersion blanket material (blanket coolant, tritium breeder, and shield) with a TBR of 1.15. FLiBe requires beryllium, which is produced globally at ~300 tonnes/year, dominated by Materion Corp. (US). A single MANTA-scale reactor requires substantial FLiBe inventory; fleet-scale deployment would compete with other beryllium uses. Li-6 enrichment (standard lithium is 7.5% Li-6) is also required for adequate breeding; enrichment capacity is controlled by Russia and China using legacy mercury amalgam processes with limited Western alternatives. Araiinejad & Shirvan (2025) estimate NOAK FLiBe cost at ~$154/kg assuming a 20% learning rate. This is the same supply chain constraint as the CFS ARC design; NT geometry does not change this requirement.
+- **Demonstrated**: V-4Cr-4Ti alloy fabricated at small scale for fusion materials testing programs, welding and joining techniques developed
+- **On paper only**: Multi-hundred-tonne V-4Cr-4Ti vacuum vessel with FLiBe compatibility (MoF₆ barrier formation), integration with liquid immersion blanket tank, port extensions for divertor and heating
+- **Missing at scale**: V-4Cr-4Ti production at reactor-vessel scale (hundreds of tonnes), large-structure welding with fusion-grade quality control, long-term FLiBe corrosion resistance at operating temperature and neutron flux, activation and waste stream management for vanadium
 
-**V-4Cr-4Ti Vacuum Vessel — Advanced Alloy with No Commercial Production**
+V-4Cr-4Ti is chosen for low activation and FLiBe compatibility, but global production capacity is limited (vanadium is a byproduct of steel/titanium processing, and the V-4Cr-4Ti alloy grade has never been produced at multi-hundred-tonne scale).
 
-MANTA specifies a V-4Cr-4Ti vacuum vessel (~1 cm thick) for its 3-orders-of-magnitude lower activation relative to stainless steel [manta-reference-design.md §5.3]. V-4Cr-4Ti has never been produced at the multi-hundred-tonne scale required for a full vacuum vessel. Commodity vanadium is available (~100,000 t/year), but nuclear-grade V-4Cr-4Ti with controlled impurities has no industrial supply chain. The MANTA team notes that future material options (ODS ferritic steels, SiC-SiC composites) depend on technology readiness [manta-reference-design.md §5.1], suggesting the vacuum vessel material choice is not yet locked.
+### Balance of Plant (Thermal Cycle, Turbine, Heat Rejection) (TRL 8-9)
 
-**Tritium — Declining Supply (Standard D-T Constraint)**
+- **Demonstrated**: Conventional Rankine cycle at GW scale in fission and fossil plants, turbine-generator sets at 36% thermal efficiency (MANTA assumption), heat rejection systems (cooling towers, circulating water)
+- **Missing at scale**: Integration with pulsed fusion heat source (15-min pulses with thermal storage to smooth output), tritium-compatible heat exchangers in primary loop, materials qualified for FLiBe primary coolant chemistry
 
-Global tritium inventory ~25–30 kg, decaying at 5.5%/year from CANDU reactor byproduction. Startup requirement ~440g (MANTA's conservative estimate [manta-reference-design.md §5.4]), growing toward ~1 kg as fuel cycle systems mature. MANTA's design includes a 75g operational reserve with a 15-minute tritium system hold-up inventory. NT geometry does not change this fundamental constraint — the same CANDU-supply sequencing issue applies as for all D-T concepts. The TBR = 1.15 design target provides adequate breeding margin once the fuel cycle is operational.
+The thermal cycle is mature technology but requires fusion-specific adaptation for pulsed operation and tritium containment.
 
-**Tungsten (First Wall and Divertor) — Supply Adequate, NT Demand Significantly Reduced**
+## 4. Key Materials and Supply Chain Considerations
 
-NT's low P_SOL substantially reduces tungsten divertor component replacement rates relative to a positive-triangularity device at the same fusion power. MANTA's conventional tungsten monoblock design at 2.8 MW/m² peak heat flux [manta-reference-design.md §Table 1] is below the demonstrated endurance limit of modern tungsten tiles, potentially enabling longer divertor lifetime. This is a meaningful NT supply chain advantage: lower divertor erosion rates may extend replacement intervals from ~5 years (typical high-heat-flux PT assumption) toward ~10 years, reducing tungsten consumption and maintenance costs. Quantitative estimates require detailed modeling not yet performed.
+### REBCO Superconducting Tape (High Criticality, Emerging Supply Chain)
 
-**Molten-Salt Heat Exchanger Components — Novel, Low-TRL Supply Chain**
+**Demand**: MANTA requires >5,000 km of REBCO tape for 18 TF coils plus PF and CS coils. Assumed cost: $40/kA·m.
 
-MANTA's secondary thermal loop uses NaNO₃/KNO₃ binary salt with a two-stage heat exchanger design. FLiBe-to-salt heat exchangers are not commercially available and represent a nascent supply chain. The concentrated solar power industry provides some manufacturing base for molten-salt components, but the temperature range, corrosion environment, and tritium-permeation requirements for fusion are distinct. MANTA explicitly calls this out as a component with "low technological readiness level" [manta-reference-design.md §6.3].
+**Supply**: Global REBCO production capacity is currently thousands of km/year (Shanghai Superconductor Technology, Faraday Factory Japan, CFS internal production). Scaling to tens of thousands of km/year for a multi-reactor fleet requires massive capital investment in tape manufacturing facilities.
 
----
+**Performance requirement**: J_c = 1000 A/mm² at 25 K and 25 T with magnetic field perpendicular to tape plane. Commercial superOx tapes meet this target per MANTA study, but yield consistency, radiation hardening, and long-term degradation under neutron flux remain validation gaps.
 
-## Section 5: LCOE-Relevant Parameters
+**Cost trajectory**: CFS and Tokamak Energy target $10/kA·m for commercial viability (vs. $40/kA·m MANTA assumption). Learning curve depends on tape production volume and manufacturing process optimization.
 
-### Available Parameters
+**Supply chain risk**: REBCO supply is shared across all HTS tokamak concepts (CFS, Tokamak Energy, ENN, Neo Fusion, Firefly). First-to-market concepts will drive tape production scale-up; late entrants benefit from learning curve.
 
-| Parameter | Value/Range | Source | Confidence | Notes |
-|-----------|-------------|--------|------------|-------|
-| **MANTA Reference Design Parameters** | | | | |
-| Major radius (R₀) | 4.55 m | manta-reference-design.md §Table 1 | high | Community reference design; not Firefly's target |
-| Minor radius (a) | 1.2 m | manta-reference-design.md §Table 1 | high | Aspect ratio 3.79 |
-| Toroidal field (B₀) | 11 T | manta-reference-design.md §Table 1 | high | REBCO HTS; 20 K, liquid H₂ cooling |
-| Plasma current (Iₚ) | 10 MA | manta-reference-design.md §Table 1 | high | |
-| Plasma gain (Q) | 11.5 | manta-reference-design.md §Table 1 | high | |
-| Fusion power (P_fus) | 450 MW | manta-reference-design.md §Table 1 | high | |
-| Net electrical output | 90 MWe | manta-reference-design.md §Table 1 | high | Pilot plant; far below commercial scale |
-| Electrical gain (Q_e) | 2.4 | manta-reference-design.md §Table 1 | high | Net electric / auxiliary heating power |
-| Scrape-off layer power (P_SOL) | 23.5 MW | manta-reference-design.md §Table 1 | high | 5.2% of fusion power — very low vs. PT designs |
-| Peak divertor heat flux | 2.8 MW/m² | manta-reference-design.md §Table 1 | high | Well within tungsten monoblock demonstrated limits |
-| Normalized beta (βN) | 1.45 | manta-reference-design.md §Table 1 | high | Conservative; NT does not require high beta |
-| Confinement factor (H₉₈) | 1.44 | manta-reference-design.md §Table 1 | high | Achieved in L-mode — key NT advantage claim |
-| Triangularity (δ) | -0.5 | manta-reference-design.md §Table 1 | high | Strongly negative; defines NT operating regime |
-| Auxiliary heating power | 40 MW ICRF | manta-reference-design.md §2.1 | high | He-3 minority heating at 110 MHz |
-| Pulse length | 15 min | manta-reference-design.md §Operation | high | Inductive burn; CS re-magnetization during inter-pulse |
-| Inter-pulse dwell | 2 min | manta-reference-design.md §Operation | high | Thermal duty cycle ~88% |
-| Capacity factor (pilot) | ~37% | manta-reference-design.md §7.2 | medium | Pilot plant estimate incl. planned maintenance downtime |
-| Plant availability (commercial model) | 0.85 | scoring_framework.md §Plant availability | high | Canonical per project policy for MCF quasi-steady D-T; previously 0.8 (unprincipled band midpoint). No Tier-A override citation exists. Cross-concept LCOE comparisons within MCF / pulsed-IFE family are apples-to-apples on this dimension. |
-| Blanket type | FLiBe liquid immersion | manta-reference-design.md §5.1 | high | Toroidally continuous; dual breeder/coolant/shield |
-| Tritium breeding ratio (TBR) | 1.15 | manta-reference-design.md §5.1 | high | Adequate margin for self-sufficiency |
-| Blanket power multiplication | 1.11 | manta-reference-design.md §5.1 | high | |
-| Vacuum vessel material | V-4Cr-4Ti | manta-reference-design.md §5.3 | high | ~3 orders lower activation than SS316LN |
-| TF coil lifetime | 3,100 ± 400 MW·yr (minimum) | manta-reference-design.md §5.2 | medium | Far exceeds 1,000 MW·yr target |
-| PF2 coil lifetime (limiting) | ~890 MW·yr minimum | manta-reference-design.md §5.2, Table 7 | medium | ~2 full-power-years; sets maintenance cycle |
-| **MANTA Cost Parameters** | | | | |
-| Overnight capital cost | $3.4B | manta-reference-design.md §7.1 | high | Pilot plant; community design |
-| TF coil cost | $1.5B | manta-reference-design.md §7.1 | high | ~44% of total plant cost; dominant cost driver |
-| Tokamak system cost | $3.1B | manta-reference-design.md §7.1 | high | ~89% of total; balance is BOP |
-| Unit capital cost | ~$38M/MWe | manta-reference-design.md §7.1 | medium | Derived: $3.4B / 90 MWe; far above commercial targets |
-| LCOE (scaled 550 MW device) | $396/MWh | manta-reference-design.md §7.2 | medium | 30-year study; ~3× offshore wind; requires significant improvements |
-| **Firefly Fusion Target Parameters** | | | | |
-| Major radius (Firefly target) | 2–2.5 m | greyb-firefly-interview.md | medium | Aspirational; no design study published |
-| Toroidal field (Firefly target) | 10–12 T | greyb-firefly-interview.md | medium | HTS commercial; copper for LUCIOLE |
-| Plasma gain (Firefly target) | Q > 5 | greyb-firefly-interview.md | medium | "> 100 MW fusion from 20–30 MW heating" |
-| Fusion power (Firefly target) | 50–100 MW | greyb-firefly-interview.md | medium | Aspirational; approximately 5× smaller than MANTA |
-| **Ball et al. Ohmic NT Parameters** | | | | |
-| Theoretical Q (ohmic MANTA-class) | ~500 | ball-balestri-ohmic-nt-paper.md §Numerical results | low | 0D power balance; H_NA=2 assumed; unvalidated |
-| Theoretical Q (ohmic SPARC-class) | ~80 | ball-balestri-ohmic-nt-paper.md §Numerical results | low | Same model; much higher than PT H-mode Q=12 |
-| Ohmic heating power (eliminated) | 0 MW (vs. 40 MW ICRF) | ball-balestri-ohmic-nt-paper.md §Conclusions | low | Represents entire auxiliary heating capital saving |
-| **NT Cost-Delta Parameters (derived/analogued)** | | | | |
-| NT divertor capital cost | ~$24M | manta-reference-design.md §7.1 + NT P_SOL characterization | medium | ~60% reduction vs. PT analogue; conventional tungsten monoblock enabled by P_SOL = 23.5 MW (5.2% of P_fus) |
-| ICRF auxiliary heating capital cost (if required) | ~$150M | manta-reference-design.md §2.1 + industry analogue | medium | 40 MW He-3 minority ICRF system; eliminated if ohmic-only scenario validated |
-| Ohmic-only heating elimination saving | ~$150M avoided | ball-balestri-ohmic-nt-paper.md §Conclusions | low | Capital saving if H_NA ≥ 2 confirmed; depends on unvalidated 0D power balance extrapolation |
-| NT passive stabilizer plate cost | ~$15–60M | arxiv-2401-15217.md + conventional tokamak hardware analogues | low | NT-specific cost item; absent from MANTA cost accounting; rough bound from conducting shell/plate cost in comparable tokamaks (ITER, JT-60SA); arxiv-2501-14682.md shows 75% growth rate reduction achievable in demonstrator geometry |
-| **Analogue Parameters from HTS Tokamak Family** | | | | |
-| REBCO tape cost (current) | $30–100/kA-m | 01-hts-compact-tokamak analysis §4 | medium | Commercial viability target ~$10/kA-m |
-| Tritium inventory (global) | ~25–30 kg | 01-hts-compact-tokamak analysis §4 | high | Shared constraint for all D-T concepts |
-| Tritium market price | >$35,000/g | 01-hts-compact-tokamak analysis §4 | medium | |
-| FLiBe NOAK cost | ~$154/kg | Araiinejad & Shirvan 2025 [01-hts-compact-tokamak analysis] | medium | Assumes 20% learning rate |
-| Regulatory cost multiplier (fission-style) | 2.2× building cost | Stewart & Shirvan 2022 [01-hts-compact-tokamak analysis] | medium | Upper-bound scenario for all D-T concepts |
-| Capacity factor (D-T MCF range) | 75–90% | Araiinejad & Shirvan 2025 [01-hts-compact-tokamak analysis] | medium | Commercial plant target; MANTA's 37% is pilot-plant specific |
+### FLiBe Molten Salt (Medium Criticality, Limited Current Supply)
 
----
+**Demand**: MANTA requires 169 metric tonnes of 2LiF·BeF₂ at $169/kg = $29M material cost.
 
-### Missing Parameters
+**Supply**: FLiBe is not produced at industrial scale. Beryllium global production is ~300 tonnes/year (Materion Corp dominates US production). Beryllium is toxic and requires specialized handling. Lithium fluoride is commodity-scale, but Li-6 enrichment for tritium breeding adds cost and supply constraints (only a few facilities produce 90+% Li-6, primarily in Russia and China using mercury amalgamation).
 
-| Parameter | Gap Type | Criticality | Notes |
-|-----------|----------|-------------|-------|
-| Firefly plasma parameter set (complete) | proprietary | blocking | No Q, I_p, β, confinement factor, or auxiliary heating target published for Firefly's specific design |
-| Net electrical output for Firefly design | proprietary | blocking | Firefly targets 50–100 MW fusion power; net electric derivation requires efficiency and recirculating power assumptions not yet disclosed |
-| Commercial-scale NT plant cost estimate | truly-unknown | blocking | MANTA is a pilot plant ($3.4B, 90 MWe); no study for a 1 GW+ commercial NT tokamak exists |
-| Thermal efficiency for NT tokamak commercial plant | derivable | blocking | ARIES-ACT ACT1 (58%, SiC/SCLL, Brayton) and ACT2 (45%, RAFM/DCLL, Brayton) bracket the PT tokamak range [osti-servlets-purl-1178069.md §Executive Summary]. NT FLiBe outlet temperatures likely bound commercial efficiency at 45–55% (below ACT1 SiC). Use 45–55% as analogue range pending NT-specific blanket design. |
-| NT confinement validation at Q > 1 | truly-unknown | blocking | No burning NT plasma data exists anywhere; all physics extrapolated from L-mode non-burning experiments |
-| Firefly blanket and tritium system design | proprietary | blocking | No disclosure from Firefly; MANTA FLiBe is a proxy but Firefly's design may differ |
-| LUCIOLE prototype parameters | proprietary | important | Copper magnets, NT design; no published parameter set |
-| Ohmic NT confinement enhancement (H_NA) validation | truly-unknown | important | Ball et al. use H_NA = 2 from preliminary TCV data; not validated beyond 0D estimate |
-| Auxiliary heating capital cost (NT reduction vs. PT) | resolved | ~~important~~ | Moved to Available Parameters: ~$150M for 40 MW ICRF system; eliminated if ohmic-only (H_NA ≥ 2) validated |
-| Divertor cost differential (NT vs. PT) | resolved | ~~important~~ | Moved to Available Parameters: ~$24M for NT divertor (60% reduction vs. PT, from MANTA §7.1 and P_SOL = 23.5 MW characterization) |
-| Capacity factor for Firefly commercial plant | resolved | ~~important~~ | Model central case uses canonical 0.85 per scoring_framework.md §Plant availability (MCF quasi-steady, D-T). Sensitivity sweeps cover downside (0.65–0.70) and upside (0.90–0.92) excursions. NT's simpler divertor is a potential upside lever but lacks a Tier-A citation to justify a concept-specific override. |
-| V-4Cr-4Ti vacuum vessel industrial supply | truly-unknown | nice-to-have | No commercial production of nuclear-grade V-4Cr-4Ti; cost unknown |
+**Cost trajectory**: Araiinejad & Shirvan (2025) estimate NOAK FLiBe cost of $154/kg assuming 20% learning rate. MANTA uses $169/kg, consistent with near-term pricing.
 
----
+**Supply chain risk**: FLiBe supply is shared with molten-salt fission reactors (Kairos Power, Terrestrial Energy) and other fusion concepts (potentially). Beryllium supply is the bottleneck — 300 t/year global production vs. 169 t for a single MANTA plant suggests fleet-scale supply constraints.
 
-## Section 6: Data Gap Inventory
+**Alternative**: Some tokamak designs use LiPb eutectic or solid ceramic breeders (Li₄SiO₄ pebbles) to avoid beryllium supply constraints. MANTA's choice of FLiBe is driven by TBR and serviceability, not supply chain robustness.
+
+### Tritium (Existential Criticality, Severe Supply Constraint)
+
+**Demand**: MANTA requires 900 g startup inventory (at $30k/g = $27M) and must breed 1.8 kg/year net to sustain operations plus fuel the next plant.
+
+**Supply**: Global civilian tritium inventory is ~25-30 kg, produced as a byproduct of CANDU heavy-water reactors. Tritium decays at 5.5%/year. As CANDU reactors age and retire, external tritium supply will shrink.
+
+**Sequencing constraint**: The first few D-T fusion plants must demonstrate tritium self-sufficiency (TBR > 1 with margin) before the fleet can scale. There is no margin for breeding shortfalls. MANTA's TBR = 1.15 provides 15% margin, but real-world breeding performance with impurities, temperature gradients, and extraction losses is unvalidated.
+
+**Supply chain risk**: Shared across all D-T fusion concepts. This is not a competition for external supply (which is finite and shrinking) — it is a requirement that every D-T concept breed its own tritium successfully.
+
+### V-4Cr-4Ti Vanadium Alloy (Medium-High Criticality, Limited Production)
+
+**Demand**: MANTA vacuum vessel requires several hundred tonnes of V-4Cr-4Ti alloy. Assumed cost: $43/kg (India pricing), potentially 50% higher in US.
+
+**Supply**: Vanadium is produced at ~100,000 t/year globally as a byproduct of steel and titanium processing. However, V-4Cr-4Ti alloy with controlled impurities (Ti ~4%, Cr ~4%, controlled O/C/N/H) has never been produced at multi-hundred-tonne scale. Small heats (kg to tonne-scale) have been produced for fusion materials testing.
+
+**Alternative**: ODS (oxide-dispersion-strengthened) ferritic steels or SiC/SiC composites are alternative low-activation structural materials. MANTA notes these as future upgrade paths if TRL matures:
+
+> "Given MANTA's modularity, these materials [ODS ferritic steels, SiC/SiC composites] could be explored later in MANTA's life cycle based on material technological readiness levels."
+> — manta-reference-design.md, §5.1
+
+**Supply chain risk**: V-4Cr-4Ti is not a commodity material. Scaling to reactor-vessel production requires dedicated supply chain development. Alternative materials (ODS, SiC/SiC) face similar challenges.
+
+### Tungsten (Low-Medium Criticality, Adequate Supply with Manufacturing Challenges)
+
+**Demand**: MANTA divertor requires tungsten monoblock tiles (exact tonnage not disclosed, but likely tens of tonnes based on divertor area).
+
+**Supply**: Tungsten global production is ~85,000 t/year, adequate for fusion fleet demand. Tungsten is available but expensive ($30-50/kg for tungsten powder, significantly higher for formed monoblocks).
+
+**Manufacturing challenge**: Fabricating large-area tungsten monoblock cassettes with CuCrZr heat sinks, consistent quality, and resistance to thermal cycling and neutron embrittlement is TRL 6-7. This is a manufacturing maturity issue, not a supply constraint.
+
+**Supply chain risk**: Shared with fission and materials science applications. Supply is adequate, but specialized fusion-grade manufacturing capacity is limited.
+
+### Summary: Supply Chain Bottlenecks in Rank Order
+
+1. **Tritium** — existential constraint, TBR > 1 mandatory, no external supply at scale
+2. **REBCO tape** — capacity scaling required, shared across HTS tokamak fleet, learning curve underway
+3. **FLiBe / Beryllium** — limited beryllium supply (300 t/year global), toxic handling, Li-6 enrichment geopolitical risk
+4. **V-4Cr-4Ti** — no reactor-scale production demonstrated, alternative materials at similar TRL
+5. **Tungsten** — adequate supply, manufacturing scale-up required
+
+## 5. Design Point Parameters
+
+The quantitative description below is for the **MANTA NT Fusion Pilot Plant** (Rutherford et al. 2024), which serves as the design-point proxy for negative-triangularity tokamaks in the absence of published Firefly specifications.
+
+| Parameter | Value | Source | Confidence | Note |
+|-----------|-------|--------|------------|------|
+| **Geometry** | | | | |
+| R0 (major radius) | 4.55 m | manta-reference-design.md §2, Table 1 | high | spec key: `R0` |
+| a (minor radius) | 1.2 m | manta-reference-design.md §2, Table 1 | high | spec key: `plasma_t` |
+| elongation κ | 1.8 | manta-reference-design.md §2, Table 1 | high | spec key: `elon` |
+| triangularity δ | -0.5 | manta-reference-design.md §2, Table 1 | high | spec key: `tria` (negative sign is defining feature) |
+| plasma volume V_p | 155 m³ | manta-reference-design.md §2, Table 1 | high | informational |
+| plasma surface area A_p | 258 m² | manta-reference-design.md §2, Table 1 | high | informational |
+| aspect ratio A | 3.79 | [inferred: R0/a = 4.55/1.2] | high | informational |
+| **Magnetic Field** | | | | |
+| B (on-axis field) | 11 T | manta-reference-design.md §2, Table 1 | high | spec key: `B` |
+| I_p (plasma current) | 10 MA | manta-reference-design.md §2, Table 1 | high | spec key: `ip` |
+| q_95 (safety factor) | 2.3 | manta-reference-design.md §2, Table 1 | high | informational |
+| q_min | 0.905 | manta-reference-design.md §2, Table 1 | high | informational |
+| **Power Performance** | | | | |
+| P_fus (fusion power) | 450 MW | manta-reference-design.md §2, Table 1 | high | informational — library back-solves from P_native + p_input |
+| P_net (net electric) | 90 MWe | manta-reference-design.md §2, Table 1 | high | must equal Design Point `P_native` |
+| P_input (auxiliary heating) | 40 MW | manta-reference-design.md §2, Table 1 (ICRF coupled power) | medium | spec key: `p_input` — note: Ball et al. claim ohmic-only (0 MW) viable at these parameters |
+| P_SOL (scrape-off layer) | 23.5 MW | manta-reference-design.md §2, Table 1 | high | informational (divertor heat load) |
+| P_th (total thermal) | 530 MW | manta-reference-design.md §2, Table 1 | high | informational |
+| **Performance Metrics** | | | | |
+| Q (plasma gain) | 11.5 | manta-reference-design.md §2, Table 1 | high | informational |
+| Q_E (electricity gain) | 2.4 | manta-reference-design.md §2, Table 1 | high | informational |
+| H_98y2 (confinement factor) | 1.44 | manta-reference-design.md §2, Table 1 | medium | extrapolated from DIII-D NT campaign data |
+| τ_E (energy confinement time) | 0.94 s | manta-reference-design.md §2, Table 1 | medium | follows from H_98y2 |
+| β_N (normalized beta) | 1.45 | manta-reference-design.md §2, Table 1 | high | spec key: `betan` |
+| f_BS (bootstrap fraction) | 18% | manta-reference-design.md §2, Table 1 | medium | spec key: `fbs` |
+| **Plasma State** | | | | |
+| ⟨T_i⟩ (avg ion temp) | 7.3 keV | manta-reference-design.md §2, Table 1 | high | informational |
+| ⟨T_e⟩ (avg electron temp) | 7.1 keV | manta-reference-design.md §2, Table 1 | high | informational |
+| ⟨n⟩ (avg density) | 1.95 × 10²⁰ m⁻³ | manta-reference-design.md §2, Table 1 | high | spec key: `dens` |
+| T_i0 (on-axis ion temp) | 19 keV | manta-reference-design.md §2, Table 1 | high | informational |
+| n_0 (on-axis density) | 2.76 × 10²⁰ m⁻³ | manta-reference-design.md §2, Table 1 | high | informational |
+| f_GW (Greenwald fraction) | 0.88 | manta-reference-design.md §2, Table 1 | medium | high density — risk for disruption |
+| **Operational** | | | | |
+| τ_pulse (pulse length) | 15 min | manta-reference-design.md §2, Table 1 | high | spec key: `burn_time` or informational |
+| τ_inter (inter-pulse) | 2 min | manta-reference-design.md §2, Table 1 | high | informational |
+| TBR (tritium breeding ratio) | 1.15 | manta-reference-design.md §2, Table 1 | medium | FLiBe blanket prediction — unvalidated |
+| T production (net/year) | 1.8 kg | manta-reference-design.md §7.2, Table C5 | medium | TBR × burn time × availability |
+| Availability (effective) | 79% | [inferred: 90% thermal storage duty × 88% maintenance] manta-reference-design.md §7.2 | medium | spec key: `availability` |
+| T startup inventory | 900 g | manta-reference-design.md Table C4 | high | informational |
+| **Cost Metrics** | | | | |
+| Overnight cost | $3.4B | manta-reference-design.md §7.1 | medium | academic study, NOAK assumptions |
+| Overnight $/kWe | $38M/MWe | [inferred: $3.4B / 90 MWe] | medium | informational |
+| LCOE (550 MW scaled) | $396/MWh | manta-reference-design.md §7.2 | low | 30-year plant, not 90 MWe pilot |
+| TF coil cost | $1.5B | manta-reference-design.md Table C1 | medium | 44% of overnight cost |
+| **Magnet Specs** | | | | |
+| TF coils (number) | 18 | manta-reference-design.md §4.1 | high | demountable REBCO HTS |
+| TF coil type | REBCO HTS, non-insulated | manta-reference-design.md §4.1 | high | window-pane geometry |
+| J_c (critical current density) | 1000 A/mm² at 25 K, 25 T | manta-reference-design.md §4.1 | medium | commercial superOx tape performance target |
+| REBCO cost | $40/kA·m | manta-reference-design.md §7.1 | low | industry target, high uncertainty |
+| PF coil replacement cycle | ~2 full-power years | manta-reference-design.md §4.3 | medium | PF2 sets environmental cycle |
+| **Blanket / First Wall** | | | | |
+| Blanket type | FLiBe liquid immersion | manta-reference-design.md §5.1 | medium | toroidally continuous tank around VV |
+| FLiBe mass | 169 t | manta-reference-design.md Table C4 | medium | 2LiF·BeF₂ |
+| FLiBe cost | $169/kg | manta-reference-design.md Table C4 | low | NOAK estimate, supply chain TRL 3-4 |
+| Vacuum vessel material | V-4Cr-4Ti | manta-reference-design.md §5.1, Table 6 | medium | low activation, FLiBe-compatible |
+| VV cost | $43/kg | manta-reference-design.md Table 6 | low | India pricing, 50% higher in US |
+| Divertor type | Double-null tungsten monoblock | manta-reference-design.md §3 | high | CuCrZr heat sinks |
+| Divertor cost | $150M | manta-reference-design.md Table C1 | medium | capital cost estimate |
+
+### Notes on Design Point Selection
+
+The MANTA design is an **academic community study**, not a Firefly company specification. Firefly has disclosed only high-level parameters (R = 2-2.5 m, B = 10-12 T, Q > 5, P_fus = 50-100 MW) through a GreyB interview. MANTA represents the closest published NT tokamak reference design at pilot-plant scale and is used as the design-point proxy.
+
+**Key uncertainties for the named design point:**
+- **Confinement**: H_98y2 = 1.44 is extrapolated from small NT experiments (DIII-D, TCV); reactor-scale validation pending
+- **Auxiliary heating**: MANTA assumes 40 MW ICRF; Ball et al. claim ohmic-only viable at Q = 500 for same parameters — heating requirement is genuinely uncertain
+- **Blanket**: FLiBe liquid immersion blanket is unconventional for tokamaks; TBR = 1.15 is predictive, not demonstrated
+- **Availability**: 79% effective availability assumes 88% maintenance availability with PF2 replacement every ~2 FPY — remote handling capability unproven
+
+## 5b. Override Candidates
+
+The per-account walkthrough below identifies company-grounded departures from 1costingFE library defaults for the MANTA NT design point. The MANTA study provides component-level cost breakdowns, enabling accountable overrides where the design departs from tokamak library assumptions.
+
+```yaml
+overrides:
+  - account: C220103
+    value: 1500.0
+    enabled: true
+    provenance: direct
+    source: "manta-reference-design.md §7.1, Table C1"
+    rationale: |
+      MANTA publishes TF coil cost at $1,500M for 18 demountable REBCO HTS coils.
+      Breakdown: REBCO tape at $40/kA·m, Inconel 718 structure, 5× fabrication
+      factor for superconducting components. Library default is geometry-based
+      and may not capture demountable joint costs or window-pane coil geometry.
+
+  - account: C220104
+    value: 370.0
+    enabled: false
+    provenance: direct
+    source: "manta-reference-design.md §7.1, Table C1"
+    rationale: |
+      MANTA specifies $370M for 40 MW ICRF heating at 110 MHz (He-3 minority).
+      However, Ball et al. demonstrate ohmic-only operation viable at Q=500
+      for same device parameters (ball-balestri-ohmic-nt-paper.md). Heating
+      requirement is genuinely uncertain. Override disabled to preserve library
+      default heating cost; enable if auxiliary heating is validated as required.
+
+  - account: C220108
+    value: 150.0
+    enabled: true
+    provenance: direct
+    source: "manta-reference-design.md §7.1, Table C1"
+    rationale: |
+      MANTA publishes divertor cost at $150M for double-null tungsten monoblock
+      design. NT-specific geometry and reduced heat load (P_SOL = 23.5 MW vs.
+      ~80 MW for conventional tokamaks) may reduce replacement frequency, but
+      capital cost is explicitly stated.
+
+  - account: CAS27
+    value: 28.6
+    enabled: true
+    provenance: direct
+    source: "manta-reference-design.md §7.1, Table C4, Table 6"
+    rationale: |
+      MANTA FLiBe blanket: 169 t × $169/kg = $28.6M (rounded from $28.561M).
+      Library default uses solid breeder unit costs inappropriate for liquid
+      immersion blanket. This is material-only cost; fabrication/structure
+      in C220101.
+
+  - account: CAS70
+    value: 0.70 * generic.costs.cas70
+    enabled: true
+    provenance: derived
+    source: "manta-reference-design.md §7.2, Table C5"
+    rationale: |
+      MANTA assumes ~1 person/MWe staffing at $150k/employee-year = ~$15M/yr
+      for 90 MWe plant. This is ~30% lower than library default staffing
+      assumptions for tokamaks. Relative override: 70% of library CAS70.
+```
+
+**Override Count Sanity Check:**
+Expected band for Archetype-Fit = High is 0-4 enabled overrides. Actual enabled count: 4 (C220103, C220108, CAS27, CAS70). Within expected range.
+
+**Accounts Considered but Not Overridden:**
+
+- **C220101** (blanket structure): MANTA reports $380M blanket cost, but this includes FLiBe tank, vacuum vessel integration, and first wall — not directly comparable to library's breeding blanket account without detailed decomposition. Library default retained.
+- **C220102** (shield): MANTA uses B₄C and WC shielding layers (Table 6), but no standalone shield cost is broken out — included in blanket and VV accounts. Library default retained.
+- **C220105** (primary structure): MANTA includes inter-coil structure and machine base, but no standalone cost figure. Library default retained.
+- **C220106** (vacuum vessel): V-4Cr-4Ti vessel at $43/kg, but total vessel cost not isolated in Table C1. Library default retained.
+- **C220107** (power supplies): TF power supplies at $0.5M each (18 coils = $9M) and resistive leads at $2M each ($36M total) reported, but library default likely covers this. No override without full electrical plant breakdown.
+- **C220110** (remote handling): MANTA reports $55M but notes "very uncertain" — library default likely equally uncertain. No override.
+- **C220111** (installation): MANTA applies 10% contingency and includes assembly in indirect costs, but no direct installation cost breakdown. Library default retained.
+- **CAS21** (buildings): MANTA assumes brownfield site saving ~$400M vs. greenfield, but this is not a design-point feature — it's a siting assumption. Library default retained.
+- **CAS23** (turbine): MANTA assumes 36% thermal efficiency for Rankine cycle — library default thermal cycle efficiency is appropriate. No override.
+- **CAS24** (electric plant): No MANTA-specific cost figure. Library default retained.
+- **CAS26** (heat rejection): No MANTA-specific cost figure. Library default retained.
+- **CAS80** (fuel cost): Tritium at $30k/g with 900 g startup inventory = $27M one-time; library handles consumables. No recurring fuel cost override justified.
+
+## 6. Data Gap Inventory
 
 | # | Gap Description | Section | Gap Type | Criticality | Source Recommendation |
 |---|-----------------|---------|----------|-------------|----------------------|
-| 1 | NT confinement scaling to burning plasma — H_NA, H₉₈ at reactor conditions unvalidated | S1, S2, S3 | truly-unknown | blocking | DIII-D/TCV NT database; future burning NT experiment (none planned); Ball et al. TCV analysis as intermediate step |
-| 2 | Firefly complete plasma parameter set (Q, Ip, beta, heating power, plant size) not published | S1, S5 | proprietary | blocking | Watch for Firefly technical publications or conference presentations; company is pre-publication stage. Note: Guizzo et al. (2025) [arxiv-2501-14682.md] provide a published pre-conceptual engineering design for a comparable copper-magnet NT device (R=1m, Bt=3T, Ip=0.75MA) — the closest available public analog to LUCIOLE. |
-| 3 | Commercial-scale NT plant cost study does not exist — MANTA is a sub-commercial pilot | S1, S2, S5 | truly-unknown | blocking | Extend MANTA cost model to 1 GW+ fusion power; apply PROCESS/ARIES frameworks to NT geometry |
-| 4 | Net electric output derivable only with efficiency and recirculating power assumptions | S2, S5 | derivable | blocking | For MANTA proxy: known (90 MWe); for Firefly: use 50–100 MW fusion × analogued efficiency chain |
-| 5 | Ohmic-only NT feasibility — H_NA = 2 is preliminary and model-dependent | S2, S3, S5 | truly-unknown | blocking | Requires larger NT device experiments; TCV upgrade or DIII-D dedicated NT campaign |
-| 6 | Thermal efficiency for commercial NT plant — analogue range derivable from ARIES-ACT | S2, S5 | derivable | blocking | ARIES-ACT ACT1 (58%, SiC/SCLL) and ACT2 (45%, RAFM/DCLL) bracket PT tokamak range; NT FLiBe plant likely 45–55%; use as analogue pending NT-specific design [osti-servlets-purl-1178069.md] |
-| 7 | Firefly blanket design, TBR target, and tritium system not disclosed | S1, S4, S5 | proprietary | blocking | MANTA FLiBe design is the best available proxy; Firefly's ARC-class heritage makes FLiBe likely |
-| 8 | Divertor cost differential NT vs. PT not separately quantified in MANTA study | S2, S5 | not-yet-sourced | important | Requires detailed divertor design cost study; use tokamak divertor cost analogue from ARIES studies |
-| 9 | Auxiliary heating capital cost saving (if ohmic-only validated) not estimated | S2, S5 | derivable | important | Estimate: ICRF system cost ~$100–300M for 40 MW; represents ~3–9% of total plant cost |
-| 10 | Capacity factor for a commercial NT plant — MANTA 37% is pilot-plant-specific | S2, S5 | not-yet-sourced | important | Apply D-T MCF range (75–90% per Araiinejad & Shirvan) with NT-specific upside from simpler divertor |
-| 11 | FLiBe–molten-salt heat exchanger design and cost at MANTA/commercial scale | S3, S4, S5 | truly-unknown | important | Low-TRL acknowledged in MANTA; CSP industry salt HX as cost analogue only |
-| 12 | V-4Cr-4Ti vacuum vessel industrial supply chain and cost | S4, S5 | truly-unknown | nice-to-have | Review fission breeder literature; consult EUROFER/vanadium alloy programs |
-| 13 | REBCO tape total demand for MANTA-scale TF coil set | S4, S5 | not-yet-sourced | nice-to-have | Derivable from MANTA TF coil geometry if dimensions published; Tokamak Energy Demo4 scaling as analogue |
-| 14 | NT disruption characteristics and wall impact at high plasma current | S3 | not-yet-sourced | nice-to-have | DIII-D NT disruption experiments; review TCV data |
-| 15 | NT vertical stability engineering design — passive stabilizer plate cost at reactor scale; MANTA cost accounting gap | S2, S3, S5 | not-yet-sourced | important | Markovičiūtė et al. (2024) confirm NT is intrinsically less stable and requires passive plates [arxiv-2401-15217.md]. Guizzo et al. (2025) demonstrate ~75% growth rate reduction in a compact copper NT demonstrator via passive plates [arxiv-2501-14682.md] — demonstrator-phase gap partially closed. Cost bound (~$15–60M) added to Section 5. Reactor-scale validation gap (MANTA conditions, higher elongation and poloidal beta) remains. |
+| 1 | NT confinement scaling validation at reactor parameters (H_98y2 = 1.44 for MANTA, H_NA = 2.0 for ohmic-only at Q > 100) | S3, S2 | truly-unknown | blocking | High-power long-pulse NT experiments on DIII-D/KSTAR/EAST with reactor-relevant heating, density, and impurity seeding. Academic publications from ongoing NT campaigns. |
+| 2 | Ohmic-only operation feasibility — can high-Q NT tokamaks eliminate auxiliary heating entirely? | S2, S5b | truly-unknown | important | Experimental validation of ohmic-heated NT plasmas at high normalized pressure and density. If validated, eliminates $370M heating capex. |
+| 3 | FLiBe liquid immersion blanket TBR and tritium extraction at kg/day rates | S3, S4 | truly-unknown | blocking | Neutronics validation for toroidally continuous FLiBe tank with V-4Cr-4Ti VV; tritium extraction technology demonstration at fusion-relevant throughput. |
+| 4 | REBCO HTS tape neutron lifetime and quench resilience in demountable TF coil geometry | S3, S4 | truly-unknown | blocking | Neutron irradiation testing of REBCO tape, insulation, and joints at >50 dpa; quench detection and protection validation for non-insulated windings. |
+| 5 | V-4Cr-4Ti vacuum vessel fabrication and FLiBe compatibility at scale | S3, S4 | truly-unknown | important | Multi-hundred-tonne V-4Cr-4Ti heat production and welding qualification; long-term FLiBe corrosion testing under neutron flux and thermal cycling. |
+| 6 | Remote handling turnaround time for PF2 replacement under full neutron activation | S3, S2 | truly-unknown | important | Integrated remote handling demonstration for activated tokamak components; 2-month turnaround validation for PF coil replacement inside TF bore. |
+| 7 | Magnet replacement cycle cost and schedule for REBCO HTS under neutron damage | S2, S5 | truly-unknown | important | Accelerated neutron damage testing for REBCO tape; validated replacement procedures for demountable TF coils. Library default PF replacement cost may not capture NT-specific geometry. |
+| 8 | NT divertor power split (inner vs. outer strike point) and radiative detachment stability | S2 | truly-unknown | nice-to-have | UEDGE and SOLPS modeling validated against NT divertor experiments; long-pulse radiative divertor operation on DIII-D or TCV. |
+| 9 | REBCO tape supply chain scaling to multi-GW fleet demand (tens of thousands of km/year) | S4 | not-yet-sourced | important | REBCO manufacturer roadmaps (Shanghai Superconductor, Faraday Factory Japan, CFS); tape production capital investment plans and learning curve data. |
+| 10 | FLiBe / beryllium supply chain capacity for fusion fleet (hundreds of tonnes per plant) | S4 | not-yet-sourced | important | Beryllium production forecasts from Materion and other suppliers; FLiBe cost and availability projections from molten salt reactor community (Kairos, Terrestrial Energy). |
+| 11 | Firefly-specific reactor design, blanket choice, heating approach, and cost estimate | S1, all | proprietary | important | Firefly technical publications, FIA member profile updates, or conference presentations. Company is early-stage (founded 2024) with minimal public disclosure as of March 2026. |
 
----
+## 7. Family-Delta vs Comparables
 
-## Section 7: Cross-Concept Notes
+The negative-triangularity tokamak differs from conventional positive-triangularity (PT) HTS tokamaks in plasma shape optimization, divertor heat load management, and potentially auxiliary heating requirements. The deltas below are articulated against the four fixed comparables: 01-hts-compact-tokamak (CFS ARC), 21-spherical-tokamak-hts (Tokamak Energy), 28-hts-tokamak-full-hts (Energy Singularity), and 33-state-backed-tokamak-best (Neo Fusion BEST).
 
-The approved analysis for the Spherical Tokamak - HTS (`21-spherical-tokamak-hts`, Tokamak Energy) is the only approved prior analysis available. While the concept family (D-T HTS tokamak) is shared, the NT and spherical tokamak diverge substantially in geometry, operating regime, and key challenges. Cross-referencing is productive for shared supply chain constraints, but the TEA implications are distinct.
+### vs. 01-hts-compact-tokamak (CFS ARC V1) — Divertor Heat Load Advantage
 
-**Primary structural nearest neighbor (in-progress):** The conventional positive-triangularity HTS compact tokamak (`01-hts-compact-tokamak`, CFS ARC-class) is the true nearest neighbor for this analysis. Every NT differentiator — divertor simplification, L-mode vs. H-mode confinement, ohmic heating possibility — is most meaningfully framed as a delta against a conventional PT HTS compact tokamak at similar field strength and aspect ratio. That analysis is currently in-progress (iter-7) so full cross-reference is not yet available, but it should be treated as the primary PT baseline for all NT-vs.-PT cost differential calculations when approved. Secondary neighbors are `28-hts-tokamak-full-hts` (Full HTS compact tokamak, same family) and `33-state-backed-tokamak-best` (conventional standard-aspect PT tokamak, larger-scale reference).
+**Delta**: NT plasma shaping inverts the D-shaped cross-section (δ = -0.5 vs. δ = +0.4 for ARC), which stabilizes the plasma edge and eliminates ELMs without ELM suppression coils. This reduces scrape-off-layer power (P_SOL) by ~3.6×:
 
-**Reused assumptions from 21-spherical-tokamak-hts:**
+> "MANTA's M₁ = 57.3 MW·T/m vs. ARC V1 (PT) = 263, CFETR = 82.2, EU-DEMO = 98.9"
+> — manta-reference-design.md §3, Table 2
 
-- **REBCO tape supply chain**: Global production bottleneck (~thousands km/year capacity), current pricing ($30–100/kA-m), commercial viability target (~$10/kA-m). These figures apply equally to NT tokamak REBCO requirements [21-spherical-tokamak-hts analysis §4]. Both MANTA and Tokamak Energy's ST-E1 use REBCO at similar field strengths (~11 T).
-- **D-T tritium fuel cycle constraints**: Global inventory (~25–30 kg), startup inventory (~440–1,000g), CANDU-decline sequencing, self-sufficiency requirement (TBR > 1.0). Identical constraint for all D-T concepts.
-- **Regulatory cost scenario**: Stewart & Shirvan 2.2× building cost factor applies to NT tokamak as a D-T fusion device, exactly as for ST-E1.
-- **Capacity factor / availability**: The commercial-case cost model uses **0.85** (canonical per scoring_framework.md §Plant availability, MCF quasi-steady D-T), not a concept-specific figure from Araiinejad & Shirvan's 75–90% range. The 75–90% band informs sensitivity sweep bounds; NT's simpler divertor is a potential upside lever toward 0.90–0.92 but has no Tier-A citation to justify a central-case override.
-- **FLiBe supply chain**: Both MANTA (NT tokamak) and CFS ARC (conventional tokamak) use FLiBe blankets. The beryllium and Li-6 supply constraints are shared; Araiinejad & Shirvan's $154/kg NOAK FLiBe estimate applies equally.
+MANTA: P_SOL = 23.5 MW
+ARC V1: P_SOL ~ 83 MW (estimated from published P_fus = 525 MW, Sorbom 2015)
 
-**Key divergences from 21-spherical-tokamak-hts:**
+**TEA Implication**: Lower P_SOL reduces divertor material stress, potentially extending component lifetime and reducing replacement frequency. MANTA's divertor capital cost is $150M — comparable to PT tokamaks despite lower heat load, suggesting the cost advantage is in operational lifetime, not upfront cost. **Cost effect: neutral to small advantage** (lower replacement frequency, but capital cost similar). **Magnitude uncertain** — replacement cycle not quantified in MANTA study.
 
-- **Divertor challenge**: Tokamak Energy's ST-E1 shares the conventional positive-triangularity divertor challenge — managing high P_SOL per unit divertor area with MAST-U Super-X geometry. NT tokamak's P_SOL = 23.5 MW for 450 MW fusion is dramatically lower than any comparable PT design, fundamentally changing the divertor engineering problem. NT eliminates the need for advanced divertor concepts (Super-X, snowflake, liquid metal) — a meaningful capital and risk reduction not present in the ST-E1 analysis. The heat flux comparison requires care: MANTA NT achieves 2.8 MW/m² vs. ARIES-ACT ACT1's 13.7 MW/m² and ACT2's 10 MW/m² at their *ITER-style inclined-plate baseline* — a ~5× contrast at that reference point [osti-servlets-purl-1127358.md §Abstract]. However, ARIES-ACT edge plasma simulations also show that PT designs with perpendicular plates and wide-slot geometry can achieve ~2 MW/m² at >95% radiated power fraction (fully detached) [osti-servlets-purl-1127358.md §Section II] — comparable to MANTA. The TEA-relevant distinction is therefore not unique heat flux: it is that NT achieves its 2.8 MW/m² *passively* with a conventional tungsten monoblock divertor, while PT designs reaching comparable heat flux numbers require sophisticated active radiation management (90–95% radiated power fractions, specialized plate geometry, impurity seeding control) — engineering complexity that adds capital cost and operational risk. For a cost model, this manifests as NT eliminating advanced divertor engineering line items that PT at equivalent heat flux cannot avoid.
-- **Heating system**: ST-E1 uses ECRH exclusively at flat-top (~50–55% wall-plug efficiency), creating a significant recirculating power fraction. NT tokamak may use ICRF at lower power (MANTA: 40 MW) or potentially ohmic-only (Ball et al.). If ohmic-only is validated, the NT concept eliminates the entire auxiliary heating capital cost — a divergence not present in any other approved tokamak analysis.
-- **Physics maturity**: ST-E1 extrapolates from a rich H-mode database with ITER, JET, and SPARC as near-neighbors. NT tokamak extrapolates from a much thinner L-mode database with no burning-plasma NT experiments. The physics uncertainty is higher for NT despite sharing the same confinement family.
-- **Aspect ratio**: MANTA operates at A = 3.79 (conventional tokamak), vs. ST-E1 at A = 2.3 (spherical tokamak). The different geometry eliminates the ST center-stack shielding challenge (Section 3 of ST-E1 analysis) but introduces NT-specific plasma shaping requirements.
-- **Magnet and geometry cost structure**: ST-E1's dominant cost challenge is the compact center stack with WC cermet shielding and outboard-only blanket. NT tokamak at MANTA geometry has a more conventional aspect ratio and standard inboard/outboard coverage. The NT cost challenge is the TF coil cost dominance ($1.5B of $3.4B) — same structural driver as ST-E1 but without the ST-specific geometry complications.
-- **Data availability**: ST-E1 has published machine parameters (R=5.0 m, A=2.3, B=5.25 T, 450–750 MWe net, TBR=1.2) from DPP 2025. MANTA has a more complete published parameter set. Firefly has less than ST-E1. For direct Firefly modeling, MANTA is the only available anchor.
+### vs. 01-hts-compact-tokamak (CFS ARC) — Auxiliary Heating Uncertainty
 
-**NT tokamak-specific TEA features not in other approved analyses:**
+**Delta**: Ball et al. demonstrate that ohmic-only NT operation at MANTA parameters achieves Q = 500 vs. Q = 30 with 40 MW auxiliary heating:
 
-1. **Ohmic-only scenario branch**: No other approved concept eliminates auxiliary heating as a scenario. A two-branch TEA model (with/without heating system) should capture the Q ≈ 30 (with ICRF) vs. Q ≈ 500 (ohmic) divergence and its cost implications.
-2. **Divertor cost and availability premium**: NT's simpler divertor and lower P_SOL should be represented as a cost line item reduction and a capacity factor uplift relative to conventional PT tokamaks. Quantification requires divertor-specific cost modeling.
-3. **Physics validation risk as scenario parameter**: Unlike other MFE concepts where confinement scaling is better established, the NT confinement factor uncertainty (H_NA = 1.0 vs. 2.0) should be treated as a scenario branch rather than a sensitivity parameter.
+> "Both cases reach the same fusion power P_fus ≃ 1.0 GW. However, the Ohmic scenario has a fusion gain of Q ≃ 500, while the case heated with external power of P_ext = 40MW has Q ≃ 30."
+> — ball-balestri-ohmic-nt-paper.md §Numerical results
 
----
+If validated, this eliminates $370M ICRF heating capital cost and tens of MW recirculating power. ARC uses 25-35 MW of ICRF heating per Sorbom 2015.
 
-## Section 8: Sources
+**TEA Implication**: **Potential cost advantage of $370M capex + reduced opex** if ohmic-only operation is validated. However, MANTA's reference design retains 40 MW ICRF, indicating the community has not converged on ohmic-only as baseline. **Cost effect: large potential advantage, but unvalidated.** Magnitude: ~11% of overnight cost ($370M / $3.4B) if heating eliminated.
 
-**1. Rutherford, G. et al. (2024) — MANTA NT Tokamak Reference Design**
-- Full citation: Rutherford, G., Bhatt, N., Calvo-Carrera, M., Chandra, R., Cler, D., DePaolo, K., Dunn, K., Golfinopoulos, T., Hartwig, Z., Maris, A., Qian, L., Rhodes, R., Rodriguez Fernandez, P., Sing Chaudhari, C., Wai, J., White, A., Witkowski, P., Wigram, M., Zweben, S., Whyte, D. (2024). "MANTA: A Negative-Triangularity Tokamak Pilot Plant Concept." arXiv:2405.20243.
-- Contribution: Complete NT tokamak pilot plant parameter set (R=4.55 m, B=11 T, Q=11.5, P_fus=450 MW, P_net=90 MWe), systems-level cost breakdown ($3.4B overnight, $1.5B TF coils), LCOE projections ($396/MWh for scaled device), materials choices (FLiBe blanket, V-4Cr-4Ti VV, REBCO HTS), operational parameters (15 min pulses, TBR=1.15), and explicit discussion of NT advantages and data gaps. Primary engineering foundation for this analysis.
-- Location: `iter-02/sources/manta-reference-design.md`
+### vs. 01-hts-compact-tokamak (CFS ARC) — Demountable TF Coils vs. Non-Demountable
 
-**2. Balestri, A., Ball, J., and Coda, S. (2024) — Ohmic NT Tokamak Feasibility**
-- Full citation: Balestri, A., Ball, J., and Coda, S. (2024). "Ohmic tokamaks with negative triangularity: a path to net energy." arXiv:2407.06439v2.
-- Contribution: Physics basis for ohmic-only operation in NT tokamaks. Demonstrates theoretically that MANTA-class NT device could achieve Q ≈ 500 with ohmic heating only (vs. Q ≈ 30 with 40 MW ICRF). Identifies H_NA confinement enhancement as critical uncertain parameter. Co-authored by Firefly co-founder Justin Ball.
-- Location: `iter-01/sources/ball-balestri-ohmic-nt-paper.md`
+**Delta**: MANTA uses demountable REBCO TF coils to enable vertical maintenance access for PF coils and vacuum vessel. ARC's design (Sorbom 2015) did not specify demountability in the original publication, though CFS's SPARC prototype uses demountable joints.
 
-**3. GreyB / Scouted Interview with CEO Rustem Ospanov (2024)**
-- Contribution: Primary Firefly technical parameter disclosure: R = 2–2.5 m, B = 10–12 T HTS, Q > 5, P_fusion = 50–100 MW with 20–30 MW heating. Economic framing ("capital costs comparable to modern power plants"). NT physics motivation (heat management at compact scale). Founder background (CERN/Fermilab).
-- Location: `iter-01/sources/greyb-firefly-interview.md`
+**TEA Implication**: Demountable joints add resistive losses and require power supplies/resistive leads ($0.5M + $2M per coil = $45M for 18 coils), but enable faster maintenance turnaround and reduced downtime. MANTA assumes 2-month PF coil replacement cycle inside TF bore. **Cost effect: small penalty in capital cost, potential advantage in availability.** Net effect depends on whether maintenance time reduction justifies joint cost.
 
-**4. DIII-D National Fusion Facility — Firefly Collaboration Page**
-- Contribution: Confirms DIII-D experimental collaboration for NT physics validation. LUCIOLE prototype identified. Copper magnet strategy for prototype stage. "Diagnostics, edge physics, and control strategies" focus for NT experiments. Confirms NT as scientifically active research area, not purely theoretical.
-- Location: `iter-01/sources/firefly-fusion-diii-d-collaboration.md`
+### vs. 21-spherical-tokamak-hts (Tokamak Energy ST40) — Aspect Ratio and Geometry
 
-**5. Venture Kick (2024) — Firefly Fusion Profile**
-- Contribution: "Utilizing microwaves to create and control hot plasma" — primary basis for ECRH heating hypothesis. CHF 50,000 seed funding confirmation. Stage of development (computational analysis).
-- Location: `iter-01/sources/venture-kick-profile.md`
+**Delta**: NT tokamaks use conventional aspect ratio (A ~ 3-4) rather than spherical geometry (A < 2). MANTA: A = 3.79. Spherical tokamaks achieve higher β and smaller size but require complex center-post engineering and have limited space for blanket/shield inboard.
 
-**6. Firefly Fusion Website (March 2026)**
-- Contribution: Team and advisor bios (Ospanov, Gibson; advisors Kikuchi, Bucalossi, Huguet, Peters). Company framing ("existing technologies... accelerated schedule at the lowest possible cost"). Confirms no technical parameters disclosed as of March 2026.
-- Location: `iter-02/sources/firefly-website-2026.md`
+**TEA Implication**: Conventional aspect ratio allows thicker inboard blanket and shield, improving TBR and magnet protection. MANTA achieves TBR = 1.15 with liquid immersion blanket; spherical tokamaks struggle to exceed TBR > 1 due to inboard space constraints. **Cost effect: advantage in tritium self-sufficiency, penalty in size.** Magnitude: MANTA at 90 MWe has R0 = 4.55 m; a spherical tokamak at similar power might achieve R0 ~ 2-3 m, but with lower TBR and higher magnet replacement frequency (tighter inboard neutron shielding).
 
-**7. Araiinejad, L.S. and Shirvan, K. (2025) — D-T MCF TEA**
-- Full citation: Araiinejad, L.S. and Shirvan, K. (2025) "Techno-economic analysis of deuterium-tritium magnetic confinement fusion power plants," *Applied Energy*, 401(Part B), 126567. doi:10.1016/j.apenergy.2025.126567.
-- Contribution: D-T MCF LCOE sensitivity framework (capacity factor 75–90%, regulatory scenarios, FLiBe NOAK cost $154/kg). Applied as analogue for commercial-scale parameters not available in MANTA or Firefly disclosures.
-- Location: Referenced via approved analysis `01-hts-compact-tokamak`
+### vs. 28-hts-tokamak-full-hts (Energy Singularity HH70) — Shared HTS Magnet Technology, Different Plasma Shape
 
-**8. Stewart, W.R. and Shirvan, K. (2022) — Fusion Regulatory Cost Scenario**
-- Contribution: 2.2× building cost factor for fission-style nuclear regulation. Applicable to all D-T fusion concepts including NT tokamak.
-- Location: Referenced via approved analyses `01-hts-compact-tokamak`, `21-spherical-tokamak-hts`
+**Delta**: Both concepts use REBCO HTS magnets at 10-12 T, but NT vs. PT plasma shaping is the key difference. Energy Singularity's HH70 uses positive triangularity (conventional H-mode) with active ELM suppression (RMP coils or pellet pacing). NT eliminates ELMs passively through plasma shaping.
 
-**9. Najmabadi, F. et al. (2015) — ARIES-ACT Advanced PT Tokamak Study**
-- Full citation: Najmabadi, F. et al. (2015). "The ARIES-ACT1 and ARIES-ACT2 studies," *Fusion Engineering and Design*, 90, 105–126. OSTI: 1178069.
-- Contribution: COE benchmarks for 10th-of-a-kind advanced PT tokamaks at 1000 MWe: ACT1 at $64.3/MWh (58% thermal efficiency, SiC/SCLL blanket, Brayton cycle, δ=0.63), ACT2 at $64.4/MWh (45% thermal efficiency, DCLL/RAFM blanket). Peak divertor heat flux: 13.7 MW/m² (ACT1) and 10 MW/m² (ACT2). These provide the commercial-scale PT tokamak reference point against which MANTA's $396/MWh pilot-plant LCOE is contextualized, and the concrete ~5× heat flux contrast with MANTA's 2.8 MW/m² that quantifies the NT divertor advantage. Thermal efficiency range 45–58% provides the ARIES-ACT analogue bounds for an NT commercial plant.
-- Location: `iter-04/sources/osti-servlets-purl-1178069.md`
+**TEA Implication**: NT avoids RMP coil capital cost and pellet injection system complexity. However, PT H-mode has a larger experimental database and higher confinement at similar parameters (H_98y2 ~ 1.0-1.1 for PT H-mode vs. H_98y2 ~ 1.44 claimed for NT — but the NT value is extrapolated). **Cost effect: small advantage if NT eliminates ELM control systems; large penalty if NT confinement scaling does not hold.** Magnitude: RMP coils are small fraction of overnight cost (likely <$50M), but confinement uncertainty dominates.
 
-**10. Guizzo, S. et al. (2025) — Compact Copper-Magnet NT Pre-Conceptual Design**
-- Full citation: Guizzo, S., Drabinskiy, M.A., Hansen, C., Kachkin, A.G., Khairutdinov, E.N., Nelson, A.O., Nurgaliev, M.R., Pharr, M., Subbotin, G.F., Paz-Soldan, C. (2025). "Electromagnetic System Conceptual Design for a Negative Triangularity Tokamak." arXiv:2501.14682.
-- Contribution: Pre-conceptual engineering design for compact copper-magnet NT demonstrator (R₀=1m, a=0.27m, Bₜ=3T, Iₚ=0.75MA, 16 demountable TF coils, 8 PF coils). Demonstrates ~75% growth rate reduction in vertical instability through passive stabilizing plates. Assesses PF coil force limits and mechanical loads during current quench events. Concludes "key capabilities required of a dedicated NT tokamak experiment can be realized with existing copper magnet technologies." Closest published engineering analog to Firefly's LUCIOLE prototype.
-- Location: `iter-04/sources/arxiv-2501-14682.md`
+### vs. 33-state-backed-tokamak-best (Neo Fusion BEST) — Conventional PT Tokamak Baseline
 
-**12. Markovičiūtė, I. et al. (2024) — NT Vertical Stability Analysis**
-- Full citation: Markovičiūtė, I. et al. (2024). "Vertical stability of negative triangularity equilibria." arXiv:2401.15217.
-- Contribution: Confirms NT equilibria are intrinsically less vertically stable than equivalent PT configurations; vertical stability degrades at higher poloidal beta. Demonstrates that optimized passive outboard stabilizer plates reduce instability growth rates to 16% of baseline. Identifies inboard passive plates as uniquely enabled in NT geometry. Establishes passive stabilizer plate infrastructure as an NT-specific engineering cost item absent from MANTA cost accounting.
-- Location: `iter-04/sources/arxiv-2401-15217.md`
+**Delta**: Neo Fusion's BEST is a conventional PT tokamak at larger scale (R0 likely 5-8 m based on 1 GWe target). NT at compact scale (R0 = 4.55 m for 90 MWe) represents a different point in the tokamak design space: smaller, higher-field, potentially lower auxiliary heating.
 
-**13. Approved D1+ Analysis: Spherical Tokamak - HTS (21-spherical-tokamak-hts)**
-- Contribution: Cross-concept reference for shared HTS magnet supply chain (REBCO tape costs, production capacity), D-T tritium fuel cycle constraints, FLiBe supply chain characterization, regulatory cost scenarios, and capacity factor benchmarks. Also provides contrast for NT-specific divertor simplification and ohmic heating advantages.
-- Location: `analyses/21-spherical-tokamak-hts/analysis.md`
+**TEA Implication**: Compact high-field enables smaller size and potentially lower capital cost per unit power, but requires higher magnetic field (higher REBCO cost, higher structural loads). BEST likely operates at lower field (6-8 T) with larger size and conventional auxiliary heating. **Cost effect: NT advantage in compactness if ohmic-only validated; PT advantage in technology maturity and larger experimental database.** Magnitude: cannot quantify without BEST cost data.
+
+### Shared Subsystems (No Delta)
+
+The following subsystems are shared across all HTS tokamak concepts and provide **no differentiation**:
+- REBCO HTS magnet supply chain (same tape, same suppliers, same learning curve)
+- Tritium breeding requirement (all D-T concepts require TBR > 1)
+- Vacuum vessel and first wall materials (low-activation steels or vanadium alloys)
+- Balance of plant (thermal cycle, turbine, heat rejection)
+- Remote handling and maintenance complexity (14 MeV neutron activation)
+
+### Summary: NT Tokamak Unique Deltas
+
+| Delta | Direction | Magnitude | Confidence |
+|-------|-----------|-----------|------------|
+| Divertor P_SOL reduction (3.6× vs. PT) | Advantage | Small to medium (longer component life, lower replacement frequency) | Medium |
+| Ohmic-only heating (if validated) | Advantage | Large ($370M capex, reduced opex) | Low (unvalidated at reactor scale) |
+| NT confinement scaling (H_98y2 = 1.44) | Advantage or Penalty | Large (determines size, field, Q) | Low (thin experimental database) |
+| ELM elimination (passive, no RMP coils) | Advantage | Small (<$50M capex for RMP coils avoided) | Medium |
+| Demountable TF coils | Small penalty (joints) + potential advantage (availability) | Small (net ~$45M penalty, but faster maintenance) | Medium |
+| Conventional aspect ratio vs. spherical | Advantage (TBR, blanket space) + Penalty (size) | Medium (TBR = 1.15 vs. <1.05 for ST; but larger R0) | Medium |
+
+The **largest uncertainties** are confinement scaling and ohmic-only heating feasibility. If both validate, NT offers significant cost advantages over PT tokamaks. If either fails, NT falls back to a conventional HTS tokamak with slightly different plasma shaping.
+
+## 8. Sources
+
+### Primary Sources (Critical for Design Point Parameters)
+
+1. **Rutherford, E.J. et al. (2024)** "MANTA: A negative-triangularity NASEM-compliant fusion pilot plant." arXiv:2405.20243. Available at: https://arxiv.org/abs/2405.20243. Saved: knowledge/concept_research/29-negative-triangularity-tokamak/iter-02/sources/manta-reference-design.md (164 KB).
+   - **Contribution**: Complete reactor design (R0, B, I_p, Q, P_fus, P_net, pulse length, TBR), cost breakdown ($3.4B overnight, $1.5B TF coils, $370M heating, $150M divertor, $380M blanket), FLiBe liquid immersion blanket specification, demountable REBCO HTS coil design, divertor metrics (P_SOL = 23.5 MW, M₁ = 57.3), LCOE projection ($396/MWh for 550 MW scaled plant), magnet replacement cycle, materials specifications (V-4Cr-4Ti VV, REBCO at $40/kA·m, FLiBe at $169/kg).
+
+2. **Ball, J., Balestri, M., Coda, S. (2024)** "On the feasibility of Ohmically heated negative triangularity tokamak power plants." Available at: https://arxiv.org/html/2407.06439v2. Saved: knowledge/concept_research/29-negative-triangularity-tokamak/iter-01/sources/ball-balestri-ohmic-nt-paper.md (55 KB).
+   - **Contribution**: Demonstration that ohmic-only NT operation at MANTA parameters achieves Q = 500 vs. Q = 30 with auxiliary heating; H_NA = 2.0 confinement enhancement factor for ohmic NT plasmas; analysis showing auxiliary heating systems unnecessary for high-Q NT tokamaks; uncertainty quantification for NT confinement scaling laws.
+
+### Secondary Sources (Company Context and Validation)
+
+3. **GreyB / Scouted Interview with Firefly Fusion CEO Rustem Ospanov** (2024). "Scouted: Firefly Fusion." Available at: https://greyb.com/blog/firefly-fusion-scouted-interview. Saved: knowledge/concept_research/29-negative-triangularity-tokamak/iter-01/sources/greyb-firefly-interview.md (9 KB).
+   - **Contribution**: Firefly high-level parameters (R = 2-2.5 m, B = 10-12 T, Q > 5, P_fus = 50-100 MW, P_input = 20-30 MW), HTS magnet choice rationale, compact design philosophy ("compactness brings affordability"), NT physics risk acknowledgment.
+
+4. **DIII-D National Fusion Facility Collaboration Page** — Firefly Fusion. Available at: https://d3dfusion.org/fireflyfusion/. Saved: knowledge/concept_research/29-negative-triangularity-tokamak/iter-01/sources/firefly-fusion-diii-d-collaboration.md (3 KB).
+   - **Contribution**: Confirmation of Firefly-DIII-D collaboration for NT plasma experiments, LUCIOLE prototype device specification (actively-cooled copper magnets for rapid iteration), validation that NT plasmas have been experimentally demonstrated.
+
+5. **Firefly Fusion Website** (March 2026). Available at: https://fireflyfusion.energy/. Saved: knowledge/concept_research/29-negative-triangularity-tokamak/iter-02/sources/firefly-website-2026.md (2 KB).
+   - **Contribution**: Team and advisor biographies (Justin Ball, Yves Martin, Pascale Hennequin, Jérémie Bucalossi), company location (Cadarache, France), founding date (2024), but no technical parameters disclosed.
+
+6. **Venture Kick Profile** — Firefly Fusion. Available at: https://www.venturekick.ch/firefly-fusion. Saved: knowledge/concept_research/29-negative-triangularity-tokamak/iter-01/sources/venture-kick-profile.md (1 KB).
+   - **Contribution**: CHF 50k funding, "microwaves to create and control hot plasma" (suggests ECRH, but weakly sourced).
+
+7. **Fusion Energy Base Profile** — Firefly Fusion. Available at: https://www.fusionenergybase.com/organizations/firefly-fusion. Saved: knowledge/concept_research/29-negative-triangularity-tokamak/iter-01/sources/fusion-energy-base-profile.md (1 KB).
+   - **Contribution**: Phased magnet strategy (copper for LUCIOLE prototype, HTS for commercial plants), location, founding date.
+
+### Supporting Academic Literature (Not Directly Cited but Contextual)
+
+8. **Sorbom, B.N. et al. (2015)** "ARC: a compact, high-field, fusion nuclear science facility and demonstration power plant with demountable magnets." Fusion Engineering and Design, 100, pp. 378–405. doi:10.1016/j.fusengdes.2015.06.001.
+   - **Context**: ARC design provides PT tokamak comparison baseline (R0 = 3.3 m, B0 = 9.2 T, P_fus = 525 MW, P_SOL ~ 83 MW).
+
+9. **Araiinejad, L.S. and Shirvan, K. (2025)** "Techno-economic analysis of deuterium-tritium magnetic confinement fusion power plants." Applied Energy, 401(Part B), 126567. doi:10.1016/j.apenergy.2025.126567.
+   - **Context**: FLiBe cost projections ($154/kg NOAK with 20% learning rate), tokamak LCOE drivers (capacity factor, magnet cost, regulatory markup), HTS cost targets ($10/kA·m for commercial viability).
+
+### Data Gaps and Unavailable Sources
+
+- **Firefly Fusion technical design publication**: Does not exist as of March 2026. Company is early-stage (founded 2024) with minimal public disclosure beyond high-level parameters.
+- **NT tokamak experimental database at reactor-relevant parameters**: Limited to DIII-D and TCV campaigns, with highest plasma current ~2 MA and highest normalized pressure β_N ~ 3.5. No reactor-scale (I_p = 10 MA, β_N = 1.5, high density) NT plasmas demonstrated.
+- **REBCO HTS neutron lifetime data**: Neutron irradiation testing at >50 dpa for REBCO tape, insulation, and joints is ongoing but not published at full fusion-relevant fluence.
+- **FLiBe blanket tritium extraction at kg/day rates**: Technology demonstration does not exist at scale. LIBRA experiments in Japan are gram/day scale.

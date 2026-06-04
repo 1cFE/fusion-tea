@@ -1,260 +1,78 @@
-"""Magnetized Target Impact Fusion — MTIF (D-D) — NearStar Fusion.
-
-Modeling approach:
-    NearStar uses a plasma-armature railgun to accelerate a pre-magnetized 50 g D-D
-    fuel capsule at ~10 km/s (Mach 30) into a molten-Pb target chamber at 1 Hz.
-    The Pb pool absorbs kinetic and fusion energy, driving a steam Rankine cycle via
-    an intermediate heat exchanger — consistent with the company's coal-plant retrofit
-    framing. No external confinement magnets; the target pellet carries a seed
-    magnetic field embedded at manufacture.
-
-    D-D fuel eliminates the tritium startup inventory and breeding blanket required
-    by all D-T concepts, but raises the ignition threshold by ~100× relative to D-T
-    at the same temperature. No NearStar experimental results, gain targets, or
-    capital cost estimates are publicly available. This model is therefore driven
-    almost entirely by framework defaults with UNCERTAIN flags on every parameter
-    that lacks a public source anchor.
-
-Concept choice rationale:
-    ConfinementConcept.MAG_TARGET is the closest framework match: pulsed,
-    spherical-chamber geometry, liquid-metal first wall, no steady-state magnets,
-    IFE/MIF target factory cost structure.
-
-Key deviations from framework defaults:
-    1. eta_th = 0.35  — subcritical steam Rankine (coal-plant retrofit analogue)
-                         instead of default 0.40 supercritical Rankine.
-    2. eta_pin = 0.25 — railgun wall-plug efficiency, midpoint of 20–40 % range
-                         documented for experimental plasma-armature systems;
-                         no NearStar-specific value is available.
-    3. p_coils = 0.0  — no external confinement coils; seed field is pellet-embedded.
-    4. p_trit  = 1.0  — secondary D-D tritium handling only (not primary fuel).
-    5. availability = 0.40 — rail replacement at 1 Hz severely constrains uptime;
-                         even at optimistic 10^5 shot rail life, replacement is
-                         required every ~28 h of continuous operation.
-    6. Native design point: 200 MWe (SPECULATIVE — no NearStar power target exists;
-                         chosen as minimum plausible commercial scale given 1 Hz
-                         driver; actual achievability depends on undemonstrated D-D
-                         gain of ~100–300).
-    7. blanket_t adjusted for molten-Pb non-breeding first wall (no TBR requirement).
+"""1costingfe model: MTIF (Magneto-Inertial Fusion Technologies) (NearStar Fusion).
 
 Usage:
-    uv run python model_setup.py              # print results to terminal
-    uv run python model_setup.py | tee model_output.txt  # also save for synthesis stage
+    uv run python model_setup.py              # print results
+    uv run python model_setup.py | tee model_output.txt
 """
+import sys
+from pathlib import Path
+
+# Make the shared three-forward helper importable regardless of where this file
+# lives (concept dir or iter-N/ dir): walk up to the scripts/ root.
+_SCRIPTS = next(
+    p / "scripts"
+    for p in Path(__file__).resolve().parents
+    if (p / "scripts" / "lib" / "model_setup_helpers.py").exists()
+)
+sys.path.insert(0, str(_SCRIPTS))
 
 from costingfe import ConfinementConcept, CostModel, Fuel
+from lib.model_setup_helpers import (
+    generic_reference, run_native_and_1gw, print_cas_breakdown,
+)
 
-# ── Model instantiation ─────────────────────────────────────────────────────
+# 1. Specification — design-point inputs only, at native scale.
+#
+#    NearStar MTIF concept has extreme data opacity: the only published parameters
+#    are rep_rate (1 Hz), projectile mass (50g), projectile velocity (10 km/s),
+#    and fuel cycle (D-D). Critical gaps include target gain (Q), fusion yield,
+#    driver efficiency, chamber geometry, and magnetic field strength. The analysis
+#    (Section 5) documents that these few known values do NOT map to canonical
+#    1costingFE spec keys for the MAG_TARGET archetype.
+#
+#    Known non-spec context (for reference, not model inputs):
+#    - rep_rate_Hz: 1.0 (nearstar-mtif-technical-overview.md)
+#    - projectile_mass_kg: 0.050 (nearstar-mtif-technical-overview.md)
+#    - projectile_velocity_km_per_s: 10.0 (nearstar-mtif-technical-overview.md)
+#    - driver_energy_MJ: >1.0 (stated, not spec key)
+#    - fuel_cycle: D-D (captured in Fuel ENUM)
+#    - fusion_yield_per_shot_MJ: [unknown] — BLOCKING gap
+#    - target_gain_Q: [unknown] — BLOCKING gap
+#
+#    The MAG_TARGET archetype does not surface rep_rate, projectile parameters, or
+#    driver_energy as spec kwargs. Without fusion yield, chamber geometry, or plasma
+#    parameters, spec remains empty. The library will use pure MAG_TARGET YAML
+#    defaults at the design-point scale.
+spec = dict(
+    # Empty — no canonical spec keys can be populated from available NearStar data.
+    # Analysis Section 5 documents that the disclosed parameters (rep rate,
+    # projectile mass/velocity) are not in the MAG_TARGET forward() signature.
+)
+
+P_native = 50  # MWe — from analysis Design Point block
+
+# 2. Model.
 model = CostModel(concept=ConfinementConcept.MAG_TARGET, fuel=Fuel.DD)
 
-# ── Plant configuration ─────────────────────────────────────────────────────
-# Native design point: 200 MWe
-# UNCERTAIN: NearStar discloses no design-point power. 200 MWe is the minimum
-# plausible commercial scale for a 1 Hz / >1 MJ-kinetic-energy driver.
-# At required gain of ~100–300 (analysis.md §Section 2, Challenge 2), the
-# implied fusion yield per shot is ~200–600 MJ — far beyond any demonstrated
-# D-D inertial confinement performance.
-_NATIVE_MWE = 200.0
+# 2b. Generic forward — overrides OFF, design-point scale (forward 1 of 3). The
+#     library's bare answer for a reactor this size, and the reference a relative
+#     override is written against. ALWAYS emit this line (it is mandatory, even
+#     when no override references it).
+generic = generic_reference(model, spec, P_native)
 
-_SHARED_KWARGS = dict(
-    # ── Economic boundary conditions ────────────────────────────────────────
-    availability=0.40,          # UNCERTAIN: rail replacement every ~28 h at optimistic
-                                # 10^5-shot rail life (1 Hz, 86,400 shots/day);
-                                # six orders of magnitude gap between demonstrated
-                                # and required rail life (analysis.md §S2, Challenge 3)
-    lifetime_yr=30,             # DEFAULT: standard fusion plant economic lifetime
-    n_mod=1,
-    construction_time_yr=4.0,  # DEFAULT: pulsed_mag_target.yaml; compact chamber,
-                                # no superconducting magnet assembly bottleneck
-    interest_rate=0.07,         # DEFAULT: standard 7% real WACC
-    inflation_rate=0.0245,      # DEFAULT: 2.45% long-run US CPI
-    noak=True,                  # Nth-of-a-kind plant (hypothetical mature technology)
-
-    # ── Power balance ───────────────────────────────────────────────────────
-    eta_th=0.35,                # Subcritical steam Rankine; coal-plant retrofit
-                                # framing implies subcritical host plant (~33–36 %);
-                                # midpoint chosen.
-                                # Source: nearstar-energy-capture-research.md §Key finding;
-                                # analysis.md §S5, Available Parameters row "Thermal
-                                # conversion efficiency"
-    eta_pin=0.25,               # UNCERTAIN: railgun wall-plug (kinetic) efficiency.
-                                # Experimental plasma-armature railguns: 20–40 %.
-                                # No NearStar-specific value disclosed.
-                                # Source: analysis.md §S5, Missing Parameters
-                                # "Railgun wall-plug electrical efficiency"
-    f_rep=1.0,                  # Repetition rate [Hz] — confirmed.
-                                # Source: nearstar-website-summary.md §Concept
-                                # ("once per second")
-    mn=1.1,                     # DEFAULT: neutron energy multiplier (molten-Pb blanket
-                                # captures 2.45 MeV D-D neutrons; no tritium breeding)
-    f_rad=0.08,                 # DEFAULT for DD (pulsed): from costing_constants.yaml
-    f_sub=0.03,                 # DEFAULT: subsystem power fraction
-    p_coils=0.0,                # No external confinement magnets; seed field is
-                                # embedded in pre-magnetized pellet.
-                                # Source: dossier.md §Magnet Type; analysis.md §S5
-                                # "Magnet type: None (external confinement)"
-    p_trit=1.0,                 # D-D secondary tritium handling only; small relative
-                                # to D-T tritium plant (~10 MW). No primary tritium
-                                # breeding or containment required.
-                                # Source: analysis.md §S3 "Tritium Handling (TRL N/A)"
-    p_target=2.0,               # DEFAULT: target/liner factory power [MW];
-                                # capsule fabrication at 1 Hz (28M/yr) requires
-                                # automated production line — cost structure unknown
-    p_pump=1.0,                 # DEFAULT: Pb primary loop and feedwater pumping
-    p_house=4.0,                # DEFAULT: housekeeping (controls, lighting, HVAC)
-    p_cryo=0.0,                 # No cryogenic magnets; seed-field pellets do not
-                                # require plant-scale cryogenics
-                                # Source: analysis.md §S3 "Pellet Pre-Magnetization"
-
-    # ── Radial build (spherical chamber geometry) ───────────────────────────
-    R0=0.0,                     # Not used for spherical chamber
-    plasma_t=3.0,               # DEFAULT: chamber radius [m]; pulsed_mag_target.yaml
-    blanket_t=0.80,             # DEFAULT: first-wall + molten-Pb zone thickness [m];
-                                # no tritium breeding required (D-D fuel) but Pb pool
-                                # must provide neutron shielding and heat extraction.
-                                # Source: nearstar-website-summary.md §Concept
-                                # (molten Pb first wall confirmed)
-    ht_shield_t=0.20,           # DEFAULT: high-temperature shield
-    structure_t=0.15,           # DEFAULT: primary structure
-    vessel_t=0.10,              # DEFAULT: outer vessel
-
-    # ── No cost_overrides — all CAS accounts use framework defaults ─────────
-    # No capital cost data exists for any NearStar subsystem.
-    # Source: analysis.md §S5, Missing Parameters "Capital cost: truly-unknown"
-    # The driver cost is computed via driver_mag_target_per_mw ($3 M$/MW_driver,
-    # calibrated for pneumatic-piston MIF — a potentially low estimate for
-    # a plasma-armature railgun; no NearStar-specific railgun capital data exists).
-)
-
-# ── Forward pass: native design point (200 MWe) ─────────────────────────────
-result = model.forward(net_electric_mw=_NATIVE_MWE, **_SHARED_KWARGS)
-
-# ── Forward pass: scaled to 1 GWe ───────────────────────────────────────────
-# override_reference_mw tells the framework that cost_overrides (none here)
-# are calibrated at _NATIVE_MWE, and to scale them to 1000 MWe using
-# per-account scaling laws.
-result_1gw = model.forward(
-    net_electric_mw=1000.0,
-    override_reference_mw=_NATIVE_MWE,
-    **_SHARED_KWARGS,
-)
-
-# ── Results: native design point ────────────────────────────────────────────
-c = result.costs
-pt = result.power_table
-
-print("=" * 65)
-print("MTIF D-D — NearStar Fusion")
-print("(MAG_TARGET / DD — native 200 MWe, 40 % availability, 30 yr)")
-print("=" * 65)
-print()
-print("*** ALL RESULTS HIGHLY SPECULATIVE — see Key Assumptions ***")
-print("*** D-D ignition physics for this geometry is undemonstrated ***")
-print()
-print(f"LCOE:            {c.lcoe:.1f} $/MWh")
-print(f"Overnight cost:  {c.overnight_cost:.0f} $/kW")
-print(f"Fusion power:    {pt.p_fus:.0f} MW")
-print(f"Net electric:    {pt.p_net:.0f} MWe")
-print(f"Q_eng:           {pt.q_eng:.2f}")
-print()
-
-cas = [
-    ("CAS10", "Preconstruction",          c.cas10),
-    ("CAS21", "Buildings",                c.cas21),
-    ("CAS22", "Reactor Plant Equipment",  c.cas22),
-    ("CAS23", "Turbine Plant",            c.cas23),
-    ("CAS24", "Electrical Plant",         c.cas24),
-    ("CAS25", "Miscellaneous",            c.cas25),
-    ("CAS26", "Heat Rejection",           c.cas26),
-    ("CAS27", "Special Materials",        c.cas27),
-    ("CAS28", "Digital Twin",             c.cas28),
-    ("CAS29", "Contingency",              c.cas29),
-    ("CAS30", "Indirect Costs",           c.cas30),
-    ("CAS40", "Owner's Costs",            c.cas40),
-    ("CAS50", "Supplementary",            c.cas50),
-    ("CAS60", "IDC",                      c.cas60),
-    ("CAS70", "O&M (annualized)",         c.cas70),
-    ("CAS80", "Fuel (annualized)",        c.cas80),
-    ("CAS90", "Financial",                c.cas90),
+# 3. Override registry — six fields per entry, transcribed from Section 5b.
+#    Analysis Section 5b: "Zero enabled overrides. Expected band for Med archetype-fit
+#    is 3–8. The discrepancy reflects the extreme opacity of NearStar's public
+#    materials. Almost no quantitative cost, performance, or engineering data has
+#    been disclosed."
+overrides = [
+    # All overrides disabled due to insufficient company-grounded data.
+    # Included here for traceability to analysis Section 5b findings.
 ]
 
-print(f"{'Code':<8} {'Account':<28} {'M$':>10}")
-print("-" * 48)
-for code, name, val in cas:
-    print(f"{code:<8} {name:<28} {float(val):>10.1f}")
-print("-" * 48)
-print(f"{'':8} {'Total Capital':<28} {float(c.total_capital):>10.1f}")
-print()
+# 4. Overrides-on forwards via the shared helper (native + 1 GWe NOAK projection).
+native, result_1gw = run_native_and_1gw(
+    model, spec=spec, overrides=overrides, p_native=P_native,
+)
 
-# ── CAS22 detail ─────────────────────────────────────────────────────────
-print("CAS22 sub-accounts:")
-for k, v in result.cas22_detail.items():
-    print(f"  {k}  {float(v):>10.1f} M$")
-print()
-
-# ── Scaled 1 GWe result ───────────────────────────────────────────────────
-c1 = result_1gw.costs
-pt1 = result_1gw.power_table
-print("=" * 65)
-print("Scaled to 1 GWe (per-account scaling from 200 MWe native)")
-print("=" * 65)
-print(f"LCOE:            {c1.lcoe:.1f} $/MWh")
-print(f"Overnight cost:  {c1.overnight_cost:.0f} $/kW")
-print(f"Fusion power:    {pt1.p_fus:.0f} MW")
-print(f"Net electric:    {pt1.p_net:.0f} MWe")
-print(f"Q_eng:           {pt1.q_eng:.2f}")
-print()
-
-# ── Key Assumptions ───────────────────────────────────────────────────────
-print("=" * 65)
-print("Key Assumptions (all HIGHLY UNCERTAIN)")
-print("=" * 65)
-print("""
-PHYSICS (blocking gaps — concept viability not established):
-  D-D ignition:    Undemonstrated for railgun-driven magnetized target.
-                   D-D cross-section ~100x lower than D-T at 10–30 keV.
-                   No NearStar gain target, simulation, or experiment published.
-  Required gain:   ~100–300 target fusion gain implied by energy balance at
-                   1 Hz, >1 MJ driver, ~35% thermal efficiency.
-                   (analysis.md §S2, Challenge 2)
-  Rail lifetime:   ~6 orders of magnitude gap between demonstrated rail life
-                   (hundreds–thousands of shots) and plant requirement
-                   (~840 million shots over 30 years at 1 Hz).
-                   (analysis.md §S2, Challenge 3)
-
-ASSUMED (no public source):
-  Net power:       200 MWe — speculative; no NearStar design-point disclosed.
-  eta_pin:         0.25 — midpoint of 20–40% experimental railgun range.
-  Availability:    0.40 — dominated by rail replacement (pessimistic estimate).
-  eta_th:          0.35 — subcritical Rankine, inferred from coal retrofit framing.
-  All capital costs: framework defaults (no NearStar subsystem data available).
-  Driver cost:     driver_mag_target_per_mw default ($3 M$/MW_driver, pneumatic
-                   piston calibration) — likely underestimates railgun capital.
-
-GENUINE ADVANTAGES (relative to D-T concepts):
-  No tritium startup inventory (~1 kg at >$35,000/g avoided).
-  No REBCO superconducting tape (no external magnets).
-  No lithium-6 enrichment or breeding blanket.
-  No beryllium neutron multiplier.
-  Secondary D-D tritium inventory is small (no primary T breeding cycle).
-""")
-
-# ── Sensitivity analysis ──────────────────────────────────────────────────
-sens = model.sensitivity(result.params)
-
-print("=" * 65)
-print("Sensitivity (elasticity = %ΔLCOE / %Δparam) — native 200 MWe")
-print("=" * 65)
-
-print("\nEngineering levers:")
-for k, v in sorted(sens["engineering"].items(), key=lambda x: abs(x[1]), reverse=True):
-    print(f"  {k:<36} {v:+.4f}")
-
-print("\nFinancial:")
-for k, v in sorted(sens["financial"].items(), key=lambda x: abs(x[1]), reverse=True):
-    print(f"  {k:<36} {v:+.4f}")
-
-print("\nCosting constants (top 15):")
-costing = sorted(sens["costing"].items(), key=lambda x: abs(x[1]), reverse=True)
-for k, v in costing[:15]:
-    print(f"  {k:<36} {v:+.4f}")
+print_cas_breakdown(generic, native, result_1gw, overrides)

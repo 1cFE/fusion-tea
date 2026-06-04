@@ -1,0 +1,22 @@
+VERDICT: FINDINGS
+
+### F-1: Ohmic-only scenario absent from model despite being the primary NT differentiator
+- **Target:** model_setup.py / model output (Section 7 recommendation)
+- **Category:** model
+- **Finding:** Section 7 explicitly states "a two-branch TEA model (with/without heating system) should capture the Q ≈ 30 (with ICRF) vs. Q ≈ 500 (ohmic) divergence." The model output confirms this is unimplemented: "Ohmic-only scenario (not modeled here)." The ohmic-only branch is the single most NT-specific economic hypothesis in the entire analysis — it eliminates $150M in heating capital and dramatically changes Q_eng — yet the model has no representation of it whatsoever. The sensitivity table shows `heating_icrf_per_mw` elasticity of only +0.008, which understates the impact because it only perturbs unit cost, not whether the system exists at all.
+- **Recommendation:** Implement the ohmic-only scenario as a model branch: set `p_icrf = 0` and `C220104 = $0` in one branch, then compare LCOE, overnight cost, and Q_eng against the ICRF baseline. The branch should also reflect the Q improvement (from ~30 to ~500 per Ball et al.), which changes recirculating power fraction and Q_eng substantially. Flag H_NA as the gate parameter controlling which branch is credible.
+- **Priority:** blocking
+
+### F-2: Plasma physics parameters have zero LCOE elasticity — model does not connect physics to cost
+- **Target:** model_setup.py sensitivity sweep / CAS22 coil account
+- **Category:** model
+- **Finding:** The sensitivity output shows B, T_e, n_e, Z_eff, plasma_volume, tau_ratio, disruption_rate_base, disruption_steepness, disruption_damage, disruption_downtime, R_w, T_edge, q95, f_GW, and M_ion all with elasticity exactly 0.0000. For a tokamak model these should drive fusion power, shielding volume, and disruption-driven availability. The TF coil account (C220103) is hardcoded at $1,500M directly from MANTA — it does not vary with B or R0, yet R0 has non-zero elasticity (+0.107), implying some geometry scaling occurs without the coil cost responding to it. This means the model's most cost-dominant account ($1.5B of $3.4B) is a fixed input, not a computed output. Disruption parameters being inert is also notable given that NT disruption characterization is listed as a data gap in Section 6.
+- **Recommendation:** Wire plasma physics parameters into the cost calculation chain. At minimum: (1) make C220103 a function of B, R0, and REBCO volume rather than a hardcoded constant; (2) connect disruption parameters to availability, which is the highest-elasticity engineering lever (-0.97). If the model cannot derive coil cost from physics, at least add a sensitivity sweep that varies C220103 ±50% to capture the MANTA cost uncertainty band explicitly.
+- **Priority:** blocking
+
+### F-3: Nearest-neighbor concepts for comparison not explicitly identified
+- **Target:** Section 7 (Cross-Concept Notes) / overall analysis framing
+- **Category:** analysis
+- **Finding:** The analysis compares only to `21-spherical-tokamak-hts` because it is the sole approved analysis, but does not name the actual structural nearest neighbors. For an NT tokamak, the primary comparison should be a conventional positive-triangularity HTS tokamak at similar field strength and aspect ratio — specifically `01-hts-compact-tokamak` (CFS ARC-class, conventional PT). This is the concept from which NT is defined as a departure; every NT differentiator (divertor simplification, L-mode vs H-mode, ohmic heating possibility) is most meaningfully framed as a delta against a conventional PT HTS compact tokamak, not a spherical tokamak. Secondary neighbors are `28-hts-tokamak-full-hts` (same HTS compact tokamak family) and `33-state-backed-tokamak-best` (conventional standard-aspect tokamak for the larger-scale reference). Without naming these, the analysis cannot credibly quantify whether NT's claimed advantages are real improvements over the actual comparison class.
+- **Recommendation:** Add a sentence in Section 7 explicitly naming 01-hts-compact-tokamak as the primary structural nearest neighbor (conventional PT HTS compact tokamak, same family, defines the PT baseline from which NT departs). Note that it is in the in-progress pool so full cross-reference is not yet available, but flag it as the reference concept for NT-vs-PT cost differentials. This will also clarify why the ST-HTS comparison is secondary, not primary.
+- **Priority:** important

@@ -1,375 +1,271 @@
 ---
 ID: 25-heavy-ion-beam-icf
-Concept: Heavy Ion Beam ICF (D-T)
+Concept: Heavy-Ion Beam ICF
 Company: Intensity Energy
 Status: draft
-Created: 2026-04-20
+Created: 2026-06-03
 Approved-Date:
-Reuses: [21-spherical-tokamak-hts]
+Confinement-Family: IFE
+Archetype: HEAVY_ION
+Archetype-Fit: High
+Comparison-Status: costingfe
+Comparables: []
+Design-Point-Name: HYLIFE-II baseline single-chamber design (LLNL, OSTI 7021072)
+Design-Point-Maturity: proposed-commercial
+P-Native: 940
+Grounding-Confidence: high
 ---
 
-# D1+ Analysis: Heavy Ion Beam ICF (D-T) — Intensity Energy
+## Design Point
 
-**Concept**: Heavy Ion Beam Inertial Confinement Fusion — D-T fuel
-**Company**: Intensity Energy (unverified — almost certainly a placeholder; not found in FIA 2025 survey of 53 fusion companies or any public database)
-**Driver**: Linear induction accelerator (US reference); RF linac (European/GSI alternative)
-**Confinement Family**: IFE — Heavy Ion Beam
+- Name: HYLIFE-II baseline single-chamber design (LLNL, OSTI 7021072)
+- Maturity: proposed-commercial
+- P_native: 940 MWe
+- Grounding: high
+- Primary sources:
+  - knowledge/concept_research/25-heavy-ion-beam-icf/iter-01/sources/hif-technology-overview.md
+  - knowledge/concept_research/25-heavy-ion-beam-icf/iter-02/sources/hif-recent-research-compilation.md
 
----
+## 1. Availability of Data
 
-## Section 1: Availability of Data
+**Rating: Moderate (physics) / Limited (economic)**
 
-**Rating: Moderate (physics and plant studies) / Opaque (commercial)**
+Heavy ion beam ICF benefits from decades of national laboratory research, primarily at Lawrence Berkeley National Laboratory (LBNL) and Lawrence Livermore National Laboratory (LLNL) in the United States, and GSI Darmstadt in Germany. Two detailed power plant designs exist: HIBALL (KfK-3202, 1985) and HYLIFE-II (OSTI 7021072, 1990s), both with published cost estimates and performance specifications. The 2020 review paper (arxiv 2005.07520) provides a comprehensive technology overview, driver efficiency comparisons, and target physics projections.
 
-Heavy ion beam ICF is one of the most extensively analyzed IFE concepts at the power plant design level, owing to sustained national laboratory programs in the US (LBNL, LLNL) and Europe (GSI Darmstadt). However, all detailed design studies are from the 1980s and 1990s, no private company currently pursues the concept commercially, and "Intensity Energy" cannot be verified as an existing entity.
+Experimental platforms continue advancing relevant beam physics. The Neutralized Drift Compression Experiment (NDCX-II) at LBNL, operational since approximately 2012, studies heavy ion beam compression and transport. The FAIR/SIS100 heavy ion synchrotron at GSI Darmstadt began commissioning in 2025 and delivers high-intensity ion pulses relevant to fusion driver development.
 
-**Published power plant design studies:**
+> "HIBs are generated with a high driver efficiency of ~30-40%"
+> — hif-technology-overview.md, §Driver Efficiency
 
-Two complete conceptual power plant designs exist in the public literature. HIBALL (KfK-3202, 1985) was a joint German-US study using a 10 GeV Bi²⁺ induction linac to drive direct-drive DT targets at 3.8 GWe net output with a LiPb blanket [hif-technology-overview.md §Power Plant Designs]. HYLIFE-II (OSTI 7021072, LLNL, early 1990s) proposed a 5 MJ recirculating induction accelerator with thick FLiBe liquid-jet walls, producing 940 MWe at a baseline LCOE of 6.5 cents/kWh (early-1990s dollars), scaling to 4.5 cents/kWh at 2 GW [hif-technology-overview.md §HYLIFE-II]. The "Improved HYLIFE-II heat transport system and steam power plant" companion report provides the energy conversion design. These are the most complete fusion power plant economic analyses of any IFE concept in the public domain.
+However, economic data is dated and incomplete. The HYLIFE-II cost estimate of 6.5 ¢/kWh (baseline, 940 MWe) and 4.5 ¢/kWh (scaled to 2 GWe) was published in the 1990s using 1990s-era assumptions for accelerator costs, blanket materials, and balance-of-plant systems. No modern techno-economic analysis incorporating updated accelerator technology, current superconductor costs, or 2020s-era construction costs was found.
 
-**Peer-reviewed physics literature:**
+**Critical gap: No private company is pursuing this concept commercially.** "Intensity Energy" listed in the baseline concept table could not be verified through the FIA 2025 survey of 53 fusion companies, Crunchbase, LinkedIn, ARPA-E/DOE awards, or any public database. The company appears to be a placeholder. Heavy ion beam ICF remains in the national lab research phase with no commercial development pathway currently visible.
 
-A 2020 arXiv review paper (arxiv 2005.07520) provides a current overview of HIF technology status, driver efficiency comparisons, target physics, and the ~10–15 Hz repetition rate target for commercial plants [dossier.md §Key Sources]. The LBNL HIF program produced decades of peer-reviewed literature on ion beam physics, beam transport, and target coupling. The GSI/HIDIF program produced complementary European studies with RF linac architectures.
+Key data gaps:
+- Modern driver cost estimates (induction accelerator component costs have evolved significantly since 1990s)
+- Target fabrication costs at production scale (6 Hz = 189,000 targets/year)
+- Chamber/blanket lifetime under 6 Hz pulsed neutron loading
+- Tritium extraction system costs for FLiBe blanket at commercial scale
+- Any company-grounded design choices (magnet type, blanket chemistry, energy conversion cycle)
 
-**Experimental platforms:**
+## 2. Challenges in Capturing System Function
 
-NDCX-II (Neutralized Drift Compression Experiment, LBNL) has been operational since approximately 2012, providing a platform for heavy ion beam compression and target heating experiments [dossier.md §Key Sources]. FAIR/SIS100 (GSI Darmstadt, heavy ion synchrotron) was commissioning in 2025 and produces high-intensity ion pulses relevant to HIF [hif-recent-research-compilation.md §No New Private Companies Found]. The LBNL HIF program itself ended; no successor US program exists.
+Heavy ion beam ICF presents multiple LCOE modeling challenges, ranked by impact:
 
-**Company transparency:**
+**1. Driver capital cost uncertainty (highest impact)**
 
-Nonexistent. "Intensity Energy" cannot be found in the FIA 2025 survey of 53 fusion companies, Crunchbase, LinkedIn, ARPA-E awards, DOE databases, Wikipedia, conference proceedings, or news sources [intensity-energy-search-results.md §Assessment]. Heavy ion beam ICF is pursued exclusively by national laboratories and academic groups, not private commercial entities as of 2026. The concept name in this analysis reflects the archetype, not a specific company's design.
+The linear induction accelerator is the dominant capital cost item. HYLIFE-II estimated $570M (1990s dollars) for a recirculating induction accelerator delivering 5 MJ per shot at 6 Hz. Scaling this to 2026 dollars and accounting for technological evolution (solid-state pulsed power, modern superconducting quadrupole magnets) introduces large uncertainty. The accelerator consists of hundreds of identical induction cells, enabling factory mass production, but no modern bottom-up cost estimate exists. The $/J cost metric depends critically on manufacturing learning curves for induction cells, which have no demonstrated production volume outside scientific facilities.
 
-**Phase 1a dossier completeness:**
+**2. Rep rate as first-class economic parameter**
 
-High-confidence values achieved for confinement family, driver technology, fuel, plasma state, magnet type (none for plasma), operation mode, and repetition rate. Medium confidence on energy capture (steam confirmed from historical designs but modern concepts might use sCO₂), tritium breeding choice (HIBALL used LiPb, HYLIFE-II used FLiBe — no company has selected), and neutron management (integrated blanket/shield confirmed but design details depend on blanket choice). After two research iterations, the medium-confidence items cannot reach high confidence without a commercial developer making design choices [dossier.md §Remaining Gaps].
+Unlike steady-state concepts, power output scales linearly with repetition rate. HYLIFE-II baseline at 6 Hz produces 940 MWe; increasing to 10-15 Hz (the target stated in arxiv 2005.07520 for modern HIF reactors) would increase output to 1,570-2,350 MWe from the same driver investment. This makes rep rate the single most leveraged LCOE parameter. However, chamber clearing, target injection, and FLiBe jet reformation timescales are not well-characterized at >6 Hz with GJ-scale yields.
 
-**Key data gaps limiting this analysis:**
+**3. Target gain validation gap**
 
-1. All cost data is 30–40 years old (1985 HIBALL, early-1990s HYLIFE-II), with no modern reanalysis in current dollars
-2. No private company exists to provide design choices or proprietary performance targets
-3. Driver component lifecycle costs (induction cell replacement, beam transport magnet maintenance) are not characterized for commercial operation
-4. Ion source performance at commercial duty cycle is unstated
-5. Final focus opnet design for 10+ Hz rep rates is an active research gap
+The required capsule gain of ~50-70 (per arxiv 2005.07520) for a 1 GWe plant is extrapolated from simulations, not experimental data. No integrated heavy ion beam implosion experiment has demonstrated fusion-relevant conditions. The target physics—direct-drive compression with volumetric heavy ion energy deposition (stopping range ~0.5-1 mm)—differs fundamentally from laser ICF surface ablation, making gain projections from NIF or other laser facilities non-transferable.
 
----
+**4. Thick liquid wall as neutron shield**
 
-## Section 2: Challenges in Capturing System Function
+The HYLIFE-II design assumes 30-year chamber lifetime with no first wall replacement, enabled by thick FLiBe molten salt jets that absorb 14.1 MeV neutrons before they reach structural components. This eliminates the periodic blanket replacement that dominates availability loss in tokamak projections (~10-20% lifetime downtime). However, FLiBe jet stability under 6 Hz pulsed loading (350 MJ yield per shot) and reformation dynamics between pulses are not experimentally validated. If the liquid wall does not provide adequate shielding, solid structural components would accumulate ~10-14 DPA/year and require replacement every ~2 years, devastating availability.
 
-Heavy ion beam ICF has a distinctive LCOE challenge profile relative to both laser ICF and MFE concepts. The core structural advantage — high driver wall-plug efficiency — is well-established. The core challenge is translating 30-year-old national laboratory designs into a contemporary commercial cost model without a living commercial program to provide updated numbers.
+**5. Per-shot consumables at production scale**
 
-**1. Driver capital cost dominates LCOE, and estimates are ancient (Impact: Critical)**
+At 6 Hz, a single-chamber plant requires 189,000 targets per year. Each target consists of an outer tamper (lead or gold), aluminum pusher, and thin DT fuel ice layer. Cryogenic DT ice layering (required for high gain) adds complexity: NIF-class targets take 15-20 hours to prepare. Automated batch production at 6 Hz throughput with consistent ice layer quality is undemonstrated. Target cost per unit determines a large fraction of operating costs.
 
-The HYLIFE-II study estimated $570M direct cost for the recirculating induction accelerator driver [hif-technology-overview.md §HYLIFE-II]. This is the only published bottom-up cost estimate for an HIF driver and is stated in early-1990s dollars. Inflated to 2026 dollars (CPI ~2.5×), this becomes approximately $1.4B — a figure that must be regarded as highly uncertain because (a) induction linac costs have not been re-estimated with modern construction and component costs, (b) the "recirculating" architecture (where beam pulses are compressed and recirculated in a storage ring) was not the US reference architecture but a specific HYLIFE-II choice, and (c) HIBALL used a different ~3 km single-pass linac design. The driver cost is plausibly 40–60% of total plant capital cost, making its uncertainty the single largest LCOE uncertainty.
+**6. Pulsed thermal conversion and energy storage**
 
-> "HYLIFE-II estimated $570M direct cost for recirculating induction accelerator driver"
-> — hif-technology-overview.md, §HYLIFE-II
+The steam Rankine cycle must handle pulsed thermal input (350 MJ bursts every ~170 ms). Thermal buffering via the FLiBe coolant inventory smooths these pulses, but the thermal storage system sizing and cost are not well-documented. At lower rep rates, more thermal storage is needed to maintain steady turbine inlet conditions, adding capital cost not present in steady-state concepts.
 
-The driver's modular architecture (hundreds of identical induction cells) is frequently cited as a manufacturing scaling advantage: mass-production of identical cells could substantially reduce per-cell cost below what scientific-instrument procurement achieves. But no learning-curve analysis exists to quantify how far this reduction could extend.
+## 3. Maturity of Key Subsystems and Components
 
-> **Modeling limitation (F-1)**: The 1costingfe framework's `eta_pin` parameter produces *positive* LCOE elasticity (+0.148) for this HIF model — higher driver efficiency raises modeled LCOE rather than reducing it. This is a framework wiring issue: `eta_pin` is designed for tokamak plasma heating efficiency and enters a cost sub-model that does not correctly represent IFE driver recirculating power. As a result, the quantitative driver efficiency advantage over laser ICF cannot be demonstrated through the sensitivity sweeps in the current model. The manual workaround is the driver capital scenario sweep: reducing C220104 from $1.4B to $0.7B (NOAK modular manufacturing) drops LCOE from $92.3/MWh to $78.8/MWh, proxying the manufacturing-learning pathway. The correct recirculating-power framing (Section 2, H3 under Modeling Approach below) shows a ~13% generation requirement penalty for a laser ICF plant at 25% recirculation vs. HIF at 15% — this comparison must be made manually until the framework wiring is corrected.
+Subsystems listed in ascending order of maturity (least mature first):
 
-**2. Target fabrication at commercial rep rate is uncharacterized (Impact: High)**
+### Integrated target physics and high-gain compression — TRL ~2
 
-HIF targets are simpler than NIF hohlraums — direct-drive spherical capsules with a lead or gold tamper, aluminum pusher, and thin DT ice layer [hif-technology-overview.md §Target Design] — but must be produced at ~10 Hz for one chamber or multiple Hz per chamber in multi-chamber configurations. At 10 Hz for 30 years, a single chamber requires approximately 9.5 billion targets. No cost estimate exists for mass-produced HIF targets. The target fabrication cost must satisfy the Goodin et al. (2004) criterion used for laser IFE economics: target cost must be less than ~10% of the electricity value per target. At HYLIFE-II's baseline power output and historical LCOE, this implies roughly a few dollars per target in 1990s dollars. Whether DT ice-layer targets with external tamper shells can be produced at this cost in commercial volumes is unknown — it is likely achievable in principle given simpler geometry than laser ICF hohlraums, but it has never been demonstrated.
+**On paper only:** Target gain of 50-70 required for economical operation. Direct-drive heavy ion compression with volumetric energy deposition differs from laser ICF ablation physics.
 
-**3. Rep-rated chamber operation at 5–15 Hz has no demonstrated analog (Impact: High)**
+**Missing at scale:** No integrated heavy ion beam implosion experiment has demonstrated fusion burn. Warm dense matter experiments at NDCX-II operate at ~10,000 K, far below fusion-relevant temperatures. Ice-layer cryogenic targets (required for high gain) have never been tested with heavy ion drivers.
 
-A key selling point of HIF over laser ICF is that the accelerator is physically separated from the chamber, so final focus optics do not need to survive the neutron and X-ray environment of each shot. However, the chamber itself must clear ejecta, reform liquid wall protection (if HYLIFE-II-style FLiBe jets), and accept the next target within ~100–200 ms (at 5–10 Hz) or ~67 ms (at 15 Hz). HYLIFE-II analyzed chamber clearing in detail and concluded that the FLiBe jet system could reform within the cycle time, but this was an analytical conclusion, not an experimental demonstration. The NDCX-II and FAIR platforms are single-shot or low-rep-rate devices; no high-rep-rate chamber exists. The chamber clearing problem is architecturally simpler for HIF than for laser ICF (no optical delivery, so the chamber can be filled with gas or liquid), but it remains undemonstrated at commercial rates.
+### Chamber clearing and FLiBe jet reformation at rep rate — TRL ~2-3
 
-**4. Cost data currency: all figures are 30–40 years old (Impact: High)**
+**On paper only:** Thick FLiBe liquid jets must reform and stabilize between shots in ~170 ms (at 6 Hz). Jet hydrodynamics under pulsed GJ-scale blast loading are simulated but not demonstrated.
 
-HIBALL (1985) and HYLIFE-II (early 1990s) predate modern fusion cost methodologies, advanced manufacturing for linac components, and any private fusion LCOE analysis. The CAS cost structure used in contemporary fusion TEA (CAS10-LCOE, from which this project's analysis framework derives) did not exist. No independent cost review of HIF power plants has been published since the 1990s. Comparing HIF LCOE to modern laser ICF or MFE estimates requires not just inflation adjustment but conceptual re-baselining, which has not been done. This is an analytical gap that is theoretically resolvable (by re-running HYLIFE-II or HIBALL economics through a modern cost framework) but has not been performed in the accessible literature.
+**Missing at scale:** No experimental validation of liquid wall stability under fusion-relevant yields at Hz-class rep rates. Water surrogate experiments have shown jet reformation at compatible timescales but without neutron loading or activated debris.
 
-**5. Final focus optics/magnets for high-rep-rate operation (Impact: Moderate)**
+### Target fabrication at production scale — TRL ~2-3
 
-Ion beams must be focused onto millimeter-scale targets through superconducting or permanent quadrupole magnet arrays. The final focus system must survive proximity to each fusion event without degrading. Unlike laser optics (which are damaged by X-rays and neutrons), magnetic focusing elements do not absorb light — they are shielded by the large stand-off distance achievable with ion beams. But at 10–15 Hz over 30 years, the final focus magnets accumulate substantial radiation damage from neutrons and activated ejecta. The lifetime and replacement schedule of these elements is not addressed in either HIBALL or HYLIFE-II.
+**On paper only:** Cryogenic DT ice-layer targets manufactured at 189,000 units/year (6 Hz) or 315,000-470,000 units/year (10-15 Hz). Batch production with statistical quality control analogous to ammunition manufacturing.
 
-**6. Regulatory and commercial pathway are undefined (Impact: Moderate, Structural)**
+**Missing at scale:** Current IFE targets are hand-fabricated in small batches at costs of thousands of dollars each. NIF cryogenic targets require 15-20 hours of ice layer formation. No automated production line exists. Whether mass production can achieve <$10/target at 6 Hz throughput is unknown.
 
-With no private company pursuing HIF commercially, there is no regulatory engagement, no licensing pathway being scoped, and no cost estimate for regulatory compliance. As with all D-T IFE concepts, a first commercial plant would require a regulatory framework that does not yet exist. The cross-concept precedent (from D-T tokamak analysis) suggests regulatory cost could multiply facility construction cost by ~2.2× under a conservative fission-analog framework [21-spherical-tokamak-hts analysis, §Section 2, citing Stewart & Shirvan 2022].
+### Linear induction accelerator driver at plant scale — TRL ~3-4
 
-**7. Plant availability is the primary LCOE lever — uncharacterized for rep-rated HIF (Impact: Critical)**
+**Demonstrated:** Induction linac technology proven at LBNL HIF program (now ended). Recirculating induction architecture studied extensively. Heavy ion beams at GeV energies demonstrated at multiple facilities (NDCX-II, FAIR/SIS100).
 
-Sensitivity analysis identifies availability as the dominant LCOE parameter for this HIF archetype: elasticity ≈ −0.96, meaning each 1-percentage-point drop in availability raises LCOE by approximately 1%. The central-case availability is set to **0.75** per the project's scoring framework canonical value for Pulsed IFE D-T concepts (scoring_framework.md §"Plant availability") — this is a policy-driven choice rather than a concept-specific citation, enabling apples-to-apples cross-concept comparisons within the pulsed IFE family. A swing from 90% to 70% availability changes LCOE by approximately +27% (~$83.9/MWh to ~$106.5/MWh at the base case). This magnitude — roughly 3× the next-largest engineering lever (Q_eng at −0.32) — makes availability the central commercial viability question.
+**On paper only:** Multi-MJ driver at 6-10 Hz repetition rate delivering Bi²⁺ or Pb⁺ beams with required pulse shaping and focusing. HIBALL required ~3 km linac length; HYLIFE-II studied more compact recirculating designs.
 
-For a rep-rated plant at 6 Hz (~1.9 × 10⁸ shots/year), availability is determined by three independent subsystem chains:
+**Missing at scale:** No heavy ion accelerator has operated at the 5-10 MJ per shot level with Hz-class rep rate. Superconducting quadrupole magnet arrays for parallel beam transport are conceptual. Component lifetimes under rep-rated operation (induction cores, magnets, insulators) not validated.
 
-- **Induction linac uptime**: Hundreds of identical induction cells operate at 6 Hz continuous duty. Modular architecture means individual cell failures do not require full shutdown and can in principle be hot-swapped, but cumulative failure rates across the whole driver at commercial rep rate and duty cycle are uncharacterized. High-energy physics accelerators provide the best analogue (~85–95% scheduled availability), but those machines run at lower rep rates and duty cycles with far more engineering margin than an optimized commercial power plant.
-- **Liquid wall cycling reliability**: FLiBe jet nozzles and manifolds cycle thermally and mechanically at 6 Hz over 30 years. Nozzle erosion, jet formation degradation, and molten salt corrosion of piping are uncharacterized failure modes at this duty cycle. A nozzle bank failure disrupts chamber clearing and forces shutdown.
-- **Target injection system**: Automated cryogenic DT target delivery at 6 Hz requires sub-mm accuracy for beam-on-target focusing. Any systematic drift in injection accuracy or cryogenic supply interruption propagates directly to lost pulses and, at sustained rates, to unplanned outage.
+### Tritium breeding in FLiBe blanket — TRL ~3-4
 
-No published HYLIFE-II or HIBALL availability analysis exists. The plausible range for a first-of-kind HIF plant spans 70–90%, with 0.75 as the canonical base case per project policy. At 0.75, the model LCOE is $99.7/MWh. The LCOE consequence of a 5-percentage-point availability shortfall from base is approximately +$6/MWh (70% → $106.5/MWh); a 10-point shortfall adds ~$13/MWh. Bounding this range is the most important model parameter to resolve for HIF commercial assessment.
+**Demonstrated:** FLiBe molten salt handling and tritium breeding demonstrated in Molten Salt Reactor Experiment (MSRE) and small-scale fusion blanket mockups. Tritium extraction via vacuum degassing or permeation through metal membranes tested at laboratory scale.
 
----
+**On paper only:** Closed-loop tritium extraction at kg/day scale from flowing FLiBe with <1% losses. TBR >1 demonstrated in simulations for both HIBALL (LiPb, TBR ~1.195) and HYLIFE-II (FLiBe) but not validated under fusion neutron spectra.
 
-### Modeling Approach and Key Hypotheses
+**Missing at scale:** Industrial FLiBe production (currently not manufactured at scale). Beryllium supply constraints (FLiBe is Li₂BeF₄; global Be production ~300 tonnes/year). Tritium permeation barriers for hot FLiBe piping and heat exchangers under neutron damage. HYLIFE-II tritium inventory of 0.5 g in molten salt + 140 g in tube wall metal suggests low inventory risk but requires validated extraction efficiency.
 
-**Framework**: The 1costingfe tokamak-centric cost accounting framework has been adapted for this HIF analysis. Key structural gaps relative to HIF's actual cost shape:
+### Remote maintenance and activated debris handling — TRL ~4
 
-- *No native IFE driver cost sub-account*: The induction linac driver ($1.4B, C220104) is manually assigned as the dominant reactor plant equipment item; the framework default for this account assumes plasma-facing components, not an accelerator.
-- *Target factory OPEX underrepresented*: The `target_factory_base` constant captures staffing-based fixed overhead but does not represent variable consumable cost for ~189 million cryogenic DT targets per year. If target cost reaches $1–3/target, this becomes a significant OPEX term above current defaults.
-- *No blanket replacement CAPEX*: HYLIFE-II's FLiBe liquid wall claims 30-year chamber lifetime with no first wall replacement, eliminating a large scheduled CAPEX item present in solid-blanket MFE and IFE designs — this is a structural cost advantage correctly not costed in the model.
-- *eta_pin wiring limitation*: See modeling limitation note under Challenge 1. The driver efficiency advantage over laser ICF must be evaluated through manual scenarios (H3 below) rather than parametric sweeps.
-- *plasma_t is a framework artifact with no HIF meaning*: The sensitivity table shows `plasma_t` at +0.245 elasticity (third-ranked lever). For an IFE concept, plasma temperature is not a design variable — the IFE performance analogs are target gain (q_sci) and driver energy. This elasticity is a framework artifact with no HIF design interpretation, analogous to the eta_pin wiring issue.
-- *CAS21 (Buildings) likely undercosted; model LCOE is a lower bound*: CAS21 ($622M) uses per-MW civil works scaling derived from tokamak building geometry. An HIF plant requires a ~3 km accelerator tunnel — a qualitatively different civil works scope. This may partly explain the 43% gap between model LCOE ($92/MWh) and inflation-adjusted HYLIFE-II historical reference ($162/MWh; 6.5 c/kWh × 2.5 CPI). The model LCOE should be read as a probable lower bound; the inflation-adjusted historical figure as a probable upper bound. This gap is tracked separately from driver capital uncertainty in the gap table.
+**Demonstrated:** Remote handling concepts studied for IFE chambers. Activated debris management analyzed in Z-IFE study (SAND2006-7148).
 
-**Key hypotheses**:
+**Missing at scale:** Chamber access for inspection and maintenance with FLiBe contamination and neutron activation of structural components. If 30-year chamber lifetime claim holds, maintenance frequency is low, but no prototype chamber exists to validate lifetime or develop maintenance procedures.
 
-- **H1 — Driver CAPEX reduction is the path to competitive LCOE**: If modular induction linac manufacturing reduces driver capital from $1.4B (scientific-instrument procurement) to $0.7B (NOAK factory production), LCOE falls from $92/MWh to $79/MWh. Tested in the driver capital scenario sweep.
+### Superconducting beam transport magnets — TRL ~5-6
 
-- **H2 — Availability floor determines whether HIF crosses $100/MWh**: At the canonical availability (0.75, per scoring_framework.md §"Plant availability" for Pulsed IFE D-T), LCOE is $99.7/MWh — essentially at the $100/MWh threshold (elasticity −0.96). Above 75%, LCOE falls below this threshold (80% → $93.7/MWh; 90% → $83.9/MWh); below 75%, it rises above it (70% → $106.5/MWh). A 5-point shortfall from base adds ~$6/MWh; a 10-point shortfall adds ~$13/MWh. This is the most critical operational uncertainty to bound. Tested via availability scenario sweep (70%/75%/80%/85%/90%) in the model output.
+**Demonstrated:** Superconducting quadrupole magnets for particle accelerators are mature technology (ITER NBI, LHC, etc.). 3x3 superconducting quadrupole arrays for parallel beam transport have been designed but not built at plant scale.
 
-- **H3 — HIF driver efficiency reduces recirculating power requirement vs. laser ICF**: At 15% recirculating power (HIBALL), gross generation must be 940/0.85 = 1,106 MWe. At 25% recirculation (laser ICF analogue), gross must be 940/0.75 = 1,253 MWe — a 13% penalty in gross generation with direct LCOE impact. This comparison must be made manually because the current model's eta_pin wiring is inverted (see Challenge 1 modeling limitation note).
+**Missing at scale:** Radiation-hardened magnet insulation for neutron environment (though magnets are distant from chamber and partially shielded). Magnet reliability over 30-year plant lifetime at rep-rated operation.
 
----
+### Energy conversion / Balance of Plant — TRL ~7-8
 
-## Section 3: Maturity of Key Subsystems and Components
+**Demonstrated:** Steam Rankine cycle at GW scale is mature. HYLIFE-II improved design eliminated intermediate heat exchangers, simplifying primary loop. sCO2 Brayton cycle would offer higher efficiency (~45% vs ~40% for steam) but is not specified in any HIF plant study; this remains speculative.
 
-Ordered from least mature (highest risk) to most mature.
+**Missing at scale:** Integration with pulsed FLiBe thermal source. Thermal storage/buffering to smooth 6 Hz pulses into steady turbine input. FLiBe-to-steam heat exchangers under tritium permeation and fluoride corrosion conditions.
 
----
+## 4. Key Materials and Supply Chain Considerations
 
-**Ion Source and Injector System at Commercial Duty Cycle — TRL 2–3**
+### Beryllium (critical bottleneck)
 
-- **Demonstrated**: Small-scale ion sources at NDCX-II (LBNL) and FAIR (GSI) produce heavy ion beams relevant to HIF physics research. NDCX-II produces ns-duration, ~1 MeV Li⁺ beams for target heating experiments [dossier.md §Key Sources]. FAIR/SIS100 produces high-intensity pulses from a synchrotron, not a linac architecture, and is for nuclear physics, not HIF power.
-- **On paper only**: A commercial HIF injector producing Bi²⁺ or equivalent heavy ions at the current levels (160 mA in HIBALL), pulse durations, and repetition rates (5–15 Hz) needed for a power plant. The LBNL HIF program ended without building a driver-scale injector. The transition from single-shot or low-rep-rate research sources to commercial duty-cycle operation with >99% availability is entirely a paper extrapolation.
-- **Missing at scale**: Commercial-rep-rate ion source with demonstrated availability target. Bi²⁺ or Cs⁺ ion source at 160 mA and 10+ Hz for >10⁸ shots. Beam emittance preservation through the full linac length at high rep rate.
+FLiBe blanket chemistry is Li₂BeF₄—lithium fluoride + beryllium fluoride. Global beryllium production is approximately 300 tonnes/year, dominated by a single US producer (Materion Corp). Beryllium is toxic and requires specialized handling. A single HYLIFE-II plant's FLiBe inventory is not quantified in available sources, but scaling from other FLiBe blanket studies suggests hundreds of tonnes of BeF₂. A fleet of HIF plants would strain current beryllium supply. Beryllium is also used in tokamak blanket neutron multipliers, creating competition for limited supply. The low tritium inventory (0.5 g in FLiBe, 140 g in tube walls) partially mitigates blanket material risk, but initial FLiBe fill remains a supply constraint.
 
----
+### Lithium-6 enrichment
 
-**Target Fabrication at Commercial Scale — TRL 2–3**
+Tritium breeding requires Li-6 enrichment (natural lithium is ~7.5% Li-6). Only a few suppliers globally produce high-enrichment Li-6 (Russia and China still use mercury-based enrichment processes banned elsewhere). FLiBe blankets share this supply chain with tokamak/stellarator solid breeder concepts. Enrichment capacity is currently limited; a fusion fleet would require significant expansion.
 
-- **Demonstrated**: Single-shot D-T targets for laser ICF experiments (NIF, OMEGA) have been produced in small quantities. HIF direct-drive targets are geometrically simpler (spherical, no hohlraum) but require cryogenic DT ice layers and an outer tamper. No HIF target production facility exists.
-- **On paper only**: Mass-production process for DT ice-layer targets at the HYLIFE-II spec (~5 MJ coupling, ~100 mg DT fill). Cost target of <~$3/target (1990s dollars, rough estimate from HYLIFE-II economics) has not been validated against a manufacturing process. The simpler geometry of HIF direct-drive targets compared to laser ICF hohlraums is a plausible cost advantage, but no bottom-up fabrication cost analysis has been published.
-- **Missing at scale**: Continuous batch production of cryogenic DT targets at 5–15 Hz throughput (9+ billion per 30-year plant life per chamber). Quality control at production rate. Automated fill-and-freeze processes. On-site DT handling and target loading infrastructure.
+### Tritium startup inventory
 
----
+A D-T reactor requires ~1-5 kg tritium startup inventory at ~$30,000/g (current market rate, though this reflects scarcity rather than intrinsic cost). Global civilian tritium inventory is ~25 kg, produced as a byproduct of CANDU heavy-water reactors. As CANDUs retire, this supply shrinks. The first few fusion plants must demonstrate tritium self-sufficiency (TBR >1) before the fleet can scale. HYLIFE-II's low tritium inventory (141 g total) is advantageous but still requires breeding to replace burnup and decay losses.
 
-**Rep-Rated Fusion Chamber and Liquid Wall System — TRL 3–4**
+### Heavy ions (bismuth, lead)
 
-- **Demonstrated**: The HYLIFE-II thick-liquid-wall concept analyzed the hydrodynamics of FLiBe jet reformation after each fusion pulse in detail, concluding that the jets could reform within the 6 Hz cycle time [hif-technology-overview.md §HYLIFE-II; hif-recent-research-compilation.md §Key Technical Parameters - Blanket Designs]. Water-surrogate experiments have validated jet dynamics at lower intensities. The HIBALL LiPb blanket concept is less experimentally advanced but has simpler geometry.
-- **On paper only**: FLiBe jet system behavior under fusion-relevant yield and debris environments (350 MJ yield per shot in HYLIFE-II [hif-technology-overview.md §HYLIFE-II]). Chamber clearing and vacuum re-establishment at 5–15 Hz. First wall survival under combined neutron loading, blast loading, and thermal cycling over 30-year plant life. Integration of target injection and beam delivery with the liquid wall cycle.
+HIBALL design used bismuth (Bi²⁺) at 10 GeV; other studies considered lead, cesium, xenon, mercury. Bismuth and lead are commodity metals with adequate global supply (Bi ~20,000 tonnes/year, Pb ~11 million tonnes/year). Ion source material cost is negligible. The choice of ion species affects accelerator design (mass-to-charge ratio determines energy and focusing requirements) but not supply chain risk.
 
-> "HYLIFE-II designed for 30-year chamber lifetime with no first wall replacement due to thick flowing FLiBe jets"
-> — hif-technology-overview.md, §HYLIFE-II
+### Target materials (lead, gold, aluminum, DT)
 
-- **Missing at scale**: High-rep-rate liquid wall test facility with prototypical fusion yields. Demonstrated chamber clearing at 10+ Hz with activation debris. Complete liquid metal/molten salt loop at power-plant scale for either LiPb or FLiBe. Tritium extraction from FLiBe or LiPb at continuous commercial throughput.
+Target outer tamper is lead or gold; pusher is aluminum. At 189,000 targets/year (6 Hz), even small per-target masses become significant annual throughput. If each target uses ~10 g lead, that's ~2 tonnes/year—manageable. Gold tampers would be more expensive but are not baseline. Aluminum is abundant. The cryogenic DT ice layer requires deuterium (abundant, extracted from water) and tritium (bred on-site). Target material supply is not a bottleneck; fabrication complexity is.
 
----
+### Superconductor wire (NbTi, Nb₃Sn, or REBCO)
 
-**Linear Induction Accelerator Driver — TRL 4–5**
+Beam transport magnets require superconducting quadrupoles. Historical designs assumed LTS (NbTi or Nb₃Sn at 4 K); modern designs could use HTS (REBCO at 20-40 K) for higher fields and simpler cryogenics. Superconductor quantity is far less than for tokamak/stellarator confinement magnets (beam transport magnets are smaller and operate at lower fields). This is a shared supply chain with MFE concepts but not a major bottleneck for HIF.
 
-- **Demonstrated**: Linear induction accelerator technology is mature in the context of scientific instruments (electron LIAs at LLNL for flash radiography, heavy-ion LIAs at LBNL for HIF research). The HEDP program at LBNL operated multi-stage heavy-ion induction linacs. Individual induction cells and pulsed power components are commercially available. The modularity principle — hundreds of identical cells enabling factory manufacturing — is established in the induction linac literature [hif-technology-overview.md §Driver Technology].
-- **On paper only**: A complete HIF driver at the power plant specification: HIBALL requires ~3 km linac delivering 10 GeV Bi²⁺ at 160 mA [dossier.md §Primary Heating]; HYLIFE-II uses a recirculating architecture with 5 MJ delivery at 6 Hz. Neither scale has been built. The transition from current (μA-scale) LIA demonstrations to mA-scale commercial drivers involves major beam quality and emittance control challenges.
-- **Missing at scale**: Driver-scale induction linac demonstration at mA-class current and 5–15 Hz. Demonstrated beam transport through superconducting quadrupole arrays from source to final focus. Induction cell component lifetime at commercial rep rates. Cost validation of modular cell manufacturing at commercial quantities.
+### No exotic or sole-source components
 
----
+Unlike some fusion concepts, HIF does not require: REBCO tape at km scale (tokamaks), nanostructured targets (Marvel Fusion), He-3 fuel (Helion), or projectile hypervelocity launchers (First Light). The driver is built from conventional accelerator components; the chamber is steel and FLiBe; the targets are metal shells with DT ice. The primary supply risks are beryllium (for FLiBe) and lithium-6 enrichment (shared with all D-T concepts).
 
-**Tritium Breeding Blanket and Fuel Cycle — TRL 3–4**
+## 5. Design Point Parameters
 
-- **Demonstrated**: The two competing blanket concepts from HIF power plant studies — LiPb (HIBALL, TBR ~1.195 [hif-recent-research-compilation.md §Key Technical Parameters - Blanket Designs]) and FLiBe thick liquid jets (HYLIFE-II, tritium inventory 0.5 g in molten salt, 140 g in tube wall metal [hif-technology-overview.md §HYLIFE-II]) — are well-analyzed in neutronics studies. Li-6 breeding from thermal neutrons is well-understood physics. EU-DEMO Pb-17Li blanket program and the Molten Salt Reactor Experiment (MSRE at ORNL for FLiBe) provide partial experimental foundations.
-- **On paper only**: Complete tritium breeding blanket integrated with IFE chamber clearing at 5–15 Hz. Tritium extraction from FLiBe at commercial throughput (the MSRE extracted 99.7% of bred tritium, but at far lower throughput than a power plant). Tritium extraction from LiPb at commercial plant rates. Validated TBR > 1 under realistic chamber geometry with penetrations for beam injection ports.
+| Parameter | Value | Source | Confidence | Note |
+|-----------|-------|--------|------------|------|
+| Net electric output | 940 MWe | hif-technology-overview.md §Power Plant Designs - HYLIFE-II | high | Matches `P_native`. Scales to 1,934 MWe at 2 GW thermal. |
+| Driver energy per shot | 5 MJ | hif-technology-overview.md §Power Plant Designs - HYLIFE-II | high | Delivered to target by heavy ion beams. |
+| Fusion yield per shot | 350 MJ | hif-technology-overview.md §Power Plant Designs - HYLIFE-II | high | Target gain ~70 (350 MJ fusion / 5 MJ driver). |
+| Repetition rate | 6 Hz | hif-technology-overview.md §Power Plant Designs - HYLIFE-II; arxiv 2005.07520 states "~10-15 Hz for future HIF reactors" | high | HYLIFE-II baseline. Modern targets may enable 10-15 Hz. Spec key: `rep_rate_hz`. |
+| Driver wall-plug efficiency | 30-40% | hif-technology-overview.md §Driver Technology; hif-recent-research-compilation.md §Driver Efficiency | high | Induction accelerator efficiency. Contrast with laser ICF at 1-15%. Spec key: `eta_driver`. |
+| Target capsule gain | ~70 | hif-technology-overview.md §Power Plant Designs - HYLIFE-II | medium | 350 MJ yield / 5 MJ driver. Simulation-based; not experimentally validated. Required range 50-70 per arxiv 2005.07520. Spec key: `target_gain`. |
+| Blanket energy multiplication | ~1.1 | [inferred: standard D-T neutron multiplication in lithium-bearing blanket; HIBALL TBR ~1.195 from hif-technology-overview.md §Tritium Breeding] | medium | Not explicitly stated for HYLIFE-II. Inferred from D-T fusion neutronics. Spec key: `blanket_multiplication`. |
+| Thermal conversion efficiency | ~40% | [inferred: steam Rankine cycle typical; HYLIFE-II uses "Steam Rankine cycle" per hif-recent-research-compilation.md §Energy Conversion] | medium | Not explicitly stated. Steam Rankine at ~40% is standard; sCO2 at ~45% is speculative. Spec key: `eta_th`. |
+| LCOE (baseline, 940 MWe) | 6.5 ¢/kWh | hif-technology-overview.md §Power Plant Designs - HYLIFE-II | medium | 1990s estimate in 1990s dollars. Not adjusted for inflation. |
+| LCOE (scaled, 2 GW) | 4.5 ¢/kWh | hif-technology-overview.md §Power Plant Designs - HYLIFE-II | medium | 1990s estimate showing economies of scale. |
+| Driver capital cost | $570M (direct, 1990s dollars) | hif-technology-overview.md §Power Plant Designs - HYLIFE-II | medium | Recirculating induction accelerator. Needs CPI adjustment and technology evolution update. |
+| Chamber lifetime | 30 years (no replacement) | hif-technology-overview.md §Power Plant Designs - HYLIFE-II; hif-recent-research-compilation.md §Blanket Designs | medium | Enabled by thick FLiBe liquid wall neutron shielding. Unvalidated claim. |
+| Tritium inventory (FLiBe) | 0.5 g | hif-technology-overview.md §Power Plant Designs - HYLIFE-II | high | Tritium in molten salt blanket. |
+| Tritium inventory (tube walls) | 140 g | hif-technology-overview.md §Power Plant Designs - HYLIFE-II | high | Tritium trapped in metal tube wall structures. |
+| Tritium breeding ratio | >1 (required) | [inferred: all D-T power plants must breed tritium; HIBALL achieved TBR ~1.195 per hif-technology-overview.md §Tritium Breeding] | medium | HYLIFE-II TBR not explicitly stated but must exceed 1 for self-sufficiency. |
+| Fuel cycle | D-T | dossier.md §Differentiation Table - Fuel | high | Deuterium-tritium fusion. 14.1 MeV neutrons. Spec key: `fuel_dt`. |
+| Ion species | Bi²⁺ (bismuth) or Pb⁺ (lead) | hif-technology-overview.md §Driver Technology - Ion Species; HIBALL used Bi²⁺ at 10 GeV | high | High mass-to-charge ratio preferred. Xenon, cesium, mercury also studied. Not a spec key. |
+| Beam energy | ~10 GeV (HIBALL); 5 MJ total per shot (HYLIFE-II) | hif-technology-overview.md §Driver Technology | medium | HIBALL: 10 GeV Bi²⁺ at 160 mA. HYLIFE-II: 5 MJ delivered energy. Not a spec key. |
+| Blanket chemistry | FLiBe (Li₂BeF₄) | hif-technology-overview.md §Power Plant Designs - HYLIFE-II; dossier.md §Tritium Breeding | high | Molten salt thick liquid jets. Combined breeder/coolant/shield. Spec key: `blanket_flibe`. |
+| First wall / chamber protection | Thick FLiBe liquid jets | hif-recent-research-compilation.md §Blanket Designs | high | Thick flowing liquid provides neutron shielding, heat removal, tritium breeding. No solid first wall. Spec key: `first_wall_liquid`. |
+| Operation mode | Pulsed | dossier.md §Differentiation Table - Operation Mode | high | Discrete fusion events separated by target injection. Spec key: `pulsed`. |
+| Target design | Lead/gold tamper, aluminum pusher, DT ice layer | hif-recent-research-compilation.md §Target Design | medium | Cryogenic DT ice on inner surface of metal cylinder. Direct-drive compression. Not a spec key. |
 
-> "Tritium inventory in HYLIFE-II: 0.5 g in molten salt, 140 g in tube wall metal"
-> — hif-technology-overview.md, §HYLIFE-II
+**Note on missing 1costingFE spec keys:** The design point table above includes parameters needed for techno-economic analysis but many are not canonical spec keys consumed by the 1costingFE library. The library's IFE archetype likely requires: `P_native`, `rep_rate_hz`, `target_gain`, `eta_driver`, `eta_th`, `blanket_multiplication`, and fuel/blanket chemistry flags. Geometry parameters (chamber radius, target size) are not stated in available sources.
 
-- **Missing at scale**: Industrial-scale tritium extraction from LiPb or FLiBe at power plant throughput. Permeation barriers for FLiBe-facing heat exchangers. Validated tritium balance for IFE chamber with beam ports. Startup tritium procurement path (identical constraint shared with all D-T concepts).
+## 5b. Override Candidates
 
----
+No override candidates proposed. The archetype-fit grade is High, expecting 0-4 enabled overrides. The dossier provides no company-grounded cost data—all quantitative information derives from 1990s-era national lab studies (HYLIFE-II, HIBALL) or physics literature. The design point is a historical baseline, not a company-grounded commercial plant. Without a company making design choices and publishing component costs or procurement contracts, no accountable departure from the 1costingFE library defaults is justified.
 
-**Superconducting Final Focus Magnet Arrays — TRL 5–6**
+Specific per-account assessment:
+- **C220104** (primary pulsed driver): HYLIFE-II driver cost of $570M (1990s dollars) exists, but translating this to 2026 dollars and adjusting for technology evolution (modern induction cells, solid-state pulsed power, superconducting quadrupoles) introduces too much uncertainty to claim provenance=derived. The library's default $/J for heavy ion accelerators is the appropriate baseline.
+- **C220108** (target factory): At 6 Hz = 189,000 targets/year. No company-grounded unit cost exists. Target fabrication at scale is undemonstrated.
+- **C220107** (pulsed-power capacitor bank): Not applicable; heavy ion driver is induction accelerator, not capacitor-driven.
+- **CAS27** (special materials - FLiBe inventory): No published FLiBe inventory mass or procurement cost for HYLIFE-II.
+- **CAS23** (turbine plant): Steam Rankine cycle confirmed but no cost breakdown. Library default applies.
+- **CAS70** (O&M): The 30-year chamber lifetime claim would reduce scheduled component replacement costs below typical defaults, but this is an unvalidated claim from a 1990s study, not a demonstrated commercial plant feature. Not accountable.
 
-- **Demonstrated**: Superconducting quadrupole magnets are mature technology in high-energy physics (CERN, FermiLab, SNS). HIF beam transport requires arrays of LTS (NbTi/Nb₃Sn) quadrupoles historically; modern designs could use HTS [hif-technology-overview.md §Magnet Technology in Accelerator]. The LBNL and GSI programs have operated superconducting beam transport systems. Final focus quadrupoles for HIF are designed to handle emittance growth and space-charge effects of high-current ion beams, which adds complexity over collider-style focusing.
-- **On paper only**: Final focus design for a commercial HIF plant providing beam-on-target focusing at mA currents with 10+ Hz rep rates. Radiation shielding for final focus elements near the fusion chamber. Component lifetime under combined neutron flux and rep-rate thermal cycling.
-- **Missing at scale**: Validated radiation tolerance of final focus magnet insulation and superconductor under cumulative neutron exposure at rep-rate. Maintenance access and replacement scheme for final focus elements in a rep-rated plant.
+**Override count: 0 (within 0-4 band for High archetype-fit).**
 
----
-
-**Balance of Plant (Steam Rankine Power Conversion) — TRL 7–9**
-
-- **Demonstrated**: Conventional steam Rankine cycle is a mature commercial technology deployed in nuclear and fossil power plants. HYLIFE-II baselined on steam Rankine. Companion HYLIFE-II studies evaluated MHD + steam hybrid as an alternative [dossier.md §Energy Capture]. The thermal coupling from FLiBe or LiPb primary coolant to a steam secondary is analogous to molten salt reactor thermal coupling.
-- **On paper only**: Integration with pulsed HIF thermal source at 5–15 Hz — thermal inertia of the primary loop must smooth shot-to-shot power pulses. At 6–15 Hz, pulse smoothing is more tractable than at 0.1–1 Hz (laser ICF and pulsed MIF), and the HYLIFE-II analysis considered this manageable with the FLiBe thermal mass. sCO₂ Brayton cycle has not been evaluated for HIF (no published HIF study specifies it [hif-recent-research-compilation.md §Key Technical Parameters - Energy Conversion]).
-- **Missing at scale**: FLiBe-to-steam heat exchanger at full plant scale with tritium permeation barriers. Validated thermal buffering at 350 MJ/shot at 6 Hz. Integration with activated FLiBe primary loop requiring remote maintenance.
-
----
-
-## Section 4: Key Materials and Supply Chain Considerations
-
-**Heavy Ion Species (Bismuth) — Niche Supply Chain, Limited Quantities Required**
-
-HIBALL selected Bi²⁺ at 10 GeV based on its high mass/charge ratio (~200 u/e), single natural isotope (Bi-209), and ease of ionization [hif-technology-overview.md §Driver Technology]. Lead, cesium, xenon, and mercury were also considered. Unlike structural materials consumed in bulk, the ion beam itself is recirculated in multi-pass architectures or produced continuously in single-pass linacs — the bismuth inventory in the accelerator is on the order of grams, not tons. Bismuth is a minor metal produced primarily as a byproduct of lead smelting; global production is approximately 15,000–20,000 tonnes/year, dominated by China. At the scale required for the accelerator inventory (grams to kilograms), supply is not a constraint. However, target tamper materials (lead or gold outer tamper [hif-technology-overview.md §Target Design]) and aluminum pushers require production at billions-per-year quantities — here, supply is abundant but manufacturing infrastructure to produce cryogenic spherical targets at that scale does not exist.
-
-**FLiBe (Li₂BeF₄) — Shared Constraint with Laser IFE, But Larger Inventory**
-
-HYLIFE-II uses FLiBe as the primary coolant, tritium breeder, and neutron shield in thick liquid jets. The FLiBe inventory in a commercial HYLIFE-II-class plant is large — sufficient to form thick (30–50 cm) flowing curtains around the entire chamber. FLiBe requires both beryllium (scarce: global production ~300 tonnes/year, dominated by Materion Corp. USA) and lithium-6 enrichment. The memory note for this analysis pipeline flags FLiBe cost data as consistently sparse across IFE concepts: "The HYLIFE-II report (Moir 1994) is the only source with FLiBe cost estimates but uses 1994 dollars." The FLiBe inventory cost for a full-scale HYLIFE-II plant is uncharacterized in modern dollars. This is a significant capital cost uncertainty shared with laser IFE concepts using FLiBe. If HIBALL's LiPb blanket is selected instead, beryllium is not required — LiPb (natural Li-Pb eutectic with Li-6 enrichment) is a more straightforward supply chain, though still requiring Li-6 enrichment capacity.
-
-**Li-6 Enrichment — Structural Gating Constraint, No Active Production Facility Exists**
-
-Both LiPb (HIBALL) and FLiBe (HYLIFE-II) require Li-6 enrichment for adequate TBR. Natural lithium is ~7.5% Li-6; both designs likely require moderate-to-high enrichment (50–90% Li-6) depending on blanket geometry.
-
-No facility worldwide currently produces fusion-grade enriched Li-6 at the several-tons-per-year scale required for a power plant [transat-h2020-wp-content-uploads-2019-11-giegerich.md §Chapter 1: "As far as we know, no facility is available world-wide that could satisfy this demand"]. The entire current global commercial supply derives from Cold War stockpiles produced at the Y-12 National Security Complex (Oak Ridge, TN) between 1952–1963 using the COLEX process — 442 tonnes were produced and depleting stockpiles remain at Oak Ridge and Portsmouth. No COLEX-equivalent or successor process is in active production.
-
-The consequence is a 53× price premium above historical production costs: the 2019 market price is **53 k€/kg** (95%-enriched Li-6) versus the 1982 COLEX production-cost estimate of ~1 k€/kg [transat-h2020-wp-content-uploads-2019-11-giegerich.md §Chapter 3]. Applied to the inventory requirement for a DEMO-class plant — approximately **52 tonnes of 90%-enriched Li-6 per 2 GW_fus device** (EU DEMO WCLL reference, from Giegerich §Chapter 2) — the Li-6 inventory cost at current market prices is on the order of **€2.5–3B per 2 GW plant**. Even at a future production-cost price of 1 k€/kg, the inventory cost would be ~€52M — still a significant LCOE input. This inventory cost is not captured in HIBALL or HYLIFE-II economics.
-
-Establishing a new Li-6 production facility requires an estimated **~20 years of development from a 2019 baseline** (experimental work, pilot plant design and construction, process scale-up, then operational ramp-up), targeting readiness by the late 2030s to support 2040s blanket manufacturing [transat-h2020-wp-content-uploads-2019-11-giegerich.md §Chapter 7]. The ICOMAX process (Hg-amalgam column exchange, a successor to COLEX) is the leading candidate but remains at laboratory scale. This is a structural gating constraint shared with all D-T breeding concepts — not unique to HIF — but it is more severe than current analysis of any HIF concept acknowledges.
-
-**Superconducting Magnet Materials (LTS/HTS for Accelerator) — No Critical Bottleneck**
-
-The accelerator uses superconducting quadrupoles for beam transport. Historical designs specified NbTi or Nb₃Sn (LTS) magnets. Modern designs could substitute HTS (REBCO), though this has not been studied for HIF linac applications [hif-technology-overview.md §Magnet Technology in Accelerator]. Unlike tokamak/stellarator concepts where HTS magnet costs can be hundreds of millions of dollars per machine, the accelerator quadrupoles are individually modest magnets — the cost driver is quantity (hundreds to thousands along a km-scale linac) rather than any single large magnet. The REBCO supply chain bottleneck that affects tokamak concepts (thousands of km of tape per machine) does not apply in the same way to HIF linac quadrupoles. LTS magnets (NbTi/Nb₃Sn) for high-energy physics accelerators are commercially produced and not supply-constrained at HIF plant scale.
-
-**Tritium — Standard D-T Startup and Self-Sufficiency Constraints**
-
-Startup tritium requirements (~1 kg at >$35,000/g [21-spherical-tokamak-hts analysis, §Section 4]) apply identically to HIF as to all D-T concepts. HYLIFE-II's low in-system tritium inventory (0.5 g in circulating FLiBe plus 140 g in tube wall metal [hif-technology-overview.md §HYLIFE-II]) is noteworthy — the thick-liquid-wall architecture that self-renews every shot also minimizes tritium holdup in structural components. This is a modest tritium inventory management advantage relative to solid-first-wall IFE designs. Breeding self-sufficiency with HIBALL's TBR ~1.195 or HYLIFE-II's FLiBe provides adequate margin [hif-recent-research-compilation.md §Key Technical Parameters - Blanket Designs].
-
-**No REBCO Tape Required (Unlike All HTS Tokamak/Stellarator Concepts)**
-
-HIF has no plasma-confining magnets. The accelerator quadrupoles use conventional LTS or modest HTS, not the multi-thousand-km REBCO tape lengths required by compact tokamaks or HTS stellarators. This removes the most acute supply chain bottleneck affecting much of the fusion industry. It is a genuine supply chain advantage of the IFE approach.
-
----
-
-## Section 5: LCOE-Relevant Parameters
-
-### Available Parameters
-
-| Parameter | Value/Range | Source | Confidence | Notes |
-|-----------|-------------|--------|------------|-------|
-| Baseline LCOE (HYLIFE-II) | 6.5 cents/kWh (early-1990s dollars) | hif-technology-overview.md §HYLIFE-II | medium | ~16 cents/kWh in 2026 dollars (×2.5 CPI adjustment); single study, not independently validated |
-| Scaled LCOE (HYLIFE-II at 2 GW) | 4.5 cents/kWh (early-1990s dollars) | hif-technology-overview.md §HYLIFE-II | low | ~11 cents/kWh in 2026 dollars; scaling projection within same study |
-| Net electrical output — HYLIFE-II baseline | 940 MWe | hif-technology-overview.md §HYLIFE-II | medium | From early-1990s design study; no modern reconfirmation |
-| Net electrical output — HYLIFE-II scaled | 1,934 MWe | hif-technology-overview.md §HYLIFE-II | low | Scaling projection within HYLIFE-II study |
-| Net electrical output — HIBALL | 3.8 GWe | hif-technology-overview.md §Power Plant Designs | medium | 1985 design; large-scale multi-chamber plant |
-| Recirculating power fraction — HIBALL | 15% | hif-technology-overview.md §HIBALL | medium | From 1985 HIBALL design; not updated |
-| Driver wall-plug efficiency | 30–40% | hif-technology-overview.md §Driver Technology; hif-recent-research-compilation.md §Key Technical Parameters - Driver Efficiency | high | Confirmed across multiple sources; key structural advantage over laser ICF (1–15%) |
-| Target gain required (1 GWe plant) | ~50–70 | hif-technology-overview.md §Target Design; hif-recent-research-compilation.md §Key Technical Parameters - Target Gain | high | Directly stated in both sources; lower than laser ICF requirement due to higher driver efficiency |
-| Target gain (advanced design projection) | 130+ at 3.3 MJ driver | hif-technology-overview.md §Target Design | low | Simulation projection, not experimentally validated |
-| Beam energy per shot | 3–8 MJ (HYLIFE-II: 5 MJ) | hif-technology-overview.md §HYLIFE-II; dossier.md §Primary Heating | high | Cross-confirmed; HYLIFE-II nominal 5 MJ, HIBALL up to 8 MJ |
-| Yield per shot (HYLIFE-II) | 350 MJ | hif-technology-overview.md §HYLIFE-II | medium | At 5 MJ driver input, gain = 70; from 1990s design study |
-| HYLIFE-II target gain (nominal) | 70 at 5 MJ | hif-recent-research-compilation.md §Key Technical Parameters - Target Gain | medium | Historical design point; modern target simulations project higher gains |
-| Single-chamber repetition rate | 5–6 Hz (HIBALL: 5 Hz/chamber; HYLIFE-II: 6 Hz) | dossier.md §Repetition Rate | high | Historical designs; 2020 review targets 10–15 Hz for future reactors |
-| Future target rep rate | 10–15 Hz | hif-recent-research-compilation.md §Key Technical Parameters - Repetition Rate | medium | Per 2020 arXiv review paper; not demonstrated |
-| Driver direct cost (HYLIFE-II) | $570M (early-1990s dollars) | hif-technology-overview.md §HYLIFE-II | medium | ~$1.4B in 2026 dollars; only published HIF driver bottom-up estimate |
-| Chamber lifetime (HYLIFE-II) | 30 years, no first wall replacement | hif-technology-overview.md §HYLIFE-II | medium | Enabled by FLiBe thick liquid wall; analytical result, not demonstrated |
-| Tritium inventory in system | 0.5 g (molten salt) + 140 g (tube wall metal) | hif-technology-overview.md §HYLIFE-II | medium | Low inventory is a design feature of HYLIFE-II's FLiBe architecture |
-| Tritium breeding ratio — HIBALL | ~1.195 (LiPb blanket) | hif-recent-research-compilation.md §Key Technical Parameters - Blanket Designs | medium | Analytical; no experimental validation |
-| Ion species — HIBALL | Bi²⁺ at 10 GeV, 160 mA | dossier.md §Primary Heating | high | Confirmed HIBALL design specification |
-| Linac length — HIBALL | ~3 km | dossier.md §Driver Technology | medium | Approximate from HIBALL design; single-pass linac |
-| Fusion power per chamber — HIBALL | 2,000 MW | hif-technology-overview.md §Power Plant Designs | medium | From 1985 HIBALL design |
-| Thermal conversion efficiency | [analogue] ~33–38% | [analogue — HYLIFE-II baselined on steam Rankine; comparable to historical nuclear steam plants] | low | No modern HIF design has committed to sCO₂; steam Rankine assumed |
-| Total plant CAPEX | [estimated] $2–5B per GWe | [estimated from HYLIFE-II economics inflated to 2026 + analogy to comparable IFE plant studies] | low | Wide range; dominated by driver cost uncertainty; no modern cost study exists |
-| Plant availability / capacity factor | 0.75 canonical (sweep: 70–90%) | scoring_framework.md §Plant availability (Pulsed IFE, D-T); analogue basis: HEP accelerator ~85–95%; IFE chamber systems more conservative ~70–80%; no HYLIFE-II published target | medium | Canonical per project policy (previously 0.80); top LCOE lever (elasticity −0.96); at 0.75, LCOE = $99.7/MWh; 5-pt swing ≈ $6/MWh; 10-pt swing ≈ $13/MWh; see Section 2 Challenge 7 and H2 |
-
-### Missing Parameters
-
-| Parameter | Gap Type | Criticality | Notes |
-|-----------|----------|-------------|-------|
-| Modern CAPEX estimate in current dollars | not-yet-sourced | blocking | All cost data from 1985–1994; no updated economic analysis exists; requires full re-baselining |
-| Target fabrication cost at commercial volume | truly-unknown | blocking | No cost estimate for HIF direct-drive targets at 5–15 Hz throughput; required for OPEX model |
-| Driver component replacement schedule and cost | truly-unknown | blocking | Induction cell and beam transport magnet lifetime at commercial rep rate unknown |
-| Ion source lifetime and replacement at commercial duty cycle | truly-unknown | blocking | Commercial-grade ion sources for HIF do not exist; no published lifetime data |
-| Regulatory cost (NRC or equivalent) | truly-unknown | important | No HIF plant has entered regulatory process; 2.2× construction cost multiplier from fission-analog scenario [21-spherical-tokamak-hts §Section 2] applies as upper bound |
-| Final focus magnet lifetime under neutron exposure | truly-unknown | important | No irradiation database for final focus elements in HIF proximity |
-| sCO₂ Brayton cycle applicability to HIF | not-yet-sourced | important | No published HIF study evaluates modern power conversion alternatives |
-| Capacity factor target | truly-unknown | important | No HYLIFE-II or HIBALL capacity factor estimate published |
-| FLiBe inventory cost for HYLIFE-II-scale plant | not-yet-sourced | important | Memory note: FLiBe cost data is consistently sparse across IFE analyses; HYLIFE-II has only 1994-dollar estimates |
-| Li-6 enrichment level required | derivable | important | Can be estimated from neutronics if blanket geometry is known; sets supply chain requirements |
-| O&M cost breakdown (fixed vs. variable, scheduled vs. unplanned) | truly-unknown | important | Placeholder O&M subsection — no O&M cost decomposition exists in historical HIF studies |
-
-**O&M Placeholder Note:** Neither HIBALL nor HYLIFE-II published a detailed operations and maintenance cost breakdown separating fixed O&M, variable O&M, scheduled outages, and unplanned outage costs. The only economic output is LCOE. This is a guaranteed analysis gap. For a modern LCOE model, O&M should be estimated as: driver component maintenance (~1–2%/year of driver CAPEX), chamber/liquid wall maintenance (~0.5–1%/year), tritium processing system maintenance, and target factory operating costs. These must be treated as estimates with high uncertainty.
-
----
-
-## Section 6: Data Gap Inventory
+## 6. Data Gap Inventory
 
 | # | Gap Description | Section | Gap Type | Criticality | Source Recommendation |
 |---|-----------------|---------|----------|-------------|----------------------|
-| 1 | All cost data 30–40 years old; no modern CAPEX analysis in current dollars | S1, S5 | not-yet-sourced | blocking | Commission a modern reanalysis using HYLIFE-II/HIBALL as starting points; apply ARIES/PROCESS methodology; no published modern study exists |
-| 2 | Target fabrication cost at 5–15 Hz commercial volume | S2, S3, S5 | truly-unknown | blocking | No HIF-specific target production cost study exists; analogize from NIF target production literature with geometry simplification adjustment |
-| 3 | Driver component replacement schedule and cost at commercial rep rates | S2, S3, S5 | truly-unknown | blocking | Requires industry consultation or design study; induction linac accelerator physics literature does not address commercial rep-rated lifecycle |
-| 4 | Capacity factor target and maintenance model | S2, S5 | truly-unknown | blocking | No published HIF availability analysis; apply IFE analogies with caveat; high rep rate may enable higher availability than low-rep-rate IFE |
-| 5 | FLiBe coolant inventory cost at HYLIFE-II scale | S4, S5 | not-yet-sourced | important | HYLIFE-II 1994 data is the only source; requires material cost update and inventory sizing from design geometry |
-| 6 | Ion source performance and lifetime at commercial duty cycle | S3, S5 | truly-unknown | important | No commercial-duty-cycle HIF ion source demonstrated; gap inherent to program hiatus |
-| 7 | Final focus magnet lifetime under cumulative neutron exposure | S3 | truly-unknown | important | No irradiation database; neutron transport modeling of final focus shielding geometry needed |
-| 8 | Modern target gain calculations with updated simulation codes | S2, S5 | not-yet-sourced | important | 1985–1994 target simulations; modern radiation-hydrodynamics codes (LASNEX, HYDRA) may significantly update gain projections |
-| 9 | Li-6 supply chain: no active production facility at fusion scale; 53 k€/kg (2019) vs. 1 k€/kg historical; ~52 t inventory per 2 GW plant implies €2.5–3B inventory cost at current prices; ~20-year lead time to establish capacity | S4 | not-yet-sourced | important | No current production facility exists; Cold War COLEX stockpiles are the only source; inventory cost is a real LCOE input (uncaptured in HIBALL/HYLIFE-II); timeline blocks near-term commercial plants |
-| 10 | sCO₂ or advanced power conversion cycle evaluation for HIF | S3 | not-yet-sourced | important | No published study; relevant given modern fusion TEA preference for sCO₂; tractable desk study |
-| 11 | O&M cost decomposition (fixed/variable, scheduled/unplanned) | S2, S5 | truly-unknown | important | Historical studies report only LCOE; O&M decomposition needed for modern TEA pipeline |
-| 12 | Regulatory pathway and cost for HIF commercial plant | S2 | truly-unknown | important | No HIF regulatory engagement exists; apply Stewart & Shirvan 2.2× scenario as conservative upper bound |
-| 13 | Commercial company identity ("Intensity Energy") | S1 | truly-unknown | nice-to-have | Exhaustive search failed; may be a placeholder name or pre-announcement entity; cannot resolve without company disclosure |
-| 14 | HIBALL or HYLIFE-II updated with modern Li-6 enrichment and beryllium supply chain constraints | S4 | not-yet-sourced | nice-to-have | Supply chain landscape has changed significantly since 1985/1994; dedicated analysis needed |
-| 15 | CAS21 civil works cost for km-scale accelerator tunnel geometry | S2 | not-yet-sourced | important | Framework per-MW buildings scaling is tokamak-derived; 3 km linac tunnel is qualitatively different; likely undercosted and partly explains $92/MWh vs $162/MWh model/historical gap |
+| 1 | Modern driver capital cost (induction accelerator with current superconductor costs, solid-state pulsed power) | S2, S5 | not-yet-sourced | blocking | Bottom-up cost model from LBNL or particle accelerator engineering firms; update HYLIFE-II $570M (1990s) to 2026 dollars with technology evolution |
+| 2 | Target fabrication cost at production scale (189,000-470,000 units/year for 6-15 Hz) | S2, S5 | truly-unknown | blocking | Manufacturing engineering study for cryogenic DT ice-layer targets with automated batch production; analogous to IFE target factory studies but no HIF-specific data exists |
+| 3 | Chamber and FLiBe blanket lifetime under 6 Hz pulsed neutron loading | S2, S3 | truly-unknown | important | Pulsed neutron damage studies on structural materials behind thick liquid shielding; FLiBe jet stability experiments under pulsed blast loading |
+| 4 | Target capsule gain validation (required 50-70, currently simulation-only) | S2, S3 | truly-unknown | blocking | Integrated heavy ion beam implosion experiments at fusion-relevant scale; no facility currently exists to test this |
+| 5 | Tritium extraction efficiency from FLiBe at kg/day scale | S3, S4 | not-yet-sourced | important | FLiBe tritium extraction pilot plant data; MSRE provided proof-of-concept but not at fusion plant scale |
+| 6 | FLiBe production capacity and cost at plant scale (hundreds of tonnes per plant) | S4, S5 | not-yet-sourced | important | Industrial FLiBe production quotes or beryllium fluoride supply chain analysis; currently no commercial FLiBe production |
+| 7 | Company verification and modern design choices | S1 | truly-unknown | blocking | "Intensity Energy" is unverifiable; no private company pursues HIF commercially; gap is lack of commercial entity making design decisions |
+| 8 | Rep rate scaling above 6 Hz (target 10-15 Hz from arxiv 2005.07520) | S2, S5 | truly-unknown | important | Chamber clearing timescale measurements; FLiBe jet reformation dynamics; target injection cycle time studies at >6 Hz |
+| 9 | Thermal buffering and energy storage system for pulsed thermal conversion | S2, S3 | derivable | nice-to-have | Thermal storage sizing calculation based on 350 MJ pulses at 6 Hz and steam turbine inlet temperature requirements; engineering exercise not requiring new data |
+| 10 | sCO2 Brayton cycle applicability to pulsed FLiBe heat source | S3, S5 | not-yet-sourced | nice-to-have | sCO2 cycle integration studies with pulsed thermal input; no HIF-specific study found; HYLIFE-II baseline is steam Rankine |
 
----
+## 7. Family-Delta vs Comparables
 
-## Section 7: Cross-Concept Notes
+No comparable concept in the corpus for this design point.
 
-**Available approved prior analysis: 21-spherical-tokamak-hts (Tokamak Energy)**
+(No approved IFE analyses exist yet in the concept landscape. When laser ICF analyses—particularly indirect-drive laser ICF, which shares target implosion physics and pulsed chamber architecture—are completed, the family-delta should articulate: (1) Driver efficiency advantage: 30-40% for heavy ions vs 1-15% for lasers, reducing required target gain by factor of ~3-5 for equivalent LCOE. (2) Target coupling: volumetric energy deposition via ion stopping (penetration depth ~0.5-1 mm) vs laser surface ablation; different hydrodynamic instability sensitivities. (3) Driver architecture: modular induction cells amenable to factory mass production vs precision optics with slower manufacturing learning curves. (4) Chamber simplification: no beam path optics to protect from debris, enabling simpler chamber geometry, but requires physical electrical connection or ion beam focusing through chamber ports. (5) Rep rate targets: HIF at 6-15 Hz vs laser ICF at 5-20+ Hz; chamber clearing constraints differ due to yield per shot and debris characteristics.)
 
-The Spherical Tokamak - HTS analysis is the only approved prior analysis available for cross-referencing. As an MFE tokamak concept, the overlap with HIF is limited primarily to D-T fuel cycle constraints and regulatory cost scenarios. No HIF accelerator, target, or chamber cost structures are shared with a tokamak design.
+## 8. Sources
 
-**Reused from 21-spherical-tokamak-hts:**
+Listed in order of importance:
 
-- **D-T tritium constraints**: The global tritium inventory (~25–30 kg), startup inventory requirement (~1 kg at >$35,000/g), CANDU production decline, and self-sufficiency sequencing constraint are identical for all D-T concepts [21-spherical-tokamak-hts §Section 4]. HIF's low in-system tritium inventory (0.5 g in FLiBe, 140 g in tube wall metal for HYLIFE-II) is a relative advantage in inventory management during operation, but startup procurement requirements are unchanged.
-- **Regulatory cost uncertainty**: The Stewart & Shirvan 2.2× construction cost multiplier under a fission-analog regulatory framework applies to HIF as a D-T IFE facility [21-spherical-tokamak-hts §Section 2]. This is an industry-wide constraint, not concept-specific.
+1. **HYLIFE-II Final Report** (OSTI 7021072, LLNL, 1990s)
+   - Contribution: Baseline 940 MWe design point specifications; 6.5 ¢/kWh LCOE estimate; driver cost ($570M); FLiBe blanket design; tritium inventory (0.5 g + 140 g); 30-year chamber lifetime claim
+   - Location: Referenced in dossier.md and hif-technology-overview.md; OSTI database
+   - Note: 1990s-era study; costs not adjusted for inflation; no modern reanalysis found
 
-**Key divergences from tokamak/MFE concepts:**
+2. **Heavy Ion Fusion Technology Overview and Review** (arxiv 2005.07520, 2020)
+   - Contribution: Driver efficiency (30-40%); target gain requirements (50-70 for 1 GWe); rep rate targets (~10-15 Hz for modern HIF reactors); comparison of US vs European driver approaches (induction vs RF linac)
+   - Location: knowledge/concept_research/25-heavy-ion-beam-icf/iter-02/sources/hif-recent-research-compilation.md; arXiv
+   - Note: Most recent comprehensive HIF review; confirms technology status as of 2020
 
-HIF is structurally different from all MFE concepts in ways that materially restructure the cost model:
+3. **HIBALL Study** (KfK-3202, German-US collaboration, 1985)
+   - Contribution: Alternative HIF power plant design (3.8 GWe); LiPb blanket (TBR ~1.195); 10 GeV Bi²⁺ driver specifications; ~3 km linac length
+   - Location: Referenced in dossier.md and hif-technology-overview.md; Karlsruhe Fusion Forschung reports
+   - Note: Earlier and larger-scale design than HYLIFE-II; demonstrates design space breadth
 
-- **No plasma-confining magnets**: The largest single capital cost item in tokamak and stellarator designs — HTS magnet systems, costing hundreds of millions of dollars and requiring thousands of km of REBCO tape — is entirely absent from HIF. The accelerator quadrupoles are individually modest and use conventional LTS or HTS in small quantities. This represents a genuine capital cost structural advantage.
-- **Driver replaces magnets as dominant cost item**: Instead of magnet capital cost, HIF LCOE is dominated by the induction linac driver ($570M in 1990s dollars for HYLIFE-II) and by per-shot consumables (targets). This creates a fundamentally different OPEX structure: there is a large per-shot operating cost (target + any consumable hardware) with no analog in steady-state MFE.
-- **No superconducting magnet cryogenics**: Tokamaks and stellarators require large cryogenic systems for HTS/LTS magnets. HIF accelerators also require cryogenics for superconducting quadrupoles, but the scale is smaller (individual focusing elements, not km-scale coil systems). This eliminates a significant recurring maintenance and capital cost category.
-- **IFE chamber vs. MFE plasma-facing components**: The LCOE challenge of periodic blanket module replacement (which dominates tokamak availability planning) is potentially eliminated by HYLIFE-II's liquid wall architecture, which claims 30-year chamber lifetime with no structural replacement. If validated, this would be a significant availability advantage over tokamak designs.
+4. **HIF Recent Research Compilation** (iter-02 source aggregation)
+   - Contribution: Multi-unit plant economics; improved HYLIFE-II heat transport (eliminated intermediate heat exchangers); blanket design details (thick liquid wall for 30-year lifetime); MHD conversion option
+   - Location: knowledge/concept_research/25-heavy-ion-beam-icf/iter-02/sources/hif-recent-research-compilation.md
+   - Note: Aggregates multiple OSTI reports and conference papers
 
-**Relationship to other IFE concepts in the landscape:**
+5. **Dossier: Heavy Ion Beam ICF** (concept_research/25-heavy-ion-beam-icf/dossier.md, updated 2026-03-07)
+   - Contribution: Differentiation table values (all high confidence); company verification failure ("Intensity Energy" not found); iter-1 and iter-2 source summaries; remaining gaps assessment
+   - Location: knowledge/concept_research/25-heavy-ion-beam-icf/dossier.md
+   - Note: Two iterations completed; conclusion: no further iterations recommended due to lack of company and no remaining high-value sources
 
-Heavy ion beam ICF occupies a distinct driver technology position within IFE:
+6. **FIA 2025 Fusion Company Survey**
+   - Contribution: Negative evidence—"Intensity Energy" not among 53 surveyed fusion companies
+   - Location: Referenced in dossier.md §Company Verification
+   - Note: Confirms absence of commercial HIF activity
 
-- *Laser ICF concepts* (concepts 17a, 17b, 23, 30, etc.): Laser drivers have 1–15% wall-plug efficiency vs. HIF's 30–40%. This is the foundational HIF economic argument. However, laser ICF has advanced experimentally far beyond HIF (NIF achieved ignition; no HIF driver-scale experiment exists). Target gain requirements are inversely related to driver efficiency — HIF needs only gain ~50–70 to close the energy balance where laser ICF needs gain 100–200 [hif-technology-overview.md §Target Design; hif-recent-research-compilation.md §Key Technical Parameters]. **Model limitation**: The current framework cannot quantify this advantage through parametric sweeps (eta_pin wiring inverted, +0.148 elasticity). Manual recirculating-power comparison (H3, Section 2): 15% recirc (HIF) vs. 25% recirc (laser ICF) imposes a ~13% gross generation penalty on the laser ICF plant. For a direct driver-cost-per-joule comparison, the driver capital scenario sweep should be run against the laser ICF concept (concept 30) with HIF parameters — this is the correct analytical axis until the eta_pin framework issue is resolved.
-- *Projectile ICF* (concept 22, First Light Fusion): Another driver alternative with potentially high efficiency. The electromagnetic gun driver has different scaling characteristics. Both projectile ICF and HIF share the "no optics in the chamber" advantage over laser ICF.
-- *MagLIF* (concept 07): MagLIF uses pulsed magnetic compression. Like HIF, it eliminates laser optics and achieves higher driver efficiency. Unlike HIF, MagLIF operates at sub-Hz to ~1 Hz (not 5–15 Hz), requires per-shot RTL consumables, and has active private-sector development.
+7. **NDCX-II at LBNL** (operational ~2012-present)
+   - Contribution: Experimental platform for neutralized drift compression; heavy ion beam physics; warm dense matter studies (~10,000 K, not fusion-relevant)
+   - Location: Referenced in dossier.md §Key Sources
+   - Note: Demonstrates beam physics but not integrated target implosion
 
-The HIF economic model should be parameterized to enable direct comparison against laser IFE concepts at the driver cost-per-joule level — this is the primary axis on which HIF claims economic advantage.
-
----
-
-## Section 8: Sources
-
-**1. HIBALL Study (KfK-3202, Badger et al., 1985)**
-- Contribution: German-US heavy ion beam power plant design study. Establishes HIBALL concept: 10 GeV Bi²⁺ at 160 mA, ~3 km linac, LiPb blanket with TBR ~1.195, 3.8 GWe net, 15% recirculating power, 2,000 MW fusion power per chamber. Primary source for large-scale HIF plant parameters.
-- Location: Referenced in dossier.md §Key Sources; cited in hif-technology-overview.md
-
-**2. HYLIFE-II Final Report (OSTI 7021072, LLNL, early 1990s)**
-- Contribution: Most complete HIF power plant economic study. FLiBe thick-liquid-wall architecture, 940 MWe baseline, 6.5 cents/kWh LCOE (1990s dollars), $570M driver cost, 6 Hz single chamber, 350 MJ/shot at gain = 70, 30-year chamber lifetime, low tritium inventory (0.5 g molten salt + 140 g tube wall). Primary source for all LCOE and cost parameters.
-- Location: Referenced in dossier.md §Key Sources; cited throughout hif-technology-overview.md
-
-**3. HIF Technology Overview (iter-01/sources/hif-technology-overview.md)**
-- Contribution: Compiled technical overview synthesizing HIBALL, HYLIFE-II, LBNL HIF program literature, and driver technology details. Source for cost estimates, driver efficiency, target design, magnet technology, and power plant parameters used in Section 5 parameter table.
-- Location: Phase 1a source [iter-01/sources/hif-technology-overview.md]
-
-**4. HIF Recent Research Compilation (iter-02/sources/hif-recent-research-compilation.md)**
-- Contribution: Compilation covering 2020 arXiv review paper (arxiv 2005.07520) findings. Confirms 30–40% driver efficiency, 10–15 Hz rep rate target for future reactors, target gain 50–70 requirement, HYLIFE-II nominal gain of 70, FAIR status. No new private companies found.
-- Location: Phase 1a source [iter-02/sources/hif-recent-research-compilation.md]
-
-**5. arXiv 2005.07520 (2020 HIF Technology Review)**
-- Contribution: Most recent peer-reviewed overview of HIF technology status. Establishes ~10–15 Hz rep rate target for commercial plants, confirms driver efficiency advantage, summarizes experimental program status.
-- Location: Referenced via dossier.md §Key Sources and hif-recent-research-compilation.md
-
-**6. Intensity Energy Search Results (iter-01/sources/intensity-energy-search-results.md)**
-- Contribution: Documents exhaustive and failed attempt to verify "Intensity Energy" as an existing company. Confirms that no private company is currently pursuing heavy ion beam ICF commercially as of 2026. Establishes that the concept is analyzed here as a technology archetype, not a specific commercial entity.
-- Location: Phase 1a source [iter-01/sources/intensity-energy-search-results.md]
-
-**7. Dossier (knowledge/concept_research/25-heavy-ion-beam-icf/dossier.md)**
-- Contribution: Phase 1a research summary with per-column confidence ratings, citations, and notes. Primary source for high-confidence taxonomy values (driver technology, fuel, ion species, rep rate, magnet type schema interpretation, HIBALL/HYLIFE-II design specifications).
-- Location: Phase 1a dossier [knowledge/concept_research/25-heavy-ion-beam-icf/dossier.md]
-
-**8. Approved D1+ Analysis: Spherical Tokamak - HTS (21-spherical-tokamak-hts)**
-- Contribution: Cross-concept reference for D-T fuel cycle constraints (tritium global inventory, startup cost, CANDU production decline) and regulatory cost scenario (Stewart & Shirvan 2.2× multiplier). Not applicable for cost structure, magnet supply chain, or plasma physics parameters.
-- Location: analyses/21-spherical-tokamak-hts/analysis.md
-
-**9. Goodin et al. (2004) — IFE Target Fabrication Economics**
-- Contribution: Establishes the criterion that target cost must be <10% of electricity value per target for IFE economic viability. Applied in Section 2 to frame the HIF target fabrication challenge.
-- Location: Referenced in handwritten exemplar 26-laser-icf-indirect-drive.md
-
-**10. Stewart, J. and Shirvan, K. (2022) — Regulatory Cost Framework**
-- Contribution: Provides the 2.2× construction cost multiplier for fission-style regulation of fusion plants. Applied as conservative upper bound in regulatory cost discussion.
-- Location: Referenced in approved analysis 21-spherical-tokamak-hts, §Section 2
+8. **FAIR/SIS100 at GSI Darmstadt** (commissioning 2025)
+   - Contribution: Heavy ion synchrotron with high-intensity pulses; European HIF program continuity
+   - Location: Referenced in dossier.md §Key Sources
+   - Note: Not fusion-focused; broader heavy ion science facility

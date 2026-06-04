@@ -1,249 +1,220 @@
 
-######################################################################
-# BASELINE: Beam-Target D-T Accelerator Plant (SHINE FLARE scale)
-######################################################################
-======================================================================
-Particle Accelerator-Driven Fusion (D-T) LCOE Model — 1cFE CAS
-SHINE Technologies / FLARE reference concept
-======================================================================
+########################################################################
+# BASELINE: SHINE FLARE Facility — Moderate Estimates
+########################################################################
+========================================================================
+Particle Accelerator-Driven Fusion (D-T) — SHINE Technologies FLARE
+Facility Economics Model — 1cFE CAS-Structured (Free-Form)
+========================================================================
 
---- Key Input Parameters ---
-  Beam voltage:               300 kV
-  Fusion rate (per module):   5.00e+13 reactions/s
-  Effective Q (q_eff):        0.0020  [physics ceiling ≈ 0.01]
-  Blanket multiplication:     1.10
-  Blanket capture fraction:   0.85
-  Thermal efficiency:         33.0%
-  Number of modules:          10,000
-  Plant availability:         90.0%
-  FOAK/NOAK:                  FOAK
-  Interest rate:              8.0%
-  Plant lifetime:             30 years
+  *** IMPORTANT: SHINE IS NOT A POWER PLANT (p_net = 0 by physics) ***
+  Q_sci = 9.39e-03  |  Break-even = 2.14  |  Gap = 228x
+  LCOE ($/MWh) is undefined. Concept-appropriate metrics follow.
 
---- Per-Module Power Balance ---
-  Fusion power (per mod):     141 W  (≈ 140 W for FLARE)
-    Neutron power:            113 W (80%)
-    Alpha power:              28 W (20%)
-  Beam kinetic power:         70.4 kW  ← dominant heat source
-    Beam current (derived):   235 mA
-  Thermal power (per mod):    70.6 kW  (beam dump + fusion)
-  Gross electric (per mod):   23.29 kW
-  Net electric (per mod):     -47.5 kW  ← NEGATIVE
-  Q_sci (beam fusion gain):   0.0020  [= q_eff, << 1]
-  Q_eng:                      0.00199
-  Recirculating fraction:     3.04×  (>> 1: not viable)
+--- Fusion Physics (PART A: Q_sci demonstration) ---
+  Fusion reaction rate:      5.00e+13 reactions/s  [high confidence]
+  Fusion power:              140.9 mW  (~141 mW)
+  Beam voltage:              300 kV  [known]
+  Beam current (est.):       50 mA  [HIGH UNCERTAINTY]
+  Beam power (to target):    15.0 kW
+  Wall-plug (accelerator):   21.4 kW
+  Total facility draw:       51.4 kW
+  Q_sci (fusion/beam):       0.0094  [physics ceiling: <0.01]
+  Q_sci needed for p_net=0:  2.142  (228x above current)
+  Q_eng:                     0  (no net electricity output)
+  recirc_fraction:           inf  (all input power consumed)
 
---- PHYSICS VIABILITY ANALYSIS ---
-  Current q_eff:              0.0020
-  Break-even q_eff needed:    2.142  (net power = 0)
-  Gap to break-even:          1071×  improvement required
-  Physics ceiling (any beam-  ≤ 0.01 — ~214× below break-even
-    target D-T geometry):     Fundamental constraint, not maturity limited
+  Tritium consumed:          7.06 mg/yr
+  Tritium cost:              $247/yr  (negligible)
 
---- Plant-Level Power Balance (10,000 modules) ---
-  Fusion power (plant):       1.41 MW
-  Beam power input (plant):   704.5 MW  ← purchased from grid
-  Thermal power (plant):      705.8 MW
-  Gross electric (plant):     232.9 MWe
-  Net electric (plant):       -474.6 MWe  ← NEGATIVE
+--- Neutron Production ---
+  Capacity factor:           90.0%
+  Annual neutrons:           1.419e+21 neutrons/yr
 
---- CAS22: Reactor Plant Equipment ---
-    C220101 Blanket/First Wall           $   332.1M
-    C220102 Shield                       $   881.7M
-    C220103 Coils                        $     0.0M  [override: no magnets]
-    C220104 Supplementary Heating        $     0.0M  [override: beam is heater]
-    C220105 Primary Structure            $    80.2M
-    C220106 Vacuum System (beam tube)    $   181.6M
-    C220107 Accelerator + Target Systems $  5500.0M  [override: 10,000 × $0.55M]
-    C220108 Target Factory (IFE)         $     0.0M  [override: no pellet factory]
-    C220109 Direct Energy Converter      $     0.0M
-    C220110 Remote Handling              $     4.0M
-    C220111 Installation                 $   977.1M
-    C220112 Isotope Separation           $     0.0M
-  ───────────────────────────────────────────────────────
-    Reactor subtotal:                    $  7956.7M
-    C220200 Coolant Systems              $    55.5M
-    C220300 Aux Cooling + Cryoplant      $     1.5M
-    C220400 Rad Waste Management         $     1.4M
-    C220500 Tritium Handling Plant       $    50.0M
-    C220600 Other Equipment              $     8.7M
-    C220700 Instrumentation & Control    $    30.0M
-  ───────────────────────────────────────────────────────
-    Plant-wide subtotal:                 $   147.1M
-  CAS22 Total:                           $  8103.8M
+--- CAS22: Facility Equipment (PART B: FLARE facility economics) ---
+  All accounts are concept-specific overrides. No standard fusion
+  power-plant sub-system applies.
+  C220101  LEU Subcritical Assembly   [override]         $   22.00M
+  C220102  Biological Shield                             $    0.52M
+  C220103  Coils (N/A)               [override=0]        $    0.00M
+  C220104  Linear Accelerator        [override]          $   15.00M
+  C220105  Primary Structure                             $    0.02M
+  C220107  HV Power Supply           [override]          $    3.00M
+  C220108  Target + Isotope Proc.    [override]          $   32.00M
+  C220109  Direct Energy Conv. (N/A) [override=0]        $    0.00M
+  C220111  Installation (14%)                            $   10.16M
+  ────────────────────────────────────────────────────────────
+  Per-module subtotal:                                    $   82.70M
+  C220200  Coolant Systems (minimal)                     $    0.50M
+  C220300  Auxiliary Cooling                             $    0.30M
+  C220400  Radioactive Waste Management                  $    3.00M
+  C220500  Fuel Handling (T + LEU)                       $    2.00M
+  C220600  Other Equipment                               $    1.50M
+  C220700  Instrumentation & Control                     $    4.00M
+  ────────────────────────────────────────────────────────────
+  Plant-wide subtotal:                                    $   11.30M
+  CAS22 Total:                                            $   94.00M
 
 --- Capital Costs (CAS10-60) ---
-  CAS10 Pre-construction:                $    32.6M
-  CAS21 Buildings:                       $   116.9M
-  CAS22 Reactor Plant Equipment:         $  8103.8M
-  CAS23 Turbine Plant:                   $    46.0M
-  CAS24 Electric Plant:                  $    19.6M
-  CAS25 Misc Plant:                      $    11.9M
-  CAS26 Heat Rejection:                  $     8.0M
-  CAS27 Special Materials:               $     2.0M
-  CAS28 Digital Twin:                    $     5.0M
-  CAS29 Contingency:                     $   831.3M
-  ──────────────────────────────────────────────────────────
-  CAS20 Direct Costs:                    $  9144.6M
-  CAS30 Indirect Costs:                  $   914.5M
-  CAS40 Owner's Costs:                   $    18.8M
-  CAS50 Supplementary:                   $   524.3M
-  ──────────────────────────────────────────────────────────
-  Overnight Capital:                     $ 10634.8M
-  CAS60 IDC (f=0.082):               $   873.5M
-  ══════════════════════════════════════════════════
-  Total Capital:                         $ 11508.3M
-  Specific Capital:                         ∞  (p_net < 0)
+  CAS10 Pre-construction:                         $   14.00M
+  CAS21 Buildings:                                $   18.00M
+  CAS22 Facility Equipment:                       $   94.00M
+  CAS23 Turbine Plant:                            $    0.00M  (N/A)
+  CAS24 Electric Plant:                           $    1.50M
+  CAS25 Misc Equipment:                           $    1.00M
+  CAS26 Heat Rejection:                           $    0.50M
+  CAS27 Special Materials (LEU):                  $    2.00M
+  CAS28 Control System:                           $    2.00M
+  CAS29 Contingency:                              $    0.00M
+  ───────────────────────────────────────────────────────
+  CAS20 Direct Costs:                             $  119.00M
+  CAS30 Indirect Costs:                           $   15.87M
+  CAS40 Owner's Costs:                            $    5.95M
+  CAS50 Supplementary:                            $    3.00M
+  ───────────────────────────────────────────────────────
+  Overnight Capital:                              $  157.81M
+  CAS60 IDC (f=0.127):                     $   19.97M
+  =======================================================
+  Total Capital:                                  $  177.78M
+  Specific Capital:                               N/A (not a power plant)
 
 --- Annual Costs (CAS70-90) ---
-  CAS90 Capital charge (CRF=0.0888):  $  1022.3M/yr
-  CAS71 O&M (levelized):                 $    19.3M/yr
-  CAS72 Scheduled replacement:           $    17.9M/yr  (2 replacements)
-  CAS70 Total O&M:                       $    37.2M/yr
-  CAS80 Fuel (T + D):                    $     2.8M/yr
-    Tritium (10,000 mod × 8mg/yr):  $    2.80M/yr
-    Deuterium:                            $  0.0001M/yr
+  CAS90 Capital Charge (CRF=0.1019):       $   18.11M/yr
+  CAS71 O&M:
+    Staffing (35 FTE x $140k):    $    4.90M/yr
+    Grid electricity (51 kW):    $  0.0304M/yr
+    Maintenance (3.0% of overnight): $    4.73M/yr
+  CAS71 O&M Total:                                $    9.66M/yr
+  CAS72 Scheduled Replacement (2% CAS22):         $    1.88M/yr
+  CAS70 Total O&M:                                $   11.54M/yr
+  CAS80 Fuel + Consumables:
+    LEU fuel + waste:                             $   0.500M/yr
+    Tritium (7.06 mg/yr):                $  247.16/yr
+  CAS80 Total:                                    $   0.501M/yr
+  ───────────────────────────────────────────────────────
+  Annual Revenue Requirement:                     $   30.15M/yr
 
---- LCOE ---
-  Annual energy production:              0 MWh  (net power < 0)
-  Annual revenue requirement:            $1062.3M
-  ╔══════════════════════════════════════════════════════╗
-  ║  LCOE = ∞                                            ║
-  ║  Net electric power is NEGATIVE (-475 MWe)  ║
-  ║  Beam-target D-T cannot generate net electricity.    ║
-  ║  Physics ceiling: q_eff < 0.01; break-even ≈ 2.1  ║
-  ╚══════════════════════════════════════════════════════╝
+  Cost Breakdown:
+    Capital (CAS90):  60.1%
+    O&M (CAS70):      38.3%
+    Fuel (CAS80):     1.7%
 
-======================================================================
-SENSITIVITY ANALYSIS
-======================================================================
+--- LCOE and Concept-Appropriate Metrics ---
+  LCOE:                    NOT APPLICABLE (freeform, native-scale only) — p_net = 0 by physics
+  Annual neutrons:         1.419e+21 neutrons/yr
+  Cost per neutron:        $2.125e-14 / neutron
+  Cost per flux unit:      $6.0306e-13 M$ / (neutron/s)
 
-1. q_eff_beam_target sweep (the binding physics constraint)
-   Physics ceiling: q_eff < 0.01. Break-even requires q_eff ≈ 2.1.
-        q_eff     p_net [MW]   Capital [$B]           LCOE
-   -------------------------------------------------------
-       0.0010         -946.6          13.11    ∞ (p_net<0)
-       0.0020         -474.6          11.51    ∞ (p_net<0)
-       0.0050         -191.4          10.28    ∞ (p_net<0)
-       0.0100          -97.0           9.73    ∞ (p_net<0)
-       0.1000          -12.0           8.98    ∞ (p_net<0)
-       0.5000           -4.4           8.84    ∞ (p_net<0)
-       1.0000           -3.5           8.82    ∞ (p_net<0)
-       2.0000           -3.0           8.81    ∞ (p_net<0) ← break-even
-       2.5000           -2.9           8.80    ∞ (p_net<0)
-       5.0000           -2.7           8.80    ∞ (p_net<0)
+--- Mo-99 Revenue Context ---
+  Production (assumed):    1,200 Ci/week
+  Producer price:          $5,000/6-day Ci
+  Annual Mo-99 revenue:    $312.0M/yr  [HIGH UNCERTAINTY]
+  Annual facility cost:    $30.15M/yr
+  Revenue coverage ratio:  10x
 
-2. n_mod sweep (scaling: does adding modules help?)
-   At any q_eff < break-even, more modules = more net-negative power.
-          n_mod   p_fus [MW]   p_net [MW]   Capital [$B]
-   -----------------------------------------------------
-            100         0.01         -7.7           0.21
-          1,000         0.14        -50.2           1.10
-         10,000         1.41       -474.6          11.51
-        100,000        14.09      -4718.6         181.30
-      1,000,000       140.90     -47159.0        4488.14
+  SHINE's commercial viability is driven by isotope market pricing,
+  NOT electricity markets. Coverage ratio >1 shows economic viability
+  as an isotope producer. The concept has no path to LCOE competitiveness.
 
-3. accelerator_cost_M_per_mod sweep (capital cost sensitivity)
-   Capital cost reduction cannot fix negative net power.
-     $/module [M$]   CAS22 [$B]  Total Cap [$B]         LCOE
-   ---------------------------------------------------------
-              0.05         2.97            4.46  ∞ (p_net<0)
-              0.10         3.54            5.25  ∞ (p_net<0)
-              0.20         4.68            6.81  ∞ (p_net<0)
-              0.50         8.10           11.51  ∞ (p_net<0)
-              1.00        13.80           19.34  ∞ (p_net<0)
-              2.00        25.20           34.99  ∞ (p_net<0)
-              5.00        59.40           81.96  ∞ (p_net<0)
+========================================================================
+SENSITIVITY ANALYSIS — Annual Revenue Requirement (M$/yr)
+LCOE is infinite for all cases; sweeps show cost-driver sensitivity.
+========================================================================
 
-4. thermal_efficiency sweep (does better conversion help?)
-   Even η = 1.0 is insufficient: break-even requires recovering all
-   beam heat AND all fusion heat, which would need η > ~1/(1+q_eff*BM).
-          η   Break-even q_eff   p_net [MW]
-   ------------------------------------------
-       0.20              4.219       -566.3
-       0.25              3.165       -531.0
-       0.33              2.142       -474.6
-       0.40              1.582       -425.2
-       0.50              1.055       -354.6
-       0.60              0.703       -284.0
-       0.80              0.264       -142.8
-       1.00              0.000         -1.7
+Baseline annual cost: $30.15M/yr
 
-5. beam_voltage_kV sweep (does lower voltage help?)
-   Lower voltage reduces beam power but also reduces fusion cross section.
-   q_eff is held constant — in practice it peaks near 120 keV CM (240 keV lab).
-       V [kV]    p_beam [MW]   p_net [MW]
-   ----------------------------------------
-          100          704.5       -474.6
-          150          704.5       -474.6
-          200          704.5       -474.6
-          250          704.5       -474.6
-          300          704.5       -474.6
-          400          704.5       -474.6
+  Beam current [mA]   [HIGH UNCERTAINTY — not published]:
+            10  ->  $  30.14M/yr   coverage 10x
+            30  ->  $  30.15M/yr   coverage 10x
+            50  ->  $  30.15M/yr   coverage 10x  <- baseline
+           100  ->  $  30.17M/yr   coverage 10x
+           200  ->  $  30.19M/yr   coverage 10x
 
+  Capacity factor:
+           0.7  ->  $  30.15M/yr   coverage 10x
+           0.8  ->  $  30.15M/yr   coverage 10x
+           0.9  ->  $  30.15M/yr   coverage 10x  <- baseline
+          0.95  ->  $  30.15M/yr   coverage 10x
 
-======================================================================
+  LEU assembly cost [$M]:
+            10  ->  $  27.54M/yr   coverage 11x
+            15  ->  $  28.63M/yr   coverage 11x
+            22  ->  $  30.15M/yr   coverage 10x  <- baseline
+            35  ->  $  32.99M/yr   coverage 9x
+            50  ->  $  36.26M/yr   coverage 9x
+
+  Isotope processing cost [$M]:
+            15  ->  $  27.32M/yr   coverage 11x
+            22  ->  $  28.84M/yr   coverage 11x
+            28  ->  $  30.15M/yr   coverage 10x  <- baseline
+            40  ->  $  32.77M/yr   coverage 10x
+            55  ->  $  36.04M/yr   coverage 9x
+
+  Staff count [FTE]   [HIGH UNCERTAINTY]:
+            20  ->  $  28.05M/yr   coverage 11x
+            30  ->  $  29.45M/yr   coverage 11x
+            35  ->  $  30.15M/yr   coverage 10x  <- baseline
+            50  ->  $  32.25M/yr   coverage 10x
+            60  ->  $  33.65M/yr   coverage 9x
+
+  Interest rate (WACC):
+          0.05  ->  $  25.69M/yr   coverage 12x
+          0.08  ->  $  30.15M/yr   coverage 10x  <- baseline
+           0.1  ->  $  33.55M/yr   coverage 9x
+          0.12  ->  $  37.29M/yr   coverage 8x
+
+========================================================================
 SCENARIO COMPARISON
-======================================================================
+========================================================================
 
-Note: At n_mod=10,000 the auxiliary overhead per module (300 W) exceeds the
-maximum gross electric from fusion (~44 W/mod), so p_net < 0 for ANY q_eff.
-The 'q=3 scale demo' uses 1M modules to overcome this auxiliary floor.
+  Scenario                     Overnight ($M) Annual ($M/yr)   Coverage
+  ----------------------------------------------------------------------
+  Conservative (high cost)     $      196.5M   $      44.05M/yr         5x
+  Moderate (baseline)          $      157.8M   $      30.15M/yr        10x
+  Optimistic (low cost)        $      135.9M   $      22.41M/yr        29x
 
-Scenario                          q_eff        n_mod   p_net [MW]   Capital [$B]           LCOE
------------------------------------------------------------------------------------------------
-Conservative                     0.0010       10,000       -988.9          20.84 ∞ (not viable)
-Moderate (baseline)              0.0020       10,000       -474.6          11.51 ∞ (not viable)
-Optimistic (physics)             0.0050       10,000       -171.5           5.53 ∞ (not viable)
-q=3 scale demo (1M mod)          3.0000    1,000,000         22.2         333.48   $144,321/MWh
+========================================================================
+KEY BINDING CONSTRAINTS — Top 3 Cost / Viability Drivers
+========================================================================
 
+1. FUNDAMENTAL PHYSICS CEILING ON Q_sci (ELIMINATES POWER-GENERATION VIABILITY)
+   Current Q_sci = 9.39e-03 (at 50 mA)
+   Break-even Q_sci needed = 2.14   |   Gap = 228x
 
-======================================================================
-KEY BINDING CONSTRAINTS — Top 3 LCOE Drivers
-======================================================================
+   In beam-target D-T at 300 keV, the D-T cross-section at the D-T peak
+   (~120 keV CM energy = ~240 keV lab) is ~5 barns. But the stopping cross-
+   section for Coulomb interactions with electrons in the target gas is
+   ~1000x larger. Only ~0.1-1% of beam deuterons fuse before losing their
+   energy. This ratio is set by atomic physics, not engineering.
 
-1. FUNDAMENTAL PHYSICS CEILING ON q_eff (ELIMINATES VIABILITY)
-   Current q_eff = 0.0020  |  Break-even q_eff ≈ 2.14  |  Gap = 1071×
+   Breaking even requires Q_sci > 2.14 — about 228x above the physics
+   ceiling for ANY beam-target D-T geometry. No accelerator optimization,
+   no blanket improvement, and no capital reduction can overcome this.
+   A plasma-confining device (tokamak, FRC, etc.) would be required instead.
 
-   In beam-target D-T at 300 keV, each deuteron must be given ~300 keV of kinetic
-   energy. The D-T reaction releases 17.59 MeV (a 59:1 energy ratio per reaction),
-   but only a tiny fraction of beam deuterons undergo fusion before losing their
-   energy by ionization and elastic scattering in the target gas. The resulting
-   effective Q (q_eff ≈ 0.001–0.01) is set by the D-T fusion cross section
-   integrated over the stopping range — a property of atomic physics, not technology.
+2. STAFFING DOMINATES O&M (LARGEST ANNUAL COST DRIVER)
+   Staffing at baseline = $4.9M/yr (16% of annual cost)
+   NRC-mandated licensed operators and health physics staff cannot be
+   eliminated. Sensitivity: 20 to 50 FTE shifts annual cost by ~+/-$2.1M/yr.
 
-   Breaking even electrically requires q_eff > (1 - η_th) / [η_th × M_eff] ≈ 2.1,
-   where η_th is thermal efficiency and M_eff is the effective blanket multiplier.
-   This is ~210× above the physics ceiling. No accelerator improvement, no
-   engineering optimization, and no amount of capital can overcome this constraint
-   without a fundamental change in the fusion geometry (i.e., plasma confinement).
+   CONTRAST: Grid electricity for the entire facility = $30k/yr
+   (beam power at 51 kW is negligible as a cost driver at this scale).
+   The facility is not an energy consumer in any economically meaningful sense.
 
-   SHINE's solution is correct: use the neutrons for high-value applications
-   (medical isotopes, materials testing) where the economic metric is $/Ci or
-   $/neutron, not $/kWh.
+3. REVENUE MODEL IS ISOTOPE PRICING — NOT ENERGY PRICING
+   Facility cost: ~$30.2M/yr  |  Mo-99 revenue (assumed): ~$312M/yr
+   Coverage ratio: ~10x
 
-2. ACCELERATOR CAPITAL SCALES WITH MODULE COUNT (PROHIBITIVE AT POWER-PLANT SCALE)
-   At baseline: 10,000 modules × $0.50M/mod = $5B accelerator capital.
-   CAS22 total: $8.1B  |  Total capital: $11.5B
+   SHINE's commercial viability comes from the Mo-99 and Lu-177 isotope
+   markets, not from electricity. The LCOE comparison framework is
+   categorically inapplicable — SHINE competes with reactor-based Mo-99
+   producers (NRU, BR2, SAFARI-1), not with power plants.
 
-   Because p_fus per module = 141 W, any scale of power requires
-   a proportionally large number of modules. The capital cost scales as n_mod,
-   growing linearly with plant size while net power remains negative. Even at
-   $10,000/module (well below any realistic accelerator cost), 10,000 modules
-   would cost $100M for accelerators alone — and still produce only 1.4 MW fusion.
+   From the TEA project perspective, SHINE establishes the lower Q bound of
+   commercially-deployed D-T fusion: TRL 9 at Q_sci ~ 10^{-3} to 10^{-2},
+   capital ~ $158M, economically sustained by the isotope market.
+   Every accelerator-driven fusion POWER concept must clear Q_sci >> 1;
+   SHINE demonstrates that reaching TRL 9 at Q << 1 is already achievable.
 
-3. TRITIUM COST SCALES LINEARLY WITH PLANT SIZE (SIGNIFICANT OPEX FLOOR)
-   At baseline: 10,000 mod × 8mg/yr × $35,000/g = $2.8M/yr
-
-   SHINE's current 8 mg/yr tritium consumption is operationally trivial (~$280/yr).
-   At power-plant scale (10,000 modules), tritium cost becomes a significant
-   operating line. This is manageable but highlights that beam-target D-T without
-   breeding has an open tritium supply chain — unlike power-plant concepts with
-   on-site tritium breeding blankets.
-
-
-NOTE: All estimates carry HIGH UNCERTAINTY. This model is intended for
-landscape comparison only. LCOE = ∞ for all physically realistic parameter
-values. See analysis.md §Section 2 for the physics ceiling discussion.
-SHINE Technologies' commercial success validates the concept as a neutron
-source — not as a power plant.
+NOTE: All estimates carry HIGH UNCERTAINTY. LCOE = inf for all realistic
+parameter values. See analysis.md §S2 for the physics ceiling derivation.

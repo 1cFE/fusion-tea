@@ -183,6 +183,10 @@ class ConceptFixture:
             "Company": "Test Co",
             "Fuel": "D-T",
             "Confinement Family": "MFE",
+            # Routing is fit-grade-only (Item 6 FR-1). This throwaway fixture
+            # routes to the freeform model-setup template, matching its prior
+            # behaviour under the retired COSTINGFE_MAPPING/FAMILY_KEY_MAP logic.
+            "fit_grade": "None",
         }
 
         self.common_vars: dict = {

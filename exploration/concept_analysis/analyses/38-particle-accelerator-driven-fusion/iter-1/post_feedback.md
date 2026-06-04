@@ -1,22 +1,36 @@
-VERDICT: FINDINGS
+VERDICT: PASS
 
-### F-1: Q value inconsistency between analysis text and model
-- **Target:** Section 2 (physics Q derivation) vs. model q_eff input
-- **Category:** model
-- **Finding:** The analysis derives Q ≈ 10^{-5} using an estimated 50 mA beam current (P_beam = 50 mA × 300 kV = 15 kW, P_fusion = 140 mW). The model uses q_eff = 2×10^{-3} — 100× higher — implying a derived beam current of 235 mA and beam power of 70.4 kW. The model output separately labels the "physics ceiling" as ≤ 0.01, another 5× above the model's baseline. All three numbers appear in the same analysis for the same physical quantity. Both the analysis and model agree on non-viability, but the stated magnitude of the Q gap differs: the analysis says "five orders of magnitude below break-even" while the model shows roughly three orders below break-even (q_eff = 0.002 vs. break-even q_eff ≈ 2.1). The published beam-target D-T Q for optimized geometry at 200–300 keV lab energy is in the 10^{-3} to 10^{-2} range, consistent with the model's value but not the analysis text's 10^{-5}. The 50 mA beam current estimate used in Section 2 appears to be the source of the discrepancy.
-- **Recommendation:** Reconcile the Q value and beam current across analysis text and model. The physically appropriate Q for beam-target D-T at this voltage is approximately 10^{-3} (not 10^{-5}). Update the Section 2 physics calculation to use the model's q_eff = 2×10^{-3} baseline (or state that 50 mA is the beam current estimate and q_eff = 10^{-5} is the result at that current, while acknowledging the literature range is 10^{-3}–10^{-2}). The qualitative conclusion is unaffected; the discrepancy only matters for the "how far below break-even" characterization.
-- **Priority:** important
+## Assessment Summary
 
-### F-2: Modeling approach choice not stated (Goal 4)
-- **Target:** Analysis body — Goal 4 (modeling approach)
-- **Category:** analysis
-- **Finding:** The analysis correctly identifies that "the correct economic metric for SHINE is either cost-per-useful-neutron or cost-per-Curie of medical isotope" but never states whether a CAS-framework model (1costingfe) or a free-form model is appropriate, or why. The model applies the full CAS10-60 account structure with heavy overrides (no magnets, beam-as-heater, custom accelerator line), but this choice is not discussed or justified in the analysis text. The analysis declares the LCOE framework inapplicable and then provides no guidance on what framework should replace it for characterizing SHINE's actual economics. Goal 4 asks: "What is the right way to model those differences? What are the key hypotheses the cost model should test?" The analysis answers the first question only by exclusion ("LCOE doesn't apply") and never identifies testable hypotheses for the relevant economic metric.
-- **Recommendation:** Add a paragraph in Section 2 or Section 5 stating the modeling approach choice and its justification. Either: (a) recommend free-form modeling built around cost-per-Ci or cost-per-neutron as the correct approach for SHINE, sketch the 2–3 parameters with highest leverage (Mo-99 yield per beam-hour, beam availability/capacity factor, capital cost allocation), and state what hypotheses the model would test; or (b) explicitly justify using the CAS framework as a landscape-comparison disqualifier (LCOE = ∞ is the formal result) while acknowledging it does not characterize SHINE's actual economic viability. The model sensitivity sweeps all operate in the power-plant framing the analysis declares inapplicable — at minimum, the analysis should acknowledge this tension.
-- **Priority:** important
+This analysis and model correctly handle a unique edge case: SHINE Technologies operates beam-target D-T fusion as a **neutron source for medical isotope production**, not as a power plant. The concept has Q_sci ~ 10^-3 to 10^-2 (far below breakeven) by fundamental physics, making electricity generation impossible.
 
-### F-3: Beam voltage sensitivity sweep is physically uninformative
-- **Target:** Model sensitivity sweep #5 (beam_voltage_kV)
-- **Category:** model
-- **Finding:** Sensitivity sweep #5 holds q_eff constant across beam voltages (100–400 kV), producing identical p_net = -474.6 MW at every point. The model notes "q_eff is held constant — in practice it peaks near 120 keV CM (240 keV lab)" but does not vary q_eff with voltage. As designed, the sweep generates zero information: p_beam, p_net, and all cost outputs are flat across the entire voltage range. A reader cannot determine from this sweep whether a different beam voltage would help or hurt, because the only variable that could show such an effect (q_eff as a function of beam energy) is held fixed.
-- **Recommendation:** Either remove sweep #5 entirely, or replace it with a q_eff(V) sweep that uses a physically motivated relationship between beam voltage and effective Q. At minimum, note that q_eff peaks near 120 keV CM energy (240 keV lab for D on T), implying that 300 kV is close to optimal and that neither higher nor lower voltage improves Q meaningfully — the physics ceiling of ~0.01 applies across the accessible voltage range. A single sentence with this conclusion replaces the uninformative sweep and strengthens the model's physics framing.
-- **Priority:** minor
+The analysis adequately satisfies the pipeline contract:
+
+### 1. Design-Point Coherence
+The analysis explicitly states "No design-point row for this concept yet — selection is upstream-pending" (line 17) and clearly documents throughout that SHINE is not a power reactor. The model correctly sets `p_net = 0`, `p_th = 0`, `p_et = 0` throughout, and computes concept-appropriate metrics (cost per neutron, Mo-99 revenue coverage ratio) instead of LCOE.
+
+### 2. Override Discipline
+The concept has `Archetype: None` and `Archetype-Fit: None` in frontmatter because it does not map to any 1costingFE archetype — it is not a power-generating concept. Section 5b correctly states "Not applicable — no 1costingFE archetype mapping exists for this concept." The model's CAS22 accounts are labeled as concept-specific overrides (C220101 LEU assembly, C220104 accelerator, C220107 HV supply, C220108 target + isotope processing) with transparent HIGH UNCERTAINTY tags and ASSUMED capital estimates within the $30-150M analogue range cited in the analysis.
+
+### 3. Override Count vs. Archetype-Fit Grade
+Not applicable — no archetype-fit grade assigned (correctly, since this is not a power concept).
+
+### 4. Family-Delta Concreteness
+Section 7 provides a clear structural articulation: SHINE's beam-target fusion is not comparable to any fusion power concept because it operates at Q << 1 by physics, has no confinement mechanism, and is commercially viable only as a **neutron source** (revenue from Mo-99/Lu-177 isotopes, not electricity). The comparison correctly differentiates SHINE from MFE (no plasma confinement), IFE (no compression/areal density), MIF (no compression/magnetic field), and even IEC (no potential well/ion recirculation despite shared electrostatic acceleration). The analysis states the TEA implication clearly: "SHINE establishes the lower Q bound of commercially-deployed D-T fusion: TRL 9 at Q_sci ~ 10^-3 to 10^-2, capital ~ $158M, economically sustained by the isotope market."
+
+### 5. Two-Knob Projection & Model Integrity
+The model does NOT use the three-forward helper form (`generic_reference()` + `run_native_and_1gw()`) because **there is no 1 GWe projection** — the concept cannot scale to net-positive power due to the Q << 1 physics ceiling. The model correctly computes a single native-scale result (FLARE facility at 5×10^13 reactions/s), demonstrates the Q_sci gap to breakeven (228× shortfall), and provides concept-appropriate sensitivities (beam current, LEU assembly cost, staffing) showing non-trivial cost variation. The model's "LCOE = ∞" and dominant cost drivers (staffing 16% of annual cost, capital charge 60%, isotope revenue coverage 10×) match the analysis narrative's emphasis.
+
+## Coherence Observations
+
+1. **Physics ceiling properly quantified**: The analysis (Section 2) and model (lines 10-23, physics demonstration in `_compute_power()`) both show Q_sci ~ 0.0094 at 50 mA, requiring 228× improvement to reach breakeven — a gap set by atomic physics (fusion cross-section vs. Coulomb stopping), not engineering.
+
+2. **Capital estimates transparently uncertain**: All capital costs carry HIGH UNCERTAINTY tags and are grounded in analogues ($30-150M range for Mo-99 production facilities). The model's $157.8M overnight capital falls within this range.
+
+3. **Revenue model is isotope pricing, not energy pricing**: Both analysis and model emphasize that SHINE's commercial viability comes from Mo-99 revenue (~$312M/yr) covering facility costs (~$30M/yr) at 10× — not from electricity sales. This is the correct framing.
+
+4. **No artificial power-plant forcing**: The analysis does not attempt to invent a fusion power plant where none exists. It honestly documents the concept's actual status (TRL 9 neutron source) and the physics barriers to power generation (Q << 1, no confinement, no thermal cycle).
+
+## No Findings
+
+This is a correctly-handled edge case. The analysis and model satisfy the contract's intent — coherent design-point articulation, override discipline (N/A with transparent reasoning), honest data-gap inventory, and concept-appropriate cost metrics — despite not fitting the standard power-plant template.

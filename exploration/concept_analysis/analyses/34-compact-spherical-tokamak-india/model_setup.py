@@ -86,18 +86,12 @@ _SHARED_KWARGS = dict(
     p_icrf=0.0,                     # DEFAULT
     p_lhcd=0.0,                     # DEFAULT
     mn=1.1,                         # DEFAULT: neutron energy multiplier
-    eta_th=0.30,                    # DEVIATION (justified): scoring_framework.md §"Justified deviations"
-                                    # — small-plant derating. UNCERTAIN: ±2 pp (no vendor datasheet sourced).
-                                    # Canonical 0.35 is utility-scale (~250+ MWe) implicit; 50 MWe industrial
-                                    # steam turbines lose 3–7 pp from off-design effects (single-extraction
-                                    # reheat, reduced HRSG complexity). Industrial 30–80 MWe class achieves
-                                    # 28–33% vs utility-scale ~40%.
-                                    # Cite: GE/Siemens 30–80 MWe steam turbine product class literature.
-                                    # See eta_th sweep below for LCOE sensitivity over {0.28, 0.30, 0.32, 0.35}.
-                                    # analysis.md §2 Challenge 4; §6 Gap 6
-    eta_p=0.5,                      # DEFAULT: pumping efficiency
-    eta_pin=0.5,                    # DEFAULT: heating wall-plug efficiency
-    eta_de=0.85,                    # DEFAULT: no DEC for tokamak
+    # eta_th, eta_p, eta_pin, eta_de removed — power-conversion efficiencies
+    # are never spec keys (1costingfe-glossary policy). The deviation from
+    # canonical 0.35 to 0.30 eta_th (small-plant derating, GE/Siemens 30–80
+    # MWe steam turbine class) is informational only; library applies its
+    # default. To change the global eta_th default, update the per-archetype
+    # YAML in 1costingfe — not the per-concept spec.
     f_sub=0.04,                     # UNCERTAIN: slightly higher subsystem fraction;
                                     # fixed loads are proportionally larger at 50 MWe
     f_dec=0.0,                      # DEFAULT: no DEC for tokamak

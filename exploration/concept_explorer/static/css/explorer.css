@@ -398,6 +398,21 @@ a:hover {
   border: 1px solid rgba(107, 114, 128, 0.3);
 }
 
+/* Item 10 / Bet 2: low-grounding marker shown across the explorer (All
+   Concepts cards, compare chips, landscape headers, taxonomy card, graph
+   node tooltips, concept page header). Amber warning glyph inline with the
+   concept name; graph nodes also get an amber border via cytoscape style. */
+.low-grounding-marker {
+  display: inline-block;
+  margin-left: var(--space-1);
+  color: #d97706; /* amber-600 */
+  font-weight: 700;
+  font-size: var(--font-size-md);
+  line-height: 1;
+  cursor: help;
+  user-select: none;
+}
+
 /* --------------------------------------------------------------------------
    Badges — Confidence
    -------------------------------------------------------------------------- */

@@ -1,0 +1,30 @@
+proposal:
+  concept_id: 12-levitated-dipole
+  design_name: "OpenStar Reactor A — Simpson et al. 2026 (arXiv 2602.20564)"
+  maturity_tier: proposed-commercial
+  grounding_confidence: high
+  p_native_mwe: 208
+  primary_sources:
+    - knowledge/concept_research/12-levitated-dipole/iter-01/sources/arxiv-2602-20564-dt-dipole-power-plants.md
+    - knowledge/concept_research/12-levitated-dipole/iter-01/sources/arxiv-2508-17691-junior-design-results.md
+  selection_rationale: |
+    Reactor A (208 MWe net) is the more conservative of the two design points published in
+    Simpson et al. (2026): it requires lower confinement performance from the Tahi demonstration
+    device (τ_e = 3.5 s, achievable with Bohm-like scaling from LDX) than Reactor B (τ_e = 5.9 s),
+    making it the more credible commercial-scale baseline. The paper provides full engineering
+    parameters — geometry, magnet design, neutronics, and plant power balance — placing it in the
+    same data-quality tier as ARC 2015. Reactor B was rejected because the paper explicitly
+    positions it for industrial rather than grid applications and it demands superior plasma
+    performance not yet demonstrated. Tama Nui (50–200 MWe) was rejected because no engineering
+    design point has been published. The architecture is a single-module plant; P_native is the
+    plant output.
+  alternatives_considered:
+    - design: "OpenStar Reactor B — Simpson et al. 2026 (arXiv 2602.20564), 74.5 MWe"
+      reason_rejected: "lower overnight capital cost optimization produces a sub-grid-scale industrial design that requires better Tahi confinement performance than Reactor A"
+      sensitivity_implication: "if picked instead, P_native drops substantially (74.5 vs 208 MWe) → more modules required at 1 GWe → 1 GWe LCOE shifts up. Worth probing if Tahi shows only Bohm-like scaling and the FOAK cost advantage of the smaller plant becomes dominant."
+    - design: "Tama Nui aspirational commercial target (50–200 MWe range, no engineering design point)"
+      reason_rejected: "CEO-level aspirational range with no published geometry or engineering parameters; not an engineered design point"
+      sensitivity_implication: "if a Tama Nui design point is eventually published, P_native could fall anywhere in the 50–200 MWe range → sensitivity direction depends on whether the published value lands above or below 208 MWe. Revisit on publication."
+    - design: "Junior prototype (OpenStar, 2024–present)"
+      reason_rejected: "physics demonstrator with no electrical output by design"
+      sensitivity_implication: "n/a — no P_native exists for this design"

@@ -1,0 +1,141 @@
+Magnetic Mirror (p-B11) — Pale Blue Fusion (CHARM)
+500 MWe target | 80% availability | 30 yr lifetime | NOAK
+WARNING: All plasma parameters are truly-unknown estimates (see analysis.md §5-6)
+LCOE: 68.5 $/MWh (6.85 ¢/kWh) | Overnight: 5414 $/kW
+1 GWe scaled: LCOE 45.0 $/MWh | Overnight 3528 $/kW
+Fusion: 2253 MW | Net: 500 MW | Q_eng: 4.3
+Recirculating fraction: 23.2%
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    12.4
+CAS21    Buildings                         200.0
+CAS22    Reactor Plant Equipment          1464.9
+CAS23    Turbine Plant                      76.6
+CAS24    Electrical Plant                   54.8
+CAS25    Miscellaneous                      33.4
+CAS26    Heat Rejection                     66.2
+CAS27    Special Materials                   0.0
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                    316.8
+CAS40    Owner's Costs                      14.1
+CAS50    Supplementary                     109.7
+CAS60    IDC                               353.4
+CAS70    O&M (annualized)                   21.6
+CAS80    Fuel (annualized)                   0.1
+CAS90    Financial                         218.2
+------------------------------------------------
+         Total Capital                    2707.2
+
+CAS22 Reactor Plant Equipment Breakdown:
+------------------------------------------------
+  C220000                          1464.9 M$
+  C220101                             8.3 M$
+  C220102                             8.2 M$
+  C220103                           513.4 M$
+  C220104                           282.6 M$
+  C220105                             7.6 M$
+  C220106                            25.3 M$
+  C220107                            59.2 M$
+  C220108                            83.5 M$
+  C220109                            93.4 M$
+  C220110                             8.9 M$
+  C220111                           152.6 M$
+  C220200                           112.3 M$
+  C220300                            32.2 M$
+  C220400                             3.8 M$
+  C220500                             9.2 M$
+  C220600                             6.6 M$
+  C220700                            57.9 M$
+
+Key Assumptions (all UNCERTAIN — no published design point):
+------------------------------------------------
+  p-B11 near-aneutronic power balance:   mn=1.0, f_dec=0.85, eta_th=0.20
+  DEC efficiency:                         eta_de=0.70  [physics limit per PRX Energy 2025]
+  Total auxiliary power:                  p_input=60 MW  [rotation + RF alpha channeling]
+  No tritium processing:                  p_trit=0.0
+  Machine geometry:                       plasma_t=1.5 m, chamber_length=30 m [no design point]
+  Net electric target:                    500 MWe  [framework reference scale]
+  Availability:                           80%  [no maintenance study]
+
+Blocking gaps (from analysis.md §Section 6):
+  - No published plant design or engineering parameters of any kind
+  - Alpha channeling efficiency η_α: analytical only, never measured experimentally
+  - Rotation sustainment power (recirculating fraction): not characterized
+  - DEC efficiency for rotation energy recovery: physics bounds only
+  - p-B11 nonthermal plasma never demonstrated in any experiment
+  - CHARM multi-chamber architecture never tested
+
+Sensitivity (elasticity = %LCOE / %param)
+------------------------------------------------
+
+Engineering levers:
+  availability                         -0.9932
+  r_coil                               +0.5239
+  construction_time_yr                 +0.2958
+  b_max                                +0.2619
+  p_nbi                                +0.1442
+  eta_th                               -0.0904
+  f_dec                                -0.0521
+  eta_de                               -0.0518
+  eta_pin                              -0.0486
+  p_input                              +0.0416
+  chamber_length                       +0.0252
+  plasma_t                             +0.0158
+  vessel_t                             +0.0132
+  p_cryo                               +0.0104
+  f_sub                                +0.0095
+  p_cool                               +0.0073
+  blanket_t                            +0.0051
+  structure_t                          +0.0049
+  p_coils                              +0.0039
+  p_house                              +0.0024
+  ht_shield_t                          +0.0021
+  p_pump                               +0.0007
+  eta_p                                +0.0000
+  mn                                   +0.0000
+  dd_f_T                               +0.0000
+  dd_f_He3                             +0.0000
+  dhe3_dd_frac                         +0.0000
+  dhe3_f_T                             +0.0000
+  dhe3_f_He3                           +0.0000
+  elon                                 +0.0000
+  B                                    +0.0000
+  T_e                                  +0.0000
+  n_e                                  +0.0000
+  Z_eff                                +0.0000
+  plasma_volume                        +0.0000
+  R_w                                  +0.0000
+  T_edge                               +0.0000
+  tau_ratio                            +0.0000
+
+Financial:
+  interest_rate                        +nan
+  inflation_rate                       +0.0247
+
+Costing constants (top 15):
+  heating_nbi_per_mw                   +0.1442
+  indirect_fraction                    +0.1249
+  om_cost_pb11                         +0.0781
+  installation_frac                    +0.0683
+  dec_base                             +0.0476
+  divertor_base                        +0.0426
+  power_supplies_base                  +0.0302
+  electric_per_mw                      +0.0247
+  misc_per_mw                          +0.0151
+  construction_insurance_frac          +0.0129
+  vessel_unit_cost                     +0.0129
+  shipping_frac                        +0.0111
+  decom_provision_pb11                 +0.0098
+  dec_grid_cost                        +0.0083
+  tax_frac                             +0.0074
+
+eta_th deviation sweep (DEC deviation carve-out — F-1)
+  Fixed: eta_de=0.70, f_dec=0.85
+  eta_th       LCOE ($/MWh)  delta vs 0.20 ($/MWh)
+  ------------------------------------------------
+  0.15                 69.7                 (base)
+  0.20                 68.5                   +0.0 ← model value
+  0.25                 67.5                   -1.0
+  0.30                 66.7                   -1.7

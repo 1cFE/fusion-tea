@@ -416,3 +416,225 @@ class TestCheckInterface:
         _check_interface(script)
         captured = capsys.readouterr()
         assert "result" in captured.err.lower()
+
+
+# ---------------------------------------------------------------------------
+# _decide_retry_mode + invoke_claude_validated timeout-retry path.
+#
+# Concepts 14 and 15 of the 13-24 regen batch hit iter-1 ERROR because the
+# claude subprocess timed out at 900s during cold-start analyze. The original
+# retry path required a non-None session_id to send `--resume <sid>` — but
+# TimeoutExpired in invoke_claude returns rc=-1 with session_id=None, so the
+# retry was structurally unreachable. _decide_retry_mode now picks "fresh"
+# (re-send the original prompt as a brand-new invocation) when the prior
+# attempt was a timeout, recovering from the same failure mode.
+# ---------------------------------------------------------------------------
+
+
+_OK_JSON = '[{"type":"system","session_id":"sid-fresh"},{"type":"result","result":"ok"}]'
+_OK_JSON_2 = '[{"type":"system","session_id":"sid-fresh-2"},{"type":"result","result":"ok2"}]'
+
+
+def _timeout_call():
+    """Mock for subprocess.run that raises TimeoutExpired (claude.py:130)."""
+    return subprocess.TimeoutExpired(cmd="claude", timeout=900)
+
+
+def _ok_call(json_payload: str = _OK_JSON) -> MagicMock:
+    return MagicMock(returncode=0, stdout=json_payload, stderr="")
+
+
+class TestDecideRetryMode:
+    """Unit tests for the retry-mode decision helper."""
+
+    def _result(self, rc: int) -> InvokeResult:
+        return InvokeResult(stdout="", stderr="", returncode=rc, session_id=None)
+
+    def test_resume_when_session_id_present(self):
+        from lib.claude import _decide_retry_mode
+        r = InvokeResult(stdout="", stderr="", returncode=0, session_id="sid")
+        # Resume path: budget remaining, session_id present, fix message ready.
+        assert _decide_retry_mode(1, 3, "sid", r) == "resume"
+
+    def test_fresh_when_timeout_and_no_session_id(self):
+        from lib.claude import _decide_retry_mode
+        # The concept-14/15 case: TimeoutExpired sets rc=-1, session_id=None.
+        # We must be able to retry with the original prompt as a fresh call.
+        assert _decide_retry_mode(1, 3, None, self._result(-1)) == "fresh"
+
+    def test_none_when_budget_exhausted(self):
+        from lib.claude import _decide_retry_mode
+        r = InvokeResult(stdout="", stderr="", returncode=0, session_id="sid")
+        # attempt == total_attempts: no retries left.
+        assert _decide_retry_mode(3, 3, "sid", r) is None
+
+    def test_none_when_no_session_and_not_timeout(self):
+        from lib.claude import _decide_retry_mode
+        # JSON parse failure: session_id=None but rc=0. Don't retry — the
+        # next attempt would just churn the same malformed stdout.
+        assert _decide_retry_mode(1, 3, None, self._result(0)) is None
+
+    def test_none_when_resume_but_no_fix_message(self):
+        from lib.claude import _decide_retry_mode
+        r = InvokeResult(stdout="", stderr="", returncode=0, session_id="sid")
+        # session_id present but the validator couldn't articulate a fix —
+        # resume-with-empty-fix would be wasteful. Don't retry.
+        assert (
+            _decide_retry_mode(1, 3, "sid", r, have_fix_message=False) is None
+        )
+
+    def test_fresh_even_when_resume_possible_but_no_fix(self):
+        from lib.claude import _decide_retry_mode
+        # If the prior attempt timed out and there's no fix message,
+        # fresh is still appropriate (re-send original prompt).
+        assert (
+            _decide_retry_mode(
+                1, 3, None, self._result(-1), have_fix_message=False
+            )
+            == "fresh"
+        )
+
+    def test_none_when_rc_minus_two(self):
+        from lib.claude import _decide_retry_mode
+        # rc=-2 is FileNotFoundError (claude CLI missing). Retrying won't
+        # help; the binary isn't on PATH. Only rc=-1 (timeout) is retryable.
+        assert _decide_retry_mode(1, 3, None, self._result(-2)) is None
+
+
+class TestInvokeClaudeValidatedTimeoutRetry:
+    """End-to-end test of the validated-invoker timeout-retry path.
+
+    The pre-fix behavior: one TimeoutExpired and the orchestrator gave up
+    (single validation_log entry, ``warn: ... no session_id — cannot
+    retry``). The post-fix behavior: timeout → fresh re-invocation → if the
+    fresh call writes the output file, validation passes.
+    """
+
+    def test_timeout_then_success_writes_file_on_retry(self, tmp_path, capsys):
+        """The cold-start-analyze recovery path. Attempt 1 times out (no
+        file). Attempt 2 is a fresh invocation that writes the file. The
+        validator passes on attempt 2 and the validated result reports
+        ``validation_passed=True`` with ``attempts=2``."""
+        from lib.claude import invoke_claude_validated
+        from lib.validators import validate_non_empty
+
+        out_path = tmp_path / "body.md"
+
+        # subprocess.run sequence: TimeoutExpired, then OK.
+        # The OK call must also write the output file (the production
+        # behavior is that the LLM writes via tool calls, but in the test
+        # we simulate that side-effect on the second subprocess.run).
+        call_count = {"n": 0}
+
+        def fake_run(*args, **kwargs):
+            call_count["n"] += 1
+            if call_count["n"] == 1:
+                raise _timeout_call()
+            # Second invocation: simulate the LLM writing the body file.
+            out_path.write_text("# analysis body\n\ncontent here", encoding="utf-8")
+            return _ok_call(_OK_JSON_2)
+
+        with patch("lib.claude.subprocess.run", side_effect=fake_run):
+            log_file = tmp_path / "validation_log.json"
+            result = invoke_claude_validated(
+                "the original prompt",
+                cwd=tmp_path,
+                timeout=900,
+                validator=validate_non_empty,
+                output_path=out_path,
+                step_label="cold-start",
+                log_path=log_file,
+            )
+
+        assert result.validation_passed
+        assert result.attempts == 2
+        # The fresh retry adopted the second invocation's session_id.
+        assert result.invoke.session_id == "sid-fresh-2"
+
+        # Validation log records: (1) timeout, (2) success — and the timeout
+        # entry carries the new ``retry_reason`` marker so operators can
+        # grep the regen logs for this recovery path.
+        log = json.loads(log_file.read_text(encoding="utf-8"))
+        assert len(log) == 2
+        assert log[0]["passed"] is False
+        assert log[0]["details"].startswith("Output file not found")
+        assert "retry_reason" in log[0]
+        assert "timeout" in log[0]["retry_reason"]
+        assert "fresh invocation" in log[0]["retry_reason"]
+        assert log[1]["passed"] is True
+
+    def test_three_timeouts_exhausts_budget(self, tmp_path, capsys):
+        """Three timeouts in a row exhaust the default retry budget
+        (max_retries=2 → 3 total attempts). The result reports
+        ``validation_passed=False`` and the log captures all three
+        attempts, each tagged with ``retry_reason: timeout``."""
+        from lib.claude import invoke_claude_validated
+        from lib.validators import validate_non_empty
+
+        out_path = tmp_path / "body.md"
+        log_file = tmp_path / "validation_log.json"
+
+        with patch(
+            "lib.claude.subprocess.run",
+            side_effect=[_timeout_call(), _timeout_call(), _timeout_call()],
+        ) as run_mock:
+            result = invoke_claude_validated(
+                "the original prompt",
+                cwd=tmp_path,
+                timeout=900,
+                validator=validate_non_empty,
+                output_path=out_path,
+                step_label="cold-start",
+                log_path=log_file,
+            )
+
+        assert not result.validation_passed
+        # Three subprocess.run calls — one initial + two fresh retries.
+        assert run_mock.call_count == 3
+        log = json.loads(log_file.read_text(encoding="utf-8"))
+        assert len(log) == 3
+        # First two entries should announce a fresh retry (budget remaining);
+        # the final entry should not (terminal).
+        assert "retry_reason" in log[0]
+        assert "retry_reason" in log[1]
+        assert "retry_reason" not in log[2]
+
+    def test_pre_fix_failure_mode_now_recovers(self, tmp_path):
+        """Regression test pinned to the concept-14/15 failure mode.
+
+        Pre-fix: a single TimeoutExpired in attempt 1 left
+        ``validation_log.json`` with one entry, ``warn: ... no session_id —
+        cannot retry`` on stderr, and ``validation_passed=False``. Post-fix:
+        the same first-attempt timeout triggers a fresh retry that succeeds,
+        and the recovery is auditable in the log."""
+        from lib.claude import invoke_claude_validated
+        from lib.validators import validate_non_empty
+
+        out_path = tmp_path / "analysis_body.md"
+        log_file = tmp_path / "validation_log.json"
+        sequence = [_timeout_call(), _ok_call()]
+
+        def fake_run(*args, **kwargs):
+            event = sequence.pop(0)
+            if isinstance(event, BaseException):
+                raise event
+            # Simulate the LLM's tool-write on the successful retry.
+            out_path.write_text(
+                "# Design Point\nrecovered after timeout", encoding="utf-8",
+            )
+            return event
+
+        with patch("lib.claude.subprocess.run", side_effect=fake_run):
+            r = invoke_claude_validated(
+                "cold-start prompt",
+                cwd=tmp_path,
+                timeout=900,
+                validator=validate_non_empty,
+                output_path=out_path,
+                step_label="cold-start",
+                log_path=log_file,
+            )
+
+        assert r.validation_passed
+        # Output file is what the validator read; round-trip confirms it.
+        assert "recovered after timeout" in out_path.read_text(encoding="utf-8")

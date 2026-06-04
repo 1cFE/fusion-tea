@@ -1,0 +1,370 @@
+Helical Coil Stellarator (Helical Fusion HESTIA) — 70.4 MWe FPP, NOAK
+Power cycle: sCO₂ Brayton (η_th=50% target central case)
+Availability: 83% | Lifetime: 30 yr | Construction: 10 yr
+
+*** BACK-SOLVED REFERENCE — framework inverse-balances to P_net=70.4 MWe by raising
+    P_fus above 260 MW (Q_sci > 13 at 20 MW absorbed ECRH). See sCO₂ EFFICIENCY SWEEP
+    below for the design-consistent physics-forward result (Q=13 fixed, P_net≈52 MWe).
+
+LCOE (framework):  1164.2 $/MWh (116.42 c/kWh)  [LOWER BOUND — BACK-SOLVED, Q>13]
+Overnight cost:    97006 $/kW
+Fusion power:      295 MW
+Net electric:      70.4 MWe
+Q_eng (model):     1.71  [target Q_eng=2.0; sensitive to η_th and LM pump power]
+Recirculating:     58.4%
+
+CAVEATS:
+  [1] Published cost: ~$5B (1990s) × 2+ inflation → ~$10B for 70.4 MWe (~$143B/GWe)
+      Framework ARIES scaling does NOT reproduce this figure. Framework LCOE is a
+      structural lower bound — $10B anchor implies LCOE in several-$/kWh range.
+  [2] η_th=50% is aspirational; 20 kWe sCO₂ demo at 20% is the current state.
+  [3] LM pump power is 'quite unknown' — p_cool=15 MW is a placeholder (Gap 3).
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    16.2
+CAS21    Buildings                         223.4
+CAS22    Reactor Plant Equipment          3270.9
+CAS23    Turbine Plant                      26.2
+CAS24    Electrical Plant                   14.2
+CAS25    Miscellaneous                       8.7
+CAS26    Heat Rejection                      7.4
+CAS27    Special Materials                   1.1
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                   1185.7
+CAS40    Owner's Costs                      10.3
+CAS50    Supplementary                     173.7
+CAS60    IDC                              1886.4
+CAS70    O&M (annualized)                   45.4
+CAS80    Fuel (annualized)                   0.2
+CAS90    Financial                         550.3
+------------------------------------------------
+         Total Capital                    6829.2
+
+CAS22 Reactor Plant Equipment Breakdown:
+------------------------------------------------------------
+  C220101      First Wall + LM Blanket (Sn-In-Pb-Li)     141.7  [DEFAULT]
+  C220102      Shield                                     82.8  [DEFAULT]
+  C220103      Coils (cont. helical WISE REBCO)         2322.5  [DEFAULT — LOWER BOUND; cont. helical premium not captured]
+  C220104      Heating (ECRH 20 MW abs.)                 100.0  [DEFAULT]
+  C220105      Primary Structure                           8.8  [DEFAULT]
+  C220106      Vacuum Vessel                              24.9  [DEFAULT]
+  C220107      Power Supplies                             23.1  [DEFAULT]
+  C220108      Divertor (LM integrated FW)                34.9  [DEFAULT]
+  C220111      Installation                              392.1  [DEFAULT]
+  C220200      Coolant (LM circuit)                       22.9  [DEFAULT]
+  C220300      Aux Cooling                                16.2  [DEFAULT]
+  C220400      Rad Waste                                   0.7  [DEFAULT]
+  C220500      Fuel Handling (tritium)                    18.7  [DEFAULT]
+  C220600      Other Equipment                             1.4  [DEFAULT]
+  C220700      I&C                                        18.6  [DEFAULT]
+------------------------------------------------------------
+  C220000      TOTAL                                    3270.9
+
+  NOTE: C220101 (LM blanket): exotic Sn-In-Pb-Li alloy + non-magnetic structural steel
+        adds cost vs. standard PbLi blanket; DEFAULT used (no published breakdown).
+  NOTE: C220103 (coils): continuous helical winding >> modular stellarator complexity;
+        DEFAULT is a wound-coil calibration — likely a SIGNIFICANT underestimate.
+  NOTE: CAS27 (special materials): 80 at.% Li-6 enrichment required (highest in portfolio);
+        DEFAULT used; global enrichment capacity constraint not quantified.
+
+================================================================
+Cross-Concept Normalization: Scaled to 1 GWe
+================================================================
+Per-account scaling from 70.4 MWe native point; framework scaling laws applied.
+NOTE: HESTIA's economic thesis = mass manufacturing of 70 MWe units, not one 1 GWe plant.
+LCOE:           139.3 $/MWh (13.93 c/kWh)  [LOWER BOUND]
+Overnight cost: 10644 $/kW
+Fusion power:   2069 MW | Net: 1000 MWe | Q_eng: 8.84
+
+================================================================
+sCO₂ EFFICIENCY SCENARIO SWEEP  [PRIMARY STRUCTURAL UNCERTAINTY]
+================================================================
+eta_th is LOAD-BEARING: without >50% sCO₂, Q_eng < 2.0 at this plasma gain.
+Source: analysis.md §2, Challenge 4; §3 (TRL 3–4); §5 (thermal efficiency row)
+
+  Physics-forward table: Q=13 fixed (P_fus=260 MW, P_input=20 MW ECRH)
+  P_th=301.3 MW | P_rec_fixed≈93.8 MW | Break-even threshold η_th≈32.1%
+  P_rad≈0 approximation (W-wall, low impurity loading)
+   eta_th   P_gross    P_net   Q_eng   Status  Note
+  ----------------------------------------------------------------------------------
+     20%      60.3    -35.3    0.63   FAILED  current tech state
+     33%      99.4      2.6    1.03   CLOSED  if sCO₂ development fails
+     38%     114.5     17.3    1.18   CLOSED  partial integration
+     40%     120.5     23.1    1.24   CLOSED  w/o full cycle integration
+     47%     141.6     43.6    1.44   CLOSED  commercial sCO₂ (CSP, 2024)
+     50%     150.6     52.3    1.53   CLOSED  design target ← BASE
+     53%     159.7     61.1    1.62   CLOSED  gas+steam, no fusion demo
+
+  LCOE for closed scenarios (model.forward at physics-derived P_net):
+   eta_th   LCOE $/MWh   P_net MWe  Note
+  ----------------------------------------------------------
+     20%   — failed —          —  Q_eng<1 (0.63), design cannot close
+     33%     marginal        2.6  Q_eng=1.03, rec_frac≈0.97 (framework rejected)
+     38%       4514.4       17.3  sCO₂ degraded
+     40%       3391.4       23.1  sCO₂ near-term achievable
+     47%       1829.4       43.6  BRAYTON_SCO2 preset
+     50%       1532.7       52.3  HESTIA target (>50%)
+     53%       1320.7       61.1  combined cycle aspirational
+
+  CRITICAL: Break-even threshold η_th ≈ 32.1% (P_net=0 at Q=13 with ~94 MW
+  fixed recirculating load). The kW-scale demo at 20% is a factor of 2.5× below the
+  design target AND well below the closure threshold. Framework inverse balance at
+  P_net=70.4 MWe implies P_fus > 260 MW (Q_sci > 13) — HESTIA's published
+  economics may assume lower recirculating loads or a slightly higher plasma Q.
+  Source: helical-fusion-2025-2026-updates.md §sCO₂; analysis.md §2, Challenge 4
+
+================================================================
+DESIGN-POINT PRIMARY RESULT  (Q=13 physics-forward, η_th=50%)
+================================================================
+P_fus=260 MW fixed at Q=13 | η_th=50% central case | P_net from physics (not forced).
+Use this result for cross-concept LCOE comparison — not the back-solved 70.4 MWe figure.
+
+  P_net (physics-forward):  52.3 MWe  (Q=13 × η_th=50% − recirculating loads)
+  Q_eng (physics-forward):  1.53  (cf. published target Q_eng=2.0; back-solved Q_eng=1.71)
+  LCOE:                     1532.7 $/MWh (153.27 c/kWh)  [LOWER BOUND]
+  Overnight cost:           128572 $/kW
+
+  Back-solved ref (P_net=70.4 MWe, Q_sci>13): LCOE=1164.2 $/MWh | Q_eng=1.71
+  Physics-forward (Q=13):                     LCOE=1532.7 $/MWh | Q_eng=1.53
+
+  NOTE: Published Q_eng=2.0 target requires η_th > 50% OR lower recirculating loads
+        than modeled here. Physics-forward Q_eng≈1.5 is below the published target.
+
+================================================================
+AVAILABILITY SWEEP  (steady-state operation advantage)
+================================================================
+Structural ceiling ~80% from 1-yr burn + 3-month maintenance; target >80–85% FPP
+Source: aip-2023-paper-abstract.md §Table I; analysis.md §5 (availability row)
+
+    Avail   LCOE $/MWh    Δ base   Overnight $/kW  Note
+  ------------------------------------------------------------------
+     70%       1373.1   +208.8           97006  derated — novel-system outages
+     80%       1206.5    +42.3           97006  structural ceiling (1yr burn / 3mo maint)
+     83%       1164.2     +0.0           97006  central FPP estimate ← BASE
+     85%       1141.4    -22.8           97006  top of FPP published target range
+     90%       1080.3    -83.9           97006  FOAK published target
+
+================================================================
+H-FACTOR SCENARIO SWEEP  [BLOCKING UNCERTAINTY — Key Assumption #13]
+================================================================
+ISS04 scaling: τ_E ∝ R^2.28 × a^2.28 (combined exp 4.56 for self-similar scaling).
+H=1.3 unvalidated; ISS04 baseline H=1.0 requires a larger machine for same Q.
+Source: aip-2023-paper-abstract.md §II-A; analysis.md §2, Challenge 2; §6, Gap 5
+
+  H=1.3 base:     R₀=7.80 m, a=1.80 m
+  H=1.0 penalty:  R₀=8.26 m, a=1.91 m  (scale=1.0592, V_ratio=1.188)
+
+  H scenario                                 LCOE $/MWh   OC $/kW   P_fus MW   Q_eng
+  --------------------------------------------------------------------------------
+  H=1.3 (design assumption) ← BASE — unvalidated      1164.2    97006       295    1.71
+  H=1.0 (ISS04 baseline)    — no confinement bonus      1176.8    97799       295    1.71
+
+  LCOE spread H=1.3 → H=1.0:  Δ=+12.6 $/MWh  (+1.1% relative to base)
+  NOTE: Penalty is volume-driven (C220103 coils, C220101 blanket, CAS21 buildings).
+  True penalty may be larger if higher-field or different current-drive strategy
+  is needed at larger radius. H=1.0 LCOE is a conservative lower bound on the risk.
+  Source: analysis.md §2, Challenge 2; §6, Gap 5; Key Assumption #13 (above)
+
+Key Assumptions
+===============
+1. Published cost data and framework divergence  [CRITICAL CAVEAT]
+   Published: ~$5B direct construction cost (Miyazawa & Goto 2023, Table I), 1990s LHD/ITER
+   pricing. Authors explicitly state ×2+ inflation correction required → ~$10B in 2023 USD
+   for 70.4 MWe. Specific capital: ~$143B/GWe — far above any other portfolio concept.
+   Framework (ARIES-calibrated) does NOT reproduce this figure; gap is the primary output
+   caveat. Framework LCOE is a structural lower bound. The $1.22/kWh Table I metric excludes
+   O&M, fuel, financing, and inflation correction — it is not comparable to standard LCOE.
+   Confidence: LOW (1990s price basis; no independent techno-economic assessment exists)
+   Source: aip-2023-paper-abstract.md §I, §Table I; analysis.md §2, Challenge 1; §6, Gap 1
+
+2. sCO₂ Brayton thermal efficiency: 50% central case  [PRIMARY STRUCTURAL UNCERTAINTY]
+   HESTIA's η_th > 50% target at 800–1200 K is essential for Q_eng=2.0 at Q~13 plasma gain.
+   Current state: 20 kWe NIFS Oroshhi-2 demonstration at 20% efficiency (feasibility study).
+   No fusion-coupled sCO₂ demonstration at any scale exists anywhere.
+   Efficiency scenario sweep above shows LCOE and Q_eng collapse below 50%.
+   UNCERTAIN: 50% has never been demonstrated at any fusion-relevant scale.
+   Source: aip-2023-paper-abstract.md §II-F; helical-fusion-2025-2026-updates.md §sCO₂;
+           analysis.md §2, Challenge 4; §3 (sCO₂ Brayton TRL 3–4); §6, Gap 6
+
+3. Absorbed heating power: 20 MW ECRH; effective η = 1/3
+   60 gyrotrons × 1 MW each / 3 per ECH beam = 20 MW to plasma; 60 MW wall-plug.
+   Effective system efficiency 20/60 = 0.333 (gyrotron conversion × transmission × coupling).
+   UNCERTAIN: 250 GHz / 1 MW CW gyrotrons do not exist (TRL 1–2); frequency required by
+   HESTIA's field/density cannot be lowered without redesigning the plasma operating point.
+   Source: aip-2023-paper-abstract.md §II-D; analysis.md §3 (250 GHz gyrotrons, TRL 1–2)
+
+4. Availability: 83% central (FPP target range >80–85%)
+   1-year burn + ~3-month maintenance → structural ceiling ~80% (12/15 months).
+   0.83 central = mid-range of published FPP target, derated for novel-subsystem outage risk.
+   No operational precedent for any heliotron at HESTIA scale.
+   Source: aip-2023-paper-abstract.md §Table I; analysis.md §5 (availability row);
+           helical-fusion-technology-overview.md
+
+5. Liquid metal pump power: DEFAULT placeholder  [BLOCKING GAP]
+   AIP paper: "The LM pump power is quite unknown at this moment."
+   GALOP gas-driven pump eliminates rotating parts but plant-scale power is unquantified.
+   90 modular LM blanket modules at reactor scale have no engineering basis for circulation power.
+   Q_eng=2.0 at 70 MWe has a tight recirculating budget; LM pump could significantly affect
+   realized net output. p_cool=15 MW (stellarator default) used as placeholder.
+   Source: aip-2023-paper-abstract.md §II-C; analysis.md §2, Challenge 3; §6, Gap 3
+
+6. Plasma geometry: R₀=7.8 m (known); a≈1.8 m (estimated)
+   R₀ from Table I (high confidence). Minor radius estimated from fusion power (~260 MW) and
+   assumed power density (~0.5 MW/m³) → V ≈ 520 m³ → a ≈ 1.8 m (V = 2π²R₀a²).
+   Paper does not publish minor radius directly in the available abstract.
+   Source: aip-2023-paper-abstract.md §II-B, Table I; analysis.md §5 (R₀, fusion power)
+
+7. C220103 coils: DEFAULT — LOWER BOUND (continuous helical coil premium not captured)
+   Framework coil cost calibrated to wound-coil (tokamak-style) geometry.
+   HESTIA uses two CONTINUOUS helical coils — fundamentally different from modular stellarator
+   or tokamak coil sets. Longer unbroken conductor runs, complex 3D path, reactor-scale WISE
+   REBCO tape demand not published. Current tape cost $30–100/kA-m; NOAK target $10/kA-m.
+   C220103 is a lower bound; true coil cost likely substantially higher.
+   Source: analysis.md §4 (REBCO supply chain); §3 (WISE HTS Helical Coil, TRL 3–5)
+
+8. C220101 first wall / LM blanket: DEFAULT — cost likely higher
+   Novel Sn-In-Pb-Li alloy vs. standard PbLi; non-magnetic high-Mn austenitic structural steel
+   (new material, no industrial production baseline); 90 modular units.
+   Indium supply constraint: ~900 tonnes/yr global production; fusion demand could be material.
+   DEFAULT blanket_unit_cost_dt used (no published cost breakdown for LM alloy blanket).
+   Source: analysis.md §4 (LM alloy, indium supply); §3 (LM Blanket, TRL 2–3)
+
+9. Construction time: 10 years
+   Stellarator default 8 yr (mfe_stellarator.yaml); helical coil winding is harder than modular.
+   Oct 2025 milestone: >4 m prototype; reactor coils are orders of magnitude more demanding.
+   10 yr estimate is above modular default to reflect first-of-kind continuous coil challenge.
+   Source: analysis.md §3 (WISE HTS Helical Coil, TRL 3–5); mfe_stellarator.yaml (8 yr default)
+
+10. NOAK assumption
+    HESTIA's economic thesis depends on fleet manufacturing and learning curves.
+    Current funding: ~$35.3M (through late 2025) — a fraction of peers (CFS ~$2.9B).
+    No quantitative basis exists for the learning curve that would achieve NOAK costs.
+    FOAK at $10B for 70.4 MWe implies LCOE >> the framework output before O&M and financing.
+    Source: analysis.md §2, Challenge 7; helical-fusion-2025-2026-updates.md (funding)
+
+11. O&M: framework DEFAULT
+    No O&M cost data exists for any stellarator power plant in the public record.
+    ARIES-CS analogue (~$50–70/kWe-yr fixed O&M) noted in analysis as placeholder.
+    Structural advantages: steady-state (no restart costs); 90 modular LM units with crane
+    access (no in-vessel robotics for module extraction — reduces planned maintenance burden).
+    Source: analysis.md §2 (O&M placeholder); aip-2023-paper-abstract.md §II-C (crane access)
+
+12. Li-6 enrichment: 80 at.% target — highest in portfolio
+    Global Li-6 enrichment capacity is constrained; Western industrial-scale alternatives
+    to legacy mercury-amalgam separation processes are not yet operational.
+    CAS27 uses DEFAULT; enrichment cost for this purity level at 90-module scale is unknown.
+    TBR 3D neutron transport calculation was NOT completed as of the 2023 paper.
+    Source: aip-2023-paper-abstract.md §IV; analysis.md §4 (Li-6 enrichment); §6, Gap 4
+
+13. H confinement factor: H=1.3 assumed above ISS04 (UNVERIFIED — blocking gap)
+    HESTIA plasma design assumes H=1.3 above the ISS04 empirical stellarator scaling law.
+    This is not experimentally validated; it depends on center-peaked ECH heating and
+    magnetic optimization not yet demonstrated at HESTIA-class parameters.
+    H=1.0 (no improvement) would require larger plasma volume → inflates all capital cost.
+    Not modeled directly in the framework; captured qualitatively as cost lower-bound caveat.
+    Source: aip-2023-paper-abstract.md §II-A; analysis.md §2, Challenge 2; §6, Gap 5
+
+Sensitivity (elasticity = %LCOE / %param) — native 70.4 MWe design point
+----------------------------------------------------
+
+Engineering levers:
+  r_coil                               +1.3637
+  availability                         -0.9684
+  b_max                                +0.6818
+  construction_time_yr                 +0.5815
+  R0                                   +0.1064
+  elon                                 +0.1064
+  eta_th                               -0.0845
+  blanket_t                            +0.0749
+  plasma_t                             +0.0716
+  eta_pin                              -0.0443
+  p_input                              +0.0437
+  p_ecrh                               +0.0294
+  ht_shield_t                          +0.0139
+  p_cool                               +0.0111
+  vessel_t                             +0.0077
+  mn                                   -0.0075
+  p_trit                               +0.0074
+  f_sub                                +0.0037
+  p_cryo                               +0.0034
+  structure_t                          +0.0034
+  p_house                              +0.0030
+  p_coils                              +0.0022
+  p_pump                               +0.0007
+  eta_p                                -0.0000
+  dd_f_T                               +0.0000
+  dd_f_He3                             +0.0000
+  dhe3_dd_frac                         +0.0000
+  dhe3_f_T                             +0.0000
+  eta_de                               +0.0000
+  B                                    +0.0000
+  T_e                                  +0.0000
+  n_e                                  +0.0000
+  Z_eff                                +0.0000
+  plasma_volume                        +0.0000
+  R_w                                  +0.0000
+  T_edge                               +0.0000
+  tau_ratio                            +0.0000
+
+Financial:
+  interest_rate                        +0.9473
+  inflation_rate                       +0.0195
+
+Costing constants (top 15):
+  indirect_fraction                    +0.2248
+  installation_frac                    +0.1010
+  blanket_unit_cost_dt                 +0.0722
+  om_cost_dt                           +0.0381
+  core_lifetime_dt                     -0.0313
+  heating_ecrh_per_mw                  +0.0294
+  shield_unit_cost                     +0.0243
+  remote_handling_dt_base              +0.0181
+  divertor_base                        +0.0178
+  construction_insurance_frac          +0.0133
+  shipping_frac                        +0.0100
+  vessel_unit_cost                     +0.0073
+  power_supplies_base                  +0.0068
+  tax_frac                             +0.0066
+  fuel_handling_dt_base                +0.0048
+
+================================================================
+COIL COST MULTIPLIER SWEEP  [BLOCKING: C220103 dominant driver — CF-F1]
+================================================================
+C220103 (cont. helical coil) = 71% of RPE. DEFAULT is a lower bound.
+Range basis: QI modular designs 1.5–5× manufacturing premium (analysis.md §7).
+Approximation: LCOE ≈ LCOE_base × mult^r_coil_elasticity (power-law / log-linear).
+
+  C220103 base:           2322 M$
+  r_coil elasticity:     1.360  (from sensitivity analysis above)
+
+    Mult   C220103 M$   LCOE $/MWh   Δ LCOE $/MWh  Note
+  ----------------------------------------------------------------------------
+    1.0×        2322       1164.2          +0.0  ← base (DEFAULT lower bound; cont. helical premium absent)
+    1.5×        3484       2020.8        +856.6  low end of 1.5–5× QI modular premium range
+    2.0×        4645       2988.4       +1824.2  moderate heliotron vs. QI modular premium
+    3.0×        6967       5187.0       +4022.8  upper-moderate (reflects WISE fabrication challenge)
+    5.0×       11612      10390.4       +9226.2  upper end of 5× QI modular premium range
+
+  Power-law model error: ±15–25% at mult=3×; ±30–40% at mult=5× vs. full model re-run.
+  Bottom line: coil cost uncertainty alone spans a factor of 2–4× in LCOE.
+  Cross-concept comparison must report this range, not only the DEFAULT floor.
+
+================================================================
+$10B PUBLISHED COST ANCHOR: LCOE UPPER BOUND  [CF-F3]
+================================================================
+Framework does not reproduce HESTIA's $10B (2023$) published cost anchor.
+Upper-bound LCOE: substitute $10B overnight cost at 70.4 MWe; hold all other parameters.
+
+  Framework overnight cost:     97,006 $/kW  (6,829 M$)
+  $10B anchor:                 142,045 $/kW  (10,000 M$)
+  IDC fraction (CAS60/OC):  0.2762
+  CRF (r=7%, n=30 yr):      0.08059
+
+  LCOE — framework lower bound:   1164.2 $/MWh  (116.42 c/kWh)
+  LCOE — $10B anchor upper:       1801.3 $/MWh  (180.13 c/kWh)
+
+  LCOE range: 1164 – 1801 $/MWh
+  ($10B is an inflation estimate; true FOAK cost could be higher, widening the range.)
+  Cross-concept comparison requires citing both bounds, not the framework floor alone.

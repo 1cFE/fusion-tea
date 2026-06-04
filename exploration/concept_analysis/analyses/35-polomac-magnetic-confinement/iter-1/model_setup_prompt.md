@@ -1,6 +1,6 @@
-# Free-Form LCOE Model: PoloMac Magnetic Confinement
+# Free-Form LCOE Model: Polomac Magnetic Confinement (Deutelio)
 
-You are building a standalone LCOE model for **PoloMac Magnetic Confinement** (Deutelio).
+You are building a standalone LCOE model for **Polomac Magnetic Confinement (Deutelio)** (Deutelio).
 This concept does not map cleanly to any standard 1costingfe ConfinementConcept,
 so you will build a self-contained model from first principles following the
 CAS cost accounting structure.
@@ -14,7 +14,7 @@ runnable via `uv run python model_setup.py`.
 ## Required Reading
 
 ### 1. Concept Analysis (primary data source)
-`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/35-polomac-magnetic-confinement/analysis.md`
+`C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\35-polomac-magnetic-confinement\analysis.md`
 Section 5 has the quantitative values. Section 2 has the key uncertainties.
 
 ### 2. Exemplar: MagLIF Free-Form Model (pattern to follow)
@@ -28,15 +28,47 @@ This is your structural template. Follow its architecture exactly:
 - Scenario comparison table in `main()`
 
 ### 3. CAS Account Reference (for cost scaling laws)
-`/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml`
+`\home\reid\1cfe\1costingfe\src\costingfe\data\defaults\costing_constants.yaml`
 Use the scaling laws and unit costs from 1costingfe as reference values,
 even though you're not using the API. Document which scaling laws you adopt.
 
 
 
+## Power Reporting (CRITICAL — native scale only)
+
+Freeform models report at the concept's **native** power scale only. **Do NOT
+extrapolate to 1 GWe via `(p_native / 1000)^(1-α)` or any other economy-of-scale
+formula.** Freeform concepts are freeform because they sit outside the standard
+ENUM scaling-law calibration range — often by orders of magnitude (e.g. a 0.3
+MWe research demonstration vs the library's ~50 MWe minimum). Forcing them
+through the same 1 GWe lens silently produces nonsense (the library itself
+returns negative cost accounts when projecting sub-MWe designs to 1 GWe).
+
+Concretely:
+- Keep the physics-derived power balance EXACTLY as-is. The script's `results`
+  dict is at native power.
+- Do NOT emit a `scaled_headline` dict and do NOT compute `(p_native/1000)^…`
+  scaling. If a previous version of this concept's `model_setup.py` carried a
+  `scaled_headline`, delete it.
+- The headline LCOE line your `print_results()` emits MUST be tagged as
+  freeform/native so downstream cross-concept tables flag it correctly:
+  ```python
+  print(f"LCOE: {lcoe:.1f} $/MWh   (freeform, native-scale only)")
+  ```
+  The downstream LCOE-extraction regex (`LCOE:\s*([\d.]+)\s*\$/MWh`) picks the
+  number up; the trailing `(freeform, native-scale only)` marker is what
+  cross-concept comparisons read to distinguish freeform native LCOEs from
+  costingfe 1 GWe projections.
+
+Cross-concept comparisons that aggregate freeform native LCOE alongside
+costingfe 1 GWe LCOE MUST display the marker prominently — these are
+**not directly comparable numbers**: freeform LCOE reflects the concept's
+*own* design-point economics, while costingfe LCOE reflects what a 1 GWe NOAK
+plant built from the same archetype would cost.
+
 ## Model Architecture
 
-Follow the MagLIF exemplar's 5-layer structure adapted for PoloMac Magnetic Confinement:
+Follow the MagLIF exemplar's 5-layer structure adapted for Polomac Magnetic Confinement (Deutelio):
 
 ### Layer 1: Power Balance (`_compute_power()`)
 - Concept-specific energy flow: driver → plasma → fusion → energy recovery
@@ -123,4 +155,4 @@ Usage:
 ```
 
 ## Output
-Write the script to: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/35-polomac-magnetic-confinement/iter-1/model_setup.py`
+Write the script to: `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\35-polomac-magnetic-confinement\iter-1\model_setup.py`
