@@ -7,13 +7,16 @@ Concept: Beam-Target D-T Fusion / Neutron Production / Medical Isotopes
 Company: SHINE Technologies (Janesville, WI)
 
 CRITICAL NOTE — WHY LCOE IS UNDEFINED:
-Beam-target D-T fusion has Q_sci ≈ 10^-5 by physics. Each accelerated deuteron
+Beam-target D-T fusion has Q_sci in the range 10^{-3}–10^{-2} by physics. Each accelerated deuteron
 deposits ~300 keV of kinetic energy; the D-T reaction releases 17.59 MeV, but
 only a tiny fraction of beam deuterons fuse before losing energy to Coulomb
 scattering and ionization in the target gas. The effective Q is set by the ratio
 of the fusion cross-section to the stopping cross-section — a property of atomic
-physics, not a technology maturity limit. SHINE's FLARE system produces ~141 W of
-fusion power while consuming ~70 kW of beam power (Q_sci ≈ 0.002).
+physics, not a technology maturity limit. SHINE's FLARE system produces ~141 W of fusion power. At the model baseline
+of 50 mA beam current, beam power is ~15 kW and Q_sci ≈ 0.0094. At ~235 mA
+(representative of higher-current operation), beam power is ~70 kW and
+Q_sci ≈ 0.002. Both values fall within the published literature range of
+10^{-3}–10^{-2} for beam-target D-T at 200–300 keV lab energy (F-1).
 
 Net electricity output = 0. p_net = 0. LCOE = ∞. This is not fixable by
 engineering improvements — break-even requires Q_sci > ~2.1, approximately
@@ -28,12 +31,6 @@ Concept-appropriate cost metrics (Part B):
   • Cost per neutron [$/neutron]
   • Cost per unit steady-state flux [M$/(neutron/s)]
   • Revenue coverage ratio (Mo-99 revenue / annual facility cost)
-
-Power standardization (scaled_headline):
-Not applicable — SHINE produces zero net electricity. scaled_headline uses
-sentinel values (p_net_mw=0.0, lcoe_per_mwh=None, overnight_per_kw=None) to
-signal exclusion from LCOE comparison. Economy-of-scale exponent α=0.6 is
-documented but cannot be applied since p_native = 0.
 
 Capital cost analogue basis: analysis.md §S6 Gap #3 cites $30-150M for
 comparable Mo-99 production facilities. This model builds up from components
@@ -307,7 +304,9 @@ class SHINEFLAREParams:
         r["p_beam_MW"] = p_beam_W / 1e6
 
         # Q_sci: fusion power / beam power delivered to target
-        # ~10^-5 from analysis.md §S2 at 50 mA; ~0.002 at 235 mA
+        # At baseline 50 mA: Q_sci ≈ 0.0094 (within literature range 10^-3–10^-2).
+        # At ~235 mA: Q_sci ≈ 0.002. Physics ceiling ~0.01 near 240 keV lab energy.
+        # (Analysis text's 10^-5 at 50 mA is incorrect; F-1 correction.)
         r["Q_sci"] = r["p_fus"] / r["p_beam_MW"] if r["p_beam_MW"] > 0 else 0.0
         r["beam_current_mA"] = self.beam_current_mA
 
@@ -673,19 +672,6 @@ class SHINEFLAREParams:
 params = SHINEFLAREParams()
 results = params.compute()
 
-# Power standardization: NOT APPLICABLE
-# SHINE produces zero net electricity (p_native = 0 by beam-target D-T physics).
-# Economy-of-scale exponent α = 0.6 is documented but cannot be applied.
-# The concept explorer should treat this concept as excluded from LCOE comparison.
-_ALPHA = 0.6  # documented but not applied
-_p_native = results["power"].get("p_net_plant", results["power"]["p_net"])  # = 0.0
-
-scaled_headline = {
-    "p_net_mw": 0.0,
-    "lcoe_per_mwh": None,       # Not a power plant — excluded from LCOE comparison
-    "overnight_per_kw": None,   # Not a power plant — $/kWe is undefined
-}
-
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Output functions
@@ -817,7 +803,7 @@ def print_results(p: SHINEFLAREParams, res: dict):
     print()
 
     print("--- LCOE and Concept-Appropriate Metrics ---")
-    print(f"  LCOE ($/MWh):            NOT APPLICABLE — p_net = 0 by physics")
+    print(f"  LCOE:                    NOT APPLICABLE (freeform, native-scale only) — p_net = 0 by physics")
     print(f"  Annual neutrons:         {econ['annual_neutrons']:.3e} neutrons/yr")
     print(f"  Cost per neutron:        ${econ['cost_per_neutron_USD']:.3e} / neutron")
     print(f"  Cost per flux unit:      ${econ['cost_per_flux_unit_M_USD']:.4e} M$ / (neutron/s)")
@@ -874,6 +860,12 @@ def main():
     base_cost = res["economics"]["annual_revenue_req"]
     print(f"\nBaseline annual cost: ${base_cost:.2f}M/yr\n")
 
+    # NOTE (F-3): beam_voltage_kV is intentionally excluded from sweeps.
+    # Q_sci peaks near 120 keV CM energy (~240 keV lab for D on T); above and below
+    # this optimum, Q_sci declines, but the physics ceiling of ~0.01 applies across
+    # the entire accessible voltage range (100–400 kV). Sweeping beam_voltage_kV at
+    # fixed q_eff produces a flat line; at variable q_eff the result is "stay near
+    # 300 kV." Neither sweep adds decision-relevant information.
     sweeps = [
         ("beam_current_mA",        [10, 30, 50, 100, 200],       "Beam current [mA]   [HIGH UNCERTAINTY — not published]"),
         ("capacity_factor",        [0.70, 0.80, 0.90, 0.95],     "Capacity factor"),
@@ -946,7 +938,7 @@ def main():
 
     print(f"""
 1. FUNDAMENTAL PHYSICS CEILING ON Q_sci (ELIMINATES POWER-GENERATION VIABILITY)
-   Current Q_sci = {params.beam_current_mA * params.beam_voltage_kV / 1e6 / (res['power']['p_fus']*1e6/1e3):.2e} (at {params.beam_current_mA} mA)
+   Current Q_sci = {res['power']['Q_sci']:.2e} (at {baseline.beam_current_mA:.0f} mA)
    Break-even Q_sci needed = {q_be:.2f}   |   Gap = {gap:.0f}x
 
    In beam-target D-T at 300 keV, the D-T cross-section at the D-T peak
@@ -979,7 +971,7 @@ def main():
    producers (NRU, BR2, SAFARI-1), not with power plants.
 
    From the TEA project perspective, SHINE establishes the lower Q bound of
-   commercially-deployed D-T fusion: TRL 9 at Q_sci ~ 10^{{-3}} to 10^{{-5}},
+   commercially-deployed D-T fusion: TRL 9 at Q_sci ~ 10^{{-3}} to 10^{{-2}},
    capital ~ ${cap:.0f}M, economically sustained by the isotope market.
    Every accelerator-driven fusion POWER concept must clear Q_sci >> 1;
    SHINE demonstrates that reaching TRL 9 at Q << 1 is already achievable.

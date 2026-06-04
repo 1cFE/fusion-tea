@@ -1,251 +1,51 @@
+warning: `VIRTUAL_ENV=C:\Users\mallo\AppData\Local\Python\pythoncore-3.14-64` does not match the project environment path `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv` and will be ignored; use `--active` to target the active environment instead
+LCOE: 25.3 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 42.0 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 42.0 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 3284 $/kW   native 3284 $/kW   1 GWe 2214 $/kW
 
-######################################################################
-# BASELINE SCENARIO: Polywell (D-T) — Park 2025 Design Point
-######################################################################
-======================================================================
-Polywell (D-T) LCOE Model — 1cFE CAS-Structured
-Company: EMC2 (Energy Matter Conversion Corporation)
-======================================================================
+CAS               generic           native            1 GWe
+--------------------------------------------------------
+CAS10                11.8             11.8             12.5
+CAS21               204.3            204.3            213.3
+CAS22               272.1            272.1            797.8
+CAS23                58.3             58.3            198.1
+CAS24                28.7             28.7             97.5
+CAS25                17.5             17.5             59.3
+CAS26                25.2             25.2             85.6
+CAS27                 0.0              0.0              0.0
+CAS28                 5.0              5.0              5.0
+CAS29                 0.0              0.0              0.0
+CAS30               122.2            122.2            291.3
+CAS40                10.8             10.8             11.5
+CAS50                43.0             43.0             84.8
+CAS60               153.6            153.6            356.9
+CAS70                19.3             19.3             22.2
+CAS80                 0.0              0.0              0.1
+CAS90                71.4             71.4            166.0
+--------------------------------------------------------
+TOTAL               952.4            952.4           2213.7
 
---- Key Input Parameters ---
-  Fusion power (p_fus):       980 MW  [HIGH UNCERT]
-  E-beam injection (p_beam):  78 MW
-  Beam supply efficiency:     85.0%
-  Blanket multiplication:     1.10
-  Thermal efficiency:         40.0%  [HIGH UNCERT]
-  Plant availability:         80.0%
-  Modules:                    1
-  FOAK/NOAK:                  NOAK
-  Interest rate:              8.0%
-  Plant lifetime:             40 years
-  SC coil system:             $150M  [HIGH UNCERT]
-  E-beam system:              $100M  [HIGH UNCERT]
-  Blanket/FW (C220101):       $75M  [HIGH UNCERT — polyhedral geometry]
-
---- Power Balance ---
-  Fusion power (p_fus):       980 MW
-    Neutron power (80%):      784 MW (14.1 MeV)
-    Alpha power  (20%):       196 MW (3.52 MeV)
-  Thermal power (p_th):       1058 MW
-  Gross electric (p_et):      423 MWe
-  Recirculating power:
-    E-beam wall-plug:         91.8 MW
-    Cryogenic (SC coils):     15.0 MW
-    Housekeeping:             4.0 MW
-    Tritium processing:       10.0 MW
-    Vacuum pumping:           2.0 MW
-    Total recirculating:      122.8 MW
-  Net electric (p_net):       301 MWe  (per module)
-  Net electric (plant):       301 MWe  (1 module(s))
-  Q_sci = p_fus / p_beam:     12.56
-  Q_eng = p_fus / p_recirc:   7.98
-  Recirculating fraction:     29.0%
-
---- CAS22: Reactor Plant Equipment ---
-  Per-module accounts:
-    C220101 Blanket/First Wall               $    75.0M [override]
-    C220102 Shield                           $    11.7M
-    C220103 SC Coil System (6-faced)         $   150.0M [override]
-    C220104 E-Beam Injection System          $   100.0M [override]
-    C220105 Primary Structure                $     2.1M
-    C220106 Vacuum System                    $     3.6M
-    C220107 Power Supplies (general)         $    43.8M
-    C220110 Remote Handling                  $    25.9M
-    C220111 Installation Labor               $    57.7M
-       ─────────────────────────────────────────────────
-    Per-module subtotal:                  $   469.8M × 1
-  Plant-wide accounts:
-    C220200 Coolant Systems                  $    70.9M
-    C220300 Aux Cooling + Cryoplant          $   124.3M
-    C220400 Rad Waste Management             $     2.1M
-    C220500 Fuel Handling (D-T)              $    51.7M
-    C220600 Other Equipment                  $     4.4M
-    C220700 Instrumentation & Control        $    39.1M
-       ─────────────────────────────────────────────────
-    Plant-wide subtotal:                  $   292.5M
-  CAS22 Total:                            $   762.3M
-
---- Capital Costs (CAS10–60) ---
-  CAS10 Pre-construction:                 $    14.3M
-  CAS21 Buildings (D-T, 502 $/kWe):       $   212.5M
-  CAS22 Reactor Plant Equipment:          $   762.3M
-  CAS23 Turbine Plant:                    $    83.7M
-  CAS24 Electric Plant:                   $    35.6M
-  CAS25 Misc Plant:                       $    21.7M
-  CAS26 Heat Rejection:                   $    14.5M
-  CAS27 Special Materials (Li-6):         $     4.5M
-  CAS28 Digital Twin:                     $     5.0M
-  CAS29 Contingency:                      $     0.0M
-  ──────────────────────────────────────────────────────────
-  CAS20 Direct Costs:                     $  1139.8M
-  CAS30 Indirect Costs:                   $   228.0M
-  CAS40 Owner's Costs:                    $    21.4M
-  CAS50 Supplementary (T-startup+decom):  $   127.0M
-  ──────────────────────────────────────────────────────────
-  Overnight Capital:                      $  1530.4M
-  CAS60 IDC (f=0.223):               $   340.8M
-  ══════════════════════════════════════════════════════════
-  Total Capital:                          $  1871.2M
-  Specific Capital:                       $    6225 $/kWe
-
---- Annual Costs (CAS70–90) ---
-  CAS90 Capital charge (CRF=0.0839):    $   156.9M/yr
-  CAS71 O&M (levelized):                  $    40.3M/yr
-  CAS72 Blanket replacement:              $     9.6M/yr  (6 replacements)
-  CAS70 Total O&M:                        $    49.9M/yr
-  CAS80 Fuel (D consumption):             $   0.063M/yr  (29.2 kg D/yr)
-
---- LCOE ---
-  Annual net energy:          2,106,572 MWh/yr
-  Annual revenue requirement: $206.9M/yr
-  ╔══════════════════════════════════════╗
-  ║  LCOE = 9.82 ¢/kWh                 ║
-  ║       = 98.2 $/MWh                 ║
-  ╚══════════════════════════════════════╝
-  Capital (CAS90):            75.8%
-  O&M (CAS70):               24.1%
-  Fuel (CAS80):              0.0%
-
-======================================================================
-SENSITIVITY ANALYSIS — Single-Parameter Sweeps from Baseline
-======================================================================
-  Baseline LCOE:  9.82 ¢/kWh  |  Net electric: 301 MWe
-
-  Fusion power [MW] — branch (b) proxy: fixed beam at 78 MW, confinement degrades (see coupled γ sweep below for physically correct representation):
-           245 → NET POWER NEGATIVE (-17 MWe)
-           490 →   22.85 ¢/kWh  (Δ+13.03)  net=89 MWe ←
-           735 →   12.93 ¢/kWh  (Δ+3.11)  net=195 MWe ←
-           980 →    9.82 ¢/kWh  (Δ+0.00)  net=301 MWe
-      1.22e+03 →    8.26 ¢/kWh  (Δ-1.56)  net=406 MWe ←
-      1.47e+03 →    7.32 ¢/kWh  (Δ-2.51)  net=512 MWe ←
-
-  Thermal efficiency — unspecified BOP cycle:
-          0.33 →   11.78 ¢/kWh  (Δ+1.96)  net=227 MWe ←
-          0.37 →   10.54 ¢/kWh  (Δ+0.71)  net=269 MWe ←
-           0.4 →    9.82 ¢/kWh  (Δ+0.00)  net=301 MWe
-          0.43 →    9.24 ¢/kWh  (Δ-0.58)  net=332 MWe ←
-          0.47 →    8.60 ¢/kWh  (Δ-1.22)  net=375 MWe ←
-           0.5 →    8.21 ¢/kWh  (Δ-1.61)  net=406 MWe ←
-
-  E-beam power supply efficiency:
-          0.75 →   10.15 ¢/kWh  (Δ+0.33)  net=288 MWe
-           0.8 →    9.97 ¢/kWh  (Δ+0.15)  net=295 MWe
-          0.85 →    9.82 ¢/kWh  (Δ+0.00)  net=301 MWe
-           0.9 →    9.69 ¢/kWh  (Δ-0.13)  net=306 MWe
-          0.95 →    9.58 ¢/kWh  (Δ-0.24)  net=310 MWe
-
-  SC coil system cost [M$]:
-            75 →    9.29 ¢/kWh  (Δ-0.53)  net=301 MWe ←
-           100 →    9.47 ¢/kWh  (Δ-0.35)  net=301 MWe
-           150 →    9.82 ¢/kWh  (Δ+0.00)  net=301 MWe
-           200 →   10.18 ¢/kWh  (Δ+0.35)  net=301 MWe
-           300 →   10.88 ¢/kWh  (Δ+1.06)  net=301 MWe ←
-
-  E-beam injection system cost [M$]:
-            50 →    9.47 ¢/kWh  (Δ-0.35)  net=301 MWe
-            75 →    9.65 ¢/kWh  (Δ-0.18)  net=301 MWe
-           100 →    9.82 ¢/kWh  (Δ+0.00)  net=301 MWe
-           150 →   10.18 ¢/kWh  (Δ+0.35)  net=301 MWe
-           200 →   10.53 ¢/kWh  (Δ+0.71)  net=301 MWe ←
-
-  Plant capacity factor / availability:
-           0.6 →   12.90 ¢/kWh  (Δ+3.07)  net=301 MWe ←
-           0.7 →   11.14 ¢/kWh  (Δ+1.32)  net=301 MWe ←
-           0.8 →    9.82 ¢/kWh  (Δ+0.00)  net=301 MWe
-          0.85 →    9.27 ¢/kWh  (Δ-0.55)  net=301 MWe ←
-           0.9 →    8.80 ¢/kWh  (Δ-1.02)  net=301 MWe ←
-
-  Real discount rate / WACC:
-          0.06 →    8.08 ¢/kWh  (Δ-1.74)  net=301 MWe ←
-          0.07 →    8.92 ¢/kWh  (Δ-0.91)  net=301 MWe ←
-          0.08 →    9.82 ¢/kWh  (Δ+0.00)  net=301 MWe
-           0.1 →   11.84 ¢/kWh  (Δ+2.02)  net=301 MWe ←
-          0.12 →   14.14 ¢/kWh  (Δ+4.32)  net=301 MWe ←
-
-  Blanket/First Wall cost [M$] — polyhedral cusp geometry, no neutronics study (standard analogue $7.3M inapplicable; ARIES range $50–150M)  [HIGH UNCERT]:
-            50 →    9.49 ¢/kWh  (Δ-0.33)  net=301 MWe
-            75 →    9.82 ¢/kWh  (Δ+0.00)  net=301 MWe
-           100 →   10.15 ¢/kWh  (Δ+0.33)  net=301 MWe
-           150 →   10.81 ¢/kWh  (Δ+0.99)  net=301 MWe ←
-           200 →   11.47 ¢/kWh  (Δ+1.64)  net=301 MWe ←
-
-  Loss reduction factor γ — COUPLED sweep (p_beam ∝ γ, p_fus ∝ 1/γ):
-         γ     p_fus   p_beam   Q_sci         LCOE       net
-     0.050      1960       39   50.26       5.92 ¢/kWh      770 MWe
-     0.075      1307       58   22.34       7.60 ¢/kWh      465 MWe
-     0.100       980       78   12.56       9.82 ¢/kWh      301 MWe ← ref
-     0.150       653      117    5.58      19.78 ¢/kWh      114 MWe
-     0.200       490      156    3.14      NET NEG       -3 MWe
-     0.300       327      234    1.40      NET NEG     -165 MWe
-     0.400       245      312    0.79      NET NEG     -292 MWe
-  Note: γ=0.2 coupled gives Q_sci≈3.14 vs Q_sci≈6.28 (branch b, fixed beam).
-        Coupled scenario reflects both yield loss and beam cost increase.
-
-======================================================================
-SCENARIO COMPARISON
-======================================================================
-
-Scenario                                  p_fus    p_net        OCC         LCOE
-                                           [MW]    [MWe]       [M$]      [¢/kWh]
---------------------------------------------------------------------------------
-Conservative (γ=0.2, FOAK)                  490      NEG       1218          N/A
-Moderate / Baseline (γ=0.1)                 980      301       1530         9.82
-Optimistic (γ=0.1, sCO2, NOAK)              980      359       1480         6.23
-
-
---- Scaled to 1000 MWe Reference (α=0.6 economy-of-scale) ---
-Scenario                                 LCOE [$/MWh]    OCC [$/kWe]
---------------------------------------------------------------------
-Conservative (γ=0.2, FOAK)                        N/A            N/A
-Moderate / Baseline (γ=0.1)                      60.7           3148
-Optimistic (γ=0.1, sCO2, NOAK)                   41.4           2738
-
-══════════════════════════════════════════════════════════════════════
-KEY BINDING CONSTRAINTS (in order of LCOE leverage)
-══════════════════════════════════════════════════════════════════════
-
-  1. LOSS REDUCTION FACTOR γ (proxy: p_fus_MW sweep)
-     The entire cost model rests on the unvalidated assumption γ=0.1.
-     γ controls the electron loss rate from the Wiffleball cusp.
-     At γ=0.2, p_fus halves to ~490 MW (or beam power doubles to 156 MW)
-     and LCOE roughly doubles. No experiment has validated γ=0.1 at
-     any plasma density above WB-X's sub-microsecond pulses.
-     University of Sydney (2019) found 'little or no trace of virtual
-     electrode formation' at higher densities — contested by EMC2 but
-     unrefuted in peer-reviewed literature.
-     STATUS: Blocking. FPNS program is the next validation milestone.
-
-  2. THERMAL EFFICIENCY / ENERGY CONVERSION ARCHITECTURE
-     No thermal cycle, coolant, or BOP has been specified by EMC2.
-     The sweep shows ±5 ¢/kWh variation between 33% and 50% efficiency.
-     80% of fusion energy (14.1 MeV neutrons) flows into a blanket with
-     unspecified cooling. Without a defined thermal circuit, net electric
-     output is unknown within ±50%. The 40% Rankine analogue is a
-     placeholder, not an engineering assessment.
-     STATUS: Blocking for serious LCOE estimation.
-
-  3. CAPITAL COST UNCERTAINTY (coil + e-beam overrides dominate CAS22)
-     The two concept-specific CAS22 overrides (C220103=$150M coils,
-     C220104=$100M e-beam) together represent ~$250M of the per-module
-     CAS22. These are analogues with ×2–3 uncertainty. The sweep shows
-     coil cost is the larger lever (no existing SC Polywell design).
-     Unlike MFE tokamaks, no engineering cost study or supplier quote
-     exists for 6-sided polyhedral SC coils at 4.5 T.
-     STATUS: High uncertainty, reducible with an engineering design study.
-
-  4. BLANKET/FIRST WALL COST (C220101) — POLYHEDRAL GEOMETRY CHALLENGE
-     The standard toroidal MFE analogue ($7.3M) is inapplicable to the
-     6-faced polyhedral cusp. Coils on each face create neutron-shadowing
-     with no proposed engineering solution (TRL 1, analysis.md §Section 3
-     and §Section 6 gap #5: blocking). ARIES-class D-T studies estimate
-     $50–150M for comparable neutron power levels; the model override
-     baseline of $75M may understate by 2× if novel breeding geometry is
-     required. The blanket cost sensitivity sweep quantifies this range.
-     STATUS: High uncertainty; blocking for blanket design feasibility.
-
-──────────────────────────────────────────────────────────────────────
-NOTE: This model rests on a physics scaling projection with unvalidated
-free parameters, no energy conversion design, and no plant engineering
-study. All values carry HIGH UNCERTAINTY. LCOE estimates serve as
-corridor indicators only — not cost projections.
-──────────────────────────────────────────────────────────────────────
+--- CAS22 sub-account detail (overrides marked) ---
+code            generic       native        1 GWe  flag
+C220000           272.1        272.1        797.8
+C220101             0.0          0.0          0.0
+C220102             0.0          0.0          0.0
+C220103             8.9          8.9          8.9
+C220104             0.0          0.0          0.0
+C220105             0.0          0.0          0.0
+C220106             1.3          1.3          1.5
+C220106_pump          1.3          1.3          1.5
+C220106_vessel          0.0          0.0          0.0
+C220107            37.7         37.7         41.1
+C220108            51.5         51.5         54.8
+C220109            27.7         27.7         30.0
+C220110             5.8          5.8          6.2
+C220111            18.6         18.6         19.9
+C220112             0.0          0.0          0.0
+C220200            65.4         65.4        199.8
+C220300            12.2         12.2         14.1
+C220400             1.4          1.4          4.9
+C220500             6.3          6.3         15.0
+C220600             4.3          4.3         11.5
+C220700            30.9         30.9         68.4

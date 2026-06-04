@@ -1,29 +1,29 @@
 [
   {
-    "timestamp": "2026-04-20T18:54:43.725616+00:00",
+    "timestamp": "2026-06-04T06:13:41.150405+00:00",
     "step": "cold-start",
     "attempt": 1,
     "validator": "validate_non_empty",
     "passed": true,
-    "details": "Non-empty (32357 chars)",
-    "validated_text_preview": "# D1+ Analysis: Polywell (D-T)\n\n**Concept**: Polywell (D-T)\n**Company**: EMC2 (Energy Matter Conversion Corporation)\n**Confinement Family**: Electrostatic (magnetic-cusp electron confinement, electrostatic ion acceleration)\n**Analysis Date**: 2026-04-20\n\n---\n\n## Section 1: Availability of Data\n\n**Rating: Limited**\n\nThe Polywell has a longer experimental history than most non-mainstream fusion concepts (WB-1 through WB-X, 1989\u20132013), but the public data is thin in ways that matter most for TEA. K"
+    "details": "Non-empty (33711 chars)",
+    "validated_text_preview": "## Design Point\n\n(No design-point row for this concept yet \u2014 selection is upstream-pending. Do not invent one.)\n\n## 1. Availability of Data\n\n**Rating: Limited**\n\nThe Polywell concept has a moderate body of experimental literature from EMC2's WB-series devices (WB-1 through WB-X, 1990s\u20132015) and a significant 2025 physics paper by Park et al. providing the first published reactor scaling study. However, **no engineering power plant design exists**. The available data decomposes into three tiers:\n"
   },
   {
-    "timestamp": "2026-04-20T19:02:54.217047+00:00",
+    "timestamp": "2026-06-04T06:14:46.139496+00:00",
     "step": "model-setup",
     "attempt": 1,
-    "validator": "validate_python_syntax",
+    "validator": "validate_python_syntax+validate_model_setup_contract_strict+validate_override_registry",
     "passed": true,
-    "details": "Valid Python syntax",
-    "validated_text_preview": "\"\"\"\nPolywell (D-T) First-Pass LCOE Model\n======================================\n1cFE First Pass Concept Analysis\nConcept: Polywell (D-T) \u2014 Electrostatic/Magnetic Cusp Confinement\nCompany: EMC2 (Energy Matter Conversion Corporation)\n\nThe Polywell is a magnetic cusp device that traps electrons electrostatically\nto form a virtual cathode (Wiffleball), then uses the resulting electrostatic\nwell to confine and accelerate D-T ions to fusion temperatures. The reactor\ndesign is based on the Park et al. "
+    "details": "All validators passed",
+    "validated_text_preview": "\"\"\"1costingfe model: Polywell (EMC2) (EMC2).\n\nUsage:\n    uv run python model_setup.py              # print results\n    uv run python model_setup.py | tee model_output.txt\n\"\"\"\nimport sys\nfrom pathlib import Path\n\n# Make the shared three-forward helper importable regardless of where this file\n# lives (concept dir or iter-N/ dir): walk up to the scripts/ root.\n_SCRIPTS = next(\n    p / \"scripts\"\n    for p in Path(__file__).resolve().parents\n    if (p / \"scripts\" / \"lib\" / \"model_setup_helpers.py\").e"
   },
   {
-    "timestamp": "2026-04-20T19:04:36.064305+00:00",
+    "timestamp": "2026-06-04T06:15:57.604894+00:00",
     "step": "assess",
     "attempt": 1,
     "validator": "validate_feedback_verdict",
     "passed": true,
     "details": "Feedback format valid (verdict: FINDINGS)",
-    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: \"No burning plasma\" differentiator missing its cost implication\n- **Target:** Section 7 (Cross-Concept Notes, differentiators list)\n- **Category:** analysis\n- **Finding:** Section 7 lists four key differentiators from a conventional tokamak, but item 3 (\"No burning plasma\") does not state a cost implication (Goal 3). This is actually the concept's most TEA-critical structural difference: because the Polywell never transitions to alpha-sustained burn, the 78 MW e-beam "
+    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: Design Point block missing \u2014 violates contract requirement\n- **Target:** Section \"Design Point\" (top of analysis)\n- **Category:** analysis\n- **Finding:** The Design Point block states \"(No design-point row for this concept yet \u2014 selection is upstream-pending. Do not invent one.)\" but the contract specifies that design point selection (plant name, maturity, P_native, grounding confidence) is determined upstream and arrives through analysis frontmatter. The analysis mus"
   }
 ]

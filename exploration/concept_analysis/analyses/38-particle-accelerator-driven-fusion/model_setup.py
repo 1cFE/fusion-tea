@@ -32,12 +32,6 @@ Concept-appropriate cost metrics (Part B):
   • Cost per unit steady-state flux [M$/(neutron/s)]
   • Revenue coverage ratio (Mo-99 revenue / annual facility cost)
 
-Power standardization (scaled_headline):
-Not applicable — SHINE produces zero net electricity. scaled_headline uses
-sentinel values (p_net_mw=0.0, lcoe_per_mwh=None, overnight_per_kw=None) to
-signal exclusion from LCOE comparison. Economy-of-scale exponent α=0.6 is
-documented but cannot be applied since p_native = 0.
-
 Capital cost analogue basis: analysis.md §S6 Gap #3 cites $30-150M for
 comparable Mo-99 production facilities. This model builds up from components
 within that range. All capital estimates carry HIGH UNCERTAINTY.
@@ -678,19 +672,6 @@ class SHINEFLAREParams:
 params = SHINEFLAREParams()
 results = params.compute()
 
-# Power standardization: NOT APPLICABLE
-# SHINE produces zero net electricity (p_native = 0 by beam-target D-T physics).
-# Economy-of-scale exponent α = 0.6 is documented but cannot be applied.
-# The concept explorer should treat this concept as excluded from LCOE comparison.
-_ALPHA = 0.6  # documented but not applied
-_p_native = results["power"].get("p_net_plant", results["power"]["p_net"])  # = 0.0
-
-scaled_headline = {
-    "p_net_mw": 0.0,
-    "lcoe_per_mwh": None,       # Not a power plant — excluded from LCOE comparison
-    "overnight_per_kw": None,   # Not a power plant — $/kWe is undefined
-}
-
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Output functions
@@ -822,7 +803,7 @@ def print_results(p: SHINEFLAREParams, res: dict):
     print()
 
     print("--- LCOE and Concept-Appropriate Metrics ---")
-    print(f"  LCOE ($/MWh):            NOT APPLICABLE — p_net = 0 by physics")
+    print(f"  LCOE:                    NOT APPLICABLE (freeform, native-scale only) — p_net = 0 by physics")
     print(f"  Annual neutrons:         {econ['annual_neutrons']:.3e} neutrons/yr")
     print(f"  Cost per neutron:        ${econ['cost_per_neutron_USD']:.3e} / neutron")
     print(f"  Cost per flux unit:      ${econ['cost_per_flux_unit_M_USD']:.4e} M$ / (neutron/s)")

@@ -1,117 +1,91 @@
-=================================================================
-HTS Tokamak - Full HTS (Energy Singularity / HH380 proxy)
-ALL parameters are analogue estimates — no HH380 design exists
-=================================================================
-LCOE:           109.6 $/MWh
-Overnight cost: 7525 $/kW
+================================================================================
+⚠ DATA LIMITATION: PLACEHOLDER VALUES IN USE ⚠
+================================================================================
 
-Fusion power:   1215 MW
-Thermal power:  1363 MW
-Net electric:   500 MW
-Recirc. frac:   20.25%
-Q_engineering:  4.94
+This model uses ANALOGUE-BASED placeholders, NOT company-grounded values.
+Energy Singularity has not disclosed HH380 specifications (see docstring).
 
-Code     Account                                M$
---------------------------------------------------
-CAS10    Preconstruction                      17.2
-CAS21    Buildings                           476.3
-CAS22    Reactor Plant Equipment            1874.1
-CAS23    Turbine Plant                       123.9
-CAS24    Electrical Plant                     52.8
-CAS25    Miscellaneous                        32.1
-CAS26    Heat Rejection                       21.4
-CAS27    Special Materials                     7.5
-CAS28    Digital Twin                          5.0
-CAS29    Contingency                           0.0
-CAS30    Indirect Costs                      432.2
-CAS40    Owner's Costs                        27.6
-CAS50    Supplementary                       201.0
-CAS60    IDC                                 491.2
-CAS70    O&M (annualized)                     80.2
-CAS80    Fuel (annualized)                     0.5
-CAS90    Financial                           303.2
---------------------------------------------------
-         Total Capital                      3762.3
+Placeholder assumptions:
+  P_native = 500.0 MWe (representative compact tokamak scale)
+  R0 = 2.6 m (HH170 ~1.3m × 2 scale-up)
+  plasma_t = 0.87 m (A~3 compact tokamak)
+  B = 14.0 T (HH170 target, HH380 may differ)
+  p_input = 85.0 MW (NBI+ICRF mix, scaled from ARC)
 
-CAS22 Sub-Account Detail (Reactor Plant Equipment):
---------------------------------------------------
-  C220101  First Wall + Blanket            143.2
-  C220102  Shield                           98.2
-  C220103  Coils (HTS TF+PF+CS)            516.1
-  C220104  Heating System (ICRH)           353.2
-  C220105  Primary Structure                11.2
-  C220106  Vacuum System                    56.9
-  C220107  Power Supplies                   57.7
-  C220108  Divertor                         70.0
-  C220109  Direct Energy Conv.               0.0
-  C220111  Installation                    199.5
-  C220112  Isotope Separation                0.0
-  C220200  Coolant System                  107.2
-  C220300  Aux Cooling                      12.9
-  C220400  Rad Waste                         2.7
-  C220500  Fuel Handling                    73.9
-  C220600  Other Equipment                   6.6
-  C220700  I&C                              46.0
-  C220000  CAS22 Total                    1874.1
+These numbers represent 'a compact HTS tokamak at this scale', NOT
+Energy Singularity's specific HH380 design (which does not exist in
+public sources yet).
 
-=================================================================
-KEY ASSUMPTIONS (all UNCERTAIN — no HH380 design published)
-=================================================================
-  Net electric:   500 MWe  [CFS ARC analogue; Sorbom et al. 2015]
-  Major radius:   3.0 m     [CFS ARC analogue; analysis.md §S2 Challenge 1]
-  Minor radius:   1.0 m     [A=3, D-shaped; analogue]
-  Availability:   80%      [below 0.85 default; full HTS CS risk]
-  eta_th:         0.46      [DEFAULT; power cycle undisclosed]
-  eta_pin:        0.65      [ICRH ~60-70%; analysis.md §S2 Ch.5]
-  Build time:     5 yr       [fast cadence; <2yr for HH70]
+Overrides: 0 enabled (no company-grounded cost data for HH380)
+================================================================================
 
-  BLOCKING GAPS (analysis.md §S5):
-    - No HH380 fusion power, net electric, or Q disclosed
-    - No blanket design — TBR, material, breeder type all unknown
-    - No thermal conversion cycle specified
-    - No capital cost study or plant engineering exists
-    - Full HTS CS coil fatigue/reliability data absent globally
+LCOE: 94.0 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 110.9 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 110.9 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 8754 $/kW   native 8754 $/kW   1 GWe 7776 $/kW
 
-=================================================================
-SENSITIVITY ANALYSIS (elasticity = %ΔLCOE / %Δparam)
-=================================================================
+CAS               generic           native            1 GWe
+--------------------------------------------------------
+CAS10                17.2             17.2             17.8
+CAS21               446.2            446.2            446.2
+CAS22              2081.5           2081.5           4065.3
+CAS23               142.9            142.9            285.7
+CAS24                60.9             60.9            121.7
+CAS25                37.0             37.0             74.1
+CAS26                61.7             61.7            123.5
+CAS27                 7.5              7.5              7.5
+CAS28                 5.0              5.0              5.0
+CAS29                 0.0              0.0              0.0
+CAS30               568.5            568.5           1025.8
+CAS40                27.6             27.6             27.6
+CAS50               215.2            215.2            322.6
+CAS60               705.7            705.7           1253.8
+CAS70                84.2             84.2            115.4
+CAS80                 0.4              0.4              0.9
+CAS90               328.3            328.3            583.3
+--------------------------------------------------------
+TOTAL              4376.8           4376.8           7776.4
 
-Engineering levers:
-  availability                   -0.9400
-  construction_time_yr           +0.2641
-  elon                           +0.1496
-  R0                             +0.1496
-  eta_th                         -0.1145
-  blanket_t                      +0.1114
-  plasma_t                       +0.0785
-  eta_pin                        -0.0467
-  p_input                        +0.0466
-  vessel_t                       +0.0207
-  ht_shield_t                    +0.0189
-  fuel_recovery                  -0.0129
-  f_sub                          +0.0114
-  p_cool                         +0.0083
-  structure_t                    +0.0063
-  p_trit                         +0.0061
-  p_cryo                         +0.0026
-  p_house                        +0.0024
-  p_coils                        +0.0012
-  mn                             -0.0011
-  burn_fraction                  -0.0007
-  p_pump                         +0.0006
-  eta_p                          -0.0000
-  eta_de                         +0.0000
-  q95                            +0.0000
-  f_GW                           +0.0000
-  B                              +0.0000
-  T_e                            +0.0000
-  n_e                            +0.0000
-  Z_eff                          +0.0000
-  plasma_volume                  +0.0000
-  R_w                            +0.0000
-  T_edge                         +0.0000
-  tau_ratio                      +0.0000
+--- CAS22 sub-account detail (overrides marked) ---
+code            generic       native        1 GWe  flag
+C220000          2081.5       2081.5       4065.3
+C220101           143.2        143.2        143.2
+C220102           101.6        101.6        101.6
+C220103           411.9        411.9        411.9
+C220104           600.5        600.5        600.5
+C220105            10.4         10.4         10.4
+C220106            54.7         54.7         54.7
+C220106_pump          0.5          0.5          0.5
+C220106_vessel         54.2         54.2         54.2
+C220107            63.7         63.7         63.7
+C220108            80.7         80.7         80.7
+C220109             0.0          0.0          0.0
+C220110           127.5        127.5        127.5
+C220111           223.2        223.2        223.2
+C220112             0.0          0.0          0.0
+C220200           111.2        111.2        207.3
+C220300            13.4         13.4         15.4
+C220400             3.5          3.5          7.1
+C220500            73.9         73.9        120.0
+C220600             6.6          6.6         11.5
+C220700            55.3         55.3         86.8
 
-Financial:
-  interest_rate                  +0.6432
-  inflation_rate                 +0.0550
+================================================================================
+MODEL CONFIDENCE: LOW
+================================================================================
+This LCOE estimate is a CORRIDOR MAP for a compact tokamak of this scale,
+NOT a company-validated number. The analysis (analysis.md Sections 5-6)
+documents 14 data gaps, 3 of which are blocking (P_native, blanket design,
+geometry). Until Energy Singularity discloses HH380 specifications (timeline:
+post-2030), any cost estimate is primarily assumption-driven.
+
+Key uncertainties (analysis.md Section 2):
+  - Unknown power plant scale (100 MWe – 1 GWe corridor)
+  - Unknown tritium breeding pathway (FLiBe, LiPb, HCPB, other?)
+  - Full-HTS magnet cost (depends on REBCO tape price trajectory $10-100/kA-m)
+  - Unknown divertor approach for high-power-density compact design
+
+For comparables-based cross-concept analysis, use result_1gw with the caveat
+that this concept's true 1 GWe LCOE could be ±50% from this library-default
+story once HH380 engineering decisions are disclosed.
+================================================================================
