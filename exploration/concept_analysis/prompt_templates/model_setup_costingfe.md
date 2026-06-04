@@ -221,6 +221,31 @@ print_cas_breakdown(generic, native, result_1gw, overrides)
      calibration value (not the geometric volume) that produces sane
      `p_fus ≈ 700 MW`. Library issue: **1cFE/1costingfe#24** (proposed
      fix: `radiation_peaking_factor` field).
+
+   - **NBI/RF-heated concepts** (TOKAMAK / STELLARATOR / MIRROR / STEADY_FRC /
+     any concept where `eta_couple` is defined): do **NOT** pass `eta_pin`
+     in spec. The library derives `eta_pin = eta_source × eta_couple` from
+     per-method `eta_source_*` constants (in `CostingConstants`) times the
+     concept's `eta_couple` (which lives in the YAML and is overridable
+     via spec). Setting `eta_pin` directly raises `ValueError` at
+     `forward()` time. If you want to express a different *wall-plug*
+     efficiency than the library default, override `eta_couple` (changes
+     the coupling fraction) or override the relevant `eta_source_*`
+     CostingConstants field via `cost_overrides` — never `eta_pin`.
+
+   - **`p_fus` is never a spec key.** The library back-solves fusion power
+     from `p_input` + plasma parameters via the inverse power balance. If
+     the source publishes a fusion power, transcribe it as a documentation
+     comment, do not put it in `spec` — the strict-kwarg validator rejects
+     `p_fus`.
+
+   - **MIF concepts** (`{{costingfe_concept}} ∈ {MAG_TARGET, MAGLIF,
+     PLASMA_JET}`): the MIF forward path does not accept MFE/IFE-only
+     kwargs. In particular `f_dec`, `p_input`, `eta_p`, `eta_pin`,
+     `eta_de` are not in the MIF `forward()` signature and will be
+     rejected by the strict-kwarg validator. Honor the per-archetype
+     canonical glossary rendered above — it only lists kwargs the
+     archetype actually consumes.
 4. **No `# DEFAULT: ...` comments.** An account you don't override is already
    handled by the library — do not re-pass or annotate defaults. Cite the source
    for the values you *do* set with a normal inline comment.
