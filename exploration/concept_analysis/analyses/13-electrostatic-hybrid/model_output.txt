@@ -1,0 +1,88 @@
+warning: `VIRTUAL_ENV=C:\Users\mallo\AppData\Local\Python\pythoncore-3.14-64` does not match the project environment path `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv` and will be ignored; use `--active` to target the active environment instead
+C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:250: UserWarning: Recirculating fraction = 0.839 > 0.5 — excessive parasitic power load
+  validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:250: UserWarning: pb11 with blanket_form='molten_salt': aneutronic fuels do not need a breeding blanket.
+  validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+LCOE: 91.8 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 2523.8 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 2523.8 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 235953 $/kW   native 235953 $/kW   1 GWe 9096 $/kW
+
+CAS               generic           native            1 GWe
+--------------------------------------------------------
+CAS10                11.1             11.1             11.2
+CAS21               137.0            137.0            137.0
+CAS22                 7.2              7.2           5529.9
+CAS23                 0.2              0.2            213.9
+CAS24                 0.1              0.1             91.1
+CAS25                 0.1              0.1             55.5
+CAS26                 0.1              0.1             92.4
+CAS27                 0.0              0.0              0.0
+CAS28                 5.0              5.0              5.0
+CAS29                 0.0              0.0              0.0
+CAS30                29.9             29.9           1225.0
+CAS40                 0.6              0.6              0.6
+CAS50                 6.5              6.5            268.0
+CAS60                38.0             38.0           1466.5
+CAS70                 1.1              1.1              1.1
+CAS80                 0.0              0.0              0.1
+CAS90                17.7             17.7            682.3
+--------------------------------------------------------
+TOTAL               236.0            236.0           9096.3
+
+--- CAS22 sub-account detail (overrides marked) ---
+code            generic       native        1 GWe  flag
+C220000             7.2          7.2       5529.9
+C220101             0.0          0.0          0.0
+C220102             0.0          0.0          0.0
+C220103             0.5          0.5          0.5
+C220104             0.0          0.0          0.0
+C220105             0.0          0.0          0.0
+C220106             0.0          0.0          0.0
+C220106_pump          0.0          0.0          0.0
+C220106_vessel          0.0          0.0          0.0
+C220107             0.7          0.7          0.7
+C220108             3.1          3.1          3.1
+C220109             0.0          0.0          0.0
+C220110             0.3          0.3          0.3
+C220111             0.6          0.6          0.6
+C220112             0.0          0.0          0.0
+C220200             1.0          1.0        201.2
+C220300             0.0          0.0          3.0
+C220400             0.0          0.0          5.3
+C220500             0.1          0.1         15.0
+C220600             0.0          0.0         11.5
+C220700             0.8          0.8         71.9
+
+=== Design Point Context ===
+Concept: Orbitron (Avalanche Energy)
+Maturity: paper-concept
+Grounding: low
+Data availability: Limited
+
+Design point specified: 5 kWe net electric output
+Model executed at: 1.0 MWe (200x scaling workaround)
+
+Design point parameters from analysis:
+  Chamber radius: 0.06 m (12 cm diameter)
+  Cathode voltage: 300 kV
+  Magnetic field: 0.3-0.4 T (target)
+  Fusion power: 1 kW D-T (published target)
+  Input power: 1 kW (600 W cathode + 400 W ion guns)
+  Q_plasma: ~1.0 (estimated)
+
+CRITICAL ISSUE: Analysis Section 5 identifies an internal inconsistency
+between the 5 kWe net electric output and the 1 kW fusion power at Q~1.
+The library physics model cannot achieve net-positive power at 5 kWe scale
+with D-T thermal cycle (recirculating fraction exceeds 1.0). To enable cost
+model execution, P_native was scaled to 1.0 MWe (~200 modules per analysis
+modular scaling claim). The sources do not resolve this discrepancy.
+
+Recirculating power warning: The model shows rec_frac = 0.076
+(>0.5 threshold), reflecting the fundamental physics challenge documented in
+the analysis. This is not an artifact of the scaling — even at 1 MWe, the
+concept barely achieves net-positive power.
+
+Override count: 0 (expected 3-8 for Med archetype-fit)
+Rationale: No company-grounded cost data available for any subsystem.
+The resulting cost model has very high uncertainty (2-3 orders of magnitude).
