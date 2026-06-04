@@ -168,6 +168,10 @@ P_TARGET = 2.0
 # industrial scale is not characterized in any Cortex source." Key cost risk:
 # if nanoshells are not recycled, gold consumption ≈ 60 mg/s at 1 MHz → ~$18,000/hr at $85k/kg.
 # ASSUMES near-complete nanoshell recycling — entirely undemonstrated.
+# NOTE: with target_unit_cost=0 (recycling assumed) the framework computes no
+# target factory (C220108=0), so this 2 MW draws factory power for an unmodeled
+# facility — a residual inconsistency to resolve if a nanoshell synthesis/recovery
+# plant is later costed (it would set target_unit_cost > 0, turning C220108 on).
 
 # ── Radial build (spherical chamber geometry) ─────────────────────────────────
 # No Cortex chamber design has been disclosed.
@@ -182,31 +186,30 @@ STRUCTURE_T = 0.15  # DEFAULT: Primary structure [m]. ife_laser_ife.yaml.
 VESSEL_T    = 0.10  # DEFAULT: Vacuum vessel [m]. ife_laser_ife.yaml.
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# COST OVERRIDES
+# COST ACCOUNTS — handled by native framework parameters (no cost_overrides)
 # ═══════════════════════════════════════════════════════════════════════════════
-# Only accounts with clear justification from analysis.md are overridden.
-# All other CAS accounts use framework defaults — see §Anti-Hallucination above.
-
-COST_OVERRIDES = {
-    # C220103 — Coils/magnets: $0
-    # No superconducting or resistive magnets in the Cortex concept.
-    # Laser IFE inherits no coil requirement; zeroed to prevent any MFE heritage bleed.
-    # analysis.md §Section 7: "No external magnets... Cortex's cost structure would
-    # be fundamentally different from MFE concepts."
-    "C220103": 0.0,
-
-    # C220108 — Divertor: $0
-    # No divertor architecture exists or is applicable to an IFE pulsed concept.
-    # IFE concepts do not have steady-state plasma exhaust requiring a divertor.
-    # Zeroed to avoid MFE/tokamak default values carrying through.
-    "C220108": 0.0,
-
-    # C220112 — Isotope separation: $0
-    # No Li-6 enrichment or tritium isotope separation required for D-D fuel cycle.
-    # analysis.md §Section 4, Heavy Water: D₂O is the fuel medium; commercially
-    # available from CANDU operations at ~$300–600/kg. No isotope separation plant needed.
-    "C220112": 0.0,
-}
+# The three accounts this concept previously zeroed via cost_overrides are now
+# handled by native 1costingfe parameters — correct and internally consistent,
+# no raw account overrides:
+#   C220103 (coils):  LASER_IFE carries no confinement magnets, so the framework
+#                     already computes C220103 = 0. The override was redundant.
+#   C220112 (isotope separation): 0 for every fuel under the market-purchase model
+#                     (fuel bought at enriched prices, no on-site plant); the
+#                     framework already computes C220112 = 0. The override was
+#                     redundant.
+#   C220108 (target factory): for IFE this account is the per-shot target factory
+#                     (not a divertor — IFE has no divertor), gated on the native
+#                     target_unit_cost knob set to 0.0 below. The Cortex "target"
+#                     is a gold-nanoshell-laden D₂O jet with near-complete nanoshell
+#                     recycling assumed (see P_TARGET note), so the per-shot
+#                     consumable is ~0 and no target factory is modeled. The prior
+#                     C220108 = 0 override zeroed the factory while the concept still
+#                     inherited the LASER_IFE default target_unit_cost = 0.40,
+#                     leaving a CAS80 capsule consumable with no factory — the exact
+#                     inconsistency the native knob removes. If the recycling
+#                     assumption is relaxed, the gold-nanoshell consumable (the
+#                     dominant cost risk) belongs in target_unit_cost, which also
+#                     switches the target factory back on.
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # FORWARD MODEL
@@ -237,14 +240,17 @@ result = model.forward(
     p_house=P_HOUSE,
     p_cryo=P_CRYO,
     p_target=P_TARGET,
+    # No fabricated target factory: gold nanoshells are assumed near-completely
+    # recycled, so the per-shot consumable is ~0. This native knob zeroes both the
+    # CAS80 capsule consumable and the C220108 target factory consistently (see the
+    # native-handling block above), replacing the prior raw C220108 = 0 override.
+    target_unit_cost=0.0,
     # Radial build (spherical chamber)
     plasma_t=PLASMA_T,
     blanket_t=BLANKET_T,
     ht_shield_t=HT_SHIELD_T,
     structure_t=STRUCTURE_T,
     vessel_t=VESSEL_T,
-    # Cost overrides (see rationale block above)
-    cost_overrides=COST_OVERRIDES,
 )
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -383,7 +389,7 @@ print("SENSITIVITY ANALYSIS (elasticity = %ΔLCOE / %Δparam)")
 print("Note: overridden accounts (C220103, C220108, C220112) have zero gradient.")
 print("=" * 65)
 
-sens = model.sensitivity(result.params, cost_overrides=COST_OVERRIDES)
+sens = model.sensitivity(result.params)
 
 print("\nEngineering levers:")
 for k, v in sorted(sens["engineering"].items(), key=lambda x: abs(x[1]), reverse=True):
