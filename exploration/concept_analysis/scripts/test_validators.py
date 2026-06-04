@@ -1920,3 +1920,206 @@ class TestF9SpecRatioBounds:
         # by validate_model_setup_contract — it's required by
         # validate_design_point_coherence). F9 must not block here.
         assert r.valid, r.details
+
+
+# ---------------------------------------------------------------------------
+# F9 extension — load-field ratio bounds (p_house, p_cool, p_pump, p_cryo,
+# p_trit, p_coils) and heating sub-fractions (p_nbi, p_icrf, p_ecrh, p_lhcd).
+# Concept 20a (Type One Energy) was the prosecutor's fixture: its model_setup.py
+# set p_house = 800 MW (Type One's published fusion power) into the
+# housekeeping slot. p_house/P_native = 800/350 = 2.3 drove the library's
+# inverse power balance to inflate every p_th-scaled CAS22 account, raising
+# LCOE from a realistic ~$208 to a bogus $285. Same class as concept-05/09's
+# p_input bug, just on a different spec key — F9's original bound only covered
+# p_input. This extension covers the load fields the LLM is most likely to
+# confuse with fusion-or-thermal power, plus the heating sub-fractions that
+# share p_input's bound.
+# ---------------------------------------------------------------------------
+
+
+# Concept 20a's literal regen output — p_house = 800.0 against P_native = 350.0
+# gives p_house/P_native = 2.29 (well above the 0.05 cap).
+_F9_CONCEPT_20A_LITERAL = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(
+    R0=12.5,
+    plasma_t=1.25,
+    B=9.0,
+    p_house=800.0,
+    p_input=20.0,
+    elon=1.0,
+)
+P_native = 350.0
+model = CostModel(concept=ConfinementConcept.STELLARATOR, fuel=Fuel.DT)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+
+# Healthy 20a — p_house at the library-default level (4 MW for a stellarator,
+# = 1.1% of 350 MWe P_native, well inside the [0%, 5%] band).
+_F9_20A_HEALTHY = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(
+    R0=12.5,
+    plasma_t=1.25,
+    B=9.0,
+    p_house=4.0,
+    p_input=20.0,
+    elon=1.0,
+)
+P_native = 350.0
+model = CostModel(concept=ConfinementConcept.STELLARATOR, fuel=Fuel.DT)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+
+# Cooling-pump fusion-power mistake: p_cool = 500 MW for a 1000 MWe plant
+# (50% of native) is way above the 10% cap.
+_F9_PCOOL_TOO_HIGH = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(R0=3.3, plasma_t=1.1, p_input=50.0, p_cool=500.0)
+P_native = 1000.0
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+
+# Cryogenic overcount: p_cryo = 100 MW (10%) for a 1 GWe plant blows the 2% cap.
+_F9_PCRYO_TOO_HIGH = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(R0=3.3, plasma_t=1.1, p_input=50.0, p_cryo=100.0)
+P_native = 1000.0
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+
+# All loads at zero — DD/aneutronic plants with no p_trit, no p_cryo
+# (resistive coils), etc. F9 must pass when fields are zero.
+_F9_ALL_LOADS_ZERO = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(
+    R0=3.3, plasma_t=1.1, p_input=50.0,
+    p_house=0.0, p_cool=0.0, p_pump=0.0, p_cryo=0.0, p_trit=0.0, p_coils=0.0,
+)
+P_native = 1000.0
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.PB11)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+
+# Heating sub-fraction fusion-power mistake: p_nbi = 2000 MW for a 1000 MWe
+# plant (2x) blows the p_nbi 50% cap.
+_F9_PNBI_TOO_HIGH = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(R0=3.3, plasma_t=1.1, p_input=50.0, p_nbi=2000.0)
+P_native = 1000.0
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+
+class TestF9ExtensionLoadFields:
+    """F9 extension — reject fusion/thermal-power transcription errors on
+    load-field spec keys (p_house, p_cool, p_pump, p_cryo, p_trit, p_coils)
+    and heating sub-fractions (p_nbi, p_icrf, p_ecrh, p_lhcd)."""
+
+    def test_rejects_concept_20a_literal(self):
+        # The Type One Energy fixture: p_house = fusion power.
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F9_CONCEPT_20A_LITERAL)
+        assert not r.valid
+        assert "p_house" in r.fix_message
+        # Redirect must specifically call out the housekeeping role:
+        assert "housekeeping" in r.fix_message.lower()
+        # And reference the 20a Type One Energy incident, so operators
+        # grepping regen logs can connect to this PR:
+        assert "20a" in r.fix_message or "Type One" in r.fix_message
+        # Details surface the actual ratio (2.28 or 2.29 depending on rounding):
+        assert "2.2" in r.details or "2.3" in r.details
+
+    def test_accepts_20a_after_fix(self):
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F9_20A_HEALTHY)
+        assert r.valid, r.details
+
+    def test_rejects_pcool_above_bound(self):
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F9_PCOOL_TOO_HIGH)
+        assert not r.valid
+        assert "p_cool" in r.fix_message
+        assert "cooling pump" in r.fix_message.lower()
+
+    def test_rejects_pcryo_above_bound(self):
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F9_PCRYO_TOO_HIGH)
+        assert not r.valid
+        assert "p_cryo" in r.fix_message
+        assert "cryogenic" in r.fix_message.lower()
+
+    def test_accepts_all_loads_zero(self):
+        # Aneutronic / non-SC / DD plants legitimately zero out load fields.
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F9_ALL_LOADS_ZERO)
+        assert r.valid, r.details
+
+    def test_rejects_heating_subfraction_overload(self):
+        # p_nbi = 2000 / P_native = 1000 = 2.0 (above the 0.5 cap).
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F9_PNBI_TOO_HIGH)
+        assert not r.valid
+        assert "p_nbi" in r.fix_message
+
+    def test_first_failing_key_reported(self):
+        # When multiple bounds would fire, F9 reports the FIRST failure in
+        # iteration order (dict insertion order: p_input → p_house → ...).
+        # This test pins that ordering by giving 20a's p_house alongside an
+        # also-bad p_cool, and asserting p_house is the reported failure.
+        from lib.validators import validate_model_setup_contract
+
+        text = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(R0=3.3, plasma_t=1.1, p_input=50.0, p_house=800.0, p_cool=500.0)
+P_native = 350.0
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+        r = validate_model_setup_contract(text)
+        assert not r.valid
+        # p_house comes before p_cool in _SPEC_RATIO_BOUNDS' insertion order,
+        # so p_house is reported first:
+        assert "p_house" in r.fix_message

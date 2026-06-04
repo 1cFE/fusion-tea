@@ -569,20 +569,38 @@ _CAS22_DETAIL_KEYS: set[str] = {
 # Map: spec_key -> structural_redirect.
 # F9 — physical-sense ratio bounds for spec values relative to P_native. The
 # prompt-template glossary (canonical_spec_keys.py) is the *prevention* half of
-# the concept-05/09 fix (LLM transcribed fusion power into `p_input` and the
-# library back-solved to a 5 GW plant masquerading as a 390 MWe stellarator).
-# F9 is the *detection* half: a structural backstop in case the prompt guidance
-# is ignored or future model versions drift.
+# the fusion-power-into-wrong-slot fix; F9 is the *detection* half — a
+# structural backstop in case the prompt guidance is ignored or future model
+# versions drift.
 #
 # Each entry maps a spec key to (low_ratio, high_ratio, redirect_message), where
-# the ratio is value/P_native. The bounds are deliberately wide (10x the
-# physically reasonable range) — the goal is to catch order-of-magnitude
-# transcription errors, NOT to police modest concept-to-concept variation.
+# the ratio is value/P_native. The bounds are deliberately wide (typically 2-5x
+# the upper bound of the canonical-spec-key glossary's "typical" range) — the
+# goal is to catch order-of-magnitude transcription errors, NOT to police modest
+# concept-to-concept variation.
 #
-# `p_input` is the only currently-bounded key; future additions (heating
-# fractions p_nbi / p_icrf / etc. summing to p_input; e_driver_mj * f_rep
-# driver wallplug ratio) belong here as discrete entries with their own
-# redirect message.
+# History of caught bugs:
+#   - p_input: concepts 05 (planar-coil stellarator) and 09 (QI stellarator HTS)
+#     each set p_input = published fusion power (958 / 2700 MW) instead of
+#     auxiliary heating, inflating LCOE to ~$300/MWh until the F9 backstop +
+#     canonical-spec-keys prompt prevention shipped together.
+#   - p_house: concept 20a (Type One stellarator) set p_house = 800 MW (the
+#     plant's fusion power) into the housekeeping slot. p_house/P_native = 2.3
+#     drove every p_th-scaled CAS22 account upward and inflated LCOE to $285.
+#     This entry would have caught it on first run.
+#
+# Bounds rationale:
+#   - The "p_*" power loads are all calibrated against P_native, so the
+#     upper-bound ratio is set to ~5x the canonical-spec-key glossary's typical
+#     maximum (e.g. p_house typical 2-10 MW; for a 1 GWe plant that's
+#     0.2-1% of P_native; bound at 5% = 5x typical max).
+#   - Lower bound is 0 for fields that can legitimately be zero (e.g. p_trit
+#     for aneutronic fuels), and 0.005 for p_input (which must be non-zero
+#     for heated MFE concepts; a value below 0.5% is almost certainly an MW/GW
+#     unit error).
+#   - Heating sub-fractions (p_nbi/p_icrf/p_ecrh/p_lhcd) share p_input's bounds:
+#     they sum to p_input, so each one alone can run up to the full p_input
+#     bound (50%).
 _SPEC_RATIO_BOUNDS: dict[str, tuple[float, float, str]] = {
     "p_input": (
         0.005, 0.5,
@@ -593,6 +611,83 @@ _SPEC_RATIO_BOUNDS: dict[str, tuple[float, float, str]] = {
         "was transcribed into p_input by mistake (the concept 05/09 failure "
         "mode). Find the SEPARATE heating-power figure in your source paper "
         "(often labelled 'auxiliary heating', 'NBI', 'p_aux') and use THAT."
+    ),
+    "p_house": (
+        0.0, 0.05,
+        "p_house/P_native must lie in [0%, 5%]. p_house is HOUSEKEEPING "
+        "power (lights, control room, building HVAC) — typically 2-10 MW "
+        "for a GW-class plant, i.e. <1% of P_native. A value above 5% "
+        "almost certainly means fusion power or gross thermal power was "
+        "transcribed into p_house by mistake (concept 20a Type One "
+        "Energy hit this with p_house=800 MW for a 350 MWe plant). "
+        "Fusion power and gross thermal are NOT settable through spec; "
+        "the library back-solves them from p_input + losses."
+    ),
+    "p_cool": (
+        0.0, 0.10,
+        "p_cool/P_native must lie in [0%, 10%]. p_cool is the PRIMARY "
+        "COOLING PUMP power — typically 5-50 MW for a GW-class plant, "
+        "i.e. 0.5-5% of P_native. A value above 10% almost certainly "
+        "means an unrelated power (e.g. waste heat rejection rate, or "
+        "fusion thermal load) was transcribed into p_cool by mistake."
+    ),
+    "p_pump": (
+        0.0, 0.02,
+        "p_pump/P_native must lie in [0%, 2%]. p_pump is VACUUM PUMPING "
+        "power — typically 0.5-5 MW for a GW-class plant, i.e. "
+        "0.05-0.5% of P_native. A value above 2% likely means a "
+        "different pumping load (cryopump regen power? primary coolant "
+        "pump?) was conflated into p_pump."
+    ),
+    "p_cryo": (
+        0.0, 0.02,
+        "p_cryo/P_native must lie in [0%, 2%]. p_cryo is the CRYOGENIC "
+        "wallplug for SC magnets — typically 0.5-5 MW for a GW-class "
+        "plant. A value above 2% likely means total refrigeration load "
+        "(including non-magnet cryo) or magnet cooling at base load "
+        "(without recovery from quench discharge) was passed instead."
+    ),
+    "p_trit": (
+        0.0, 0.05,
+        "p_trit/P_native must lie in [0%, 5%]. p_trit is TRITIUM "
+        "PROCESSING wallplug — typically 0-15 MW for D-T plants, 0 for "
+        "aneutronic / DD / DHe3 fuels. A value above 5% likely means "
+        "the tritium-inventory cost or full breeding-blanket processing "
+        "load was conflated."
+    ),
+    "p_coils": (
+        0.0, 0.05,
+        "p_coils/P_native must lie in [0%, 5%]. p_coils is COIL-SYSTEM "
+        "power (cooling, control electronics, vacuum-vessel feed-through "
+        "losses) — typically 1-10 MW for a GW-class plant. A value above "
+        "5% likely means the full TF coil resistive dissipation, or the "
+        "coil-cooling refrigerator wallplug at full magnet duty, was "
+        "conflated."
+    ),
+    "p_nbi": (
+        0.0, 0.5,
+        "p_nbi/P_native must lie in [0%, 50%]. p_nbi is the NBI sub-"
+        "fraction of p_input (NBI/ICRH/ECRH/LHCD sum to p_input). A "
+        "value above 50% would mean NBI alone exceeds the recirculating "
+        "fraction; most concepts split heating across multiple methods."
+    ),
+    "p_icrf": (
+        0.0, 0.5,
+        "p_icrf/P_native must lie in [0%, 50%]. p_icrf is the ICRH sub-"
+        "fraction of p_input (NBI/ICRH/ECRH/LHCD sum to p_input). See "
+        "p_input redirect for the fusion-vs-heating distinction."
+    ),
+    "p_ecrh": (
+        0.0, 0.5,
+        "p_ecrh/P_native must lie in [0%, 50%]. p_ecrh is the ECRH sub-"
+        "fraction of p_input (NBI/ICRH/ECRH/LHCD sum to p_input). See "
+        "p_input redirect for the fusion-vs-heating distinction."
+    ),
+    "p_lhcd": (
+        0.0, 0.5,
+        "p_lhcd/P_native must lie in [0%, 50%]. p_lhcd is the LHCD sub-"
+        "fraction of p_input (NBI/ICRH/ECRH/LHCD sum to p_input). See "
+        "p_input redirect for the fusion-vs-heating distinction."
     ),
 }
 
