@@ -25,12 +25,15 @@ from lib.model_setup_helpers import (
 #    Geometry / physics / power. NO library-default re-passing.
 spec = dict(
     R0=18.0,             # gauss-fusion-technical-summary.md §GIGA Power Plant; helias-reactor-context.md Table I
-    a=1.7,               # gauss-fusion-technical-summary.md §GIGA Power Plant (average minor radius)
-    plasma_vol=1500.0,   # gauss-fusion-technical-summary.md §GIGA Power Plant (m³)
-    B0=6.0,              # gauss-fusion-technical-summary.md §GIGA Power Plant (on-axis field)
-    p_fus=3000.0,        # gauss-fusion-technical-summary.md §GIGA Power Plant (MW fusion power)
+    plasma_t=1.7,        # minor radius [m] — gauss-fusion-technical-summary.md §GIGA Power Plant
+    plasma_volume=1500.0,# gauss-fusion-technical-summary.md §GIGA Power Plant (m³)
+    B=6.0,               # on-axis magnetic field [T] — gauss-fusion-technical-summary.md §GIGA Power Plant
     p_input=75.0,        # [estimated: ECRH for startup/profile control; 50-100 MW band from analysis §5]
     elon=1.6,            # [effective average elongation for toroidally-varying bean/triangular cross-sections]
+    # Note: p_fus dropped from spec — library back-solves P_fus via inverse power
+    # balance from p_input + P_native. Source p_fus=3000 MW would have been
+    # silently ignored by forward() under loose validation and now raises with
+    # the strict kwarg validator (1costingfe master).
 )
 P_native = 1000.0        # MWe — Design Point selection (orchestrator-fixed)
 
