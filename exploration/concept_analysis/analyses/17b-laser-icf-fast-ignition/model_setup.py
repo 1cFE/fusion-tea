@@ -111,13 +111,9 @@ result = model.forward(
     # Confidence: high for target, low for demonstrated achievement.
     f_rep=10.0,
 
-    # Laser wall-plug efficiency.
-    # Source: focused-energy-callahan-interview.md §Laser efficiency.
-    eta_pin=ETA_PIN,
-
-    # Thermal conversion efficiency.
-    # Source: focused-energy-callahan-interview.md §Steam cycle.
-    eta_th=ETA_TH,
+    # eta_pin and eta_th removed — power-conversion efficiencies are never spec keys.
+    # Laser wall-plug from focused-energy-callahan-interview.md §Laser efficiency
+    # and thermal conversion from §Steam cycle are informational only; library defaults apply.
 
     # Neutron energy multiplier (Li blanket breeding reaction).
     # DEFAULT: standard IFE DT value. Blanket type undisclosed by Focused
@@ -290,8 +286,7 @@ _base_fwd = dict(
     noak=True,
     q_eng=4.0,
     f_rep=10.0,
-    eta_pin=ETA_PIN,
-    eta_th=ETA_TH,
+    # eta_pin and eta_th removed — never spec keys; library defaults apply.
     mn=1.1,
     f_rad=0.10,
     f_sub=0.03,

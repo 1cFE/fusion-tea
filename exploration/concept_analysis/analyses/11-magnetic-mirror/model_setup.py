@@ -58,7 +58,8 @@ spec = dict(
                          # feature for ambipolar ion confinement) rather than
                          # central-cell electron temperature; library uses T_e
                          # only for central-cell bremsstrahlung.
-    eta_p=0.6,           # central cell plasma beta — analysis.md §5 (was beta_c)
+    # eta_p=0.6 removed — power-conversion efficiencies are never spec keys.
+    # Central-cell plasma beta β_c=0.6 from analysis.md §5 (was beta_c) is informational only.
     p_input=30.0,        # total NBI power both end plugs [MW] — analysis.md §5
                          # (was P_NBI). NOTE: p_input/P_native = 30/50 = 0.6, at
                          # the edge of the F9 ratio band [0.5%, 50%]. This is a

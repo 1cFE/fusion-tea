@@ -29,7 +29,8 @@ spec = dict(
     elon=1.0,            # elongation — stellarators are typically ~1
     plasma_volume=418.0, # plasma volume [m³] — arxiv Table 1
     plasma_t=1.63,       # minor radius `a` [m] — derived from V = 2π²·R₀·a² with R₀=8m and plasma_volume=418 m³ → a≈1.63m. Drives r_coil = vessel_or in the bilinear coil cost (1costingfe master 52d95b9+).
-    eta_p=0.027,         # plasma beta — arxiv Table 1 (2.7%)
+    # eta_p=0.027 removed — power-conversion efficiencies are never spec keys (1costingfe-glossary policy).
+    # Plasma beta β=0.027 from arxiv Table 1 is informational only; library back-solves it from n_e/T_e/B.
     f_rad=1.4,           # ISS04 confinement factor — arxiv Table 1, §3.5
     p_input=2.5,         # auxiliary heating wallplug [MW] — arxiv §4.4
                          # (1 MW impurity-control ECRH + ignition overhead).

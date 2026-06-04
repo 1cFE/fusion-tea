@@ -169,10 +169,8 @@ _SHARED_KWARGS = dict(
     p_input=P_INPUT_MW,             # 200 MW — UNCERTAIN (CS-free ECRH current drive)
     mn=1.0,                         # no neutron energy multiplication (aneutronic)
                                     # analysis.md §Section 5: primary reaction produces no neutrons
-    eta_th=ETA_TH,                  # 0.35 — DEFAULT (fallback thermal for radiation fraction)
-    eta_p=0.5,                      # DEFAULT: pumping efficiency
-    eta_pin=ETA_PIN,                # 0.50 — gyrotron wall-plug efficiency
-    eta_de=ETA_DE,                  # 0.80 — UNCERTAIN (DEC theoretical efficiency)
+    # eta_th, eta_p, eta_pin, eta_de removed — power-conversion efficiencies
+    # are never spec keys (1costingfe-glossary policy). Library defaults apply.
     f_sub=0.03,                     # DEFAULT: subsystem power fraction
     f_dec=F_DEC,                    # 0.85 — alpha particle fraction to DEC
     p_coils=P_COILS_MW,             # 50 MW — UNCERTAIN (copper resistive coil ohmic)

@@ -27,6 +27,74 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+# Library-side source of truth for "what kwargs does each archetype's forward()
+# actually accept": the per-archetype YAML (engineering defaults) + the
+# cross-cutting optional-override keys CostModel reads via params.get(). The
+# glossary derives from this rather than re-stating it, so the glossary cannot
+# diverge from the strict-kwarg validator (1costingfe model.py:494).
+from costingfe.defaults import load_engineering_defaults
+from costingfe.types import CONCEPT_TO_FAMILY, ConfinementConcept
+
+# Mirror of CostModel._OPTIONAL_OVERRIDE_KEYS (1costingfe model.py:1102). These
+# are cross-cutting kwargs that CostModel.forward() reads via params.get() but
+# that the per-archetype YAML may not declare. Kept in sync with the library;
+# omitting a key here surfaces as a spurious "rejected by strict validator"
+# at forward() time.
+_OPTIONAL_OVERRIDE_KEYS = frozenset(
+    {
+        # Power-cycle / coupling knobs injected or derived by forward()
+        "eta_th", "eta_pin", "eta_couple", "f_rad", "f_rad_fus",
+        # 0D plasma model (TOKAMAK)
+        "use_0d_model", "0d_mode", "fw_area",
+        # Coil / magnet knobs not in every concept YAML
+        "n_coils", "lev_coil_markup", "lev_coil_cryostat_cost",
+        "stationary_lift_coil_fraction",
+        # Pulsed conversion + driver knobs
+        "pulsed_conversion", "e_stored_mj", "q_sci",
+        "laser_driver_type",
+    }
+)
+
+# Power-conversion / wall-plug efficiencies are NEVER surfaced as spec keys,
+# regardless of what the YAML or cross-cutting key set advertises. They are
+# library-managed via per-archetype YAML + CostingConstants so cross-concept
+# LCOE comparisons stay apples-to-apples. To express a different efficiency,
+# update the YAML / CostingConstants in 1costingfe — not the per-concept spec.
+# See also commit 9142788 (first sweep, May 29 2026) which removed a subset of
+# these from existing model_setup.py files but did not update the glossary;
+# this set is the complete corpus-wide policy.
+_FORBIDDEN_EFFICIENCY_KEYS = frozenset(
+    {
+        "eta_th",
+        "eta_pin",
+        "eta_pin1",
+        "eta_pin2",
+        "eta_couple",
+        "eta_de",
+        "eta_dec",
+        "eta_p",
+        # Per-method source efficiencies are CostingConstants, not spec keys.
+        "eta_source_nbi",
+        "eta_source_icrf",
+        "eta_source_ecrh",
+        "eta_source_lhcd",
+    }
+)
+
+
+def _library_allowed_keys(enum: str) -> set[str]:
+    """Return the kwarg set 1costingfe's strict validator accepts for ``enum``.
+
+    The set is ``YAML_engineering_defaults ∪ _OPTIONAL_OVERRIDE_KEYS``, matching
+    the allow-list computed at CostModel.forward() entry. By deriving from this
+    same source the glossary cannot drift away from what the library actually
+    accepts. ``_FORBIDDEN_EFFICIENCY_KEYS`` are removed before return.
+    """
+    concept = ConfinementConcept(enum.lower())
+    family = CONCEPT_TO_FAMILY[concept]
+    yaml_keys = set(load_engineering_defaults(f"{family.value}_{concept.value}"))
+    return (yaml_keys | _OPTIONAL_OVERRIDE_KEYS) - _FORBIDDEN_EFFICIENCY_KEYS
+
 
 @dataclass(frozen=True)
 class SpecKey:
@@ -259,14 +327,8 @@ _MISC: dict[str, SpecKey] = {
         "Neutron energy multiplier",
         "1.0-1.3 (DT); 1.0 (aneutronic)",
     ),
-    "eta_couple": SpecKey(
-        "eta_couple", "—",
-        "Heating-method delivered-to-plasma coupling factor",
-        "0.4-1.0",
-        "eta_pin = eta_source_<method> x eta_couple is derived. "
-        "eta_pin itself is NOT settable for heated MFE concepts.",
-    ),
-    "eta_p": SpecKey("eta_p", "—", "Pumping efficiency", "0.4-0.7"),
+    # eta_couple and eta_p deliberately omitted — power-conversion efficiencies
+    # are never surfaced as spec keys. See _FORBIDDEN_EFFICIENCY_KEYS above.
     "f_sub": SpecKey("f_sub", "—", "Subsystem-power fraction of gross electric", "0.02-0.05"),
     "burn_fraction": SpecKey("burn_fraction", "—", "Single-pass fuel burn fraction", "0.02-0.10"),
     "fuel_recovery": SpecKey("fuel_recovery", "—", "Fraction of unburned fuel recovered", "0.95-1.0"),
@@ -287,43 +349,26 @@ _ELECTROSTATIC = {"ORBITRON", "POLYWELL"}
 
 
 def _archetype_fields(enum: str) -> dict[str, SpecKey]:
-    """Build the per-archetype canonical spec-key dictionary."""
-    fields: dict[str, SpecKey] = {}
-    # Geometry — most apply to all
-    for k in ("R0", "plasma_t", "blanket_t", "ht_shield_t", "structure_t", "vessel_t"):
-        fields[k] = _GEOMETRY[k]
-    if enum in {"TOKAMAK"}:
-        fields["elon"] = _GEOMETRY["elon"]
-    if enum in {"MIRROR", "STEADY_FRC"} or enum in _PULSED_FUSION:
-        fields["chamber_length"] = _GEOMETRY["chamber_length"]
+    """Build the per-archetype canonical spec-key dictionary.
 
-    # Coils — MFE + electrostatic
-    if enum in _STEADY_STATE_MFE or enum in _ELECTROSTATIC:
-        fields.update(_COILS)
+    Surfaces the intersection of:
+      1. ``_library_allowed_keys(enum)`` — the strict-kwarg validator's
+         allow-list (per-archetype YAML keys ∪ cross-cutting optional keys,
+         minus ``_FORBIDDEN_EFFICIENCY_KEYS``).
+      2. The hand-maintained ``_GEOMETRY ∪ _COILS ∪ _POWER ∪ _PLASMA ∪
+         _PULSED ∪ _MISC`` registry — which keys have an analyst-facing
+         description, unit, typical range, and warning.
 
-    # Power balance
-    fields["p_input"] = _POWER["p_input"]
-    if enum in _STEADY_STATE_MFE:
-        for k in ("p_nbi", "p_icrf", "p_ecrh", "p_lhcd"):
-            fields[k] = _POWER[k]
-    for k in ("p_coils", "p_cool", "p_pump", "p_cryo", "p_house", "p_trit"):
-        fields[k] = _POWER[k]
-    if enum in {"MIRROR", "PULSED_FRC", "THETA_PINCH", "MAG_TARGET", "PLASMA_JET",
-                "STAGED_ZPINCH", "DENSE_PLASMA_FOCUS", "MAGLIF",
-                "ORBITRON", "POLYWELL"}:
-        fields["f_dec"] = _POWER["f_dec"]
-
-    # Plasma physics
-    fields.update(_PLASMA)
-
-    # Pulsed-only
-    if enum in _PULSED_FUSION:
-        fields.update(_PULSED)
-
-    # Misc
-    fields.update(_MISC)
-
-    return fields
+    A key is surfaced to the model-setup prompt only when it appears in both:
+    the library actually accepts it AND the project has documented it for the
+    LLM. Anything missing from either is intentionally omitted.
+    """
+    # All glossary entries the project has authored, keyed by canonical name.
+    documented: dict[str, SpecKey] = {
+        **_GEOMETRY, **_COILS, **_POWER, **_PLASMA, **_PULSED, **_MISC,
+    }
+    allowed = _library_allowed_keys(enum)
+    return {k: documented[k] for k in documented if k in allowed}
 
 
 def get_canonical_spec_keys(enum: str) -> list[SpecKey]:

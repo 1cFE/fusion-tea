@@ -222,16 +222,23 @@ print_cas_breakdown(generic, native, result_1gw, overrides)
      `p_fus ≈ 700 MW`. Library issue: **1cFE/1costingfe#24** (proposed
      fix: `radiation_peaking_factor` field).
 
-   - **NBI/RF-heated concepts** (TOKAMAK / STELLARATOR / MIRROR / STEADY_FRC /
-     any concept where `eta_couple` is defined): do **NOT** pass `eta_pin`
-     in spec. The library derives `eta_pin = eta_source × eta_couple` from
-     per-method `eta_source_*` constants (in `CostingConstants`) times the
-     concept's `eta_couple` (which lives in the YAML and is overridable
-     via spec). Setting `eta_pin` directly raises `ValueError` at
-     `forward()` time. If you want to express a different *wall-plug*
-     efficiency than the library default, override `eta_couple` (changes
-     the coupling fraction) or override the relevant `eta_source_*`
-     CostingConstants field via `cost_overrides` — never `eta_pin`.
+   - **Power-conversion / wall-plug efficiencies are NEVER spec keys.** Across
+     every archetype, the following are **not surfaced to the analyst as
+     overridable** and must not appear in `spec`:
+     `eta_th`, `eta_pin`, `eta_couple`, `eta_de`, `eta_dec`, `eta_p`,
+     `eta_source_nbi`, `eta_source_icrf`, `eta_source_ecrh`, `eta_source_lhcd`.
+     They are framework-owned defaults so cross-concept LCOE comparisons stay
+     apples-to-apples. If a published design point has a value that differs
+     from the library default, document it as an inline comment and accept the
+     library value. To change the *global* default, update the per-archetype
+     YAML or `CostingConstants` in 1costingfe — not the per-concept spec.
+     This supersedes the partial strip in commit `9142788` (May 29 2026, which
+     covered `eta_th`/`eta_de`/`eta_dec`/`f_dec`/`eta_pin1`/`eta_pin2` but
+     missed `eta_pin`/`eta_couple`/`eta_p`/`eta_source_*`). The strict-kwarg
+     validator on 1costingfe master rejects `eta_pin` outright for NBI/RF-
+     heated concepts, and the canonical glossary now omits the remaining
+     efficiency keys from `_archetype_fields` regardless of YAML or
+     `_OPTIONAL_OVERRIDE_KEYS` membership.
 
    - **`p_fus` is never a spec key.** The library back-solves fusion power
      from `p_input` + plasma parameters via the inverse power balance. If

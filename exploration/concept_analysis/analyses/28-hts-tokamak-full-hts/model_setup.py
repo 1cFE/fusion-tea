@@ -250,10 +250,8 @@ def _base_kwargs(r0, net_electric_mw, plasma_t, availability):
         vessel_t=VESSEL_T,
         p_input=P_INPUT,
         mn=MN,
-        eta_th=ETA_TH,
-        eta_p=ETA_P,
-        eta_pin=ETA_PIN,
-        eta_de=ETA_DE,
+        # eta_th, eta_p, eta_pin, eta_de removed — power-conversion efficiencies
+        # are never spec keys (1costingfe-glossary policy). Library defaults apply.
         f_sub=F_SUB,
         f_dec=F_DEC,
         p_coils=P_COILS,

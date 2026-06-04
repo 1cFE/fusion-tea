@@ -109,10 +109,8 @@ spec = dict(
                          # T_e = 0.25 keV is ~300x lower; the Norman ->
                          # reactor jump is set by the p-B11 ignition
                          # requirement, not by scaling.
-    eta_p=0.9,           # [-] FRC beta ~ 0.9-1.0 is the characteristic
-                         # property. NORMAN-VALIDATED: Gota et al. FEC 2020
-                         # reports "typical average beta ~ 90%" for C-2W
-                         # discharges. Direct match.
+    # eta_p=0.9 removed — power-conversion efficiencies are never spec keys.
+    # FRC beta β~0.9 (Gota et al. FEC 2020, C-2W discharges) is informational only.
     p_input=100.0,       # [MW] Total NBI wallplug. PHYSICS-DERIVED, not
                          # strictly Norman-scaled. Norman's 21 MW (resp.
                          # Norm's 13 MW) is for plasma formation /
