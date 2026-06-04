@@ -32,6 +32,16 @@ for reference:
 
 {{canonical_accounts}}
 
+### Canonical `spec` field glossary (spec keys must come from here)
+
+Use ONLY the canonical fields below when authoring the `spec` dict — these are
+the kwargs `CostingInput` accepts for this archetype. The glossary tells you what
+each field means, what unit the library expects, and which common confusions to
+avoid (`p_fus` vs `p_input`, `B` vs `b_center`, kJ vs MJ, etc.). Read the
+"Common confusions" block before writing `spec`.
+
+{{canonical_spec_keys}}
+
 ## Required Reading (supporting)
 
 - **Closest example (pattern to imitate):** `{{example_path}}`
@@ -89,15 +99,33 @@ from lib.model_setup_helpers import (
 
 # 1. Specification — design-point inputs only, at native scale.
 #    Geometry / physics / power. NO library-default re-passing.
+#    Use ONLY the canonical field names below (see archetype spec-key glossary
+#    rendered after this block); names like B0, laser_pulse_energy_kJ,
+#    rep_rate_hz, or target_gain are not in CostingInput and would be
+#    silently dropped at forward() time. F7 (validator) catches this.
 spec = dict(
     R0=...,        # arc-reactor-specifications.md §Geometry
     plasma_t=...,
     elon=...,
-    B0=...,
-    p_input=...,
-    # ... only parameters the design point actually specifies
+    p_input=...,   # AUXILIARY HEATING wallplug (MW), NOT fusion power
+    # ... only canonical CostingInput fields the design point actually specifies
 )
 P_native = ...     # MWe — copied from the analysis Design Point block
+
+# Toroidal coil-cost requirement (TOKAMAK / STELLARATOR only):
+#   `plasma_t` is REQUIRED. 1costingfe's bilinear coil cost model computes
+#   C220103 ∝ B × R₀ × r_coil, where r_coil = vessel_or =
+#   plasma_t + blanket_t + ht_shield_t + structure_t + vessel_t. If the
+#   source publishes only major radius R₀ and aspect ratio A, derive
+#   `plasma_t = R₀ / A`. Leaving plasma_t unset falls back to the YAML
+#   default (1.1m tokamak / 1.8m stellarator) which over-states most
+#   published commercial designs.
+#
+# `r_bore` is silently unused for toroidal devices under the bilinear
+# model (kept in YAML for backcasting compat only). Do NOT pass
+# `r_bore = R₀` in spec for TOKAMAK / STELLARATOR; it's a no-op.
+# Loop devices (MIRROR, FRC, DIPOLE, PULSED) still use r_bore for the
+# r² coil model and must set it explicitly.
 
 # 2. Model.
 model = CostModel(concept=ConfinementConcept.{{costingfe_concept}}, fuel=Fuel.{{costingfe_fuel}})
@@ -146,6 +174,31 @@ print_cas_breakdown(generic, native, result_1gw, overrides)
    `lifetime_yr`, `interest_rate`, `inflation_rate` are library-owned and MUST
    NOT appear. The helper sources `availability` / `lifetime_yr` from the library.
 
+   **Low archetype-fit concepts: populate `spec` anyway.** When
+   `Archetype-Fit: Low` (the closest available `ConfinementConcept` does
+   not perfectly match the concept's architecture — e.g. modelling a p-B11
+   FRC as `MIRROR` because the library has no `STEADY_FRC + PB11`
+   calibration, or modelling an orbital-cycling levitated dipole as the
+   stationary `DIPOLE`), still populate `spec` with the concept's
+   published or inferred design-point values using the canonical-spec-key
+   glossary above. Leaving `spec` empty produces the *worst possible*
+   cost number — the library runs pure archetype YAML defaults at
+   `P_native`, which encode "some generic mirror" or "some generic
+   dipole" rather than this concept's actual machine.
+
+   The geometry and physics fields (`R0`, `chamber_length`, `plasma_t`,
+   `B`, `b_center`, `n_e`, `T_e`, `eta_p`, `p_input`, `plasma_volume`)
+   are the right place to express the concept's actual scale, even when
+   archetype-fit is Low. Cost-side overrides (the override registry in
+   Step 3) are where you express how the library's archetype cost
+   structure deviates from the concept's true cost story — that's where
+   the "Low fit" caveat properly belongs.
+
+   When mapping non-canonical concept-specific kwargs (e.g. Realta's
+   `l_c`, `B_0c`, `P_NBI`) onto canonical names, document the mapping in
+   inline comments and explicitly note any fields that have no canonical
+   equivalent and were intentionally dropped.
+
    **Archetype-specific spec key blocklist (workarounds for known library
    bugs).** Some spec keys must NOT be passed for specific archetypes until
    the underlying library issue is fixed. Even if your concept's published
@@ -168,6 +221,38 @@ print_cas_breakdown(generic, native, result_1gw, overrides)
      calibration value (not the geometric volume) that produces sane
      `p_fus ≈ 700 MW`. Library issue: **1cFE/1costingfe#24** (proposed
      fix: `radiation_peaking_factor` field).
+
+   - **Power-conversion / wall-plug efficiencies are NEVER spec keys.** Across
+     every archetype, the following are **not surfaced to the analyst as
+     overridable** and must not appear in `spec`:
+     `eta_th`, `eta_pin`, `eta_couple`, `eta_de`, `eta_dec`, `eta_p`,
+     `eta_source_nbi`, `eta_source_icrf`, `eta_source_ecrh`, `eta_source_lhcd`.
+     They are framework-owned defaults so cross-concept LCOE comparisons stay
+     apples-to-apples. If a published design point has a value that differs
+     from the library default, document it as an inline comment and accept the
+     library value. To change the *global* default, update the per-archetype
+     YAML or `CostingConstants` in 1costingfe — not the per-concept spec.
+     This supersedes the partial strip in commit `9142788` (May 29 2026, which
+     covered `eta_th`/`eta_de`/`eta_dec`/`f_dec`/`eta_pin1`/`eta_pin2` but
+     missed `eta_pin`/`eta_couple`/`eta_p`/`eta_source_*`). The strict-kwarg
+     validator on 1costingfe master rejects `eta_pin` outright for NBI/RF-
+     heated concepts, and the canonical glossary now omits the remaining
+     efficiency keys from `_archetype_fields` regardless of YAML or
+     `_OPTIONAL_OVERRIDE_KEYS` membership.
+
+   - **`p_fus` is never a spec key.** The library back-solves fusion power
+     from `p_input` + plasma parameters via the inverse power balance. If
+     the source publishes a fusion power, transcribe it as a documentation
+     comment, do not put it in `spec` — the strict-kwarg validator rejects
+     `p_fus`.
+
+   - **MIF concepts** (`{{costingfe_concept}} ∈ {MAG_TARGET, MAGLIF,
+     PLASMA_JET}`): the MIF forward path does not accept MFE/IFE-only
+     kwargs. In particular `f_dec`, `p_input`, `eta_p`, `eta_pin`,
+     `eta_de` are not in the MIF `forward()` signature and will be
+     rejected by the strict-kwarg validator. Honor the per-archetype
+     canonical glossary rendered above — it only lists kwargs the
+     archetype actually consumes.
 4. **No `# DEFAULT: ...` comments.** An account you don't override is already
    handled by the library — do not re-pass or annotate defaults. Cite the source
    for the values you *do* set with a normal inline comment.

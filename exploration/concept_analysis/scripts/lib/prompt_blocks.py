@@ -20,6 +20,10 @@ from lib.canonical_accounts import (
     get_canonical_accounts,
     render_account_block,
 )
+from lib.canonical_spec_keys import (
+    get_canonical_spec_keys,
+    render_spec_keys_block,
+)
 
 
 def design_point_block(concept: dict) -> str:
@@ -71,6 +75,30 @@ def canonical_accounts_block(concept: dict) -> str:
             "account schema does not apply. Do not propose account-coded overrides.)"
         )
     return render_account_block(get_canonical_accounts(enum))
+
+
+def canonical_spec_keys_block(concept: dict) -> str:
+    """Render the per-archetype canonical ``spec`` field glossary.
+
+    Companion to ``canonical_accounts_block``. Tells the LLM at the moment it
+    is authoring the ``spec`` dict what each field means, what units it
+    expects, what a typical value range looks like, and which common
+    confusions to avoid (``p_input`` vs ``p_fus``, ``B`` vs ``b_center``,
+    ``e_driver_mj`` not in kJ, etc.). Filtered to the concept's
+    ``archetype_enum`` so the LLM does not see ``chamber_length`` on a tokamak
+    or ``e_driver_mj`` on a stellarator.
+
+    The glossary is the prevention half of the concept-05/09 fix — the F9
+    validator in ``validators.py`` is the detection half.
+    """
+    enum = (concept.get("archetype_enum") or "").strip()
+    if enum not in ALL_CONFINEMENT_CONCEPT_ENUMS:
+        return (
+            "(No 1costingFE archetype mapping for this concept — the "
+            "canonical spec-key glossary does not apply. Freeform concepts "
+            "do not consume `spec`.)"
+        )
+    return render_spec_keys_block(get_canonical_spec_keys(enum))
 
 
 def comparables_block(concept: dict) -> str:

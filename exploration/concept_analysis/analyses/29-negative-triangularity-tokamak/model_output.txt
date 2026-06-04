@@ -1,0 +1,51 @@
+warning: `VIRTUAL_ENV=C:\Users\mallo\AppData\Local\Python\pythoncore-3.14-64` does not match the project environment path `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv` and will be ignored; use `--active` to target the active environment instead
+LCOE: 527.1 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 598.9 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 439.6 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 36415 $/kW   native 50022 $/kW   1 GWe 45056 $/kW
+
+CAS               generic           native            1 GWe
+--------------------------------------------------------
+CAS10                16.2             16.2             16.8
+CAS21               246.4            246.4            246.8
+CAS22              1835.2           2633.7          28809.1
+CAS23                41.0             41.0            453.0
+CAS24                17.5             17.5            192.9
+CAS25                10.6             10.6            117.4
+CAS26                17.7             17.7            195.7
+CAS27                 1.3             28.6            317.8
+CAS28                 5.0              5.0              5.0
+CAS29                 0.0              0.0              0.0
+CAS30               434.9            600.1           6067.5
+CAS40                11.7             11.7             11.8
+CAS50               111.3            147.7           1358.2
+CAS60               528.4            725.8           7264.2
+CAS70                48.7             63.5            544.1
+CAS80                 0.1              0.1              1.4
+CAS90               245.8            337.7           3379.6
+--------------------------------------------------------
+TOTAL              3277.3           4502.0          45056.2
+
+--- CAS22 sub-account detail (overrides marked) ---
+code            generic       native        1 GWe  flag
+C220000          1835.2       2633.7      28809.1
+C220101           144.7        144.7        145.1
+C220102            94.9         94.9         95.1
+C220103           808.3       1500.0       1500.0  <-- OVERRIDE
+C220104           282.6        282.6        282.6
+C220105            11.2         11.2         11.2
+C220106            50.6         50.6         50.8
+C220106_pump          0.2          0.2          0.2
+C220106_vessel         50.5         50.5         50.6
+C220107            26.6         26.6         26.7
+C220108            43.2        150.0        195.2  <-- OVERRIDE
+C220109             0.0          0.0          0.0
+C220110            68.3         68.3         68.5
+C220111           214.2        214.2        214.4
+C220112             0.0          0.0          0.0
+C220200            29.1         29.1        219.2
+C220300            12.0         12.0         17.7
+C220400             1.0          1.0         11.2
+C220500            22.2         22.2        120.0
+C220600             1.7          1.7         11.5
+C220700            24.6         24.6        117.1

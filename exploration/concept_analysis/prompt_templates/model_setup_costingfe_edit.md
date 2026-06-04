@@ -31,6 +31,16 @@ concept override. `f_dec` (DEC fraction) MAY appear in `spec` with provenance �
 it's a physics+architecture property, not a hardware-efficiency claim.
 A relative override references `generic` (never `native` or `result_1gw`).
 
+**Low archetype-fit concepts: do not empty `spec`.** When the frontmatter
+declares `Archetype-Fit: Low`, the prior model may still have a populated `spec`
+expressing the concept's actual geometry / physics using canonical kwargs (even
+where the archetype isn't a perfect cost match). **Preserve those entries** and
+only edit specific fields if a finding calls for it. Replacing a populated
+low-fit `spec` with `spec = dict()` is a regression — the library would fall
+back to pure archetype YAML defaults that carry zero signal for this concept's
+actual machine. Cost-side overrides (the registry below) are where the "Low
+fit" caveat properly lives.
+
 **Archetype-specific spec key blocklist (library-bug workarounds).** Until library issues are
 fixed, some spec keys must not be passed for specific archetypes — even when the published design
 point has a value for them. If the prior model contains any of these keys in `spec`, **remove
@@ -83,6 +93,16 @@ parameters if an analysis finding implies the model's assumptions are wrong.
 ### Canonical account schema (for any new/changed override)
 
 {{canonical_accounts}}
+
+### Canonical `spec` field glossary (for any new/changed spec key)
+
+If your edit touches the `spec` dict (adding/renaming/replacing a field),
+the new key MUST come from the glossary below. Read the "Common confusions"
+block before editing — most prior errors (concept 05/09 fusion-vs-heating
+mix-up, dipole `plasma_volume` regression, kJ-vs-MJ driver-energy mistakes)
+trace back to ignoring these warnings.
+
+{{canonical_spec_keys}}
 
 ## Output
 Write changes to: `{{output_path}}`

@@ -1,101 +1,29 @@
 [
   {
-    "timestamp": "2026-05-18T05:33:53.431919+00:00",
-    "step": "source-integration",
-    "attempt": 1,
-    "validator": "validate_feedback_verdict",
-    "passed": true,
-    "details": "Feedback format valid (verdict: PASS)",
-    "validated_text_preview": "VERDICT: PASS\n\n<!-- No existing analysis.md was found for concept 38 (particle-accelerator-driven-fusion).\nSource integration assessment requires a completed analysis to compare against.\nThis PASS verdict is vacuous \u2014 no findings can be identified without a baseline analysis.\nRun the analysis agent first, then re-run source integration. -->\n\n## Source Summary (for analysis agent reference)\n\nThe SHINE Technologies overview (`shine-technology-overview.md`) covers a specific\ncommercial implementati"
-  },
-  {
-    "timestamp": "2026-05-18T05:34:05.858661+00:00",
-    "step": "source-integration",
-    "attempt": 1,
-    "validator": "validate_feedback_verdict",
-    "passed": true,
-    "details": "Feedback format valid (verdict: PASS)",
-    "validated_text_preview": "VERDICT: PASS\n\n<!-- No existing analysis.md was found for concept 38 (particle-accelerator-driven-fusion).\nSource integration assessment requires a completed analysis to compare against.\nThis PASS verdict is vacuous \u2014 no findings can be identified without a baseline analysis.\nRun the analysis agent first, then re-run source integration. -->\n\n## Source Summary (for analysis agent reference)\n\nThe SHINE Technologies overview (`shine-technology-overview.md`) covers a specific\ncommercial implementati"
-  },
-  {
-    "timestamp": "2026-05-18T05:38:30.189251+00:00",
+    "timestamp": "2026-06-04T07:23:27.019671+00:00",
     "step": "cold-start",
     "attempt": 1,
     "validator": "validate_non_empty",
     "passed": true,
-    "details": "Non-empty (27631 chars)",
-    "validated_text_preview": "# D1+ Analysis: Particle Accelerator-Driven Fusion (D-T) \u2014 SHINE Technologies\n\n**Concept**: Particle Accelerator-Driven Fusion \u2014 beam-on-target D-T\n**Company**: SHINE Technologies (Janesville, Wisconsin)\n**Products**: Medical isotopes (Mo-99, Lu-177), neutron services (FLARE, LIBRTI)\n**Confinement Family**: Other (beam-target; no plasma confinement)\n\n---\n\n## Section 1: Availability of Data\n\n**Rating: Moderate (operational facts) / Opaque (economics)**\n\nSHINE Technologies is unusual in this lands"
+    "details": "Non-empty (19531 chars)",
+    "validated_text_preview": "## Design Point\n\n(No design-point row for this concept yet \u2014 selection is upstream-pending. Do not invent one.)\n\n---\n\n## 1. Availability of Data\n\n**Rating: Rich (for neutron source applications) / Not Applicable (for power generation)**\n\nSHINE Technologies has extensive public documentation of their operational neutron source systems, including their FLARE (Fusion Linear Accelerator for Radiation Effects) system and medical isotope production facilities. The company has published technical descr"
   },
   {
-    "timestamp": "2026-05-18T05:40:19.558966+00:00",
-    "step": "source-integration",
-    "attempt": 1,
-    "validator": "validate_feedback_verdict",
-    "passed": true,
-    "details": "Feedback format valid (verdict: PASS)",
-    "validated_text_preview": "VERDICT: PASS\n\nThe new source (`shine-technology-overview.md`) was already used as a primary source when the analysis was written. All material data points from the document are incorporated into the existing analysis: 300 kV beam voltage (Section 3, Section 5 parameter table), 5 \u00d7 10^13 reactions/second (Section 3, Section 5), 14.1 MeV neutron energy (Section 5), continuous/steady-state operation (Section 5), product lines (Mo-99, Lu-177, FLARE, LIBRTI) (Section 2, Section 3), and the non-power"
-  },
-  {
-    "timestamp": "2026-05-18T05:41:40.602288+00:00",
-    "step": "cold-start",
-    "attempt": 1,
-    "validator": "validate_non_empty",
-    "passed": true,
-    "details": "Non-empty (29298 chars)",
-    "validated_text_preview": "# D1+ Analysis: Particle Accelerator-Driven Fusion (D-T) \u2014 SHINE Technologies\n\n---\n\n## Section 1: Availability of Data\n\n**Rating: Moderate (operational facts) / Opaque (economics)**\n\nSHINE Technologies is unusual in this landscape: it is the only **commercially operating** fusion system in the concept catalog. This commercial reality cuts both ways for data availability. The technology concept itself is well-documented in public sources \u2014 NRC licensing records, peer-reviewed literature on accele"
-  },
-  {
-    "timestamp": "2026-05-18T05:45:49.013879+00:00",
-    "step": "cold-start",
-    "attempt": 1,
-    "validator": "validate_non_empty",
-    "passed": true,
-    "details": "Non-empty (29467 chars)",
-    "validated_text_preview": "# D1+ Analysis: Particle Accelerator-Driven Fusion (D-T) \u2014 SHINE Technologies\n\n---\n\n## Section 1: Availability of Data\n\n**Rating: Moderate (operational facts) / Opaque (economics)**\n\nSHINE Technologies is unusual in this landscape: it is the only **commercially operating** fusion system in the concept catalog. This commercial reality cuts both ways for data availability. The technology concept itself is well-documented in public sources \u2014 NRC licensing records, peer-reviewed literature on accele"
-  },
-  {
-    "timestamp": "2026-05-18T05:52:20.178532+00:00",
+    "timestamp": "2026-06-04T07:29:24.745189+00:00",
     "step": "model-setup",
     "attempt": 1,
     "validator": "validate_python_syntax",
     "passed": true,
     "details": "Valid Python syntax",
-    "validated_text_preview": "\"\"\"\nParticle Accelerator-Driven Fusion (D-T) LCOE Model\n====================================================\n1cFE First Pass Concept Analysis\nConcept: Beam-on-target D-T fusion \u2014 SHINE Technologies / FLARE system\nCompany: SHINE Technologies (Janesville, Wisconsin)\nFuel: D-T (deuterium beam on tritium gas target)\n\nThis model characterizes a hypothetical power plant built from beam-on-target D-T\naccelerator modules parameterized from SHINE Technologies' FLARE neutron source\n(5 \u00d7 10^13 D-T reaction"
+    "validated_text_preview": "\"\"\"\nParticle Accelerator-Driven Fusion (D-T) \u2014 SHINE Technologies\nFLARE Facility Economics Model\n=====================================\n1cFE Concept Analysis \u2014 Free-Form (Non-Standard) Model\nConcept: Beam-Target D-T Fusion / Neutron Production / Medical Isotopes\nCompany: SHINE Technologies (Janesville, WI)\n\nCRITICAL NOTE \u2014 WHY LCOE IS UNDEFINED:\nBeam-target D-T fusion has Q_sci in the range 10^{-3}\u201310^{-2} by physics. Each accelerated deuteron\ndeposits ~300 keV of kinetic energy; the D-T reaction"
   },
   {
-    "timestamp": "2026-05-18T05:54:56.063864+00:00",
+    "timestamp": "2026-06-04T07:30:27.812837+00:00",
     "step": "assess",
     "attempt": 1,
     "validator": "validate_feedback_verdict",
     "passed": true,
-    "details": "Feedback format valid (verdict: FINDINGS)",
-    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: Q value inconsistent between analysis narrative and model\n- **Target:** Section 2 (physics calculation) vs. model_setup.py q_eff input\n- **Category:** model\n- **Finding:** The analysis derives Q \u2248 10^{-5} from its Section 2 physics calculation (P_fusion \u2248 140 mW / P_beam \u2248 15 kW at 50 mA) and states \"five orders of magnitude below break-even.\" The model uses q_eff = 0.002 as the baseline \u2014 200\u00d7 higher \u2014 and the model output separately states the \"physics ceiling\" for "
-  },
-  {
-    "timestamp": "2026-05-18T05:56:40.725519+00:00",
-    "step": "model-setup",
-    "attempt": 1,
-    "validator": "validate_python_syntax",
-    "passed": true,
-    "details": "Valid Python syntax",
-    "validated_text_preview": "\"\"\"\nParticle Accelerator-Driven Fusion (D-T) LCOE Model\n====================================================\n1cFE First Pass Concept Analysis\nConcept: Beam-on-target D-T fusion \u2014 SHINE Technologies / FLARE system\nCompany: SHINE Technologies (Janesville, Wisconsin)\nFuel: D-T (deuterium beam on tritium gas target)\n\nThis model characterizes a hypothetical power plant built from beam-on-target D-T\naccelerator modules parameterized from SHINE Technologies' FLARE neutron source\n(5 \u00d7 10^13 D-T reaction"
-  },
-  {
-    "timestamp": "2026-05-18T05:59:43.879933+00:00",
-    "step": "assess",
-    "attempt": 1,
-    "validator": "validate_feedback_verdict",
-    "passed": true,
-    "details": "Feedback format valid (verdict: FINDINGS)",
-    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: Q value inconsistency between analysis text and model\n- **Target:** Section 2 (physics Q derivation) vs. model q_eff input\n- **Category:** model\n- **Finding:** The analysis derives Q \u2248 10^{-5} using an estimated 50 mA beam current (P_beam = 50 mA \u00d7 300 kV = 15 kW, P_fusion = 140 mW). The model uses q_eff = 2\u00d710^{-3} \u2014 100\u00d7 higher \u2014 implying a derived beam current of 235 mA and beam power of 70.4 kW. The model output separately labels the \"physics ceiling\" as \u2264 0.01, a"
-  },
-  {
-    "timestamp": "2026-05-18T06:00:49.136405+00:00",
-    "step": "model-setup",
-    "attempt": 1,
-    "validator": "validate_python_syntax",
-    "passed": true,
-    "details": "Valid Python syntax",
-    "validated_text_preview": "\"\"\"\nParticle Accelerator-Driven Fusion (D-T) \u2014 SHINE Technologies\nFLARE Facility Economics Model\n=====================================\n1cFE Concept Analysis \u2014 Free-Form (Non-Standard) Model\nConcept: Beam-Target D-T Fusion / Neutron Production / Medical Isotopes\nCompany: SHINE Technologies (Janesville, WI)\n\nCRITICAL NOTE \u2014 WHY LCOE IS UNDEFINED:\nBeam-target D-T fusion has Q_sci \u2248 10^-5 by physics. Each accelerated deuteron\ndeposits ~300 keV of kinetic energy; the D-T reaction releases 17.59 MeV, "
+    "details": "Feedback format valid (verdict: PASS)",
+    "validated_text_preview": "VERDICT: PASS\n\n## Assessment Summary\n\nThis analysis and model correctly handle a unique edge case: SHINE Technologies operates beam-target D-T fusion as a **neutron source for medical isotope production**, not as a power plant. The concept has Q_sci ~ 10^-3 to 10^-2 (far below breakeven) by fundamental physics, making electricity generation impossible.\n\nThe analysis adequately satisfies the pipeline contract:\n\n### 1. Design-Point Coherence\nThe analysis explicitly states \"No design-point row for "
   }
 ]

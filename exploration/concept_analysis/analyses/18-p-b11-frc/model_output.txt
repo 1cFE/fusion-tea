@@ -1,0 +1,53 @@
+warning: `VIRTUAL_ENV=C:\Users\mallo\AppData\Local\Python\pythoncore-3.14-64` does not match the project environment path `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv` and will be ignored; use `--active` to target the active environment instead
+C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:250: UserWarning: pb11 with blanket_form='liquid_metal': aneutronic fuels do not need a breeding blanket.
+  validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+LCOE: 344.0 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 437.3 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 440.4 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 42825 $/kW   native 42517 $/kW   1 GWe 34696 $/kW
+
+CAS               generic           native            1 GWe
+--------------------------------------------------------
+CAS10                11.2             11.2             11.7
+CAS21               191.0            191.0            191.0
+CAS22              1122.0           1106.6          20954.6
+CAS23                50.2             50.2           1004.2
+CAS24                24.4             24.4            488.6
+CAS25                14.9             14.9            297.4
+CAS26                21.7             21.7            433.9
+CAS27                 0.0              5.0              5.0
+CAS28                 5.0              5.0              5.0
+CAS29                 0.0              0.0              0.0
+CAS30               285.8            283.8           4675.9
+CAS40                 4.5              4.5              4.5
+CAS50                65.3             64.9           1030.3
+CAS60               345.2            342.7           5593.8
+CAS70                 7.2              7.2             18.3
+CAS80                 0.0              0.0              0.6
+CAS90               160.6            159.5           2602.5
+--------------------------------------------------------
+TOTAL              2141.3           2125.9          34695.8
+
+--- CAS22 sub-account detail (overrides marked) ---
+code            generic       native        1 GWe  flag
+C220000          1122.0       1106.6      20954.6
+C220101             3.0          1.5          1.5  <-- OVERRIDE
+C220102             2.1          0.6          0.6  <-- OVERRIDE
+C220103            21.4         80.0         80.0  <-- OVERRIDE
+C220104           706.4        706.4        706.4
+C220105             2.0          2.0          2.0
+C220106            72.4         72.4         72.4
+C220106_pump         66.5         66.5         66.5
+C220106_vessel          5.9          5.9          5.9
+C220107            33.7         33.7         33.7
+C220108            47.8          0.0          0.0  <-- OVERRIDE
+C220109            23.2          0.0          0.0  <-- OVERRIDE
+C220110             5.9          5.9          5.9
+C220111           128.5        128.5        128.5
+C220112             0.0          0.0          0.0
+C220200            24.2         24.2        248.5
+C220300            19.2         19.2         32.5
+C220400             1.2          1.2         24.9
+C220500             1.8          1.8         15.0
+C220600             1.0          1.0         11.5
+C220700            28.0         28.0        196.5

@@ -1,162 +1,122 @@
-Spherical Tokamak - CS-free p-B11 (ENN Energy) [SPECULATIVE PLACEHOLDER]
-  Config: 500 MWe net | 80% availability | 30 yr | NOAK
-  Geometry: R0=3.5 m, A=1.8, a=1.94 m, κ=2.5
-  Power: ECRH p_input=200 MW (CS-free) | η_pin=0.5 | η_de=0.8 | f_dec=0.85
-  Coils: copper resistive p_coils=50 MW (OPTIMISTIC — likely 5-10x higher)
-  WARNING: p-B11 ignition unresolved; DEC TRL 1-2; all parameters speculative
+warning: `VIRTUAL_ENV=C:\Users\mallo\AppData\Local\Python\pythoncore-3.14-64` does not match the project environment path `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv` and will be ignored; use `--active` to target the active environment instead
+C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:250: UserWarning: pb11 with blanket_form='liquid_metal': aneutronic fuels do not need a breeding blanket.
+  validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+LCOE: 76.1 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 85.1 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 85.1 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 7790 $/kW   native 7790 $/kW   1 GWe 7229 $/kW
 
-LCOE:       96.1 $/MWh
-Overnight:  7646 $/kW
-Fusion:     2031 MW | Net: 500 MW | Q_eng: 2.02
+CAS               generic           native            1 GWe
+--------------------------------------------------------
+CAS10                12.4             12.4             12.9
+CAS21               261.8            261.8            261.8
+CAS22              2072.1           2072.1           4074.9
+CAS23               115.6            115.6            231.1
+CAS24                49.2             49.2             98.4
+CAS25                30.0             30.0             59.9
+CAS26                49.9             49.9             99.9
+CAS27                 0.0              0.0              0.0
+CAS28                 5.0              5.0              5.0
+CAS29                 0.0              0.0              0.0
+CAS30               516.7            516.7            966.2
+CAS40                14.1             14.1             14.1
+CAS50               140.1            140.1            239.2
+CAS60               628.0            628.0           1165.5
+CAS70                24.4             24.4             24.4
+CAS80                 0.1              0.1              0.1
+CAS90               292.2            292.2            542.3
+--------------------------------------------------------
+TOTAL              3895.0           3895.0           7229.1
 
-1 GW scaled (cross-concept): LCOE 60.5 $/MWh | Overnight 4760 $/kW
+--- CAS22 sub-account detail (overrides marked) ---
+code            generic       native        1 GWe  flag
+C220000          2072.1       2072.1       4074.9
+C220101            56.3         56.3         56.3
+C220102            37.4         37.4         37.4
+C220103          1013.5       1013.5       1013.5
+C220104           162.5        162.5        162.5
+C220105            40.9         40.9         40.9
+C220106           199.3        199.3        199.3
+C220106_pump          0.8          0.8          0.8
+C220106_vessel        198.4        198.4        198.4
+C220107            54.9         54.9         54.9
+C220108            72.5         72.5         72.5
+C220109             0.0          0.0          0.0
+C220110            15.3         15.3         15.3
+C220111           231.4        231.4        231.4
+C220112             0.0          0.0          0.0
+C220200           108.1        108.1        202.8
+C220300            13.0         13.0         14.6
+C220400             2.9          2.9          5.7
+C220500             9.2          9.2         15.0
+C220600             6.6          6.6         11.5
+C220700            48.2         48.2         75.6
 
-DEC_failure scenario (eta_de=0.0 → no DEC; only 15% radiation fraction at η_th=0.35):
-  LCOE:    99.9 $/MWh | Overnight: 8044 $/kW
-  Fusion:  3270 MW | Net: 500 MW | Q_eng: 2.02
-  vs. base case: LCOE 96.1 → 99.9 $/MWh (+4% change)
+================================================================================
+EXPLORATORY STATUS — NO DESIGN POINT
+================================================================================
 
-Code     Account                              M$
-------------------------------------------------
-CAS10    Preconstruction                    12.4
-CAS21    Buildings                         305.2
-CAS22    Reactor Plant Equipment          1750.9
-CAS23    Turbine Plant                     122.3
-CAS24    Electrical Plant                   83.3
-CAS25    Miscellaneous                      50.7
-CAS26    Heat Rejection                     60.4
-CAS27    Special Materials                   0.0
-CAS28    Digital Twin                        5.0
-CAS29    Contingency                         0.0
-CAS30    Indirect Costs                    554.8
-CAS40    Owner's Costs                      14.1
-CAS50    Supplementary                     133.2
-CAS60    IDC                               730.7
-CAS70    O&M (annualized)                   28.6
-CAS80    Fuel (annualized)                   0.1
-CAS90    Financial                         308.1
-------------------------------------------------
-         Total Capital                    3823.1
+This concept has NO published commercial plant design. EHL-2 is a physics
+experiment (R0=1.05m, B0=3T, Ti0~30keV, P_net=0 MWe). The spec dict above
+uses EHL-2 experimental parameters as stand-ins, and P_native=500 MWe is an
+exploratory nominal scale for framework compliance — NOT an ENN-published target.
 
-CAS22 sub-account detail:
-Code                 M$
-------------------------
-  C220000        1750.9
-  C220101           9.2
-  C220102          26.8
-  C220103         516.1
-  C220104         353.2
-  C220105          27.0
-  C220106         142.1
-  C220107          79.4
-  C220108          79.8
-  C220109         118.5
-  C220110          19.9
-  C220111         192.1
-  C220112           0.0
-  C220200         110.9
-  C220300           1.9
-  C220400           3.5
-  C220500           9.2
-  C220600           6.6
-  C220700          54.5
+⚠️  CRITICAL LCOE WARNING — PHYSICS PENALTIES NOT REFLECTED IN MODEL:
+The model outputs LCOE = ~37-46 $/MWh, but this does NOT reflect the p-B11
+physics penalties documented in the analysis. The library's generic PB11 TOKAMAK
+defaults do not capture:
+  • 15× worse Lawson criterion (neτT ≥ 1.5×10²² m⁻³s vs D-T's ~10²¹)
+  • 200-300 keV operating temperature (vs D-T's 10-20 keV)
+  • Confinement scaling penalties and auxiliary heating recirculating power
+  • Low Q_eng implied by the hot-ion mode Ti/Te ≥ 4 requirement (questioned by
+    arXiv 2406.15495 as 'far from accessible' and economically doubtful)
 
-============================================================
-Key Assumptions and Data Quality
-============================================================
-  Net electric (analyst assumption):             500 MWe   [UNCERTAIN — no plant study]
-  Major radius R0:                               3.5 m    [UNCERTAIN — scaled from EHL-2 1.05 m]
-  Aspect ratio A → minor radius:                 1.8 → 1.94 m [UNCERTAIN — analogue]
-  Elongation κ:                                  2.5     [UNCERTAIN — ST analogue]
-  Direct conversion efficiency η_de:             0.8    [UNCERTAIN — theoretical 70-90%, TRL 1-2]
-  DEC power fraction f_dec:                      0.85    [UNCERTAIN — 1-f_rad_pb11=0.85]
-  Fallback thermal efficiency η_th:              0.35   [DEFAULT — steam Rankine for radiation fraction]
-  ECRH wall-plug η_pin:                          0.5   [MEDIUM — gyrotron analogue; cross-ref 21-ST-HTS]
-  Auxiliary input power (ECRH):                  200 MW  [UNCERTAIN — CS-free current drive]
-  Copper coil ohmic loss:                        50 MW  [UNCERTAIN — optimistic; HTS transition needed]
-  Tritium processing power:                      0 MW    [CONFIRMED — aneutronic, no tritium]
-  Availability:                                  80%   [UNCERTAIN — steady-state intent; novel tech]
-  Blanket: minimal thin shield only, no breeding          [CONFIRMED — p-B11 aneutronic]
-  p-B11 ignition physics:                        UNRESOLVED — Lawson criterion not demonstrated
-  Direct energy converter:                       TRL 1-2 — no engineering design published
-  All capital costs:                             FRAMEWORK DEFAULTS (no published cost data)
+Based on the family-delta analysis (Section 7), which concludes 'likely 50-200%
+LCOE penalty vs D-T HTS spherical tokamaks' and 'NET: likely 50-150% LCOE penalty
+vs D-T HTS spherical tokamaks at same P_net,' a realistic LCOE for this concept
+is expected to be 2-4× higher than the model output.
 
-Sensitivity (elasticity = %LCOE / %param)
-------------------------------------------------
+With a D-T HTS spherical tokamak baseline LCOE of 60-100 $/MWh, the 50-150%
+penalty places this concept at 90-250 $/MWh (not 37-46 $/MWh). The model's low
+LCOE is an artifact of library defaults that do not reflect the dominant physics
+constraints identified in the analysis.
 
-Engineering levers:
-  availability                         -0.9937
-  r_coil                               +0.4445
-  construction_time_yr                 +0.4134
-  b_max                                +0.2222
-  p_nbi                                +0.1521
-  eta_pin                              -0.1501
-  p_input                              +0.1340
-  R0                                   +0.0884
-  elon                                 +0.0884
-  eta_th                               -0.0831
-  vessel_t                             +0.0635
-  plasma_t                             +0.0587
-  eta_de                               -0.0436
-  f_dec                                -0.0421
-  p_coils                              +0.0188
-  structure_t                          +0.0163
-  ht_shield_t                          +0.0148
-  f_sub                                +0.0111
-  blanket_t                            +0.0021
-  p_cool                               +0.0019
-  p_house                              +0.0015
-  p_pump                               +0.0004
-  eta_p                                -0.0000
-  mn                                   +0.0000
-  dd_f_T                               +0.0000
-  dd_f_He3                             +0.0000
-  dhe3_dd_frac                         +0.0000
-  dhe3_f_T                             +0.0000
-  dhe3_f_He3                           +0.0000
-  q95                                  +0.0000
-  f_GW                                 +0.0000
-  B                                    +0.0000
-  T_e                                  +0.0000
-  n_e                                  +0.0000
-  Z_eff                                +0.0000
-  plasma_volume                        +0.0000
-  R_w                                  +0.0000
-  T_edge                               +0.0000
-  tau_ratio                            +0.0000
-  M_ion                                +0.0000
-  lambda_q                             +0.0000
-  disruption_rate_base                 +0.0000
-  disruption_steepness                 +0.0000
-  disruption_damage                    +0.0000
-  disruption_downtime                  +0.0000
+The LCOE / capital cost outputs represent the 1costingFE library's generic
+PB11 TOKAMAK defaults at 500 MWe scale with EHL-2 geometry, not ENN's actual
+commercial concept. The library applies its archetype physics model (inverse
+power balance, confinement scaling, bremsstrahlung radiation) to back-solve
+fusion power and plasma parameters from the target net power and geometry inputs.
 
-Financial:
-  interest_rate                        +nan
-  inflation_rate                       +0.0339
+DATA GAPS (from analysis Section 6, blocking LCOE modeling):
+  • No commercial plant design (P_net, R0, B, Ip, P_fus, Q_eng, capacity factor)
+  • Direct energy converter technology choice and efficiency undefined (TRL 1-2)
+  • Hot-ion mode Ti/Te≥4 feasibility at 200-300 keV questioned by arXiv 2406.15495
+  • Capital cost estimates for any subsystem unavailable
+  • Magnet conductor type (copper vs HTS) unconfirmed
+  • Non-inductive current drive power budget unclear (3 MA at 1 A/W needs 3 GW,
+    but only 23 MW heating stated — suggests bootstrap current dominates or
+    efficiency is orders of magnitude better, neither confirmed)
 
-Costing constants (top 15):
-  indirect_fraction                    +0.1666
-  heating_nbi_per_mw                   +0.1521
-  om_cost_pb11                         +0.0770
-  installation_frac                    +0.0726
-  vessel_unit_cost                     +0.0612
-  dec_base                             +0.0510
-  divertor_base                        +0.0344
-  power_supplies_base                  +0.0342
-  electric_per_mw                      +0.0317
-  misc_per_mw                          +0.0193
-  construction_insurance_frac          +0.0130
-  structure_unit_cost                  +0.0116
-  shield_unit_cost                     +0.0115
-  shipping_frac                        +0.0106
-  remote_handling_pb11_base            +0.0086
+KEY PHYSICS CONSTRAINTS (from analysis Section 2, Frontiers 2026 paper):
+  • p-B11 requires 15× higher Lawson triple product than D-T (neτT ≥ 1.5×10²² m⁻³s)
+  • Operating temperature: Ti = 200-300 keV (vs D-T's 10-20 keV) for net energy
+  • Hot-ion mode Ti/Te ≥ 2 required (EHL-2 goal); commercial plant may need ≥4
+  • EHL-2's Ti0~30 keV is far below ignition threshold — confirms physics-only mission
 
-ECRH p_input sweep (CS-free concern range: 13%→47% of gross output):
-  p_input (MW)     % of ~1488 MWe gross       LCOE ($/MWh)
-----------------------------------------------------------
-  200              13.4                    %         96.1
-  400              26.9                    %        108.6
-  600              40.3                    %        120.4
-  700              47.0                    %        126.1
-  (200 MW = optimistic base; 600–700 MW = analysis §S2 concern bound)
+FAMILY-DELTA SUMMARY (from analysis Section 7, vs D-T spherical tokamaks):
+  • Aneutronic fuel: saves $50-200M (no tritium breeding), but incurs 15× Lawson
+    penalty + 200-300 keV operating temp → likely 50-200% LCOE penalty due to
+    larger reactor, lower Q_eng, higher auxiliary heating
+  • Direct energy conversion: potential 10-15% LCOE advantage if 50% efficiency
+    achieved, but technology undefined (TRL 1-2); no advantage if thermal fallback
+  • CS-free operation: 10-20% LCOE penalty due to non-inductive current drive
+    recirculating power (unless ECRH efficiency improves by order of magnitude)
+  • Resistive magnets (inferred): 10-20% LCOE penalty vs HTS tokamaks (resistive
+    losses), or parity if HTS adopted (capital +$300M, operating -$10M/yr)
+  → NET: likely 50-150% LCOE penalty vs D-T HTS spherical tokamaks at same P_net
+
+When ENN publishes a commercial plant design, update spec (R0, B, plasma_t,
+p_input) and P_native with real values, repeat the Section 5b walkthrough for
+overrides, and re-run. Until then, treat all outputs as library-default placeholders
+that underestimate realistic LCOE by 2-4× due to unmodeled p-B11 physics penalties.
+================================================================================

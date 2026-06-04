@@ -1,22 +1,23 @@
-VERDICT: FINDINGS
+VERDICT: PASS
 
-### F-1: DEC_failure scenario result contradicts analysis framing
-- **Target:** Section 2 (Modeling Hypotheses, H1) and model DEC_failure branch
-- **Category:** model
-- **Finding:** The DEC_failure scenario shows +4% LCOE change (96.1 → 99.9 $/MWh), directly contradicting the analysis's characterization of DEC failure as having "catastrophic" economic impact and its statement that this is "the single most informative output this model can produce." The discrepancy is structural: the model scales fusion power at fixed geometry (2031 → 3270 MW, +61% fusion power, +5% overnight cost) to maintain 500 MWe net, so capital costs barely move. The economically informative scenario — holding fusion power constant at 2031 MW and showing net output collapse — is never computed. At constant fusion power with full fallback thermal (η_th = 0.35), gross electric output falls from ~1488 MWe to ~711 MWe; after ~500 MWe in parasitic loads (ECRH at 200 MW / η_pin = 0.5, coils, aux), net output collapses to ~200 MWe, and LCOE rises to ~230+ $/MWh. That is the scenario that demonstrates why DEC is go/no-go, not +4%.
-- **Recommendation:** Add a constant-fusion-power DEC_failure variant alongside the existing scale-up variant: hold fusion at 2031 MW, set eta_de = 0.0, route all power through fallback thermal at η_th = 0.35, hold geometry fixed, and report the resulting net output (~200 MWe) and LCOE (~230 $/MWh). Label it "DEC_failure_fixed_fusion" and contrast it with the existing "DEC_failure_fixed_net" variant. The analysis framing of H1 should reference this variant as the primary demonstration and note that the scale-up variant (+4%) is technically valid but operationally misleading because it silently assumes the undemonstrated p-B11 Lawson criterion can be met at 60% higher fusion power in the same machine.
-- **Priority:** blocking
+This iteration adequately addresses the assessment criteria within the constraints of an extremely data-limited concept. The analysis and model handle the edge case of "no commercial plant design exists" with appropriate transparency and caveats.
 
-### F-2: Copper coil recirculating power concern range not swept
-- **Target:** Model sensitivity output and Section 2 (Challenge 3, CS-free operation)
-- **Category:** model
-- **Finding:** The model flags p_coils = 50 MW as "OPTIMISTIC — likely 5-10x higher" in the output header and the analysis (Section 3) states that a commercial-scale device with copper resistive coils could consume ~300 MW in coil ohmic heating — but no sweep of p_coils is shown. This is asymmetric: the ECRH p_input concern (200 → 700 MW) has a dedicated sweep table in the output, but the copper coil concern (50 → 500 MW) does not, despite the model explicitly flagging it as optimistic. At p_coils elasticity +0.019, the 5-10× concern range (50 → 500 MW) produces a ~17% LCOE impact (96 → ~113 $/MWh) — material enough to report. The analysis makes the HTS transition a pivotal unresolved question (Section 3, Section 7) but provides no numeric range for what the LCOE looks like in the copper-coil commercial-scale scenario.
-- **Recommendation:** Add a p_coils sweep (50, 150, 300, 500 MW) to the model output, formatted in the same style as the p_input sweep, and label it "Copper coil recirculating power range (HTS-less scenario)." Report alongside the base LCOE and note that at p_coils > 300 MW, the recirculating power fraction from coils alone exceeds the ECRH concern midpoint, making the combined recirculating power fraction a compounding risk.
-- **Priority:** important
+## Key Strengths
 
-### F-3: Interest rate sensitivity is NaN — computation error for a 19%-IDC concept
-- **Target:** Model sensitivity output (Financial section)
-- **Category:** model
-- **Finding:** The sensitivity table shows `interest_rate: +nan`, a computation error. IDC accounts for $730.7M of $3823.1M total capital (19%) — the largest single line item after CAS22 Reactor Plant Equipment. For a capital-intensive concept with a 30-year plant life, interest rate is a first-order LCOE driver, not a minor parameter. The NaN prevents any interpretation of financial risk and is inconsistent with the model successfully computing IDC in the capital cost breakdown. This is not a modeling ambiguity; it is a broken sensitivity calculation that makes the financial section of the output unreadable.
-- **Recommendation:** Debug the interest_rate sensitivity computation in the model. If the elasticity cannot be computed analytically (e.g., due to compounding in the IDC formula), substitute a finite-difference approximation: compute LCOE at interest_rate ± 1 percentage point and report the resulting elasticity. Add the computed elasticity to the Financial sensitivity section. As a sanity check, for a capital-intensive concept with 19% IDC, the interest rate elasticity should be in the range +0.15 to +0.30.
-- **Priority:** important
+1. **Honest Acknowledgment of Limitations**: The analysis explicitly states throughout (Design Point section, Section 5, Section 5b, model warnings) that no commercial plant design exists and that all quantitative outputs are exploratory placeholders using EHL-2 experimental parameters.
+
+2. **Override Discipline Under Data Scarcity**: The zero-override count (outside the Low-fit expected band of 6-12) is justified by the explicit lack of company-grounded cost data for any subsystem. Section 5b provides clear rationale: "every account is missing company data."
+
+3. **Family-Delta with Appropriate External References**: Given no in-corpus comparable, Section 7 articulates deltas against external D-T spherical tokamak references (ARIES-ST) with specific subsystem-level cost effects and honest uncertainty quantification (50-150% LCOE penalty range).
+
+4. **Model Warnings Aligned with Analysis**: The model output carries extensive warnings (lines 53-119 of model_output.txt) that accurately reflect the analysis's conclusions about physics penalties not captured in library defaults, including specific LCOE correction factors (2-4× higher than model output).
+
+## Notes
+
+- This concept represents a boundary case for the pipeline: a genuinely interesting technical approach (MFE p-B11 aneutronic fusion) where the company has published only physics experiments, not commercial plant designs. The artifacts handle this by maintaining framework compliance (P_native=500 MWe exploratory value, three-forward model structure) while being transparent about the lack of grounding.
+
+- The Low archetype-fit grade reflects that the PB11 TOKAMAK archetype is a poor match for this concept's actual physics (15× Lawson penalty, 200-300 keV operation). The zero-override count is consistent with having no company data to override with, rather than inconsistent with Low fit.
+
+- When ENN publishes a commercial plant design, the analysis correctly identifies that the entire Section 5b walkthrough should be repeated and overrides added based on real subsystem data.
+
+No findings.

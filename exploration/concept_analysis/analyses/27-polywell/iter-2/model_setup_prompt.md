@@ -1,48 +1,146 @@
-# Free-Form Model Update: Polywell (D-T)
+# 1costingfe Model Update: Polywell (EMC2)
 
 ## Mode: Feedback Pass (Edit Existing Model)
 
-An existing model from a prior iteration has been copied to `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/27-polywell/iter-2/model_setup.py`.
+An existing three-forward model from a prior iteration has been copied to `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\27-polywell\iter-2\model_setup.py`.
 
-**Your task**: Read the existing model at `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/27-polywell/iter-2/model_setup.py` and apply targeted edits based on the assessment findings below. Use the Edit tool to make changes — do NOT rewrite the file from scratch.
+**Your task**: Read the existing model at `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\27-polywell\iter-2\model_setup.py` and apply
+**targeted edits** based on the assessment findings below. Use the Edit tool — do
+NOT rewrite the file from scratch, and do NOT restructure conforming code.
+
+## Preserve the three-forward contract
+
+The file already follows the canonical shape; keep it:
+1. `spec` dict (design-point inputs only) + `P_native`
+2. `model = CostModel(...)`
+3. `generic = generic_reference(model, spec, P_native)` — the mandatory
+   overrides-off forward (forward 1), the reference a relative override is written against
+4. `overrides = [ ... ]` — six-field registry entries
+5. `native, result_1gw = run_native_and_1gw(model, spec=spec, overrides=overrides, p_native=P_native)`
+
+with `model`, `generic`, `native`, `result_1gw` at module level and the
+`print_cas_breakdown(generic, native, result_1gw, overrides)` call retained. Do
+not convert the helper call into an inline two-knob `forward()` (the contract
+validator rejects it), do not drop the mandatory `generic` line, and do not
+re-introduce `# DEFAULT:` comments or the uniform financial parameters
+(`availability`, `lifetime_yr`, `interest_rate`, `inflation_rate`) into `spec`.
+**Do not re-introduce power-conversion efficiencies (`eta_th`, `eta_de`,
+`eta_dec`) into `spec`** — these are ENUM-driven; the way to express a
+different value is to add an upstream ENUM member in costingfe, not a per-
+concept override. `f_dec` (DEC fraction) MAY appear in `spec` with provenance —
+it's a physics+architecture property, not a hardware-efficiency claim.
+A relative override references `generic` (never `native` or `result_1gw`).
+
+**Low archetype-fit concepts: do not empty `spec`.** When the frontmatter
+declares `Archetype-Fit: Low`, the prior model may still have a populated `spec`
+expressing the concept's actual geometry / physics using canonical kwargs (even
+where the archetype isn't a perfect cost match). **Preserve those entries** and
+only edit specific fields if a finding calls for it. Replacing a populated
+low-fit `spec` with `spec = dict()` is a regression — the library would fall
+back to pure archetype YAML defaults that carry zero signal for this concept's
+actual machine. Cost-side overrides (the registry below) are where the "Low
+fit" caveat properly lives.
+
+**Archetype-specific spec key blocklist (library-bug workarounds).** Until library issues are
+fixed, some spec keys must not be passed for specific archetypes — even when the published design
+point has a value for them. If the prior model contains any of these keys in `spec`, **remove
+them** as part of this edit:
+- **DIPOLE**: remove `plasma_volume` if present. The MFE radiation calc treats `plasma_volume`
+  as a uniform integrator and over-counts radiation for dipole-peaked profiles. Library issue:
+  **1cFE/1costingfe#24**. Document the removal with a brief comment citing the issue.
+
+**Override values are M$, never raw dollars** (validator rejects `|value| > 5e4`).
+**Derived rollup accounts cannot be overridden**: C220111, C220000, C220100,
+C220200, C220300, C220400, C220500, C220600, C220700. To express "this concept
+assembles more simply," override `installation_frac` via `costing_overrides`,
+not the C220111 dollar amount.
+**Disabled overrides must carry a `blocked_by` field** matching `<org>/<repo>#<NN>`
+(e.g. `"1cFE/1costingfe#42"`) so library-side findings route to a tracker
+instead of dying in the rationale text.
+**Every override must declare `cost_basis: "noak"` (strict).** The framework runs
+`noak=True`; any other vintage (`foak`, `conceptual_design`, `vendor_target`,
+`unspecified`) is rejected. If your source publishes a non-NOAK value, either
+(a) disable + `blocked_by`, (b) apply a documented learning-curve adjustment in
+`rationale` and declare `cost_basis: "noak"`, or (c) file a tracker issue.
 
 **Rules**:
-- Preserve ALL existing sweeps, scenarios, parameters, and sensitivity analyses unless a finding specifically says to change them
-- Maintain the existing code structure and organization
-- Add new content incrementally — do not restructure working code
-- Every change must be traceable to a specific finding or a direct consequence of one
+- Preserve all existing sweeps, scenarios, and sensitivity analyses unless a
+  finding specifically says to change them.
+- Add content incrementally; every change must be traceable to a specific finding
+  or a direct consequence of one.
+- Any override you add or change uses a **canonical** account code (schema below)
+  and the six-field shape; keep `provenance` honest and show derivation arithmetic
+  in `rationale`.
 
 
 ## Assessment Findings
 
-The following findings were raised by the assessor. Focus on findings tagged `Category: model`. Findings tagged `Category: analysis` are informational — they describe prose changes the analysis agent is handling. You may still adjust model parameters if an analysis finding implies the model's assumptions are wrong.
+Focus on findings tagged `Category: model`. Findings tagged `Category: analysis`
+are informational (the analysis agent handles prose), but you may adjust model
+parameters if an analysis finding implies the model's assumptions are wrong.
 
-### F-1: "No burning plasma" differentiator missing its cost implication
-- **Target:** Section 7 (Cross-Concept Notes, differentiators list)
+### F-1: Design Point block missing — violates contract requirement
+- **Target:** Section "Design Point" (top of analysis)
 - **Category:** analysis
-- **Finding:** Section 7 lists four key differentiators from a conventional tokamak, but item 3 ("No burning plasma") does not state a cost implication (Goal 3). This is actually the concept's most TEA-critical structural difference: because the Polywell never transitions to alpha-sustained burn, the 78 MW e-beam must run continuously, producing a 29% recirculating power fraction at the baseline γ=0.1 and potentially 40–45%+ at γ=0.2. By contrast, a burning-plasma MFE concept (tokamak, stellarator) recirculates only 10–20% for heating and housekeeping once ignited. The e-beam recirculating power is therefore a permanent cost penalty relative to burning-plasma MFE — and it compounds the γ uncertainty: worse γ doubles the beam power, directly degrading Q_eng. This connection (non-burning architecture → high recirculating fraction → γ sensitivity amplified in Q_eng terms) is central to understanding the Polywell's economics but is not stated in Section 7.
-- **Recommendation:** Add a sentence in Section 7 under item 3 stating the cost implication: continuous e-beam injection imposes a structural recirculating power penalty (~29% at baseline, ~45%+ at γ=0.2) relative to burning-plasma concepts, making Q_eng significantly lower than Q_sci and making γ the primary lever on both net output and LCOE. Frame this as a cost penalty with a magnitude that depends on γ.
+- **Finding:** The Design Point block states "(No design-point row for this concept yet — selection is upstream-pending. Do not invent one.)" but the contract specifies that design point selection (plant name, maturity, P_native, grounding confidence) is determined upstream and arrives through analysis frontmatter. The analysis must copy these fields verbatim into a Design Point block, not defer or state they are pending. The frontmatter does not show a design-point table, suggesting upstream data is truly missing — but the analysis proceeded to Section 5 with a derived P_native of ~290 MWe (from Park et al. 2025 scaling), which contradicts the "no design point" framing.
+- **Recommendation:** If upstream has not provided a design-point row, the analysis cannot proceed to quantitative parameter extraction (Section 5) or LCOE modeling. Either (a) obtain the upstream design-point selection and populate the Design Point block with those fields (name, maturity, P_native, grounding), or (b) if truly no design point exists for this concept, halt the analysis at Section 4 (data gaps) and do not produce Section 5 parameters or a model_setup.py. The current state is incoherent: "no design point" in Section 0 but a full parameter table and LCOE model downstream.
+- **Priority:** blocking
+
+### F-2: model_setup.py uses wrong fuel type (PB11 instead of D-T)
+- **Target:** model_setup.py line 61 (Fuel enum)
+- **Category:** model
+- **Finding:** The model instantiates `CostModel(concept=ConfinementConcept.POLYWELL, fuel=Fuel.PB11)` but the entire analysis is based on Park et al. (2025) D-T reactor scaling (Section 5 parameter table explicitly states "50:50 D-T fuel mixture", "Neutron energy 784 MW" from D-T reactions, tritium breeding blanket discussion). The PB11 fuel selection is a copy-paste error or mis-mapping — the analysis Section 8 (Sources) even notes that the Rogers (2018) p-B11 study was "not extracted as a source for this iteration because fuel type does not match." All quantitative parameters (fusion power, neutron energy fraction, breeding requirements) assume D-T.
+- **Recommendation:** Change line 61 to `fuel=Fuel.DT` to match the Park et al. (2025) reference design and the analysis narrative. Re-run the model and verify that CAS22 accounts (blanket, shield, magnets) reflect D-T tritium breeding and 14.1 MeV neutron loads, not aneutronic p-B11 assumptions.
+- **Priority:** blocking
+
+### F-3: Override count (zero) below Med-fit band without upstream confirmation
+- **Target:** Section 5b (Override Candidates) and model_setup.py overrides list
+- **Category:** analysis
+- **Finding:** The analysis proposes zero overrides for an Archetype-Fit: Med concept (expected 3–8). The justification ("no company-grounded cost data, no engineering subsystem specifications") is reasonable given the lack of a published Polywell power plant design, but the rubric exists because archetype fit should predict override availability. Zero overrides suggests either (a) the archetype fit should be Low (if library defaults are truly the best available model for all accounts), or (b) the archetype YAML is missing spec keys that could be populated from Park et al. (e.g., the 4.5 T cusp field or 1.6 m cube geometry might map to spec keys if the archetype supported them). The analysis acknowledges spec dict is empty "per archetype-fit guidance" but does not reconcile why Med fit was assigned if no design-point parameters map to canonical spec keys.
+- **Recommendation:** Revisit the archetype-fit grade with the upstream team. If the POLYWELL archetype truly cannot ingest any parameters from Park et al. (2025) — not even a characteristic length scale, magnetic field, or recirculating power fraction — then the archetype fit should be downgraded to Low and zero overrides is correct. If the archetype YAML could be extended to accept cube geometry or boundary field strength, the fit remains Med and the spec dict should be populated. Document the upstream decision in the analysis.
 - **Priority:** important
 
-### F-2: Section 2 does not rank challenges by LCOE sensitivity
-- **Target:** Section 2 (Challenges in Capturing System Function)
-- **Category:** analysis
-- **Finding:** Section 2 identifies six challenges (γ, energy conversion, bremsstrahlung, tritium breeding, scaling, O&M) but presents them without ranking by LCOE leverage (Goal 4). The checklist requires Section 2 to identify the 2–3 parameters with highest LCOE sensitivity for this concept. The model output's KEY BINDING CONSTRAINTS section provides this ranking implicitly (γ/fusion power → ±10.80 ¢/kWh swing; thermal efficiency → ±2 ¢/kWh; capital cost overrides → ±1 ¢/kWh), but this does not appear in the analysis text. A reader of Section 2 alone would not know which challenge dominates the LCOE corridor. In particular, bremsstrahlung (item 3) and O&M (item 6) are important physically but have far less LCOE leverage than γ, yet they receive similar narrative weight.
-- **Recommendation:** Add a brief priority statement at the top of Section 2 (or at the end of item 1) naming the 2–3 parameters with highest LCOE sensitivity for the Polywell specifically: (1) γ / Q_plasma — dominant, controls net output and recirculating power simultaneously; (2) thermal efficiency — second-order but blocks all net output calculations; (3) capital cost of SC coil and e-beam systems — reducible with engineering study. This ordering should inform which items the cost model prioritizes in sensitivity analysis.
-- **Priority:** important
 
-### F-3: Modeling approach choice (1costingfe vs. free-form) not stated in analysis
-- **Target:** Section 2 or Section 7 (modeling recommendations)
-- **Category:** analysis
-- **Finding:** The analysis does not state whether CAS-structured (1costingfe) or free-form modeling is appropriate for the Polywell, nor does it justify the choice (Goal 4). The model output uses the 1cFE CAS-structured framework with two concept-specific overrides (C220103 SC coils, C220104 e-beam), but the analysis text contains no recommendation or rationale. Given that the Polywell substitutes an e-beam injection system and 6-sided SC coil array for the TF/PF coil set and H&CD system of a tokamak, a brief statement justifying CAS-structured modeling (with concept-specific CAS22 overrides for novel subsystems) over free-form would fulfill this requirement and help a modeling agent understand the scope of customization needed.
-- **Recommendation:** Add a sentence in Section 2 or Section 7 stating that CAS-structured modeling (1costingfe) is appropriate because the Polywell shares the D-T BOP structure (buildings, turbine plant, tritium handling) with MFE concepts, and the concept-specific cost differences concentrate in two CAS22 line items: SC coil system and e-beam injection, both handled via direct override. Note that a free-form model would not improve accuracy given the current data availability level.
-- **Priority:** minor
+## Reference
 
+- **Concept Analysis (Design Point + Section 5b overrides):** `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\27-polywell\analysis.md`
+- **Example (pattern):** `\home\reid\1cfe\1costingfe\examples\dt_tokamak.py`
+- **README:** `\home\reid\1cfe\1costingfe\README.md`
+- **Costing Constants:** `\home\reid\1cfe\1costingfe\src\costingfe\data\defaults\costing_constants.yaml`
+- **Concept mapping:** `ConfinementConcept.POLYWELL`, `Fuel.PB11`
 
-## Reference Files
+### Canonical account schema (for any new/changed override)
 
-- **Concept Analysis:** `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/27-polywell/analysis.md`
-- **Costing Constants:** `/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml`
+| Account | What it costs | Applies when |
+| --- | --- | --- |
+| `C220101` | First wall, blanket & neutron multiplier (DT: tritium-breeding blanket; DD/aneutronic: energy-capture blanket) | always (for this archetype) |
+| `C220102` | Radiation shield (sized to neutron wall loading; scales down for low-neutron fuels) | always (for this archetype) |
+| `C220103` | Confinement magnets / coils (HTS-REBCO conductor + winding + cryostat) | always (for this archetype) |
+| `C220104` | Supplementary plasma heating (steady-state) or primary pulsed driver (laser/accelerator/gun) | primary pulsed driver (laser/accelerator/gun) on $/J of driver energy; electrical-drive concepts cost it in C220107 |
+| `C220105` | Primary structure — gravity supports, thermal shields, inter-coil structure, machine base | always (for this archetype) |
+| `C220106` | Vacuum system — vessel, port extensions, cryopumps, leak detection | always (for this archetype) |
+| `C220107` | Power supplies (steady-state magnet supplies / switchgear) or pulsed-power capacitor bank ($/J stored) | pulsed-power capacitor bank on $/J stored — usually the dominant driver cost for electrically-driven pulsed schemes |
+| `C220108` | Divertor (steady-state, W monoblock cassettes) or target factory (IFE/MIF target manufacturing) | high-rep-rate target manufacturing factory (IFE/MIF) |
+| `C220109` | Direct energy converter (electrostatic for mirror/FRC exhaust, or inductive DEC on a pulsed driver) | only if the design point uses direct energy conversion (directed axial exhaust or an inductive DEC stage) |
+| `C220110` | Remote handling & maintenance equipment (rad-hardening tier x vessel geometry) | always (for this archetype) |
+| `C220111` | Reactor-equipment installation & assembly (fraction of the CAS22 subtotal) | always (for this archetype) |
+| `CAS21` | Buildings & site structures (reactor, turbine, hot cell, balance-of-plant) | always (for this archetype) |
+| `CAS23` | Turbine plant equipment (thermal cycle; zero for direct-conversion / eta_th=0 plants) | zero if the design point is direct-conversion (no thermal cycle) |
+| `CAS24` | Electric plant equipment (switchyard, transformers, plant distribution) | always (for this archetype) |
+| `CAS26` | Heat rejection system (cooling towers, circulating water) | always (for this archetype) |
+| `CAS27` | Special materials — initial reactor material inventory / blanket fill (distinct from C220101 structure) | always (for this archetype) |
+| `CAS70` | Annualized O&M + scheduled component replacement (staffing-based) | always (for this archetype) |
+| `CAS80` | Annualized fuel cost — consumables and enriched-isotope procurement | always (for this archetype) |
+
+### Canonical `spec` field glossary (for any new/changed spec key)
+
+If your edit touches the `spec` dict (adding/renaming/replacing a field),
+the new key MUST come from the glossary below. Read the "Common confusions"
+block before editing — most prior errors (concept 05/09 fusion-vs-heating
+mix-up, dipole `plasma_volume` regression, kJ-vs-MJ driver-energy mistakes)
+trace back to ignoring these warnings.
+
+{{canonical_spec_keys}}
 
 ## Output
-Write changes to: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/27-polywell/iter-2/model_setup.py`
+Write changes to: `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\27-polywell\iter-2\model_setup.py`

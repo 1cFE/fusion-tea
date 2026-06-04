@@ -1,0 +1,51 @@
+warning: `VIRTUAL_ENV=C:\Users\mallo\AppData\Local\Python\pythoncore-3.14-64` does not match the project environment path `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv` and will be ignored; use `--active` to target the active environment instead
+LCOE: 65.4 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 59.8 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 59.8 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 4795 $/kW   native 4795 $/kW   1 GWe 5112 $/kW
+
+CAS               generic           native            1 GWe
+--------------------------------------------------------
+CAS10                19.8             19.8             18.5
+CAS21               957.8            957.8            694.7
+CAS22              2755.0           2755.0           1982.6
+CAS23               395.3            395.3            263.5
+CAS24               168.4            168.4            112.2
+CAS25               102.5            102.5             68.3
+CAS26               170.8            170.8            113.9
+CAS27                22.5             22.5             15.0
+CAS28                 5.0              5.0              5.0
+CAS29                 0.0              0.0              0.0
+CAS30               915.4            915.4            651.1
+CAS40                47.8             47.8             39.0
+CAS50               473.3            473.3            324.3
+CAS60              1159.7           1159.7            824.3
+CAS70               127.7            127.7            103.1
+CAS80                 1.1              1.1              0.7
+CAS90               539.5            539.5            383.5
+--------------------------------------------------------
+TOTAL              7193.1           7193.1           5112.4
+
+--- CAS22 sub-account detail (overrides marked) ---
+code            generic       native        1 GWe  flag
+C220000          2755.0       2755.0       1982.6
+C220101           257.8        257.8        202.1
+C220102           180.0        180.0        141.1
+C220103             0.0          0.0          0.0
+C220104           868.2        868.2        567.5
+C220105            11.4         11.4          9.3
+C220106            42.7         42.7         33.4
+C220106_pump          0.6          0.6          0.4
+C220106_vessel         42.1         42.1         33.0
+C220107            21.2         21.2         13.8
+C220108           396.4        396.4        298.4
+C220109             0.0          0.0          0.0
+C220110           106.1        106.1         86.6
+C220111           263.7        263.7        189.3
+C220112             0.0          0.0          0.0
+C220200           298.4        298.4        205.5
+C220300            16.9         16.9         15.1
+C220400             9.8          9.8          6.5
+C220500           159.4        159.4        120.0
+C220600            15.9         15.9         11.5
+C220700           107.2        107.2         82.3

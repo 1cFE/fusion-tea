@@ -50,6 +50,7 @@ KNOWN_VARS = {
     "brief_path", "schema_path", "exemplar_paths", "approved_analyses",
     "output_template_path", "analysis_path", "memory_context",
     "concept_landscape", "design_point_block", "canonical_accounts",
+    "canonical_spec_keys",
     "comparables_block", "fit_grade_band",
     # analyze mode flags / extras
     "output_path", "cold_start", "feedback_pass", "feedback_path", "self_advance",

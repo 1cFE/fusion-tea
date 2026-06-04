@@ -1764,3 +1764,159 @@ class TestF8CostBasisNoakOnly:
 
         r = validate_override_registry(_F8_NOAK_ACCEPTED)
         assert r.valid, r.details
+
+
+# ---------------------------------------------------------------------------
+# F9 — physical-sense ratio bounds (value/P_native) for spec values. Concepts
+# 05 (planar-coil stellarator) and 09 (QI stellarator) of the bulk-run regen
+# were the prosecutor's fixtures: each transcribed published fusion power
+# (958 MW and 2700 MW) into the `p_input` slot, which the library faithfully
+# read as auxiliary-heating wallplug. The inverse power balance then
+# manufactured fusion powers of 5-10x the actual design point, every CAS22
+# account scaling with p_th inflated, and the resulting LCOEs jumped to
+# ~$304/MWh (vs ~$187/MWh for concept 10, the matched control). F9 rejects
+# any p_input/P_native > 0.5 — the order-of-magnitude band that order-of-
+# magnitude transcription errors fall outside of.
+# ---------------------------------------------------------------------------
+
+
+# Concept 05's literal regen output — p_input = 958.0 against P_native = 390.0
+# gives p_input/P_native = 2.46 (well above the 0.5 cap).
+_F9_CONCEPT_05_LITERAL = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(
+    R0=15.4,
+    plasma_t=1.46,
+    p_input=958.0,
+)
+P_native = 390.0
+model = CostModel(concept=ConfinementConcept.STELLARATOR, fuel=Fuel.DT)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+
+# Concept 09's literal regen output — p_input = 2700.0 vs P_native = 1000.0
+# gives ratio 2.7 (also above the cap).
+_F9_CONCEPT_09_LITERAL = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(
+    R0=11.4,
+    plasma_t=1.6,
+    p_input=2700.0,
+)
+P_native = 1000.0
+model = CostModel(concept=ConfinementConcept.STELLARATOR, fuel=Fuel.DT)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+
+# Healthy reference — p_input = 38.6 against P_native = 233.0 gives ratio
+# 0.166 (well inside the [0.005, 0.5] band).
+_F9_HEALTHY = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(
+    R0=3.3,
+    plasma_t=1.1,
+    p_input=38.6,
+)
+P_native = 233.0
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+
+# Edge-case lower bound — p_input = 1.0 / P_native = 1000.0 gives ratio
+# 0.001, below the 0.005 floor. Should be rejected.
+_F9_TOO_LOW = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(
+    R0=3.3,
+    plasma_t=1.1,
+    p_input=1.0,
+)
+P_native = 1000.0
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+generic = generic_reference(model, spec, P_native)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, P_native)
+'''
+
+
+# No P_native — F9 must skip silently (other validators catch the missing
+# P_native; F9 is not the right error for that).
+_F9_NO_PNATIVE = '''\
+from lib.model_setup_helpers import generic_reference, run_native_and_1gw
+from costingfe import ConfinementConcept, CostModel, Fuel
+
+spec = dict(R0=3.3, plasma_t=1.1, p_input=2000.0)
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+generic = generic_reference(model, spec, 233.0)
+overrides = []
+native, result_1gw = run_native_and_1gw(model, spec, overrides, 233.0)
+'''
+
+
+class TestF9SpecRatioBounds:
+    """F9 — reject spec values whose ratio to P_native is physically impossible."""
+
+    def test_rejects_concept_05_literal(self):
+        # p_input=958.0 / P_native=390.0 = 2.46, above the 0.5 cap.
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F9_CONCEPT_05_LITERAL)
+        assert not r.valid
+        assert "p_input" in r.fix_message
+        assert "P_native" in r.fix_message
+        # Redirect must name fusion-power-into-heating-slot as the failure mode:
+        assert "fusion power" in r.fix_message.lower()
+        # Details report the actual ratio so we can grep regen logs:
+        assert "2.4" in r.details or "2.5" in r.details
+
+    def test_rejects_concept_09_literal(self):
+        # p_input=2700.0 / P_native=1000.0 = 2.7.
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F9_CONCEPT_09_LITERAL)
+        assert not r.valid
+        assert "p_input" in r.fix_message
+        assert "fusion power" in r.fix_message.lower()
+
+    def test_accepts_healthy_ratio(self):
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F9_HEALTHY)
+        assert r.valid, r.details
+
+    def test_rejects_too_low_ratio(self):
+        # 0.001 — below the floor; almost certainly p_input mistakenly in GW
+        # or a comma error in the source paper.
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F9_TOO_LOW)
+        assert not r.valid
+        assert "p_input" in r.fix_message
+
+    def test_skips_when_no_pnative(self):
+        # F9 needs P_native; without one, it must defer to the
+        # design-point-coherence check rather than firing a confusing F9 error.
+        from lib.validators import validate_model_setup_contract
+
+        r = validate_model_setup_contract(_F9_NO_PNATIVE)
+        # The contract validator will still pass (P_native is not required
+        # by validate_model_setup_contract — it's required by
+        # validate_design_point_coherence). F9 must not block here.
+        assert r.valid, r.details

@@ -1,29 +1,29 @@
 [
   {
-    "timestamp": "2026-04-20T19:09:37.236584+00:00",
+    "timestamp": "2026-06-04T06:17:30.454331+00:00",
     "step": "feedback-pass",
     "attempt": 1,
     "validator": "validate_file_modified",
     "passed": true,
     "details": "File content changed",
-    "validated_text_preview": "---\nID: 27-polywell\nConcept: Polywell (D-T)\nCompany: EMC2\nStatus: draft\nCreated: 2026-04-20\nApproved-Date:\nReuses: []\n---\n\n# D1+ Analysis: Polywell (D-T)\n\n**Concept**: Polywell (D-T)\n**Company**: EMC2 (Energy Matter Conversion Corporation)\n**Confinement Family**: Electrostatic (magnetic-cusp electron confinement, electrostatic ion acceleration)\n**Analysis Date**: 2026-04-20\n\n---\n\n## Section 1: Availability of Data\n\n**Rating: Limited**\n\nThe Polywell has a longer experimental history than most non"
+    "validated_text_preview": "---\nID: 27-polywell\nConcept: Polywell (EMC2)\nCompany: EMC2\nStatus: draft\nCreated: 2026-06-03\nApproved-Date:\nConfinement-Family: MFE\nArchetype: POLYWELL\nArchetype-Fit: Med\nComparison-Status: freeform-deferred\nComparables: []\n---\n\n## Design Point\n\n**Reference Design**: Park et al. (2025) D-T reactor scaling study\n**Native Scale**: ~290 MWe net electric (derived from 980 MW fusion power, 45% thermal efficiency, 78 MW electron beam injection)\n**Maturity**: Theoretical scaling (Q=10 physics model, no"
   },
   {
-    "timestamp": "2026-04-20T19:10:03.746378+00:00",
+    "timestamp": "2026-06-04T06:18:24.094748+00:00",
     "step": "model-setup",
     "attempt": 1,
-    "validator": "validate_python_syntax",
+    "validator": "validate_file_modified+validate_python_syntax+validate_model_setup_contract_strict+validate_override_registry",
     "passed": true,
-    "details": "Valid Python syntax",
-    "validated_text_preview": "\"\"\"\nPolywell (D-T) First-Pass LCOE Model\n======================================\n1cFE First Pass Concept Analysis\nConcept: Polywell (D-T) \u2014 Electrostatic/Magnetic Cusp Confinement\nCompany: EMC2 (Energy Matter Conversion Corporation)\n\nThe Polywell is a magnetic cusp device that traps electrons electrostatically\nto form a virtual cathode (Wiffleball), then uses the resulting electrostatic\nwell to confine and accelerate D-T ions to fusion temperatures. The reactor\ndesign is based on the Park et al. "
+    "details": "All validators passed",
+    "validated_text_preview": "\"\"\"1costingfe model: Polywell (EMC2) (EMC2).\n\nUsage:\n    uv run python model_setup.py              # print results\n    uv run python model_setup.py | tee model_output.txt\n\"\"\"\nimport sys\nfrom pathlib import Path\n\n# Make the shared three-forward helper importable regardless of where this file\n# lives (concept dir or iter-N/ dir): walk up to the scripts/ root.\n_SCRIPTS = next(\n    p / \"scripts\"\n    for p in Path(__file__).resolve().parents\n    if (p / \"scripts\" / \"lib\" / \"model_setup_helpers.py\").e"
   },
   {
-    "timestamp": "2026-04-20T19:14:20.948712+00:00",
+    "timestamp": "2026-06-04T06:19:46.118444+00:00",
     "step": "assess",
     "attempt": 1,
     "validator": "validate_feedback_verdict",
     "passed": true,
     "details": "Feedback format valid (verdict: FINDINGS)",
-    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: \u03b3 sensitivity sweep conflates two distinct physical scenarios\n- **Target:** model_setup.py \u2014 sensitivity sweep and conservative scenario\n- **Category:** model\n- **Finding:** The analysis narrative (Section 2) explicitly states that \u03b3=0.2 requires either (a) 156 MW beam for the same 980 MW fusion power, or (b) 490 MW fusion at 78 MW beam \u2014 two distinct operational branches with different LCOE implications. The sensitivity sweep implements only branch (b): it varies fus"
+    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: Model uses wrong fuel type (PB11 instead of DT)\n- **Target:** model_setup.py line 61\n- **Category:** model\n- **Finding:** The model instantiates `CostModel(concept=ConfinementConcept.POLYWELL, fuel=Fuel.PB11)` but the entire analysis describes a D-T design point (Park et al. 2025 D-T reactor scaling study). The analysis explicitly states \"50:50 D-T fuel mixture\" (Section 5), discusses tritium breeding blanket requirements (Sections 2, 4, 6), references 14.1 MeV neutro"
   }
 ]

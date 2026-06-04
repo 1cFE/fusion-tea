@@ -567,6 +567,36 @@ _CAS22_DETAIL_KEYS: set[str] = {
 #     the helper from the library defaults; appearing in `spec` defeats Reid's
 #     structural lockout.
 # Map: spec_key -> structural_redirect.
+# F9 — physical-sense ratio bounds for spec values relative to P_native. The
+# prompt-template glossary (canonical_spec_keys.py) is the *prevention* half of
+# the concept-05/09 fix (LLM transcribed fusion power into `p_input` and the
+# library back-solved to a 5 GW plant masquerading as a 390 MWe stellarator).
+# F9 is the *detection* half: a structural backstop in case the prompt guidance
+# is ignored or future model versions drift.
+#
+# Each entry maps a spec key to (low_ratio, high_ratio, redirect_message), where
+# the ratio is value/P_native. The bounds are deliberately wide (10x the
+# physically reasonable range) — the goal is to catch order-of-magnitude
+# transcription errors, NOT to police modest concept-to-concept variation.
+#
+# `p_input` is the only currently-bounded key; future additions (heating
+# fractions p_nbi / p_icrf / etc. summing to p_input; e_driver_mj * f_rep
+# driver wallplug ratio) belong here as discrete entries with their own
+# redirect message.
+_SPEC_RATIO_BOUNDS: dict[str, tuple[float, float, str]] = {
+    "p_input": (
+        0.005, 0.5,
+        "p_input/P_native must lie in [0.5%, 50%]. p_input is the AUXILIARY "
+        "heating wallplug (NBI/ICRH/ECRH/LHCD), NOT fusion power. Steady-state "
+        "MFE recirculates ~5-15% of net electric; pulsed concepts can run "
+        "lower. A value above this band almost certainly means fusion power "
+        "was transcribed into p_input by mistake (the concept 05/09 failure "
+        "mode). Find the SEPARATE heating-power figure in your source paper "
+        "(often labelled 'auxiliary heating', 'NBI', 'p_aux') and use THAT."
+    ),
+}
+
+
 _SPEC_FORBIDDEN_KEYS: dict[str, str] = {
     "eta_th": (
         "ENUM-owned by PowerCycle; add a new PowerCycle variant in costingfe "
@@ -749,6 +779,49 @@ def _spec_dict_keys(node: ast.expr) -> list[str]:
                 out.append(key.value)
         return out
     return []
+
+
+def _spec_dict_numeric_values(node: ast.expr) -> dict[str, float]:
+    """Extract ``key -> numeric literal value`` for a module-level ``spec`` dict.
+
+    Companion to ``_spec_dict_keys``: walks the same two literal shapes and
+    pulls out only the entries whose value is a literal int / float (or a
+    sign-prefixed numeric, like ``-1.5``). Entries with non-numeric or
+    runtime-computed values are silently skipped — F9 is a literal-shape
+    check, so a ``p_input = some_var`` binding is intentionally not policed
+    here (the broader contract check would fail elsewhere first).
+    """
+    out: dict[str, float] = {}
+
+    def _numeric(value_node: ast.expr) -> float | None:
+        try:
+            lit = ast.literal_eval(value_node)
+        except (ValueError, SyntaxError, TypeError):
+            return None
+        if isinstance(lit, bool):
+            return None
+        if isinstance(lit, (int, float)):
+            return float(lit)
+        return None
+
+    if isinstance(node, ast.Call) and (
+        isinstance(node.func, ast.Name) and node.func.id == "dict"
+    ):
+        for kw in node.keywords:
+            if kw.arg is None:
+                continue
+            val = _numeric(kw.value)
+            if val is not None:
+                out[kw.arg] = val
+        return out
+    if isinstance(node, ast.Dict):
+        for key, value in zip(node.keys, node.values):
+            if isinstance(key, ast.Constant) and isinstance(key.value, str):
+                val = _numeric(value)
+                if val is not None:
+                    out[key.value] = val
+        return out
+    return out
 
 
 def _forward_kwarg_linenos(tree: ast.Module) -> set[int]:
@@ -943,6 +1016,39 @@ def validate_model_setup_contract(
                     f"(silently dropped by forward())"
                 ),
             )
+
+        # F9 — physical-sense ratio check (value/P_native). Catches the
+        # concept-05/09 failure mode: fusion power transcribed into the
+        # p_input slot. The library would then back-solve the inverse power
+        # balance to manufacture a fusion power 5-10x the design value, and
+        # every CAS22 account that scales with p_th would inflate accordingly.
+        # F9 is a structural backstop in case the canonical-spec-key prompt
+        # guidance is ignored. Needs P_native; if the file lacks one, skip
+        # silently (validate_design_point_coherence catches the missing
+        # P_native separately).
+        pnative = _module_pnative(tree)
+        if pnative is not None and pnative > 0:
+            spec_values = _spec_dict_numeric_values(spec_node)
+            for key, (low, high, redirect) in _SPEC_RATIO_BOUNDS.items():
+                if key not in spec_values:
+                    continue
+                value = spec_values[key]
+                ratio = value / pnative
+                if ratio < low or ratio > high:
+                    return ValidationResult(
+                        valid=False,
+                        fix_message=(
+                            f"`spec[{key!r}] = {value}` gives "
+                            f"{key}/P_native = {ratio:.3f}, outside the "
+                            f"physically reasonable band [{low}, {high}]. "
+                            f"{redirect}"
+                        ),
+                        details=(
+                            f"F9: {key}/P_native = {ratio:.3f} "
+                            f"(value={value}, P_native={pnative}) outside "
+                            f"[{low}, {high}]"
+                        ),
+                    )
 
     details = f"model_setup contract valid (result_1gw via {form} form)"
 
