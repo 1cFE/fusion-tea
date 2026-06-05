@@ -21,7 +21,7 @@ import argparse
 import time
 from datetime import datetime
 
-from run_scoring_pipeline import run_parallel_stage
+from lib.parallel_stage import run_parallel_stage
 
 # Batch stages, in order. Stops after model-critic (FR-4) — no downstream chain.
 STAGES = ["analyze", "model-critic"]

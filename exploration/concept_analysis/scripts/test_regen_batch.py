@@ -2,36 +2,23 @@
 """Tests for Item 11 Phase 1 — parallel batch runner (analyze + model-critic).
 
 Covers:
-- ``stage_flags`` per-stage flag construction: scoring parity (synthesize keeps
-  ``--force`` + ``--skip-review-gate``), analyze carries ``--max-passes``, and
-  model-critic emits no ``--force`` (its argparser rejects it);
+- ``stage_flags`` per-stage flag construction: analyze carries ``--force`` +
+  ``--max-passes``, model-critic emits no ``--force`` (its argparser rejects it),
+  and any other stage raises ValueError;
 - the ``run_regen_batch`` CLI contract: explicit concept list required (no
-  run-all default), ``--workers`` default matches the scoring runner, and only
-  ``analyze`` + ``model-critic`` are dispatched (stop after critic, FR-4).
+  run-all default), ``--workers`` default is 3, and only ``analyze`` +
+  ``model-critic`` are dispatched (stop after critic, FR-4).
 """
 
 import pytest
 
-import run_scoring_pipeline as rsp
+from lib import parallel_stage as rsp
 import run_regen_batch as rrb
 
 
 # ---------------------------------------------------------------------------
 # stage_flags — per-stage subprocess flags
 # ---------------------------------------------------------------------------
-
-
-def test_stage_flags_synthesize_preserves_scoring_behavior():
-    """Scoring parity: synthesize must keep --force AND --skip-review-gate."""
-    flags = rsp.stage_flags("synthesize")
-    assert "--force" in flags
-    assert "--skip-review-gate" in flags
-
-
-def test_stage_flags_other_scoring_stage_keeps_force():
-    """A generic parallel scoring stage keeps --force, no --skip-review-gate."""
-    flags = rsp.stage_flags("score")
-    assert flags == ["--force"]
 
 
 def test_stage_flags_analyze_carries_max_passes():
@@ -45,6 +32,13 @@ def test_stage_flags_model_critic_has_no_force():
     assert "--force" not in flags
     assert "--max-passes" not in flags
     assert flags == []
+
+
+def test_stage_flags_unsupported_stage_raises():
+    """Removed scoring stages (synthesize, score, extract-scores, etc.) raise ValueError."""
+    for stage in ("synthesize", "score", "extract-scores", "calibrate", "heatmap"):
+        with pytest.raises(ValueError):
+            rsp.stage_flags(stage)
 
 
 # ---------------------------------------------------------------------------
@@ -63,7 +57,6 @@ def test_batch_accepts_concept_list_and_defaults():
     parser = rrb.build_parser()
     args = parser.parse_args(["01-hts-compact-tokamak", "02-foo"])
     assert args.concepts == ["01-hts-compact-tokamak", "02-foo"]
-    # --workers default matches the scoring runner (3)
     assert args.workers == 3
     assert args.max_passes == 3
 
