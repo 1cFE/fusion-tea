@@ -122,7 +122,7 @@ class _Model:
 
 
 model = _Model()
-result = model.forward(net_electric_mw=500.0, availability=0.85)
+result_1gw = model.forward(net_electric_mw=500.0, availability=0.85)
 """
 
 # ---------------------------------------------------------------------------

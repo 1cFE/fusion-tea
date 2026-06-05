@@ -134,11 +134,16 @@ def verify_two_knob(
             f"{concept_id}: P-Native must be positive, got {p_native_f}"
         )
 
-    expected = 1000.0 / p_native_f
-    if n_mod is None or abs(float(n_mod) - expected) > abs(expected) * tolerance_rel:
+    # The helper (model_setup_helpers.py:169) rounds n_mod to an integer:
+    #   n_mod = max(1, int(round(1000.0 / p_native)))
+    # The 1 GWe projection is a comparison convenience, not a real plant design
+    # point, so the rounding has no analytical meaning beyond "how many of this
+    # module to reach ~1 GWe." Verifier matches what the helper actually emits.
+    expected = max(1, round(1000.0 / p_native_f))
+    if n_mod is None or abs(float(n_mod) - expected) > 1e-9:
         raise ExtractionError(
             f"{concept_id}: result_1gw.params['n_mod'] expected {expected} "
-            f"(1000/{p_native_f}), got {n_mod!r}"
+            f"(max(1, round(1000/{p_native_f}))), got {n_mod!r}"
         )
 
 
@@ -293,16 +298,16 @@ def extract_costingfe(
 
     When `comparison_status` is "costingfe" or "costingfe-asterisked" (Item 6 frontmatter
     present), the strict-consumer contract applies: result_1gw must exist and pass
-    verify_two_knob. For un-migrated concepts (empty comparison_status) the legacy
-    soft fallback from result_1gw → result still applies (deprecated path; warns).
+    verify_two_knob. `result_1gw` is the single authoritative ForwardResult the
+    explorer reads (post-rework; the legacy `result` symbol is gone — three-forward
+    contract, see model_setup_helpers.py).
     """
     module = load_module_from_path(concept_dir / "model_setup.py")
 
     model = getattr(module, "model", None)
-    result = getattr(module, "result", None)
-    if model is None or result is None:
+    if model is None:
         raise ExtractionError(
-            f"{concept_id}: model_setup.py must define module-level 'model' and 'result'"
+            f"{concept_id}: model_setup.py must define module-level 'model'"
         )
 
     result_1gw = getattr(module, "result_1gw", None)
@@ -873,9 +878,23 @@ def run_extraction(
         print(f"Extracting {concept_id} ({concept_dir.name})...", flush=True)
 
         analysis_path = concept_dir / "analysis.md"
+        model_setup_path = concept_dir / "model_setup.py"
         frontmatter: dict[str, Any] = {}
         if analysis_path.exists():
             frontmatter = parse_frontmatter(analysis_path)
+        elif model_setup_path.exists():
+            # Old-shape concept (PR #39 refreshed model_setup.py but did not
+            # produce analysis.md). Extraction continues with defaults; the
+            # warning makes the degraded state visible to whoever ran extract.
+            warnings.warn(
+                f"{concept_id}: no analysis.md — fields defaulted to: "
+                f"Concept (dir name '{concept_dir.name}'), "
+                f"Confinement-Family (NONSTANDARD), "
+                f"Comparison-Status (''), P-Native (None). "
+                f"See rework epic Item 11 to regenerate.",
+                UserWarning,
+                stacklevel=2,
+            )
 
         comparison_status = str(frontmatter.get("Comparison-Status", "")).strip()
 
@@ -891,7 +910,6 @@ def run_extraction(
 
         # NOTE: import-based detection logic parallels run_model() in
         # scripts/lib/claude.py. If you change detection here, update there too.
-        model_setup_path = concept_dir / "model_setup.py"
         if model_setup_path.exists():
             source = model_setup_path.read_text(encoding="utf-8")
             is_costingfe = "CostModel" in source and (

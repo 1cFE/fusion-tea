@@ -170,7 +170,9 @@ def write_concept_fixture(
     if model_setup_kind == "costingfe":
         if include_result_1gw:
             if result_1gw_n_mod is None and p_native is not None:
-                derived = 1000.0 / float(p_native)
+                # Match what model_setup_helpers.run_native_and_1gw emits:
+                # max(1, int(round(1000 / p_native))).
+                derived = max(1, round(1000.0 / float(p_native)))
             else:
                 derived = result_1gw_n_mod
             expr = _result_1gw_source(net=1000.0, n_mod=derived)
@@ -234,7 +236,7 @@ class TestVerifyTwoKnob:
     def test_n_mod_mismatch_raises(self, tmp_path: Path) -> None:
         analyses_dir = tmp_path / "analyses"
         data_dir = tmp_path / "data"
-        # P_native=233 → expected n_mod=4.292..., but inject 5.0
+        # P_native=233 → helper emits n_mod=max(1, round(1000/233))=4, but inject 5.0
         write_concept_fixture(
             analyses_dir,
             status="costingfe",
@@ -260,10 +262,11 @@ class TestVerifyTwoKnob:
             verify_two_knob(r, p_native=233, concept_id="99")
 
     def test_passes_for_conforming_values(self, tmp_path: Path) -> None:
+        # n_mod is the integer-rounded count the helper emits, not 1000/p_native.
         class _R:
             params: dict[str, Any] = {
                 "net_electric_mw": 1000.0,
-                "n_mod": 1000.0 / 233.0,
+                "n_mod": 4,  # max(1, round(1000/233)) = 4
             }
 
         verify_two_knob(_R(), p_native=233, concept_id="99")  # no raise
