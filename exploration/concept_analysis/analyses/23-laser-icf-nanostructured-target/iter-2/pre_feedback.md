@@ -1,0 +1,15 @@
+VERDICT: FINDINGS
+
+### F-1: Absolute overrides on C220104 and C220108 are sized at 100 MWe and do not scale to 1 GWe, understating the projected LCOE
+- **Target:** model_setup.py overrides list (C220104, C220108)
+- **Category:** model
+- **Finding:** The C220104 (driver) override is $500M, derived from "50 beamlines × $10M/beamline" at the 100 MWe pilot scale. The C220108 (target factory) override is $31.5M, sized for 315M targets/year at 10 Hz for one 100 MWe module. Both are absolute dollar values that pass through unchanged to the 1 GWe projection. However, a 1 GWe plant requires 10 modules (10 × 100 MWe), meaning ~500 laser beamlines and ~3.15B targets/year. The analysis itself quotes the source: "An actual power plant is expected to need around 500 laser systems," and the LLNL target is "<$1.5B for a GW-class plant." At 1 GWe the driver cost should be on the order of $1.5–5B and the target factory should scale roughly proportionally, yet the model applies $500M and $31.5M respectively. This causes the 1 GWe CAS22 total ($5,949M) to understate the laser-driver and target-factory contributions by potentially $1–4.5B, and the 1 GWe LCOE (445 $/MWh) is correspondingly too low for this concept.
+- **Recommendation:** Either (a) express C220104 and C220108 as per-module values that the helper scales by module count (the way fractional overrides already scale), or (b) re-derive the absolute values at the 1 GWe scale (e.g., C220104 ≈ $1.5–3B for ~500 beamlines with NOAK learning, C220108 ≈ $100–200M for a 10× larger target fab). Document the scaling basis in the rationale so the native and 1 GWe figures are independently defensible.
+- **Priority:** blocking
+
+### F-2: C220101 blanket override claims consistency with concept 04 while applying a 2.3× more aggressive reduction
+- **Target:** Section 5b (Override Candidates), C220101 rationale
+- **Category:** analysis
+- **Finding:** The C220101 override applies a 0.30× multiplier (70% cost reduction) and the rationale states it is "Consistent with concept 04-laser-icf override (0.70× applied to same account for same reasoning)." A 0.30× multiplier is a 70% reduction; concept 04's 0.70× is a 30% reduction. The word "consistent" is self-contradictory — Marvel's reduction is 2.3× more aggressive than the comparable's, applied to the same account for what the analysis itself calls "the same reasoning." No additional rationale is given for why Marvel's aneutronic blanket should cost 70% less than the DT default while HB11's aneutronic blanket costs only 30% less. Both share the p-B11 fuel cycle and both eliminate tritium breeding.
+- **Recommendation:** Either (a) align the multiplier with concept 04 (0.70×) since the physical reasoning is identical (both aneutronic, both eliminate breeding, both retain thermal management structure), or (b) provide a concrete justification for why Marvel's blanket deserves a deeper reduction than HB11's — citing a specific subsystem difference, not just the shared aneutronic fuel cycle.
+- **Priority:** important

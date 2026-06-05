@@ -1,0 +1,28 @@
+{
+  "iteration": 1,
+  "verdict": "FAIL",
+  "finding_count": 1,
+  "feedback_source": "cold_start",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": false,
+  "merged_assess": false,
+  "sources": [
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\21-spherical-tokamak-hts\\iter-01\\sources\\pulsed-spherical-tokamak-paper.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\21-spherical-tokamak-hts\\iter-01\\sources\\st40-heating-systems.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\21-spherical-tokamak-hts\\iter-01\\sources\\ste1-pilot-plant-specs.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\21-spherical-tokamak-hts\\iter-01\\sources\\tokamak-energy-overview.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\21-spherical-tokamak-hts\\iter-02\\sources\\spherical-tokamak-center-stack-shielding.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\21-spherical-tokamak-hts\\iter-02\\sources\\tokamak-energy-heating-systems.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\21-spherical-tokamak-hts\\iter-02\\sources\\tokamak-energy-roadmap.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\21-spherical-tokamak-hts\\iter-02\\sources\\tokamak-energy-st-e1-design-evolution.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\21-spherical-tokamak-hts\\iter-03\\sources\\tokamak-energy-demo4-magnets.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\21-spherical-tokamak-hts\\iter-03\\sources\\tokamak-energy-ec-heating-pilot-plant.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\21-spherical-tokamak-hts\\iter-03\\sources\\tokamak-energy-st-e1-dpp2025-abstract.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\21-spherical-tokamak-hts\\iter-04\\sources\\prnewswire-news-releases-tokamak-energy-announces-st80-hts.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\21-spherical-tokamak-hts\\iter-04\\sources\\theengineer-content-news-tokamak-energy-st80-hts-hailed-as.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\21-spherical-tokamak-hts\\iter-04\\sources\\tokamakenergy-about-us-fusion-energy-high-temperature.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\21-spherical-tokamak-hts\\iter-04\\sources\\tokamakenergy-our-fusion-energy-and-hts-technology-fusion.md"
+  ],
+  "timestamp": "2026-06-05T00:56:51.111714+00:00"
+}

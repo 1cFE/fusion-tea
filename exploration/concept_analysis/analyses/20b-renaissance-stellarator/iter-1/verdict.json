@@ -1,0 +1,16 @@
+{
+  "iteration": 1,
+  "verdict": "FAIL",
+  "finding_count": 1,
+  "feedback_source": "cold_start",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": false,
+  "merged_assess": false,
+  "sources": [
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\20b-renaissance-stellarator\\iter-01\\sources\\arxiv-1512-01930.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\20b-renaissance-stellarator\\iter-01\\sources\\infoscience-bitstreams-7d2d7b2f-6f75-4ac2-93cb-6eef8a65df82.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\20b-renaissance-stellarator\\iter-01\\sources\\ukaea-process-fusion-devices-stellarator.md"
+  ],
+  "timestamp": "2026-06-05T00:47:23.216014+00:00"
+}
