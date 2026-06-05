@@ -72,33 +72,7 @@ Rate: High / Medium / Low
 2-3 specific future developments or data releases that would materially
 change the LCOE estimate (in either direction).
 
-#### 8. LCOE Downselect Scoring
-
-Score this concept using the scoring framework below. You score C1, C3, C4, C5,
-and C8. You also fill the C7 risk matrix (7 functions x 2 subcategories = 14 cells).
-
-**You do NOT score C2, C6, or C7.** These are computed deterministically by Python.
-Do not include them in your score table or YAML block.
-
-For each scored criterion, provide:
-- The **score** (1-5, where 5 = most favorable)
-- **Sub-scores** where the framework defines them
-- **2-3 sentences of justification** citing specific data from the analysis,
-  model output, CAS breakdown, or gap report. Do not score without evidence.
-
-**Do not double-count between criteria.** C4 measures operational complexity of
-the built plant, not physics feasibility. C7 is the sole place where "this might
-not work at all" is scored.
-
-Present C1, C3, C4, C5, C8 as a table with sub-factor breakdowns, then fill the
-complete 7-function x 2-subcategory risk matrix with all required per-cell fields.
-Report function-level means (F1-F7). End with the YAML scores block.
-
 ### Gap Report
 {{#if gap_report_path}}
 `{{gap_report_path}}`
 {{/if}}
-
-### Scoring Framework
-
-{{@config/scoring_framework.md}}
