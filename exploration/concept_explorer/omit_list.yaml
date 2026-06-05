@@ -1,0 +1,14 @@
+# Concept Explorer omit list — single source of truth for concepts excluded
+# from the explorer end to end. Two independent consumers read this file:
+#   - extract_explorer_data.py: skips writing data/{id}.json for omitted IDs
+#   - server.py: drops omitted IDs from concept load + taxonomy at startup
+#
+# Format: "<concept_id>": "<human-readable reason>"
+# Keys MUST be quoted strings so numeric-looking IDs (e.g. "26") match the
+# string IDs produced by parse_concept_id (see load_omit_list in models.py).
+# Adding/removing a concept here is the only edit needed — no code change.
+
+"26": "Incomplete analysis — not ready for cross-concept comparison"
+"27": "Incomplete analysis — not ready for cross-concept comparison"
+"34": "Incomplete analysis — not ready for cross-concept comparison"
+"38": "Incomplete analysis — not ready for cross-concept comparison"

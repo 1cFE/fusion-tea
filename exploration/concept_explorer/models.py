@@ -9,8 +9,10 @@ from __future__ import annotations
 import warnings
 from datetime import UTC, datetime
 from enum import StrEnum
+from pathlib import Path
 from typing import Any, ClassVar
 
+import yaml
 from pydantic import BaseModel, Field, model_validator
 
 # ---------------------------------------------------------------------------
@@ -456,6 +458,38 @@ class ComputeRequest(BaseModel):
 
     concept_id: str
     overrides: dict[str, float]  # Param name → new value
+
+
+# ---------------------------------------------------------------------------
+# Omit list (shared by extractor and server)
+# ---------------------------------------------------------------------------
+
+_OMIT_LIST_PATH = Path(__file__).parent / "omit_list.yaml"
+
+
+def load_omit_list(path: Path | None = None) -> set[str]:
+    """Load the set of concept IDs to exclude from the explorer.
+
+    Reads the hand-authored ``omit_list.yaml`` (ID -> reason map) and returns
+    just the set of IDs; the reasons are documentation for humans and are
+    discarded here. This is the single shared reader for both enforcement
+    points (extraction and the server), so each consumer enforces exclusion
+    independently from one source of truth.
+
+    Tolerant by design (FR-8): a missing or empty file yields an empty set
+    (omit nothing). IDs are coerced to ``str`` so a numeric-looking YAML key
+    such as ``26`` (which ``yaml.safe_load`` parses as the int ``26``) still
+    matches the string IDs produced by ``parse_concept_id`` (e.g. ``"26"``).
+    A malformed YAML file is left to raise — that is an authoring bug worth
+    failing loudly on, not a no-op.
+    """
+    omit_path = path if path is not None else _OMIT_LIST_PATH
+    if not omit_path.exists():
+        return set()
+    raw = yaml.safe_load(omit_path.read_text(encoding="utf-8"))
+    if not raw:
+        return set()
+    return {str(key) for key in raw}
 
 
 # ---------------------------------------------------------------------------

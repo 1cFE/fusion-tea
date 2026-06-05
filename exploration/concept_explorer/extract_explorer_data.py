@@ -54,6 +54,7 @@ from exploration.concept_explorer.models import (  # noqa: E402, I001
     SensitivityAnalysis,
     SensitivityEntry,
     SourcePaths,
+    load_omit_list,
 )
 
 
@@ -836,8 +837,16 @@ def extract_narrative(concept_dir: Path, concept_id: str) -> NarrativeData:
 def discover_concepts(
     analyses_dir: Path,
     concept_filter: list[str] | None,
+    omitted: set[str] | None = None,
 ) -> list[Path]:
-    """Return sorted concept directories that have model_setup.py or analysis.md."""
+    """Return sorted concept directories that have model_setup.py or analysis.md.
+
+    *omitted* is the set of concept IDs excluded by the omit list (FR-3); those
+    dirs are dropped so no ``data/{id}.json`` is written for them. ``None`` means
+    omit nothing — callers that want the unfiltered eligible set (e.g. to report
+    what was omitted) pass ``omitted=None``.
+    """
+    omit_set = omitted or set()
     dirs: list[Path] = []
     for d in sorted(analyses_dir.iterdir()):
         if not d.is_dir():
@@ -848,6 +857,8 @@ def discover_concepts(
             continue
         concept_id = parse_concept_id(d.name)
         if concept_filter is not None and concept_id not in concept_filter:
+            continue
+        if concept_id in omit_set:
             continue
         dirs.append(d)
     return dirs
@@ -884,7 +895,11 @@ def run_extraction(
 
     data_dir.mkdir(parents=True, exist_ok=True)
 
-    concept_dirs = discover_concepts(analyses_dir, concept_filter)
+    # Omit list (FR-3): load once and enforce here, independently of the server
+    # (FR-6). Omitted dirs are dropped from extraction so no data/{id}.json is
+    # written or refreshed for them.
+    omitted = load_omit_list()
+    concept_dirs = discover_concepts(analyses_dir, concept_filter, omitted)
     if not concept_dirs:
         print("WARNING: no concept directories found", file=sys.stderr)
         return 0
@@ -892,6 +907,16 @@ def run_extraction(
     extracted: list[ConceptData] = []
     skipped: list[tuple[str, str]] = []  # (concept_id, reason)
     failed: list[tuple[str, str]] = []  # (concept_id, short_error)
+
+    # Report omitted concepts that actually have an eligible analysis dir present.
+    # Re-discover with omitted=None to get the unfiltered eligible set (respecting
+    # any --concept filter), then surface the ones the omit list withheld so the
+    # run report shows what was excluded rather than silently dropping it.
+    if omitted:
+        for d in discover_concepts(analyses_dir, concept_filter, omitted=None):
+            cid = parse_concept_id(d.name)
+            if cid in omitted:
+                skipped.append((cid, "omit_list"))
 
     for concept_dir in concept_dirs:
         concept_id = parse_concept_id(concept_dir.name)

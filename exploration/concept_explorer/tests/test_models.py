@@ -7,6 +7,7 @@ not to test 1costingfe business logic.
 
 import json
 import warnings
+from pathlib import Path
 from typing import Any
 
 import pytest
@@ -27,6 +28,7 @@ from exploration.concept_explorer.models import (
     SensitivityAnalysis,
     SensitivityEntry,
     SourcePaths,
+    load_omit_list,
 )
 
 # ---------------------------------------------------------------------------
@@ -461,3 +463,51 @@ def test_concept_manifest_multiple_entries() -> None:
     assert len(parsed["concepts"]) == 3
     for entry in parsed["concepts"]:
         assert entry["data_file"].startswith("data/")
+
+
+# ---------------------------------------------------------------------------
+# load_omit_list (omit list shared loader)
+# ---------------------------------------------------------------------------
+
+
+class TestLoadOmitList:
+    """The shared omit-list reader (FR-1, FR-8, invariant I-1)."""
+
+    def test_unquoted_numeric_key_matches_string_id(self, tmp_path: Path) -> None:
+        """I-1: a bare numeric YAML key (parsed as int) coerces to the string ID
+        that parse_concept_id produces — the single most likely correctness bug."""
+        (tmp_path / "omit_list.yaml").write_text("26: bad data\n34: dup\n")
+        assert load_omit_list(tmp_path / "omit_list.yaml") == {"26", "34"}
+
+    def test_quoted_keys_load_as_strings(self, tmp_path: Path) -> None:
+        """Quoted keys (the authored convention) load as the same string set."""
+        (tmp_path / "omit_list.yaml").write_text('"26": a\n"27": b\n"34": c\n"38": d\n')
+        assert load_omit_list(tmp_path / "omit_list.yaml") == {"26", "27", "34", "38"}
+
+    def test_suffixed_id_supported(self, tmp_path: Path) -> None:
+        """Suffixed IDs like 17a match parse_concept_id output verbatim."""
+        (tmp_path / "omit_list.yaml").write_text('"17a": reason\n')
+        assert load_omit_list(tmp_path / "omit_list.yaml") == {"17a"}
+
+    def test_reasons_are_discarded(self, tmp_path: Path) -> None:
+        """Only IDs matter to callers; reasons are human documentation."""
+        (tmp_path / "omit_list.yaml").write_text('"26": "a long reason string"\n')
+        assert load_omit_list(tmp_path / "omit_list.yaml") == {"26"}
+
+    def test_missing_file_is_empty_set(self, tmp_path: Path) -> None:
+        """FR-8: an absent omit file means omit nothing."""
+        assert load_omit_list(tmp_path / "nope.yaml") == set()
+
+    def test_empty_file_is_empty_set(self, tmp_path: Path) -> None:
+        """FR-8: an empty omit file means omit nothing."""
+        (tmp_path / "omit_list.yaml").write_text("")
+        assert load_omit_list(tmp_path / "omit_list.yaml") == set()
+
+    def test_comments_only_file_is_empty_set(self, tmp_path: Path) -> None:
+        """A file with only comments parses to None → empty set."""
+        (tmp_path / "omit_list.yaml").write_text("# just a comment\n")
+        assert load_omit_list(tmp_path / "omit_list.yaml") == set()
+
+    def test_default_path_returns_initial_set(self) -> None:
+        """FR-9: the shipped omit_list.yaml carries the initial set 26/27/34/38."""
+        assert load_omit_list() == {"26", "27", "34", "38"}
