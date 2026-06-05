@@ -107,16 +107,11 @@ Nano-Sun 1 MHz Reactor Scenario — arXiv:2503.15531
   CAS80 Total:                             $ 55.9875M/yr
 
 --- LCOE ---
+LCOE: (NOT ENOUGH DATA FOR THIS CONCEPT)
+Native LCOE = (NOT ENOUGH DATA FOR THIS CONCEPT)
+Generic LCOE = (NOT ENOUGH DATA FOR THIS CONCEPT)
   Annual energy production:          1,852.7 MWh/yr
   Annual revenue requirement:   $  69.390M/yr
-  +==================================================+
-  |  LCOE: 37452.5 $/MWh   (freeform, native-scale only)
-  |       = 3745.2 c/kWh
-  |
-  |  At 0.282 MWe native power (0.3 MWe design)
-  |  NOT directly comparable to 1 GWe costingfe projections.
-  |  LCOE dominated by fixed costs at sub-MW scale.
-  +==================================================+
   Capital (CAS90):             14.1%
   O&M    (CAS70):              5.2%
   Fuel   (CAS80):              80.69%
@@ -134,60 +129,60 @@ SENSITIVITY ANALYSIS
   Fusion Power (paper claims 1 MW; Cambridge demonstrated ~0 MW):
          Value       P_net   recirc              LCOE
   ____________  __________  _______  ________________
-        0.1000      12.0 kW   60.0%    >99,999 $/MWh
-        0.5000     132.0 kW   12.0%      79,819 $/MWh
-          1.00     282.0 kW    6.0%      37,452 $/MWh
-          5.00      1.48 MW    1.2%       7,209 $/MWh
-         10.00      2.98 MW    0.6%       3,618 $/MWh
-         50.00     14.98 MW    0.1%         759 $/MWh
-        100.00     29.98 MW    0.1%         398 $/MWh
+        0.1000      12.0 kW   60.0%    (NOT ENOUGH DATA)
+        0.5000     132.0 kW   12.0%    (NOT ENOUGH DATA)
+          1.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+          5.00      1.48 MW    1.2%    (NOT ENOUGH DATA)
+         10.00      2.98 MW    0.6%    (NOT ENOUGH DATA)
+         50.00     14.98 MW    0.1%    (NOT ENOUGH DATA)
+        100.00     29.98 MW    0.1%    (NOT ENOUGH DATA)
 
   Conversion Efficiency kappa (paper assumes 30%, no mechanism):
          Value       P_net   recirc              LCOE
   ____________  __________  _______  ________________
-        0.1000      82.0 kW   18.0%    >99,999 $/MWh
-        0.2000     182.0 kW    9.0%      57,966 $/MWh
-        0.3000     282.0 kW    6.0%      37,452 $/MWh
-        0.4000     382.0 kW    4.5%      27,675 $/MWh
-        0.5000     482.0 kW    3.6%      21,952 $/MWh
+        0.1000      82.0 kW   18.0%    (NOT ENOUGH DATA)
+        0.2000     182.0 kW    9.0%    (NOT ENOUGH DATA)
+        0.3000     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        0.4000     382.0 kW    4.5%    (NOT ENOUGH DATA)
+        0.5000     482.0 kW    3.6%    (NOT ENOUGH DATA)
 
   Nanoshell Factory Capital [M$] (no manufacturing design exists):
          Value       P_net   recirc              LCOE
   ____________  __________  _______  ________________
-          5.00     282.0 kW    6.0%      36,117 $/MWh
-         10.00     282.0 kW    6.0%      36,562 $/MWh
-         20.00     282.0 kW    6.0%      37,452 $/MWh
-         50.00     282.0 kW    6.0%      40,124 $/MWh
-        100.00     282.0 kW    6.0%      44,576 $/MWh
-        500.00     282.0 kW    6.0%      80,194 $/MWh
+          5.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+         10.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+         20.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+         50.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        100.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        500.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
 
   Nanoshell Survival Fraction (unknown: destroyed or reusable?):
          Value       P_net   recirc              LCOE
   ____________  __________  _______  ________________
-        0.0000     282.0 kW    6.0%      37,452 $/MWh
-        0.5000     282.0 kW    6.0%      22,343 $/MWh
-        0.9000     282.0 kW    6.0%      10,256 $/MWh
-        0.9500     282.0 kW    6.0%       8,745 $/MWh
-        0.9900     282.0 kW    6.0%       7,536 $/MWh
-          1.00     282.0 kW    6.0%       7,234 $/MWh
+        0.0000     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        0.5000     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        0.9000     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        0.9500     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        0.9900     282.0 kW    6.0%    (NOT ENOUGH DATA)
+          1.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
 
   Gold Price [$/kg] (affects CAS80 if nanoshells consumed):
          Value       P_net   recirc              LCOE
   ____________  __________  _______  ________________
-      20000.00     282.0 kW    6.0%      17,307 $/MWh
-      40000.00     282.0 kW    6.0%      27,380 $/MWh
-      60000.00     282.0 kW    6.0%      37,452 $/MWh
-      80000.00     282.0 kW    6.0%      47,525 $/MWh
-     100000.00     282.0 kW    6.0%      57,598 $/MWh
+      20000.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+      40000.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+      60000.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+      80000.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+     100000.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
 
   Plant Availability [fraction]:
          Value       P_net   recirc              LCOE
   ____________  __________  _______  ________________
-        0.5000     282.0 kW    6.0%      41,069 $/MWh
-        0.6500     282.0 kW    6.0%      38,565 $/MWh
-        0.7500     282.0 kW    6.0%      37,452 $/MWh
-        0.8500     282.0 kW    6.0%      36,601 $/MWh
-        0.9000     282.0 kW    6.0%      36,247 $/MWh
+        0.5000     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        0.6500     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        0.7500     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        0.8500     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        0.9000     282.0 kW    6.0%    (NOT ENOUGH DATA)
 
 
 ============================================================================
@@ -196,9 +191,9 @@ SCENARIO COMPARISON
 
   Scenario                      P_net             LCOE          $/kWe
   ________________________ __________ ________________ ______________
-  Conservative                 82.0kW    >99,999 $/MWh    $ 2,825,717
-  Moderate (Baseline)         282.0kW        37,452 $/MWh    $   414,547
-  Optimistic                    2.0MW         1,288 $/MWh    $    55,699
+  Conservative                 82.0kW    (NOT ENOUGH DATA)    $ 2,825,717
+  Moderate (Baseline)         282.0kW    (NOT ENOUGH DATA)    $   414,547
+  Optimistic                    2.0MW    (NOT ENOUGH DATA)    $    55,699
 
 
 ============================================================================

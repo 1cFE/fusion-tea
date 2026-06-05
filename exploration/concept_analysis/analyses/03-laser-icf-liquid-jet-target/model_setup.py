@@ -1026,25 +1026,21 @@ def print_results(p: CortexFusionPlantParams, r: dict) -> None:
     print(f"  CAS80 Total:                             ${econ['CAS80']:>8.4f}M/yr")
 
     # --- LCOE ---
+    # Stomped to NOT ENOUGH DATA per concepts 6 and 19 convention: the underlying
+    # physics mechanism (plasmonic D-D fusion in nanoshells) is unvalidated and no
+    # fusion events have been demonstrated by any group, so no LCOE value is
+    # grounded enough to publish. CAS account values above are retained for
+    # corridor purposes only.
     print(f"\n--- LCOE ---")
+    print("LCOE: (NOT ENOUGH DATA FOR THIS CONCEPT)")
+    print("Native LCOE = (NOT ENOUGH DATA FOR THIS CONCEPT)")
+    print("Generic LCOE = (NOT ENOUGH DATA FOR THIS CONCEPT)")
     if pw["p_net"] > 0:
         print(f"  Annual energy production:     {econ['annual_energy_MWh']:>12,.1f} MWh/yr")
         print(f"  Annual revenue requirement:   ${econ['annual_revenue_req']:>8.3f}M/yr")
-        lcoe = econ['lcoe_USD_per_MWh']
-        print(f"  +==================================================+")
-        print(f"  |  LCOE: {lcoe:.1f} $/MWh   (freeform, native-scale only)")
-        print(f"  |       = {econ['lcoe_cents_per_kWh']:.1f} c/kWh")
-        print(f"  |")
-        print(f"  |  At {pw['p_net']:.3f} MWe native power (0.3 MWe design)")
-        print(f"  |  NOT directly comparable to 1 GWe costingfe projections.")
-        print(f"  |  LCOE dominated by fixed costs at sub-MW scale.")
-        print(f"  +==================================================+")
         print(f"  Capital (CAS90):             {econ.get('capital_fraction', 0):.1%}")
         print(f"  O&M    (CAS70):              {econ.get('om_fraction', 0):.1%}")
         print(f"  Fuel   (CAS80):              {econ.get('fuel_fraction', 0):.2%}")
-    else:
-        print(f"  LCOE: UNDEFINED — net electric is negative.")
-        print(f"  Plant is an energy sink. LCOE is infinite.")
 
     print()
     print("=" * 76)
@@ -1083,17 +1079,12 @@ def _print_sweep(sweep_results: list[dict], label: str,
         eps = row["recirc_fraction"]
         lcoe = row["lcoe_USD_MWh"]
 
+        # LCOE stomped to NOT ENOUGH DATA across the sweep — see headline LCOE
+        # block above for rationale (physics mechanism unvalidated).
+        lcoe_str = "  (NOT ENOUGH DATA)"
         if pn <= 0:
-            lcoe_str = "      SINK"
             eps_str = "  >100%"
-        elif lcoe == float('inf'):
-            lcoe_str = "       inf"
-            eps_str = f"{eps:>6.1%}"
-        elif lcoe > 99999:
-            lcoe_str = f"  >{99999:,.0f} $/MWh"
-            eps_str = f"{eps:>6.1%}"
         else:
-            lcoe_str = f"  {lcoe:>8,.0f} $/MWh"
             eps_str = f"{eps:>6.1%}"
 
         # Format value smartly
@@ -1221,17 +1212,13 @@ def main():
         lcoe = econ["lcoe_USD_per_MWh"]
         cap = c["specific_capital_USD_per_kWe"]
 
+        # LCOE stomped to NOT ENOUGH DATA per concepts 6 and 19 convention.
+        lcoe_str = "  (NOT ENOUGH DATA)"
         if p_net <= 0:
             p_str = "    (sink)"
-            lcoe_str = "           SINK"
             cap_str = "      (sink)"
-        elif lcoe > 99999:
-            p_str = f"{p_net*1000:>8.1f}kW"
-            lcoe_str = f"  >{99999:>6,} $/MWh"
-            cap_str = f"  ${cap:>10,.0f}"
         else:
             p_str = f"{p_net*1000:>8.1f}kW" if p_net < 1.0 else f"{p_net:>8.1f}MW"
-            lcoe_str = f"  {lcoe:>10,.0f} $/MWh"
             cap_str = f"  ${cap:>10,.0f}"
 
         print(f"  {name:<24} {p_str}  {lcoe_str}  {cap_str}")
