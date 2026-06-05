@@ -1080,8 +1080,13 @@ class TestNarrativeExtractionFailure:
             with pytest.raises(ExtractionError, match="claude -p exited 1"):
                 extract_narrative(concept_dir, "07")
 
-    def test_run_extraction_propagates_extraction_error(self, tmp_path: Path) -> None:
-        """run_extraction propagates ExtractionError from extract_narrative."""
+    def test_run_extraction_collects_narrative_failure(self, tmp_path: Path) -> None:
+        """Keep-going: a narrative failure is recorded, not propagated.
+
+        Previously run_extraction re-raised the ExtractionError from
+        extract_narrative and aborted the whole batch. Now it catches the
+        failure, counts it, and returns the failure count without raising.
+        """
         analyses_dir = tmp_path / "analyses"
         analyses_dir.mkdir()
         data_dir = tmp_path / "data"
@@ -1096,12 +1101,110 @@ class TestNarrativeExtractionFailure:
             "exploration.concept_explorer.extract_explorer_data.subprocess.run",
             return_value=mock_proc,
         ):
-            with pytest.raises(ExtractionError):
-                run_extraction(
-                    analyses_dir=analyses_dir,
-                    data_dir=data_dir,
-                    skip_narrative=False,
-                )
+            failures = run_extraction(
+                analyses_dir=analyses_dir,
+                data_dir=data_dir,
+                skip_narrative=False,
+            )
+
+        assert failures == 1
+        # Failed concept wrote no JSON — it failed before the write step.
+        assert not (data_dir / "04.json").exists()
+
+
+# ---------------------------------------------------------------------------
+# Batch resilience: one concept's failure must not abort the run (FR-1..FR-5)
+# ---------------------------------------------------------------------------
+
+
+def _write_concept(
+    analyses_dir: Path,
+    concept_id: str,
+    *,
+    analysis: str | None = None,
+    model_setup: str | None = None,
+) -> None:
+    """Create a concept dir with optional analysis.md / model_setup.py bodies."""
+    d = analyses_dir / f"{concept_id}-test"
+    d.mkdir(parents=True, exist_ok=True)
+    if analysis is not None:
+        (d / "analysis.md").write_text(analysis, encoding="utf-8")
+    if model_setup is not None:
+        (d / "model_setup.py").write_text(model_setup, encoding="utf-8")
+
+
+# A model_setup.py that routes to costingfe (source contains the detection
+# substrings) but raises on import. The substrings live in a comment so the
+# failure is a guaranteed RuntimeError, independent of whether costingfe is
+# importable — it stands in for "any per-concept failure, deep origin, non-
+# ExtractionError type."
+_RAISING_COSTINGFE = (
+    "# from costingfe import CostModel\n"
+    "raise RuntimeError('boom on import')\n"
+)
+
+
+class TestBatchResilience:
+    def test_failure_does_not_abort_batch(self, tmp_path: Path) -> None:
+        """A failing concept is skipped; a later healthy concept still extracts."""
+        analyses_dir = tmp_path / "analyses"
+        data_dir = tmp_path / "data"
+        # 01 fails on import; 04 is a bare standalone (analysis only) that extracts.
+        _write_concept(
+            analyses_dir, "01", analysis="---\nID: 01\n---\n", model_setup=_RAISING_COSTINGFE
+        )
+        _write_concept(analyses_dir, "04", analysis="---\nID: 04\nConcept: Ok\n---\n")
+
+        failures = run_extraction(
+            analyses_dir=analyses_dir, data_dir=data_dir, skip_narrative=True
+        )
+
+        assert failures == 1
+        # Later concept reached despite the earlier failure.
+        assert (data_dir / "04.json").exists()
+        assert not (data_dir / "01.json").exists()
+
+    def test_failure_is_error_agnostic(self, tmp_path: Path, capsys: Any) -> None:
+        """A non-ExtractionError (RuntimeError on import) is caught and reported."""
+        analyses_dir = tmp_path / "analyses"
+        data_dir = tmp_path / "data"
+        _write_concept(
+            analyses_dir, "01", analysis="---\nID: 01\n---\n", model_setup=_RAISING_COSTINGFE
+        )
+
+        failures = run_extraction(
+            analyses_dir=analyses_dir, data_dir=data_dir, skip_narrative=True
+        )
+
+        assert failures == 1
+        out = capsys.readouterr().out
+        assert "EXTRACTION FAILED" in out
+        assert "01" in out
+        # Type-agnostic catch, but the type is still shown to a human.
+        assert "RuntimeError" in out
+
+    def test_skip_and_failure_are_distinct(self, tmp_path: Path, capsys: Any) -> None:
+        """pending-design-point lands under skipped; a crash lands under failed."""
+        analyses_dir = tmp_path / "analyses"
+        data_dir = tmp_path / "data"
+        _write_concept(
+            analyses_dir,
+            "01",
+            analysis="---\nID: 01\nComparison-Status: pending-design-point\n---\n",
+        )
+        _write_concept(
+            analyses_dir, "04", analysis="---\nID: 04\n---\n", model_setup=_RAISING_COSTINGFE
+        )
+
+        failures = run_extraction(
+            analyses_dir=analyses_dir, data_dir=data_dir, skip_narrative=True
+        )
+
+        assert failures == 1  # only 04 counts as a failure
+        out = capsys.readouterr().out
+        assert "Skipped 1 concept(s)" in out
+        assert "pending-design-point" in out
+        assert "EXTRACTION FAILED — 1 concept(s)" in out
 
 
 # ---------------------------------------------------------------------------
