@@ -1,0 +1,29 @@
+[
+  {
+    "timestamp": "2026-06-05T17:02:38.345811+00:00",
+    "step": "cold-start",
+    "attempt": 1,
+    "validator": "validate_non_empty",
+    "passed": true,
+    "details": "Non-empty (38597 chars)",
+    "validated_text_preview": "## Design Point\n\n- Name: Helios preconceptual design (Swanson et al. 2025, arXiv:2512.08027)\n- Maturity: paper-concept\n- P_native: 390 MWe\n- Grounding: high\n- Primary sources:\n  - knowledge/concept_research/05-planar-coil-stellarator/iter-01/sources/thea-energy-helios-arxiv-2512-08027.md\n  - knowledge/concept_research/05-planar-coil-stellarator/iter-02/sources/thea-energy-doe-certification-jan2026.md\n  - knowledge/concept_research/05-planar-coil-stellarator/iter-01/sources/thea-energy-website-an"
+  },
+  {
+    "timestamp": "2026-06-05T17:07:12.086317+00:00",
+    "step": "model-setup",
+    "attempt": 1,
+    "validator": "validate_python_syntax+validate_model_setup_contract_strict+validate_override_registry",
+    "passed": true,
+    "details": "All validators passed",
+    "validated_text_preview": "\"\"\"1costingfe model: Planar-Coil Stellarator (Thea Energy).\n\nUsage:\n    uv run python model_setup.py              # print results\n    uv run python model_setup.py | tee model_output.txt\n\"\"\"\nimport sys\nfrom pathlib import Path\n\n# Make the shared three-forward helper importable regardless of where this file\n# lives (concept dir or iter-N/ dir): walk up to the scripts/ root.\n_SCRIPTS = next(\n    p / \"scripts\"\n    for p in Path(__file__).resolve().parents\n    if (p / \"scripts\" / \"lib\" / \"model_setup"
+  },
+  {
+    "timestamp": "2026-06-05T17:17:28.638667+00:00",
+    "step": "assess",
+    "attempt": 1,
+    "validator": "validate_feedback_verdict",
+    "passed": true,
+    "details": "Feedback format valid (verdict: PASS)",
+    "validated_text_preview": "VERDICT: PASS\n\nThe analysis and model for the Planar-Coil Stellarator (Thea Energy / Helios)\nsatisfy the D1+ pipeline contract across all five checklist areas.\n\n**Design-Point Coherence**: P_native = 390 MWe is consistent across the\nfrontmatter, Design Point block, Section 5 parameter table, and\n`model_setup.py`. No roadmap aspirations or alternate power levels are smuggled\ninto the native parameter table. All quantitative parameters describe the single\nHelios preconceptual design at its native "
+  }
+]

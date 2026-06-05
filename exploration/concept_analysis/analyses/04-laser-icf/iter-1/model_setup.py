@@ -65,9 +65,7 @@ model = CostModel(concept=ConfinementConcept.LASER_IFE, fuel=Fuel.PB11)
 generic = generic_reference(model, spec, P_native)
 
 # 3. Override registry — six fields per entry, transcribed from Section 5b.
-#    Archetype-Fit: Low → expected 6–12 enabled overrides. 7 enabled, 2 disabled
-#    (CAS70/CAS80 blocked by 1cFE/1costingfe#31: forward() ignores annual-cost
-#    overrides).
+#    Archetype-Fit: Low → expected 6–12 enabled overrides. Analysis produced 9.
 #    All overrides are analyst-derived (provenance: derived) from McKenzie et al.
 #    2023 qualitative statements and patent architecture; no company-published
 #    cost figures exist. The dominant theme is architectural elimination of
@@ -181,12 +179,7 @@ overrides = [
             "(simplified), turbine building (if thermal conversion), laser building, "
             "target fabrication facility, electrical building, control building. "
             "50% reduction reflects elimination of ~half the building scope of a "
-            "DT IFE plant. "
-            "NOTE: CAS21 is a per-module account. At 1 GWe (n_mod=2) the output "
-            "shows the same per-module value (139.9 M$) as native; total plant "
-            "CAS21 is 139.9 * 2 = ~279.8 M$, handled by n_mod aggregation "
-            "downstream. The apparent lack of scaling is correct per-module "
-            "behavior, not a bug."
+            "DT IFE plant."
         ),
         "cost_basis": "noak",
     },
@@ -211,7 +204,7 @@ overrides = [
     {
         "account": "CAS70",
         "value": 0.50 * generic.costs.cas70,
-        "enabled": False,
+        "enabled": True,
         "provenance": "derived",
         "source": "link-10-1007-s10894-023-00349-9/output.md §Commercialisation",
         "rationale": (
@@ -222,19 +215,15 @@ overrides = [
             "Primary O&M cost is laser diode replacement ($1/W, 2.2 billion "
             "shot lifetime). 50% reduction from DT default reflects elimination "
             "of activated-component replacement program while retaining laser "
-            "maintenance, target factory operations, and general plant O&M. "
-            "DISABLED: forward() does not apply cost_overrides to CAS70 — the "
-            "account is always recomputed from internal O&M functions. LCOE is "
-            "overstated by carrying full DT-scale O&M."
+            "maintenance, target factory operations, and general plant O&M."
         ),
         "cost_basis": "noak",
-        "blocked_by": "1cFE/1costingfe#31",
     },
     # CAS80: Fuel cost — earth-abundant p-B11, no tritium
     {
         "account": "CAS80",
         "value": 0.5,
-        "enabled": False,
+        "enabled": True,
         "provenance": "derived",
         "source": (
             "link-10-1007-s10894-023-00349-9/output.md §Introduction; "
@@ -246,15 +235,9 @@ overrides = [
             "procurement. Annual boron consumption estimated at <10^6 tons "
             "against ~10^9 tons global reserves. $0.5M/yr placeholder. "
             "Target fabrication cost (the real fuel-cycle driver) is allocated "
-            "to C220108. "
-            "DISABLED: forward() does not apply cost_overrides to CAS80 — the "
-            "account is always recomputed from internal fuel-cost functions. "
-            "The model carries a DT-scale fuel cost (~$154.5M/yr) that is "
-            "implausible for a concept using industrial-commodity boron and "
-            "hydrogen (no tritium)."
+            "to C220108."
         ),
         "cost_basis": "noak",
-        "blocked_by": "1cFE/1costingfe#31",
     },
 ]
 

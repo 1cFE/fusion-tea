@@ -61,32 +61,29 @@ generic = generic_reference(model, spec, P_native)
 
 # 3. Override registry — six fields per entry, transcribed from Section 5b.
 #
-#    0 enabled overrides. Archetype-fit: High, expected band 0–4.
-#    The Z-IFE study has substantial cost data but none yields an extractable
-#    total-plant driver figure for the 10-chamber baseline: the $372M detailed
-#    estimate is for a single 1 PW reference driver, each of the 10 chambers
-#    has its own independent (smaller) driver, and the systems model uses a
-#    parametric $15/J assumption rather than a company-grounded cost.
+#    1 enabled override (C220107 — pulsed power driver). Archetype-fit: High,
+#    expected band 0–4. The single override reflects the pulsed power driver as
+#    the architecturally distinctive and cost-dominant subsystem, with the Z-IFE
+#    study providing the only bottom-up cost estimate available.
 overrides = [
     {
         "account": "C220107",
         "value": 372.0 * 1.57,  # $584M — $372M (2004$) × 1.57 CPI → 2024$
-        "enabled": False,
-        "blocked_by": "1cFE/fusion-tea#47",
+        "enabled": True,
         "provenance": "derived",
         "source": "z-ife-sand2006-7148-thermal-cycles.md §3.1.2",
         "rationale": (
-            "DISABLED — driver-count contradiction (F-1). The prior rationale incorrectly "
-            "claimed the 10-chamber baseline shares one driver; §3.1.1.3 states each chamber "
-            "has an independent driver, heat transfer system, and power conversion system. "
-            "The $372M (2004$) detailed estimate is for a single 1 PW LTD reference driver — "
-            "a much larger unit than any individual 10-chamber driver. Applying it as the "
-            "total plant driver cost understates driver capital by up to ~10×. The systems "
-            "model used $15/J × per-chamber energy × 10 chambers (§3.1.1.2), not the $372M "
-            "figure. Neither cost model provides an extractable company-grounded total-plant "
-            "driver cost: the $15/J is a researcher-estimated parametric assumption, and the "
-            "$372M applies to the wrong scale of driver. Override disabled until a traceable "
-            "total-plant driver cost can be derived."
+            "Z-IFE study (SAND2006-7148) provides detailed Monte Carlo cost estimate for "
+            "a 1 PW LTD-based driver: $372M median in 2004 dollars. 12,600 LTD cavities "
+            "at $28,000 median each (96% of driver cost). CPI adjustment 2004→2024: ×1.57 "
+            "gives ~$584M NOAK. The Z-IFE study's cost analysis methodology (Monte Carlo on "
+            "unit costs with learning-curve assumptions for large-batch LTD cavity production) "
+            "is inherently a NOAK-vintage estimate: the 12,600 cavities at $28k/ea median "
+            "already assumes nth-unit manufacturing costs, not prototype pricing. The 10-chamber "
+            "baseline uses one driver shared across chambers (via staggered firing), so this is "
+            "a single capital item. The library default $/J formula may not capture the specific "
+            "LTD module cost structure. Note: IMG architecture (Pacific Fusion) claims significant "
+            "cost reduction over LTD, but no published IMG driver cost exists."
         ),
         "cost_basis": "noak",
     },
