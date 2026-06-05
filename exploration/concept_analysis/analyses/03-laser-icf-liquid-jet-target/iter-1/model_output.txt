@@ -1,0 +1,247 @@
+
+============================================================================
+BASELINE SCENARIO
+============================================================================
+============================================================================
+Laser ICF Liquid-Jet Target (Cortex Fusion) LCOE Model
+Nano-Sun 1 MHz Reactor Scenario — arXiv:2503.15531
+1cFE CAS-Structured Free-Form Model — FOR CORRIDOR PURPOSES ONLY
+============================================================================
+
+  +====================================================================+
+  | CRITICAL: THIS IS NOT A CREDIBLE COST ESTIMATE                      |
+  |                                                                      |
+  | The core physics mechanism (plasmonic D-D fusion in nanoshells)      |
+  | is UNVALIDATED. Zero fusion events demonstrated by any group.       |
+  | No energy conversion system, reactor chamber, or blanket design.    |
+  | All cost parameters are ASSUMED — zero cost data from any source.   |
+  |                                                                      |
+  | DEMONSTRATED vs. CLAIMED neutron yield gap: 14 ORDERS OF MAGNITUDE  |
+  | Cambridge kHz experiment: ~10^5 n/s  vs  Paper claim: ~10^19 n/s    |
+  +====================================================================+
+
+
+--- Key Physics Parameters ---
+  Laser average power:          3.0 kW (3.0 kW optical)
+  Laser wall-plug power:        10.0 kW (0.0100 MW)
+  Laser wall-plug efficiency:   30%
+  Repetition rate:              1 MHz
+  Nanoshells per pulse:         1e+06
+  Fusion power (P_fus):         1.00 MW  [PHYSICS UNVALIDATED]
+  Scientific Q (P_fus/P_laser): 333
+  Paper Q (P_fus*kappa/P_laser):100
+  Conversion efficiency (kappa):30%  [NO MECHANISM SPECIFIED]
+  Plant availability:           75%
+  Modules:                      1
+
+--- Power Balance ---
+  Fusion power (P_fus):            1.000 MW  [THEORETICAL]
+    Neutron power (~50%):          0.500 MW (2.45 MeV D-D)
+    Charged power (~50%):          0.500 MW (p, T, He-3)
+  Thermal power (P_th):            1.000 MW  (x M=1.0)
+  Gross electric (P_et):           0.300 MWe (x kappa=30%)
+  Recirculating power:
+    Laser (wall-plug):            0.0100 MW
+    Auxiliaries:                  0.0080 MW
+    Total recirculating:          0.0180 MW
+  Net electric (P_net):            0.282 MWe
+  Engineering Q (Q_eng):            55.6
+  Recirculating fraction:           6.0%
+
+--- CAS22: Reactor Plant Equipment ---
+    C220101 Active Region / Blanket        $   0.002M  
+    C220102 Shield (D-D neutrons)          $   0.013M  
+    C220103 Coils                          $   0.000M  [ZERO — no magnetic confinement]
+    C220104 Supplementary Heating          $   0.000M  [ZERO — laser is driver]
+    C220105 Primary Structure              $   0.005M  
+    C220106 Chamber Vessel                 $   0.002M  
+    C220107 Laser System                   $   1.000M  [OVERRIDE — negligible cost]
+    C220108 Nanoshell Factory              $  20.000M  [OVERRIDE — no design exists]
+    C220109 DEC                            $   0.000M  [ZERO — not applicable]
+    C220110 Remote Handling                $   0.742M  
+    C220111 Installation Labor             $   3.047M  
+    C220112 Isotope Separation             $   0.500M  
+    __________________________________________________________________
+    Per-module subtotal:                   $  25.310M
+  Plant-wide accounts:
+    C220200 Coolant Systems                      $   0.503M
+    C220300 Aux Cooling                          $   0.001M
+    C220500 Fuel Handling (D2O + colloid)        $   0.196M
+    C220600 Other Equipment                      $   0.017M
+    C220700 I&C                                  $   0.422M
+    __________________________________________________________________
+    Plant-wide subtotal:                   $   1.140M
+  CAS22 Total:                             $  26.450M
+
+--- Capital Costs (CAS10-60) ---
+  CAS10 Pre-construction:                  $   12.50M
+  CAS21 Buildings (x1.2x reg.):          $   49.20M
+  CAS22 Reactor Plant Equipment:           $  26.450M
+  CAS23 Turbine Plant:                     $    2.00M
+  CAS24 Electric Plant:                    $    0.50M
+  CAS25 Misc Plant:                        $    0.30M
+  CAS26 Heat Rejection:                    $    0.20M
+  CAS27 Special Materials (D2O + Au):      $    0.10M
+  CAS28 Digital Twin:                      $    2.00M
+  CAS29 Contingency:                       $    0.00M
+  ________________________________________________________________
+  CAS20 Direct Costs:                      $   80.75M
+  CAS30 Indirect Costs:                    $    8.08M
+  CAS40 Owner's Costs:                     $    1.00M
+  CAS50 Supplementary:                     $    5.70M
+  ________________________________________________________________
+  Overnight Capital:                       $  108.03M
+  CAS60 IDC (f=0.082):               $    8.87M
+  ================================================================
+  Total Capital:                           $  116.90M
+  Specific Capital:                  $   414,547 $/kWe
+
+--- Annual Costs (CAS70-90) ---
+  CAS90 Capital charge (CRF=0.0839):   $   9.803M/yr
+  CAS71 O&M (levelized, 2.5%/yr):      $   3.599M/yr
+  CAS72 Active region replacements (2):    $  0.0001M/yr
+  CAS70 Total O&M:                         $   3.599M/yr
+  CAS80 Fuel & consumables:
+    Gold nanoshells:                       $ 55.9867M/yr (933.11 kg/yr)
+    D2O (net fusion consumption):           $0.000806M/yr (1.3434 kg/yr)
+  CAS80 Total:                             $ 55.9875M/yr
+
+--- LCOE ---
+  Annual energy production:          1,852.7 MWh/yr
+  Annual revenue requirement:   $  69.390M/yr
+  +==================================================+
+  |  LCOE: 37452.5 $/MWh   (freeform, native-scale only)
+  |       = 3745.2 c/kWh
+  |
+  |  At 0.282 MWe native power (0.3 MWe design)
+  |  NOT directly comparable to 1 GWe costingfe projections.
+  |  LCOE dominated by fixed costs at sub-MW scale.
+  +==================================================+
+  Capital (CAS90):             14.1%
+  O&M    (CAS70):              5.2%
+  Fuel   (CAS80):              80.69%
+
+============================================================================
+
+
+============================================================================
+SENSITIVITY ANALYSIS
+============================================================================
+  NOTE: At ~0.3 MWe native power, LCOE is dominated by fixed costs.
+  Sensitivity sweeps explore which parameters most affect LCOE.
+
+
+  Fusion Power (paper claims 1 MW; Cambridge demonstrated ~0 MW):
+         Value       P_net   recirc              LCOE
+  ____________  __________  _______  ________________
+        0.1000      12.0 kW   60.0%    >99,999 $/MWh
+        0.5000     132.0 kW   12.0%      79,819 $/MWh
+          1.00     282.0 kW    6.0%      37,452 $/MWh
+          5.00      1.48 MW    1.2%       7,209 $/MWh
+         10.00      2.98 MW    0.6%       3,618 $/MWh
+         50.00     14.98 MW    0.1%         759 $/MWh
+        100.00     29.98 MW    0.1%         398 $/MWh
+
+  Conversion Efficiency kappa (paper assumes 30%, no mechanism):
+         Value       P_net   recirc              LCOE
+  ____________  __________  _______  ________________
+        0.1000      82.0 kW   18.0%    >99,999 $/MWh
+        0.2000     182.0 kW    9.0%      57,966 $/MWh
+        0.3000     282.0 kW    6.0%      37,452 $/MWh
+        0.4000     382.0 kW    4.5%      27,675 $/MWh
+        0.5000     482.0 kW    3.6%      21,952 $/MWh
+
+  Nanoshell Factory Capital [M$] (no manufacturing design exists):
+         Value       P_net   recirc              LCOE
+  ____________  __________  _______  ________________
+          5.00     282.0 kW    6.0%      36,117 $/MWh
+         10.00     282.0 kW    6.0%      36,562 $/MWh
+         20.00     282.0 kW    6.0%      37,452 $/MWh
+         50.00     282.0 kW    6.0%      40,124 $/MWh
+        100.00     282.0 kW    6.0%      44,576 $/MWh
+        500.00     282.0 kW    6.0%      80,194 $/MWh
+
+  Nanoshell Survival Fraction (unknown: destroyed or reusable?):
+         Value       P_net   recirc              LCOE
+  ____________  __________  _______  ________________
+        0.0000     282.0 kW    6.0%      37,452 $/MWh
+        0.5000     282.0 kW    6.0%      22,343 $/MWh
+        0.9000     282.0 kW    6.0%      10,256 $/MWh
+        0.9500     282.0 kW    6.0%       8,745 $/MWh
+        0.9900     282.0 kW    6.0%       7,536 $/MWh
+          1.00     282.0 kW    6.0%       7,234 $/MWh
+
+  Gold Price [$/kg] (affects CAS80 if nanoshells consumed):
+         Value       P_net   recirc              LCOE
+  ____________  __________  _______  ________________
+      20000.00     282.0 kW    6.0%      17,307 $/MWh
+      40000.00     282.0 kW    6.0%      27,380 $/MWh
+      60000.00     282.0 kW    6.0%      37,452 $/MWh
+      80000.00     282.0 kW    6.0%      47,525 $/MWh
+     100000.00     282.0 kW    6.0%      57,598 $/MWh
+
+  Plant Availability [fraction]:
+         Value       P_net   recirc              LCOE
+  ____________  __________  _______  ________________
+        0.5000     282.0 kW    6.0%      41,069 $/MWh
+        0.6500     282.0 kW    6.0%      38,565 $/MWh
+        0.7500     282.0 kW    6.0%      37,452 $/MWh
+        0.8500     282.0 kW    6.0%      36,601 $/MWh
+        0.9000     282.0 kW    6.0%      36,247 $/MWh
+
+
+============================================================================
+SCENARIO COMPARISON
+============================================================================
+
+  Scenario                      P_net             LCOE          $/kWe
+  ________________________ __________ ________________ ______________
+  Conservative                 82.0kW    >99,999 $/MWh    $ 2,825,717
+  Moderate (Baseline)         282.0kW        37,452 $/MWh    $   414,547
+  Optimistic                    2.0MW         1,288 $/MWh    $    55,699
+
+
+============================================================================
+KEY BINDING CONSTRAINTS (in order of impact)
+============================================================================
+
+  1. PHYSICS VALIDATION GAP (ABSOLUTE BLOCKER)
+
+     The plasmonic nanoshell fusion mechanism has ZERO experimental validation.
+     No fusion neutrons have been reported from this mechanism by any group.
+
+     Demonstrated (Cambridge kHz experiment): ~10^5 neutrons/second
+     Claimed (Nano-Sun paper):                ~10^19 neutrons/second
+     Gap: 14 ORDERS OF MAGNITUDE
+
+     The paper acknowledges that ionization-driven damping of the plasmon
+     oscillation could eliminate the enhancement mechanism entirely. The
+     deuteron mean free path for fusion (~cm) vastly exceeds the nanoshell
+     radius (~100 nm), meaning most accelerated deuterons escape.
+
+     Until the physics is validated, ALL parameters in this model are
+     conditional on the mechanism working at all.
+
+  2. FIXED-COST DOMINANCE AT SUB-MW SCALE
+
+     At 0.3 MWe native power, the cost structure is dominated by fixed costs
+     (buildings, I&C, control room, minimum-viable-facility infrastructure).
+     The concept produces ~2,000 MWh/year — less than a single large wind
+     turbine. No amount of engineering optimization can produce competitive
+     LCOE at this power level because the denominator (energy production)
+     is microscopic while the numerator (facility costs) has a practical floor.
+
+     Scaling to commercial power would require 10,000x more nanoshells per
+     pulse, multiple parallel units, or higher yield per nanoshell — none
+     of which are discussed in the paper.
+
+  3. ENERGY CONVERSION SYSTEM (UNDESIGNED)
+
+     No mechanism exists to convert ~1 MW of mostly 2.45 MeV neutrons
+     emitted isotropically from a liquid colloid into electricity. The
+     paper's 30% conversion assumption has no engineering basis. Designing
+     the blanket, thermal management, and power conversion for a colloidal
+     fusion source is an unsolved engineering problem with no prior art.
+
+============================================================================
+

@@ -1,0 +1,23 @@
+{
+  "iteration": 1,
+  "verdict": "PASS",
+  "finding_count": 0,
+  "feedback_source": "cold_start",
+  "model_ran": false,
+  "model_ok": false,
+  "research_ran": false,
+  "merged_assess": false,
+  "sources": [
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\14-magnetized-target-fusion-pneumatic-compression\\iter-01\\sources\\general-fusion-technical-details.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\14-magnetized-target-fusion-pneumatic-compression\\iter-01\\sources\\general-fusion-technology-overview.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\14-magnetized-target-fusion-pneumatic-compression\\iter-02\\sources\\general-fusion-fst-2025-fuel-cycles.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\14-magnetized-target-fusion-pneumatic-compression\\iter-02\\sources\\general-fusion-iaea-fec-2025-abstract.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\14-magnetized-target-fusion-pneumatic-compression\\iter-02\\sources\\general-fusion-lm26-milestones-2025.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\14-magnetized-target-fusion-pneumatic-compression\\iter-03\\sources\\generalfusion-fusion-demo-plant.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\14-magnetized-target-fusion-pneumatic-compression\\iter-03\\sources\\generalfusion-post-peer-reviewed-publication-confirms.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\14-magnetized-target-fusion-pneumatic-compression\\iter-03\\sources\\metaltechnews-story-2025-05-14-tech-bytes-general-fusion.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\14-magnetized-target-fusion-pneumatic-compression\\iter-04\\sources\\en-wiki-general-fusion.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\14-magnetized-target-fusion-pneumatic-compression\\iter-04\\sources\\globenewswire-news-release-2022-12-12-2571959-0-en-general.md"
+  ],
+  "timestamp": "2026-06-05T02:48:56.600987+00:00"
+}

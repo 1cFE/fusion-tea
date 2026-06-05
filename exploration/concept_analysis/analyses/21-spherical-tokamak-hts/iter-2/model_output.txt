@@ -1,0 +1,63 @@
+LCOE: 168.4 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 198.0 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 198.0 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 14889 $/kW   native 14889 $/kW   1 GWe 12917 $/kW
+
+CAS               generic           native            1 GWe
+--------------------------------------------------------
+CAS10                17.1             17.1             17.8
+CAS21               401.6            401.6            422.0
+CAS22              3754.7           3754.7           7618.4
+CAS23               118.8            118.8            257.9
+CAS24                50.6             50.6            109.9
+CAS25                30.8             30.8             66.9
+CAS26                51.3             51.3            111.4
+CAS27                 6.8              6.8              7.5
+CAS28                 5.0              5.0              5.0
+CAS29                 0.0              0.0              0.0
+CAS30               883.9            883.9           1719.8
+CAS40                26.2             26.2             27.6
+CAS50               273.1            273.1            470.0
+CAS60              1080.2           1080.2           2082.5
+CAS70               160.4            160.4            284.3
+CAS80                 0.4              0.4              0.8
+CAS90               502.6            502.6            968.9
+--------------------------------------------------------
+TOTAL              6700.0           6700.0          12916.7
+
+--- CAS22 sub-account detail (overrides marked) ---
+code            generic       native        1 GWe  flag
+C220000          3754.7       3754.7       7618.4
+C220101           717.0        717.0        753.3
+C220102           409.3        409.3        430.0
+C220103          1170.7       1170.7       1170.7
+C220104           278.5        278.5        278.5
+C220105            44.4         44.4         46.2
+C220106           217.5        217.5        228.5
+C220106_pump          0.4          0.4          0.4
+C220106_vessel        217.1        217.1        228.1
+C220107            56.0         56.0         59.3
+C220108            73.5         73.5         76.6
+C220109             0.0          0.0          0.0
+C220110           116.3        116.3        121.2
+C220111           431.6        431.6        443.0
+C220112             0.0          0.0          0.0
+C220200           100.2        100.2        205.1
+C220300            13.0         13.0         15.0
+C220400             2.9          2.9          6.4
+C220500            68.6         68.6        120.0
+C220600             6.1          6.1         11.5
+C220700            49.1         49.1         81.2
+
+p_input sweep (native 450 MWe; estimated 40–60 MW wallplug auxiliary):
+  p_input=40 MW: LCOE=193.3 $/MWh
+  p_input=45 MW: LCOE=195.6 $/MWh
+  p_input=50 MW: LCOE=198.0 $/MWh  <- spec
+  p_input=55 MW: LCOE=200.3 $/MWh
+  p_input=60 MW: LCOE=202.6 $/MWh
+
+elon sweep (native 450 MWe; typical ST range κ=2.5–3.0):
+  elon=2.5: LCOE=189.2 $/MWh
+  elon=2.6: LCOE=192.1 $/MWh
+  elon=2.8: LCOE=198.0 $/MWh  <- spec
+  elon=3.0: LCOE=203.9 $/MWh
