@@ -1,11 +1,17 @@
 {
   "iteration": 1,
-  "verdict": "INTERRUPTED",
-  "finding_count": 0,
+  "verdict": "FAIL",
+  "finding_count": 3,
   "feedback_source": "cold_start",
-  "model_ran": false,
-  "model_ok": false,
+  "model_ran": true,
+  "model_ok": true,
   "research_ran": false,
-  "sources": [],
-  "timestamp": "2026-04-06T00:54:21.136216+00:00"
+  "merged_assess": false,
+  "sources": [
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\03-laser-icf-liquid-jet-target\\iter-01\\sources\\arxiv-2308-levitt-quantum-control.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\03-laser-icf-liquid-jet-target\\iter-01\\sources\\arxiv-2503-nanoshell-paper.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\03-laser-icf-liquid-jet-target\\iter-01\\sources\\cortex-fusion-website.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\03-laser-icf-liquid-jet-target\\iter-01\\sources\\kHz-liquid-sheet-fusion-paper.md"
+  ],
+  "timestamp": "2026-06-05T00:20:14.616403+00:00"
 }

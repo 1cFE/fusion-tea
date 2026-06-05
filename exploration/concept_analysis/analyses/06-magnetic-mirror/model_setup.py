@@ -1,295 +1,171 @@
-"""Magnetic Mirror (p-B11) — Pale Blue Fusion (CHARM).
-
-Modeling approach:
-    Uses the MFE MIRROR / PB11 model as the closest available framework analog for the
-    CHARM (Centrifugal Hybrid Axisymmetric Rotating Mirror) concept. The framework's
-    p-B11 fuel defaults drive blanket, licensing, tritium, and remote handling costs
-    to their near-aneutronic values. Power balance parameters are heavily adjusted to
-    reflect (a) the dominance of direct energy conversion over the thermal cycle for
-    an aneutronic plasma, and (b) the large recirculating power required to sustain
-    plasma rotation.
-
-Concept choice rationale:
-    ConfinementConcept.MIRROR captures the cylindrical geometry, solenoid coil cost
-    model, and DEC-capable power balance that are structurally correct for CHARM.
-    Fuel.PB11 activates the correct near-aneutronic cost scaling: blanket_unit_cost_pb11
-    (X-ray capture only), no tritium processing, minimal remote handling, near-zero
-    licensing costs.
-
-Key deviations from DT mirror defaults:
-    - Near-aneutronic power balance: mn ≈ 1.0, f_dec high (≈0.85), eta_th low (≈0.20)
-    - Very high recirculating power: rotation sustainment and RF alpha channeling add
-      ~60 MW of auxiliary load (truly unknown — central estimate only)
-    - No tritium processing: p_trit = 0.0
-    - DEC efficiency raised to 0.70 (speculative based on PRX Energy 2025 physics limits)
-    - All key plasma parameters are truly-unknown blocking gaps (see analysis.md §Section 5)
-    - This script is a best-estimate placeholder, not a validated design point
-
-WARNING — DATA QUALITY:
-    Every quantitative plasma/engineering parameter is truly unknown or based on
-    analogous concepts (CMFX, Realta Hammir). The LCOE output is indicative only and
-    should not be cited as a Pale Blue Fusion estimate. See analysis.md §Section 5–6
-    for the full blocking data gap inventory.
+"""1costingfe model: Magnetic Mirror (Pale Blue) (Pale Blue).
 
 Usage:
-    uv run python model_setup.py              # print results to terminal
-    uv run python model_setup.py | tee model_output.txt  # also save for synthesis stage
+    uv run python model_setup.py              # print results
+    uv run python model_setup.py | tee model_output.txt
 """
+import sys
+from pathlib import Path
+
+# Make the shared three-forward helper importable regardless of where this file
+# lives (concept dir or iter-N/ dir): walk up to the scripts/ root.
+_SCRIPTS = next(
+    p / "scripts"
+    for p in Path(__file__).resolve().parents
+    if (p / "scripts" / "lib" / "model_setup_helpers.py").exists()
+)
+sys.path.insert(0, str(_SCRIPTS))
 
 from costingfe import ConfinementConcept, CostModel, Fuel
+from lib.model_setup_helpers import (
+    generic_reference, run_native_and_1gw, print_cas_breakdown,
+)
 
-# ── Model instantiation ────────────────────────────────────────────────────
+# 1. Specification — design-point inputs only, at native scale.
+#    Geometry / physics / power. NO library-default re-passing.
+#
+# NOTE: The analysis Section 5 states "no quantitative reactor parameters
+# (geometry, fields, densities, temperatures, confinement times, fusion power)
+# are disclosed for the CHARM commercial plant." The design point is
+# operator-authored with no public specifications. The spec dict is empty
+# because no design-point inputs are available.
+spec = dict(
+    r_bore=2.75,         # = plasma_t (1.5m library default) + radial build
+                         # (blanket_t 0.6 + ht_shield_t 0.25 + structure_t 0.15
+                         # + vessel_t 0.1 = 1.10m). Axisymmetric solenoidal
+                         # coils for an open-ended mirror; library defaults
+                         # r_bore to 1.85m which under-sizes the coil bore.
+)
+P_native = 150.0         # MWe — Design Point specification
+
+# 2. Model.
 model = CostModel(concept=ConfinementConcept.MIRROR, fuel=Fuel.PB11)
 
-# ── Plant configuration ────────────────────────────────────────────────────
-# Net electric output
-# UNCERTAIN: No published design point. No reactor concept study from Pale Blue.
-# 500 MWe used as reference scale, consistent with DT mirror example.
-# Source: analysis.md §Section 5, "Missing Parameters — Net electric output (plant)"
-_NATIVE_MW = 500.0
+# 2b. Generic forward — overrides OFF, design-point scale (forward 1 of 3). The
+#     library's bare answer for a reactor this size, and the reference a relative
+#     override is written against. ALWAYS emit this line (it is mandatory, even
+#     when no override references it).
+generic = generic_reference(model, spec, P_native)
 
-# ── Shared kwargs (all parameters common to both forward() calls) ──────────
-_SHARED_KWARGS = dict(
-    # ── Financial / lifecycle ─────────────────────────────────────────────
-    availability=0.80,
-    # UNCERTAIN: No published capacity factor or maintenance philosophy.
-    # Open-ended geometry may enable simpler maintenance than toroids (analysis §S5),
-    # but p-B11 plasma conditions have never been sustained — reliability unknown.
-    # Using 0.80 (slightly below DT mirror) to reflect greater operational uncertainty.
-    lifetime_yr=30,             # Standard reference; no concept-specific data
-    n_mod=1,
-    construction_time_yr=5.0,  # DEFAULT: mirror geometry simpler than tokamak; mfe_mirror.yaml
-    interest_rate=0.07,         # DEFAULT: standard reference
-    inflation_rate=0.02,        # DEFAULT: standard reference
-    noak=True,
-
-    # ── Mirror geometry (cylindrical) ─────────────────────────────────────
-    R0=0.0,                 # No axis offset — cylinder; mfe_mirror.yaml default
-    plasma_t=1.5,           # Plasma radius [m]; DEFAULT from mfe_mirror.yaml
-                            # UNCERTAIN: No published machine radius for CHARM.
-                            # CMFX experiment: small bore, ~0.1-0.2 m radius.
-                            # Reactor scale unspecified; 1.5 m is the framework default.
-    chamber_length=30.0,    # UNCERTAIN: Multi-chamber CHARM architecture requires a longer
-                            # device than a simple mirror. CMFX is 6.7 m; a reactor would
-                            # be substantially larger. 30 m is a conservative upscale with no
-                            # published basis. Source: analysis.md §S3, §S5 "Machine size
-                            # (plasma radius, length): truly-unknown / blocking"
-    blanket_t=0.30,         # Very thin "blanket" — X-ray capture wall only.
-                            # p-B11 is near-aneutronic (<1% neutron energy fraction);
-                            # no neutron breeding blanket needed.
-                            # Source: analysis.md §S5 "Neutron energy fraction: <1%"
-                            # analysis.md §S4 "No First-Wall Neutron Damage or Activation"
-    ht_shield_t=0.10,       # Minimal shielding — no 14.1 MeV neutron flux.
-                            # Source: analysis.md §S4; costing_constants.yaml shield_unit_cost
-    structure_t=0.15,       # DEFAULT: mfe_mirror.yaml
-    vessel_t=0.10,          # DEFAULT: mfe_mirror.yaml
-
-    # ── p-B11 aneutronic power balance ────────────────────────────────────
-    p_input=60.0,           # UNCERTAIN: Total auxiliary power [MW].
-                            # Includes: RF for alpha channeling (~20 MW est.), rotation
-                            # sustainment via biased electrode (~30 MW est.), misc RF (~10 MW).
-                            # Rotation sustainment power is a key blocking unknown.
-                            # Source: analysis.md §S2 Challenge 4 "Unknown Recirculating Power"
-                            # Electrode voltage up to 100 kV @ CMFX: technical-papers-summary.md §CMFX
-    mn=1.0,                 # Neutron energy multiplier.
-                            # p-B11 is near-aneutronic: <1% of fusion energy in neutrons.
-                            # Blanket neutron multiplication is negligible — set to 1.0.
-                            # Source: analysis.md §S5 "Neutron energy fraction: <1%"
-                            # arpa-e-fisch-2025-presentation.md §Why p-B11?
-    eta_th=0.20,             # DEVIATION: scoring_framework.md §"Justified deviations" explicitly names
-                            # 06-magnetic-mirror as a physics-forced derating case (bremsstrahlung
-                            # partial wall absorption). Per-category canonical (0.70 Direct CP) is
-                            # inapplicable because eta_de=0.70 separately captures the DEC channel;
-                            # eta_th must reflect only the thermal/radiation residual (~15-25% of
-                            # fusion power). Setting eta_th=0.70 would double-count the DEC pathway.
-                            # UNCERTAIN: No power balance numbers published.
-                            # Source: analysis.md §S2 Challenge 5; §S5 "Thermal vs. direct
-                            # conversion energy split: truly-unknown / important"
-    eta_p=0.5,              # Pumping efficiency; DEFAULT: mfe_mirror.yaml
-    eta_pin=0.60,           # Heating wall-plug efficiency.
-                            # UNCERTAIN: Covers RF system (alpha channeling antennas) and
-                            # biased electrode power supply efficiency. ICRF systems
-                            # typically 50-70% wall-plug efficiency. Central estimate 60%.
-                            # Source: analysis.md §S3 "RF Heating / Wave Launch: TRL 4-5 (generic)"
-    eta_de=0.70,            # DEC efficiency for rotation energy recovery.
-                            # UNCERTAIN — this is a speculative estimate.
-                            # Rax, Kolmes, Fisch (PRX Energy 4, 013007, 2025) establishes
-                            # physics efficiency upper bounds for adiabatic DEC in axisymmetric
-                            # fields; no engineering efficiency or hardware design published.
-                            # 0.70 is within range of physics limits but not validated.
-                            # Historical MARS gridless DEC measured ~54% (1983 MARS study);
-                            # eta_de=0.70 is above this empirical reference. See analysis.md §S7.
-                            # Source: analysis.md §S2 Challenge 5; §S3 "DEC: TRL 2-3"
-                            # technical-papers-summary.md §Related: Direct Energy Conversion
-    f_sub=0.03,             # BOP subsystem fraction; DEFAULT: mfe_mirror.yaml
-    f_dec=0.85,             # Fraction of transport power going to DEC.
-                            # UNCERTAIN: Near-aneutronic p-B11 puts ~99% of fusion energy
-                            # in charged alpha particles. A large fraction is available for
-                            # direct conversion. 0.85 is an optimistic estimate reflecting
-                            # that rotation DEC captures most charged-particle power, with
-                            # ~15% captured as radiation (synchrotron + bremsstrahlung → thermal).
-                            # Source: analysis.md §S5 "Thermal vs. direct conversion energy split:
-                            # truly-unknown / important"; §S2 Challenge 1 (bremsstrahlung losses)
-    p_coils=8.0,            # Superconducting solenoid coil power [MW].
-                            # UNCERTAIN: Slightly above DT mirror default (5 MW) to account
-                            # for multi-chamber geometry with inner and outer coil sets visible
-                            # in ARPA-E slide schematic. Conductor type not specified by Pale Blue.
-                            # Source: analysis.md §S3 "Magnet System: TRL Indeterminate"
-                            # arpa-e-2025-fisch-presentation-notes.md §Device Details
-    p_cool=15.0,            # Cooling power [MW].
-                            # Reduced vs DT mirror (20 MW default): no tritium cooling loop,
-                            # no high-neutron-flux first wall active cooling required.
-                            # Source: analysis.md §S4 "No First-Wall Neutron Damage or Activation"
-    p_pump=1.5,             # Pumping power [MW]; DEFAULT: mfe_mirror.yaml
-    p_trit=0.0,             # Tritium processing power [MW].
-                            # Zero — p-B11 is aneutronic; no tritium is produced or consumed.
-                            # Source: arpa-e-fisch-2025-presentation.md §Why p-B11?
-                            # analysis.md §S4 "No Tritium, No Lithium, No Breeding Blanket"
-    p_house=5.0,            # Housekeeping [MW]; slight increase for electrode power supplies
-                            # and multi-chamber monitoring systems. UNCERTAIN.
-    p_cryo=2.0,             # Cryogenic power [MW].
-                            # Slightly above default: multi-chamber solenoid array likely
-                            # requires more cryogenic infrastructure than a simple tandem mirror.
-                            # Source: analysis.md §S3 "Magnet System: TRL Indeterminate"
-
-    # ── Cost overrides ────────────────────────────────────────────────────
-    # No fuel-cycle cost overrides needed: Fuel.PB11 activates correct framework defaults:
-    #   blanket_unit_cost_pb11 = 0.05 M$/m³ (X-ray only — costing_constants.yaml)
-    #   fuel_handling_pb11_base = 15.0 M$ (boron powder injection — costing_constants.yaml)
-    #   remote_handling_pb11_base = 20.0 M$ (conventional maintenance — costing_constants.yaml)
-    #   licensing_cost_pb11 = 0.1 M$, licensing_time_pb11 = 0.0 yr (costing_constants.yaml)
-    #   om_cost_pb11 = 24.0 M$/yr (aneutronic, RSO-only — costing_constants.yaml)
-    #   decom_provision_pb11 = 53.0 M$ at 1 GWe (costing_constants.yaml)
-    #
-    # Buildings: applying a modest reduction vs DT to reflect absence of hot cell,
-    # tritium building, and large remote handling facility. Using 200 M$ (vs DT default
-    # of ~250-300 M$). UNCERTAIN — no plant design study available.
-    # Source: analysis.md §S4; costing_constants.yaml §building_costs_per_kw
-    cost_overrides={"CAS21": 200.0},
-)
-
-# ── Forward model — native design point ───────────────────────────────────
-result = model.forward(net_electric_mw=_NATIVE_MW, **_SHARED_KWARGS)
-
-# ── Forward model — 1 GWe comparison point ────────────────────────────────
-# Scales cost_overrides from the 500 MWe native point to 1000 MWe using
-# per-account scaling laws. Preserves physics consistency at the native point.
-result_1gw = model.forward(
-    net_electric_mw=1000.0,
-    override_reference_mw=_NATIVE_MW,
-    **_SHARED_KWARGS,
-)
-
-# ── Results ────────────────────────────────────────────────────────────────
-c = result.costs
-pt = result.power_table
-
-print("Magnetic Mirror (p-B11) — Pale Blue Fusion (CHARM)")
-print("500 MWe target | 80% availability | 30 yr lifetime | NOAK")
-print("WARNING: All plasma parameters are truly-unknown estimates (see analysis.md §5-6)")
-lcoe_ckwh = float(c.lcoe) / 10
-print(
-    f"LCOE: {c.lcoe:.1f} $/MWh ({lcoe_ckwh:.2f} ¢/kWh)"
-    f" | Overnight: {c.overnight_cost:.0f} $/kW"
-)
-c1 = result_1gw.costs
-print(
-    f"1 GWe scaled: LCOE {c1.lcoe:.1f} $/MWh"
-    f" | Overnight {c1.overnight_cost:.0f} $/kW"
-)
-print(f"Fusion: {pt.p_fus:.0f} MW | Net: {pt.p_net:.0f} MW | Q_eng: {pt.q_eng:.1f}")
-print(f"Recirculating fraction: {pt.rec_frac:.1%}")
-print()
-
-# ── Cost breakdown ─────────────────────────────────────────────────────────
-cas = [
-    ("CAS10", "Preconstruction", c.cas10),
-    ("CAS21", "Buildings", c.cas21),
-    ("CAS22", "Reactor Plant Equipment", c.cas22),
-    ("CAS23", "Turbine Plant", c.cas23),
-    ("CAS24", "Electrical Plant", c.cas24),
-    ("CAS25", "Miscellaneous", c.cas25),
-    ("CAS26", "Heat Rejection", c.cas26),
-    ("CAS27", "Special Materials", c.cas27),
-    ("CAS28", "Digital Twin", c.cas28),
-    ("CAS29", "Contingency", c.cas29),
-    ("CAS30", "Indirect Costs", c.cas30),
-    ("CAS40", "Owner's Costs", c.cas40),
-    ("CAS50", "Supplementary", c.cas50),
-    ("CAS60", "IDC", c.cas60),
-    ("CAS70", "O&M (annualized)", c.cas70),
-    ("CAS80", "Fuel (annualized)", c.cas80),
-    ("CAS90", "Financial", c.cas90),
+# 3. Override registry — six fields per entry, transcribed from Section 5b.
+overrides = [
+    {
+        "account": "C220101",
+        "value": 0.0,
+        "enabled": True,
+        "cost_basis": "noak",
+        "provenance": "derived",
+        "source": "dossier.md §Tritium Breeding; p-B11 fuel cycle physics",
+        "rationale": (
+            "This account costs the tritium-breeding blanket. CHARM uses p-B11 fuel, which produces "
+            "no tritium and requires no breeding blanket. The aneutronic reaction produces 3 alpha "
+            "particles per fusion event with <1% neutron energy from side reactions. No blanket "
+            "structure is required for tritium breeding or neutron energy capture (DEC captures "
+            "charged particle energy directly). Cost is zero."
+        ),
+    },
+    {
+        "account": "C220102",
+        "value": 0.01 * generic.cas22_detail["C220102"],
+        "enabled": True,
+        "cost_basis": "noak",
+        "provenance": "derived",
+        "source": "dossier.md §Neutron Management; p-B11 reaction physics",
+        "rationale": (
+            "This account costs the radiation shield sized to neutron wall loading. p-B11 is truly "
+            "aneutronic (<1% neutron energy from side reactions vs 80% for D-T). Shielding requirements "
+            "are minimal — primarily for x-ray bremsstrahlung and trace side-reaction neutrons. The "
+            "library default assumes 14.1 MeV D-T neutron shielding; this concept requires ~1% of that "
+            "mass. Override to 1% of library value."
+        ),
+    },
+    {
+        "account": "C220108",
+        "value": 0.0,
+        "enabled": True,
+        "cost_basis": "noak",
+        "provenance": "derived",
+        "source": "dossier.md §Operation Mode (steady-state); multi-chamber architecture",
+        "rationale": (
+            "This account costs the divertor (W monoblock cassettes for steady-state heat/particle "
+            "exhaust in D-T mirrors). CHARM uses a multi-chamber architecture where helium ash is "
+            "extracted via wave-induced diffusion to a separate heat exchange chamber, then removed "
+            "from the system. The presentation states 'Helium is extracted from heat exchange chamber "
+            "using waves' (arpa-e-2025-fisch-presentation-notes.md). This is not a divertor in the "
+            "conventional sense. The heat exchange chamber may have cost, but it is not captured by "
+            "the divertor account. Cost is zero; heat exchange chamber should be a custom override "
+            "if data becomes available."
+        ),
+    },
+    {
+        "account": "C220109",
+        "value": 0.0,
+        "enabled": False,
+        "cost_basis": "noak",
+        "provenance": "derived",
+        "source": "dossier.md §Energy Capture; PRX Energy 2025 paper; SWDEC patent US20230298771",
+        "rationale": (
+            "This account costs direct energy conversion hardware. CHARM absolutely requires DEC "
+            "(charged particle exhaust → electricity), but the technology choice (adiabatic DEC vs "
+            "SWDEC vs electrostatic collectors) and cost are completely unspecified. The library "
+            "has no default for novel DEC hardware. Placeholder disabled until Pale Blue discloses "
+            "DEC technology and provides cost estimate or analogue. This is a CRITICAL missing override."
+        ),
+        "blocked_by": "1cFE/1costingfe#104",
+    },
+    {
+        "account": "CAS23",
+        "value": 0.0,
+        "enabled": True,
+        "cost_basis": "noak",
+        "provenance": "derived",
+        "source": "dossier.md §Energy Capture (Direct charged particle)",
+        "rationale": (
+            "This account costs turbine plant equipment (thermal cycle). CHARM uses direct energy "
+            "conversion; there is no steam or sCO2 thermal cycle. Fusion energy is captured as "
+            "charged particle kinetic energy and converted to electricity via DEC (account C220109). "
+            "Turbine cost is zero."
+        ),
+    },
+    {
+        "account": "CAS27",
+        "value": 0.0,
+        "enabled": True,
+        "cost_basis": "noak",
+        "provenance": "derived",
+        "source": "dossier.md §Tritium Breeding (N/A aneutronic); p-B11 fuel cycle",
+        "rationale": (
+            "This account costs special materials (initial reactor material inventory / blanket fill). "
+            "For D-T, this is FLiBe or liquid metal breeder inventory. CHARM has no breeder. Boron "
+            "fuel inventory is negligible cost (commodity material, ~$2-5/kg). Cost is zero."
+        ),
+    },
+    {
+        "account": "CAS80",
+        "value": 0.0,
+        "enabled": True,
+        "cost_basis": "noak",
+        "provenance": "derived",
+        "source": "princeton-arpa-e-funding-2022.md §A different kind of fusion reaction",
+        "rationale": (
+            "This account costs annualized fuel (D-T consumables and enriched-isotope procurement). "
+            "p-B11 fuel is commodity hydrogen and natural boron. The source states 'both protons and "
+            "boron-11 are readily available, naturally and cheaply.' At any reasonable plant scale, "
+            "annual fuel cost is <$1M and negligible vs capital. Override to zero."
+        ),
+    },
 ]
 
-print(f"{'Code':<8} {'Account':<28} {'M$':>10}")
-print("-" * 48)
-for code, name, val in cas:
-    print(f"{code:<8} {name:<28} {float(val):>10.1f}")
-print("-" * 48)
-print(f"{'':8} {'Total Capital':<28} {float(c.total_capital):>10.1f}")
+# 4. Overrides-on forwards via the shared helper (native + 1 GWe NOAK projection).
+native, result_1gw = run_native_and_1gw(
+    model, spec=spec, overrides=overrides, p_native=P_native,
+)
 
-# ── CAS22 sub-account detail ───────────────────────────────────────────────
-print("\nCAS22 Reactor Plant Equipment Breakdown:")
-print("-" * 48)
-for k, v in sorted(result.cas22_detail.items()):
-    if float(v) > 0:
-        print(f"  {k:<28} {float(v):>10.1f} M$")
-
-# ── Key Assumptions ───────────────────────────────────────────────────────
-print("\nKey Assumptions (all UNCERTAIN — no published design point):")
-print("-" * 48)
-print("  p-B11 near-aneutronic power balance:   mn=1.0, f_dec=0.85, eta_th=0.20")
-print("  DEC efficiency:                         eta_de=0.70  [physics limit per PRX Energy 2025]")
-print("  Total auxiliary power:                  p_input=60 MW  [rotation + RF alpha channeling]")
-print("  No tritium processing:                  p_trit=0.0")
-print("  Machine geometry:                       plasma_t=1.5 m, chamber_length=30 m [no design point]")
-print("  Net electric target:                    500 MWe  [framework reference scale]")
-print("  Availability:                           80%  [no maintenance study]")
-print()
-print("Blocking gaps (from analysis.md §Section 6):")
-print("  - No published plant design or engineering parameters of any kind")
-print("  - Alpha channeling efficiency η_α: analytical only, never measured experimentally")
-print("  - Rotation sustainment power (recirculating fraction): not characterized")
-print("  - DEC efficiency for rotation energy recovery: physics bounds only")
-print("  - p-B11 nonthermal plasma never demonstrated in any experiment")
-print("  - CHARM multi-chamber architecture never tested")
-
-# ── Sensitivity Analysis ──────────────────────────────────────────────────
-sens = model.sensitivity(result.params)
-
-print("\nSensitivity (elasticity = %LCOE / %param)")
-print("-" * 48)
-
-print("\nEngineering levers:")
-for k, v in sorted(sens["engineering"].items(), key=lambda x: abs(x[1]), reverse=True):
-    print(f"  {k:<36} {v:+.4f}")
-
-print("\nFinancial:")
-for k, v in sorted(sens["financial"].items(), key=lambda x: abs(x[1]), reverse=True):
-    print(f"  {k:<36} {v:+.4f}")
-
-print("\nCosting constants (top 15):")
-costing = sorted(sens["costing"].items(), key=lambda x: abs(x[1]), reverse=True)
-for k, v in costing[:15]:
-    print(f"  {k:<36} {v:+.4f}")
-
-# ── eta_th deviation sweep ────────────────────────────────────────────────
-# Quantifies LCOE sensitivity to the thermal-channel efficiency assumption.
-# The residual thermal fraction is ≤15% of total power (f_dec=0.85), so
-# eta_th is expected to have small leverage — this sweep tests that claim.
-# Fixed: eta_de=0.70 (DEC channel), f_dec=0.85 (DEC fraction).
-print("\neta_th deviation sweep (DEC deviation carve-out — F-1)")
-print("  Fixed: eta_de=0.70, f_dec=0.85")
-print(f"  {'eta_th':<10} {'LCOE ($/MWh)':>14} {'delta vs 0.20 ($/MWh)':>22}")
-print("  " + "-" * 48)
-_eta_th_base_lcoe = None
-for _eta_th_val in [0.15, 0.20, 0.25, 0.30]:
-    _sweep_kwargs = {**_SHARED_KWARGS, "eta_th": _eta_th_val}
-    _r = model.forward(net_electric_mw=_NATIVE_MW, **_sweep_kwargs)
-    _lcoe = float(_r.costs.lcoe)
-    if _eta_th_val == 0.20:
-        _eta_th_base_lcoe = _lcoe
-    _delta = f"{_lcoe - _eta_th_base_lcoe:+.1f}" if _eta_th_base_lcoe is not None else "  (base)"
-    _marker = " ← model value" if _eta_th_val == 0.20 else ""
-    print(f"  {_eta_th_val:<10.2f} {_lcoe:>14.1f} {_delta:>22}{_marker}")
+print_cas_breakdown(generic, native, result_1gw, overrides, data_grounded=False)
+# data_grounded=False: Pale Blue Fusion has disclosed no quantitative reactor
+# parameters for the CHARM commercial plant (geometry, fields, densities,
+# temperatures, confinement times, fusion power per analysis.md §5). The spec
+# dict is empty by necessity, so the LCOE would otherwise reflect pure MIRROR
+# YAML defaults rather than CHARM's actual design. Headline LCOE lines emit
+# (NOT ENOUGH DATA FOR THIS CONCEPT); CAS22 breakdown below still prints so
+# a reviewer can see what library defaults produced.

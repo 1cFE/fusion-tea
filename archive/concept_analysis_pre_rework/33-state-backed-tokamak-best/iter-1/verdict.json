@@ -1,0 +1,16 @@
+{
+  "iteration": 1,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "cold_start",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": false,
+  "merged_assess": false,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/33-state-backed-tokamak-best/iter-01/sources/best-research-plan-v1.1-summary.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/33-state-backed-tokamak-best/iter-01/sources/neo-fusion-company-profile.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/33-state-backed-tokamak-best/iter-02/sources/cfetr-power-conversion-studies.md"
+  ],
+  "timestamp": "2026-04-20T00:43:25.247554+00:00"
+}

@@ -1,22 +1,28 @@
-VERDICT: FINDINGS
+VERDICT: PASS
 
-### F-1: Model driver energy diverges from stated design point
-- **Target:** model_setup.py / model_output.txt (energy balance parameters)
-- **Category:** model
-- **Finding:** The model uses `e_driver_mj = 7.60 MJ` rather than the stated Inertia design value of 10 MJ/shot, and then derives `Q_sci = 62.6` to close 1500 MWe net. This makes the laser electrical recirculating load 760 MW instead of the 1000 MW derived in the Section 2 energy balance calculation. The result is a model that appears more favorable than the analysis's own arithmetic: Q_eng in the model (2.77) implies a substantially lower recirculating power fraction than the analysis shows is required. The model note acknowledges this discrepancy but leaves it unresolved. Using a different driver energy than the stated design point undermines internal consistency and makes it impossible to validate the model against the Section 2 energy balance derivation.
-- **Recommendation:** Set `e_driver_mj = 10.0` as the stated Inertia design parameter. Let the model derive the required `Q_sci` (~56×) to close to 1500 MWe net, which will naturally surface the tension with the stated ">30× threshold." Add a sensitivity sweep over `Q_sci` in the range 30–60× to show the LCOE and net power output across the plausible gain range, with a scenario at Q_sci = 30 showing the shortfall (~350 MWe net from a single system).
-- **Priority:** blocking
+This analysis satisfies the new pipeline contract for a D1+ concept analysis with High archetype-fit.
 
-### F-2: Plant availability dominates LCOE sensitivity but is absent from Section 2 ranking and Section 5 parameters
-- **Target:** Section 2 (challenge ranking) and Section 5 (Available Parameters table)
-- **Category:** analysis
-- **Finding:** The model sensitivity analysis shows `availability` has elasticity −0.97 — the single strongest LCOE lever, roughly 3× the sensitivity of `q_eng` (−0.29). Yet Section 2 ranks "energy balance" (which drives q_eng) as the primary challenge with "Impact: Blocking," while O&M cost structure — which drives the availability and replacement-rate assumptions — is listed sixth at "Impact: High." This ranking inversion misrepresents the LCOE leverage hierarchy for this concept. Availability at 10 Hz is uniquely uncertain for this concept: final optics, laser diode modules, and target injection systems have no validated lifetime at commercial duty cycle. Section 5 has no row for capacity factor or plant availability, even though it is the dominant cost driver.
-- **Recommendation:** Revise the Section 2 challenge ordering to reflect LCOE leverage: plant availability (driven by component replacement rates) should be elevated to co-equal or higher priority alongside energy balance. Add an explicit availability row to the Section 5 parameter table with a plausible range (e.g., 60–90%) and note that 10 Hz component cycling creates a fundamentally different replacement-rate exposure than any MFE concept. Add a paragraph in Section 2 connecting the final optics and laser diode replacement challenges (items 3 and 6 as currently written) to availability as the unifying LCOE lever.
-- **Priority:** important
+## Summary
 
-### F-3: No recommendation on 1costingfe vs. free-form modeling suitability
-- **Target:** Section 2 (Modeling Approach) — currently absent
-- **Category:** analysis
-- **Finding:** The analysis does not address whether the 1costingfe framework is appropriate for this concept or whether free-form modeling is required (Goal 4 checklist). This is a consequential omission: the Inertia concept has no magnets, no plasma physics scaling relations, no cryogenic system, and a capital cost structure dominated by the laser driver (~$7–10B FOAK) and target factory — both of which have no counterpart in the tokamak-derived 1costingfe CAS accounts. The model output shows `C220104 = $1.0B` (NOAK laser) as the largest single CAS22 sub-account, but the basis for this figure is explicitly flagged as uncertain by 7–10×. Whether the 1costingfe structure can adequately represent the IFE cost architecture, or whether a free-form model with explicit laser-cost and target-factory accounts is more transparent, should be stated as a modeling recommendation.
-- **Recommendation:** Add a short paragraph to the analysis (logically after Section 2 or as a modeling note in Section 5) stating which modeling approach is recommended and why. If 1costingfe is retained, explain which CAS accounts map to IFE-specific costs (laser driver → C220104, target factory → target_factory_base, target materials → om_cost_dt) and which accounts are structurally inapplicable (magnet-related accounts). If free-form is preferred, state what top-level cost categories the free-form model should track. This framing directly supports testable hypothesis construction (Goal 4).
-- **Priority:** important
+The analysis demonstrates strong design-point coherence (P_native = 1500 MWe is consistent across all artifacts), proper override discipline (zero enabled overrides with clear evidence-backed rationale for each rejection), and appropriate family-delta articulation against the fixed comparables. The model output shows plausible LCOE results (59.8 $/MWh native, 65.4 $/MWh at 1 GWe) with non-zero, non-trivial CAS values across all accounts, indicating real parameter-driven computation.
+
+## Strengths
+
+**Design-Point Coherence**: The Design Point block correctly transcribes all four selection fields from frontmatter (name, maturity, P_native=1500, grounding=low). Section 5 parameter table maintains this native scale throughout, with appropriate confidence flags on inferred values. The model_setup.py P_native constant matches exactly.
+
+**Override Discipline**: The analysis executes proper per-account review (analysis.md §5b lines 309-353) and correctly concludes zero enabled overrides. Each rejection is evidence-backed:
+- C220104 (laser driver): "$700–$1,000/J" website claim rejected for lack of component breakdown or provenance
+- C220108 (target factory): "<$1 per target" claim rejected as 3-order-of-magnitude reduction vs. NIF costs without validation
+- All other accounts: no company-published data available
+
+The zero-override count falls within the High-fit band (0–4 expected), and the analysis acknowledges this explicitly (§5b line 311).
+
+**Family-Delta Concreteness**: Section 7 compares against the fixed comparables list and names specific subsystem-level deltas with cost directions:
+- vs. 17b Fast Ignition: driver architecture difference (eliminates petawatt ignition laser but requires higher laser energy for lower coupling efficiency) → net ~$2–3B advantage for fast ignition
+- vs. 17a Hybrid Drive (Xcimer): driver cost delta quantified as 10× higher $/J ($700–1,000/J vs. $60–80/J) plus 4× higher laser energy requirement from lower coupling efficiency → order-of-magnitude LCOE advantage for Xcimer
+
+**Model Integrity**: The model_setup.py uses the mandatory three-forward helper form (generic_reference + run_native_and_1gw), emits non-trivial CAS values across all accounts, and produces plausible LCOE (mid-$60/MWh at 1 GWe is reasonable for IFE DPSSL concepts with unvalidated cost claims). The dominant cost driver is CAS22 (reactor equipment at $1,983/kW for 1 GWe), consistent with the analysis narrative's emphasis on laser driver cost uncertainty (§2.1).
+
+## No Material Deficiencies
+
+The analysis honestly flags data gaps (14 gaps inventoried in §6, with 5 marked "blocking" for order-of-magnitude LCOE uncertainty), maintains traceability (all quantitative values cite line numbers in source extracts), and articulates TEA consequences for each family-delta (§7.1–7.6). The coherence flags confirm P_native coherence and override-count band compliance.

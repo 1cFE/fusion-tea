@@ -1,23 +1,26 @@
 {
   "iteration": 1,
   "verdict": "FAIL",
-  "finding_count": 3,
+  "finding_count": 2,
   "feedback_source": "cold_start",
-  "model_ran": false,
-  "model_ok": false,
+  "model_ran": true,
+  "model_ok": true,
   "research_ran": false,
+  "merged_assess": false,
   "sources": [
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-01/sources/focused-energy-technology.md",
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-01/sources/focused-energy-technology.orig.md",
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-01/sources/xcimer-energy-approach.md",
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-01/sources/xcimer-energy-approach.orig.md",
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/focused-energy-callahan-interview.md",
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/focused-energy-callahan-interview.orig.md",
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/hylife-energy-conversion-notes.md",
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/hylife-energy-conversion-notes.orig.md",
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/xcimer-science-page.md",
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/xcimer-science-page.orig.md",
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md"
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\17a-laser-icf-hybrid-drive\\iter-01\\sources\\xcimer-energy-approach.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\17a-laser-icf-hybrid-drive\\iter-02\\sources\\hylife-energy-conversion-notes.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\17a-laser-icf-hybrid-drive\\iter-02\\sources\\xcimer-science-page.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\17a-laser-icf-hybrid-drive\\iter-02\\sources\\xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\17a-laser-icf-hybrid-drive\\iter-03\\sources\\digital-ark-67531-metadc626683.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\17a-laser-icf-hybrid-drive\\iter-03\\sources\\laserfocusworld-lasers-sources-article-14274951-can-high.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\17a-laser-icf-hybrid-drive\\iter-03\\sources\\llnl-53961-llnl-releases-generalized-economics-model-fusion.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\17a-laser-icf-hybrid-drive\\iter-03\\sources\\optica-opn-home-articles-volume-34-june-2023-features.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\17a-laser-icf-hybrid-drive\\iter-03\\sources\\osti-biblio-7021072.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\17a-laser-icf-hybrid-drive\\iter-03\\sources\\osti-servlets-purl-2561299.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\17a-laser-icf-hybrid-drive\\iter-03\\sources\\osti-servlets-purl-6137961.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\17a-laser-icf-hybrid-drive\\iter-03\\sources\\pmc-articles-pmc7658748.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\17a-laser-icf-hybrid-drive\\iter-03\\sources\\sciencedirect-science-article-pii-s0920379624001868.md"
   ],
-  "timestamp": "2026-03-31T13:51:31.457580+00:00"
+  "timestamp": "2026-06-05T00:35:33.061580+00:00"
 }

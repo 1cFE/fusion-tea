@@ -1,29 +1,29 @@
 [
   {
-    "timestamp": "2026-04-20T16:10:22.210337+00:00",
+    "timestamp": "2026-06-05T01:01:24.506751+00:00",
     "step": "cold-start",
     "attempt": 1,
     "validator": "validate_non_empty",
     "passed": true,
-    "details": "Non-empty (37661 chars)",
-    "validated_text_preview": "# D1+ Analysis: Laser ICF \u2014 Nanostructured Target (p-B11)\n\n**Concept**: Ultrashort-pulse laser irradiation of engineered solid targets containing proton-boron-11 fuel, exploiting non-thermal acceleration mechanisms rather than classical ICF compression\n**Companies**: Marvel Fusion (primary, concept 23); HB11 Energy (related concept 04)\n**Confinement Family**: IFE (Inertial Fusion Energy)\n**Fuel**: p-B11 (aneutronic; <1% neutron energy from side reactions)\n**Operation Mode**: Pulsed \u2014 10 Hz (Marv"
+    "details": "Non-empty (45939 chars)",
+    "validated_text_preview": "## Design Point\n\n- Name: Marvel Fusion CFE-NANO Pilot Plant (EU Horizon EIC Project 101189082, 100 MWe, 2033 milestone)\n- Maturity: paper-concept\n- P_native: 100 MWe\n- Grounding: medium\n- Primary sources:\n  - knowledge/concept_research/23-laser-icf-nanostructured-target/iter-02/sources/marvel-fusion-2025-updates.md\n  - knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/optics-news-16-4-4/output.md\n  - knowledge/concept_research/23-laser-icf-nanostructured-target/iter-0"
   },
   {
-    "timestamp": "2026-04-20T16:14:57.490748+00:00",
+    "timestamp": "2026-06-05T01:06:51.928706+00:00",
     "step": "model-setup",
     "attempt": 1,
-    "validator": "validate_python_syntax",
+    "validator": "validate_python_syntax+validate_model_setup_contract_strict+validate_override_registry",
     "passed": true,
-    "details": "Valid Python syntax",
-    "validated_text_preview": "\"\"\"Laser ICF \u2014 Nanostructured Target (p-B11): 1costingfe model setup.\n\nModeling approach:\n    Marvel Fusion design point (100 MW pilot, 2033 EU CORDIS target). Physics\n    is entirely undemonstrated at gain-relevant scales; q_eng is the primary\n    free parameter \u2014 treat all LCOE outputs as contingent on ignition. Primary\n    result uses conservative 40% thermal efficiency (steam Rankine path) rather\n    than Marvel's unvalidated 70% hybrid claim. HB11 Energy (1 Hz, steam,\n    ~1 GW) included as"
+    "details": "All validators passed",
+    "validated_text_preview": "\"\"\"1costingfe model: Laser ICF Nanostructured Target (Marvel Fusion) (Marvel Fusion).\n\nUsage:\n    uv run python model_setup.py              # print results\n    uv run python model_setup.py | tee model_output.txt\n\"\"\"\nimport sys\nfrom pathlib import Path\n\n# Make the shared three-forward helper importable regardless of where this file\n# lives (concept dir or iter-N/ dir): walk up to the scripts/ root.\n_SCRIPTS = next(\n    p / \"scripts\"\n    for p in Path(__file__).resolve().parents\n    if (p / \"scrip"
   },
   {
-    "timestamp": "2026-04-20T16:16:48.945268+00:00",
+    "timestamp": "2026-06-05T01:09:23.148741+00:00",
     "step": "assess",
     "attempt": 1,
     "validator": "validate_feedback_verdict",
     "passed": true,
     "details": "Feedback format valid (verdict: FINDINGS)",
-    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: Direct energy conversion efficiency disconnected from model\n- **Target:** Section 2 (Challenge 3) and model sensitivity sweep (eta_dec)\n- **Category:** model\n- **Finding:** The analysis dedicates an entire Section 2 challenge to hybrid direct energy conversion, calling it a \"first-order LCOE lever\" that \"roughly doubles\" net electrical output (35% steam vs 70% Marvel hybrid target). However, the model sensitivity table shows `eta_dec` with elasticity 0.0000, while `et"
+    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: Absolute overrides on C220104 and C220108 are sized at 100 MWe and do not scale to 1 GWe, understating the projected LCOE\n- **Target:** model_setup.py overrides list (C220104, C220108)\n- **Category:** model\n- **Finding:** The C220104 (driver) override is $500M, derived from \"50 beamlines \u00d7 $10M/beamline\" at the 100 MWe pilot scale. The C220108 (target factory) override is $31.5M, sized for 315M targets/year at 10 Hz for one 100 MWe module. Both are absolute dollar val"
   }
 ]

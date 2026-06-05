@@ -1,0 +1,35 @@
+proposal:
+  concept_id: 17a-laser-icf-hybrid-drive
+  design_name: "Xcimer Athena pilot power plant (Galloway & Valys, XEC whitepaper Feb 2026)"
+  maturity_tier: pilot-demonstrator
+  grounding_confidence: medium
+  p_native_mwe: 400
+  primary_sources:
+    - knowledge/concept_research/17a-laser-icf-hybrid-drive/iter-02/sources/xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md
+    - knowledge/concept_research/17a-laser-icf-hybrid-drive/iter-01/sources/xcimer-energy-approach.md
+  selection_rationale: |
+    Athena is the only Xcimer design with a named plant and a published electrical output.
+    The February 2026 commercialization whitepaper explicitly defines Athena as "the first
+    operational laser-fusion pilot power plant, producing about 400 MW electric" at 8 MJ
+    on-target and just under 1 Hz, with a FLiBe HYLIFE-III thick-liquid-wall chamber and
+    DT fuel. Phoenix, Anvil, and Vulcan all lack electrical output by design; the HYLIFE-II
+    940 MWe figure is a heritage LLNL concept with a heavy-ion driver and is not an Xcimer
+    design. The generic commercial range (hundreds of MWe to >1 GWe) names no specific
+    machine. Athena is a single-module design (one laser system, one chamber); P_native is
+    the full plant output, not a per-module sub-unit.
+  alternatives_considered:
+    - design: "Phoenix (Xcimer Denver prototype, 1-2 kJ, Q2 2026)"
+      reason_rejected: no electrical output by design; laser-physics prototype only
+      sensitivity_implication: "n/a — not a power plant candidate; no directional P_native comparison possible"
+    - design: "Anvil (Xcimer Denver demonstrator, 200 kJ, 2028)"
+      reason_rejected: no electrical output by design; laser architecture and target-coupling validation facility only
+      sensitivity_implication: "n/a — not a power plant candidate; no directional P_native comparison possible"
+    - design: "Vulcan (Xcimer high-yield facility, 4-12 MJ, 2031)"
+      reason_rejected: no published electrical output; physics/breakeven research facility with no commercial power generation role
+      sensitivity_implication: "n/a — Vulcan has no stated P_native; if a later Xcimer communication assigns it an electrical output it would likely be well below 400 MWe → more modules at 1 GWe → 1 GWe LCOE shifts up"
+    - design: "HYLIFE-II (LLNL heritage, 940 MWe, heavy-ion driver, 6 Hz)"
+      reason_rejected: heritage LLNL concept with a heavy-ion induction accelerator driver — not an Xcimer design; plant-stitching HYLIFE-II power onto Xcimer's sub-Hz KrF architecture is forbidden
+      sensitivity_implication: "if HYLIFE-II's 940 MWe were used as a proxy (methodologically wrong), P_native rises substantially → fewer modules at 1 GWe → 1 GWe LCOE shifts down. Worth flagging only as a risk of accidentally conflating the heritage HYLIFE literature with Xcimer's actual design"
+    - design: "Generic commercial Xcimer plants (aspirational range, hundreds of MWe to >1 GWe)"
+      reason_rejected: no named design and no specific engineering parameters; aspirational operating envelope only
+      sensitivity_implication: "if the upper commercial bound (~1 GWe per plant) were picked, P_native rises substantially → n_mod approaches 1 → 1 GWe LCOE shifts significantly down. Worth revisiting if Xcimer publishes a named commercial design with engineering parameters"

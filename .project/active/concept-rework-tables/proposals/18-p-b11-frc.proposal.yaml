@@ -1,0 +1,40 @@
+proposal:
+  concept_id: 18-p-b11-frc
+  design_name: "Da Vinci 50 MWe pilot plant (TAE Technologies, December 2025 merger announcement)"
+  maturity_tier: paper-concept
+  grounding_confidence: low
+  p_native_mwe: 50
+  primary_sources:
+    - knowledge/concept_research/18-p-b11-frc/iter-02/sources/tae-djt-merger-davinci-specs.md
+    - knowledge/concept_research/18-p-b11-frc/iter-02/sources/tae-energy-conversion-clarification.md
+  selection_rationale: |
+    Da Vinci is the only TAE design with a published net electrical output figure. The
+    December 2025 Trump Media / TAE merger announcement (ANS Nuclear Newswire) commits to
+    "construction on a 50-MWe utility-scale fusion power plant in 2026," making this the
+    single selectable design point in the portfolio. All earlier machines (C-2W, Norm,
+    Copernicus) are physics demonstrators with no net electrical output by design.
+    The 350–500 MWe "at scale" aspiration is a roadmap target without a separate
+    engineering architecture; adopting it would require plant-stitching across two distinct
+    design specifications, which is forbidden. The p_native_mwe of 50 is the per-plant
+    figure; TAE's architecture does not describe Da Vinci as a multi-module design, so
+    no module subdivision applies. Grounding confidence is low because the 50 MWe figure
+    traces to a merger press announcement, not to a published engineering design; no
+    geometry, plasma parameters, or engineering architecture for Da Vinci is in the
+    public record.
+  alternatives_considered:
+    - design: "C-2W / Norman experimental device"
+      reason_rejected: "No net electrical output by design; physics demonstrator only"
+      sensitivity_implication: "n/a — no P_native exists for this design; cannot substitute for Da Vinci in the comparison"
+    - design: "Norm experimental device (modified C-2W)"
+      reason_rejected: "No net electrical output by design; experimental breakeven-preparation device"
+      sensitivity_implication: "n/a — no P_native exists for this design"
+    - design: "Copernicus (sixth-generation device, planned)"
+      reason_rejected: "No net electrical output by design; purpose is scientific net-energy demonstration, not grid power"
+      sensitivity_implication: "n/a — the 750 MW bi-directional figure is the plasma power supply rating, not an electrical output; no P_native exists"
+    - design: "Da Vinci at 350–500 MWe scaled commercial target"
+      reason_rejected: "Aspirational roadmap target with no independent engineering architecture; selecting this power figure with no geometry would constitute plant-stitching"
+      sensitivity_implication: |
+        If a fully engineered 350–500 MWe Da Vinci commercial design were published with
+        its own geometry and plasma parameters, P_native would rise substantially from 50
+        MWe → fewer modules at 1 GWe → 1 GWe LCOE shifts down. Worth revisiting if TAE
+        publishes a detailed commercial plant specification post-Copernicus validation.

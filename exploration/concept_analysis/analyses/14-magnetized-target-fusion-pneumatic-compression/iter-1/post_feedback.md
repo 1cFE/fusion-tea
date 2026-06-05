@@ -1,19 +1,26 @@
-VERDICT: FINDINGS
+VERDICT: PASS
 
-### F-1: Key differentiators vs. conventional tokamak never consolidated
-- **Target:** Section 7 (Cross-Concept Notes) and overall structure
-- **Finding:** The analysis compares well to MagLIF and FRC/Helion but never produces an explicit, consolidated list of how MTF-pneumatic differs from a conventional tokamak (Goal 2). The most important differentiators — no superconducting magnets, pulsed vs. steady-state operation, mechanical compression driver, liquid metal wall replacing both first wall and blanket, no solid plasma-facing components — are scattered across Sections 2, 3, 4, and 7 but are never brought together as a structured list against the reference concept. The cross-concept section focuses on MIF-to-MIF comparisons; the tokamak comparison in Section 7 discusses only the D-T tritium fuel cycle (what's shared), not what's structurally different.
-- **Recommendation:** Add an explicit differentiator table or bulleted list — either at the top of Section 7 or as a standalone positioning section — that names 6–8 differentiators from a conventional tokamak, classifying each as novel, borrowed, or shared. This should include at minimum: drive mechanism (mechanical vs. inductive), confinement regime (compression vs. steady-state magnetic), plasma-facing material (liquid self-renewing vs. solid), magnet type (none commercial vs. HTS), pulsed vs. continuous power output, and fuel cycle geometry (4π liquid metal breeder vs. outboard blanket).
-- **Priority:** blocking
+**Summary.** The analysis is coherent, well-sourced, and transparent about
+data limitations. Design-point parameters are consistent across all three
+legs (frontmatter, Design Point block, model_setup.py P_native = 150 MWe).
+The six enabled overrides use canonical account codes with correct provenance
+labels, and the count (6) falls within the Med archetype-fit band (3–8).
+The model_setup.py follows the mandatory three-forward helper form with
+parameter-driven overrides. The comparables list is empty, and Section 7
+appropriately provides contextual MIF-family positioning rather than
+attempting fixed-comparable deltas that don't exist.
 
-### F-2: Modeling approach is underdeveloped — no 1costing recommendation, no testable hypotheses
-- **Target:** Section 2 (Challenges) and Section 5 (Parameters)
-- **Finding:** The analysis does not address whether 1costing or free-form modeling is appropriate (Goal 4), and does not state any key hypotheses as testable propositions. The three highest-leverage LCOE parameters — rep rate, Q (fusion gain), and capacity factor — are each identified in isolation in different sections (rep rate in S2 challenge #2, Q in S5 missing parameters, capacity factor in S5 available parameters) but are never consolidated as "the top 2–3 LCOE sensitivity parameters for this concept." The modeling approach for a concept with this many blocking unknowns (Q, η, capital cost structure) needs an explicit recommendation on how to handle structural underdetermination — either parametric scenarios, bounding analysis, or explicit placeholders.
-- **Recommendation:** Add a paragraph (or subsection) in Section 2 or Section 5 that: (1) names the 2–3 parameters with highest LCOE sensitivity for this concept specifically — rep rate and capacity factor are the leading candidates given the pulsed energy structure, with Q as the unlock for closing the energy balance; (2) states 2–3 key hypotheses as testable propositions (e.g., "Hypothesis: compression system capital cost will exceed blanket cost, making it the dominant CAS account — unlike tokamaks where blanket/magnet split is the key ratio"); (3) recommends free-form modeling due to the absence of any analogous industrial system, and explains why the 1costing framework cannot be applied without first resolving the Q and thermal efficiency unknowns.
-- **Priority:** blocking
+**Notes (not findings — do not require rework):**
 
-### F-3: Cost implications for differentiators not systematically mapped; CAS structure absent
-- **Target:** Section 5 (Parameters) and Section 7 (Cross-Concept Notes)
-- **Finding:** While individual cost implications appear throughout the narrative, they are not organized as a systematic advantage/penalty/neutral mapping for each key differentiator (Goal 3). Specifically: the elimination of HTS magnets and cryoplant is mentioned as a supply chain simplification in Section 4 but never stated as an explicit capital cost advantage in Section 5 (no parameter row for magnet system cost delta or cryoplant elimination). The no-per-shot-consumables OPEX advantage is stated in Section 7 (vs. MagLIF) but has no corresponding entry in Section 5. The piston wear and replacement schedule appears in the missing parameters table but is not connected to an OPEX cost implication. CAS-level cost structure differences from the reference concept (e.g., CAS22 magnet system effectively zero, CAS27 compression driver as the novel dominant account, CAS26 tritium fuel cycle branched by Li/PbLi choice) are never mentioned.
-- **Recommendation:** Add a cost-implication column or summary to Section 7 (or a new TEA implications subsection) that maps each major differentiator to: advantage / penalty / unknown with brief reasoning. At minimum cover: (1) no magnet system → capital advantage vs. tokamak (quantify order of magnitude if possible); (2) no per-shot consumables → OPEX advantage vs. MagLIF; (3) mechanical compression driver → novel capital cost, no analogue, likely dominant non-blanket account; (4) liquid metal wall as combined breeder+heat-carrier → eliminates separate blanket fabrication cost but couples thermal efficiency to liquid metal design choice. CAS account labels (even approximate: CAS22, CAS23, CAS26, CAS27) would provide a modeling anchor.
-- **Priority:** important
+1. The derived overrides (C220104 at 15%, C220107 at 10%, C220101 at 40%)
+   are round-number fractions justified by qualitative architectural
+   reasoning rather than bottom-up arithmetic. The analysis is honest about
+   this ("The exact fraction is highly uncertain"), and no published cost
+   data exists to anchor a derivation. Future iterations should attempt
+   even rough bottom-up estimates (e.g., piston count × approximate
+   unit cost for C220104) if any data becomes available.
+
+2. No model_output.txt is available, so LCOE plausibility and cost-driver
+   dominance cannot be verified against the analysis narrative. This
+   appears to be a pipeline sequencing issue rather than an analysis
+   deficiency.

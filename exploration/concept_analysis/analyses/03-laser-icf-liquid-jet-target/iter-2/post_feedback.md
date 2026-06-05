@@ -1,22 +1,55 @@
-VERDICT: FINDINGS
+VERDICT: PASS
 
-### F-1: Closest structural neighbor (23-laser-icf-nanostructured-target) absent from cross-concept comparison
-- **Target:** Section 7 (Cross-Concept Notes)
-- **Category:** analysis
-- **Finding:** Section 7 compares to 26-laser-icf-indirect-drive (energy-scale mismatch — MJ-class DPSSL vs. femtosecond) and 07-maglif (pulsed IFE leverage principle), but omits 23-laser-icf-nanostructured-target (Marvel Fusion), which is structurally the closest concept in the landscape: femtosecond/ultrashort-pulse DPSSL, nanostructured solid target, D-species fuel, similar uncertainty profile, and an analogous claim of reduced driver energy via near-field field enhancement. Both concepts rest on undemonstrated nano-scale target physics and share the same core TEA question — whether per-pulse target cost can be kept below the energy value per shot. The current framing positions this concept primarily against MJ-class IFE, which misrepresents the actual design-space neighborhood and the specific cost risks that matter.
-- **Recommendation:** Add a paragraph in Section 7 comparing directly to 23-laser-icf-nanostructured-target. Identify what is shared (femtosecond driver, nanostructured target, pre-commercial physics, low driver energy per pulse) and what diverges (p-B11 vs D-D fuel, nanowire solid target vs. liquid-jet nanoshell delivery, IFE-by-implosion vs. plasmonic field mechanism, hybrid energy capture vs. thermal-only). State the TEA implication: both concepts face the same blocking question (per-shot target fabrication/recycling cost vs. per-shot energy value), but Cortex compounds it with undemonstrated physics that Marvel at least has some experimental basis for.
-- **Priority:** important
+All three iter-1 findings have been resolved, and the iter-2 artifacts satisfy
+the assessment contract across all five checklist areas.
 
-### F-2: Section 2 does not identify the highest-leverage LCOE parameters for the model (Goal 4 unmet)
-- **Target:** Section 2 (Challenges)
-- **Category:** analysis
-- **Finding:** Section 2 focuses entirely on why modeling is hard (data availability, physics validation, scaling gaps), but never states which parameters have the most leverage over LCOE for this concept. This fails Goal 4: the analysis should guide what the model tests. The model output reveals that availability dominates with elasticity −0.99 — a 1% change in availability produces nearly a 1% change in LCOE — and q_eng is the next lever at −0.30, with eta_th at −0.28. The analysis gives no indication of this hierarchy. Additionally, the analysis does not state whether a 1costingfe framework or free-form modeling is appropriate and why, which is required by Goal 4. For a TRL 1 concept with no plant design, the choice of modeling framework (and its limitations) is a key analytical judgment that should be explicit.
-- **Recommendation:** Add a short paragraph at the end of Section 2 (or as a new Section 2b) that: (1) names the 2–3 parameters with highest LCOE sensitivity — availability, Q_eng/plasma gain, and thermal efficiency — and explains why availability dominates for a pulsed system with no demonstrated duty cycle; (2) states explicitly that 1costingfe default scaling is used as a framework placeholder because no Cortex-specific cost data exists, and flags which CAS22 sub-accounts (C220103 magnets, C220108 tritium, C220112 cryogenics) have been zeroed as concept-specific overrides. This gives the model a narrative grounding and makes the sensitivity hierarchy legible to the reader.
-- **Priority:** blocking
+**Area 1 — Design-Point Coherence**: Clean. The Design Point block copies
+frontmatter fields verbatim (Nano-Sun 1 MHz reactor scenario, paper-concept,
+0.3 MWe, low). Section 5 parameters describe only the named plant at native
+scale. `P_native` is coherent at 0.3 across the frontmatter, Design Point block,
+Section 5, and `model_setup.py` (line 875). The coherence flag confirms three-leg
+agreement. Model output P_net = 0.282 MWe is consistent (the 0.018 MW difference
+is exactly the recirculating power subtraction).
 
-### F-3: Model LCOE ($107/MWh) is inconsistent with the analysis narrative's deep skepticism — availability floor not stress-tested
-- **Target:** Model sensitivity sweep (model_setup.py / iter-2 model output)
-- **Category:** model
-- **Finding:** The analysis describes this concept as "fundamentally blocked" for LCOE modeling, with TRL 1 physics and a 14-order-of-magnitude gap from experimental demonstration. Yet the model's baseline case produces $107/MWh — competitive with mature fusion projections — by using availability=0.40, which is a standard commercial operating value, while flagging it as "BLOCKING UNCERTAIN." The model has no scenario that explores the availability floor appropriate for a concept with no demonstrated energy gain. The analysis narrative implies availability could plausibly be 0.05–0.15 (early-stage, unproven duty cycle) rather than 0.40 (commercial operation); at availability=0.05, LCOE scales approximately 8× using the sensitivity elasticity of −0.99, to ~$860/MWh — a very different picture. Without a low-availability scenario, the single-point model output implicitly accepts the company's theoretical claims as a planning basis, which contradicts the analysis's stated skepticism. The gold recycling assumption (100%, flagged BLOCKING UNCERTAIN) has the same problem: if recycling is 0%, operating costs are severely penalized, but no scenario captures this.
-- **Recommendation:** Add two scenario branches to the sensitivity sweep: (1) a "physics-unvalidated" scenario with availability=0.05–0.10 and Q_sci reduced to a value reflecting no demonstrated gain (e.g., Q_sci=1–5 as a null hypothesis), reporting the resulting LCOE range; (2) a "gold-not-recycled" scenario that adds the $18k/hr gold consumption cost to CAS80 operating costs and reports the LCOE delta. These scenarios do not need to be "correct" predictions — they exist to show the reader the range consistent with the analysis's stated uncertainty bounds. The current single-point model output gives a false sense of precision for a concept the analysis correctly identifies as unboundable.
-- **Priority:** important
+**Area 2 — Override Discipline**: N/A. `Archetype: None` and `Archetype-Fit: None`
+means no archetype library to override against. Section 5b correctly states this
+and proposes zero account-coded overrides. The model's CAS sub-account labels
+(C220107, C220108 marked [OVERRIDE]) are internal to the free-form model, not
+formal override-registry entries.
+
+**Area 3 — Override Count vs Archetype-Fit Grade**: N/A. No fit-grade band
+applies. Coherence flag confirms: "Override count (0) — no fit-grade band for
+None fit."
+
+**Area 4 — Family-Delta Concreteness**: Clean. Section 7 now tags every
+structural differentiator with an explicit cost direction — advantage (no
+magnets/tritium, negligible driver), penalty (gold consumable at ~$56M/yr,
+sub-MW scale), unknown (undesigned energy conversion). This directly resolves
+iter-1 F-3. The D-D fuel cross-section penalty is separately noted. The analysis
+honestly identifies the Cambridge 14-orders-of-magnitude yield gap as the largest
+demonstrated-vs-claimed discrepancy in the corpus.
+
+**Area 5 — Model Integrity**: Clean. The model correctly documents that the
+three-forward helper form does not apply (no archetype) and exports `P_native`,
+`native`, and `result_1gw = None` at module level (resolving iter-1 F-2). CAS
+values are computed from physics parameters, not hardcoded. Sensitivity sweeps
+show meaningful variation across the key unknowns (fusion power, nanoshell
+survival, gold price, kappa). The baseline LCOE of 37,452 $/MWh is arithmetically
+correct ($69.4M/yr revenue requirement / 1,853 MWh/yr) and physically plausible
+for a 0.3 MWe concept whose dominant cost is $56M/yr in gold nanoshell
+consumption. The model's cost-driver emphasis (CAS80 fuel at 80.7%) matches the
+analysis narrative's identification of gold consumption as the single most
+economically consequential parameter.
+
+**Iter-1 finding resolution**:
+- F-1 (gold consumption 1000x unit error): Fixed. Section 4 now correctly computes
+  40 mg/s = 933 kg/yr = $56M/yr and identifies it as dominant, not "modest."
+- F-2 (module-level P_native and aliases): Fixed. Lines 875, 881-882.
+- F-3 (family-delta cost directions missing): Fixed. All differentiators tagged.
+
+**Minor observation** (not a finding): The `P_native` comment on model_setup.py
+line 875 labels the unit as "GWe" while the value (0.3) is in MWe. The
+parenthetical clarifies the actual GWe value (0.0003), but the leading comment
+unit is misleading. This does not affect coherence (the numerical value is
+correct everywhere) and is not worth a finding given the concept's structural
+limitations.

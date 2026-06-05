@@ -1,342 +1,500 @@
-# D1+ Analysis: Projectile ICF (D-T)
+## Design Point
 
-**Concept**: Hypervelocity projectile-driven inertial confinement fusion — D-T fuel
-**Companies**: First Light Fusion (Oxford, UK) [pivoted to FLARE, Sept 2025]; NearStar Fusion (Sacramento, CA) [MTIF hybrid]
-**Confinement Family**: IFE (Inertial Fusion Energy)
-**Operation Mode**: Pulsed (discrete hypervelocity impacts; sub-Hz repetition)
-**Commercial Status**: No active pursuer of pure projectile ICF. First Light Fusion abandoned the electromagnetic gun approach in favour of pulsed-power liner implosion (FLARE). NearStar's MTIF approach magnetizes fuel and prefers D-D — it is taxonomically closer to MIF.
+- Name: First Light projectile pilot plant (2022 pre-pivot ~150 MWe target)
+- Maturity: paper-concept
+- P_native: 150 MWe
+- Grounding: low
+- Primary sources:
+  - knowledge/concept_research/22-projectile-icf/iter-03/sources/prnewswire-news-releases-first-light-achieves-world-first.md
+  - knowledge/concept_research/22-projectile-icf/iter-01/sources/first-light-fusion-technology.md
 
 ---
 
 ## Section 1: Availability of Data
 
-**Rating: Moderate (FLF architecture) / Limited (driver physics and costs) / Opaque (NearStar)**
+**Rating: Limited**
 
-First Light Fusion published more technical detail than most private fusion companies during its 2011–2025 projectile phase: machine descriptions, power plant architecture (liquid lithium curtains, steam Rankine cycle), performance targets, and tritium breeding rationale. The TBR claim of 1.8 was independently validated by TÜV SÜD UK (February 2026) and the tritium surplus figure (25 kg/year at 333 MWe) was also independently assessed. The company's pivot narrative (FLARE, September 2025) preserves access to the power plant architecture data while closing the door on projectile-specific driver data.
+The Projectile ICF concept as pursued by First Light Fusion has a narrow data base for techno-economic analysis. The key sources are:
 
-However, critical LCOE parameters are absent from the public record:
+1. **First Light Fusion press release (April 2022)** — confirms fusion demonstration at 6.5 km/s projectile speed, validated by UKAEA, and states a pilot plant target of "~150 MW of electricity" costing "less than $1 billion in the 2030s." This is the only source that names the design point's power and cost target.[^1]
 
-- **No published LCOE model or cost breakdown** exists for a projectile ICF power plant. FLF has stated targets (<$50/MWh, <$1B pilot, <$5B commercial) but no bottom-up analysis is available.
-- **Driver cost is unknown.** Machine 3 (6.5 km/s, used to demonstrate fusion) and the cancelled Machine 4 (60 km/s, 100 MJ stored energy) do not have published cost estimates. The cost of an electromagnetic launcher capable of 60 km/s is genuinely unprecedented — there is no analogue in industrial or defense applications.
-- **Target physics details are proprietary.** The "amplifier" target design — multiple internal cavities that create converging shockwaves — is FLF's core IP. Neither the gain curve, compression physics, nor the sensitivity of yield to projectile velocity has been published in peer-reviewed form.
-- **Repetition rate is inconsistent in public sources.** FLF cited 30 seconds, 90 seconds, and 10 seconds between shots in different materials, all for different plant scales. No single authoritative design-point rep rate exists.
+2. **Hawker (2020), Phil. Trans. R. Soc. A** — "A simplified economic model for inertial fusion" provides a 14-parameter LCOE framework explicitly designed around First Light's high-gain, low-rep-rate approach. It supplies key economic parameters (driver cost $/J, yield cost $/GJ, target cost) and establishes gain > 500 + yield > 5 GJ as the regime where costs become competitive.[^2]
 
-NearStar Fusion's MTIF concept is at NSF SBIR Phase I level ($275K, 2023). Their data consists of website descriptions and investor communication — no peer-reviewed publications, no demonstrated fusion, no cost estimates.
+3. **IP Group press release (September 2025)** — describes the FLARE pivot, claims gain of up to 1000, FLARE demonstration facility cost of $100M–$200M ($2/J stored energy), and 400 MW commercial plant targets. Provides cost comparison data.[^3]
 
-No peer-reviewed plant study has been published for projectile ICF. The Hawker (2020) framework paper (Phil. Trans. R. Soc. A 379, rsta.2020.0053) analyzes the general economics of IFE and is the closest public treatment, though it is concept-agnostic rather than projectile-specific.
+4. **The Engineer (February 2026)** — confirms tritium breeding ratio of 1.8 validated by TUV SUD UK at FLARE's 333 MWe design point, net surplus of 25 kg/year tritium.[^4]
 
-**Key gaps limiting this analysis:** driver capital cost (unique subsystem, no analogues), per-target fabrication cost at commercial scale, gain achieved in FLF's 2022 fusion demonstration (not publicly disclosed beyond "neutron detection verified by UKAEA"), thermal efficiency of the steam Rankine cycle as actually designed, and capacity factor assumptions.
+> "First Light is working towards a pilot plant producing ~150 MW of electricity and costing less than $1 billion in the 2030s."
+> — prnewswire-news-releases-first-light-achieves-world-first.md §Next Steps
+
+No peer-reviewed power plant design study exists for the projectile ICF pilot. The 150 MWe target is a press-release figure with no published systems engineering backing. No independent cost analysis (analogous to ARIES/PROCESS for tokamaks) has been published for this concept. The company pivoted away from the projectile approach in September 2025, making further data unlikely.
+
+**Key data gaps:**
+- No published thermal-hydraulic design, chamber geometry, or energy balance
+- No published driver energy or stored energy requirement for the pilot
+- No breakdown of the "<$1B" cost target by subsystem
+- Repetition rate is stated inconsistently (30 s, 10 s, 90 s between shots)
+- No target manufacturing cost estimate at volume
+- No published Q_eng or recirculating power fraction
+
+[^1]: prnewswire-news-releases-first-light-achieves-world-first.md §Next Steps
+[^2]: pmc-articles-pmc7658748.md §Abstract and §2. Model
+[^3]: ipgroupplc-news-and-events-portfolio-news-2025-2025-09-19/output.md §Cost comparisons estimates
+[^4]: theengineer-content-news-first-light-fusion-claims-tritium/output.md
 
 ---
 
 ## Section 2: Challenges in Capturing System Function
 
-**IFE Nearest-Neighbor Comparison**
+### 2.1 Undefined Driver System (Critical)
 
-Within the IFE family, the three closest concepts to projectile ICF are laser indirect-drive ICF (hohlraum-mediated), laser direct-drive ICF, and heavy-ion ICF. These share the same pellet implosion physics — a dense fuel shell compressed by an external driver to ignition conditions — along with the high gain requirement (≥100× for commercial viability), D-T fuel cycle, and pulsed chamber design. What projectile ICF uniquely changes is the driver:
+The pilot plant design calls for an electromagnetic gun launching projectiles at ~60 km/s (Machine 4 target, cancelled February 2025). The only demonstrated speed is 6.5 km/s (Machine 3, gas gun). No electromagnetic launcher at the required speed exists. The stored energy requirement, pulse repetition capability, and cost of such a driver are entirely uncharacterized. The press release mentions "100 MJ stored energy" for Machine 4 but this refers to a cancelled single-shot experimental device, not a rep-rated power plant driver.
 
-| Feature | Laser ICF (indirect) | Laser ICF (direct) | Heavy-Ion ICF | **Projectile ICF** |
-|---------|---------------------|-------------------|--------------|-------------------|
-| Driver type | Laser → hohlraum → X-ray | Laser → direct ablation | Heavy ion beams → ablation | EM launcher → hypervelocity kinetic impact |
-| Driver cost structure | Well-characterized (NIF/LIFE/Xcimer data) | Moderately characterized | Cost-modeled in HIBALL studies | **Uncharacterized — no analogue** |
-| Precision beam optics | Required; final optics survivability TRL ~2 | Required | Required | **Absent — structural advantage** |
-| Hohlraum required | Yes (Au/U; cost ×$1k–$10k/target) | No | No | **No** |
-| Driver efficiency | <1% (laser wall-plug) | <1% | ~25–35% (ion accelerator) | ~20–40% (EM, estimate) |
-| Min. gain for viability | ~100× (with efficient driver) | ~100× | ~50–100× | **≥200× (higher threshold due to sub-Hz rep rate)** |
-| TRL of driver | 4–5 (NIF at GW scale) | 3–4 | 3 (HIBALL; no IFE-scale machine) | **2–3 (60 km/s never built)** |
+### 2.2 Target Gain Extrapolation (Critical)
 
-The key differentiator is driver economics. Laser and ion drivers have extensive cost characterization studies; projectile ICF's EM launcher at 60 km/s has none. The gain threshold projectile ICF requires is higher than laser ICF analogues because the rep rate is lower (0.033–0.1 Hz vs 0.25–10 Hz for Xcimer/Inertia laser concepts), meaning each shot must deliver more energy. The structural advantage — no precision beam optics, no hohlraum — simplifies target cost potential and eliminates a major TRL concern from laser IFE, but this advantage only matters if the 60 km/s driver can be built at a competitive cost.
+The concept's economic case depends on target gains of 200–1000. The demonstrated result produced ~50 neutrons — a scientific proof-of-concept, not an engineering demonstration. The gain curve connecting these regimes is based on First Light's proprietary simulations, not on an established physics database. Hawker (2020) shows that LCOE is extremely sensitive to gain in this regime:
 
-Projectile ICF presents five distinct LCOE modeling challenges, ranked by impact:
+> "A combination of high gain (greater than 500) and high fusion energy yield per shot (greater than 5 GJ) together appear to unlock more cost competitive designs"
+> — pmc-articles-pmc7658748.md §Abstract
 
-**1. Driver cost — unique subsystem, no cost analogues (impact: critical)**
+### 2.3 Repetition Rate Ambiguity (High)
 
-The electromagnetic launcher is the plant's most capital-intensive novel component, and there is no published cost estimate for a device capable of 60 km/s at any energy scale. Existing EM launchers (railguns, coilguns) operate at 2–4 km/s for defense applications; a 60 km/s device is a 15–30× velocity extrapolation and requires ~1000× higher kinetic energy density. Machine 4's planned stored energy of 100 MJ gives a scale reference, but converting this to cost requires knowing the driver architecture (capacitor banks, switching, barrel materials, bore life) — all proprietary. The FLARE pivot (September 2025) strongly implies the projectile gun was not cost-competitive: FLARE's pulsed-power driver costs $2/J versus $6–13/J for "alternatives," and the company described the FLARE demonstrator as costing $100–200M versus 1/20 of NIF's equivalent cost. This is indirect evidence that the electromagnetic gun was more expensive per joule than pulsed power, though no explicit comparison was published.
+Multiple figures appear in sources: "once every 30 seconds" (0.033 Hz), "once every 10 seconds" (0.1 Hz for 500 MW plant), "once every 90 seconds." For a fixed fusion yield per shot, rep rate directly sets average thermal power. A factor-of-3 uncertainty in rep rate propagates directly into a factor-of-3 uncertainty in plant power output (or equivalently, in the yield per shot required to hit 150 MWe at a given rep rate).
 
-Unlike laser IFE (where driver costs are well-characterized from NIF/LIFE/Xcimer data) or MagLIF (where Z-IFE SAND2006-7148 provides a baseline), projectile ICF has no published driver cost study. A cost model must treat this as a deeply uncertain free parameter.
+### 2.4 Target Manufacturing at Scale (High)
 
-**2. Target gain scaling — claimed 200–1000×, achieved <10× at NIF (impact: critical)**
+The target is described as "very complex" as an object. No target cost estimate is published. Hawker's model treats target cost as a free parameter, noting that even $1/target at 0.033 Hz is only ~1M targets/year — far less demanding than laser IFE (10 Hz = 315M targets/year). However, complexity per target is higher.
 
-FLF's commercial viability requires a minimum gain of 200× (ideally 1000×). Current world record is ~4× at NIF (indirect drive, 192 beams, 2.05 MJ). FLF's demonstrations with Machine 3 (6.5 km/s) produced neutrons confirmed by UKAEA in 2022, but the gain achieved was not disclosed. The mechanism for achieving 200–1000× relies on FLF's proprietary "amplifier" target design — multiple internal cavities that successively amplify the shock pressure. No peer-reviewed paper has validated this scaling pathway. The transition from 6.5 km/s (Machine 3, demonstrated) to 60 km/s (Machine 4, cancelled before testing) is a physics extrapolation of uncertain fidelity. Machine 4's cancellation eliminates the only planned experiment that would have tested gain in the relevant velocity regime. A cost model must treat target gain as the dominant physics uncertainty, with the 200× floor as a commercial binary threshold.
+### 2.5 Liquid Lithium Chamber Engineering (Moderate)
 
-**3. Rep rate to power output coupling — fundamentally different from steady-state concepts (impact: high)**
+The "1-meter-thick curtains of liquid lithium metal flowing within the chamber" serve as blanket, shield, and heat transfer medium. This concept draws on HYLIFE heritage (1980s–1990s LLNL studies). The OSTI source on electromagnetic pumping of liquid lithium (UCRL-53356, 1983) gives design parameters for HYLIFE: 72 m³/s flow rate, 800 tonnes inventory, 50–60% pump efficiency. However, these were for a different chamber geometry and higher rep rate. No published adaptation to First Light's sub-Hz regime exists.
 
-As in MagLIF (see 07-maglif analysis), pulsed operation means net electrical output is the product of three uncertain parameters: rep rate × fusion yield per shot × thermal efficiency. FLF's quoted rep rates range from 0.011 Hz (90s between shots) to 0.1 Hz (10s). A 10× change in rep rate produces a 10× change in output power from the same driver. The sub-Hz rates are enabled by FLF's claimed high gain — fewer shots needed per unit energy. But if gain falls short of 200×, the rep rate required to maintain plant output rises, increasing wear on chamber components and the projectile launcher. There is no published analysis of how the rep rate requirement scales with gain shortfall.
+### 2.6 Post-Pivot Status (Context)
 
-**4. Liquid lithium chamber — novel design, no cost analogues in operating plants (impact: high)**
-
-FLF's power plant uses 1-meter-thick flowing liquid lithium curtains that simultaneously absorb neutrons, breed tritium, capture heat, and protect the structural vessel. This design has genuine advantages (vessel never replaced, high TBR), but the engineering of flowing liquid metal at plant scale introduces costs with no direct analogues:
-
-- Lithium pump power is a non-trivial recirculating power fraction (not quantified in public sources)
-- Liquid lithium is chemically reactive with air and water — containment, safety systems, and remote handling add capital cost
-- The curtain flow geometry must survive repetitive blast loading from fusion shots; no prototype has demonstrated this
-- Heat exchanger design between liquid lithium (primary) and water/steam (secondary) must handle pulsed thermal input
-
-The Laser IFE analysis (26-laser-icf-indirect-drive, §Liquid First Wall) discusses analogous FLiBe challenges. Projectile ICF's liquid lithium design shares the pumping and thermal coupling challenges while substituting lithium corrosion concerns for FLiBe chemistry concerns.
-
-*Consequence-of-failure scenario:* The flowing liquid lithium curtain is doubly load-bearing — it is simultaneously the first wall/structural protection and the sole tritium breeding system (TBR 1.8). If the curtain proves unviable due to blast-loading dynamics, containment cost, or unacceptable pump recirculating power, both advantages collapse together. Two scenario branches follow:
-
-(a) **Solid-wall fallback**: Replacing the flowing curtain with a solid first wall and separate tritium breeding blanket (as in tokamaks or laser ICF designs) would add the very vessel replacement cost that FLF's design avoids — an estimated $100–300M/decade replacement item for a GW-scale plant, recurring. Capital cost would increase and the "vessel lifetime = plant lifetime" claim would be invalidated.
-
-(b) **TBR fallback**: Solid breeding blankets for IFE-scale designs achieve TBR 1.05–1.15 in best-case configurations. Falling to this range from TBR 1.8 eliminates the 25 kg/year tritium surplus and pushes projectile ICF into the same tritium-startup-constrained position as laser ICF and most tokamak D-T concepts — requiring a multi-hundred-kg tritium bank and constraining fleet deployment rate. The liquid lithium curtain is not merely a cost advantage; it is the mechanism by which this concept sidesteps the D-T fuel cycle's primary fleet-scaling bottleneck.
-
-**5. Physics validation gap — commercial concept abandoned before key experiments (impact: high)**
-
-Unlike most fusion concepts where the primary developer continues to generate data, projectile ICF's primary champion abandoned the approach before completing the critical velocity/gain experiments. Machine 4 — the device that would have tested 60 km/s impacts — was cancelled in February 2025. This means the fundamental physics question (does the amplifier target achieve 200× gain at the target velocity?) has never been tested. Any LCOE model built on projectile ICF physics is modeling a concept that has been provisionally abandoned by its inventor on technical/economic grounds, without the exit point having been published.
-
-**Modeling Approach Recommendation**
-
-The two blocking unknowns — driver capital cost and target gain — are not uncertainties that can be parameterized within a standard IFE cost structure (e.g., a 1costingfe-style framework that fills known account slots). They are genuinely uncharacterized free parameters with no published analogue cost basis. A standard parameterized cost model applied here would produce false precision: the output would be sensitive to assumed values that have no empirical grounding.
-
-**Recommended approach: free-form scenario modeling** with gain and driver cost as the primary swept parameters, rather than a bottom-up CAS-structured estimate. This is appropriate when the dominant cost uncertainties span orders of magnitude and the physics gating question (does 200× gain exist at 60 km/s?) is a commercial binary threshold, not a continuous sensitivity.
-
-Key hypotheses the cost model should test as testable propositions:
-
-1. **Gain threshold**: *If target gain ≥ 200× is achievable at 60 km/s, then LCOE < $50/MWh at the stated rep rate (0.033–0.1 Hz) and a commercially credible driver cost.* Test by sweeping gain from 10× to 1000× with driver cost fixed at plausible scenarios.
-
-2. **Driver cost sensitivity**: *The LCOE is nearly linearly sensitive to driver capital cost in the $0.5B–$3B range, because the driver is the dominant novel CAS22 item.* Test by sweeping driver CAPEX at fixed gain = 200×.
-
-3. **Rep rate requirement at gain shortfall**: *If gain falls below 200×, the rep rate required to maintain 333 MWe output rises above 0.1 Hz, violating chamber clearing time constraints and invalidating the mechanical driver architecture.* This is a cliff edge in the parameter space, not a smooth degradation.
-
-4. **Thermal efficiency baseline**: *Assuming 33–35% steam Rankine efficiency (mature, well-characterized) introduces negligible error relative to gain and driver cost uncertainties; it is not a sensitivity worth sweeping.*
-
-The FLARE pivot (September 2025) provides an indirect calibration: FLF's own internal analysis concluded that pulsed-power delivery (FLARE) was economically superior to the electromagnetic gun, strongly implying the projectile driver cost was above the threshold consistent with <$50/MWh LCOE. This is not a cost estimate — it is a lower bound on what FLF found unviable — and should anchor the pessimistic driver cost scenario.
-
-**CAS-Level Cost Structure Mapping**
-
-Projectile ICF departs structurally from conventional tokamak CAS accounts:
-
-| CAS Account | Conventional Tokamak | Projectile ICF | Delta |
-|-------------|---------------------|----------------|-------|
-| CAS22 — Reactor Plant (magnets) | Dominant cost: HTS coils, structure, cryogenics | Zero — no external magnets | **Advantage** |
-| CAS22 — Reactor Plant (first wall/blanket) | Solid PFC tiles + separate blanket modules; periodic replacement | Flowing liquid Li curtain integrates first wall + blanket + tritium breeding; vessel never replaced | Advantage on replacement; novel engineering |
-| CAS22 — Driver / Heating System | NBI + RF (~$200–500M at GW scale) | EM launcher (no cost basis; FLF pivot implies >$1B for 100 MJ class device) | **Penalty — dominant unknown** |
-| CAS22 — Consumables | No per-shot hardware destruction | Target (1–4M/year) + projectile (1–4M/year) per shot — recurring CAPEX-like costs with no CAS analogue | Novel cost structure |
-| CAS23 — Turbine Plant | Conventional steam; well-characterized | Identical to conventional — FLF explicitly chose steam Rankine | Neutral |
-| CAS27 — Special Materials | HTS tape (REBCO), cryogenic insulation | Liquid Li (supply non-constrained), ⁶Li enrichment, target materials (unknown) | Partially simpler |
-| Tritium Breeding | TBR typically 1.05–1.1 in solid breeding blankets | TBR 1.8 (independently validated); enables tritium surplus | **Advantage** |
-
-The net CAS picture: projectile ICF eliminates magnet costs entirely (a major tokamak CAPEX item) and uses a mature BOP, but substitutes an unknown-cost EM driver with no published analogue and introduces a recurring per-shot consumable structure absent from all reference plant cost models. The driver and consumable costs are the two accounts that must be characterized before a meaningful LCOE estimate is possible.
+First Light pivoted to FLARE (pulsed-power liner implosion with fast ignition) in September 2025 and abandoned plans for building a projectile fusion power plant, instead pursuing a technology-licensing model. No active commercial pursuer of the pure projectile ICF design point remains. This makes the 150 MWe pilot plant a historical design point that will not be further developed.
 
 ---
 
 ## Section 3: Maturity of Key Subsystems and Components
 
-Listed in ascending order of maturity (least mature first):
+Subsystems ranked in ascending order of maturity:
 
-**Electromagnetic Gun Driver (Machine 4 concept) — TRL 2–3**
-- **Demonstrated**: Machine 3 launched projectiles at 6.5 km/s with sufficient precision to drive a converging implosion; fusion neutrons confirmed by UKAEA in 2022. This is the only demonstrated projectile ICF result at any scale.
-- **On paper only**: Machine 4 (60 km/s, 100 MJ stored energy) was in design phase when cancelled February 2025. The barrel bore engineering, sabot separation, projectile stability, and energy storage architecture for 60 km/s were never built or tested.
-- **Missing at scale**: The ~10× velocity increase from Machine 3 to commercial requires a launcher technology that does not exist. Achieving 60 km/s with macroscopic projectiles requires barrel lengths and magnetic field gradients that have no industrial precedent. Bore erosion at these velocities is a fundamental unsolved problem. Commercial rep rates (0.1 Hz → one shot per 10 seconds) would require either a continuously reloaded single-barrel or a multi-barrel architecture — neither has been designed.
+### Electromagnetic Gun Driver — TRL 1–2 (Missing at scale)
 
-**Target Fabrication at Commercial Scale — TRL 2–3**
-- **Demonstrated**: FLF produced research-grade targets for Machine 3 experiments. The cubic target geometry (~1 cm) with multiple internal cavities was fabricated at laboratory scale.
-- **On paper only**: Commercial-scale production of FLF's proprietary "amplifier" targets is entirely uncharacterized. No fabrication cost estimates, defect tolerance specifications, or yield rates have been published.
-- **Missing at scale**: At 0.033–0.1 Hz rep rate, a 333 MWe plant requires 1–3 targets per minute, or roughly 1.5–4.3 million targets per year. Mass manufacturing precision multi-cavity fusion targets at this throughput has no demonstrated analogue. The target must be precisely positioned in the chamber path of the projectile at each shot. Positional tolerance requirements have not been published.
+First Light achieved 6.5 km/s with a two-stage gas gun (Machine 3). The electromagnetic launcher needed for a power plant (~60 km/s, rep-rated, 100 MJ stored energy) was never built. Machine 4 was cancelled in February 2025. No electromagnetic gun at any scale has demonstrated the required projectile velocities for high-gain fusion targets.
 
-**Flowing Liquid Lithium Chamber — TRL 2–3**
-- **Demonstrated**: TBR of 1.8 validated by TÜV SÜD UK (February 2026) through computational analysis of the blanket design — this confirms the neutronic design is sound, not that the flowing lithium system has been built.
-- **On paper only**: The 1-meter-thick flowing curtain design exists as a detailed engineering concept. The net tritium surplus of 25 kg/year at 333 MWe is consistent with TBR 1.8 and reasonable burnup fractions.
-- **Missing at scale**: No prototype of a flowing liquid lithium curtain chamber has been built or operated under fusion neutron flux. The fluid dynamics of maintaining thick curtain geometry under repetitive blast loading from fusion shots is undemonstrated. Liquid lithium compatibility with structural materials at plant lifetime neutron fluence is uncharacterized. Lithium pump power (recirculating fraction) has not been published.
+### Target Design for High Gain — TRL 2 (On paper only)
 
-**Target Physics / High-Gain Compression — TRL 3–4**
-- **Demonstrated**: Machine 3 (6.5 km/s) drove a projectile-induced implosion that produced fusion neutrons, independently confirmed by UKAEA in 2022. This is a genuine milestone — the first demonstration of projectile-driven fusion. However, the gain achieved has not been published; it is almost certainly far below commercial thresholds.
-- **On paper only**: The amplifier target's ability to achieve 200–1000× gain at 60 km/s is claimed based on FLF's internal simulations. The mechanism (successive cavity-driven shockwave amplification, fuel accelerated to >70 km/s, compressed to 10 terapascals) is described in public materials but not validated by peer-reviewed experiment.
-- **Missing at scale**: High-gain implosion at commercial velocity (60 km/s) has never been tested. The sensitivity of gain to velocity, symmetry, and target manufacturing tolerances is unknown from public data.
+The 2022 experiment produced ~50 neutrons. The target amplified impact pressure by ~20×. Designs achieving gain 200–1000 exist only in simulation. The FLARE pivot explicitly acknowledges that high gain requires a different approach (fast ignition) rather than pure projectile compression.
 
-**Tritium Handling and Breeding — TRL 4–5**
-- **Demonstrated**: Liquid lithium tritium breeding concept is theoretically well-understood; TBR 1.8 neutronic validation completed. Tritium handling technology (for D-T fuel cycles) exists at scale from fission industry.
-- **On paper only**: FLF-specific tritium extraction from flowing lithium, tritium inventory management, and self-sufficiency timeline ("as little as one week") are design claims without experimental validation.
-- **Missing at scale**: Integration of tritium extraction with the flowing lithium curtain under plant operating conditions is undemonstrated. Tritium permeation rates through liquid lithium at operating temperatures have implications for tritium inventory and secondary coolant contamination.
+> "The design used to achieve this result is already months out of date. As soon as we reach the maximum with one idea, we invent the next"
+> — prnewswire-news-releases-first-light-achieves-world-first.md §Dr Nick Hawker quote
 
-**Energy Conversion / Balance of Plant — TRL 7–8**
-- **Demonstrated**: FLF explicitly selected a conventional steam Rankine cycle: "After the lithium heat exchanger, the plant is identical to many other already working facilities." 150-year-old steam turbine technology at this scale is mature.
-- **On paper only**: The specific coupling between a pulsed liquid-lithium heat source (repetitive thermal pulses) and the steam generator has not been designed; thermal buffering may be needed.
-- **Missing at scale**: Nothing material. BOP is the most commercially mature element of the entire system.
+### Liquid Lithium Chamber with Flowing Curtains — TRL 2–3 (On paper only)
+
+The chamber concept (flowing lithium curtains absorbing blast energy, breeding tritium, shielding walls) draws on HYLIFE heritage but has never been demonstrated at any scale for projectile ICF geometry. The HYLIFE program studied FLiBe jets rather than pure lithium curtains at the geometry First Light describes. First Light claims "lifetime-of-plant vessel" because neutrons never reach the vessel wall.
+
+### Tritium Breeding Blanket — TRL 3 (On paper only, independently validated)
+
+TBR of 1.8 validated by TUV SUD UK (February 2026) for the FLARE geometry. The liquid lithium approach (natural lithium, no enrichment needed) is simpler than FLiBe/Li-6 alternatives. However, this validation is a neutronics calculation, not a physical demonstration. No tritium extraction or processing system has been designed.
+
+### Energy Conversion (Steam Rankine) — TRL 7–8 (Demonstrated)
+
+> "After the lithium heat exchanger, the plant is identical to many other already working facilities"
+> — first-light-fusion-technology.md §FLARE
+
+Steam Rankine cycle from a lithium-to-water heat exchanger is entirely conventional. The thermal conversion efficiency can be bounded at 33–40% based on lithium outlet temperatures typical of IFE designs.
+
+### Balance of Plant (Turbine, Generator, Grid Connection) — TRL 9 (Mature)
+
+Standard power plant equipment. No novel engineering required downstream of the heat exchanger.
 
 ---
 
 ## Section 4: Key Materials and Supply Chain Considerations
 
-**Liquid Lithium**
+### Liquid Lithium Inventory
 
-A 333 MWe plant with 1-meter-thick flowing curtains in a chamber ~2–3 m in radius requires a substantial lithium inventory. Rough volumetric estimate: a hemispherical curtain of radius ~3 m, 1 m thick, with ~50% void fraction for flow gives an inventory of ~10–20 tonnes circulating [inferred: hemispherical shell volume 4/3π(r₂³–r₁³)/2, r₂=3m, r₁=2m, density 0.53 t/m³, 50% fill fraction ≈ 10–15t]. Global lithium production is ~100,000 tonnes/year of LCE; elemental lithium demand for a first plant is not supply-constrained. However, liquid lithium is chemically reactive (ignites on contact with air or water), requiring inert-atmosphere handling and specialized containment throughout the primary loop. This is a cost and safety constraint, not a supply constraint.
+The HYLIFE reference design used 800 tonnes of lithium. First Light's chamber at 150 MWe would likely require less (lower rep rate → less flow → smaller inventory) but no published figure exists. High-purity lithium metal costs ~$100/kg (Hawker 2020). At 400–800 tonnes, the lithium inventory alone represents $40M–$80M — a significant fraction of the plant capital. Global lithium production is ~130,000 tonnes/year (2024), primarily for batteries. A single fusion plant would require <1% of global supply but the high-purity metal form is a smaller market than battery-grade lithium carbonate.
 
-**Lithium-6 Enrichment**
+### Projectile Materials
 
-Natural lithium is 7.5% ⁶Li. Achieving TBR 1.8 almost certainly requires lithium enriched in ⁶Li (the tritium-producing isotope via the ⁶Li(n,α)T reaction). Current global ⁶Li enrichment capacity is limited — historically produced in Russia and China; US capacity is modest. A single 333 MWe plant's lithium inventory enriched to 30–50% ⁶Li would require significant enrichment throughput. This is a supply chain risk for a fleet of plants, though the first plant can likely be accommodated. FLF's public materials do not address enrichment requirements — a notable gap given TBR 1.8 is a headline claim.
+The projectile must survive electromagnetic acceleration to ~60 km/s. Material requirements are not publicly specified. At one shot every 30 seconds, consumption is ~1M projectiles/year. If projectiles are metal (aluminum, copper, or tungsten), material cost is likely modest (<$1/projectile for a few-gram projectile). Manufacturing precision requirements are unknown.
 
-**Tritium**
+### Target Materials
 
-Standard D-T challenge: startup tritium inventory of 1–5 kg at ~$30,000/g is a $30–150M capital cost item. FLF's claimed TBR 1.8 and net surplus of 25 kg/year at 333 MWe substantially reduce long-term tritium supply concerns compared to lower-TBR concepts. The "self-sufficiency in as little as one week" claim implies a fast tritium breeding cycle that could enable fleet deployment without a tritium bank — if validated. See the 07-maglif analysis (§Tritium) for the shared fleet-level tritium scarcity challenge; FLF's high TBR is a genuine advantage over most D-T concepts.
+Targets contain deuterium-tritium fuel in a "few mm" capsule surrounded by a complex amplifier structure. No materials specification is published. The per-target cost at volume is the key unknown. Hawker's model explores target costs from $0.10 to $100; at 0.033 Hz the annual target count is ~1.04M, making total target cost $0.1M–$104M/year depending on unit cost.
 
-**Projectile Materials**
+### Tritium
 
-For the original projectile ICF approach, the projectile (launched at 60 km/s) must be dense enough to carry sufficient kinetic energy and must maintain integrity during acceleration along the barrel. At 6.5 km/s (Machine 3), projectile materials are not exotic. At 60 km/s, conventional sabot/projectile combinations face extreme stress during acceleration; materials selection and bore erosion are open engineering questions. Projectile cost per shot at commercial rep rates is uncharacterized — even a notional cost of $1/projectile implies ~$1.5–4.3M/year at 1.5–4.3M shots/year, which is modest but not negligible.
+Standard D-T concern. Startup inventory required (order 1–5 kg at ~$30,000/g). First Light claims TBR 1.8 and self-sufficiency "in as little as one week" at the 333 MWe design point. At 150 MWe, tritium consumption scales roughly proportionally. The high TBR (if achievable) would make this concept a net tritium producer and potential supplier to other D-T concepts.
 
-**Target Fabrication Materials**
+### Electromagnetic Gun Components
 
-FLF's amplifier target geometry ("cubic form, ~1 cm sides, multiple cavities") is proprietary. Target materials are not publicly disclosed. If the target contains gold (as in NIF indirect-drive hohlraums), this would be a supply chain concern at millions of targets per year. If the target uses plastics and metals (as Pacific Fusion's MagLIF targets), costs are more tractable. This is a material unknown that could range from trivial to significant.
-
-**No HTS or Superconductors Required**
-
-Unlike tokamak/stellarator concepts, projectile ICF requires no HTS tape (REBCO), no cryogenic magnet infrastructure, and no specialized superconducting wire. The supply chain concerns that dominate compact tokamak analysis (see 01-hts-compact-tokamak §Supply Chain) are entirely absent. This is a structural advantage.
+The driver would require large capacitor banks, high-current switches, and electromagnetic acceleration coils. These are industrial components (similar to railgun technology developed for defense applications) but have never been built for the energy levels and repetition rates required. No supply chain assessment exists.
 
 ---
 
-## Section 5: LCOE-Relevant Parameters
+## Section 5: Design Point Parameters
 
-**Available Parameters:**
+| Parameter | Value | Source | Confidence | Note |
+|-----------|-------|--------|------------|------|
+| net_electric_MWe | 150 MWe | prnewswire-news-releases-first-light-achieves-world-first.md §Next Steps | medium | spec key: drives `P_native` |
+| target_gain | 200–1000 | ipgroupplc-news-and-events-portfolio-news-2025-2025-09-19/output.md §Technical background | low | Gain 200 is minimum for commercial viability per FLF economic modeling; 1000 is aspirational upper bound |
+| rep_rate_Hz | 0.033 (baseline) | prnewswire-news-releases-first-light-achieves-world-first.md §Fusion Facts: "every 30 seconds" | medium | Conflicting values: 0.011–0.1 Hz range in sources |
+| fusion_energy_per_shot_GJ | ~7.5 GJ | [inferred: at 150 MWe, 0.033 Hz, 35% thermal efficiency, blanket multiple 1.15 → P_th = 150/0.35 = 429 MW → E_f = 429/(0.033 × 1.15) = ~11.3 GJ fusion; adjusted for recirculating power → ~7.5 GJ at gain 250] | low | Sensitive to gain, rep rate, and efficiency assumptions; not published |
+| driver_energy_MJ | ~100 MJ (stored) | first-light-fusion-technology.md §Machine 4 description (cancelled) | low | Machine 4 target; never built; actual pilot driver energy unknown |
+| projectile_speed_km_s | ~60 | prnewswire-news-releases-first-light-achieves-world-first.md §Fusion Facts: "fuel accelerated to over 70 km per second as it implodes" | low | 60 km/s is Machine 4 target; fuel implodes at >70 km/s due to amplification |
+| projectile_speed_demonstrated_km_s | 6.5 | prnewswire-news-releases-first-light-achieves-world-first.md §body: "6.5 km per second" | high | Gas gun demonstration, not electromagnetic |
+| target_pressure_amplification | >20× | prnewswire-news-releases-first-light-achieves-world-first.md §Fusion Facts | high | Demonstrated in 2022 experiment |
+| fuel_compression_TPa | 10 | prnewswire-news-releases-first-light-achieves-world-first.md §Fusion Facts: "10 Terapascals" | high | Demonstrated condition |
+| TBR | 1.8 | theengineer-content-news-first-light-fusion-claims-tritium/output.md §body | high | Validated by TUV SUD UK; note: this is for FLARE geometry, assumed same for projectile plant |
+| lithium_blanket_thickness_m | 1.0 | dossier.md §Tritium Breeding: "1-meter-thick curtains" | medium | |
+| eta_th | 0.33–0.40 | [analogue: steam Rankine from liquid lithium heat exchanger; HYLIFE-II design used similar cycle] | medium | Not published for this design point |
+| p_input_MW | ~30–50 | [estimated: driver 100 MJ at 0.033 Hz = 3.3 MW driver power; with EM gun wall-plug efficiency ~10–20% → 17–33 MW electrical; plus auxiliaries → ~30–50 MW total recirculating] | low | spec key: `p_input` — highly uncertain |
+| LCOE_target_USD_MWh | <50 | prnewswire-news-releases-first-light-achieves-world-first.md §A consumables business model: "under $50/MWh" | medium | Company claim; Hawker (2020) peer-reviewed analysis |
+| total_plant_cost_USD | <$1B | prnewswire-news-releases-first-light-achieves-world-first.md §Next Steps | low | No breakdown provided |
+| driver_cost_USD_per_J | 1.7 (Machine 3 reference) | pmc-articles-pmc7658748.md §2. Model: "First Light's Machine Three… $1.7/J" | medium | Not rep-rated; pilot driver cost unspecified |
+| energy_per_target_home_years | 2+ | prnewswire-news-releases-first-light-achieves-world-first.md §Fusion Facts: "enough energy to power the average UK home for over 2 years" | medium | ~5.6 GJ thermal per UK home per year → >11 GJ per shot implied |
 
-| Parameter | Value/Range | Source | Confidence | Notes |
-|-----------|-------------|--------|------------|-------|
-| Net electrical output — pilot | ~150 MWe | first-light-fusion-technology.md §Plant Specifications | medium | One of several quoted targets; "<$1B" cost associated |
-| Net electrical output — design point | ~333 MWe | first-light-fusion-technology.md §Tritium Breeding | medium | Basis for TBR validation and tritium surplus calculation |
-| Net electrical output — commercial | ~500 MWe | first-light-fusion-technology.md §Plant Specifications | medium | "<$5B" associated |
-| Pilot plant capital cost | <$1B | first-light-fusion-technology.md §Plant Specifications | low | FLF stated target; no bottom-up breakdown published |
-| Commercial plant capital cost | <$5B | first-light-fusion-technology.md §Plant Specifications | low | FLF stated target; no bottom-up breakdown published |
-| Specific capital cost — pilot | ~$3,300–6,700/kWe | [inferred: <$1B / 150 MWe, range reflects cost floor vs ceiling] | low | Broad range; no basis for tighter estimate |
-| Specific capital cost — commercial | ~$6,700–10,000/kWe | [inferred: <$5B / 500 MWe] | low | Higher $/kWe than pilot is atypical; may reflect FOAK vs NOAK scaling |
-| LCOE target | <$50/MWh | first-light-fusion-technology.md §Cost and Energy Conversion | low | Stated goal, not computed result |
-| Target gain (Qfusion) | 200–1,000× | first-light-fusion-technology.md §Performance Targets | low | Minimum 200× stated as commercial threshold; no peer-reviewed validation |
-| Current world record gain | ~4× | first-light-fusion-technology.md §Performance Targets | high | NIF indirect drive; context for scale of extrapolation |
-| Repetition rate — pilot (30s between shots) | 0.033 Hz | first-light-fusion-technology.md §Repetition Rate | medium | One of three conflicting figures; 150 MWe plant reference |
-| Repetition rate — commercial (10s between shots) | 0.1 Hz | first-light-fusion-technology.md §Repetition Rate | medium | 500 MWe plant reference |
-| Repetition rate — alternate figure (90s between shots) | 0.011 Hz | first-light-fusion-technology.md §Repetition Rate | low | Also cited in public materials; source unclear |
-| Driver stored energy (Machine 4, cancelled) | 100 MJ | first-light-fusion-technology.md §Driver | medium | Machine 4 spec; cancelled Feb 2025 before construction |
-| Driver velocity — demonstrated (Machine 3) | 6.5 km/s | first-light-fusion-technology.md §Machine 3 | high | Demonstrated; fusion neutrons confirmed by UKAEA 2022 |
-| Driver velocity — commercial target | 60 km/s | first-light-fusion-technology.md §Machine 4 | low | Machine 4 target; never tested |
-| Tritium breeding ratio | 1.8 | first-light-fusion-technology.md §Tritium Breeding | high | Independently validated by TÜV SÜD UK, February 2026 |
-| Tritium surplus | 25 kg/year | first-light-fusion-technology.md §Tritium Breeding | medium | At 333 MWe design point; independently assessed |
-| Tritium self-sufficiency timeline | "as little as one week" | first-light-fusion-technology.md §Tritium Breeding | low | Design claim; not experimentally demonstrated |
-| Vessel replacement required | None | first-light-fusion-technology.md §Neutron Management | medium | "Neutrons do not reach vessel wall → lifetime-of-plant vessel" |
-| Energy conversion cycle | Steam Rankine | first-light-fusion-technology.md §Energy Conversion | high | Explicitly chosen; "150-year-old steam turbine technology" |
-| FLARE driver cost (successor concept) | $2/J | first-light-flare-pivot-update.md §Performance | medium | Comparative figure; FLARE replaces projectile driver |
-| FLARE demonstrator cost | $100–200M | first-light-flare-pivot-update.md §Performance | medium | 1/20th of NIF equivalent; provides order-of-magnitude context |
-| NearStar rep rate | 1 Hz | nearstar-fusion-technology.md §Core Driver | medium | Significantly higher than FLF sub-Hz rates |
-| NearStar plant scale | 50 MW–1 GW+ | nearstar-fusion-technology.md §Power Plant | low | Modular architecture; no demonstrated design point |
-| NearStar driver kinetic energy | >1 MJ per shot | nearstar-fusion-technology.md §Core Driver | medium | 50 g projectile at 10 km/s |
-| Implicit fusion energy per shot — 333 MWe at 0.033 Hz | ~10 GJ | [inferred: 333 MWe / 33% thermal efficiency = 1 GW thermal × 30s] | low | Derivation: 333 MWe ÷ 0.33 × 30s ≈ 30 GJ fusion energy needed; at gain 200–1000×, driver energy 30–150 MJ per shot] |
+---
 
-**Missing Parameters:**
+## Section 5b: Override Candidates
 
-| Parameter | Gap Type | Criticality | Notes |
-|-----------|----------|-------------|-------|
-| Electromagnetic gun capital cost (projectile driver) | truly-unknown | blocking | No analogous device exists; Machine 4 cancelled before construction |
-| Driver wall-plug efficiency (projectile gun) | truly-unknown | blocking | Not published; determines recirculating power fraction |
-| Target per-shot fabrication cost | proprietary | blocking | FLF proprietary design; no mass-production analogue |
-| Target manufacturing yield / defect rate | truly-unknown | blocking | Multi-cavity precision target; reject rate at scale unknown |
-| Gain achieved in 2022 demonstration | proprietary | blocking | FLF confirmed neutrons; did not disclose gain |
-| Gain vs. velocity curve | proprietary | blocking | Key sensitivity parameter for cost model |
-| Net thermal efficiency (full cycle) | not-yet-sourced | important | Steam Rankine expected ~33–35%; Li loop losses not characterized |
-| Recirculating power fraction | truly-unknown | important | Li pump power, driver recharge energy not published |
-| Capacity factor / availability | truly-unknown | important | No maintenance schedule data; no prototype to inform estimate |
-| Target positioning tolerance | truly-unknown | important | Determines target injection system complexity and cost |
-| Chamber clearing time between shots | truly-unknown | important | Determines minimum rep rate; liquid Li resettlement after blast |
-| Lithium inventory and pump capital cost | not-yet-sourced | important | Flowing curtain dimensions determine Li inventory; pump cost unquantified |
-| Lithium-6 enrichment fraction required | derivable | important | Required to validate TBR 1.8; not published |
-| O&M cost structure | truly-unknown | important | No analogue exists; no published estimate |
-| Projectile material cost per shot | not-yet-sourced | nice-to-have | Likely modest; depends on material composition |
+### Per-Account Walkthrough
+
+**C220101 — First wall, blanket & neutron multiplier**: The liquid lithium curtain design is distinctive — 1-meter-thick flowing lithium serving simultaneously as blanket, shield, and first wall. No dollar figure is published for this subsystem. The concept eliminates solid first-wall replacement (claimed "lifetime-of-plant vessel") which would reduce this account relative to solid-wall IFE designs. The HEAVY_ION archetype default ($64.8M at P_native) prices a solid blanket with neutron multiplier structures — structurally inapplicable to a flowing liquid-metal curtain. However, no company-grounded quantity or unit cost justifies a specific override value.
+
+```yaml
+  - account: C220101
+    value: 64.8
+    enabled: false
+    provenance: derived
+    source: "dossier.md §Neutron Management; prnewswire-news-releases-first-light-achieves-world-first.md §A key step"
+    rationale: |
+      The library default ($64.8M) prices a solid blanket with neutron multiplier.
+      First Light's design uses flowing liquid lithium curtains that serve as blanket,
+      shield, and first wall simultaneously — a structurally different system. The curtain
+      cost is better captured by the lithium inventory (CAS27 = $70M) plus the EM pump
+      system (C220200, not overridable). No company-published dollar figure exists for the
+      blanket subsystem alone. Disabled because the structural mismatch is acknowledged
+      but no quantitative correction is derivable without double-counting CAS27.
+```
+
+**C220102 — Radiation shield**: The lithium curtain itself performs the shielding function; no separate radiation shield structure is described. The HEAVY_ION archetype default ($45.2M at P_native) prices a dedicated radiation shield structure behind the blanket. First Light's 1-meter-thick flowing lithium curtain absorbs all neutrons before they reach the vessel wall — "Neutrons do not reach vessel wall → lifetime-of-plant vessel" (dossier.md §Neutron Management). With no neutrons reaching the structural wall, a separate shield is structurally unnecessary. The shielding function is fully integrated into the lithium curtain (captured in CAS27 inventory cost).
+
+```yaml
+  - account: C220102
+    value: 0.15 * generic.costs.C220102
+    enabled: true
+    provenance: derived
+    source: "dossier.md §Neutron Management; prnewswire-news-releases-first-light-achieves-world-first.md §A key step"
+    rationale: |
+      The library default ($45.2M) prices a dedicated solid radiation shield behind
+      the blanket. First Light claims neutrons never reach the vessel wall due to
+      1-meter-thick lithium curtains. No separate shield structure is described.
+      A small residual (15% of generic) is retained for biological shielding of
+      penetrations (projectile entry port, target injection, diagnostics) and any
+      secondary radiation paths not covered by the lithium curtain. Zero would
+      under-price penetration shielding; the full default is structurally inapplicable.
+```
+
+**C220104 — Primary pulsed driver ($/J of driver energy)**: The electromagnetic gun is the primary driver. The only published cost metric is Machine 3 at $1.7/J stored energy (Hawker 2020). The IP Group release states FLARE demonstration facility at "$2 per Joule stored energy" ($100M–$200M for a 50–100 MJ system). For a 100 MJ pilot driver at $1.7–$2.0/J, the implied cost is $170M–$200M.
+
+```yaml
+  - account: C220104
+    value: 200.0
+    enabled: true
+    provenance: derived
+    source: "pmc-articles-pmc7658748.md §2. Model; ipgroupplc-news-and-events-portfolio-news-2025-2025-09-19/output.md §Cost comparisons estimates"
+    rationale: |
+      Hawker (2020) published Machine 3 driver cost at $1.7/J stored.
+      IP Group (2025) published FLARE demo at $2/J stored.
+      Pilot design specifies 100 MJ stored energy (Machine 4 target).
+      100 MJ × $2/J = $200M. Used $2/J as the more conservative (later, rep-rated)
+      estimate. This is the electromagnetic gun + capacitor bank + power supply cost.
+      Library IFE driver default (laser-based at $60–$700/J) is inapplicable to EM gun.
+```
+
+**C220105 — Primary structure**: No published cost data for the reactor vessel/structure. First Light claims the vessel is a simple steel container since lithium absorbs all neutrons before reaching the wall. This suggests lower cost than laser IFE chambers with final optics, but no dollar figure is available. **No override.**
+
+**C220106 — Vacuum system**: The reaction chamber likely requires vacuum for projectile flight and target integrity. No published cost or specification. **No override.**
+
+**C220107 — Pulsed-power capacitor bank ($/J stored)**: The 100 MJ stored energy for the EM gun is delivered from a capacitor bank. The $2/J figure from IP Group encompasses the entire driver (gun + bank + power supply). Since C220104 already captures the driver cost, and the EM gun architecture merges the capacitor bank with the launcher (unlike laser IFE where the bank powers the laser separately), this account should be zeroed to avoid double-counting with C220104.
+
+```yaml
+  - account: C220107
+    value: 0.0
+    enabled: true
+    provenance: derived
+    source: "ipgroupplc-news-and-events-portfolio-news-2025-2025-09-19/output.md §Cost comparisons estimates"
+    rationale: |
+      The EM gun driver cost ($2/J for 100 MJ = $200M) already includes the capacitor
+      bank as an integral part of the electromagnetic launcher system. Unlike laser IFE
+      where the bank charges the laser and the laser is a separate cost item, here
+      the bank IS the driver's energy store. Setting to zero avoids double-counting.
+```
+
+**C220108 — Target factory (IFE/MIF target manufacturing)**: Targets are the core consumable. At 0.033 Hz, annual production is ~1.04M targets. No published target cost exists. Hawker's model treats it parametrically. However, the IP Group release states that the FLARE approach has "core components such as the energy delivery system costing 1/10th of the capital cost of previous fast ignition schemes" and that the sub-Hz rep rate "could also lower the operating costs." The company's business model centers on targets as a "high value-added consumables" — implying targets are not trivially cheap.
+
+**Important caveat**: The override value below is a *viability-required ceiling* — the maximum target cost at which the concept remains economically viable — not an estimate of actual target manufacturing cost. No published $/target figure exists. The library default ($79.1M for a high-rep-rate IFE target factory producing 30M–300M targets/year) is structurally inapplicable to a sub-Hz concept producing ~1M targets/year. The override replaces a clearly wrong default with a viability-constrained placeholder. Actual target cost could be higher (making the concept uneconomic) or lower. The model carries a target-cost sensitivity sweep ($1–$20/target annualized) to bound this uncertainty.
+
+```yaml
+  - account: C220108
+    value: 5.6
+    enabled: true
+    provenance: derived
+    source: "pmc-articles-pmc7658748.md §2. Model (target cost framework); prnewswire-news-releases-first-light-achieves-world-first.md §A consumables business model"
+    rationale: |
+      VIABILITY CEILING, not a cost estimate. No published target cost exists.
+      Hawker (2020) establishes that target cost must be <10% of electricity revenue
+      for economic viability. At 150 MWe, 85% CF, $50/MWh LCOE target:
+      Annual revenue = 150,000 × 8760 × 0.85 × $50/1000 = $55.8M.
+      10% ceiling = $5.58M/year.
+      At 0.033 Hz × 8760 × 3600 × 0.85 = 0.99M shots/year.
+      Max target cost = $5.58M / 0.99M = ~$5.6/target.
+      Value represents the annualized target-factory viability ceiling in $M/year.
+      Library default ($79.1M for high-rep-rate IFE target factory) is structurally
+      inapplicable at 1M/year volume. Actual cost is unknown — sensitivity sweep
+      spans $1–$20/target to bound the range.
+```
+
+**C220110 — Remote handling & maintenance**: First Light claims the vessel never needs internal replacement due to lithium shielding — "Neutrons do not reach vessel wall → lifetime-of-plant vessel" (dossier.md §Neutron Management). If true, there is no first-wall or blanket module change-out, which eliminates the dominant remote-handling scope in conventional fusion designs. However, target injection, projectile gun maintenance, and lithium system access still require handling equipment. The HEAVY_ION archetype default ($33.5M at P_native) prices remote handling for periodic blanket and first-wall replacement — structurally inapplicable if no solid in-vessel components require replacement.
+
+```yaml
+  - account: C220110
+    value: 0.30 * generic.costs.C220110
+    enabled: true
+    provenance: derived
+    source: "dossier.md §Neutron Management; prnewswire-news-releases-first-light-achieves-world-first.md §A key step"
+    rationale: |
+      The library default ($33.5M) prices remote handling for periodic blanket/first-wall
+      replacement. First Light's liquid lithium curtain eliminates solid in-vessel component
+      replacement ("lifetime-of-plant vessel"). Remaining RH scope covers projectile gun
+      access, target injection systems, lithium loop maintenance, and diagnostic equipment.
+      30% of generic is an analogue estimate: ~70% of conventional RH cost is driven by
+      blanket/first-wall change-out (based on tokamak cost studies where blanket RH is the
+      dominant scope item), leaving ~30% for other in-vessel and ex-vessel handling needs.
+```
+
+**C220111 — Reactor-equipment installation & assembly**: The library computes C220111 as `installation_frac` × the reactor equipment subtotal. Because C220111 is computed from the *pre-override* subtotal in the library's CAS22 rollup, cost overrides that dramatically reduce the equipment accounts (C220104: $12,591M → $200M; C220107: $420M → $0; C220108: $79M → $5.6M) do not automatically reduce C220111. This is corrected in the model via the `installation_frac` spec parameter, not as a cost override — `installation_frac` is adjusted so that 14% of the *post-override* equipment subtotal (~$301M) is produced by the library's computation, yielding C220111 ≈ $42.2M. This is a spec-level correction for a library computation artifact, not an accountable cost departure. **Not an override** — handled as a spec parameter in model_setup.py.
+
+**CAS21 — Buildings & site structures**: The IP Group release notes the plant is "compact enough to integrate seamlessly into existing power grids" and that the technology "leverag[es] existing supply chains." The <$1B total plant cost constrains CAS21 implicitly, but no breakdown is available. Given the simple chamber design (steel vessel, no superconducting magnets, no complex optics), buildings costs should be lower than laser IFE or tokamak concepts. An analogue from Hawker's $3,600/kWe total for HYLIFE (which includes all accounts) suggests buildings at ~15% of total = $540/kWe × 150 MW = $81M. This is too speculative for an override. **No override.**
+
+**CAS23 — Turbine plant equipment**: Steam Rankine cycle is standard. No reason to override the library default for a thermal-cycle plant at 150 MWe. **No override.**
+
+**CAS24 — Electric plant equipment**: No specific data. **No override.**
+
+**CAS26 — Heat rejection system**: Standard cooling for a 150 MWe thermal plant. **No override.**
+
+**CAS27 — Special materials (initial reactor material inventory)**: The lithium inventory is a major cost item. Hawker (2020) provides the key data: lithium at ~$100/kg, with HYLIFE requiring 800 tonnes ($80M). For a 150 MWe sub-Hz plant, inventory requirements are driven by blast absorption (yield per shot) and flow architecture. Using Hawker's lower-bound estimate (heat capacity sizing: cost = $70k/GJ of fusion energy per shot), at ~7.5 GJ/shot: $70k × 7.5 = $525k minimum. The HYLIFE upper bound ($44M/GJ) clearly applies to a different (multi-GJ, high-rep) design. A reasonable estimate for a ~7.5 GJ, sub-Hz system is 200–400 tonnes of lithium ($20M–$40M) based on scaling from HYLIFE's 800 tonnes at 8 Hz to sub-Hz with proportional flow reduction. Using $70M (IP Group's "natural lithium per reactor" figure from their cost comparison):
+
+```yaml
+  - account: CAS27
+    value: 70.0
+    enabled: true
+    provenance: direct
+    source: "ipgroupplc-news-and-events-portfolio-news-2025-2025-09-19/output.md §Cost comparisons estimates"
+    rationale: |
+      IP Group press release directly states "Natural lithium per reactor: $70M"
+      in the cost comparison table. This represents the initial lithium inventory
+      for the reactor chamber. Compares to "$143M-$451M for enriched lithium
+      alternatives" — First Light uses natural lithium (no enrichment needed due
+      to TBR 1.8 with natural Li). Library default for special materials does not
+      account for the large liquid-metal inventory unique to this architecture.
+```
+
+**CAS70 — Annualized O&M + scheduled component replacement**: First Light claims no first-wall or vessel replacement is needed ("lifetime-of-plant vessel"). The primary maintenance items would be the EM gun components and target injection system. At sub-Hz rep rate, component wear is orders of magnitude lower than high-rep IFE. However, no published O&M cost exists. Hawker's model uses $10–$100/kWe-yr as the nuclear analogue range. At $50/kWe-yr (midpoint), O&M = $7.5M/year for 150 MWe. This is within normal analogue bounds and does not justify an override. **No override.**
+
+**CAS80 — Annualized fuel cost**: Deuterium is negligible. Tritium is self-bred with TBR 1.8 (net producer). Target cost is captured in C220108. No separate fuel procurement cost beyond startup tritium inventory. The startup tritium is a capital item (CAS27), not an annual cost. **No override** (targets already captured, tritium self-sufficient).
+
+### Override Count Check
+
+Total override entries: 7 (C220101, C220102, C220104, C220107, C220108, C220110, CAS27).
+Enabled overrides: 6 (C220102, C220104, C220107, C220108, C220110, CAS27).
+Disabled overrides: 1 (C220101 — structural mismatch acknowledged but no quantitative correction derivable without double-counting CAS27).
+
+Expected band for Low archetype-fit: 6–12 enabled overrides.
+
+The count of 6 enabled overrides falls within the expected band. Four overrides (C220104, C220107, C220108, CAS27) are grounded in company-published cost data or peer-reviewed parametric analysis. Two overrides (C220102, C220110) are derived corrections for structural mismatches between the HEAVY_ION archetype defaults and the liquid-lithium-curtain, sub-Hz, EM-gun architecture. C220111 (installation labor) is corrected via the `installation_frac` spec parameter rather than as a cost override — this is a spec-level correction for a library computation artifact, not an accountable cost departure (see C220111 walkthrough entry above).
+
+```yaml
+overrides:
+  - account: C220101
+    value: 64.8
+    enabled: false
+    provenance: derived
+    source: "dossier.md §Neutron Management; prnewswire-news-releases-first-light-achieves-world-first.md §A key step"
+    rationale: |
+      The library default ($64.8M) prices a solid blanket with neutron multiplier.
+      First Light's design uses flowing liquid lithium curtains that serve as blanket,
+      shield, and first wall simultaneously — a structurally different system. The curtain
+      cost is better captured by the lithium inventory (CAS27 = $70M) plus the EM pump
+      system (C220200, not overridable). No company-published dollar figure exists for the
+      blanket subsystem alone. Disabled because the structural mismatch is acknowledged
+      but no quantitative correction is derivable without double-counting CAS27.
+
+  - account: C220102
+    value: 0.15 * generic.costs.C220102
+    enabled: true
+    provenance: derived
+    source: "dossier.md §Neutron Management; prnewswire-news-releases-first-light-achieves-world-first.md §A key step"
+    rationale: |
+      The library default ($45.2M) prices a dedicated solid radiation shield behind
+      the blanket. First Light claims neutrons never reach the vessel wall due to
+      1-meter-thick lithium curtains. No separate shield structure is described.
+      A small residual (15% of generic) is retained for biological shielding of
+      penetrations (projectile entry port, target injection, diagnostics) and any
+      secondary radiation paths not covered by the lithium curtain. Zero would
+      under-price penetration shielding; the full default is structurally inapplicable.
+
+  - account: C220104
+    value: 200.0
+    enabled: true
+    provenance: derived
+    source: "pmc-articles-pmc7658748.md §2. Model; ipgroupplc-news-and-events-portfolio-news-2025-2025-09-19/output.md §Cost comparisons estimates"
+    rationale: |
+      Hawker (2020) published Machine 3 driver cost at $1.7/J stored.
+      IP Group (2025) published FLARE demo at $2/J stored.
+      Pilot design specifies 100 MJ stored energy (Machine 4 target).
+      100 MJ × $2/J = $200M. Used $2/J as the more conservative (later, rep-rated)
+      estimate. This is the electromagnetic gun + capacitor bank + power supply cost.
+      Library IFE driver default (laser-based at $60–$700/J) is inapplicable to EM gun.
+
+  - account: C220107
+    value: 0.0
+    enabled: true
+    provenance: derived
+    source: "ipgroupplc-news-and-events-portfolio-news-2025-2025-09-19/output.md §Cost comparisons estimates"
+    rationale: |
+      The EM gun driver cost ($2/J for 100 MJ = $200M) already includes the capacitor
+      bank as an integral part of the electromagnetic launcher system. Unlike laser IFE
+      where the bank charges the laser and the laser is a separate cost item, here
+      the bank IS the driver's energy store. Setting to zero avoids double-counting.
+
+  - account: C220108
+    value: 5.6
+    enabled: true
+    provenance: derived
+    source: "pmc-articles-pmc7658748.md §2. Model; prnewswire-news-releases-first-light-achieves-world-first.md §A consumables business model"
+    rationale: |
+      VIABILITY CEILING, not a cost estimate. No published target cost exists.
+      Hawker (2020) establishes that target cost must be <10% of electricity revenue
+      for economic viability. At 150 MWe, 85% CF, $50/MWh LCOE target:
+      Annual revenue = 150,000 × 8760 × 0.85 × $50/1000 = $55.8M.
+      10% ceiling = $5.58M/year annualized target factory + consumables cost.
+      At 0.033 Hz × 8760 × 3600 × 0.85 = 0.99M shots/year.
+      Max target cost = $5.58M / 0.99M = ~$5.6/target.
+      Value represents the annualized target-factory viability ceiling in $M/year.
+      Library default ($79.1M for high-rep-rate IFE target factory) is structurally
+      inapplicable at 1M/year volume. Actual cost is unknown — sensitivity sweep
+      spans $1–$20/target to bound the range.
+
+  - account: C220110
+    value: 0.30 * generic.costs.C220110
+    enabled: true
+    provenance: derived
+    source: "dossier.md §Neutron Management; prnewswire-news-releases-first-light-achieves-world-first.md §A key step"
+    rationale: |
+      The library default ($33.5M) prices remote handling for periodic blanket/first-wall
+      replacement. First Light's liquid lithium curtain eliminates solid in-vessel component
+      replacement ("lifetime-of-plant vessel"). Remaining RH scope covers projectile gun
+      access, target injection systems, lithium loop maintenance, and diagnostic equipment.
+      30% of generic is an analogue estimate: ~70% of conventional RH cost is driven by
+      blanket/first-wall change-out (based on tokamak cost studies where blanket RH is the
+      dominant scope item), leaving ~30% for other in-vessel and ex-vessel handling needs.
+
+  # C220111 (installation labor) is NOT an override — it is corrected via the
+  # installation_frac spec parameter. See the per-account walkthrough for details.
+
+  - account: CAS27
+    value: 70.0
+    enabled: true
+    provenance: direct
+    source: "ipgroupplc-news-and-events-portfolio-news-2025-2025-09-19/output.md §Cost comparisons estimates"
+    rationale: |
+      IP Group press release directly states "Natural lithium per reactor: $70M"
+      in the cost comparison table. This represents the initial lithium inventory
+      for the reactor chamber. Compares to "$143M-$451M for enriched lithium
+      alternatives." First Light uses natural lithium (no enrichment needed due
+      to TBR 1.8 with natural Li). Library default for special materials does not
+      account for the large liquid-metal inventory unique to this architecture.
+```
 
 ---
 
 ## Section 6: Data Gap Inventory
 
 | # | Gap Description | Section | Gap Type | Criticality | Source Recommendation |
-|---|----------------|---------|----------|-------------|----------------------|
-| 1 | Electromagnetic gun capital cost for 60 km/s, 100 MJ class device | S2, S5 | truly-unknown | blocking | No public source; would require FLF internal data or electromagnetic launch system cost studies |
-| 2 | Target gain achieved in 2022 Machine 3 demonstration | S1, S2, S5 | proprietary | blocking | FLF internal; UKAEA validation report may contain bounds (not publicly released) |
-| 3 | Gain vs. velocity scaling for amplifier target design | S2, S5 | proprietary | blocking | FLF proprietary; first-principles simulation could bracket |
-| 4 | Per-target fabrication cost at commercial scale (1–4M targets/year) | S3, S5 | proprietary | blocking | Goodin et al. (2004) economic bound applies: cost must be <10% of electrical yield per shot |
-| 5 | Driver wall-plug efficiency and recirculating power fraction | S2, S5 | truly-unknown | blocking | Not published; required to compute Q_engineering |
-| 6 | Net thermal efficiency including Li loop losses | S5 | not-yet-sourced | important | Hawker (2020) IFE framework may address; steam Rankine baseline ~33–35% |
-| 7 | Capacity factor and maintenance schedule | S3, S5 | truly-unknown | important | No prototype data exists; must use analogue (Z-IFE study assumed 85%) |
-| 8 | Liquid lithium pump power and capital cost | S3, S4, S5 | not-yet-sourced | important | Laser ICF liquid wall studies (FLiBe pumping) are partial analogues |
-| 9 | ⁶Li enrichment fraction required for TBR 1.8 | S4, S5 | derivable | important | Derivable from published neutronic calculations for Li-blanket ICF chambers |
-| 10 | Chamber clearing time for liquid Li curtain after blast | S3, S5 | truly-unknown | important | Determines minimum achievable rep rate; no prototype data |
-| 11 | Target material composition (are Au hohlraums used?) | S4 | proprietary | important | Affects per-target material cost by orders of magnitude |
-| 12 | NearStar: any gain or experimental results | S1, S3 | truly-unknown | important | SBIR Phase I; expected publication 2025 (not yet seen in available sources) |
-| 13 | Projectile per-shot material cost and bore lifetime | S3, S4 | not-yet-sourced | nice-to-have | Bore erosion at 60 km/s is a materials science open question |
-| 14 | O&M cost structure for projectile plant | S5 | truly-unknown | nice-to-have | No analogue; conventional nuclear O&M provides rough lower bound |
+|---|-----------------|---------|----------|-------------|----------------------|
+| 1 | No published driver energy requirement or EM gun design for the pilot plant | S2, S5 | truly-unknown | blocking | None available — concept abandoned; original Machine 4 specs (100 MJ) are the only reference |
+| 2 | No target gain curve or physics basis for gain 200–1000 from projectile compression alone | S2, S5 | proprietary | blocking | First Light's proprietary simulation database; FLARE white paper may contain partial data |
+| 3 | No thermal-hydraulic design or chamber geometry for the 150 MWe plant | S2, S3 | truly-unknown | blocking | HYLIFE/HYLIFE-II studies (UCRL-53356, Hoffman 1990) provide analogues but not direct data |
+| 4 | Repetition rate for 150 MWe (0.011–0.1 Hz range) | S2, S5 | proprietary | important | Company sources give conflicting values; 0.033 Hz (30 s) is most frequently cited |
+| 5 | Target manufacturing cost at volume — C220108 override is a viability ceiling ($5.6/target), not an estimate; actual cost unknown | S4, S5b | truly-unknown | important | No published estimate; Hawker (2020) provides parametric framework; model carries $1–$20/target sensitivity sweep |
+| 6 | EM gun wall-plug efficiency at required velocities | S2, S5 | truly-unknown | important | Defense railgun literature may provide analogues (typically 20–40% for military railguns at lower velocities) |
+| 7 | Capital cost breakdown of the <$1B plant target | S5, S5b | proprietary | important | Only the total figure is published; no subsystem allocation |
+| 8 | Lithium inventory sizing for sub-Hz projectile ICF chamber | S4, S5 | derivable | nice-to-have | Could be derived from HYLIFE scaling with appropriate adjustments for yield/rep-rate |
+| 9 | O&M cost structure (fixed vs. variable, staffing, scheduled maintenance) | S3 | not-yet-sourced | nice-to-have | No fusion-specific O&M data; nuclear analogue ($50–100/kWe-yr) is typical assumption |
+| 10 | Tritium startup inventory requirement for 150 MWe plant | S4 | derivable | nice-to-have | Derivable from TBR 1.8, burn rate at P_native, and doubling time claim ("one week") |
 
 ---
 
-## Section 7: Cross-Concept Notes
+## Section 7: Family-Delta vs Comparables
 
-**Key Differentiators from Conventional Tokamak**
+No comparable concept in the corpus for this design point. The upstream pipeline assigns an empty comparables list because no other concept in the corpus shares the defining characteristics of sub-Hz electromagnetic-gun-driven projectile ICF: (a) the driver is a hypervelocity electromagnetic launcher, not a laser, accelerator, or pulsed-power liner driver; (b) the operating regime is uniquely low-frequency (0.033 Hz vs. 1–10 Hz for laser IFE or 5–10 Hz for heavy-ion beam IFE); and (c) the liquid lithium curtain chamber replaces solid blanket/shield structures entirely. NearStar Fusion pursues a related projectile concept but uses a railgun variant with magneto-inertial target compression (MTIF approach) — a different enough architecture that the upstream pipeline does not assign it as a comparable. The HEAVY_ION archetype is therefore the only structured reference frame, and all cost deltas below are articulated against its defaults.
 
-Projectile ICF is structurally different from a conventional tokamak across every major cost-relevant dimension:
+### Delta Against the HEAVY_ION Archetype
 
-| Dimension | Conventional Tokamak | Projectile ICF | Cost Implication |
-|-----------|---------------------|----------------|-----------------|
-| Operation mode | Steady-state plasma | Pulsed — discrete hypervelocity impacts at 0.011–0.1 Hz | **Penalty**: intermittent output; rep rate uncertainty propagates linearly into revenue |
-| Confinement mechanism | Magnetic equilibrium (toroidal field + poloidal field) | Kinetic impact — inertial confinement via shock compression | Neither advantage nor penalty per se; eliminates magnet cost, requires extreme velocity precision |
-| Fuel delivery | Gas puffing into continuous plasma | Discrete precision-manufactured targets, 1–4M/year | **Penalty**: mass manufacturing challenge with no analogue; cost floor unknown |
-| Driver / heating system | NBI, RF heating: well-characterized cost, mature supply chain | EM launcher (60 km/s): no cost basis, no industrial precedent, likely dominant CAPEX item | **Penalty**: largest unknown in cost model |
-| First wall | Solid plasma-facing components (W, Be), periodic replacement | Flowing liquid Li curtain: vessel never replaced, but novel engineering | **Advantage** on vessel lifetime; neutral to negative on capital cost (uncharacterized) |
-| Superconducting magnets | Dominant cost driver: HTS coils, cryostats, current leads | Zero — no magnets required | **Advantage**: eliminates 30–50% of tokamak reactor plant cost |
-| Tritium breeding | TBR ~1.05–1.15 in solid blankets; tritium supply tight | TBR 1.8 (validated); 25 kg/year surplus enables fleet deployment | **Advantage**: best TBR in the D-T landscape |
-| Plasma disruption risk | Major availability concern; mitigation hardware required | Absent — no plasma to disrupt | **Advantage**: no disruption-induced cost |
+The library's HEAVY_ION archetype (the generic forward that governs all default costs for this concept) is calibrated to a heavy-ion beam IFE plant: a multi-GeV particle accelerator driver at 5–10 Hz rep rate, FLiBe molten-salt coolant with jet arrays, and conventional solid blanket/shield structures. Projectile ICF diverges from this archetype in nearly every major subsystem. The following table articulates each structural delta and its cost direction:
 
-Net assessment: projectile ICF is a strong structural departure from the tokamak cost model — it eliminates magnets and gains on tritium breeding, but trades those against an unknown-cost driver, a novel consumable cost structure, and extreme physics extrapolation requirements. Whether the magnet elimination advantage outweighs the driver cost penalty cannot be determined without published driver cost data.
+| Subsystem | HEAVY_ION Archetype | Projectile ICF (First Light) | Cost Direction |
+|-----------|--------------------|-----------------------------|----------------|
+| **Driver (C220104)** | Multi-GeV heavy-ion accelerator ($60–$700/J typical for particle accelerators/lasers) | Electromagnetic gun ($1.7–$2/J stored energy) | **Strong advantage** — >30× reduction in driver cost per joule; override $200M vs. generic $12,591M |
+| **Capacitor bank (C220107)** | Separate pulsed-power bank charging the accelerator | Integrated into the EM gun system (captured in C220104) | **Advantage** — zeroed to avoid double-counting; generic $420M eliminated |
+| **Rep rate** | 5–10 Hz (high-frequency IFE baseline) | 0.033 Hz (one shot every 30 seconds) | **Mixed** — reduces target factory throughput (advantage) but demands very high yield per shot and gain >200 to reach economic power output |
+| **Target factory (C220108)** | High-rep-rate factory producing 30M–300M targets/year | ~1M targets/year at 0.033 Hz | **Advantage** — two orders of magnitude fewer targets; override $5.6M/yr vs. generic $79.1M |
+| **Blanket/first wall (C220101)** | Solid blanket with neutron multiplier structures | Flowing liquid lithium curtains (no solid first wall) | **Structural mismatch** — cost captured in lithium inventory (CAS27) rather than fabricated blanket hardware |
+| **Radiation shield (C220102)** | Dedicated solid shield behind blanket | Eliminated; 1 m lithium curtain absorbs all neutrons | **Advantage** — override to 15% of generic for penetration shielding only |
+| **Coolant system (C220200)** | FLiBe molten-salt loop with mechanical pumps | Liquid lithium with electromagnetic pumps (72 m³/s HYLIFE reference) | **Structural mismatch** — EM pumps for liquid metal vs. mechanical pumps for molten salt; C220200 not in override schema |
+| **Remote handling (C220110)** | Periodic blanket/first-wall replacement | No solid in-vessel replacement ("lifetime-of-plant vessel") | **Advantage** — override to 30% of generic; only gun/target-injection RH remains |
+| **Installation (C220111)** | Scaled from reactor equipment subtotal | Must scale from post-override subtotal (~$301M, not $13,247M) | **Correction** — spec-level `installation_frac` adjustment yields $42.2M vs. generic $1,855M (library artifact); not a cost override |
+| **Special materials (CAS27)** | Standard initial inventory | 200–800 tonnes natural lithium at $70M (company-published) | **Penalty** — $70M override vs. generic $2.2M; liquid-metal inventory is a major cost unique to this architecture |
+| **Beam transport magnets** | Large superconducting quadrupole array for beam focusing | None — projectile is mechanically guided | **Advantage** — eliminates SC magnet supply chain entirely |
 
-**Reused from 07-maglif analysis (pulsed architecture framework):**
+**Net assessment**: The archetype mismatch is pervasive. The projectile ICF concept trades the accelerator-physics complexity of heavy-ion beam IFE for mechanical-engineering complexity (hypervelocity EM guns, liquid-metal hydrodynamics) at fundamentally different cost scales. The dominant cost advantage is the >30× reduction in driver cost per joule. The dominant cost penalty is the large liquid lithium inventory ($70M). The dominant uncertainty is whether the sub-Hz, high-gain operating regime (gain >200, yield >5 GJ per shot) is physically achievable — this has no experimental demonstration beyond ~50 neutrons.
 
-The MagLIF analysis establishes the analytical framework for pulsed IFE/MIF systems that applies directly to projectile ICF:
+### Supplementary Cross-Concept Context (outside the formal comparables framework)
 
-- **Rep rate × yield = power output** is the dominant identity in any pulsed plant cost model. The MagLIF analysis notes that "small changes in rep rate (0.1 Hz to 1 Hz) produce 10× changes in effective power output from the same driver." This applies identically here — FLF's conflicting rep rate figures (0.011–0.1 Hz) span nearly a 10× range, propagating directly into capital cost amortization uncertainty.
-- **Per-shot consumable costs** are a direct analogue. MagLIF destroys the target liner, RTL, and (historically) external coils per shot; projectile ICF destroys the target and projectile per shot. The MagLIF analysis establishes that Pacific Fusion viewed traditional per-shot destroyed hardware as a "showstopper" driving target redesign. The same cost floor logic applies to projectile ICF targets.
-- **Driver cost as the dominant novel capital item** is a shared challenge. For MagLIF, the Z-IFE study estimated $372M for a pulsed power driver. For projectile ICF, no published estimate exists, but the pivot narrative (FLARE at $2/J vs "alternatives" at $6–13/J) suggests the electromagnetic gun was significantly more expensive per delivered joule than pulsed power.
+The following comparisons are informal positioning against other IFE/MIF concepts in the corpus. They are not structured cost-delta analyses against assigned comparables (which are empty for this concept) but provide useful context for the reader.
 
-**Divergences from MagLIF:**
+- **vs. Laser ICF concepts (Xcimer, Inertia, Focused Energy)**: Projectile ICF replaces the laser driver (at $60–$700/J) with an electromagnetic gun ($1.7–$2/J). The tradeoff is that the projectile approach requires extremely high target gain (>200) to compensate for the low repetition rate, whereas laser IFE can achieve economic power output at gain 30–100 with 1–10 Hz rep rates.
 
-- **Driver technology is fundamentally different**: MagLIF uses a current-driven magnetic compression (pulsed power, capacitors and switches); projectile ICF uses mechanical kinetic energy delivery (electromagnetic launcher, precision projectile). MagLIF's driver has a clear cost reduction path (capacitor manufacturing at scale); projectile ICF's driver has no analogous manufacturing scale-up roadmap.
-- **First wall / blanket**: FLF uses liquid lithium; MagLIF (Z-IFE/Pacific Fusion) uses FLiBe. Both are flowing liquid metal/salt first-wall concepts sharing the challenge of pump power, thermal coupling, and rep-rate blast survival. Key difference: liquid lithium achieves TBR 1.8 (vs FLiBe's lower Li density and Be toxicity constraints), but liquid lithium is more chemically reactive and harder to handle.
-- **No external magnets**: FLF's projectile ICF does not require any magnetic fields in the chamber, simplifying the physics at the cost of needing extreme mechanical precision. MagLIF's liner requires external B-field pre-magnetization (though Pacific Fusion is moving to self-magnetizing targets).
+- **vs. MagLIF/Pulsed power (Pacific Fusion)**: Both use pulsed electrical energy stores at comparable $/J ($1.7–$5/J). MagLIF uses the electrical energy directly to implode a liner, while projectile ICF converts it to kinetic energy in a projectile. MagLIF has a more extensive physics database (>70 experiments on Z) but faces similar rep-rate and per-shot consumable challenges.
 
-**Comparison to Laser IFE (26-laser-icf-indirect-drive, handwritten exemplar):**
-
-The Laser IFE analysis establishes several comparisons directly applicable here:
-
-- **Final optics survivability** — a dominant TRL challenge for laser IFE (TRL ~2) — is entirely absent in projectile ICF. This is a genuine structural advantage: no sensitive optics near the target chamber.
-- **Driver efficiency**: FLF's FLARE pivot was driven partly by driver efficiency logic (pulsed power at ~5–10% wall-plug efficiency vs laser at <1%). The projectile launcher's wall-plug efficiency is unknown but likely comparable to pulsed power — kinetic energy conversion in EM launchers is typically 20–40% at current scales.
-- **Target gain threshold**: The Laser IFE analysis notes that "there needs to be an order-of-magnitude improvement to NIF's capsule gain to be commercially viable." FLF requires 50–250× improvement over NIF's demonstrated 4×. Both concepts face a large gain extrapolation; FLF's claims (200–1000×) are more aggressive.
-- **Rep rate**: FLF's 0.033–0.1 Hz is dramatically lower than Xcimer's 0.25–1 Hz or Inertia's 10 Hz. FLF's argument is that fewer shots are needed because each shot yields more energy. This is the right trade — if the gain is achieved.
-
-**NearStar vs. FLF taxonomic note:**
-
-NearStar's MTIF is not a clean fit under "Projectile ICF (D-T)." The key differences — magnetized fuel (MIF physics, not pure IFE), D-D fuel preference (no tritium breeding needed), molten lead first wall — place it closer to MIF concepts. The railgun driver is the only shared element with FLF's original approach. This analysis treats NearStar as a contextual comparator, not a primary concept instance. A separate MIF taxonomy row for MTIF would be more accurate.
+- **Unique features**:
+  - Sub-Hz operation (0.033 Hz) — drastically reduces target factory requirements but demands very high yield per shot
+  - Natural lithium blanket with TBR 1.8 — avoids Li-6 enrichment costs ($143M–$451M per IP Group) and creates a tritium-surplus revenue stream
+  - No magnets, no lasers, no superconductors — radically simplified supply chain
 
 ---
 
 ## Section 8: Sources
 
-1. **First Light Fusion Technology Pages** (firstlightfusion.com, multiple pages) — compiled in `iter-01/sources/first-light-fusion-technology.md`. Primary source for: projectile ICF operating principle, Machine 3/4 specifications, power plant architecture (liquid lithium, steam Rankine), performance targets (gain, rep rate, plant size, LCOE), tritium breeding design, and FLARE pivot context. Most quantitative FLF parameters in Section 5 derive from this source.
+1. **First Light Fusion press release (April 2022)** — "First Light achieves world first fusion result, proving unique new target technology." Provides the design point (150 MWe, <$1B), demonstrated performance (6.5 km/s, ~50 neutrons, 10 TPa), and power plant architecture description. Path: `iter-03/sources/prnewswire-news-releases-first-light-achieves-world-first/output.md`
 
-2. **First Light Fusion FLARE Pivot Update** — compiled in `iter-02/sources/first-light-flare-pivot-update.md`. Source for: FLARE pivot timeline, what was retained vs. abandoned, FLARE driver cost ($2/J), FLARE demonstrator cost ($100–200M), and implications for projectile ICF commercial viability. Provides indirect evidence on projectile gun economics.
+2. **Hawker, N. (2020). "A simplified economic model for inertial fusion." Phil. Trans. R. Soc. A 378: 20200053** — Peer-reviewed 14-parameter LCOE model designed around First Light's approach. Establishes gain/yield requirements, driver cost benchmarks ($1.7/J for Machine 3), and yield cost framework. The most rigorous published economics source for this concept. Path: `iter-03/sources/pmc-articles-pmc7658748/output.md`
 
-3. **NearStar Fusion Technology Pages** (nearstarfusion.com) — compiled in `iter-01/sources/nearstar-fusion-technology.md`. Source for: MTIF concept description, railgun driver specifications (50 g, 10 km/s, >1 MJ, 1 Hz), D-D fuel strategy, molten lead first wall, plant scale (50 MW–1 GW+), and COTS approach. Establishes NearStar as a conceptually adjacent but taxonomically distinct concept.
+3. **IP Group press release (September 2025)** — "First Light Fusion Publishes First Plausible Path to High Gain, Unlocking Cheap Fusion Energy." FLARE pivot details, cost comparisons ($2/J FLARE demo, $70M natural lithium per reactor), 400 MW commercial targets. Path: `iter-03/sources/ipgroupplc-news-and-events-portfolio-news-2025-2025-09-19/output.md`
 
-4. **NearStar Fusion 2025 Update** — compiled in `iter-02/sources/nearstar-fusion-2025-update.md`. Source for: investment (Virginia Venture Partners + Ecosphere Ventures, Feb 2025), experimental timeline (break-even ~5 years, prototype ~10 years), pending 2025 publication of experimental results, and confirmation of MTIF vs. pure projectile ICF distinction.
+4. **The Engineer (February 2026)** — "First Light Fusion validates tritium breeding concept." TBR 1.8 validated by TUV SUD UK, 333 MWe design point, 25 kg/year net tritium surplus. Path: `iter-03/sources/theengineer-content-news-first-light-fusion-claims-tritium/output.md`
 
-5. **Phase 1a Dossier: Projectile ICF (D-T)** — `phase_1a/research/22-projectile-icf/dossier.md`. Synthesizes prior research iterations; source for column-by-column values with confidence ratings. Provides context on TÜV SÜD UK TBR validation (Feb 2026), tritium surplus (25 kg/year at 333 MWe), NearStar taxonomy question, and repetition rate ambiguity.
+5. **World Nuclear News (September 2025)** — "First Light Fusion presents novel approach to fusion." FLARE white paper details, gain 1000 pathway, cost comparisons with NIF. Path: `iter-02/sources/first-light-flare-pivot-update.md`
 
-6. **Hawker, N.J. (2020). "A simplified economic model for inertial fusion energy."** Phil. Trans. R. Soc. A 379, rsta.2020.0053. Referenced in dossier and Laser IFE analysis as the most relevant published economic framework for IFE concepts, authored by FLF's CEO. Not available as an extracted source in this analysis but is the primary peer-reviewed analytical foundation for FLF's economic arguments.
+6. **First Light Fusion website** — Technology overview, power plant description, liquid lithium architecture. Path: `iter-01/sources/first-light-fusion-technology.md`
 
-7. **Goodin et al. (2004). IFE target cost analysis** (referenced in 26-laser-icf-indirect-drive handwritten analysis). Establishes the economic bound that target cost must be less than 10% of the electrical yield per shot. Applied in Section 2 to constrain projectile ICF target cost requirements: at <$50/MWh LCOE and 0.033 Hz rep rate, the economic ceiling on per-target cost is derivable but has not been computed in available sources.
+7. **NearStar Fusion website and VIPC investment announcement** — Contextual comparison for railgun-based projectile ICF variant (MTIF approach). Not used for the First Light design point but informative for the broader concept space. Paths: `iter-01/sources/nearstar-fusion-technology.md`, `iter-02/sources/nearstar-fusion-2025-update.md`
 
----
+8. **Baker, Blink & Tessier (1983). "Electromagnetic Pumping of Liquid Lithium in Inertial Confinement Fusion Reactors." UCRL-53356, LLNL** — HYLIFE reactor EM pump design (72 m³/s flow, 50–60% efficiency). Provides engineering context for liquid lithium circulation systems. Path: `iter-03/sources/osti-servlets-purl-6360934/output.md`
 
-**Footnotes**
-
-[1] first-light-fusion-technology.md, §Performance Targets: "up to 1,000x (minimum 200x for commercial viability)"; "Current world record: 4x at NIF"
-
-[2] first-light-fusion-technology.md, §Tritium Breeding: "1-meter-thick curtains of liquid lithium metal flowing within the chamber. Lithium absorbs neutrons, breeds tritium, captures heat, and protects reactor walls." TBR 1.8 independently validated by TÜV SÜD UK, February 2026. "Net tritium surplus of 25 kg annually" at 333 MWe.
-
-[3] first-light-fusion-technology.md, §Energy Conversion: "After the lithium heat exchanger, the plant is identical to many other already working facilities"; "150-year-old steam turbine technology"
-
-[4] first-light-flare-pivot-update.md, §Performance: "FLARE driver cost per joule: $2 (vs $6–13 for alternatives)"; "FLARE demonstrator target: $100–200M (1/20th of NIF)"
-
-[5] first-light-fusion-technology.md, §Machine 4: "Machine 4 (targeting 60 km/s, 100 MJ stored energy) was cancelled February 2025 as part of the pivot to FLARE." The cancellation of the critical velocity-scaling experiment means the 200–1000× gain claim remains untested in the projectile regime.
-
-[6] first-light-flare-pivot-update.md, §Implications: "there is no active commercial pursuer of pure projectile ICF" following Machine 4 cancellation and FLARE pivot.
+9. **Hoffman (1990). "The Heat Transport System and Plant Design for the HYLIFE-II Fusion Reactor."** — HYLIFE-II FLiBe design, heat exchanger optimization, BOP design. Provides analogue for IFE thermal plant architecture. Path: `iter-03/sources/osti-servlets-purl-6780071/output.md`

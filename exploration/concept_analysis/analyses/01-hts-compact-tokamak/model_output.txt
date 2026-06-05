@@ -1,187 +1,52 @@
-HTS Compact Tokamak — CFS ARC (261 MWe, 85% avail, 30 yr, NOAK)
-LCOE: 571.1 $/MWh | Overnight: 48194 $/kW
-Fusion: 730 MW | Net: 261 MW | Q_eng: 3.2
+warning: `VIRTUAL_ENV=C:\Users\mallo\AppData\Local\Python\pythoncore-3.14-64` does not match the project environment path `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv` and will be ignored; use `--active` to target the active environment instead
+warning: The package `agentic-mbse @ file:///C:/Users/mallo/Deterministic_Concept_scoring/agentic-mbse` does not have an extra named `web`
+LCOE: 158.9 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 205.1 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 175.4 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 13801 $/kW   native 16745 $/kW   1 GWe 13794 $/kW
 
-Code     Account                              M$
-------------------------------------------------
-CAS10    Preconstruction                    16.7
-CAS21    Buildings                         300.6
-CAS22    Reactor Plant Equipment          8364.0
-CAS23    Turbine Plant                      75.3
-CAS24    Electrical Plant                   32.1
-CAS25    Miscellaneous                      19.5
-CAS26    Heat Rejection                     28.3
-CAS27    Special Materials                 146.0
-CAS28    Digital Twin                        5.0
-CAS29    Contingency                         0.0
-CAS30    Indirect Costs                   1495.1
-CAS40    Owner's Costs                      19.9
-CAS50    Supplementary                     434.0
-CAS60    IDC                              1642.1
-CAS70    O&M (annualized)                   96.0
-CAS80    Fuel (annualized)                   0.2
-CAS90    Financial                        1013.7
-------------------------------------------------
-         Total Capital                   12578.5
+CAS               generic           native            1 GWe
+--------------------------------------------------------
+CAS10                16.6             16.6             17.2
+CAS21               304.0            304.0            310.9
+CAS22              1646.6           2109.5           8291.5
+CAS23                69.6             69.6            292.1
+CAS24                29.6             29.6            124.4
+CAS25                18.0             18.0             75.7
+CAS26                30.1             30.1            126.2
+CAS27                 3.5              3.5              3.8
+CAS28                 5.0              5.0              5.0
+CAS29                 0.0              0.0              0.0
+CAS30               421.3            513.9           1845.9
+CAS40                18.8             18.8             19.5
+CAS50               134.2            154.1            457.4
+CAS60               518.4            629.0           2223.9
+CAS70                63.0             63.0            147.8
+CAS80                 0.2              0.2              0.9
+CAS90               241.2            292.7           1034.6
+--------------------------------------------------------
+TOTAL              3215.5           3901.7          13793.6
 
-CAS22 Sub-accounts (Reactor Plant Equipment):
-Code         Account                                M$  Note
-------------------------------------------------------------------------
-C220101      First Wall + FLiBe Blanket          348.4  [ARC §6 override]
-C220102      Shield                               90.9  [DEFAULT]
-C220103      Coils (REBCO magnets+struct)       6901.0  [ARC §6 override]
-C220104      Heating System (ICRF+LHCD)          353.2  [DEFAULT]
-C220105      Primary Structure                    10.9  [DEFAULT]
-C220106      Vacuum Vessel (Inconel-718)         123.3  [ARC §6 override]
-C220107      Power Supplies                       40.7  [DEFAULT]
-C220108      Divertor                             54.6  [DEFAULT]
-C220109      DEC                                   0.0  [DEFAULT]
-C220111      Installation                        188.7  [DEFAULT]
-C220112      Isotope Separation                    0.0  [DEFAULT]
-C220200      Coolant (FLiBe circuits)             61.7  [DEFAULT]
-C220300      Aux Cooling                          12.3  [DEFAULT]
-C220400      Rad Waste                             1.6  [DEFAULT]
-C220500      Fuel Handling (tritium)              46.9  [DEFAULT]
-C220600      Other Equipment                       3.9  [DEFAULT]
-C220700      I&C                                  33.3  [DEFAULT]
-------------------------------------------------------------------------
-C220000      TOTAL                              8364.0
-
-FOAK scenario (2× C220103 + contingency, same availability):
-  LCOE: 1068.2 $/MWh | Overnight: 94034 $/kW
-  (CATF IWG FOAK range: 150–200 $/MWh; NOAK range: 60–100 $/MWh)
-  Source: arxiv-2602-19389 §2.1.5; analysis.md §2 Hypothesis 4
-
-Key Assumptions
-===============
-1. Net electric output: 261 MWe — ARC aggressive pilot, supercritical Rankine cycle.
-   Source: arc-power-conversion-studies.md §Results, Table 15.
-   NOTE: 2025 CFS public target = 400 MWe; updated design not publicly documented. Not modeled.
-
-2. Availability: 85% — canonical per scoring_framework.md §Plant availability
-   (MCF steady-state/quasi-steady, D-T); previously 0.75 (discretionary low end of
-   Araiinejad & Shirvan 75–90% band — no published 75% target exists for ARC).
-   No Tier-A override (externally-published target with stated maintenance basis) applies.
-   Naive inverse scaling implies ~1.5× LCOE swing for 50% vs 90% availability — an upper
-   bound. Schwartz et al. (2024, arXiv:2405.01514) show grid-value-weighted penalty is up
-   to 15% smaller with strategic maintenance scheduling (low-price windows); at 80%
-   availability, a plant retains 91% of maintenance-free value (not 80%).
-   Source: scoring_framework.md §Plant availability; arxiv-2405-01514.md §2.2 Results
-
-3. Magnet/structure cost (NOAK): ~$6,901 M$ 2024 USD [UNCERTAIN — primary LCOE uncertainty]
-   Basis: $5,150 M$ 2014 USD (midpoint of $5.1–5.2B) × CPI 1.34.
-   Source: arc-reactor-specifications.md §6.
-   REBCO price in 2014: $36–198/m (5.5× spread → $206–1,134 M$ materials alone).
-   REBCO price in 2025: ~$20/m (~$100/kA-m) — still ~10× above $10/kA-m commercial target.
-   Source: sciencedirect-science-article-pii-s2772830725000390.md §Introduction
-   Sensitivity sweep: vary C220103 by ±50% to bracket REBCO price uncertainty.
-
-4. FOAK scenario (discrete scenario branch, NOT a sensitivity parameter):
-   C220103 × 2.0 + noak=False → LCOE approximately 2–3× NOAK central estimate.
-   Consistent with CATF IWG range: FOAK = 150–200 $/MWh, NOAK = 60–100 $/MWh.
-   Source: arxiv-2602-19389 §2.1.5; analysis.md §2 Hypothesis 4.
-
-5. Thermal efficiency: 46% net — supercritical Rankine at 250 bar / 540°C.
-   Source: arc-power-conversion-studies.md §3.2, Table 15 (recommended cycle).
-   Confirmed by Colliva et al. 2024 as "most promising solution" for ARC.
-
-6. Indirect cost structure: framework defaults encode ~29% of TCC for indirect/owner/
-   supplementary/financial costs, with direct costs ~71% of TCC.
-   Total plant cost ≈ 1.41× direct cost (nuclear island + BOP) — not 2–3× nuclear island alone.
-   Source: arxiv-2601-21724 §8.2 (FECONS/pyFECONS reference design).
-   Reference LCOE benchmarks:
-     - FECONS illustrative DT tokamak: 55.1 $/MWh at 636.75 MWe, 0.9 availability, 30-yr life
-       (arxiv-2601-21724 §8.3 Table 3)
-     - ARPA-E ALPHA compact fusion NOAK (non-HTS): 43 $/MWh (~$2.4/W) at ~500 MWe,
-       90% availability, 3-yr construction, zero contingency (osti-servlets-purl-1820946.md
-       Table 4, COE2); LOWER BOUND for ARC — excludes HTS magnet cost premium entirely.
-     - ARIES-AT: ~5 ¢/kWh at ~1,000 MWe (~2000–2003 USD); order-of-magnitude only.
-
-7. FLiBe special materials: $146 M$ (~2025 USD).
-   Basis: 950 t FLiBe × $154/kg NOAK (20% learning rate).
-   Source: arc-reactor-specifications.md §6 (quantity); Araiinejad & Shirvan 2025 (price).
-   NOTE: FLiBe chemistry plant + tritium extraction system capital cost is NOT included.
-   iter-7 order-of-magnitude floor: Woodruff Scientific ARPA-E ALPHA re-costing
-   (OSTI:1820946) gives CAS22.5 Fuel Processing averaging $124M at ~500 MWe for compact
-   MIF/Z-pinch concepts (structural analogue only — different blanket chemistry, no FLiBe).
-   Treat $100–200M as a floor for ARC's additive FLiBe chemistry/tritium processing BOP
-   line; ARC-specific scope (FLiBe redox control, MHD-driven flow purification) may push
-   above this range. Source: analysis.md §6, gap #15; osti-servlets-purl-1820946.md
-
-8. O&M (CAS70): framework default DT O&M scaling.
-   Fusion-specific anchor: $60/kWe-yr (FECONS/pyFECONS, arxiv-2601-21724 §6.5)
-   → ~$15.7M/yr at 261 MWe. Not ARC-specific; 2–4× below fission-BoP analogue.
-   Cross-check: Schwartz et al. (2024) VO&M = $2.07/MWh_net ($1.74/MWh_gross) at ~261 MWe.
-   Annual O&M breakdown not published in any ARC/CFS source (analysis.md §6, gap #7).
-   Source: arxiv-2601-21724 §6.5; arxiv-2405-01514.md §2.1
-
-9. No direct energy conversion: f_dec = 0.0. ARC uses thermal Rankine cycle only.
-   Source: dossier §Energy Capture; arc-power-conversion-studies.md.
-
-10. ARC's $5.56B fabricated component cost reflects NOAK/learning-assumed scaling
-    ($1.06M/tonne benchmarked against ARIES/FIRE conceptual designs). FOAK costs for
-    the first physical ARC plant would be substantially higher. The inferred
-    $/kWe figures ($21,300–29,200/kWe from nuclear island alone) represent the NOAK
-    floor, not the first-plant expectation. Source: analysis.md §2 Hypothesis 4;
-    arxiv-2602-19389 §2.1.3.
-
-11. Parasitic power split (Schwartz et al. 2024): 5% active (plasma heating, magnets,
-    coolant pumps) + 10% passive (cryogenics, vacuum pumps, tritium handling) = 15%
-    total. Passive load persists during maintenance outages, raising effective cost of
-    downtime. f_sub=0.03 captures part of active load; remaining active/passive load
-    encoded in p_cryo, p_trit, p_house, p_cool. Source: arxiv-2405-01514.md §2.1
-
-Sensitivity (elasticity = %LCOE / %param) — NOAK central estimate
---------------------------------------------------
-
-Engineering levers:
-  availability                 -0.9535
-  construction_time_yr         +0.2941
-  p_nbi                        +0.0407
-  eta_th                       -0.0307
-  r_coil                       +0.0146
-  elon                         +0.0144
-  R0                           +0.0144
-  eta_pin                      -0.0120
-  p_input                      +0.0115
-  b_max                        +0.0073
-  mn                           -0.0072
-  plasma_t                     +0.0062
-  ht_shield_t                  +0.0057
-  blanket_t                    +0.0055
-  p_cool                       +0.0021
-  f_sub                        +0.0018
-  structure_t                  +0.0017
-  p_trit                       +0.0015
-  vessel_t                     +0.0011
-  p_cryo                       +0.0009
-  p_house                      +0.0006
-  p_coils                      +0.0003
-  p_pump                       +0.0001
-  eta_p                        -0.0000
-  dd_f_T                       +0.0000
-  dd_f_He3                     +0.0000
-  dhe3_dd_frac                 +0.0000
-  dhe3_f_T                     +0.0000
-  dhe3_f_He3                   +0.0000
-  eta_de                       +0.0000
-  q95                          +0.0000
-  f_GW                         +0.0000
-  B                            +0.0000
-  T_e                          +0.0000
-  n_e                          +0.0000
-  Z_eff                        +0.0000
-  plasma_volume                +0.0000
-  R_w                          +0.0000
-  T_edge                       +0.0000
-  tau_ratio                    +0.0000
-  M_ion                        +0.0000
-  lambda_q                     +0.0000
-  disruption_rate_base         +0.0000
-  disruption_steepness         +0.0000
-  disruption_damage            +0.0000
-  disruption_downtime          +0.0000
-
-Financial:
-  interest_rate                +0.7577
-  inflation_rate               +0.0137
+--- CAS22 sub-account detail (overrides marked) ---
+code            generic       native        1 GWe  flag
+C220000          1646.6       2109.5       8291.5
+C220101           136.2        136.2        140.2
+C220102            91.2         91.2         93.9
+C220103           567.0       1030.0       1030.0  <-- OVERRIDE
+C220104           272.7        272.7        272.7
+C220105            10.1         10.1         10.4
+C220106            48.8         48.8         50.3
+C220106_pump          0.3          0.3          0.3
+C220106_vessel         48.6         48.6         50.0
+C220107            38.5         38.5         39.8
+C220108            56.3         56.3         57.7
+C220109             0.0          0.0          0.0
+C220110            89.0         89.0         91.2
+C220111           183.4        183.4        185.3
+C220112             0.0          0.0          0.0
+C220200            57.7         57.7        207.8
+C220300            12.4         12.4         15.4
+C220400             1.7          1.7          7.2
+C220500            43.3         43.3        120.0
+C220600             3.6          3.6         11.5
+C220700            34.6         34.6         88.0

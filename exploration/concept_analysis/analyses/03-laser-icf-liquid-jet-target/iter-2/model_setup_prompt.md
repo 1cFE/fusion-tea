@@ -1,55 +1,54 @@
-# 1costingfe Model Update: Laser ICF - Liquid Jet Target (D-D)
+# Free-Form Model Update: Laser ICF Liquid-Jet Target (Cortex Fusion Systems)
 
 ## Mode: Feedback Pass (Edit Existing Model)
 
-An existing model from a prior iteration has been copied to `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/03-laser-icf-liquid-jet-target/iter-2/model_setup.py`.
+An existing model from a prior iteration has been copied to `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\03-laser-icf-liquid-jet-target\iter-2\model_setup.py`.
 
-**Your task**: Read the existing model at `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/03-laser-icf-liquid-jet-target/iter-2/model_setup.py` and apply targeted edits based on the assessment findings below. Use the Edit tool to make changes — do NOT rewrite the file from scratch.
+**Your task**: Read the existing model at `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\03-laser-icf-liquid-jet-target\iter-2\model_setup.py` and apply targeted edits based on the assessment findings below. Use the Edit tool to make changes — do NOT rewrite the file from scratch.
 
 **Rules**:
 - Preserve ALL existing sweeps, scenarios, parameters, and sensitivity analyses unless a finding specifically says to change them
 - Maintain the existing code structure and organization
 - Add new content incrementally — do not restructure working code
 - Every change must be traceable to a specific finding or a direct consequence of one
+- **Native scale only**: do NOT add or restore a `scaled_headline` dict or any
+  `(p_native/1000)^(1-α)` extrapolation. Freeform models report at the
+  concept's native power. If the prior model contains such code, remove it as
+  part of the edit. The headline LCOE line must read
+  `LCOE: <value> $/MWh   (freeform, native-scale only)` so cross-concept
+  tables can flag it.
 
 
 ## Assessment Findings
 
 The following findings were raised by the assessor. Focus on findings tagged `Category: model`. Findings tagged `Category: analysis` are informational — they describe prose changes the analysis agent is handling. You may still adjust model parameters if an analysis finding implies the model's assumptions are wrong.
 
-### F-1: The "3333 MeV per D-D event" anomaly is a data extraction artifact
-- **Target:** Section 2 (Challenge 2), Section 5 (Parameter table "Power per nanoshell" row), Section 6 (Gap #3)
+### F-1: Analysis Section 4 gold consumption estimate is 1000× too low — contradicts model's dominant cost driver
+- **Target:** Section 4 (Key Materials and Supply Chain Considerations), gold nanoshell subsection
 - **Category:** analysis
-- **Finding:** The nanoshell paper (arXiv:2503.15531) states "Each DD fusion releases 3 MeV, or 2×10⁻¹³ J of energy" — the standard D-D physics average. The figure "3333 MeV" does not appear anywhere in the paper. The 1 μW per nanoshell estimate in the table is internally consistent with this (10^7 fusions/s × 3 MeV/event ≈ 5 μW, same order of magnitude). The "anomaly" flagged in Challenge 2 and Gap #3 — an apparent 1000× discrepancy requiring author clarification — is based on a misread value, not a real discrepancy in the source.
-- **Recommendation:** Remove Challenge 2 ("Extraordinary Physics Claims Not Experimentally Validated") paragraph that discusses the 3333 MeV figure and treats it as a blocking anomaly. Update the "Power per nanoshell" row in Section 5 to remove the internal-inconsistency note. Remove Gap #3 from Section 6 ("Resolution of anomalous 3333 MeV/event energy figure"). The underlying concern — that the physics claims are unvalidated and Q~100 is theoretical — is real and valid, but should be framed around the fusion mean free path problem (deuteron λ_f ~ cm vs. nanoshell radius ~ 100 nm, explicitly acknowledged in the paper) and the unresolved plasmon-damping-from-ionization issue, not the phantom energy anomaly.
+- **Finding:** Section 4 computes gold consumption as "~40 μg/s ≈ 0.14 g/hr ≈ 1.3 kg/year" and concludes the cost is "approximately $75,000/year in gold alone — modest." The per-shell mass (4 × 10⁻¹⁴ g) and the throughput (10¹² shells/s) are both stated correctly, but the product is 4 × 10⁻² g/s = 40 mg/s, not 40 μg/s. This is a factor-of-1000 unit conversion error. The correct annual consumption is ~933 kg/year (at 75% availability) costing ~$56M/year — matching the model output exactly. The analysis text claims gold cost is "modest" while the model correctly identifies gold nanoshells as the dominant cost driver at 80.7% of revenue requirement. This internal contradiction means the analysis narrative about cost structure (Sections 2, 4, and 7) is built on a wrong premise: the reader is told gold is negligible when it is in fact the single largest cost by far.
+- **Recommendation:** Correct the unit conversion in Section 4: 4 × 10⁻¹⁴ g/shell × 10¹² shells/s = 40 mg/s ≈ 144 g/hr ≈ 933 kg/yr (at 75% availability) ≈ $56M/yr at $60,000/kg. Remove the "modest" characterization. Update the cost narrative throughout Sections 2, 4, and 7 to reflect that gold nanoshell consumption dominates LCOE unless nanoshells survive irradiation (the key unknown the model's sensitivity sweep correctly highlights).
 - **Priority:** blocking
 
----
-
-### F-2: The Levitt 2023 paper describes a different fusion concept, not D-D plasmonic nanoshell framing
-- **Target:** Section 1 (primary sources description of source [2]), Section 8 (Source #3 description)
-- **Category:** analysis
-- **Finding:** The Levitt 2023 arXiv preprint (arXiv:2308.07417) proposes ¹⁶O(2p,γ)¹⁸Ne nuclear fusion via the quantum anti-Zeno effect applied to water molecules — a completely different fusion reaction and mechanism from the D-D plasmonic nanoshell concept. The fuel is ordinary water (H₂O), the nuclear reaction is oxygen + two protons → neon-18, the laser acts as a quantum-coherent phase-kick controller (not a field amplifier), and no plasma is formed. The analysis currently characterizes this paper as "establishing the quantum-control framing for the company's laser architecture" as if it is preliminary work toward the same D-D concept. It is not — it is an orthogonal fusion concept from the same founder, published 18 months before the nanoshell paper.
-- **Recommendation:** Update Section 1 and Section 8 Source #3 to accurately describe what this paper contains: a distinct fusion concept (quantum coherent control of O+2p→Ne in water, TRL 1, no experimental results). Note that as of August 2023 Cortex's founder was pursuing this mechanism; the pivot to D-D plasmonic nanoshells appears between mid-2023 and early 2025 (the nanoshell preprint). This is a material indicator of conceptual instability — the company has publicly proposed at least two fundamentally different fusion mechanisms and has patents on several more — which should be added to the risk framing in Section 2 or Section 3.
+### F-2: Model lacks module-level P_native literal and three-forward helper form
+- **Target:** model_setup.py module-level interface
+- **Category:** model
+- **Finding:** The coherence flag reports "no module-level P_native literal." The model computes net electric power from `fusion_power_MW` and `kappa` but never declares `P_native` as a named constant at module level. Additionally, the model does not expose `generic`, `native`, or `result_1gw` at module level, nor does it use the `generic_reference()` / `run_native_and_1gw()` helper form. Since the concept has no archetype (`Archetype-Fit: None`), there is no generic reference to run against, and the free-form structure is architecturally defensible. However, the pipeline's cross-artifact coherence checks expect a `P_native` literal. Adding a module-level `P_native = 0.3` constant (matching the frontmatter) and documenting that this concept cannot use the three-forward form because it has no archetype would satisfy the pipeline check and make the design-point power explicitly traceable without changing the model's computational structure.
+- **Recommendation:** Add a module-level `P_native = 0.3` constant near the top of the module-level interface section, with a comment noting it matches the frontmatter value and is the inferred net electric power from the paper's 1 MW fusion × 30% conversion. If the pipeline requires `native` and `result_1gw` module-level names, alias the existing `results` dict to `native = results` and set `result_1gw = None` with a comment explaining this concept has no archetype for 1 GWe projection.
 - **Priority:** important
 
----
-
-### F-3: Cortex's patent portfolio reveals competing mechanisms and a named power conversion approach
-- **Target:** Section 3 (Energy Capture and Conversion — TRL 0), Section 2 (Challenge 1), Section 6 (Gap #1)
+### F-3: Section 7 family-delta discussion does not engage fixed comparables (empty list acknowledged but cost-direction analysis is absent)
+- **Target:** Section 7 (Family-Delta vs Comparables)
 - **Category:** analysis
-- **Finding:** The Cortex website lists 11+ patent filings covering at least four distinct fusion mechanisms: (1) D-D plasmonic nanoshell (the nanoshell paper concept), (2) bichromatic quantum tunneling control of nuclear reactions (the Levitt 2023 concept, internationally filed: US + PCT + EP + JP), (3) chiral catalysis of nuclear fusion in molecules, and (4) a D2O-moderated hybrid fusion-fission reactor with unenriched uranium fuel and a Direct Brayton Cycle power conversion system. The analysis states that no energy capture architecture has been conceived in any disclosed form (TRL 0). The hybrid fusion-fission patent (US 63/802,958) names "Direct Brayton Cycle" as the power conversion approach, which is a concrete architecture — though it applies to a different reactor variant (hybrid fission blanket), not the pure D-D nanoshell concept. The multi-mechanism patent landscape also signals that Cortex has not converged on a single physics approach, which is distinct from the standard "early-stage company with one unproven concept" framing the analysis uses.
-- **Recommendation:** Update Section 3 "Energy Capture and Conversion — TRL 0" to note that a Brayton cycle architecture appears in a related (hybrid fusion-fission) patent, but confirm that no conversion architecture is described specifically for the D-D nanoshell concept — TRL 0 for the primary concept remains correct. Add a paragraph to Section 2 (or a new challenge item) noting that the company's published and patented concepts span at least four fundamentally different fusion mechanisms; this compounds the standard physics-validation risk with a concept-convergence risk — the company has not publicly committed to a single approach, making TEA relevance contingent on which (if any) mechanism is actually being pursued.
+- **Finding:** The frontmatter `Comparables: []` is empty, and Section 7 correctly acknowledges this. The section then describes how the concept differs from other IFE concepts in mechanism, scale, driver, and fuel. However, it does not assign a cost direction (advantage, penalty, neutral, unknown) to any of these differentiators as required by the analysis goals. The D-D fuel advantage (no tritium infrastructure) is noted but not tagged with a TEA consequence. The "negligible laser cost" differentiator is mentioned but not compared to a specific subsystem cost in a named comparable. The gold nanoshell cost penalty is not called out as a differentiator at all — and given Finding F-1, the analysis text at time of writing doesn't yet recognize it as the dominant cost.
+- **Recommendation:** For each structural differentiator (no magnets, no tritium, negligible driver cost, novel target consumable, sub-MW scale), add an explicit cost-direction tag: advantage, penalty, neutral, or unknown. At minimum: (1) no magnets/tritium → advantage (eliminates CAS22.03, CAS22.04, breeding blanket); (2) negligible driver cost → advantage (CAS22.07 orders of magnitude below IFE norms); (3) gold nanoshell consumable → penalty (CAS80 dominates LCOE at ~$56M/yr); (4) sub-MW scale → penalty (fixed-cost floor dominates); (5) undesigned energy conversion → unknown (κ = 30% assumed, no mechanism). This makes the family-delta section actionable for the TEA rather than purely descriptive.
 - **Priority:** important
 
 
 ## Reference Files
 
-- **Concept Analysis:** `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/03-laser-icf-liquid-jet-target/analysis.md`
-- **Example:** `/home/reid/1cfe/1costingfe/examples/dt_tokamak.py`
-- **Defaults:** `/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/ife_laser_ife.yaml`
-- **README:** `/home/reid/1cfe/1costingfe/README.md`
-- **Costing Constants:** `/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml`
+- **Concept Analysis:** `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\03-laser-icf-liquid-jet-target\analysis.md`
+- **Costing Constants:** `\home\reid\1cfe\1costingfe\src\costingfe\data\defaults\costing_constants.yaml`
 
 ## Output
-Write changes to: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/03-laser-icf-liquid-jet-target/iter-2/model_setup.py`
+Write changes to: `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\03-laser-icf-liquid-jet-target\iter-2\model_setup.py`

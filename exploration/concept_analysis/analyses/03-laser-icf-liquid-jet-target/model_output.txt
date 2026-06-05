@@ -1,112 +1,242 @@
-=================================================================
-Laser ICF — Liquid Jet Target, D-D (Cortex Fusion Systems)
-SPECULATIVE CORRIDOR MODEL — TRL 1 physics, framework defaults
-=================================================================
-LCOE:          107.4 $/MWh
-Overnight:     3913 $/kW
-Fusion power:  3699 MW
-Gross elec:    1333 MW
-Net elec:      1000 MW
-Thermal power: 3810 MW
-Recirc frac:   0.250
-Q_eng:         4.00
-Q_sci:         129.20
 
-Code     Account                              M$
-------------------------------------------------
-CAS10    Preconstruction                    35.8
-CAS21    Buildings                         767.4
-CAS22    Reactor Plant Equipment          1061.6
-CAS23    Turbine Plant                     263.5
-CAS24    Electrical Plant                  112.2
-CAS25    Miscellaneous                      68.3
-CAS26    Heat Rejection                    130.1
-CAS27    Special Materials                   2.0
-CAS28    Digital Twin                        5.0
-CAS29    Contingency                       241.0
-CAS30    Indirect Costs                    441.9
-CAS40    Owner's Costs                      31.0
-CAS50    Supplementary                     242.3
-CAS60    IDC                               510.8
-CAS70    O&M (annualized)                   60.5
-CAS80    Fuel (annualized)                   0.6
-CAS90    Financial                         315.3
-------------------------------------------------
-         Total Capital                    3913.0
+============================================================================
+BASELINE SCENARIO
+============================================================================
+============================================================================
+Laser ICF Liquid-Jet Target (Cortex Fusion) LCOE Model
+Nano-Sun 1 MHz Reactor Scenario — arXiv:2503.15531
+1cFE CAS-Structured Free-Form Model — FOR CORRIDOR PURPOSES ONLY
+============================================================================
 
-CAS22 Sub-Account Detail:
-------------------------------------------------
-  C220101           109.5  M$
-  C220102           107.0  M$
-  C220103             0.0  M$
-  C220104           229.1  M$
-  C220105             9.3  M$
-  C220106            33.0  M$
-  C220107            14.3  M$
-  C220108             0.0  M$
-  C220109             0.0  M$
-  C220110            57.7  M$
-  C220111           120.2  M$
-  C220112             0.0  M$
-  C220200           208.5  M$
-  C220300             4.2  M$
-  C220400             7.5  M$
-  C220500            60.0  M$
-  C220600            11.5  M$
-  C220700            89.8  M$
-  C220000          1061.6  M$
+  +====================================================================+
+  | CRITICAL: THIS IS NOT A CREDIBLE COST ESTIMATE                      |
+  |                                                                      |
+  | The core physics mechanism (plasmonic D-D fusion in nanoshells)      |
+  | is UNVALIDATED. Zero fusion events demonstrated by any group.       |
+  | No energy conversion system, reactor chamber, or blanket design.    |
+  | All cost parameters are ASSUMED — zero cost data from any source.   |
+  |                                                                      |
+  | DEMONSTRATED vs. CLAIMED neutron yield gap: 14 ORDERS OF MAGNITUDE  |
+  | Cambridge kHz experiment: ~10^5 n/s  vs  Paper claim: ~10^19 n/s    |
+  +====================================================================+
 
-Overridden accounts (zeroed): C220103, C220108, C220112
 
-=================================================================
-KEY ASSUMPTIONS AND UNCERTAINTY FLAGS
-=================================================================
-  Parameter                      Value              Flag                     Note
-  ----------------------------------------------------------------------------------------------------
-  eta_th (thermal eff.)          0.35               BLOCKING UNCERTAIN       No energy conversion architecture disclosed by Cortex. Rankine placeholder.
-  Availability                   0.40               BLOCKING UNCERTAIN       No operational data, no maintenance model; TRL 1 physics basis.
-  Q-factor (plasma)              ~100 (paper claim) SPECULATIVE / UNVALIDATED arXiv:2503.15531 — Q~100 theoretical; λ_f ~ cm >> nanoshell radius ~ 100 nm.
-  p_implosion (fs laser MW)      40                 UNCERTAIN                Scaled from 3 kW @ 1 MW fusion (Q=100) to 1 GWe. Very rough approximation.
-  eta_pin1/2 (laser η)           0.10               UNCERTAIN                Ti:sapphire: 5–10%; Yb-fiber: up to 30%. No plant-scale data.
-  Gold nanoshell recycling       Assumed 100%       BLOCKING UNCERTAIN       If not recycled: ~60 mg/s gold consumed → ~$18,000/hr at $85k/kg market price.
-  Chamber geometry               IFE YAML defaults  DEFAULT / PLACEHOLDER    No Cortex chamber design. Drives volume-based CAS22 accounts.
-  Target factory (CAS22)         2.0 MW power       UNCERTAIN                Nanoshell synthesis ≠ cryogenic DT targets; cost analogy is rough.
-  CAS22 coils (C220103)          $0.0 M             ZEROED                   No magnets of any kind in Cortex concept.
-  p_trit / p_cryo                0 MW / 0 MW        CORRECT for D-D          No tritium processing, no cryogenic systems.
-  Net electric (scale)           1000 MW            REFERENCE ONLY           CAS scaling reference; not a validated commercial target for this concept.
-  FOAK contingency               10%                APPLIED                  TRL 1 concept with no experimental basis justifies maximum contingency.
+--- Key Physics Parameters ---
+  Laser average power:          3.0 kW (3.0 kW optical)
+  Laser wall-plug power:        10.0 kW (0.0100 MW)
+  Laser wall-plug efficiency:   30%
+  Repetition rate:              1 MHz
+  Nanoshells per pulse:         1e+06
+  Fusion power (P_fus):         1.00 MW  [PHYSICS UNVALIDATED]
+  Scientific Q (P_fus/P_laser): 333
+  Paper Q (P_fus*kappa/P_laser):100
+  Conversion efficiency (kappa):30%  [NO MECHANISM SPECIFIED]
+  Plant availability:           75%
+  Modules:                      1
 
-=================================================================
-SENSITIVITY ANALYSIS (elasticity = %ΔLCOE / %Δparam)
-Note: overridden accounts (C220103, C220108, C220112) have zero gradient.
-=================================================================
+--- Power Balance ---
+  Fusion power (P_fus):            1.000 MW  [THEORETICAL]
+    Neutron power (~50%):          0.500 MW (2.45 MeV D-D)
+    Charged power (~50%):          0.500 MW (p, T, He-3)
+  Thermal power (P_th):            1.000 MW  (x M=1.0)
+  Gross electric (P_et):           0.300 MWe (x kappa=30%)
+  Recirculating power:
+    Laser (wall-plug):            0.0100 MW
+    Auxiliaries:                  0.0080 MW
+    Total recirculating:          0.0180 MW
+  Net electric (P_net):            0.282 MWe
+  Engineering Q (Q_eng):            55.6
+  Recirculating fraction:           6.0%
 
-Engineering levers:
-  availability                 -0.9911
-  q_eng                        -0.3027
-  construction_time_yr         +0.2794
-  eta_th                       -0.2763
-  plasma_t                     +0.1571
-  eta_pin                      +0.0848
-  mn                           -0.0604
-  blanket_t                    +0.0585
-  ht_shield_t                  +0.0258
-  vessel_t                     +0.0132
-  f_sub                        -0.0126
-  f_rep                        -0.0054
-  structure_t                  +0.0051
-  dd_f_T                       -0.0016
-  p_house                      -0.0013
-  dd_f_He3                     +0.0006
-  p_target                     -0.0006
-  p_pump                       -0.0004
-  eta_p                        +0.0000
-  dhe3_dd_frac                 +0.0000
-  dhe3_f_T                     +0.0000
-  dhe3_f_He3                   +0.0000
-  f_rad                        +0.0000
-  eta_dec                      +0.0000
+--- CAS22: Reactor Plant Equipment ---
+    C220101 Active Region / Blanket        $   0.002M  
+    C220102 Shield (D-D neutrons)          $   0.013M  
+    C220103 Coils                          $   0.000M  [ZERO — no magnetic confinement]
+    C220104 Supplementary Heating          $   0.000M  [ZERO — laser is driver]
+    C220105 Primary Structure              $   0.005M  
+    C220106 Chamber Vessel                 $   0.002M  
+    C220107 Laser System                   $   1.000M  [OVERRIDE — negligible cost]
+    C220108 Nanoshell Factory              $  20.000M  [OVERRIDE — no design exists]
+    C220109 DEC                            $   0.000M  [ZERO — not applicable]
+    C220110 Remote Handling                $   0.742M  
+    C220111 Installation Labor             $   3.047M  
+    C220112 Isotope Separation             $   0.500M  
+    __________________________________________________________________
+    Per-module subtotal:                   $  25.310M
+  Plant-wide accounts:
+    C220200 Coolant Systems                      $   0.503M
+    C220300 Aux Cooling                          $   0.001M
+    C220500 Fuel Handling (D2O + colloid)        $   0.196M
+    C220600 Other Equipment                      $   0.017M
+    C220700 I&C                                  $   0.422M
+    __________________________________________________________________
+    Plant-wide subtotal:                   $   1.140M
+  CAS22 Total:                             $  26.450M
 
-Financial:
-  interest_rate                +0.6857
-  inflation_rate               +0.0674
+--- Capital Costs (CAS10-60) ---
+  CAS10 Pre-construction:                  $   12.50M
+  CAS21 Buildings (x1.2x reg.):          $   49.20M
+  CAS22 Reactor Plant Equipment:           $  26.450M
+  CAS23 Turbine Plant:                     $    2.00M
+  CAS24 Electric Plant:                    $    0.50M
+  CAS25 Misc Plant:                        $    0.30M
+  CAS26 Heat Rejection:                    $    0.20M
+  CAS27 Special Materials (D2O + Au):      $    0.10M
+  CAS28 Digital Twin:                      $    2.00M
+  CAS29 Contingency:                       $    0.00M
+  ________________________________________________________________
+  CAS20 Direct Costs:                      $   80.75M
+  CAS30 Indirect Costs:                    $    8.08M
+  CAS40 Owner's Costs:                     $    1.00M
+  CAS50 Supplementary:                     $    5.70M
+  ________________________________________________________________
+  Overnight Capital:                       $  108.03M
+  CAS60 IDC (f=0.082):               $    8.87M
+  ================================================================
+  Total Capital:                           $  116.90M
+  Specific Capital:                  $   414,547 $/kWe
+
+--- Annual Costs (CAS70-90) ---
+  CAS90 Capital charge (CRF=0.0839):   $   9.803M/yr
+  CAS71 O&M (levelized, 2.5%/yr):      $   3.599M/yr
+  CAS72 Active region replacements (2):    $  0.0001M/yr
+  CAS70 Total O&M:                         $   3.599M/yr
+  CAS80 Fuel & consumables:
+    Gold nanoshells:                       $ 55.9867M/yr (933.11 kg/yr)
+    D2O (net fusion consumption):           $0.000806M/yr (1.3434 kg/yr)
+  CAS80 Total:                             $ 55.9875M/yr
+
+--- LCOE ---
+LCOE: (NOT ENOUGH DATA FOR THIS CONCEPT)
+Native LCOE = (NOT ENOUGH DATA FOR THIS CONCEPT)
+Generic LCOE = (NOT ENOUGH DATA FOR THIS CONCEPT)
+  Annual energy production:          1,852.7 MWh/yr
+  Annual revenue requirement:   $  69.390M/yr
+  Capital (CAS90):             14.1%
+  O&M    (CAS70):              5.2%
+  Fuel   (CAS80):              80.69%
+
+============================================================================
+
+
+============================================================================
+SENSITIVITY ANALYSIS
+============================================================================
+  NOTE: At ~0.3 MWe native power, LCOE is dominated by fixed costs.
+  Sensitivity sweeps explore which parameters most affect LCOE.
+
+
+  Fusion Power (paper claims 1 MW; Cambridge demonstrated ~0 MW):
+         Value       P_net   recirc              LCOE
+  ____________  __________  _______  ________________
+        0.1000      12.0 kW   60.0%    (NOT ENOUGH DATA)
+        0.5000     132.0 kW   12.0%    (NOT ENOUGH DATA)
+          1.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+          5.00      1.48 MW    1.2%    (NOT ENOUGH DATA)
+         10.00      2.98 MW    0.6%    (NOT ENOUGH DATA)
+         50.00     14.98 MW    0.1%    (NOT ENOUGH DATA)
+        100.00     29.98 MW    0.1%    (NOT ENOUGH DATA)
+
+  Conversion Efficiency kappa (paper assumes 30%, no mechanism):
+         Value       P_net   recirc              LCOE
+  ____________  __________  _______  ________________
+        0.1000      82.0 kW   18.0%    (NOT ENOUGH DATA)
+        0.2000     182.0 kW    9.0%    (NOT ENOUGH DATA)
+        0.3000     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        0.4000     382.0 kW    4.5%    (NOT ENOUGH DATA)
+        0.5000     482.0 kW    3.6%    (NOT ENOUGH DATA)
+
+  Nanoshell Factory Capital [M$] (no manufacturing design exists):
+         Value       P_net   recirc              LCOE
+  ____________  __________  _______  ________________
+          5.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+         10.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+         20.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+         50.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        100.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        500.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+
+  Nanoshell Survival Fraction (unknown: destroyed or reusable?):
+         Value       P_net   recirc              LCOE
+  ____________  __________  _______  ________________
+        0.0000     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        0.5000     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        0.9000     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        0.9500     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        0.9900     282.0 kW    6.0%    (NOT ENOUGH DATA)
+          1.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+
+  Gold Price [$/kg] (affects CAS80 if nanoshells consumed):
+         Value       P_net   recirc              LCOE
+  ____________  __________  _______  ________________
+      20000.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+      40000.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+      60000.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+      80000.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+     100000.00     282.0 kW    6.0%    (NOT ENOUGH DATA)
+
+  Plant Availability [fraction]:
+         Value       P_net   recirc              LCOE
+  ____________  __________  _______  ________________
+        0.5000     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        0.6500     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        0.7500     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        0.8500     282.0 kW    6.0%    (NOT ENOUGH DATA)
+        0.9000     282.0 kW    6.0%    (NOT ENOUGH DATA)
+
+
+============================================================================
+SCENARIO COMPARISON
+============================================================================
+
+  Scenario                      P_net             LCOE          $/kWe
+  ________________________ __________ ________________ ______________
+  Conservative                 82.0kW    (NOT ENOUGH DATA)    $ 2,825,717
+  Moderate (Baseline)         282.0kW    (NOT ENOUGH DATA)    $   414,547
+  Optimistic                    2.0MW    (NOT ENOUGH DATA)    $    55,699
+
+
+============================================================================
+KEY BINDING CONSTRAINTS (in order of impact)
+============================================================================
+
+  1. PHYSICS VALIDATION GAP (ABSOLUTE BLOCKER)
+
+     The plasmonic nanoshell fusion mechanism has ZERO experimental validation.
+     No fusion neutrons have been reported from this mechanism by any group.
+
+     Demonstrated (Cambridge kHz experiment): ~10^5 neutrons/second
+     Claimed (Nano-Sun paper):                ~10^19 neutrons/second
+     Gap: 14 ORDERS OF MAGNITUDE
+
+     The paper acknowledges that ionization-driven damping of the plasmon
+     oscillation could eliminate the enhancement mechanism entirely. The
+     deuteron mean free path for fusion (~cm) vastly exceeds the nanoshell
+     radius (~100 nm), meaning most accelerated deuterons escape.
+
+     Until the physics is validated, ALL parameters in this model are
+     conditional on the mechanism working at all.
+
+  2. FIXED-COST DOMINANCE AT SUB-MW SCALE
+
+     At 0.3 MWe native power, the cost structure is dominated by fixed costs
+     (buildings, I&C, control room, minimum-viable-facility infrastructure).
+     The concept produces ~2,000 MWh/year — less than a single large wind
+     turbine. No amount of engineering optimization can produce competitive
+     LCOE at this power level because the denominator (energy production)
+     is microscopic while the numerator (facility costs) has a practical floor.
+
+     Scaling to commercial power would require 10,000x more nanoshells per
+     pulse, multiple parallel units, or higher yield per nanoshell — none
+     of which are discussed in the paper.
+
+  3. ENERGY CONVERSION SYSTEM (UNDESIGNED)
+
+     No mechanism exists to convert ~1 MW of mostly 2.45 MeV neutrons
+     emitted isotropically from a liquid colloid into electricity. The
+     paper's 30% conversion assumption has no engineering basis. Designing
+     the blanket, thermal management, and power conversion for a colloidal
+     fusion source is an unsolved engineering problem with no prior art.
+
+============================================================================
+

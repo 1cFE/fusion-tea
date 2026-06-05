@@ -1,0 +1,29 @@
+[
+  {
+    "timestamp": "2026-06-05T01:31:16.831952+00:00",
+    "step": "feedback-pass",
+    "attempt": 1,
+    "validator": "validate_file_modified",
+    "passed": true,
+    "details": "File content changed",
+    "validated_text_preview": "---\nID: 22-projectile-icf\nConcept: Projectile ICF (First Light Fusion)\nCompany: First Light Fusion\nStatus: draft\nCreated: 2026-06-04\nApproved-Date:\nConfinement-Family: IFE\nArchetype: HEAVY_ION\nArchetype-Fit: Low\nComparison-Status: costingfe-asterisked\nComparables: []\nDesign-Point-Name: First Light projectile pilot plant (2022 pre-pivot ~150 MWe target)\nDesign-Point-Maturity: paper-concept\nP-Native: 150\nGrounding-Confidence: low\n---\n\n## Design Point\n\n- Name: First Light projectile pilot plant (20"
+  },
+  {
+    "timestamp": "2026-06-05T01:32:26.007714+00:00",
+    "step": "model-setup",
+    "attempt": 1,
+    "validator": "validate_python_syntax+validate_model_setup_contract_strict+validate_override_registry",
+    "passed": true,
+    "details": "All validators passed",
+    "validated_text_preview": "\"\"\"1costingfe model: Projectile ICF (First Light Fusion).\n\nUsage:\n    uv run python model_setup.py              # print results\n    uv run python model_setup.py | tee model_output.txt\n\"\"\"\nimport sys\nfrom pathlib import Path\n\n# Make the shared three-forward helper importable regardless of where this file\n# lives (concept dir or iter-N/ dir): walk up to the scripts/ root.\n_SCRIPTS = next(\n    p / \"scripts\"\n    for p in Path(__file__).resolve().parents\n    if (p / \"scripts\" / \"lib\" / \"model_setup_h"
+  },
+  {
+    "timestamp": "2026-06-05T01:34:50.697141+00:00",
+    "step": "assess",
+    "attempt": 1,
+    "validator": "validate_feedback_verdict",
+    "passed": true,
+    "details": "Feedback format valid (verdict: FINDINGS)",
+    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: C220108 value is derived as an annual operating cost but placed in a capital account\n- **Target:** Section 5b (Override Candidates), C220108 entry\n- **Category:** analysis\n- **Finding:** The C220108 override value ($5.6M) is derived as an annualized viability ceiling: \"$5.58M/year annualized target factory + consumables cost.\" The rationale explicitly states \"Value represents the annualized target-factory viability ceiling in $M/year.\" But C220108 is a capital cost ac"
+  }
+]

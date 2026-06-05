@@ -1,233 +1,276 @@
-========================================================================
-PoloMac Magnetic Confinement (Deutelio) — Free-Form LCOE Model
-1cFE Concept Analysis  |  D-D Fuel  |  SCENARIO BOUNDS, NOT ESTIMATE
-========================================================================
+warning: `VIRTUAL_ENV=C:\Users\mallo\AppData\Local\Python\pythoncore-3.14-64` does not match the project environment path `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv` and will be ignored; use `--active` to target the active environment instead
 
-⚠  ALL PLASMA PARAMETERS ARE SCENARIO ASSUMPTIONS (see analysis.md §S2)
-   Blocking gaps: no Q_sci, no P_fus, no confinement physics.
-   Heating approach partially resolved: ECH (4 GHz) for prototype;
-   commercial-scale heating power and integration still unspecified.
-   Results test whether competitive LCOE is POSSIBLE, not that it IS.
+================================================================================
+BASELINE SCENARIO
+================================================================================
+================================================================================
+Polomac Magnetic Confinement (Deutelio) — Speculative LCOE Corridor
+Freeform CAS-Structured Model — FOR COMPARISON PURPOSES ONLY
+================================================================================
 
---- Key Input Parameters ---
-  Fusion power (assumed):     500 MW
-  Scientific Q (assumed):     10.0  → heating = 50 MW
-  SC coil capital:            $500M  [override, HIGH UNCERTAINTY]
-  SC coil lifetime:           8 FPY  [HIGH UNCERTAINTY]
-  SC cryo load:               15 MW  (vs 700 MW copper reference)
-  Thermal efficiency:         38.0%  [MODERATE UNCERTAINTY]
-  Plant capacity factor:      70.0%  [HIGH UNCERTAINTY]
-  Modules:                    1
-  NOAK:                       Yes
-  Interest rate:              8.0%
-  Construction time:          7 years
-  Plant lifetime:             40 years
+  ╔════════════════════════════════════════════════════════════════════╗
+  ║  CRITICAL: THIS IS NOT A CREDIBLE COST ESTIMATE                   ║
+  ║                                                                    ║
+  ║  This model exists ONLY for cross-concept comparison corridor     ║
+  ║  purposes IF the fundamental physics were demonstrated. It is NOT ║
+  ║  a validated techno-economic analysis.                            ║
+  ║                                                                    ║
+  ║  BLOCKING ISSUES:                                                 ║
+  ║  • No design point specified by Deutelio                          ║
+  ║  • No native power target disclosed (value here is INVENTED)      ║
+  ║  • No archetype assigned (upstream: Archetype = [empty])          ║
+  ║  • Magnetic tunnel concept never experimentally demonstrated      ║
+  ║  • Power balance unknown (Q_eng, P_fus undefined in sources)      ║
+  ║                                                                    ║
+  ║  Under analysis contract, models require validated design         ║
+  ║  point data BEFORE modeling. This concept has none.               ║
+  ╚════════════════════════════════════════════════════════════════════╝
 
---- Plasma Geometry ---
-  Major radius:               7.5 m
-  Minor radius:               3.5 m  (elongation κ=2.2)
-  Plasma volume:              3990 m³  (2014 study: 1300 m³ at sub-reactor scale)
-  Outer minor radius:         6.1 m
-  Blanket volume:             2032 m³
-  Shield volume:              3830 m³
+  ╔════════════════════════════════════════════════════════════════════╗
+  ║  PHYSICS DEMONSTRATION GAP (ABSOLUTE BLOCKER)                     ║
+  ║  Demonstrated conditions:  100 eV (small prototype)               ║
+  ║  D-T fusion requirement:   8.1 keV                           ║
+  ║  Temperature gap:          81× (8 orders of magnitude)     ║
+  ║                                                                    ║
+  ║  Magnetic tunnel concept has never been experimentally validated. ║
+  ║  Particle loss rates through tunnels are unquantified.            ║
+  ║  2014 design had 700 MW coil power (excessive for steady state).  ║
+  ║  No Q_eng or recirculating power analysis exists.                 ║
+  ║                                                                    ║
+  ║  ALL PARAMETERS IN THIS MODEL ARE SPECULATIVE ASSUMPTIONS.        ║
+  ╚════════════════════════════════════════════════════════════════════╝
 
---- Power Balance (D-D fuel, steady-state) ---
-  Fusion power:               500 MW
-    Neutron power:            168 MW (33.6%)
-    Charged particle power:   332 MW (66.4%)
-  Thermal power:              555 MW
-  Gross electric:             211 MWe
+
+--- Key Physics Parameters (INVENTED FOR CORRIDOR PURPOSES) ---
+  (NOT extracted from Deutelio disclosures)
+  Magnetic field:               2.5 T [from literature range 2-3 T]
+  Plasma volume:                1300 m³ [from 2014 paper]
+  Beta:                         25.0% [from literature 20-30%]
+  Ion temperature:              8.1 keV [D-T standard]
+  Density:                      1.0e+20 m⁻³ [from literature]
+  Confinement time:             4.5 s [from literature 4-5 s]
+  Fusion power (P_fus):         400.0 MW [ASSUMED — no source value]
+  Scientific Q (Q_sci):         10.0 [ASSUMED — no heating method disclosed]
+  Blanket multiplication M:     1.15 [standard D-T]
+  Thermal efficiency η_th:      35.0% [ASSUMED Rankine at 350°C]
+  Plant availability:           80% [ASSUMED]
+  Modules:                      1 [single large dipole]
+  → Native power (derived):     ~84 MWe [NO COMPANY TARGET]
+
+--- Geometry (derived from 1300 m³ plasma) ---
+  Major radius (approx):        8.4 m
+  Minor radius (approx):        2.8 m
+  Plasma volume:                1300 m³
+  Blanket volume:               617 m³
+  Shield volume:                1008 m³
+
+--- Power Balance — FROM SPECULATIVE ASSUMPTIONS ---
+  Fusion power (P_fus):            400.0 MW  [HYPOTHETICAL — physics undemonstrated]
+    Neutron power (80%):           320.0 MW (14.1 MeV → blanket)
+    Alpha power (20%):              80.0 MW (→ plasma heating)
+  Thermal power (P_th):            448.0 MW  (× M=1.15)
+  Gross electric (P_et):           156.8 MWe (× η=35.0%)
   Recirculating power:
-    Heating wall-plug:        83 MW  (=50 MW plasma / 60% heater eff)
-    SC coil cryo:             15 MW  [vs 700 MW copper]
-    Housekeeping:             8 MW
-    Heat overhead:            20 MW
-    TOTAL recirculating:      126 MW
-  Net electric:               85 MWe
-  Engineering Q:              3.96
-  Recirculating fraction:     59.9%
+    Heating:                        40.0 MW
+    Coils (superconducting):        15.0 MW
+    Auxiliaries:                    18.0 MW
+    Total recirculating:            73.0 MW
+  Net electric (P_net):             83.8 MWe
+  Plant net electric:               83.8 MWe [NO COMPANY TARGET — INVENTED]
+  Engineering Q (Q_eng):           5.479
+  Recirculating fraction (ε):      46.6%
 
 --- CAS22: Reactor Plant Equipment ---
-  Per-module accounts:
-    C220101  First Wall + Blanket (D-D, no breed)   $   247.1M
-    C220102  Shield (D-D, 0.7× D-T scale)           $   804.2M
-    C220103  In-vessel SC Dipole Coil               $   500.0M [override]
-    C220104  Heating System (NBI/RF analogue)       $   150.0M [override]
-    C220105  Primary Structure                      $    97.6M
-    C220106  Vacuum System (vessel)                 $   156.0M
-    C220107  Power Supplies                         $    26.9M
-    C220110  Remote Handling (1.5× enhanced)        $    50.5M [override]
-    C220111  Installation Labor                     $   284.5M
-    ──────────────────────────────────────────────────────────
-    Per-module subtotal:                              $  2316.9M × 1
+    C220101 Blanket / First Wall (D-T)           $   131.9M  
+    C220102 Shield (14.1 MeV neutrons)           $   265.9M  
+    C220103 Magnets (2.5 T supercond.)           $   180.0M  [OVERRIDE — lower field, tunnel geometry]
+    C220104 Supplementary Heating                $    17.6M  [method unknown]
+    C220105 Primary Structure                    $    55.7M  [tunnel supports]
+    C220106 Vacuum Vessel                        $    28.1M  
+    C220107 Power Supplies                       $     9.0M  
+    C220110 Remote Handling                      $    27.1M  
+    C220111 Installation Labor                   $   100.2M  
+    C220112 Isotope Separation (D-T)             $     4.3M  
+    ──────────────────────────────────────────────────────────────────
+    Per-module subtotal:                         $   820.0M × 1
   Plant-wide accounts:
-    C220200  Coolant Systems                        $    28.8M
-    C220300  Aux Cooling + Cryoplant (SC coil)      $   123.7M
-    C220400  Radioactive Waste Management           $     0.5M
-    C220500  Fuel Handling (D-D, no T breeding)     $    10.6M
-    C220600  Other Equipment                        $     1.6M
-    C220700  Instrumentation & Control              $    25.7M
-    ──────────────────────────────────────────────────────────
-    Plant-wide subtotal:                              $   191.0M
-  CAS22 Total:                                        $  2507.8M
+    C220200 Coolant Systems (thermal cycle)          $    27.0M
+    C220300 Aux Cooling + Cryoplant                  $    40.5M
+    C220400 Rad Waste Management (D-T)               $     0.7M
+    C220500 Fuel Handling (D-T tritium)              $    17.6M
+    C220600 Other Equipment                          $     1.6M
+    C220700 I&C                                      $    22.3M
+    ──────────────────────────────────────────────────────────────────
+    Plant-wide subtotal:                         $   109.7M
+  CAS22 Total:                                   $   929.7M
 
---- Capital Costs (CAS10-60) ---
-  CAS10  Pre-construction                       $    14.2M
-  CAS21  Buildings                              $   131.8M
-  CAS22  Reactor Plant Equipment                $  2507.8M
-  CAS23  Turbine Plant                          $    41.7M
-  CAS24  Electric Plant                         $    17.8M
-  CAS25  Misc Plant                             $    10.8M
-  CAS26  Heat Rejection                         $     7.2M
-  CAS27  Special Materials                      $     0.2M
-  CAS28  Digital Twin                           $     5.0M
-  CAS29  Contingency                            $     0.0M
-  ──────────────────────────────────────────────────────────
-  CAS20  Direct Costs                           $  2722.3M
-  CAS30  Indirect Costs                         $   635.2M
-  CAS40  Owner Costs                            $     9.0M
-  CAS50  Supplementary Costs                    $   183.6M
-  ──────────────────────────────────────────────────────────
-  Overnight Capital                          $  3564.3M
-  CAS60  IDC (f=0.275)                          $   979.1M
-  ══════════════════════════════════════════════════════════
-  Total Capital                              $  4543.3M
-  Specific Capital                           $   53715 $/kWe
+--- Capital Costs (CAS10–60) ---
+  CAS10 Pre-construction:                        $    12.7M
+  CAS21 Buildings (×1.8× reg. mult.):           $   138.7M
+  CAS22 Reactor Plant Equipment:                 $   929.7M
+  CAS23 Turbine Plant (Rankine):                 $    31.4M
+  CAS24 Electric Plant:                          $    13.2M
+  CAS25 Misc Plant:                              $     8.0M
+  CAS26 Heat Rejection:                          $     5.4M
+  CAS27 Special Materials (tritium):             $    23.2M
+  CAS28 Digital Twin:                            $     5.0M
+  CAS29 Contingency:                             $     0.0M
+  ────────────────────────────────────────────────────────────────────
+  CAS20 Direct Costs:                            $  1154.5M
+  CAS30 Indirect Costs:                          $   230.9M
+  CAS40 Owner's Costs:                           $    10.1M
+  CAS50 Supplementary:                           $   114.9M
+  ────────────────────────────────────────────────────────────────────
+  Overnight Capital:                             $  1523.1M
+  CAS60 IDC (f=0.223):                     $   339.1M
+  ════════════════════════════════════════════════════════════════════
+  Total Capital:                                 $  1862.2M
+  Specific Capital:                        $    22,222 $/kWe
 
---- Annual Costs (CAS70-90) ---
-  CAS90  Capital charge (CRF=0.0839):        $   381.0M/yr
-  CAS71  O&M (levelized):                     $    72.1M/yr
-  CAS72a FW/blanket replacement (2 times):    $     9.2M/yr
-  CAS72b SC coil replacement    (3 times):    $    27.6M/yr  [HIGH UNCERTAINTY]
-  CAS72  Scheduled replacement (total):       $    36.8M/yr
-  CAS70  Total O&M:                           $   108.9M/yr
-  CAS80  Fuel (D-D deuterium):                $  0.5355M/yr  (126.26 kg D burned/yr, D-D cost ≈ negligible)
+--- Annual Costs (CAS70–90) ---
+  CAS90 Capital charge (CRF=0.0839):         $   156.2M/yr
+  CAS71 O&M (levelized, 2.5%/yr):          $    53.8M/yr
+  CAS72 Blanket replacements (6 over life):    $    16.9M/yr
+  CAS70 Total O&M:                               $    70.8M/yr
+  CAS80 Fuel (D-T):                              $534.9264M/yr
 
---- LCOE ---
-  Annual net energy:          518,656 MWh
-  Annual revenue requirement: $490.5M
-  ╔══════════════════════════════════════════╗
-  ║  LCOE =   94.57 ¢/kWh                   ║
-  ║       =   945.7 $/MWh                   ║
-  ╚══════════════════════════════════════════╝
-  Capital fraction (CAS90):   77.7%
-  O&M fraction (CAS70):       22.2%
-  Fuel fraction (CAS80):      0.1%
+--- LCOE (FREEFORM, NATIVE-SCALE ONLY) ---
+  Annual energy production:          587,270 MWh/yr
+  Annual revenue requirement:   $   761.8M/yr
+  ╔═══════════════════════════════════════════════════╗
+  ║  LCOE =   129.7 ¢/kWh                            ║
+  ║       =  1297.3 $/MWh   (freeform, native-scale only)  ║
+  ║                                                   ║
+  ║  NOT EXTRACTED FROM COMPANY DATA                  ║
+  ║  Assumes P_fus=400 MW, Q_sci=10, B=2.5 T, other  ║
+  ║  invented parameters. For comparison only.        ║
+  ╚═══════════════════════════════════════════════════╝
+  Capital (CAS90):              20.5%
+  O&M    (CAS70):               9.3%
+  Fuel   (CAS80):               70.21%
 
-========================================================================
-SENSITIVITY ANALYSIS — Single-Parameter Sweeps from Baseline
-Baseline LCOE: 94.57 ¢/kWh
-========================================================================
+================================================================================
 
-  SC coil capital cost [M$]:
-         200  →    82.20 ¢/kWh  (85 MWe)
-         300  →    86.32 ¢/kWh  (85 MWe)
-         400  →    90.44 ¢/kWh  (85 MWe)
-         500  →    94.57 ¢/kWh  (85 MWe)
-         700  →   102.81 ¢/kWh  (85 MWe)
-       1e+03  →   115.18 ¢/kWh  (85 MWe)
 
-  Scientific Q (plasma gain):
-           3  →  NET POWER NEGATIVE (-66 MWe)
-           5  →   404.60 ¢/kWh  (20 MWe)
-           7  →   141.80 ¢/kWh  (57 MWe)
-          10  →    94.57 ¢/kWh  (85 MWe)
-          15  →    74.80 ¢/kWh  (106 MWe)
-          20  →    67.63 ¢/kWh  (117 MWe)
+================================================================================
+SENSITIVITY ANALYSIS
+================================================================================
 
-  Fusion power [MW]:
-         200  →   751.33 ¢/kWh  (8 MWe)
-         300  →   201.53 ¢/kWh  (34 MWe)
-         500  →    94.57 ¢/kWh  (85 MWe)
-         750  →    62.90 ¢/kWh  (148 MWe)
-       1e+03  →    49.64 ¢/kWh  (212 MWe)
+  Fusion Power (P_fus):
+         Value    Q_eng     P_net       ε            LCOE
+  ────────────  ───────  ────────  ──────  ──────────────
+         200.0     3.77      25.4 MW   67.6%        237.6 ¢/kWh
+         300.0     4.76      54.6 MW   53.6%        155.4 ¢/kWh
+         400.0     5.48      83.8 MW   46.6%        129.7 ¢/kWh
+         600.0     6.45     142.2 MW   39.5%        109.3 ¢/kWh
+         800.0     7.08     200.6 MW   36.0%        100.4 ¢/kWh
 
-  Plant capacity factor:
-         0.4  →   157.05 ¢/kWh  (85 MWe)
-        0.55  →   117.31 ¢/kWh  (85 MWe)
-         0.7  →    94.57 ¢/kWh  (85 MWe)
-         0.8  →    84.09 ¢/kWh  (85 MWe)
-         0.9  →    76.16 ¢/kWh  (85 MWe)
+  Scientific Q (fusion out / heating in):
+         Value    Q_eng     P_net       ε            LCOE
+  ────────────  ───────  ────────  ──────  ──────────────
+           5.0     3.54      43.8 MW   72.1%        245.2 ¢/kWh
+           7.5     4.63      70.5 MW   55.1%        153.7 ¢/kWh
+          10.0     5.48      83.8 MW   46.6%        129.7 ¢/kWh
+          15.0     6.70      97.1 MW   38.1%        112.3 ¢/kWh
+          20.0     7.55     103.8 MW   33.8%        105.3 ¢/kWh
 
-  SC coil lifetime [FPY]:
-           3  →   108.87 ¢/kWh  (85 MWe)
-           5  →    99.57 ¢/kWh  (85 MWe)
-           8  →    94.57 ¢/kWh  (85 MWe)
-          12  →    91.98 ¢/kWh  (85 MWe)
-          20  →    90.14 ¢/kWh  (85 MWe)
+  Magnet Capital Cost:
+         Value    Q_eng     P_net       ε            LCOE
+  ────────────  ───────  ────────  ──────  ──────────────
+         100.0     5.48      83.8 MW   46.6%        127.0 ¢/kWh
+         150.0     5.48      83.8 MW   46.6%        128.7 ¢/kWh
+         180.0     5.48      83.8 MW   46.6%        129.7 ¢/kWh
+         250.0     5.48      83.8 MW   46.6%        132.1 ¢/kWh
+         400.0     5.48      83.8 MW   46.6%        137.2 ¢/kWh
 
-  Thermal efficiency:
-         0.3  →   192.99 ¢/kWh  (40 MWe)
-        0.35  →   116.42 ¢/kWh  (68 MWe)
-        0.38  →    94.57 ¢/kWh  (85 MWe)
-        0.42  →    76.01 ¢/kWh  (107 MWe)
-        0.46  →    63.82 ¢/kWh  (129 MWe)
+  Coil Steady-State Power:
+         Value    Q_eng     P_net       ε            LCOE
+  ────────────  ───────  ────────  ──────  ──────────────
+          10.0     5.88      88.8 MW   43.4%        122.6 ¢/kWh
+          15.0     5.48      83.8 MW   46.6%        129.7 ¢/kWh
+          25.0     4.82      73.8 MW   52.9%        146.9 ¢/kWh
+          50.0     3.70      48.8 MW   68.9%        220.5 ¢/kWh
+         100.0     2.53     (sink)     —       (infinite)
 
-  SC cryogenic load [MW]:
-           5  →    83.06 ¢/kWh  (95 MWe)
-          10  →    88.56 ¢/kWh  (90 MWe)
-          15  →    94.57 ¢/kWh  (85 MWe)
-          25  →   108.76 ¢/kWh  (75 MWe)
-          50  →   168.25 ¢/kWh  (50 MWe)
-         100  →  NET POWER NEGATIVE (-0 MWe)
+  Thermal-to-Electric Efficiency:
+         Value    Q_eng     P_net       ε            LCOE
+  ────────────  ───────  ────────  ──────  ──────────────
+           0.3     5.48      61.4 MW   54.3%        174.5 ¢/kWh
+           0.3     5.48      83.8 MW   46.6%        129.7 ¢/kWh
+           0.4     5.48     106.2 MW   40.7%        103.8 ¢/kWh
+           0.5     5.48     128.6 MW   36.2%         86.8 ¢/kWh
 
-========================================================================
-SCENARIO COMPARISON: Conservative | Moderate | Optimistic
-========================================================================
-  Scenario           P_fus  Q_sci   P_net     CapEx       LCOE
-  ────────────────────────────────────────────────────────────
-  Conservative        300MW     5     -26MW       N/A   NEGATIVE
-  Moderate            500MW    10      85MW $53715/kWe 945.7 $/MWh
-  Optimistic          800MW    15     237MW $19275/kWe 230.1 $/MWh
 
-========================================================================
-D-T SCENARIO COMPARISON — Conservative | Moderate | Optimistic
-D-T: 80% neutron / 20% charged particle | requires tritium breeding blanket
-D-T achievable Q ≥ 10 is far more plausible than D-D Q ≥ 10
-Tests whether blanket cost penalty exceeds the Q threshold benefit
-========================================================================
+================================================================================
+SCENARIO COMPARISON
+================================================================================
 
-  D-D vs D-T at equivalent scenario assumptions (blanket = tritium breeding capital):
-  Scenario               Fuel    P_fus    Q   P_net  Blanket$      CapEx       LCOE
-  ───────────────────────────────────────────────────────────────────────────────
-  Conservative           D-D      300MW   5     -26MW      none        N/A   NEGATIVE
-  Moderate               D-D      500MW  10      85MW      none $53715/kWe 945.7 $/MWh
-  Optimistic             D-D      800MW  15     237MW      none $19275/kWe 230.1 $/MWh
-  ───────────────────────────────────────────────────────────────────────────────
-  Conservative           D-T      300MW   7      -2MW     $400M        N/A   NEGATIVE
-  Moderate               D-T      500MW  10      87MW     $300M $64285/kWe 1122.1 $/MWh
-  Optimistic             D-T      800MW  15     242MW     $200M $22685/kWe 276.7 $/MWh
+  Scenario Comparison Table:
+  Scenario                 P_net      Q_eng    LCOE             $/kWe       
+  ──────────────────────── ────────── ──────── ──────────────── ────────────
+  Conservative                (sink)    2.12   (infinite)       (infinite)  
+  Moderate (Baseline)            84 MW   5.48    129.7 ¢/kWh     $    22,222 
+  Optimistic                    201 MW   8.82     76.7 ¢/kWh     $    12,010 
 
-========================================================================
-KEY BINDING CONSTRAINTS — Ranked by Model Sensitivity
-========================================================================
 
-  1. PLASMA Q AND FUSION POWER (dominant LCOE levers)
-     Q_sci and fusion power produce the widest LCOE swings in the model.
-     At Q=3 (near D-D threshold), net power goes negative — no viable output.
-     At Q=20, LCOE reaches ~68 ¢/kWh. Fusion power swings LCOE from ~751 ¢/kWh
-     at 200 MW to ~50 ¢/kWh at 1000 MW (a 15× range). These are TRL-1 unknowns:
-     no confinement physics data exists for PoloMac, and D-D ignition requires
-     ~6× higher plasma pressure than D-T at equivalent density. D-D Q ≥ 10 is
-     an extraordinary extrapolation from current dipole experiments. This is the
-     parameter that most governs whether PoloMac's economics are investigable.
+================================================================================
+KEY BINDING CONSTRAINTS (in order of impact)
+================================================================================
 
-  2. THERMAL EFFICIENCY AND CAPACITY FACTOR (secondary physics/engineering levers)
-     Thermal efficiency swings LCOE from 193 ¢/kWh (30%) to 64 ¢/kWh (46%) —
-     a 3× range across plausible engineering designs. Capacity factor similarly
-     moves LCOE ~40% across CF=0.40–0.90. Both are driven by downstream
-     engineering (power conversion cycle design, maintenance regime) that has
-     not been specified for PoloMac. The SC coil replacement interval is the
-     primary driver of forced outage and therefore the primary lever on CF.
+1. PHYSICS DEMONSTRATION GAP (ABSOLUTE BLOCKER)
+   Magnetic tunnel concept: NEVER experimentally demonstrated
+   Particle loss rates through tunnels: UNQUANTIFIED
+   Small prototype: 100 eV, 0.2-0.3 T, hydrogen plasma
+   Reactor requirement: 8.1 keV D-T, 2-3 T field
+   Temperature gap: 81× increase
 
-  3. SC COIL VIABILITY (framing constraint, secondary cost lever)
-     The 700 MW copper coil draw (Elio 2014) is an absolute economic barrier —
-     no viable LCOE is possible without the superconducting coil path. However,
-     once the SC path is assumed, LCOE sensitivity to sc_coil_capital_M is
-     narrower than for Q or fusion power: a 5× capital span ($200M–$1000M)
-     produces only ~82–115 ¢/kWh. Coil lifetime produces the narrowest
-     sensitivity of any swept parameter (109–90 ¢/kWh from 3 to 20 FPY).
-     The SC coil constraint matters primarily as a viability gate — the model
-     requires cryo load ≲ 100 MW; at ~100 MW cryo, net power falls to near zero
-     as recirculating draw exhausts gross electric output entirely.
+   Impact: ALL parameters in this model are speculative until magnetic
+           tunnel confinement is experimentally demonstrated. The concept
+           claims 2-3× lower magnetic field than tokamaks for equivalent
+           performance, but this has zero experimental validation.
+
+   The 2014 design had 700 MW coil power consumption (excessive for
+   steady-state). The 2024 report mentions superconducting magnets but
+   provides NO Q_eng or recirculating power analysis.
+
+   Resolution pathway: Build and operate small prototype demonstrating:
+                      (1) Magnetic tunnel concept at keV temperatures
+                      (2) Quantified particle loss rates
+                      (3) Measured Q_eng and power balance
+
+2. FUSION POWER & Q_ENG (UNKNOWN)
+   Baseline: P_fus = 400 MW, Q_eng ~ 5 (pure speculation)
+   Sensitivity: LCOE ∝ 1/P_fus and ∝ 1/Q_eng approximately
+
+   Impact: No fusion power estimate exists in sources. No heating system
+           for reactor scale is specified. Small prototype uses 5-10 kW
+           ECRH, not scalable to 8.1 keV D-T operation.
+
+   Without Q_eng analysis, recirculating power fraction is unknown.
+   The concept's economic viability depends entirely on achieving
+   net-positive power output, which is undemonstrated.
+
+3. MAGNET CAPITAL COST
+   Baseline: $180M (ASSUMED lower field advantage at 2.5 T)
+   Range: $100M-$400M depending on tunnel geometry complexity
+   Sensitivity: LCOE varies by ~30% across this range
+
+   Impact: Lower magnetic field (2.5 T vs 5+ T tokamak) should reduce
+           magnet cost, but magnetic tunnel penetrations create unique
+           structural challenges. The discontinuous azimuthal geometry
+           may offset field advantage. No magnet design exists.
+
+   If tunnel integration requires expensive custom coil structures,
+           the claimed cost advantage over tokamaks disappears.
+
+4. LARGE PLASMA VOLUME (1300 m³)
+   Much larger than compact tokamaks (ARC ~60 m³)
+   Impact: Large volume → large blanket, shield, vessel, building costs
+           Even with lower field, capital cost may be high due to size.
+
+   The 2014 conceptual design had 1300 m³ plasma volume. No updated
+   reactor-scale volume in 2024 report. Large size partially negates
+   lower-field magnet cost advantage.
+
+================================================================================
 

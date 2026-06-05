@@ -1,0 +1,372 @@
+QI Stellarator — HTS (Proxima Fusion Stellaris) — 1 GWe, NOAK
+Scenario A: H4-true (ignited, 5 MW ECRH steady-state), 88% capacity factor
+LCOE (initial-build only):     106.4 $/MWh  [LOWER BOUND — excl. coil replacement]
+LCOE (replacement-inclusive):  110.8 $/MWh  [2 coil replacements, DEFAULT C220103]
+Overnight cost: 7938 $/kW | Fusion: 2768 MW | Net: 1000 MW | Q_eng: 5.5
+NOTE: C220103 coil cost uses framework defaults (wound-coil calibration — LOWER BOUND;
+      3D non-planar manufacturing premium not modeled; see Key Assumptions #3 and sweep)
+NOTE: Framework calibrated to ARIES-CS (QA stellarator); Stellaris is QI — topology
+      difference may affect C220103 coil account; direction of bias unknown. (Assumption #13)
+NOTE: CAS22 ($3142 M) contains coils at C220103 and heating at C220104.
+      CAS21 ($930 M) = Buildings only, per ARIES CAS20X convention.
+      CAS21 rated 'Small +' vs. HTS compact tokamak reference (R0≈3–4 m) due to larger
+      reactor building footprint at R0≈13 m (partially offset by Gundremmingen site reuse).
+      Source: analysis.md §7, CAS account structure note; feedback.md CF-CAS21.
+
+Code     Account                              M$
+------------------------------------------------
+CAS10    Preconstruction                    18.5
+CAS21    Buildings                         929.7
+CAS22    Reactor Plant Equipment          3141.6
+CAS23    Turbine Plant                     241.9
+CAS24    Electrical Plant                  103.0
+CAS25    Miscellaneous                      62.7
+CAS26    Heat Rejection                     41.8
+CAS27    Special Materials                  15.0
+CAS28    Digital Twin                        5.0
+CAS29    Contingency                         0.0
+CAS30    Indirect Costs                   1210.8
+CAS40    Owner's Costs                      39.0
+CAS50    Supplementary                     380.9
+CAS60    IDC                              1748.5
+CAS70    O&M (annualized)                  178.8
+CAS80    Fuel (annualized)                   1.4
+CAS90    Financial                         639.7
+------------------------------------------------
+         Total Capital                    7938.2
+NOTE: CAS70 = DEFAULT (178.8 M$/yr annualized) — O&M structural uplift
+      vs. HTS compact tokamak reference NOT modeled. Port-access constraint from
+      modular stellarator coil geometry implies higher blanket/divertor maintenance
+      cost (direction: +; magnitude: unknown). See analysis.md §7 O&M delta paragraph
+      and O&M multiplier sweep below. Source: feedback.md F-2; arxiv-2501-04640.md.
+
+CAS22 Sub-accounts (Reactor Plant Equipment) — Scenario A (H4-true):
+Code         Account                                  M$  Note
+------------------------------------------------------------------------------
+C220101      First Wall + WCLL Blanket             556.0  [DEFAULT]
+C220102      Shield                                425.0  [DEFAULT]
+C220103      Coils (3D HTS — LOWER BOUND)          516.1  [DEFAULT — LOWER BOUND; 3D manufacturing premium not modeled]
+C220104      Heating System (ECRH, 5 MW)           353.2  [DEFAULT]
+C220105      Primary Structure                      30.8  [DEFAULT]
+C220106      Vacuum Vessel                         108.3  [DEFAULT]
+C220107      Power Supplies                         92.1  [DEFAULT]
+C220108      Divertor (island divertor)            107.7  [DEFAULT]
+C220109      DEC                                     0.0  [DEFAULT]
+C220111      Installation                          329.7  [DEFAULT]
+C220112      Isotope Separation                      0.0  [DEFAULT]
+C220200      Coolant (WCLL circuits)               204.8  [DEFAULT]
+C220300      Aux Cooling                            33.6  [DEFAULT]
+C220400      Rad Waste                               6.3  [DEFAULT]
+C220500      Fuel Handling (tritium)               120.0  [DEFAULT]
+C220600      Other Equipment                        11.5  [DEFAULT]
+C220700      I&C                                    80.5  [DEFAULT]
+------------------------------------------------------------------------------
+C220000      TOTAL                                3141.6
+
+Scenario B: H4-false (50 MW sustained ECRH; per Stellaris Table 3 stated value)
+  LCOE (initial-build):        110.2 $/MWh | Overnight: 8250 $/kW
+  LCOE (replacement-incl.):    114.7 $/MWh [same coil cost, DEFAULT C220103]
+  Fusion: 2939 MW | Net: 1000 MW | Q_eng: 4.2
+  LCOE delta vs. Scenario A (initial-build): +3.8 $/MWh
+  Source: stellaris-design-details.md Table 3 (H&CD column); analysis.md §2, H4
+
+Scenario H2a: Higher-Beta QI (4% Beta, R0≈11.6 m, Smaller Machine) [next-gen QI, not Stellaris v1]
+  LCOE (initial-build):        100.8 $/MWh | Overnight: 7585 $/kW
+  LCOE (replacement-incl.):    105.3 $/MWh [DEFAULT C220103]
+  Fusion: 2768 MW | Net: 1000 MW | Q_eng: 5.5
+  LCOE delta vs. Scenario A (initial-build): -5.6 $/MWh
+  Source: analysis.md §2, H2a; arxiv-2512-08825.md (CIEMAT-QI4X beta ceiling 4%)
+  NOTE: C220103 coil cost still LOWER BOUND; 3D premium not modeled in this scenario.
+  NOTE: This scenario represents a future QI design lineage, NOT a Stellaris v1 variant.
+        Do not interpret H2a as the upper end of a Stellaris design range.
+
+Coil cost multiplier sweep (C220103 3D manufacturing premium):
+Base C220103 (framework default): 516 M$ (wound-coil calibration)
+Source: analysis.md §7 (C220103 row); Brown (2018) IEEE TPS; analysis.md §2, H1
+Multiplier       C220103 (M$)   Init. LCOE   Repl $/MWh   Incl.Repl LCOE
+------------------------------------------------------------------------
+  DEFAULT                 516       106.4         4.5           110.8
+  1.5×                    774       110.9         6.7           117.6
+  2.5×                   1290       120.0        11.2           131.1
+  5.0×                   2580       142.6        22.3           165.0
+  (1.5× = optimistic; 5× = pessimistic; SMC demo 2027 = first data point)
+  Replacement-inclusive LCOE is the economically complete figure for cross-concept
+  comparison. The initial-build figure does not appear in the compact HTS tokamak
+  reference on the same 10-yr coil replacement schedule.
+  Source: analysis.md §2, H1 (H1: premium < 2× is viability threshold);
+          stellaris-design-details.md §2.8 (REBCO fluence limit → ~10 FPY at 2,700 MW)
+
+Capacity factor range sweep (Scenario A — H4-true, DEFAULT C220103):
+Source: analysis.md §5 (range 85–95%); availability elasticity = −0.89
+CF-F1: Lower bound (85%) calibrated to ~1–4 yr blanket replacement interval
+       (Queral et al. 2025; arxiv-2501-04640.md abstract)
+CF         Init. LCOE   Repl $/MWh   Incl.Repl LCOE  Note
+------------------------------------------------------------------------
+  85%         109.7         4.6           114.3  floor (maintenance limits; ~1-yr replacement interval)
+  88%         106.4         4.5           110.8  central — Helios analogue
+  95%          99.3         4.1           103.5  optimistic — disruption-free
+  UNCERTAIN: Proxima has not published a Stellaris capacity factor target.
+  The 85–95% range comes from the Helios analogue (88%), W7-X experimental run-time
+  (>97%, plant lower due to scheduled maintenance), and the disruption-free argument.
+  This sweep is the primary continuous LCOE lever; coil cost defines viability envelope.
+  Source: analysis.md §5 (capacity factor row); analysis.md §2, H2 (viability threshold)
+
+  CF-H2 iter-8 NOTE: H2 viability threshold must be evaluated against the actual HTS
+  compact tokamak reference CF (01-hts-compact-tokamak), NOT a conventional disruption-
+  limited tokamak (~83–85%). ARC-class designs employ active disruption prediction;
+  if the 01 reference achieves 87–90% CF, the Stellaris advantage at 88% shrinks to
+  0–1 percentage points — insufficient to offset the 3D coil manufacturing premium.
+  H2 gate cannot be evaluated quantitatively until the 01 analysis provides a
+  comparable CF estimate. Source: feedback.md CF-H2; analysis.md §2, H2.
+
+O&M multiplier sweep (CAS70 structural uplift — F-2 finding):
+Base CAS70 (framework default): 178.8 M$/yr → 23.2 $/MWh LCOE contribution
+NOTE: DEFAULT — O&M structural uplift vs. HTS compact tokamak reference not modeled.
+      Port-access constraint from modular coil geometry implies higher maintenance cost
+      (direction: +; magnitude: unknown). Source: analysis.md §7; feedback.md F-2.
+NOTE: CAS70 is not a supported cost_overrides key; LCOE delta computed analytically.
+Multiplier      CAS70 (M$/yr)   OM $/MWh   Total LCOE   Repl $/MWh   Incl.Repl LCOE
+--------------------------------------------------------------------------------
+  DEFAULT               178.8       23.2       106.4         4.5           110.8
+  1.5×                  268.2       34.8       118.0         4.5           122.4
+  2.0×                  357.7       46.4       129.6         4.5           134.0
+  (1× = framework default; 1.5× = moderate uplift; 2× = high uplift)
+  Magnitude is truly unknown — no stellarator reactor O&M cost models published.
+  O&M is the second-largest ongoing cost after financial charges; the default is a
+  lower bound for the same structural reason that C220103 is a lower bound.
+  Source: analysis.md §7 (O&M row); analysis.md §6, Gap 7 (O&M truly-unknown gap)
+
+Construction time sweep (IDC sensitivity — F-3 finding):
+Scenario A (H4-true, 5 MW ECRH), DEFAULT C220103 and CAS70
+Elasticity confirmed at +0.40 by autodiff below; ~4% LCOE per additional year
+Source: analysis.md §2 (construction_time sensitivity parameter); feedback.md F-3
+Time (yr)      Init. LCOE   Repl $/MWh   Incl.Repl LCOE  Note
+------------------------------------------------------------------------------
+  7                101.1         4.5           105.6  optimistic — ARC-class compact tokamak schedule analogue
+  8                106.4         4.5           110.8  framework default (mfe_stellarator.yaml) ← central
+  10               117.8         4.5           122.2  pessimistic — first-of-kind 13 m machine with 3D coil install
+  12               130.5         4.5           135.0  worst-case — schedule slippage analogous to large fission projects
+  UNCERTAIN: No Stellaris construction schedule published; 8-yr default is a
+  plausible starting estimate for a 13 m machine with complex 3D coil geometry.
+  The financial expression of the scale penalty (Challenge 2) propagates into IDC
+  (CAS60) through construction_time_yr. This is independent of the coil cost multiplier.
+  Source: analysis.md §2 (construction time as expression of scale penalty);
+          analysis.md §2, Challenge 4; mfe_stellarator.yaml (default 8.0 yr)
+
+Key Assumptions
+===============
+1. Net electric output: 1,000 MWe
+   Source: dossier.md §Summary; stellaris-design-details.md Table 3.
+
+2. Capacity factor: 88% (central estimate; Helios analogue + disruption-free argument)
+   Helios: "enabling an 88% capacity factor" — helios-stellarator-comparison.md §2.
+   W7-X demonstrated >97% experimental run-time; plant availability lower due to
+   scheduled blanket/divertor maintenance. Analysis range: 85–95%.
+   CF-F1 (iter-8): Lower bound (85%) is now causally grounded in the blanket/divertor
+   replacement interval of ~1–4 years (Queral et al. 2025; arxiv-2501-04640.md, abstract;
+   HSR3 context). At a 4-week outage per 1-year interval → ~92% ceiling; 85% floor
+   accommodates more frequent or longer outages. This is a general stellarator reactor
+   constraint, not Stellaris-specific.
+   CF-H2 (iter-8): CRITICAL — the H2 viability threshold is relative to the HTS compact
+   tokamak reference (01-hts-compact-tokamak / CFS ARC-class), NOT to a conventional
+   disruption-limited tokamak. If the ARC-class reference targets 87–90% CF (via active
+   disruption prediction and avoidance), Stellaris's 88% advantage is 0–1 percentage
+   points — insufficient to offset the 3D coil manufacturing premium. The H2 gate cannot
+   be evaluated quantitatively until the 01 analysis provides a comparable CF estimate.
+   UNCERTAIN: Proxima has not published a capacity factor target for Stellaris.
+   Source: analysis.md §5 (capacity factor row); analysis.md §2, H2;
+           helios-stellarator-comparison.md §2; arxiv-2501-04640.md (replacement interval);
+           feedback.md CF-F1, CF-H2.
+
+3. C220103 (coils) — LOWER BOUND; 3D manufacturing premium NOT modeled [PRIMARY CAVEAT]
+   Framework C220103 defaults calibrate to wound-coil (tokamak-style) geometry.
+   Stellaris uses complex 3D non-planar HTS coils — no commercial manufacturing precedent.
+   analysis.md §7 (citing Brown 2018 IEEE TPS): stellarator coil cost is 1.5–5× the
+   equivalent wound-coil tokamak reference. The framework output is the lower end of this
+   range. The coil multiplier sweep above brackets the competitive uncertainty:
+     - H1 (analysis.md §2): premium < 2× per kAm is the viability threshold. If false
+       (>2×), stellarator CAPEX is unlikely to be competitive against compact HTS tokamaks
+       regardless of capacity factor advantage.
+     - First real data point: Stellarator Model Coil (SMC) demo targeted for 2027.
+   Source: analysis.md §2, Challenge 1, H1; §7 (C220103 row); Brown (2018) IEEE TPS.
+
+4. Thermal efficiency: 38% gross (steam Rankine; EUROFER97 temperature limit ~500°C)
+   EUROFER97 structural steel: 550°C operating limit → steam cycle ~500°C → ~38% gross.
+   Helios analogue (vanadium alloy FW, 635°C steam): 40% — helios-stellarator-comparison.md §2.
+   Net plant efficiency ~32% inferred from 1,000 MWe / 3,100 MWth (analysis.md §5).
+   Note: adopting vanadium alloy (Helios approach) would recover ~2 percentage points
+   of cycle efficiency but trades supply-chain maturity (analysis.md §3, Balance of Plant).
+   Source: analysis.md §3 (Steam Rankine paragraph); helios-stellarator-comparison.md §2.
+
+5. H4 hypothesis (ignition / H&CD cost): two scenarios modeled above
+   Scenario A (H4-true): 5 MW ECRH steady-state (ignited); based on Helios analogue
+   (1 MW ignited; helios-stellarator-comparison.md §3.1). Large negative delta vs. tokamak.
+   Scenario B (H4-false): 50 MW ECRH steady-state (Stellaris Table 3 stated value).
+   If Stellaris does not achieve full alpha self-heating, H&CD cost reverts to near-parity
+   with the tokamak reference, and the net directional comparison in analysis.md §7 changes.
+   Alpha device (Q>1, ~2031) is the first validation point for H4.
+   ECRH wall-plug efficiency: current ~50%; >60% possible with depressed collectors
+   (analysis.md §3, ECRH system). Modeled at default eta_pin=0.5.
+   Source: stellaris-design-details.md Table 3; analysis.md §2, Challenge 3, H4;
+           helios-stellarator-comparison.md §3.1.
+
+6. Coil conduction / recirculating power: p_coils = 111 MW
+   "Conduction power to coils: 111 MW" from Stellaris Table 3. Treated as the dominant
+   electrical recirculating load for the coil system (nuclear heating + current lead losses
+   + power supply efficiency). Combined with ECRH and ~50 MW BOP pumping: total
+   recirculating ≈ 161 MW (Scenario A) to 206 MW (Scenario B), consistent with the
+   ~20–25% recirculating fraction inferred in analysis.md §5.
+   UNCERTAIN: Physical mechanism uncertain (cryogenic load vs. warm-structure nuclear
+   heating vs. power supply losses); all interpretations produce the same p_coils treatment.
+   NOTE: The coincidence of 111 GJ (stored magnetic energy) and 111 MW (conduction power)
+   in Table 3 may reflect a transcription artifact — both values sourced independently.
+   Source: stellaris-design-details.md Table 3; analysis.md §5 (recirculating breakdown).
+
+7. Geometry: UNCERTAIN (blocking data gap)
+   R0 ≈ 13 m, a ≈ 1.3 m estimated from power density (6.1 MW/m³) × fusion power
+   (2,700 MW) = 443 m³ plasma volume, with R0/a ≈ 10 (W7-X heritage).
+   Low-beta penalty (β = 2.76%) means Stellaris is larger than a compact HTS tokamak at
+   equivalent fusion power (analysis.md §2, Challenge 2).
+   Full Stellaris paper (paywalled) contains actual machine dimensions.
+   Source: stellaris-design-details.md Table 3; analysis.md §2, Challenge 2; §6, Gap 2.
+
+8. Neutron multiplier: mn = 1.2 (WCLL PbLi blanket)
+   Inferred from peak thermal power (3,300 MW) / peak fusion power (2,700 MW) ≈ 1.22.
+   Consistent with WCLL blanket neutron multiplication by Pb(n,2n) reactions.
+   Source: stellaris-design-details.md Table 3; analysis.md §5.
+
+9. Magnet replacement lifecycle cost: modeled separately (NOT in CAS72)
+   REBCO neutron fluence limit: 3×10²² m⁻² → ~10 full-power years at 2,700 MW.
+   "The magnet system would have a lifetime of approximately 10 full power years at a
+   fusion power of 2700 MW" — stellaris-design-details.md §2.8.
+   At least two magnet replacements are required over a 30-yr plant lifetime. This adds a
+   deferred CAPEX component unique among the concepts analyzed (coil replacement at scale
+   not shared by compact HTS tokamaks on the same fluence timeline).
+   Annualized replacement cost = (2 × C220103) / 30 yr = C220103 / 15 yr.
+   CAS72 (framework sub-account) models blanket/divertor replacement only (C220101 +
+   C220108) — coil replacement must be computed and reported separately.
+   The replacement-inclusive LCOE is the economically complete figure; the initial-build
+   LCOE omits a stellarator-specific lifecycle cost and biases cross-concept comparison.
+   Source: stellaris-design-details.md §2.8; analysis.md §5 (REBCO magnet lifetime row);
+           analysis.md §7 (Cross-Concept Notes, final table footnote).
+
+10. CAS account structure (ARIES CAS20X convention):
+    CAS22 = Reactor Plant Equipment super-account (contains ALL nuclear island sub-accounts).
+    C220103 (coils) and C220104 (heating) are sub-accounts within CAS22 — not at CAS21.
+    CAS21 = Buildings and site improvements (not magnets).
+    This differs from PROCESS-style numbering where magnets may appear at a top-level CAS.
+    Source: analysis.md §7 (CAS account structure note); costing_constants.yaml.
+
+11. CAS-level directional deltas vs. 01-hts-compact-tokamak reference (analysis.md §7):
+    C220103 (coils, within CAS22): Large +  (1.5–5×; Brown 2018; 3D coil geometry premium)
+    C220104 (H&CD / ECRH, CAS22): Large −  (−50 to −80%; conditional on H4 = true)
+    C220101 (first wall / blanket): Small +  (5–15%; 3D tungsten tile fabrication premium)
+    CAS24 (heat transport):         Small −  (~−10%; WCLL water cooling vs. FLiBe)
+    CAS25 (power conversion):       Small −  (~−5–10%; water Rankine cheaper per GWth than
+                                    sCO₂ Brayton, partially offset by larger thermal throughput
+                                    at lower efficiency — direction could be neutral)
+    CAS21 (Buildings):              Small +  (CF-CAS21 iter-8): reactor building volume scales
+                                    with machine footprint — a QI stellarator at R0≈13 m requires
+                                    a substantially larger containment and assembly building than
+                                    an ARC-class compact tokamak (R0≈3–4 m). Gundremmingen site
+                                    reuse reduces land acquisition and permitting cost but not
+                                    reactor building volume. Net: Small + (not neutral as in iter-7).
+                                    Source: feedback.md CF-CAS21; analysis.md §7 (CAS21 row).
+    O&M (CAS70):                    Structural + (direction only; magnitude unknown): stellarator
+                                    coil geometry structurally limits blanket and divertor module
+                                    size relative to tokamaks — "relatively small ports for in-vessel
+                                    access and maintenance, i.e. in comparison with tokamaks"
+                                    (Queral et al. 2025; arxiv-2501-04640.md, abstract). This is a
+                                    generic consequence of modular stellarator coil architecture,
+                                    not a Stellaris-specific design choice.
+                                    Source: feedback.md CF-F2; analysis.md §7 (O&M delta paragraph).
+    Net: uncertain; competitiveness depends on C220103 premium vs. H&CD saving + CF advantage.
+
+12. Scenario H2a: next-generation QI design branch — NOT a Stellaris v1 variant
+    CIEMAT-QI4X (arXiv:2512.08825) demonstrates 4% beta feasibility in a QI configuration.
+    Proxima stated "more commercially attractive designs are possible" — H2a quantifies
+    the machine size reduction (−31% plasma volume) from moving to 4% beta.
+    H2a uses the same D-T fuel, HTS REBCO, and H4-true (ignited) ECRH assumption.
+    In cross-concept comparison tables, H2a represents a different design generation from
+    Stellaris v1 and should not be used as the upper bound of a Stellaris range.
+    Source: analysis.md §2, H2a; arxiv-2512-08825.md; review.md §PA-3.
+
+13. Framework calibration: ARIES-CS (QA stellarator) applied to QI configuration
+    The 1costingfe stellarator cost baseline is calibrated to ARIES-CS, which studied
+    quasi-axisymmetric (QA) stellarator configurations. Stellaris is quasi-isodynamic (QI).
+    These two symmetry classes may have different coil topology costs: QI requires
+    specific non-planar winding laws that differ from QA optimized coils. The direction
+    and magnitude of this cost bias are unknown — it may inflate or deflate C220103
+    relative to the actual QI coil cost.
+    This caveat appears in analysis.md §1 and propagates into C220103 uncertainty.
+    The Brown (2018) multiplier range (1.5–5×) accounts for stellarator vs. tokamak geometry
+    but does not separately model QA vs. QI topology differences.
+    Source: analysis.md §1 (ARIES-CS discussion); review.md §PA-2; Brown (2018) IEEE TPS.
+
+14. Construction time: 8 years (framework default; elasticity +0.40) [CF-CT iter-8]
+    Construction_time_yr has the third-highest engineering elasticity (+0.40), ranking above
+    R0 (+0.31). IDC (CAS60) is among the largest single cost accounts — a 20% schedule
+    extension adds ~8% to LCOE. The 8-year stellarator default is conceptually plausible
+    for a 13 m major radius machine requiring complex 3D coil fabrication and precision
+    installation, versus an ARC-class compact tokamak (R0≈3–4 m) which may target 6–7 yr.
+    Construction time is the financial expression of the machine scale penalty: the low-beta
+    scale penalty (Challenge 2) propagates not just into nuclear island capital accounts but
+    also into the construction schedule, which compounds the cost through IDC.
+    No Stellaris-specific construction schedule has been published. The 8-year default is
+    used without override; sensitivity quantified in the construction time sweep above.
+    Source: feedback.md CF-CT, F-3; analysis.md §2 (Recommended Modeling Approach, sensitivity
+            parameter list); mfe_stellarator.yaml (default construction_time_yr=8.0).
+
+15. CAS70 O&M — DEFAULT lower bound; structural uplift not modeled [F-2 iter-8]
+    The framework CAS70 default is calibrated to a generic DT stellarator. The analysis
+    (§7, O&M delta paragraph) identifies a structural O&M penalty vs. compact HTS tokamaks:
+    non-planar modular coil architecture leaves "relatively small ports for in-vessel access
+    and maintenance, i.e. in comparison with tokamaks" (Queral et al. 2025; arxiv-2501-04640.md).
+    This is a generic consequence of modular coil geometry, not a Stellaris-specific choice.
+    The magnitude is truly unknown — no stellarator reactor O&M cost models exist (Gap 7).
+    O&M is the second-largest ongoing cost after financial charges; the framework default is
+    therefore a lower bound for the same structural reason that C220103 is a lower bound.
+    The O&M multiplier sweep above (1×–2×) brackets the LCOE impact of this uncertainty.
+    Source: feedback.md F-2; analysis.md §7 (O&M delta paragraph); arxiv-2501-04640.md;
+            analysis.md §6, Gap 7 (O&M truly-unknown gap).
+
+Sensitivity (elasticity = %LCOE / %param) — Scenario A (H4-true)
+------------------------------------------------
+
+Engineering levers:
+  availability                 -0.8943
+  construction_time_yr         +0.4046
+  elon                         +0.3105
+  R0                           +0.3105
+  eta_th                       -0.2059
+  blanket_t                    +0.2011
+  plasma_t                     +0.1960
+  ht_shield_t                  +0.0452
+  p_coils                      +0.0447
+  vessel_t                     +0.0220
+  fuel_recovery                -0.0162
+  p_cool                       +0.0161
+  f_sub                        +0.0148
+  structure_t                  +0.0089
+  p_cryo                       +0.0043
+  eta_pin                      -0.0040
+  p_trit                       +0.0040
+  p_pump                       +0.0040
+  p_input                      +0.0040
+  p_house                      +0.0016
+  mn                           -0.0015
+  burn_fraction                -0.0009
+  eta_p                        -0.0000
+  eta_de                       +0.0000
+  B                            +0.0000
+  T_e                          +0.0000
+  n_e                          +0.0000
+  Z_eff                        +0.0000
+  plasma_volume                +0.0000
+  R_w                          +0.0000
+  T_edge                       +0.0000
+  tau_ratio                    +0.0000
+
+Financial:
+  interest_rate                +0.7178
+  inflation_rate               +0.0467

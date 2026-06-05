@@ -1,352 +1,377 @@
 ---
 ID: 26-laser-icf-indirect-drive
-Concept: Laser ICF - Indirect Drive (D-T)
+Concept: Laser ICF Indirect Drive (Inertia Thunderwall)
 Company: Inertia Enterprises
 Status: draft
-Created: 2026-04-20
+Created: 2026-06-03
 Approved-Date:
-Reuses: [21-spherical-tokamak-hts]
+Confinement-Family: IFE
+Archetype: LASER_IFE
+Archetype-Fit: High
+Comparison-Status: costingfe-asterisked
+Comparables:
+  - 17b-laser-icf-fast-ignition
+  - 30-laser-icf-nif-commercialization
+  - 31-laser-icf-oec-architecture
+  - 32-laser-icf-french-national
+  - 17a-laser-icf-hybrid-drive
+Design-Point-Name: Inertia Enterprises utility-scale commercial power plant (Thunderwall DPSSL + NIF Hybrid-E indirect drive)
+Design-Point-Maturity: paper-concept
+P-Native: 1500
+Grounding-Confidence: low
 ---
 
-# D1+ Analysis: Laser ICF - Indirect Drive (D-T)
+## Design Point
 
-**Concept**: Laser ICF - Indirect Drive (D-T)
-**Companies**: Inertia Enterprises / Xcimer Energy
-**Date**: 2026-04-20
+- Name: Inertia Enterprises utility-scale commercial power plant (Thunderwall DPSSL + NIF Hybrid-E indirect drive)
+- Maturity: paper-concept
+- P_native: 1500 MWe
+- Grounding: low
+- Primary sources:
+  - knowledge/concept_research/26-laser-icf-indirect-drive/iter-01/sources/inertia-enterprises-website-and-faq.md
+  - knowledge/concept_research/26-laser-icf-indirect-drive/iter-02/sources/inertia-enterprises-2026-update.md
 
----
+## 1. Availability of Data
 
-## Section 1: Availability of Data
+**Rating: Limited (Inertia) / Moderate (NIF physics)**
 
-**Rating: Moderate (physics) / Limited (economic)**
+Indirect-drive laser ICF benefits from the most extensive ignition physics database of any fusion concept, owing to NIF's ten successful ignition experiments between December 2022 and October 2025, with peak yields reaching 8.6 MJ from 2.08 MJ laser input (target gain 4.13). This physics foundation is thoroughly documented in public literature.
 
-Indirect-drive laser ICF has the most extensive publicly available ignition physics database of any private fusion concept, owing to NIF's sustained ignition campaign at LLNL. Ten successful ignition experiments were completed between December 2022 and October 2025, culminating in a peak yield of 8.6 MJ from 2.08 MJ laser input (target gain ~4.13) in April 2025. The raw physics record is rich: gain progression, capsule design iterations (Hybrid-E, high-adiabat), laser-plasma instability mitigation, and automated diagnostic systems are all documented in peer-reviewed literature and LLNL public releases.
+However, economic data for commercial indirect-drive IFE remains sparse. Inertia Enterprises, the primary company pursuing NIF-heritage indirect drive with a modular DPSSL architecture, has published minimal technical or cost information. The company website and a February 2026 funding announcement provide high-level architecture descriptions (Thunderwall laser, 10 kJ per beamline, 10 Hz repetition rate, 10% wallplug efficiency, <$1 target cost goal) but no detailed plant design, cost breakdowns, or engineering studies.
 
-> "On October 1, 2025, we achieved our tenth ignition event, delivering 2.065 MJ of laser energy to target and 3.5 MJ (± 0.17 MJ) of fusion yield."
-> — nif-ignition-updates-2025.md, §Ignition Events
+> "Delivering a 10 kJ beam 10 times per second with 10% wallplug efficiency using scalable semiconductor diode technology, Thunderwall's performance will be 50 times as powerful (measured in average power) as any prior laser of its type."
+> — inertia-enterprises-2026-update.md, §Thunderwall Technology
 
-Economic data is thin. There are very few independent costing analyses of commercial laser IFE power plants. On the private side, Xcimer Energy (KrF excimer laser, ASPEN architecture) has published the most technical depth: a laser architecture white paper presented at the 2022 IFE Workshop at LLNL, HDD target physics in *Physics of Plasmas* 31(11), 112708 (2024), HYLIFE-III nuclear analysis in *Fusion Engineering and Design* (2024), and a TRUMPF/Xcimer commercialization roadmap (February 2026). Inertia Enterprises ($450M Series A, February 2026) has released only marketing-level material — Thunderwall laser architecture, plant output targets, and target cost goals — without any published power plant study.
+The dossier draws heavily on NIF physics data and general ICF literature, but Inertia-specific design parameters (chamber geometry, blanket configuration, thermal cycle efficiency, capacity factor assumptions) are not publicly disclosed. The company has raised $450M in Series A funding but has not published a plant-scale technoeconomic study equivalent to LLNL's LIFE concept (canceled 2013) or more recent IFE cost models.
 
-Supporting TEA infrastructure exists: the UKAEA PROCESS tool includes an IFE module, LLNL's GEM (Generalized Economics Model) provides a bottom-up cost model for solid-state laser architectures, and Nicholas Hawker's framework (Royal Society, 2020) provides a published IFE LCOE methodology. The Goodin et al. (2004) result that target costs must be less than 10% of the electricity they produce is the primary publicly available cost constraint on target fabrication.
+**Key data gaps:**
+- No published Inertia plant design document or system code output
+- No cost breakdown for Thunderwall laser system ($/J, total capital cost, or per-beamline cost)
+- No detailed target manufacturing cost model beyond the <$1 unit cost goal
+- No thermal-to-electric conversion efficiency or capacity factor targets
+- No tritium breeding or fuel cycle analysis
+- No published LCOE estimate or capital cost projection
 
-**Key data gaps limiting this analysis:**
-- No published plant-level capital cost breakdown for either company
-- Inertia Enterprises has no published power plant design document
-- Xcimer's detailed ASPEN cost breakdown is not publicly available (referenced but paywalled in the TRUMPF/Xcimer white paper)
-- No independent third-party TEA of either concept exists
-- Capacity factor assumptions, O&M structure, and tritium processing cost are absent from all available sources
+Independent analyses of indirect-drive IFE exist (UKAEA PROCESS tool, LLNL GEM economics model, Hawker 2020 framework) but are not Inertia-specific. For this analysis, we triangulate Inertia's sparse disclosures with NIF physics data and general IFE cost modeling literature.
 
----
+## 2. Challenges in Capturing System Function
 
-## Section 2: Challenges in Capturing System Function
+The primary challenges for LCOE modeling of Inertia's indirect-drive concept, ranked by impact on cost uncertainty:
 
-The IFE chamber presents fundamentally different modeling challenges from a tokamak because its dominant constraints respond to different combinations of inputs. In a tokamak, neutron wall loading and plasma pressure set a single geometric trade-space, and NWL-based scaling applies consistently across designs. In an IFE chamber:
+**1. Driver cost and efficiency (laser system) — HIGH IMPACT**
 
-- **Neutron damage** scales with average power (yield × rep rate)
-- **Evaporation/ablation limits** on final optics and first-wall scale with yield per shot
-- **Chamber clearing time** scales with rep rate and vapor pressure after each shot
+The Thunderwall DPSSL architecture comprises 1000-4000 modular beamlines, each delivering 10 kJ at 10 Hz. At 10 MJ total laser energy (1000 beamlines × 10 kJ), the system must operate at 10% wallplug efficiency and ~10 Hz to achieve stated performance. No $/J cost, total capital cost, or efficiency validation has been published.
 
-These constraints cannot all be satisfied by tuning a single geometric parameter. Worse, the architectural choice of thick liquid wall versus dry wall completely restructures which constraints bind — making it impossible to apply a universal sizing model across IFE concepts the way tokamak scaling relations propagate. The Xcimer HYLIFE-derived design with sub-1 Hz repetition rate and FLiBe waterfall sidesteps the clearing problem at the cost of large FLiBe inventory and pump power; Inertia's 10 Hz architecture with liquid lithium pipes faces the opposite trade.
+DPSSL systems for IFE have been studied extensively (NIF ARC laser concepts, HAPL program), but Inertia's modular semiconductor-diode architecture is novel. The handwritten exemplar cites "$700-$1,000/J" for Inertia, but this figure does not appear in any Inertia source document reviewed. Without a published cost model or prototype demonstration, the driver cost—typically 30-50% of IFE capital costs—carries extreme uncertainty.
 
-**Dominant LCOE uncertainty 1 — Laser driver cost and efficiency.** The laser is the cost driver with no analogue in the rest of the fusion landscape. For Inertia's DPSSL (Thunderwall), laser costs are cited at $700–$1,000/J (FOAK), while a TRUMPF/LLNL study estimates that diodes must reach $0.007/W for laser IFE to achieve economic viability — roughly 3–20× below Xcimer's stated $0.02/W price floor estimate. For Xcimer's KrF system, FOAK costs are cited at $100–$120/J falling to $60–$80/J NOAK. The system-level cost impact is enormous: at 10 MJ of stored laser energy, a $100/J laser alone costs $1B before power conditioning and beam delivery.
+The stated 10% efficiency (20× better than NIF's 0.5%) and 10 Hz repetition rate (10,000× faster than NIF's single-shot mode) are unvalidated at scale. Driver recirculating power scales as (Laser Energy / Efficiency × Rep Rate), directly impacting net plant output.
 
-> "Xcimer estimates a price floor at $0.02/W, and a separate TRUMPF/LLNL study estimates that diodes would need to achieve $0.007/W in order for Laser IFE to be economically viable."
-> — handwritten/26-laser-icf-indirect-drive.md, §Key Materials
+**2. Target gain and fuel cycle — HIGH IMPACT**
 
-**Dominant LCOE uncertainty 2 — Target gain and coupling efficiency.** IFE economics require the product of laser wall-plug efficiency (η_L) and target gain (G) to exceed the plant recirculating power fraction. Xcimer's HDD physics paper states the viability threshold as η_L > 10%, G > 100 — or G > 50 with ~15% wall-plug efficiency. The NIF achieves G ~4 in single-shot experiments. Xcimer's 2024 paper projects G = 65 at 4 MJ and G ~200 at 8 MJ via lower-adiabat operation — but these are simulation results, not experimental demonstrations. Inertia projects total scientific gain of ~45× at 10 MJ based on NIF Hybrid-E physics, corresponding to capsule gain ~375× given ~12% hohlraum coupling efficiency. These projections are unvalidated and represent the single largest physics uncertainty in any IFE LCOE model.
+Inertia claims its 10 MJ indirect-drive targets will achieve sufficient gain for commercial viability, leveraging NIF's Hybrid-E hohlraum design. However, NIF's peak capsule gain at 2.08 MJ input is ~375 (assuming ~12% laser-to-capsule coupling and 4.13 target gain). Scaling to 10 MJ requires assumptions about how gain improves with laser energy—typically modeled as G ∝ E^(2/3) for ICF, but NIF's ignition campaign showed significant sensitivity to engineering features (capsule surface finish, fill tube design, hohlraum asymmetries).
 
-**Dominant LCOE uncertainty 3 — Target fabrication rate and cost.** A 10 Hz plant (Inertia) requires 864,000 targets per day; a 0.5 Hz plant (Xcimer) requires 43,200/day. The Goodin (2004) rule establishes that targets must cost less than 10% of the electricity they produce to be economical. For Inertia's ~450 MJ yield per shot at 13.6 ¢/kWh electricity price, the threshold is $0.75/target — Inertia states a goal of <$1/target, which is marginally over the economic limit. For Xcimer's ~1.6 GJ yield, the threshold is $2.78/target. Neither company has published a manufacturing process capable of the required throughput.
+The handwritten exemplar estimates 45× total target gain and 0.23 burnup fraction for Inertia, but these values are not sourced to Inertia publications. Target gain directly determines fusion yield per shot, which sets the required repetition rate for a given plant power. At 10 Hz and 1500 MWe, each shot must yield:
 
-**Dominant LCOE uncertainty 4 — Liquid first-wall cost and recirculating power.** For Xcimer's HYLIFE-III design, the FLiBe waterfall simultaneously breeds tritium, absorbs neutrons, protects structural walls, and transfers heat. The OSIRIS study (1992) provides the only FLiBe inventory baseline: 940,000 kg (~940 t) for a 1000 MWe plant, with 3 MW spray pump power. FLiBe unit costs remain unquantified in all available sources; the Moir HYLIFE-II (1994) is the only cost estimate and is in 1994 dollars. FLiBe pump capital cost remains truly unknown.
+Yield per shot ≈ (1500 MWe / η_th / 10 Hz) ≈ 450 MJ thermal per shot (assuming η_th ~ 0.33)
 
-**Dominant LCOE uncertainty 5 — Final optics survivability and replacement cost.** At every shot, the final focusing optics are exposed to X-rays, debris, and 14 MeV neutrons. Xcimer's ASPEN architecture claims to reduce final optical area from NIF's 30 m² to under 1 m², and NIF spent $40M/year on optics refurbishment — directly quantifying the avoided cost. However, no validated replacement schedule or degradation rate at commercial repetition rates exists for any IFE concept.
+This implies a target gain of 45× at 10 MJ laser energy, consistent with the exemplar estimate but unvalidated in Inertia sources.
 
-**O&M placeholder:** O&M cost breakdown (fixed vs. variable, scheduled maintenance, unplanned outage) is absent from all IFE-specific sources. The Hawker (2020) IFE LCOE model uses a proxy of $30/kWe-yr (range $10–100, bounded by gas and nuclear analogues), which is adopted as a placeholder. At a minimum, Xcimer's claim of "no structural wall replacement" and Inertia's "3–5 year chamber replacement" span a factor of ~10× difference in a major O&M line item.
+**3. Chamber clearing and repetition rate — HIGH IMPACT**
 
-**Dominant LCOE uncertainty 6 — Plant availability.** The model sensitivity sweep shows availability with elasticity −0.97 — the single largest LCOE driver, exceeding laser driver cost (elasticity +0.045 for the costing-constant pathway — see Uncertainty 1 note on the override parameter), target gain (−0.18), and thermal efficiency (−0.18). The OSIRIS/SOMBRERO conceptual design study (1992) provides the only available historical IFE plant availability model: total plant availability of approximately 69% (OSIRIS, 4.6 Hz indirect drive) and 68% (SOMBRERO, 6.7 Hz KrF direct drive), derived from subsystem availabilities — Driver 0.87/0.89, Reactor 0.90/0.89, Target Factory 0.92/0.90, BOP 0.96/0.96 (product: 0.87×0.90×0.92×0.96 ≈ 0.69). The Hawker (2020) IFE LCOE model uses 70% as its default. These historical anchors suggest the current 75% placeholder is slightly optimistic relative to complete IFE plant studies. The divergence between designs is extreme: Inertia's 3–5 year chamber replacement schedule implies extended planned maintenance outages absent in conventional power plants, while Xcimer's HYLIFE-derived liquid-wall design claims no structural chamber replacement — spanning more than a 10× range in a dominant cost driver. Availability must be structured as an explicit scenario, not a narrative note: (a) 75% current placeholder, (b) ~55–60% effective availability for Inertia with multi-month chamber replacement outages, (c) ~88% for Xcimer's liquid-wall optimistic case. Every 10 pp availability change moves LCOE proportionally at −0.97 elasticity, dwarfing all other model uncertainties.
+At 10 Hz, the chamber must clear debris, vapor, and shrapnel from each 450 MJ fusion shot within 100 ms to permit the next target injection. Inertia has not disclosed a chamber-clearing strategy. The liquid lithium blanket may provide some debris mitigation (similar to thick-liquid-wall concepts like HYLIFE), but gas dynamics, neutron activation products, and vaporized first-wall material pose formidable engineering challenges.
 
-**Note on laser cost elasticity**: The sensitivity table reports `driver_laser_per_mw` at +0.045 elasticity, but laser cost is routed through a separate `LASER_COST_PER_J` override that drives C220107 directly. Scenario analysis shows the true laser cost elasticity is approximately +0.4 (LCOE ranges $79.7–$160.5 as $/J varies $140–$850). A reader of the sensitivity table would conclude laser cost is a minor driver while the narrative calls it dominant — the sensitivity table does not capture the override parameter and should not be read as the definitive ranking.
+NIF operates in single-shot mode with hours-to-days between experiments. Scaling to 10 Hz continuous operation requires pumping systems, gas management, and target injection mechanisms that have never been demonstrated at fusion-relevant scales. Chamber-clearing failure modes directly impact availability and capacity factor.
 
-**Dominant LCOE uncertainty 7 — Driver operational durability and replacement cadence.** Hawker's sensitivity analysis (pmc-articles-pmc7658748.md §3a) finds that driver *lifetime* correlates more strongly with LCOE (Pearson −0.134) than driver *unit cost* (+0.075), identifying reliable operation as the most important driver attribute. The commercial viability threshold is approximately 30 million shots — roughly 5 years at 0.2 Hz in Hawker's baseline design. At Inertia's 10 Hz repetition rate, 30 million shots represents only approximately 35 days of continuous operation: a driver that achieves this threshold commercially priced but unreliable at 10 Hz produces worse LCOE than a more expensive but durable driver.
+**4. Target manufacturing at scale — MODERATE-HIGH IMPACT**
 
-> "After these is a grouping of four parameters relating to the driver, with the driver lifetime and availability stronger influences than the raw driver cost itself. This implies that reliable operation is the most important aspect for the driver."
-> — pmc-articles-pmc7658748.md, §3a (Correlation Analysis)
+> "Our fuel targets are produced in factories by the millions... Less than $1 per target"
+> — inertia-enterprises-website-and-faq.md
 
----
+At 10 Hz continuous operation, a 1500 MWe plant requires ~315 million targets per year (10 Hz × 86400 s/day × 365 days/year). The <$1 target cost claim, if achieved, would yield ~$315M/year in consumables—a manageable operating cost. However, NIF targets currently cost ~$100k-$1M per unit in laboratory-scale fabrication. The 5-6 order of magnitude cost reduction requires fully automated cryogenic layering, surface finishing, and quality control at industrial scales never demonstrated.
 
-## Section 3: Maturity of Key Subsystems and Components
+The handwritten exemplar cites Goodin et al. 2004's rule of thumb that targets must be <10% of the electricity they produce to be economical. For Inertia, that threshold is ~$2.78 per target (assuming 13.6 ¢/kWh wholesale electricity). The <$1 goal is comfortably below this threshold if validated, but the manufacturing pathway is entirely unproven.
 
-Subsystems listed in ascending order of maturity (least mature first).
+**5. Liquid lithium blanket and tritium breeding — MODERATE IMPACT**
 
-**Final Optics Survivability — TRL ~2**
-- **Demonstrated**: NIF optics survived single-shot campaigns at 2 MJ; degradation mechanisms (damage, contamination, neutron fluence) are characterized. Grazing-incidence mirror concepts studied analytically.
-- **On paper only**: All protective schemes (liquid films, grazing-incidence geometry, replaceable windows) for commercial-repetition-rate fluence.
-- **Missing at scale**: Any geometry or material that survives >10⁷ shots at commercial fluence levels. NIF's $40M/year refurbishment cost is the baseline; no validated commercial solution exists. Xcimer's claim of final optical area under 1 m² (vs. NIF's 30 m²) reduces the problem but does not solve it.
+Inertia's tritium breeding approach uses liquid lithium flowing through chamber wall pipes. The dossier states tritium extraction is "still an area of active development" and on-site tritium inventory is "a few hundred grams." No tritium breeding ratio (TBR), pump sizing, redox control, or coolant activation data has been published.
 
-**High-Rep-Rate, High-Efficiency Laser Driver — TRL ~2–3**
-- **Demonstrated**: NIF (Nd:glass, flashlamp, single-shot, ~0.1% wall-plug efficiency). NRL Electra KrF laser demonstrated repetitive operation at 5 Hz for up to a day. Xcimer's Phoenix prototype (first private-sector e-beam excimer in >20 years) completed June 2025, achieving record 3 µs pulse length. Inertia's Thunderwall: no hardware demonstrated as of early 2026.
-- **On paper only**: 10 MJ DPSSL at 10 Hz (Inertia Thunderwall); 12 MJ KrF system (Xcimer Vulcan, targeted 2030).
-- **Missing at scale**: Continuous operation at 10% wall-plug efficiency for DPSSL; 5–7% for KrF at plant-relevant energy. Laser diode cost reduction from current ~$0.02/W to the $0.007/W required for economic viability (TRUMPF/LLNL estimate). Xcimer's Vulcan is the next validation step; no fusion-coupled laser demonstration is scheduled.
+Liquid lithium is well-studied for fusion blankets but poses corrosion, fire hazard (Li-water reactivity), and tritium permeation challenges. FLiBe molten salt (used by Xcimer and other IFE concepts) is less reactive but requires beryllium supply chain development. The blanket choice impacts both capital cost (pumps, heat exchangers, containment) and operating cost (tritium extraction, coolant makeup).
 
-> "Xcimer Energy Completes the First Private-Sector Electron-Beam Excimer Laser... no one else in the private sector has built this type of laser in over 20 years."
-> — xcimer-laser-milestones-2025.md, §LPK Completion
+Without a published TBR >1.0 or nuclear analysis, we cannot confirm Inertia's concept achieves tritium self-sufficiency. This is an existential constraint for D-T fusion.
 
-**Reaction Chamber / First-Wall System — TRL ~3**
-- **Demonstrated**: HYLIFE-I and HYLIFE-II chamber concepts published by LLNL; FLiBe fluid mechanics modeled. HYLIFE-III nuclear analysis (TBR > 1.2) published in 2024. No prototypical chamber built or tested at fusion-relevant conditions.
-- **On paper only**: Liquid wall clearing dynamics at rep rates above 0.1 Hz; structural response to multi-GJ pulse loading; beryllium fluoride chemistry at fusion-relevant temperatures.
-- **Missing at scale**: Chamber vessel qualified for pulsed fusion pulses at commercial yield (hundreds of MJ to >1 GJ per shot). Liquid Li chamber for Inertia has no engineering study published. Xcimer's FLiBe pump/nozzle/redox control system has no prototype.
+**6. Thermal cycle and conversion efficiency — MODERATE IMPACT**
 
-**Target Fabrication at Scale — TRL ~3**
-- **Demonstrated**: NIF target fabrication at single-shot scale, including cryogenic DT layering, precision capsule finishing, and hohlraum assembly. General Atomics is an active collaborator on Xcimer targets. Xcimer's HDD capsule (2× NIF radius, DT-wetted CD foam) is claimed to be "easier to manufacture" than NIF targets.
-- **On paper only**: Factory-line mass production of cryogenic DT targets at the required throughput. Inertia's <$1/target claim has no backing process or cost model.
-- **Missing at scale**: Continuous manufacturing at 864,000 (Inertia) or 43,200 (Xcimer) targets/day. Automated cryogenic layering, quality control, and delivery systems. Tritium handling within the target factory at these throughputs.
+The Inertia sources reference steam turbines for electricity generation but provide no thermal-to-electric efficiency target, working fluid specification, or balance-of-plant design. Conventional steam Rankine cycles achieve η_th ~ 33-40% in fossil plants; advanced sCO2 Brayton cycles may reach 45-50%. The choice cascades through yield-per-shot requirements, laser driver sizing, and recirculating power fraction.
 
-**Chamber Clearing and Target Injection — TRL ~4–5**
-- **Demonstrated**: Single-shot target injection concepts demonstrated at OMEGA and NIF. Conceptual target injection at 10 Hz and 1 Hz modeled. Xcimer's FLiBe waterfall concept benefits from gravity-driven clearing with approximately 1-second clearing time per the handwritten exemplar.
-- **On paper only**: Repeating target injection synchronized with laser pulses at commercial rep rates; debris management for Inertia's dry-wall-adjacent liquid-lithium design.
-- **Missing at scale**: Validated chamber clearing at commercial rep rates with commercial-scale yields. Inertia has no published ash-clearing strategy.
+## 3. Maturity of Key Subsystems and Components
 
-**Hohlraum and Capsule Target Physics — TRL ~5–6**
-- **Demonstrated**: Ten successful NIF ignition shots using indirect-drive hohlraum targets. Peak target gain 4.13 achieved April 2025. Xcimer's HDD target concept published in *Physics of Plasmas* (2024) with ~300 simulation runs.
-- **On paper only**: Capsule gain of G > 100–200 required for IFE viability. Xcimer's G = 65 at 4 MJ and G ~200 at lower adiabat are simulation-only. Inertia's ~375× capsule gain projection.
-- **Missing at scale**: Experimental validation of gain > 10 at 10 MJ scale. Two-beam symmetric implosion at HDD geometry. Quantitative target specifications (roughness tolerances, fill uniformity) for the commercial production process.
+Subsystems listed in ascending order of maturity (least mature first):
 
-> "This design gives gains of about G_t = 65 at an input energy of 4 MJ. By going to a lower adiabat (a = 3 instead of 6), we find yields of about G_t = 200 at an input energy of 8 MJ."
-> — xcimer-hybrid-direct-drive-evolution.md, §Results
+**High-rep-rate DPSSL driver at fusion scale — TRL ~2**
 
-**Tritium Fuel Cycle — TRL ~3–4** (see also Section 4)
-- **Demonstrated**: NIF handles gram-scale DT at single-shot throughput. Inertia cites tritium inventory of "a few hundred grams" on-site and plans to source startup tritium from U.S. government stockpiles. Xcimer HYLIFE-III blanket analysis shows TBR > 1.2.
-- **Missing at scale**: Closed tritium loop at kg/year throughput. Tritium extraction from FLiBe or liquid Li at commercial flow rates. Neither company has published a tritium processing flow sheet.
+No DPSSL system has operated at the combination of energy (10 kJ per beamline), efficiency (10%), and repetition rate (10 Hz) that Inertia's Thunderwall requires. NIF's solid-state laser operates at ~0.5% efficiency in single-shot mode. Mercury (LLNL, 2005-2011) and HAPLS (ELI Beamlines, 2017) demonstrated kJ-class DPSSL at ~10 Hz but with significantly lower energy per pulse than Inertia's 10 kJ target.
 
-**Balance of Plant / Energy Conversion — TRL ~7–8**
-- Both companies reference steam turbines in public materials. Xcimer's ASPEN/IFE Workshop 2022 presentation describes a helium Brayton cycle at 45% efficiency for HYLIFE-III — at odds with website references to steam. Conventional steam Rankine and helium Brayton cycles are mature technologies; integration with an IFE chamber is straightforward relative to the upstream challenges.
+Inertia has not disclosed any prototype hardware or experimental results. The claim of "50 times as powerful (measured in average power) as any prior laser of its type" refers to the 10 kJ × 10 Hz × 1000 beamlines = 100 MW average laser power target, but no demonstration of a single beamline at these parameters has been reported.
 
----
+Laser diode supply chain (discussed in Section 4) is a critical pacing item. Semiconductor diode efficiency, thermal management at 10 Hz, and optics damage under continuous UV flux are unresolved at the 10 kJ scale.
 
-## Section 4: Key Materials and Supply Chain Considerations
+**Chamber clearing and debris mitigation — TRL ~3**
 
-**Tritium**
-Startup tritium inventory of a "few hundred grams" (Inertia) or equivalent quantities for Xcimer must be sourced externally. Global tritium supply is approximately 25–30 kg, primarily from CANDU reactors declining over time. Startup tritium from U.S. government stockpiles is feasible for first plants but is constrained for fleet-scale deployment. Both designs require TBR > 1 to become self-sufficient; Xcimer's HYLIFE-III analysis demonstrates TBR > 1.2 with FLiBe [inferred adequate margin]. Inertia's liquid Li blanket has no published TBR analysis. As CANDU reactors retire, the external supply constraint tightens for all D-T concepts.
+No IFE concept has demonstrated chamber clearing at 10 Hz with fusion-scale yields. General Fusion's pneumatic compression system (MIF) operates at ~1 Hz with much lower yield per shot. Liquid-wall IFE concepts (HYLIFE-II, HYLIFE-III) model chamber clearing using thick FLiBe or molten salt jets, but these are simulations and subscale experiments—no full-scale validation exists.
 
-**Target Materials and Target Factory**
-Target cost is an LCOE-binding constraint. The Goodin (2004) economic rule — targets must cost less than 10% of the electricity they generate — sets the following limits:
-- Inertia (~450 MJ/shot, 13.6¢/kWh): threshold ~$0.75/target; Inertia states goal of <$1/target (marginally over limit)
-- Xcimer (~1.6 GJ/shot, 13.6¢/kWh): threshold ~$2.78/target
+Inertia's liquid lithium wall may provide first-wall protection and neutron shielding, but the clearing timescale for vaporized lithium, DT combustion products, and activation aerosols at 10 Hz is undemonstrated. Gas pumping capacity, magnetic field effects on charged debris, and target injection through post-shot vapor plumes are critical unknowns.
 
-Xcimer's HDD target uses deuterated plastic (CD) ablator and DT-wetted CD foam fuel layer (General Atomics wet-foam technique). Hohlraum uses high-Z material (Pb or equivalent). No capsule unit cost estimate is publicly available for Xcimer. Inertia's hohlraum follows NIF "Hybrid-E" design. Both require a co-located target factory with cryogenic layering, quality control, and just-in-time delivery.
+**Target manufacturing at scale — TRL ~3-4**
 
-**Laser Diodes (Inertia DPSSL)**
-Inertia's Thunderwall requires massive DPSSL diode scale-up. The required price reduction for economic viability is steep:
-- Xcimer-cited price floor: ~$0.02/W
-- TRUMPF/LLNL-cited viability requirement: ~$0.007/W
-- Inertia's argument: comparable scale-up has occurred for consumer FaceID lasers
+NIF targets are hand-assembled with sub-micron tolerances on capsule sphericity, surface roughness, and cryogenic DT layer uniformity. General Atomics and LLNL have developed automated metrology and layering techniques, but production rates remain laboratory-scale (tens to hundreds per year, not millions).
 
-At 10 MJ laser energy, 10% wall-plug efficiency, 10 Hz rep rate, the average diode power is ~100 MW total — at $0.02/W, diodes alone would cost ~$2B.
+> "Automated Target Measurements Contribute to LLNL's Ignition Success"
+> — NIF & Photon Science News, September 5, 2024
 
-**Capacitors (Xcimer KrF Marx Generators)**
-Xcimer produces high-voltage capacitors in-house for KrF laser Marx generators, with a long-term cost target of $0.40/J. No independent validation of this target is available. Capacitor technology for Marx generators is moderately mature but has not been demonstrated at the scale required for 10 MJ KrF systems.
+The <$1 target cost goal requires mass production infrastructure (injection molding, cryogenic fill stations, quality assurance) that does not exist. Target reject rates, throughput bottlenecks, and inventory management at 10 Hz continuous operation are entirely unproven.
 
-**FLiBe Molten Salt (Xcimer)**
-FLiBe (Li₂BeF₄) is the Xcimer chamber blanket and first-wall protection fluid. Key supply constraints:
-- **Beryllium**: toxic, produced in limited quantities globally (~300 tonnes/year, single U.S. producer Materion Corp). FLiBe requires significant beryllium inventory at power-plant scale.
-- **Lithium-6 enrichment**: Required for adequate TBR. Li-6 enrichment capacity is limited, with Russia and China using mercury-based processes banned elsewhere.
-- **Inventory scale**: The OSIRIS conceptual design study (1992, osti-servlets-purl-833813.md) is the only available source with FLiBe plant inventory data: total inventory of 940,000 kg (~940 tonnes) for a 1000 MWe IFE plant, with a blanket flow rate of 4,598 kg/s and a spray flow rate of 2,265 kg/s at 500°C inlet / 650°C outlet and 2.1 MPa spray manifold pressure. Spray ideal pumping power is 3 MW. OSIRIS and Xcimer's HYLIFE-derived design share the FLiBe spray-wall chamber concept, making OSIRIS the best available proxy for Xcimer inventory requirements. FLiBe unit cost data remains absent from all sources; HYLIFE-II (Moir 1994) is the only source with cost estimates, and those are in 1994 dollars.
-- **Tritium extraction system**: The HYLIFE-II tritium management design (osti-biblio-10179076.md) provides the only available cost estimate for this subsystem: approximately $92M total, dominated by vacuum disengager hardware at 56% (~$52M). Required FLiBe pumping power for the two-stage vacuum disengager system is 6.6 MW — a non-trivial contribution to the recirculating power budget. As of the HYLIFE-II study, experimental demonstration of vacuum disengager operation with actual FLiBe had not been performed (TRL ~3–4). HYLIFE-III may revise these estimates; the HYLIFE-II figures are early-1990s dollars.
+Industrial-scale cryogenic targets have never been manufactured for any IFE concept. This is a shared challenge across all laser ICF approaches.
 
-**Liquid Lithium (Inertia)**
-Inertia uses liquid lithium pipes lining the chamber wall. Lithium is abundant and has existing industrial supply chains. The cited on-site inventory is "equivalent to about 15 EVs." Corrosion management and tritium extraction from liquid Li are engineering challenges but not supply-chain blockers at current scales.
+**Indirect-drive hohlraum physics at 10 MJ scale — TRL ~5-6**
 
-**KrF Laser Gas Medium (Xcimer)**
-KrF excimer lasers are mature in semiconductor lithography and medical/industrial markets, providing an existing supply chain for KrF gas handling and electron-beam components. However, scaling electron-beam pumped amplifiers from the kJ (Electra, Phoenix) to MJ (Vulcan, ASPEN) range has never been done; the Vulcan amplifiers will be "the largest laser amplifiers ever built."
+NIF has demonstrated ignition repeatability at 2.05-2.2 MJ laser input with Hybrid-E indirect-drive hohlraums. The physics of X-ray drive, capsule implosion, and alpha heating are validated at this scale. However, NIF's peak yield (8.6 MJ, April 2025) required extensive optimization of hohlraum geometry, laser pulse shaping, and capsule specifications.
 
-> "The KrF excimer laser technology used by Xcimer already underpins some of the most important technologies in modern life... semiconductor lithography machines... medical eye surgeries."
-> — optics-news-15-6-6.md, §Technology Background
+> "Reaching ignition on NIF proved more challenging than first expected... new high-resolution 3D modeling and simulations contributed to a better understanding of perturbation sources—including such 'engineering features' as the thin membranes that suspend the target capsule inside the hohlraum and the fill tubes used to inject fuel into the capsule."
+> — nif-ignition-achievements.md, §Gaining New Understanding
 
----
+Scaling to 10 MJ (Inertia's target) involves larger hohlraums, thicker capsules, and potentially different implosion dynamics. The handwritten exemplar estimates capsule gain of ~375 at 10 MJ, but this is extrapolated from NIF data, not experimentally validated. Laser-plasma instabilities (LPI), hohlraum wall loss, and mix (capsule material contamination of fuel) remain active research areas.
 
-## Section 5: LCOE-Relevant Parameters
+Physics TRL is moderate-high for indirect drive at NIF scale, but unvalidated at Inertia's 10 MJ commercial target.
 
-**Available Parameters:**
+**Tritium breeding and fuel cycle — TRL ~4-5**
 
-| Parameter | Value/Range | Source | Confidence | Notes |
-|-----------|-------------|--------|------------|-------|
-| Net electrical output — Inertia | ~1.5 GWe | inertia-enterprises-website-and-faq.md §Plant Output | medium | Marketing claim; no plant study |
-| Net electrical output — Xcimer pilot (Athena) | ~400 MWe | handwritten/26-laser-icf-indirect-drive.md §Table 1 | medium | Pilot plant figure |
-| Net electrical output — Xcimer commercial | hundreds of MWe to >1 GWe | handwritten/26-laser-icf-indirect-drive.md §Table 1 | medium | Range, not a design point |
-| NIF best target gain | 4.13 (8.6 MJ from 2.08 MJ) | nif-ignition-updates-2025.md §April 2025 Shot | high | April 7, 2025; all other shots gain 1.26–2.44 |
-| NIF average target gain (10 shots) | ~2.0 | nif-ignition-updates-2025.md §Ignition Events | high | Median across 10 events |
-| Xcimer HDD target gain (simulation) | G = 65 at 4 MJ; G ~200 at 8 MJ | xcimer-hybrid-direct-drive-evolution.md §Results | low | Simulation only; not demonstrated |
-| Inertia projected total scientific gain | ~45× at 10 MJ | handwritten/26-laser-icf-indirect-drive.md §Table 1 | low | Based on NIF Hybrid-E scaling; unvalidated |
-| Inertia capsule gain (derived) | ~375× | [inferred: 45 / 0.12 coupling; handwritten exemplar §Table 1] | low | Depends on 12% hohlraum coupling assumption |
-| IFE viability gain threshold | G > 50–100 | xcimer-hybrid-direct-drive-evolution.md §Introduction | high | With η_L ~10–15%; well-established threshold |
-| Laser energy — Inertia Thunderwall | 10 MJ | inertia-enterprises-website-and-faq.md §Thunderwall | medium | Target value; "4.5× NIF" |
-| Laser energy — Xcimer ASPEN/Vulcan | ~10–12 MJ | xcimer-laser-milestones-2025.md §Vulcan | medium | Vulcan targeted 2030 |
-| Laser energy — Xcimer HDD paper design | 4 MJ | xcimer-hybrid-direct-drive-evolution.md §Table I | medium | Point design; scalable to higher energy |
-| Fusion yield per shot — Inertia | ~450 MJ | handwritten/26-laser-icf-indirect-drive.md §Table 1 | low | Derived from Q_eng ~4 and assumed recirculating fraction |
-| Fusion yield per shot — Xcimer | >1 GJ (~1.6 GJ) | handwritten/26-laser-icf-indirect-drive.md §Table 1 | low | Implied from Q_eng ~8.2 and rep rate |
-| Laser wall-plug efficiency — Inertia | ~10% | inertia-enterprises-2026-update.md §Thunderwall Specs | medium | Design target; not demonstrated |
-| Laser wall-plug efficiency — Xcimer | 5–7% | handwritten/26-laser-icf-indirect-drive.md §Table 1 | medium | Consistent with KrF excimer physics |
-| Laser-to-capsule coupling — Inertia (indirect) | ~12% | handwritten/26-laser-icf-indirect-drive.md §Table 1 | high | Same physics as NIF Hybrid-E; well-characterized |
-| Laser-to-capsule coupling — Xcimer (HDD) | >50–80% | handwritten/26-laser-icf-indirect-drive.md §Table 1 | medium | HDD architecture; partially validated by NIF direct-drive physics |
-| Laser absorption fraction — Xcimer HDD | 97% | xcimer-hybrid-direct-drive-evolution.md §Table I | medium | Simulation result |
-| Q_engineering — Inertia | ~4× | handwritten/26-laser-icf-indirect-drive.md §Table 1 | low | Recirculating fraction ~500/2000 MW |
-| Q_engineering — Xcimer | ~8.2× | handwritten/26-laser-icf-indirect-drive.md §Table 1 | low | At 7% laser efficiency, recirculating <11–13% |
-| Repetition rate — Inertia | 10 Hz | inertia-enterprises-2026-update.md §Thunderwall Specs | high | Beamline design target |
-| Repetition rate — Xcimer | <1 Hz (0.25–1 Hz) | dossier.md §Repetition Rate | high | Enabled by larger per-shot yield |
-| Laser system cost — Inertia (FOAK) | $700–$1,000/J | handwritten/26-laser-icf-indirect-drive.md §Table 1 | low | Implied from DPSSL diode cost; no published basis |
-| Laser system cost — Xcimer (FOAK) | $100–$120/J | handwritten/26-laser-icf-indirect-drive.md §Table 1 | low | Company estimate |
-| Laser system cost — Xcimer (NOAK) | $60–$80/J | handwritten/26-laser-icf-indirect-drive.md §Table 1 | low | Company estimate with learning rate |
-| NIF laser system cost (baseline) | ~$3.6B total; ~$40M/yr optics refurb | xcimer-science.md §NIF Comparison | high | Definitive baseline for all IFE laser cost analysis |
-| Xcimer cost-per-joule improvement vs. NIF | 30× | optics-news-15-6-6.md §Cost Claims | medium | Company assertion; no independent validation |
-| Target cost goal — Inertia | <$1/target | inertia-enterprises-website-and-faq.md §Target Cost | medium | Stated goal; no manufacturing basis |
-| Target cost threshold — Inertia (economic limit) | $0.75/target | [inferred: Goodin 2004 rule, 10% of electricity; handwritten §Target Factory] | medium | At 450 MJ/shot, 13.6¢/kWh |
-| Target cost threshold — Xcimer (economic limit) | $2.78/target | [inferred: Goodin 2004 rule; handwritten §Target Factory] | medium | At ~1.6 GJ/shot, 13.6¢/kWh |
-| Laser diode price floor estimate | ~$0.02/W | handwritten/26-laser-icf-indirect-drive.md §Target Factory | medium | Xcimer estimate |
-| Laser diode price required for viability | ~$0.007/W | handwritten/26-laser-icf-indirect-drive.md §Target Factory | medium | TRUMPF/LLNL study |
-| Xcimer capacitor cost target | $0.40/J | handwritten/26-laser-icf-indirect-drive.md §Target Factory | low | Internal Xcimer production target |
-| FLiBe TBR (Xcimer HYLIFE-III) | >1.2 | dossier.md §Tritium Breeding | medium | Published nuclear analysis (Fusion Eng. Design 2024) |
-| Thermal cycle efficiency — Xcimer (HYLIFE-III) | ~45% (helium Brayton, per IFE Workshop 2022) | dossier.md §Energy Capture | low | Conflicts with website claim of "steam"; unresolved |
-| Burnup fraction — Inertia | 0.23 | handwritten/26-laser-icf-indirect-drive.md §Table 1 | low | Estimated; smaller capsule implies lower burnup |
-| Burnup fraction — Xcimer | 0.30 | handwritten/26-laser-icf-indirect-drive.md §Table 1 | low | Xcimer estimate |
-| Chamber structural replacement — Inertia | Every 3–5 years | handwritten/26-laser-icf-indirect-drive.md §Table 1 | low | Company claim; no basis cited |
-| Chamber structural replacement — Xcimer | None (liquid wall lifetime) | handwritten/26-laser-icf-indirect-drive.md §Table 1 | low | Company claim; HYLIFE heritage |
-| Tritium on-site inventory — Inertia | ~few hundred grams | dossier.md §Tritium Breeding | medium | Company statement |
-| Target factory capital cost — NOAK (laser IFE) | ~$97M | fire-fpa07-goodin-icf-fuel.md §Cost Summary | low | 500,000 targets/day for ~1 GWe plant; NOAK with all R&D complete, no FOAK costs; ~2004 dollars; FOAK premium unquantified |
-| Target factory annual O&M — NOAK (laser IFE) | ~$19M/yr | fire-fpa07-goodin-icf-fuel.md §Cost Summary | low | Companion to $97M capital estimate; NOAK |
-| Per-target cost — NOAK (laser IFE, Goodin 2007) | ~$0.17/target | fire-fpa07-goodin-icf-fuel.md §Cost Summary | low | 16.6¢ vs. $3.00 energy value threshold; well within limit at NOAK scale |
-| O&M cost — IFE proxy (Hawker 2020) | $30/kWe-yr (range $10–100) | pmc-articles-pmc7658748.md §3b | low | Default in Hawker LCOE model; bounded by gas/nuclear analogues; adopted as placeholder |
-| Non-driver plant capital — HYLIFE-II (2020$, Hawker) | $3,600/kWe | pmc-articles-pmc7658748.md §2 (Model) | low | HYLIFE-II capital inflated to 2020$, excluding driver; upper-bound proxy for chamber/BOP capital |
-| FLiBe tritium processing system capital cost (HYLIFE-II) | ~$92M | osti-biblio-10179076.md §Cost Summary | low | Vacuum disengager-dominated (56%); early-1990s dollars; covers 3 steam loops |
-| FLiBe tritium extraction recirculating power (HYLIFE-II) | 6.6 MW | osti-biblio-10179076.md §Power Requirements | low | Pumping power for vacuum disengager system; should be included in recirculating power budget |
-| FLiBe total plant inventory — OSIRIS proxy (1000 MWe) | 940,000 kg (~940 t) | osti-servlets-purl-833813.md §Table 2.2 | low | 1992 OSIRIS conceptual design; best available proxy for Xcimer HYLIFE-derived design; FLiBe unit cost still absent |
-| FLiBe blanket flow rate — OSIRIS | 4,598 kg/s | osti-servlets-purl-833813.md §Table 2.2 | low | Inlet 500°C / outlet 650°C; spray flow 2,265 kg/s; spray manifold 2.1 MPa; spray pump power 3 MW |
-| Total plant availability — OSIRIS (4.6 Hz indirect drive, 1992) | ~0.69 | osti-servlets-purl-833813.md §Table 6.2 | low | Product of subsystem availabilities: Driver 0.87 × Reactor 0.90 × Target 0.92 × BOP 0.96; first-wall lifetime 1.8 fpy |
-| Total plant availability — SOMBRERO (6.7 Hz KrF direct drive, 1992) | ~0.68 | osti-servlets-purl-833813.md §Table 6.2 | low | Driver 0.89 × Reactor 0.89 × Target 0.90 × BOP 0.96; first-wall lifetime 5 fpy (C/C dry wall) |
-| COE — OSIRIS (1000 MWe, 1992$) | 5.6 ¢/kWh | osti-servlets-purl-833813.md §Executive Summary | low | HIB indirect drive; 1992 constant dollars; ×~2 to approximate 2024$ |
-| COE — SOMBRERO (1000 MWe, 1992$) | 6.7 ¢/kWh | osti-servlets-purl-833813.md §Executive Summary | low | KrF direct drive, 7.5% WPE, 3.4 MJ, 6.7 Hz, G=118; Li₂O blanket; 1992 constant dollars; ×~2 to approximate 2024$ |
+Liquid lithium blankets have been studied extensively for magnetic fusion (FNSF, DEMO concepts) and IFE (HYLIFE series). Tritium extraction from liquid lithium is demonstrated in laboratory-scale experiments, but continuous operation with TBR >1.0 at fusion neutron fluences has never been validated in a closed fuel cycle.
 
-**Missing Parameters:**
+Inertia's blanket architecture (lithium-filled pipes lining the chamber) is conceptually similar to ITER Test Blanket Modules (TBMs) and liquid-metal MFE blankets, but the pulsed neutron loading, 10 Hz thermal cycling, and 14 MeV neutron spectrum pose unique challenges.
 
-| Parameter | Gap Type | Criticality | Notes |
-|-----------|----------|-------------|-------|
-| FLiBe inventory volume | partially-sourced | important | OSIRIS 1992 study (osti-servlets-purl-833813.md) provides 940,000 kg total for 1000 MWe; FLiBe unit cost still absent from all sources; HYLIFE-II (Moir 1994) is only cost baseline in 1994$ |
-| FLiBe pump capital cost | truly-unknown | important | 3 MW spray pump power from OSIRIS (Table 2.2); capital cost for pumps/manifolds not in any source |
-| Target factory capital cost (FOAK) | partially-sourced | important | NOAK baseline ~$97M (Goodin 2007); FOAK premium vs. NOAK unquantified — likely 3–10× |
-| Capacity factor | not-yet-sourced | blocking | No rep-rate-coupled availability model in any source; 75% placeholder unvalidated |
-| Tritium processing system capital cost (Inertia liquid Li) | not-yet-sourced | important | HYLIFE-II provides $92M for FLiBe vacuum disengager (applicable to Xcimer); Inertia liquid Li extraction uncosted |
-| Final optics replacement schedule and cost | truly-unknown | blocking | For Xcimer, avoided; for Inertia, undefined |
-| Inertia chamber capital cost | proprietary | important | No plant study published |
-| Xcimer ASPEN full CAPEX breakdown | proprietary | blocking | Referenced in TRUMPF/Xcimer white paper (Feb 2026); not publicly available |
-| Ash clearing system design and cost | truly-unknown | important | Xcimer: FLiBe gravity; Inertia: no strategy |
-| Indirect cost multipliers (contingency, owner's cost, financing) | not-yet-sourced | important | No IFE-specific indirect cost model published |
+Tritium inventory minimization is critical for licensing and safety. The dossier states on-site inventory is "a few hundred grams," but without a published fuel cycle model, we cannot verify tritium throughput, extraction efficiency, or decay losses balance at steady state.
 
----
+**Steam turbine balance of plant — TRL ~9 (technology) / TRL ~3 (integration)**
 
-## Section 6: Data Gap Inventory
+Steam Rankine cycle technology is fully mature (coal, nuclear fission, concentrating solar thermal plants). However, integrating a steam cycle with a pulsed fusion neutron source at 10 Hz has never been demonstrated. Thermal storage (molten salt, pressurized water) may buffer the pulsed heat deposition, but this adds capital cost and complexity.
+
+The liquid lithium coolant loop must interface with steam generators without lithium-water contact (lithium reacts violently with water). Intermediate heat exchangers or helium secondary loops are likely required, reducing thermal efficiency and increasing balance-of-plant cost.
+
+## 4. Key Materials and Supply Chain Considerations
+
+**Tritium (D-T fuel) — CRITICAL, SUPPLY-CONSTRAINED**
+
+Global civilian tritium inventory is ~25 kg; a single 1 GWth D-T plant consumes >55 kg/year. Inertia's 1500 MWe plant (assuming ~4500 MWth fusion power and η_th = 0.33) requires ~250 kg/year tritium throughput if TBR = 1.0. Startup tritium must come from CANDU heavy-water reactors or U.S. government stockpiles (currently allocated to weapons and ITER).
+
+Tritium breeding ratio >1.05 is required to compensate for decay losses and fuel cycle inefficiencies. Inertia has not published TBR analysis or neutronics simulation results.
+
+**Laser diodes (Thunderwall driver) — MAJOR SCALE-UP NEEDED**
+
+DPSSL systems require massive arrays of semiconductor laser diodes for optical pumping. Inertia states that similar scale-up has occurred for Face ID and consumer electronics, implying commercial diode manufacturing can scale to fusion requirements.
+
+The handwritten exemplar cites a TRUMPF/LLNL study estimating diodes must achieve $0.007/W for IFE economic viability. Current high-power diode costs are ~$0.10-$1.00/W for industrial lasers. A 10 kJ, 10 Hz, 10% efficient beamline requires ~1 MW electrical input per beamline; 1000 beamlines require ~1 GW of diode pumping capacity.
+
+At $0.007/W, diode cost alone is $7M per 1 GW pumping array—manageable if achieved. At current $0.10/W, diode cost balloons to $100M just for pumping sources. Diode lifetime, thermal management, and replacement rates are unspecified.
+
+**Liquid lithium coolant and breeding blanket — MODERATE SUPPLY CHAIN RISK**
+
+The dossier states lithium quantity is "equivalent to 15 EVs," implying ~1000-1500 kg lithium metal inventory (EV batteries contain ~60-100 kg lithium equivalent). At current lithium carbonate prices (~$10-15/kg lithium metal equivalent), raw material cost is ~$10-20k—negligible compared to plant capital cost.
+
+However, liquid lithium handling requires specialized pumps, corrosion-resistant piping (refractory metals or ceramics), and fire suppression systems (lithium-air and lithium-water reactivity). Liquid metal MHD pumps and corrosion-resistant coatings are available from sodium-cooled fast reactor technology, but have not been qualified for fusion neutron environments.
+
+Lithium supply is not constrained for a few GW-scale plants, but global IFE deployment would compete with battery manufacturing. Lithium-6 enrichment (if required for enhanced TBR) adds cost and supply chain complexity.
+
+**Hohlraum and target materials — MODERATE MANUFACTURING COMPLEXITY**
+
+NIF hohlraums use gold or depleted uranium for X-ray conversion. Inertia has not specified hohlraum material, but gold is the likely choice for a commercial plant (uranium poses proliferation and waste concerns). At ~$60/g, gold cost per hohlraum depends on wall thickness and geometry—likely $10-$100 per target for mm-scale gold cylinders.
+
+Capsule ablator materials (CH plastic, doped polymers, beryllium) and DT fuel are well-characterized from NIF experiments. Cryogenic DT layering requires precision control of ice thickness uniformity (<1 μm RMS surface roughness). This is the dominant manufacturing challenge, not raw material cost.
+
+**Conventional steel chamber structure — LOW RISK**
+
+Inertia describes its reactor chamber as "low-cost conventional steel." For a dry-wall or thin-liquid-wall IFE chamber, structural steel costs are modest compared to magnetic fusion's superconducting magnets or thick-shielded tokamak vessels. The pulsed neutron loading may drive thicker walls or more frequent replacement, but steel supply chain is unconstrained.
+
+## 5. Design Point Parameters
+
+The following table describes the Inertia Enterprises 1500 MWe commercial plant as disclosed in available sources. Many critical parameters are not publicly specified; these are flagged with confidence ratings and sourcing notes.
+
+| Parameter | Value | Source | Confidence | Note |
+|-----------|-------|--------|------------|------|
+| Net electric power | 1500 MWe | inertia-enterprises-website-and-faq.md §Summary statistics | high | Spec key: `P_native`. Fixed by design point selection. |
+| Laser energy on target | 10 MJ | inertia-enterprises-website-and-faq.md §Build the world's most powerful laser | high | "4.5x higher energy than NIF" (NIF = 2.05-2.2 MJ). Spec key: informational; driver energy enters via `p_input`. |
+| Number of beamlines | 1000-4000 | inertia-enterprises-2026-update.md §Thunderwall Technology | medium | "1000-4000 modular beamlines"; 10 MJ total ÷ 10 kJ per beamline = 1000 beamlines (baseline). Range reflects scalability claim. |
+| Energy per beamline | 10 kJ | inertia-enterprises-2026-update.md §Thunderwall Technology | high | "Delivering a 10 kJ beam 10 times per second" |
+| Repetition rate | 10 Hz | inertia-enterprises-website-and-faq.md §Summary statistics; inertia-enterprises-2026-update.md | high | "10 times per second". Spec key: informational; enters chamber clearing and target factory costs. |
+| Laser wallplug efficiency | 10% | inertia-enterprises-2026-update.md §Thunderwall Technology | medium | "10% wallplug efficiency using scalable semiconductor diode technology"; unvalidated at stated energy and rep rate. |
+| Laser wavelength | 351 nm (3ω UV) | [inferred from NIF heritage] | low | Not explicitly stated in Inertia sources. NIF uses frequency-tripled Nd:glass (3ω = 351 nm); DPSSL systems typically frequency-convert for ICF. Spec key: not a spec parameter. |
+| Target gain (fusion yield / laser energy) | [unknown] | No data found in available sources | n/a | Handwritten exemplar estimates 45×, but no Inertia source validates this. Critical parameter for LCOE. |
+| Fusion yield per shot | [estimated: ~450 MJ thermal] | [derived: 1500 MWe / 0.33 / 10 Hz ≈ 450 MJ/shot] | low | Back-solved from net electric power, assuming η_th ~ 0.33 and 10 Hz. Not stated by Inertia. |
+| Target cost | <$1 per target | inertia-enterprises-website-and-faq.md §Summary statistics | medium | Company goal, not validated at scale. At 10 Hz, ~315M targets/year required. |
+| Capsule gain | [estimated: ~375] | [inferred from NIF scaling] | low | NIF peak target gain 4.13 with ~12% laser-to-capsule coupling → capsule gain ~34. Scaling to 10 MJ with gain ∝ E^(2/3) → ~80-100×. Handwritten exemplar cites 375×; derivation unclear. |
+| Burnup fraction | [unknown] | No data found in available sources | n/a | Handwritten exemplar estimates 0.23 for Inertia; not sourced. |
+| Drive type | Indirect (hohlraum) | inertia-enterprises-website-and-faq.md §FAQ: Why indirect drive | high | "NIF Hybrid-E indirect drive" heritage explicitly stated. Laser → hohlraum → X-rays → capsule. |
+| Hohlraum material | [not specified] | No data found in available sources | n/a | NIF uses gold; Inertia likely similar but unconfirmed. |
+| First wall / blanket | Liquid lithium in pipes | inertia-enterprises-website-and-faq.md §FAQ: Where will you get tritium | medium | "Pipes full of liquid lithium"; simultaneous tritium breeding, neutron shielding, heat exchange. Not a thick liquid wall (HYLIFE-style); appears to be structured pipe blanket. |
+| Tritium breeding ratio (TBR) | [not specified] | No data found in available sources | n/a | No neutronics analysis published. TBR >1.0 required for fuel self-sufficiency. |
+| Lithium inventory | ~1000-1500 kg | [inferred: "equivalent to 15 EVs" × 60-100 kg Li/EV] | low | inertia-enterprises-website-and-faq.md §FAQ: Where will you get tritium. Rough estimate; EV lithium content varies. |
+| On-site tritium inventory | "a few hundred grams" | inertia-enterprises-website-and-faq.md §FAQ: Where will you get tritium | medium | Order-of-magnitude estimate. Minimization critical for licensing. |
+| Energy conversion | Steam turbine | inertia-enterprises-2026-update.md §Thunderwall Technology | medium | "Turning heat into steam, which then drives a turbine"; no cycle details or efficiency stated. Spec key: `eta_th` (thermal-to-electric efficiency). |
+| Thermal-to-electric efficiency | [assumed: 0.33] | [estimated from conventional steam Rankine] | low | Not stated by Inertia. Fossil/fission steam cycles achieve 33-40%; sCO2 may reach 45-50%. Directly impacts fusion yield requirement. Spec key: `eta_th`. |
+| Auxiliary power input (recirculating power) | [derived: ~500 MW wallplug at 10% laser efficiency] | [calculated: 10 MJ / 0.10 efficiency × 10 Hz ÷ 1e6 = 1000 MW laser driver; assume 50% plant auxiliary] | low | Not stated by Inertia. Laser driver at 10% efficiency requires 1000 MW wallplug; plus target factory, pumps, cryogenics, BOP. Spec key: `p_input` (total auxiliary power). |
+| Capacity factor | [not specified] | No data found in available sources | n/a | Handwritten exemplar notes website assumptions imply "0s dwell between pulses" (100% availability), which is unrealistic. 70-90% CF typical for baseload plants. |
+| Chamber geometry | [not specified] | No data found in available sources | n/a | Chamber radius, wall thickness, liquid lithium flow geometry not disclosed. |
+| Structural material | Conventional steel | inertia-enterprises-website-and-faq.md §Summary statistics | medium | "Low-cost conventional steel chamber"; grade and thickness not specified. |
+| Plant lifetime | [assumed: 40 years] | [typical power plant lifetime] | low | Not stated by Inertia. Fission and fossil plants target 40-60 years; fusion may differ due to neutron damage. |
+| Component replacement interval | "Structural replacements every 3-5 years" | [handwritten exemplar citation] | low | Not found in reviewed Inertia sources. May refer to first-wall or blanket module replacement. |
+
+**Critical gaps for LCOE modeling:**
+- Target gain (fusion yield / laser energy): drives fusion thermal power and required rep rate
+- Thermal-to-electric efficiency: determines fusion power requirement for 1500 MWe net output
+- Capacity factor: determines annual energy production and revenue
+- Laser driver capital cost ($/J or total cost): typically 30-50% of IFE plant capital
+- Target manufacturing cost model: <$1/target is stated goal, but factory capital cost and throughput limits unknown
+- Tritium breeding ratio: must exceed 1.0 for fuel self-sufficiency
+
+## 5b. Override Candidates
+
+The per-account walkthrough (Canonical 1costingFE Account Schema for this archetype) found **zero enabled overrides**. Inertia has published almost no cost data or component-level quantitative specifications beyond the high-level architectural description.
+
+The <$1 per target cost goal is the only quantitative cost-related figure disclosed, but this is:
+1. A unit operating cost (consumable), not a capital cost
+2. A target/goal, not a validated production cost
+3. Insufficient to derive a factory capital cost override without additional data (factory throughput, capital intensity, amortization period)
+
+If the 1costingFE library has a default target manufacturing cost for IFE, a future iteration may assess whether $1/target × 10 Hz × plant lifetime justifies a `CAS80` (fuel cost) override. However, without knowing the library's default fuel cost model for laser ICF indirect drive, we cannot construct an accountable override at this time.
+
+```yaml
+overrides: []
+```
+
+**Archetype-Fit sanity check:** The expected range for High archetype-fit is 0-4 enabled overrides. Zero overrides is within this band and reflects the paucity of Inertia-published cost data.
+
+**Note for model setup:** The lack of overrides does not mean the library defaults are accurate for Inertia—it means Inertia has not disclosed sufficient data to justify departing from those defaults. The resulting LCOE estimate will inherit all library assumptions for laser ICF indirect drive and carry high uncertainty.
+
+## 6. Data Gap Inventory
 
 | # | Gap Description | Section | Gap Type | Criticality | Source Recommendation |
 |---|-----------------|---------|----------|-------------|----------------------|
-| 1 | No published power plant design for Inertia Enterprises — chamber, blanket, thermal cycle unquantified | S1, S5 | proprietary | blocking | Request Inertia publications; SPIE Photonics West 2026 presentation may have detail |
-| 2 | Xcimer ASPEN full CAPEX breakdown (in TRUMPF/Xcimer Feb 2026 white paper, not public) | S1, S5 | proprietary | blocking | Ingest xcimer-trumpf-commercialization-2026.pdf if available |
-| 3 | Capacity factor not modeled — no rep-rate-coupled availability analysis exists in available sources | S5 | not-yet-sourced | blocking | UKAEA PROCESS IFE module or GEM tool |
-| 4 | FLiBe inventory quantity now partially sourced — OSIRIS 1992 provides 940,000 kg for 1000 MWe plant (proxy); FLiBe unit cost and pump capital remain unquantified | S4, S5 | partially-sourced | important | OSIRIS (osti-servlets-purl-833813.md) provides inventory and flow rate; HYLIFE-II (Moir 1994) for 1994$ cost baseline; no modern FLiBe unit cost in any source |
-| 5 | Target factory capital cost — NOAK baseline ~$97M from Goodin 2007 available; FOAK premium above this baseline unquantified | S4, S5 | partially-sourced | important | Goodin 2007 (fire-fpa07-goodin-icf-fuel.md) provides NOAK anchor; use 3–10× multiplier range for FOAK sensitivity |
-| 6 | Final optics survivability and replacement cost for Inertia's architecture | S3, S5 | truly-unknown | blocking | No published prototype data; fundamental R&D gap |
-| 7 | Inertia ash-clearing strategy — no public description | S3 | proprietary | important | No published material; fundamental operational gap |
-| 8 | Thermal cycle type (Brayton vs. Rankine) and efficiency for Xcimer power plant | S3, S5 | proprietary | important | Conflict between website ("steam") and IFE Workshop 2022 ("helium Brayton, 45%"); full HYLIFE-III paper would resolve |
-| 9 | O&M breakdown (fixed, variable, scheduled, unplanned) | S5 | partially-sourced | important | Hawker (2020) IFE proxy $30/kWe-yr (range $10–100) is available as placeholder; IFE-specific breakdown still absent |
-| 10 | Tritium processing system design and cost | S4, S5 | partially-sourced | important | HYLIFE-II provides $92M baseline for FLiBe vacuum disengager (osti-biblio-10179076.md); Inertia liquid Li extraction cost still unquantified; HYLIFE-III may supersede 1990s estimates |
-| 11 | Capsule gain validation — G > 50 not yet demonstrated experimentally | S3 | truly-unknown | blocking | NIF EYC (Enhanced Yield Capability) upgrade targeting >30 MJ may provide data |
-| 12 | Laser diode cost reduction path — $0.007/W viability target not demonstrated | S4 | truly-unknown | important | TRUMPF/Xcimer white paper; DOE IFE-STAR program milestones |
-| 13 | FLiBe beryllium supply chain at plant scale | S4 | truly-unknown | important | No fusion-scale beryllium procurement study available |
-| 14 | Inertia tritium breeding analysis (TBR for liquid Li pipes) | S3 | proprietary | important | No published nuclear analysis for Inertia blanket |
-| 15 | Xcimer Vulcan laser performance (not yet built) | S3 | truly-unknown | nice-to-have | Targeted 2030; will be the key technical validation milestone |
+| 1 | Target gain (fusion yield / laser energy) at 10 MJ laser input | S5 | truly-unknown | blocking | Inertia plant design study or validated scaling law from NIF experiments at higher energies. NIF EYC (Enhanced Yield Capability) upgrade to 2.6 MJ may provide scaling data. |
+| 2 | Laser driver capital cost ($/J or total system cost for 1000 beamlines) | S5, S5b | proprietary | blocking | Inertia investor materials, DPSSL vendor quotes, or detailed laser BOM. LLNL GEM tool has bottom-up DPSSL cost model but may not match Thunderwall architecture. |
+| 3 | Thermal-to-electric conversion efficiency (η_th) and cycle type | S5 | not-yet-sourced | blocking | Inertia balance-of-plant design. Assumed 33% (steam Rankine) vs. 45% (sCO2 Brayton) changes fusion power requirement by 36%. |
+| 4 | Capacity factor and availability assumptions | S5 | not-yet-sourced | important | Inertia operations model. Chamber clearing failure modes, target factory uptime, and scheduled maintenance intervals drive CF. 70% vs. 90% CF changes LCOE by ~28%. |
+| 5 | Target manufacturing factory capital cost and production capacity | S2, S5b | proprietary / derivable | important | Inertia target factory design or General Atomics/LLNL target production cost models. <$1/target is stated, but factory capex and throughput limits unknown. LLNL GEM has target factory cost module. |
+| 6 | Tritium breeding ratio (TBR) from neutronics analysis | S3, S5 | not-yet-sourced | blocking | Inertia nuclear design or MCNP simulation results. Liquid lithium pipe blanket TBR depends on pipe geometry, lithium thickness, and neutron multiplier (if any). |
+| 7 | Chamber geometry (radius, wall thickness, liquid lithium flow configuration) | S5 | proprietary | important | Inertia chamber design. Chamber size drives structural material cost and neutron shielding requirements. Liquid lithium pumping power (recirculating load) depends on flow rate and geometry. |
+| 8 | Auxiliary power consumption (laser driver + target factory + cryogenics + pumps + BOP) | S5 | derivable | important | Can be estimated from laser efficiency (10%), target factory throughput, and BOP assumptions, but Inertia-specific accounting not disclosed. Recirculating power fraction = P_aux / P_net determines Q_eng. |
+| 9 | Component replacement intervals and first-wall lifetime under pulsed neutron loading | S3, S5 | truly-unknown | important | Inertia materials R&D or IFE first-wall studies. Handwritten exemplar cites 3-5 year structural replacement, but source not identified. Pulsed fatigue and neutron embrittlement data for steel under 10 Hz, 450 MJ yield is nonexistent. |
+| 10 | Chamber clearing strategy and timescale at 10 Hz | S2, S3 | not-yet-sourced | important | Inertia chamber engineering. Gas pumping capacity, vapor condensation, and debris removal must complete in <100 ms for 10 Hz operation. No published strategy or CFD model. |
+| 11 | Laser optics lifetime and replacement cost under 10 Hz UV flux | S3 | not-yet-sourced | nice-to-have | Inertia optics R&D or DPSSL damage testing. Frequency-conversion crystals and focusing optics degrade under UV fluence. Replacement intervals drive O&M costs. |
+| 12 | Diode laser pump cost ($/W) and lifetime | S4 | not-yet-sourced | important | Semiconductor laser diode vendor roadmaps. TRUMPF/LLNL study (handwritten exemplar) suggests $0.007/W target; current commercial diodes ~$0.10-$1.00/W. 10× cost delta translates to significant driver cost uncertainty. |
+| 13 | Liquid lithium handling and corrosion mitigation strategy | S4 | not-yet-sourced | nice-to-have | Inertia materials engineering. Liquid metal corrosion, MHD effects, and tritium permeation are known challenges from MFE blanket R&D. Inertia-specific solutions not disclosed. |
+| 14 | Hohlraum and capsule design for 10 MJ indirect drive | S5 | not-yet-sourced | important | Inertia target physics or LLNL collaboration results. NIF Hybrid-E design is validated at 2 MJ; scaling to 10 MJ may require thicker capsules, larger hohlraums, or different ablator materials. |
+| 15 | LCOE or capital cost estimate from Inertia | All | proprietary | nice-to-have | Investor presentations or public technoeconomic study. No published LCOE target or cost-competitiveness claim found. |
 
----
+**Gap Type Summary:**
+- Truly-unknown: 3 gaps (target gain scaling, component lifetimes, chamber clearing)
+- Proprietary: 3 gaps (laser cost, chamber geometry, LCOE)
+- Not-yet-sourced: 8 gaps (η_th, CF, TBR, optics lifetime, etc.)
+- Derivable: 1 gap (auxiliary power, can be estimated with assumptions)
 
-## Section 7: Cross-Concept Notes
+**Criticality Summary:**
+- Blocking (required for credible LCOE): 6 gaps
+- Important (significant cost/performance impact): 8 gaps
+- Nice-to-have (refinements): 3 gaps
 
-**Approved priors available**: 21-spherical-tokamak-hts (Tokamak Energy).
+## 7. Family-Delta vs Comparables
 
-The spherical tokamak analysis establishes the tokamak baseline for tritium supply chain and broader D-T fuel cycle considerations. Key shared elements:
+The fixed comparables for this concept are:
+- 17b-laser-icf-fast-ignition (Focused Energy)
+- 30-laser-icf-nif-commercialization (unclear; may be Inertia itself or LLNL LIFE heritage)
+- 31-laser-icf-oec-architecture (Blue Laser Fusion)
+- 32-laser-icf-french-national (GenF Systems)
+- 17a-laser-icf-hybrid-drive (Xcimer Energy)
 
-- **Tritium supply and startup**: The spherical tokamak analysis documents global tritium inventory (~25–30 kg), CANDU supply chain constraints, and the sequencing risk for fleet-scale D-T deployment. These findings apply directly to Laser ICF Indirect Drive — both are D-T concepts requiring TBR > 1. Laser ICF differs in that tritium is consumed per-shot in discrete milligram quantities, requiring an on-site continuous breeding and extraction loop rather than a quasi-continuous plasma-facing loop.
-- **FLiBe blanket**: The tokamak analysis documents FLiBe beryllium supply constraints (Materion Corp. sole source, ~300 t/yr global production) and Li-6 enrichment limitations. These apply directly to Xcimer's FLiBe chamber design. FLiBe is also shared with the Kairos Power fission concept, which may provide some economies of scale.
-- **Regulatory costs**: The tokamak analysis notes that fission-style regulation creates a 2.2× markup on building costs (Stewart & Shirvan, 2022). This regulatory multiplier applies to Laser ICF as well, though the IFE activation inventory is lower and the 2023 NRC decision to regulate fusion under 10 CFR Part 30 is favorable for all fusion concepts.
+**Inertia vs. 17a (Xcimer Hybrid Direct Drive):**
 
-**Nearest neighbors in IFE family** (from concept landscape, not yet approved):
-- **17a — Laser ICF Hybrid Direct Drive (Xcimer)**: Xcimer Energy is a direct technology overlap — Xcimer now describes their approach as Hybrid Direct Drive (HDD) and may warrant reclassification from concept 26. The HDD physics paper (Thomas et al. 2024) formalizes a distinct target design from NIF-style pure indirect drive. Any analysis of concept 26 (Inertia's indirect drive) should clearly distinguish which physics assumptions come from NIF heritage vs. Xcimer's HDD innovation.
-- **22 — Projectile ICF (First Light, NearStar)**: Shares the liquid-wall chamber concept and pulsed D-T operation. Both concepts have similar blanket/breeding architecture tradeoffs. Approved analysis (iter-5/PASS) may provide useful analogue for IFE chamber capital cost structure.
-- **17b — Laser ICF Fast Ignition (Focused Energy)**: Shares DPSSL laser technology and solid-state laser cost structure with Inertia's Thunderwall. Fast ignition differs in target physics (petawatt ignition beam) but the driver capital cost trade-space is analogous.
-- **25 — Heavy Ion Beam ICF**: Shares the sub-Hz rep rate strategy, large-capsule high-yield-per-shot architecture, and HYLIFE-derived chamber designs. The heavy-ion analysis (iter-3/FAIL) covers essentially the same chamber engineering challenges.
-- **SOMBRERO (1992, DOE conceptual design study)**: The direct technological antecedent to Xcimer's KrF IFE approach. SOMBRERO used the same driver class (e-beam pumped KrF laser, 7.5% wall-plug efficiency, 3.4 MJ, 6.7 Hz, 60 beam clusters) and was designed around G = 118 as the viability target. This explains why G > 100 is the established IFE viability threshold: it was the 1992 design-study baseline, not an arbitrary criterion. SOMBRERO achieved a modeled COE of 6.7 ¢/kWh (1992$; ×~2 for 2024$) with Li₂O granule blanket and C/C dry wall — different blanket from Xcimer's FLiBe but the same driver class. OSIRIS (same study) used indirect drive (HIB) with FLiBe spray wall and achieved 5.6 ¢/kWh (1992$). Both achieved ~68–69% total plant availability, providing the only historical IFE plant availability anchor.
+The most instructive comparison is Xcimer (17a), as both companies target commercial laser ICF but with radically different driver technologies and target physics.
 
-**Key divergences from tokamak baseline**:
-- No magnet supply chain (no REBCO, no cryogenics at the tokamak scale)
-- No plasma-facing components requiring remote handling for routine maintenance
-- Laser driver replaces magnet system as the dominant capital cost item
-- Pulsed operation introduces target injection, ash clearing, and rep-rate constraints absent in steady-state MFE
-- Energy conversion can potentially achieve higher efficiency (45% helium Brayton vs. ~35% steam Rankine for D-T tokamaks) if the HYLIFE-III helium cycle is validated
+**Driver technology:** Inertia uses DPSSL (diode-pumped solid-state laser, semiconductor diode pumping, frequency-tripled to UV) with 1000-4000 modular beamlines. Xcimer uses KrF excimer laser (electron-beam or hybrid microwave pumping, 248 nm deep-UV gas laser) with only 2 large amplifiers. The Xcimer Phoenix prototype was completed in June 2025 (first private-sector e-beam excimer in 20+ years); Inertia has disclosed no prototype hardware.
 
----
+**Cost implication:** Xcimer's published target is $100-120/J FOAK, $60-80/J NOAK (xcimer-hybrid-direct-drive-evolution.md). If Inertia achieves similar $/J, a 10 MJ system costs $600M-$1.2B FOAK just for the driver. However, DPSSL and excimer laser cost structures differ fundamentally (diode arrays vs. e-beam pumping), so direct comparison is uncertain. **Advantage: unclear** (Xcimer has published cost target and prototype; Inertia has neither).
 
-## Section 8: Sources
+**Laser efficiency:** Inertia claims 10% wallplug efficiency for Thunderwall DPSSL. Xcimer's KrF excimer achieves 5-7% in the hybrid direct-drive paper, with ≥12% cited for their optimized architecture (xcimer-hybrid-direct-drive-evolution.md §Laser and Target). **Advantage: Inertia** (if 10% is validated; currently TRL ~2 vs. Xcimer's TRL ~4-5 with Phoenix laser operational).
 
-1. **NIF Ignition Achievements** (lasers.llnl.gov, updated through October 2025)
-   - Ten ignition shots documented with yield and laser energy; peak gain 4.13 (April 2025). Primary baseline for target gain physics.
-   - `iter-01/sources/nif-ignition-achievements.md`, `iter-02/sources/nif-ignition-updates-2025.md`
+**Repetition rate:** Inertia targets 10 Hz; Xcimer targets 0.25-1 Hz (sub-Hz baseline). Higher rep rate increases time-averaged power from each fusion shot but stresses chamber clearing, target injection, and laser thermal management. **Trade-off:** Inertia's higher rep rate allows smaller yield per shot (∝ 1/rep rate for fixed plant power) but requires faster chamber clearing and more demanding laser duty cycle. **Cost impact: ambiguous** (10 Hz may reduce chamber size but increases driver stress and target factory throughput).
 
-2. **Xcimer Energy — Hybrid Direct Drive Physics** (Thomas et al., *Physics of Plasmas* 31(11), 112708, 2024)
-   - HDD target point design: G = 65 at 4 MJ, 97% laser absorption, 2× NIF capsule radius. Primary source for Xcimer target physics parameters.
-   - `iter-02/sources/xcimer-hybrid-direct-drive-evolution.md`
+**Target physics:** Inertia uses pure indirect drive (NIF Hybrid-E heritage): laser → hohlraum → X-rays → capsule. Xcimer uses Hybrid Direct Drive (HDD): first pulse heats hohlraum to create thick plasma atmosphere, then direct-drive pulses compress capsule through the atmosphere. HDD achieves ~97% laser absorption vs. ~12% for NIF indirect drive (xcimer-hybrid-direct-drive-evolution.md §Results). **Advantage: Xcimer** (higher coupling efficiency reduces required laser energy for same capsule compression; 8× improvement in laser-to-capsule coupling).
 
-3. **Xcimer Energy — Website, Science, and Approach Pages** (xcimer.energy, accessed 2025–2026)
-   - ASPEN laser architecture, HYLIFE-derived chamber, FLiBe blanket, 30× cost reduction claim, <1 Hz rep rate. Primary source for Xcimer architecture overview.
-   - `iter-01/sources/xcimer-energy-website-and-science.md`, `iter-03/sources/xcimer-approach.md`, `iter-03/sources/xcimer-science.md`
+**Yield per shot:** Xcimer's HDD target achieves 65× gain at 4 MJ laser energy (256 MJ fusion yield) and projects ~200× gain at 8 MJ (xcimer-hybrid-direct-drive-evolution.md §Results). Inertia's 10 MJ indirect drive must achieve ~45× target gain for the stated 1500 MWe output (back-solved from 450 MJ/shot at η_th = 0.33). **Advantage: Xcimer** (validated 65× gain at 4 MJ vs. Inertia's unvalidated 45× at 10 MJ; Xcimer's path to 200× gain at 8 MJ suggests better scaling).
 
-4. **Xcimer Energy — Phoenix Laser Milestone** (xcimer.energy press release, June 2025)
-   - First private-sector e-beam excimer laser; record 3 µs pulse length; Vulcan (12 MJ) targeted 2030. TRL evidence for KrF driver.
-   - `iter-02/sources/xcimer-laser-milestones-2025.md`
+**Chamber and blanket:** Both use thick liquid walls for neutron protection and tritium breeding. Xcimer explicitly describes FLiBe molten salt (HYLIFE-III heritage); Inertia uses liquid lithium in pipes. FLiBe is chemically stable and non-flammable; liquid lithium is reactive (fire hazard with air or water) but has higher tritium breeding potential per unit volume. **Trade-off:** FLiBe safer but requires beryllium supply chain; liquid lithium higher TBR but chemically hazardous. **Cost impact: neutral to slight Xcimer advantage** (FLiBe handling well-studied in HYLIFE program; liquid lithium corrosion and fire suppression add engineering complexity).
 
-5. **Inertia Enterprises — Website and FAQ** (inertia.com, accessed 2025)
-   - Thunderwall DPSSL architecture, 1,000 beamlines × 10 kJ × 10 Hz, plant output 1.5 GWe, target cost goal <$1. Primary source for Inertia design claims.
-   - `iter-01/sources/inertia-enterprises-website-and-faq.md`
+**Summary vs. Xcimer:** Inertia's modular DPSSL architecture is unproven at scale, while Xcimer has demonstrated Phoenix laser hardware. Xcimer's HDD target physics shows superior laser-to-capsule coupling (97% vs. 12%) and validated gain (65× at 4 MJ vs. Inertia's unvalidated 45× at 10 MJ). Inertia's 10 Hz rep rate is more aggressive than Xcimer's sub-Hz target, trading chamber-clearing complexity for smaller yield per shot. **Overall: Xcimer appears to have a nearer-term technical pathway with better target physics, but both concepts carry extreme cost uncertainty due to lack of published driver costs and plant designs.**
 
-6. **Inertia Enterprises — $450M Series A Announcement** (GlobeNewsWire, February 2026)
-   - Funding details, Thunderwall per-beamline specs (10 kJ / 10 Hz / 10% WPE), team background (Dunne/Kritcher LLNL pedigree).
-   - `iter-02/sources/inertia-enterprises-2026-update.md`
+**Inertia vs. 17b (Focused Energy Fast Ignition):**
 
-7. **Optics.org — Xcimer $100M Series A Coverage** (optics.org/news/15/6/6, June 2024)
-   - NIF cost baseline ($3.5B, $40M/yr optics), Xcimer 30× cost-per-joule claim, 5–10% laser efficiency assumption, IFE-STAR program participation.
-   - `iter-03/sources/optics-news-15-6-6.md`
+Focused Energy pursues fast ignition (separate compression and ignition laser pulses). Fast ignition decouples compression symmetry from ignition energy deposition, potentially achieving higher gain with less stringent implosion uniformity requirements. However, fast ignition has never achieved ignition in experiments (NIF ignition is conventional indirect drive, not fast ignition).
 
-8. **Handwritten Exemplar: Laser ICF Indirect Drive** (Fusion TEA project, 2026)
-   - Head-to-head Inertia vs. Xcimer comparison table with Q_eng, laser cost, coupling efficiency, target cost, and blanket type. Primary source for company-vs-company economic parameter comparison.
-   - `handwritten/26-laser-icf-indirect-drive.md`
+**Advantage: Inertia** (leverages validated NIF indirect-drive ignition physics; Focused Energy's fast ignition is TRL ~2-3 vs. indirect drive TRL ~5-6).
 
-9. **Phase 1a Dossier: Laser ICF Indirect Drive** (Fusion TEA project, last updated 2026-03-07)
-   - Consolidated column-by-column taxonomy values with citations and confidence ratings. Used as the authoritative summary of differentiation table values.
-   - `knowledge/concept_research/26-laser-icf-indirect-drive/dossier.md`
+**Inertia vs. 30, 31, 32 (other indirect/direct drive laser ICF concepts):**
 
-10. **Goodin et al. (2004/2007)** — Target cost economic limit and factory cost estimates.
-    - (2004): Targets must cost <10% of the electricity they produce — primary quantitative constraint on target factory economics.
-    - (2007 FPA presentation): NOAK laser fusion target factory: ~$97M installed capital, ~$19M/yr O&M, 500,000 targets/day for ~1 GWe plant; per-target cost ~$0.17 (well within $3.00 economic threshold at NOAK scale).
-    - `iter-03/sources/fire-fpa07-goodin-icf-fuel.md`
+Insufficient data in this iteration to articulate deltas. Comparables 30-32 are placeholder concept IDs; their specifications are not provided in this analysis prompt. Future iterations should cross-reference these concepts' dossiers to compare driver technologies, target gains, and cost structures.
 
-11. **HYLIFE-III Nuclear Analysis** (Fusion Engineering and Design, 2024) — FLiBe blanket TBR > 1.2
-    - Referenced in dossier.md; establishes tritium breeding adequacy for Xcimer's blanket design.
+**Shared vs. novel elements across all laser ICF:**
 
-12. **TRUMPF/LLNL Laser IFE Economics Study** (IFE Workshop 2022) — Laser diodes must reach $0.007/W for IFE economic viability
-    - Referenced in handwritten exemplar; sets the primary cost reduction target for DPSSL laser diodes.
+**Shared challenges** (not differentiators):
+- Tritium breeding and fuel cycle (all D-T laser ICF must achieve TBR >1.0)
+- Target manufacturing at scale (cryogenic DT layering, <1 μm surface finish, high-throughput quality control)
+- Chamber clearing and debris mitigation (all high-rep-rate IFE)
+- First-wall neutron damage and lifetime (14 MeV neutron spectrum, pulsed loading)
 
-13. **Hawker (2020)** — "A simplified economic model for inertial fusion energy" (*Royal Society Open Science* / PMC7658748)
-    - IFE LCOE model: O&M default $30/kWe-yr ($10–100 range), HYLIFE-II non-driver capital $3,600/kWe (2020$), driver lifetime more LCOE-sensitive (Pearson −0.134) than driver unit cost (+0.075); 30M-shot / 5-yr commercial threshold.
-    - `iter-03/sources/pmc-articles-pmc7658748.md`
+**Inertia-specific (vs. general laser ICF):**
+- DPSSL driver with semiconductor diode pumping (vs. excimer, gas laser, or other architectures)
+- 10 Hz repetition rate (higher than most IFE concepts; Focused Energy and Xcimer target sub-Hz to ~1 Hz)
+- Liquid lithium pipe blanket (vs. FLiBe thick liquid wall or other blanket chemistries)
+- Modular 1000-4000 beamline architecture (vs. Xcimer's 2-beam or NIF's 192-beam)
 
-14. **HYLIFE-II Tritium Management System** (OSTI EGG-FSP--9971, ~early 1990s)
-    - Tritium extraction system total cost ~$92M (vacuum disengager-dominated at 56%); 6.6 MW FLiBe pumping power for disengager; TRL ~3–4 (demonstration with FLiBe still needed at time of publication).
-    - `iter-03/sources/osti-biblio-10179076.md`
+## 8. Sources
 
-15. **OSIRIS/SOMBRERO IFE Conceptual Design Study** (OSTI PURL-833813, March 1992)
-    - Two 1000 MWe IFE plant studies: OSIRIS (HIB indirect drive, FLiBe spray wall, COE 5.6 ¢/kWh 1992$) and SOMBRERO (KrF direct drive, 7.5% WPE, 3.4 MJ, 6.7 Hz, G=118, Li₂O blanket, COE 6.7 ¢/kWh 1992$). Provides: FLiBe total inventory 940,000 kg, flow rates (4,598 + 2,265 kg/s), 3 MW spray pump power; subsystem availability breakdown (Driver 0.87/0.89, Reactor 0.90/0.89, Target 0.92/0.90, BOP 0.96/0.96 → total ~0.69/0.68); first-wall lifetimes 1.8 / 5 fpy. SOMBRERO is the direct technological antecedent to Xcimer; G = 118 design point established the G > 100 IFE viability threshold.
-    - `iter-03/sources/osti-servlets-purl-833813.md`
+Listed in order of importance for this analysis:
+
+1. **Inertia Enterprises 2026 Funding Announcement (Series A)**
+   - Citation: inertia-enterprises-2026-update.md (extracted from GlobeNewsWire, Feb 2026)
+   - Contribution: Primary source for Thunderwall DPSSL specifications (10 kJ, 10 Hz, 10% efficiency), company strategy, and team background. Only Inertia source with quantitative laser parameters.
+   - Location: knowledge/concept_research/26-laser-icf-indirect-drive/iter-02/sources/inertia-enterprises-2026-update.md
+
+2. **Inertia Enterprises Website and FAQ**
+   - Citation: inertia-enterprises-website-and-faq.md (extracted from https://inertia.com/, accessed 2026-03-07)
+   - Contribution: Design point identification (1.5 GW plant, 10 MJ laser, <$1 target cost goal), indirect-drive rationale, liquid lithium blanket description, tritium inventory estimates.
+   - Location: knowledge/concept_research/26-laser-icf-indirect-drive/iter-01/sources/inertia-enterprises-website-and-faq.md
+
+3. **NIF Ignition Achievements (LLNL, updated through Oct 2025)**
+   - Citation: nif-ignition-achievements.md and nif-ignition-updates-2025.md (extracted from https://lasers.llnl.gov/science/achieving-fusion-ignition)
+   - Contribution: Validated ignition physics for indirect-drive ICF. Ten successful ignition shots (Dec 2022 - Oct 2025), peak yield 8.6 MJ from 2.08 MJ laser input (target gain 4.13). Technical challenges (LPI, hohlraum asymmetries, mix, perturbation sources) directly applicable to Inertia's NIF-heritage approach. Evidence base for capsule gain scaling and implosion physics.
+   - Location: knowledge/concept_research/26-laser-icf-indirect-drive/iter-01/sources/nif-ignition-achievements.md and iter-02/sources/nif-ignition-updates-2025.md
+
+4. **Xcimer Hybrid Direct Drive Physics Paper (Physics of Plasmas, 2024)**
+   - Citation: xcimer-hybrid-direct-drive-evolution.md (extracted from Physics of Plasmas 31(11), 112708, 2024)
+   - Contribution: Comparative data for laser ICF target physics, efficiency, and cost drivers. Xcimer's HDD achieves 97% laser absorption vs. 12% for NIF indirect drive; 65× gain at 4 MJ validated. Cost advantages of minimal solid optics and high coupling efficiency contrast with Inertia's pure indirect-drive approach. Provides benchmark for target gain scaling and laser-to-capsule coupling losses.
+   - Location: knowledge/concept_research/26-laser-icf-indirect-drive/iter-02/sources/xcimer-hybrid-direct-drive-evolution.md
+
+5. **Xcimer Phoenix Laser Completion Announcement (June 2025)**
+   - Citation: xcimer-laser-milestones-2025.md (extracted from https://xcimer.energy/, June 2025)
+   - Contribution: Evidence that private-sector laser ICF development is advancing to prototype hardware. Xcimer's KrF excimer laser (first private e-beam excimer in 20+ years, 3 μs pulse record) demonstrates TRL progression. Highlights the gap between Xcimer's demonstrated hardware and Inertia's paper-concept status for Thunderwall DPSSL.
+   - Location: knowledge/concept_research/26-laser-icf-indirect-drive/iter-02/sources/xcimer-laser-milestones-2025.md
+
+6. **Handwritten Exemplar Analysis (26-laser-icf-indirect-drive.md)**
+   - Citation: handwritten/26-laser-icf-indirect-drive.md (CLAUDE.md exemplar)
+   - Contribution: Comparative table of Inertia vs. Xcimer specifications, including target gain estimates (45× for Inertia), burnup fraction (0.23), laser cost range ($700-$1,000/J), and capacity factor assumptions. Notes self-conflicting data on Inertia website. Provides context for LCOE modeling challenges and cross-concept positioning.
+   - Location: exploration/concept_analysis/handwritten/26-laser-icf-indirect-drive.md
+
+7. **Concept Dossier (26-laser-icf-indirect-drive)**
+   - Citation: dossier.md (compiled 2026-03-07, 2 research iterations)
+   - Contribution: Consolidated summary of Inertia and Xcimer differentiation, schema value assignments (confinement family, fuel, driver technology), and remaining gaps. Overall confidence: medium-high (driven by NIF physics data; Inertia-specific economics remain sparse).
+   - Location: knowledge/concept_research/26-laser-icf-indirect-drive/dossier.md
+
+**Note on missing sources:** The analysis brief and handwritten exemplar reference additional IFE cost models (LLNL GEM, UKAEA PROCESS, Goodin et al. 2004 target cost study, Hawker 2020 framework) that were not included in the iter-01 to iter-03 extracted sources. Future iterations should ingest these to provide independent benchmarks for driver cost, target factory economics, and LCOE sensitivity to gain and efficiency.

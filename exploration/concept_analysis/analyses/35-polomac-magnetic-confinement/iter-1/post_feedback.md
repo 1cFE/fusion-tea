@@ -1,22 +1,33 @@
-VERDICT: FINDINGS
+VERDICT: PASS
 
-### F-1: Modeling approach rationale absent from analysis text
-- **Target:** Section 2 / modeling recommendations (analysis.md has no dedicated modeling approach section)
-- **Category:** analysis
-- **Finding:** The analysis never states whether 1costingfe or free-form modeling is appropriate and why (Goal 4). The model_setup.py docstring correctly identifies itself as a "Free-Form LCOE Model" and explains the data quality context, but the analysis.md itself contains no statement of modeling approach choice or rationale. A reader of the analysis alone cannot determine whether CAS-structured free-form modeling is the right method, what ruled out 1costingfe parameterization, or what that choice means for result interpretation.
-- **Recommendation:** Add a short modeling approach paragraph — in Section 2 or as a standalone Section 2.x — stating: (a) that free-form modeling is appropriate because no confinement physics, reactor design point, or system code output exists to parameterize 1costingfe scaling laws; (b) what the model actually computes (assumed Q + fusion power driving CAS cost structure, not physics-derived parameter chains); and (c) what the consequence is for result uncertainty (all outputs are scenario bounds, not engineering estimates). The three key hypotheses the model tests should be stated as propositions: e.g., "If SC coil cost is ≤ $500M and Q ≥ 15 is achievable for D-D, then LCOE could approach competitive levels at sufficient plant scale."
-- **Priority:** blocking
+This analysis and model adequately satisfy the contract under the exceptional circumstances of this concept. The Polomac concept has **no design point**, **no archetype**, **no comparables**, and **no company-disclosed power target**. The upstream frontmatter confirms this: `Archetype: [empty]`, `Comparables: []`, `Comparison-Status: freeform-deferred`, and the analysis states "(No design-point row for this concept yet — selection is upstream-pending)".
 
-### F-2: Key differentiators from conventional tokamak not explicitly listed
-- **Target:** Section 7 (cross-concept notes) or a dedicated differentiator summary
-- **Category:** analysis
-- **Finding:** The checklist requires differentiators to be explicitly listed, not implied in the narrative (Goal 2). The analysis's architectural differences from a tokamak — poloidal vs. toroidal confinement geometry, in-vessel dipole coil with magnetic tunnel supports, D-D fuel target eliminating the breeding blanket, no toroidal field coil set, steady-state operation — are distributed across Sections 2, 4, and 7 rather than presented as a structured comparison. The "novel vs. borrowed vs. shared" distinction is absent: it is unclear which subsystems (e.g., power conversion, vacuum systems, remote handling) PoloMac shares with conventional tokamaks and which are genuinely novel. Without this, the TEA cost structure differences cannot be mapped cleanly.
-- **Recommendation:** Add a differentiator table or enumerated list — either at the top of Section 7 or as a closing paragraph in Section 2 — that explicitly contrasts PoloMac against a conventional D-T tokamak on: confinement topology (novel), coil placement (novel — in-vessel vs. external), fuel cycle (novel — D-D eliminates blanket), field strength (claimed advantage: 3× weaker for D-T), recirculating power model (qualitatively different: fixed infrastructure penalty vs. plasma-Q-dependent fraction), and heating system (shared approach — NBI/RF — but unspecified). Mark each row as novel / borrowed / shared.
-- **Priority:** important
+Given this extraordinary data absence, the analysis correctly adopts a **freeform corridor** approach rather than attempting to force-fit the D1+ template requirements. Both the analysis and model carry extensive disclaimers acknowledging that all parameters are speculative and exist only for cross-concept comparison if the physics were demonstrated.
 
-### F-3: Second dipole nearest-neighbor (19-orbital-levitated-dipole) not identified
-- **Target:** Section 7 (cross-concept notes)
-- **Category:** analysis
-- **Finding:** The landscape contains two dipole-topology MFE concepts: 12-levitated-dipole (OpenStar, D-T) and 19-orbital-levitated-dipole (Zephyr, D-He3). The analysis discusses 12-levitated-dipole but omits 19-orbital-levitated-dipole entirely (Goal 1). The two-neighbor requirement is not met. Additionally, neither the concept family label "MFE Dipole" nor the MFE topology classification appears explicitly in the analysis body — it is only recoverable by inference from Section 7's description. The omission of 19-orbital-levitated-dipole is structurally significant: it uses D-He3 fuel (like PoloMac, avoids tritium breeding), employs a levitated in-vessel superconducting coil (same structural challenge as PoloMac's in-vessel coil), and its low TRL is directly comparable to PoloMac's.
-- **Recommendation:** Add a note in Section 7 for 19-orbital-levitated-dipole as the second structural neighbor: shared fuel-cycle advantage (no tritium breeding), shared in-vessel coil challenge, and key divergence (levitated vs. magnetically-tunneled support — different failure modes). Also add an explicit concept family statement near the top of Section 7 or Section 1: "PoloMac is an MFE Dipole concept. Its two nearest structural neighbors in the analysis portfolio are 12-levitated-dipole and 19-orbital-levitated-dipole."
-- **Priority:** important
+## What the Analysis Does Well
+
+1. **Design-Point Coherence**: The analysis is honest about the absence of a named design point. Section 5 explicitly states parameters are "extracted from the 2024 JTSP technical report's reactor-scale projections...conceptual target conditions, not a validated design point." The model's `p_fus_MW = 400.0` carries the docstring "SPECULATIVE VALUE chosen to produce ~100 MWe plant at Q_eng ~ 5. No fusion power estimate exists in sources."
+
+2. **Override Discipline**: Section 5b correctly states "No 1costingFE archetype mapping for this concept — the canonical account schema does not apply. Do not propose account-coded overrides." The model's single `magnet_capital_M = 180.0` override carries extensive uncertainty documentation and is appropriately tagged as concept-specific rather than an archetype departure.
+
+3. **Family-Delta Concreteness**: Section 7 provides detailed technical comparisons against tokamaks, HTS compact tokamaks, magnetic mirrors, and levitated dipoles, naming specific subsystems and cost directions: "Lower magnetic field → lower CAS22 (magnets)" (advantage), "Large plasma volume → higher CAS21 (structures), CAS26 (if D-T blanket), CAS28 (building)" (penalty), etc.
+
+4. **Model Integrity**: The `model_setup.py` uses the correct freeform structure (no three-forward helpers, since there's no archetype and no 1 GWe projection is appropriate). The model's LCOE (~130 ¢/kWh at native scale) is plausible for a speculative large-volume MFE concept with undemonstrated physics. The sensitivity analysis shows non-trivial variation and the binding constraints section accurately identifies the physics demonstration gap as the absolute blocker.
+
+5. **Honest Uncertainty Accounting**: Both artifacts carry extensive warnings about what is unknown. The analysis's Gap Inventory (Section 6) identifies 11 gaps with 4 marked "blocking." The model output includes a bordered disclaimer box stating "THIS IS NOT A CREDIBLE COST ESTIMATE" and quantifies the temperature demonstration gap (100 eV prototype → 8.1 keV requirement = 81× increase).
+
+## Assessment Against Checklist
+
+The standard D1+ checklist criteria do not straightforwardly apply to a freeform concept, but evaluating in spirit:
+
+- **Design-Point Coherence**: N/A — no design point exists upstream. The analysis is appropriately honest about this.
+- **Override Discipline**: N/A — no archetype, so no canonical override registry. The model's single magnet cost override is well-documented.
+- **Override Count vs. Archetype-Fit**: N/A — the rubric note states "(No archetype-fit grade for this concept — the override-count band does not apply.)"
+- **Family-Delta Concreteness**: SATISFACTORY — Section 7 compares against multiple MFE families with named subsystems and cost directions.
+- **Two-Knob Projection & Model Integrity**: SATISFACTORY — The model is freeform (native-scale only), which is appropriate. The LCOE is plausible, and the narrative matches the model's emphasis (physics gap, large volume, magnet cost uncertainty).
+
+## Why This Passes
+
+The analysis and model are **accountable to the data that exists** (limited) and **honest about the data that doesn't** (extensive). They make no attempt to invent a design point where none was disclosed, and they carry conspicuous warnings that all quantitative outputs are speculative. The freeform corridor approach is the correct response to upstream data absence, and the execution is thorough.
+
+No findings.

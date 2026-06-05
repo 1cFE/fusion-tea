@@ -1,0 +1,23 @@
+proposal:
+  concept_id: 17b-laser-icf-fast-ignition
+  route_to_freeform: true
+  reason: >
+    Focused Energy's only named power-generating design is LightHouse, described
+    as a pilot plant that will produce net electricity with engineering gain greater
+    than one (target: end of 2030s). No electrical output in MWe has been published
+    for LightHouse; the source corpus yields only "gigawatt-scale" as a class
+    descriptor for the long-term commercial vision — not a specific design-point
+    value traceable to a named plant. The T-STAR facility (~$3B, 400 kJ + 150 kJ)
+    has no electrical output by design. The Meier 2006 academic reference plant
+    (1000 MWe) is a generic HAPL-program study not attributable to Focused Energy's
+    own plant. With no P_native traceable to any named Focused Energy design, this
+    concept routes to freeform.
+  designs_considered:
+    - design: "T-STAR ignition facility (Ditmire / LaserFocusWorld 2021)"
+      reason_no_p_native: "physics demonstrator targeting fusion ignition by 2029; no electrical output by design"
+    - design: "LightHouse pilot plant (Callahan 2026)"
+      reason_no_p_native: "only named power-generating design; described as producing net electricity with engineering gain > 1, but no MWe, thermal power, or energy balance published"
+    - design: "Aspirational commercial plant (Callahan 'gigawatt-scale')"
+      reason_no_p_native: "class descriptor only — 'gigawatt-scale' is not a specific MWe value and is not associated with a named design or published architecture"
+    - design: "Meier 2006 generic fast-ignition reference plant (HAPL/LLNL, 1000 MWe)"
+      reason_no_p_native: "independent academic study not attributable to Focused Energy's plant design"

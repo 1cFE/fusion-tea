@@ -5,6 +5,8 @@ Company: Deutelio
 Type: synthesis
 Status: draft
 Created: 2026-04-29
+Stale: true
+Stale-Reason: analysis-updated-iter-1
 ---
 
 # Editorial Synthesis: PoloMac Magnetic Confinement (Deutelio)

@@ -1,331 +1,50 @@
+LCOE: 8.5 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 154.5 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 557.6 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 48830 $/kW   native 8818 $/kW   1 GWe 808 $/kW
 
-########################################################################
-# BASELINE: Dense Plasma Focus p-B11 — FOAK, LPPFusion Target Physics
-########################################################################
-========================================================================
-Dense Plasma Focus p-B11 (LPPFusion) — 1cFE CAS-Structured LCOE
-FOAK | 200 modules × 5.0 MWe each = 1004 MWe plant
-========================================================================
+CAS               generic           native            1 GWe
+--------------------------------------------------------
+CAS10                11.1             11.1             11.3
+CAS21               138.4              6.9              6.9
+CAS22                 7.9              7.0            426.4
+CAS23                 1.5              0.0              0.0
+CAS24                 0.6              0.1             12.6
+CAS25                 0.4              0.4             76.9
+CAS26                 0.6              0.0              6.4
+CAS27                 0.0              0.0              0.0
+CAS28                 5.0              5.0              5.0
+CAS29                 0.0              0.0              0.0
+CAS30                30.9              3.9            106.8
+CAS40                 1.4              1.4              1.4
+CAS50                 7.0              1.2             24.2
+CAS60                39.4              7.1            130.3
+CAS70                 2.4              2.4              2.4
+CAS80                 0.0              0.0              0.3
+CAS90                18.3              3.3             60.6
+--------------------------------------------------------
+TOTAL               244.1             44.1            808.3
 
---- Key Input Parameters ---
-  Stored energy / shot:       115 kJ
-  Driver coupling eff:        85%
-  Q_sci (target):             1.72  (breakeven = 1.41)
-  Q_eng (fusion/stored):      1.46
-  Ion beam fraction:          70%
-  Ion beam DEC efficiency:    85%
-  X-ray converter efficiency: 80%
-  Combined DEC efficiency:    83.5%
-  Rep rate:                   200 Hz
-  Modules:                    200
-  Plant availability:         75%
-  Plant lifetime:             30 yr
-  Interest rate (WACC):       10%
-  FOAK hw multiplier:         5×  (FOAK)
-
---- Power Balance (per module) ---
-  Fusion power:               33.63 MW
-    Ion beam (70%):          23.54 MW  → DEC: 20.01 MW_e
-    X-ray (30%):              10.09 MW  → DEC: 8.07 MW_e
-  Gross electric (DEC out):   28.08 MWe
-  Recirculating (driver):     23.00 MW
-  Parasitic aux:              60 kW  (control + cooling)
-  Net electric / module:      5.02 MWe
-  Recirculating fraction:     82.1%
-
---- Plant Totals (200 modules) ---
-  Gross electric:             5616 MWe
-  Net electric:               1004 MWe
-
---- CAS22: Reactor Plant Equipment ---
-  Per-module hardware (plant total):
-    C220101 First Wall / Blanket             $     0.0M  [override] aneutronic — ZERO
-    C220102 Shield                           $     1.0M  [override] minimal bio-shield
-    C220103 Coils                            $     0.0M  [override] no external magnets — ZERO
-    C220104 Supplementary Heating            $     0.0M  [override] no NBI/ECRH — ZERO
-    C220105 Primary Structure                $    74.5M  cylindrical per-module
-    C220106 Vacuum System                    $   233.1M  cylindrical per-module
-    C220107 Power Supplies (cap bank)        $   180.0M  [override] capacitor bank
-    C220108 Electrode Factory                $    20.0M  [override] Be electrode facility
-    C220109 Direct Energy Converter          $   200.0M  [override] DEC (ion beam + x-ray)
-    C220110 Remote Handling                  $    20.0M  conventional (no rad robotics)
-    C220111 Installation                     $   102.0M  14% of subtotal
-    C220112 Isotope Separation               $     0.0M  ZERO (external B-11 supply)
-  ───────────────────────────────────────────────────────
-    Per-module avg:                          $    4.15M
-  Plant-wide accounts:
-    C220200 Coolant (He electrode cooling only)      $     5.0M
-    C220300 Aux Cooling + Cryoplant                  $     1.0M
-    C220400 Radioactive Waste Mgmt (minimal)         $     1.0M
-    C220500 Fuel Handling (enriched decaborane)      $    15.0M
-    C220600 Other Equipment                          $    11.5M
-    C220700 Instrumentation & Control                $   115.6M
-  ───────────────────────────────────────────────────────
-    Plant-wide subtotal:                     $   149.2M
-  CAS22 Total:                               $   979.9M
-
---- Capital Costs (CAS10-60) ---
-  CAS10 Pre-construction:                    $    63.0M
-  CAS21 Buildings:                           $   560.7M  (no hot cell, no turbine bldg)
-  CAS22 Reactor Plant Equipment:             $   979.9M
-  CAS23 Turbine Plant:                       $     0.0M  [override] direct conversion — ZERO
-  CAS24 Electric Plant:                      $   673.9M  (incl. DEC power electronics)
-  CAS25 Misc Plant:                          $    51.4M
-  CAS26 Heat Rejection:                      $     5.0M  (minimal — no waste heat)
-  CAS27 Special Materials:                   $     0.0M  (pb11: ZERO)
-  CAS28 Digital Twin:                        $     5.0M
-  CAS29 Contingency:                         $   227.6M  (10% FOAK)
-  ───────────────────────────────────────────────────────
-  CAS20 Direct Costs:                        $  2503.5M
-  CAS30 Indirect Costs:                      $   250.3M
-  CAS40 Owner's Costs:                       $    20.0M
-  CAS50 Supplementary:                       $   164.5M
-  ───────────────────────────────────────────────────────
-  Overnight Capital:                         $  3001.3M
-  CAS60 IDC (f=0.103):                   $   310.1M
-  ═══════════════════════════════════════════════════════
-  Total Capital:                             $  3311.4M
-  Specific Capital:                          $    3300 $/kWe
-
---- Annual Costs (CAS70-90) ---
-  CAS90 Capital charge (CRF=0.1061):        $   351.3M/yr
-  CAS71 Fixed O&M (staffing, levelized):     $    30.3M/yr
-  CAS72 Scheduled Replacement:               $    42.0M/yr
-    Electrode sets (200 mod × 12/yr × $10,000): $   24.00M/yr
-    Cap bank replacement (10%/yr):     $   18.00M/yr
-  CAS70 Total O&M:                           $    72.3M/yr
-  CAS80 Fuel & Consumables:                  $   0.201M/yr
-    Enriched B-11:                           $   0.200M/yr
-
---- LCOE ---
-  Annual energy production:       6,593,271 MWh
-  Annual revenue requirement:  $   423.8M
-  ╔══════════════════════════════════════════╗
-  ║  LCOE =    6.43 ¢/kWh                   ║
-  ║       =    64.3 $/MWh                   ║
-  ╚══════════════════════════════════════════╝
-  Capital (CAS90):             82.9%
-  O&M (CAS70):                 17.1%
-  Fuel (CAS80):                0.0%
-
-========================================================================
-SENSITIVITY SWEEPS (from baseline)
-========================================================================
-
-Baseline LCOE: 6.43 ¢/kWh
-
-  Q_sci (scientific gain):
-             0.5 →    N/A (net=-2980 MWe)
-               1 →    N/A (net=-1347 MWe)
-            1.41 →    N/A (net=-9 MWe)
-            1.72 →    6.43 ¢/kWh  (1004 MWe)
-             2.5 →    2.52 ¢/kWh  (3550 MWe)
-               4 →    1.55 ¢/kWh  (8447 MWe)
-               8 →    1.06 ¢/kWh  (21507 MWe)
-
-  Rep rate [Hz]:
-              10 →   64.29 ¢/kWh  (39 MWe)
-              50 →   14.87 ¢/kWh  (242 MWe)
-             100 →    9.38 ¢/kWh  (496 MWe)
-             200 →    6.43 ¢/kWh  (1004 MWe)
-             400 →    4.75 ¢/kWh  (2019 MWe)
-
-  Ion beam decelerator efficiency:
-             0.5 →    N/A (net=-644 MWe)
-            0.65 →   83.75 ¢/kWh  (62 MWe)
-            0.75 →   11.07 ¢/kWh  (533 MWe)
-            0.85 →    6.43 ¢/kWh  (1004 MWe)
-            0.92 →    5.11 ¢/kWh  (1333 MWe)
-
-  Plant availability (capacity factor):
-             0.5 →    9.64 ¢/kWh  (1004 MWe)
-             0.6 →    8.03 ¢/kWh  (1004 MWe)
-             0.7 →    6.89 ¢/kWh  (1004 MWe)
-            0.75 →    6.43 ¢/kWh  (1004 MWe)
-            0.85 →    5.67 ¢/kWh  (1004 MWe)
-             0.9 →    5.36 ¢/kWh  (1004 MWe)
-
-  Electrode set cost [USD/set]:
-             500 →    6.08 ¢/kWh  (1004 MWe)
-           2e+03 →    6.14 ¢/kWh  (1004 MWe)
-           5e+03 →    6.25 ¢/kWh  (1004 MWe)
-           1e+04 →    6.43 ¢/kWh  (1004 MWe)
-           5e+04 →    7.88 ¢/kWh  (1004 MWe)
-           2e+05 →   13.34 ¢/kWh  (1004 MWe)
-
-  FOAK hardware multiplier:
-               1 →    4.81 ¢/kWh  (1004 MWe)
-               2 →    5.22 ¢/kWh  (1004 MWe)
-               3 →    5.62 ¢/kWh  (1004 MWe)
-               5 →    6.43 ¢/kWh  (1004 MWe)
-               8 →    7.64 ¢/kWh  (1004 MWe)
-              15 →   10.47 ¢/kWh  (1004 MWe)
-
-  Number of modules:
-              10 →   16.84 ¢/kWh  (50 MWe)
-              50 →    8.46 ¢/kWh  (251 MWe)
-             100 →    7.12 ¢/kWh  (502 MWe)
-             200 →    6.43 ¢/kWh  (1004 MWe)
-             500 →    6.20 ¢/kWh  (2509 MWe)
-
-========================================================================
-SCENARIO COMPARISON
-========================================================================
-
-Scenario                         Modules  Net MWe    $/kWe         LCOE
-------------------------------------------------------------------------
-Physics Failure (Q < 1.41)             —        —        —    UNDEFINED
-  ↑ Viability gate: current Q_sci = 2.6×10⁻⁶; breakeven requires 660,000× improvement.
-  ↑ If not achieved, all scenarios below are moot.
-------------------------------------------------------------------------
-Conservative (FOAK, pessimistic)     200      533     7049  19.10 ¢/kWh
-Moderate (FOAK, baseline)            200     1004     3300   6.43 ¢/kWh
-Optimistic (NOAK, best-case)         200     3550      861   1.27 ¢/kWh
-LPPFusion claim back-check           200     5183      686   0.64 ¢/kWh
-
-
-########################################################################
-# OPTIMISTIC SCENARIO (NOAK, best-case): Full Results
-########################################################################
-========================================================================
-Dense Plasma Focus p-B11 (LPPFusion) — 1cFE CAS-Structured LCOE
-NOAK | 200 modules × 17.8 MWe each = 3550 MWe plant
-========================================================================
-
---- Key Input Parameters ---
-  Stored energy / shot:       115 kJ
-  Driver coupling eff:        85%
-  Q_sci (target):             2.50  (breakeven = 1.41)
-  Q_eng (fusion/stored):      2.12
-  Ion beam fraction:          70%
-  Ion beam DEC efficiency:    85%
-  X-ray converter efficiency: 80%
-  Combined DEC efficiency:    83.5%
-  Rep rate:                   200 Hz
-  Modules:                    200
-  Plant availability:         85%
-  Plant lifetime:             30 yr
-  Interest rate (WACC):       8%
-  FOAK hw multiplier:         1×  (NOAK — no multiplier)
-
---- Power Balance (per module) ---
-  Fusion power:               48.88 MW
-    Ion beam (70%):          34.21 MW  → DEC: 29.08 MW_e
-    X-ray (30%):              14.66 MW  → DEC: 11.73 MW_e
-  Gross electric (DEC out):   40.81 MWe
-  Recirculating (driver):     23.00 MW
-  Parasitic aux:              60 kW  (control + cooling)
-  Net electric / module:      17.75 MWe
-  Recirculating fraction:     56.5%
-
---- Plant Totals (200 modules) ---
-  Gross electric:             8162 MWe
-  Net electric:               3550 MWe
-
---- CAS22: Reactor Plant Equipment ---
-  Per-module hardware (plant total):
-    C220101 First Wall / Blanket             $     0.0M  [override] aneutronic — ZERO
-    C220102 Shield                           $     1.0M  [override] minimal bio-shield
-    C220103 Coils                            $     0.0M  [override] no external magnets — ZERO
-    C220104 Supplementary Heating            $     0.0M  [override] no NBI/ECRH — ZERO
-    C220105 Primary Structure                $    18.0M  cylindrical per-module
-    C220106 Vacuum System                    $    58.3M  cylindrical per-module
-    C220107 Power Supplies (cap bank)        $    36.0M  [override] capacitor bank
-    C220108 Electrode Factory                $    48.6M  [override] Be electrode facility
-    C220109 Direct Energy Converter          $    40.0M  [override] DEC (ion beam + x-ray)
-    C220110 Remote Handling                  $    42.8M  conventional (no rad robotics)
-    C220111 Installation                     $    34.2M  14% of subtotal
-    C220112 Isotope Separation               $     0.0M  ZERO (external B-11 supply)
-  ───────────────────────────────────────────────────────
-    Per-module avg:                          $    1.39M
-  Plant-wide accounts:
-    C220200 Coolant (He electrode cooling only)      $     9.4M
-    C220300 Aux Cooling + Cryoplant                  $     1.9M
-    C220400 Radioactive Waste Mgmt (minimal)         $     1.9M
-    C220500 Fuel Handling (enriched decaborane)      $    36.4M
-    C220600 Other Equipment                          $    31.7M
-    C220700 Instrumentation & Control                $   147.4M
-  ───────────────────────────────────────────────────────
-    Plant-wide subtotal:                     $   228.7M
-  CAS22 Total:                               $   507.5M
-
---- Capital Costs (CAS10-60) ---
-  CAS10 Pre-construction:                    $   136.6M
-  CAS21 Buildings:                           $   677.4M  (no hot cell, no turbine bldg)
-  CAS22 Reactor Plant Equipment:             $   507.5M
-  CAS23 Turbine Plant:                       $     0.0M  [override] direct conversion — ZERO
-  CAS24 Electric Plant:                      $   979.5M  (incl. DEC power electronics)
-  CAS25 Misc Plant:                          $   181.9M
-  CAS26 Heat Rejection:                      $    17.8M  (minimal — no waste heat)
-  CAS27 Special Materials:                   $     0.0M  (pb11: ZERO)
-  CAS28 Digital Twin:                        $     5.0M
-  CAS29 Contingency:                         $     0.0M  (NOAK = 0%)
-  ───────────────────────────────────────────────────────
-  CAS20 Direct Costs:                        $  2369.1M
-  CAS30 Indirect Costs:                      $   157.9M
-  CAS40 Owner's Costs:                       $    37.7M
-  CAS50 Supplementary:                       $   238.0M
-  ───────────────────────────────────────────────────────
-  Overnight Capital:                         $  2939.3M
-  CAS60 IDC (f=0.040):                   $   117.6M
-  ═══════════════════════════════════════════════════════
-  Total Capital:                             $  3056.9M
-  Specific Capital:                          $     861 $/kWe
-
---- Annual Costs (CAS70-90) ---
-  CAS90 Capital charge (CRF=0.0888):        $   271.5M/yr
-  CAS71 Fixed O&M (staffing, levelized):     $    57.1M/yr
-  CAS72 Scheduled Replacement:               $     6.6M/yr
-    Electrode sets (200 mod × 12/yr × $2,000): $    4.80M/yr
-    Cap bank replacement (5%/yr):     $    1.80M/yr
-  CAS70 Total O&M:                           $    63.7M/yr
-  CAS80 Fuel & Consumables:                  $   0.003M/yr
-    Enriched B-11:                           $   0.002M/yr
-
---- LCOE ---
-  Annual energy production:      26,434,231 MWh
-  Annual revenue requirement:  $   335.3M
-  ╔══════════════════════════════════════════╗
-  ║  LCOE =    1.27 ¢/kWh                   ║
-  ║       =    12.7 $/MWh                   ║
-  ╚══════════════════════════════════════════╝
-  Capital (CAS90):             81.0%
-  O&M (CAS70):                 19.0%
-  Fuel (CAS80):                0.0%
-
-========================================================================
-KEY BINDING CONSTRAINTS (top 3 LCOE drivers)
-========================================================================
-
-  1. Q_SCI (FUNDAMENTAL PHYSICS — dominant constraint)
-     Current: Q_sci ≈ 2.6 × 10⁻⁶ | Target: 1.72 | Required improvement: 660,000×
-     Two sequential unknowns block this:
-       (a) QMF bremsstrahlung suppression must work as theorized (TRL 1 — no data)
-       (b) Simultaneous high density + high ion energy in p-B11 DPF (never measured)
-     If Q_sci < 1.41, no net energy is possible regardless of engineering.
-     If Q_sci is achieved, sensitivity shows LCOE can range 3–30 ¢/kWh depending
-     on other factors. But without Q_sci > 1.41, LCOE is literally undefined.
-     STATUS: blocking. 22-year yield plateau at 0.25 J (D). p-B11 not yet measured.
-
-  2. DIRECT ENERGY CONVERSION (unique single-path constraint)
-     Both ion beam decelerator (η=85%) and X-ray converter (η=80%) are unbuilt.
-     No prototype, no design drawings, no component tests. DPF ion beam characteristics
-     (divergent, multi-species, 10 ns) differ from contexts where 85% is demonstrated.
-     LCOE sensitivity shows: η_dec = 0.50 → net power negative (plant impossible).
-     LCOE sensitivity shows: η_dec = 0.75 → ~2× higher LCOE vs 0.85 baseline.
-     There is NO thermal cycle fallback; underperformance of DEC eliminates the concept.
-     STATUS: blocking. Neither device at TRL > 2.
-
-  3. REP-RATE AND ELECTRODE LIFETIME (operational feasibility)
-     200 Hz at 2.7 MA × fusion-relevant conditions: never demonstrated.
-     Best analogous: 16 Hz (NX2, Singapore, non-fusion, low current).
-     Electrode erosion at commercial conditions: zero data.
-     Electrode cost sensitivity: $500 → $200,000/set changes LCOE by ~4×.
-     Rep rate sensitivity: 10 Hz → ~20× LCOE vs 200 Hz (plant undersized, BOP amortized poorly).
-     STATUS: blocking for commercial application. Single-shot R&D operation only.
-
-NOTE: All LCOE values are CONDITIONAL on 120,000× fusion yield improvement
-      and successful demonstration of two novel energy conversion devices.
-      This model maps the parameter space for planning purposes only.
-      LPPFusion's 0.3 ¢/kWh claim requires NOAK manufacturing + very low O&M
-      assumptions not supported by independent analysis.
+--- CAS22 sub-account detail (overrides marked) ---
+code            generic       native        1 GWe  flag
+C220000             7.9          7.0        426.4
+C220101             0.0          0.0          0.0
+C220102             0.0          0.0          0.0
+C220103             0.0          0.0          0.0
+C220104             0.0          0.0          0.0
+C220105             0.0          0.0          0.0  <-- OVERRIDE
+C220106             0.2          0.2          0.2
+C220106_pump          0.2          0.2          0.2
+C220106_vessel          0.1          0.1          0.1
+C220107            -0.0         -0.0         -0.0
+C220108             0.0          0.0          0.0
+C220109             0.0          0.0          0.0
+C220110             0.9          0.0          0.0  <-- OVERRIDE
+C220111             0.2          0.2          0.2
+C220112             0.0          0.0          0.0
+C220200             3.1          3.1        208.2
+C220300             0.0          0.0          4.1
+C220400             0.0          0.0          7.4
+C220500             0.4          0.4         15.0
+C220600             0.2          0.2         11.5
+C220700             2.8          2.8         88.9

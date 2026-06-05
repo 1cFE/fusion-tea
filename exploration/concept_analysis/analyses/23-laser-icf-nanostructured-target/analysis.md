@@ -1,373 +1,522 @@
 ---
 ID: 23-laser-icf-nanostructured-target
-Concept: Laser ICF - Nanostructured Target (p-B11)
+Concept: Laser ICF Nanostructured Target (Marvel Fusion)
 Company: Marvel Fusion
 Status: draft
-Created: 2026-04-20
+Created: 2026-06-04
 Approved-Date:
-Reuses: [22-projectile-icf]
+Confinement-Family: IFE
+Archetype: LASER_IFE
+Archetype-Fit: Low
+Comparison-Status: costingfe
+Comparables:
+  - 04-laser-icf
+Design-Point-Name: Marvel Fusion CFE-NANO Pilot Plant (EU Horizon EIC Project 101189082, 100 MWe, 2033 milestone)
+Design-Point-Maturity: paper-concept
+P-Native: 100
+Grounding-Confidence: medium
 ---
 
-# D1+ Analysis: Laser ICF — Nanostructured Target (p-B11)
+## Design Point
 
-**Concept**: Ultrashort-pulse laser irradiation of engineered solid targets containing proton-boron-11 fuel, exploiting non-thermal acceleration mechanisms rather than classical ICF compression
-**Companies**: Marvel Fusion (primary, concept 23); HB11 Energy (related concept 04)
-**Confinement Family**: IFE (Inertial Fusion Energy)
-**Fuel**: p-B11 (aneutronic; <1% neutron energy from side reactions)
-**Operation Mode**: Pulsed — 10 Hz (Marvel Fusion target); ~1 Hz (HB11 Energy)
-
----
+- Name: Marvel Fusion CFE-NANO Pilot Plant (EU Horizon EIC Project 101189082, 100 MWe, 2033 milestone)
+- Maturity: paper-concept
+- P_native: 100 MWe
+- Grounding: medium
+- Primary sources:
+  - knowledge/concept_research/23-laser-icf-nanostructured-target/iter-02/sources/marvel-fusion-2025-updates.md
+  - knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/optics-news-16-4-4/output.md
+  - knowledge/concept_research/23-laser-icf-nanostructured-target/iter-03/sources/optics-news-15-10-4/output.md
 
 ## Section 1: Availability of Data
 
 **Rating: Limited**
 
-This concept is pursued by two companies with sharply different funding levels and public disclosure depth. Neither has published a plant design, cost breakdown, or validated gain data.
+Marvel Fusion has disclosed less quantitative plant-level data than nearly any other laser ICF concept in the corpus. The publicly available information falls into three categories, each with significant limitations:
 
-**Marvel Fusion** (EUR 385M total support as of April 2025 — EUR 170M private, EUR 215M public) has released technology overviews, partnership announcements, and facility milestone reports, but no peer-reviewed experimental results and no cost estimates [1, 2]. The EU CORDIS CFE-NANO project record (Project ID 101189082) is the most authoritative public document and confirms the 100 MW pilot target by 2033 and the Colorado demonstration facility [3]. The LION 2 experimental chamber at CALA was inaugurated July 2025, marking Marvel's first dedicated experimental apparatus — no yield data has been published from it.
+**EU institutional records.** The CORDIS CFE-NANO project record (Project 101189082) confirms the 100 MWe pilot target and Siemens Energy partnership, but provides no technical parameters — no laser energy, no target gain, no rep rate, no efficiency figures.[^1] This is the only formal program document naming P_native.
 
-**HB11 Energy** (~$22M in funding) has achieved single-shot fusion demonstrations at the Texas Petawatt Laser and the National Ignition Facility, and has published the results in peer-reviewed literature. However, the conversion efficiency from these shots was measured at approximately 0.005% — placing them roughly four orders of magnitude below net energy gain [4]. The Hora et al. (arXiv:1603.02579) paper provides the theoretical foundation for the avalanche mechanism but is an abstract-level document in the extracted form; only the high-level claims are accessible in available sources [5].
+**Trade press and investor announcements.** Two Optics.org articles (October 2024 Series B, April 2025 EUR 50M extension) provide the most specific hardware disclosures: the demonstration facility at Colorado State University will use two 100 J lasers with experiments starting early 2027; future plans target kJ-class sources at 10 Hz; a power plant is expected to need ~500 laser systems.[^2][^3] No performance targets (gain, yield per shot, Q_eng) are stated in either article.
 
-**Independent and third-party sources** are limited to secondary journalism (New Atlas, Energy News Bulletin, Optics.org), EU program documentation, and one UNSW collaboration announcement for chamber materials [6]. No independent techno-economic analysis has been published for either company. No system code outputs (ARIES, HYLIFE, PROCESS) exist for this concept.
+> "An actual power plant is expected to need around 500 laser systems."
+> — optics-news-16-4-4/output.md §Marvel Fusion Laser Production
 
-> "The very first two independent measurements of very high reaction gains by lasers basically opens a fundamental breakthrough"
-> — arxiv-1603-02579.md §Abstract
+> "The new laboratory is expected to include two 100 Joule lasers"
+> — optics-news-15-10-4/output.md §Colorado State University
 
-This claim from Hora et al. (the theoretical foundation) remains unvalidated at commercially relevant gain levels. The gap between experimental demonstrations and the gain required for a power plant is quantified by HB11 themselves:
+**Corporate website and aggregator summaries.** The Marvel Fusion website (iter-01 extraction) and binding.energy keynote summary provide marketing-level descriptions of the femtosecond pulse / nanostructured target / p-B11 approach. These name partners (Trumpf, Thales, Siemens Energy, Fraunhofer, CEA) and claim hybrid energy conversion at ~70% efficiency, but include no derivation or basis for the efficiency claim. The dossier consolidates these into a 10 Hz repetition rate and ~5,000 targets per 300mm wafer via semiconductor lithography, sourced to the Marvel Fusion patent (US20230073280A1).[^4]
 
-> "the 'engineering gain' — factoring in the vast energy losses within the laser system itself — remains negative"
-> — energynewsbulletin-energy-transition-features-articles.md
+**Supplementary sources (HB11 Energy and LLNL technical reports).** While the design point is Marvel Fusion's, HB11 Energy sources provide physics context for p-B11 laser fusion. The Osaka experiment result (alpha flux ~10^10/sr, ~0.005% laser-to-alpha conversion) is the only experimental data point for this concept family.[^5] LLNL technical reports on diode-pumped solid-state lasers for IFE (osti-servlets-purl-3008974, osti-servlets-purl-15013230, osti-servlets-purl-15013216) provide the only cost-grounded data on laser driver economics — diode costs, efficiency requirements, and lifetime targets — but these are generic IFE parameters, not Marvel-specific.
 
-**Key data gaps limiting this analysis:**
-- No published gain (Q) value for either company's experimental configuration
-- No plant-level architecture, cost breakdown, or system design from either company
-- No validated wall-plug efficiency for Marvel's DPSSL laser system
-- No direct energy conversion efficiency demonstrated at any scale
-- No peer-reviewed target fabrication cost study
+**Key data gaps:**
+- No published fusion gain target (Q or target gain) for Marvel Fusion's approach
+- No per-shot laser energy requirement at the power plant scale
+- No wall-plug efficiency measurement or target for Marvel's femtosecond DPSSL system
+- No published capital cost estimate or cost breakdown for the CFE-NANO pilot
+- No target fabrication cost per unit
+- No published energy conversion subsystem design (the ~70% hybrid claim lacks architecture)
+- No plant layout, thermal cycle specification, or balance-of-plant design
 
----
+[^1]: marvel-fusion-2025-updates.md §Objective
+[^2]: optics-news-16-4-4/output.md §Marvel Fusion Laser Production
+[^3]: optics-news-15-10-4/output.md §Colorado State University, §EIC Accelerator
+[^4]: dossier.md §Driver Technology
+[^5]: newatlas-energy-hb11-laser-fusion-demonstration/output.md §Osaka Experiment Results
 
 ## Section 2: Challenges in Capturing System Function
 
-Five distinct challenges make this concept difficult to model for LCOE, ranked by impact:
+The following challenges are ranked by their impact on LCOE uncertainty, from most to least binding.
 
-### 1. Physics gap — p-B11 ignition and gain (impact: critical)
+### Challenge 1: No published target gain or per-shot yield — the core physics unknown
 
-The p-B11 reaction requires plasma temperatures of 150–300 keV — roughly 10–15× higher than D-T (10–20 keV), at a cross-section orders of magnitude lower. Both companies are pursuing non-thermal acceleration mechanisms (block ignition for Marvel, avalanche proton fast ignition for HB11) that bypass equilibrium thermodynamics, but neither has demonstrated a gain greater than a small fraction of Q=1. HB11's own data places them at ~0.005% laser-to-alpha-particle conversion efficiency — four orders of magnitude from net engineering gain [4]. Marvel has not published any yield data.
+The single most critical parameter for any IFE LCOE model is the target gain (fusion energy out / laser energy in). Marvel Fusion has published no target gain figure. Without this, the fusion power per shot is unconstrained, and neither the thermal power nor the required number of shots per second can be derived from first principles. The dossier and all primary sources confirm this gap. HB11 Energy's patent cites gain >500 (enhanced >1000), but this is a different company with a different target design and ignition mechanism. Marvel's nanostructured silicon targets using femtosecond block ignition have no published gain estimate.
 
-This gap is unlike the situation in D-T laser IFE (concepts 17a, 30), where NIF demonstrated Q>1 in 2022 and the scaling path to commercial gain is a physics extrapolation from a validated ignition event. For p-B11, ignition itself remains undemonstrated. The LCOE model must treat the fusion gain Q as a free parameter spanning multiple orders of magnitude, making all downstream cost calculations contingent on an unvalidated assumption. No plant cost can be computed until a credible ignition pathway is established.
+**LCOE impact:** Without target gain, the driver cost per unit of electricity — the dominant cost account for any IFE concept — cannot be bounded. This is a blocking uncertainty.
 
-### 2. Laser system cost and wall-plug efficiency (impact: critical)
+### Challenge 2: Unvalidated non-thermal ignition mechanism
 
-The laser driver is the dominant capital cost component and the primary recirculating power load. For a commercial power plant to close its energy balance, laser wall-plug efficiency (WPE) must be dramatically higher than conventional high-power lasers. HB11 targets ~10% WPE versus the <1% typical of nanosecond ICF drivers [7]:
+Marvel Fusion's approach relies on non-thermal "block ignition" and "avalanche" reactions in nanostructured p-B11 targets irradiated by femtosecond laser pulses. This physics pathway has no experimental demonstration of net energy gain. The closest experiment (HB11 at Osaka, 2022) achieved ~0.005% laser-to-alpha conversion efficiency — four orders of magnitude below breakeven.[^6] The p-B11 cross-section peaks at ~600 keV and is roughly 100× lower than D-T at optimal conditions. Cai et al. (2022) show that even in a tokamak geometry, p-B11 requires ion temperatures of ~380 keV, confinement enhancement factors H ≥ 3–10, and careful management of synchrotron and bremsstrahlung losses.[^7]
 
-> "Our wall plug efficiency is expected to be about 10%, compared to current laser systems with less than 1%"
-> — energynewsbulletin-energy-transition-features-articles.md
+> "Still ~4 orders of magnitude away from net energy gain when catalyzed by a laser."
+> — newatlas-energy-hb11-laser-fusion-demonstration/output.md §Significance
 
-Marvel Fusion has not characterized WPE in public sources. Their commercial plant requires approximately 500 laser systems [2]; each must operate at femtosecond pulse durations with petawatt-class peak powers at 10 Hz continuously — a combination that does not exist in current laser technology. DPSSL technology (the underlying approach for both companies) has demonstrated high efficiency at low repetition rates, but scaling to 10 Hz at kilojoule-per-pulse energies is a major engineering extrapolation.
+> "the possibility of p-11B fusion reactor will not come true unless some techniques have been found to avoid excessive synchrotron radiation loss"
+> — arxiv-2201-12818/output.md §Section IV
 
-The cost per joule of laser energy is also unconstrained. The only published data point from the D-T laser IFE landscape is Xcimer's estimate of $100–120/J FOAK for their KrF excimer driver (concept 17a); a DPSSL driver at equivalent pulse energy would have a different cost structure. Without a cost-per-joule estimate, the capital cost of 500 laser systems — Marvel's plant requirement — cannot be bounded.
+**LCOE impact:** If the non-thermal mechanism does not produce the gains needed, the concept has no viable path to electricity production. This is a go/no-go physics risk, not a cost uncertainty.
 
-The diode cost reduction challenge has two distinct risk types that should not be conflated. **Technical risk**: diode efficiency, wall-plug efficiency, and lifetime are not yet at target values — these are engineering problems with identifiable solutions. **Market formation risk**: achieving the $0.01/W cost target requires a ~1,000× increase in production volume relative to today's laser diode market, and that volume increase can only come from IFE deployment at scale — but IFE deployment at scale requires $0.01/W diodes first. The 2025 LLNL paper states this explicitly: "The primary challenge for IFE is achieving sufficiently low LD costs in the near term, to facilitate building the intermediate demonstration systems needed to prove out IFE... uncertainty about the future IFE market may limit investment in production tooling to lower manufacturing costs" [17]. This is a programmatic risk, not a physics risk — it cannot be resolved by laboratory results alone, and it makes laser driver cost the most market-formation-sensitive line item in the entire concept cost structure.
+### Challenge 3: Femtosecond DPSSL at IFE scale — unprecedented laser technology
 
-### 3. Hybrid direct energy conversion (impact: high)
+Marvel's driver requires femtosecond (sub-100 fs), petawatt-class DPSSL systems operating at 10 Hz repetition rate. No such laser exists. The LLNL Mercury laser program (2001) targeted 100 J, 10 Hz, 10% efficiency at nanosecond pulse durations — and even this was a major technical challenge.[^8] Marvel's CSU demonstrator starts at 100 J (two beams), with kJ-class at 10 Hz as a future target.[^9] The step from 100 J to the kJ-class energies needed for a power plant (likely tens of kJ minimum, based on IFE driver requirements from LLNL studies) is itself a major engineering challenge. At femtosecond durations, this implies peak powers in the hundreds of PW range — far beyond any demonstrated laser system.
 
-Marvel Fusion claims hybrid energy capture combining magnetic/electrostatic collection of charged alpha particles with a residual steam cycle, targeting "up to ~70% efficiency" [dossier §Energy Capture]. No comparable system has been built or demonstrated. Direct conversion of alpha particles from IFE events requires capturing fast (~3.5 MeV) charged particles in a pulsed, spatially distributed burst — a different regime from the steady-state direct conversion demonstrated in magnetic mirror experiments.
+**LCOE impact:** The laser driver is typically the largest single capital cost item in any IFE plant. Until the driver specifications are known (energy, efficiency, cost per joule), the dominant CAPEX account cannot be estimated.
 
-HB11 Energy has pivoted away from direct conversion to a conventional steam cycle, explicitly because the engineering complexity of capturing alpha particles at scale is not yet tractable [dossier §Energy Capture]. This pivot is informative: the company with operating experimental hardware found direct conversion impractical at current TRL and chose the lower-efficiency but proven thermal route. Marvel Fusion maintains the hybrid claim but has no experimental apparatus that demonstrates it.
+### Challenge 4: Energy conversion architecture is unspecified
 
-The efficiency assumed for energy conversion propagates directly into LCOE: at 35% (steam-only, HB11-style) versus 70% (Marvel hybrid claim), the net electrical output from a given fusion power roughly doubles. This 2× factor in output for the same capital cost is a first-order LCOE lever — and neither end of the range is validated.
+Marvel claims ~70% hybrid conversion efficiency combining "magnetic, electrostatic, and steam power generation." No architecture for this hybrid system has been published. The claim is extraordinary: steam cycles achieve ~33–40%, direct electrostatic conversion of alpha particles has been demonstrated only at laboratory scale, and the combination of both in a single plant is unprecedented. By contrast, HB11 Energy has abandoned direct conversion entirely, pivoting to a conventional steam cycle.[^10]
 
-### 4. Target fabrication cost at commercial repetition rate (impact: high)
+**LCOE impact:** The thermal efficiency directly determines the required fusion power (and therefore driver cost) for a given electrical output. A factor of 2× in efficiency (35% vs. 70%) translates to a factor of 2× in required fusion power and correspondingly in driver and target costs.
 
-At 10 Hz, Marvel Fusion requires 10 targets per second — 864,000 per day. The Goodin et al. (2004) rule-of-thumb applied across IFE concepts (including concept 22, projectile ICF) states that target cost must be less than ~10% of the electrical revenue per shot to be economical. For a 100 MW plant operating at 10 Hz, this sets a ceiling of roughly $0.03 per target (at $30/MWh electricity price). Marvel's nanostructured silicon targets are manufactured via standard semiconductor lithography at ~5,000 targets per 300 mm wafer [dossier §Driver Technology], implying a raw processing cost far below commodity semiconductor prices — but mass production yield, cycle time, and in-chamber delivery have not been published.
+### Challenge 5: O&M and component lifetime under alpha particle bombardment
 
-HB11's pea-sized foam targets require in-house low-density aerogel-like manufacturing. The company claims to produce these targets in-house [8]:
+While the aneutronic p-B11 fuel eliminates 14.1 MeV neutron damage, the primary fusion products are 8.7 MeV alpha particles. At 10 Hz with meaningful target gain, the alpha flux on chamber walls is substantial. No materials testing under prototypical alpha particle bombardment conditions has been published. UNSW's collaboration with HB11 is studying reaction chamber materials but is in early stages.[^11] The dossier notes that "first walls last the full plant lifetime" is an assumption, not a demonstrated property.
 
-> "The company can now produce these materials in-house, which could give it a strategic edge as fusion research scales up"
-> — newatlas-energy-hb11-hydrogen-boron-fusion-clean-energy.md
+**LCOE impact:** If wall replacement is needed (even at long intervals), this enters CAS70 as a significant O&M cost. If the walls truly last the plant lifetime, this is a major cost advantage over D-T concepts.
 
-At 1 Hz, HB11 requires only 86,400 targets per day — three orders of magnitude fewer than Marvel's 10 Hz rate — which is a significant manufacturing burden reduction, but HB11's lower efficiency means each shot must yield proportionally more energy.
-
-### 2a. LCOE Sensitivity Ordering — Model Implication
-
-The Section 2 challenges are listed in order of physical novelty, not necessarily LCOE sensitivity. The model sensitivity sweep (iter-2) provides a different ordering worth flagging explicitly:
-
-1. **Plant availability** (elasticity ≈ −1.0): The single dominant LCOE parameter — nearly five times larger in magnitude than the next-largest engineering lever. The current model uses a placeholder of 75% with no operational analogue for a 10 Hz pulsed laser IFE plant. Bounding availability, even as a parametric range benchmarked against analogous pulsed industrial laser facilities, should be the first sensitivity refinement priority.
-2. **Financial parameters** (interest rate elasticity ≈ 0.65; construction time ≈ 0.27): These are not engineering uncertainties but they dominate the cost model for a capital-intensive first-of-kind plant. Construction schedule risk is significant for a concept with no near-term plant design.
-3. **O&M cost basis** (elasticity 0.204): No sourced basis exists (framework default placeholder). O&M structure must be characterized before laser driver cost refinement is meaningful, but it ranks third — not first.
-4. **Target factory cost** (elasticity 0.134): Target fabrication economics rank ahead of laser driver capital at a given power capacity.
-5. **Laser driver capital cost** (elasticity 0.027): The 500-laser plant and the cost-per-joule discussion in Challenge 2 frame the laser as the dominant capital cost, but the model's current parameterization shows it is roughly one order of magnitude less sensitive than O&M. This ordering is sensitive to the laser capital cost assumption used (framework default) and will shift if a validated $/MW(driver) figure is substituted.
-
-The key implication: plant availability is the parameter with no analogue source that dominates LCOE by a wide margin. Data-gathering priority should be: (1) availability bounding from pulsed industrial laser operational data, (2) financial parameter ranges from project finance analogues, (3) O&M structure, (4) target factory cost, (5) laser driver $/J.
-
-### 2b. Modeling Approach
-
-The IFE costingfe framework template from concept 22 (Projectile ICF) is reused as the structural cost scaffold, reflected in the frontmatter `Reuses: [22-projectile-icf]`. This choice is appropriate because both concepts share IFE pulsed architecture, target-per-shot economics, and driver capital as the dominant CAPEX category. All LCOE outputs from this model are contingent on ignition being achieved — the model is a sensitivity scaffold over key unknowns (Q, laser WPE, conversion efficiency, availability), not a cost prediction. Free-form modeling is not appropriate at this stage because the IFE framework's parametric structure imposes more discipline than the concept's current TRL warrants relaxing; the framework makes the contingencies explicit rather than hiding them in unconstrained assumptions.
-
-### 5. Chamber clearing and target injection at rep rate (impact: moderate)
-
-Classical laser IFE concepts (D-T, concept 30) face chamber clearing constraints driven by 14 MeV neutron activation of the first wall and ablated debris. For p-B11, the aneutronic environment substantially relaxes this constraint: the primary interaction products are 3.5 MeV alpha particles, and residual secondary neutrons are minimal. The chamber does not activate significantly, and hands-on maintenance is in principle possible [dossier §Neutron Management]. However, the mechanical challenge of injecting targets into the laser focus at 10 Hz with the required alignment precision (~micron-level for Marvel's nanostructured targets) is an engineering challenge with no current demonstration.
-
----
+[^6]: newatlas-energy-hb11-laser-fusion-demonstration/output.md §Key Results
+[^7]: arxiv-2201-12818/output.md §Table II, §Section IV
+[^8]: osti-servlets-purl-15013216/output.md §Mercury Laser Activation
+[^9]: optics-news-15-10-4/output.md §Colorado State University
+[^10]: dossier.md §Energy Capture
+[^11]: hb11-2025-08-04-assoc-prof-patrick-burr-leads-unsw-team-to/output.md
 
 ## Section 3: Maturity of Key Subsystems and Components
 
-Listed from least to most mature:
+Subsystems are listed in ascending order of maturity (least mature first).
 
-**p-B11 Fusion Gain at Commercially Relevant Scale — TRL 1–2**
-- **Demonstrated**: Single-shot alpha-particle production from p-B11 reactions at the Texas Petawatt Laser and NIF (HB11). Approximately 1.4 × 10¹¹ alpha particles per shot at ~0.005% energy conversion efficiency [4]. Non-thermal avalanche mechanism proposed in Hora et al. (arXiv:1603.02579) with theoretical backing but unvalidated at power-relevant gain.
-- **On paper only**: Fusion gain Q ≥ 1 for p-B11 using either block ignition (Marvel) or avalanche fast ignition (HB11). The physics pathway is conceptually described but the gain curve is entirely uncharacterized experimentally.
-- **Missing at scale**: Demonstration of ignition and energy breakeven. Four orders of magnitude of gain improvement required from current HB11 experimental results. Marvel has no published gain data. A credible ignition event would represent a fundamental TRL jump for the entire concept class.
+### Non-thermal ignition physics (p-B11 block ignition / avalanche) — TRL 1–2
 
-**Hybrid Direct Energy Conversion (Alpha Particle Capture) — TRL 2**
-- **Demonstrated**: Electrostatic and magnetic deceleration of charged particles studied in other contexts (inverse cyclotron converters for mirror fusion, direct energy conversion for ICF alphas in academic simulations). No system has captured alpha particles from a laser-IFE burst at any scale.
-- **On paper only**: Marvel Fusion's combined magnetic + electrostatic + steam conversion system claiming ~70% overall efficiency. The architecture is described conceptually on the company website with no engineering detail.
-- **Missing at scale**: Any hardware demonstration of alpha particle capture at ns-to-ps pulse timescales. A pulsed, burst-mode direct converter for IFE has never been built. The 70% efficiency claim cannot be evaluated without a published architecture.
+- **On paper only:** Hora et al. (2016) proposed the "avalanche boron fusion" mechanism combining picosecond laser pulses with kilotesla magnetic trapping.[^12] Marvel Fusion's variant uses femtosecond pulses on nanostructured targets to achieve block acceleration rather than thermal equilibrium heating.
+- **Demonstrated:** HB11 Energy's Osaka experiment (2022) measured alpha yields ~10^10/sr using an in-target geometry on boron nitride, representing a 10× improvement over prior pitcher-catcher experiments. Overall laser-to-alpha conversion was ~0.005%. Marvel Fusion claims 2,000+ experiments over three years but has published no quantitative results (gain, efficiency, yield).[^13]
+- **Missing at scale:** Any demonstration of net energy gain from p-B11 via non-thermal mechanisms. The four-orders-of-magnitude gap to breakeven is the largest physics gap of any concept in the corpus.
 
-**High-Repetition-Rate Petawatt-Class Ultrashort Pulse DPSSL Driver — TRL 2–3**
-- **Demonstrated**: DPSSL technology proven at lower repetition rates (HAPLS at LLNL: 10 Hz, 1 PW peak power, but not at the per-pulse energy or commercial duration required). Femtosecond pulses at petawatt class demonstrated in single-shot mode at CALA and similar national labs. Marvel's LION 2 at CALA (inaugurated July 2025) is an experimental-scale apparatus.
-- **On paper only**: Commercial plant laser: ~500 DPSSL systems operating simultaneously at 10 Hz with ~7 PW combined peak power and ~10% wall-plug efficiency [dossier §Driver Technology]. Marvel ATLAS facility at Colorado State University (opening mid-2026) will use two 100 J femtosecond lasers — a step toward demonstration, not commercial scale.
-- **Missing at scale**: 10 Hz continuous operation at kilojoule-per-pulse energies. Thermal management of ~10 kJ/s waste heat per beamline at 10% WPE. Long-duration (days to weeks) uninterrupted operation of petawatt-class DPSSL systems. Cost-per-joule characterization at commercial-relevant duty cycles. **Diode pump lifetime at IFE scale** (hard TRL blocker, not merely a cost uncertainty): IFE plants operating at 10 Hz require 3–20 Gshots of diode reliability over a 30–60 year plant lifetime; the best demonstrated performance as of 2025 is ~1 Gshot at 880 nm (laboratory bars) and ~2 Gshots median at 940 nm (stack lifetime tests, Thiagarajan et al. 2018) — 1.5–10× below the minimum requirement [17]. No IFE qualification standards exist. Facet passivation for multi-junction bar designs at ≥1 kW/bar output — required at the ~50 million bars per commercial plant scale — has never been demonstrated.
+### Femtosecond DPSSL driver at IFE rep rate — TRL 2–3
 
-**Target Injection, Tracking, and Chamber Clearing at Repetition Rate — TRL 2–3**
-- **Demonstrated**: Target positioning systems exist in NIF-scale facilities for single-shot experiments. High-speed target injection prototypes developed in the D-T laser IFE community.
-- **On paper only**: 10 Hz target injection with micron-level placement accuracy for Marvel's nanostructured silicon targets. Real-time feedback and alignment correction between shots.
-- **Missing at scale**: Integration of target delivery with pulse timing at 10 Hz. Chamber debris management for laser-induced plasma flash at non-cryogenic conditions.
+- **Demonstrated:** Ultrashort pulse (femtosecond) lasers at petawatt peak powers exist at national facilities (ELI-NP, CALA LION 2). These operate at single-shot or very low repetition rates. The LLNL Mercury laser demonstrated 10 Hz at 100 J with nanosecond pulses (not femtosecond).[^14]
+- **On paper only:** Marvel's architecture calls for ~500 femtosecond DPSSL systems at kJ-class energy and 10 Hz repetition rate. Two 100 J prototypes are in development through Pulsed Light Technologies (PLT/SPRIND), with demonstration experiments at CSU targeted for early 2027.[^15]
+- **Missing at scale:** (a) Femtosecond operation at kJ-class energy and 10 Hz (the CSU demo is at 100 J). (b) Wall-plug efficiency ≥10% for femtosecond systems (the LLNL benchmark is for nanosecond Nd:glass/Yb:S-FAP systems). (c) Multi-decade diode bar lifetime at IFE-relevant duty cycles — LLNL reports require 3–20 Gshots at ≥0.5 kW/bar, with no published demonstration at these levels.[^16]
 
-**Nanostructured Target Manufacturing (Marvel) / Foam Target Manufacturing (HB11) — TRL 3–4**
-- **Demonstrated**: Marvel: Semiconductor lithography process applicable to silicon nanowire arrays; ~5,000 targets per 300 mm wafer [dossier §Driver Technology]. Standard fab equipment with established global supply chain. HB11: In-house low-density foam production for aerogel-like targets — claimed 10× higher proton acceleration efficiency than solid targets [8].
-- **On paper only**: Mass-production economics at commercial volumes. Marvel: $0.03/target economic ceiling implies high-throughput fab with >99% yield. HB11: Foam consistency and handling at 1 Hz production rates.
-- **Missing at scale**: Published unit cost, defect rates, or throughput data for either approach. Independent validation of HB11's 10× acceleration efficiency claim. Demonstration of Marvel's full target-to-chamber workflow.
+### Hybrid energy conversion (direct + thermal capture of alpha particles) — TRL 1–2
 
-**Steel Reaction Chamber (Structural) — TRL 6–7**
-- **Demonstrated**: The p-B11 aneutronic environment enables conventional steel construction without remote handling constraints [6]. UNSW collaboration with HB11 confirms standard structural materials are viable:
+- **On paper only:** Marvel claims hybrid conversion combining "magnetic, electrostatic, and steam power generation" at ~70% efficiency. No architecture, prototype, or design study has been published. Direct electrostatic conversion of charged particles has been studied in other contexts (Venetian blind collectors, inverse cyclotron converters) but never at the power levels or particle energies relevant to fusion power plants.
+- **Missing at scale:** Everything — no subsystem has been demonstrated or designed in detail.
 
-> "The near absence of neutrons opens up huge opportunities for simplified reactor design, energy conversion efficiency and waste reduction"
-> — hb11-2025-08-04-assoc-prof-patrick-burr-leads-unsw-team-to.md
+### Target fabrication at 10 Hz — TRL 3–4
 
-- **On paper only**: Full reactor chamber geometry, laser beam port layout, target injection path, and alpha particle collection geometry — none published for either company.
-- **Missing at scale**: No detailed chamber design exists. The UNSW collaboration is in an early framing stage (materials requirements assessment), not structural engineering.
+- **Demonstrated:** Marvel's patent (US20230073280A1) describes silicon nanowire arrays manufactured via standard semiconductor lithography, yielding ~5,000 targets per 300mm wafer.[^17] Semiconductor lithography is mature technology (TRL 9 in its own domain), but its application to fusion targets is novel.
+- **On paper only:** Production at 10 Hz requires 315 million targets per year (at 100% availability), or ~63,000 wafers per year — a modest throughput by semiconductor standards but requiring a dedicated fabrication line with no established process flow for the specific nanostructure geometry.
+- **Missing at scale:** Target injection, alignment, and tracking at 10 Hz in a hot, debris-laden chamber. No target injection system has been demonstrated for any IFE concept at 10 Hz.
 
-**Balance of Plant — Steam Fraction (HB11) — TRL 8–9**
-- Conventional steam Rankine cycle is fully commercial technology. HB11's explicit pivot to steam conversion means this subsystem carries no technology risk. Thermal efficiency of ~35–40% is achievable with current industrial steam cycles. Integration with a pulsed fusion heat source is the residual challenge (common to all pulsed IFE concepts) — shared with concept 22 (projectile ICF, D-T).
+### Reaction chamber — TRL 3–4
 
----
+- **On paper only:** The aneutronic environment permits conventional steel construction (confirmed by UNSW/HB11 collaboration).[^18] Chamber geometry is not published for the Marvel design point.
+- **Missing at scale:** Chamber clearing between shots at 10 Hz. Debris management from nanostructured silicon targets. Alpha particle collection/thermalization architecture.
+
+### Balance of plant (thermal cycle portion) — TRL 7–9
+
+- **Demonstrated:** Steam Rankine cycles at GW scale are fully mature in the fission and fossil industries. Siemens Energy, Marvel's named development partner, is a leading turbine OEM. If the thermal portion of the hybrid cycle is a conventional steam or sCO2 Brayton system, BOP maturity is high.
+- **Missing at scale:** Integration with the fusion-specific heat source (pulsed alpha particle thermalization, potentially intermittent thermal load at 10 Hz).
+
+[^12]: arxiv-1603-02579/output.md §Abstract
+[^13]: marvel-fusion-2025-updates.md §Objective
+[^14]: osti-servlets-purl-15013216/output.md §Mercury Laser Parameters
+[^15]: optics-news-16-4-4/output.md §Pulsed Light Technologies
+[^16]: osti-servlets-purl-3008974/output.md §Section 6
+[^17]: dossier.md §Driver Technology
+[^18]: hb11-2025-08-04-assoc-prof-patrick-burr-leads-unsw-team-to/output.md
 
 ## Section 4: Key Materials and Supply Chain Considerations
 
-**Boron-11 Fuel**
+### Laser diode bars — the critical IFE supply chain bottleneck
 
-Natural boron is 80.1% B-11 and 19.9% B-10 by abundance. The p-B11 reaction requires B-11 specifically; B-10 has a high thermal neutron capture cross-section and would consume neutrons without fusion. Whether isotopically enriched B-11 is required for the targets — or whether natural boron suffices because the reaction physics selects the B-11 nucleus — is not confirmed in available sources. This is a critical data gap: if enrichment is required, the isotope separation industry is niche (B-11 is used in semiconductor ion implantation but at kg/year scale, not the tonne/year scale a 1 GW plant would need).
+The LLNL diode laser paper (Bayramian et al., 2025) provides the most detailed analysis of IFE laser economics. A single IFE plant requires ~50 million laser diode bars at ~50 GW total diode peak power.[^19] Current laser diode costs are $0.30–$1.30/W; IFE economics require ~$0.01/W — a 30–130× cost reduction.[^20]
 
-Global boron reserves are large (Turkey, USA, and Chile dominate production; world reserves ~1.2 billion tonnes of B₂O₃). Supply-chain risk is low at any plausible fusion fleet scale if natural boron is usable. If enriched B-11 is required, supply chain development is necessary.
+> "Diode laser pumps are a critical enabling technology for inertial fusion energy (IFE), and will remain the largest contributor to facility cost, even assuming tenfold cost-reduction at high volumes."
+> — osti-servlets-purl-3008974/output.md §Abstract
 
-**Silicon Nanowire Targets (Marvel Fusion)**
+Packaging costs dominate (>50% of stack cost), driven by tight alignment tolerances (<10 µm) for CuW submounts and FAC collimators. Facet passivation is identified as "a significant fabrication bottleneck."[^21] Cost reduction depends on learning curves: models with scaling exponents of 0.4–0.6 indicate $0.01/W is achievable with a 1,000× increase in demand, analogous to LED cost trajectories. However, the chicken-and-egg problem is explicit: costs cannot drop without volume, and volume requires economically viable first plants.
 
-Standard semiconductor-grade silicon on 300 mm wafers — the most extensively scaled material in human industrial history. No supply-chain risk exists for the silicon feedstock. The risk is manufacturing cost: semiconductor fab equipment is expensive (~$50M per deep-UV lithography tool) and cycle time at fusion-relevant wafer-per-second production rates would require significant fab capacity. The key LCOE question is whether Marvel's target cost floor (set by wafer processing cost amortized over ~5,000 targets) beats the $0.03/target economic ceiling. No published wafer cost data for this specific process.
+Marvel Fusion's femtosecond pulse approach adds a complication: standard LLNL analysis assumes nanosecond Nd:glass or Yb:YAG gain media. Femtosecond systems use different gain media (Ti:sapphire, CPA gratings) with a less mature manufacturing base for IFE-scale production. The PLT/SPRIND initiative is specifically tasked with bridging this gap, but is in early prototype stages.
 
-**Low-Density Foam Targets (HB11 Energy)**
+### Nanostructured silicon targets — leveraging semiconductor fab
 
-HB11's in-house production capability for aerogel-like foam targets ("a few times denser than air") is a claimed strategic asset [8]. These are niche materials — conventional aerogel production is a multi-hundred-tonne/year industry, but HB11's specific foam formulation for proton acceleration is proprietary. Supply chain risk is moderate: dependence on in-house capability with no demonstrated scale-up.
+Marvel's targets are silicon nanowire arrays manufactured via photolithographic patterning on 300mm wafers (~5,000 targets per wafer). At 10 Hz, annual target demand is ~315 million targets, requiring ~63,000 wafer starts per year. For context, a modern semiconductor fab processes 50,000–100,000 wafer starts per month. A dedicated line for fusion targets would represent a modest fraction of existing semiconductor manufacturing capacity.
 
-**DPSSL Laser Components**
+The cost advantage is structural: NIF-style cryogenic DT targets require precision micro-machining, cryogenic deuterium-tritium ice layering, and individual handling in a cryogenic environment. Marvel's room-temperature solid targets eliminate cryogenics entirely. No per-target cost has been published, but the CEO has explicitly contrasted semiconductor-lithography targets favorably against NIF hohlraum costs.[^22]
 
-The laser driver supply chain (Trumpf, Thales as Marvel partners) is the same DPSSL technology base used across high-power industrial and research lasers. Laser diode arrays are the key consumable. The 2025 LLNL analysis (*Optics Express*, December 2025) establishes the IFE viability cost target at **$0.01/W** for laser diodes, with current high-volume industrial diodes running **$0.3–$1.3/W** — a 30–130× reduction required [17]. Critically, even at the $0.01/W target, diode pumps still represent one-third to one-half of the total DPSSL beamline cost, so diode economics remain load-bearing at commercial scale. This cost reduction is a shared challenge across all DPSSL-based IFE concepts, but Marvel's partners include Trumpf — one of the world's leading laser manufacturers — giving the strongest industrial supply chain of any IFE startup.
+### p-B11 fuel — abundant, cheap, no supply constraint
 
-**No Tritium, No HTS Tape, No Beryllium — Major Supply Chain Advantages**
+Boron-11 constitutes ~80% of natural boron. Global boron production is millions of tonnes per year. A 100 MWe plant at 10 Hz, with targets containing microgram-to-milligram quantities of boron, would consume negligible fractions of global supply. Hydrogen (protons) is effectively free from water electrolysis. No enrichment infrastructure is needed (unlike tritium or He-3). This is a fundamental cost and supply-chain advantage over D-T and D-He3 fuels.
 
-The p-B11 fuel cycle eliminates the three most supply-constrained materials in the D-T fusion landscape:
+### Structural steel for the reaction chamber
 
-- **Tritium**: No breeding blanket, no tritium handling, no TBR requirement. The global tritium inventory constraint (~25 kg, decaying at 5.5%/year) that governs all D-T concepts is entirely absent. This eliminates a regulatory category and a major CAPEX line (blanket system).
-- **REBCO superconducting tape**: No superconducting magnets — Marvel operates without external confinement. The scale-up bottleneck affecting CFS, Proxima, Type One, and every other HTS-based MFE concept is absent.
-- **Beryllium and enriched Li-6**: No FLiBe or LiPb blanket. No exotic breeder chemistry. No criticality risk from fissile breeding materials.
+The aneutronic environment eliminates the need for reduced-activation ferritic-martensitic (RAFM) steels, tungsten plasma-facing components, or SiC/SiC composites. UNSW's collaboration with HB11 confirms that conventional structural steel is suitable.[^23] This eliminates a major materials supply chain risk present in every D-T concept.
 
-These absences represent a genuine supply-chain and regulatory simplification versus the D-T baseline.
+> "With hydrogen-boron, you can build the reactor vessel out of steel instead of tungsten. That's a massive cost advantage."
+> — energynewsbulletin-energy-transition-features-articles/output.md §Materials
 
-**Laser Optical Components — Damage and Replacement**
+[^19]: osti-servlets-purl-3008974/output.md §Section 2
+[^20]: osti-servlets-purl-3008974/output.md §Section 3
+[^21]: osti-servlets-purl-3008974/output.md §Section 4
+[^22]: optics-news-15-10-4/output.md §Target Fabrication
+[^23]: hb11-2025-08-04-assoc-prof-patrick-burr-leads-unsw-team-to/output.md
 
-At petawatt peak intensities, laser optical components (gratings, mirrors, windows, focusing elements) experience damage from ionizing radiation, debris, and thermal cycling. In classical NIF-scale lasers, final optics replacement is a significant operational cost. For Marvel's pulsed architecture at 10 Hz, the duty cycle and debris environment differ from NIF, but the fundamental optics damage challenge applies. No data on optic lifetime or replacement cost for 10 Hz petawatt-class DPSSL systems exists in available sources.
+## Section 5: Design Point Parameters
 
----
+All parameters describe the Marvel Fusion CFE-NANO Pilot Plant at its native 100 MWe scale. This is a paper-concept design point with limited published parameters; most entries are inferred or estimated.
 
-## Section 5: LCOE-Relevant Parameters
+| Parameter | Value | Source | Confidence | Note |
+|-----------|-------|--------|------------|------|
+| Net electric output | 100 MWe | marvel-fusion-2025-updates.md §Objective | high | spec key: drives `P_native`; CORDIS project record |
+| Fuel | p-B11 | dossier.md §Fuel | high | Aneutronic; proton-boron-11 |
+| Primary heating | Laser (ultrashort pulse, femtosecond) | dossier.md §Primary Heating | high | Non-thermal block ignition |
+| Repetition rate | 10 Hz | dossier.md §Repetition Rate | medium | Company target; undemonstrated |
+| Number of laser systems (commercial plant) | ~500 | optics-news-16-4-4/output.md §Marvel Fusion Laser Production | medium | Demonstrator: 10–100; pilot count unknown |
+| Number of laser systems (demonstrator) | 2 (at 100 J each) | optics-news-15-10-4/output.md §Colorado State University | high | CSU facility, experiments early 2027 |
+| Future laser energy target | kJ-class at 10 Hz | optics-news-15-10-4/output.md §Scaling Plans | medium | Post-demonstrator scaling target |
+| Laser pulse duration | Sub-100 fs (femtosecond) | dossier.md §Primary Heating | high | |
+| Laser wall-plug efficiency | ≥10% [target, undemonstrated] | osti-servlets-purl-3008974/output.md §Table 1; energynewsbulletin/output.md §Laser Efficiency | low | [analogue: IFE DPSSL benchmark from LLNL; HB11 cites same target. Marvel has not stated a WPE target.] |
+| Target gain | No data found in available sources | — | — | Blocking gap; no Marvel-specific gain published. HB11 patent cites >500 (different design). |
+| Fusion power per shot | No data found in available sources | — | — | Cannot be derived without target gain and per-shot laser energy |
+| Energy conversion efficiency | ~70% [claimed, unarchitected] | dossier.md §Energy Capture (Marvel Fusion website) | low | Hybrid direct + thermal; no architecture published. Extraordinary claim. |
+| Energy conversion type | Hybrid (thermal + direct) | dossier.md §Energy Capture | medium | "magnetic, electrostatic, and steam power generation" |
+| Target type | Silicon nanowire arrays (nanostructured) | dossier.md §Driver Technology; US patent US20230073280A1 | medium | ~5,000 targets per 300mm wafer via semiconductor lithography |
+| Target fabrication method | Standard semiconductor lithography | optics-news-15-10-4/output.md §Target Fabrication; US patent US20230073280A1 | medium | Room temperature; no cryogenics |
+| Neutron fraction | <1% of fusion energy | [nuclear physics constant for p-B11 primary reaction] | high | Side reactions only |
+| Blanket config | N/A (no tritium in fuel cycle) | dossier.md §Tritium Breeding | high | No breeding blanket; energy capture blanket structure unknown |
+| Magnet type | None | dossier.md §Magnet Type | high | No external confinement magnets |
+| Chamber geometry | Not published | — | — | Data gap |
+| p_input (auxiliary/driver wallplug) | No data found in available sources | — | — | [estimated: if ~10 kJ per laser × 500 lasers × 10 Hz / 0.10 WPE = 500 MW wallplug — far exceeds 100 MWe output. At pilot scale with fewer lasers, unknown. See Section 2, Challenge 3.] |
+| Operation mode | Pulsed (10 Hz target) | dossier.md §Operation Mode | high | |
+| Total company funding | EUR 385M (170M private + 215M public, as of Apr 2025) | optics-news-16-4-4/output.md §Funding | high | |
+| Demonstration facility milestone | Early 2027 (CSU, Fort Collins) | optics-news-15-10-4/output.md §Colorado State University | high | |
+| Pilot plant milestone | 2033 | marvel-fusion-2025-updates.md §Objective | high | EU Horizon EIC CFE-NANO project |
+| Development partner (BOP) | Siemens Energy | marvel-fusion-2025-updates.md §Objective | high | Conceptual plant design co-development |
+| Laser production partner | Pulsed Light Technologies (PLT), SPRIND-funded | optics-news-16-4-4/output.md §Pulsed Light Technologies | high | Founded Aug 2023; two prototypes in development |
+| Laser technology partners | Trumpf, Thales | dossier.md §Driver Technology | high | |
 
-**Available Parameters:**
+**Note on p_input estimation:** The p_input for the 100 MWe pilot cannot be reliably estimated. The commercial plant architecture (~500 lasers) would require wallplug power that likely exceeds the pilot's 100 MWe net output by a large margin, suggesting the pilot either uses far fewer lasers (consistent with the 10–100 range stated for the demonstrator), achieves much higher per-laser energy than current prototypes, or operates at a sub-commercial duty cycle. This is a fundamental design-point gap.
 
-| Parameter | Value/Range | Source | Confidence | Notes |
-|-----------|-------------|--------|------------|-------|
-| Pilot plant output (Marvel) | 100 MW | marvel-fusion-2025-updates.md §Objective | medium | EU CORDIS CFE-NANO milestone; target date 2033 |
-| Target plant output (HB11) | ~1 GW baseload | newatlas-energy-hb11-hydrogen-boron-fusion-clean-energy.md §Architecture | low | Described as "data centre with big laser halls" concept; no plant design published |
-| Repetition rate (Marvel) | 10 Hz | dossier §Repetition Rate | medium | ATLAS facility at CSU designed for 10 Hz; not yet demonstrated at commercial energy |
-| Repetition rate (HB11) | ~1 Hz | hb11-energy-technology.md | medium | "fuel pellets injected and burned at a rate of about 1 per second" |
-| Commercial plant laser count (Marvel) | ~500 laser systems | optics-news-16-4-4.md | medium | Stated by Marvel Fusion; each beamline is a femtosecond DPSSL system |
-| Demonstration facility laser count (Marvel) | 10–100 laser systems | optics-news-16-4-4.md | medium | Range reflects different demonstrator configurations under consideration |
-| Laser wall-plug efficiency (HB11 target) | ~10% | energynewsbulletin-energy-transition-features-articles.md | low | Stated target vs <1% for conventional lasers; undemonstrated at commercial scale |
-| Laser wall-plug efficiency (Marvel) | Not published | — | — | Gap: see Section 6 |
-| Energy conversion efficiency (Marvel) | "up to ~70%" | dossier §Energy Capture | low | Hybrid magnetic + electrostatic + steam; marketing claim, no engineering detail |
-| Energy conversion efficiency (HB11) | ~35–40% (steam) | dossier §Energy Capture | medium | Conventional steam Rankine cycle; consistent with standard industrial values |
-| Target geometry (Marvel) | ~5,000 targets / 300 mm wafer, nanowire array | dossier §Driver Technology | medium | Standard semiconductor lithography; room-temperature handling |
-| Target geometry (HB11) | Pea-sized foam pellet | hb11-energy-technology.md | medium | Low-density aerogel-like structure, ~few times denser than air |
-| Experimental alpha particle yield (HB11) | ~1.4 × 10¹¹ alphas / shot | newatlas-energy-hb11-laser-fusion-demonstration.md | high | Texas Petawatt + NIF demonstrations; described as crude estimate |
-| Experimental energy conversion efficiency (HB11) | ~0.005% (laser to alphas) | newatlas-energy-hb11-laser-fusion-demonstration.md | high | 4 orders of magnitude below net energy gain |
-| Total funding (Marvel) | EUR 385M (EUR 170M private + EUR 215M public) | optics-news-16-4-4.md | high | As of April 2025; includes EUR 17.5M EIC Accelerator blended finance |
-| Total funding (HB11) | ~$22M | dossier §Driver Technology | medium | Very limited vs Marvel; constrains development pace |
-| Demonstration facility cost (Marvel) | ~$150M | optics-news-15-10-4.md | medium | Fort Collins, CO (CSU ATLAS facility) |
-| Pilot plant timeline (Marvel) | 2033 | marvel-fusion-2025-updates.md §Objective | medium | EU-backed CFE-NANO project |
-| Fuel material (Marvel) | p-B11 in nanostructured silicon | dossier §Fuel | high | Patent US20230073280A1 confirmed |
-| Fuel material (HB11) | p-B11 in low-density foam | dossier §Fuel | high | In-house foam target production |
-| Neutron environment | <1% neutron energy fraction | dossier §Neutron Management | high | Aneutronic; standard steel construction viable |
-| Target economic ceiling (derived) | < ~$0.03 / target at 10 Hz | [inferred: Goodin et al. 2004 10% rule applied to 100 MW plant at $30/MWh; 100 MW × $0.03/kWh × 100 ms/shot = $0.09/shot; 10% rule → <$0.009/shot; at 100 MWe per shot per Hz, each shot's revenue is 100 MW × 0.1 s × $30/MWh ÷ 3600 = $0.083/shot] | low | Back-of-envelope; Goodin rule from concept 22 (22-projectile-icf) analysis §Section 2 |
+## Section 5b: Override Candidates
 
-**Missing Parameters:**
+The following overrides were discovered through a systematic per-account walkthrough of the canonical 1costingFE schema for the LASER_IFE archetype. For each account, the question asked was: does the dossier name a company-grounded quantity, unit cost, or published dollar figure that lets me price this account better than the library default?
 
-| Parameter | Gap Type | Criticality | Notes |
-|-----------|----------|-------------|-------|
-| Fusion gain Q at any scale | truly-unknown | blocking | No published Q measurement for either company; 4 OOM gap for HB11 |
-| Capital cost by subsystem | proprietary | blocking | No plant design; no component-level cost estimate published |
-| Laser capital cost ($/J at rep rate) | not-yet-sourced | blocking | DPSSL cost literature (ELI-NP, HAPLS programs) may provide analogues |
-| Alpha particle capture efficiency (validated) | truly-unknown | blocking | Marvel's 70% claim has no demonstrated analogue; must treat as free parameter |
-| Recirculating power fraction | derivable | blocking | Requires laser WPE × laser energy in / electrical output out |
-| Target fabrication cost per target | proprietary | blocking | Semiconductor wafer analogy possible; no published cost for Marvel's specific process |
-| Laser wall-plug efficiency (Marvel) | not-yet-sourced | important | HB11 targets ~10%; Marvel not characterized; search CLEO/IFSA proceedings |
-| Capacity factor / availability | truly-unknown | blocking | No plant design; pulsed laser at 10 Hz has no operational analogue |
-| Laser optic replacement rate (10 Hz PW class) — NIF analogue | osti-servlets-purl-1400089.md §Optics Recycle and Replacement Rates | medium (analogue only) | NIF (nanosecond, ~42 shots/yr at full energy): ~2,000 optic replacements/yr at 2.6 MJ; $5.6M/yr additional O&M vs 1.8 MJ baseline; $7.5–17M one-time startup cost. Regime difference: NIF is ns-pulse at ~42 shots/yr; Marvel is fs-pulse at ~3.15×10⁸ shots/yr with ~4 OOM less energy per shot (100 J vs 2.6 MJ). Cumulative annual fluence may be comparable or higher; ultrashort pulse damage physics differs. Analogue provides cost-order reference, not direct projection. |
-| Chamber clearing time at 10 Hz | truly-unknown | important | Less critical than D-T IFE (no activation) but debris management still needed |
-| B-11 enrichment requirement | not-yet-sourced | important | Natural boron is 80% B-11; enrichment need is unconfirmed |
-| O&M cost basis (fixed + variable) | truly-unknown | blocking | Model sensitivity ranks O&M as highest elasticity parameter (0.204); no plant design from which to estimate staffing, maintenance schedule; drives LCOE more than laser driver capital at current parameterization |
-| First wall / chamber replacement schedule | truly-unknown | important | UNSW materials work is early-stage; no schedule published |
-| Per-shot yield (MJ) | truly-unknown | blocking | Required to close energy balance; no published data |
+**Override-count rubric check:** Archetype-Fit is Low → expected 6–12 enabled overrides. The walkthrough produced **8 enabled overrides**. This is within the expected band. The overrides are structurally motivated by the p-B11 aneutronic fuel cycle (eliminating tritium and shielding accounts) and the femtosecond DPSSL + nanostructured target architecture (departing from nanosecond driver and cryogenic target defaults).
 
----
+```yaml
+overrides:
+  - account: C220101
+    value: 0.70 * generic.costs.C220101
+    enabled: true
+    provenance: derived
+    source: "dossier.md §Tritium Breeding; hb11-2025-08-04-assoc-prof-patrick-burr-leads-unsw-team-to/output.md"
+    rationale: |
+      Aneutronic p-B11 eliminates the tritium-breeding function of the blanket entirely.
+      No lithium ceramics, no liquid metal breeder, no tritium extraction loops. The
+      blanket/first-wall must still serve as an energy capture surface (thermalizing alpha
+      particles) and structural boundary. Dossier: "p-B11 fuel cycle produces no tritium
+      and requires no tritium breeding. No blanket infrastructure needed." UNSW confirms
+      steel construction for the reaction chamber. 30% cost reduction reflects elimination
+      of breeding subsystems while retaining the full thermal management structure (alpha
+      thermalization walls, coolant routing, structural support). Aligned with concept
+      04-laser-icf (0.70× on the same account): both concepts share the identical p-B11
+      aneutronic fuel cycle and the same physical reasoning — no tritium breeding, but
+      energy capture blanket structure is retained.
+
+  - account: C220102
+    value: 0.20 * generic.costs.C220102
+    enabled: true
+    provenance: derived
+    source: "dossier.md §Neutron Management; energynewsbulletin-energy-transition-features-articles/output.md §Materials"
+    rationale: |
+      p-B11 produces <1% neutron energy from side reactions — roughly 2 orders of
+      magnitude lower neutron flux than D-T. Dossier: "Thin shielding for secondary
+      neutrons and X-rays. Hands-on maintenance possible." The library default sizes
+      the radiation shield for 14.1 MeV DT neutrons at high wall loading. With ~100×
+      lower neutron flux, shielding mass and cost scale down drastically. Residual
+      shielding for secondary neutrons, X-rays from alpha particle thermalization, and
+      personnel protection still required. 80% cost reduction (more aggressive than
+      04-laser-icf's 70%) reflects the 10 Hz Marvel design where time-averaged neutron
+      flux is even more dilute at 100 MWe pilot scale.
+
+  - account: C220104
+    value: 2000.0
+    enabled: true
+    provenance: derived
+    source: "osti-servlets-purl-3008974/output.md §Section 3; optics-news-16-4-4/output.md §500 lasers needed; osti-servlets-purl-15013230/output.md §IFE Driver Requirements"
+    rationale: |
+      Marvel's driver is structurally different from the library's single nanosecond
+      DPSSL model: it uses ~500 femtosecond DPSSL beamlines at kJ-class energy and
+      10 Hz for a commercial power plant. LLNL IFE driver cost target: <$1.5B for
+      a GW-class plant (osti-servlets-purl-15013230 §Introduction).
+
+      Scaling note: absolute overrides in 1costingFE do not scale with module count.
+      This value must therefore represent the full 1 GWe plant driver cost, not a
+      per-module figure. At P_native (100 MWe, n_mod=1), the same $2,000M applies
+      — overstating the pilot, whose 10–100 lasers (optics-news-16-4-4 §500 lasers
+      needed) would cost far less. This is an accepted distortion: the 1 GWe
+      comparison is the primary analytical target.
+
+      Derivation: Marvel states ~500 laser systems for a commercial power plant
+      (optics-news-16-4-4 §500 lasers needed). LLNL's LIFE-era cost target is
+      <$1.5B for a GW-class driver using nanosecond Nd:glass/Yb:S-FAP systems.
+      Marvel's femtosecond CPA architecture uses a less mature manufacturing base
+      (Ti:sapphire-class gain media, CPA gratings) with no established IFE-scale
+      production — applying a 1.3–2× technology immaturity premium over the LLNL
+      benchmark. Midpoint: $1.5B × 1.33 ≈ $2,000M. Sensitivity range: $1,500M–
+      $3,000M. At 500 beamlines this implies $3–6M per beamline (NOAK), consistent
+      with the LLNL analysis showing diodes account for 33–50% of beamline cost at
+      IFE scale (osti-servlets-purl-3008974 §Section 3).
+
+      Note: This override replaces the library's $/J-based driver calculation, which
+      cannot capture the femtosecond CPA architecture. The library's nanosecond
+      DPSSL model (driver_laser_per_mj) is inapplicable to femtosecond systems.
+
+  - account: C220106
+    value: 0.50 * generic.costs.C220106
+    enabled: true
+    provenance: derived
+    source: "dossier.md §Magnet Type; newatlas-energy-hb11-hydrogen-boron-fusion-clean-energy/output.md §Reactor Design"
+    rationale: |
+      IFE concepts require a vacuum chamber but not the complex port structures,
+      cryopumps, or magnet-compatible vacuum vessel of MFE designs. The Marvel design
+      has no external magnets (eliminating cryopumping for magnet vacuum) and uses a
+      "largely empty" reaction chamber. However, at 10 Hz with silicon nanostructured
+      targets, the vacuum system must handle significant debris clearing between shots.
+      50% reduction from the library's IFE default reflects the simplified geometry
+      (no magnets, no tritium-compatible double containment) partially offset by
+      debris management requirements.
+
+  - account: C220108
+    value: 200.0
+    enabled: true
+    provenance: derived
+    source: "dossier.md §Driver Technology; optics-news-15-10-4/output.md §Silicon fuel"
+    rationale: |
+      Target factory for silicon nanostructured targets via semiconductor lithography,
+      sized for a 1 GWe plant (10 × 100 MWe modules at 10 Hz).
+
+      Scaling note: absolute overrides in 1costingFE do not scale with module count.
+      This value must therefore represent the full 1 GWe plant target factory cost.
+      At P_native (100 MWe, n_mod=1), the same $200M applies — overstating the
+      pilot's smaller fab. This is an accepted distortion: the 1 GWe comparison
+      is the primary analytical target.
+
+      Derivation: At 1 GWe (10 modules, 10 Hz each): 3.15B targets/year = 630,000
+      wafers/year (at 5,000 targets/wafer per dossier §Driver Technology). By
+      semiconductor industry standards, 630,000 wafers/year is a mid-size fab
+      (modern fabs process 50,000–100,000 wafers/month). A dedicated clean-room
+      line at this throughput costs $150–300M CAPEX (not a leading-edge logic fab
+      — the nanostructure geometry uses mature lithography nodes). Midpoint: $200M.
+
+      Key structural advantage: one centralized factory serves the entire 1 GWe
+      plant; the factory does not replicate per module. Per-target CAPEX at this
+      scale: $200M / 3.15B targets = $0.063/target. Contrast with 04-laser-icf:
+      HB11's target factory (complex capacitor-coil assemblies at ~$5/target) is
+      estimated at $157.5M for a 500 MWe plant. Marvel's silicon wafer targets
+      eliminate per-target electromagnet assemblies and cryogenics, but the 10×
+      higher rep rate (10 Hz vs 1 Hz) requires 10× throughput, driving factory
+      scale up. Sensitivity range: $150M–$300M.
+
+  - account: CAS21
+    value: 0.75 * generic.costs.cas21
+    enabled: true
+    provenance: derived
+    source: "dossier.md §Tritium Breeding; marvel-fusion-2025-updates.md §Objective"
+    rationale: |
+      Aneutronic p-B11 eliminates tritium processing buildings, hot cells for blanket
+      handling under tritium containment, atmospheric recovery systems, radioactive waste
+      storage structures, and cryogenic target handling facilities. The reactor building
+      and turbine hall remain (hybrid thermal + direct conversion requires both). Support
+      building footprint is reduced. Siemens Energy co-developing "fully integrated fusion
+      power plant" design suggests conventional BOP building standards where applicable.
+      25% cost reduction vs. library's DT-ICF building model reflects eliminated tritium
+      and cryogenic infrastructure. Slightly less aggressive than 04-laser-icf (20%
+      reduction) because Marvel's 10 Hz target injection and debris management may
+      require additional facility infrastructure.
+
+  - account: CAS27
+    value: 0.5
+    enabled: true
+    provenance: derived
+    source: "dossier.md §Fuel; energynewsbulletin-energy-transition-features-articles/output.md §Fuel"
+    rationale: |
+      Special materials inventory for p-B11: initial boron-11 fuel load and hydrogen
+      supply only. Natural boron is 80% B-11, commodity cost ~$1–2/kg. At microgram-to-
+      milligram quantities per target × startup inventory for 1 week at 10 Hz = 6.048M
+      targets, total boron mass is negligible (< 100 kg at ~0.01 mg/target estimate,
+      yielding < $200 material cost). Round to $500k ($0.5M) including handling, storage,
+      buffer inventory, and hydrogen supply infrastructure. Negligible compared to DT
+      tritium inventory costs (~$30k/g × kg quantities). No lithium blanket inventory,
+      no enriched materials.
+
+  - account: CAS70
+    value: 0.80 * generic.costs.cas70
+    enabled: true
+    provenance: derived
+    source: "energynewsbulletin-energy-transition-features-articles/output.md §Materials; dossier.md §Neutron Management"
+    rationale: |
+      Aneutronic operation eliminates activation-driven first-wall and blanket replacement
+      — the dominant O&M cost driver in DT fusion. Dossier: "Hands-on maintenance possible."
+      Chamber walls may last the full plant lifetime if alpha particle erosion is manageable
+      (unverified assumption). No tritium handling O&M (extraction, purification,
+      accountability). However, the laser driver system requires periodic diode bar
+      replacement (the LLNL paper flags diode lifetime as a "critical cost driver" with
+      3–20 Gshot requirement). At 10 Hz, 1 Gshot = ~3.2 years — replacement intervals
+      of 10–64 years depending on achieved lifetime. Laser optics also degrade under
+      operation. 20% O&M reduction vs. library DT-ICF model reflects lower activation-
+      driven replacement, partially offset by laser subsystem maintenance. Consistent
+      with concept 04-laser-icf approach (15% reduction; Marvel gets slightly larger
+      reduction due to higher rep rate amortizing fixed O&M costs more efficiently).
+```
+
+**Accounts with no override (library default stands):**
+
+- **C220105 (Primary structure):** No company data on structural support costs. The aneutronic environment permits conventional steel, which may reduce costs, but no published figure exists. Library default stands.
+- **C220107 (Pulsed-power capacitor bank):** Marvel's driver is a DPSSL system, not a capacitor-bank-driven pulsed power system. The laser driver cost is captured in C220104. If any pulsed power is needed for the femtosecond CPA system, it is subsumed in the C220104 override. Library default for this account may need zeroing if the archetype incorrectly allocates capacitor bank costs, but no data exists to justify a specific value.
+- **C220110 (Remote handling):** Aneutronic environment permits hands-on maintenance, which should reduce remote handling costs. However, no published figure exists for the Marvel design. The library default stands pending data.
+- **C220111 (Installation):** No company data. Library default stands.
+- **CAS23 (Turbine plant):** Marvel's hybrid conversion includes a thermal (steam) component, so turbine plant costs apply. No specific turbine configuration published. Library default stands.
+- **CAS24 (Electric plant):** No company data. Library default stands.
+- **CAS26 (Heat rejection):** No company data. Library default stands.
+- **CAS80 (Fuel cost):** p-B11 fuel is extremely cheap (boron at ~$1–2/kg, hydrogen from water). Annual fuel cost is negligible. However, the library default for LASER_IFE may already be low. No specific published figure to justify a departure from the default.
 
 ## Section 6: Data Gap Inventory
 
 | # | Gap Description | Section | Gap Type | Criticality | Source Recommendation |
 |---|-----------------|---------|----------|-------------|----------------------|
-| 1 | Fusion gain Q — neither company has published a Q value or ignition threshold | S1, S2, S5 | truly-unknown | blocking | CA-PROBONO COST Action publications (CA21128); Matter Radiation Extremes May 2025 p-B11 paper |
-| 2 | Capital cost by subsystem — no plant design or component cost estimate | S1, S5 | proprietary | blocking | No near-term source available; use DPSSL cost literature as laser analogue |
-| 3 | Alpha particle capture efficiency — Marvel claims 70%; zero demonstrated analogue | S2, S5 | truly-unknown | blocking | J. Fusion Energy 2023 (HB11 energy conversion options paper) as partial treatment |
-| 4 | Laser capital cost per joule at 10 Hz repetition rate | S2, S5 | not-yet-sourced | blocking | HAPLS (LLNL) cost reports; ELI-NP design documents; CLEO/IFSA proceedings |
-| 4a | Diode pump reliability at IFE scale (3–20 Gshots required; ~1–2 Gshots demonstrated) | S3 | analogue-available | important | **Analogue available**: osti-servlets-purl-3008974.md (2025 LLNL *Optics Express*): best demonstrated is ~1 Gshot at 880 nm, 2 Gshots median at 940 nm; 1.5–10× below minimum IFE requirement; no qualification standards; facet passivation for multi-junction bars at scale undemonstrated. This gap — not laser capital cost — is what makes the Hawker driver-lifetime lever the most important near-term research target, per Section 7. |
-| 5 | Laser wall-plug efficiency for Marvel Fusion's DPSSL system | S2, S5 | not-yet-sourced | important | CLEO proceedings; Trumpf technical publications; DiPOLE program reports |
-| 6 | Per-shot fusion yield (MJ) for commercial design point | S2, S5 | truly-unknown | blocking | Must wait for experimental data from ATLAS (mid-2026 opening) |
-| 7 | Target fabrication cost per target at commercial volume | S4, S5 | proprietary | blocking | Semiconductor fab cost modeling literature (SEMI standards); 300mm wafer cost studies |
-| 8 | B-11 enrichment requirement — whether natural boron (80% B-11) is usable | S4, S5 | not-yet-sourced | important | Boron isotope separation literature; Marvel/HB11 patent disclosures |
-| 9 | Laser optic damage and replacement rate at 10 Hz petawatt class | S3, S5 | analogue-available | important | **Analogue available**: LLNL-TR-739796 (osti-servlets-purl-1400089.md) — NIF optics: ~2,000 replacements/yr, $5.6M/yr additional O&M at 2.6 MJ single-shot. Regime gap: NIF operates at ~42 shots/yr (ns pulses); Marvel operates at 10 Hz (~3×10⁸ shots/yr, fs pulses, ~100 J/shot). Ultrashort-pulse damage physics is distinct (multi-photon ionization, not thermal blooming). Annual fluence per optic may be similar; cost-per-replacement should be used as order-of-magnitude reference only. |
-| 10 | Capacity factor / plant availability assumptions | S5 | truly-unknown | blocking | No comparable pulsed laser IFE plant exists; must assume |
-| 11 | Recirculating power fraction (whole-plant energy balance) | S5 | derivable | blocking | Requires items 5 (WPE) and 3 (conversion efficiency); derivable once those are known |
-| 12 | Chamber clearing / debris management at 10 Hz | S3 | truly-unknown | important | Classical laser IFE literature (HYLIFE, SOMBRERO) for debris scaling analogues |
-| 13 | O&M cost structure (fixed vs variable, staffing, maintenance) | S5 | truly-unknown | important | No plant design; insert placeholder per cross-concept memory guidance |
-| 14 | First wall and chamber material lifetime under alpha flux | S3, S4 | truly-unknown | important | UNSW HB11 collaboration outputs (in progress); no published data yet |
-| 15 | HB11 foam target manufacturing unit cost and throughput at scale | S3, S4, S5 | proprietary | important | No public source; in-house capability claimed but not characterized |
+| 1 | No published target gain for Marvel Fusion's nanostructured p-B11 targets | S2, S5 | truly-unknown | blocking | Await Marvel Fusion's CSU experimental results (expected post-2027); HB11 patent gain >500 is not transferable |
+| 2 | No per-shot laser energy requirement at power plant scale | S2, S5 | truly-unknown | blocking | Await demonstrator results; current prototype is 100 J, commercial target is kJ-class |
+| 3 | No wall-plug efficiency for femtosecond DPSSL systems | S2, S5 | not-yet-sourced | blocking | LLNL Mercury/diode papers provide nanosecond benchmarks (≥10% target); femtosecond systems may differ. Monitor CLEO/IFSA proceedings |
+| 4 | Hybrid energy conversion architecture (~70% claim) unpublished | S2, S5 | proprietary | important | Request architecture from Siemens Energy partnership outputs; compare with HB11's steam-cycle pivot |
+| 5 | No capital cost estimate for CFE-NANO pilot or any Marvel plant configuration | S1, S5b | proprietary | important | May emerge from Siemens Energy conceptual design study |
+| 6 | Chamber geometry and thermal management design not published | S3, S5 | proprietary | important | UNSW materials collaboration may publish chamber design parameters |
+| 7 | No target fabrication cost per unit | S4, S5b | not-yet-sourced | important | Semiconductor lithography cost modeling can provide order-of-magnitude bounds; company data preferred |
+| 8 | No materials data on alpha particle erosion of steel chamber walls | S3, S5 | truly-unknown | important | UNSW collaboration is studying this; no results published |
+| 9 | p_input (driver wallplug power) for pilot plant unknown | S5 | derivable (once gaps 1–3 are filled) | important | Derivable from laser count × per-laser energy × rep rate / WPE; all inputs currently unknown |
+| 10 | O&M cost breakdown (fixed vs. variable, laser replacement schedule) | S5b | not-yet-sourced | nice-to-have | LLNL diode lifetime studies provide bounding cases; concept-specific data absent |
+| 11 | Diode bar lifetime at IFE-relevant conditions undemonstrated | S3, S4 | truly-unknown | important | Monitor LLNL/FBH publications; no published data at ≥3 Gshots at relevant power |
 
----
+## Section 7: Family-Delta vs Comparables
 
-## Section 7: Cross-Concept Notes
+### Comparable: 04-laser-icf (HB11 Energy p-B11 Fast Ignition, 500 MWe)
 
-**Reuse from 22-projectile-icf (IFE, D-T):**
+Both concepts are p-B11 laser ICF approaches within the IFE family, sharing the fundamental aneutronic fuel cycle and its structural cost advantages. The family-delta is driven by four subsystem-level divergences:
 
-The Goodin et al. (2004) target cost rule — "targets must cost less than ~10% of the electrical revenue per shot to be economical" — was applied in the concept 22 analysis and is the appropriate ceiling constraint for target economics here. The 10% rule produces a more stringent ceiling for Marvel's 10 Hz concept than for HB11's 1 Hz approach, because the per-shot electrical revenue is smaller at higher repetition rates for fixed total output.
+**1. Laser driver architecture — femtosecond DPSSL vs. picosecond petawatt CPA**
 
-The Hawker (2020) framework observation from concept 22 — that driver lifetime has a stronger Pearson correlation with LCOE than driver capital cost across the IFE design space — is broadly applicable here. A laser system that requires frequent optical component replacement at 10 Hz continuous operation accumulates lifecycle costs that can dwarf the initial capital cost. This motivates treating laser optic lifetime as a first-priority parameter in any cost model, not just capital cost per joule.
+| Attribute | Marvel Fusion (concept 23) | HB11 Energy (concept 04) |
+|-----------|---------------------------|--------------------------|
+| Pulse duration | Sub-100 fs (femtosecond) | <5 ps (picosecond) |
+| Laser count | ~500 (commercial); 10–100 (demo) | Two-laser system (ns + ps) |
+| Repetition rate | 10 Hz | ~1 Hz |
+| Architecture | Many small modular DPSSL beamlines | One large petawatt CPA + ns capacitor-coil |
 
-**Divergences from D-T IFE (concepts 17a, 17b, 30):**
+**Cost direction:** Uncertain, but structurally different. Marvel's modular multi-laser architecture distributes cost across ~500 units, enabling manufacturing learning curves and line-replaceable maintenance. HB11's two-laser system concentrates cost in a single petawatt CPA chain — higher per-unit cost but fewer integration challenges. The concept 04 model estimated the dual-laser driver at ~$1.0B for 500 MWe. At 1 GWe, Marvel's driver is estimated at ~$2.0B (LLNL GW-class benchmark × 1.33 femtosecond immaturity premium; sensitivity: $1.5–3.0B). The modular architecture has a steeper NOAK learning curve — this is an advantage at fleet scale, but the femtosecond technology immaturity premium makes the near-term cost comparison uncertain.
 
-The p-B11 concept diverges from D-T laser IFE on every major cost axis:
+**2. Target design and fabrication — semiconductor lithography vs. capacitor-coil assembly**
 
-| Feature | D-T Laser IFE (17a, 30) | p-B11 Nanostructured (23) |
-|---------|------------------------|--------------------------|
-| Blanket required | Yes (Li-bearing, FLiBe/LiPb) | No — aneutronic |
-| Tritium breeding | Required (TBR > 1) | N/A |
-| Chamber activation | Heavy (14 MeV neutrons) | Minimal (<1% neutron energy) |
-| Remote handling | Required for all maintenance | Not required |
-| First wall material | W or RAFM steel (radiation-hardened) | Standard steel |
-| First wall lifetime | ~3–5 year replacement | Plant lifetime (UNSW collaboration) |
-| Target type | Cryogenic DT ice capsule (D-T) | Room-temperature Si nanowire (Marvel) or foam (HB11) |
-| Energy conversion | Thermal (steam), possibly sCO₂ | Hybrid direct + thermal (Marvel) or steam (HB11) |
-| Ignition physics basis | Validated (NIF, 2022, Q>1) | Unvalidated (~4 OOM gap) |
+| Attribute | Marvel Fusion (concept 23) | HB11 Energy (concept 04) |
+|-----------|---------------------------|--------------------------|
+| Target type | Silicon nanowire arrays | HB11 fuel cylinder + capacitor-coil + quartz fiber |
+| Fabrication | Semiconductor lithography, room temp | Room temp but mechanically complex per-target assembly |
+| Cost per target | Not published (semiconductor wafer costs suggest <$1) | ~$5/target (analyst estimate, concept 04) |
+| Annual volume (at design rep rate) | 315M targets/year (10 Hz) | 31.5M targets/year (1 Hz) |
 
-The absence of a tritium blanket and heavy shielding eliminates two major CAS cost categories that dominate D-T concepts. However, these structural savings are offset by the unvalidated physics basis and the novel energy conversion requirement. A concept with no blanket cost but no demonstrated ignition is not obviously cheaper than a concept with a blanket and demonstrated ignition.
+**Cost direction: Advantage (Marvel).** Marvel's targets leverage existing semiconductor manufacturing infrastructure and have no per-target electromagnet or cryogenic assembly. The volume is 10× higher (10 Hz vs. 1 Hz) but the per-unit cost should be orders of magnitude lower. At 1 GWe scale, target factory CAPEX estimate: ~$200M (concept 23, one centralized fab for 3.15B targets/year) vs. ~$157.5M (concept 04, 500 MWe). Marvel's per-target CAPEX is ~$0.06/target vs. concept 04's ~$5/target — a structural advantage from semiconductor lithography, partially offset by the 10× higher throughput requirement.
 
-**Comparison with p-B11 MFE (tokamak and mirror routes):**
+**3. Energy conversion — hybrid direct+thermal vs. steam cycle**
 
-The most direct alternative to laser IFE for p-B11 fuel is magnetic confinement — most rigorously analyzed in the tokamak configuration. The 2021 tokamak system code study (Zhong et al., arXiv:2201.12818, published *Fusion Science and Technology*) provides quantified physics analysis revealing two structural blockers that laser IFE does not share.
+| Attribute | Marvel Fusion (concept 23) | HB11 Energy (concept 04) |
+|-----------|---------------------------|--------------------------|
+| Conversion type | Hybrid (magnetic + electrostatic + steam) | Steam cycle (pivoted from direct) |
+| Claimed efficiency | ~70% | ~35% |
+| TRL | 1–2 (no architecture published) | 7–9 (steam cycle is mature) |
 
-**Synchrotron radiation Q-kill.** At wall reflectivity η_w = 0.95 (a realistic near-term value), synchrotron radiation losses drive fusion gain from Q = 4.14 (Set D: H = 10, perfect reflectivity) to Q = 0.84 (Set E: identical plasma, η_w = 0.95) — an 80% loss in gain from reflectivity alone. The paper's conclusion is stark:
+**Cost direction: Unknown (high risk).** If Marvel achieves 70% conversion, the required fusion power for 100 MWe is ~143 MW — a factor of 2× less than at 35%, meaning a smaller, cheaper driver. But the hybrid system itself has unknown capital cost and no design basis. HB11's steam cycle is conservative but well-understood. The concept 04 model used eta_th = 0.35. Marvel's claim is extraordinary and must be treated as an aspirational target, not a design input, until architecture is published.
 
-> "The results shows the p-11B fusion reactor will not come true unless some techniques have been found in the future to avoid excessive synchrotron radiation loss."
-> — arxiv-2201-12818.md §Conclusion
+**4. Plant scale — 100 MWe pilot vs. 500 MWe scenario**
 
-Achieving Q ≥ 1 with synchrotron radiation included requires wall reflectivity > 0.96 *and* confinement enhancement factor H = 20 simultaneously — a condition the authors describe as "unrealistically high for the existing technology." Standard tokamaks achieve H ≈ 1–2 in H-mode; H = 20 is not within any credible near-term confinement extrapolation.
+Marvel's design point is a 100 MWe pilot (CORDIS-confirmed), while concept 04 uses a 500 MWe scenario derived from McKenzie et al. At the 1 GWe comparison scale, Marvel requires 10 modules vs. concept 04's 2 modules. The smaller native scale implies:
+- Higher $/kWe due to fixed costs not amortizing as well
+- More modules at 1 GWe, increasing site/infrastructure costs
+- But also: faster learning from serial production of identical units
 
-**Helium ash accumulation.** For the paper's worked breakeven case (n_i0 = 6×10²⁰ m⁻³, T_i0 = 380 keV, τ_E = 5 s, τ_He = 10τ_E ≈ 50 s), the equilibrium helium core density is n_He0 = 9.5×10²⁰ m⁻³ — exceeding the fuel ion density. The resulting dilution quenches the reaction. The only solution requires τ_He < τ_E (helium confinement time strictly shorter than energy confinement time), the inverse of every tokamak operating regime studied in D-T physics, where alpha heating depends on helium being well-confined. Achieving τ_He < τ_E while maintaining high H-mode confinement may be physically incompatible.
+**Summary of cost effects:**
 
-**Why laser IFE avoids both blockers.** Marvel's ultrashort-pulse approach operates without a strong static magnetic field (the nanostructured target interaction is purely electromagnetic at relativistic intensity): there is no synchrotron emission penalty, since the laser-driven plasma exists for picoseconds without gyrating electrons radiating into a resonant cavity. More fundamentally, the pulsed fresh-target architecture means each shot ignites and destroys a new target — alpha particles and helium nuclei are expelled into the chamber with every pulse and do not accumulate to dilute the fuel for the next shot. The structural physics argument for laser confinement over magnetic confinement for p-B11 is therefore not merely commercial preference: the tokamak system code analysis indicates p-B11 MFE is not viable with any near-term confinement technology at realistic wall reflectivity.
-
-This is the primary positioning rationale for the IFE confinement family for p-B11 fuel (Goal 1). It also explains why concept 04 (HB11 Energy) is pursuing laser fast-ignition rather than any MFE variant, and why the aneutronic advantage of p-B11 is most accessible via laser IFE pathways.
-
-**Comparison with HB11 (concept 04) — same fuel, different company:**
-
-Concept 23 is nominally Marvel Fusion-centric (the dossier covers both, per taxonomy design). HB11 Energy is the more experimentally advanced company — they have demonstrated fusion — but is drastically underfunded ($22M vs EUR 385M) and has pivoted to a conventional steam cycle, sacrificing Marvel's energy conversion innovation. The two companies represent a cost-complexity tradeoff: HB11 is simpler (1 Hz, steam cycle, standard steel chamber, demonstrated fusion) but achieves lower efficiency and has a larger physics gap to close per shot; Marvel is more ambitious (10 Hz, hybrid conversion, 500-laser plant, no published fusion yield) but targets higher efficiency if the physics works.
-
-For LCOE modeling purposes, they should be treated as two distinct design points with shared fuel cycle assumptions:
-- **HB11 design point**: 1 Hz, steam-cycle, ~35% conversion efficiency, TRL 2–3 on physics
-- **Marvel design point**: 10 Hz, hybrid 70% conversion, 500-laser commercial plant, TRL 1–2 on physics
-
----
+| Subsystem | Direction vs. 04-laser-icf | Magnitude | Evidence quality |
+|-----------|---------------------------|-----------|-----------------|
+| Laser driver (C220104) | Uncertain | High (potentially ±50%) | Low — neither architecture costed at NOAK |
+| Target factory (C220108) | Advantage (per-target CAPEX ~$0.06 vs ~$5) | ~80× lower per-target cost; factory CAPEX comparable at 1 GWe | Medium — semiconductor analogy is credible |
+| Energy conversion | Advantage if 70% achieved; neutral at 35% | ~2× on required fusion power | Very low — no architecture |
+| Radiation shield (C220102) | Neutral (both aneutronic) | Same structural reduction | High — physics-based |
+| Blanket (C220101) | Neutral (both aneutronic) | Same structural reduction | High — physics-based |
+| Buildings (CAS21) | Slight penalty (10 Hz debris management) | ~5% higher | Low — speculative |
+| O&M (CAS70) | Slight advantage (modular laser replacement) | ~5% lower | Low — no operational data |
+| Plant scale (1 GWe module count) | Penalty | 10 modules vs. 2 | High — arithmetic |
 
 ## Section 8: Sources
 
-1. **marvel-fusion-technology.md** (iter-01) — Marvel Fusion corporate technology overview; high-level mission, partnership framing (Siemens Energy, Trumpf, Thales). Confirms non-thermal approach and p-B11 fuel without quantitative data.
+Listed in order of importance for the analysis.
 
-2. **optics-news-16-4-4.md** (iter-03) — Optics.org coverage of Marvel Fusion Series B extension (April 2025). Provides total funding figure (EUR 385M combined), commercial plant laser count (~500 systems), demonstrator range (10–100 lasers), and transition to industrial deployment framing.
+1. **Bayramian et al. (2025), "Diode Laser Pumps for Future IFE Systems" (LLNL/FBH)** — `osti-servlets-purl-3008974/output.md`. The most detailed and recent source on IFE laser diode economics, lifetime requirements, and cost reduction pathways. Provides the diode cost ($0.01/W target), diode count (~50M bars/plant), packaging cost structure, and reliability gap analysis. Essential for pricing C220104.
 
-3. **marvel-fusion-2025-updates.md** (iter-02) — EU CORDIS CFE-NANO project record (Project ID 101189082). Confirms 100 MW pilot plant target by 2033, Colorado demonstration facility milestone 2027, bypass of traditional fusion problems framing.
+2. **EU CORDIS CFE-NANO Project Record (Project 101189082)** — `marvel-fusion-2025-updates.md`. The only formal program document confirming the design point: 100 MWe pilot, 2033 milestone, Siemens Energy partnership. Thin on technical parameters but high-credibility institutional source.
 
-4. **newatlas-energy-hb11-laser-fusion-demonstration.md** (iter-03) — New Atlas coverage of HB11's single-shot fusion demonstrations. Provides quantitative experimental data: ~1.4 × 10¹¹ alpha particles, ~0.005% laser-to-alpha conversion efficiency, "four orders of magnitude away from net energy gain." Most data-rich source for experimental status.
+3. **Optics.org, "Marvel Fusion looks to ramp laser production with additional EUR50M" (Apr 2025)** — `optics-news-16-4-4/output.md`. Most specific hardware disclosure: ~500 lasers for commercial plant, 10–100 for demonstrator, PLT/SPRIND laser production initiative.
 
-5. **arxiv-1603-02579.md** (iter-03) — Hora et al. arXiv:1603.02579 (abstract only in extracted form). Provides theoretical foundation for avalanche p-B11 mechanism and early gain claims. Document is abstract-level only — full paper text not accessible in available sources.
+4. **Optics.org, "Marvel backed for femtosecond fusion in EUR63M round" (Oct 2024)** — `optics-news-15-10-4/output.md`. CSU demonstrator details (two 100 J lasers, early 2027), silicon nanostructure targets via semiconductor lithography, kJ-class at 10 Hz future target.
 
-6. **hb11-2025-08-04-assoc-prof-patrick-burr-leads-unsw-team-to.md** (iter-03) — UNSW collaboration announcement (August 2025). Confirms steel construction viability, aneutronic environment, materials design scope for HB11 reactor chamber. Key quote: "near absence of neutrons opens up huge opportunities for simplified reactor design."
+5. **Dossier: Laser ICF - Nanostructured Target (p-B11)** — `dossier.md`. Consolidated research summary across two iterations. Provides differentiation table values, remaining gaps, and key source index. Medium-high overall confidence.
 
-7. **energynewsbulletin-energy-transition-features-articles.md** (iter-03) — Energy News Bulletin feature article. Provides HB11's wall-plug efficiency target (~10%), the engineering gain gap statement, and qualitative cost advantage claims (steel vs. tungsten, first wall lifetime). Best available source for economic framing claims.
+6. **New Atlas, "HB11 Energy Osaka Experiment" (2022)** — `newatlas-energy-hb11-laser-fusion-demonstration/output.md`. The only experimental data point for p-B11 laser fusion: alpha flux ~10^10/sr, 0.005% conversion, four orders of magnitude below breakeven.
 
-8. **newatlas-energy-hb11-hydrogen-boron-fusion-clean-energy.md** (iter-03) — New Atlas hydrogen-boron feature. Confirms HB11's in-house foam target manufacturing capability and strategic positioning as potential fuel supplier. Provides architecture description (data centre with large laser halls) and ~1 GW baseload target.
+7. **Cai et al. (2022), "A study of the requirements of p-11B fusion reactor by tokamak system code"** — `arxiv-2201-12818/output.md`. While focused on tokamak geometry, establishes physics constraints on p-B11 fusion: required Ti ~380 keV, synchrotron radiation loss sensitivity, He ash management. Provides upper-bound difficulty framing.
 
-9. **optics-news-15-10-4.md** (iter-03) — Optics.org coverage of Marvel Fusion Series B round (October 2024). Confirms EUR 62.8M Series B, $150M Fort Collins demonstration laboratory, two 100 J femtosecond lasers for ATLAS facility, experiments expected early 2027, kilojoule sources at 10 Hz by end of decade.
+8. **LLNL, "DPSSL for IFE" (1999)** — `osti-servlets-purl-15013230/output.md`. Historical IFE driver requirements: >5% efficiency, >10^9 shots, <$1.5B cost, diode cost targets $0.05–$0.07/W. Provides the baseline against which current progress is measured.
 
-10. **binding-ultrashort-pulse-laser-fusion.md** (iter-03) — Binding.energy technical overview. Confirms elimination of cryogenics and superconducting magnets as cost advantages, nanostructured target tuning for ignition thresholds, AI-driven modeling platform, and key industrial ecosystem (Trumpf, Thales, Siemens, Fraunhofer, CEA).
+9. **LLNL Mercury Laser Activation Report (2001)** — `osti-servlets-purl-15013216/output.md`. Technical details on the first 10 Hz, 100 J DPSSL prototype: Yb:S-FAP crystals, diode bar specifications, crystal growth challenges. Relevant for understanding Marvel's scaling path.
 
-11. **hb11-energy-technology.md** (iter-01) — HB11 Energy technology overview. Confirms 1 Hz pulse rate ("fuel pellets injected and burned at a rate of about 1 per second"), conventional steam cycle ("laser-Boron power plant will generate electricity using a conventional steam cycle"), and Proton Fast Ignition approach.
+10. **LLNL NIF Performance Campaign (FY17)** — `osti-servlets-purl-1400089/output.md`. NIF optics cost data ($7.5–17M startup, $5.6M/yr operational) — provides context for laser optics O&M costs in any ICF plant.
 
-12. **newsroom-news-science-tech-pioneering-technology-promises.md** (iter-03) — Newcastle University newsroom feature (HB11 coverage). Confirms direct conversion ambition (alpha particles to electrical flow without heat exchangers), compact urban-scale plant concept, and faster development roadmap claim.
+11. **Energy News Bulletin, HB11 Energy feature** — `energynewsbulletin-energy-transition-features-articles/output.md`. HB11's laser efficiency target (~10% WPE), steel-instead-of-tungsten cost advantage, in-house low-density foam targets.
 
-13. **dossier.md** — Fusion TEA Phase 1a research dossier for concept 23 (updated 2026-03-07). Primary synthesis document. Provides company summary, all differentiation table values with citations and confidence ratings, and remaining gap identification. Used throughout as factual foundation for all column-level claims.
+12. **Hora et al. (2016), "Avalanche boron fusion by laser picosecond block ignition"** — `arxiv-1603-02579/output.md` (abstract only). Theoretical foundation for the non-thermal ignition mechanism.
 
-14. **22-projectile-icf iter-5 analysis** — Cross-referenced for IFE-general target cost rule (Goodin et al. 2004 10% ceiling) and driver lifetime vs. capital cost LCOE sensitivity framework (Hawker 2020). These general IFE principles apply across concept families.
+13. **UNSW/HB11 Fusion Chamber Materials Collaboration** — `hb11-2025-08-04-assoc-prof-patrick-burr-leads-unsw-team-to/output.md`. Confirms conventional steel construction is viable for aneutronic reaction chambers.
 
-15. **osti-servlets-purl-1400089.md** (iter-03) — LLNL-TR-739796, Carr & Negres (2017): "NIF Optics Recycle Loop Cost Projection for Increased Energy Operations." Provides the best-available published analogue for laser IFE optics lifecycle cost: ~2,000 optic replacements/year at 2.6 MJ single-shot, $5.6M/year additional O&M above 1.8 MJ baseline, $7.5–17M one-time startup costs. Regime is nanosecond-pulse NIF at ~42 shots/year — approximately 7 million times lower annual shot count than Marvel's 10 Hz target. Ultrashort-pulse damage physics differs; analogue is cost-order reference only. Used in Section 5 and Section 6 Gap #9.
+14. **New Atlas, "HB11 Hydrogen-Boron Fusion" (2020)** — `newatlas-energy-hb11-hydrogen-boron-fusion-clean-energy/output.md`. HB11 reactor geometry (metal sphere, two-laser system), direct conversion claim (since abandoned), CPA laser technology basis.
 
-16. **arxiv-2201-12818.md** (iter-03) — Zhong et al. (2021/2022), "A study of the requirements of p-11B fusion reactor by tokamak system code," *Fusion Science and Technology*. Quantified physics analysis of p-B11 in tokamak confinement. Key findings: (1) wall reflectivity η_w = 0.95 reduces fusion gain from Q = 4.14 to Q = 0.84 via synchrotron losses; Q ≥ 1 requires η_w > 0.96 *and* H = 20 simultaneously; (2) helium ash density equals or exceeds fuel ion density at breakeven parameters unless τ_He < τ_E. Conclusion: p-B11 tokamak "will not come true unless some techniques have been found to avoid excessive synchrotron radiation loss." Used in Section 7 to motivate why laser IFE is the structurally preferred confinement approach for p-B11 fuel.
+15. **UNSW/HB11 Patent Press Release** — `newsroom-news-science-tech-pioneering-technology-promises/output.md`. Patent grants in Japan, China, USA; two-laser approach using Nobel Prize-winning CPA technology.
 
-17. **osti-servlets-purl-3008974.md** (iter-03) — LLNL, *Optics Express* (December 2025): "Laser diode technology requirements for diode-pumped solid-state laser drivers for inertial fusion energy." The authoritative 2025 analysis of DPSSL diode pump economics and reliability for IFE. Key data: current high-volume commercial diode cost $0.3–$1.3/W; IFE viability target $0.01/W (requiring ~1,000× production volume increase); at $0.01/W, diodes represent 33–50% of DPSSL beamline cost. Diode lifetime: 3–20 Gshots required for 30–60 year plant at 10 Hz; best demonstrated ~1 Gshot (880 nm bars, 2025) and 2 Gshots median (940 nm stacks, 2018). Market formation dependency: "uncertainty about the future IFE market may limit investment in production tooling to lower manufacturing costs." Used in Sections 2, 3, 4, and 6.
-
----
-
-*Footnotes:*
-
-[1] marvel-fusion-technology.md: "pursuing an advanced fusion energy concept that combines a proprietary fast ignitor concept with key innovations for lasers, targets, and power plant technology"
-
-[2] optics-news-16-4-4.md: "around 500 laser systems" for commercial plant; EUR 385M total support
-
-[3] marvel-fusion-2025-updates.md §Objective: "pilot powerplant by 2033 with 100 MW output"; CORDIS Project ID 101189082
-
-[4] newatlas-energy-hb11-laser-fusion-demonstration.md: "overall conversion efficiency: ~0.005%"; "four orders of magnitude away from achieving net energy gain"
-
-[5] arxiv-1603-02579.md §Abstract: "unique HB11 avalanche reaction...based on elastic collisions of helium nuclei"
-
-[6] hb11-2025-08-04-assoc-prof-patrick-burr-leads-unsw-team-to.md: materials design feasibility for aneutronic reactor chamber
-
-[7] energynewsbulletin-energy-transition-features-articles.md: "Our wall plug efficiency is expected to be about 10%, compared to current laser systems with less than 1%"
-
-[8] newatlas-energy-hb11-hydrogen-boron-fusion-clean-energy.md: "The company can now produce these materials in-house, which could give it a strategic edge as fusion research scales up"
+16. **Binding Energy, "Ultrashort Pulse Laser Fusion" keynote summary** — `binding-ultrashort-pulse-laser-fusion/output.md`. Marvel Fusion overview: compact plant, no magnets, nanostructured targets at industrial scale, 80+ staff, 200M+ EUR funding.

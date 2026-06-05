@@ -1,17 +1,21 @@
 {
   "iteration": 1,
   "verdict": "FAIL",
-  "finding_count": 3,
+  "finding_count": 1,
   "feedback_source": "cold_start",
   "model_ran": true,
   "model_ok": true,
   "research_ran": false,
   "merged_assess": false,
   "sources": [
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/36-helical-coil-stellarator/iter-01/sources/aip-2023-paper-abstract.md",
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/36-helical-coil-stellarator/iter-01/sources/helical-fusion-technology-overview.md",
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/36-helical-coil-stellarator/iter-02/sources/helical-fusion-2025-2026-updates.md",
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/36-helical-coil-stellarator/iter-02/sources/nifs-ffhr-blanket-heritage.md"
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\36-helical-coil-stellarator\\iter-01\\sources\\aip-2023-paper-abstract.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\36-helical-coil-stellarator\\iter-01\\sources\\helical-fusion-technology-overview.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\36-helical-coil-stellarator\\iter-02\\sources\\academia-144327326-the-aries-cs-compact-stellarator-fusion.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\36-helical-coil-stellarator\\iter-02\\sources\\arxiv-1401-4232.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\36-helical-coil-stellarator\\iter-02\\sources\\arxiv-2512-08027.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\36-helical-coil-stellarator\\iter-02\\sources\\gti-step-demo-achieves-phase-1-testing-milestone.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\36-helical-coil-stellarator\\iter-02\\sources\\helical-fusion-2025-2026-updates.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\36-helical-coil-stellarator\\iter-02\\sources\\nifs-ffhr-blanket-heritage.md"
   ],
-  "timestamp": "2026-04-20T18:07:17.919740+00:00"
+  "timestamp": "2026-06-04T17:30:05.693584+00:00"
 }

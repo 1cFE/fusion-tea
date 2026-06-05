@@ -1,0 +1,21 @@
+{
+  "iteration": 3,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "research",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": true,
+  "merged_assess": true,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/36-helical-coil-stellarator/iter-01/sources/aip-2023-paper-abstract.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/36-helical-coil-stellarator/iter-01/sources/helical-fusion-technology-overview.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/36-helical-coil-stellarator/iter-02/sources/academia-144327326-the-aries-cs-compact-stellarator-fusion.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/36-helical-coil-stellarator/iter-02/sources/arxiv-1401-4232.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/36-helical-coil-stellarator/iter-02/sources/arxiv-2512-08027.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/36-helical-coil-stellarator/iter-02/sources/gti-step-demo-achieves-phase-1-testing-milestone.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/36-helical-coil-stellarator/iter-02/sources/helical-fusion-2025-2026-updates.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/36-helical-coil-stellarator/iter-02/sources/nifs-ffhr-blanket-heritage.md"
+  ],
+  "timestamp": "2026-04-20T19:10:47.216019+00:00"
+}

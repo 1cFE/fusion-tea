@@ -5,6 +5,8 @@ Company: Commonwealth Fusion Systems
 Type: synthesis
 Status: draft
 Created: 2026-04-29
+Stale: true
+Stale-Reason: analysis-updated-iter-1
 ---
 
 # Synthesis: HTS Compact Tokamak (Commonwealth Fusion Systems ARC)

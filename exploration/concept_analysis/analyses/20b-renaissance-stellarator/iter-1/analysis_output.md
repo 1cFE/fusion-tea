@@ -1,362 +1,303 @@
-# D1+ Analysis: Compact Liquid-Wall HTS Stellarator (Renaissance Fusion)
+## Design Point
 
-**Concept**: Compact Liquid-Wall HTS Stellarator — D-T fuel
-**Company**: Renaissance Fusion (Grenoble, France)
-**Confinement Family**: MFE — Stellarator (modular)
+- Name: 1 GWe economically optimized compact liquid-wall HTS stellarator (Samulski et al., Nuclear Fusion 64 (2024) 026007)
+- Maturity: paper-concept
+- P_native: 1000 MWe
+- Grounding: high
+- Primary sources:
+  - knowledge/concept_research/20b-renaissance-stellarator/iter-01/sources/infoscience-bitstreams-7d2d7b2f-6f75-4ac2-93cb-6eef8a65df82/output.md
+  - knowledge/concept_research/20b-renaissance-stellarator/dossier.md
 
----
-
-## Section 1: Availability of Data
+## 1. Availability of Data
 
 **Rating: Moderate**
 
-Renaissance Fusion has published three peer-reviewed papers in high-quality journals that collectively define the physics design point, the integrated blanket/neutron management system, and the power conversion cycle. This is unusually rigorous public disclosure for a private fusion startup at this stage, and it provides a solid technical foundation. However, no economic analysis, capital cost estimate, system code study (PROCESS, ARIES-equivalent), or plant costing breakdown has been published. The "Moderate" rating reflects strong technical data on subsystem performance, but zero published economic data and no complete plant-level system model.
+Renaissance Fusion has published two peer-reviewed papers that together define a coherent 1 GWe stellarator design point:
 
-**Published primary sources:**
+1. **Prost & Volpe, Nuclear Fusion 64 (2024) 026007** — "Economically optimized design point of high-field stellarator power-plant." This is the primary design-point paper defining the reactor geometry, physics operating point, and economic optimization. It establishes the major radius, aspect ratio, field strength, and power balance. This paper was not directly extracted in the available source set (it is reference [1] in the blanket paper), but its key parameters are reproduced in the blanket paper's body text and the dossier.
 
-*Nuclear Fusion 64 (2024) 026007* is the core design paper: it establishes the machine geometry (R ≤ 4 m, A ≈ 4), the laser-patterned HTS REBCO magnet approach (B = 10 T nominal, up to 15 T at coil), the plasma design point (D-T at 10 keV, Q = ∞), and the startup heating system (NNBI with 60% neutralization efficiency). The paper explicitly performs an economic optimization of the design point — the cost-optimal major radius and machine scale are derived — but does not disclose the absolute cost result. This is the most directly useful single source for TEA and distinguishes Renaissance Fusion from private companies that have released no technical documentation at all.
+2. **Prost, Ogier-Collin & Volpe, J. Nuclear Materials 599 (2024) 155239** — "Compact fusion blanket using plasma facing liquid Li-LiH walls and Pb pebbles." This defines the blanket concept, radial build, and neutronics performance for the design point established in [1]. This paper is fully extracted and provides detailed quantitative data.[^1]
 
-> "The design point has been economically optimized for 1 GWe output at major radius ≤4 m with aspect ratio ~4"
-> — paraphrased from dossier.md, §Summary (citing Nuclear Fusion 64 (2024) 026007)
+A third peer-reviewed paper defines the power conversion system:
 
-*Journal of Nuclear Materials 599 (2024) 155239* characterizes the integrated liquid Li-LiH first wall and blanket: radial build (15 cm Pb + 18 cm Li-LiH), maximum wall loading capability (25 MW/m²), neutron energy multiplication factor (fm = 1.24), neutron energy absorption (99.99%), and outer shielding structure (50 cm VH₂ + 1.3 m concrete bioshield). This paper defines the first-wall architecture that is central to the concept's TEA distinctiveness.
+3. **Famà et al., Energy Conversion and Management 276 (2023) 116572** — optimized sCO2 Brayton-Rankine combined cycle at 49–51% cycle efficiency. Referenced in the dossier but not directly extracted.[^2]
 
-*Energy Conversion and Management 276 (2023) 116572* (Fama et al.) documents the sCO₂ Brayton-Rankine combined cycle optimized via genetic algorithm for this design: 49–51% thermal cycle efficiency, yielding 34% net plant efficiency at the 1 GWe design point. This is the source for all power conversion parameters.
+Additional public sources include a UC Berkeley seminar, MT29 conference abstract on the magnet program, company website content, and Innovation News Network coverage. Renaissance Fusion's magnet technology has a demonstrated milestone: a 6 T peak Helmholtz magnet at 1.2 m diameter and 20 K.
 
-**Additional public materials:**
+**Data strengths:**
+- Complete reactor geometry and physics operating point from a peer-reviewed systems study
+- Detailed 1D neutronics for the blanket/radial build with OpenMC simulations
+- Specific power conversion cycle with published thermodynamic optimization
+- Transparent publication strategy — key design choices are in the open literature
 
-The Renaissance Fusion technology page (renfusion.eu/technology) confirms the laser-patterning approach, liquid metal wall, steady-state operation with "near-100% duty cycle," and ignited design target. A UC Berkeley seminar ("High-field HTS stellarators with liquid metal walls") and an MT29 abstract (2024) provide additional context on the magnet fabrication approach and the hardware demonstration milestone: a 6 T peak Helmholtz magnet at 1.2 m diameter and 20 K. The MT29 milestone is the only hardware result in the public record.
+**Key data gaps:**
+- The design-point paper (Nuclear Fusion 64 (2024) 026007) was not directly extracted; Table 1 from the blanket paper (which reproduces the design point) was lost during PDF extraction. Several parameters (plasma beta, density, plasma temperature profile, detailed coil geometry, peak field on conductor) are therefore not directly verifiable from the extracted sources.
+- No published dollar-figure cost estimate for the plant or any subsystem.
+- No published capital cost breakdown, LCOE estimate, or cost-of-electricity study.
+- No 3D neutronics — only 1D cylindrical model available.
+- No thermo-fluid or MHD analysis of the liquid metal wall.
+- No detailed coil manufacturing cost data for the laser-patterned HTS film approach.
+- The REBCO characterization paper (arxiv 1512.01930, Senatore et al. 2015) in the source set characterizes commercial REBCO conductors from six manufacturers but does not address Renaissance Fusion's specific laser-patterned film approach.
 
-**Independent analyses:**
+[^1]: infoscience-bitstreams-7d2d7b2f-6f75-4ac2-93cb-6eef8a65df82/output.md §1 Introduction
+[^2]: dossier.md §Energy Capture
 
-No independent third-party assessment of the Renaissance Fusion design exists in the public literature. There is no ARIES-equivalent study, no PROCESS run for this geometry, and no academic group has published a techno-economic analysis of the laser-patterned stellarator concept. The ARIES-CS study (quasi-isodynamic compact stellarator) provides a partial geometry analogy but does not address the laser-patterning approach or liquid metal wall architecture.
+## 2. Challenges in Capturing System Function
 
-**Phase 1a dossier completeness:**
+The following challenges are ranked by their impact on LCOE modeling uncertainty:
 
-The dossier achieved high confidence across all differentiation taxonomy columns. One minor unresolved gap: the dossier notes that TBR ≈ 1.60 was cited in the original composite research, but the JNM blanket paper reports fm = 1.24 (neutron energy multiplication factor). These are distinct quantities — fm amplifies neutron energy available for breeding, but TBR (the actual tritium atoms produced per 14 MeV neutron) is not directly confirmed in available sources. This gap is important for tritium self-sufficiency modeling.
+### 2.1 Liquid Metal Wall Integration (High Impact)
 
-**Key data gaps limiting this analysis:**
+The liquid Li-LiH wall with suspended Pb pebbles serves simultaneously as first wall, breeder, neutron multiplier, neutron shield, and primary coolant. This integrated architecture eliminates the separate first wall, blanket module, and shield that conventional stellarator cost models price as distinct accounts. The 1costingFE library's C220101 (first wall/blanket) and C220102 (radiation shield) accounts assume a solid first wall and a contained blanket — neither applies directly to a flowing liquid metal wall.
 
-1. No capital cost estimate, LCOE model, or CAS-level cost breakdown has been published
-2. Tritium breeding ratio (TBR) is unconfirmed — fm ≠ TBR
-3. No plasma confinement time, density, or bootstrap fraction published
-4. Liquid metal circulation pump power not disclosed — drives unexplained gap between cycle efficiency (50%) and net efficiency (34%)
-5. No divertor design or plasma exhaust solution has been addressed in any source
-6. The demonstrated magnet (6 T, Helmholtz) is at 60% of nominal design field and does not characterize manufacturing cost or throughput
+> "Thick liquid metal first walls could enable compact fusion blankets and radial build in stellarators while allowing for heat extraction, continuous tritium breeding and neutron shielding"
+> — infoscience-bitstreams-7d2d7b2f-6f75-4ac2-93cb-6eef8a65df82/output.md §1 Introduction
 
----
+The key uncertainty is that no thermo-fluid or MHD analysis of this wall has been published. The liquid metal must flow at 700–900°C in a stellarator magnetic geometry with varying field direction — MHD pressure drops, flow stability, and heat extraction uniformity are all open questions.
 
-## Section 2: Challenges in Capturing System Function
+### 2.2 Laser-Patterned HTS Magnet Cost (High Impact)
 
-Challenges are ranked by LCOE impact.
+Renaissance Fusion's core manufacturing innovation — depositing HTS REBCO film on ~1 m diameter cylindrical surfaces and laser-patterning the current paths — has no cost precedent. Traditional stellarator coils are the dominant cost driver (complex 3D winding, precision assembly). Renaissance's approach eliminates traditional winding entirely, but the cost of the novel process (film deposition, laser ablation, quality control at scale) is not publicly characterized. The 6 T Helmholtz demonstrator at 1.2 m validates the physics concept but provides no manufacturing cost data at reactor scale (10–15 T, multiple cylinders).
 
-**1. Entirely unanchored economics — no cost model starting point (Impact: Critical)**
+### 2.3 Ignited Operating Point (Q = ∞) (Moderate Impact)
 
-Unlike CFS (Sorbom et al. 2015 plant study), ARIES-CS (complete cost breakdown), or any other stellarator concept with an analogue study, Renaissance Fusion has published zero economic data. The Nuclear Fusion design paper notes the design point was "economically optimized" but reports only relative results (cost-optimal radius), not the absolute cost. Every CAS account — from laser-patterned magnets through liquid metal wall through sCO₂ balance of plant — must be constructed from first principles with no company anchor point. This is the broadest costing uncertainty in the MFE stellarator family.
+The design point assumes ignition — zero external heating at steady state, with alpha heating sustaining the plasma entirely. This is the most aggressive Q target among all stellarator concepts surveyed. If ignition is not achieved and auxiliary heating power is required at steady state, the recirculating power fraction rises, net electric output drops, and CAS22.01.04 (heating systems) becomes a non-trivial cost account. The NNBI system (60% neutralization efficiency) is specified for startup/ramp-up only.
 
-**2. Laser-patterned HTS film: no manufacturing cost analogue exists (Impact: Critical)**
+### 2.4 Compact Geometry and Coil Stress (Moderate Impact)
 
-The laser-patterning approach — REBCO film deposited on ~1 m diameter cylindrical surfaces, current paths defined by laser ablation — eliminates traditional coil winding but substitutes a cost structure with no published industrial analogue. For a wound-tape design, the coil cost is approximable as tape length × $/kA-m. For laser-patterned film, the cost drivers are:
-- REBCO thin-film deposition throughput and uniformity at 1 m cylinder scale
-- Laser patterning throughput, kerf/waste rates, and re-work protocols
-- Substrate (cylinder) fabrication and qualification
-- Quench detection and protection for distributed thin-film superconductor (very different from wound tape, where quench propagation and protection are well-characterized)
+The 91 cm plasma-to-coil radial build is significantly more compact than conventional stellarator designs (typically 1.3 m+). While the blanket paper demonstrates this is neutronically feasible, the structural implications — coil stress at 10.2 T on-axis (with peak fields of 20–40 T at the conductor, per the dossier), electromagnetic forces on the cylindrical magnet assemblies, and the mechanical interface between the liquid metal containment and the HTS cylinders — are not addressed in the available sources.
 
-None of these cost drivers has a published analogue at relevant scale. The 6 T Helmholtz demonstration validates that the physics concept works, but does not characterize production economics. This is the single largest manufacturing cost uncertainty in this survey.
+### 2.5 No Published Cost Data (Moderate Impact)
 
-**3. Ignited stellarator plasma (Q = ∞): extrapolation with no intermediate steps (Impact: High)**
+Unlike some competitors (e.g., CFS with ARC-derived cost studies, or ARIES-CS for classical stellarators), Renaissance Fusion has published no dollar-figure cost estimates for any subsystem. The design-point paper performs an economic optimization (selecting parameters to minimize cost via a systems model), but the resulting cost figures are not publicly available. This means all cost modeling must rely on the archetype library defaults with limited ability to validate or override.
 
-No stellarator has operated near burning plasma conditions. The gap between the best demonstrated stellarator performance (W7-X: plasma temperatures of a few keV at low density, no significant fusion reactions) and the Renaissance Fusion target (ignited 10 keV D-T plasma in a compact A ≈ 4 geometry at 10 T) is enormous. Unlike tokamaks, where TFTR, JET, and JT-60SA provide stepping stones and ITER is a validated pathway to burning plasma, there is no experimental stellarator program that provides an intermediate data point for Q >> 1. The compact aspect ratio (A ≈ 4) puts this design in a parameter space with no stellarator experimental precedent — the confinement quality of a compact QI geometry at 10 T has not been tested. This physics extrapolation propagates into large uncertainty in the capital cost model: if confinement underperforms, the machine must grow, driving cost upward nonlinearly.
+## 3. Maturity of Key Subsystems and Components
 
-**4. Liquid Li-LiH wall at 25 MW/m²: unprecedented engineering regime (Impact: High)**
+Subsystems are listed in ascending order of maturity (least mature first).
 
-The flowing liquid metal wall is the most radical first-wall concept in this survey. At 25 MW/m² continuous wall loading, the Li-LiH system must simultaneously:
-- Present a stable plasma-facing free surface without disrupting confinement via MHD interactions
-- Circulate at sufficient velocity to limit tritium holdup (tritium solubility in Li is very high — a favorable breeding property but a permeation risk)
-- Deliver heat to the sCO₂ heat exchanger at the high temperatures needed to achieve 49–51% cycle efficiency
-- Manage the Pb pebble neutron multiplication layer within the flowing liquid system
+### Laser-Patterned HTS Magnets — TRL 3–4
+- **Demonstrated:** 6 T peak Helmholtz magnet at 1.2 m diameter and 20 K (MT29 Abstract). Laser patterning of REBCO film on cylindrical surfaces at laboratory scale.
+- **On paper only:** Full-scale stellarator field coils at 10–15 T with the required 3D current patterns. Reactor-relevant conductor area and current density. Quench protection for patterned film conductors.
+- **Missing at scale:** Film deposition on meter-scale cylinders at the required thickness and uniformity. Quality control of laser-patterned current paths at production rates. Radiation tolerance of the film-on-cylinder architecture under neutron flux. Demonstrated operation above 10 T.
 
-> "The liquid metal wall serves as integrated first wall, breeder, shield, and coolant — a fundamentally different architecture from contained blanket approaches. Capable of 25 MW/m² wall loading."
-> — dossier.md, §Tritium Breeding (citing J. Nuclear Materials 599 (2024) 155239)
+### Flowing Liquid Li-LiH Wall with Pb Pebbles — TRL 2–3
+- **Demonstrated:** Neutronics analysis (1D OpenMC) confirms breeding and shielding feasibility. Li-LiH phase behavior is documented (fully liquid above 680°C). Pb pebble neutron multiplier concept has nuclear engineering heritage.
+- **On paper only:** The flowing wall concept in a stellarator geometry. MHD flow behavior in the non-axisymmetric stellarator field. Heat extraction uniformity and liquid metal flow stability at 700–900°C. SiC or similar coating durability on Pb pebbles at operating temperature.
+- **Missing at scale:** Any experimental demonstration of a thick flowing liquid metal wall in a stellarator (or any fusion) magnetic geometry. Tritium extraction from Li-LiH at plant-relevant rates. Liquid metal handling and circulation systems at the required flow rates.
 
-No flowing liquid metal wall has been demonstrated at 25 MW/m² in any experimental facility. The MHD behavior of a Li-LiH mixture (as opposed to pure Li or Pb-17Li) in the complex 3D magnetic geometry of a compact stellarator is uncharacterized. For LCOE modeling, the liquid metal circulation system (pumps, heat exchangers, tritium extraction, MHD conditioning piping) is a major capital cost account with essentially no published cost analogue.
+### Tritium Fuel Cycle — TRL 2–3
+- **Demonstrated:** Lab-scale tritium handling and extraction from liquid metals in the broader fusion community.
+- **On paper only:** Tritium extraction from the Li-LiH/Pb pebble mixture. Closed-loop fuel cycle with the specific blanket chemistry. TBR of 1.53–1.60 is calculated but depends on full coverage assumptions.
+- **Missing at scale:** Industrial-scale tritium processing with Li-LiH. Permeation barriers for the V-Cr-Ti vacuum vessel at 700–900°C. Tritium accountability and safety systems for a flowing liquid metal loop.
 
-**5. The net efficiency gap: unexplained recirculating power (Impact: High)**
+### Remote Maintenance — TRL 2–3
+- **On paper only:** The cylindrical modular architecture (4 field periods) may simplify maintenance compared to conventional non-planar stellarator coils, but no maintenance concept has been published.
+- **Missing at scale:** Remote handling for a liquid-metal-filled stellarator. Access to the vacuum vessel and HTS cylinders. The blanket paper notes that "the stellarator hall will not be accessible by workers during operations."[^3]
 
-The published numbers — 49–51% sCO₂ cycle efficiency and 34% net plant efficiency [ECM 276 (2023) 116572] — imply that roughly 32% of gross electric output is consumed by parasitic loads. For a design targeting Q = ∞ (zero heating power at steady state), this large recirculating fraction requires explanation. The likely contributors are:
-- Cryogenic refrigeration for HTS at 20 K (significant at large magnet volume)
-- Liquid metal circulation pumps for 25 MW/m² continuous wall loading (likely the dominant load)
-- sCO₂ cycle compressors
-- Auxiliary systems
+### Power Conversion System (sCO2 Brayton-Rankine) — TRL 5–6
+- **Demonstrated:** sCO2 Brayton cycles at pilot scale in the power industry. Genetic algorithm optimization of the combined cycle published.
+- **On paper only:** Integration with a 700–900°C liquid metal heat source. Heat exchangers compatible with Li-LiH.
+- **Missing at scale:** No fusion-specific sCO2 power conversion system has been built.
 
-None of these loads are itemized in any published source. Without knowing the pump power specifically, the Q_engineering calculation cannot be closed from first principles. This gap makes it impossible to verify the 34% net efficiency number or to perform a recirculating power sensitivity analysis — a key LCOE lever.
+### Vacuum Vessel (V-Cr-Ti) — TRL 3–4
+- **Demonstrated:** V-Cr-Ti alloys characterized for neutron irradiation and corrosion resistance. Used in fission material science programs.
+- **Missing at scale:** Large-scale fabrication of V-Cr-Ti structures. Welding and joining at reactor scale. Long-term corrosion behavior in Li-LiH at 700–900°C.
 
-**6. sCO₂ combined cycle at 49–51%: not yet demonstrated at GW scale (Impact: Moderate)**
+### Neutron Shielding (VH2) — TRL 3
+- **Demonstrated:** VH2 characterized as neutron moderator in published literature. Neutronic effectiveness confirmed in the blanket paper simulations.
+- **Missing at scale:** Large-volume VH2 production and fabrication into 54 cm thick shielding layers. Long-term stability under neutron irradiation and thermal cycling.
 
-The genetic-algorithm-optimized Brayton-Rankine combined cycle [ECM 276 (2023) 116572] achieves its efficiency by operating at high turbine inlet temperatures enabled by the liquid metal heat source. sCO₂ cycles have been demonstrated at MW scale (Sandia, Echogen) but not at GW scale, and not with the specific inlet temperature profile from a liquid metal fusion heat source. The 49–51% target represents a 15-percentage-point premium over steam Rankine (~34–36%) — a very significant LCOE lever — and should be treated as high-reward/medium-confidence until demonstrated at larger scale.
+[^3]: infoscience-bitstreams-7d2d7b2f-6f75-4ac2-93cb-6eef8a65df82/output.md §5 Case Study
 
-**7. O&M and maintenance: zero published data (Impact: Moderate)**
+## 4. Key Materials and Supply Chain Considerations
 
-No published source addresses maintenance intervals, component replacement schedules, remote handling requirements, or O&M costs. The flowing liquid wall concept may eliminate the discrete solid first-wall replacement cycle that dominates maintenance downtime in solid-blanket designs, but introduces its own maintenance requirements (pump overhauls, heat exchanger fouling, Pb pebble bed management, tritium extraction system maintenance). These are entirely uncharacterized. Per cross-concept memory, O&M absence is a guaranteed finding in first-pass analyses — a placeholder subsection is included here as recommended.
+### HTS REBCO Film
+Renaissance Fusion's approach bypasses traditional REBCO tape winding entirely. Instead of procuring thousands of kilometers of tape (as CFS/ARC requires), they deposit REBCO film on cylindrical substrates and laser-pattern the current paths. This potentially eliminates the REBCO tape supply chain bottleneck — global tape production is currently thousands of km/year, while a single ARC-class reactor requires >5,000 km. However, the film deposition process itself requires REBCO precursor materials (rare earth oxides, barium, copper oxide), and the throughput and cost of large-area film deposition at the required quality are unknown. The Senatore et al. (2015) characterization paper in the source set identifies six commercial REBCO manufacturers across four countries, indicating a diversified but still limited supply chain for the underlying materials.
 
-**O&M placeholder**: In the absence of any published data, O&M cost for this concept should be modeled using a two-component framework: (a) fixed O&M ($/year) from scaling to plant size and staffing analogy with ARIES-CS or similar stellarator plant studies; (b) a liquid metal system maintenance adder calibrated against industrial liquid metal handling experience (nuclear Na-cooled fast reactors, fusion breeder blanket R&D). Both components carry very high uncertainty (factor of 2–3×) at this stage.
+### Liquid Lithium / Lithium Hydride (Li-LiH)
+The blanket uses a 5% Li / 95% LiH molar mixture as the primary breeder and coolant. LiH is produced industrially (primarily for hydrogen storage and chemical synthesis), but the quantities required for a reactor blanket — filling the entire flowing wall volume of a 3.8 m major radius stellarator — would represent a significant procurement relative to current production. LiH is pyrophoric and reacts vigorously with water, creating handling and safety considerations. The operating temperature (700–900°C) is above LiH's melting point (692°C), maintaining the mixture in a fully liquid phase.
 
----
+### Lead (Pb) Pebbles
+Lead was selected as the neutron multiplier specifically because tungsten and molybdenum "would increase the cost by several orders of magnitude" compared to Pb.[^4] Lead is an abundant, low-cost commodity metal. The pebble form factor (0.1–5 mm spheres with SiC or similar coatings) requires specific manufacturing but is not fundamentally challenging. The coating must resist high temperatures, corrosion from the Li-LiH, and provide electrical insulation — durability of SiC coatings in this environment is undemonstrated.
 
-## Section 3: Maturity of Key Subsystems and Components
+### Vanadium Alloy (V-14.5Cr-5Ti)
+The 5 cm thick vacuum vessel uses a vanadium-chromium-titanium alloy selected for corrosion resistance and low activation. Vanadium is produced as a byproduct of steel processing (~100,000 t/yr globally), but the specific nuclear-grade V-Cr-Ti alloy has never been produced at the hundreds-of-tonnes scale required. The V-4Cr-4Ti variant studied for tokamak first walls has a market cost estimated at ~$37/kg; the specific 80.5V-14.5Cr-5Ti composition used here may differ.
 
-Ordered from least mature (highest risk) to most mature.
+### Vanadium Hydride (VH2) Shielding
+VH2 is identified as the most compact neutron shielding material (54 cm vs. >1 m for concrete alone), but the blanket paper notes that metal hydrides "are not as cost effective as concrete."[^5] Large-volume VH2 production for reactor shielding would be a novel industrial application.
 
----
+### No Li-6 Enrichment Required (Baseline)
+The baseline design uses natural lithium enrichment in the Li-LiH mixture. The blanket paper shows that Li-6 enrichment would provide only minor thickness reduction at "substantially higher cost due to the costly process of Li 6 enrichment."[^6] This is a cost advantage relative to designs that require enriched Li-6 (e.g., solid ceramic breeders).
 
-**Ignited Stellarator Plasma — TRL 2–3**
+[^4]: infoscience-bitstreams-7d2d7b2f-6f75-4ac2-93cb-6eef8a65df82/output.md §3.1 Candidate Material
+[^5]: infoscience-bitstreams-7d2d7b2f-6f75-4ac2-93cb-6eef8a65df82/output.md §5 Case Study
+[^6]: infoscience-bitstreams-7d2d7b2f-6f75-4ac2-93cb-6eef8a65df82/output.md §3.2 Comparison of Breeding Layer Performance
 
-- **Demonstrated**: Wendelstein 7-X achieved record stellarator energy confinement times and validated quasi-isodynamic field optimization at A = 10. W7-X plasma temperatures reached a few keV at low density — far from fusion conditions. No stellarator has operated in a burning or even significantly fusion-producing plasma regime. The compact A ≈ 4 geometry is roughly 2.5× lower aspect ratio than W7-X, entering territory without experimental stellarator precedent.
-- **On paper only**: QI-optimized equilibrium at R ≤ 4 m, A ≈ 4, B = 10 T with 10 keV D-T design point. Alpha particle confinement at ignition conditions in this compact QI geometry. Stellarator confinement scaling validation at the Renaissance Fusion operating point. Plasma exhaust and divertor solution (not addressed in any published source).
-- **Missing at scale**: Any experimental demonstration of Q >> 1 in any stellarator configuration. Confinement quality validation at A ≈ 4 (much less shape freedom for QI optimization than W7-X at A = 10). Stability of plasma-liquid metal interface (the free-surface or confined-film liquid wall must interact with the plasma edge without degrading confinement). Alpha heating dominance in a compact stellarator — depends on alpha confinement quality that has never been experimentally tested.
+## 5. Design Point Parameters
 
----
+All parameters describe the 1 GWe economically optimized compact liquid-wall HTS stellarator at its native 1000 MWe scale. Parameters are sourced from the blanket paper body text (which reproduces the design-point paper's values) and the dossier.
 
-**Laser-Patterned HTS Film on Cylinders (Magnet System) — TRL 3–4**
+| Parameter | Value | Source | Confidence | Note |
+|-----------|-------|--------|------------|------|
+| R0 (major radius) | 3.8 m | infoscience-bitstreams...output.md §1 Introduction; §2.2 Model Description | high | spec key: `R0` |
+| a (minor radius) | ~0.93 m | [inferred: R0/A = 3.8/4.1 = 0.927 m] | medium | spec key: `plasma_t`. Blanket paper uses 1.0 m plasma radius in cylindrical model approximation. |
+| Aspect ratio A | 4.1 | infoscience-bitstreams...output.md §1 Introduction; §2.2 | high | |
+| elongation | ~1.0 | [inferred: stellarator — no elongation parameter analogous to tokamak; complex 3D shape] | low | spec key: `elon`. Stellarator cross-section is not simply elongated; this parameter has limited meaning for stellarators. |
+| B0 (on-axis field) | 10.2 T | infoscience-bitstreams...output.md §1 Introduction | high | spec key: `B` |
+| B_peak (on conductor) | 20–40 T | dossier.md §Magnet Type | medium | Range from Nuclear Fusion paper (per dossier); not directly confirmed in extracted blanket paper. Informational only. |
+| Number of field periods | 4 | infoscience-bitstreams...output.md §2.2 | high | 4-field period symmetry with piecewise cylindrical coil surfaces |
+| Cylinder length (single period) | 6.3 m | infoscience-bitstreams...output.md §2.2 | high | |
+| fusion_power_MW | ~2000 MW | infoscience-bitstreams...output.md §1: "approximately 2 GW of fusion power" | high | Informational — library back-solves from p_input + P_native. |
+| thermal_power_MW | ~2200 MWth | infoscience-bitstreams...output.md §1: "approximately 2.2 GWth" | high | |
+| net_electric_MWe | 1000 MWe | infoscience-bitstreams...output.md §1: "1 GWe" | high | Drives P_native. |
+| p_input_MW | ~0 MW (ignited) | dossier.md §Plasma State: "Q = infinity (ignited design, zero external heating at steady state)" | high | spec key: `p_input`. At ignition, auxiliary heating is startup-only; steady-state p_input ≈ 0. NNBI system exists for startup. |
+| Q (energy gain) | ∞ (ignited) | dossier.md §Plasma State | high | Zero external heating at operating point. |
+| Plasma temperature | ~10 keV | dossier.md §Fuel: "design point at 10 keV" | high | |
+| NNBI neutralization efficiency | 60% | dossier.md §Primary Heating | high | Negative Neutral Beam Injection for startup. |
+| Thermal cycle efficiency (gross) | 49–51% | dossier.md §Energy Capture: Famà et al. (2023), sCO2 Brayton-Rankine | high | |
+| Net plant efficiency | ~34% | dossier.md §Energy Capture | medium | Includes all auxiliary loads and recirculating power. |
+| eta_th (net thermal efficiency) | ~0.45 | [inferred: 1000 MWe / 2200 MWth ≈ 0.45; cycle efficiency 49–51% with ~10% aux loads] | medium | spec key: `eta_th` |
+| Availability | 80% | infoscience-bitstreams...output.md §2.1: "40 years at 80% availability" | high | |
+| Plant lifetime | 40 years | infoscience-bitstreams...output.md §2.1 | high | |
+| Radial build (plasma to HTS inboard) | 91 cm | infoscience-bitstreams...output.md §5 Case Study | high | 32 cm liquid metal + 5 cm vessel + 54 cm shield |
+| Breeding blanket thickness | 32 cm | infoscience-bitstreams...output.md §5: "10 cm of Pb pebbles, and 22 cm of non enriched Li-LiH" | high | |
+| Neutron shield thickness (VH2) | 54 cm | infoscience-bitstreams...output.md §5 | high | |
+| Vacuum vessel thickness (V-Cr-Ti) | 5 cm | infoscience-bitstreams...output.md §2.2 | high | |
+| Bioshield thickness | 1.3 m (borated concrete) | infoscience-bitstreams...output.md §5 | high | |
+| TBR | 1.53–1.60 | infoscience-bitstreams...output.md §5 (1.60) and §6 (1.53) | high | 1.60 for reference case; 1.53 for the complete build with mixed Pb/Li-LiH. |
+| Energy multiplication factor (fm) | 1.05–1.07 | infoscience-bitstreams...output.md §5 (1.07) and §6 (1.05) | high | |
+| Nuclear heat in liquid metal | 90% (1.6 GW) | infoscience-bitstreams...output.md §5 | high | 3% in vacuum vessel (54 MW), 8% in shield (150 MW) |
+| HTS nuclear heating (achieved) | 0.14 mW/cm³ | infoscience-bitstreams...output.md §5 | high | Well below 2 mW/cm³ limit. |
+| Structural DPA limit | 200 DPA / 6.25 DPA/yr | infoscience-bitstreams...output.md §2.1 | high | Over 32 full-power years. |
+| HTS neutron flux limit | 10¹⁹ n/cm² lifetime | infoscience-bitstreams...output.md §2.1 | high | |
+| Neutron source rate (full reactor) | 7.1 × 10²⁰ n/s | infoscience-bitstreams...output.md §1 | high | |
+| Liquid metal operating temperature | 700–900°C | infoscience-bitstreams...output.md §2.1 | high | |
+| Wall loading | ~25 MW/m² | dossier.md §Tritium Breeding: "Capable of 25 MW/m² wall loading" | medium | Liquid metal wall capability; actual operating wall loading not separately stated. |
+| Operation mode | Steady-state | dossier.md §Operation Mode | high | Inherent stellarator advantage — no current drive needed. |
+| Fuel | D-T | dossier.md §Fuel | high | |
 
-- **Demonstrated**: A 6 T peak Helmholtz magnet at 1.2 m diameter and 20 K has been built and operated, validating that laser-ablated current paths on REBCO film deposited on a cylindrical substrate can carry superconducting current at useful fields [MT29 Abstract, 2024; dossier.md §Magnet Type]. This is the sole hardware milestone for the magnet program.
-- **On paper only**: Scaling the laser-patterning approach to 10–15 T design field (and to the 20–40 T peak coil fields referenced in the Nuclear Fusion design paper [NF 64 (2024) 026007]) across the full toroidal array of cylinders producing a 3D QI stellarator field. Current path optimization for QI confinement quality. Quench detection and protection for distributed thin-film HTS (quench propagation in patterned film is fundamentally different from wound tape — detection and energy extraction strategies are undemonstrated).
-- **Missing at scale**: REBCO film deposition uniformity and critical current density (Jc) on 1 m diameter curved substrates at production throughput. Laser patterning precision, repeatability, and repair protocols at nuclear-grade quality. Long-term performance of laser-patterned film under combined cryogenic thermal cycling and 14 MeV neutron irradiation. Manufacturing cost characterization at any scale relevant to a commercial plant. Behavior at peak coil fields of 20–40 T — REBCO Jc degrades sharply above ~20 T at 20 K; achieving 40 T would require either much lower operating temperature or accepting greatly reduced current density, neither of which is addressed in available sources.
+**Note on missing parameters:** Plasma beta, plasma density (n_e), detailed coil geometry and conductor specifications, and peak-field-on-conductor are referenced in the Nuclear Fusion design-point paper but not reproduced in the extracted blanket paper body text. These are marked as data gaps. The elongation parameter is structurally inapplicable to stellarators (complex 3D cross-section), but a value near 1.0 is used as a modeling placeholder.
 
----
+## 5b. Override Candidates
 
-**Liquid Li-LiH Integrated Wall System — TRL 2–3**
+### Per-Account Walkthrough
 
-- **Demonstrated**: Liquid metal first-wall concepts (pure Li, Pb-17Li) have been tested at small scale in tokamak environments — the LiMIT limiter on DIII-D, small-scale Li wall experiments on NSTX, and extensive Pb-17Li loop experiments for EU-DEMO. The specific Li-LiH mixture is non-standard (LiH is solid at room temperature, melts at 680°C; the operating mixture must be managed as a high-temperature fluid). The JNM blanket paper [J. Nuclear Materials 599 (2024) 155239] characterizes neutron performance analytically, validating the shielding and breeding geometry.
-- **On paper only**: Stable Li-LiH flow at 25 MW/m² plasma-facing wall loading. Tritium extraction from the flowing Li-LiH circuit (tritium solubility in Li is very high — extraction system design is crucial for tritium accountability). Pb pebble integration with flowing liquid metal (pebble retention and fluidization in the flow field). Heat exchanger transferring heat from Li-LiH to sCO₂ without tritium permeation through exchanger walls.
-- **Missing at scale**: Any demonstration of a Li-LiH wall at fusion-relevant neutron flux and heat load. MHD flow stability of Li-LiH in complex 3D stellarator geometry under large magnetic field gradients. Tritium permeation rate from liquid Li through structural walls at operating temperature (relevant data exists for pure Li but not Li-LiH mixture). Long-term compatibility of Li-LiH with RAFM structural steels under combined chemical attack, neutron activation, and thermal cycling. Industrial-scale tritium extraction from the liquid Li-LiH circuit at the kg/day rates needed for a 1 GWe plant.
+**C220101 — First wall, blanket & neutron multiplier:** The flowing liquid Li-LiH wall with suspended Pb pebbles replaces the conventional solid first wall and contained blanket entirely. The architecture is fundamentally different from what the library default prices (a solid first wall with a separate blanket module). However, the dossier provides no dollar figure, unit cost, or mass-based cost estimate for the liquid metal wall system. The blanket paper provides material compositions and thicknesses but no cost data. Without a company-grounded cost figure, no override is justified — the library default stands.
 
----
+**C220102 — Radiation shield:** The 54 cm VH2 neutron shield is a novel material choice (most designs use concrete, water, or steel). The blanket paper notes VH2 is more effective but "not as cost effective as concrete." No cost figure is provided for the VH2 shield. No override.
 
-**Tritium Fuel Cycle — TRL 3–4**
+**C220103 — Confinement magnets / coils:** The laser-patterned HTS REBCO film on cylindrical surfaces is Renaissance Fusion's core innovation. This eliminates traditional coil winding — the dominant cost driver in stellarator magnet fabrication. However, no cost figure is published for the laser-patterned magnets. The 6 T demonstrator provides physics validation but no manufacturing cost data. The argument that cylindrical film deposition should be cheaper than 3D coil winding is plausible but unquantified. No override.
 
-- **Demonstrated**: Lab-scale tritium handling loops. JET and TFTR operated gram quantities of tritium. The EU Pb-17Li blanket program has demonstrated tritium extraction from lead-lithium in semi-industrial experiments, providing a partial liquid-metal analogy. Tritium's very high solubility in liquid lithium is physically well-understood from fission breeder reactor research.
-- **On paper only**: Closed-loop breeding and extraction from Li-LiH at kg/day scale for a 1 GWe plant. Low-permeation heat exchanger design between Li-LiH primary circuit and sCO₂ secondary (tritium permeation through steel heat exchangers from liquid Li is a documented concern). Tritium accounting in a large-volume flowing liquid metal primary circuit. TBR > 1 for the specific Li-LiH + Pb pebble geometry with realistic penetrations (the confirmed quantity is fm = 1.24, not TBR directly).
-- **Missing at scale**: Plant-scale tritium processing plant for a liquid Li-based fusion system. Validated demonstration that the JNM blanket design achieves TBR > 1 in prototypical operating conditions. Li-6 enrichment requirements to achieve sufficient TBR with the Li-LiH blanket composition.
+**C220104 — Supplementary plasma heating:** At the ignited design point (Q = ∞), the NNBI system is needed only for startup. Steady-state heating power is zero. The library default scales heating cost per installed MW. If ignition holds, the installed heating capacity is minimal (startup-only), which the library can capture through a small p_input value. No override.
 
----
+**C220105 — Primary structure:** No company data. No override.
 
-**sCO₂ Brayton-Rankine Combined Cycle — TRL 4–5**
+**C220106 — Vacuum system:** No company data. No override.
 
-- **Demonstrated**: sCO₂ Brayton cycles have been demonstrated at 10 MW scale (Sandia National Laboratory, Echogen Power Systems, Southwest Research Institute). Combined Brayton-Rankine architectures are commercially deployed in gas turbine combined cycles. Genetic-algorithm optimization of sCO₂ cycle parameters is published for the Renaissance Fusion design [ECM 276 (2023) 116572].
-- **On paper only**: sCO₂ Brayton-Rankine combined cycle at GWe scale from a liquid metal fusion heat source. Tritium-compatible heat exchangers between the primary Li-LiH circuit and sCO₂ secondary working fluid. Operating temperatures enabling 49–51% cycle efficiency (very high turbine inlet temperature required; not specified in available sources).
-- **Missing at scale**: Commercial-scale sCO₂ turbomachinery at ~1.5–2 GWe gross output. Integration with tritium-compatible heat exchangers (no demonstrated design). Lifetimes and maintenance intervals for sCO₂ turbomachinery at these temperatures and cycle counts over plant lifetime. Detailed cost data for sCO₂ BOP at GW scale (emerging technology; cost projections vary widely).
+**C220107 — Power supplies:** No company data. No override.
 
----
+**C220108 — Divertor:** The stellarator divertor is an island divertor (different from a tokamak X-point divertor), and the liquid metal wall may partially serve divertor-like functions. However, no cost data is provided. No override.
 
-**NNBI Heating System (Startup Only) — TRL 5–6**
+**C220110 — Remote handling:** No published maintenance concept. No override.
 
-- **Demonstrated**: Negative NBI (NNBI) has been developed extensively for ITER (where 1 MeV negative ion neutral beams are the target). ITER NNBI systems are in late engineering. The 60% neutralization efficiency cited in the design paper [NF 64 (2024) 026007] is within the expected range for ITER-class NNBI based on published experimental data. Positive NBI has been operated at MW scale on many tokamaks and some stellarators.
-- **On paper only**: NNBI system geometry for a compact stellarator with A ≈ 4 (beam port access and shine-through fraction in compact geometry). Startup-only operation profile — full NNBI power for ramp-up, then complete shutdown at steady state (unusual duty cycle for NBI systems designed for continuous operation).
-- **Missing at scale**: Validated NNBI design for compact stellarator beam access geometry. Long-term reliability of an NNBI system used only for intermittent startups (vs. continuous operation) over plant lifetime. Capital cost characterization for a startup-only NBI system — likely less expensive than a continuous heating system but not dimensioned in available sources.
+**C220111 — Reactor-equipment installation:** No company data. No override.
 
----
+**CAS21 — Buildings & site structures:** The compact geometry (R=3.8 m, 91 cm radial build) results in a significantly smaller reactor building footprint than conventional stellarators (e.g., HELIAS 5-B at R~22 m or W7-X at R=5.5 m). The blanket paper states that reducing radial build from 1.3 m to 1 m "could reduce a 1 GWe reactor's cost by up to 20%."[^7] This cost reduction is driven in part by smaller buildings. However, the 20% figure is a systems-model output from the design-point paper — it is not a direct dollar estimate for CAS21 specifically. No company-grounded CAS21 figure exists. No override.
 
-**Cryogenics (HTS at 20 K) — TRL 6–7**
+**CAS23 — Turbine plant equipment:** The sCO2 Brayton-Rankine combined cycle is specified at 49–51% gross efficiency. The library default handles thermal cycle costing from the thermal efficiency and power level. No specific turbine cost figure is published. No override.
 
-- **Demonstrated**: Large-scale helium refrigeration plants are commercially mature (ITER-scale systems built and tested). Operating at 20 K (as opposed to 4 K for LTS) halves the Carnot penalty relative to LTS refrigeration, reducing the cryogenic parasitic power per unit heat load. Renaissance Fusion's magnet operating temperature (20 K) has been confirmed in the Helmholtz demonstration [MT29 Abstract].
-- **On paper only**: Full cryogenic system design for the laser-patterned cylinder stellarator (thermal shield geometry, cooldown procedures for a large distributed superconductor array). Cryogenic heat load from neutron/gamma irradiation of HTS cylinders — a key input to recirculating power estimation.
-- **Missing at scale**: Refrigeration system sizing for the full magnet set (not yet characterized). Cryogenic load from the neutron irradiation environment in the blanket gap — REBCO film irradiation generates localized heat that must be removed without compromising Jc. Demonstrated long-term cryogenic reliability for the laser-patterned cylinder geometry.
+**CAS24 — Electric plant equipment:** No company data. No override.
 
----
+**CAS26 — Heat rejection system:** No company data. No override.
 
-## Section 4: Key Materials and Supply Chain Considerations
+**CAS27 — Special materials:** The Li-LiH and Pb pebble inventory represents a unique initial fill material. Conventional designs use FLiBe, PbLi, or solid ceramic breeders, each with different unit costs. However, no cost figure for the Li-LiH/Pb inventory is published. No override.
 
-**REBCO Film Deposition at Commercial Scale — Novel Industrial Process with No Cost Data**
+**CAS70 — O&M:** No published maintenance schedule, staffing model, or component replacement rates. The liquid metal wall is claimed to reduce "solid components replacement rates compared with solid first walls,"[^8] which would lower O&M relative to solid-FW designs. However, this is a qualitative claim with no quantified O&M cost. No override.
 
-Renaissance Fusion's magnet approach replaces REBCO tape winding with thin-film deposition and laser patterning on cylindrical substrates. This removes the primary REBCO tape supply chain bottleneck (km-scale wound tape, ~$30–100/kA-m [cited per 21-spherical-tokamak-hts analysis, Section 4]) but substitutes a fundamentally different manufacturing challenge: industrial REBCO film deposition at 1 m diameter scale with nuclear-grade uniformity and the throughput needed for a full stellarator magnet set.
+**CAS80 — Fuel cost:** Standard D-T fuel. No override.
 
-REBCO thin-film deposition (MOCVD, PLD, sputtering) is routinely done in research at wafer scale (centimeters to tens of centimeters). Scaling to 1 m diameter cylindrical substrates introduces:
-- Chamber size and geometry requirements for uniform deposition
-- Substrate handling and rotation for coating uniformity
-- Quality control on curved non-planar surfaces
-- Laser patterning precision at stellarator winding surface dimensions
+[^7]: infoscience-bitstreams-7d2d7b2f-6f75-4ac2-93cb-6eef8a65df82/output.md §1 Introduction
+[^8]: infoscience-bitstreams-7d2d7b2f-6f75-4ac2-93cb-6eef8a65df82/output.md §1 Introduction
 
-No industrial process for this manufacturing approach exists at relevant scale. The Helmholtz demonstration validates the physics concept but does not reveal production economics. For TEA purposes, the magnet CAS account is entirely uncharacterized from a cost basis, and must be modeled with very wide uncertainty bounds. This is the single largest manufacturing unknown in the concept.
+**Override count: 0 enabled overrides.** This is within the expected 0–4 band for High archetype-fit. The absence of overrides reflects the complete absence of published cost data from Renaissance Fusion — not a judgment that the library defaults are correct. Multiple accounts (C220101, C220103, CAS21, CAS27) would likely warrant overrides if company-grounded cost data were available.
 
-**Liquid Li-LiH System — Supply Available, Engineering Novel**
+```yaml
+overrides: []
+```
 
-Raw lithium supply is not a bottleneck. Global lithium production has scaled dramatically with battery demand (~100,000 tonnes/year in 2024, primarily from Australia, Chile, and China). This is a meaningful supply chain advantage over beryllium-containing FLiBe (limited to ~300 tonnes/year Be globally, from a handful of suppliers). However, the Li-LiH mixture introduces:
-
-- **Li-6 enrichment**: Natural Li is ~7.5% Li-6. Achieving TBR > 1 with the Li-LiH blanket geometry likely requires moderate-to-significant Li-6 enrichment. Global Li-6 enrichment capacity is limited — legacy production in Russia and China uses mercury amalgam processes; Western alternatives (ORNL electrochemical, Isotope Separation Systems) are in early development stages not matched to the demand of a commercial D-T fusion fleet.
-- **LiH component**: Lithium hydride is commercially produced but is a solid at room temperature. Operating the Li-LiH mixture as a high-temperature fluid introduces handling and compatibility challenges (LiH reacts with moisture; handling in inert atmosphere required). The specific Li-LiH operating mixture composition is not published, adding uncertainty to both supply chain requirements and tritium chemistry behavior.
-- **Pb pebbles**: Lead is globally abundant and not supply-constrained. The Pb pebble layer [JNM 599 (2024) 155239] adds neutron multiplication without introducing a scarce material.
-- **Tritium inventory in liquid Li**: Tritium has very high solubility in liquid lithium (~100× higher per unit volume than in FLiBe). This creates a large in-circuit tritium inventory that must be managed for safety and tritium accounting, and requires an effective extraction system before the primary circuit reaches steady state.
-
-**Structural Materials (RAFM Steels for Liquid Metal Compatibility) — Qualification Gap**
-
-Structural components in contact with flowing Li-LiH at elevated temperatures and under 14 MeV neutron irradiation require:
-- Resistance to liquid lithium corrosion (austenitic steels are attacked by Li; RAFM steels — EUROFER97, F82H — are preferred)
-- Radiation swelling and embrittlement resistance under 14 MeV neutron spectrum
-- Thermal cycling resistance at the wall loading of 25 MW/m²
-
-RAFM steels have extensive irradiation databases from fission reactors, and partial 14 MeV neutron data from fusion-neutron sources. However, simultaneous liquid Li-LiH chemical exposure + fusion neutron irradiation at fusion-relevant fluences has not been demonstrated for any structural alloy. This is a shared qualification gap with all D-T liquid metal blanket concepts but is more acute here because of the higher wall loading (25 MW/m² vs. ~5–10 MW/m² in most liquid metal blanket designs).
-
-**sCO₂ Turbomachinery — Emerging at GW Scale**
-
-sCO₂ turbines and compressors are approaching commercial readiness at MW scale but have not been demonstrated at GW output. The 49–51% efficiency target requires high turbine inlet temperatures enabled by the liquid metal heat source — specific temperature not published, but substantially above current sCO₂ demonstration conditions. Cost projections for GW-scale sCO₂ turbomachinery vary widely; the best analogues are natural gas combined cycle turbines, adjusted for sCO₂ working fluid properties. This technology is shared with other sCO₂-adopting concepts in this survey (Helical Fusion, concept 36), and cost data will improve as the sCO₂ industry matures.
-
-**Tritium (Shared D-T Constraint)**
-
-The global tritium inventory is approximately 25–30 kg, produced primarily as a CANDU reactor byproduct and decaying at 5.5%/year. A single D-T reactor startup requires ~1 kg at >$35,000/g [per 21-spherical-tokamak-hts analysis, Section 4]. Renaissance Fusion's TBR is unconfirmed in available sources (fm = 1.24 is confirmed; TBR is a distinct quantity). If the blanket achieves TBR > 1, this provides the breeding self-sufficiency required for fleet deployment, but the sequencing constraint is universal for D-T: early plants must demonstrate self-sufficiency before the fleet can scale beyond the available external tritium inventory.
-
----
-
-## Section 5: LCOE-Relevant Parameters
-
-### Available Parameters
-
-| Parameter | Value/Range | Source | Confidence | Notes |
-|-----------|-------------|--------|------------|-------|
-| Net electrical output | 1 GWe | Nuclear Fusion 64 (2024) 026007 — cost-optimized design point | high | Target output at the economically optimized machine scale |
-| Major radius | ≤4 m | Nuclear Fusion 64 (2024) 026007 | high | Upper bound at cost-optimal design point |
-| Aspect ratio | ~4 | Nuclear Fusion 64 (2024) 026007; dossier.md §Summary | high | Much more compact than W7-X (A=10); approaching tokamak geometry |
-| Nominal on-axis magnetic field | 10 T | Nuclear Fusion 64 (2024) 026007 | high | Nominal design field; exceeds W7-X (3 T) and Proxima Fusion targets |
-| Peak coil field | 15 T (design); up to 20–40 T (paper envelope) | Nuclear Fusion 64 (2024) 026007; dossier.md §Magnet Type | medium | Wide range; 15 T is the primary design target; 40 T upper bound approaches REBCO Jc limit |
-| D-T plasma temperature design point | 10 keV | Nuclear Fusion 64 (2024) 026007 | high | Equivalent to ~116 million K; standard D-T burn temperature |
-| Q target | ∞ (ignited — zero external heating at steady state) | Nuclear Fusion 64 (2024) 026007; dossier.md §Plasma State | high | Most aggressive plasma state target among all stellarators in this survey |
-| Primary heating method | NNBI (startup/ramp-up only; 60% neutralization efficiency) | Nuclear Fusion 64 (2024) 026007 | high | NNBI not needed at operating point; eliminates continuous heating capital/operating cost |
-| sCO₂ Brayton-Rankine cycle efficiency | 49–51% | Energy Conversion and Management 276 (2023) 116572 | high | Genetic algorithm optimized; highest thermal cycle efficiency in this survey |
-| Net plant efficiency | 34% | Energy Conversion and Management 276 (2023) 116572 | high | After all parasitic loads; significantly below cycle efficiency, implying large parasitic load |
-| Implied fusion thermal power | ~2.9 GW_th | [inferred: 1 GWe / 0.34 net efficiency] | medium | Not directly published; derived from net output and efficiency |
-| Implied gross electric output | ~1.47 GWe | [inferred: ~2.9 GW_th × 0.50 cycle efficiency; approximate] | low | Requires assumption that all thermal power goes through sCO₂ cycle |
-| Implied recirculating power fraction | ~32% of gross electric | [inferred: (0.50 − 0.34) / 0.50; cycle eff 50%, net 34%] | low | Large fraction for a Q=∞ design; dominant contributors unidentified in sources |
-| Liquid metal wall loading | 25 MW/m² | J. Nuclear Materials 599 (2024) 155239 | high | Claimed design capability; no demonstration at this loading |
-| Neutron energy absorption | 99.99% | J. Nuclear Materials 599 (2024) 155239 | high | First wall + blanket combined performance |
-| Neutron energy multiplication factor (fm) | 1.24 | J. Nuclear Materials 599 (2024) 155239 | high | Pb pebble layer contribution; fm ≠ TBR — note distinction |
-| Blanket inner radial build | 15 cm Pb + 18 cm Li-LiH | J. Nuclear Materials 599 (2024) 155239 | high | Core shielding/breeding layers |
-| Outer shielding and bioshield | 50 cm VH₂ + 1.3 m concrete | J. Nuclear Materials 599 (2024) 155239 | high | Beyond liquid metal blanket |
-| Operation mode | Steady-state, near-100% duty cycle | Company website; Nuclear Fusion 64 (2024) 026007 | high | Stellarator inherent advantage — no disruptions, no CS or current drive requirement |
-| Demonstrated magnet field | 6 T peak (Helmholtz, 1.2 m diameter, 20 K) | MT29 Abstract (2024); dossier.md §Magnet Type | high | Only hardware milestone; 60% of nominal design field; 1.2 m diameter prototype |
-| REBCO tape cost (wound analogue — not applicable) | $30–100/kA-m | [analogue — 21-spherical-tokamak-hts analysis Section 4] | low | Cited for reference only; patterned film cost structure is completely different from wound tape |
-| Tritium startup cost | >$35,000/g (~1 kg per plant) | [analogue — 21-spherical-tokamak-hts analysis Section 4] | medium | Standard D-T constraint; applies regardless of blanket approach |
-| Capacity factor (estimated) | ~90–95% | [estimated — stellarator steady-state advantage; no disruptions or pulse cycling; maintenance intervals unknown] | low | Upper bound assumption; actual maintenance schedule completely uncharacterized |
-| Regulatory cost multiplier (fission-style scenario) | 2.2× building costs | Stewart & Shirvan 2022, cited in 01-hts-compact-tokamak analysis | medium | Applies to all D-T fusion concepts as upper-bound regulatory scenario |
-
-### Missing Parameters
-
-| Parameter | Gap Type | Criticality | Notes |
-|-----------|----------|-------------|-------|
-| Capital cost (total plant $/kWe, or major subsystem costs) | truly-unknown | blocking | No cost estimate published in any source; Nuclear Fusion paper reports relative optimization but not absolute cost |
-| LCOE estimate | truly-unknown | blocking | No public LCOE or costing model of any kind |
-| Magnet system cost | truly-unknown | blocking | Laser-patterned film has no manufacturing cost analogue; REBCO tape pricing not applicable |
-| Liquid metal circulation pump power | proprietary / truly-unknown | blocking | Key driver of the ~32% implied recirculating fraction; not disclosed in any source |
-| Tritium breeding ratio (TBR) | not-yet-sourced | blocking | fm = 1.24 is neutron energy multiplication, not TBR; actual TBR unconfirmed from available documents |
-| Plasma energy confinement time target (τ_E) | not-yet-sourced | important | Needed to close Lawson criterion at design point; not published separately |
-| Plasma density design point | not-yet-sourced | important | Required for Q = ∞ feasibility assessment; not stated in available summaries |
-| Bootstrap fraction | not-yet-sourced | important | Key stellarator parameter; theoretically high for QI geometry but not quantified for this design |
-| Divertor design and exhaust solution | truly-unknown | important | Not addressed in any published source; critical for plasma-facing component cost and availability |
-| Annual O&M cost | truly-unknown | important | No O&M data in any source; flowing wall introduces different maintenance philosophy than solid PFC |
-| Component replacement schedule | truly-unknown | important | Flowing wall may not require discrete module replacement; pump/exchanger maintenance uncharacterized |
-| Peak Li-LiH outlet temperature | not-yet-sourced | important | Determines achievable sCO₂ turbine inlet temperature and therefore cycle efficiency |
-| HTS cylinder count and scale for full plant | not-yet-sourced | important | Needed to estimate magnet system cost and REBCO film demand; not published |
-| Cryogenic refrigeration power at 20 K for full magnet set | not-yet-sourced | important | Key contributor to recirculating power; not characterized in available sources |
-| Li-6 enrichment requirement | derivable | important | Can be estimated from blanket neutronics once TBR is known; sets Li-6 supply chain cost |
-| sCO₂ turbomachinery capital cost at GW scale | not-yet-sourced | important | Emerging technology; cost data improving but not specific to this concept |
-| NNBI system cost (startup-only) | derivable | nice-to-have | Less critical since startup-only; ITER NNBI program provides cost analogue |
-| REBCO film Jc vs. field at 20 K | not-yet-sourced | nice-to-have | Needed to confirm 20–40 T peak coil fields are achievable with realistic Jc values |
-
----
-
-## Section 6: Data Gap Inventory
+## 6. Data Gap Inventory
 
 | # | Gap Description | Section | Gap Type | Criticality | Source Recommendation |
 |---|-----------------|---------|----------|-------------|----------------------|
-| 1 | No capital cost estimate or LCOE model of any kind — LCOE analysis entirely unanchored | S1, S2, S5 | truly-unknown | blocking | No near-term public disclosure expected; use ARIES-CS as closest stellarator plant cost analogue with full magnet and blanket cost override |
-| 2 | Laser-patterned HTS film manufacturing cost — no industrial analogue at any scale | S2, S3, S4, S5 | truly-unknown | blocking | Monitor MT29/MT30 program publications; engineering estimate from thin-film deposition industry (semiconductor, photovoltaics CVD) with appropriate scaling |
-| 3 | Liquid metal circulation pump power — drives the unexplained gap between cycle efficiency (50%) and net efficiency (34%) | S2, S5 | proprietary / truly-unknown | blocking | Derive from first principles: estimate Li-LiH flow rate needed for 25 MW/m² wall loading at acceptable temperature rise, then apply liquid metal pump power scaling; treat as ±50% estimate |
-| 4 | Tritium breeding ratio (TBR) — fm = 1.24 confirmed; TBR not directly confirmed in available documents | S1, S3, S4, S5 | not-yet-sourced | blocking | Read JNM 599 (2024) 155239 directly — TBR may be stated explicitly in the full paper; if not, derive from fm using Li-6 cross-section and geometry |
-| 5 | Liquid metal wall system cost — no cost analogue for Li-LiH circulation at plant scale | S2, S3, S4, S5 | truly-unknown | blocking | Use Na-cooled fast reactor primary circuit costs as structural analogue; apply significant uncertainty premium for first-of-kind fusion application |
-| 6 | Divertor design and exhaust solution — not addressed in any source | S3, S5 | truly-unknown | important | Critical for plasma-facing component cost and availability model; need company disclosure or stellarator divertor analogue (W7-X island divertor adapted to compact geometry) |
-| 7 | Plasma parameters at ignition — confinement time, density, bootstrap fraction not published | S2, S3, S5 | not-yet-sourced | important | Apply ISS04 stellarator energy confinement time scaling to design point (R, A, B, n, T); treat as engineering estimate |
-| 8 | Annual O&M cost — zero data | S2, S5 | truly-unknown | important | Apply ARIES-CS stellarator O&M baseline (~2–4% of capital/year); add liquid metal system maintenance adder from Na-cooled fast reactor experience |
-| 9 | Peak Li-LiH outlet temperature | S3, S5 | not-yet-sourced | important | Should be in ECM paper (Fama et al. 2023); read original paper; determines confidence in 49–51% efficiency target |
-| 10 | Li-6 enrichment requirement | S4, S5 | derivable | important | Estimate from blanket geometry neutronics once TBR is confirmed; sets Li supply chain cost category |
-| 11 | REBCO film Jc at peak coil fields (20–40 T) at 20 K | S3 | not-yet-sourced | important | REBCO Jc vs. field data at 20 K is available in literature; check against design point to confirm feasibility at upper end of coil field range |
-| 12 | HTS cylinder count, dimensions, and total REBCO film area for full plant | S3, S5 | not-yet-sourced | important | Required to estimate magnet system scale and film deposition demand; not published |
-| 13 | Cryogenic refrigeration power for full magnet system at 20 K | S3, S5 | not-yet-sourced | important | Estimate from magnet volume and neutron/gamma heating at design fluence; 20 K is more efficient than 4 K LTS — quantify the advantage |
-| 14 | Component replacement schedule and maintenance intervals | S2, S3, S5 | truly-unknown | important | Flowing wall concept may lack discrete replacement cycles; pump MTBF and heat exchanger fouling analogy from liquid metal industrial systems |
-| 15 | sCO₂ heat exchanger tritium permeation and compatibility with Li-LiH | S3, S4 | truly-unknown | nice-to-have | Safety-relevant and could require design mitigations (permeation barriers); no published data for Li-LiH / sCO₂ interface |
+| 1 | Design-point paper (Nucl. Fusion 64, 2024, 026007) not extracted; Table 1 with full reactor parameters lost during PDF extraction | S1, S5 | not-yet-sourced | blocking | Re-extract the Nuclear Fusion paper with improved table handling; this is the primary design-point source. |
+| 2 | No published capital cost breakdown, LCOE estimate, or dollar-figure cost data for any subsystem | S1, S5b | proprietary | blocking | The design-point paper performs economic optimization — its cost outputs may be recoverable from the paper or from the authors. |
+| 3 | No thermo-fluid or MHD analysis of the flowing Li-LiH wall in stellarator geometry | S2, S3 | truly-unknown | blocking | No published study exists. Renaissance Fusion's internal work (if any) is proprietary. |
+| 4 | Plasma beta, density, and detailed confinement parameters not available in extracted sources | S5 | not-yet-sourced | important | Extract the Nuclear Fusion design-point paper directly. |
+| 5 | Peak magnetic field on conductor — range (20–40 T) from dossier, not confirmed in extracted sources | S5 | not-yet-sourced | important | The Nuclear Fusion paper likely specifies this precisely. |
+| 6 | Laser-patterned HTS film manufacturing cost, throughput, and quality control data | S3, S4 | proprietary | important | Company disclosures or MT29 proceedings may provide partial data. |
+| 7 | No 3D neutronics simulation of the blanket design | S3 | derivable | important | The blanket paper notes this as future work. 3D effects may change TBR and shielding adequacy at ports and penetrations. |
+| 8 | VH2 neutron shield cost, long-term irradiation stability, and production scalability | S4 | truly-unknown | important | Literature search on vanadium hydride production and irradiation behavior. |
+| 9 | V-Cr-Ti vacuum vessel fabrication at reactor scale — welding, joining, industrial supply | S4 | not-yet-sourced | important | ORNL and Japanese V-alloy programs may have relevant data. |
+| 10 | No published maintenance concept or remote handling strategy | S3 | truly-unknown | important | The modular cylindrical architecture suggests simpler maintenance than conventional stellarators, but this has not been analyzed. |
+| 11 | Li-LiH/Pb pebble initial inventory quantity and cost | S4, S5b | derivable | nice-to-have | Volume can be estimated from blanket geometry; Li-LiH and Pb unit costs are available from commodity markets. |
+| 12 | O&M cost structure — staffing, scheduled replacement, liquid metal system maintenance | S2 | truly-unknown | important | No fusion liquid-metal-wall plant has been designed at this level of detail. |
 
----
+## 7. Family-Delta vs Comparables
 
-## Section 7: Cross-Concept Notes
+The fixed comparables are all MFE stellarator concepts: 05-planar-coil-stellarator (Thea Energy), 09-qi-stellarator-hts (Proxima Fusion), 10-large-scale-stellarator (Gauss Fusion), 20a-type-one-stellarator (Type One Energy), and 36-helical-coil-stellarator (Helical Fusion). No approved analyses exist for any of these comparables, so the delta articulation relies on publicly available concept descriptions and the schema classifications.
 
-**Approved prior analyses referenced:**
+### vs. 05-planar-coil-stellarator (Thea Energy)
+**Magnet architecture (C220103):** Thea Energy uses arrays of simple flat HTS coils producing stellarator fields via current distribution — fundamentally different from Renaissance's laser-patterned film on cylinders. Thea's approach trades coil simplicity (planar coils are easy to manufacture) for potentially more coils and more complex current optimization. Renaissance trades manufacturing novelty (laser-patterned film is unproven at scale) for geometric simplicity (cylindrical substrates). **Cost direction:** Uncertain — both approaches claim lower manufacturing cost than traditional non-planar coils, but via different mechanisms.
 
-The only approved prior analysis in the pool for cross-referencing is the Spherical Tokamak - HTS (`21-spherical-tokamak-hts`, Tokamak Energy). While the confinement topology is entirely different, three elements are reused:
+**Blanket (C220101):** Thea Energy has not published a blanket concept. Renaissance's flowing liquid metal wall is a specific cost-differentiating feature that no other stellarator in the comparables has detailed to this degree. **Cost direction:** Unknown pending Thea's blanket specification.
 
-- **D-T tritium supply constraints**: Global inventory (~25–30 kg), startup requirement (~1 kg at >$35,000/g), CANDU production decline, and fleet sequencing constraint apply identically to this concept. Characterization from [21-spherical-tokamak-hts, Section 4] is adopted without modification.
-- **REBCO tape market reference (wound)**: The $30–100/kA-m wound tape pricing from [21-spherical-tokamak-hts, Section 4] is cited explicitly as a reference point that does *not* apply to the laser-patterned film approach. The distinction is noted: the global tape supply bottleneck is not the relevant constraint here; the REBCO film deposition process cost is the relevant constraint, and it has no published analogue.
-- **Regulatory cost scenario**: Stewart & Shirvan 2.2× building cost multiplier for fission-style regulation applies as a D-T fusion upper-bound scenario, identical to all D-T concepts.
+### vs. 09-qi-stellarator-hts (Proxima Fusion)
+**Geometry (CAS21, C220103):** Proxima Fusion pursues a quasi-isodynamic stellarator with traditional 3D HTS coils. Renaissance's compact geometry (R=3.8 m, A=4.1) is likely smaller than Proxima's HELIAS-derived design. A smaller major radius directly reduces building volume, coil material, and structural support — all capital cost advantages.
 
-**Divergences from peer stellarators (in-progress, not formally cross-referenceable):**
+> "Reducing the blanket radial build (plasma-coil distance) from 1.3 m to 1 m could reduce a 1 GWe reactor's cost by up to 20%"
+> — infoscience-bitstreams-7d2d7b2f-6f75-4ac2-93cb-6eef8a65df82/output.md §1
 
-Three in-progress stellarator analyses (09-qi-stellarator-hts/Proxima Fusion, 20a-type-one-stellarator/Type One Energy, 10-large-scale-stellarator/Gauss Fusion) have not reached approved status and cannot be formally cited. However, the following conceptual distinctions are important for the TEA pipeline:
+**Coil manufacturing (C220103):** Proxima uses conventional HTS winding for complex 3D coils. Renaissance eliminates winding entirely. The cost comparison depends on whether laser-patterned film deposition can achieve lower cost per ampere-meter than wound REBCO tape at the required field levels. **Cost direction:** Potentially advantageous for Renaissance if film deposition scales, but unquantified.
 
-- **Magnet manufacturing — unique cost structure**: All other HTS stellarators in this survey use wound REBCO tape in complex 3D non-planar coils. The laser-patterned cylinder approach cannot share cost modeling assumptions with any other concept. The coil cost model must be built independently with wide uncertainty bounds.
+### vs. 10-large-scale-stellarator (Gauss Fusion)
+**Scale (all accounts):** Gauss Fusion pursues a large-scale conventional stellarator, likely at HELIAS 5-B scale (R~22 m). Renaissance's compact design at R=3.8 m is roughly 6× smaller in major radius. This is the most dramatic geometric divergence in the comparables set. Capital cost scales roughly with reactor volume (for structures, magnets, and building), giving Renaissance a structural cost advantage — partially offset by higher field strength and higher wall loading.
 
-- **Blanket architecture — consolidated vs. separate CAS accounts**: Proxima Fusion (09) uses LiPb blanket; Type One Energy (20a) uses solid HCPB with helium cooling; Gauss Fusion (10) uses Li blanket (unspecified form). All of these are contained blanket concepts where the first wall, breeder, and shield are distinct sub-elements. Renaissance Fusion's flowing liquid metal wall consolidates what would be three or four separate CAS accounts into a single pumped-fluid system. This is an architecturally different cost model, not just a parameter variation.
+**Magnet technology (C220103):** Gauss Fusion uses LTS (Nb3Sn/NbTi) or LTS+HTS magnets, not full HTS. Renaissance's all-HTS approach enables the compact geometry through higher field. The HTS cost premium may be offset by the dramatically smaller machine size. **Cost direction:** Net effect is uncertain; Renaissance trades higher magnet unit cost ($/kg of HTS) for lower total magnet mass and smaller supporting structures.
 
-- **Q target — capital cost implications**: All other stellarators in this survey target burning plasma state (Q >> 5) but not ignition. The Q = ∞ target eliminates the steady-state heating/current-drive system as a capital cost account (ECRH gyrotrons, power supplies, antennas are absent at operating point). This is a genuine cost advantage if achieved, potentially reducing the recirculating power account by 10–20% compared to ECRH-heated stellarators. However, it is also the most uncertain physics assumption in the concept.
+### vs. 20a-type-one-stellarator (Type One Energy)
+**Coil geometry (C220103):** Type One Energy uses modular stellarator coils with HTS, emphasizing simplified coil shapes optimized for manufacturability. Renaissance's laser-patterned film takes this simplification further — the "coil" is a patterned cylinder rather than a wound solenoid or saddle coil. Both target manufacturing cost reduction relative to classical stellarator coils, but via different strategies.
 
-- **Power conversion efficiency — 15-percentage-point premium**: Type One Energy (20a) uses conventional steam Rankine (estimated ~35%). Renaissance Fusion's sCO₂ combined cycle (49–51%) represents a 15-point efficiency premium. At 1 GWe net output, this implies ~30% less thermal power required — which scales down blanket/BOP capital cost relative to what steam Rankine would require. This is the concept's most significant LCOE lever on the cost side after the magnet and blanket novelties.
+**Blanket and operating point:** Type One has not published detailed blanket or operating-point data comparable to Renaissance's peer-reviewed design point. Renaissance's ignited operating point (Q=∞) and flowing liquid metal wall are differentiating features with unclear cost implications absent Type One's design details.
 
-- **Aspect ratio compactness — building and civil cost**: A ≈ 4 is much more compact than W7-X (A = 10), Type One Energy (A estimated ~7), or any large-scale QI stellarator. A compact machine fits in a smaller building footprint, reducing civil and structural cost. However, compactness also reduces the geometric flexibility available for QI optimization — the confinement quality of a compact QI at A ≈ 4 has not been demonstrated, while W7-X at A = 10 has proven QI benefits.
+### vs. 36-helical-coil-stellarator (Helical Fusion / HESTIA)
+**Coil topology (C220103):** Helical Fusion uses helical coils wound around the torus — a fundamentally different topology from Renaissance's cylindrical patterned magnets. Helical coils are mechanically stressed differently and require different winding technology. **Cost direction:** Unknown — helical winding may be simpler than non-planar modular coils but more complex than Renaissance's cylindrical approach.
 
-**Cost model architecture recommendation for TEA pipeline:**
+**Blanket and geometry:** Both concepts target compact geometry with HTS magnets. Detailed comparison is limited by the absence of published design-point parameters for HESTIA at the level of detail available for Renaissance.
 
-The Renaissance Fusion concept requires an independent cost model that cannot be derived by adapting any existing tokamak or stellarator template:
-1. Magnet system: patterned-film manufacturing model (unknown cost structure) rather than tape-winding model
-2. First wall/blanket: single pumped-fluid system (analogous to liquid metal fast reactor primary circuit in cost structure) rather than modular solid blanket assembly
-3. Heating/CD: startup-only NNBI (one-time capital, no steady-state recirculating load) rather than continuous heating system
-4. Power conversion: sCO₂ combined cycle (TRL 4–5, emerging cost basis) rather than steam Rankine
+### Summary of Family Deltas
 
----
+| Subsystem | Renaissance Differentiator | Cost Direction | Magnitude |
+|-----------|---------------------------|----------------|-----------|
+| C220103 (magnets) | Laser-patterned HTS film on cylinders eliminates coil winding | Potentially advantageous | Unknown — no cost data |
+| C220101 (FW/blanket) | Flowing Li-LiH wall with Pb pebbles — integrated FW/blanket/shield | Potentially advantageous (reduced solid component replacement) | Unknown — no cost data |
+| CAS21 (buildings) | Compact geometry (R=3.8 m) vs. R=5–22 m for comparables | Advantageous (smaller reactor building) | Up to 20% total cost reduction claimed |
+| C220108 (divertor) | Island divertor + liquid metal wall may reduce divertor load | Neutral to advantageous | Unknown |
+| C220104 (heating) | Ignited operating point — no steady-state heating | Advantageous (near-zero recirculating power for heating) | Moderate — eliminates ~50–100 MW of auxiliary power |
+| CAS23 (turbine) | sCO2 Brayton-Rankine at 49–51% efficiency (vs. typical 33–40% Rankine) | Advantageous (higher efficiency → smaller thermal plant for same MWe) | Moderate |
+| CAS27 (special materials) | Li-LiH + Pb fill vs. FLiBe or PbLi | Uncertain — Li-LiH cost is unknown; avoids Be (in FLiBe) and Li-6 enrichment | Unknown |
 
-## Section 8: Sources
+## 8. Sources
 
-**1. Nuclear Fusion 64 (2024) 026007 — Primary design paper**
-- Full citation: Samulski, C. et al. (2024) "Economically optimized design point for a compact liquid-metal-wall stellarator," *Nuclear Fusion*, 64, 026007. doi:10.1088/1741-4326/ad142e
-- Contribution: Definitive source for machine geometry (R ≤ 4 m, A ≈ 4), magnetic field (10 T nominal, 15 T at coil, 20–40 T peak envelope), D-T plasma design point (10 keV), Q = ∞ target, NNBI startup heating (60% neutralization efficiency), and the economic optimization rationale for the design point. Most directly useful source for TEA.
-- Location: dossier.md §Key Sources; available at iopscience.iop.org
+1. **Prost, Ogier-Collin & Volpe, "Compact fusion blanket using plasma facing liquid Li-LiH walls and Pb pebbles," J. Nuclear Materials 599 (2024) 155239.** The primary quantitative source for this analysis. Provides the reactor geometry (R=3.8 m, A=4.1, B=10.2 T), blanket design (Li-LiH + Pb pebbles), radial build (91 cm), neutronics results (TBR=1.53–1.60, fm=1.05–1.07), and design requirements (200 DPA limit, 80% availability, 40-year lifetime). Located at: `knowledge/concept_research/20b-renaissance-stellarator/iter-01/sources/infoscience-bitstreams-7d2d7b2f-6f75-4ac2-93cb-6eef8a65df82/output.md`
 
-**2. Journal of Nuclear Materials 599 (2024) 155239 — Blanket and neutron management paper**
-- Full citation: (Authors not given in dossier) (2024) "Compact fusion blanket with liquid metal wall," *Journal of Nuclear Materials*, 599, 155239. doi:10.1016/j.jnucmat.2024.155239
-- Contribution: Defines the integrated first-wall/blanket/shield system: 15 cm Pb + 18 cm Li-LiH radial build, 25 MW/m² wall loading capability, fm = 1.24 neutron multiplication, 99.99% neutron absorption, 50 cm VH₂ + 1.3 m concrete bioshield. Primary source for all blanket, neutron management, and wall loading parameters.
-- Location: dossier.md §Key Sources; available at doi.org
+2. **Prost & Volpe, "Economically optimized design point of high-field stellarator power-plant," Nuclear Fusion 64 (2024) 026007.** The design-point paper defining the complete reactor parameters and economic optimization. Referenced as [1] in the blanket paper and throughout the dossier. Not directly extracted in the available source set — key parameters are reproduced via the blanket paper and dossier. URL: https://iopscience.iop.org/article/10.1088/1741-4326/ad142e
 
-**3. Energy Conversion and Management 276 (2023) 116572 — Power conversion system paper**
-- Full citation: Fama et al. (2023) "Optimized power conversion system for compact fusion reactor," *Energy Conversion and Management*, 276, 116572. doi:10.1016/j.enconman.2022.116572
-- Contribution: Genetic algorithm-optimized sCO₂ Brayton-Rankine combined cycle for Renaissance Fusion's design. Key results: 49–51% thermal cycle efficiency, 34% net plant efficiency at 1 GWe target. Primary source for all power conversion parameters.
-- Location: dossier.md §Key Sources; available at doi.org
+3. **Dossier: Compact Liquid-Wall HTS Stellarator (D-T).** Structured research summary providing differentiation table values, key citations, and synthesis of multiple sources including the Nuclear Fusion paper, J. Nuclear Materials paper, MT29 abstract, UC Berkeley seminar, and company website. Located at: `knowledge/concept_research/20b-renaissance-stellarator/dossier.md`
 
-**4. MT29 Abstract (2024) — Magnet program**
-- Full citation: Renaissance Fusion magnet program abstract, Applied Superconductivity Conference MT29 (2024). Indico.cern.ch event 1431972, contribution 6420099.
-- Contribution: Documents the primary hardware milestone: 6 T peak Helmholtz magnet at 1.2 m diameter and 20 K. Validates that laser-patterned REBCO film on cylindrical substrates can carry superconducting current at useful fields. Primary source for TRL assessment of magnet system.
-- Location: dossier.md §Key Sources; available at indico.cern.ch
+4. **Famà et al., "An optimized power conversion system for a stellarator-based nuclear fusion power plant," Energy Conversion and Management 276 (2023) 116572.** Defines the sCO2 Brayton-Rankine combined cycle at 49–51% gross efficiency and 34% net plant efficiency. Referenced in the dossier. URL: https://doi.org/10.1016/j.enconman.2022.116572
 
-**5. Renaissance Fusion technology page (renfusion.eu/technology)**
-- Contribution: Company-authored confirmation of laser-patterning approach, liquid metal wall, steady-state operation with "near-100% duty cycle," and ignited design target. Consistent with peer-reviewed papers.
-- Location: dossier.md §Key Sources
+5. **Senatore et al., "Field and temperature scaling of the critical current density in commercial REBCO coated conductors," arXiv:1512.01930 (2015).** Characterizes REBCO conductor performance across six manufacturers. Tangentially relevant to HTS magnet costing — provides context on conductor variability but does not address Renaissance's specific laser-patterned film approach. Located at: `knowledge/concept_research/20b-renaissance-stellarator/iter-01/sources/arxiv-1512-01930/output.md`
 
-**6. UC Berkeley seminar — "High-field HTS stellarators with liquid metal walls"**
-- Contribution: Additional context on magnet fabrication philosophy and the combined HTS + liquid wall design rationale. Provides qualitative support for the synthesis of these two innovations.
-- Location: dossier.md §Key Sources; nuc.berkeley.edu
+6. **UKAEA PROCESS Stellarator Documentation.** Documents the PROCESS systems code stellarator module, including geometry handling, coil models, and blanket modules. Provides context on how conventional stellarator cost models work (borrowing the tokamak cost module). Located at: `knowledge/concept_research/20b-renaissance-stellarator/iter-01/sources/ukaea-process-fusion-devices-stellarator/output.md`
 
-**7. Innovation News Network (2024) — "Simplifying stellarator technology"**
-- Contribution: Accessible company description of the laser-patterning concept and its motivation (eliminating coil winding complexity). Secondary/popular press; used for context only.
-- Location: dossier.md §Key Sources; innovationnewsnetwork.com
-
-**8. D1+ Analysis: Spherical Tokamak - HTS (21-spherical-tokamak-hts, Tokamak Energy) [Cross-reference]**
-- Contribution: D-T tritium supply constraint characterization (startup cost, CANDU decline, sequencing requirement); REBCO wound tape pricing reference ($30–100/kA-m, noted as not applicable to patterned film); regulatory cost scenario (Stewart & Shirvan 2.2×).
-- Location: analyses/21-spherical-tokamak-hts/analysis.md
-
-**9. Stewart, M. and Shirvan, K. (2022) — Regulatory cost study [Referenced via prior analyses]**
-- Contribution: Fission-style nuclear regulation cost multiplier (2.2× building cost). Applied as upper-bound regulatory scenario for this D-T concept, consistent with application to all D-T fusion concepts.
-- Location: Referenced in handwritten exemplar 01-hts-compact-tokamak.md and in 21-spherical-tokamak-hts analysis
+7. **Renaissance Fusion company website and public presentations.** Technology overview, papers page, MT29 conference abstract, and UC Berkeley seminar. Provide magnet demonstration data (6 T at 1.2 m) and qualitative descriptions of the approach. URLs listed in dossier §Key Sources.

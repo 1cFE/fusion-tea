@@ -1,122 +1,50 @@
-Compact Liquid-Wall HTS Stellarator (Renaissance Fusion)
-1 GWe net — NOAK — sCO₂ Brayton-Rankine — ignited (Q=∞)
-LCOE: 128.1 $/MWh | Overnight: 10782 $/kW
-Fusion: 2354 MW | Net: 1000 MW | Q_eng: 3.0
+LCOE: 70.0 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 70.0 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 70.0 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 5477 $/kW   native 5477 $/kW   1 GWe 5477 $/kW
 
-Code     Account                              M$
-------------------------------------------------
-CAS10    Preconstruction                    18.5
-CAS21    Buildings                         624.2
-CAS22    Reactor Plant Equipment          4342.4
-CAS23    Turbine Plant                     232.2
-CAS24    Electrical Plant                  126.1
-CAS25    Miscellaneous                      76.8
-CAS26    Heat Rejection                     65.9
-CAS27    Special Materials                  15.0
-CAS28    Digital Twin                        5.0
-CAS29    Contingency                         0.0
-CAS30    Indirect Costs                   1829.2
-CAS40    Owner's Costs                      39.0
-CAS50    Supplementary                     429.6
-CAS60    IDC                              2978.3
-CAS70    O&M (annualized)                  162.3
-CAS80    Fuel (annualized)                   1.3
-CAS90    Financial                         868.9
-------------------------------------------------
-         Total Capital                   10782.0
+CAS               generic           native            1 GWe
+--------------------------------------------------------
+CAS10                18.5             18.5             18.5
+CAS21               595.1            595.1            595.1
+CAS22              2438.4           2438.4           2438.4
+CAS23               212.7            212.7            212.7
+CAS24                90.6             90.6             90.6
+CAS25                55.1             55.1             55.1
+CAS26                91.9             91.9             91.9
+CAS27                15.0             15.0             15.0
+CAS28                 5.0              5.0              5.0
+CAS29                 0.0              0.0              0.0
+CAS30               700.8            700.8            700.8
+CAS40                39.0             39.0             39.0
+CAS50               331.8            331.8            331.8
+CAS60               883.0            883.0            883.0
+CAS70               110.0            110.0            110.0
+CAS80                 0.7              0.7              0.7
+CAS90               410.8            410.8            410.8
+--------------------------------------------------------
+TOTAL              5476.9           5476.9           5476.9
 
-CAS22 Detail:
-  C220101           400.0  M$
-  C220102           184.4  M$
-  C220103          2261.9  M$
-  C220104             0.0  M$
-  C220105             9.3  M$
-  C220106            33.9  M$
-  C220107           106.2  M$
-  C220108           103.9  M$
-  C220109             0.0  M$
-  C220110           183.6  M$
-  C220111           415.6  M$
-  C220112             0.0  M$
-  C220200           203.3  M$
-  C220300           226.1  M$
-  C220400             5.9  M$
-  C220500           120.0  M$
-  C220600            11.5  M$
-  C220700            76.8  M$
-  C220000          4342.4  M$
-
-Key Assumptions:
-  [UNCERTAIN x3-10] C220103 coil cost: framework tape-winding model does NOT
-                    apply to laser-patterned REBCO film. No cost analogue exists.
-                    Treat computed value as rough placeholder only.
-  [UNCERTAIN x2-3]  C220101 = $400M (Na-cooled fast reactor primary circuit
-                    analogue for flowing Li-LiH wall system)
-  [UNCERTAIN ±50%]  p_pump = 380 MW (LM circulation dominant load;
-                    inferred from published net eff. 34% vs. cycle eff. 50%)
-  [UNCERTAIN]       Availability = 92% (maintenance intervals uncharacterized)
-  [INFERRED]        P_thermal ≈ 2941 MWth (1 GWe / 0.34 net efficiency)
-  [INFERRED]        Recirculating ≈ 471 MW (32% of ~1471 MWe gross)
-  [UNCONFIRMED]     TBR: fm=1.24 confirmed (Pb pebble neutron mult.);
-                    TBR (tritium breeding ratio) not confirmed in available sources
-
-Sensitivity (elasticity = %LCOE / %param)
-------------------------------------------------
-
-Engineering levers:
-  availability                         -0.9356
-  r_coil                               +0.7665
-  construction_time_yr                 +0.5371
-  b_max                                +0.3833
-  eta_th                               -0.1082
-  p_pump                               +0.0569
-  R0                                   +0.0404
-  elon                                 +0.0404
-  mn                                   -0.0354
-  p_cryo                               +0.0287
-  ht_shield_t                          +0.0272
-  plasma_t                             +0.0186
-  f_sub                                +0.0071
-  blanket_t                            +0.0069
-  vessel_t                             +0.0062
-  p_cool                               +0.0031
-  eta_p                                -0.0029
-  structure_t                          +0.0025
-  p_trit                               +0.0016
-  p_house                              +0.0008
-  p_coils                              +0.0005
-  dd_f_T                               +0.0000
-  dd_f_He3                             +0.0000
-  dhe3_dd_frac                         +0.0000
-  dhe3_f_T                             +0.0000
-  eta_pin                              +0.0000
-  eta_de                               +0.0000
-  B                                    +0.0000
-  T_e                                  +0.0000
-  n_e                                  +0.0000
-  Z_eff                                +0.0000
-  plasma_volume                        +0.0000
-  R_w                                  +0.0000
-  T_edge                               +0.0000
-  tau_ratio                            +0.0000
-
-Financial:
-  interest_rate                        +0.8526
-  inflation_rate                       +0.0429
-
-Costing constants (top 15):
-  indirect_fraction                    +0.2002
-  om_cost_dt                           +0.0828
-  core_lifetime_dt                     -0.0631
-  installation_frac                    +0.0618
-  divertor_base                        +0.0329
-  shield_unit_cost                     +0.0312
-  remote_handling_dt_base              +0.0311
-  electric_per_mw                      +0.0191
-  power_supplies_base                  +0.0180
-  fuel_handling_dt_base                +0.0178
-  decom_provision_dt                   +0.0137
-  fuel_recovery                        -0.0120
-  construction_insurance_frac          +0.0118
-  misc_per_mw                          +0.0117
-  shipping_frac                        +0.0089
+--- CAS22 sub-account detail (overrides marked) ---
+code            generic       native        1 GWe  flag
+C220000          2438.4       2438.4       2438.4
+C220101           153.6        153.6        153.6
+C220102           104.6        104.6        104.6
+C220103          1105.8       1105.8       1105.8
+C220104            25.0         25.0         25.0
+C220105             7.9          7.9          7.9
+C220106            28.2         28.2         28.2
+C220106_pump          0.7          0.7          0.7
+C220106_vessel         27.5         27.5         27.5
+C220107            84.2         84.2         84.2
+C220108            98.4         98.4         98.4
+C220109             0.0          0.0          0.0
+C220110           155.6        155.6        155.6
+C220111           246.9        246.9        246.9
+C220112             0.0          0.0          0.0
+C220200           201.1        201.1        201.1
+C220300            18.8         18.8         18.8
+C220400             5.3          5.3          5.3
+C220500           120.0        120.0        120.0
+C220600            11.5         11.5         11.5
+C220700            71.6         71.6         71.6

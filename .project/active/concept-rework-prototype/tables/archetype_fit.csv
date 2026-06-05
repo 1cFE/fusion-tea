@@ -1,0 +1,2 @@
+concept_id,concept_name,confinement_family,fuel,confinementconcept_enum,fit_grade,fit_rationale
+01-hts-compact-tokamak,HTS Compact Tokamak (CFS ARC),MFE,DT,TOKAMAK,High,"Textbook DT tokamak; ARC's R=3.3m/B=9.2T geometry is exactly what the TOKAMAK enum is calibrated for. HTS magnet stack adds REBCO cost-per-kA-m as a known driver but does not change the cost-account structure."

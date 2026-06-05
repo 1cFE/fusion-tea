@@ -1,274 +1,326 @@
 """
-PoloMac Magnetic Confinement (D-D) — Free-Form LCOE Model
-==========================================================
-1cFE First Pass Concept Analysis
-Concept: PoloMac Magnetic Confinement — Poloidally-Confined Dipole with In-Vessel Coil
-Company: Deutelio AG
+Polomac Magnetic Confinement (Deutelio) Freeform LCOE Model
+============================================================
+Concept: Poloidal magnetic confinement with magnetic tunnel supports
+Company: Deutelio
+
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║ CRITICAL: THIS IS NOT A CREDIBLE COST ESTIMATE                               ║
+║                                                                               ║
+║ This model exists ONLY to establish a speculative LCOE corridor for          ║
+║ cross-concept comparison purposes IF the fundamental physics demonstration    ║
+║ gap were somehow overcome. It is NOT a validated techno-economic analysis.    ║
+║                                                                               ║
+║ BLOCKING ISSUES:                                                              ║
+║ • No design point specified by Deutelio (no P_native, no specs)              ║
+║ • No archetype assigned (upstream tables: Archetype = [empty])                ║
+║ • No comparables list (analysis frontmatter: Comparables = [])                ║
+║ • Fundamental physics undemonstrated (magnetic tunnel concept)                ║
+║ • Power balance unknown (Q_eng, recirculating power fraction undefined)      ║
+║                                                                               ║
+║ Under the analysis contract, quantitative models require validated design-    ║
+║ point data and archetype assignment BEFORE modeling. This concept has        ║
+║ neither. All parameters are SPECULATIVE ASSUMPTIONS for corridor purposes.   ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+PHYSICS DEMONSTRATION GAP (ABSOLUTE BLOCKER):
+    Magnetic tunnel concept has NEVER been experimentally demonstrated.
+    Particle loss rates through tunnels are unquantified.
+    Confinement advantage over tokamaks (2-3× lower field) is unvalidated.
+    Temperature gap: 100 eV prototype → 8.1 keV D-T reactor (~80× increase)
+
+    2014 design had 700 MW coil power consumption (excessive for steady state).
+    2024 report mentions superconducting magnets but provides no Q_eng analysis.
+
+This model assumes hypothetical breakthrough physics and transition to
+superconducting coils. ALL PARAMETERS ARE HIGHLY SPECULATIVE. The native
+power level, fusion power, Q_eng, and all cost parameters are INVENTED for
+modeling corridor purposes, NOT extracted from company-disclosed specifications.
+
+Key references:
+    analysis.md — Phase 1a analysis documenting data gaps
+    [analyses/35-polomac-magnetic-confinement/analysis.md]
+
+    jtsp-2024-polomac-technical-report.md — Primary technical source
+    [knowledge/concept_research/35-polomac-magnetic-confinement/sources/...]
+
+    elio-2014-fed-poloidal-confinement.md — Foundational paper
+    [knowledge/concept_research/35-polomac-magnetic-confinement/sources/...]
 
 Usage:
     uv run python model_setup.py              # print results to terminal
     uv run python model_setup.py | tee model_output.txt  # also save for synthesis stage
-
-DATA QUALITY WARNING
---------------------
-This model is built almost entirely from assumed or analogued values. The analysis
-(analysis.md) documents 13 blocking data gaps — no plasma Q, no reactor design point,
-no confinement physics, no heating system, no power conversion design, no cost data.
-
-The ONLY quantitative data from primary sources used here are:
-  - Plasma volume: 1300 m³  (Elio 2014, medium confidence)
-  - Coil magnetic field: ~2 T at 10–25 A/mm² (Elio 2014, medium confidence)
-  - Plasma beta: 20–30% (claimed from historical dipole experiments, medium confidence)
-  - Copper coil power draw: 700 MW (Elio 2014, high confidence — but for copper only)
-  - Operation mode: steady-state (JTSP 2024, high confidence)
-  - Fuel: D-D primary target (JTSP 2024, high confidence)
-
-All other values (Q, heating, thermal efficiency, coil cost, etc.) are assumed from
-analogues and marked HIGH UNCERTAINTY. Do not treat LCOE outputs as engineering estimates.
-
-Cost accounting follows the standardized CAS (Code of Accounts System) structure
-used in 1costingfe/pyFECONS. Scaling laws are adopted from:
-  - 1costingfe costing_constants.yaml (pyFECONS defaults)
-  - MagLIF exemplar (maglif_lcoe_model.py) for structural patterns
-  - D-D-specific adjustments from 1costingfe fuel-type constants
-
-Key references:
-  - Elio, F. (2014) "Revisiting the poloidal magnetic confinement." Fusion Eng. Design 89(7–8)
-    doi:10.1016/j.fusengdes.2014.03.054
-  - Elio et al. (2024) "Technical Report: The Polomac approach to fusion energy." JTSP
-    https://www.jtsp.eu/jtsp/article/view/32
-  - Deutelio AG company profile (extracted 2026-04-04)
-  - analysis.md §Section 5 — LCOE-Relevant Parameters
-  - 1costingfe costing_constants.yaml — scaling law sources
 """
 
 import math
-from dataclasses import dataclass, field
-from typing import Optional
+from dataclasses import dataclass
 
+# ============================================================================
+# Physical constants
+# ============================================================================
+E_FUSION_DT_MEV = 17.6                        # D-T fusion energy [MeV]
+E_FUSION_J = E_FUSION_DT_MEV * 1e6 * 1.602e-19  # D-T energy [J]
+AMU_KG = 1.66053906660e-27                    # 1 atomic mass unit [kg]
 
-# === Reference power levels for scaling laws (from 1costingfe) ===
-P_TH_REF = 2500.0   # Reference thermal power [MW]
-P_ET_REF = 1100.0   # Reference gross electric power [MW]
-
-# === D-D fusion energy partition ===
-# D+D → T (1.01 MeV) + p (3.02 MeV) [50% of reactions, 4.03 MeV total, no neutrons]
-# D+D → ³He (0.82 MeV) + n (2.45 MeV) [50% of reactions, 3.27 MeV total]
-# Average energy per D+D reaction: (4.03 + 3.27) / 2 = 3.65 MeV
-# Neutron power fraction: (0.5 × 2.45) / 3.65 = 0.335
-# Charged particle fraction: 1 − 0.335 = 0.665
-F_NEUTRON_DD = 0.335
-F_CHARGED_DD = 0.665
+# ============================================================================
+# Reference power levels for 1costingfe scaling laws
+# ============================================================================
+P_TH_REF  = 2500.0   # Reference thermal power [MW]
+P_ET_REF  = 1100.0   # Reference gross electric power [MW]
+P_NET_REF = 1000.0   # Reference net electric power [MW]
 
 
 @dataclass
-class PoloMacPlantParams:
+class PolomacPlantParams:
     """
-    Parameterized PoloMac Magnetic Confinement power plant model.
+    Parameterized Polomac Magnetic Confinement power plant model.
 
-    PoloMac is a steady-state D-D magnetic confinement concept using a poloidally
-    wound in-vessel dipole coil supported by plasma-free "magnetic tunnels." The
-    commercial design requires superconducting coils to avoid the 700 MW copper
-    coil resistive draw identified in Elio 2014.
+    Architecture overview (SPECULATIVE — no disclosed design):
+    ┌──────────────────────────────────────────────────────┐
+    │  Poloidal dipole field (internal coil + external)     │
+    │  Magnetic tunnel supports (field-free channels)       │
+    │       ↓                                              │
+    │  [UNVALIDATED] Plasma confinement at 2-3 T field     │
+    │       ↓ [PHYSICS GAP: 100 eV → 8.1 keV demonstrated] │
+    │  [HYPOTHETICAL] D-T fusion → neutrons + alpha        │
+    │       ↓                                              │
+    │  Neutrons → blanket → thermal energy                 │
+    │  Alpha → plasma heating                              │
+    │       ↓                                              │
+    │  Thermal cycle (ASSUMED: Rankine or sCO2) → electric │
+    │       ↓                                              │
+    │  Net electric = Gross - Recirculating (coils + aux)  │
+    └──────────────────────────────────────────────────────┘
 
-    Almost every parameter in this model is assumed from analogues. See module
-    docstring for data quality context.
+    Key structural differences from standard MFE:
+    • Lower magnetic field (2-3 T vs 5+ T tokamak) — IF physics works
+    • Magnetic tunnel penetrations — unique structural challenges
+    • Large plasma volume (1300 m³ from 2014 design)
+    • Steady-state operation (no disruptions)
+    • High beta (20-30%) claimed
+
+    Uncertainty tiers used in docstrings:
+    • (no tag)             — well-established physics or engineering constant
+    • MODERATE UNCERTAINTY — reasonable estimate from documented analogues
+    • HIGH UNCERTAINTY     — speculative or poorly constrained
+    • EXTREME UNCERTAINTY  — pure speculation, no credible basis
+    • PHYSICS UNDEMONSTRATED — fundamental gap, no experimental evidence
     """
 
     # =========================================================================
-    # PLASMA PHYSICS (Layer 1 inputs)
+    # PLASMA PARAMETERS (D-T PATHWAY)
     # =========================================================================
 
-    p_fus_MW: float = 800.0
-    """Assumed fusion thermal power [MW].
-    Source: No reactor design point exists for PoloMac (analysis.md §S5, §S2).
-    ASSUMED: Analogous to a large steady-state MFE device. 800 MW is consistent
-    with an ITER-class plasma volume (1300 m³ > ITER's ~840 m³) operating at
-    substantially lower Q due to D-D fuel penalty (~6× harder than D-T).
-    Ref: analysis.md §S2 (no reactor design point); analogue scaling from large
-    tokamak D-D studies.
-    HIGH UNCERTAINTY."""
-
-    Q_plasma: float = 15.0
-    """Plasma energy gain — physics Q = P_fus / P_heat_to_plasma.
-    Source: No confinement physics for PoloMac at any relevant parameter
-    (analysis.md §S2, §S3). Historical experiments reached "few eV" temperatures.
-    ASSUMED: Q = 15 represents an aspirational but not ignition-level target,
-    loosely analogous to what would be needed for D-D commercial viability.
-    Analysis §S2 notes recirculating power is a blocking issue even with SC coils —
-    Q must be high enough to make net electric positive (analysis §S7).
-    Threshold for positive net electric ≈ Q > 10 at these efficiency assumptions.
-    HIGH UNCERTAINTY."""
-
-    plasma_beta: float = 0.25
-    """Volume-averaged plasma beta (ratio of plasma pressure to magnetic pressure).
-    Source: Elio 2014 §Introduction: "energy parameter beta 20–30%" from historical
-    dipole experiments. Medium confidence — these were historical experiments at
-    sub-fusion conditions, not PoloMac measurements.
-    Ref: elio-2014-fed-poloidal-confinement.md §Introduction; analysis.md §S5."""
-
-    B_coil_T: float = 2.0
-    """Coil magnetic field at the coil current density [T].
-    Source: Elio 2014 §Magnet coils: "~2 T at 10–25 A/mm²" for the 2014 FEA design.
-    The commercial design is unspecified; this value is for the 1300 m³ geometry.
-    Ref: elio-2014-fed-poloidal-confinement.md §Magnet coils; analysis.md §S5.
-    MODERATE UNCERTAINTY."""
+    B_field_T: float = 2.5
+    """On-axis magnetic field [T].
+    D-T pathway: 2-3 T claimed (analysis §S5).
+    Lower than ITER (5.3 T) or HTS tokamaks (12-20 T).
+    Source: jtsp-2024-polomac-technical-report.md §V.
+    HIGH UNCERTAINTY — unvalidated claim of 2-3× lower field for equivalent performance."""
 
     plasma_volume_m3: float = 1300.0
     """Plasma volume [m³].
-    Source: Elio 2014 §Coil support and supply: "plasma volume of 1300 m³" in
-    the 2014 design geometry. This is not a power plant design point — it is
-    the geometry from the static magnetic field analysis.
-    Ref: elio-2014-fed-poloidal-confinement.md §Coil support and supply;
-    analysis.md §S5. Medium confidence."""
+    From 2014 conceptual design (elio-2014-fed-poloidal-confinement.md §Coil support).
+    Much larger than compact tokamaks (ARC ~60 m³).
+    Source: elio-2014-fed-poloidal-confinement.md.
+    MODERATE UNCERTAINTY — 2014 value, no updated reactor-scale volume in 2024 report."""
+
+    beta: float = 0.25
+    """Plasma beta (pressure / magnetic pressure) [fraction].
+    Analysis §S5: 20-30% from past poloidal experiments.
+    High beta is key claimed advantage.
+    Source: elio-2014-fed-poloidal-confinement.md §Introduction.
+    HIGH UNCERTAINTY — past experiments were at much lower field and temperature."""
+
+    ion_temp_keV: float = 8.1
+    """Ion temperature [keV].
+    D-T standard fusion temperature.
+    Source: jtsp-2024-polomac-technical-report.md §V.
+    MODERATE UNCERTAINTY — standard value, but achieving it is undemonstrated."""
+
+    density_m3: float = 1e20
+    """Plasma density [m⁻³].
+    D-T pathway: 10²⁰ m⁻³ (analysis §S5).
+    Comparable to tokamak density.
+    Source: jtsp-2024-polomac-technical-report.md §V.
+    MODERATE UNCERTAINTY."""
+
+    tau_E_s: float = 4.5
+    """Energy confinement time [s].
+    D-T pathway: 4-5 s claimed (analysis §S5).
+    Comparable to ITER target.
+    Source: jtsp-2024-polomac-technical-report.md §V.
+    HIGH UNCERTAINTY — no experimental basis for magnetic tunnel confinement."""
 
     # =========================================================================
-    # COIL SYSTEM (dominant capital cost uncertainty)
+    # FUSION POWER (HYPOTHETICAL — POWER BALANCE UNKNOWN)
     # =========================================================================
 
-    sc_coil_cost_M_USD: float = 500.0
-    """In-vessel superconducting dipole coil cost [M$].
-    Source: No superconducting coil design has been published for PoloMac
-    (analysis.md §S2, §S3, §S4).
-    ASSUMED: Analogue to large SC coil systems in advanced tokamaks. The LDX-
-    class floating in-vessel coil (MIT) was modest-scale; a full power-plant
-    in-vessel coil exposed to neutron flux with radiation-hardened insulation
-    is estimated here at $500M — roughly 2× a large tokamak TF coil set due
-    to the unique in-vessel geometry, cryogenic feed-through constraints, and
-    radiation-hardening requirements. REBCO HTS is the assumed conductor type
-    (analysis.md §S4).
-    HIGH UNCERTAINTY. Range: $200M (optimistic, HTS matures) to $1B+ (FOAK)."""
+    p_fus_MW: float = 400.0
+    """Fusion power [MW].
+    SPECULATIVE VALUE chosen to produce ~100 MWe plant at Q_eng ~ 5.
+    No fusion power estimate exists in sources.
+    Source: ASSUMED — corridor parameter.
+    EXTREME UNCERTAINTY — no power balance analysis exists."""
 
-    p_cryo_MW: float = 20.0
-    """SC coil cryogenic system electrical draw [MW].
-    Source: No cryogenic design exists for PoloMac (analysis.md §S3).
-    ASSUMED: 20 MW for an in-vessel SC coil cryoplant, elevated above typical
-    tokamak cryoplant (~5–15 MW) due to in-vessel geometry increasing heat loads
-    and cryogenic feed-through complexity.
-    For context: The copper coil draw was 700 MW (Elio 2014). SC coils replace
-    this with a much smaller but non-zero cryogenic load.
-    Ref: analysis.md §S7 (recirculating power framing).
-    HIGH UNCERTAINTY. This is the key difference from the blocking 700 MW copper case."""
+    Q_sci: float = 10.0
+    """Scientific gain: fusion power / heating power.
+    ASSUMED value typical of D-T magnetic confinement targets.
+    Source: ASSUMED — no heating system or Q_sci disclosed.
+    PHYSICS UNDEMONSTRATED — heating method for reactor scale unknown."""
 
     # =========================================================================
-    # POWER CONVERSION
+    # ENERGY CAPTURE & CONVERSION
     # =========================================================================
 
-    blanket_mult_DD: float = 1.03
-    """D-D blanket energy multiplication factor M (dimensionless).
-    Source: No blanket design for PoloMac.
-    ASSUMED: D-D blanket captures 2.45 MeV neutrons (no exothermic Li-6 reaction
-    as there is no breeding). Minimal multiplication from neutron moderation only.
-    M ≈ 1.03 (vs M ≈ 1.10–1.15 for D-T with Li blanket).
-    Ref: 1costingfe costing_constants.yaml (blanket_unit_cost_dd), analysis.md §S4.
-    DEFAULT from 1costingfe D-D convention."""
+    M_blanket: float = 1.15
+    """Energy multiplication factor (tritium breeding blanket).
+    D-T blanket with Li-6 breeding: M ~ 1.1-1.2.
+    Source: Standard D-T blanket value.
+    MODERATE UNCERTAINTY — no blanket design for Polomac geometry."""
 
-    thermal_efficiency: float = 0.35
-    """Thermal-to-electric conversion efficiency.
-    Source: No power conversion design exists for PoloMac (analysis.md §S3, §S5).
-    ASSUMED: D-D fusion produces lower-energy neutrons (2.45 MeV vs 14.1 MeV for D-T),
-    resulting in somewhat lower blanket exit temperatures. A Rankine-cycle thermal
-    efficiency of 35% is assumed (vs 38–40% for D-T with high-temperature blanket).
-    Ref: Analogue to large-volume steady-state MFE studies. SAND2006-7148 used 40%
-    for D-T; reducing by ~12% for D-D spectrum.
-    HIGH UNCERTAINTY."""
+    eta_th: float = 0.35
+    """Thermal-to-electric conversion efficiency [fraction].
+    Analysis §S5: "350°C" target for electricity generation.
+    ASSUMED Rankine steam cycle at moderate temperature.
+    Source: jtsp-2024-polomac-technical-report.md §VII; ASSUMED cycle.
+    MODERATE UNCERTAINTY — no power cycle specified."""
 
-    heating_system_efficiency: float = 0.60
-    """Wall-plug efficiency of auxiliary plasma heating system (dimensionless).
-    Source: No heating method specified for PoloMac (analysis.md §S2, §S3, §S5 —
-    gap type: truly-unknown, criticality: blocking).
-    ASSUMED: NBI (Neutral Beam Injection) is the most common large-MFE heating
-    system. Modern NBI wall-plug efficiency ~55–65%. Using 60% as mid-estimate.
-    ECRH or ICRH would have different efficiency; no system is specified.
-    Ref: Standard MFE systems engineering convention.
-    HIGH UNCERTAINTY — heating method is unspecified."""
+    # =========================================================================
+    # MAGNETIC SYSTEM
+    # =========================================================================
+
+    magnet_stored_energy_MJ: float = 5000.0
+    """Stored magnetic energy [MJ].
+    For 1300 m³ plasma at 2.5 T, E_mag ~ B²V/(2μ₀) ~ 3000-6000 MJ.
+    Much lower than ITER (~50 GJ at 5.3 T) due to lower field.
+    Source: CALCULATED from B²V scaling.
+    MODERATE UNCERTAINTY."""
+
+    p_coil_MW: float = 15.0
+    """Steady-state coil power consumption [MW].
+    ASSUMES superconducting magnets (cryo power + control).
+    2014 design had 700 MW for copper coils (excessive).
+    2024 report mentions superconducting transition but no power analysis.
+    Source: ASSUMED — superconducting cryo load.
+    HIGH UNCERTAINTY — no disclosed superconducting coil design."""
+
+    # =========================================================================
+    # HEATING & CURRENT DRIVE (REACTOR SCALE)
+    # =========================================================================
+
+    p_heating_MW: float = 40.0
+    """Auxiliary heating power [MW].
+    Derived from P_fus / Q_sci = 400 MW / 10 = 40 MW.
+    Heating method for 8.1 keV D-T in poloidal geometry is unknown.
+    Small prototype uses 5-10 kW ECRH at 4 GHz (not scalable to reactor).
+    Source: DERIVED from assumed Q_sci.
+    EXTREME UNCERTAINTY — no reactor-scale heating system specified."""
+
+    # =========================================================================
+    # AUXILIARY POWER
+    # =========================================================================
+
+    p_cooling_MW: float = 8.0
+    """Cooling system power [MW] for magnets, blanket, shields.
+    Source: ASSUMED from tokamak analogues.
+    MODERATE UNCERTAINTY."""
+
+    p_fuel_MW: float = 3.0
+    """Tritium fuel cycle power [MW] (if D-T operation).
+    Includes tritium extraction, processing, recycling.
+    Source: ASSUMED from D-T tokamak analogues.
+    MODERATE UNCERTAINTY."""
+
+    p_house_MW: float = 5.0
+    """Housekeeping / facility power [MW].
+    Source: Standard MFE plant estimate.
+    MODERATE UNCERTAINTY."""
+
+    p_controls_MW: float = 2.0
+    """Control, diagnostics, and monitoring power [MW].
+    Source: ASSUMED.
+    MODERATE UNCERTAINTY."""
 
     # =========================================================================
     # PLANT CONFIGURATION
     # =========================================================================
 
     n_mod: int = 1
-    """Number of fusion modules (chambers) per plant.
-    Source: No plant design exists. Single module is the simplest assumption.
-    ASSUMED."""
+    """Number of fusion modules per plant.
+    Large plasma volume (1300 m³) suggests single-module design.
+    Source: ASSUMED — poloidal dipole is integrated device.
+    MODERATE UNCERTAINTY."""
 
-    plant_availability: float = 0.75
-    """Plant capacity factor / availability.
-    Source: No O&M data or maintenance design for PoloMac (analysis.md §S3, §S5).
-    ASSUMED: 75% is lower than mature nuclear (85–90%) to reflect:
-    (1) TRL-1 plasma system with unproven confinement reliability,
-    (2) In-vessel coil maintenance complexity (analysis.md §S2, §S3).
-    Analysis §S3 notes the in-vessel coil maintenance is a major unresolved challenge.
-    HIGH UNCERTAINTY."""
+    plant_availability: float = 0.80
+    """Plant capacity factor / availability [fraction].
+    Lower than baseload thermal plants (85-90%) due to technology immaturity.
+    Steady-state operation avoids pulsed tokamak downtime.
+    Source: ASSUMED.
+    MODERATE UNCERTAINTY."""
 
-    plant_lifetime_years: float = 30.0
+    plant_lifetime_years: float = 40.0
     """Plant economic lifetime [years].
-    Source: No design basis for PoloMac.
-    ASSUMED: 30 years, shorter than the 40-year 1costingfe default for mature
-    concepts, reflecting the novel in-vessel coil replacement challenge.
-    HIGH UNCERTAINTY."""
+    Source: Standard fusion plant assumption."""
 
     noak: bool = True
     """Nth-of-a-kind (True) vs First-of-a-kind (False).
-    FOAK adds 10% contingency per 1costingfe CAS29 convention.
-    Given TRL-1 status, FOAK is more realistic, but NOAK used for fair comparison."""
+    FOAK adds 10% contingency on direct costs."""
 
     # =========================================================================
-    # GEOMETRY
+    # CAPITAL — MAGNET SYSTEM (C220103 OVERRIDE)
     # =========================================================================
 
-    major_radius_m: float = 5.0
-    """Approximate plasma major radius [m] for toroidal geometry approximation.
-    Source: Not directly stated in Elio 2014; derived to give plasma_volume_m3
-    = 1300 m³ using V_torus = 2π²Ra² with reasonable minor radius.
-    ASSUMED: R = 5 m gives a_minor = sqrt(1300 / (2π² × 5)) ≈ 3.63 m,
-    with R/a ≈ 1.38 — a very wide-aspect torus. This is approximate; actual
-    PoloMac geometry is not a simple torus.
-    Ref: elio-2014-fed-poloidal-confinement.md (geometry FEA only).
-    HIGH UNCERTAINTY — geometry inferred, not published."""
+    magnet_capital_M: float = 180.0
+    """Capital cost of superconducting magnet system (internal dipole + external coils) [$M].
+    Maps to C220103 (Coils) — CONCEPT-SPECIFIC.
+    Lower field (2.5 T) vs tokamak (5+ T) or HTS compact (12-20 T) enables lower cost.
+    ASSUMED: LTS (NbTi/Nb3Sn) at 2.5 T rather than HTS.
+    Analogues: ITER magnets ~€1B at 5.3 T; Polomac 2.5 T should be cheaper.
+    BUT: Magnetic tunnel geometry creates unique structural challenges.
+    Source: ASSUMED — lower field advantage, but no disclosed magnet design.
+    HIGH UNCERTAINTY — range $100M-$500M depending on tunnel integration."""
 
-    blanket_thickness_m: float = 0.50
-    """Blanket thickness [m] — D-D, no breeding required.
-    Source: No blanket design for PoloMac.
-    DEFAULT: 1costingfe D-D convention. D-D blanket is thinner than D-T because
-    no tritium breeding layer is needed (analysis.md §S4: blanket elimination
-    is cited as a key advantage).
-    Ref: 1costingfe costing_constants.yaml (blanket_unit_cost_dd)."""
+    # =========================================================================
+    # CHAMBER & GEOMETRY
+    # =========================================================================
 
-    shield_thickness_m: float = 0.50
-    """Neutron + radiation shield thickness [m].
-    Source: No shielding design for PoloMac (analysis.md §S3).
-    DEFAULT/ASSUMED: D-D produces 2.45 MeV neutrons (vs 14.1 MeV for D-T),
-    reducing shielding requirements. Using 0.5 m (same as blanket thickness)
-    vs 1.0–1.5 m typical for D-T tokamaks. Critical consideration: the in-vessel
-    coil requires shielding from neutron damage — this is an unsolved problem
-    (analysis.md §S3, Gap #6).
-    HIGH UNCERTAINTY."""
+    major_radius_m: float = 7.0
+    """Approximate major radius [m] for dipole field geometry.
+    Derived from 1300 m³ plasma volume assuming toroidal-like geometry.
+    V ~ 2π²Rₘₐⱼ × r² → R ~ (V/(2π²r²))^(1/3) ~ 6-8 m for r ~ 2-3 m.
+    Source: DERIVED from plasma volume.
+    HIGH UNCERTAINTY — no geometric parameters in sources."""
 
-    structure_thickness_m: float = 0.30
+    blanket_thickness_m: float = 0.60
+    """Tritium breeding blanket thickness [m].
+    D-T blanket for neutron absorption and tritium production.
+    Standard thickness for 14.1 MeV D-T neutrons.
+    Source: Standard D-T blanket value.
+    MODERATE UNCERTAINTY — no blanket design for magnetic tunnel geometry."""
+
+    shield_thickness_m: float = 0.80
+    """Neutron shielding thickness [m].
+    D-T 14.1 MeV neutrons require substantial shielding.
+    Magnetic tunnels may create neutron streaming paths.
+    Source: ASSUMED from tokamak analogues.
+    HIGH UNCERTAINTY — tunnel streaming effects unknown."""
+
+    structure_thickness_m: float = 0.50
     """Primary structure thickness [m].
-    Source: Standard engineering analogue.
-    DEFAULT: 1costingfe structural convention."""
+    Magnetic tunnel supports require non-standard structural design.
+    Source: ASSUMED.
+    HIGH UNCERTAINTY — tunnel penetrations create unique loading."""
 
-    vessel_thickness_m: float = 0.15
+    vessel_thickness_m: float = 0.08
     """Vacuum vessel thickness [m].
-    DEFAULT: Standard vacuum vessel analogue."""
+    Source: Standard tokamak vessel.
+    MODERATE UNCERTAINTY."""
 
-    # =========================================================================
-    # AUXILIARY LOADS
-    # =========================================================================
-
-    p_house_MW: float = 10.0
-    """Housekeeping electrical power [MW] (HVAC, lighting, controls).
-    DEFAULT: 1costingfe convention for large MFE plant."""
-
-    p_trit_MW: float = 2.0
-    """Tritium handling system power [MW].
-    Source: D-D produces trace tritium (branch 1: D+D → T+p). Some tritium
-    processing is needed even for D-D (safely dispose of or combust T).
-    ASSUMED: Minimal processing; much lower than D-T (~10–20 MW for full
-    tritium fuel cycle). Using 2 MW as placeholder.
-    Ref: 1costingfe (fuel_handling_dd_base); analysis.md §S4.
+    blanket_unit_cost: float = 0.60
+    """Blanket unit cost [M$/m³].
+    D-T breeding blanket with lithium, beryllium multiplier.
+    Source: 1costingfe blanket_unit_cost default.
     MODERATE UNCERTAINTY."""
 
     # =========================================================================
@@ -276,990 +328,943 @@ class PoloMacPlantParams:
     # =========================================================================
 
     interest_rate: float = 0.08
-    """Real discount rate (WACC) [fraction].
-    Ref: 1costingfe default."""
+    """Real discount rate / WACC [fraction].
+    Source: 1costingfe interest_rate default."""
 
     inflation_rate: float = 0.02
-    """Inflation rate for levelized cost calculations.
-    Ref: 1costingfe default."""
+    """Inflation rate for O&M levelization [fraction].
+    Source: 1costingfe default."""
 
-    construction_time_years: float = 8.0
+    construction_time_years: float = 6.0
     """Construction period [years].
-    Source: No construction plan for PoloMac.
-    ASSUMED: 8 years, longer than mature nuclear (6 years) to reflect the novel
-    in-vessel coil assembly complexity and TRL-1 status.
-    HIGH UNCERTAINTY."""
+    Similar to tokamak (6-8 years) due to large chamber size.
+    Source: ASSUMED.
+    MODERATE UNCERTAINTY."""
+
+    om_rate_fraction: float = 0.025
+    """Annual O&M as fraction of overnight capital.
+    Slightly higher than tokamak (2%) due to first-of-a-kind technology.
+    Source: ASSUMED.
+    MODERATE UNCERTAINTY."""
+
+    core_lifetime_FPY: float = 5.0
+    """First wall / blanket lifetime [full-power-years before replacement].
+    D-T 14.1 MeV neutron damage.
+    Source: Standard D-T tokamak value.
+    MODERATE UNCERTAINTY."""
 
     # =========================================================================
-    # OPERATING COSTS
+    # FUEL COSTS
     # =========================================================================
 
-    om_cost_per_yr_base_M: float = 39.0
-    """Base annual O&M cost at 1 GWe reference [M$/yr].
-    Source: 1costingfe costing_constants.yaml (om_cost_dd = 39 M$/yr at 1 GWe).
-    D-D reduces tritium processing overhead vs D-T (52 M$/yr).
-    Applied via power-law scaling: OM = base × (P_net/1000)^0.5
-    Scaled up by om_novel_penalty for in-vessel coil novelty.
-    Ref: 1costingfe costing_constants.yaml."""
+    u_deuterium_per_kg: float = 2175.0
+    """Deuterium unit cost [$/kg].
+    Source: 1costingfe costing_constants.yaml."""
 
-    om_novel_penalty: float = 1.50
-    """Multiplicative O&M penalty for novel in-vessel coil maintenance [×].
-    Source: No O&M data for PoloMac (analysis.md §S3).
-    ASSUMED: In-vessel coil replacement in a neutron-activated vessel requires
-    specialized remote handling. Using 1.5× the standard D-D O&M base to
-    reflect additional remote handling, hot cell operations, and schedule risk.
-    Analysis §S3 notes this as an important unsolved maintenance challenge.
-    HIGH UNCERTAINTY."""
-
-    core_lifetime_FPY: float = 10.0
-    """First wall / blanket core lifetime in full-power-years before replacement.
-    D-D: ~10–15 FPY (2.45 MeV neutrons, lower DPA rate than D-T).
-    ALSO: In-vessel coil replacement interval is unknown; not modeled separately.
-    Ref: 1costingfe costing_constants.yaml (core_lifetime_dd = 10.0 FPY).
-    DEFAULT from 1costingfe."""
-
-    fuel_cost_per_kg_D2: float = 2175.0
-    """Deuterium fuel unit cost [$/kg].
-    Source: 1costingfe costing_constants.yaml (u_deuterium = 2175 $/kg).
-    D-D fuel is deuterium only — no tritium purchase required after startup.
-    This is a genuine cost advantage (analysis.md §S4).
-    Ref: 1costingfe costing_constants.yaml."""
+    u_tritium_per_g: float = 30000.0
+    """Tritium unit cost [$/g].
+    Source: 1costingfe costing_constants.yaml."""
 
     # =========================================================================
-    # INTERNAL METHODS
+    # REGULATORY
+    # =========================================================================
+
+    regulatory_multiplier: float = 1.8
+    """Building cost multiplier for D-T nuclear facility regulatory overhead.
+    D-T tokamak value: 1.5-2.2×.
+    Source: ASSUMED from tokamak analogues.
+    MODERATE UNCERTAINTY."""
+
+    # =========================================================================
+    # COMPUTE METHODS
     # =========================================================================
 
     def _compute_power(self) -> dict:
-        """Layer 1: D-D power balance — fusion energy to net electric.
+        """Layer 1: Power balance from assumed fusion power and Q_sci.
 
-        D-D fusion energy fractions:
-          50% branch: D+D → T + p — 4.03 MeV total, no neutrons
-          50% branch: D+D → ³He + n — 3.27 MeV total, 2.45 MeV neutron
-          Average: 3.65 MeV/reaction
-          Neutron fraction: 0.335, Charged fraction: 0.665
-
-        Key constraint: Q must be high enough that heating wall-plug power
-        < gross electric after cryogenic and housekeeping loads. Q_break-even
-        ≈ 10–12 at these efficiency assumptions.
+        Energy flow:
+          Heating power [P_heat] → plasma → fusion power [P_fus]
+          → thermal [P_th] → gross electric [P_et]
+          → net electric [P_net] = P_et - P_heat - P_coil - P_aux
         """
-        r = {}
+        r: dict = {}
 
-        # Physics Q (given): defines heating requirement
-        r["Q_sci"] = self.Q_plasma
+        # --- Fusion power (SPECULATIVE) ---
+        p_fus = self.p_fus_MW
+        r["p_fus"] = p_fus
 
-        # Plasma heating power (power delivered TO plasma)
-        p_heat_plasma_MW = self.p_fus_MW / self.Q_plasma
-        r["p_heat_plasma_MW"] = p_heat_plasma_MW
+        # Scientific Q (ASSUMED)
+        r["Q_sci"] = self.Q_sci
 
-        # Wall-plug heating power (includes system inefficiency)
-        p_heat_wp_MW = p_heat_plasma_MW / self.heating_system_efficiency
-        r["p_heat_wp_MW"] = p_heat_wp_MW
+        # Heating power (derived from Q_sci)
+        p_heat = p_fus / self.Q_sci if self.Q_sci > 0 else 0.0
+        r["p_heating"] = p_heat
 
-        # Fusion power split
-        r["p_fus"] = self.p_fus_MW
-        r["p_neutron"] = self.p_fus_MW * F_NEUTRON_DD   # 2.45 MeV neutrons
-        r["p_charged"] = self.p_fus_MW * F_CHARGED_DD   # protons + ³He
+        # Alpha power (D-T: 20% of fusion energy to alphas)
+        p_alpha = p_fus * 0.20
+        r["p_alpha"] = p_alpha
 
-        # Thermal power:
-        # Charged particles thermalize directly in plasma → blanket/vessel wall.
-        # Neutrons deposit energy in blanket with multiplication M.
-        # All wall-plug heating power eventually thermalizes (into plasma → vessel).
-        p_th = (self.p_fus_MW * (F_CHARGED_DD + self.blanket_mult_DD * F_NEUTRON_DD)
-                + p_heat_wp_MW)
+        # Neutron power (D-T: 80% of fusion energy to neutrons)
+        p_neutron = p_fus * 0.80
+        r["p_neutron"] = p_neutron
+
+        # --- Thermal power ---
+        # Neutrons deposit in blanket with multiplication
+        # Alphas thermalize in plasma then to first wall
+        p_th = (p_neutron * self.M_blanket) + p_alpha
         r["p_th"] = p_th
 
-        # Gross electric
-        p_et = p_th * self.thermal_efficiency
+        # --- Gross electric ---
+        p_et = p_th * self.eta_th
         r["p_et"] = p_et
 
-        # Recirculating loads
-        r["p_recirc_heat"] = p_heat_wp_MW   # heating system draw
-        r["p_recirc_cryo"] = self.p_cryo_MW
-        r["p_recirc_house"] = self.p_house_MW
-        r["p_recirc_trit"] = self.p_trit_MW
-        total_recirc = p_heat_wp_MW + self.p_cryo_MW + self.p_house_MW + self.p_trit_MW
-        r["p_aux"] = total_recirc
+        # --- Recirculating power ---
+        p_aux = (self.p_cooling_MW + self.p_fuel_MW
+                 + self.p_house_MW + self.p_controls_MW)
+        r["p_aux"] = p_aux
+        p_recirc = p_heat + self.p_coil_MW + p_aux
+        r["p_recirc"] = p_recirc
+        r["p_coil"] = self.p_coil_MW
 
-        # Net electric
-        p_net = p_et - total_recirc
+        # --- Net electric ---
+        p_net = p_et - p_recirc
         r["p_net"] = p_net
 
-        # Engineering Q: ratio of fusion power to total electrical recirculating power
-        r["Q_eng"] = self.p_fus_MW / total_recirc if total_recirc > 0 else float('inf')
-        r["recirc_fraction"] = total_recirc / p_et if p_et > 0 else float('inf')
+        # Multi-module plant totals (n_mod = 1 for Polomac)
+        r["p_net_plant"] = p_net * self.n_mod
+        r["p_et_plant"]  = p_et * self.n_mod
+        r["p_th_plant"]  = p_th * self.n_mod
 
-        # Annual energy (for LCOE)
-        r["annual_hours"] = 8760 * self.plant_availability
+        # --- Figures of merit ---
+        r["Q_eng"] = p_fus / p_recirc if p_recirc > 0 else float('inf')
+        r["recirc_fraction"] = p_recirc / p_et if p_et > 0 else float('inf')
+
+        # Physics gap reminder
+        r["demonstrated_temp_eV"] = 100
+        r["required_temp_keV"] = self.ion_temp_keV
+        r["temperature_gap_factor"] = (self.ion_temp_keV * 1000) / 100
 
         return r
 
     def _compute_geometry(self, power: dict) -> dict:
-        """Layer 2: Toroidal shell geometry for blanket/shield/structure volumes.
+        """Layer 2: Chamber geometry volumes using toroidal shells.
 
-        The PoloMac geometry is not a simple torus (it is a poloidally wound dipole),
-        but is approximated as toroidal for volumetric cost scaling. The plasma volume
-        of 1300 m³ (Elio 2014) anchors the minor radius. Shell volumes are computed
-        as toroidal annuli V_shell = 2π²R(a_out² − a_in²).
-
-        Note: The in-vessel dipole coil occupies the geometric center. For this model,
-        the plasma fills the region from the coil outer surface to the first wall.
-        The coil volume is excluded from the plasma volume (conservative — actual
-        plasma fill factor is unknown).
+        Approximate toroidal geometry for dipole field chamber.
+        V_plasma = 1300 m³ given. Derive major radius and minor radius.
         """
-        r = {}
+        r: dict = {}
 
-        # Minor radius from plasma volume: V_torus = 2π²Ra²
-        # Solving for a: a = sqrt(V / (2π²R))
-        a_plasma = math.sqrt(self.plasma_volume_m3 / (2.0 * math.pi**2 * self.major_radius_m))
-        r["minor_radius_plasma_m"] = a_plasma
-        r["major_radius_m"] = self.major_radius_m
-        r["plasma_volume_m3"] = self.plasma_volume_m3
+        # Given plasma volume, estimate major and minor radii
+        # V_plasma ~ 2π²Rₘₐⱼ × rₘᵢₙ²
+        # Assume aspect ratio A ~ 3 → R/r ~ 3
+        V_plasma = self.plasma_volume_m3
+        aspect_ratio = 3.0
+        # r_min = (V_plasma / (2π² * A))^(1/3)
+        r_min = (V_plasma / (2.0 * math.pi**2 * aspect_ratio)) ** (1.0/3.0)
+        R_maj = aspect_ratio * r_min
 
-        # Aspect ratio (R/a)
-        r["aspect_ratio"] = self.major_radius_m / a_plasma
+        r["major_radius_m"] = R_maj
+        r["minor_radius_m"] = r_min
+        r["plasma_vol_m3"] = V_plasma
 
-        def torus_shell_vol(R, a_in, thickness):
-            """Volume of toroidal shell from minor radius a_in to a_in+thickness."""
-            a_out = a_in + thickness
-            return 2.0 * math.pi**2 * R * (a_out**2 - a_in**2)
+        def toroidal_shell_vol(R: float, r_in: float, thickness: float) -> float:
+            """Volume of toroidal shell."""
+            r_out = r_in + thickness
+            return 2.0 * math.pi**2 * R * (r_out**2 - r_in**2)
 
-        R = self.major_radius_m
+        r_b = r_min + self.blanket_thickness_m
+        r["blanket_vol_m3"] = toroidal_shell_vol(R_maj, r_min, self.blanket_thickness_m)
 
-        # Blanket shell (wraps around plasma)
-        r["blanket_vol_m3"] = torus_shell_vol(R, a_plasma, self.blanket_thickness_m)
-        a_blanket_out = a_plasma + self.blanket_thickness_m
+        r_s = r_b + self.shield_thickness_m
+        r["shield_vol_m3"] = toroidal_shell_vol(R_maj, r_b, self.shield_thickness_m)
 
-        # Shield shell
-        r["shield_vol_m3"] = torus_shell_vol(R, a_blanket_out, self.shield_thickness_m)
-        a_shield_out = a_blanket_out + self.shield_thickness_m
+        r_st = r_s + self.structure_thickness_m
+        r["structure_vol_m3"] = toroidal_shell_vol(R_maj, r_s, self.structure_thickness_m)
 
-        # Structure shell
-        r["structure_vol_m3"] = torus_shell_vol(R, a_shield_out, self.structure_thickness_m)
-        a_structure_out = a_shield_out + self.structure_thickness_m
-
-        # Vessel shell
-        r["vessel_vol_m3"] = torus_shell_vol(R, a_structure_out, self.vessel_thickness_m)
-        a_vessel_out = a_structure_out + self.vessel_thickness_m
-
-        # Outer minor radius of assembled machine
-        r["a_total_m"] = a_vessel_out
-        r["machine_diameter_m"] = 2.0 * (self.major_radius_m + a_vessel_out)
+        r["vessel_vol_m3"] = toroidal_shell_vol(R_maj, r_st, self.vessel_thickness_m)
 
         return r
 
     def _compute_cas22(self, power: dict, geom: dict) -> dict:
-        """Layer 3: CAS22 Reactor Plant Equipment.
+        """Layer 3: CAS22 Reactor Plant Equipment sub-accounts.
 
-        Per-module sub-accounts follow 1costingfe D-D scaling laws with concept-
-        specific overrides for the in-vessel SC dipole coil (C220103) and auxiliary
-        heating (C220104).
+        Polomac-specific features:
+        • C220103: Lower-field magnets (2.5 T) with magnetic tunnel geometry
+        • C220104: Heating method unknown — use power-scaled estimate
+        • Large plasma volume → large blanket, shield, vessel costs
 
-        Key overrides vs standard MFE:
-          C220103: In-vessel SC dipole coil — direct cost override (no tokamak coil
-                   scaling law applies; this is a unique geometry).
-          C220104: Auxiliary heating — wall-plug power scaled cost.
-          C220108: Target factory — zero (steady-state, no targets needed).
-          C220110: Remote handling — elevated for in-vessel coil maintenance.
-
-        D-D adjustments vs D-T:
-          C220101 blanket: blanket_unit_cost_dd = 0.30 M$/m³ (no breeding layer)
-          C220102 shield: shield fuel scale = 0.50 (2.45 MeV neutrons vs 14.1 MeV)
-          C220500 fuel handling: fuel_handling_dd_base = 60 M$ (minimal tritium)
+        All sub-accounts use 1costingfe power-scaling laws unless overridden.
         """
-        r = {}
+        r: dict = {}
 
-        p_th = max(power["p_th"], 1.0)
-        p_et = max(power["p_et"], 1.0)
-        p_net = max(power["p_net"], 1.0)
+        p_th  = max(power["p_th"], 1.0)
+        p_et  = max(power["p_et"], 1.0)
+        p_net_safe = max(abs(power["p_net"]) * self.n_mod, 1.0)
 
-        # --- Per-module accounts ---
-
-        # C220101: First Wall + Blanket (D-D, no breeding)
-        # Formula: unit_cost_dd × volume × (p_th/P_TH_REF)^0.6
-        # Ref: 1costingfe blanket_unit_cost_dd = 0.30 M$/m³
-        blanket_unit_cost_dd = 0.30  # M$/m³
-        r["C220101"] = (blanket_unit_cost_dd
+        # C220101: Active Region / First Wall / Blanket
+        # D-T breeding blanket in large toroidal volume
+        r["C220101"] = (self.blanket_unit_cost
                         * geom["blanket_vol_m3"]
                         * (p_th / P_TH_REF) ** 0.6)
 
-        # C220102: Shield — D-D uses lower fuel scale factor
-        # D-D: 2.45 MeV neutrons are less damaging than 14.1 MeV D-T neutrons.
-        # Shield fuel scale = 0.50 (analogue: DHe3 at ~0.5× D-T per 1costingfe rationale).
-        # Ref: 1costingfe shield_unit_cost = 0.74 M$/m³, fuel scale factor convention.
-        shield_unit_cost = 0.74   # M$/m³
-        shield_fuel_scale_dd = 0.50  # ASSUMED: 50% of D-T shielding due to lower neutron energy
-        r["C220102"] = (shield_unit_cost
+        # C220102: Shield (D-T 14.1 MeV neutrons)
+        # Source: 1costingfe shield_unit_cost = 0.74 M$/m³
+        r["C220102"] = (0.74
                         * geom["shield_vol_m3"]
-                        * shield_fuel_scale_dd
                         * (p_th / P_TH_REF) ** 0.6)
 
-        # C220103: In-Vessel SC Dipole Coil — OVERRIDE
-        # Standard formula for MFE coils scales with kA·m or stored energy.
-        # PoloMac's in-vessel coil has no published geometry, conductor specification,
-        # or cost data (analysis.md §S3, §S4). Using direct cost override.
-        # Ref: analysis.md §S4 (REBCO HTS analogue discussion).
-        # HIGH UNCERTAINTY.
-        r["C220103"] = self.sc_coil_cost_M_USD  # [override]
+        # C220103: Coils — OVERRIDE with Polomac superconducting magnets
+        # Lower field (2.5 T) vs tokamak but magnetic tunnel geometry
+        r["C220103"] = self.magnet_capital_M
 
-        # C220104: Auxiliary Heating System — OVERRIDE with power-scaled estimate
-        # No heating system specified for PoloMac (analysis.md §S2 gap #2 blocking).
-        # ASSUMED: NBI system cost scales as ~1.5 M$/MW of wall-plug heating.
-        # Reference: large tokamak NBI systems (JET, ITER) at ~$1–2M/MW wall-plug.
-        # Ref: 1costingfe power_supplies_base convention; analogue to ITER NBI.
-        # HIGH UNCERTAINTY.
-        nbi_cost_per_mw_wp = 1.5  # M$/MW wall-plug, ASSUMED
-        r["C220104"] = nbi_cost_per_mw_wp * power["p_heat_wp_MW"]  # [override]
+        # C220104: Supplementary Heating
+        # No disclosed heating method; use power-scaled estimate
+        # Source: 1costingfe heating_base ~ $150M at 1 GWe for NBI/ECRH
+        r["C220104"] = 100.0 * (p_net_safe / P_NET_REF) ** 0.7
 
         # C220105: Primary Structure
-        # Formula: 0.15 × volume × (p_et/P_ET_REF)^0.5
-        # Ref: 1costingfe structure_unit_cost = 0.15 M$/m³
-        structure_unit_cost = 0.15  # M$/m³
-        r["C220105"] = (structure_unit_cost
+        # Magnetic tunnel supports create non-standard loading
+        # Source: 1costingfe structure_unit_cost = 0.15 M$/m³, increased for tunnels
+        r["C220105"] = (0.20  # Increased from 0.15 for tunnel complexity
                         * geom["structure_vol_m3"]
                         * (p_et / P_ET_REF) ** 0.5)
 
-        # C220106: Vacuum System (vessel + pumps)
-        # Formula: 0.72 × volume × (p_et/P_ET_REF)^0.6
-        # Ref: 1costingfe vessel_unit_cost = 0.72 M$/m³
-        vessel_unit_cost = 0.72  # M$/m³
-        r["C220106"] = (vessel_unit_cost
+        # C220106: Vacuum Vessel
+        # Source: 1costingfe vessel_unit_cost = 0.72 M$/m³
+        r["C220106"] = (0.72
                         * geom["vessel_vol_m3"]
                         * (p_et / P_ET_REF) ** 0.6)
 
-        # C220107: Power Supplies (standard auxiliary systems, not the coil)
-        # Formula: 80.0 × (p_et/1000)^0.7
-        # Ref: 1costingfe power_supplies_base = 80 M$ at 1 GWe
-        power_supplies_base = 80.0  # M$
-        r["C220107"] = power_supplies_base * (p_et / 1000.0) ** 0.7
+        # C220107: Power Supplies (coil power supplies + control)
+        # Superconducting coils require lower steady-state power than 2014 copper design
+        # Source: 1costingfe power_supply_base ~ $50M at 1 GWe
+        r["C220107"] = 40.0 * (p_net_safe / P_NET_REF) ** 0.6
 
-        # C220108: Target Factory — zero (steady-state operation, no targets)
-        # PoloMac is stated as steady-state (JTSP 2024). No target/RTL costs.
-        r["C220108"] = 0.0  # [override — steady-state, no targets]
+        # C220108: Target Factory — not applicable to MFE
+        r["C220108"] = 0.0
 
-        # C220109: Direct Energy Converter — not applicable for PoloMac (D-D thermal cycle)
+        # C220109: Direct Energy Converter — not applicable
         r["C220109"] = 0.0
 
-        # C220110: Remote Handling — ELEVATED for in-vessel coil
-        # Standard D-D remote handling base: 100 M$ at 1 GWe (1costingfe RH_dd_base).
-        # PoloMac in-vessel coil requires extraordinary remote handling capability:
-        # the coil must be removable/replaceable in an activated vessel, requiring
-        # precision robotics through the magnetic tunnel access geometry.
-        # Analysis §S3 identifies this as an important unresolved challenge.
-        # Applying 1.5× penalty on the DD base.
-        # Ref: 1costingfe remote_handling_dd_base = 100 M$; analysis.md §S3.
-        # HIGH UNCERTAINTY.
-        rh_dd_base = 100.0  # M$
-        rh_polomac_penalty = 1.50  # ASSUMED: in-vessel coil handling complexity
-        r["C220110"] = (rh_dd_base * rh_polomac_penalty
-                        * (p_net / 1000.0) ** 0.6)
+        # C220110: Remote Handling (D-T neutron damage)
+        # Source: 1costingfe remote_handling_dt_base = 150 M$ at 1 GWe
+        r["C220110"] = 120.0 * (p_net_safe / P_NET_REF) ** 0.6
 
         # C220111: Installation labor
-        # Formula: 0.14 × reactor subtotal
-        # Ref: 1costingfe installation_frac = 0.14
-        installation_frac = 0.14
-        reactor_subtotal = sum(r[k] for k in [
+        # Source: 1costingfe installation_frac = 0.14
+        reactor_sub = sum(r[k] for k in [
             "C220101", "C220102", "C220103", "C220104", "C220105",
             "C220106", "C220107", "C220108", "C220109", "C220110"])
-        r["C220111"] = installation_frac * reactor_subtotal
+        r["C220111"] = 0.14 * reactor_sub
 
-        # C220112: Isotope Separation — zero (deuterium from water; no Li enrichment)
-        # D-D fuel needs no isotope separation infrastructure beyond standard
-        # deuterium electrolysis/distillation (mature, low-cost industry).
-        # This is a genuine cost advantage vs D-T (analysis.md §S4).
-        r["C220112"] = 0.0
+        # C220112: Isotope Separation (D-T fuel cycle)
+        # Source: 1costingfe tritium system base cost
+        r["C220112"] = 15.0 * (p_net_safe / P_NET_REF) ** 0.5
 
-        # Per-module subtotal
-        r["CAS22_per_module"] = reactor_subtotal + r["C220111"] + r["C220112"]
+        r["CAS22_per_module"] = reactor_sub + r["C220111"] + r["C220112"]
 
         # --- Plant-wide accounts ---
-        p_net_total = p_net * self.n_mod
-        p_th_total = p_th * self.n_mod
+        p_th_total  = power["p_th"] * self.n_mod
+        p_net_total = abs(power["p_net"]) * self.n_mod
 
-        # C220200: Main & Secondary Coolant Systems
-        # Ref: 1costingfe CAS22 scaling (MagLIF exemplar convention)
-        C220201 = 166.0 * (p_net_total / 1000.0)        # Primary coolant
-        C220202 = 40.6 * (p_th_total / 3500.0) ** 0.55  # Intermediate coolant
+        # C220200: Coolant Systems
+        # Source: 1costingfe CAS22 plant-wide formulas
+        C220201 = 166.0 * (p_net_total / 1000.0)
+        C220202 = 40.6  * (p_th_total  / 3500.0) ** 0.55
         r["C220200"] = C220201 + C220202
 
-        # C220300: Auxiliary Cooling + Cryoplant
-        # Cryoplant scales with cryogenic load (SC coil cooling).
-        # Ref: 1costingfe CAS22 convention; cryoplant for SC coil path.
-        C220301 = 1.1e-3 * p_th_total                                    # Aux coolant
-        C220302 = 200.0 * (max(self.p_cryo_MW, 0.01) / 30.0) ** 0.7     # Cryoplant
+        # C220300: Auxiliary Cooling (cryoplant for superconducting coils)
+        # Source: 1costingfe CAS22 formula
+        C220301 = 1.1e-3 * p_th_total
+        C220302 = 40.0  # Cryoplant for superconducting magnets
         r["C220300"] = C220301 + C220302
 
-        # C220400: Radioactive Waste Management
-        # Ref: 1costingfe CAS22 convention
-        r["C220400"] = 1.96 * (p_th_total / 1000.0)
+        # C220400: Radioactive Waste Management (D-T)
+        # Source: 1costingfe formula
+        r["C220400"] = 1.5 * (p_th_total / 1000.0)
 
-        # C220500: Fuel Handling — D-D base (minimal tritium, no breeding)
-        # Ref: 1costingfe fuel_handling_dd_base = 60 M$ at 1 GWe
-        fuel_handling_dd_base = 60.0  # M$
-        r["C220500"] = fuel_handling_dd_base * (p_net_total / 1000.0) ** 0.7
+        # C220500: Fuel Handling & Storage (D-T tritium cycle)
+        # Source: 1costingfe fuel_handling_dt_base = 120 M$
+        r["C220500"] = 100.0 * (p_net_total / 1000.0) ** 0.7
 
         # C220600: Other Reactor Plant Equipment
+        # Source: 1costingfe formula
         r["C220600"] = 11.5 * (p_net_total / 1000.0) ** 0.8
 
         # C220700: Instrumentation & Control
+        # Source: 1costingfe formula
         r["C220700"] = 85.0 * (p_th_total / 3500.0) ** 0.65
 
-        # Plant-wide subtotal
         r["CAS22_plant_wide"] = sum(r[k] for k in [
             "C220200", "C220300", "C220400", "C220500", "C220600", "C220700"])
 
-        # Total CAS22
         r["CAS22"] = r["CAS22_per_module"] * self.n_mod + r["CAS22_plant_wide"]
 
         return r
 
     def _compute_costs(self, power: dict, cas22: dict) -> dict:
-        """Layer 4: CAS10–60 capital cost structure.
+        """Layer 4: CAS10-60 capital cost build-up."""
+        r: dict = {}
 
-        Follows 1costingfe CAS structure. Buildings use D-D fuel type
-        (no hot cell for tritium at D-T scale; some hot cell for activated in-vessel coil).
-        Construction time penalty for novel in-vessel coil assembly.
-        """
-        r = {}
         p_et = max(power["p_et"], 1.0)
-        p_net = max(power["p_net"], 1.0)
+        p_net = power["p_net"]
+        p_net_safe = max(abs(p_net) * self.n_mod, 1.0)
 
-        # === CAS10: Pre-construction costs ===
-        # Ref: 1costingfe costing_constants.yaml
-        site_permits = 3.0       # M$
-        plant_studies = 4.0 if self.noak else 20.0   # M$ (NOAK vs FOAK)
-        plant_permits = 2.0      # M$
-        plant_reports = 1.0      # M$
-        other_precon = 1.0       # M$
-        land_acres = 0.25 * p_net * math.sqrt(self.n_mod)   # acres (0.25 acres/MWe)
-        land_cost = land_acres * 10_000 / 1e6               # M$ at $10k/acre
-        # D-D licensing: 1costingfe licensing_cost_dd = 3 M$ (reduced neutron hazard)
-        licensing_cost = 3.0 if not self.noak else 1.5  # M$
-        r["CAS10"] = (site_permits + plant_studies + plant_permits + plant_reports
-                      + other_precon + land_cost + licensing_cost)
+        # === CAS10: Pre-construction ===
+        land_cost     = 0.25 * p_net_safe * 10_000 / 1e6   # $0.25 acres/MWe × $10k/acre
+        licensing     = 3.0 if not self.noak else 1.5
+        r["CAS10"] = (3.0      # site_permits
+                      + (4.0 if self.noak else 20.0)        # plant_studies
+                      + 2.0    # plant_permits
+                      + 1.0    # plant_reports
+                      + 1.0    # other_precon
+                      + land_cost
+                      + licensing)
 
         # === CAS21: Buildings ===
-        # Per 1costingfe building_costs_per_kw (D-D, no tritium hot cell at full scale)
-        # Hot cell reduced from 93.4 $/kW (D-T) to 50 $/kW (D-D):
-        #   D-D still requires hot cell for activated in-vessel coil handling.
-        # Ref: 1costingfe costing_constants.yaml (building_costs_per_kw)
-        building_cost_per_kW = {
-            "site_improvements": 268.0,   # standard
-            "fusion_heat_island": 126.0,  # reactor hall — large for 1300 m³ plasma
-            "turbine_building": 54.0,     # standard Rankine cycle
-            "heat_exchanger": 12.0,
-            "power_supply_storage": 35.0, # houses NBI heating + auxiliary systems
-            "hot_cell": 50.0,             # ASSUMED: reduced from 93.4 (D-T) for D-D activated coil
-            "reactor_services": 25.0,
-            "service_water": 11.0,
-            "fuel_storage": 9.1,
-            "control_room": 17.0,
-            "onsite_ac": 21.0,
-            "administration": 10.0,
-            "site_services": 4.0,
-            "cryogenics": 15.0,           # SC coil cryoplant building
+        # D-T MFE facility building costs (M$ at P_ET_REF = 1100 MW gross electric)
+        # Large plasma volume (1300 m³) suggests large reactor building
+        building_items_M = {
+            "site_improvements":   85.0,
+            "reactor_building":    180.0,  # Large building for 1300 m³ plasma + tunnels
+            "turbine_building":    58.0,
+            "hot_cell":            55.0,   # D-T activation
+            "reactor_auxiliaries": 35.0,
+            "fuel_storage":        12.0,   # D-T tritium storage
+            "control_room":        14.0,
+            "security":             3.5,
+            "ventilation_hvac":    20.0,
+            "administration":       9.0,
+            "maintenance":         20.0,
+            "heat_exchanger":      17.0,
+            "power_supply_bldg":   15.0,
+            "cryogenics_bldg":     12.0,   # For superconducting magnets
+            "misc":                 5.0,
         }
-        total_building_per_kW = sum(building_cost_per_kW.values())  # ~657 $/kW
-        r["CAS21"] = total_building_per_kW * p_et / 1000.0  # M$
+        total_bldg_ref = sum(building_items_M.values())
+        cas21_raw = total_bldg_ref * p_et / P_ET_REF
+        # Apply D-T nuclear regulatory multiplier
+        r["CAS21"] = cas21_raw * self.regulatory_multiplier
+        r["CAS21_detail"] = {k: v * p_et / P_ET_REF * self.regulatory_multiplier
+                             for k, v in building_items_M.items()}
 
         # === CAS22: Reactor Plant Equipment ===
         r["CAS22"] = cas22["CAS22"]
 
         # === CAS23: Turbine Plant Equipment ===
-        # Ref: 1costingfe turbine_per_mw = 0.19764 M$/MW
-        r["CAS23"] = self.n_mod * p_et * 0.19764
+        # Source: 1costingfe turbine_per_mw = 0.20 M$/MW (Rankine) or 0.25 (sCO2)
+        r["CAS23"] = self.n_mod * p_et * 0.20
 
         # === CAS24: Electric Plant Equipment ===
-        # Ref: 1costingfe electric_per_mw = 0.08418 M$/MW
+        # Source: 1costingfe electric_per_mw
         r["CAS24"] = self.n_mod * p_et * 0.08418
 
-        # === CAS25: Miscellaneous Plant Equipment ===
-        # Ref: 1costingfe misc_per_mw = 0.05124 M$/MW
+        # === CAS25: Misc Plant Equipment ===
+        # Source: 1costingfe misc_per_mw
         r["CAS25"] = self.n_mod * p_et * 0.05124
 
         # === CAS26: Heat Rejection ===
-        # Ref: 1costingfe heat_rej_per_mw = 0.03416 M$/MW
+        # Source: 1costingfe heat_rej_per_mw
         r["CAS26"] = self.n_mod * p_et * 0.03416
 
-        # === CAS27: Special Materials ===
-        # D-D: no PbLi blanket, no Li-6 enrichment, no beryllium needed.
-        # ASSUMED: conventional coolant fills only (2 M$ from 1costingfe special_materials_dd)
-        # Ref: 1costingfe costing_constants.yaml (special_materials_dd = 2 M$)
-        r["CAS27"] = 2.0 * (p_net / 1000.0)  # scaled by plant size
+        # === CAS27: Special Materials (initial tritium inventory)
+        # Source: 1costingfe special_materials_dt
+        r["CAS27"] = 80.0 * (p_net_safe / P_NET_REF) ** 0.5
 
         # === CAS28: Digital Twin ===
-        # Ref: 1costingfe digital_twin = 5 M$
+        # Source: 1costingfe digital_twin = 5 M$
         r["CAS28"] = 5.0
 
         # === CAS29: Contingency ===
-        # Ref: 1costingfe contingency_rate_foak = 0.10, noak = 0.0
-        cas20_subtotal = sum(r[k] for k in [
-            "CAS21", "CAS22", "CAS23", "CAS24", "CAS25", "CAS26", "CAS27", "CAS28"])
-        contingency_rate = 0.0 if self.noak else 0.10
-        r["CAS29"] = contingency_rate * cas20_subtotal
+        # Source: 1costingfe contingency_rate_foak = 0.10, noak = 0.0
+        cas20_sub = sum(r[k] for k in ["CAS21", "CAS22", "CAS23", "CAS24",
+                                        "CAS25", "CAS26", "CAS27", "CAS28"])
+        r["CAS29"] = (0.0 if self.noak else 0.10) * cas20_sub
 
         # === CAS20: Total Direct Costs ===
-        r["CAS20"] = cas20_subtotal + r["CAS29"]
+        r["CAS20"] = cas20_sub + r["CAS29"]
 
         # === CAS30: Indirect Costs ===
-        # 20% of CAS20, scaled by construction time relative to 6-year reference.
-        # Longer construction for novel in-vessel coil assembly increases IDC burden.
-        # Ref: 1costingfe indirect_fraction = 0.20, reference_construction_time = 6 yr
-        ref_construction_time = 6.0
-        indirect_fraction = 0.20
-        r["CAS30"] = indirect_fraction * r["CAS20"] * (self.construction_time_years / ref_construction_time)
+        # Source: 1costingfe indirect_fraction=0.20, reference_construction_time=6
+        r["CAS30"] = 0.20 * r["CAS20"] * (self.construction_time_years / 6.0)
 
         # === CAS40: Owner's Costs ===
-        # Power-law scaling: CAS40 = owner_cost_dd × (P_net/1000)^0.5
-        # Ref: 1costingfe owner_cost_dd = 31 M$ at 1 GWe
-        owner_cost_dd = 31.0  # M$ at 1 GWe
-        r["CAS40"] = owner_cost_dd * (p_net / 1000.0) ** 0.5
+        # Source: 1costingfe owner_cost_dt = 39 M$ at 1 GWe
+        r["CAS40"] = 35.0 * (p_net_safe / P_NET_REF) ** 0.5
 
         # === CAS50: Supplementary Costs ===
-        # Ref: 1costingfe CAS50 sub-accounts
-        spare_parts_frac_dd = 0.025  # fraction of CAS22-28 for activated spares
-        spare_parts = spare_parts_frac_dd * sum(r[k] for k in [
-            "CAS23", "CAS24", "CAS25", "CAS26", "CAS27", "CAS28"])
-        startup_fuel_dd = 0.1 * (p_net / 1000.0)  # M$ — deuterium startup, trivial cost
-        shipping = 0.015 * r["CAS20"]             # 1.5% of direct
-        taxes = 0.01 * r["CAS20"]                 # 1% of direct
-        insurance = 0.015 * (r["CAS20"] + r["CAS30"])  # builder's risk
-        # Decommissioning PV: 1costingfe decom_provision_dd = 93 M$ at 1 GWe
-        decom_provision_dd = 93.0  # M$ at 1 GWe
-        decommissioning = decom_provision_dd * (p_net / 1000.0) ** 0.5
-        r["CAS50"] = spare_parts + startup_fuel_dd + shipping + taxes + insurance + decommissioning
+        # Source: 1costingfe spare_parts_frac_dt = 0.03
+        spare_parts   = 0.03 * sum(r[k] for k in ["CAS22", "CAS23", "CAS24",
+                                                    "CAS25", "CAS26", "CAS27", "CAS28"])
+        shipping      = 0.015 * r["CAS20"]
+        taxes         = 0.010 * r["CAS20"]
+        insurance     = 0.015 * (r["CAS20"] + r["CAS30"])
+        decom         = 120.0 * (p_net_safe / P_NET_REF) ** 0.5
+        r["CAS50"] = spare_parts + shipping + taxes + insurance + decom
 
         # === Overnight Capital ===
-        overnight = r["CAS10"] + r["CAS20"] + r["CAS30"] + r["CAS40"] + r["CAS50"]
-        r["overnight_capital"] = overnight
+        r["overnight_capital"] = (r["CAS10"] + r["CAS20"]
+                                  + r["CAS30"] + r["CAS40"] + r["CAS50"])
 
         # === CAS60: Interest During Construction ===
-        # f_IDC = ((1+i)^T - 1) / (i×T) - 1
         i = self.interest_rate
         T = self.construction_time_years
-        if i > 0 and T > 0:
-            f_idc = ((1 + i) ** T - 1) / (i * T) - 1
-        else:
-            f_idc = 0.0
-        r["CAS60"] = f_idc * overnight
+        f_idc = ((1 + i)**T - 1) / (i * T) - 1 if (i > 0 and T > 0) else 0.0
         r["f_IDC"] = f_idc
+        r["CAS60"] = f_idc * r["overnight_capital"]
 
         # === Total Capital ===
-        r["total_capital"] = overnight + r["CAS60"]
+        r["total_capital"] = r["overnight_capital"] + r["CAS60"]
 
-        # Specific capital cost ($/kWe)
-        p_net_total = p_net * self.n_mod
+        p_net_total = power["p_net"] * self.n_mod
         if p_net_total > 0:
             r["specific_capital_USD_per_kWe"] = (r["total_capital"] * 1e6
-                                                  / (p_net_total * 1e3))
+                                                   / (p_net_total * 1e3))
         else:
             r["specific_capital_USD_per_kWe"] = float('inf')
 
         return r
 
     def _compute_economics(self, power: dict, costs: dict, cas22: dict) -> dict:
-        """Layer 5: CAS70–90 annualized costs and LCOE.
+        """Layer 5: CAS70-90 annualized costs and LCOE."""
+        r: dict = {}
 
-        LCOE = (CAS90 + CAS70 + CAS80) / annual_energy_MWh
-
-        CAS90: Annualized capital charge (CRF × total_capital)
-        CAS70: O&M including scheduled blanket replacement
-        CAS80: Fuel (deuterium only — no tritium purchase needed for D-D)
-        """
-        r = {}
-        p_net = power["p_net"]
-        p_net_total = p_net * self.n_mod
+        p_net_total = power["p_net"] * self.n_mod
 
         # Capital Recovery Factor
-        i = self.interest_rate
-        n = self.plant_lifetime_years
-        crf = i * (1 + i) ** n / ((1 + i) ** n - 1)
+        i   = self.interest_rate
+        n   = self.plant_lifetime_years
+        crf = i * (1 + i)**n / ((1 + i)**n - 1)
         r["CRF"] = crf
 
         # === CAS90: Annualized Capital Charge ===
-        r["CAS90"] = crf * costs["total_capital"]   # M$/yr
+        r["CAS90"] = crf * costs["total_capital"]
 
-        # === CAS71: Annual O&M (levelized with inflation) ===
-        # Base O&M scales as (P_net/1000)^0.5, with PoloMac novelty penalty.
-        # Ref: 1costingfe om_cost_dd = 39 M$/yr at 1 GWe
-        annual_om_base = (self.om_cost_per_yr_base_M
-                          * (max(p_net_total, 1.0) / 1000.0) ** 0.5
-                          * self.om_novel_penalty)
-        g = self.inflation_rate
+        # === CAS71: Levelized Annual O&M ===
+        annual_om_base = self.om_rate_fraction * costs["overnight_capital"]
+        g  = self.inflation_rate
         Tc = self.construction_time_years
-        A1 = annual_om_base * (1 + g) ** Tc   # first-year-of-operation cost
+        A1 = annual_om_base * (1 + g)**Tc
         if abs(i - g) > 1e-10:
-            pv_growing_annuity = A1 * (1 - ((1 + g) / (1 + i)) ** n) / (i - g)
+            pv_om = A1 * (1 - ((1 + g) / (1 + i))**n) / (i - g)
         else:
-            pv_growing_annuity = A1 * n / (1 + i)
-        r["CAS71"] = crf * pv_growing_annuity   # M$/yr
+            pv_om = A1 * n / (1 + i)
+        r["CAS71"] = crf * pv_om
 
-        # === CAS72: Scheduled Replacement (blanket/FW) ===
-        # D-D: core_lifetime_dd = 10 FPY (1costingfe default)
-        effective_years_per_replacement = self.core_lifetime_FPY / self.plant_availability
-        n_replacements = max(
-            0, int(math.ceil(self.plant_lifetime_years / effective_years_per_replacement)) - 1)
-        replacement_cost = cas22["C220101"]  # blanket + FW cost per replacement
-        pv_replacements = 0.0
-        for k in range(1, n_replacements + 1):
-            year = k * effective_years_per_replacement
-            if year < self.plant_lifetime_years:
-                pv_replacements += replacement_cost / (1 + i) ** year
-        r["CAS72"] = crf * pv_replacements   # M$/yr
-        r["n_blanket_replacements"] = n_replacements
+        # === CAS72: Scheduled Replacement (blanket / first wall) ===
+        eff_yr_per_rep = self.core_lifetime_FPY / self.plant_availability
+        n_rep = max(0, int(math.ceil(n / eff_yr_per_rep)) - 1)
+        rep_cost = cas22["C220101"] * self.n_mod
+        pv_rep = sum(
+            rep_cost / (1 + i)**(k * eff_yr_per_rep)
+            for k in range(1, n_rep + 1)
+            if k * eff_yr_per_rep < n
+        )
+        r["CAS72"] = crf * pv_rep
+        r["n_replacements"] = n_rep
 
-        r["CAS70"] = r["CAS71"] + r["CAS72"]   # M$/yr
+        r["CAS70"] = r["CAS71"] + r["CAS72"]
 
-        # === CAS80: Fuel (deuterium only) ===
-        # D-D is primarily D₂ fuel. No tritium purchase needed (D-D advantage).
-        # Deuterium consumption rate: P_fus [MW] / E_per_reaction [J] × 2 × m_D [kg]
-        # E_per_reaction_DD = 3.65 MeV × 1.6022e-13 J/MeV = 5.848e-13 J
-        # Reactions/s = P_fus × 1e6 W / E_per_reaction = 1.71e18 per second at 1 MW
-        e_per_reaction_J = 3.65e6 * 1.6022e-19  # 3.65 MeV in Joules
-        reactions_per_sec = self.p_fus_MW * 1e6 / e_per_reaction_J
-        kg_D_per_sec = reactions_per_sec * 2 * 3.344e-27  # 2 × mass of deuteron in kg
-        kg_D_per_yr = kg_D_per_sec * 3600 * 8760 * self.plant_availability
-        # Apply burn fraction / recovery from 1costingfe convention
-        # burn_fraction = 0.05, fuel_recovery = 0.95 → net makeup fraction
-        # net_makeup_frac = burn_frac + (1-burn_frac)*(1-recovery) = 0.05 + 0.0475 = ~0.1
-        burn_fraction = 0.05
-        fuel_recovery = 0.95
-        net_makeup_frac = burn_fraction + (1 - burn_fraction) * (1 - fuel_recovery)
-        annual_D_kg = kg_D_per_yr * net_makeup_frac  # net deuterium makeup per year
-        annual_fuel_cost_M = annual_D_kg * self.fuel_cost_per_kg_D2 / 1e6
-        r["CAS80"] = annual_fuel_cost_M   # M$/yr
-        r["CAS80_deuterium_kg_yr"] = annual_D_kg
-        r["CAS80_D_cost"] = annual_fuel_cost_M
+        # === CAS80: Fuel & Consumables (D-T) ===
+        # D-T fusion: D + T → n + α (17.6 MeV)
+        # Fuel consumption: P_fus / (17.6 MeV) = reactions/s
+        # Each reaction consumes 1 D atom (2 amu) + 1 T atom (3 amu)
+        p_fus_W = power["p_fus"] * 1e6  # W
+        reaction_rate = p_fus_W / E_FUSION_J  # reactions/s
+
+        M_D_kg_per_reaction = 2 * AMU_KG
+        M_T_kg_per_reaction = 3 * AMU_KG
+
+        seconds_per_year = 8760 * 3600 * self.plant_availability
+        annual_D_kg = reaction_rate * M_D_kg_per_reaction * seconds_per_year
+        annual_T_kg = reaction_rate * M_T_kg_per_reaction * seconds_per_year
+
+        r["CAS80_deuterium"] = annual_D_kg * self.u_deuterium_per_kg / 1e6  # M$/yr
+        r["CAS80_tritium"] = annual_T_kg * self.u_tritium_per_g * 1000 / 1e6  # M$/yr
+        r["CAS80"] = r["CAS80_deuterium"] + r["CAS80_tritium"]
 
         # === LCOE ===
-        annual_revenue_req = r["CAS90"] + r["CAS70"] + r["CAS80"]
-        r["annual_revenue_req"] = annual_revenue_req
+        ann_rev = r["CAS90"] + r["CAS70"] + r["CAS80"]
+        r["annual_revenue_req"] = ann_rev
 
-        annual_energy_MWh = 8760 * max(p_net_total, 0.001) * self.plant_availability
-        r["annual_energy_MWh"] = annual_energy_MWh
-
-        if annual_energy_MWh > 0 and p_net_total > 0:
-            lcoe_USD_MWh = annual_revenue_req * 1e6 / annual_energy_MWh
-            r["lcoe_USD_per_MWh"] = lcoe_USD_MWh
-            r["lcoe_cents_per_kWh"] = lcoe_USD_MWh / 10.0
+        if p_net_total > 0:
+            ann_energy_MWh = 8760 * p_net_total * self.plant_availability
+            r["annual_energy_MWh"] = ann_energy_MWh
+            lcoe = ann_rev * 1e6 / ann_energy_MWh
+            r["lcoe_USD_per_MWh"]  = lcoe
+            r["lcoe_cents_per_kWh"] = lcoe / 10.0
         else:
-            r["lcoe_USD_per_MWh"] = float('inf')
+            r["annual_energy_MWh"]  = 0.0
+            r["lcoe_USD_per_MWh"]   = float('inf')
             r["lcoe_cents_per_kWh"] = float('inf')
 
-        # Cost breakdown fractions
-        if annual_revenue_req > 0:
-            r["capital_fraction"] = r["CAS90"] / annual_revenue_req
-            r["om_fraction"] = r["CAS70"] / annual_revenue_req
-            r["fuel_fraction"] = r["CAS80"] / annual_revenue_req
+        if ann_rev > 0:
+            r["capital_fraction"] = r["CAS90"] / ann_rev
+            r["om_fraction"]      = r["CAS70"] / ann_rev
+            r["fuel_fraction"]    = r["CAS80"] / ann_rev
 
         return r
 
     def compute(self) -> dict:
-        """Compute LCOE and key derived quantities via CAS-structured accounting.
-        Returns a nested dict with power, geometry, cas22, costs, economics sub-dicts.
+        """Compute CAS-structured LCOE from speculative physics first principles.
+
+        Returns dict with sub-dicts:
+            power:     physics-derived power balance
+            geometry:  chamber volumes
+            cas22:     CAS22 sub-accounts
+            costs:     CAS10–60 capital costs
+            economics: CAS70–90 annualized costs + LCOE
         """
         power = self._compute_power()
-        geom = self._compute_geometry(power)
+        geom  = self._compute_geometry(power)
         cas22 = self._compute_cas22(power, geom)
         costs = self._compute_costs(power, cas22)
-        econ = self._compute_economics(power, costs, cas22)
-
-        results = {
-            "power": power,
-            "geometry": geom,
-            "cas22": cas22,
-            "costs": costs,
+        econ  = self._compute_economics(power, costs, cas22)
+        return {
+            "power":     power,
+            "geometry":  geom,
+            "cas22":     cas22,
+            "costs":     costs,
             "economics": econ,
         }
 
-        # Convenience aliases
-        results["net_electric_MW"] = power["p_net"]
-        results["lcoe_cents_per_kWh"] = econ["lcoe_cents_per_kWh"]
-        results["total_capital_M_USD"] = costs["total_capital"]
 
-        return results
-
-
-# =============================================================================
-# MODULE-LEVEL INTERFACE (required by concept explorer extractor)
-# =============================================================================
-params = PoloMacPlantParams()
+# ============================================================================
+# Module-level interface for concept explorer
+# ============================================================================
+# CRITICAL: Native-scale only. Do NOT extrapolate to 1 GWe via economy-of-scale.
+# Freeform concepts report at their native power scale only.
+# ============================================================================
+params  = PolomacPlantParams()
 results = params.compute()
 
 
-# =============================================================================
-# PRINT RESULTS
-# =============================================================================
+# ============================================================================
+# Output functions
+# ============================================================================
 
-def print_results(p: PoloMacPlantParams, r: dict):
-    """Pretty-print LCOE model results with CAS-structured breakdown."""
-    power = r["power"]
-    geom = r["geometry"]
+def print_results(p: PolomacPlantParams, r: dict) -> None:
+    """Pretty-print the full LCOE model results with CAS-structured accounting."""
+    pw    = r["power"]
+    geom  = r["geometry"]
     cas22 = r["cas22"]
     costs = r["costs"]
-    econ = r["economics"]
+    econ  = r["economics"]
 
-    print("=" * 72)
-    print("PoloMac Magnetic Confinement (D-D) — 1cFE CAS-Structured LCOE Model")
-    print("Company: Deutelio AG")
-    print("WARNING: Almost all parameters are assumed. See module docstring.")
-    print("=" * 72)
+    print("=" * 80)
+    print("Polomac Magnetic Confinement (Deutelio) — Speculative LCOE Corridor")
+    print("Freeform CAS-Structured Model — FOR COMPARISON PURPOSES ONLY")
+    print("=" * 80)
 
-    # --- Key Inputs ---
-    print(f"\n--- Key Input Parameters ---")
-    print(f"  Fusion power (assumed):       {p.p_fus_MW:.0f} MW")
-    print(f"  Plasma Q (assumed):           {p.Q_plasma:.1f}  [HIGH UNCERTAINTY]")
-    print(f"  D-D plasma volume:            {p.plasma_volume_m3:.0f} m³  [Elio 2014]")
-    print(f"  Thermal efficiency (assumed): {p.thermal_efficiency:.1%}  [HIGH UNCERTAINTY]")
-    print(f"  SC coil cost (assumed):       ${p.sc_coil_cost_M_USD:.0f}M  [HIGH UNCERTAINTY]")
-    print(f"  Cryogenic load (assumed):     {p.p_cryo_MW:.0f} MW  [HIGH UNCERTAINTY]")
-    print(f"  Plant availability:           {p.plant_availability:.1%}  [HIGH UNCERTAINTY]")
-    print(f"  Plant lifetime:               {p.plant_lifetime_years:.0f} yr")
-    print(f"  Construction time:            {p.construction_time_years:.0f} yr  [HIGH UNCERTAINTY]")
-    print(f"  FOAK/NOAK:                    {'NOAK' if p.noak else 'FOAK'}")
-    print(f"  Interest rate:                {p.interest_rate:.1%}")
+    # Critical disclaimer
+    print()
+    print("  ╔════════════════════════════════════════════════════════════════════╗")
+    print("  ║  CRITICAL: THIS IS NOT A CREDIBLE COST ESTIMATE                   ║")
+    print("  ║                                                                    ║")
+    print("  ║  This model exists ONLY for cross-concept comparison corridor     ║")
+    print("  ║  purposes IF the fundamental physics were demonstrated. It is NOT ║")
+    print("  ║  a validated techno-economic analysis.                            ║")
+    print("  ║                                                                    ║")
+    print("  ║  BLOCKING ISSUES:                                                 ║")
+    print("  ║  • No design point specified by Deutelio                          ║")
+    print("  ║  • No native power target disclosed (value here is INVENTED)      ║")
+    print("  ║  • No archetype assigned (upstream: Archetype = [empty])          ║")
+    print("  ║  • Magnetic tunnel concept never experimentally demonstrated      ║")
+    print("  ║  • Power balance unknown (Q_eng, P_fus undefined in sources)      ║")
+    print("  ║                                                                    ║")
+    print("  ║  Under analysis contract, models require validated design         ║")
+    print("  ║  point data BEFORE modeling. This concept has none.               ║")
+    print("  ╚════════════════════════════════════════════════════════════════════╝")
+    print()
+    print("  ╔════════════════════════════════════════════════════════════════════╗")
+    print("  ║  PHYSICS DEMONSTRATION GAP (ABSOLUTE BLOCKER)                     ║")
+    print("  ║  Demonstrated conditions:  100 eV (small prototype)               ║")
+    print(f"  ║  D-T fusion requirement:   {pw['required_temp_keV']:.1f} keV                           ║")
+    print(f"  ║  Temperature gap:          {pw['temperature_gap_factor']:.0f}× ({pw['temperature_gap_factor']/10:.0f} orders of magnitude)     ║")
+    print("  ║                                                                    ║")
+    print("  ║  Magnetic tunnel concept has never been experimentally validated. ║")
+    print("  ║  Particle loss rates through tunnels are unquantified.            ║")
+    print("  ║  2014 design had 700 MW coil power (excessive for steady state).  ║")
+    print("  ║  No Q_eng or recirculating power analysis exists.                 ║")
+    print("  ║                                                                    ║")
+    print("  ║  ALL PARAMETERS IN THIS MODEL ARE SPECULATIVE ASSUMPTIONS.        ║")
+    print("  ╚════════════════════════════════════════════════════════════════════╝")
+    print()
 
-    # --- D-D Physics Context ---
-    print(f"\n--- D-D Fusion Energy Partition ---")
-    print(f"  Avg energy/reaction:          3.65 MeV  (vs 17.6 MeV D-T)")
-    print(f"  Neutron fraction:             {F_NEUTRON_DD:.1%}  (2.45 MeV neutrons)")
-    print(f"  Charged particle fraction:    {F_CHARGED_DD:.1%}  (p + ³He)")
-    print(f"  Blanket multiplication:       {p.blanket_mult_DD:.2f}  (no Li breeding)")
+    # Viability warning
+    if pw["p_net"] <= 0:
+        print("  *** ENERGY SINK: Net electric is NEGATIVE at these parameters. ***")
+        print("  *** Q_eng < 1 — no net power output. ***")
+        print("  *** LCOE is undefined. Recirculating power exceeds gross electric. ***")
+        print()
 
-    # --- Power Balance ---
-    print(f"\n--- Power Balance ---")
-    print(f"  Fusion power (D-D):           {power['p_fus']:.0f} MW")
-    print(f"    Neutron power (2.45 MeV):   {power['p_neutron']:.0f} MW ({F_NEUTRON_DD:.1%})")
-    print(f"    Charged particle power:     {power['p_charged']:.0f} MW ({F_CHARGED_DD:.1%})")
-    print(f"  Thermal power:                {power['p_th']:.0f} MW")
-    print(f"  Gross electric:               {power['p_et']:.0f} MWe")
-    print(f"  Recirculating power breakdown:")
-    print(f"    NBI/heating wall-plug:      {power['p_heat_wp_MW']:.0f} MW  "
-          f"  (Q={p.Q_plasma:.0f} × η_heat={p.heating_system_efficiency:.0%})")
-    print(f"    SC coil cryogenics:         {power['p_recirc_cryo']:.0f} MW")
-    print(f"    Housekeeping:               {power['p_recirc_house']:.0f} MW")
-    print(f"    Tritium handling (trace):   {power['p_recirc_trit']:.0f} MW")
-    print(f"    Total recirculating:        {power['p_aux']:.0f} MW")
-    print(f"  Net electric:                 {power['p_net']:.0f} MWe")
-    print(f"  Physics Q (plasma):           {power['Q_sci']:.1f}")
-    print(f"  Engineering Q (wall-plug):    {power['Q_eng']:.2f}")
-    print(f"  Recirculating fraction:       {power['recirc_fraction']:.1%}")
+    # --- Key Physics Inputs ---
+    print(f"\n--- Key Physics Parameters (INVENTED FOR CORRIDOR PURPOSES) ---")
+    print(f"  (NOT extracted from Deutelio disclosures)")
+    print(f"  Magnetic field:               {p.B_field_T:.1f} T [from literature range 2-3 T]")
+    print(f"  Plasma volume:                {p.plasma_volume_m3:.0f} m³ [from 2014 paper]")
+    print(f"  Beta:                         {p.beta:.1%} [from literature 20-30%]")
+    print(f"  Ion temperature:              {p.ion_temp_keV:.1f} keV [D-T standard]")
+    print(f"  Density:                      {p.density_m3:.1e} m⁻³ [from literature]")
+    print(f"  Confinement time:             {p.tau_E_s:.1f} s [from literature 4-5 s]")
+    print(f"  Fusion power (P_fus):         {pw['p_fus']:.1f} MW [ASSUMED — no source value]")
+    print(f"  Scientific Q (Q_sci):         {pw['Q_sci']:.1f} [ASSUMED — no heating method disclosed]")
+    print(f"  Blanket multiplication M:     {p.M_blanket:.2f} [standard D-T]")
+    print(f"  Thermal efficiency η_th:      {p.eta_th:.1%} [ASSUMED Rankine at 350°C]")
+    print(f"  Plant availability:           {p.plant_availability:.0%} [ASSUMED]")
+    print(f"  Modules:                      {p.n_mod} [single large dipole]")
+    print(f"  → Native power (derived):     ~{pw['p_net_plant']:.0f} MWe [NO COMPANY TARGET]")
 
     # --- Geometry ---
-    print(f"\n--- Geometry (Toroidal Approximation) ---")
-    print(f"  Major radius R:               {geom['major_radius_m']:.1f} m")
-    print(f"  Minor radius a (plasma):      {geom['minor_radius_plasma_m']:.2f} m")
-    print(f"  Aspect ratio R/a:             {geom['aspect_ratio']:.2f}")
-    print(f"  Overall machine diameter:     {geom['machine_diameter_m']:.1f} m")
+    print(f"\n--- Geometry (derived from 1300 m³ plasma) ---")
+    print(f"  Major radius (approx):        {geom['major_radius_m']:.1f} m")
+    print(f"  Minor radius (approx):        {geom['minor_radius_m']:.1f} m")
+    print(f"  Plasma volume:                {geom['plasma_vol_m3']:.0f} m³")
     print(f"  Blanket volume:               {geom['blanket_vol_m3']:.0f} m³")
     print(f"  Shield volume:                {geom['shield_vol_m3']:.0f} m³")
-    print(f"  Structure volume:             {geom['structure_vol_m3']:.0f} m³")
 
-    # --- CAS22: Reactor Plant Equipment ---
+    # --- Power Balance ---
+    print(f"\n--- Power Balance — FROM SPECULATIVE ASSUMPTIONS ---")
+    print(f"  Fusion power (P_fus):         {pw['p_fus']:>8.1f} MW  [HYPOTHETICAL — physics undemonstrated]")
+    print(f"    Neutron power (80%):        {pw['p_neutron']:>8.1f} MW (14.1 MeV → blanket)")
+    print(f"    Alpha power (20%):          {pw['p_alpha']:>8.1f} MW (→ plasma heating)")
+    print(f"  Thermal power (P_th):         {pw['p_th']:>8.1f} MW  (× M={p.M_blanket})")
+    print(f"  Gross electric (P_et):        {pw['p_et']:>8.1f} MWe (× η={p.eta_th:.1%})")
+    print(f"  Recirculating power:")
+    print(f"    Heating:                    {pw['p_heating']:>8.1f} MW")
+    print(f"    Coils (superconducting):    {pw['p_coil']:>8.1f} MW")
+    print(f"    Auxiliaries:                {pw['p_aux']:>8.1f} MW")
+    print(f"    Total recirculating:        {pw['p_recirc']:>8.1f} MW")
+    print(f"  Net electric (P_net):         {pw['p_net']:>8.1f} MWe")
+    print(f"  Plant net electric:           {pw['p_net_plant']:>8.1f} MWe [NO COMPANY TARGET — INVENTED]")
+    print(f"  Engineering Q (Q_eng):        {pw['Q_eng']:>8.3f}")
+    print(f"  Recirculating fraction (ε):   {pw['recirc_fraction']:>8.1%}")
+
+    # --- CAS22 ---
     print(f"\n--- CAS22: Reactor Plant Equipment ---")
     cas22_labels = {
-        "C220101": "Blanket/First Wall (D-D, no breeding)",
-        "C220102": "Shield (D-D, 2.45 MeV)",
-        "C220103": "In-Vessel SC Dipole Coil",
-        "C220104": "NBI Heating System",
-        "C220105": "Primary Structure",
-        "C220106": "Vacuum System",
-        "C220107": "Power Supplies (aux)",
-        "C220108": "Target Factory",
-        "C220109": "Direct Energy Converter",
-        "C220110": "Remote Handling (elevated)",
-        "C220111": "Installation Labor",
-        "C220112": "Isotope Separation",
+        "C220101": ("Blanket / First Wall (D-T)",    ""),
+        "C220102": ("Shield (14.1 MeV neutrons)",    ""),
+        "C220103": ("Magnets (2.5 T supercond.)",    "[OVERRIDE — lower field, tunnel geometry]"),
+        "C220104": ("Supplementary Heating",         "[method unknown]"),
+        "C220105": ("Primary Structure",             "[tunnel supports]"),
+        "C220106": ("Vacuum Vessel",                 ""),
+        "C220107": ("Power Supplies",                ""),
+        "C220110": ("Remote Handling",               ""),
+        "C220111": ("Installation Labor",            ""),
+        "C220112": ("Isotope Separation (D-T)",      ""),
     }
-    overrides = {"C220103", "C220104", "C220108"}
-    for code, label in cas22_labels.items():
-        val = cas22[code]
-        tag = " [override]" if code in overrides else ""
-        if val > 0.01:
-            print(f"    {code}  {label:<38s}  ${val:>8.1f}M{tag}")
-        elif code in ("C220108", "C220112"):
-            print(f"    {code}  {label:<38s}  $    0.0M{tag}")
-    print(f"  {'─' * 58}")
-    print(f"    Per-module subtotal:                               ${cas22['CAS22_per_module']:>8.1f}M × {p.n_mod}")
+    for code, (label, note) in cas22_labels.items():
+        val = cas22.get(code, 0.0)
+        if val != 0.0 or note:
+            print(f"    {code} {label:<36s} ${val:>8.1f}M  {note}")
+    print(f"    {'─' * 66}")
+    print(f"    Per-module subtotal:                         ${cas22['CAS22_per_module']:>8.1f}M × {p.n_mod}")
 
-    print(f"\n  Plant-wide accounts:")
     pw_labels = {
-        "C220200": "Coolant Systems",
-        "C220300": "Aux Cooling + Cryoplant (SC)",
-        "C220400": "Rad Waste Management",
-        "C220500": "Fuel Handling (D-D, minimal T)",
+        "C220200": "Coolant Systems (thermal cycle)",
+        "C220300": "Aux Cooling + Cryoplant",
+        "C220400": "Rad Waste Management (D-T)",
+        "C220500": "Fuel Handling (D-T tritium)",
         "C220600": "Other Equipment",
-        "C220700": "Instrumentation & Control",
+        "C220700": "I&C",
     }
+    print(f"  Plant-wide accounts:")
     for code, label in pw_labels.items():
         val = cas22[code]
         if val > 0.01:
-            print(f"    {code}  {label:<38s}  ${val:>8.1f}M")
-    print(f"  {'─' * 58}")
-    print(f"    Plant-wide subtotal:                               ${cas22['CAS22_plant_wide']:>8.1f}M")
-    print(f"  CAS22 Total:                                         ${cas22['CAS22']:>8.1f}M")
+            print(f"    {code} {label:<40s} ${val:>8.1f}M")
+    print(f"    {'─' * 66}")
+    print(f"    Plant-wide subtotal:                         ${cas22['CAS22_plant_wide']:>8.1f}M")
+    print(f"  CAS22 Total:                                   ${cas22['CAS22']:>8.1f}M")
 
     # --- Capital Costs ---
-    print(f"\n--- Capital Costs (CAS10-60) ---")
-    print(f"  CAS10  Pre-construction:                   ${costs['CAS10']:>8.1f}M")
-    print(f"  CAS21  Buildings:                          ${costs['CAS21']:>8.1f}M")
-    print(f"  CAS22  Reactor Plant Equipment:            ${costs['CAS22']:>8.1f}M")
-    print(f"  CAS23  Turbine Plant:                      ${costs['CAS23']:>8.1f}M")
-    print(f"  CAS24  Electric Plant:                     ${costs['CAS24']:>8.1f}M")
-    print(f"  CAS25  Misc Plant:                         ${costs['CAS25']:>8.1f}M")
-    print(f"  CAS26  Heat Rejection:                     ${costs['CAS26']:>8.1f}M")
-    print(f"  CAS27  Special Materials (D-D, minimal):   ${costs['CAS27']:>8.1f}M")
-    print(f"  CAS28  Digital Twin:                       ${costs['CAS28']:>8.1f}M")
-    print(f"  CAS29  Contingency:                        ${costs['CAS29']:>8.1f}M")
-    print(f"  {'─' * 52}")
-    print(f"  CAS20  Direct Costs:                       ${costs['CAS20']:>8.1f}M")
-    print(f"  CAS30  Indirect Costs:                     ${costs['CAS30']:>8.1f}M")
-    print(f"  CAS40  Owner's Costs:                      ${costs['CAS40']:>8.1f}M")
-    print(f"  CAS50  Supplementary:                      ${costs['CAS50']:>8.1f}M")
-    print(f"  {'─' * 52}")
-    print(f"  Overnight Capital:                         ${costs['overnight_capital']:>8.1f}M")
-    print(f"  CAS60  IDC (f={costs['f_IDC']:.3f}):                  ${costs['CAS60']:>8.1f}M")
-    print(f"  {'═' * 52}")
-    print(f"  Total Capital:                             ${costs['total_capital']:>8.1f}M")
-    print(f"  Specific Capital:                          ${costs['specific_capital_USD_per_kWe']:>8.0f} $/kWe")
+    print(f"\n--- Capital Costs (CAS10–60) ---")
+    print(f"  CAS10 Pre-construction:                        ${costs['CAS10']:>8.1f}M")
+    print(f"  CAS21 Buildings (×{p.regulatory_multiplier:.1f}× reg. mult.):           ${costs['CAS21']:>8.1f}M")
+    print(f"  CAS22 Reactor Plant Equipment:                 ${costs['CAS22']:>8.1f}M")
+    print(f"  CAS23 Turbine Plant (Rankine):                 ${costs['CAS23']:>8.1f}M")
+    print(f"  CAS24 Electric Plant:                          ${costs['CAS24']:>8.1f}M")
+    print(f"  CAS25 Misc Plant:                              ${costs['CAS25']:>8.1f}M")
+    print(f"  CAS26 Heat Rejection:                          ${costs['CAS26']:>8.1f}M")
+    print(f"  CAS27 Special Materials (tritium):             ${costs['CAS27']:>8.1f}M")
+    print(f"  CAS28 Digital Twin:                            ${costs['CAS28']:>8.1f}M")
+    print(f"  CAS29 Contingency:                             ${costs['CAS29']:>8.1f}M")
+    print(f"  {'─' * 68}")
+    print(f"  CAS20 Direct Costs:                            ${costs['CAS20']:>8.1f}M")
+    print(f"  CAS30 Indirect Costs:                          ${costs['CAS30']:>8.1f}M")
+    print(f"  CAS40 Owner's Costs:                           ${costs['CAS40']:>8.1f}M")
+    print(f"  CAS50 Supplementary:                           ${costs['CAS50']:>8.1f}M")
+    print(f"  {'─' * 68}")
+    print(f"  Overnight Capital:                             ${costs['overnight_capital']:>8.1f}M")
+    print(f"  CAS60 IDC (f={costs['f_IDC']:.3f}):                     ${costs['CAS60']:>8.1f}M")
+    print(f"  {'═' * 68}")
+    print(f"  Total Capital:                                 ${costs['total_capital']:>8.1f}M")
+    if pw["p_net"] > 0:
+        print(f"  Specific Capital:                        ${costs['specific_capital_USD_per_kWe']:>10,.0f} $/kWe")
 
     # --- Annual Costs ---
-    print(f"\n--- Annual Costs (CAS70-90) ---")
-    print(f"  CAS90  Capital charge (CRF={econ['CRF']:.4f}):      ${econ['CAS90']:>8.1f}M/yr")
-    print(f"  CAS71  O&M (levelized, 1.5× novel penalty): ${econ['CAS71']:>8.1f}M/yr")
-    print(f"  CAS72  Scheduled replacement:               ${econ['CAS72']:>8.1f}M/yr"
-          f"  ({econ['n_blanket_replacements']} replacements)")
-    print(f"  CAS70  Total O&M:                           ${econ['CAS70']:>8.1f}M/yr")
-    print(f"  CAS80  Fuel (D₂ only, no T purchase):       ${econ['CAS80']:>8.3f}M/yr"
-          f"  ({econ['CAS80_deuterium_kg_yr']:.0f} kg D/yr)")
+    print(f"\n--- Annual Costs (CAS70–90) ---")
+    print(f"  CAS90 Capital charge (CRF={econ['CRF']:.4f}):         ${econ['CAS90']:>8.1f}M/yr")
+    print(f"  CAS71 O&M (levelized, {p.om_rate_fraction:.1%}/yr):          ${econ['CAS71']:>8.1f}M/yr")
+    print(f"  CAS72 Blanket replacements ({econ['n_replacements']} over life):    ${econ['CAS72']:>8.1f}M/yr")
+    print(f"  CAS70 Total O&M:                               ${econ['CAS70']:>8.1f}M/yr")
+    print(f"  CAS80 Fuel (D-T):                              ${econ['CAS80']:>8.4f}M/yr")
 
-    # --- LCOE ---
-    print(f"\n--- LCOE ---")
-    print(f"  Annual energy production:     {econ['annual_energy_MWh']:>12,.0f} MWh")
-    print(f"  Annual revenue requirement:   ${econ['annual_revenue_req']:.1f}M/yr")
-    print(f"  ╔══════════════════════════════════════════════╗")
-    if econ['lcoe_USD_per_MWh'] == float('inf'):
-        print(f"  ║  LCOE = INFEASIBLE (negative net electric)  ║")
+    # --- LCOE (NATIVE SCALE ONLY) ---
+    print(f"\n--- LCOE (FREEFORM, NATIVE-SCALE ONLY) ---")
+    if pw["p_net"] > 0:
+        print(f"  Annual energy production:     {econ['annual_energy_MWh']:>12,.0f} MWh/yr")
+        print(f"  Annual revenue requirement:   ${econ['annual_revenue_req']:>8.1f}M/yr")
+        print(f"  ╔═══════════════════════════════════════════════════╗")
+        print(f"  ║  LCOE = {econ['lcoe_cents_per_kWh']:>7.1f} ¢/kWh                            ║")
+        print(f"  ║       = {econ['lcoe_USD_per_MWh']:>7.1f} $/MWh   (freeform, native-scale only)  ║")
+        print(f"  ║                                                   ║")
+        print(f"  ║  NOT EXTRACTED FROM COMPANY DATA                  ║")
+        print(f"  ║  Assumes P_fus={p.p_fus_MW:.0f} MW, Q_sci={p.Q_sci:.0f}, B={p.B_field_T:.1f} T, other  ║")
+        print(f"  ║  invented parameters. For comparison only.        ║")
+        print(f"  ╚═══════════════════════════════════════════════════╝")
+        print(f"  Capital (CAS90):              {econ.get('capital_fraction', 0):.1%}")
+        print(f"  O&M    (CAS70):               {econ.get('om_fraction', 0):.1%}")
+        print(f"  Fuel   (CAS80):               {econ.get('fuel_fraction', 0):.2%}")
     else:
-        print(f"  ║  LCOE = {econ['lcoe_cents_per_kWh']:>6.2f} ¢/kWh                        ║")
-        print(f"  ║       = {econ['lcoe_USD_per_MWh']:>6.1f} $/MWh                        ║")
-    print(f"  ╚══════════════════════════════════════════════╝")
-    if econ['lcoe_USD_per_MWh'] != float('inf'):
-        print(f"  Capital (CAS90):    {econ.get('capital_fraction', 0):.1%}")
-        print(f"  O&M (CAS70):        {econ.get('om_fraction', 0):.1%}")
-        print(f"  Fuel/cons (CAS80):  {econ.get('fuel_fraction', 0):.5%}")
+        print(f"  LCOE: UNDEFINED — net electric is negative.")
+        print(f"  Plant is an energy sink. LCOE is infinite.")
+
+    print()
+    print("=" * 80)
 
 
-def sensitivity_sweep(base_params: PoloMacPlantParams, param_name: str,
-                      values: list, label: str = "") -> list:
-    """Sweep a single parameter and return LCOE and net electric for each value."""
-    results_list = []
+def sensitivity_sweep(base_params: PolomacPlantParams,
+                      param_name: str,
+                      values: list,
+                      label: str = "") -> list[dict]:
+    """Sweep a single parameter and return LCOE and net power for each value."""
+    out = []
     for val in values:
-        p = PoloMacPlantParams(**{**base_params.__dict__, param_name: val})
+        p = PolomacPlantParams(**{**base_params.__dict__, param_name: val})
         r = p.compute()
-        results_list.append({
-            "param_value": float(val),
+        pw = r["power"]
+        out.append({
+            "param_value":    float(val),
             "lcoe_cents_kWh": r["economics"]["lcoe_cents_per_kWh"],
-            "net_electric_MW": r["net_electric_MW"],
-            "recirc_fraction": r["power"]["recirc_fraction"],
+            "lcoe_USD_MWh":   r["economics"]["lcoe_USD_per_MWh"],
+            "net_electric_MW": pw["p_net"],
+            "Q_eng":          pw["Q_eng"],
+            "recirc_fraction": pw["recirc_fraction"],
         })
-    return results_list
+    return out
 
 
-def print_sweep(sweep_results: list, param_name: str, label: str = ""):
-    """Print sensitivity sweep results as a table."""
-    title = label or param_name
-    print(f"\n  Sweep: {title}")
-    print(f"  {'Value':>12}  {'Net [MWe]':>10}  {'Recirc%':>8}  {'LCOE [¢/kWh]':>14}")
-    print(f"  {'─'*12}  {'─'*10}  {'─'*8}  {'─'*14}")
+def _print_sweep(sweep_results: list[dict], label: str,
+                 param_unit: str = "") -> None:
+    """Print a sensitivity sweep table."""
+    print(f"\n  {label}:")
+    print(f"  {'Value':>12}  {'Q_eng':>7}  {'P_net':>8}  {'ε':>6}  {'LCOE':>14}")
+    print(f"  {'─'*12}  {'─'*7}  {'─'*8}  {'─'*6}  {'─'*14}")
     for row in sweep_results:
-        net = row["net_electric_MW"]
-        recirc = row["recirc_fraction"]
-        lcoe = row["lcoe_cents_kWh"]
-        lcoe_str = f"{lcoe:>14.2f}" if lcoe != float('inf') else "    INFEASIBLE"
-        recirc_str = f"{recirc:>8.1%}" if recirc != float('inf') else "  >100%"
-        print(f"  {row['param_value']:>12.2g}  {net:>10.0f}  {recirc_str}  {lcoe_str}")
+        v = row["param_value"]
+        q = row["Q_eng"]
+        p = row["net_electric_MW"]
+        e = row["recirc_fraction"]
+        lcoe_c = row["lcoe_cents_kWh"]
+
+        v_str = f"{v:>12.1f}" if isinstance(v, float) else f"{v:>12}"
+        q_str = f"{q:>7.2f}"
+        p_str = f"{p:>8.1f} MW" if p > 0 else "   (sink)"
+        e_str = f"{e:>6.1%}" if p > 0 else "   —"
+
+        if lcoe_c == float('inf'):
+            lcoe_str = "     (infinite)"
+        elif lcoe_c > 9999:
+            lcoe_str = f"     >{9999:.0f} ¢/kWh"
+        else:
+            lcoe_str = f"     {lcoe_c:>6.1f} ¢/kWh"
+
+        print(f"  {v_str}  {q_str}  {p_str}  {e_str}  {lcoe_str}")
 
 
 def main():
-    """Run baseline analysis, sensitivity sweeps, and scenario comparison."""
+    """Generate baseline results and sensitivity analysis."""
 
-    base = PoloMacPlantParams()
+    print("\n" + "=" * 80)
+    print("BASELINE SCENARIO")
+    print("=" * 80)
+    print_results(params, results)
 
-    # =========================================================================
-    # 1. BASELINE RESULTS
-    # =========================================================================
-    print("\n" + "=" * 72)
-    print("BASELINE SCENARIO (Moderate Assumptions)")
-    print("=" * 72)
-    r_base = base.compute()
-    print_results(base, r_base)
+    print("\n\n" + "=" * 80)
+    print("SENSITIVITY ANALYSIS")
+    print("=" * 80)
 
-    # =========================================================================
-    # 2. SENSITIVITY SWEEPS (top LCOE drivers)
-    # =========================================================================
-    print("\n" + "=" * 72)
-    print("SENSITIVITY ANALYSIS — Single-Parameter Sweeps")
-    print("(All other parameters at baseline)")
-    print("=" * 72)
+    # 1. Fusion power (EXTREME UNCERTAINTY)
+    sweep_pfus = sensitivity_sweep(
+        params, "p_fus_MW",
+        [200.0, 300.0, 400.0, 600.0, 800.0],
+        "Fusion power"
+    )
+    _print_sweep(sweep_pfus, "Fusion Power (P_fus)", "MW")
 
-    # Sweep 1: Plasma Q — the most critical unknown
-    # Q < ~10 makes net electric negative at these assumptions
-    q_sweep = sensitivity_sweep(
-        base, "Q_plasma", [5, 7, 10, 15, 20, 30, 50],
-        "Plasma Q — most critical unknown (no physics basis for PoloMac)")
-    print_sweep(q_sweep, "Q_plasma",
-                "Plasma Q [D-D energy gain; HIGH UNCERTAINTY — no PoloMac confinement physics]")
+    # 2. Scientific Q (PHYSICS UNDEMONSTRATED)
+    sweep_qsci = sensitivity_sweep(
+        params, "Q_sci",
+        [5.0, 7.5, 10.0, 15.0, 20.0],
+        "Scientific Q"
+    )
+    _print_sweep(sweep_qsci, "Scientific Q (fusion out / heating in)", "")
 
-    # Sweep 2: SC coil cost — dominant capital uncertainty
-    coil_sweep = sensitivity_sweep(
-        base, "sc_coil_cost_M_USD", [100, 200, 500, 800, 1200, 2000],
-        "In-vessel SC dipole coil capital cost")
-    print_sweep(coil_sweep, "sc_coil_cost_M_USD",
-                "In-Vessel SC Coil Cost [M$; HIGH UNCERTAINTY — no coil design exists]")
+    # 3. Magnet capital cost (HIGH UNCERTAINTY)
+    sweep_magnet = sensitivity_sweep(
+        params, "magnet_capital_M",
+        [100.0, 150.0, 180.0, 250.0, 400.0],
+        "Magnet capital cost"
+    )
+    _print_sweep(sweep_magnet, "Magnet Capital Cost", "M$")
 
-    # Sweep 3: Fusion power (plant scale)
-    pfus_sweep = sensitivity_sweep(
-        base, "p_fus_MW", [400, 600, 800, 1200, 1600, 2400],
-        "Assumed fusion power")
-    print_sweep(pfus_sweep, "p_fus_MW",
-                "Assumed Fusion Power [MW; HIGH UNCERTAINTY — no reactor design point]")
+    # 4. Coil power consumption (HIGH UNCERTAINTY)
+    sweep_coil_pwr = sensitivity_sweep(
+        params, "p_coil_MW",
+        [10.0, 15.0, 25.0, 50.0, 100.0],
+        "Coil power"
+    )
+    _print_sweep(sweep_coil_pwr, "Coil Steady-State Power", "MW")
 
-    # Sweep 4: Thermal efficiency
-    eta_sweep = sensitivity_sweep(
-        base, "thermal_efficiency", [0.28, 0.32, 0.35, 0.38, 0.42],
-        "Thermal-to-electric efficiency")
-    print_sweep(eta_sweep, "thermal_efficiency",
-                "Thermal Efficiency [fraction; HIGH UNCERTAINTY — no power conversion design]")
+    # 5. Thermal efficiency (MODERATE UNCERTAINTY)
+    sweep_eta = sensitivity_sweep(
+        params, "eta_th",
+        [0.30, 0.35, 0.40, 0.45],
+        "Thermal efficiency"
+    )
+    _print_sweep(sweep_eta, "Thermal-to-Electric Efficiency", "")
 
-    # Sweep 5: Plant availability
-    avail_sweep = sensitivity_sweep(
-        base, "plant_availability", [0.50, 0.60, 0.70, 0.75, 0.80, 0.85],
-        "Plant capacity factor")
-    print_sweep(avail_sweep, "plant_availability",
-                "Plant Availability [fraction; HIGH UNCERTAINTY — in-vessel coil maintenance unknown]")
+    print("\n\n" + "=" * 80)
+    print("SCENARIO COMPARISON")
+    print("=" * 80)
 
-    # Sweep 6: Cryogenic load (copper → SC transition)
-    cryo_sweep = sensitivity_sweep(
-        base, "p_cryo_MW", [5, 10, 15, 20, 30, 50],
-        "SC coil cryogenic load")
-    print_sweep(cryo_sweep, "p_cryo_MW",
-                "SC Cryogenic Load [MW; vs 700 MW copper draw from Elio 2014]")
+    # Conservative: Physics barely works, high losses through tunnels
+    conservative = PolomacPlantParams(
+        p_fus_MW=250.0,
+        Q_sci=5.0,
+        p_coil_MW=50.0,
+        magnet_capital_M=300.0,
+        eta_th=0.30,
+        plant_availability=0.70,
+    )
 
-    # =========================================================================
-    # 3. SCENARIO COMPARISON
-    # =========================================================================
-    print("\n" + "=" * 72)
-    print("SCENARIO COMPARISON TABLE")
-    print("=" * 72)
-    print("NOTE: All scenarios are speculative. Parameter choices have no physics basis.")
+    # Moderate: Baseline parameters (already set)
+    moderate = params
 
-    scenarios = {
-        "Conservative": PoloMacPlantParams(
-            p_fus_MW=500.0,
-            Q_plasma=7.0,
-            thermal_efficiency=0.30,
-            sc_coil_cost_M_USD=1000.0,
-            p_cryo_MW=30.0,
-            plant_availability=0.60,
-            construction_time_years=10.0,
-            om_novel_penalty=2.0,
-            noak=False,
-        ),
-        "Moderate": PoloMacPlantParams(),  # baseline
-        "Optimistic": PoloMacPlantParams(
-            p_fus_MW=1200.0,
-            Q_plasma=30.0,
-            thermal_efficiency=0.38,
-            sc_coil_cost_M_USD=250.0,
-            p_cryo_MW=10.0,
-            plant_availability=0.82,
-            construction_time_years=7.0,
-            om_novel_penalty=1.2,
-            noak=True,
-        ),
-    }
+    # Optimistic: Physics breakthrough, magnetic tunnels work perfectly
+    optimistic = PolomacPlantParams(
+        p_fus_MW=600.0,
+        Q_sci=15.0,
+        p_coil_MW=10.0,
+        magnet_capital_M=120.0,
+        eta_th=0.40,
+        plant_availability=0.85,
+    )
 
-    print(f"\n  {'Scenario':<14}  {'P_fus[MW]':>10}  {'Q':>5}  "
-          f"{'Net[MWe]':>9}  {'Recirc%':>8}  {'Cap[M$]':>10}  {'$/kWe':>8}  {'LCOE[¢/kWh]':>12}")
-    print(f"  {'─'*14}  {'─'*10}  {'─'*5}  "
-          f"{'─'*9}  {'─'*8}  {'─'*10}  {'─'*8}  {'─'*12}")
+    scenarios = [
+        ("Conservative", conservative),
+        ("Moderate (Baseline)", moderate),
+        ("Optimistic", optimistic),
+    ]
 
-    for name, scenario_params in scenarios.items():
-        r = scenario_params.compute()
-        pwr = r["power"]
-        cst = r["costs"]
-        eco = r["economics"]
-        p_net = pwr["p_net"]
-        recirc = pwr["recirc_fraction"]
-        lcoe = eco["lcoe_cents_per_kWh"]
-        specific = cst.get("specific_capital_USD_per_kWe", float('inf'))
+    print("\n  Scenario Comparison Table:")
+    print(f"  {'Scenario':<24} {'P_net':<10} {'Q_eng':<8} {'LCOE':<16} {'$/kWe':<12}")
+    print(f"  {'─'*24} {'─'*10} {'─'*8} {'─'*16} {'─'*12}")
 
-        lcoe_str = f"{lcoe:>12.2f}" if lcoe != float('inf') else "  INFEASIBLE "
-        recirc_str = f"{recirc:>8.1%}" if recirc != float('inf') else "   >100%"
-        cap_str = f"${cst['total_capital']:>9.0f}"
-        spec_str = f"{specific:>8.0f}" if specific != float('inf') else "     inf"
+    for name, p_scenario in scenarios:
+        r = p_scenario.compute()
+        pw = r["power"]
+        econ = r["economics"]
+        costs = r["costs"]
 
-        print(f"  {name:<14}  {scenario_params.p_fus_MW:>10.0f}  {scenario_params.Q_plasma:>5.0f}  "
-              f"{p_net:>9.0f}  {recirc_str}  {cap_str}  {spec_str}  {lcoe_str}")
+        p_net = pw["p_net_plant"]
+        q_eng = pw["Q_eng"]
+        lcoe_c = econ["lcoe_cents_per_kWh"]
+        cap_per_kwe = costs["specific_capital_USD_per_kWe"]
 
-    # =========================================================================
-    # 4. KEY BINDING CONSTRAINTS
-    # =========================================================================
-    print("\n" + "=" * 72)
-    print("KEY BINDING CONSTRAINTS — Top 3 LCOE Drivers")
-    print("=" * 72)
+        p_str = f"{p_net:>8.0f} MW" if p_net > 0 else "   (sink)"
+        q_str = f"{q_eng:>6.2f}"
 
-    r_base = base.compute()
-    pwr = r_base["power"]
-    cas22_base = r_base["cas22"]
-    cst = r_base["costs"]
-    eco = r_base["economics"]
+        if lcoe_c == float('inf'):
+            lcoe_str = "(infinite)"
+        elif lcoe_c > 999:
+            lcoe_str = f">{999:.0f} ¢/kWh"
+        else:
+            lcoe_str = f"{lcoe_c:>6.1f} ¢/kWh"
 
-    coil_cost = cas22_base["C220103"]
-    cas22_total = cst["CAS22"]
-    coil_pct = 100.0 * coil_cost / cas22_total if cas22_total > 0 else 0.0
-    # rough LCOE sensitivity to +$500M coil: ΔCapital → ΔCAS90 → ΔLCOE
-    delta_lcoe_per_500m = (eco["CRF"] * 500.0 * 1e6
-                           / max(eco["annual_energy_MWh"], 1.0) / 10.0)  # ¢/kWh
+        if cap_per_kwe == float('inf'):
+            cap_str = "(infinite)"
+        elif cap_per_kwe > 99999:
+            cap_str = f">${99999:,.0f}"
+        else:
+            cap_str = f"${cap_per_kwe:>10,.0f}"
 
-    print(f"""
-1. PLASMA Q (D-D energy gain) — LCOE VIABILITY THRESHOLD
-   -------------------------------------------------------
-   At baseline Q = {base.Q_plasma:.0f}, recirculating fraction = {pwr['recirc_fraction']:.1%}.
-   Below Q ≈ 10, the NBI heating draw exceeds gross electric → net negative.
-   No confinement physics for PoloMac exists at any relevant parameter (analysis.md §S2).
-   Historical dipole experiments reached "few eV" temperatures (vs 50–100 keV for D-D).
-   This is a physics feasibility question, not an engineering optimization.
+        print(f"  {name:<24} {p_str:<10} {q_str:<8} {lcoe_str:<16} {cap_str:<12}")
 
-   LCOE impact: Going from Q=7 to Q=30 can shift LCOE by 3–5× (see sweep above).
-   Status: Blocking. No path to estimate without plasma experiments.
+    print("\n\n" + "=" * 80)
+    print("KEY BINDING CONSTRAINTS (in order of impact)")
+    print("=" * 80)
 
-2. IN-VESSEL SC DIPOLE COIL COST — LARGEST SINGLE CAPITAL ITEM
-   -------------------------------------------------------------
-   At ${base.sc_coil_cost_M_USD:.0f}M baseline, the SC coil is ${coil_cost:.0f}M of
-   ${cas22_total:.0f}M total CAS22 ({coil_pct:.0f}% of reactor plant equipment).
-   Radiation-hardened HTS in-vessel coils have no commercial precedent.
-   Cost range: $200M (REBCO matures, compact design) to $1B+ (FOAK, novel geometry).
-   No coil design has been published (analysis.md §S3, §S4).
+    print("""
+1. PHYSICS DEMONSTRATION GAP (ABSOLUTE BLOCKER)
+   Magnetic tunnel concept: NEVER experimentally demonstrated
+   Particle loss rates through tunnels: UNQUANTIFIED
+   Small prototype: 100 eV, 0.2-0.3 T, hydrogen plasma
+   Reactor requirement: 8.1 keV D-T, 2-3 T field
+   Temperature gap: 81× increase
 
-   LCOE impact: ±$500M coil cost shifts LCOE by roughly ±{delta_lcoe_per_500m:.1f} ¢/kWh.
-   Status: Blocking for cost estimation. Requires coil design + prototyping.
+   Impact: ALL parameters in this model are speculative until magnetic
+           tunnel confinement is experimentally demonstrated. The concept
+           claims 2-3× lower magnetic field than tokamaks for equivalent
+           performance, but this has zero experimental validation.
 
-3. PLANT AVAILABILITY (IN-VESSEL COIL MAINTENANCE) — O&M AMPLIFIER
-   -----------------------------------------------------------------
-   At {base.plant_availability:.0%} availability, annual O&M (with 1.5x novelty penalty) =
-   ${eco['CAS70']:.0f}M/yr = {eco.get('om_fraction', 0):.1%} of annual revenue requirement.
-   The in-vessel coil must be removed and replaced in an activated vessel —
-   a remote handling challenge with no established solution (analysis.md §S3).
-   Dropping from 75% to 60% availability alone increases LCOE by ~20-25%.
+   The 2014 design had 700 MW coil power consumption (excessive for
+   steady-state). The 2024 report mentions superconducting magnets but
+   provides NO Q_eng or recirculating power analysis.
 
-   LCOE impact: Large, compounding (lower availability also reduces energy output
-   in the denominator while raising specific O&M costs).
-   Status: Blocking for availability estimation. Requires maintenance design.
+   Resolution pathway: Build and operate small prototype demonstrating:
+                      (1) Magnetic tunnel concept at keV temperatures
+                      (2) Quantified particle loss rates
+                      (3) Measured Q_eng and power balance
+
+2. FUSION POWER & Q_ENG (UNKNOWN)
+   Baseline: P_fus = 400 MW, Q_eng ~ 5 (pure speculation)
+   Sensitivity: LCOE ∝ 1/P_fus and ∝ 1/Q_eng approximately
+
+   Impact: No fusion power estimate exists in sources. No heating system
+           for reactor scale is specified. Small prototype uses 5-10 kW
+           ECRH, not scalable to 8.1 keV D-T operation.
+
+   Without Q_eng analysis, recirculating power fraction is unknown.
+   The concept's economic viability depends entirely on achieving
+   net-positive power output, which is undemonstrated.
+
+3. MAGNET CAPITAL COST
+   Baseline: $180M (ASSUMED lower field advantage at 2.5 T)
+   Range: $100M-$400M depending on tunnel geometry complexity
+   Sensitivity: LCOE varies by ~30% across this range
+
+   Impact: Lower magnetic field (2.5 T vs 5+ T tokamak) should reduce
+           magnet cost, but magnetic tunnel penetrations create unique
+           structural challenges. The discontinuous azimuthal geometry
+           may offset field advantage. No magnet design exists.
+
+   If tunnel integration requires expensive custom coil structures,
+           the claimed cost advantage over tokamaks disappears.
+
+4. LARGE PLASMA VOLUME (1300 m³)
+   Much larger than compact tokamaks (ARC ~60 m³)
+   Impact: Large volume → large blanket, shield, vessel, building costs
+           Even with lower field, capital cost may be high due to size.
+
+   The 2014 conceptual design had 1300 m³ plasma volume. No updated
+   reactor-scale volume in 2024 report. Large size partially negates
+   lower-field magnet cost advantage.
 """)
 
-    print(f"  [Baseline LCOE: {eco['lcoe_cents_per_kWh']:.2f} ¢/kWh = {eco['lcoe_USD_per_MWh']:.0f} $/MWh]")
-    print(f"  [This estimate carries HIGH UNCERTAINTY across all three binding drivers.]")
+    print("=" * 80)
     print()
 
 

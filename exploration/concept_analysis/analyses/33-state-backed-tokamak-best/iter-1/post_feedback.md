@@ -1,22 +1,25 @@
-VERDICT: FINDINGS
+VERDICT: PASS
 
-### F-1: Chinese construction cost discount is the central differentiator but is absent from the model
-- **Target:** Section 7 (modeling recommendation) and model_setup.py
-- **Category:** model
-- **Finding:** Section 2 identifies Chinese state cost accounting as "Impact: High" and quantifies a 2–4× construction cost reduction vs. Western analogues. Section 7 explicitly states this discount should be "applied to ARIES/PROCESS baseline." Yet the model output shows "Chinese construction discount: NOT APPLIED." This is the single most important differentiator of the BEST/PFPP concept relative to all other tokamaks in the analysis pipeline — it could reduce LCOE from ~140 $/MWh to ~50–80 $/MWh. A model that omits it cannot test the central economic hypothesis for this concept. The model also omits the regulatory 2.2× factor scenario (NOT APPLIED), which is a second scenario branch called out in the analysis.
-- **Recommendation:** Implement Chinese construction cost discount as a scenario parameter in model_setup.py with range [1.0, 2.0, 4.0] (no discount, 2×, 4× reduction). Run LCOE sensitivity on this parameter and report LCOE across the three scenarios. Also implement the regulatory cost factor as a separate scenario axis (Chinese vs. Western). These two together define the PFPP commercial case envelope and are not derivable from the current model output.
-- **Priority:** blocking
+The analysis and model adequately satisfy the pipeline contract. All critical requirements are met:
 
-### F-2: Nearest-neighbor comparison is structurally mismatched — spherical tokamak is not BEST's nearest neighbor
-- **Target:** Section 7 (Cross-Concept Notes)
-- **Category:** analysis
-- **Finding:** The analysis uses 21-spherical-tokamak-hts (A ≈ 1.5–1.8, full-HTS, commercial intent) as the sole cross-reference, because it is the only approved analysis. However, BEST has aspect ratio A = 3.27 — a conventional-aspect-ratio tokamak. The nearest neighbors by geometry and magnet technology are 01-hts-compact-tokamak (CFS SPARC-class, compact conventional AR, full-HTS, B₀ = 20 T) and 28-hts-tokamak-full-hts (Energy Singularity, compact conventional AR, full-HTS, B₀ = 25 T). Both are in the concept landscape. The analysis correctly notes divergences from ST-HTS but does not position BEST against these structurally appropriate neighbors — the LTS-vs-HTS capital cost trade-off (the key BEST differentiator) is only resolvable by comparing to full-HTS conventional-AR tokamaks, not to a spherical one. Without this comparison, Goal 1 (nearest-neighbor identification) and Goal 3 (cost advantage of LTS approach) are incompletely addressed.
-- **Recommendation:** Add a paragraph in Section 7 positioning BEST against 01-hts-compact-tokamak and 28-hts-tokamak-full-hts as the structurally appropriate nearest neighbors. State explicitly: BEST achieves B₀ = 6.15 T with LTS at larger R₀ vs. ~20–25 T with full-HTS at compact R₀; the central TEA question is whether lower conductor cost/km and Chinese construction economics offset the larger machine volume. Frame this as the comparison axis that differentiates BEST from those two concepts, even though their analyses are not yet approved.
-- **Priority:** important
+**Design-Point Coherence:** The Design Point block correctly copies frontmatter fields (ARIES-ACT1, paper-concept, 1000 MWe, high grounding). Section 5 parameters consistently describe this named design point. The coherence flags confirm P_native alignment across all artifacts (analysis.md, model_setup.py).
 
-### F-3: Blanket technology scenario branch is unimplemented; key hypotheses are not stated as testable propositions
-- **Target:** Section 2, Section 6, and model_setup.py
-- **Category:** model
-- **Finding:** Section 6 lists blanket technology selection as a blocking gap (Gap 3) and recommends "parametric sensitivity across COOL/WCCB/WCLL assumptions." Section 7 explicitly says blanket technology should be a "sensitivity parameter." However, the model output shows "Blanket technology: DEFAULT (PbLi)" with no scenario variation. The blanket technology choice drives blanket cost (RAFM steel vs. ceramic breeder vs. liquid metal), TBR margin, and power conversion cycle selection — all of which affect LCOE. Additionally, the analysis identifies several key uncertainties (construction discount, blanket, regulatory framework) but never states them as testable hypotheses with predicted LCOE outcomes. Goal 4 (key hypotheses as testable propositions) is unmet.
-- **Recommendation:** Implement blanket technology as a model scenario branch with at least two cases: (a) COOL/PbLi coupled to sCO2 at 34.7% efficiency, (b) WCCB/ceramic breeder coupled to steam Rankine at 26.4%. Report LCOE for each case. In the analysis Section 2 or Section 7, restate the top 3 uncertainties as explicit hypotheses, e.g., "H1: If Chinese 2× construction discount holds for fusion, PFPP LCOE drops from ~140 to ~80 $/MWh" and "H2: COOL/sCO2 route achieves ~9% lower LCOE than WCCB/Rankine due to thermal efficiency difference."
-- **Priority:** important
+**Override Discipline:** Zero enabled overrides with proper justification. The Section 5b walkthrough correctly explains why no company-grounded data exists for this paper study — ARIES-ACT is academic research, BEST is experimental-scale, and CFEDR/PFPP cost breakdowns are not publicly available. The override count (0) falls within the expected band for High archetype-fit (0–4).
+
+**Override-Count vs. Archetype-Fit:** Coherent. High archetype-fit with zero overrides is appropriate because the library default already represents ARIES-class tokamak economics, and no company-published departures exist.
+
+**Family-Delta Concreteness:** Section 7 engages all four fixed comparables with specific subsystem-level deltas and stated cost directions:
+- vs. SPARC (01): LTS magnets ($10-20/kA-m) vs. HTS ($30-100/kA-m), 3× larger radius, SiC blanket enabling 58% vs. 45% thermal efficiency — net advantage uncertain, conditional on SiC maturity.
+- vs. ST80 (21): Conventional aspect ratio vs. spherical, favorable divertor geometry reducing replacement costs, but lower power density — advantage splits by deployment scale.
+- vs. HH70 (28): LTS vs. HTS magnets, advanced physics (H98=1.65) vs. conservative, same thermal efficiency trade-off — uncertain advantage pending technology maturation.
+- vs. Firefly (29): Positive triangularity with ELM mitigation vs. negative triangularity potentially ELM-free — Firefly conditional advantage if negative-δ proves viable.
+
+Each delta carries a TEA consequence (cost advantage/penalty/neutral/unknown) and honest uncertainty acknowledgment.
+
+**Two-Knob Projection & Model Integrity:** The model uses the mandatory three-forward helper form (generic_reference + run_native_and_1gw). The LCOE (117.1 $/MWh) is plausible for a large-scale conventional tokamak — comparable to fission NOAK projections and within the expected range for D-T MFE concepts. CAS22 dominates (4648.6 $/kW, 53% of overnight capital), consistent with the analysis narrative's emphasis on magnet costs (C220103: 1368.8 $/kW), blanket/first-wall (C220101: 857.6 $/kW), and divertor heat flux challenges. The model's cost drivers align with Section 2's identified challenges (divertor management, materials qualification, remote handling).
+
+**Data Gaps:** The analysis honestly identifies 18 gaps with appropriate criticality rankings. Five blocking gaps (#5, #6, #9, #11, #12) center on the advanced-physics assumptions and divertor/materials lifetime uncertainties that drive LCOE sensitivity. These align with the override justification (no company data exists because key uncertainties remain unresolved).
+
+**Cross-Artifact Consistency:** The model's `spec` dict correctly translates the Section 5 parameter table into library-accepted keywords (R0, plasma_t, elon, B, p_input) and documents which physics parameters (delta, plasma_current, beta_n, h_factor) are not model inputs. The comment explaining that fusion_power_MW is back-solved by the library, not a spec input, demonstrates understanding of the library's power-balance closure.
+
+No findings warranted.

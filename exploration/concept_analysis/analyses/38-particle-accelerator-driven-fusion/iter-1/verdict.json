@@ -1,14 +1,15 @@
 {
   "iteration": 1,
-  "verdict": "SINGLE_PASS",
+  "verdict": "PASS",
   "finding_count": 0,
   "feedback_source": "cold_start",
-  "model_ran": false,
-  "model_ok": false,
+  "model_ran": true,
+  "model_ok": true,
   "research_ran": false,
   "merged_assess": false,
   "sources": [
-    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/38-particle-accelerator-driven-fusion/iter-01/sources/shine-technology-overview.md"
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\38-particle-accelerator-driven-fusion\\iter-01\\sources\\shine-accelerator-driven-fusion-overview.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\38-particle-accelerator-driven-fusion\\iter-01\\sources\\shine-technology-overview.md"
   ],
-  "timestamp": "2026-05-18T06:00:49.136952+00:00"
+  "timestamp": "2026-06-04T07:30:27.812837+00:00"
 }

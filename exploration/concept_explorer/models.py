@@ -354,6 +354,10 @@ class ConceptData(BaseModel):
     parameter_metadata: dict[str, ParameterMetadata] = Field(default_factory=dict)
     narrative: NarrativeData | None = None
     sources: SourcePaths
+    # True iff orchestrator routed this concept as `costingfe-asterisked`
+    # (Comparison-Status, set on Grounding-Confidence: low). Render-side
+    # signal for the comparison view's asterisk badge.
+    asterisk_in_comparison: bool = False
 
     @model_validator(mode="after")
     def _warn_on_uncovered_sensitivity_keys(self) -> ConceptData:
@@ -398,6 +402,7 @@ class ConceptManifestEntry(BaseModel):
     has_sensitivities: bool
     lcoe_per_mwh: float | None = None
     confidence: Confidence | None = None
+    asterisk_in_comparison: bool = False
     data_file: str  # Path to the per-concept JSON under data/, e.g. "data/04.json"
 
 
@@ -486,6 +491,7 @@ def build_manifest(concepts: list[ConceptData]) -> ConceptManifest:
                 has_sensitivities=concept.has_sensitivities,
                 lcoe_per_mwh=lcoe,
                 confidence=confidence,
+                asterisk_in_comparison=concept.asterisk_in_comparison,
                 data_file=f"data/{concept.concept_id}.json",
             )
         )

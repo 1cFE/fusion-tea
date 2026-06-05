@@ -1,0 +1,20 @@
+{
+  "iteration": 1,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "cold_start",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": false,
+  "merged_assess": false,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/29-negative-triangularity-tokamak/iter-01/sources/ball-balestri-ohmic-nt-paper.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/29-negative-triangularity-tokamak/iter-01/sources/firefly-fusion-diii-d-collaboration.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/29-negative-triangularity-tokamak/iter-01/sources/fusion-energy-base-profile.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/29-negative-triangularity-tokamak/iter-01/sources/greyb-firefly-interview.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/29-negative-triangularity-tokamak/iter-01/sources/venture-kick-profile.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/29-negative-triangularity-tokamak/iter-02/sources/firefly-website-2026.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/29-negative-triangularity-tokamak/iter-02/sources/manta-reference-design.md"
+  ],
+  "timestamp": "2026-04-19T22:36:15.467224+00:00"
+}

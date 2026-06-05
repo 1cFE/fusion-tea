@@ -1,29 +1,29 @@
 [
   {
-    "timestamp": "2026-04-20T17:51:40.470179+00:00",
+    "timestamp": "2026-06-04T06:14:54.595672+00:00",
     "step": "cold-start",
     "attempt": 1,
     "validator": "validate_non_empty",
     "passed": true,
-    "details": "Non-empty (35332 chars)",
-    "validated_text_preview": "# D1+ Analysis: Laser ICF - Indirect Drive (D-T)\n\n**Concept**: Laser ICF - Indirect Drive (D-T)\n**Companies**: Inertia Enterprises / Xcimer Energy\n**Date**: 2026-04-20\n\n---\n\n## Section 1: Availability of Data\n\n**Rating: Moderate (physics) / Limited (economic)**\n\nIndirect-drive laser ICF has the most extensive publicly available ignition physics database of any private fusion concept, owing to NIF's sustained ignition campaign at LLNL. Ten successful ignition experiments were completed between De"
+    "details": "Non-empty (42175 chars)",
+    "validated_text_preview": "## Design Point\n\n- Name: Inertia Enterprises utility-scale commercial power plant (Thunderwall DPSSL + NIF Hybrid-E indirect drive)\n- Maturity: paper-concept\n- P_native: 1500 MWe\n- Grounding: low\n- Primary sources:\n  - knowledge/concept_research/26-laser-icf-indirect-drive/iter-01/sources/inertia-enterprises-website-and-faq.md\n  - knowledge/concept_research/26-laser-icf-indirect-drive/iter-02/sources/inertia-enterprises-2026-update.md\n\n## 1. Availability of Data\n\n**Rating: Limited (Inertia) / Mo"
   },
   {
-    "timestamp": "2026-04-20T17:56:42.648312+00:00",
+    "timestamp": "2026-06-04T06:16:21.459540+00:00",
     "step": "model-setup",
     "attempt": 1,
-    "validator": "validate_python_syntax",
+    "validator": "validate_python_syntax+validate_model_setup_contract_strict+validate_override_registry",
     "passed": true,
-    "details": "Valid Python syntax",
-    "validated_text_preview": "\"\"\"Laser ICF - Indirect Drive (D-T) \u2014 Inertia Enterprises / Xcimer Energy.\n\nModeling approach:\n  Models the Inertia Enterprises indirect-drive DPSSL architecture (Thunderwall)\n  as the primary design point.  Xcimer (KrF, HDD) is noted in comments but not\n  separately modeled here; their Hybrid Direct Drive physics may warrant a\n  separate concept entry (analysis.md \u00a77 cross-concept note).\n\n  Native design: ~1.5 GWe at Q_eng ~4, 10 Hz rep rate, 10 MJ DPSSL driver.\n  Since this diverges from 1 GWe"
+    "details": "All validators passed",
+    "validated_text_preview": "\"\"\"1costingfe model: Laser ICF Indirect Drive (Inertia Thunderwall) (Inertia Enterprises).\n\nUsage:\n    uv run python model_setup.py              # print results\n    uv run python model_setup.py | tee model_output.txt\n\"\"\"\nimport sys\nfrom pathlib import Path\n\n# Make the shared three-forward helper importable regardless of where this file\n# lives (concept dir or iter-N/ dir): walk up to the scripts/ root.\n_SCRIPTS = next(\n    p / \"scripts\"\n    for p in Path(__file__).resolve().parents\n    if (p / \""
   },
   {
-    "timestamp": "2026-04-20T17:58:39.227809+00:00",
+    "timestamp": "2026-06-04T06:17:38.057587+00:00",
     "step": "assess",
     "attempt": 1,
     "validator": "validate_feedback_verdict",
     "passed": true,
-    "details": "Feedback format valid (verdict: FINDINGS)",
-    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: Laser driver override freezes the dominant cost item out of sensitivity sweeps\n- **Target:** model_setup.py \u2014 C220107 override and sensitivity sweep design\n- **Category:** model\n- **Finding:** The laser driver is modeled as a fixed $3,000M override on C220107. The sensitivity output shows `driver_laser_per_mw` elasticity of only +0.045, which is physically inconsistent: a $3B item representing ~58% of CAS22 should dominate the sensitivity table, not rank below interes"
+    "details": "Feedback format valid (verdict: PASS)",
+    "validated_text_preview": "# Assessment: Laser ICF Indirect Drive (Inertia Thunderwall) \u2014 Iteration 1\n\nVERDICT: PASS\n\n## Evaluation Summary\n\nThis analysis adequately satisfies the pipeline contract across all five assessment areas. The evaluation findings below are notes for the record, not actionable findings requiring rework.\n\n### Design-Point Coherence\n\u2713 The Design Point block verbatim copies frontmatter fields (name, maturity, P_native=1500 MWe, grounding=low).\n\u2713 Section 5 parameter table consistently describes the na"
   }
 ]

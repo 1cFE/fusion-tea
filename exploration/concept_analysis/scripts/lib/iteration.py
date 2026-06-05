@@ -134,15 +134,27 @@ def write_verdict(
 def parse_verdict_from_feedback(feedback_text: str) -> tuple[str, int]:
     """Parse VERDICT and finding count from feedback text.
 
-    Returns (verdict_str, finding_count) where verdict_str is "PASS" or "FAIL".
-    Uses shared regex constants from lib.validators.
-    """
-    from lib.validators import FEEDBACK_VERDICT_RE, FINDING_HEADER_RE
+    Returns ``(verdict_str, finding_count)`` where ``verdict_str`` is ``"PASS"``
+    or ``"FAIL"`` (a ``VERDICT: FINDINGS`` line or a missing/unrecognized verdict
+    both map to ``"FAIL"``). ``finding_count`` is the number of ``### F-N:``
+    headers regardless of verdict.
 
-    verdict_match = FEEDBACK_VERDICT_RE.search(feedback_text)
-    is_pass = verdict_match is not None and verdict_match.group(1) == "PASS"
-    finding_count = len(FINDING_HEADER_RE.findall(feedback_text))
-    return ("PASS" if is_pass else "FAIL", finding_count)
+    Item 8 rewrote the internals from the legacy verdict / finding-header
+    MULTILINE regex constants to line-anchored scanning (helpers in
+    ``lib.validators``); the ``tuple[str, int]`` return shape is preserved per
+    signal_contract.md. The "no recognizable verdict" case keeps returning
+    ``("FAIL", 0)`` rather than raising — old-format / malformed feedback is
+    rejected *loudly upstream* by ``validate_feedback_verdict`` and the loop's
+    ``validation_passed`` gate, so this parser only ever runs on validated text
+    in the live loop, and the historical-feedback reader (``migrate_iterations``)
+    relies on the non-raising contract.
+    """
+    from lib.validators import _count_findings, _verdict_token
+
+    token = _verdict_token(feedback_text, frozenset({"PASS", "FINDINGS"}))
+    verdict = "PASS" if token == "PASS" else "FAIL"
+    finding_count = _count_findings(feedback_text)
+    return (verdict, finding_count)
 
 
 def detect_new_sources(

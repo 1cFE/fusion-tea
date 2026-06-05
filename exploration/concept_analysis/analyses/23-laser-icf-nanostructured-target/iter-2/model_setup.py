@@ -1,349 +1,302 @@
-"""Laser ICF — Nanostructured Target (p-B11): 1costingfe model setup.
-
-Modeling approach:
-    Marvel Fusion design point (100 MW pilot, 2033 EU CORDIS target). Physics
-    is entirely undemonstrated at gain-relevant scales; q_eng is the primary
-    free parameter — treat all LCOE outputs as contingent on ignition. Primary
-    result uses conservative 40% thermal efficiency (steam Rankine path) rather
-    than Marvel's unvalidated 70% hybrid claim. HB11 Energy (1 Hz, steam,
-    ~1 GW) included as a comparison scenario.
-
-Concept choice rationale:
-    LASER_IFE / PB11: aneutronic (>99% energy in charged alphas), room-
-    temperature silicon nanowire targets, no tritium breeding, no heavy
-    shielding, no superconducting magnets. Framework PB11 fuel defaults
-    correctly reflect reduced blanket/shield/remote handling vs D-T baseline.
-
-Key deviations from framework defaults:
-    - eta_pin=0.10 (HB11 stated WPE target; Marvel unpublished; UNCERTAIN)
-    - eta_th=0.40 (conservative steam; Marvel hybrid 70% is unvalidated)
-    - q_eng=5.0 (UNCERTAIN: physics not demonstrated; 4 OOM gap for HB11)
-    - availability=0.75 (no pulsed laser IFE plant operational analogue)
-    - mn=1.0 (aneutronic: no neutron energy multiplication)
-    - p_trit=0.0, p_cryo=0.0 (no tritium, no superconducting magnets)
-    - blanket_t=0.20, ht_shield_t=0.10 (minimal: no breeding or heavy shielding)
+"""1costingfe model: Laser ICF Nanostructured Target (Marvel Fusion) (Marvel Fusion).
 
 Usage:
-    uv run python model_setup.py              # print results to terminal
-    uv run python model_setup.py | tee model_output.txt  # also save for synthesis stage
+    uv run python model_setup.py              # print results
+    uv run python model_setup.py | tee model_output.txt
 """
+import sys
+from pathlib import Path
 
-import math
+# Make the shared three-forward helper importable regardless of where this file
+# lives (concept dir or iter-N/ dir): walk up to the scripts/ root.
+_SCRIPTS = next(
+    p / "scripts"
+    for p in Path(__file__).resolve().parents
+    if (p / "scripts" / "lib" / "model_setup_helpers.py").exists()
+)
+sys.path.insert(0, str(_SCRIPTS))
 
-from costingfe import ConfinementConcept, CostModel, Fuel, PulsedConversion
+from costingfe import ConfinementConcept, CostModel, Fuel
+from lib.model_setup_helpers import (
+    generic_reference, run_native_and_1gw, print_cas_breakdown,
+)
 
-# ── Model ─────────────────────────────────────────────────────────────
+# 1. Specification — design-point inputs only, at native scale.
+#    From analysis.md Section 5 Design Point Parameters.
+#    Marvel Fusion CFE-NANO Pilot Plant (100 MWe, 2033 milestone).
+#
+#    Archetype-Fit: Low — LASER_IFE is the closest available ConfinementConcept
+#    but Marvel's femtosecond DPSSL + nanostructured p-B11 targets depart
+#    significantly from the library's nanosecond DT-ICF archetype. Published
+#    design-point data is extremely limited (see analysis.md Section 1).
+#
+#    p_input is unknown: Marvel has published no driver wallplug power figure.
+#    The analysis notes that at commercial scale (~500 lasers × kJ-class × 10 Hz
+#    / 0.10 WPE), wallplug power would far exceed 100 MWe net output. The pilot
+#    laser count is unpublished. We rely on the library's inverse power balance
+#    via q_eng (engineering gain) to derive the recirculating power.
+#
+#    eta_pin: library default 0.10 (10% WPE). LLNL/HB11 cite same target for
+#    DPSSL systems. Marvel has not published a WPE target. Femtosecond systems
+#    may differ, but eta_pin is ENUM-driven and cannot be overridden in spec.
+spec = dict(
+    # No p_input: unknown for this concept. Library derives from q_eng.
+
+    # Chamber geometry — no published chamber dimensions from Marvel.
+    # Library default plasma_t=4.0m for LASER_IFE is adequate pending data.
+    plasma_t=4.0,  # Chamber radius [m] — library default
+
+    # Blanket and shielding geometry — library defaults
+    blanket_t=0.80,    # Blanket thickness [m]
+    ht_shield_t=0.25,  # Shield thickness [m]
+
+    # Auxiliary power loads
+    p_trit=0.0,     # No tritium processing for p-B11 (aneutronic)
+    p_cryo=0.0,     # No cryogenics: room-temp solid Si targets, no magnets
+    p_target=1.0,   # Target factory power [MW] — library default
+
+    # Target fabrication cost — semiconductor lithography Si nanowire arrays.
+    # Marvel patent: ~5,000 targets per 300mm wafer. Per-target cost not
+    # published but CEO contrasts favorably vs NIF hohlraum costs. At wafer
+    # processing cost ~$3,000/wafer ÷ 5,000 targets = $0.60/target.
+    # Library default $0.40/shot is in the right ballpark; use $0.60 to
+    # reflect the nanostructured lithography step.
+    target_unit_cost=0.60,  # $/shot — derived from wafer cost analogy
+)
+
+P_native = 100  # MWe — CORDIS CFE-NANO project record, analysis Design Point
+
+# 2. Model.
 model = CostModel(concept=ConfinementConcept.LASER_IFE, fuel=Fuel.PB11)
 
-# DEC variant: activates INDUCTIVE_DEC conversion path so eta_dec
-# appears in the physics computation and yields non-zero sensitivity.
-# Used for the Marvel hybrid conversion sweep only; base cases use model.
-model_dec = CostModel(
-    concept=ConfinementConcept.LASER_IFE,
-    fuel=Fuel.PB11,
-    pulsed_conversion=PulsedConversion.INDUCTIVE_DEC,
-)
+# 2b. Generic forward — overrides OFF, design-point scale (forward 1 of 3).
+generic = generic_reference(model, spec, P_native)
 
-# ── Plant Configuration Constants ─────────────────────────────────────
-
-# Native design point: Marvel Fusion pilot plant
-# Source: marvel-fusion-2025-updates.md §Objective; EU CORDIS Project ID 101189082
-NATIVE_MW = 100.0
-
-# UNCERTAIN: Engineering gain — physics undemonstrated at any scale.
-# HB11 experimental: ~0.005% laser-to-alpha efficiency (~4 OOM from Q_eng>1).
-# Marvel has published no yield data from any facility.
-# Source: newatlas-energy-hb11-laser-fusion-demonstration.md; analysis.md §S1, §S2
-# Value below assumes physics eventually works; do not treat as validated.
-Q_ENG = 5.0
-
-# Repetition rate: Marvel commercial target, confirmed by ATLAS facility design
-# Source: analysis.md §5; optics-news-16-4-4.md; optics-news-15-10-4.md
-F_REP_MARVEL = 10.0  # Hz
-
-# UNCERTAIN: Laser wall-plug efficiency
-# HB11 stated target: ~10% vs <1% for conventional high-power lasers.
-# Marvel has not characterized WPE in any public source.
-# 10% at 10 Hz with petawatt-class pulses is undemonstrated.
-# Source: energynewsbulletin-energy-transition-features-articles.md; analysis.md §S2 Challenge 2
-ETA_PIN = 0.10
-
-# UNCERTAIN: Thermal-to-electric efficiency — conservative (steam Rankine path)
-# Marvel claims hybrid magnetic + electrostatic + steam "up to ~70%" — marketing
-# claim, no engineering detail, no demonstrated analogue (TRL 2).
-# HB11 explicitly pivoted to steam cycle (~35-40%) as direct conversion not yet
-# tractable at scale. Using 0.40 as conservative primary estimate.
-# Source: dossier.md §Energy Capture; analysis.md §S2 Challenge 3; hb11-energy-technology.md
-ETA_TH_CONSERVATIVE = 0.40
-
-# UNCERTAIN: Plant availability — no pulsed laser IFE plant operational analogue.
-# Lower than D-T baseline (0.85) given higher TRL uncertainty on all subsystems.
-# Source: analysis.md §5 Missing Parameters
-AVAILABILITY_MARVEL = 0.75
-
-# ── Marvel hybrid DEC sweep parameters ────────────────────────────────
-# f_pdv: fraction of charged-particle energy directed into PdV recovery loop.
-# Framework default 0.80; no Marvel publication characterizes this value.
-# eta_dec sweep: 0% = all DEC output wasted (steam-only fallback);
-#                60% = near Marvel's claimed ~70% net efficiency upper bound.
-# At q_eng=5 with f_pdv=0.80: DEC crossover to net-positive at eta_dec≈20%.
-# Source: analysis.md §S2 Challenge 3; dossier.md §Energy Capture
-F_PDV_MARVEL = 0.80  # UNCERTAIN: framework default; no Marvel publication
-ETA_DEC_SWEEP = [0.0, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60]
-
-# ── Shared kwargs (Marvel design point) ───────────────────────────────
-_SHARED_KWARGS = dict(
-    availability=AVAILABILITY_MARVEL,  # UNCERTAIN; analysis.md §5 Missing Parameters
-    lifetime_yr=30,                    # DEFAULT: standard 30-yr project life
-    construction_time_yr=5.0,          # No large magnets; pulsed_laser_ife.yaml default
-    interest_rate=0.07,                # DEFAULT: standard WACC
-    inflation_rate=0.0245,             # DEFAULT: US CPI baseline
-    noak=True,
-    # ── Power balance ──────────────────────────────────────────────────
-    q_eng=Q_ENG,                       # UNCERTAIN; see constant above
-    f_rep=F_REP_MARVEL,                # 10 Hz; analysis.md §5; optics-news-16-4-4.md
-    eta_pin=ETA_PIN,                   # UNCERTAIN; analysis.md §5
-    eta_th=ETA_TH_CONSERVATIVE,        # UNCERTAIN; conservative steam estimate
-    mn=1.0,                            # Aneutronic: no neutron multiplication
-                                       # Source: dossier.md §Neutron Management; analysis.md §4
-    f_sub=0.03,                        # DEFAULT: subsystem power fraction
-    p_pump=1.0,                        # DEFAULT
-    p_trit=0.0,                        # No tritium processing; p-B11 aneutronic
-                                       # Source: analysis.md §4 (no tritium in fuel cycle)
-    p_house=4.0,                       # DEFAULT
-    p_cryo=0.0,                        # No superconducting magnets
-                                       # Source: analysis.md §4 (no external confinement)
-    p_target=2.0,                      # Elevated vs default: 10 Hz target factory power load
-                                       # UNCERTAIN: no published data; conservative estimate
-    # ── Chamber geometry (spherical) ───────────────────────────────────
-    plasma_t=3.5,                      # DEFAULT: spherical chamber radius ~3.5 m
-    blanket_t=0.20,                    # Minimal: no breeding blanket (aneutronic)
-                                       # Source: analysis.md §4; dossier.md §Neutron Management
-    ht_shield_t=0.10,                  # Minimal: no heavy neutron shielding
-                                       # Source: hb11-2025-08-04-assoc-prof-patrick-burr.md
-    structure_t=0.15,                  # DEFAULT: conventional steel (aneutronic environment)
-    vessel_t=0.10,                     # DEFAULT
-    # No cost_overrides: no published cost data exists for either company.
-    # analysis.md §5: "Capital cost by subsystem — proprietary, blocking"
-    # Framework pb11 fuel defaults handle reduced blanket/shield/remote handling.
-)
-
-# ── Primary result: Marvel pilot at native 100 MWe ────────────────────
-result = model.forward(net_electric_mw=NATIVE_MW, **_SHARED_KWARGS)
-
-# ── 1 GW result: scale from 100 MWe reference ─────────────────────────
-# No cost_overrides supplied at 100 MWe, so override_reference_mw enables
-# per-account power-law scaling from native to 1 GWe.
-result_1gw = model.forward(
-    net_electric_mw=1000.0,
-    override_reference_mw=NATIVE_MW,
-    **_SHARED_KWARGS,
-)
-
-# ── Comparison: HB11 Energy design point (steam, 1 Hz, ~1 GW) ─────────
-# More defensible design: validated fusion (single-shot), steam cycle,
-# conventional steel. Still assumes physics gap is closed.
-# Source: hb11-energy-technology.md; analysis.md §S7
-result_hb11 = model.forward(
-    net_electric_mw=1000.0,           # HB11 targets ~1 GW baseload; analysis.md §5
-    availability=0.80,                 # UNCERTAIN; 1 Hz simpler maintenance than 10 Hz
-    lifetime_yr=30,
-    construction_time_yr=5.0,
-    interest_rate=0.07,
-    inflation_rate=0.0245,
-    noak=True,
-    q_eng=4.0,                        # UNCERTAIN; slightly lower Q for lower-rep design
-    f_rep=1.0,                        # HB11 rep rate; hb11-energy-technology.md; analysis.md §5
-    eta_pin=0.10,                     # UNCERTAIN; HB11 stated target
-    eta_th=0.38,                      # Steam Rankine; HB11 explicit choice; analysis.md §S2 Ch.3
-    mn=1.0,
-    f_sub=0.03,
-    p_pump=1.0,
-    p_trit=0.0,
-    p_house=4.0,
-    p_cryo=0.0,
-    p_target=1.0,                     # 1 Hz: ~86k targets/day vs Marvel's 864k/day
-    plasma_t=3.5,
-    blanket_t=0.20,
-    ht_shield_t=0.10,
-    structure_t=0.15,
-    vessel_t=0.10,
-)
-
-# ── Marvel hybrid DEC sweep ───────────────────────────────────────────
-# Sweeps eta_dec (alpha capture efficiency) to quantify the LCOE lever
-# claimed by Marvel's hybrid electrostatic/magnetic/steam conversion.
-# At eta_dec=0 all DEC output is wasted (worst-case); at 0.60 approaches
-# the claimed near-70% net efficiency. Uses INDUCTIVE_DEC physics path.
-results_dec_sweep = []
-for _eta in ETA_DEC_SWEEP:
-    _r = model_dec.forward(
-        net_electric_mw=NATIVE_MW,
-        eta_dec=_eta,
-        f_pdv=F_PDV_MARVEL,
-        **_SHARED_KWARGS,
-    )
-    results_dec_sweep.append((_eta, _r))
-
-# ── Results ────────────────────────────────────────────────────────────
-c = result.costs
-pt = result.power_table
-c1 = result_1gw.costs
-pt1 = result_1gw.power_table
-c_hb11 = result_hb11.costs
-pt_hb11 = result_hb11.power_table
-
-print("=" * 72)
-print("Laser ICF — Nanostructured Target (p-B11)")
-print("** ALL LCOE VALUES CONTINGENT ON UNDEMONSTRATED IGNITION PHYSICS **")
-print("=" * 72)
-
-print(f"\n── Marvel Pilot (100 MWe, 10 Hz, eta_th=40%, eta_pin=10%) ──")
-print(f"LCOE:      {c.lcoe:.1f} $/MWh   |  Overnight: {c.overnight_cost:.0f} $/kW")
-print(f"Fusion:    {pt.p_fus:.0f} MW     |  Net: {pt.p_net:.0f} MW   |  Q_eng: {pt.q_eng:.1f}")
-print(f"Q_sci:     {pt.q_sci:.1f}         |  Recirc frac: {pt.rec_frac:.2%}")
-
-print(f"\n── Marvel Scaled to 1 GWe (from 100 MWe reference, per-account scaling) ──")
-print(f"LCOE:      {c1.lcoe:.1f} $/MWh  |  Overnight: {c1.overnight_cost:.0f} $/kW")
-print(f"Fusion:    {pt1.p_fus:.0f} MW   |  Net: {pt1.p_net:.0f} MW   |  Q_eng: {pt1.q_eng:.1f}")
-
-print(f"\n── HB11 Energy (1 GWe, 1 Hz, steam cycle, eta_th=38%) ──")
-print(f"LCOE:      {c_hb11.lcoe:.1f} $/MWh  |  Overnight: {c_hb11.overnight_cost:.0f} $/kW")
-print(f"Fusion:    {pt_hb11.p_fus:.0f} MW   |  Net: {pt_hb11.p_net:.0f} MW   |  Q_eng: {pt_hb11.q_eng:.1f}")
-
-print("\n── Marvel Hybrid DEC Sweep (INDUCTIVE_DEC, 100 MWe, f_pdv=0.80) ──")
-print("  eta_dec=0%: steam-only fallback; eta_dec=60%: near Marvel claim upper bound")
-print("  Crossover to net-positive DEC at eta_dec≈20% (Q_eng=5, f_pdv=0.80)")
-print(f"\n  {'eta_dec':>8}  {'LCOE ($/MWh)':>14}  {'p_net (MW)':>11}  {'recirc':>8}")
-print("  " + "-" * 48)
-for _eta, _r in results_dec_sweep:
-    _c = _r.costs
-    _pt = _r.power_table
-    _rec = getattr(_pt, "rec_frac", float("nan"))
-    print(f"  {_eta:>7.0%}  {_c.lcoe:>14.1f}  {_pt.p_net:>11.1f}  {_rec:>8.2%}")
-
-# ── CAS Breakdown ──────────────────────────────────────────────────────
-print("\n── CAS Breakdown: Marvel 100 MWe pilot ──")
-cas = [
-    ("CAS10", "Preconstruction",          c.cas10),
-    ("CAS21", "Buildings",                c.cas21),
-    ("CAS22", "Reactor Plant Equipment",  c.cas22),
-    ("CAS23", "Turbine Plant",            c.cas23),
-    ("CAS24", "Electrical Plant",         c.cas24),
-    ("CAS25", "Miscellaneous",            c.cas25),
-    ("CAS26", "Heat Rejection",           c.cas26),
-    ("CAS27", "Special Materials",        c.cas27),
-    ("CAS28", "Digital Twin",             c.cas28),
-    ("CAS29", "Contingency",              c.cas29),
-    ("CAS30", "Indirect Costs",           c.cas30),
-    ("CAS40", "Owner's Costs",            c.cas40),
-    ("CAS50", "Supplementary",            c.cas50),
-    ("CAS60", "IDC",                      c.cas60),
-    ("CAS70", "O&M (annualized)",         c.cas70),
-    ("CAS80", "Fuel (annualized)",        c.cas80),
-    ("CAS90", "Financial",                c.cas90),
+# 3. Override registry — six fields per entry, transcribed from Section 5b.
+#    Archetype-Fit: Low → expected 6–12 enabled overrides. Analysis produced 8.
+#    All overrides are analyst-derived (provenance: derived); Marvel has published
+#    no capital cost estimates.
+overrides = [
+    # C220101: Blanket — aneutronic energy capture only (no tritium breeding)
+    {
+        "enabled": True,
+        "account": "C220101",
+        "value": generic.cas22_detail["C220101"] * 0.70,
+        "provenance": "derived",
+        "source": (
+            "dossier.md §Tritium Breeding; "
+            "hb11-2025-08-04-assoc-prof-patrick-burr-leads-unsw-team-to/output.md"
+        ),
+        "rationale": (
+            "Aneutronic p-B11 eliminates the tritium-breeding function of the blanket "
+            "entirely. No lithium ceramics, no liquid metal breeder, no tritium extraction "
+            "loops. The blanket/first-wall must still serve as an energy capture surface "
+            "(thermalizing alpha particles) and structural boundary. Dossier: 'p-B11 fuel "
+            "cycle produces no tritium and requires no tritium breeding.' UNSW confirms "
+            "steel construction for the reaction chamber. 30% cost reduction reflects "
+            "elimination of breeding subsystems while retaining the full thermal management "
+            "structure (alpha thermalization walls, coolant routing, structural support). "
+            "Aligned with concept 04-laser-icf (0.70× on the same account): both concepts "
+            "share the identical p-B11 aneutronic fuel cycle and the same physical reasoning "
+            "— no tritium breeding, but energy capture blanket structure is retained."
+        ),
+        "cost_basis": "noak",
+    },
+    # C220102: Radiation shield — p-B11 produces <1% neutron energy
+    {
+        "enabled": True,
+        "account": "C220102",
+        "value": generic.cas22_detail["C220102"] * 0.20,
+        "provenance": "derived",
+        "source": (
+            "dossier.md §Neutron Management; "
+            "energynewsbulletin-energy-transition-features-articles/output.md §Materials"
+        ),
+        "rationale": (
+            "p-B11 produces <1% neutron energy from side reactions — roughly 2 orders of "
+            "magnitude lower neutron flux than D-T. Dossier: 'Thin shielding for secondary "
+            "neutrons and X-rays. Hands-on maintenance possible.' The library default sizes "
+            "the radiation shield for 14.1 MeV DT neutrons at high wall loading. With ~100x "
+            "lower neutron flux, shielding mass and cost scale down drastically. Residual "
+            "shielding for secondary neutrons, X-rays from alpha particle thermalization, and "
+            "personnel protection still required. 80% cost reduction (more aggressive than "
+            "04-laser-icf's 70%) reflects the 10 Hz Marvel design where time-averaged neutron "
+            "flux is even more dilute at 100 MWe pilot scale."
+        ),
+        "cost_basis": "noak",
+    },
+    # C220104: Femtosecond DPSSL driver — absolute NOAK estimate at 1 GWe scale
+    {
+        "enabled": True,
+        "account": "C220104",
+        "value": 2000.0,
+        "provenance": "derived",
+        "source": (
+            "osti-servlets-purl-3008974/output.md §Section 3; "
+            "optics-news-16-4-4/output.md §500 lasers needed; "
+            "osti-servlets-purl-15013230/output.md §IFE Driver Requirements"
+        ),
+        "rationale": (
+            "Marvel's driver is structurally different from the library's single nanosecond "
+            "DPSSL model: it uses ~500 femtosecond DPSSL beamlines at kJ-class energy and "
+            "10 Hz for a commercial power plant. LLNL IFE driver cost target: <$1.5B for "
+            "a GW-class plant (osti-servlets-purl-15013230 §Introduction). "
+            "Scaling note: absolute overrides in 1costingFE do not scale with module count. "
+            "This value must therefore represent the full 1 GWe plant driver cost, not a "
+            "per-module figure. At P_native (100 MWe, n_mod=1), the same $2,000M applies "
+            "— overstating the pilot, whose 10–100 lasers (optics-news-16-4-4 §500 lasers "
+            "needed) would cost far less. This is an accepted distortion: the 1 GWe "
+            "comparison is the primary analytical target. "
+            "Derivation: Marvel states ~500 laser systems for a commercial power plant "
+            "(optics-news-16-4-4 §500 lasers needed). LLNL's LIFE-era cost target is "
+            "<$1.5B for a GW-class driver using nanosecond Nd:glass/Yb:S-FAP systems. "
+            "Marvel's femtosecond CPA architecture uses a less mature manufacturing base "
+            "(Ti:sapphire-class gain media, CPA gratings) with no established IFE-scale "
+            "production — applying a 1.3–2× technology immaturity premium over the LLNL "
+            "benchmark. Midpoint: $1.5B × 1.33 ≈ $2,000M. Sensitivity range: $1,500M–"
+            "$3,000M. At 500 beamlines this implies $3–6M per beamline (NOAK), consistent "
+            "with the LLNL analysis showing diodes account for 33–50% of beamline cost at "
+            "IFE scale (osti-servlets-purl-3008974 §Section 3). "
+            "Note: This override replaces the library's $/J-based driver calculation, which "
+            "cannot capture the femtosecond CPA architecture."
+        ),
+        "cost_basis": "noak",
+    },
+    # C220106: Vacuum system — simplified IFE chamber, no magnets
+    {
+        "enabled": True,
+        "account": "C220106",
+        "value": generic.cas22_detail["C220106"] * 0.50,
+        "provenance": "derived",
+        "source": (
+            "dossier.md §Magnet Type; "
+            "newatlas-energy-hb11-hydrogen-boron-fusion-clean-energy/output.md §Reactor Design"
+        ),
+        "rationale": (
+            "IFE concepts require a vacuum chamber but not the complex port structures, "
+            "cryopumps, or magnet-compatible vacuum vessel of MFE designs. The Marvel "
+            "design has no external magnets (eliminating cryopumping for magnet vacuum) "
+            "and uses a 'largely empty' reaction chamber. However, at 10 Hz with silicon "
+            "nanostructured targets, the vacuum system must handle significant debris "
+            "clearing between shots. 50% reduction from the library's IFE default reflects "
+            "the simplified geometry (no magnets, no tritium-compatible double containment) "
+            "partially offset by debris management requirements."
+        ),
+        "cost_basis": "noak",
+    },
+    # C220108: Target factory — semiconductor lithography Si nanowire arrays, 1 GWe scale
+    {
+        "enabled": True,
+        "account": "C220108",
+        "value": 200.0,
+        "provenance": "derived",
+        "source": (
+            "dossier.md §Driver Technology; "
+            "optics-news-15-10-4/output.md §Silicon fuel"
+        ),
+        "rationale": (
+            "Target factory for silicon nanostructured targets via semiconductor lithography, "
+            "sized for a 1 GWe plant (10 × 100 MWe modules at 10 Hz). "
+            "Scaling note: absolute overrides in 1costingFE do not scale with module count. "
+            "This value must therefore represent the full 1 GWe plant target factory cost. "
+            "At P_native (100 MWe, n_mod=1), the same $200M applies — overstating the "
+            "pilot's smaller fab. This is an accepted distortion: the 1 GWe comparison "
+            "is the primary analytical target. "
+            "Derivation: At 1 GWe (10 modules, 10 Hz each): 3.15B targets/year = 630,000 "
+            "wafers/year (at 5,000 targets/wafer per dossier §Driver Technology). By "
+            "semiconductor industry standards, 630,000 wafers/year is a mid-size fab "
+            "(modern fabs process 50,000–100,000 wafers/month). A dedicated clean-room "
+            "line at this throughput costs $150–300M CAPEX (not a leading-edge logic fab "
+            "— the nanostructure geometry uses mature lithography nodes). Midpoint: $200M. "
+            "Key structural advantage: one centralized factory serves the entire 1 GWe "
+            "plant; the factory does not replicate per module. Per-target CAPEX at this "
+            "scale: $200M / 3.15B targets = $0.063/target. Contrast with 04-laser-icf: "
+            "HB11's target factory (complex capacitor-coil assemblies at ~$5/target) is "
+            "estimated at $157.5M for a 500 MWe plant. Marvel's silicon wafer targets "
+            "eliminate per-target electromagnet assemblies and cryogenics, but the 10× "
+            "higher rep rate (10 Hz vs 1 Hz) requires 10× throughput, driving factory "
+            "scale up. Sensitivity range: $150M–$300M."
+        ),
+        "cost_basis": "noak",
+    },
+    # CAS21: Buildings — no tritium or cryogenic infrastructure
+    {
+        "enabled": True,
+        "account": "CAS21",
+        "value": generic.costs.cas21 * 0.75,
+        "provenance": "derived",
+        "source": (
+            "dossier.md §Tritium Breeding; "
+            "marvel-fusion-2025-updates.md §Objective"
+        ),
+        "rationale": (
+            "Aneutronic p-B11 eliminates tritium processing buildings, hot cells for blanket "
+            "handling under tritium containment, atmospheric recovery systems, radioactive "
+            "waste storage structures, and cryogenic target handling facilities. The reactor "
+            "building and turbine hall remain (hybrid thermal + direct conversion requires "
+            "both). Support building footprint is reduced. Siemens Energy co-developing "
+            "'fully integrated fusion power plant' design suggests conventional BOP building "
+            "standards where applicable. 25% cost reduction vs. library's DT-ICF building "
+            "model reflects eliminated tritium and cryogenic infrastructure. Slightly less "
+            "aggressive than 04-laser-icf (20% reduction) because Marvel's 10 Hz target "
+            "injection and debris management may require additional facility infrastructure."
+        ),
+        "cost_basis": "noak",
+    },
+    # CAS27: Special materials — p-B11 fuel inventory only
+    {
+        "enabled": True,
+        "account": "CAS27",
+        "value": 0.5,
+        "provenance": "derived",
+        "source": (
+            "dossier.md §Fuel; "
+            "energynewsbulletin-energy-transition-features-articles/output.md §Fuel"
+        ),
+        "rationale": (
+            "Special materials inventory for p-B11: initial boron-11 fuel load and hydrogen "
+            "supply only. Natural boron is 80% B-11, commodity cost ~$1-2/kg. At microgram-to-"
+            "milligram quantities per target x startup inventory for 1 week at 10 Hz = 6.048M "
+            "targets, total boron mass is negligible (< 100 kg at ~0.01 mg/target estimate, "
+            "yielding < $200 material cost). Round to $500k ($0.5M) including handling, "
+            "storage, buffer inventory, and hydrogen supply infrastructure. Negligible "
+            "compared to DT tritium inventory costs (~$30k/g x kg quantities). No lithium "
+            "blanket inventory, no enriched materials."
+        ),
+        "cost_basis": "noak",
+    },
+    # CAS70: O&M — reduced activation-driven replacement, modular laser maintenance
+    {
+        "enabled": True,
+        "account": "CAS70",
+        "value": generic.costs.cas70 * 0.80,
+        "provenance": "derived",
+        "source": (
+            "energynewsbulletin-energy-transition-features-articles/output.md §Materials; "
+            "dossier.md §Neutron Management"
+        ),
+        "rationale": (
+            "Aneutronic operation eliminates activation-driven first-wall and blanket "
+            "replacement — the dominant O&M cost driver in DT fusion. Dossier: 'Hands-on "
+            "maintenance possible.' Chamber walls may last the full plant lifetime if alpha "
+            "particle erosion is manageable (unverified assumption). No tritium handling O&M "
+            "(extraction, purification, accountability). However, the laser driver system "
+            "requires periodic diode bar replacement (the LLNL paper flags diode lifetime as "
+            "a 'critical cost driver' with 3-20 Gshot requirement). At 10 Hz, 1 Gshot = "
+            "~3.2 years — replacement intervals of 10-64 years depending on achieved "
+            "lifetime. Laser optics also degrade under operation. 20% O&M reduction vs. "
+            "library DT-ICF model reflects lower activation-driven replacement, partially "
+            "offset by laser subsystem maintenance. Consistent with concept 04-laser-icf "
+            "approach (15% reduction; Marvel gets slightly larger reduction due to higher "
+            "rep rate amortizing fixed O&M costs more efficiently)."
+        ),
+        "cost_basis": "noak",
+    },
 ]
 
-print(f"\n{'Code':<8} {'Account':<28} {'M$':>10}")
-print("-" * 48)
-for code, name, val in cas:
-    print(f"{code:<8} {name:<28} {float(val):>10.1f}")
-print("-" * 48)
-print(f"{'':8} {'Total Capital':<28} {float(c.total_capital):>10.1f}")
-
-# ── CAS22 Detail ──────────────────────────────────────────────────────
-print("\n── CAS22 Sub-accounts (Marvel 100 MWe) ──")
-for key, val in result.cas22_detail.items():
-    if float(val) > 0:
-        print(f"  {key}: {float(val):.1f} M$")
-
-# ── Key Assumptions ───────────────────────────────────────────────────
-print("""
-── Key Assumptions / Data Quality ──────────────────────────────────────
-CRITICAL UNCERTAIN — physics not demonstrated:
-  q_eng = 5.0     ASSUMED. HB11 data: ~0.005% laser-to-alpha efficiency
-                  (~4 OOM from net energy gain). Marvel: no yield data.
-                  All LCOE results are contingent on ignition being achieved.
-
-  eta_pin = 10%   UNCERTAIN. HB11 stated target; Marvel unpublished.
-                  10 Hz continuous at PW-class energies is undemonstrated.
-
-  eta_th = 40%    CONSERVATIVE. Marvel claims hybrid "up to ~70%" with
-                  no engineering detail (TRL 2). HB11 uses ~38% steam.
-                  Primary result uses steam-only assumption.
-
-MEDIUM CONFIDENCE:
-  f_rep = 10 Hz   Marvel ATLAS facility design; not yet at commercial scale.
-  availability=75% No pulsed laser IFE plant analogue; placeholder.
-  p-B11 aneutronic No blanket/tritium/heavy shielding confirmed.
-
-FRAMEWORK DEFAULTS (no override data available):
-  Laser driver    8.0 M$/MW_driver (NOAK DPSSL; no Marvel/HB11 cost data)
-  Target factory  244 M$ at 1 GWe ref (Goodin et al. analogue)
-  O&M             24 M$/yr base (pb11, aneutronic, no tritium)
-  B-11 fuel cost  75 $/kg NOAK (industrial estimate; enrichment need unconfirmed)
-
-SUPPLY CHAIN ADVANTAGES vs D-T:
-  No tritium → no breeding blanket, no TBR constraint, no tritium startup cost
-  No HTS tape → no superconducting magnet supply chain risk
-  No beryllium/Li-6 → no exotic breeder materials
-  Standard steel construction viable (UNSW collaboration confirms)
-""")
-
-# ── Sensitivity Analysis ──────────────────────────────────────────────
-# NaN values in JAX autodiff arise from jnp.ceil in core_lifetime/availability
-# calculations (ceil is not smoothly differentiable). Patch with central finite
-# differences for any parameter that JAX cannot differentiate cleanly.
-def _patch_nan_sensitivities(mdl, params, sens_dict):
-    """Replace NaN elasticities with central finite-difference estimates."""
-    import jax.numpy as jnp
-    lcoe_fn, keys, base_vals = mdl._build_lcoe_fn(params)
-    base_lcoe = float(lcoe_fn(base_vals))
-    for category_dict in sens_dict.values():
-        for k in list(category_dict.keys()):
-            if math.isnan(category_dict[k]) and k in keys:
-                idx = keys.index(k)
-                p0 = float(base_vals[idx])
-                h = p0 * 0.01
-                if h == 0.0:
-                    continue
-                x_hi = base_vals.at[idx].set(p0 + h)
-                x_lo = base_vals.at[idx].set(p0 - h)
-                grad = (float(lcoe_fn(x_hi)) - float(lcoe_fn(x_lo))) / (2 * h)
-                category_dict[k] = grad * p0 / base_lcoe
-    return sens_dict
-
-sens = model.sensitivity(result.params)
-sens = _patch_nan_sensitivities(model, result.params, sens)
-
-# Compute eta_dec elasticity using the DEC model (thermal model has eta_dec=0,
-# giving a trivially undefined elasticity; DEC model activates the physics path).
-_dec_params = dict(result.params)
-_dec_params["eta_dec"] = 0.30  # mid-range base point for elasticity
-_dec_params["f_pdv"] = F_PDV_MARVEL
-_result_dec_base = model_dec.forward(
-    net_electric_mw=NATIVE_MW,
-    eta_dec=0.30,
-    f_pdv=F_PDV_MARVEL,
-    **_SHARED_KWARGS,
+# 4. Overrides-on forwards via the shared helper (native + 1 GWe NOAK projection).
+native, result_1gw = run_native_and_1gw(
+    model, spec=spec, overrides=overrides, p_native=P_native,
 )
-_sens_dec = model_dec.sensitivity(_result_dec_base.params)
-_eta_dec_elasticity = _sens_dec.get("engineering", {}).get("eta_dec", float("nan"))
 
-print("── Sensitivity (elasticity = %LCOE / %param) — Marvel 100 MWe ──")
-print("-" * 56)
-print("  (NaN values replaced with central finite-difference estimates)")
-print(f"  eta_dec elasticity (DEC model, base eta_dec=30%): {_eta_dec_elasticity:+.4f}")
-
-print("\nEngineering levers:")
-for k, v in sorted(sens["engineering"].items(), key=lambda x: abs(x[1]), reverse=True):
-    print(f"  {k:<36} {v:+.4f}")
-
-print("\nFinancial:")
-for k, v in sorted(sens["financial"].items(), key=lambda x: abs(x[1]), reverse=True):
-    print(f"  {k:<36} {v:+.4f}")
-
-print("\nCosting constants (top 15):")
-costing = sorted(sens["costing"].items(), key=lambda x: abs(x[1]), reverse=True)
-for k, v in costing[:15]:
-    print(f"  {k:<36} {v:+.4f}")
+print_cas_breakdown(generic, native, result_1gw, overrides)

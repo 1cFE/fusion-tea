@@ -1,144 +1,63 @@
-Spherical Tokamak - HTS (Tokamak Energy ST-E1 Rev D)
-  Config: 600 MWe net | 85% availability | 30 yr | NOAK
-  Geometry: R0=5.0 m, A=2.3, a=2.17 m, κ=2.5
-  Field: B=5.25 T on-axis | Heating: ECRH-only (η_pin=0.52)
-  Thermal eff.: η_th=0.35 (UNCERTAIN — steam Rankine analogue)
+LCOE: 168.4 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 198.0 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 198.0 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 14889 $/kW   native 14889 $/kW   1 GWe 12917 $/kW
 
-LCOE:       172.9 $/MWh
-Overnight:  12056 $/kW
-Fusion:     1944 MW | Net: 600 MW | Q_eng: 4.93
+CAS               generic           native            1 GWe
+--------------------------------------------------------
+CAS10                17.1             17.1             17.8
+CAS21               401.6            401.6            422.0
+CAS22              3754.7           3754.7           7618.4
+CAS23               118.8            118.8            257.9
+CAS24                50.6             50.6            109.9
+CAS25                30.8             30.8             66.9
+CAS26                51.3             51.3            111.4
+CAS27                 6.8              6.8              7.5
+CAS28                 5.0              5.0              5.0
+CAS29                 0.0              0.0              0.0
+CAS30               883.9            883.9           1719.8
+CAS40                26.2             26.2             27.6
+CAS50               273.1            273.1            470.0
+CAS60              1080.2           1080.2           2082.5
+CAS70               160.4            160.4            284.3
+CAS80                 0.4              0.4              0.8
+CAS90               502.6            502.6            968.9
+--------------------------------------------------------
+TOTAL              6700.0           6700.0          12916.7
 
-1 GW scaled (cross-concept): LCOE 132.4 $/MWh | Overnight 9198 $/kW
+--- CAS22 sub-account detail (overrides marked) ---
+code            generic       native        1 GWe  flag
+C220000          3754.7       3754.7       7618.4
+C220101           717.0        717.0        753.3
+C220102           409.3        409.3        430.0
+C220103          1170.7       1170.7       1170.7
+C220104           278.5        278.5        278.5
+C220105            44.4         44.4         46.2
+C220106           217.5        217.5        228.5
+C220106_pump          0.4          0.4          0.4
+C220106_vessel        217.1        217.1        228.1
+C220107            56.0         56.0         59.3
+C220108            73.5         73.5         76.6
+C220109             0.0          0.0          0.0
+C220110           116.3        116.3        121.2
+C220111           431.6        431.6        443.0
+C220112             0.0          0.0          0.0
+C220200           100.2        100.2        205.1
+C220300            13.0         13.0         15.0
+C220400             2.9          2.9          6.4
+C220500            68.6         68.6        120.0
+C220600             6.1          6.1         11.5
+C220700            49.1         49.1         81.2
 
-Code     Account                              M$
-------------------------------------------------
-CAS10    Preconstruction                    17.5
-CAS21    Buildings                         493.9
-CAS22    Reactor Plant Equipment          3350.9
-CAS23    Turbine Plant                     148.8
-CAS24    Electrical Plant                   63.4
-CAS25    Miscellaneous                      38.6
-CAS26    Heat Rejection                     73.5
-CAS27    Special Materials                   9.0
-CAS28    Digital Twin                        5.0
-CAS29    Contingency                         0.0
-CAS30    Indirect Costs                   1115.5
-CAS40    Owner's Costs                      30.2
-CAS50    Supplementary                     294.4
-CAS60    IDC                              1593.3
-CAS70    O&M (annualized)                  188.7
-CAS80    Fuel (annualized)                   0.6
-CAS90    Financial                         583.0
-------------------------------------------------
-         Total Capital                    7233.9
+p_input sweep (native 450 MWe; estimated 40–60 MW wallplug auxiliary):
+  p_input=40 MW: LCOE=193.3 $/MWh
+  p_input=45 MW: LCOE=195.6 $/MWh
+  p_input=50 MW: LCOE=198.0 $/MWh  <- spec
+  p_input=55 MW: LCOE=200.3 $/MWh
+  p_input=60 MW: LCOE=202.6 $/MWh
 
-CAS22 sub-account detail:
-Code                 M$
-------------------------
-  C220000        3350.9
-  C220101         795.0
-  C220102         453.6
-  C220103         516.1
-  C220104         353.2
-  C220105          44.4
-  C220106         222.1
-  C220107          65.6
-  C220108          88.0
-  C220109           0.0
-  C220110         130.1
-  C220111         373.5
-  C220112           0.0
-  C220200         130.7
-  C220300          20.9
-  C220400           4.2
-  C220500          83.9
-  C220600           7.6
-  C220700          61.9
-
-============================================================
-Key Assumptions and Data Quality
-============================================================
-  Net electric (central of 450–750 MWe range):  600 MWe  [HIGH confidence]
-  Major radius R0:                               5.0 m    [HIGH confidence]
-  Aspect ratio A → minor radius:                 2.3 → 2.17 m [HIGH confidence]
-  Elongation κ:                                  2.5     [UNCERTAIN — analogue]
-  On-axis field B:                               5.25 T  [HIGH confidence]
-  Thermal efficiency η_th:                       0.35   [UNCERTAIN — steam Rankine analogue]
-  Heating (ECRH) wall-plug η_pin:               0.52   [MEDIUM — gyrotron analogue]
-  Aux heating power p_input:                     50 MW  [DEFAULT — undisclosed]
-  Availability:                                  85%   [canonical — scoring_framework.md §Plant availability, MCF quasi-steady D-T]
-  Blanket coverage:                              outboard-only (4π model overestimates cost)
-  Thermal buffer (pulsed TES):                   NOT MODELLED — cost unknown, downward bias
-  All capital costs:                             FRAMEWORK DEFAULTS (no published cost data)
-
-Sensitivity (elasticity = %LCOE / %param)
-------------------------------------------------
-
-Engineering levers:
-  availability                         -0.8533
-  R0                                   +0.4495
-  elon                                 +0.4495
-  construction_time_yr                 +0.3901
-  eta_th                               -0.3249
-  plasma_t                             +0.3179
-  blanket_t                            +0.3061
-  r_coil                               +0.2064
-  b_max                                +0.1032
-  p_nbi                                +0.0706
-  eta_pin                              -0.0574
-  p_input                              +0.0565
-  ht_shield_t                          +0.0518
-  vessel_t                             +0.0475
-  mn                                   -0.0334
-  f_sub                                +0.0135
-  structure_t                          +0.0134
-  p_cool                               +0.0090
-  p_trit                               +0.0060
-  p_cryo                               +0.0029
-  p_house                              +0.0024
-  p_coils                              +0.0012
-  p_pump                               +0.0012
-  eta_p                                -0.0000
-  dd_f_T                               +0.0000
-  dd_f_He3                             +0.0000
-  dhe3_dd_frac                         +0.0000
-  dhe3_f_T                             +0.0000
-  dhe3_f_He3                           +0.0000
-  eta_de                               +0.0000
-  q95                                  +0.0000
-  f_GW                                 +0.0000
-  B                                    +0.0000
-  T_e                                  +0.0000
-  n_e                                  +0.0000
-  Z_eff                                +0.0000
-  plasma_volume                        +0.0000
-  R_w                                  +0.0000
-  T_edge                               +0.0000
-  tau_ratio                            +0.0000
-  M_ion                                +0.0000
-  lambda_q                             +0.0000
-  disruption_rate_base                 +0.0000
-  disruption_steepness                 +0.0000
-  disruption_damage                    +0.0000
-  disruption_downtime                  +0.0000
-
-Financial:
-  interest_rate                        +0.6858
-  inflation_rate                       +0.0381
-
-Costing constants (top 15):
-  blanket_unit_cost_dt                 +0.3055
-  indirect_fraction                    +0.1515
-  core_lifetime_dt                     -0.1460
-  shield_unit_cost                     +0.0907
-  om_cost_dt                           +0.0817
-  heating_nbi_per_mw                   +0.0706
-  installation_frac                    +0.0655
-  vessel_unit_cost                     +0.0444
-  divertor_base                        +0.0338
-  remote_handling_dt_base              +0.0260
-  fuel_handling_dt_base                +0.0147
-  power_supplies_base                  +0.0131
-  fuel_recovery                        -0.0122
-  electric_per_mw                      +0.0114
-  construction_insurance_frac          +0.0106
+elon sweep (native 450 MWe; typical ST range κ=2.5–3.0):
+  elon=2.5: LCOE=189.2 $/MWh
+  elon=2.6: LCOE=192.1 $/MWh
+  elon=2.8: LCOE=198.0 $/MWh  <- spec
+  elon=3.0: LCOE=203.9 $/MWh

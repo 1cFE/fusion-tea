@@ -1,0 +1,16 @@
+{
+  "iteration": 1,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "cold_start",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": false,
+  "merged_assess": false,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/30-laser-icf-nif-commercialization/iter-01/sources/enr-mike-dunne-interview.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/30-laser-icf-nif-commercialization/iter-01/sources/globenewswire-series-a-press-release.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/30-laser-icf-nif-commercialization/iter-01/sources/inertia-website-technical.md"
+  ],
+  "timestamp": "2026-04-19T23:38:40.726408+00:00"
+}

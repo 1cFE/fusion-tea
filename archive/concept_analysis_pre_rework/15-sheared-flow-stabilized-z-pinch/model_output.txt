@@ -1,0 +1,221 @@
+
+########################################################################
+# BASELINE: SFS Z-Pinch — Moderate Design Point
+#   Q=10, 10 Hz, 10 modules, eta_th=38%, avail=75%, $75M driver/mod
+########################################################################
+========================================================================
+SFS Z-Pinch (D-T) LCOE Model — 1cFE CAS-Structured (Zap Energy)
+========================================================================
+
+--- Key Input Parameters ---
+  Fusion Q_sci:               10.0  [HIGH UNCERTAINTY: not demonstrated]
+  Fusion energy/pulse:        19 MJ
+  Rep rate:                   10 Hz  [HIGH UNCERTAINTY: Century at 0.2 Hz]
+  Driver wall-to-plasma eta:  70%
+  Blanket multiplication:     1.10
+  Thermal efficiency:         38%
+  Plant availability:         75%
+  Modules:                    10
+  FOAK/NOAK:                  NOAK
+  Interest rate:              8%
+  Plant lifetime:             40 yr
+
+--- Power Balance (per module) ---
+  Driver stored energy/pulse: 2.71 MJ
+  Fusion power (avg):         190 MW
+    Neutron power:            152 MW (80%)
+    Alpha power:              38 MW (20%)
+  Thermal power:              205 MW
+  Gross electric:             78.0 MWe
+  Recirculating:
+    Driver recharge:          27.1 MW
+    Auxiliaries:              5.0 MW  (LiPb pump+house+trit)
+  Net electric (per module):  45.8 MWe
+  Net electric (plant):       458 MWe  (10 modules)
+  Q_sci:                      10.0
+  Q_eng (p_fus/p_driver):     7.00
+  Recirculating fraction:     41.2%
+
+--- CAS22: Reactor Plant Equipment ---
+  Per-module accounts:
+    C220101 LiPb First Wall + Blanket            $    49.5M
+    C220102 Additional Shield                    $    12.7M
+    C220103 Coils [OVERRIDE: $0, none]           $     0.0M [override]
+    C220104 Aux Heating [OVERRIDE: $0, none]     $     0.0M [override]
+    C220105 Primary Structure                    $     4.1M
+    C220106 Vacuum System                        $     8.2M
+    C220107 Pulsed Power Driver [OVERRIDE]       $    75.0M [override]
+    C220108 Electrode System [OVERRIDE]          $    20.0M [override]
+    C220110 Remote Handling                      $    10.4M
+    C220111 Installation                         $    25.2M
+  ────────────────────────────────────────────────────────
+    Per-module subtotal:                      $   205.1M x10
+  Plant-wide accounts:
+    C220200 LiPb + Steam Coolant Systems         $   106.4M
+    C220300 Aux Cooling (no cryoplant)           $     2.3M
+    C220400 Rad Waste Management                 $     4.0M
+    C220500 Fuel Handling (D-T/LiPb/tritium)     $    69.5M
+    C220600 Other Equipment                      $     6.2M
+    C220700 Instrumentation & Control            $    60.1M
+  ────────────────────────────────────────────────────────
+    Plant-wide subtotal:                      $   248.4M
+  CAS22 Total:                               $   2299.5M
+
+--- Capital Costs (CAS10-60) ---
+  CAS10 Pre-construction                     $    17.1M
+  CAS21 Buildings                            $   506.8M
+  CAS22 Reactor Plant Equipment              $  2299.5M
+  CAS23 Turbine Plant                        $   154.1M
+  CAS24 Electric Plant                       $    65.6M
+  CAS25 Misc Plant                           $    40.0M
+  CAS26 Heat Rejection                       $    26.6M
+  CAS27 Special Materials (LiPb)             $     6.9M
+  CAS28 Digital Twin                         $     5.0M
+  CAS29 Contingency                          $     0.0M
+  ────────────────────────────────────────────────────────
+  CAS20 Direct Costs:                        $  3104.6M
+  CAS30 Indirect Costs:                      $   620.9M
+  CAS40 Owner's Costs:                       $    26.4M
+  CAS50 Supplementary:                       $   303.2M
+  ────────────────────────────────────────────────────────
+  Overnight Capital:                         $  4072.2M
+  CAS60 IDC (f=0.223):                   $   906.7M
+  ========================================================
+  Total Capital:                             $  4978.9M
+  Specific Capital:                          $   10863 $/kWe
+
+--- Annual Costs (CAS70-90) ---
+  CAS90 Capital charge (CRF=0.0839):     $   417.5M/yr
+  CAS71 O&M (levelized):                     $    42.1M/yr
+  CAS72 Core replacements (9x):            $   108.0M/yr
+  CAS70 Total O&M:                           $   150.1M/yr
+  CAS80 Electrode consumables:               $    30.0M/yr
+  CAS80 D-T fuel (D only):                   $     0.386M/yr
+  CAS80 Total:                               $    30.4M/yr
+
+--- LCOE ---
+  Annual energy production:    3,011,237 MWh
+  Annual revenue req:       $    598.0M
+  +---------------------------------------------------+
+  | LCOE (native 458 MWe) = 19.86 c/kWh      |
+  |                       = 198.6 $/MWh             |
+  +---------------------------------------------------+
+  Capital fraction (CAS90): 69.8%
+  O&M fraction (CAS70):     25.1%
+  Consumables (CAS80):      5.1%
+
+  Post-hoc 1000 MWe scaling (alpha=0.6):
+    LCOE @ 1000 MWe:      145.4 $/MWh
+    Overnight @ 1000 MWe: $6,503 /kW
+
+
+========================================================================
+SENSITIVITY SWEEPS (from baseline)
+========================================================================
+
+  Fusion Q_sci (gain):
+           5  ->   44.70 c/kWh  (187 MWe net)
+           7  ->   25.70 c/kWh  (342 MWe net)
+          10  ->   19.86 c/kWh  (458 MWe net)
+          12  ->   18.31 c/kWh  (504 MWe net)
+          15  ->   17.02 c/kWh  (549 MWe net)
+          20  ->   15.93 c/kWh  (594 MWe net)
+
+  Driver cost per module [M$]:
+          25  ->   17.39 c/kWh  (458 MWe net)
+          50  ->   18.62 c/kWh  (458 MWe net)
+          75  ->   19.86 c/kWh  (458 MWe net)
+         125  ->   22.33 c/kWh  (458 MWe net)
+         200  ->   26.04 c/kWh  (458 MWe net)
+         350  ->   33.45 c/kWh  (458 MWe net)
+
+  Plant availability:
+         0.5  ->   27.71 c/kWh  (458 MWe net)
+         0.6  ->   23.76 c/kWh  (458 MWe net)
+         0.7  ->   21.02 c/kWh  (458 MWe net)
+        0.75  ->   19.86 c/kWh  (458 MWe net)
+         0.8  ->   18.91 c/kWh  (458 MWe net)
+         0.9  ->   17.26 c/kWh  (458 MWe net)
+
+  Thermal efficiency:
+         0.3  ->   28.18 c/kWh  (294 MWe net)
+        0.33  ->   24.17 c/kWh  (356 MWe net)
+        0.35  ->   22.18 c/kWh  (397 MWe net)
+        0.38  ->   19.86 c/kWh  (458 MWe net)
+         0.4  ->   18.63 c/kWh  (499 MWe net)
+        0.42  ->   17.58 c/kWh  (540 MWe net)
+
+  Number of modules:
+           4  ->   20.27 c/kWh  (183 MWe net)
+           6  ->   20.07 c/kWh  (275 MWe net)
+           8  ->   19.94 c/kWh  (367 MWe net)
+          10  ->   19.86 c/kWh  (458 MWe net)
+          15  ->   19.73 c/kWh  (687 MWe net)
+          20  ->   19.65 c/kWh  (917 MWe net)
+
+  Wall-to-plasma efficiency:
+        0.55  ->   23.17 c/kWh  (384 MWe net)
+         0.6  ->   21.74 c/kWh  (413 MWe net)
+        0.65  ->   20.68 c/kWh  (437 MWe net)
+         0.7  ->   19.86 c/kWh  (458 MWe net)
+        0.75  ->   19.21 c/kWh  (476 MWe net)
+         0.8  ->   18.67 c/kWh  (492 MWe net)
+
+  Electrode replacement cost [M$/mod/yr]:
+         0.5  ->   19.03 c/kWh  (458 MWe net)
+           1  ->   19.20 c/kWh  (458 MWe net)
+           3  ->   19.86 c/kWh  (458 MWe net)
+           5  ->   20.52 c/kWh  (458 MWe net)
+          10  ->   22.18 c/kWh  (458 MWe net)
+          20  ->   25.50 c/kWh  (458 MWe net)
+
+
+========================================================================
+SCENARIO COMPARISON
+========================================================================
+
+  Scenario                         Q  Net MWe OvernC $B    $/kWe         LCOE
+  --------------------------------------------------------------------------
+  Conservative (Q=7)             7.0     239  $   4.8B  $24,653    54.6 c/kWh
+  Moderate (baseline)           10.0     458  $   4.1B  $10,863    19.9 c/kWh
+  Optimistic (Q=15)             15.0     631  $   3.7B   $6,649     8.9 c/kWh
+  Q=5 pessimistic                5.0      84  $   4.7B  $67,806   135.4 c/kWh
+  Small plant (4 mod)           10.0     183  $   1.7B  $11,188    20.3 c/kWh
+  Large plant (20 mod)          10.0     917  $   8.0B  $10,701    19.7 c/kWh
+
+
+========================================================================
+KEY BINDING CONSTRAINTS (top 3 LCOE drivers)
+========================================================================
+
+  1. Q_SCI NOT DEMONSTRATED — single most critical constraint
+     Every LCOE number in this model is conditional on achieving Q >= 10.
+     Commercial power balance anchors entirely on a calculated projection
+     (Engineering Paradigms paper). FuZE demonstrated thermonuclear neutrons,
+     but Q has never been measured at any scale. Commercial requires 200 us
+     pinch lifetime; FuZE achieves 20-40 us (5-10x extrapolation required).
+     Q_sci sensitivity: at Q=5 vs Q=10, net electric drops ~60% and LCOE roughly
+     triples. At Q=5, recirculating fraction exceeds 70% and net output is marginal.
+
+  2. PULSED POWER DRIVER COST AND SUPPLY CHAIN — program-level risk
+     The driver is the single dominant capital cost item (~50-60% of overnight
+     capital in baseline), replacing HTS magnets in tokamak economics. No commercial
+     cost estimate exists anywhere in public literature.
+     - Capacitors: 10^4-10^5 shot life vs. 10^8-10^9 required (4-6 OOM gap)
+     - Switches: SiC at 6.5-15 kV vs. 50-200 kV needed (different technology class)
+     - OSTI 2025: 10-20 year maturation roadmap before commercial deployment credible
+     Driver cost sensitivity: $25M vs $350M/module spans 2x LCOE range.
+
+  3. PLANT AVAILABILITY AND ELECTRODE DURABILITY — key unknown
+     No erosion rate data for electrodes under nuclear duty cycle (14 MeV neutrons,
+     10 Hz, 1 MA arcing). Replacement interval governs both O&M cost and capacity
+     factor (LCOE denominator). Availability 0.60->0.85 changes LCOE by ~25%.
+     Combined with electrode consumable cost uncertainty ($0.5M-$20M/mod/yr),
+     this is the dominant O&M uncertainty source.
+
+  NOTE: All estimates carry HIGH UNCERTAINTY. This model is for
+  first-pass corridor mapping only. See parameter docstrings for sources.
+  Cost accounts follow CAS structure (1costingfe) with power-scaling laws.
+
+  Native plant:   458 MWe -> LCOE 198.6 $/MWh
+  Scaled 1000 MWe (alpha=0.6):  LCOE 145.4 $/MWh,  $6,503/kW overnight

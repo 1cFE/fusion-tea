@@ -28,7 +28,7 @@ from exploration.concept_explorer.extract_explorer_data import (  # noqa: E402
     load_parameter_display_registry,
     load_parameter_metadata,
     parse_concept_id,
-    parse_confinement_family,
+    _to_confinement_family,
     parse_frontmatter,
     parse_status,
     run_extraction,
@@ -149,17 +149,21 @@ def _make_concept_dir(
     concept_dir.mkdir(exist_ok=True)
 
     if with_analysis:
+        # Map legacy `confinement` text (e.g. "IFE (Inertial Fusion Energy)") to
+        # the enum value Item 6 frontmatter expects.
+        family_key = confinement.strip().split()[0].upper() if confinement else "NONSTANDARD"
         (concept_dir / "analysis.md").write_text(
             f"---\nID: {concept_id}-test-concept\n"
-            f"Concept: {name}\nCompany: {company}\nStatus: {status}\n---\n\n"
-            f"**Confinement Family**: {confinement}\n\nSome analysis text.\n",
+            f"Concept: {name}\nCompany: {company}\nStatus: {status}\n"
+            f"Confinement-Family: {family_key}\n---\n\n"
+            f"Some analysis text.\n",
             encoding="utf-8",
         )
 
     if with_model_setup:
         # Stub — patched in tests via load_module_from_path
         (concept_dir / "model_setup.py").write_text(
-            "# stub — patched in tests\nmodel = None\nresult = None\n",
+            "# stub — patched in tests\nmodel = None\nresult_1gw = None\n",
             encoding="utf-8",
         )
 
@@ -218,21 +222,23 @@ class TestParseFrontmatter:
         assert parse_frontmatter(p) == {}
 
 
-class TestParseConfinementFamily:
+class TestToConfinementFamily:
     @pytest.mark.parametrize(
-        "line,expected",
+        "raw,expected",
         [
-            ("**Confinement Family**: MFE — Tokamak", ConfinementFamily.MFE),
-            ("**Confinement Family**: IFE (Inertial Fusion Energy)", ConfinementFamily.IFE),
-            ("**Confinement Family**: MIF (Magneto-Inertial Fusion)", ConfinementFamily.MIF),
-            ("**Confinement Family**: Other (Acoustic)", ConfinementFamily.NONSTANDARD),
-            ("No family line at all", ConfinementFamily.NONSTANDARD),
+            ("MFE", ConfinementFamily.MFE),
+            ("IFE", ConfinementFamily.IFE),
+            ("MIF", ConfinementFamily.MIF),
+            ("NONSTANDARD", ConfinementFamily.NONSTANDARD),
+            ("mfe", ConfinementFamily.MFE),  # case-insensitive
+            (" IFE ", ConfinementFamily.IFE),  # strip
+            ("BOGUS", ConfinementFamily.NONSTANDARD),  # unknown → fallback
+            (None, ConfinementFamily.NONSTANDARD),  # missing → fallback
+            ("", ConfinementFamily.NONSTANDARD),
         ],
     )
-    def test_extraction(self, tmp_path: Path, line: str, expected: ConfinementFamily) -> None:
-        p = tmp_path / "analysis.md"
-        p.write_text(f"---\n---\n{line}\n")
-        assert parse_confinement_family(p) == expected
+    def test_mapping(self, raw: Any, expected: ConfinementFamily) -> None:
+        assert _to_confinement_family(raw) == expected
 
 
 class TestParseStatus:
@@ -257,7 +263,7 @@ class TestExtractCostingfe:
         result = _make_forward_result()
         model = _make_mock_model()
         concept_dir = _make_concept_dir(tmp_path, with_model_setup=True)
-        mock_module = types.SimpleNamespace(model=model, result=result)
+        mock_module = types.SimpleNamespace(model=model, result_1gw=result)
 
         with patch(
             "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
@@ -284,7 +290,7 @@ class TestExtractCostingfe:
         result = _make_forward_result()
         model = _make_mock_model()
         concept_dir = _make_concept_dir(tmp_path)
-        mock_module = types.SimpleNamespace(model=model, result=result)
+        mock_module = types.SimpleNamespace(model=model, result_1gw=result)
 
         with patch(
             "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
@@ -309,7 +315,7 @@ class TestExtractCostingfe:
         result = _make_forward_result()
         model = _make_mock_model()
         concept_dir = _make_concept_dir(tmp_path)
-        mock_module = types.SimpleNamespace(model=model, result=result)
+        mock_module = types.SimpleNamespace(model=model, result_1gw=result)
 
         with patch(
             "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
@@ -329,13 +335,33 @@ class TestExtractCostingfe:
 
     def test_missing_model_attribute_raises(self, tmp_path: Path) -> None:
         concept_dir = _make_concept_dir(tmp_path)
-        mock_module = types.SimpleNamespace()  # no model/result
+        mock_module = types.SimpleNamespace()  # no model/result_1gw
 
         with patch(
             "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
             return_value=mock_module,
         ):
-            with pytest.raises(ExtractionError, match="module-level 'model' and 'result'"):
+            with pytest.raises(ExtractionError, match="module-level 'model'"):
+                extract_costingfe(
+                    concept_dir=concept_dir,
+                    concept_id="04",
+                    frontmatter={},
+                    analysis_path=concept_dir / "analysis.md",
+                    narrative=None,
+                    param_metadata={},
+                )
+
+    def test_missing_result_1gw_raises(self, tmp_path: Path) -> None:
+        """Concept exposing `model` but no `result_1gw` is a contract violation."""
+        model = _make_mock_model()
+        concept_dir = _make_concept_dir(tmp_path)
+        mock_module = types.SimpleNamespace(model=model)  # no result_1gw
+
+        with patch(
+            "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
+            return_value=mock_module,
+        ):
+            with pytest.raises(ExtractionError, match="result_1gw missing"):
                 extract_costingfe(
                     concept_dir=concept_dir,
                     concept_id="04",
@@ -350,7 +376,7 @@ class TestExtractCostingfe:
         result = _make_forward_result()
         model = _make_mock_model()
         concept_dir = _make_concept_dir(tmp_path)
-        mock_module = types.SimpleNamespace(model=model, result=result)
+        mock_module = types.SimpleNamespace(model=model, result_1gw=result)
 
         with patch(
             "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
@@ -378,7 +404,7 @@ class TestExtractCostingfe:
         result = _make_forward_result()
         model = _make_mock_model()
         concept_dir = _make_concept_dir(tmp_path)
-        mock_module = types.SimpleNamespace(model=model, result=result)
+        mock_module = types.SimpleNamespace(model=model, result_1gw=result)
 
         yaml_override = {
             "availability": ParameterMetadata(
@@ -418,7 +444,7 @@ class TestExtractCostingfe:
         result = _make_forward_result()
         model = _make_mock_model()
         concept_dir = _make_concept_dir(tmp_path)
-        mock_module = types.SimpleNamespace(model=model, result=result)
+        mock_module = types.SimpleNamespace(model=model, result_1gw=result)
 
         with patch(
             "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
@@ -534,7 +560,7 @@ class TestDisplayRegistry:
         result = _make_forward_result()
         model = _make_mock_model()
         concept_dir = _make_concept_dir(tmp_path)
-        mock_module = types.SimpleNamespace(model=model, result=result)
+        mock_module = types.SimpleNamespace(model=model, result_1gw=result)
 
         # Per-concept yaml provides a full ParameterMetadata for availability
         per_concept = {
@@ -716,7 +742,7 @@ class TestRoutingDetection:
 
         result = _make_forward_result()
         model = _make_mock_model()
-        mock_module = types.SimpleNamespace(model=model, result=result)
+        mock_module = types.SimpleNamespace(model=model, result_1gw=result)
 
         with patch(
             "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
@@ -840,6 +866,87 @@ class TestRoutingDetection:
         assert "availability" in concept.cost_model.sensitivities.engineering
         assert concept.cost_model.sensitivities.engineering["availability"].elasticity == pytest.approx(0.75)
         assert concept.cost_model.sensitivities.engineering["availability"].baseline == pytest.approx(0.85)
+
+
+# ---------------------------------------------------------------------------
+# FR-A4: warn-and-tolerate when model_setup.py present but analysis.md absent
+# ---------------------------------------------------------------------------
+
+
+class TestEmptyFrontmatterWarning:
+    """The 12 old-shape concepts (PR #39 refreshed model_setup.py but did not
+    produce analysis.md). Extraction tolerates them with a single UserWarning
+    that names the fields that fell back to defaults.
+    """
+
+    def test_warns_on_missing_analysis_md(self, tmp_path: Path) -> None:
+        analyses_dir = tmp_path / "analyses"
+        analyses_dir.mkdir()
+        concept_dir = analyses_dir / "04-old-shape-concept"
+        concept_dir.mkdir()
+        # model_setup.py present, analysis.md absent — the old-shape case.
+        (concept_dir / "model_setup.py").write_text(
+            "from costingfe.model import CostModel\n"
+            "model = CostModel()\nresult_1gw = model.forward()\n",
+            encoding="utf-8",
+        )
+
+        result = _make_forward_result()
+        model = _make_mock_model()
+        mock_module = types.SimpleNamespace(model=model, result_1gw=result)
+
+        with patch(
+            "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
+            return_value=mock_module,
+        ):
+            with pytest.warns(UserWarning, match=r"04:.*no analysis\.md.*defaulted"):
+                run_extraction(
+                    analyses_dir=analyses_dir,
+                    data_dir=tmp_path / "data",
+                    skip_narrative=True,
+                )
+
+        # Extraction still produces a JSON with safe defaults.
+        data = json.loads((tmp_path / "data" / "04.json").read_text())
+        assert data["concept_id"] == "04"
+        assert data["confinement_family"] == "NONSTANDARD"
+        # name falls back to the directory name
+        assert data["name"] == "04-old-shape-concept"
+
+    def test_no_warning_when_analysis_md_present(self, tmp_path: Path) -> None:
+        """Sanity: the warning fires only for the empty-frontmatter case."""
+        analyses_dir = tmp_path / "analyses"
+        analyses_dir.mkdir()
+        concept_dir = _make_concept_dir(
+            analyses_dir, concept_id="01", with_model_setup=False, with_analysis=True
+        )
+        (concept_dir / "model_setup.py").write_text(
+            "from costingfe.model import CostModel\n"
+            "model = CostModel()\nresult_1gw = model.forward()\n",
+            encoding="utf-8",
+        )
+
+        result = _make_forward_result()
+        model = _make_mock_model()
+        mock_module = types.SimpleNamespace(model=model, result_1gw=result)
+
+        with patch(
+            "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
+            return_value=mock_module,
+        ):
+            with warnings.catch_warnings(record=True) as caught:
+                warnings.simplefilter("always")
+                run_extraction(
+                    analyses_dir=analyses_dir,
+                    data_dir=tmp_path / "data",
+                    skip_narrative=True,
+                )
+
+        old_shape_warnings = [
+            w for w in caught
+            if "no analysis.md" in str(w.message)
+        ]
+        assert old_shape_warnings == []
 
 
 # ---------------------------------------------------------------------------
@@ -1010,7 +1117,7 @@ class TestParameterMetadataWarning:
         result = _make_forward_result()
         model = _make_mock_model()
         concept_dir = _make_concept_dir(tmp_path)
-        mock_module = types.SimpleNamespace(model=model, result=result)
+        mock_module = types.SimpleNamespace(model=model, result_1gw=result)
 
         with patch(
             "exploration.concept_explorer.extract_explorer_data.load_module_from_path",

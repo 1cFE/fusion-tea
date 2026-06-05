@@ -1,133 +1,51 @@
-Large-Scale Stellarator (Gauss Fusion GIGA) — 1 GWe, 88% CF, 40 yr
-LCOE: 212.9 $/MWh | Overnight: 18374 $/kW
-Fusion: 3402 MW | Net: 1000 MW | Q_eng: 4.20
+warning: `VIRTUAL_ENV=C:\Users\mallo\AppData\Local\Python\pythoncore-3.14-64` does not match the project environment path `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv` and will be ignored; use `--active` to target the active environment instead
+LCOE: 259.3 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 259.3 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 259.3 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 21047 $/kW   native 21047 $/kW   1 GWe 21047 $/kW
 
-Code     Account                                M$
---------------------------------------------------
-CAS10    Preconstruction                      18.5
-CAS21    Buildings                           997.0
-CAS22    Reactor Plant Equipment            7786.4
-CAS23    Turbine Plant                       259.4
-CAS24    Electrical Plant                    110.5
-CAS25    Miscellaneous                        67.2
-CAS26    Heat Rejection                       44.8
-CAS27    Special Materials                   200.0
-CAS28    Digital Twin                          5.0
-CAS29    Contingency                           0.0
-CAS30    Indirect Costs                     3156.8
-CAS40    Owner's Costs                        39.0
-CAS50    Supplementary                       613.8
-CAS60    IDC                                5075.2
-CAS70    O&M (annualized)                    260.7
-CAS80    Fuel (annualized)                     2.0
-CAS90    Financial                          1378.2
---------------------------------------------------
-         Total Capital                     18373.6
+CAS               generic           native            1 GWe
+--------------------------------------------------------
+CAS10                18.5             18.5             18.5
+CAS21               644.8            644.8            644.8
+CAS22             12833.6          12833.6          12833.6
+CAS23               241.2            241.2            241.2
+CAS24               102.7            102.7            102.7
+CAS25                62.5             62.5             62.5
+CAS26               104.2            104.2            104.2
+CAS27                15.0             15.0             15.0
+CAS28                 5.0              5.0              5.0
+CAS29                 0.0              0.0              0.0
+CAS30              2801.8           2801.8           2801.8
+CAS40                39.0             39.0             39.0
+CAS50               785.3            785.3            785.3
+CAS60              3393.3           3393.3           3393.3
+CAS70               351.0            351.0            351.0
+CAS80                 0.8              0.8              0.8
+CAS90              1578.7           1578.7           1578.7
+--------------------------------------------------------
+TOTAL             21047.0          21047.0          21047.0
 
-CAS22 Sub-allocation (assumed; no published CAS breakdown for GIGA):
-  Coil system (C220103)                   2595.5 M$  (40% of base CAS22)
-  Blanket/VV (C220101+C220106) base       2595.5 M$  (40% of base)
-  Blanket complexity ×1.5 penalty         1297.7 M$  (added cost from 3D geometry)
-  Blanket/VV adjusted                     3893.2 M$
-  Other sub-accounts                      1297.7 M$  (20% of base)
-  CAS22 total (overridden)                7786.4 M$
-
-============================================================
-Key Assumptions
-============================================================
-  FOAK capital:            €16.5B (midpoint of €15–18B stated range)
-  EUR/USD:                 1.10 (assumed)
-  NOAK fraction (central): 55% of FOAK overnight
-  NOAK overnight (central): $9.98B = $10/kWe
-  CAS22 / overnight:       65% (assumed allocation)
-  Blanket complexity mult: 1.5× (central; range 1.0–2.5)
-  eta_th (gross):          35.0%  [UNCERTAIN: HCPB assumption; DCLL ~40%]
-  p_cryo:                  90 MW  [UNCERTAIN: WISTELL-D analog lower bound]
-  p_input (ECRH):          75 MW  [UNCERTAIN: profile control only]
-  Availability:            88%    [Helios analog; GIGA-specific undisclosed]
-  Blanket type:            HCPB assumed (blocking gap; DCLL alternative)
-
-============================================================
-Sensitivity 1: Engineering and Financial Elasticities
-(Elasticity = %%LCOE / %%param, with CAS22 overridden = 0 gradient)
-============================================================
-
-Engineering levers:
-  availability                 -0.8939
-  construction_time_yr         +0.5319
-  R0                           +0.0935
-  elon                         +0.0935
-  blanket_t                    +0.0786
-  plasma_t                     +0.0714
-  eta_th                       -0.0626
-  eta_pin                      -0.0227
-  p_input                      +0.0226
-  p_cryo                       +0.0136
-  fuel_recovery                -0.0110
-  f_sub                        +0.0059
-  p_cool                       +0.0023
-  p_trit                       +0.0015
-  mn                           -0.0010
-  burn_fraction                -0.0006
-  p_house                      +0.0006
-  p_coils                      +0.0005
-  p_pump                       +0.0002
-  eta_p                        -0.0000
-  ht_shield_t                  +0.0000
-  structure_t                  +0.0000
-  vessel_t                     +0.0000
-  B                            +0.0000
-  T_e                          +0.0000
-  n_e                          +0.0000
-  Z_eff                        +0.0000
-  plasma_volume                +0.0000
-  R_w                          +0.0000
-  T_edge                       +0.0000
-  tau_ratio                    +0.0000
-
-Financial:
-  interest_rate                +0.9340
-  inflation_rate               +0.0321
-
-============================================================
-Sensitivity 2: NOAK Fraction Sweep (H1 — primary LCOE lever)
-  blanket_complexity_multiplier fixed at 1.5×
-============================================================
-  noak_fraction      NOAK $/kWe     CAS22 M$   LCOE $/MWh
-  ------------------------------------------------------
-  0.40                     7260         5663        173.5
-  0.45                     8168         6371        186.6
-  0.50                     9075         7079        199.7
-  0.55                     9983         7786        212.9 ← central
-  0.60                    10890         8494        226.0
-  0.65                    11798         9202        239.1
-  0.70                    12705         9910        252.2
-
-============================================================
-Sensitivity 3: Blanket Complexity Multiplier Sweep (F-2 finding)
-  noak_fraction fixed at 55%
-  Range: 1.0 (tokamak-equivalent) → 2.5 (extreme 3D geometry premium)
-  Applied to blanket/VV sub-component (40% of base CAS22)
-============================================================
-  multiplier         CAS22 M$   blanket M$   LCOE $/MWh
-  ----------------------------------------------------
-  1.00                   6489         2595        188.8
-  1.25                   7137         3244        200.8
-  1.50                   7786         3893        212.9 ← central
-  1.75                   8435         4542        224.9
-  2.00                   9084         5191        236.9
-  2.25                   9733         5840        248.9
-  2.50                  10382         6489        260.9
-
-============================================================
-Sensitivity 4: Capacity Factor Sweep (H3 — steady-state advantage)
-  noak_fraction=55%, blanket_complexity_mult=1.5×
-  Lower bound (pulsed tokamak analog) → Helios 88% upper anchor
-============================================================
-  availability     LCOE $/MWh  note
-  --------------------------------------------------
-  0.75                  244.2  pulsed tokamak lower bound
-  0.80                  231.2  pulsed tokamak upper bound
-  0.85                  218.9  GIGA conservative
-  0.88                  212.9  Helios analog (central)
-  0.90                  208.6  GIGA optimistic
+--- CAS22 sub-account detail (overrides marked) ---
+code            generic       native        1 GWe  flag
+C220000         12833.6      12833.6      12833.6
+C220101          1876.8       1876.8       1876.8
+C220102          1110.5       1110.5       1110.5
+C220103          6771.6       6771.6       6771.6
+C220104           375.0        375.0        375.0
+C220105            84.2         84.2         84.2
+C220106           292.6        292.6        292.6
+C220106_pump          0.8          0.8          0.8
+C220106_vessel        291.9        291.9        291.9
+C220107            92.0         92.0         92.0
+C220108           104.8        104.8        104.8
+C220109             0.0          0.0          0.0
+C220110           165.7        165.7        165.7
+C220111          1522.3       1522.3       1522.3
+C220112             0.0          0.0          0.0
+C220200           203.6        203.6        203.6
+C220300            19.2         19.2         19.2
+C220400             6.0          6.0          6.0
+C220500           120.0        120.0        120.0
+C220600            11.5         11.5         11.5
+C220700            77.7         77.7         77.7

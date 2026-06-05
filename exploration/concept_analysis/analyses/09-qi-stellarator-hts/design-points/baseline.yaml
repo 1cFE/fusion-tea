@@ -1,0 +1,27 @@
+proposal:
+  concept_id: 09-qi-stellarator-hts
+  design_name: "Stellaris commercial plant concept (Proxima Fusion, FED Vol. 214, 2025)"
+  maturity_tier: paper-concept
+  grounding_confidence: high
+  p_native_mwe: 1000
+  primary_sources:
+    - knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
+    - knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/proxima-fusion-2026-updates.md
+    - knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/proxima-fusion-technology-page.md
+  selection_rationale: |
+    Stellaris (Proxima Fusion, FED Vol. 214, May 2025) is the only design in Proxima's portfolio with
+    a published net electrical output. Table 3 of the paper explicitly states "Peak electric power ~1000 MW,"
+    which combined with the ~3300 MW peak thermal power and the dossier-confirmed ~32% net/thermal
+    efficiency anchors P_native at 1000 MWe. The paper is a peer-reviewed comprehensive engineering
+    study covering EM design, first wall, blanket, neutronics, divertor, magnet quench, support structures,
+    and remote maintenance — the most thoroughly documented QI stellarator commercial plant study from a
+    private company as of 2025. Alpha, the only other plasma device in the portfolio, is a Q>1
+    demonstration device with no stated electrical output and is thus not an eligible design point.
+  alternatives_considered:
+    - design: "Alpha demonstration stellarator (Q>1 demo, ~2031, Garching)"
+      reason_rejected: no electrical output by design — explicitly a Q>1 physics demonstrator, not a power-generating device
+      sensitivity_implication: "Alpha has no P_native and cannot drive a 1 GWe projection. If Proxima
+        publishes a net electrical specification for Alpha in a pilot-plant scenario (e.g. 50–200 MWe
+        partial power operation), that would introduce a lower-P_native alternative → substantially more
+        modules at 1 GWe → 1 GWe LCOE would shift up materially. Worth revisiting if Alpha
+        specifications emerge toward 2027–2028."

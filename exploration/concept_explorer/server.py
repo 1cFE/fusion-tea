@@ -156,7 +156,7 @@ def _forward_with_overrides(
         net_electric_mw=float(params["net_electric_mw"]),
         availability=float(params["availability"]),
         lifetime_yr=float(params["lifetime_yr"]),
-        n_mod=int(float(params.get("n_mod", 1))),
+        n_mod=float(params.get("n_mod", 1)),
         construction_time_yr=float(params.get("construction_time_yr", 6.0)),
         interest_rate=float(params.get("interest_rate", 0.07)),
         inflation_rate=float(params.get("inflation_rate", 0.02)),
@@ -550,11 +550,14 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
         model = getattr(module, "model", None)
         if model is None:
             raise ImportError(f"Module {model_setup} does not define 'model'")
-        result = getattr(module, "result", None)
-        if result is None:
-            raise ImportError(f"Module {model_setup} does not define 'result'")
+        result_1gw = getattr(module, "result_1gw", None)
+        if result_1gw is None:
+            raise ImportError(
+                f"Module {model_setup} does not define 'result_1gw' at module level. "
+                "See rework epic Items 10/11."
+            )
 
-        new_result = _forward_with_overrides(model, result.params, dict(overrides_frozen))
+        new_result = _forward_with_overrides(model, result_1gw.params, dict(overrides_frozen))
 
         raw: dict[str, Any] = dataclasses.asdict(new_result)
         params_dict: dict[str, Any] = raw.get("params", {})

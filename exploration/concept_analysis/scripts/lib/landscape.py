@@ -7,8 +7,20 @@ from lib.paths import ANALYSES_DIR
 from lib.state import get_concept_state, get_extraction_state, get_iteration_summary
 
 
-# Columns to exclude from the landscape table (internal infrastructure)
-_EXCLUDE_COLUMNS = {"Research ID", "_id", "_num", "_research_id"}
+# Columns to exclude from the landscape table (internal infrastructure).
+# The legacy-table path contributes the first set; the ConceptRecord path
+# (load_concepts) contributes the snake_case canonical + structural keys, so the
+# landscape renders the legacy display aliases (Concept Name / Company /
+# Confinement Family) rather than duplicating them or trying to stringify the
+# nested `comparables` (list) / `design_point` (dict) fields.
+_EXCLUDE_COLUMNS = {
+    "Research ID", "_id", "_num", "_research_id",
+    # ConceptRecord canonical storage + structural fields:
+    "concept_id", "concept_num", "research_id", "concept_name", "company",
+    "confinement_family", "confinement_subfamily", "fuel", "driver_class",
+    "conversion_path", "fit_grade", "archetype_enum", "fuel_enum",
+    "fit_rationale", "comparables", "design_point", "in_freeform_routes",
+}
 
 
 def build_concept_landscape(
@@ -101,7 +113,9 @@ def _render_table(rows: list[dict], tax_cols: list[str], show_iterations: bool) 
 
     for r in rows:
         c = r["concept"]
-        vals = [c.get(col, "") for col in tax_cols]
+        # Coerce to str — records may carry non-string values under excluded
+        # keys, and defensive stringification keeps the table render crash-proof.
+        vals = [str(c.get(col, "")) for col in tax_cols]
         if show_iterations:
             vals.append(r["iter_summary"])
         vals.append(ext_symbols.get(r["ext_state"], ""))

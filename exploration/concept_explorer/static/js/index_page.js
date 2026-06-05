@@ -100,6 +100,21 @@
     const familyBadge = el("span", { class: familyInfo.cls }, familyInfo.label);
     meta.appendChild(familyBadge);
 
+    if (entry.asterisk_in_comparison) {
+      const marker = el(
+        "span",
+        {
+          class: "low-grounding-marker",
+          title:
+            "Low grounding: design-point rests on company-stated or single-source " +
+            "numbers — interpret the cost number with caution.",
+          "aria-label": "Low-grounding design point",
+        },
+        "⚠",
+      );
+      meta.appendChild(marker);
+    }
+
     if (entry.company != null) {
       meta.appendChild(el("span", { class: "concept-card__company" }, entry.company));
     }

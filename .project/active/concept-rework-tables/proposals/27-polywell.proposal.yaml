@@ -1,0 +1,21 @@
+proposal:
+  concept_id: 27-polywell
+  route_to_freeform: true
+  reason: |
+    The Park et al. (2025) reactor design (arXiv:2508.06761) is the only reactor-scale Polywell
+    document and gives fusion power (~980 MW at γ=0.1) and plasma gain Q=10.5, but does not
+    state a net electrical output anywhere in the paper. Reaching a P_native requires adding
+    thermal efficiency (no blanket, coolant, or thermodynamic cycle is specified in the paper)
+    and beam supply efficiency (also absent) — both are MFE-analogue assumptions not traceable
+    to any company source or company-cited paper. The FPNS device (350 kW fusion, 5–6 MW ion
+    beam input) is a neutron-production facility with no electrical output by design. The
+    informal "~100 MW of fusion energy" remark in the TheFusionReport 2025 interview refers to
+    fusion thermal power for a notional ~2 m coil system, not electrical output, and carries no
+    engineering architecture. No Polywell design in the source portfolio states a P_native.
+  designs_considered:
+    - design: "Park et al. (2025) 1.6 m Polywell Q=10 D-T reactor (arXiv:2508.06761, Section 4)"
+      reason_no_p_native: "Physics scaling study; states fusion power (980 MW, γ=0.1 free parameter) and input power (78 MW) but specifies no power conversion system, thermal cycle, blanket type, or net electrical output — deriving P_native requires adding two unspecified parameters (thermal efficiency, beam supply efficiency) with no anchor in any source"
+    - design: "EMC2 FPNS — Fusion Prototypic Neutron Source (2023 DOE program proposal, SHINE Technologies partnership)"
+      reason_no_p_native: "Neutron-source device by design; 350 kW fusion power; no electrical generation intended or described"
+    - design: "Informal ~100 MW fusion estimate (TheFusionReport 2025 interview, Dave Mansfield / EMC2)"
+      reason_no_p_native: "Refers to fusion (thermal) power for a notional ~2 m coil system; journalist paraphrase with no engineering architecture; does not constitute an electrical design point"

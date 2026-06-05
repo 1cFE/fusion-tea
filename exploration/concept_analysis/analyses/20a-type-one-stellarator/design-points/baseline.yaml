@@ -1,0 +1,31 @@
+proposal:
+  concept_id: 20a-type-one-stellarator
+  design_name: "Infinity Two fusion pilot power plant (Hegna et al. 2025, J. Plasma Phys. special issue)"
+  maturity_tier: proposed-commercial
+  grounding_confidence: high
+  p_native_mwe: 350
+  primary_sources:
+    - knowledge/concept_research/20a-type-one-stellarator/iter-01/sources/typeoneenergy-type-one-energy-issues-first-realistic/output.md
+    - knowledge/concept_research/20a-type-one-stellarator/iter-01/sources/cambridge-core-journals-journal-of-plasma-physics-article/output.md
+    - knowledge/concept_research/20a-type-one-stellarator/iter-01/sources/cambridge-core-services-aop-cambridge-core-content-view/output.md
+  selection_rationale: |
+    Infinity Two is Type One Energy's only published commercial design and the only design
+    in the portfolio with a stated P_native. The 350 MWe net figure is stated directly by
+    the company press release and confirmed in the JPP overview paper ("nominal 350 MWe
+    Infinity Two fusion power plant") and the TVA Cooperative Agreement language. The
+    design is a single machine with a single published operating point (800 MW DT fusion,
+    R=12.5 m, B=9 T, HCPB blanket); no multi-phase variants or alternative operating
+    cases are published. The only other device in the portfolio — Infinity One — is a
+    sub-scale validation machine with no electrical output by design and therefore does
+    not qualify as a design point.
+  alternatives_considered:
+    - design: "Infinity One (sub-scale validation stellarator)"
+      reason_rejected: no electrical output by design; purpose is physics validation for Infinity Two
+      sensitivity_implication: >
+        Infinity One has no P_native and cannot serve as a design point; picking it would
+        force a freeform route with no cost projection possible. This is not a sensitivity
+        branch — it is a categorical exclusion. The relevant sensitivity question is whether
+        Infinity Two's 350 MWe figure shifts if Type One Energy publishes a revised commercial
+        design following Infinity One validation results; if the validated operating point
+        differs materially from the 2025 physics basis, P_native could rise or fall, shifting
+        n_mod and 1 GWe LCOE accordingly. Worth revisiting after 2029 Infinity One results.

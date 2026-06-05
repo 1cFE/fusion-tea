@@ -1,71 +1,137 @@
-# 1costingfe Model Update: Laser ICF - Nanostructured Target (p-B11)
+# 1costingfe Model Update: Laser ICF Nanostructured Target (Marvel Fusion)
 
 ## Mode: Feedback Pass (Edit Existing Model)
 
-An existing model from a prior iteration has been copied to `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/23-laser-icf-nanostructured-target/iter-2/model_setup.py`.
+An existing three-forward model from a prior iteration has been copied to `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\23-laser-icf-nanostructured-target\iter-2\model_setup.py`.
 
-**Your task**: Read the existing model at `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/23-laser-icf-nanostructured-target/iter-2/model_setup.py` and apply targeted edits based on the assessment findings below. Use the Edit tool to make changes — do NOT rewrite the file from scratch.
+**Your task**: Read the existing model at `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\23-laser-icf-nanostructured-target\iter-2\model_setup.py` and apply
+**targeted edits** based on the assessment findings below. Use the Edit tool — do
+NOT rewrite the file from scratch, and do NOT restructure conforming code.
+
+## Preserve the three-forward contract
+
+The file already follows the canonical shape; keep it:
+1. `spec` dict (design-point inputs only) + `P_native`
+2. `model = CostModel(...)`
+3. `generic = generic_reference(model, spec, P_native)` — the mandatory
+   overrides-off forward (forward 1), the reference a relative override is written against
+4. `overrides = [ ... ]` — six-field registry entries
+5. `native, result_1gw = run_native_and_1gw(model, spec=spec, overrides=overrides, p_native=P_native)`
+
+with `model`, `generic`, `native`, `result_1gw` at module level and the
+`print_cas_breakdown(generic, native, result_1gw, overrides)` call retained. Do
+not convert the helper call into an inline two-knob `forward()` (the contract
+validator rejects it), do not drop the mandatory `generic` line, and do not
+re-introduce `# DEFAULT:` comments or the uniform financial parameters
+(`availability`, `lifetime_yr`, `interest_rate`, `inflation_rate`) into `spec`.
+**Do not re-introduce power-conversion efficiencies (`eta_th`, `eta_de`,
+`eta_dec`) into `spec`** — these are ENUM-driven; the way to express a
+different value is to add an upstream ENUM member in costingfe, not a per-
+concept override. `f_dec` (DEC fraction) MAY appear in `spec` with provenance —
+it's a physics+architecture property, not a hardware-efficiency claim.
+A relative override references `generic` (never `native` or `result_1gw`).
+
+**Low archetype-fit concepts: do not empty `spec`.** When the frontmatter
+declares `Archetype-Fit: Low`, the prior model may still have a populated `spec`
+expressing the concept's actual geometry / physics using canonical kwargs (even
+where the archetype isn't a perfect cost match). **Preserve those entries** and
+only edit specific fields if a finding calls for it. Replacing a populated
+low-fit `spec` with `spec = dict()` is a regression — the library would fall
+back to pure archetype YAML defaults that carry zero signal for this concept's
+actual machine. Cost-side overrides (the registry below) are where the "Low
+fit" caveat properly lives.
+
+**Archetype-specific spec key blocklist (library-bug workarounds).** Until library issues are
+fixed, some spec keys must not be passed for specific archetypes — even when the published design
+point has a value for them. If the prior model contains any of these keys in `spec`, **remove
+them** as part of this edit:
+- **DIPOLE**: remove `plasma_volume` if present. The MFE radiation calc treats `plasma_volume`
+  as a uniform integrator and over-counts radiation for dipole-peaked profiles. Library issue:
+  **1cFE/1costingfe#24**. Document the removal with a brief comment citing the issue.
+
+**Override values are M$, never raw dollars** (validator rejects `|value| > 5e4`).
+**Derived rollup accounts cannot be overridden**: C220111, C220000, C220100,
+C220200, C220300, C220400, C220500, C220600, C220700. To express "this concept
+assembles more simply," override `installation_frac` via `costing_overrides`,
+not the C220111 dollar amount.
+**Disabled overrides must carry a `blocked_by` field** matching `<org>/<repo>#<NN>`
+(e.g. `"1cFE/1costingfe#42"`) so library-side findings route to a tracker
+instead of dying in the rationale text.
+**Every override must declare `cost_basis: "noak"` (strict).** The framework runs
+`noak=True`; any other vintage (`foak`, `conceptual_design`, `vendor_target`,
+`unspecified`) is rejected. If your source publishes a non-NOAK value, either
+(a) disable + `blocked_by`, (b) apply a documented learning-curve adjustment in
+`rationale` and declare `cost_basis: "noak"`, or (c) file a tracker issue.
 
 **Rules**:
-- Preserve ALL existing sweeps, scenarios, parameters, and sensitivity analyses unless a finding specifically says to change them
-- Maintain the existing code structure and organization
-- Add new content incrementally — do not restructure working code
-- Every change must be traceable to a specific finding or a direct consequence of one
+- Preserve all existing sweeps, scenarios, and sensitivity analyses unless a
+  finding specifically says to change them.
+- Add content incrementally; every change must be traceable to a specific finding
+  or a direct consequence of one.
+- Any override you add or change uses a **canonical** account code (schema below)
+  and the six-field shape; keep `provenance` honest and show derivation arithmetic
+  in `rationale`.
 
 
 ## Assessment Findings
 
-The following findings were raised by the assessor. Focus on findings tagged `Category: model`. Findings tagged `Category: analysis` are informational — they describe prose changes the analysis agent is handling. You may still adjust model parameters if an analysis finding implies the model's assumptions are wrong.
+Focus on findings tagged `Category: model`. Findings tagged `Category: analysis`
+are informational (the analysis agent handles prose), but you may adjust model
+parameters if an analysis finding implies the model's assumptions are wrong.
 
-### F-1: NIF optics damage data fills documented Gap #9 with available analogue
-- **Target:** Section 5 (Missing Parameters table, row: "Laser optic replacement rate at 10 Hz PW class") and Section 6 (Gap #9)
-- **Category:** analysis
-- **Finding:** Section 6, Gap #9 lists "Laser optic damage and replacement rate at 10 Hz petawatt class" as not-yet-sourced, and explicitly recommends "NIF Annual Report optic damage sections; LLNL laser optics literature (imperfect analogue)." The new source osti-servlets-purl-1400089 (LLNL-TR-739796, 2017) is exactly that literature: it reports ~2,000 optic replacements per year and ~$5.6M additional annual operational cost when scaling NIF from 1.8 MJ to 2.6 MJ single-shot operations. This is the best available published analogue for laser IFE optics lifecycle cost, despite the regime difference (MJ nanosecond single-shot vs. 100 J femtosecond 10 Hz).
-- **Recommendation:** Update Section 5 to add a row in the Missing Parameters table (or a new analogue row): NIF optics replacement cost analogue: ~2,000 replacements/year, ~$5.6M/year additional O&M, at 2.6 MJ per shot single-shot. Add a brief note quantifying why this analogue is imperfect: Marvel's per-shot energy is ~4 orders of magnitude lower (100 J vs. 2.6 MJ) but cumulative annual fluence on optics may be comparable or higher at 10 Hz continuous. Update Section 6 Gap #9 status from "not-yet-sourced" to "analogue available: LLNL-TR-739796" and note the analogue limitations. This converts an unresolvable gap into a bounded uncertainty.
-- **Priority:** important
-
-### F-2: Laser IFE has structural physics advantages over p-B11 MFE — absent from cross-concept comparison
-- **Target:** Section 7 (Cross-Concept Notes)
-- **Category:** analysis
-- **Finding:** Section 7 currently compares the p-B11 laser IFE concept only against D-T laser IFE and against HB11 vs. Marvel. It does not compare against the p-B11 MFE route, which is the most direct alternative within the same fuel cycle. The new source arxiv-2201-12818 (published Fusion Science and Technology, 2021) provides a quantified physics analysis of tokamak-based p-B11 fusion and identifies two structural blockers that are absent from the laser IFE approach: (1) synchrotron radiation reduces Q from 4.14 to 0.84 when wall reflectivity is 0.95 — an ~80% loss that the paper concludes makes the tokamak p-B11 reactor "not come true unless some techniques have been found to avoid excessive synchrotron radiation loss"; and (2) helium ash accumulation at breakeven parameters drives helium ion density to ~9.5×10²⁰ m⁻³, equaling or exceeding the fuel ion density within 5–50 seconds, requiring helium confinement time strictly less than energy confinement time (inverse of all fusion experience). Both of these blockers are absent from laser IFE: femtosecond pulses at ultrashort timescales do not rely on strong external magnetic fields (no synchrotron penalty), and each shot produces and destroys a fresh plasma target so helium ash cannot accumulate between shots. These are not minor advantages — the tokamak paper's own analysis shows p-B11 MFE is not viable with any existing or near-term confinement technology at realistic wall reflectivity. Goal 1 (Concept Positioning) and Goal 2 (Key Differentiators) are partially unmet because the analysis does not explain why laser confinement is the viable pathway for p-B11 where magnetic confinement is not.
-- **Recommendation:** Add a subsection to Section 7: "Comparison with p-B11 MFE (tokamak/mirror routes)." Summarize the synchrotron radiation Q-kill (80% loss at η_w = 0.95) and the helium ash accumulation problem from the 2021 physics paper. Explain that laser IFE avoids both: no strong static magnetic field means no synchrotron emission penalty, and the pulsed fresh-target approach means helium produced in one shot does not contaminate the next. Frame this as a key structural reason why laser IFE (not magnetic confinement) is the appropriate confinement strategy for p-B11 fuel — this explains the concept's positioning within the IFE family and why the physics risk profile is fundamentally different from HB11 concept 04 being pursued via any MFE route.
-- **Priority:** important
-
----
-
-## Carried-Forward Assessment Findings
-
-The following findings were flagged by the prior assessment but have not yet been addressed (they were carried forward across a source-integration pass). Address these alongside the source-integration findings above.
-
-### F-1: Direct energy conversion efficiency disconnected from model
-- **Target:** Section 2 (Challenge 3) and model sensitivity sweep (eta_dec)
+### F-1: Absolute overrides on C220104 and C220108 are sized at 100 MWe and do not scale to 1 GWe, understating the projected LCOE
+- **Target:** model_setup.py overrides list (C220104, C220108)
 - **Category:** model
-- **Finding:** The analysis dedicates an entire Section 2 challenge to hybrid direct energy conversion, calling it a "first-order LCOE lever" that "roughly doubles" net electrical output (35% steam vs 70% Marvel hybrid target). However, the model sensitivity table shows `eta_dec` with elasticity 0.0000, while `eta_th` shows -0.099. This indicates the model is computing only the steam-cycle thermal path and the hybrid direct conversion branch is either absent or disconnected from the LCOE calculation. The two-scenario structure (HB11 steam-only vs Marvel hybrid) is described in Section 7 but not implemented as a scenario branch in the model. The checklist requirement for Section 2 to identify the 2-3 highest-sensitivity parameters cannot be satisfied when the analysis's stated #1 lever (conversion efficiency) shows no model response.
-- **Recommendation:** Implement the Marvel hybrid conversion scenario as a model branch where `eta_dec` (alpha particle capture efficiency) and `eta_th` (residual steam fraction) combine to produce net conversion efficiency. The existing model appears to run both Marvel and HB11 cases but uses only `eta_th` for both. Add a scenario sweep over eta_dec from 0% (steam-only fallback) to 60% (near-claim), weighted by `f_direct` (direct fraction of thermal output), and report LCOE vs this parameter. This will produce a non-zero elasticity consistent with the analysis's claim of a 2× lever.
+- **Finding:** The C220104 (driver) override is $500M, derived from "50 beamlines × $10M/beamline" at the 100 MWe pilot scale. The C220108 (target factory) override is $31.5M, sized for 315M targets/year at 10 Hz for one 100 MWe module. Both are absolute dollar values that pass through unchanged to the 1 GWe projection. However, a 1 GWe plant requires 10 modules (10 × 100 MWe), meaning ~500 laser beamlines and ~3.15B targets/year. The analysis itself quotes the source: "An actual power plant is expected to need around 500 laser systems," and the LLNL target is "<$1.5B for a GW-class plant." At 1 GWe the driver cost should be on the order of $1.5–5B and the target factory should scale roughly proportionally, yet the model applies $500M and $31.5M respectively. This causes the 1 GWe CAS22 total ($5,949M) to understate the laser-driver and target-factory contributions by potentially $1–4.5B, and the 1 GWe LCOE (445 $/MWh) is correspondingly too low for this concept.
+- **Recommendation:** Either (a) express C220104 and C220108 as per-module values that the helper scales by module count (the way fractional overrides already scale), or (b) re-derive the absolute values at the 1 GWe scale (e.g., C220104 ≈ $1.5–3B for ~500 beamlines with NOAK learning, C220108 ≈ $100–200M for a 10× larger target fab). Document the scaling basis in the rationale so the native and 1 GWe figures are independently defensible.
 - **Priority:** blocking
 
-### F-2: NaN sensitivity values for availability and core lifetime
-- **Target:** Model sensitivity sweep output
-- **Category:** model
-- **Finding:** The sensitivity output shows `availability = +nan` and `core_lifetime_pb11 = +nan`. Availability is a direct LCOE multiplier (it sets the denominator of annual energy production) — a NaN sensitivity for this parameter indicates a division-by-zero or undefined derivative in the sweep implementation. Similarly, `interest_rate = +nan` is anomalous. These are not informative NaN values from physically undefined scenarios; they are numerical failures in the sweep. The checklist requires that at least 3 parameters show |elasticity| > 0.01 for the sensitivity results to be non-trivial. With availability broken, the sweep understates uncertainty on a parameter that controls whether the 75% placeholder assumption (noted in the model output as a placeholder with no analogue plant) propagates into LCOE at all.
-- **Recommendation:** Debug the sensitivity sweep for `availability`, `interest_rate`, and `core_lifetime_pb11`. The most likely cause is that the sweep is computing ΔLCOE / Δparam at a point where a ratio or logarithm is undefined (e.g., if `availability` enters as a multiplicative factor and the base case is already at the boundary). Fix the numerical derivative or switch to finite-difference elasticity for these parameters. Once fixed, verify that availability elasticity is on the order of -1.0 (LCOE scales inversely with availability for a fixed capital cost) — if it is, it should rank as the highest-sensitivity engineering lever and the analysis narrative should flag it accordingly.
-- **Priority:** important
-
-### F-3: Section 2 narrative overemphasizes laser capital cost; model shows O&M and target factory dominate
-- **Target:** Section 2 (Challenge 2) and Section 5 parameter table
+### F-2: C220101 blanket override claims consistency with concept 04 while applying a 2.3× more aggressive reduction
+- **Target:** Section 5b (Override Candidates), C220101 rationale
 - **Category:** analysis
-- **Finding:** Section 2 frames the laser system as "the dominant capital cost component" and the primary recirculating power load, with detailed discussion of cost-per-joule and the 500-laser plant requirement. However, the model sensitivity output shows `driver_laser_per_mw` with elasticity 0.027 — well below `om_cost_pb11` (0.204) and `target_factory_base` (0.134). In the model, O&M and target factory together are roughly 12× more sensitive to LCOE than the laser driver unit cost. The analysis does not acknowledge this ordering, and Section 2 does not identify the 2-3 highest-sensitivity LCOE parameters as required by the modeling recommendations goal. The `om_cost_pb11` constant is a placeholder with no sourced basis (noted in the model output), yet it carries the highest sensitivity of any costing constant — this should be flagged as a priority gap in Section 5 or Section 6 but is not.
-- **Recommendation:** Add a paragraph in Section 2 (or a dedicated subsection) that explicitly names the 2-3 highest-sensitivity LCOE parameters for this concept, cross-referencing the model's sensitivity ordering. Acknowledge that target factory cost and O&M cost dominate over laser driver capital cost in the model's current parameterization, and note that this ranking is sensitive to the laser capital cost assumption (currently 8 M$/MW_driver as a framework default). Add an O&M cost basis row to the Section 5 parameter table with gap type "truly-unknown" and criticality "blocking" to match what the model sensitivity implies.
+- **Finding:** The C220101 override applies a 0.30× multiplier (70% cost reduction) and the rationale states it is "Consistent with concept 04-laser-icf override (0.70× applied to same account for same reasoning)." A 0.30× multiplier is a 70% reduction; concept 04's 0.70× is a 30% reduction. The word "consistent" is self-contradictory — Marvel's reduction is 2.3× more aggressive than the comparable's, applied to the same account for what the analysis itself calls "the same reasoning." No additional rationale is given for why Marvel's aneutronic blanket should cost 70% less than the DT default while HB11's aneutronic blanket costs only 30% less. Both share the p-B11 fuel cycle and both eliminate tritium breeding.
+- **Recommendation:** Either (a) align the multiplier with concept 04 (0.70×) since the physical reasoning is identical (both aneutronic, both eliminate breeding, both retain thermal management structure), or (b) provide a concrete justification for why Marvel's blanket deserves a deeper reduction than HB11's — citing a specific subsystem difference, not just the shared aneutronic fuel cycle.
 - **Priority:** important
 
 
-## Reference Files
+## Reference
 
-- **Concept Analysis:** `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/23-laser-icf-nanostructured-target/analysis.md`
-- **Example:** `/home/reid/1cfe/1costingfe/examples/dt_tokamak.py`
-- **Defaults:** `/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/ife_laser_ife.yaml`
-- **README:** `/home/reid/1cfe/1costingfe/README.md`
-- **Costing Constants:** `/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml`
+- **Concept Analysis (Design Point + Section 5b overrides):** `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\23-laser-icf-nanostructured-target\analysis.md`
+- **Example (pattern):** `\home\reid\1cfe\1costingfe\examples\dt_tokamak.py`
+- **README:** `\home\reid\1cfe\1costingfe\README.md`
+- **Costing Constants:** `\home\reid\1cfe\1costingfe\src\costingfe\data\defaults\costing_constants.yaml`
+- **Concept mapping:** `ConfinementConcept.LASER_IFE`, `Fuel.PB11`
+
+### Canonical account schema (for any new/changed override)
+
+| Account | What it costs | Applies when |
+| --- | --- | --- |
+| `C220101` | First wall, blanket & neutron multiplier (DT: tritium-breeding blanket; DD/aneutronic: energy-capture blanket) | always (for this archetype) |
+| `C220102` | Radiation shield (sized to neutron wall loading; scales down for low-neutron fuels) | always (for this archetype) |
+| `C220104` | Supplementary plasma heating (steady-state) or primary pulsed driver (laser/accelerator/gun) | primary pulsed driver (laser/accelerator/gun) on $/J of driver energy; electrical-drive concepts cost it in C220107 |
+| `C220105` | Primary structure — gravity supports, thermal shields, inter-coil structure, machine base | always (for this archetype) |
+| `C220106` | Vacuum system — vessel, port extensions, cryopumps, leak detection | always (for this archetype) |
+| `C220107` | Power supplies (steady-state magnet supplies / switchgear) or pulsed-power capacitor bank ($/J stored) | pulsed-power capacitor bank on $/J stored — usually the dominant driver cost for electrically-driven pulsed schemes |
+| `C220108` | Divertor (steady-state, W monoblock cassettes) or target factory (IFE/MIF target manufacturing) | high-rep-rate target manufacturing factory (IFE/MIF) |
+| `C220110` | Remote handling & maintenance equipment (rad-hardening tier x vessel geometry) | always (for this archetype) |
+| `C220111` | Reactor-equipment installation & assembly (fraction of the CAS22 subtotal) | always (for this archetype) |
+| `CAS21` | Buildings & site structures (reactor, turbine, hot cell, balance-of-plant) | always (for this archetype) |
+| `CAS23` | Turbine plant equipment (thermal cycle; zero for direct-conversion / eta_th=0 plants) | zero if the design point is direct-conversion (no thermal cycle) |
+| `CAS24` | Electric plant equipment (switchyard, transformers, plant distribution) | always (for this archetype) |
+| `CAS26` | Heat rejection system (cooling towers, circulating water) | always (for this archetype) |
+| `CAS27` | Special materials — initial reactor material inventory / blanket fill (distinct from C220101 structure) | always (for this archetype) |
+| `CAS70` | Annualized O&M + scheduled component replacement (staffing-based) | always (for this archetype) |
+| `CAS80` | Annualized fuel cost — consumables and enriched-isotope procurement | always (for this archetype) |
+
+### Canonical `spec` field glossary (for any new/changed spec key)
+
+If your edit touches the `spec` dict (adding/renaming/replacing a field),
+the new key MUST come from the glossary below. Read the "Common confusions"
+block before editing — most prior errors (concept 05/09 fusion-vs-heating
+mix-up, dipole `plasma_volume` regression, kJ-vs-MJ driver-energy mistakes)
+trace back to ignoring these warnings.
+
+{{canonical_spec_keys}}
 
 ## Output
-Write changes to: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/23-laser-icf-nanostructured-target/iter-2/model_setup.py`
+Write changes to: `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\23-laser-icf-nanostructured-target\iter-2\model_setup.py`

@@ -1,0 +1,14 @@
+P_native=400.0, n_mod_1gw=2.5
+
+account       ref_current   ref_intended            tgt  ratio_current ratio_intended
+C220101            112.74         165.41         165.41         1.4671         1.0000
+C220103            516.10         516.10         516.10         1.0000         1.0000
+C220106             43.43          63.72          63.72         1.4671         1.0000
+
+CAS27   ref_current=2.40  ref_intended=6.00  tgt=6.00
+
+Interpretation:
+ - ratio_current = the library's _scale_overrides multiplier today.
+ - ratio_intended = the multiplier IF the reference call were at single-module/native.
+ - If ratio_intended ≈ n_mod_1gw, design semantic holds (override is per-module value, library replicates).
+ - If ratio_current diverges, current code rescales the user's number unintentionally.

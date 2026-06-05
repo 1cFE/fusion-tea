@@ -1,133 +1,96 @@
-MTF Pneumatic Compression (D-T) — General Fusion concept
-  300 MWe net, 75% availability, 30 yr lifetime
-  FOAK | eta_th=35% | q_eng=3.0 (UNCERTAIN)
+LCOE: 39.7 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 91.7 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 104.6 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 7190 $/kW   native 6267 $/kW   1 GWe 3308 $/kW
 
-Native (300 MWe):
-  LCOE: 110.5 $/MWh | Overnight: 6959 $/kW
-  Fusion: 1100 MW | Net: 300 MW | Q_eng: 3.0
-  Recirculating fraction: 33.3%
-
-Scaled to 1000 MWe:
-  LCOE: 82.9 $/MWh | Overnight: 5615 $/kW
-
-Code     Account                              M$
-------------------------------------------------
-CAS10    Preconstruction                    36.0
-CAS21    Buildings                         391.2
-CAS22    Reactor Plant Equipment           676.2
-CAS23    Turbine Plant                      88.9
-CAS24    Electrical Plant                   37.9
-CAS25    Miscellaneous                      23.1
-CAS26    Heat Rejection                     43.9
-CAS27    Special Materials                   4.5
-CAS28    Digital Twin                        5.0
-CAS29    Contingency                       127.1
-CAS30    Indirect Costs                    233.0
-CAS40    Owner's Costs                      21.4
-CAS50    Supplementary                     127.2
-CAS60    IDC                               272.6
-CAS70    O&M (annualized)                   49.2
-CAS80    Fuel (annualized)                   0.3
-CAS90    Financial                         168.2
-------------------------------------------------
-         Total Capital                    2087.8
-
-CAS22 Reactor Plant Equipment detail:
+CAS               generic           native            1 GWe
 --------------------------------------------------------
-  C220101 First Wall / Liquid Metal Wall       47.8 M$
-  C220102 Shield                               33.6 M$
-  C220103 Coils (Cu guide field only)          10.0 M$
-  C220104 Compression Driver [UNCERTAIN]      180.0 M$
-  C220105 Primary Structure                     3.2 M$
-  C220106 Vacuum System                        12.2 M$
-  C220107 Aux Power Supplies                   59.5 M$
-  C220110 Remote Handling                      50.3 M$
-  C220111 Installation                        102.0 M$
-  C220200 Coolant / LM Heat Exchange           73.2 M$
-  C220300 Aux Cooling + Cryo                    1.4 M$
-  C220400 Rad Waste                             2.5 M$
-  C220500 Fuel Handling (DT)                   51.7 M$
-  C220600 Other Equipment                       4.4 M$
-  C220700 I&C                                  44.3 M$
-
-          CAS22 Total                         676.2 M$
-
-Overridden: C220103, C220104, C220108
-
-Key Assumptions:
+CAS10                16.4             16.4             16.9
+CAS21               256.0            256.0            251.8
+CAS22               322.4            228.3           1284.7
+CAS23                44.5             44.5            296.5
+CAS24                18.9             18.9            126.3
+CAS25                11.5             11.5             76.9
+CAS26                19.2             19.2            128.1
+CAS27                 2.2              3.0              2.9
+CAS28                 5.0              5.0              5.0
+CAS29                 0.0              0.0              0.0
+CAS30               136.0            117.3            434.4
+CAS40                15.1             15.1             14.7
+CAS50                57.3             53.3            136.3
+CAS60               173.9            151.6            533.3
+CAS70                35.8             31.7             46.9
+CAS80                 0.1              0.1              0.9
+CAS90                80.9             70.5            248.1
 --------------------------------------------------------
-  Net electric output:           300 MWe (stated commercial target)
-  Availability (capacity factor): 75%  [UNCERTAIN: mech. system]
-  Thermal efficiency (Rankine):   35%   [UNCERTAIN: 33–40% range]
-  Engineering gain (q_eng):       3.0   [UNCERTAIN: recirc. power unknown]
-  Compression driver capital:     $180M [UNCERTAIN: no analogous system]
-  HTS coils / cryoplant:          None  [high confidence — no magnets in design]
-  Target factory:                 None  [high confidence — LM reforms each pulse]
-  Steam cycle (Rankine):          Yes   [shared with tokamak concepts]
-  Construction time:              5 yr
-  FOAK/NOAK:                      FOAK  [TRL 2–3 compression system]
+TOTAL              1078.4            940.0           3307.9
 
-Modeling notes:
-  - BLOCKING unknowns: Q, eta_th, recirculating power fraction.
-    All three must be resolved before a reliable LCOE can be derived.
-    This model is a scenario anchor, not a prediction.
-  - Rep rate (1 Hz target) enters via q_eng and availability, not as
-    a direct parameter. At 0.5 Hz with identical capital, LCOE doubles.
-  - C220104 ($180M compression driver) is the dominant unknown.
-    Range: $50M (optimistic analogue) to $500M+ (novel engineering).
-  - Liquid metal composition (Li vs PbLi) not finalized; affects
-    tritium extraction cost (ISS capital) and fire/explosion safety
-    infrastructure. Not modeled as separate scenarios here.
-  - FM-1 / FM-2 (compression ratio shortfall; piston synchronization)
-    are binary physics/engineering failure modes, not LCOE parameters.
+--- CAS22 sub-account detail (overrides marked) ---
+code            generic       native        1 GWe  flag
+C220000           322.4        228.3       1284.7
+C220101            49.1         19.6         19.1  <-- OVERRIDE
+C220102            25.4         25.4         24.7
+C220103             0.0          0.0          0.0  <-- OVERRIDE
+C220104            47.9          7.2          6.8  <-- OVERRIDE
+C220105             2.2          2.2          2.1
+C220106             6.8          6.8          6.6
+C220106_pump          0.2          0.2          0.2
+C220106_vessel          6.6          6.6          6.4
+C220107            26.6          2.7          2.5  <-- OVERRIDE
+C220108             0.0          0.0          0.0  <-- OVERRIDE
+C220109             0.0          0.0          0.0
+C220110            35.6         35.6         34.7
+C220111            27.1         27.1         26.0
+C220112             0.0          0.0          0.0
+C220200            39.8         39.8        208.2
+C220300             0.6          0.6          4.1
+C220400             1.1          1.1          7.4
+C220500            31.8         31.8        120.0
+C220600             2.5          2.5         11.5
+C220700            25.9         25.9         88.9
 
-Sensitivity (elasticity = %LCOE / %param)
-------------------------------------------------
+========================================================================
+INTERPRETATION OF 1 GWe PROJECTION
+========================================================================
 
-Engineering levers:
-  availability                 -0.9795
-  q_eng                        -0.5015
-  construction_time_yr         +0.2720
-  eta_th                       -0.1650
-  eta_pin                      +0.1501
-  plasma_t                     +0.0963
-  blanket_t                    +0.0705
-  mn                           -0.0564
-  f_rep                        -0.0324
-  f_sub                        -0.0207
-  p_trit                       -0.0153
-  ht_shield_t                  +0.0104
-  vessel_t                     +0.0076
-  p_house                      -0.0061
-  p_pump                       -0.0048
-  structure_t                  +0.0034
-  p_coils                      -0.0008
-  eta_p                        +0.0000
-  dd_f_T                       +0.0000
-  dd_f_He3                     +0.0000
-  dhe3_dd_frac                 +0.0000
-  dhe3_f_T                     +0.0000
-  dhe3_f_He3                   +0.0000
-  f_rad                        +0.0000
-  eta_dec                      +0.0000
+The 1 GWe LCOE projection above represents the General Fusion MTF
+commercial plant conceptual design (Krotez et al. 2023 SOFE), modelled as
+one 150 MWe module replicated to ~1 GWe.
 
-Financial:
-  interest_rate                +0.6608
-  inflation_rate               +0.0742
+This projection reflects:
+  • 150 MWe per module, ~7 modules to reach 1 GWe
+  • 1 Hz repetition rate (commercial target)
+  • D-T fuel with liquid metal blanket (LLE or Li, undecided)
+  • Pneumatic piston compression of recycled liquid metal liner
+  • Steam Rankine thermal conversion (eta_th from library default)
+  • No external confinement magnets (C220103 = $0)
+  • No per-shot consumables / target factory (C220108 = $0)
 
-Costing constants (top 15):
-  om_cost_dt                           +0.1682
-  driver_mag_target_per_mw             +0.1557
-  indirect_fraction                    +0.1070
-  contingency_rate_foak                +0.0925
-  target_factory_base                  +0.0760
-  installation_frac                    +0.0488
-  blanket_unit_cost_dt                 +0.0479
-  c_cap_allin_per_joule                +0.0324
-  remote_handling_dt_base              +0.0274
-  fuel_handling_dt_base                +0.0247
-  core_lifetime_dt                     -0.0193
-  electric_per_mw                      +0.0186
-  shield_unit_cost                     +0.0183
-  fuel_recovery                        -0.0177
-  decom_provision_dt                   +0.0150
+**Critical context (analysis.md §2):**
+  1. Fusion power (MWth), energy gain Q, and recirculating power are all
+     unpublished. The library's q_eng default (3.0) drives the power
+     balance — this is a library assumption, not a company-disclosed value.
+
+  2. LM26 uses electromagnetic theta-pinch compression of a solid lithium
+     liner, while the commercial plant uses pneumatic piston compression of
+     a liquid metal liner. The compression mechanism, liner state, and
+     driver technology differ fundamentally.
+
+  3. The piston system cost override (15% of library C220104) is aggressive
+     but directionally grounded in GF's claim that pneumatic pistons are
+     "low-cost" relative to lasers and superconducting magnets. No dollar
+     figure is published.
+
+  4. The 1 Hz repetition rate requires vacuum re-establishment, liquid
+     metal vortex reformation, and piston recharge within ~1 second — none
+     demonstrated at commercial scale. The gap between LM26 (1 pulse/day)
+     and commercial (1 pulse/second) is a factor of 86,400.
+
+**Data gaps (analysis.md §6):**
+  • Fusion power, Q, p_input (blocking) — library defaults drive results
+  • Piston system capital cost (important) — no published figure
+  • Liquid metal composition undecided (important)
+  • O&M breakdown (important) — piston wear, seal replacement unknown
+  • Vacuum re-establishment at 1 Hz (important) — undemonstrated
+
+========================================================================

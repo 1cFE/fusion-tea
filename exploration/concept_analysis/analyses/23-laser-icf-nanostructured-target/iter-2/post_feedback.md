@@ -1,22 +1,19 @@
-VERDICT: FINDINGS
+VERDICT: PASS
 
-### F-1: DEC sweep direction is inverted — higher efficiency raises LCOE instead of lowering it
-- **Target:** Model output — DEC sweep section and model_setup.py power balance logic
-- **Category:** model
-- **Finding:** The hybrid DEC sweep shows LCOE monotonically *increasing* from 87.3 to 90.9 $/MWh as eta_dec rises from 0% to 60%, while p_net and recirc fraction remain fixed at 100.0 MW and 20.00% throughout the entire sweep. If DEC efficiency captures more energy per pulse, either (a) net output increases for the same fusion throughput, or (b) less fusion power — hence less laser driver capital — is needed to sustain 100 MWe. Either way, LCOE should decrease as eta_dec increases. The sweep result indicates DEC efficiency is adding hardware cost without reducing fusion throughput requirements or increasing net output. This directly contradicts Section 2 (Challenge 3), which states that 70% vs. 35% conversion efficiency "roughly doubles" net electrical output — the claimed first-order LCOE lever — but the model cannot reproduce this relationship.
-- **Recommendation:** Audit the DEC power balance in model_setup.py. The sweep should hold p_fusion fixed and let p_net increase with eta_dec (showing LCOE reduction from higher output), or hold p_net fixed and reduce laser capital proportionally (showing LCOE reduction from lower required fusion power). Fix the accounting so that increasing eta_dec reduces LCOE, then regenerate model_output.txt. Also verify that the main Marvel pilot result (82.4 $/MWh at eta_th=40%) is consistent with the DEC sweep baseline (87.3 $/MWh at eta_dec=0%) — the 5 $/MWh discrepancy suggests different base assumptions between the two runs.
-- **Priority:** blocking
+**Assessment summary:**
 
-### F-2: Section 2a sensitivity ordering misidentifies the dominant LCOE parameter
-- **Target:** Section 2a (LCOE Sensitivity Ordering — Model Implication)
-- **Category:** analysis
-- **Finding:** Section 2a explicitly states that O&M cost basis is "the highest-sensitivity LCOE driver in the current parameterization" at elasticity 0.204. However, the iter-2 model sensitivity table shows `availability` at −0.9997 — nearly five times larger in magnitude — making it the single dominant LCOE parameter, ahead of interest rate (0.649), construction time (0.273), O&M (0.204), and target factory (0.134). Plant availability is correctly flagged in the Section 6 gap table as "truly-unknown, blocking," but the Section 2a narrative does not elevate it above O&M in data-gathering priority. The practical consequence: the analysis directs the reader to prioritize O&M characterization, when availability — a placeholder at 75% with no pulsed laser IFE operational analogue — dominates LCOE by a factor of ~5 over the next-largest engineering lever.
-- **Recommendation:** Revise Section 2a to add `availability` as the dominant LCOE parameter (elasticity ~1.0) and reframe the priority ordering explicitly: (1) availability [engineering lever, ~1.0 elasticity, no analogue plant], (2) financial parameters [interest rate 0.65, construction time 0.27], (3) O&M [0.20, placeholder], (4) target factory [0.13, analogue from Goodin], (5) laser driver [0.03, framework default]. Note that bounding plant availability — even as a parametric range benchmarked against analogous pulsed industrial laser facilities — should be the first sensitivity refinement priority, not O&M structure.
-- **Priority:** important
+Both iter-1 findings have been addressed effectively:
 
-### F-3: Modeling approach choice not stated
-- **Target:** Section 2 or a dedicated modeling approach subsection (Goal 4)
-- **Category:** analysis
-- **Finding:** The analysis does not state whether the 1costingfe IFE framework template or free-form modeling is the appropriate methodology, nor does it explain the rationale for the choice. The frontmatter records `Reuses: [22-projectile-icf]`, implying the costingfe framework is in use, but this is never articulated as a deliberate modeling decision in the analysis text. The checklist criterion for Goal 4 ("The analysis states whether 1costingfe or free-form modeling is appropriate and why") is not met. For a concept at TRL 1–2 with no published Q value or plant design, a brief framing of why the structured IFE template is used — and what its limitation is at this TRL — would make the model's contingent nature explicit and auditable.
-- **Recommendation:** Add 2–4 sentences in Section 2 or as a "Modeling Approach" subsection stating: (a) the IFE costingfe template from concept 22 is reused as the structural cost framework; (b) all LCOE outputs are contingent on ignition being achieved — the model is not a cost prediction but a sensitivity scaffold over key unknowns; (c) free-form modeling is not appropriate until at minimum a credible Q value or plant architecture is published, because the framework's structure imposes more parametric discipline than is currently justified by available data.
-- **Priority:** minor
+- **F-1 (blocking):** The absolute overrides on C220104 (driver) and C220108 (target factory) have been re-derived at 1 GWe scale. C220104 is now $2,000M, grounded in the LLNL GW-class driver benchmark ($1.5B) × 1.33 femtosecond immaturity premium, with explicit sensitivity range ($1.5–3.0B). C220108 is now $200M, sized for 630,000 wafers/year at 1 GWe throughput, with semiconductor fab cost analogy ($150–300M range). Both rationales explicitly document the accepted native-scale distortion and identify the 1 GWe projection as the primary analytical target.
+
+- **F-2 (important):** The C220101 blanket override has been corrected from 0.30× to 0.70×, aligning with concept 04-laser-icf's identical aneutronic reasoning. The rationale now explicitly states the alignment.
+
+**Design-point coherence:** P_native is 100 MWe across frontmatter, Design Point block, Section 5, and model_setup.py. Coherence flag confirms three-leg match. No silent substitution of plant or power level.
+
+**Override discipline:** All 8 overrides use canonical account codes, carry `derived` provenance (correct — Marvel has published no dollar figures), and include arithmetic derivations in their rationales. Analysis Section 5b and model_setup.py overrides match on accounts, values, and provenance labels.
+
+**Override count:** 8 enabled overrides for Low archetype-fit (band: 6–12). Within band, structurally motivated by the p-B11 aneutronic fuel cycle and femtosecond DPSSL architecture.
+
+**Family-delta:** Section 7 compares against the fixed comparable (04-laser-icf) across four specific subsystem deltas — laser driver architecture, target fabrication, energy conversion, and plant scale — each with stated cost direction and evidence quality. The comparison is concrete and accountable.
+
+**Model integrity:** Three-forward helper form is used correctly. The 1 GWe LCOE of $793/MWh is high but plausible for a paper-concept, Low archetype-fit, p-B11 laser ICF concept with TRL 1–2 ignition physics and no demonstrated gain. CAS22 dominates the cost structure (65% of overnight capital at 1 GWe), with the driver (C220104) as the single largest sub-account — consistent with the analysis narrative's emphasis on driver economics as the binding cost uncertainty.

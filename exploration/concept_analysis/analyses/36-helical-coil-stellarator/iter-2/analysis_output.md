@@ -1,355 +1,461 @@
-# D1+ Analysis: Helical Coil Stellarator (Helical Fusion)
+## Design Point
 
-**Concept**: Heliotron-type Stellarator — continuous helical HTS coils (HESTIA design)
-**Company**: Helical Fusion (Tokyo, Japan; NIFS spinout)
-**Pilot Device**: Helix HARUKA (integrated demonstration, assembly 2026); Helix KANATA (pilot plant, 50 MWe, 2030s target)
-**Confinement Family**: MFE — Stellarator (Heliotron)
+- Name: HESTIA Fusion Pilot Plant — reference operating case (Miyazawa & Goto, Phys. Plasmas 2023)
+- Maturity: paper-concept
+- P_native: 70.4 MWe
+- Grounding: high
+- Primary sources:
+  - knowledge/concept_research/36-helical-coil-stellarator/iter-01/sources/aip-2023-paper-abstract.md
+  - knowledge/concept_research/36-helical-coil-stellarator/iter-01/sources/helical-fusion-technology-overview.md
 
----
-
-## Section 1: Availability of Data
+## 1. Availability of Data
 
 **Rating: Moderate**
 
-The primary technical reference is Miyazawa & Goto (2023), *Physics of Plasmas* 30, 050601 — a peer-reviewed conceptual design paper for HESTIA (Helical Stellarator Torus with Integrated Alloy-blanket) that is unusually complete for a private startup. The paper provides explicit reactor geometry, a full parameter table including cost estimates, subsystem descriptions, engineering gain, and identified risk areas. However, the paper is behind a paywall (only the extended abstract is in the Phase 1a sources), and its cost figures are self-declared as based on late-1990s LHD/ITER construction pricing, with the authors explicitly requiring a ×2 or greater inflation correction before use [1].
+The helical-coil stellarator has moderate data availability across three distinct channels. At the reactor design level, the 2023 AIP Physics of Plasmas paper by Miyazawa & Goto provides a complete published reactor design (HESTIA) with quantitative geometry, physics parameters, and a direct construction cost estimate of USD 5 billion (late-1990s basis). The paper includes detailed subsystem specifications: HTS magnet configuration, liquid metal blanket design, ECRH heating system (60× 250 GHz gyrotrons), and a pellet fueling scheme. However, the cost model explicitly excludes inflation adjustment — the authors estimate a factor-of-2 multiplier to reach current-year costs, creating significant uncertainty in the absolute dollar figures.
 
-> "if inflation during these 20 years is taken into account, the construction cost must be modified by a factor of 2 or more"
-> — aip-2023-paper-abstract.md, §I
+At the technology development level, Helical Fusion (the Tokyo-based startup commercializing this concept) provides regular public updates on component milestones via press releases and their website. The October 2025 demonstration of a 40 kA HTS coil at 7 T external field (30-layer REBCO, uninsulated design, >4 m length) is well-documented. The GALOP liquid metal blanket test system is described qualitatively, as is the partnership with Sugino Machine for helical coil winding equipment. However, cost data for these components is absent — no unit costs, no build-of-materials, no supply chain pricing.
 
-**Published design documentation:**
-The 2023 AIP paper provides the most comprehensive public baseline, including: HESTIA reactor geometry (R₀ = 7.8 m, 8 T at coil center), a cost table estimating ~$5B direct construction cost, net electric output (~70 MWe), Q (plasma) ~13, Q_eng = 2.0, availability target >80–85%, and design rationale for all six major subsystems (HTS magnets, LM blanket, ECH system, fueling, sCO₂ power conversion, solar H₂ startup) [1]. A SOARHER variant (more conservative, lower-performance FPP) is discussed but not costed in detail.
+At the heritage physics level, HESTIA draws on 25+ years of Large Helical Device (LHD) operations at Japan's National Institute for Fusion Science (NIFS). LHD experimental results provide confinement scaling validation for the heliotron configuration, and the FFHR reactor study series (predating HESTIA) established liquid-metal-compatible structural materials and blanket designs. The Oroshhi-2 test platform at NIFS includes LiPb loops and a planned supercritical CO2 gas turbine demonstration at 20 kWe, supporting HESTIA's claimed >50% thermal efficiency.
 
-**Milestone publications and press releases:**
-ANS Nuclear Newswire (October 2025) and BusinessWire (October 2026) document a critical manufacturing milestone: the world's first demonstration of an uninsulated large-scale HTS coil using WISE REBCO conductor — 40 kA at 7 T external field, 15 K, 30 layers of REBCO, >4 m conductor length. A dedicated coil manufacturing machine was completed in collaboration with Sugino Machine [dossier.md, §Magnet Type].
+**Key data gaps:**
 
-**Company disclosures:**
-The Helical Fusion technology overview (helical-fusion-technology-overview.md) provides a summary of 14 collaborative R&D areas including sCO₂ gas turbines, maintenance robotics, GALOP (GAs-driven Liquid metal OPeration) blanket testing, and WISE coil manufacturing. Total funding is modest at ~$35.3M through late 2025 [helical-fusion-2025-2026-updates.md], which is low relative to peers (CFS ~$2.9B, Tokamak Energy ~$335M).
+1. **No independent cost validation** — the USD 5 billion direct cost is based on "actual performance of LHD and ITER at the end of the 1990s" without transparency into the underlying unit costs, and without adjustment for post-2000 inflation or supply chain changes.
+2. **Component-level cost breakdowns absent** — the breakdown into CAS-level accounts is not provided; only a single lump sum exists.
+3. **Thin operational cost data** — no staffing estimate, no maintenance schedule, no fuel processing costs, no component replacement intervals beyond the 6.4-year stated reactor lifetime.
+4. **Prototype cost uncertainty** — the paper cites USD 480 million (1990s basis) for a HESTIA-Primary prototype to validate the optimized magnetic configuration, but its scope and deliverables are underspecified.
+5. **Blanket material composition unconfirmed** — the specific liquid metal alloy (pure Li, LiPb, or tin-indium-lead-lithium as stated in the AIP paper) is inconsistently described across sources.
 
-**Independent and heritage documentation:**
-NIFS — the parent institution — has extensive stellarator physics and blanket engineering heritage from LHD and the FFHR design study series. The Oroshhi-2 blanket test platform at NIFS studies liquid blanket materials and sCO₂ power conversion [nifs-ffhr-blanket-heritage.md; Ishiyama & Tanaka 2019, *Fusion Science and Technology* 75:8]. Brown (2018, *IEEE Transactions on Plasma Science*) provides a cross-concept cost decomposition comparing stellarators, standard tokamaks, and spherical tokamaks.
+Independent peer-reviewed analysis of HESTIA's LCOE or capital cost does not exist in the available literature. The concept's TEA rests on a single-source design study from the developers themselves.
 
-**Phase 1a dossier completeness:**
-The dossier achieves high confidence on confinement family, confinement concept, fuel, heating method, plasma state, magnet type, tritium breeding approach, neutron management, and operation mode. One medium-confidence item remains: energy capture (sCO₂ Brayton cycle is strongly suggested by three independent data points but not explicitly confirmed as the HESTIA baseline).
+## 2. Challenges in Capturing System Function
 
-**Key data gaps limiting this analysis:**
-1. Full AIP paper content beyond the extended abstract (potentially more detail on TBR, alpha confinement, and cost breakdown)
-2. Cost model not inflation-corrected by the authors — applying ×2+ multiplier introduces significant uncertainty
-3. O&M cost breakdown entirely absent
-4. LM pump power explicitly flagged as unknown in the paper
-5. No independent techno-economic assessment of HESTIA or any heliotron FPP design exists in the public literature
+The primary LCOE modeling challenges for the helical-coil stellarator, ranked by impact:
 
----
+**1. Flexible HTS conductor scaling and cost (high impact, high uncertainty)**
 
-## Section 2: Challenges in Capturing System Function
+The heliotron geometry requires two continuous helical HTS coils that wind through a complex 3D path with non-planar curvature. The WISE (Wound and Impregnated Stacked Elastic tapes) conductor approach — flexible REBCO tape stacking followed by low-melting-point alloy impregnation for structural rigidity — is proprietary and has no established supply chain or unit cost basis. The October 2025 demonstration achieved 40 kA at 7 T in a test coil, but the design field for HESTIA is 8 T at the coil center (9 T at plasma center), and the current density at 20 K in 20 T must reach 400 A/mm². The cost sensitivity is extreme: HTS conductor is the single largest capital cost item in any high-field fusion concept, and the 3D helical geometry requires significantly more conductor length than an equivalent-field tokamak. The AIP paper assumes a cryogenic efficiency of 2% (20 K helium gas cooling vs. 4 K liquid helium), reducing helium consumption by 75%, but this efficiency target is undemonstrated at reactor scale.
 
-Ranked by LCOE impact.
+> "Flexible enough for complex helical coil winding. After winding, impregnated with low-melting point alloy"
+> — helical-fusion-technology-overview.md §HTS Magnets
 
-**1. Cost model anchored to 1990s prices — first-order correction required (Impact: Critical)**
+The lack of a reference unit cost for WISE conductor — or any continuous-helical HTS coil at this field strength and geometry complexity — makes C220103 (confinement magnets) cost estimation speculative. Standard REBCO tape pricing ($30–100/kA-m in 2025) assumes planar winding; the flexibility and impregnation steps add unknown markup.
 
-The only published cost estimate for HESTIA is Table I in Miyazawa & Goto (2023), with a direct construction cost of ~$5B. The authors explicitly state this is calibrated to late-1990s LHD and ITER construction prices and requires a factor-of-2-or-more inflation correction [1]. Applying a ×2 correction yields ~$10B for a 70 MWe plant — an extraordinary specific capital cost of ~$143B/GWe, compared to ~$6–15B/GWe for large tokamak estimates. Even the FOAK follow-on plant at ~103 MWe with a published ~$3B cost estimate (1990s prices) implies ~$6B inflation-adjusted, or ~$58B/GWe. These figures imply LCOE in the dollar-per-kWh range, and the primary path to competitiveness is fleet scaling, series production, and technology learning — none of which have a quantitative basis yet.
+**2. Liquid metal blanket system cost and corrosion management (high impact, medium uncertainty)**
 
-> "The cost is preliminary and based on the LHD construction and ITER cost data in the 1990s"
-> — aip-2023-paper-abstract.md, §II
+HESTIA uses a modular liquid metal blanket with free-surface flow over the first wall, eliminating the need for a separate divertor system. This integrated blanket/divertor architecture is cited as a major cost advantage — the authors state that "by skipping the development of individual divertor systems, NBI, and ICH, which are widely recognized as the most difficult issues in fusion reactor development, a fast-track plan is possible" (aip-2023-paper-abstract.md, lines 81-84). However, the liquid metal free-surface flow must survive 14.1 MeV neutron fluence and heat fluxes without excessive evaporation, splashing, or MHD-driven flow disruption. The AIP paper specifies a tin-indium alloy with lead (neutron multiplication) and lithium (tritium breeding), but warns: "Tin is highly corrosive to steel and therefore careful consideration for corrosion protection is required" (aip-2023-paper-abstract.md, lines 227-228). The structural material is non-magnetic reduced-activation high-manganese steel (not conventional RAFM, which is ferromagnetic and incompatible with stellarator field purity requirements). The porous first wall material — pure titanium, titanium alloy, or high-manganese steel fabricated via 3D printing — must provide anti-corrosion oxide layers and high wettability for liquid metal adhesion.
 
-**2. Stellarator confinement improvement factor — unverified scaling assumption (Impact: High)**
+The GALOP test system validates the gas-driven liquid metal pump concept (no rotating parts, developed with Sukegawa Electric), but pump power requirements are "quite unknown at this moment" (aip-2023-paper-abstract.md, lines 244-246). Liquid metal circulation power feeds directly into the recirculating power fraction and therefore Q_eng, but no estimate is provided. The blanket module replacement strategy — 90 modules accessible from an upper port via three-point suspension crane — is architecturally specified but carries no time estimate or cost projection for remote handling operations in an activated environment.
 
-The HESTIA plasma design assumes a confinement improvement factor H = 1.3 above the ISS04 empirical stellarator scaling law. This assumption is not experimentally validated for HESTIA-class parameters; it relies on the expectation that center-peaked ECH heating and optimized magnetic configuration will improve over the LHD database. If H = 1.0 (no improvement over ISS04), the required plasma volume would increase significantly, directly inflating capital cost. A ±30% uncertainty in H translates to a first-order uncertainty in machine size and hence construction cost.
+C220101 (blanket), C220102 (shield), and C220108 (divertor) costs are tightly coupled to the liquid metal system's performance and durability, yet no component-level cost breakdown exists.
 
-**3. Liquid metal pump power — explicitly unknown (Impact: High)**
+**3. 250 GHz gyrotron array scaling and efficiency (medium impact, medium uncertainty)**
 
-The AIP paper acknowledges that the LM blanket circulation pump power is "quite unknown at this moment" [1]. This is a primary recirculating power component: with Q_eng = 2.0 (net electric / recirculating = 1.0 by definition), even modest LM pump power affects the achievable net output. The GALOP (gas-driven) pump eliminates rotating components for reliability, but its power consumption at plant-scale LM circulation rates through 90 modules has not been calculated. This directly affects Q_eng, gross electric sizing, and BOP design.
+HESTIA requires 60× 250 GHz, 1 MW, CW gyrotrons distributed across 10 ports for ECRH heating. The AIP paper states: "At the moment, only the development of a 1 MW 170 GHz gyrotron can be found in the ITER program, and a 250 GHz-1 MW-CW gyrotron does not exist" (aip-2023-paper-abstract.md, line 261). The design assumes 50% wall-plug efficiency, matching the ITER 170 GHz gyrotron target. However, higher frequency typically degrades efficiency, and CW operation at 1 MW is undemonstrated at 250 GHz. The steady-state ECH power requirement (84 MW external, per the AIP paper's Q_eng = 2.0 calculation) drives a large auxiliary power system, and any shortfall in efficiency directly reduces net electric output. Helical Fusion lists R&D on "250 GHz, 1 MW, CW gyrotrons" and "integrated simulations targeting 24-hour operating conditions" among active development areas, but no prototype timeline or cost estimate is public.
 
-**4. Novel power conversion (sCO₂ at >50% efficiency) — undemonstrated at scale (Impact: High)**
+C220104 (supplementary heating) cost depends on the per-gyrotron unit cost, which is unquoted. ITER's 170 GHz gyrotrons are estimated at several million dollars each; 60 units at comparable pricing would represent hundreds of millions of dollars, but the 250 GHz variant may carry a development premium or, conversely, benefit from future mass production.
 
-The HESTIA design targets >50% thermal-to-electric conversion efficiency via an sCO₂ Brayton cycle at 800–1200 K working temperature. This efficiency is central to achieving Q_eng = 2.0 at Q (plasma) = 13 — a modest plasma gain. If conventional steam Rankine (~33–38% efficiency) is substituted, Q_eng drops below 2.0, and net output decreases significantly from the 70 MWe target. In the fusion-specific engineering literature, a CO₂ recompression Brayton cycle combined with a Rankine bottoming cycle achieves 47% gross efficiency in a fusion design study [Kovari et al. 2014, arxiv-1401-4232.md §Section 4] — the highest published figure in a fusion engineering context and already at the lower edge of HESTIA's target range. The NIFS Oroshhi-2 platform has a proposed sCO₂ demonstration targeting >50% efficiency, but a 20 kWe laboratory demonstration at 20% efficiency is the current state [helical-fusion-2025-2026-updates.md]. No fusion-coupled sCO₂ demonstration exists. The Kovari review — the most comprehensive fusion-specific energy conversion survey in the available sources — concludes that "there is as yet not a fully consistent solution for engineering design, coolants and working cycle" [arxiv-1401-4232.md §Summary]. HESTIA's >50% sCO₂ target is therefore not merely a company-specific execution risk but an instance of a field-wide unsolved design problem. Furthermore, the efficiency-to-LCOE relationship has a hard failure mode: below a threshold thermal efficiency where recirculating loads exceed gross electric output, net electric approaches zero and the design cannot close — the current 20% laboratory demonstration is far below this threshold, making the risk structural rather than a continuous cost sensitivity.
+**4. Confinement enhancement assumptions (high physics impact, unvalidated)**
 
-**5. Tritium breeding ratio — 3D neutron transport calculation not yet complete (Impact: High)**
+The HESTIA physics design assumes a confinement improvement factor H = 1.3 relative to ISS04 scaling, plus a center-peaked heating effect γ_CEPI = 1.18, for a combined enhancement of ~1.5× over baseline stellarator scaling. The AIP paper states: "It should be noted that there is almost no experimental backup to support this optimized confinement" (aip-2023-paper-abstract.md, lines 206-209). The authors propose a HESTIA-Primary prototype (USD 480 million, 1990s basis) to validate the optimized magnetic configuration before committing to the full HESTIA build. If the confinement enhancement does not materialize, the plasma density must increase to maintain fusion power, risking exceedance of the Sudo density limit (already flagged as a concern in the baseline design, requiring off-axis ECH mitigation). Alpha particle confinement is assumed at ε_α = 85%, also without experimental validation. Turbulent transport is assumed negligible.
 
-The paper acknowledges that the 3D neutron transport calculation required to confirm the TBR target has not been completed as of the 2023 publication date [1]. The LM blanket uses 80 at.% Li-6 enrichment, which is extremely high (natural Li is ~7.5% Li-6; ITER TBM designs use 60–90% enrichment but at smaller coverage fractions). Whether the heliotron geometry — with its complex coil geometry, maintenance ports, and coil-occupied volume — can achieve TBR > 1.0 with the proposed LM module arrangement remains unconfirmed.
+These assumptions directly affect the fusion power achievable at fixed geometry and field strength, which in turn determines whether 70.4 MWe net electric is feasible at Q_eng = 2.0. The stated Q ~ 13 (fusion power / external heating power) is contingent on these confinement factors; if H or γ_CEPI falls short, Q_eng collapses and the plant may not reach net electricity.
 
-**6. Unconfirmed liquid metal composition (Impact: Moderate)**
+**5. Cost model inflation and currency basis (accounting challenge)**
 
-The AIP paper describes the LM first wall alloy as a tin-indium-lead-lithium mixture, with tin chosen for low vapor pressure and low hydrogen retention, and lithium providing the tritium breeding function. However, the exact composition (at.% fractions) is not publicly confirmed, and the NIFS FFHR heritage source notes the blanket material is distinct from the FLiBe used in the older FFHR line [nifs-ffhr-blanket-heritage.md]. The alloy chemistry affects tritium solubility, extraction process, MHD behavior, corrosion of structural materials, and supply chain (indium is a scarce element). This is an unresolved engineering parameter with material cost implications.
+The AIP paper's direct construction cost of USD 5 billion is based on "the actual performance of LHD and ITER at the end of the 1990s" and explicitly excludes inflation: "if this inflation is taken into account, Cdirect must be modified by a factor of 2 or more" (aip-2023-paper-abstract.md, lines 116-122). This creates a 2× to 2.5× range on the baseline capital cost (USD 10–12.5 billion in current-year dollars) before any concept-specific adjustments. The cost-per-kWh figure of $1.22/kWh (aip-2023-paper-abstract.md, line 169) is similarly stated in 1990s dollars and excludes O&M, financing, and decommissioning — it is a direct construction cost divided by total energy production over the 6.4-year reactor lifetime, not a levelized cost. Without a transparent unit-cost basis or a CAS-level breakdown, it is impossible to inflation-adjust selectively (e.g., labor vs. materials vs. R&D capitalization).
 
-**7. Small plant scale drives high specific cost (Impact: Moderate)**
+**Minor modeling challenges:**
 
-At 70–103 MWe, HESTIA is the smallest reactor design in the concept portfolio (along with compact experiments). High specific capital cost ($/kWe) at small scale is an inherent economic challenge. The concept's economic theory of value relies on steady-state operation (~80–90% availability) and fleet-manufacturing cost reductions achieving NOAK economics — a learning-curve argument that cannot be validated with current data.
+- **Pellet injection system** — 30-barrel pipe-gun DT-ice pellet injectors (10 injectors = 300 barrels total) with direct fuel gas recycling; no cost or power requirement stated.
+- **Supercritical CO2 gas turbine** — >50% thermal efficiency claimed but not yet demonstrated at fusion-relevant scale; the Oroshhi-2 platform targets 20 kWe at 20% efficiency, a 2.5× efficiency gap to commercial target.
+- **Initial tritium inventory** — the paper proposes a DD startup phase over "a few months" to breed sufficient tritium for DT operation via DD side reactions, avoiding external tritium procurement. This strategy is unproven at the kg-scale required.
+- **Enriched 6Li supply** — the design uses 80 at.% 6Li vs. natural ~8%; isotope enrichment infrastructure and cost are not addressed.
 
-**O&M placeholder:**
-No O&M cost breakdown is available in the public record. A nominal O&M estimate can be drawn from analogue stellarator plant studies (ARIES-CS: ~$50–70/kWe-yr for fixed O&M) but is not anchored to HESTIA-specific design features. Steady-state operation (no plasma restarts) should reduce unplanned outage costs relative to pulsed concepts; the integrated LM first-wall/divertor eliminates one major replacement category. However, the novel HTS coil geometry and LM blanket system introduce new O&M uncertainties with no operational precedent.
+## 3. Maturity of Key Subsystems and Components
 
----
+Subsystems are listed in ascending order of maturity (least mature first):
 
-## Section 3: Maturity of Key Subsystems and Components
+### Flexible 3D HTS Coils for Heliotron Geometry — TRL ~3–4
 
-Ordered from least mature (highest risk) to most mature.
+**Demonstrated**: October 2025 test coil achieved 40 kA at 7 T external field, 15 K, using 30-layer REBCO tape in an uninsulated configuration. Coil length >4 m, conductor cross-section ~3 cm. This is the "world's first demonstration of large-scale HTS coil designed for commercial reactor" using uninsulated design (helical-fusion-2025-2026-updates.md). A custom coil winding machine developed with Sugino Machine is completed and will be transported to the demonstration site in 2026 for on-site assembly of Helix HARUKA (the integrated demonstration device). REBCO tape stacking, helical winding, and low-melting-point alloy impregnation have been validated at subscale.
 
----
+**On paper only**: Full-scale continuous helical coils at 8 T coil center field (9 T at plasma center) over ~8 m major radius, operating at 20 K with 400 A/mm² current density in 20 T background. Structural delamination resistance and quench protection for uninsulated HTS coils under combined high-field + neutron irradiation + cyclic thermal loads remain undemonstrated. The two helical coils are each ~100+ meters of complex 3D conductor path; no coil of this length and geometry complexity has been built.
 
-**250 GHz / 1 MW Continuous-Wave Gyrotrons — TRL 1–2**
+**Missing at scale**: Radiation-hardened REBCO insulation and adhesive layers for 14.1 MeV neutron environment. Long-term mechanical fatigue data for impregnated REBCO tape under stellarator-specific stress profiles. Supply chain capacity for km-scale continuous REBCO tape at consistent critical current density (current global production is thousands of km/year; a single HESTIA-class reactor requires an unspecified but likely multi-km length for the two helical coils plus auxiliary coils). Manufacturing throughput for multi-hundred-meter continuous helical windings without joints (joints in HTS coils are high-resistance failure points; the heliotron design minimizes them by using continuous coils, but this shifts risk to the winding process).
 
-- **Demonstrated**: The highest-frequency, highest-power CW gyrotrons currently available for stellarator heating are ~154 GHz at <0.5 MW CW, developed for LHD at NIFS. ITER uses 170 GHz, 1 MW CW gyrotrons — but these operate at lower frequency and in a different power regime. No 250 GHz / 1 MW CW gyrotron has been demonstrated anywhere [1].
-- **On paper only**: The HESTIA ECH system requires 60 such gyrotrons delivering a total of ~20 MW absorbed power (implying ~40 MW wall-plug assuming ~50% efficiency). The frequency (250 GHz) is required by the higher toroidal field and plasma density of HESTIA relative to LHD; it cannot be substituted with available technology.
-- **Missing at scale**: The gyrotron technology itself must be invented at the required frequency-power-continuous-wave combination. Joint R&D with QST (Japan Atomic Energy Agency) is ongoing but has not achieved 250 GHz / 1 MW CW. This is the highest-TRL-risk single subsystem in the concept.
+### 250 GHz, 1 MW, CW Gyrotrons — TRL ~2–3
 
----
+**Demonstrated**: 170 GHz, 1 MW gyrotrons for ITER are under development and tested at subscale. ECRH at lower frequencies (110–140 GHz) and lower power (0.5–1 MW, pulsed or short-pulse CW) is routine on existing stellarators (LHD, W7-X). Joint research between Helical Fusion and QST (Japan's National Institutes for Quantum Science and Technology) on 250 GHz, 1 MW, CW gyrotrons is ongoing, with "integrated simulations targeting 24-hour operating conditions" (helical-fusion-2025-2026-updates.md).
 
-**Liquid Metal Blanket (Tin-Indium-Lead-Lithium Alloy) — TRL 2–3**
+**On paper only**: 250 GHz frequency at 1 MW CW power. The AIP paper explicitly states: "a 250 GHz-1 MW-CW gyrotron does not exist" (line 261). The efficiency target of 50% wall-plug is borrowed from the ITER 170 GHz gyrotron program but is unvalidated at 250 GHz. Higher frequency typically increases cavity losses and requires tighter beam quality, both of which can degrade efficiency.
 
-- **Demonstrated**: Lab-scale liquid metal loop experiments at NIFS using FLiNaK and LiPb (Oroshhi-2 platform). The GALOP gas-driven pump has been tested at NIFS as a proof-of-concept for the pumping mechanism [helical-fusion-technology-overview.md]. Liquid lithium and LiPb blanket concepts have been studied extensively in fission breeder reactor programs. The ITER Pb-17Li WCCB TBM provides a partial analogy for liquid metal blanket module design.
-- **On paper only**: 90 modular tin-indium-lead-lithium LM blanket modules covering the complete plasma-facing first wall including divertor strike zones in a heliotron geometry. Tritium breeding from the alloy's lithium fraction at 80 at.% Li-6 enrichment. Simultaneous first-wall cooling, tritium breeding, and neutron shielding in a single flowing circuit. The specific alloy chemistry's tritium solubility, extraction kinetics, and corrosion behavior with the novel non-magnetic structural steel is at laboratory study stage.
-- **Missing at scale**: 14 MeV neutron irradiation of the tin-indium alloy at fusion-relevant fluences (tin and indium activation behavior under fusion neutron spectrum is not well characterized). Industrial-scale LM circulation pump at plant-scale flow rates. Tritium extraction from a multi-component low-melting-point alloy (distinct from the LiPb or FLiBe extraction literature). Indium supply at the scale required for 90 large modules (indium is a byproduct of zinc smelting with ~900 tonnes/year global production — plant-scale demand could be material relative to supply).
+**Missing at scale**: Continuous-wave operation at 1 MW and 250 GHz in a compact, manufacturable package suitable for 60-unit deployment. Long-term reliability under neutron/gamma background from the reactor (gyrotrons in HESTIA are distributed across 10 ports; shielding effectiveness determines whether electronics survive). Manufacturing supply chain for 250 GHz gyrotrons at scale (current suppliers: CPI Canada, Thales, Toshiba, Gycom Russia; none has produced a 250 GHz, 1 MW CW unit).
 
----
+### Liquid Metal Free-Surface First Wall and Integrated Blanket — TRL ~3–4
 
-**Non-Magnetic Structural Steel (High-Mn Austenitic) — TRL 2–3**
+**Demonstrated**: GALOP (Gas-driven Liquid metal blanket test system) at Helical Fusion validates a gas-driven pump with no rotating components, developed with Sukegawa Electric. Test system dimensions ~4m × 2m × 2m (helical-fusion-2025-2026-updates.md). NIFS Oroshhi-2 test platform includes LiPb twin-loop systems operational since 2013–2014 and FLiNaK (another molten salt) loops, providing liquid-metal handling infrastructure heritage. High-manganese alumina-formed austenitic steel with silicon addition (developed with Tohoku University, 2024) is characterized as "non-magnetic, low-activation, corrosion-resistant at high temperatures" (helical-fusion-2025-2026-updates.md).
 
-- **Demonstrated**: High-manganese alumina-forming austenitic steel with silicon addition has been developed as a collaboration between Helical Fusion and Tohoku University's Institute for Materials Research, with characterization published in 2024 [nifs-ffhr-blanket-heritage.md; dossier.md]. Material properties (non-magnetic, low activation, high-temperature corrosion resistance) have been assessed at small-scale coupon level.
-- **On paper only**: Standard reduced-activation ferritic-martensitic (RAFM) steels used in ITER, EU-DEMO, and most MFE design studies are ferromagnetic, which would generate unacceptable error fields in the precision magnetic geometry of helical coils. HESTIA's blanket structural material must be non-magnetic — a requirement that eliminates the most mature structural materials database in fusion. The high-Mn steel is a new material with no nuclear qualification history.
-- **Missing at scale**: Neutron irradiation database for high-Mn austenitic steel under fusion-relevant 14 MeV neutrons. The paper acknowledges known issues with high-Mn steels in neutron environments (elevated decay heat, potential swelling) and assesses these as manageable at HESTIA's low fusion power density (~tens of MW) — but this is an assumption, not a demonstration [1]. Industrial-grade production at nuclear-material purity, welding procedures, and long-term creep data are absent.
+**On paper only**: Free-surface liquid metal flow over the entire first wall (including divertor strike zones) at steady-state under 14.1 MeV neutron wall loading and MW/m² heat flux, without excessive evaporation, MHD instabilities, or splashing. The AIP paper specifies a tin-indium alloy with lead and lithium, but warns of tin's high corrosivity to steel and acknowledges that "hydrogen retention in tin-lead-lithium alloy will be investigated in future studies" (line 228). The porous titanium or high-manganese steel first wall fabricated via 3D printing with anti-corrosion oxide layers and controlled wettability is a design concept but not a demonstrated component.
 
----
+**Missing at scale**: Integrated blanket module tested under prototypical fusion neutron fluence (no facility yet provides 14 MeV neutrons at fusion-relevant flux over m²-scale areas for extended durations). Liquid metal circulation pump power consumption at reactor scale ("quite unknown at this moment," per the AIP paper, line 245). Remote handling and replacement of 90 activated blanket modules via upper-port access — demonstrated at ITER mock-up scale for tokamak blankets but not validated for stellarator geometry or liquid-metal-wetted components. Tritium extraction from liquid metal at kg/day rates with <1% losses. Corrosion-resistant coating longevity under combined neutron damage + liquid metal attack over multi-year campaigns.
 
-**sCO₂ Brayton Power Conversion at Fusion Outlet Temperature — TRL 3–4**
+### Tritium Fuel Cycle with DD Bootstrap Startup — TRL ~3–4
 
-- **Demonstrated**: sCO₂ Brayton cycles are commercial at MW-to-GW scale in fossil power and CSP plants, with demonstrated efficiencies of ~40–47% at temperatures accessible to those systems. In the fusion-specific literature, a CO₂ recompression Brayton cycle with a Rankine bottoming cycle achieves 47% gross efficiency in a fusion design study [Kovari et al. 2014, arxiv-1401-4232.md §Section 4] — the authoritative upper bound from a fusion engineering context. The NIFS Oroshhi-2 platform includes a proposed sCO₂ demonstration plan targeting >50% efficiency at 800–1200 K (Ishiyama & Tanaka 2019). A 20 kWe demonstration at 20% efficiency has been assessed as feasible [helical-fusion-2025-2026-updates.md]. This efficiency gap (20% demonstrated vs. >50% target) reflects the challenge of reaching high turbine inlet temperatures with fusion-compatible heat exchanger materials.
-- **On paper only**: >50% sCO₂ Brayton cycle integrated with a LM primary blanket circuit at 800–1200 K inlet temperature. The interface between the flowing LM (tin-indium alloy with tritium inventory) and sCO₂ secondary loop requires tritium-impermeable heat exchanger materials — an unsolved materials integration problem.
-- **Missing at scale**: Tritium permeation suppression in LM-to-sCO₂ heat exchangers (tritium permeates readily through steel; sCO₂ at these temperatures increases permeation rate). Integration with the LM primary circuit chemistry (tin-indium alloy corrosiveness to heat exchanger alloys at 800–1200 K). Long-duration sCO₂ turbine reliability with fusion-relevant thermal cycling profile. The sCO₂ efficiency target is an aspiration; if only ~40% is achievable, Q_eng drops below the published 2.0 figure.
+**Demonstrated**: Lab-scale tritium handling, permeation barriers, and extraction from liquid breeders. LHD and historical D-T tokamaks (JET, TFTR) have handled gram quantities of tritium. The AIP paper proposes a DD startup operation to self-produce tritium inventory via DD side reactions (D+D → T+p, followed by T decay to He3 over months), avoiding the need for external tritium procurement beyond startup fuel.
 
----
+**On paper only**: DD operation at sufficient density and confinement time to breed 1+ kg of tritium via DD side reactions within "a few months," then transition to DT operation once the inventory is sufficient. The DD-to-DT transition itself — managing the shift in plasma parameters (reactivity, ash, heating requirements) — is operationally untested.
 
-**WISE HTS Helical Coil System at Reactor Scale — TRL 3–5**
+**Missing at scale**: Closed-loop, kg/day tritium processing at >99% retention efficiency. Real-time tritium accountancy in a liquid metal blanket system (tritium permeates through metals; tracking inventory vs. loss requires continuous monitoring and control). Industrial-scale lithium isotope enrichment for 80 at.% 6Li (current global capacity for >90% 6Li is limited to Russia and China using mercury-based processes banned in the West; the AIP paper does not address this supply chain bottleneck).
 
-- **Demonstrated**: October 2025 milestone: 40 kA at 7 T external field, 15 K, in an uninsulated large-scale (>4 m length, ~3 cm cross-section) WISE REBCO coil — the world's first demonstration of this coil type [dossier.md]. The WISE (Wound and Impregnated Stacked Elastic tapes) conductor concept: REBCO tapes stacked for flexibility, wound into the helical geometry while pliable, then impregnated with a low-melting-point alloy for structural rigidity. A dedicated coil manufacturing machine was completed with Sugino Machine [dossier.md].
+### Supercritical CO2 Gas Turbine for Fusion Primary Heat — TRL ~4–5
 
-> "Helical Fusion has demonstrated the world's first successful demonstration of uninsulated large-scale HTS conductor-based coil achieving 40 kA at 7T"
-> — helical-fusion-2025-2026-updates.md, §HTS Coil Milestone
+**Demonstrated**: Supercritical CO2 Brayton cycles exist at pilot scale in non-nuclear applications (waste heat recovery, concentrating solar thermal). The NIFS Oroshhi-2 test platform includes a planned sCO2 turbine demonstration at 20 kWe and 20% efficiency (nifs-ffhr-blanket-heritage.md, line 50). sCO2 turbine technology for fission applications is at TRL 5–6 (DOE funding for demonstrations, but no commercial deployment).
 
-- **On paper only**: Full-scale reactor helical coils at the HESTIA geometry (R₀ = 7.8 m, 8 T at coil center). The October 2025 test coil is a prototype element; a complete reactor coil set would require winding REBCO tapes in continuous helical paths at a scale orders of magnitude larger. Quench protection for uninsulated HTS coils at reactor scale and in a neutron environment. Coil alignment tolerances required for the precise magnetic field geometry of a heliotron.
-- **Missing at scale**: REBCO tape performance under combined 14 MeV neutron irradiation + cyclic thermal loads at 20 K. The WISE impregnation alloy (low-melting-point alloy) behavior under fast neutron flux. Industrial production of kilometer-length continuous helical coils for two reactor coils per machine. Validated manufacturing tolerances for the complex 3D coil geometry at HESTIA scale.
+**On paper only**: >50% thermal efficiency at 800–1200 K working temperature (helical-fusion-2025-2026-updates.md, line 51) for a fusion primary heat source, operating continuously in a tritium-contaminated environment. The 2.5× efficiency gap between the Oroshhi-2 demonstration target (20%) and the HESTIA commercial target (>50%) is large. High-temperature heat exchangers compatible with liquid metal coolant and sCO2 working fluid, with tritium containment, are in the design phase but not built.
 
----
+**Missing at scale**: MW-to-GW scale sCO2 turbines with integrated tritium barrier coatings, long-term reliability under neutron activation of working fluid and structural components, and maintenance protocols for contaminated turbomachinery. Standard Rankine steam cycles are TRL 8–9 for fusion applications (ITER will use one); sCO2 carries a 20–30% efficiency advantage but adds development risk.
 
-**ECRH Heating at Pilot Plant Scale (existing frequency/power) — TRL 5–6**
+### Reactor Core Plasma Optimization and Steady-State Control — TRL ~5–6
 
-- **Demonstrated**: MW-class gyrotrons at 170 GHz (ITER) and 154 GHz (LHD) are operational. The physics of ECH plasma heating and startup is mature and well-demonstrated on LHD and other stellarators. The 250 GHz frequency requirement is the gap (see TRL 1–2 subsystem above); if operating at a reduced plasma density or field that permits lower-frequency ECRH, the heating subsystem maturity would increase to TRL 7–8 — but this would change the operating point from the HESTIA design.
-- **On paper only**: 20 MW continuous-wave ECRH at 250 GHz on a burning plasma.
-- **Missing at scale**: 250 GHz CW gyrotrons (the blocking item); long-duration ECRH antenna/launcher surviving neutron and gamma background in a burning plasma heliotron.
+**Demonstrated**: LHD has operated since 1998, demonstrating heliotron confinement scaling, steady-state capability (multi-hour discharges), and beta limits. The heliotron magnetic configuration is validated at ~4 m major radius, ~0.6 m minor radius, 3 T on-axis field, with H ~ 1 (no enhancement). ECRH heating and pellet fueling are routine. Stellarator disruption immunity is proven (stellarators have no plasma current, therefore no current-driven instabilities or disruptions).
 
----
+**On paper only**: Confinement enhancement factor H = 1.3 × γ_CEPI = 1.18 ≈ 1.5× improvement over ISS04 scaling in an optimized heliotron configuration. Alpha particle confinement ε_α = 85%. Turbulent transport suppression. The AIP paper states: "there is almost no experimental backup to support this optimized confinement" (line 207). Density operation near or above the Sudo density limit n_Sudo (baseline design exceeds it; mitigation via off-axis ECH is proposed but untested). Steady-state burn at fusion-relevant density and temperature in a heliotron (LHD has not run DT and has not demonstrated burning plasma).
 
-**Remote Maintenance (Heliotron Geometry) — TRL 4–5**
+**Missing at scale**: Year-long continuous DT burn campaigns with ~3-month maintenance intervals as claimed for HESTIA (lines 315, 363). Integrated control of heliotron plasma at Q ~ 13 with ECRH-only heating (no NBI for profile control, no ICRH for ion heating). The HESTIA-Primary prototype (USD 480 million, 1990s basis) is proposed specifically to validate the optimized confinement before full HESTIA construction; without it, the physics case rests on simulation.
 
-- **Demonstrated**: ITER-class remote handling systems for tokamak blanket modules and divertor replacement are at TRL 6. Helical Fusion explicitly lists "maintenance robots" as one of 14 collaborative R&D priorities [helical-fusion-technology-overview.md]. The heliotron coil geometry constrains access differently than a tokamak — the two continuous helical coils form a complex 3D envelope around the plasma, requiring bespoke access paths. The 90 modular LM blanket modules are designed for crane access from upper ports without robotic in-vessel entry [1].
-- **On paper only**: Complete remote handling scheme for a heliotron at HESTIA scale, including coil maintenance, blanket module extraction through upper ports, and diagnostics/instrumentation access through the helical coil geometry.
-- **Missing at scale**: Validated maintenance cycle time consistent with >80% availability target. Radiation-hardened robotics customized for heliotron access geometry. Activated blanket module handling and storage system.
+### Remote Handling for Modular Liquid-Metal-Wetted Blanket — TRL ~4–5
 
----
+**Demonstrated**: ITER remote handling prototypes and full-scale mock-ups for tokamak blanket/divertor exchange under activation. The HESTIA design specifies 90 blanket modules accessible via upper port with three-point suspension crane (aip-2023-paper-abstract.md, lines 199-202). The stellarator geometry simplifies access relative to tokamaks (no tight inboard clearance), but liquid-metal-wetted components introduce drying, decontamination, and handling challenges not present in solid-breeder or water-cooled designs.
 
-**Balance of Plant (Conventional Components) — TRL 7–9 (BOP), TRL 4–5 (LM–sCO₂ Integration)**
+**On paper only**: Remote handling of liquid-metal-contaminated blanket modules in a stellarator geometry at >80% plant availability. The 3-month maintenance interval claim requires that 90 modules can be inspected, removed if needed, replaced, and re-commissioned within ~10–12 weeks. No time-motion study or operational simulation is provided.
 
-- **Demonstrated**: Conventional turbomachinery, cooling towers, electrical switchgear, and grid connection infrastructure are TRL 9 — commercially mature. The BOP challenge is specific to the LM primary loop interface with the sCO₂ secondary loop (see sCO₂ section above).
-- **Missing at scale**: Tritium-impermeable primary-to-secondary heat exchangers for a tin-indium LM primary circuit. BOP integration with the solar H₂ production system used for startup power and HTS magnet cooling (a unique feature of the HESTIA design).
+**Missing at scale**: Radiation-hardened robotics and tooling for liquid-metal systems (liquid metal residue on module surfaces complicates handling; tin and lead are particularly difficult to clean). Long-term reliability of remote handling equipment under stellarator-specific neutron/gamma fields (different activation spectrum than tokamaks due to different shielding geometry).
 
----
+### Cryogenics and Thermal Management (20 K Helium Gas Cooling) — TRL ~6–7
 
-## Section 4: Key Materials and Supply Chain Considerations
+**Demonstrated**: Large-scale helium refrigeration plants exist (ITER-scale at 4 K for LTS magnets). Helium gas cooling at 20 K for HTS is less common but has been demonstrated at subscale (CFS SPARC magnets target similar temperatures). The AIP paper claims 20 K gas cooling reduces helium consumption by 75% relative to 4 K liquid helium, with cryogenic efficiency of 2% (line 217).
 
-**REBCO HTS Tape (WISE format) — Critical Bottleneck, Shared with HTS Concept Family**
+**On paper only**: Multi-hundred-meter continuous helical HTS coils cooled to 20 K uniformly, with thermal load from 14.1 MeV neutron heating in the coil structure despite shielding. The AIP paper flags neutron shielding for HTS coils as a concern: "requires blanket expansion or new shield materials for FOAK plant lifetime" (line 325). If neutron heating degrades cryogenic efficiency below 2%, the refrigeration power scales unfavorably.
 
-The WISE conductor requires REBCO tapes wound into complex continuous helical geometry while flexible, then impregnated. REBCO global production capacity is on the order of a few thousand km/year across all manufacturers [21-spherical-tokamak-hts.md, Section 4]. Unlike tokamak coils, which can use shorter sections joined at demountable joints, the HESTIA concept uses two continuous helical coils — requiring much longer unbroken conductor runs. The tape demand for HESTIA's two reactor coils at R₀ = 7.8 m has not been published, but the helical path length scales roughly as 2π × R₀ × turns per helical period × number of periods × conductor cross-section layers. For a device of this scale, tens of thousands of km of tape may be required for a single machine. At current tape costs of ~$30–100/kA-m, even modest tape demands create multi-hundred-million-dollar cost items. The NOAK cost target for commercial viability (~$10/kA-m) has not been reached by any supplier.
+**Missing at scale**: Integrated cryogenic system for a stellarator with HTS magnets, liquid metal blanket (hot side ~800–1200 K), and sCO2 power cycle — three distinct thermal zones requiring isolation and load management. Experience base exists for fission (LWRs) and LTS tokamaks, but the HTS + liquid metal + sCO2 combination is novel.
 
-**Liquid Metal Alloy (Tin-Indium-Lead-Lithium) — Novel, Supply-Constrained on Indium**
+### Vacuum Vessel and In-Vessel Structures — TRL ~6–7
 
-The LM blanket alloy is not a standard industrial material. The key supply concern is **indium**: global production is ~900 tonnes/year, dominated by refining as a byproduct of zinc ore smelting. Primary applications include ITO (indium tin oxide) for flat-panel displays and photovoltaics. Fusion-scale demand for 90 large LM blanket modules could be material relative to global supply, depending on the indium fraction of the alloy. No supply chain exists for fusion-grade indium-containing alloy production. Lead in the alloy creates low-level radioactive waste from neutron activation (Pb-208 → Pb-207 via (n,2n)); this does not affect supply but affects blanket module disposal.
+**Demonstrated**: LHD vacuum vessel and support structure are operational at full scale. ITER vacuum vessel sectors are under construction (double-wall stainless steel). Stellarator vacuum vessel fabrication is more complex than tokamak (3D shaping) but is a known process.
 
-**Li-6 Enrichment (80 at.% Target) — Globally Limited, Highest Enrichment in Portfolio**
+**On paper only**: Vacuum vessel integrating ports for 60 gyrotrons (distributed across 10 ports), 10 pellet injectors (30-barrel arrays), upper-port blanket module access, and liquid metal blanket attachment points. The AIP paper does not provide a vessel mass estimate or structural analysis.
 
-The HESTIA TBR design requires 80 at.% Li-6 enrichment [1], which is at the high end of any fusion blanket design (most designs target 40–90% but at larger coverage fractions or thicker blanket geometries). Natural lithium is ~7.5% Li-6. Global Li-6 enrichment capacity is constrained: Russia and China operate legacy mercury-amalgam separation processes (banned elsewhere for environmental reasons); Western alternatives are in development but not at industrial scale. An 80 at.% target for 90 large blanket modules represents a significant enrichment demand, and the complex heliotron geometry (with coil intrusions) that necessitates high enrichment also suggests the TBR sensitivity to Li-6 fraction will be high — a shortfall in enrichment quality directly threatens tritium self-sufficiency.
+**Missing at scale**: Manufacturing a heliotron vacuum vessel at ~8 m major radius with port penetrations that maintain field accuracy and minimize neutron streaming. Activation and remote maintenance of vessel internals. These are incremental challenges, not fundamental gaps.
 
-**Non-Magnetic Structural Steel (High-Mn Austenitic) — New Industrial Material**
+## 4. Key Materials and Supply Chain Considerations
 
-High-Mn austenitic steel with alumina-forming additions is being developed specifically for HESTIA [dossier.md; Tohoku University collaboration, 2024]. No industrial production process, nuclear qualification, or procurement baseline exists. The material must be produced at purity suitable for primary circuit service at 800–1200 K, with demonstrated weldability and long-term microstructural stability under neutron irradiation. This is a material that must be invented and qualified in parallel with the reactor development — a supply chain that does not yet exist.
+### REBCO Superconducting Tape (critical, supply-constrained)
 
-**Helium Supply (Reduced vs. LTS) — Advantage Relative to LTS Designs**
+Global REBCO production capacity is currently thousands of kilometers per year, dominated by Shanghai Superconductor Technology, Faraday Factory Japan, and Commonwealth Fusion Systems. A single HESTIA-class reactor requires an estimated multi-km length for two continuous helical coils plus auxiliary coils (exact length not stated in sources, but a heliotron at ~8 m major radius with two helical windings implies >>1 km per coil when accounting for 3D path length). Current REBCO tape pricing ranges from $30–100/kA-m, but this assumes planar winding; the WISE conductor's flexibility and impregnation process add unknown markup. Critical current density must reach 400 A/mm² at 20 K in 20 T (aip-2023-paper-abstract.md, line 219) — significantly higher than commercially-available tape performance in 2025. Scaling production by one to two orders of magnitude while maintaining Jc uniformity and reducing cost to enable commercial viability is a shared challenge with all HTS fusion concepts.
 
-Unlike LTS magnets requiring liquid helium at 4 K, HESTIA's WISE HTS coils operate at 20 K cooled by helium gas — dramatically reducing helium consumption per unit of cryogenic cooling. The AIP paper cites global helium scarcity as a motivation for the HTS-at-20K design choice [1]. This is a genuine supply chain advantage over older stellarator designs (W7-X uses LTS at 4 K), though helium supply uncertainty (concentrated in US, Qatar, Russia) remains a background risk for all cryogenic fusion systems.
+**Supply chain pinch point**: Only a few global suppliers exist, and REBCO tape production requires rare-earth elements (yttrium, sometimes gadolinium or other lanthanides as substitutes). China controls most rare-earth refining capacity. A single HESTIA reactor competes with tokamak and mirror concepts for the same tape supply; fleet deployment (multiple plants) would require gigawatt-scale tape production infrastructure that does not exist in 2025.
 
-**Tritium (D-T Startup Inventory) — Standard D-T Constraint**
+### Tritium (critical, supply-constrained)
 
-The global tritium inventory is approximately 25–30 kg, produced primarily as CANDU byproduct, decaying at 5.5%/year [21-spherical-tokamak-hts.md, Section 4]. A startup inventory of ~1 kg at >$35,000/g is required for a 70 MWe plant. The HESTIA TBR target (>1.0, achieved with 80 at.% Li-6) provides self-sufficiency margin if the blanket performs as designed. At 50–70 MWe scale, tritium consumption per unit time is modest relative to large tokamaks, reducing the sequencing constraint. However, the TBR calculation has not been completed (see Section 2, Challenge 5).
+The global civilian tritium inventory is approximately 25–30 kg, produced primarily as a byproduct of CANDU heavy-water reactors. A single HESTIA startup under the proposed DD-bootstrap scheme would still require D-D fuel (deuterium is abundant) and ~months of DD operation to breed 1+ kg of tritium via DD → T + p side reactions, followed by T → He3 decay over additional months. Once DT operation begins, tritium self-sufficiency via liquid metal blanket breeding (TBR > 1) is mandatory — external tritium supply is insufficient to support even a single plant's steady-state consumption (~kg/year burn rate at Q ~ 13). The AIP paper assumes 80 at.% 6Li enrichment for the blanket; global enriched 6Li production capacity is small and concentrated in Russia and China (mercury-based enrichment processes banned in the West). Lithium supply itself is abundant (battery industry scale), but isotope enrichment is a bottleneck. Tritium handling, permeation control, and inventory accountancy in a liquid metal blanket system are complex — tritium permeates through metals and escapes unless barriers are effective. Current market rate for tritium exceeds $35,000/kg, but this is irrelevant for fusion (no external market can supply kg-scale continuous burn; self-breeding is existential).
 
-**Indium Note — Potential Sole-Source Risk**
+**Sequencing constraint**: The first few DT fusion plants worldwide must demonstrate tritium self-sufficiency (TBR > 1.0 validated in operation) before fleet deployment can proceed. If HESTIA or any other DT plant fails to breed sufficient tritium, the concept is economically and physically non-viable.
 
-If indium constitutes even 5–10 at.% of the LM alloy and 90 modules contain several tonnes of alloy each, the indium demand for a single HESTIA could represent a few percent of annual global production. Unlike REBCO or FLiBe, indium demand for fusion has not been assessed in any published supply chain study. This is a potentially blocking gap if the alloy composition requires significant indium content.
+### Liquid Metal Blanket Inventory (tin, lead, lithium, indium)
 
----
+The AIP paper specifies a tin-indium alloy with lead (neutron multiplication) and lithium (tritium breeding). Tin global production is ~300 kt/year (dominated by China, Indonesia); a single reactor's blanket inventory is estimated at multi-hundred tonnes (exact figure not stated, but liquid-metal-cooled reactors typically carry 100–1000 t of coolant depending on geometry and flow rate). Indium is a minor metal produced at ~1 kt/year globally; pricing is volatile (~$200–500/kg historically). Lead is abundant (~5 Mt/year global production, <$2/kg). Lithium metal production for batteries is ~100 kt/year and growing; fusion-scale blanket demand is a small fraction of this. The supply constraint is isotope enrichment (80 at.% 6Li) as discussed above, not lithium availability.
 
-## Section 5: LCOE-Relevant Parameters
+**Corrosion concern**: "Tin is highly corrosive to steel and therefore careful consideration for corrosion protection is required" (aip-2023-paper-abstract.md, line 227). The blanket structural material is high-manganese austenitic steel developed with Tohoku University, but long-term corrosion resistance under neutron damage + liquid metal attack is unproven. If corrosion rates are high, blanket module lifetime shortens, increasing replacement frequency and O&M costs. The first wall uses a 3D-printed porous titanium or high-manganese steel layer with anti-corrosion oxide coating (aip-2023-paper-abstract.md, lines 233-234); titanium is corrosion-resistant but expensive ($20–40/kg for Ti-6Al-4V alloy, higher for nuclear-grade). Fabrication via additive manufacturing adds cost but enables complex geometries for liquid metal flow channels.
 
-### Available Parameters
+### High-Manganese Austenitic Steel (emerging, supply-developing)
 
-| Parameter | Value/Range | Source | Confidence | Notes |
-|-----------|-------------|--------|------------|-------|
-| Major radius (R₀) | 7.8 m | aip-2023-paper-abstract.md §Table I | high | HESTIA FPP design point |
-| Magnetic field at coil center | 8 T | aip-2023-paper-abstract.md §II-B | high | Target coil field; ~9 T at plasma center |
-| Plasma gain Q (FPP) | ~13 | aip-2023-paper-abstract.md §Abstract, §V | high | Design target; enables steady-state without large current-drive recirculation |
-| Engineering gain Q_eng (FPP) | 2.0 | aip-2023-paper-abstract.md §Table I | medium | Gross electric 139 MW, net 70 MWe; sensitive to sCO₂ efficiency assumption |
-| Fusion power (FPP) | ~260 MW | aip-2023-paper-abstract.md §Table I | medium | Derived from Q~13 and heating power; paper does not separately tabulate heating power |
-| Gross electrical output (FPP) | ~139 MWe | aip-2023-paper-abstract.md §F | medium | Required to achieve 70 MWe net at Q_eng = 2.0 |
-| Net electrical output (FPP) | 70.4 MWe | aip-2023-paper-abstract.md §Table I | high | Direct Table I value |
-| Net electrical output (FOAK plant) | ~103 MWe | aip-2023-paper-abstract.md §Table I | medium | Same reactor size as HESTIA; improved Q_eng = 2.3 via technology maturation |
-| Engineering gain Q_eng (FOAK) | 2.3 | aip-2023-paper-abstract.md §Table I | medium | Improved over HESTIA via technology improvements; not detailed |
-| Thermal conversion efficiency | >50% (target) | aip-2023-paper-abstract.md §II-F; helical-fusion-2025-2026-updates.md §sCO₂ | medium | sCO₂ Brayton cycle target at 800–1200 K; only 20% demonstrated in kW-scale demo |
-| Continuous operation duration | ~1 year | aip-2023-paper-abstract.md §Abstract; helical-fusion-technology-overview.md | high | Steady-state operation before maintenance; key commercial advantage |
-| Maintenance cycle | ~3 months | dossier.md §Operation Mode; helical-fusion-technology-overview.md | high | After ~1-year burn period; yields >80% availability by cycle |
-| Availability target (FPP) | >80–85% | aip-2023-paper-abstract.md §Table I | high | Target >85% FPP, >90% FOAK; comparable to best steady-state projections |
-| Availability target (FOAK) | >90% | aip-2023-paper-abstract.md §Table I | medium | Commercial plant target; undemonstrated |
-| Direct construction cost (HESTIA FPP) | ~$5B | aip-2023-paper-abstract.md §Table I | low | 1990s LHD/ITER pricing; ×2+ inflation correction required → ~$10B in 2023 USD |
-| Direct construction cost (FOAK) | ~$3B | aip-2023-paper-abstract.md §I | low | Same 1990s price basis; inflation-adjusted ~$6B in 2023 USD |
-| Prototype (HESTIA-Primary) cost | ~$480M | aip-2023-paper-abstract.md §Table I | low | 1990s prices; inflation-adjusted ~$960M |
-| Simplified lifetime energy cost | $1.22/kWh (FPP); $1.19/kWh (FOAK) | aip-2023-paper-abstract.md §Table I | low | C_direct / (P_net × T_net); not a full LCOE — excludes O&M, fuel, financing, and inflation correction |
-| ECRH total power (wall-plug) | ~40 MW | [inferred: 20 MW absorbed × 2 for ~50% gyrotron efficiency; 60 gyrotrons at 1 MW each = 60 MW heating power, 20 MW absorbed = 3× more beam than needed unless some gyrotrons share beams] | low | The paper states "60 gyrotrons × 1 MW / 3 = 20 MW to plasma" — three gyrotrons per ECH beam [1]; wall-plug = 60 MW, absorbed = 20 MW |
-| Gyrotron count and specifications | 60 × 250 GHz / 1 MW CW | aip-2023-paper-abstract.md §II-D | high | Target spec; no 250 GHz / 1 MW CW gyrotron currently exists |
-| LM blanket modules | 90 modular units | aip-2023-paper-abstract.md §II-C | high | Upper-port crane access; no in-vessel robotics required for module extraction |
-| Li-6 enrichment required | 80 at.% | aip-2023-paper-abstract.md §IV | high | Required for adequate TBR per design assumption; TBR not yet confirmed by 3D transport |
-| WISE coil demonstrated performance | 40 kA at 7 T, 15 K | helical-fusion-2025-2026-updates.md §HTS Coil; dossier.md §Magnet Type | high | World-first uninsulated large-scale REBCO coil; October 2025 milestone |
-| HTS coil operating temperature | 20 K (gas He cooling) | aip-2023-paper-abstract.md §II-B | high | Gas He vs. LTS liquid He at 4 K; reduces He consumption |
-| H confinement improvement factor | 1.3 above ISS04 | aip-2023-paper-abstract.md §II-A | low | Unverified scaling assumption; design depends on center-peaked ECH profile |
-| Alpha particle confinement | ~85% | aip-2023-paper-abstract.md §II-A | low | Assumed based on prior FFHR analysis; "marginal" at ρ > 0.7 per paper |
-| Sudo density limit | Plasma center exceeds limit | aip-2023-paper-abstract.md §II-A | medium | Off-axis ECH mitigation proposed; acknowledged risk |
-| Company funding (total) | ~$35.3M | helical-fusion-2025-2026-updates.md | high | Series A + extension through late 2025 |
-| LM pump power | unknown | aip-2023-paper-abstract.md §II-C | N/A | "Quite unknown at this moment" — direct quote from the paper; affects Q_eng calculation |
-| Recirculating power fraction | [inferred] ~50% | [inferred: Q_eng = 2.0 → P_recirc = P_net; if gross = 139 MWe and net = 70 MWe, recirculating = 69 MWe ≈ 50% of gross; ECRH wall-plug ~43 MW + cryogenics + LM pumps + misc account for bulk of this] | low | Tight margin; >50% sCO₂ efficiency is essential to maintain Q_eng ≥ 2.0 |
-| REBCO tape cost (market) | $30–100/kA-m | 21-spherical-tokamak-hts.md §Section 4 | medium | Current market range; commercial viability target ~$10/kA-m |
-| Regulatory cost multiplier (fission-style) | 2.2× building cost | Stewart & Shirvan 2022 [cited in 21-spherical-tokamak-hts.md] | medium | Upper-bound scenario; Japan regulatory path uncertain but likely more favorable |
+The non-magnetic requirement for stellarator blanket structures (to avoid perturbing the external magnetic field) disqualifies conventional RAFM (reduced-activation ferritic-martensitic) steels, which are ferromagnetic. High-manganese austenitic steel with silicon addition (developed by Helical Fusion + Tohoku University, 2024) is non-magnetic, low-activation, and corrosion-resistant, but has never been produced at the multi-hundred-tonne scale required for a reactor blanket and vacuum vessel (helical-fusion-2025-2026-updates.md, line 43). Manganese is abundant (~20 Mt/year global production, <$2/kg); silicon is commodity-scale. The supply chain challenge is not raw material but the production of nuclear-grade alloy plates, forgings, and welded structures with controlled impurities and qualified mechanical properties under neutron irradiation. This is a shared challenge with fission advanced reactor programs (sodium-cooled fast reactors also use austenitic steels), so supply chain development is underway but not fusion-specific.
 
----
+### 250 GHz Gyrotron Components (niche, supplier-limited)
 
-### Missing Parameters
+Gyrotrons for fusion ECRH are produced by a handful of specialized suppliers: CPI Canada, Thales (France), Toshiba (Japan), Gycom (Russia). HESTIA requires 60× 250 GHz, 1 MW, CW units — a quantity that exceeds the current global installed base of fusion gyrotrons by an order of magnitude. The 250 GHz frequency does not yet exist at 1 MW CW; development requires scaling from ITER's 170 GHz units. Key components — electron guns, cavity resonators, output windows (diamond or sapphire for high-power microwave transmission) — are niche items with long lead times. Diamond windows, in particular, are grown via CVD (chemical vapor deposition) and are expensive (~$10–50k per window depending on size and quality); 60 gyrotrons imply 60 windows plus spares. This is not a fundamental bottleneck (diamond CVD is a mature process) but a manufacturing-scale question.
 
-| Parameter | Gap Type | Criticality | Notes |
-|-----------|----------|-------------|-------|
-| Inflation-adjusted construction cost | derivable | blocking | Authors explicitly flag need for ×2+ correction but do not apply it; ×2 applied here as working estimate but true NOAK cost trajectory is unknown |
-| O&M cost breakdown (fixed + variable) | truly-unknown | blocking | No O&M data anywhere in public record; no analogue stellarator plant study exists; placeholder needed for any LCOE model |
-| LM blanket pump power | truly-unknown | blocking | Explicitly flagged as unknown in primary source paper; determines true Q_eng |
-| Full LCOE (vs. simplified C_direct metric) | derivable | blocking | $1.22/kWh metric excludes O&M, fuel, financing, and inflation correction; not comparable to LCOE figures from other concepts without full build-up |
-| Tritium breeding ratio (confirmed by 3D neutron transport) | truly-unknown | blocking | 3D transport calculation not yet completed per paper; 80 at.% Li-6 assumption may not achieve TBR > 1.0 in complex heliotron geometry |
-| H confinement factor at HESTIA scale | truly-unknown | blocking | H = 1.3 is an assumption; unvalidated; drives machine size and hence all cost estimates |
-| sCO₂ thermal efficiency at plant scale | not-yet-sourced | blocking | Current demo at 20% (kW-scale); target is >50%; intermediate scale validation absent |
-| Liquid metal alloy exact composition | proprietary/not-yet-sourced | important | Sn-In-Pb-Li alloy fractions not published; affects indium supply risk, tritium chemistry, and structural material corrosion data |
-| REBCO tape total demand for HESTIA coil set | derivable | important | Not published; derivable from coil geometry (continuous helical path length × turns × layers); likely tens of thousands of km |
-| Capacity factor target | derivable | important | >80% availability implied by ~1-year burn + 3-month maintenance cycle; formal CF target not stated |
-| Alpha particle confinement at HESTIA scale | not-yet-sourced | important | 85% assumption from prior FFHR analysis; ρ > 0.7 marginality noted; required for accurate alpha heating in Q calculation |
-| Component replacement schedule (coil, blanket modules) | truly-unknown | important | LM blanket modules replaceable via crane; no replacement interval given; affects availability and maintenance OPEX |
-| Power conversion cycle (confirmed baseline) | proprietary/not-yet-sourced | important | sCO₂ Brayton is directional evidence from 3 independent indicators; no source explicitly confirms this as HESTIA baseline |
-| Gyrotron wall-plug efficiency at 250 GHz | truly-unknown | important | 250 GHz gyrotrons do not exist; efficiency cannot be measured; ~50% is an analogue from lower-frequency gyrotrons |
-| Startup power (solar H₂ system) cost | not-yet-sourced | nice-to-have | Unique to HESTIA design; solar H₂ used for both HTS cooling (liquid H₂ at 20 K) and startup power generation; capital cost not estimated |
+### Deuterium (commodity, abundant)
 
----
+Deuterium is extracted from water via electrolysis or Girdler-sulfide process. Global production capacity exceeds fusion demand by orders of magnitude (~1000 t/year from heavy water production for CANDU reactors and industrial applications; a single HESTIA burns <100 kg/year at steady state). Current market price ~$1000/kg; fusion fuel cost is negligible relative to capital and O&M.
 
-## Section 6: Data Gap Inventory
+### Helium (cryogenic coolant — supply concerns for 4K, less critical at 20K)
+
+The AIP paper claims 20 K gas cooling reduces helium consumption by 75% relative to 4 K liquid helium (line 217). Global helium supply has tightened due to CANDU reactor retirements and geopolitical supply concentration (Qatar, U.S., Russia dominate production). However, 20 K operation uses significantly less helium than 4 K (no liquid reservoir, lower refrigeration power), and HTS concepts overall are less helium-intensive than LTS tokamaks. This is a minor advantage relative to ITER-heritage LTS designs but not a major differentiator within the HTS concept set.
+
+### Beryllium and Ceramic Breeder Materials (N/A for liquid metal blanket)
+
+Unlike solid breeder blanket designs (ITER TBM, EU-DEMO HCPB), HESTIA's liquid metal blanket does not require beryllium neutron multiplier or lithium ceramic pebbles (Li4SiO4, Li2TiO3). This eliminates a major supply chain bottleneck: beryllium global production is ~300 t/year (Materion Corp. is dominant U.S. supplier; toxicity and limited mining infrastructure constrain expansion). Liquid metal blankets are therefore simpler from a materials sourcing perspective, though they introduce corrosion and MHD challenges instead.
+
+## 5. Design Point Parameters
+
+The following table describes the HESTIA Fusion Pilot Plant reference operating case from Miyazawa & Goto, Physics of Plasmas 30, 050601 (2023). All parameters are at the native 70.4 MWe scale.
+
+| Parameter | Value | Source | Confidence | Note |
+|-----------|-------|--------|------------|------|
+| Major radius R0 | 7.8 m | aip-2023-paper-abstract.md Table I, R_c row, HESTIA column (lines 124-134); also line 88 | high | spec key: `R0` |
+| Minor radius a | 1.87 m | aip-2023-paper-abstract.md Table I, a_0 row, HESTIA column (lines 124-134) | high | spec key: `plasma_t` (helical coil minor radius ac in source) |
+| Aspect ratio A | 4.17 | [inferred: R0/a = 7.8/1.87 ≈ 4.17] | high | informational only |
+| Elongation κ | 1.0 | [assumed for heliotron — no elongation stated; heliotrons are typically circular cross-section] | medium | spec key: `elon` |
+| On-axis magnetic field B0 | 9 T | aip-2023-paper-abstract.md §II, lines 81, 214 — "approximately 9 T at the plasma center" | high | spec key: `B` (NOT `B0` — canonical name is `B`) |
+| Peak field on conductor B_peak | 8 T (at coil center) | aip-2023-paper-abstract.md §II.B, line 214 | high | informational only — library uses on-axis B for coil sizing |
+| Plasma volume | ~287 m³ | [inferred: 2π²Raκ ≈ 2π² × 7.8 × 1.87 × 1 ≈ 287 m³] | medium | informational — library back-solves from R0, a, elon |
+| Fusion power P_fus | 250 MW | aip-2023-paper-abstract.md §II, Table I line 156 | high | informational only — `p_fus` is back-solved by library from `p_input` + `P_native`; do NOT put in spec |
+| Gross electric power P_gross | 139 MWe | aip-2023-paper-abstract.md §II, Table I line 164 | high | informational |
+| Net electric power P_net | 70.4 MWe | aip-2023-paper-abstract.md §II, Table I line 163 (must match P_native from design point block) | high | drives `P_native` spec kwarg |
+| External heating power (ECH) | 40 MW (wall-plug) | aip-2023-paper-abstract.md §II.D, lines 268-272 — "40 MW of the wall-plug electricity is required to inject 20 MW of ECH power into HESTIA" (60 gyrotrons at 1 MW each, alternately operated, 50% wall-plug efficiency) | high | spec key: `p_input` — auxiliary heating wall-plug power, NOT fusion power. Table I shows P_ECH = 20 MW delivered to plasma. |
+| Engineering gain Q_eng | 2.0 | aip-2023-paper-abstract.md §II, Table I line 165 | high | informational — library computes Q_eng internally from P_fus / (P_input + other recirculating loads) |
+| Plasma gain Q | ~13 | aip-2023-paper-abstract.md §II, lines 102, 362 — "fusion gain of about 13" | high | informational — Q = P_fus / P_external_heating_absorbed |
+| Thermal conversion efficiency η_th | >50% (target) | helical-fusion-2025-2026-updates.md §Energy Capture, line 51 — "sCO2 commercial system target >50% efficiency at 800-1200 K" | medium | spec key: `eta_th` — the 50% is aspirational; Oroshhi-2 demo targets 20% |
+| Availability / Capacity factor | >80% | aip-2023-paper-abstract.md §I and §III, lines 78, 365 — "target availability of >80%, with ~1 year continuous operation + ~3 month maintenance cycles" | medium | spec key: `availability` — steady-state stellarator advantage; no disruptions |
+| Reactor lifetime T_net | 6.4 years | aip-2023-paper-abstract.md §II, Table I line 167 | high | informational — drives total energy production calculation in AIP paper; not a standard 1costingFE input |
+| Gyrotron count and power | 60× 250 GHz, 1 MW CW gyrotrons across 10 ports | aip-2023-paper-abstract.md §II.D, lines 262-265 | high | concept-specific ECRH architecture; 60 gyrotrons operated alternately to inject 20 MW ECH continuously; 40 MW wall-plug at 50% gyrotron efficiency |
+| Pellet injector count | 10 injectors × 30-barrel pipe-gun = 300 barrels total | aip-2023-paper-abstract.md §II.E, lines 276-294 | high | concept-specific fueling; no cost or power stated |
+| Blanket module count | 90 modules, accessible via upper port | aip-2023-paper-abstract.md §II.C, lines 199-202 | high | remote handling architecture |
+| Tritium breeding ratio (TBR) | >1.0 (required for self-sufficiency) | aip-2023-paper-abstract.md §II.C, line 226 — liquid metal blanket with lithium for tritium breeding | high | spec key: `tbr` — library default TBR for liquid metal blankets is ~1.05–1.1; HESTIA paper does not state exact TBR but it must be >1.0 for DT steady-state |
+| 6Li enrichment | 80 at.% | aip-2023-paper-abstract.md §IV, lines 349-355 | high | informational — impacts blanket cost and tritium breeding performance |
+| Confinement enhancement H | 1.3 (optimized) | aip-2023-paper-abstract.md §II.A, line 147 | medium | physics assumption with "almost no experimental backup" per line 207 |
+| Center-peaked heating factor γ_CEPI | 1.18 | aip-2023-paper-abstract.md §II.A, lines 197-206 | medium | physics assumption; combined with H gives ~1.5× confinement improvement |
+| Alpha particle confinement ε_α | 85% | aip-2023-paper-abstract.md §II.A, line 209 | low | physics assumption; impacts effective Q |
+| Cryogenic cooling temperature | 20 K (helium gas) | aip-2023-paper-abstract.md §II.B, lines 214-217 | high | HTS coil cooling; 75% helium reduction vs. 4 K LTS |
+| Cryogenic system efficiency | 2% | aip-2023-paper-abstract.md §II.B, line 217 | medium | informational — efficiency of converting electrical power to cooling power |
+
+**Note on p_input and Q_eng**: The AIP paper explicitly states (lines 268-272) that 40 MW wall-plug electricity is required to inject 20 MW of ECH power into HESTIA via 60 gyrotrons operated alternately at 50% wall-plug efficiency. For the `p_input` spec kwarg, we use 40 MW as the auxiliary heating wall-plug power. The Q_eng = 2.0 stated in Table I implies P_recirculating = P_fus / Q_eng = 250 MW / 2.0 = 125 MW total recirculating power, which includes the 40 MW ECH wall-plug plus ~85 MW of other house loads (cryogenic refrigeration, liquid metal circulation pumps, controls, etc.). The library will compute these additional recirculating loads internally based on the plasma physics and engineering systems.
+
+**Note on P_native**: The design point block at the top of this analysis states P_native = 70.4 MWe, matching Table I line 163 from the AIP paper. This is the authoritative value for all model instantiations.
+
+**Note on thermal efficiency**: The sCO2 Brayton cycle target is >50% at 800–1200 K (helical-fusion-2025-2026-updates.md, line 51), but the NIFS Oroshhi-2 demonstration targets 20 kWe at 20% efficiency (line 50). The 2.5× efficiency gap creates significant uncertainty. For baseline modeling, we use η_th = 0.50 (the commercial target stated by Helical Fusion's collaborative research program) but flag this as a sensitivity parameter. If actual η_th = 0.40 (closer to conventional Rankine), P_gross = P_fus × 0.40 = 100 MWe, and P_net = 100 - 125 = -25 MWe (the plant does not reach net electricity). This sensitivity is critical.
+
+**Note on missing parameters**: The AIP paper does not provide plasma density n_e, ion/electron temperatures T_i / T_e, or energy confinement time τ_E. These can be back-calculated from P_fus, plasma volume, and confinement scaling laws, but doing so requires assuming the ISS04 stellarator scaling law plus the H = 1.3 enhancement factor. Since the library's stellarator physics module will perform this calculation internally, we do not forward-propagate inferred n_e or T_e into the spec.
+
+## 5b. Override Candidates
+
+The following candidates emerged from the per-account walkthrough of the canonical 1costingFE schema for this archetype. Six accounts justify potential overrides; all others default to library pricing.
+
+```yaml
+overrides:
+  - account: C220103
+    value: null  # no company-grounded HTS unit cost; WISE conductor pricing is proprietary and undisclosed
+    enabled: false
+    provenance: N/A
+    source: "aip-2023-paper-abstract.md §II.B, helical-fusion-2025-2026-updates.md §HTS Magnets"
+    rationale: |
+      The AIP paper and company updates describe WISE conductor (REBCO tape + impregnation)
+      but provide no unit cost ($/kg, $/kA-m, or $/coil). The October 2025 demonstration
+      validates 40 kA at 7 T in a test coil, but scaling to 8 T at plasma center over
+      7.8 m major radius with two continuous helical coils yields no cost anchor. The
+      library's default HTS coil pricing (derived from CFS ARC REBCO cost assumptions)
+      applies to planar wound tokamak coils; 3D helical winding likely carries a
+      manufacturing premium, but without a published WISE conductor price, no override
+      is justified. Leave this account at library default and flag as a major cost
+      uncertainty.
+
+  - account: C220104
+    value: null  # no per-gyrotron unit cost published
+    enabled: false
+    provenance: N/A
+    source: "aip-2023-paper-abstract.md §II.D, lines 261-264"
+    rationale: |
+      HESTIA specifies 60× 250 GHz, 1 MW CW gyrotrons. The AIP paper states "a 250 GHz-1 MW-CW
+      gyrotron does not exist" (line 261), indicating this is a development item. No unit cost
+      is provided. ITER's 170 GHz, 1 MW gyrotrons are estimated at several million dollars
+      each in published ITER cost breakdowns, but scaling to 250 GHz may increase or decrease
+      cost depending on production volume and technical maturity. The library default for
+      ECRH systems (based on ITER gyrotron costs) is the best available estimate. No override.
+
+  - account: C220101
+    value: null  # no blanket unit cost ($/kg LM, $/module) provided
+    enabled: false
+    provenance: N/A
+    source: "aip-2023-paper-abstract.md §II.C, lines 226-236"
+    rationale: |
+      The AIP paper describes a modular liquid metal blanket (90 modules, tin-indium-lead-lithium
+      alloy, 3D-printed porous first wall, high-manganese austenitic steel structure) but
+      provides no cost breakdown. The only cost figure in the paper is the lump-sum direct
+      construction cost of USD 5 billion (1990s basis, lines 116-122), which is not decomposed
+      by account. The blanket's integration of first wall + breeding + shielding functions
+      "eliminates the need for separate divertor systems" (line 234), suggesting cost savings
+      relative to tokamak blanket + divertor, but this is qualitative. Without a published
+      $/module or $/kg LM figure, no override is justified. The library's default liquid metal
+      blanket cost (derived from ARIES-AT FLiBe blanket estimates) is the best proxy.
+
+  - account: C220108
+    value: 0.0
+    enabled: true
+    provenance: direct
+    source: "aip-2023-paper-abstract.md §II.C, lines 81-84, 234-236"
+    rationale: |
+      "Individual divertor systems are not required in HESTIA. By skipping the development
+      of individual divertor systems, NBI, and ICH, which are widely recognized as the most
+      difficult issues in fusion reactor development, a fast-track plan is possible."
+      The liquid metal free-surface first wall serves the divertor function by flowing over
+      the plasma-facing surfaces and absorbing heat/particle fluxes. No separate tungsten
+      monoblock divertor cassettes are installed. C220108 (divertor) cost = 0. The divertor
+      functionality is embedded in C220101 (blanket).
+
+  - account: CAS23
+    value: null  # sCO2 turbine cost not stated; use library thermal-cycle default
+    enabled: false
+    provenance: N/A
+    source: "helical-fusion-2025-2026-updates.md §Energy Capture, lines 46-51"
+    rationale: |
+      The design uses a supercritical CO2 Brayton cycle targeting >50% efficiency at
+      800-1200 K. The library's CAS23 (turbine plant equipment) account prices thermal
+      cycles generically; sCO2 is higher efficiency than Rankine but costs are comparable
+      at scale (both are turbomachinery + heat exchangers + condensers/coolers). Without
+      a HESTIA-specific sCO2 turbine cost estimate, the library default for thermal
+      conversion applies. The efficiency delta (50% vs. ~33% Rankine) is captured in the
+      `eta_th` spec kwarg, not in CAS23 cost.
+
+  - account: CAS27
+    value: null  # liquid metal inventory cost not stated
+    enabled: false
+    provenance: N/A
+    source: "aip-2023-paper-abstract.md §II.C, lines 226-228"
+    rationale: |
+      The blanket uses tin-indium alloy + lead + lithium. Tin (~$20-30/kg), indium
+      (~$200-500/kg), lead (~$2/kg), lithium (~$80-100/kg for battery-grade, higher for
+      nuclear isotope-enriched). The AIP paper does not state total blanket inventory mass.
+      For a liquid-metal-cooled reactor, typical inventory is 100-1000 tonnes depending on
+      flow rate and geometry. If we assume 500 t and a 50/25/15/10 mass split
+      (Sn/Pb/In/Li), rough cost = (250 t Sn × $25/kg) + (125 t Pb × $2/kg) + (75 t In × $300/kg)
+      + (50 t Li × $100/kg) ≈ $6.25M + $0.25M + $22.5M + $5M = $34M. However, this is
+      speculative (the alloy composition is stated as "tin-indium alloy with lead and lithium"
+      with no percentages, and total mass is not given). The library's CAS27 default for
+      initial blanket inventory is based on FLiBe or LiPb; those costs are comparable to
+      the above rough estimate. Without a company-grounded figure, no override is justified.
+```
+
+**Override count: 1 enabled override** (C220108 = 0 for integrated blanket/divertor). The archetype-fit rubric expects 0–4 enabled overrides for a High archetype-fit concept. The count of 1 falls within the expected band. The single override is well-grounded (the AIP paper explicitly states no separate divertor system) and has direct provenance.
+
+**Key cost uncertainties not overridden**: The two largest capital cost drivers — C220103 (HTS magnets) and C220101 (blanket) — lack company-grounded unit costs and therefore remain at library defaults. The library's HTS coil pricing is derived from CFS ARC assumptions (REBCO tape at $40–50/kA-m, planar winding); HESTIA's continuous helical winding is architecturally different and likely more expensive per meter due to 3D complexity, but without a WISE conductor price quote, no defensible override exists. Similarly, the liquid metal blanket cost depends on module fabrication (3D-printed porous first wall, high-manganese steel structure, liquid metal inventory) and corrosion-protection engineering, but no $/module figure is published. The AIP paper's lump-sum $5 billion (1990s) direct cost provides no per-account resolution.
+
+**Why C220104 (ECRH) is not overridden despite 250 GHz novelty**: The 250 GHz gyrotrons are in R&D and do not exist as of the AIP paper's writing ("a 250 GHz-1 MW-CW gyrotron does not exist," line 261). Without a prototype cost or vendor quote, any cost estimate would be speculative. The library's ECRH pricing is based on ITER 170 GHz gyrotron costs (~$2–3M per gyrotron); scaling to 250 GHz may add 20–50% development premium, or may decrease cost if production volume rises. The uncertainty range is too wide and the data too thin to justify a derived override. Default library pricing stands.
+
+## 6. Data Gap Inventory
 
 | # | Gap Description | Section | Gap Type | Criticality | Source Recommendation |
 |---|-----------------|---------|----------|-------------|----------------------|
-| 1 | Construction cost uses 1990s price basis; ×2+ inflation correction required but not applied in published table | S1, S5 | derivable | blocking | Apply US GDP deflator or construction cost index from 1998–2023; obtain current-dollar estimate from Helical Fusion or independent engineering study |
-| 2 | O&M cost breakdown entirely absent from all public sources | S2, S5 | truly-unknown | blocking | Use ARIES-CS O&M analogue (~$50–70/kWe-yr fixed O&M) as placeholder; flag as unanchored |
-| 3 | LM blanket pump power flagged as "quite unknown" in the primary source — directly affects Q_eng | S2, S3, S5 | truly-unknown | blocking | Engineering analysis of GALOP pump at 90-module LM circulation rate; consult Helical Fusion or NIFS Oroshhi-2 pump performance data |
-| 4 | 3D neutron transport calculation for TBR not completed; 80 at.% Li-6 assumption unvalidated | S2, S3, S5 | truly-unknown | blocking | Monte Carlo neutron transport (MCNP or OpenMC) with HESTIA coil geometry; Helical Fusion and NIFS are likely performing this work |
-| 5 | H confinement factor H = 1.3 assumed above ISS04; unverified at HESTIA scale | S2, S5 | truly-unknown | blocking | Validate with stellarator confinement database scaling; Helix HARUKA integrated demo may provide first data point by end of 2020s |
-| 6 | sCO₂ power cycle efficiency at fusion-coupled plant scale — only kW-scale at 20% demonstrated | S3, S5 | not-yet-sourced | blocking | Review NIFS Oroshhi-2 sCO₂ program status; commercial sCO₂ references for 50%+ efficiency at 1200 K; intermediate-scale test results |
-| 7 | Liquid metal alloy composition (at.% fractions of Sn, In, Pb, Li) not publicly confirmed | S2, S4, S5 | proprietary/not-yet-sourced | important | Full AIP paper may specify; Helical Fusion patent filings may disclose; determine indium content for supply chain analysis |
-| 8 | REBCO tape total demand for two continuous helical reactor coils | S4, S5 | derivable | important | Calculate from helical coil path length at R₀ = 7.8 m × conductor cross-section dimensions; scale from October 2025 test coil geometry |
-| 9 | Indium supply chain impact — demand relative to global production of ~900 tonnes/year | S4 | truly-unknown | important | Determine alloy In fraction; estimate mass per module × 90 modules; compare to annual production |
-| 10 | Alpha particle confinement at ρ > 0.7 — flagged as marginal in paper | S2, S5 | truly-unknown | important | Neoclassical and gyrokinetic transport calculations for HESTIA heliotron geometry; W7-X alpha confinement studies provide partial analogy |
-| 11 | Component replacement intervals (LM blanket modules, HTS coils) not stated | S3, S5 | proprietary/not-yet-sourced | important | Engineering estimate based on neutron fluence rate at blanket wall and material damage thresholds for high-Mn steel |
-| 12 | Capacity factor target not formally stated | S5 | derivable | important | 1-year burn + 3-month maintenance → ~80% upper bound; derate for unplanned outages; sensitivity study covers range 70–90% |
-| 13 | Non-magnetic structural steel irradiation behavior under fusion neutrons | S3, S4 | truly-unknown | important | No 14 MeV irradiation data for high-Mn austenitic steel; ITER TBM fission-spectrum irradiation analogue only partial |
-| 14 | Full LCOE build-up (vs. C_direct / P_net × T_net surrogate) | S5 | derivable | important | Full LCOE requires: inflation-corrected CAPEX + O&M analogue + financing assumptions + CF estimate + fuel cost (tritium startup) |
-| 15 | 250 GHz / 1 MW CW gyrotron performance and cost — technology does not exist | S3, S5 | truly-unknown | important | Monitor QST gyrotron R&D program; use cost scaling from existing 170 GHz ITER gyrotrons as lower-bound analogue |
-| 16 | Independent stellarator FPP cost study for heliotron geometry | S1 | not-yet-sourced | nice-to-have | Brown (2018) provides stellarator cost decomposition relative to tokamak; ARIES-CS provides modular stellarator plant study; no heliotron-specific analog exists |
+| 1 | WISE HTS conductor unit cost ($/kA-m or $/kg) for continuous helical winding at 8 T, 20 K | S2, S5b | proprietary | blocking | Helical Fusion investor deck or vendor partnership announcement; alternatively, analogous quotes from CFS or Tokamak Energy for non-planar REBCO coils |
+| 2 | Liquid metal blanket module fabrication cost ($/module or $/kg) including 3D-printed porous first wall, high-manganese steel structure, and corrosion protection | S2, S5b | not-yet-sourced | blocking | NIFS Oroshhi-2 blanket test campaign results; FFHR-d1 / FFHR-c1 blanket cost estimates (heritage designs); or Helical Fusion detailed engineering report |
+| 3 | Liquid metal circulation pump power consumption at reactor scale (MW wall-plug per pump, number of pumps) | S2 | truly-unknown | important | GALOP test results extrapolated to full scale; or computational fluid dynamics simulation validated against test data |
+| 4 | 250 GHz, 1 MW CW gyrotron unit cost and development timeline | S2, S5b | not-yet-sourced | important | Joint research program between Helical Fusion and QST; or analogous cost data from ITER 170 GHz gyrotron procurement adjusted for frequency scaling |
+| 5 | Confinement enhancement factor H experimental validation in optimized heliotron configuration | S2, S3, S5 | truly-unknown | blocking | HESTIA-Primary prototype experimental results (USD 480M prototype, per AIP paper line 318); or scaled LHD experiments with magnetic field optimization |
+| 6 | Supercritical CO2 turbine cost and efficiency at fusion-relevant scale (MW-to-GW thermal input, tritium-compatible heat exchangers) | S2, S5 | not-yet-sourced | important | NIFS Oroshhi-2 sCO2 demonstration results scaled to commercial plant; or DOE-funded sCO2 pilot projects (Sandia National Labs, Southwest Research Institute); or fission-focused sCO2 vendors (Echogen, Kairos Power) |
+| 7 | Blanket module replacement time and remote handling equipment cost | S2, S3 | truly-unknown | important | ITER remote handling mock-up results adapted to stellarator geometry; or time-motion simulation for liquid-metal-wetted module handling |
+| 8 | CAS-level cost breakdown of the USD 5 billion direct construction cost (late-1990s basis) | S1, S5b | proprietary | blocking | HESTIA detailed engineering report or Helical Fusion Series A pitch deck; or FFHR cost studies as a heliotron heritage proxy |
+| 9 | Inflation adjustment methodology and reference year for USD 5 billion figure | S1, S2 | derivable | important | Apply U.S. CPI-U or construction cost index (e.g., Handy-Whitman) from late 1990s to 2025; AIP paper suggests 2× multiplier but does not specify the index or base year |
+| 10 | Tritium breeding ratio (TBR) for tin-indium-lead-lithium blanket at 80 at.% 6Li enrichment | S5 | not-yet-sourced | blocking | Neutronics simulation results from HESTIA design (likely in full AIP paper behind paywall); or FFHR blanket TBR calculations as a lithium-bearing liquid metal proxy |
+| 11 | Tin-lead-lithium alloy composition (mass percentages) and total blanket inventory mass | S4, S5b | not-yet-sourced | important | Full AIP Physics of Plasmas paper (not just abstract); or GALOP test campaign material specifications |
+| 12 | High-manganese austenitic steel unit cost ($/kg) and production capacity at nuclear-grade quality | S4 | not-yet-sourced | important | Tohoku University materials collaboration publication; or advanced fission reactor vendors (sodium-cooled fast reactors use austenitic steel) |
+| 13 | DD startup operational timeline and tritium breeding rate via DD → T side reactions | S3, S5 | truly-unknown | important | Plasma physics simulation of DD operation in heliotron geometry; or analogy to tokamak DD experiments (but stellarator confinement scaling differs) |
+| 14 | Enriched 6Li supply chain capacity and cost at 80 at.% (kg/year global production, $/kg) | S4 | not-yet-sourced | important | U.S. DOE or IAEA isotope program reports; or China National Nuclear Corporation / Rosatom disclosures (they control most 6Li enrichment capacity) |
+| 15 | Final optics and beamline configuration for 60 gyrotrons across 10 ports (number of beamlines, window materials, neutron shielding for transmission lines) | S3, S5 | not-yet-sourced | nice-to-have | HESTIA engineering drawings (proprietary); or W7-X / LHD ECRH beamline designs as heritage (but those use 140–170 GHz, not 250 GHz) |
+| 16 | Pellet injector cost and fueling efficiency ($/injector, fueling rate per barrel, DT ice production capacity) | S5 | not-yet-sourced | nice-to-have | ITER pellet injector procurement cost as analogue; or direct quote from pellet injector vendors (PELIN in Russia, ORNL in U.S.) |
+| 17 | Cryogenic system capital cost and operating power for 20 K helium gas cooling of multi-km HTS coils under neutron heating | S3, S5 | not-yet-sourced | important | CFS SPARC cryogenic system design (similar HTS cooling requirements); or large-scale helium refrigerator vendors (Linde, Air Liquide) for 20 K capacity quotes |
+| 18 | Vacuum vessel mass, structural analysis, and cost for heliotron geometry at 7.8 m major radius | S3, S5b | not-yet-sourced | nice-to-have | LHD vacuum vessel as-built cost inflated to current year; or ITER vessel cost adjusted for size and geometry differences |
+| 19 | Operating & maintenance cost breakdown (staffing, scheduled maintenance frequency, unplanned outage costs) | S1 | not-yet-sourced | blocking | ARIES-CS stellarator O&M model (closest publicly-available analogue); or ITER operational plan extrapolated to smaller steady-state plant |
+| 20 | Component replacement schedule and costs beyond 6.4-year reactor lifetime (blanket module lifetime under neutron fluence, gyrotron lifetime, first wall lifetime) | S1, S3 | truly-unknown | blocking | Neutron damage simulations for high-manganese steel under 14.1 MeV fluence; gyrotron vendor MTBF data; or ITER component lifetime projections |
 
----
+**Criticality definitions**: **Blocking** — LCOE model cannot produce a defensible estimate without this data; **Important** — model can proceed with analogues or conservative assumptions, but uncertainty is large; **Nice-to-have** — fills out the picture but does not drive LCOE sensitivity.
 
-## Section 7: Cross-Concept Notes
+**Gap type definitions**: **Truly-unknown** — no existing data or validated model can answer this; requires prototype testing or new experimental campaign. **Proprietary** — company or consortium likely has the data but has not released it publicly. **Not-yet-sourced** — data likely exists in published literature (conference papers, vendor quotes, heritage reactor studies) but has not been located in the current dossier. **Derivable** — can be computed from available data using standard engineering methods (e.g., inflation adjustment, scaling laws).
 
-**Prior approved analysis referenced: 21-spherical-tokamak-hts (Tokamak Energy ST-E1)**
+## 7. Family-Delta vs Comparables
 
-The spherical tokamak HTS analysis is the most relevant approved prior due to shared REBCO HTS supply chain and shared D-T tritium constraints. However, the HESTIA concept diverges from the ST-E1 in nearly every structural respect — confinement topology, coil geometry, blanket chemistry, scale, and operating philosophy. Cross-referencing is primarily useful for shared infrastructure costs and supply chain constraints.
+The fixed comparables for HESTIA are: 05-planar-coil-stellarator (Thea Energy), 09-qi-stellarator-hts (Proxima Fusion), 10-large-scale-stellarator (Gauss Fusion), 20a-type-one-stellarator (Type One Energy), and 20b-renaissance-stellarator (Renaissance Fusion). All are stellarators within the MFE family, enabling direct subsystem-level cost comparison.
 
-**Reused assumptions and data:**
-- **REBCO supply chain**: Global production bottleneck (~thousands km/year), current pricing ($30–100/kA-m), commercial viability target (~$10/kA-m) [21-spherical-tokamak-hts.md, Section 4]. Applied here with the caveat that HESTIA's continuous helical coils may require longer unbroken runs than tokamak coil sets, amplifying the bottleneck.
-- **Tritium supply**: Global inventory ~25–30 kg, startup cost >$35,000/g, CANDU production decline [21-spherical-tokamak-hts.md, Section 4]. Identical D-T constraint applies. HESTIA's smaller scale reduces per-machine startup demand relative to GWe-class tokamaks.
-- **Regulatory cost uncertainty**: Stewart & Shirvan (2022) 2.2× building cost factor applies to all D-T fusion concepts as an upper-bound scenario [21-spherical-tokamak-hts.md, Section 4]. Japan's regulatory trajectory may differ from US/EU; the NRC's 10 CFR Part 30 decision is US-specific and does not apply to HESTIA.
-- **Capacity factor sensitivity**: The Araiinejad & Shirvan (2025) finding that capacity factor is a primary LCOE lever for D-T MCF plants applies here. HESTIA's steady-state operation provides structural advantage over pulsed concepts (no plasma restart losses), but novel subsystems (LM blanket, 250 GHz gyrotrons) introduce unplanned outage risk not present in more mature concepts.
+### vs. 05 Planar-Coil Stellarator (Thea Energy)
 
-**Key divergences from the ST-E1 and broader tokamak family:**
+**Divergence: Coil geometry and winding complexity**
 
-- **Confinement geometry — continuous helical coils vs. modular coils**: HESTIA is a heliotron using two long continuous helical coils, not the planar or modular coil topologies used by other stellarator entries in this portfolio (QI Stellarator - HTS, QI Modular HTS Stellarator, Planar Coil Stellarator, Large-Scale Stellarator). The continuous coil winding is the core manufacturing challenge but also enables a simpler coil system with fewer joints. No other concept in this portfolio uses this approach.
+Thea Energy's planar-coil stellarator uses an array of simple flat HTS coils arranged in a toroidal configuration, with field shaping achieved by current distribution rather than coil geometry. HESTIA uses two continuous helical HTS coils that wind through a complex 3D path (double-helix configuration) at 7.8 m major radius. The planar-coil approach trades physics optimization (less confinement quality per unit field strength) for manufacturing simplicity (each coil is a flat pancake, easy to wind and stack). The helical-coil approach achieves better plasma confinement (heliotron physics is well-validated by LHD) but requires flexible REBCO conductor (WISE technology) and specialized winding machinery.
 
-- **Scale — smallest MFE power plant in the portfolio**: At 70–103 MWe, HESTIA is significantly smaller than any tokamak concept (CFS ~200 MWe, ST-E1 450–750 MWe, Gauss 1+ GWe). The implied specific capital cost ($143B/GWe inflation-adjusted for the FPP; ~$58B/GWe for the FOAK) is the highest in the portfolio. The economic thesis depends on mass production of modular units rather than large-scale plant economics.
+**Cost implication**: HESTIA's C220103 (HTS magnets) likely carries a **manufacturing premium** per meter of conductor due to 3D winding complexity, but may require **less total conductor length** if the heliotron's superior confinement permits smaller major radius for the same plasma performance. The net cost effect is ambiguous without per-meter WISE conductor pricing vs. Thea's planar coil costs. Thea's approach is likely cheaper per coil but may require more coils or larger machine size.
 
-- **Liquid metal blanket chemistry — closest neighbor is Renaissance Fusion (20b)**: The Renaissance Fusion Compact Liquid-Wall Stellarator (20b) also uses a liquid metal wall, the only other concept in the portfolio with this approach. Key differences: Renaissance uses laser-patterned HTS film coils (not WISE REBCO); its liquid metal composition has not been identified in public sources. HESTIA's tin-indium-lead-lithium alloy represents a different chemistry from the liquid lithium used in ITER TBM experiments. The two liquid-metal stellarators share the non-magnetic structural material requirement; high-Mn steel is HESTIA-specific but the underlying need is shared.
+**Divergence: Blanket and divertor architecture**
 
-- **sCO₂ power conversion target — highest efficiency in portfolio**: The >50% sCO₂ Brayton cycle target is more aggressive than any power conversion approach in other analyzed concepts (steam Rankine at 33–38%; sCO₂ at ~40–47% in CSP applications). This efficiency is essential to achieving Q_eng = 2.0 at Q~13 — without it, the concept cannot achieve net electricity at this plasma gain. No other concept in the portfolio has this dependency; the sCO₂ assumption is a structural load-bearing element of HESTIA's economic case.
+Thea Energy has not publicly specified a blanket design. HESTIA uses an integrated liquid metal blanket with free-surface first wall, eliminating the need for a separate divertor system. If Thea adopts a conventional solid breeder blanket + divertor (ITER TBM heritage), HESTIA gains a **cost advantage** by eliminating C220108 (divertor) entirely (override in Section 5b sets this to zero). However, HESTIA's liquid metal system introduces corrosion management and MHD flow control challenges that may offset the divertor savings via higher C220101 (blanket) complexity.
 
-- **Solar H₂ for startup and cooling — unique integration**: The use of solar-generated liquid H₂ for both HTS magnet cooling (20 K) and startup power generation is a unique feature with no parallel in other concepts. This integration reduces operating costs for magnet cooling (no helium refrigerator at full cryogenic scale) but adds a solar-plus-electrolyzer capital cost not represented in any other concept model.
+**Net cost delta**: Likely **neutral to slight advantage for HESTIA** if liquid metal blanket proves durable; **penalty** if corrosion or flow control requires frequent module replacement.
 
-- **Recirculating power structure — zero current-drive overhead vs. tokamaks**: The Kovari (2014) fusion energy conversion review explicitly distinguishes stellarators from tokamaks on internal power demand: "A stellarator does not have this issue" — referring to the power required to drive circulating plasma current [arxiv-1401-4232.md §Section 2]. HESTIA's recirculating power fraction (~50% of gross output at Q_eng = 2.0) is composed entirely of ECRH heating (~40 MW wall-plug for 60 gyrotrons), cryogenic cooling, LM pumping, and BOP auxiliary loads — with zero current-drive component. By contrast, a steady-state tokamak at equivalent Q_eng = 2.0 must absorb all of those same loads plus a current-drive power demand (typically 10–30% of gross electric output), meaning a tokamak achieving Q_eng = 2.0 requires substantially higher plasma Q to compensate. HESTIA's Q_eng = 2.0 at Q~13 is therefore not equivalent to a tokamak's Q_eng = 2.0 in terms of physics challenge — the stellarator reaches the same net output fraction from a less demanding plasma operating point. When comparing Q_eng figures across concepts in the portfolio, the absence of current-drive overhead is a structural TEA differentiator: equal Q_eng implies harder physics for any tokamak that achieves it.
+### vs. 09 QI-Stellarator-HTS (Proxima Fusion) and 10 Large-Scale Stellarator (Gauss Fusion)
 
-- **Heliotron vs. QI modular stellarators — coil cost structure and scale thesis**: Within the stellarator family, the nearest TEA comparators are 09-qi-stellarator-hts (Proxima Fusion Stellaris, ~1 GWe, non-planar modular HTS) and 10-large-scale-stellarator (Gauss Fusion GIGA, 1 GWe, 18 m major radius, 40 non-planar modular coils), both of which use quasi-isodynamic (QI) coil architectures. On coil cost structure, HESTIA's continuous helical coils carry a structural joint-count advantage: the helical winding requires no internal superconducting joints, compared to ~10,000 demountable joints across GIGA's 40 coils at a critical resistance target of ~1 nΩ each [10-large-scale-stellarator analysis]. However, this advantage is offset by a more severe tape-continuity constraint: continuous helical coils cannot be assembled from joined segments, so HESTIA requires unbroken REBCO conductor at lengths orders of magnitude beyond the 4 m October 2025 prototype — with no fallback option if a long-run tape fails during winding. GIGA's ~26,000 km REBCO tape demand already exceeds current global production by >10× [10-large-scale-stellarator analysis]; HESTIA's two helical coils at R₀ = 7.8 m require an unpublished but likely comparable tape length with the additional constraint of full continuity. Proxima Fusion's non-planar modular design carries a 1.5–5× manufacturing cost premium per unit fusion power over wound tokamaks due to 3D freeform geometry [09-qi-stellarator-hts analysis]; HESTIA's continuous helical geometry is no simpler and loses the modular quality-control advantage. On balance, the heliotron coil topology is expected to be a **cost penalty relative to QI modular designs at FOAK**: the joint-count advantage is real but does not offset the manufacturing difficulty of continuous kilometer-scale HTS winding in helical geometry — an industrial capability that does not yet exist. On scale thesis, HESTIA's economic case depends on fleet replication of 70 MWe units achieving NOAK learning (small-modular logic), while Gauss and Proxima target 1 GWe single-plant scale with FOAK capital of €15–18B/GWe (Gauss) before NOAK reduction. Neither path has a published NOAK cost trajectory, but the mechanisms are fundamentally different: HESTIA's path requires high-volume identical-unit manufacturing, while the QI stellarator path requires learning from progressively larger single plants. For the TEA model, this determines the C220103 (coil cost) structure: HESTIA's coil cost should be parameterized on tape demand per continuous helical run and manufacturing yield, while QI modular costs are dominated by 3D winding mandrel and joint qualification — distinct cost driver architectures within the same HTS stellarator family.
+**Divergence: Modular vs. continuous coil design**
 
-**Cross-concept modeling note for the TEA pipeline:**
-HESTIA's "simplified lifetime energy cost" metric (C_direct / (P_net × T_net) = $1.22/kWh) must not be compared directly to LCOE figures from other concepts. This metric excludes O&M, fuel, discount rate, and inflation — all of which are first-order LCOE contributors. A proper LCOE comparison requires rebuilding the HESTIA cost structure from first principles using: inflation-adjusted CAPEX, analogue O&M, tritium startup cost, and a capacity factor assumption.
+Proxima Fusion (QI stellarator, W7-X lineage) and Gauss Fusion (large-scale stellarator) use modular non-planar HTS coils — each coil is a complex 3D shape, but coils are manufactured individually and assembled into a torus. HESTIA uses **two continuous helical coils** that wrap the entire torus without joints. Modular coils enable parallel manufacturing and easier replacement (remove and replace a single failed coil), but each coil has high-resistance joints where modules connect. Continuous coils eliminate joints (lower resistance, fewer failure points) but cannot be disassembled — the entire coil is a single monolithic structure.
 
----
+**Cost implication**: Modular coils spread manufacturing risk (if one coil fails QA, scrap only that module, not the entire set) and enable factory production at scale. Continuous coils concentrate risk (a defect anywhere along a multi-hundred-meter winding scraps the entire coil) and require on-site or large-facility winding. HESTIA's approach with Sugino Machine's custom winding machine (to be transported to the demonstration site, per helical-fusion-2025-2026-updates.md line 15) suggests on-site fabrication, which may reduce transport risk but increases site construction complexity. The cost delta depends on REBCO tape yield and winding QA — if yield is high, continuous coils save on joints and assembly labor; if yield is low, modular coils reduce scrap cost.
 
-## Section 8: Sources
+**Net cost delta**: **Ambiguous**. HESTIA's continuous-coil approach is novel and has no cost precedent; Proxima/Gauss benefit from W7-X and Helias heritage for modular coil cost estimation.
 
-**1. Miyazawa, J. and Goto, T. (2023) — HESTIA reactor design paper (primary reference)**
-- Full citation: Miyazawa, J. and Goto, T. (2023) "A conceptual design of a commercial reactor based on a helical-type plasma confinement," *Physics of Plasmas*, 30, 050601. doi:10.1063/5.0143612.
-- Contribution: Primary engineering reference for all HESTIA design parameters — geometry, performance (Q~13, 70 MWe, Q_eng=2.0), subsystem descriptions, cost estimates (1990s price basis requiring ×2+ inflation correction), identified risks (H factor assumption, LM pump power unknown, TBR calculation incomplete, Sudo limit concern, alpha confinement marginality). Most technically complete public document for this concept.
-- Location: Phase 1a source [iter-01/sources/aip-2023-paper-abstract.md]
+**Divergence: Physics optimization vs. engineering simplicity**
 
-**2. ANS Nuclear Newswire / BusinessWire (October 2025) — HTS coil milestone**
-- Contribution: Documents the October 2025 WISE HTS coil demonstration (40 kA at 7 T, 15 K, 30 layers REBCO, >4 m length) — "world's first uninsulated large-scale HTS conductor-based coil." Primary evidence for current manufacturing readiness.
-- Location: Referenced in dossier.md §Magnet Type; helical-fusion-2025-2026-updates.md
+The QI (quasi-isodynamic) stellarator (Proxima) and Helias (Gauss) are optimized for low neoclassical transport and good fast-ion confinement, requiring precise 3D coil shaping. The heliotron (HESTIA) is optimized for manufacturing simplicity via continuous helical coils, accepting somewhat higher neoclassical transport. The AIP paper states that HESTIA's confinement depends on assumed H = 1.3 enhancement over baseline heliotron scaling, whereas QI stellarators target H ~ 1.0 with intrinsically better transport. If HESTIA's confinement enhancement does not materialize, the plasma must run at higher density or field strength to achieve the same fusion power, increasing cost. If it does materialize, HESTIA matches QI performance with simpler coils.
 
-**3. Helical Fusion technology overview (helical-fusion-technology-overview.md)**
-- Contribution: 14 collaborative R&D areas including sCO₂ gas turbines (energy conversion), maintenance robots, GALOP liquid metal pump. Confirms 50 MWe first-plant and 100 MWe commercial targets. Primary source for technology roadmap and subsystem identification.
-- Location: Phase 1a source [iter-01/sources/helical-fusion-technology-overview.md]
+**Net cost delta**: **Conditional**. If HESTIA-Primary prototype validates H = 1.3, HESTIA gains a **cost advantage** via simpler coil manufacturing. If H = 1.0 (baseline heliotron), HESTIA requires larger machine or higher field to match Proxima/Gauss performance, erasing the coil simplicity advantage.
 
-**4. Helical Fusion 2025–2026 updates (helical-fusion-2025-2026-updates.md)**
-- Contribution: HTS coil milestone details; Helix HARUKA assembly schedule (2026); Helix KANATA pilot plant 2030s target; funding (~$35.3M); sCO₂ demonstration feasibility assessment (20 kWe at 20% efficiency); Sugino Machine manufacturing collaboration.
-- Location: Phase 1a source [iter-02/sources/helical-fusion-2025-2026-updates.md]
+### vs. 20a Type One Stellarator and 20b Renaissance Stellarator
 
-**5. NIFS FFHR blanket heritage documentation (nifs-ffhr-blanket-heritage.md)**
-- Contribution: Clarifies design evolution from FFHR FLiBe blanket heritage to HESTIA liquid metal blanket; Oroshhi-2 twin-loop platform (LiPb and FLiNaK); high-Mn alumina-forming austenitic steel development by Helical Fusion + Tohoku University. Establishes that the specific LM composition for HESTIA remains unconfirmed in public sources.
-- Location: Phase 1a source [iter-02/sources/nifs-ffhr-blanket-heritage.md]
+**Divergence: Manufacturing approach**
 
-**6. Ishiyama, S. and Tanaka, T. (2019) — NIFS sCO₂ demonstration plan**
-- Full citation: Ishiyama, S. and Tanaka, T. (2019) "Demonstration Plan of Nuclear Fusion Power by CO2 Gas Turbine System," *Fusion Science and Technology*, 75(8), pp. 698–708.
-- Contribution: NIFS Oroshhi-2 sCO₂ power conversion demonstration plan targeting >50% efficiency at 800–1200 K. Primary evidence for sCO₂ as the HESTIA power cycle. Provides the specific efficiency target and temperature range.
-- Location: Referenced in dossier.md §Energy Capture; Semanticscholar.
+Type One Energy (20a) uses a planar-coil variant with emphasis on modular assembly and supply chain localization (U.S. manufacturing). Renaissance Fusion (20b) uses laser-patterned HTS film on cylindrical substrates (a radically different coil fabrication method: deposit REBCO film via PVD, then laser-etch current paths to create 3D field patterns). HESTIA uses stacked REBCO tape + impregnation (WISE). Each approach targets cost reduction via different manufacturing innovations: Type One via modularity, Renaissance via additive/subtractive film patterning, HESTIA via continuous winding + impregnation.
 
-**7. Brown, T.G. (2018) — Stellarator, ST, and tokamak cost comparison**
-- Full citation: Brown, T.G. (2018) "Three confinement systems — spherical tokamak, standard tokamak, and stellarator: a comparison of key component cost elements," *IEEE Transactions on Plasma Science*, 46(6), pp. 2216–2230. doi:10.1109/TPS.2018.2831148.
-- Contribution: Framework for comparing stellarator capital costs vs. tokamak and ST configurations by component category. Only published cross-concept cost decomposition covering the stellarator family directly. Not specific to heliotron topology but provides reference anchor for major cost elements.
-- Location: Referenced in handwritten exemplar [01-hts-compact-tokamak.md]
+**Cost implication**: Renaissance's laser-patterned film approach, if successful, could achieve very low $/kA-m by eliminating tape winding labor and enabling large-area deposition, but it is unproven at high field and carries thin-film delamination risk. Type One's modular planar coils benefit from supply chain maturity (planar coils are simpler to manufacture than 3D shapes). HESTIA's WISE conductor is intermediate complexity — more complex than planar, simpler than fully-3D modular coils, but relies on low-melting-point alloy impregnation (a novel step with uncertain cost and yield).
 
-**8. Approved D1+ Analysis: Spherical Tokamak - HTS (21-spherical-tokamak-hts)**
-- Contribution: Cross-concept reference for REBCO tape supply chain characterization (tape costs $30–100/kA-m, production bottleneck), D-T tritium startup constraints (~1 kg at >$35,000/g, global inventory ~25–30 kg), and regulatory cost uncertainty (Stewart & Shirvan 2.2× factor). Provides consistent assumptions across HTS D-T concepts in the portfolio.
-- Location: `analyses/21-spherical-tokamak-hts/analysis.md`
+**Net cost delta**: **Ambiguous**. All three concepts are betting on different HTS manufacturing cost curves. HESTIA's WISE approach is furthest along in hardware demonstration (40 kA test coil in Oct 2025), but Type One and Renaissance have raised more capital and may achieve faster scale-up.
 
-**9. ARIES-CS (ARIES Team, ~2004–2008) — modular stellarator plant study**
-- Contribution: ARIES Compact Stellarator power plant study provides the most complete published stellarator FPP engineering baseline (1000 MWe, modular coils). Not directly applicable to heliotron topology but provides a reference cost structure for stellarator BOP, maintenance, and blanket systems when HESTIA-specific data is absent.
-- Location: Referenced at https://qedfusion.org/DOCS/bib.shtml (ARIES archive)
+**Divergence: Blanket architecture**
 
-**10. Kovari, M., Harrington, C., Jenkins, I., and Kiely, C. (2014) — fusion energy conversion review**
-- Full citation: Kovari, M., Harrington, C., Jenkins, I., and Kiely, C. (2014) "Converting energy from fusion into useful forms," *Proceedings of the Institution of Mechanical Engineers, Part A: Journal of Power and Energy*. doi:10.1177/0957650913514230.
-- Contribution: Comprehensive fusion-specific review of energy conversion systems covering coolants, thermodynamic cycles (Rankine, Brayton, combined), and parasitic internal power demands. Explicitly states that stellarators carry zero internal current-drive power demand ("A stellarator does not have this issue" — §Section 2). Establishes 47% gross efficiency for a CO₂ recompression Brayton cycle with Rankine bottoming in a fusion design study (§Section 4) as the fusion-engineering upper bound. Concludes "there is as yet not a fully consistent solution for engineering design, coolants and working cycle" (§Summary) — framing the sCO₂ challenge as field-wide rather than HESTIA-specific. Used in Sections 2, 3, and 7.
-- Location: Phase 2a source [iter-02/sources/arxiv-1401-4232.md]
+Renaissance Fusion uses a flowing Li-LiH wall + lead pebble neutron multiplier — a hybrid solid/liquid architecture (flagged as `Other/hybrid` in the schema). HESTIA uses a pure liquid metal blanket (tin-indium-lead-lithium free-surface flow). Type One has not publicly specified a blanket design. Renaissance's hybrid approach aims to combine liquid metal's first-wall simplicity with solid breeder's TBR margin, but introduces two-phase flow complexity. HESTIA's single-phase liquid metal flow is simpler fluidically but carries higher corrosion risk (tin is "highly corrosive to steel," per AIP paper).
 
----
+**Net cost delta**: **Slight advantage to HESTIA** if single-phase liquid metal proves manageable; **penalty** if corrosion forces frequent blanket replacement. Renaissance's dual-phase system is architecturally more complex but may achieve higher TBR (lead pebbles boost neutron multiplication).
 
-[1] aip-2023-paper-abstract.md, §I–§V: Primary HESTIA design reference; cost figures based on 1990s LHD/ITER construction prices; explicit ×2+ inflation correction required; LM pump power "quite unknown at this moment"; H confinement factor H = 1.3 assumed but unverified; TBR 3D neutron transport calculation not yet completed.
+### Shared advantages across all stellarator comparables
+
+All stellarator concepts, including HESTIA, share the following cost advantages relative to tokamaks:
+
+1. **No disruption risk** — stellarators have no plasma current, therefore no current-driven MHD instabilities or disruptions. This eliminates disruption mitigation systems (massive gas injection, vertical stability control, runaway electron suppression) and reduces structural design margins (no need to design for 10–100 MA disruption electromagnetic loads). Cost savings in C220105 (primary structure) and C220110 (remote handling — fewer unplanned failures).
+
+2. **True steady-state operation** — no current drive power required (tokamaks need NBI, ECRH, or LHCD to sustain plasma current in steady-state; stellarators are intrinsically steady-state). HESTIA's claimed ~1 year continuous operation is physically plausible (stellarators are limited only by tritium inventory and maintenance needs, not by physics). Higher capacity factor (>80% target) vs. pulsed or quasi-steady tokamaks improves LCOE denominator.
+
+3. **No central solenoid** — tokamaks (except spherical tokamaks with external current drive) require a central solenoid for inductive startup and current ramp. Stellarators have no solenoid, freeing the central bore and reducing C220103 (magnets) and C220105 (structure). This advantage is shared with spherical tokamaks and mirrors.
+
+### Shared challenges across all stellarator comparables
+
+1. **3D coil complexity and cost** — all stellarators (except planar-coil variants, which trade physics performance for simplicity) require complex 3D coil shapes, whether modular (Proxima, Gauss), continuous helical (HESTIA), or laser-patterned film (Renaissance). This increases C220103 (magnet) cost relative to tokamaks' simple toroidal + poloidal coil sets. The magnitude of the premium depends on the manufacturing approach; no consensus cost basis exists yet.
+
+2. **Lower power density than compact tokamaks** — stellarators are generally larger than high-field compact tokamaks for the same fusion power, due to lower beta limits and more conservative field strength (W7-X operates at ~3 T; HESTIA targets 9 T, which is high for a stellarator but still below the 12–20 T of compact tokamaks). Larger size increases C220105 (structure), C220106 (vacuum), CAS21 (buildings), and site footprint. HESTIA's 8 m major radius for 70.4 MWe net is large compared to CFS SPARC's ~1.85 m major radius for ~140 MWe (though SPARC is a technology demonstrator, not optimized for economy).
+
+3. **Unvalidated high-performance scenarios** — all advanced stellarator concepts (QI, Helias, heliotron-optimized) assume confinement and stability performance beyond current experimental validation. W7-X is the only modern superconducting stellarator, and it operates at low density and low beta relative to power-plant targets. HESTIA's H = 1.3 assumption is in the same category as Proxima's QI transport optimization or Gauss's Helias stability claims — all require prototype validation before commercial deployment.
+
+## 8. Sources
+
+Listed in order of importance for LCOE modeling:
+
+1. **Miyazawa, J. and Goto, T. (2023)** "Design of a heliotron-type DEMO reactor HESTIA." *Physics of Plasmas* 30, 050601. DOI: 10.1063/5.0146228. Abstract available at https://ui.adsabs.harvard.edu/abs/2023PhPl...30e0601M/abstract. **Contribution**: Complete reactor design specification for HESTIA — geometry, physics parameters, subsystem architecture (HTS magnets, liquid metal blanket, ECRH heating, pellet fueling, sCO2 power conversion), direct construction cost estimate (USD 5 billion, late-1990s basis), and reactor lifetime energy production. This is the primary quantitative anchor for the analysis. The full text (behind paywall) likely contains additional CAS-level cost breakdowns, blanket neutronics (TBR), and engineering drawings not visible in the abstract. **Source**: knowledge/concept_research/36-helical-coil-stellarator/iter-01/sources/aip-2023-paper-abstract.md (extracted abstract, 58 KB).
+
+2. **Helical Fusion Technology Overview** (company website summary, 2025). Overview of HESTIA design basis, HTS coil development, liquid metal blanket approach, ECRH heating strategy, and energy conversion pathway. Confirms 50 MWe-class power target, Q ~ 13, >80% availability, and modular liquid metal blanket with no separate divertor. **Contribution**: Design philosophy and technology pillars — useful for understanding cost-reduction strategy (integrated blanket/divertor, continuous helical coils, DD startup to avoid tritium procurement). **Source**: knowledge/concept_research/36-helical-coil-stellarator/iter-01/sources/helical-fusion-technology-overview.md (3 KB).
+
+3. **ANS Nuclear Newswire (2025-10-29)** "Helical Fusion marks milestone in progress toward fusion power." Report on the October 2025 HTS coil demonstration: 40 kA at 7 T external field, 15 K, using 30-layer REBCO uninsulated design in a >4 m coil. Described as "world's first demonstration of large-scale HTS coil designed for commercial reactor." **Contribution**: Hardware validation of WISE conductor approach at subscale; confirms HTS coil development timeline. **Source**: Cited in dossier; URL: https://www.ans.org/news/2025-10-29/article-7500/helical-fusion-marks-milestone-in-progress-toward-fusion-power/ (not directly extracted but summarized in helical-fusion-2025-2026-updates.md).
+
+4. **BusinessWire (2025-10-26)** Helical Fusion press release on HTS coil milestone. Confirms Helix HARUKA integrated demonstration device assembly beginning 2026, with custom coil manufacturing machine developed with Sugino Machine. **Contribution**: Manufacturing timeline and partnership details (Sugino Machine for winding equipment, Sukegawa Electric for GALOP pump system). **Source**: https://www.businesswire.com/news/home/20251026597002/en/ (cited in dossier).
+
+5. **Helical Fusion 2025-2026 Updates** (aggregated press releases and company announcements). Covers Series A extension ($5.5M, Dec 2025), GALOP liquid metal blanket test system unveiling, Tohoku University materials collaboration (high-manganese austenitic steel), Sugino Machine coil winding machine completion, and roadmap to Helix KANATA pilot plant. **Contribution**: Near-term milestones and partnerships; confirms sCO2 power conversion as baseline (listed among collaborative research areas). **Source**: knowledge/concept_research/36-helical-coil-stellarator/iter-02/sources/helical-fusion-2025-2026-updates.md (2 KB).
+
+6. **NIFS FFHR Blanket Heritage** (summary of FFHR design evolution and Oroshhi-2 test platform). Describes the shift from FFHR's FLiBe molten salt blanket to HESTIA's liquid metal blanket, and the Oroshhi-2 platform's LiPb twin-loop system and planned sCO2 turbine demonstration (20 kWe at 20% efficiency). **Contribution**: Heritage context for blanket technology and sCO2 power conversion; explains why HESTIA diverged from FFHR (liquid metal vs. molten salt). **Source**: knowledge/concept_research/36-helical-coil-stellarator/iter-02/sources/nifs-ffhr-blanket-heritage.md (2 KB).
+
+7. **Ishiyama, S. and Tanaka, T. (2019)** "Demonstration Plan of Nuclear Fusion Power Generation by CO2 Gas Turbine in Oroshhi-2." *Fusion Science and Technology* 75:8. DOI: 10.1080/15361055.2019.1610315. Describes NIFS Oroshhi-2 test platform's sCO2 Brayton cycle demonstration plan targeting >50% efficiency at 800-1200 K for commercial systems, with a 20 kWe / 20% efficiency proof-of-concept. **Contribution**: sCO2 power conversion efficiency targets and test platform infrastructure supporting Helical Fusion's claimed >50% η_th. **Source**: https://www.semanticscholar.org/paper/Demonstration-Plan-of-Nuclear-Fusion-Power-by-CO2-Ishiyama-Tanaka/c65a8bee89527829427288e4fe2a278409abad6e (cited in dossier).
+
+8. **Tanaka, T. and Sagara, A.** "Liquid Blanket Collaboration Platform Oroshhi-2 at NIFS." Describes the FLiNaK/LiPb twin-loop system at Oroshhi-2 (operational since 2013-2014) for liquid blanket R&D. **Contribution**: Test infrastructure heritage for liquid metal handling; supports HESTIA's liquid metal blanket feasibility claim. **Source**: https://www.semanticscholar.org/paper/Liquid-Blanket-Collaboration-Platform-Oroshhi-2-at-Tanaka-Sagara/6aa3a1a42420da041a9d98e1bb46169e57112b79 (cited in dossier).
+
+9. **Helical Fusion — Tohoku University Materials Collaboration** (company announcement, 2024). High-manganese alumina-formed austenitic steel with silicon addition developed for blanket structural material: non-magnetic, low-activation, corrosion-resistant at high temperatures. **Contribution**: Material selection for liquid metal blanket structure; addresses corrosion challenge flagged in AIP paper. **Source**: https://www.helicalfusion.com/en/post/helical-fusion-inc-and-tohoku-university-s-institute-for-materials-research-pioneer-revolutionary-m (cited in dossier).
+
+10. **ARIES-CS Stellarator Power Plant Study** (Fusion Science and Technology, 2008). Comprehensive stellarator power plant design study (QI stellarator, ~1 GWe) with CAS-level cost breakdowns, O&M estimates, and stellarator-specific engineering challenges. **Contribution**: Nearest publicly-available analogue for stellarator LCOE modeling; provides default unit costs for accounts where HESTIA data is absent (C220101 blanket, C220103 magnets if WISE conductor cost remains proprietary, CAS70 O&M). The ARIES-CS design uses modular coils + helium-cooled pebble bed blanket, so direct cost transfer to HESTIA (continuous coils + liquid metal blanket) is imperfect, but it is the best available stellarator reference. **Source**: Not in current dossier; available at https://www.sciencedirect.com/science/article/pii/S092037960800085X or via ARIES project bibliography https://qedfusion.org/DOCS/bib.shtml.
+
+11. **LHD (Large Helical Device) experimental database** (NIFS publications, 1998–present). 25+ years of heliotron physics data: confinement scaling, beta limits, steady-state operation demonstrations, ECRH heating efficiency. **Contribution**: Physics validation for heliotron configuration; provides baseline for HESTIA's H = 1.3 enhancement assumption (LHD operates near H ~ 1.0). **Source**: Diffuse — no single publication, but referenced in AIP paper as heritage. Representative papers available via NIFS publication database or LHD project overview at https://www-lhd.nifs.ac.jp/en/.
+
+12. **ITER cost and schedule data** (ITER Organization annual reports). Not directly applicable to HESTIA (ITER is a tokamak, not a stellarator, and is FOAK not NOAK), but provides order-of-magnitude unit costs for gyrotrons (170 GHz, ~$2–3M each), remote handling equipment, and vacuum vessel fabrication that can be scaled to HESTIA's requirements in the absence of concept-specific data. **Contribution**: Fallback cost analogues for C220104 (ECRH), C220110 (remote handling), C220106 (vacuum vessel). **Source**: https://www.iter.org/sites/default/files/media/2025-11/rapport-financier-iter-2024-web.pdf (cited in 01-hts-compact-tokamak handwritten exemplar).
+
+**Note on source quality**: The single authoritative design study (AIP 2023 paper) provides geometry and physics but lacks CAS-level cost transparency and inflation adjustment. Company announcements confirm technology development progress (HTS coil demo, GALOP test system, materials R&D) but provide no cost data. ARIES-CS is the best publicly-available stellarator cost reference, but its architecture (modular QI coils + solid breeder blanket) differs significantly from HESTIA's (continuous helical coils + liquid metal blanket). The resulting cost model will be highly uncertain in absolute dollars, though the relative cost structure (magnets + blanket dominate CAPEX, capacity factor drives LCOE) is defensible.

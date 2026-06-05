@@ -1,12 +1,13 @@
 # Assessment: {{concept_name}}
 
-You are evaluating a D1+ concept analysis for quality of framing, completeness, and numerical plausibility relative to the analysis goals.
+You are evaluating a D1+ concept analysis (and its model setup, if present) for
+design-point coherence, override discipline, family-delta concreteness, and
+numerical plausibility — against the new pipeline contract.
 
 ## Files to Read
 
 ### Analysis
-Read this file completely:
-`{{analysis_path}}`
+Read this file completely: `{{analysis_path}}`
 
 ### Analysis Goals
 
@@ -16,73 +17,62 @@ Read this file completely:
 
 {{@config/assessment_checklist.md}}
 
+{{#if model_output_path}}
+## Model Output
+
+The concept has a quantitative LCOE model. Its output is at: `{{model_output_path}}`
+
+Evaluate whether:
+1. The model's assumptions and parameter values are consistent with the analysis.
+2. The 1 GWe projection LCOE (`result_1gw`) is plausible (order of magnitude) for
+   this concept type, and the native LCOE is coherent with it.
+3. Key cost drivers in the model match the analysis narrative's emphasis.
+{{/if}}
+
+## Coherence Flags (computed — interpret, do not just echo)
+
+The pipeline ran cross-artifact coherence checks against this iteration's
+artifacts. Read them and factor them into your findings. A `FLAG:` line is a
+real discrepancy to investigate; a clean line confirms a check passed.
+
+{{coherence_flags}}
+
+## Override-Count Rubric
+
+{{fit_grade_band}}
+
+Check the count of `enabled` overrides (in `analysis.md` Section 5b, and in
+`model_setup.py` if present) against this band. A High-fit concept with many
+enabled overrides, or a Low-fit concept with none, is a finding unless the
+evidence clearly justifies it.
+
 {{#if concept_landscape}}
 ## Concept Landscape
 
-Use this to verify nearest-neighbor selections. Check that named neighbors are
-structurally appropriate given the concept's taxonomy properties.
+The comparables for this concept are fixed upstream. Use the landscape only to
+sanity-check that the family-delta prose engages the *fixed* comparables, not an
+arbitrary neighbour.
 
 {{concept_landscape}}
 {{/if}}
 
 ## Instructions
 
-1. Read the analysis completely
-2. Evaluate against each checklist criterion
-3. Identify the most significant gaps — at most 3 findings
-4. For each finding, explain what is insufficient and what should change
-5. If the analysis adequately addresses all goals, return PASS
+1. Read the analysis completely (and the model output, if present).
+2. Evaluate against each checklist area, the coherence flags, and the override
+   rubric.
+3. Identify the most significant gaps — **at most 3 findings**.
+4. For each finding, explain what is insufficient and what should change, and tag
+   its `Category` (`analysis` or `model`) by where the fix lands.
+5. If the analysis and model adequately satisfy the contract, return `VERDICT: PASS`.
 
-### Finding Categories
-
-Each finding must include a `Category` field:
-- **`analysis`** — the fix requires changes to the analysis text (Section 2 framing,
-  Section 5 parameter tables, Section 7 differentiator discussion, etc.)
-- **`model`** — the fix requires changes to the model code or parameters:
-  sensitivity sweeps, scenario branches, parameter values in model_setup.py,
-  model output formatting, or computational methodology
-
-A finding is `model` when the recommendation says to change what the model
-*computes or sweeps*. A finding is `analysis` when the recommendation says
-to change what the analysis *says or frames*.
-
-When a finding touches both analysis and model (e.g., "add parameter to
-Section 5 table AND to sensitivity sweep"), tag the category that best
-describes the finding's primary focus. Both the analysis agent and the
-model agent receive all findings regardless of category — the tag helps
-them prioritize, but does not gate visibility.
-
-{{#if model_output_path}}
-## Model Output
-
-The concept also has a quantitative LCOE model. The model output is at:
-`{{model_output_path}}`
-
-Evaluate whether:
-1. The model's assumptions and parameter values are consistent with the analysis.
-2. The LCOE result is plausible for this concept type (order of magnitude).
-3. Key cost drivers in the model match the analysis narrative's emphasis.
-Note any discrepancies in your findings.
-{{/if}}
-
-## Scope
-
-Focus on whether the analysis captures the **shape** of the concept:
-positioning, differentiators, TEA implications, modeling approach, and risks.
-
-Additionally, check **numerical plausibility**:
-- Are parameter values the right order of magnitude for this concept type?
-- Does the model output LCOE align with the analysis narrative's claims?
-- Are physical parameters (temperatures, pressures, efficiencies) within
-  physically plausible ranges for the stated technology?
-
-You are NOT checking formatting, style consistency, or template structure compliance.
+You are NOT checking formatting, style consistency, or template-structure
+compliance. Focus on coherence, accountability, and numerical plausibility.
 
 ## Output
 
-Write the assessment to this file using the Write tool:
-`{{feedback_path}}`
+Write the assessment to this file using the Write tool: `{{feedback_path}}`
 
-Use the exact format below:
+Use the exact format below.
 
 {{@config/feedback_format.md}}

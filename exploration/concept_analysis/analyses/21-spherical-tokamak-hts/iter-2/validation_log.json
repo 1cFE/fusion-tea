@@ -1,29 +1,29 @@
 [
   {
-    "timestamp": "2026-05-17T18:57:13.879201+00:00",
+    "timestamp": "2026-06-05T00:59:25.143828+00:00",
     "step": "feedback-pass",
     "attempt": 1,
     "validator": "validate_file_modified",
     "passed": true,
     "details": "File content changed",
-    "validated_text_preview": "---\nID: 21-spherical-tokamak-hts\nConcept: Spherical Tokamak - HTS\nCompany: Tokamak Energy\nStatus: approved\nCreated: 2026-03-20\nApproved-Date: 2026-03-20\nReuses: [01-hts-compact-tokamak]\n---\n\n# D1+ Analysis: Spherical Tokamak - HTS (Tokamak Energy)\n\n**Concept**: Spherical Tokamak with HTS magnets \u2014 D-T fuel\n**Company**: Tokamak Energy (Oxford, UK; US and Japan subsidiaries)\n**Pilot Plant**: ST-E1 Revision D (final pre-conceptual design point, DPP 2025)\n**Confinement Family**: MFE \u2014 Spherical Toka"
+    "validated_text_preview": "---\nID: 21-spherical-tokamak-hts\nConcept: Spherical Tokamak HTS (Tokamak Energy)\nCompany: Tokamak Energy\nStatus: draft\nCreated: 2026-06-04\nApproved-Date:\nConfinement-Family: MFE\nArchetype: TOKAMAK\nArchetype-Fit: High\nComparison-Status: costingfe\nComparables:\n  - 01-hts-compact-tokamak\n  - 28-hts-tokamak-full-hts\n  - 29-negative-triangularity-tokamak\n  - 33-state-backed-tokamak-best\nDesign-Point-Name: ST-E1 Revision D, technology-conservative case (Maartensson et al., DPP 2025)\nDesign-Point-Matur"
   },
   {
-    "timestamp": "2026-05-17T18:58:05.630114+00:00",
+    "timestamp": "2026-06-05T01:01:55.014303+00:00",
     "step": "model-setup",
     "attempt": 1,
-    "validator": "validate_file_modified+validate_python_syntax",
+    "validator": "validate_file_modified+validate_python_syntax+validate_model_setup_contract_strict+validate_override_registry",
     "passed": true,
     "details": "All validators passed",
-    "validated_text_preview": "\"\"\"Spherical Tokamak - HTS (Tokamak Energy ST-E1 Revision D) \u2014 LCOE estimate.\n\nModeling approach\n-----------------\nThe ST-E1 Rev D design is characterised by only four published machine\nparameters (R=5.0 m, A=2.3, B=5.25 T on-axis, TBR=1.2) and one output\nrange (450\u2013750 MWe net).  Fusion power, Q, thermal efficiency, auxiliary\nheating power, and all cost figures are proprietary or undisclosed.  This\nscript therefore:\n\n  1. Uses published geometry directly (R0, A \u2192 plasma_t).\n  2. Derives central"
+    "validated_text_preview": "\"\"\"1costingfe model: Spherical Tokamak HTS (Tokamak Energy) (Tokamak Energy).\n\nUsage:\n    uv run python model_setup.py              # print results\n    uv run python model_setup.py | tee model_output.txt\n\"\"\"\nimport sys\nfrom pathlib import Path\n\n# Make the shared three-forward helper importable regardless of where this file\n# lives (concept dir or iter-N/ dir): walk up to the scripts/ root.\n_SCRIPTS = next(\n    p / \"scripts\"\n    for p in Path(__file__).resolve().parents\n    if (p / \"scripts\" / \"l"
   },
   {
-    "timestamp": "2026-05-17T19:00:20.321764+00:00",
+    "timestamp": "2026-06-05T01:03:22.566832+00:00",
     "step": "assess",
     "attempt": 1,
     "validator": "validate_feedback_verdict",
     "passed": true,
-    "details": "Feedback format valid (verdict: FINDINGS)",
-    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: Nearest-neighbor concepts not formally identified\n- **Target:** Section 7 (Cross-Concept Notes)\n- **Category:** analysis\n- **Finding:** The analysis provides deep comparison against 01-hts-compact-tokamak (CFS/ARC) but does not formally name 2-3 nearest neighbors as the checklist requires (Goal 1). The concept landscape contains 34-compact-spherical-tokamak-india \u2014 another spherical tokamak \u2014 which is the structural nearest neighbor for ST geometry comparisons and sho"
+    "details": "Feedback format valid (verdict: PASS)",
+    "validated_text_preview": "VERDICT: PASS\n\nAll five checklist areas are satisfied.\n\n**Design-Point Coherence**: P_native = 450 MWe is consistent across frontmatter, Design Point block, Section 5 parameter table, and model_setup.py. The pipeline coherence flag confirms three-leg agreement. All Section 5 parameters describe the ST-E1 Revision D at native scale; earlier designs (ST280-5T, the 185 MW pilot plant) are clearly labeled as analogues for scaling or materials analysis, not as the design point itself.\n\n**Override Dis"
   }
 ]

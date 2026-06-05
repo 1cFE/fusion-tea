@@ -1,53 +1,72 @@
 # Feedback Format
 
 Both the assessment agent and the interactive manage-concept agent produce
-feedback in this format. The analysis agent consumes it in feedback-pass mode.
+feedback in this format. The analysis agent (and, for model-category findings,
+the model-setup agent) consume it in feedback-pass mode.
+
+This format is machine-parsed by simple line-anchored scanning. Emit it exactly
+as specified — the verdict line and the finding headers are read literally.
 
 ## Structure
 
-Each feedback file contains:
-1. A verdict line: `VERDICT: PASS` or `VERDICT: FINDINGS`
-2. Zero or more findings (max 3 per assessment pass)
+Each feedback file contains, in order:
+1. A **verdict line** — a line reading exactly `VERDICT: PASS` or
+   `VERDICT: FINDINGS`, on its own line, with nothing after the token.
+   (`VERDICT: PASS — all good` is NOT accepted; put any commentary on a
+   separate line.)
+2. Zero or more findings (maximum 3 per pass).
 
 ## Finding Format
 
+Each finding is a block that begins with a `### F-N:` header (N is an integer:
+`### F-1:`, `### F-2:`, …) followed by bold-key bullet lines:
+
+```
 ### F-N: [Short title]
-- **Target:** [Section number or aspect of analysis, e.g., "Section 2" or
-  "Cross-concept comparison"]
+- **Target:** [Section or artifact the fix lands in — e.g. "Section 5b (Override
+  Candidates)" or "model_setup.py overrides list"]
 - **Category:** analysis | model
-- **Finding:** [What is insufficient, missing, or incorrectly framed — in
-  terms of shape/framing, NOT numerical accuracy]
-- **Recommendation:** [What the analysis agent should do differently —
-  specific enough to act on]
+- **Finding:** [What is insufficient, missing, or incorrectly framed]
+- **Recommendation:** [What the agent should do differently — specific enough to
+  act on without seeing your reasoning]
 - **Priority:** blocking | important | minor
+```
+
+## Category — exactly two values
+
+Each finding MUST carry a `Category` field whose value is `analysis` or `model`:
+- **`analysis`** — the fix lands in `analysis.md` (Design Point block, Section 5
+  parameters, Section 5b Override Candidates, family-delta prose, framing).
+- **`model`** — the fix lands in `model_setup.py` (the `overrides` list, the
+  `spec` dict, sweeps/scenarios, or the two-knob helper call).
+
+There is **no third category.** The new contract's cross-artifact failure modes
+route by where the fix lives:
+- `P_native` mismatch between the Design Point block and `model_setup.py` →
+  `analysis` if the analysis text is wrong, `model` if the model constant is wrong.
+- Override `provenance` drift (analysis YAML says `direct`, model says `derived`,
+  or vice-versa) → the artifact carrying the wrong label.
+- Account-namespace miss (an invented or wrong canonical code) → wherever the bad
+  code appears.
 
 ## Rules
-- Maximum 3 findings per pass (focus on the most impactful issues)
-- Each finding must include a `Category` field:
-  - `analysis` — the fix requires changes to the analysis text
-  - `model` — the fix requires changes to the model code or parameters
-    (sensitivity sweeps, scenario branches, parameter values in model_setup.py)
-- Findings must reference specific analysis goals from analysis_goals.md
-- Findings about numerical accuracy should focus on plausibility (order of
-  magnitude, physical reasonableness), not verification (re-deriving calculations
-  or matching citations to source text)
-- Each finding must be specific enough that the analysis agent can address
-  it without access to the assessment agent's reasoning
-- If the analysis adequately addresses all goals: `VERDICT: PASS`
+- Maximum 3 findings per pass — focus on the most impactful issues.
+- Findings about numbers focus on *plausibility* (order of magnitude, physical
+  reasonableness, design-point coherence), not on re-deriving calculations.
+- Each finding must be specific enough to act on without access to your reasoning.
+- If the analysis adequately addresses all goals: `VERDICT: PASS` with no findings.
 
 ## Example
 
 VERDICT: FINDINGS
 
-### F-1: Missing cost implication for direct energy conversion
-- **Target:** Section 2 (Challenges) and Section 5 (Parameters)
+### F-1: Override count exceeds the High-fit band without justification
+- **Target:** Section 5b (Override Candidates)
 - **Category:** analysis
-- **Finding:** The analysis identifies direct energy conversion as a key
-  differentiator (Goal 2) but does not state the cost implication (Goal 3).
-  No parameter row exists for direct conversion efficiency or its impact on
-  balance-of-plant costs.
-- **Recommendation:** Add a paragraph in Section 2 explaining how direct
-  conversion changes the BOP cost structure (eliminates thermal cycle but
-  adds conversion hardware). Add conversion efficiency and BOP cost delta
-  to the Section 5 parameter table.
-- **Priority:** blocking
+- **Finding:** The concept is graded High archetype-fit (expected 0–4 enabled
+  overrides) but the registry enables 7, and three of them re-state the library
+  default with no company-published quantity or unit cost in `rationale`.
+- **Recommendation:** Disable or remove the three un-evidenced overrides
+  (C220105, C220110, CAS24) so the library default stands, leaving only the
+  company-grounded departures.
+- **Priority:** important

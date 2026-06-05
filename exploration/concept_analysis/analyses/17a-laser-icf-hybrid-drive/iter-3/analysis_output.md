@@ -1,388 +1,434 @@
-# D1+ Analysis: Laser ICF — Hybrid Direct Drive (D-T) (Xcimer Energy)
+## Design Point
 
----
+- Name: Xcimer Athena pilot power plant (Galloway & Valys, XEC whitepaper Feb 2026)
+- Maturity: pilot-demonstrator
+- P_native: 400 MWe
+- Grounding: medium
+- Primary sources:
+  - knowledge/concept_research/17a-laser-icf-hybrid-drive/iter-02/sources/xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md
+  - knowledge/concept_research/17a-laser-icf-hybrid-drive/iter-01/sources/xcimer-energy-approach.md
 
 ## Section 1: Availability of Data
 
 **Rating: Moderate**
 
-Xcimer Energy is the most transparent private IFE company in the direct-drive category. A joint whitepaper with TRUMPF published in February 2026 ("Commercialization of Laser Fusion Energy," XEC-20260224) provides the most detailed publicly available cost breakdown for any private IFE concept: subsystem-level laser capital cost per joule-on-target, a development roadmap with milestone costs, and quantitative recirculating power fractions. This is the primary analytical source for this concept.
+Xcimer Energy has published a detailed technical whitepaper jointly with TRUMPF (February 2026) that constitutes the single most substantive public source for this concept.[^1] The whitepaper covers laser architecture, cost projections for the KrF excimer driver, beam combining and pulse compression via nonlinear optics (NLO), the hybrid direct-drive (HDD) implosion scheme, and the HYLIFE-III chamber concept. It provides quantitative laser cost estimates ($/J on-target), laser wall-plug efficiency targets, recirculating power fractions, tritium inventory estimates, and a commercial roadmap — more economic data than most private fusion companies disclose at this stage.
 
-Company-facing materials (science page, approach page) corroborate the architecture at a qualitative level and provide rep rate, coupling efficiency, and historical context. The HYLIFE heritage design (LLNL/UC Berkeley, developed through HYLIFE-II in 1994 and HYLIFE-III in 2024) offers the chamber concept underlying Xcimer's design, though the full HYLIFE-III nuclear analysis paper (Fusion Engineering and Design, 2024, S0920379624001868) was not ingested and is behind a ScienceDirect paywall.
+Supporting sources include Xcimer's public website pages (Approach and Science), which provide qualitative architectural descriptions and NIF comparisons but no cost figures.[^2][^3] The HYLIFE-III nuclear analysis paper (Fusion Engineering and Design, 2024) validates tritium breeding ratios for FLiBe and FLiNaK configurations but does not address power conversion or cost.[^4] The HYLIFE-II heritage literature (Moir 1994, Hoffman 1991 power conversion study) provides historical reference points for chamber and balance-of-plant design but uses 1990s-era assumptions.[^5][^6]
 
-No independent third-party cost analyses of the Xcimer concept exist in the ingested source set. The only system-level cost tools applicable to IFE — LLNL's GEM (Generalized Economics Model) and UKAEA's PROCESS IFE module — were not applied to this specific architecture.
+Several iter-03 sources (OSTI reports on HYLIFE-II, LLNL GEM economics model, laser-focused articles, the HYLIFE-III neutronics paper) were registered in the dossier but their text extractions are empty stubs, limiting the available quantitative base.
 
-The Phase 1a dossier provides high-confidence coverage of confinement classification, driver technology, rep rate, blanket type, and operation mode. Weaker coverage exists on plant electrical output, thermal efficiency, and target unit cost — the dossier flags these as data gaps.
+> "Because excimer lasers use relatively simple technologies that don't require substantial capital investment for initial production, excimer laser systems at 100 kJ scale can be brought online within the next 2 years, and MJ-scale systems within the next 5 years."
+> — xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer Laser Cost and Schedule
 
-**Key data gaps limiting the analysis:**
-- Thermal efficiency of the energy conversion cycle and specific cycle type (steam vs. He Brayton) unresolved
-- No published electrical output for the commercial plant design
-- No independent verification of the $60–80/J NOAK laser cost claim
-- Full HYLIFE-III paper (FLiBe TBR analysis, neutron spectra, thermal-hydraulic details) not available
-- No target fabrication cost per shot published
+**Key data gaps:**
+- No published total plant capital cost, overnight cost, or LCOE estimate for Athena
+- No target manufacturing cost per unit
+- No total FLiBe inventory mass or cost
+- No BOP cost estimate or thermal efficiency figure specific to the Athena design
+- No chamber dimensions or detailed thermal-hydraulic parameters
+- No independent validation of the HDD implosion scheme (simulation only)
+- Energy capture cycle ambiguity (steam Rankine vs. He Brayton vs. combined cycle)
 
----
-
-[1] xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md, §Executive Summary
-[2] xcimer-science-page.md, §An IFE system leverages three components
-[3] xcimer-energy-approach.md, §Xcimer's Approach
-[4] Phase 1a dossier, §Key Sources
-
----
+[^1]: xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md, full document
+[^2]: xcimer-energy-approach.md, Xcimer Energy — Approach page
+[^3]: xcimer-science-page.md, Xcimer Energy — Science page
+[^4]: sciencedirect-science-article-pii-s0920379624001868.md (stub extraction only; content from dossier §Tritium Breeding)
+[^5]: osti-biblio-7021072.md (stub — HYLIFE-II final report, Moir 1994)
+[^6]: hylife-energy-conversion-notes.md §Summary — HYLIFE-II Power Conversion System Design and Cost Study, Hoffman 1991
 
 ## Section 2: Challenges in Capturing System Function
 
-### 1. Laser capital cost dominates — but is a proprietary estimate
+The following challenges are ranked by their impact on LCOE modeling uncertainty.
 
-The laser driver is the single largest capital cost item for Xcimer, analogous to the magnet system in tokamaks. The XEC whitepaper provides subsystem-level cost estimates for FOAK ($100/J) and NOAK ($60–80/J), but these are self-reported by the company without independent validation [1]. The NOAK figure depends on volume production of two items Xcimer is manufacturing in-house (capacitors, costed at a target of <$0.40/J vs. current ~$10/J market price), and on the Raman/SBS NLO pulse compression architecture working at MJ scale — never previously demonstrated. A 2× uncertainty on the laser cost estimate translates directly into a large LCOE range.
+### 1. Laser driver cost at MJ scale — the dominant capital uncertainty
 
-> "Most significantly, Xcimer must demonstrate that this laser architecture, never before built at MJ-scale, can deliver on the performance, cost and other advantages."
-> — xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md, §Xcimer's Novel Laser Architecture
+The Xcimer whitepaper provides the most detailed IFE laser cost breakdown in the public literature: $100–$120/J on-target FOAK, $60–$80/J NOAK.[^7] These estimates are bottom-up from component categories (capacitors, Marx generators, e-beam components, chamber/gas systems, optics, NLO seed systems). However, the architecture they price — NLO beam combining of ~100 Argos KrF amplifier modules into two final beams, with stimulated Brillouin scattering (SBS) pulse compression — has never been built at any scale. The Phoenix prototype (Q2 2026, 1–2 kJ) will be the first test of the SBS compression chain. Scaling from kJ to 8 MJ (a factor of ~4,000–8,000) introduces risks that component-level costing cannot capture: integration costs, thermal management at continuous duty, alignment and diagnostics across 100+ modules.
 
-### 2. Physics extrapolation from 8 MJ demonstrated (NIF Apr 2025) to 10 MJ Xcimer commercial
+> "Most significantly, Xcimer must demonstrate that this laser architecture, never before built at MJ-scale, can deliver on the performance, cost and other advantages as outlined in this paper."
+> — xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Next Steps
 
-Xcimer's commercial design targets capsule gain Qc > 200 at 8–12 MJ on target, extrapolated from NIF's April 2025 record (Qc ≈ 34 at ~250 kJ absorbed). The ⅔ power-law scaling used for this extrapolation is physically motivated but has never been validated above current NIF scales. Additional supporting evidence from Halite-Centurion underground tests is classified. This extrapolation is the central physics assumption driving the entire economic case — if Qc plateaus below 200, the recirculating power fraction rises steeply and the wall-plug gain falls below the ~10× threshold required for commercial viability.
+### 2. Target gain and HDD physics validation
 
-> "An Nth of a kind system producing 250 target gain (Qsci) with a 7% laser efficiency"
-> — xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md, §Challenge 3: Cost and Economics
+The entire Xcimer economic case rests on capsule gains exceeding 200 at ~10 MJ coupled energy. This is extrapolated from NIF's demonstrated Qc ≈ 34 at 250 kJ via a ⅔-power scaling law referenced to a manuscript in preparation (not yet published).[^8] Two-beam hybrid direct drive has been analyzed in a joint paper with LLE, LANL, and General Atomics (2024) but never demonstrated experimentally on any target. If achieved capsule gain is significantly below 200, the required repetition rate increases proportionally (for the same average power), degrading the low-rep-rate cost advantage that is Xcimer's central thesis.
 
-### 3. Two-beam implosion symmetry is undemonstrated
+### 3. FLiBe chamber clearing and sub-Hz rep rate feasibility
 
-Conventional direct drive (OMEGA) uses 60 beams to achieve symmetric illumination. Xcimer's Hybrid Direct Drive (HDD) uses only two beams, relying on a ring-shaped spatial intensity profile and a brief hohlraum "pre-pulse" to create a uniform ablation plasma before the main drive pulse. This architecture is essential for enabling the thick-liquid FLiBe wall (only two beam penetration ports required), but it has no experimental demonstration at any scale. The implosion symmetry requirement compounds the challenge of operating through an SBS NLO system that must preserve wavefront quality. Anvil (200 kJ target, 2028) is the first planned validation. If two-beam symmetric implosion cannot be demonstrated — whether because SBS phase-preservation fails at scale or the ring-shaped illumination pattern produces unacceptable drive non-uniformity — there is no drop-in alternative: the thick-liquid-wall geometry requires exactly two beam penetrations, and reverting to a multi-beam configuration would defeat liquid-wall protection entirely, making this a concept-level architectural kill with no LCOE mitigation path.
+At sub-Hz operation with GJ-class fusion yields, the HYLIFE-III chamber must clear vaporized debris (<10 kg FLiBe per shot), re-establish the flowing liquid-jet first wall, and accept the next target injection within ~2–4 seconds.[^9] Heritage water-jet experiments from LLNL/UC Berkeley demonstrated jet reformation at compatible timescales, but never under GJ-scale blast loading or with actual FLiBe. The interaction between yield per shot and achievable rep rate is the central pulsed-IFE engineering constraint.
 
-### 4. FLiBe hydraulics and chamber dynamics
+### 4. Energy conversion pathway ambiguity
 
-The HYLIFE chamber concept relies on precision-formed liquid FLiBe jets that: (a) protect the structural steel wall from neutrons and X-rays, (b) breed tritium, and (c) heat FLiBe to drive the energy conversion cycle. The chamber clearing time between shots (~1 second at sub-Hz rep rate) is determined by gravity-clearing of the FLiBe jets, and the whitepaper states that <10 kg FLiBe is vaporized per GJ-class shot. However, these dynamics are validated only by simulation and water/oil analog experiments — no demonstration with actual FLiBe at fusion-relevant conditions exists. If clearing time consistently exceeds 1 second (e.g., due to vaporized FLiBe droplet re-entrapment or nozzle fouling), the maximum sustainable rep rate falls below the 0.25 Hz design floor; at 0.1 Hz, plant output drops to ~40% of the 400 MWe Athena target, and the fixed capital costs of the laser and chamber (estimated at $3–5B total plant) are spread over proportionally less energy output, driving LCOE roughly 2–2.5× above the design-point case.
+The Xcimer Science page states "generate steam, which in turn drives turbines," while the HYLIFE-II heritage analyzed a He Brayton cycle at ~45% efficiency.[^10] The whitepaper does not specify the thermal cycle. This ambiguity affects gross-to-net electric conversion, thermal efficiency assumptions, and BOP cost.
 
-> "FLiBe pump and nozzle technology and redox control to prevent corrosion" are explicitly cited as development challenges.
-> — xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md, §Xcimer's Chamber Design
+### 5. Target manufacturing at sub-Hz rate
 
-### 5. Energy conversion cycle type is ambiguous
+Xcimer's targets use liquid DT with a plastic ablator (no gold hohlraum, unlike NIF indirect drive), which should be simpler and cheaper than indirect-drive targets.[^11] However, no target cost per unit, no manufacturing process description, and no production rate demonstration exist in the public literature. At 0.5 Hz operation, ~15.8 million targets per year are needed; at 1 Hz, ~31.5 million.
 
-The Xcimer science page states "generate steam, which in turn drives turbines to produce electricity." However, the HYLIFE heritage literature describes a helium Brayton gas turbine at ~45% thermal efficiency. If the cycle is a steam Rankine at ~33–35% efficiency, the gross thermal power required to deliver 400 MWe (Athena) increases proportionally, tightening the wall-plug gain budget. The distinction matters for BOP capital cost and for the recirculating power calculation. This ambiguity is unresolved in available sources.
+### 6. O&M cost structure
 
-### 6. Target cost and supply chain at commercial rep rate
+No published O&M breakdown exists for any Xcimer plant configuration. Key unknowns include: FLiBe processing and tritium extraction costs, laser gas replenishment schedule, optics maintenance (Xcimer claims minimal damage but provides no lifetime data), and staffing levels. The thick-liquid-wall concept should eliminate first-wall replacement costs (a major advantage over solid-wall IFE), but FLiBe loop maintenance (pumps, heat exchangers, redox control) is poorly characterized.
 
-At 0.25–1 Hz, a commercial plant consumes 8–31 million targets per year. The whitepaper describes commercial targets as liquid DT + plastic ablator (simpler than NIF's cryogenic DT ice + diamond ablator), but provides no cost estimate per target. Goodin et al. (2004) established a target cost threshold: targets must cost <10% of the electricity they produce to be economical. For Xcimer at ~400 MWe, that implies a cost ceiling of roughly $2–3 per target (depending on plant capacity factor). Whether plastic-ablator liquid-DT targets at this spec and throughput can be manufactured at that cost is an open question.
-
----
-
-### Modeling Approach
-
-**Primary modeling target: Athena 400 MWe FOAK pilot.** The primary TEA modeling anchor is the Athena pilot plant: ~400 MWe net electrical output, FLiBe thick-liquid-wall blanket (TBR ~1.2), 8 MJ on-target laser energy, sub-Hz rep rate, and a FOAK laser system at ~$100/J. The NOAK commercial plant ($60–80/J laser, FLiNaK blanket, "hundreds of MWe to >1 GWe") has no published design-point specification and must be treated as a separate parameter branch. The FLiBe→FLiNaK change is an architectural substitution — different material, different TBR, different supply chain — not a cost-reduction multiplier on the Athena design. Any model projecting Athena to commercial NOAK must branch on both laser cost and blanket material simultaneously; applying a single scalar learning-curve factor to the full Athena plant cost will conflate two distinct plant designs.
-
-**Top LCOE sensitivity parameters (Xcimer-specific, ranked by leverage):**
-
-1. **Laser capital cost ($/J NOAK)** — the single dominant lever. At 10 MJ on target, NOAK laser capex spans $600M ($60/J) to $800M ($80/J), implying $1,500–2,000/kWe from the laser alone at 400 MWe. Total plant capex is likely 2–3× the laser cost after chamber, BOP, and indirect costs, so the $/J figure propagates directly into LCOE. The spread between FOAK ($100/J, $2,500/kWe) and NOAK ($60–80/J) represents a 25–40% range in total capital — larger than the equivalent uncertainty in any other cost driver.
-
-2. **Capsule gain (Qc / Qsci at commercial scale)** — sets the recirculating power fraction (11–13% at Qsci 250; rising steeply below Qsci ~100) and therefore net electrical output for a given gross thermal power. Combined with laser wall-plug efficiency, Qsci determines wall-plug gain and the required laser energy — both inputs to the LCOE numerator and denominator simultaneously.
-
-3. **Repetition rate / plant capacity factor** — below 0.25 Hz, plant output at fixed yield falls below the 400 MWe Athena target; all fixed capital costs spread over proportionally less energy output. Capacity factor is the binding output constraint once physics performance is established, and it is wholly determined by chamber clearing dynamics (FLiBe hydraulics) and component reliability — neither of which has been demonstrated.
-
-**Costing framework:** The laser and chamber must be costed from first principles — no standard CAS account covers a KrF excimer MJ-class driver or a FLiBe thick-liquid-wall chamber. BOP (IHX, steam/Brayton cycle, turbine-generator) can be inherited from molten-salt-cooled fission analogues (Kairos Power FHR cost estimates, adjusted for pulsed thermal input). Target fabrication should be anchored to the Goodin et al. (2004) threshold criterion. FLiBe/FLiNaK inventory costs should draw from Araiinejad 2025; the HYLIFE heritage (Moir 1994) provides the only volumetric FLiBe estimate but in 1994 dollars.
-
-**Testable hypotheses:**
-
-- *Laser cost parity*: If NOAK laser cost achieves $60/J, laser capex is $1,500/kWe — still ~50% of estimated total plant capex. If NOAK cannot fall below $100/J (FOAK cost persists), laser capex alone ($2,500/kWe) exceeds the full overnight cost of a combined-cycle gas plant. **The model should determine the break-even NOAK laser $/J for LCOE parity with new fission (~$80–120/MWh) as a function of total-plant capex multiplier over laser cost.**
-
-- *Capsule gain floor*: If Qc plateaus below ~150 (vs. target >200), wall-plug gain falls below 10× — the commercial viability threshold — and recirculating power fraction exceeds 15%. **The model should determine the minimum Qsci for wall-plug breakeven across the laser wall-plug efficiency range 5–7%, and report LCOE sensitivity to ±1σ uncertainty on the ⅔ power-law gain extrapolation.**
-
-- *Rep rate economics*: At 0.25 Hz with ~1.6 GJ fusion yield per shot and ~25% net efficiency, a 400 MWe plant is just achievable. If FLiBe chamber clearing fails and max rep rate drops to 0.1 Hz, fixed capital costs spread over ~40% of intended annual output, implying LCOE roughly 2–2.5× the design-point case. **The model should parameterize capacity factor as a function of achievable clearing time to quantify the LCOE floor and ceiling.**
-
----
-
-[1] xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md, §Xcimer Laser Cost and Schedule
-[2] xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md, §Challenge 3: Cost and Economics
-[3] xcimer-science-page.md, §In an Xcimer system
-[4] xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md, §Xcimer's Chamber Design
-
----
+[^7]: xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer Laser Cost and Schedule, Table 1
+[^8]: xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Challenge 2, referencing Galloway et al. (manuscript in preparation)
+[^9]: xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Chamber Design
+[^10]: xcimer-science-page.md §Energy Conversion; hylife-energy-conversion-notes.md §Summary (HYLIFE-II BOP reference)
+[^11]: xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Challenge 2
 
 ## Section 3: Maturity of Key Subsystems and Components
 
-Listed in ascending order of maturity (least mature first).
+Subsystems are listed in ascending order of maturity.
 
----
+### Two-beam Hybrid Direct Drive implosion — TRL ~2
 
-**KrF Excimer Laser at MJ Scale with NLO Pulse Compression — TRL 2–3**
+**On paper only.** HDD is a design concept validated by multi-physics simulation (joint paper with LLE, LANL, General Atomics, 2024). No experimental demonstration exists on any fuel capsule. The core claim — that two opposed KrF beams with shaped intensity rings can drive a sufficiently symmetric, high-gain implosion without a hohlraum — requires experimental validation on OMEGA or NIF-class facilities. Phase preservation through SBS amplification and beam filamentation thresholds at multi-MJ scale are uncharacterized.
 
-- **Demonstrated**: NRL Electra laser demonstrated KrF excimer operation at ~750 J, 5 Hz continuous for days (establishing rep rate viability). Xcimer completed the first private-sector electron-beam excimer laser (Phoenix, 1–2 kJ) in Q2 2026 — the first major private milestone. SBS pulse compression has been demonstrated at small scale in laboratory settings.
-- **On paper only**: Raman beam combining of many Argos modules into two output beams at the 10+ MJ level. SBS NLO compression at >100 kJ per pulse. The three-step NLO architecture (Raman combiner, two SBS gas mirrors) is a design concept validated only by modeling and small-scale experiments.
-- **Missing at scale**: Operation of the full ASPEN architecture (up to 100 Argos modules, NLO combination, and delivery to target) at the energy levels needed for ignition. Anvil (200 kJ) in 2028 and Vulcan (4–12 MJ) targeting wall-plug breakeven by end 2031 are the next validation milestones.
+### MJ-class KrF excimer laser with NLO beam combining — TRL ~2–3
 
----
+**On paper only at system level.** Individual e-beam-pumped KrF amplifiers have been demonstrated at relevant component scales: Aurora produced ~11 kJ at 248 nm; NRL's Electra demonstrated 7% wall-plug efficiency and operated for 10 hours at 2.5 Hz.[^12] However, the NLO beam combining architecture (Raman scattering to combine ~100 Argos modules, SBS pulse compression) has never been built at any scale. The Phoenix prototype (1–2 kJ, Q2 2026) will be the first integration test of SBS compression at IFE-relevant scale. Scaling from kJ to 8+ MJ is a factor of ~4,000–8,000.
 
-**Two-Beam Hybrid Direct Drive Target Implosion — TRL 2–3**
+> "Electra, a KrF laser at the Naval Research Laboratory, operated continuously for 10 hours at a repetition rate of 2.5 Hz with a wall-plug efficiency of 7%."
+> — xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Challenge 3
 
-- **Demonstrated**: NIF demonstrates indirect drive at ~8 MJ, Qsci > 4 (April 2025). LLE/OMEGA demonstrates direct-drive physics at ~30 kJ scale. HDD concept has been modeled computationally.
-- **On paper only**: Symmetric implosion of a large (~10 MJ coupled) DT capsule using only two beams with ring-shaped intensity profile and HDD pre-pulse. Qc > 200 at 10 MJ coupled energy scale.
-- **Missing at scale**: Any experimental test of HDD implosion geometry at the Xcimer two-beam configuration. Anvil (2028) is the first planned test. The classified Halite-Centurion indirect-drive tests are cited as supporting evidence but are not publicly verifiable.
+### High-rep-rate target fabrication and injection — TRL ~3
 
----
+**On paper only for Xcimer-specific targets.** Xcimer targets use liquid DT and a plastic ablator (no hohlraum, no cryogenic ice layer). This is simpler than NIF-class targets but production at 0.5–1 Hz (16–31 million per year) has no precedent. Target injection into a hot, post-shot FLiBe chamber with adequate positioning accuracy is an unsolved engineering problem.
 
-**FLiBe Thick-Liquid-Wall Chamber and Hydraulics — TRL 3–4**
+### HYLIFE-III FLiBe liquid-wall chamber — TRL ~3–4
 
-- **Demonstrated**: HYLIFE-II design concept developed and published (1994). Water and oil analog experiments show laminar jet formation is achievable. HYLIFE-III nuclear analysis (2024) includes neutronic modeling of FLiBe jet geometry and TBR calculations. FLiBe chemistry and tritium extraction understood at laboratory scale.
-- **On paper only**: Full chamber operation with FLiBe jets at 0.25–1 Hz, clearing <10 kg vaporized FLiBe between shots, maintaining jet integrity under repeated GJ-class fusion bursts. Pump, nozzle, and flow control systems at plant scale. Redox chemistry control for steel corrosion prevention.
-- **Missing at scale**: Any FLiBe jet operation at fusion-relevant pulse energies. Dedicated FLiBe hydraulic test facilities. Long-term corrosion testing of structural steel in FLiBe under irradiation.
+**Demonstrated at sub-scale in water surrogate.** LLNL and UC Berkeley conducted extensive jet-formation and hydrodynamics experiments using water as a FLiBe surrogate, demonstrating jet reformation at Hz-compatible timescales.[^13] The HYLIFE-III nuclear analysis paper confirmed TBR > 1.2 for FLiBe configurations across multiple thicknesses. However, no experiment has tested flowing FLiBe jets under GJ-scale blast loading, thermal cycling, or with activated debris. FLiBe pump and nozzle technology and redox control to prevent corrosion remain developmental.
 
----
+> "many challenges lay ahead and development is still needed across several areas such as FLiBe pump and nozzle technology and redox control to prevent corrosion"
+> — xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Chamber Design
 
-**Target Fabrication at Commercial Throughput — TRL 3–4**
+### Tritium fuel cycle (FLiBe extraction) — TRL ~3–4
 
-- **Demonstrated**: OMEGA and NIF targets fabricated by General Atomics (a listed Xcimer partner) at low throughput. NIF produces ~400 targets/year. Liquid-DT + plastic ablator is simpler than NIF's cryogenic DT ice + diamond, reducing fabrication complexity.
-- **On paper only**: Commercial process for plastic-ablator/liquid-DT targets at 8–31 million/year (0.25–1 Hz × ~31.5M seconds/year). Cost targets of $2–3/target or less.
-- **Missing at scale**: Industrial-scale target injection and tracking at sub-Hz rates with high shot-to-shot reliability. Precision surface finish (sphericity) in mass production. Cryogenic DT handling at commercial throughput.
+**Lab-scale demonstrated.** Tritium extraction from fluoride salts has been studied at lab scale (vacuum degassing, gas sparging, membrane permeation). No demonstration at fusion-plant throughput. Xcimer claims the Athena pilot would require <150 g tritium inventory, substantially less than magnetic confinement plants.[^14]
 
----
+### Final optics / NLO gas mirrors — TRL ~4
 
-**Tritium Extraction from FLiBe and Fuel Cycle — TRL 4–5**
+**Demonstrated at component level.** Xcimer's NLO architecture replaces all high-fluence solid optics with gas-phase Raman and Brillouin scattering "mirrors." Each of ~100+ Argos beams sees only three large 50 cm × 50 cm physical optics (one window, two turning mirrors), operating at 8–10 J/cm² — below damage threshold at microsecond pulse lengths.[^15] The NLO gas mirrors themselves have been demonstrated at kJ scale in defense programs. Scaling to MJ is the remaining step.
 
-- **Demonstrated**: Lab-scale tritium extraction from FLiBe demonstrated; tritium accountability and handling at gram quantities (JET, TFTR legacy).
-- **On paper only**: Closed tritium fuel cycle with FLiBe at GWe-scale thermal power and kilogram-per-day extraction rates. Sub-200 g inventory management with high accountability.
-- **Missing at scale**: Industrial tritium processing plant integrated with FLiBe primary loop. Low-permeation-loss piping at operating temperature. Real-time tritium monitoring at required detection limits.
+### Energy conversion / BOP — TRL ~7–8
 
----
+**Demonstrated.** Conventional thermal conversion (steam Rankine or He Brayton) at GW scale is commercial technology. The integration challenge is coupling to a pulsed thermal source with GJ-scale energy release every few seconds, requiring thermal buffering in the FLiBe loop. The HYLIFE-II heritage studied He Brayton at ~45% efficiency; Xcimer's marketing materials reference steam turbines.
 
-**Energy Conversion (Steam/Brayton BOP) — TRL 7–8**
-
-- **Demonstrated**: Steam Rankine and helium Brayton cycles are mature industrial technologies. The FLiBe → IHX → steam generator → turbine pathway is architecturally similar to some molten salt fission designs (Kairos Power). BOP boundary is cleanly defined at the IHX thermal interface.
-- **On paper only / Missing at scale**: Integration with FLiBe primary loop at fusion pulsing rate (sub-Hz thermal transients); tritium permeation barriers in heat exchangers; specific cycle selection (steam vs. He Brayton) not finalized for Xcimer commercial plant.
-
----
-
-[1] xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md, §Xcimer's Novel Laser Architecture / §Next Steps
-[2] Phase 1a dossier, §Driver Technology
-[3] xcimer-energy-approach.md (FLiBe liquid wall)
-[4] xcimer-science-page.md, §HYLIFE history
-
----
+[^12]: xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Challenge 3
+[^13]: xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Chamber Design
+[^14]: xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Chamber Design
+[^15]: xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer Laser Cost and Schedule
 
 ## Section 4: Key Materials and Supply Chain Considerations
 
-### Capacitors (Marx Generator Pump Source)
+### KrF excimer laser gas
 
-The most significant near-term supply chain challenge for Xcimer. Commercial capacitors currently cost ~$10/J and constitute the single largest cost element in the FOAK laser breakdown ($10/J of the ~$100/J total). Xcimer has responded by opening a proprietary capacitor manufacturing plant in Tucson, AZ and producing in-house. The NOAK cost target is <$0.40/J, implying a 25× reduction from current market price.
+The gain medium is a noble gas mixture with <1% halogen (krypton fluoride). These are commodity industrial gases with established supply chains from semiconductor lithography and industrial laser markets. The gas cannot be damaged by laser operation (unlike solid-state glass), eliminating the NIF-class optics refurbishment cost of >$40M/year.[^16] No supply-chain risk identified.
 
-> "Manufacturing complexity comparable to automotive components."
-> — xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md, §Xcimer Laser Cost and Schedule
+### High-voltage capacitors (Marx generators)
 
-This vertical integration is a deliberate supply chain de-risking strategy. It represents a significant capital commitment (manufacturing facility) before the plant design is validated. The ~$0.40/J target is not yet achieved; current in-house production cost is not disclosed.
+Current commercial prices: ~$10/J. Xcimer has opened a proprietary capacitor manufacturing plant in Tucson, AZ, targeting $0.85/J at 3 MJ stored energy and <$0.40/J at higher volumes.[^17] This vertical integration is a distinctive strategic decision. At 8 MJ on-target with 5–7% wall-plug efficiency, total stored energy per shot is ~115–160 MJ, requiring ~$46M–$64M of capacitors at the $0.40/J floor. This is the largest single material procurement item in the laser driver.
 
-### FLiBe (Molten Salt Primary Coolant/Breeder)
+### FLiBe (Li₂BeF₄) molten salt
 
-FLiBe (Li₂BeF₄) is required for the Athena pilot plant (TBR ~1.2 with natural lithium). Beryllium is a toxicity and supply concern: global production is ~300 tonnes/year, dominated by a single US producer (Materion Corp.), and beryllium processing requires specialized facilities with strict industrial hygiene controls. FLiBe is not currently produced at industrial scale.
+FLiBe is not currently produced at industrial scale. Beryllium is toxic and produced in limited quantities (~300 t/year globally, dominated by Materion Corp). Lithium-6 enrichment for tritium breeding adds cost and supply-chain complexity. The whitepaper notes that commercial plants may use FLiNaK instead of FLiBe to "avoid beryllium supply chains," enabled by sufficient neutron multiplication from (n,2n) reactions in deuterium achieving TBR ~1.05.[^18] This is a notable design flexibility. No FLiBe or FLiNaK cost figure is provided by Xcimer. The Araiinejad (2025) tokamak study estimates NOAK FLiBe at ~$154/kg; this is the only recent estimate in the literature but carries high uncertainty.
 
-Xcimer has an explicit plan to eliminate this constraint: commercial plants after Athena are planned to use **FLiNaK** (lithium fluoride–sodium fluoride–potassium fluoride) instead of FLiBe, avoiding beryllium entirely. TBR of ~1.05 is achievable with FLiNaK due to (n,2n) neutron multiplication in the large DT capsule. This is a material architectural decision with significant supply-chain implications — FLiNaK has no beryllium and uses only common alkali fluorides — but it introduces a design change between the pilot and commercial plants.
+### Tritium
 
-> "Commercial plants could switch to FLiNaK... to avoid beryllium supply chain entirely."
-> — xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md, §Xcimer's Chamber Design
+Standard D-T concern. Xcimer claims Athena would require <150 g tritium inventory, substantially less than the ~1–5 kg startup inventory cited for MFE and pulsed-magnetic concepts.[^19] At ~$30,000/g, a 150 g inventory costs ~$4.5M — modest. The TBR > 1.2 with FLiBe provides comfortable breeding margin.
 
-### Lithium Enrichment (for TBR)
+### Target materials
 
-Both FLiBe and FLiNaK blankets use natural lithium for tritium breeding (TBR ~1.2 and ~1.05 respectively), avoiding the need for lithium-6 enrichment — a supply chain complexity shared by concepts requiring high TBR with thin blankets. The thick-liquid-wall geometry and large capsule fusion yield provide sufficient neutron capture to breed adequately from natural lithium, which is a significant supply chain advantage over concepts requiring enriched lithium.
+Xcimer targets use liquid DT with a plastic ablator — no gold hohlraum, no diamond ablator, no cryogenic ice layer. This eliminates the exotic materials associated with NIF-class indirect-drive targets. The raw material cost per target should be very low (mg-scale DT + plastic shell). Manufacturing cost is the dominant uncertainty, not material availability.
 
-### Structural Steel
+### Precision optics
 
-The liquid-wall geometry allows the structural chamber wall to be made from conventional commercial steels. Neutron fluence to the structural wall is low enough to avoid activation requiring specialty alloys or remote-maintenance qualification. This is an explicit design advantage over dry-wall IFE concepts (LIFE, NIF-scale solid walls) that require ODS steels, SiC composites, or tungsten armor.
+Each Argos module requires three 50 cm × 50 cm optics at "relatively low" quality requirements (beam quality of NLO-combined light is independent of pump beam quality). FOAK cost estimate: ~$55,000 per large optic, totaling ~$12/J on-target.[^20] At NOAK volumes, costs should decline. This is dramatically less optics-intensive than DPSSL approaches requiring >300 m² of aperture.
 
-> "Xcimer's approach utilizing a liquid first wall allows us to use readily available commercial materials that minimize activation, extend the lifetime and comply with our waste and safety goals."
-> — xcimer-energy-approach.md
+[^16]: xcimer-science-page.md §NIF Cost Context
+[^17]: xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer Laser Cost and Schedule
+[^18]: xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Chamber Design
+[^19]: xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Chamber Design
+[^20]: xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer Laser Cost and Schedule
 
-### KrF Laser Gas Medium
+## Section 5: Design Point Parameters
 
-The KrF excimer gas mixture (krypton/fluorine/buffer gas) is a commodity industrial gas with no supply chain constraint. The gas medium does not degrade in optical quality under repeated pulses (unlike Nd:glass), and replenishment costs are minimal. This is a structural advantage over solid-state laser systems where the gain medium accumulates thermal and radiation damage.
+All parameters describe the Xcimer Athena pilot power plant at its native 400 MWe scale.
 
-### Laser Optics
+| Parameter | Value | Source | Confidence | Note |
+|-----------|-------|--------|------------|------|
+| net_electric_MWe | 400 MWe | xec-whitepaper §Roadmap: "8 MJ on-target / 400 MWe output" | high | spec key: `P_native` |
+| laser_energy_on_target | 8 MJ | xec-whitepaper §Roadmap, Fig. 14 | high | IFE driver energy; maps to `p_input` but in single-pulse terms |
+| p_input_MW | ~112 MW (at 5% WPE); ~80 MW (at 7% WPE) | [inferred: 8 MJ/shot ÷ η_WPE × 0.7 Hz; at Athena 5%: 8/0.05 × 0.7 = 112 MW; at NOAK 7%: 8/0.07 × 0.7 = 80 MW. Whitepaper §Next Steps states recirc fraction <15% of gross.] | low | spec key: `p_input`. Recirculating power for the laser driver. Athena-native value at 5% WPE is ~112 MW. |
+| capsule_gain_Qc | >200 | xec-whitepaper §Challenge 2: "capsule gains over 200" | medium | Extrapolated from NIF Qc ≈ 34 at 250 kJ via ⅔-power scaling |
+| target_gain_Qsci | ~250 (NOAK target) | xec-whitepaper §Next Steps: "250 target gain (Qsci)" | medium | Scientific gain including coupling; Athena target is >200 |
+| coupling_efficiency | >50% (likely ~80%) | xec-whitepaper §Challenge 2: "a majority of the laser energy directly to the fuel capsule"; dossier notes ~80% inferred from energy-on-target data | medium | HDD coupling — simulation only, not experimentally validated |
+| fusion_yield_per_shot | ~1.6–2 GJ | [inferred: Qc >200 × ~8–10 MJ coupled energy; dossier §Repetition Rate estimates "likely ~1.6 GJ"] | medium | Not directly stated for Athena; informational |
+| fusion_power_MW | ~1,100–1,400 MW | [inferred: ~1.6–2 GJ/shot × ~0.7 Hz] | low | Back-calculated; informational only — library back-solves `p_fus` |
+| repetition_rate_Hz | ~0.7 Hz (just under 1 Hz) | xec-whitepaper §Roadmap: "just under once per second"; §Commercial: "0.25 to 1 Hz" | medium | spec key: `rep_rate` |
+| laser_wall_plug_efficiency | 5–7% | xec-whitepaper §Next Steps: "5% to 7%" | medium | Target value for the NLO-combined KrF architecture |
+| recirculating_power_fraction | ~15–20% (Athena at 5% WPE); 11–13% (NOAK at 7% WPE) | xec-whitepaper §Next Steps: "recirculating power fraction in the range of 11% to 13%" (at NOAK); [inferred: at 5% WPE / Qc >200, recirc fraction rises to ~15–20%] | low | Athena-native value is substantially higher than the NOAK figure |
+| number_of_beams | 2 | xec-whitepaper §Challenge 2 | high | Two opposed beams — distinguishing HDD feature |
+| number_of_Argos_modules | up to 100 | xec-whitepaper §Xcimer Laser Cost and Schedule | high | Each module >100 kJ (160 kJ shown in Fig. 13) |
+| standoff_distance | 50 m | xec-whitepaper §Xcimer Laser Cost and Schedule | high | Laser to target |
+| blanket_type | FLiBe (Li₂BeF₄) thick-liquid-wall | xec-whitepaper §Chamber Design: "Athena will certainly use FLiBe" | high | HYLIFE-III architecture |
+| TBR | ~1.2 (FLiBe); ~1.05 (FLiNaK option) | xec-whitepaper §Chamber Design | high | FLiNaK for commercial plants to avoid Be supply chain |
+| tritium_inventory | <150 g | xec-whitepaper §Chamber Design | medium | Athena-specific |
+| FLiBe_vaporization_per_shot | <10 kg | xec-whitepaper §Chamber Design | medium | Per few-GJ burst |
+| burnup_fraction | 0.3 | dossier comparison table (attributed to Xcimer) | medium | |
+| thermal_efficiency | ~40–45% | [estimated: HYLIFE-II heritage He Brayton at ~45%; standard Rankine at ~33–38%. No Athena-specific value published.] | low | Energy capture cycle unspecified for Athena |
+| Q_eng | ~5.5–6.0 (Athena at 5% WPE); ~8.2 (NOAK at 7% WPE) | [inferred: whitepaper §Next Steps states NOAK recirc fraction 11–13% at 7% WPE / 250 Qsci → Q_eng ~8.2. At Athena's 5% WPE with Qc >200, recirc fraction rises to ~15–18%, yielding Q_eng ~5.5–6.0. Derivation: recirc ≈ 1/(η_WPE × Qsci × η_th); at 5%, 200, 0.40 → ~25% raw, but whitepaper's 11–13% at 7%/250 implies η_th ~43–47%, giving recirc ~19–21% and Q_eng ~4–5 at the low end or ~5.5–6 with partial auxiliary load recovery.] | low | spec key: `q_eng`. Athena-native value (~5.5) should be used for the pilot-demonstrator design point; 8.2 is the NOAK target and belongs in a sensitivity sweep. |
+| fuel | D-T | xcimer-science-page.md §Fuel: "DT hydrogen isotope mixture" | high | |
 
-Each Argos KrF amplifier module uses only three 50 cm × 50 cm optics (window + two turning mirrors). At >1 µs pulse length and 8–10 J/cm² UV fluence, these operate below the damage threshold of existing optical coatings. Total estimated optic cost: ~$12/J of on-target energy (FOAK). Critically, Xcimer's geometry never exposes optics to the target chamber environment — there are no final focusing optics in the neutron/X-ray flux zone — eliminating the >$40M/year optics refurbishment cost documented for NIF.
+**Notes on parameter provenance:** The whitepaper provides laser-side parameters (energy on target, efficiency, module count, standoff distance) with high confidence. Plant-level performance parameters (fusion power, thermal power, net electric) are either stated at headline level (400 MWe) or must be inferred from the laser parameters plus target physics assumptions. No chamber geometry (radius, height) is published. The `p_input` estimate is particularly uncertain because it compounds assumptions about wall-plug efficiency, rep rate, and auxiliary loads beyond the laser. **Q_eng is the most critical sensitivity parameter**: the whitepaper publishes only the NOAK performance (11–13% recirculating fraction at 7% WPE / 250 Qsci), but Athena as a pilot-demonstrator operates at 5% WPE with Qc >200, which yields a substantially higher recirculating fraction and lower Q_eng (~5.5–6.0). A sensitivity sweep over Q_eng = [5.5, 6.5, 8.2] — with the concept's full override set applied — brackets the range from Athena-native to NOAK-mature performance and shows the true marginal impact of Q_eng improvement on Xcimer's actual cost structure.
 
-### DT Target Materials (Plastic Ablator)
+## Section 5b: Override Candidates
 
-Commercial Xcimer targets use liquid DT + plastic ablator, substantially simpler than NIF's cryogenic DT ice + diamond ablator. Plastic ablator materials (CH polymers) are available at commodity cost. No supply chain constraint is expected for ablator materials. Tritium for target fill is bred in-situ and extracted from the FLiBe/FLiNaK primary loop.
+The per-account walkthrough below follows the canonical schema for the LASER_IFE archetype. For each account, the question is: does the dossier name a company-grounded quantity, unit cost, or published dollar figure that justifies departing from the library default?
 
----
+**Walkthrough:**
 
-[1] xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md, §Xcimer Laser Cost and Schedule
-[2] xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md, §Xcimer's Chamber Design
-[3] xcimer-energy-approach.md
-[4] xcimer-science-page.md, §Xcimer's approach utilizing a liquid first wall
+- **C220101** (First wall, blanket & neutron multiplier): Xcimer uses a thick-liquid FLiBe jet wall (HYLIFE-III), not a solid first wall or conventional blanket module. The dossier confirms TBR > 1.2 and notes FLiBe simultaneously performs neutron shielding, tritium breeding, and heat transfer. However, no cost figure for the FLiBe inventory or blanket system is published. The structural distinction (liquid vs. solid) is real but unpriced. **No override — insufficient cost data.**
 
----
+- **C220102** (Radiation shield): The thick-liquid FLiBe wall provides the radiation shielding function — Xcimer claims 30-year facility lifetime without first-wall replacement. The structural shield behind the liquid is conventional steel. No cost figure for shielding is published. **No override.**
 
-## Section 5: LCOE-Relevant Parameters
+- **C220104** (Primary pulsed driver — laser): The whitepaper provides FOAK laser cost of $100–$120/J on-target and NOAK of $60–$80/J on-target. At 8 MJ on-target for Athena, this gives a FOAK range of $800M–$960M and a NOAK range of $480M–$640M (midpoint $560M). This is company-published and the most grounded cost data point in the dossier. The override uses the NOAK midpoint ($70/J × 8 MJ = $560M) to align with the NOAK cost basis used across the model. The library default for a laser IFE driver is unlikely to reflect the specific KrF excimer + NLO architecture's cost claims. **Override justified.**
 
-### Available Parameters
+- **C220105** (Primary structure): No company-specific structural cost data. HYLIFE-III uses a conventional steel chamber protected by the liquid wall. **No override.**
 
-| Parameter | Value/Range | Source | Confidence | Notes |
-|-----------|-------------|--------|------------|-------|
-| Scientific gain (Qsci) target | ~250 | xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Challenge 3 | medium | NOAK at 7% laser efficiency; NIF April 2025 record is Qsci = 4.13 |
-| Capsule gain (Qc) target | >200 | xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Challenge 3 | medium | Extrapolated from NIF Qc ≈ 34 via ⅔ power-law; unvalidated above NIF scale |
-| Laser wall-plug efficiency (target) | 5–7% | xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Challenge 3 | medium | 7% demonstrated at Electra (750 J); not yet at MJ scale |
-| Laser energy on target | 8–12 MJ | xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Executive Summary | medium | Commercial design point; NIF comparison: 2.1 MJ |
-| Direct drive coupling efficiency | ~90% (claimed) | xcimer-science-page.md §In an Xcimer system | low | vs. 12% for NIF indirect drive; experimental basis limited |
-| Repetition rate | 0.25–1 Hz | xcimer-energy-approach.md; xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md | high | Sub-Hz enabled by high yield per shot; "every couple seconds" confirmed |
-| Recirculating power fraction | 11–13% | xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Challenge 3 | medium | At NOAK with 7% laser efficiency and Qsci 250; highly sensitive to both parameters |
-| Wall-plug gain (Qwp) required | ~10 | xcimer-science-page.md §In an Xcimer system | medium | Minimum threshold for commercial viability; Xcimer claims ~17.5 (7% × 250) |
-| Net electrical output — Athena pilot | ~400 MWe | xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Executive Summary | medium | Company-stated target; no independent engineering validation |
-| Net electrical output — commercial | hundreds of MWe to >1 GWe | xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Executive Summary | low | Range only; no specific commercial plant design published |
-| Laser system cost — FOAK | ~$100/J on-target | xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer Laser Cost and Schedule | medium | Breakdown: capacitors $10/J, Marx $24/J, EB $17/J, chamber/gas $19/J, optics $12/J, seed/NLO $23/J, control $4/J |
-| Laser system cost — NOAK | $60–80/J on-target | xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer Laser Cost and Schedule | low | Self-reported; depends on in-house capacitor manufacturing achieving <$0.40/J |
-| Capacitor cost target | <$0.40/J (stored energy) | xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer Laser Cost and Schedule | low | Current market: ~$10/J; Xcimer in-house production ongoing; target not yet achieved |
-| DPSSL laser cost (reference, not Xcimer) | $700–1,000/J | xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Challenge 3 | medium | Cited as competitive baseline; represents reason Xcimer chose KrF architecture |
-| Laser optic area | <1 m² total | xcimer-energy-approach.md | high | vs. >30 m² for NIF; structural advantage for liquid wall protection |
-| TBR — Athena (FLiBe, natural Li) | ~1.2 | xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer's Chamber Design | medium | From HYLIFE-III nuclear analysis; FLiBe + large capsule |
-| TBR — commercial (FLiNaK, natural Li) | ~1.05 | xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer's Chamber Design | medium | (n,2n) reactions in large capsule enable adequate breeding without enriched Li-6 |
-| Tritium inventory — 400 MWe Athena | <150 g | xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer's Chamber Design | medium | Company stated; implies low tritium startup cost vs. MFE concepts |
-| Tritium inventory — GWe commercial | <200 g | xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer's Chamber Design | medium | Low startup inventory is a consequence of pulsed operation with in-situ breeding |
+- **C220106** (Vacuum system): No specific vacuum system cost data. The HYLIFE-III chamber operates at relatively modest vacuum requirements since the liquid wall dominates the internal environment. **No override.**
 
-**Laser cost derivation for a 10 MJ system (FOAK):**
-10 MJ × $100/J = $1 billion in laser capex. For a 400 MWe Athena plant, this implies a laser capital cost contribution of roughly $2,500/kWe — comparable to the total overnight capital cost of a modern combined-cycle gas plant. NOAK at $60–80/J reduces to $600–800M → $1,500–2,000/kWe from laser alone, before chamber, BOP, and indirect costs.
+- **C220107** (Pulsed-power capacitor bank): Xcimer operates KrF excimer lasers, not an electrically-driven pulsed scheme. The capacitor bank is internal to the laser driver (Marx generators) and is already captured in C220104. The library's C220107 for this archetype is for standalone pulsed-power banks; for Xcimer the capacitor cost is a sub-component of the laser, not a separate account. **No override on C220107 — cost is captured in C220104.**
 
-> "The entire NIF facility requires 192 beam lines and 120 tons of precision glass, with a total system cost of over $3,600,000,000."
-> — xcimer-science-page.md, §While there have been significant advancements
+- **C220108** (Target factory — IFE/MIF target manufacturing): Xcimer targets use liquid DT + plastic ablator (no gold hohlraum, no cryogenic ice layer). The whitepaper states the lower rep rate "significantly reduces capsule fabrication costs" but provides no target cost per unit, no factory cost, and no manufacturing process details. The dossier comparison table notes "not publicly specified" for Xcimer target costs. The qualitative claim that targets are cheaper due to simpler construction and lower throughput is plausible but not quantified. **No override — no company-grounded cost figure.**
 
-> "we've reduced the cost per joule by more than 30x compared to the National Ignition Facility (NIF)."
-> — xcimer-energy-approach.md
+- **C220110** (Remote handling & maintenance): No specific data. Xcimer claims minimal maintenance due to the liquid wall eliminating first-wall replacement, but no remote handling system cost is provided. **No override.**
 
-### Missing Parameters
+- **C220111** (Reactor equipment installation & assembly): No specific data. **No override.**
 
-| Parameter | Gap Type | Criticality | Notes |
-|-----------|----------|-------------|-------|
-| Net electrical output — specific commercial plant | proprietary | blocking | Range "hundreds of MWe to >1 GWe" is insufficient for LCOE modeling; Athena at ~400 MWe is the only stated data point |
-| Thermal efficiency of energy conversion cycle | not-yet-sourced | blocking | Steam cycle (~33%) vs. He Brayton (~45%) makes a material difference in gross thermal power required; HYLIFE heritage suggests ~45% but Xcimer science page says "steam" |
-| Capacity factor / plant availability | truly-unknown | blocking | No maintenance schedule, component lifetime, or availability model published; thick liquid wall eliminates first-wall replacement downtime but FLiBe pump/nozzle maintenance interval unknown |
-| Target cost per shot | proprietary | blocking | Xcimer does not publish target cost; threshold is ~$2–3/target (Goodin et al. criterion at 400 MWe); liquid DT + plastic ablator is simpler than NIF targets but throughput economics not stated |
-| Total plant overnight capital cost ($/kWe) | proprietary | blocking | Laser cost can be estimated from published $/J; chamber, BOP, and indirect costs are unstated. No FOAK or NOAK plant cost estimate published |
-| O&M cost breakdown | truly-unknown | important | No fixed vs. variable O&M estimate; no maintenance staffing model; no FLiBe chemistry handling cost |
-| FLiBe/FLiNaK inventory cost | not-yet-sourced | important | HYLIFE-II (Moir 1994) has the only published FLiBe cost estimate ($154/kg with 20% learning rate per Araiinejad 2025); applicable volume unknown; FLiNaK cost not published |
-| FLiBe pump recirculating power | truly-unknown | important | Pumping power for FLiBe jet formation may be significant; feeds back into net efficiency |
-| Capsule burn-up fraction | not-yet-sourced | important | Required for DT fuel burn calculation; estimated at ~30% from NIF/IFE literature [inferred: analogue to HYLIFE-II Xcimer-class yield] |
-| First-of-a-kind cost premium (FOAK vs. NOAK) | derivable | important | Xcimer cites FOAK at $100/J and NOAK at $60–80/J — a 25–40% reduction. Underlying learning rate and deployment scenario not provided |
-| Neutron wall loading on steel structure (lifetime fluence) | not-yet-sourced | nice-to-have | HYLIFE-III 2024 paper addresses this but is behind paywall; Xcimer claims 30-year facility lifetime without structural replacement |
+- **CAS21** (Buildings & site structures): No specific data. The 50 m standoff distance between laser and target suggests a substantial building footprint, but no building cost is published. **No override.**
 
----
+- **CAS23** (Turbine plant equipment): No specific thermal cycle cost data. Energy conversion pathway is ambiguous (steam vs. He Brayton). **No override.**
 
-[1] xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md, §Xcimer Laser Cost and Schedule / §Challenge 3 / §Xcimer's Chamber Design
-[2] xcimer-energy-approach.md
-[3] xcimer-science-page.md, §While there have been significant advancements; §In an Xcimer system
+- **CAS24** (Electric plant equipment): No specific data. **No override.**
 
----
+- **CAS26** (Heat rejection system): No specific data. **No override.**
+
+- **CAS27** (Special materials — initial reactor material inventory): The FLiBe initial fill is a significant material cost. Xcimer states Athena "will certainly use FLiBe" with TBR > 1.2, and that commercial plants may switch to FLiNaK. No FLiBe mass or cost is published by Xcimer. The Araiinejad (2025) estimate of ~$154/kg NOAK FLiBe exists as an external reference. For a HYLIFE-III chamber, FLiBe inventory could be several hundred tonnes (HYLIFE-II reference used ~600 t). At $154/kg this would be ~$92M — potentially a significant departure from a library default if the default does not account for thick-liquid-wall inventory. However, neither the mass nor the unit cost comes directly from Xcimer. **No override — no company-grounded figure.** Flagged as a high-priority data gap.
+
+- **CAS70** (Annualized O&M + scheduled component replacement): No published O&M breakdown. Xcimer claims no first-wall replacement (liquid wall), which should reduce CAS70 relative to solid-wall IFE concepts. But the magnitude of the reduction is not quantified. **No override.**
+
+- **CAS80** (Annualized fuel cost): No specific fuel cost data beyond standard D-T. Tritium inventory is <150 g for Athena. **No override.**
+
+**Override registry:**
+
+```yaml
+overrides:
+  - account: C220104
+    value: 560.0
+    enabled: true
+    provenance: direct
+    source: "xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer Laser Cost and Schedule"
+    rationale: |
+      Xcimer published NOAK laser cost of $60-$80/J on-target (whitepaper Table 1 with
+      component breakdown: capacitors $10/J, Marx generators $24/J, e-beam $17/J, laser
+      chamber $19/J, optics $12/J, NLO/seed $23/J, controls $4/J at FOAK summing to
+      $100/J; NOAK reduced to $60-$80/J via efficiency optimization and higher-volume
+      manufacturing). At 8 MJ on-target for Athena: midpoint $70/J × 8 MJ = $560M.
+      FOAK range is $100-$120/J ($800M-$960M). Library default for a generic laser IFE
+      driver does not reflect the KrF excimer + NLO architecture. Architecture never built
+      at MJ scale; Phoenix prototype (1-2 kJ, Q2 2026) is first integration test.
+
+  - account: C220108
+    value: 0.60 * generic.costs.C220108
+    enabled: true
+    provenance: derived
+    source: "xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Challenge 2; xcimer-energy-approach.md §Fuel Capsules"
+    rationale: |
+      Xcimer targets use liquid DT + plastic ablator with no gold hohlraum and no cryogenic
+      ice layer, operating at sub-Hz rep rate (0.7 Hz for Athena vs. 10 Hz for DPSSL IFE).
+      Target throughput is ~22M/yr vs. ~315M/yr for a 10 Hz plant — an order-of-magnitude
+      reduction in factory scale. The simpler target construction and dramatically lower
+      throughput should reduce target factory cost substantially. However, no company-published
+      factory cost exists. The 0.60× multiplier is an analyst estimate reflecting the lower
+      throughput and simpler target; this should be treated as a sensitivity parameter.
+      Enabled with low confidence.
+
+  - account: CAS21
+    value: 1.25 * generic.costs.cas21
+    enabled: true
+    provenance: derived
+    source: "xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer Laser Cost and Schedule"
+    rationale: |
+      The 50 m standoff distance from laser to target implies a larger building footprint
+      than a compact laser IFE plant. The ~100 Argos amplifier modules, Marx generator banks,
+      and NLO beam combining optics require substantial floor space. No building cost is
+      published. The 1.25× multiplier is an analyst estimate reflecting the larger footprint;
+      this should be treated as a sensitivity parameter.
+
+  - account: C220107
+    value: 0.0
+    enabled: true
+    provenance: direct
+    source: "xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer Laser Cost and Schedule"
+    rationale: |
+      Xcimer's architecture is a gas excimer laser, not an electrically-driven pulsed scheme.
+      The capacitor bank (Marx generators) is internal to the laser driver and is fully costed
+      in C220104. There is no separate standalone pulsed-power capacitor bank. C220107 should
+      be zeroed to avoid double-counting with C220104.
+
+  - account: C220101
+    value: 0.40 * generic.costs.C220101
+    enabled: true
+    provenance: derived
+    source: "xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Chamber Design"
+    rationale: |
+      Xcimer's thick-liquid FLiBe jet wall replaces the conventional solid first wall and
+      blanket module. There is no solid breeding blanket structure — the flowing FLiBe itself
+      is the blanket, first wall, and shield. The structural component is a conventional steel
+      chamber behind the liquid. The cost character is fundamentally different from a solid
+      blanket (no RAFM steel modules, no Be multiplier pebble beds, no helium coolant channels).
+      FLiBe inventory cost is captured in CAS27 if overridden. The 0.40× multiplier reflects
+      that the "blanket" is a steel vessel + FLiBe nozzle/pump system rather than engineered
+      solid blanket modules. No company cost figure; analyst estimate.
+
+  - account: C220102
+    value: 0.30 * generic.costs.C220102
+    enabled: true
+    provenance: derived
+    source: "xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Chamber Design"
+    rationale: |
+      The thick-liquid FLiBe wall (~50+ cm) provides the primary radiation shielding function.
+      Xcimer claims 30-year facility lifetime without first-wall replacement. The structural
+      shield behind the liquid wall is conventional steel, not a purpose-built nuclear-grade
+      radiation shield. Shielding cost is dramatically reduced relative to concepts with dry
+      walls or thin-liquid protection. No company cost figure; analyst estimate of 0.30×
+      reflects that the liquid itself provides most shielding.
+
+  - account: CAS27
+    value: 92.0
+    enabled: true
+    provenance: derived
+    source: "xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Chamber Design; dossier §Summary"
+    rationale: |
+      FLiBe initial inventory for a HYLIFE-III chamber. Xcimer does not publish the FLiBe mass.
+      HYLIFE-II reference used ~600 t of FLiBe for a 6 Hz, 350 MJ-yield chamber. Athena
+      operates at lower yield (~1.6 GJ) but sub-Hz rate. Assuming a comparable ~600 t inventory
+      (uncertain — could range 300-1000 t). At $154/kg NOAK FLiBe (Araiinejad 2025, adjusted
+      for learning): 600 t × $154/kg = $92.4M ≈ $92M. Both mass and unit cost are analyst-
+      sourced, not company-published. High uncertainty.
+
+  - account: CAS70
+    value: 0.75 * generic.costs.cas70
+    enabled: true
+    provenance: derived
+    source: "xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Chamber Design"
+    rationale: |
+      Xcimer claims no first-wall or blanket replacement over 30-year facility lifetime due to
+      thick-liquid-wall protection. This eliminates the dominant scheduled component replacement
+      cost that drives CAS70 in solid-wall concepts. However, FLiBe loop maintenance (pumps,
+      heat exchangers, redox control) and laser system maintenance (gas replacement, capacitor
+      aging) are real O&M costs. The 0.75× multiplier reflects elimination of first-wall
+      replacements offset by FLiBe-specific maintenance. No company O&M figure; analyst estimate.
+```
+
+**Override count:** 8 enabled overrides. The archetype-fit is Low, expecting 6–12 enabled overrides. The count of 8 falls within the expected band. Of these, only C220104 and C220107 have direct provenance; the remaining 6 are derived with analyst estimates, reflecting the dossier's rich qualitative descriptions but sparse cost quantification.
 
 ## Section 6: Data Gap Inventory
 
 | # | Gap Description | Section | Gap Type | Criticality | Source Recommendation |
 |---|-----------------|---------|----------|-------------|----------------------|
-| 1 | Net electrical output for commercial plant design — "hundreds of MWe to >1 GWe" is too wide for LCOE | S5 | proprietary | blocking | Xcimer investor materials; DOE program documentation (CX-029047) |
-| 2 | Thermal efficiency of energy conversion cycle (steam Rankine ~33% vs. He Brayton ~45%) | S2, S5 | not-yet-sourced | blocking | HYLIFE-III paper (Fusion Eng. Des. 2024, S0920379624001868) — behind paywall; HYLIFE-II 1994 report |
-| 3 | Plant availability / capacity factor — no maintenance model or availability estimate | S5 | truly-unknown | blocking | No public source; must be estimated from analogue IFE designs or from GEM model |
-| 4 | Target cost per shot at commercial throughput (0.25–1 Hz, liquid DT + plastic ablator) | S2, S5 | proprietary | blocking | Xcimer / General Atomics internal; Goodin et al. 2004 threshold analysis applicable |
-| 5 | Total overnight capital cost breakdown by CAS account (laser, chamber, BOP, indirect) | S5 | proprietary | blocking | No public source; laser cost is the only published subsystem; analogue from GEM or Hawker framework |
-| 6 | O&M cost breakdown — fixed vs. variable, scheduled vs. unplanned | S5 | truly-unknown | important | Not published for any IFE concept; must be estimated from analogue MFE O&M data |
-| 7 | FLiBe/FLiNaK coolant inventory cost and FLiBe→FLiNaK cost delta (Athena→commercial transition) | S4, S5, S7 | not-yet-sourced | blocking | No FLiNaK cost-per-kg source found in available materials; HYLIFE-II 1994 (UCRL-CR-105908) and Araiinejad 2025 cover FLiBe in 1994$/scaled basis only. The Athena→commercial transition requires separate material costing — not a learning-rate multiplier |
-| 8 | Two-beam HDD implosion symmetry demonstration — any experimental data | S3 | truly-unknown | important | Anvil (2028) is first planned test; until then, entire capsule gain projection is extrapolation |
-| 9 | SBS/NLO pulse compression performance at >100 kJ — beam quality, phase preservation | S3 | truly-unknown | important | Phoenix (1–2 kJ, 2026) and Anvil (200 kJ, 2028) will be first data points |
-| 10 | Neutron wall loading on steel structure and 30-year lifetime claim basis | S3 | not-yet-sourced | important | HYLIFE-III paper (behind paywall); Xcimer DOE program documents |
-| 11 | DT burnup fraction at Xcimer capsule scale | S5 | not-yet-sourced | nice-to-have | Analogue: HYLIFE-II used ~30% burnup; applies here with [analogue] flag |
-| 12 | FLiNaK TBR ~1.05 validation and nuclear design details | S4, S5 | not-yet-sourced | nice-to-have | XEC whitepaper references (n,2n) argument without citation; HYLIFE-III paper would contain the analysis |
-| 13 | Capacitor cost trajectory — current in-house production cost vs. $0.40/J target | S4 | proprietary | nice-to-have | Xcimer internal; price floor determines whether NOAK laser cost target is achievable |
+| 1 | No total plant capital cost or overnight cost estimate for Athena | S1, S5 | truly-unknown | blocking | Requires Xcimer disclosure or independent systems study |
+| 2 | No LCOE estimate from any source | S1 | truly-unknown | blocking | Requires plant-level systems model integration |
+| 3 | No target manufacturing cost per unit | S2, S4 | proprietary | blocking | Xcimer or independent target factory study; Goodin et al. 2004 provides IFE target cost framework |
+| 4 | No FLiBe inventory mass for Athena | S4, S5b | not-yet-sourced | important | HYLIFE-II/III literature may constrain; direct Xcimer query |
+| 5 | Energy conversion cycle unspecified (steam vs. He Brayton vs. combined) | S2, S5 | proprietary | important | Xcimer disclosure or heritage assumption from HYLIFE-II He Brayton at ~45% |
+| 6 | Thermal efficiency not published for Athena | S5 | not-yet-sourced | important | Derivable from cycle choice + FLiBe operating temperatures |
+| 7 | Chamber geometry (radius, height) not published | S5 | proprietary | important | HYLIFE-II reference provides a starting point but Athena parameters differ |
+| 8 | No O&M cost breakdown (fixed, variable, scheduled maintenance) | S2 | truly-unknown | important | Generic IFE O&M models; Xcimer-specific FLiBe loop maintenance is novel |
+| 9 | HDD implosion physics unvalidated experimentally | S2, S3 | truly-unknown | important | Awaiting experimental campaigns on OMEGA or NIF; Xcimer/LLE joint work |
+| 10 | KrF + NLO architecture never built at >kJ scale | S3 | truly-unknown | important | Phoenix prototype (Q2 2026) first data point |
+| 11 | FLiBe unit cost at industrial scale | S4, S5b | not-yet-sourced | nice-to-have | Araiinejad 2025 NOAK estimate ($154/kg) is only reference; cross-check with Kairos Power molten salt procurement |
+| 12 | Gross electric output and thermal power for Athena | S5 | derivable | nice-to-have | Derivable from 400 MWe net + recirc fraction + thermal efficiency |
 
----
+## Section 7: Family-Delta vs Comparables
 
-## Section 7: Cross-Concept Notes
+The fixed comparables for concept 17a are:
+- 17b — Laser ICF Fast Ignition (Focused Energy)
+- 26 — Laser ICF Indirect Drive (Inertia Enterprises)
+- 30 — Laser ICF NIF Commercialization (Focused Energy LIFE-class)
+- 31 — Laser ICF OEC Architecture (Blue Laser Fusion)
+- 32 — Laser ICF French National (GenF Systems)
 
-No approved prior analyses are available for direct cross-referencing in the IFE family. The handwritten exemplar for concept 26 (Laser ICF — Indirect Drive) covers the broader IFE modeling challenge landscape and informs several aspects of this analysis:
+All comparables are IFE concepts using laser drivers with D-T fuel. The deltas below address what Xcimer's Athena design does differently and how those differences move cost.
 
-**Shared IFE modeling challenges (from concept 26 exemplar):**
+### Delta 1: KrF excimer laser vs. DPSSL driver — cost advantage
 
-The challenge of IFE chamber sizing — that neutron damage, evaporation limits, and chamber clearing respond to different combinations of yield × rep rate — applies fully here. Xcimer's response is architectural: the thick FLiBe liquid wall eliminates the damage and evaporation constraints by design, making chamber clearing at sub-Hz rep rate the binding constraint (satisfied by gravity-cleared FLiBe jets with ~1 second clearing time).
+All five comparables use or are expected to use diode-pumped solid-state lasers (DPSSL). Xcimer uses an electron-beam-pumped KrF excimer gas laser with NLO beam combining.
 
-The target cost threshold criterion from Goodin et al. (2004) — targets must cost <10% of electricity produced per shot — was applied in the concept 26 exemplar for both Xcimer ($2.78/target) and Inertia ($0.75/target). That analysis uses the same basis and is applied consistently here.
+**Cost effect: strong advantage.** Xcimer publishes $100–$120/J FOAK, $60–$80/J NOAK. The whitepaper estimates the DPSSL long-term cost floor at $700–$1,000/J — roughly an order of magnitude higher.[^21] This translates to a laser system cost difference of approximately 10× for the same on-target energy. At 10 MJ on-target, a DPSSL would cost $7B–$10B vs. Xcimer's $0.8B–$1.0B FOAK. This is the single largest cost delta across all accounts.
 
-**Key divergence from indirect drive (concept 26):**
+**Mechanism:** The KrF gas gain medium cannot be damaged (eliminates precision glass degradation and $40M+/year optics refurbishment); commodity materials (steel, aluminum, plastics) replace precision optics; the NLO architecture eliminates ~300 m² of final optical aperture needed by DPSSL systems, replacing it with <1 m² of gas-phase "mirrors."
 
-The concept 26 exemplar covers both Xcimer and Inertia Enterprises under a joint indirect-drive frame, noting that Xcimer uses HDD (direct drive variant) while Inertia uses true indirect drive (hohlraum, NIF heritage). This analysis focuses exclusively on Xcimer's HDD approach, which diverges from indirect drive in three critical ways:
+**Penalty:** Excimer lasers achieve 5–7% wall-plug efficiency vs. ~10% for DPSSL, increasing recirculating power fraction. The whitepaper argues this is "more than made up for by their cost-effectiveness."
 
-1. **Coupling efficiency**: ~90% (direct) vs. ~12% (indirect/hohlraum) — the single largest efficiency multiplier
-2. **Chamber geometry**: Two-beam penetrations (Xcimer HDD) vs. many-beam geometry required for indirect drive, enabling the thick FLiBe liquid wall
-3. **Target manufacturing**: No hohlraum gold/uranium required; plastic ablator + liquid DT is lower-cost and simpler to mass-produce than NIF-style targets
+### Delta 2: Hybrid Direct Drive vs. Indirect/Direct Drive — coupling efficiency advantage
 
-**Direct-drive IFE nearest neighbor: Focused Energy**
+Concepts 26 and 30 use indirect drive (laser → hohlraum → X-ray → capsule), with ~12% coupling efficiency. Concept 17b uses fast ignition (separate compression and ignition beams). Concepts 31 and 32 likely use direct or indirect drive (details vary).
 
-Within the direct-drive IFE family, Focused Energy (Germany) is the architecturally closest peer to Xcimer — closer than any indirect-drive concept. Both companies target direct coupling of laser energy to DT capsules with private commercial timelines in the 2030s. Three design-space forks have direct TEA significance: (1) *Driver cost and efficiency* — Xcimer uses KrF excimer lasers with NLO pulse compression, targeting ~7% wall-plug efficiency at a projected NOAK cost of $60–80/J. Focused Energy uses diode-pumped solid-state lasers (DPSSL) targeting ~10% wall-plug efficiency. The XEC whitepaper cites DPSSL at $700–1,000/J as the competitive baseline motivating Xcimer's KrF choice (§Challenge 3); Focused Energy's DPSSL cost trajectory is not published in available sources, but the gap is real at current maturity — DPSSL recovers some cost via lower recirculating power, but only if the efficiency improvement is large enough to offset the higher driver capex. (2) *Rep rate and yield-per-shot economics* — Xcimer operates at sub-Hz (0.25–1 Hz) with GJ-class yield per shot; Focused Energy targets ~10 Hz with lower yield per shot, requiring approximately 900,000 target injections per day at commercial scale. At the Goodin et al. cost ceiling (~$2–3/target), a 10 Hz design at the same electrical output scale faces proportionally higher target cost pressure unless per-shot yield is proportionally reduced. (3) *Chamber and illumination geometry* — Xcimer's two-beam HDD geometry is architecturally tied to the FLiBe thick-liquid-wall; available sources do not describe Focused Energy's chamber wall type or beam count, so this comparison cannot be made from current sources. No direct cost comparison between the two approaches has been published.
+Xcimer's HDD claims >50% coupling efficiency (potentially ~80%), eliminating the gold hohlraum entirely.[^22] This means the same laser energy produces >4× more energy coupled to the fuel capsule, enabling either higher gain at the same laser energy or the same gain at lower laser energy.
 
-**Differentiators from conventional tokamak (ITER/ARC reference):**
+**Cost effect: advantage** — reduces required laser energy for a given fusion yield. A 10 MJ HDD laser replaces a ~40–80 MJ indirect-drive laser for similar capsule energy delivery. This compounds with Delta 1 to produce a dramatic driver cost reduction.
 
-The following structural differences between Xcimer HDD and a conventional tokamak determine which CAS accounts are new, shared, absent, or inverted in direction:
+**Risk:** HDD is simulation-only. If the coupling efficiency is substantially lower than claimed, the advantage narrows.
 
-1. **Driver capital — new, penalty**: The laser system ($1,500–2,500/kWe at NOAK) replaces the superconducting magnet system (~$800–1,200/kWe for TF + PF coils). Both are the dominant capex item in their respective concepts, but the laser has no vendor ecosystem or cost history at this scale — cost uncertainty is substantially larger.
+### Delta 3: Sub-Hz repetition rate vs. 5–10 Hz — mixed effect
 
-2. **Per-shot consumables — new, penalty**: At 0.25–1 Hz, a commercial plant consumes 8–31 million DT targets per year. Tokamaks burn fuel continuously as gas injection with no per-shot consumable cost. This creates a recurring cost category with no MFE analogue; cost ceiling is ~$2–3/target (Goodin et al. criterion).
+Most DPSSL-based comparables target 5–10 Hz operation (concept 26 explicitly targets 10 Hz). Xcimer targets 0.25–1 Hz, enabled by very high yield per shot (~1.6+ GJ vs. ~450 MJ for concept 26).
 
-3. **Plasma-facing components — absent, advantage**: The thick FLiBe liquid wall self-renews each shot, eliminating the first-wall and divertor replacement cycle that drives planned maintenance outages in tokamaks. Dry-wall solid-first-wall IFE designs (LIFE, NIF-scale) share the tokamak's erosion problem; Xcimer does not.
+**Cost effect: advantage on target factory (C220108)** — ~22M targets/year at 0.7 Hz vs. ~315M targets/year at 10 Hz, reducing factory scale by ~15×. **Advantage on chamber clearing** — more time between shots simplifies the ash-clearing and wall-regeneration engineering. **Penalty on capital utilization** — the laser fires for ~3 μs every ~1.4 seconds, meaning the driver capital is idle >99.9999% of the time (though this is true of all pulsed IFE concepts to varying degrees).
 
-4. **Heating and current-drive systems — absent, advantage**: Tokamaks require 50–100 MW of auxiliary heating (NBI, ECRH, ICRH) and current-drive power systems (~10–20% of plant capex and continuous recirculating power draw). Pulsed IFE has no plasma current to sustain; these cost categories are entirely absent.
+### Delta 4: Thick-liquid FLiBe wall vs. thin-liquid or dry wall — advantage on C220101, C220102, CAS70
 
-5. **BOP thermal loading — different structure, roughly neutral**: Tokamaks deliver near-steady-state thermal power to the steam plant. Xcimer delivers pulsed thermal input (sub-Hz shot cadence with GJ-class yield per pulse), requiring a FLiBe primary loop with thermal buffer and an intermediate heat exchanger rated for transient loading. The capital cost difference vs. steady-state BOP is modest; the design challenge is non-trivial but solvable with MSR-heritage technology.
+Concept 26 (Inertia) uses liquid lithium flowing through chamber wall pipes. Concepts 30, 31, 32 may use dry walls or thin-liquid protection (details vary by concept). Xcimer's HYLIFE-III thick-liquid FLiBe jets provide >50 cm of liquid between the fusion event and the structural wall.
 
-6. **Tritium startup inventory — advantage**: Xcimer's stated startup inventory is <200 g; tokamak MFE concepts require ~1–5 kg at startup. At ~$30,000/g for tritium, this represents a $30–150M procurement cost advantage at first plant. The fleet scaling advantage is even larger if the global ~25 kg tritium inventory is a binding constraint.
+**Cost effect: advantage.** The thick liquid wall eliminates: first-wall replacement costs (the dominant CAS70 driver in solid-wall IFE), radiation shielding requirements (C220102 — the liquid itself is the shield), and RAFM steel or SiC structural first-wall modules (C220101). The structural chamber can be conventional steel. Xcimer claims 30-year lifetime without first-wall replacement. **Penalty:** Large FLiBe inventory (CAS27), FLiBe pump/nozzle maintenance costs, and beryllium supply-chain constraint (mitigated by the FLiNaK option).
 
-7. **Plasma disruption and control risk — absent, advantage**: Tokamaks carry disruption risk (uncontrolled plasma termination causing structural damage and extended downtime), requiring complex disruption mitigation systems. Pulsed IFE has no such mode — each shot is independent and a failed ignition pulse is simply a missed shot with no hardware consequence.
+### Delta 5: Two-beam geometry vs. multi-beam — structural simplification
 
-8. **FLiBe → FLiNaK blanket transition (Athena → commercial): architectural change, cost direction unknown**: The shift from FLiBe (Athena pilot) to FLiNaK (NOAK commercial) eliminates beryllium procurement as a supply-chain risk. However, the cost direction is not resolvable from available sources — no cost-per-kg data for FLiNaK vs. FLiBe appears in any ingested source. FLiBe cost is estimated at ~$154/kg (Moir 1994, via Araiinejad 2025 scaling); no equivalent FLiNaK figure exists. On supply-chain grounds FLiNaK should be cheaper (common alkali fluorides, no beryllium premium), but the magnitude is unknown. The TBR reduction (FLiNaK ~1.05 vs. FLiBe ~1.2) provides minimal margin above breeding breakeven and reduces the cushion for off-design operation, which may tighten tritium inventory requirements and increase extraction system demands. This transition should be modeled as a separate parameter branch with the cost delta flagged as a blocking gap; see Section 6, gap #7.
+NIF uses 192 beamlines. Concept 26 (Inertia) uses ~1,000 modular DPSSL beamlines. Xcimer uses only 2 final beams (from ~100 Argos modules combined via NLO).
 
----
+**Cost effect: advantage on chamber design** — two beam ports instead of hundreds reduces chamber penetrations, enabling the thick-liquid wall. Also reduces building complexity and remote-handling challenges. **Advantage on final optics** — minimal exposed optic area (<1 m² vs. ~30–300 m² for comparables).
 
-**Shared supply chain with tokamak analysis (concept 01):**
+### Summary of cost deltas
 
-Tritium supply constraints and the global ~25–30 kg tritium inventory ceiling apply identically. However, Xcimer's stated tritium inventory of <200 g (GWe-scale) is dramatically lower than typical MFE startup inventory estimates (~1–5 kg), which is a potential fleet-scaling advantage. Whether this low-inventory claim is achievable in practice (it depends on rapid tritium extraction from the FLiBe primary loop) has not been independently validated.
+| Account area | Direction | Magnitude | Confidence |
+|-------------|-----------|-----------|------------|
+| C220104 (laser driver) | Advantage | ~10× cheaper than DPSSL | medium (company-published, architecture unproven) |
+| C220108 (target factory) | Advantage | ~15× lower throughput | medium (qualitative, no cost data) |
+| C220101 (first wall/blanket) | Advantage | Liquid replaces solid modules | low (no cost data) |
+| C220102 (radiation shield) | Advantage | Liquid provides shielding | low (no cost data) |
+| CAS70 (O&M) | Advantage | No first-wall replacement | medium (qualitative) |
+| CAS27 (FLiBe inventory) | Penalty | Large FLiBe fill (~$92M est.) | low (both mass and cost estimated) |
+| Recirculating power | Penalty | 5–7% vs. ~10% WPE | medium |
 
-FLiBe supply chain considerations from concept 01 (tokamak analysis) apply directly: Materion Corp. beryllium, lithium enrichment supply, and the ~$154/kg NOAK FLiBe cost estimate (Araiinejad 2025). Xcimer's FLiNaK upgrade path for commercial plants eliminates the beryllium supply dependency, which is a genuine mitigation.
-
----
+[^21]: xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer Laser Cost and Schedule
+[^22]: xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Challenge 2
 
 ## Section 8: Sources
 
-1. **XEC Whitepaper: "Commercialization of Laser Fusion Energy"** (Xcimer Energy / TRUMPF, February 2026)
-   - Primary source for: laser cost breakdown by subsystem, Qsci/Qc targets, recirculating power fraction, TBR values, tritium inventory, FLiNaK upgrade path, development roadmap and milestones, DPSSL cost comparison
-   - Path: `exploration/phase_1a/research/17-laser-icf-direct-drive/iter-02/sources/xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md`
+Listed in order of importance to this analysis.
 
-2. **Xcimer Energy Science Page** (xcimer.energy/science/, retrieved 2025–2026)
-   - Primary source for: wall-plug gain threshold (~10×), direct-drive coupling efficiency (~90%), NIF optics refurbishment cost ($40M/year), steam turbine energy conversion description, rep rate ("every couple seconds")
-   - Path: `exploration/phase_1a/research/17-laser-icf-direct-drive/iter-02/sources/xcimer-science-page.md`
+1. **Galloway & Valys, "Commercialization of Laser Fusion Energy" (Xcimer Energy / TRUMPF whitepaper, February 2026)** — `knowledge/concept_research/17a-laser-icf-hybrid-drive/iter-02/sources/xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md`. The primary source for this analysis. Provides: laser cost breakdown ($/J FOAK and NOAK), component-level architecture, wall-plug efficiency targets, Athena plant parameters (400 MWe, 8 MJ on-target, sub-Hz rep rate), capsule gain scaling, FLiBe chamber description, tritium inventory, recirculating power fraction, and commercial roadmap. 89 KB extracted text.
 
-3. **Xcimer Energy Approach Page** (xcimer.energy/approach/, retrieved 2025–2026)
-   - Primary source for: >30× cost/joule reduction claim, <1 Hz rep rate confirmation, FLiBe liquid wall description, two-beam geometry, <1 m² final optic area
-   - Path: `exploration/phase_1a/research/17-laser-icf-direct-drive/iter-01/sources/xcimer-energy-approach.md`
+2. **Xcimer Energy — Science page** — `knowledge/concept_research/17a-laser-icf-hybrid-drive/iter-02/sources/xcimer-science-page.md`. Provides: historical context of laser ICF, NIF cost and performance baseline ($3.5B, 192 beamlines, 0.5% WPE), HYLIFE chamber heritage description, and the "1000× wall-plug gain improvement" thesis (10× capsule gain × 10× laser efficiency × 8× coupling). 17 KB.
 
-4. **Phase 1a Dossier: Laser ICF — Direct Drive** (internal, 2026-03-07)
-   - Primary source for: driver technology classification, HDD physics description, milestone timeline, competitive comparison with Focused Energy, source list compilation
-   - Path: `exploration/phase_1a/research/17-laser-icf-direct-drive/dossier.md`
+3. **Xcimer Energy — Approach page** — `knowledge/concept_research/17a-laser-icf-hybrid-drive/iter-01/sources/xcimer-energy-approach.md`. High-level corporate overview identifying three key subsystems (gas excimer laser, large fuel capsules, FLiBe liquid-wall chamber). Claims 30× cost/J reduction vs. NIF, <1 m² final optical area, sub-Hz operation. No quantitative cost data. 2 KB.
 
-5. **HYLIFE Energy Conversion Notes** (UCRL-CR-105908, Hoffman, LLNL/UC Davis, DOE/DP)
-   - Contribution: Establishes BOP boundary at IHX thermal interface; FLiBe primary loop architecture; confirms FLiNaK-to-steam-generator pathway concept
-   - Limitation: Only abstract/metadata extracted; full BOP cost data and thermal efficiency values not captured
-   - Path: `exploration/phase_1a/research/17-laser-icf-direct-drive/iter-02/sources/hylife-energy-conversion-notes.md`
+4. **HYLIFE-II Power Conversion System Design and Cost Study (Hoffman, UCRL-CR-105908, 1991)** — `knowledge/concept_research/17a-laser-icf-hybrid-drive/iter-02/sources/hylife-energy-conversion-notes.md`. Bibliographic record only (extraction captured abstract, not report body). Confirms BOP architecture: FLiBe primary coolant → IHX → steam generators → steam power plant. The full report contains efficiency and cost data but was not extractable.
 
-6. **Focused Energy — Callahan Interview** (Physics World, 2025)
-   - Contribution: Contextual baseline for IFE concepts (gain requirements 50–100×, rep rate 10 Hz, steam cycle, DPSSL driver philosophy) — used to frame Xcimer's approach by contrast
-   - Path: `exploration/phase_1a/research/17-laser-icf-direct-drive/iter-02/sources/focused-energy-callahan-interview.md`
+5. **HYLIFE-III Nuclear Analysis (Fusion Engineering and Design, 2024)** — `knowledge/concept_research/17a-laser-icf-hybrid-drive/iter-03/sources/sciencedirect-science-article-pii-s0920379624001868.md`. Stub extraction only. Referenced in dossier for TBR > 1.2 across multiple FLiBe thicknesses.
 
-7. **HYLIFE-III Nuclear Analysis Paper** (Fusion Engineering and Design, 2024, doi:S0920379624001868)
-   - Contribution: FLiBe TBR analysis, neutron spectra, first-wall neutron activation; confirms FLiBe as preferred blanket with TBR ~1.2
-   - Limitation: Behind ScienceDirect paywall; not directly ingested; cited via dossier reference
-   - URL: https://www.sciencedirect.com/science/article/pii/S0920379624001868
+6. **HYLIFE-II Final Report (Moir, Fusion Technology, 1994)** — `knowledge/concept_research/17a-laser-icf-hybrid-drive/iter-03/sources/osti-biblio-7021072.md`. Stub extraction only. Heritage reference for the FLiBe thick-liquid-wall chamber concept.
 
-8. **HYLIFE-II Final Report** (Fusion Technology, 1994, Moir et al.)
-   - Contribution: Heritage reference design (940 MWe, 6 Hz, FLiBe thick-liquid wall, 30-year facility lifetime) establishing the HYLIFE chamber concept Xcimer builds upon; FLiBe cost estimates
-   - Limitation: Not directly ingested; cited via dossier reference
-   - URL: https://www.tandfonline.com/doi/abs/10.13182/FST94-A30234
+7. **Dossier: Laser ICF — Hybrid Direct Drive (D-T)** — `knowledge/concept_research/17a-laser-icf-hybrid-drive/dossier.md`. Structured research summary providing differentiation table values, comparison to Inertia Enterprises, remaining gaps, and source index. Medium overall confidence.
 
-9. **Mehlhorn 2024 — "From KMS Fusion to HB11 Energy and Xcimer Energy"** (Physics of Plasmas, 2024)
-   - Contribution: KrF excimer laser heritage (NRL Electra, 750 J at 5 Hz, wall-plug efficiency 7%); historical context for ASPEN architecture
-   - Limitation: Not directly ingested; cited via dossier reference
-   - URL: https://pubs.aip.org/aip/pop/article/31/2/020602/3267722/
-
-10. **Goodin et al. 2004** — Target cost threshold criterion
-    - Contribution: Economic criterion that targets must cost <10% of electricity produced per shot to be economical; used to derive $2–3/target cost ceiling for Xcimer at 400 MWe
-    - Limitation: Not ingested; cited via concept 26 handwritten exemplar
+8. **Handwritten concept 26 analysis (Laser ICF Indirect Drive)** — `exploration/concept_analysis/handwritten/26-laser-icf-indirect-drive.md`. Provides comparative data for Xcimer vs. Inertia Enterprises, subsystem TRL assessments for laser IFE generally, and the Goodin et al. target cost framework.

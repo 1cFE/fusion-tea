@@ -1,22 +1,53 @@
-VERDICT: FINDINGS
+VERDICT: PASS
 
-### F-1: Driver efficiency sensitivity is inverted — contradicts the central HIF economic argument
-- **Target:** model_setup.py / model_output.txt (sensitivity section and driver efficiency scenario sweep)
-- **Category:** model
-- **Finding:** The model shows **positive** elasticity for `eta_pin` (+0.148), meaning higher driver efficiency increases LCOE. The scenario sweep confirms this: eta_pin = 0.25 gives LCOE = $91.9/MWh while eta_pin = 0.45 gives $92.7/MWh. The laser ICF reference (eta_pin = 0.10) produces LCOE = $91.4/MWh — *lower* than HIF's base case at 0.35. This directly contradicts the analysis narrative's claim (Section 7) that "This is the foundational HIF economic argument" against laser ICF. Physically, higher driver wall-plug efficiency should reduce recirculating power and lower LCOE (consistent with `q_eng` having negative elasticity of -0.32 as expected). The sign inversion suggests `eta_pin` is either not correctly wired to recirculating power in the IFE model path, or the 1costingfe framework's `eta_pin` parameter (designed for tokamak heating efficiency) is semantically mismatched with HIF driver efficiency and enters a cost sub-model in the wrong direction.
-- **Recommendation:** Diagnose whether `eta_pin` in the framework drives Q_eng (and thus net power) in the correct direction for IFE. If `eta_pin` connects only to a cost sub-model that scales driver CAPEX upward with efficiency rather than reducing recirculating power, the wiring is wrong for HIF. The driver efficiency scenario sweep should show LCOE *decreasing* as eta_pin rises from 0.10 (laser ICF) to 0.35–0.40 (HIF range). Fix the parameterization so the model correctly demonstrates HIF's structural efficiency advantage, or if the framework cannot represent this pathway, document the limitation explicitly and use a manual scenario (e.g., "if recirculating power fraction were reduced to X% by driver efficiency, LCOE would be $Y").
-- **Priority:** blocking
+The Heavy-Ion Beam ICF analysis adequately satisfies the pipeline contract across all assessment areas.
 
-### F-2: Availability is the top LCOE lever but is not treated as a key challenge
-- **Target:** Section 2 (Challenges) and Section 5 (Parameters)
-- **Category:** analysis
-- **Finding:** The model's top sensitivity parameter is `availability` (elasticity -0.958), roughly 3× the magnitude of the next parameter (`q_eng` at -0.32). Yet Section 2 has no challenge entry addressing availability for HIF. For a rep-rated IFE concept at 5–15 Hz, availability is determined by: (a) accelerator uptime across hundreds of induction cells, (b) liquid wall system cycling reliability, (c) target injection system reliability, and (d) chamber vacuum re-establishment between shots. None of these is characterized quantitatively or framed as an LCOE-critical challenge. The analysis correctly notes "no published HYLIFE-II availability target" in the Section 5 missing-parameters table, but does not discuss *why* HIF availability might be higher or lower than analogous IFE concepts or what the LCOE consequence of a 5-percentage-point availability swing (~0.95 × $5/MWh per point) would be.
-- **Recommendation:** Add a Section 2 challenge entry (or expand an existing entry) explicitly treating availability as the primary LCOE lever for HIF. Discuss the three availability-driving subsystems (accelerator, liquid wall, target factory) with at least an order-of-magnitude framing of what availability range is plausible (e.g., 70–90%). Note that the high rep rate (6 Hz) means any per-shot failure mode is magnified, but also that individual shot failures may not require full plant shutdown. Add an availability range (70–90%) to the Section 5 parameters table as a medium-confidence analogue estimate. This reframing better aligns the analysis narrative with the model's quantitative findings.
-- **Priority:** important
+## Evaluation Summary
 
-### F-3: No modeling approach decision stated; key hypotheses not formulated as testable propositions
-- **Target:** Section 2 (or a dedicated modeling approach section)
-- **Category:** analysis
-- **Finding:** The analysis does not state whether 1costingfe or free-form modeling is appropriate for HIF, or why. HIF deviates structurally from the 1costingfe reference concept (no plasma-confining magnets; driver replaces magnet system as dominant CAPEX; per-shot target costs create a variable OPEX stream with no MFE analog), raising the question of whether the tokamak-centric cost accounting structure adequately captures HIF's cost shape. Additionally, the analysis frames key uncertainties as open questions (e.g., "whether DT ice-layer targets...can be produced at this cost is unknown") rather than testable hypotheses. A TEA model should be organized around propositions of the form: "HIF achieves LCOE < $100/MWh if and only if driver CAPEX is reduced to $X by modular manufacturing AND target cost is < $Y per shot AND availability exceeds Z%."
-- **Recommendation:** Add a brief modeling approach statement identifying: (1) whether 1costingfe or freeform is being used and the key framework gaps for HIF (especially driver cost sub-account, target factory OPEX, no blanket replacement CAPEX), and (2) 2–3 key hypotheses stated as explicit if-then propositions that the sensitivity sweeps are designed to test. For example: "H1: Modular induction linac manufacturing reduces driver CAPEX from $1.4B to $0.7B (NOAK), enabling LCOE < $80/MWh — tested in the driver capital sweep." This gives the model a clear purpose and makes it auditable against the analysis claims.
-- **Priority:** important
+### 1. Design-Point Coherence ✓
+- The Design Point block (lines 19-27) copies frontmatter verbatim: name, maturity, P_native (940 MWe), grounding (high).
+- All Section 5 parameters describe the named HYLIFE-II baseline plant at its native 940 MWe scale—no roadmap substitution, no different machine.
+- `P_native` is coherent across frontmatter (940 MWe), Design Point block (940 MWe), Section 5 table (940 MWe), and `model_setup.py` line 42 (940.0). The coherence flags confirm this.
+
+### 2. Override Discipline ✓
+- Section 5b explicitly states "No override candidates proposed" with clear per-account assessment rationale.
+- The archetype-fit grade is High (expected 0–4 enabled overrides); actual count is 0.
+- The analysis provides accountable reasoning: all data derives from 1990s national lab studies with no company-grounded costs, therefore no departures from library defaults are justified.
+- `model_setup.py` lines 61-66 confirm `overrides = []` with matching commentary.
+
+### 3. Override Count vs. Archetype-Fit Grade ✓
+- Archetype-fit: High → expected 0–4 enabled overrides.
+- Actual enabled override count: 0 (within band).
+- Coherence flags confirm: "Override count (0) consistent with High archetype fit (expected 0–4)".
+
+### 4. Family-Delta Concreteness ✓
+- Section 7 acknowledges the absence of comparable IFE analyses in the current corpus.
+- The placeholder prose for future comparisons (when laser ICF analyses exist) names five specific subsystem deltas with clear cost directions: (1) driver efficiency advantage (30-40% vs 1-15%), (2) target coupling physics difference, (3) driver manufacturing scalability, (4) chamber simplification (no optics protection), (5) rep rate constraints.
+- Each delta carries a stated or implied TEA consequence (e.g., driver efficiency reduces required target gain by factor of 3-5 for equivalent LCOE).
+- This is the correct treatment for a concept with no fixed comparables yet approved.
+
+### 5. Two-Knob Projection & Model Integrity ✓
+- `model_setup.py` uses the three-forward helper form: `generic = generic_reference(...)` (line 59), `native, result_1gw = run_native_and_1gw(...)` (lines 69-71), with all four variables (`model`, `generic`, `native`, `result_1gw`) at module level.
+- Model output shows non-trivial CAS breakdown: C220104 (primary pulsed driver) at $648.6M is the dominant capital item, consistent with the analysis emphasis on driver capital cost as the highest-impact challenge (Section 2).
+- LCOE plausibility: Native 68.6 $/MWh and 1 GWe 67.7 $/MWh are reasonable for IFE with high driver efficiency (30-40%) and moderate target gain (70), though higher than the 1990s-era HYLIFE-II estimate of 6.5 ¢/kWh (which the analysis correctly flags as non-inflation-adjusted).
+- Sensitivity to scale is minimal (68.6 → 67.7 $/MWh), reflecting the modular nature of the induction accelerator driver.
+
+### 6. Numerical Plausibility ✓
+- Driver energy (5 MJ), yield (350 MJ), target gain (~70), and rep rate (6 Hz) are consistent with HYLIFE-II baseline specifications extracted from sources.
+- The model commentary (lines 44-53) acknowledges that driver energy and target gain do not map to canonical spec keys and are derived by the library from `q_eng` and `f_rep`.
+- Power-conversion efficiency handling is correct: the analysis reports 30-40% driver efficiency from sources but defers to library defaults per Rule 6 (lines 38-39, 48-50).
+
+### 7. Evidence Accountability ✓
+- All quantitative values in Section 5 carry explicit source citations (hif-technology-overview.md, hif-recent-research-compilation.md, dossier.md).
+- The analysis is honest about data gaps (Section 6) and unvalidated claims (e.g., 30-year chamber lifetime, target gain 50-70).
+- The company verification failure ("Intensity Energy" unverifiable) is clearly documented (Section 1, lines 42-43; Data Gap #7).
+
+## Key Strengths
+
+1. **Honest treatment of missing company data**: The analysis does not invent overrides or inflate confidence where no company-grounded evidence exists.
+2. **Clear articulation of IFE-specific challenges**: Rep rate as first-class economic parameter, driver capital cost dominance, target fabrication at scale, chamber clearing dynamics.
+3. **Appropriate deferral on comparables**: Section 7 correctly handles the absence of approved IFE comparables by outlining the future comparison framework rather than forcing an arbitrary neighbor.
+
+## No Findings
+
+All five assessment areas satisfy the contract. The analysis is coherent, evidence-backed, and numerically plausible.

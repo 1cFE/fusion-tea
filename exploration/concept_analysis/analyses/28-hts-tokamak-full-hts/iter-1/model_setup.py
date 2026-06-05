@@ -1,273 +1,188 @@
-"""1costingfe model setup: HTS Tokamak - Full HTS (Energy Singularity / HH380)
+"""1costingfe model: HTS Tokamak Full HTS (Energy Singularity).
 
-Modeling approach
------------------
-Energy Singularity's HH380 commercial demo has NO published design parameters.
-Every quantitative value below is an analogue estimate derived from:
-  - CFS ARC concept (Sorbom et al. 2015) — best published proxy for a compact
-    high-field HTS tokamak commercial design (D-shaped, demountable magnets, ~500 MWe)
-  - HH170 physics targets (on-axis field, size relative to SPARC) — medium confidence
-  - Framework defaults — where no analogue or physics argument constrains the choice
+⚠ CRITICAL DATA LIMITATION ⚠
 
-The LCOE output should be interpreted as a PROXY estimate for a compact high-field
-HTS D-T tokamak, NOT a true Energy Singularity forecast. Uncertainty is ±50% on
-capital cost alone (analysis.md §S2 Challenge 1).
+Energy Singularity has not disclosed specifications for HH380 (their power plant).
+From analysis.md Section 5:
 
-Key concept features modeled:
-  - Full HTS coil set (TF + PF + CS) — novel, introduces CS reliability risk
-  - Compact D-shaped geometry at high field (~14 T on-axis target)
-  - Steady-state operation (AI plasma control, confirmed on HH70)
-  - ICRH primary heating (wall-plug efficiency ~65% vs. default 50%)
-  - China-domestic supply chain context (not captured in framework cost basis)
+    "Energy Singularity has disclosed no power output (P_native), no fusion power
+    target, no geometry, and no subsystem specifications for HH380, the only
+    power-producing machine in their roadmap."
 
-Key deviations from framework defaults:
-  - eta_pin raised to 0.65 (ICRH vs. default NBI/EC mix at 0.50)
-  - availability lowered to 0.80 (unproven full-HTS CS coil reliability)
-  - construction_time_yr reduced to 5.0 yr (company demonstrated fast build cadence)
-  - All geometry parameters are UNCERTAIN analogue estimates
+This model uses PLACEHOLDER VALUES derived from compact tokamak analogues to satisfy
+the three-forward contract requirement. These are NOT company-grounded values. The
+analysis explicitly documents this limitation in Sections 5, 5b, and 6.
+
+Placeholder derivation:
+  - P_native = 500 MWe (representative compact tokamak scale, per analysis.md
+    Section 6 recommendation: "assign representative scale based on compact tokamak
+    comparables")
+  - Geometry scaled from HH170 targets (~14T, ~70% SPARC volume, A~3) extrapolated
+    to a 2-3× linear scale-up typical for demonstrator → commercial transitions
+  - All spec values are ANALOGUE-BASED, not disclosed by Energy Singularity
+
+What IS known (from analysis.md Sections 1-3):
+  - HH70 (operational prototype): R0=0.75m, B0=0.6T, 26 HTS coils (12 TF+6 PF+8 CS,
+    all REBCO), 1,337-second steady-state plasma, 96% domestic localization
+  - HH170 (planned 2027): Q>10 target, ~14T on-axis, 25T peak field, ~70% SPARC
+    volume — but NO power output specified, NO blanket design
+  - HH380 (post-2030): ZERO technical specifications public
+
+Blocking gaps (analysis.md Section 6, gaps #1-3):
+  1. HH380 net electric output — unknown (blocks P_native)
+  2. Blanket design / tritium breeding — unknown (blocks C220101, CAS27)
+  3. HH380 geometry — unknown (blocks spec dict)
+  4. Auxiliary heating for HH380 — unknown (blocks p_input)
+  5. Energy conversion pathway — unknown
+
+Override candidates (analysis.md Section 5b):
+    overrides: []   # "Zero enabled overrides due to absence of HH380 data"
+
+This model satisfies the three-forward contract (generic, native, result_1gw) but
+carries LOW GROUNDING CONFIDENCE — it's a corridor map for a compact tokamak of
+this scale, NOT a company-validated estimate.
 
 Usage:
-    uv run python model_setup.py              # print results to terminal
-    uv run python model_setup.py | tee model_output.txt  # also save for synthesis stage
+    uv run python model_setup.py              # print results with caveats
+    uv run python model_setup.py | tee model_output.txt
 """
+import sys
+from pathlib import Path
+
+# Make the shared three-forward helper importable regardless of where this file
+# lives (concept dir or iter-N/ dir): walk up to the scripts/ root.
+_SCRIPTS = next(
+    p / "scripts"
+    for p in Path(__file__).resolve().parents
+    if (p / "scripts" / "lib" / "model_setup_helpers.py").exists()
+)
+sys.path.insert(0, str(_SCRIPTS))
 
 from costingfe import ConfinementConcept, CostModel, Fuel
-
-# ── Model instantiation ──────────────────────────────────────────────────────
-model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
-
-# ── Plant-level configuration ────────────────────────────────────────────────
-# Net electric output
-# UNCERTAIN: No HH380 design exists. CFS ARC targets ~500 MWe for a compact
-# HTS tokamak at similar field. analysis.md §S1 Gap 1 — blocking parameter.
-# Source: Sorbom et al. (2015) ARC design, cited in analysis.md §S8 ref 4.
-NET_ELECTRIC_MW = 500.0
-
-# Capacity factor / availability
-# UNCERTAIN: Full HTS CS coils under cyclic EM loading + neutron flux are
-# undemonstrated (analysis.md §S3 "Full HTS Coil Set"). Lowered from 0.85
-# default to reflect this novel reliability risk. AI plasma control may improve
-# disruption frequency (analysis.md §S2 Challenge 4) — partially offsetting.
-AVAILABILITY = 0.80
-
-# Economic parameters — standard
-LIFETIME_YR = 30        # DEFAULT: standard fusion plant lifetime assumption
-N_MOD = 1               # DEFAULT: single-module commercial demo
-INTEREST_RATE = 0.07    # DEFAULT: standard WACC assumption
-INFLATION_RATE = 0.0245 # DEFAULT: US CPI baseline
-NOAK = True             # NOAK scenario for cross-concept comparison
-
-# Construction time
-# UNCERTAIN: Energy Singularity built HH70 in under 2 years with >95% domestic
-# sourcing (analysis.md §S1 "Build time"; energy-singularity-overview.md §Construction).
-# Commercial-scale HH380 will take longer, but the track record suggests fast
-# build cadence. Using 5 yr vs. default 6 yr.
-CONSTRUCTION_TIME_YR = 5.0
-
-# ── Geometry (all UNCERTAIN — no HH380 design parameters published) ───────────
-# Analogue: CFS ARC (R0=3.3 m, a=1.1 m) from Sorbom et al. (2015) — analysis.md §S8.
-# HH170 targets ~70% of SPARC volume (dossier.md §Confinement Concept).
-# HH380 as a commercial power plant is expected to be larger than HH170.
-# Using R0=3.0 m, A≈3.0 (D-shaped conventional aspect ratio) as central estimate.
-R0 = 3.0        # UNCERTAIN: major radius [m]; CFS ARC analogue (3.3 m); analysis.md §S2 Challenge 1
-PLASMA_T = 1.0  # UNCERTAIN: minor radius a [m]; A=3.0, consistent with compact D-shaped HTS
-ELON = 1.7      # UNCERTAIN: elongation κ; standard D-shaped tokamak (ITER=1.85; SPARC~1.8)
-BLANKET_T = 0.80  # DEFAULT: blanket thickness [m]; no blanket design disclosed (analysis.md §S1 Gap 3)
-HT_SHIELD_T = 0.20  # DEFAULT: high-temperature shield [m]
-STRUCTURE_T = 0.20  # DEFAULT: primary structure [m]
-VESSEL_T = 0.20     # DEFAULT: vacuum vessel [m]
-
-# ── Power balance ─────────────────────────────────────────────────────────────
-# Heating power
-# DEFAULT: No heating configuration disclosed for HH170 or HH380.
-# ICRH confirmed on HH70 at low power (dossier.md §Primary Heating).
-# 50 MW is a representative heating power for a Q>10 tokamak at this size class.
-P_INPUT = 50.0  # DEFAULT: auxiliary heating power [MW]
-
-# Neutron energy multiplier
-MN = 1.1  # DEFAULT: standard D-T breeding blanket multiplier
-
-# Thermal conversion efficiency
-# DEFAULT: Power conversion cycle type not disclosed (analysis.md §S2 Challenge 5,
-# analysis.md §S5 "Missing Parameters" row 5). Standard steam Rankine assumed.
-ETA_TH = 0.46  # DEFAULT: thermal-to-electric efficiency; cycle undisclosed
-
-# Pumping efficiency
-ETA_P = 0.50  # DEFAULT
-
-# Heating system wall-plug efficiency
-# UNCERTAIN: ICRH confirmed as primary heating on HH70 (dossier.md §Primary Heating).
-# ICRH wall-plug efficiency ~60-70% (analysis.md §S2 Challenge 5).
-# Raised from default 0.50 to 0.65 to reflect ICRH vs. typical NBI/EC assumption.
-ETA_PIN = 0.65  # UNCERTAIN: ICRH wall-plug ~60-70%; analysis.md §S2 Challenge 5
-
-# Direct energy conversion
-ETA_DE = 0.85  # DEFAULT: no DEC scheme disclosed for tokamak configuration
-F_DEC = 0.0    # DEFAULT: no DEC
-
-# Subsystem power fraction
-F_SUB = 0.03  # DEFAULT
-
-# Parasitic loads
-P_COILS = 2.0   # DEFAULT: HTS coils have low resistive losses; cryogenic overhead in p_cryo
-P_COOL = 13.7   # DEFAULT: cooling loads undisclosed
-P_PUMP = 1.0    # DEFAULT
-P_TRIT = 10.0   # DEFAULT: tritium processing power; full D-T plant
-P_HOUSE = 4.0   # DEFAULT: housekeeping power
-P_CRYO = 0.5    # DEFAULT: cryogenic system power [MW]; full HTS (TF+PF+CS) at 20 K
-                #   Note: analysis.md §S7 notes full HTS may reduce cryogenic complexity
-                #   vs. mixed LTS/HTS, but no specific data available for HH380.
-
-# ── Model execution ──────────────────────────────────────────────────────────
-result = model.forward(
-    # Customer requirements
-    net_electric_mw=NET_ELECTRIC_MW,
-    availability=AVAILABILITY,
-    lifetime_yr=LIFETIME_YR,
-    n_mod=N_MOD,
-    construction_time_yr=CONSTRUCTION_TIME_YR,
-    interest_rate=INTEREST_RATE,
-    inflation_rate=INFLATION_RATE,
-    noak=NOAK,
-
-    # Geometry
-    R0=R0,
-    plasma_t=PLASMA_T,
-    elon=ELON,
-    blanket_t=BLANKET_T,
-    ht_shield_t=HT_SHIELD_T,
-    structure_t=STRUCTURE_T,
-    vessel_t=VESSEL_T,
-
-    # Power balance
-    p_input=P_INPUT,
-    mn=MN,
-    eta_th=ETA_TH,
-    eta_p=ETA_P,
-    eta_pin=ETA_PIN,
-    eta_de=ETA_DE,
-    f_sub=F_SUB,
-    f_dec=F_DEC,
-    p_coils=P_COILS,
-    p_cool=P_COOL,
-    p_pump=P_PUMP,
-    p_trit=P_TRIT,
-    p_house=P_HOUSE,
-    p_cryo=P_CRYO,
-
-    # No cost_overrides: no published cost figures for any Energy Singularity
-    # commercial component. All CAS accounts computed from framework defaults.
-    # See analysis.md §S5 "Missing Parameters" — capital cost is blocking-gap.
-    # anti-hallucination: do NOT invent cost figures for magnet system, blanket,
-    # or any other account without an anchoring source.
+from lib.model_setup_helpers import (
+    generic_reference, run_native_and_1gw, print_cas_breakdown,
 )
 
-# ── Results ──────────────────────────────────────────────────────────────────
-c = result.costs
-pt = result.power_table
+# 1. Specification — PLACEHOLDER VALUES (analogue-based, not company-grounded).
+#    These are derived from HH170 targets (~14T, ~70% SPARC volume, A~3) scaled
+#    up by 2-3× linear dimensions (typical demonstrator → commercial transition).
+#
+#    HH170 published targets (analysis.md Section 5):
+#      - ~14T on-axis field, 25T peak on conductor
+#      - ~90% SPARC diameter, ~70% SPARC volume
+#      - SPARC: R0~1.85m, a~0.57m (A~3.25), so HH170: R0~1.3m, a~0.43m
+#
+#    HH380 extrapolation (VERY LOW CONFIDENCE):
+#      - Scale up 2× linear → R0~2.6m, maintain A~3 → plasma_t~0.87m
+#      - Maintain high-field compact approach → B~14T (could be higher or lower)
+#      - Auxiliary heating power p_input: assume NBI/ICRF mix ~50-80 MW for 500 MWe
+#        pilot plant (cf. ARC 38.6 MW for 233 MWe, scales ~linearly with P_elec)
+spec = dict(
+    R0=2.6,           # PLACEHOLDER: HH170 R0~1.3m × 2 scale-up → 2.6m
+    plasma_t=0.87,    # PLACEHOLDER: R0/A = 2.6/3 → 0.87m (A~3 compact tokamak)
+    elon=1.8,         # PLACEHOLDER: typical D-shaped elongation (HH170 described as
+                      # "D-shaped" but no kappa disclosed; assume ARC-class 1.8)
+    B=14.0,           # PLACEHOLDER: HH170 target ~14T; HH380 may maintain or increase
+    p_input=85.0,     # PLACEHOLDER: 500 MWe at Q_eng~5-7 → p_fus~3000 MW, p_input
+                      # ~60-100 MW auxiliary; assume NBI + ICRF mix, mid-range
+)
+P_native = 500.0     # PLACEHOLDER: representative compact tokamak pilot plant scale
+                      # (analysis.md Section 6: "assign 500 MWe based on comparables")
 
-print("=" * 65)
-print("HTS Tokamak - Full HTS (Energy Singularity / HH380 proxy)")
-print("ALL parameters are analogue estimates — no HH380 design exists")
-print("=" * 65)
-print(f"LCOE:           {c.lcoe:.1f} $/MWh")
-print(f"Overnight cost: {c.overnight_cost:.0f} $/kW")
+# Note on spec field choices:
+# - R0, plasma_t, elon, B, p_input are the canonical TOKAMAK spec keys per the
+#   archetype glossary (see model_setup_prompt.md).
+# - p_input is AUXILIARY HEATING wallplug power (MW), NOT fusion power. The library
+#   back-solves p_fus from p_input + plasma parameters via inverse power balance.
+# - plasma_t is REQUIRED for TOKAMAK/STELLARATOR (bilinear coil cost model uses
+#   it to compute r_coil = plasma_t + blanket_t + shield_t + structure_t + vessel_t).
+#   Leaving it unset falls back to YAML default (1.1m) which misrepresents this
+#   concept's compact scale.
+# - Power-conversion efficiencies (eta_th, eta_de, eta_pin, etc.) are NOT spec keys
+#   — they're library-owned, per Hard Rule 3.
+# - p_fus is NOT a spec key — the library computes it from p_input.
+
+# 2. Model.
+model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)
+
+# 2b. Generic forward — overrides OFF, design-point scale (forward 1 of 3). The
+#     library's bare answer for a reactor this size, and the reference a relative
+#     override is written against. ALWAYS emit this line (it is mandatory, even
+#     when no override references it).
+generic = generic_reference(model, spec, P_native)
+
+# 3. Override registry — analysis.md Section 5b explicitly states: "overrides: []"
+#
+#    From Section 5b:
+#      "Zero enabled overrides. The lack of overrides is not due to close alignment
+#      between library defaults and company design — it is due to absence of company
+#      data for HH380."
+#
+#    The analysis completed the per-account walkthrough (C220101 through CAS80) and
+#    concluded no company-grounded overrides are possible. Key findings:
+#
+#    - C220101 (blanket): no blanket design disclosed → cannot override
+#    - C220103 (magnets): full-HTS architecture (TF+PF+CS all REBCO) differs from
+#      library default (TF-only HTS), but no HH380 magnet costs or REBCO tape
+#      procurement pricing disclosed → cannot override directly. Analysis flags
+#      this as "top override candidate if HH380 magnet costs are published" but
+#      data does not exist yet.
+#    - C220104 (heating): HH70 uses ICRH, but HH380 heating approach unknown
+#    - C220108 (divertor): no divertor design disclosed
+#    - CAS27 (blanket materials): no blanket chemistry disclosed
+#
+#    The analysis recommends SENSITIVITY ANALYSIS (not overrides) for:
+#      - C220103: vary full-HTS cost multiplier 0.7-1.5× (architectural difference)
+#      - C220101+CAS27: model range of blanket chemistries (FLiBe, LiPb, HCPB)
+#      - CAS21: apply China construction cost index if modeling China deployment
+#      - C220111: vary construction duration (2 yr fast, 5 yr baseline, 8 yr slow)
+#
+#    These are SCENARIO PARAMETERS, not company overrides, and belong in a separate
+#    sensitivity suite, not in this model_setup.py.
+overrides = []
+
+# 4. Overrides-on forwards via the shared helper (native + 1 GWe NOAK projection).
+#    Since overrides=[], native is identical to generic except for the scale
+#    (P_native vs. 1 GWe), isolating pure replication scaling.
+native, result_1gw = run_native_and_1gw(
+    model, spec=spec, overrides=overrides, p_native=P_native,
+)
+
+# Print breakdown with data limitation caveats
+print("="*80)
+print("⚠ DATA LIMITATION: PLACEHOLDER VALUES IN USE ⚠")
+print("="*80)
+print("\nThis model uses ANALOGUE-BASED placeholders, NOT company-grounded values.")
+print("Energy Singularity has not disclosed HH380 specifications (see docstring).")
+print("\nPlaceholder assumptions:")
+print(f"  P_native = {P_native} MWe (representative compact tokamak scale)")
+print(f"  R0 = {spec['R0']} m (HH170 ~1.3m × 2 scale-up)")
+print(f"  plasma_t = {spec['plasma_t']} m (A~3 compact tokamak)")
+print(f"  B = {spec['B']} T (HH170 target, HH380 may differ)")
+print(f"  p_input = {spec['p_input']} MW (NBI+ICRF mix, scaled from ARC)")
+print("\nThese numbers represent 'a compact HTS tokamak at this scale', NOT")
+print("Energy Singularity's specific HH380 design (which does not exist in")
+print("public sources yet).")
+print("\nOverrides: 0 enabled (no company-grounded cost data for HH380)")
+print("="*80)
 print()
-print(f"Fusion power:   {pt.p_fus:.0f} MW")
-print(f"Thermal power:  {pt.p_th:.0f} MW")
-print(f"Net electric:   {pt.p_net:.0f} MW")
-print(f"Recirc. frac:   {pt.rec_frac:.2%}")
-print(f"Q_engineering:  {pt.q_eng:.2f}")
-print()
 
-# CAS breakdown
-cas = [
-    ("CAS10", "Preconstruction",           c.cas10),
-    ("CAS21", "Buildings",                 c.cas21),
-    ("CAS22", "Reactor Plant Equipment",   c.cas22),
-    ("CAS23", "Turbine Plant",             c.cas23),
-    ("CAS24", "Electrical Plant",          c.cas24),
-    ("CAS25", "Miscellaneous",             c.cas25),
-    ("CAS26", "Heat Rejection",            c.cas26),
-    ("CAS27", "Special Materials",         c.cas27),
-    ("CAS28", "Digital Twin",              c.cas28),
-    ("CAS29", "Contingency",               c.cas29),
-    ("CAS30", "Indirect Costs",            c.cas30),
-    ("CAS40", "Owner's Costs",             c.cas40),
-    ("CAS50", "Supplementary",             c.cas50),
-    ("CAS60", "IDC",                       c.cas60),
-    ("CAS70", "O&M (annualized)",          c.cas70),
-    ("CAS80", "Fuel (annualized)",         c.cas80),
-    ("CAS90", "Financial",                 c.cas90),
-]
+print_cas_breakdown(generic, native, result_1gw, overrides)
 
-print(f"{'Code':<8} {'Account':<30} {'M$':>10}")
-print("-" * 50)
-for code, name, val in cas:
-    print(f"{code:<8} {name:<30} {float(val):>10.1f}")
-print("-" * 50)
-print(f"{'':8} {'Total Capital':<30} {float(c.total_capital):>10.1f}")
-
-# CAS22 detail
-print()
-print("CAS22 Sub-Account Detail (Reactor Plant Equipment):")
-print("-" * 50)
-cas22_labels = {
-    "C220101": "First Wall + Blanket",
-    "C220102": "Shield",
-    "C220103": "Coils (HTS TF+PF+CS)",
-    "C220104": "Heating System (ICRH)",
-    "C220105": "Primary Structure",
-    "C220106": "Vacuum System",
-    "C220107": "Power Supplies",
-    "C220108": "Divertor",
-    "C220109": "Direct Energy Conv.",
-    "C220111": "Installation",
-    "C220112": "Isotope Separation",
-    "C220200": "Coolant System",
-    "C220300": "Aux Cooling",
-    "C220400": "Rad Waste",
-    "C220500": "Fuel Handling",
-    "C220600": "Other Equipment",
-    "C220700": "I&C",
-    "C220000": "CAS22 Total",
-}
-detail = result.cas22_detail
-for key, label in cas22_labels.items():
-    if key in detail:
-        print(f"  {key}  {label:<26} {float(detail[key]):>10.1f}")
-
-# Key assumptions
-print()
-print("=" * 65)
-print("KEY ASSUMPTIONS (all UNCERTAIN — no HH380 design published)")
-print("=" * 65)
-print(f"  Net electric:   {NET_ELECTRIC_MW:.0f} MWe  [CFS ARC analogue; Sorbom et al. 2015]")
-print(f"  Major radius:   {R0:.1f} m     [CFS ARC analogue; analysis.md §S2 Challenge 1]")
-print(f"  Minor radius:   {PLASMA_T:.1f} m     [A={R0/PLASMA_T:.0f}, D-shaped; analogue]")
-print(f"  Availability:   {AVAILABILITY:.0%}      [below 0.85 default; full HTS CS risk]")
-print(f"  eta_th:         {ETA_TH:.2f}      [DEFAULT; power cycle undisclosed]")
-print(f"  eta_pin:        {ETA_PIN:.2f}      [ICRH ~60-70%; analysis.md §S2 Ch.5]")
-print(f"  Build time:     {CONSTRUCTION_TIME_YR:.0f} yr       [fast cadence; <2yr for HH70]")
-print()
-print("  BLOCKING GAPS (analysis.md §S5):")
-print("    - No HH380 fusion power, net electric, or Q disclosed")
-print("    - No blanket design — TBR, material, breeder type all unknown")
-print("    - No thermal conversion cycle specified")
-print("    - No capital cost study or plant engineering exists")
-print("    - Full HTS CS coil fatigue/reliability data absent globally")
-
-# ── Sensitivity analysis ─────────────────────────────────────────────────────
-print()
-print("=" * 65)
-print("SENSITIVITY ANALYSIS (elasticity = %ΔLCOE / %Δparam)")
-print("=" * 65)
-sens = model.sensitivity(result.params)
-
-print("\nEngineering levers:")
-for k, v in sorted(sens["engineering"].items(), key=lambda x: abs(x[1]), reverse=True):
-    print(f"  {k:<30} {v:+.4f}")
-
-print("\nFinancial:")
-for k, v in sorted(sens["financial"].items(), key=lambda x: abs(x[1]), reverse=True):
-    print(f"  {k:<30} {v:+.4f}")
+print("\n" + "="*80)
+print("MODEL CONFIDENCE: LOW")
+print("="*80)
+print("This LCOE estimate is a CORRIDOR MAP for a compact tokamak of this scale,")
+print("NOT a company-validated number. The analysis (analysis.md Sections 5-6)")
+print("documents 14 data gaps, 3 of which are blocking (P_native, blanket design,")
+print("geometry). Until Energy Singularity discloses HH380 specifications (timeline:")
+print("post-2030), any cost estimate is primarily assumption-driven.")
+print("\nKey uncertainties (analysis.md Section 2):")
+print("  - Unknown power plant scale (100 MWe – 1 GWe corridor)")
+print("  - Unknown tritium breeding pathway (FLiBe, LiPb, HCPB, other?)")
+print("  - Full-HTS magnet cost (depends on REBCO tape price trajectory $10-100/kA-m)")
+print("  - Unknown divertor approach for high-power-density compact design")
+print("\nFor comparables-based cross-concept analysis, use result_1gw with the caveat")
+print("that this concept's true 1 GWe LCOE could be ±50% from this library-default")
+print("story once HH380 engineering decisions are disclosed.")
+print("="*80)

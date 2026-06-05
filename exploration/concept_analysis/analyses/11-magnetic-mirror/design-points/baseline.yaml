@@ -1,0 +1,51 @@
+proposal:
+  concept_id: 11-magnetic-mirror
+  design_name: "Hammir pilot plant — Frank et al. 2024 conservative operating point (Realta Fusion)"
+  maturity_tier: paper-concept
+  grounding_confidence: medium
+  p_native_mwe: 50
+  primary_sources:
+    - knowledge/concept_research/11-magnetic-mirror/iter-01/sources/arxiv-2411-06644-confinement-predictions.md
+    - knowledge/concept_research/11-magnetic-mirror/iter-01/sources/aps-dpp-2025-sutherland.md
+  selection_rationale: |
+    The Hammir pilot plant is Realta Fusion's only published design point with a stated net
+    electrical output. Frank et al. 2024 (arXiv 2411.06644) specifies a concrete operating
+    point — B_m = 25 T, a_m = 0.15 m, ℓ_c = 50 m, P_NBI = 30 MW, ⟨n⟩_p = 1.5×10²⁰ m⁻³,
+    β_c ≈ 0.6, T_i ≈ 45 keV, T_e ≈ 125 keV — producing 157.4 MW of D-T fusion and, under
+    stated efficiency assumptions (η_NBI = 60%, η_ele = 50% Brayton, C_mult = 1.1),
+    satisfying the NASEM pilot plant criterion of P_ele,out > 50 MWe continuous. The APS
+    DPP 2025 Sutherland talk independently restates the Hammir target as Q_e > 1,
+    P_ele,out > 50 MWe, 3+ hours. WHAM and Anvil have no electrical output by design and
+    are excluded. The Fowler et al. 2017 classical tandem (P_fus > 1 GW at β ~ 1, 150 keV,
+    1 MeV NBI) is the prior-art design Hammir was specifically engineered to be more
+    conservative than, and is not Realta's pilot plant. P_native is set to the 50 MWe
+    Hammir is engineered to deliver, not the 157.4 MW thermal fusion power.
+  alternatives_considered:
+    - design: "WHAM (Wisconsin HTS Axisymmetric Mirror, UW–Madison)"
+      reason_rejected: physics test stand; no electrical output by design
+      sensitivity_implication: "n/a — WHAM has no P_native and cannot serve as a design point."
+    - design: "Anvil (Realta simple-mirror end-plug demonstrator / DT neutron source)"
+      reason_rejected: end-plug physics demonstrator and materials-test neutron source; no net electric output by design
+      sensitivity_implication: "n/a — Anvil has no P_native and cannot serve as a design point."
+    - design: "Hammir longer-center-cell variant (Q > 10, ~500 MW fusion scaling)"
+      reason_rejected: qualitative ~7 MW/m scaling statement; no documented geometry, operating point, or net-electric figure
+      sensitivity_implication: >
+        If picked instead, P_native would be substantially higher (a longer center cell at
+        the same ~7 MW/m thermal scaling and similar conversion chain would push net electric
+        well above 50 MWe → fewer modules at 1 GWe → 1 GWe LCOE shifts down. Worth probing
+        if Realta publishes an engineered longer-ℓ_c Hammir variant with its own operating
+        point.
+    - design: "Fowler, Moir & Simonen 2017 classical tandem mirror"
+      reason_rejected: prior-art aggressive design (β ~ 1, T_i = T_e = 150 keV, 1 MeV NBI, P_fus > 1 GW) that Frank et al. explicitly position Hammir as more conservative than; not Realta's pilot plant
+      sensitivity_implication: >
+        If picked instead, P_native would be much higher (>1 GW fusion class implies ≫ 50 MWe
+        net) → far fewer modules at 1 GWe → 1 GWe LCOE shifts down substantially. Worth
+        probing only if HTS magnets, 1 MeV NBI, and high-β operation mature enough for that
+        operating regime to become Realta's design point.
+    - design: "Realta '100–200 MW initial deployment' note (Frank et al. acknowledgements)"
+      reason_rejected: one-line corporate-targeting statement; no geometry, no operating point, ambiguous between thermal and electric, and not a separate engineered design
+      sensitivity_implication: >
+        If this targeting line resolves into an engineered deployment design at ~100–200 MW
+        net electric, P_native would rise (likely 2–4×) → fewer modules at 1 GWe → 1 GWe
+        LCOE shifts down. Eligible for design-point revisit when Realta publishes a deployment
+        design (industrial heat or electricity) with its own engineering parameters.

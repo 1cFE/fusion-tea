@@ -229,6 +229,38 @@ def _augment_fix_message(
     return "\n\n".join(parts)
 
 
+def _decide_retry_mode(
+    attempt: int,
+    total_attempts: int,
+    session_id: str | None,
+    result: InvokeResult,
+    have_fix_message: bool = True,
+) -> str | None:
+    """Decide retry strategy after a failed attempt.
+
+    Returns one of:
+
+    * ``"resume"`` — claude returned with a parseable ``session_id`` and we
+      have a fix message to send. Retry via ``--resume <session>`` so the
+      model can apply the fix in-context.
+    * ``"fresh"`` — claude **timed out** (``returncode == -1``, ``session_id``
+      is None). There is no session to resume, so retry the **original
+      prompt** as a brand-new invocation. Without this branch, a single 900s
+      timeout becomes terminal — the failure mode that left concepts 14 and
+      15 of the 13–24 regen batch at iter-1 ERROR.
+    * ``None`` — no retry available. Budget exhausted, or ``session_id`` is
+      absent for a non-timeout reason (e.g. JSON parse failure with rc=0,
+      where retrying would just churn the same broken stdout).
+    """
+    if attempt >= total_attempts:
+        return None
+    if session_id is not None and have_fix_message:
+        return "resume"
+    if result.returncode == -1:  # subprocess.TimeoutExpired sentinel
+        return "fresh"
+    return None
+
+
 def invoke_claude_validated(
     prompt: str,
     cwd: Path,
@@ -245,7 +277,10 @@ def invoke_claude_validated(
 
     If validator is None, behaves like plain invoke_claude().
     If validator is provided, validates output (from output_path or stdout),
-    and retries via --resume on failure.
+    and retries on failure via one of two strategies (see
+    ``_decide_retry_mode``): ``--resume`` with a fix message when the prior
+    attempt returned a session_id, or a fresh invocation with the original
+    prompt when the prior attempt timed out.
 
     H-01 / FR-1: when ``output_path`` is provided and the file does not exist
     after invocation, this is a distinct first-class failure mode. The
@@ -285,29 +320,43 @@ def invoke_claude_validated(
                 "validated_text_preview": "FILE NOT FOUND",
             }
 
-            will_retry = attempt < total_attempts and session_id is not None
-            if will_retry:
+            retry_mode = _decide_retry_mode(
+                attempt, total_attempts, session_id, result,
+            )
+            if retry_mode == "resume":
                 entry["fix_message_sent"] = _augment_fix_message(
                     raw_fix, output_path, attempt, total_attempts,
                 )
+            elif retry_mode == "fresh":
+                entry["retry_reason"] = (
+                    f"timeout after {timeout}s (rc=-1, no session_id) — "
+                    f"retrying with original prompt, fresh invocation"
+                )
             log_entries.append(entry)
 
-            if not will_retry:
+            if retry_mode is None:
                 if attempt < total_attempts and session_id is None:
                     print(
-                        "  warn: validation failed but no session_id — cannot retry",
+                        "  warn: validation failed, no session_id, and prior "
+                        "attempt was not a retryable timeout — cannot retry",
                         file=sys.stderr,
                     )
                 break
 
-            result = invoke_claude(
-                entry["fix_message_sent"], cwd, timeout, model,
-                resume=session_id,
-            )
-            if result.session_id is None:
-                result = InvokeResult(
-                    result.stdout, result.stderr, result.returncode, session_id,
+            if retry_mode == "resume":
+                result = invoke_claude(
+                    entry["fix_message_sent"], cwd, timeout, model,
+                    resume=session_id,
                 )
+                if result.session_id is None:
+                    result = InvokeResult(
+                        result.stdout, result.stderr, result.returncode, session_id,
+                    )
+            else:  # retry_mode == "fresh"
+                result = invoke_claude(prompt, cwd, timeout, model)
+                # A successful fresh retry establishes a new session_id.
+                # Adopt it so any subsequent failures can use resume-style.
+                session_id = result.session_id
             continue
 
         # === Read validation target ===
@@ -337,34 +386,43 @@ def invoke_claude_validated(
             )
 
         # Validator failed — only log fix_message_sent when we're actually
-        # going to dispatch another retry (will_retry gating).
-        will_retry = (
-            attempt < total_attempts
-            and vr.fix_message is not None
-            and session_id is not None
+        # going to dispatch another retry (retry_mode gating).
+        retry_mode = _decide_retry_mode(
+            attempt, total_attempts, session_id, result,
+            have_fix_message=vr.fix_message is not None,
         )
-        if will_retry:
+        if retry_mode == "resume":
             entry["fix_message_sent"] = _augment_fix_message(
                 vr.fix_message, output_path, attempt, total_attempts,
             )
+        elif retry_mode == "fresh":
+            entry["retry_reason"] = (
+                f"timeout after {timeout}s (rc=-1, no session_id) — "
+                f"retrying with original prompt, fresh invocation"
+            )
         log_entries.append(entry)
 
-        if not will_retry:
+        if retry_mode is None:
             if attempt < total_attempts and session_id is None:
                 print(
-                    "  warn: validation failed but no session_id — cannot retry",
+                    "  warn: validation failed, no session_id, and prior "
+                    "attempt was not a retryable timeout — cannot retry",
                     file=sys.stderr,
                 )
             break
 
-        result = invoke_claude(
-            entry["fix_message_sent"], cwd, timeout, model,
-            resume=session_id,
-        )
-        if result.session_id is None:
-            result = InvokeResult(
-                result.stdout, result.stderr, result.returncode, session_id,
+        if retry_mode == "resume":
+            result = invoke_claude(
+                entry["fix_message_sent"], cwd, timeout, model,
+                resume=session_id,
             )
+            if result.session_id is None:
+                result = InvokeResult(
+                    result.stdout, result.stderr, result.returncode, session_id,
+                )
+        else:  # retry_mode == "fresh"
+            result = invoke_claude(prompt, cwd, timeout, model)
+            session_id = result.session_id
 
     _write_log(log_path, log_entries)
     return ValidatedResult(
@@ -447,12 +505,19 @@ def _check_interface(model_path: Path) -> None:
     )
 
     if uses_costingfe:
-        # costingfe path: check for module-level 'result = ...'
-        if not re.search(r"^result\s*=", source, re.MULTILINE):
+        # costingfe path: the explorer reads module-level `result` (and
+        # `result_1gw`). Accept both the legacy inline `result = model.forward(...)`
+        # and the Item-8 four-step helper form `result, result_1gw =
+        # run_native_and_1gw(...)` (tuple-unpack binds `result` just the same).
+        has_result = re.search(r"^result\b[^=]*=", source, re.MULTILINE) or (
+            "run_native_and_1gw" in source
+        )
+        if not has_result:
             print(
                 f"WARNING: interface: {model_path.name} uses costingfe but has no "
-                "module-level 'result = model.forward(...)'. The concept explorer "
-                "requires this for extraction.",
+                "module-level `result` binding (inline `result = model.forward(...)` "
+                "or `result, result_1gw = run_native_and_1gw(...)`). The concept "
+                "explorer requires this for extraction.",
                 file=sys.stderr,
             )
     else:

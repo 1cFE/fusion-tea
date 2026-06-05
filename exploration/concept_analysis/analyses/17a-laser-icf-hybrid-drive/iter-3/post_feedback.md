@@ -1,13 +1,64 @@
-VERDICT: FINDINGS
+VERDICT: PASS
 
-### F-1: Coupling efficiency absent from testable hypotheses
-- **Target:** Section 2 (Testable Hypotheses)
-- **Finding:** The analysis explicitly identifies direct-drive coupling efficiency (~90%) as "the single largest efficiency multiplier" distinguishing HDD from indirect drive, and assigns it "low" confidence with a note that experimental basis is limited. Yet the three testable hypotheses (Section 2) cover laser cost, capsule gain, and rep rate — not coupling efficiency. If HDD two-beam geometry achieves 60–70% coupling rather than 90% (plausible for an undemonstrated illumination geometry), the required laser energy on target scales up proportionally to maintain the same yield, directly worsening laser capex and LCOE. The analysis covers the consequence of lower-than-expected *gain* (hypothesis 2) but does not distinguish whether a gain shortfall comes from coupling loss vs. compression loss — these are different failure modes with different mitigation paths.
-- **Recommendation:** Add a fourth hypothesis to Section 2 testing coupling efficiency sensitivity: state the break-even coupling efficiency at which LCOE rises above the commercial threshold, and note what distinguishes a coupling failure (laser energy budget problem — requires more on-target energy, worsens laser capex) from a compression failure (capsule physics problem — requires redesign). A formulation like "If HDD coupling is 70% rather than 90%, required laser energy increases by ~29%; quantify the LCOE impact relative to the baseline hypothesis 1 sensitivity range" would suffice.
-- **Priority:** important
+## Assessment Notes
 
-### F-2: Total plant capex multiplier has no stated basis
-- **Target:** Section 2 (Modeling Approach, top LCOE sensitivity parameters)
-- **Finding:** The analysis uses "Total plant capex is likely 2–3× the laser cost" as a framing anchor for the LCOE structure — specifically, the claim that "laser alone is ~50% of estimated total plant capex" is derived from this multiplier, and the sensitivity ranking (laser cost as dominant lever) depends on it. No source, analogue, or derivation is cited for the 2–3× range. This is a modeling approach assumption, not a numerical result: the multiplier determines whether laser cost sensitivity is the primary modeling priority or merely one of several comparable cost drivers. If the true ratio is closer to 1.5× (laser ≈ 67% of total, as in some IFE design studies), the laser dominates even more strongly. If it is 4× (laser ≈ 25%), chamber and BOP costs would warrant comparable modeling effort. Without a stated basis, a downstream modeler cannot assess whether the sensitivity ranking in Section 2 is well-grounded.
-- **Recommendation:** Add a one-sentence basis for the 2–3× multiplier in Section 2 — e.g., reference a comparable IFE system study (GEM outputs, Hawker framework, or NIF facility cost breakdown) that supports this ratio. If no direct analogue exists, flag it explicitly as an unanchored working assumption with its uncertainty range, so the downstream modeler knows to treat the sensitivity ranking as provisional until the total plant cost breakdown is resolved (Section 6, gap #5).
-- **Priority:** important
+### 1. Design-Point Coherence — Clean
+
+P_native = 400 MWe is identical across the frontmatter, Design Point block,
+Section 5 parameter table (`net_electric_MWe`), and `model_setup.py` constant.
+The pipeline coherence flag confirms three-leg consistency. The named design
+point (Xcimer Athena pilot power plant) is used throughout without substitution.
+Q_eng = 5.5 correctly reflects the Athena-native performance at 5% WPE, with
+the NOAK Q_eng = 8.2 properly relegated to the sensitivity sweep rather than
+used as the spec value. No roadmap aspiration is smuggled into the native
+parameter table.
+
+### 2. Override Discipline — Clean
+
+Eight enabled overrides, all using canonical account codes. Two carry `direct`
+provenance (C220104 — company-published $/J × stated on-target energy; C220107 —
+architectural zero to avoid double-counting with the laser driver). The
+remaining six are honestly labeled `derived` with analyst-estimated multipliers,
+each showing its arithmetic and flagging uncertainty. No override re-states a
+library default. No uniform financial parameters appear in spec or the override
+registry. Provenance labels match between the analysis Section 5b YAML and
+`model_setup.py`. Override count of 8 falls within the Low archetype-fit band
+(6–12), confirmed by the pipeline coherence flag.
+
+### 3. Family-Delta Concreteness — Clean
+
+Section 7 engages all five fixed comparables (17b, 26, 30, 31, 32) by name and
+identifies five concrete deltas, each tied to specific subsystems with stated
+cost directions:
+
+- KrF excimer vs. DPSSL driver → C220104 advantage (~10× cheaper $/J)
+- HDD coupling vs. indirect/direct drive → driver sizing advantage
+- Sub-Hz rep rate vs. 5–10 Hz → C220108 advantage (15× throughput reduction), capital utilization penalty
+- Thick-liquid FLiBe wall vs. solid/thin-liquid → C220101, C220102, CAS70 advantage; CAS27 penalty
+- Two-beam geometry vs. multi-beam → chamber and optics simplification
+
+Each delta carries a TEA consequence (advantage, penalty, mixed, or risk-
+qualified). The summary table in Section 7 maps deltas to account areas with
+direction, magnitude, and confidence — concrete and actionable.
+
+### 4. Model Integrity & LCOE Plausibility — Clean
+
+The model uses the correct three-forward helper form with `generic`,
+`native`, `result_1gw` at module level. CAS22 sub-account detail shows
+meaningful override effects (C220104: $1,690M → $560M; C220107: $41M → $0;
+C220101: $111M → $44M; C220102: $77M → $23M). The Q_eng sensitivity sweep
+applies overrides correctly and shows non-trivial variation (102.5 → 96.6
+$/MWh across Q_eng 5.5 → 8.2).
+
+LCOE values are plausible for a Low archetype-fit IFE concept:
+- Native (400 MWe): 102.5 $/MWh — reasonable for a pilot-demonstrator-scale
+  pulsed IFE plant with TRL 2–3 core subsystems
+- 1 GWe NOAK: 78.8 $/MWh — consistent with the scaling economics
+- Generic (no overrides): 150.0 $/MWh — the ~32% reduction from overrides is
+  driven primarily by the C220104 laser driver override, which is the analysis
+  narrative's central thesis
+
+The dominant model cost driver (C220104 at 43% of CAS22) matches the analysis
+narrative's emphasis on the laser driver as the primary economic differentiator.
+The overnight cost progression (generic 12,336 → native 7,991 → 1 GWe 6,598
+$/kW) is internally consistent and shows expected scaling behavior.

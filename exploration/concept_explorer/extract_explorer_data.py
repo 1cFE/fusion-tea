@@ -86,20 +86,65 @@ def parse_frontmatter(analysis_path: Path) -> dict[str, Any]:
     return yaml.safe_load(text[3:end]) or {}
 
 
-def parse_confinement_family(analysis_path: Path) -> ConfinementFamily:
-    """Derive ConfinementFamily from '**Confinement Family**: ...' in analysis.md."""
-    text = analysis_path.read_text(encoding="utf-8")
-    m = re.search(r"\*\*Confinement Family\*\*:\s*(.+)", text)
-    if not m:
+def _to_confinement_family(raw: Any) -> ConfinementFamily:
+    """Map a raw frontmatter value to ConfinementFamily, defaulting to NONSTANDARD.
+
+    Tolerant of missing / unknown values — Invariant 1's strictness applies to
+    `Comparison-Status` and `result_1gw`, not to this enum. Frontmatter writes
+    one of MFE / IFE / MIF / NONSTANDARD (see lib/frontmatter.py).
+    """
+    if not raw:
         return ConfinementFamily.NONSTANDARD
-    raw = m.group(1).strip().upper()
-    if raw.startswith("MFE"):
-        return ConfinementFamily.MFE
-    if raw.startswith("IFE"):
-        return ConfinementFamily.IFE
-    if raw.startswith("MIF"):
-        return ConfinementFamily.MIF
-    return ConfinementFamily.NONSTANDARD
+    try:
+        return ConfinementFamily(str(raw).strip().upper())
+    except ValueError:
+        return ConfinementFamily.NONSTANDARD
+
+
+def verify_two_knob(
+    result_1gw: Any,
+    p_native: float,
+    concept_id: str,
+    *,
+    tolerance_rel: float = 1e-9,
+) -> None:
+    """Assert result_1gw was reached via forward(net_electric_mw=1000, n_mod=1000/P_native).
+
+    Raises ExtractionError on missing or mismatched params (Invariant 1 / FR-4).
+    """
+    params = getattr(result_1gw, "params", None) or {}
+    net = params.get("net_electric_mw")
+    n_mod = params.get("n_mod")
+
+    if net is None or abs(float(net) - 1000.0) > 1e-9:
+        raise ExtractionError(
+            f"{concept_id}: result_1gw.params['net_electric_mw'] expected 1000, got {net!r}. "
+            "result_1gw must come from run_native_and_1gw(...) — see Item 7 helper."
+        )
+
+    try:
+        p_native_f = float(p_native)
+    except (TypeError, ValueError) as exc:
+        raise ExtractionError(
+            f"{concept_id}: P-Native missing or non-numeric in frontmatter (got {p_native!r})"
+        ) from exc
+
+    if p_native_f <= 0:
+        raise ExtractionError(
+            f"{concept_id}: P-Native must be positive, got {p_native_f}"
+        )
+
+    # The helper (model_setup_helpers.py:169) rounds n_mod to an integer:
+    #   n_mod = max(1, int(round(1000.0 / p_native)))
+    # The 1 GWe projection is a comparison convenience, not a real plant design
+    # point, so the rounding has no analytical meaning beyond "how many of this
+    # module to reach ~1 GWe." Verifier matches what the helper actually emits.
+    expected = max(1, round(1000.0 / p_native_f))
+    if n_mod is None or abs(float(n_mod) - expected) > 1e-9:
+        raise ExtractionError(
+            f"{concept_id}: result_1gw.params['n_mod'] expected {expected} "
+            f"(max(1, round(1000/{p_native_f}))), got {n_mod!r}"
+        )
 
 
 def parse_status(frontmatter: dict[str, Any]) -> ConceptStatus:
@@ -246,20 +291,42 @@ def extract_costingfe(
     analysis_path: Path,
     narrative: NarrativeData | None,
     param_metadata: dict[str, ParameterMetadata],
+    *,
+    comparison_status: str = "",
 ) -> ConceptData:
-    """Extract a costingfe-backed concept (has model_setup.py with CostModel.forward())."""
+    """Extract a costingfe-backed concept (has model_setup.py with CostModel.forward()).
+
+    When `comparison_status` is "costingfe" or "costingfe-asterisked" (Item 6 frontmatter
+    present), the strict-consumer contract applies: result_1gw must exist and pass
+    verify_two_knob. `result_1gw` is the single authoritative ForwardResult the
+    explorer reads (post-rework; the legacy `result` symbol is gone — three-forward
+    contract, see model_setup_helpers.py).
+    """
     module = load_module_from_path(concept_dir / "model_setup.py")
 
     model = getattr(module, "model", None)
-    result = getattr(module, "result", None)
-    if model is None or result is None:
+    if model is None:
         raise ExtractionError(
-            f"{concept_id}: model_setup.py must define module-level 'model' and 'result'"
+            f"{concept_id}: model_setup.py must define module-level 'model'"
         )
 
-    # Use result_1gw (per-account scaled) when present, otherwise native result
     result_1gw = getattr(module, "result_1gw", None)
-    effective_result = result_1gw if result_1gw is not None else result
+    if result_1gw is None:
+        raise ExtractionError(
+            f"{concept_id}: result_1gw missing at module level. The strict-consumer "
+            "contract requires model_setup.py to expose result_1gw via "
+            "run_native_and_1gw(...). Comparison-Status="
+            f"{comparison_status!r}."
+        )
+
+    # verify_two_knob only when P-Native is available (Item 6 frontmatter present).
+    # Un-migrated concepts won't have P-Native; the strict result_1gw check above
+    # is the only invariant they exercise until Item 11 regenerates them.
+    p_native = frontmatter.get("P-Native")
+    if p_native is not None:
+        verify_two_knob(result_1gw, p_native, concept_id)
+
+    effective_result = result_1gw
 
     sensitivities = build_sensitivity_analysis(model, effective_result)
     # Three-layer merge (later wins):
@@ -284,11 +351,7 @@ def extract_costingfe(
     name = str(frontmatter.get("Concept", concept_dir.name))
     company_raw = frontmatter.get("Company")
     company = str(company_raw) if company_raw else None
-    confinement_family = (
-        parse_confinement_family(analysis_path)
-        if analysis_path.exists()
-        else ConfinementFamily.NONSTANDARD
-    )
+    confinement_family = _to_confinement_family(frontmatter.get("Confinement-Family"))
 
     with warnings.catch_warnings(record=True) as caught:
         warnings.simplefilter("always")
@@ -308,6 +371,7 @@ def extract_costingfe(
                 model_setup=str(concept_dir / "model_setup.py"),
                 analysis=str(analysis_path) if analysis_path.exists() else None,
             ),
+            asterisk_in_comparison=(comparison_status == "costingfe-asterisked"),
         )
 
     for w in caught:
@@ -576,11 +640,7 @@ def extract_standalone(
     name = str(frontmatter.get("Concept", concept_dir.name))
     company_raw = frontmatter.get("Company")
     company = str(company_raw) if company_raw else None
-    confinement_family = (
-        parse_confinement_family(analysis_path)
-        if analysis_path.exists()
-        else ConfinementFamily.NONSTANDARD
-    )
+    confinement_family = _to_confinement_family(frontmatter.get("Confinement-Family"))
 
     with warnings.catch_warnings(record=True) as caught:
         warnings.simplefilter("always")
@@ -811,25 +871,45 @@ def run_extraction(
         return
 
     extracted: list[ConceptData] = []
+    skipped: list[tuple[str, str]] = []  # (concept_id, reason)
 
     for concept_dir in concept_dirs:
         concept_id = parse_concept_id(concept_dir.name)
         print(f"Extracting {concept_id} ({concept_dir.name})...", flush=True)
 
         analysis_path = concept_dir / "analysis.md"
+        model_setup_path = concept_dir / "model_setup.py"
         frontmatter: dict[str, Any] = {}
         if analysis_path.exists():
             frontmatter = parse_frontmatter(analysis_path)
+        elif model_setup_path.exists():
+            # Old-shape concept (PR #39 refreshed model_setup.py but did not
+            # produce analysis.md). Extraction continues with defaults; the
+            # warning makes the degraded state visible to whoever ran extract.
+            warnings.warn(
+                f"{concept_id}: no analysis.md — fields defaulted to: "
+                f"Concept (dir name '{concept_dir.name}'), "
+                f"Confinement-Family (NONSTANDARD), "
+                f"Comparison-Status (''), P-Native (None). "
+                f"See rework epic Item 11 to regenerate.",
+                UserWarning,
+                stacklevel=2,
+            )
 
-        param_metadata = load_parameter_metadata(concept_dir, concept_id)
+        comparison_status = str(frontmatter.get("Comparison-Status", "")).strip()
 
-        narrative: NarrativeData | None = None
-        if not skip_narrative and analysis_path.exists():
-            narrative = extract_narrative(concept_dir, concept_id)
+        # Bet 8: pending-design-point → skip with explicit message, no ConceptData
+        if comparison_status == "pending-design-point":
+            msg = (
+                f"  skipped {concept_id}: Comparison-Status=pending-design-point "
+                f"(Item 5 design-point row not yet present; concept omitted from explorer)"
+            )
+            print(msg)
+            skipped.append((concept_id, "pending-design-point"))
+            continue
 
         # NOTE: import-based detection logic parallels run_model() in
         # scripts/lib/claude.py. If you change detection here, update there too.
-        model_setup_path = concept_dir / "model_setup.py"
         if model_setup_path.exists():
             source = model_setup_path.read_text(encoding="utf-8")
             is_costingfe = "CostModel" in source and (
@@ -838,9 +918,38 @@ def run_extraction(
         else:
             is_costingfe = False
 
+        # Bet 7: routing cross-check (only when frontmatter actually carries the field).
+        if comparison_status in {"costingfe", "costingfe-asterisked"} and not is_costingfe:
+            raise ExtractionError(
+                f"{concept_id}: routing disagreement — Comparison-Status="
+                f"{comparison_status!r} but model_setup.py is missing or not "
+                "costingfe-shaped (no CostModel + costingfe import). Either the "
+                "concept's model_setup.py is stale / wasn't regenerated, or the "
+                "orchestrator routed it incorrectly."
+            )
+        if comparison_status == "freeform-deferred" and is_costingfe:
+            raise ExtractionError(
+                f"{concept_id}: routing disagreement — Comparison-Status="
+                "'freeform-deferred' but model_setup.py looks costingfe-shaped. "
+                "Likely a stale costingfe model_setup.py from before the concept "
+                "was deferred; remove or regenerate."
+            )
+
+        param_metadata = load_parameter_metadata(concept_dir, concept_id)
+
+        narrative: NarrativeData | None = None
+        if not skip_narrative and analysis_path.exists():
+            narrative = extract_narrative(concept_dir, concept_id)
+
         if is_costingfe:
             concept_data = extract_costingfe(
-                concept_dir, concept_id, frontmatter, analysis_path, narrative, param_metadata
+                concept_dir,
+                concept_id,
+                frontmatter,
+                analysis_path,
+                narrative,
+                param_metadata,
+                comparison_status=comparison_status,
             )
         else:
             concept_data = extract_standalone(
@@ -858,6 +967,12 @@ def run_extraction(
             print(f"  cleared stale marker: {stale_marker.name}")
 
         extracted.append(concept_data)
+
+    if skipped:
+        print("", flush=True)
+        print(f"Skipped {len(skipped)} concept(s):", flush=True)
+        for cid, reason in skipped:
+            print(f"  - {cid}: {reason}", flush=True)
 
     if not extracted:
         print("WARNING: no concepts extracted", file=sys.stderr)

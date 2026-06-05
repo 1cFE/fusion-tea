@@ -1,0 +1,63 @@
+proposal:
+  concept_id: 30-laser-icf-nif-commercialization
+  design_name: "Inertia Enterprises commercial plant (1,000-beamline Thunderwall, 1.5 GWe stated)"
+  maturity_tier: paper-concept
+  grounding_confidence: low
+  p_native_mwe: 1500
+  primary_sources:
+    - knowledge/concept_research/30-laser-icf-nif-commercialization/iter-01/sources/enr-mike-dunne-interview.md
+    - knowledge/concept_research/30-laser-icf-nif-commercialization/iter-01/sources/inertia-website-technical.md
+    - knowledge/concept_research/30-laser-icf-nif-commercialization/iter-01/sources/globenewswire-series-a-press-release.md
+  selection_rationale: |
+    The commercial 1.5 GW plant is selected over the 50 MWe pilot because the pilot is
+    explicitly a DOE regulatory milestone, not a self-consistent commercial design: the ENR
+    interview frames it as a requirement before scaling to commercial scale, and Q_target = 18×
+    at full Thunderwall parameters yields strongly negative net electricity (~−913 MWe),
+    implying the pilot requires external grid power for its laser rather than representing a
+    standalone generating unit. The commercial plant — 1,500 MWe stated on the company website
+    and ENR interview, D-T fuel confirmed, laser specs (10 MJ, 1,000 beamlines, 10 Hz, 10%
+    wallplug) stated — is the actual cost-projection target. P_native = 1,500 MWe is taken as
+    the stated single-plant output; if the architecture is confirmed to be modular (approximately
+    three 1,000-beamline chambers each producing ~450–500 MWe at Q_target ≈ 30–35×), the
+    design point should be revised to the per-module value. Grounding confidence is low: no
+    engineering design document has been published; both power and fuel trace to commercial
+    announcements; and the energy balance tension (1,500 MWe from 1,000 beamlines requires
+    Q_target ≈ 51× versus the stated >30× threshold) is unresolved.
+  alternatives_considered:
+    - design: "Inertia pilot plant (50 MWe DOE demonstration)"
+      reason_rejected: >
+        DOE regulatory threshold rather than commercial design; energy balance at Q_target = 18×
+        with full Thunderwall parameters yields strongly negative net electricity (~−913 MWe);
+        pilot architecture (beamline count, reliance on grid) is unspecified and inconsistent
+        with stated laser and gain parameters
+      sensitivity_implication: >
+        If the pilot were selected as the design point, P_native would be 50 MWe vs. 1,500 MWe
+        → n_mod at 1 GWe rises to 20 vs. ~0.67 → the 1 GWe LCOE shifts dramatically upward
+        due to spreading fixed plant costs across 20 small modules with no economies of scale
+        at module level. Worth revisiting only if Inertia publishes a pilot architecture
+        achieving genuine net positive electricity independent of grid support.
+    - design: "Single 1,000-beamline module at Q_target = 30× (energy-balance derived, ~450–500 MWe)"
+      reason_rejected: >
+        P_native is calculated from energy balance, not stated in any source; rule prohibits
+        inventing P_native; the ~450–500 MWe per-module figure is analytic inference, not a
+        company-disclosed design point
+      sensitivity_implication: >
+        If the modular architecture is confirmed and per-module P_native is ~450–500 MWe
+        (Q_target = 30–35×), n_mod at 1 GWe rises to roughly 2–2.5 vs. ~0.67 for the
+        1,500 MWe total-plant point → 1 GWe LCOE shifts modestly upward (more modules, more
+        replication cost) but each module is costed at its validated operating point rather
+        than the high-gain regime needed for a single-chamber 1,500 MWe design. This becomes
+        the preferred design point if Inertia publishes modular plant architecture with
+        per-module electrical output specified.
+    - design: "LLNL LIFE commercial plant (~900 MWe, Anklam 2011)"
+      reason_rejected: >
+        LIFE is a heritage precursor program (LLNL, flashlamp-pumped driver), not Inertia's
+        product; different driver technology disqualifies it as a design-point candidate even
+        though the chamber and tritium-breeding architecture are closely analogous
+      sensitivity_implication: >
+        The LIFE design point (900 MWe net, 44% thermal efficiency) sits between the pilot
+        (50 MWe) and Inertia's stated commercial target (1,500 MWe). If the true Inertia
+        commercial module settles near LIFE-heritage scale, n_mod at 1 GWe is ~1.1 —
+        effectively one plant — and the 1 GWe LCOE would track the LIFE COE estimate of
+        ~$70/MWhr (2010$) as an order-of-magnitude anchor. Useful as a sanity bound once
+        Inertia's architecture is published.

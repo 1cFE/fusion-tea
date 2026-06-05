@@ -1,320 +1,310 @@
-# D1+ Analysis: Sheared-Flow Stabilized Z-Pinch (Zap Energy)
-
-**Concept**: Sheared-Flow Stabilized Z-Pinch — D-T fuel
-**Company**: Zap Energy (Seattle, WA; founded 2017; ~$330M raised as of 2026)
-**Commercial Device Series**: FuZE → FuZE-Q → FuZE-3 → FuZE-A (in preparation) → Century (engineering platform) → pilot plant
-**Confinement Family**: MFE — Z-pinch (sheared-flow)
-
+---
+ID: 15-sheared-flow-stabilized-z-pinch
+Concept: Sheared-Flow Z-Pinch (Zap Energy)
+Company: Zap Energy
+Status: draft
+Created: 2026-06-04
+Approved-Date:
+Confinement-Family: MFE
+Archetype: STAGED_ZPINCH
+Archetype-Fit: High
+Comparison-Status: costingfe
+Comparables: []
+Design-Point-Name: Zap Energy SFS Z-Pinch Commercial Power Plant Module (Thompson et al. FST 2023; Zap October 2024)
+Design-Point-Maturity: paper-concept
+P-Native: 50
+Grounding-Confidence: medium
 ---
 
-## Section 1: Availability of Data
+## Design Point
+
+- Name: Zap Energy SFS Z-Pinch Commercial Power Plant Module (Thompson et al. FST 2023; Zap October 2024)
+- Maturity: paper-concept
+- P_native: 50 MWe
+- Grounding: medium
+- Primary sources:
+  - knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/iter-01/sources/engineering-paradigms-paper-summary.md
+  - knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/iter-01/sources/century-demo-system.md
+
+## 1. Availability of Data
 
 **Rating: Moderate**
 
-Zap Energy occupies an unusual transparency position: it publishes detailed plasma physics results from its FuZE device series, a technically substantive reactor engineering paper (Thompson et al., *Fusion Science & Technology*, 2023 — the "Engineering Paradigms" paper), and regular press releases on Century milestones. The Engineering Paradigms paper is the single most analytically useful public document for any private fusion startup in the Z-pinch space — it provides plasma parameters, a power balance sketch, blanket design rationale, and subsystem engineering discussion. However, it stops short of LCOE, capital cost, or capacity factor estimates, leaving the economic analysis dependent on inference and analogue assumptions.
+The SFS Z-pinch concept has a credible foundation in peer-reviewed plasma physics literature spanning three decades, beginning with the theoretical proposal by Shumlak and Hartman in 1995[^1] and progressing through sustained experimental programs at the University of Washington and Zap Energy. The primary power-plant conceptual design paper — Thompson, Levitt, Nelson, and Shumlak, "Engineering Paradigms for Sheared-Flow-Stabilized Z-Pinch Fusion Energy," *Fusion Science and Technology* 79:8 (2023)[^2] — is the single most important source for LCOE modeling. It provides the only published quantitative design point for a commercial SFS Z-pinch core, including plasma parameters at each development step, core dimensions, thermal power, fusion yield per pulse, drive efficiency, and the liquid-metal blanket concept.
 
-**Peer-reviewed publications:**
-The Engineering Paradigms paper (Thompson, Levitt, Nelson, Shumlak, FST 2023) establishes the reactor concept with plasma parameters (1.2–1.5 MA, 30–35 keV, 200 µs, Q > 10), a LiPb blanket design with TBR ~ 1.1, and a pulsed-power driver discussion including wall-to-plasma efficiency of ~70% [engineering-paradigms-paper-summary.md, §Driver Efficiency]. The companion Physics of Plasmas overview paper (Shumlak et al., 2023) is paywalled; details accessed through third-party summaries. The FuZE-3 gigapascal results appear to be primarily from press materials and conference abstracts as of early 2026 [fuze-3-gigapascal-results-2025.md].
+Experimental validation is documented in several key papers: Zhang et al. (PRL 2019)[^3] demonstrated sustained neutron production from a sheared-flow-stabilized Z-pinch on FuZE, and Mitrani et al. (2021)[^4] confirmed thermonuclear neutron spectra. More recently, Zap Energy's FuZE-3 device achieved electron pressures up to 830 MPa (total plasma pressure ~1.6 GPa assuming Ti ≈ Te), electron densities of 3–5 × 10²⁴ m⁻³, and electron temperatures above 1 keV, as reported in a November 2025 press release[^5]. The Century engineering demonstration platform has achieved over 1,000 consecutive plasma pulses at ≥100 kA[^6] and is testing liquid-metal wall integration.
 
-**Experimental results:**
-FuZE device series: demonstrated thermonuclear neutron production, independent Ti and Te measurements consistent with 30+ keV, stable sheared-flow Z-pinches at 20–40 µs duration [engineering-paradigms-paper-summary.md, §Plasma Physics]. FuZE-3 achieved electron pressures of 830 MPa and total pressures of 1.6 GPa with three-electrode architecture at densities of 3–5 × 10²⁴ m⁻³ and Te > 1 keV [fuze-3-gigapascal-results-2025.md, §FuZE-3 Plasma Parameters]. Century completed 1,080 consecutive shots into a liquid-metal-lined chamber [century-demo-system.md, §Milestones].
+> "The SFS Z-pinch approach to fusion energy aims to improve the economic viability of fusion power by creating a system that can use the DT fuel cycle as advantageously as possible."
+> — engineering-paradigms-paper-summary.md §I. Introduction
 
-**Company transparency:**
-Zap Energy publishes roadmap milestones, device photos, press releases, and APS DPP abstracts. The Engineering Paradigms paper is unusually transparent for a commercial venture at TRL 3–4. What is NOT published: any cost estimate, capital expenditure projection, thermal efficiency target, Q value demonstration, or plant-scale system design beyond the conceptual sketch in the FST 2023 paper.
+However, **no published power-plant system code output, LCOE estimate, or detailed CAS-level cost breakdown exists** for the SFS Z-pinch. The Thompson et al. (2023) paper is a conceptual description, not a systems engineering study. There is no equivalent to ARIES-AT, PROCESS, or Z-IFE-level cost decomposition for this concept. The 50 MWe module output figure comes from a Zap Energy press release describing Century as a stepping stone to "a single Zap Energy module that will produce 50 megawatts of electricity"[^7], not from a published thermal-hydraulic or power-balance calculation.
 
-**Independent analyses:**
-No independent techno-economic analysis of the SFS Z-pinch approach has been published. The concept is sufficiently novel that no ARIES-equivalent study exists. The closest analogy studies (pulsed power drivers, IFE economics) apply imperfectly.
+The Levitt (APS DPP 2025) conference abstract[^8] confirms the current experimental program structure but provides no new quantitative parameters beyond what FuZE-3 results already established. An OSTI pulsed-power roadmap paper (Curry et al. 2025)[^9] provides useful context on capacitor supply-chain constraints and component lifetime requirements but is not specific to the Zap design point.
 
-**Phase 1a dossier completeness:**
-High confidence on all 12 taxonomy columns per the dossier [dossier.md, §Remaining Gaps]. The dossier provides a complete and well-sourced classification baseline, including the MFE reclassification (from initial MIF), energy capture method (steam Rankine), and operational mode (pulsed at ~10 Hz).
+**Key data gaps:**
+- No published net electric output calculation (thermal efficiency, recirculating power fraction, parasitic loads)
+- No published capital cost estimates for any subsystem
+- No published pulse repetition rate demonstration above 0.2 Hz (Century), versus 10 Hz commercial target
+- No published cathode lifetime data under reactor-relevant conditions
+- No published neutronics/shielding analysis beyond "initial calculations" of TBR ≈ 1.1
+- Ion temperature on FuZE-3 not directly measured (inferred from Ti ≈ Te assumption)
 
-**Key data gaps limiting this analysis:**
-1. Q value not experimentally demonstrated; only calculated (Q > 10 at plant conditions)
-2. No published thermal efficiency, net electric output, or recirculating power fraction
-3. Capital cost entirely uncharacterized in the public literature
-4. Capacity factor and maintenance interval data absent
-5. Electrode erosion rates at commercial duty cycles not published
-6. Commercial rep rate (10 Hz) not demonstrated — Century at 0.2 Hz
+[^1]: Shumlak and Hartman, PRL 75(18), 3285 (1995)
+[^2]: Thompson et al., FST 79:8, 1051–1058 (2023); DOI: 10.1080/15361055.2023.2209131
+[^3]: Zhang et al., PRL 122(13), 135001 (2019)
+[^4]: Mitrani et al., Phys. Plasmas 28, 112509 (2021)
+[^5]: fuze-q-and-fuze-3.md §Why Extreme Pressure Matters for Fusion
+[^6]: century-demo-system.md §DOE milestone paragraph
+[^7]: century-demo-system.md §Module description paragraph
+[^8]: century-and-fuze-a-updates-2025.md §Abstract
+[^9]: osti-servlets-purl-2588719/output.md (Curry et al., LLNL-JRNL-2001600, August 2025)
 
----
+## 2. Challenges in Capturing System Function
 
-## Section 2: Challenges in Capturing System Function
+The SFS Z-pinch presents several distinctive challenges for LCOE modeling, ranked by impact on cost uncertainty:
 
-The SFS Z-pinch has a smaller parameter space than most MFE concepts — no magnets, no auxiliary heating, no divertor in the conventional sense — but its key LCOE drivers sit precisely in the whitespace between current experimental results and commercial requirements. Challenges are ranked by LCOE impact.
+### 2.1 No Published Power Balance (Critical)
 
-**1. Q > 10 not demonstrated — the model has no physics anchor (Impact: Critical)**
+The Thompson et al. (2023) paper states the single-core thermal power is 200 MW at nominal maximum, with 19 MJ fusion energy per pulse and Q > 10. But no explicit thermal-to-electric conversion efficiency, recirculating power fraction, or net electric output is published. The 50 MWe figure from the Century press release is not derived in any published analysis. Bridging from 200 MWth to a net electric output requires assumptions about:
+- Thermal cycle efficiency (steam Rankine from LiPb at ~600 K implies η_th ≈ 0.33–0.38)
+- Recirculating power (pulsed power recharge at ~70% drive efficiency, pumping, tritium processing)
+- Parasitic loads (vacuum, cooling, control systems)
 
-The Engineering Paradigms paper states:
+The implied net electric efficiency of ~25% (50 MWe / 200 MWth) is plausible for a low-temperature steam cycle with significant recirculating power but is an analyst inference, not a published figure.
 
-> "At plant-relevant currents, the fusion Q (Pfusion / Pinput) is greater than 10"
-> — engineering-paradigms-paper-summary.md, §Physics Assumptions
+### 2.2 Repetition Rate Scaling (Critical)
 
-This is a calculated projection, not an experimental result. FuZE and FuZE-Q have demonstrated thermonuclear neutron production; FuZE-3 has achieved gigapascal pressures. However, the pinch lifetime required for Q > 10 is 200 µs [engineering-paradigms-paper-summary.md, §Table I], while the longest demonstrated lifetimes on FuZE are 20–40 µs. The paper explicitly acknowledges this:
+The concept targets 10 Hz commercial operation. Century has demonstrated 0.2 Hz (one shot every 5 seconds)[^10]. The 50× gap between demonstrated and required rep rate is the single largest physics-to-engineering extrapolation. At 10 Hz with 19 MJ per pulse, thermal power reaches 190 MWth — consistent with the "~200 MW nominal maximum" in the paper. But at the demonstrated 0.2 Hz, the same system produces only 3.8 MWth, illustrating why rep rate dominates the economics.
 
-> "The question remains if sheared flows will continue to be effective at stabilizing laboratory Z pinches with higher fusion performance and longer pulse durations"
-> — engineering-paradigms-paper-summary.md, §Physics Uncertainties
+> "The pulse rate is variable to allow for controllably output power and load-following with a nominal maximum thermal power of 200 MW."
+> — engineering-paradigms-paper-summary.md §III
 
-A factor-of-5× to 10× extension in pinch lifetime is required before Q can be measured. Until demonstrated, the entire power balance (net electric, recirculating fraction, LCOE numerator) is anchored on a physics extrapolation. This is the single most constraining gap in the analysis.
+### 2.3 Cathode Lifetime Under Reactor Conditions (High)
 
-**2. Rep rate scaling: 0.2 Hz → 10 Hz (Impact: Critical)**
+The plasma cathode is a solid structure in direct contact with the plasma, exposed to erosion, heat flux, and the full neutron flux from the fusing plasma. Thompson et al. (2023) acknowledges this is the one component not protected by the liquid-metal blanket but argues it is "a small volume and mass of material" with "simple geometry" facilitating "straightforward remote removal and replacement"[^11]. No lifetime estimate is published. Arc smelting furnace experience at powers up to 60 MW is cited as an analogy, but those are non-nuclear environments without 14.1 MeV neutron damage.
 
-Commercial operation requires 10 Hz. Century currently demonstrates 0.2 Hz [dossier.md, §Repetition Rate]. The 50× scaling gap affects:
-- Average input power (from ~39 kW at 0.2 Hz to ~10 MWe per module)
-- Electrode thermal loading and erosion rates (duty cycle × peak thermal flux)
-- Liquid metal wall replenishment cycle between shots
-- Pulsed power system heat rejection between shots
-- Capacitor/switch component lifetimes under repetitive cycling
+### 2.4 Confinement Scaling to Reactor Parameters (High)
 
-The path from 0.2 Hz to 10 Hz is not merely an electrical engineering problem — it requires that electrode durability, liquid metal dynamics, and gas injection timing all work reliably at the higher cadence simultaneously. No public data characterizes the failure modes expected in this regime.
+The paper acknowledges directly:
 
-**3. Electrode erosion under commercial duty cycles (Impact: High)**
+> "Delivering pinch currents of ~1 MA is well within the technical state of the art in the field of pulsed power and numerical simulations suggest that sheared-flow stabilization is robust, but the question remains if sheared flows will continue to be effective at stabilizing laboratory Z pinches with higher fusion performance and longer pulse durations."
+> — engineering-paradigms-paper-summary.md §III
 
-The electrodes serve as both current-carrying conductors and plasma-facing components. The Engineering Paradigms paper draws analogy to commercial smelting furnace cathodes:
+Current experimental pinch currents on FuZE are 0.25–0.3 MA; the power plant requires 1.2–1.5 MA. FuZE-Q (designed for ~0.6–0.7 MA) was undergoing commissioning at time of the 2023 paper. FuZE-3 results at higher compression are encouraging but the current levels and fusion yields remain far below reactor requirements.
 
-> "Delivering pinch currents of ~1 MA is well within the technical state of the art in the field of pulsed power"
-> — engineering-paradigms-paper-summary.md, §Driver Scaling
+### 2.5 Pulsed Thermal Load on BOP (Moderate)
 
-However, commercial furnace cathodes operate in non-nuclear environments without 14 MeV neutron bombardment. At 10 Hz and microsecond-scale 1 MA discharges, electrode erosion accumulates rapidly. Replacement schedule and material cost directly enter operating costs. The Engineering Paradigms paper notes Zap Energy is "working on several damage-mitigation techniques" [§Electrode Engineering], but no erosion rate data, replacement interval, or material cost estimate appears in any public source.
+At 10 Hz with 19 MJ pulses, each pulse deposits energy in the LiPb blanket in microseconds. The thermal inertia of the thick liquid-metal blanket should smooth these pulses, but the coupling to a conventional steam Rankine cycle under repetitive pulsed thermal input is uncharacterized. This is shared with other pulsed concepts (MagLIF, laser ICF) but is less severe here due to lower individual pulse yield (19 MJ vs. hundreds of MJ to GJ for MagLIF/ICF).
 
-**4. LiPb flowing first wall — no validated fusion analogue (Impact: High)**
+[^10]: century-demo-system.md §Lightning Strikes paragraph; dossier.md §Repetition Rate
+[^11]: engineering-paradigms-paper-summary.md §V
 
-The design requires liquid LiPb to cascade under gravity as the first wall, outer electrode, tritium breeder, neutron shield, and heat transfer medium simultaneously. This "quadruple-duty" design is conceptually elegant but has no equivalent in any operating fusion system. Challenges include:
-- Establishing a stable, repeatable LiPb film on the inner wall surface between pulses at 10 Hz
-- LiPb wettability and flow stability under pulsed electromagnetic forcing from the Z-pinch current
-- In the absence of external magnets, MHD drag on flowing LiPb is absent (a major simplification vs. tokamak liquid-metal concepts), but electromagnetic induction from the pulsed current still couples to the liquid metal
-- TBR of 1.1 is marginal [dossier.md, §Tritium Breeding]; a 10% reduction from design flow conditions could push TBR below 1.0 and make the plant tritium-negative
+## 3. Maturity of Key Subsystems and Components
 
-**5. Pulsed power driver cost and supply chain (Impact: Moderate–High)**
+Subsystems are listed in ascending order of maturity (least mature first).
 
-The pulsed power driver (capacitor bank + pulse-forming networks) is the primary capital cost driver for this concept — it replaces the magnet system cost that dominates tokamak economics. No public cost estimate exists for the commercial driver. Relevant data points:
-- Wall-to-plasma efficiency ~70% (from Engineering Paradigms paper, combining AC-DC rectification at ~90% and modulator at ~80%)
-- FuZE-Q uses ~1 MJ capacitor bank; commercial requires ~1.9 MJ/pulse electrical at Q = 10 and 19 MJ fusion/pulse
-- Capacitor costs scale approximately as $/J of stored energy; industrial pulsed power systems run ~$1–10/J depending on repetition rating and pulse shape requirements [analogue from general pulsed power literature — no Zap-specific data]
-- **Supply chain constraint (program-level risk):** The OSTI 2025 pulsed power challenges report quantifies the Western manufacturing gap: a single commercial plant requires 10,000–216,000 capacitors with 4–6 year delivery lead times; building 150 plants at current Western production capacity would take 125–250 years [osti-servlets-purl-2588719.md §Energy Storage]. This places supply chain maturation on a 10–20 year development timeline — comparable in commercial-schedule severity to Q demonstration and rep-rate scaling.
+### SFS Z-Pinch Plasma Confinement at Reactor Parameters — TRL 2–3
 
-**6. No O&M baseline for pulsed Z-pinch operation (Impact: Moderate)**
+**On paper only at reactor scale.** The core physics claim — that sheared flows stabilize Z-pinch plasmas at currents of 1.2–1.5 MA, temperatures of 30–35 keV, and densities of 1.5 × 10²⁶ m⁻³ for 200 μs — is supported by numerical simulations referenced in Forbes et al. (2019) but has not been experimentally validated at anything close to these parameters. FuZE has demonstrated sustained DD neutron production at 0.25–0.3 MA with temperatures of 1–2 keV and densities of 10²³–10²⁴ m⁻³. FuZE-3 has reached pressures equivalent to ~1.6 GPa and densities of 3–5 × 10²⁴ m⁻³ but at much shorter confinement times (~1 μs) and without fusion-relevant current levels.
 
-Operating costs for a pulsed Z-pinch power plant have no industry precedent. Key cost items without data: electrode replacement, LiPb processing and resupply, pulsed power component cycling lifetimes (capacitors, switches, pulse-forming networks), gas injection and vacuum handling at 10 Hz, and tritium extraction from circulating LiPb. The modular architecture means O&M costs may scale differently than large single-unit plants — favorable for learning and parallel maintenance, unfavorable if multiple modules fail simultaneously.
+The APS DPP 2025 abstract states Zap is "seeking to complete the physics basis for the concept" and "determine the scaling laws to high-gain performance"[^12] — an explicit acknowledgment that the physics basis is not yet established.
 
----
+### Plasma Cathode (High-Duty-Cycle) — TRL 3
 
-## Section 3: Maturity of Key Subsystems and Components
+**Demonstrated at sub-scale, not at reactor duty cycle.** Century is testing cathode damage mitigation techniques, and Zap Energy has an active program on electrode longevity. The cathode must withstand megaampere-scale currents, plasma erosion, and neutron flux at 10 Hz for commercial operation. Arc smelting furnace experience (60 MW, non-nuclear) provides partial confidence. No published lifetime data under neutron irradiation exists.
 
-Ordered from least mature (highest risk) to most mature.
+### Liquid-Metal Wall System (LiPb Weir-Wall) — TRL 3
 
----
+**Partially demonstrated at sub-scale.** Century includes "one of the largest tests of a plasma-facing liquid metal blanket to date"[^13] and the first test of plasmas with flowing liquid metal occurred in mid-2024. However, Century uses liquid bismuth (not LiPb), since it is a non-DT engineering platform. The weir-wall concept for forming a cavity of flowing LiPb under gravity is novel and has not been demonstrated with the commercial LiPb eutectic at reactor temperatures.
 
-**Physics Basis at Commercial Scale (Q > 10, 200 µs lifetime) — TRL 2**
+### Tritium Breeding Blanket — TRL 2
 
-- **Demonstrated**: Thermonuclear neutron production from FuZE at 20–40 µs; Ti = Te independently measured; FuZE-3 electron pressures of 830 MPa and total pressures of 1.6 GPa at densities 3–5 × 10²⁴ m⁻³ [fuze-3-gigapascal-results-2025.md, §Results]. Sheared-flow stabilization experimentally validated at these conditions.
-- **On paper only**: Q > 10 at 200 µs and 1.2–1.5 MA — calculated but not measured [engineering-paradigms-paper-summary.md, §Q Value]. Pinch lifetime of 200 µs — a 5–10× extrapolation from demonstrated FuZE durations.
-- **Missing at scale**: Experimental demonstration of stable sheared-flow Z-pinch at commercial current (1.2–1.5 MA) and commercial pinch lifetime (200 µs) simultaneously. Thermonuclear yield measurement at Q ≥ 1.
+**On paper only.** The LiPb blanket is designed to serve as both first wall and tritium breeder with a calculated TBR of ~1.1[^14]. This is from "initial calculations" (Forbes et al. 2019), not from a detailed neutronics analysis. A TBR of 1.1 is marginal — most D-T fusion designs target TBR ≥ 1.15 to ensure self-sufficiency accounting for losses. No detailed tritium extraction, processing, or inventory analysis is published.
 
----
+### Repetitive Pulsed Power Supply — TRL 3–4
 
-**LiPb Flowing First Wall / Blanket System — TRL 2–3**
+**Component-level demonstrations exist.** Thompson et al. (2023) reports 80% efficiency for solid-state thyristor switch stacks at 5 Hz operation, and 90% AC-DC rectification efficiency, combining to ~70% wall-plug-to-cathode efficiency[^15]. Century is testing a "cutting-edge pulsed power capacitor bank"[^16] at 0.2 Hz with 500 kA. The pulsed power pre-roadmap (Curry et al. 2025) notes that Zap Energy operates at 50 kV to 200 kV — significantly lower voltage than Z-machine-class systems (5–10 MV), which simplifies switch and capacitor requirements. However, scaling to 10 Hz at 1.2–1.5 MA with 10⁹-shot component lifetimes remains undemonstrated.
 
-- **Demonstrated**: Liquid metal (bismuth, not LiPb) circulating in Century's chamber at 0.2 Hz; 1,080 consecutive shots with flowing liquid metal demonstrated [century-demo-system.md, §Milestones]. LiPb selected as commercial design fluid; TBR ~ 1.1 calculated via Monte Carlo neutronics.
-- **On paper only**: LiPb (vs. bismuth) compatibility with the commercial chamber design. Gravity-cascade flow dynamics providing stable, repeatable first-wall film between 10 Hz shots. Full integration of heat extraction, tritium breeding, neutron shielding, and electrode functions in a single flowing medium. TBR validation under realistic neutron spectrum with blanket penetrations.
-- **Missing at scale**: Tritium extraction from circulating LiPb at commercial throughput. LiPb electromagnetic coupling behavior under repeated 1 MA Z-pinch pulses. First-wall erosion and LiPb contamination rates under high-Z neutron bombardment. In-situ LiPb chemistry control for tritium inventory management.
+### Energy Conversion / BOP (Steam Rankine from LiPb) — TRL 5–6
 
----
+**Mature technology in principle.** Steam Rankine cycle is conventional power-conversion technology. The coupling to a pulsed liquid-metal heat source at LiPb temperatures (~600 K) is non-standard but does not require novel components. The low source temperature limits thermal efficiency to ~33–38%.
 
-**High-Rep-Rate Pulsed Power Driver — TRL 3**
+[^12]: century-and-fuze-a-updates-2025.md §Abstract
+[^13]: century-demo-system.md §Liquid metal paragraph
+[^14]: engineering-paradigms-paper-summary.md §V; Forbes et al. FST 75:7 (2019)
+[^15]: engineering-paradigms-paper-summary.md §IV
+[^16]: century-demo-system.md §Funding paragraph
 
-- **Demonstrated**: 10 Hz thyristor-based modulators demonstrated at laboratory scale [engineering-paradigms-paper-summary.md, §Driver Efficiency]. AC-DC rectification at ~90% efficiency documented. FuZE-Q operational with ~1 MJ capacitor bank at up to 1.5 MA. Wall-to-plasma efficiency of ~70% established.
-- **On paper only**: Commercial-scale driver delivering 2–3 MJ/pulse electrical at 10 Hz continuously. Passive pulse-forming networks scaled to ~1.9 MJ at 10 Hz with > 10⁸ shot lifetime. Heat rejection design for driver components at 10 MW average throughput.
-- **Missing at scale**: Two distinct gaps require separation:
-  - *Capability gap (switching):* Current commercial Si MOSFETs and SiC devices top out at 6.5–10 kV; 4H-SiC custom devices reach 15–20 kV. Commercial Z-pinch switching requires 100–200 kV at 100–200 kA — no existing commercial switch meets this specification. The Z-pinch's 50–200 kV operating range is a relative advantage over other pulsed-fusion approaches (Marx bank drivers at 5–10 MV), but still requires a new switch technology class before lifetime durability can even be evaluated [osti-servlets-purl-2588719.md §High Voltage Switching].
-  - *Lifetime gap (capacitors):* Current Z Marx bank capacitors achieve 10⁴–10⁵ shots before failure. Commercial fusion requires 10⁸–10⁹ shots — a 4–6 order-of-magnitude shortfall. This is not a modest engineering extrapolation; it is a decades-long materials development challenge for dielectric and switch components [osti-servlets-purl-2588719.md §Energy Storage]. Full driver system cost at commercial scale remains entirely uncharacterized.
+## 4. Key Materials and Supply Chain Considerations
 
----
+### Lithium-Lead Eutectic (LiPb)
 
-**Electrode System (High-Duty-Cycle Cathodes) — TRL 3–4**
+LiPb (17% Li, 83% Pb by atomic fraction) is the blanket, first wall, neutron multiplier, and heat-transfer medium. Both lithium and lead are globally abundant — lead production is ~12 Mt/year and lithium production is ~180 kt/year (2024). A single 200 MWth core with a 25 m³ blanket volume at LiPb density (~9,400 kg/m³) requires ~235 tonnes of LiPb. This is not a supply-chain constraint for a single plant, though lithium-6 enrichment for tritium breeding would draw on the same supply chain as battery and fission industries.
 
-- **Demonstrated**: Industrial arc furnace cathodes up to 60 MW continuous operation provide engineering analogue [engineering-paradigms-paper-summary.md, §Electrode Analogy]. Century integrates "high-duty-cycle cathodes" as a test platform [century-and-fuze-a-updates-2025.md, §Abstract]. Electrode materials and damage-mitigation techniques under active development.
-- **On paper only**: Electrode erosion rate and replacement interval at 10 Hz, 1 MA, D-T plasma conditions. Neutron damage to electrodes under commercial fluence. Electrode material choice for nuclear environment (typical industrial cathode materials — copper, graphite, tungsten — behave differently under 14 MeV bombardment).
-- **Missing at scale**: Quantified erosion data from Century at duty cycles approaching commercial rep rates. Electrode material cost per shot and annual replacement cost estimate. Activated electrode disposal pathway (first wall components become activated waste).
+LiPb produces activation products (²¹⁰Po and ²⁰³Hg) that require waste management, though these can be mitigated by controlling isotope mix[^17].
 
----
+### Capacitor Banks and Pulsed Power Components
 
-**Tritium Breeding and Extraction — TRL 2**
+The pulsed power driver is the dominant capital subsystem. The OSTI pulsed-power roadmap paper (Curry et al. 2025) quantifies a critical supply-chain bottleneck:
 
-- **Demonstrated**: TBR ~ 1.1 calculated from Monte Carlo neutronics for 3 m LiPb blanket; enriched Li-6 not required at this blanket thickness [dossier.md, §Tritium Breeding]. LiPb chosen over pure lithium — avoids water-reactivity of liquid Li metal and enables Pb neutron multiplication.
-- **On paper only**: Engineering design that achieves TBR = 1.1 in a real flowing-blanket geometry with penetrations and supports. Tritium extraction via vacuum permeation or cold trapping from LiPb at commercial flow rates. Tritium inventory accounting in the LiPb circuit.
-- **Missing at scale**: Tritium permeation rates through LiPb circuit structural materials under irradiation. Tritium extraction capacity to prevent unacceptable tritium inventory in the liquid metal. LiPb activation product management (Pb and Li activation under 14 MeV neutrons generates radioactive isotopes that complicate processing).
+> "If 150 fusion power plants were to be built today to service the United States, the time required to build the required capacitors is approximately 125 years to 250 years given the western world's available manufacturers and supply chain of high voltage capacitors."
+> — osti-servlets-purl-2588719/output.md §Energy Storage
 
----
+Each plant may require 10,000 to 216,000 capacitors, with delivery times of 4–6 years per order at current manufacturing capacity. Labor is identified as "a major fraction of the capacitor cost at the present time." Capacitor lifetime improvements of 2–6 orders of magnitude are required for fusion applications (from ~10⁴ shots to 10⁶–10⁹ shots). Zap's lower voltage range (50–200 kV vs. 5–10 MV for Z-machine-class drivers) may ease capacitor specifications somewhat.
 
-**Steam Rankine Power Conversion — TRL 7–8**
+### Cathode Materials
 
-- **Demonstrated**: Conventional steam Rankine cycles are commercial technology. LiPb heat extraction via steam cycle is the established design choice per the Engineering Paradigms paper and independent summaries [engineering-paradigms-paper-summary.md, §Heat Extraction; dossier.md, §Energy Capture].
-- **On paper only**: Heat exchanger coupling LiPb to steam cycle at the specific temperature and flow rates of the Zap commercial design. Thermal efficiency for LiPb outlet temperatures (LiPb solidification point ~235°C sets a floor on blanket temperature, which limits steam cycle efficiency).
-- **Missing at scale**: Detailed power conversion loop design. Tritium permeation from LiPb through heat exchanger walls into steam cycle — requires tritium barrier or secondary loop.
+The cathode must withstand megaampere plasma currents, erosion, and neutron damage at 10 Hz. Specific cathode materials are not named in any Zap Energy publication. Arc smelting furnaces use graphite electrodes — whether this or another material (tungsten, molybdenum) is suitable under neutron irradiation is not addressed.
 
----
+### No Superconducting Materials Required
 
-## Section 4: Key Materials and Supply Chain Considerations
+A distinctive advantage: the SFS Z-pinch requires no REBCO tape, Nb₃Sn, NbTi, or any superconducting wire. This eliminates the supply-chain constraints that affect tokamak, stellarator, and mirror concepts (REBCO at ~$40–100/m, limited global production capacity). No cryogenic helium or nitrogen systems are needed.
 
-**Tritium (D-T fuel)**
+### No Laser Components Required
 
-The D-T fuel cycle is the shared supply chain challenge across all D-T fusion concepts. Commercial reactors require on-site tritium breeding with TBR > 1.0 from the blanket and external startup inventory (~1–3 kg per GWe reactor). Tritium supply from CANDU reactors (the dominant commercial source) is limited to ~1–2 kg/year globally. A fleet of SFS Z-pinch plants would face the same startup inventory constraint as any D-T fleet. TBR = 1.1 provides a ~10% margin over self-sufficiency — marginally positive, which may be insufficient if blanket availability falls below design. This challenge is identical in structure to the spherical tokamak analysis [21-spherical-tokamak-hts analysis, §Section 4].
+No precision optics, frequency conversion crystals, or high-power laser diode arrays. This eliminates supply-chain dependencies shared with laser ICF concepts.
 
-**Lithium-6 (for tritium breeding)**
+[^17]: engineering-paradigms-paper-summary.md §V; Kondo et al. JPCS 1090 (2018)
 
-Natural lithium is ~7.6% Li-6. LiPb blankets may require enrichment to boost TBR — however, the Engineering Paradigms paper calculates TBR ~ 1.1 with natural LiPb in a 3 m thick blanket, implying enrichment is not required at this blanket depth [engineering-paradigms-paper-summary.md, §Blanket Design]. Global Li-6 enrichment capacity is limited (primarily former Soviet facilities); enrichment adds cost but may not be necessary for this design. Demand is shared with deuterium-tritium weapons programs and other fusion concepts.
+## 5. Design Point Parameters
 
-**Lead (for LiPb blanket)**
+All parameters describe the named design point: Zap Energy SFS Z-Pinch Commercial Power Plant Module, a single fusion core at ~200 MWth / ~50 MWe. The multi-module plant configuration (multiple cores sharing infrastructure) is noted but not parameterized — per the design point selection, P_native = 50 MWe refers to a single module.
 
-Lead (Pb) is a commodity industrial metal with robust global supply. LiPb eutectic (83% Pb, 17% Li by mass) requires large volumes — a 3 m thick blanket around a ~25 m³ core implies several hundred tonnes of LiPb per module. Lead supply is not a constraint. Lead activation under 14 MeV neutrons produces Pb-204/205 and bismuth isotopes; radioactive waste management for LiPb circuit components is a long-term liability but not a supply constraint.
+| Parameter | Value | Source | Confidence | Note |
+|-----------|-------|--------|------------|------|
+| Pinch current | 1.2–1.5 MA | engineering-paradigms-paper-summary.md §III, Table I | high | Power plant column |
+| Pinch radius | 0.15 mm | engineering-paradigms-paper-summary.md §III, Table I | high | spec key: `plasma_t` (minor radius equivalent) |
+| Pinch length | 0.5 m | engineering-paradigms-paper-summary.md §III, Table I | high | Constant across all development steps |
+| Electron density | 1.5 × 10²⁶ m⁻³ | engineering-paradigms-paper-summary.md §III, Table I | medium | Ti = Te assumed; not experimentally validated at this density |
+| Temperature | 30–35 keV | engineering-paradigms-paper-summary.md §III, Table I | medium | Ti = Te assumed; simulation-based |
+| Plasma lifetime per pulse | 200 μs | engineering-paradigms-paper-summary.md §III, Table I | medium | spec key: relevant to duty cycle |
+| Fusion energy per pulse | 19 MJ | engineering-paradigms-paper-summary.md §III, Table I | medium | Derived from simulations at plant-relevant currents |
+| Fusion Q (P_fus/P_input) | >10 | engineering-paradigms-paper-summary.md §V | medium | From Forbes et al. [14]; simulation, not experimental |
+| Repetition rate | 10 Hz (target) | dossier.md §Repetition Rate; engineering-paradigms-paper-summary.md §III | high | 0.2 Hz demonstrated on Century |
+| fusion_power_MW | ~190 MW | [inferred: 19 MJ × 10 Hz = 190 MW] | medium | informational — library back-solves from p_input + P_native |
+| Single-core thermal power | 200 MW (nominal max) | engineering-paradigms-paper-summary.md §III | high | Includes P_fus + P_input deposited in blanket |
+| net_electric_MWe | 50 MWe | century-demo-system.md §Module description | medium | Press release figure; no published derivation. Drives P_native |
+| Drive efficiency (wall-plug to cathode) | ~70% | engineering-paradigms-paper-summary.md §IV | medium | Composed from 90% AC-DC × 80% modulator, rounded down |
+| p_input_MW | ~19 MW | [inferred: 190 MW fusion / Q of 10 = 19 MW fusion input → at 70% drive efficiency, wall-plug draw ≈ 27 MW] | low | spec key: `p_input`. Recirculating power estimate is analyst-derived |
+| Thermal efficiency (η_th) | ~0.33–0.38 | [estimated: steam Rankine from LiPb at ~600 K] | low | Not published; analyst estimate for low-temperature Rankine |
+| Core diameter | ~3 m | engineering-paradigms-paper-summary.md §III | high | Set by blanket thickness |
+| Core volume | 25 m³ | engineering-paradigms-paper-summary.md §V, Table II | high | |
+| Blanket material | LiPb eutectic (17% Li, 83% Pb) | engineering-paradigms-paper-summary.md §V | high | |
+| Blanket thickness | ~1 m+ | engineering-paradigms-paper-summary.md §V | medium | "on the order of a meter or more" |
+| TBR | ~1.1 | engineering-paradigms-paper-summary.md §V | medium | "Initial calculations"; Forbes et al. (2019) |
+| Magnet type | None | dossier.md §Magnet Type | high | Self-confined plasma; no external magnets |
+| Fuel | D-T | dossier.md §Fuel | high | |
+| Energy capture | Thermal (steam Rankine) | dossier.md §Energy Capture; engineering-paradigms-paper-summary.md §V | high | |
+| Operation mode | Pulsed | dossier.md §Operation Mode | high | Each pulse ~200 μs, target 10 Hz |
 
-**Electrode materials (tungsten or refractory metals)**
+**Key inferred values and derivation chains:**
 
-Industrial arc furnace cathodes use copper, graphite, or refractory metals. Commercial Z-pinch electrodes require neutron-hard materials suitable for a nuclear environment. Tungsten is the leading candidate (high melting point, low sputtering yield, prior art in fusion first-wall applications). Global tungsten production is ~90,000 t/year, dominated by China (~80%). A multi-module plant requires modest tungsten mass, but geopolitical supply concentration is a moderate risk — shared with tokamak tungsten divertor programs.
+- **p_input_MW ≈ 19 MW**: P_fusion ≈ 190 MW at 10 Hz; Q > 10 implies P_input < 19 MW fusion heating power. At 70% drive efficiency, wall-plug draw is ~27 MW. This is the recirculating power to the pulsed power system alone; additional parasitic loads (pumping, tritium, vacuum) are unquantified.
+- **η_th ≈ 0.33–0.38**: No published value. LiPb outlet temperature is implied to be around 600 K (327°C) based on the resistivity reference in the paper. A subcritical steam Rankine cycle at this source temperature yields 33–38% gross thermal efficiency. This is a significant analyst assumption.
+- **net_electric_MWe = 50 MWe**: From press release. Consistency check: 200 MWth × 0.35 η_th = 70 MWe gross – ~27 MW pulsed power recharge – parasitic loads ≈ 40–50 MWe net. This is broadly consistent, suggesting the 50 MWe figure is plausible but sensitive to thermal efficiency and parasitic load assumptions.
 
-**Capacitors and high-voltage switches (pulsed power driver) — Program-Level Supply Chain Risk**
+## 5b. Override Candidates
 
-The pulsed power driver is the unique supply chain item for this concept, and published data from the OSTI 2025 pulsed power challenges report (LLNL-JRNL-2001600) establishes the constraint at a severity comparable to Q demonstration or tritium supply:
+### Per-Account Walkthrough
 
-- **Capacitors per plant**: A single commercial Z-pinch plant requires 10,000–216,000 high-voltage capacitors [osti-servlets-purl-2588719.md §Energy Storage].
-- **Delivery lead times**: 4–6 years per order at current production capacity.
-- **Fleet buildout**: Building 150 plants to serve the United States would require 125–250 years at current Western manufacturing capacity. Labor remains "a major fraction of capacitor cost at the present time" [osti-servlets-purl-2588719.md §Energy Storage].
-- **Lifetime gap**: Current Z Marx bank capacitors achieve 10⁴–10⁵ shots; commercial fusion requires 10⁸–10⁹ shots — a 4–6 order-of-magnitude shortfall requiring sustained materials R&D.
-- **Switch capability gap**: Current commercial SiC devices reach 6.5–15 kV. Z-pinch switches must operate at 50–200 kV, 100–200 kA — a specification no commercially available switch meets. This is a capability problem (wrong technology class), not merely a durability problem. Note that the Z-pinch's 50–200 kV range is a relative advantage over Marx-bank-driven approaches (5–10 MV), but the gap to commercial availability remains large.
-- **OSTI roadmap timeline**: A new material or component class developed today takes 10–15 years to reach manufacturing scale. The pulsed power supply chain is on a 10–20 year maturation trajectory before commercial Z-pinch deployment is credible [osti-servlets-purl-2588719.md §Workshop Outcomes].
+**C220101 — First wall, blanket & neutron multiplier**: The design uses a flowing LiPb weir-wall as an integrated first wall and breeding blanket. This is architecturally distinctive (no solid first wall; the liquid metal itself IS the first wall), but no company-grounded cost figure, mass estimate, or unit price for the LiPb inventory or tank structure is published. The library default for a liquid-metal blanket account will apply. **No override.**
 
-The absence of HTS tape eliminates the most costly material in compact tokamak designs, but capacitor and switch supply chain development is the structural supply chain challenge this concept substitutes in its place. This is not a "specialty market" scaling problem — it is a program-level constraint requiring coordinated government and industry investment over decades.
+**C220102 — Radiation shield**: The thick LiPb blanket (~1 m+) serves as the radiation shield. No separate shield structure is described in the design. The shielding function is integrated into C220101. No company-grounded cost data. **No override.**
 
-**Materials not required (vs. conventional tokamak):**
-- REBCO HTS tape — entirely absent; eliminates the most costly and supply-constrained material in compact tokamak designs
-- Cryogenic systems (no superconducting magnets)
-- Beryllium (no Be first wall; LiPb is the first wall)
-- NBI beam dumps, gyrotrons, or RF launchers
+**C220104 — Primary pulsed driver**: The pulsed power capacitor bank is the primary driver. Thompson et al. (2023) describes the architecture (AC-DC rectification + solid-state thyristor pulsed-power modulator) and drive efficiency (~70%), but publishes no cost figure, stored energy specification, or capacitor count for the power-plant-scale system. The OSTI pulsed-power roadmap gives generic capacitor counts (10,000–216,000 per plant) and delivery timelines but no Zap-specific pricing. **No override.**
 
-The absence of HTS tape is a material simplification that substantially de-risks the supply chain relative to spherical tokamak and compact tokamak concepts.
+**C220105 — Primary structure**: The core is described as a ~3 m diameter, 25 m³ tank. No structural mass, material specification, or cost estimate is published. **No override.**
 
----
+**C220106 — Vacuum system**: Required but no specifications or cost data published. **No override.**
 
-## Section 5: LCOE-Relevant Parameters
+**C220107 — Power supplies / pulsed-power capacitor bank**: This is the canonical account for the pulsed-power driver cost. The same situation as C220104 applies — architectural description exists but no cost figure. The drive efficiency of ~70% and voltage range (50–200 kV) are published, which could inform a bottom-up estimate, but no company-grounded dollar figure exists to justify departing from the library default. **No override.**
 
-**Available Parameters:**
+**C220109 — Direct energy converter**: Not applicable. The design uses thermal (steam Rankine) conversion, not direct energy conversion. **No override.**
 
-| Parameter | Value/Range | Source | Confidence | Notes |
-|-----------|-------------|--------|------------|-------|
-| Fusion thermal power per core | ~200 MWt | engineering-paradigms-paper-summary.md §Design Parameters/Table I | medium | "Nominal maximum thermal power: 200 MW"; 19 MJ/pulse × 10 Hz = 190 MWt consistent |
-| Fusion energy per pulse | 19 MJ | engineering-paradigms-paper-summary.md §Design Parameters | medium | Plant design point; not experimentally demonstrated |
-| Target Q (fusion gain) | > 10 | engineering-paradigms-paper-summary.md §Physics Assumptions | low | Calculated; never demonstrated at any scale |
-| Rep rate (target) | 10 Hz | zap-energy-website-how-it-works.md §Commercial Design; dossier.md §Repetition Rate | high | Commercial target; Century at 0.2 Hz |
-| Wall-to-plasma efficiency | ~70% | engineering-paradigms-paper-summary.md §Driver Efficiency | medium | 90% (AC-DC) × 80% (modulator); demonstrated at subscale |
-| Pinch current (commercial) | 1.2–1.5 MA | engineering-paradigms-paper-summary.md §Table I | medium | Design point; highest demonstrated on FuZE-Q |
-| Pinch radius | 0.15 mm | engineering-paradigms-paper-summary.md §Table I | medium | Design point only |
-| Pinch length | 0.5 m | engineering-paradigms-paper-summary.md §Table I | medium | Constant across development stages per paper |
-| Plasma lifetime (commercial) | 200 µs | engineering-paradigms-paper-summary.md §Table I | low | Design requirement; FuZE demonstrated 20–40 µs |
-| Electron density (commercial) | 1.5 × 10²⁶ m⁻³ | engineering-paradigms-paper-summary.md §Table I | low | Design point; extrapolated from FuZE |
-| Plasma temperature | 30–35 keV | engineering-paradigms-paper-summary.md §Design Parameters | medium | Consistent with FuZE measurements; required for DT yield |
-| Core volume | 25 m³ | engineering-paradigms-paper-summary.md §Design Parameters | medium | Much smaller than comparable pulsed concepts |
-| Core diameter (approx.) | ~3 m | engineering-paradigms-paper-summary.md §Design Parameters | medium | Implies compact geometry |
-| Module net electric output | ~50 MWe | century-demo-system.md §Commercial Scale | low | Century described as "close to eventual size of single module producing 50 MWe"; [inferred] |
-| Blanket TBR | ~1.1 | engineering-paradigms-paper-summary.md §Blanket Design; dossier.md §Tritium Breeding | medium | Calculated for 3 m LiPb blanket; marginal positive |
-| LiPb blanket thickness | ~3 m | dossier.md §Tritium Breeding | medium | For TBR ~ 1.1 and biological shielding |
-| Driver input power (inferred) | ~27–30 MWe/module | [inferred: 200 MWt / Q(10) = 20 MWt plasma input; ÷ 0.70 efficiency = 28.6 MWe; at 10 Hz continuous] | low | Derivation: fusion power from §Table I, Q from §Physics, efficiency from §Driver |
-| Gross electric per module (inferred) | ~60–70 MWe | [inferred: 200 MWt × η_thermal (~33% steam Rankine)] | low | Steam Rankine efficiency assumed 30–35%; cycle design unpublished |
-| Net electric per module (inferred) | ~35–50 MWe | [inferred: gross electric minus driver recirculating power ~28–30 MWe] | low | Consistent with Century "50 MWe module" claim if efficiency is ~37% |
-| Recirculating power fraction (inferred) | ~40–55% | [inferred: driver power / gross electric; Q = 10 assumption] | low | High recirculating fraction is a key LCOE risk; depends strongly on Q |
+**C220110 — Remote handling & maintenance**: The cathode is described as requiring periodic remote removal and replacement, with "simple geometry" facilitating this. No cost data. **No override.**
 
-**Notes on recirculating power:**
-The recirculating fraction is highly sensitive to Q. At Q = 10 and 70% driver efficiency, recirculating power is ~14% of fusion power; as a fraction of gross electric (~33% thermal efficiency), recirculating fraction ≈ 43%. If Q = 5, recirculating fraction climbs to ~85% of gross electric, making net output negligible. This is the key lever — every doubling of Q halves the recirculating fraction.
+**C220111 — Reactor-equipment installation & assembly**: No data. **No override.**
 
-**Missing Parameters:**
+**CAS21 — Buildings & site structures**: The core is ~3 m diameter / 25 m³ — dramatically smaller than tokamak or ICF chambers. This should result in significantly lower building costs, but no company-grounded cost figure is published. The library default for this archetype will apply, and the small core volume will naturally produce lower costs through the library's size-scaling. **No override.**
 
-| Parameter | Gap Type | Criticality | Notes |
-|-----------|----------|-------------|-------|
-| Q value (experimental) | truly-unknown | blocking | Must reach FuZE-Q; no published result |
-| Thermal conversion efficiency | proprietary | blocking | Steam Rankine assumed; exact cycle design unpublished |
-| Capital cost (total plant $/kWe) | proprietary | blocking | No estimate in any public source |
-| Capacity factor | truly-unknown | blocking | No operational plant; maintenance intervals uncharacterized |
-| Electrode erosion rate and replacement cost | truly-unknown | important | No nuclear-environment erosion data |
-| Driver cost ($/J stored) at commercial scale | not-yet-sourced | important | Industrial pulsed power cost data exists but not specific to this application |
-| LiPb pumping power | derivable | important | Can estimate from flow velocity and hydraulic resistance |
-| Annual LiPb replacement volume | derivable | important | Activation buildup sets a circuit turnover requirement |
-| Fixed O&M ($/MWh) | truly-unknown | important | No analogue for pulsed Z-pinch at commercial scale |
-| Plant lifetime | truly-unknown | nice-to-have | Electrode, blanket, and driver component lifetimes unknown |
+**CAS23 — Turbine plant equipment**: Steam Rankine cycle is conventional. No concept-specific data to override the library default. **No override.**
 
----
+**CAS24 — Electric plant equipment**: No data. **No override.**
 
-## Section 6: Data Gap Inventory
+**CAS26 — Heat rejection system**: No data. **No override.**
+
+**CAS27 — Special materials (initial blanket fill)**: The LiPb inventory for a 25 m³ core at ~9,400 kg/m³ density is approximately 235 tonnes. At commodity LiPb prices (~$5–10/kg for the eutectic), this is roughly $1.2–2.4M — modest but quantifiable. However, this is an analyst-derived estimate using commodity pricing, not a company-published figure. The lithium-6 enrichment cost (if required for TBR) is an additional unknown. **No override** — the quantity is derivable but the company has not published a costed bill of materials.
+
+**CAS70 — Annualized O&M**: No published maintenance schedule, staffing model, or component replacement plan. Cathode replacement frequency is the key unknown. **No override.**
+
+**CAS80 — Annualized fuel cost**: D-T fuel costs are standard. Tritium startup inventory requirements are not quantified. **No override.**
+
+```yaml
+overrides: []
+```
+
+**Override count: 0 enabled.** The archetype-fit grade is High, which expects 0–4 enabled overrides. A count of 0 is within band. The design point is architecturally distinctive (no magnets, liquid-metal first wall, pulsed power driver) but the company has published no cost figures, unit prices, or quantified bills of material for any subsystem. The library defaults for the pulsed-electrical-drive archetype are the best available baseline.
+
+## 6. Data Gap Inventory
 
 | # | Gap Description | Section | Gap Type | Criticality | Source Recommendation |
 |---|-----------------|---------|----------|-------------|----------------------|
-| 1 | Q > 10 not demonstrated; commercial power balance anchored on calculation | S2, S5 | truly-unknown | blocking | FuZE-Q results when published; FuZE-A commissioning results |
-| 2 | Pinch lifetime of 200 µs not demonstrated (5–10× extrapolation from FuZE) | S2, S3 | truly-unknown | blocking | FuZE-Q / FuZE-A experimental results |
-| 3 | Capital cost estimate entirely absent | S5 | proprietary | blocking | No public source; requires Zap Energy disclosure or independent study |
-| 4 | Capacity factor and maintenance interval data | S5 | truly-unknown | blocking | Century long-run testing; no published target |
-| 5 | Rep rate scaling from 0.2 Hz (Century) to 10 Hz (commercial) | S2, S3 | truly-unknown | blocking | Century program milestones; no timeline published |
-| 6 | Electrode erosion rate under nuclear duty — replacement interval and cost | S3, S5 | truly-unknown | important | Century electrode data; no nuclear-environment data exists |
-| 7 | Thermal conversion efficiency (steam Rankine cycle design) | S5 | proprietary | important | Engineering Paradigms paper implies Rankine; no efficiency stated |
-| 8 | LiPb flowing first-wall stability at 10 Hz — validated analogue absent | S2, S3 | truly-unknown | important | Century liquid metal data (bismuth to date; LiPb next) |
-| 9 | Tritium extraction from LiPb at commercial throughput | S3, S4 | truly-unknown | important | No Z-pinch-specific TBR validation experiment; EU-DEMO analogue partial |
-| 10 | Driver cost at commercial scale ($/J, $/MWe) | S4, S5 | not-yet-sourced | important | Industrial pulsed power cost studies; NIF/Z machine cost analogy |
-| 11 | LiPb activation and processing requirements | S4 | truly-unknown | important | Requires neutronics + chemistry modeling; no Zap publication |
-| 12 | Recirculating power fraction (depends on Q) | S5 | derivable | important | Derives directly once Q is measured |
-| 13 | Fixed vs. variable O&M breakdown | S2 | truly-unknown | important | No fusion Z-pinch precedent; pulsed machine analogy (ICF) partial |
-| 14 | Pulsed power component lifetime and switch capability: capacitors at 10⁴–10⁵ shots vs. 10⁸–10⁹ required (4–6 OOM); no commercial switch meets 50–200 kV, 100–200 kA specs | S3, S4 | truly-unknown | blocking | New switch technology class required before lifetime can be tested; OSTI 2025 roadmap projects 10–15 year materials maturation timeline |
-| 15 | LiPb pumping power requirements | S5 | derivable | nice-to-have | Estimable from blanket geometry and flow velocity |
+| 1 | No published power balance (η_th, recirculating fraction, parasitic loads, net electric derivation) | S2, S5 | truly-unknown | blocking | Request from Zap Energy or derive from thermal-hydraulic analysis of LiPb Rankine system |
+| 2 | Repetition rate demonstrated at 0.2 Hz vs. 10 Hz target — 50× gap | S2, S3 | truly-unknown | blocking | Track Century rep-rate progression; no external source can close this gap |
+| 3 | Cathode lifetime under reactor conditions (neutron flux + erosion + 10 Hz cycling) | S2, S3 | truly-unknown | blocking | No analogue exists; requires Zap experimental data |
+| 4 | Pulsed power system cost (capacitor count, stored energy, unit price at volume) | S5b | proprietary | important | OSTI pulsed-power roadmap provides generic capacitor costs; Zap-specific data needed |
+| 5 | TBR validated by detailed neutronics (current value of ~1.1 from "initial calculations") | S3 | not-yet-sourced | important | Request Monte Carlo neutronics study (MCNP/Serpent) from Zap or independent analysis |
+| 6 | Ion temperature confirmation on FuZE-3 (Ti ≈ Te assumption not directly measured) | S2, S3 | truly-unknown | important | Await peer-reviewed FuZE-3 publication |
+| 7 | LiPb operating temperature (inlet/outlet) and thermal cycle specification | S5 | not-yet-sourced | important | Required for thermal efficiency estimate; could be derived from LiPb thermodynamics |
+| 8 | Cathode material specification | S3, S4 | proprietary | nice-to-have | Zap has not disclosed; arc smelting analogy suggests graphite but not confirmed |
+| 9 | Structural material for core tank (material, nuclear-grade requirements) | S4 | not-yet-sourced | nice-to-have | LiPb compatibility studies suggest ferritic-martensitic steels or Hastelloy |
+| 10 | Multi-module plant configuration details (shared infrastructure, N × 50 MWe scaling) | S5 | truly-unknown | nice-to-have | No published plant-level layout |
 
----
+## 7. Family-Delta vs Comparables
 
-## Section 7: Cross-Concept Notes
+No comparable concept in the corpus for this design point.
 
-**Reused from 21-spherical-tokamak-hts:**
-- Tritium supply chain analysis (D-T startup inventory, CANDU production constraint, global Li-6 enrichment capacity) applies without modification to the SFS Z-pinch. Both are D-T concepts targeting TBR just above 1.0.
-- Recirculating power framework (definition, impact on LCOE denominator, sensitivity to Q) is structurally identical. For the ST-HTS, recirculating power is dominated by ECRH; here it is dominated by pulsed power driver.
-- Steam Rankine as baseline thermal cycle, with tritium permeation through heat exchanger walls as a design concern, is shared.
+The SFS Z-pinch is the only self-confined, pulsed, magnet-free, electrically-driven MFE concept in the portfolio. Its nearest conceptual neighbors would be:
 
-**Key divergences from ST-HTS:**
-- **No HTS magnets**: The dominant capital cost driver for the ST-HTS (and all compact tokamak variants) is entirely absent in the Z-pinch. This is the single largest structural difference in cost architecture. The Z-pinch substitutes pulsed power driver (capacitors, switches, PFNs) as the dominant capital item.
-- **No cryogenic plant**: No liquid helium, no cold mass, no quench protection systems. Simplifies plant design and eliminates a low-TRL-in-fusion subsystem.
-- **LiPb as first wall (not separate blanket)**: In the ST-HTS, a separate outboard-only liquid Li blanket sits behind a plasma-facing first wall material. In the Z-pinch, LiPb is simultaneously the electrode, first wall, blanket, and shield. This is more elegant but means any blanket failure mode (flow interruption, LiPb contamination) directly disrupts plasma operation.
-- **Pulsed operation regime**: Both concepts are pulsed, but the regimes are completely different. ST-HTS pulses are 15+ minutes with inductive current drive. Z-pinch pulses are 200 µs at 10 Hz. The thermal energy storage and grid integration challenge for the Z-pinch is far more aggressive — 100 ms between pulses rather than minutes.
-- **Modularity**: The Z-pinch commercial plant is explicitly multi-module (50 MWe/module, multiple modules per plant). The ST-HTS is a single-unit design at 450–750 MWe net. Multi-module architecture improves O&M flexibility but introduces coordination complexity and common-mode failure risk.
-- **Regulatory pathway**: SFS Z-pinch geometry and pulsed power driver have no licensed precedents. The novel first-wall design (LiPb flowing electrode) and the absence of external containment magnets may require new licensing frameworks. This is a shared challenge with all private fusion ventures but is more acute for a design that deviates more from the ITER reference pathway.
+- **MagLIF (Pacific Fusion)**: Shares the pulsed-power-driven architecture and liquid-wall concept, but MagLIF uses Z-machine-class drivers at 60+ MA with GJ-class yields, external magnetization (or self-magnetizing targets), and optional laser preheat. The SFS Z-pinch operates at much lower current (1.2–1.5 MA), much lower yield per pulse (19 MJ), and much higher rep rate (10 Hz vs. ~1 Hz), with no magnets and no laser. The economic tradeoff is fundamentally different: MagLIF bets on high yield per shot to amortize driver cost; Z-pinch bets on high rep rate from a simpler, cheaper driver.
 
----
+- **General Fusion (MTF Pneumatic Compression)**: Shares the liquid-metal wall concept and pulsed operation, but uses mechanical compression of a magnetized plasma rather than electrical current. The Z-pinch eliminates the mechanical compression system entirely.
 
-## Section 8: Sources
+Without an approved comparable in the corpus, no quantitative family-delta can be articulated. The qualitative positioning is: the SFS Z-pinch trades physics performance per pulse for engineering simplicity and high capital utilization through rep rate, with the absence of magnets, lasers, and cryogenics as the central cost thesis.
 
-1. **Thompson, Levitt, Nelson, Shumlak — "Engineering Paradigms for SFS Z-Pinch Fusion Energy" (FST, 2023)**
-   - Primary engineering reference for reactor concept, plasma parameters, blanket design, driver efficiency, and Q projections
-   - `/knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/iter-01/sources/engineering-paradigms-paper-summary.md`
+## 8. Sources
 
-2. **Zap Energy — Century Demo System (FST, 2025 / press release)**
-   - Commercial architecture (modular 50 MWe, double-decker bus scale), Century engineering milestones, liquid metal integration, electrode durability program
-   - `/knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/iter-01/sources/century-demo-system.md`
+1. **Thompson, Levitt, Nelson, Shumlak, "Engineering Paradigms for Sheared-Flow-Stabilized Z-Pinch Fusion Energy," FST 79:8, 1051–1058 (2023)**
+   Path: `knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/iter-01/sources/engineering-paradigms-paper-summary.md`
+   Contribution: Primary source for the commercial design point — plasma parameters at each development step (Table I), core geometry, LiPb blanket concept, drive efficiency, comparative analysis vs. tokamaks and ICF. The only published peer-reviewed paper describing a SFS Z-pinch power plant concept.
 
-3. **Zap Energy — FuZE-3 Gigapascal Results (Nov 2025)**
-   - Latest plasma performance data: 830 MPa electron, 1.6 GPa total; 3–5 × 10²⁴ m⁻³ density; Te > 1 keV; three-electrode architecture
-   - `/knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/iter-02/sources/fuze-3-gigapascal-results-2025.md`
+2. **Century Demo System Press Release (Zap Energy, October 2024)**
+   Path: `knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/iter-01/sources/century-demo-system.md`
+   Contribution: 50 MWe module output figure, Century operating parameters (100 kW input, 500 kA, 0.2 Hz, 1000+ shots), multi-module plant architecture concept, liquid-metal wall testing milestone.
 
-4. **FuZE-Q and FuZE-3 Overview**
-   - FuZE device series specs and neutron yield context; FuZE-3 design rationale (three electrodes for independent compression/acceleration)
-   - `/knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/iter-01/sources/fuze-q-and-fuze-3.md`
+3. **FuZE-3 Gigapascal Results (Zap Energy press release, November 2025)**
+   Path: `knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/iter-02/sources/fuze-3-gigapascal-results-2025.md`
+   Contribution: Latest experimental performance — 830 MPa electron pressure, 3–5 × 10²⁴ m⁻³ density, >1 keV Te. Three-electrode architecture for independent acceleration/compression control.
 
-5. **Zap Energy — How It Works (website)**
-   - Commercial parameters (D-T fuel, 10 Hz, no-magnet cost claims, LiPb wall description)
-   - `/knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/iter-01/sources/zap-energy-website-how-it-works.md`
+4. **FuZE-Q and FuZE-3 Overview (Zap Energy press release)**
+   Path: `knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/iter-01/sources/fuze-q-and-fuze-3.md`
+   Contribution: FuZE-3 experimental results, three-electrode design rationale, qualitative cost positioning claims.
 
-6. **Century and FuZE-A Updates (2025)**
-   - Parallel physics/engineering strategy; Century integrates repetitive pulsed power, high-duty-cycle cathodes, and liquid metal walls; FuZE-A as next device
-   - `/knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/iter-02/sources/century-and-fuze-a-updates-2025.md`
+5. **Curry et al., "Challenges and Gaps in the Development of Pulsed Power for Fusion Applications," LLNL-JRNL-2001600 (August 2025)**
+   Path: `knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/iter-03/sources/osti-servlets-purl-2588719/output.md`
+   Contribution: Capacitor supply-chain constraints (125–250 years to build 150 plants' worth at current manufacturing capacity), component lifetime requirements (10⁶–10⁹ shots), Zap-specific voltage range (50–200 kV), labor cost dominance in capacitor manufacturing.
 
-7. **Phase 1a Dossier — Sheared-Flow Stabilized Z-Pinch**
-   - High-confidence taxonomy classification; MFE re-classification rationale; energy capture and operational mode cross-checking
-   - `/knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/dossier.md`
+6. **Levitt, "Progress Towards Commercial Fusion..." APS DPP 2025 Abstract**
+   Path: `knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/iter-02/sources/century-and-fuze-a-updates-2025.md`
+   Contribution: Current program structure (FuZE-3, FuZE-Q, FuZE-A, Century), acknowledgment that physics basis and scaling laws are still being determined.
 
-8. **D1+ Analysis: Spherical Tokamak - HTS (prior approved analysis)**
-   - Cross-concept reference for tritium supply chain, recirculating power framework, steam Rankine assumption, and pulsed operation LCOE challenges
-   - `/exploration/concept_analysis/analyses/21-spherical-tokamak-hts/analysis.md`
+7. **Zap Energy Website — How It Works**
+   Path: `knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/iter-01/sources/zap-energy-website-how-it-works.md`
+   Contribution: Qualitative concept description, 10 Hz target, no-magnets/no-lasers architectural claim.
 
-9. **OSTI — "Challenges and Gaps in Pulsed Power for Fusion" (LLNL-JRNL-2001600, 2025)**
-   - Quantitative supply chain constraints: 10k–216k capacitors/plant, 4–6 year lead times, 125–250 year fleet buildout timeline; component lifetime gap (10⁴–10⁵ demonstrated vs. 10⁸–10⁹ required); switching technology capability gap (SiC at 6.5–15 kV vs. 50–200 kV Z-pinch requirement); 10–20 year maturation roadmap
-   - `/knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/iter-03/sources/osti-servlets-purl-2588719.md`
+8. **Dossier — Sheared-Flow Stabilized Z-Pinch (D-T)**
+   Path: `knowledge/concept_research/15-sheared-flow-stabilized-z-pinch/dossier.md`
+   Contribution: Consolidated differentiation table values with confidence assessments, source index, key references.
+
+9. **Forbes et al., "Progress Toward a Compact Fusion Reactor Using the Sheared-Flow-Stabilized Z-Pinch," FST 75:7, 599 (2019)**
+   Referenced but not directly available as an extracted source. Cited in Thompson et al. (2023) for TBR calculations and Q > 10 projections.

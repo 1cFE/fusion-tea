@@ -1,12 +1,13 @@
-# Assessment: Laser ICF - Nanostructured Target (p-B11)
+# Assessment: Laser ICF Nanostructured Target (Marvel Fusion)
 
-You are evaluating a D1+ concept analysis for quality of framing, completeness, and numerical plausibility relative to the analysis goals.
+You are evaluating a D1+ concept analysis (and its model setup, if present) for
+design-point coherence, override discipline, family-delta concreteness, and
+numerical plausibility — against the new pipeline contract.
 
 ## Files to Read
 
 ### Analysis
-Read this file completely:
-`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/23-laser-icf-nanostructured-target/analysis.md`
+Read this file completely: `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\23-laser-icf-nanostructured-target\analysis.md`
 
 ### Analysis Goals
 
@@ -15,245 +16,291 @@ Read this file completely:
 These are the objectives the analysis agent works toward. Every section of the
 analysis should contribute to answering these questions.
 
-1. **Concept Positioning**: How does this concept relate to and compare with
-   other fusion approaches? What family does it belong to, and what are the
-   nearest neighbors?
+**What is already fixed upstream (do NOT re-decide):** the concept's confinement
+family, its 1costingFE archetype, the fixed list of comparable concepts, and the
+named design point (plant name, maturity, native net-electric power `P_native`,
+and grounding confidence) are all determined by the upstream tables and arrive
+through the analysis frontmatter. They are inputs, not outputs. Your job is not
+to choose a family, a nearest neighbour, or a plant — it is to *articulate the
+delta* against the fixed comparables and to *extract and account for* the design
+point you are given.
 
-2. **Key Differentiators**: What are the key differences from the mainstream
-   approach (conventional tokamak)? What is novel, what is borrowed, what is
-   shared?
+1. **Family-Delta Articulation**: Given the fixed comparables, what does this
+   design point do differently, and how does that difference move cost? Name the
+   specific subsystem, the direction of the cost effect (advantage / penalty /
+   neutral), and the magnitude where the data supports it. "It is a tokamak" is
+   not a delta; "its all-REBCO TF coils replace the LTS magnets the comparable
+   prices at $X/kg" is.
 
-3. **TEA Implications**: How do those differences affect techno-economic
-   analysis? Which differences create cost advantages, which create cost
-   penalties, and which are cost-neutral?
+2. **Design-Point Parameter Extraction**: Extract the complete quantitative
+   description (geometry, physics, performance) of the *named* design point at
+   its *native* scale. Every LCOE-relevant parameter you record must describe
+   that one plant — not a different machine, not a different power level, not a
+   roadmap aspiration.
 
-4. **Modeling Approach**: What is the right way to model those differences?
-   What are the key hypotheses that the cost model should test? What parameters
-   have the most leverage?
+3. **TEA Implications**: For each family-delta, state the techno-economic
+   consequence. Which differences create cost advantages, which create cost
+   penalties, which are cost-neutral, and which are simply unknown for lack of
+   data?
 
-5. **Risks and Assumptions**: Are the key risks and assumptions called out?
-   How do we capture them in the TEA — as sensitivity parameters, scenario
-   branches, or explicit flags?
+4. **Override-Candidate Discovery**: For each canonical 1costingFE account the
+   archetype touches, decide whether the dossier names a company-grounded
+   quantity, unit cost, or published dollar figure that justifies departing from
+   the library default. The library carries the default story; an override is an
+   *accountable, evidence-backed* departure from it — not a guess and not an
+   optimism adjustment.
+
+5. **Risks and Assumptions**: Are the key risks and assumptions called out, and
+   is the analysis honest about what it does not know? How should each be carried
+   into the TEA — as a sensitivity parameter, a scenario branch, or an explicit
+   data gap?
 
 
 ### Assessment Checklist
 
 # Assessment Checklist
 
-Evaluate the analysis against each criterion below. A finding means the
-analysis does not adequately address the criterion.
+Evaluate the analysis (and `model_setup.py`, when present) against each criterion
+below. A finding means the artifact does not adequately satisfy the criterion.
+Group your judgment under the five areas; emit at most 3 findings total, on the
+most impactful gaps.
 
-## Shape and Framing (Goals 1-2)
-- [ ] The analysis identifies which concept family this belongs to and names
-      the 2-3 nearest-neighbor concepts for comparison
-- [ ] Key differentiators from a conventional tokamak are explicitly listed
-      (not just implied in the narrative)
-- [ ] Novel subsystems or approaches are distinguished from borrowed/shared ones
+## 1. Design-Point Coherence
+- [ ] The top-of-body Design Point block copies the selection fields verbatim
+      from frontmatter — name, maturity, `P_native`, grounding — and the analysis
+      has **not** silently substituted a different plant or power level.
+- [ ] Every quantitative parameter in Section 5 describes that one named plant at
+      its native scale. No roadmap aspiration, no different machine, no 1 GWe
+      figure smuggled into the native parameter table.
+- [ ] `P_native` is identical across the Design Point block, Section 5, and (if
+      present) the `model_setup.py` `P_native` constant. The coherence flags
+      provided to you report cross-artifact drift — read them.
 
-## TEA Impact (Goal 3)
-- [ ] Each key differentiator has a stated cost implication (advantage, penalty,
-      or neutral with reasoning)
-- [ ] The Section 5 parameter table includes parameters for all identified
-      cost-relevant differentiators
-- [ ] CAS-level cost structure differences from the reference concept are noted
+## 2. Override Discipline
+- [ ] Every Override Candidate is a six-field entry with a **canonical** account
+      code (no invented `CAS22.1.3`-style codes).
+- [ ] Each `enabled` override is evidence-backed: `provenance` honestly reflects
+      whether the dollar figure was company-published (`direct`) or analyst-
+      assembled (`derived`), and `derived` entries show their arithmetic
+      (including any CPI factor) in `rationale`.
+- [ ] No override merely re-states a library default, and no uniform financial /
+      operating parameter (`availability`, `lifetime_yr`, `interest_rate`,
+      `inflation_rate`) appears in `spec` or the registry.
+- [ ] The same override `account` appears in the analysis Section 5b YAML and the
+      `model_setup.py` `overrides` list with the **same** `provenance` label.
 
-## Modeling Recommendations (Goal 4)
-- [ ] Section 2 identifies the 2-3 parameters with highest LCOE sensitivity
-      for this specific concept
-- [ ] The analysis states whether 1costingfe or free-form modeling is
-      appropriate and why
-- [ ] Key hypotheses are stated as testable propositions (not just open questions)
+## 3. Override Count vs. Archetype-Fit Grade
+- [ ] The count of `enabled` overrides is consistent with the concept's
+      archetype-fit grade band (the override-count rubric is given to you):
+      `High → 0–4`, `Med → 3–8`, `Low → 6–12`. A High-fit concept with many
+      enabled overrides, or a Low-fit concept with zero, is a flag. The count-vs-
+      grade check in the coherence flags reports this — corroborate it against
+      what you read.
 
-## Risk Identification (Goal 5)
-- [ ] Each key technical bet is stated with what happens if it fails
-- [ ] Assumptions unique to this concept (vs. shared fusion assumptions) are flagged
-- [ ] Section 6 gap table distinguishes blocking vs. non-blocking data gaps
+## 4. Family-Delta Concreteness
+- [ ] The family-delta prose (Section 7) compares the design point against the
+      **fixed** comparables list, not an arbitrary neighbour, and names specific
+      subsystems with a cost direction — not generic "this is novel" framing.
+- [ ] Each claimed differentiator carries a stated TEA consequence (advantage,
+      penalty, neutral, or honestly "unknown").
 
-## Modeling (Data Model Integrity)
-- [ ] If `model_setup.py` exists, its output interface is genuine: `result`
-      (costingfe) or `to_explorer_dict()` (freeform) reflects actual model
-      computations, not stub values or passthrough wrappers
-- [ ] CAS cost values are the result of parameter-driven calculations, not
-      hardcoded constants or placeholder zeros across all accounts
-- [ ] Sensitivity results (if present) show non-trivial variation — at least
-      3 parameters have |elasticity| > 0.01
+## 5. Two-Knob Projection & Model Integrity
+- [ ] If `model_setup.py` exists: it uses the three-forward helper form — a
+      mandatory `generic = generic_reference(...)` line plus
+      `native, result_1gw = run_native_and_1gw(...)`, with `model`, `generic`,
+      `native`, `result_1gw` at module level — not an inline two-knob `forward()`.
+- [ ] `native` / `result_1gw` reflect real parameter-driven computation (CAS
+      values are not hardcoded constants or all-zero placeholders); sensitivity
+      results, if present, show non-trivial variation.
+- [ ] The model's LCOE is plausible (right order of magnitude) for this concept
+      type, and its dominant cost drivers match the analysis narrative's emphasis.
 
+You are NOT checking formatting, style consistency, or template-structure
+compliance. Focus on coherence, accountability, and numerical plausibility.
 
-
-## Concept Landscape
-
-Use this to verify nearest-neighbor selections. Check that named neighbors are
-structurally appropriate given the concept's taxonomy properties.
-
-## Concept Landscape (37 concepts)
-
-Use this catalog for nearest-neighbor identification and cross-concept positioning.
-Approved concepts have full analyses available; I{N} indicates N completed iterations.
-
-### Approved (primary cross-reference pool)
-
-| ID | Concept Name | Company | Confinement Family | MFE Topology | IFE Driver | MIF Method | Non-Standard Mechanism | Tokamak Shape | Stellarator Type | Laser Approach | Fuel | Primary Heating | Energy Capture | Plasma State | Magnet Type | Tritium Breeding | Neutron Management | Operation Mode | Repetition Rate | Driver Technology | Overall Confidence | Iterations | Extracted |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 21-spherical-tokamak-hts | Spherical Tokamak - HTS | Tokamak Energy | MFE | Tokamak | N/A | N/A | N/A | Spherical | N/A | N/A | D-T | RF (ECRH) | Thermal (unspecified) | Burning | HTS (wound) | Liquid Li blanket | Integrated blanket/shield | Quasi-steady | N/A | HTS magnets (REBCO, 5.25 T on-axis) | medium | iter-1/INTERRUPTED | E |
-
-### In Progress (by maturity)
-
-| ID | Concept Name | Company | Confinement Family | MFE Topology | IFE Driver | MIF Method | Non-Standard Mechanism | Tokamak Shape | Stellarator Type | Laser Approach | Fuel | Primary Heating | Energy Capture | Plasma State | Magnet Type | Tritium Breeding | Neutron Management | Operation Mode | Repetition Rate | Driver Technology | Overall Confidence | Iterations | Extracted |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 07-maglif | MagLIF (D-T) | Pacific Fusion, Fuse Energy Technologies | MIF | N/A | N/A | Magnetized target | N/A | N/A | N/A | N/A | D-T | Pulsed power implosion | Thermal (unspecified) | Compressed | Pulsed EM | TBD | Integrated blanket/shield | Pulsed | Sub-Hz | Pulsed power (Z-machine class) | medium-high | iter-9/FAIL (3 findings) | E |
-| 09-qi-stellarator-hts | QI Stellarator - HTS | Proxima Fusion | MFE | Stellarator | N/A | N/A | N/A | N/A | QI | N/A | D-T | RF (ECRH) | Thermal (unspecified) | Burning | HTS (3D stellarator) | LiPb blanket | Integrated blanket/shield | Steady-state | N/A | 3D HTS stellarator coils (REBCO, 20 T) | medium | iter-9/FAIL (3 findings) | E |
-| 01-hts-compact-tokamak | HTS Compact Tokamak | Commonwealth Fusion Systems | MFE | Tokamak | N/A | N/A | N/A | Compact | N/A | N/A | D-T | RF (ICRH) | Thermal (steam) | Burning | HTS (wound) | FLiBe blanket | Integrated blanket/shield | Quasi-steady | N/A | HTS magnets (REBCO, 20 T) | high | iter-7/FAIL (3 findings) | E |
-| 02-acoustic-icf-sonofusion | Acoustic ICF / Sonofusion (D-D) | Sonofusion Energy | IFE | N/A | Acoustic | N/A | N/A | N/A | N/A | N/A | D-D | Acoustic implosion | TBD | Compressed | N/A | N/A | Heavy shielding (D-D) | Pulsed | kHz | Ultrasonic transducers (acoustic cavitation) | low | iter-6/FAIL (3 findings) | E |
-| 17a-laser-icf-hybrid-drive | Laser ICF - Hybrid Direct Drive (D-T) | Xcimer Energy | IFE | N/A | Laser | N/A | N/A | N/A | N/A | Hybrid drive | D-T | Laser (direct drive) | Thermal (unspecified) | Compressed | N/A | FLiBe blanket | Integrated blanket/shield | Pulsed | Sub-Hz | Excimer laser (KrF, 248 nm, 10+ MJ, ASPEN architecture) | medium-high | iter-6/FAIL (1 findings) | E |
-| 13-electrostatic-hybrid | Electrostatic Hybrid (D-T) | Avalanche Energy | Non-Standard | N/A | N/A | N/A | Electrostatic | N/A | N/A | N/A | D-T | Electrostatic acceleration | Thermal (unspecified) | Non-burning | Electrostatic | TBD | Heavy shielding (14 MeV) | Steady-state | N/A | High-voltage electrostatic cathode (300 kV) with E×B electron co-confinement | medium-low | iter-5/FAIL (3 findings) | E |
-| 22-projectile-icf | Projectile ICF (D-T) | First Light Fusion, NearStar Fusion | IFE | N/A | Projectile | N/A | N/A | N/A | N/A | N/A | D-T | Projectile impact | Thermal (steam) | Compressed | N/A | Liquid Li blanket | Integrated blanket/shield | Pulsed | Sub-Hz | Electromagnetic gun | medium-high | iter-5/PASS | E |
-| 08-frc-w-direct-conversion | FRC w/ Direct Conversion | Helion Energy | MIF | N/A | N/A | FRC compression | N/A | N/A | N/A | N/A | D-He3 | Magnetic compression | Direct (inductive) | Transient | Pulsed EM | Self-bred (DD side) | Reduced (D-He3) | Pulsed | ~1 Hz | Pulsed EM coils (capacitor bank) | high | iter-4/FAIL (3 findings) | E |
-| 12-levitated-dipole | Levitated Dipole (D-T) | OpenStar Technologies | MFE | Dipole | N/A | N/A | N/A | N/A | N/A | N/A | D-T | RF (ICRH) | Thermal (unspecified) | Sustained | HTS (levitated dipole) | Solid ceramic breeder (HCPB) | Integrated blanket/shield | Quasi-steady | N/A | Levitated HTS dipole coil (REBCO, 23 T) with on-board flux pump | high | iter-4/FAIL (3 findings) | E |
-| 35-polomac-magnetic-confinement | PoloMac Magnetic Confinement | Deutelio | MFE | Dipole | N/A | N/A | N/A | N/A | N/A | N/A | D-D | Unknown | Thermal (unspecified) | Confined | Resistive | N/A | Heavy shielding (D-D) | Steady-state | N/A | Internal dipole coil with magnetic tunnel supports | medium-low | iter-4/FAIL (3 findings) | E |
-| 10-large-scale-stellarator | Large-Scale Stellarator | Gauss Fusion | MFE | Stellarator | N/A | N/A | N/A | N/A | QI | N/A | D-T | RF (ECRH) | Thermal (unspecified) | Burning | LTS+HTS | Li blanket (unspecified) | Heavy shielding (14 MeV) | Steady-state | N/A | Non-planar modular SC coils (LTS+HTS, 40 coils, 6T axis / 12-13T peak, demountable) | medium | iter-3/FAIL (3 findings) | E |
-| 14-magnetized-target-fusion-pneumatic-compression | Magnetized Target Fusion - Pneumatic Compression (D-T) | General Fusion | MIF | N/A | N/A | Magnetized target | N/A | N/A | N/A | N/A | D-T | Mechanical compression | Thermal (steam) | Compressed | Self-confined | Liquid metal wall | Integrated blanket/shield | Pulsed | ~1 Hz | Pneumatic pistons + liquid metal | high | iter-3/PASS | E |
-| 15-sheared-flow-stabilized-z-pinch | Sheared-Flow Stabilized Z-Pinch | Zap Energy | MFE | Open/Linear | N/A | N/A | N/A | N/A | N/A | N/A | D-T | Ohmic (self-pinch) | Thermal (steam) | Pinch | Self-confined | LiPb blanket | Integrated blanket/shield | Pulsed | ~10 Hz | Pulsed power (sheared-flow Z-pinch) | high | iter-3/FAIL (3 findings) | E |
-| 16-muon-catalyzed-fusion | Muon-Catalyzed Fusion (D-T) | Acceleron Fusion | Non-Standard | N/A | N/A | N/A | Muon-catalyzed | N/A | N/A | N/A | D-T | Muon catalysis | Thermal (unspecified) | N/A | N/A | TBD | Heavy shielding (14 MeV) | Steady-state | N/A | Muon source (accelerator) | medium | iter-3/FAIL (3 findings) | E |
-| 17b-laser-icf-fast-ignition | Laser ICF - Fast Ignition (D-T) | Focused Energy | IFE | N/A | Laser | N/A | N/A | N/A | N/A | Fast ignition | D-T | Laser (fast ignition) | Thermal (steam) | Compressed | N/A | Li blanket (unspecified) | Integrated blanket/shield | Pulsed | ~10 Hz | DPSSL (Nd:glass, 527 nm) + petawatt CPA ignition laser | medium | iter-3/FAIL (3 findings) | E |
-| 18-p-b11-frc | p-B11 FRC | TAE Technologies | MFE | Compact Toroid | N/A | N/A | N/A | N/A | N/A | N/A | p-B11 | NBI | Thermal (steam) | Sustained | Resistive | N/A | Minimal (aneutronic) | Steady-state | N/A | Neutral beam injection (high-energy, tangential) | high | iter-3/FAIL (3 findings) | E |
-| 20a-type-one-stellarator | QI Modular HTS Stellarator - Infinity Two | Type One Energy | MFE | Stellarator | N/A | N/A | N/A | N/A | Modular | N/A | D-T | RF (ECRH) | Thermal (steam) | Burning | HTS (3D stellarator) | Solid ceramic breeder (HCPB) | Integrated blanket/shield | Steady-state | N/A | Modular HTS stellarator coils (REBCO, 9 T) | high | iter-3/FAIL (3 findings) | E |
-| 20b-renaissance-stellarator | Compact Liquid-Wall HTS Stellarator | Renaissance Fusion | MFE | Stellarator | N/A | N/A | N/A | N/A | Modular | N/A | D-T | NBI | Thermal (sCO2) | Burning | HTS (3D stellarator) | Liquid metal wall | Integrated blanket/shield | Steady-state | N/A | Laser-patterned HTS film on cylinders (REBCO, 10-15 T) | high | iter-3/FAIL (3 findings) | E |
-| 24-dense-plasma-focus | Dense Plasma Focus (p-B11) | LPPFusion | Non-Standard | N/A | N/A | N/A | Plasma focus | N/A | N/A | N/A | p-B11 | Electromagnetic pinch (DPF) | Direct (charged particle) | Pinch | Self-confined | N/A | Minimal (aneutronic) | Pulsed | High (>10 Hz) | Pulsed coaxial electrodes (capacitor bank, 2.7 MA) | medium | iter-3/FAIL (3 findings) | E |
-| 28-hts-tokamak-full-hts | HTS Tokamak - Full HTS | Energy Singularity | MFE | Tokamak | N/A | N/A | N/A | Compact | N/A | N/A | D-T | RF (ICRH) | Thermal (unspecified) | Burning | HTS (wound) | TBD | Heavy shielding (14 MeV) | Steady-state | N/A | HTS magnets (REBCO, 25 T) | medium | iter-3/FAIL (3 findings) | E |
-| 29-negative-triangularity-tokamak | Negative Triangularity Tokamak | Firefly Fusion | MFE | Tokamak | N/A | N/A | N/A | Negative triangularity | N/A | N/A | D-T | RF (ECRH) | Thermal (unspecified) | Burning | HTS (wound) | TBD | Integrated blanket/shield | Quasi-steady | N/A | HTS magnets + NT plasma shaping | medium | iter-3/FAIL (7 findings) | E |
-| 30-laser-icf-nif-commercialization | Laser ICF - NIF Commercialization (D-T) | Inertia Enterprises | IFE | N/A | Laser | N/A | N/A | N/A | N/A | Indirect drive | D-T | Laser (indirect drive) | Thermal (steam) | Compressed | N/A | Liquid Li blanket | Integrated blanket/shield | Pulsed | ~10 Hz | Diode-pumped solid-state laser (DPSSL, 10 MJ, ~1000 beamlines) | medium-high | iter-3/FAIL (15 findings) | E |
-| 33-state-backed-tokamak-best | State-Backed Tokamak - BEST | Neo Fusion | MFE | Tokamak | N/A | N/A | N/A | Standard | N/A | N/A | D-T | RF + NBI | Thermal (unspecified) | Burning | LTS+HTS | TBD | Heavy shielding (14 MeV) | Quasi-steady | N/A | LTS+HTS magnets (Nb3Sn/YBCO, 6.15T) + multi-method H&CD (50 MW) | medium | iter-3/FAIL (3 findings) | E |
-| 34-compact-spherical-tokamak-india | Compact Spherical Tokamak - India | Pranos Fusion | MFE | Tokamak | N/A | N/A | N/A | Spherical | N/A | N/A | D-T | TBD | Thermal (unspecified) | Burning | Unknown | TBD | Heavy shielding (14 MeV) | Steady-state | N/A | Unknown | low | iter-3/FAIL (3 findings) | E |
-| 03-laser-icf-liquid-jet-target | Laser ICF - Liquid Jet Target (D-D) | Cortex Fusion Systems | IFE | N/A | Laser | N/A | N/A | N/A | N/A | Liquid jet | D-D | Laser (ultrashort pulse) | TBD | Compressed | N/A | N/A | Heavy shielding (D-D) | Pulsed | kHz | Femtosecond laser + plasmonic nanoshell targets | low | iter-1/INTERRUPTED | E |
-| 04-laser-icf | Laser ICF - p-B11 Fast Ignition | HB11 Energy | IFE | N/A | Laser | N/A | N/A | N/A | N/A | Fast ignition | p-B11 | Laser (fast ignition) | Thermal (steam) | Compressed | N/A | N/A | Minimal (aneutronic) | Pulsed | ~1 Hz | Petawatt ps CPA laser + laser-driven kT field | medium | iter-1/INTERRUPTED | E |
-| 05-planar-coil-stellarator | Planar Coil Stellarator | Thea Energy | MFE | Stellarator | N/A | N/A | N/A | N/A | Planar coil | N/A | D-T | RF (ECRH) | Thermal (steam) | Burning | HTS (planar array) | LiPb blanket | Integrated blanket/shield | Steady-state | N/A | Planar HTS coil array (12 encircling + 324 shaping, 20 T, software-controlled) | high | iter-1/INTERRUPTED | E |
-| 06-magnetic-mirror | Magnetic Mirror (p-B11) | Pale Blue Fusion | MFE | Open/Linear | N/A | N/A | N/A | N/A | N/A | N/A | p-B11 | RF (ICRH) | Direct (charged particle) | Sustained | TBD | N/A | Minimal (aneutronic) | Steady-state | N/A | Centrifugal mirror with alpha channeling (RF waves, E×B rotation, ponderomotive barriers) | medium | iter-1/INTERRUPTED | E |
-| 11-magnetic-mirror | Magnetic Mirror (D-T) | Realta Fusion | MFE | Open/Linear | N/A | N/A | N/A | N/A | N/A | N/A | D-T | RF + NBI | Hybrid (thermal + direct) | Sustained | HTS (wound) | Li blanket (unspecified) | Integrated blanket/shield | Steady-state | N/A | HTS mirror magnets (REBCO, 17+ T) + NBI + ECH | medium-high | iter-1/INTERRUPTED | E |
-| 19-orbital-levitated-dipole | Orbital Levitated Dipole (D-He3) | Zephyr Fusion | MFE | Dipole | N/A | N/A | N/A | N/A | N/A | N/A | D-He3 | RF (ECRH) | Direct (charged particle) | Sustained | HTS (levitated dipole) | N/A | Reduced (D-He3) | Steady-state | N/A | Orbital HTS dipole coil (meter-scale, Falcon 9 deployable) | low | iter-1/INCOMPLETE |  |
-
-### Gap-Checked
-
-| ID | Concept Name | Company | Confinement Family | MFE Topology | IFE Driver | MIF Method | Non-Standard Mechanism | Tokamak Shape | Stellarator Type | Laser Approach | Fuel | Primary Heating | Energy Capture | Plasma State | Magnet Type | Tritium Breeding | Neutron Management | Operation Mode | Repetition Rate | Driver Technology | Overall Confidence | Extracted |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 25-heavy-ion-beam-icf | Heavy Ion Beam ICF (D-T) | Intensity Energy | IFE | N/A | Heavy ion beam | N/A | N/A | N/A | N/A | N/A | D-T | Heavy ion beam | Thermal (steam) | Compressed | N/A | Li blanket (unspecified) | Integrated blanket/shield | Pulsed | ~10 Hz | Linear induction accelerator | medium |  |
-| 26-laser-icf-indirect-drive | Laser ICF - Indirect Drive (D-T) | Inertia Enterprises | IFE | N/A | Laser | N/A | N/A | N/A | N/A | Indirect drive | D-T | Laser (indirect drive) | Thermal (steam) | Compressed | N/A | Liquid Li blanket | Integrated blanket/shield | Pulsed | ~10 Hz | DPSSL (Thunderwall, 10 kJ x 1000+ beamlines, 10 Hz, 3w UV) | medium-high |  |
-| 27-polywell | Polywell (D-T) | EMC2 | Non-Standard | N/A | N/A | N/A | Electrostatic | N/A | N/A | N/A | D-T | Electrostatic acceleration | Thermal (unspecified) | Confined | Resistive | TBD | Heavy shielding (14 MeV) | Steady-state | N/A | Polyhedral magnetic cusp coils + electron beam injection | medium |  |
-| 31-laser-icf-oec-architecture | Laser ICF - OEC Architecture (D-T) | Blue Laser Fusion (BLF) | IFE | N/A | Laser | N/A | N/A | N/A | N/A | Direct drive | D-T | Laser (direct drive) | Hybrid (thermal + direct) | Compressed | N/A | LiPb blanket | Integrated blanket/shield | Pulsed | ~10 Hz | CBC fiber laser + OEC, 5 MJ UV | medium-high |  |
-| 32-laser-icf-french-national | Laser ICF - French National Direct Drive (D-T) | GenF Systems | IFE | N/A | Laser | N/A | N/A | N/A | N/A | Direct drive | D-T | Laser (direct drive) | Thermal (unspecified) | Compressed | N/A | Liquid Li blanket | Integrated blanket/shield | Pulsed | ~10 Hz | Diode-pumped solid-state laser (DPSSL) | medium |  |
-| 36-helical-coil-stellarator | Helical Coil Stellarator | Helical Fusion | MFE | Stellarator | N/A | N/A | N/A | N/A | Helical coil | N/A | D-T | RF (ECRH) | Thermal (sCO2) | Burning | HTS (3D stellarator) | Liquid metal wall | Integrated blanket/shield | Steady-state | N/A | Continuous helical HTS coils (REBCO WISE conductor, 8 T) + 250 GHz CW gyrotrons | high |  |
-
-
-## Instructions
-
-1. Read the analysis completely
-2. Evaluate against each checklist criterion
-3. Identify the most significant gaps — at most 3 findings
-4. For each finding, explain what is insufficient and what should change
-5. If the analysis adequately addresses all goals, return PASS
-
-### Finding Categories
-
-Each finding must include a `Category` field:
-- **`analysis`** — the fix requires changes to the analysis text (Section 2 framing,
-  Section 5 parameter tables, Section 7 differentiator discussion, etc.)
-- **`model`** — the fix requires changes to the model code or parameters:
-  sensitivity sweeps, scenario branches, parameter values in model_setup.py,
-  model output formatting, or computational methodology
-
-A finding is `model` when the recommendation says to change what the model
-*computes or sweeps*. A finding is `analysis` when the recommendation says
-to change what the analysis *says or frames*.
-
-When a finding touches both analysis and model (e.g., "add parameter to
-Section 5 table AND to sensitivity sweep"), tag the category that best
-describes the finding's primary focus. Both the analysis agent and the
-model agent receive all findings regardless of category — the tag helps
-them prioritize, but does not gate visibility.
 
 
 ## Model Output
 
-The concept also has a quantitative LCOE model. The model output is at:
-`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/23-laser-icf-nanostructured-target/iter-1/model_output.txt`
+The concept has a quantitative LCOE model. Its output is at: `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\23-laser-icf-nanostructured-target\iter-1\model_output.txt`
 
 Evaluate whether:
 1. The model's assumptions and parameter values are consistent with the analysis.
-2. The LCOE result is plausible for this concept type (order of magnitude).
+2. The 1 GWe projection LCOE (`result_1gw`) is plausible (order of magnitude) for
+   this concept type, and the native LCOE is coherent with it.
 3. Key cost drivers in the model match the analysis narrative's emphasis.
-Note any discrepancies in your findings.
 
 
-## Scope
+## Coherence Flags (computed — interpret, do not just echo)
 
-Focus on whether the analysis captures the **shape** of the concept:
-positioning, differentiators, TEA implications, modeling approach, and risks.
+The pipeline ran cross-artifact coherence checks against this iteration's
+artifacts. Read them and factor them into your findings. A `FLAG:` line is a
+real discrepancy to investigate; a clean line confirms a check passed.
 
-Additionally, check **numerical plausibility**:
-- Are parameter values the right order of magnitude for this concept type?
-- Does the model output LCOE align with the analysis narrative's claims?
-- Are physical parameters (temperatures, pressures, efficiencies) within
-  physically plausible ranges for the stated technology?
+- 23-laser-icf-nanostructured-target: P_native coherent at 100 MWe (3-leg)
+- Override count (8) consistent with Low archetype fit (expected 6–12)
 
-You are NOT checking formatting, style consistency, or template structure compliance.
+## Override-Count Rubric
+
+Archetype-Fit is Low → expect 6–12 enabled overrides. Flag in your output if your count falls outside this band.
+
+Check the count of `enabled` overrides (in `analysis.md` Section 5b, and in
+`model_setup.py` if present) against this band. A High-fit concept with many
+enabled overrides, or a Low-fit concept with none, is a finding unless the
+evidence clearly justifies it.
+
+
+## Concept Landscape
+
+The comparables for this concept are fixed upstream. Use the landscape only to
+sanity-check that the family-delta prose engages the *fixed* comparables, not an
+arbitrary neighbour.
+
+## Concept Landscape (39 concepts)
+
+Use this catalog for nearest-neighbor identification and cross-concept positioning.
+Approved concepts have full analyses available; I{N} indicates N completed iterations.
+
+
+### In Progress (by maturity)
+
+| Concept Name | Company | Confinement Family | Iterations | Extracted |
+|---|---|---|---|---|
+| Acoustic ICF (Sonofusion) | Sonofusion Energy | IFE | iter-6/FAIL (3 findings) | E* |
+| Orbital Levitated Dipole (Zephyr Energy) | Zephyr Fusion | MFE | iter-5/FAIL (3 findings) | E* |
+| Muon-Catalyzed Fusion (Acceleron Fusion) | Acceleron Fusion | OTHER | iter-3/FAIL (3 findings) | E* |
+| Laser ICF Hybrid Drive (Xcimer Energy) | Xcimer Energy | IFE | iter-3/PASS | E* |
+| Laser ICF Fast Ignition (Focused Energy) | Focused Energy | IFE | iter-3/FAIL (3 findings) | E* |
+| Polywell (EMC2) | EMC2 | MFE | iter-3/FAIL (3 findings) | E* |
+| HTS Tokamak Full HTS | Energy Singularity | MFE | iter-3/PASS | E* |
+| Helical-Coil Stellarator (HESTIA) | Helical Fusion | MFE | iter-3/PASS | E* |
+| MTIF (Magneto-Inertial Fusion Technologies) | NearStar Fusion | MIF | iter-3/FAIL (3 findings) |  |
+| HTS Compact Tokamak (Commonwealth Fusion / ARC) | Commonwealth Fusion Systems | MFE | iter-2/FAIL (1 findings) | E* |
+| Laser ICF Liquid-Jet Target (Cortex Fusion Systems) | Cortex Fusion | IFE | iter-2/PASS | E* |
+| Renaissance Stellarator (Renaissance Fusion) | Renaissance Fusion | MFE | iter-2/PASS | E* |
+| Laser ICF OEC Architecture (BLF) | Blue Laser Fusion | IFE | iter-2/PASS | E* |
+| Spherical Tokamak CS-Free PB11 (ENN) | ENN Energy | MFE | iter-2/PASS |  |
+| MTF Pneumatic Compression (General Fusion) | General Fusion | MIF | iter-1/PASS | E* |
+| Sheared-Flow Z-Pinch (Zap Energy) | Zap Energy | MFE | iter-1/PASS | E* |
+| Spherical Tokamak HTS (Tokamak Energy) | Tokamak Energy | MFE | iter-1/INCOMPLETE | E* |
+| Projectile ICF (First Light Fusion) | First Light Fusion | IFE | iter-1/INCOMPLETE | E* |
+| Heavy-Ion Beam ICF | Intensity Energy | IFE | iter-1/PASS | E* |
+| Laser ICF Indirect Drive (Inertia Thunderwall) | Inertia Enterprises | IFE | iter-1/PASS | E* |
+| Negative-Triangularity Tokamak | Firefly Fusion | MFE | iter-1/PASS | E* |
+| Laser ICF NIF Commercialization (Focused Energy LIFE-class) | Inertia Enterprises | IFE | iter-1/PASS | E* |
+| Laser ICF French National (GenF) | GenF Systems | IFE | iter-1/PASS | E* |
+| State-Backed Tokamak (Neo / ASIPP-class) | Neo Fusion | MFE | iter-1/PASS | E* |
+| Polomac Magnetic Confinement (Deutelio) | Deutelio | MFE | iter-1/PASS | E* |
+| Particle Accelerator-Driven Fusion (SHINE-style) | SHINE Technologies | OTHER | iter-1/PASS |  |
+
+### Not Started
+
+| Concept Name | Company | Confinement Family | Extracted |
+|---|---|---|---|
+| Laser ICF (HB11 Energy) | hb11 | IFE | E* |
+| Planar-Coil Stellarator (Thea Energy) | Thea Energy | MFE | E* |
+| Magnetic Mirror (Pale Blue) | Pale Blue | MFE | E* |
+| MagLIF (Pacific Fusion) | Pacific Fusion | MIF | E* |
+| FRC w/ Direct Conversion (Helion Energy) | Helion Energy | MFE | E* |
+| QI Stellarator HTS (Proxima Fusion / Stellaris) | Proxima Fusion | MFE | E* |
+| Large-Scale Stellarator | Gauss Fusion | MFE | E* |
+| Magnetic Mirror (Realta Fusion / CoSMo) | Realta Fusion | MFE | E* |
+| Levitated Dipole (OpenStar Technologies) | OpenStar Technologies | MFE | E* |
+| Electrostatic Hybrid (Orbitron) | Avalanche Energy | MFE | E* |
+| PB11 FRC (TAE Technologies) | TAE Technologies | MFE | E* |
+| Type One Stellarator (Type One Energy) | Type One Energy | MFE | E* |
+| Dense Plasma Focus (LPP Fusion) | LPPFusion | MFE | E* |
+
+
+## Instructions
+
+1. Read the analysis completely (and the model output, if present).
+2. Evaluate against each checklist area, the coherence flags, and the override
+   rubric.
+3. Identify the most significant gaps — **at most 3 findings**.
+4. For each finding, explain what is insufficient and what should change, and tag
+   its `Category` (`analysis` or `model`) by where the fix lands.
+5. If the analysis and model adequately satisfy the contract, return `VERDICT: PASS`.
+
+You are NOT checking formatting, style consistency, or template-structure
+compliance. Focus on coherence, accountability, and numerical plausibility.
 
 ## Output
 
-Write the assessment to this file using the Write tool:
-`/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/23-laser-icf-nanostructured-target/iter-1/feedback.md`
+Write the assessment to this file using the Write tool: `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\23-laser-icf-nanostructured-target\iter-1\post_feedback.md`
 
-Use the exact format below:
+Use the exact format below.
 
 # Feedback Format
 
 Both the assessment agent and the interactive manage-concept agent produce
-feedback in this format. The analysis agent consumes it in feedback-pass mode.
+feedback in this format. The analysis agent (and, for model-category findings,
+the model-setup agent) consume it in feedback-pass mode.
+
+This format is machine-parsed by simple line-anchored scanning. Emit it exactly
+as specified — the verdict line and the finding headers are read literally.
 
 ## Structure
 
-Each feedback file contains:
-1. A verdict line: `VERDICT: PASS` or `VERDICT: FINDINGS`
-2. Zero or more findings (max 3 per assessment pass)
+Each feedback file contains, in order:
+1. A **verdict line** — a line reading exactly `VERDICT: PASS` or
+   `VERDICT: FINDINGS`, on its own line, with nothing after the token.
+   (`VERDICT: PASS — all good` is NOT accepted; put any commentary on a
+   separate line.)
+2. Zero or more findings (maximum 3 per pass).
 
 ## Finding Format
 
+Each finding is a block that begins with a `### F-N:` header (N is an integer:
+`### F-1:`, `### F-2:`, …) followed by bold-key bullet lines:
+
+```
 ### F-N: [Short title]
-- **Target:** [Section number or aspect of analysis, e.g., "Section 2" or
-  "Cross-concept comparison"]
+- **Target:** [Section or artifact the fix lands in — e.g. "Section 5b (Override
+  Candidates)" or "model_setup.py overrides list"]
 - **Category:** analysis | model
-- **Finding:** [What is insufficient, missing, or incorrectly framed — in
-  terms of shape/framing, NOT numerical accuracy]
-- **Recommendation:** [What the analysis agent should do differently —
-  specific enough to act on]
+- **Finding:** [What is insufficient, missing, or incorrectly framed]
+- **Recommendation:** [What the agent should do differently — specific enough to
+  act on without seeing your reasoning]
 - **Priority:** blocking | important | minor
+```
+
+## Category — exactly two values
+
+Each finding MUST carry a `Category` field whose value is `analysis` or `model`:
+- **`analysis`** — the fix lands in `analysis.md` (Design Point block, Section 5
+  parameters, Section 5b Override Candidates, family-delta prose, framing).
+- **`model`** — the fix lands in `model_setup.py` (the `overrides` list, the
+  `spec` dict, sweeps/scenarios, or the two-knob helper call).
+
+There is **no third category.** The new contract's cross-artifact failure modes
+route by where the fix lives:
+- `P_native` mismatch between the Design Point block and `model_setup.py` →
+  `analysis` if the analysis text is wrong, `model` if the model constant is wrong.
+- Override `provenance` drift (analysis YAML says `direct`, model says `derived`,
+  or vice-versa) → the artifact carrying the wrong label.
+- Account-namespace miss (an invented or wrong canonical code) → wherever the bad
+  code appears.
 
 ## Rules
-- Maximum 3 findings per pass (focus on the most impactful issues)
-- Each finding must include a `Category` field:
-  - `analysis` — the fix requires changes to the analysis text
-  - `model` — the fix requires changes to the model code or parameters
-    (sensitivity sweeps, scenario branches, parameter values in model_setup.py)
-- Findings must reference specific analysis goals from analysis_goals.md
-- Findings about numerical accuracy should focus on plausibility (order of
-  magnitude, physical reasonableness), not verification (re-deriving calculations
-  or matching citations to source text)
-- Each finding must be specific enough that the analysis agent can address
-  it without access to the assessment agent's reasoning
-- If the analysis adequately addresses all goals: `VERDICT: PASS`
+- Maximum 3 findings per pass — focus on the most impactful issues.
+- Findings about numbers focus on *plausibility* (order of magnitude, physical
+  reasonableness, design-point coherence), not on re-deriving calculations.
+- Each finding must be specific enough to act on without access to your reasoning.
+- If the analysis adequately addresses all goals: `VERDICT: PASS` with no findings.
 
 ## Example
 
 VERDICT: FINDINGS
 
-### F-1: Missing cost implication for direct energy conversion
-- **Target:** Section 2 (Challenges) and Section 5 (Parameters)
+### F-1: Override count exceeds the High-fit band without justification
+- **Target:** Section 5b (Override Candidates)
 - **Category:** analysis
-- **Finding:** The analysis identifies direct energy conversion as a key
-  differentiator (Goal 2) but does not state the cost implication (Goal 3).
-  No parameter row exists for direct conversion efficiency or its impact on
-  balance-of-plant costs.
-- **Recommendation:** Add a paragraph in Section 2 explaining how direct
-  conversion changes the BOP cost structure (eliminates thermal cycle but
-  adds conversion hardware). Add conversion efficiency and BOP cost delta
-  to the Section 5 parameter table.
-- **Priority:** blocking
+- **Finding:** The concept is graded High archetype-fit (expected 0–4 enabled
+  overrides) but the registry enables 7, and three of them re-state the library
+  default with no company-published quantity or unit cost in `rationale`.
+- **Recommendation:** Disable or remove the three un-evidenced overrides
+  (C220105, C220110, CAS24) so the library default stands, leaving only the
+  company-grounded departures.
+- **Priority:** important
 

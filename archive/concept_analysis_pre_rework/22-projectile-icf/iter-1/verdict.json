@@ -1,0 +1,16 @@
+{
+  "iteration": 1,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "cold_start",
+  "model_ran": false,
+  "model_ok": false,
+  "research_ran": false,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-01/sources/first-light-fusion-technology.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-01/sources/nearstar-fusion-technology.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-02/sources/first-light-flare-pivot-update.md",
+    "/home/reid/1cfe/fusion-tea/knowledge/concept_research/22-projectile-icf/iter-02/sources/nearstar-fusion-2025-update.md"
+  ],
+  "timestamp": "2026-03-28T20:50:38.155591+00:00"
+}

@@ -1,0 +1,27 @@
+proposal:
+  concept_id: 37-magnetized-target-inertial-fusion-mtif
+  design_name: "NearStar MTIF concept — lower bound of company-stated 50 MW–1 GW+ scalability range"
+  maturity_tier: paper-concept
+  grounding_confidence: low
+  p_native_mwe: 50
+  primary_sources:
+    - knowledge/concept_research/37-magnetized-target-inertial-fusion-mtif/iter-01/sources/nearstar-mtif-technical-overview.md
+    - knowledge/concept_research/37-magnetized-target-inertial-fusion-mtif/iter-01/sources/nearstar-website-summary.md
+  selection_rationale: |
+    The only electrical output figure in the entire source base is a single
+    company-stated scalability range of "50 MW to 1 GW+" from the NearStar
+    technical overview page. There is no named plant design, no published
+    whitepaper, no engineering parameters, no gain target, and no net power
+    estimate for any specific design. The 50 MWe lower bound is selected as the
+    design point because it is the most conservative and nearest-term figure in
+    the range; the 1 GW+ ceiling is a round aspirational maximum with no
+    additional grounding. Grounding confidence is low: this P_native is a
+    marketing scalability assertion, not an engineering design output — the
+    company explicitly has no published net power, gain, or capital cost
+    figures. This row exists to keep MTIF in the comparison with a full
+    asterisk; the 1 GWe LCOE projection derived from it has no physics or
+    engineering anchor and should be treated as a placeholder.
+  alternatives_considered:
+    - design: "NearStar MTIF upper-end scale (1 GW+ ceiling of same scalability claim)"
+      reason_rejected: "aspirational ceiling of a marketing range; no additional grounding over the 50 MW lower bound and less likely to represent a near-term design target"
+      sensitivity_implication: "If picked instead, P_native rises by a factor of ~20 → n_mod at 1 GWe collapses toward 1 → 1 GWe LCOE shifts dramatically down, but the figure would be even less grounded than the 50 MWe selection and represents a maximum aspiration rather than any design. Not worth probing until NearStar publishes a specific commercial plant specification."
