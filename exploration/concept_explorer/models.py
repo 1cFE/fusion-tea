@@ -141,7 +141,14 @@ class CostModelData(BaseModel):
     cas22_detail: dict[str, CASAccount]
 
     headline: HeadlineEconomics
+    # `sensitivities` holds the *analyst-applied* tornado (Bet 3) — consistent
+    # with the applied headline and the default toggle state; existing readers
+    # (validator, parameter index, tornado.js) silently become applied-based.
+    # `sensitivities_bare` is the library-bare alternate the frontend swaps to
+    # when the toggle is off. Both are honest `model.sensitivity(...)` calls;
+    # neither is derived from the other (INV-3). Equal when the registry is empty.
     sensitivities: SensitivityAnalysis | None = None
+    sensitivities_bare: SensitivityAnalysis | None = None
     params: dict[str, float] = Field(default_factory=dict)
 
     # Human-readable names for top-level and CAS22 sub-accounts
@@ -191,6 +198,7 @@ class CostModelData(BaseModel):
         cls,
         result: dict[str, Any],
         sensitivities: SensitivityAnalysis | None,
+        sensitivities_bare: SensitivityAnalysis | None = None,
     ) -> CostModelData:
         """Construct from ``dataclasses.asdict(forward_result)``.
 
@@ -297,6 +305,7 @@ class CostModelData(BaseModel):
             cas22_detail=cas22_detail,
             headline=headline,
             sensitivities=sensitivities,
+            sensitivities_bare=sensitivities_bare,
             params=params,
         )
 
@@ -356,6 +365,11 @@ class ConceptData(BaseModel):
     parameter_metadata: dict[str, ParameterMetadata] = Field(default_factory=dict)
     narrative: NarrativeData | None = None
     sources: SourcePaths
+    # Count of *enabled* analyst override registry entries (Bet 4). Drives the
+    # toggle label ("Apply analyst cost adjustments (N entries)") and the
+    # hide/disable decision (INV-5). 0 for freeform/empty-registry concepts.
+    # The full records (display) are Item 2's concern, not this field.
+    analyst_override_count: int = 0
     # True iff orchestrator routed this concept as `costingfe-asterisked`
     # (Comparison-Status, set on Grounding-Confidence: low). Render-side
     # signal for the comparison view's asterisk badge.
@@ -449,6 +463,11 @@ class ExplorerState(BaseModel):
     current_concept_id: str | None = None
     slider_overrides: dict[str, float] = Field(default_factory=dict)
     comparison_set: list[str] = Field(default_factory=list)
+    # Per-concept toggle (explorer-slider-override-semantics, FR-SO5): when True
+    # (default) the slider recompute, headline, and tornado describe the
+    # analyst-applied LCOE; when False, the library-bare LCOE. Default True is
+    # what makes FR-SO1 hold (no-op recompute reproduces the stored headline).
+    apply_analyst_overrides: bool = True
     # Set server-side on POST; empty on default GET
     timestamp: str = ""
 
@@ -458,6 +477,10 @@ class ComputeRequest(BaseModel):
 
     concept_id: str
     overrides: dict[str, float]  # Param name → new value
+    # FR-SO5: select the analyst-applied (True, default) vs library-bare (False)
+    # LCOE function for the recompute. Optional with a True default so existing
+    # callers/tests are unaffected. Rides the LRU cache key in _compute_cached.
+    apply_analyst_overrides: bool = True
 
 
 # ---------------------------------------------------------------------------

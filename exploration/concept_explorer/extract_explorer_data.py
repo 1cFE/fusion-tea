@@ -58,6 +58,36 @@ from exploration.concept_explorer.models import (  # noqa: E402, I001
 )
 
 
+def _derive_enabled_overrides() -> Any:
+    """Return the canonical ``enabled_overrides`` projector.
+
+    Prefer the shared three-forward helper (the source of truth for how the
+    analyst override registry projects to the ``cost_overrides`` dict, filtering
+    disabled entries). Falls back to an inline last-wins/enabled-only projection
+    when the helper module is unavailable — it imports ``costingfe.validation`` at
+    module scope, so importing the extractor must not hard-require costingfe (the
+    mock-based extractor tests don't install it). Mirrors ``server.py``'s
+    identical accessor.
+    """
+    try:
+        helper_scripts = _PROJECT_ROOT / "exploration" / "concept_analysis" / "scripts"
+        if str(helper_scripts) not in sys.path:
+            sys.path.insert(0, str(helper_scripts))
+        from lib.model_setup_helpers import enabled_overrides
+
+        return enabled_overrides
+    except Exception:
+
+        def _inline_enabled_overrides(overrides: list[dict[str, Any]]) -> dict[str, float]:
+            return {o["account"]: o["value"] for o in overrides if o["enabled"]}
+
+        return _inline_enabled_overrides
+
+
+# Projects a concept module's `overrides` registry to {account: value}, enabled only.
+_enabled_overrides = _derive_enabled_overrides()
+
+
 class ExtractionError(Exception):
     """Fatal error that should terminate the extraction script with exit code 1."""
 
@@ -175,13 +205,24 @@ def load_module_from_path(path: Path, module_name: str = "_concept_module") -> t
 # ---------------------------------------------------------------------------
 
 
-def build_sensitivity_analysis(model: Any, result: Any) -> SensitivityAnalysis:
+def build_sensitivity_analysis(
+    model: Any, result: Any, cost_overrides: dict[str, float] | None = None
+) -> SensitivityAnalysis:
     """Call model.sensitivity(result.params) and wrap output in SensitivityAnalysis.
 
     model.sensitivity() returns {"engineering": {k: elasticity}, "financial": {k: elasticity}}.
     Baselines come from result.params; missing keys default to 0.0.
+
+    ``cost_overrides`` selects which LCOE function is differentiated (FR-SO4):
+    ``None`` → the library-bare tornado; the enabled analyst registry → the
+    analyst-applied tornado. The two are computed by independent honest calls
+    (INV-3) — the applied tornado is *not* the bare one with overridden accounts
+    zeroed (``_scale_overrides`` keeps a rescaled library shape), so callers must
+    pass the registry through, never post-adjust.
     """
-    sens_raw: dict[str, dict[str, float]] = model.sensitivity(result.params)
+    sens_raw: dict[str, dict[str, float]] = model.sensitivity(
+        result.params, cost_overrides=cost_overrides
+    )
     params: dict[str, Any] = result.params
 
     def _entries(group: dict[str, float]) -> dict[str, SensitivityEntry]:
@@ -329,7 +370,16 @@ def extract_costingfe(
 
     effective_result = result_1gw
 
-    sensitivities = build_sensitivity_analysis(model, effective_result)
+    # Dual sensitivities (FR-SO4 / Bet 3): `sensitivities` is the analyst-applied
+    # tornado (registry re-applied) — the new default, consistent with the applied
+    # headline; `sensitivities_bare` is the library-bare alternate the toggle swaps
+    # to. Independent honest calls (INV-3). Empty registry → the two are equal
+    # (INV-6). The param *keys* are identical across both (cost_overrides changes
+    # elasticity values, not which continuous params exist), so metadata generated
+    # from the applied set covers the bare set too.
+    enabled = _enabled_overrides(getattr(module, "overrides", []) or [])
+    sensitivities = build_sensitivity_analysis(model, effective_result, cost_overrides=enabled)
+    sensitivities_bare = build_sensitivity_analysis(model, effective_result, cost_overrides=None)
     # Three-layer merge (later wins):
     #   1. generate_parameter_metadata() — auto baseline + range + auto display_name
     #   2. shared display registry       — patches display_name/_unit/_multiplier
@@ -347,7 +397,7 @@ def extract_costingfe(
     if "availability" in params_dict:
         raw.setdefault("power_table", {})["availability"] = params_dict["availability"]
 
-    cost_model = CostModelData.from_forward_result(raw, sensitivities)
+    cost_model = CostModelData.from_forward_result(raw, sensitivities, sensitivities_bare)
 
     name = str(frontmatter.get("Concept", concept_dir.name))
     company_raw = frontmatter.get("Company")
@@ -373,6 +423,7 @@ def extract_costingfe(
                 analysis=str(analysis_path) if analysis_path.exists() else None,
             ),
             asterisk_in_comparison=(comparison_status == "costingfe-asterisked"),
+            analyst_override_count=len(enabled),
         )
 
     for w in caught:

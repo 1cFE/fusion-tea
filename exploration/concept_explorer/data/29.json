@@ -1,6 +1,6 @@
 {
   "concept_id": "29",
-  "name": "Negative Triangularity Tokamak",
+  "name": "Negative-Triangularity Tokamak",
   "confinement_family": "MFE",
   "company": "Firefly Fusion",
   "status": "in_progress",
@@ -10,43 +10,43 @@
   "cost_model": {
     "cas10": {
       "name": "Preconstruction",
-      "cost_m_usd": 18.5,
+      "cost_m_usd": 16.7537784576416,
       "overridden": false
     },
     "cas21": {
       "name": "Buildings & Structures",
-      "cost_m_usd": 635.9098510742188,
+      "cost_m_usd": 247.36550903320312,
       "overridden": false
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 3052.387939453125,
+      "cost_m_usd": 27593.6953125,
       "overridden": false
     },
     "cas23": {
       "name": "Turbine Plant Equipment",
-      "cost_m_usd": 227.08226013183594,
+      "cost_m_usd": 456.0638122558594,
       "overridden": false
     },
     "cas24": {
       "name": "Electrical Plant Equipment",
-      "cost_m_usd": 96.72021484375,
+      "cost_m_usd": 194.2493896484375,
       "overridden": false
     },
     "cas25": {
       "name": "Miscellaneous Plant Equipment",
-      "cost_m_usd": 58.8731803894043,
+      "cost_m_usd": 118.23876953125,
       "overridden": false
     },
     "cas26": {
       "name": "Heat Rejection Systems",
-      "cost_m_usd": 103.2862777709961,
+      "cost_m_usd": 197.06460571289062,
       "overridden": false
     },
     "cas27": {
       "name": "Special Materials",
-      "cost_m_usd": 15.000001907348633,
-      "overridden": false
+      "cost_m_usd": 28.888898849487305,
+      "overridden": true
     },
     "cas28": {
       "name": "Digital Twin & Simulation",
@@ -60,48 +60,48 @@
     },
     "cas30": {
       "name": "Indirect Costs",
-      "cost_m_usd": 978.66064453125,
+      "cost_m_usd": 5768.11328125,
       "overridden": false
     },
     "cas40": {
       "name": "Owner's Costs",
-      "cost_m_usd": 39.0,
+      "cost_m_usd": 11.758942604064941,
       "overridden": false
     },
     "cas50": {
       "name": "Supplementary Costs",
-      "cost_m_usd": 364.629150390625,
+      "cost_m_usd": 1285.311279296875,
       "overridden": false
     },
     "cas60": {
       "name": "Interest During Construction",
-      "cost_m_usd": 1322.0472412109375,
+      "cost_m_usd": 6904.8486328125,
       "overridden": false
     },
     "cas70": {
       "name": "O&M Costs (annualised)",
-      "cost_m_usd": 118.27816009521484,
+      "cost_m_usd": 476.3019104003906,
       "overridden": false
     },
     "cas80": {
       "name": "Fuel Costs (annualised)",
-      "cost_m_usd": 1.2634083032608032,
+      "cost_m_usd": 1.3878272771835327,
       "overridden": false
     },
     "cas90": {
       "name": "Financial Costs",
-      "cost_m_usd": 557.4240112304688,
+      "cost_m_usd": 3212.442626953125,
       "overridden": false
     },
     "cas22_detail": {
       "C220101": {
         "name": "First Wall & Blanket",
-        "cost_m_usd": 254.63499450683594,
+        "cost_m_usd": 145.64710998535156,
         "overridden": false
       },
       "C220102": {
         "name": "Radiation Shield",
-        "cost_m_usd": 166.96060180664062,
+        "cost_m_usd": 95.498779296875,
         "overridden": false
       },
       "C220103": {
@@ -111,27 +111,27 @@
       },
       "C220104": {
         "name": "Heating & Driver Systems",
-        "cost_m_usd": 150.0,
-        "overridden": true
+        "cost_m_usd": 222.82,
+        "overridden": false
       },
       "C220105": {
         "name": "Primary Structure & Support",
-        "cost_m_usd": 16.054203033447266,
+        "cost_m_usd": 11.225183486938477,
         "overridden": false
       },
       "C220106": {
         "name": "Vacuum System",
-        "cost_m_usd": 86.1584243774414,
+        "cost_m_usd": 50.96377944946289,
         "overridden": false
       },
       "C220107": {
         "name": "Power Conditioning & Energy Storage",
-        "cost_m_usd": 88.16695404052734,
+        "cost_m_usd": 26.81147003173828,
         "overridden": false
       },
       "C220108": {
         "name": "Divertor / Target Factory",
-        "cost_m_usd": 56.02793884277344,
+        "cost_m_usd": 150.33621215820312,
         "overridden": true
       },
       "C220109": {
@@ -141,12 +141,12 @@
       },
       "C220110": {
         "name": "Remote Handling & Maintenance Equipment",
-        "cost_m_usd": 70.03492736816406,
-        "overridden": true
+        "cost_m_usd": 68.7021484375,
+        "overridden": false
       },
       "C220111": {
         "name": "Installation Labor",
-        "cost_m_usd": 218.2835235595703,
+        "cost_m_usd": 206.27828979492188,
         "overridden": false
       },
       "C220112": {
@@ -156,17 +156,17 @@
       },
       "C220200": {
         "name": "Main & Secondary Coolant",
-        "cost_m_usd": 203.46083068847656,
+        "cost_m_usd": 219.44273376464844,
         "overridden": false
       },
       "C220300": {
         "name": "Auxiliary Cooling & Cryoplant",
-        "cost_m_usd": 27.89052391052246,
+        "cost_m_usd": 17.73052406311035,
         "overridden": false
       },
       "C220400": {
         "name": "Radioactive Waste Management",
-        "cost_m_usd": 5.926261901855469,
+        "cost_m_usd": 11.306985855102539,
         "overridden": false
       },
       "C220500": {
@@ -181,78 +181,86 @@
       },
       "C220700": {
         "name": "Instrumentation & Control",
-        "cost_m_usd": 77.28866577148438,
+        "cost_m_usd": 117.62068176269531,
         "overridden": false
       }
     },
     "headline": {
-      "lcoe_per_mwh": 96.59895324707031,
-      "overnight_cost_per_kw": 6917.0966796875,
-      "p_net_mw": 1000.0000610351562,
-      "q_eng": 7.712803363800049,
-      "capacity_factor": 0.8
+      "lcoe_per_mwh": 495.5858154296875,
+      "overnight_cost_per_kw": 42827.34375,
+      "p_net_mw": 90.90910339355469,
+      "q_eng": 1.764790415763855,
+      "capacity_factor": 0.85
     },
     "sensitivities": {
       "engineering": {
         "availability": {
-          "elasticity": -0.9322753413065283,
-          "baseline": 0.8
+          "elasticity": -0.8828160966597931,
+          "baseline": 0.85
         },
         "construction_time_yr": {
-          "elasticity": 0.3610658638030299,
-          "baseline": 7.0
+          "elasticity": 0.3323121749090614,
+          "baseline": 6.0
         },
         "mn": {
-          "elasticity": -0.0598454150143453,
-          "baseline": 1.11
+          "elasticity": -0.0016069220921270996,
+          "baseline": 1.1
         },
         "eta_th": {
-          "elasticity": -0.24312200311684884,
-          "baseline": 0.38
+          "elasticity": -0.1014590492246848,
+          "baseline": 0.4
         },
         "eta_p": {
-          "elasticity": -0.000012293120691592636,
+          "elasticity": -2.0383195318126576e-6,
           "baseline": 0.5
         },
         "f_sub": {
-          "elasticity": 0.012523629611297297,
+          "elasticity": 0.004887455254105716,
           "baseline": 0.03
         },
         "p_pump": {
-          "elasticity": 0.00035103631453460717,
+          "elasticity": 0.0007745732442313856,
           "baseline": 1.0
         },
         "p_trit": {
-          "elasticity": 0.003633294465266962,
+          "elasticity": 0.007766114733087548,
           "baseline": 10.0
         },
         "p_house": {
-          "elasticity": 0.001453317786106785,
+          "elasticity": 0.003106445893235019,
           "baseline": 4.0
         },
         "p_cryo": {
-          "elasticity": 0.00433226587651108,
-          "baseline": 1.5
+          "elasticity": 0.0006235213317397361,
+          "baseline": 0.5
         },
         "blanket_t": {
-          "elasticity": 0.1353557459537529,
+          "elasticity": 0.1354378828596821,
           "baseline": 0.8
         },
         "ht_shield_t": {
-          "elasticity": 0.02399193330306842,
+          "elasticity": 0.02237675991529601,
           "baseline": 0.2
         },
         "structure_t": {
-          "elasticity": 0.006884281306944967,
+          "elasticity": 0.008802312440019892,
           "baseline": 0.2
         },
         "vessel_t": {
-          "elasticity": 0.023601098849324254,
+          "elasticity": 0.02253946829449588,
           "baseline": 0.2
         },
         "plasma_t": {
-          "elasticity": 0.10615582208437836,
+          "elasticity": 0.1114025600469757,
           "baseline": 1.2
+        },
+        "burn_fraction": {
+          "elasticity": -0.0001102206800446967,
+          "baseline": 0.05
+        },
+        "fuel_recovery": {
+          "elasticity": -0.005824804602763675,
+          "baseline": 0.99
         },
         "dd_f_T": {
           "elasticity": 0.0,
@@ -264,39 +272,35 @@
         },
         "dhe3_dd_frac": {
           "elasticity": 0.0,
-          "baseline": 0.07
+          "baseline": 0.131
         },
         "dhe3_f_T": {
           "elasticity": 0.0,
-          "baseline": 0.97
+          "baseline": 0.5
         },
         "p_input": {
-          "elasticity": 0.02808291058700684,
+          "elasticity": 0.0630334220847283,
           "baseline": 40.0
-        },
-        "eta_pin": {
-          "elasticity": -0.029066357891831002,
-          "baseline": 0.5
         },
         "eta_de": {
           "elasticity": 0.0,
           "baseline": 0.85
         },
         "p_coils": {
-          "elasticity": 0.0010899883395800887,
-          "baseline": 3.0
+          "elasticity": 0.0015532229466175096,
+          "baseline": 2.0
         },
         "p_cool": {
-          "elasticity": 0.005449941697900443,
-          "baseline": 15.0
+          "elasticity": 0.010639577036203059,
+          "baseline": 13.7
         },
         "R0": {
-          "elasticity": 0.18658727312893245,
+          "elasticity": 0.20456536567095127,
           "baseline": 4.55
         },
         "elon": {
-          "elasticity": 0.18658727166575267,
-          "baseline": 1.1
+          "elasticity": 0.17049761268986147,
+          "baseline": 1.8
         },
         "q95": {
           "elasticity": 0.0,
@@ -308,15 +312,15 @@
         },
         "B": {
           "elasticity": 0.0,
-          "baseline": 5.0
+          "baseline": 11.0
         },
         "T_e": {
           "elasticity": 0.0,
-          "baseline": 15.0
+          "baseline": 7.1
         },
         "n_e": {
           "elasticity": 0.0,
-          "baseline": 1e20
+          "baseline": 1.95e20
         },
         "Z_eff": {
           "elasticity": 0.0,
@@ -324,7 +328,7 @@
         },
         "plasma_volume": {
           "elasticity": 0.0,
-          "baseline": 500.0
+          "baseline": 155.0
         },
         "R_w": {
           "elasticity": 0.0,
@@ -338,17 +342,25 @@
           "elasticity": 0.0,
           "baseline": 3.0
         },
-        "b_max": {
-          "elasticity": 0.129586215151569,
+        "b_center": {
+          "elasticity": 0.03406774516852598,
           "baseline": 12.0
         },
-        "r_coil": {
-          "elasticity": 0.25917242149292646,
+        "r_bore": {
+          "elasticity": 0.0,
           "baseline": 1.85
         },
+        "p_nbi": {
+          "elasticity": 0.05140675818085193,
+          "baseline": 20.0
+        },
+        "p_ecrh": {
+          "elasticity": 0.030919377701775403,
+          "baseline": 15.0
+        },
         "p_icrf": {
-          "elasticity": 0.04167441898799764,
-          "baseline": 40.0
+          "elasticity": 0.01984854485377062,
+          "baseline": 15.0
         },
         "M_ion": {
           "elasticity": 0.0,
@@ -373,52 +385,268 @@
         "disruption_downtime": {
           "elasticity": 0.0,
           "baseline": 72.0
+        },
+        "eta_couple": {
+          "elasticity": -0.06319649431748385,
+          "baseline": 0.8333
         }
       },
       "financial": {
         "interest_rate": {
-          "elasticity": 0.6944147818609143,
+          "elasticity": 0.847833734678574,
           "baseline": 0.07
         },
         "inflation_rate": {
-          "elasticity": 0.061289553273278966,
-          "baseline": 0.0245
+          "elasticity": 0.0024312748584348963,
+          "baseline": 0.02
+        }
+      }
+    },
+    "sensitivities_bare": {
+      "engineering": {
+        "availability": {
+          "elasticity": -0.892219535592519,
+          "baseline": 0.85
+        },
+        "construction_time_yr": {
+          "elasticity": 0.33521197872067143,
+          "baseline": 6.0
+        },
+        "mn": {
+          "elasticity": -0.002306698084251105,
+          "baseline": 1.1
+        },
+        "eta_th": {
+          "elasticity": -0.16845852435334246,
+          "baseline": 0.4
+        },
+        "eta_p": {
+          "elasticity": -2.9256688043783524e-6,
+          "baseline": 0.5
+        },
+        "f_sub": {
+          "elasticity": 0.007721437418011658,
+          "baseline": 0.03
+        },
+        "p_pump": {
+          "elasticity": 0.0012240024795079109,
+          "baseline": 1.0
+        },
+        "p_trit": {
+          "elasticity": 0.012269282659311534,
+          "baseline": 10.0
+        },
+        "p_house": {
+          "elasticity": 0.0049077130637246134,
+          "baseline": 4.0
+        },
+        "p_cryo": {
+          "elasticity": 0.0009511059082935874,
+          "baseline": 0.5
+        },
+        "blanket_t": {
+          "elasticity": 0.2932219667718717,
+          "baseline": 0.8
+        },
+        "ht_shield_t": {
+          "elasticity": 0.05682257752040645,
+          "baseline": 0.2
+        },
+        "structure_t": {
+          "elasticity": 0.037337067001911785,
+          "baseline": 0.2
+        },
+        "vessel_t": {
+          "elasticity": 0.05705613810105777,
+          "baseline": 0.2
+        },
+        "plasma_t": {
+          "elasticity": 0.30812380982942295,
+          "baseline": 1.2
+        },
+        "burn_fraction": {
+          "elasticity": -0.00015821684265811245,
+          "baseline": 0.05
+        },
+        "fuel_recovery": {
+          "elasticity": -0.008361245756930456,
+          "baseline": 0.99
+        },
+        "dd_f_T": {
+          "elasticity": 0.0,
+          "baseline": 0.969
+        },
+        "dd_f_He3": {
+          "elasticity": 0.0,
+          "baseline": 0.689
+        },
+        "dhe3_dd_frac": {
+          "elasticity": 0.0,
+          "baseline": 0.131
+        },
+        "dhe3_f_T": {
+          "elasticity": 0.0,
+          "baseline": 0.5
+        },
+        "p_input": {
+          "elasticity": 0.09960688310824463,
+          "baseline": 40.0
+        },
+        "eta_de": {
+          "elasticity": 0.0,
+          "baseline": 0.85
+        },
+        "p_coils": {
+          "elasticity": 0.0024538565318623067,
+          "baseline": 2.0
+        },
+        "p_cool": {
+          "elasticity": 0.016808917009238807,
+          "baseline": 13.7
+        },
+        "R0": {
+          "elasticity": 0.6703460226715163,
+          "baseline": 4.55
+        },
+        "elon": {
+          "elasticity": 0.24474167596857924,
+          "baseline": 1.8
+        },
+        "q95": {
+          "elasticity": 0.0,
+          "baseline": 3.5
+        },
+        "f_GW": {
+          "elasticity": 0.0,
+          "baseline": 0.85
+        },
+        "B": {
+          "elasticity": 0.0,
+          "baseline": 11.0
+        },
+        "T_e": {
+          "elasticity": 0.0,
+          "baseline": 7.1
+        },
+        "n_e": {
+          "elasticity": 0.0,
+          "baseline": 1.95e20
+        },
+        "Z_eff": {
+          "elasticity": 0.0,
+          "baseline": 1.5
+        },
+        "plasma_volume": {
+          "elasticity": 0.0,
+          "baseline": 155.0
+        },
+        "R_w": {
+          "elasticity": 0.0,
+          "baseline": 0.6
+        },
+        "T_edge": {
+          "elasticity": 0.0,
+          "baseline": 0.05
+        },
+        "tau_ratio": {
+          "elasticity": 0.0,
+          "baseline": 3.0
+        },
+        "b_center": {
+          "elasticity": 0.42560432619284827,
+          "baseline": 12.0
+        },
+        "r_bore": {
+          "elasticity": 0.0,
+          "baseline": 1.85
+        },
+        "p_nbi": {
+          "elasticity": 0.07373057570122954,
+          "baseline": 20.0
+        },
+        "p_ecrh": {
+          "elasticity": 0.0448755230391309,
+          "baseline": 15.0
+        },
+        "p_icrf": {
+          "elasticity": 0.028061069401407807,
+          "baseline": 15.0
+        },
+        "M_ion": {
+          "elasticity": 0.0,
+          "baseline": 2.5
+        },
+        "lambda_q": {
+          "elasticity": 0.0,
+          "baseline": 0.002
+        },
+        "disruption_rate_base": {
+          "elasticity": 0.0,
+          "baseline": 0.1
+        },
+        "disruption_steepness": {
+          "elasticity": 0.0,
+          "baseline": 15.0
+        },
+        "disruption_damage": {
+          "elasticity": 0.0,
+          "baseline": 0.02
+        },
+        "disruption_downtime": {
+          "elasticity": 0.0,
+          "baseline": 72.0
+        },
+        "eta_couple": {
+          "elasticity": -0.09984088058067862,
+          "baseline": 0.8333
+        }
+      },
+      "financial": {
+        "interest_rate": {
+          "elasticity": 0.8557042229508653,
+          "baseline": 0.07
+        },
+        "inflation_rate": {
+          "elasticity": 0.0034899860133291477,
+          "baseline": 0.02
         }
       }
     },
     "params": {
       "p_input": 40.0,
-      "p_nbi": 0.0,
-      "p_ecrh": 0.0,
-      "p_icrf": 40.0,
+      "p_nbi": 20.0,
+      "p_ecrh": 15.0,
+      "p_icrf": 15.0,
       "p_lhcd": 0.0,
-      "mn": 1.11,
+      "mn": 1.1,
       "eta_p": 0.5,
-      "eta_pin": 0.5,
+      "eta_couple": 0.8333,
       "eta_de": 0.85,
       "f_sub": 0.03,
       "f_dec": 0.0,
-      "p_coils": 3.0,
-      "p_cool": 15.0,
+      "p_coils": 2.0,
+      "p_cool": 13.7,
       "p_pump": 1.0,
       "p_trit": 10.0,
       "p_house": 4.0,
-      "p_cryo": 1.5,
-      "b_max": 12.0,
-      "r_coil": 1.85,
+      "p_cryo": 0.5,
+      "b_center": 12.0,
+      "r_bore": 1.85,
       "R0": 4.55,
       "plasma_t": 1.2,
-      "elon": 1.1,
+      "elon": 1.8,
       "blanket_t": 0.8,
       "ht_shield_t": 0.2,
       "structure_t": 0.2,
       "vessel_t": 0.2,
-      "construction_time_yr": 7.0,
-      "n_e": 1e20,
-      "T_e": 15.0,
+      "vac_op_pressure_pa": 3.0,
+      "construction_time_yr": 6.0,
+      "n_e": 1.95e20,
+      "T_e": 7.1,
       "Z_eff": 1.5,
-      "plasma_volume": 500.0,
-      "B": 5.0,
+      "plasma_volume": 155.0,
+      "radiation_peaking_factor": 1.0,
+      "B": 11.0,
       "T_edge": 0.05,
       "tau_ratio": 3.0,
       "R_w": 0.6,
@@ -431,10 +659,12 @@
       "f_GW": 0.85,
       "M_ion": 2.5,
       "lambda_q": 0.002,
+      "burn_fraction": 0.05,
+      "fuel_recovery": 0.99,
       "dd_f_T": 0.969,
       "dd_f_He3": 0.689,
-      "dhe3_dd_frac": 0.07,
-      "dhe3_f_T": 0.97,
+      "dhe3_dd_frac": 0.131,
+      "dhe3_f_T": 0.5,
       "pb11_f_alpha_n": 0.0,
       "pb11_f_p_n": 0.0,
       "site_permits": 3.0,
@@ -457,22 +687,45 @@
       "blanket_unit_cost_dd": 0.3,
       "blanket_unit_cost_dhe3": 0.08,
       "blanket_unit_cost_pb11": 0.05,
+      "blanket_unit_cost_li2o": 0.2,
       "shield_unit_cost": 0.74,
+      "coil_cu_current_density_a_mm2": 5.0,
+      "coil_cu_price_per_kg": 11.0,
+      "coil_cu_fab_markup": 3.5,
+      "coil_struct_fraction": 0.6,
+      "coil_steel_price_per_kg": 6.0,
+      "coil_steel_fab_markup": 3.0,
       "heating_nbi_per_mw": 7.0642,
       "heating_icrf_per_mw": 4.1494,
       "heating_ecrh_per_mw": 5.0,
       "heating_lhcd_per_mw": 4.0,
-      "driver_laser_per_mw": 8.0,
-      "driver_heavy_ion_per_mw": 12.0,
+      "eta_source_nbi": 0.6,
+      "eta_source_icrf": 0.7,
+      "eta_source_ecrh": 0.5,
+      "eta_source_lhcd": 0.5,
+      "driver_laser_per_mj": 205.0,
+      "driver_krf_per_mj": 40.0,
+      "driver_ndglass_per_mj": 1000.0,
+      "driver_heavy_ion_per_mj": 60.0,
+      "driver_plasma_jet_per_mj": 4.0,
+      "driver_staged_zpinch_per_mj": 1.5,
       "driver_mag_target_per_mw": 3.0,
-      "driver_plasma_jet_per_mw": 4.0,
-      "driver_maglif_per_mw": 6.0,
+      "laser_preheat_per_mj": 205.0,
       "structure_unit_cost": 0.15,
       "vessel_unit_cost": 0.72,
+      "pump_unit_cost": 0.015,
+      "pump_nbi_gas_amplification": 1.0,
+      "pump_gas_temp_k": 300.0,
+      "pump_ion_per_reaction": 2.0,
+      "nbi_beam_energy_kev": 120.0,
+      "e_fus_mev_dt": 17.6,
+      "e_fus_mev_dd": 3.65,
+      "e_fus_mev_dhe3": 18.3,
+      "e_fus_mev_pb11": 8.7,
       "power_supplies_base": 80.0,
       "divertor_base": 60.0,
       "target_factory_base": 244.0,
-      "dec_base": 100.0,
+      "dec_base": 125.0,
       "dec_grid_cost": 12.0,
       "dec_grid_lifetime_dt": 2.0,
       "dec_grid_lifetime_dd": 3.0,
@@ -483,18 +736,33 @@
       "markup_controls": 0.04,
       "c_inv_per_kw_net": 150.0,
       "cap_shot_lifetime": 100000000.0,
+      "electrode_shot_lifetime": 100000000.0,
+      "electrode_replace_frac": 0.5,
+      "dpssl_diode_replace_frac": 0.5,
+      "dpssl_diode_shot_lifetime": 10000000000.0,
+      "dpssl_crystal_replace_frac": 0.03,
+      "dpssl_crystal_shot_lifetime": 3000000000.0,
+      "dpssl_optics_replace_frac": 0.05,
+      "dpssl_optics_shot_lifetime": 300000000.0,
+      "krf_foil_replace_frac": 0.04,
+      "krf_foil_shot_lifetime": 300000000.0,
+      "krf_ebeam_replace_frac": 0.06,
+      "krf_ebeam_shot_lifetime": 300000000.0,
+      "ndglass_lamp_replace_frac": 0.1,
+      "ndglass_lamp_shot_lifetime": 10000.0,
       "f_rad_dt": 0.1,
       "f_rad_dd": 0.08,
       "f_rad_dhe3": 0.05,
       "f_rad_pb11": 0.15,
-      "f_rad_fus_pb11": 0.87,
-      "f_rad_fus_dhe3": 0.35,
+      "f_rad_fus_pb11": 0.83,
+      "f_rad_fus_dhe3": 0.24,
       "f_pdv": 0.8,
       "remote_handling_dt_base": 150.0,
       "remote_handling_dd_base": 100.0,
       "remote_handling_dhe3_base": 30.0,
       "remote_handling_pb11_base": 20.0,
       "installation_frac": 0.14,
+      "multi_unit_labor_factor": 0.92,
       "core_lifetime_dt": 5.0,
       "core_lifetime_dd": 10.0,
       "core_lifetime_dhe3": 30.0,
@@ -545,15 +813,13 @@
       "u_protium": 5.0,
       "u_b11": 10000.0,
       "u_b11_noak": 75.0,
-      "burn_fraction": 0.05,
-      "fuel_recovery": 0.95,
-      "eta_th": 0.38,
+      "eta_th": 0.4,
       "net_electric_mw": 1000.0,
-      "availability": 0.8,
-      "lifetime_yr": 30.0,
-      "n_mod": 1.0,
+      "availability": 0.85,
+      "lifetime_yr": 40.0,
+      "n_mod": 11.0,
       "interest_rate": 0.07,
-      "inflation_rate": 0.0245,
+      "inflation_rate": 0.02,
       "noak": 1.0
     }
   },
@@ -562,11 +828,11 @@
       "display_name": "Availability",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 0.8,
+      "baseline": 0.85,
       "display_multiplier": 100.0,
       "display_unit": "%",
       "range": [
-        0.5599999999999999,
+        0.595,
         1.0
       ],
       "source": null,
@@ -576,12 +842,12 @@
       "display_name": "Construction Time",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 7.0,
+      "baseline": 6.0,
       "display_multiplier": 1.0,
       "display_unit": "yr",
       "range": [
-        4.8999999999999995,
-        9.1
+        4.199999999999999,
+        7.800000000000001
       ],
       "source": null,
       "modeling_note": null
@@ -590,12 +856,12 @@
       "display_name": "Energy Multiplication Mₙ",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 1.11,
+      "baseline": 1.1,
       "display_multiplier": 1.0,
       "display_unit": "",
       "range": [
-        0.777,
-        1.4430000000000003
+        0.77,
+        1.4300000000000002
       ],
       "source": null,
       "modeling_note": null
@@ -604,12 +870,12 @@
       "display_name": "Thermal Efficiency",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 0.38,
+      "baseline": 0.4,
       "display_multiplier": 100.0,
       "display_unit": "%",
       "range": [
-        0.26599999999999996,
-        0.49400000000000005
+        0.27999999999999997,
+        0.52
       ],
       "source": null,
       "modeling_note": null
@@ -688,12 +954,12 @@
       "display_name": "Cryogenic Power",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 1.5,
+      "baseline": 0.5,
       "display_multiplier": 1.0,
       "display_unit": "MW",
       "range": [
-        1.0499999999999998,
-        1.9500000000000002
+        0.35,
+        0.65
       ],
       "source": null,
       "modeling_note": null
@@ -768,6 +1034,34 @@
       "source": null,
       "modeling_note": null
     },
+    "burn_fraction": {
+      "display_name": "Burn Fraction",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.05,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.034999999999999996,
+        0.065
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "fuel_recovery": {
+      "display_name": "Fuel Recovery",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.99,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.693,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
     "dd_f_T": {
       "display_name": "Dd F T",
       "category": "unclassified",
@@ -800,12 +1094,12 @@
       "display_name": "Dhe3 Dd Frac",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 0.07,
+      "baseline": 0.131,
       "display_multiplier": 1.0,
       "display_unit": "",
       "range": [
-        0.049,
-        0.09100000000000001
+        0.0917,
+        0.1703
       ],
       "source": null,
       "modeling_note": null
@@ -814,12 +1108,12 @@
       "display_name": "Dhe3 F T",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 0.97,
+      "baseline": 0.5,
       "display_multiplier": 1.0,
       "display_unit": "",
       "range": [
-        0.6789999999999999,
-        1.261
+        0.35,
+        0.65
       ],
       "source": null,
       "modeling_note": null
@@ -834,20 +1128,6 @@
       "range": [
         28.0,
         52.0
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "eta_pin": {
-      "display_name": "Injector Efficiency",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 0.5,
-      "display_multiplier": 100.0,
-      "display_unit": "%",
-      "range": [
-        0.35,
-        0.65
       ],
       "source": null,
       "modeling_note": null
@@ -870,12 +1150,12 @@
       "display_name": "Coil Power",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 3.0,
+      "baseline": 2.0,
       "display_multiplier": 1.0,
       "display_unit": "MW",
       "range": [
-        2.0999999999999996,
-        3.9000000000000004
+        1.4,
+        2.6
       ],
       "source": null,
       "modeling_note": null
@@ -884,12 +1164,12 @@
       "display_name": "P Cool",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 15.0,
+      "baseline": 13.7,
       "display_multiplier": 1.0,
       "display_unit": "",
       "range": [
-        10.5,
-        19.5
+        9.589999999999998,
+        17.81
       ],
       "source": null,
       "modeling_note": null
@@ -912,12 +1192,12 @@
       "display_name": "Elongation κ",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 1.1,
+      "baseline": 1.8,
       "display_multiplier": 1.0,
       "display_unit": "",
       "range": [
-        0.77,
-        1.4300000000000002
+        1.26,
+        2.3400000000000003
       ],
       "source": null,
       "modeling_note": null
@@ -954,12 +1234,12 @@
       "display_name": "B",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 5.0,
+      "baseline": 11.0,
       "display_multiplier": 1.0,
       "display_unit": "",
       "range": [
-        3.5,
-        6.5
+        7.699999999999999,
+        14.3
       ],
       "source": null,
       "modeling_note": null
@@ -968,12 +1248,12 @@
       "display_name": "T E",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 15.0,
+      "baseline": 7.1,
       "display_multiplier": 1.0,
       "display_unit": "",
       "range": [
-        10.5,
-        19.5
+        4.97,
+        9.23
       ],
       "source": null,
       "modeling_note": null
@@ -982,12 +1262,12 @@
       "display_name": "N E",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 1e20,
+      "baseline": 1.95e20,
       "display_multiplier": 1.0,
       "display_unit": "",
       "range": [
-        6.999999999999999e19,
-        1.3e20
+        1.3649999999999998e20,
+        2.535e20
       ],
       "source": null,
       "modeling_note": null
@@ -1010,12 +1290,12 @@
       "display_name": "Plasma Volume",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 500.0,
+      "baseline": 155.0,
       "display_multiplier": 1.0,
       "display_unit": "",
       "range": [
-        350.0,
-        650.0
+        108.5,
+        201.5
       ],
       "source": null,
       "modeling_note": null
@@ -1062,13 +1342,13 @@
       "source": null,
       "modeling_note": null
     },
-    "b_max": {
-      "display_name": "Peak Magnetic Field",
+    "b_center": {
+      "display_name": "B Center",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 12.0,
       "display_multiplier": 1.0,
-      "display_unit": "T",
+      "display_unit": "",
       "range": [
         8.399999999999999,
         15.600000000000001
@@ -1076,16 +1356,44 @@
       "source": null,
       "modeling_note": null
     },
-    "r_coil": {
-      "display_name": "Coil Radius",
+    "r_bore": {
+      "display_name": "R Bore",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 1.85,
       "display_multiplier": 1.0,
-      "display_unit": "m",
+      "display_unit": "",
       "range": [
         1.295,
         2.4050000000000002
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_nbi": {
+      "display_name": "NBI Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 20.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        14.0,
+        26.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "p_ecrh": {
+      "display_name": "ECRH Power",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 15.0,
+      "display_multiplier": 1.0,
+      "display_unit": "MW",
+      "range": [
+        10.5,
+        19.5
       ],
       "source": null,
       "modeling_note": null
@@ -1094,12 +1402,12 @@
       "display_name": "ICRF Power",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 40.0,
+      "baseline": 15.0,
       "display_multiplier": 1.0,
       "display_unit": "MW",
       "range": [
-        28.0,
-        52.0
+        10.5,
+        19.5
       ],
       "source": null,
       "modeling_note": null
@@ -1188,6 +1496,20 @@
       "source": null,
       "modeling_note": null
     },
+    "eta_couple": {
+      "display_name": "Eta Couple",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.8333,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.58331,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
     "interest_rate": {
       "display_name": "Interest Rate",
       "category": "unclassified",
@@ -1206,106 +1528,22 @@
       "display_name": "Inflation Rate",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 0.0245,
+      "baseline": 0.02,
       "display_multiplier": 100.0,
       "display_unit": "%",
       "range": [
-        0.01715,
-        0.03185
+        0.013999999999999999,
+        0.026000000000000002
       ],
       "source": null,
       "modeling_note": null
     }
   },
-  "narrative": {
-    "key_bets": [
-      "NT L-mode confinement enhancement (H_98 = 1.44) scales favorably to burning-plasma conditions, validating extrapolation from TCV/DIII-D non-burning experiments",
-      "Ohmic-only operation is feasible at compact high-field NT conditions (H_NA ≥ 2), enabling Q ≈ 500 with zero auxiliary heating per Ball et al. 2024",
-      "NT geometry passively delivers low scrape-off-layer power (P_SOL = 23.5 MW, only 5.2% of fusion power) enabling conventional tungsten monoblock divertor",
-      "REBCO HTS TF coils at 11 T with demountable joints and 40% margin to critical current survive cumulative 14 MeV neutron + gamma irradiation at fusion fluence",
-      "FLiBe liquid immersion blanket simultaneously serves as breeder, coolant, and shield achieving TBR = 1.15 with self-healing molybdenum barrier",
-      "Passive stabilizer plates (inboard and outboard, uniquely enabled by NT X-point geometry) resolve NT's intrinsic vertical instability at reactor-relevant elongation and poloidal beta",
-      "Net electric output scales from MANTA's 90 MWe pilot to commercial 1 GW+ class while maintaining NT-specific cost advantages"
-    ],
-    "eliminated_costs": [
-      "Advanced divertor engineering — Super-X, snowflake, and liquid metal divertor concepts unnecessary because NT's low P_SOL keeps peak heat flux (2.8 MW/m²) within demonstrated tungsten monoblock limits",
-      "Auxiliary heating capital cost — ~$150M for 40 MW ICRF system entirely eliminated if ohmic-only scenario (H_NA ≥ 2) is validated (~4% of overnight cost)",
-      "Active impurity seeding and high-radiated-power-fraction (90–95%) control systems that PT designs require to reach comparable heat flux numbers",
-      "Specialized perpendicular-plate divertor geometry and complex plasma control hardware needed for fully detached PT operation",
-      "ELM mitigation systems (RMP coils, pellet pacing) — NT operates ELM-free in L-mode, removing a class of PT engineering line items"
-    ],
-    "novel_costs": [
-      "NT passive vertical stabilizer plates (~$15–60M, central estimate $30M) — NT-specific infrastructure absent from MANTA cost accounting and from PT tokamak cost analogues",
-      "FLiBe-to-molten-salt (NaNO₃/KNO₃) heat exchanger at fusion-plant scale — explicitly flagged 'low TRL' in MANTA, no commercial supply chain",
-      "Thermal energy storage buffer sized for the 15-min pulse / 2-min dwell quasi-steady operation cycle, absent from steady-state designs",
-      "V-4Cr-4Ti vacuum vessel (~1 cm thick) — nuclear-grade alloy with no industrial supply chain at multi-hundred-tonne scale",
-      "NT-specific TF coil geometry with demountable joints — coil shape constraints not faced by conventional tokamaks, increasing coil engineering complexity beyond standard REBCO TF designs"
-    ],
-    "risks": [
-      {
-        "description": "NT confinement scaling to burning-plasma conditions is unvalidated — entire economic case rests on H_98 and H_NA factors extrapolated from non-burning L-mode TCV/DIII-D experiments; if confinement advantage does not persist at high alpha-particle pressure and impurity concentrations, cost-reduction claims collapse",
-        "severity": "high"
-      },
-      {
-        "description": "Net electric output is far below commercial viability — MANTA produces only 90 MWe net from 450 MW fusion (Q_e = 2.4) with LCOE $396/MWh (~3× offshore wind, ~6× ARIES-ACT $64/MWh target); no credible path from Firefly's 50–100 MW design point to commercial LCOE without major upscaling",
-        "severity": "high"
-      },
-      {
-        "description": "Ohmic-only hypothesis (Q ≈ 500) depends on H_NA = 2 confinement enhancement based on preliminary 0D power balance and TCV data — if H_NA ≈ 1, ohmic heating insufficient and full $100–500M auxiliary heating system required",
-        "severity": "high"
-      },
-      {
-        "description": "TF coil cost ($1.5B of $3.4B, ~44%) is dominant cost driver and unaffected by NT geometry — NT savings only address secondary cost categories, leaving a hard magnet-cost floor that NT cannot overcome",
-        "severity": "high"
-      },
-      {
-        "description": "Commercial-scale NT plant cost study does not exist — MANTA is a sub-commercial pilot, no 1 GW+ NT tokamak design has been published, leaving extrapolation to commercial plant cost essentially unanchored",
-        "severity": "high"
-      },
-      {
-        "description": "Firefly Fusion has disclosed no proprietary plasma parameters, blanket design, tritium cycle approach, or power conversion cycle — all Firefly-specific values are aspirational press statements",
-        "severity": "high"
-      },
-      {
-        "description": "FLiBe-to-molten-salt heat exchanger explicitly flagged 'low TRL' in MANTA — fusion-scale technology does not exist; tritium permeation through HX surfaces is unresolved",
-        "severity": "medium"
-      },
-      {
-        "description": "V-4Cr-4Ti vacuum vessel has no commercial production at the multi-hundred-tonne scale required; no industrial supply chain for nuclear-grade material with controlled impurities",
-        "severity": "medium"
-      },
-      {
-        "description": "REBCO tape supply chain bottleneck — global production at thousands km/year vs. 5,000+ km needed per plant; commercial price target ~$10/kA-m vs. current $30–100/kA-m",
-        "severity": "medium"
-      },
-      {
-        "description": "FLiBe supply chain constrained by beryllium (~300 t/year global, Materion-dominated) and Li-6 enrichment (Russian/Chinese mercury amalgam capacity)",
-        "severity": "medium"
-      },
-      {
-        "description": "NT vertical stability is intrinsically worse than PT and degrades at higher poloidal beta — passive stabilizer plate infrastructure absent from MANTA cost accounting; reactor-scale validation gap remains",
-        "severity": "medium"
-      },
-      {
-        "description": "Tritium fuel cycle TRL 3–4 — kg/day-scale closed-loop breeding from FLiBe never demonstrated; MANTA acknowledges 'a fully functioning tritium fuel cycle has yet to be developed or tested'",
-        "severity": "medium"
-      },
-      {
-        "description": "Capacity factor uncertainty — MANTA pilot at 37%, model assumes 80% commercial; LCOE elasticity to availability is -0.97 (largest engineering sensitivity)",
-        "severity": "medium"
-      },
-      {
-        "description": "PF2 coil lifetime (~890 MW·yr ≈ 2 full-power-years) sets demanding maintenance cycle requiring radiation-hardened remote handling not yet demonstrated at scale",
-        "severity": "medium"
-      },
-      {
-        "description": "Tritium global inventory ~25–30 kg declining at 5.5%/year from CANDU byproduction — startup inventory ~440g per plant creates fleet-deployment sequencing constraint shared with all D-T concepts",
-        "severity": "low"
-      }
-    ]
-  },
+  "narrative": null,
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/29-negative-triangularity-tokamak/model_setup.py",
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/29-negative-triangularity-tokamak/analysis.md"
-  }
+  },
+  "analyst_override_count": 4,
+  "asterisk_in_comparison": false
 }

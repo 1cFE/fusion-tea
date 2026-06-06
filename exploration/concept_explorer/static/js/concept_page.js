@@ -161,6 +161,64 @@
   }
 
   // ---------------------------------------------------------------------------
+  // Analyst-override toggle (Phase 3)
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Mount the "Apply analyst cost adjustments" toggle into the hero block.
+   * Idempotent — replaces any prior toggle. The "(N entries)" count is inert
+   * low-emphasis text (Item 2 makes it a clickable inspection trigger). When
+   * `disabled` (empty registry), the checkbox is non-interactive with hover
+   * text. Freeform concepts never call this (INV-5).
+   *
+   * @param {HTMLElement} heroEl
+   * @param {Object} opts
+   * @param {number} opts.count       enabled override count (drives the chip)
+   * @param {boolean} opts.checked    initial state (default-on)
+   * @param {boolean} opts.disabled   true when count === 0
+   * @param {Function} opts.onChange  (checked: boolean) => void
+   */
+  function mountOverrideToggle(heroEl, { count, checked, disabled, onChange }) {
+    const prior = heroEl.querySelector(".override-toggle");
+    if (prior) prior.remove();
+
+    const wrap = el("div", "override-toggle");
+    if (disabled) wrap.classList.add("override-toggle--disabled");
+
+    const label = el("label", "override-toggle__label");
+    if (disabled) {
+      label.title =
+        "No analyst cost adjustments for this concept — nothing to apply or remove.";
+    }
+
+    const cb = document.createElement("input");
+    cb.type = "checkbox";
+    cb.className = "override-toggle__checkbox";
+    cb.checked = checked && !disabled;
+    cb.disabled = disabled;
+    cb.addEventListener("change", () => {
+      if (typeof onChange === "function") onChange(cb.checked);
+    });
+    label.appendChild(cb);
+
+    label.appendChild(el("span", "override-toggle__text", "Apply analyst cost adjustments"));
+    const entries = count === 1 ? "1 entry" : `${count} entries`;
+    label.appendChild(el("span", "override-toggle__count", `(${entries})`));
+    wrap.appendChild(label);
+
+    wrap.appendChild(
+      el(
+        "p",
+        "override-toggle__subtitle",
+        "On: the analyst's accountable cost story. " +
+          "Off: the costing library's bare answer for this architecture.",
+      ),
+    );
+
+    heroEl.appendChild(wrap);
+  }
+
+  // ---------------------------------------------------------------------------
   // Narrative sections
   // ---------------------------------------------------------------------------
 
@@ -314,13 +372,22 @@
     document.title = `${concept.name} — Fusion TEA`;
 
     // ---- Hero ----
-    renderHero(document.getElementById("hero"), concept);
+    const heroEl = document.getElementById("hero");
+    renderHero(heroEl, concept);
 
     // ---- Sticky headline ----
-    // Capture the extraction-time headline as the baseline for delta calculations.
-    // Subsequent updates come from /api/compute responses on slider drag.
+    // The "mode baseline" is the current LCOE function's headline with sliders at
+    // baseline: the extraction-time analyst-applied headline on load, and the
+    // toggle's compute response after an analyst-overrides mode switch (Phase 3,
+    // INV-2). Slider deltas and Reset are measured against it, so toggling the
+    // mode never leaves a phantom delta on the headline.
     const stickyEl = document.getElementById("sticky-headline");
-    const baselineHeadline = concept.cost_model?.headline ?? null;
+    let modeBaselineHeadline = concept.cost_model?.headline ?? null;
+    let modeBaselineCostModel = concept.cost_model ?? null;
+    // Toggle state (Phase 3, FR-SO5). Default on → analyst-applied LCOE drives
+    // headline + sliders + tornado; this is what makes the loaded headline match
+    // the stored value (FR-SO1). Rides every /api/compute call.
+    let applyOverrides = true;
     let tornadoHandle = null; // captured below when renderTornado runs (used by Reset)
     const isCostingfeForSticky =
       concept.sources && concept.sources.model_setup != null;
@@ -330,7 +397,7 @@
       && concept.cost_model?.sensitivities != null;
     renderStickyHeadline(stickyEl, {
       concept,
-      headline: baselineHeadline,
+      headline: modeBaselineHeadline,
       hasSliders: hasSlidersForSticky,
       // Reset puts the UI back into the page-load state (sliders at baseline,
       // sticky bar showing the extraction-time headline with no delta, CAS
@@ -341,14 +408,15 @@
         if (tornadoHandle && typeof tornadoHandle.reset === "function") {
           tornadoHandle.reset();
         }
-        updateStickyHeadline(stickyEl, baselineHeadline, baselineHeadline);
+        updateStickyHeadline(stickyEl, modeBaselineHeadline, modeBaselineHeadline);
         setResetEnabled(stickyEl, false);
-        // Revert the CAS breakdown to the extraction-time cost model.
+        // Revert the CAS breakdown to the current mode's baseline cost model
+        // (extraction-time applied model, or the bare model after a toggle).
         const casMountForReset = document.getElementById("cas-mount");
-        if (casMountForReset && concept.cost_model) {
+        if (casMountForReset && modeBaselineCostModel) {
           renderCASBreakdown(casMountForReset, {
-            cas: _casToPlain(concept.cost_model),
-            cas22_detail: concept.cost_model.cas22_detail || {},
+            cas: _casToPlain(modeBaselineCostModel),
+            cas22_detail: modeBaselineCostModel.cas22_detail || {},
           });
         }
         // Clear the "N CHANGED" pill on the Sensitivity header.
@@ -420,9 +488,24 @@
         }
       }
 
+      // Which precomputed sensitivity set the tornado describes — applied
+      // (default) vs library-bare — selected by the toggle (INV-2). Falls back
+      // to applied when no bare set was emitted (e.g. empty registry → equal).
+      function _selectedSensitivities() {
+        if (!concept.cost_model) return null;
+        if (applyOverrides) return concept.cost_model.sensitivities ?? null;
+        return (
+          concept.cost_model.sensitivities_bare
+          ?? concept.cost_model.sensitivities
+          ?? null
+        );
+      }
+
       // Compute callback: tornado.js fires this debounced with the current
       // overrides map after a slider drag (and once per Reset, with all values
-      // back at baseline). Updates the sticky headline + CAS breakdown.
+      // back at baseline). Updates the sticky headline + CAS breakdown. The
+      // recompute uses whichever LCOE function the toggle selects, measured
+      // against the current mode's baseline.
       async function onSliderChange(overrides) {
         if (computeErrorEl) computeErrorEl.style.display = "none";
         if (headlineLoadingEl) headlineLoadingEl.style.display = "";
@@ -434,14 +517,18 @@
           const resp = await fetch("/api/compute", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ concept_id: conceptId, overrides }),
+            body: JSON.stringify({
+              concept_id: conceptId,
+              overrides,
+              apply_analyst_overrides: applyOverrides,
+            }),
           });
           if (!resp.ok) {
             const detail = await resp.json().catch(() => ({ detail: `HTTP ${resp.status}` }));
             throw new Error(detail.detail || `HTTP ${resp.status}`);
           }
           const newCostModel = await resp.json();
-          updateStickyHeadline(stickyEl, newCostModel.headline, baselineHeadline);
+          updateStickyHeadline(stickyEl, newCostModel.headline, modeBaselineHeadline);
           renderCASBreakdown(casMount, {
             cas: _casToPlain(newCostModel),
             cas22_detail: newCostModel.cas22_detail || {},
@@ -458,34 +545,39 @@
         }
       }
 
-      tornadoHandle = renderTornado(tornadoMount, {
-        sensitivities: concept.cost_model.sensitivities,
-        parameterMetadata: concept.parameter_metadata || {},
-        // ParameterIndex provides per-parameter cross-concept elasticities for whiskers.
-        populationContext: parameterIndex,
-        topN: 15,
-        onParameterClick: async (paramName, meta) => {
-          let crossConceptData = null;
-          try {
-            const resp = await fetch(`/api/parameters/${encodeURIComponent(paramName)}`);
-            if (resp.ok) crossConceptData = await resp.json();
-          } catch (e) {
-            console.warn("[concept_page] parameter fetch failed:", e);
-          }
-          // showParameterCard is defined in parameter_card.js
-          showParameterCard(tornadoMount, {
-            paramName,
-            sensitivity: concept.cost_model.sensitivities
-              ? (concept.cost_model.sensitivities.engineering[paramName]
-                 || concept.cost_model.sensitivities.financial[paramName]
-                 || null)
-              : null,
-            metadata: meta,
-            crossConceptData,
-          });
-        },
-        onSliderChange: hasSlidersForSticky ? onSliderChange : null,
-      });
+      // (Re)render the tornado from the toggle-selected sensitivity set. Re-call
+      // rebuilds it from scratch with sliders at baseline — exactly the
+      // mode-switch semantics (Decision A). Reassigns the Reset-button handle.
+      function renderTornadoForMode() {
+        tornadoHandle = renderTornado(tornadoMount, {
+          sensitivities: _selectedSensitivities(),
+          parameterMetadata: concept.parameter_metadata || {},
+          // ParameterIndex provides per-parameter cross-concept elasticities for whiskers.
+          populationContext: parameterIndex,
+          topN: 15,
+          onParameterClick: async (paramName, meta) => {
+            let crossConceptData = null;
+            try {
+              const resp = await fetch(`/api/parameters/${encodeURIComponent(paramName)}`);
+              if (resp.ok) crossConceptData = await resp.json();
+            } catch (e) {
+              console.warn("[concept_page] parameter fetch failed:", e);
+            }
+            const sel = _selectedSensitivities();
+            // showParameterCard is defined in parameter_card.js
+            showParameterCard(tornadoMount, {
+              paramName,
+              sensitivity: sel
+                ? (sel.engineering[paramName] || sel.financial[paramName] || null)
+                : null,
+              metadata: meta,
+              crossConceptData,
+            });
+          },
+          onSliderChange: hasSlidersForSticky ? onSliderChange : null,
+        });
+      }
+      renderTornadoForMode();
 
       // CAS breakdown
       casSectionEl.style.display = "";
@@ -493,6 +585,66 @@
         cas: _casToPlain(concept.cost_model),
         cas22_detail: concept.cost_model.cas22_detail || {},
       });
+
+      // Mode switch: one compute call (new headline + CAS) plus a client-side
+      // tornado re-render, applied together in this single handler so no surface
+      // is briefly out of sync (INV-2). Sliders return to baseline (Decision A).
+      async function onModeSwitch() {
+        if (computeErrorEl) computeErrorEl.style.display = "none";
+        if (headlineLoadingEl) headlineLoadingEl.style.display = "";
+        try {
+          const resp = await fetch("/api/compute", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              concept_id: conceptId,
+              overrides: {},
+              apply_analyst_overrides: applyOverrides,
+            }),
+          });
+          if (!resp.ok) {
+            const detail = await resp.json().catch(() => ({ detail: `HTTP ${resp.status}` }));
+            throw new Error(detail.detail || `HTTP ${resp.status}`);
+          }
+          const newCostModel = await resp.json();
+          // New mode baseline; all three surfaces follow it atomically.
+          modeBaselineHeadline = newCostModel.headline;
+          modeBaselineCostModel = newCostModel;
+          updateStickyHeadline(stickyEl, newCostModel.headline, modeBaselineHeadline);
+          renderCASBreakdown(casMount, {
+            cas: _casToPlain(newCostModel),
+            cas22_detail: newCostModel.cas22_detail || {},
+          });
+          renderTornadoForMode();
+          setResetEnabled(stickyEl, false);
+          _updateSensitivityHint({});
+          postState(conceptId, {}, []);
+        } catch (err) {
+          console.error("[concept_page] mode switch failed:", err);
+          if (computeErrorEl) {
+            computeErrorEl.textContent = `Compute error: ${err.message}`;
+            computeErrorEl.style.display = "";
+          }
+        } finally {
+          if (headlineLoadingEl) headlineLoadingEl.style.display = "none";
+        }
+      }
+
+      // Override toggle (FR-SO6 / INV-5): only for costingfe-backed concepts
+      // (model_setup present). Active when the registry is non-empty; disabled
+      // (with hover text) when empty. Freeform concepts (model_setup null) get
+      // no toggle at all.
+      if (isCostingfeForSticky) {
+        mountOverrideToggle(heroEl, {
+          count: concept.analyst_override_count || 0,
+          checked: applyOverrides,
+          disabled: (concept.analyst_override_count || 0) === 0,
+          onChange: (checked) => {
+            applyOverrides = checked;
+            onModeSwitch();
+          },
+        });
+      }
     }
 
     // ---- Wire collapsibles + initial hint text ----

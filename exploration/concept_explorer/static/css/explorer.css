@@ -760,6 +760,63 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
+   Analyst-override toggle (hero block)
+   -------------------------------------------------------------------------- */
+
+.override-toggle {
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-surface-1);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  max-width: 560px;
+}
+
+.override-toggle__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.override-toggle__checkbox {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--color-key-innovation);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* The count chip is inert label text, not a button (Item 2 upgrades it). */
+.override-toggle__count {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.override-toggle__subtitle {
+  margin-top: var(--space-1);
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  line-height: 1.45;
+}
+
+.override-toggle--disabled .override-toggle__label,
+.override-toggle--disabled .override-toggle__checkbox {
+  cursor: not-allowed;
+  color: var(--color-text-muted);
+}
+
+.override-toggle--disabled {
+  opacity: 0.65;
+}
+
+/* --------------------------------------------------------------------------
    Narrative Sections
    -------------------------------------------------------------------------- */
 

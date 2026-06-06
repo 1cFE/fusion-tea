@@ -24,6 +24,7 @@ Prioritized list of epics and features.
 | Pipeline Hardening (ad-hoc) | P0 | **Complete 2026-04-11** | 2026-04-05 | 6 items archived (pipeline-hardening, output-validation-retry, concept-landscape-context, orig-md-research, feedback-routing-fix, explorer-merge). Analysis pipeline now safe for batch runs. |
 | Ontology v3 Migration | P0 | In Progress | 2026-05-17 | 6 items, ~5.5–8d. Item 1 complete (PR #15 merged 2026-05-17). Next: Item 2 — branch off `main`, merge `fix/concept-renumbering-robustness`. File: `epic_ontology_v3_migration.md`. |
 | Concept-Analysis Pipeline Rework | P0 | Draft | 2026-05-30 | 11 items (~10–14d) + 1 aspirational Phase 3. Phase 0 throwaway probes (prototype + stability + critic acuity) before plumbing. Two-layer split, two-knob 1 GWe NOAK replication floor + aspirational native-scale supplement, override registry, standalone `model_critic`. File: `epic_concept_analysis_rework.md`. |
+| Explorer UX v3 — Provenance & Coherence | P1 | Draft | 2026-06-06 | Phase 1 (2 items, ~3–3.5d): slider/tornado/headline coherence (option c toggle) → override-inspection surface. J2/J3 "why is this number, can I trust it?" spine. Later phases (per-account decomposition, family/comparables, landing reframe, maturity panel) not yet decomposed. File: `epic_explorer_ux_v3.md`. Research: `.project/research/20260605-150329_concept-explorer-ux-user-journeys.md`. |
 
 ---
 

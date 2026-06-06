@@ -1,5 +1,22 @@
 # Concept Explorer — Technical Reference
 
+## TL;DR — Commands
+
+All commands run from the repo root.
+
+```bash
+# Extract ALL concepts (with LLM narrative — requires the `claude` CLI)
+uv run python exploration/concept_explorer/extract_explorer_data.py
+
+# Extract SPECIFIC concepts (--skip-narrative needs no claude CLI)
+uv run python exploration/concept_explorer/extract_explorer_data.py --skip-narrative --concept 04 05 06 08
+
+# Launch the explorer (serves http://localhost:8421)
+uv run python exploration/concept_explorer/server.py
+```
+
+See [§8 Running It](#8-running-it) for tests, custom ports, and prerequisites.
+
 ## 1. System Overview
 
 The Concept Explorer is a server-rendered web application for inspecting, comparing, and building intuition about the economics of fusion energy concepts. It transforms the raw output of the concept analysis pipeline (thousands of lines of markdown, model code, and tables) into interactive profiles with sensitivity visualizations, cost breakdowns, and cross-concept comparison.
@@ -336,6 +353,19 @@ The `lifespan` context manager (`server.py:250`):
 3. Loads the concept's `model_setup.py` via `_load_model_module()` (`server.py:74`)
 4. `_forward_with_overrides()` (`server.py:90`) extracts named args for `model.forward()` (the 8 params in `_FORWARD_NAMED` at `server.py:58`), passes remaining params as `**kwargs`, skips `fuel` and `concept` (`server.py:71`)
 5. Baseline sensitivities are preserved from stored concept data — **never recomputed** on slider change (`server.py:359`)
+
+### Analyst-override semantics (`apply_analyst_overrides`)
+
+Every costingfe concept has **two** LCOE functions: *library-bare* (the costing framework's answer for this architecture) and *analyst-applied* (bare with the concept's override registry re-applied). The `apply_analyst_overrides` flag on `ComputeRequest` (default `True`) selects which one the slider recompute, the headline, and the tornado all describe — the toggle in the hero block flips it. They are always sourced from the *same* function at any instant (no mixed state).
+
+- **On (default):** `_compute_cached` re-applies `enabled_overrides(module.overrides)` with `override_reference_mw=module.P_native`, mirroring `run_native_and_1gw`, so a no-op recompute reproduces the stored headline (no phantom discontinuity on first slider touch).
+- **Off:** the registry is dropped; the recompute is the library-bare LCOE.
+- The flag is part of the `_compute_cached` LRU key, so cache hits stay correct across toggle states.
+- **Tornado:** the extractor precomputes **both** `sensitivities` (applied — the stored default) and `sensitivities_bare`; the frontend swaps between them client-side on toggle, no server round-trip.
+- **Parameter-index semantics:** because the stored `sensitivities` is now the *applied* one, `/api/parameter_index` indexes applied elasticities (consistent with the headline). This is an intended, observable change from the pre-toggle behavior.
+- Toggling resets sliders to baseline (treated as a mode switch); preserving drag positions across a toggle is deferred.
+
+The override *registry inspection* surface (per-entry account/value/provenance/source/rationale) is a separate work item; this item renders only the inert `(N entries)` count.
 
 ### Explorer State API
 
