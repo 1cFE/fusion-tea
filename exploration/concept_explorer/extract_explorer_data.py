@@ -49,6 +49,7 @@ from exploration.concept_explorer.models import (  # noqa: E402, I001
     ConceptStatus,
     ConfinementFamily,
     NarrativeData,
+    OverrideRecord,
     ParameterCategory,
     ParameterMetadata,
     SensitivityAnalysis,
@@ -56,6 +57,46 @@ from exploration.concept_explorer.models import (  # noqa: E402, I001
     SourcePaths,
     load_omit_list,
 )
+
+
+def _resolve_account_name(account: str) -> str:
+    """Resolve a CAS account code to its human-readable name.
+
+    Single source of names = the CAS_NAMES / CAS22_NAMES maps on CostModelData.
+    Override codes are authored as upper/``C…`` (e.g. "CAS27", "C220103") while
+    the top-level map keys are lowercase, so try the CAS22 map first, then the
+    case-normalized top-level map, then fall back to the bare code (visible, not
+    blank — an unknown code should surface, not vanish).
+    """
+    if account in CostModelData.CAS22_NAMES:
+        return CostModelData.CAS22_NAMES[account]
+    return CostModelData.CAS_NAMES.get(account.lower(), account)
+
+
+def _build_override_records(overrides: list[dict[str, Any]]) -> list[OverrideRecord]:
+    """Project a concept's raw ``overrides`` list into OverrideRecord payload.
+
+    Carries every entry (enabled and disabled) so the inspection panel can show
+    not-applied entries too (FR-5). A genuinely-absent narrative field becomes
+    ``None`` (panel renders "not recorded", FR-6) rather than "".
+    """
+    records: list[OverrideRecord] = []
+    for o in overrides:
+        account = str(o["account"])
+        records.append(
+            OverrideRecord(
+                account=account,
+                account_name=_resolve_account_name(account),
+                value=float(o["value"]),
+                enabled=bool(o["enabled"]),
+                provenance=o.get("provenance"),
+                source=o.get("source"),
+                rationale=o.get("rationale"),
+                cost_basis=o.get("cost_basis"),
+                blocked_by=o.get("blocked_by"),
+            )
+        )
+    return records
 
 
 def _derive_enabled_overrides() -> Any:
@@ -377,7 +418,9 @@ def extract_costingfe(
     # (INV-6). The param *keys* are identical across both (cost_overrides changes
     # elasticity values, not which continuous params exist), so metadata generated
     # from the applied set covers the bare set too.
-    enabled = _enabled_overrides(getattr(module, "overrides", []) or [])
+    raw_overrides = getattr(module, "overrides", []) or []
+    enabled = _enabled_overrides(raw_overrides)
+    override_records = _build_override_records(raw_overrides)
     sensitivities = build_sensitivity_analysis(model, effective_result, cost_overrides=enabled)
     sensitivities_bare = build_sensitivity_analysis(model, effective_result, cost_overrides=None)
     # Three-layer merge (later wins):
@@ -424,6 +467,7 @@ def extract_costingfe(
             ),
             asterisk_in_comparison=(comparison_status == "costingfe-asterisked"),
             analyst_override_count=len(enabled),
+            overrides=override_records,
         )
 
     for w in caught:

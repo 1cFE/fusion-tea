@@ -1316,5 +1316,40 @@
     "analysis": null
   },
   "analyst_override_count": 0,
+  "overrides": [
+    {
+      "account": "C220103",
+      "account_name": "Magnets / Coils",
+      "value": 386.86895751953125,
+      "enabled": false,
+      "provenance": "derived",
+      "source": "helias-reactor-context.md §8",
+      "rationale": "HELIAS HSR4/18 study claims 'costs of the magnet system certainly far below those of an ITER-type tokamak reactor' due to NbTi at 1.8 K with 400 km total length and 700 t weight. However, this is invalidated for GIGA: (a) 12-13 T peak field requires Nb3Sn or HTS, not NbTi; (b) demountable joints add cost (~250 per coil × 40 coils); (c) 35,000 t total coil system mass vs HELIAS 4,100 t coils + 10,000 t supports suggests GIGA is larger/heavier. Enabled=false because the HELIAS cost claim does not apply to GIGA's higher-field demountable design. If future data confirms cost parity or advantage vs tokamaks despite these changes, re-enable with updated derivation. The 0.60 factor is the HSR4/18 claim that stellarator coils cost 60% of ITER-class tokamak coils for same plasma volume.",
+      "cost_basis": "noak",
+      "blocked_by": "1cFE/1costingfe#100"
+    },
+    {
+      "account": "C220108",
+      "account_name": "Divertor / Target Factory",
+      "value": 0.0,
+      "enabled": false,
+      "provenance": "derived",
+      "source": "helias-reactor-context.md §7; gauss-fusion-technical-summary.md",
+      "rationale": "Stellarators do not have a separable divertor in the tokamak sense — the island divertor concept (W7-X) integrates heat exhaust into the last closed flux surface geometry. HELIAS studies flag divertor heat flux >10 MW/m² as 'a critical issue,' but no discrete divertor component or cost estimate exists. GIGA's divertor architecture is not disclosed. Enabled=false because (a) uncertainty whether GIGA uses island divertor, discrete divertor target plates, or another concept; (b) heat exhaust may be embedded in first-wall/blanket cost (C220101) rather than separate CAS account. If future data shows a tokamak-like discrete divertor with cost estimate, re-enable with that value. The zero value reflects 'no separable divertor component' not 'divertor is free.'",
+      "cost_basis": "noak",
+      "blocked_by": "1cFE/1costingfe#101"
+    },
+    {
+      "account": "CAS70",
+      "account_name": "O&M Costs (annualised)",
+      "value": 403.70501708984375,
+      "enabled": false,
+      "provenance": "derived",
+      "source": "helias-reactor-context.md §8; helias-blanket-studies.md",
+      "rationale": "Stellarator blanket has 'large number of different blanket segments' vs tokamak's 2 shapes (inboard/outboard). Maintenance via 32 portholes (8 per field period, 2×6 m² each) vs tokamak's fewer, larger ports. Remote handling for 3D geometry is more complex. However, stellarator avoids disruptions (no sudden mechanical loading on PFCs), and HELIAS studies claim 9-year blanket life vs DEMO tokamak's 2.3 years — longer component life reduces replacement frequency. The 1.15 factor assumes geometric complexity adds 15% to maintenance labor, but this is speculative. Enabled=false because (a) no Gauss Fusion O&M estimate exists; (b) complexity penalty vs component lifetime benefit may cancel; (c) disruption avoidance may reduce unplanned maintenance. If CDR provides O&M cost estimate or detailed maintenance schedule, re-enable with that data.",
+      "cost_basis": "noak",
+      "blocked_by": "1cFE/1costingfe#102"
+    }
+  ],
   "asterisk_in_comparison": false
 }

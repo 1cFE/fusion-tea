@@ -20,7 +20,7 @@
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 27593.6953125,
+      "cost_m_usd": 27593.69140625,
       "overridden": false
     },
     "cas23": {
@@ -60,7 +60,7 @@
     },
     "cas30": {
       "name": "Indirect Costs",
-      "cost_m_usd": 5768.11328125,
+      "cost_m_usd": 5768.11279296875,
       "overridden": false
     },
     "cas40": {
@@ -70,12 +70,12 @@
     },
     "cas50": {
       "name": "Supplementary Costs",
-      "cost_m_usd": 1285.311279296875,
+      "cost_m_usd": 1285.3111572265625,
       "overridden": false
     },
     "cas60": {
       "name": "Interest During Construction",
-      "cost_m_usd": 6904.8486328125,
+      "cost_m_usd": 6904.84814453125,
       "overridden": false
     },
     "cas70": {
@@ -90,7 +90,7 @@
     },
     "cas90": {
       "name": "Financial Costs",
-      "cost_m_usd": 3212.442626953125,
+      "cost_m_usd": 3212.4423828125,
       "overridden": false
     },
     "cas22_detail": {
@@ -186,8 +186,8 @@
       }
     },
     "headline": {
-      "lcoe_per_mwh": 495.5858154296875,
-      "overnight_cost_per_kw": 42827.34375,
+      "lcoe_per_mwh": 495.5857849121094,
+      "overnight_cost_per_kw": 42827.33984375,
       "p_net_mw": 90.90910339355469,
       "q_eng": 1.764790415763855,
       "capacity_factor": 0.85
@@ -1545,5 +1545,51 @@
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/29-negative-triangularity-tokamak/analysis.md"
   },
   "analyst_override_count": 4,
+  "overrides": [
+    {
+      "account": "C220103",
+      "account_name": "Magnets / Coils",
+      "value": 1500.0,
+      "enabled": true,
+      "provenance": "direct",
+      "source": "manta-reference-design.md §7.1, Table C1",
+      "rationale": "MANTA publishes TF coil cost at $1,500M for 18 demountable REBCO HTS coils. Breakdown: REBCO tape at $40/kA·m, Inconel 718 structure, 5× fabrication factor for superconducting components. Library default is geometry-based and may not capture demountable joint costs or window-pane coil geometry.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220108",
+      "account_name": "Divertor / Target Factory",
+      "value": 150.0,
+      "enabled": true,
+      "provenance": "direct",
+      "source": "manta-reference-design.md §7.1, Table C1",
+      "rationale": "MANTA publishes divertor cost at $150M for double-null tungsten monoblock design. NT-specific geometry and reduced heat load (P_SOL = 23.5 MW vs. ~80 MW for conventional tokamaks) may reduce replacement frequency, but capital cost is explicitly stated.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "CAS27",
+      "account_name": "Special Materials",
+      "value": 28.6,
+      "enabled": true,
+      "provenance": "direct",
+      "source": "manta-reference-design.md §7.1, Table C4, Table 6",
+      "rationale": "MANTA FLiBe blanket: 169 t × $169/kg = $28.6M (rounded from $28.561M). Library default uses solid breeder unit costs inappropriate for liquid immersion blanket. This is material-only cost; fabrication/structure in C220101.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "CAS70",
+      "account_name": "O&M Costs (annualised)",
+      "value": 34.12730026245117,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "manta-reference-design.md §7.2, Table C5",
+      "rationale": "MANTA assumes ~1 person/MWe staffing at $150k/employee-year = ~$15M/yr for 90 MWe plant. This is ~30% lower than library default staffing assumptions for tokamaks. Relative override: 70% of library CAS70.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    }
+  ],
   "asterisk_in_comparison": false
 }

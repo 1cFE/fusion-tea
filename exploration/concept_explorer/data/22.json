@@ -20,7 +20,7 @@
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 2679.390380859375,
+      "cost_m_usd": 2679.390625,
       "overridden": false
     },
     "cas23": {
@@ -60,7 +60,7 @@
     },
     "cas30": {
       "name": "Indirect Costs",
-      "cost_m_usd": 710.4635620117188,
+      "cost_m_usd": 710.463623046875,
       "overridden": false
     },
     "cas40": {
@@ -70,12 +70,12 @@
     },
     "cas50": {
       "name": "Supplementary Costs",
-      "cost_m_usd": 195.4951934814453,
+      "cost_m_usd": 195.49520874023438,
       "overridden": false
     },
     "cas60": {
       "name": "Interest During Construction",
-      "cost_m_usd": 863.0386352539062,
+      "cost_m_usd": 863.0386962890625,
       "overridden": false
     },
     "cas70": {
@@ -90,7 +90,7 @@
     },
     "cas90": {
       "name": "Financial Costs",
-      "cost_m_usd": 401.5239562988281,
+      "cost_m_usd": 401.52398681640625,
       "overridden": false
     },
     "cas22_detail": {
@@ -187,7 +187,7 @@
     },
     "headline": {
       "lcoe_per_mwh": 66.8423843383789,
-      "overnight_cost_per_kw": 5353.0009765625,
+      "overnight_cost_per_kw": 5353.00146484375,
       "p_net_mw": 142.8571319580078,
       "q_eng": 3.999999761581421,
       "capacity_factor": 0.85
@@ -1014,5 +1014,84 @@
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/22-projectile-icf/analysis.md"
   },
   "analyst_override_count": 6,
+  "overrides": [
+    {
+      "account": "C220101",
+      "account_name": "First Wall & Blanket",
+      "value": 64.75199890136719,
+      "enabled": false,
+      "provenance": "derived",
+      "source": "dossier.md §Neutron Management; prnewswire-news-releases-first-light-achieves-world-first.md §A key step",
+      "rationale": "Library default ($64.8M) prices a solid blanket with neutron multiplier. First Light uses flowing liquid lithium curtains serving as blanket, shield, and first wall simultaneously — structurally different. The curtain cost is better captured by the lithium inventory (CAS27 = $70M) plus the EM pump system (C220200). No company-published dollar figure for blanket alone. Disabled: structural mismatch acknowledged but no quantitative correction derivable without double-counting CAS27.",
+      "cost_basis": "noak",
+      "blocked_by": "1cFE/fusion-tea#46"
+    },
+    {
+      "account": "C220102",
+      "account_name": "Radiation Shield",
+      "value": 6.7820587158203125,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "dossier.md §Neutron Management; prnewswire-news-releases-first-light-achieves-world-first.md §A key step",
+      "rationale": "Library default ($45.2M) prices a dedicated solid radiation shield behind the blanket. First Light claims neutrons never reach the vessel wall due to 1-meter-thick lithium curtains. No separate shield structure is described. 15% of generic ($6.8M) retained for biological shielding of penetrations (projectile entry port, target injection, diagnostics) and secondary radiation paths not covered by the lithium curtain. Zero would under-price penetration shielding; the full default is structurally inapplicable.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220104",
+      "account_name": "Heating & Driver Systems",
+      "value": 200.0,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "pmc-articles-pmc7658748.md §2. Model; ipgroupplc-news-and-events-portfolio-news-2025-2025-09-19/output.md §Cost comparisons estimates",
+      "rationale": "Hawker (2020) published Machine 3 driver cost at $1.7/J stored. IP Group (2025) published FLARE demo at $2/J stored. Pilot design specifies 100 MJ stored energy (Machine 4 target). 100 MJ x $2/J = $200M. Used $2/J as the more conservative (later, rep-rated) estimate. This is the electromagnetic gun + capacitor bank + power supply cost. Library IFE driver default (heavy-ion accelerator at $12M/MW) is inapplicable to EM gun.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220107",
+      "account_name": "Power Conditioning & Energy Storage",
+      "value": 0.0,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "ipgroupplc-news-and-events-portfolio-news-2025-2025-09-19/output.md §Cost comparisons estimates",
+      "rationale": "The EM gun driver cost ($2/J for 100 MJ = $200M) already includes the capacitor bank as an integral part of the electromagnetic launcher system. Unlike laser IFE where the bank charges the laser and the laser is a separate cost item, here the bank IS the driver's energy store. Setting to zero avoids double-counting.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220108",
+      "account_name": "Divertor / Target Factory",
+      "value": 5.6,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "pmc-articles-pmc7658748.md §2. Model; prnewswire-news-releases-first-light-achieves-world-first.md §A consumables business model",
+      "rationale": "VIABILITY CEILING, not a cost estimate. No published target cost exists. Hawker (2020) establishes that target cost must be <10% of electricity revenue for economic viability. At 150 MWe, 85% CF, $50/MWh LCOE target: Annual revenue = 150,000 x 8760 x 0.85 x $50/1000 = $55.8M. 10% ceiling = $5.58M/year annualized target factory + consumables cost. At 0.033 Hz x 8760 x 3600 x 0.85 = 0.99M shots/year. Max target cost = $5.58M / 0.99M = ~$5.6/target. Value represents the annualized target-factory viability ceiling in $M/year. Library default ($79.1M for high-rep-rate IFE target factory) is inapplicable at 1M/year volume. Actual cost is unknown — the model carries the value as a placeholder replacing a clearly wrong default, not as an engineering estimate.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220110",
+      "account_name": "Remote Handling & Maintenance Equipment",
+      "value": 10.06230640411377,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "dossier.md §Neutron Management; prnewswire-news-releases-first-light-achieves-world-first.md §A key step",
+      "rationale": "Library default ($33.5M) prices remote handling for periodic blanket and first-wall replacement. First Light's liquid lithium curtain eliminates solid in-vessel component replacement ('lifetime-of-plant vessel'). Remaining RH scope: projectile gun access, target injection systems, lithium loop maintenance, diagnostic equipment. 30% of generic ($10.1M) is an analogue estimate — ~70% of conventional RH cost is driven by blanket/first-wall change-out (tokamak cost studies), leaving ~30% for other in-vessel and ex-vessel handling needs.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "CAS27",
+      "account_name": "Special Materials",
+      "value": 70.0,
+      "enabled": true,
+      "provenance": "direct",
+      "source": "ipgroupplc-news-and-events-portfolio-news-2025-2025-09-19/output.md §Cost comparisons estimates",
+      "rationale": "IP Group press release directly states 'Natural lithium per reactor: $70M' in the cost comparison table. This represents the initial lithium inventory for the reactor chamber. Compares to '$143M-$451M for enriched lithium alternatives.' First Light uses natural lithium (no enrichment needed due to TBR 1.8 with natural Li). Library default for special materials does not account for the large liquid-metal inventory unique to this architecture.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    }
+  ],
   "asterisk_in_comparison": true
 }

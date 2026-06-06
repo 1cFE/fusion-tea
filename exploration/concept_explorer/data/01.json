@@ -20,7 +20,7 @@
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 8035.3603515625,
+      "cost_m_usd": 8035.35986328125,
       "overridden": false
     },
     "cas23": {
@@ -1545,5 +1545,29 @@
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/01-hts-compact-tokamak/analysis.md"
   },
   "analyst_override_count": 1,
+  "overrides": [
+    {
+      "account": "C220103",
+      "account_name": "Magnets / Coils",
+      "value": 1030.0,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "arc-reactor-specifications.md §6 Table 11 (Sorbom et al. 2015) + documented FOAK→NOAK learning-curve adjustment (REBCO mass production + structural-fab mass manufacturing, anchored against CFS SPARC TF system targets)",
+      "rationale": "Sorbom et al. 2015 Table 11 reports a fabricated 'Magnet/structure' subtotal of $5.1B-$5.2B (midpoint $5,150M) in FY2014 dollars, built up from 5,730 km REBCO tape at $36-$198/m (= $206M-$1,134M materials) plus 5,670 tonnes SS316LN structure at $1.06M/tonne fabricated. This is a vintage-unspecified academic conceptual-design cost (Sorbom averages four pre-2010 paper reactors FIRE/BPX/PCASTS/ARIES-RS with no learning curve applied), NOT a NOAK estimate as published. The framework runs noak=True and F8 requires the analyst to take a position rather than transcribe vintage-unspecified values verbatim.\n\nFOAK->NOAK adjustment derivation:\n  (a) CPI escalation FY2014 -> FY2024: x 1.26 -> $6,489M (constant 2024 USD)\n  (b) REBCO tape NOAK learning: x 0.4 (60% reduction). Sorbom's $36-$198/m       assumed 2014 prices; current spot is $30-$80/m (2026 USD) and       mass-production NOAK projections are $10-$30/m (CFS, Faraday       Factory, Shanghai Superconductors public targets)\n  (c) Structural fab mass manufacturing: x 0.5 (50% reduction at 10x       cumulative scale). Industry SC-magnet learning curves for       stainless casing + winding + cryostat assembly\n  (d) Integration/commissioning learning: x 0.9 (modest, mostly       software + procurement automation gains)\nCombined: $6,489M x (0.4 x 0.5 x 0.9) = $6,489M x 0.18 ~= $1,170M\nRounded to $1,030M (slightly conservative within the calculated range).\n\nSanity check: CFS's published SPARC TF coil program targets ~$200-300M per TFMC; ARC has 18 TF coils plus the central solenoid and PF system, implying full magnet system cost in the $500M-$1.5B NOAK range. $1,030M sits at the midpoint, consistent with CFS's own published projections for an ARC-class machine.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "CAS27",
+      "account_name": "Special Materials",
+      "value": 183.0,
+      "enabled": false,
+      "provenance": "derived",
+      "source": "arc-reactor-specifications.md §6, Table 10",
+      "rationale": "FLiBe inventory: 1,190 tonnes at $154/kg (Sorbom et al. 2015, FY2014 dollars) = $183M material cost. Sorbom notes 'Since the TiH₂ is in powder form and the FLiBe is liquid, the fabricated cost for components made from these materials was set equal to the material cost,' so fabricated cost is also ~$183M. However, this is a FOAK estimate. CPI adjustment to 2024: $183M × 1.26 ≈ $231M. A 20% learning rate (per Araiinejad & Shirvan 2025) would reduce the $154/kg unit cost to ~$120/kg at 10× cumulative FLiBe production. Per Hard Rule 6, deferring to library default pending methodological reconciliation of FOAK vs NOAK adjustment.",
+      "cost_basis": "noak",
+      "blocked_by": "1cFE/1costingfe#103"
+    }
+  ],
   "asterisk_in_comparison": false
 }

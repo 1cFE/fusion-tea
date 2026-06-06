@@ -1316,5 +1316,40 @@
     "analysis": null
   },
   "analyst_override_count": 1,
+  "overrides": [
+    {
+      "account": "C220103",
+      "account_name": "Magnets / Coils",
+      "value": 0.0,
+      "enabled": false,
+      "provenance": "derived",
+      "source": "stellaris-design-details.md §2.9 Magnets, Table 7",
+      "rationale": "Stellaris requires 668-777 km of REBCO HTS tape (6mm width, stacked configuration) across 18 non-planar modular coils. The library default for HTS magnets is scaled from tokamak TF coil experience (CFS ARC: 156 tonnes HTS at ~$44k/kg CPI-adjusted = $6.9B for magnets). Stellaris uses comparable tape length but in complex 3D coil geometry never previously manufactured at scale. Override formula would be: (tape_length_km × cost_per_km_kA × avg_critical_current_kA) + (coil_structure_mass_tonnes × fabrication_cost_per_tonne_3D_premium). This override is DISABLED pending: (1) Proxima or tape suppliers publish $/km pricing for NOAK REBCO at 20 T application, (2) SMC demo (2027) provides 3D coil fabrication cost data, or (3) Alpha demo (2031) provides validated magnet system cost breakdown. Current status: Stellaris paper explicitly notes 'detailed cost analysis of large-scale HTS tape production' as a key gap. Until resolved, library default (tokamak-derived) is the best available estimate, though it likely underestimates stellarator 3D coil complexity premium.",
+      "cost_basis": "noak",
+      "blocked_by": "1cFE/1costingfe#103"
+    },
+    {
+      "account": "C220104",
+      "account_name": "Heating & Driver Systems",
+      "value": 50.0,
+      "enabled": true,
+      "provenance": "direct",
+      "source": "stellaris-design-details.md §2.6 Heating systems, Table 1",
+      "rationale": "Stellaris specifies 50 MW ECRH (Electron Cyclotron Resonance Heating) at 230-240 GHz for auxiliary heating. This is a direct published value from the design study (Table 1: '50 MW ECRH', §2.6: 'X1 mode from high-field side injection'). The library default for supplementary heating scales generically with plasma volume and confinement; Stellaris provides an explicit design-point heating power. The value 50.0 represents MW of installed ECRH capacity. Library costing for C220104 uses ITER-era gyrotron costs (~$5-10M/MW for ECRH systems). Stellaris' 230-240 GHz requirement is beyond current ITER baseline (170 GHz), which may add R&D premium, but the paper assumes 50% gyrotron efficiency (ITER baseline, §2.6), suggesting they expect evolutionary rather than revolutionary gyrotron development. Note: Helios (Thea Energy QI stellarator, comparable design) uses only 10 MW ECRH for startup and 1 MW in ignited phase. Stellaris' 50 MW may reflect more conservative plasma confinement assumptions (lower Q_eng target) or different ignition strategy.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220108",
+      "account_name": "Divertor / Target Factory",
+      "value": 0.0,
+      "enabled": false,
+      "provenance": "derived",
+      "source": "stellaris-design-details.md §2.5 Divertor",
+      "rationale": "Stellaris uses an island divertor (based on W7-X heritage, leveraging 4/4 magnetic island chain at plasma edge) rather than a tokamak-style scrape-off-layer (SOL) divertor with X-point. The paper notes this provides 'larger wetted area than tokamak Eich-scaling divertor' — a potential advantage for heat handling. The library default for C220108 (divertor) is derived from tokamak DEMO designs (ITER-style W monoblock cassettes on CuCrZr heat sinks). Island divertor geometry differs: targets are distributed around the island chain (larger surface area), heat flux may be lower per unit area, but total target area is larger. Manufacturing complexity may be comparable (still tungsten tiles with cooling, remote handling), but geometry is stellarator-specific. This override is DISABLED because: (1) Stellaris paper does not provide divertor cost estimate or mass breakdown, (2) W7-X island divertor is at experimental scale (~2 t tungsten), not power-plant scale (Stellaris likely 50-100 t), and (3) no comparative cost study (island vs SOL divertor at power-plant scale) exists in the literature. Until W7-X scaling data or Alpha demo provides stellarator divertor cost benchmarks, the library default (tokamak SOL divertor cost scaled to surface area) is a reasonable proxy. The 'larger wetted area' suggests stellarator divertor may be *more expensive* (more tungsten tiles, more remote-handling complexity), not less, so the library default may actually underestimate.",
+      "cost_basis": "noak",
+      "blocked_by": "1cFE/1costingfe#104"
+    }
+  ],
   "asterisk_in_comparison": false
 }

@@ -1317,5 +1317,95 @@
     "analysis": null
   },
   "analyst_override_count": 7,
+  "overrides": [
+    {
+      "account": "C220101",
+      "account_name": "First Wall & Blanket",
+      "value": 1.522117257118225,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "iter-01/sources/grokipedia-tae-technologies.md §Aneutronic Advantages",
+      "rationale": "p-B11 is aneutronic — no tritium breeding required, and secondary neutrons are <1% of fusion energy. The library's default first-wall/blanket cost assumes a tritium-breeding blanket with Li-6 enrichment, tritium extraction systems, and thick neutron shielding. TAE's blanket only needs to capture 3 MeV alphas, X-rays, and trace secondary neutrons. Analogy to non-breeding test blankets in ITER suggests 40-60% cost reduction. Using 50% as mid-range estimate. This is a relative override (fraction of library's computation).",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220102",
+      "account_name": "Radiation Shield",
+      "value": 0.6258614659309387,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "iter-01/sources/grokipedia-tae-technologies.md §Neutron Management; iter-02/sources/tae-energy-conversion-clarification.md §Minimal Radioactivity",
+      "rationale": "p-B11 neutron wall loading is ~0.05-0.2 MW/m^2 (vs. 2-4 MW/m^2 for D-T). The library's default radiation shield is sized for 14.1 MeV D-T neutrons at high flux. TAE requires only thin shielding for secondary neutrons and X-rays (bremsstrahlung at 10-100 keV). Shielding thickness can be reduced by ~50-70%, and activation is minimal, potentially allowing contact maintenance. Using 70% cost reduction (30% of library value).",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220104",
+      "account_name": "Heating & Driver Systems",
+      "value": 150.0,
+      "enabled": false,
+      "provenance": "derived",
+      "source": "iter-02/sources/tae-c2w-machine-details.md §NBI System; [ITER NBI cost analogy]",
+      "rationale": "NBI is TAE's dominant subsystem. C-2W uses 8 injectors at 21 MW total. Da Vinci plausibly requires 50-200 MW NBI (see Section 2). ITER's 33 MW NBI system is budgeted at ~$550M (~$17/W). At this scaling, 100 MW NBI would cost $1.7B, overwhelming the total plant budget. TAE claims 50% cost reduction from NBI-only formation, but this is relative to *reactor* complexity, not NBI unit cost. Conservative estimate: $10/W at volume production (learning curve from pulse power components) × 100 MW = $1B. Using $150M as floor estimate for optimistic mass production scenario. **DISABLED in baseline** because NBI power requirement itself is unknown (depends on Q). If Q=5 and NBI=80 MW, this override would apply. If Q=2 and NBI=200 MW, cost is 4x higher. Library default heating cost may already cover NBI adequately depending on archetype. Re-enable in sensitivity runs after Q is better constrained.",
+      "cost_basis": "noak",
+      "blocked_by": "1cFE/1costingfe#105"
+    },
+    {
+      "account": "C220103",
+      "account_name": "Magnets / Coils",
+      "value": 80.0,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "iter-02/sources/tae-c2w-machine-details.md §Magnet/Field Control; iter-01/sources/grokipedia-tae-technologies.md §Simple Geometry Magnets",
+      "rationale": "FRC near-unity beta (90-100%) means external magnetic field is weak (~0.2-0.5 T at Da Vinci scale, vs. 5-12 T for tokamak TF coils). C-2W uses copper resistive coils. TAE emphasizes 'simple geometry' magnets as a cost advantage. If Da Vinci uses copper, capital cost is low (~$50-100M for water-cooled copper coils at this scale) but resistive power is 10-20 MW continuous, costing $300-600M NPV over plant life. If HTS is used, capital is $150-300M but resistive losses drop to near zero. The economic optimum likely favors HTS at 30-year plant life. Using $80M as a conservative HTS estimate (lower than tokamak HTS due to simpler geometry and lower field). This is an absolute override, not relative, because the library's default HTS cost assumes complex 3D stellarator or high-field tokamak coils. FRC coils are axisymmetric solenoids (far simpler). If copper is used instead, cost drops to ~$50M but OPEX penalty via C220107 (power supplies running continuously).",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220108",
+      "account_name": "Divertor / Target Factory",
+      "value": 0.0,
+      "enabled": true,
+      "provenance": "direct",
+      "source": "FRC geometry — axial end losses, not toroidal divertor",
+      "rationale": "The library's default C220108 assumes a toroidal divertor (W monoblock cassettes on CuCrZr heat sinks, as in ITER). FRC has axial end losses, not a toroidal divertor. The end regions require plasma-facing armor (likely tungsten tiles) but the geometry is open linear exhaust, not a complex cassette-based divertor. This hardware is better captured under C220105 (primary structure) or as part of the vacuum vessel (C220106). Setting C220108 to zero to avoid double-counting. If needed, add ~$20-50M to C220105 or C220106 for end-region armor in a separate override.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "CAS27",
+      "account_name": "Special Materials",
+      "value": 5.0,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "p-B11 fuel cycle — no tritium inventory; boron and hydrogen are commodity",
+      "rationale": "The library's CAS27 (special materials — initial reactor inventory) defaults to tritium startup inventory (~1-5 kg at $30k/g = $30-150M for D-T concepts). p-B11 requires no tritium. The initial fuel inventory is natural boron (80% B-11, ~$2/kg) and hydrogen (<$5/kg). At several kg inventory, fuel cost is <$100k. However, if beryllium is used in the blanket as neutron multiplier, that becomes the dominant CAS27 item. Assuming 5-10 tonnes Be at $800/kg = $4-8M. Using $5M as mid-range. If the blanket uses lithium or FLiBe instead of beryllium, cost drops to ~$1M (lithium is cheaper).",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "CAS80",
+      "account_name": "Fuel Costs (annualised)",
+      "value": 0.05,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "p-B11 fuel consumption rate — grams/day scale",
+      "rationale": "The library's CAS80 (annualized fuel cost) defaults to D-T tritium breeding and D-D deuterium costs. p-B11 consumes protons and boron-11 at ~grams/day for a 50 MWe plant (fusion power 250-500 MW, reaction energy 8.7 MeV, yields ~10^20 reactions/s, or ~3-6 g/day total fuel). At commodity prices ($2/kg boron, $5/kg H2), annual fuel cost is ~$5k-20k. Using $0.05M ($50k/year) as upper bound. This is 100-1000x lower than D-T fuel cycle costs, a genuine advantage of p-B11. Note: if B-11 isotopic enrichment to >95% is required, fuel cost rises to $50-500/day or $20-200k/year — still negligible but 10x higher than natural boron.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220109",
+      "account_name": "Direct Energy Converter",
+      "value": 0.0,
+      "enabled": true,
+      "provenance": "direct",
+      "source": "iter-02/sources/tae-energy-conversion-clarification.md §Da Vinci uses thermal conversion",
+      "rationale": "Direct energy conversion (C220109) is not used in the Da Vinci design point. TAE's ICC technology is deferred to future plants. Da Vinci uses conventional thermal conversion, so C220109 = 0. The library default for this archetype may already be zero (DEC is rare for MFE), but setting it explicitly to ensure no DEC cost is included.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    }
+  ],
   "asterisk_in_comparison": false
 }

@@ -345,6 +345,36 @@ class SourcePaths(BaseModel):
     analysis: str | None = None  # Path to analysis.md or standalone script
 
 
+class OverrideRecord(BaseModel):
+    """One analyst cost-override registry entry, carried to the explorer payload.
+
+    A 1:1 projection of the ``Override`` TypedDict in
+    ``model_setup_helpers.py`` (the analyst-authored, version-controlled
+    registry), plus a resolved ``account_name`` so the front-end never has to
+    re-derive CAS account semantics (single source of names = the CAS_NAMES /
+    CAS22_NAMES maps on ``CostModelData``).
+
+    Narrative fields are ``str | None``: a genuinely absent field is ``None``
+    (rendered as an explicit "not recorded" state by the inspection panel),
+    NOT coerced to ``""``. The panel must distinguish "recorded empty" from
+    "not recorded" (FR-6 — honest degradation, no silent vanish).
+
+    ``value`` is at the concept's *native per-module* M$ scale, which is not the
+    1 GWe projection the cost tables display — the panel labels the scale so the
+    two numbers don't read as a contradiction.
+    """
+
+    account: str  # CAS code as authored, e.g. "C220103" or "CAS27"
+    account_name: str  # Human-readable, resolved from CAS_NAMES / CAS22_NAMES
+    value: float  # Per-module M$ at the design point's native scale
+    enabled: bool  # False entries stay in the registry but are not applied
+    provenance: str | None = None  # "direct" | "derived"
+    source: str | None = None  # Free-text citation
+    rationale: str | None = None  # Why the override departs from the library default
+    cost_basis: str | None = None  # Vintage basis (strict registry requires "noak")
+    blocked_by: str | None = None  # Required iff enabled is False — "<org>/<repo>#<NN>"
+
+
 # ---------------------------------------------------------------------------
 # Top-level concept payload
 # ---------------------------------------------------------------------------
@@ -370,6 +400,11 @@ class ConceptData(BaseModel):
     # hide/disable decision (INV-5). 0 for freeform/empty-registry concepts.
     # The full records (display) are Item 2's concern, not this field.
     analyst_override_count: int = 0
+    # Full analyst override registry (Item 2). Every entry — enabled AND
+    # disabled — carried through for the inspection panel; the count above is
+    # just the enabled tally. Empty for freeform/empty-registry concepts.
+    # Rides the concept payload (loaded once); the panel never fetches per click.
+    overrides: list[OverrideRecord] = Field(default_factory=list)
     # True iff orchestrator routed this concept as `costingfe-asterisked`
     # (Comparison-Status, set on Grounding-Confidence: low). Render-side
     # signal for the comparison view's asterisk badge.

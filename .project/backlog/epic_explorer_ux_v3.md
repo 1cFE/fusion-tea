@@ -39,9 +39,9 @@ The driving research is [`.project/research/20260605-150329_concept-explorer-ux-
 - [x] Slider, tornado, and headline are sourced from the same LCOE function at any moment, in whichever toggle state (FR-SO2); toggling swaps all three in lockstep with no partial-update frame (FR-SO5). *(Item 1)*
 - [x] Extractor emits both `sensitivities_bare` and `sensitivities_applied` per costingfe concept (FR-SO4). *(Item 1)*
 - [x] The toggle is hidden/disabled — never a dead control — for freeform, empty-registry, and `fit_grade=None` concepts (FR-SO6). *(Item 1)*
-- [ ] Clicking the toggle's count chip (or any ★ on a CAS row / treemap tile / CapEx compare bar) surfaces the override's `account`, `value`, `provenance`, `source`, and `rationale` without leaving the page (FR-SO7). *(Item 2)*
-- [ ] Disabled (`enabled: false`) overrides render visually distinct and tagged with `blocked_by`. *(Item 2)*
-- [ ] Surfaces degrade *honestly* when a field is absent (say so — do not silently vanish). *(Item 2)*
+- [x] Clicking the toggle's count chip (or any ★ on a CAS row / treemap tile / CapEx compare bar) surfaces the override's `account`, `value`, `provenance`, `source`, and `rationale` without leaving the page (FR-SO7). *(Item 2)*
+- [x] Disabled (`enabled: false`) overrides render visually distinct and tagged with `blocked_by`. *(Item 2)*
+- [x] Surfaces degrade *honestly* when a field is absent (say so — do not silently vanish). *(Item 2)*
 - [x] Existing test suite passes; new regression test for FR-SO1 against concept 01. *(Item 1)*
 
 ---
@@ -136,16 +136,18 @@ These were settled in discussion before decomposition; specs/designs inherit the
 - Family/comparables comparison entry (future phase).
 
 **Success Criteria**:
-- [ ] FR-SO7: clicking the count chip for concept 01 surfaces its enabled overrides with `account`, `value`, `provenance`, `source`, `rationale` readable on the page.
-- [ ] The same panel opens from a ★ CAS row, a ★ treemap tile, and a ★ CapEx compare bar, scoped to that account.
-- [ ] Disabled overrides render distinct and tagged with `blocked_by`.
-- [ ] A concept with a missing `source`/`rationale` field shows an explicit "not recorded" state, not a blank/vanished panel.
-- [ ] `overrides` records present in the extracted JSON for all registry-bearing concepts.
-- [ ] Existing tests pass; panel does not fetch on every render (preloaded with payload).
+- [x] FR-SO7: clicking the count chip for concept 01 surfaces its enabled overrides with `account`, `value`, `provenance`, `source`, `rationale` readable on the page.
+- [x] The same panel opens from a ★ CAS row, a ★ treemap tile, and a ★ CapEx compare bar, scoped to that account.
+- [x] Disabled overrides render distinct and tagged with `blocked_by`.
+- [x] A concept with a missing `source`/`rationale` field shows an explicit "not recorded" state, not a blank/vanished panel.
+- [x] `overrides` records present in the extracted JSON for all registry-bearing concepts (17 served concepts re-extracted; 37 & 39 blocked by pre-existing concept-side `model_setup.py` bugs — see below).
+- [x] Existing tests pass; panel does not fetch on every render (preloaded with payload).
+
+**Status**: ✅ Complete (implemented + browser-validated + review-hardened 2026-06-06). Panel form = **fixed drawer**; `source` = plain text (link-ification deferred). Code-review follow-ups M1/m1/m2/m3 resolved (CapEx-bar match moved to Plotly `customdata` so the trigger no longer couples the Python/JS name maps). See `.project/active/explorer-override-inspection/{design.md,spec.md}`.
 
 **Estimated Effort**: 1.5 days (spec ~1h, design ~2h — panel form: drawer vs popover vs expand, plan ~1h, execute ~7h)
 
-**Location**: `.project/active/explorer-override-inspection/` (to create)
+**Location**: `.project/active/explorer-override-inspection/`
 
 **Dependencies**: Item 1 (the hero toggle + count chip is the primary trigger). Item 1's compute change and Item 2's schema emission are independent reads of the registry, so only the UI trigger creates the ordering.
 
@@ -263,5 +265,15 @@ Item 1 (Slider/Tornado/Headline Coherence)
 
 ---
 
-**Last Updated**: 2026-06-06 (added Item 1-FU1 follow-up: CAS header-hint staleness, discovered during Item 1 validation)
-**Next Action**: Create Item 2's spec at `.project/active/explorer-override-inspection/`. Item 1 (`explorer-slider-override-semantics`) is implemented and browser-validated; fold Item 1-FU1 into Item 2's plan or land it as a standalone trivial fix.
+**Last Updated**: 2026-06-06 (Item 2 implemented, review-hardened, and browser-validated — Phase 1 complete pending Item 1-FU1)
+**Next Action**: Phase 1's two Tier-1 items are both done. Remaining loose ends before closing Phase 1: (1) land **Item 1-FU1** (CAS header-hint staleness, trivial); (2) the **Item 2-FU** below (re-extract concepts 37 & 39 once their pre-existing `model_setup.py` bugs are fixed — they were the only registry-bearing served concepts that could not refresh, so their ★/chip currently shows the stale pre-Item-2 state). Then decide whether to start Phase 2 (per-account decomposition).
+
+#### Item 2-FU: Re-extract 37 & 39 after concept-side model_setup.py fixes [blocked, trivial once unblocked]
+
+**Discovered**: During Item 2's full re-extraction, 2026-06-06.
+
+**Symptom**: Of the served registry-bearing concepts, **37** (`TypeError: float() argument must be a string or a real number, not 'function'`) and **39** (`routing disagreement — Comparison-Status='freeform-deferred' but model_setup.py looks costingfe-shaped`) failed extraction and kept their stale pre-Item-2 JSON (no `overrides` records). 37 therefore shows no ★ and a non-clickable "(N entries)" chip; 39 is not served (no JSON). All other 17 registry-bearing served concepts carry records.
+
+**Root cause**: Pre-existing concept-side `model_setup.py` bugs — the same class tracked by the BACKLOG "Fix 5 concept-side model_setup.py bugs + re-extract" P1 follow-up. Not an Item 2 defect.
+
+**Action**: After those concept-side fixes land, run `uv run python exploration/concept_explorer/extract_explorer_data.py --concept 37 39 --skip-narrative` (isolated per-concept to avoid the FU2 jax-contamination batch issue). No code change in Item 2.

@@ -20,7 +20,7 @@
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 3117.24853515625,
+      "cost_m_usd": 3117.248779296875,
       "overridden": false
     },
     "cas23": {
@@ -1014,5 +1014,29 @@
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/31-laser-icf-oec-architecture/analysis.md"
   },
   "analyst_override_count": 2,
+  "overrides": [
+    {
+      "account": "C220104",
+      "account_name": "Heating & Driver Systems",
+      "value": 2000.0,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer Laser Cost and Schedule; optics-express-2025-paper.md §Table 2",
+      "rationale": "BLF publishes no laser driver cost. Bracketed from IFE comparable literature: Xcimer KrF excimer $60–$80/J NOAK (Xcimer white paper); DPSSL class $700–$1,000/J (ibid.). BLF E_L = 5 MJ UV on target. OEC/CBC fiber laser architecture is structurally between excimer (commodity gas laser) and DPSSL (specialty glass amplifiers). Central estimate: ~$400/J × 5 MJ = $2,000M. Geometric-mean positioning — fiber lasers share the commodity-component argument with excimer but lack excimer's published cost basis. Range: $350M ($70/J excimer-like) to $4,250M ($850/J DPSSL-like).",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220108",
+      "account_name": "Divertor / Target Factory",
+      "value": 219.0,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "osti-servlets-purl-828518/output.md §IV.A. Direct Drive Target Cost Analysis Results",
+      "rationale": "BLF publishes no target factory cost. Derived from Goodin et al. (2004, GA-A24429) nth-of-a-kind DD target factory for 1 GWe IFE plant: $100M installed capital (2004$), 500K targets/day. BLF at 10 Hz needs ~864K targets/day. CPI 2004→2024 factor ~1.59 → $159M; throughput scale-up 1.7× at 0.6 exponent → 1.7^0.6 ≈ 1.38 → $159M × 1.38 ≈ $219M. Excludes tritium plant (separate account). High uncertainty: BLF cryogenic D-T targets may differ from GA reference design.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    }
+  ],
   "asterisk_in_comparison": false
 }

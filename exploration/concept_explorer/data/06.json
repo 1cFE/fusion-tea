@@ -1317,5 +1317,84 @@
     "analysis": null
   },
   "analyst_override_count": 6,
+  "overrides": [
+    {
+      "account": "C220101",
+      "account_name": "First Wall & Blanket",
+      "value": 0.0,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "dossier.md §Tritium Breeding; p-B11 fuel cycle physics",
+      "rationale": "This account costs the tritium-breeding blanket. CHARM uses p-B11 fuel, which produces no tritium and requires no breeding blanket. The aneutronic reaction produces 3 alpha particles per fusion event with <1% neutron energy from side reactions. No blanket structure is required for tritium breeding or neutron energy capture (DEC captures charged particle energy directly). Cost is zero.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220102",
+      "account_name": "Radiation Shield",
+      "value": 0.04389490187168121,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "dossier.md §Neutron Management; p-B11 reaction physics",
+      "rationale": "This account costs the radiation shield sized to neutron wall loading. p-B11 is truly aneutronic (<1% neutron energy from side reactions vs 80% for D-T). Shielding requirements are minimal — primarily for x-ray bremsstrahlung and trace side-reaction neutrons. The library default assumes 14.1 MeV D-T neutron shielding; this concept requires ~1% of that mass. Override to 1% of library value.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220108",
+      "account_name": "Divertor / Target Factory",
+      "value": 0.0,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "dossier.md §Operation Mode (steady-state); multi-chamber architecture",
+      "rationale": "This account costs the divertor (W monoblock cassettes for steady-state heat/particle exhaust in D-T mirrors). CHARM uses a multi-chamber architecture where helium ash is extracted via wave-induced diffusion to a separate heat exchange chamber, then removed from the system. The presentation states 'Helium is extracted from heat exchange chamber using waves' (arpa-e-2025-fisch-presentation-notes.md). This is not a divertor in the conventional sense. The heat exchange chamber may have cost, but it is not captured by the divertor account. Cost is zero; heat exchange chamber should be a custom override if data becomes available.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220109",
+      "account_name": "Direct Energy Converter",
+      "value": 0.0,
+      "enabled": false,
+      "provenance": "derived",
+      "source": "dossier.md §Energy Capture; PRX Energy 2025 paper; SWDEC patent US20230298771",
+      "rationale": "This account costs direct energy conversion hardware. CHARM absolutely requires DEC (charged particle exhaust → electricity), but the technology choice (adiabatic DEC vs SWDEC vs electrostatic collectors) and cost are completely unspecified. The library has no default for novel DEC hardware. Placeholder disabled until Pale Blue discloses DEC technology and provides cost estimate or analogue. This is a CRITICAL missing override.",
+      "cost_basis": "noak",
+      "blocked_by": "1cFE/1costingfe#104"
+    },
+    {
+      "account": "CAS23",
+      "account_name": "Turbine Plant Equipment",
+      "value": 0.0,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "dossier.md §Energy Capture (Direct charged particle)",
+      "rationale": "This account costs turbine plant equipment (thermal cycle). CHARM uses direct energy conversion; there is no steam or sCO2 thermal cycle. Fusion energy is captured as charged particle kinetic energy and converted to electricity via DEC (account C220109). Turbine cost is zero.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "CAS27",
+      "account_name": "Special Materials",
+      "value": 0.0,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "dossier.md §Tritium Breeding (N/A aneutronic); p-B11 fuel cycle",
+      "rationale": "This account costs special materials (initial reactor material inventory / blanket fill). For D-T, this is FLiBe or liquid metal breeder inventory. CHARM has no breeder. Boron fuel inventory is negligible cost (commodity material, ~$2-5/kg). Cost is zero.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "CAS80",
+      "account_name": "Fuel Costs (annualised)",
+      "value": 0.0,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "princeton-arpa-e-funding-2022.md §A different kind of fusion reaction",
+      "rationale": "This account costs annualized fuel (D-T consumables and enriched-isotope procurement). p-B11 fuel is commodity hydrogen and natural boron. The source states 'both protons and boron-11 are readily available, naturally and cheaply.' At any reasonable plant scale, annual fuel cost is <$1M and negligible vs capital. Override to zero.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    }
+  ],
   "asterisk_in_comparison": false
 }

@@ -1014,5 +1014,95 @@
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/17a-laser-icf-hybrid-drive/analysis.md"
   },
   "analyst_override_count": 8,
+  "overrides": [
+    {
+      "account": "C220104",
+      "account_name": "Heating & Driver Systems",
+      "value": 560.0,
+      "enabled": true,
+      "provenance": "direct",
+      "source": "xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer Laser Cost and Schedule",
+      "rationale": "Xcimer published NOAK laser cost of $60-$80/J on-target (whitepaper Table 1 with component breakdown: capacitors, Marx generators, e-beam, laser chamber, optics, NLO/seed, controls). At 8 MJ on-target for Athena: midpoint $70/J × 8 MJ = $560M. FOAK range is $100-$120/J ($800M-$960M). Library default for a generic laser IFE driver does not reflect the KrF excimer + NLO architecture. Architecture never built at MJ scale; Phoenix prototype (1-2 kJ, Q2 2026) is first integration test.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220107",
+      "account_name": "Power Conditioning & Energy Storage",
+      "value": 0.0,
+      "enabled": true,
+      "provenance": "direct",
+      "source": "xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer Laser Cost and Schedule",
+      "rationale": "Xcimer's architecture is a gas excimer laser, not an electrically-driven pulsed scheme. The capacitor bank (Marx generators) is internal to the laser driver and is fully costed in C220104. There is no separate standalone pulsed-power capacitor bank. C220107 zeroed to avoid double-counting with C220104.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220101",
+      "account_name": "First Wall & Blanket",
+      "value": 44.281402587890625,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Chamber Design",
+      "rationale": "Xcimer's thick-liquid FLiBe jet wall replaces the conventional solid first wall and blanket module. There is no solid breeding blanket structure — the flowing FLiBe itself is the blanket, first wall, and shield. The structural component is a conventional steel chamber behind the liquid. Cost character is fundamentally different from a solid blanket (no RAFM steel modules, no Be multiplier pebble beds, no helium coolant channels). FLiBe inventory cost is captured in CAS27. 0.40x reflects that the 'blanket' is a steel vessel + FLiBe nozzle/pump system rather than engineered solid blanket modules. No company cost figure; analyst estimate.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220102",
+      "account_name": "Radiation Shield",
+      "value": 23.189945220947266,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Chamber Design",
+      "rationale": "The thick-liquid FLiBe wall (~50+ cm) provides the primary radiation shielding function. Xcimer claims 30-year facility lifetime without first-wall replacement. The structural shield behind the liquid wall is conventional steel, not a purpose-built nuclear-grade radiation shield. 0.30x reflects that the liquid itself provides most shielding. No company cost figure; analyst estimate.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220108",
+      "account_name": "Divertor / Target Factory",
+      "value": 88.71319580078125,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Challenge 2; xcimer-energy-approach.md §Fuel Capsules",
+      "rationale": "Xcimer targets use liquid DT + plastic ablator with no gold hohlraum and no cryogenic ice layer, operating at sub-Hz rep rate (0.7 Hz for Athena vs 10 Hz for DPSSL IFE). Target throughput is ~22M/yr vs ~315M/yr for a 10 Hz plant — an order-of-magnitude reduction in factory scale. The simpler target construction and dramatically lower throughput should reduce target factory cost substantially. However, no company-published factory cost exists. 0.60x multiplier is an analyst estimate reflecting the lower throughput and simpler target; this should be treated as a sensitivity parameter. Enabled with low confidence.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "CAS21",
+      "account_name": "Buildings & Structures",
+      "value": 452.3199768066406,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer Laser Cost and Schedule",
+      "rationale": "The 50 m standoff distance from laser to target implies a larger building footprint than a compact laser IFE plant. The ~100 Argos amplifier modules, Marx generator banks, and NLO beam combining optics require substantial floor space. No building cost is published. 1.25x multiplier is an analyst estimate reflecting the larger footprint; should be treated as a sensitivity parameter.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "CAS27",
+      "account_name": "Special Materials",
+      "value": 92.0,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Chamber Design; Araiinejad 2025 FLiBe cost estimate",
+      "rationale": "FLiBe initial inventory for a HYLIFE-III chamber. Xcimer does not publish the FLiBe mass. HYLIFE-II reference used ~600 t of FLiBe for a 6 Hz, 350 MJ-yield chamber. Athena operates at lower yield (~1.6 GJ) but sub-Hz rate. Assuming a comparable ~600 t inventory (uncertain — could range 300-1000 t). At $154/kg NOAK FLiBe (Araiinejad 2025, adjusted for learning): 600 t x $154/kg = $92.4M ~ $92M. Both mass and unit cost are analyst-sourced, not company-published. High uncertainty.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "CAS70",
+      "account_name": "O&M Costs (annualised)",
+      "value": 49.25580596923828,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Chamber Design",
+      "rationale": "Xcimer claims no first-wall or blanket replacement over 30-year facility lifetime due to thick-liquid-wall protection. This eliminates the dominant scheduled component replacement cost that drives CAS70 in solid-wall concepts. However, FLiBe loop maintenance (pumps, heat exchangers, redox control) and laser system maintenance (gas replacement, capacitor aging) are real O&M costs. 0.75x multiplier reflects elimination of first-wall replacements offset by FLiBe-specific maintenance. No company O&M figure; analyst estimate.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    }
+  ],
   "asterisk_in_comparison": false
 }

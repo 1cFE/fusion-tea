@@ -1016,5 +1016,18 @@
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/07-maglif/analysis.md"
   },
   "analyst_override_count": 0,
+  "overrides": [
+    {
+      "account": "C220107",
+      "account_name": "Power Conditioning & Energy Storage",
+      "value": 584.0400000000001,
+      "enabled": false,
+      "provenance": "derived",
+      "source": "z-ife-sand2006-7148-thermal-cycles.md §3.1.2",
+      "rationale": "DISABLED — driver-count contradiction (F-1). The prior rationale incorrectly claimed the 10-chamber baseline shares one driver; §3.1.1.3 states each chamber has an independent driver, heat transfer system, and power conversion system. The $372M (2004$) detailed estimate is for a single 1 PW LTD reference driver — a much larger unit than any individual 10-chamber driver. Applying it as the total plant driver cost understates driver capital by up to ~10×. The systems model used $15/J × per-chamber energy × 10 chambers (§3.1.1.2), not the $372M figure. Neither cost model provides an extractable company-grounded total-plant driver cost: the $15/J is a researcher-estimated parametric assumption, and the $372M applies to the wrong scale of driver. Override disabled until a traceable total-plant driver cost can be derived.",
+      "cost_basis": "noak",
+      "blocked_by": "1cFE/fusion-tea#47"
+    }
+  ],
   "asterisk_in_comparison": false
 }

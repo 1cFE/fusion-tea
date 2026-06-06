@@ -971,5 +971,73 @@
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/14-magnetized-target-fusion-pneumatic-compression/analysis.md"
   },
   "analyst_override_count": 6,
+  "overrides": [
+    {
+      "account": "C220103",
+      "account_name": "Magnets / Coils",
+      "value": 0.0,
+      "enabled": true,
+      "provenance": "direct",
+      "source": "en-wiki-general-fusion/output.md §Technology",
+      "rationale": "GF MTF uses no external confinement magnets. The plasma is a self-confined compact toroid with magnetic fields sustained by internal plasma currents. Compression is mechanical (pneumatic pistons), not magnetic. The library default prices HTS-REBCO guide-field solenoids; this concept has zero magnet cost.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220108",
+      "account_name": "Divertor / Target Factory",
+      "value": 0.0,
+      "enabled": true,
+      "provenance": "direct",
+      "source": "general-fusion-fst-2025-fuel-cycles.md §1 Introduction",
+      "rationale": "GF MTF explicitly has 'a pulsed system without manufactured consumables.' The liquid metal liner is recycled, not destroyed per shot. There is no target factory. Unlike laser ICF (hohlraum/capsule) or MagLIF (liner + RTL), GF MTF has zero per-shot consumable hardware. A few milligrams of D-T gas per pulse is the only consumable, covered by CAS80.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220104",
+      "account_name": "Heating & Driver Systems",
+      "value": 7.188750743865967,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "general-fusion-technical-details.md §LM26 section; en-wiki-general-fusion/output.md §Technology",
+      "rationale": "The primary driver is a pneumatic piston array — steam-driven mechanical hammers around a sphere. GF positions this as fundamentally cheaper than lasers or pulsed-power drivers: 'other fusion methods rely on superconducting coils, lasers, or other expensive equipment.' No dollar figure is published, but the piston system uses commodity industrial components (steel hammers, pneumatic cylinders, steam valves, digital servo controls). The library default for C220104 prices a laser or pulsed-power driver at $/J; pneumatic pistons are qualitatively a fraction of this. 15% of the library default is an aggressive but directionally correct estimate given the architectural simplification. The exact fraction is highly uncertain. NOAK: steam piston arrays at this scale are commodity industrial hardware with mature manufacturing; no learning-curve adjustment needed beyond the library's NOAK baseline.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220107",
+      "account_name": "Power Conditioning & Energy Storage",
+      "value": 2.6625001430511475,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "en-wiki-general-fusion/output.md §Technology",
+      "rationale": "The library default for C220107 prices a pulsed-power capacitor bank ($/J stored) as the dominant driver cost for electrically-driven pulsed schemes. GF MTF is mechanically driven — the main compression energy comes from steam pistons, not electrical pulsed power. The only electrical pulsed system is the plasma injector capacitor bank (ionizes a few mg of gas via Marshall gun). This is a small fraction of the pulsed-power cost assumed for electrically driven concepts. 10% of the library default reflects that only the injector subsystem draws from this account. NOAK: standard capacitor bank technology at a small fraction of the reference scale.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220101",
+      "account_name": "First Wall & Blanket",
+      "value": 19.637598037719727,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "general-fusion-fst-2025-fuel-cycles.md §1 Introduction",
+      "rationale": "The GF MTF design replaces a solid structured breeding blanket with a flowing liquid metal that serves as liner, blanket, breeder, and shield. No solid first wall, no solid blanket modules, no neutron multiplier structure. The library default prices solid blanket fabrication (e.g., HCPB or liquid metal channels in a structured module). The GF approach needs only a liquid metal containment vessel and pumping infrastructure, which is structurally simpler. 40% of library default reflects the remaining cost of the containment vessel, liquid metal piping, and pump systems, while removing the solid blanket/FW fabrication premium. NOAK: liquid metal containment and piping is mature industrial technology.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "CAS27",
+      "account_name": "Special Materials",
+      "value": 3.0,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "general-fusion-fst-2025-fuel-cycles.md §1 Introduction; en-wiki-general-fusion/output.md §Technology",
+      "rationale": "Initial liquid metal fill for a ~3.5 m outer radius sphere (2 m cavity + 1.5 m blanket) ≈ 146 m³. For pure lithium at ~512 kg/m³ = ~75 tonnes at ~$30/kg ≈ $2.25M. For LLE at ~9400 kg/m³ = ~1370 tonnes at ~$10/kg ≈ $13.7M. Taking the lithium case (which appears to be the leading candidate given plasma contamination concerns with LLE), $3M is a reasonable estimate including procurement and initial charging. This is likely lower than the library default for special materials ($15M for DT concepts). NOAK: lithium is a commodity material; $3M reflects market pricing.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    }
+  ],
   "asterisk_in_comparison": false
 }

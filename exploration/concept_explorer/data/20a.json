@@ -1316,5 +1316,6 @@
     "analysis": null
   },
   "analyst_override_count": 0,
+  "overrides": [],
   "asterisk_in_comparison": false
 }

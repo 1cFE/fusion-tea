@@ -28,6 +28,8 @@ from exploration.concept_explorer.extract_explorer_data import (  # noqa: E402
     load_parameter_display_registry,
     load_parameter_metadata,
     parse_concept_id,
+    _build_override_records,
+    _resolve_account_name,
     _to_confinement_family,
     parse_frontmatter,
     parse_status,
@@ -1684,3 +1686,100 @@ class TestOmitListExtraction:
 
         # Untouched — still the stale sentinel, not a regenerated ConceptData.
         assert stale.read_text(encoding="utf-8") == '{"stale": "sentinel"}'
+
+
+class TestOverrideRecords:
+    """Item 2 / FR-1, FR-5, FR-6: the full override registry is carried through."""
+
+    def test_resolve_account_name_top_level_and_sub(self) -> None:
+        # Top-level codes are authored upper-case but the map keys are lower.
+        assert _resolve_account_name("CAS27") == "Special Materials"
+        # CAS22 sub-account codes resolve from the CAS22 map.
+        assert _resolve_account_name("C220103") == "Magnets / Coils"
+        # Unknown codes fall back to the bare code (visible, not blank).
+        assert _resolve_account_name("C999999") == "C999999"
+
+    def test_build_records_carries_all_fields(self) -> None:
+        raw = [
+            {
+                "account": "C220103", "value": 1030.0, "enabled": True,
+                "provenance": "derived", "source": "src §6", "rationale": "why",
+                "cost_basis": "noak",
+            },
+            {
+                "account": "CAS27", "value": 183.0, "enabled": False,
+                "provenance": "derived", "source": "src §6", "rationale": "why2",
+                "cost_basis": "noak", "blocked_by": "1cFE/1costingfe#103",
+            },
+        ]
+        recs = _build_override_records(raw)
+        assert [r.account for r in recs] == ["C220103", "CAS27"]
+        assert recs[0].account_name == "Magnets / Coils"
+        assert recs[0].enabled is True
+        assert recs[0].blocked_by is None
+        # FR-5: disabled entry carried with its blocked_by reference.
+        assert recs[1].enabled is False
+        assert recs[1].blocked_by == "1cFE/1costingfe#103"
+
+    def test_missing_field_is_none_not_empty(self) -> None:
+        """FR-6: an absent narrative field is None (panel renders 'not recorded'),
+        never coerced to ''."""
+        recs = _build_override_records(
+            [{"account": "CAS27", "value": 5.0, "enabled": True}]
+        )
+        assert recs[0].source is None
+        assert recs[0].rationale is None
+        assert recs[0].cost_basis is None
+
+    def test_extract_costingfe_emits_records(self, tmp_path: Path) -> None:
+        result = _make_forward_result()
+        model = _make_mock_model()
+        concept_dir = _make_concept_dir(tmp_path)
+        overrides = [
+            {"account": "C220103", "value": 1030.0, "enabled": True,
+             "provenance": "derived", "source": "s", "rationale": "r", "cost_basis": "noak"},
+            {"account": "CAS27", "value": 183.0, "enabled": False,
+             "provenance": "derived", "source": "s", "rationale": "r",
+             "cost_basis": "noak", "blocked_by": "1cFE/1costingfe#103"},
+        ]
+        mock_module = types.SimpleNamespace(
+            model=model, result_1gw=result, overrides=overrides,
+        )
+        with patch(
+            "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
+            return_value=mock_module,
+        ):
+            concept = extract_costingfe(
+                concept_dir=concept_dir,
+                concept_id="01",
+                frontmatter={"Concept": "Test", "Status": "approved"},
+                analysis_path=concept_dir / "analysis.md",
+                narrative=None,
+                param_metadata={},
+            )
+        # Count is enabled-only; records carry both enabled and disabled.
+        assert concept.analyst_override_count == 1
+        assert len(concept.overrides) == 2
+        disabled = [o for o in concept.overrides if not o.enabled]
+        assert len(disabled) == 1
+        assert disabled[0].account == "CAS27"
+        assert disabled[0].blocked_by == "1cFE/1costingfe#103"
+
+    def test_no_overrides_means_empty_list(self, tmp_path: Path) -> None:
+        result = _make_forward_result()
+        model = _make_mock_model()
+        concept_dir = _make_concept_dir(tmp_path)
+        mock_module = types.SimpleNamespace(model=model, result_1gw=result)
+        with patch(
+            "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
+            return_value=mock_module,
+        ):
+            concept = extract_costingfe(
+                concept_dir=concept_dir,
+                concept_id="04",
+                frontmatter={"Concept": "Test", "Status": "approved"},
+                analysis_path=concept_dir / "analysis.md",
+                narrative=None,
+                param_metadata={},
+            )
+        assert concept.overrides == []

@@ -949,5 +949,73 @@
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/24-dense-plasma-focus/analysis.md"
   },
   "analyst_override_count": 6,
+  "overrides": [
+    {
+      "account": "C220102",
+      "account_name": "Radiation Shield",
+      "value": 0.002020949264988303,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "lerner-2023-jfe-paper.md §Introduction; lerner-2024-frontiers-pB11-prep.md §Introduction",
+      "rationale": "p-B11 is aneutronic: the primary reaction p + ¹¹B → 3α produces zero primary neutrons. Secondary side reactions (primarily ¹¹B(p,n)¹¹C) contribute <0.2% of fusion energy as neutrons. The library's default C220102 is ~0.038 M$/module (displays as 0.0 due to 1-decimal rounding in the output table). The 5% multiplier reduces this to ~0.002 M$/module — appropriate for the near-aneutronic environment (secondary x-rays and minor activation). Fleet effect: (0.038 - 0.002) × 200 ≈ 7 M$ reduction in C220000 vs the library default. The 5% floor (not zero) is retained because secondary bremsstrahlung x-rays and activation products from p-B11 side reactions do require some minimal shielding beyond a pure-DT default.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220107",
+      "account_name": "Power Conditioning & Energy Storage",
+      "value": 0.2,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "lerner-2023-jfe-paper.md §Cost and Transition; lerner-2023-jfe-paper.md §Experimental Results",
+      "rationale": "Lerner 2023 states the entire device (including capacitor bank) costs '$500,000 or $0.10/W' under mass production for a 5 MWe unit. The FF-1 capacitor bank stores ~115 kJ (12 capacitors × 113 µF × ½ × (45 kV)² = 114.8 kJ). The capacitor bank is the dominant component in a DPF device; attribution of ~40% of total device cost to C220107 gives $0.200M per module. At $0.200M / 115 kJ = $1.74/J stored — consistent with mass-production cost reduction from current commercial ~$5/J. This value is aspirational (mass production not yet achieved for this device) but is grounded in the company's published $0.10/W total device estimate. Per-module semantics: C220107 is in _PER_MODULE_KEYS. The framework sets c22_detail['C220107'] = 0.200 per module, then aggregates per_module_equipment × n_mod into C220000. At n_mod=200 the fleet contribution is 200 × 0.200 = 40 M$. The sub-account detail row shows the per-module value (0.2 M$) at both native and 1 GWe; the fleet total is in C220000.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220109",
+      "account_name": "Direct Energy Converter",
+      "value": 0.15,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "lerner-2023-jfe-paper.md §Energy Conversion; lerner-2023-jfe-paper.md §Cost and Transition",
+      "rationale": "The DPF commercial generator uses two novel direct energy converters: (1) an ion beam decelerator converting alpha-particle kinetic energy (~2/3 of fusion output) at claimed 85% efficiency, and (2) a multilayered x-ray photoelectric converter for bremsstrahlung (~1/3 of fusion output) at claimed 80% efficiency. Both systems replace the thermal cycle entirely (CAS23 = 0). Lerner 2023 attributes the DEC to the $500K total device cost; attribution of ~30% to C220109 gives $0.150M per module. The x-ray converter 'has never been made,' so this cost represents an R&D-stage estimate. The library's default for C220109 (inductive DEC for mirror/FRC exhaust or similar) is not designed for the DPF ion-beam + x-ray dual-conversion architecture; this override replaces it with a derived DPF-specific estimate. Per-module semantics: C220109 is in _PER_MODULE_KEYS. The framework sets c22_detail['C220109'] = 0.150 per module, then aggregates per_module_equipment × n_mod into C220000. At n_mod=200 the fleet contribution is 200 × 0.150 = 30 M$.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "CAS23",
+      "account_name": "Turbine Plant Equipment",
+      "value": 0.0,
+      "enabled": true,
+      "provenance": "direct",
+      "source": "lerner-2023-jfe-paper.md §Energy Conversion; lppfusion-technology-focus-fusion-energy-dpf-device.md",
+      "rationale": "The Focus Fusion commercial generator uses direct energy conversion for both charged particle and x-ray energy outputs. There is no thermal cycle, no steam generator, no steam turbine, and no condenser. CAS23 (turbine plant equipment) is zero by architectural definition. This is a direct structural characteristic of the design, not a cost estimate. The library's default for CAS23 includes turbine island costs that do not apply to this concept. This override zeros the account for the library's 1 GWe fleet cost.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "CAS26",
+      "account_name": "Heat Rejection Systems",
+      "value": 0.17293500900268555,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "lerner-2023-jfe-paper.md §Energy Conversion",
+      "rationale": "With DEC converting ~83% of fusion energy directly to electricity (2/3 × 0.85 + 1/3 × 0.80 = 0.833), only ~17% of fusion energy appears as waste heat requiring rejection. A comparable thermal-cycle fusion plant at 38% thermal efficiency rejects ~62% of fusion energy as heat. Heat rejection scaling: 17% / 62% = 0.27×. The library's default CAS26 for a thermal-cycle concept would price cooling towers and circulating water system sized for ~62% of gross thermal power; the DPF's direct conversion means the cooling system only needs to handle parasitic losses in the DEC, electrode cooling, and auxiliary systems. DEC efficiency figures are from Lerner 2023 (85% ion, 80% x-ray); both DECs are unbuilt so this ratio carries low confidence. Multiplied against the library's 1 GWe fleet total for CAS26.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "CAS80",
+      "account_name": "Fuel Costs (annualised)",
+      "value": 0.05,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "lerner-2023-jfe-paper.md §Cost and Transition; lppfusion-proton-boron-p11b-fuel-arrives.md",
+      "rationale": "Lerner 2023 states fuel consumption of 5 kg p-B11/year per 5 MWe commercial device. For a 200-module 1 GWe fleet, total fuel consumption = 1,000 kg B-11/year. Lab-scale isotopically pure decaborane: ~$600/g (LPPFusion 2019 purchase, 93 g for $56,000). LPPFusion claims mass production reduces this 'many hundred-fold'; conservative mass-production estimate: $10/g (100× reduction). Annual fuel cost: 5,000 g × $10/g = $50,000/year = $0.050M/year per module. This is effectively negligible for LCOE. The library's default for CAS80 would price the fuel at some reference cost; this derived override reflects the extraordinarily low fuel mass for p-B11 at the 5 MWe scale and the plausible mass-production price trajectory.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    }
+  ],
   "asterisk_in_comparison": true
 }

@@ -20,7 +20,7 @@
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 56493.12890625,
+      "cost_m_usd": 56493.1328125,
       "overridden": false
     },
     "cas23": {
@@ -60,7 +60,7 @@
     },
     "cas30": {
       "name": "Indirect Costs",
-      "cost_m_usd": 11520.4052734375,
+      "cost_m_usd": 11520.40625,
       "overridden": false
     },
     "cas40": {
@@ -70,12 +70,12 @@
     },
     "cas50": {
       "name": "Supplementary Costs",
-      "cost_m_usd": 2515.311767578125,
+      "cost_m_usd": 2515.31201171875,
       "overridden": false
     },
     "cas60": {
       "name": "Interest During Construction",
-      "cost_m_usd": 13775.0654296875,
+      "cost_m_usd": 13775.0673828125,
       "overridden": false
     },
     "cas70": {
@@ -90,7 +90,7 @@
     },
     "cas90": {
       "name": "Financial Costs",
-      "cost_m_usd": 6408.77294921875,
+      "cost_m_usd": 6408.7744140625,
       "overridden": false
     },
     "cas22_detail": {
@@ -186,8 +186,8 @@
       }
     },
     "headline": {
-      "lcoe_per_mwh": 904.1469116210938,
-      "overnight_cost_per_kw": 85439.90625,
+      "lcoe_per_mwh": 904.1470947265625,
+      "overnight_cost_per_kw": 85439.921875,
       "p_net_mw": 71.4285659790039,
       "q_eng": 1.9123400449752808,
       "capacity_factor": 0.85
@@ -1316,5 +1316,18 @@
     "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/36-helical-coil-stellarator/analysis.md"
   },
   "analyst_override_count": 1,
+  "overrides": [
+    {
+      "account": "C220108",
+      "account_name": "Divertor / Target Factory",
+      "value": 0.0,
+      "enabled": true,
+      "provenance": "direct",
+      "source": "aip-2023-paper-abstract.md §II.C, lines 81-84, 234-236",
+      "rationale": "Individual divertor systems are not required in HESTIA. The liquid metal free-surface first wall serves the divertor function by flowing over the plasma-facing surfaces and absorbing heat/particle fluxes. No separate tungsten monoblock divertor cassettes are installed. C220108 (divertor) cost = 0. The divertor functionality is embedded in C220101 (blanket).",
+      "cost_basis": "noak",
+      "blocked_by": null
+    }
+  ],
   "asterisk_in_comparison": false
 }

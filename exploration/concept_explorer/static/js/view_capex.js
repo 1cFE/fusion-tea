@@ -160,6 +160,39 @@
   }
 
   // ---------------------------------------------------------------------------
+  // Override inspection (Item 2) — open the panel from a ★ CapEx bar
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Attach a plotly_click handler that opens the override inspection panel when a
+   * bar backed by an analyst override is clicked. The clicked bar carries its CAS
+   * code in `customdata`, so we match on the code (case-insensitive, the same way
+   * the CAS-widget trigger and the panel filter do) — not the display string.
+   * This keeps the trigger independent of the Python/JS name maps (M1). Non-
+   * override bars find no record and no-op.
+   *
+   * @param {HTMLElement} chartDiv  the Plotly graph div
+   * @param {(pt: object) => object} conceptForPoint  maps a clicked point to its concept
+   */
+  function _wireCapexOverrideClick(chartDiv, conceptForPoint) {
+    if (!chartDiv || typeof chartDiv.on !== "function") return;
+    chartDiv.on("plotly_click", (data) => {
+      const pt = data && data.points && data.points[0];
+      if (!pt || pt.customdata == null) return;
+      const concept = conceptForPoint(pt);
+      const records = (concept && concept.data && concept.data.overrides) || [];
+      const code = String(pt.customdata).toLowerCase();
+      const rec = records.find((r) => r.enabled && String(r.account).toLowerCase() === code);
+      if (!rec) return; // clicked a non-override bar — nothing to inspect
+      showOverridePanel({
+        records,
+        focusAccount: rec.account,
+        conceptName: concept.name,
+      });
+    });
+  }
+
+  // ---------------------------------------------------------------------------
   // Integrated mode — grouped horizontal bars
   // ---------------------------------------------------------------------------
 
@@ -186,6 +219,9 @@
     const numCategories = categories.length;
 
     const traces = [];
+    // Parallel to `traces`: the concept behind each trace, so a plotly_click's
+    // curveNumber maps back to a concept even when some are skipped (no cost_model).
+    const traceConcepts = [];
 
     for (let ci = 0; ci < concepts.length; ci++) {
       const concept = concepts[ci];
@@ -197,6 +233,10 @@
       const yLabels = [];
       const xValues = [];
       const hoverTexts = [];
+      // Per-bar CAS code, carried as Plotly customdata so the override-panel
+      // click matches on a stable code (not the display string, which would
+      // couple this trigger to two independently-maintained name maps). See M1.
+      const barCodes = [];
 
       for (const casKey of CAS_ORDER) {
         if (casKey === "cas22" && showSubAccounts) {
@@ -208,6 +248,7 @@
             const overrideTag = sub && sub.overridden ? " ★ overridden" : "";
             yLabels.push(name);
             xValues.push(cost);
+            barCodes.push(subKey);
             hoverTexts.push(
               `<b>${name}</b> (CAS22)<br>` +
               `${concept.name}<br>` +
@@ -222,6 +263,7 @@
           const overrideTag = acct && acct.overridden ? " ★ overridden" : "";
           yLabels.push(name);
           xValues.push(cost);
+          barCodes.push(casKey);
           hoverTexts.push(
             `<b>${name}</b><br>` +
             `${concept.name}<br>` +
@@ -235,6 +277,7 @@
         orientation: "h",
         y: yLabels,
         x: xValues,
+        customdata: barCodes,
         name: concept.name,
         marker: { color: rgba(color.base, color.opacity) },
         hovertemplate: "%{hovertext}<extra></extra>",
@@ -242,6 +285,7 @@
         legendgroup: concept.concept_id,
         showlegend: true,
       });
+      traceConcepts.push(concept);
     }
 
     const chartHeight = Math.min(900, Math.max(400, numCategories * 28 + 120));
@@ -285,6 +329,7 @@
     };
 
     Plotly.newPlot(chartDiv, traces, layout, PLOTLY_CONFIG);
+    _wireCapexOverrideClick(chartDiv, (pt) => traceConcepts[pt.curveNumber]);
 
     // Total cost summary line
     const totalsDiv = el("div", "capex-totals");
@@ -342,6 +387,7 @@
     const yLabels = [];
     const xValues = [];
     const barColors = [];
+    const barCodes = []; // per-bar CAS code for customdata-based override matching (M1)
     const hoverTexts = [];
     const annotations = [];
 
@@ -356,6 +402,7 @@
           const overrideTag = sub && sub.overridden ? " ★ overridden" : "";
           yLabels.push(name);
           xValues.push(cost);
+          barCodes.push(subKey);
           barColors.push(CAS22_COLORS[si % CAS22_COLORS.length]);
           hoverTexts.push(
             `<b>${name}</b> (CAS22)<br>` +
@@ -382,6 +429,7 @@
         const overrideTag = acct && acct.overridden ? " ★ overridden" : "";
         yLabels.push(name);
         xValues.push(cost);
+        barCodes.push(casKey);
         barColors.push(CAS_COLORS[casKey] || "#6B7280");
         hoverTexts.push(
           `<b>${name}</b><br>` +
@@ -410,6 +458,7 @@
       orientation: "h",
       y: yLabels,
       x: xValues,
+      customdata: barCodes,
       marker: { color: barColors },
       hovertemplate: "%{hovertext}<extra></extra>",
       hovertext: hoverTexts,
@@ -444,6 +493,7 @@
     };
 
     Plotly.newPlot(chartDiv, [trace], layout, PLOTLY_CONFIG);
+    _wireCapexOverrideClick(chartDiv, () => concept);
 
     // Total cost below chart
     const totalLine = el("div", "capex-totals");

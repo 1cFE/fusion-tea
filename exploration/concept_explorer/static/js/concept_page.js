@@ -173,12 +173,18 @@
    *
    * @param {HTMLElement} heroEl
    * @param {Object} opts
-   * @param {number} opts.count       enabled override count (drives the chip)
+   * @param {number} opts.count       enabled override count (drives the toggle)
+   * @param {number} [opts.recordCount] total registry entries (enabled + not).
+   *   When 0 enabled but >0 total (a disabled-only concept), the chip reads
+   *   "(N not applied)" instead of a contradictory "(0 entries)". See m2.
    * @param {boolean} opts.checked    initial state (default-on)
    * @param {boolean} opts.disabled   true when count === 0
    * @param {Function} opts.onChange  (checked: boolean) => void
+   * @param {Function} [opts.onCountClick] when set, the count chip becomes a
+   *   clickable trigger that opens the override inspection panel with the whole
+   *   registry (Item 2). Omitted when the concept has no records.
    */
-  function mountOverrideToggle(heroEl, { count, checked, disabled, onChange }) {
+  function mountOverrideToggle(heroEl, { count, recordCount, checked, disabled, onChange, onCountClick }) {
     const prior = heroEl.querySelector(".override-toggle");
     if (prior) prior.remove();
 
@@ -202,8 +208,40 @@
     label.appendChild(cb);
 
     label.appendChild(el("span", "override-toggle__text", "Apply analyst cost adjustments"));
-    const entries = count === 1 ? "1 entry" : `${count} entries`;
-    label.appendChild(el("span", "override-toggle__count", `(${entries})`));
+    // Label reflects what the toggle applies (enabled count). For a disabled-only
+    // concept (0 enabled, but ≥1 not-applied entry to read) the "(0 entries)"
+    // text would contradict the still-clickable chip, so show "(N not applied)".
+    const total = recordCount != null ? recordCount : count;
+    let entries;
+    if (count > 0) {
+      entries = count === 1 ? "1 entry" : `${count} entries`;
+    } else if (total > 0) {
+      entries = `${total} not applied`;
+    } else {
+      entries = "0 entries";
+    }
+    const countEl = el("span", "override-toggle__count", `(${entries})`);
+    if (typeof onCountClick === "function") {
+      countEl.classList.add("override-toggle__count--clickable");
+      countEl.setAttribute("role", "button");
+      countEl.setAttribute("tabindex", "0");
+      countEl.title = "Inspect the analyst's cost adjustments";
+      // The count sits inside the <label>; stop the click/keydown from toggling
+      // the checkbox — it opens the inspection panel instead.
+      countEl.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        onCountClick();
+      });
+      countEl.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          e.stopPropagation();
+          onCountClick();
+        }
+      });
+    }
+    label.appendChild(countEl);
     wrap.appendChild(label);
 
     wrap.appendChild(
@@ -375,6 +413,19 @@
     const heroEl = document.getElementById("hero");
     renderHero(heroEl, concept);
 
+    // Override inspection panel (Item 2). One handler shared by every ★ trigger
+    // (CAS rows + treemap tiles, across the initial render and all recompute
+    // paths) and by the hero "(N entries)" chip. Reads the records already on the
+    // concept payload — never fetches.
+    const overrideRecords = concept.overrides || [];
+    function openOverridePanel(focusAccount) {
+      showOverridePanel({
+        records: overrideRecords,
+        focusAccount,
+        conceptName: concept.name,
+      });
+    }
+
     // ---- Sticky headline ----
     // The "mode baseline" is the current LCOE function's headline with sliders at
     // baseline: the extraction-time analyst-applied headline on load, and the
@@ -417,6 +468,7 @@
           renderCASBreakdown(casMountForReset, {
             cas: _casToPlain(modeBaselineCostModel),
             cas22_detail: modeBaselineCostModel.cas22_detail || {},
+            onOverrideClick: openOverridePanel,
           });
         }
         // Clear the "N CHANGED" pill on the Sensitivity header.
@@ -532,6 +584,7 @@
           renderCASBreakdown(casMount, {
             cas: _casToPlain(newCostModel),
             cas22_detail: newCostModel.cas22_detail || {},
+            onOverrideClick: openOverridePanel,
           });
           postState(conceptId, overrides, []);
         } catch (err) {
@@ -584,6 +637,7 @@
       renderCASBreakdown(casMount, {
         cas: _casToPlain(concept.cost_model),
         cas22_detail: concept.cost_model.cas22_detail || {},
+        onOverrideClick: openOverridePanel,
       });
 
       // Mode switch: one compute call (new headline + CAS) plus a client-side
@@ -614,6 +668,7 @@
           renderCASBreakdown(casMount, {
             cas: _casToPlain(newCostModel),
             cas22_detail: newCostModel.cas22_detail || {},
+            onOverrideClick: openOverridePanel,
           });
           renderTornadoForMode();
           setResetEnabled(stickyEl, false);
@@ -637,12 +692,17 @@
       if (isCostingfeForSticky) {
         mountOverrideToggle(heroEl, {
           count: concept.analyst_override_count || 0,
+          recordCount: overrideRecords.length,
           checked: applyOverrides,
           disabled: (concept.analyst_override_count || 0) === 0,
           onChange: (checked) => {
             applyOverrides = checked;
             onModeSwitch();
           },
+          // The chip opens the whole registry (enabled + not-applied). Present
+          // whenever any record exists — including disabled-only concepts whose
+          // enabled count is 0 but whose not-applied entries are worth reading.
+          onCountClick: overrideRecords.length > 0 ? () => openOverridePanel() : undefined,
         });
       }
     }
