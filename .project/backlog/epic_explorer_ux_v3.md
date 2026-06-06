@@ -177,6 +177,8 @@ These were settled in discussion before decomposition; specs/designs inherit the
 
 **Dependencies**: none (Item 1 landed the handlers this touches).
 
+**Status**: ✅ Complete (implemented + browser-validated 2026-06-06). Added a shared `_refreshCASHint(costModel)` helper in `init` (hoisted function declaration, reads the same `_sumCASCapital`/`_fmtMoneyM`) and called it from `onSliderChange` and `onModeSwitch` (compute response) and `onReset` (`modeBaselineCostModel`); routed the init-time hint through it too. Verified on concept 24, console clean: toggle off 1,676→2,203 M$ (hint tracked), `vessel_t` drag 1,676→1,683 M$ (hint tracked), reset back to 1,676 M$ (hint reverted) — hint == breakdown total in every state.
+
 #### Item 1-FU2: Audit extract-all output consistency vs isolated extraction [investigation, ~1–2h]
 
 **Type**: Data-integrity investigation
@@ -265,8 +267,8 @@ Item 1 (Slider/Tornado/Headline Coherence)
 
 ---
 
-**Last Updated**: 2026-06-06 (Item 2 implemented, review-hardened, and browser-validated — Phase 1 complete pending Item 1-FU1)
-**Next Action**: Phase 1's two Tier-1 items are both done. Remaining loose ends before closing Phase 1: (1) land **Item 1-FU1** (CAS header-hint staleness, trivial); (2) the **Item 2-FU** below (re-extract concepts 37 & 39 once their pre-existing `model_setup.py` bugs are fixed — they were the only registry-bearing served concepts that could not refresh, so their ★/chip currently shows the stale pre-Item-2 state). Then decide whether to start Phase 2 (per-account decomposition).
+**Last Updated**: 2026-06-06 (Item 1-FU1 landed — CAS header hint now tracks live state on slider/toggle/reset)
+**Next Action**: Phase 1's two Tier-1 items are both done, and **Item 1-FU1** is now landed. Remaining loose end before closing Phase 1: the **Item 2-FU** below (re-extract concepts 37 & 39 once their pre-existing `model_setup.py` bugs are fixed — they were the only registry-bearing served concepts that could not refresh, so their ★/chip currently shows the stale pre-Item-2 state). Then decide whether to start Phase 2 (per-account decomposition).
 
 #### Item 2-FU: Re-extract 37 & 39 after concept-side model_setup.py fixes [blocked, trivial once unblocked]
 

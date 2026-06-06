@@ -426,6 +426,20 @@
       });
     }
 
+    // Refresh the CAS section header hint ("Total Capital: N M$") from a cost
+    // model. Called at init and from every recompute path (slider, mode toggle,
+    // reset) so the header summary tracks the live breakdown total instead of
+    // the load-time value (Item 1-FU1). One shared helper keeps the slider and
+    // toggle paths consistent — half-fixing only one would make them disagree
+    // about whether the hint tracks live state.
+    function _refreshCASHint(costModel) {
+      if (!costModel) return;
+      setSectionHint(
+        document.getElementById("cas-section"),
+        `Total Capital: ${_fmtMoneyM(_sumCASCapital(costModel))}`,
+      );
+    }
+
     // ---- Sticky headline ----
     // The "mode baseline" is the current LCOE function's headline with sliders at
     // baseline: the extraction-time analyst-applied headline on load, and the
@@ -470,6 +484,7 @@
             cas22_detail: modeBaselineCostModel.cas22_detail || {},
             onOverrideClick: openOverridePanel,
           });
+          _refreshCASHint(modeBaselineCostModel);
         }
         // Clear the "N CHANGED" pill on the Sensitivity header.
         setSectionHint(
@@ -586,6 +601,7 @@
             cas22_detail: newCostModel.cas22_detail || {},
             onOverrideClick: openOverridePanel,
           });
+          _refreshCASHint(newCostModel);
           postState(conceptId, overrides, []);
         } catch (err) {
           console.error("[concept_page] compute failed:", err);
@@ -670,6 +686,7 @@
             cas22_detail: newCostModel.cas22_detail || {},
             onOverrideClick: openOverridePanel,
           });
+          _refreshCASHint(newCostModel);
           renderTornadoForMode();
           setResetEnabled(stickyEl, false);
           _updateSensitivityHint({});
@@ -735,8 +752,7 @@
 
     if (concept.cost_model) {
       makeCollapsible(sections.cas, false);
-      const total = _sumCASCapital(concept.cost_model);
-      setSectionHint(sections.cas, `Total Capital: ${_fmtMoneyM(total)}`);
+      _refreshCASHint(concept.cost_model);
 
       makeCollapsible(sections.sensitivity, true);
       // Sensitivity hint stays at the template default ("Drag any slider…")
