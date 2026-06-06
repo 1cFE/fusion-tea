@@ -645,9 +645,19 @@ def _run_model_in_iteration(
         is_costingfe=template_name.startswith("model_setup_costingfe"),
     )
 
+    # Edit-pass model-setup runs natively 4-7x slower than cold-start: the
+    # agent reads validators + library to internalize the override registry
+    # contract, then self-runs the model (each `uv run python` cold boot is
+    # ~30s). Production default 900s sits below the P95 and silently kills
+    # valid work. Floor the edit-pass timeout at 1800s; user-supplied larger
+    # values still win. See model-setup-feedback-timeout TICKET, Defect B (B1).
+    step_timeout = args.timeout
+    if prior_model_src is not None:
+        step_timeout = max(step_timeout, 1800)
+
     result = invoke_claude_validated(
         ctx.prompt_text, cwd=CONCEPT_ANALYSIS_DIR,
-        timeout=args.timeout, model=args.model,
+        timeout=step_timeout, model=args.model,
         validator=validator,
         output_path=model_script,
         step_label="model-setup",
@@ -655,11 +665,17 @@ def _run_model_in_iteration(
     )
     elapsed = time.time() - ctx.start_time
 
-    if result.invoke.returncode != 0:
-        print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
-        return False, False
-
+    # File-on-disk is the source of truth: if every validator
+    # (syntax + three-forward contract + override registry) passed against
+    # the bytes Claude wrote, honor the file even if the subprocess was
+    # killed at the timeout a moment later (rc=-1). Without this, a valid
+    # model that landed just before SIGKILL is silently discarded and the
+    # iter is stamped STALE. Surface rc!=0 as a warning so timeouts stay
+    # visible. See model-setup-feedback-timeout TICKET, Defect A.
     if not result.validation_passed:
+        if result.invoke.returncode != 0:
+            print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
+            return False, False
         # Either the file was never written (H-01 path) or the script
         # failed validation. Both leave model_ok=False but
         # are non-fatal to the iteration (FR-7).
@@ -669,6 +685,13 @@ def _run_model_in_iteration(
         validator_name = getattr(validator, "__name__", "validation")
         print(f" FAILED ({elapsed:.0f}s) — {validator_name} exhausted")
         return True, False
+
+    if result.invoke.returncode != 0:
+        print(
+            f"  warn: model-setup rc={result.invoke.returncode} but validators "
+            f"passed on the file on disk — honoring the validated model",
+            file=sys.stderr,
+        )
 
     print(f" done ({elapsed:.0f}s)", end="")
 
