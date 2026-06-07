@@ -2,11 +2,78 @@
 
 ## Mode: Feedback Pass (Edit Existing Model)
 
-An existing three-forward model from a prior iteration has been copied to `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\24-dense-plasma-focus\iter-2\model_setup.py`.
+An existing three-forward model from a prior iteration has been copied to `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/24-dense-plasma-focus/iter-2/model_setup.py`.
 
-**Your task**: Read the existing model at `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\24-dense-plasma-focus\iter-2\model_setup.py` and apply
+**Your task**: Read the existing model at `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/24-dense-plasma-focus/iter-2/model_setup.py` and apply
 **targeted edits** based on the assessment findings below. Use the Edit tool — do
 NOT rewrite the file from scratch, and do NOT restructure conforming code.
+
+## Validator Contract (read this; do NOT go read the validator source)
+
+Your output is judged by four validators run against the bytes on disk. Every
+requirement they enforce is stated **here** — exhaustively. **Do not Read or
+grep `scripts/lib/validators.py`, `scripts/lib/canonical_accounts.py`, the
+costingfe source, or the orchestrator code to "check what's required" — the
+contract is below. Reading those files is the single biggest time sink in
+this step and is forbidden unless an assessment finding *explicitly* points
+at one of them.**
+
+1. **Python syntax** — file must `ast.parse()` clean.
+2. **File modified** — the file's SHA-256 must change from the prior model.
+   Editing in place satisfies this; copying the file unchanged does not.
+3. **Three-forward contract** — module-level bindings, in this order:
+   `spec`, `P_native`, `model = CostModel(...)`, `generic = generic_reference(model, spec, P_native)`,
+   `overrides = [ ... ]`, `native, result_1gw = run_native_and_1gw(model, spec=spec, overrides=overrides, p_native=P_native)`,
+   then `print_cas_breakdown(generic, native, result_1gw, overrides)`. Do
+   not inline a two-knob `forward()`. Do not drop `generic`.
+4. **Override registry** (the validator that previously sent agents on
+   archaeology expeditions — full contract here):
+   - `overrides` must be a module-level **list literal of dict literals**
+     (`overrides = []` is fine if there are none).
+   - Each entry has **all six** fields: `account`, `value`, `enabled`,
+     `provenance`, `source`, `rationale`. `provenance ∈ {"direct", "derived"}`.
+   - `account` must be one of the concept's canonical accounts (already
+     listed in the "Canonical account schema" section below — do not look it
+     up elsewhere).
+   - **Forbidden rollup accounts** (rejected outright): `C220111`, `C220000`,
+     `C220100`, `C220200`, `C220300`, `C220400`, `C220500`, `C220600`,
+     `C220700`. To express "this concept assembles more simply," override
+     `installation_frac` via `costing_overrides`, not the C220111 dollar
+     amount.
+   - `value` may be a **number**, a **constant numeric expression** (e.g.
+     `260.0 * 1.34`), or an **expression over `generic`** (e.g.
+     `0.70 * generic.costs.cas21`). It **MUST NOT** reference `native`,
+     `result_1gw`, or `result` (wrong reference frame).
+   - Literal `value` must satisfy `|value| <= 5e4` (M$, never raw $).
+   - **Disabled** entries (`enabled: False`) must carry a 7th field
+     `blocked_by: "<org>/<repo>#NN"` (e.g. `"1cFE/1costingfe#42"`).
+   - Every entry must declare `cost_basis: "noak"`. The framework runs
+     `noak=True`; `foak`, `conceptual_design`, `vendor_target`, and
+     `unspecified` are rejected. Non-NOAK published values: either disable
+     with `blocked_by`, or apply a documented learning-curve adjustment in
+     `rationale` and declare `cost_basis: "noak"`.
+   - No two entries may share an `account`.
+
+## Self-verification budget
+
+You may run the edited model at most **twice** as a self-check:
+
+- Once after your edits to confirm it executes and prints a CAS breakdown.
+- (Optionally) once more if a *specific finding* requires you to numerically
+  verify a value you changed.
+
+Each `uv run python` cold-boot costs ~30s. Do not write ad-hoc test scripts
+under `/tmp/` to probe library internals — if the model runs and the
+override registry above is satisfied, you are done.
+
+## Operational constraints
+
+- This is an orchestrated pipeline run. **Do not write to your auto-memory**
+  (`~/.claude/projects/.../memory/`) and do not take open-ended exploratory
+  actions outside the scope of the findings below.
+- If you discover a library bug while editing, **do not** investigate or
+  fix it — record it as a `blocked_by: <org>/<repo>#NN` on the affected
+  override (file the tracker issue out of band).
 
 ## Preserve the three-forward contract
 
@@ -63,6 +130,111 @@ instead of dying in the rationale text.
 (a) disable + `blocked_by`, (b) apply a documented learning-curve adjustment in
 `rationale` and declare `cost_basis: "noak"`, or (c) file a tracker issue.
 
+## Override semantics and the 1 GWe headline (read before editing any override)
+
+This is the same policy the analysis agent authored Section 5b against — the single
+headline invariant, the S/U/P cost classes, and the modular-fleet rationale
+baseline. Any override you add or change must match it: the value anchored to the
+account's own storage shape, and the rationale in the modular-fleet frame (never a
+"conventional 1 GWe plant").
+
+# Override semantics and the 1 GWe headline
+
+## The invariant (this is the whole rule)
+
+Every concept's headline is one number: LCOE for a **1 GWe NOAK plant**, reached
+by **replicating** the real `P_native` design point into a fleet of `n_mod`
+identical modules (`run_native_and_1gw(...)`, `noak=True`). There is no monolithic
+1 GWe machine — we never extrapolate the physics model to a single 1000 MWe
+reactor we have no design basis for.
+
+At that headline, for **every account in every class**:
+
+    account = M × (the library's 1 GWe fleet cost for that account)
+
+`M` is the fraction of the library's fleet answer you believe this concept should
+pay. `M = 1.0` means "trust the library default"; you only write an override when
+evidence says this concept departs from it. That is the entire authoring rule.
+
+The framework guarantees this invariant regardless of *which* `generic` value you
+anchor to: `_scale_overrides` (in `1costingfe/src/costingfe/model.py`) rescales
+your override from the native frame to the fleet frame by the per-account ratio
+`fleet_cost / native_cost`, so the headline always lands on `M × fleet_cost`. You
+do **not** compute that ratio yourself — you pick the right `generic` anchor for
+the account's storage shape (below) and the framework does the rest.
+
+## The cost classes — comprehension, not three rules
+
+The classes below explain **why** the fleet cost is what it is (so you can sanity-
+check `M`) and dictate the **authoring shape** — which `generic` value you anchor
+to. They do **not** introduce per-class multipliers. If you delete the table, the
+invariant above still tells you what an override means; the table only tells you
+*where to anchor it* and *why the fleet cost looks the way it does*.
+
+| Class | Why the fleet cost is what it is | Authoring shape (what to anchor to) | Accounts |
+|---|---|---|---|
+| **S — Shared / fixed** | A site needs these **once**, however many modules it runs — the library charges them once across the fleet. That single charge *is* the amortization that gives a small machine a fair shot. | whole-plant M$ → `M * generic.costs.<rollup>` | CAS10, CAS21, CAS28, CAS40, CAS70 |
+| **U — Per-unit** | One per module: `N` modules → `N` cores. The library multiplies by `n_mod`; `noak=True` credits mass-production learning as the offset for losing single-core economy of scale. | per-module M$ → `M * generic.cas22_detail["C2201xx"]` | CAS22 reactor-island sub-accounts `C2201xx`; CAS80 fuel (taught, but not overridable today — see note) |
+| **P — Power-proportional** | Scales with the **total** plant power, so the value is the same whether you replicate or not. | whole-plant M$ → `M * generic.costs.<rollup>` | CAS23, CAS24, CAS25, CAS26, CAS27; plant-wide CAS22 sub-accounts `C2202xx`–`C2207xx` |
+
+**Storage-shape footnotes (which `generic` attribute exists):**
+- Only the CAS22 reactor-island sub-accounts (`C2201xx`) live under
+  `generic.cas22_detail["C220xxx"]`. Everything else — CAS21, CAS23–27, CAS70,
+  CAS80, and the CAS22 rollup — is a top-level attribute on `generic.costs`.
+- **Taught but NOT overridable today: CAS40 (owner's costs), CAS70 (O&M), and
+  CAS80 (fuel).** Overrides on these are silently dropped — e.g. a CAS80 override,
+  whether absolute (`0.050`) or relative (`M * generic.costs.cas80`), leaves the
+  fleet value at the library default and does **not** move the headline
+  (`1cFE/1costingfe#106`; the CAS70 / CAS80 no-op is pinned by
+  `1costingfe/tests/test_override_scaling_semantics.py`). They are in the class
+  table so you know *why* the library prices them as it does (and so a future
+  override surface lands on prepared ground) — but do **not** author an override
+  against them expecting an effect. Use only codes from the canonical account
+  schema you are given.
+
+**Reading the output — how to verify a Class-U override actually scaled:**
+The `print_cas_breakdown` **CAS22 sub-account detail table shows per-module M$ at
+every scale** — its `native` (n_mod=1) and `1 GWe` (n_mod=200) columns are
+*supposed to be identical* for a `C2201xx` row, because the per-module cost does not
+change; the ×`n_mod` fleet multiplication shows up in the **`C220000` / `CAS22`
+rollup**, not in the detail row. So a Class-U detail row that reads the same at
+native and 1 GWe is **expected, not a scaling failure.** To confirm a Class-U
+override reached the fleet, check that the **`CAS22` (or `C220000`) rollup** moved
+by roughly `Δ(per-module value) × n_mod` — never infer "it didn't scale" from the
+detail row alone.
+
+## The rationale baseline (one named frame, always)
+
+Every relative override's `rationale` answers "why is `M` what it is?" against
+**one** named baseline:
+
+> **the library's default for a fleet of this device at 1 GWe.**
+
+Never against "a conventional 1 GWe plant" / a monolithic 1000 MWe machine — under
+the always-replicate decision that baseline does not exist. Anchor the rationale
+to the same frame as the value. (Citing a monolithic plant from the literature as
+a *comparable* — ARC, STEP — is fine; using one as the override's *anchor
+baseline* is the inconsistency this policy removes.)
+
+A multiplier above 1.0 is legitimate: it means "this concept's account costs more
+than the library's modular-fleet default" (e.g. a harder-to-build module), still
+in the fleet frame — not "more than a conventional plant."
+
+## What wrong looks like
+
+- **Value/rationale frame mismatch.** Value reads `0.70 * generic.cas22_detail["C220101"]`
+  (70% of one module's blanket) while the rationale says "70% of a conventional
+  1 GWe plant's blanket." The value is per-module fleet-frame; the rationale is
+  monolithic. Rewrite the rationale in the modular-fleet frame.
+- **Monolithic baseline in rationale.** Any "vs a conventional / standard 1 GWe
+  plant," "vs a monolithic reactor," or bare "vs library default" with no fleet
+  frame. Replace with "vs the library's 1 GWe modular-fleet default."
+- **Class/anchor mismatch.** Overriding a CAS22 sub-account (Class U) but anchoring
+  to a top-level rollup (e.g. `C220101` valued against `generic.costs.cas21`).
+  Anchor each account to its own storage location: `C2201xx` →
+  `generic.cas22_detail["C2201xx"]`; top-level rollups → `generic.costs.<rollup>`.
+
+
 **Rules**:
 - Preserve all existing sweeps, scenarios, and sensitivity analyses unless a
   finding specifically says to change them.
@@ -79,34 +251,34 @@ Focus on findings tagged `Category: model`. Findings tagged `Category: analysis`
 are informational (the analysis agent handles prose), but you may adjust model
 parameters if an analysis finding implies the model's assumptions are wrong.
 
-### F-1: Section 7 contradicts the upstream-fixed confinement family
-- **Target:** Section 7 (Family-Delta vs Comparables)
-- **Category:** analysis
-- **Finding:** The frontmatter fixes `Confinement-Family: MFE`, but Section 7 opens with "The Dense Plasma Focus is classified under confinement family 'Other' — it does not fit cleanly into MFE, IFE, MIF, or Electrostatic categories." The analysis instructions explicitly state that the confinement family is fixed upstream and must not be re-decided. By claiming a different family, Section 7 undermines the delta framework: instead of articulating how this concept differs *within* or *against* the MFE family (and the fixed — albeit empty — comparables list), it argues for a reclassification that is outside the analysis agent's authority.
-- **Recommendation:** Remove the "classified under confinement family 'Other'" assertion. Accept the upstream MFE classification and reframe the family-delta prose to articulate how the DPF's self-confinement, pulsed operation, lack of external magnets, and direct energy conversion create specific subsystem-level cost deltas relative to conventional MFE concepts (which the analysis already does in the subsequent paragraphs — the opening claim is the problem, not the body of the comparison).
-- **Priority:** important
-
-### F-2: CAS80 override value uses raw dollars in analysis YAML but M$ in model_setup.py
-- **Target:** Section 5b (Override Candidates) CAS80 entry and model_setup.py CAS80 override
-- **Category:** analysis
-- **Finding:** The analysis Section 5b YAML specifies `value: 30000.0` for CAS80 (annualized fuel cost), which in the model framework's M$ convention would mean $30 billion/year. The model_setup.py correctly uses `value: 0.03` (i.e., $30,000/year = 0.03 M$/year). The rationale in both artifacts derives the same $30,000/year figure, so the intent is clear, but the analysis YAML value is inconsistent with the model's unit convention. If the analysis YAML were consumed literally by a downstream tool, the result would be off by six orders of magnitude.
-- **Recommendation:** Change the analysis Section 5b CAS80 YAML entry from `value: 30000.0` to `value: 0.03` and add a brief inline note that the unit is M$/year, consistent with the model framework convention used by all other overrides (which express values in M$ via the `generic.costs.*` multiplier pattern).
-- **Priority:** important
-
-### F-3: CAS70 override appears ineffective — native and generic values are identical
-- **Target:** model_setup.py CAS70 override and model output
+### F-1: C220107 override is vacuous — capacitor bank cost absent from model
+- **Target:** model_setup.py overrides list (and matching Section 5b YAML entry)
 - **Category:** model
-- **Finding:** The CAS70 override is set to `0.25 * generic.costs.cas70`, which should reduce native CAS70 to 25% of the generic value. However, the model output shows CAS70 = $2.4M for generic, native, and 1 GWe alike — no reduction is visible. If the framework treats annualized O&M differently from capital accounts (e.g., CAS70 is computed post-override or is not subject to the same override injection path), the override may be silently ignored. Either the override is not taking effect and the native LCOE is overstated on O&M, or the framework behavior needs to be documented so the analysis can account for it.
-- **Recommendation:** Verify that the CAS70 override is being applied by the framework (check whether `run_native_and_1gw` injects operating-cost overrides the same way it injects capital-cost overrides). If the framework does not support CAS70 overrides, remove the CAS70 entry from both the analysis registry and the model's override list and note the limitation. If it does support them, investigate why the output shows no reduction and fix the override application.
+- **Finding:** The model output shows `C220107 = -0.0` at all scales (generic, native, 1 GWe). The DENSE_PLASMA_FOCUS archetype carries ~$0 for C220107 in the library, so `0.40 * generic.cas22_detail["C220107"]` evaluates to zero — the $400K/module capacitor bank the analysis argues for never enters the model. The rationale is well-reasoned and cites real arithmetic (40% of $1M device cost), but the relative anchor is broken. Note that C220101 and C220102 are similarly vacuous (library also zeros those for this archetype), but those accounts should be $0 so the vacuousness there is harmless. C220107 is different: a real cost is missing. C220200 (power conditioning) shows 3.1 M$/module and may be where the library routes the DPF driver cost; if so, that is the account to evaluate for an override instead.
+- **Recommendation:** Change the C220107 override value from the relative form `0.40 * generic.cas22_detail["C220107"]` to an absolute value of `0.40` (M$/module) consistent with the analysis's own arithmetic — matching the C220109 approach — and update Section 5b YAML to match. Alternatively, if C220200 is confirmed as the library's driver-cost account for this archetype, replace the C220107 entry with a C220200 override anchored to `generic.costs.cas22` or its sub-account with an absolute value derived from the $1M device cost claim.
+- **Priority:** blocking
+
+### F-2: 1 GWe LCOE of 13 $/MWh is implausibly low
+- **Target:** model_setup.py (model output / baseline scenario)
+- **Category:** model
+- **Finding:** 13 $/MWh is cheaper than mature utility-scale solar for a paper-concept with no demonstrated p-B11 fusion, an 8-orders-of-magnitude yield gap to the commercial target, and low grounding confidence. The result follows mechanically from the $1M/module mass-production assumption (acknowledged as a paper-projection with low confidence) plus the vacuous C220107 override that omits ~$400K/module of driver cost (at 200 modules, ~$80M missing from the fleet reactor-island before NOAK discounting). Even correcting C220107, the LCOE would still be implausibly low because C220200 (3.1 M$/module → $208M fleet) and other accounts are calibrated to a device cost far above the company's $1M claim. As presented, the 13 $/MWh headline will appear in cross-concept comparisons as DPF undercutting all other fusion concepts — a conclusion that is not credible given the concept's technology status. The model should include a no-overrides run as an upper bracket, or the output should be explicitly labeled as an optimistic lower bound contingent on unvalidated physics and speculative mass-production costs.
+- **Recommendation:** Add a `generic` scenario printout (overrides off, same spec) alongside the current run, clearly labeled as the "library-default upper bound," so the 13 $/MWh headline is contextualized. The generic LCOE is already printed (557.7 $/MWh), so the output already carries both numbers — add a one-line label in the print output or model docstring making explicit that the 13 $/MWh is the optimistic case and is contingent on the $1M/module claim being realized.
 - **Priority:** important
+
+### F-3: C220101 and C220102 relative overrides are vacuous and add no cost signal
+- **Target:** model_setup.py overrides list (and matching Section 5b YAML entries)
+- **Category:** model
+- **Finding:** `generic.cas22_detail["C220101"]` and `generic.cas22_detail["C220102"]` are both $0 in the library's DENSE_PLASMA_FOCUS archetype — the library already zeroes these accounts, presumably because it recognizes this archetype has no neutron-breeding blanket or heavy shielding. The `0.04 ×` and `0.05 ×` multipliers therefore evaluate to $0 in both cases, identical to the library default. These two overrides count toward the 9-override total but contribute no cost difference and no information. They suggest the analysis authors did not verify the generic baseline before writing the overrides.
+- **Recommendation:** Remove the C220101 and C220102 override entries from both model_setup.py and Section 5b YAML. Add a note in Section 5b for each account confirming the library's DENSE_PLASMA_FOCUS default is already $0, consistent with the aneutronic architecture — no departure from library default is needed. This reduces the override count from 9 to 7, still within the Low archetype-fit band (6–12).
+- **Priority:** minor
 
 
 ## Reference
 
-- **Concept Analysis (Design Point + Section 5b overrides):** `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\24-dense-plasma-focus\analysis.md`
-- **Example (pattern):** `\home\reid\1cfe\1costingfe\examples\dt_tokamak.py`
-- **README:** `\home\reid\1cfe\1costingfe\README.md`
-- **Costing Constants:** `\home\reid\1cfe\1costingfe\src\costingfe\data\defaults\costing_constants.yaml`
+- **Concept Analysis (Design Point + Section 5b overrides):** `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/24-dense-plasma-focus/analysis.md`
+- **Example (pattern):** `/home/reid/1cfe/1costingfe/examples/dt_tokamak.py`
+- **README:** `/home/reid/1cfe/1costingfe/README.md`
+- **Costing Constants:** `/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml`
 - **Concept mapping:** `ConfinementConcept.DENSE_PLASMA_FOCUS`, `Fuel.PB11`
 
 ### Canonical account schema (for any new/changed override)
@@ -141,4 +313,4 @@ trace back to ignoring these warnings.
 {{canonical_spec_keys}}
 
 ## Output
-Write changes to: `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\24-dense-plasma-focus\iter-2\model_setup.py`
+Write changes to: `/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/24-dense-plasma-focus/iter-2/model_setup.py`
