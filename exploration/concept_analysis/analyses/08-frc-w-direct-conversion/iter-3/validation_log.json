@@ -1,0 +1,29 @@
+[
+  {
+    "timestamp": "2026-06-07T18:56:13.385557+00:00",
+    "step": "feedback-pass",
+    "attempt": 1,
+    "validator": "validate_file_modified",
+    "passed": true,
+    "details": "File content changed",
+    "validated_text_preview": "---\nID: 08-frc-w-direct-conversion\nConcept: FRC w/ Direct Conversion (Helion Energy)\nCompany: Helion Energy\nStatus: draft\nCreated: 2026-06-07\nApproved-Date:\nConfinement-Family: MFE\nArchetype: PULSED_FRC\nArchetype-Fit: Low\nComparison-Status: costingfe\nComparables: []\nDesign-Point-Name: Orion \u2014 Helion 8th-generation first commercial plant (50 MWe Microsoft PPA, 2028 target)\nDesign-Point-Maturity: pilot-demonstrator\nP-Native: 50\nGrounding-Confidence: medium\n---\n\n## Design Point\n\n- Name: Orion \u2014 Hel"
+  },
+  {
+    "timestamp": "2026-06-07T18:57:33.686028+00:00",
+    "step": "model-setup",
+    "attempt": 1,
+    "validator": "validate_python_syntax+validate_model_setup_contract_strict+validate_override_registry",
+    "passed": true,
+    "details": "All validators passed",
+    "validated_text_preview": "\"\"\"1costingfe model: FRC w/ Direct Conversion (Helion Energy) (Helion Energy).\n\nUsage:\n    uv run python model_setup.py              # print results\n    uv run python model_setup.py | tee model_output.txt\n\"\"\"\nimport sys\nfrom pathlib import Path\n\n# Make the shared three-forward helper importable regardless of where this file\n# lives (concept dir or iter-N/ dir): walk up to the scripts/ root.\n_SCRIPTS = next(\n    p / \"scripts\"\n    for p in Path(__file__).resolve().parents\n    if (p / \"scripts\" / \""
+  },
+  {
+    "timestamp": "2026-06-07T19:02:30.228071+00:00",
+    "step": "assess",
+    "attempt": 1,
+    "validator": "validate_feedback_verdict",
+    "passed": true,
+    "details": "Feedback format valid (verdict: PASS)",
+    "validated_text_preview": "VERDICT: PASS\n\n<!-- Assessment notes (not machine-parsed) -->\n\nAll five checklist areas pass. Details below for the assessor record.\n\n**Design-Point Coherence**: The Design Point block reproduces the frontmatter\nfields verbatim (Name, Maturity, P_native = 50 MWe, Grounding = medium). Section 5\nparameters describe Orion at native 50 MWe throughout. model_setup.py carries\n`P_native = 50.0`. No silent substitution of a different plant or power level.\n\n**Override Discipline**: All ten entries (8 ena"
+  }
+]

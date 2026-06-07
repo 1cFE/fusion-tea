@@ -66,22 +66,33 @@ model = CostModel(concept=ConfinementConcept.PULSED_FRC, fuel=Fuel.DHE3)
 #     below anchor to this reference. ALWAYS emit this line.
 generic = generic_reference(model, spec, P_native)
 
-# 3. Override registry — eight entries, transcribed from analysis Section 5b.
+# 3. Override registry — ten entries, transcribed from analysis Section 5b.
 #    All relative values use the modular-fleet frame per override-semantics policy.
-#
-#    C220101 and CAS27 are omitted: the PULSED_FRC/D-He3 library calibration already
-#    prices both accounts at zero (no tritium-breeding blanket; no LiPb/FLiBe fill).
-#    Overriding a zero-valued account has no effect on LCOE and is misleading.
-#
-#    CAS80 is omitted intentionally, NOT because fuel cost is zero. The library prices
-#    CAS80 for D-He3 at commercial He3 procurement rates (roughly $524M for a 1 GWe
-#    fleet at the library default), which is the second-largest cost category after
-#    CAS22. Helion's economic thesis rests on self-breeding He3 from the DD → T →
-#    He3 decay chain, making commercial procurement irrelevant at steady-state.
-#    CAS80 is not overridable in the current framework (1cFE/1costingfe#106), so the
-#    quoted 1 GWe LCOE is materially pessimistic on fuel relative to Helion's
-#    architecture — the embedded commercial-procurement CAS80 cannot be adjusted here.
 overrides = [
+    # C220101 — First wall / blanket: no tritium breeding blanket for D-He3.
+    # Helion's ~5% neutron fraction (DD side reactions only, 2.45 MeV) leaves
+    # only a basic vacuum-vessel wall + borated shield layer. No Li breeding
+    # material, no Be multiplier, no liquid-metal first-wall loop.
+    {"account": "C220101",
+     "value": 0.10 * generic.cas22_detail["C220101"],
+     "enabled": True,
+     "cost_basis": "noak",
+     "provenance": "derived",
+     "source": "dossier.md §Neutron Management; helion-website-technology.md §Shielding",
+     "rationale": (
+         "Library C220101 prices a tritium-breeding blanket (first wall + breeding "
+         "material + multiplier) appropriate to a D-T or D-D MIF concept. Helion's "
+         "D-He3 fuel produces only ~5% of its energy as neutrons (2.45 MeV from DD "
+         "side reactions), and there is no tritium breeding blanket — the fuel cycle "
+         "is self-contained via DD → tritium → He3 decay. The 'blanket' reduces to "
+         "the vacuum vessel wall plus a modest borated shielding layer (comparable to "
+         "hospital particle-beam shielding). No Li-bearing breeding material, no "
+         "beryllium neutron multiplier, no liquid metal first-wall loop. The library's "
+         "modular-fleet default for this account (one blanket per module × n_mod "
+         "modules) is ~10× the Helion equivalent. 0.10 × library default captures a "
+         "basic energy-containment wall with shielding but no breeding structure."
+     )},
+
     # C220102 — Radiation shield: 2.45 MeV DD neutrons vs 14.1 MeV D-T neutrons.
     # Helion: ~1 m solid borated polyethylene / borated concrete (hospital-class).
     # Shield mass, material cost, and installation are dramatically reduced.
@@ -267,6 +278,29 @@ overrides = [
          "dramatically reduced cooling burden. Class P."
      )},
 
+    # CAS27 — Special materials: 5% of library default.
+    # No Li-bearing blanket fill (no LiPb, no FLiBe). Only a modest D startup
+    # charge (negligible) and small He3 startup inventory (unknown but small
+    # relative to a LiPb fill). Near-elimination of the blanket fill account.
+    {"account": "CAS27",
+     "value": 0.05 * generic.costs.cas27,
+     "enabled": True,
+     "cost_basis": "noak",
+     "provenance": "derived",
+     "source": "dossier.md §Fuel; dossier.md §Neutron Management",
+     "rationale": (
+         "CAS27 covers the initial blanket material inventory (LiPb, FLiBe, or "
+         "equivalent) — the special materials fill that must be procured before first "
+         "plasma. Helion has no Li-bearing breeding blanket, no LiPb or FLiBe "
+         "inventory, and no tritium startup inventory (D-He3 fuel; He3 is self-bred "
+         "from DD reactions). The only 'special materials' are a modest deuterium "
+         "startup charge (from water, negligible cost) and a He3 startup inventory "
+         "whose size is unknown but likely small relative to a LiPb blanket fill. "
+         "0.05 × the library's 1 GWe power-proportional default represents the "
+         "near-elimination of the blanket fill account, leaving a small residual for "
+         "any specialty materials (e.g., shielding fill, initial He3 procurement). "
+         "Class P."
+     )},
 ]
 
 # 4. Overrides-on forwards via the shared helper (native + 1 GWe NOAK projection).

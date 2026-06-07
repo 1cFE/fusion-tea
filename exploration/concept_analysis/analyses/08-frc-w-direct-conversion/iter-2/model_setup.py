@@ -72,15 +72,6 @@ generic = generic_reference(model, spec, P_native)
 #    C220101 and CAS27 are omitted: the PULSED_FRC/D-He3 library calibration already
 #    prices both accounts at zero (no tritium-breeding blanket; no LiPb/FLiBe fill).
 #    Overriding a zero-valued account has no effect on LCOE and is misleading.
-#
-#    CAS80 is omitted intentionally, NOT because fuel cost is zero. The library prices
-#    CAS80 for D-He3 at commercial He3 procurement rates (roughly $524M for a 1 GWe
-#    fleet at the library default), which is the second-largest cost category after
-#    CAS22. Helion's economic thesis rests on self-breeding He3 from the DD → T →
-#    He3 decay chain, making commercial procurement irrelevant at steady-state.
-#    CAS80 is not overridable in the current framework (1cFE/1costingfe#106), so the
-#    quoted 1 GWe LCOE is materially pessimistic on fuel relative to Helion's
-#    architecture — the embedded commercial-procurement CAS80 cannot be adjusted here.
 overrides = [
     # C220102 — Radiation shield: 2.45 MeV DD neutrons vs 14.1 MeV D-T neutrons.
     # Helion: ~1 m solid borated polyethylene / borated concrete (hospital-class).
