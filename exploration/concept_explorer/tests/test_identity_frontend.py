@@ -17,7 +17,8 @@ import pytest
 _JS_DIR = Path(__file__).parent.parent / "static" / "js"
 _TEMPLATES_DIR = Path(__file__).parent.parent / "templates"
 
-# Surfaces wired in Phase 2 (the spec's enumeration, line 67 of spec.md).
+# Naming surfaces wired through conceptLabel() (spec.md:67 enumeration + the two
+# surfaces the audit flagged: the selection tray and the neighborhood heading).
 _TOUCHED = [
     "index_page.js",
     "concept_page.js",
@@ -26,7 +27,26 @@ _TOUCHED = [
     "constellation.js",
     "taxonomy_card.js",
     "parameter_card.js",
+    "selection_tray.js",
+    "taxonomy.js",
 ]
+
+# Files the raw-`.name` glob guard skips, each for a documented reason:
+#   - concept_label.js: the helper itself defines/reads `.name`.
+#   - Out-of-scope naming surfaces (spec.md:67 deliberately keeps the #code on
+#     the identity chrome, NOT inside chart axes or cytoscape graph nodes): the
+#     compare integrated chart views + the neighborhood relationship graph. Their
+#     canonical name still renders (server overlay); only the code chip is absent.
+#   - cas_breakdown.js: renders CAS-account tile names (`t.name`), not concepts.
+_RAW_NAME_EXCLUDED = {
+    "concept_label.js",
+    "view_capex.js",
+    "view_summary.js",
+    "view_categorical.js",
+    "view_sensitivity.js",
+    "neighborhood_graph.js",
+    "cas_breakdown.js",
+}
 
 # Templates that load a naming surface, each must pull in concept_label.js.
 _TEMPLATES = ["index.html.j2", "concept.html.j2", "compare.html.j2", "taxonomy.html.j2"]
@@ -49,28 +69,32 @@ def test_surface_uses_conceptlabel(fname: str):
     assert "conceptLabel(" in text, f"{fname} does not call conceptLabel()"
 
 
-@pytest.mark.parametrize("fname", _TOUCHED)
-def test_no_raw_name_label_render(fname: str):
-    """No surface renders a raw payload `.name` directly.
+def test_no_raw_name_label_render():
+    """No in-scope surface renders a raw payload `.name` directly.
 
-    A `<recv>.name` is permitted only when it is (a) read off a conceptLabel()
-    result, (b) a plain object-literal data field `name: <recv>.name` handed to
-    an out-of-scope renderer, or (c) fed into a `conceptLabel({...})` call.
-    Anything else is a raw render that re-opens the divergence this spine fixes.
+    Globs EVERY JS file (not a fixed allowlist — that gave false confidence and
+    couldn't catch a new surface), skipping only `_RAW_NAME_EXCLUDED` (documented
+    above). A `<recv>.name` is permitted when it is (a) read off a conceptLabel()
+    result (`lbl`/`*Lbl`/`*Label`), (b) an object-literal data field
+    `name: <recv>.name`, or (c) fed into a `conceptLabel({...})` call. Anything
+    else is a raw render that re-opens the divergence this spine fixes.
     """
-    lines = (_JS_DIR / fname).read_text().splitlines()
     offenders: list[str] = []
-    for i, line in enumerate(lines):
-        for m in _NAME_READ.finditer(line):
-            recv = m.group(1)
-            if _LABEL_RECEIVER.search(recv):
-                continue  # reading off a conceptLabel() result — correct
-            if re.search(r"name:\s*" + re.escape(recv) + r"\.name", line):
-                continue  # object-literal data field, not a label render
-            ctx = "\n".join(lines[max(0, i - 3) : i + 1])
-            if "conceptLabel(" in ctx:
-                continue  # feeding the helper, not rendering raw
-            offenders.append(f"{fname}:{i + 1}: {line.strip()}")
+    for path in sorted(_JS_DIR.glob("*.js")):
+        if path.name in _RAW_NAME_EXCLUDED:
+            continue
+        lines = path.read_text().splitlines()
+        for i, line in enumerate(lines):
+            for m in _NAME_READ.finditer(line):
+                recv = m.group(1)
+                if _LABEL_RECEIVER.search(recv):
+                    continue  # reading off a conceptLabel() result — correct
+                if re.search(r"name:\s*" + re.escape(recv) + r"\.name", line):
+                    continue  # object-literal data field, not a label render
+                ctx = "\n".join(lines[max(0, i - 3) : i + 1])
+                if "conceptLabel(" in ctx:
+                    continue  # feeding the helper, not rendering raw
+                offenders.append(f"{path.name}:{i + 1}: {line.strip()}")
     assert not offenders, "raw .name renders found:\n" + "\n".join(offenders)
 
 

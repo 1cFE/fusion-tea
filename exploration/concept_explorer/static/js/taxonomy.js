@@ -272,7 +272,7 @@
       NeighborhoodGraph.updateTrayIndicators(SelectionTray.getIds());
     }, 300);
 
-    graphTitle.textContent = "Neighborhood of " + concept.name;
+    graphTitle.textContent = "Neighborhood of " + conceptLabel(concept).text;
     graphSubtitle.textContent = "Click a neighbor to compare. Double-click to navigate.";
     backButton.style.display = "";
     document.getElementById("neighbor-count-control").style.display = "";

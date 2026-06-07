@@ -272,6 +272,15 @@ def _compose_name(base_name: str, fuel: FuelType | None) -> str:
       The fuel is real registry data, so this composes — it never fabricates.
     * When *fuel* is None or has no display form (FuelType.OTHER → ""), the bare
       name is returned with no parenthetical — never ``(None)`` (FR-A1.5).
+
+    Latent-data note: a name ending in a *different* fuel suffix than the
+    structured fuel (e.g. authored ``"X (D-T)"`` but ``fuel=DD``) would get a
+    second suffix appended (``"X (D-T) (D-D)"``). This is a registry/CSV data
+    contradiction, not a display concern — stripping it here would silently mask
+    the bad data and could also mangle legitimate non-fuel parentheticals
+    (``"Reactor (Mk II)"`` *should* gain its fuel suffix). The Phase-1 audit
+    (test_identity.py) is the guard: it asserts every served name resolves to its
+    structured fuel's suffix, so such a contradiction fails the suite loudly.
     """
     if fuel is None:
         return base_name

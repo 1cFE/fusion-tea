@@ -197,6 +197,14 @@ test("facet model is importable and lists the ontology dimensions", () => {
 - **Phases 2–3:** consolidating shared call sites can regress one surface — browser-inspect each of the four surface types.
 - **Phase 4:** invisible groundwork reads as "did nothing" — the verifiable output is the token authority + deleted duplication, not a pixel change.
 
+## Audit Resolution (2026-06-07)
+
+Post-implementation audit (`/_my_audit_implementation`) findings, all addressed:
+
+- **M1 (major) — identity grep-guard false confidence.** `test_no_raw_name_label_render` scanned a fixed 7-file allowlist (couldn't catch a new/unwired surface), inconsistent with the Phase 3/4 glob guards. **Fixed:** rewritten to glob *every* `*.js` with a documented `_RAW_NAME_EXCLUDED` set (the helper, the out-of-scope chart views + cytoscape graph, and `cas_breakdown.js`'s non-concept tile names). It now actively protects all in-scope surfaces.
+- **m1 (minor) — two surfaces rendered the name without the `#code`.** `selection_tray.js` (comparison popover + tray chips) and `taxonomy.js:275` ("Neighborhood of …"). These were oversights, not the deliberate spec-line-67 exclusions. **Fixed:** wired through `conceptLabel()`; both added to `_TOUCHED`. Browser-confirmed: heading now "Neighborhood of #12 Levitated Dipole (D-T)".
+- **m2 (minor) — `_compose_name` double-suffix on contradictory data.** A registry name ending in a *different* fuel suffix than the structured fuel would get two suffixes. Zero occurrences (Phase-1 audit confirms). **Decision: not a logic change** — stripping would mask the data bug and could mangle legitimate non-fuel parentheticals; the Phase-1 audit is the real guard. Added a clarifying doc-comment in `server.py`.
+
 ## Implementation Notes
 
 ### Phase 1 Completion
