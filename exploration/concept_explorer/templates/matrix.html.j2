@@ -1,0 +1,44 @@
+{% extends "base.html.j2" %}
+
+{% block title %}Ontology Matrix — Fusion TEA{% endblock %}
+
+{% block body %}
+<div class="page-content" id="app">
+  {#
+    Loading state: shown while the three endpoints are fetching.
+    JS swaps this for the full matrix once data arrives (atomic swap, like
+    index_page.js — never a partial render).
+  #}
+  <div id="loading-state" class="loading-state" role="status" aria-live="polite">
+    <span class="loading-spinner" aria-hidden="true"></span>
+    <span class="loading-text">Loading the ontology matrix…</span>
+  </div>
+
+  {#
+    Matrix content: hidden until JS joins manifest + registry + tree and renders.
+    Containers are empty in Phase 1 (data core + render land in Phase 2).
+  #}
+  <div id="matrix-content" style="display: none;">
+    <div class="matrix-controls" id="matrix-controls"></div>
+    <div class="matrix-filter-panel" id="matrix-filter-panel"></div>
+    <div class="matrix-active-filters" id="matrix-active-filters"></div>
+    <div class="matrix-table-wrap">
+      <table class="matrix-table" id="matrix-table"></table>
+    </div>
+  </div>
+
+  <div id="error-state" style="display: none;" role="alert" class="error-state">
+    Failed to load the matrix. Check the server and try again.
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{# Theme A authorities — loaded before the matrix modules that consume them. #}
+<script src="/static/js/concept_label.js"></script>
+<script src="/static/js/caveat_marker.js"></script>
+<script src="/static/js/ontology_palette.js"></script>
+{# B1 matrix modules. #}
+<script src="/static/js/matrix_data.js"></script>
+<script src="/static/js/matrix_page.js"></script>
+{% endblock %}
