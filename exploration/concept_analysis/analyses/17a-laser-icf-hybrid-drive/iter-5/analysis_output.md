@@ -1,26 +1,3 @@
----
-ID: 17a-laser-icf-hybrid-drive
-Concept: Laser ICF Hybrid Drive (Xcimer Energy)
-Company: Xcimer Energy
-Status: draft
-Created: 2026-06-04
-Approved-Date:
-Confinement-Family: IFE
-Archetype: LASER_IFE
-Archetype-Fit: Low
-Comparison-Status: costingfe
-Comparables:
-  - 17b-laser-icf-fast-ignition
-  - 26-laser-icf-indirect-drive
-  - 30-laser-icf-nif-commercialization
-  - 31-laser-icf-oec-architecture
-  - 32-laser-icf-french-national
-Design-Point-Name: Xcimer Athena pilot power plant (Galloway & Valys, XEC whitepaper Feb 2026)
-Design-Point-Maturity: pilot-demonstrator
-P-Native: 400
-Grounding-Confidence: medium
----
-
 ## Design Point
 
 - Name: Xcimer Athena pilot power plant (Galloway & Valys, XEC whitepaper Feb 2026)
