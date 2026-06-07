@@ -28,6 +28,8 @@ from exploration.concept_explorer.extract_explorer_data import (  # noqa: E402
     load_parameter_display_registry,
     load_parameter_metadata,
     parse_concept_id,
+    _build_override_records,
+    _resolve_account_name,
     _to_confinement_family,
     parse_frontmatter,
     parse_status,
@@ -1575,3 +1577,209 @@ def _make_three_concepts() -> list[ConceptData]:
         _make("04", "Costingfe B", has_cost=True),
         _make("07", "Standalone C", has_cost=False),
     ]
+
+
+# ---------------------------------------------------------------------------
+# Omit list enforcement (Consumer #1: extraction) — FR-3, FR-6, I-2
+# ---------------------------------------------------------------------------
+
+
+class TestOmitListExtraction:
+    """The extractor honors the omit list independently of the server (FR-6)."""
+
+    def test_discover_concepts_excludes_omitted(self, tmp_path: Path) -> None:
+        """FR-3: omitted IDs are dropped from the discovered set; others remain."""
+        analyses = tmp_path / "analyses"
+        analyses.mkdir()
+        _make_concept_dir(analyses, concept_id="05", with_model_setup=False, with_analysis=True)
+        _make_concept_dir(analyses, concept_id="27", with_model_setup=False, with_analysis=True)
+
+        ids = [parse_concept_id(d.name) for d in discover_concepts(analyses, None, {"27"})]
+
+        assert "05" in ids
+        assert "27" not in ids
+
+    def test_discover_concepts_none_omit_keeps_all(self, tmp_path: Path) -> None:
+        """omitted=None means omit nothing (used to report the unfiltered set)."""
+        analyses = tmp_path / "analyses"
+        analyses.mkdir()
+        _make_concept_dir(analyses, concept_id="05", with_model_setup=False, with_analysis=True)
+        _make_concept_dir(analyses, concept_id="27", with_model_setup=False, with_analysis=True)
+
+        ids = {parse_concept_id(d.name) for d in discover_concepts(analyses, None, None)}
+
+        assert ids == {"05", "27"}
+
+    def test_run_extraction_does_not_write_omitted_data_file(
+        self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+    ) -> None:
+        """I-2/FR-3: no data/{id}.json is written for an omitted concept, while a
+        non-omitted concept still extracts; the omitted concept is reported."""
+        analyses = tmp_path / "analyses"
+        analyses.mkdir()
+        for cid in ("05", "27"):
+            cdir = _make_concept_dir(
+                analyses, concept_id=cid, with_model_setup=False, with_analysis=True
+            )
+            # Freeform model_setup.py → standalone pathway (no costingfe import)
+            (cdir / "model_setup.py").write_text(
+                "params = None\ndef to_explorer_dict(): return {}\n", encoding="utf-8"
+            )
+
+        # Isolate from the real omit_list.yaml — omit only 27 for this test.
+        monkeypatch.setattr(
+            "exploration.concept_explorer.extract_explorer_data.load_omit_list",
+            lambda: {"27"},
+        )
+
+        valid_cost_model = _build_minimal_cost_model_dict()
+        mock_module = types.SimpleNamespace(to_explorer_dict=lambda: valid_cost_model)
+
+        with patch(
+            "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
+            return_value=mock_module,
+        ):
+            run_extraction(
+                analyses_dir=analyses,
+                data_dir=tmp_path / "data",
+                skip_narrative=True,
+            )
+
+        data_dir = tmp_path / "data"
+        assert (data_dir / "05.json").exists()  # non-omitted still extracted
+        assert not (data_dir / "27.json").exists()  # omitted: never written (I-2)
+
+        # FR-3: the omitted concept is surfaced in the run's skipped report.
+        out = capsys.readouterr().out
+        assert "27" in out
+        assert "omit_list" in out
+
+    def test_run_extraction_does_not_refresh_existing_omitted_file(
+        self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        """I-2: a pre-existing stale data/{id}.json for an omitted concept is left
+        untouched (not refreshed/overwritten) by extraction."""
+        analyses = tmp_path / "analyses"
+        analyses.mkdir()
+        cdir = _make_concept_dir(
+            analyses, concept_id="27", with_model_setup=False, with_analysis=True
+        )
+        (cdir / "model_setup.py").write_text(
+            "params = None\ndef to_explorer_dict(): return {}\n", encoding="utf-8"
+        )
+
+        data_dir = tmp_path / "data"
+        data_dir.mkdir()
+        stale = data_dir / "27.json"
+        stale.write_text('{"stale": "sentinel"}', encoding="utf-8")
+
+        monkeypatch.setattr(
+            "exploration.concept_explorer.extract_explorer_data.load_omit_list",
+            lambda: {"27"},
+        )
+
+        run_extraction(
+            analyses_dir=analyses,
+            data_dir=data_dir,
+            skip_narrative=True,
+        )
+
+        # Untouched — still the stale sentinel, not a regenerated ConceptData.
+        assert stale.read_text(encoding="utf-8") == '{"stale": "sentinel"}'
+
+
+class TestOverrideRecords:
+    """Item 2 / FR-1, FR-5, FR-6: the full override registry is carried through."""
+
+    def test_resolve_account_name_top_level_and_sub(self) -> None:
+        # Top-level codes are authored upper-case but the map keys are lower.
+        assert _resolve_account_name("CAS27") == "Special Materials"
+        # CAS22 sub-account codes resolve from the CAS22 map.
+        assert _resolve_account_name("C220103") == "Magnets / Coils"
+        # Unknown codes fall back to the bare code (visible, not blank).
+        assert _resolve_account_name("C999999") == "C999999"
+
+    def test_build_records_carries_all_fields(self) -> None:
+        raw = [
+            {
+                "account": "C220103", "value": 1030.0, "enabled": True,
+                "provenance": "derived", "source": "src §6", "rationale": "why",
+                "cost_basis": "noak",
+            },
+            {
+                "account": "CAS27", "value": 183.0, "enabled": False,
+                "provenance": "derived", "source": "src §6", "rationale": "why2",
+                "cost_basis": "noak", "blocked_by": "1cFE/1costingfe#103",
+            },
+        ]
+        recs = _build_override_records(raw)
+        assert [r.account for r in recs] == ["C220103", "CAS27"]
+        assert recs[0].account_name == "Magnets / Coils"
+        assert recs[0].enabled is True
+        assert recs[0].blocked_by is None
+        # FR-5: disabled entry carried with its blocked_by reference.
+        assert recs[1].enabled is False
+        assert recs[1].blocked_by == "1cFE/1costingfe#103"
+
+    def test_missing_field_is_none_not_empty(self) -> None:
+        """FR-6: an absent narrative field is None (panel renders 'not recorded'),
+        never coerced to ''."""
+        recs = _build_override_records(
+            [{"account": "CAS27", "value": 5.0, "enabled": True}]
+        )
+        assert recs[0].source is None
+        assert recs[0].rationale is None
+        assert recs[0].cost_basis is None
+
+    def test_extract_costingfe_emits_records(self, tmp_path: Path) -> None:
+        result = _make_forward_result()
+        model = _make_mock_model()
+        concept_dir = _make_concept_dir(tmp_path)
+        overrides = [
+            {"account": "C220103", "value": 1030.0, "enabled": True,
+             "provenance": "derived", "source": "s", "rationale": "r", "cost_basis": "noak"},
+            {"account": "CAS27", "value": 183.0, "enabled": False,
+             "provenance": "derived", "source": "s", "rationale": "r",
+             "cost_basis": "noak", "blocked_by": "1cFE/1costingfe#103"},
+        ]
+        mock_module = types.SimpleNamespace(
+            model=model, result_1gw=result, overrides=overrides,
+        )
+        with patch(
+            "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
+            return_value=mock_module,
+        ):
+            concept = extract_costingfe(
+                concept_dir=concept_dir,
+                concept_id="01",
+                frontmatter={"Concept": "Test", "Status": "approved"},
+                analysis_path=concept_dir / "analysis.md",
+                narrative=None,
+                param_metadata={},
+            )
+        # Count is enabled-only; records carry both enabled and disabled.
+        assert concept.analyst_override_count == 1
+        assert len(concept.overrides) == 2
+        disabled = [o for o in concept.overrides if not o.enabled]
+        assert len(disabled) == 1
+        assert disabled[0].account == "CAS27"
+        assert disabled[0].blocked_by == "1cFE/1costingfe#103"
+
+    def test_no_overrides_means_empty_list(self, tmp_path: Path) -> None:
+        result = _make_forward_result()
+        model = _make_mock_model()
+        concept_dir = _make_concept_dir(tmp_path)
+        mock_module = types.SimpleNamespace(model=model, result_1gw=result)
+        with patch(
+            "exploration.concept_explorer.extract_explorer_data.load_module_from_path",
+            return_value=mock_module,
+        ):
+            concept = extract_costingfe(
+                concept_dir=concept_dir,
+                concept_id="04",
+                frontmatter={"Concept": "Test", "Status": "approved"},
+                analysis_path=concept_dir / "analysis.md",
+                narrative=None,
+                param_metadata={},
+            )
+        assert concept.overrides == []

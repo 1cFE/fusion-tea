@@ -760,6 +760,75 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
+   Analyst-override toggle (hero block)
+   -------------------------------------------------------------------------- */
+
+.override-toggle {
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-surface-1);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  max-width: 560px;
+}
+
+.override-toggle__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.override-toggle__checkbox {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--color-key-innovation);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* The count chip is inert label text, not a button (Item 2 upgrades it). */
+.override-toggle__count {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.override-toggle__count--clickable {
+  cursor: pointer;
+  color: var(--color-well-established);
+  text-decoration: underline dotted;
+  text-underline-offset: 2px;
+}
+.override-toggle__count--clickable:hover,
+.override-toggle__count--clickable:focus-visible {
+  color: #58a6ff;
+  outline: none;
+}
+
+.override-toggle__subtitle {
+  margin-top: var(--space-1);
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  line-height: 1.45;
+}
+
+.override-toggle--disabled .override-toggle__label,
+.override-toggle--disabled .override-toggle__checkbox {
+  cursor: not-allowed;
+  color: var(--color-text-muted);
+}
+
+.override-toggle--disabled {
+  opacity: 0.65;
+}
+
+/* --------------------------------------------------------------------------
    Narrative Sections
    -------------------------------------------------------------------------- */
 
@@ -2675,6 +2744,13 @@ main {
   color: var(--cas-widget-override);
   margin-left: var(--space-1);
 }
+.cas-widget__star.is-clickable {
+  cursor: pointer;
+}
+.cas-widget__star.is-clickable:hover {
+  filter: brightness(1.3);
+  text-shadow: 0 0 6px var(--cas-widget-override);
+}
 .cas-widget__pct {
   color: var(--color-text-secondary);
 }
@@ -2747,4 +2823,185 @@ main {
   pointer-events: none;
   font: 400 var(--font-size-xs) var(--font-sans);
   fill: rgba(255, 255, 255, 0.85);
+}
+
+/* ===========================================================================
+   Override inspection drawer (override_panel.js — Item 2)
+   A fixed right-side drawer surfacing the analyst cost-override registry.
+   Opened from any ★ (focused on one account) or the hero "(N entries)" chip
+   (whole registry). Surface-agnostic — same panel on concept and /compare pages.
+   =========================================================================== */
+
+.override-panel__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.override-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 401;
+  height: 100vh;
+  width: 440px;
+  max-width: 92vw;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface-1);
+  border-left: 1px solid var(--color-border);
+  box-shadow: -8px 0 28px rgba(0, 0, 0, 0.55);
+  color: var(--color-text-primary);
+  animation: override-panel-slide-in 0.16s ease-out;
+}
+
+@keyframes override-panel-slide-in {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+.override-panel__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.override-panel__title {
+  font-weight: 700;
+  font-size: var(--font-size-md);
+}
+
+.override-panel__subtitle {
+  margin-top: var(--space-1);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.override-panel__close {
+  flex: none;
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 var(--space-1);
+}
+.override-panel__close:hover {
+  color: var(--color-text-primary);
+}
+
+.override-panel__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.override-panel__empty {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-style: italic;
+}
+
+.override-panel__card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-2);
+  padding: var(--space-3);
+}
+
+.override-panel__card--disabled {
+  opacity: 0.7;
+  border-style: dashed;
+}
+
+.override-panel__card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.override-panel__account-code {
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+.override-panel__account-name {
+  margin-left: var(--space-1);
+  color: var(--color-text-secondary);
+}
+.override-panel__card--disabled .override-panel__account-code,
+.override-panel__card--disabled .override-panel__account-name {
+  text-decoration: line-through;
+}
+
+.override-panel__tag {
+  flex: none;
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 1px var(--space-2);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+.override-panel__tag--applied {
+  color: var(--color-key-innovation);
+  background: rgba(16, 185, 129, 0.12);
+}
+.override-panel__tag--not-applied {
+  color: var(--color-concept-unique);
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.override-panel__value-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin: var(--space-2) 0 var(--space-3);
+}
+.override-panel__value {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-md);
+  font-weight: 700;
+}
+.override-panel__value--missing {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+.override-panel__value-scale {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.override-panel__field {
+  margin-top: var(--space-2);
+}
+.override-panel__field-label {
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted);
+  margin-bottom: 2px;
+}
+.override-panel__field-value {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+.override-panel__field-value--pre {
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+.override-panel__field-value--missing {
+  font-style: italic;
+  color: var(--color-text-muted);
 }

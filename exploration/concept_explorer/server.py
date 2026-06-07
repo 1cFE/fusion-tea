@@ -51,6 +51,7 @@ from exploration.concept_explorer.models import (  # noqa: E402
     ParameterIndexEntry,
     build_manifest,
     build_parameter_index,
+    load_omit_list,
 )
 from exploration.concept_explorer.similarity import (  # noqa: E402
     ConceptSimilarityReport,
@@ -65,6 +66,7 @@ from exploration.concept_explorer.similarity import (  # noqa: E402
 from exploration.concept_explorer.taxonomy_models import (  # noqa: E402
     ConceptRegistry,
     ConceptTaxonomy,
+    prune_decision_tree,
 )
 
 BASE_DIR = Path(__file__).parent
@@ -112,6 +114,36 @@ _FORWARD_NAMED = _derive_forward_named()
 # Keys present in result.params that are model properties — never re-pass to forward()
 _FORWARD_SKIP = frozenset({"fuel", "concept"})
 
+
+def _derive_enabled_overrides() -> Any:
+    """Return the canonical ``enabled_overrides`` projector.
+
+    Prefer the shared three-forward helper (the source of truth for how the
+    analyst override registry is projected to the ``cost_overrides`` dict
+    ``forward()`` consumes).  Falls back to an inline projection when the helper
+    module is unavailable — it imports ``costingfe.validation`` at module scope,
+    so a costingfe-free environment (e.g. some test runs) cannot import it; the
+    fallback keeps the same last-wins, enabled-only semantics.
+    """
+    try:
+        helper_scripts = _PROJECT_ROOT / "exploration" / "concept_analysis" / "scripts"
+        if str(helper_scripts) not in sys.path:
+            sys.path.insert(0, str(helper_scripts))
+        from lib.model_setup_helpers import enabled_overrides
+
+        return enabled_overrides
+    except Exception:
+
+        def _inline_enabled_overrides(overrides: list[dict[str, Any]]) -> dict[str, float]:
+            return {o["account"]: o["value"] for o in overrides if o["enabled"]}
+
+        return _inline_enabled_overrides
+
+
+# Projects the analyst override registry (module-level `overrides` list) to the
+# {account: value} dict forward() takes; filters disabled entries.
+_enabled_overrides = _derive_enabled_overrides()
+
 # ---------------------------------------------------------------------------
 # Module loading
 # ---------------------------------------------------------------------------
@@ -139,7 +171,12 @@ def _load_model_module(path: Path, module_name: str = "_concept_module") -> type
 
 
 def _forward_with_overrides(
-    model: Any, base_params: dict[str, Any], overrides: dict[str, Any]
+    model: Any,
+    base_params: dict[str, Any],
+    overrides: dict[str, Any],
+    *,
+    cost_overrides: dict[str, float] | None = None,
+    override_reference_mw: float | None = None,
 ) -> Any:
     """Re-run model.forward() with base_params updated by overrides.
 
@@ -147,8 +184,19 @@ def _forward_with_overrides(
     required by forward() are extracted explicitly; remaining physics/plant params
     pass as **kwargs. `fuel` and `concept` are skipped — they are model instance
     properties inferred from self, not caller-supplied kwargs.
-    cost_overrides are not re-applied; this is consistent with how
-    model.sensitivity() works (it also omits cost_overrides).
+
+    Override semantics (explorer-slider-override-semantics, FR-SO1/FR-SO3): when
+    ``cost_overrides`` is given, the analyst registry is re-applied exactly as
+    ``run_native_and_1gw`` does (``cost_overrides=enabled``,
+    ``override_reference_mw=P_native``), so a no-op recompute reproduces the
+    stored ``result_1gw`` headline. When ``cost_overrides`` is None the recompute
+    is the library-bare LCOE (registry dropped) — the same answer
+    ``model.sensitivity()`` describes with ``cost_overrides=None``. The caller
+    (the ``apply_analyst_overrides`` flag) selects which LCOE function is computed.
+
+    ``cost_overrides`` and ``override_reference_mw`` are forward()'s own named
+    args, so they are excluded from ``extra`` via ``_FORWARD_NAMED`` and never
+    leak in twice; they are also absent from ``result_1gw.params``.
     """
     params = {**base_params, **overrides}
     extra = {k: v for k, v in params.items() if k not in _FORWARD_NAMED and k not in _FORWARD_SKIP}
@@ -161,6 +209,8 @@ def _forward_with_overrides(
         interest_rate=float(params.get("interest_rate", 0.07)),
         inflation_rate=float(params.get("inflation_rate", 0.02)),
         noak=bool(params.get("noak", True)),
+        cost_overrides=cost_overrides,
+        override_reference_mw=override_reference_mw,
         **extra,
     )
 
@@ -199,6 +249,7 @@ def get_state(request: Request) -> _State:
 
 def _load_data(
     data_dir: Path,
+    omitted: set[str] | None = None,
 ) -> tuple[dict[str, ConceptData], ConceptManifest, ParameterIndex]:
     """Load all data files from *data_dir*.
 
@@ -209,12 +260,22 @@ def _load_data(
     per-concept JSONs. The names ``manifest.json`` / ``parameter_index.json``
     remain in ``_NON_CONCEPT_FILES`` so any stale files left on disk from
     earlier extractions don't get globbed as concept data.
+
+    *omitted* is the omit-list set (FR-4); concept files whose stem (the concept
+    ID, by the ``data/{id}.json`` convention) is in it are dropped before
+    validation, so omitted concepts never enter the loaded set — and therefore
+    never reach the manifest or parameter index, which are derived from it (I-4).
+    The on-disk files are read-filtered only, never modified (I-6). ``None``
+    defaults to the shipped omit list so the server enforces it independently of
+    the extractor (FR-6); tests pass an explicit set for isolation.
     """
     if not data_dir.is_dir():
         raise RuntimeError(
             f"data/ directory not found at {data_dir}. "
             "Run extract_explorer_data.py to populate it before starting the server."
         )
+
+    omit_set = load_omit_list() if omitted is None else omitted
 
     _NON_CONCEPT_FILES = {
         "manifest.json", "parameter_index.json",
@@ -223,7 +284,7 @@ def _load_data(
     concept_files = [
         f
         for f in data_dir.glob("*.json")
-        if f.name not in _NON_CONCEPT_FILES
+        if f.name not in _NON_CONCEPT_FILES and f.stem not in omit_set
     ]
     if not concept_files:
         raise RuntimeError(
@@ -247,6 +308,7 @@ def _load_data(
 
 def _load_taxonomy(
     data_dir: Path,
+    omitted: set[str] | None = None,
 ) -> tuple[
     ConceptRegistry | None,
     dict | None,
@@ -257,6 +319,14 @@ def _load_taxonomy(
 
     Non-fatal: if taxonomy files don't exist, returns all None/empty.
     Taxonomy is an additive feature — the server works without it.
+
+    *omitted* is the omit-list set (FR-5). Filtering ``registry.concepts`` once,
+    before similarity/constellation are computed from it, removes omitted concepts
+    from the registry, similarity reports, and constellation in a single place
+    (I-5); the decision tree is a separate dict, pruned independently. ``None``
+    defaults to the shipped omit list so the server enforces it independently of
+    the extractor (FR-6); tests pass an explicit set for isolation. The on-disk
+    taxonomy JSON is read-filtered only, never modified (I-6).
     """
     registry_path = data_dir / "concept_registry.json"
     tree_path = data_dir / "decision_tree.json"
@@ -264,8 +334,17 @@ def _load_taxonomy(
     if not registry_path.exists() or not tree_path.exists():
         return None, None, {}, None
 
+    omit_set = load_omit_list() if omitted is None else omitted
+
     registry = ConceptRegistry.model_validate_json(registry_path.read_text())
+    if omit_set:
+        kept = [c for c in registry.concepts if c.concept_id not in omit_set]
+        registry = registry.model_copy(update={"concepts": kept})
+
     decision_tree = json.loads(tree_path.read_text())
+    if omit_set and "root" in decision_tree:
+        pruned_root = prune_decision_tree(decision_tree["root"], omit_set)
+        decision_tree = {**decision_tree, "root": pruned_root}
 
     # Precompute similarity reports for all concepts
     similarity_reports: dict[str, ConceptSimilarityReport] = {}
@@ -529,14 +608,29 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
 
     @lru_cache(maxsize=128)
     def _compute_cached(
-        concept_id: str, overrides_frozen: frozenset[tuple[str, float]]
+        concept_id: str,
+        overrides_frozen: frozenset[tuple[str, float]],
+        apply_analyst_overrides: bool,
     ) -> CostModelData:
         """Compute CostModelData with overridden params; result is LRU-cached.
 
-        Cache key is (concept_id, frozenset(overrides.items())).  Identical
-        param combos return the cached result without reloading the module.
-        Baseline sensitivities come from the stored concept data — they are
-        never recomputed on slider change (per spec 12).
+        Cache key is (concept_id, frozenset(overrides.items()),
+        apply_analyst_overrides) (INV-4 / FR-SO5).  Identical triples return the
+        cached result without reloading the module.  Baseline sensitivities come
+        from the stored concept data — they are never recomputed on slider change
+        (per spec 12).
+
+        ``apply_analyst_overrides`` selects which LCOE function the recompute
+        describes (explorer-slider-override-semantics):
+
+        * ``True`` (default UI state) — re-apply the analyst override registry
+          read from the live concept module (``module.overrides`` projected by
+          ``enabled_overrides``, ``override_reference_mw=module.P_native``),
+          mirroring ``run_native_and_1gw`` so a no-op recompute reproduces the
+          stored ``result_1gw`` headline (FR-SO1 / INV-1).
+        * ``False`` — drop the registry; recompute the library-bare LCOE.
+
+        An empty / absent registry makes the two branches identical (INV-6).
         """
         state: _State = app.state.data
         concept = state.concepts.get(concept_id)
@@ -557,7 +651,24 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
                 "See rework epic Items 10/11."
             )
 
-        new_result = _forward_with_overrides(model, result_1gw.params, dict(overrides_frozen))
+        if apply_analyst_overrides:
+            # Read the registry from the live module (already loaded, always in
+            # sync with the source of truth — Bet 1). Empty/absent registry →
+            # cost_overrides={}, which reproduces the bare forward (INV-6).
+            registry = getattr(module, "overrides", []) or []
+            cost_overrides: dict[str, float] | None = _enabled_overrides(registry)
+            override_reference_mw = getattr(module, "P_native", None)
+        else:
+            cost_overrides = None
+            override_reference_mw = None
+
+        new_result = _forward_with_overrides(
+            model,
+            result_1gw.params,
+            dict(overrides_frozen),
+            cost_overrides=cost_overrides,
+            override_reference_mw=override_reference_mw,
+        )
 
         raw: dict[str, Any] = dataclasses.asdict(new_result)
         params_dict: dict[str, Any] = raw.get("params", {})
@@ -578,7 +689,11 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
                 status_code=422,
                 detail="Slider computation only available for costingfe-backed concepts",
             )
-        return _compute_cached(body.concept_id, frozenset(body.overrides.items()))
+        return _compute_cached(
+            body.concept_id,
+            frozenset(body.overrides.items()),
+            body.apply_analyst_overrides,
+        )
 
     app = FastAPI(title="Fusion TEA Concept Explorer", lifespan=lifespan)
 

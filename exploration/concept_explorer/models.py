@@ -9,8 +9,10 @@ from __future__ import annotations
 import warnings
 from datetime import UTC, datetime
 from enum import StrEnum
+from pathlib import Path
 from typing import Any, ClassVar
 
+import yaml
 from pydantic import BaseModel, Field, model_validator
 
 # ---------------------------------------------------------------------------
@@ -139,7 +141,14 @@ class CostModelData(BaseModel):
     cas22_detail: dict[str, CASAccount]
 
     headline: HeadlineEconomics
+    # `sensitivities` holds the *analyst-applied* tornado (Bet 3) — consistent
+    # with the applied headline and the default toggle state; existing readers
+    # (validator, parameter index, tornado.js) silently become applied-based.
+    # `sensitivities_bare` is the library-bare alternate the frontend swaps to
+    # when the toggle is off. Both are honest `model.sensitivity(...)` calls;
+    # neither is derived from the other (INV-3). Equal when the registry is empty.
     sensitivities: SensitivityAnalysis | None = None
+    sensitivities_bare: SensitivityAnalysis | None = None
     params: dict[str, float] = Field(default_factory=dict)
 
     # Human-readable names for top-level and CAS22 sub-accounts
@@ -189,6 +198,7 @@ class CostModelData(BaseModel):
         cls,
         result: dict[str, Any],
         sensitivities: SensitivityAnalysis | None,
+        sensitivities_bare: SensitivityAnalysis | None = None,
     ) -> CostModelData:
         """Construct from ``dataclasses.asdict(forward_result)``.
 
@@ -295,6 +305,7 @@ class CostModelData(BaseModel):
             cas22_detail=cas22_detail,
             headline=headline,
             sensitivities=sensitivities,
+            sensitivities_bare=sensitivities_bare,
             params=params,
         )
 
@@ -334,6 +345,36 @@ class SourcePaths(BaseModel):
     analysis: str | None = None  # Path to analysis.md or standalone script
 
 
+class OverrideRecord(BaseModel):
+    """One analyst cost-override registry entry, carried to the explorer payload.
+
+    A 1:1 projection of the ``Override`` TypedDict in
+    ``model_setup_helpers.py`` (the analyst-authored, version-controlled
+    registry), plus a resolved ``account_name`` so the front-end never has to
+    re-derive CAS account semantics (single source of names = the CAS_NAMES /
+    CAS22_NAMES maps on ``CostModelData``).
+
+    Narrative fields are ``str | None``: a genuinely absent field is ``None``
+    (rendered as an explicit "not recorded" state by the inspection panel),
+    NOT coerced to ``""``. The panel must distinguish "recorded empty" from
+    "not recorded" (FR-6 — honest degradation, no silent vanish).
+
+    ``value`` is at the concept's *native per-module* M$ scale, which is not the
+    1 GWe projection the cost tables display — the panel labels the scale so the
+    two numbers don't read as a contradiction.
+    """
+
+    account: str  # CAS code as authored, e.g. "C220103" or "CAS27"
+    account_name: str  # Human-readable, resolved from CAS_NAMES / CAS22_NAMES
+    value: float  # Per-module M$ at the design point's native scale
+    enabled: bool  # False entries stay in the registry but are not applied
+    provenance: str | None = None  # "direct" | "derived"
+    source: str | None = None  # Free-text citation
+    rationale: str | None = None  # Why the override departs from the library default
+    cost_basis: str | None = None  # Vintage basis (strict registry requires "noak")
+    blocked_by: str | None = None  # Required iff enabled is False — "<org>/<repo>#<NN>"
+
+
 # ---------------------------------------------------------------------------
 # Top-level concept payload
 # ---------------------------------------------------------------------------
@@ -354,6 +395,16 @@ class ConceptData(BaseModel):
     parameter_metadata: dict[str, ParameterMetadata] = Field(default_factory=dict)
     narrative: NarrativeData | None = None
     sources: SourcePaths
+    # Count of *enabled* analyst override registry entries (Bet 4). Drives the
+    # toggle label ("Apply analyst cost adjustments (N entries)") and the
+    # hide/disable decision (INV-5). 0 for freeform/empty-registry concepts.
+    # The full records (display) are Item 2's concern, not this field.
+    analyst_override_count: int = 0
+    # Full analyst override registry (Item 2). Every entry — enabled AND
+    # disabled — carried through for the inspection panel; the count above is
+    # just the enabled tally. Empty for freeform/empty-registry concepts.
+    # Rides the concept payload (loaded once); the panel never fetches per click.
+    overrides: list[OverrideRecord] = Field(default_factory=list)
     # True iff orchestrator routed this concept as `costingfe-asterisked`
     # (Comparison-Status, set on Grounding-Confidence: low). Render-side
     # signal for the comparison view's asterisk badge.
@@ -447,6 +498,11 @@ class ExplorerState(BaseModel):
     current_concept_id: str | None = None
     slider_overrides: dict[str, float] = Field(default_factory=dict)
     comparison_set: list[str] = Field(default_factory=list)
+    # Per-concept toggle (explorer-slider-override-semantics, FR-SO5): when True
+    # (default) the slider recompute, headline, and tornado describe the
+    # analyst-applied LCOE; when False, the library-bare LCOE. Default True is
+    # what makes FR-SO1 hold (no-op recompute reproduces the stored headline).
+    apply_analyst_overrides: bool = True
     # Set server-side on POST; empty on default GET
     timestamp: str = ""
 
@@ -456,6 +512,42 @@ class ComputeRequest(BaseModel):
 
     concept_id: str
     overrides: dict[str, float]  # Param name → new value
+    # FR-SO5: select the analyst-applied (True, default) vs library-bare (False)
+    # LCOE function for the recompute. Optional with a True default so existing
+    # callers/tests are unaffected. Rides the LRU cache key in _compute_cached.
+    apply_analyst_overrides: bool = True
+
+
+# ---------------------------------------------------------------------------
+# Omit list (shared by extractor and server)
+# ---------------------------------------------------------------------------
+
+_OMIT_LIST_PATH = Path(__file__).parent / "omit_list.yaml"
+
+
+def load_omit_list(path: Path | None = None) -> set[str]:
+    """Load the set of concept IDs to exclude from the explorer.
+
+    Reads the hand-authored ``omit_list.yaml`` (ID -> reason map) and returns
+    just the set of IDs; the reasons are documentation for humans and are
+    discarded here. This is the single shared reader for both enforcement
+    points (extraction and the server), so each consumer enforces exclusion
+    independently from one source of truth.
+
+    Tolerant by design (FR-8): a missing or empty file yields an empty set
+    (omit nothing). IDs are coerced to ``str`` so a numeric-looking YAML key
+    such as ``26`` (which ``yaml.safe_load`` parses as the int ``26``) still
+    matches the string IDs produced by ``parse_concept_id`` (e.g. ``"26"``).
+    A malformed YAML file is left to raise — that is an authoring bug worth
+    failing loudly on, not a no-op.
+    """
+    omit_path = path if path is not None else _OMIT_LIST_PATH
+    if not omit_path.exists():
+        return set()
+    raw = yaml.safe_load(omit_path.read_text(encoding="utf-8"))
+    if not raw:
+        return set()
+    return {str(key) for key in raw}
 
 
 # ---------------------------------------------------------------------------

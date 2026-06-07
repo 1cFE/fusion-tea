@@ -49,12 +49,84 @@ from exploration.concept_explorer.models import (  # noqa: E402, I001
     ConceptStatus,
     ConfinementFamily,
     NarrativeData,
+    OverrideRecord,
     ParameterCategory,
     ParameterMetadata,
     SensitivityAnalysis,
     SensitivityEntry,
     SourcePaths,
+    load_omit_list,
 )
+
+
+def _resolve_account_name(account: str) -> str:
+    """Resolve a CAS account code to its human-readable name.
+
+    Single source of names = the CAS_NAMES / CAS22_NAMES maps on CostModelData.
+    Override codes are authored as upper/``C…`` (e.g. "CAS27", "C220103") while
+    the top-level map keys are lowercase, so try the CAS22 map first, then the
+    case-normalized top-level map, then fall back to the bare code (visible, not
+    blank — an unknown code should surface, not vanish).
+    """
+    if account in CostModelData.CAS22_NAMES:
+        return CostModelData.CAS22_NAMES[account]
+    return CostModelData.CAS_NAMES.get(account.lower(), account)
+
+
+def _build_override_records(overrides: list[dict[str, Any]]) -> list[OverrideRecord]:
+    """Project a concept's raw ``overrides`` list into OverrideRecord payload.
+
+    Carries every entry (enabled and disabled) so the inspection panel can show
+    not-applied entries too (FR-5). A genuinely-absent narrative field becomes
+    ``None`` (panel renders "not recorded", FR-6) rather than "".
+    """
+    records: list[OverrideRecord] = []
+    for o in overrides:
+        account = str(o["account"])
+        records.append(
+            OverrideRecord(
+                account=account,
+                account_name=_resolve_account_name(account),
+                value=float(o["value"]),
+                enabled=bool(o["enabled"]),
+                provenance=o.get("provenance"),
+                source=o.get("source"),
+                rationale=o.get("rationale"),
+                cost_basis=o.get("cost_basis"),
+                blocked_by=o.get("blocked_by"),
+            )
+        )
+    return records
+
+
+def _derive_enabled_overrides() -> Any:
+    """Return the canonical ``enabled_overrides`` projector.
+
+    Prefer the shared three-forward helper (the source of truth for how the
+    analyst override registry projects to the ``cost_overrides`` dict, filtering
+    disabled entries). Falls back to an inline last-wins/enabled-only projection
+    when the helper module is unavailable — it imports ``costingfe.validation`` at
+    module scope, so importing the extractor must not hard-require costingfe (the
+    mock-based extractor tests don't install it). Mirrors ``server.py``'s
+    identical accessor.
+    """
+    try:
+        helper_scripts = _PROJECT_ROOT / "exploration" / "concept_analysis" / "scripts"
+        if str(helper_scripts) not in sys.path:
+            sys.path.insert(0, str(helper_scripts))
+        from lib.model_setup_helpers import enabled_overrides
+
+        return enabled_overrides
+    except Exception:
+
+        def _inline_enabled_overrides(overrides: list[dict[str, Any]]) -> dict[str, float]:
+            return {o["account"]: o["value"] for o in overrides if o["enabled"]}
+
+        return _inline_enabled_overrides
+
+
+# Projects a concept module's `overrides` registry to {account: value}, enabled only.
+_enabled_overrides = _derive_enabled_overrides()
 
 
 class ExtractionError(Exception):
@@ -174,13 +246,24 @@ def load_module_from_path(path: Path, module_name: str = "_concept_module") -> t
 # ---------------------------------------------------------------------------
 
 
-def build_sensitivity_analysis(model: Any, result: Any) -> SensitivityAnalysis:
+def build_sensitivity_analysis(
+    model: Any, result: Any, cost_overrides: dict[str, float] | None = None
+) -> SensitivityAnalysis:
     """Call model.sensitivity(result.params) and wrap output in SensitivityAnalysis.
 
     model.sensitivity() returns {"engineering": {k: elasticity}, "financial": {k: elasticity}}.
     Baselines come from result.params; missing keys default to 0.0.
+
+    ``cost_overrides`` selects which LCOE function is differentiated (FR-SO4):
+    ``None`` → the library-bare tornado; the enabled analyst registry → the
+    analyst-applied tornado. The two are computed by independent honest calls
+    (INV-3) — the applied tornado is *not* the bare one with overridden accounts
+    zeroed (``_scale_overrides`` keeps a rescaled library shape), so callers must
+    pass the registry through, never post-adjust.
     """
-    sens_raw: dict[str, dict[str, float]] = model.sensitivity(result.params)
+    sens_raw: dict[str, dict[str, float]] = model.sensitivity(
+        result.params, cost_overrides=cost_overrides
+    )
     params: dict[str, Any] = result.params
 
     def _entries(group: dict[str, float]) -> dict[str, SensitivityEntry]:
@@ -328,7 +411,18 @@ def extract_costingfe(
 
     effective_result = result_1gw
 
-    sensitivities = build_sensitivity_analysis(model, effective_result)
+    # Dual sensitivities (FR-SO4 / Bet 3): `sensitivities` is the analyst-applied
+    # tornado (registry re-applied) — the new default, consistent with the applied
+    # headline; `sensitivities_bare` is the library-bare alternate the toggle swaps
+    # to. Independent honest calls (INV-3). Empty registry → the two are equal
+    # (INV-6). The param *keys* are identical across both (cost_overrides changes
+    # elasticity values, not which continuous params exist), so metadata generated
+    # from the applied set covers the bare set too.
+    raw_overrides = getattr(module, "overrides", []) or []
+    enabled = _enabled_overrides(raw_overrides)
+    override_records = _build_override_records(raw_overrides)
+    sensitivities = build_sensitivity_analysis(model, effective_result, cost_overrides=enabled)
+    sensitivities_bare = build_sensitivity_analysis(model, effective_result, cost_overrides=None)
     # Three-layer merge (later wins):
     #   1. generate_parameter_metadata() — auto baseline + range + auto display_name
     #   2. shared display registry       — patches display_name/_unit/_multiplier
@@ -346,7 +440,7 @@ def extract_costingfe(
     if "availability" in params_dict:
         raw.setdefault("power_table", {})["availability"] = params_dict["availability"]
 
-    cost_model = CostModelData.from_forward_result(raw, sensitivities)
+    cost_model = CostModelData.from_forward_result(raw, sensitivities, sensitivities_bare)
 
     name = str(frontmatter.get("Concept", concept_dir.name))
     company_raw = frontmatter.get("Company")
@@ -372,6 +466,8 @@ def extract_costingfe(
                 analysis=str(analysis_path) if analysis_path.exists() else None,
             ),
             asterisk_in_comparison=(comparison_status == "costingfe-asterisked"),
+            analyst_override_count=len(enabled),
+            overrides=override_records,
         )
 
     for w in caught:
@@ -836,8 +932,16 @@ def extract_narrative(concept_dir: Path, concept_id: str) -> NarrativeData:
 def discover_concepts(
     analyses_dir: Path,
     concept_filter: list[str] | None,
+    omitted: set[str] | None = None,
 ) -> list[Path]:
-    """Return sorted concept directories that have model_setup.py or analysis.md."""
+    """Return sorted concept directories that have model_setup.py or analysis.md.
+
+    *omitted* is the set of concept IDs excluded by the omit list (FR-3); those
+    dirs are dropped so no ``data/{id}.json`` is written for them. ``None`` means
+    omit nothing — callers that want the unfiltered eligible set (e.g. to report
+    what was omitted) pass ``omitted=None``.
+    """
+    omit_set = omitted or set()
     dirs: list[Path] = []
     for d in sorted(analyses_dir.iterdir()):
         if not d.is_dir():
@@ -848,6 +952,8 @@ def discover_concepts(
             continue
         concept_id = parse_concept_id(d.name)
         if concept_filter is not None and concept_id not in concept_filter:
+            continue
+        if concept_id in omit_set:
             continue
         dirs.append(d)
     return dirs
@@ -884,7 +990,11 @@ def run_extraction(
 
     data_dir.mkdir(parents=True, exist_ok=True)
 
-    concept_dirs = discover_concepts(analyses_dir, concept_filter)
+    # Omit list (FR-3): load once and enforce here, independently of the server
+    # (FR-6). Omitted dirs are dropped from extraction so no data/{id}.json is
+    # written or refreshed for them.
+    omitted = load_omit_list()
+    concept_dirs = discover_concepts(analyses_dir, concept_filter, omitted)
     if not concept_dirs:
         print("WARNING: no concept directories found", file=sys.stderr)
         return 0
@@ -892,6 +1002,16 @@ def run_extraction(
     extracted: list[ConceptData] = []
     skipped: list[tuple[str, str]] = []  # (concept_id, reason)
     failed: list[tuple[str, str]] = []  # (concept_id, short_error)
+
+    # Report omitted concepts that actually have an eligible analysis dir present.
+    # Re-discover with omitted=None to get the unfiltered eligible set (respecting
+    # any --concept filter), then surface the ones the omit list withheld so the
+    # run report shows what was excluded rather than silently dropping it.
+    if omitted:
+        for d in discover_concepts(analyses_dir, concept_filter, omitted=None):
+            cid = parse_concept_id(d.name)
+            if cid in omitted:
+                skipped.append((cid, "omit_list"))
 
     for concept_dir in concept_dirs:
         concept_id = parse_concept_id(concept_dir.name)

@@ -105,6 +105,23 @@ function _pct(part, total) {
 }
 
 /**
+ * Make the ★ inside a rendered row a click target for the override panel.
+ * stopPropagation so it never also fires the row's expand/select handler.
+ * No-op when no `onOverrideClick` was provided.
+ */
+function _wireStarClick(rowEl, casCode, ctx) {
+  if (!ctx.onOverrideClick) return;
+  const star = rowEl.querySelector(".cas-widget__star");
+  if (!star) return;
+  star.classList.add("is-clickable");
+  star.setAttribute("title", "View analyst override");
+  star.addEventListener("click", (e) => {
+    e.stopPropagation();
+    ctx.onOverrideClick(casCode);
+  });
+}
+
+/**
  * Render the CAS cost breakdown widget.
  *
  * @param {HTMLElement} container - Target element. Cleared and rebuilt.
@@ -113,16 +130,20 @@ function _pct(part, total) {
  * @param {Object} [options.cas22_detail={}] - { CXXXXXX: { name, cost_m_usd, overridden } }.
  * @param {Function} [options.onAccountClick=null] - Fires on click of a non-CAS22 row.
  *   Signature: (casCode, accountData) => void. CAS22 click is internal (expand or drill).
+ * @param {Function} [options.onOverrideClick=null] - Fires on click of the ★ on an
+ *   overridden account (any depth: top-level row/tile, CAS22 sub-row/sub-tile).
+ *   Signature: (casCode) => void. Only attached where `overridden` is true.
  */
 function renderCASBreakdown(container, options) {
   const {
     cas,
     cas22_detail = {},
     onAccountClick = null,
+    onOverrideClick = null,
   } = options;
 
   const state = _getState(container);
-  const ctx = { container, cas, cas22_detail, onAccountClick, state };
+  const ctx = { container, cas, cas22_detail, onAccountClick, onOverrideClick, state };
 
   _buildShell(ctx);
   _renderActiveView(ctx);
@@ -284,9 +305,10 @@ function _renderTable(ctx) {
       `<td class="num">${_fmtMoney(a.cost_m_usd)}</td>` +
       `<td class="num cas-widget__pct"><b>${_pct(a.cost_m_usd, total)}</b></td>`;
     tbody.appendChild(tr);
+    if (a.overridden) _wireStarClick(tr, casKey, ctx);
 
     if (isCAS22 && ctx.state.cas22Expanded) {
-      for (const { idx, account } of _cas22SubRows(cas22_detail)) {
+      for (const { key, idx, account } of _cas22SubRows(cas22_detail)) {
         const subColor = CAS22_COLORS[idx % CAS22_COLORS.length];
         const subTr = document.createElement("tr");
         subTr.className = "is-sub";
@@ -300,6 +322,7 @@ function _renderTable(ctx) {
           `<td class="num">${_fmtMoney(account.cost_m_usd)}</td>` +
           `<td class="num cas-widget__pct"><b>${_pct(account.cost_m_usd, total)}</b></td>`;
         tbody.appendChild(subTr);
+        if (account.overridden) _wireStarClick(subTr, key, ctx);
       }
     }
   }
@@ -392,6 +415,10 @@ function _renderTreemap(ctx) {
         ctx.state.drilledInto = t.id;
         _renderActiveView(ctx);
       });
+    } else if (t.overridden && ctx.onOverrideClick) {
+      // ★ tile (top-level or drilled-in CAS22 sub-tile) → override panel.
+      g.classList.add("is-clickable");
+      g.addEventListener("click", () => ctx.onOverrideClick(t.id));
     } else if (ctx.onAccountClick && ctx.state.drilledInto === null && t.account) {
       g.classList.add("is-clickable");
       g.addEventListener("click", () => ctx.onAccountClick(t.id, t.account));

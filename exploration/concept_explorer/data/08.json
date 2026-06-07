@@ -1,8 +1,8 @@
 {
   "concept_id": "08",
-  "name": "FRC w/ Direct Conversion",
+  "name": "08-frc-w-direct-conversion",
   "confinement_family": "NONSTANDARD",
-  "company": "Helion Energy",
+  "company": null,
   "status": "in_progress",
   "illustration": null,
   "has_cost_model": true,
@@ -15,12 +15,12 @@
     },
     "cas21": {
       "name": "Buildings & Structures",
-      "cost_m_usd": 400.0,
-      "overridden": true
+      "cost_m_usd": 158.9047088623047,
+      "overridden": false
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 671.4208984375,
+      "cost_m_usd": 1711.653564453125,
       "overridden": false
     },
     "cas23": {
@@ -30,22 +30,22 @@
     },
     "cas24": {
       "name": "Electrical Plant Equipment",
-      "cost_m_usd": 126.2699966430664,
+      "cost_m_usd": 112.24002838134766,
       "overridden": false
     },
     "cas25": {
       "name": "Miscellaneous Plant Equipment",
-      "cost_m_usd": 76.86000061035156,
+      "cost_m_usd": 68.32002258300781,
       "overridden": false
     },
     "cas26": {
       "name": "Heat Rejection Systems",
-      "cost_m_usd": 7.0,
-      "overridden": true
+      "cost_m_usd": 62.619163513183594,
+      "overridden": false
     },
     "cas27": {
       "name": "Special Materials",
-      "cost_m_usd": 0.04999999701976776,
+      "cost_m_usd": 0.0,
       "overridden": false
     },
     "cas28": {
@@ -60,94 +60,94 @@
     },
     "cas30": {
       "name": "Indirect Costs",
-      "cost_m_usd": 171.5467987060547,
+      "cost_m_usd": 423.7474670410156,
       "overridden": false
     },
     "cas40": {
       "name": "Owner's Costs",
-      "cost_m_usd": 5.142956256866455,
+      "cost_m_usd": 5.14295768737793,
       "overridden": false
     },
     "cas50": {
       "name": "Supplementary Costs",
-      "cost_m_usd": 61.01493835449219,
+      "cost_m_usd": 98.57838439941406,
       "overridden": false
     },
     "cas60": {
       "name": "Interest During Construction",
-      "cost_m_usd": 169.03318786621094,
+      "cost_m_usd": 511.054931640625,
       "overridden": false
     },
     "cas70": {
       "name": "O&M Costs (annualised)",
-      "cost_m_usd": 7.729160785675049,
+      "cost_m_usd": 20.999948501586914,
       "overridden": false
     },
     "cas80": {
       "name": "Fuel Costs (annualised)",
-      "cost_m_usd": 227.3480987548828,
+      "cost_m_usd": 399.8797912597656,
       "overridden": false
     },
     "cas90": {
       "name": "Financial Costs",
-      "cost_m_usd": 137.47216796875,
+      "cost_m_usd": 237.76548767089844,
       "overridden": false
     },
     "cas22_detail": {
       "C220101": {
         "name": "First Wall & Blanket",
-        "cost_m_usd": 0.022336915135383606,
+        "cost_m_usd": 0.0,
         "overridden": false
       },
       "C220102": {
         "name": "Radiation Shield",
-        "cost_m_usd": 0.1774062216281891,
-        "overridden": false
+        "cost_m_usd": 0.20000000298023224,
+        "overridden": true
       },
       "C220103": {
         "name": "Magnets / Coils",
-        "cost_m_usd": 5.0,
+        "cost_m_usd": 7.53638219833374,
         "overridden": true
       },
       "C220104": {
         "name": "Heating & Driver Systems",
-        "cost_m_usd": 10.0,
+        "cost_m_usd": 25.0,
         "overridden": true
       },
       "C220105": {
         "name": "Primary Structure & Support",
-        "cost_m_usd": 0.04926031082868576,
+        "cost_m_usd": 0.04644307494163513,
         "overridden": false
       },
       "C220106": {
         "name": "Vacuum System",
-        "cost_m_usd": 0.2602299153804779,
+        "cost_m_usd": 0.2804962694644928,
         "overridden": false
       },
       "C220107": {
         "name": "Power Conditioning & Energy Storage",
-        "cost_m_usd": 3.0,
+        "cost_m_usd": 0.0,
         "overridden": true
       },
       "C220108": {
         "name": "Divertor / Target Factory",
         "cost_m_usd": 0.0,
-        "overridden": true
+        "overridden": false
       },
       "C220109": {
         "name": "Direct Energy Converter",
-        "cost_m_usd": 0.0,
-        "overridden": false
+        "cost_m_usd": 15.07276439666748,
+        "overridden": true
       },
       "C220110": {
         "name": "Remote Handling & Maintenance Equipment",
-        "cost_m_usd": 4.107919216156006,
+        "cost_m_usd": 3.872983694076538,
         "overridden": false
       },
       "C220111": {
         "name": "Installation Labor",
-        "cost_m_usd": 4.0,
-        "overridden": true
+        "cost_m_usd": 19.701725006103516,
+        "overridden": false
       },
       "C220112": {
         "name": "Isotope Separation Plant",
@@ -156,99 +156,91 @@
       },
       "C220200": {
         "name": "Main & Secondary Coolant",
-        "cost_m_usd": 30.0,
-        "overridden": true
+        "cost_m_usd": 194.44749450683594,
+        "overridden": false
       },
       "C220300": {
         "name": "Auxiliary Cooling & Cryoplant",
-        "cost_m_usd": 1.8333333730697632,
+        "cost_m_usd": 2.016425132751465,
         "overridden": false
       },
       "C220400": {
         "name": "Radioactive Waste Management",
-        "cost_m_usd": 3.266666889190674,
+        "cost_m_usd": 3.5929031372070312,
         "overridden": false
       },
       "C220500": {
         "name": "Fuel Handling & Storage",
-        "cost_m_usd": 39.999996185302734,
+        "cost_m_usd": 40.00001525878906,
         "overridden": false
       },
       "C220600": {
         "name": "Other Reactor Plant Equipment",
-        "cost_m_usd": 11.499999046325684,
+        "cost_m_usd": 11.500003814697266,
         "overridden": false
       },
       "C220700": {
         "name": "Instrumentation & Control",
-        "cost_m_usd": 52.4778938293457,
+        "cost_m_usd": 55.82745361328125,
         "overridden": false
       }
     },
     "headline": {
-      "lcoe_per_mwh": 50.033504486083984,
-      "overnight_cost_per_kw": 1705.8978271484375,
-      "p_net_mw": 49.999996185302734,
-      "q_eng": 3.0,
+      "lcoe_per_mwh": 88.45620727539062,
+      "overnight_cost_per_kw": 3169.81884765625,
+      "p_net_mw": 50.000022888183594,
+      "q_eng": 4.000001430511475,
       "capacity_factor": 0.85
     },
     "sensitivities": {
       "engineering": {
         "availability": {
-          "elasticity": -0.7287285930628199,
+          "elasticity": -0.37464029630805074,
           "baseline": 0.85
         },
         "construction_time_yr": {
-          "elasticity": 0.20644610645696543,
-          "baseline": 4.0
+          "elasticity": 0.2102602522741024,
+          "baseline": 6.0
         },
         "mn": {
-          "elasticity": -0.012567926102419765,
+          "elasticity": 0.00032542422967921927,
           "baseline": 1.0
         },
-        "eta_th": {
-          "elasticity": -0.36534224372629326,
-          "baseline": 0.9
-        },
-        "eta_p": {
-          "elasticity": 0.0,
-          "baseline": 0.5
-        },
         "f_sub": {
-          "elasticity": -0.012558360008537486,
+          "elasticity": -0.04293167009650099,
           "baseline": 0.03
         },
-        "p_pump": {
-          "elasticity": -0.004896004847419781,
-          "baseline": 0.5
-        },
-        "p_trit": {
-          "elasticity": -0.0027907472816849576,
-          "baseline": 0.5
-        },
         "p_house": {
-          "elasticity": -0.01116298912673983,
+          "elasticity": -0.042931676770194584,
           "baseline": 2.0
         },
         "blanket_t": {
-          "elasticity": 0.0001228184494099422,
+          "elasticity": 0.00009978154310790458,
           "baseline": 0.05
         },
         "ht_shield_t": {
-          "elasticity": 0.00014967612169772761,
+          "elasticity": 0.0001065683882523493,
           "baseline": 0.05
         },
         "structure_t": {
-          "elasticity": 0.00033283350087227897,
+          "elasticity": 0.00035765881568925226,
           "baseline": 0.1
         },
         "vessel_t": {
-          "elasticity": 0.0008607972696114735,
+          "elasticity": 0.001011030794312971,
           "baseline": 0.1
         },
         "plasma_t": {
-          "elasticity": 0.0011609351783004266,
+          "elasticity": 0.0009978154162104374,
           "baseline": 0.5
+        },
+        "burn_fraction": {
+          "elasticity": -0.040978126559593514,
+          "baseline": 0.15
+        },
+        "fuel_recovery": {
+          "elasticity": -3.4339645263341976,
+          "baseline": 0.99
         },
         "dd_f_T": {
           "elasticity": 0.0,
@@ -259,75 +251,174 @@
           "baseline": 0.689
         },
         "dhe3_dd_frac": {
-          "elasticity": 0.0,
-          "baseline": 0.07
-        },
-        "dhe3_f_T": {
-          "elasticity": 0.0,
-          "baseline": 0.97
+          "elasticity": -0.057873348719523536,
+          "baseline": 0.131
         },
         "q_eng": {
-          "elasticity": -0.4608806045389223,
-          "baseline": 3.0
+          "elasticity": -0.6210841515990628,
+          "baseline": 4.0
         },
         "f_rep": {
-          "elasticity": -0.027528898418381274,
-          "baseline": 1.0
+          "elasticity": -0.054074150421743405,
+          "baseline": 1.5
         },
         "eta_pin": {
-          "elasticity": 0.07991485005900283,
+          "elasticity": 5.169275348953284,
           "baseline": 0.95
         },
         "f_rad": {
-          "elasticity": 0.0,
-          "baseline": 0.1
+          "elasticity": 0.034997971478377826,
+          "baseline": 0.05
         },
         "p_coils": {
-          "elasticity": -0.0027907472816849576,
+          "elasticity": -0.010732919192548646,
           "baseline": 0.5
         },
         "eta_dec": {
-          "elasticity": 0.0,
+          "elasticity": -1.9037248073361315,
           "baseline": 0.85
         }
       },
       "financial": {
         "interest_rate": {
-          "elasticity": 0.5569722863388712,
+          "elasticity": 0.271562231542481,
           "baseline": 0.07
         },
         "inflation_rate": {
-          "elasticity": 0.08267609543719054,
+          "elasticity": 0.23677510212188674,
+          "baseline": 0.02
+        }
+      }
+    },
+    "sensitivities_bare": {
+      "engineering": {
+        "availability": {
+          "elasticity": -0.3468118327588066,
+          "baseline": 0.85
+        },
+        "construction_time_yr": {
+          "elasticity": 0.14470936071416687,
+          "baseline": 6.0
+        },
+        "mn": {
+          "elasticity": 0.00014800521551950092,
+          "baseline": 1.0
+        },
+        "f_sub": {
+          "elasticity": -0.11124059482394437,
+          "baseline": 0.03
+        },
+        "p_house": {
+          "elasticity": -0.11124061271703374,
+          "baseline": 2.0
+        },
+        "blanket_t": {
+          "elasticity": 0.00006220329181699803,
+          "baseline": 0.05
+        },
+        "ht_shield_t": {
+          "elasticity": 0.00008866315036945235,
+          "baseline": 0.05
+        },
+        "structure_t": {
+          "elasticity": 0.00018965590846779944,
+          "baseline": 0.1
+        },
+        "vessel_t": {
+          "elasticity": 0.0004814305858437122,
+          "baseline": 0.1
+        },
+        "plasma_t": {
+          "elasticity": 0.0006220329089009676,
+          "baseline": 0.5
+        },
+        "burn_fraction": {
+          "elasticity": -0.018299510228911686,
+          "baseline": 0.15
+        },
+        "fuel_recovery": {
+          "elasticity": -1.533497949354353,
+          "baseline": 0.99
+        },
+        "dd_f_T": {
+          "elasticity": 0.0,
+          "baseline": 0.969
+        },
+        "dd_f_He3": {
+          "elasticity": 0.0,
+          "baseline": 0.689
+        },
+        "dhe3_dd_frac": {
+          "elasticity": -0.025841529858961522,
+          "baseline": 0.131
+        },
+        "q_eng": {
+          "elasticity": -1.285139760050386,
+          "baseline": 4.0
+        },
+        "f_rep": {
+          "elasticity": -0.2566028358129852,
+          "baseline": 1.5
+        },
+        "eta_pin": {
+          "elasticity": 12.903738050437545,
+          "baseline": 0.95
+        },
+        "f_rad": {
+          "elasticity": 0.019356160244156657,
+          "baseline": 0.05
+        },
+        "p_coils": {
+          "elasticity": -0.027810153179258435,
+          "baseline": 0.5
+        },
+        "eta_dec": {
+          "elasticity": -0.8838211589185039,
+          "baseline": 0.85
+        }
+      },
+      "financial": {
+        "interest_rate": {
+          "elasticity": 0.23310837334574144,
+          "baseline": 0.07
+        },
+        "inflation_rate": {
+          "elasticity": 0.10573606045638023,
           "baseline": 0.02
         }
       }
     },
     "params": {
-      "q_eng": 3.0,
-      "f_rep": 1.0,
-      "f_rad": 0.1,
-      "mn": 1.0,
+      "q_eng": 4.0,
+      "f_rep": 1.5,
+      "f_rad": 0.05,
       "eta_pin": 0.95,
       "eta_dec": 0.85,
       "f_pdv": 0.8,
+      "mn": 1.0,
       "f_sub": 0.03,
-      "p_pump": 0.5,
-      "p_trit": 0.5,
+      "p_pump": 0.0,
+      "p_trit": 0.0,
       "p_house": 2.0,
       "p_cryo": 0.0,
       "p_target": 0.0,
+      "target_unit_cost": 0.0,
       "p_coils": 0.5,
+      "b_center": 5.0,
+      "r_bore": 0.6,
       "R0": 0.0,
       "plasma_t": 0.5,
       "blanket_t": 0.05,
       "ht_shield_t": 0.05,
       "structure_t": 0.1,
       "vessel_t": 0.1,
-      "construction_time_yr": 4.0,
+      "construction_time_yr": 6.0,
+      "burn_fraction": 0.15,
+      "fuel_recovery": 0.99,
       "dd_f_T": 0.969,
       "dd_f_He3": 0.689,
-      "dhe3_dd_frac": 0.07,
-      "dhe3_f_T": 0.97,
+      "dhe3_dd_frac": 0.131,
+      "dhe3_f_T": 0.0,
       "pb11_f_alpha_n": 0.0,
       "pb11_f_p_n": 0.0,
       "site_permits": 3.0,
@@ -350,22 +441,46 @@
       "blanket_unit_cost_dd": 0.3,
       "blanket_unit_cost_dhe3": 0.08,
       "blanket_unit_cost_pb11": 0.05,
+      "blanket_unit_cost_li2o": 0.2,
       "shield_unit_cost": 0.74,
+      "coil_cu_current_density_a_mm2": 5.0,
+      "coil_cu_price_per_kg": 11.0,
+      "coil_cu_fab_markup": 3.5,
+      "coil_struct_fraction": 0.6,
+      "coil_steel_price_per_kg": 6.0,
+      "coil_steel_fab_markup": 3.0,
       "heating_nbi_per_mw": 7.0642,
       "heating_icrf_per_mw": 4.1494,
       "heating_ecrh_per_mw": 5.0,
       "heating_lhcd_per_mw": 4.0,
-      "driver_laser_per_mw": 8.0,
-      "driver_heavy_ion_per_mw": 12.0,
+      "eta_source_nbi": 0.6,
+      "eta_source_icrf": 0.7,
+      "eta_source_ecrh": 0.5,
+      "eta_source_lhcd": 0.5,
+      "driver_laser_per_mj": 205.0,
+      "driver_krf_per_mj": 40.0,
+      "driver_ndglass_per_mj": 1000.0,
+      "driver_heavy_ion_per_mj": 60.0,
+      "driver_plasma_jet_per_mj": 4.0,
+      "driver_staged_zpinch_per_mj": 1.5,
       "driver_mag_target_per_mw": 3.0,
-      "driver_plasma_jet_per_mw": 4.0,
-      "driver_maglif_per_mw": 6.0,
+      "laser_preheat_per_mj": 205.0,
       "structure_unit_cost": 0.15,
       "vessel_unit_cost": 0.72,
+      "pump_unit_cost": 0.015,
+      "pump_nbi_gas_amplification": 1.0,
+      "pump_gas_temp_k": 300.0,
+      "pump_ion_per_reaction": 2.0,
+      "nbi_beam_energy_kev": 120.0,
+      "vac_op_pressure_pa": 1.0,
+      "e_fus_mev_dt": 17.6,
+      "e_fus_mev_dd": 3.65,
+      "e_fus_mev_dhe3": 18.3,
+      "e_fus_mev_pb11": 8.7,
       "power_supplies_base": 80.0,
       "divertor_base": 60.0,
       "target_factory_base": 244.0,
-      "dec_base": 100.0,
+      "dec_base": 125.0,
       "dec_grid_cost": 12.0,
       "dec_grid_lifetime_dt": 2.0,
       "dec_grid_lifetime_dd": 3.0,
@@ -376,17 +491,32 @@
       "markup_controls": 0.04,
       "c_inv_per_kw_net": 150.0,
       "cap_shot_lifetime": 100000000.0,
+      "electrode_shot_lifetime": 100000000.0,
+      "electrode_replace_frac": 0.5,
+      "dpssl_diode_replace_frac": 0.5,
+      "dpssl_diode_shot_lifetime": 10000000000.0,
+      "dpssl_crystal_replace_frac": 0.03,
+      "dpssl_crystal_shot_lifetime": 3000000000.0,
+      "dpssl_optics_replace_frac": 0.05,
+      "dpssl_optics_shot_lifetime": 300000000.0,
+      "krf_foil_replace_frac": 0.04,
+      "krf_foil_shot_lifetime": 300000000.0,
+      "krf_ebeam_replace_frac": 0.06,
+      "krf_ebeam_shot_lifetime": 300000000.0,
+      "ndglass_lamp_replace_frac": 0.1,
+      "ndglass_lamp_shot_lifetime": 10000.0,
       "f_rad_dt": 0.1,
       "f_rad_dd": 0.08,
       "f_rad_dhe3": 0.05,
       "f_rad_pb11": 0.15,
-      "f_rad_fus_pb11": 0.87,
-      "f_rad_fus_dhe3": 0.35,
+      "f_rad_fus_pb11": 0.83,
+      "f_rad_fus_dhe3": 0.24,
       "remote_handling_dt_base": 150.0,
       "remote_handling_dd_base": 100.0,
       "remote_handling_dhe3_base": 30.0,
       "remote_handling_pb11_base": 20.0,
       "installation_frac": 0.14,
+      "multi_unit_labor_factor": 0.92,
       "core_lifetime_dt": 5.0,
       "core_lifetime_dd": 10.0,
       "core_lifetime_dhe3": 30.0,
@@ -437,14 +567,10 @@
       "u_protium": 5.0,
       "u_b11": 10000.0,
       "u_b11_noak": 75.0,
-      "burn_fraction": 0.1,
-      "fuel_recovery": 0.95,
-      "p_driver": 12.0,
-      "eta_th": 0.9,
-      "eta_p": 0.5,
+      "eta_th": 0.0,
       "net_electric_mw": 1000.0,
       "availability": 0.85,
-      "lifetime_yr": 30.0,
+      "lifetime_yr": 40.0,
       "n_mod": 20.0,
       "interest_rate": 0.07,
       "inflation_rate": 0.02,
@@ -470,12 +596,12 @@
       "display_name": "Construction Time",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 4.0,
+      "baseline": 6.0,
       "display_multiplier": 1.0,
       "display_unit": "yr",
       "range": [
-        2.8,
-        5.2
+        4.199999999999999,
+        7.800000000000001
       ],
       "source": null,
       "modeling_note": null
@@ -494,34 +620,6 @@
       "source": null,
       "modeling_note": null
     },
-    "eta_th": {
-      "display_name": "Thermal Efficiency",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 0.9,
-      "display_multiplier": 100.0,
-      "display_unit": "%",
-      "range": [
-        0.63,
-        1.0
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "eta_p": {
-      "display_name": "Eta P",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 0.5,
-      "display_multiplier": 1.0,
-      "display_unit": "",
-      "range": [
-        0.35,
-        0.65
-      ],
-      "source": null,
-      "modeling_note": null
-    },
     "f_sub": {
       "display_name": "Subsystem Power Fraction",
       "category": "unclassified",
@@ -532,34 +630,6 @@
       "range": [
         0.020999999999999998,
         0.039
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "p_pump": {
-      "display_name": "Pumping Power",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 0.5,
-      "display_multiplier": 1.0,
-      "display_unit": "MW",
-      "range": [
-        0.35,
-        0.65
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "p_trit": {
-      "display_name": "Tritium Plant Power",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 0.5,
-      "display_multiplier": 1.0,
-      "display_unit": "MW",
-      "range": [
-        0.35,
-        0.65
       ],
       "source": null,
       "modeling_note": null
@@ -648,6 +718,34 @@
       "source": null,
       "modeling_note": null
     },
+    "burn_fraction": {
+      "display_name": "Burn Fraction",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.15,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.105,
+        0.195
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "fuel_recovery": {
+      "display_name": "Fuel Recovery",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.99,
+      "display_multiplier": 1.0,
+      "display_unit": "",
+      "range": [
+        0.693,
+        1.0
+      ],
+      "source": null,
+      "modeling_note": null
+    },
     "dd_f_T": {
       "display_name": "Dd F T",
       "category": "unclassified",
@@ -680,26 +778,12 @@
       "display_name": "Dhe3 Dd Frac",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 0.07,
+      "baseline": 0.131,
       "display_multiplier": 1.0,
       "display_unit": "",
       "range": [
-        0.049,
-        0.09100000000000001
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "dhe3_f_T": {
-      "display_name": "Dhe3 F T",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 0.97,
-      "display_multiplier": 1.0,
-      "display_unit": "",
-      "range": [
-        0.6789999999999999,
-        1.261
+        0.0917,
+        0.1703
       ],
       "source": null,
       "modeling_note": null
@@ -708,12 +792,12 @@
       "display_name": "Engineering Q",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 3.0,
+      "baseline": 4.0,
       "display_multiplier": 1.0,
       "display_unit": "",
       "range": [
-        2.0999999999999996,
-        3.9000000000000004
+        2.8,
+        5.2
       ],
       "source": null,
       "modeling_note": null
@@ -722,12 +806,12 @@
       "display_name": "Repetition Rate",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 1.0,
+      "baseline": 1.5,
       "display_multiplier": 1.0,
       "display_unit": "Hz",
       "range": [
-        0.7,
-        1.0
+        1.0499999999999998,
+        1.9500000000000002
       ],
       "source": null,
       "modeling_note": null
@@ -750,12 +834,12 @@
       "display_name": "F Rad",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 0.1,
+      "baseline": 0.05,
       "display_multiplier": 1.0,
       "display_unit": "",
       "range": [
-        0.06999999999999999,
-        0.13
+        0.034999999999999996,
+        0.065
       ],
       "source": null,
       "modeling_note": null
@@ -817,87 +901,79 @@
       "modeling_note": null
     }
   },
-  "narrative": {
-    "key_bets": [
-      "Magnetic energy recovery efficiency reaches ≥90% at commercial fields and rep rates (subscale 2015 demo showed >95%, but only at low fields and over <1M pulses)",
-      "Achieving ~17 keV / 200M°C and 40 T compression field enables D-He3 ignition (currently 13 keV / 150M°C and ~15 T on Polaris)",
-      "He3 self-breeding from D-D side reactions plus tritium decay can supply commercial fuel demand without external He3 purchase",
-      "Pulsed capacitor bank cost falls from ~$5/J commercial baseline to ~$0.50/J via in-house manufacturing learning curve",
-      "Rep rate scales from Trenta's ~0.002 Hz to commercial 2 Hz (1200×) via capacitor recharge, coil thermal management, and FRC injection at 1+ Hz",
-      "Pulsed aluminum coils survive ~10^9 fatigue cycles at 40 T compressed field with adequate replacement intervals",
-      "Plasma gain (Q) reaches commercially viable levels (ARPA-E implies Q~1.2; no measured Q published for any prototype)"
-    ],
-    "eliminated_costs": [
-      "Tritium breeding blanket (FLiBe/WCCB, ~$200–500M) — D-He3 fuel eliminates need",
-      "Steam/thermal cycle (Rankine/Brayton turbines, condensers, heat exchangers) — direct inductive recovery captures ~95% charged-particle energy",
-      "REBCO HTS superconducting magnets and cryogenic plant — replaced by room-temperature pulsed aluminum coils",
-      "External tritium supply at commercial scale (~$35,000/g) — D-He3 needs no tritium for steady operation",
-      "Heavy neutron shielding and frequent first-wall replacement — ~5% neutron fraction vs. ~80% for D-T enables ~1m borated polyethylene/concrete barrier"
-    ],
-    "novel_costs": [
-      "High-voltage pulsed capacitor bank (>50 MJ on Polaris) — primary capital item with no published $/J cost curve at required rep rate and lifetime",
-      "Direct Faraday inductive energy recovery system at 40 T and commercial scale — TRL 4–5, replaces conventional power conversion island",
-      "He3 self-breeding cycle including D-D reaction capture, tritium storage during 12.3-yr decay, and isotopic separation plant — never demonstrated at any scale",
-      "Pulsed aluminum coils and ~720 miles of custom-alloy coaxial cables per plant with unknown fatigue lifetime at 40 T",
-      "Tritium storage inventory (~1–5 kg, ~$35–175M) accumulated during fleet ramp before He3 breeding self-sustains"
-    ],
-    "risks": [
-      {
-        "description": "Magnetic energy recovery efficiency falls below ~90% threshold, eliminating net electricity output (binary cliff at ARPA-E design point η_coupling=0.2, Q=1.2)",
-        "severity": "high"
-      },
-      {
-        "description": "He3 self-breeding fails or is delayed, leaving commercial D-He3 operation with no viable fuel path (natural He3 supply cannot support a single 50 MWe plant)",
-        "severity": "high"
-      },
-      {
-        "description": "Compression field cannot reach D-He3 ignition threshold (~17 keV / ~40 T), forcing structural fallback to D-T fuel and a fundamentally different LCOE model with breeding blanket and reduced direct conversion",
-        "severity": "high"
-      },
-      {
-        "description": "No published Q value for any prototype — fundamental fusion gain parameter is entirely unverified by independent sources",
-        "severity": "high"
-      },
-      {
-        "description": "Capacitor bank cost remains near commercial baseline (~$5/J) instead of reaching ~$0.50/J target — would push LCOE above 500 c/kWh",
-        "severity": "high"
-      },
-      {
-        "description": "Rep rate gap from Trenta (0.002 Hz) to commercial 2 Hz (1200× scaling) is engineering-unproven; achieved Polaris rep rate not disclosed in Feb 2026 milestone",
-        "severity": "high"
-      },
-      {
-        "description": "40 T pulsed aluminum coils are outside demonstrated experience (Trenta achieved >8 T) — 25× increase in magnetic pressure with unknown fatigue life at 10^9 cycles",
-        "severity": "high"
-      },
-      {
-        "description": "Component lifetime (capacitors, coils, quartz tubes) at 1+ Hz commercial duty cycle is uncharacterized — drives O&M cost and replacement schedule",
-        "severity": "medium"
-      },
-      {
-        "description": "Inconsistency between η=0.7 (ARPA-E) and >95% recovery efficiency (Contrary Research) claims is unresolved — definitional ambiguity creates 10+ percentage-point modeling uncertainty in the dominant LCOE parameter",
-        "severity": "medium"
-      },
-      {
-        "description": "Capacitor and quartz tube supply chain identified by Contrary Research as Helion's 'main potential risk' — limited specialty suppliers for high-voltage repetitive-pulse capacitors",
-        "severity": "medium"
-      },
-      {
-        "description": "Tritium storage and regulatory framework for 1–5 kg commercial inventory during He3 breeding lag period has no precedent at this scale",
-        "severity": "medium"
-      },
-      {
-        "description": "Orion plant capital cost and subsystem breakdown is fully proprietary — no independent TEA exists to validate Helion's economics",
-        "severity": "medium"
-      },
-      {
-        "description": "First-wall material selection and replacement schedule for D-He3 2.45 MeV neutrons at commercial rep rate is not published",
-        "severity": "low"
-      }
-    ]
-  },
+  "narrative": null,
   "sources": {
     "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/08-frc-w-direct-conversion/model_setup.py",
-    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/08-frc-w-direct-conversion/analysis.md"
-  }
+    "analysis": null
+  },
+  "analyst_override_count": 6,
+  "overrides": [
+    {
+      "account": "C220103",
+      "account_name": "Magnets / Coils",
+      "value": 7.53638219833374,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "helion-website-technology.md §Magnets; contrary-research-helion.md §Magnet Materials",
+      "rationale": "Helion uses pulsed resistive electromagnets ('regular aluminum magnets') rather than HTS-REBCO superconducting coils. The library default for C220103 assumes HTS magnet costs (~$50-150M for tokamak-scale coils). Resistive coils are 1-2 orders of magnitude cheaper per unit field strength-volume (aluminum and copper conductor, no cryogenics, no REBCO tape), but require continuous cooling and have I²R losses. At 40 T peak field and ~50 MJ stored energy, rough estimate: 50-100 tonnes aluminum/copper conductor at $2,500-9,000/tonne = $250K-$1M material; winding, insulation, structural support, and cooling systems add 10-50× material cost → $5-20M for coil subsystem at FOAK. This is ~10-20% of typical HTS coil costs for similar stored energy. To achieve absolute cost of $5-10M (midpoint $7.5M) at native scale where generic CAS22 ≈ $188M, override multiplier = $7.5M / $188M ≈ 0.04 (4% of generic CAS22 subtotal). This yields resistive magnet cost consistent with bottom-up material and fabrication estimates.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220102",
+      "account_name": "Radiation Shield",
+      "value": 0.2,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "analysis.md §4 (Archetype Fit), lines 230-237; analogue cost proxies for borated concrete/polyethylene vs. D-T steel/lithium blankets",
+      "rationale": "Helion's D-He3 fuel produces ~20× lower neutron flux than D-T (neutrons from side D-D reactions only, not primary fusion channel). The library default for C220102 assumes D-T tokamak radiation shielding: thick steel/lithium blankets and massive biological shields totaling $10-50M for 500 MWe, scaling to ~$2-10M for 50 MWe. Helion's lower neutron flux permits lighter shielding: borated polyethylene panels or borated concrete rather than thick steel/lithium blankets. Analysis estimates ~$50-100K for borated polyethylene/concrete shielding (industrial shielding panel costs at $50-200/m², ~500-1000 m² for vessel surface area → $25-200K material + installation). This is ~1-2% of D-T shielding costs. However, the library default likely includes biological shields, access labyrinths, and other fixed structures that scale with building volume, not neutron flux. Conservative override: 20% of library default (~$0.2M at 50 MWe scale) to account for lighter material but similar installation complexity. This brings C220102 from ~$1-2M (library default) to ~$0.2M.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220104",
+      "account_name": "Heating & Driver Systems",
+      "value": 25.0,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "helion-website-technology.md §Capacitor Bank; [industry capacitor cost proxies]",
+      "rationale": "Helion's capacitor bank ('>50 MJ total energy storage,' 'thousands of high-voltage pulsed capacitors') serves as the primary pulsed driver for FRC formation, acceleration, and compression. The library default for C220104 is laser driver or accelerator costs ($/J of driver energy), which are typically $100-500/J for ICF lasers or heavy-ion beamlines. Capacitors cost ~$0.05-$0.50/J at industrial volume (pulsed power applications). At 50 MJ, cost is $2.5M-$25M depending on voltage, ripple current, and cycle life. Adding IGBTs for switching (~$0.10-$0.50/W, 50 MW → $5-25M) gives combined capacitor-IGBT cost of $10-50M. Using midpoint $25M for FOAK. This is $/J basis: $25M / 50 MJ = $500/J, but this is total system cost, not driver-energy basis. Library expects $/J of *driver energy delivered to plasma*, not stored energy. If capacitor-to-plasma efficiency is 80%, then 50 MJ stored → 40 MJ delivered → $25M / 40 MJ = $625/J delivered. Using $25M as absolute override rather than $/J, since the library's $/J metric is laser/accelerator-specific and doesn't map cleanly to capacitor banks. Override: $25M capital cost for capacitor-IGBT system.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220107",
+      "account_name": "Power Conditioning & Energy Storage",
+      "value": 0.0,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "helion-website-technology.md §Capacitor Bank (capacitors already costed in C220104)",
+      "rationale": "C220107 is 'power supplies (steady-state magnet supplies / switchgear) or pulsed-power capacitor bank ($/J stored)'. For Helion, the capacitor bank is the pulsed power source and is already costed in C220104 (primary driver). The resistive magnets are powered by the same capacitor bank (capacitors discharge through coils to generate magnetic field for compression). There is no separate 'magnet power supply' distinct from the driver capacitor bank. To avoid double-counting, set C220107 = 0. This is an analyst-derived accounting decision based on the dual-function of the capacitor bank (driver + magnet power supply), not a company-stated cost figure. The source citation supports the technical rationale (capacitor bank serves both functions), but the zero value is analyst-determined to prevent double-counting within the model's cost structure.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220109",
+      "account_name": "Direct Energy Converter",
+      "value": 15.07276439666748,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "helion-website-technology.md §Energy Capture; Helion 2021 press release (95% round-trip efficiency); [analogue: electrostatic DEC costs for mirrors]",
+      "rationale": "Helion uses direct inductive energy conversion: expanding magnetized plasma induces current in surrounding coils, converting charged particle energy to electricity without a thermal cycle. The library default for C220109 assumes electrostatic direct energy converters (bias grids, collector plates) used in magnetic mirror concepts. Helion's inductive approach is fundamentally different: the same coils used for compression also serve as energy recovery coils (dual-function), and the conversion mechanism is Faraday induction, not electrostatic potential. Capital cost for inductive DEC is primarily the power electronics (IGBTs, transformers, grid interface) to convert pulsed AC (from coil flux change) to grid-quality DC or 60 Hz AC. Estimated at $10-20M for 50 MWe (power electronics are ~$0.20-$0.40/W for utility-scale converters, midpoint $15M). To achieve absolute cost of $10-20M (midpoint $15M) at native scale where generic CAS22 ≈ $188M, override multiplier = $15M / $188M ≈ 0.08 (8% of generic CAS22 subtotal). The coils themselves are already costed in C220103; this override captures only the power electronics and grid interface for energy recovery.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "CAS23",
+      "account_name": "Turbine Plant Equipment",
+      "value": 0.0,
+      "enabled": true,
+      "provenance": "direct",
+      "source": "helion-website-technology.md §Energy Capture; contrary-research-helion.md §Energy Recovery",
+      "rationale": "Helion uses direct inductive energy conversion with no steam cycle ('No steam cycle required,' '85-95% direct electricity capture efficiency without steam turbines'). CAS23 is 'Turbine plant equipment (thermal cycle)' — steam/gas turbines, condensers, heat exchangers, cooling towers. For Helion, this account is $0 (not applicable). The charged particles from D-He3 fusion transfer energy to the magnetic field via plasma expansion, and the field induces current in coils; there is no intermediate thermal working fluid. This is a major differentiator from D-T concepts (which use steam Rankine or sCO2 Brayton cycles) and eliminates ~$50-150M in turbine-generator-BOP costs for a 50 MWe plant (rough scaling from larger plants). The library will compute CAS23 from thermal power and efficiency assumptions; override to zero.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    }
+  ],
+  "asterisk_in_comparison": false
 }

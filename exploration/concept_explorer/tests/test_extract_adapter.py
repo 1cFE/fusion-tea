@@ -80,7 +80,7 @@ class _Result:
 
 
 class _Model:
-    def sensitivity(self, params):
+    def sensitivity(self, params, cost_overrides=None):
         return {
             "engineering": {"availability": -1.0},
             "financial": {"interest_rate": 0.5},

@@ -342,3 +342,37 @@ class ConceptRegistry(BaseModel):
     def by_family(self, family: ConfinementFamily) -> list[ConceptTaxonomy]:
         """Filter concepts by confinement family."""
         return [c for c in self.concepts if c.confinement_family == family]
+
+
+# ---------------------------------------------------------------------------
+# Decision-tree pruning (omit list enforcement)
+# ---------------------------------------------------------------------------
+
+
+def _subtree_has_concepts(node: dict) -> bool:
+    """True if *node* or any descendant leaf carries at least one concept ID.
+
+    Tolerant of the tree's two node shapes: leaves carry ``concepts`` lists,
+    internal nodes carry ``children``. A node missing both is concept-empty.
+    """
+    if node.get("concepts"):
+        return True
+    return any(_subtree_has_concepts(child) for child in node.get("children", []))
+
+
+def prune_decision_tree(node: dict, omitted: set[str]) -> dict:
+    """Return a copy of decision-tree *node* with *omitted* concept IDs removed.
+
+    Omitted IDs are stripped from every leaf ``concepts`` list, then any subtree
+    left with zero concepts is dropped so the tree shows no dead-end branches
+    (so omitted concepts vanish from the decision tree per FR-5). Pure: the input
+    is not mutated; new dicts/lists are returned. Pass the *node* (e.g. the tree's
+    ``root``), not the ``{version, root}`` wrapper.
+    """
+    pruned = dict(node)
+    if "concepts" in pruned:
+        pruned["concepts"] = [c for c in pruned["concepts"] if c not in omitted]
+    if "children" in pruned:
+        children = [prune_decision_tree(child, omitted) for child in pruned["children"]]
+        pruned["children"] = [c for c in children if _subtree_has_concepts(c)]
+    return pruned
