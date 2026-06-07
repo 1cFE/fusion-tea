@@ -22,44 +22,30 @@ from lib.model_setup_helpers import (
 )
 
 # 1. Specification — design-point inputs only, at native scale.
-#    LPPFusion Focus Fusion commercial generator: a pulsed dense plasma focus
-#    device with p-B11 fuel. Extremely compact (~3 tonnes, ~30 m³), no external
-#    magnets, no cryogenics, no tritium, no manufactured targets. The plasma
-#    self-confines via its own current-generated magnetic fields for ~10 ns.
+#    DPF is a pulsed, electrically-driven concept (capacitor bank → coaxial
+#    electrodes → plasmoid). No external magnetic coils, no cryogenics, no
+#    manufactured targets.  p-B11 fuel: aneutronic, no tritium processing.
 #
-#    Archetype-Fit: Low — DENSE_PLASMA_FOCUS is the library enum but was
-#    calibrated with generic DPF defaults (5 Hz rep rate, DT-scale geometry).
-#    Focus Fusion is radically smaller and faster (200 Hz, ~cm electrodes).
+#    The pulsed-thermal inverse path back-solves p_fus and e_driver_mj from
+#    q_eng and P_native.  p_input (steady-state auxiliary heating wallplug)
+#    is not in the pulsed forward() signature and must not appear here.
 #
-#    The pulsed-thermal inverse path takes q_eng and f_rep and back-solves
-#    p_fus and e_driver_mj from the target P_net.
-#
-#    q_eng is not directly published. The YAML default of 3.0 is accepted.
-#    Lerner claims ~60 kJ fusion yield per pulse with ~25 kJ net electricity,
-#    but these are undemonstrated paper-concept numbers.
-#
-#    Published fusion power per pulse: ~60 kJ × 200 Hz = 12 MW (gross fusion).
-#    Library back-solves from q_eng + P_native via the inverse balance.
-#
-#    Parameters NOT in spec (no canonical spec key or intentionally omitted):
-#    - eta_th: library-owned per Rule 6. Design point has no thermal cycle
-#      (eta_th=0); library carries per-archetype default.
-#    - eta_pin: library-owned per Rule 6. YAML default = 0.20.
-#    - eta_dec: library-owned per Rule 6. YAML default = 0.85.
-#    - p_fus: never a spec key; library back-solves.
+#    p_fus ≈ 6 MW total fusion power per module at commercial design point
+#    (inferred: 5 MWe net / ~0.83 blended DEC efficiency) — informational
+#    only; library back-solves from q_eng + P_native.
 spec = dict(
-    f_rep=200.0,      # Hz — lerner-2023-jfe-paper.md §Energy Capture: "about 200 times a second"
-    mn=1.0,           # aneutronic p-B11; negligible neutron energy (< 1% from side reactions)
-    p_trit=0.0,       # no tritium processing (p-B11 fuel)
-    p_cryo=0.0,       # no cryogenics (no superconducting magnets, no cryoplant)
-    p_coils=0.0,      # no external magnets — plasma is self-confined
-    p_target=0.0,     # no manufactured targets — plasma forms from gas fill at electrode tip
-    blanket_t=0.10,   # m — aneutronic p-B11 needs minimal shielding, not a breeding blanket
-    ht_shield_t=0.05, # m — thin biological shield for secondary x-rays and minor neutrons
-    structure_t=0.05, # m — minimal: device is ~3 tonnes total
-    vessel_t=0.05,    # m — FF-2B vacuum chamber is ~10 cm radius; commercial comparable
+    # Repetition rate: commercial generator design target; lerner-2023-jfe-paper.md §5 MW Design Point.
+    # YAML default 5 Hz is a generic pulsed-DPF default; 200 Hz is the published commercial target.
+    f_rep=200.0,
+    # Chamber radius: x-ray photovoltaic converter inner radius 40–50 cm
+    # (lerner-2023-jfe-paper.md §Energy Capture).  YAML default 1.0 m overstates
+    # the compact Focus Fusion geometry; 0.45 m is the midpoint of the published range.
+    plasma_t=0.45,
+    # Tritium processing power: zero for p-B11 aneutronic fuel.
+    # YAML default 5.0 MW is a DT-era calibration not applicable here.
+    p_trit=0.0,
 )
-P_native = 5.0  # MWe — lerner-2023-jfe-paper.md §Energy Capture; analysis Design Point block
+P_native = 5.0  # MWe — lerner-2023-jfe-paper.md §5 MW Design Point; analysis Design Point block
 
 # 2. Model.
 model = CostModel(concept=ConfinementConcept.DENSE_PLASMA_FOCUS, fuel=Fuel.PB11)
@@ -67,134 +53,179 @@ model = CostModel(concept=ConfinementConcept.DENSE_PLASMA_FOCUS, fuel=Fuel.PB11)
 # 2b. Generic forward — overrides OFF, design-point scale (forward 1 of 3).
 generic = generic_reference(model, spec, P_native)
 
-# 3. Override registry — transcribed from analysis.md Section 5b.
-#    7 enabled overrides, reflecting the radical structural difference between
-#    Focus Fusion's 5 MWe, ~3 tonne, aneutronic, direct-conversion device and
-#    any conventional fusion plant architecture.
+# 3. Override registry — transcribed from analysis Section 5b.
 overrides = [
-    # CAS21: Buildings — the entire device is ~3 tonnes, ~30 m³, fits in a 4m×4m room.
+    # C220101 — First wall / blanket: aneutronic, x-ray converter integral to device.
+    # p-B11 primary reaction produces no neutrons; <1% fusion energy as neutron side
+    # reactions.  No tritium breeding blanket.  Thin structural liner only.
     {
-        "account": "CAS21",
-        "value": 0.05 * generic.costs.cas21,
+        "account": "C220101",
+        "value": 0.04 * generic.cas22_detail["C220101"],
         "enabled": True,
         "provenance": "derived",
-        "source": "lerner-2023-jfe-paper.md §Energy Capture",
-        "rationale": (
-            "The entire device is ~3 tonnes, ~30 m³, fits in a 4m×4m room. No reactor "
-            "building, no hot cell, no heavy-lift crane bay. At 5 MWe with aneutronic fuel "
-            "and no tritium handling, the building requirement is a small industrial "
-            "enclosure, not a nuclear-grade reactor building. 5% of the generic CAS21 "
-            "is an order-of-magnitude estimate reflecting the ~100× reduction in "
-            "building volume vs. a conventional fusion plant. No company-published "
-            "building cost exists; this is analyst-derived."
-        ),
         "cost_basis": "noak",
+        "source": "lerner-2023-jfe-paper.md §Introduction; lerner-2023-jfe-paper.md §Energy Capture",
+        "rationale": (
+            "p-B11 primary reaction (p + ¹¹B → 3α) produces no neutrons. Side reactions "
+            "produce <1% of fusion energy as neutrons. No tritium breeding blanket is needed "
+            "or structurally meaningful. The x-ray photovoltaic converter (40–50 cm inner "
+            "radius, ~50 cm length) captures x-ray energy directly and is integral to the "
+            "device. A thin structural liner at ~4% of the library's per-module blanket cost "
+            "covers minimal radiation shielding of secondary neutrons. Library's 1 GWe "
+            "modular-fleet default assumes a tritium-breeding blanket with significant neutron "
+            "loading — not applicable here."
+        ),
     },
-    # CAS23: Turbine plant equipment — zero; no thermal cycle.
+    # C220102 — Radiation shield: minimal neutron flux, no heavy shielding needed.
+    {
+        "account": "C220102",
+        "value": 0.05 * generic.cas22_detail["C220102"],
+        "enabled": True,
+        "provenance": "derived",
+        "cost_basis": "noak",
+        "source": "lerner-2023-jfe-paper.md §Introduction; lppfusion-technology-focus-fusion-energy-dpf-device.md",
+        "rationale": (
+            "Primary p-B11 reaction is aneutronic. LPPFusion states the device requires no "
+            "costly containment structure and is safe enough for residential neighborhoods. "
+            "Secondary neutrons from side reactions represent <1% of total fusion energy. A "
+            "thin biological shield suffices — no heavy neutron shielding. Library's per-module "
+            "shield default is sized for significant neutron wall loading; ~5% of that default "
+            "covers the minimal shield required in the modular-fleet context."
+        ),
+    },
+    # C220104 — Primary pulsed driver (laser/accelerator/gun): zero.
+    # Per canonical account schema, electrically-driven pulsed concepts cost the
+    # primary driver in C220107 (capacitor bank), not C220104.
+    {
+        "account": "C220104",
+        "value": 0.0,
+        "enabled": True,
+        "provenance": "direct",
+        "cost_basis": "noak",
+        "source": "lerner-2023-jfe-paper.md §Experimental Device",
+        "rationale": (
+            "DPF driver is electrically driven (pulsed coaxial electrodes from capacitor bank). "
+            "Per the canonical account schema, electrically-driven pulsed concepts cost the "
+            "primary driver in C220107 (pulsed-power capacitor bank), not C220104 (which covers "
+            "laser/accelerator/gun drivers). Setting C220104 to zero prevents double-counting."
+        ),
+    },
+    # C220107 — Pulsed-power capacitor bank: NOAK mass-production target below library default.
+    # Commercial generator total cost <$1M per module ($0.10/W); cap bank ~40% of that.
+    {
+        "account": "C220107",
+        "value": 0.40 * generic.cas22_detail["C220107"],
+        "enabled": True,
+        "provenance": "derived",
+        "cost_basis": "noak",
+        "source": "lerner-2023-jfe-paper.md §Commercialization; lerner-2023-jfe-paper.md §Experimental Device",
+        "rationale": (
+            "Lerner 2023 states the commercial generator could be mass-produced for <$1M "
+            "($0.10/W capital, §Commercialization), covering all reactor island subsystems "
+            "including the capacitor bank. The experimental device (FF-1) was built for ~$500K "
+            "including a 115 kJ bank. Engineering judgment allocates ~40% of the $1M device "
+            "cost to the capacitor bank = ~$400K per module. The library's per-module default "
+            "for pulsed-power banks, derived from infrastructure-scale projects, likely exceeds "
+            "this mass-production NOAK target by a factor of ~2.5×. Override to 0.40× the "
+            "library's 1 GWe modular-fleet default (200 modules × per-module cost). Low "
+            "confidence: the $1M figure is a paper-concept projection, not a demonstrated cost."
+        ),
+    },
+    # C220109 — Direct energy converter: both DEC channels integral to the device.
+    # Ion beam decelerator (~85% for ~2/3 of fusion energy) and x-ray PV converter
+    # (~80% for ~1/3 of fusion energy); estimated at ~15% of $1M device cost = $0.15M.
+    {
+        "account": "C220109",
+        "value": 0.15,
+        "enabled": True,
+        "provenance": "derived",
+        "cost_basis": "noak",
+        "source": "lerner-2023-jfe-paper.md §Energy Capture, Conversion to Electricity",
+        "rationale": (
+            "Ion beam decelerator (~85% efficiency for ~2/3 of fusion energy) and x-ray "
+            "photoelectric converter (multilayer metal foil, 40–50 cm inner radius × ~50 cm "
+            "length, ~80% efficiency for ~1/3 of fusion energy) are both integral to the Focus "
+            "Fusion generator. Lerner 2023 includes both within the <$1M per-module total device "
+            "cost. DEC is estimated at ~15% of device cost = $0.15M per module (absolute). A "
+            "200-module 1 GWe fleet implies $30M total DEC capital — consistent with the compact "
+            "x-ray converter geometry. Anchored to the library's 1 GWe modular-fleet default."
+        ),
+    },
+    # C220110 — Remote handling: aneutronic fuel; direct-contact electrode maintenance.
+    # No neutron activation, no hot cell. Monthly Be electrode replacement uses glove-box procedures.
+    {
+        "account": "C220110",
+        "value": 0.10 * generic.cas22_detail["C220110"],
+        "enabled": True,
+        "provenance": "derived",
+        "cost_basis": "noak",
+        "source": "lerner-2023-jfe-paper.md §Introduction; lppfusion-technology-focus-fusion-energy-dpf-device.md",
+        "rationale": (
+            "p-B11 primary reactions are aneutronic; secondary neutrons <1% of fusion energy. "
+            "Structural components accumulate negligible neutron activation — no hot cell, no "
+            "high-rad-hardened remote handling equipment required. Electrode replacement (design "
+            "target: monthly) involves direct-contact maintenance of small beryllium components "
+            "(~kg scale); standard industrial glove-box procedures cover Be toxicity controls. "
+            "Library's per-module remote handling default is sized for D-T neutron activation "
+            "levels; 10% of that default covers the reduced requirements here. Anchored to the "
+            "library's 1 GWe modular-fleet default."
+        ),
+    },
+    # CAS23 — Turbine plant: zero (direct energy conversion, no thermal cycle).
+    # All fusion energy captured via ion beam DEC and x-ray PV; no steam plant.
     {
         "account": "CAS23",
         "value": 0.0,
         "enabled": True,
         "provenance": "direct",
-        "source": "lerner-2023-jfe-paper.md §Energy Capture",
-        "rationale": (
-            "No thermal cycle. All energy conversion is direct (ion beam decelerator + "
-            "x-ray photoelectric). No steam turbine, no sCO2 cycle, no thermal BOP. "
-            "CAS23 is structurally zero for this design point."
-        ),
         "cost_basis": "noak",
-    },
-    # CAS24: Electric plant equipment — small industrial/distributed scale.
-    {
-        "account": "CAS24",
-        "value": 0.10 * generic.costs.cas24,
-        "enabled": True,
-        "provenance": "derived",
-        "source": "lerner-2023-jfe-paper.md §Cost and Transition",
+        "source": "lerner-2023-jfe-paper.md §Energy Capture; lppfusion-investing-in-lppfusion-executive-summary.md §Energy Conversion",
         "rationale": (
-            "At 5 MWe, the switchyard, transformers, and plant distribution are "
-            "at small industrial/distributed generation scale, not utility scale. "
-            "10% of generic CAS24 reflects the ~200× power reduction and "
-            "correspondingly smaller electrical infrastructure. No company figure."
+            "All fusion energy is captured via direct energy conversion: ion beam decelerator "
+            "(charged particles) and x-ray photovoltaic converter (x-rays). No thermal blanket, "
+            "no steam generator, no turbine, no condenser. LPPFusion explicitly states the device "
+            "converts energy without going through heat and steam. Turbine plant capital is zero "
+            "for the Focus Fusion design point. This is an architectural certainty, not a "
+            "modeling assumption."
         ),
-        "cost_basis": "noak",
     },
-    # CAS26: Heat rejection — no thermal cycle; minimal electrode/electronics cooling.
+    # CAS26 — Heat rejection: ~17% of fusion energy as waste heat (vs ~67% for thermal plants).
+    # Blended DEC efficiency ~83%; waste heat ≈ 2 MW per module vs ~14 MW for thermal-cycle equivalent.
     {
         "account": "CAS26",
-        "value": 0.05 * generic.costs.cas26,
+        "value": 0.18 * generic.costs.cas26,
         "enabled": True,
         "provenance": "derived",
-        "source": "lerner-2023-jfe-paper.md §Energy Capture — Cooling",
-        "rationale": (
-            "No thermal cycle, so no condenser or cooling tower for a turbine island. "
-            "Cooling requirements limited to: electrode tip cooling (~10 kW/cm² at "
-            "anode tip, using compressed helium), capacitor bank thermal management, "
-            "and electronics cooling. Total heat rejection is a small fraction of "
-            "the 5 MWe output. 5% of generic CAS26 is an order-of-magnitude "
-            "estimate. No company figure."
-        ),
         "cost_basis": "noak",
+        "source": "lerner-2023-jfe-paper.md §Energy Capture",
+        "rationale": (
+            "Ion beam DEC efficiency ~85% (§Energy Capture) and x-ray photovoltaic efficiency "
+            "~80%, blending to ~83% overall ([inferred: 2/3 × 85% + 1/3 × 80%]). Total waste "
+            "heat fraction ≈ 17% of fusion output plus electrode cooling (~1 MW per module for "
+            "anode tip at 10 kW/cm²). Total heat rejection per module ≈ 2 MW, compared to ~14 MW "
+            "for a 33%-efficient thermal plant at equivalent gross output (~6 MW fusion). "
+            "Ratio ≈ 14% + margin → 0.18× the library's 1 GWe modular-fleet default, reflecting "
+            "the large heat rejection reduction from direct conversion."
+        ),
     },
-    # CAS27: Special materials — no tritium, no FLiBe, no lithium blanket.
+    # CAS27 — Special materials: no tritium inventory, no breeding fill; only initial Be electrodes.
+    # No kg-scale tritium at ~$30k/g. Initial Be electrode set for 200 modules ≈ <$1M.
     {
         "account": "CAS27",
-        "value": 0.10 * generic.costs.cas27,
+        "value": 0.02 * generic.costs.cas27,
         "enabled": True,
         "provenance": "derived",
-        "source": "lppfusion-proton-boron-p11b-fuel-arrives/output.md",
-        "rationale": (
-            "No tritium inventory, no FLiBe, no lithium blanket fill. Initial "
-            "inventory consists of beryllium electrodes (small mass, commercial "
-            "Be is ~$800/kg) and initial decaborane fuel charge. Laboratory-"
-            "scale isotopically pure decaborane costs $600/gram, but mass "
-            "production is claimed to reduce this 'many hundred-fold.' At even "
-            "$1/gram (optimistic mass production), 5 kg = $5,000. Total initial "
-            "materials inventory is negligible vs. conventional fusion concepts. "
-            "10% of generic CAS27 is conservative. No company-published figure."
-        ),
         "cost_basis": "noak",
-    },
-    # CAS70: O&M — dominated by monthly electrode replacement, reduced staffing.
-    {
-        "account": "CAS70",
-        "value": 0.25 * generic.costs.cas70,
-        "enabled": True,
-        "provenance": "derived",
-        "source": (
-            "lerner-2023-jfe-paper.md §Cost and Transition; §Energy Capture"
-        ),
+        "source": "lerner-2023-jfe-paper.md §Fuel; lerner-2024-frontiers-pB11-prep.md §Fuel Preparations",
         "rationale": (
-            "O&M dominated by monthly electrode replacement (small beryllium "
-            "components), capacitor bank maintenance, and staffing. No tritium "
-            "handling, no remote maintenance, no large component changeouts. "
-            "Device simplicity and small size should reduce staffing vs. conventional "
-            "fusion plants. 25% of generic CAS70 reflects reduced complexity "
-            "partially offset by high-frequency electrode replacement. No company "
-            "O&M cost breakdown exists."
+            "D-T concepts acquire kg-scale tritium at ~$30k/g for startup inventory — the "
+            "dominant CAS27 cost. DPF with p-B11 has no tritium and no breeding blanket fill. "
+            "Initial decaborane inventory is gram-scale (93 g received by LPPFusion); cost "
+            "negligible. Initial beryllium electrode set for 200 modules: ~200 × small Be "
+            "cylinder, rough cost <$1M at $800/kg. Override at 2% of library fleet default "
+            "accounts for initial electrode material inventory only. Anchored to the library's "
+            "1 GWe fleet default."
         ),
-        "cost_basis": "noak",
-    },
-    # CAS80: Annualized fuel cost — decaborane at ~5 kg/year.
-    # $30,000/year = 0.03 M$/year (analysis §5b derives from 5000 g × $6/g).
-    {
-        "account": "CAS80",
-        "value": 0.03,
-        "enabled": True,
-        "provenance": "derived",
-        "source": (
-            "lppfusion-proton-boron-p11b-fuel-arrives/output.md; "
-            "lerner-2023-jfe-paper.md §Cost and Transition"
-        ),
-        "rationale": (
-            "Fuel is decaborane at ~5 kg/year. Laboratory cost is ~$600/gram "
-            "($3M/year) but requires mass production for commercial viability. "
-            "Assuming 100-fold cost reduction to ~$6/gram: 5,000 g × $6/g = "
-            "$30,000/year = 0.03 M$/year. Even at this level, fuel cost is "
-            "negligible relative to capital amortization. Natural boron is "
-            "abundant; isotopic enrichment to 99.9% B-11 is the cost driver."
-        ),
-        "cost_basis": "noak",
     },
 ]
 
