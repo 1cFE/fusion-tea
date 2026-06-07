@@ -1,25 +1,3 @@
----
-ID: 29-negative-triangularity-tokamak
-Concept: Negative-Triangularity Tokamak
-Company: Firefly Fusion
-Status: draft
-Created: 2026-06-04
-Approved-Date:
-Confinement-Family: MFE
-Archetype: TOKAMAK
-Archetype-Fit: High
-Comparison-Status: costingfe
-Comparables:
-  - 01-hts-compact-tokamak
-  - 21-spherical-tokamak-hts
-  - 28-hts-tokamak-full-hts
-  - 33-state-backed-tokamak-best
-Design-Point-Name: MANTA NT Fusion Pilot Plant (Rutherford et al. 2024)
-Design-Point-Maturity: paper-concept
-P-Native: 90
-Grounding-Confidence: high
----
-
 ## Design Point
 
 - Name: MANTA NT Fusion Pilot Plant (Rutherford et al. 2024)

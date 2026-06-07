@@ -1,25 +1,3 @@
----
-ID: 29-negative-triangularity-tokamak
-Concept: Negative-Triangularity Tokamak
-Company: Firefly Fusion
-Status: draft
-Created: 2026-06-04
-Approved-Date:
-Confinement-Family: MFE
-Archetype: TOKAMAK
-Archetype-Fit: High
-Comparison-Status: costingfe
-Comparables:
-  - 01-hts-compact-tokamak
-  - 21-spherical-tokamak-hts
-  - 28-hts-tokamak-full-hts
-  - 33-state-backed-tokamak-best
-Design-Point-Name: MANTA NT Fusion Pilot Plant (Rutherford et al. 2024)
-Design-Point-Maturity: paper-concept
-P-Native: 90
-Grounding-Confidence: high
----
-
 ## Design Point
 
 - Name: MANTA NT Fusion Pilot Plant (Rutherford et al. 2024)
@@ -108,20 +86,16 @@ MANTA's P_SOL = 23.5 MW vs. 83 MW for ARC V1 (positive triangularity). The diver
 
 **Modeling Challenge:** Despite NT's physics advantage, the divertor still requires tungsten monoblock cassettes on CuCrZr heat sinks, remote replacement infrastructure, and scheduled downtime. MANTA assumes a $150M divertor capital cost. The replacement frequency is less critical than for PT tokamaks but still contributes to capacity factor limits (79% effective availability including thermal storage duty cycle and maintenance).
 
-### 5. Ohmic-Only Operation Feasibility — Field-Strength Conditional (Low-Medium Impact, High Uncertainty)
+### 5. Ohmic-Only Operation Feasibility (Low-Medium Impact, High Uncertainty)
 
-Ball et al. demonstrate that ohmic-only NT operation is viable above a field-strength threshold, but fails below it. At ITER parameters (B = 5.3 T), ohmic NT cannot match PT H-mode:
+Ball et al. demonstrate that high-Q NT tokamaks could eliminate auxiliary heating entirely:
 
-> "For ITER, we see that the NT scenario is unable to reach the same performance as the PT case. This is because the Ohmic power is too weak and the confinement too poor to attain the optimal H-mode on-axis temperature of T₀ = 6.4 keV."
-> — ball-balestri-ohmic-nt-paper.md, §Numerical results
+> "In the limit of devices that can ignite, there is clearly no need for any external heating systems... Both cases reach the same fusion power P_fus ≃ 1.0 GW. However, the Ohmic scenario has a fusion gain of Q ≃ 500, while the case heated with external power of P_ext = 40MW has Q ≃ 30."
+> — ball-balestri-ohmic-nt-paper.md, §Analytic results
 
-At SPARC-like fields (B = 12.2 T), the picture reverses sharply: ohmic NT achieves Q ≈ 80 versus Q ≈ 12 for PT H-mode with 11 MW external heating. The paper's general criterion: ohmic NT is "most attractive for design points with high fusion gain (Q ≳ 10), especially when achieved using a strong magnetic field (as opposed to large size)."
+If validated, this eliminates $370M of ICRF heating capital cost and tens of MW of recirculating power. However, MANTA's reference design retains 40 MW of ICRF heating, suggesting the community has not yet converged on ohmic-only as a baseline strategy.
 
-MANTA at B = 11 T falls within the favorable regime — Ball et al. treat it as a primary showcase, not a borderline case (Q ≈ 500 ohmic vs. Q ≈ 30 with 40 MW heating, both at P_fus ≈ 1.0 GW). The relevant uncertainty is not whether ohmic-only works in principle, but whether MANTA's parameters remain comfortably above the viability boundary given NT confinement scaling uncertainty. The threshold itself depends on H_NA = 2.0: if the confinement enhancement is lower, the ohmic drive becomes insufficient and MANTA approaches the transition. Ball et al. support H_NA = 2.0 from TCV NT data but acknowledge no reactor-scale validation exists.
-
-If validated, ohmic-only eliminates $370M of ICRF heating capital cost and tens of MW of recirculating power. MANTA retains 40 MW ICRF as a conservative fallback, not because ohmic-only is ruled out but because H_NA is undemonstrated at reactor parameters.
-
-**Modeling Challenge:** The question is not whether ohmic-only works in principle, but whether MANTA's 11 T field is reliably above the viability threshold under H_NA uncertainty. If H_NA = 2.0 holds, ohmic-only is clearly viable. If H_NA drops to ~1.5, the threshold may shift upward and auxiliary heating becomes necessary — the design reverts to $370M ICRF capex. This makes heating requirement a conditional output of confinement scaling, not an independent design variable.
+**Modeling Challenge:** Ohmic-only operation is attractive but unproven at reactor scale. If it works, LCOE drops significantly (higher Q, lower capex, lower opex). If it doesn't, the design defaults to MANTA's auxiliary-heated configuration. This is a binary fork in the design space.
 
 ### 6. Capacity Factor and Remote Maintenance (Medium Impact, Medium Uncertainty)
 
@@ -133,21 +107,6 @@ MANTA's environmental cycle is set by PF2 replacement every ~2 full-power years,
 The demountable TF coil design allows vertical access to PF coils and vacuum vessel, but the remote handling system is "very uncertain" per the study.
 
 **Modeling Challenge:** Capacity factor drives revenue and amortization. The 79% assumption is aggressive for a first-of-a-kind plant with undemonstrated remote handling at full neutron activation levels. Downside risk to 60-70% would increase LCOE proportionally.
-
-**Additional TEA Input (Schwartz et al. 2024):** On a 2050-era decarbonized US grid, seasonal maintenance scheduling can make plant value up to 15% higher than naive availability calculations suggest, by timing outages to spring–early summer when electricity prices are low. Fractional component replacement over multiple shorter maintenance blocks can outperform a single long annual outage even at lower total aggregate availability. MANTA's demountable TF coil design and modular FLiBe blanket are architecturally compatible with fractional-replacement strategies that amplify this benefit. Maintenance scheduling strategy should be carried as a sensitivity parameter in the TEA — the economic value of availability is non-linear with timing. (arxiv-2405-01514.md §Abstract)
-
-### 7. Vertical Position Control and Passive Stabilizer Plates (Low-Medium Impact, Medium Confidence)
-
-NT configurations are measurably less vertically stable than equivalent PT configurations at the same elongation, and this degradation worsens at higher poloidal beta — opposite to PT behavior:
-
-> "NT configurations are confirmed to be less vertically stable than equivalent PT configurations when coupled with a conformal wall. Additionally, NT vertical stability degrades at higher poloidal beta (unlike PT), and improvements in vertical stability that occur at low aspect ratio in PT do not translate to NT geometry."
-> — arxiv-2401-15217.md (Guizzo et al. 2024), Abstract
-
-Passive conducting plates are required to bring vertical instability growth rates to manageable levels. Optimally positioned outboard plates reduce growth rates to ~16% of their baseline value in highly elongated NT devices (Guizzo et al. 2024). A companion electromagnetic system design study (Guizzo et al. 2025, arXiv:2501.14682) finds that combined high-field-side and low-field-side passive plates reduce growth rates by ~75%. The NT geometry uniquely enables inboard passive plate placement not possible in PT, allowing spatial separation of vertical stability coils and passive stabilizers.
-
-These plates must be incorporated into the vacuum vessel and divertor assembly, adding fabrication complexity and a VV integration constraint not present in PT designs. MANTA's published design does not include a standalone cost estimate for passive stabilizer integration.
-
-**Modeling Challenge:** Cost increment for passive stabilizer plates is modest relative to the $3.4B overnight cost, but represents a genuine NT-specific engineering requirement absent from conventional PT tokamak baselines. The integration must be compatible with MANTA's liquid immersion FLiBe blanket tank surrounding the VV — an additional design constraint.
 
 ## 3. Maturity of Key Subsystems and Components
 
@@ -416,16 +375,7 @@ overrides:
       MANTA FLiBe blanket: 169 t × $169/kg = $28.6M (rounded from $28.561M).
       Library default uses solid breeder unit costs inappropriate for a liquid
       immersion blanket. This is material-only cost; fabrication/structure in
-      C220101.
-      Note on scaling: the library treats CAS27 as an effectively per-site
-      fixed cost, not power-proportional. The model output confirms this —
-      CAS27 stays at ~$28.9M at the 1 GWe fleet level, virtually unchanged
-      from the $28.6M native value (ratio ~1.01×). In reality each of the
-      ~11 fleet modules needs its own 169-tonne FLiBe tank, so the true
-      per-module fleet total would be ~$314M (~$28.6M × 11). The delta is
-      approximately $285M at 1 GWe (~$3/MWh). This is a known undercount in
-      the current 1costingFE framework; carry as a sensitivity item if fleet
-      FLiBe material cost tracking is important.
+      C220101. Class P account — library scales with total plant power.
 ```
 
 **Override Count Sanity Check:**
@@ -480,16 +430,16 @@ ARC V1: P_SOL ~ 83 MW (estimated from published P_fus = 525 MW, Sorbom 2015)
 
 **TEA Implication**: Lower P_SOL reduces divertor material stress, potentially extending component lifetime and reducing replacement frequency. MANTA's divertor capital cost is $150M — comparable to PT tokamaks despite lower heat load, suggesting the cost advantage is in operational lifetime, not upfront cost. **Cost effect: neutral to small advantage** (lower replacement frequency, but capital cost similar). **Magnitude uncertain** — replacement cycle not quantified in MANTA study.
 
-### vs. 01-hts-compact-tokamak (CFS ARC) — Auxiliary Heating: Field-Strength-Conditional Advantage
+### vs. 01-hts-compact-tokamak (CFS ARC) — Auxiliary Heating Uncertainty
 
-**Delta**: Ball et al. demonstrate a field-strength-conditional advantage for ohmic NT. At ITER-level fields (B ≈ 5.3 T), ohmic NT fails to match PT H-mode. At SPARC-level fields (B ≈ 12.2 T), ohmic NT achieves Q ≈ 80 vs. Q ≈ 12 for PT H-mode. MANTA at B = 11 T falls in the favorable regime:
+**Delta**: Ball et al. demonstrate that ohmic-only NT operation at MANTA parameters achieves Q = 500 vs. Q = 30 with 40 MW auxiliary heating:
 
 > "Both cases reach the same fusion power P_fus ≃ 1.0 GW. However, the Ohmic scenario has a fusion gain of Q ≃ 500, while the case heated with external power of P_ext = 40MW has Q ≃ 30."
 > — ball-balestri-ohmic-nt-paper.md §Numerical results
 
-The general viability criterion from Ball et al.: ohmic-only is "most attractive for design points with high fusion gain (Q ≳ 10), especially when achieved using a strong magnetic field." ARC uses 25-35 MW of ICRF heating per Sorbom 2015 — at B = 9.2 T, ARC is in an intermediate regime where ohmic NT has not been specifically analyzed.
+If validated, this eliminates $370M ICRF heating capital cost and tens of MW recirculating power. ARC uses 25-35 MW of ICRF heating per Sorbom 2015.
 
-**TEA Implication**: **Potential cost advantage of $370M capex + reduced opex** if ohmic-only is validated at MANTA's parameters. The advantage is not symmetric: it requires both MANTA's 11 T field to be above the viability threshold *and* NT confinement scaling (H_NA = 2.0) to hold at reactor parameters. If H_NA falls, the threshold shifts upward and MANTA may require auxiliary heating — the advantage disappears entirely. **Cost effect: large potential advantage (≈11% of overnight cost), but conditional on H_NA = 2.0 holding at reactor scale.**
+**TEA Implication**: **Potential cost advantage of $370M capex + reduced opex** if ohmic-only operation is validated. However, MANTA's reference design retains 40 MW ICRF, indicating the community has not converged on ohmic-only as baseline. **Cost effect: large potential advantage, but unvalidated.** Magnitude: ~11% of overnight cost ($370M / $3.4B) if heating eliminated.
 
 ### vs. 01-hts-compact-tokamak (CFS ARC) — Demountable TF Coils vs. Non-Demountable
 
@@ -524,24 +474,15 @@ The following subsystems are shared across all HTS tokamak concepts and provide 
 - Balance of plant (thermal cycle, turbine, heat rejection)
 - Remote handling and maintenance complexity (14 MeV neutron activation)
 
-### vs. All PT Comparables — Vertical Stability Penalty
-
-**Delta**: NT configurations are intrinsically less vertically stable than PT at the same elongation, and the instability worsens at higher poloidal beta — the reverse of PT behavior. All four comparables use PT plasma shaping; none require passive stabilizer plates specifically for vertical stability driven by negative triangularity.
-
-Guizzo et al. (2024, arXiv:2401.15217) quantify the degradation and show that optimally positioned outboard passive conducting plates reduce growth rates to ~16% of baseline. Guizzo et al. (2025, arXiv:2501.14682) confirm that HFS + LFS plates combined achieve ~75% growth rate reduction. Both studies treat this as a solved engineering problem requiring deliberate passive plate placement — not an intractable physics barrier — but the plates must be integrated into the VV structure, adding fabrication complexity and a design constraint not present in PT designs.
-
-**TEA Implication**: The cost increment for passive stabilizer plates is modest relative to the $3.4B overnight cost — the plates are structural elements, not major coil systems. The primary impact is fabrication complexity and VV assembly integration, which adds to the already-challenging V-4Cr-4Ti structure-plus-FLiBe-tank integration. **Cost effect: small penalty (passive plates required); cost increment modest but NT-specific and absent from PT comparable baselines.** Confidence: medium (Guizzo et al. analyses are specifically for NT pilot plant parameters).
-
 ### Summary: NT Tokamak Unique Deltas
 
 | Delta | Direction | Magnitude | Confidence |
 |-------|-----------|-----------|------------|
 | Divertor P_SOL reduction (3.6× vs. PT) | Advantage | Small to medium (longer component life, lower replacement frequency) | Medium |
-| Ohmic-only heating (field-strength-conditional) | Advantage | Large ($370M capex, reduced opex) — conditional on H_NA = 2.0 and B ≥ ~11 T threshold | Low-Medium |
-| NT confinement scaling (H_98y2 = 1.44) | Advantage or Penalty | Large (determines size, field, Q, and ohmic-only viability threshold) | Low (thin experimental database) |
+| Ohmic-only heating (if validated) | Advantage | Large ($370M capex, reduced opex) | Low (unvalidated at reactor scale) |
+| NT confinement scaling (H_98y2 = 1.44) | Advantage or Penalty | Large (determines size, field, Q) | Low (thin experimental database) |
 | ELM elimination (passive, no RMP coils) | Advantage | Small (<$50M capex for RMP coils avoided) | Medium |
-| Vertical stability (worse than PT at κ = 1.8) | Penalty | Small (passive plates required; modest cost increment relative to $3.4B overnight) | Medium |
-| Demountable TF coils | Penalty + potential advantage | Small (net ~$45M penalty, but faster maintenance) | Medium |
+| Demountable TF coils | Small penalty (joints) + potential advantage (availability) | Small (net ~$45M penalty, but faster maintenance) | Medium |
 | Conventional aspect ratio vs. spherical | Advantage (TBR, blanket space) + Penalty (size) | Medium (TBR = 1.15 vs. <1.05 for ST; but larger R0) | Medium |
 
 The **largest uncertainties** are confinement scaling and ohmic-only heating feasibility. If both validate, NT offers significant cost advantages over PT tokamaks. If either fails, NT falls back to a conventional HTS tokamak with slightly different plasma shaping.
@@ -573,23 +514,12 @@ The **largest uncertainties** are confinement scaling and ohmic-only heating fea
 7. **Fusion Energy Base Profile** — Firefly Fusion. Available at: https://www.fusionenergybase.com/organizations/firefly-fusion. Saved: knowledge/concept_research/29-negative-triangularity-tokamak/iter-01/sources/fusion-energy-base-profile.md (1 KB).
    - **Contribution**: Phased magnet strategy (copper for LUCIOLE prototype, HTS for commercial plants), location, founding date.
 
-### Tertiary Sources (Vertical Stability, Maintenance Economics)
-
-8. **Guizzo, S., Nelson, A.O., Hansen, C., Logak, F. (2024)** "Assessment of vertical stability for negative triangularity pilot plants." arXiv:2401.15217. Saved: knowledge/concept_research/29-negative-triangularity-tokamak/iter-04/sources/arxiv-2401-15217.md.
-   - **Contribution**: Quantification that NT configurations are less vertically stable than PT at the same elongation and that this degradation worsens at higher poloidal beta; passive conducting plates optimally placed outboard reduce vertical instability growth rates to ~16% of baseline in highly elongated NT devices.
-
-9. **Guizzo, S., Drabinskiy, M.A., Hansen, C. et al. (2025)** "Electromagnetic System Conceptual Design for a Negative Triangularity Tokamak." arXiv:2501.14682. Saved: knowledge/concept_research/29-negative-triangularity-tokamak/iter-04/sources/arxiv-2501-14682.md.
-   - **Contribution**: Electromagnetic system design confirming that combined HFS + LFS passive stabilizing plates reduce vertical instability growth rates by ~75%; assessment of mechanical loads on passive structures during current quench events; confirms passive stabilizer integration as required design element for NT tokamaks.
-
-10. **Schwartz, J.A., Ricks, W., Kolemen, E., Jenkins, J.D. (2024)** "Valuing maintenance strategies for fusion plants as part of a future electricity grid." arXiv:2405.01514. Saved: knowledge/concept_research/29-negative-triangularity-tokamak/iter-04/sources/arxiv-2405-01514.md.
-    - **Contribution**: Seasonal maintenance timing on a 2050-era decarbonized US grid (spring–early summer) can make plant value up to 15% higher than naive availability calculations; fractional component replacement over shorter blocks can outperform single long outages at lower total availability; directly applicable to MANTA's demountable modular architecture.
-
 ### Supporting Academic Literature (Not Directly Cited but Contextual)
 
-11. **Sorbom, B.N. et al. (2015)** "ARC: a compact, high-field, fusion nuclear science facility and demonstration power plant with demountable magnets." Fusion Engineering and Design, 100, pp. 378–405. doi:10.1016/j.fusengdes.2015.06.001.
+8. **Sorbom, B.N. et al. (2015)** "ARC: a compact, high-field, fusion nuclear science facility and demonstration power plant with demountable magnets." Fusion Engineering and Design, 100, pp. 378–405. doi:10.1016/j.fusengdes.2015.06.001.
    - **Context**: ARC design provides PT tokamak comparison baseline (R0 = 3.3 m, B0 = 9.2 T, P_fus = 525 MW, P_SOL ~ 83 MW).
 
-12. **Araiinejad, L.S. and Shirvan, K. (2025)** "Techno-economic analysis of deuterium-tritium magnetic confinement fusion power plants." Applied Energy, 401(Part B), 126567. doi:10.1016/j.apenergy.2025.126567.
+9. **Araiinejad, L.S. and Shirvan, K. (2025)** "Techno-economic analysis of deuterium-tritium magnetic confinement fusion power plants." Applied Energy, 401(Part B), 126567. doi:10.1016/j.apenergy.2025.126567.
    - **Context**: FLiBe cost projections ($154/kg NOAK with 20% learning rate), tokamak LCOE drivers (capacity factor, magnet cost, regulatory markup), HTS cost targets ($10/kA·m for commercial viability).
 
 ### Data Gaps and Unavailable Sources

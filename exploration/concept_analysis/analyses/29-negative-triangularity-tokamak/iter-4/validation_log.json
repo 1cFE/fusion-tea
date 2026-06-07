@@ -1,0 +1,29 @@
+[
+  {
+    "timestamp": "2026-06-07T20:07:49.033152+00:00",
+    "step": "feedback-pass",
+    "attempt": 1,
+    "validator": "validate_file_modified",
+    "passed": true,
+    "details": "File content changed",
+    "validated_text_preview": "---\nID: 29-negative-triangularity-tokamak\nConcept: Negative-Triangularity Tokamak\nCompany: Firefly Fusion\nStatus: draft\nCreated: 2026-06-04\nApproved-Date:\nConfinement-Family: MFE\nArchetype: TOKAMAK\nArchetype-Fit: High\nComparison-Status: costingfe\nComparables:\n  - 01-hts-compact-tokamak\n  - 21-spherical-tokamak-hts\n  - 28-hts-tokamak-full-hts\n  - 33-state-backed-tokamak-best\nDesign-Point-Name: MANTA NT Fusion Pilot Plant (Rutherford et al. 2024)\nDesign-Point-Maturity: paper-concept\nP-Native: 90\nG"
+  },
+  {
+    "timestamp": "2026-06-07T20:08:48.011987+00:00",
+    "step": "model-setup",
+    "attempt": 1,
+    "validator": "validate_python_syntax+validate_model_setup_contract_strict+validate_override_registry",
+    "passed": true,
+    "details": "All validators passed",
+    "validated_text_preview": "\"\"\"1costingfe model: Negative-Triangularity Tokamak (Firefly Fusion).\n\nUsage:\n    uv run python model_setup.py              # print results\n    uv run python model_setup.py | tee model_output.txt\n\"\"\"\nimport sys\nfrom pathlib import Path\n\n# Make the shared three-forward helper importable regardless of where this file\n# lives (concept dir or iter-N/ dir): walk up to the scripts/ root.\n_SCRIPTS = next(\n    p / \"scripts\"\n    for p in Path(__file__).resolve().parents\n    if (p / \"scripts\" / \"lib\" / \"m"
+  },
+  {
+    "timestamp": "2026-06-07T20:12:58.060585+00:00",
+    "step": "assess",
+    "attempt": 1,
+    "validator": "validate_feedback_verdict",
+    "passed": true,
+    "details": "Feedback format valid (verdict: FINDINGS)",
+    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: C220104 (auxiliary heating) suppressed despite direct MANTA cost figure\n- **Target:** Section 5b (Override Candidates)\n- **Category:** analysis\n- **Finding:** MANTA explicitly prices the 40 MW ICRF system at $370M (Table C1, same source table as the C220103 and C220108 overrides). The library computes $222.8M from p_input=40 \u2014 a $147M per-module gap. The analysis declines to override on the basis that ohmic-only operation might eliminate the heating system entirely, c"
+  }
+]

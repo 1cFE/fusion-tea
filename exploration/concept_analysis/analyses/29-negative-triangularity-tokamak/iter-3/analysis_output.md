@@ -1,25 +1,3 @@
----
-ID: 29-negative-triangularity-tokamak
-Concept: Negative-Triangularity Tokamak
-Company: Firefly Fusion
-Status: draft
-Created: 2026-06-04
-Approved-Date:
-Confinement-Family: MFE
-Archetype: TOKAMAK
-Archetype-Fit: High
-Comparison-Status: costingfe
-Comparables:
-  - 01-hts-compact-tokamak
-  - 21-spherical-tokamak-hts
-  - 28-hts-tokamak-full-hts
-  - 33-state-backed-tokamak-best
-Design-Point-Name: MANTA NT Fusion Pilot Plant (Rutherford et al. 2024)
-Design-Point-Maturity: paper-concept
-P-Native: 90
-Grounding-Confidence: high
----
-
 ## Design Point
 
 - Name: MANTA NT Fusion Pilot Plant (Rutherford et al. 2024)
@@ -416,16 +394,7 @@ overrides:
       MANTA FLiBe blanket: 169 t × $169/kg = $28.6M (rounded from $28.561M).
       Library default uses solid breeder unit costs inappropriate for a liquid
       immersion blanket. This is material-only cost; fabrication/structure in
-      C220101.
-      Note on scaling: the library treats CAS27 as an effectively per-site
-      fixed cost, not power-proportional. The model output confirms this —
-      CAS27 stays at ~$28.9M at the 1 GWe fleet level, virtually unchanged
-      from the $28.6M native value (ratio ~1.01×). In reality each of the
-      ~11 fleet modules needs its own 169-tonne FLiBe tank, so the true
-      per-module fleet total would be ~$314M (~$28.6M × 11). The delta is
-      approximately $285M at 1 GWe (~$3/MWh). This is a known undercount in
-      the current 1costingFE framework; carry as a sensitivity item if fleet
-      FLiBe material cost tracking is important.
+      C220101. Class P account — library scales with total plant power.
 ```
 
 **Override Count Sanity Check:**

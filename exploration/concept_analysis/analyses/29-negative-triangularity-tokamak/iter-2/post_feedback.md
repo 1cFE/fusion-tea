@@ -1,0 +1,8 @@
+VERDICT: FINDINGS
+
+### F-1: CAS27 FLiBe override uses a near-flat library account; fleet replication is absent
+- **Target:** model_setup.py overrides list (and Section 5b note on account choice)
+- **Category:** model
+- **Finding:** FLiBe blanket material ($28.6M per module, 169 t × $169/kg) is a per-module cost — each of the ~11 modules in the 1 GWe fleet carries its own blanket charge. CAS27 has near-flat library scaling: generic rises from $1.3M at native to $1.31M at fleet (a 1% change), so `_scale_overrides` produces a fleet CAS27 of $28.9M rather than the physically correct ~$315M (n_mod × $28.6M). The absolute undercount is ~$286M (~0.7% of overnight cost, <0.5 $/MWh on 495.6 $/MWh LCOE). The section comment correctly identifies CAS27 as a Class-P account per the schema table, but the library's near-flat implementation of CAS27 for this concept type means the Class-P rationale ("library scales with total plant power") does not hold in practice for this account — the fleet value barely moves.
+- **Recommendation:** Either (a) roll the FLiBe material cost into C220101 (blanket structure, Class-U, per-module), authored as an absolute override for the combined material + structure cost once a credible decomposition is available; or (b) author the CAS27 override as a relative multiplier `M * generic.costs.cas27` where M is scaled to capture per-module replication (~240× yields ~$315M fleet), with rationale anchored to the per-module FLiBe charge and the library's fleet default for this account. If neither fix is clean, add an explicit note in the rationale acknowledging that CAS27 fleet scaling is near-flat and the $286M fleet understatement is accepted as a known minor gap.
+- **Priority:** minor
