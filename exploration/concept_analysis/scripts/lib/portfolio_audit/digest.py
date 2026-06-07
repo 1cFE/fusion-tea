@@ -22,6 +22,8 @@ from __future__ import annotations
 
 import ast
 import re
+import sys
+from pathlib import Path
 
 from lib.paths import ANALYSES_DIR
 from lib.portfolio_audit.probe import CAS_COLUMNS
@@ -68,11 +70,9 @@ def _digest_entry(record: dict, manifest_state: dict) -> dict:
     output_path = concept_dir / "model_output.txt"
     setup_path = concept_dir / "model_setup.py"
 
-    parsed = _parse_model_output(
-        output_path.read_text(encoding="utf-8") if output_path.exists() else ""
-    )
+    parsed = _parse_model_output(_read_text(output_path) if output_path.exists() else "")
     overrides = (
-        _enabled_overrides_from_ast(setup_path.read_text(encoding="utf-8"))
+        _enabled_overrides_from_ast(_read_text(setup_path))
         if setup_path.exists()
         else []
     )
@@ -99,6 +99,27 @@ def _digest_entry(record: dict, manifest_state: dict) -> dict:
         "model_stale": manifest_state.get("model_stale", False),
         "import_status": manifest_state.get("import_status", ""),
     }
+
+
+def _read_text(path: Path) -> str:
+    """Read a concept artifact as text, tolerating non-UTF-8 bytes.
+
+    Some ``model_output.txt`` / ``model_setup.py`` files were generated on Windows
+    and saved as cp1252 (e.g. a 0x97 em-dash in a model warning line). A cohort
+    auditor must not abort the whole run on one mis-encoded file (FR-12: a garbled
+    artifact degrades to a recorded gap, never a crash). Well-formed files are read
+    strictly; only a decode failure falls back to byte-replacement, with a warning.
+    The digest only greps numbers out of these files, so a replaced byte in prose
+    is harmless to every value we extract.
+    """
+    try:
+        return path.read_text(encoding="utf-8")
+    except UnicodeDecodeError:
+        print(
+            f"  warn: {path} is not valid UTF-8 — reading with byte replacement",
+            file=sys.stderr,
+        )
+        return path.read_text(encoding="utf-8", errors="replace")
 
 
 def _parse_model_output(text: str) -> dict:

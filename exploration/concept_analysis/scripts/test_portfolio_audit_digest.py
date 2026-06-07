@@ -236,6 +236,32 @@ def test_digest_relative_override_value_is_none(tmp_path, monkeypatch):
 # ---------------------------------------------------------------------------
 
 
+def test_digest_tolerates_non_utf8_model_output(tmp_path, monkeypatch):
+    """A cp1252-encoded model_output.txt (Windows 0x97 em-dash) must not crash
+    the cohort run, and its numbers must still parse (regression: concept 13)."""
+    analyses = tmp_path / "analyses"
+    cdir = analyses / "cp1252-x"
+    cdir.mkdir(parents=True)
+    (cdir / "model_setup.py").write_text("x = 1\n", encoding="utf-8")
+    # A model warning line with a raw cp1252 em-dash byte (0x97 — an invalid
+    # UTF-8 start byte, exactly as in concept 13), then a real CAS table.
+    body = (
+        b"LCOE: 123.4 $/MWh   (1 GWe NOAK projection)\n"
+        b"Native LCOE = 130.0 $/MWh   (P_native, n_mod=1, overrides on)\n"
+        b"warning: recirculating fraction = 0.839 > 0.5 \x97 excessive parasitic power\n"
+        b"CAS22              100.0            200.0            300.0\n"
+    )
+    (cdir / "model_output.txt").write_bytes(body)
+    monkeypatch.setattr(manifest_mod, "ANALYSES_DIR", analyses)
+    monkeypatch.setattr(digest_mod, "ANALYSES_DIR", analyses)
+
+    m = build_manifest(["cp1252-x"], RUN_META)
+    d = build_digest([_synthetic_record("cp1252-x")], m)  # must not raise
+    entry = d["concepts"]["cp1252-x"]
+    assert entry["lcoe_1gw_usd_per_mwh"] == pytest.approx(123.4)
+    assert entry["cas_1gw"][2] == pytest.approx(300.0)  # CAS22 still parsed
+
+
 def test_digest_missing_output_is_gap_not_crash(tmp_path, monkeypatch):
     analyses = tmp_path / "analyses"
     _write_concept(analyses, "nooutput-x", setup_src="x = 1\n", output_txt=None)
