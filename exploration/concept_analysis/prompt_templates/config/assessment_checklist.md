@@ -28,6 +28,17 @@ most impactful gaps.
       `inflation_rate`) appears in `spec` or the registry.
 - [ ] The same override `account` appears in the analysis Section 5b YAML and the
       `model_setup.py` `overrides` list with the **same** `provenance` label.
+- [ ] Every enabled relative override is in the **modular-fleet frame**: its
+      `rationale` anchors to "the library's default for a 1 GWe fleet of this
+      device," not a "conventional / monolithic 1 GWe plant," and its value anchor
+      matches the account's cost class (Class-U CAS22 sub-account →
+      `generic.cas22_detail["C2201xx"]`; top-level Class-S/P →
+      `generic.costs.<rollup>`). Citing a monolithic plant as a literature
+      *comparable* is fine; using one as the override's *anchor baseline* is a
+      finding. **Do not read a scaling failure off the CAS22 sub-account detail
+      table** — it shows per-module M$ at every scale, so a `C2201xx` row identical
+      at native and 1 GWe is expected; Class-U fleet scaling appears in the
+      `C220000` / `CAS22` rollup, not the detail row.
 
 ## 3. Override Count vs. Archetype-Fit Grade
 - [ ] The count of `enabled` overrides is consistent with the concept's

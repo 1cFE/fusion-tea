@@ -41,6 +41,15 @@ account costs — enough to judge whether the dossier justifies an override.
 
 ## Override Candidate Discovery
 
+Before proposing any relative override, read the override-semantics policy below.
+It carries the single headline invariant (`account = M × the library's 1 GWe
+fleet cost for that account`), the S/U/P cost classes, and the modular-fleet
+rationale baseline. The model-setup agent that transcribes your Section 5b reads
+the same policy, so your override values and rationales must already be in this
+frame.
+
+{{@config/override_semantics.md}}
+
 {{@config/account_walkthrough.md}}
 
 ---
