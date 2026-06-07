@@ -130,9 +130,15 @@ P_native = ...     # MWe — copied from the analysis Design Point block
 # 2. Model.
 model = CostModel(concept=ConfinementConcept.{{costingfe_concept}}, fuel=Fuel.{{costingfe_fuel}})
 
-# 2b. Generic forward — overrides OFF, design-point scale (forward 1 of 3). The
-#     library's bare answer for a reactor this size, and the reference a relative
-#     override is written against. ALWAYS emit this line (it is mandatory, even
+# 2b. Generic forward — overrides OFF, design-point scale (forward 1 of 3).
+#     `generic` is the library's overrides-off forward at P_native. It is BOTH the
+#     writing frame for relative overrides AND the reference the framework rescales
+#     against at projection time (see `_scale_overrides` in
+#     1costingfe/src/costingfe/model.py). Under the headline invariant, a relative
+#     override lands on `M x (the library's 1 GWe fleet cost for that account)`
+#     regardless of class — the framework rescales your native-frame anchor to the
+#     fleet frame by the per-account ratio fleet_cost/native_cost, so you never
+#     compute that ratio yourself. ALWAYS emit this line (it is mandatory, even
 #     when no override references it).
 generic = generic_reference(model, spec, P_native)
 
@@ -141,10 +147,15 @@ overrides = [
     {"account": "C220103", "value": 6901.0, "enabled": True,
      "provenance": "derived", "source": "arc-reactor-specifications.md §6",
      "rationale": "156 t HTS x $44k/kg (2024 CPI) = $6,901M; library default misses HTS unit cost."},
-    # Relative example (references the mandatory `generic` line above):
-    #   {"account": "C220101", "value": 0.70 * generic.costs.cas21, "enabled": True,
-    #    "provenance": "derived", "source": "...", "rationale": "30% structure
-    #    cost reduction from modular fab vs library default; 0.70 x library CAS21."},
+    # Relative example (references the mandatory `generic` line above). The value
+    # anchors to the account's OWN storage location, and the rationale names the
+    # modular-fleet baseline (see the override-semantics policy in Rule 5):
+    #   {"account": "C220101", "value": 0.70 * generic.cas22_detail["C220101"],
+    #    "enabled": True, "provenance": "derived", "source": "...", "rationale":
+    #    "Modular fab cuts this concept's first-wall/blanket to 70% of the library's
+    #    per-module C220101 for a 1 GWe fleet of this device; the fleet then pays
+    #    0.70 x n_mod x that per-module cost. Baseline: the library's modular-fleet
+    #    default, NOT a conventional 1 GWe plant."},
     # ... one dict per Override Candidate; use overrides = [] if there are none.
 ]
 
@@ -266,14 +277,27 @@ print_cas_breakdown(generic, native, result_1gw, overrides)
    reference frame) or `result` (the removed two-forward name); the validator
    rejects all three.
 
-   **Two relative-override patterns are accepted**, each tied to where the
-   library actually stores the value:
+   **What a relative override means at the headline — read this before authoring
+   any `M * generic...` value.** The override-semantics policy below is the same
+   one the analysis agent reads; it carries the single invariant, the S/U/P cost
+   classes, and the modular-fleet rationale baseline.
+
+{{@config/override_semantics.md}}
+
+   **Two relative-override patterns are accepted — pick the one that matches your
+   account's storage shape** (the "authoring shape" column in the class table
+   above): a top-level rollup anchors to `generic.costs.<rollup>`; a CAS22
+   reactor-island sub-account anchors to its own `generic.cas22_detail` entry. The
+   value's anchor MUST match the account you are overriding — do not override a
+   sub-account while anchoring to a top-level rollup (the class/anchor mismatch the
+   policy calls out).
 
    ```python
-   # Top-level CAS rollup (CostResult attribute):
-   {"account": "C220101", "value": 0.70 * generic.costs.cas21, ...}
+   # Top-level CAS rollup (Class S or P) — anchor to generic.costs.<rollup>:
+   {"account": "CAS24", "value": 0.85 * generic.costs.cas24, ...}
 
-   # Per-account CAS22 sub-account (cas22_detail dict):
+   # CAS22 reactor-island sub-account C2201xx (Class U) — anchor to its OWN
+   # cas22_detail entry (per-module M$; the framework multiplies by n_mod):
    {"account": "C220103", "value": 0.85 * generic.cas22_detail["C220103"], ...}
    ```
 

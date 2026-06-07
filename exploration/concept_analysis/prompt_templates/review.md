@@ -50,6 +50,26 @@ comparables, two-knob projection correctness, risk framing, and data sufficiency
   Section 5b YAML and the `model_setup.py` `overrides` list?
 - Is the enabled-override count consistent with the archetype-fit grade band, and
   free of un-evidenced re-passes of library defaults?
+- **Rationale baseline frame:** Is every enabled relative override's `rationale`
+  written in the **modular-fleet frame** — anchored to "the library's default for
+  a 1 GWe fleet of this device" — and NOT against a "conventional / monolithic
+  1 GWe plant"? The 1 GWe headline is always the replicated fleet, so a monolithic
+  baseline does not exist. **Distinguish carefully:** an analyst citing a
+  monolithic plant from the literature as a *comparable* (ARC, STEP, a published
+  1 GWe study) is legitimate and not a finding; using a monolithic plant as the
+  override's *anchor baseline* (e.g. "5% of a conventional 1 GWe plant's
+  buildings") is the finding.
+- **Value↔class consistency:** Does each relative override's value anchor match the
+  account's cost class? A CAS22 reactor-island sub-account (Class U) anchors to
+  `generic.cas22_detail["C2201xx"]` (per-module M$); a top-level Class-S or
+  Class-P account anchors to `generic.costs.<rollup>` (whole-plant M$). A
+  sub-account valued against a top-level rollup — or vice-versa — is a value↔class
+  mismatch. **Do NOT infer a scaling failure from the CAS22 sub-account detail
+  table:** that table shows per-module M$ at every scale, so a `C2201xx` row reading
+  the same at native and 1 GWe is *expected* (the ×`n_mod` fleet multiplication
+  lands in the `C220000` / `CAS22` rollup, not the detail row). Only flag a Class-U
+  override as not reaching the fleet if the **`CAS22` rollup** fails to move by
+  roughly `Δ(per-module value) × n_mod`.
 
 ### 3. Family-Delta vs Fixed Comparables
 - Is the Section 7 family-delta prose specific and correct against the **fixed**

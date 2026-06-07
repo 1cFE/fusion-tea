@@ -12,6 +12,16 @@ to choose a family, a nearest neighbour, or a plant — it is to *articulate the
 delta* against the fixed comparables and to *extract and account for* the design
 point you are given.
 
+**The headline is the replicated 1 GWe fleet.** Every concept's comparable number
+is LCOE for a 1 GWe NOAK plant, reached by *replicating* the real `P_native`
+design point into a fleet of identical modules — never a monolithic 1000 MWe
+machine. Override values and rationales share that frame: a relative override
+means "`M` of the library's 1 GWe *fleet* cost for that account," and its
+rationale is anchored to the library's modular-fleet default, not a "conventional
+1 GWe plant." (The full semantics — the S/U/P cost classes and the single
+invariant — are in the override-semantics policy embedded in the override-
+discovery section of your prompt.)
+
 1. **Family-Delta Articulation**: Given the fixed comparables, what does this
    design point do differently, and how does that difference move cost? Name the
    specific subsystem, the direction of the cost effect (advantage / penalty /

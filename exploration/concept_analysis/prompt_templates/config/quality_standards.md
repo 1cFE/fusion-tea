@@ -15,6 +15,17 @@ the *specific* accounts where company data justifies departing from the library
   design point or the override registry. These are library-owned and identical
   across concepts by construction.
 
+## The Headline Is the Replicated 1 GWe Fleet
+Every concept's comparable number is LCOE for a 1 GWe NOAK plant, reached by
+*replicating* the real `P_native` design point into a fleet of identical modules
+(`run_native_and_1gw`, `noak=True`) — never a monolithic 1000 MWe machine.
+Override values and their rationales share that frame: a relative override means
+"`M` of the library's 1 GWe *fleet* cost for that account," and its rationale is
+anchored to the library's modular-fleet default, **not** a "conventional 1 GWe
+plant." (The full semantics — the S/U/P cost classes and the single invariant —
+are in the override-semantics policy embedded in the override-discovery section
+of your prompt.)
+
 ## Override Accountability (six fields, honest provenance)
 Every override candidate is a six-field registry entry: `account`, `value`,
 `enabled`, `provenance`, `source`, `rationale`.
