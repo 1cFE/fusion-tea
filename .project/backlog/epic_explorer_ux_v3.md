@@ -1,7 +1,7 @@
 # Epic: Explorer UX v3 — Provenance & Coherence
 
 **Epic ID**: EXPLORER-UX-V3
-**Status**: Draft
+**Status**: Active
 **Priority**: P1
 **Created**: 2026-06-06
 **Estimated Effort**: Phase 1 ~3–3.5 days (2 items); later phases TBD
@@ -220,15 +220,15 @@ Everything below hangs off this. It also answers the "two maps that overlap" wor
 
 #### Themed items (sequencing flexible; the spine underpins the rest)
 
-**Theme A — Identity & shared spine** *(cross-cutting prerequisite)*
-- **A1 — Canonical naming + visible concept code.** Choose one canonical display name per concept (reconcile the four-plus strings) and use it everywhere; surface the `#` as a clear, consistent handle on the matrix row, concept header, compare columns, and constellation nodes. *(Touches every page.)*
-- **A2 — Shared facet + color vocabulary.** One filter model over the ontology dimensions (family, fuel, magnet, driver, capture, blanket, op-mode, rep-rate, + fit-grade, has-cost-model), colored from `concept_ontology_v3.png`. Filter state is shared infrastructure both maps consume.
-- **A3 — Honest-caveat device** (generalizes research idea 6) — the first-class uncertainty marker, used identically across landing / concept / compare / constellation.
+**Theme A — Identity & shared spine** *(cross-cutting prerequisite)* — ✅ **DONE (2026-06-07)** — all three (A1+A2+A3) implemented on `feat/explorer-identity-spine`; **PR #58** (→ `main`). Spec/design/plan in `.project/active/explorer-identity-spine/`.
+- **A1 — Canonical naming + visible concept code.** ✅ Done. `resolve_identity()` (server) + `conceptLabel()` (JS) — one canonical `Name (Fuel)` + visible `#code`, used on every naming surface (matrix row, concept header, compare columns, constellation nodes).
+- **A2 — Shared facet + color vocabulary.** ✅ Done. `ontology_palette.js` exports `ontologyPalette` + `facetModel` (10 facets) + `filterState`, colored from `:root` tokens traceable to `concept_ontology_v3.png`; the single color authority both maps consume (B1 already does).
+- **A3 — Honest-caveat device** (generalizes research idea 6). ✅ Done. `caveatMarker()` — one uncertainty marker (low-grounding asterisk, archetype-fit None, "not recorded"), used identically across surfaces.
 
-**Theme B — Landing as the living ontology map**
-- **B1 — The living ontology matrix (centerpiece).** ✅ **DONE (2026-06-07)** — implemented on `feat/explorer-ontology-matrix` (off `feat/explorer-identity-spine`); spec/design/plan in `.project/active/explorer-ontology-matrix/`. Matrix is the new home (`/`), card grid relocated to `/pipeline`. All four interactions live, honest degradation throughout, rendered entirely through Theme A's authorities; no refetch. Rows = concepts grouped under the collapsible family tree; columns = ontology dimensions; cells = color-coded category chips (v3 palette). Interactions: **filter by clicking** a cell/chip (stack facets across columns); **re-group** rows under any column's categories (flip the organizing hierarchy live); **sort within group**; row → concept page; hover cell → value + source/caveat. Leftmost column carries the # + canonical name (A1). Dense — the whole field (~40 concepts × ~10 dimensions) on one screen, which the card grid can't do. Replaces the Approved/In-Progress pipeline split.
-- **B2 — Parallel-categories "flows" lens** *(optional secondary view toggle on the same page)*. Dimensions as axes, ribbons = concept flows, thickness = count. Answers "how do these attributes co-occur" (do all stellarators use HTS? do pulsed concepts cluster on certain drivers?). Tradeoff: individual concepts dissolve into ribbons — good for structure, bad for find-my-concept; hence secondary, not the default.
-- **B3 — Economics as ride-along.** LCOE / confidence appear as optional matrix columns to sort/color by — present and honest, never the organizing principle.
+**Theme B — Landing as the living ontology map** — **status: B1 ✅ done (PR #59); B2 ⬜ not started; B3 ⬜ not started.** B1 (the centerpiece) is the only Theme B item built; B2 and B3 are deferred Phase-2 follow-ups for which B1 deliberately left clean hooks (a second view-toggle slot for B2; a `project`/column extension point for B3).
+- **B1 — The living ontology matrix (centerpiece).** ✅ **DONE (2026-06-07)** — implemented on `feat/explorer-ontology-matrix` (off `feat/explorer-identity-spine`); **PR #59** (→ `main`, stacks on #58); spec/design/plan in `.project/active/explorer-ontology-matrix/`. Matrix is the new home (`/`), card grid relocated to `/pipeline`. All four interactions live (filter / re-group / sort / hover), honest degradation throughout, rendered entirely through Theme A's authorities; no refetch. Rows = concepts grouped under the collapsible family tree; columns = ontology dimensions; cells = color-coded category chips (v3 palette). Interactions: **filter by clicking** a cell/chip (stack facets across columns); **re-group** rows under any column's categories (flip the organizing hierarchy live); **sort within group**; row → concept page; hover cell → value + source/caveat. Leftmost column carries the # + canonical name (A1). Dense — the whole field (~40 concepts × ~10 dimensions) on one screen, which the card grid can't do. Replaces the Approved/In-Progress pipeline split.
+- **B2 — Parallel-categories "flows" lens** ⬜ **not started** *(optional secondary view toggle on the same page)*. Dimensions as axes, ribbons = concept flows, thickness = count. Answers "how do these attributes co-occur" (do all stellarators use HTS? do pulsed concepts cluster on certain drivers?). Tradeoff: individual concepts dissolve into ribbons — good for structure, bad for find-my-concept; hence secondary, not the default. *(B1 left a view-toggle slot in the controls bar for this.)*
+- **B3 — Economics as ride-along** ⬜ **not started**. LCOE / confidence appear as optional matrix columns to sort/color by — present and honest, never the organizing principle. *(Explicitly excluded from B1 per FR-B1.9; B1 left a column/sort extension point.)*
 
 **Theme C — Constellation as the cross-family comparison map**
 - **C1 — Rebrand + refocus the constellation page** around cross-family comparison discovery. Carry the shared filters (A2) so a filtered set on the matrix arrives here. Name TBD; decide the cost-as-faint-tint question (lean: tint acceptable, never cost-as-position).
@@ -314,8 +314,8 @@ Item 1 (Slider/Tornado/Headline Coherence)
 
 ---
 
-**Last Updated**: 2026-06-07 (**Theme B1 implemented** — the living ontology matrix is now the home page; see `.project/active/explorer-ontology-matrix/`. Theme A spine landed on `feat/explorer-identity-spine`)
-**Next Action**: **Theme A (shared spine)** is landed on `feat/explorer-identity-spine`; **Theme B1 (the living ontology matrix)** is implemented on `feat/explorer-ontology-matrix` (branched off A; neither merged to `main` yet — A must land first). Remaining: merge A → `main`, then B1 → `main`. Next Phase-2 candidates are **B2** (parallel-categories flows lens) and **B3** (economics as ride-along columns) — both left clean hooks by B1. Phase-1 loose end still open: **Item 2-FU** (re-extract concepts 37 & 39 once their `model_setup.py` bugs are fixed).
+**Last Updated**: 2026-06-07 (**Theme A + B1 built and PR'd** — the living ontology matrix is now the home page. Theme A spine: PR #58; B1 matrix: PR #59. See `.project/active/explorer-identity-spine/` and `.project/active/explorer-ontology-matrix/`)
+**Next Action**: Two PRs are open against `main` — **#58 (Theme A — shared spine)** and **#59 (Theme B1 — ontology matrix)**. #59 stacks on #58 (branched off it), so **merge #58 first, then #59** (once #58 lands, #59's diff collapses to just the B1 commit). After they land, next Phase-2 candidates are **B2** (parallel-categories flows lens) and **B3** (economics as ride-along columns) — both left clean hooks by B1; and Theme C (constellation) / Theme D (concept-page provenance). Phase-1 loose end still open: **Item 2-FU** (re-extract concepts 37 & 39 once their `model_setup.py` bugs are fixed).
 
 #### Item 2-FU: Re-extract 37 & 39 after concept-side model_setup.py fixes [blocked, trivial once unblocked]
 
