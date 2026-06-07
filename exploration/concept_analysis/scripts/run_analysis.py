@@ -1360,9 +1360,17 @@ def cmd_portfolio_audit(records: list[dict], args: argparse.Namespace) -> None:
         family=args.family,
         all_remaining=args.all_remaining,
     )
-    cohort = runner.resolve_audit_cohort(selected, passed_only=args.passed_only)
+    # Drop concepts on the explorer's omit list (not ready for cross-concept
+    # comparison) — report them rather than silently withholding.
+    kept, omitted = runner.partition_omitted(selected, runner.load_omit_list())
+    if omitted:
+        print(
+            f"  omitting {len(omitted)} concept(s) per omit_list.yaml: "
+            f"{', '.join(r['concept_id'] for r in omitted)}"
+        )
+    cohort = runner.resolve_audit_cohort(kept, passed_only=args.passed_only)
     if not cohort:
-        print("No concepts in cohort (after selection / --passed-only filter).")
+        print("No concepts in cohort (after omit list / selection / --passed-only filter).")
         return
 
     run_dir = runner.make_run_dir()

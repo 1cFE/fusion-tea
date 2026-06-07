@@ -84,6 +84,44 @@ def test_latest_verdict_reads_real_concept():
 
 
 # ---------------------------------------------------------------------------
+# Omit list (shared with the concept explorer)
+# ---------------------------------------------------------------------------
+
+
+def test_load_omit_list_reads_shared_yaml():
+    # The real explorer omit_list.yaml currently withholds these numeric prefixes.
+    omit = runner.load_omit_list()
+    assert {"26", "27", "34", "38"} <= omit
+
+
+def test_load_omit_list_missing_file_is_empty(tmp_path):
+    assert runner.load_omit_list(tmp_path / "nope.yaml") == set()
+
+
+def test_load_omit_list_coerces_numeric_keys(tmp_path):
+    f = tmp_path / "omit.yaml"
+    f.write_text('26: "reason"\n"34": "reason"\n', encoding="utf-8")
+    assert runner.load_omit_list(f) == {"26", "34"}  # int key coerced to str
+
+
+def test_partition_omitted_splits_by_concept_num():
+    records = [
+        {"concept_id": "26-laser-icf-indirect-drive", "concept_num": "26"},
+        {"concept_id": "01-hts-compact-tokamak", "concept_num": "01"},
+        {"concept_id": "27-polywell", "concept_num": "27"},
+    ]
+    kept, omitted = runner.partition_omitted(records, {"26", "27", "34", "38"})
+    assert [r["concept_num"] for r in kept] == ["01"]
+    assert {r["concept_num"] for r in omitted} == {"26", "27"}
+
+
+def test_partition_omitted_empty_omit_keeps_all():
+    records = [{"concept_id": "01-x", "concept_num": "01"}]
+    kept, omitted = runner.partition_omitted(records, set())
+    assert kept == records and omitted == []
+
+
+# ---------------------------------------------------------------------------
 # Run-folder timestamp collision
 # ---------------------------------------------------------------------------
 

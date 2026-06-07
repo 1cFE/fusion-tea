@@ -194,6 +194,12 @@ it writes nothing outside its run folder. It deliberately does **not** read
 `synthesis.md`, `review.md`, or `address_log.md` (those are downstream of assess
 and often stale).
 
+**Omit list.** Concepts on the shared explorer omit list
+(`exploration/concept_explorer/omit_list.yaml` — "not ready for cross-concept
+comparison") are excluded from the cohort and reported in the run output. That
+file is the single source of truth for both the explorer and this stage; no code
+change is needed to add or remove a concept.
+
 **Output** lands in a timestamped, immutable run folder:
 
 ```

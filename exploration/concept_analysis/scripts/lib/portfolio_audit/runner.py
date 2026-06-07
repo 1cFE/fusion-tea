@@ -26,6 +26,8 @@ import time
 from datetime import datetime
 from pathlib import Path
 
+import yaml
+
 from lib.claude import invoke_claude
 from lib.iteration import read_loop_state
 from lib.paths import ANALYSES_DIR, CONCEPT_ANALYSIS_DIR, TEMPLATES_DIR
@@ -40,6 +42,12 @@ from lib.templating import fill_template
 REVIEWS_DIR = CONCEPT_ANALYSIS_DIR / "reviews"
 LEAD_TEMPLATE = TEMPLATES_DIR / "portfolio_audit" / "lead.md"
 CRITERIA_PATH = TEMPLATES_DIR / "config" / "portfolio_audit_criteria.md"
+
+# The concept explorer's omit list is the single source of truth for concepts
+# "not ready for cross-concept comparison" — exactly what this stage does, so the
+# same concepts are excluded here. We read the shared YAML file directly rather
+# than importing the explorer (the core pipeline must not depend on the viewer).
+OMIT_LIST_PATH = CONCEPT_ANALYSIS_DIR.parent / "concept_explorer" / "omit_list.yaml"
 
 # Lead orchestration is long-running (it fans out investigators + writers).
 DEFAULT_TIMEOUT_S = 7200
@@ -72,11 +80,40 @@ def resolve_audit_cohort(records: list[dict], *, passed_only: bool = False) -> l
     """The audit cohort: ``records`` as given, or only PASS-verdict ones (FR-3).
 
     Concept *selection* (numeric/full-id/name/--all/--family) is the caller's job
-    via ``resolve_concepts``; this applies only the ``--passed-only`` filter.
+    via ``resolve_concepts``; this applies only the ``--passed-only`` filter. The
+    omit list is applied separately (see ``partition_omitted``) so the caller can
+    report what was withheld.
     """
     if not passed_only:
         return list(records)
     return [r for r in records if latest_verdict(r["concept_id"]) == "PASS"]
+
+
+def load_omit_list(path: Path | None = None) -> set[str]:
+    """Concept numeric-prefix IDs to exclude, from the explorer's omit_list.yaml.
+
+    Returns the set of keys (coerced to ``str`` — YAML parses ``26`` as an int);
+    they are numeric prefixes matched against each record's ``concept_num``.
+    Tolerant: a missing or empty file omits nothing. A malformed YAML file is left
+    to raise — that's an authoring bug worth failing loudly on.
+    """
+    omit_path = path or OMIT_LIST_PATH
+    if not omit_path.exists():
+        return set()
+    raw = yaml.safe_load(omit_path.read_text(encoding="utf-8"))
+    if not raw:
+        return set()
+    return {str(key) for key in raw}
+
+
+def partition_omitted(
+    records: list[dict], omit: set[str]
+) -> tuple[list[dict], list[dict]]:
+    """Split ``records`` into (kept, omitted) by ``concept_num`` membership in ``omit``."""
+    kept, omitted = [], []
+    for record in records:
+        (omitted if record.get("concept_num") in omit else kept).append(record)
+    return kept, omitted
 
 
 # ---------------------------------------------------------------------------
