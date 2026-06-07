@@ -853,13 +853,32 @@ def discover_concepts(
     return dirs
 
 
+def _short_error(exc: BaseException) -> str:
+    """One-line, type-agnostic summary of a failure for the run report.
+
+    Display only — the batch boundary never branches on the exception; this just
+    gives the end-of-run failure banner something human-readable. Returns
+    ``"<ExceptionType>: <first line of message>"``, truncated for tidiness.
+    """
+    text = (str(exc).strip() or repr(exc)).splitlines()
+    first_line = text[0] if text else repr(exc)
+    if len(first_line) > 200:
+        first_line = first_line[:197] + "..."
+    return f"{type(exc).__name__}: {first_line}"
+
+
 def run_extraction(
     analyses_dir: Path,
     data_dir: Path,
     concept_filter: list[str] | None = None,
     skip_narrative: bool = False,
-) -> None:
-    """Main extraction logic. Separated from CLI parsing for testability."""
+) -> int:
+    """Main extraction logic. Separated from CLI parsing for testability.
+
+    Returns the number of concepts that failed. A failure in one concept is
+    recorded and the run continues to the next (FR-1); the count lets the CLI
+    set a non-zero exit code without aborting the batch.
+    """
     if not analyses_dir.exists():
         raise ExtractionError(f"Analyses directory not found: {analyses_dir}")
 
@@ -868,105 +887,117 @@ def run_extraction(
     concept_dirs = discover_concepts(analyses_dir, concept_filter)
     if not concept_dirs:
         print("WARNING: no concept directories found", file=sys.stderr)
-        return
+        return 0
 
     extracted: list[ConceptData] = []
     skipped: list[tuple[str, str]] = []  # (concept_id, reason)
+    failed: list[tuple[str, str]] = []  # (concept_id, short_error)
 
     for concept_dir in concept_dirs:
         concept_id = parse_concept_id(concept_dir.name)
         print(f"Extracting {concept_id} ({concept_dir.name})...", flush=True)
 
-        analysis_path = concept_dir / "analysis.md"
-        model_setup_path = concept_dir / "model_setup.py"
-        frontmatter: dict[str, Any] = {}
-        if analysis_path.exists():
-            frontmatter = parse_frontmatter(analysis_path)
-        elif model_setup_path.exists():
-            # Old-shape concept (PR #39 refreshed model_setup.py but did not
-            # produce analysis.md). Extraction continues with defaults; the
-            # warning makes the degraded state visible to whoever ran extract.
-            warnings.warn(
-                f"{concept_id}: no analysis.md — fields defaulted to: "
-                f"Concept (dir name '{concept_dir.name}'), "
-                f"Confinement-Family (NONSTANDARD), "
-                f"Comparison-Status (''), P-Native (None). "
-                f"See rework epic Item 11 to regenerate.",
-                UserWarning,
-                stacklevel=2,
-            )
+        # Batch boundary (FR-1/FR-4): any failure in a single concept is recorded
+        # and the run continues. Intentionally error-agnostic — we do not branch
+        # on the exception's type or origin, only capture a short message for the
+        # end-of-run summary. The unit functions (extract_costingfe, etc.) keep
+        # raising their normal contracts; resilience lives only at this layer.
+        try:
+            analysis_path = concept_dir / "analysis.md"
+            model_setup_path = concept_dir / "model_setup.py"
+            frontmatter: dict[str, Any] = {}
+            if analysis_path.exists():
+                frontmatter = parse_frontmatter(analysis_path)
+            elif model_setup_path.exists():
+                # Old-shape concept (PR #39 refreshed model_setup.py but did not
+                # produce analysis.md). Extraction continues with defaults; the
+                # warning makes the degraded state visible to whoever ran extract.
+                warnings.warn(
+                    f"{concept_id}: no analysis.md — fields defaulted to: "
+                    f"Concept (dir name '{concept_dir.name}'), "
+                    f"Confinement-Family (NONSTANDARD), "
+                    f"Comparison-Status (''), P-Native (None). "
+                    f"See rework epic Item 11 to regenerate.",
+                    UserWarning,
+                    stacklevel=2,
+                )
 
-        comparison_status = str(frontmatter.get("Comparison-Status", "")).strip()
+            comparison_status = str(frontmatter.get("Comparison-Status", "")).strip()
 
-        # Bet 8: pending-design-point → skip with explicit message, no ConceptData
-        if comparison_status == "pending-design-point":
-            msg = (
-                f"  skipped {concept_id}: Comparison-Status=pending-design-point "
-                f"(Item 5 design-point row not yet present; concept omitted from explorer)"
-            )
-            print(msg)
-            skipped.append((concept_id, "pending-design-point"))
+            # Bet 8: pending-design-point → skip with explicit message, no ConceptData
+            if comparison_status == "pending-design-point":
+                msg = (
+                    f"  skipped {concept_id}: Comparison-Status=pending-design-point "
+                    f"(Item 5 design-point row not yet present; concept omitted from explorer)"
+                )
+                print(msg)
+                skipped.append((concept_id, "pending-design-point"))
+                continue
+
+            # NOTE: import-based detection logic parallels run_model() in
+            # scripts/lib/claude.py. If you change detection here, update there too.
+            if model_setup_path.exists():
+                source = model_setup_path.read_text(encoding="utf-8")
+                is_costingfe = "CostModel" in source and (
+                    "from costingfe" in source or "import costingfe" in source
+                )
+            else:
+                is_costingfe = False
+
+            # Bet 7: routing cross-check (only when frontmatter actually carries the field).
+            if comparison_status in {"costingfe", "costingfe-asterisked"} and not is_costingfe:
+                raise ExtractionError(
+                    f"{concept_id}: routing disagreement — Comparison-Status="
+                    f"{comparison_status!r} but model_setup.py is missing or not "
+                    "costingfe-shaped (no CostModel + costingfe import). Either the "
+                    "concept's model_setup.py is stale / wasn't regenerated, or the "
+                    "orchestrator routed it incorrectly."
+                )
+            if comparison_status == "freeform-deferred" and is_costingfe:
+                raise ExtractionError(
+                    f"{concept_id}: routing disagreement — Comparison-Status="
+                    "'freeform-deferred' but model_setup.py looks costingfe-shaped. "
+                    "Likely a stale costingfe model_setup.py from before the concept "
+                    "was deferred; remove or regenerate."
+                )
+
+            param_metadata = load_parameter_metadata(concept_dir, concept_id)
+
+            narrative: NarrativeData | None = None
+            if not skip_narrative and analysis_path.exists():
+                narrative = extract_narrative(concept_dir, concept_id)
+
+            if is_costingfe:
+                concept_data = extract_costingfe(
+                    concept_dir,
+                    concept_id,
+                    frontmatter,
+                    analysis_path,
+                    narrative,
+                    param_metadata,
+                    comparison_status=comparison_status,
+                )
+            else:
+                concept_data = extract_standalone(
+                    concept_dir, concept_id, frontmatter, analysis_path, narrative, param_metadata
+                )
+
+            out_path = data_dir / f"{concept_id}.json"
+            out_path.write_text(concept_data.model_dump_json(indent=2), encoding="utf-8")
+            print(f"  wrote {out_path}")
+
+            # Clear staleness sidecar if present (analysis pipeline creates these)
+            stale_marker = out_path.with_suffix(".json.stale")
+            if stale_marker.exists():
+                stale_marker.unlink()
+                print(f"  cleared stale marker: {stale_marker.name}")
+
+            extracted.append(concept_data)
+        except Exception as exc:  # noqa: BLE001 — batch boundary, see comment above
+            short = _short_error(exc)
+            failed.append((concept_id, short))
+            print(f"  FAILED {concept_id}: {short}", flush=True)
             continue
-
-        # NOTE: import-based detection logic parallels run_model() in
-        # scripts/lib/claude.py. If you change detection here, update there too.
-        if model_setup_path.exists():
-            source = model_setup_path.read_text(encoding="utf-8")
-            is_costingfe = "CostModel" in source and (
-                "from costingfe" in source or "import costingfe" in source
-            )
-        else:
-            is_costingfe = False
-
-        # Bet 7: routing cross-check (only when frontmatter actually carries the field).
-        if comparison_status in {"costingfe", "costingfe-asterisked"} and not is_costingfe:
-            raise ExtractionError(
-                f"{concept_id}: routing disagreement — Comparison-Status="
-                f"{comparison_status!r} but model_setup.py is missing or not "
-                "costingfe-shaped (no CostModel + costingfe import). Either the "
-                "concept's model_setup.py is stale / wasn't regenerated, or the "
-                "orchestrator routed it incorrectly."
-            )
-        if comparison_status == "freeform-deferred" and is_costingfe:
-            raise ExtractionError(
-                f"{concept_id}: routing disagreement — Comparison-Status="
-                "'freeform-deferred' but model_setup.py looks costingfe-shaped. "
-                "Likely a stale costingfe model_setup.py from before the concept "
-                "was deferred; remove or regenerate."
-            )
-
-        param_metadata = load_parameter_metadata(concept_dir, concept_id)
-
-        narrative: NarrativeData | None = None
-        if not skip_narrative and analysis_path.exists():
-            narrative = extract_narrative(concept_dir, concept_id)
-
-        if is_costingfe:
-            concept_data = extract_costingfe(
-                concept_dir,
-                concept_id,
-                frontmatter,
-                analysis_path,
-                narrative,
-                param_metadata,
-                comparison_status=comparison_status,
-            )
-        else:
-            concept_data = extract_standalone(
-                concept_dir, concept_id, frontmatter, analysis_path, narrative, param_metadata
-            )
-
-        out_path = data_dir / f"{concept_id}.json"
-        out_path.write_text(concept_data.model_dump_json(indent=2), encoding="utf-8")
-        print(f"  wrote {out_path}")
-
-        # Clear staleness sidecar if present (analysis pipeline creates these)
-        stale_marker = out_path.with_suffix(".json.stale")
-        if stale_marker.exists():
-            stale_marker.unlink()
-            print(f"  cleared stale marker: {stale_marker.name}")
-
-        extracted.append(concept_data)
 
     if skipped:
         print("", flush=True)
@@ -974,9 +1005,25 @@ def run_extraction(
         for cid, reason in skipped:
             print(f"  - {cid}: {reason}", flush=True)
 
+    if failed:
+        bar = "=" * 64
+        print("", flush=True)
+        print(bar, flush=True)
+        print(f"EXTRACTION FAILED — {len(failed)} concept(s) did NOT refresh:", flush=True)
+        print(bar, flush=True)
+        for cid, short in failed:
+            print(f"  {cid:<6} {short}", flush=True)
+        print(bar, flush=True)
+        print(
+            "Each concept above kept its previous data/ JSON (if any); it was NOT "
+            "regenerated this run. Fix the concept and re-run to refresh it.",
+            flush=True,
+        )
+
     if not extracted:
         print("WARNING: no concepts extracted", file=sys.stderr)
-        return
+
+    return len(failed)
 
 
 # ---------------------------------------------------------------------------
@@ -1001,8 +1048,12 @@ def main() -> None:
     )
     args = parser.parse_args()
 
+    # Per-concept failures are caught inside run_extraction (keep-going); the only
+    # ExtractionError that reaches here is a whole-run fatal (e.g. missing analyses
+    # dir). Those still abort. A keep-going run that had per-concept failures
+    # completes, then exits non-zero so a wrapper/CI sees the run as not clean.
     try:
-        run_extraction(
+        failures = run_extraction(
             analyses_dir=_ANALYSES_DIR,
             data_dir=_DATA_DIR,
             concept_filter=args.concept,
@@ -1010,6 +1061,9 @@ def main() -> None:
         )
     except ExtractionError as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
+        sys.exit(1)
+
+    if failures:
         sys.exit(1)
 
 
