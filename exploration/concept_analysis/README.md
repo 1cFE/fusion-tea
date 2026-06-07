@@ -167,9 +167,15 @@ reasons about the cohort as a whole.
 # Audit a cohort (same selection conventions as every other command)
 uv run python scripts/run_analysis.py portfolio-audit 01 07 21
 uv run python scripts/run_analysis.py portfolio-audit --all --passed-only
+uv run python scripts/run_analysis.py portfolio-audit --family MFE
 
 # Write the forensics (manifest, digest, rendered prompt) without spending tokens
 uv run python scripts/run_analysis.py portfolio-audit 01 --dry-run
+
+# Resume a run that timed out — only if the cohort is byte-identical to before
+# (otherwise it aborts naming what changed):
+uv run python scripts/run_analysis.py portfolio-audit --all --passed-only \
+    --inherit-from reviews/20260607-135133
 ```
 
 **How it works.** A Python runner does only the cheap deterministic prep — it
@@ -247,8 +253,15 @@ dispatch = {
 | `synthesize` | Editorial synthesis | yes | `synthesis.md` |
 | `approve` | Mark as approved | no | Frontmatter update |
 | `add-source` | Add PDF or URL source | no* | Extracted source in `iter-NN/sources/` |
+| `portfolio-audit` | Cross-concept cohort sanity check (orthogonal to the per-concept loop) | yes | `reviews/<ts>/` (manifest, digest, report, per-concept docs) |
 
 \* `add-source` calls `agentic-mbse extract`, not Claude directly.
+
+(`init-tables`, `regenerate-concept`, and `model-critic` are also in the dispatch
+table above; see `run_analysis.py --help` for their flags.)
+
+See [Portfolio Audit (cross-concept)](#portfolio-audit-cross-concept) above for
+how `portfolio-audit` works and its full output layout.
 
 ### Concept Selection
 
@@ -275,11 +288,17 @@ name/company substring. Ambiguous matches produce an error listing all hits.
 | `--force` | off | Re-run even if output exists; for `analyze`, clears all `iter-*/` dirs |
 | `--timeout` | 900 | Per-invocation timeout (seconds) |
 
+`portfolio-audit` overrides two of these defaults: `--model` is `opus` and
+`--timeout` is `7200` (the lead orchestration is long-running). It has no
+`--force` (every run is a new timestamped folder).
+
 **Stage-specific flags:**
 
 | Flag | Commands | Default | Description |
 |------|----------|---------|-------------|
 | `--max-passes` | `analyze` | 3 | Max iterations (1 = skip assessment entirely → `SINGLE_PASS` verdict) |
+| `--passed-only` | `portfolio-audit` | off | Restrict the cohort to concepts whose latest iter verdict is `PASS` |
+| `--inherit-from PATH` | `portfolio-audit` | — | Resume a prior run folder (all-or-nothing; aborts if any concept's artifacts changed) |
 | `--add-passes N` | `analyze` | — | Run N additional passes from each concept's current iteration (implies `--resume`; per-concept `max_passes` = current iter + N) |
 | `--feedback PATH` | `analyze` | — | Use file as `iter-N/pre_feedback.md` for next iter (requires existing `analysis.md`; implies `--resume`; runs full analyze→model_setup→assess) |
 | `--resume` | `analyze` | off | Continue from last iteration |
