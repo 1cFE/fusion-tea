@@ -13,6 +13,7 @@ The server:
 from __future__ import annotations
 
 import argparse
+import csv
 import dataclasses
 import importlib.util
 import inspect
@@ -42,11 +43,13 @@ from fastapi.staticfiles import StaticFiles  # noqa: E402
 from jinja2 import Environment, FileSystemLoader, TemplateNotFound  # noqa: E402
 
 from exploration.concept_explorer.models import (  # noqa: E402
+    FUEL_DISPLAY,
     ComputeRequest,
     ConceptData,
     ConceptManifest,
     CostModelData,
     ExplorerState,
+    FuelType,
     ParameterIndex,
     ParameterIndexEntry,
     build_manifest,
@@ -243,6 +246,128 @@ def get_state(request: Request) -> _State:
 
 
 # ---------------------------------------------------------------------------
+# Canonical identity resolution (A1) — the single identity authority
+# ---------------------------------------------------------------------------
+
+
+@dataclass(frozen=True)
+class Identity:
+    """Resolved canonical identity for one concept: code + Name (Fuel) + fuel."""
+
+    code: str
+    name: str
+    fuel: FuelType | None
+
+
+def _compose_name(base_name: str, fuel: FuelType | None) -> str:
+    """Return the canonical ``Name (Fuel)`` form.
+
+    * If *base_name* already ends with the structured fuel's display suffix
+      (the clean-CSV case for 35/36 served concepts), it is returned unchanged
+      — so this is idempotent and never double-suffixes.
+    * Otherwise, when *fuel* has a display form, the suffix is appended. This is
+      the Option-1 decision (2026-06-06): the one CSV row whose authored name
+      omits the suffix despite a *known* fuel (concept 35, "PoloMac Magnetic
+      Confinement", fuel D-D) gets ``(D-D)`` composed from the structured field.
+      The fuel is real registry data, so this composes — it never fabricates.
+    * When *fuel* is None or has no display form (FuelType.OTHER → ""), the bare
+      name is returned with no parenthetical — never ``(None)`` (FR-A1.5).
+    """
+    if fuel is None:
+        return base_name
+    disp = FUEL_DISPLAY.get(fuel, "")
+    if not disp:
+        return base_name
+    suffix = f"({disp})"
+    if base_name.rstrip().endswith(suffix):
+        return base_name
+    return f"{base_name} {suffix}"
+
+
+def resolve_identity(
+    concept_id: str,
+    registry: ConceptRegistry | None,
+    *,
+    served_name: str | None = None,
+) -> Identity:
+    """Resolve one concept's canonical identity — the single identity authority (A1).
+
+    Identity is sourced from the CSV-backed registry (``concept_registry.json``,
+    built by ``seed_registry`` from ``table.csv``). The canonical ``name`` is the
+    registry's ``Name (Fuel)``, composed from the structured fuel when the
+    authored name omits the suffix (see ``_compose_name``). ``code`` is the
+    ``concept_id`` verbatim, so letter-suffix variants (``17a``, ``20b``) carry
+    through unchanged.
+
+    A served concept absent from the registry degrades honestly: it returns its
+    stored *served_name* (or, lacking that, the bare code) with ``fuel=None``.
+    This function never raises and never returns a blank name (invariant).
+    """
+    tax = registry.by_id(concept_id) if registry is not None else None
+    if tax is not None:
+        return Identity(code=concept_id, name=_compose_name(tax.name, tax.fuel), fuel=tax.fuel)
+    return Identity(code=concept_id, name=served_name or concept_id, fuel=None)
+
+
+def _load_fit_grades(csv_path: Path) -> dict[str, str]:
+    """Read archetype-fit grades from ``tables/archetype_fit.csv`` (A3).
+
+    Returns ``{code: fit_grade}`` keyed by the short concept code (the CSV's
+    ``concept_id`` is the full slug ``01-hts-compact-tokamak``; the code is the
+    token before the first hyphen, matching ``seed_registry``'s ID parse and the
+    ``data/{code}.json`` convention, so suffix variants like ``17a`` carry
+    through). Non-fatal: a missing file yields ``{}`` (every concept then stamps
+    ``fit_grade=None`` — honest "not recorded", never a fabricated grade).
+    """
+    if not csv_path.exists():
+        return {}
+    grades: dict[str, str] = {}
+    with csv_path.open(newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            raw_id = (row.get("concept_id") or "").strip()
+            grade = (row.get("fit_grade") or "").strip()
+            if not raw_id or not grade:
+                continue
+            grades[raw_id.split("-", 1)[0]] = grade
+    return grades
+
+
+def _stamp_identity(
+    concepts: dict[str, ConceptData],
+    registry: ConceptRegistry | None,
+    fit_grades: dict[str, str] | None = None,
+) -> tuple[dict[str, ConceptData], ConceptManifest, ParameterIndex]:
+    """Overlay canonical identity + archetype-fit onto each served ConceptData
+    and rebuild the manifest + parameter index from the stamped concepts.
+
+    The display ``name`` becomes the CSV-backed canonical ``Name (Fuel)``; the
+    raw frontmatter phrasing is preserved on ``analyst_name``; the structured
+    ``fuel`` is stamped from the registry; ``fit_grade`` (A3) is stamped from
+    ``archetype_fit.csv``. Rebuilding the manifest and parameter index from the
+    *stamped* concepts means every derived surface (landing cards, compare
+    picker, cross-concept parameter index) carries the canonical name + fit
+    grade too — one resolution, everywhere. A concept absent from the fit table
+    gets ``fit_grade=None`` (honest "not recorded", never fabricated).
+    """
+    fit_grades = fit_grades or {}
+    stamped: dict[str, ConceptData] = {}
+    for cid, concept in concepts.items():
+        ident = resolve_identity(cid, registry, served_name=concept.name)
+        stamped[cid] = concept.model_copy(
+            update={
+                "analyst_name": concept.name,
+                "name": ident.name,
+                "fuel": ident.fuel,
+                "fit_grade": fit_grades.get(cid),
+            }
+        )
+    concept_list = list(stamped.values())
+    manifest = build_manifest(concept_list)
+    parameter_index = build_parameter_index(concept_list)
+    return stamped, manifest, parameter_index
+
+
+# ---------------------------------------------------------------------------
 # Data loading
 # ---------------------------------------------------------------------------
 
@@ -340,6 +465,21 @@ def _load_taxonomy(
     if omit_set:
         kept = [c for c in registry.concepts if c.concept_id not in omit_set]
         registry = registry.model_copy(update={"concepts": kept})
+
+    # Canonical-name overlay (A1): compose Name (Fuel) onto each registry concept
+    # *before* similarity reports and the constellation are derived from it, so
+    # every taxonomy-layer surface (taxonomy endpoint, similarity hover,
+    # constellation nodes) carries the same canonical name the explorer layer
+    # gets via `resolve_identity`. `_compose_name` is idempotent — concepts whose
+    # authored name already ends in the fuel suffix pass through unchanged.
+    registry = registry.model_copy(
+        update={
+            "concepts": [
+                c.model_copy(update={"name": _compose_name(c.name, c.fuel)})
+                for c in registry.concepts
+            ]
+        }
+    )
 
     decision_tree = json.loads(tree_path.read_text())
     if omit_set and "root" in decision_tree:
@@ -580,12 +720,22 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
     dist_dir = base_dir / "dist"
     templates_dir = base_dir / "templates"
     static_dir = base_dir / "static"
+    # Archetype-fit table lives in the sibling concept_analysis tree (A3).
+    fit_csv_path = base_dir.parent / "concept_analysis" / "tables" / "archetype_fit.csv"
 
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
         concepts, manifest, parameter_index = _load_data(data_dir)
         registry, decision_tree, similarity_reports, constellation = _load_taxonomy(
             data_dir
+        )
+        # Stamp canonical identity + archetype-fit onto the explorer-layer
+        # payloads and rebuild the manifest/parameter index from the stamped
+        # concepts (A1/A3). Runs after both loaders so the registry (identity
+        # source of truth) is available.
+        fit_grades = _load_fit_grades(fit_csv_path)
+        concepts, manifest, parameter_index = _stamp_identity(
+            concepts, registry, fit_grades
         )
         _render_templates(templates_dir, dist_dir, concepts)
 

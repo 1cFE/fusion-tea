@@ -105,6 +105,9 @@
       if (_registry[mfEntry.concept_id]) {
         _registry[mfEntry.concept_id].asterisk_in_comparison =
           !!mfEntry.asterisk_in_comparison;
+        // Carry archetype-fit grade too (A3) so TaxonomyCards / NeighborhoodGraph
+        // can render the honest-caveat marker without a per-concept fetch.
+        _registry[mfEntry.concept_id].fit_grade = mfEntry.fit_grade;
       }
     }
 

@@ -256,7 +256,7 @@ function _buildCard(options) {
       const link = document.createElement("a");
       link.className = "parameter-card__concept-link";
       link.href = `/concept/${entry.concept_id}`;
-      link.textContent = entry.name || entry.concept_id;
+      link.textContent = conceptLabel(entry).text;
 
       const elasticityEl = document.createElement("span");
       elasticityEl.className = "parameter-card__elasticity";

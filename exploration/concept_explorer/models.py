@@ -35,6 +35,20 @@ class FuelType(StrEnum):
     OTHER = "OTHER"
 
 
+# Display form for each fuel — the single authority for the `(Fuel)` parenthetical
+# in canonical concept names (A1, `resolve_identity`). These match the CSV's
+# authored `Fuel` column strings (see seed_registry.FUEL_MAP, the parse-direction
+# inverse). OTHER maps to "" so a fuel with no canonical display form yields a
+# bare name with no parenthetical — never `(OTHER)` or `(None)` (FR-A1.5).
+FUEL_DISPLAY: dict[FuelType, str] = {
+    FuelType.DT: "D-T",
+    FuelType.DD: "D-D",
+    FuelType.DHE3: "D-He3",
+    FuelType.PB11: "p-B11",
+    FuelType.OTHER: "",
+}
+
+
 class ModelType(StrEnum):
     COSTINGFE = "costingfe"  # Backed by 1costingfe CostModel.forward()
     STANDALONE = "standalone"  # Custom to_explorer_dict() only
@@ -383,10 +397,23 @@ class OverrideRecord(BaseModel):
 class ConceptData(BaseModel):
     """Complete data payload for a single fusion concept."""
 
-    concept_id: str  # e.g. "04"
+    concept_id: str  # e.g. "04" — also serves as the visible concept code (#NN)
+    # Canonical display name. The raw `name` persisted in data/NN.json is the
+    # analyst frontmatter phrasing (the *company* form, e.g. "HTS Compact Tokamak
+    # (Commonwealth Fusion / ARC)") — NOT the display name. At server load it is
+    # overwritten in memory by `resolve_identity` with the CSV-backed canonical
+    # "Name (Fuel)" (A1); the raw phrasing is retained on `analyst_name` below.
     name: str
     confinement_family: ConfinementFamily
     company: str | None = None
+    # --- Canonical identity overlay (A1) — stamped at server load, absent on disk ---
+    # The original frontmatter `name` (analyst/company phrasing), preserved so any
+    # page that wants the analyst's words still has them. None until stamped.
+    analyst_name: str | None = None
+    # Structured fuel from the CSV-backed registry; part of canonical identity.
+    # None only when a served concept is absent from the registry (honest
+    # degradation — `resolve_identity` never fabricates a fuel).
+    fuel: FuelType | None = None
     status: ConceptStatus
     illustration: str | None = None  # Filename under static/images/concepts/
     has_cost_model: bool
@@ -409,6 +436,13 @@ class ConceptData(BaseModel):
     # (Comparison-Status, set on Grounding-Confidence: low). Render-side
     # signal for the comparison view's asterisk badge.
     asterisk_in_comparison: bool = False
+    # Archetype-fit grade from tables/archetype_fit.csv, stamped at server load
+    # (A3). One of "High"/"Med"/"Low"/"None" — where the *string* "None" is a
+    # RECORDED grade (no costing-library archetype matches) and is distinct from
+    # the field being absent (Python None = not recorded). Drives the honest
+    # caveat marker (FR-A3.2). Absent on disk; None until stamped / when the
+    # concept has no fit row.
+    fit_grade: str | None = None
 
     @model_validator(mode="after")
     def _warn_on_uncovered_sensitivity_keys(self) -> ConceptData:
@@ -454,6 +488,10 @@ class ConceptManifestEntry(BaseModel):
     lcoe_per_mwh: float | None = None
     confidence: Confidence | None = None
     asterisk_in_comparison: bool = False
+    # Archetype-fit grade (A3) — carried on the lightweight manifest so landing
+    # cards and the compare picker can render the caveat without a per-concept
+    # fetch. Same semantics as ConceptData.fit_grade (string "None" = recorded).
+    fit_grade: str | None = None
     data_file: str  # Path to the per-concept JSON under data/, e.g. "data/04.json"
 
 
@@ -584,6 +622,7 @@ def build_manifest(concepts: list[ConceptData]) -> ConceptManifest:
                 lcoe_per_mwh=lcoe,
                 confidence=confidence,
                 asterisk_in_comparison=concept.asterisk_in_comparison,
+                fit_grade=concept.fit_grade,
                 data_file=f"data/{concept.concept_id}.json",
             )
         )

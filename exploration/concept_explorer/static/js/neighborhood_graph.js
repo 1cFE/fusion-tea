@@ -26,12 +26,8 @@ var NeighborhoodGraph = (function () {
   // Constants
   // ---------------------------------------------------------------------------
 
-  var FAMILY_COLORS = {
-    MFE: "#3b82f6",
-    IFE: "#a855f7",
-    MIF: "#f59e0b",
-    NONSTANDARD: "#6b7280"
-  };
+  // Family colors from the one authority (ontology_palette.js → CSS :root).
+  var FAMILY_COLORS = ontologyPalette.family;
 
   var FAMILY_LABELS = {
     MFE: "Magnetic (MFE)",
@@ -122,10 +118,13 @@ var NeighborhoodGraph = (function () {
   }
 
   function lowGroundingMarkup(concept) {
-    if (!concept || !concept.asterisk_in_comparison) return "";
-    return ' <span class="low-grounding-marker" title="Low grounding: design-point' +
-      ' rests on company-stated or single-source numbers — interpret with caution."' +
-      ' aria-label="Low-grounding design point">⚠</span>';
+    if (!concept) return "";
+    // Delegate to the one honest-caveat device (A3); HTML-string form for the
+    // innerHTML tooltip sink. Covers low-grounding asterisk + archetype-fit None.
+    return caveatMarker({
+      asterisk: concept.asterisk_in_comparison,
+      fitGrade: concept.fit_grade,
+    }).html();
   }
 
   function tooltipCenter(concept) {

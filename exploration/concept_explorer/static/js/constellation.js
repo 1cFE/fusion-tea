@@ -20,12 +20,8 @@ var Constellation = (function () {
   var _lastClickId = null;
   var DBLCLICK_DELAY = 300;
 
-  var FAMILY_COLORS = {
-    MFE: "#3b82f6",
-    IFE: "#a855f7",
-    MIF: "#f59e0b",
-    NONSTANDARD: "#6b7280"
-  };
+  // Family colors from the one authority (ontology_palette.js → CSS :root).
+  var FAMILY_COLORS = ontologyPalette.family;
 
   var FAMILY_LABELS = {
     MFE: "Magnetic (MFE)",
@@ -60,13 +56,13 @@ var Constellation = (function () {
       traces.push({
         x: pts.map(function (p) { return p.x; }),
         y: pts.map(function (p) { return p.y; }),
-        text: pts.map(function (p) { return p.name; }),
+        text: pts.map(function (p) { return conceptLabel(p).text; }),
         customdata: pts.map(function (p) { return p.concept_id; }),
         mode: "markers",
         type: "scatter",
         name: FAMILY_LABELS[fam] || fam,
         marker: {
-          color: FAMILY_COLORS[fam] || "#6b7280",
+          color: FAMILY_COLORS[fam] || FAMILY_COLORS.NONSTANDARD,
           size: 10,
           opacity: 0.85,
           line: { width: 1, color: "rgba(255,255,255,0.2)" }

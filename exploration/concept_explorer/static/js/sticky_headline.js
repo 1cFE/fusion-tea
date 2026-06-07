@@ -75,9 +75,13 @@
     container.innerHTML = "";
     container.classList.add("sticky-headline");
 
-    // --- Identity (name + badge + company) ---
+    // --- Identity (#code + name + badge + company) ---
+    const lbl = conceptLabel(concept);
     const crumb = _el("div", "sticky-headline__crumb");
-    crumb.appendChild(_el("span", "sticky-headline__crumb-name", concept.name));
+    const crumbName = _el("span", "sticky-headline__crumb-name");
+    crumbName.appendChild(lbl.codeChip());
+    crumbName.appendChild(document.createTextNode(" " + lbl.name));
+    crumb.appendChild(crumbName);
 
     const familyKey = _familyKey(concept.confinement_family);
     if (familyKey) {
