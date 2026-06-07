@@ -31,6 +31,7 @@ from exploration.concept_explorer.taxonomy_models import (
     PrimaryHeating,
     TaxonomyConfidence,
     TokamakShape,
+    prune_decision_tree,
 )
 from exploration.concept_explorer.seed_registry import tree_group
 
@@ -445,3 +446,88 @@ def test_heating_combination_parses():
     assert "ICRH" in atoms
     assert "NBI" in atoms
     assert "ECRH" in atoms
+
+
+# ---------------------------------------------------------------------------
+# prune_decision_tree (omit list enforcement) — FR-5, I-3, I-5
+# ---------------------------------------------------------------------------
+
+
+class TestPruneDecisionTree:
+    """Pure decision-tree pruning: strip omitted IDs, drop emptied branches."""
+
+    def test_drops_emptied_branch_keeps_siblings(self) -> None:
+        """An omitted-only leaf is dropped; a sibling keeps its other concepts."""
+        tree = {
+            "field": "f",
+            "children": [
+                {"value": "A", "concepts": ["27"]},  # becomes empty -> dropped
+                {"value": "B", "concepts": ["05", "27"]},  # keeps "05"
+            ],
+        }
+        out = prune_decision_tree(tree, {"27"})
+
+        vals = [c["value"] for c in out["children"]]
+        assert vals == ["B"]
+        assert out["children"][0]["concepts"] == ["05"]
+
+    def test_does_not_mutate_input(self) -> None:
+        """Pure function: the original tree dict is left untouched."""
+        tree = {"field": "f", "children": [{"value": "A", "concepts": ["05", "27"]}]}
+        prune_decision_tree(tree, {"27"})
+        assert tree["children"][0]["concepts"] == ["05", "27"]
+
+    def test_nested_branch_collapses_when_all_descendants_emptied(self) -> None:
+        """An internal node whose every descendant leaf empties is itself dropped."""
+        tree = {
+            "field": "root",
+            "children": [
+                {
+                    "value": "Branch",
+                    "field": "sub",
+                    "children": [
+                        {"value": "Leaf1", "concepts": ["27"]},
+                        {"value": "Leaf2", "concepts": ["34"]},
+                    ],
+                },
+                {"value": "Keep", "concepts": ["05"]},
+            ],
+        }
+        out = prune_decision_tree(tree, {"27", "34"})
+
+        assert [c["value"] for c in out["children"]] == ["Keep"]
+
+    def test_nested_branch_survives_with_one_remaining_concept(self) -> None:
+        """An internal node survives if any descendant leaf retains a concept."""
+        tree = {
+            "field": "root",
+            "children": [
+                {
+                    "value": "Branch",
+                    "field": "sub",
+                    "children": [
+                        {"value": "Leaf1", "concepts": ["27"]},  # dropped
+                        {"value": "Leaf2", "concepts": ["09"]},  # survives
+                    ],
+                },
+            ],
+        }
+        out = prune_decision_tree(tree, {"27"})
+
+        assert [c["value"] for c in out["children"]] == ["Branch"]
+        kept_leaves = [c["value"] for c in out["children"][0]["children"]]
+        assert kept_leaves == ["Leaf2"]
+
+    def test_empty_omit_set_is_structural_noop(self) -> None:
+        """An empty omit set removes nothing and drops no branch."""
+        tree = {
+            "field": "f",
+            "children": [
+                {"value": "A", "concepts": ["05"]},
+                {"value": "B", "concepts": ["09"]},
+            ],
+        }
+        out = prune_decision_tree(tree, set())
+
+        assert [c["value"] for c in out["children"]] == ["A", "B"]
+        assert out["children"][0]["concepts"] == ["05"]

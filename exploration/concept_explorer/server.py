@@ -51,6 +51,7 @@ from exploration.concept_explorer.models import (  # noqa: E402
     ParameterIndexEntry,
     build_manifest,
     build_parameter_index,
+    load_omit_list,
 )
 from exploration.concept_explorer.similarity import (  # noqa: E402
     ConceptSimilarityReport,
@@ -65,6 +66,7 @@ from exploration.concept_explorer.similarity import (  # noqa: E402
 from exploration.concept_explorer.taxonomy_models import (  # noqa: E402
     ConceptRegistry,
     ConceptTaxonomy,
+    prune_decision_tree,
 )
 
 BASE_DIR = Path(__file__).parent
@@ -199,6 +201,7 @@ def get_state(request: Request) -> _State:
 
 def _load_data(
     data_dir: Path,
+    omitted: set[str] | None = None,
 ) -> tuple[dict[str, ConceptData], ConceptManifest, ParameterIndex]:
     """Load all data files from *data_dir*.
 
@@ -209,12 +212,22 @@ def _load_data(
     per-concept JSONs. The names ``manifest.json`` / ``parameter_index.json``
     remain in ``_NON_CONCEPT_FILES`` so any stale files left on disk from
     earlier extractions don't get globbed as concept data.
+
+    *omitted* is the omit-list set (FR-4); concept files whose stem (the concept
+    ID, by the ``data/{id}.json`` convention) is in it are dropped before
+    validation, so omitted concepts never enter the loaded set — and therefore
+    never reach the manifest or parameter index, which are derived from it (I-4).
+    The on-disk files are read-filtered only, never modified (I-6). ``None``
+    defaults to the shipped omit list so the server enforces it independently of
+    the extractor (FR-6); tests pass an explicit set for isolation.
     """
     if not data_dir.is_dir():
         raise RuntimeError(
             f"data/ directory not found at {data_dir}. "
             "Run extract_explorer_data.py to populate it before starting the server."
         )
+
+    omit_set = load_omit_list() if omitted is None else omitted
 
     _NON_CONCEPT_FILES = {
         "manifest.json", "parameter_index.json",
@@ -223,7 +236,7 @@ def _load_data(
     concept_files = [
         f
         for f in data_dir.glob("*.json")
-        if f.name not in _NON_CONCEPT_FILES
+        if f.name not in _NON_CONCEPT_FILES and f.stem not in omit_set
     ]
     if not concept_files:
         raise RuntimeError(
@@ -247,6 +260,7 @@ def _load_data(
 
 def _load_taxonomy(
     data_dir: Path,
+    omitted: set[str] | None = None,
 ) -> tuple[
     ConceptRegistry | None,
     dict | None,
@@ -257,6 +271,14 @@ def _load_taxonomy(
 
     Non-fatal: if taxonomy files don't exist, returns all None/empty.
     Taxonomy is an additive feature — the server works without it.
+
+    *omitted* is the omit-list set (FR-5). Filtering ``registry.concepts`` once,
+    before similarity/constellation are computed from it, removes omitted concepts
+    from the registry, similarity reports, and constellation in a single place
+    (I-5); the decision tree is a separate dict, pruned independently. ``None``
+    defaults to the shipped omit list so the server enforces it independently of
+    the extractor (FR-6); tests pass an explicit set for isolation. The on-disk
+    taxonomy JSON is read-filtered only, never modified (I-6).
     """
     registry_path = data_dir / "concept_registry.json"
     tree_path = data_dir / "decision_tree.json"
@@ -264,8 +286,17 @@ def _load_taxonomy(
     if not registry_path.exists() or not tree_path.exists():
         return None, None, {}, None
 
+    omit_set = load_omit_list() if omitted is None else omitted
+
     registry = ConceptRegistry.model_validate_json(registry_path.read_text())
+    if omit_set:
+        kept = [c for c in registry.concepts if c.concept_id not in omit_set]
+        registry = registry.model_copy(update={"concepts": kept})
+
     decision_tree = json.loads(tree_path.read_text())
+    if omit_set and "root" in decision_tree:
+        pruned_root = prune_decision_tree(decision_tree["root"], omit_set)
+        decision_tree = {**decision_tree, "root": pruned_root}
 
     # Precompute similarity reports for all concepts
     similarity_reports: dict[str, ConceptSimilarityReport] = {}

@@ -375,3 +375,51 @@ def test_load_data_ignores_stale_manifest_files(tmp_path: Path) -> None:
 
     assert set(concepts.keys()) == {"01"}
     assert len(manifest.concepts) == 1
+
+
+# ---------------------------------------------------------------------------
+# Omit list enforcement (Consumer #2A: server concept load) — FR-4, I-4, I-6
+# ---------------------------------------------------------------------------
+
+
+def test_load_data_excludes_omitted(tmp_path: Path) -> None:
+    """FR-4: an omitted ID is absent from the loaded concepts, manifest, and
+    parameter index, while a non-omitted concept remains."""
+    data_dir = tmp_path / "data"
+    data_dir.mkdir()
+    (data_dir / "05.json").write_text(_concept_with_sensitivities("05").model_dump_json())
+    (data_dir / "27.json").write_text(_concept_with_sensitivities("27").model_dump_json())
+
+    concepts, manifest, param_index = _load_data(data_dir, omitted={"27"})
+
+    assert "27" not in concepts
+    assert "05" in concepts
+    # I-4: derivations follow from the filtered list, no separate filter needed
+    assert all(c.concept_id != "27" for c in manifest.concepts)
+    for entry in param_index.parameters.values():
+        assert all(c.concept_id != "27" for c in entry.concepts)
+
+
+def test_load_data_omitted_file_left_on_disk(tmp_path: Path) -> None:
+    """I-6: the omitted concept's on-disk file is read-filtered, never deleted."""
+    data_dir = tmp_path / "data"
+    data_dir.mkdir()
+    (data_dir / "05.json").write_text(_concept_with_sensitivities("05").model_dump_json())
+    omitted_file = data_dir / "27.json"
+    omitted_file.write_text(_concept_with_sensitivities("27").model_dump_json())
+
+    _load_data(data_dir, omitted={"27"})
+
+    assert omitted_file.exists()
+
+
+def test_load_data_empty_omit_keeps_all(tmp_path: Path) -> None:
+    """FR-8: an empty omit set yields today's behavior — nothing excluded."""
+    data_dir = tmp_path / "data"
+    data_dir.mkdir()
+    (data_dir / "05.json").write_text(_concept_with_sensitivities("05").model_dump_json())
+    (data_dir / "27.json").write_text(_concept_with_sensitivities("27").model_dump_json())
+
+    concepts, _, _ = _load_data(data_dir, omitted=set())
+
+    assert set(concepts.keys()) == {"05", "27"}
