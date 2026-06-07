@@ -434,16 +434,26 @@ def _run_cold_start(
     )
     elapsed = time.time() - ctx.start_time
 
-    if result.invoke.returncode != 0:
-        print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
-        print(f"    stderr: {result.invoke.stderr[:500]}", file=sys.stderr)
-        analysis_path.unlink(missing_ok=True)
-        return False
-
+    # File-on-disk wins over process state: if validate_non_empty passed
+    # against body_path, honor the file even when the subprocess was killed
+    # at the timeout (rc=-1). See model-setup-feedback-timeout TICKET,
+    # Defect A — same shape across all five runners.
     if not result.validation_passed:
+        if result.invoke.returncode != 0:
+            print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
+            print(f"    stderr: {result.invoke.stderr[:500]}", file=sys.stderr)
+            analysis_path.unlink(missing_ok=True)
+            return False
         print(f" FAILED ({elapsed:.0f}s) — body validation exhausted")
         analysis_path.unlink(missing_ok=True)
         return False
+
+    if result.invoke.returncode != 0:
+        print(
+            f"  warn: cold-start rc={result.invoke.returncode} but body "
+            f"validated on disk — honoring the file",
+            file=sys.stderr,
+        )
 
     # Assemble: read back frontmatter (orchestrator-owned fields are written
     # once at init and not analyzer-editable — design.md Invariant #3) + body
@@ -514,14 +524,24 @@ def _run_feedback_pass(
     )
     elapsed = time.time() - ctx.start_time
 
-    if result.invoke.returncode != 0:
-        print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
-        print(f"    stderr: {result.invoke.stderr[:500]}", file=sys.stderr)
-        return False
-
+    # File-on-disk wins over process state: if make_file_modified_validator
+    # passed (analysis.md SHA-256 changed), honor the file even when the
+    # subprocess was killed at the timeout (rc=-1). See
+    # model-setup-feedback-timeout TICKET, Defect A.
     if not result.validation_passed:
+        if result.invoke.returncode != 0:
+            print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
+            print(f"    stderr: {result.invoke.stderr[:500]}", file=sys.stderr)
+            return False
         print(f" WARN ({elapsed:.0f}s) — analysis.md not modified")
         return False  # Treat as failure — no point continuing with unchanged analysis
+
+    if result.invoke.returncode != 0:
+        print(
+            f"  warn: feedback-pass rc={result.invoke.returncode} but "
+            f"analysis.md was modified on disk — honoring the file",
+            file=sys.stderr,
+        )
 
     # Producer-clears-on-write contract (design.md invariant #3).
     clear_staleness(cid, "analysis.md",
@@ -645,9 +665,19 @@ def _run_model_in_iteration(
         is_costingfe=template_name.startswith("model_setup_costingfe"),
     )
 
+    # Edit-pass model-setup runs natively 4-7x slower than cold-start: the
+    # agent reads validators + library to internalize the override registry
+    # contract, then self-runs the model (each `uv run python` cold boot is
+    # ~30s). Production default 900s sits below the P95 and silently kills
+    # valid work. Floor the edit-pass timeout at 1800s; user-supplied larger
+    # values still win. See model-setup-feedback-timeout TICKET, Defect B (B1).
+    step_timeout = args.timeout
+    if prior_model_src is not None:
+        step_timeout = max(step_timeout, 1800)
+
     result = invoke_claude_validated(
         ctx.prompt_text, cwd=CONCEPT_ANALYSIS_DIR,
-        timeout=args.timeout, model=args.model,
+        timeout=step_timeout, model=args.model,
         validator=validator,
         output_path=model_script,
         step_label="model-setup",
@@ -655,11 +685,17 @@ def _run_model_in_iteration(
     )
     elapsed = time.time() - ctx.start_time
 
-    if result.invoke.returncode != 0:
-        print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
-        return False, False
-
+    # File-on-disk is the source of truth: if every validator
+    # (syntax + three-forward contract + override registry) passed against
+    # the bytes Claude wrote, honor the file even if the subprocess was
+    # killed at the timeout a moment later (rc=-1). Without this, a valid
+    # model that landed just before SIGKILL is silently discarded and the
+    # iter is stamped STALE. Surface rc!=0 as a warning so timeouts stay
+    # visible. See model-setup-feedback-timeout TICKET, Defect A.
     if not result.validation_passed:
+        if result.invoke.returncode != 0:
+            print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
+            return False, False
         # Either the file was never written (H-01 path) or the script
         # failed validation. Both leave model_ok=False but
         # are non-fatal to the iteration (FR-7).
@@ -669,6 +705,13 @@ def _run_model_in_iteration(
         validator_name = getattr(validator, "__name__", "validation")
         print(f" FAILED ({elapsed:.0f}s) — {validator_name} exhausted")
         return True, False
+
+    if result.invoke.returncode != 0:
+        print(
+            f"  warn: model-setup rc={result.invoke.returncode} but validators "
+            f"passed on the file on disk — honoring the validated model",
+            file=sys.stderr,
+        )
 
     print(f" done ({elapsed:.0f}s)", end="")
 
@@ -948,20 +991,34 @@ def _run_assess(
     )
     elapsed = time.time() - t0
 
-    if result.invoke.returncode != 0:
-        print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
-        return "ERROR", 0
-
+    # File-on-disk wins over process state: if validate_feedback_verdict
+    # passed against feedback_path, honor the file even when the subprocess
+    # was killed at the timeout (rc=-1). See model-setup-feedback-timeout
+    # TICKET, Defect A.
     if not feedback_path.exists():
-        print(f" FAILED ({elapsed:.0f}s) — no feedback file")
+        # No file means no validation either; rc is the only signal.
+        if result.invoke.returncode != 0:
+            print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
+        else:
+            print(f" FAILED ({elapsed:.0f}s) — no feedback file")
         return "ERROR", 0
 
     # FR-17 / H-10: honor validation_passed. If validation exhausted all
     # retries, the file may be present but malformed (e.g. missing VERDICT
     # line) — parsing it would yield a misleading ("FAIL", 0) verdict.
     if not result.validation_passed:
-        print(f" FAILED ({elapsed:.0f}s) — validation exhausted")
+        if result.invoke.returncode != 0:
+            print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
+        else:
+            print(f" FAILED ({elapsed:.0f}s) — validation exhausted")
         return "ERROR", 0
+
+    if result.invoke.returncode != 0:
+        print(
+            f"  warn: assess rc={result.invoke.returncode} but feedback "
+            f"validated on disk — honoring the file",
+            file=sys.stderr,
+        )
 
     feedback_text = feedback_path.read_text(encoding="utf-8")
     verdict, finding_count = parse_verdict_from_feedback(feedback_text)
@@ -1020,20 +1077,33 @@ def _run_source_integration(
     )
     elapsed = time.time() - t0
 
-    if result.invoke.returncode != 0:
-        print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
-        return None
-
+    # File-on-disk wins over process state: if validate_feedback_verdict
+    # passed against output_path, honor the file even when the subprocess
+    # was killed at the timeout (rc=-1). See model-setup-feedback-timeout
+    # TICKET, Defect A.
     if not output_path.exists():
-        print(f" FAILED ({elapsed:.0f}s) — no output file")
+        if result.invoke.returncode != 0:
+            print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
+        else:
+            print(f" FAILED ({elapsed:.0f}s) — no output file")
         return None
 
     # FR-17 / H-09: honor validation_passed. If validation exhausted all
     # retries, the file may be malformed and parsing it would chain bad
     # data into _merge_feedback / _run_feedback_pass on the next iteration.
     if not result.validation_passed:
-        print(f" FAILED ({elapsed:.0f}s) — validation exhausted")
+        if result.invoke.returncode != 0:
+            print(f" FAILED ({elapsed:.0f}s, rc={result.invoke.returncode})")
+        else:
+            print(f" FAILED ({elapsed:.0f}s) — validation exhausted")
         return None
+
+    if result.invoke.returncode != 0:
+        print(
+            f"  warn: source-integration rc={result.invoke.returncode} but "
+            f"output validated on disk — honoring the file",
+            file=sys.stderr,
+        )
 
     feedback_text = output_path.read_text(encoding="utf-8")
     verdict, finding_count = parse_verdict_from_feedback(feedback_text)
