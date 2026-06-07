@@ -37,6 +37,12 @@ class InvokeResult:
     stderr: str
     returncode: int
     session_id: str | None = None
+    # Best-effort run accounting parsed from the result event (diagnostic only;
+    # None when the stream lacks it or didn't parse). Used by callers that write
+    # a cost line to a run log; existing callers ignore them.
+    cost_usd: float | None = None
+    usage: dict | None = None
+    num_turns: int | None = None
 
     def __iter__(self):
         """Backward-compatible unpacking: stdout, stderr, rc = invoke_claude(...)"""
@@ -86,6 +92,29 @@ def _parse_json_events(raw: str) -> tuple[str, str | None]:
         raise ValueError("No 'result' event found in JSON event stream")
 
     return result_text, session_id
+
+
+def _extract_result_meta(raw: str) -> dict:
+    """Best-effort cost/usage/turns from the result event. ``{}`` if absent.
+
+    Separate from ``_parse_json_events`` (whose 2-tuple contract is pinned) so
+    adding run-accounting can't disturb the text/session path. Diagnostic only —
+    never raises; a genuinely malformed stream already warned via the parse path.
+    """
+    try:
+        events = json.loads(raw)
+    except (json.JSONDecodeError, TypeError):
+        return {}
+    if not isinstance(events, list):
+        return {}
+    for event in events:
+        if isinstance(event, dict) and event.get("type") == "result":
+            return {
+                "cost_usd": event.get("total_cost_usd"),
+                "usage": event.get("usage") or event.get("modelUsage"),
+                "num_turns": event.get("num_turns"),
+            }
+    return {}
 
 
 def invoke_claude(
@@ -181,7 +210,13 @@ def invoke_claude(
         text = result.stdout
         session_id = None
 
-    return InvokeResult(text, result.stderr, result.returncode, session_id)
+    meta = _extract_result_meta(result.stdout)
+    return InvokeResult(
+        text, result.stderr, result.returncode, session_id,
+        cost_usd=meta.get("cost_usd"),
+        usage=meta.get("usage"),
+        num_turns=meta.get("num_turns"),
+    )
 
 
 @dataclass

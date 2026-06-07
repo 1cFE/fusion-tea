@@ -1,0 +1,8 @@
+portfolio-audit run 20260607-135133
+model: opus
+concepts (3): 01-hts-compact-tokamak, 07-maglif, 21-spherical-tokamak-hts
+lead returncode: 0
+lead wall time: 517s
+lead cost: $3.75
+lead usage: {"input_tokens": 6236, "cache_creation_input_tokens": 80309, "cache_read_input_tokens": 701389, "output_tokens": 24922, "server_tool_use": {"web_search_requests": 0, "web_fetch_requests": 0}, "service_tier": "standard", "cache_creation": {"ephemeral_1h_input_tokens": 80309, "ephemeral_5m_input_tokens": 0}, "inference_geo": "not_available", "iterations": [{"input_tokens": 2, "output_tokens": 757, "cache_read_input_tokens": 79795, "cache_creation_input_tokens": 514, "cache_creation": {"ephemeral_5m_input_tokens": 0, "ephemeral_1h_input_tokens": 514}, "type": "message"}], "speed": "standard"}
+lead turns: 15

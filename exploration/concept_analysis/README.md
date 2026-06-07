@@ -152,22 +152,84 @@ with cross-concept positioning, risk verdicts, and LCOE sensitivity.
 `Status: approved` and `Approved-Date` on both `analysis.md` and
 `synthesis.md`.
 
+## Portfolio Audit (cross-concept)
+
+The phases above check each concept **on its own**. `portfolio-audit` is
+**orthogonal** to that loop: it checks whether the answers across a whole cohort
+hang together — family-internal coherence, cross-family magnitude ordering,
+source traceability on the dominant cost drivers, and sensitivity under
+perturbation. A per-concept `assess` can pass every concept individually while
+the portfolio still makes no physical sense (wrong family ordering, an outlier
+that's indefensible against its neighbors). This stage is the only thing that
+reasons about the cohort as a whole.
+
+```bash
+# Audit a cohort (same selection conventions as every other command)
+uv run python scripts/run_analysis.py portfolio-audit 01 07 21
+uv run python scripts/run_analysis.py portfolio-audit --all --passed-only
+
+# Write the forensics (manifest, digest, rendered prompt) without spending tokens
+uv run python scripts/run_analysis.py portfolio-audit 01 --dry-run
+```
+
+**How it works.** A Python runner does only the cheap deterministic prep — it
+builds a per-concept `manifest.json` (audited-state SHAs + iteration state) and a
+`cohort_digest.json` (headline LCOE, CAS rollups, enabled overrides for every
+concept at once), renders the lead prompt, and writes all three to the run folder
+*before* invoking a single Opus **lead reviewer** agent. The lead reasons over
+the digest, spawns investigator subagents to test hypotheses (reading sources,
+re-running models with perturbed inputs), spawns writer subagents to produce
+per-concept audit docs for confirmed findings, and writes the cross-concept
+report itself. The runner makes exactly one Claude call; all fan-out is the
+lead's own via the Task tool.
+
+**It is advisory and non-mutating.** It does not gate `approve` or any stage, and
+it writes nothing outside its run folder. It deliberately does **not** read
+`synthesis.md`, `review.md`, or `address_log.md` (those are downstream of assess
+and often stale).
+
+**Output** lands in a timestamped, immutable run folder:
+
+```
+reviews/<YYYYMMDD-HHMMSS>/
+├── manifest.json        # per-concept SHAs + iter state (the audited-state record)
+├── cohort_digest.json   # what was fed to the lead
+├── prompts/lead_prompt.md
+├── report.md            # cross-concept report (lead writes it continuously)
+├── concepts/<id>.md     # one plain-language doc per flagged concept
+├── findings.jsonl       # one JSON line per confirmed finding
+└── run.log              # lead returncode, wall time, cost/usage
+```
+
+Each run is a new folder; runs are never overwritten. To compare two runs, diff
+their `manifest.json` per-concept SHAs to see which concepts changed.
+
+**Key flags:** `--passed-only` (restrict to concepts whose latest iter verdict is
+PASS), `--model` (default `opus`), `--timeout` (default 7200s), `--dry-run`, and
+`--inherit-from <prior-run-dir>` (resume a timed-out run — **all-or-nothing**: if
+any concept's artifacts changed since the prior run it aborts naming what changed
+rather than inheriting a now-incoherent partial result).
+
 ## Commands
 
-10 subcommands. The dispatch table (`run_analysis.py:main()`):
+14 subcommands. The dispatch table (`run_analysis.py:main()`):
 
 ```python
 dispatch = {
-    "list":           cmd_list,
-    "status":         cmd_status,
-    "gap-check":      cmd_gap_check,
-    "analyze":        cmd_analyze,
-    "model-setup":    cmd_model_setup,
-    "review":         cmd_review,
-    "address-review": cmd_address_review,
-    "synthesize":     cmd_synthesize,
-    "approve":        cmd_approve,
-    "add-source":     cmd_add_source,
+    "list":               cmd_list,
+    "status":             cmd_status,
+    "gap-check":          cmd_gap_check,
+    "analyze":            cmd_analyze,
+    "model-setup":        cmd_model_setup,
+    "review":             cmd_review,
+    "address-review":     cmd_address_review,
+    "synthesize":         cmd_synthesize,
+    "approve":            cmd_approve,
+    "add-source":         cmd_add_source,
+    "init-tables":        cmd_init_tables,
+    "regenerate-concept": cmd_regenerate_concept,
+    "model-critic":       cmd_model_critic,
+    "portfolio-audit":    cmd_portfolio_audit,  # cross-cohort; orthogonal to the per-concept loop
 }
 ```
 

@@ -1345,6 +1345,40 @@ def cmd_model_critic(records: list[dict], args: argparse.Namespace) -> None:
         sys.exit(rc)
 
 
+def cmd_portfolio_audit(records: list[dict], args: argparse.Namespace) -> None:
+    """Cross-concept physics / first-principles sanity check over a cohort.
+
+    Resolves the cohort (same selection conventions as every other command, plus
+    ``--passed-only``), creates a timestamped run folder, and hands off to
+    ``runner.run`` which builds the forensics and invokes the lead Opus agent.
+    Advisory and non-mutating outside its run folder; does not gate any stage.
+    """
+    from lib.portfolio_audit import runner
+
+    selected = resolve_concepts(
+        args.concepts, records,
+        family=args.family,
+        all_remaining=args.all_remaining,
+    )
+    cohort = runner.resolve_audit_cohort(selected, passed_only=args.passed_only)
+    if not cohort:
+        print("No concepts in cohort (after selection / --passed-only filter).")
+        return
+
+    run_dir = runner.make_run_dir()
+    cli_str = "portfolio-audit " + " ".join(sys.argv[2:])
+    print(f"  portfolio-audit: {len(cohort)} concept(s) → {run_dir}")
+    runner.run(
+        cohort,
+        run_dir=run_dir,
+        model=args.model,
+        cli=cli_str,
+        timeout=args.timeout,
+        dry_run=args.dry_run,
+        inherit_from=Path(args.inherit_from) if args.inherit_from else None,
+    )
+
+
 # ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
@@ -1485,6 +1519,24 @@ def build_parser() -> argparse.ArgumentParser:
     p_critic.add_argument("--dry-run", action="store_true",
                           help="Print the rendered prompt and exit; no Claude call, no file written")
 
+    # -- portfolio-audit --
+    p_audit = sub.add_parser(
+        "portfolio-audit",
+        help="Cross-concept physics/first-principles sanity check over a cohort")
+    p_audit.add_argument("concepts", nargs="*", default=[], help="Concept IDs")
+    p_audit.add_argument("--all", dest="all_remaining", action="store_true",
+                         help="All concepts")
+    p_audit.add_argument("--family", help="Filter by confinement family")
+    p_audit.add_argument("--passed-only", action="store_true",
+                         help="Restrict the cohort to concepts whose latest iter verdict is PASS")
+    p_audit.add_argument("--model", default="opus", help="Claude model (default: opus)")
+    p_audit.add_argument("--dry-run", action="store_true",
+                         help="Write forensics (manifest, digest, rendered prompt) without invoking the lead")
+    p_audit.add_argument("--timeout", type=int, default=7200,
+                         help="Lead invocation timeout in seconds (default: 7200)")
+    p_audit.add_argument("--inherit-from", metavar="RUN_DIR",
+                         help="Resume from a prior run folder (all-or-nothing: aborts if the cohort changed)")
+
     return parser
 
 
@@ -1506,6 +1558,7 @@ def main() -> None:
         "init-tables": cmd_init_tables,
         "regenerate-concept": cmd_regenerate_concept,
         "model-critic": cmd_model_critic,
+        "portfolio-audit": cmd_portfolio_audit,
     }
 
     # Loader dispatch split (design.md "CLI dispatch split"). Orchestrator
