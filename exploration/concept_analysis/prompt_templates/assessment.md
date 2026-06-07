@@ -13,6 +13,15 @@ Read this file completely: `{{analysis_path}}`
 
 {{@config/analysis_goals.md}}
 
+### Override Semantics (the policy the overrides must satisfy)
+
+The overrides you are assessing are authored against this policy — the same one the
+analysis and model-setup agents read. Use its vocabulary (the single invariant, the
+S/U/P cost classes, the modular-fleet rationale baseline) when judging override
+discipline below.
+
+{{@config/override_semantics.md}}
+
 ### Assessment Checklist
 
 {{@config/assessment_checklist.md}}

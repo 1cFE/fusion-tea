@@ -146,9 +146,26 @@ overrides:
 ```
 
 Omit the entry entirely for any account with no company-grounded data — do not
-emit disabled placeholders for un-evidenced accounts. Relative `value`
-expressions reference the library's bare overrides-off cost
-(`generic.costs.cas21`), never `native` or `result_1gw`.
+emit disabled placeholders for un-evidenced accounts.
+
+**What a relative `value` means at the headline.** The 1 GWe headline is **always**
+the replicated fleet of `n_mod` real `P_native` modules (`run_native_and_1gw`,
+`noak=True`) — never a monolithic 1000 MWe machine. A relative `value` references
+the library's bare overrides-off cost (`generic.costs.<rollup>` for a top-level
+account, or `generic.cas22_detail["C220xxx"]` for a CAS22 reactor-island
+sub-account), never `native` or `result_1gw`. The single invariant, for every
+account in every cost class, is:
+
+> `account = M × (the library's 1 GWe fleet cost for that account)`
+
+where `M` is the fraction of the library's fleet answer this concept should pay.
+**Anchor every `rationale` to the same frame: "the library's default for a fleet of
+this device at 1 GWe" — never "a conventional 1 GWe plant" / a monolithic
+baseline.** The cost classes (S — shared/charged once; U — per-unit/×`n_mod` with
+NOAK learning; P — power-proportional) explain *why* the fleet cost is what it is
+and which `generic` value to anchor to; they are not per-class multiplier rules.
+The full policy (class table, account lists, worked examples) is in the override
+semantics the analysis prompt embeds and `model_setup.py` Rule 5 includes.
 
 ### Section 6: Data Gap Inventory
 

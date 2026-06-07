@@ -8,6 +8,73 @@ An existing three-forward model from a prior iteration has been copied to `{{out
 **targeted edits** based on the assessment findings below. Use the Edit tool — do
 NOT rewrite the file from scratch, and do NOT restructure conforming code.
 
+## Validator Contract (read this; do NOT go read the validator source)
+
+Your output is judged by four validators run against the bytes on disk. Every
+requirement they enforce is stated **here** — exhaustively. **Do not Read or
+grep `scripts/lib/validators.py`, `scripts/lib/canonical_accounts.py`, the
+costingfe source, or the orchestrator code to "check what's required" — the
+contract is below. Reading those files is the single biggest time sink in
+this step and is forbidden unless an assessment finding *explicitly* points
+at one of them.**
+
+1. **Python syntax** — file must `ast.parse()` clean.
+2. **File modified** — the file's SHA-256 must change from the prior model.
+   Editing in place satisfies this; copying the file unchanged does not.
+3. **Three-forward contract** — module-level bindings, in this order:
+   `spec`, `P_native`, `model = CostModel(...)`, `generic = generic_reference(model, spec, P_native)`,
+   `overrides = [ ... ]`, `native, result_1gw = run_native_and_1gw(model, spec=spec, overrides=overrides, p_native=P_native)`,
+   then `print_cas_breakdown(generic, native, result_1gw, overrides)`. Do
+   not inline a two-knob `forward()`. Do not drop `generic`.
+4. **Override registry** (the validator that previously sent agents on
+   archaeology expeditions — full contract here):
+   - `overrides` must be a module-level **list literal of dict literals**
+     (`overrides = []` is fine if there are none).
+   - Each entry has **all six** fields: `account`, `value`, `enabled`,
+     `provenance`, `source`, `rationale`. `provenance ∈ {"direct", "derived"}`.
+   - `account` must be one of the concept's canonical accounts (already
+     listed in the "Canonical account schema" section below — do not look it
+     up elsewhere).
+   - **Forbidden rollup accounts** (rejected outright): `C220111`, `C220000`,
+     `C220100`, `C220200`, `C220300`, `C220400`, `C220500`, `C220600`,
+     `C220700`. To express "this concept assembles more simply," override
+     `installation_frac` via `costing_overrides`, not the C220111 dollar
+     amount.
+   - `value` may be a **number**, a **constant numeric expression** (e.g.
+     `260.0 * 1.34`), or an **expression over `generic`** (e.g.
+     `0.70 * generic.costs.cas21`). It **MUST NOT** reference `native`,
+     `result_1gw`, or `result` (wrong reference frame).
+   - Literal `value` must satisfy `|value| <= 5e4` (M$, never raw $).
+   - **Disabled** entries (`enabled: False`) must carry a 7th field
+     `blocked_by: "<org>/<repo>#NN"` (e.g. `"1cFE/1costingfe#42"`).
+   - Every entry must declare `cost_basis: "noak"`. The framework runs
+     `noak=True`; `foak`, `conceptual_design`, `vendor_target`, and
+     `unspecified` are rejected. Non-NOAK published values: either disable
+     with `blocked_by`, or apply a documented learning-curve adjustment in
+     `rationale` and declare `cost_basis: "noak"`.
+   - No two entries may share an `account`.
+
+## Self-verification budget
+
+You may run the edited model at most **twice** as a self-check:
+
+- Once after your edits to confirm it executes and prints a CAS breakdown.
+- (Optionally) once more if a *specific finding* requires you to numerically
+  verify a value you changed.
+
+Each `uv run python` cold-boot costs ~30s. Do not write ad-hoc test scripts
+under `/tmp/` to probe library internals — if the model runs and the
+override registry above is satisfied, you are done.
+
+## Operational constraints
+
+- This is an orchestrated pipeline run. **Do not write to your auto-memory**
+  (`~/.claude/projects/.../memory/`) and do not take open-ended exploratory
+  actions outside the scope of the findings below.
+- If you discover a library bug while editing, **do not** investigate or
+  fix it — record it as a `blocked_by: <org>/<repo>#NN` on the affected
+  override (file the tracker issue out of band).
+
 ## Preserve the three-forward contract
 
 The file already follows the canonical shape; keep it:
@@ -62,6 +129,16 @@ instead of dying in the rationale text.
 `unspecified`) is rejected. If your source publishes a non-NOAK value, either
 (a) disable + `blocked_by`, (b) apply a documented learning-curve adjustment in
 `rationale` and declare `cost_basis: "noak"`, or (c) file a tracker issue.
+
+## Override semantics and the 1 GWe headline (read before editing any override)
+
+This is the same policy the analysis agent authored Section 5b against — the single
+headline invariant, the S/U/P cost classes, and the modular-fleet rationale
+baseline. Any override you add or change must match it: the value anchored to the
+account's own storage shape, and the rationale in the modular-fleet frame (never a
+"conventional 1 GWe plant").
+
+{{@config/override_semantics.md}}
 
 **Rules**:
 - Preserve all existing sweeps, scenarios, and sensitivity analyses unless a
