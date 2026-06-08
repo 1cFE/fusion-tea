@@ -60,10 +60,10 @@ CAS22 sub-accounts:
 =================================================================
 Scaled to 1 GWe (per-account scaling from 200 MWe native)
 =================================================================
-LCOE:            138.3 $/MWh
-Overnight cost:  4195 $/kW
-Fusion power:    3999 MW
-Net electric:    1000 MWe
+LCOE:            242.9 $/MWh
+Overnight cost:  4660 $/kW
+Fusion power:    801 MW
+Net electric:    200 MWe
 Q_eng:           3.00
 
 =================================================================

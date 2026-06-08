@@ -160,10 +160,17 @@ result = model.forward(net_electric_mw=_NATIVE_MWE, **_SHARED_KWARGS)
 # override_reference_mw tells the framework that cost_overrides (none here)
 # are calibrated at _NATIVE_MWE, and to scale them to 1000 MWe using
 # per-account scaling laws.
+#
+# n_mod must match the explorer extractor's contract:
+#   result_1gw.params['n_mod'] == max(1, round(1000 / P_native))
+# (verify_two_knob in extract_explorer_data.py). _SHARED_KWARGS carries
+# n_mod=1 for the native forward; override it here for the 1 GWe pass so
+# the per-module account totals replicate correctly across the fleet.
+_N_MOD_1GW = max(1, round(1000.0 / _NATIVE_MWE))
 result_1gw = model.forward(
     net_electric_mw=1000.0,
     override_reference_mw=_NATIVE_MWE,
-    **_SHARED_KWARGS,
+    **{**_SHARED_KWARGS, "n_mod": _N_MOD_1GW},
 )
 
 # ── Results: native design point ────────────────────────────────────────────

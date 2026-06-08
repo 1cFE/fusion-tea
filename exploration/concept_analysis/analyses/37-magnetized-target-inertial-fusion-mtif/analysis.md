@@ -12,7 +12,7 @@ Comparison-Status: costingfe-asterisked
 Comparables: []
 Design-Point-Name: NearStar MTIF concept — lower bound of company-stated 50 MW–1 GW+ scalability range
 Design-Point-Maturity: paper-concept
-P-Native: 50
+P-Native: 200
 Grounding-Confidence: low
 ---
 
