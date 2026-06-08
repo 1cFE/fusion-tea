@@ -120,11 +120,31 @@
     var lbl = conceptLabel(row);
     var td = el("td", { class: "matrix-cell matrix-cell--identity" });
     var a = el("a", { class: "matrix-identity", href: "/concept/" + row.concept_id });
-    a.appendChild(lbl.codeChip());
-    a.appendChild(document.createTextNode(" " + lbl.name));
+    a.appendChild(document.createTextNode(lbl.name));
     td.appendChild(a);
     var cav = caveatMarker({ asterisk: row.asterisk_in_comparison, fitGrade: row.fit_grade }).element();
     if (cav) td.appendChild(cav);
+    // "Example: <Company>" disclaimer subheader under the name, when the
+    // server has a company entry for this concept (see _COMPANIES). Same
+    // semantic + styling as the pipeline cards.
+    if (row.company) {
+      var sub = el("div", { class: "matrix-identity__example" });
+      var em = document.createElement("em");
+      em.textContent = "Example: ";
+      sub.appendChild(em);
+      if (row.company_url) {
+        var link = document.createElement("a");
+        link.href = row.company_url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = row.company;
+        link.addEventListener("click", function (e) { e.stopPropagation(); });
+        sub.appendChild(link);
+      } else {
+        sub.appendChild(document.createTextNode(row.company));
+      }
+      td.appendChild(sub);
+    }
     return td;
   }
 

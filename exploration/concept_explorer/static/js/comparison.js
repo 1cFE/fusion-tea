@@ -393,10 +393,7 @@
       // extending ConceptManifestEntry. Out of Phase 2 scope.
       append(item, nameSpan, familyBadge);
 
-      if (entry.company) {
-        const company = el("span", "text-muted text-xs", entry.company);
-        item.appendChild(company);
-      }
+      // Company hidden in the compare picker (anonymized explorer, 2026-06-08).
 
       item.addEventListener("click", () => addConcept(entry.concept_id));
       listEl.appendChild(item);

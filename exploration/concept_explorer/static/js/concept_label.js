@@ -35,17 +35,22 @@
   function conceptLabel(c) {
     const code = (c && (c.concept_id != null ? c.concept_id : c.code)) || "";
     const name = (c && c.name) || code || "";
-    const codeText = code ? "#" + code : "";
+    // Anonymized display (2026-06-08): concept-numbering chips and prefixes
+    // are stripped everywhere so the explorer presents concepts generically
+    // (by their technical descriptor + scale, not by analyst-assigned #NN).
+    // Surfaces continue to call codeChip() / codeText for back-compatible
+    // layout — these now return an empty inline element / empty string
+    // respectively, so existing DOM construction does not crash and chart
+    // tick labels collapse cleanly.
     return {
       code,
       name,
-      codeText,
-      text: codeText ? codeText + " " + name : name,
+      codeText: "",
+      text: name,
       codeChip() {
-        const span = document.createElement("span");
-        span.className = "concept-code";
-        span.textContent = codeText;
-        return span;
+        // Return a no-op span so callers that appendChild() still work,
+        // but the chip takes no visible space.
+        return document.createDocumentFragment();
       },
     };
   }

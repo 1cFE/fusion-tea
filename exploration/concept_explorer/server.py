@@ -296,6 +296,124 @@ def _compose_name(base_name: str, fuel: FuelType | None) -> str:
     return f"{base_name} {suffix}"
 
 
+# ---------------------------------------------------------------------------
+# Display-only generic names for the explorer (anonymized, agreed 2026-06-08).
+#
+# Replaces the canonical "Name (Fuel)" produced by resolve_identity + clears
+# the Company field on every served surface (manifest, per-concept JSON,
+# parameter index, cost landscape). Source CSV / frontmatter / model_setup.py
+# are unchanged — the canonical taxonomy still has Commonwealth Fusion / TAE /
+# Helion / etc., and resolve_identity is still the upstream source of the
+# served name. The override is applied last, in _stamp_identity, so other
+# explorer logic that depends on resolve_identity (test_identity.py audit,
+# similarity reports, etc.) continues to see canonical names.
+#
+# Format convention: "<Technical descriptor> — <P_native rounded to 50 MWe> (<Fuel>)"
+# Concepts with unspecified P_native or sub-MW pilot scale omit the size or
+# use "sub-MW pilot". Company-coined technology names (Type One Energy,
+# Renaissance Fusion, Deutelio PoloMac, NearStar MTIF, Neo Fusion BEST)
+# generalized per analyst direction.
+#
+# To revert: delete the dict (or specific rows). To add a new concept: append
+# a row; concepts absent from this dict fall through unchanged (and surface
+# their analyst name + company).
+# Per-concept company name + URL, rendered as the "Example: <Company>" disclaimer
+# subheader on the entry surfaces (matrix / pipeline cards) ONLY. The full name
+# may differ from what's in analysis.md frontmatter (some concepts have no
+# analysis.md or no Company field — e.g. concept 12 OpenStar Technologies is
+# only mentioned in its model_setup.py docstring). The disclaimer framing
+# emphasizes that the rendered concept is one representative example, not the
+# company's definitive published design.
+#
+# Each value is (display_name, url). URL may be None when not registered;
+# in that case the company renders as plain italic text (no link).
+#
+# ⚠ URLs marked TODO need verification — included as best-effort placeholders
+# from public knowledge but not authoritatively confirmed at this commit.
+_COMPANIES: dict[str, tuple[str, str | None]] = {
+    "01": ("Commonwealth Fusion Systems", "https://cfs.energy"),
+    "02": ("Sonofusion Energy", None),  # TODO verify URL
+    "03": ("Cortex Fusion Systems", None),  # TODO verify URL
+    "04": ("HB11 Energy", "https://hb11.energy"),
+    "05": ("Thea Energy", "https://theaenergy.com"),
+    "06": ("Pale Blue Fusion", None),  # TODO verify URL
+    "07": ("Pacific Fusion", "https://pacificfusion.com"),
+    "08": ("Helion Energy", "https://helionenergy.com"),
+    "09": ("Type One Energy", "https://typeoneenergy.com"),
+    "10": ("Helical Fusion", "https://www.helicalfusion.com"),  # TODO verify — 10 is "Large-Scale Stellarator"
+    "11": ("Realta Fusion", "https://realtafusion.com"),  # TODO verify
+    "12": ("OpenStar Technologies", "https://openstartech.com"),
+    "13": ("Avalanche Energy", "https://avalanche.energy"),  # TODO verify — electrostatic-hybrid
+    "14": ("General Fusion", "https://generalfusion.com"),
+    "15": ("Zap Energy", "https://zapenergy.com"),
+    "16": ("Acceleron Fusion", None),  # TODO verify URL
+    "17a": ("Xcimer Energy", "https://xcimer.com"),
+    "17b": ("Focused Energy", "https://focused-energy.world"),
+    "18": ("TAE Technologies", "https://tae.com"),
+    "19": ("Zephyr Fusion", None),  # TODO verify URL
+    "20a": ("Type One Energy", "https://typeoneenergy.com"),
+    "20b": ("Renaissance Fusion", "https://stellarators.com"),
+    "21": ("Tokamak Energy", "https://tokamakenergy.com"),
+    "22": ("First Light Fusion", "https://firstlightfusion.com"),
+    "23": ("Marvel Fusion", "https://marvelfusion.com"),
+    "24": ("LPP Fusion", "https://lppfusion.com"),
+    "25": ("Intensity Energy", None),  # TODO verify URL
+    "26": ("Inertia Enterprises", None),  # TODO verify URL
+    "28": ("Energy Singularity", None),  # TODO verify URL
+    "29": ("Firefly Fusion", None),  # TODO verify URL
+    "30": ("Inertia Enterprises", None),  # TODO verify URL
+    "31": ("Blue Laser Fusion", None),  # TODO verify URL
+    "32": ("GenF Systems", None),  # TODO verify URL
+    "33": ("Neo Fusion (BEST program)", None),  # TODO verify URL — state-backed
+    "35": ("Deutelio", None),  # TODO verify URL
+    "36": ("Helical Fusion", "https://www.helicalfusion.com"),
+    "37": ("NearStar Fusion", None),  # TODO verify URL
+    "39": ("ENN Energy", "https://enn.cn"),
+}
+
+
+_GENERIC_NAMES: dict[str, str] = {
+    "01": "HTS Compact Tokamak — 250 MWe (D-T)",
+    "02": "Acoustic ICF / Sonofusion (D-D)",
+    "03": "Laser ICF - Liquid Jet Target — sub-MW pilot (D-D)",
+    "04": "Laser ICF — 500 MWe (p-B11)",
+    "05": "Planar Coil Stellarator — 400 MWe (D-T)",
+    "06": "Magnetic Mirror — 150 MWe (p-B11)",
+    "07": "MagLIF — 200 MWe (D-T)",
+    "08": "FRC w/ Direct Conversion — 50 MWe (D-He3)",
+    "09": "QI Stellarator - HTS — 1000 MWe (D-T)",
+    "10": "Large-Scale Stellarator — 1000 MWe (D-T)",
+    "11": "Magnetic Mirror — 50 MWe (D-T)",
+    "12": "Levitated Dipole — 200 MWe (D-T)",
+    "13": "Electrostatic Hybrid — sub-MW pilot (D-T)",
+    "14": "Magnetized Target Fusion - Pneumatic Compression — 150 MWe (D-T)",
+    "15": "Sheared-Flow Stabilized Z-Pinch — 50 MWe (D-T)",
+    "16": "Muon-Catalyzed Fusion (D-T)",
+    "17a": "Laser ICF - Hybrid Direct Drive — 400 MWe (D-T)",
+    "17b": "Laser ICF - Direct Drive Fast Ignition — 1000 MWe (D-T)",
+    "18": "p-B11 FRC — 50 MWe (p-B11)",
+    "19": "Orbital Levitated Dipole — 100 MWe (D-He3)",
+    "20a": "Modular HTS Stellarator — 350 MWe (D-T)",
+    "20b": "3D-Coil HTS Stellarator — 1000 MWe (D-T)",
+    "21": "Spherical Tokamak - HTS — 450 MWe (D-T)",
+    "22": "Projectile ICF — 150 MWe (D-T)",
+    "23": "Laser ICF - Nanostructured Target — 100 MWe (p-B11)",
+    "24": "Dense Plasma Focus — sub-MW pilot (p-B11)",
+    "25": "Heavy Ion Beam ICF — 950 MWe (D-T)",
+    "26": "Laser ICF - Indirect Drive — 1500 MWe (D-T)",
+    "28": "HTS Tokamak - Full HTS — 500 MWe (D-T)",
+    "29": "Negative Triangularity Tokamak — 100 MWe (D-T)",
+    "30": "Laser ICF - NIF Commercialization — 1500 MWe (D-T)",
+    "31": "Laser ICF - OEC Architecture — 1000 MWe (D-T)",
+    "32": "Laser ICF - French National — 1000 MWe (D-T)",
+    "33": "State-Backed Tokamak — 400 MWe (D-T)",
+    "35": "Poloidal-Tunnel Magnetic Confinement (D-D)",
+    "36": "Helical Coil Stellarator — 50 MWe (D-T)",
+    "37": "Magnetized Target Inertial Fusion — 200 MWe (D-D)",
+    "39": "Spherical Tokamak - CS-free — 500 MWe (p-B11)",
+}
+
+
 def resolve_identity(
     concept_id: str,
     registry: ConceptRegistry | None,
@@ -365,10 +483,27 @@ def _stamp_identity(
     stamped: dict[str, ConceptData] = {}
     for cid, concept in concepts.items():
         ident = resolve_identity(cid, registry, served_name=concept.name)
+        # Display-only generic-name override (see _GENERIC_NAMES). Concepts
+        # absent from the dict pass through with the canonical resolve_identity
+        # name. Company is preserved on the data model — the entry surfaces
+        # (matrix + pipeline) render it as "Example: <Company>" to disclaim
+        # that the concept is one possible instantiation, not THE company's
+        # definitive LCOE. Profile / compare / cost-landscape surfaces hide
+        # the company in their own JS.
+        display_name = _GENERIC_NAMES.get(cid, ident.name)
+        company_entry = _COMPANIES.get(cid)
+        if company_entry is not None:
+            display_company, display_company_url = company_entry
+        else:
+            # Concept absent from _COMPANIES — fall back to whatever the
+            # extraction stamped from frontmatter, with no URL.
+            display_company, display_company_url = concept.company, None
         stamped[cid] = concept.model_copy(
             update={
                 "analyst_name": concept.name,
-                "name": ident.name,
+                "name": display_name,
+                "company": display_company,
+                "company_url": display_company_url,
                 "fuel": ident.fuel,
                 "fit_grade": fit_grades.get(cid),
             }
