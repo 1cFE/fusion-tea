@@ -1,7 +1,7 @@
 # Epic: Explorer UX v3 — Provenance & Coherence
 
 **Epic ID**: EXPLORER-UX-V3
-**Status**: Draft
+**Status**: Active
 **Priority**: P1
 **Created**: 2026-06-06
 **Estimated Effort**: Phase 1 ~3–3.5 days (2 items); later phases TBD
@@ -197,18 +197,65 @@ These were settled in discussion before decomposition; specs/designs inherit the
 
 ---
 
-### Future Phases (not yet decomposed)
+### Phase 2+ Vision — Orientation around the ontology
 
-To be turned into items as the epic continues. Sourced from the research doc's tiers; the J2/J3 spine (Phase 1) comes first because it is the precondition for trusting any quantitative exploration.
+> **Status**: Vision — settled in discussion 2026-06-06, not yet decomposed into specced items. This captures the destination for everything after the Phase 1 spine. We turn these into items incrementally; the point is a coherent direction, not a commitment to build it all at once.
 
-- **Per-account override decomposition** (Tier-1 idea 9): for each overridden account, show the `generic` (library-bare) → `native` (analyst) delta with the rationale — "library says X, analyst says Y, because…". Consumes the three-forward contract; natural successor to Items 1–2.
-- **Family / comparables comparison entry point** (Tier-1 idea 3): extract ontology family/subfamily + the `comparables` set; "Compare with its N comparables" on the concept page; family grouping/filter + "compare this whole family" on landing.
-- **Landing-page reframe** (Tier-2 ideas 4–6): replace the Approved/In-Progress pipeline split with family grouping + an LCOE-landscape strip; add sort/filter/search; make caveats (asterisk / low-grounding / archetype-fit None) first-class and honest everywhere.
-- **Provenance/maturity depth** (Tier-3 ideas 7–8): extract and surface the design-point block (plant name / maturity / `P_native`); replace the single confidence badge with a layered maturity panel (data-availability rating, grounding confidence, archetype-fit grade, least-mature key-subsystem TRL).
-- **Connective tissue** (Tier-4 ideas 10–12): continuous cross-page selection (fix the dead "Add to Comparison" button); enrich the compare picker with economics; unify the two tornado implementations.
-- **Cross-cutting requirement**: "honest about uncertainty" treated as a design principle on every surface that shows a number or field — the through-line that makes a known-stale dataset useful rather than misleading.
+**The pivot (away from the research doc's economics-first Tier 2).** The research doc originally framed the landing reframe *economics-first* — an LCOE-landscape strip as the centerpiece (its ideas 4–6). **We reversed this.** The landing page's organizing principle is now the **ontology** — the design space — not cost. LCOE is demoted to a ride-along column/overlay, never the spatial driver. Rationale: under known-stale numbers, leading with cost oversells the weakest data; leading with the design space (well-grounded categorical data) gives a trustworthy first orientation and makes cost one honest attribute among many.
 
-**Open questions to resolve when decomposing** (from the research doc): landing-page family taxonomy source (`ConfinementFamily` enum vs ontology subfamily — they disagree); how much synthesis-layer content to surface given uneven coverage (9 concepts); per-concept vs session-global toggle/selection state (confirm Item 1's per-concept toggle doesn't collide with future cross-page selection in `ExplorerState`).
+#### The conceptual model — three layers
+
+Everything below hangs off this. It also answers the "two maps that overlap" worry: the landing page and the constellation are *both* about the design space, but they show different things about it.
+
+1. **The shared spine** *(cross-cutting — infrastructure, not a page)*. One identity and one vocabulary, used on every surface:
+   - **Canonical identity** — a single display name per concept **and** the concept **code (#) shown clearly**, everywhere. Today a concept carries four-plus name strings (dir slug / CSV-with-fuel-suffix / frontmatter-with-company / extracted-JSON-name / design-point plant name), and the # is almost never visible (URL + `<title>` + one muted compare label). The # becomes the stable handle *precisely because* the prose names are unreliable.
+   - **One ontology facet + color vocabulary** — the dimension colors from `concept_ontology_v3.png` drive the filter chips, the matrix cells, and every legend. Set a filter once; it means the same thing on every surface. The attribute data already exists in `taxonomy_models.py` and the ontology tables, so this is UI wiring, not new extraction.
+   - **One honest-caveat device** — a single reusable marker for "low grounding / single-source / archetype-fit None / field not recorded," with a plain-language hover, applied identically wherever a value appears. Missing data *says so*; it never silently vanishes.
+
+2. **Landing = the ontology map** — *"what is each concept made of?"* The `concept_ontology_v3.png` table made live (the **living ontology matrix**). Raw per-concept attributes, filterable and re-groupable. This is where you look things up and narrow the field.
+
+3. **Constellation = the derived-similarity map** — *"what's near what, across families?"* Stays its own page for now, but **likely rebranded** away from "taxonomy/constellation" toward its real job: **surfacing comparison candidates across families** — concepts that are physically/economically comparable even when they sit in different branches of the tree. It shows similarity *computed from* the same attributes the matrix shows raw, which the matrix itself can't display. Shared filters (layer 1) carry over from the matrix.
+
+**The clean semantic line:** *matrix = the data (look up & filter); constellation = the computed structure over the data (see clusters, neighbors, cross-family bridges).* The family tree appears in both — as the default row-grouping on the matrix, and as navigation on the constellation page — same hierarchy, two intentional uses, not accidental duplication.
+
+#### Themed items (sequencing flexible; the spine underpins the rest)
+
+**Theme A — Identity & shared spine** *(cross-cutting prerequisite)* — ✅ **DONE (2026-06-07)** — all three (A1+A2+A3) implemented on `feat/explorer-identity-spine`; **PR #58** (→ `main`). Spec/design/plan in `.project/active/explorer-identity-spine/`.
+- **A1 — Canonical naming + visible concept code.** ✅ Done. `resolve_identity()` (server) + `conceptLabel()` (JS) — one canonical `Name (Fuel)` + visible `#code`, used on every naming surface (matrix row, concept header, compare columns, constellation nodes).
+- **A2 — Shared facet + color vocabulary.** ✅ Done. `ontology_palette.js` exports `ontologyPalette` + `facetModel` (10 facets) + `filterState`, colored from `:root` tokens traceable to `concept_ontology_v3.png`; the single color authority both maps consume (B1 already does).
+- **A3 — Honest-caveat device** (generalizes research idea 6). ✅ Done. `caveatMarker()` — one uncertainty marker (low-grounding asterisk, archetype-fit None, "not recorded"), used identically across surfaces.
+
+**Theme B — Landing as the living ontology map** — **status: B1 ✅ done (PR #59); B2 ⬜ not started; B3 ⬜ not started.** B1 (the centerpiece) is the only Theme B item built; B2 and B3 are deferred Phase-2 follow-ups for which B1 deliberately left clean hooks (a second view-toggle slot for B2; a `project`/column extension point for B3).
+- **B1 — The living ontology matrix (centerpiece).** ✅ **DONE (2026-06-07)** — implemented on `feat/explorer-ontology-matrix` (off `feat/explorer-identity-spine`); **PR #59** (→ `main`, stacks on #58); spec/design/plan in `.project/active/explorer-ontology-matrix/`. Matrix is the new home (`/`), card grid relocated to `/pipeline`. All four interactions live (filter / re-group / sort / hover), honest degradation throughout, rendered entirely through Theme A's authorities; no refetch. Rows = concepts grouped under the collapsible family tree; columns = ontology dimensions; cells = color-coded category chips (v3 palette). Interactions: **filter by clicking** a cell/chip (stack facets across columns); **re-group** rows under any column's categories (flip the organizing hierarchy live); **sort within group**; row → concept page; hover cell → value + source/caveat. Leftmost column carries the # + canonical name (A1). Dense — the whole field (~40 concepts × ~10 dimensions) on one screen, which the card grid can't do. Replaces the Approved/In-Progress pipeline split.
+- **B2 — Parallel-categories "flows" lens** ⬜ **not started** *(optional secondary view toggle on the same page)*. Dimensions as axes, ribbons = concept flows, thickness = count. Answers "how do these attributes co-occur" (do all stellarators use HTS? do pulsed concepts cluster on certain drivers?). Tradeoff: individual concepts dissolve into ribbons — good for structure, bad for find-my-concept; hence secondary, not the default. *(B1 left a view-toggle slot in the controls bar for this.)*
+- **B3 — Economics as ride-along** ⬜ **not started**. LCOE / confidence appear as optional matrix columns to sort/color by — present and honest, never the organizing principle. *(Explicitly excluded from B1 per FR-B1.9; B1 left a column/sort extension point.)*
+
+**Theme C — Constellation as the cross-family comparison map**
+- **C1 — Rebrand + refocus the constellation page** around cross-family comparison discovery. Carry the shared filters (A2) so a filtered set on the matrix arrives here. Name TBD; decide the cost-as-faint-tint question (lean: tint acceptable, never cost-as-position).
+- **C2 — Family / comparables comparison entry** (Tier-1 idea 3): surface the already-computed `comparables` set; "Compare with its N comparables" pre-populates `/compare`; "compare this whole family" from the matrix/constellation. The explorer computes `comparables` but never reads it.
+
+**Theme D — Provenance & maturity depth** *(concept page; continues the Phase 1 cost spine — unaffected by economics' demotion on landing)*
+- **D1 — Per-account override decomposition** (Tier-1 idea 9): for each overridden CAS account, show the `generic` (library) → `native` (analyst) delta + rationale — "library says X, analyst says Y, because…". Consumes the three-forward contract; the natural successor to Items 1–2.
+- **D2 — Design-point block** (Tier-3 idea 7): "what plant did we model?" — name / maturity / `P_native` / primary source, under the hero.
+- **D3 — Layered maturity panel** (Tier-3 idea 8): replace the single confidence badge with data-availability rating + grounding confidence + archetype-fit grade + least-mature key-subsystem TRL — the distinct trust questions, separated.
+
+**Theme E — Connective tissue** *(low-priority cleanup)*
+- **E1 — Continuous cross-page selection**; fix the dead "Add to Comparison" button.
+- **E2 — Enrich the compare picker** with LCOE / confidence / has-cost-model / ⚠.
+- **E3 — Unify the two tornado implementations.**
+
+#### Suggested sequencing
+
+Theme A (spine) first or concurrent with B, since both maps consume it. **Theme B is the headline reframe and the current focus.** Theme D continues the Phase-1 cost spine and can run in parallel (independent surface — the concept page). Theme C depends on A2's shared filters. Theme E is opportunistic cleanup. None of this depends on the LCOE numbers being correct — it improves the scaffolding for investigating them.
+
+#### Open questions (carry into decomposition)
+
+- **Canonical-name source of truth** (A1): which string wins, and is the fuel suffix / company kept? Two family notions also disagree — `ConfinementFamily` enum (MFE/IFE/MIF/NONSTANDARD; ARC is NONSTANDARD) vs. the richer ontology subfamily. Which drives matrix grouping?
+- **Cost-as-tint on the constellation** (C1): faint LCOE tint acceptable, or keep cost entirely off the design-space map?
+- **Constellation rebrand name** (C1).
+- **Parcats: secondary toggle vs. its own destination** (B2) — currently scoped as a toggle.
+- **Synthesis-layer coverage** (D): "What Would Change My Mind" / risk verdicts exist for only 9 concepts — surface where present (honest degradation) or defer until coverage is broader?
+- **Per-concept toggle vs. session-global selection** — confirm Item 1's per-concept `apply_analyst_overrides` doesn't collide with cross-page selection (E1) in `ExplorerState`.
 
 ---
 
@@ -267,8 +314,8 @@ Item 1 (Slider/Tornado/Headline Coherence)
 
 ---
 
-**Last Updated**: 2026-06-06 (Item 1-FU1 landed — CAS header hint now tracks live state on slider/toggle/reset)
-**Next Action**: Phase 1's two Tier-1 items are both done, and **Item 1-FU1** is now landed. Remaining loose end before closing Phase 1: the **Item 2-FU** below (re-extract concepts 37 & 39 once their pre-existing `model_setup.py` bugs are fixed — they were the only registry-bearing served concepts that could not refresh, so their ★/chip currently shows the stale pre-Item-2 state). Then decide whether to start Phase 2 (per-account decomposition).
+**Last Updated**: 2026-06-07 (**Theme A + B1 built and PR'd** — the living ontology matrix is now the home page. Theme A spine: PR #58; B1 matrix: PR #59. See `.project/active/explorer-identity-spine/` and `.project/active/explorer-ontology-matrix/`)
+**Next Action**: Two PRs are open against `main` — **#58 (Theme A — shared spine)** and **#59 (Theme B1 — ontology matrix)**. #59 stacks on #58 (branched off it), so **merge #58 first, then #59** (once #58 lands, #59's diff collapses to just the B1 commit). After they land, next Phase-2 candidates are **B2** (parallel-categories flows lens) and **B3** (economics as ride-along columns) — both left clean hooks by B1; and Theme C (constellation) / Theme D (concept-page provenance). Phase-1 loose end still open: **Item 2-FU** (re-extract concepts 37 & 39 once their `model_setup.py` bugs are fixed).
 
 #### Item 2-FU: Re-extract 37 & 39 after concept-side model_setup.py fixes [blocked, trivial once unblocked]
 

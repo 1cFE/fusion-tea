@@ -135,6 +135,7 @@ def base_dir_with_pages(base_dir: Path) -> Path:
     """
     dist_dir = base_dir / "dist"
     dist_dir.mkdir()
+    (dist_dir / "matrix.html").write_text("<html>matrix</html>")
     (dist_dir / "index.html").write_text("<html>index</html>")
     (dist_dir / "compare.html").write_text("<html>compare</html>")
     concept_dir = dist_dir / "concept"
@@ -282,10 +283,18 @@ def test_parameter_not_found_detail_message(client: TestClient) -> None:
 # ---------------------------------------------------------------------------
 
 
-def test_index_page_returns_200(client_with_pages: TestClient) -> None:
+def test_matrix_is_home(client_with_pages: TestClient) -> None:
+    """/ now serves the ontology matrix (B1), not the card grid."""
     resp = client_with_pages.get("/")
     assert resp.status_code == 200
-    assert "index" in resp.text
+    assert "matrix" in resp.text  # dist/matrix.html served at /
+
+
+def test_pipeline_serves_grid(client_with_pages: TestClient) -> None:
+    """The Approved/In-Progress card grid relocated to /pipeline (B1, FR-B1.10)."""
+    resp = client_with_pages.get("/pipeline")
+    assert resp.status_code == 200
+    assert "index" in resp.text  # relocated card grid (dist/index.html)
 
 
 def test_compare_page_returns_200(client_with_pages: TestClient) -> None:

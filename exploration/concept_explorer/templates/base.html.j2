@@ -19,9 +19,14 @@
         Taxonomy
       </a>
       <a href="/"
-         class="nav__link{% if active_nav == 'concepts' %} nav__link--active{% endif %}"
-         aria-current="{% if active_nav == 'concepts' %}page{% else %}false{% endif %}">
+         class="nav__link{% if active_nav == 'matrix' %} nav__link--active{% endif %}"
+         aria-current="{% if active_nav == 'matrix' %}page{% else %}false{% endif %}">
         All Concepts
+      </a>
+      <a href="/pipeline"
+         class="nav__link{% if active_nav == 'pipeline' %} nav__link--active{% endif %}"
+         aria-current="{% if active_nav == 'pipeline' %}page{% else %}false{% endif %}">
+        Pipeline
       </a>
       <a href="/compare"
          class="nav__link{% if active_nav == 'compare' %} nav__link--active{% endif %}"

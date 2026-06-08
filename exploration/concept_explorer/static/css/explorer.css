@@ -3101,3 +3101,276 @@ main {
   font-style: italic;
   color: var(--color-text-muted);
 }
+
+/* ===========================================================================
+   B1 — Ontology Matrix (the home-page field view)
+   All colors come from existing :root tokens or, for chips/bands, inline from
+   ontologyPalette (the single color authority) — no new hexes here.
+   =========================================================================== */
+
+.matrix-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+.matrix-controls__summary {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* Scroll container: owns both axes so the sticky thead (top:0) and identity
+   column (left:0) stick to the matrix region rather than the page. */
+.matrix-table-wrap {
+  overflow: auto;
+  max-height: calc(100vh - var(--nav-height) - 140px);
+  margin: 0 var(--space-4) var(--space-8);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.matrix-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  font-size: var(--font-size-sm);
+}
+
+.matrix-head {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: var(--color-surface-2);
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+.matrix-head--identity {
+  left: 0;
+  z-index: 30; /* above both the column headers and the identity column cells */
+}
+.matrix-head--sortable {
+  cursor: pointer;
+  user-select: none;
+}
+.matrix-head--sortable:hover {
+  color: var(--color-text-primary);
+}
+
+.matrix-cell {
+  padding: var(--space-1) var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+  vertical-align: middle;
+}
+.matrix-cell--identity {
+  position: sticky;
+  left: 0;
+  z-index: 10;
+  background-color: var(--color-bg);
+  white-space: nowrap;
+}
+.matrix-identity {
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+.matrix-identity:hover {
+  text-decoration: underline;
+}
+.matrix-row:hover .matrix-cell {
+  background-color: var(--color-surface-1);
+}
+
+/* Band header row — full-width; tree bands take the family color as a left rail. */
+.matrix-band__cell {
+  position: sticky;
+  left: 0;
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--color-surface-1);
+  border-left: 3px solid var(--color-border);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  cursor: pointer;
+  user-select: none;
+}
+.matrix-band__cell--neutral {
+  border-left-color: var(--color-text-muted);
+}
+.matrix-band__toggle {
+  display: inline-block;
+  width: 1em;
+  margin-right: var(--space-1);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+}
+.matrix-row--hidden {
+  display: none;
+}
+.matrix-band__label {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+.matrix-band__count {
+  margin-left: var(--space-2);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* Ontology chips — background set inline from ontologyPalette; the text color
+   class is chosen by computed contrast (inkClassFor) so it stays readable on
+   both the dark and the light palette entries. */
+.onto-chip {
+  display: inline-block;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  line-height: 1.5;
+  white-space: nowrap;
+  max-width: 18ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+.onto-chip--ink {
+  color: var(--color-bg);
+}
+.onto-chip--paper {
+  color: var(--color-text-primary);
+}
+.onto-chip--missing {
+  font-style: italic;
+  opacity: 0.85;
+}
+/* Click-to-filter affordances + selected state (Phase 3). */
+.onto-chip--clickable,
+.onto-chip--toggle {
+  cursor: pointer;
+}
+.onto-chip--clickable:hover,
+.onto-chip--toggle:hover {
+  filter: brightness(1.15);
+}
+.onto-chip--selected {
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 1px;
+}
+
+/* Controls bar — group-by select + filter-panel toggle. */
+.matrix-control {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.matrix-control__label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+.matrix-control__select {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-2);
+}
+.matrix-control__btn {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-3);
+  cursor: pointer;
+}
+.matrix-control__btn.is-active {
+  color: var(--color-text-primary);
+  border-color: var(--color-text-muted);
+}
+
+/* Filter panel — hidden until the Filters toggle opens it; one group per facet. */
+.matrix-filter-panel {
+  display: none;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-surface-1);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+.matrix-filter-panel.is-open {
+  display: flex;
+}
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 140px;
+}
+.filter-group__label {
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+}
+.filter-group__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  max-width: 320px;
+}
+
+/* Active-filter bar — removable pills + clear all (shown only when filtering). */
+.matrix-active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+.matrix-active-filters.is-active {
+  padding: var(--space-2) var(--space-4);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+.active-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 1px var(--space-1) 1px var(--space-2);
+}
+.active-filter__remove {
+  font-size: var(--font-size-xs);
+  line-height: 1;
+  color: var(--color-text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 2px;
+}
+.active-filter__remove:hover {
+  color: var(--color-text-primary);
+}
+.matrix-clear-btn {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 1px var(--space-2);
+  cursor: pointer;
+}
+.matrix-clear-btn:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-text-muted);
+}

@@ -542,7 +542,10 @@ def _render_templates(
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_text(tmpl.render(**ctx))
 
-    _try_render("index.html.j2", dist_dir / "index.html", active_nav="concepts")
+    # B1: the ontology matrix is the home page (/); the Approved/In-Progress
+    # card grid (index.html) relocates to /pipeline. Both render here.
+    _try_render("matrix.html.j2", dist_dir / "matrix.html", active_nav="matrix")
+    _try_render("index.html.j2", dist_dir / "index.html", active_nav="pipeline")
     _try_render("compare.html.j2", dist_dir / "compare.html", active_nav="compare")
     _try_render("taxonomy.html.j2", dist_dir / "taxonomy.html", active_nav="taxonomy")
 
@@ -551,7 +554,7 @@ def _render_templates(
             "concept.html.j2",
             dist_dir / "concept" / f"{concept_id}.html",
             concept_id=concept_id,
-            active_nav="concepts",
+            active_nav="matrix",
         )
 
 
@@ -698,7 +701,13 @@ def api_taxonomy_constellation(state: _State = Depends(get_state)) -> Constellat
 
 # -- Page routes --
 
-def index_page(state: _State = Depends(get_state)) -> FileResponse:
+def matrix_page(state: _State = Depends(get_state)) -> FileResponse:
+    """Home page (B1): the ontology matrix."""
+    return _serve(state.dist_dir / "matrix.html")
+
+
+def pipeline_page(state: _State = Depends(get_state)) -> FileResponse:
+    """Relocated Approved/In-Progress card grid (B1, FR-B1.10)."""
     return _serve(state.dist_dir / "index.html")
 
 
@@ -875,7 +884,8 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
     app.get("/api/taxonomy/similarity/{concept_id}", response_model=ConceptSimilarityReport)(api_taxonomy_similarity)
     app.get("/api/taxonomy/compare/{concept_a}/{concept_b}", response_model=SimilarityResult)(api_taxonomy_compare)
     app.get("/api/taxonomy/constellation", response_model=ConstellationData)(api_taxonomy_constellation)
-    app.get("/")(index_page)
+    app.get("/")(matrix_page)
+    app.get("/pipeline")(pipeline_page)
     app.get("/compare")(compare_page)
     app.get("/taxonomy")(taxonomy_page)
     app.get("/concept/{concept_id}")(concept_page)
