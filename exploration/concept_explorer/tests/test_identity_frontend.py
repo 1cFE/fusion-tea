@@ -49,7 +49,7 @@ _RAW_NAME_EXCLUDED = {
 }
 
 # Templates that load a naming surface, each must pull in concept_label.js.
-_TEMPLATES = ["index.html.j2", "concept.html.j2", "compare.html.j2", "taxonomy.html.j2"]
+_TEMPLATES = ["index.html.j2", "concept.html.j2", "compare.html.j2"]
 
 # A `<recv>.name` read is legitimate when <recv> is a conceptLabel() *result*.
 # Result objects are named with the convention `lbl` / `*Lbl` / `*Label`.

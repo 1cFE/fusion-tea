@@ -33,7 +33,7 @@ _FAMILY_CONSUMERS = [
     "view_summary.js",
     "view_sensitivity.js",
 ]
-_TEMPLATES = ["index.html.j2", "concept.html.j2", "compare.html.j2", "taxonomy.html.j2"]
+_TEMPLATES = ["index.html.j2", "concept.html.j2", "compare.html.j2"]
 
 # The distinctive family-identity hexes. The 4th family color, grey #6b7280
 # (NONSTANDARD), is deliberately excluded here — it's a generic UI grey also

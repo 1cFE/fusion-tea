@@ -550,7 +550,6 @@ def _render_templates(
     _try_render("matrix.html.j2", dist_dir / "matrix.html", active_nav="matrix")
     _try_render("index.html.j2", dist_dir / "index.html", active_nav="pipeline")
     _try_render("compare.html.j2", dist_dir / "compare.html", active_nav="compare")
-    _try_render("taxonomy.html.j2", dist_dir / "taxonomy.html", active_nav="taxonomy")
     _try_render(
         "cost_landscape.html.j2", dist_dir / "cost_landscape.html", active_nav="cost_landscape"
     )
@@ -730,10 +729,6 @@ def compare_page(state: _State = Depends(get_state)) -> FileResponse:
     return _serve(state.dist_dir / "compare.html")
 
 
-def taxonomy_page(state: _State = Depends(get_state)) -> FileResponse:
-    return _serve(state.dist_dir / "taxonomy.html")
-
-
 def cost_landscape_page(state: _State = Depends(get_state)) -> FileResponse:
     """Cross-concept LCOE-decomposition page (Theme F)."""
     return _serve(state.dist_dir / "cost_landscape.html")
@@ -909,7 +904,6 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
     app.get("/")(matrix_page)
     app.get("/pipeline")(pipeline_page)
     app.get("/compare")(compare_page)
-    app.get("/taxonomy")(taxonomy_page)
     app.get("/cost-landscape")(cost_landscape_page)
     app.get("/concept/{concept_id}")(concept_page)
 

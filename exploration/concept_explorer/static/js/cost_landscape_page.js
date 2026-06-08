@@ -317,7 +317,9 @@
           layer: "below",
         });
         // Boundary separator (distinguishes adjacent same-color zones, e.g.
-        // sibling tree leaves under one family).
+        // sibling tree leaves under one family). Spans below the x-axis into
+        // the bottom margin so the vertical band labels sit visually inside
+        // their zone.
         if (i > 0) {
           shapes.push({
             type: "line",
@@ -325,22 +327,26 @@
             yref: "paper",
             x0: x0,
             x1: x0,
-            y0: 0,
-            y1: 1.07,
+            y0: -0.30,
+            y1: 1.0,
             line: { color: tok("--color-border"), width: 1 },
           });
         }
-        // Label, staggered into two rows so neighbors don't overlap.
+        // Label below the x-axis (under the concept code ticks), rotated
+        // vertical so 22-group density doesn't cause horizontal collisions.
+        // Full leaf name — no truncate — since vertical labels grow into the
+        // bottom margin without competing for horizontal space.
         annotations.push({
           xref: "x",
           yref: "paper",
           x: (span.start + span.end) / 2,
-          y: i % 2 === 0 ? 1.065 : 1.02,
-          yanchor: "bottom",
+          y: -0.16,
+          yanchor: "top",
           xanchor: "center",
           showarrow: false,
-          text: truncate(bandShortLabel(span.label), 16),
-          font: { color: color || tok("--color-text-secondary"), size: 10 },
+          text: bandShortLabel(span.label),
+          textangle: -90,
+          font: { color: color || tok("--color-text-secondary"), size: 11 },
         });
       });
     }
@@ -391,8 +397,9 @@
       },
       barmode: "stack",
       bargap: 0.25,
-      height: 560,
-      margin: { l: 60, r: 20, t: 64, b: 96 },
+      autosize: true,
+      height: 640,
+      margin: { l: 60, r: 20, t: 40, b: 220 },
       xaxis: {
         tickmode: "array",
         tickvals: ordered.map(function (_, i) {
@@ -425,9 +432,9 @@
       legend: {
         orientation: "h",
         x: 0,
-        y: -0.22,
+        y: 1.02,
         xanchor: "left",
-        yanchor: "top",
+        yanchor: "bottom",
         font: { color: tok("--color-text-secondary"), size: 11 },
         bgcolor: "transparent",
       },
@@ -437,6 +444,13 @@
     };
 
     Plotly.react(mount, traces, layout, PLOTLY_CONFIG);
+    // Force a resize on the next animation frame. The chart was rendered
+    // while #cost-landscape-content was display:none (loading state), so
+    // Plotly measured a zero/default width and never re-laid-out when the
+    // content was unhidden. responsive:true only handles window resize.
+    requestAnimationFrame(function () {
+      Plotly.Plots.resize(mount);
+    });
 
     // Bar click → concept page (FR-F9 / D6). Attached once; the handler reads
     // the clicked point's customdata (concept_id), so it stays correct across

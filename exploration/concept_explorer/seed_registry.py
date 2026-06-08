@@ -151,6 +151,25 @@ def _parse_row(row: dict[str, str]) -> ConceptTaxonomy:
 # group.
 
 
+# Display-only tree-grouping overrides (intentional ADR exception, 2026-06-08).
+# The ADR above prefers architecture-driven classification with no ID lookups,
+# but rare cases call for explicit per-concept display regrouping in the cost
+# landscape / matrix views. Keys are concept_ids; values are kwargs that
+# tree_group() and the level-1 grouping in _build_decision_tree() consult to
+# place the concept in a non-canonical tree slot.
+#
+# 18 (TAE p-B11 FRC): the CSV correctly classifies TAE as MFE-COMPACT_TOROID
+#   (steady-state beam-driven FRC) — but for cross-concept cost comparison the
+#   analyst wants it grouped with Helion (08, MIF FRC compression) since both
+#   are FRC-architecture concepts regardless of pulsed vs steady-state.
+#   Display only; the underlying ConceptTaxonomy and all analytical surfaces
+#   (scoring, detect_c2_category, comparison view classifications) see the
+#   canonical MFE-COMPACT_TOROID values. To revert, delete the "18" entry.
+_DISPLAY_OVERRIDES: dict[str, dict[str, str]] = {
+    "18": {"tree_group": "MIF", "mif_method": "FRC compression"},
+}
+
+
 def tree_group(c: ConceptTaxonomy) -> str:
     """v3 display-only sibling grouping for the decision tree.
 
@@ -158,7 +177,14 @@ def tree_group(c: ConceptTaxonomy) -> str:
     no ID-prefix lookup); keep slug overrides in sync if any are added.
 
     Returns one of: "MFE", "IFE", "MIF", "Cmpt-Tor", "Estatic", "Other".
+
+    Per-concept display overrides honored when present (see
+    _DISPLAY_OVERRIDES above); these are deliberate ADR exceptions and
+    always carry a justification comment in that dict.
     """
+    override = _DISPLAY_OVERRIDES.get(c.concept_id, {}).get("tree_group")
+    if override is not None:
+        return override
     if c.confinement_family == ConfinementFamily.NONSTANDARD:
         if c.non_standard_mechanism == NonStandardMechanism.ELECTROSTATIC:
             return "Estatic"
@@ -226,9 +252,17 @@ def _build_decision_tree(concepts: list[ConceptTaxonomy]) -> dict:
 
         field_name, attr_name = level1_cfg
 
-        # Group by first hierarchy level
+        # Group by first hierarchy level.
+        # Per-concept display overrides (see _DISPLAY_OVERRIDES) can substitute
+        # a level-1 value for a concept whose CSV row reports None for the
+        # group's attr — used for the same ADR-exception display regrouping
+        # tree_group() honors.
         by_level1: dict[str, list[ConceptTaxonomy]] = defaultdict(list)
         for c in group_concepts:
+            override_val = _DISPLAY_OVERRIDES.get(c.concept_id, {}).get(attr_name)
+            if override_val is not None:
+                by_level1[override_val].append(c)
+                continue
             val = getattr(c, attr_name)
             if val is not None:
                 by_level1[val.value].append(c)

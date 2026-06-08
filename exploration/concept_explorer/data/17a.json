@@ -10,6 +10,7 @@
   "has_cost_model": true,
   "has_sensitivities": true,
   "model_type": "costingfe",
+  "data_grounded": true,
   "cost_model": {
     "cas10": {
       "name": "Preconstruction",
@@ -23,7 +24,7 @@
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 3189.45849609375,
+      "cost_m_usd": 3189.458740234375,
       "overridden": false
     },
     "cas23": {
@@ -63,7 +64,7 @@
     },
     "cas30": {
       "name": "Indirect Costs",
-      "cost_m_usd": 929.3554077148438,
+      "cost_m_usd": 929.35546875,
       "overridden": false
     },
     "cas40": {
@@ -73,7 +74,7 @@
     },
     "cas50": {
       "name": "Supplementary Costs",
-      "cost_m_usd": 302.49493408203125,
+      "cost_m_usd": 302.4949645996094,
       "overridden": false
     },
     "cas60": {
@@ -103,7 +104,7 @@
     },
     "cas90": {
       "name": "Financial Costs",
-      "cost_m_usd": 529.7632446289062,
+      "cost_m_usd": 529.7633056640625,
       "overridden": false
     },
     "cas22_detail": {
@@ -199,8 +200,8 @@
       }
     },
     "headline": {
-      "lcoe_per_mwh": 83.4891128540039,
-      "overnight_cost_per_kw": 7062.64990234375,
+      "lcoe_per_mwh": 83.48912811279297,
+      "overnight_cost_per_kw": 7062.650390625,
       "p_net_mw": 499.9999694824219,
       "q_eng": 5.499999523162842,
       "capacity_factor": 0.85
@@ -212,7 +213,7 @@
           "baseline": 0.85
         },
         "construction_time_yr": {
-          "elasticity": 0.32894625191561233,
+          "elasticity": 0.32894633176606414,
           "baseline": 6.0
         },
         "mn": {
@@ -314,7 +315,7 @@
       },
       "financial": {
         "interest_rate": {
-          "elasticity": 0.7995331061008292,
+          "elasticity": 0.7995329272358163,
           "baseline": 0.07
         },
         "inflation_rate": {

@@ -76,6 +76,15 @@
   /** @type {Object|null} ConceptManifest fetched on init. */
   let manifest = null;
 
+  /**
+   * @type {string[]} Concept IDs in the order the cost-landscape chart displays
+   * them (tree-grouped, LCOE-ascending within band). Used to order the picker
+   * and to filter out concepts the cost landscape excludes (freeform /
+   * non-grounded / no cost model). Populated by init() after fetching the
+   * landscape + taxonomy data.
+   */
+  let pickerOrder = [];
+
   /** @type {Record<string, Object>} Lazily populated ConceptData cache. */
   let conceptCache = {};
 
@@ -317,9 +326,17 @@
     listEl.innerHTML = "";
 
     const selectedSet = new Set(_state.concepts);
-    const available = manifest.concepts.filter(
-      (entry) => !selectedSet.has(entry.concept_id)
-    );
+    // pickerOrder mirrors the cost-landscape chart (tree-grouped, LCOE-asc
+    // within band) and excludes concepts the chart excludes (freeform /
+    // non-grounded / no cost model). Resolve each ID back to its manifest
+    // entry; skip any that are no longer in the manifest (defensive).
+    const byId = {};
+    manifest.concepts.forEach((c) => {
+      byId[c.concept_id] = c;
+    });
+    const available = pickerOrder
+      .map((id) => byId[id])
+      .filter((entry) => entry && !selectedSet.has(entry.concept_id));
 
     // Count header
     const countEl = el("div", "text-muted text-xs");
@@ -676,14 +693,61 @@
     errorEl.style.display = "none";
     warningEl.style.display = "none";
 
-    // Step 1-2: Fetch manifest
+    // Step 1-2: Fetch manifest + the same payloads the cost landscape uses,
+    // so the picker can list concepts in the chart's order and omit those the
+    // chart excludes (freeform / non-grounded / no cost model).
+    let registry, tree, landscape;
     try {
-      manifest = await fetchManifest();
+      const payloads = await Promise.all([
+        fetchManifest(),
+        fetch("/api/taxonomy/registry").then((r) => r.json()),
+        fetch("/api/taxonomy/tree").then((r) => r.json()),
+        fetch("/api/cost-landscape").then((r) => r.json()),
+      ]);
+      manifest = payloads[0];
+      registry = payloads[1];
+      tree = payloads[2];
+      landscape = payloads[3];
     } catch (err) {
       console.error("[compare] Failed to load manifest:", err);
       loadingEl.style.display = "none";
       errorEl.style.display = "";
       return;
+    }
+
+    // Build the cost-landscape display order: same tree grouping + within-band
+    // LCOE-ascending sort the chart applies. Concepts not in landscape.concepts
+    // (freeform / non-grounded / no cost model) are dropped, matching the
+    // chart's exclusion rule.
+    try {
+      const costById = {};
+      (landscape.concepts || []).forEach((c) => {
+        costById[c.concept_id] = c;
+      });
+      const joined = matrixData.joinConcepts(manifest, registry);
+      const rows = joined
+        .filter((r) => costById[r.concept_id])
+        .map((r) => Object.assign({}, r, { cost: costById[r.concept_id] }));
+      const bands = matrixData.project(
+        rows,
+        { groupBy: "tree", sortKey: "code", sortDir: "asc", filter: null },
+        tree,
+      );
+      bands.forEach((b) => {
+        b.rows.sort((a, b) => {
+          const la = a.cost.lcoe,
+            lb = b.cost.lcoe;
+          if (la !== lb) return la - lb;
+          return String(a.concept_id) < String(b.concept_id) ? -1 : 1;
+        });
+      });
+      pickerOrder = [];
+      bands.forEach((b) => {
+        b.rows.forEach((r) => pickerOrder.push(r.concept_id));
+      });
+    } catch (err) {
+      console.warn("[compare] cost-landscape ordering failed, falling back to manifest order:", err);
+      pickerOrder = manifest.concepts.map((c) => c.concept_id);
     }
 
     // Step 3: Parse URL and validate

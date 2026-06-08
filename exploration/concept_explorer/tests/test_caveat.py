@@ -33,7 +33,7 @@ _CAVEAT_SITES = [
     "comparison.js",
     "neighborhood_graph.js",
 ]
-_TEMPLATES = ["index.html.j2", "concept.html.j2", "compare.html.j2", "taxonomy.html.j2"]
+_TEMPLATES = ["index.html.j2", "concept.html.j2", "compare.html.j2"]
 
 
 # ---------------------------------------------------------------------------

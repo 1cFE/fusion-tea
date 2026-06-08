@@ -10,6 +10,7 @@
   "has_cost_model": true,
   "has_sensitivities": true,
   "model_type": "costingfe",
+  "data_grounded": true,
   "cost_model": {
     "cas10": {
       "name": "Preconstruction",
@@ -212,7 +213,7 @@
           "baseline": 0.85
         },
         "construction_time_yr": {
-          "elasticity": 0.3223864041986039,
+          "elasticity": 0.3223864815046351,
           "baseline": 6.0
         },
         "mn": {
