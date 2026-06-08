@@ -543,7 +543,7 @@ def _render_templates(
         except TemplateNotFound:
             return
         dest.parent.mkdir(parents=True, exist_ok=True)
-        dest.write_text(tmpl.render(**ctx))
+        dest.write_text(tmpl.render(**ctx), encoding="utf-8")
 
     # B1: the ontology matrix is the home page (/); the Approved/In-Progress
     # card grid (index.html) relocates to /pipeline. Both render here.

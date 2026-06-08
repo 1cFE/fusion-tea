@@ -52,7 +52,7 @@ def main() -> None:
             rows.append((cid, "skip", "no model_setup.py"))
             continue
 
-        old_lcoe = extract_lcoe(output_path.read_text(encoding="utf-8")) \
+        old_lcoe = extract_lcoe(output_path.read_text(encoding="utf-8", errors="replace")) \
                    if output_path.exists() else "(none)"
 
         print(f"  {cid:<55} running ... ", end="", flush=True)
