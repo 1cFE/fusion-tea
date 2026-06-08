@@ -43,6 +43,21 @@ spec = dict(
     # No design-point-specific geometry or physics overrides — Inertia has not
     # disclosed quantitative specs beyond rep rate / laser energy / efficiency
     # (which are YAML-defaulted or not spec-overridable per Hard Rule 3).
+    #
+    # Per-shot target consumable cost override.
+    # Thunderwall inherits NIF's Hybrid-E indirect-drive geometry: cryogenic
+    # D-T capsule inside a metal hohlraum. The hohlraum hardware roughly
+    # doubles per-shot consumable cost vs a bare direct-drive capsule
+    # ($0.27 → $0.70 NOAK, per Rickman/Goodin GA 2003 hohlraum costing).
+    # The LASER_IFE library default ($0.40) is a mid-value between
+    # direct-drive ($0.27) and indirect-drive ($0.70); for Inertia's
+    # explicitly indirect-drive design the high end applies.
+    # Source: pulsed_laser_ife.yaml + CAS80_target_consumables.md
+    #   (Rickman/Goodin GA 2003 §Indirect Drive Target Costing; NAS 2013
+    #   §Target Fabrication, $0.20–$0.40 direct vs $0.70 indirect bands).
+    # Inertia's "<$1 per target" aspirational claim (analysis §5b) is
+    # consistent with this NOAK literature value.
+    target_unit_cost=0.70,  # $/shot — NIF-style indirect drive, NOAK basis
 )
 P_native = 1500  # MWe — analysis.md Design Point block
 

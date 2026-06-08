@@ -8,7 +8,6 @@
 # string IDs produced by parse_concept_id (see load_omit_list in models.py).
 # Adding/removing a concept here is the only edit needed — no code change.
 
-"26": "Incomplete analysis — not ready for cross-concept comparison"
 "27": "Incomplete analysis — not ready for cross-concept comparison"
 "34": "Incomplete analysis — not ready for cross-concept comparison"
 "38": "Incomplete analysis — not ready for cross-concept comparison"

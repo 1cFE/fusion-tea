@@ -1,6 +1,6 @@
-LCOE: 89.8 $/MWh   (1 GWe NOAK projection)
-Native LCOE = 77.3 $/MWh   (P_native, n_mod=1, overrides on)
-Generic LCOE = 77.3 $/MWh   (P_native, n_mod=1, overrides off)
+LCOE: 105.4 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 87.7 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 87.7 $/MWh   (P_native, n_mod=1, overrides off)
 Overnight: generic 4780 $/kW   native 4780 $/kW   1 GWe 5103 $/kW
 
 CAS               generic           native            1 GWe
@@ -20,7 +20,7 @@ CAS40                47.8             47.8             39.0
 CAS50               472.1            472.1            323.8
 CAS60              1156.0           1156.0            822.7
 CAS70               170.3            170.3            130.9
-CAS80               155.6            155.6            155.2
+CAS80               271.4            271.4            271.0
 CAS90               537.8            537.8            382.8
 --------------------------------------------------------
 TOTAL              7169.9           7169.9           5103.0

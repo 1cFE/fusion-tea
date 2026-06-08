@@ -134,6 +134,18 @@ result = model.forward(
     p_cryo=0.5,       # Cryogenic systems [MW]
     p_target=1.0,     # Target factory auxiliary power [MW]
 
+    # Per-shot target consumable cost.
+    # Pearl™ cone-in-shell geometry: cryogenic D-T capsule + gold ignitor cone.
+    # Cone hardware adds material + machining + alignment cost beyond a bare
+    # symmetric direct-drive capsule but is less than an indirect-drive
+    # hohlraum (no full radiation cavity). ~2× LIFE direct-drive ($0.40 mid
+    # NOAK) but below NIF-style indirect-drive ($0.70).
+    # Source: pulsed_laser_ife.yaml + CAS80_target_consumables.md (Woodworth-
+    #   Meier 1995, Goodin/GA 2004, NAS 2013); fast-ignition cone-in-shell
+    #   complexity per Norreys et al. (HiPER design) and analysis.md §Challenge 4
+    #   ("Pearl™ cone-in-shell geometry is more complex than symmetric CHS").
+    target_unit_cost=0.80,  # $/shot — cone-in-shell D-T, NOAK basis
+
     # ── Radial build geometry (spherical chamber) ─────────────────────
     # Chamber radius (plasma_t for IFE = chamber inner radius).
     # DEFAULT: pulsed_laser_ife.yaml — 4.0 m. No chamber design disclosed
@@ -217,6 +229,12 @@ cas = [
     ("CAS80", "Fuel (annualized)",        c.cas80),
     ("CAS90", "Financial",                c.cas90),
 ]
+
+# Module-level alias for the explorer extractor's strict-consumer contract.
+# 17b's design point IS 1 GWe (NET_ELECTRIC_MW=1000), so the native forward
+# already satisfies result_1gw.params == {'net_electric_mw': 1000, 'n_mod': 1}.
+# No second forward needed — replication scaling is the identity here.
+result_1gw = result
 
 print(f"{'Code':<8} {'Account':<28} {'M$':>10}")
 print("-" * 48)
