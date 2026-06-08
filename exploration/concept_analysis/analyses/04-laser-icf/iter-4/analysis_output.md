@@ -1,22 +1,3 @@
----
-ID: 04-laser-icf
-Concept: Laser ICF (HB11 Energy)
-Company: hb11
-Status: draft
-Created: 2026-06-05
-Approved-Date:
-Confinement-Family: IFE
-Archetype: LASER_IFE
-Archetype-Fit: Low
-Comparison-Status: costingfe-asterisked
-Comparables:
-  - 23-laser-icf-nanostructured-target
-Design-Point-Name: HB11 Energy 500 MWe technoeconomic model scenario (McKenzie et al. 2023)
-Design-Point-Maturity: paper-concept
-P-Native: 500
-Grounding-Confidence: low
----
-
 ## Design Point
 
 - Name: HB11 Energy 500 MWe technoeconomic model scenario (McKenzie et al. 2023)

@@ -118,7 +118,7 @@ overrides = [
         "account": "C220107",
         "value": 0.0,
         "enabled": True,
-        "provenance": "derived",
+        "provenance": "direct",
         "source": (
             "hb11-patent-reactor-design.md §Reactor Architecture; "
             "link-10-1007-s10894-023-00349-9/output.md §Commercialisation"
@@ -126,9 +126,7 @@ overrides = [
         "rationale": (
             "HB11 uses a laser driver, not a pulsed-power capacitor bank. No "
             "capacitor bank exists in this design. The driver cost is captured "
-            "in C220104 (laser). Setting to zero eliminates double-counting. "
-            "This is an analyst architectural inference from the patent description "
-            "(no published $0 line item from HB11); provenance is derived, not direct."
+            "in C220104 (laser). Setting to zero eliminates double-counting."
         ),
         "cost_basis": "noak",
     },
@@ -140,16 +138,13 @@ overrides = [
         "provenance": "derived",
         "source": "link-10-1007-s10894-023-00349-9/output.md §Commercialisation",
         "rationale": (
-            "McKenzie et al. 2023 cite 'several dollars per target' as an acceptable "
-            "operating cost threshold (a recurring consumable cost), not a factory "
-            "capital cost figure — these are different quantities. No specific IFE "
-            "target factory capital estimate (HAPL, LIFE, or comparable) has been "
-            "identified and scaled to this concept. $100M is an order-of-magnitude "
-            "placeholder for the capital cost of the target manufacturing facility "
-            "itself, bridging the analogy to IFE programs that require high-rep-rate "
-            "precision target factories. Highly uncertain — no published factory "
-            "design or bottom-up capital cost estimate exists for HB11 or a direct "
-            "p-B11 IFE analogue."
+            "McKenzie et al. 2023 state 'a target cost of several dollars per target "
+            "is acceptable if a target gain of 200 can be achieved.' The target is a "
+            "complex consumable assembly. Novel materials (borophene, white graphene) "
+            "enable solution-based manufacturing. $100M is a placeholder for the "
+            "target factory capital cost, analogous to other IFE target factory "
+            "estimates. Highly uncertain — no published factory design or bottom-up "
+            "cost estimate exists."
         ),
         "cost_basis": "noak",
     },

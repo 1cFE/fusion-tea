@@ -1,0 +1,29 @@
+{
+  "iteration": 3,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "external",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": false,
+  "merged_assess": false,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/04-laser-icf/iter-01/sources/hb11-company-overview.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/04-laser-icf/iter-01/sources/hb11-osaka-experiment-2022.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/04-laser-icf/iter-01/sources/hb11-patent-reactor-design.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/04-laser-icf/iter-01/sources/hb11-technology-page.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/04-laser-icf/iter-02/sources/hb11-newatlas-article.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/04-laser-icf/iter-02/sources/hb11-recent-developments-2024-2025.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/04-laser-icf/iter-02/sources/hb11-technology-page-2025.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/04-laser-icf/iter-03/sources/fusionxinvest-company-profile-4353-hb11-energy.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/04-laser-icf/iter-03/sources/globenewswire-news-release-2025-02-10-3023820-0-en-general.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/04-laser-icf/iter-03/sources/hb11-our-technology.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/04-laser-icf/iter-03/sources/interestingengineering-energy-hb11-joins-largest-laser-lab.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/04-laser-icf/iter-03/sources/link-10-1007-s10894-023-00349-9.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/04-laser-icf/iter-03/sources/newatlas-energy-hb11-laser-fusion-demonstration.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/04-laser-icf/iter-03/sources/power-technology-features-hb11-the-australian-start-up.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/04-laser-icf/iter-03/sources/prnewswire-news-releases-hb11-energy-receives-grant-from-us.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/04-laser-icf/iter-03/sources/unsw-newsroom-news-2020-02-pioneering-technology-promises.md"
+  ],
+  "timestamp": "2026-06-07T17:27:39.902559+00:00"
+}

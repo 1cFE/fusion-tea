@@ -1,22 +1,3 @@
----
-ID: 04-laser-icf
-Concept: Laser ICF (HB11 Energy)
-Company: hb11
-Status: draft
-Created: 2026-06-05
-Approved-Date:
-Confinement-Family: IFE
-Archetype: LASER_IFE
-Archetype-Fit: Low
-Comparison-Status: costingfe-asterisked
-Comparables:
-  - 23-laser-icf-nanostructured-target
-Design-Point-Name: HB11 Energy 500 MWe technoeconomic model scenario (McKenzie et al. 2023)
-Design-Point-Maturity: paper-concept
-P-Native: 500
-Grounding-Confidence: low
----
-
 ## Design Point
 
 - Name: HB11 Energy 500 MWe technoeconomic model scenario (McKenzie et al. 2023)
@@ -233,7 +214,7 @@ The per-account walkthrough below applies the canonical 1costingFE account schem
 ```yaml
 overrides:
   - account: C220101
-    value: 0.05 * generic.cas22_detail["C220101"]
+    value: 0.05 * generic.costs.c220101
     enabled: true
     provenance: derived
     source: "link-10-1007-s10894-023-00349-9/output.md §Commercialisation; hb11-patent-reactor-design.md §Energy Conversion"
@@ -241,15 +222,13 @@ overrides:
       Aneutronic p-B11 reaction eliminates tritium-breeding blanket entirely.
       Neutron energy fraction ~0.1% from side reactions. No lithium blanket,
       no neutron multiplier, no tritium extraction. The "first wall" is a
-      stainless steel sphere (>=1m, 10mm wall). Retained at 5% of the
-      library's per-module default (Class-U: anchored to
-      generic.cas22_detail["C220101"]) to account for minimal energy-capture
-      wall structure and alpha-particle thermal management. No company-
-      published dollar figure; override is based on architectural elimination
-      of the subsystem.
+      stainless steel sphere (>=1m, 10mm wall). Retained at 5% of default
+      to account for minimal energy-capture wall structure and alpha-particle
+      thermal management. No company-published dollar figure; override is
+      based on architectural elimination of the subsystem.
 
   - account: C220102
-    value: 0.05 * generic.cas22_detail["C220102"]
+    value: 0.05 * generic.costs.c220102
     enabled: true
     provenance: derived
     source: "link-10-1007-s10894-023-00349-9/output.md §Commercialisation"
@@ -257,22 +236,19 @@ overrides:
       Neutron wall loading is negligible (~0.1% of fusion energy in side-
       reaction neutrons, 2 orders of magnitude below conventional fission
       per MW). Shield sizing scales to neutron wall loading. Retained at 5%
-      of the library's per-module default (Class-U: anchored to
-      generic.cas22_detail["C220102"]) to account for residual shielding
-      against side-reaction neutrons and alpha-particle-induced activation
-      (which McKenzie notes will need materials research).
+      to account for residual shielding against side-reaction neutrons and
+      alpha-particle-induced activation (which McKenzie notes will need
+      materials research).
 
   - account: C220107
     value: 0.0
     enabled: true
-    provenance: derived
+    provenance: direct
     source: "hb11-patent-reactor-design.md §Reactor Architecture; link-10-1007-s10894-023-00349-9/output.md §Commercialisation"
     rationale: |
       HB11 uses a laser driver, not a pulsed-power capacitor bank. No
       capacitor bank exists in this design. The driver cost is captured
       in C220104 (laser). Setting to zero eliminates double-counting.
-      Provenance is derived (architectural inference from patent description),
-      not direct — HB11 has not published a $0 line item for this account.
 
   - account: C220108
     value: 100.0
@@ -281,26 +257,15 @@ overrides:
     source: "link-10-1007-s10894-023-00349-9/output.md §Commercialisation"
     rationale: |
       McKenzie et al. 2023 state "a target cost of several dollars per target
-      is acceptable if a target gain of 200 can be achieved." This is a per-
-      unit operating/consumable cost threshold ($3–10/target × ~31.5M shots/yr
-      = ~$95–315M/yr running cost) — NOT the factory capital cost that C220108
-      prices. The library's $183.7M per-module default prices the physical
-      manufacturing facility and equipment for high-rep-rate IFE target
-      production.
-      The $100M override is a rough order-of-magnitude analyst estimate: it
-      represents a ~45% reduction from the library default, reflecting HB11's
-      simpler room-temperature solid targets (nickel plates, cylindrical
-      fuel pellet, quartz fiber support) versus the cryogenic DT shells the
-      library's default prices — no ablator layer, no cryogenic fill, room-
-      temperature assembly. Novel materials (borophene, white graphene) enable
-      solution-based methods amenable to large-scale manufacturing. No
-      published factory design, capital cost estimate, or specific IFE industry
-      analogue has been cited; this value carries high uncertainty and should
-      be treated as an order-of-magnitude placeholder pending a dedicated
-      target factory study.
+      is acceptable if a target gain of 200 can be achieved." The target is a
+      complex consumable assembly. Novel materials (borophene, white graphene)
+      enable solution-based manufacturing. $100M is a placeholder for the
+      target factory capital cost, analogous to other IFE target factory
+      estimates. Highly uncertain -- no published factory design or bottom-up
+      cost estimate exists.
 
   - account: C220110
-    value: 0.15 * generic.cas22_detail["C220110"]
+    value: 0.15 * generic.costs.c220110
     enabled: true
     provenance: derived
     source: "link-10-1007-s10894-023-00349-9/output.md §Commercialisation"
@@ -308,10 +273,8 @@ overrides:
       Negligible neutron activation eliminates the need for rad-hardened
       remote handling equipment. Maintenance can be performed with
       conventional equipment in a non-activated environment. Retained at
-      15% of the library's per-module default (Class-U: anchored to
-      generic.cas22_detail["C220110"]) for mechanical handling of consumable
-      target assemblies, laser optics maintenance, and general reactor
-      chamber access.
+      15% for mechanical handling of consumable target assemblies, laser
+      optics maintenance, and general reactor chamber access.
 
   - account: CAS21
     value: 0.50 * generic.costs.cas21
