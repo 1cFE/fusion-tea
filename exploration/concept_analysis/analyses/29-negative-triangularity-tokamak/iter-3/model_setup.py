@@ -80,13 +80,7 @@ overrides = [
      "rationale": "MANTA FLiBe blanket: 169 t × $169/kg = $28.6M (rounded from $28.561M). "
                   "Library default uses solid breeder unit costs inappropriate for liquid "
                   "immersion blanket. This is material-only cost; fabrication/structure "
-                  "in C220101. "
-                  "NOTE: the library treats CAS27 as a per-site fixed charge, not a "
-                  "power-proportional or per-module account, so the 1 GWe fleet cost "
-                  "stays at $28.6M regardless of n_mod. Each of the ~11 fleet modules "
-                  "needs its own 169-t FLiBe inventory, making the true fleet total "
-                  "~$314M; the gap (~$285M, ~$3/MWh LCOE) is a known undercount pending "
-                  "per-module CAS27 tracking in the framework."},
+                  "in C220101."},
 
     # CAS70 (O&M) not overridden: overrides on CAS70 are silently dropped in 1costingFE
     # (1cFE/1costingfe#106). MANTA assumes ~1 person/MWe staffing at $150k/employee-yr

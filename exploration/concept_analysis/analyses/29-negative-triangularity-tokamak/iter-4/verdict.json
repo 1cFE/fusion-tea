@@ -1,0 +1,26 @@
+{
+  "iteration": 4,
+  "verdict": "FAIL",
+  "finding_count": 1,
+  "feedback_source": "assess",
+  "model_ran": true,
+  "model_ok": true,
+  "research_ran": false,
+  "merged_assess": false,
+  "sources": [
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/29-negative-triangularity-tokamak/iter-01/sources/ball-balestri-ohmic-nt-paper.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/29-negative-triangularity-tokamak/iter-01/sources/firefly-fusion-diii-d-collaboration.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/29-negative-triangularity-tokamak/iter-01/sources/fusion-energy-base-profile.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/29-negative-triangularity-tokamak/iter-01/sources/greyb-firefly-interview.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/29-negative-triangularity-tokamak/iter-01/sources/venture-kick-profile.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/29-negative-triangularity-tokamak/iter-02/sources/firefly-website-2026.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/29-negative-triangularity-tokamak/iter-02/sources/manta-reference-design.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/29-negative-triangularity-tokamak/iter-04/sources/arxiv-2401-15217.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/29-negative-triangularity-tokamak/iter-04/sources/arxiv-2405-01514.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/29-negative-triangularity-tokamak/iter-04/sources/arxiv-2501-14682.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/29-negative-triangularity-tokamak/iter-04/sources/osti-servlets-purl-1127358.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/29-negative-triangularity-tokamak/iter-04/sources/osti-servlets-purl-1178069.md",
+    "/home/reid/1cfe/fusion-tea-cohort-rerun/knowledge/concept_research/29-negative-triangularity-tokamak/iter-04/sources/qedfusion-lib-report-aries-act-ucsd-cer-13-01.md"
+  ],
+  "timestamp": "2026-06-07T20:12:58.061103+00:00"
+}

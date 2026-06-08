@@ -1,0 +1,8 @@
+VERDICT: FINDINGS
+
+### F-1: CAS27 FLiBe override labeled Class P but library treats it as effectively fixed; fleet cost is understated
+- **Target:** Section 5b (Override Candidates)
+- **Category:** analysis
+- **Finding:** The CAS27 override is labeled "Class P account — library scales with total plant power," which would imply a 1 GWe fleet cost of roughly 28.6 × (1000/90) ≈ $318M. The model output shows CAS27 at $28.9M at 1 GWe — virtually unchanged from the native $28.6M, matching a scaling ratio of ~1.01× rather than ~11×. The library evidently treats CAS27 as a per-site fixed cost, not a power-proportional one, so the Class P label is incorrect and the author's stated intent (fleet scaling) is not achieved. FLiBe material is per-module (each of the 11 fleet modules needs its own 169-tonne tank), making the correct class U (per-unit, ~$314M at 1 GWe) or at minimum acknowledging that the library does not scale this account with fleet size. The financial impact is minor (~$285M gap out of $42.8B fleet total, ~0.67% LCOE), but the rationale makes a false claim about how the override behaves.
+- **Recommendation:** Correct the class label from "Class P" to reflect actual library behavior (effectively per-site/fixed). Note explicitly that CAS27 does not scale with n_mod in the current framework, so the 1 GWe fleet FLiBe material cost is captured as a one-time site cost of $28.6M rather than the per-module fleet total (~$314M). If per-module FLiBe tracking is important, flag this as a known undercount in the analysis notes and carry it as a sensitivity item (≈$285M adder at 1 GWe, ≈$3/MWh).
+- **Priority:** minor
