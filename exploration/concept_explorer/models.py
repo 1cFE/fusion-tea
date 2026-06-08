@@ -424,6 +424,10 @@ class ConceptData(BaseModel):
     name: str
     confinement_family: ConfinementFamily
     company: str | None = None
+    # Hyperlink target for the company name when displayed as an "Example: ..."
+    # disclaimer on entry surfaces (matrix + pipeline). Stamped at server load
+    # from a server-side company map; None when no URL is registered.
+    company_url: str | None = None
     # --- Canonical identity overlay (A1) — stamped at server load, absent on disk ---
     # The original frontmatter `name` (analyst/company phrasing), preserved so any
     # page that wants the analyst's words still has them. None until stamped.
@@ -518,6 +522,7 @@ class ConceptManifestEntry(BaseModel):
     name: str
     confinement_family: ConfinementFamily
     company: str | None = None
+    company_url: str | None = None
     status: ConceptStatus
     illustration: str | None = None
     has_cost_model: bool
@@ -660,6 +665,7 @@ def build_manifest(concepts: list[ConceptData]) -> ConceptManifest:
                 name=concept.name,
                 confinement_family=concept.confinement_family,
                 company=concept.company,
+                company_url=concept.company_url,
                 status=concept.status,
                 illustration=concept.illustration,
                 has_cost_model=concept.has_cost_model,

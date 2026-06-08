@@ -99,9 +99,7 @@
       crumb.appendChild(badge);
     }
 
-    if (concept.company) {
-      crumb.appendChild(_el("span", "sticky-headline__crumb-co", concept.company));
-    }
+    // Company hidden in the sticky headline (anonymized explorer, 2026-06-08).
     container.appendChild(crumb);
 
     // --- Stat pills ---

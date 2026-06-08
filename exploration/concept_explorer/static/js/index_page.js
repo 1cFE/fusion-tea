@@ -88,13 +88,37 @@
       card.appendChild(img);
     }
 
-    // Name — visible #code handle + canonical Name (Fuel), via conceptLabel
+    // Name — the anonymized generic descriptor (post-anonymize stamping).
+    // codeChip() is now a no-op fragment so the layout collapses cleanly.
     const nameEl = el("div", { class: "concept-card__name" });
-    nameEl.appendChild(lbl.codeChip());
-    nameEl.appendChild(document.createTextNode(" " + lbl.name));
+    nameEl.appendChild(document.createTextNode(lbl.name));
     card.appendChild(nameEl);
 
-    // Meta row: confinement family badge + company
+    // "Example: <Company>" disclaimer subheader — italic "Example:" + linked
+    // company name when a URL is registered, plain italic text otherwise.
+    // Disclaims that the rendered concept is one representative example, not
+    // the company's definitive published design.
+    if (entry.company != null) {
+      const subheader = el("div", { class: "concept-card__example" });
+      const prefix = document.createElement("em");
+      prefix.textContent = "Example: ";
+      subheader.appendChild(prefix);
+      if (entry.company_url) {
+        const link = document.createElement("a");
+        link.href = entry.company_url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = entry.company;
+        // Prevent the card's click handler from firing when the link is clicked.
+        link.addEventListener("click", (e) => e.stopPropagation());
+        subheader.appendChild(link);
+      } else {
+        subheader.appendChild(document.createTextNode(entry.company));
+      }
+      card.appendChild(subheader);
+    }
+
+    // Meta row: confinement family badge
     const meta = el("div", { class: "concept-card__meta" });
 
     const familyInfo = FAMILY_META[entry.confinement_family] ?? {
@@ -110,9 +134,6 @@
     }).element();
     if (cavEl) meta.appendChild(cavEl);
 
-    if (entry.company != null) {
-      meta.appendChild(el("span", { class: "concept-card__company" }, entry.company));
-    }
     card.appendChild(meta);
 
     // Indicators row: LCOE, confidence badge, sensitivity indicator

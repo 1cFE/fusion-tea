@@ -154,9 +154,10 @@
     };
     const familyBadge = el("span", familyInfo.cls, familyInfo.label);
     meta.appendChild(familyBadge);
-    if (concept.company != null) {
-      meta.appendChild(el("span", "hero__company", concept.company));
-    }
+    // Company intentionally hidden on the profile page (anonymized explorer,
+    // 2026-06-08): the "Example: <Company>" disclaimer appears only on the
+    // entry surfaces (matrix + pipeline cards). Profile / compare / cost-
+    // landscape views render the technical descriptor only.
     left.appendChild(meta);
 
     heroEl.appendChild(left);

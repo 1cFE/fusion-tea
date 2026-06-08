@@ -410,6 +410,24 @@ a:hover {
   color: var(--color-text-secondary);
 }
 
+/* "Example: <Company>" disclaimer subheader on entry-card surfaces. */
+.concept-card__example,
+.matrix-identity__example {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+.concept-card__example a,
+.matrix-identity__example a {
+  color: var(--color-text-secondary);
+  text-decoration: underline dotted;
+}
+.concept-card__example a:hover,
+.matrix-identity__example a:hover {
+  color: var(--color-text-primary);
+  text-decoration: underline solid;
+}
+
 .concept-card__lcoe {
   font-family: var(--font-mono);
   font-size: var(--font-size-sm);
