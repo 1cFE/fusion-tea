@@ -1,29 +1,29 @@
-LCOE: 79.4 $/MWh   (1 GWe NOAK projection)
-Native LCOE = 103.7 $/MWh   (P_native, n_mod=1, overrides on)
-Generic LCOE = 150.0 $/MWh   (P_native, n_mod=1, overrides off)
-Overnight: generic 12336 $/kW   native 8109 $/kW   1 GWe 6657 $/kW
+LCOE: 83.5 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 103.8 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 150.2 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 12350 $/kW   native 8123 $/kW   1 GWe 7063 $/kW
 
 CAS               generic           native            1 GWe
 --------------------------------------------------------
 CAS10                17.0             17.0             17.8
-CAS21               361.9            452.3            512.7
+CAS21               365.0            456.2            817.9
 CAS22              2659.9           1308.5           3189.5
 CAS23                96.6             96.6            241.6
 CAS24                41.2             41.2            102.9
 CAS25                25.1             25.1             62.6
 CAS26                41.8             41.8            104.4
-CAS27                 6.0            123.0            153.7
+CAS27                 6.7            123.0            123.0
 CAS28                 5.0              5.0              5.0
 CAS29                 0.0              0.0              0.0
-CAS30               647.5            418.7            874.5
+CAS30               648.2            419.5            929.4
 CAS40                24.7             24.7             27.6
-CAS50               212.5            166.8            291.6
-CAS60               795.6            522.9           1073.3
+CAS50               212.7            167.0            302.5
+CAS60               796.5            523.9           1138.7
 CAS70                65.7             54.5             69.6
 CAS80                11.1             11.1             22.3
-CAS90               370.1            243.3            499.3
+CAS90               370.6            243.7            529.8
 --------------------------------------------------------
-TOTAL              4934.5           3243.5           6657.1
+TOTAL              4940.1           3249.3           7062.6
 
 --- CAS22 sub-account detail (overrides marked) ---
 code            generic       native        1 GWe  flag
@@ -50,6 +50,6 @@ C220600             5.5          5.5         11.5
 C220700            42.9         42.9         77.8
 
 Q_eng sweep (native 400 MWe; 5.5 = Athena 5% WPE, 8.2 = NOAK 7% WPE target):
-  Q_eng=5.5: LCOE=103.7 $/MWh  <- spec (Athena-native)
-  Q_eng=6.5: LCOE=100.8 $/MWh
-  Q_eng=8.2: LCOE=97.8 $/MWh  <- NOAK target
+  Q_eng=5.5: LCOE=103.8 $/MWh  <- spec (Athena-native)
+  Q_eng=6.5: LCOE=101.0 $/MWh
+  Q_eng=8.2: LCOE=97.9 $/MWh  <- NOAK target

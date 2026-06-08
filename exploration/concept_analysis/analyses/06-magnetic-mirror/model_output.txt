@@ -1,53 +1,50 @@
-warning: `VIRTUAL_ENV=C:\Users\mallo\AppData\Local\Python\pythoncore-3.14-64` does not match the project environment path `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv` and will be ignored; use `--active` to target the active environment instead
-C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv\Lib\site-packages\pydantic\main.py:250: UserWarning: pb11 with blanket_form='liquid_metal': aneutronic fuels do not need a breeding blanket.
-  validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
 LCOE: (NOT ENOUGH DATA FOR THIS CONCEPT)
 Native LCOE = (NOT ENOUGH DATA FOR THIS CONCEPT)
 Generic LCOE = (NOT ENOUGH DATA FOR THIS CONCEPT)
-Overnight: generic 22205 $/kW   native 21161 $/kW   1 GWe 18788 $/kW
+Overnight: generic 22284 $/kW   native 21174 $/kW   1 GWe 20093 $/kW
 
 CAS               generic           native            1 GWe
 --------------------------------------------------------
-CAS10                11.5             11.5             12.1
-CAS21               190.3            190.3            190.3
-CAS22              1924.1           1866.9          12075.0
+CAS10                11.5             11.5             12.0
+CAS21               191.6            191.6            499.5
+CAS22              1924.1           1866.9          12639.3
 CAS23                48.2              0.0              0.0
-CAS24                22.7             22.7            151.3
-CAS25                13.8             13.8             92.1
-CAS26                20.8             20.8            138.7
-CAS27                 0.0              0.0              0.0
+CAS24                22.7             22.7            154.5
+CAS25                13.8             13.8             94.1
+CAS26                20.8             20.8            141.6
+CAS27                 6.6              0.0              0.0
 CAS28                 5.0              5.0              5.0
 CAS29                 0.0              0.0              0.0
-CAS30               445.0            423.9           2530.5
-CAS40                 7.7              7.7              7.7
-CAS50               104.7             99.7            555.9
-CAS60               537.0            511.7           3029.0
-CAS70                11.8             11.8             14.5
+CAS30               446.6            424.2           2706.8
+CAS40                 7.7              7.7              7.6
+CAS50               105.1             99.8            593.5
+CAS60               538.9            512.1           3239.6
+CAS70                11.8             11.8             14.3
 CAS80                 0.0              0.0              0.2
-CAS90               249.8            238.1           1409.2
+CAS90               250.7            238.2           1507.2
 --------------------------------------------------------
-TOTAL              3330.8           3174.1          18787.6
+TOTAL              3342.6           3176.1          20093.5
 
 --- CAS22 sub-account detail (overrides marked) ---
 code            generic       native        1 GWe  flag
-C220000          1924.1       1866.9      12075.0
+C220000          1924.1       1866.9      12639.3
 C220101             6.0          0.0          0.0  <-- OVERRIDE
 C220102             4.4          0.0          0.0  <-- OVERRIDE
 C220103          1134.4       1134.4       1134.4
 C220104           282.6        282.6        282.6
-C220105             4.1          4.1          4.1
-C220106            70.5         70.5         70.5
-C220106_pump         58.3         58.3         58.3
-C220106_vessel         12.3         12.3         12.3
-C220107            32.0         32.0         32.0
+C220105             4.1          4.1          4.0
+C220106            70.5         70.5         68.8
+C220106_pump         58.3         58.3         56.7
+C220106_vessel         12.3         12.3         12.1
+C220107            32.0         32.0         31.3
 C220108            46.8          0.0          0.0  <-- OVERRIDE
-C220109            18.4         18.4         18.4
-C220110             5.7          5.7          5.7
-C220111           224.7        224.7        224.7
+C220109            18.4         18.4         18.1
+C220110             5.7          5.7          5.6
+C220111           224.7        224.7        224.2
 C220112             0.0          0.0          0.0
-C220200            40.4         40.4        210.1
-C220300            19.2         19.2         23.0
-C220400             1.2          1.2          8.0
+C220200            40.4         40.4        210.6
+C220300            19.2         19.2         23.1
+C220400             1.2          1.2          8.1
 C220500             4.0          4.0         15.0
 C220600             2.5          2.5         11.5
-C220700            27.3         27.3         93.6
+C220700            27.3         27.3         94.9

@@ -3,6 +3,8 @@
   "name": "Polomac Magnetic Confinement (Deutelio)",
   "confinement_family": "MFE",
   "company": "Deutelio",
+  "analyst_name": null,
+  "fuel": null,
   "status": "in_progress",
   "illustration": null,
   "has_cost_model": true,
@@ -81,6 +83,16 @@
     "cas70": {
       "name": "O&M Costs (annualised)",
       "cost_m_usd": 70.75347714797985,
+      "overridden": false
+    },
+    "cas71": {
+      "name": "Fixed O&M (annualised)",
+      "cost_m_usd": 53.842842714712674,
+      "overridden": false
+    },
+    "cas72": {
+      "name": "Scheduled Replacement (annualised)",
+      "cost_m_usd": 16.910634433267184,
       "overridden": false
     },
     "cas80": {
@@ -378,8 +390,10 @@
   "narrative": null,
   "sources": {
     "model_setup": null,
-    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/35-polomac-magnetic-confinement/analysis.md"
+    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\35-polomac-magnetic-confinement\\analysis.md"
   },
   "analyst_override_count": 0,
-  "asterisk_in_comparison": false
+  "overrides": [],
+  "asterisk_in_comparison": false,
+  "fit_grade": null
 }

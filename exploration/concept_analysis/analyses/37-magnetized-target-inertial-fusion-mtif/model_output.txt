@@ -6,8 +6,8 @@ MTIF D-D — NearStar Fusion
 *** ALL RESULTS HIGHLY SPECULATIVE — see Key Assumptions ***
 *** D-D ignition physics for this geometry is undemonstrated ***
 
-LCOE:            300.9 $/MWh
-Overnight cost:  5953 $/kW
+LCOE:            302.0 $/MWh
+Overnight cost:  5999 $/kW
 Fusion power:    801 MW
 Net electric:    200 MWe
 Q_eng:           3.00
@@ -15,24 +15,24 @@ Q_eng:           3.00
 Code     Account                              M$
 ------------------------------------------------
 CAS10    Preconstruction                    14.5
-CAS21    Buildings                         278.2
+CAS21    Buildings                         281.5
 CAS22    Reactor Plant Equipment           457.0
 CAS23    Turbine Plant                      59.3
 CAS24    Electrical Plant                   25.3
 CAS25    Miscellaneous                      15.4
 CAS26    Heat Rejection                     29.3
-CAS27    Special Materials                   0.4
+CAS27    Special Materials                   4.1
 CAS28    Digital Twin                        5.0
 CAS29    Contingency                         0.0
-CAS30    Indirect Costs                    116.0
+CAS30    Indirect Costs                    116.9
 CAS40    Owner's Costs                      13.9
-CAS50    Supplementary                      58.5
-CAS60    IDC                               118.0
+CAS50    Supplementary                      58.9
+CAS60    IDC                               118.9
 CAS70    O&M (annualized)                   25.2
 CAS80    Fuel (annualized)                  89.8
-CAS90    Financial                          95.9
+CAS90    Financial                          96.7
 ------------------------------------------------
-         Total Capital                    1190.5
+         Total Capital                    1199.8
 
 CAS22 sub-accounts:
   C220101        27.6 M$
@@ -60,8 +60,8 @@ CAS22 sub-accounts:
 =================================================================
 Scaled to 1 GWe (per-account scaling from 200 MWe native)
 =================================================================
-LCOE:            138.1 $/MWh
-Overnight cost:  4185 $/kW
+LCOE:            138.3 $/MWh
+Overnight cost:  4195 $/kW
 Fusion power:    3999 MW
 Net electric:    1000 MWe
 Q_eng:           3.00
@@ -105,16 +105,16 @@ Sensitivity (elasticity = %ΔLCOE / %Δparam) — native 200 MWe
 =================================================================
 
 Engineering levers:
-  availability                         -0.5711
-  f_rep                                +0.4015
-  q_eng                                -0.2102
-  construction_time_yr                 +0.1668
-  eta_th                               -0.0987
-  plasma_t                             +0.0567
-  eta_pin                              +0.0344
-  blanket_t                            +0.0249
-  mn                                   -0.0189
-  ht_shield_t                          +0.0086
+  availability                         -0.5726
+  f_rep                                +0.4001
+  q_eng                                -0.2097
+  construction_time_yr                 +0.1672
+  eta_th                               -0.1010
+  plasma_t                             +0.0599
+  eta_pin                              +0.0342
+  blanket_t                            +0.0268
+  mn                                   -0.0200
+  ht_shield_t                          +0.0085
   f_sub                                -0.0063
   vessel_t                             +0.0055
   fuel_recovery                        -0.0042
@@ -122,7 +122,7 @@ Engineering levers:
   structure_t                          +0.0025
   p_target                             -0.0014
   burn_fraction                        -0.0010
-  dd_f_T                               -0.0008
+  dd_f_T                               -0.0009
   p_pump                               -0.0007
   p_trit                               -0.0007
   dd_f_He3                             +0.0005
@@ -132,20 +132,20 @@ Engineering levers:
   eta_dec                              +0.0000
 
 Financial:
-  interest_rate                        +0.3089
-  inflation_rate                       +0.1992
+  interest_rate                        +0.3107
+  inflation_rate                       +0.1985
 
 Costing constants (top 15):
-  om_cost_dd                           +0.1175
-  target_factory_base                  +0.0597
-  indirect_fraction                    +0.0499
-  driver_mag_target_per_mw             +0.0354
-  c_cap_allin_per_joule                +0.0236
-  installation_frac                    +0.0212
-  blanket_unit_cost_dd                 +0.0176
-  remote_handling_dd_base              +0.0156
-  shield_unit_cost                     +0.0149
-  electric_per_mw                      +0.0129
+  om_cost_dd                           +0.1171
+  target_factory_base                  +0.0595
+  indirect_fraction                    +0.0501
+  driver_mag_target_per_mw             +0.0353
+  c_cap_allin_per_joule                +0.0235
+  installation_frac                    +0.0211
+  blanket_unit_cost_dd                 +0.0175
+  remote_handling_dd_base              +0.0155
+  shield_unit_cost                     +0.0148
+  electric_per_mw                      +0.0128
   fuel_handling_dd_base                +0.0097
   decom_provision_dd                   +0.0079
   misc_per_mw                          +0.0078
@@ -177,10 +177,10 @@ Baseline: driver_mag_target_per_mw = 3.0 M$/MW_driver
 =================================================================
     Mult    M$/MW_driver    LCOE ($/MWh)       ΔLCOE
 -------------------------------------------------------
-  1×                 3.0           300.9  [pneumatic piston baseline]
-  2×                 6.0           311.6  +10.6 $/MWh
-  5×                15.0           343.5  +42.6 $/MWh
-  10×                30.0           396.8  +95.8 $/MWh
+  1×                 3.0           302.0  [pneumatic piston baseline]
+  2×                 6.0           312.6  +10.6 $/MWh
+  5×                15.0           344.6  +42.6 $/MWh
+  10×                30.0           397.8  +95.8 $/MWh
 
   Railgun analog: BAE/GA EML systems cost $10s–100s M$ per installation
   at << 1 Hz duty cycle. NearStar requires 1 Hz continuous: 5–10× may
@@ -192,9 +192,9 @@ Native 200 MWe; baseline target_unit_cost = $5/shot
 =================================================================
    $/capsule   CAS80 (M$/yr)   C220108 (M$)    LCOE ($/MWh)
 ------------------------------------------------------------
-  $     1.0            18.0          105.0           198.6
-  $     5.0            89.8          105.0           300.9  [baseline]
-  $    20.0           358.7          105.0           684.7
+  $     1.0            18.0          105.0           199.7
+  $     5.0            89.8          105.0           302.0  [baseline]
+  $    20.0           358.7          105.0           685.8
 
   The capsule consumable scales linearly with $/shot and dominates LCOE
   at the high end — the per-target cost is the central IFE/MIF economic

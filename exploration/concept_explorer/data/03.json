@@ -3,6 +3,8 @@
   "name": "Laser ICF Liquid-Jet Target (Cortex Fusion Systems)",
   "confinement_family": "IFE",
   "company": "Cortex Fusion",
+  "analyst_name": null,
+  "fuel": null,
   "status": "in_progress",
   "illustration": null,
   "has_cost_model": true,
@@ -81,6 +83,16 @@
     "cas70": {
       "name": "O&M Costs (annualised)",
       "cost_m_usd": 3.5987162259933547,
+      "overridden": false
+    },
+    "cas71": {
+      "name": "Fixed O&M (annualised)",
+      "cost_m_usd": 3.5986420895970905,
+      "overridden": false
+    },
+    "cas72": {
+      "name": "Scheduled Replacement (annualised)",
+      "cost_m_usd": 0.0000741363962641643,
       "overridden": false
     },
     "cas80": {
@@ -369,8 +381,10 @@
   "narrative": null,
   "sources": {
     "model_setup": null,
-    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/03-laser-icf-liquid-jet-target/analysis.md"
+    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\03-laser-icf-liquid-jet-target\\analysis.md"
   },
   "analyst_override_count": 0,
-  "asterisk_in_comparison": false
+  "overrides": [],
+  "asterisk_in_comparison": false,
+  "fit_grade": null
 }

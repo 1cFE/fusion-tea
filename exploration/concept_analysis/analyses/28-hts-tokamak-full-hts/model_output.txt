@@ -1,4 +1,3 @@
-warning: `VIRTUAL_ENV=C:\Users\mallo\AppData\Local\Python\pythoncore-3.14-64` does not match the project environment path `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv` and will be ignored; use `--active` to target the active environment instead
 ================================================================================
 ⚠ DATA LIMITATION: PLACEHOLDER VALUES IN USE ⚠
 ================================================================================
@@ -20,56 +19,56 @@ public sources yet).
 Overrides: 0 enabled (no company-grounded cost data for HH380)
 ================================================================================
 
-LCOE: 94.0 $/MWh   (1 GWe NOAK projection)
-Native LCOE = 110.9 $/MWh   (P_native, n_mod=1, overrides on)
-Generic LCOE = 110.9 $/MWh   (P_native, n_mod=1, overrides off)
-Overnight: generic 8754 $/kW   native 8754 $/kW   1 GWe 7776 $/kW
+LCOE: 93.9 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 106.8 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 106.8 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 8343 $/kW   native 8343 $/kW   1 GWe 7774 $/kW
 
 CAS               generic           native            1 GWe
 --------------------------------------------------------
 CAS10                17.2             17.2             17.8
-CAS21               446.2            446.2            446.2
-CAS22              2081.5           2081.5           4065.3
-CAS23               142.9            142.9            285.7
-CAS24                60.9             60.9            121.7
-CAS25                37.0             37.0             74.1
-CAS26                61.7             61.7            123.5
-CAS27                 7.5              7.5              7.5
+CAS21               449.9            449.9            727.2
+CAS22              1938.5           1938.5           3780.6
+CAS23               143.5            143.5            286.9
+CAS24                61.1             61.1            122.2
+CAS25                37.2             37.2             74.4
+CAS26                62.0             62.0            124.0
+CAS27                 6.8              6.8              6.8
 CAS28                 5.0              5.0              5.0
 CAS29                 0.0              0.0              0.0
-CAS30               568.5            568.5           1025.8
+CAS30               540.8            540.8           1025.4
 CAS40                27.6             27.6             27.6
-CAS50               215.2            215.2            322.6
-CAS60               705.7            705.7           1253.8
-CAS70                84.2             84.2            115.4
-CAS80                 0.4              0.4              0.9
-CAS90               328.3            328.3            583.3
+CAS50               209.2            209.2            322.5
+CAS60               672.5            672.5           1253.3
+CAS70                84.2             84.2            115.5
+CAS80                 0.5              0.5              0.9
+CAS90               312.9            312.9            583.1
 --------------------------------------------------------
-TOTAL              4376.8           4376.8           7776.4
+TOTAL              4171.4           4171.4           7773.8
 
 --- CAS22 sub-account detail (overrides marked) ---
 code            generic       native        1 GWe  flag
-C220000          2081.5       2081.5       4065.3
-C220101           143.2        143.2        143.2
-C220102           101.6        101.6        101.6
+C220000          1938.5       1938.5       3780.6
+C220101           143.6        143.6        143.6
+C220102           101.9        101.9        101.9
 C220103           411.9        411.9        411.9
-C220104           600.5        600.5        600.5
+C220104           473.5        473.5        473.5
 C220105            10.4         10.4         10.4
-C220106            54.7         54.7         54.7
+C220106            54.8         54.8         54.8
 C220106_pump          0.5          0.5          0.5
-C220106_vessel         54.2         54.2         54.2
-C220107            63.7         63.7         63.7
-C220108            80.7         80.7         80.7
+C220106_vessel         54.3         54.3         54.3
+C220107            63.9         63.9         63.9
+C220108            80.8         80.8         80.8
 C220109             0.0          0.0          0.0
-C220110           127.5        127.5        127.5
-C220111           223.2        223.2        223.2
+C220110           127.8        127.8        127.8
+C220111           205.6        205.6        205.6
 C220112             0.0          0.0          0.0
-C220200           111.2        111.2        207.3
+C220200           111.3        111.3        207.4
 C220300            13.4         13.4         15.4
-C220400             3.5          3.5          7.1
+C220400             3.6          3.6          7.1
 C220500            73.9         73.9        120.0
 C220600             6.6          6.6         11.5
-C220700            55.3         55.3         86.8
+C220700            55.5         55.5         87.0
 
 ================================================================================
 MODEL CONFIDENCE: LOW

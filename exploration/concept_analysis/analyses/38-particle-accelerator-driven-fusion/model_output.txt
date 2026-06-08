@@ -1,4 +1,3 @@
-warning: `VIRTUAL_ENV=C:\Users\mallo\AppData\Local\Python\pythoncore-3.14-64` does not match the project environment path `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv` and will be ignored; use `--active` to target the active environment instead
 
 ########################################################################
 # BASELINE: SHINE FLARE Facility — Moderate Estimates
@@ -212,4 +211,10 @@ KEY BINDING CONSTRAINTS — Top 3 Cost / Viability Drivers
    producers (NRU, BR2, SAFARI-1), not with power plants.
 
    From the TEA project perspective, SHINE establishes the lower Q bound of
-   commercially-deployed D-T 
+   commercially-deployed D-T fusion: TRL 9 at Q_sci ~ 10^{-3} to 10^{-2},
+   capital ~ $158M, economically sustained by the isotope market.
+   Every accelerator-driven fusion POWER concept must clear Q_sci >> 1;
+   SHINE demonstrates that reaching TRL 9 at Q << 1 is already achievable.
+
+NOTE: All estimates carry HIGH UNCERTAINTY. LCOE = inf for all realistic
+parameter values. See analysis.md §S2 for the physics ceiling derivation.
