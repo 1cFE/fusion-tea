@@ -9,6 +9,7 @@
   "illustration": null,
   "has_cost_model": true,
   "has_sensitivities": true,
+  "model_type": "standalone",
   "cost_model": {
     "cas10": {
       "name": "Preconstruction",

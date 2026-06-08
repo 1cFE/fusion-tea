@@ -85,6 +85,24 @@
   }
 
   /**
+   * Read a headline metric value for a concept, with one suppression rule:
+   * freeform (standalone) concepts compute LCOE from non-comparable assumptions,
+   * so we treat their LCOE as missing in cross-concept summary views. Returns
+   * null when the value is absent or suppressed.
+   */
+  function readMetric(concept, metric, headline) {
+    if (!headline) return null;
+    if (
+      metric.field === "lcoe_per_mwh" &&
+      concept.data.model_type === "standalone"
+    ) {
+      return null;
+    }
+    const val = headline[metric.field];
+    return val != null ? val : null;
+  }
+
+  /**
    * Find the largest CAS account for a concept's cost model.
    * Returns { name, pct } or null.
    */
@@ -150,7 +168,7 @@
       for (const c of concepts) {
         const h = getHeadline(c);
         if (!h) continue;
-        const val = h[metric.field];
+        const val = readMetric(c, metric, h);
         if (val != null) {
           if (val < min) min = val;
           if (val > max) max = val;
@@ -198,7 +216,8 @@
 
       for (let mi = 0; mi < nMetrics; mi++) {
         const metric = HEADLINE_METRICS[mi];
-        const val = h[metric.field];
+        const val = readMetric(c, metric, h);
+        if (val == null) continue;
         const xAxisKey = mi === 0 ? "x" : `x${mi + 1}`;
         const yAxisKey = mi === 0 ? "y" : `y${mi + 1}`;
 
@@ -301,7 +320,7 @@
           tr.appendChild(el("td", "no-data", "\u2014"));
           continue;
         }
-        const val = h[metric.field];
+        const val = readMetric(c, metric, h);
         tr.appendChild(el("td", null, val != null ? metric.format(val) : "\u2014"));
       }
 
@@ -352,14 +371,17 @@
     // Normalize values to 0-1 range using shared scales so bars are visually comparable
     const xNorm = HEADLINE_METRICS.map((m) => {
       const s = scales[m.field];
-      const val = h[m.field];
+      const val = readMetric(concept, m, h);
+      if (val == null) return null;
       if (!s || s.max === s.min) return val ? 1 : 0;
       return (val - s.min) / (s.max - s.min);
     }).reverse();
 
     const hoverText = HEADLINE_METRICS.map((m) => {
-      const val = h[m.field];
-      return `${m.label}: ${m.format(val)}${m.unit ? " " + m.unit : ""}`;
+      const val = readMetric(concept, m, h);
+      return val != null
+        ? `${m.label}: ${m.format(val)}${m.unit ? " " + m.unit : ""}`
+        : `${m.label}: —`;
     }).reverse();
 
     const trace = {
@@ -410,8 +432,9 @@
       const row = el("div", "summary-metric-row");
       row.appendChild(el("span", "summary-metric-row__label", metric.label));
 
-      const valText = h[metric.field] != null ? metric.format(h[metric.field]) : "\u2014";
-      const unitText = metric.unit ? ` ${metric.unit}` : "";
+      const val = readMetric(concept, metric, h);
+      const valText = val != null ? metric.format(val) : "\u2014";
+      const unitText = metric.unit && val != null ? ` ${metric.unit}` : "";
       row.appendChild(el("span", "summary-metric-row__value", valText + unitText));
 
       list.appendChild(row);

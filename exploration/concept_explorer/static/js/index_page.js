@@ -119,7 +119,11 @@
     // Only rendered when there is something to show.
     const indicators = el("div", { class: "concept-card__indicators" });
 
-    if (entry.has_cost_model && entry.lcoe_per_mwh != null) {
+    if (
+      entry.has_cost_model &&
+      entry.lcoe_per_mwh != null &&
+      entry.model_type !== "standalone"
+    ) {
       indicators.appendChild(
         el(
           "span",
