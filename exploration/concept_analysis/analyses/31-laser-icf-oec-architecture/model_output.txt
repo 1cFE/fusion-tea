@@ -1,30 +1,29 @@
-warning: `VIRTUAL_ENV=C:\Users\mallo\AppData\Local\Python\pythoncore-3.14-64` does not match the project environment path `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv` and will be ignored; use `--active` to target the active environment instead
-LCOE: 93.7 $/MWh   (1 GWe NOAK projection)
-Native LCOE = 71.9 $/MWh   (P_native, n_mod=1, overrides on)
-Generic LCOE = 70.2 $/MWh   (P_native, n_mod=1, overrides off)
-Overnight: generic 5323 $/kW   native 5488 $/kW   1 GWe 6718 $/kW
+LCOE: 119.1 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 83.8 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 80.5 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 5313 $/kW   native 5479 $/kW   1 GWe 6742 $/kW
 
 CAS               generic           native            1 GWe
 --------------------------------------------------------
 CAS10                23.0             23.0             18.5
-CAS21              1583.6           1583.6            670.4
+CAS21              1579.3           1579.3            672.7
 CAS22              6512.0           6826.6           3117.2
 CAS23               708.0            708.0            251.1
 CAS24               301.5            301.5            106.9
 CAS25               183.5            183.5             65.1
 CAS26               305.9            305.9            108.5
-CAS27                42.3             42.3             15.0
+CAS27                28.8             28.8             28.8
 CAS28                 5.0              5.0              5.0
 CAS29                 0.0              0.0              0.0
-CAS30              1928.4           1991.3            867.8
+CAS30              1924.8           1987.7            871.0
 CAS40                65.5             65.5             39.0
-CAS50               931.9            945.5            370.1
-CAS60              2420.1           2495.3           1083.1
-CAS70               345.8            345.8            193.0
-CAS80                 2.0              2.0              0.7
-CAS90              1125.9           1160.9            503.9
+CAS50               930.8            944.3            371.2
+CAS60              2415.8           2491.0           1087.0
+CAS70               410.0            444.0            226.2
+CAS80               156.4            156.4            155.1
+CAS90              1123.9           1158.9            505.7
 --------------------------------------------------------
-TOTAL             15010.8          15477.1           6717.7
+TOTAL             14983.9          15450.2           6742.0
 
 --- CAS22 sub-account detail (overrides marked) ---
 code            generic       native        1 GWe  flag
@@ -36,3 +35,27 @@ C220104          1308.3       2000.0        675.8  <-- OVERRIDE
 C220105            56.0         56.0         33.3
 C220106           211.4        211.4        113.3
 C220106_pump          1.1          1.1          0.4
+C220106_vessel        210.4        210.4        112.9
+C220107            31.9         31.9         10.8
+C220108           596.1        219.0        106.0  <-- OVERRIDE
+C220109             0.0          0.0          0.0
+C220110           141.9        141.9         84.5
+C220111           676.2        676.2        322.9
+C220112             0.0          0.0          0.0
+C220200           536.2        536.2        204.5
+C220300            21.2         21.2         14.9
+C220400            17.6         17.6          6.2
+C220500           247.9        247.9        120.0
+C220600            26.4         26.4         11.5
+C220700           156.5        156.5         79.8
+
+============================================================
+F-2: DEC-UNAVAILABLE SENSITIVITY SCENARIO
+============================================================
+If DEC (TRL ~2) is unavailable, the 30% charged-particle energy is lost.
+Effective η_e drops from 0.44 → 0.308; P_net drops from 2820 → 1864 MWe.
+  Native  (DEC on):  q_eng=4.7, P_net=2820 MWe, LCOE=83.8 $/MWh
+  DEC-off scenario:  q_eng=3.1, P_net=1864 MWe, LCOE=110.4 $/MWh
+  LCOE delta: +26.6 $/MWh (32% increase)
+  Overnight: 5479 → 7069 $/kW
+DEC availability is a first-order economic risk for the BLF concept.

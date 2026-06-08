@@ -3,6 +3,8 @@
   "name": "Laser ICF (HB11 Energy)",
   "confinement_family": "IFE",
   "company": "hb11",
+  "analyst_name": null,
+  "fuel": null,
   "status": "in_progress",
   "illustration": null,
   "has_cost_model": true,
@@ -15,7 +17,7 @@
     },
     "cas21": {
       "name": "Buildings & Structures",
-      "cost_m_usd": 139.93408203125,
+      "cost_m_usd": 211.745849609375,
       "overridden": true
     },
     "cas22": {
@@ -60,7 +62,7 @@
     },
     "cas30": {
       "name": "Indirect Costs",
-      "cost_m_usd": 402.3011169433594,
+      "cost_m_usd": 416.6634216308594,
       "overridden": false
     },
     "cas40": {
@@ -70,17 +72,27 @@
     },
     "cas50": {
       "name": "Supplementary Costs",
-      "cost_m_usd": 118.6842041015625,
+      "cost_m_usd": 121.77210235595703,
       "overridden": false
     },
     "cas60": {
       "name": "Interest During Construction",
-      "cost_m_usd": 491.9747314453125,
+      "cost_m_usd": 509.1322326660156,
       "overridden": false
     },
     "cas70": {
       "name": "O&M Costs (annualised)",
       "cost_m_usd": 52.75981140136719,
+      "overridden": false
+    },
+    "cas71": {
+      "name": "Fixed O&M (annualised)",
+      "cost_m_usd": 24.443275451660156,
+      "overridden": false
+    },
+    "cas72": {
+      "name": "Scheduled Replacement (annualised)",
+      "cost_m_usd": 28.31653594970703,
       "overridden": false
     },
     "cas80": {
@@ -90,7 +102,7 @@
     },
     "cas90": {
       "name": "Financial Costs",
-      "cost_m_usd": 228.88851928710938,
+      "cost_m_usd": 236.87095642089844,
       "overridden": false
     },
     "cas22_detail": {
@@ -186,8 +198,8 @@
       }
     },
     "headline": {
-      "lcoe_per_mwh": 79.3245620727539,
-      "overnight_cost_per_kw": 3051.47509765625,
+      "lcoe_per_mwh": 80.3966064453125,
+      "overnight_cost_per_kw": 3157.894775390625,
       "p_net_mw": 500.0,
       "q_eng": 4.0,
       "capacity_factor": 0.85
@@ -195,11 +207,11 @@
     "sensitivities": {
       "engineering": {
         "availability": {
-          "elasticity": -0.43120020556941063,
+          "elasticity": -0.43127475943296495,
           "baseline": 0.85
         },
         "construction_time_yr": {
-          "elasticity": 0.21286441309571624,
+          "elasticity": 0.21288628058754866,
           "baseline": 6.0
         },
         "mn": {
@@ -207,47 +219,47 @@
           "baseline": 1.1
         },
         "eta_th": {
-          "elasticity": -0.03871838254630377,
+          "elasticity": -0.03871346510871517,
           "baseline": 0.4
         },
         "f_sub": {
-          "elasticity": -0.024372468974043247,
+          "elasticity": -0.02436928245644827,
           "baseline": 0.03
         },
         "p_pump": {
-          "elasticity": -0.001218871394990032,
+          "elasticity": -0.0012187117481339304,
           "baseline": 1.0
         },
         "p_house": {
-          "elasticity": -0.0048744944808387465,
+          "elasticity": -0.004873856023227756,
           "baseline": 4.0
         },
         "blanket_t": {
-          "elasticity": 0.004093866101503368,
+          "elasticity": 0.00409332989000879,
           "baseline": 0.8
         },
         "ht_shield_t": {
-          "elasticity": 0.0013586488692375047,
+          "elasticity": 0.0013584709144332397,
           "baseline": 0.25
         },
         "structure_t": {
-          "elasticity": 0.0033944498547702983,
+          "elasticity": 0.0033940052522882518,
           "baseline": 0.15
         },
         "vessel_t": {
-          "elasticity": 0.009464756001057058,
+          "elasticity": 0.009463516314453904,
           "baseline": 0.1
         },
         "plasma_t": {
-          "elasticity": 0.018793648335922484,
+          "elasticity": 0.01879118675803671,
           "baseline": 4.0
         },
         "burn_fraction": {
-          "elasticity": -0.0002600257075558067,
+          "elasticity": -0.0002599916495847299,
           "baseline": 0.25
         },
         "fuel_recovery": {
-          "elasticity": -0.0006361071906753794,
+          "elasticity": -0.0006360238738352662,
           "baseline": 0.99
         },
         "dd_f_T": {
@@ -267,15 +279,15 @@
           "baseline": 0.5
         },
         "q_eng": {
-          "elasticity": -0.3082349225255337,
+          "elasticity": -0.30819464631468446,
           "baseline": 4.0
         },
         "f_rep": {
-          "elasticity": 0.39715621547157937,
+          "elasticity": 0.3971041060935738,
           "baseline": 10.0
         },
         "eta_pin": {
-          "elasticity": 0.1710639549548457,
+          "elasticity": 0.17104154912703393,
           "baseline": 0.1
         },
         "f_rad": {
@@ -283,7 +295,7 @@
           "baseline": 0.1
         },
         "p_target": {
-          "elasticity": -0.0012186236202096866,
+          "elasticity": -0.001218464005806939,
           "baseline": 1.0
         },
         "eta_dec": {
@@ -293,11 +305,11 @@
       },
       "financial": {
         "interest_rate": {
-          "elasticity": 0.30213033366708436,
+          "elasticity": 0.30222019759400326,
           "baseline": 0.07
         },
         "inflation_rate": {
-          "elasticity": 0.21565119157516843,
+          "elasticity": 0.2156229457447297,
           "baseline": 0.02
         }
       }
@@ -305,11 +317,11 @@
     "sensitivities_bare": {
       "engineering": {
         "availability": {
-          "elasticity": -0.46851776211222795,
+          "elasticity": -0.48220657075761125,
           "baseline": 0.85
         },
         "construction_time_yr": {
-          "elasticity": 0.22382909232412457,
+          "elasticity": 0.22784951059126984,
           "baseline": 6.0
         },
         "mn": {
@@ -317,47 +329,47 @@
           "baseline": 1.1
         },
         "eta_th": {
-          "elasticity": -0.05602361490350315,
+          "elasticity": -0.07058552730135376,
           "baseline": 0.4
         },
         "f_sub": {
-          "elasticity": -0.023110160875308084,
+          "elasticity": -0.022499302780795594,
           "baseline": 0.03
         },
         "p_pump": {
-          "elasticity": -0.001163232096734912,
+          "elasticity": -0.0011403116260949259,
           "baseline": 1.0
         },
         "p_house": {
-          "elasticity": -0.004622032289605757,
+          "elasticity": -0.0044998607607100154,
           "baseline": 4.0
         },
         "blanket_t": {
-          "elasticity": 0.008425615045300369,
+          "elasticity": 0.009290707698394298,
           "baseline": 0.8
         },
         "ht_shield_t": {
-          "elasticity": 0.0032585454933220337,
+          "elasticity": 0.0031746185325005134,
           "baseline": 0.25
         },
         "structure_t": {
-          "elasticity": 0.003243578514951647,
+          "elasticity": 0.0031600370429962117,
           "baseline": 0.15
         },
         "vessel_t": {
-          "elasticity": 0.008891683084237012,
+          "elasticity": 0.008662669268294445,
           "baseline": 0.1
         },
         "plasma_t": {
-          "elasticity": 0.028912450633646274,
+          "elasticity": 0.03014910670156596,
           "baseline": 4.0
         },
         "burn_fraction": {
-          "elasticity": -0.00024296604847838844,
+          "elasticity": -0.00023670822514175102,
           "baseline": 0.25
         },
         "fuel_recovery": {
-          "elasticity": -0.0005943737331968058,
+          "elasticity": -0.0005790650682965981,
           "baseline": 0.99
         },
         "dd_f_T": {
@@ -377,15 +389,15 @@
           "baseline": 0.5
         },
         "q_eng": {
-          "elasticity": -0.31705576347826714,
+          "elasticity": -0.31680870223400126,
           "baseline": 4.0
         },
         "f_rep": {
-          "elasticity": 0.36862612915213216,
+          "elasticity": 0.3591317826963074,
           "baseline": 10.0
         },
         "eta_pin": {
-          "elasticity": 0.15973546298084965,
+          "elasticity": 0.15551133692630437,
           "baseline": 0.1
         },
         "f_rad": {
@@ -393,7 +405,7 @@
           "baseline": 0.1
         },
         "p_target": {
-          "elasticity": -0.0011555080724014392,
+          "elasticity": -0.0011249651901775039,
           "baseline": 1.0
         },
         "eta_dec": {
@@ -403,11 +415,11 @@
       },
       "financial": {
         "interest_rate": {
-          "elasticity": 0.347205170043898,
+          "elasticity": 0.36373921995680525,
           "baseline": 0.07
         },
         "inflation_rate": {
-          "elasticity": 0.2015028373893739,
+          "elasticity": 0.1963129387755104,
           "baseline": 0.02
         }
       }
@@ -546,10 +558,6 @@
       "fuel_handling_dd_base": 60.0,
       "fuel_handling_dhe3_base": 40.0,
       "fuel_handling_pb11_base": 15.0,
-      "special_materials_dt": 15.0,
-      "special_materials_dd": 2.0,
-      "special_materials_dhe3": 1.0,
-      "special_materials_pb11": 0.0,
       "turbine_per_mw": 0.19764,
       "electric_per_mw": 0.08418,
       "misc_per_mw": 0.05124,
@@ -966,8 +974,8 @@
   },
   "narrative": null,
   "sources": {
-    "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/04-laser-icf/model_setup.py",
-    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/04-laser-icf/analysis.md"
+    "model_setup": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\04-laser-icf\\model_setup.py",
+    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\04-laser-icf\\analysis.md"
   },
   "analyst_override_count": 7,
   "overrides": [
@@ -998,9 +1006,9 @@
       "account_name": "Power Conditioning & Energy Storage",
       "value": 0.0,
       "enabled": true,
-      "provenance": "direct",
+      "provenance": "derived",
       "source": "hb11-patent-reactor-design.md §Reactor Architecture; link-10-1007-s10894-023-00349-9/output.md §Commercialisation",
-      "rationale": "HB11 uses a laser driver, not a pulsed-power capacitor bank. No capacitor bank exists in this design. The driver cost is captured in C220104 (laser). Setting to zero eliminates double-counting.",
+      "rationale": "HB11 uses a laser driver, not a pulsed-power capacitor bank. No capacitor bank exists in this design. The driver cost is captured in C220104 (laser). Setting to zero eliminates double-counting. This is an analyst architectural inference from the patent description (no published $0 line item from HB11); provenance is derived, not direct.",
       "cost_basis": "noak",
       "blocked_by": null
     },
@@ -1011,7 +1019,7 @@
       "enabled": true,
       "provenance": "derived",
       "source": "link-10-1007-s10894-023-00349-9/output.md §Commercialisation",
-      "rationale": "McKenzie et al. 2023 state 'a target cost of several dollars per target is acceptable if a target gain of 200 can be achieved.' The target is a complex consumable assembly. Novel materials (borophene, white graphene) enable solution-based manufacturing. $100M is a placeholder for the target factory capital cost, analogous to other IFE target factory estimates. Highly uncertain — no published factory design or bottom-up cost estimate exists.",
+      "rationale": "McKenzie et al. 2023 cite 'several dollars per target' as an acceptable operating cost threshold (a recurring consumable cost), not a factory capital cost figure — these are different quantities. No specific IFE target factory capital estimate (HAPL, LIFE, or comparable) has been identified and scaled to this concept. $100M is an order-of-magnitude placeholder for the capital cost of the target manufacturing facility itself, bridging the analogy to IFE programs that require high-rep-rate precision target factories. Highly uncertain — no published factory design or bottom-up capital cost estimate exists for HB11 or a direct p-B11 IFE analogue.",
       "cost_basis": "noak",
       "blocked_by": null
     },
@@ -1029,11 +1037,11 @@
     {
       "account": "CAS21",
       "account_name": "Buildings & Structures",
-      "value": 139.93408203125,
+      "value": 140.63043212890625,
       "enabled": true,
       "provenance": "derived",
       "source": "link-10-1007-s10894-023-00349-9/output.md §Commercialisation; hb11-patent-reactor-design.md §Reactor Architecture",
-      "rationale": "Eliminated facilities: tritium processing building, hot cell for activated-component handling, heavy biological shielding structure, cryogenic target preparation facility. Retained: reactor building (simplified), turbine building (if thermal conversion), laser building, target fabrication facility, electrical building, control building. 50% reduction reflects elimination of ~half the building scope of a DT IFE plant. NOTE: CAS21 is a per-module account. At 1 GWe (n_mod=2) the output shows the same per-module value (139.9 M$) as native; total plant CAS21 is 139.9 * 2 = ~279.8 M$, handled by n_mod aggregation downstream. The apparent lack of scaling is correct per-module behavior, not a bug.",
+      "rationale": "CAS21 is a Class-S (shared/fixed) account: the library charges it once for the fleet regardless of n_mod — that single charge is the amortization that gives a small module a fair shot at 1 GWe. 0.50× means 50% of the library's default once-charged building cost for a fleet of this laser-ICF module at 1 GWe. Eliminated facilities: tritium processing building, hot cell for activated-component handling, heavy biological shielding structure, cryogenic target preparation facility. Retained: reactor building (simplified), turbine building (if thermal conversion), laser building, target fabrication facility, electrical building, control building.",
       "cost_basis": "noak",
       "blocked_by": null
     },
@@ -1071,5 +1079,6 @@
       "blocked_by": "1cFE/1costingfe#31"
     }
   ],
-  "asterisk_in_comparison": true
+  "asterisk_in_comparison": true,
+  "fit_grade": null
 }

@@ -1,30 +1,29 @@
-warning: `VIRTUAL_ENV=C:\Users\mallo\AppData\Local\Python\pythoncore-3.14-64` does not match the project environment path `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv` and will be ignored; use `--active` to target the active environment instead
-LCOE: 67.7 $/MWh   (1 GWe NOAK projection)
-Native LCOE = 68.6 $/MWh   (P_native, n_mod=1, overrides on)
-Generic LCOE = 68.6 $/MWh   (P_native, n_mod=1, overrides off)
-Overnight: generic 5386 $/kW   native 5386 $/kW   1 GWe 5332 $/kW
+LCOE: 87.8 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 90.0 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 90.0 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 5378 $/kW   native 5378 $/kW   1 GWe 5323 $/kW
 
 CAS               generic           native            1 GWe
 --------------------------------------------------------
 CAS10                18.4             18.4             18.5
-CAS21               658.9            658.9            690.2
+CAS21               661.0            661.0            692.1
 CAS22              2029.6           2029.6           2135.7
 CAS23               247.7            247.7            263.5
 CAS24               105.5            105.5            112.2
 CAS25                64.2             64.2             68.3
 CAS26               107.0            107.0            113.9
-CAS27                14.1             14.1             15.0
+CAS27                 6.7              6.7              6.7
 CAS28                 5.0              5.0              5.0
 CAS29                 0.0              0.0              0.0
-CAS30               646.4            646.4            680.8
+CAS30               645.3            645.3            679.5
 CAS40                37.8             37.8             39.0
-CAS50               312.3            312.3            330.7
-CAS60               816.3            816.3            859.7
+CAS50               311.8            311.8            330.2
+CAS60               815.0            815.0            858.1
 CAS70                99.8             99.8            103.1
-CAS80                 0.7              0.7              0.7
-CAS90               379.8            379.8            400.0
+CAS80               151.3            151.3            151.3
+CAS90               379.2            379.2            399.2
 --------------------------------------------------------
-TOTAL              5063.3           5063.3           5332.5
+TOTAL              5055.1           5055.1           5322.6
 
 --- CAS22 sub-account detail (overrides marked) ---
 code            generic       native        1 GWe  flag

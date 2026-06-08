@@ -1,4 +1,3 @@
-warning: `VIRTUAL_ENV=C:\Users\mallo\AppData\Local\Python\pythoncore-3.14-64` does not match the project environment path `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\.venv` and will be ignored; use `--active` to target the active environment instead
 ==============================================================================
 WARNING: PLACEHOLDER MODEL — NO DESIGN POINT DISCLOSED
 ==============================================================================
@@ -18,29 +17,29 @@ Zephyr's design. See analysis.md Section 5/6 for the 20 data gaps.
 LCOE: (NOT ENOUGH DATA FOR THIS CONCEPT)
 Native LCOE = (NOT ENOUGH DATA FOR THIS CONCEPT)
 Generic LCOE = (NOT ENOUGH DATA FOR THIS CONCEPT)
-Overnight: generic 35352 $/kW   native 35352 $/kW   1 GWe 30382 $/kW
+Overnight: generic 38885 $/kW   native 38885 $/kW   1 GWe 31769 $/kW
 
 CAS               generic           native            1 GWe
 --------------------------------------------------------
 CAS10                16.2             16.2             16.8
-CAS21               246.4            246.4            246.4
+CAS21               248.9            248.9            946.4
 CAS22              2005.5           2005.5          19334.8
 CAS23                40.3             40.3            403.2
 CAS24                17.2             17.2            171.7
 CAS25                10.5             10.5            104.5
 CAS26                17.4             17.4            174.2
-CAS27                 4.5              4.5              4.5
+CAS27               234.9            234.9            234.9
 CAS28                 5.0              5.0              5.0
 CAS29                 0.0              0.0              0.0
-CAS30               469.4            469.4           4088.9
+CAS30               515.9            515.9           4274.9
 CAS40                12.3             12.3             12.3
-CAS50               120.5            120.5            921.7
-CAS60               570.0            570.0           4898.4
+CAS50               137.4            137.4            968.6
+CAS60               626.9            626.9           5122.0
 CAS70                63.8             63.8            424.6
 CAS80                 0.1              0.1              1.3
-CAS90               265.2            265.2           2279.0
+CAS90               291.7            291.7           2383.0
 --------------------------------------------------------
-TOTAL              3535.2           3535.2          30382.5
+TOTAL              3888.5           3888.5          31769.5
 
 --- CAS22 sub-account detail (overrides marked) ---
 code            generic       native        1 GWe  flag

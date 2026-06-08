@@ -3,6 +3,8 @@
   "name": "13-electrostatic-hybrid",
   "confinement_family": "NONSTANDARD",
   "company": null,
+  "analyst_name": null,
+  "fuel": null,
   "status": "in_progress",
   "illustration": null,
   "has_cost_model": true,
@@ -15,7 +17,7 @@
     },
     "cas21": {
       "name": "Buildings & Structures",
-      "cost_m_usd": 137.03164672851562,
+      "cost_m_usd": 369.3468017578125,
       "overridden": false
     },
     "cas22": {
@@ -60,7 +62,7 @@
     },
     "cas30": {
       "name": "Indirect Costs",
-      "cost_m_usd": 1224.9825439453125,
+      "cost_m_usd": 1271.445556640625,
       "overridden": false
     },
     "cas40": {
@@ -70,17 +72,27 @@
     },
     "cas50": {
       "name": "Supplementary Costs",
-      "cost_m_usd": 268.0040588378906,
+      "cost_m_usd": 277.99359130859375,
       "overridden": false
     },
     "cas60": {
       "name": "Interest During Construction",
-      "cost_m_usd": 1466.5457763671875,
+      "cost_m_usd": 1522.0513916015625,
       "overridden": false
     },
     "cas70": {
       "name": "O&M Costs (annualised)",
       "cost_m_usd": 1.0931364297866821,
+      "overridden": false
+    },
+    "cas71": {
+      "name": "Fixed O&M (annualised)",
+      "cost_m_usd": 1.0931364297866821,
+      "overridden": false
+    },
+    "cas72": {
+      "name": "Scheduled Replacement (annualised)",
+      "cost_m_usd": 0.0,
       "overridden": false
     },
     "cas80": {
@@ -90,7 +102,7 @@
     },
     "cas90": {
       "name": "Financial Costs",
-      "cost_m_usd": 682.3023071289062,
+      "cost_m_usd": 708.1260375976562,
       "overridden": false
     },
     "cas22_detail": {
@@ -186,8 +198,8 @@
       }
     },
     "headline": {
-      "lcoe_per_mwh": 91.7965316772461,
-      "overnight_cost_per_kw": 9096.255859375,
+      "lcoe_per_mwh": 95.26466369628906,
+      "overnight_cost_per_kw": 9440.5302734375,
       "p_net_mw": 1.0,
       "q_eng": 13.125,
       "capacity_factor": 0.85
@@ -195,11 +207,11 @@
     "sensitivities": {
       "engineering": {
         "availability": {
-          "elasticity": -0.9998223263527156,
+          "elasticity": -0.9998287876116457,
           "baseline": 0.85
         },
         "construction_time_yr": {
-          "elasticity": 0.3791708284982948,
+          "elasticity": 0.37920059420798574,
           "baseline": 6.0
         },
         "mn": {
@@ -207,7 +219,7 @@
           "baseline": 1.0
         },
         "eta_th": {
-          "elasticity": -0.3147923220202307,
+          "elasticity": -0.3264347561487803,
           "baseline": 0.4
         },
         "eta_p": {
@@ -215,7 +227,7 @@
           "baseline": 0.5
         },
         "f_sub": {
-          "elasticity": 0.015167787757378742,
+          "elasticity": 0.01573832445356938,
           "baseline": 0.03
         },
         "blanket_t": {
@@ -239,11 +251,11 @@
           "baseline": 0.06
         },
         "burn_fraction": {
-          "elasticity": -0.0009025036819065808,
+          "elasticity": -0.0008696478459608191,
           "baseline": 0.05
         },
         "fuel_recovery": {
-          "elasticity": -0.002809955486094019,
+          "elasticity": -0.002707658466905177,
           "baseline": 0.99
         },
         "dd_f_T": {
@@ -263,7 +275,7 @@
           "baseline": 0.5
         },
         "p_input": {
-          "elasticity": 0.023338198186092538,
+          "elasticity": 0.023940847115433907,
           "baseline": 0.04
         },
         "eta_de": {
@@ -311,25 +323,25 @@
           "baseline": 3.0
         },
         "b_center": {
-          "elasticity": 0.09171053108379165,
+          "elasticity": 0.0883717899526506,
           "baseline": 2.0
         },
         "r_bore": {
-          "elasticity": 0.18342107776727826,
+          "elasticity": 0.176743594937086,
           "baseline": 0.3
         },
         "eta_pin": {
-          "elasticity": -0.023353577262550163,
+          "elasticity": -0.024232019214671285,
           "baseline": 0.8
         }
       },
       "financial": {
         "interest_rate": {
-          "elasticity": 0.9871707682062647,
+          "elasticity": 0.9872433752034657,
           "baseline": 0.07
         },
         "inflation_rate": {
-          "elasticity": 0.000678824435901654,
+          "elasticity": 0.0006541116898496467,
           "baseline": 0.02
         }
       }
@@ -337,11 +349,11 @@
     "sensitivities_bare": {
       "engineering": {
         "availability": {
-          "elasticity": -0.9998223263527156,
+          "elasticity": -0.9998287876116457,
           "baseline": 0.85
         },
         "construction_time_yr": {
-          "elasticity": 0.3791708284982948,
+          "elasticity": 0.37920059420798574,
           "baseline": 6.0
         },
         "mn": {
@@ -349,7 +361,7 @@
           "baseline": 1.0
         },
         "eta_th": {
-          "elasticity": -0.3147923220202307,
+          "elasticity": -0.3264347561487803,
           "baseline": 0.4
         },
         "eta_p": {
@@ -357,7 +369,7 @@
           "baseline": 0.5
         },
         "f_sub": {
-          "elasticity": 0.015167787757378742,
+          "elasticity": 0.01573832445356938,
           "baseline": 0.03
         },
         "blanket_t": {
@@ -381,11 +393,11 @@
           "baseline": 0.06
         },
         "burn_fraction": {
-          "elasticity": -0.0009025036819065808,
+          "elasticity": -0.0008696478459608191,
           "baseline": 0.05
         },
         "fuel_recovery": {
-          "elasticity": -0.002809955486094019,
+          "elasticity": -0.002707658466905177,
           "baseline": 0.99
         },
         "dd_f_T": {
@@ -405,7 +417,7 @@
           "baseline": 0.5
         },
         "p_input": {
-          "elasticity": 0.023338198186092538,
+          "elasticity": 0.023940847115433907,
           "baseline": 0.04
         },
         "eta_de": {
@@ -453,25 +465,25 @@
           "baseline": 3.0
         },
         "b_center": {
-          "elasticity": 0.09171053108379165,
+          "elasticity": 0.0883717899526506,
           "baseline": 2.0
         },
         "r_bore": {
-          "elasticity": 0.18342107776727826,
+          "elasticity": 0.176743594937086,
           "baseline": 0.3
         },
         "eta_pin": {
-          "elasticity": -0.023353577262550163,
+          "elasticity": -0.024232019214671285,
           "baseline": 0.8
         }
       },
       "financial": {
         "interest_rate": {
-          "elasticity": 0.9871707682062647,
+          "elasticity": 0.9872433752034657,
           "baseline": 0.07
         },
         "inflation_rate": {
-          "elasticity": 0.000678824435901654,
+          "elasticity": 0.0006541116898496467,
           "baseline": 0.02
         }
       }
@@ -627,10 +639,6 @@
       "fuel_handling_dd_base": 60.0,
       "fuel_handling_dhe3_base": 40.0,
       "fuel_handling_pb11_base": 15.0,
-      "special_materials_dt": 15.0,
-      "special_materials_dd": 2.0,
-      "special_materials_dhe3": 1.0,
-      "special_materials_pb11": 0.0,
       "turbine_per_mw": 0.19764,
       "electric_per_mw": 0.08418,
       "misc_per_mw": 0.05124,
@@ -1159,10 +1167,11 @@
   },
   "narrative": null,
   "sources": {
-    "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/13-electrostatic-hybrid/model_setup.py",
+    "model_setup": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\13-electrostatic-hybrid\\model_setup.py",
     "analysis": null
   },
   "analyst_override_count": 0,
   "overrides": [],
-  "asterisk_in_comparison": false
+  "asterisk_in_comparison": false,
+  "fit_grade": null
 }

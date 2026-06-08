@@ -3,6 +3,8 @@
   "name": "Dense Plasma Focus (LPP Fusion)",
   "confinement_family": "MFE",
   "company": "LPPFusion",
+  "analyst_name": null,
+  "fuel": null,
   "status": "in_progress",
   "illustration": null,
   "has_cost_model": true,
@@ -15,12 +17,12 @@
     },
     "cas21": {
       "name": "Buildings & Structures",
-      "cost_m_usd": 138.39735412597656,
+      "cost_m_usd": 456.4618835449219,
       "overridden": false
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 656.90771484375,
+      "cost_m_usd": 554.3787231445312,
       "overridden": false
     },
     "cas23": {
@@ -40,13 +42,13 @@
     },
     "cas26": {
       "name": "Heat Rejection Systems",
-      "cost_m_usd": 34.586997985839844,
+      "cost_m_usd": 23.058000564575195,
       "overridden": true
     },
     "cas27": {
       "name": "Special Materials",
       "cost_m_usd": 0.0,
-      "overridden": false
+      "overridden": true
     },
     "cas28": {
       "name": "Digital Twin & Simulation",
@@ -60,7 +62,7 @@
     },
     "cas30": {
       "name": "Indirect Costs",
-      "cost_m_usd": 207.6044158935547,
+      "cost_m_usd": 248.4057159423828,
       "overridden": false
     },
     "cas40": {
@@ -70,17 +72,27 @@
     },
     "cas50": {
       "name": "Supplementary Costs",
-      "cost_m_usd": 47.32761764526367,
+      "cost_m_usd": 55.9846076965332,
       "overridden": false
     },
     "cas60": {
       "name": "Interest During Construction",
-      "cost_m_usd": 250.9647216796875,
+      "cost_m_usd": 299.68450927734375,
       "overridden": false
     },
     "cas70": {
       "name": "O&M Costs (annualised)",
       "cost_m_usd": 2.4443271160125732,
+      "overridden": false
+    },
+    "cas71": {
+      "name": "Fixed O&M (annualised)",
+      "cost_m_usd": 2.4443271160125732,
+      "overridden": false
+    },
+    "cas72": {
+      "name": "Scheduled Replacement (annualised)",
+      "cost_m_usd": 0.0,
       "overridden": false
     },
     "cas80": {
@@ -90,7 +102,7 @@
     },
     "cas90": {
       "name": "Financial Costs",
-      "cost_m_usd": 116.75995635986328,
+      "cost_m_usd": 139.4265594482422,
       "overridden": false
     },
     "cas22_detail": {
@@ -101,8 +113,8 @@
       },
       "C220102": {
         "name": "Radiation Shield",
-        "cost_m_usd": 0.002020949264988303,
-        "overridden": true
+        "cost_m_usd": 0.03499426692724228,
+        "overridden": false
       },
       "C220103": {
         "name": "Magnets / Coils",
@@ -112,21 +124,21 @@
       "C220104": {
         "name": "Heating & Driver Systems",
         "cost_m_usd": 0.0,
-        "overridden": false
+        "overridden": true
       },
       "C220105": {
         "name": "Primary Structure & Support",
-        "cost_m_usd": 0.018100226297974586,
+        "cost_m_usd": 0.02959202229976654,
         "overridden": false
       },
       "C220106": {
         "name": "Vacuum System",
-        "cost_m_usd": 0.2251061648130417,
+        "cost_m_usd": 0.244179368019104,
         "overridden": false
       },
       "C220107": {
         "name": "Power Conditioning & Energy Storage",
-        "cost_m_usd": 0.2,
+        "cost_m_usd": 0.4,
         "overridden": true
       },
       "C220108": {
@@ -141,12 +153,12 @@
       },
       "C220110": {
         "name": "Remote Handling & Maintenance Equipment",
-        "cost_m_usd": 0.8660253882408142,
-        "overridden": false
+        "cost_m_usd": 0.08660253882408142,
+        "overridden": true
       },
       "C220111": {
         "name": "Installation Labor",
-        "cost_m_usd": 0.16087235510349274,
+        "cost_m_usd": 0.16439199447631836,
         "overridden": false
       },
       "C220112": {
@@ -186,8 +198,8 @@
       }
     },
     "headline": {
-      "lcoe_per_mwh": 16.04662322998047,
-      "overnight_cost_per_kw": 1556.6099853515625,
+      "lcoe_per_mwh": 19.09075164794922,
+      "overnight_cost_per_kw": 1858.794677734375,
       "p_net_mw": 4.999999523162842,
       "q_eng": 3.0,
       "capacity_factor": 0.85
@@ -195,59 +207,59 @@
     "sensitivities": {
       "engineering": {
         "availability": {
-          "elasticity": -0.9975883146137694,
+          "elasticity": -0.9980020975807976,
           "baseline": 0.85
         },
         "construction_time_yr": {
-          "elasticity": 0.37193578226122087,
+          "elasticity": 0.37331731539690755,
           "baseline": 6.0
         },
         "mn": {
           "elasticity": 0.0,
-          "baseline": 1.0
+          "baseline": 1.1
         },
         "eta_th": {
-          "elasticity": -0.12882287568832393,
+          "elasticity": -0.27205341854275467,
           "baseline": 0.4
         },
         "f_sub": {
-          "elasticity": 0.00008003404092945428,
+          "elasticity": 0.00038107578020731345,
           "baseline": 0.03
         },
         "p_pump": {
-          "elasticity": -0.0008662831476936997,
+          "elasticity": -0.0035156152622418803,
           "baseline": 0.5
         },
         "p_house": {
-          "elasticity": 0.0007114137130520404,
+          "elasticity": 0.0033873471275314673,
           "baseline": 2.0
         },
         "blanket_t": {
-          "elasticity": 0.002262359089015288,
-          "baseline": 0.1
+          "elasticity": 0.0019917736352136985,
+          "baseline": 0.05
         },
         "ht_shield_t": {
-          "elasticity": 0.001259767371625767,
-          "baseline": 0.05
+          "elasticity": 0.009249822966279653,
+          "baseline": 0.2
         },
         "structure_t": {
-          "elasticity": 0.0049226279977781845,
-          "baseline": 0.05
+          "elasticity": 0.010097336646640006,
+          "baseline": 0.15
         },
         "vessel_t": {
-          "elasticity": 0.014268455776066473,
-          "baseline": 0.05
+          "elasticity": 0.016487109329935436,
+          "baseline": 0.1
         },
         "plasma_t": {
-          "elasticity": 0.022623590553035113,
-          "baseline": 1.0
+          "elasticity": 0.0179259619749298,
+          "baseline": 0.45
         },
         "burn_fraction": {
-          "elasticity": -0.03660984261971618,
+          "elasticity": -0.030327530382475074,
           "baseline": 0.01
         },
         "fuel_recovery": {
-          "elasticity": -0.11877998934484514,
+          "elasticity": -0.0983971379802065,
           "baseline": 0.99
         },
         "dd_f_T": {
@@ -267,15 +279,15 @@
           "baseline": 0.5
         },
         "q_eng": {
-          "elasticity": -0.21395970084512927,
+          "elasticity": -0.26795935763419887,
           "baseline": 3.0
         },
         "f_rep": {
-          "elasticity": 0.000013937980433789179,
+          "elasticity": 0.000011543714791446314,
           "baseline": 200.0
         },
         "eta_pin": {
-          "elasticity": 0.00009396876196144246,
+          "elasticity": 0.00039261878201603045,
           "baseline": 0.2
         },
         "f_rad": {
@@ -289,11 +301,11 @@
       },
       "financial": {
         "interest_rate": {
-          "elasticity": 0.962700359578299,
+          "elasticity": 0.9672419571208688,
           "baseline": 0.07
         },
         "inflation_rate": {
-          "elasticity": 0.008996542895726682,
+          "elasticity": 0.007452720593244291,
           "baseline": 0.02
         }
       }
@@ -301,59 +313,59 @@
     "sensitivities_bare": {
       "engineering": {
         "availability": {
-          "elasticity": -0.9982151803382081,
+          "elasticity": -0.9985492839462119,
           "baseline": 0.85
         },
         "construction_time_yr": {
-          "elasticity": 0.3736318447982901,
+          "elasticity": 0.3748214363422361,
           "baseline": 6.0
         },
         "mn": {
           "elasticity": 0.0,
-          "baseline": 1.0
+          "baseline": 1.1
         },
         "eta_th": {
-          "elasticity": -0.19065745634685166,
+          "elasticity": -0.2722138919738483,
           "baseline": 0.4
         },
         "f_sub": {
-          "elasticity": -0.000020806784673924436,
+          "elasticity": 0.0002116454451071808,
           "baseline": 0.03
         },
         "p_pump": {
-          "elasticity": -0.0008189603806632701,
+          "elasticity": -0.002697313257415596,
           "baseline": 0.5
         },
         "p_house": {
-          "elasticity": -0.00018495677615362443,
+          "elasticity": 0.0018813322912025181,
           "baseline": 2.0
         },
         "blanket_t": {
-          "elasticity": 0.002236286587113351,
-          "baseline": 0.1
+          "elasticity": 0.0014462587513605428,
+          "baseline": 0.05
         },
         "ht_shield_t": {
-          "elasticity": 0.0019518229361640887,
-          "baseline": 0.05
+          "elasticity": 0.0067164446687147696,
+          "baseline": 0.2
         },
         "structure_t": {
-          "elasticity": 0.003872223217697709,
-          "baseline": 0.05
+          "elasticity": 0.007331837932009687,
+          "baseline": 0.15
         },
         "vessel_t": {
-          "elasticity": 0.010788673897737824,
-          "baseline": 0.05
+          "elasticity": 0.01197155426274074,
+          "baseline": 0.1
         },
         "plasma_t": {
-          "elasticity": 0.022362865537900845,
-          "baseline": 1.0
+          "elasticity": 0.013016328223471523,
+          "baseline": 0.45
         },
         "burn_fraction": {
-          "elasticity": -0.02709339149941768,
+          "elasticity": -0.022021305758523808,
           "baseline": 0.01
         },
         "fuel_recovery": {
-          "elasticity": -0.0879040313569504,
+          "elasticity": -0.07144773853653112,
           "baseline": 0.99
         },
         "dd_f_T": {
@@ -373,15 +385,15 @@
           "baseline": 0.5
         },
         "q_eng": {
-          "elasticity": -0.3136040651495075,
+          "elasticity": -0.34440222373122187,
           "baseline": 3.0
         },
         "f_rep": {
-          "elasticity": 0.00009035087171362556,
+          "elasticity": 0.00007343831581934925,
           "baseline": 200.0
         },
         "eta_pin": {
-          "elasticity": 0.00006954229448574138,
+          "elasticity": 0.000285088635730368,
           "baseline": 0.2
         },
         "f_rad": {
@@ -395,11 +407,11 @@
       },
       "financial": {
         "interest_rate": {
-          "elasticity": 0.9695803097286428,
+          "elasticity": 0.9732472077637362,
           "baseline": 0.07
         },
         "inflation_rate": {
-          "elasticity": 0.006657959755444518,
+          "elasticity": 0.005411539840102388,
           "baseline": 0.02
         }
       }
@@ -411,7 +423,7 @@
       "eta_pin": 0.2,
       "eta_dec": 0.85,
       "f_pdv": 0.8,
-      "mn": 1.0,
+      "mn": 1.1,
       "f_sub": 0.03,
       "p_pump": 0.5,
       "p_trit": 0.0,
@@ -421,11 +433,11 @@
       "target_unit_cost": 0.0,
       "p_coils": 0.0,
       "R0": 0.0,
-      "plasma_t": 1.0,
-      "blanket_t": 0.1,
-      "ht_shield_t": 0.05,
-      "structure_t": 0.05,
-      "vessel_t": 0.05,
+      "plasma_t": 0.45,
+      "blanket_t": 0.05,
+      "ht_shield_t": 0.2,
+      "structure_t": 0.15,
+      "vessel_t": 0.1,
       "construction_time_yr": 6.0,
       "burn_fraction": 0.01,
       "fuel_recovery": 0.99,
@@ -539,10 +551,6 @@
       "fuel_handling_dd_base": 60.0,
       "fuel_handling_dhe3_base": 40.0,
       "fuel_handling_pb11_base": 15.0,
-      "special_materials_dt": 15.0,
-      "special_materials_dd": 2.0,
-      "special_materials_dhe3": 1.0,
-      "special_materials_pb11": 0.0,
       "turbine_per_mw": 0.19764,
       "electric_per_mw": 0.08418,
       "misc_per_mw": 0.05124,
@@ -624,12 +632,12 @@
       "display_name": "Energy Multiplication Mₙ",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 1.0,
+      "baseline": 1.1,
       "display_multiplier": 1.0,
       "display_unit": "",
       "range": [
-        0.7,
-        1.3
+        0.77,
+        1.4300000000000002
       ],
       "source": null,
       "modeling_note": null
@@ -694,6 +702,48 @@
       "display_name": "Blanket Thickness",
       "category": "unclassified",
       "confidence": "unknown",
+      "baseline": 0.05,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.034999999999999996,
+        0.065
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "ht_shield_t": {
+      "display_name": "HT Shield Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.2,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.13999999999999999,
+        0.26
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "structure_t": {
+      "display_name": "Structure Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
+      "baseline": 0.15,
+      "display_multiplier": 1.0,
+      "display_unit": "m",
+      "range": [
+        0.105,
+        0.195
+      ],
+      "source": null,
+      "modeling_note": null
+    },
+    "vessel_t": {
+      "display_name": "Vessel Thickness",
+      "category": "unclassified",
+      "confidence": "unknown",
       "baseline": 0.1,
       "display_multiplier": 1.0,
       "display_unit": "m",
@@ -704,58 +754,16 @@
       "source": null,
       "modeling_note": null
     },
-    "ht_shield_t": {
-      "display_name": "HT Shield Thickness",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 0.05,
-      "display_multiplier": 1.0,
-      "display_unit": "m",
-      "range": [
-        0.034999999999999996,
-        0.065
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "structure_t": {
-      "display_name": "Structure Thickness",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 0.05,
-      "display_multiplier": 1.0,
-      "display_unit": "m",
-      "range": [
-        0.034999999999999996,
-        0.065
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "vessel_t": {
-      "display_name": "Vessel Thickness",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 0.05,
-      "display_multiplier": 1.0,
-      "display_unit": "m",
-      "range": [
-        0.034999999999999996,
-        0.065
-      ],
-      "source": null,
-      "modeling_note": null
-    },
     "plasma_t": {
       "display_name": "Minor Radius",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 1.0,
+      "baseline": 0.45,
       "display_multiplier": 1.0,
       "display_unit": "m",
       "range": [
-        0.7,
-        1.3
+        0.315,
+        0.5850000000000001
       ],
       "source": null,
       "modeling_note": null
@@ -945,30 +953,30 @@
   },
   "narrative": null,
   "sources": {
-    "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/24-dense-plasma-focus/model_setup.py",
-    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/24-dense-plasma-focus/analysis.md"
+    "model_setup": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\24-dense-plasma-focus\\model_setup.py",
+    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\24-dense-plasma-focus\\analysis.md"
   },
-  "analyst_override_count": 6,
+  "analyst_override_count": 7,
   "overrides": [
     {
-      "account": "C220102",
-      "account_name": "Radiation Shield",
-      "value": 0.002020949264988303,
+      "account": "C220104",
+      "account_name": "Heating & Driver Systems",
+      "value": 0.0,
       "enabled": true,
-      "provenance": "derived",
-      "source": "lerner-2023-jfe-paper.md §Introduction; lerner-2024-frontiers-pB11-prep.md §Introduction",
-      "rationale": "p-B11 is aneutronic: the primary reaction p + ¹¹B → 3α produces zero primary neutrons. Secondary side reactions (primarily ¹¹B(p,n)¹¹C) contribute <0.2% of fusion energy as neutrons. The library's default C220102 is ~0.038 M$/module (displays as 0.0 due to 1-decimal rounding in the output table). The 5% multiplier reduces this to ~0.002 M$/module — appropriate for the near-aneutronic environment (secondary x-rays and minor activation). Fleet effect: (0.038 - 0.002) × 200 ≈ 7 M$ reduction in C220000 vs the library default. The 5% floor (not zero) is retained because secondary bremsstrahlung x-rays and activation products from p-B11 side reactions do require some minimal shielding beyond a pure-DT default.",
+      "provenance": "direct",
+      "source": "lerner-2023-jfe-paper.md §Experimental Device",
+      "rationale": "DPF driver is electrically driven (pulsed coaxial electrodes from capacitor bank). Per the canonical account schema, electrically-driven pulsed concepts cost the primary driver in C220107 (pulsed-power capacitor bank), not C220104 (which covers laser/accelerator/gun drivers). Setting C220104 to zero prevents double-counting.",
       "cost_basis": "noak",
       "blocked_by": null
     },
     {
       "account": "C220107",
       "account_name": "Power Conditioning & Energy Storage",
-      "value": 0.2,
+      "value": 0.4,
       "enabled": true,
       "provenance": "derived",
-      "source": "lerner-2023-jfe-paper.md §Cost and Transition; lerner-2023-jfe-paper.md §Experimental Results",
-      "rationale": "Lerner 2023 states the entire device (including capacitor bank) costs '$500,000 or $0.10/W' under mass production for a 5 MWe unit. The FF-1 capacitor bank stores ~115 kJ (12 capacitors × 113 µF × ½ × (45 kV)² = 114.8 kJ). The capacitor bank is the dominant component in a DPF device; attribution of ~40% of total device cost to C220107 gives $0.200M per module. At $0.200M / 115 kJ = $1.74/J stored — consistent with mass-production cost reduction from current commercial ~$5/J. This value is aspirational (mass production not yet achieved for this device) but is grounded in the company's published $0.10/W total device estimate. Per-module semantics: C220107 is in _PER_MODULE_KEYS. The framework sets c22_detail['C220107'] = 0.200 per module, then aggregates per_module_equipment × n_mod into C220000. At n_mod=200 the fleet contribution is 200 × 0.200 = 40 M$. The sub-account detail row shows the per-module value (0.2 M$) at both native and 1 GWe; the fleet total is in C220000.",
+      "source": "lerner-2023-jfe-paper.md §Commercialization; lerner-2023-jfe-paper.md §Experimental Device",
+      "rationale": "Lerner 2023 states the commercial generator could be mass-produced for <$1M ($0.10/W capital, §Commercialization), covering all reactor island subsystems including the capacitor bank. The experimental device (FF-1) was built for ~$500K including a 115 kJ bank. Engineering judgment allocates ~40% of the $1M device cost to the capacitor bank = ~$400K per module (absolute: $0.40M/module). A 200-module 1 GWe fleet implies $80M total capacitor-bank capital — consistent with mass-production scaling from the FF-1 prototype. Absolute value used because the library's DENSE_PLASMA_FOCUS archetype carries $0 for C220107 (no relative anchor exists); approach mirrors the C220109 override. Low confidence: the $1M/module figure is a paper-concept projection, not a demonstrated cost.",
       "cost_basis": "noak",
       "blocked_by": null
     },
@@ -978,8 +986,19 @@
       "value": 0.15,
       "enabled": true,
       "provenance": "derived",
-      "source": "lerner-2023-jfe-paper.md §Energy Conversion; lerner-2023-jfe-paper.md §Cost and Transition",
-      "rationale": "The DPF commercial generator uses two novel direct energy converters: (1) an ion beam decelerator converting alpha-particle kinetic energy (~2/3 of fusion output) at claimed 85% efficiency, and (2) a multilayered x-ray photoelectric converter for bremsstrahlung (~1/3 of fusion output) at claimed 80% efficiency. Both systems replace the thermal cycle entirely (CAS23 = 0). Lerner 2023 attributes the DEC to the $500K total device cost; attribution of ~30% to C220109 gives $0.150M per module. The x-ray converter 'has never been made,' so this cost represents an R&D-stage estimate. The library's default for C220109 (inductive DEC for mirror/FRC exhaust or similar) is not designed for the DPF ion-beam + x-ray dual-conversion architecture; this override replaces it with a derived DPF-specific estimate. Per-module semantics: C220109 is in _PER_MODULE_KEYS. The framework sets c22_detail['C220109'] = 0.150 per module, then aggregates per_module_equipment × n_mod into C220000. At n_mod=200 the fleet contribution is 200 × 0.150 = 30 M$.",
+      "source": "lerner-2023-jfe-paper.md §Energy Capture, Conversion to Electricity",
+      "rationale": "Ion beam decelerator (~85% efficiency for ~2/3 of fusion energy) and x-ray photoelectric converter (multilayer metal foil, 40–50 cm inner radius × ~50 cm length, ~80% efficiency for ~1/3 of fusion energy) are both integral to the Focus Fusion generator. Lerner 2023 includes both within the <$1M per-module total device cost. DEC is estimated at ~15% of device cost = $0.15M per module (absolute). A 200-module 1 GWe fleet implies $30M total DEC capital — consistent with the compact x-ray converter geometry. Anchored to the library's 1 GWe modular-fleet default.",
+      "cost_basis": "noak",
+      "blocked_by": null
+    },
+    {
+      "account": "C220110",
+      "account_name": "Remote Handling & Maintenance Equipment",
+      "value": 0.08660253882408142,
+      "enabled": true,
+      "provenance": "derived",
+      "source": "lerner-2023-jfe-paper.md §Introduction; lppfusion-technology-focus-fusion-energy-dpf-device.md",
+      "rationale": "p-B11 primary reactions are aneutronic; secondary neutrons <1% of fusion energy. Structural components accumulate negligible neutron activation — no hot cell, no high-rad-hardened remote handling equipment required. Electrode replacement (design target: monthly) involves direct-contact maintenance of small beryllium components (~kg scale); standard industrial glove-box procedures cover Be toxicity controls. Library's per-module remote handling default is sized for D-T neutron activation levels; 10% of that default covers the reduced requirements here. Anchored to the library's 1 GWe modular-fleet default.",
       "cost_basis": "noak",
       "blocked_by": null
     },
@@ -989,33 +1008,34 @@
       "value": 0.0,
       "enabled": true,
       "provenance": "direct",
-      "source": "lerner-2023-jfe-paper.md §Energy Conversion; lppfusion-technology-focus-fusion-energy-dpf-device.md",
-      "rationale": "The Focus Fusion commercial generator uses direct energy conversion for both charged particle and x-ray energy outputs. There is no thermal cycle, no steam generator, no steam turbine, and no condenser. CAS23 (turbine plant equipment) is zero by architectural definition. This is a direct structural characteristic of the design, not a cost estimate. The library's default for CAS23 includes turbine island costs that do not apply to this concept. This override zeros the account for the library's 1 GWe fleet cost.",
+      "source": "lerner-2023-jfe-paper.md §Energy Capture; lppfusion-investing-in-lppfusion-executive-summary.md §Energy Conversion",
+      "rationale": "All fusion energy is captured via direct energy conversion: ion beam decelerator (charged particles) and x-ray photovoltaic converter (x-rays). No thermal blanket, no steam generator, no turbine, no condenser. LPPFusion explicitly states the device converts energy without going through heat and steam. Turbine plant capital is zero for the Focus Fusion design point. This is an architectural certainty, not a modeling assumption.",
       "cost_basis": "noak",
       "blocked_by": null
     },
     {
       "account": "CAS26",
       "account_name": "Heat Rejection Systems",
-      "value": 0.17293500900268555,
+      "value": 0.11529000848531723,
       "enabled": true,
       "provenance": "derived",
-      "source": "lerner-2023-jfe-paper.md §Energy Conversion",
-      "rationale": "With DEC converting ~83% of fusion energy directly to electricity (2/3 × 0.85 + 1/3 × 0.80 = 0.833), only ~17% of fusion energy appears as waste heat requiring rejection. A comparable thermal-cycle fusion plant at 38% thermal efficiency rejects ~62% of fusion energy as heat. Heat rejection scaling: 17% / 62% = 0.27×. The library's default CAS26 for a thermal-cycle concept would price cooling towers and circulating water system sized for ~62% of gross thermal power; the DPF's direct conversion means the cooling system only needs to handle parasitic losses in the DEC, electrode cooling, and auxiliary systems. DEC efficiency figures are from Lerner 2023 (85% ion, 80% x-ray); both DECs are unbuilt so this ratio carries low confidence. Multiplied against the library's 1 GWe fleet total for CAS26.",
+      "source": "lerner-2023-jfe-paper.md §Energy Capture",
+      "rationale": "Ion beam DEC efficiency ~85% (§Energy Capture) and x-ray photovoltaic efficiency ~80%, blending to ~83% overall ([inferred: 2/3 × 85% + 1/3 × 80%]). Total waste heat fraction ≈ 17% of fusion output plus electrode cooling (~1 MW per module for anode tip at 10 kW/cm²). Total heat rejection per module ≈ 2 MW, compared to ~14 MW for a 33%-efficient thermal plant at equivalent gross output (~6 MW fusion). Ratio ≈ 14% + margin → 0.18× the library's 1 GWe modular-fleet default, reflecting the large heat rejection reduction from direct conversion.",
       "cost_basis": "noak",
       "blocked_by": null
     },
     {
-      "account": "CAS80",
-      "account_name": "Fuel Costs (annualised)",
-      "value": 0.05,
+      "account": "CAS27",
+      "account_name": "Special Materials",
+      "value": 0.0,
       "enabled": true,
       "provenance": "derived",
-      "source": "lerner-2023-jfe-paper.md §Cost and Transition; lppfusion-proton-boron-p11b-fuel-arrives.md",
-      "rationale": "Lerner 2023 states fuel consumption of 5 kg p-B11/year per 5 MWe commercial device. For a 200-module 1 GWe fleet, total fuel consumption = 1,000 kg B-11/year. Lab-scale isotopically pure decaborane: ~$600/g (LPPFusion 2019 purchase, 93 g for $56,000). LPPFusion claims mass production reduces this 'many hundred-fold'; conservative mass-production estimate: $10/g (100× reduction). Annual fuel cost: 5,000 g × $10/g = $50,000/year = $0.050M/year per module. This is effectively negligible for LCOE. The library's default for CAS80 would price the fuel at some reference cost; this derived override reflects the extraordinarily low fuel mass for p-B11 at the 5 MWe scale and the plausible mass-production price trajectory.",
+      "source": "lerner-2023-jfe-paper.md §Fuel; lerner-2024-frontiers-pB11-prep.md §Fuel Preparations",
+      "rationale": "D-T concepts acquire kg-scale tritium at ~$30k/g for startup inventory — the dominant CAS27 cost. DPF with p-B11 has no tritium and no breeding blanket fill. Initial decaborane inventory is gram-scale (93 g received by LPPFusion); cost negligible. Initial beryllium electrode set for 200 modules: ~200 × small Be cylinder, rough cost <$1M at $800/kg. Override at 2% of library fleet default accounts for initial electrode material inventory only. Anchored to the library's 1 GWe fleet default.",
       "cost_basis": "noak",
       "blocked_by": null
     }
   ],
-  "asterisk_in_comparison": true
+  "asterisk_in_comparison": true,
+  "fit_grade": null
 }
