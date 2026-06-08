@@ -436,6 +436,14 @@ class ConceptData(BaseModel):
     illustration: str | None = None  # Filename under static/images/concepts/
     has_cost_model: bool
     has_sensitivities: bool
+    # Distinguishes 1costingfe-backed cost models (comparable LCOE) from
+    # freeform/standalone scripts (LCOE not comparable across concepts —
+    # different cost-model assumptions). The explorer uses this to suppress
+    # LCOE display for STANDALONE concepts in cross-concept views (entry
+    # grid, comparison, cost landscape). Optional+default for backward
+    # compat with existing JSON: missing → None → treat as costingfe (legacy
+    # behavior). Re-run extract_explorer_data.py to populate.
+    model_type: ModelType | None = None
     cost_model: CostModelData | None = None
     parameter_metadata: dict[str, ParameterMetadata] = Field(default_factory=dict)
     narrative: NarrativeData | None = None
@@ -503,6 +511,10 @@ class ConceptManifestEntry(BaseModel):
     illustration: str | None = None
     has_cost_model: bool
     has_sensitivities: bool
+    # Mirror of ConceptData.model_type, surfaced on the lightweight manifest so
+    # the entry grid and comparison picker can gate LCOE display without
+    # fetching the full per-concept JSON. None for legacy entries.
+    model_type: ModelType | None = None
     lcoe_per_mwh: float | None = None
     confidence: Confidence | None = None
     asterisk_in_comparison: bool = False
@@ -637,6 +649,7 @@ def build_manifest(concepts: list[ConceptData]) -> ConceptManifest:
                 illustration=concept.illustration,
                 has_cost_model=concept.has_cost_model,
                 has_sensitivities=concept.has_sensitivities,
+                model_type=concept.model_type,
                 lcoe_per_mwh=lcoe,
                 confidence=confidence,
                 asterisk_in_comparison=concept.asterisk_in_comparison,
@@ -879,6 +892,13 @@ def build_cost_landscape(concepts: list[ConceptData]) -> CostLandscape:
     for concept in sorted(concepts, key=lambda c: c.concept_id):
         cm = concept.cost_model
         if cm is None:
+            continue
+        # Suppress freeform/standalone concepts: their LCOE comes from custom
+        # cost models that aren't comparable to the 1costingfe-derived bars.
+        # Showing them on the landscape produces misleading cross-concept
+        # comparison (e.g. muon-catalyzed-fusion's freeform LCOE next to
+        # 1costingfe-driven tokamaks).
+        if concept.model_type == ModelType.STANDALONE:
             continue
         lcoe = cm.headline.lcoe_per_mwh
         if not math.isfinite(lcoe):

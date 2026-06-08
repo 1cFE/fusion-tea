@@ -9,6 +9,7 @@
   "illustration": null,
   "has_cost_model": true,
   "has_sensitivities": true,
+  "model_type": "costingfe",
   "cost_model": {
     "cas10": {
       "name": "Preconstruction",
@@ -22,7 +23,7 @@
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 56493.13671875,
+      "cost_m_usd": 56493.1328125,
       "overridden": false
     },
     "cas23": {
@@ -62,7 +63,7 @@
     },
     "cas30": {
       "name": "Indirect Costs",
-      "cost_m_usd": 11672.4482421875,
+      "cost_m_usd": 11672.447265625,
       "overridden": false
     },
     "cas40": {
@@ -72,7 +73,7 @@
     },
     "cas50": {
       "name": "Supplementary Costs",
-      "cost_m_usd": 2548.537353515625,
+      "cost_m_usd": 2548.537109375,
       "overridden": false
     },
     "cas60": {

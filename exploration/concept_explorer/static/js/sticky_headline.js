@@ -74,6 +74,12 @@
   function renderStickyHeadline(container, { concept, headline, hasSliders, onReset }) {
     container.innerHTML = "";
     container.classList.add("sticky-headline");
+    // Freeform/standalone concepts compute LCOE in custom code with non-comparable
+    // assumptions; we suppress the LCOE pill value to prevent misleading
+    // cross-concept comparison. Other stats (overnight, net power, capacity
+    // factor) remain visible — they're physical quantities, not model-relative.
+    container.dataset.suppressLcoe =
+      concept && concept.model_type === "standalone" ? "1" : "0";
 
     // --- Identity (#code + name + badge + company) ---
     const lbl = conceptLabel(concept);
@@ -99,8 +105,11 @@
     container.appendChild(crumb);
 
     // --- Stat pills ---
+    const suppressLcoe = container.dataset.suppressLcoe === "1";
     for (const stat of STATS) {
-      container.appendChild(_buildStatPill(stat, headline));
+      container.appendChild(
+        _buildStatPill(stat, headline, suppressLcoe && stat.key === "lcoe"),
+      );
     }
 
     // --- Reset (only when sliders exist) ---
@@ -128,6 +137,7 @@
    */
   function updateStickyHeadline(container, headline, baselineHeadline) {
     if (!headline) return;
+    const suppressLcoe = container.dataset.suppressLcoe === "1";
     for (const stat of STATS) {
       const pill = container.querySelector(
         `.sticky-headline__pill[data-stat="${stat.key}"]`,
@@ -135,6 +145,13 @@
       if (!pill) continue;
       const valueEl = pill.querySelector(".sticky-headline__pill-value");
       const deltaEl = pill.querySelector(".sticky-headline__pill-delta");
+
+      if (suppressLcoe && stat.key === "lcoe") {
+        valueEl.textContent = "—";
+        deltaEl.textContent = "";
+        deltaEl.classList.add("sticky-headline__pill-delta--neutral");
+        continue;
+      }
 
       const current  = stat.get(headline);
       const baseline = baselineHeadline ? stat.get(baselineHeadline) : null;
@@ -158,13 +175,15 @@
   // Internal helpers
   // ---------------------------------------------------------------------------
 
-  function _buildStatPill(stat, headline) {
+  function _buildStatPill(stat, headline, suppressValue) {
     const pill = _el("div", "sticky-headline__pill");
     pill.dataset.stat = stat.key;
 
     const row = _el("div", "sticky-headline__pill-row");
     const value = _el("span", "sticky-headline__pill-value");
-    if (headline && Number.isFinite(stat.get(headline))) {
+    if (suppressValue) {
+      value.textContent = "—";
+    } else if (headline && Number.isFinite(stat.get(headline))) {
       value.textContent = stat.fmt(stat.get(headline));
     } else {
       value.textContent = "—";

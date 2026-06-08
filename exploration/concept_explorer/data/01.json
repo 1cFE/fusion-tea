@@ -9,6 +9,7 @@
   "illustration": null,
   "has_cost_model": true,
   "has_sensitivities": true,
+  "model_type": "costingfe",
   "cost_model": {
     "cas10": {
       "name": "Preconstruction",
@@ -22,7 +23,7 @@
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 8035.3603515625,
+      "cost_m_usd": 8035.36083984375,
       "overridden": false
     },
     "cas23": {
