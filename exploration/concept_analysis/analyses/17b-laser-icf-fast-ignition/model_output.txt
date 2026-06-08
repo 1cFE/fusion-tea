@@ -1,6 +1,6 @@
 Laser ICF — Fast Ignition D-T (Focused Energy)
 NOAK | 1 GWe | 75% availability | 30 yr | Rankine steam
-LCOE: 98.5 $/MWh | Overnight: 4797 $/kW
+LCOE: 119.5 $/MWh | Overnight: 4797 $/kW
 Fusion: 3060 MW | Net: 1000 MW | Q_eng: 4.0
 
 Code     Account                              M$
@@ -20,7 +20,7 @@ CAS40    Owner's Costs                      39.0
 CAS50    Supplementary                     322.2
 CAS60    IDC                               626.2
 CAS70    O&M (annualized)                  122.4
-CAS80    Fuel (annualized)                 138.4
+CAS80    Fuel (annualized)                 276.2
 CAS90    Financial                         386.5
 ------------------------------------------------
          Total Capital                    4796.5
@@ -72,25 +72,25 @@ Sensitivity (elasticity = %LCOE / %param)
 ------------------------------------------------
 
 Engineering levers:
-  availability                         -0.7274
-  q_eng                                -0.3405
-  construction_time_yr                 +0.2254
-  plasma_t                             +0.1854
-  eta_th                               -0.1718
-  eta_pin                              +0.1467
-  f_rep                                +0.0889
-  blanket_t                            +0.0835
-  mn                                   -0.0549
-  f_sub                                -0.0216
-  ht_shield_t                          +0.0177
-  vessel_t                             +0.0070
-  p_trit                               -0.0054
-  fuel_recovery                        -0.0030
-  structure_t                          +0.0028
-  p_house                              -0.0022
-  p_cryo                               +0.0011
-  p_pump                               -0.0006
-  p_target                             -0.0005
+  availability                         -0.5998
+  q_eng                                -0.2807
+  f_rep                                +0.2488
+  construction_time_yr                 +0.2071
+  plasma_t                             +0.1529
+  eta_th                               -0.1417
+  eta_pin                              +0.1209
+  blanket_t                            +0.0689
+  mn                                   -0.0453
+  f_sub                                -0.0178
+  ht_shield_t                          +0.0146
+  vessel_t                             +0.0058
+  p_trit                               -0.0044
+  fuel_recovery                        -0.0024
+  structure_t                          +0.0023
+  p_house                              -0.0018
+  p_cryo                               +0.0009
+  p_pump                               -0.0005
+  p_target                             -0.0004
   burn_fraction                        -0.0001
   dd_f_T                               +0.0000
   dd_f_He3                             +0.0000
@@ -100,25 +100,25 @@ Engineering levers:
   eta_dec                              +0.0000
 
 Financial:
-  interest_rate                        +0.4629
-  inflation_rate                       +0.1292
+  interest_rate                        +0.3635
+  inflation_rate                       +0.1751
 
 Costing constants (top 15):
-  driver_laser_per_mj                  +0.1472
-  om_cost_dt                           +0.1170
-  indirect_fraction                    +0.0787
-  blanket_unit_cost_dt                 +0.0768
-  target_factory_base                  +0.0589
-  dpssl_optics_replace_frac            +0.0339
-  installation_frac                    +0.0328
-  core_lifetime_dt                     -0.0327
-  shield_unit_cost                     +0.0279
-  dpssl_optics_shot_lifetime           -0.0246
-  fuel_handling_dt_base                +0.0208
-  electric_per_mw                      +0.0199
-  decom_provision_dt                   +0.0182
-  remote_handling_dt_base              +0.0171
-  misc_per_mw                          +0.0121
+  driver_laser_per_mj                  +0.1214
+  om_cost_dt                           +0.0964
+  indirect_fraction                    +0.0649
+  blanket_unit_cost_dt                 +0.0633
+  target_factory_base                  +0.0486
+  dpssl_optics_replace_frac            +0.0280
+  installation_frac                    +0.0270
+  core_lifetime_dt                     -0.0270
+  shield_unit_cost                     +0.0230
+  dpssl_optics_shot_lifetime           -0.0203
+  fuel_handling_dt_base                +0.0171
+  electric_per_mw                      +0.0164
+  decom_provision_dt                   +0.0150
+  remote_handling_dt_base              +0.0141
+  misc_per_mw                          +0.0100
 
 Ignition Laser Cost Premium Sweep
 (C220104 = baseline DPSSL driver cost; ignitor premium applied on top)

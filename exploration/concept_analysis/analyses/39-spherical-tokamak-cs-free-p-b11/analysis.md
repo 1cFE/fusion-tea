@@ -8,7 +8,7 @@ Approved-Date:
 Confinement-Family: MFE
 Archetype: TOKAMAK
 Archetype-Fit: Low
-Comparison-Status: freeform-deferred
+Comparison-Status: costingfe-asterisked
 Comparables: []
 ---
 

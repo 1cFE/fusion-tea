@@ -6,6 +6,8 @@ Status: draft
 Created: 2026-04-19
 Approved-Date:
 Reuses: []
+P-Native: 1000
+Comparison-Status: costingfe
 ---
 
 > **See also:** `synthesis_concept_downselect.md` (this dir) and `knowledge/concept_research/17-laser-icf-direct-drive/dossier_17b_focused_concept_downselect.md` for additional TNSA proton-coupling, cone-target dynamics, and hot-spot energy-deposition narrative carried over from the `concept-downselect` branch via Option C overlay. See `.project/reports/2026-05-19-concept-downselect-rebase-audit.md` §2.2.
