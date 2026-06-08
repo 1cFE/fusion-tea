@@ -1,22 +1,3 @@
----
-ID: 23-laser-icf-nanostructured-target
-Concept: Laser ICF Nanostructured Target (Marvel Fusion)
-Company: Marvel Fusion
-Status: draft
-Created: 2026-06-04
-Approved-Date:
-Confinement-Family: IFE
-Archetype: LASER_IFE
-Archetype-Fit: Low
-Comparison-Status: costingfe
-Comparables:
-  - 04-laser-icf
-Design-Point-Name: Marvel Fusion CFE-NANO Pilot Plant (EU Horizon EIC Project 101189082, 100 MWe, 2033 milestone)
-Design-Point-Maturity: paper-concept
-P-Native: 100
-Grounding-Confidence: medium
----
-
 ## Design Point
 
 - Name: Marvel Fusion CFE-NANO Pilot Plant (EU Horizon EIC Project 101189082, 100 MWe, 2033 milestone)
