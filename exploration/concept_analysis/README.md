@@ -152,22 +152,96 @@ with cross-concept positioning, risk verdicts, and LCOE sensitivity.
 `Status: approved` and `Approved-Date` on both `analysis.md` and
 `synthesis.md`.
 
+## Portfolio Audit (cross-concept)
+
+The phases above check each concept **on its own**. `portfolio-audit` is
+**orthogonal** to that loop: it checks whether the answers across a whole cohort
+hang together — family-internal coherence, cross-family magnitude ordering,
+source traceability on the dominant cost drivers, and sensitivity under
+perturbation. A per-concept `assess` can pass every concept individually while
+the portfolio still makes no physical sense (wrong family ordering, an outlier
+that's indefensible against its neighbors). This stage is the only thing that
+reasons about the cohort as a whole.
+
+```bash
+# Audit a cohort (same selection conventions as every other command)
+uv run python scripts/run_analysis.py portfolio-audit 01 07 21
+uv run python scripts/run_analysis.py portfolio-audit --all --passed-only
+uv run python scripts/run_analysis.py portfolio-audit --family MFE
+
+# Write the forensics (manifest, digest, rendered prompt) without spending tokens
+uv run python scripts/run_analysis.py portfolio-audit 01 --dry-run
+
+# Resume a run that timed out — only if the cohort is byte-identical to before
+# (otherwise it aborts naming what changed):
+uv run python scripts/run_analysis.py portfolio-audit --all --passed-only \
+    --inherit-from reviews/20260607-135133
+```
+
+**How it works.** A Python runner does only the cheap deterministic prep — it
+builds a per-concept `manifest.json` (audited-state SHAs + iteration state) and a
+`cohort_digest.json` (headline LCOE, CAS rollups, enabled overrides for every
+concept at once), renders the lead prompt, and writes all three to the run folder
+*before* invoking a single Opus **lead reviewer** agent. The lead reasons over
+the digest, spawns investigator subagents to test hypotheses (reading sources,
+re-running models with perturbed inputs), spawns writer subagents to produce
+per-concept audit docs for confirmed findings, and writes the cross-concept
+report itself. The runner makes exactly one Claude call; all fan-out is the
+lead's own via the Task tool.
+
+**It is advisory and non-mutating.** It does not gate `approve` or any stage, and
+it writes nothing outside its run folder. It deliberately does **not** read
+`synthesis.md`, `review.md`, or `address_log.md` (those are downstream of assess
+and often stale).
+
+**Omit list.** Concepts on the shared explorer omit list
+(`exploration/concept_explorer/omit_list.yaml` — "not ready for cross-concept
+comparison") are excluded from the cohort and reported in the run output. That
+file is the single source of truth for both the explorer and this stage; no code
+change is needed to add or remove a concept.
+
+**Output** lands in a timestamped, immutable run folder:
+
+```
+reviews/<YYYYMMDD-HHMMSS>/
+├── manifest.json        # per-concept SHAs + iter state (the audited-state record)
+├── cohort_digest.json   # what was fed to the lead
+├── prompts/lead_prompt.md
+├── report.md            # cross-concept report (lead writes it continuously)
+├── concepts/<id>.md     # one plain-language doc per flagged concept
+├── findings.jsonl       # one JSON line per confirmed finding
+└── run.log              # lead returncode, wall time, cost/usage
+```
+
+Each run is a new folder; runs are never overwritten. To compare two runs, diff
+their `manifest.json` per-concept SHAs to see which concepts changed.
+
+**Key flags:** `--passed-only` (restrict to concepts whose latest iter verdict is
+PASS), `--model` (default `opus`), `--timeout` (default 7200s), `--dry-run`, and
+`--inherit-from <prior-run-dir>` (resume a timed-out run — **all-or-nothing**: if
+any concept's artifacts changed since the prior run it aborts naming what changed
+rather than inheriting a now-incoherent partial result).
+
 ## Commands
 
-10 subcommands. The dispatch table (`run_analysis.py:main()`):
+14 subcommands. The dispatch table (`run_analysis.py:main()`):
 
 ```python
 dispatch = {
-    "list":           cmd_list,
-    "status":         cmd_status,
-    "gap-check":      cmd_gap_check,
-    "analyze":        cmd_analyze,
-    "model-setup":    cmd_model_setup,
-    "review":         cmd_review,
-    "address-review": cmd_address_review,
-    "synthesize":     cmd_synthesize,
-    "approve":        cmd_approve,
-    "add-source":     cmd_add_source,
+    "list":               cmd_list,
+    "status":             cmd_status,
+    "gap-check":          cmd_gap_check,
+    "analyze":            cmd_analyze,
+    "model-setup":        cmd_model_setup,
+    "review":             cmd_review,
+    "address-review":     cmd_address_review,
+    "synthesize":         cmd_synthesize,
+    "approve":            cmd_approve,
+    "add-source":         cmd_add_source,
+    "init-tables":        cmd_init_tables,
+    "regenerate-concept": cmd_regenerate_concept,
+    "model-critic":       cmd_model_critic,
+    "portfolio-audit":    cmd_portfolio_audit,  # cross-cohort; orthogonal to the per-concept loop
 }
 ```
 
@@ -185,8 +259,15 @@ dispatch = {
 | `synthesize` | Editorial synthesis | yes | `synthesis.md` |
 | `approve` | Mark as approved | no | Frontmatter update |
 | `add-source` | Add PDF or URL source | no* | Extracted source in `iter-NN/sources/` |
+| `portfolio-audit` | Cross-concept cohort sanity check (orthogonal to the per-concept loop) | yes | `reviews/<ts>/` (manifest, digest, report, per-concept docs) |
 
 \* `add-source` calls `agentic-mbse extract`, not Claude directly.
+
+(`init-tables`, `regenerate-concept`, and `model-critic` are also in the dispatch
+table above; see `run_analysis.py --help` for their flags.)
+
+See [Portfolio Audit (cross-concept)](#portfolio-audit-cross-concept) above for
+how `portfolio-audit` works and its full output layout.
 
 ### Concept Selection
 
@@ -213,11 +294,17 @@ name/company substring. Ambiguous matches produce an error listing all hits.
 | `--force` | off | Re-run even if output exists; for `analyze`, clears all `iter-*/` dirs |
 | `--timeout` | 900 | Per-invocation timeout (seconds) |
 
+`portfolio-audit` overrides two of these defaults: `--model` is `opus` and
+`--timeout` is `7200` (the lead orchestration is long-running). It has no
+`--force` (every run is a new timestamped folder).
+
 **Stage-specific flags:**
 
 | Flag | Commands | Default | Description |
 |------|----------|---------|-------------|
 | `--max-passes` | `analyze` | 3 | Max iterations (1 = skip assessment entirely → `SINGLE_PASS` verdict) |
+| `--passed-only` | `portfolio-audit` | off | Restrict the cohort to concepts whose latest iter verdict is `PASS` |
+| `--inherit-from PATH` | `portfolio-audit` | — | Resume a prior run folder (all-or-nothing; aborts if any concept's artifacts changed) |
 | `--add-passes N` | `analyze` | — | Run N additional passes from each concept's current iteration (implies `--resume`; per-concept `max_passes` = current iter + N) |
 | `--feedback PATH` | `analyze` | — | Use file as `iter-N/pre_feedback.md` for next iter (requires existing `analysis.md`; implies `--resume`; runs full analyze→model_setup→assess) |
 | `--resume` | `analyze` | off | Continue from last iteration |

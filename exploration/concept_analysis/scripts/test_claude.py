@@ -8,7 +8,10 @@ from unittest.mock import patch, MagicMock
 
 import pytest
 
-from lib.claude import InvokeResult, invoke_claude, _parse_json_events, _check_interface
+from lib.claude import (
+    InvokeResult, invoke_claude, _parse_json_events, _extract_result_meta,
+    _check_interface,
+)
 
 
 # ---------------------------------------------------------------------------
@@ -114,6 +117,30 @@ class TestParseJsonEvents:
         events = [{"type": "result", "result": {"nested": "thing"}}]
         with pytest.raises(ValueError, match="non-string result: dict"):
             _parse_json_events(json.dumps(events))
+
+
+class TestExtractResultMeta:
+    """Best-effort run accounting parsed off the result event (diagnostic)."""
+
+    def test_extracts_cost_usage_turns(self):
+        events = [
+            {"type": "system", "session_id": "s"},
+            {"type": "result", "result": "ok", "total_cost_usd": 12.34,
+             "usage": {"input_tokens": 100, "output_tokens": 50}, "num_turns": 7},
+        ]
+        meta = _extract_result_meta(json.dumps(events))
+        assert meta["cost_usd"] == 12.34
+        assert meta["usage"] == {"input_tokens": 100, "output_tokens": 50}
+        assert meta["num_turns"] == 7
+
+    def test_absent_fields_are_none(self):
+        events = [{"type": "result", "result": "ok"}]
+        meta = _extract_result_meta(json.dumps(events))
+        assert meta["cost_usd"] is None and meta["num_turns"] is None
+
+    def test_malformed_stream_returns_empty_never_raises(self):
+        assert _extract_result_meta("not json") == {}
+        assert _extract_result_meta("[]") == {}
 
 
 # ---------------------------------------------------------------------------
