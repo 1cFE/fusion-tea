@@ -164,7 +164,7 @@
       "blanket_config": null,
       "operation_mode": "Steady-state",
       "repetition_rate": null,
-      "driver_technology": "Centrifugal mirror with alpha channeling (RF waves, EÃ—B rotation, ponderomotive barriers)",
+      "driver_technology": "Centrifugal mirror with alpha channeling (RF waves, E×B rotation, ponderomotive barriers)",
       "confidence": "medium",
       "heating_type_parsed": [
         "ICRH"
@@ -361,7 +361,7 @@
       "blanket_config": "TBD",
       "operation_mode": "Steady-state",
       "repetition_rate": null,
-      "driver_technology": "High-voltage electrostatic cathode (300 kV) with EÃ—B electron co-confinement",
+      "driver_technology": "High-voltage electrostatic cathode (300 kV) with E×B electron co-confinement",
       "confidence": "medium-low",
       "heating_type_parsed": [
         "N/A (non-thermal)"

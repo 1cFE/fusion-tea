@@ -192,7 +192,8 @@
             "value": "FRC compression",
             "label": "FRC compression",
             "concepts": [
-              "08"
+              "08",
+              "18"
             ]
           },
           {
@@ -204,13 +205,6 @@
               "37"
             ]
           }
-        ]
-      },
-      {
-        "value": "Cmpt-Tor",
-        "label": "Compact Toroid",
-        "concepts": [
-          "18"
         ]
       },
       {

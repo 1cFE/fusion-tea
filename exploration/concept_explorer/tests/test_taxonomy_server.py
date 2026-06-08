@@ -1,4 +1,4 @@
-"""Tests for taxonomy API endpoints and page route.
+"""Tests for taxonomy API endpoints.
 
 Coverage:
 - GET /api/taxonomy/tree
@@ -7,7 +7,6 @@ Coverage:
 - GET /api/taxonomy/similarity/{concept_id} (found and 404)
 - GET /api/taxonomy/compare/{concept_a}/{concept_b} (found and 404)
 - GET /api/taxonomy/constellation
-- GET /taxonomy (page route)
 - Regression: existing endpoints still work
 """
 
@@ -90,24 +89,8 @@ def base_dir(tmp_path: Path) -> Path:
 
 
 @pytest.fixture
-def base_dir_with_pages(base_dir: Path) -> Path:
-    """Extends base_dir with pre-built dist/ files for page routes."""
-    dist_dir = base_dir / "dist"
-    dist_dir.mkdir(exist_ok=True)
-    (dist_dir / "taxonomy.html").write_text("<html>taxonomy</html>")
-    return base_dir
-
-
-@pytest.fixture
 def client(base_dir: Path) -> Generator[TestClient, None, None]:
     app = create_app(base_dir=base_dir)
-    with TestClient(app) as c:
-        yield c
-
-
-@pytest.fixture
-def client_with_pages(base_dir_with_pages: Path) -> Generator[TestClient, None, None]:
-    app = create_app(base_dir=base_dir_with_pages)
     with TestClient(app) as c:
         yield c
 
@@ -209,21 +192,6 @@ def test_taxonomy_constellation_endpoint(client: TestClient):
     # point count matches the post-omit registry count.
     assert len(data["points"]) == _EXPECTED_REGISTRY_COUNT
     assert "variance_explained" in data
-
-
-# ---------------------------------------------------------------------------
-# Page route
-# ---------------------------------------------------------------------------
-
-
-def test_taxonomy_page_route(client_with_pages: TestClient):
-    resp = client_with_pages.get("/taxonomy")
-    assert resp.status_code == 200
-
-
-def test_taxonomy_page_404_without_dist(client: TestClient):
-    resp = client.get("/taxonomy")
-    assert resp.status_code == 404
 
 
 # ---------------------------------------------------------------------------
