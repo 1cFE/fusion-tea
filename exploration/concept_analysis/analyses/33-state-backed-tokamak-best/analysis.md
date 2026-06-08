@@ -16,7 +16,7 @@ Comparables:
   - 29-negative-triangularity-tokamak
 Design-Point-Name: ARIES-ACT1 advanced-physics / advanced-technology design (Kessel et al., Fusion Sci. Tech. 67 (2015))
 Design-Point-Maturity: paper-concept
-P-Native: 1000
+P-Native: 400
 Grounding-Confidence: high
 ---
 

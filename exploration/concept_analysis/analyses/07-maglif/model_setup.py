@@ -48,7 +48,12 @@ spec = dict(
                       # all structures from neutrons, X-rays, and debris"
 )
 
-P_native = 1000  # MWe — z-ife-sand2006-7148-thermal-cycles.md §3.1.1.3
+P_native = 200  # MWe — Pacific Fusion's published commercial-plant range is
+                # 100-300 MWe per their public roadmap; 200 is the midpoint.
+                # Previous value (1000 MWe) was the Sandia Z-IFE reference
+                # design (SAND2006-7148 §3.1.1.3), which Pacific Fusion does
+                # NOT claim — that was inherited from the academic reference
+                # paper, not the company's stated target.
 
 # 2. Model.
 model = CostModel(concept=ConfinementConcept.MAGLIF, fuel=Fuel.DT)
