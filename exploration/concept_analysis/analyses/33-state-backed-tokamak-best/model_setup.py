@@ -43,7 +43,10 @@ spec = dict(
     # Fusion power (1813 MW per Table I) is back-solved by library from
     # p_input + geometry via inverse power balance, not a spec input.
 )
-P_native = 1000  # MWe net electric — design point specification
+P_native = 400  # MWe net electric — ASIPP/CAS published target for the BEST
+                # tokamak (Burning Plasma Experimental Superconducting Tokamak).
+                # Previous value (1000 MWe) was an aspirational round number
+                # not matched in BEST's own design documentation.
 
 # 2. Model.
 model = CostModel(concept=ConfinementConcept.TOKAMAK, fuel=Fuel.DT)

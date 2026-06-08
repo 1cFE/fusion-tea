@@ -12,7 +12,7 @@ Comparison-Status: costingfe
 Comparables: []
 Design-Point-Name: Z-IFE reference plant, 10-chamber 0.1 Hz baseline (Olson et al. 2006, SAND2006-7148)
 Design-Point-Maturity: paper-concept
-P-Native: 1000
+P-Native: 200
 Grounding-Confidence: medium
 ---
 

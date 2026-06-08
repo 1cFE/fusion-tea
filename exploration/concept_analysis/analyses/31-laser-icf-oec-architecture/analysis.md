@@ -17,7 +17,7 @@ Comparables:
   - 17a-laser-icf-hybrid-drive
 Design-Point-Name: BLF OEC Reactor, 10 Hz design point (Sunahara et al., 2025)
 Design-Point-Maturity: paper-concept
-P-Native: 2820
+P-Native: 1000
 Grounding-Confidence: medium
 ---
 

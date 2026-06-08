@@ -61,9 +61,22 @@ from lib.model_setup_helpers import (
 #      BLF's 30% DEC channel is a modeling gap (no hybrid thermal+DEC mode exists).
 spec = dict(
     plasma_t=9.0,   # chamber radius [m], midpoint of 8–10 m (paper §4.1, medium confidence)
-    q_eng=4.7,      # P_grid/P_recirc = 2820/600 (paper Table 2 power balance)
+    # Engineering gain: BLF's public website claims a 1 GWe commercial plant,
+    # but the Sunahara et al. 2025 paper's design-point math gives P_grid = 2820
+    # MWe at q_eng = 4.7 (= 2820/600 with P_recirc = 600 MW from a fixed-cost
+    # 5-MJ driver + facility loads). Operating the same driver-architecture at
+    # 1 GWe net leaves P_recirc unchanged (driver is sized for ignition, not
+    # plant scale), so q_eng = P_grid/P_recirc = 1000/600 ≈ 1.67. This is below
+    # the library's q_sci < 2 warning threshold — it reflects an honest
+    # accounting: the website's "1 GWe" headline at the paper's architecture
+    # produces a recirculating-power-dominated plant. If BLF intended a
+    # smaller laser at 1 GWe scale, q_eng could recover to ~4.7, but that
+    # would require revising the C220104 driver override below.
+    q_eng=1.67,     # derived: P_net/P_recirc = 1000/600 at the BLF website's 1 GWe claim
 )
-P_native = 2820  # MWe — analysis.md Design Point block
+P_native = 1000  # MWe — BLF public website ("1 GW power plant"). The Sunahara
+                 # et al. 2025 paper's design point is 2820 MWe (Table 2); the
+                 # 1 GWe value is the more conservative public-facing claim.
 
 # 2. Model.
 model = CostModel(concept=ConfinementConcept.LASER_IFE, fuel=Fuel.DT)
