@@ -99,13 +99,14 @@
   // Returns null when no marker is needed so callers can pass the result to
   // `append()` unconditionally.
   function lowGroundingMarker(concept) {
-    if (!concept || !concept.asterisk_in_comparison) return null;
-    const span = el("span", "low-grounding-marker", "⚠"); // ⚠
-    span.title =
-      "Low grounding: design-point rests on company-stated or single-source " +
-      "numbers — interpret the cost number with caution.";
-    span.setAttribute("aria-label", "Low-grounding design point");
-    return span;
+    if (!concept) return null;
+    // Delegate to the one honest-caveat device (A3): low-grounding asterisk +
+    // archetype-fit None, consistent glyph/hover. Returns null when no caveat
+    // applies, so callers can pass the result to append() unconditionally.
+    return caveatMarker({
+      asterisk: concept.asterisk_in_comparison,
+      fitGrade: concept.fit_grade,
+    }).element();
   }
 
   function append(parent, ...children) {
@@ -267,11 +268,13 @@
       };
       const badge = el("span", familyInfo.cls, familyInfo.label);
 
+      const chipLbl = conceptLabel(concept);
       const nameSpan = document.createElement("span");
-      nameSpan.textContent = concept.name;
+      nameSpan.appendChild(chipLbl.codeChip());
+      nameSpan.appendChild(document.createTextNode(" " + chipLbl.name));
 
       const removeBtn = el("button", "comparison-chip__remove");
-      removeBtn.setAttribute("aria-label", `Remove ${concept.name} from comparison`);
+      removeBtn.setAttribute("aria-label", `Remove ${chipLbl.text} from comparison`);
       removeBtn.textContent = "×";
       removeBtn.addEventListener("click", () => removeConcept(conceptId));
 
@@ -344,8 +347,9 @@
         "display: flex; align-items: center; gap: var(--space-2);" +
         " padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm);" +
         " cursor: pointer; transition: background-color 0.12s;";
+      const pickLbl = conceptLabel(entry);
       item.setAttribute("role", "option");
-      item.setAttribute("aria-label", `Add ${entry.name}`);
+      item.setAttribute("aria-label", `Add ${pickLbl.text}`);
 
       item.addEventListener("mouseenter", () => {
         item.style.backgroundColor = "var(--color-surface-2)";
@@ -358,7 +362,8 @@
       nameSpan.style.flex = "1";
       nameSpan.style.fontSize = "var(--font-size-sm)";
       nameSpan.style.color = "var(--color-text-primary)";
-      nameSpan.textContent = entry.name;
+      nameSpan.appendChild(pickLbl.codeChip());
+      nameSpan.appendChild(document.createTextNode(" " + pickLbl.name));
 
       const familyInfo = FAMILY_META[entry.confinement_family] ?? {
         label: entry.confinement_family,
@@ -541,11 +546,14 @@
         label: c.confinement_family,
         cls: "badge badge-nonstandard",
       };
+      const rowLbl = conceptLabel(c);
+      const rowName = el("span", null);
+      rowName.appendChild(rowLbl.codeChip());
+      rowName.appendChild(document.createTextNode(" " + rowLbl.name));
       append(
         row,
         el("span", familyInfo.cls, familyInfo.label),
-        el("span", null, c.name),
-        el("span", "text-muted text-xs", c.concept_id)
+        rowName
       );
       card.appendChild(row);
     }
@@ -602,15 +610,19 @@
     for (const concept of concepts) {
       const cell = el("div", "compare-landscape-cell");
 
-      // Cell header: name + family badge
+      // Cell header: #code + name + family badge
       const header = el("div", "compare-landscape-cell__header");
       const familyInfo = FAMILY_META[concept.confinement_family] ?? {
         label: concept.confinement_family,
         cls: "badge badge-nonstandard",
       };
+      const cellLbl = conceptLabel(concept);
+      const cellName = el("span", null);
+      cellName.appendChild(cellLbl.codeChip());
+      cellName.appendChild(document.createTextNode(" " + cellLbl.name));
       append(
         header,
-        el("span", null, concept.name),
+        cellName,
         lowGroundingMarker(concept),
         el("span", familyInfo.cls, familyInfo.label),
       );

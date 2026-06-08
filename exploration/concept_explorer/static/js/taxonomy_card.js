@@ -75,19 +75,17 @@ var TaxonomyCards = (function () {
     container.innerHTML = "";
     var card = el("div", "taxonomy-card");
 
-    // Header
+    // Header — visible #code handle + canonical Name (Fuel), via conceptLabel
     var header = el("div", "taxonomy-card__header");
-    var nameEl = el("div", "taxonomy-card__name", concept.name);
-    if (concept.asterisk_in_comparison) {
-      var marker = document.createElement("span");
-      marker.className = "low-grounding-marker";
-      marker.textContent = "⚠";
-      marker.title =
-        "Low grounding: design-point rests on company-stated or single-source " +
-        "numbers — interpret the cost number with caution.";
-      marker.setAttribute("aria-label", "Low-grounding design point");
-      nameEl.appendChild(marker);
-    }
+    var cardLbl = conceptLabel(concept);
+    var nameEl = el("div", "taxonomy-card__name");
+    nameEl.appendChild(cardLbl.codeChip());
+    nameEl.appendChild(document.createTextNode(" " + cardLbl.name));
+    var cardCaveat = caveatMarker({
+      asterisk: concept.asterisk_in_comparison,
+      fitGrade: concept.fit_grade,
+    }).element();
+    if (cardCaveat) nameEl.appendChild(cardCaveat);
     header.appendChild(nameEl);
     if (concept.company) {
       header.appendChild(el("div", "taxonomy-card__company", concept.company));
@@ -253,7 +251,11 @@ var TaxonomyCards = (function () {
 
       var famCls = FAMILY_BADGE_CLS[entry.confinement_family] || "badge badge-nonstandard";
       row.appendChild(el("span", famCls, entry.confinement_family));
-      row.appendChild(el("span", "neighbor-entry__name", entry.concept_name));
+      var nbrLbl = conceptLabel({ concept_id: entry.concept_id, name: entry.concept_name });
+      var nbrName = el("span", "neighbor-entry__name");
+      nbrName.appendChild(nbrLbl.codeChip());
+      nbrName.appendChild(document.createTextNode(" " + nbrLbl.name));
+      row.appendChild(nbrName);
       row.appendChild(el("span", "neighbor-entry__score",
         Math.round(entry.comparison.overall_score * 100) + "%"));
 
@@ -320,10 +322,13 @@ var TaxonomyCards = (function () {
     var headerRow = document.createElement("tr");
     headerRow.appendChild(el("th", "attr-label", "Attribute"));
     var th1 = el("th", null);
-    th1.textContent = focused.name;
+    th1.textContent = conceptLabel(focused).text;
     headerRow.appendChild(th1);
     var th2 = el("th", null);
-    th2.textContent = similarityResult.concept_name || (neighbor ? neighbor.name : "");
+    th2.textContent = conceptLabel({
+      concept_id: similarityResult.concept_id,
+      name: similarityResult.concept_name || (neighbor ? neighbor.name : ""),
+    }).text;
     headerRow.appendChild(th2);
     var thMatch = el("th", "match-indicator", "");
     headerRow.appendChild(thMatch);

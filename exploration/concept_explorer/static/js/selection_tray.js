@@ -187,10 +187,12 @@ var SelectionTray = (function () {
     _popoverEl.appendChild(header);
 
     var nameRow = el("div", "selection-popover__name");
+    var popLbl = conceptLabel(concept);
     var badge = el("span", "badge badge-" + familyKey(concept.confinement_family),
       familyLabel(concept.confinement_family));
     nameRow.appendChild(badge);
-    nameRow.appendChild(document.createTextNode(" " + concept.name));
+    nameRow.appendChild(popLbl.codeChip());
+    nameRow.appendChild(document.createTextNode(" " + popLbl.name));
     _popoverEl.appendChild(nameRow);
 
     // FR-14: cost model info line (only shown when absent)
@@ -288,10 +290,13 @@ var SelectionTray = (function () {
           chip.classList.add("selection-tray__chip--no-model");
         }
 
+        var chipLbl = conceptLabel(concept);
         var badge = el("span", "selection-tray__chip-badge badge-" + familyKey(concept.confinement_family));
-        var name = el("span", "selection-tray__chip-name", concept.name);
+        var name = el("span", "selection-tray__chip-name");
+        name.appendChild(chipLbl.codeChip());
+        name.appendChild(document.createTextNode(" " + chipLbl.name));
         var removeBtn = el("button", "selection-tray__chip-remove", "\u00d7");
-        removeBtn.setAttribute("aria-label", "Remove " + concept.name);
+        removeBtn.setAttribute("aria-label", "Remove " + chipLbl.text);
         removeBtn.addEventListener("click", function () {
           remove(concept.concept_id);
         });

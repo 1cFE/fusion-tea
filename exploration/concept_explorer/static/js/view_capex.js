@@ -38,12 +38,8 @@
   // Constants
   // ---------------------------------------------------------------------------
 
-  const FAMILY_COLORS = {
-    MFE: "#3b82f6",
-    IFE: "#a855f7",
-    MIF: "#f59e0b",
-    NONSTANDARD: "#6b7280",
-  };
+  // Family colors from the one authority (ontology_palette.js → CSS :root).
+  const FAMILY_COLORS = ontologyPalette.family;
 
   const PLOTLY_THEME = {
     paper_bgcolor: "transparent",

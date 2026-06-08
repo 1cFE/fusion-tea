@@ -114,6 +114,7 @@
   function renderHero(heroEl, concept) {
     heroEl.innerHTML = "";
 
+    const heroLabel = conceptLabel(concept);
     const left = el("div", "hero__info");
 
     // Illustration or placeholder
@@ -121,7 +122,7 @@
       const img = document.createElement("img");
       img.className = "hero__illustration";
       img.src = `/static/images/concepts/${concept.illustration}`;
-      img.alt = `${concept.name} illustration`;
+      img.alt = `${heroLabel.name} illustration`;
       img.loading = "eager";
       heroEl.appendChild(img);
     } else {
@@ -130,18 +131,19 @@
       heroEl.appendChild(ph);
     }
 
-    // Name (+ low-grounding marker if applicable)
-    const nameEl = el("h1", "hero__name", concept.name);
-    if (concept.asterisk_in_comparison) {
-      const marker = document.createElement("span");
-      marker.className = "low-grounding-marker";
-      marker.textContent = "⚠";
-      marker.title =
-        "Low grounding: design-point rests on company-stated or single-source " +
-        "numbers — interpret the cost number with caution.";
-      marker.setAttribute("aria-label", "Low-grounding design point");
-      nameEl.appendChild(marker);
-    }
+    // Name — visible #code handle + canonical Name (Fuel), via conceptLabel,
+    // + the one honest-caveat marker. The concept page is the richest surface,
+    // so it also flags an *unrecorded* archetype fit ("not recorded") rather
+    // than letting an absent grade vanish (FR-A3.3).
+    const nameEl = el("h1", "hero__name");
+    nameEl.appendChild(heroLabel.codeChip());
+    nameEl.appendChild(document.createTextNode(" " + heroLabel.name));
+    const heroCaveat = caveatMarker({
+      asterisk: concept.asterisk_in_comparison,
+      fitGrade: concept.fit_grade,
+      missing: concept.fit_grade == null ? "Archetype fit" : null,
+    }).element();
+    if (heroCaveat) nameEl.appendChild(heroCaveat);
     left.appendChild(nameEl);
 
     // Meta row: family badge + company
@@ -404,10 +406,11 @@
       return;
     }
 
-    // Update breadcrumb with actual name
+    // Update breadcrumb + title via the one naming helper (#NN Name (Fuel))
+    const lbl = conceptLabel(concept);
     const breadcrumbNameEl = document.getElementById("breadcrumb-name");
-    if (breadcrumbNameEl) breadcrumbNameEl.textContent = concept.name;
-    document.title = `${concept.name} — Fusion TEA`;
+    if (breadcrumbNameEl) breadcrumbNameEl.textContent = lbl.text;
+    document.title = `${lbl.text} — Fusion TEA`;
 
     // ---- Hero ----
     const heroEl = document.getElementById("hero");
@@ -422,7 +425,7 @@
       showOverridePanel({
         records: overrideRecords,
         focusAccount,
-        conceptName: concept.name,
+        conceptName: lbl.name,
       });
     }
 

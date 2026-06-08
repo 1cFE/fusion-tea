@@ -61,8 +61,9 @@
    * @returns {HTMLElement}
    */
   function buildCard(entry) {
+    const lbl = conceptLabel(entry);
     const card = el("div", { class: "concept-card", role: "button", tabindex: "0" });
-    card.setAttribute("aria-label", `View ${entry.name}`);
+    card.setAttribute("aria-label", `View ${lbl.text}`);
 
     // Navigate on click or Enter/Space keyboard activation
     function navigate() {
@@ -81,14 +82,17 @@
       const img = el("img", {
         class: "concept-card__illustration",
         src: `/static/images/concepts/${entry.illustration}`,
-        alt: `${entry.name} illustration`,
+        alt: `${lbl.name} illustration`,
         loading: "lazy",
       });
       card.appendChild(img);
     }
 
-    // Name
-    card.appendChild(el("div", { class: "concept-card__name" }, entry.name));
+    // Name — visible #code handle + canonical Name (Fuel), via conceptLabel
+    const nameEl = el("div", { class: "concept-card__name" });
+    nameEl.appendChild(lbl.codeChip());
+    nameEl.appendChild(document.createTextNode(" " + lbl.name));
+    card.appendChild(nameEl);
 
     // Meta row: confinement family badge + company
     const meta = el("div", { class: "concept-card__meta" });
@@ -100,20 +104,11 @@
     const familyBadge = el("span", { class: familyInfo.cls }, familyInfo.label);
     meta.appendChild(familyBadge);
 
-    if (entry.asterisk_in_comparison) {
-      const marker = el(
-        "span",
-        {
-          class: "low-grounding-marker",
-          title:
-            "Low grounding: design-point rests on company-stated or single-source " +
-            "numbers — interpret the cost number with caution.",
-          "aria-label": "Low-grounding design point",
-        },
-        "⚠",
-      );
-      meta.appendChild(marker);
-    }
+    const cavEl = caveatMarker({
+      asterisk: entry.asterisk_in_comparison,
+      fitGrade: entry.fit_grade,
+    }).element();
+    if (cavEl) meta.appendChild(cavEl);
 
     if (entry.company != null) {
       meta.appendChild(el("span", { class: "concept-card__company" }, entry.company));

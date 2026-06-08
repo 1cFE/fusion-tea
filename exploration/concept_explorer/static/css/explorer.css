@@ -35,11 +35,94 @@
   --opacity-confidence-medium: 0.8;
   --opacity-confidence-low: 0.6;
 
-  /* Confinement family badge colors */
+  /* Confinement family badge colors.
+     These are the SINGLE family-color authority (A2): the .badge-* classes
+     below and the JS color map (ontology_palette.js, via getComputedStyle) both
+     read these — no family hex is hard-coded anywhere else. They are the
+     explorer's existing 4-value ConfinementFamily encoding, kept verbatim (zero
+     visual change). NOTE: distinct from the v3 ontology PNG's family BAND colors
+     (which use 6 display groups, e.g. MFE #3b50a0); the explorer keys family
+     color off the 4-value ConfinementFamily enum per design (Bet 3). */
   --color-badge-mfe: #3b82f6;
   --color-badge-ife: #a855f7;
   --color-badge-mif: #f59e0b;
   --color-badge-nonstandard: #6b7280;
+
+  /* ----------------------------------------------------------------------
+     Ontology DIMENSION color tokens (A2 / FR-A2.2).
+     The single authority for the field's design-vocabulary colors; consumed
+     by the JS facet model (ontology_palette.js) and, later, B1's matrix CSS.
+     Traceable to concept_ontology_v3.png via its generator
+     exploration/phase_1a/generate_ontology_chart.py (PALETTES dict) — these
+     hexes are copied verbatim from that source. No on-screen home in Theme A.
+     N/A and TBD share the generator's grey tokens. Token name = --onto-{dim}-{value-slug}.
+     ---------------------------------------------------------------------- */
+  --onto-na: #bdbdbd;   /* all N/A flavors (generator N_A_COLOR) */
+  --onto-tbd: #d4d4d4;  /* TBD */
+
+  /* Fuel (generator PALETTES['Fuel']) */
+  --onto-fuel-dt: #2f3b54;
+  --onto-fuel-dd: #8a8d9b;
+  --onto-fuel-dhe3: #5da9b0;
+  --onto-fuel-pb11: #e0843a;
+
+  /* Magnet (generator PALETTES['Magnet']) */
+  --onto-magnet-hts-wound: #2c3e8f;
+  --onto-magnet-hts-3d: #3b50a0;
+  --onto-magnet-hts-planar: #5a6fb8;
+  --onto-magnet-hts-dipole: #4e63a8;
+  --onto-magnet-lts: #8aa3d4;
+  --onto-magnet-lts-hts: #a4b9dc;
+  --onto-magnet-resistive: #dba23a;
+  --onto-magnet-none: #5fb86c;
+  --onto-magnet-electrostatic: #e0843a;
+
+  /* Driver (generator PALETTES['Driver']) */
+  --onto-driver-magnetic: #3b50a0;
+  --onto-driver-magnetic-pinch: #5a8da6;
+  --onto-driver-dpssl-laser: #e8a4b9;
+  --onto-driver-gas-laser: #a86fc5;
+  --onto-driver-ion-beam: #c54a4a;
+  --onto-driver-mechanical: #8a5a3a;
+  --onto-driver-electrostatic: #dba23a;
+  --onto-driver-other: #bdbdbd;
+
+  /* Capture (generator PALETTES['Capture']) */
+  --onto-capture-thermal-steam: #2f6478;
+  --onto-capture-thermal-sco2: #3d7e93;
+  --onto-capture-thermal-unspec: #7fb3c2;
+  --onto-capture-direct-inductive: #dba23a;
+  --onto-capture-direct-charged: #e0c843;
+  --onto-capture-hybrid: #a86fc5;
+
+  /* Blanket (generator PALETTES['Blanket']) */
+  --onto-blanket-liquid-metal: #3b6fa0;
+  --onto-blanket-molten-salt: #5da9b0;
+  --onto-blanket-solid-breeder: #a86fc5;
+  --onto-blanket-other-hybrid: #e0843a;
+
+  /* Operation mode (generator PALETTES['OpMode']) */
+  --onto-opmode-steady: #3a8a4a;
+  --onto-opmode-quasi-steady: #9ddbaa;
+  --onto-opmode-pulsed: #e0843a;
+
+  /* Repetition rate (generator PALETTES['RepRate']) */
+  --onto-reprate-sub-hz: #dec38a;
+  --onto-reprate-1hz: #e0c843;
+  --onto-reprate-10hz: #e0a843;
+  --onto-reprate-high: #e08443;
+  --onto-reprate-khz: #c54a4a;
+
+  /* Fit grade — UI-chosen scale (NOT from the PNG; no archetype-fit column
+     exists there). High→Low ramps green→amber→orange; None is grey. */
+  --onto-fit-high: #5fb86c;
+  --onto-fit-med: #e0c843;
+  --onto-fit-low: #e0843a;
+  --onto-fit-none: #bdbdbd;
+
+  /* Has-cost-model — UI-chosen binary. */
+  --onto-hascost-true: #3b82f6;
+  --onto-hascost-false: #6b7280;
 
   /* Spacing scale */
   --space-1: 4px;
@@ -402,6 +485,9 @@ a:hover {
    Concepts cards, compare chips, landscape headers, taxonomy card, graph
    node tooltips, concept page header). Amber warning glyph inline with the
    concept name; graph nodes also get an amber border via cytoscape style. */
+/* `.caveat-marker` is the canonical class authored by caveatMarker() (A3);
+   `.low-grounding-marker` is retained as an alias for any residual references. */
+.caveat-marker,
 .low-grounding-marker {
   display: inline-block;
   margin-left: var(--space-1);
@@ -1359,6 +1445,16 @@ a:hover {
 
 .mono {
   font-family: var(--font-mono);
+}
+
+/* Visible concept code handle (#NN) — the stable reference rendered by
+   conceptLabel().codeChip() on every naming surface (A1 / FR-A1.2). Muted
+   monospace so it reads as a handle, not a heading. */
+.concept-code {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  font-weight: 500;
 }
 
 .text-muted {
