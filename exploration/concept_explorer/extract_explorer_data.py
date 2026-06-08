@@ -460,6 +460,12 @@ def extract_costingfe(
             has_cost_model=True,
             has_sensitivities=True,
             model_type=ModelType.COSTINGFE,
+            # Read DATA_GROUNDED module-level constant set by analysts in
+            # model_setup.py when running the costingfe library against an
+            # empty/minimal spec (no disclosed reactor design point). Mirrors
+            # the data_grounded flag they already pass to print_cas_breakdown.
+            # Default True preserves behavior for the ~33 grounded concepts.
+            data_grounded=bool(getattr(module, "DATA_GROUNDED", True)),
             cost_model=cost_model,
             parameter_metadata=merged_metadata,
             narrative=narrative,
@@ -752,6 +758,18 @@ def extract_standalone(
             has_cost_model=has_cost_model,
             has_sensitivities=has_sensitivities,
             model_type=ModelType.STANDALONE,
+            # Same DATA_GROUNDED contract as costingfe path: read the
+            # module-level constant set by the analyst, defaulting True for
+            # backward compat. Freeform/standalone analysts who have no
+            # disclosed design point should set DATA_GROUNDED=False so the
+            # explorer drops the concept from cross-concept views. (The
+            # model_type==STANDALONE check in build_cost_landscape already
+            # excludes freeform LCOEs as methodologically incomparable; this
+            # flag provides an explicit, audit-friendly source-level marker
+            # — `grep "DATA_GROUNDED = False"` returns the complete list.)
+            data_grounded=bool(getattr(loaded_module, "DATA_GROUNDED", True))
+            if loaded_module is not None
+            else True,
             cost_model=cost_model,
             parameter_metadata=param_metadata,
             narrative=narrative,

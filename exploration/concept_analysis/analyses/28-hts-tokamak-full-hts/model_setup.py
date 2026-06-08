@@ -63,6 +63,13 @@ from lib.model_setup_helpers import (
     generic_reference, run_native_and_1gw, print_cas_breakdown,
 )
 
+# Energy Singularity discloses no HH380 specifications — see ⚠ CRITICAL DATA
+# LIMITATION ⚠ block above. All spec values are compact-tokamak analogues, not
+# company-grounded. Read by the explorer extractor to suppress headline LCOE
+# in cross-concept views (cost landscape, comparison summary). CAS breakdown
+# still renders so reviewers can see what the analogue inputs produce.
+DATA_GROUNDED = False
+
 # 1. Specification — PLACEHOLDER VALUES (analogue-based, not company-grounded).
 #    These are derived from HH170 targets (~14T, ~70% SPARC volume, A~3) scaled
 #    up by 2-3× linear dimensions (typical demonstrator → commercial transition).

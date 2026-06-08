@@ -10,6 +10,7 @@
   "has_cost_model": true,
   "has_sensitivities": true,
   "model_type": "costingfe",
+  "data_grounded": false,
   "cost_model": {
     "cas10": {
       "name": "Preconstruction",

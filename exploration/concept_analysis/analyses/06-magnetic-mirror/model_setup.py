@@ -21,6 +21,14 @@ from lib.model_setup_helpers import (
     generic_reference, run_native_and_1gw, print_cas_breakdown,
 )
 
+# Pale Blue Fusion's CHARM commercial plant has no disclosed design point
+# (analysis.md §5: "no quantitative reactor parameters... are disclosed").
+# Mirror of the data_grounded=False flag passed to print_cas_breakdown
+# below — read by the explorer extractor to suppress headline LCOE in
+# cross-concept views (cost landscape, comparison summary). The CAS
+# breakdown still renders so reviewers can see library-default structure.
+DATA_GROUNDED = False
+
 # 1. Specification — design-point inputs only, at native scale.
 #    Geometry / physics / power. NO library-default re-passing.
 #
