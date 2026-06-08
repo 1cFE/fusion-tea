@@ -47,11 +47,13 @@ from exploration.concept_explorer.models import (  # noqa: E402
     ComputeRequest,
     ConceptData,
     ConceptManifest,
+    CostLandscape,
     CostModelData,
     ExplorerState,
     FuelType,
     ParameterIndex,
     ParameterIndexEntry,
+    build_cost_landscape,
     build_manifest,
     build_parameter_index,
     load_omit_list,
@@ -228,6 +230,7 @@ class _State:
     concepts: dict[str, ConceptData]
     manifest: ConceptManifest
     parameter_index: ParameterIndex
+    cost_landscape: CostLandscape
     dist_dir: Path
     explorer_state: ExplorerState = field(default_factory=ExplorerState)
     registry: ConceptRegistry | None = None
@@ -548,6 +551,9 @@ def _render_templates(
     _try_render("index.html.j2", dist_dir / "index.html", active_nav="pipeline")
     _try_render("compare.html.j2", dist_dir / "compare.html", active_nav="compare")
     _try_render("taxonomy.html.j2", dist_dir / "taxonomy.html", active_nav="taxonomy")
+    _try_render(
+        "cost_landscape.html.j2", dist_dir / "cost_landscape.html", active_nav="cost_landscape"
+    )
 
     for concept_id in concepts:
         _try_render(
@@ -581,6 +587,15 @@ def health() -> dict[str, str]:
 
 def api_get_manifest(state: _State = Depends(get_state)) -> ConceptManifest:
     return state.manifest
+
+
+def api_cost_landscape(state: _State = Depends(get_state)) -> CostLandscape:
+    """The cross-concept LCOE-decomposition aggregate (Theme F).
+
+    Precomputed at load (like the manifest); the page fetches it once and never
+    refetches on re-group (NFR-1).
+    """
+    return state.cost_landscape
 
 
 def api_get_concept(concept_id: str, state: _State = Depends(get_state)) -> ConceptData:
@@ -719,6 +734,11 @@ def taxonomy_page(state: _State = Depends(get_state)) -> FileResponse:
     return _serve(state.dist_dir / "taxonomy.html")
 
 
+def cost_landscape_page(state: _State = Depends(get_state)) -> FileResponse:
+    """Cross-concept LCOE-decomposition page (Theme F)."""
+    return _serve(state.dist_dir / "cost_landscape.html")
+
+
 def concept_page(concept_id: str, state: _State = Depends(get_state)) -> FileResponse:
     return _serve(state.dist_dir / "concept" / f"{concept_id}.html")
 
@@ -761,6 +781,7 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
             concepts=concepts,
             manifest=manifest,
             parameter_index=parameter_index,
+            cost_landscape=build_cost_landscape(list(concepts.values())),
             dist_dir=dist_dir,
             registry=registry,
             decision_tree=decision_tree,
@@ -872,6 +893,7 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
     # -- Register routes --
     app.get("/api/health")(health)
     app.get("/api/manifest", response_model=ConceptManifest)(api_get_manifest)
+    app.get("/api/cost-landscape", response_model=CostLandscape)(api_cost_landscape)
     app.get("/api/concepts/{concept_id}", response_model=ConceptData)(api_get_concept)
     app.get("/api/parameter_index", response_model=ParameterIndex)(api_get_parameter_index)
     app.get("/api/parameters/{param_name}", response_model=ParameterIndexEntry)(api_get_parameter)
@@ -888,6 +910,7 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
     app.get("/pipeline")(pipeline_page)
     app.get("/compare")(compare_page)
     app.get("/taxonomy")(taxonomy_page)
+    app.get("/cost-landscape")(cost_landscape_page)
     app.get("/concept/{concept_id}")(concept_page)
 
     return app
