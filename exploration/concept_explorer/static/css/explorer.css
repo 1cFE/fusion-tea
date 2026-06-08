@@ -124,6 +124,22 @@
   --onto-hascost-true: #3b82f6;
   --onto-hascost-false: #6b7280;
 
+  /* ----------------------------------------------------------------------
+     Cost-landscape component colors (Theme F / D3).
+     The SINGLE authority for the four annualised LCOE segments the
+     cost-landscape stacked bar draws; read in JS via getComputedStyle
+     (cost_landscape_page.js), no hex hard-coded there (A2 / I2). A distinct,
+     UI-chosen qualitative scale — NOT the per-CAS-account cas_breakdown palette
+     (wrong granularity, D3). `--cost-om-combined` is the honest-degradation
+     color for concepts whose model never split O&M into fixed/replacement
+     (the split-not-recorded state, e.g. 37/39 and all concepts pre-re-extract).
+     ---------------------------------------------------------------------- */
+  --cost-capital: #5b8ff9;       /* CAS90 annualised capital charge */
+  --cost-fixed-om: #5ad8a6;      /* CAS71 fixed O&M */
+  --cost-replacement: #f6bd16;   /* CAS72 scheduled replacement */
+  --cost-fuel: #b08cf0;          /* CAS80 fuel */
+  --cost-om-combined: #6e93a8;   /* CAS70 combined O&M (split not recorded) */
+
   /* Spacing scale */
   --space-1: 4px;
   --space-2: 8px;
@@ -3373,4 +3389,20 @@ main {
 .matrix-clear-btn:hover {
   color: var(--color-text-primary);
   border-color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Cost landscape (Theme F)
+   The page reuses the matrix-controls bar; only the chart mount + the honest
+   excluded note need styling here. Segment colors live in :root (--cost-*),
+   read by cost_landscape_page.js — never authored in this block.
+   -------------------------------------------------------------------------- */
+.cost-landscape__excluded {
+  margin: 0 0 var(--space-3);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+.cost-landscape__chart {
+  width: 100%;
+  min-height: 480px;
 }

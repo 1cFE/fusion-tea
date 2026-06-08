@@ -1,0 +1,41 @@
+{% extends "base.html.j2" %}
+
+{% block title %}Cost Landscape — Fusion TEA{% endblock %}
+
+{% block body %}
+<div class="page-content" id="app">
+  {#
+    Loading state: shown while the four endpoints fetch. JS swaps this for the
+    full landscape once data arrives (atomic swap, like matrix_page.js).
+  #}
+  <div id="loading-state" class="loading-state" role="status" aria-live="polite">
+    <span class="loading-spinner" aria-hidden="true"></span>
+    <span class="loading-text">Loading the cost landscape…</span>
+  </div>
+
+  {#
+    Landscape content: hidden until JS joins manifest + registry + tree +
+    cost-landscape and renders. Phase 3 paints a grouped placeholder into
+    #cost-chart; Phase 4 replaces it with the Plotly stacked bars.
+  #}
+  <div id="cost-landscape-content" style="display: none;">
+    <div class="matrix-controls" id="cost-controls"></div>
+    <p class="cost-landscape__excluded" id="cost-excluded" style="display: none;"></p>
+    <div class="cost-landscape__chart" id="cost-chart"></div>
+  </div>
+
+  <div id="error-state" style="display: none;" role="alert" class="error-state">
+    Failed to load the cost landscape. Check the server and try again.
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{# Theme A authorities — loaded before the page module that consumes them. #}
+<script src="/static/js/concept_label.js"></script>
+<script src="/static/js/caveat_marker.js"></script>
+<script src="/static/js/ontology_palette.js"></script>
+{# B1 data core (rows + grouping), reused verbatim. Plotly is vendored in base. #}
+<script src="/static/js/matrix_data.js"></script>
+<script src="/static/js/cost_landscape_page.js"></script>
+{% endblock %}

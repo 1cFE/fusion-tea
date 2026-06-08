@@ -6,6 +6,7 @@ dimensionless: (dLCOE/dp) * (p/LCOE).
 
 from __future__ import annotations
 
+import math
 import warnings
 from datetime import UTC, datetime
 from enum import StrEnum
@@ -147,7 +148,14 @@ class CostModelData(BaseModel):
     cas40: CASAccount  # Owner's costs
     cas50: CASAccount  # Supplementary costs
     cas60: CASAccount  # Interest during construction (IDC)
-    cas70: CASAccount  # O&M costs (annualised)
+    cas70: CASAccount  # O&M costs (annualised) — combined = cas71 + cas72
+    # Annualised-O&M split. Optional because some concepts' cost models do not
+    # separate fixed O&M from scheduled replacement (e.g. 37/39); for those the
+    # split is genuinely *not recorded* and stays None — an honest-degradation
+    # signal the cost-landscape renders as a combined-O&M segment, never a
+    # fabricated zero account. When present, cas71 + cas72 == cas70.
+    cas71: CASAccount | None = None  # Fixed O&M (annualised)
+    cas72: CASAccount | None = None  # Scheduled replacement (annualised)
     cas80: CASAccount  # Fuel costs (annualised)
     cas90: CASAccount  # Financial costs
 
@@ -182,6 +190,8 @@ class CostModelData(BaseModel):
         "cas50": "Supplementary Costs",
         "cas60": "Interest During Construction",
         "cas70": "O&M Costs (annualised)",
+        "cas71": "Fixed O&M (annualised)",
+        "cas72": "Scheduled Replacement (annualised)",
         "cas80": "Fuel Costs (annualised)",
         "cas90": "Financial Costs",
     }
@@ -235,6 +245,8 @@ class CostModelData(BaseModel):
                     "cas50": float,
                     "cas60": float,
                     "cas70": float,
+                    "cas71": float,   # optional: annualised fixed O&M
+                    "cas72": float,   # optional: annualised scheduled replacement
                     "cas80": float,
                     "cas90": float,
                     "lcoe": float,           # $/MWh
@@ -314,6 +326,12 @@ class CostModelData(BaseModel):
             cas50=_cas("cas50"),
             cas60=_cas("cas60"),
             cas70=_cas("cas70"),
+            # Build the O&M split only when the forward result carries it; a
+            # missing key means the concept's model never separated the two, so
+            # leave it None rather than fabricate a zero account (honest
+            # degradation — the cost-landscape shows combined O&M for these).
+            cas71=_cas("cas71") if "cas71" in costs else None,
+            cas72=_cas("cas72") if "cas72" in costs else None,
             cas80=_cas("cas80"),
             cas90=_cas("cas90"),
             cas22_detail=cas22_detail,
@@ -673,3 +691,224 @@ def build_parameter_index(concepts: list[ConceptData]) -> ParameterIndex:
     }
 
     return ParameterIndex(parameters=parameters)
+
+
+# ---------------------------------------------------------------------------
+# Cost landscape (Theme F) — the cross-concept LCOE-decomposition aggregate
+# ---------------------------------------------------------------------------
+
+
+class CostComponent(StrEnum):
+    """The four annualised LCOE segments the cost-landscape bar stacks.
+
+    These are the only buckets additive to the headline LCOE (capital = CAS90
+    annualised charge, fixed_om = CAS71, replacement = CAS72, fuel = CAS80). The
+    single authority for the segment vocabulary on both the override roll-up and
+    the front-end traces.
+    """
+
+    CAPITAL = "capital"
+    FIXED_OM = "fixed_om"
+    REPLACEMENT = "replacement"
+    FUEL = "fuel"
+
+
+class CostComponents(BaseModel):
+    """A concept's annualised cost components, in M$ (the bar's raw inputs).
+
+    ``capital`` (CAS90) and ``fuel`` (CAS80) are always present. The O&M split —
+    ``fixed_om`` (CAS71) and ``replacement`` (CAS72) — is ``None`` when the
+    concept's cost model never separated it (honest degradation; the front-end
+    then renders a single combined-O&M segment). ``om_combined`` (CAS70) is
+    always present and equals ``fixed_om + replacement`` when the split exists —
+    it is what the combined-O&M segment draws from when the split is absent.
+
+    Values are raw M$; the page derives each segment's $/MWh as
+    ``component / (capital + om_combined + fuel) × lcoe`` (D2).
+    """
+
+    capital: float  # CAS90 annualised capital charge
+    fixed_om: float | None  # CAS71; None when the split is not recorded
+    replacement: float | None  # CAS72; None when the split is not recorded
+    fuel: float  # CAS80
+    om_combined: float  # CAS70 = fixed_om + replacement (always present)
+
+
+class CompactOverride(BaseModel):
+    """One analyst override, projected to what the cost-landscape hover needs.
+
+    A summary projection of ``OverrideRecord``: which segment the override lands
+    on (``component``), its source, a one-line ``rationale_short``, and the
+    enabled/blocked state. The full multi-paragraph rationale stays on the
+    concept page (D6) — this is the summary-on-hover, not the whole story.
+
+    ``source`` and ``rationale_short`` are ``str | None``: a genuinely absent
+    field stays ``None`` (the front-end renders an explicit "not recorded",
+    FR-F10), never coerced to "".
+    """
+
+    account: str  # CAS code as authored, e.g. "C220103" or "CAS70"
+    component: CostComponent  # which annualised segment this override lands on
+    source: str | None  # free-text citation, or None when not recorded
+    rationale_short: str | None  # first sentence / structured basis, or None
+    enabled: bool  # False entries are recorded but not applied
+    blocked_by: str | None  # "<org>/<repo>#NN" when disabled, else None
+
+
+class CostLandscapeEntry(BaseModel):
+    """One costed concept's row in the cost-landscape aggregate."""
+
+    concept_id: str
+    lcoe: float  # headline LCOE [$/MWh] — the bar's total height
+    components: CostComponents
+    overrides: list[CompactOverride]
+
+
+class CostLandscape(BaseModel):
+    """The cross-concept cost-decomposition aggregate served at /api/cost-landscape.
+
+    One entry per costed concept with a finite headline LCOE; non-costed and
+    non-finite-LCOE concepts are absent (the page renders only costed concepts
+    and accounts for any it drops, I5/FR-F10). Outlier (in-range) filtering is a
+    page concern (D5), not this aggregate's.
+    """
+
+    generated_at: str  # ISO 8601 timestamp
+    concepts: list[CostLandscapeEntry]
+
+
+# CAS10–CAS60 top-level accounts: the overnight-capital accounts that feed the
+# annualised capital charge (CAS90). Every analyst capital override lands here
+# or on a CAS22 sub-account (C22*); both roll up to the capital segment (I6).
+_CAPITAL_TOP_ACCOUNTS: frozenset[str] = frozenset(
+    {
+        "CAS10", "CAS21", "CAS22", "CAS23", "CAS24", "CAS25", "CAS26", "CAS27",
+        "CAS28", "CAS29", "CAS30", "CAS40", "CAS50", "CAS60",
+    }
+)
+
+_RATIONALE_SHORT_MAX = 200
+
+# Abbreviations whose trailing period is not a sentence end — without these, a
+# rationale like "Sorbom et al. 2015 reports…" truncates to a useless "Sorbom
+# et al." Stored lowercased and period-stripped for comparison.
+_SENTENCE_ABBREVIATIONS: frozenset[str] = frozenset(
+    {"al", "e.g", "i.e", "etc", "vs", "cf", "fig", "no", "eq", "ref", "approx", "est"}
+)
+
+
+def _override_component(account: str) -> CostComponent:
+    """Map an override's CAS account to its annualised LCOE segment (I6).
+
+    Total over the registry's account vocabulary by construction:
+
+    * ``CAS70`` (combined O&M) and ``CAS71`` (fixed O&M) → ``fixed_om``. Analysts
+      author O&M overrides at the combined ``CAS70`` level, which has no split of
+      its own; it lands on the O&M segment (the dominant, persistent component).
+    * ``CAS72`` → ``replacement``; ``CAS80`` → ``fuel``.
+    * Every capital account — CAS10–60 and every CAS22 sub-account (``C22*``) →
+      ``capital`` (the segment is the annualised CAS90 charge those costs feed).
+
+    An account outside this vocabulary raises: a cost account the landscape can't
+    attribute is a real gap to surface, not something to silently bucket.
+    """
+    a = account.strip().upper()
+    if a in {"CAS70", "CAS71"}:
+        return CostComponent.FIXED_OM
+    if a == "CAS72":
+        return CostComponent.REPLACEMENT
+    if a == "CAS80":
+        return CostComponent.FUEL
+    if a.startswith("C22") or a in _CAPITAL_TOP_ACCOUNTS:
+        return CostComponent.CAPITAL
+    raise ValueError(
+        f"override account {account!r} has no LCOE-component mapping (I6) — "
+        "extend the cost-landscape roll-up to cover it"
+    )
+
+
+def _first_sentence(text: str, max_len: int) -> str:
+    """First sentence of *text* (whitespace collapsed), capped at *max_len*.
+
+    Treats ``". "`` as a sentence boundary, but skips boundaries that fall after
+    a known abbreviation (``et al.``, ``e.g.``, …) so a citation-heavy rationale
+    yields a real sentence rather than a truncated fragment.
+    """
+    collapsed = " ".join(text.split())
+    start = 0
+    sentence = collapsed
+    while True:
+        end = collapsed.find(". ", start)
+        if end == -1:
+            break
+        last_word = collapsed[:end].rsplit(" ", 1)[-1].lower().rstrip(".")
+        if last_word in _SENTENCE_ABBREVIATIONS:
+            start = end + 2
+            continue
+        sentence = collapsed[: end + 1]
+        break
+    if len(sentence) > max_len:
+        sentence = sentence[:max_len].rstrip() + "…"
+    return sentence
+
+
+def _override_rationale_short(override: OverrideRecord) -> str | None:
+    """A one-line rationale for the hover, or None when nothing was recorded.
+
+    Prefers the first sentence of the analyst prose rationale; when no prose was
+    recorded, surfaces the structured basis/provenance so the hover still shows
+    *recorded* context. Returns None only when neither exists — the front-end
+    renders that as an explicit "not recorded" (FR-F10), never a fabricated note.
+    """
+    if override.rationale:
+        return _first_sentence(override.rationale, _RATIONALE_SHORT_MAX)
+    recorded = [b for b in (override.cost_basis, override.provenance) if b]
+    return " · ".join(recorded) if recorded else None
+
+
+def build_cost_landscape(concepts: list[ConceptData]) -> CostLandscape:
+    """Build the cost-landscape aggregate from in-memory concepts (pure).
+
+    Includes every concept with a cost model and a finite headline LCOE, sorted
+    by concept_id for deterministic output. Each entry carries the annualised
+    components (raw M$) and the analyst overrides projected onto their segments.
+    Concepts without a cost model, or with a non-finite LCOE, are omitted — the
+    page renders only costed concepts and accounts for any it excludes (I5).
+    """
+    entries: list[CostLandscapeEntry] = []
+    for concept in sorted(concepts, key=lambda c: c.concept_id):
+        cm = concept.cost_model
+        if cm is None:
+            continue
+        lcoe = cm.headline.lcoe_per_mwh
+        if not math.isfinite(lcoe):
+            continue
+
+        components = CostComponents(
+            capital=cm.cas90.cost_m_usd,
+            fixed_om=cm.cas71.cost_m_usd if cm.cas71 is not None else None,
+            replacement=cm.cas72.cost_m_usd if cm.cas72 is not None else None,
+            fuel=cm.cas80.cost_m_usd,
+            om_combined=cm.cas70.cost_m_usd,
+        )
+        overrides = [
+            CompactOverride(
+                account=ov.account,
+                component=_override_component(ov.account),
+                source=ov.source,
+                rationale_short=_override_rationale_short(ov),
+                enabled=ov.enabled,
+                blocked_by=ov.blocked_by,
+            )
+            for ov in concept.overrides
+        ]
+        entries.append(
+            CostLandscapeEntry(
+                concept_id=concept.concept_id,
+                lcoe=lcoe,
+                components=components,
+                overrides=overrides,
+            )
+        )
+
+    return CostLandscape(generated_at=datetime.now(UTC).isoformat(), concepts=entries)

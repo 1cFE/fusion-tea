@@ -13,15 +13,15 @@
   <nav class="nav" aria-label="Main navigation">
     <span class="nav__brand">Fusion TEA</span>
     <div class="nav__links">
-      <a href="/taxonomy"
-         class="nav__link{% if active_nav == 'taxonomy' %} nav__link--active{% endif %}"
-         aria-current="{% if active_nav == 'taxonomy' %}page{% else %}false{% endif %}">
-        Taxonomy
-      </a>
       <a href="/"
          class="nav__link{% if active_nav == 'matrix' %} nav__link--active{% endif %}"
          aria-current="{% if active_nav == 'matrix' %}page{% else %}false{% endif %}">
         All Concepts
+      </a>
+      <a href="/taxonomy"
+         class="nav__link{% if active_nav == 'taxonomy' %} nav__link--active{% endif %}"
+         aria-current="{% if active_nav == 'taxonomy' %}page{% else %}false{% endif %}">
+        Design Space Viz
       </a>
       <a href="/pipeline"
          class="nav__link{% if active_nav == 'pipeline' %} nav__link--active{% endif %}"
@@ -32,6 +32,11 @@
          class="nav__link{% if active_nav == 'compare' %} nav__link--active{% endif %}"
          aria-current="{% if active_nav == 'compare' %}page{% else %}false{% endif %}">
         Compare
+      </a>
+      <a href="/cost-landscape"
+         class="nav__link{% if active_nav == 'cost_landscape' %} nav__link--active{% endif %}"
+         aria-current="{% if active_nav == 'cost_landscape' %}page{% else %}false{% endif %}">
+        Cost landscape
       </a>
     </div>
   </nav>
