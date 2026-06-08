@@ -1,26 +1,3 @@
----
-ID: 17a-laser-icf-hybrid-drive
-Concept: Laser ICF Hybrid Drive (Xcimer Energy)
-Company: Xcimer Energy
-Status: draft
-Created: 2026-06-04
-Approved-Date:
-Confinement-Family: IFE
-Archetype: LASER_IFE
-Archetype-Fit: Low
-Comparison-Status: costingfe
-Comparables:
-  - 17b-laser-icf-fast-ignition
-  - 26-laser-icf-indirect-drive
-  - 30-laser-icf-nif-commercialization
-  - 31-laser-icf-oec-architecture
-  - 32-laser-icf-french-national
-Design-Point-Name: Xcimer Athena pilot power plant (Galloway & Valys, XEC whitepaper Feb 2026)
-Design-Point-Maturity: pilot-demonstrator
-P-Native: 400
-Grounding-Confidence: medium
----
-
 ## Design Point
 
 - Name: Xcimer Athena pilot power plant (Galloway & Valys, XEC whitepaper Feb 2026)
@@ -39,7 +16,7 @@ Xcimer Energy has published a detailed technical whitepaper jointly with TRUMPF 
 
 Supporting sources include Xcimer's public website pages (Approach and Science), which provide qualitative architectural descriptions and NIF comparisons but no cost figures.[^2][^3] The HYLIFE-III nuclear analysis paper (Fusion Engineering and Design, 2024) validates tritium breeding ratios for FLiBe and FLiNaK configurations but does not address power conversion or cost.[^4] The HYLIFE-II heritage literature (Moir 1994, Hoffman 1991 power conversion study) provides historical reference points for chamber and balance-of-plant design but uses 1990s-era assumptions.[^5][^6]
 
-Most iter-03 sources registered in the dossier are empty stubs (LLNL GEM economics model, laser-focused articles, the HYLIFE-III neutronics paper). However, `osti-servlets-purl-6137961.md` (141 KB) is the full extracted text of the HYLIFE-II Power Conversion System Design and Cost Study (Hoffman, UCRL-CR-105908, 1990), providing thermal efficiency, BOP architecture, and FLiBe inventory data used in Sections 2 and 5.
+Several iter-03 sources (OSTI reports on HYLIFE-II, LLNL GEM economics model, laser-focused articles, the HYLIFE-III neutronics paper) were registered in the dossier but their text extractions are empty stubs, limiting the available quantitative base.
 
 > "Because excimer lasers use relatively simple technologies that don't require substantial capital investment for initial production, excimer laser systems at 100 kJ scale can be brought online within the next 2 years, and MJ-scale systems within the next 5 years."
 > — xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer Laser Cost and Schedule
@@ -58,7 +35,7 @@ Most iter-03 sources registered in the dossier are empty stubs (LLNL GEM economi
 [^3]: xcimer-science-page.md, Xcimer Energy — Science page
 [^4]: sciencedirect-science-article-pii-s0920379624001868.md (stub extraction only; content from dossier §Tritium Breeding)
 [^5]: osti-biblio-7021072.md (stub — HYLIFE-II final report, Moir 1994)
-[^6]: osti-servlets-purl-6137961.md §Executive Summary and §Balance of Plant — HYLIFE-II Power Conversion System Design and Cost Study (Hoffman, UCRL-CR-105908, 1990): full extracted text. Thermal efficiency 41.2% (subcritical steam Rankine via NaBF₄ IHX at 800 K / 16 MPa); Case D FLiBe inventory ~960 m³ (~1,940 t); BOP represents ~32% of direct capital cost.
+[^6]: hylife-energy-conversion-notes.md §Summary — HYLIFE-II Power Conversion System Design and Cost Study, Hoffman 1991
 
 ## Section 2: Challenges in Capturing System Function
 
@@ -81,7 +58,7 @@ At sub-Hz operation with GJ-class fusion yields, the HYLIFE-III chamber must cle
 
 ### 4. Energy conversion pathway ambiguity
 
-The Xcimer Science page states "generate steam, which in turn drives turbines," consistent with the HYLIFE-II heritage BOP design: a subcritical steam Rankine cycle via a NaBF₄ intermediate loop, achieving 41.2% thermal efficiency at 800 K / 16 MPa steam.[^10] The Xcimer whitepaper does not specify the thermal cycle for Athena, but the marketing language and heritage both point to steam Rankine. The remaining ambiguity is whether Xcimer will adopt the same NaBF₄ intermediate-loop configuration or a different coupling scheme, which affects achievable thermal efficiency and BOP cost.
+The Xcimer Science page states "generate steam, which in turn drives turbines," while the HYLIFE-II heritage analyzed a He Brayton cycle at ~45% efficiency.[^10] The whitepaper does not specify the thermal cycle. This ambiguity affects gross-to-net electric conversion, thermal efficiency assumptions, and BOP cost.
 
 ### 5. Target manufacturing at sub-Hz rate
 
@@ -94,7 +71,7 @@ No published O&M breakdown exists for any Xcimer plant configuration. Key unknow
 [^7]: xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer Laser Cost and Schedule, Table 1
 [^8]: xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Challenge 2, referencing Galloway et al. (manuscript in preparation)
 [^9]: xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Chamber Design
-[^10]: xcimer-science-page.md §Energy Conversion; osti-servlets-purl-6137961.md §Executive Summary and §Balance of Plant — HYLIFE-II Power Conversion Study (Hoffman 1990): subcritical steam Rankine via FLiBe → NaBF₄ IHX → steam generators at 800 K / 16 MPa, 41.2% thermal efficiency
+[^10]: xcimer-science-page.md §Energy Conversion; hylife-energy-conversion-notes.md §Summary (HYLIFE-II BOP reference)
 [^11]: xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Challenge 2
 
 ## Section 3: Maturity of Key Subsystems and Components
@@ -197,7 +174,7 @@ All parameters describe the Xcimer Athena pilot power plant at its native 400 MW
 | tritium_inventory | <150 g | xec-whitepaper §Chamber Design | medium | Athena-specific |
 | FLiBe_vaporization_per_shot | <10 kg | xec-whitepaper §Chamber Design | medium | Per few-GJ burst |
 | burnup_fraction | 0.3 | dossier comparison table (attributed to Xcimer) | medium | |
-| thermal_efficiency | ~41% | osti-servlets-purl-6137961.md §Executive Summary — HYLIFE-II BOP study (Hoffman 1990): 41.2% for subcritical steam Rankine via NaBF₄ IHX at 800 K / 16 MPa | medium | HYLIFE-II heritage design; Xcimer's marketing references "steam turbines," consistent with heritage. Athena-specific cycle and temperatures not confirmed. |
+| thermal_efficiency | ~40–45% | [estimated: HYLIFE-II heritage He Brayton at ~45%; standard Rankine at ~33–38%. No Athena-specific value published.] | low | Energy capture cycle unspecified for Athena |
 | Q_eng | ~5.5–6.0 (Athena at 5% WPE); ~8.2 (NOAK at 7% WPE) | [inferred: whitepaper §Next Steps states NOAK recirc fraction 11–13% at 7% WPE / 250 Qsci → Q_eng ~8.2. At Athena's 5% WPE with Qc >200, recirc fraction rises to ~15–18%, yielding Q_eng ~5.5–6.0. Derivation: recirc ≈ 1/(η_WPE × Qsci × η_th); at 5%, 200, 0.40 → ~25% raw, but whitepaper's 11–13% at 7%/250 implies η_th ~43–47%, giving recirc ~19–21% and Q_eng ~4–5 at the low end or ~5.5–6 with partial auxiliary load recovery.] | low | spec key: `q_eng`. Athena-native value (~5.5) should be used for the pilot-demonstrator design point; 8.2 is the NOAK target and belongs in a sensitivity sweep. |
 | fuel | D-T | xcimer-science-page.md §Fuel: "DT hydrogen isotope mixture" | high | |
 
@@ -235,7 +212,7 @@ The per-account walkthrough below follows the canonical schema for the LASER_IFE
 
 - **CAS26** (Heat rejection system): No specific data. **No override.**
 
-- **CAS27** (Special materials — initial reactor material inventory): The FLiBe initial fill is a significant material cost. Xcimer states Athena "will certainly use FLiBe" with TBR > 1.2, and that commercial plants may switch to FLiNaK. No FLiBe mass or cost is published by Xcimer. The Araiinejad (2025) estimate of ~$154/kg NOAK FLiBe exists as an external reference. The HYLIFE-II BOP study (Hoffman 1990) gives the Case D single-chamber FLiBe inventory as ~960 m³; at FLiBe operating density ~2,020 kg/m³, this is approximately 1,940 t. HYLIFE-II Case D thermal power is ~3,312 MWth, roughly 3× Athena's estimated ~1,100 MWth, suggesting a proportionally smaller FLiBe circuit for Athena (~640 t proportional). However, Athena's per-shot yield (~1.6 GJ) is ~4.6× higher than HYLIFE-II's (~350 MJ per shot), which may require a larger protective jet volume. A defensible estimate for Athena is ~600–1,000 t. At $154/kg the range is ~$92M–$154M; midpoint ~800 t × $154/kg ≈ $123M. Neither the mass nor the unit cost comes directly from Xcimer. **Derived override included (enabled, high uncertainty):** midpoint estimate $123M. Flagged as a data gap; both mass and unit cost are analyst-sourced.
+- **CAS27** (Special materials — initial reactor material inventory): The FLiBe initial fill is a significant material cost. Xcimer states Athena "will certainly use FLiBe" with TBR > 1.2, and that commercial plants may switch to FLiNaK. No FLiBe mass or cost is published by Xcimer. The Araiinejad (2025) estimate of ~$154/kg NOAK FLiBe exists as an external reference. For a HYLIFE-III chamber, FLiBe inventory could be several hundred tonnes (HYLIFE-II reference used ~600 t). At $154/kg this would be ~$92M — potentially a significant departure from a library default if the default does not account for thick-liquid-wall inventory. However, neither the mass nor the unit cost comes directly from Xcimer. **No override — no company-grounded figure.** Flagged as a high-priority data gap.
 
 - **CAS70** (Annualized O&M + scheduled component replacement): No published O&M breakdown. Xcimer claims no first-wall replacement (liquid wall), which should reduce CAS70 relative to solid-wall IFE concepts. **No override — CAS70 is not currently overridable in the 1costingFE release; overrides are silently dropped.** The qualitative case for a reduction (elimination of first-wall replacement, offset by FLiBe loop maintenance) is documented but cannot be expressed via the override surface today.
 
@@ -327,20 +304,17 @@ overrides:
       reflects that the liquid itself provides most shielding.
 
   - account: CAS27
-    value: 123.0
+    value: 92.0
     enabled: true
     provenance: derived
-    source: "xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Chamber Design; osti-servlets-purl-6137961.md §Primary Loop Flows and Pumping Power Table 1 (Case D inventory 960 m³)"
+    source: "xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Chamber Design; dossier §Summary"
     rationale: |
       FLiBe initial inventory for a HYLIFE-III chamber. Xcimer does not publish the FLiBe mass.
-      HYLIFE-II Case D single-chamber inventory: ~960 m³ (Hoffman 1990, Table 1). At FLiBe
-      operating density ~2,020 kg/m³ this is ~1,940 t. HYLIFE-II Case D thermal power is
-      ~3,312 MWth; Athena's estimated ~1,100 MWth suggests a proportionally smaller FLiBe
-      circuit (~640 t), but Athena's higher per-shot yield (~1.6 GJ vs ~350 MJ) may require a
-      larger protective jet volume. Defensible Athena estimate: ~600–1,000 t (midpoint ~800 t).
-      At $154/kg NOAK FLiBe (Araiinejad 2025): 800 t × $154/kg = $123M. Both mass and unit
-      cost are analyst-sourced, not company-published. High uncertainty; treat as sensitivity
-      parameter with range $92M–$154M.
+      HYLIFE-II reference used ~600 t of FLiBe for a 6 Hz, 350 MJ-yield chamber. Athena
+      operates at lower yield (~1.6 GJ) but sub-Hz rate. Assuming a comparable ~600 t inventory
+      (uncertain — could range 300-1000 t). At $154/kg NOAK FLiBe (Araiinejad 2025, adjusted
+      for learning): 600 t × $154/kg = $92.4M ≈ $92M. Both mass and unit cost are analyst-
+      sourced, not company-published. High uncertainty.
 
 ```
 
@@ -354,8 +328,8 @@ overrides:
 | 2 | No LCOE estimate from any source | S1 | truly-unknown | blocking | Requires plant-level systems model integration |
 | 3 | No target manufacturing cost per unit | S2, S4 | proprietary | blocking | Xcimer or independent target factory study; Goodin et al. 2004 provides IFE target cost framework |
 | 4 | No FLiBe inventory mass for Athena | S4, S5b | not-yet-sourced | important | HYLIFE-II/III literature may constrain; direct Xcimer query |
-| 5 | Energy conversion cycle not confirmed for Athena | S2, S5 | not-yet-sourced | nice-to-have | Partially resolved: HYLIFE-II heritage uses subcritical steam Rankine via NaBF₄ IHX at 41.2%; Xcimer marketing references "steam turbines," consistent with heritage. Athena-specific cycle confirmation still needed. |
-| 6 | Thermal efficiency not confirmed for Athena | S5 | not-yet-sourced | nice-to-have | Partially resolved: HYLIFE-II heritage 41.2% (osti-servlets-purl-6137961.md §Executive Summary); used as medium-confidence estimate in Section 5. Athena-specific value may differ. |
+| 5 | Energy conversion cycle unspecified (steam vs. He Brayton vs. combined) | S2, S5 | proprietary | important | Xcimer disclosure or heritage assumption from HYLIFE-II He Brayton at ~45% |
+| 6 | Thermal efficiency not published for Athena | S5 | not-yet-sourced | important | Derivable from cycle choice + FLiBe operating temperatures |
 | 7 | Chamber geometry (radius, height) not published | S5 | proprietary | important | HYLIFE-II reference provides a starting point but Athena parameters differ |
 | 8 | No O&M cost breakdown (fixed, variable, scheduled maintenance) | S2 | truly-unknown | important | Generic IFE O&M models; Xcimer-specific FLiBe loop maintenance is novel |
 | 9 | HDD implosion physics unvalidated experimentally | S2, S3 | truly-unknown | important | Awaiting experimental campaigns on OMEGA or NIF; Xcimer/LLE joint work |
@@ -384,8 +358,6 @@ All five comparables use or are expected to use diode-pumped solid-state lasers 
 
 **Penalty:** Excimer lasers achieve 5–7% wall-plug efficiency vs. ~10% for DPSSL, increasing recirculating power fraction. The whitepaper argues this is "more than made up for by their cost-effectiveness."
 
-**LCOE leverage caveat:** The ~10× driver cost reduction is the dominant capital account delta, but parametric IFE sensitivity analysis (Hawker 2020) finds driver unit cost ($/J) ranks only 7th among 14 LCOE drivers (Pearson coefficient 0.075), behind BOP/plant cost (0.210, 2nd) and discount rate (0.247, 1st).[^23] The laser cost advantage is necessary but not sufficient for competitive LCOE — financing and BOP costs carry more leverage on the final number.
-
 ### Delta 2: Hybrid Direct Drive vs. Indirect/Direct Drive — coupling efficiency advantage
 
 Concepts 26 and 30 use indirect drive (laser → hohlraum → X-ray → capsule), with ~12% coupling efficiency. Concept 17b uses fast ignition (separate compression and ignition beams). Concepts 31 and 32 likely use direct or indirect drive (details vary).
@@ -394,7 +366,7 @@ Xcimer's HDD claims >50% coupling efficiency (potentially ~80%), eliminating the
 
 **Cost effect: advantage** — reduces required laser energy for a given fusion yield. A 10 MJ HDD laser replaces a ~40–80 MJ indirect-drive laser for similar capsule energy delivery. This compounds with Delta 1 to produce a dramatic driver cost reduction.
 
-**Risk and gain threshold:** HDD is simulation-only. If the coupling efficiency is substantially lower than claimed, the advantage narrows. More broadly, Xcimer's NOAK Qsci target of ~250 falls below the baseline gain threshold for competitive LCOE in the Hawker (2020) parametric IFE sensitivity study (~400 under default BOP and financing assumptions).[^23] The Hawker model finds competitive LCOE ($60–$100/MWh range) remains achievable at G ≤ 250 but only when BOP plant cost, discount rate, and target cost are simultaneously favorable — not gain alone. Xcimer's economic case therefore requires its laser cost advantage (Delta 1), its low target-factory throughput (Delta 3), and favorable financing to converge simultaneously.
+**Risk:** HDD is simulation-only. If the coupling efficiency is substantially lower than claimed, the advantage narrows.
 
 ### Delta 3: Sub-Hz repetition rate vs. 5–10 Hz — mixed effect
 
@@ -423,12 +395,11 @@ NIF uses 192 beamlines. Concept 26 (Inertia) uses ~1,000 modular DPSSL beamlines
 | C220101 (first wall/blanket) | Advantage | Liquid replaces solid modules | low (no cost data) |
 | C220102 (radiation shield) | Advantage | Liquid provides shielding | low (no cost data) |
 | CAS70 (O&M) | Advantage | No first-wall replacement | medium (qualitative) |
-| CAS27 (FLiBe inventory) | Penalty | Large FLiBe fill (~$123M central est., range $92M–$154M) | low (both mass and cost estimated; heritage HYLIFE-II ~1,940 t Case D) |
+| CAS27 (FLiBe inventory) | Penalty | Large FLiBe fill (~$92M est.) | low (both mass and cost estimated) |
 | Recirculating power | Penalty | 5–7% vs. ~10% WPE | medium |
 
 [^21]: xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Xcimer Laser Cost and Schedule
 [^22]: xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Challenge 2
-[^23]: pmc-articles-pmc7658748.md §3(a) Table 3 (Pearson sensitivity ranking) and §3(b) (gain thresholds) — Hawker 2020, parametric IFE LCOE sensitivity study. Driver cost ($/J) Pearson coefficient +0.075 (7th); BOP plant cost +0.210 (2nd); discount rate +0.247 (1st). Gain threshold ~400 under default assumptions; competitive designs possible at G ≤ 250 under favorable assumptions. Competitive targets: $100/MWh (nuclear parity), $60/MWh (displacing gas generation).
 
 ## Section 8: Sources
 
@@ -440,7 +411,7 @@ Listed in order of importance to this analysis.
 
 3. **Xcimer Energy — Approach page** — `knowledge/concept_research/17a-laser-icf-hybrid-drive/iter-01/sources/xcimer-energy-approach.md`. High-level corporate overview identifying three key subsystems (gas excimer laser, large fuel capsules, FLiBe liquid-wall chamber). Claims 30× cost/J reduction vs. NIF, <1 m² final optical area, sub-Hz operation. No quantitative cost data. 2 KB.
 
-4. **HYLIFE-II Power Conversion System Design and Cost Study (Hoffman, UCRL-CR-105908, 1990)** — `knowledge/concept_research/17a-laser-icf-hybrid-drive/iter-03/sources/osti-servlets-purl-6137961.md`. Full extracted text (141 KB). Key data used in this analysis: thermal efficiency 41.2% (subcritical steam Rankine via NaBF₄ IHX at 800 K / 16 MPa), Case D single-chamber FLiBe inventory ~960 m³ (~1,940 t), BOP ~32% of direct capital. IHX cost ~$55/kWth (Hastelloy N). Total direct capital of the reference plant ~$2,632M (1988 dollars, Meier 1988 study).
+4. **HYLIFE-II Power Conversion System Design and Cost Study (Hoffman, UCRL-CR-105908, 1991)** — `knowledge/concept_research/17a-laser-icf-hybrid-drive/iter-02/sources/hylife-energy-conversion-notes.md`. Bibliographic record only (extraction captured abstract, not report body). Confirms BOP architecture: FLiBe primary coolant → IHX → steam generators → steam power plant. The full report contains efficiency and cost data but was not extractable.
 
 5. **HYLIFE-III Nuclear Analysis (Fusion Engineering and Design, 2024)** — `knowledge/concept_research/17a-laser-icf-hybrid-drive/iter-03/sources/sciencedirect-science-article-pii-s0920379624001868.md`. Stub extraction only. Referenced in dossier for TBR > 1.2 across multiple FLiBe thicknesses.
 
@@ -449,5 +420,3 @@ Listed in order of importance to this analysis.
 7. **Dossier: Laser ICF — Hybrid Direct Drive (D-T)** — `knowledge/concept_research/17a-laser-icf-hybrid-drive/dossier.md`. Structured research summary providing differentiation table values, comparison to Inertia Enterprises, remaining gaps, and source index. Medium overall confidence.
 
 8. **Handwritten concept 26 analysis (Laser ICF Indirect Drive)** — `exploration/concept_analysis/handwritten/26-laser-icf-indirect-drive.md`. Provides comparative data for Xcimer vs. Inertia Enterprises, subsystem TRL assessments for laser IFE generally, and the Goodin et al. target cost framework.
-
-9. **Hawker (2020), parametric IFE LCOE sensitivity study** — `knowledge/concept_research/17a-laser-icf-hybrid-drive/iter-03/sources/pmc-articles-pmc7658748.md`. Competitive LCOE benchmarks ($100/MWh nuclear parity, $60/MWh displacing gas), gain thresholds (~400 baseline, competitive designs possible at G ≤ 250 under favorable conditions), and Pearson sensitivity ranking (discount rate 1st, BOP cost 2nd, target cost 3rd, driver cost 7th). Used in Section 7 Deltas 1 and 2.

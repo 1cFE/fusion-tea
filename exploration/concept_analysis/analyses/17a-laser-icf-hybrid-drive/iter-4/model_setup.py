@@ -184,27 +184,19 @@ overrides = [
     # CAS27: Special materials — FLiBe initial inventory.
     {
         "account": "CAS27",
-        "value": 123.0,
+        "value": 92.0,
         "enabled": True,
         "provenance": "derived",
         "source": (
             "xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Chamber Design; "
-            "osti-servlets-purl-6137961.md (Hoffman, UCRL-CR-105908, 1990) Case D; "
             "Araiinejad 2025 FLiBe cost estimate"
         ),
         "rationale": (
-            "FLiBe initial inventory for a HYLIFE-III-style thick-liquid chamber. Xcimer does "
-            "not publish the FLiBe mass. "
-            "Corrected HYLIFE-II heritage: Hoffman (1990) UCRL-CR-105908 Case D single-chamber "
-            "gives total FLiBe inventory ~960 m³; at operating density ~2,020 kg/m³ this is "
-            "~1,940 t — not ~600 t as stated in earlier iterations. "
-            "Athena scaling factors relative to HYLIFE-II: thermal power ~1,100 MWth vs "
-            "~3,260 MWth (ratio ~0.34, implying ~660 t by power scaling), but per-shot yield "
-            "~1.6 GJ vs ~350 MJ (×4.6 higher), which may require a larger protective FLiBe jet "
-            "volume per shot. These two factors partially offset. "
-            "Central estimate ~800 t (power-scaled ~660 t, biased upward for higher yield). "
-            "At $154/kg NOAK FLiBe (Araiinejad 2025, adjusted for learning): "
-            "800 t × $154/kg ≈ $123M. Defensible range $92M–$154M (600–1,000 t). "
+            "FLiBe initial inventory for a HYLIFE-III chamber. Xcimer does not publish the "
+            "FLiBe mass. HYLIFE-II reference used ~600 t of FLiBe for a 6 Hz, 350 MJ-yield "
+            "chamber. Athena operates at lower yield (~1.6 GJ) but sub-Hz rate. Assuming a "
+            "comparable ~600 t inventory (uncertain — could range 300-1000 t). At $154/kg NOAK "
+            "FLiBe (Araiinejad 2025, adjusted for learning): 600 t x $154/kg = $92.4M ~ $92M. "
             "Both mass and unit cost are analyst-sourced, not company-published. High uncertainty."
         ),
         "cost_basis": "noak",
