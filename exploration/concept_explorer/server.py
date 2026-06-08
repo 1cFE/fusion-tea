@@ -332,42 +332,42 @@ def _compose_name(base_name: str, fuel: FuelType | None) -> str:
 # from public knowledge but not authoritatively confirmed at this commit.
 _COMPANIES: dict[str, tuple[str, str | None]] = {
     "01": ("Commonwealth Fusion Systems", "https://cfs.energy"),
-    "02": ("Sonofusion Energy", None),  # TODO verify URL
-    "03": ("Cortex Fusion Systems", None),  # TODO verify URL
+    "02": ("Sonofusion Energy", None),  # No public website found (UCLA spinoff)
+    "03": ("Cortex Fusion Systems", "https://cortexfusion.systems"),
     "04": ("HB11 Energy", "https://hb11.energy"),
     "05": ("Thea Energy", "https://theaenergy.com"),
-    "06": ("Pale Blue Fusion", None),  # TODO verify URL
-    "07": ("Pacific Fusion", "https://pacificfusion.com"),
+    "06": ("Pale Blue Fusion", None),  # No public website found (Princeton early-stage)
+    "07": ("Pacific Fusion", "https://www.pacificfusion.com"),
     "08": ("Helion Energy", "https://helionenergy.com"),
     "09": ("Type One Energy", "https://typeoneenergy.com"),
-    "10": ("Helical Fusion", "https://www.helicalfusion.com"),  # TODO verify — 10 is "Large-Scale Stellarator"
-    "11": ("Realta Fusion", "https://realtafusion.com"),  # TODO verify
+    "10": ("Gauss Fusion", "https://gauss-fusion.com"),
+    "11": ("Realta Fusion", "https://realtafusion.com"),
     "12": ("OpenStar Technologies", "https://openstartech.com"),
-    "13": ("Avalanche Energy", "https://avalanche.energy"),  # TODO verify — electrostatic-hybrid
+    "13": ("Avalanche Energy", "https://www.avalanchefusion.com"),
     "14": ("General Fusion", "https://generalfusion.com"),
     "15": ("Zap Energy", "https://zapenergy.com"),
-    "16": ("Acceleron Fusion", None),  # TODO verify URL
-    "17a": ("Xcimer Energy", "https://xcimer.com"),
-    "17b": ("Focused Energy", "https://focused-energy.world"),
+    "16": ("Acceleron Fusion", "https://www.acceleron.energy"),
+    "17a": ("Xcimer Energy", "https://xcimer.energy"),
+    "17b": ("Focused Energy", "https://www.focused-energy.co"),
     "18": ("TAE Technologies", "https://tae.com"),
-    "19": ("Zephyr Fusion", None),  # TODO verify URL
+    "19": ("Zephyr Fusion", "https://zephyrfusion.com"),
     "20a": ("Type One Energy", "https://typeoneenergy.com"),
     "20b": ("Renaissance Fusion", "https://stellarators.com"),
-    "21": ("Tokamak Energy", "https://tokamakenergy.com"),
+    "21": ("Tokamak Energy", "https://www.tokamakenergy.com"),
     "22": ("First Light Fusion", "https://firstlightfusion.com"),
     "23": ("Marvel Fusion", "https://marvelfusion.com"),
     "24": ("LPP Fusion", "https://lppfusion.com"),
-    "25": ("Intensity Energy", None),  # TODO verify URL
-    "26": ("Inertia Enterprises", None),  # TODO verify URL
-    "28": ("Energy Singularity", None),  # TODO verify URL
-    "29": ("Firefly Fusion", None),  # TODO verify URL
-    "30": ("Inertia Enterprises", None),  # TODO verify URL
-    "31": ("Blue Laser Fusion", None),  # TODO verify URL
-    "32": ("GenF Systems", None),  # TODO verify URL
-    "33": ("Neo Fusion (BEST program)", None),  # TODO verify URL — state-backed
-    "35": ("Deutelio", None),  # TODO verify URL
+    "25": ("Intensity Energy", None),  # No public website found
+    "26": ("Inertia Enterprises", "https://inertia.com"),
+    "28": ("Energy Singularity", "https://energysingularity.cn"),
+    "29": ("Firefly Fusion", "https://fireflyfusion.energy"),
+    "30": ("Inertia Enterprises", "https://inertia.com"),
+    "31": ("Blue Laser Fusion", "https://bluelaserfusion.com"),
+    "32": ("GenF (Thales spin-off / Taranis project)", None),  # No public website found
+    "33": ("Neo Fusion (BEST program)", None),  # State-backed CN, no public corporate site
+    "35": ("Deutelio", None),  # No public website found (Italian-Swiss early-stage)
     "36": ("Helical Fusion", "https://www.helicalfusion.com"),
-    "37": ("NearStar Fusion", None),  # TODO verify URL
+    "37": ("NearStar Fusion", "https://www.nearstarfusion.com"),
     "39": ("ENN Energy", "https://enn.cn"),
 }
 
