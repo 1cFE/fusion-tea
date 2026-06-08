@@ -57,6 +57,14 @@ Usage:
 import math
 from dataclasses import dataclass, field
 
+# Muon-catalyzed fusion physics is well-understood, but the aspirational
+# parameters (E_mu = 1.2 GeV, etc.) are not demonstrated and the resulting
+# LCOE is >>$1,000/MWh; the docstring acknowledges these are "aspirational"
+# inputs without engineering basis. Freeform LCOE: not comparable to
+# 1costingfe-derived numbers. Read by the explorer extractor to suppress
+# the headline LCOE in cross-concept views (cost landscape, comparison).
+DATA_GROUNDED = False
+
 # ============================================================================
 # Physical constants
 # ============================================================================

@@ -53,6 +53,13 @@ Usage:
 import math
 from dataclasses import dataclass
 
+# Cortex Fusion plasmonic nanoshell physics is unvalidated (no fusion
+# neutrons reported by any group from this mechanism) — see CRITICAL block
+# above. Freeform LCOE: not comparable to 1costingfe-derived numbers. Read
+# by the explorer extractor to suppress the headline LCOE in cross-concept
+# views (cost landscape, comparison summary).
+DATA_GROUNDED = False
+
 # ============================================================================
 # Physical constants
 # ============================================================================

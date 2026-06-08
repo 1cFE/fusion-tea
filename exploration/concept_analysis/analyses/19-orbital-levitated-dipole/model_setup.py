@@ -44,6 +44,12 @@ from lib.model_setup_helpers import (
     generic_reference, run_native_and_1gw, print_cas_breakdown,
 )
 
+# Zephyr discloses no design point — see WARNING block above. Mirror of
+# the data_grounded=False flag passed to print_cas_breakdown below.
+# Read by the explorer extractor to suppress headline LCOE in cross-concept
+# views (cost landscape, comparison summary). CAS breakdown still renders.
+DATA_GROUNDED = False
+
 # 1. Specification — PLACEHOLDER (no company data; library defaults used)
 # The analysis states all parameters are "Unknown". To satisfy the contract,
 # we pass an empty spec dict — the library will use all YAML defaults for DIPOLE.

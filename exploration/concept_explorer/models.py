@@ -444,6 +444,17 @@ class ConceptData(BaseModel):
     # compat with existing JSON: missing → None → treat as costingfe (legacy
     # behavior). Re-run extract_explorer_data.py to populate.
     model_type: ModelType | None = None
+    # Mirrors the analyst's data_grounded flag in print_cas_breakdown — False
+    # when model_setup.py runs the costingfe library with an empty/minimal
+    # spec because the company hasn't disclosed a reactor design point
+    # (concepts 06, 19, 28, etc.). In that mode the headline LCOE reflects
+    # only library archetype defaults, not concept-specific data, and the
+    # explorer must suppress it in cross-concept views (cost landscape,
+    # comparison summary) to avoid presenting library defaults as if they
+    # were grounded analyses. Extractor reads DATA_GROUNDED module-level
+    # constant from model_setup.py (defaulting True when absent). Default
+    # True preserves backward compat for existing JSON.
+    data_grounded: bool = True
     cost_model: CostModelData | None = None
     parameter_metadata: dict[str, ParameterMetadata] = Field(default_factory=dict)
     narrative: NarrativeData | None = None
@@ -515,6 +526,10 @@ class ConceptManifestEntry(BaseModel):
     # the entry grid and comparison picker can gate LCOE display without
     # fetching the full per-concept JSON. None for legacy entries.
     model_type: ModelType | None = None
+    # Mirror of ConceptData.data_grounded — same rationale as model_type:
+    # surfaced on the manifest so cross-concept views can suppress LCOE
+    # without per-concept fetches. Default True for backward compat.
+    data_grounded: bool = True
     lcoe_per_mwh: float | None = None
     confidence: Confidence | None = None
     asterisk_in_comparison: bool = False
@@ -650,6 +665,7 @@ def build_manifest(concepts: list[ConceptData]) -> ConceptManifest:
                 has_cost_model=concept.has_cost_model,
                 has_sensitivities=concept.has_sensitivities,
                 model_type=concept.model_type,
+                data_grounded=concept.data_grounded,
                 lcoe_per_mwh=lcoe,
                 confidence=confidence,
                 asterisk_in_comparison=concept.asterisk_in_comparison,
@@ -899,6 +915,13 @@ def build_cost_landscape(concepts: list[ConceptData]) -> CostLandscape:
         # comparison (e.g. muon-catalyzed-fusion's freeform LCOE next to
         # 1costingfe-driven tokamaks).
         if concept.model_type == ModelType.STANDALONE:
+            continue
+        # Suppress ungrounded costingfe concepts (analyst flagged the
+        # design point as undisclosed). The library produces a numeric
+        # LCOE from archetype defaults, but it carries zero concept-
+        # specific signal — showing it as a bar invites misreading
+        # library defaults as real cost estimates.
+        if not concept.data_grounded:
             continue
         lcoe = cm.headline.lcoe_per_mwh
         if not math.isfinite(lcoe):

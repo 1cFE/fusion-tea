@@ -73,6 +73,14 @@ Usage:
 import math
 from dataclasses import dataclass
 
+# Sonofusion Energy discloses no design point — see CRITICAL block above.
+# Freeform LCOE: not comparable to 1costingfe-derived numbers. Read by the
+# explorer extractor to suppress the headline LCOE in cross-concept views
+# (cost landscape, comparison summary). `grep "DATA_GROUNDED = False"
+# exploration/concept_analysis/analyses/*/model_setup.py` returns the
+# authoritative audit list of suppressed concepts.
+DATA_GROUNDED = False
+
 # ============================================================================
 # Physical constants
 # ============================================================================
