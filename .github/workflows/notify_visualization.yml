@@ -1,0 +1,29 @@
+# .github/workflows/notify_visualization.yml
+# Whenever model_output.txt is pushed to the fusion-tea repo,
+# this fires a repository_dispatch event to the visualization repo,
+# which triggers sync_data.yml to fetch and update data.json.
+#
+# Required: add a GitHub secret called VISUALIZATION_REPO_TOKEN in the
+# fusion-tea repo settings (Settings -> Secrets -> Actions -> New secret).
+# The token needs "repo" scope for the visualization repo.
+# Generate at: https://github.com/settings/tokens
+
+name: Notify visualization on model update
+
+on:
+  push:
+    paths:
+      - 'exploration/concept_analysis/analyses/21-spherical-tokamak-hts/model_output.txt'
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger visualization repo sync
+        run: |
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.VISUALIZATION_REPO_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/1cFE/fusion-tea-walkthrough-visualization/dispatches \
+            -d '{"event_type":"model_output_updated"}'
+          echo "Dispatched model_output_updated event"
