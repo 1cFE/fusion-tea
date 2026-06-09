@@ -800,8 +800,15 @@
       );
     }
     if (payload.analysis_html) {
+      var label = payload.analysis_from_archive
+        ? '<div class="findings-full__label">Full Analysis '
+          + '<span class="findings-full__archive-tag" title="Pre-rework archived analysis '
+          + '— content may reference earlier model parameters. The active model_setup.py '
+          + 'is the authoritative current state.">(archived, pre-rework)</span></div>'
+        : '<div class="findings-full__label">Full Analysis</div>';
       parts.push(
-        '<div class="findings-full"><div class="findings-full__label">Full Analysis</div>'
+        '<div class="findings-full">'
+        + label
         + payload.analysis_html
         + "</div>",
       );
