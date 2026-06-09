@@ -1,0 +1,26 @@
+{
+  "iteration": 1,
+  "verdict": "FAIL",
+  "finding_count": 3,
+  "feedback_source": "cold_start",
+  "model_ran": true,
+  "model_ok": false,
+  "research_ran": false,
+  "merged_assess": false,
+  "sources": [
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\13-electrostatic-hybrid\\iter-01\\sources\\avalanche-29m-raise-2026.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\13-electrostatic-hybrid\\iter-01\\sources\\avalanche-300kv-press-release.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\13-electrostatic-hybrid\\iter-01\\sources\\avalanche-cwfest2023-blog.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\13-electrostatic-hybrid\\iter-01\\sources\\avalanche-fusionwerx-grant.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\13-electrostatic-hybrid\\iter-01\\sources\\avalanche-orbitron-page.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\13-electrostatic-hybrid\\iter-01\\sources\\meetings-meeting-dpp24-session-np12-69.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\13-electrostatic-hybrid\\iter-01\\sources\\neimagazine-news-avalanche-energy-launches-fusionwerx.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\13-electrostatic-hybrid\\iter-01\\sources\\osti-pages-servlets-purl-2582151.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\13-electrostatic-hybrid\\iter-01\\sources\\prnewswire-news-releases-avalanche-energy-announces-new.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\13-electrostatic-hybrid\\iter-01\\sources\\talk-polywell-orbitron-paper-discussion.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\13-electrostatic-hybrid\\iter-01\\sources\\ui-2023aps-dpptp1006m-abstract.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\13-electrostatic-hybrid\\iter-01\\sources\\ui-2023aps-dppyo8010l-abstract.md",
+    "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\knowledge\\concept_research\\13-electrostatic-hybrid\\iter-03\\sources\\analyst-patch-pb11-fuel-critical.md"
+  ],
+  "timestamp": "2026-06-09T09:10:18.745428+00:00"
+}

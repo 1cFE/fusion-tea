@@ -1,4 +1,4 @@
-# STALE: analysis-updated-iter-1
+# STATUS: reviewed-iter-2 (no model-category findings to address)
 """1costingfe model: Electrostatic Hybrid (Orbitron) (Avalanche Energy).
 
 Usage:

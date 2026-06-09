@@ -1,7 +1,7 @@
-# Synthesis: Laser ICF Fast Ignition (Focused Energy)
+# Synthesis: FRC w/ Direct Conversion (Helion Energy)
 
-You are producing an editorial synthesis for the fusion concept **Laser ICF Fast Ignition (Focused Energy)**
-(Focused Energy). Your role is to INTERPRET, JUDGE, and PRIORITIZE — not to document.
+You are producing an editorial synthesis for the fusion concept **FRC w/ Direct Conversion (Helion Energy)**
+(Helion Energy). Your role is to INTERPRET, JUDGE, and PRIORITIZE — not to document.
 
 The underlying analysis has been reviewed and verified. You may trust its factual
 claims. Your job is to synthesize them into decision-support guidance.
@@ -9,14 +9,14 @@ claims. Your job is to synthesize them into decision-support guidance.
 ## Required Reading
 
 ### 1. Reviewed Analysis
-`C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\17b-laser-icf-fast-ignition\analysis.md`
+`C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\08-frc-w-direct-conversion\analysis.md`
 
 ### 2. Model Setup and Output
 
-`C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\17b-laser-icf-fast-ignition\model_setup.py`
+`C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\08-frc-w-direct-conversion\model_setup.py`
 
 
-Model output (user-generated): `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\17b-laser-icf-fast-ignition\model_output.txt`
+Model output (user-generated): `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\08-frc-w-direct-conversion\model_output.txt`
 
 
 ### 3. Approved Prior Syntheses
@@ -35,7 +35,7 @@ Model output (user-generated): `C:\Users\mallo\Deterministic_Concept_scoring\fus
 
 ### Mandatory Sections
 
-Write to: `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\17b-laser-icf-fast-ignition\synthesis_body.md`
+Write to: `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\08-frc-w-direct-conversion\synthesis_body.md`
 
 #### 1. Executive Summary (3-5 bullets)
 - The single most important risk
@@ -73,6 +73,4 @@ Rate: High / Medium / Low
 change the LCOE estimate (in either direction).
 
 ### Gap Report
-
-`C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\17b-laser-icf-fast-ignition\gap_report.md`
 

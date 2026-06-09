@@ -1,0 +1,20 @@
+[
+  {
+    "timestamp": "2026-06-09T09:13:37.416020+00:00",
+    "step": "feedback-pass",
+    "attempt": 1,
+    "validator": "validate_file_modified",
+    "passed": true,
+    "details": "File content changed",
+    "validated_text_preview": "---\nID: 13-electrostatic-hybrid\nConcept: Electrostatic Hybrid (Orbitron)\nCompany: Avalanche Energy\nStatus: draft\nCreated: 2026-06-09\nApproved-Date:\nConfinement-Family: MFE\nArchetype: ORBITRON\nArchetype-Fit: Med\nComparison-Status: costingfe-asterisked\nComparables: []\nDesign-Point-Name: Orbitron commercial module \u2014 lower bound (Avalanche Energy product page / CWFest 2023)\nDesign-Point-Maturity: paper-concept\nP-Native: 0.005\nGrounding-Confidence: low\n---\n\n## Design Point\n\n- Name: Orbitron commercia"
+  },
+  {
+    "timestamp": "2026-06-09T09:15:26.827334+00:00",
+    "step": "model-setup",
+    "attempt": 1,
+    "validator": "validate_python_syntax+validate_model_setup_contract_strict+validate_override_registry",
+    "passed": true,
+    "details": "All validators passed",
+    "validated_text_preview": "# STATUS: reviewed-iter-2 (no model-category findings to address)\n\"\"\"1costingfe model: Electrostatic Hybrid (Orbitron) (Avalanche Energy).\n\nUsage:\n    uv run python model_setup.py              # print results\n    uv run python model_setup.py | tee model_output.txt\n\"\"\"\nimport sys\nfrom pathlib import Path\n\n# Make the shared three-forward helper importable regardless of where this file\n# lives (concept dir or iter-N/ dir): walk up to the scripts/ root.\n_SCRIPTS = next(\n    p / \"scripts\"\n    for p i"
+  }
+]

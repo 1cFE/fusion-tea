@@ -1,0 +1,20 @@
+[
+  {
+    "timestamp": "2026-06-09T08:46:07.908371+00:00",
+    "step": "cold-start",
+    "attempt": 1,
+    "validator": "validate_non_empty",
+    "passed": true,
+    "details": "Non-empty (53910 chars)",
+    "validated_text_preview": "## Design Point\n\n- Name: Orion \u2014 Helion 8th-generation first commercial plant (50 MWe Microsoft PPA, 2028 target)\n- Maturity: pilot-demonstrator\n- P_native: 50 MWe\n- Grounding: medium\n- Primary sources:\n  - knowledge/concept_research/08-frc-w-direct-conversion/iter-01/sources/docslib-helion-arpa-e-presentation.md\n  - knowledge/concept_research/08-frc-w-direct-conversion/iter-02/sources/helion-prototype-generations.md\n  - knowledge/concept_research/08-frc-w-direct-conversion/iter-01/sources/helio"
+  },
+  {
+    "timestamp": "2026-06-09T08:47:55.474840+00:00",
+    "step": "model-setup",
+    "attempt": 1,
+    "validator": "validate_python_syntax+validate_model_setup_contract_strict+validate_override_registry",
+    "passed": true,
+    "details": "All validators passed",
+    "validated_text_preview": "\"\"\"1costingfe model: FRC w/ Direct Conversion (Helion Energy) (Helion Energy).\n\nUsage:\n    uv run python model_setup.py              # print results\n    uv run python model_setup.py | tee model_output.txt\n\"\"\"\nimport sys\nfrom pathlib import Path\n\n# Make the shared three-forward helper importable regardless of where this file\n# lives (concept dir or iter-N/ dir): walk up to the scripts/ root.\n_SCRIPTS = next(\n    p / \"scripts\"\n    for p in Path(__file__).resolve().parents\n    if (p / \"scripts\" / \""
+  }
+]

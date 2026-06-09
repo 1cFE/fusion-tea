@@ -1,0 +1,20 @@
+[
+  {
+    "timestamp": "2026-06-09T08:08:02.375346+00:00",
+    "step": "cold-start",
+    "attempt": 1,
+    "validator": "validate_non_empty",
+    "passed": true,
+    "details": "Non-empty (73025 chars)",
+    "validated_text_preview": "## Design Point\n\n- Name: Infinity Two fusion pilot power plant (Hegna et al. 2025, J. Plasma Phys. special issue)\n- Maturity: proposed-commercial\n- P_native: 350 MWe\n- Grounding: high\n- Primary sources:\n  - knowledge/concept_research/20a-type-one-stellarator/iter-01/sources/typeoneenergy-type-one-energy-issues-first-realistic/output.md\n  - knowledge/concept_research/20a-type-one-stellarator/iter-01/sources/cambridge-core-journals-journal-of-plasma-physics-article/output.md\n  - knowledge/concept_"
+  },
+  {
+    "timestamp": "2026-06-09T08:09:40.914782+00:00",
+    "step": "model-setup",
+    "attempt": 1,
+    "validator": "validate_python_syntax+validate_model_setup_contract_strict+validate_override_registry",
+    "passed": true,
+    "details": "All validators passed",
+    "validated_text_preview": "\"\"\"1costingfe model: Type One Stellarator (Type One Energy) (Type One Energy).\n\nUsage:\n    uv run python model_setup.py              # print results\n    uv run python model_setup.py | tee model_output.txt\n\"\"\"\nimport sys\nfrom pathlib import Path\n\n# Make the shared three-forward helper importable regardless of where this file\n# lives (concept dir or iter-N/ dir): walk up to the scripts/ root.\n_SCRIPTS = next(\n    p / \"scripts\"\n    for p in Path(__file__).resolve().parents\n    if (p / \"scripts\" / \""
+  }
+]

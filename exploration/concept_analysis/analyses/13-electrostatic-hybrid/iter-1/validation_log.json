@@ -1,0 +1,49 @@
+[
+  {
+    "timestamp": "2026-06-09T09:05:45.826144+00:00",
+    "step": "cold-start",
+    "attempt": 1,
+    "validator": "validate_non_empty",
+    "passed": true,
+    "details": "Non-empty (35269 chars)",
+    "validated_text_preview": "## Design Point\n\n- Name: Orbitron commercial module \u2014 lower bound (Avalanche Energy product page / CWFest 2023)\n- Maturity: paper-concept\n- P_native: 0.005 MWe\n- Grounding: low\n- Primary sources:\n  - knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/avalanche-orbitron-page.md\n  - knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/avalanche-cwfest2023-blog.md\n\n## Section 1: Availability of Data\n\n**Rating: Opaque**\n\nAvalanche Energy's public information consists pr"
+  },
+  {
+    "timestamp": "2026-06-09T09:06:58.108737+00:00",
+    "step": "model-setup",
+    "attempt": 1,
+    "validator": "validate_python_syntax+validate_model_setup_contract_strict+validate_override_registry",
+    "passed": false,
+    "details": "Missing module-level binding(s): generic",
+    "validated_text_preview": "\"\"\"1costingfe model: Electrostatic Hybrid (Orbitron) (Avalanche Energy).\n\nCRITICAL BLOCKER: This concept cannot be meaningfully modeled at its actual\ndesign-point scale (5 kWe) due to 1costingFE power balance convergence floors\nat ~1 MWe. The analysis (Section 5b) states: \"The 1costingFE library cannot\nmodel below ~1 MWe due to power balance convergence floors. Any P_native < 1 MWe\nis rejected with rec_frac > 1 errors regardless of parameter choices.\"\n\nThis script will fail at runtime with power",
+    "fix_message_sent": "Note: This is attempt 2 of 3.\n\nIMPORTANT: Write your output to the file: C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\13-electrostatic-hybrid\\iter-1\\model_setup.py\n\nmodel_setup.py is missing required module-level name(s): generic. The file MUST bind `model`, `generic`, `native`, and `result_1gw` at module level (the three-forward contract: `generic` overrides-off, `native` overrides-on at design scale, `result_1gw` overrides-on at 1 GWe)."
+  },
+  {
+    "timestamp": "2026-06-09T09:08:01.120530+00:00",
+    "step": "model-setup",
+    "attempt": 2,
+    "validator": "validate_python_syntax+validate_model_setup_contract_strict+validate_override_registry",
+    "passed": false,
+    "details": "spec contains unknown key(s) ['chamber_length'] (silently dropped by forward())",
+    "validated_text_preview": "\"\"\"1costingfe model: Electrostatic Hybrid (Orbitron) (Avalanche Energy).\n\nCRITICAL BLOCKER: This concept cannot be meaningfully modeled at its actual\ndesign-point scale (5 kWe) due to 1costingFE power balance convergence floors\nat ~1 MWe. The analysis (Section 5b) states: \"The 1costingFE library cannot\nmodel below ~1 MWe due to power balance convergence floors. Any P_native < 1 MWe\nis rejected with rec_frac > 1 errors regardless of parameter choices.\"\n\nPer the analyst-patch source (analyst-patch",
+    "fix_message_sent": "CRITICAL: This is your FINAL attempt 3 of 3. Focus carefully on producing the correct output.\n\nIMPORTANT: Write your output to the file: C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\13-electrostatic-hybrid\\iter-1\\model_setup.py\n\n`spec` contains unknown key(s) ['chamber_length'] that `forward()` would silently drop. Use canonical CostingInput field names (units per the costingfe YAML defaults). Suggestions: 'chamber_length' \u2192 (no close match). Full allow-list: ['B', 'M_ion', 'R0', 'T_e', 'Z_eff', 'blanket_fill', 'blanket_form', 'blanket_t', 'burn_fraction', 'elon', 'eta_couple', 'eta_p', 'eta_pin', 'f_GW', 'f_dec', 'f_pdv', 'f_rad', 'f_rep', 'f_sub', 'fuel_recovery', 'ht_shield_t', 'lambda_q', 'mn', 'n_e', 'p_coils', 'p_cool', 'p_cryo', 'p_house', 'p_input', 'p_pump', 'p_target', 'p_trit', 'plasma_t', 'plasma_volume', 'q95', 'q_eng', 'structure_t', 'target_unit_cost', 'use_0d_model', 'vessel_t']."
+  },
+  {
+    "timestamp": "2026-06-09T09:09:14.180805+00:00",
+    "step": "model-setup",
+    "attempt": 3,
+    "validator": "validate_python_syntax+validate_model_setup_contract_strict+validate_override_registry",
+    "passed": false,
+    "details": "F9: p_input/P_native = 1.000 (value=1.0, P_native=1.0) outside [0.005, 0.5]",
+    "validated_text_preview": "\"\"\"1costingfe model: Electrostatic Hybrid (Orbitron) (Avalanche Energy).\n\nCRITICAL BLOCKER: This concept cannot be meaningfully modeled at its actual\ndesign-point scale (5 kWe) due to 1costingFE power balance convergence floors\nat ~1 MWe. The analysis (Section 5b) states: \"The 1costingFE library cannot\nmodel below ~1 MWe due to power balance convergence floors. Any P_native < 1 MWe\nis rejected with rec_frac > 1 errors regardless of parameter choices.\"\n\nPer the analyst-patch source (analyst-patch"
+  },
+  {
+    "timestamp": "2026-06-09T09:10:18.745428+00:00",
+    "step": "assess",
+    "attempt": 1,
+    "validator": "validate_feedback_verdict",
+    "passed": true,
+    "details": "Feedback format valid (verdict: FINDINGS)",
+    "validated_text_preview": "VERDICT: FINDINGS\n\n### F-1: P_native drift between design point and model creates incoherent framing\n- **Target:** Design Point block (analysis.md top-of-body) and model_setup.py P_native constant\n- **Category:** analysis\n- **Finding:** The Design Point block states `P_native: 0.005 MWe` (5 kWe), but the model_setup.py sets `P_native = 1.0` (1 MWe) \u2014 a 200\u00d7 discrepancy. The analysis extensively documents the workaround justification (Section 2 Challenge 1, Section 5 inference chain, the analyst-"
+  }
+]
