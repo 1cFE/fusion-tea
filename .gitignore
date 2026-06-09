@@ -35,3 +35,6 @@ knowledge/LOCAL_SOURCES.yaml
 exploration/concept_explorer/dist/
 
 # Research binary artifacts handled by knowledge/concept_research/.gitignore
+
+# Explorer dev-server logs
+explorer_server.log
