@@ -34,12 +34,22 @@ import markdown
 class FindingsPayload:
     """API response shape for ``/api/concepts/{id}/findings``.
 
-    Each field is HTML (already rendered from markdown) or None when the
-    source file is absent. The frontend renders only the non-None sections.
+    Each HTML field is markdown rendered from the source file, or None when
+    the source file is absent. The frontend renders only the non-None
+    sections.
+
+    ``analysis_from_archive`` flags concepts whose live ``analyses/{slug}/
+    analysis.md`` is missing because the pre-rework bulk-archive on
+    2026-05-31 (``3f28671``) moved them to
+    ``archive/concept_analysis_pre_rework/{slug}/`` pending regen under the
+    new three-forward pipeline. When True, the rendered content is the
+    legacy pre-rework analysis surfaced as-is; the frontend should display
+    a disclaimer so readers know the analysis predates current model edits.
     """
 
     exec_summary_html: str | None
     analysis_html: str | None
+    analysis_from_archive: bool = False
 
 
 _FRONTMATTER_RE = re.compile(r"^---\n.*?\n---\n?", re.DOTALL)
@@ -84,11 +94,20 @@ def _find_concept_dir(concept_id: str, analyses_root: Path) -> Path | None:
     return None
 
 
-def build_findings(concept_id: str, analyses_root: Path) -> FindingsPayload:
+def build_findings(
+    concept_id: str,
+    analyses_root: Path,
+    archive_root: Path | None = None,
+) -> FindingsPayload:
     """Build the findings payload for one concept.
 
-    Returns a payload with both fields None when the concept directory
-    doesn't exist or neither markdown file is present.
+    Falls back to ``archive_root/{slug}/analysis.md`` when the live analysis
+    is absent (Reid's 2026-05-31 bulk archive — see _GENERIC_NAMES doc in
+    server.py). ``analysis_from_archive`` flags the result so the frontend
+    can render an "archived analysis" disclaimer.
+
+    Returns a payload with both HTML fields None when the concept directory
+    doesn't exist or no markdown file is present (live OR archive).
     """
     concept_dir = _find_concept_dir(concept_id, analyses_root)
     if concept_dir is None:
@@ -96,6 +115,7 @@ def build_findings(concept_id: str, analyses_root: Path) -> FindingsPayload:
 
     exec_summary_html: str | None = None
     analysis_html: str | None = None
+    analysis_from_archive = False
 
     synthesis_path = concept_dir / "synthesis.md"
     if synthesis_path.exists():
@@ -108,6 +128,12 @@ def build_findings(concept_id: str, analyses_root: Path) -> FindingsPayload:
             exec_summary_html = _MD.convert(body)
 
     analysis_path = concept_dir / "analysis.md"
+    if not analysis_path.exists() and archive_root is not None:
+        archived = _find_concept_dir(concept_id, archive_root)
+        if archived is not None and (archived / "analysis.md").exists():
+            analysis_path = archived / "analysis.md"
+            analysis_from_archive = True
+
     if analysis_path.exists():
         text = analysis_path.read_text(encoding="utf-8", errors="replace")
         body = _strip_frontmatter(text)
@@ -117,4 +143,5 @@ def build_findings(concept_id: str, analyses_root: Path) -> FindingsPayload:
     return FindingsPayload(
         exec_summary_html=exec_summary_html,
         analysis_html=analysis_html,
+        analysis_from_archive=analysis_from_archive,
     )

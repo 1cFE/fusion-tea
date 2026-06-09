@@ -754,10 +754,19 @@ def api_get_findings(concept_id: str, state: _State = Depends(get_state)) -> dic
         raise HTTPException(status_code=404, detail=f"Concept {concept_id} not found")
     from exploration.concept_explorer.findings import build_findings
     analyses_root = state.base_dir.parent / "concept_analysis" / "analyses"
-    payload = build_findings(concept_id, analyses_root)
+    # Fallback for analyses that haven't been regenerated under the new
+    # three-forward pipeline since Reid's 2026-05-31 bulk archive (commit
+    # 3f28671). Surfaces the legacy analysis with a disclaimer.
+    archive_root = state.base_dir.parent.parent / "archive" / "concept_analysis_pre_rework"
+    payload = build_findings(
+        concept_id,
+        analyses_root,
+        archive_root=archive_root if archive_root.is_dir() else None,
+    )
     return {
         "exec_summary_html": payload.exec_summary_html,
         "analysis_html": payload.analysis_html,
+        "analysis_from_archive": payload.analysis_from_archive,
     }
 
 
