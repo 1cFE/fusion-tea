@@ -1,401 +1,475 @@
 ---
 ID: 17b-laser-icf-fast-ignition
-Concept: Laser ICF - Fast Ignition (D-T)
+Concept: Laser ICF Fast Ignition (Focused Energy)
 Company: Focused Energy
 Status: draft
-Created: 2026-04-19
+Created: 2026-06-08
 Approved-Date:
-Reuses: []
-P-Native: 1000
-Comparison-Status: costingfe
+Confinement-Family: IFE
+Archetype: LASER_IFE
+Archetype-Fit: Med
+Comparison-Status: freeform-deferred
+Comparables:
+  - 26-laser-icf-indirect-drive
+  - 30-laser-icf-nif-commercialization
+  - 31-laser-icf-oec-architecture
+  - 32-laser-icf-french-national
+  - 17a-laser-icf-hybrid-drive
 ---
 
-> **See also:** `synthesis_concept_downselect.md` (this dir) and `knowledge/concept_research/17-laser-icf-direct-drive/dossier_17b_focused_concept_downselect.md` for additional TNSA proton-coupling, cone-target dynamics, and hot-spot energy-deposition narrative carried over from the `concept-downselect` branch via Option C overlay. See `.project/reports/2026-05-19-concept-downselect-rebase-audit.md` §2.2.
+## Design Point
 
-# D1+ Analysis: Laser ICF - Fast Ignition (D-T)
+(No design-point row for this concept yet — selection is upstream-pending. Do not invent one.)
 
-**Company**: Focused Energy  
-**Concept**: Proton fast ignition — DPSSL compression + petawatt ignition laser  
-**Fuel**: D-T  
-**Classification**: IFE / Laser / Fast Ignition  
-
----
-
-## Section 1: Availability of Data
+## 1. Availability of Data
 
 **Rating: Limited**
 
-Focused Energy is a private startup with tightly controlled public disclosures. The available information is qualitative and aspirational; no plant studies, system-code outputs, or independent techno-economic analyses have been published.
+Focused Energy's proton fast ignition approach has a narrow public data footprint. The company has published high-level technology descriptions on their website and through interviews, but quantitative plant parameters, detailed subsystem specifications, and cost structures remain undisclosed. The most substantive public sources are:
 
-**Peer-reviewed / technical literature**: The company has published very limited technical content in open literature. A 2023 Journal of Fusion Energy concept paper exists but was not accessible (Springer paywall; abstract only confirms the approach). Academic literature on proton fast ignition (TNSA-based) is broader but primarily covers small-scale experiments (sub-kJ lasers, non-D-T targets) that cannot be extrapolated to plant scale. The Optica OPN June 2023 feature provides a useful science overview [1].
+- **Company technology page** (focused-energy-technology.md) — confirms D-T fuel, direct-drive proton fast ignition architecture, and the Pearl™ capsule branding, but provides minimal quantitative detail beyond a claimed 30× output increase relative to NIF indirect drive.
+- **Callahan Physics World interview** (focused-energy-callahan-interview.md, 2024) — the most detailed single source, confirming ~10 Hz repetition rate, target gain targets of 50–100, laser efficiency goal of ~10%, lithium blanket tritium breeding with Savannah River National Lab collaboration, conventional steam cycle, and pilot plant timeline (LightHouse by end of 2030s). This interview is the primary anchor for most LCOE-relevant parameters.
+- **LaserFocusWorld 2021** — describes the two-pulse architecture (compression + 150 kJ short-pulse ignitor producing proton beam), cites Texas Petawatt heritage and Ditmire's National Energetics ELI Beamlines background, and projects "around 80 beamlines" as an ultimate facility scale (Ditmire's estimate, not a committed design).
+- **PRNewswire 2024** — announces $40M Amplitude DPSSL partnership and $65M Laser Development Facility in the San Francisco Bay Area, confirming diode-pumped solid-state laser as the compression driver.
 
-**Company transparency**: The most informative public source is a Physics World interview with Principal Scientist Debbie Callahan [2], which discloses gain targets, rep rate, laser efficiency targets, and energy conversion approach. The company website and press releases add manufacturing emphasis and the Amplitude partnership but are marketing documents [3][4]. No whitepaper, no system-level design disclosure, and no cost estimates have been published.
+**Key gaps:**
 
-**Independent analyses**: The Xcimer/IFE commercialization white paper (XEC 2026) provides IFE-class benchmarks relevant to driver costs but addresses Xcimer's KrF architecture, not Focused Energy's DPSSL + petawatt scheme [5]. The OSTI IFE status review (purl-2561299) provides laser IFE energetics requirements that apply generically [6].
+1. **No published power plant study.** Unlike indirect-drive IFE (where NIF's LIFE program and LLNL's generalized economics model provide reference points) or hybrid-drive laser concepts (Xcimer's whitepaper with TRUMPF), Focused Energy has not released system-level cost breakdowns, thermal power targets, or chamber-level engineering details.
+2. **Blanket chemistry undisclosed.** "Lithium blankets" are confirmed (Callahan interview), but the specific composition (FLiBe vs LiPb vs liquid Li) and chamber architecture are not public. The Focused Energy J. Fusion Energy 2023 paper (Springer paywall) is cited in external references but has not been ingested into this corpus.
+3. **Quantitative plant parameters sparse.** No net electric output, thermal power, or net efficiency figures. The company describes "gigawatt-scale" ambitions without specifics.
+4. **Proton fast ignition validation gap.** The concept relies on petawatt-driven proton beam coupling to compressed core; not yet experimentally demonstrated at ignition-relevant scale. Academic fast-ignition literature (Tabak et al., Norreys HiPER studies) provides physics context but not Focused Energy-specific validation data.
+5. **Target manufacturing cost.** The Pearl™ cone-in-shell geometry is described as "structurally more complex than a symmetric D-T capsule" (analyst-patch-target-unit-cost.md), but Focused Energy has not disclosed per-target fabrication costs. The analyst patch estimates $0.80/shot (uncertainty band $0.50–$1.20) based on NOAK assumptions and a 1.3× complexity multiplier over symmetric capsules.
 
-**Phase 1a dossier coverage**: The dossier (17-laser-icf-direct-drive) captured Focused Energy taxonomy values but was originally compiled alongside Xcimer. After concept splitting, most quantitative plant data in the dossier traces to Xcimer or HYLIFE heritage sources. Focused Energy-specific economics are absent.
+**Comparison to IFE neighbors:** Indirect-drive concepts (Inertia's NIF-heritage Thunderwall architecture) and hybrid-drive concepts (Xcimer's HDD approach) have published more detailed cost and performance projections. Focused Energy's opacity places it closer to the "Limited" data tier than "Moderate."
 
-**Key data gaps that limit this analysis**: no chamber design, no published capsule design (Pearl™ geometry is unpublished), no disclosed blanket type, no LCOE or capital cost estimate, no laser cost for the Focused Energy specific configuration, and no experimental fast ignition gain data at relevant scale.
+## 2. Challenges in Capturing System Function
 
----
-[1] optica-opn-home-articles-volume-34-june-2023-features.md, §Direct-drive overview and fast ignition  
-[2] focused-energy-callahan-interview.md, §Gain targets and plant parameters  
-[3] focused-energy-technology.md, §Pearl fuel and manufacturing  
-[4] prnewswire-news-releases-focused-energy-and-amplitude-enter.md, §Amplitude partnership  
-[5] xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md, §Xcimer Laser Cost and Schedule  
-[6] osti-servlets-purl-2561299.md, §Basic IFE power-plant energetics requirements  
+Laser ICF fast ignition introduces modeling challenges distinct from both indirect-drive IFE and magnetic confinement concepts:
 
----
+**1. Two-pulse compression + ignition architecture creates subsystem interdependencies with no validated cost analogue.**
 
-## Section 2: Challenges in Capturing System Function
+Fast ignition decouples compression (long-pulse DPSSL driver) from ignition (short-pulse petawatt-class laser generating proton beam). This creates two distinct driver cost categories:
+- Compression laser: DPSSL beamlines (Nd:glass, frequency-doubled to ~527 nm, ~10% wall-plug efficiency). The Amplitude partnership and Laser Development Facility investment suggest this is the primary capital cost driver, but no per-beamline or total driver cost has been published.
+- Ignition laser: ~150 kJ short-pulse (LaserFocusWorld), petawatt-class, chirped-pulse amplification architecture. The number of ignitor beamlines, their unit cost, and maintenance requirements are not disclosed.
 
-### Challenge 1: Proton Coupling Efficiency — The Central Unknown
+The two-pulse approach theoretically reduces required compression energy relative to single-pulse direct drive (enabling smaller per-shot yield + higher rep-rate operation), but whether this translates to lower driver capital cost depends on the relative costs of many DPSSL beamlines vs. fewer but more complex petawatt systems. No public cost comparison exists.
 
-The proton fast ignition scheme inserts an additional physics step between laser energy and fusion yield that is entirely absent from central hot spot (CHS) ignition (indirect or direct drive). A petawatt short-pulse laser irradiates a metal foil embedded in the capsule, generating a proton beam via Target Normal Sheath Acceleration (TNSA). That proton beam must then propagate through the cone structure into the compressed DT core and deposit its energy in a small, correctly positioned hot spot.
+**2. Target gain pathway relies on proton beam coupling physics not yet validated at scale.**
 
-The coupling efficiency of this chain — petawatt laser energy → proton kinetic energy → hot-spot heating — is the dominant LCOE uncertainty and has never been measured at the areal densities, pressures, and spatial scales required for ignition. Small-scale experiments at single-shot petawatt facilities have characterized TNSA proton spectra, but the conversion efficiencies achieved (typically ~1–10% laser-to-proton-beam, with broad energy spectra and large angular divergence) impose severe constraints on the fraction of proton energy that reaches the compressed hot spot. Focused Energy does not disclose their assumed coupling efficiency.
+> "To make inertial fusion energy successful and use it in a power plant, we need significantly higher gains of more like 50 to 100."
+> — Callahan interview
 
-For TEA purposes, the coupling efficiency η_coup acts as a multiplier on the gain: if only 5% of petawatt laser energy deposits usefully in the core, the effective gain attributed to the ignition pulse is dramatically reduced. This cannot be constrained with existing data; the range of defensible assumptions spans roughly an order of magnitude. Any LCOE model should treat η_coup as the primary sensitivity parameter and bracket the result between optimistic (30%) and pessimistic (5%) coupling.
+NIF's best indirect-drive shot achieved target gain ~4.1 (Callahan interview). Focused Energy's 50–100 target gain projection for direct-drive proton fast ignition rests on:
+- Compression stage achieving symmetric implosion of a cryogenic D-T capsule (direct-drive geometry).
+- Ignitor pulse hitting a "nearby target" (LaserFocusWorld) to generate a proton beam.
+- Proton beam coupling efficiently to the compressed core to ignite the fuel.
 
-### Challenge 2: Dual-Laser System Sizing and Cost
+The third step — proton beam ignition — is the novel physics element. Academic fast-ignition studies (Tabak 1994, Norreys HiPER 2007–2012) provide simulation-based confidence, but no experiment has demonstrated proton-driven ignition at fusion-relevant densities. This is a higher physics risk than indirect drive (where NIF validated the hohlraum → X-ray → capsule → ignition chain) or hybrid drive (where Xcimer's two-beam symmetric implosion is an incremental step from NIF's validated indirect-drive platform).
 
-Unlike single-driver IFE concepts (Xcimer's KrF or Inertia's DPSSL), Focused Energy operates two fundamentally different laser systems:
+**3. High repetition rate (10 Hz) drives chamber clearing and target injection challenges shared with other high-rep-rate IFE concepts, but with cone-in-shell target complexity.**
 
-- **Compression laser**: DPSSL (Nd:glass or similar), frequency-doubled to 527 nm, nanosecond pulses, ~10% wall-plug efficiency target [2], $40M Amplitude partnership for development [4]
-- **Ignition laser**: Petawatt-class ultrashort pulse (picoseconds), generates proton beam; technology class: Ti:sapphire CPA or OPCPA
+> "While NIF does 400 shots per year, we will need to do about 900,000 shots a day – about 10 per second. We'll also have to efficiently remove the exploded target material from the reactor chamber so that it can be cleared for the next shot."
+> — Callahan interview, §"How do you develop the capsule"
 
-These two laser systems have different cost scaling laws, different component supply chains, different maintenance rhythms, and different repetition-rate limitations. The compression laser must run at ~10 Hz continuously; petawatt Ti:sapphire lasers have never been demonstrated at 10 Hz at relevant energies. The laserfocusworld source states the experimental facility is designed for "about 10 per second" eventually, but the T-STAR facility initially operates at "one shot every 60 seconds" for design iteration [7].
+At 10 Hz, the chamber must clear debris, re-establish vacuum, inject a new target, and align compression + ignition optics within ~100 ms. The cone-in-shell geometry (required for proton fast ignition — the cone guides the ignitor beam to the compressed core) adds target complexity:
+- Cone alignment relative to both compression beams and ignitor beam is more stringent than symmetric capsule alignment.
+- Cone fabrication and cryogenic handling (if ice-layer targets are required for high gain) add manufacturing steps.
+- Debris from the cone material (typically gold or high-Z metal in academic designs) adds to chamber contamination between shots.
 
-The DPSSL cost class (comparable to Inertia's Thunderwall) runs $700–$1,000/J at FOAK scale [5]. The petawatt ignition laser adds a second capital cost line item with no published cost estimate. The combined driver cost will be higher than a single-driver DPSSL plant of equivalent compression energy, while the net gain benefit of fast ignition (if realized) must justify this premium.
+**4. Laser optics survivability under 10 Hz operation.**
 
-> "one of the big thrusts for our company is to develop more efficient lasers that are driven by diodes"
-> — focused-energy-callahan-interview.md, §Laser technology
+Each fusion pulse exposes final optics to X-rays, debris, and neutrons. At 10 Hz over 30 years, final optics see ~9 × 10⁹ shots. Optics degradation, protective schemes (grazing-incidence mirrors, debris shields), and replacement intervals are critical cost drivers for all laser IFE, but fast ignition's two-beam architecture doubles the number of beam paths that must be protected. No published optics lifetime estimate exists for Focused Energy's configuration.
 
-The primary published systems study for fast ignition economics is Meier (2006) [OSTI purl-1438678], which finds FI achieves approximately 15% lower COE than central ignition (CI) at 10 Hz operation (~6.1 ¢/kWeh FI vs. ~7.2 ¢/kWeh CI) and a similar advantage at the unconstrained optimal rep rate (~5.9 ¢/kWeh FI vs. ~6.8 ¢/kWeh CI). However, this advantage rests on an explicit assumption: the ignition laser carries zero incremental $/J capital cost relative to the compression driver. The Meier study notes this directly:
+**5. Tritium breeding sufficiency without disclosed blanket design.**
 
-> "The 3ω fast ignition gain curve gives a 15% decrease in the COE (assuming no added $/J for the ignitor laser)."
-> — osti-servlets-purl-1438678.md, §Results and Potential Advantages for Fast Ignition
+> "Making sure that we have enough tritium, and figuring out how to extract that material to use it for future shots, is a big task. We have to be able to breed enough tritium to keep the plant going."
+> — Callahan interview, §"What are the challenges of working with deuterium and tritium"
 
-The Meier study makes no attempt to model what happens if the ignition laser carries a positive $/J premium. Because this analysis cannot constrain the ignitor laser cost (Gap #3), the sign of the FI economic advantage relative to CHS direct drive is unresolved: FI may be cheaper or more expensive than CI depending entirely on whether the ignitor laser's $/J cost is near zero (full advantage) or comparable to the compression laser (advantage eliminated). This conditional structure should be made explicit in any LCOE model.
+Lithium blankets are confirmed, with SRNL collaboration on tritium extraction. But without knowing the blanket chemistry (FLiBe, LiPb, liquid Li), neutron multiplier strategy, or tritium breeding ratio target, it is impossible to assess whether the blanket design achieves TBR > 1 or to estimate blanket capital and replacement costs. The absence of this data is a modeling blocker for CAS27 (special materials), C220101 (blanket structure), and CAS80 (fuel cycle operating cost).
 
-### Challenge 3: Gain Requirement vs. Physics Maturity Gap
+**Ranking of challenges by LCOE impact (descending):**
 
-Commercial IFE requires the product of laser wall-plug efficiency and target gain to exceed ~10: η_wp × G > 10 [6]. With η_wp ~ 10%, the minimum gain is G > 100 (including proton coupling losses).
+1. **Driver capital cost** — Unknown beamline count × unknown unit cost; likely the dominant capital item.
+2. **Target gain validation** — If 50–100 gain is not achieved, either yield per shot drops (requiring higher rep rate or larger driver to compensate) or the concept is uneconomic.
+3. **Target fabrication cost at 10 Hz** — Cone-in-shell targets at 900,000/day throughput; analyst patch estimates $0.80/shot but uncertainty band is wide ($0.50–$1.20).
+4. **Final optics lifetime** — Optics degradation at 10 Hz drives replacement frequency and capital reserve requirements.
+5. **Chamber + blanket cost** — Undisclosed architecture prevents bottom-up estimation.
 
-> "Total diode cost is a dominant capital cost for such fusion power plant. A diode cost of ~$0.01/W is required for a cost competitive fusion power plant."
-> — osti-servlets-purl-2561299.md, §Basic IFE power-plant energetics requirements
+## 3. Maturity of Key Subsystems and Components
 
-Focused Energy targets G > 50, stating they need "significantly higher gains of more like 50 to 100" [2]. The NIF's best indirect-drive result is Qsci ~ 4.1 (April 2025). Direct-drive ignition has not been demonstrated in any configuration. Fast ignition has not demonstrated gain > 1 at any scale. The gap between current experimental state-of-art and the commercial requirement is larger for fast ignition than for CHS direct drive, because fast ignition must validate an additional undemonstrated physics step. This propagates into a very wide uncertainty band on the LCOE: if the physics falls short, the required laser energy (and cost) rises steeply.
+Subsystems are listed in **ascending order of maturity** (least mature first):
 
-Two gain thresholds are relevant for TEA, and they are materially different: (1) the **energetics viability threshold** — G > 100 at η_wp = 10%, sufficient for net electricity production with non-catastrophic recirculating power fraction [6]; and (2) the **economic competitiveness threshold** — G > ~400 under mid-range economic parameters, as found by Hawker (2020) [PMC-7658748], which is the gain level required for competitive LCOE in an electricity market context. The Hawker study makes the distinction explicit:
+### Proton fast ignition physics — TRL ~2
 
-> "It is often stated that a gain of 30–100 is required for power production from inertial fusion. This conclusion comes from consideration of the driver and thermodynamic efficiencies... Taken literally, the conclusion on required gain is true; a gain in that range is necessary for power production, but the analysis says nothing about cost. Fusion must be cost competitive in a market of different energy technologies."
-> — pmc-articles-pmc7658748.md, §Introduction
+**Demonstrated:** Petawatt lasers have generated high-energy proton beams via target normal sheath acceleration (TNSA) in laboratory experiments (Texas Petawatt, ELI Beamlines, OMEGA EP). Proton energies of 10–100 MeV and beam currents of ~10¹³ protons/shot have been measured.
 
-Focused Energy's commercial target of G = 50–100 falls below both thresholds. Achieving ignition at G = 50–100 would confirm net energy gain but would not produce a commercially competitive LCOE under mid-range cost assumptions — further gain improvements would still be required. The Hawker framework also notes that if cost parameters fall toward the optimistic end of their range, competitive LCOE is achievable at G < 100, but this requires simultaneously favorable assumptions on multiple cost parameters. The TEA should model the Focused Energy scenario against both thresholds and quantify the gain shortfall to each.
+**On paper only:** Coupling a proton beam to a compressed D-T core to achieve ignition. Academic simulations (Tabak 1994, Roth 2001, Temporal 2002) suggest this pathway is viable, but no experiment has demonstrated proton-driven ignition at fusion-relevant core densities (>100 g/cm³). The cone-in-shell target geometry required to guide the ignitor beam into the compressed fuel adds alignment and hydrodynamic instability challenges not present in symmetric capsule designs.
 
-### Challenge 4: Target Fabrication at ~10 Hz (900,000/day)
+**Missing at scale:** Fast ignition at target gains of 50–100. The highest gain demonstrated by any IFE approach is NIF's ~3.5× capsule gain (indirect drive), achieved after decades of optimization. Fast ignition's claimed advantage — lower compression energy requirements enabling higher gain — has not been validated experimentally.
 
-> "it's pretty complicated to figure out how to build 900,000 targets a day at a reasonable cost"
-> — focused-energy-callahan-interview.md, §Target manufacturing challenge
+**Impact on LCOE:** If proton fast ignition cannot achieve the 50–100 gain required for economic breakeven (as stated by Callahan), the concept reduces to a less-efficient variant of direct drive, requiring either larger drivers or accepting higher LCOE.
 
-The fast ignition capsule (Pearl™) is more complex than a CHS direct-drive capsule: it incorporates a metal cone structure in the shell wall to guide the proton beam to the compressed core. This cone must be precisely aligned and fabricated to tolerances that the high-pressure implosion does not degrade before ignition. No mass production process for cone-in-shell cryogenic DT capsules exists; the geometry is inherently more difficult to fabricate and quality-check than a symmetric sphere. NIF fabricates ~400 targets per year; Focused Energy requires 900,000 per day (a factor of ~800,000× increase).
+### High-repetition-rate diode-pumped solid-state laser — TRL ~3
 
-> "It's a very complicated design that needs to bring together all the pieces of the power plant in a consistent way"
-> — focused-energy-callahan-interview.md, §Target design integration
+**Demonstrated:** DPSSL technology exists at laboratory scale (e.g., Mercury laser at LLNL, Lucia laser at Czech ELI Beamlines). Wall-plug efficiencies of ~10% have been achieved in single-shot or low-rep-rate configurations. Diode arrays (the pump source) are commercially available but not at the scale or cost required for fusion ($0.007/W is the LLNL/TRUMPF target; current commercial pricing is ~$0.02/W per Xcimer estimates).
 
-### Challenge 5: Chamber Clearing at 10 Hz
+**On paper only:** DPSSL operation at 10 Hz continuously for 30+ years. The Amplitude partnership ($40M, PRNewswire 2024) is developing modular beamlines, but no 10 Hz fusion-class DPSSL has been built or operated. Thermal management (removing waste heat from amplifier slabs at 10 Hz), gain medium lifetime (Nd:glass radiation damage and thermally-induced stress), and frequency-conversion optics durability at high average power are all unresolved.
 
-Each shot vaporizes and partially ionizes the target and surrounding gas. At 10 Hz, the chamber must clear debris within ~100 ms to allow injection of the next target. Unlike Xcimer's thick-liquid FLiBe concept (which uses gravity-fed jets that clear between shots on a sub-Hz timescale), Focused Energy has disclosed no specific chamber concept. The combination of higher rep rate, the cone-in-shell target geometry (which may produce asymmetric debris), and the absence of any disclosed chamber design creates a major modeling gap.
+**Missing at scale:** Unknown number of beamlines required for compression. LaserFocusWorld cites Ditmire's projection of "around 80 beamlines" as an ultimate facility scale, but this is not a committed Focused Energy design specification. The capital cost of N beamlines × $X/beamline is the dominant cost driver for any laser IFE concept, and neither N nor X is publicly known for Focused Energy.
 
-### Challenge 6: O&M Structure (Missing)
+**Impact on LCOE:** Driver capital cost is likely 40–60% of total overnight capital (by analogy to NIF's LIFE studies and Xcimer's cost breakdowns). Without knowing beamline count and unit cost, LCOE estimates for Focused Energy are speculative.
 
-No breakdown of fixed vs. variable O&M costs, scheduled vs. unplanned maintenance intervals, or component replacement schedules has been published. As a pulsed system at 10 Hz, the laser optics, beam delivery, and target injection systems will accumulate shot-cycle fatigue at high rates. Placeholder O&M should be included in any LCOE model at ~5–8% of direct capital per year (IFE analogue from HYLIFE-II heritage [8]) with wide uncertainty bounds.
+### Cone-in-shell cryogenic target fabrication — TRL ~3
 
-### Modeling Approach
+**Demonstrated:** Cryogenic D-T capsules have been manufactured for NIF (symmetric spheres with ice layer). Cone-in-shell targets have been fabricated for fast-ignition experiments (HiPER, OMEGA EP), but not at cryogenic specifications or at high throughput. LLNL's target fabrication facility produces ~400 targets/year for NIF (Callahan interview); scaling to 900,000 targets/day (10 Hz × 0.8 availability × 86,400 s/day ≈ 691,200 shots/day, rounded to ~900k in company statements) requires a ~6,000× throughput increase.
 
-**Framework**: The 1costingfe cost model is appropriate for this concept. Focused Energy's plant is D-T fuel with a conventional steam Rankine cycle — the standard IFE cost architecture applies. The dual-laser driver is handled as an additive cost overlay on the CAS22 driver sub-account: a `ignition_laser_cost_premium_frac` parameter multiplies the base DPSSL driver cost to represent the petawatt ignition laser capital, sweeping from 0.0 (Meier "free ignitor" assumption) to 0.65 (pessimistic dual-driver premium).
+**On paper only:** Automated batch production of cone-in-shell cryogenic targets at $0.50–$1.20/shot (analyst patch range). The cone adds fabrication complexity: cone-to-capsule alignment, cone material selection (gold is traditional but expensive; cheaper alternatives degrade coupling efficiency), and cryogenic handling (ice layer must remain intact during cone attachment and target insertion). Mass production paradigms (analogous to pharmaceutical pill manufacturing or ammunition production) have been proposed in LLNL IFE studies but never demonstrated.
 
-**Top three LCOE levers (ranked by uncertainty-weighted leverage)**:
-1. **Availability / capacity factor** — pulsed systems at 10 Hz accumulate shot-cycle fatigue; availability drives the revenue denominator and is the highest-elasticity parameter
-2. **Engineering gain (q_eng)** — determined by η_coup × G product; every 10% reduction in coupling efficiency translates directly to lower q_eng and higher required laser energy
-3. **Driver capital (CAS22)** — DPSSL cost floor ($0.01/W diode target) is unachieved; ignitor laser cost premium is unquantified; combined they are the largest single CAPEX uncertainty
+**Missing at scale:** 10 Hz target factory delivering cone-in-shell cryo targets continuously for 30 years. The target factory is a complex facility requiring D-T fuel handling, cryogenic layering systems, cone fabrication and attachment, quality control at production rate (statistical sampling, not per-target inspection), and automated delivery to the chamber.
 
-Note: eta_th and construction_time_yr carry higher raw elasticity (−0.246 and +0.260 vs. +0.064 for driver capital) but are treated as near-fixed for this concept — the Rankine steam cycle is confirmed by Focused Energy, and construction time is constrained by project scheduling assumptions. Driver capital is the most consequential *uncertain* lever despite its lower elasticity coefficient.
+**Impact on LCOE:** At $0.80/shot and 10 Hz, annualized target cost is ~$220M/year (assuming 80% availability). If target cost rises to the high end of the uncertainty band ($1.20/shot), this becomes ~$330M/year — a significant operating cost that scales directly with plant lifetime and cannot be reduced by capital equipment learning curves.
 
-**Three testable hypotheses for the cost model**:
-- **H1**: Achieving η_coup ≥ 15% is necessary for q_eng > 4.0 at the stated compression + ignition laser energies — test by sweeping η_coup from 0.05 to 0.30
-- **H2**: The FI economic advantage over CI (from Meier 2006) disappears when ignitor laser cost premium exceeds ~20% of compression driver cost — test by sweeping `ignition_laser_cost_premium_frac` from 0 to 0.65
-- **H3 (not model-testable in 1costingfe)**: The 1costingfe framework treats repetition rate as a revenue-denominator scaling variable, producing negligible LCOE elasticity (f_rep: −0.004). The Meier 2006 result (+4% COE penalty at 10 Hz vs. the 20–25 Hz optimum, +16% at 5 Hz) arises from rep-rate-dependent driver capital amortization — per-shot driver costs spread over more shots at higher rep rate — a cost structure not implemented in 1costingfe. The Meier result should be treated as an external constraint from a Meier-class systems model (citing ~6.1 ¢/kWeh at 10 Hz vs. ~5.9 ¢/kWeh at 21 Hz for FI), not as a 1costingfe output. A rep rate sweep is retained in the model for reference but cannot reproduce the Meier penalty structure.
+### Chamber clearing and debris management at 10 Hz — TRL ~2
 
----
-[2] focused-energy-callahan-interview.md  
-[4] prnewswire-news-releases-focused-energy-and-amplitude-enter.md  
-[5] xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md, §DPSSL costs  
-[6] osti-servlets-purl-2561299.md, §Energetics  
-[7] laserfocusworld-lasers-sources-article-14274951-can-high.md, §Funding fusion  
-[8] osti-servlets-purl-6137961.md, §Summary and conclusions  
-[9] osti-servlets-purl-1438678.md, §Results and Potential Advantages for Fast Ignition (Meier 2006)  
-[10] pmc-articles-pmc7658748.md, §Results and Introduction (Hawker 2020)  
+**Demonstrated:** Single-shot IFE chambers have operated at NIF, OMEGA, and other facilities. Debris mitigation strategies (magnetic deflection, gas jets, liquid walls) have been tested at low repetition rates or with surrogates (water jets as FLiBe analog).
 
----
+**On paper only:** Chamber clearing within ~100 ms to permit next-shot target insertion. After each fusion pulse, vaporized target debris (cone material, capsule ablator, unburned D-T) must condense, be pumped out, and vacuum re-established. At 10 Hz, this cycle repeats ~900,000 times/day. Thick liquid walls (if used) must reform and stabilize between shots; the debris removal system must handle activated materials (tritium, neutron-activated cone metals) at high throughput.
 
-## Section 3: Maturity of Key Subsystems and Components
+**Missing at scale:** No 10 Hz IFE chamber has been operated. The Z-IFE study (MagLIF pulsed-power IFE) baselined 0.1 Hz specifically because chamber clearing at 1+ Hz is hard; laser IFE target gains are typically lower than MagLIF's GJ-class projections, reducing per-shot debris mass but not eliminating the challenge.
 
-Listed in ascending order of maturity (least mature first).
+**Impact on LCOE:** If chamber clearing limits achievable repetition rate below 10 Hz, time-averaged power output drops proportionally, increasing LCOE. Chamber availability losses (due to debris-induced downtime) directly reduce capacity factor.
 
----
+### Tritium breeding blanket (lithium, unspecified chemistry) — TRL ~2–3
 
-**Proton Fast Ignition Physics at Relevant Scale — TRL 1–2**
+**Demonstrated:** Small-scale tritium breeding experiments (LIBRA/BABY series with D-T neutrons), helium-cooled pebble-bed and water-cooled lead-lithium mock-ups, FLiBe molten salt loops in fission reactor heritage (MSRE). ITER TBM designs are in detailed engineering.
 
-- **Demonstrated**: TNSA proton acceleration at single-shot petawatt facilities (OMEGA EP, NIF ARC, ELI, Amplitude); proton beams with energies up to ~100 MeV generated; cone-guided fast electron experiments at Osaka (FIREX-I), though not achieving ignition. Focused Energy has completed "first two science and technical milestones" under a DOE cooperative agreement [4].
-- **On paper only**: Proton fast ignition gain calculations in ICF hydrocodes; cone-in-shell implosion simulations predicting hot-spot coupling efficiency.
-- **Missing at scale**: Demonstration of ignition-relevant proton coupling at compressed areal densities (ρR > 0.3 g/cm²); gain > 1 under any fast ignition configuration; scaling of coupling efficiency from kJ experiments to 150 kJ ignition laser; suppression of proton beam divergence and energy spread at large aperture.
+**On paper only:** Full-scale lithium blanket integrated with an IFE chamber, achieving TBR > 1 and extracting tritium at kg/day rates. The Focused Energy collaboration with SRNL (Callahan interview) targets tritium extraction system design, but the blanket itself is not described. For IFE, blanket geometry is simpler than MFE (no divertor, no complex 3D shaping to avoid magnet coils), but must survive pulsed neutron loading and integrate with chamber clearing systems.
 
-> "In fast ignition, a high intensity ultrashort picosecond laser pulse (delivering ≈10^15 W/cm^2 on target) is used to generate a fast electron or proton beam that locally heats the compressed fuel to ignition temperatures."
-> — osti-servlets-purl-2561299.md, §Laser fusion schemes
+**Missing at scale:** IFE-specific blanket designs are sparse in the literature. HYLIFE-II (thick liquid FLiBe wall) and SOMBRERO (liquid Flibe spray) are reference concepts, but neither was built or tested under fusion conditions.
 
-> "In principle relaxes symmetry requirements and saves laser energy [but] creates major headaches of its own."
-> — optica-opn-home-articles-volume-34-june-2023-features.md, §Pros and cons
+**Impact on LCOE:** Without knowing blanket chemistry, it is impossible to estimate CAS27 (special materials — FLiBe inventory, enriched Li-6), C220101 (blanket structure capital cost), or tritium extraction operating cost. This is a modeling blocker.
 
----
+### Final optics and beam transport — TRL ~4–5
 
-**High-Repetition-Rate Petawatt Ignition Laser — TRL 2–3**
+**Demonstrated:** NIF's final optics (grazing-incidence mirrors, debris shields, frequency-conversion crystals) survive single-shot operation at ~2 MJ laser energy. UV laser transport at 351 nm (NIF) and 527 nm (frequency-doubled Nd:glass) is established. Protective schemes (sacrificial debris shields, gas curtains) extend optics lifetime but require periodic replacement.
 
-- **Demonstrated**: Single-shot petawatt lasers at multiple facilities (NIF ARC, OMEGA EP, ELI-NP); Amplitude's ultrafast lasers at sub-Hz repetition. The T-STAR facility is planned with 4 short-pulse beamlines from 2028.
-- **On paper only**: 10 Hz petawatt-class operation at kJ energy scale; thermal management of Ti:sapphire or OPCPA gain media at high average power.
-- **Missing at scale**: 10 Hz repetitive operation at 150 kJ picosecond pulse energy; thermal deformation control of large aperture optics under continuous 10 Hz loading; optics damage mitigation at high fluence.
+**On paper only:** Final optics surviving 10 Hz operation for 30 years (~9 × 10⁹ shots). Each shot exposes optics to X-rays, debris, and neutrons. Grazing-incidence mirror geometries reduce direct debris impingement but increase system size and alignment complexity. Fast ignition's two-beam architecture (compression + ignitor) doubles the number of beam paths requiring protection.
 
-The T-STAR experimental facility is initially operating at 1 shot per minute for design iteration [7]; the gap to 10 Hz plant operation is substantial.
+**Missing at scale:** No high-rep-rate laser IFE facility has operated long enough to validate optics lifetime projections. Optics replacement frequency and cost are critical unknowns for all laser IFE concepts.
 
----
+**Impact on LCOE:** If final optics require replacement every N shots, the replacement cost ($/optic × number of beamlines × replacement frequency) becomes a significant operating cost. Optics degradation can also reduce laser coupling efficiency over time, lowering effective target gain.
 
-**Cone-in-Shell Target Design and Mass Production — TRL 2–3**
+### Petawatt short-pulse ignitor laser — TRL ~4–5
 
-- **Demonstrated**: Single targets fabricated by Focused Energy's Darmstadt targetry lab; company self-identifies as "one of the only target labs in the world to design and optimize fusion fuel" [3]. NIF-class symmetric spherical DT capsule fabrication at ~400/year.
-- **On paper only**: Pearl™ capsule design with cone insert; mass fabrication process concepts (3D printing, emulsion polymerization, holographic methods noted in literature [6]).
-- **Missing at scale**: Cone-in-shell geometry at DT cryogenic conditions; quality-control processes for 900,000 capsules/day; demonstrated cone alignment tolerance surviving implosion pre-ignition; laser–proton conversion at production-quality targets vs. hand-fabricated research targets. The cone introduces a crack in spherical symmetry that likely increases hydrodynamic instability sensitivity relative to symmetric CHS targets.
+**Demonstrated:** Petawatt-class lasers exist (Texas Petawatt, ELI Beamlines, OMEGA EP). Chirped-pulse amplification (CPA) is a mature technology for generating ultrashort high-intensity pulses. The LaserFocusWorld article cites Ditmire's Texas Petawatt heritage and National Energetics' ELI Beamlines delivery as relevant background.
 
-> "there is little experimental data on wetted foam targets. Their viability in terms of target physics and low cost of ~10¢'s/target must be demonstrated."
-> — osti-servlets-purl-2561299.md, §Target manufacturing and delivery
+**On paper only:** Petawatt laser operating at 10 Hz continuously. Current petawatt systems are single-shot or low-rep-rate due to thermal management, gain medium damage, and compressor grating lifetime constraints. The 150 kJ short-pulse specification (LaserFocusWorld) is large for a petawatt system; this energy level at 10 Hz requires ~1.5 MW average power from the ignitor laser alone (before wall-plug efficiency losses).
 
----
+**Missing at scale:** High-rep-rate petawatt laser integrated with a fusion chamber. The ignitor beamline(s) must deliver the short pulse on target within ~100 ms of the compression pulse, requiring fast pulse sequencing and beam alignment.
 
-**DPSSL Compression Laser at 10% Efficiency / 10 Hz — TRL 3–4**
+**Impact on LCOE:** The ignitor laser is a separate capital cost item from the compression driver. If it requires exotic components (e.g., large-aperture gratings, high-damage-threshold optics) or frequent maintenance, it adds both capital and operating cost. The 1.5 MW average power draw (before efficiency losses) also increases recirculating power fraction.
 
-- **Demonstrated**: DPSSL technology at kJ scale demonstrated; Amplitude Ti:sapphire / OPCPA systems at Hz-class rates; Focused Energy's Bay Area facility developing kilo-joule class compression beamlines with Amplitude [4]; NIF-class Nd:glass at <0.1% efficiency (single-shot reference only).
-- **On paper only**: 400 kJ compression laser at 10 Hz with 10% wall-plug efficiency; required laser diode cost floor of ~$0.01/W [6] not yet achieved at scale.
-- **Missing at scale**: Diode-pumped average power at 10 Hz continuously; thermal management of gain medium at 40 kW average optical input; beam uniformity requirements for symmetric direct-drive implosion at this scale; full 8-beamline (4 long-pulse + 4 short-pulse) integration planned for T-STAR.
+### Energy conversion / Balance of Plant — TRL ~7–8
 
----
+**Demonstrated:** Conventional steam Rankine cycle at GW scale in fission and fossil plants.
 
-**Chamber Clearing and Debris Mitigation at 10 Hz — TRL 4–5**
+> "We will use a conventional steam cycle to convert the heat into electricity."
+> — Callahan interview, §"How will you capture the heat"
 
-- **Demonstrated**: Conceptual chamber clearing schemes (gas jet, magnetic divertor, liquid wall) analyzed in ICF literature; Xcimer's FLiBe thick-liquid concept analyzed for sub-Hz clearing.
-- **On paper only**: No chamber concept disclosed by Focused Energy. At 10 Hz, chamber must clear within 100 ms — significantly more demanding than Xcimer's ~1–2 second clearing interval.
-- **Missing at scale**: Chamber geometry compatible with both beam delivery and target injection at 10 Hz; debris characterization from cone-in-shell targets (asymmetric explosion expected); final optics protection from 14 MeV neutron and X-ray flash.
+**Missing at scale:** Integration with pulsed IFE thermal source. At 10 Hz, the thermal power delivered to steam generators is time-averaged continuous, but the neutron energy deposition in the blanket is pulsed. Thermal buffering (via blanket thermal mass or intermediate coolant loops) smooths the pulse, but thermal cycling effects on blanket materials and heat exchanger integrity are not characterized.
 
----
+**Impact on LCOE:** Balance of plant is a mature technology with well-understood costs. This is a lower-risk subsystem relative to the driver and chamber.
 
-**Tritium Breeding and Extraction — TRL 4–6**
+## 4. Key Materials and Supply Chain Considerations
 
-- **Demonstrated**: Lithium blanket breeding confirmed as the approach; SRNL (Savannah River National Lab) partnership for tritium extraction system design [2]. Li-6 enrichment for tritium breeding is commercially practiced for fission (ITER uses it).
-- **On paper only**: Integrated tritium extraction at 10 Hz pulsed plant. Blanket type not specified; no TBR analysis published.
-- **Missing at scale**: Specific blanket chemistry, tritium inventory management, permeation barriers; extraction at rate matching 10 Hz production.
+### Tritium (startup inventory + breeding)
 
-> "Making sure that we have enough tritium, and figuring out how to extract that material to use it for future shots, is a big task."
-> — focused-energy-callahan-interview.md, §Tritium challenges
+**Requirement:** D-T fuel requires tritium at ~1–5 kg startup inventory plus continuous breeding at TBR > 1.
 
----
+**Supply constraint:** Global civilian tritium inventory is ~25 kg, produced primarily as a byproduct of CANDU heavy-water reactors. A single D-T reactor startup consumes a meaningful fraction of global supply. Current market rate is >$30,000/kg (Callahan interview does not cite this figure; this is external context from tokamak TEA literature).
 
-**Steam Rankine Energy Conversion — TRL 9**
+**Breeding pathway:** Lithium blankets confirmed (Callahan interview); SRNL collaboration on tritium extraction. Specific blanket chemistry (FLiBe, LiPb, liquid Li) not disclosed. Li-6 enrichment is required for efficient breeding; enrichment capacity is limited globally (Russia and China use mercury-based processes banned elsewhere; US/EU enrichment is small-scale).
 
-Focused Energy explicitly adopts a conventional steam cycle without modification [2]. This is the sole TRL-9 subsystem.
+**Impact on LCOE:** Tritium supply is a fleet-level constraint, not a single-plant cost driver. But tritium fuel cycle operating cost (extraction, purification, storage, handling) is non-trivial. Without knowing blanket chemistry, CAS80 (fuel cycle OPEX) cannot be estimated from first principles.
 
-> "We will use a conventional steam cycle to convert the heat into electricity. It's funny – we'll have this very hi-tech way of producing heat, but at the end of the day, we will use a traditional system to produce the electricity from that heat."
-> — focused-energy-callahan-interview.md, §Energy conversion
+### Laser diodes (for DPSSL pump arrays)
 
----
+**Requirement:** DPSSL compression driver uses diode arrays to pump Nd:glass amplifiers. At ~10% laser efficiency and unknown beamline count, the diode array represents a significant capital cost.
 
-## Section 4: Key Materials and Supply Chain Considerations
+**Supply constraint:** Commercial laser diodes are available, but fusion-class DPSSL requires diodes at $0.007/W (LLNL/TRUMPF target for economic viability) vs. ~$0.02/W current commercial pricing (Xcimer estimate in their whitepaper). Focused Energy's Amplitude partnership ($40M) is developing diode-pumped laser technology, but has not disclosed unit cost targets or production volumes.
 
-### Tritium (D-T Fuel Cycle)
+**Scaling analogy:** Xcimer's indirect-drive competitor estimates that diode scale-up "has already been seen for similar lasers in all devices with FaceID" (consumer electronics analogy). But fusion-class diodes require higher power, longer lifetime, and better thermal management than consumer applications.
 
-Standard D-T IFE constraints apply. Tritium is bred from lithium in the blanket; deuterium is extracted from seawater. The startup tritium inventory (estimated 1–3 kg for initial loading before breeding equilibrium) must be sourced from CANDU or fission reactor production. Blanket type is unspecified for Focused Energy, preventing TBR calculation. At 10 Hz with target DT inventory per shot (approximately 0.1–0.5 mg DT per target, consistent with IFE-class capsules), tritium consumption is high: at 10 Hz and ~0.2 mg DT per shot, annual tritium throughput is ~63 g/year through the plasma (before breeding credit). A breeding ratio TBR > 1.05 is required for self-sufficiency. Without a disclosed blanket design, this constraint cannot be verified.
+**Impact on LCOE:** Diode cost is embedded in the DPSSL beamline capital cost. If diodes achieve the $0.007/W target via mass production, driver capital cost could drop significantly. If diodes remain expensive, driver cost stays high.
 
-### Laser Diodes (DPSSL Supply Chain)
+### Cone-in-shell target materials (gold cone, D-T capsule, cryogenic ice layer)
 
-The compression laser is a DPSSL, making semiconductor laser diodes the principal capital-cost scaling challenge. Literature consistently identifies the diode cost floor as the binding economic constraint:
+**Requirement:** Cone-in-shell targets at 900,000/day throughput. The analyst patch estimates $0.80/shot (uncertainty $0.50–$1.20) based on a 1.3× complexity multiplier over symmetric capsules, which in turn are priced from Meier 2006 HYLIFE-II target factory economics ($0.30–$0.50/symmetric capsule in 2006 dollars, CPI-adjusted to $0.61 in 2024 dollars).
 
-> "A diode cost of ~$0.01/W is required for a cost competitive fusion power plant."
-> — osti-servlets-purl-2561299.md, §Laser driver requirements
+**Material components:**
+- D-T fuel (deuterium from seawater, tritium bred from lithium — Callahan interview, §"Meanwhile, Pearl is the capsule").
+- Ablator shell (plastic or other low-Z material).
+- Cryogenic ice layer (if required for high gain; not explicitly confirmed by Focused Energy but implied by gain targets of 50–100).
+- Gold cone or alternative high-Z cone material to guide ignitor beam.
 
-Current commercial diode pump modules for Nd:YAG applications cost approximately $0.1–$1/W. The factor-of-10 to factor-of-100 cost reduction required is significant. The Xcimer/TRUMPF analysis (cited in the indirect drive exemplar) places the floor at $0.007/W for economic viability. Focused Energy's Amplitude partnership is explicitly aimed at laser technology development toward this target, but no specific cost trajectory has been published.
+**Supply constraint:** Gold is expensive (~$60,000/kg) but used in small quantities per target (cone mass is ~mg to tens of mg in academic designs). The binding constraint is not material cost but manufacturing complexity: cone-to-capsule alignment, cryogenic handling, and throughput at 900,000/day. The cone adds fabrication steps relative to symmetric capsules, justifying the 1.3× complexity multiplier in the analyst patch.
 
-Diodes for ultrashort petawatt lasers (Ti:sapphire or OPCPA pump) represent a separate supply chain. Ti:sapphire pump lasers (Nd:YAG or Nd:YLF) also use diode pump technology at shorter pulse lengths, but different suppliers than the long-pulse compression chain.
+**Impact on LCOE:** At $0.80/shot and 10 Hz (80% availability), annualized target cost is ~$220M. This is a significant operating cost (~10–20% of total OPEX for a GW-scale plant by analogy to Xcimer's $1/target goal and Inertia's target cost assumptions). If target cost rises to $1.20/shot, this becomes ~$330M/year — a material LCOE penalty.
 
-### Target Materials (Cone-in-Shell Capsule)
+### FLiBe or alternative molten salt (if used as blanket/coolant)
 
-The Pearl™ capsule geometry is not publicly described beyond "millimeter-scale deuterium/tritium fusion fuel targets" [4]. Inferred from fast ignition literature: a plastic or beryllium ablator shell, a DT ice layer, and a high-Z metal cone (typically gold or copper in research experiments) inserted through the shell wall. Gold is a scarce and expensive material; substitution of aluminum or other low-Z metals has been studied but with reduced coupling efficiency. If gold cones are required at 900,000 targets/day, this creates a significant supply chain demand: at ~1 mg gold per cone (representative research experiment scale), annual demand would be ~30 tonnes — a small but non-negligible fraction of annual global gold production (~3,500 tonnes/year). Reduced-gold or non-gold designs are being pursued but remain unvalidated.
+**Requirement:** If Focused Energy uses FLiBe (Li₂BeF₄) as blanket coolant (not confirmed; lithium blankets are confirmed but chemistry is undisclosed), the plant requires a large FLiBe inventory (~1,000–2,000 tonnes for a GW-scale IFE chamber by analogy to HYLIFE-II).
 
-### Blanket and Chamber Materials
+**Supply constraint:** Beryllium is toxic and produced in limited quantities globally (~300 tonnes/year, dominated by Materion Corp in the US). Lithium enrichment (Li-6) adds cost and supply-chain dependency. FLiBe production at industrial scale does not currently exist.
 
-No blanket material disclosed. Focused Energy confirms "lithium in the reactor" [2] for tritium breeding, but the chemistry (liquid Li, LiPb, FLiBe, or solid ceramic) is unknown. The choice has major supply chain implications: FLiBe requires beryllium (limited suppliers, export-controlled); liquid Li requires active safety systems; LiPb is less restrictive. Li-6 enrichment is required regardless of blanket type to achieve adequate TBR.
+**Cost analogy:** The Araiinejad tokamak TEA study estimates future NOAK FLiBe cost at ~$154/kg (assuming 20% learning rate). At 1,500 tonnes, this is ~$230M for initial inventory (CAS27 special materials). FLiBe has a shared supply chain with certain molten-salt fission concepts (Kairos Power), which could aid economies of scale.
 
-### Final Optics (Laser Beam Delivery)
+**Impact on LCOE:** If FLiBe is the blanket coolant, CAS27 (special materials) is a significant capital item ($200–300M). If Focused Energy uses an alternative blanket chemistry (LiPb, liquid Li), the material cost and supply-chain profile differ. Without knowing the blanket design, this cost cannot be estimated.
 
-Both laser systems require final focusing optics that are exposed to X-ray and neutron flux from each shot. At 10 Hz, damage accumulates rapidly. Neither a protective scheme nor an optics replacement strategy has been disclosed. The IFE literature treats this as one of the most intractable engineering problems:
+### Final optics consumables (debris shields, frequency-conversion crystals)
 
-> "significant progress is required in developing materials that can withstand the neutron and radiation fluxes"
-> — osti-servlets-purl-2561299.md, §Additional considerations
+**Requirement:** Final optics exposed to X-rays, debris, and neutrons degrade over time. Sacrificial debris shields must be replaced periodically; frequency-conversion crystals (for Nd:glass → 527 nm) may require replacement if laser-induced damage accumulates.
 
-Xcimer's KrF approach uses nonlinear gas optics (SBS/Raman compression) to avoid final solid optics in the damage zone — an approach not available to the DPSSL-based Focused Energy concept.
+**Supply constraint:** Large-aperture KDP or DKDP crystals (standard for NIF-class frequency conversion) are grown at limited facilities (Cleveland Crystals, LLNL). Grazing-incidence mirrors require precision optical fabrication. At 10 Hz over 30 years, the cumulative number of optics replacements is large.
 
----
+**Impact on LCOE:** Optics replacement is an operating cost (OPEX) that scales with shot count, not calendar time. If final optics require replacement every 10⁶ shots, the plant experiences ~9,000 optics replacements over its lifetime. At $10k–$100k per optic (depending on size and complexity) × number of beamlines, this is a non-trivial cost.
 
-## Section 5: LCOE-Relevant Parameters
+### Deuterium (fuel feedstock)
 
-### Available Parameters
+**Requirement:** Deuterium is extracted from seawater (Callahan interview). D-T fuel cycle consumes deuterium continuously.
 
-| Parameter | Value/Range | Source | Confidence | Notes |
-|-----------|-------------|--------|------------|-------|
-| Target gain (Qsci) | 50–100 | focused-energy-callahan-interview.md §Gain targets | medium | Commercial target; not yet demonstrated at any scale in fast ignition |
-| Engineering gain (Qeng) | >1 (pilot target) | focused-energy-callahan-interview.md §LightHouse | low | LightHouse pilot plant goal; no supporting calc published |
-| Laser wall-plug efficiency (DPSSL) | ~10% | focused-energy-callahan-interview.md §Laser efficiency | medium | Target, not demonstrated at 10 Hz / plant scale |
-| Repetition rate | ~10 Hz (900,000 shots/day) | focused-energy-callahan-interview.md §Rep rate | high | Commercial plant target; T-STAR at 1 shot/60 s currently. Meier 2006 (purl-1438678) finds COE minimized at 20–25 Hz; 10 Hz constraint imposes ~+4% COE penalty vs. optimal |
-| Compression laser energy per shot | ~400 kJ (long-pulse) | laserfocusworld-lasers-sources-article-14274951-can-high.md §Facility specs | medium | T-STAR facility spec; commercial plant undefined |
-| Ignition laser energy per shot | ~150 kJ (picosecond) | laserfocusworld-lasers-sources-article-14274951-can-high.md §Facility specs | medium | T-STAR facility spec; commercial plant undefined |
-| Energy conversion cycle | Conventional steam (Rankine) | focused-energy-callahan-interview.md §Steam cycle | high | Explicitly confirmed |
-| Net electrical output | ~GWe scale | focused-energy-callahan-interview.md §Power plant scale | low | "Gigawatt-scale" only; no specific number |
-| Pilot plant cost (LightHouse) | ~$3B | laserfocusworld-lasers-sources-article-14274951-can-high.md §Funding fusion | low | Single data point, no breakdown |
-| DPSSL driver cost (class) | $700–$1,000/J (FOAK) | xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Laser cost benchmarks | low | Applies to DPSSL class broadly; Focused Energy has not published own figure |
-| Tritium source | Li blanket (type unspecified) | focused-energy-callahan-interview.md §Tritium | medium | SRNL partnership for extraction design |
-| Target cost requirement | <10% electricity value per target | xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md §Target economics | medium | Industry benchmark (Goodin et al. 2004); [inferred: ~$0.25–$1 per shot at 10 Hz plant economics] |
-| η_wp × G minimum for energetics viability | >10 (G > 100 at η_wp = 10%) | osti-servlets-purl-2561299.md §Energetics | high | Fundamental IFE net-electricity threshold; necessary but not sufficient for economic competitiveness |
-| G minimum for economic competitiveness | ~400 (mid-range parameters) | pmc-articles-pmc7658748.md §Results | medium | Hawker 2020 LCOE model; "For the mid-range default parameters used in this study, this gain threshold is around 400." Competitive LCOE achievable at G < 100 only if multiple cost parameters are simultaneously optimistic. Focused Energy's G = 50–100 target falls below both thresholds. |
-| FI COE advantage over CI (Meier 2006) | ~15% lower at 10 Hz (6.1 vs. 7.2 ¢/kWeh) | osti-servlets-purl-1438678.md §Results and Potential Advantages for Fast Ignition | low | Explicitly assumes zero added $/J for ignition laser. Advantage sign unresolved if ignitor carries positive capital cost. |
-| Fuel: D-T burn-up fraction | ~30% [analogue] | osti-servlets-purl-2561299.md §Target gains | low | High-gain IFE target analogue; Focused Energy specific unconfirmed |
-| Capacity factor assumption | ~75% [analogue] | osti-biblio-7021072.md §HYLIFE-II baseline | low | HYLIFE-II conservative baseline; 85% sensitivity case; Focused Energy undisclosed |
-| O&M (annual, % of CAPEX) | ~5–8% [analogue] | osti-servlets-purl-6137961.md §Summary | low | HYLIFE-II heritage; no Focused Energy data |
+**Supply constraint:** Deuterium is abundant (1 in 6,700 hydrogen atoms in seawater). Extraction is commercially available; heavy water (D₂O) is produced for CANDU reactors and other applications. Cost is ~$300/kg for heavy water (containing deuterium), making fuel cost negligible relative to other plant costs.
 
-### Missing Parameters
+**Impact on LCOE:** Deuterium fuel cost is negligible (order $1M/year for a GW-scale plant). This is a non-binding constraint.
 
-| Parameter | Gap Type | Criticality | Notes |
-|-----------|----------|-------------|-------|
-| Proton coupling efficiency (η_coup) | truly-unknown | blocking | The key fast-ignition-specific parameter; range ~5–30% from first principles; never measured at plant-relevant conditions |
-| Capsule gain at relevant compression + fast ignition | truly-unknown | blocking | No fast ignition experiment has achieved gain > 1 at any scale |
-| DPSSL cost $/J (Focused Energy specific configuration) | proprietary | blocking | Class cost $700–1,000/J; Amplitude partnership may reduce; no figure published |
-| Petawatt ignition laser cost $/J | truly-unknown | blocking | Ti:sapphire / OPCPA at 10 Hz, 150 kJ — no commercial precedent |
-| Chamber design (geometry, material, clearing scheme) | proprietary | blocking | Not disclosed; required for 14 MeV neutron load, debris mitigation, final optics protection |
-| Blanket type and TBR | proprietary | blocking | Lithium blanket confirmed but chemistry undisclosed; TBR calculation impossible |
-| Net electric power (plant-level) | proprietary | blocking | "Gigawatt-scale" only |
-| Capacity factor | proprietary | important | Not published |
-| Target design (Pearl™ composition, cone material, geometry) | proprietary | important | Required for target cost model; mass production feasibility assessment |
-| Target cost ($/target at 900,000/day) | proprietary | important | Feasibility threshold ~$0.25–$1; no cost estimate published |
-| LCOE estimate | truly-unknown | nice-to-have | No independent analysis or company projection published |
+## 5. Design Point Parameters
 
----
+No design-point selection exists upstream for this concept. The parameters below are extracted from the dossier for the pilot plant (LightHouse) and the eventual commercial-scale plant, where distinguishable. All values are at native scale (power output as designed, not scaled to 1 GWe).
 
-## Section 6: Data Gap Inventory
+| Parameter | Value | Source | Confidence | Note |
+|-----------|-------|--------|------------|------|
+| Confinement concept | Laser ICF (fast ignition) | dossier.md §Confinement Concept | high | Proton fast ignition; two-pulse architecture (compression + ignitor) |
+| Fuel | D-T | focused-energy-technology.md §general description; callahan-interview.md §"Meanwhile, Pearl is the capsule" | high | Deuterium from seawater, tritium bred from lithium |
+| Repetition rate | ~10 Hz | callahan-interview.md §"How do you develop the capsule" ("about 10 per second"; "900,000 shots a day" ≈ 10.4 Hz) | high | Distinctly higher than indirect-drive concepts (sub-Hz); lower yield per shot |
+| Target gain (goal) | 50–100 | callahan-interview.md §"What is the current state of the art at NIF" | medium-high | Required for economic viability per Callahan; NIF achieved ~4.1; fast ignition's advantage is lower compression energy → higher gain potential |
+| Laser efficiency (goal) | ~10% | callahan-interview.md §"So is boosting efficiency one of your key goals" | high | DPSSL compression driver; NIF's flashlamp-pumped system is <1% |
+| Engineering gain (goal) | >1 | callahan-interview.md §"Can you tell us about Focused Energy's two technologies" (LightHouse pilot plant) | medium-high | Net electricity production; implies recirculating power fraction <50% |
+| Driver technology | DPSSL (Nd:glass, ~527 nm assumed) + CPA short-pulse (~150 kJ petawatt-class) | prnewswire-2024.md (Amplitude $40M partnership); laserfocusworld-2021.md (150 kJ short-pulse, Texas Petawatt heritage) | medium-high | Two-pulse architecture; frequency doubling to 527 nm is standard but not explicitly stated |
+| Beamline count | "around 80 beamlines" (Ditmire projection, not committed design) | laserfocusworld-2021.md | low | Ultimate facility scale; not a committed Focused Energy specification |
+| Energy capture | Thermal (steam) | callahan-interview.md §"How will you capture the heat" | high | Conventional steam Rankine cycle |
+| Tritium breeding | Li blanket (chemistry undisclosed) | callahan-interview.md §"What are the challenges of working with deuterium and tritium"; prnewswire-2024.md (SRNL collaboration) | medium | FLiBe vs LiPb vs liquid Li not specified; SRNL partnership on tritium extraction |
+| Target type | Pearl™ cone-in-shell D-T capsule (cryogenic assumed for high gain) | focused-energy-technology.md ("Pearl™ fuel capsules"); laserfocusworld-2021.md ("nearby target" for proton generation); analyst-patch.md (cone-in-shell geometry) | medium | Cone guides ignitor beam to compressed core; cryogenic ice layer implied by 50–100 gain target but not explicitly stated |
+| Target unit cost | $0.80/shot [analyst patch; uncertainty $0.50–$1.20] | analyst-patch-target-unit-cost.md (1.3× complexity multiplier over symmetric capsules, NOAK volume) | low | No company-published figure; derived from Meier 2006 HYLIFE-II baseline ($0.61 for symmetric, CPI-adjusted) + 30% cone-in-shell penalty |
+| Pilot plant timeline | End of 2030s (LightHouse) | callahan-interview.md §"So what's the timeline on development?" | medium | "Fairly aggressive timeline"; startup risk acknowledged |
+| Net electric output | Not disclosed ("gigawatt-scale" ambition) | callahan-interview.md (qualitative only) | N/A | No quantitative power target published |
+| Thermal power | Not disclosed | N/A | N/A | Cannot be derived without knowing yield/shot and repetition rate at design point |
+| Fusion power | Not disclosed | N/A | N/A | Cannot be derived without yield/shot |
+| Compression laser energy/shot | Not disclosed | N/A | N/A | Lower than NIF's ~2 MJ (direct drive eliminates X-ray conversion losses), but no figure given |
+| Ignitor laser energy/shot | ~150 kJ [LaserFocusWorld; petawatt-class short pulse] | laserfocusworld-2021.md §description of two-pulse architecture | low | Cited in third-party interview, not Focused Energy materials; confidence low pending direct confirmation |
+
+**Notes:**
+- No `P_native` can be assigned; no net electric output is published. The "gigawatt-scale" ambition is qualitative.
+- No `p_input` (auxiliary power) can be estimated without knowing compression laser energy, ignitor laser energy, and repetition rate at the design point.
+- No `p_fus` (fusion power) can be derived without knowing yield/shot (which depends on target gain, which is a goal not a demonstrated value).
+- The Pearl™ capsule's "30x output increase" (focused-energy-technology.md) is relative to NIF indirect drive, not an absolute yield/shot specification.
+
+## 5b. Override Candidates
+
+Per-account walkthrough of the canonical 1costingFE schema for this archetype (`IFE_laser_pulsed_driver`). The walkthrough below considers each account, asks whether the dossier provides company-grounded data justifying a departure from the library default, and proposes overrides only where evidence exists.
+
+**Override-count expectation:** Archetype-Fit is Med → expect 3–8 enabled overrides.
+
+### Walkthrough
+
+**C220101 (First wall, blanket & neutron multiplier):** Lithium blankets confirmed, but chemistry (FLiBe vs LiPb vs liquid Li) undisclosed. Blanket geometry and neutron multiplier strategy not described. **No company-grounded quantity or cost → no override.** Library default stands.
+
+**C220102 (Radiation shield):** No company data on shielding architecture. Fast ignition's cone-in-shell geometry may affect shielding penetration paths (cone opening), but no quantitative basis for override. **No override.**
+
+**C220104 (Primary pulsed driver — laser):** DPSSL compression driver + CPA short-pulse ignitor. Two-pulse architecture is unique, but no company-published driver cost, beamline count, or unit cost exists. LaserFocusWorld cites "around 80 beamlines" (Ditmire projection, not committed design) and 150 kJ ignitor energy, but these are not company disclosures. **No company-grounded cost → no override.** This is the highest-impact account (likely 40–60% of capital by IFE analogy), but absence of data prevents justified override.
+
+**C220105 (Primary structure):** No company data on chamber structural design. **No override.**
+
+**C220106 (Vacuum system):** 10 Hz operation requires fast chamber clearing and vacuum re-establishment, but no company-published vacuum system specifications or cost. **No override.**
+
+**C220107 (Power supplies — pulsed-power capacitor bank):** This account is for electrically-driven pulsed schemes (MagLIF, Z-pinch). Laser IFE uses laser driver power supplies (not capacitor banks); those are costed under C220104. **Not applicable to this archetype → no override.**
+
+**C220108 (Target factory):** Cone-in-shell D-T targets at ~10 Hz (900,000 shots/day per Callahan). The analyst patch provides a per-target unit cost ($0.80/shot, uncertainty $0.50–$1.20), derived from Meier 2006 HYLIFE-II baseline + 1.3× cone-in-shell complexity multiplier. This is `provenance: derived` (analyst-sourced unit cost × company-stated throughput). The library's default target factory cost is built for symmetric capsules; the cone-in-shell geometry justifies a relative override.
+
+However, **C220108 is the target *factory* capital cost, not the per-shot consumable cost.** The per-shot cost belongs in CAS80 (annualized fuel cost). The analyst patch's $0.80/shot is the *input* to a factory capital cost calculation (factory must deliver N targets/year at $X/target → factory capex scales with throughput × target complexity), but the patch does not provide a factory capex figure. Without a company-grounded factory cost or a published factory cost model that accepts the $0.80/shot input, I cannot construct a justified override for C220108.
+
+**No override for C220108** (target factory capital). The $0.80/shot figures into CAS80 (fuel cycle OPEX), which is not overridable per the override semantics policy (CAS80 overrides are silently dropped; see output template Rule 5).
+
+**C220110 (Remote handling & maintenance):** No company data on remote handling strategy. IFE chambers are simpler than MFE (no in-vessel magnets to avoid, no divertor cassettes), but cone-in-shell target debris may complicate chamber maintenance. **No company-grounded data → no override.**
+
+**C220111 (Reactor-equipment installation & assembly):** Fraction of CAS22 subtotal; no company-specific data. **No override.**
+
+**CAS21 (Buildings & site structures):** No company data on building footprint, hot cell requirements, or turbine hall specifications. **No override.**
+
+**CAS23 (Turbine plant equipment):** Conventional steam cycle confirmed (Callahan interview). No company-specific thermal power, efficiency, or turbine specifications. Library default assumes standard Rankine cycle for D-T thermal plants; no evidence of departure. **No override.**
+
+**CAS24 (Electric plant equipment):** No company data. **No override.**
+
+**CAS26 (Heat rejection system):** No company data. **No override.**
+
+**CAS27 (Special materials — initial reactor material inventory / blanket fill):** Lithium blankets confirmed, but chemistry undisclosed. If FLiBe, this would be a large capital item (~$200–300M for GW-scale by tokamak analogy). But without knowing whether it's FLiBe, LiPb, or liquid Li, and without a company-disclosed inventory quantity or unit cost, I cannot construct a justified override. **No override** (data gap blocks override discovery).
+
+**CAS70 (Annualized O&M):** Not overridable per policy (silently dropped). **No override.**
+
+**CAS80 (Annualized fuel cost):** Not overridable per policy (silently dropped). The $0.80/shot target unit cost (analyst patch) would flow into CAS80 if CAS80 were overridable, but the override semantics note that CAS80 overrides are no-ops. **No override.**
+
+### Override Registry
+
+No justified overrides discovered. The dossier provides high-level architectural features (two-pulse laser, lithium blankets, 10 Hz, cone-in-shell targets) but lacks the quantitative cost figures, component masses, or unit prices required to justify departures from library defaults.
+
+**Discrepancy flag:** The expected override count for Archetype-Fit = Med is 3–8, but the evidence supports zero overrides. This reflects the opacity of Focused Energy's public disclosures rather than a concept that perfectly aligns with library defaults. The absence of overrides is a data-gap symptom, not an archetype-fit validation.
+
+```yaml
+overrides: []
+```
+
+**Key blocked overrides (would be proposed if data existed):**
+1. **C220104 (laser driver):** Company has not disclosed beamline count, unit cost, or total driver capex. This is likely the dominant cost account.
+2. **CAS27 (blanket inventory):** Lithium blankets confirmed but chemistry and inventory undisclosed.
+3. **C220108 (target factory):** $0.80/shot per-target cost is known (analyst patch), but factory capex is not. The library default factory cost may underestimate cone-in-shell complexity.
+
+## 6. Data Gap Inventory
 
 | # | Gap Description | Section | Gap Type | Criticality | Source Recommendation |
 |---|-----------------|---------|----------|-------------|----------------------|
-| 1 | Proton coupling efficiency (η_coup): petawatt laser → proton beam → compressed core | S2, S5 | truly-unknown | blocking | TNSA coupling literature; FIREX-I experimental data; Focused Energy J. Fusion Energy 2023 (Springer, behind paywall) |
-| 2 | Fast ignition gain at relevant areal density; capsule gain in full compression + fast ignition experiments | S2, S5 | truly-unknown | blocking | Osaka FIREX-I/II results; RAL experimental data; NIF ARC fast ignition experiments |
-| 3 | Petawatt ignition laser cost ($/J) at 10 Hz | S2, S3, S5 | truly-unknown | blocking | No commercial precedent; engineering study required |
-| 4 | DPSSL compression laser cost (Focused Energy specific $/J) | S5 | proprietary | blocking | Amplitude partnership details not public |
-| 5 | Chamber design (geometry, material, clearing scheme, first-wall approach) | S2, S3 | proprietary | blocking | Focused Energy technical papers; DOE cooperative agreement deliverables |
-| 6 | Blanket type and TBR analysis | S3, S4, S5 | proprietary | blocking | Focused Energy J. Fusion Energy 2023; SRNL collaboration outputs |
-| 7 | Net electrical output and plant-level energy balance | S5 | proprietary | blocking | No published system-level design study |
-| 8 | Target design (Pearl™ geometry, cone material) | S3, S4 | proprietary | important | Darmstadt targetry lab publications; patent filings |
-| 9 | Target cost at mass production scale (900,000/day) | S4, S5 | truly-unknown | important | No mass-production feasibility study published for cone-in-shell geometry |
-| 10 | Capacity factor and availability model | S5 | proprietary | important | Not disclosed; engineering estimate from pulsed IFE analogues |
-| 11 | Final optics protection scheme at 10 Hz | S3 | truly-unknown | important | No concept disclosed; requires independent design study |
-| 12 | Energy split optimization between compression and ignition lasers | S2 | truly-unknown | important | Hydrosimulation study; not publicly available |
-| 13 | O&M cost breakdown (fixed/variable, scheduled maintenance, replacement cycles) | S2 | proprietary | important | No IFE O&M breakdown published; HYLIFE heritage analogue available |
-| 14 | LCOE estimate (independent) | S5 | not-yet-sourced | nice-to-have | GEM (LLNL) could be applied; PROCESS (UKAEA) supports IFE configurations |
+| 1 | Net electric output and thermal power at design point | S5 | proprietary | blocking | Focused Energy J. Fusion Energy 2023 paper (paywalled, not ingested); company technical disclosures |
+| 2 | Laser driver capital cost (beamline count × unit cost) | S2, S5b | proprietary | blocking | Company engineering studies or investor disclosures; DPSSL cost models from Amplitude partnership |
+| 3 | Blanket chemistry (FLiBe vs LiPb vs liquid Li) and inventory quantity | S3, S4, S5b | proprietary | blocking | J. Fusion Energy 2023 paper; chamber design publications |
+| 4 | Target gain validation at proton fast ignition conditions | S2, S3 | truly-unknown (physics risk) | blocking | Experimental campaigns at petawatt facilities (Texas Petawatt, ELI Beamlines, OMEGA EP); Focused Energy's own ignition experiments (if/when conducted) |
+| 5 | Final optics lifetime at 10 Hz (replacement frequency) | S3, S4 | not-yet-sourced | important | Laser IFE optics degradation studies (LLNL, Xcimer optics roadmaps); high-average-power laser facility operational data |
+| 6 | Target factory capital cost for cone-in-shell targets at 900k/day throughput | S5b | derivable (with cost model) | important | LLNL IFE target factory studies (Meier 2006 provides per-target cost; factory capex model needed); Focused Energy disclosures |
+| 7 | Chamber clearing and debris management at 10 Hz | S2, S3 | not-yet-sourced | important | IFE chamber engineering studies (HYLIFE-II, SOMBRERO for thick liquid walls; Z-IFE for pulsed clearing); chamber simulation papers |
+| 8 | Ignitor laser specifications (beamline count, unit cost, maintenance) | S3, S5 | proprietary | important | Focused Energy technical disclosures; petawatt laser capital cost benchmarks |
+| 9 | Tritium breeding ratio and extraction efficiency for undisclosed blanket chemistry | S3, S4 | proprietary | important | SRNL collaboration outputs (if published); blanket neutronic studies |
+| 10 | Pilot plant (LightHouse) specifications and timeline validation | S5 | proprietary | nice-to-have | Company roadmap updates; engineering milestone publications |
 
----
+**Gap-type definitions:**
+- **proprietary:** Company holds the data but has not disclosed it publicly.
+- **truly-unknown:** Data does not exist (physics not validated, engineering not designed).
+- **not-yet-sourced:** Data likely exists in published literature but not yet ingested into dossier.
+- **derivable:** Can be calculated from available data with appropriate cost models or scaling relationships.
 
-## Section 7: Cross-Concept Notes
+**Criticality definitions:**
+- **blocking:** LCOE model cannot produce meaningful estimate without this data.
+- **important:** LCOE estimate possible but with wide uncertainty bands; data significantly narrows corridor.
+- **nice-to-have:** Refines model but does not change order-of-magnitude LCOE estimate.
 
-Only one approved prior analysis was available at the time of this analysis: **21-spherical-tokamak-hts** (Tokamak Energy). The spherical tokamak shares no cost structures, subsystems, or materials with fast ignition IFE. No cross-concept assumptions were reused.
+## 7. Family-Delta vs Comparables
 
-**Nearest-neighbor analyses (not yet approved, referenced for context):**
+Fixed comparables for this concept:
+- 26-laser-icf-indirect-drive (Inertia Thunderwall)
+- 30-laser-icf-nif-commercialization (Focused Energy LIFE-class? — this may be a labeling error; LIFE is LLNL's NIF-heritage design, not Focused Energy)
+- 31-laser-icf-oec-architecture (Blue Laser Fusion)
+- 32-laser-icf-french-national (GenF Systems)
+- 17a-laser-icf-hybrid-drive (Xcimer Energy)
 
-**17a-laser-icf-hybrid-drive (Xcimer Energy — D-T Hybrid Direct Drive)** is the closest TEA comparator: same fuel (D-T), same driver class (DPSSL for Xcimer's baseline), same chamber clearing challenge (~sub-Hz), same broad IFE economic framework, and same steam or gas Brayton energy conversion. The key difference for TEA is the ignition scheme: Xcimer uses hybrid direct drive (single KrF driver, CHS implosion) while Focused Energy uses DPSSL compression + a separate petawatt ignition laser. The 17a model baseline (400 MWe, He Brayton 45%, laser at $70/J) produces 100.2 $/MWh (87.1 $/MWh scaled to 1 GWe). The 17b FI baseline is 67.6 $/MWh at 1 GWe with Rankine 40%. These figures are not directly comparable — they differ in scale, thermal cycle, driver cost parameterization, and availability assumptions — but both inhabit the same IFE capital structure.
+**Note:** Comparables 30 and 32 may not have approved analyses available (per "No approved prior analyses available" in the prompt). The family-delta below is written against the general characteristics of these concept types from the handwritten exemplar (26-laser-icf-indirect-drive.md) and the dossier for 17a.
 
-**04-laser-icf (HB11 Energy — p-B11 fast ignition)** shares the fast ignition physics architecture (petawatt ignition laser, TNSA-class particle beam, dual-driver) but is TEA-dissimilar: p-B11 fuel eliminates the tritium breeding cost (blanket CAS22 sub-account), reduces the neutron management cost, and requires substantially higher gain due to the lower reaction cross-section. The dual-driver cost uncertainty is structurally identical, but cross-concept LCOE comparisons are misleading without isolating the physics step from the fuel cycle.
+### vs Indirect Drive (26, 30, 31, 32)
 
-**26-laser-icf-indirect-drive** (Inertia Enterprises) and **17a** provide the most directly relevant benchmarks for IFE economics (DPSSL cost class, chamber, target economics). Key divergences relative to fast ignition:
+**Subsystem divergence:** Drive architecture.
 
-- *Driver technology*: Indirect drive (Inertia) uses a single DPSSL (~$700–1,000/J FOAK). Fast ignition uses DPSSL compression + petawatt ignition — two capital line items vs. one. The DPSSL cost class is shared; the petawatt laser adds cost with no CHS analogue.
-- *Rep rate*: Focused Energy (10 Hz) is comparable to Inertia (10 Hz) and much higher than Xcimer (sub-Hz). Chamber clearing requirements are similarly demanding at 10 Hz.
-- *Target complexity*: CHS direct-drive capsules are symmetric spheres. Fast ignition cone-in-shell capsules are inherently asymmetric and more complex to fabricate, likely more expensive per unit. The $1/target CHS benchmark cannot be assumed transferable.
-- *Physics maturity*: Indirect drive ignition demonstrated (NIF, 2022). Direct drive ignition not demonstrated. Fast ignition gain > 1 not demonstrated. The physics maturity gap is the defining risk differentiator.
-- *Energy conversion*: All IFE D-T concepts converge on thermal cycles (steam or He Brayton). This is shared infrastructure.
-- *Tritium breeding*: Focused Energy's undisclosed blanket vs. Xcimer's characterized FLiBe HYLIFE-III design. FLiBe cost data cannot be applied without blanket type confirmation.
+- **Indirect drive** (NIF heritage): Laser → hohlraum → X-rays → capsule ablation. The hohlraum (gold or depleted uranium cylinder) converts laser energy to X-rays, which then symmetrically compress the capsule. Coupling efficiency is ~12% (laser energy → X-ray energy absorbed by capsule).
+- **Fast ignition** (Focused Energy): Two-pulse architecture. Compression pulse → direct capsule ablation (no hohlraum, no X-ray conversion). Ignitor pulse → proton beam → ignites compressed core. Coupling efficiency is claimed >50% (LaserFocusWorld cites 80% from "energy on target of Athena" context, but this is not a Focused Energy-specific figure and confidence is low).
 
-**TEA threshold analysis — ignitor laser cost premium**: The central TEA question for fast ignition is whether the FI economic advantage over CHS direct drive (~15% lower COE at 10 Hz, per Meier 2006, assuming zero ignitor cost) survives once the petawatt ignition laser is priced as a real capital line item. Applying the Meier FI/CI ratio, a CHS D-T equivalent in the 1costingfe framework would be approximately 67.6 / 0.85 ≈ 79.5 $/MWh at the same scale and cost assumptions. The ignitor premium sweep shows LCOE rising from 67.6 to 70.0 $/MWh at +65% ignitor premium — a 3.5% increase, still 12% below the Meier-implied CI reference. The FI economic advantage persists across the entire modeled premium range. Two caveats apply: (1) the model's driver capital elasticity is only 6.4%, and the baseline CAS22 driver cost is already a lower bound (dual-driver architecture not yet fully captured), so the true breakeven likely requires a larger premium than the model can cleanly test; and (2) cone-in-shell target fabrication cost and asymmetric debris mitigation — both FI-specific cost penalties — are not isolated in the 1costingfe structure. The Focused Energy scenario falls below the theoretical FI/CI breakeven in the modeled range, but a formal comparison against a CHS-equivalent 1costingfe parameterization has not been performed.
+**Cost effect:** **Potential cost advantage, magnitude unknown.**
 
-**Key implication for cross-concept comparisons**: Focused Energy's fast ignition concept carries an additional undemonstrated physics step (proton fast ignition) on top of the already-undemonstrated direct-drive ignition — making it strictly more speculative than its nearest IFE neighbors. The TEA should flag this as a risk multiplier on any cost estimate derived from CHS IFE analogues.
+Eliminating the hohlraum removes:
+- Hohlraum fabrication cost (gold or DU cylinders).
+- X-ray conversion losses (laser → X-ray efficiency is <10% in indirect drive).
 
----
+But fast ignition adds:
+- Second laser system (ignitor beamline(s) with petawatt-class short-pulse capability).
+- Cone-in-shell target complexity (cone adds fabrication steps, materials cost, and alignment requirements).
 
-## Section 8: Sources
+The net cost effect depends on whether [compression driver cost reduction from eliminating hohlraum] > [ignitor laser cost + cone-in-shell target cost premium]. No public data from Focused Energy quantifies this trade. Xcimer's hybrid-drive approach (which uses a brief hohlraum pulse + direct drive) claims cost advantages over pure indirect drive; Focused Energy's fast ignition makes a similar but more aggressive claim (eliminating hohlraum entirely). **Direction: likely advantage; magnitude: unquantified.**
 
-Listed in order of importance to this analysis.
+**Target gain:** Focused Energy targets 50–100 gain (Callahan interview). NIF's best indirect-drive shot achieved ~4.1 target gain (8 MJ out / ~2 MJ laser in). If fast ignition achieves the 50–100 gain target, it produces 10–25× more fusion energy per unit laser energy than demonstrated indirect drive. This would reduce required driver size (fewer beamlines) or permit higher repetition rate with the same driver, both of which lower LCOE. **Direction: advantage if target validated; risk if not.**
 
-1. **Physics World / Focused Energy — Debbie Callahan Interview** (2023)  
-   *"Focusing on Fusion: Debbie Callahan talks commercial laser fusion"*, Physics World  
-   Primary source for Focused Energy-specific parameters: gain targets (50–100), rep rate (10 Hz / 900,000 shots/day), laser efficiency (~10%), steam cycle confirmation, tritium breeding approach, SRNL partnership.  
-   Path: `knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/focused-energy-callahan-interview.md`
+### vs Hybrid Drive (17a — Xcimer Energy)
 
-2. **Laser Focus World — "Can High-Power Lasers Enable Fusion Energy?"** (2023)  
-   Facility specifications for Focused Energy's T-STAR laser system: 400 kJ compression, 150 kJ picosecond ignition, ~$3B total facility cost, 2029 ignition timeline.  
-   Path: `knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/laserfocusworld-lasers-sources-article-14274951-can-high.md`
+**Subsystem divergence:** Ignition mechanism and driver type.
 
-3. **Optica OPN — "Fusion's Direct Drive"** (June 2023, Vol. 34)  
-   Scientific context for fast ignition: relaxed symmetry requirement, coupling challenges, facility cost landscape, Focused Energy pilot plant timeline (end of 2030s), commercial gain and rep rate requirements.  
-   Path: `knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/optica-opn-home-articles-volume-34-june-2023-features.md`
+- **Hybrid drive** (Xcimer): KrF excimer laser (248 nm deep-UV), two-beam symmetric direct drive with shaped intensity rings, brief hohlraum pulse to create uniform ablation plasma. Compression + ignition in a single integrated pulse sequence; coupling efficiency >50% claimed.
+- **Fast ignition** (Focused Energy): DPSSL (Nd:glass, ~527 nm), two-pulse architecture (compression + separate ignitor producing proton beam). Cone-in-shell target geometry.
 
-4. **OSTI purl-2561299 — IFE Status and Prospects Post-NIF Ignition** (~2023)  
-   IFE energetics requirements (η_wp × G > 10), diode cost floor ($0.01/W), target production requirements (900,000/day), description of fast ignition and shock ignition physics relative to CHS approaches, burn-up fraction ~30%.  
-   Path: `knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/osti-servlets-purl-2561299.md`
+**Cost effect:** **Ambiguous direction.**
 
-5. **Xcimer / XEC Commercialization White Paper** (February 2026, Xcimer Energy + TRUMPF)  
-   *"Commercialization of Laser Fusion Energy"*  
-   DPSSL cost class benchmarks ($700–1,000/J; floor estimate); IFE energetics requirements; Xcimer-specific architecture for comparison context. Not directly about Focused Energy but provides the best published IFE cost benchmarks available.  
-   Path: `knowledge/concept_research/17-laser-icf-direct-drive/iter-02/sources/xec-20260224-commercialization-of-lfe-whtppr-shared-24-feb.md`
+Xcimer's KrF excimer laser is more expensive per joule than DPSSL (Xcimer's whitepaper estimates $100–$120/J FOAK, $60–$80/J NOAK for their driver), but excimer lasers have no gain medium to degrade (gas is replaced, not damaged) and no final optics in the beam path (the gas cell window is the last optic). DPSSL has lower $/J but faces gain medium damage and final optics degradation at high rep-rate.
 
-6. **PRNewswire — Focused Energy and Amplitude $40M Agreement** (2024)  
-   Amplitude partnership details; Bay Area Laser Development Facility; T-STAR rep rate (1 shot/60 s initially); Darmstadt targetry lab; $175M+ total funding raised.  
-   Path: `knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/prnewswire-news-releases-focused-energy-and-amplitude-enter.md`
+Xcimer's symmetric two-beam direct drive eliminates the cone (simpler targets than fast ignition), but Xcimer's hohlraum pulse adds a laser → hohlraum → X-ray step that Focused Energy's pure direct-drive compression avoids.
 
-7. **Focused Energy Technology Website** (2024)  
-   Pearl™ capsule marketing description; "+30x vs. NIF indirect drive" performance claim; mass production and modularity emphasis.  
-   Path: `knowledge/concept_research/17-laser-icf-direct-drive/iter-01/sources/focused-energy-technology.md`
+**Net cost comparison:** Xcimer's published cost structure ($3.5B total plant cost, $60–80/J driver NOAK) provides a benchmark, but Focused Energy has not disclosed comparable figures. Without knowing Focused Energy's driver $/J and beamline count, the cost delta is unquantifiable. **Direction: unknown; both claim advantages over indirect drive but via different pathways.**
 
-8. **Xcimer Energy Approach Website** (2024)  
-   Xcimer architecture context (HDD, KrF, sub-Hz); cost-per-joule comparison vs. NIF; liquid-wall chamber principle. Referenced for IFE class benchmarks.  
-   Path: `knowledge/concept_research/17-laser-icf-direct-drive/iter-01/sources/xcimer-energy-approach.md`
+**Target gain and repetition rate:** Xcimer targets >200× capsule gain at ~1 Hz (lower rep-rate than Focused Energy, higher yield/shot to compensate). Focused Energy targets 50–100 gain at ~10 Hz (higher rep-rate, lower yield/shot). The two approaches converge on similar time-averaged fusion power but with different engineering trade-offs: Xcimer's lower rep-rate simplifies chamber clearing; Focused Energy's higher rep-rate tolerates lower gain per shot. **Cost effect: chamber clearing at 10 Hz is harder (penalty for Focused Energy); cone-in-shell targets are more complex (penalty for Focused Energy); proton fast ignition's gain is less validated (risk for Focused Energy). Xcimer's approach appears lower-risk but with higher per-shot energy requirements.**
 
-9. **OSTI biblio-7021072 — HYLIFE-II Abstract** (Moir et al., 1994)  
-   HYLIFE-II LCOE reference: 4.4 ¢/kWh at 1 GWe (heavy-ion driver, 1994 dollars); 75% availability baseline; 30-year chamber lifetime with FLiBe liquid wall. Used as IFE O&M and availability analogue.  
-   Path: `knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/osti-biblio-7021072.md`
+### Shared IFE Challenges (all comparables)
 
-10. **OSTI purl-6137961 — HYLIFE-II Power Conversion System Design and Cost Study** (M.A. Hoffman, LLNL, 1990)  
-    BOP subsystem breakdown; IHX cost estimates ($18–55/kWth depending on material); BOP fraction of direct CAPEX (~32–48%); preliminary LCOE "much higher than we would like"; 1988-dollar baseline. Used as engineering analogue for BOP cost structure.  
-    Path: `knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/osti-servlets-purl-6137961.md`
+All laser IFE concepts share:
+- **D-T fuel cycle:** Tritium breeding, extraction, handling; FLiBe or alternative blanket chemistry.
+- **High-rep-rate target fabrication:** Cryogenic D-T capsules at sub-Hz to ~10 Hz throughput; cost target ~$1/shot for economic viability.
+- **Final optics survivability:** X-rays, debris, and neutrons degrade optics; replacement frequency is a cost driver.
+- **Chamber clearing and debris management:** Vaporized target debris must be removed between shots.
+- **Laser driver capital cost dominance:** Driver is 40–60% of total overnight capital (by analogy to NIF's LIFE studies).
 
-11. **ScienceDirect — HYLIFE-III Nuclear Analysis** (Fusion Engineering and Design, 2024)  
-    FLiBe TBR > 1.2 for thick-liquid-wall concept; neutron activation analysis; optics lifespan requirements. Relevant to Xcimer chamber heritage; referenced for IFE blanket TBR context only.  
-    Path: `knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/sciencedirect-science-article-pii-s0920379624001868.md`
+Focused Energy's departures (two-pulse architecture, cone-in-shell targets, proton fast ignition) are concept-distinctive but do not eliminate these shared challenges. The cost effect of the departures is **unknown due to absence of published cost data.**
 
-12. **OSTI purl-1438678 — Meier (2006): HAPL Systems Modeling for Fast Ignition** (LLNL)  
-    Primary published systems study for FI economics. FI achieves ~15% lower COE than CI at 10 Hz (~6.1 vs. ~7.2 ¢/kWeh) explicitly assuming zero added $/J for the ignition laser. COE minimized at 20–25 Hz; 10 Hz constraint imposes +4% COE penalty vs. optimal; 5 Hz constraint imposes +16%.  
-    Path: `knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/osti-servlets-purl-1438678.md`
+### Summary Table
 
-13. **PMC-7658748 — Hawker (2020): A Simplified Economic Model for Inertial Fusion**  
-    Technology-agnostic IFE LCOE framework. Finds gain > ~400 required for economic competitiveness under mid-range cost parameters; distinguishes energetics viability (G > 30–100) from economic competitiveness (G > 400). Minimum LCOE of ~$25/MWh achievable with optimistic but not unrealistic parameters. Driver efficiency default 10%; Monte Carlo parameter scan.  
-    Path: `knowledge/concept_research/17-laser-icf-direct-drive/iter-03/sources/pmc-articles-pmc7658748.md`
+| Comparable | Divergent Subsystem | Cost Effect Direction | Cost Effect Magnitude | Confidence |
+|---|---|---|---|---|
+| Indirect drive (26, 30, 31, 32) | Drive architecture (no hohlraum, two-pulse fast ignition) | Likely advantage (eliminate X-ray conversion losses, higher target gain potential) | Unknown (ignitor laser + cone-in-shell target penalty vs hohlraum elimination savings) | Low (no Focused Energy cost data) |
+| Hybrid drive (17a) | Ignition mechanism (proton fast ignition vs two-beam symmetric direct drive) and driver type (DPSSL vs excimer) | Unknown (trade-offs in driver $/J, target complexity, chamber clearing rate, gain validation risk) | Unknown (no Focused Energy driver cost or plant cost disclosed) | Low |
+| All IFE | Shared D-T fuel cycle, tritium breeding, target factory, final optics, chamber clearing | Neutral (shared challenges) | — | — |
+
+**What is genuinely novel:** Proton fast ignition as the ignition mechanism. This is the core physics innovation. All other subsystems (DPSSL driver, D-T fuel, tritium breeding, steam cycle) are borrowed from other IFE or fusion concepts. The novelty is not in the components but in their integration into a two-pulse compression + proton-ignition architecture.
+
+**What is borrowed:** DPSSL laser technology (LLNL Mercury laser heritage, Amplitude partnership), D-T fuel cycle (shared with all D-T fusion), lithium blanket tritium breeding (shared with D-T MFE and IFE), steam Rankine cycle (conventional power), cryogenic target fabrication (NIF heritage).
+
+## 8. Sources
+
+Listed in order of importance:
+
+1. **Callahan, T. J. (Focused Energy CEO) — Physics World interview** (2024, exact date not in file metadata).
+   `knowledge/concept_research/17b-laser-icf-fast-ignition/iter-02/sources/focused-energy-callahan-interview.md`
+   **Contribution:** Most substantive single source. Confirms ~10 Hz repetition rate (900,000 shots/day), target gain goals (50–100), laser efficiency goal (~10%), engineering gain >1 for LightHouse pilot plant, lithium blankets with SRNL collaboration on tritium extraction, conventional steam cycle, D-T fuel from seawater + lithium, pilot plant timeline (end of 2030s). Establishes that NIF achieved ~4.1 gain and that direct drive eliminates X-ray conversion losses from indirect-drive hohlraums. This interview is the quantitative anchor for the entire analysis.
+
+2. **Analyst patch: Target unit cost** (2024, internal analyst source).
+   `knowledge/concept_research/17b-laser-icf-fast-ignition/iter-04/sources/analyst-patch-target-unit-cost.md`
+   **Contribution:** Per-target manufacturing cost estimate ($0.80/shot, uncertainty $0.50–$1.20) for cone-in-shell D-T capsules at NOAK production volumes. Derived from Meier 2006 HYLIFE-II symmetric capsule baseline ($0.30–$0.50 in 2006 dollars → $0.61 CPI-adjusted to 2024) × 1.3× cone-in-shell complexity multiplier (from Norreys HiPER conceptual design qualitative assessments). This is the only quantitative cost figure in the dossier and is critical for CAS80 fuel-cycle OPEX estimation (though CAS80 is not overridable). The patch explicitly notes it should be superseded if Focused Energy publishes a per-target cost.
+
+3. **LaserFocusWorld** (2021) — "Can high-rep-rate lasers enable inertial fusion energy?"
+   `knowledge/concept_research/17b-laser-icf-fast-ignition/iter-03/sources/laserfocusworld-lasers-sources-article-14274951-can-high.md`
+   **Contribution:** Describes Focused Energy's two-pulse architecture: "focusing long-pulse lasers onto the pellet to compress it, blasting it with a 150 kJ short-pulse laser, and then hitting a nearby target to produce a burst of protons that ignites the pellet." Cites Todd Ditmire's Texas Petawatt heritage and National Energetics' ELI Beamlines delivery as background for the ignitor laser. Projects "around 80 beamlines" as an ultimate facility scale (Ditmire's estimate, not a committed Focused Energy design). This source provides the 150 kJ short-pulse ignitor specification, which is not stated in Focused Energy's own materials and carries lower confidence.
+
+4. **PRNewswire** (2024) — "Focused Energy and Amplitude enter $40M partnership".
+   `knowledge/concept_research/17b-laser-icf-fast-ignition/iter-03/sources/prnewswire-news-releases-focused-energy-and-amplitude-enter.md`
+   **Contribution:** Announces $40M Amplitude DPSSL partnership and $65M Laser Development Facility in the San Francisco Bay Area. Confirms diode-pumped solid-state laser as the compression driver technology. Mentions DOE milestone-program work on "igniting the fusion fuel using laser-accelerated protons" and CSU proton-acceleration experiments. This source establishes the DPSSL compression driver and the proton-ignition pathway as company-committed directions.
+
+5. **Focused Energy — Technology page** (date not in file; likely 2023–2024).
+   `knowledge/concept_research/17b-laser-icf-fast-ignition/iter-01/sources/focused-energy-technology.md`
+   **Contribution:** Confirms D-T fuel, direct-drive proton fast ignition branding, and Pearl™ capsule name. States Pearl™ targets "will increase output +30x compared to the current NIF indirect drive fuel system." This is the only quantitative performance claim on the company website but is a relative improvement (vs NIF) rather than an absolute yield/shot specification. Emphasizes "manufacturability, with components that can be mass-produced and easily shipped" and "modulatory creates the highest reliability and serviceability of any fusion system" (qualitative claims without supporting data).
+
+6. **HYLIFE-II energy conversion notes** (OSTI bibliographic record; full report not extracted).
+   `knowledge/concept_research/17b-laser-icf-fast-ignition/iter-02/sources/hylife-energy-conversion-notes.md`
+   **Contribution:** OSTI catalog entry for UCRL-CR-105908 (1991). Identifies FLiBe as primary coolant, IHX's, steam generators, and balance-of-plant for HYLIFE-II (thick liquid wall IFE chamber design). This is not a Focused Energy-specific source but provides IFE chamber and BOP context. The full report was not successfully extracted (file contains only the bibliographic metadata).
+
+7. **Focused Energy — Dossier summary** (internal research consolidation, 2026-05-19).
+   `knowledge/concept_research/17b-laser-icf-fast-ignition/dossier.md`
+   **Contribution:** Consolidated summary of all sources, differentiation table values with confidence assessments, and provenance notes. This is the structured research layer that synthesizes the individual sources above. Notes the 2026-05-19 split from the former shared `17-laser-icf-direct-drive` dossier (which also included Xcimer Energy before Xcimer was reclassified to hybrid drive). Identifies remaining gaps (blanket chemistry, quantitative plant parameters, proton fast ignition experimental validation).
+
+**Sources cited but not yet ingested:**
+- Focused Energy J. Fusion Energy 2023 (Springer paywall) — likely the best public single-source for blanket chemistry, chamber architecture, and plant parameters. Cited in external references but not in the local corpus.
+- Meier, W. R. (2006) — "Target factory economics for inertial fusion energy," HYLIFE-II program documentation, LLNL. This is the anchor for the analyst patch's $0.30–$0.50 symmetric capsule baseline but has not been directly ingested. The analyst patch cites it, and the citation is trusted, but the original Meier source is not in `iter-04/sources/`.
+
+**Academic context sources (not Focused Energy-specific but relevant to fast ignition physics):**
+- Tabak et al. (1994) — seminal fast ignition proposal.
+- Roth et al. (2001) — proton beam generation via TNSA.
+- Norreys et al. (HiPER conceptual design, 2007–2012) — cone-in-shell fast ignition European program.
+- Temporal et al. (2002) — proton beam coupling simulations.
+
+These are referenced in the analysis for physics context but are not in the local source tree and were not directly read for this analysis.

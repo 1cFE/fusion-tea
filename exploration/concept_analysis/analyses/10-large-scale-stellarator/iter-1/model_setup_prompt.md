@@ -1,7 +1,7 @@
-# 1costingfe Model Setup: Laser ICF Fast Ignition (Focused Energy)
+# 1costingfe Model Setup: Large-Scale Stellarator
 
-You are generating a runnable 1costingfe model setup script for **Laser ICF Fast Ignition (Focused Energy)**
-(Focused Energy). The script must run via `uv run python model_setup.py` and emit an
+You are generating a runnable 1costingfe model setup script for **Large-Scale Stellarator**
+(Gauss Fusion). The script must run via `uv run python model_setup.py` and emit an
 LCOE estimate.
 
 ## The contract in one sentence
@@ -13,7 +13,7 @@ analysis already discovered — nothing else.
 
 ## Step 0: Read the Design Point block from the analysis (primary source)
 
-**Start here.** Open `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\17b-laser-icf-fast-ignition\analysis.md` and read its `## Design Point` block and
+**Start here.** Open `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\10-large-scale-stellarator\analysis.md` and read its `## Design Point` block and
 `## Section 5b: Override Candidates` block. These are your primary inputs:
 - `P_native` — the design point's native net-electric power (MWe). You do **not**
   choose this; copy it.
@@ -28,7 +28,16 @@ for reference:
 
 ## Design Point
 
-(No design-point row for this concept yet — selection is upstream-pending. Do not invent one.)
+- Name: GIGA commercial fusion power plant (Gauss Fusion CDR, 2025)
+- Maturity: proposed-commercial
+- P_native: 1000 MWe
+- Grounding: medium
+- Primary sources:
+  - knowledge/concept_research/10-large-scale-stellarator/iter-02/sources/gauss-fusion-cdr-review-2026.md
+  - knowledge/concept_research/10-large-scale-stellarator/iter-02/sources/gauss-fusion-partnerships-2025.md
+  - knowledge/concept_research/10-large-scale-stellarator/iter-01/sources/helias-reactor-context.md
+
+(Selection fields are orchestrator-fixed from the design-point table. Copy them verbatim; you are forbidden to edit them. The quantitative description of this plant belongs in Section 5.)
 
 ### Canonical account schema (override codes must come from here)
 
@@ -36,11 +45,12 @@ for reference:
 | --- | --- | --- |
 | `C220101` | First wall, blanket & neutron multiplier (DT: tritium-breeding blanket; DD/aneutronic: energy-capture blanket) | always (for this archetype) |
 | `C220102` | Radiation shield (sized to neutron wall loading; scales down for low-neutron fuels) | always (for this archetype) |
-| `C220104` | Supplementary plasma heating (steady-state) or primary pulsed driver (laser/accelerator/gun) | primary pulsed driver (laser/accelerator/gun) on $/J of driver energy; electrical-drive concepts cost it in C220107 |
+| `C220103` | Confinement magnets / coils (HTS-REBCO conductor + winding + cryostat) | always (for this archetype) |
+| `C220104` | Supplementary plasma heating (steady-state) or primary pulsed driver (laser/accelerator/gun) | supplementary heating (NBI/ICRF/ECRH/LHCD) per installed MW |
 | `C220105` | Primary structure — gravity supports, thermal shields, inter-coil structure, machine base | always (for this archetype) |
 | `C220106` | Vacuum system — vessel, port extensions, cryopumps, leak detection | always (for this archetype) |
-| `C220107` | Power supplies (steady-state magnet supplies / switchgear) or pulsed-power capacitor bank ($/J stored) | pulsed-power capacitor bank on $/J stored — usually the dominant driver cost for electrically-driven pulsed schemes |
-| `C220108` | Divertor (steady-state, W monoblock cassettes) or target factory (IFE/MIF target manufacturing) | high-rep-rate target manufacturing factory (IFE/MIF) |
+| `C220107` | Power supplies (steady-state magnet supplies / switchgear) or pulsed-power capacitor bank ($/J stored) | DC magnet power supplies and switchgear |
+| `C220108` | Divertor (steady-state, W monoblock cassettes) or target factory (IFE/MIF target manufacturing) | divertor (W monoblock cassettes on CuCrZr heat sinks) |
 | `C220110` | Remote handling & maintenance equipment (rad-hardening tier x vessel geometry) | always (for this archetype) |
 | `C220111` | Reactor-equipment installation & assembly (fraction of the CAS22 subtotal) | always (for this archetype) |
 | `CAS21` | Buildings & site structures (reactor, turbine, hot cell, balance-of-plant) | always (for this archetype) |
@@ -63,12 +73,12 @@ avoid (`p_fus` vs `p_input`, `B` vs `b_center`, kJ vs MJ, etc.). Read the
 
 ## Required Reading (supporting)
 
-- **Closest example (pattern to imitate):** `\home\reid\1cfe\1costingfe\examples\dt_tokamak.py`
+- **Closest example (pattern to imitate):** `\home\reid\1cfe\1costingfe\examples\dt_stellarator.py`
 - **1costingfe README:** `\home\reid\1cfe\1costingfe\README.md`
 - **Costing constants:** `\home\reid\1cfe\1costingfe\src\costingfe\data\defaults\costing_constants.yaml`
 
 ## Concept Mapping
-- **ConfinementConcept:** `LASER_IFE`
+- **ConfinementConcept:** `STELLARATOR`
 - **Fuel:** `DT`
 
 
@@ -84,7 +94,7 @@ shape. The three forwards are: **`generic`** (overrides off, design scale),
 Each adjacent pair moves exactly one dimension.
 
 ```python
-"""1costingfe model: Laser ICF Fast Ignition (Focused Energy) (Focused Energy).
+"""1costingfe model: Large-Scale Stellarator (Gauss Fusion).
 
 Usage:
     uv run python model_setup.py              # print results
@@ -138,7 +148,7 @@ P_native = ...     # MWe — copied from the analysis Design Point block
 # r² coil model and must set it explicitly.
 
 # 2. Model.
-model = CostModel(concept=ConfinementConcept.LASER_IFE, fuel=Fuel.DT)
+model = CostModel(concept=ConfinementConcept.STELLARATOR, fuel=Fuel.DT)
 
 # 2b. Generic forward — overrides OFF, design-point scale (forward 1 of 3).
 #     `generic` is the library's overrides-off forward at P_native. It is BOTH the
@@ -228,7 +238,7 @@ print_cas_breakdown(generic, native, result_1gw, overrides)
    value, not the geometric one). Document the omission with a comment
    citing the tracker issue.
 
-   - **DIPOLE** (`LASER_IFE == "DIPOLE"`): do **NOT** pass
+   - **DIPOLE** (`STELLARATOR == "DIPOLE"`): do **NOT** pass
      `plasma_volume`. The MFE radiation calc in `physics.py` treats
      `plasma_volume` as a uniform integrator (`P_brems ∝ n_e² × T_e^0.5 ×
      Z_eff × V`), which is calibrated for tokamak / stellarator profiles
@@ -267,7 +277,7 @@ print_cas_breakdown(generic, native, result_1gw, overrides)
      comment, do not put it in `spec` — the strict-kwarg validator rejects
      `p_fus`.
 
-   - **MIF concepts** (`LASER_IFE ∈ {MAG_TARGET, MAGLIF,
+   - **MIF concepts** (`STELLARATOR ∈ {MAG_TARGET, MAGLIF,
      PLASMA_JET}`): the MIF forward path does not accept MFE/IFE-only
      kwargs. In particular `f_dec`, `p_input`, `eta_p`, `eta_pin`,
      `eta_de` are not in the MIF `forward()` signature and will be
@@ -481,4 +491,4 @@ in the fleet frame — not "more than a conventional plant."
    `scaled_headline` and do not compute sensitivities for `result_1gw`.
 
 ## Output
-Write the script to: `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\17b-laser-icf-fast-ignition\iter-1\model_setup.py`
+Write the script to: `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\10-large-scale-stellarator\iter-1\model_setup.py`

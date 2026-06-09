@@ -1,6 +1,6 @@
-# D1+ Concept Analysis: Laser ICF Fast Ignition (Focused Energy)
+# D1+ Concept Analysis: Large-Scale Stellarator
 
-You are producing a D1+ analysis for the fusion concept **Laser ICF Fast Ignition (Focused Energy)** (Focused Energy).
+You are producing a D1+ analysis for the fusion concept **Large-Scale Stellarator** (Gauss Fusion).
 
 ## Analysis Goals
 
@@ -143,7 +143,16 @@ never re-choose, re-derive, or edit it.
 
 ## Design Point
 
-(No design-point row for this concept yet — selection is upstream-pending. Do not invent one.)
+- Name: GIGA commercial fusion power plant (Gauss Fusion CDR, 2025)
+- Maturity: proposed-commercial
+- P_native: 1000 MWe
+- Grounding: medium
+- Primary sources:
+  - knowledge/concept_research/10-large-scale-stellarator/iter-02/sources/gauss-fusion-cdr-review-2026.md
+  - knowledge/concept_research/10-large-scale-stellarator/iter-02/sources/gauss-fusion-partnerships-2025.md
+  - knowledge/concept_research/10-large-scale-stellarator/iter-01/sources/helias-reactor-context.md
+
+(Selection fields are orchestrator-fixed from the design-point table. Copy them verbatim; you are forbidden to edit them. The quantitative description of this plant belongs in Section 5.)
 
 ### Canonical 1costingFE Account Schema (this archetype)
 
@@ -155,11 +164,12 @@ account costs — enough to judge whether the dossier justifies an override.
 | --- | --- | --- |
 | `C220101` | First wall, blanket & neutron multiplier (DT: tritium-breeding blanket; DD/aneutronic: energy-capture blanket) | always (for this archetype) |
 | `C220102` | Radiation shield (sized to neutron wall loading; scales down for low-neutron fuels) | always (for this archetype) |
-| `C220104` | Supplementary plasma heating (steady-state) or primary pulsed driver (laser/accelerator/gun) | primary pulsed driver (laser/accelerator/gun) on $/J of driver energy; electrical-drive concepts cost it in C220107 |
+| `C220103` | Confinement magnets / coils (HTS-REBCO conductor + winding + cryostat) | always (for this archetype) |
+| `C220104` | Supplementary plasma heating (steady-state) or primary pulsed driver (laser/accelerator/gun) | supplementary heating (NBI/ICRF/ECRH/LHCD) per installed MW |
 | `C220105` | Primary structure — gravity supports, thermal shields, inter-coil structure, machine base | always (for this archetype) |
 | `C220106` | Vacuum system — vessel, port extensions, cryopumps, leak detection | always (for this archetype) |
-| `C220107` | Power supplies (steady-state magnet supplies / switchgear) or pulsed-power capacitor bank ($/J stored) | pulsed-power capacitor bank on $/J stored — usually the dominant driver cost for electrically-driven pulsed schemes |
-| `C220108` | Divertor (steady-state, W monoblock cassettes) or target factory (IFE/MIF target manufacturing) | high-rep-rate target manufacturing factory (IFE/MIF) |
+| `C220107` | Power supplies (steady-state magnet supplies / switchgear) or pulsed-power capacitor bank ($/J stored) | DC magnet power supplies and switchgear |
+| `C220108` | Divertor (steady-state, W monoblock cassettes) or target factory (IFE/MIF target manufacturing) | divertor (W monoblock cassettes on CuCrZr heat sinks) |
 | `C220110` | Remote handling & maintenance equipment (rad-hardening tier x vessel geometry) | always (for this archetype) |
 | `C220111` | Reactor-equipment installation & assembly (fraction of the CAS22 subtotal) | always (for this archetype) |
 | `CAS21` | Buildings & site structures (reactor, turbine, hot cell, balance-of-plant) | always (for this archetype) |
@@ -172,15 +182,15 @@ account costs — enough to judge whether the dossier justifies an override.
 
 ### Comparables (fixed — for the Section 7 family-delta)
 
-- 26-laser-icf-indirect-drive
-- 30-laser-icf-nif-commercialization
-- 31-laser-icf-oec-architecture
-- 32-laser-icf-french-national
-- 17a-laser-icf-hybrid-drive
+- 05-planar-coil-stellarator
+- 09-qi-stellarator-hts
+- 20a-type-one-stellarator
+- 20b-renaissance-stellarator
+- 36-helical-coil-stellarator
 
 ### Override-Count Rubric (from Archetype-Fit grade)
 
-Archetype-Fit is Med → expect 3–8 enabled overrides. Flag in your output if your count falls outside this band.
+Archetype-Fit is High → expect 0–4 enabled overrides. Flag in your output if your count falls outside this band.
 
 ## Override Candidate Discovery
 
@@ -395,13 +405,14 @@ known pitfalls and apply established patterns. Do not cite these memories as
 sources — they are guidance, not evidence. Verify any specific claims against the
 actual source documents.
 
-## FLiBe Coolant Cost Data Is Consistently Sparse
-Date: 2026-03-29 | Concepts: 09, 14, 22, IFE
+## ARIES Studies Are Best Parameter Source for MFE Concepts
+Date: 2026-03-29 | Concepts: MFE
 
-IFE concepts using FLiBe as primary coolant/breeder consistently lack
-cost data for coolant inventory and processing. Flag as [estimated] with
-high uncertainty. The HYLIFE-II report (Moir 1994) is the only source
-with FLiBe cost estimates but uses 1994 dollars.
+ARIES-AT and ARIES-CS studies provide the most complete parameter sets
+for magnetic confinement cost modeling — plant-level CAS breakdowns,
+thermal efficiency targets, and magnet cost estimates. Prefer these over
+individual paper estimates when available. Cross-check against PROCESS
+code outputs where overlap exists.
 
 ## Assessment Repeatedly Flags Missing O&M Breakdown
 Date: 2026-03-29 | Concepts: all
@@ -453,6 +464,7 @@ Approved concepts have full analyses available; I{N} indicates N completed itera
 | Planar-Coil Stellarator (Thea Energy) | Thea Energy | MFE | iter-1/PASS | E |
 | MTF Pneumatic Compression (General Fusion) | General Fusion | MIF | iter-1/PASS | E |
 | Sheared-Flow Z-Pinch (Zap Energy) | Zap Energy | MFE | iter-1/PASS | E |
+| Laser ICF Fast Ignition (Focused Energy) | Focused Energy | IFE | iter-1/INCOMPLETE | E |
 | Heavy-Ion Beam ICF | Intensity Energy | IFE | iter-1/PASS | E |
 | Laser ICF Indirect Drive (Inertia Thunderwall) | Inertia Enterprises | IFE | iter-1/PASS | E |
 | Laser ICF NIF Commercialization (Focused Energy LIFE-class) | Inertia Enterprises | IFE | iter-1/PASS | E |
@@ -468,7 +480,6 @@ Approved concepts have full analyses available; I{N} indicates N completed itera
 | Magnetic Mirror (Pale Blue) | Pale Blue | MFE | E |
 | FRC w/ Direct Conversion (Helion Energy) | Helion Energy | MFE | E |
 | QI Stellarator HTS (Proxima Fusion / Stellaris) | Proxima Fusion | MFE | E |
-| Large-Scale Stellarator | Gauss Fusion | MFE | E |
 | Magnetic Mirror (Realta Fusion / CoSMo) | Realta Fusion | MFE | E |
 | Levitated Dipole (OpenStar Technologies) | OpenStar Technologies | MFE | E |
 | Electrostatic Hybrid (Orbitron) | Avalanche Energy | MFE | E |
@@ -494,7 +505,7 @@ Read these files in this order before writing:
 - `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\handwritten\11-magnetic-mirror-comparison.md`
 - `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\handwritten\11-magnetic-mirror.md`
 - `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\handwritten\26-laser-icf-indirect-drive.md`
-4. **Dossier** (structured research summary — your factual foundation): `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\17b-laser-icf-fast-ignition\dossier.md`
+4. **Dossier** (structured research summary — your factual foundation): `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\10-large-scale-stellarator\dossier.md`
 5. **Extracted Source Documents** (use subagents — see Per-Source Reading Pattern).
    For cold start, ask each subagent:
    - What does this source say about the concept's cost structure and unique subsystems?
@@ -504,20 +515,16 @@ Read these files in this order before writing:
    - What materials, supply-chain, or manufacturing considerations are relevant?
 
    Sources to read via subagents:
-   - `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\17b-laser-icf-fast-ignition\iter-01\sources\focused-energy-technology.md` (2 KB)
-- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\17b-laser-icf-fast-ignition\iter-02\sources\focused-energy-callahan-interview.md` (14 KB)
-- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\17b-laser-icf-fast-ignition\iter-02\sources\hylife-energy-conversion-notes.md` (4 KB)
-- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\17b-laser-icf-fast-ignition\iter-03\sources\digital-ark-67531-metadc626683.md` (0 KB)
-- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\17b-laser-icf-fast-ignition\iter-03\sources\laserfocusworld-lasers-sources-article-14274951-can-high.md` (0 KB)
-- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\17b-laser-icf-fast-ignition\iter-03\sources\llnl-53961-llnl-releases-generalized-economics-model-fusion.md` (0 KB)
-- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\17b-laser-icf-fast-ignition\iter-03\sources\optica-opn-home-articles-volume-34-june-2023-features.md` (0 KB)
-- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\17b-laser-icf-fast-ignition\iter-03\sources\osti-biblio-7021072.md` (0 KB)
-- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\17b-laser-icf-fast-ignition\iter-03\sources\osti-servlets-purl-1438678.md` (0 KB)
-- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\17b-laser-icf-fast-ignition\iter-03\sources\osti-servlets-purl-2561299.md` (0 KB)
-- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\17b-laser-icf-fast-ignition\iter-03\sources\osti-servlets-purl-6137961.md` (0 KB)
-- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\17b-laser-icf-fast-ignition\iter-03\sources\pmc-articles-pmc7658748.md` (0 KB)
-- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\17b-laser-icf-fast-ignition\iter-03\sources\prnewswire-news-releases-focused-energy-and-amplitude-enter.md` (0 KB)
-- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\17b-laser-icf-fast-ignition\iter-04\sources\analyst-patch-target-unit-cost.md` (5 KB)
+   - `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\10-large-scale-stellarator\iter-01\sources\gauss-fusion-technical-summary.md` (4 KB)
+- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\10-large-scale-stellarator\iter-01\sources\helias-reactor-context.md` (22 KB)
+- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\10-large-scale-stellarator\iter-02\sources\arxiv-2512-08027v1.md` (0 KB)
+- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\10-large-scale-stellarator\iter-02\sources\core-outputs-100308302.md` (0 KB)
+- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\10-large-scale-stellarator\iter-02\sources\depositonce-bitstreams-39e36af5-b43a-4d14-b7fd-50c4e8b23aea.md` (0 KB)
+- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\10-large-scale-stellarator\iter-02\sources\frontiersin-journals-nuclear-engineering-articles-10-3389.md` (0 KB)
+- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\10-large-scale-stellarator\iter-02\sources\gauss-fusion-cdr-review-2026.md` (5 KB)
+- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\10-large-scale-stellarator\iter-02\sources\gauss-fusion-partnerships-2025.md` (3 KB)
+- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\10-large-scale-stellarator\iter-02\sources\helias-blanket-studies.md` (62 KB)
+- `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\knowledge\concept_research\10-large-scale-stellarator\iter-03\sources\analyst-patch-spec-anchors.md` (4 KB)
 6. **Schema** (controlled vocabulary and column definitions): `C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\phase_1a\schema.md`
 
 ### Content Requirements
@@ -537,7 +544,7 @@ Read these files in this order before writing:
 ### Output
 
 Write the complete analysis **body** to this file using the Write tool:
-`C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\17b-laser-icf-fast-ignition\iter-1\analysis_body.md`
+`C:\Users\mallo\Deterministic_Concept_scoring\fusion-tea\exploration\concept_analysis\analyses\10-large-scale-stellarator\iter-1\analysis_body.md`
 
 Write ONLY the analysis content (the `## Design Point` block followed by Sections
 1–8). Do NOT include:
