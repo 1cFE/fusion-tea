@@ -3424,3 +3424,87 @@ main {
   width: 100%;
   min-height: 480px;
 }
+
+/* --------------------------------------------------------------------------
+   Agentic Research Key Findings — concept profile section
+   -------------------------------------------------------------------------- */
+.findings-body {
+  font-size: var(--font-size-sm);
+  line-height: 1.55;
+  color: var(--color-text-primary);
+  max-width: 900px;
+}
+.findings-tldr {
+  background-color: var(--color-surface-2);
+  border-left: 3px solid var(--color-accent, #58a6ff);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-4);
+}
+.findings-tldr__label,
+.findings-full__label {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+.findings-full {
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border-subtle);
+}
+.findings-body h2 {
+  font-size: var(--font-size-base);
+  margin: var(--space-4) 0 var(--space-2);
+  color: var(--color-text-primary);
+}
+.findings-body h3 {
+  font-size: var(--font-size-sm);
+  margin: var(--space-3) 0 var(--space-2);
+  color: var(--color-text-primary);
+}
+.findings-body p,
+.findings-body ul,
+.findings-body ol {
+  margin: var(--space-2) 0;
+}
+.findings-body code {
+  background-color: var(--color-surface-3);
+  padding: 1px 4px;
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+.findings-body pre {
+  background-color: var(--color-surface-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+}
+.findings-body table {
+  border-collapse: collapse;
+  margin: var(--space-3) 0;
+  font-size: var(--font-size-xs);
+}
+.findings-body th,
+.findings-body td {
+  border: 1px solid var(--color-border);
+  padding: var(--space-2);
+  text-align: left;
+}
+.findings-body th {
+  background-color: var(--color-surface-2);
+  font-weight: 600;
+}
+.findings-body blockquote {
+  border-left: 3px solid var(--color-border);
+  padding-left: var(--space-3);
+  margin: var(--space-3) 0;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+.findings-empty {
+  color: var(--color-text-muted);
+  font-style: italic;
+}

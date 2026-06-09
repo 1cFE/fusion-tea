@@ -769,6 +769,52 @@
     // ---- Atomically reveal content ----
     loadingEl.style.display = "none";
     contentEl.style.display = "";
+
+    // Agentic Research Key Findings — fire-and-forget, never blocks the page.
+    // Renders below the sensitivity section: synthesis exec summary (TL;DR)
+    // followed by full analysis.md, whichever are available. Concepts with
+    // neither file show an honest placeholder.
+    _renderFindings(conceptId);
+  }
+
+  /** Fetch and render the Agentic Research Key Findings section. */
+  async function _renderFindings(conceptId) {
+    const sectionEl = document.getElementById("findings-section");
+    const mountEl = document.getElementById("findings-mount");
+    if (!sectionEl || !mountEl) return;
+    let payload;
+    try {
+      const resp = await fetch(`/api/concepts/${conceptId}/findings`);
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      payload = await resp.json();
+    } catch (err) {
+      console.warn("[concept_page] findings fetch failed:", err);
+      return;
+    }
+    const parts = [];
+    if (payload.exec_summary_html) {
+      parts.push(
+        '<div class="findings-tldr"><div class="findings-tldr__label">TL;DR — Executive Summary</div>'
+        + payload.exec_summary_html
+        + "</div>",
+      );
+    }
+    if (payload.analysis_html) {
+      parts.push(
+        '<div class="findings-full"><div class="findings-full__label">Full Analysis</div>'
+        + payload.analysis_html
+        + "</div>",
+      );
+    }
+    if (parts.length === 0) {
+      parts.push(
+        '<p class="findings-empty">Research synthesis not yet available for this concept. '
+        + "See <code>model_setup.py</code> in the concept directory for the design-point "
+        + "rationale and parameter choices.</p>",
+      );
+    }
+    mountEl.innerHTML = parts.join("");
+    sectionEl.style.display = "";
   }
 
   // ---------------------------------------------------------------------------

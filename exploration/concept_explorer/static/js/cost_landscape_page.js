@@ -267,19 +267,17 @@
   }
 
   /**
-   * Per-segment hover: identity + component $/MWh + % of LCOE, the override
-   * summary for that segment, and the concept's grounding caveat reason (the
-   * same caveat the tick glyph marks). Click navigates to the concept page (D6).
+   * Per-bar hover (simplified per analyst direction 2026-06-08): generic name,
+   * total LCOE, click-to-navigate cue. Caveat marker appended only when the
+   * concept carries one (low grounding / archetype-fit None). Per-segment
+   * dollar breakdown and override summaries were removed — that level of
+   * detail belongs on the concept page, not the landscape hover.
    */
-  function hoverFor(row, comp) {
-    var seg = row._seg[comp.key];
-    var pct = row.cost.lcoe > 0 ? (seg / row.cost.lcoe) * 100 : 0;
+  function hoverFor(row, _comp) {
     var lines = [
-      conceptLabel(row).text,
-      comp.label + ": " + seg.toFixed(1) + " $/MWh (" + pct.toFixed(1) + "%)",
+      "<b>" + conceptLabel(row).name + "</b>",
+      "LCOE: " + row.cost.lcoe.toFixed(1) + " $/MWh",
     ];
-    var ov = overrideSummary(row.cost, comp.key);
-    if (ov) lines.push(ov);
     var cav = caveatMarker({ asterisk: row.asterisk_in_comparison, fitGrade: row.fit_grade });
     if (cav.any) lines.push(cav.glyph + " " + cav.title);
     lines.push("<i>click bar → concept page</i>");

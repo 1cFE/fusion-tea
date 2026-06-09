@@ -114,6 +114,22 @@
       </div>
     </section>
 
+    {# Agentic Research Key Findings: synthesis exec summary + full analysis.md.
+       Hidden by default; concept_page.js shows it after fetching /api/concepts/{id}/findings
+       and renders whichever sections are present. Concepts with neither file fall
+       through with a brief honest placeholder. #}
+    <section id="findings-section" style="display: none;" class="section" data-section="findings">
+      <button class="section__header" type="button">
+        <svg class="section__chevron" viewBox="0 0 12 12" aria-hidden="true">
+          <path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="section__title">Agentic Research Key Findings</span>
+      </button>
+      <div class="section__body">
+        <div id="findings-mount" class="findings-body"></div>
+      </div>
+    </section>
+
     {# Add to comparison action #}
     <div class="comparison-actions">
       <a href="/compare" class="btn btn--secondary">Add to Comparison</a>

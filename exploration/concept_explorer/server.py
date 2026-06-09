@@ -232,6 +232,9 @@ class _State:
     parameter_index: ParameterIndex
     cost_landscape: CostLandscape
     dist_dir: Path
+    # Explorer base directory (concept_explorer/). Used to locate sibling
+    # paths like concept_analysis/analyses/ for the findings endpoint.
+    base_dir: Path = field(default_factory=Path)
     explorer_state: ExplorerState = field(default_factory=ExplorerState)
     registry: ConceptRegistry | None = None
     decision_tree: dict | None = None
@@ -739,6 +742,25 @@ def api_get_concept(concept_id: str, state: _State = Depends(get_state)) -> Conc
     return concept
 
 
+def api_get_findings(concept_id: str, state: _State = Depends(get_state)) -> dict:
+    """Agentic research findings: synthesis exec summary + full analysis.md HTML.
+
+    Returns a dict with ``exec_summary_html`` and ``analysis_html`` keys —
+    either may be None when the corresponding markdown file is absent. The
+    concept must be served (404 otherwise) to keep the route surface aligned
+    with /api/concepts/{id}.
+    """
+    if state.concepts.get(concept_id) is None:
+        raise HTTPException(status_code=404, detail=f"Concept {concept_id} not found")
+    from exploration.concept_explorer.findings import build_findings
+    analyses_root = state.base_dir.parent / "concept_analysis" / "analyses"
+    payload = build_findings(concept_id, analyses_root)
+    return {
+        "exec_summary_html": payload.exec_summary_html,
+        "analysis_html": payload.analysis_html,
+    }
+
+
 def api_get_parameter_index(state: _State = Depends(get_state)) -> ParameterIndex:
     return state.parameter_index
 
@@ -913,6 +935,7 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
             parameter_index=parameter_index,
             cost_landscape=build_cost_landscape(list(concepts.values())),
             dist_dir=dist_dir,
+            base_dir=base_dir,
             registry=registry,
             decision_tree=decision_tree,
             similarity_reports=similarity_reports,
@@ -1025,6 +1048,7 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
     app.get("/api/manifest", response_model=ConceptManifest)(api_get_manifest)
     app.get("/api/cost-landscape", response_model=CostLandscape)(api_cost_landscape)
     app.get("/api/concepts/{concept_id}", response_model=ConceptData)(api_get_concept)
+    app.get("/api/concepts/{concept_id}/findings")(api_get_findings)
     app.get("/api/parameter_index", response_model=ParameterIndex)(api_get_parameter_index)
     app.get("/api/parameters/{param_name}", response_model=ParameterIndexEntry)(api_get_parameter)
     app.get("/api/state", response_model=ExplorerState)(api_get_state)
