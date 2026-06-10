@@ -935,7 +935,7 @@
       "modeling_note": null
     },
     "eta_pin": {
-      "display_name": "Injector Efficiency",
+      "display_name": "Driver Wall-plug Efficiency",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 0.25,

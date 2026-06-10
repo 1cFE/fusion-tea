@@ -107,7 +107,7 @@ eta_th:
   display_unit: "%"
   display_multiplier: 100.0
 eta_pin:
-  display_name: "Injector Efficiency"
+  display_name: "Driver Wall-plug Efficiency"
   display_unit: "%"
   display_multiplier: 100.0
 eta_de:

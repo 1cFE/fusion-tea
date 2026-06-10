@@ -25,7 +25,7 @@
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 27593.69140625,
+      "cost_m_usd": 27593.6953125,
       "overridden": false
     },
     "cas23": {
@@ -65,7 +65,7 @@
     },
     "cas30": {
       "name": "Indirect Costs",
-      "cost_m_usd": 5925.18798828125,
+      "cost_m_usd": 5925.18896484375,
       "overridden": false
     },
     "cas40": {
@@ -75,12 +75,12 @@
     },
     "cas50": {
       "name": "Supplementary Costs",
-      "cost_m_usd": 1319.0736083984375,
+      "cost_m_usd": 1319.0738525390625,
       "overridden": false
     },
     "cas60": {
       "name": "Interest During Construction",
-      "cost_m_usd": 7092.4912109375,
+      "cost_m_usd": 7092.4921875,
       "overridden": false
     },
     "cas70": {
@@ -105,7 +105,7 @@
     },
     "cas90": {
       "name": "Financial Costs",
-      "cost_m_usd": 3299.742431640625,
+      "cost_m_usd": 3299.74267578125,
       "overridden": false
     },
     "cas22_detail": {
@@ -201,8 +201,8 @@
       }
     },
     "headline": {
-      "lcoe_per_mwh": 507.3102111816406,
-      "overnight_cost_per_kw": 43991.203125,
+      "lcoe_per_mwh": 507.31024169921875,
+      "overnight_cost_per_kw": 43991.20703125,
       "p_net_mw": 90.90910339355469,
       "q_eng": 1.764790415763855,
       "capacity_factor": 0.85
