@@ -3,6 +3,7 @@
   "name": "Laser ICF French National (GenF)",
   "confinement_family": "IFE",
   "company": "GenF Systems",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": false
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Target Factory",
         "cost_m_usd": 267.9071044921875,
         "overridden": false
       },

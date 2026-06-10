@@ -1,8 +1,9 @@
 {
   "concept_id": "11",
-  "name": "11-magnetic-mirror",
-  "confinement_family": "NONSTANDARD",
-  "company": null,
+  "name": "Magnetic Mirror (Realta Fusion / CoSMo)",
+  "confinement_family": "MFE",
+  "company": "Realta Fusion",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": false
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Divertor",
         "cost_m_usd": 35.813194274902344,
         "overridden": false
       },
@@ -1346,7 +1347,7 @@
   "narrative": null,
   "sources": {
     "model_setup": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\11-magnetic-mirror\\model_setup.py",
-    "analysis": null
+    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\11-magnetic-mirror\\analysis.md"
   },
   "analyst_override_count": 0,
   "overrides": [],

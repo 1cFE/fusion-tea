@@ -3,6 +3,7 @@
   "name": "Orbital Levitated Dipole (D-He3)",
   "confinement_family": "NONSTANDARD",
   "company": "Zephyr Fusion",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",

@@ -1,8 +1,9 @@
 {
   "concept_id": "20a",
-  "name": "20a-type-one-stellarator",
-  "confinement_family": "NONSTANDARD",
-  "company": null,
+  "name": "Type One Stellarator (Type One Energy)",
+  "confinement_family": "MFE",
+  "company": "Type One Energy",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": false
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Divertor",
         "cost_m_usd": 61.46158218383789,
         "overridden": false
       },
@@ -1323,7 +1324,7 @@
   "narrative": null,
   "sources": {
     "model_setup": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\20a-type-one-stellarator\\model_setup.py",
-    "analysis": null
+    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\20a-type-one-stellarator\\analysis.md"
   },
   "analyst_override_count": 0,
   "overrides": [],

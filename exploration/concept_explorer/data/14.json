@@ -3,6 +3,7 @@
   "name": "MTF Pneumatic Compression (General Fusion)",
   "confinement_family": "MIF",
   "company": "General Fusion",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -24,7 +25,7 @@
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 1284.7462158203125,
+      "cost_m_usd": 1284.74609375,
       "overridden": false
     },
     "cas23": {
@@ -79,7 +80,7 @@
     },
     "cas60": {
       "name": "Interest During Construction",
-      "cost_m_usd": 653.1034545898438,
+      "cost_m_usd": 653.1033935546875,
       "overridden": false
     },
     "cas70": {
@@ -104,7 +105,7 @@
     },
     "cas90": {
       "name": "Financial Costs",
-      "cost_m_usd": 303.852783203125,
+      "cost_m_usd": 303.8527526855469,
       "overridden": false
     },
     "cas22_detail": {
@@ -144,7 +145,7 @@
         "overridden": true
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Target Factory",
         "cost_m_usd": 0.0,
         "overridden": true
       },
@@ -200,8 +201,8 @@
       }
     },
     "headline": {
-      "lcoe_per_mwh": 47.22451400756836,
-      "overnight_cost_per_kw": 4050.8759765625,
+      "lcoe_per_mwh": 47.224510192871094,
+      "overnight_cost_per_kw": 4050.87548828125,
       "p_net_mw": 142.857177734375,
       "q_eng": 3.000000476837158,
       "capacity_factor": 0.85
@@ -995,7 +996,7 @@
     },
     {
       "account": "C220108",
-      "account_name": "Divertor / Target Factory",
+      "account_name": "Target Factory",
       "value": 0.0,
       "enabled": true,
       "provenance": "direct",

@@ -1,8 +1,9 @@
 {
   "concept_id": "12",
-  "name": "12-levitated-dipole",
-  "confinement_family": "NONSTANDARD",
-  "company": null,
+  "name": "Levitated Dipole (OpenStar Technologies)",
+  "confinement_family": "MFE",
+  "company": "OpenStar Technologies",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": false
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Divertor",
         "cost_m_usd": 0.0,
         "overridden": false
       },
@@ -1260,7 +1261,7 @@
   "narrative": null,
   "sources": {
     "model_setup": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\12-levitated-dipole\\model_setup.py",
-    "analysis": null
+    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\12-levitated-dipole\\analysis.md"
   },
   "analyst_override_count": 2,
   "overrides": [

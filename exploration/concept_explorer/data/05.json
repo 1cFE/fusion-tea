@@ -3,6 +3,7 @@
   "name": "Planar-Coil Stellarator (Thea Energy)",
   "confinement_family": "MFE",
   "company": "Thea Energy",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": false
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Divertor",
         "cost_m_usd": 58.76039123535156,
         "overridden": false
       },

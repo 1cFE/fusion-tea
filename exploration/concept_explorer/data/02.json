@@ -3,6 +3,7 @@
   "name": "Acoustic ICF / Sonofusion (D-D)",
   "confinement_family": "NONSTANDARD",
   "company": "Sonofusion Energy",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",

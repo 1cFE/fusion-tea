@@ -3,6 +3,7 @@
   "name": "HTS Tokamak Full HTS",
   "confinement_family": "MFE",
   "company": "Energy Singularity",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": false
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Divertor",
         "cost_m_usd": 80.8274917602539,
         "overridden": false
       },

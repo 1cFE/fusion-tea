@@ -3,6 +3,7 @@
   "name": "HTS Compact Tokamak (Commonwealth Fusion / ARC)",
   "confinement_family": "MFE",
   "company": "Commonwealth Fusion Systems",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": false
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Divertor",
         "cost_m_usd": 57.772560119628906,
         "overridden": false
       },

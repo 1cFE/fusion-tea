@@ -1,8 +1,9 @@
 {
   "concept_id": "13",
-  "name": "13-electrostatic-hybrid",
-  "confinement_family": "NONSTANDARD",
-  "company": null,
+  "name": "Electrostatic Hybrid (Orbitron)",
+  "confinement_family": "MFE",
+  "company": "Avalanche Energy",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": false
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Divertor",
         "cost_m_usd": 3.121260643005371,
         "overridden": false
       },
@@ -1170,10 +1171,10 @@
   "narrative": null,
   "sources": {
     "model_setup": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\13-electrostatic-hybrid\\model_setup.py",
-    "analysis": null
+    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\13-electrostatic-hybrid\\analysis.md"
   },
   "analyst_override_count": 0,
   "overrides": [],
-  "asterisk_in_comparison": false,
+  "asterisk_in_comparison": true,
   "fit_grade": null
 }

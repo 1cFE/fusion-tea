@@ -1,8 +1,9 @@
 {
   "concept_id": "06",
-  "name": "06-magnetic-mirror",
-  "confinement_family": "NONSTANDARD",
-  "company": null,
+  "name": "Magnetic Mirror (Pale Blue)",
+  "confinement_family": "MFE",
+  "company": "Pale Blue",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": false
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Divertor",
         "cost_m_usd": 0.0,
         "overridden": true
       },
@@ -1324,7 +1325,7 @@
   "narrative": null,
   "sources": {
     "model_setup": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\06-magnetic-mirror\\model_setup.py",
-    "analysis": null
+    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\06-magnetic-mirror\\analysis.md"
   },
   "analyst_override_count": 6,
   "overrides": [
@@ -1352,7 +1353,7 @@
     },
     {
       "account": "C220108",
-      "account_name": "Divertor / Target Factory",
+      "account_name": "Divertor",
       "value": 0.0,
       "enabled": true,
       "provenance": "derived",
@@ -1406,6 +1407,6 @@
       "blocked_by": null
     }
   ],
-  "asterisk_in_comparison": false,
+  "asterisk_in_comparison": true,
   "fit_grade": null
 }

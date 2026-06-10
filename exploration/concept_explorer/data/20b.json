@@ -3,6 +3,7 @@
   "name": "Renaissance Stellarator (Renaissance Fusion)",
   "confinement_family": "MFE",
   "company": "Renaissance Fusion",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": false
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Divertor",
         "cost_m_usd": 98.41108703613281,
         "overridden": false
       },

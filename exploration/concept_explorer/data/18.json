@@ -1,8 +1,9 @@
 {
   "concept_id": "18",
-  "name": "18-p-b11-frc",
-  "confinement_family": "NONSTANDARD",
-  "company": null,
+  "name": "PB11 FRC (TAE Technologies)",
+  "confinement_family": "MFE",
+  "company": "TAE Technologies",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": false
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Divertor",
         "cost_m_usd": 0.0,
         "overridden": true
       },
@@ -1324,7 +1325,7 @@
   "narrative": null,
   "sources": {
     "model_setup": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\18-p-b11-frc\\model_setup.py",
-    "analysis": null
+    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\18-p-b11-frc\\analysis.md"
   },
   "analyst_override_count": 7,
   "overrides": [
@@ -1374,7 +1375,7 @@
     },
     {
       "account": "C220108",
-      "account_name": "Divertor / Target Factory",
+      "account_name": "Divertor",
       "value": 0.0,
       "enabled": true,
       "provenance": "direct",
@@ -1417,6 +1418,6 @@
       "blocked_by": null
     }
   ],
-  "asterisk_in_comparison": false,
+  "asterisk_in_comparison": true,
   "fit_grade": null
 }

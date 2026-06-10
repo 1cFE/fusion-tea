@@ -3,6 +3,7 @@
   "name": "Laser ICF Hybrid Drive (Xcimer Energy)",
   "confinement_family": "IFE",
   "company": "Xcimer Energy",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": true
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Target Factory",
         "cost_m_usd": 103.71109008789062,
         "overridden": true
       },
@@ -1071,7 +1072,7 @@
     },
     {
       "account": "C220108",
-      "account_name": "Divertor / Target Factory",
+      "account_name": "Target Factory",
       "value": 88.71319580078125,
       "enabled": true,
       "provenance": "derived",

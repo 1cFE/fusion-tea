@@ -191,6 +191,79 @@ def test_from_forward_result_overridden_flag() -> None:
     assert cmd.cas22_detail["C220101"].overridden is False
 
 
+def test_resolve_cas22_name_c220108_family_aware() -> None:
+    """C220108 renders family-aware: Divertor (MFE) vs Target Factory (IFE/MIF).
+
+    NONSTANDARD and missing family fall back to the ambiguous combined label —
+    intentional, because NONSTANDARD spans both target-driven and steady-state
+    architectures and we cannot pick the correct half from the family alone.
+    """
+    # Family-specific resolution for the shared account
+    assert CostModelData.resolve_cas22_name("C220108", ConfinementFamily.MFE) == "Divertor"
+    assert CostModelData.resolve_cas22_name("C220108", ConfinementFamily.IFE) == "Target Factory"
+    assert CostModelData.resolve_cas22_name("C220108", ConfinementFamily.MIF) == "Target Factory"
+
+    # Ambiguous label preserved for NONSTANDARD and family=None (back-compat default)
+    assert (
+        CostModelData.resolve_cas22_name("C220108", ConfinementFamily.NONSTANDARD)
+        == "Divertor / Target Factory"
+    )
+    assert (
+        CostModelData.resolve_cas22_name("C220108", None) == "Divertor / Target Factory"
+    )
+
+    # Other CAS22 codes resolve identically regardless of family
+    for family in (
+        None,
+        ConfinementFamily.MFE,
+        ConfinementFamily.IFE,
+        ConfinementFamily.MIF,
+        ConfinementFamily.NONSTANDARD,
+    ):
+        assert CostModelData.resolve_cas22_name("C220101", family) == "First Wall & Blanket"
+        assert CostModelData.resolve_cas22_name("C220103", family) == "Magnets / Coils"
+
+    # Unknown CAS22 code falls through to bare code (visible, not blank)
+    assert CostModelData.resolve_cas22_name("C999999", ConfinementFamily.MFE) == "C999999"
+
+
+def test_from_forward_result_threads_family_into_c220108_name() -> None:
+    """``from_forward_result(confinement_family=...)`` propagates to cas22_detail[C220108].name."""
+    result_dict = _make_forward_result_dict(cas22_override={"C220108": 50.0})
+
+    # MFE concept → Divertor
+    cmd_mfe = CostModelData.from_forward_result(
+        result_dict, sensitivities=None, confinement_family=ConfinementFamily.MFE,
+    )
+    assert cmd_mfe.cas22_detail["C220108"].name == "Divertor"
+
+    # IFE concept → Target Factory
+    cmd_ife = CostModelData.from_forward_result(
+        result_dict, sensitivities=None, confinement_family=ConfinementFamily.IFE,
+    )
+    assert cmd_ife.cas22_detail["C220108"].name == "Target Factory"
+
+    # MIF concept → Target Factory
+    cmd_mif = CostModelData.from_forward_result(
+        result_dict, sensitivities=None, confinement_family=ConfinementFamily.MIF,
+    )
+    assert cmd_mif.cas22_detail["C220108"].name == "Target Factory"
+
+    # NONSTANDARD or no family arg → combined ambiguous label preserved
+    cmd_ns = CostModelData.from_forward_result(
+        result_dict, sensitivities=None, confinement_family=ConfinementFamily.NONSTANDARD,
+    )
+    assert cmd_ns.cas22_detail["C220108"].name == "Divertor / Target Factory"
+    cmd_none = CostModelData.from_forward_result(result_dict, sensitivities=None)
+    assert cmd_none.cas22_detail["C220108"].name == "Divertor / Target Factory"
+
+    # The cost is correctly read regardless of family
+    assert cmd_mfe.cas22_detail["C220108"].cost_m_usd == 50.0
+
+    # Other sub-accounts unchanged across families
+    assert cmd_mfe.cas22_detail["C220101"].name == cmd_ife.cas22_detail["C220101"].name
+
+
 def test_from_forward_result_capacity_factor_fallback() -> None:
     """AC-1 (fallback): 'availability' key used when 'capacity_factor' absent."""
     result_dict = _make_forward_result_dict(

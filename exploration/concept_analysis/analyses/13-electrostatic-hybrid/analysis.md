@@ -12,7 +12,7 @@ Comparison-Status: costingfe-asterisked
 Comparables: []
 Design-Point-Name: Orbitron commercial module — lower bound (Avalanche Energy product page / CWFest 2023)
 Design-Point-Maturity: paper-concept
-P-Native: 0.005
+P-Native: 1.0
 Grounding-Confidence: low
 ---
 
@@ -20,7 +20,8 @@ Grounding-Confidence: low
 
 - Name: Orbitron commercial module — lower bound (Avalanche Energy product page / CWFest 2023)
 - Maturity: paper-concept
-- P_native: 0.005 MWe
+- P_native (modeled): 1.0 MWe — library convergence floor; see "Modeling Workaround" below
+- P_native (product target): 0.005 MWe (5 kWe per Avalanche product page)
 - Grounding: low
 - Primary sources:
   - knowledge/concept_research/13-electrostatic-hybrid/iter-01/sources/avalanche-orbitron-page.md
