@@ -1,8 +1,9 @@
 {
   "concept_id": "17b",
-  "name": "Laser ICF - Fast Ignition (D-T)",
-  "confinement_family": "NONSTANDARD",
+  "name": "Laser ICF Fast Ignition (Focused Energy)",
+  "confinement_family": "IFE",
   "company": "Focused Energy",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": false
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Target Factory",
         "cost_m_usd": 298.4330749511719,
         "overridden": false
       },
@@ -1025,6 +1026,6 @@
   },
   "analyst_override_count": 0,
   "overrides": [],
-  "asterisk_in_comparison": false,
+  "asterisk_in_comparison": true,
   "fit_grade": null
 }

@@ -3,6 +3,7 @@
   "name": "Spherical Tokamak CS-Free PB11 (ENN)",
   "confinement_family": "MFE",
   "company": "ENN Energy",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": false
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Divertor",
         "cost_m_usd": 72.59486389160156,
         "overridden": false
       },

@@ -3,6 +3,7 @@
   "name": "MagLIF (Pacific Fusion)",
   "confinement_family": "MIF",
   "company": "Pacific Fusion",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": false
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Target Factory",
         "cost_m_usd": 105.04485321044922,
         "overridden": false
       },

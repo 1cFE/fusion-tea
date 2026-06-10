@@ -8,7 +8,7 @@ Approved-Date:
 Confinement-Family: IFE
 Archetype: LASER_IFE
 Archetype-Fit: Med
-Comparison-Status: freeform-deferred
+Comparison-Status: costingfe-asterisked
 Comparables:
   - 26-laser-icf-indirect-drive
   - 30-laser-icf-nif-commercialization

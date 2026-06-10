@@ -3,6 +3,7 @@
   "name": "Polomac Magnetic Confinement (Deutelio)",
   "confinement_family": "MFE",
   "company": "Deutelio",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": false
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Divertor",
         "cost_m_usd": 0.0,
         "overridden": false
       },

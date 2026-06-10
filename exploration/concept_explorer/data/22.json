@@ -3,6 +3,7 @@
   "name": "Projectile ICF (First Light Fusion)",
   "confinement_family": "IFE",
   "company": "First Light Fusion",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": true
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Target Factory",
         "cost_m_usd": 5.411971092224121,
         "overridden": true
       },
@@ -1071,7 +1072,7 @@
     },
     {
       "account": "C220108",
-      "account_name": "Divertor / Target Factory",
+      "account_name": "Target Factory",
       "value": 5.6,
       "enabled": true,
       "provenance": "derived",

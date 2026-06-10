@@ -3,6 +3,7 @@
   "name": "Laser ICF (HB11 Energy)",
   "confinement_family": "IFE",
   "company": "hb11",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": true
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Target Factory",
         "cost_m_usd": 100.0,
         "overridden": true
       },
@@ -1016,7 +1017,7 @@
     },
     {
       "account": "C220108",
-      "account_name": "Divertor / Target Factory",
+      "account_name": "Target Factory",
       "value": 100.0,
       "enabled": true,
       "provenance": "derived",

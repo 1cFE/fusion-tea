@@ -1029,7 +1029,11 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
             raw.setdefault("power_table", {})["availability"] = params_dict["availability"]
 
         baseline_sensitivities = concept.cost_model.sensitivities if concept.cost_model else None
-        return CostModelData.from_forward_result(raw, baseline_sensitivities)
+        return CostModelData.from_forward_result(
+            raw,
+            baseline_sensitivities,
+            confinement_family=concept.confinement_family,
+        )
 
     def compute(body: ComputeRequest, state: _State = Depends(get_state)) -> CostModelData:
         concept = state.concepts.get(body.concept_id)

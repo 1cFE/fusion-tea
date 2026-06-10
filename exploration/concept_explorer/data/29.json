@@ -3,6 +3,7 @@
   "name": "Negative-Triangularity Tokamak",
   "confinement_family": "MFE",
   "company": "Firefly Fusion",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": false
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Divertor",
         "cost_m_usd": 150.33621215820312,
         "overridden": true
       },
@@ -1569,7 +1570,7 @@
     },
     {
       "account": "C220108",
-      "account_name": "Divertor / Target Factory",
+      "account_name": "Divertor",
       "value": 150.0,
       "enabled": true,
       "provenance": "direct",

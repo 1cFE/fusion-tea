@@ -218,11 +218,38 @@ class CostModelData(BaseModel):
     }
 
     @classmethod
+    def resolve_cas22_name(
+        cls,
+        code: str,
+        family: ConfinementFamily | None = None,
+    ) -> str:
+        """Display name for a CAS22 sub-account, family-aware for C220108.
+
+        C220108 is a shared account: in 1costingfe it computes either a divertor
+        (MFE / steady-state magnetic concepts) or a target factory (IFE / MIF
+        target-driven concepts) depending on the confinement family. Showing the
+        ambiguous "Divertor / Target Factory" label was confusing analysts looking
+        at a single concept, so we disambiguate per concept here. When ``family``
+        is None or NONSTANDARD we keep the ambiguous label — NONSTANDARD spans
+        both target-driven and steady-state architectures, and the user can read
+        the right interpretation off the rest of the concept page.
+
+        All other CAS22 codes resolve identically regardless of family.
+        """
+        if code == "C220108" and family is not None:
+            if family == ConfinementFamily.MFE:
+                return "Divertor"
+            if family in (ConfinementFamily.IFE, ConfinementFamily.MIF):
+                return "Target Factory"
+        return cls.CAS22_NAMES.get(code, code)
+
+    @classmethod
     def from_forward_result(
         cls,
         result: dict[str, Any],
         sensitivities: SensitivityAnalysis | None,
         sensitivities_bare: SensitivityAnalysis | None = None,
+        confinement_family: ConfinementFamily | None = None,
     ) -> CostModelData:
         """Construct from ``dataclasses.asdict(forward_result)``.
 
@@ -292,7 +319,7 @@ class CostModelData(BaseModel):
             """Build a CAS22 sub-account CASAccount from cas22_detail."""
             cost = float(detail_raw.get(key, 0.0))
             return CASAccount(
-                name=cls.CAS22_NAMES.get(key, key),
+                name=cls.resolve_cas22_name(key, confinement_family),
                 cost_m_usd=cost,
                 overridden=key in overridden_set,
             )

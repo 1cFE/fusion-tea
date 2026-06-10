@@ -3,6 +3,7 @@
   "name": "State-Backed Tokamak (Neo / ASIPP-class)",
   "confinement_family": "MFE",
   "company": "Neo Fusion",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": false
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Divertor",
         "cost_m_usd": 75.72744750976562,
         "overridden": false
       },

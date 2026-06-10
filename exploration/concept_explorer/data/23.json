@@ -3,6 +3,7 @@
   "name": "Laser ICF Nanostructured Target (Marvel Fusion)",
   "confinement_family": "IFE",
   "company": "Marvel Fusion",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": false
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Target Factory",
         "cost_m_usd": 20.0,
         "overridden": true
       },
@@ -1027,7 +1028,7 @@
     },
     {
       "account": "C220108",
-      "account_name": "Divertor / Target Factory",
+      "account_name": "Target Factory",
       "value": 20.0,
       "enabled": true,
       "provenance": "derived",

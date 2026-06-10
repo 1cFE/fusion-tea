@@ -1,8 +1,9 @@
 {
   "concept_id": "08",
-  "name": "08-frc-w-direct-conversion",
-  "confinement_family": "NONSTANDARD",
-  "company": null,
+  "name": "FRC w/ Direct Conversion (Helion Energy)",
+  "confinement_family": "MFE",
+  "company": "Helion Energy",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": true
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Divertor",
         "cost_m_usd": 0.0,
         "overridden": false
       },
@@ -914,7 +915,7 @@
   "narrative": null,
   "sources": {
     "model_setup": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\08-frc-w-direct-conversion\\model_setup.py",
-    "analysis": null
+    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\08-frc-w-direct-conversion\\analysis.md"
   },
   "analyst_override_count": 6,
   "overrides": [

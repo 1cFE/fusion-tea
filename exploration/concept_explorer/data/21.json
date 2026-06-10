@@ -3,6 +3,7 @@
   "name": "Spherical Tokamak HTS (Tokamak Energy)",
   "confinement_family": "MFE",
   "company": "Tokamak Energy",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": false
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Divertor",
         "cost_m_usd": 76.6318359375,
         "overridden": false
       },

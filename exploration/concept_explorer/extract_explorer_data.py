@@ -60,7 +60,9 @@ from exploration.concept_explorer.models import (  # noqa: E402, I001
 )
 
 
-def _resolve_account_name(account: str) -> str:
+def _resolve_account_name(
+    account: str, family: ConfinementFamily | None = None,
+) -> str:
     """Resolve a CAS account code to its human-readable name.
 
     Single source of names = the CAS_NAMES / CAS22_NAMES maps on CostModelData.
@@ -68,13 +70,20 @@ def _resolve_account_name(account: str) -> str:
     the top-level map keys are lowercase, so try the CAS22 map first, then the
     case-normalized top-level map, then fall back to the bare code (visible, not
     blank — an unknown code should surface, not vanish).
+
+    ``family`` is forwarded to ``resolve_cas22_name`` so the shared C220108
+    account renders as "Divertor" (MFE) or "Target Factory" (IFE/MIF) instead
+    of the ambiguous combined label.
     """
     if account in CostModelData.CAS22_NAMES:
-        return CostModelData.CAS22_NAMES[account]
+        return CostModelData.resolve_cas22_name(account, family)
     return CostModelData.CAS_NAMES.get(account.lower(), account)
 
 
-def _build_override_records(overrides: list[dict[str, Any]]) -> list[OverrideRecord]:
+def _build_override_records(
+    overrides: list[dict[str, Any]],
+    family: ConfinementFamily | None = None,
+) -> list[OverrideRecord]:
     """Project a concept's raw ``overrides`` list into OverrideRecord payload.
 
     Carries every entry (enabled and disabled) so the inspection panel can show
@@ -87,7 +96,7 @@ def _build_override_records(overrides: list[dict[str, Any]]) -> list[OverrideRec
         records.append(
             OverrideRecord(
                 account=account,
-                account_name=_resolve_account_name(account),
+                account_name=_resolve_account_name(account, family),
                 value=float(o["value"]),
                 enabled=bool(o["enabled"]),
                 provenance=o.get("provenance"),
@@ -419,9 +428,13 @@ def extract_costingfe(
     # (INV-6). The param *keys* are identical across both (cost_overrides changes
     # elasticity values, not which continuous params exist), so metadata generated
     # from the applied set covers the bare set too.
+    # Resolve family up-front: needed by both _build_override_records (so the
+    # override panel labels C220108 family-aware) and from_forward_result below.
+    confinement_family = _to_confinement_family(frontmatter.get("Confinement-Family"))
+
     raw_overrides = getattr(module, "overrides", []) or []
     enabled = _enabled_overrides(raw_overrides)
-    override_records = _build_override_records(raw_overrides)
+    override_records = _build_override_records(raw_overrides, confinement_family)
     sensitivities = build_sensitivity_analysis(model, effective_result, cost_overrides=enabled)
     sensitivities_bare = build_sensitivity_analysis(model, effective_result, cost_overrides=None)
     # Three-layer merge (later wins):
@@ -441,12 +454,16 @@ def extract_costingfe(
     if "availability" in params_dict:
         raw.setdefault("power_table", {})["availability"] = params_dict["availability"]
 
-    cost_model = CostModelData.from_forward_result(raw, sensitivities, sensitivities_bare)
+    cost_model = CostModelData.from_forward_result(
+        raw,
+        sensitivities,
+        sensitivities_bare,
+        confinement_family=confinement_family,
+    )
 
     name = str(frontmatter.get("Concept", concept_dir.name))
     company_raw = frontmatter.get("Company")
     company = str(company_raw) if company_raw else None
-    confinement_family = _to_confinement_family(frontmatter.get("Confinement-Family"))
 
     with warnings.catch_warnings(record=True) as caught:
         warnings.simplefilter("always")
@@ -635,6 +652,11 @@ def extract_standalone(
     has_cost_model = False
     has_sensitivities = False
 
+    # Family is needed by CostModelData.from_forward_result() so that the
+    # shared C220108 account renders as "Divertor" (MFE) or "Target Factory"
+    # (IFE/MIF) instead of the ambiguous combined label.
+    confinement_family = _to_confinement_family(frontmatter.get("Confinement-Family"))
+
     # Prefer model_setup.py if present; otherwise first non-test .py file
     script_path: Path | None = None
     model_setup = concept_dir / "model_setup.py"
@@ -674,7 +696,9 @@ def extract_standalone(
             if to_explorer_dict is not None:
                 raw_dict = to_explorer_dict()
                 _apply_scaled_headline(raw_dict)
-                cost_model = CostModelData.from_forward_result(raw_dict, sensitivities=None)
+                cost_model = CostModelData.from_forward_result(
+                    raw_dict, sensitivities=None, confinement_family=confinement_family,
+                )
                 has_cost_model = True
             # Path 2: centralized adapter from module-level params + results
             elif (
@@ -685,7 +709,9 @@ def extract_standalone(
             ):
                 raw_dict = _freeform_to_explorer_dict(results_obj, params_obj)
                 _apply_scaled_headline(raw_dict)
-                cost_model = CostModelData.from_forward_result(raw_dict, sensitivities=None)
+                cost_model = CostModelData.from_forward_result(
+                    raw_dict, sensitivities=None, confinement_family=confinement_family,
+                )
                 has_cost_model = True
             else:
                 # Path 3: discover dataclass with compute(), instantiate with defaults
@@ -705,7 +731,9 @@ def extract_standalone(
                         raw_dict = _freeform_to_explorer_dict(results_obj, params_obj)
                         _apply_scaled_headline(raw_dict)
                         cost_model = CostModelData.from_forward_result(
-                            raw_dict, sensitivities=None
+                            raw_dict,
+                            sensitivities=None,
+                            confinement_family=confinement_family,
                         )
                         has_cost_model = True
 
@@ -744,7 +772,8 @@ def extract_standalone(
     name = str(frontmatter.get("Concept", concept_dir.name))
     company_raw = frontmatter.get("Company")
     company = str(company_raw) if company_raw else None
-    confinement_family = _to_confinement_family(frontmatter.get("Confinement-Family"))
+    # confinement_family was already resolved at the top of extract_standalone()
+    # so the C220108 name on the cost model would render family-aware.
 
     with warnings.catch_warnings(record=True) as caught:
         warnings.simplefilter("always")

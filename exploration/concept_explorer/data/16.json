@@ -3,6 +3,7 @@
   "name": "Muon-Catalyzed Fusion (D-T)",
   "confinement_family": "NONSTANDARD",
   "company": "Acceleron Fusion",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",

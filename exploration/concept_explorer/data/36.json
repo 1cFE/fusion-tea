@@ -3,6 +3,7 @@
   "name": "Helical-Coil Stellarator (HESTIA)",
   "confinement_family": "MFE",
   "company": "Helical Fusion",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": false
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Divertor",
         "cost_m_usd": 0.0,
         "overridden": true
       },
@@ -1329,7 +1330,7 @@
   "overrides": [
     {
       "account": "C220108",
-      "account_name": "Divertor / Target Factory",
+      "account_name": "Divertor",
       "value": 0.0,
       "enabled": true,
       "provenance": "direct",

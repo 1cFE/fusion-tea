@@ -3,6 +3,7 @@
   "name": "Heavy-Ion Beam ICF",
   "confinement_family": "IFE",
   "company": "Intensity Energy",
+  "company_url": null,
   "analyst_name": null,
   "fuel": null,
   "status": "in_progress",
@@ -144,7 +145,7 @@
         "overridden": false
       },
       "C220108": {
-        "name": "Divertor / Target Factory",
+        "name": "Target Factory",
         "cost_m_usd": 298.4330749511719,
         "overridden": false
       },
