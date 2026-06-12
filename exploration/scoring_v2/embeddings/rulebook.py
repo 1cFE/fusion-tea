@@ -733,7 +733,12 @@ _UPPER_CF_PENALTY_NAMES = (
 )
 
 _NEUTRONIC_FUELS = {"D-T", "D-D"}
-_STATIC_BLANKET_VALUES = {"Solid breeder", "Molten salt", "Other/hybrid"}
+# Truly static blankets that require physical extraction to replace burnt-up
+# breeder material — solid pebble beds and unclassified hybrids. "Molten salt"
+# (FLiBe) was removed 2026-06-12: like PbLi, FLiBe is a flowing liquid that
+# circulates through an online tritium-extraction loop and accepts Li-6 makeup
+# during operation, so it isn't replacement-cycle-limited in the same way.
+_STATIC_BLANKET_VALUES = {"Solid breeder", "Other/hybrid"}
 _PULSED_OPERATION_MODES = {"Pulsed"}
 
 
@@ -1117,117 +1122,69 @@ def _technical_feasibility_score(
 
 
 # =============================================================================
-# Data Availability axis (gap-report blocking-marker count, bracket score)
+# Data Availability axis (design_point.csv lookup, 1-5 deterministic bracket)
 #
-# The one framework exception that does file I/O at score time. Reads
-# analyses/{concept}/gap_report.md (populated by the upstream Claude-judged
-# gap_check pipeline) and determines the blocking-gap count, then maps to a
-# 1-5 score via a bracket schedule. Returns None when no gap report
-# exists — the composite scorer skips the axis for that concept.
+# Inputs come from the design-point table (one row per concept, populated by
+# the LLM-proposed → human-verified pipeline at
+# exploration/concept_analysis/scripts/ingest_design_point_proposals.py):
+#   * grounding_confidence ∈ {low, medium, high}
+#   * primary_sources_count = len(primary_sources field)
 #
-# Blocking-count source of truth (per data_availability_implementation_spec
-# §"Prerequisite: Standardize gap_report format"):
-#   1. The `## Structured summary (machine-readable)` YAML block at the end
-#      of the report — its `blocking_count:` field is authoritative. This
-#      is the analyst's deduplicated count of distinct blocking gaps.
-#   2. Fallback when no structured block exists: count `**blocking**`
-#      bold markers in the prose. This is the interim regex the spec
-#      flags as unreliable (it double-counts gaps restated across
-#      sections); used only until every report carries the block.
+# Bracket schedule (defined under data_availability in weights/default.yaml):
+#   * not in CSV / null confidence         -> 1.0 (no documented design point)
+#   * low                                  -> 2.0
+#   * medium                               -> 3.0
+#   * high, primary_sources_count <  3     -> 4.0
+#   * high, primary_sources_count >= 3     -> 5.0
+#
+# The two manual feature blocks are written by
+# exploration/scoring_v2/scripts/populate_data_availability.py from the CSV.
+# Refresh path: re-run the LLM proposer for the affected concept(s), then
+# re-run that populate script — no other framework state needs touching.
 # =============================================================================
 
-import re  # only place this module needs re
-from pathlib import Path as _Path
 
-_BLOCKING_MARKER = re.compile(r"\*\*blocking\*\*", re.IGNORECASE)
-# Within the `## Structured summary` block, capture `blocking_count: N`.
-_STRUCTURED_SUMMARY_RE = re.compile(
-    r"##\s*Structured summary.*?\bblocking_count\s*:\s*(\d+)",
-    re.IGNORECASE | re.DOTALL,
-)
-_REPO_ROOT = _Path(__file__).resolve().parents[3]
-
-
-def _load_da_weights(weights_yaml: dict) -> tuple[list, float]:
+def _load_da_brackets(weights_yaml: dict) -> dict:
     da = weights_yaml.get("data_availability", {})
-    brackets = da.get("blocking_count_brackets")
-    floor = da.get("floor_score")
-    if brackets is None or floor is None:
+    brackets = da.get("grounding_confidence_brackets")
+    if not brackets:
         raise ValueError(
             "weights/default.yaml data_availability axis missing "
-            "blocking_count_brackets or floor_score"
+            "grounding_confidence_brackets"
         )
-    return brackets, float(floor)
-
-
-def _count_blocking_markers(report_text: str) -> int:
-    """Interim fallback: count `**blocking**` bold markers in the prose."""
-    return len(_BLOCKING_MARKER.findall(report_text))
-
-
-def _structured_blocking_count(report_text: str) -> int | None:
-    """Return the `blocking_count` from the report's `## Structured summary`
-    block, or None if the report has no such block.
-
-    Parsed with a regex rather than a YAML load so rulebook.py keeps its
-    no-yaml-import invariant; only the single integer field is needed.
-    """
-    m = _STRUCTURED_SUMMARY_RE.search(report_text)
-    return int(m.group(1)) if m else None
-
-
-def _da_score_from_count(count: int, brackets: list, floor: float) -> float:
-    for bracket in brackets:
-        if count <= bracket["max_count"]:
-            return float(bracket["score"])
-    return floor
-
-
-@embedding(
-    "gap_report_blocking_count",
-    inputs=["gap_report_path"],
-)
-def _gap_report_blocking_count(gap_report_path: str) -> int | None:
-    """Read the gap report and determine its blocking-gap count.
-
-    Prefers the `## Structured summary (machine-readable)` block's
-    `blocking_count:` field (the analyst's deduplicated count); falls
-    back to the `**blocking**` prose regex for reports that predate the
-    format standardization.
-
-    Documented framework exception: this embedding has a file-I/O side
-    effect — the gap report is the authoritative source and the
-    framework reads it rather than duplicating its content into the
-    feature file. The path can be absolute or repo-relative; we resolve
-    relative paths against the repo root.
-    """
-    if not gap_report_path:
-        return None
-    p = _Path(gap_report_path)
-    if not p.is_absolute():
-        p = _REPO_ROOT / p
-    if not p.exists():
-        return None
-    try:
-        text = p.read_text(encoding="utf-8")
-    except (OSError, UnicodeDecodeError):
-        return None
-    structured = _structured_blocking_count(text)
-    if structured is not None:
-        return structured
-    return _count_blocking_markers(text)
+    return brackets
 
 
 @embedding(
     "data_availability_score",
-    inputs=["gap_report_blocking_count"],
+    inputs=[
+        "design_point_grounding_confidence",
+        "design_point_primary_sources_count",
+    ],
 )
 def _data_availability_score(
-    gap_report_blocking_count: int | None,
+    design_point_grounding_confidence: str | None,
+    design_point_primary_sources_count: int | None,
     *, weights_yaml: dict,
-) -> float | None:
-    """Data Availability axis score: 1.0-5.0 (or None for no gap report)."""
-    if gap_report_blocking_count is None:
-        return None
-    brackets, floor = _load_da_weights(weights_yaml)
-    return _da_score_from_count(gap_report_blocking_count, brackets, floor)
+) -> float:
+    """Data Availability axis score: 1.0-5.0 deterministic bracket lookup.
+
+    Concepts that don't appear in design_point.csv (or that lack a
+    grounding_confidence value) floor at 1.0 — they have no documented
+    design point and the composite still scores them, just at the bottom.
+    """
+    brackets = _load_da_brackets(weights_yaml)
+    gc = (design_point_grounding_confidence or "").strip().lower()
+    if not gc:
+        return float(brackets.get("missing", 1.0))
+    if gc == "high":
+        n = int(design_point_primary_sources_count or 0)
+        threshold = int(brackets.get("high_sources_threshold", 3))
+        return float(
+            brackets["high_with_sources"]
+            if n >= threshold
+            else brackets["high_without_sources"]
+        )
+    if gc in brackets:
+        return float(brackets[gc])
+    return float(brackets.get("missing", 1.0))

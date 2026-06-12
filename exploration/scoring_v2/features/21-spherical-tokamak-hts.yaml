@@ -5,17 +5,17 @@ blanket_config:
   value: Liquid metal
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 confinement_concept:
   value: Spherical tokamak
   provenance: derived
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 confinement_family:
   value: MFE
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 customization_diagnostics:
   sub_factor_a:
     feature: energy_capture
@@ -30,57 +30,65 @@ customization_diagnostics:
   customization_score: 1.67
   extracted_at: '2026-05-20'
 data_availability_diagnostics:
-  gap_report_path: exploration/concept_analysis/analyses/21-spherical-tokamak-hts/gap_report.md
-  report_exists: true
-  blocking_count: 0
-  count_source: structured_summary_block
-  data_availability_score: 5.0
-  extracted_at: '2026-05-22'
+  source_csv: exploration/concept_analysis/tables/design_point.csv
+  in_csv: true
+  design_name: ST-E1 Revision D, technology-conservative case (Maartensson et al.,
+    DPP 2025)
+  grounding_confidence: medium
+  primary_sources_count: 3
+  verified_by: null
+  data_availability_score: 3.0
+  extracted_at: '2026-06-12'
+design_point_grounding_confidence:
+  value: medium
+  provenance: exploration/concept_analysis/tables/design_point.csv
+  confidence: high
+  extracted_at: '2026-06-12'
+design_point_primary_sources_count:
+  value: 3
+  provenance: exploration/concept_analysis/tables/design_point.csv
+  confidence: high
+  extracted_at: '2026-06-12'
 driver_technology:
   value: HTS magnets (REBCO, 5.25 T on-axis)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 energy_capture:
   value: Thermal (unspecified)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 fuel:
   value: D-T
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
-gap_report_path:
-  value: exploration/concept_analysis/analyses/21-spherical-tokamak-hts/gap_report.md
-  provenance: auto-detected
-  confidence: high
-  extracted_at: '2026-05-22'
+  extracted_at: '2026-06-12'
 ife_driver:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 laser_approach:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 magnet_type:
   value: HTS (wound)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 mfe_topology:
   value: Tokamak
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 mif_method:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 modularity_diagnostics:
   min_viable_device_scale: 3.0
   percent_mod: 4.7984
@@ -107,12 +115,12 @@ non_standard_mechanism:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 operation_mode:
   value: Quasi-steady
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 plant_complexity_diagnostics:
   subsystems_triggered:
     cryoplant_hts: 0.5
@@ -130,17 +138,17 @@ primary_heating:
   value: RF (ECRH)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 repetition_rate:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 stellarator_type:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 supply_chain_diagnostics:
   bottlenecks_triggered:
     lithium6: 1.0
@@ -165,7 +173,7 @@ tokamak_shape:
   value: Spherical
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 unit_count_estimate:
   value: 14
   provenance: modularity_implementation_spec.md Change E
@@ -179,17 +187,17 @@ upper_cf_diagnostics:
   blanket_assumed: false
   extracted_at: '2026-05-20'
 w_blanket:
-  value: 0.19459636329640537
+  value: 0.1484580175583402
   provenance: analyses/21-spherical-tokamak-hts/model_output.txt
   confidence: medium
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-06-12'
 w_coils:
-  value: 0.13595568643948955
+  value: 0.23073459893449388
   provenance: analyses/21-spherical-tokamak-hts/model_output.txt
   confidence: medium
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-06-12'
 w_vessel:
-  value: 0.08346188005422334
+  value: 0.06590005252494933
   provenance: analyses/21-spherical-tokamak-hts/model_output.txt
   confidence: medium
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-06-12'

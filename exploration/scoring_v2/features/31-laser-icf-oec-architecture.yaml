@@ -5,17 +5,17 @@ blanket_config:
   value: Liquid metal
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 confinement_concept:
   value: Laser ICF (direct drive)
   provenance: derived
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 confinement_family:
   value: IFE
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 customization_diagnostics:
   sub_factor_a:
     feature: energy_capture
@@ -30,57 +30,64 @@ customization_diagnostics:
   customization_score: 2.33
   extracted_at: '2026-05-20'
 data_availability_diagnostics:
-  gap_report_path: exploration/concept_analysis/analyses/31-laser-icf-oec-architecture/gap_report.md
-  report_exists: true
-  blocking_count: 3
-  count_source: structured_summary_block
+  source_csv: exploration/concept_analysis/tables/design_point.csv
+  in_csv: true
+  design_name: BLF OEC Reactor, 10 Hz design point (Sunahara et al., 2025)
+  grounding_confidence: medium
+  primary_sources_count: 2
+  verified_by: null
   data_availability_score: 3.0
-  extracted_at: '2026-05-22'
+  extracted_at: '2026-06-12'
+design_point_grounding_confidence:
+  value: medium
+  provenance: exploration/concept_analysis/tables/design_point.csv
+  confidence: high
+  extracted_at: '2026-06-12'
+design_point_primary_sources_count:
+  value: 2
+  provenance: exploration/concept_analysis/tables/design_point.csv
+  confidence: high
+  extracted_at: '2026-06-12'
 driver_technology:
   value: CBC fiber laser + OEC, 5 MJ UV
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 energy_capture:
   value: Hybrid (thermal + direct)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 fuel:
   value: D-T
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
-gap_report_path:
-  value: exploration/concept_analysis/analyses/31-laser-icf-oec-architecture/gap_report.md
-  provenance: auto-detected
-  confidence: high
-  extracted_at: '2026-05-22'
+  extracted_at: '2026-06-12'
 ife_driver:
   value: Laser
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 laser_approach:
   value: Direct drive
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 magnet_type:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 mfe_topology:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 mif_method:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 modularity_diagnostics:
   min_viable_device_scale: 4.0
   percent_mod: 4.3333
@@ -107,12 +114,12 @@ non_standard_mechanism:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 operation_mode:
   value: Pulsed
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 plant_complexity_diagnostics:
   subsystems_triggered:
     hybrid_energy: 0.5
@@ -128,17 +135,17 @@ primary_heating:
   value: Laser (direct drive)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 repetition_rate:
   value: ~10 Hz
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 stellarator_type:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 supply_chain_diagnostics:
   bottlenecks_triggered:
     kdp: 0.5
@@ -164,7 +171,7 @@ tokamak_shape:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 unit_count_estimate:
   value: 200
   provenance: modularity_implementation_spec.md Change E
@@ -179,17 +186,17 @@ upper_cf_diagnostics:
   blanket_assumed: false
   extracted_at: '2026-05-20'
 w_blanket:
-  value: 0.06342975554694476
+  value: 0.1589596083231334
   provenance: analyses/31-laser-icf-oec-architecture/model_output.txt
   confidence: medium
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-06-12'
 w_coils:
-  value: 0.00402648381825227
+  value: 0.008580171358629131
   provenance: analyses/31-laser-icf-oec-architecture/model_output.txt
   confidence: medium
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-06-12'
 w_vessel:
-  value: 0.1090014657074987
+  value: 0.05332925336597307
   provenance: analyses/31-laser-icf-oec-architecture/model_output.txt
   confidence: medium
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-06-12'

@@ -204,10 +204,15 @@ unit_count_estimate:
   required: true
   extractor: manual
 
-# Relative path (from repo root) to the concept's gap report, consumed by
-# the Data Availability axis. `null` when no gap report exists; the axis
-# scores null in that case and the composite skip-and-rescales it out.
-gap_report_path:
+# Data Availability inputs sourced from
+# exploration/concept_analysis/tables/design_point.csv via
+# exploration/scoring_v2/scripts/populate_data_availability.py.
+# Concepts absent from the CSV omit these fields and floor at score 1.0.
+design_point_grounding_confidence:
   type: string
+  required: false
+  extractor: manual
+design_point_primary_sources_count:
+  type: int
   required: false
   extractor: manual

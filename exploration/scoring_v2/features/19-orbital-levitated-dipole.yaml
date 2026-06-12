@@ -5,17 +5,17 @@ blanket_config:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 confinement_concept:
   value: Levitated dipole (orbital)
   provenance: derived
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 confinement_family:
   value: MFE
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 customization_diagnostics:
   sub_factor_a:
     feature: energy_capture
@@ -30,57 +30,54 @@ customization_diagnostics:
   customization_score: 4.33
   extracted_at: '2026-05-20'
 data_availability_diagnostics:
-  gap_report_path: exploration/concept_analysis/analyses/19-orbital-levitated-dipole/gap_report.md
-  report_exists: true
-  blocking_count: 7
-  count_source: structured_summary_block
-  data_availability_score: 2.0
-  extracted_at: '2026-05-22'
+  source_csv: exploration/concept_analysis/tables/design_point.csv
+  in_csv: false
+  design_name: null
+  grounding_confidence: null
+  primary_sources_count: null
+  verified_by: null
+  data_availability_score: 1.0
+  extracted_at: '2026-06-12'
 driver_technology:
   value: Orbital HTS dipole coil (meter-scale, Falcon 9 deployable)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 energy_capture:
   value: Direct (charged particle)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 fuel:
   value: D-He3
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
-gap_report_path:
-  value: exploration/concept_analysis/analyses/19-orbital-levitated-dipole/gap_report.md
-  provenance: auto-detected
-  confidence: high
-  extracted_at: '2026-05-22'
+  extracted_at: '2026-06-12'
 ife_driver:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 laser_approach:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 magnet_type:
   value: HTS (levitated dipole)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 mfe_topology:
   value: Dipole
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 mif_method:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 modularity_diagnostics:
   min_viable_device_scale: 3.0
   percent_mod: 4.3333
@@ -107,12 +104,12 @@ non_standard_mechanism:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 operation_mode:
   value: Steady-state
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 plant_complexity_diagnostics:
   subsystems_triggered:
     cryoplant_hts: 0.5
@@ -126,17 +123,17 @@ primary_heating:
   value: RF (ECRH)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 repetition_rate:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 stellarator_type:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 supply_chain_diagnostics:
   bottlenecks_triggered:
     helium3: 3.0
@@ -159,7 +156,7 @@ tokamak_shape:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 unit_count_estimate:
   value: 1
   provenance: modularity_implementation_spec.md Change E
@@ -171,3 +168,18 @@ upper_cf_diagnostics:
   upper_cf_score: 5.0
   blanket_assumed: false
   extracted_at: '2026-05-20'
+w_blanket:
+  value: 0.11739862967539032
+  provenance: analyses/19-orbital-levitated-dipole/model_output.txt
+  confidence: medium
+  extracted_at: '2026-06-12'
+w_coils:
+  value: 0.2021790407727732
+  provenance: analyses/19-orbital-levitated-dipole/model_output.txt
+  confidence: medium
+  extracted_at: '2026-06-12'
+w_vessel:
+  value: 0.002695720543636976
+  provenance: analyses/19-orbital-levitated-dipole/model_output.txt
+  confidence: medium
+  extracted_at: '2026-06-12'

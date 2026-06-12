@@ -5,17 +5,17 @@ blanket_config:
   value: Solid breeder
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 confinement_concept:
   value: Levitated dipole
   provenance: derived
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 confinement_family:
   value: MFE
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 customization_diagnostics:
   sub_factor_a:
     feature: energy_capture
@@ -30,57 +30,64 @@ customization_diagnostics:
   customization_score: 1.67
   extracted_at: '2026-05-20'
 data_availability_diagnostics:
-  gap_report_path: exploration/concept_analysis/analyses/12-levitated-dipole/gap_report.md
-  report_exists: true
-  blocking_count: 2
-  count_source: structured_summary_block
+  source_csv: exploration/concept_analysis/tables/design_point.csv
+  in_csv: true
+  design_name: "OpenStar Reactor A \u2014 Simpson et al. 2026 (arXiv 2602.20564)"
+  grounding_confidence: high
+  primary_sources_count: 2
+  verified_by: null
   data_availability_score: 4.0
-  extracted_at: '2026-05-22'
+  extracted_at: '2026-06-12'
+design_point_grounding_confidence:
+  value: high
+  provenance: exploration/concept_analysis/tables/design_point.csv
+  confidence: high
+  extracted_at: '2026-06-12'
+design_point_primary_sources_count:
+  value: 2
+  provenance: exploration/concept_analysis/tables/design_point.csv
+  confidence: high
+  extracted_at: '2026-06-12'
 driver_technology:
   value: Levitated HTS dipole coil (REBCO, 23 T) with on-board flux pump
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 energy_capture:
   value: Thermal (unspecified)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 fuel:
   value: D-T
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
-gap_report_path:
-  value: exploration/concept_analysis/analyses/12-levitated-dipole/gap_report.md
-  provenance: auto-detected
-  confidence: high
-  extracted_at: '2026-05-22'
+  extracted_at: '2026-06-12'
 ife_driver:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 laser_approach:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 magnet_type:
   value: HTS (levitated dipole)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 mfe_topology:
   value: Dipole
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 mif_method:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 modularity_diagnostics:
   min_viable_device_scale: 3.0
   percent_mod: 4.0
@@ -107,12 +114,12 @@ non_standard_mechanism:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 operation_mode:
   value: Quasi-steady
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 plant_complexity_diagnostics:
   subsystems_triggered:
     cryoplant_hts: 0.5
@@ -128,17 +135,17 @@ primary_heating:
   value: RF (ICRH)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 repetition_rate:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 stellarator_type:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 supply_chain_diagnostics:
   bottlenecks_triggered:
     beryllium: 1.0
@@ -163,7 +170,7 @@ tokamak_shape:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 unit_count_estimate:
   value: 1
   provenance: modularity_implementation_spec.md Change E
@@ -177,3 +184,18 @@ upper_cf_diagnostics:
   upper_cf_score: 3.5
   blanket_assumed: false
   extracted_at: '2026-05-20'
+w_blanket:
+  value: 0.1331977630910015
+  provenance: analyses/12-levitated-dipole/model_output.txt
+  confidence: medium
+  extracted_at: '2026-06-12'
+w_coils:
+  value: 0.2665281492451537
+  provenance: analyses/12-levitated-dipole/model_output.txt
+  confidence: medium
+  extracted_at: '2026-06-12'
+w_vessel:
+  value: 0.0034260957980592824
+  provenance: analyses/12-levitated-dipole/model_output.txt
+  confidence: medium
+  extracted_at: '2026-06-12'

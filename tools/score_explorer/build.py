@@ -41,12 +41,16 @@ DIAGNOSTIC_BLOCKS = tuple(f"{a}_diagnostics" for a in AXES)
 # Concepts the scoring framework scores but the Score Explorer UI hides.
 # Display-only exclusion — score.py still scores all 40; these just don't
 # appear in concepts.json.
-#   30-laser-icf-nif-commercialization: redundant with
-#     26-laser-icf-indirect-drive — both are Inertia Enterprises laser-ICF
-#     indirect-drive concepts (the modularity spec's v5 ID-drift table maps
-#     both to a single v5 matrix entry).
+#   26-laser-icf-indirect-drive: redundant Inertia Enterprises entry;
+#     30-laser-icf-nif-commercialization is the surviving Inertia concept.
+#   34-compact-spherical-tokamak-india: obsolete (Pranos Fusion entry
+#     dropped per renumber crosswalk).
+#   38-particle-accelerator-driven-fusion: obsolete (superseded by net-new
+#     38 SHINE entry, which is pending full analysis).
 EXCLUDED_FROM_UI = {
-    "30-laser-icf-nif-commercialization",
+    "26-laser-icf-indirect-drive",
+    "34-compact-spherical-tokamak-india",
+    "38-particle-accelerator-driven-fusion",
 }
 
 

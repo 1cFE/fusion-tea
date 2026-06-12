@@ -259,25 +259,14 @@
       },
       "name": "data_availability",
       "sub_tables": {
-        "blocking_count_brackets": [
-          {
-            "max_count": 0,
-            "score": 5.0
-          },
-          {
-            "max_count": 2,
-            "score": 4.0
-          },
-          {
-            "max_count": 5,
-            "score": 3.0
-          },
-          {
-            "max_count": 9,
-            "score": 2.0
-          }
-        ],
-        "floor_score": 1.0
+        "grounding_confidence_brackets": {
+          "high_sources_threshold": 3,
+          "high_with_sources": 5.0,
+          "high_without_sources": 4.0,
+          "low": 2.0,
+          "medium": 3.0,
+          "missing": 1.0
+        }
       }
     }
   ],
