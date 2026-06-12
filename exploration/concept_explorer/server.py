@@ -342,7 +342,7 @@ _COMPANIES: dict[str, tuple[str, str | None]] = {
     "06": ("Pale Blue Fusion", None),  # No public website found (Princeton early-stage)
     "07": ("Pacific Fusion", "https://www.pacificfusion.com"),
     "08": ("Helion Energy", "https://helionenergy.com"),
-    "09": ("Type One Energy", "https://typeoneenergy.com"),
+    "09": ("Proxima Fusion", "https://www.proximafusion.com"),
     "10": ("Gauss Fusion", "https://gauss-fusion.com"),
     "11": ("Realta Fusion", "https://realtafusion.com"),
     "12": ("OpenStar Technologies", "https://openstartech.com"),
