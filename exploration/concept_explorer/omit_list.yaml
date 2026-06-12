@@ -8,6 +8,6 @@
 # string IDs produced by parse_concept_id (see load_omit_list in models.py).
 # Adding/removing a concept here is the only edit needed — no code change.
 
-"27": "Incomplete analysis — not ready for cross-concept comparison"
-"34": "Incomplete analysis — not ready for cross-concept comparison"
-"38": "Incomplete analysis — not ready for cross-concept comparison"
+"26": "Redundant Inertia Enterprises entry — concept 30 (NIF commercialization) is the surviving Inertia design"
+"34": "Obsolete — Pranos Fusion compact spherical tokamak no longer tracked"
+"38": "Obsolete — Particle-accelerator-driven-fusion superseded by net-new 38 SHINE entry pending"

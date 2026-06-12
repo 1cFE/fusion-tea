@@ -76,6 +76,10 @@ _IGNORE_CODES = {
 #
 #   Format A (canonical, 01-hts-compact-tokamak):
 #       C220103   Coils (REBCO magnets+struct)       6901.0  [ARC §6 override]
+#       C220103           808.3       1500.0       1500.0  <-- OVERRIDE
+#   Both bracketed annotations and the arrow-tagged "<-- OVERRIDE" marker
+#   that costingfe prints after analyst-overridden CAS rows are tolerated as
+#   optional trailing prose after the dollars field.
 #
 #   Format B (sub-allocation prose, e.g. 10-large-scale-stellarator):
 #         Coil system (C220103)                     2595.5 M$  (40% of base CAS22)
@@ -90,7 +94,8 @@ _IGNORE_CODES = {
 # These per-line ambiguous money tokens are not parsed in this slice.
 
 _FORMAT_A_RE = re.compile(
-    r"^\s*(?P<code>(?:CAS\d{2,3}|C\d{6}))\s+.+?\s+(?P<dollars>-?\d+(?:\.\d+)?)\s*(?:\[[^\]]*\])?\s*$"
+    r"^\s*(?P<code>(?:CAS\d{2,3}|C\d{6}))\s+.+?\s+(?P<dollars>-?\d+(?:\.\d+)?)"
+    r"\s*(?:\[[^\]]*\]|<-{1,2}\s*[A-Za-z].*)?\s*$"
 )
 
 _FORMAT_B_RE = re.compile(

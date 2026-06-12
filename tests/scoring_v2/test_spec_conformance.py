@@ -160,7 +160,10 @@ class TestSchemaConformance:
             # derived
             "confinement_concept",
             # manual
-            "unit_count_estimate", "gap_report_path",
+            "unit_count_estimate",
+            # data availability (manual, sourced from design_point.csv)
+            "design_point_grounding_confidence",
+            "design_point_primary_sources_count",
         ):
             assert feat in schema, f"schema missing required v3 feature {feat!r}"
 

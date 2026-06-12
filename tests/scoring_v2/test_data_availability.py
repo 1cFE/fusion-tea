@@ -1,31 +1,27 @@
-"""Data Availability axis acceptance tests."""
+"""Data Availability axis acceptance tests.
+
+DA is a deterministic 1-5 bracket lookup on the design_point.csv row for
+each concept (grounding_confidence + primary_sources_count). The score is
+computed inline by the rulebook embedding from those two fields; the
+populate script writes them into each features YAML and also writes an
+informational diagnostic block.
+"""
 from __future__ import annotations
 
 import csv
 from pathlib import Path
 
-import pytest
 import yaml
 
 from exploration.scoring_v2.embeddings.rulebook import (
-    _BLOCKING_MARKER,
-    _count_blocking_markers,
-    _structured_blocking_count,
-    _da_score_from_count,
-    _load_da_weights,
+    _data_availability_score,
+    _load_da_brackets,
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 SCORING_V2 = REPO_ROOT / "exploration" / "scoring_v2"
 WEIGHTS = yaml.safe_load((SCORING_V2 / "weights" / "default.yaml").read_text())
-BRACKETS, FLOOR = _load_da_weights(WEIGHTS)
-
-# DA is deterministic: gap-report blocking count -> bracket lookup -> score.
-# There is no spec-vs-rules calibration gap on this axis, so it is verified
-# exhaustively at the unit level (TestBucketSchedule covers every bracket
-# boundary, TestStructuredSummaryCount covers the parser, TestCounting
-# covers the prose-regex fallback). No per-concept predicted_scores fixture
-# is maintained; the test suite is decoupled from gap-report regenerations.
+BRACKETS = _load_da_brackets(WEIGHTS)
 
 
 def _read_actual(run_cli, tmp_scores_dir: Path) -> dict[str, float | None]:
@@ -46,141 +42,85 @@ class TestWeightsSurface:
         assert "data_availability" in WEIGHTS
 
     def test_brackets_present(self):
-        assert BRACKETS
-        assert all("max_count" in b and "score" in b for b in BRACKETS)
+        for key in (
+            "missing", "low", "medium",
+            "high_without_sources", "high_with_sources",
+            "high_sources_threshold",
+        ):
+            assert key in BRACKETS, f"missing bracket key {key!r}"
 
-    def test_floor_score(self):
-        assert FLOOR == 1.0
-
-
-# ─── Counting + bucket schedule ──────────────────────────────────────────
-
-
-class TestCounting:
-    def test_count_zero(self):
-        assert _count_blocking_markers("nothing here") == 0
-
-    def test_count_one(self):
-        assert _count_blocking_markers("**blocking**") == 1
-
-    def test_count_case_insensitive(self):
-        assert _count_blocking_markers("**Blocking**") == 1
-        assert _count_blocking_markers("**BLOCKING**") == 1
-
-    def test_count_multiple(self):
-        text = "foo **blocking** bar **blocking** baz"
-        assert _count_blocking_markers(text) == 2
-
-    def test_important_not_counted(self):
-        assert _count_blocking_markers("**important** **blocking**") == 1
-
-
-class TestStructuredSummaryCount:
-    """The structured `## Structured summary` block is the authoritative
-    blocking-count source; the prose regex is only the legacy fallback."""
-
-    def test_parses_blocking_count_field(self):
-        text = (
-            "# Gap Assessment\n\n## Structured summary (machine-readable)\n\n"
-            "```yaml\noverall_rating: \"Mostly Ready\"\n"
-            "blocking_count: 4\nimportant_count: 7\n```\n"
-        )
-        assert _structured_blocking_count(text) == 4
-
-    def test_returns_none_when_no_block(self):
-        text = "# Gap Assessment\n\nSome prose with **blocking** markers.\n"
-        assert _structured_blocking_count(text) is None
-
-    def test_structured_block_overrides_prose_regex(self):
-        """A report whose prose has many **blocking** bolds but whose
-        structured block says 4 must count as 4 (the dedup fix)."""
-        text = (
-            "**blocking** **blocking** **blocking** **blocking** "
-            "**blocking** **blocking**\n\n"
-            "## Structured summary (machine-readable)\n\n"
-            "```yaml\nblocking_count: 4\n```\n"
-        )
-        # prose regex would say 6; structured says 4
-        assert _count_blocking_markers(text) == 6
-        assert _structured_blocking_count(text) == 4
-
-    def test_every_gap_report_has_a_structured_block(self):
-        """After the format-standardization pass, every gap_report.md
-        carries a structured block with a blocking_count."""
-        analyses = REPO_ROOT / "exploration" / "concept_analysis" / "analyses"
-        reports = sorted(analyses.glob("*/gap_report.md"))
-        assert reports, "no gap reports found"
-        missing = []
-        for path in reports:
-            if _structured_blocking_count(path.read_text(encoding="utf-8")) is None:
-                missing.append(path.parent.name)
-        assert not missing, (
-            f"gap reports without a structured-summary block: {missing}"
+    def test_bracket_values_monotone(self):
+        assert (
+            BRACKETS["missing"]
+            < BRACKETS["low"]
+            < BRACKETS["medium"]
+            < BRACKETS["high_without_sources"]
+            < BRACKETS["high_with_sources"]
         )
 
-
-class TestBucketSchedule:
-    def test_zero_blockers_top_score(self):
-        assert _da_score_from_count(0, BRACKETS, FLOOR) == 5.0
-
-    def test_two_blockers(self):
-        assert _da_score_from_count(2, BRACKETS, FLOOR) == 4.0
-
-    def test_five_blockers(self):
-        assert _da_score_from_count(5, BRACKETS, FLOOR) == 3.0
-
-    def test_nine_blockers(self):
-        assert _da_score_from_count(9, BRACKETS, FLOOR) == 2.0
-
-    def test_ten_blockers_floor(self):
-        assert _da_score_from_count(10, BRACKETS, FLOOR) == 1.0
-        assert _da_score_from_count(50, BRACKETS, FLOOR) == 1.0
+    def test_axis_weight_default(self):
+        assert WEIGHTS["data_availability"]["axis_weight"] == 1.0
+        ew = WEIGHTS["data_availability"]["embedding_weights"]
+        assert ew == {"data_availability_score": 1.0}
 
 
-# ─── Score invariants ────────────────────────────────────────────────────
+# ─── Embedding behavior ──────────────────────────────────────────────────
 
 
-class TestScoreInvariants:
-    def test_all_in_band_or_null(self, run_cli, tmp_scores_dir: Path):
-        scores = _read_actual(run_cli, tmp_scores_dir)
-        for cid, v in scores.items():
-            if v is None:
-                continue
-            assert 1.0 <= v <= 5.0, f"{cid}: {v}"
+class TestScoreLookup:
+    def _score(self, gc, n):
+        return _data_availability_score(gc, n, weights_yaml=WEIGHTS)
 
-    def test_all_40_concepts_have_gap_reports(self, run_cli, tmp_scores_dir: Path):
-        """As of the gap-report-stub work, all 40 concepts have a
-        gap_report.md (37/38/39 — Mallory's net-new concepts — got
-        stub reports). No concept should score null on this axis."""
-        scores = _read_actual(run_cli, tmp_scores_dir)
-        nulls = [cid for cid, v in scores.items() if v is None]
-        assert not nulls, f"concepts still missing a gap report: {nulls}"
+    def test_missing_concept_floors_to_one(self):
+        assert self._score(None, None) == 1.0
+        assert self._score("", 0) == 1.0
 
+    def test_low_confidence(self):
+        assert self._score("low", 0) == 2.0
+        assert self._score("low", 5) == 2.0
 
-class TestNullHandling:
-    """The null-handling path is no longer exercised by any live concept
-    (all 40 have reports), so it's pinned at the unit level here. R9 in
-    spec.md: a missing gap report yields a null score, not a floor."""
+    def test_medium_confidence(self):
+        assert self._score("medium", 0) == 3.0
+        assert self._score("medium", 10) == 3.0
 
-    def test_score_embedding_returns_none_for_none_count(self):
-        from exploration.scoring_v2.embeddings.rulebook import (  # noqa: PLC0415
-            _data_availability_score,
-        )
-        assert _data_availability_score(None, weights_yaml=WEIGHTS) is None
+    def test_high_confidence_below_threshold(self):
+        threshold = BRACKETS["high_sources_threshold"]
+        assert self._score("high", 0) == BRACKETS["high_without_sources"]
+        assert self._score("high", threshold - 1) == BRACKETS["high_without_sources"]
 
-    def test_count_embedding_returns_none_for_empty_path(self):
-        from exploration.scoring_v2.embeddings.rulebook import (  # noqa: PLC0415
-            _gap_report_blocking_count,
-        )
-        assert _gap_report_blocking_count("") is None
-        assert _gap_report_blocking_count(None) is None
+    def test_high_confidence_at_or_above_threshold(self):
+        threshold = BRACKETS["high_sources_threshold"]
+        assert self._score("high", threshold) == BRACKETS["high_with_sources"]
+        assert self._score("high", threshold + 5) == BRACKETS["high_with_sources"]
 
-    def test_count_embedding_returns_none_for_missing_file(self):
-        from exploration.scoring_v2.embeddings.rulebook import (  # noqa: PLC0415
-            _gap_report_blocking_count,
-        )
-        assert _gap_report_blocking_count(
-            "exploration/concept_analysis/analyses/__no_such_concept__/gap_report.md"
-        ) is None
+    def test_case_insensitive_confidence(self):
+        assert self._score("HIGH", 5) == BRACKETS["high_with_sources"]
+        assert self._score("  Low  ", 0) == 2.0
+
+    def test_unknown_confidence_floors(self):
+        assert self._score("unknown", 5) == 1.0
 
 
+# ─── CSV ↔ feature alignment ────────────────────────────────────────────
+
+
+class TestCsvAlignment:
+    """The populate script should mirror every row in design_point.csv
+    into the per-concept feature YAML. Concepts absent from the CSV
+    should have the manual fields omitted entirely (floors to 1.0)."""
+
+    def _csv_rows(self) -> dict[str, dict[str, str]]:
+        path = REPO_ROOT / "exploration" / "concept_analysis" / "tables" / "design_point.csv"
+        with path.open(encoding="utf-8") as f:
+            return {r["concept_id"]: r for r in csv.DictReader(f)}
+
+    def test_csv_exists_and_has_rows(self):
+        rows = self._csv_rows()
+        assert len(rows) > 20, "design_point.csv should cover most concepts"
+
+    def test_csv_row_count_consistent_with_populate_script_floor(self):
+        """The populate script logs how many concepts floor at 1.0.
+        Manual sanity: there shouldn't be more than half the corpus."""
+        csv_count = len(self._csv_rows())
+        # 40 concepts in features/; allow up to half to be missing.
+        assert csv_count >= 20

@@ -5,17 +5,17 @@ blanket_config:
   value: Molten salt
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 confinement_concept:
   value: Compact tokamak
   provenance: derived
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 confinement_family:
   value: MFE
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 customization_diagnostics:
   sub_factor_a:
     feature: energy_capture
@@ -30,57 +30,64 @@ customization_diagnostics:
   customization_score: 1.67
   extracted_at: '2026-05-20'
 data_availability_diagnostics:
-  gap_report_path: exploration/concept_analysis/analyses/01-hts-compact-tokamak/gap_report.md
-  report_exists: true
-  blocking_count: 1
-  count_source: structured_summary_block
-  data_availability_score: 4.0
-  extracted_at: '2026-05-20'
+  source_csv: exploration/concept_analysis/tables/design_point.csv
+  in_csv: true
+  design_name: ARC V3A (CFS Virginia commercial plant, JPP 2026 special issue)
+  grounding_confidence: high
+  primary_sources_count: 8
+  verified_by: null
+  data_availability_score: 5.0
+  extracted_at: '2026-06-12'
+design_point_grounding_confidence:
+  value: high
+  provenance: exploration/concept_analysis/tables/design_point.csv
+  confidence: high
+  extracted_at: '2026-06-12'
+design_point_primary_sources_count:
+  value: 8
+  provenance: exploration/concept_analysis/tables/design_point.csv
+  confidence: high
+  extracted_at: '2026-06-12'
 driver_technology:
   value: HTS magnets (REBCO, 20 T)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 energy_capture:
   value: Thermal (steam)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 fuel:
   value: D-T
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
-gap_report_path:
-  value: exploration/concept_analysis/analyses/01-hts-compact-tokamak/gap_report.md
-  provenance: auto-detected
-  confidence: high
-  extracted_at: '2026-05-22'
+  extracted_at: '2026-06-12'
 ife_driver:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 laser_approach:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 magnet_type:
   value: HTS (wound)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 mfe_topology:
   value: Tokamak
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 mif_method:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 modularity_diagnostics:
   min_viable_device_scale: 3.0
   percent_mod: 4.9752
@@ -107,12 +114,12 @@ non_standard_mechanism:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 operation_mode:
   value: Quasi-steady
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 plant_complexity_diagnostics:
   subsystems_triggered:
     cryoplant_hts: 0.5
@@ -129,17 +136,17 @@ primary_heating:
   value: RF (ICRH)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 repetition_rate:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 stellarator_type:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 supply_chain_diagnostics:
   bottlenecks_triggered:
     beryllium: 1.0
@@ -165,7 +172,7 @@ tokamak_shape:
   value: Compact
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 unit_count_estimate:
   value: 18
   provenance: modularity_implementation_spec.md Change E
@@ -180,17 +187,17 @@ upper_cf_diagnostics:
   blanket_assumed: false
   extracted_at: '2026-05-20'
 w_blanket:
-  value: 0.055582412393618816
+  value: 0.04011514779966415
   provenance: analyses/01-hts-compact-tokamak/model_output.txt
   confidence: medium
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-06-12'
 w_coils:
-  value: 0.7804134953737535
+  value: 0.28520404083482154
   provenance: analyses/01-hts-compact-tokamak/model_output.txt
   confidence: medium
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-06-12'
 w_vessel:
-  value: 0.021225646156786473
+  value: 0.03161233574113068
   provenance: analyses/01-hts-compact-tokamak/model_output.txt
   confidence: medium
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-06-12'

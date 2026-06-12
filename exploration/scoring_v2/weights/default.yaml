@@ -370,21 +370,24 @@ technical_feasibility:
     # architectural family, not a laser-approach variant of mainstream ICF
 
 # ─────────────────────────────────────────────────────────────────────────
-# Data Availability — bracket schedule on **blocking** markers in
-# the analyses/{concept}/gap_report.md artifact.
+# Data Availability — deterministic 1-5 lookup on the design_point.csv
+# row for each concept. Inputs are the analyst-curated (LLM-proposed,
+# human-verified) `grounding_confidence` ∈ {low, medium, high} and the
+# count of `primary_sources` per concept.
 #
-# Returns null for concepts without a gap report; the composite skips
-# and rescales (NOT a floor).
+# Score floors at 1.0 ("missing" bracket) for concepts not in the CSV —
+# this is intentional: a missing design point is itself a strong signal
+# of low data availability, not a reason to skip the axis.
 # ─────────────────────────────────────────────────────────────────────────
 
 data_availability:
   axis_weight: 1.0
   embedding_weights:
     data_availability_score: 1.0
-  blocking_count_brackets:
-    - {max_count: 0,    score: 5.0}     # No blockers: best-documented
-    - {max_count: 2,    score: 4.0}     # 1-2 blockers: minor specific gaps
-    - {max_count: 5,    score: 3.0}     # 3-5 blockers: multiple but tractable
-    - {max_count: 9,    score: 2.0}     # 6-9 blockers: significant gaps
-    # 10+: score 1.0 (floor)
-  floor_score: 1.0
+  grounding_confidence_brackets:
+    missing: 1.0                # not in design_point.csv / null confidence
+    low: 2.0
+    medium: 3.0
+    high_without_sources: 4.0   # high confidence + < threshold primary sources
+    high_with_sources: 5.0      # high confidence + >= threshold primary sources
+    high_sources_threshold: 3

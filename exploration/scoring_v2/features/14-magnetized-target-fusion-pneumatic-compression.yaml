@@ -5,17 +5,17 @@ blanket_config:
   value: Liquid metal
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 confinement_concept:
   value: Magnetized target fusion
   provenance: derived
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 confinement_family:
   value: MIF
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 customization_diagnostics:
   sub_factor_a:
     feature: energy_capture
@@ -30,57 +30,65 @@ customization_diagnostics:
   customization_score: 1.67
   extracted_at: '2026-05-20'
 data_availability_diagnostics:
-  gap_report_path: exploration/concept_analysis/analyses/14-magnetized-target-fusion-pneumatic-compression/gap_report.md
-  report_exists: true
-  blocking_count: 5
-  count_source: structured_summary_block
-  data_availability_score: 3.0
-  extracted_at: '2026-05-22'
+  source_csv: exploration/concept_analysis/tables/design_point.csv
+  in_csv: true
+  design_name: "GF MTF Commercial Power Plant \u2014 Krotez et al. 2023 SOFE conceptual\
+    \ design (150 MWe per module, two-module architecture)"
+  grounding_confidence: high
+  primary_sources_count: 2
+  verified_by: null
+  data_availability_score: 4.0
+  extracted_at: '2026-06-12'
+design_point_grounding_confidence:
+  value: high
+  provenance: exploration/concept_analysis/tables/design_point.csv
+  confidence: high
+  extracted_at: '2026-06-12'
+design_point_primary_sources_count:
+  value: 2
+  provenance: exploration/concept_analysis/tables/design_point.csv
+  confidence: high
+  extracted_at: '2026-06-12'
 driver_technology:
   value: Pneumatic pistons + liquid metal
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 energy_capture:
   value: Thermal (steam)
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 fuel:
   value: D-T
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
-gap_report_path:
-  value: exploration/concept_analysis/analyses/14-magnetized-target-fusion-pneumatic-compression/gap_report.md
-  provenance: auto-detected
-  confidence: high
-  extracted_at: '2026-05-22'
+  extracted_at: '2026-06-12'
 ife_driver:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 laser_approach:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 magnet_type:
   value: None
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 mfe_topology:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 mif_method:
   value: Magnetized target
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 modularity_diagnostics:
   min_viable_device_scale: 5.0
   percent_mod: 4.6667
@@ -107,12 +115,12 @@ non_standard_mechanism:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 operation_mode:
   value: Pulsed
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 plant_complexity_diagnostics:
   subsystems_triggered:
     liquid_metal_handling: 0.5
@@ -128,17 +136,17 @@ primary_heating:
   value: Mechanical compression
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 repetition_rate:
   value: ~1 Hz
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 stellarator_type:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 supply_chain_diagnostics:
   bottlenecks_triggered:
     lithium6: 1.0
@@ -163,7 +171,7 @@ tokamak_shape:
   value: N/A
   provenance: taxonomy
   confidence: high
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-12'
 unit_count_estimate:
   value: 60
   provenance: modularity_implementation_spec.md Change E
@@ -178,17 +186,17 @@ upper_cf_diagnostics:
   blanket_assumed: false
   extracted_at: '2026-05-20'
 w_blanket:
-  value: 0.007137192704203013
+  value: 0.011227392806340176
   provenance: analyses/14-magnetized-target-fusion-pneumatic-compression/model_output.txt
   confidence: medium
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-06-12'
 w_coils:
-  value: 0.0
+  value: 0.0012700670595407438
   provenance: analyses/14-magnetized-target-fusion-pneumatic-compression/model_output.txt
   confidence: medium
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-06-12'
 w_vessel:
-  value: 0.0
+  value: 0.004419833367201788
   provenance: analyses/14-magnetized-target-fusion-pneumatic-compression/model_output.txt
   confidence: medium
-  extracted_at: '2026-05-17'
+  extracted_at: '2026-06-12'
