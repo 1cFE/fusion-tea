@@ -72,8 +72,12 @@ class TestTriggerRules:
     def test_non_renewable_blanket_requires_neutronic(self):
         # Liquid metal renewable → no penalty
         assert "non_renewable_blanket" not in _triggered("D-T", "Liquid metal", "Steady-state")
+        # Molten salt (FLiBe) is now treated as flow-through renewable too →
+        # no penalty (per the v3-rewrite FLiBe fix that removed it from the
+        # static-blanket set).
+        assert "non_renewable_blanket" not in _triggered("D-T", "Molten salt", "Steady-state")
         # Static blankets + neutronic → penalty
-        for blk in ("Solid breeder", "Molten salt", "Other/hybrid"):
+        for blk in ("Solid breeder", "Other/hybrid"):
             assert "non_renewable_blanket" in _triggered("D-T", blk, "Steady-state")
         # Aneutronic fuel → no penalty regardless of blanket
         assert "non_renewable_blanket" not in _triggered("p-B11", "Solid breeder", "Steady-state")
@@ -113,12 +117,20 @@ class TestScoreLadder:
 
 
 def _read_actual(run_cli, tmp_scores_dir: Path) -> dict[str, float | None]:
-    run_cli("score.py")
-    out = {}
-    with open(tmp_scores_dir / "table.csv") as f:
-        for r in csv.DictReader(f):
-            v = r["upper_cf"]
-            out[r["concept_id"]] = float(v) if v else None
+    """Return per-concept *raw* Capacity Factor scores (pre-normalization).
+
+    The v5 calibration tests check the raw penalty-stack formula output,
+    not the corpus-normalized output that score.py writes to table.csv.
+    Raw scores live in each feature YAML's upper_cf_diagnostics.upper_cf_score
+    field, populated by extract.py.
+    """
+    features_dir = REPO_ROOT / "exploration" / "scoring_v2" / "features"
+    out: dict[str, float | None] = {}
+    for f in sorted(features_dir.glob("*.yaml")):
+        doc = yaml.safe_load(f.read_text())
+        cid = doc["_meta"]["concept_id"]
+        diag = doc.get("upper_cf_diagnostics") or {}
+        out[cid] = diag.get("upper_cf_score")
     return out
 
 
