@@ -10,7 +10,7 @@ confinement_concept:
   value: Compact tokamak
   provenance: derived
   confidence: high
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-13'
 confinement_family:
   value: MFE
   provenance: taxonomy
@@ -80,9 +80,9 @@ mif_method:
   extracted_at: '2026-06-12'
 modularity_diagnostics:
   min_viable_device_scale: 3.0
-  percent_mod: 4.8801
+  percent_mod: 4.6667
   unit_multiplicity: 4.0
-  modularity_score: 3.72
+  modularity_score: 3.6667
   mvs_lookup_key: MFE|Tokamak (compact)
   vessel_lookup_key: MFE|Tokamak|compact
   magnet_driver_lookup_key: MFE|HTS (wound)|*
@@ -91,15 +91,15 @@ modularity_diagnostics:
   magnet_driver_modularity_rating: 5.0
   blanket_modularity_rating: 5.0
   capex_shares_used:
-    w_vessel: 0.041
-    w_coils: 0.2762
-    w_blanket: 0.0249
-    sum: 0.3421
-    method: capex_weighted
+    w_vessel: 0.0419
+    w_coils: 0.1365
+    w_blanket: 0.0431
+    sum: 0.2215
+    method: equal_weight_fallback_sparse_capex
   unit_count_estimate: 16
   blanket_assumed: true
   v5_calibration_target: 3.5
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-13'
 non_standard_mechanism:
   value: N/A
   provenance: taxonomy

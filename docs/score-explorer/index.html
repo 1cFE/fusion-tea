@@ -504,7 +504,8 @@
 
       // ──────────── Modularity ────────────
       if (axis === "modularity") {
-        const v = d.modularity_score;
+        const v = concept.scores[axis];   // normalized score (matches cell)
+        const raw = d.modularity_score;    // pre-normalization raw score
         const mvsLine = `Plant scalability: ${mvsLabel(d.mvs_lookup_key)} (${scoreTier(d.min_viable_device_scale)}).`;
         const subsysParts = [];
         if (d.vessel_modularity_rating)        subsysParts.push(`vessel ${vesselModularityWord(d.vessel_modularity_rating)}`);
@@ -524,9 +525,10 @@
           flags.push("⚠ Blanket = TBD; assumed Liquid metal.");
         }
         return [
-          `Modularity ${fmt(v, 2)} of 5 (${scoreTier(v)}).`,
+          `Modularity ${fmt(v, 2)} (${scoreTier(v)}).`,
+          `Raw score ${fmt(raw, 2)}; normalized to corpus mean 2.5, variance 1.25.`,
           "",
-          "What drove the score:",
+          "What drove the raw score:",
           `• ${mvsLine}`,
           `• ${subsysLine}`,
           `• ${umLine}`,
@@ -633,23 +635,26 @@
         ].join("\n");
       }
 
-      // ──────────── Upper CF ────────────
+      // ──────────── Capacity Factor ────────────
       if (axis === "upper_cf") {
-        const v = d.upper_cf_score;
+        const v = concept.scores[axis];   // normalized score (matches cell)
+        const raw = d.upper_cf_score;      // pre-normalization raw score
         const labels = {
           pulsed_operation:      "pulsed operation (dwell + recharge time)",
           neutronic_fuel:        "neutron-producing fuel (forced component replacement)",
           non_renewable_blanket: "non-renewable blanket (solid breeder swaps)",
         };
         const triggers = Object.keys(d.penalties_triggered || {});
+        const head = [
+          `Capacity factor ${fmt(v, 2)} (${scoreTier(v)}).`,
+          `Raw score ${fmt(raw, 2)}; normalized to corpus mean 2.5, variance 1.25.`,
+          "",
+        ];
         if (triggers.length === 0) {
-          return [`Achievable capacity factor ${fmt(v, 2)} of 5 (${scoreTier(v)}).`,
-                  "", "No operational CF penalties — steady-state, aneutronic fuel, renewable blanket."]
-            .join("\n");
+          return [...head, "No operational CF penalties — steady-state, aneutronic fuel, renewable blanket."].join("\n");
         }
         return [
-          `Achievable capacity factor ${fmt(v, 2)} of 5 (${scoreTier(v)}).`,
-          "",
+          ...head,
           "Architecture caps the maximum uptime due to:",
           ...triggers.map(t => `  • ${labels[t] || t}`),
         ].join("\n");
@@ -691,28 +696,36 @@
       // ──────────── Data Availability ────────────
       if (axis === "data_availability") {
         const v = d.data_availability_score;
-        if (!d.report_exists) {
+        if (!d.in_csv) {
           return [
-            `Data availability: not yet evaluated.`,
+            `Data availability ${fmt(v, 2)} (floor).`,
             "",
-            "⚠ No gap report has been written for this concept. Score is null and excluded from the composite.",
+            "⚠ Not in the design_point.csv table — no curated design point on record. Score floors at 1.0.",
           ].join("\n");
         }
-        const n = d.blocking_count;
-        let descriptor;
-        if (n === 0)       descriptor = "well-documented — no critical gaps flagged";
-        else if (n <= 2)   descriptor = "mostly documented — 1-2 critical gaps";
-        else if (n <= 5)   descriptor = `${n} critical gaps`;
-        else if (n <= 9)   descriptor = `${n} significant gaps`;
-        else               descriptor = `${n}+ critical gaps (very thinly documented)`;
-        return [
-          `Data availability ${fmt(v, 2)} of 5 (${scoreTier(v)}).`,
+        const conf = (d.grounding_confidence || "").toLowerCase();
+        const nSrc = d.primary_sources_count || 0;
+        const confLabel = {
+          high:   "high — peer-reviewed engineering plant design with named parameters",
+          medium: "medium — published design with quantitative parameters but limited corroboration",
+          low:    "low — company target or aspirational scale only; no peer-reviewed plant design",
+        }[conf] || conf;
+        const lines = [
+          `Data availability ${fmt(v, 2)} (${scoreTier(v)}).`,
           "",
-          `Gap report flags this concept as ${descriptor}.`,
-        ].join("\n");
+          `Design point: ${d.design_name || "(unnamed)"}`,
+          `Grounding confidence: ${confLabel}.`,
+          `Primary sources: ${nSrc}${conf === "high" && nSrc >= 3 ? " (≥3 → score 5)" : conf === "high" ? " (<3 → score 4)" : ""}.`,
+        ];
+        if (d.verified_by) {
+          lines.push(`Verified by: ${d.verified_by}.`);
+        } else {
+          lines.push("⚠ Not yet verified by analyst (LLM-proposed pending review).");
+        }
+        return lines.join("\n");
       }
 
-      return `${AXIS_LABEL[axis]}: ${fmt(concept.scores[axis], 2)} of 5.`;
+      return `${AXIS_LABEL[axis]}: ${fmt(concept.scores[axis], 2)} (1-5 scale).`;
     }
 
     // Composite tooltip: lists which axes contributed and how.

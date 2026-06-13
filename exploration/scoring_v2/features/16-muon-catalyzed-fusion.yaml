@@ -10,7 +10,7 @@ confinement_concept:
   value: Muon-catalyzed fusion
   provenance: derived
   confidence: high
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-13'
 confinement_family:
   value: Non-Standard
   provenance: taxonomy

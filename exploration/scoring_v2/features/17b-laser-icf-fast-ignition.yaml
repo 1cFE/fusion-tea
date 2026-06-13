@@ -10,7 +10,7 @@ confinement_concept:
   value: Laser ICF (fast ignition)
   provenance: derived
   confidence: high
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-13'
 confinement_family:
   value: IFE
   provenance: taxonomy
@@ -101,15 +101,15 @@ modularity_diagnostics:
   magnet_driver_modularity_rating: 5.0
   blanket_modularity_rating: 5.0
   capex_shares_used:
-    w_vessel: 0.1184
-    w_coils: 0.0048
-    w_blanket: 0.0754
-    sum: 0.1986
+    w_vessel: 0.1044
+    w_coils: 0.0042
+    w_blanket: 0.0639
+    sum: 0.1725
     method: equal_weight_fallback_sparse_capex
   unit_count_estimate: 200
   blanket_assumed: false
   v5_calibration_target: 4.36
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-13'
 non_standard_mechanism:
   value: N/A
   provenance: taxonomy

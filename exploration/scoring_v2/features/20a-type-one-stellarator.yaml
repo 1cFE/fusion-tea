@@ -10,7 +10,7 @@ confinement_concept:
   value: Modular stellarator
   provenance: derived
   confidence: high
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-13'
 confinement_family:
   value: MFE
   provenance: taxonomy
@@ -91,9 +91,9 @@ mif_method:
   extracted_at: '2026-06-12'
 modularity_diagnostics:
   min_viable_device_scale: 2.0
-  percent_mod: 3.0906
+  percent_mod: 3.0499
   unit_multiplicity: 5.0
-  modularity_score: 3.0227
+  modularity_score: 3.0125
   mvs_lookup_key: MFE|Stellarator
   vessel_lookup_key: MFE|Stellarator|*
   magnet_driver_lookup_key: MFE|HTS (continuous helical)|*
@@ -102,15 +102,15 @@ modularity_diagnostics:
   magnet_driver_modularity_rating: 3.0
   blanket_modularity_rating: 4.0
   capex_shares_used:
-    w_vessel: 0.0301
-    w_coils: 0.5202
-    w_blanket: 0.0879
-    sum: 0.6382
+    w_vessel: 0.0186
+    w_coils: 0.5569
+    w_blanket: 0.0498
+    sum: 0.6253
     method: capex_weighted
   unit_count_estimate: 40
   blanket_assumed: false
   v5_calibration_target: 3.03
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-13'
 non_standard_mechanism:
   value: N/A
   provenance: taxonomy
