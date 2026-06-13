@@ -10,7 +10,7 @@ confinement_concept:
   value: Levitated dipole
   provenance: derived
   confidence: high
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-13'
 confinement_family:
   value: MFE
   provenance: taxonomy

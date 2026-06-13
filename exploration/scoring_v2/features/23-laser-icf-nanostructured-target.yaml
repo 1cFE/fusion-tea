@@ -10,7 +10,7 @@ confinement_concept:
   value: Laser ICF (ultrashort pulse)
   provenance: derived
   confidence: high
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-13'
 confinement_family:
   value: IFE
   provenance: taxonomy
@@ -103,15 +103,15 @@ modularity_diagnostics:
   magnet_driver_modularity_rating: 5.0
   blanket_modularity_rating: 5.0
   capex_shares_used:
-    w_vessel: 0.0
-    w_coils: 0.0
-    w_blanket: 0.0
-    sum: 0.0
+    w_vessel: 0.0185
+    w_coils: 0.0008
+    w_blanket: 0.0024
+    sum: 0.0217
     method: equal_weight_fallback_sparse_capex
   unit_count_estimate: 500
   blanket_assumed: false
   v5_calibration_target: 4.37
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-13'
 non_standard_mechanism:
   value: N/A
   provenance: taxonomy

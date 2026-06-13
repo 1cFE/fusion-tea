@@ -10,7 +10,7 @@ confinement_concept:
   value: Levitated dipole
   provenance: derived
   confidence: high
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-13'
 confinement_family:
   value: MFE
   provenance: taxonomy
@@ -90,9 +90,9 @@ mif_method:
   extracted_at: '2026-06-12'
 modularity_diagnostics:
   min_viable_device_scale: 3.0
-  percent_mod: 4.0
+  percent_mod: 4.6526
   unit_multiplicity: 1.0
-  modularity_score: 2.75
+  modularity_score: 2.9132
   mvs_lookup_key: MFE|Levitated dipole
   vessel_lookup_key: MFE|Dipole|*
   magnet_driver_lookup_key: MFE|HTS (wound)|*
@@ -101,15 +101,15 @@ modularity_diagnostics:
   magnet_driver_modularity_rating: 5.0
   blanket_modularity_rating: 4.0
   capex_shares_used:
-    w_vessel: null
-    w_coils: null
-    w_blanket: null
-    sum: 0.0
-    method: equal_weight_fallback_missing_capex
+    w_vessel: 0.0034
+    w_coils: 0.2665
+    w_blanket: 0.1332
+    sum: 0.4032
+    method: capex_weighted
   unit_count_estimate: 1
   blanket_assumed: false
   v5_calibration_target: 2.68
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-13'
 non_standard_mechanism:
   value: N/A
   provenance: taxonomy

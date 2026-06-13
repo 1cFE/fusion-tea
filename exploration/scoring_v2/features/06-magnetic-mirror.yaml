@@ -10,7 +10,7 @@ confinement_concept:
   value: Mirror
   provenance: derived
   confidence: high
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-13'
 confinement_family:
   value: MFE
   provenance: taxonomy
@@ -92,9 +92,9 @@ mif_method:
   extracted_at: '2026-06-12'
 modularity_diagnostics:
   min_viable_device_scale: 4.0
-  percent_mod: 3.6667
+  percent_mod: 3.0
   unit_multiplicity: 4.0
-  modularity_score: 3.9167
+  modularity_score: 3.75
   mvs_lookup_key: MFE|Mirror
   vessel_lookup_key: MFE|Mirror|*
   magnet_driver_lookup_key: MFE|TBD|*
@@ -103,15 +103,15 @@ modularity_diagnostics:
   magnet_driver_modularity_rating: 3.0
   blanket_modularity_rating: 5.0
   capex_shares_used:
-    w_vessel: 0.0
-    w_coils: 0.0
+    w_vessel: 0.024
+    w_coils: 0.3836
     w_blanket: 0.0
-    sum: 0.0
-    method: equal_weight_fallback_sparse_capex
+    sum: 0.4075
+    method: capex_weighted
   unit_count_estimate: 30
   blanket_assumed: false
   v5_calibration_target: 4.08
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-13'
 non_standard_mechanism:
   value: N/A
   provenance: taxonomy

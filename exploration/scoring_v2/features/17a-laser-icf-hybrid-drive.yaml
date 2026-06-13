@@ -10,7 +10,7 @@ confinement_concept:
   value: Laser ICF (hybrid drive)
   provenance: derived
   confidence: high
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-13'
 confinement_family:
   value: IFE
   provenance: taxonomy
@@ -102,15 +102,15 @@ modularity_diagnostics:
   magnet_driver_modularity_rating: 3.0
   blanket_modularity_rating: 5.0
   capex_shares_used:
-    w_vessel: 0.0215
-    w_coils: 0.0037
-    w_blanket: 0.099
-    sum: 0.1242
+    w_vessel: 0.0396
+    w_coils: 0.0
+    w_blanket: 0.0526
+    sum: 0.0922
     method: equal_weight_fallback_sparse_capex
   unit_count_estimate: 4
   blanket_assumed: false
   v5_calibration_target: 2.86
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-13'
 non_standard_mechanism:
   value: N/A
   provenance: taxonomy

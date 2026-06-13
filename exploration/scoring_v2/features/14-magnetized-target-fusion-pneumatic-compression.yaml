@@ -10,7 +10,7 @@ confinement_concept:
   value: Magnetized target fusion
   provenance: derived
   confidence: high
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-13'
 confinement_family:
   value: MIF
   provenance: taxonomy
@@ -102,15 +102,15 @@ modularity_diagnostics:
   magnet_driver_modularity_rating: 5.0
   blanket_modularity_rating: 5.0
   capex_shares_used:
-    w_vessel: 0.0
-    w_coils: 0.0
-    w_blanket: 0.0071
-    sum: 0.0071
+    w_vessel: 0.0044
+    w_coils: 0.0013
+    w_blanket: 0.0112
+    sum: 0.0169
     method: equal_weight_fallback_sparse_capex
   unit_count_estimate: 60
   blanket_assumed: false
   v5_calibration_target: 4.88
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-13'
 non_standard_mechanism:
   value: N/A
   provenance: taxonomy

@@ -10,7 +10,7 @@ confinement_concept:
   value: MagLIF
   provenance: derived
   confidence: high
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-13'
 confinement_family:
   value: MIF
   provenance: taxonomy
@@ -102,15 +102,15 @@ modularity_diagnostics:
   magnet_driver_modularity_rating: 5.0
   blanket_modularity_rating: 5.0
   capex_shares_used:
-    w_vessel: 0.0
-    w_coils: 0.0
-    w_blanket: 0.0227
-    sum: 0.0227
+    w_vessel: 0.0476
+    w_coils: 0.1374
+    w_blanket: 0.0419
+    sum: 0.2269
     method: equal_weight_fallback_sparse_capex
   unit_count_estimate: 100
   blanket_assumed: true
   v5_calibration_target: 4.93
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-13'
 non_standard_mechanism:
   value: N/A
   provenance: taxonomy

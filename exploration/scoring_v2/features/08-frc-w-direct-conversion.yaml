@@ -10,7 +10,7 @@ confinement_concept:
   value: FRC compression (MIF)
   provenance: derived
   confidence: high
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-13'
 confinement_family:
   value: MIF
   provenance: taxonomy
@@ -102,15 +102,15 @@ modularity_diagnostics:
   magnet_driver_modularity_rating: 5.0
   blanket_modularity_rating: 5.0
   capex_shares_used:
-    w_vessel: 0.0053
-    w_coils: 0.1379
-    w_blanket: 0.0003
-    sum: 0.1436
+    w_vessel: 0.0003
+    w_coils: 0.0072
+    w_blanket: 0.0
+    sum: 0.0074
     method: equal_weight_fallback_sparse_capex
   unit_count_estimate: 75
   blanket_assumed: false
   v5_calibration_target: 5.0
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-13'
 non_standard_mechanism:
   value: N/A
   provenance: taxonomy

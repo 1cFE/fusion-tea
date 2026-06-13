@@ -10,7 +10,7 @@ confinement_concept:
   value: Dense plasma focus
   provenance: derived
   confidence: high
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-13'
 confinement_family:
   value: Non-Standard
   provenance: taxonomy
@@ -101,15 +101,15 @@ modularity_diagnostics:
   magnet_driver_modularity_rating: 3.0
   blanket_modularity_rating: 5.0
   capex_shares_used:
-    w_vessel: null
-    w_coils: null
-    w_blanket: null
-    sum: 0.0
-    method: equal_weight_fallback_missing_capex
+    w_vessel: 0.0002
+    w_coils: 0.0004
+    w_blanket: 0.0
+    sum: 0.0006
+    method: equal_weight_fallback_sparse_capex
   unit_count_estimate: 8
   blanket_assumed: false
   v5_calibration_target: 3.59
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-13'
 non_standard_mechanism:
   value: Plasma focus
   provenance: taxonomy

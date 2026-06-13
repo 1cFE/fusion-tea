@@ -10,7 +10,7 @@ confinement_concept:
   value: QI stellarator
   provenance: derived
   confidence: high
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-13'
 confinement_family:
   value: MFE
   provenance: taxonomy
@@ -90,9 +90,9 @@ mif_method:
   extracted_at: '2026-06-12'
 modularity_diagnostics:
   min_viable_device_scale: 2.0
-  percent_mod: 2.8335
+  percent_mod: 2.6273
   unit_multiplicity: 5.0
-  modularity_score: 2.9584
+  modularity_score: 2.9068
   mvs_lookup_key: MFE|Stellarator
   vessel_lookup_key: MFE|Stellarator|*
   magnet_driver_lookup_key: MFE|LTS+HTS|*
@@ -101,15 +101,15 @@ modularity_diagnostics:
   magnet_driver_modularity_rating: 2.0
   blanket_modularity_rating: 5.0
   capex_shares_used:
-    w_vessel: 0.1883
-    w_coils: 0.3765
-    w_blanket: 0.2173
-    sum: 0.7821
+    w_vessel: 0.0342
+    w_coils: 0.4875
+    w_blanket: 0.1379
+    sum: 0.6596
     method: capex_weighted
   unit_count_estimate: 40
   blanket_assumed: false
   v5_calibration_target: 3.03
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-13'
 non_standard_mechanism:
   value: N/A
   provenance: taxonomy
