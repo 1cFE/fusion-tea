@@ -77,6 +77,12 @@
           "Non-Standard|Particle accelerator": 3,
           "Non-Standard|Plasma focus": 4
         },
+        "normalization": {
+          "floor": 1.0,
+          "target_mean": 2.5,
+          "target_variance": 1.25,
+          "tolerance": 0.1
+        },
         "unit_count_brackets": [
           {
             "max_count": 1,
@@ -191,6 +197,12 @@
       },
       "name": "upper_cf",
       "sub_tables": {
+        "normalization": {
+          "floor": 1.0,
+          "target_mean": 2.5,
+          "target_variance": 1.25,
+          "tolerance": 0.1
+        },
         "operational_penalty_weights": {
           "neutronic_fuel": 1.0,
           "non_renewable_blanket": 0.5,

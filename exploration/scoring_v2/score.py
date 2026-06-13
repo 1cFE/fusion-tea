@@ -187,6 +187,85 @@ def _score_axis(
     return score, evidence
 
 
+def _normalize_axes(
+    per_concept_axis_scores: dict[str, dict[str, float | None]],
+    weights: dict,
+) -> dict[str, dict[str, float | None]]:
+    """Apply corpus-wide stretch + offset normalization to axes that declare
+    a `normalization:` block in weights/default.yaml.
+
+    For each declaring axis, finds (scale, offset) that:
+      1. Stretches the raw score distribution around its corpus mean by
+         `scale` so the corpus variance approaches `target_variance`.
+      2. Adds an offset so the corpus mean lands at `target_mean`.
+      3. Applies `floor` (default 1.0) at every transform step.
+
+    Iterates on `scale` to compensate when the floor clips concepts and
+    pulls the achieved variance below target. Returns within
+    `tolerance` of both targets (default 0.1) or with the best-achievable
+    fit if the floor prevents reaching them.
+
+    Returns a new per-concept axis_scores dict with the normalized values.
+    The diagnostic blocks in feature files keep the raw scores (debug aid).
+    """
+    import statistics
+    out = {cid: dict(scores) for cid, scores in per_concept_axis_scores.items()}
+    for axis in AXES:
+        norm_block = (weights.get(axis) or {}).get("normalization")
+        if not norm_block:
+            continue
+        target_mean = float(norm_block["target_mean"])
+        target_var = float(norm_block["target_variance"])
+        tol = float(norm_block.get("tolerance", 0.1))
+        floor = float(norm_block.get("floor", 1.0))
+
+        items = [(cid, s[axis]) for cid, s in out.items() if s.get(axis) is not None]
+        if len(items) < 2:
+            continue
+        cid_order = [cid for cid, _ in items]
+        vals = [v for _, v in items]
+        raw_mean = statistics.mean(vals)
+        raw_var = statistics.variance(vals)
+        if raw_var <= 0:
+            continue
+
+        base_scale = (target_var / raw_var) ** 0.5
+        best = None
+        best_var_err = float("inf")
+        # Search scale up to 4x the naive sqrt to compensate for floor clipping
+        for s_mult_idx in range(0, 300):
+            s_mult = 1.0 + 0.01 * s_mult_idx
+            scale = base_scale * s_mult
+            stretched = [max(floor, raw_mean + scale * (v - raw_mean)) for v in vals]
+            # Iterate offset to converge mean (floor shifts it after each apply)
+            offset = target_mean - statistics.mean(stretched)
+            final: list[float] = []
+            for _ in range(15):
+                final = [max(floor, s + offset) for s in stretched]
+                m = statistics.mean(final)
+                if abs(target_mean - m) < 1e-4:
+                    break
+                offset += target_mean - m
+            m = statistics.mean(final)
+            v_final = statistics.variance(final)
+            if abs(m - target_mean) > tol:
+                continue
+            var_err = abs(v_final - target_var)
+            if var_err < best_var_err:
+                best_var_err = var_err
+                best = list(final)
+                if var_err < 0.01:
+                    break
+        if best is None:
+            # Fall back: naive transform, accept whatever lands
+            stretched = [max(floor, raw_mean + base_scale * (v - raw_mean)) for v in vals]
+            offset = target_mean - statistics.mean(stretched)
+            best = [max(floor, s + offset) for s in stretched]
+        for cid, normalized in zip(cid_order, best):
+            out[cid][axis] = normalized
+    return out
+
+
 def _compute_composite(
     axis_scores: dict[str, float | None],
     axis_evidences: dict[str, str | None],
@@ -241,15 +320,14 @@ def run(features_dir: Path, scores_dir: Path, weights_path: Path) -> Path:
         weights = yaml.safe_load(f) or {}
     _validate_weights(weights)
 
-    rows: list[dict] = []
+    # Pass 1: per-concept axis scores (raw, pre-normalization)
+    per_concept_raw: dict[str, dict[str, float | None]] = {}
+    per_concept_evidence: dict[str, dict[str, str | None]] = {}
+    per_concept_meta: dict[str, dict] = {}
     for fpath in files:
         doc = yaml.safe_load(fpath.read_text())
         meta = doc["_meta"]
         emb_values, emb_conf = _evaluate_concept(doc, weights, schema)
-        row: dict[str, str] = {
-            "concept_id": meta["concept_id"],
-            "name": meta["name"],
-        }
         axis_scores: dict[str, float | None] = {}
         axis_evidences: dict[str, str | None] = {}
         for axis in AXES:
@@ -258,9 +336,25 @@ def run(features_dir: Path, scores_dir: Path, weights_path: Path) -> Path:
             )
             axis_scores[axis] = score
             axis_evidences[axis] = evidence
-            row[axis] = _fmt_score(score)
-            row[f"{axis}_evidence"] = evidence or ""
+        per_concept_raw[meta["concept_id"]] = axis_scores
+        per_concept_evidence[meta["concept_id"]] = axis_evidences
+        per_concept_meta[meta["concept_id"]] = meta
 
+    # Pass 2: corpus-wide normalization for axes that declare a `normalization:`
+    # block (currently modularity + upper_cf). Stretches each axis to hit a
+    # target mean and variance so the composite isn't dominated by any one axis.
+    per_concept_normalized = _normalize_axes(per_concept_raw, weights)
+
+    # Pass 3: composite per concept, from normalized axis scores
+    rows: list[dict] = []
+    for cid in sorted(per_concept_normalized.keys()):
+        meta = per_concept_meta[cid]
+        axis_scores = per_concept_normalized[cid]
+        axis_evidences = per_concept_evidence[cid]
+        row: dict[str, str] = {"concept_id": cid, "name": meta["name"]}
+        for axis in AXES:
+            row[axis] = _fmt_score(axis_scores.get(axis))
+            row[f"{axis}_evidence"] = axis_evidences.get(axis) or ""
         composite, composite_ev, axes_included = _compute_composite(
             axis_scores, axis_evidences, weights
         )

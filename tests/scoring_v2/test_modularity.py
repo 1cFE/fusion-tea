@@ -44,13 +44,24 @@ def _read_predicted() -> dict[str, float]:
     return yaml.safe_load(PREDICTED_SCORES.read_text()).get("modularity", {})
 
 
-def _run_score(run_cli, tmp_scores_dir: Path) -> dict[str, float | None]:
-    run_cli("score.py")
-    rows = {}
-    with open(tmp_scores_dir / "table.csv") as f:
-        for r in csv.DictReader(f):
-            score = r["modularity"]
-            rows[r["concept_id"]] = float(score) if score else None
+def _run_score(run_cli, tmp_scores_dir: Path,
+               tmp_features_dir: Path | None = None) -> dict[str, float | None]:
+    """Return per-concept *raw* modularity scores (pre-normalization).
+
+    The v5 calibration tests check the raw weighted-formula output, not the
+    corpus-normalized output that score.py writes to table.csv. Raw scores
+    live in each feature YAML's modularity_diagnostics.modularity_score
+    field, populated by extract.py.
+    """
+    if tmp_features_dir is None:
+        # Live features directory — fallback when fixture wasn't passed.
+        tmp_features_dir = REPO_ROOT / "exploration" / "scoring_v2" / "features"
+    rows: dict[str, float | None] = {}
+    for f in sorted(Path(tmp_features_dir).glob("*.yaml")):
+        doc = yaml.safe_load(f.read_text())
+        cid = doc["_meta"]["concept_id"]
+        diag = doc.get("modularity_diagnostics") or {}
+        rows[cid] = diag.get("modularity_score")
     return rows
 
 

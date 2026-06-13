@@ -1,7 +1,7 @@
 [
   {
     "company": "Commonwealth Fusion Systems",
-    "composite": 2.9854,
+    "composite": 2.6021,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -147,16 +147,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 5.0,
-      "modularity": 3.7279,
+      "modularity": 2.3999,
       "plant_complexity": 1.0,
       "supply_chain": 1.5,
       "technical_feasibility": 4.0,
-      "upper_cf": 4.0
+      "upper_cf": 2.6447
     }
   },
   {
     "company": "Sonofusion Energy",
-    "composite": 3.071,
+    "composite": 2.6697,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -292,16 +292,16 @@
     "scores": {
       "customization": 2.33,
       "data_availability": 1.0,
-      "modularity": 4.6667,
+      "modularity": 3.8707,
       "plant_complexity": 4.0,
       "supply_chain": 5.0,
       "technical_feasibility": 1.0,
-      "upper_cf": 3.5
+      "upper_cf": 1.487
     }
   },
   {
     "company": "Cortex Fusion",
-    "composite": 2.809,
+    "composite": 2.3808,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -440,16 +440,16 @@
     "scores": {
       "customization": 2.33,
       "data_availability": 2.0,
-      "modularity": 4.3333,
+      "modularity": 3.3485,
       "plant_complexity": 2.0,
       "supply_chain": 4.5,
       "technical_feasibility": 1.0,
-      "upper_cf": 3.5
+      "upper_cf": 1.487
     }
   },
   {
     "company": "hb11",
-    "composite": 3.2862,
+    "composite": 3.0458,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -586,16 +586,16 @@
     "scores": {
       "customization": 3.67,
       "data_availability": 2.0,
-      "modularity": 4.3333,
+      "modularity": 3.3485,
       "plant_complexity": 3.0,
       "supply_chain": 4.5,
       "technical_feasibility": 1.0,
-      "upper_cf": 4.5
+      "upper_cf": 3.8024
     }
   },
   {
     "company": "Thea Energy",
-    "composite": 2.9494,
+    "composite": 2.5457,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -738,16 +738,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 5.0,
-      "modularity": 3.4758,
+      "modularity": 2.0051,
       "plant_complexity": 1.5,
       "supply_chain": 2.0,
       "technical_feasibility": 3.0,
-      "upper_cf": 4.0
+      "upper_cf": 2.6447
     }
   },
   {
     "company": "Pale Blue",
-    "composite": 3.75,
+    "composite": 3.5564,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -880,16 +880,16 @@
     "scores": {
       "customization": 5.0,
       "data_availability": 2.0,
-      "modularity": 3.75,
+      "modularity": 2.4346,
       "plant_complexity": 4.5,
       "supply_chain": 5.0,
       "technical_feasibility": 1.0,
-      "upper_cf": 5.0
+      "upper_cf": 4.9601
     }
   },
   {
     "company": "Pacific Fusion",
-    "composite": 2.7267,
+    "composite": 2.3456,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -1033,16 +1033,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 3.0,
-      "modularity": 4.9167,
+      "modularity": 4.2624,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
       "technical_feasibility": 3.0,
-      "upper_cf": 3.5
+      "upper_cf": 1.487
     }
   },
   {
     "company": "Helion Energy",
-    "composite": 3.69,
+    "composite": 3.5036,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -1177,16 +1177,16 @@
     "scores": {
       "customization": 4.33,
       "data_availability": 3.0,
-      "modularity": 5.0,
+      "modularity": 4.3929,
       "plant_complexity": 5.0,
       "supply_chain": 2.0,
       "technical_feasibility": 2.0,
-      "upper_cf": 4.5
+      "upper_cf": 3.8024
     }
   },
   {
     "company": "Proxima Fusion",
-    "composite": 2.8893,
+    "composite": 2.4515,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -1329,16 +1329,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 5.0,
-      "modularity": 3.0549,
+      "modularity": 1.3456,
       "plant_complexity": 1.5,
       "supply_chain": 2.0,
       "technical_feasibility": 3.0,
-      "upper_cf": 4.0
+      "upper_cf": 2.6447
     }
   },
   {
     "company": "Gauss Fusion",
-    "composite": 2.511,
+    "composite": 2.0612,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -1481,16 +1481,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 3.0,
-      "modularity": 2.9068,
+      "modularity": 1.1136,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
       "technical_feasibility": 3.0,
-      "upper_cf": 4.0
+      "upper_cf": 2.6447
     }
   },
   {
     "company": "Realta Fusion",
-    "composite": 2.6305,
+    "composite": 2.2759,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -1634,16 +1634,16 @@
     "scores": {
       "customization": 2.33,
       "data_availability": 3.0,
-      "modularity": 4.0833,
+      "modularity": 2.9568,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
       "technical_feasibility": 2.0,
-      "upper_cf": 4.0
+      "upper_cf": 2.6447
     }
   },
   {
     "company": "OpenStar Technologies",
-    "composite": 2.5119,
+    "composite": 1.9687,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -1787,16 +1787,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 4.0,
-      "modularity": 2.9132,
+      "modularity": 1.1235,
       "plant_complexity": 1.5,
       "supply_chain": 2.0,
       "technical_feasibility": 2.0,
-      "upper_cf": 3.5
+      "upper_cf": 1.487
     }
   },
   {
     "company": "Avalanche Energy",
-    "composite": 2.5719,
+    "composite": 2.2781,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -1937,16 +1937,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 2.0,
-      "modularity": 4.8333,
+      "modularity": 4.1318,
       "plant_complexity": 2.5,
       "supply_chain": 2.0,
       "technical_feasibility": 1.0,
-      "upper_cf": 4.0
+      "upper_cf": 2.6447
     }
   },
   {
     "company": "General Fusion",
-    "composite": 2.7267,
+    "composite": 2.3456,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -2090,16 +2090,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 4.0,
-      "modularity": 4.9167,
+      "modularity": 4.2624,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
       "technical_feasibility": 2.0,
-      "upper_cf": 3.5
+      "upper_cf": 1.487
     }
   },
   {
     "company": "Zap Energy",
-    "composite": 2.4767,
+    "composite": 2.0349,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -2243,16 +2243,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 3.0,
-      "modularity": 4.1667,
+      "modularity": 3.0874,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
       "technical_feasibility": 2.0,
-      "upper_cf": 3.5
+      "upper_cf": 1.487
     }
   },
   {
     "company": "Acceleron Fusion",
-    "composite": 2.1195,
+    "composite": 1.6878,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -2393,16 +2393,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 1.0,
-      "modularity": 2.6667,
+      "modularity": 1.0,
       "plant_complexity": 2.5,
       "supply_chain": 2.0,
       "technical_feasibility": 1.0,
-      "upper_cf": 4.0
+      "upper_cf": 2.6447
     }
   },
   {
     "company": "Xcimer Energy",
-    "composite": 2.6195,
+    "composite": 2.0766,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -2547,16 +2547,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 3.0,
-      "modularity": 2.9167,
+      "modularity": 1.1291,
       "plant_complexity": 2.5,
       "supply_chain": 1.0,
       "technical_feasibility": 3.75,
-      "upper_cf": 3.5
+      "upper_cf": 1.487
     }
   },
   {
     "company": "Focused Energy",
-    "composite": 2.3576,
+    "composite": 1.9294,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -2700,16 +2700,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 2.0,
-      "modularity": 4.3333,
+      "modularity": 3.3485,
       "plant_complexity": 1.0,
       "supply_chain": 1.5,
       "technical_feasibility": 2.5,
-      "upper_cf": 3.5
+      "upper_cf": 1.487
     }
   },
   {
     "company": "TAE Technologies",
-    "composite": 3.4767,
+    "composite": 3.2763,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -2842,16 +2842,16 @@
     "scores": {
       "customization": 3.67,
       "data_availability": 2.0,
-      "modularity": 3.6667,
+      "modularity": 2.3041,
       "plant_complexity": 4.0,
       "supply_chain": 5.0,
       "technical_feasibility": 1.0,
-      "upper_cf": 5.0
+      "upper_cf": 4.9601
     }
   },
   {
     "company": "Zephyr Fusion",
-    "composite": 2.8323,
+    "composite": 2.5776,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -2988,16 +2988,16 @@
     "scores": {
       "customization": 4.33,
       "data_availability": 1.0,
-      "modularity": 2.9958,
+      "modularity": 1.2531,
       "plant_complexity": 3.5,
       "supply_chain": 2.0,
       "technical_feasibility": 1.0,
-      "upper_cf": 5.0
+      "upper_cf": 4.9601
     }
   },
   {
     "company": "Type One Energy",
-    "composite": 2.8832,
+    "composite": 2.348,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -3140,16 +3140,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 5.0,
-      "modularity": 3.0125,
+      "modularity": 1.2792,
       "plant_complexity": 2.0,
       "supply_chain": 2.0,
       "technical_feasibility": 3.0,
-      "upper_cf": 3.5
+      "upper_cf": 1.487
     }
   },
   {
     "company": "Renaissance Fusion",
-    "composite": 2.6677,
+    "composite": 2.1319,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -3292,16 +3292,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 4.0,
-      "modularity": 3.0042,
+      "modularity": 1.2662,
       "plant_complexity": 1.5,
       "supply_chain": 2.0,
       "technical_feasibility": 3.0,
-      "upper_cf": 3.5
+      "upper_cf": 1.487
     }
   },
   {
     "company": "Tokamak Energy",
-    "composite": 2.769,
+    "composite": 2.3845,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -3446,16 +3446,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 3.0,
-      "modularity": 3.713,
+      "modularity": 2.3766,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
       "technical_feasibility": 4.0,
-      "upper_cf": 4.0
+      "upper_cf": 2.6447
     }
   },
   {
     "company": "First Light Fusion",
-    "composite": 2.429,
+    "composite": 1.9603,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -3598,16 +3598,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 2.0,
-      "modularity": 3.8333,
+      "modularity": 2.5652,
       "plant_complexity": 2.0,
       "supply_chain": 2.0,
       "technical_feasibility": 2.0,
-      "upper_cf": 3.5
+      "upper_cf": 1.487
     }
   },
   {
     "company": "Marvel Fusion",
-    "composite": 3.4519,
+    "composite": 3.2116,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -3745,16 +3745,16 @@
     "scores": {
       "customization": 4.33,
       "data_availability": 3.0,
-      "modularity": 4.3333,
+      "modularity": 3.3485,
       "plant_complexity": 2.5,
       "supply_chain": 4.5,
       "technical_feasibility": 1.0,
-      "upper_cf": 4.5
+      "upper_cf": 3.8024
     }
   },
   {
     "company": "LPPFusion",
-    "composite": 3.7381,
+    "composite": 3.4438,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -3887,16 +3887,16 @@
     "scores": {
       "customization": 5.0,
       "data_availability": 2.0,
-      "modularity": 3.6667,
+      "modularity": 2.3041,
       "plant_complexity": 5.0,
       "supply_chain": 5.0,
       "technical_feasibility": 1.0,
-      "upper_cf": 4.5
+      "upper_cf": 3.8024
     }
   },
   {
     "company": "Intensity Energy",
-    "composite": 2.3338,
+    "composite": 1.8111,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -4039,16 +4039,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 4.0,
-      "modularity": 3.1667,
+      "modularity": 1.5207,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
       "technical_feasibility": 1.0,
-      "upper_cf": 3.5
+      "upper_cf": 1.487
     }
   },
   {
     "company": "EMC2",
-    "composite": 2.5005,
+    "composite": 2.1662,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -4189,16 +4189,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 2.0,
-      "modularity": 4.3333,
+      "modularity": 3.3485,
       "plant_complexity": 2.5,
       "supply_chain": 2.0,
       "technical_feasibility": 1.0,
-      "upper_cf": 4.0
+      "upper_cf": 2.6447
     }
   },
   {
     "company": "Energy Singularity",
-    "composite": 2.4767,
+    "composite": 2.0884,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -4343,16 +4343,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 1.0,
-      "modularity": 3.6667,
+      "modularity": 2.3041,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
       "technical_feasibility": 4.0,
-      "upper_cf": 4.0
+      "upper_cf": 2.6447
     }
   },
   {
     "company": "Firefly Fusion",
-    "composite": 2.9052,
+    "composite": 2.517,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -4497,16 +4497,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 4.0,
-      "modularity": 3.6667,
+      "modularity": 2.3041,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
       "technical_feasibility": 4.0,
-      "upper_cf": 4.0
+      "upper_cf": 2.6447
     }
   },
   {
     "company": "Inertia Enterprises",
-    "composite": 2.7148,
+    "composite": 2.2865,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -4650,16 +4650,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 2.0,
-      "modularity": 4.3333,
+      "modularity": 3.3485,
       "plant_complexity": 1.0,
       "supply_chain": 1.5,
       "technical_feasibility": 5.0,
-      "upper_cf": 3.5
+      "upper_cf": 1.487
     }
   },
   {
     "company": "Blue Laser Fusion",
-    "composite": 2.9162,
+    "composite": 2.4879,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -4804,16 +4804,16 @@
     "scores": {
       "customization": 2.33,
       "data_availability": 3.0,
-      "modularity": 4.3333,
+      "modularity": 3.3485,
       "plant_complexity": 1.0,
       "supply_chain": 1.5,
       "technical_feasibility": 4.75,
-      "upper_cf": 3.5
+      "upper_cf": 1.487
     }
   },
   {
     "company": "GenF Systems",
-    "composite": 2.679,
+    "composite": 2.2508,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -4957,16 +4957,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 2.0,
-      "modularity": 4.3333,
+      "modularity": 3.3485,
       "plant_complexity": 1.0,
       "supply_chain": 1.5,
       "technical_feasibility": 4.75,
-      "upper_cf": 3.5
+      "upper_cf": 1.487
     }
   },
   {
     "company": "Neo Fusion",
-    "composite": 2.6601,
+    "composite": 2.3307,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -5111,16 +5111,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 4.0,
-      "modularity": 1.9509,
+      "modularity": 1.0,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
       "technical_feasibility": 4.0,
-      "upper_cf": 4.0
+      "upper_cf": 2.6447
     }
   },
   {
     "company": "Deutelio",
-    "composite": 2.821,
+    "composite": 2.372,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -5256,16 +5256,16 @@
     "scores": {
       "customization": 2.33,
       "data_availability": 1.0,
-      "modularity": 2.9167,
+      "modularity": 1.1291,
       "plant_complexity": 3.5,
       "supply_chain": 5.0,
       "technical_feasibility": 1.0,
-      "upper_cf": 4.0
+      "upper_cf": 2.6447
     }
   },
   {
     "company": "Helical Fusion",
-    "composite": 2.5991,
+    "composite": 2.2592,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -5408,16 +5408,16 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 4.0,
-      "modularity": 2.0239,
+      "modularity": 1.0,
       "plant_complexity": 1.5,
       "supply_chain": 2.0,
       "technical_feasibility": 3.0,
-      "upper_cf": 4.0
+      "upper_cf": 2.6447
     }
   },
   {
     "company": "NearStar Fusion",
-    "composite": 3.0471,
+    "composite": 2.6729,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -5555,16 +5555,16 @@
     "scores": {
       "customization": 2.33,
       "data_availability": 2.0,
-      "modularity": 5.0,
+      "modularity": 4.3929,
       "plant_complexity": 2.5,
       "supply_chain": 5.0,
       "technical_feasibility": 1.0,
-      "upper_cf": 3.5
+      "upper_cf": 1.487
     }
   },
   {
     "company": "ENN Energy",
-    "composite": 3.4567,
+    "composite": 3.2588,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -5700,11 +5700,11 @@
     "scores": {
       "customization": 5.0,
       "data_availability": 1.0,
-      "modularity": 3.6969,
+      "modularity": 2.3515,
       "plant_complexity": 2.5,
       "supply_chain": 5.0,
       "technical_feasibility": 2.0,
-      "upper_cf": 5.0
+      "upper_cf": 4.9601
     }
   }
 ]
