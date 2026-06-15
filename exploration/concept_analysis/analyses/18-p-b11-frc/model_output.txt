@@ -1,13 +1,13 @@
-LCOE: 358.8 $/MWh   (1 GWe NOAK projection)
-Native LCOE = 437.7 $/MWh   (P_native, n_mod=1, overrides on)
-Generic LCOE = 441.7 $/MWh   (P_native, n_mod=1, overrides off)
-Overnight: generic 42963 $/kW   native 42557 $/kW   1 GWe 36204 $/kW
+LCOE: 381.2 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 461.9 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 638.6 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 62972 $/kW   native 45014 $/kW   1 GWe 38474 $/kW
 
 CAS               generic           native            1 GWe
 --------------------------------------------------------
 CAS10                11.2             11.2             11.7
 CAS21               192.3            192.3           1207.5
-CAS22              1122.1           1106.6          20955.7
+CAS22              1797.2           1189.6          22487.9
 CAS23                50.2             50.2           1004.1
 CAS24                24.4             24.4            488.6
 CAS25                14.9             14.9            297.4
@@ -15,22 +15,22 @@ CAS26                21.7             21.7            433.9
 CAS27                 3.3              5.0              5.0
 CAS28                 5.0              5.0              5.0
 CAS29                 0.0              0.0              0.0
-CAS30               286.8            284.0           4879.4
+CAS30               421.8            300.6           5185.9
 CAS40                 4.5              4.5              4.5
-CAS50                65.5             64.9           1074.1
-CAS60               346.3            343.1           5837.0
+CAS50                94.5             68.5           1140.0
+CAS60               507.6            362.9           6203.0
 CAS70                 7.2              7.2             18.3
 CAS80                 0.0              0.0              0.6
-CAS90               161.1            159.6           2715.6
+CAS90               236.2            168.8           2885.9
 --------------------------------------------------------
-TOTAL              2148.1           2127.9          36203.8
+TOTAL              3148.6           2250.7          38474.4
 
 --- CAS22 sub-account detail (overrides marked) ---
 code            generic       native        1 GWe  flag
-C220000          1122.1       1106.6      20955.7
+C220000          1797.2       1189.6      22487.9
 C220101             3.0          1.5          1.5  <-- OVERRIDE
 C220102             2.1          0.6          0.6  <-- OVERRIDE
-C220103            21.4         80.0         80.0  <-- OVERRIDE
+C220103           613.6         80.0         80.0  <-- OVERRIDE
 C220104           706.4        706.4        706.4
 C220105             2.0          2.0          2.0
 C220106            72.5         72.5         72.5
@@ -40,7 +40,7 @@ C220107            33.7         33.7         33.7
 C220108            47.8          0.0          0.0  <-- OVERRIDE
 C220109            23.3          0.0          0.0  <-- OVERRIDE
 C220110             5.9          5.9          5.9
-C220111           128.5        128.5        128.5
+C220111           211.4        211.4        211.4
 C220112             0.0          0.0          0.0
 C220200            24.2         24.2        248.5
 C220300            19.2         19.2         32.5
