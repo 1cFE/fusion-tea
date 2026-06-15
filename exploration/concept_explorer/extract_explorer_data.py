@@ -55,7 +55,6 @@ from exploration.concept_explorer.models import (  # noqa: E402, I001
     ParameterMetadata,
     SensitivityAnalysis,
     SensitivityEntry,
-    SourcePaths,
     load_omit_list,
 )
 
@@ -486,10 +485,6 @@ def extract_costingfe(
             cost_model=cost_model,
             parameter_metadata=merged_metadata,
             narrative=narrative,
-            sources=SourcePaths(
-                model_setup=str(concept_dir / "model_setup.py"),
-                analysis=str(analysis_path) if analysis_path.exists() else None,
-            ),
             asterisk_in_comparison=(comparison_status == "costingfe-asterisked"),
             analyst_override_count=len(enabled),
             overrides=override_records,
@@ -802,10 +797,6 @@ def extract_standalone(
             cost_model=cost_model,
             parameter_metadata=param_metadata,
             narrative=narrative,
-            sources=SourcePaths(
-                model_setup=None,
-                analysis=str(analysis_path) if analysis_path.exists() else None,
-            ),
         )
 
     for w in caught:

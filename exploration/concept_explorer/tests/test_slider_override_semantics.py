@@ -251,13 +251,18 @@ def _make_client(tmp_path: Path, module_src: str) -> TestClient:
         ConceptData,
         ConceptStatus,
         ConfinementFamily,
-        SourcePaths,
+        ModelType,
     )
 
-    analyses_dir = tmp_path / "analyses" / "04-fake"
+    # model_setup.py goes where the server derives it from the concept_id:
+    # base_dir.parent/concept_analysis/analyses/{id}-* (no stored path).
+    base_dir = tmp_path / "concept_explorer"
+    data_dir = base_dir / "data"
+    data_dir.mkdir(parents=True)
+
+    analyses_dir = tmp_path / "concept_analysis" / "analyses" / "04-fake"
     analyses_dir.mkdir(parents=True)
-    model_setup_path = analyses_dir / "model_setup.py"
-    model_setup_path.write_text(module_src)
+    (analyses_dir / "model_setup.py").write_text(module_src)
 
     concept = ConceptData(
         concept_id="04",
@@ -266,13 +271,11 @@ def _make_client(tmp_path: Path, module_src: str) -> TestClient:
         status=ConceptStatus.IN_PROGRESS,
         has_cost_model=True,
         has_sensitivities=False,
-        sources=SourcePaths(model_setup=str(model_setup_path)),
+        model_type=ModelType.COSTINGFE,
     )
-    data_dir = tmp_path / "data"
-    data_dir.mkdir()
     (data_dir / "04.json").write_text(concept.model_dump_json())
 
-    app = create_app(base_dir=tmp_path)
+    app = create_app(base_dir=base_dir)
     return TestClient(app)
 
 

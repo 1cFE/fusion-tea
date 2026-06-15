@@ -80,7 +80,7 @@ def _extract_exec_summary(synthesis_text: str) -> str | None:
     return match.group(1).strip() or None
 
 
-def _find_concept_dir(concept_id: str, analyses_root: Path) -> Path | None:
+def find_concept_dir(concept_id: str, analyses_root: Path) -> Path | None:
     """Find ``{analyses_root}/{concept_id}-*`` matching the short concept_id.
 
     Returns None when no directory matches. Letter-suffix IDs (``17a``,
@@ -109,7 +109,7 @@ def build_findings(
     Returns a payload with both HTML fields None when the concept directory
     doesn't exist or no markdown file is present (live OR archive).
     """
-    concept_dir = _find_concept_dir(concept_id, analyses_root)
+    concept_dir = find_concept_dir(concept_id, analyses_root)
     if concept_dir is None:
         return FindingsPayload(exec_summary_html=None, analysis_html=None)
 
@@ -129,7 +129,7 @@ def build_findings(
 
     analysis_path = concept_dir / "analysis.md"
     if not analysis_path.exists() and archive_root is not None:
-        archived = _find_concept_dir(concept_id, archive_root)
+        archived = find_concept_dir(concept_id, archive_root)
         if archived is not None and (archived / "analysis.md").exists():
             analysis_path = archived / "analysis.md"
             analysis_from_archive = True

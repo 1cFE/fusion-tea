@@ -24,7 +24,6 @@ from exploration.concept_explorer.models import (
     ConceptData,
     ConceptStatus,
     ConfinementFamily,
-    SourcePaths,
     load_omit_list,
 )
 from exploration.concept_explorer.server import _load_taxonomy, create_app
@@ -58,7 +57,6 @@ def _minimal_concept(concept_id: str = "01") -> ConceptData:
         status=ConceptStatus.IN_PROGRESS,
         has_cost_model=False,
         has_sensitivities=False,
-        sources=SourcePaths(),
     )
 
 

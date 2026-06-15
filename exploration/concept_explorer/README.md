@@ -159,13 +159,7 @@ ConceptData [models.py:337]
 ├── has_sensitivities: bool
 ├── cost_model: CostModelData | None ──────────────────────────────┐
 ├── parameter_metadata: dict[str, ParameterMetadata] ──┐           │
-├── narrative: NarrativeData | None ──┐                │           │
-└── sources: SourcePaths ─┐           │                │           │
-                          │           │                │           │
-    SourcePaths           │           │                │           │
-    [models.py:325]       │           │                │           │
-    ├── model_setup       │           │                │           │
-    └── analysis ─────────┘           │                │           │
+└── narrative: NarrativeData | None ──┐                │           │
                                       │                │           │
     NarrativeData                     │                │           │
     [models.py:316]                   │                │           │
@@ -640,9 +634,9 @@ The `Risk` model from the design (`DESIGN.md:351-354`) has typed fields (`risk: 
 
 The `thesis` field is significant — it's the one-line summary of what the concept IS. Without it, the concept profile has no textual identity beyond the name and company.
 
-### 7.5 SourcePaths Is Simplified vs Design
+### 7.5 SourcePaths Was Removed (Paths Are Derived, Not Stored)
 
-The DESIGN.md (`DESIGN.md:380-384`) specifies `SourcePaths` with four fields: `analysis`, `model_setup`, `model_output`, `synthesis`. The implementation (`models.py:325-329`) has only `model_setup` and `analysis`, dropping `model_output` and `synthesis`.
+The DESIGN.md (`DESIGN.md:380-384`) specified a `SourcePaths` block storing filesystem paths to each concept's `model_setup.py` / `analysis.md`. That block was **removed** entirely (see `.project/active/explorer-model-setup-path-normalization/`). Storing an absolute path baked the path of whichever machine last regenerated the data into the committed JSON, breaking `/api/compute` on every other host. The server now **derives** a concept's source directory from its `concept_id` at request time — scanning `concept_analysis/analyses/{concept_id}-*` via `findings.find_concept_dir`, exactly as the findings endpoint locates `analysis.md`. Slider-capability is read from the `model_type` field (`COSTINGFE` vs `STANDALONE`), which the data already carries, so no path or capability flag is stored.
 
 ### 7.6 CostModelData Structure Diverges from Design
 

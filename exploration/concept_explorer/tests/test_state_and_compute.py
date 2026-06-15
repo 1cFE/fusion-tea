@@ -25,7 +25,7 @@ from exploration.concept_explorer.models import (
     ConfinementFamily,
     CostModelData,
     ExplorerState,
-    SourcePaths,
+    ModelType,
 )
 from exploration.concept_explorer.server import create_app
 
@@ -134,15 +134,20 @@ result_1gw = model.forward(net_electric_mw=500.0, availability=0.85)
 def costingfe_base_dir(tmp_path: Path) -> Path:
     """base_dir with one costingfe-backed concept and one standalone concept.
 
-    The costingfe concept's model_setup.py is the fake module above, so no
-    costingfe installation is required for these tests.
+    The fake model_setup.py is placed in the sibling concept_analysis/analyses
+    tree exactly where the server derives it from the concept_id (no stored
+    path — find_concept_dir scans for ``{concept_id}-*``). The layout mirrors
+    production: base_dir is ``.../concept_explorer`` and the analyses live at
+    ``base_dir.parent/concept_analysis/analyses/{id}-*``. tmp_path matches no
+    real machine, so a passing compute here also proves host independence.
     """
-    # Write the fake model_setup.py into a subdirectory that mimics the
-    # real concept analysis layout.
-    analyses_dir = tmp_path / "analyses" / "04-fake-concept"
+    base_dir = tmp_path / "concept_explorer"
+    data_dir = base_dir / "data"
+    data_dir.mkdir(parents=True)
+
+    analyses_dir = tmp_path / "concept_analysis" / "analyses" / "04-fake-concept"
     analyses_dir.mkdir(parents=True)
-    model_setup_path = analyses_dir / "model_setup.py"
-    model_setup_path.write_text(_FAKE_MODULE_PY)
+    (analyses_dir / "model_setup.py").write_text(_FAKE_MODULE_PY)
 
     costingfe_concept = ConceptData(
         concept_id="04",
@@ -151,7 +156,7 @@ def costingfe_base_dir(tmp_path: Path) -> Path:
         status=ConceptStatus.IN_PROGRESS,
         has_cost_model=True,
         has_sensitivities=False,
-        sources=SourcePaths(model_setup=str(model_setup_path)),
+        model_type=ModelType.COSTINGFE,
     )
     standalone_concept = ConceptData(
         concept_id="01",
@@ -160,17 +165,15 @@ def costingfe_base_dir(tmp_path: Path) -> Path:
         status=ConceptStatus.IN_PROGRESS,
         has_cost_model=False,
         has_sensitivities=False,
-        sources=SourcePaths(),  # no model_setup → standalone
+        model_type=ModelType.STANDALONE,
     )
 
-    data_dir = tmp_path / "data"
-    data_dir.mkdir()
     (data_dir / "04.json").write_text(costingfe_concept.model_dump_json())
     (data_dir / "01.json").write_text(standalone_concept.model_dump_json())
 
     # Server computes manifest and parameter_index from per-concept JSONs at startup.
 
-    return tmp_path
+    return base_dir
 
 
 @pytest.fixture
@@ -300,6 +303,22 @@ def test_compute_costingfe_concept_returns_cost_model_data(client: TestClient) -
     assert resp.status_code == 200
     cost_model = CostModelData.model_validate(resp.json())
     assert cost_model.headline.lcoe_per_mwh > 0
+
+
+def test_compute_resolves_without_any_stored_path(client: TestClient) -> None:
+    """Core of the normalization: the concept JSON carries no filesystem path,
+    yet compute resolves model_setup.py from the concept_id and returns 200.
+
+    The fixture's base_dir is an arbitrary tmp location matching no real
+    machine, so this also exercises host independence (INV-4): resolution is
+    relative to where the server runs, not to any baked absolute path.
+    """
+    concept_json = client.get("/api/concepts/04").text
+    assert "model_setup.py" not in concept_json  # no path baked into the data
+    assert '"sources"' not in concept_json
+
+    resp = client.post("/api/compute", json={"concept_id": "04", "overrides": {}})
+    assert resp.status_code == 200
 
 
 def test_compute_override_changes_lcoe(client: TestClient) -> None:

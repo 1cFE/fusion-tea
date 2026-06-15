@@ -1322,10 +1322,6 @@
     }
   },
   "narrative": null,
-  "sources": {
-    "model_setup": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\10-large-scale-stellarator\\model_setup.py",
-    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\10-large-scale-stellarator\\analysis.md"
-  },
   "analyst_override_count": 0,
   "overrides": [
     {

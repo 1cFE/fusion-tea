@@ -27,7 +27,6 @@ from exploration.concept_explorer.models import (
     ParameterMetadata,
     SensitivityAnalysis,
     SensitivityEntry,
-    SourcePaths,
     load_omit_list,
 )
 
@@ -113,7 +112,6 @@ def _make_concept(
         has_sensitivities=cost_model is not None and cost_model.sensitivities is not None,
         cost_model=cost_model,
         parameter_metadata=parameter_metadata or {},
-        sources=SourcePaths(model_setup="analyses/04/model_setup.py"),
     )
 
 
@@ -375,10 +373,6 @@ def test_concept_data_round_trip_json() -> None:
         cost_model=_make_cost_model(sensitivities=sens),
         parameter_metadata=metadata,
         narrative=narrative,
-        sources=SourcePaths(
-            model_setup="analyses/04/model_setup.py",
-            analysis="analyses/04/analysis.md",
-        ),
     )
 
     json_str = original.model_dump_json()

@@ -999,10 +999,6 @@
     }
   },
   "narrative": null,
-  "sources": {
-    "model_setup": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\15-sheared-flow-stabilized-z-pinch\\model_setup.py",
-    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\15-sheared-flow-stabilized-z-pinch\\analysis.md"
-  },
   "analyst_override_count": 0,
   "overrides": [],
   "asterisk_in_comparison": false,

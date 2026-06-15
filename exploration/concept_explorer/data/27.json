@@ -3,10 +3,15 @@
   "name": "Polywell (D-T)",
   "confinement_family": "NONSTANDARD",
   "company": "EMC2",
+  "company_url": null,
+  "analyst_name": null,
+  "fuel": null,
   "status": "in_progress",
   "illustration": null,
   "has_cost_model": true,
   "has_sensitivities": true,
+  "model_type": null,
+  "data_grounded": true,
   "cost_model": {
     "cas10": {
       "name": "Preconstruction",
@@ -83,6 +88,8 @@
       "cost_m_usd": 49.927553896304595,
       "overridden": false
     },
+    "cas71": null,
+    "cas72": null,
     "cas80": {
       "name": "Fuel Costs (annualised)",
       "cost_m_usd": 0.06341170404571077,
@@ -302,6 +309,7 @@
         }
       }
     },
+    "sensitivities_bare": null,
     "params": {
       "p_fus_MW": 980.0,
       "p_beam_MW": 78.0,
@@ -404,8 +412,8 @@
       }
     ]
   },
-  "sources": {
-    "model_setup": null,
-    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/27-polywell/analysis.md"
-  }
+  "analyst_override_count": 0,
+  "overrides": [],
+  "asterisk_in_comparison": false,
+  "fit_grade": null
 }
