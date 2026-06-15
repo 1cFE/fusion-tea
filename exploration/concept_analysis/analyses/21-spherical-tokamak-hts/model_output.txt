@@ -61,5 +61,3 @@ elon sweep (native 450 MWe; typical ST range κ=2.5–3.0):
   elon=2.6: LCOE=193.2 $/MWh
   elon=2.8: LCOE=199.1 $/MWh  <- spec
   elon=3.0: LCOE=205.1 $/MWh
-
-# [auto-sync pipeline test marker — 2026-06-09, see PR description]

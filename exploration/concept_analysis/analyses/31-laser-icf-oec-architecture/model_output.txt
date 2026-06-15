@@ -1,13 +1,13 @@
-LCOE: 192.7 $/MWh   (1 GWe NOAK projection)
-Native LCOE = 192.7 $/MWh   (P_native, n_mod=1, overrides on)
-Generic LCOE = 215.1 $/MWh   (P_native, n_mod=1, overrides off)
-Overnight: generic 14040 $/kW   native 12386 $/kW   1 GWe 12386 $/kW
+LCOE: 198.7 $/MWh   (1 GWe NOAK projection)
+Native LCOE = 198.7 $/MWh   (P_native, n_mod=1, overrides on)
+Generic LCOE = 226.4 $/MWh   (P_native, n_mod=1, overrides off)
+Overnight: generic 14649 $/kW   native 12461 $/kW   1 GWe 12461 $/kW
 
 CAS               generic           native            1 GWe
 --------------------------------------------------------
 CAS10                18.5             18.5             18.5
 CAS21              1141.2           1141.2           1141.2
-CAS22              7049.4           5933.4           5933.4
+CAS22              7460.5           5983.9           5983.9
 CAS23               492.6            492.6            492.6
 CAS24               209.8            209.8            209.8
 CAS25               127.7            127.7            127.7
@@ -15,19 +15,19 @@ CAS26               212.9            212.9            212.9
 CAS27                28.8             28.8             28.8
 CAS28                 5.0              5.0              5.0
 CAS29                 0.0              0.0              0.0
-CAS30              1853.5           1630.3           1630.3
+CAS30              1935.7           1640.4           1640.4
 CAS40                39.0             39.0             39.0
-CAS50               597.8            549.8            549.8
-CAS60              2263.6           1996.9           1996.9
+CAS50               615.5            552.0            552.0
+CAS60              2361.8           2009.0           2009.0
 CAS70               392.9            350.1            350.1
-CAS80               155.8            155.8            155.8
-CAS90              1053.1            929.1            929.1
+CAS80               194.4            194.4            194.4
+CAS90              1098.8            934.7            934.7
 --------------------------------------------------------
-TOTAL             14039.8          12386.0          12386.0
+TOTAL             14649.0          12460.8          12460.8
 
 --- CAS22 sub-account detail (overrides marked) ---
 code            generic       native        1 GWe  flag
-C220000          7049.4       5933.4       5933.4
+C220000          7460.5       5983.9       5983.9
 C220101          1269.9       1269.9       1269.9
 C220102           728.6        728.6        728.6
 C220103             0.0          0.0          0.0
@@ -37,10 +37,10 @@ C220106           170.0        170.0        170.0
 C220106_pump          0.7          0.7          0.7
 C220106_vessel        169.2        169.2        169.2
 C220107            70.1         70.1         70.1
-C220108           462.4        219.0        219.0  <-- OVERRIDE
+C220108           823.0        219.0        219.0  <-- OVERRIDE
 C220109             0.0          0.0          0.0
 C220110           118.4        118.4        118.4
-C220111           803.4        803.4        803.4
+C220111           853.9        853.9        853.9
 C220112             0.0          0.0          0.0
 C220200           221.8        221.8        221.8
 C220300            18.2         18.2         18.2
@@ -54,8 +54,8 @@ F-2: DEC-UNAVAILABLE SENSITIVITY SCENARIO
 ============================================================
 If DEC (TRL ~2) is unavailable, the 30% charged-particle energy is lost.
 Effective η_e drops from 0.44 → 0.308; P_net drops from 2820 → 1864 MWe.
-  Native  (DEC on):  q_eng=4.7, P_net=2820 MWe, LCOE=192.7 $/MWh
-  DEC-off scenario:  q_eng=3.1, P_net=1864 MWe, LCOE=110.4 $/MWh
-  LCOE delta: +-82.3 $/MWh (-43% increase)
-  Overnight: 12386 → 7069 $/kW
+  Native  (DEC on):  q_eng=4.7, P_net=2820 MWe, LCOE=198.7 $/MWh
+  DEC-off scenario:  q_eng=3.1, P_net=1864 MWe, LCOE=113.6 $/MWh
+  LCOE delta: +-85.1 $/MWh (-43% increase)
+  Overnight: 12461 → 7108 $/kW
 DEC availability is a first-order economic risk for the BLF concept.
