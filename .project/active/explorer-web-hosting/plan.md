@@ -125,8 +125,8 @@ uv run python scripts/smoke_explorer.py https://<service>.up.railway.app
 ```
 
 ### Changes Required
-- [ ] `RUNBOOK.md` (in this work-item dir) — operator steps (Docker setup recap, Railway account/billing/connect, enable public networking, set branch=`main`) + the `1costingfe` bump procedure (spec appendix A/B; design.md#component-overview). FR-8.
-- [ ] Owner executes RUNBOOK to create the Railway service (Hobby plan; connect `1cFE/fusion-tea`; branch `main`; generate public domain).
+- [x] `RUNBOOK.md` (in this work-item dir) — operator steps (Railway account/billing/connect, generate public domain, branch=`main`, verify, confirm auto-redeploy) + the `1costingfe` bump procedure (`--prerelease=explicit`) + troubleshooting. FR-8.
+- [ ] **Owner executes RUNBOOK** to create the Railway service (Hobby plan; connect `1cFE/fusion-tea`; branch `main`; generate public domain). *Pending — owner-only.*
 
 ### Validation
 **Live deploy:**
@@ -197,6 +197,17 @@ uv run python scripts/smoke_explorer.py https://<service>.up.railway.app
 - Image size misses the NFR target (above) — accepted as the CPU-jax floor.
 
 ### Phase 3 Completion
+**Status:** `RUNBOOK.md` written 2026-06-15. **Remaining steps are owner-only** (Railway account/billing/connect/domain) and the post-deploy validation against the live URL.
+
+**Done by agent:**
+- `RUNBOOK.md` — one-time setup (account → Hobby plan → connect `1cFE/fusion-tea` → branch `main` → generate domain → verify → confirm push-to-main redeploy), the `1costingfe`/serving-dep bump loop, and troubleshooting. Notes that `railway.toml` supplies build/start so no UI command entry is needed, and that single-worker is load-bearing.
+
+**Owner-gated (not done — require Railway account + billing):**
+- Merge `feat/explorer-web-hosting` to `main`.
+- Execute the RUNBOOK to stand up the service and generate the public URL (FR-7).
+- Live-URL smoke (`scripts/smoke_explorer.py <url>` → `SMOKE OK`) + a browser slider check (FR-5).
+- CI/CD proof: push a `data/*.json` change to `main`, confirm auto-redeploy (FR-6).
+- Regression: `uv sync` still resolves; `uv run python -m pytest exploration/concept_explorer/tests/` passes (FR-3) — *can be run by the agent independent of Railway; not yet done this session.*
 
 ---
 
