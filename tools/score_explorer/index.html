@@ -345,12 +345,12 @@
       {
         eyebrow: "Axis 7 of 7",
         title: "Data Availability",
-        lead: "A meta axis: how thoroughly the concept is documented — and therefore how much you can trust the other six scores.",
+        lead: "A meta axis: how thoroughly the concept's design point is documented — and therefore how much you can trust the other six scores.",
         sections: [
-          { h: "How it's scored", p: "Counts the 'blocking' data gaps flagged in upstream agentic research — missing balance-of-plant cost, an underivable capacity factor, etc. — and buckets the count." },
-          { h: "Why it matters", p: "It does not measure plant quality — a well-documented concept can still be a poor plant. It measures confidence. A concept riddled with blocking gaps has an LCOE estimate resting on assumptions; one with none has a number you can defend in a downselect." },
+          { h: "How it's scored", p: "Counts the number of primary source documents available for a given design point and combines that with an analyst-rated grounding confidence (low / medium / high). The design point and its sources are recorded per concept in exploration/concept_analysis/tables/design_point.csv. A concept absent from that table floors at 1.0 (no documented design point on record)." },
+          { h: "Why it matters", p: "It does not measure plant quality — a well-documented concept can still be a poor plant. It measures confidence. A concept built on a single corporate slide deck has an LCOE estimate resting on assumptions; one anchored in multiple peer-reviewed engineering papers has a number you can defend in a downselect." },
         ],
-        scale: { lo: "many blocking data gaps", hi: "no blocking gaps — fully documented" },
+        scale: { lo: "no design point on record / thin company-target sources", hi: "high-confidence design point with ≥3 peer-reviewed primary sources" },
       },
       {
         eyebrow: "The concept set",
@@ -497,7 +497,7 @@
       const d = concept.diagnostics && concept.diagnostics[`${axis}_diagnostics`];
       if (!d) {
         if (axis === "data_availability") {
-          return `No gap report for this concept yet.\n\nThis axis is null and is excluded from the composite (it doesn't pull the score down).\n\n⚠ Score not computable — analyst hasn't written the gap report.`;
+          return `No design point on record for this concept.\n\n⚠ Not in exploration/concept_analysis/tables/design_point.csv — score floors at 1.0 (no documented design point).`;
         }
         return `${AXIS_LABEL[axis]}: no diagnostic data available.`;
       }
