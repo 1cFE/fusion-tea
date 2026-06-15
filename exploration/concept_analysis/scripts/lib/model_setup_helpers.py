@@ -28,12 +28,26 @@ Library-sourced defaults (not hardcoded):
     per-concept file. ``interest_rate`` / ``inflation_rate`` /
     ``construction_time_yr`` *do* have ``forward()`` defaults, so the helper
     omits them entirely — the library carries them.
+
+Costing route:
+    The three forwards no longer call ``CostModel.forward()`` directly. They go
+    through ``costingfe.adapter.run_costing(FusionTeaInput(...))`` — the library's
+    recommended typed entry point — and ``_wrap`` re-exposes the adapter's flat
+    ``FusionTeaOutput`` in the ``ForwardResult``-shaped surface the per-concept
+    ``model_setup.py`` files and ``print_cas_breakdown`` already read
+    (``.costs.<casXX>`` / ``.costs.lcoe`` attribute access, ``.cas22_detail[...]``
+    dict access, ``.power_table.<attr>`` attribute access). The per-concept files
+    still construct ``model = CostModel(concept, fuel)``; that object is now just
+    the typed carrier of concept / fuel / cycle config the helper reads to build
+    ``FusionTeaInput``. The actual costing runs through the adapter.
 """
 
 from __future__ import annotations
 
+from types import SimpleNamespace
 from typing import TypedDict
 
+from costingfe.adapter import FusionTeaInput, run_costing
 from costingfe.validation import CostingInput, default_availability
 
 # The standardized plant lifetime is the library field default (Item-4 = 40 yr).
@@ -82,6 +96,74 @@ def enabled_overrides(overrides: list[Override]) -> dict[str, float]:
     return {o["account"]: o["value"] for o in overrides if o["enabled"]}
 
 
+# FusionTeaOutput.costs is flat and CAS-code-keyed ("CAS21"); the per-concept
+# files and print_cas_breakdown read the rollups as ForwardResult attributes
+# ("cas21"). This maps every rollup key the adapter emits to its attribute name.
+_CAS_ATTR: dict[str, str] = {
+    "CAS10": "cas10", "CAS20": "cas20", "CAS21": "cas21", "CAS22": "cas22",
+    "CAS23": "cas23", "CAS24": "cas24", "CAS25": "cas25", "CAS26": "cas26",
+    "CAS27": "cas27", "CAS28": "cas28", "CAS29": "cas29", "CAS30": "cas30",
+    "CAS40": "cas40", "CAS50": "cas50", "CAS60": "cas60", "CAS70": "cas70",
+    "CAS71": "cas71", "CAS72": "cas72", "CAS80": "cas80", "CAS90": "cas90",
+}
+
+
+def _wrap(out) -> SimpleNamespace:
+    """Re-expose a flat ``FusionTeaOutput`` as a ``ForwardResult``-shaped object.
+
+    The adapter returns CAS rollups and CAS22 sub-account detail merged into one
+    flat ``costs`` dict (``out.costs["CAS21"]``, ``out.costs["C220103"]``), plus
+    ``lcoe`` / ``overnight_cost`` / ``total_capital`` as scalar fields and a flat
+    ``power_table`` dict. The per-concept ``model_setup.py`` files and
+    ``print_cas_breakdown`` instead read the legacy ``ForwardResult`` surface:
+    ``.costs.cas21`` / ``.costs.lcoe`` (attributes), ``.cas22_detail["C220103"]``
+    (a C-keyed dict), and ``.power_table.rec_frac`` (attributes). This shim
+    reconstructs exactly that surface — values are byte-identical because the
+    adapter wraps the *same* ``forward()`` call, only reshaped.
+    """
+    costs = SimpleNamespace(
+        lcoe=out.lcoe,
+        overnight_cost=out.overnight_cost,
+        total_capital=out.total_capital,
+        **{attr: out.costs[key] for key, attr in _CAS_ATTR.items() if key in out.costs},
+    )
+    # CAS22 sub-account detail: every "C22…" key (C220101…C220700 + the C220000
+    # total). "CAS22" is the rollup and starts with "CAS", so it is excluded.
+    cas22_detail = {k: v for k, v in out.costs.items() if k.startswith("C22")}
+    return SimpleNamespace(
+        costs=costs,
+        cas22_detail=cas22_detail,
+        power_table=SimpleNamespace(**out.power_table),
+        overridden=list(out.overridden),
+        sensitivity=out.sensitivity,
+    )
+
+
+def _input_config(model, *, noak: bool) -> dict:
+    """Shared ``FusionTeaInput`` fields derived from the ``CostModel`` carrier.
+
+    Reads identity (concept, fuel), the cycle / conversion / driver config, and
+    the library-sourced ``availability`` and ``lifetime_yr`` off the model the
+    per-concept file constructed. ``pulsed_conversion`` / ``laser_driver_type``
+    fall back to ``""`` (the adapter's "use concept default" sentinel) when the
+    model left them unset. Per-call fields (``net_electric_mw``, ``n_mod``,
+    ``overrides``, ``cost_overrides``, ``override_reference_mw``) are added by the
+    caller.
+    """
+    pulsed_conv = getattr(model, "pulsed_conversion", None)
+    laser_drv = getattr(model, "laser_driver_type", None)
+    return dict(
+        concept=model.concept.value,
+        fuel=model.fuel.value,
+        power_cycle=model.power_cycle.value,
+        pulsed_conversion=pulsed_conv.value if pulsed_conv else "",
+        laser_driver_type=laser_drv.value if laser_drv else "",
+        availability=default_availability(model.concept),
+        lifetime_yr=_LIBRARY_LIFETIME_YR,
+        noak=noak,
+    )
+
+
 def generic_reference(model, spec: dict, p_native: float, *, noak: bool = True):
     """The library's bare per-account answer for one ``p_native`` module.
 
@@ -101,15 +183,19 @@ def generic_reference(model, spec: dict, p_native: float, *, noak: bool = True):
 
     ``run_native_and_1gw`` no longer recomputes this forward — it issues the
     overrides-on ``native`` directly — so ``generic`` is computed exactly once.
+
+    Routes through ``run_costing`` (overrides off, no scaling); the result is
+    ``_wrap``-ed so callers see the ``ForwardResult`` surface they expect.
     """
-    return model.forward(
-        net_electric_mw=p_native,
-        n_mod=1,
-        availability=default_availability(model.concept),
-        lifetime_yr=_LIBRARY_LIFETIME_YR,
-        noak=noak,
-        **spec,
+    out = run_costing(
+        FusionTeaInput(
+            **_input_config(model, noak=noak),
+            net_electric_mw=p_native,
+            n_mod=1,
+            overrides=dict(spec),
+        )
     )
+    return _wrap(out)
 
 
 def run_native_and_1gw(
@@ -139,43 +225,47 @@ def run_native_and_1gw(
     them) but sourced from the library, never hardcoded. No other financial
     defaults are passed. When ``p_native == 1000``, ``n_mod == 1`` and
     ``native == result_1gw`` with no special-casing.
+
+    Both forwards route through ``run_costing`` with ``override_reference_mw=
+    p_native`` (the adapter threads it into ``forward()``), so the per-account
+    override scaling that frames the 1 GWe projection is preserved. Results are
+    ``_wrap``-ed back to the ``ForwardResult`` surface callers expect.
     """
-    availability = default_availability(model.concept)
-    lifetime_yr = _LIBRARY_LIFETIME_YR
+    cfg = _input_config(model, noak=noak)
     enabled = enabled_overrides(overrides)
 
-    native = model.forward(
-        net_electric_mw=p_native,
-        n_mod=1,
-        availability=availability,
-        lifetime_yr=lifetime_yr,
-        noak=noak,
-        cost_overrides=enabled,
-        override_reference_mw=p_native,
-        **spec,
+    native = run_costing(
+        FusionTeaInput(
+            **cfg,
+            net_electric_mw=p_native,
+            n_mod=1,
+            overrides=dict(spec),
+            cost_overrides=enabled,
+            override_reference_mw=p_native,
+        )
     )
 
-    result_1gw = model.forward(
-        net_electric_mw=_PROJECTION_NET_MWE,
-        # Round to nearest integer module count and clamp to >=1. 1costingfe's
-        # CostingInput declares n_mod as a strict int (ge=1), which rejects the
-        # raw float division on every concept where P_native does not exactly
-        # divide _PROJECTION_NET_MWE. The 1 GWe projection is a comparison
-        # convenience, not a real plant design point — the precise n_mod value
-        # has no analytical meaning beyond "how many of this module to reach
-        # 1 GWe", so int(round(...)) is faithful enough. Concepts whose native
-        # scale already exceeds 1 GWe (e.g. Helias at 1500 MWe) collapse to
-        # n_mod=1 and the 1 GWe column reports a de-rated single-module figure.
-        n_mod=max(1, int(round(_PROJECTION_NET_MWE / p_native))),
-        availability=availability,
-        lifetime_yr=lifetime_yr,
-        noak=noak,
-        cost_overrides=enabled,
-        override_reference_mw=p_native,
-        **spec,
+    result_1gw = run_costing(
+        FusionTeaInput(
+            **cfg,
+            net_electric_mw=_PROJECTION_NET_MWE,
+            # Round to nearest integer module count and clamp to >=1. 1costingfe's
+            # CostingInput declares n_mod as a strict int (ge=1), which rejects the
+            # raw float division on every concept where P_native does not exactly
+            # divide _PROJECTION_NET_MWE. The 1 GWe projection is a comparison
+            # convenience, not a real plant design point — the precise n_mod value
+            # has no analytical meaning beyond "how many of this module to reach
+            # 1 GWe", so int(round(...)) is faithful enough. Concepts whose native
+            # scale already exceeds 1 GWe (e.g. Helias at 1500 MWe) collapse to
+            # n_mod=1 and the 1 GWe column reports a de-rated single-module figure.
+            n_mod=max(1, int(round(_PROJECTION_NET_MWE / p_native))),
+            overrides=dict(spec),
+            cost_overrides=enabled,
+            override_reference_mw=p_native,
+        )
     )
 
-    return native, result_1gw
+    return _wrap(native), _wrap(result_1gw)
 
 
 # CAS rollup accounts, in report order (matches the prototype inspection block).
