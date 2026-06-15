@@ -1,0 +1,22 @@
+# Slim serving-only dependency set for the concept-explorer web deployment.
+#
+# This is the single source of truth for the *deployed* environment. It is
+# intentionally separate from pyproject.toml / uv.lock so the offline pipeline
+# install (torch, docling, agentic-mbse, sysml-codegen, local path deps) stays
+# untouched (FR-3). See .project/active/explorer-web-hosting/{spec,design}.md.
+#
+# Compile to a fully-pinned lockfile (direct + transitive) with:
+#   uv pip compile requirements-serve.in -o requirements-serve.txt --prerelease=explicit
+# (--prerelease=explicit allows the pre-release ONLY for packages pinned to one
+#  explicitly — i.e. 1costingfe==0.1.0a2 — so numpy/scipy/pydantic stay on stable
+#  releases rather than picking up alpha/rc transitive versions.)
+# Commit both files. Regenerate on any bump (e.g. a new 1costingfe).
+
+1costingfe==0.1.0a2      # → import costingfe (+ jax, jaxlib) for /api/compute
+fastapi
+uvicorn[standard]
+jinja2
+pydantic>=2
+pyyaml
+markdown
+numpy
