@@ -1,0 +1,15 @@
+# Railway config-as-code so the service is reproducible from the repo.
+# With a Dockerfile present, Railway ignores Railpack, builds the image, and
+# rebuilds it on every push to the connected branch (main) — push-to-main
+# auto-deploy with no GitHub Actions (FR-6).
+#
+# startCommand mirrors the Dockerfile CMD but uses Railway's injected $PORT
+# directly. Single worker (no --workers) is load-bearing — app.state, the LRU
+# compute cache, and in-memory /api/state assume one process.
+
+[build]
+builder = "dockerfile"
+
+[deploy]
+startCommand = "uvicorn exploration.concept_explorer.server:app --host 0.0.0.0 --port $PORT"
+restartPolicyType = "on_failure"

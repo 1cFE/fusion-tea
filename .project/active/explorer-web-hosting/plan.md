@@ -85,9 +85,9 @@ sleep 8 && uv run python scripts/smoke_explorer.py http://127.0.0.1:8421
 ### Changes Required
 **See design.md#implementation-notes and appendices A/C for the exact sketches.**
 
-- [ ] `Dockerfile` — `python:3.12-slim`, copy `requirements-serve.txt`, `pip install`, copy repo, shell-form `CMD` with `${PORT:-8421}` (design.md appendix A).
-- [ ] `.dockerignore` — exclude `.git`, `.venv`, `knowledge/concept_research`, `**/iter-*/`, `*.log`, `__pycache__`, `.pytest_cache`, `archive/*` **except** `archive/concept_analysis_pre_rework`; **keep** `analyses/*/model_setup.py`, `analyses/*/analysis.md`, `scripts/lib/`, `tables/archetype_fit.csv` (design.md#implementation-notes).
-- [ ] `railway.toml` — dockerfile builder + start command + restart policy (design.md appendix C).
+- [x] `Dockerfile` — `python:3.12-slim`, copy `requirements-serve.txt`, `pip install --no-cache-dir`, copy repo, shell-form `CMD` with `${PORT:-8421}` (design.md appendix A). Added `PYTHONUNBUFFERED=1`/`PYTHONDONTWRITEBYTECODE=1` for log streaming.
+- [x] `.dockerignore` — excludes `.git`, `.venv`, `**/iter-*/`, `*.log`, `__pycache__`, `.pytest_cache`, `archive/*` **except** `archive/concept_analysis_pre_rework`. **Deviation:** excludes ALL of `knowledge/` (not just `knowledge/concept_research`) — no serving-runtime code references `knowledge/` (grep-verified), saving an extra ~151 MB; the Phase 2 docker smoke is the safety net. Keep-paths verified present: `analyses/*/{model_setup.py,analysis.md}`, `scripts/lib/`, `tables/archetype_fit.csv`, `concept_analysis_pre_rework/*/analysis.md` (30 concepts).
+- [x] `railway.toml` — dockerfile builder + start command (single worker) + `restartPolicyType="on_failure"` (design.md appendix C).
 
 ### Validation
 **Docker setup (owner runs; needs sudo — run via `! <cmd>` in-session):**
@@ -96,11 +96,13 @@ sleep 8 && uv run python scripts/smoke_explorer.py http://127.0.0.1:8421
 - [ ] `! sudo usermod -aG docker $USER` then **log out/in** (or `! newgrp docker`) so `docker` runs without sudo
 - [ ] `docker run --rm hello-world` → succeeds
 
-**Image build/run:**
-- [ ] `docker build -t explorer .` → succeeds; note image size (`docker images explorer`).
-- [ ] Confirm build context isn't huge (Docker prints "transferring context"); if it is, fix `.dockerignore`.
-- [ ] `docker run --rm -e PORT=8421 -p 8421:8421 explorer` then smoke script → `SMOKE OK`.
-- [ ] `docker run --rm explorer pip list` shows no torch/docling/agentic-mbse/sysml-codegen.
+**Image build/run:** *(run via `sg docker -c '…'` — the Bash shells predate the `docker` group add, so the socket is otherwise permission-denied; the interactive `! docker` worked because that shell had the group)*
+- [x] `docker build -t explorer .` → succeeds. **Image = 1.16 GB** (over the ~400–500 MB SHOULD-target — see note below).
+- [x] Build context transferred = **78.3 MB** (not huge; `.dockerignore` working).
+- [x] `docker run -e PORT=8421 -p 8421:8421 explorer` → healthy in 1s → smoke → `SMOKE OK  page/findings=33  compute=33  lcoe=162.28`. `$PORT` expands, tree complete.
+- [x] `docker exec … pip list` shows **no** torch/docling/agentic-mbse/sysml-codegen, and **no nvidia/cuda** wheels (CPU jaxlib).
+
+**Image-size note (deviation from NFR ~400 MB target):** 1.16 GB is essentially the floor for a CPU-JAX serving image. The 684 MB pip layer is jaxlib (347 MB) + scipy (111 MB) + numpy (42 MB) + `.libs`/ml_dtypes — all required by `/api/compute`; none droppable. python:3.12-slim base (~130 MB) + 78 MB context complete it. The actual goal — excluding the multi-GB *pipeline* toolchain (torch/docling) — is met. Acceptable for Railway (no blocking size limit); flagged because it misses the NFR SHOULD.
 
 **What We Know Works After This Phase:** the real artifact that Railway will build runs locally and passes the full smoke — `$PORT`, tree completeness, and size all confirmed.
 
@@ -179,6 +181,20 @@ uv run python scripts/smoke_explorer.py https://<service>.up.railway.app
 **Not yet done (intentionally — owner-gated, deferred to later phases):** committing the Phase 1 artifacts. Holding the commit until you confirm, since the `model_setup` fix lives on a separate branch and we'll want the hosting commits to land on `main` in a coherent order.
 
 ### Phase 2 Completion
+**Completed:** 2026-06-15. Build + run + container smoke all PASS.
+
+**Actual Changes:**
+- `Dockerfile`, `.dockerignore`, `railway.toml` at repo root (not yet committed).
+
+**What was proven:** the real artifact Railway will build runs locally and passes the full smoke (`/api/compute` recompute works in-container, `$PORT` expands, runtime tree complete), with no heavy deps and no CUDA wheels. Build context 78.3 MB.
+
+**Issues:**
+- Docker socket permission-denied from the agent's Bash shells (they predate the `docker` group membership add). Worked around with `sg docker -c '…'`; a fresh login shell would also fix it.
+- Image is **1.16 GB**, ~2.5× the NFR ~400 MB SHOULD-target. Root cause is the irreducible CPU-JAX floor (jaxlib 347 MB + scipy 111 MB + numpy 42 MB), not misconfig. Not a blocker for Railway. (See Validation note.)
+
+**Deviations:**
+- `.dockerignore` excludes ALL of `knowledge/` (design said `knowledge/concept_research`) — zero runtime references; smoke-verified.
+- Image size misses the NFR target (above) — accepted as the CPU-jax floor.
 
 ### Phase 3 Completion
 

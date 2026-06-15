@@ -1,0 +1,37 @@
+# Build-context trimming for the slim explorer image.
+#
+# Goal: ship the runtime tree (the explorer app + the analyses/archive files
+# the compute and findings paths read) while excluding the ~7 GB of local-dev
+# and research bulk. The Phase 2 `docker run` + smoke test is the safety net:
+# if an over-broad exclude drops a runtime file, /api/compute or
+# /api/concepts/{id}/findings 500s locally — before any cloud spend.
+#
+# MUST survive (verified present): exploration/concept_explorer/{data,static,
+# templates}, exploration/concept_analysis/analyses/*/{model_setup.py,
+# analysis.md}, exploration/concept_analysis/scripts/lib/,
+# exploration/concept_analysis/tables/archetype_fit.csv,
+# archive/concept_analysis_pre_rework/*/analysis.md.
+
+# Version control + local virtualenv (.venv alone is ~6.1 GB).
+.git
+.venv
+serve-venv
+
+# Research bulk — no serving-runtime code references knowledge/ (grep-verified).
+knowledge
+
+# Archive: keep ONLY the findings fallback subtree (concept_analysis_pre_rework,
+# read at server.py:774); drop everything else under archive/.
+archive/*
+!archive/concept_analysis_pre_rework
+
+# These come LAST so they override the archive re-include above (in a
+# .dockerignore the last matching pattern wins). They re-exclude intermediate
+# analyzer artifacts and caches wherever they live, including inside the
+# otherwise-kept analyses/ and archive/ trees.
+**/iter-*/
+**/__pycache__/
+*.pyc
+.pytest_cache
+*.log
+.DS_Store
