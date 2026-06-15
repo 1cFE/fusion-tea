@@ -955,10 +955,6 @@
     }
   },
   "narrative": null,
-  "sources": {
-    "model_setup": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\24-dense-plasma-focus\\model_setup.py",
-    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\24-dense-plasma-focus\\analysis.md"
-  },
   "analyst_override_count": 7,
   "overrides": [
     {

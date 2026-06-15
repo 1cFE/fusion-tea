@@ -32,7 +32,6 @@ from exploration.concept_explorer.models import (
     ParameterMetadata,
     SensitivityAnalysis,
     SensitivityEntry,
-    SourcePaths,
 )
 from exploration.concept_explorer.server import _load_data, create_app
 
@@ -49,9 +48,7 @@ def _minimal_concept(concept_id: str = "01") -> ConceptData:
         confinement_family=ConfinementFamily.MFE,
         status=ConceptStatus.IN_PROGRESS,
         has_cost_model=False,
-        has_sensitivities=False,
-        sources=SourcePaths(),
-    )
+        has_sensitivities=False,    )
 
 
 def _concept_with_sensitivities(concept_id: str = "01") -> ConceptData:
@@ -99,9 +96,7 @@ def _concept_with_sensitivities(concept_id: str = "01") -> ConceptData:
                 baseline=0.85,
                 range=(0.5, 0.95),
             ),
-        },
-        sources=SourcePaths(),
-    )
+        },    )
 
 
 # ---------------------------------------------------------------------------

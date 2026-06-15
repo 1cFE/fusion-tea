@@ -1551,10 +1551,6 @@
     }
   },
   "narrative": null,
-  "sources": {
-    "model_setup": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\29-negative-triangularity-tokamak\\model_setup.py",
-    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\29-negative-triangularity-tokamak\\analysis.md"
-  },
   "analyst_override_count": 3,
   "overrides": [
     {

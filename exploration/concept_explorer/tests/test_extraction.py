@@ -48,7 +48,6 @@ from exploration.concept_explorer.models import (  # noqa: E402, I001
     ParameterMetadata,
     SensitivityAnalysis,
     SensitivityEntry,
-    SourcePaths,
     build_manifest,
     build_parameter_index,
 )
@@ -1420,7 +1419,6 @@ class TestConceptFilter:
                 status=ConceptStatus.IN_PROGRESS,
                 has_cost_model=False,
                 has_sensitivities=False,
-                sources=SourcePaths(),
             )
             (data_dir / f"{cid}.json").write_text(placeholder.model_dump_json())
 
@@ -1569,7 +1567,6 @@ def _make_three_concepts() -> list[ConceptData]:
             has_cost_model=has_cost,
             has_sensitivities=has_cost,
             cost_model=cost,
-            sources=SourcePaths(),
         )
 
     return [

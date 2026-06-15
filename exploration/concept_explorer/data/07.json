@@ -1022,10 +1022,6 @@
     }
   },
   "narrative": null,
-  "sources": {
-    "model_setup": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\07-maglif\\model_setup.py",
-    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\07-maglif\\analysis.md"
-  },
   "analyst_override_count": 0,
   "overrides": [
     {

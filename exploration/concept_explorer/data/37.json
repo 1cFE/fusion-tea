@@ -999,10 +999,6 @@
     }
   },
   "narrative": null,
-  "sources": {
-    "model_setup": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\37-magnetized-target-inertial-fusion-mtif\\model_setup.py",
-    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\37-magnetized-target-inertial-fusion-mtif\\analysis.md"
-  },
   "analyst_override_count": 0,
   "overrides": [],
   "asterisk_in_comparison": true,

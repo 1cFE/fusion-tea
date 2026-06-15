@@ -397,13 +397,6 @@ class NarrativeData(BaseModel):
     risks: list[dict[str, Any]]  # Each entry: {"description": str, "severity": str}
 
 
-class SourcePaths(BaseModel):
-    """File-system paths to the concept's source scripts (repo-relative)."""
-
-    model_setup: str | None = None  # Path to model_setup.py (costingfe-backed)
-    analysis: str | None = None  # Path to analysis.md or standalone script
-
-
 class OverrideRecord(BaseModel):
     """One analyst cost-override registry entry, carried to the explorer payload.
 
@@ -489,7 +482,6 @@ class ConceptData(BaseModel):
     cost_model: CostModelData | None = None
     parameter_metadata: dict[str, ParameterMetadata] = Field(default_factory=dict)
     narrative: NarrativeData | None = None
-    sources: SourcePaths
     # Count of *enabled* analyst override registry entries (Bet 4). Drives the
     # toggle label ("Apply analyst cost adjustments (N entries)") and the
     # hide/disable decision (INV-5). 0 for freeform/empty-registry concepts.

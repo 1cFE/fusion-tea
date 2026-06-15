@@ -3,10 +3,15 @@
   "name": "Compact Spherical Tokamak - India",
   "confinement_family": "MFE",
   "company": "Pranos Fusion",
+  "company_url": null,
+  "analyst_name": null,
+  "fuel": null,
   "status": "in_progress",
   "illustration": null,
   "has_cost_model": true,
   "has_sensitivities": true,
+  "model_type": null,
+  "data_grounded": true,
   "cost_model": {
     "cas10": {
       "name": "Preconstruction",
@@ -83,6 +88,8 @@
       "cost_m_usd": 114.20207214355469,
       "overridden": false
     },
+    "cas71": null,
+    "cas72": null,
     "cas80": {
       "name": "Fuel Costs (annualised)",
       "cost_m_usd": 1.6159870624542236,
@@ -386,6 +393,7 @@
         }
       }
     },
+    "sensitivities_bare": null,
     "params": {
       "p_input": 25.0,
       "p_nbi": 25.0,
@@ -1299,8 +1307,8 @@
       }
     ]
   },
-  "sources": {
-    "model_setup": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/34-compact-spherical-tokamak-india/model_setup.py",
-    "analysis": "/home/reid/1cfe/fusion-tea/exploration/concept_analysis/analyses/34-compact-spherical-tokamak-india/analysis.md"
-  }
+  "analyst_override_count": 0,
+  "overrides": [],
+  "asterisk_in_comparison": false,
+  "fit_grade": null
 }

@@ -1323,10 +1323,6 @@
     }
   },
   "narrative": null,
-  "sources": {
-    "model_setup": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\18-p-b11-frc\\model_setup.py",
-    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\18-p-b11-frc\\analysis.md"
-  },
   "analyst_override_count": 7,
   "overrides": [
     {

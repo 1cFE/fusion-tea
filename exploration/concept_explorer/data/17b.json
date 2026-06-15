@@ -1020,10 +1020,6 @@
     }
   },
   "narrative": null,
-  "sources": {
-    "model_setup": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\17b-laser-icf-fast-ignition\\model_setup.py",
-    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\17b-laser-icf-fast-ignition\\analysis.md"
-  },
   "analyst_override_count": 0,
   "overrides": [],
   "asterisk_in_comparison": true,

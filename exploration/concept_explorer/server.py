@@ -51,6 +51,7 @@ from exploration.concept_explorer.models import (  # noqa: E402
     CostModelData,
     ExplorerState,
     FuelType,
+    ModelType,
     ParameterIndex,
     ParameterIndexEntry,
     build_cost_landscape,
@@ -154,6 +155,19 @@ _enabled_overrides = _derive_enabled_overrides()
 # ---------------------------------------------------------------------------
 
 _MODULE_LOAD_LOCK = threading.Lock()
+
+
+def _analyses_root(base_dir: Path) -> Path:
+    """Concept-analysis source tree, derived from the explorer ``base_dir``.
+
+    ``base_dir`` is ``.../exploration/concept_explorer``; the per-concept
+    ``model_setup.py`` / ``analysis.md`` live in the sibling tree
+    ``.../exploration/concept_analysis/analyses/{concept_id}-*``. Both the
+    findings endpoint and ``/api/compute`` resolve concept source files from
+    here, so the location is derived in one place rather than stored per-concept
+    (which baked machine-specific absolute paths into the committed data).
+    """
+    return base_dir.parent / "concept_analysis" / "analyses"
 
 
 @lru_cache(maxsize=32)
@@ -753,7 +767,7 @@ def api_get_findings(concept_id: str, state: _State = Depends(get_state)) -> dic
     if state.concepts.get(concept_id) is None:
         raise HTTPException(status_code=404, detail=f"Concept {concept_id} not found")
     from exploration.concept_explorer.findings import build_findings
-    analyses_root = state.base_dir.parent / "concept_analysis" / "analyses"
+    analyses_root = _analyses_root(state.base_dir)
     # Fallback for analyses that haven't been regenerated under the new
     # three-forward pipeline since Reid's 2026-05-31 bulk archive (commit
     # 3f28671). Surfaces the legacy analysis with a disclaimer.
@@ -987,18 +1001,34 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
         concept = state.concepts.get(concept_id)
         if concept is None:
             raise ValueError(f"Concept {concept_id!r} not found in loaded data")
-        model_setup = concept.sources.model_setup
-        if model_setup is None:
-            raise ValueError("compute called for a concept with no model_setup")
+        # Resolve model_setup.py from the concept_id (no stored path — the same
+        # {concept_id}-* prefix scan the findings endpoint uses for analysis.md).
+        # A COSTINGFE concept whose source tree isn't deployed is a deploy/data
+        # fault, not a client error — raise (→ 500), never fall back (FR-5/D3).
+        from exploration.concept_explorer.findings import find_concept_dir
 
-        module = _load_model_module(Path(model_setup))
+        analyses_root = _analyses_root(state.base_dir)
+        concept_dir = find_concept_dir(concept_id, analyses_root)
+        if concept_dir is None:
+            raise RuntimeError(
+                f"No analyses directory matching {concept_id!r}-* under "
+                f"{analyses_root}; the concept_analysis tree must be deployed "
+                "alongside the explorer data."
+            )
+        model_setup_path = concept_dir / "model_setup.py"
+        if not model_setup_path.exists():
+            raise RuntimeError(
+                f"{model_setup_path} not found for COSTINGFE concept {concept_id!r}."
+            )
+
+        module = _load_model_module(model_setup_path)
         model = getattr(module, "model", None)
         if model is None:
-            raise ImportError(f"Module {model_setup} does not define 'model'")
+            raise ImportError(f"Module {model_setup_path} does not define 'model'")
         result_1gw = getattr(module, "result_1gw", None)
         if result_1gw is None:
             raise ImportError(
-                f"Module {model_setup} does not define 'result_1gw' at module level. "
+                f"Module {model_setup_path} does not define 'result_1gw' at module level. "
                 "See rework epic Items 10/11."
             )
 
@@ -1039,7 +1069,7 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
         concept = state.concepts.get(body.concept_id)
         if concept is None:
             raise HTTPException(status_code=404, detail=f"Concept {body.concept_id} not found")
-        if concept.sources.model_setup is None:
+        if concept.model_type != ModelType.COSTINGFE:
             raise HTTPException(
                 status_code=422,
                 detail="Slider computation only available for costingfe-backed concepts",

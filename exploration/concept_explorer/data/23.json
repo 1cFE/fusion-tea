@@ -976,10 +976,6 @@
     }
   },
   "narrative": null,
-  "sources": {
-    "model_setup": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\23-laser-icf-nanostructured-target\\model_setup.py",
-    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\23-laser-icf-nanostructured-target\\analysis.md"
-  },
   "analyst_override_count": 8,
   "overrides": [
     {

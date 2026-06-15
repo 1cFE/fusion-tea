@@ -1529,10 +1529,6 @@
     }
   },
   "narrative": null,
-  "sources": {
-    "model_setup": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\39-spherical-tokamak-cs-free-p-b11\\model_setup.py",
-    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\39-spherical-tokamak-cs-free-p-b11\\analysis.md"
-  },
   "analyst_override_count": 0,
   "overrides": [],
   "asterisk_in_comparison": true,

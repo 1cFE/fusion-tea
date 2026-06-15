@@ -356,10 +356,6 @@
   },
   "parameter_metadata": {},
   "narrative": null,
-  "sources": {
-    "model_setup": null,
-    "analysis": "C:\\Users\\mallo\\Deterministic_Concept_scoring\\fusion-tea\\exploration\\concept_analysis\\analyses\\16-muon-catalyzed-fusion\\analysis.md"
-  },
   "analyst_override_count": 0,
   "overrides": [],
   "asterisk_in_comparison": false,
