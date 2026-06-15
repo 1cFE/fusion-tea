@@ -47,8 +47,51 @@ from __future__ import annotations
 from types import SimpleNamespace
 from typing import TypedDict
 
-from costingfe.adapter import FusionTeaInput, run_costing
+from costingfe import ConfinementConcept, CostModel, Fuel, PowerCycle
+from costingfe.adapter import (
+    FusionTeaInput,
+    PulsedConversion,
+    LaserDriverType,
+    load_costing_constants,
+    run_costing,
+)
 from costingfe.validation import CostingInput, default_availability
+
+# Concepts the 1costingfe library supports for the 0D inverse path
+# (tokamak_0d_inverse). The β_N / Greenwald / Troyon feasibility gate fires
+# from there; without flipping use_0d_model=True the forward call rides the
+# cost-card mass-scaling layer and the gate is never reached. Today the
+# library only accepts use_0d_model=True for TOKAMAK; passing it for any
+# other ConfinementConcept raises ValidationError. STELLARATOR and MIRROR
+# stay on n_mod stacking until upstream lands a 0D mode for them.
+_ZERO_D_SUPPORTED: frozenset[ConfinementConcept] = frozenset({ConfinementConcept.TOKAMAK})
+
+# Geometry fields the library back-solves in size_from_power mode. Passing
+# any of these as an override is a hard error (CostModel.forward at model.py:946
+# raises "cannot be pinned in size_from_power mode; they are solved"). The
+# 1 GWe projection strips them so the library can size a fresh single bigger
+# machine; the native call (n_mod=1, size_from_power=False) still honors them.
+_TOKAMAK_SIZE_SOLVED_FIELDS: frozenset[str] = frozenset({"R0", "plasma_t", "b_center", "B"})
+
+
+def _use_0d_path(model, spec: dict) -> bool:
+    """Whether this concept should route through the 0D inverse path.
+
+    Returns True when both:
+      1. The library supports use_0d_model for this confinement family (today:
+         tokamak only — see _ZERO_D_SUPPORTED).
+      2. The analyst has not opted out via ``enforce_plasma_limits=False`` in
+         the spec dict. That flag is the documented "stand-in spec, gate
+         intentionally off" signal (see ENN concept 39). When set, the spec
+         is by analyst admission fictional, so 0D physics-based sizing would
+         either trip the gate (if on) or fail in size_from_power (if off);
+         we route the call through the legacy cost-card path instead.
+    """
+    if model.concept not in _ZERO_D_SUPPORTED:
+        return False
+    if spec.get("enforce_plasma_limits") is False:
+        return False
+    return True
 
 # The standardized plant lifetime is the library field default (Item-4 = 40 yr).
 _LIBRARY_LIFETIME_YR: float = CostingInput.model_fields["lifetime_yr"].default
@@ -139,6 +182,107 @@ def _wrap(out) -> SimpleNamespace:
     )
 
 
+def _run_costing_no_sensitivity(inp: FusionTeaInput):
+    """Drop-in replacement for ``run_costing(inp)`` that skips ``sensitivity``.
+
+    Required workaround for the 0D-inverse path: when an override sets
+    ``use_0d_model=True``, the cost call itself succeeds, but the trailing
+    ``model.sensitivity(result.params, ...)`` inside the upstream adapter
+    (``1costingfe/src/costingfe/adapter.py:169``) rebuilds the forward call
+    from ``result.params`` and includes a ``dhe3_dd_frac_pin`` kwarg that
+    the recursive ``forward()`` rejects for tokamak/D-T. The fusion-tea
+    pipeline never reads ``sensitivity``, so we sidestep the call entirely
+    here and return a ``FusionTeaOutput``-shaped object with an empty
+    sensitivity dict. Should be removed once the upstream sensitivity path
+    filters ``result.params`` for the active concept's accepted kwargs.
+
+    Mirrors ``run_costing`` byte-for-byte through the forward call; only the
+    sensitivity step is replaced with an empty dict.
+    """
+    concept = ConfinementConcept(inp.concept)
+    fuel = Fuel(inp.fuel)
+    power_cycle = PowerCycle(inp.power_cycle)
+
+    CostingInput(
+        concept=concept,
+        fuel=fuel,
+        net_electric_mw=inp.net_electric_mw,
+        availability=inp.availability,
+        lifetime_yr=inp.lifetime_yr,
+        n_mod=inp.n_mod,
+        construction_time_yr=inp.construction_time_yr,
+        interest_rate=inp.interest_rate,
+        inflation_rate=inp.inflation_rate,
+        noak=inp.noak,
+        cost_overrides=inp.cost_overrides or {},
+        costing_overrides=inp.costing_overrides or {},
+    )
+
+    cc = load_costing_constants()
+    if inp.costing_overrides:
+        cc = cc.replace(**inp.costing_overrides)
+
+    pulsed_conv = PulsedConversion(inp.pulsed_conversion) if inp.pulsed_conversion else None
+    laser_drv = LaserDriverType(inp.laser_driver_type) if inp.laser_driver_type else None
+
+    model = CostModel(
+        concept=concept,
+        fuel=fuel,
+        costing_constants=cc,
+        power_cycle=power_cycle,
+        pulsed_conversion=pulsed_conv,
+        laser_driver_type=laser_drv,
+    )
+    result = model.forward(
+        net_electric_mw=inp.net_electric_mw,
+        availability=inp.availability,
+        lifetime_yr=inp.lifetime_yr,
+        n_mod=inp.n_mod,
+        construction_time_yr=inp.construction_time_yr,
+        interest_rate=inp.interest_rate,
+        inflation_rate=inp.inflation_rate,
+        noak=inp.noak,
+        cost_overrides=inp.cost_overrides or None,
+        **inp.overrides,
+    )
+
+    # Build FusionTeaOutput-shape — same key set the adapter emits.
+    c = result.costs
+    costs: dict[str, float] = {}
+    for key, attr in _CAS_ATTR.items():
+        v = getattr(c, attr, None)
+        if v is not None:
+            costs[key] = float(v)
+    # CAS71/CAS72 are sometimes split from CAS70 — keep the adapter's full key set.
+    for attr in ("cas71", "cas72"):
+        v = getattr(c, attr, None)
+        if v is not None:
+            costs[attr.upper()] = float(v)
+    # CAS22 sub-account detail (C220101…) flattens into costs alongside the rollups.
+    for key, val in result.cas22_detail.items():
+        costs[key] = float(val)
+
+    pt = result.power_table
+    power_table = {
+        attr: float(getattr(pt, attr))
+        for attr in (
+            "p_fus", "p_th", "p_et", "p_net", "q_sci",
+            "rec_frac", "p_input", "p_rec",
+        )
+        if hasattr(pt, attr)
+    }
+
+    return SimpleNamespace(
+        lcoe=float(c.lcoe),
+        overnight_cost=float(c.overnight_cost),
+        total_capital=float(c.total_capital),
+        costs=costs,
+        power_table=power_table,
+        sensitivity={},  # intentionally skipped — upstream sensitivity bug
+        overridden=list(getattr(result, "overridden", [])),
+    )
+
+
 def _input_config(model, *, noak: bool) -> dict:
     """Shared ``FusionTeaInput`` fields derived from the ``CostModel`` carrier.
 
@@ -186,15 +330,26 @@ def generic_reference(model, spec: dict, p_native: float, *, noak: bool = True):
 
     Routes through ``run_costing`` (overrides off, no scaling); the result is
     ``_wrap``-ed so callers see the ``ForwardResult`` surface they expect.
+
+    For concepts in ``_ZERO_D_SUPPORTED`` (currently tokamak only), the call
+    enables ``use_0d_model=True`` so the forward routes through
+    ``tokamak_0d_inverse`` where the β_N / Greenwald / Troyon feasibility
+    gate fires. Those calls also bypass the upstream adapter's sensitivity
+    step via ``_run_costing_no_sensitivity`` — see that function's docstring
+    for the bug rationale.
     """
-    out = run_costing(
-        FusionTeaInput(
-            **_input_config(model, noak=noak),
-            net_electric_mw=p_native,
-            n_mod=1,
-            overrides=dict(spec),
-        )
+    overrides_payload = dict(spec)
+    use_0d = _use_0d_path(model, spec)
+    if use_0d:
+        overrides_payload["use_0d_model"] = True
+
+    fti = FusionTeaInput(
+        **_input_config(model, noak=noak),
+        net_electric_mw=p_native,
+        n_mod=1,
+        overrides=overrides_payload,
     )
+    out = _run_costing_no_sensitivity(fti) if use_0d else run_costing(fti)
     return _wrap(out)
 
 
@@ -233,37 +388,61 @@ def run_native_and_1gw(
     """
     cfg = _input_config(model, noak=noak)
     enabled = enabled_overrides(overrides)
+    use_0d = _use_0d_path(model, spec)
 
-    native = run_costing(
-        FusionTeaInput(
-            **cfg,
-            net_electric_mw=p_native,
-            n_mod=1,
-            overrides=dict(spec),
-            cost_overrides=enabled,
-            override_reference_mw=p_native,
-        )
+    native_overrides = dict(spec)
+    if use_0d:
+        native_overrides["use_0d_model"] = True
+
+    native_input = FusionTeaInput(
+        **cfg,
+        net_electric_mw=p_native,
+        n_mod=1,
+        overrides=native_overrides,
+        cost_overrides=enabled,
+        override_reference_mw=p_native,
     )
+    native = _run_costing_no_sensitivity(native_input) if use_0d else run_costing(native_input)
 
-    result_1gw = run_costing(
-        FusionTeaInput(
+    if use_0d:
+        # Tokamak 1 GWe projection: scale the physical machine, not the unit
+        # count. ``size_from_power=True`` lets the 0D inverse back-solve a
+        # single bigger geometry that produces 1000 MWe net at this concept's
+        # plasma physics. ``override_reference_mw`` is still p_native — the
+        # per-account override scaling rule is unchanged, only the machine
+        # sizing model differs. The override has no effect on ``n_mod`` here
+        # because n_mod stays 1 (one machine, scaled up).
+        #
+        # Strip the geometry fields the library back-solves; passing them as
+        # overrides while size_from_power=True is a hard error (see
+        # _TOKAMAK_SIZE_SOLVED_FIELDS). Other physics knobs in ``spec`` (elon,
+        # q95, p_input, etc.) are kept — they constrain the solve.
+        proj_overrides = {k: v for k, v in spec.items() if k not in _TOKAMAK_SIZE_SOLVED_FIELDS}
+        proj_overrides["use_0d_model"] = True
+        proj_overrides["size_from_power"] = True
+        result_1gw = _run_costing_no_sensitivity(FusionTeaInput(
             **cfg,
             net_electric_mw=_PROJECTION_NET_MWE,
-            # Round to nearest integer module count and clamp to >=1. 1costingfe's
-            # CostingInput declares n_mod as a strict int (ge=1), which rejects the
-            # raw float division on every concept where P_native does not exactly
-            # divide _PROJECTION_NET_MWE. The 1 GWe projection is a comparison
-            # convenience, not a real plant design point — the precise n_mod value
-            # has no analytical meaning beyond "how many of this module to reach
-            # 1 GWe", so int(round(...)) is faithful enough. Concepts whose native
-            # scale already exceeds 1 GWe (e.g. Helias at 1500 MWe) collapse to
-            # n_mod=1 and the 1 GWe column reports a de-rated single-module figure.
+            n_mod=1,
+            overrides=proj_overrides,
+            cost_overrides=enabled,
+            override_reference_mw=p_native,
+        ))
+    else:
+        # Non-tokamak concepts (FRC / MIF / IFE / non-standard) project to 1 GWe
+        # by replicating the native module. Faithful for genuinely modular
+        # concepts (Helion stacked FRCs, ICF rep-rate plants, MIF arrays);
+        # cost-card mass-scaling is the only sizing model the library supports
+        # for them today. Round to nearest integer module count and clamp to
+        # >=1 — ``CostingInput.n_mod`` is a strict int (ge=1).
+        result_1gw = run_costing(FusionTeaInput(
+            **cfg,
+            net_electric_mw=_PROJECTION_NET_MWE,
             n_mod=max(1, int(round(_PROJECTION_NET_MWE / p_native))),
             overrides=dict(spec),
             cost_overrides=enabled,
             override_reference_mw=p_native,
-        )
-    )
+        ))
 
     return _wrap(native), _wrap(result_1gw)
 
