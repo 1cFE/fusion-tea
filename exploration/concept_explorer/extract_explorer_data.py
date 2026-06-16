@@ -255,13 +255,87 @@ def load_module_from_path(path: Path, module_name: str = "_concept_module") -> t
 # ---------------------------------------------------------------------------
 
 
+# Sensitivity surfacing knobs. Both apply before serialization so the
+# per-concept JSON only carries the LCOE drivers the analyst will actually
+# interact with — keeps file size sane and forces the slider list to be
+# concept-specific instead of library-wide.
+#
+# Threshold drops everything below the elasticity noise floor (and naturally
+# drops analyst-registry-overridden accounts whose JAX derivative is
+# short-circuited to 0). Top-N caps how many sliders any one concept can
+# carry — the union of engineering + financial + costing is ranked by
+# absolute elasticity and only the most-impactful survive.
+_SENSITIVITY_ELASTICITY_THRESHOLD: float = 0.01
+_SENSITIVITY_TOP_N: int = 10
+
+
+def _build_filtered_sensitivities(
+    sens_raw: dict[str, dict[str, float]],
+    params: dict[str, Any],
+) -> SensitivityAnalysis:
+    """Compose engineering / financial / costing into a top-N SensitivityAnalysis.
+
+    Pipeline:
+      1. Build SensitivityEntry per (category, key, elasticity), dropping nan/inf
+         and anything below ``_SENSITIVITY_ELASTICITY_THRESHOLD``.
+      2. Rank the union by absolute elasticity, keep the top ``_SENSITIVITY_TOP_N``.
+      3. Re-split the survivors into ``engineering`` and ``financial`` for the
+         dataclass. The library's third category (``costing`` — CostingConstants
+         calibration parameters like unit costs and fractions) is merged into
+         ``financial`` per the UI's lumped-subsection convention.
+
+    See 1costingfe #35 for the upstream context (the costing category was
+    already exposed library-side; the explorer just wasn't reading it).
+    """
+    import math
+
+    def _entry(k: str, v: float) -> SensitivityEntry | None:
+        if v is None:
+            return None
+        v = float(v)
+        if not math.isfinite(v) or abs(v) < _SENSITIVITY_ELASTICITY_THRESHOLD:
+            return None
+        return SensitivityEntry(elasticity=v, baseline=float(params.get(k, 0.0)))
+
+    # Tag each survivor with its source category so we can re-split after
+    # the global top-N rank.
+    candidates: list[tuple[str, str, SensitivityEntry]] = []  # (category, key, entry)
+    for category in ("engineering", "financial", "costing"):
+        for k, v in sens_raw.get(category, {}).items():
+            entry = _entry(k, v)
+            if entry is not None:
+                candidates.append((category, k, entry))
+
+    candidates.sort(key=lambda kv: abs(kv[2].elasticity), reverse=True)
+    survivors = candidates[:_SENSITIVITY_TOP_N]
+
+    engineering: dict[str, SensitivityEntry] = {}
+    financial: dict[str, SensitivityEntry] = {}
+    for category, key, entry in survivors:
+        if category == "engineering":
+            engineering[key] = entry
+        else:
+            # financial + costing both land here — same subsection in the UI.
+            financial[key] = entry
+
+    return SensitivityAnalysis(engineering=engineering, financial=financial)
+
+
 def build_sensitivity_analysis(
     model: Any, result: Any, cost_overrides: dict[str, float] | None = None
 ) -> SensitivityAnalysis:
     """Call model.sensitivity(result.params) and wrap output in SensitivityAnalysis.
 
-    model.sensitivity() returns {"engineering": {k: elasticity}, "financial": {k: elasticity}}.
-    Baselines come from result.params; missing keys default to 0.0.
+    model.sensitivity() returns three categories: ``{"engineering": {...},
+    "financial": {...}, "costing": {...}}``. Engineering = improvable plant
+    parameters; financial = cost-of-capital givens; costing = CostingConstants
+    calibration parameters (unit costs, fractions, base costs). Baselines come
+    from result.params; missing keys default to 0.0.
+
+    The wrapped SensitivityAnalysis carries only the top
+    ``_SENSITIVITY_TOP_N`` survivors of the threshold filter, with costing
+    entries merged into ``.financial`` so the UI's lumped-subsection rendering
+    happens without further template/JS changes.
 
     ``cost_overrides`` selects which LCOE function is differentiated (FR-SO4):
     ``None`` → the library-bare tornado; the enabled analyst registry → the
@@ -273,21 +347,7 @@ def build_sensitivity_analysis(
     sens_raw: dict[str, dict[str, float]] = model.sensitivity(
         result.params, cost_overrides=cost_overrides
     )
-    params: dict[str, Any] = result.params
-
-    def _entries(group: dict[str, float]) -> dict[str, SensitivityEntry]:
-        import math
-
-        return {
-            k: SensitivityEntry(elasticity=float(v), baseline=float(params.get(k, 0.0)))
-            for k, v in group.items()
-            if v is not None and math.isfinite(float(v))
-        }
-
-    return SensitivityAnalysis(
-        engineering=_entries(sens_raw.get("engineering", {})),
-        financial=_entries(sens_raw.get("financial", {})),
-    )
+    return _build_filtered_sensitivities(sens_raw, result.params)
 
 
 _FRACTIONAL_NAME_TOKENS = ("eta", "efficiency", "availability", "fraction")
@@ -355,25 +415,14 @@ def _build_sensitivity_from_dict(
 ) -> SensitivityAnalysis:
     """Build SensitivityAnalysis from freeform compute_sensitivity() output.
 
-    sens_raw: {"engineering": {param: elasticity}, "financial": {param: elasticity}}
-    params: {param: baseline_value} from to_explorer_dict()["params"]
+    sens_raw: any of ``{"engineering": ..., "financial": ..., "costing": ...}``
+    keys (freeform models may emit a subset). params: ``{param: baseline_value}``
+    from ``to_explorer_dict()["params"]``.
+
+    Applies the same threshold + top-N filter and costing→financial merge as
+    the costingfe path so the two routes produce comparable slider counts.
     """
-    import math
-
-    def _entries(group: dict[str, float]) -> dict[str, SensitivityEntry]:
-        return {
-            k: SensitivityEntry(
-                elasticity=float(v),
-                baseline=float(params.get(k, 0.0)),
-            )
-            for k, v in group.items()
-            if v is not None and math.isfinite(float(v))
-        }
-
-    return SensitivityAnalysis(
-        engineering=_entries(sens_raw.get("engineering", {})),
-        financial=_entries(sens_raw.get("financial", {})),
-    )
+    return _build_filtered_sensitivities(sens_raw, params)
 
 
 def extract_costingfe(

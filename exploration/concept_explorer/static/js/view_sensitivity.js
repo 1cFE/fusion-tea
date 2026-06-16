@@ -34,7 +34,12 @@
   // Constants
   // ---------------------------------------------------------------------------
 
-  const TOP_N = 8;
+  // Aligned with extract_explorer_data._SENSITIVITY_TOP_N. The per-concept JSON
+  // already carries at most TOP_N entries per concept; this is the view-side
+  // cap for the compare/comparison view, which mergeAndRank applies across
+  // concepts. Keeping these in sync avoids the explorer showing fewer rows
+  // than the data carries.
+  const TOP_N = 10;
 
   // Family colors from the one authority (ontology_palette.js → CSS :root).
   const FAMILY_COLORS = ontologyPalette.family;
