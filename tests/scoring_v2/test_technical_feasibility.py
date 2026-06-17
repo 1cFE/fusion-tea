@@ -65,13 +65,103 @@ class TestWeightsSurface:
             assert key in ACHIEVED, f"missing achieved entry: {key}"
 
     def test_no_data_families_omitted(self):
-        for key in ("IFE|Laser ICF (liquid jet)",
-                    "IFE|Acoustic ICF (sonofusion)",
+        # NOTE: "IFE|Laser ICF (liquid jet)" used to live here but as of
+        # 2026-06-17 it shares the laser ICF family-best achieved value (5.0e21)
+        # and is clamped to score 1.0 via a -4.00 laser_approach_modifier
+        # instead. See test_laser_icf_single_family_value below.
+        for key in ("IFE|Acoustic ICF (sonofusion)",
                     "Non-Standard|Polywell",
                     "Non-Standard|Electrostatic hybrid",
                     "Non-Standard|Beam-target fusion",
                     "Non-Standard|Muon-catalyzed fusion"):
             assert key not in ACHIEVED
+
+
+# ─── Family-best consistency ─────────────────────────────────────────────
+#
+# Every confinement family must expose exactly one distinct non-null achieved
+# triple product across all sub-architectural variants. Sub-architectural risk
+# differences (e.g., direct drive vs indirect drive vs fast ignition) are
+# expressed through the laser_approach_modifier table, not by varying the
+# "achieved" input per concept.
+#
+# Regression guard against the 2026-06-17 issue, where the IFE|Laser ICF
+# family had five distinct achieved values (5e21, 5e21, 1e20, 1e18, 1e21)
+# split by laser approach. That split moved load-bearing methodology decisions
+# from the rule layer into the data layer, defeating the framework's claim
+# of rule-based scoring. The MFE families never had this problem; this test
+# enforces the same discipline for IFE Laser ICF and any future families.
+
+
+class TestFamilyBestConsistency:
+    """Each confinement family exposes one achieved value across all variants."""
+
+    # Map every achieved-table key prefix to the canonical family it belongs to.
+    # Lookup keys are "Family|Concept", where Concept may carry a sub-architectural
+    # parenthetical (e.g. "Laser ICF (direct drive)"). We collapse on the
+    # pre-parenthetical concept root so all variants of one family compare.
+    @staticmethod
+    def _family_root(key: str) -> str:
+        family, concept = key.split("|", 1) if "|" in key else (key, "")
+        # Strip any "(...)" parenthetical suffix from the concept name so that
+        # "Laser ICF (direct drive)" and "Laser ICF (fast ignition)" collapse to
+        # the same "Laser ICF" root.
+        idx = concept.find(" (")
+        if idx != -1:
+            concept = concept[:idx]
+        return f"{family}|{concept}"
+
+    def test_each_family_has_one_distinct_value(self):
+        grouped: dict[str, set[float]] = {}
+        for key, value in ACHIEVED.items():
+            root = self._family_root(key)
+            grouped.setdefault(root, set()).add(float(value))
+
+        offenders = {root: sorted(vals) for root, vals in grouped.items() if len(vals) > 1}
+        assert not offenders, (
+            "Each confinement family must expose exactly one achieved triple "
+            "product across all sub-architectural variants. Variants split with "
+            "different achieved values move load-bearing methodology decisions "
+            "from the rule layer into the data layer. Sub-architectural risk "
+            "belongs in laser_approach_modifier (or an equivalent modifier table "
+            "for future families), not in the achieved-value lookup. Offenders:\n"
+            + "\n".join(f"  {root}: {vals}" for root, vals in offenders.items())
+        )
+
+    def test_laser_icf_single_family_value(self):
+        # Explicit anchor: every IFE|Laser ICF (...) entry shares the family
+        # best (NIF ignition at 5.0e21). Differentiation between direct vs
+        # indirect vs fast ignition vs ultrashort vs liquid jet vs hybrid drive
+        # lives in laser_approach_modifier.
+        laser_keys = [k for k in ACHIEVED if k.startswith("IFE|Laser ICF")]
+        assert len(laser_keys) >= 5, (
+            f"expected the laser ICF family to enumerate every variant for clarity; "
+            f"saw only {laser_keys}"
+        )
+        laser_values = {float(ACHIEVED[k]) for k in laser_keys}
+        assert laser_values == {5.0e21}, (
+            f"all IFE|Laser ICF entries must share the family-best value "
+            f"5.0e21 (NIF ignition); got {sorted(laser_values)}"
+        )
+
+    def test_laser_approach_modifier_covers_every_lookup_key(self):
+        # Every laser-ICF variant present in the achieved table must have a
+        # corresponding modifier entry so the rule's lookup never silently
+        # defaults to 0.0 for a known architecture. The modifier table is
+        # where architectural-risk differentiation lives now, so an unmapped
+        # variant would inherit indirect-drive's "no penalty" score.
+        modifiers = WEIGHTS["technical_feasibility"]["laser_approach_modifier"]
+        # The achieved table uses "Laser ICF (direct drive)" style suffixes;
+        # the modifier table uses bare "Direct drive" style keys. Map between
+        # them by stripping the "Laser ICF (" prefix and trailing ")".
+        for key in [k for k in ACHIEVED if k.startswith("IFE|Laser ICF")]:
+            suffix = key.split("(", 1)[1].rstrip(")")
+            # Modifier keys are title-cased ("Direct drive", "Indirect drive").
+            normalized = suffix[:1].upper() + suffix[1:]
+            assert normalized in modifiers, (
+                f"laser approach {normalized!r} missing from laser_approach_modifier; "
+                f"a known variant in the achieved table would default to 0.0"
+            )
 
 
 # ─── Bucket schedule ─────────────────────────────────────────────────────

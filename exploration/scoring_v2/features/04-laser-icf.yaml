@@ -152,15 +152,15 @@ supply_chain_diagnostics:
   extracted_at: '2026-05-20'
 technical_feasibility_diagnostics:
   required_triple_product: 1.4e+25
-  achieved_triple_product: 1.0e+20
+  achieved_triple_product: 5.0e+21
   achieved_lookup_key: IFE|Laser ICF (fast ignition)
-  triple_product_gap: 140000.0
-  log10_gap: 5.146
-  base_score_from_gap: 1.0
-  laser_approach_modifier: -0.5
+  triple_product_gap: 2800.0
+  log10_gap: 3.447
+  base_score_from_gap: 2.0
+  laser_approach_modifier: -2.5
   technical_feasibility_score: 1.0
   no_data_floor: false
-  extracted_at: '2026-05-21'
+  extracted_at: '2026-06-17'
 tokamak_shape:
   value: N/A
   provenance: taxonomy

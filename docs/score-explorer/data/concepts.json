@@ -385,15 +385,15 @@
       },
       "technical_feasibility_diagnostics": {
         "achieved_lookup_key": "IFE|Laser ICF (liquid jet)",
-        "achieved_triple_product": null,
-        "base_score_from_gap": 1.0,
-        "extracted_at": "2026-05-20",
-        "laser_approach_modifier": 0.0,
-        "log10_gap": null,
-        "no_data_floor": true,
+        "achieved_triple_product": 5e+21,
+        "base_score_from_gap": 3.0,
+        "extracted_at": "2026-06-17",
+        "laser_approach_modifier": -4.0,
+        "log10_gap": 1.778,
+        "no_data_floor": false,
         "required_triple_product": 3e+23,
         "technical_feasibility_score": 1.0,
-        "triple_product_gap": null
+        "triple_product_gap": 60.0
       },
       "upper_cf_diagnostics": {
         "blanket_assumed": false,
@@ -532,15 +532,15 @@
       },
       "technical_feasibility_diagnostics": {
         "achieved_lookup_key": "IFE|Laser ICF (fast ignition)",
-        "achieved_triple_product": 1e+20,
-        "base_score_from_gap": 1.0,
-        "extracted_at": "2026-05-21",
-        "laser_approach_modifier": -0.5,
-        "log10_gap": 5.146,
+        "achieved_triple_product": 5e+21,
+        "base_score_from_gap": 2.0,
+        "extracted_at": "2026-06-17",
+        "laser_approach_modifier": -2.5,
+        "log10_gap": 3.447,
         "no_data_floor": false,
         "required_triple_product": 1.4e+25,
         "technical_feasibility_score": 1.0,
-        "triple_product_gap": 140000.0
+        "triple_product_gap": 2800.0
       },
       "upper_cf_diagnostics": {
         "blanket_assumed": false,
@@ -2491,15 +2491,15 @@
       },
       "technical_feasibility_diagnostics": {
         "achieved_lookup_key": "IFE|Laser ICF (hybrid drive)",
-        "achieved_triple_product": 1e+21,
-        "base_score_from_gap": 4.0,
-        "extracted_at": "2026-05-20",
-        "laser_approach_modifier": -0.25,
-        "log10_gap": 0.477,
+        "achieved_triple_product": 5e+21,
+        "base_score_from_gap": 5.0,
+        "extracted_at": "2026-06-17",
+        "laser_approach_modifier": -1.25,
+        "log10_gap": -0.222,
         "no_data_floor": false,
         "required_triple_product": 3e+21,
         "technical_feasibility_score": 3.75,
-        "triple_product_gap": 3.0
+        "triple_product_gap": 0.6
       },
       "upper_cf_diagnostics": {
         "blanket_assumed": false,
@@ -2645,15 +2645,15 @@
       },
       "technical_feasibility_diagnostics": {
         "achieved_lookup_key": "IFE|Laser ICF (fast ignition)",
-        "achieved_triple_product": 1e+20,
-        "base_score_from_gap": 3.0,
-        "extracted_at": "2026-05-20",
-        "laser_approach_modifier": -0.5,
-        "log10_gap": 1.477,
+        "achieved_triple_product": 5e+21,
+        "base_score_from_gap": 5.0,
+        "extracted_at": "2026-06-17",
+        "laser_approach_modifier": -2.5,
+        "log10_gap": -0.222,
         "no_data_floor": false,
         "required_triple_product": 3e+21,
         "technical_feasibility_score": 2.5,
-        "triple_product_gap": 30.0
+        "triple_product_gap": 0.6
       },
       "upper_cf_diagnostics": {
         "blanket_assumed": false,
@@ -3691,15 +3691,15 @@
       },
       "technical_feasibility_diagnostics": {
         "achieved_lookup_key": "IFE|Laser ICF (ultrashort pulse)",
-        "achieved_triple_product": 1e+18,
-        "base_score_from_gap": 1.0,
-        "extracted_at": "2026-05-21",
-        "laser_approach_modifier": -0.5,
-        "log10_gap": 7.146,
+        "achieved_triple_product": 5e+21,
+        "base_score_from_gap": 2.0,
+        "extracted_at": "2026-06-17",
+        "laser_approach_modifier": -4.0,
+        "log10_gap": 3.447,
         "no_data_floor": false,
         "required_triple_product": 1.4e+25,
         "technical_feasibility_score": 1.0,
-        "triple_product_gap": 14000000.0
+        "triple_product_gap": 2800.0
       },
       "upper_cf_diagnostics": {
         "blanket_assumed": false,
