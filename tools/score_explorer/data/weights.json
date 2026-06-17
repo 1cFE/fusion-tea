@@ -22,6 +22,39 @@
           "D-T|TBD": 4,
           "p-B11|*": 5
         },
+        "chamber_blanket_lookup": {
+          "blanket_penalty": {
+            "Liquid metal": 0.0,
+            "Molten salt": 0.0,
+            "None": 0.0,
+            "Other/hybrid": -0.5,
+            "Solid breeder": -1.0,
+            "TBD": -0.5
+          },
+          "chamber_base": {
+            "IFE|large": 2.5,
+            "IFE|medium": 4.0,
+            "IFE|small": 5.0,
+            "MIF|compact": 5.0,
+            "MIF|large": 3.0,
+            "MIF|medium": 4.0
+          }
+        },
+        "driver_modularity_lookup": {
+          "IFE|Acoustic transducer": 1.0,
+          "IFE|DPSSL": 4.5,
+          "IFE|Fiber laser CBC": 5.0,
+          "IFE|Heavy-ion LINAC": 2.0,
+          "IFE|KrF": 4.0,
+          "IFE|Nd:Glass": 3.5,
+          "IFE|Projectile gas gun": 2.5,
+          "IFE|Ultrashort-pulse": 3.5,
+          "MIF|Capacitor bank": 5.0,
+          "MIF|LTD pulsed power": 4.5,
+          "MIF|Plasma gun": 3.0,
+          "MIF|Pneumatic piston": 4.0,
+          "MIF|Railgun": 2.0
+        },
         "magnet_driver_lookup": {
           "IFE|*|*": 3,
           "IFE|*|Acoustic": 3,
@@ -108,22 +141,22 @@
           "IFE|Laser|*": 3,
           "IFE|Projectile|*": 3,
           "MFE|Dipole|*": 3,
-          "MFE|FRC|*": 3,
-          "MFE|Mirror|*": 3,
+          "MFE|FRC|*": 4,
+          "MFE|Mirror|*": 4,
           "MFE|Other|*": 3,
           "MFE|Stellarator|*": 2,
-          "MFE|Tokamak|compact": 4,
+          "MFE|Tokamak|compact": 3,
           "MFE|Tokamak|non-compact": 2,
-          "MFE|Tokamak|spherical": 4,
-          "MFE|Z-pinch|*": 3,
+          "MFE|Tokamak|spherical": 3,
+          "MFE|Z-pinch|*": 4,
           "MIF|FRC compression|*": 5,
           "MIF|MagLIF|*": 5,
           "MIF|Pneumatic compression|D-D": 5,
           "MIF|Pneumatic compression|D-T": 4,
-          "Non-Standard|Electrostatic|*": 3,
+          "Non-Standard|Electrostatic|*": 5,
           "Non-Standard|Muon-catalyzed|*": 3,
           "Non-Standard|Particle accelerator|*": 3,
-          "Non-Standard|Plasma focus|*": 3
+          "Non-Standard|Plasma focus|*": 5
         }
       }
     },

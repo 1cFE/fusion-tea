@@ -489,6 +489,21 @@
                3: "compact bespoke", 4: "demountable sections",
                5: "replaceable liner / chamberless" }[Math.round(rating)] || "moderate";
     }
+    // IFE/MIF 2-slot helpers (added 2026-06-17)
+    function driverModularityWord(rating) {
+      return { 1: "exotic / no manufacturing precedent",
+               2: "single integrated driver structure",
+               3: "few precision-aligned subassemblies",
+               4: "factory-built modules, integrated optics",
+               5: "factory-replicated commodity cells / beamlines" }[Math.round(rating)] || "moderate";
+    }
+    function chamberBlanketModularityWord(rating) {
+      return { 1: "no precedent / unbuildable as a module",
+               2: "very large monolithic custom (NIF-class)",
+               3: "large, site-assembled, custom geometry",
+               4: "medium assembly, factory-buildable with on-site connections",
+               5: "small compact assembly, factory-shippable" }[Math.round(rating)] || "moderate";
+    }
 
     // Build a multi-line, plain-English tooltip explaining the score.
     // Format: 1-line summary, blank line, 2-4 line driver list, optional
@@ -508,18 +523,38 @@
         const raw = d.modularity_score;    // pre-normalization raw score
         const mvsLine = `Plant scalability: ${mvsLabel(d.mvs_lookup_key)} (${scoreTier(d.min_viable_device_scale)}).`;
         const subsysParts = [];
-        if (d.vessel_modularity_rating)        subsysParts.push(`vessel ${vesselModularityWord(d.vessel_modularity_rating)}`);
-        if (d.magnet_driver_modularity_rating) subsysParts.push(`magnet/driver ${magnetDriverWord(d.magnet_driver_modularity_rating)}`);
-        if (d.blanket_modularity_rating)       subsysParts.push(`blanket ${blanketModularityWord(d.blanket_modularity_rating)}`);
+        // Dispatch on percent_mod_path emitted by the diagnostic populator:
+        //   "two_slot" → IFE/MIF (driver + chamber+blanket)
+        //   "three_slot" → MFE / Non-Standard (vessel + magnet/driver + blanket)
+        // Fall back to detecting which ratings are present for older JSONs.
+        const isTwoSlot = d.percent_mod_path === "two_slot"
+          || (d.driver_modularity_rating != null && d.chamber_blanket_modularity_rating != null);
+        if (isTwoSlot) {
+          if (d.driver_modularity_rating)
+            subsysParts.push(`driver ${driverModularityWord(d.driver_modularity_rating)}`);
+          if (d.chamber_blanket_modularity_rating)
+            subsysParts.push(`chamber+blanket ${chamberBlanketModularityWord(d.chamber_blanket_modularity_rating)}`);
+        } else {
+          if (d.vessel_modularity_rating)        subsysParts.push(`vessel ${vesselModularityWord(d.vessel_modularity_rating)}`);
+          if (d.magnet_driver_modularity_rating) subsysParts.push(`magnet/driver ${magnetDriverWord(d.magnet_driver_modularity_rating)}`);
+          if (d.blanket_modularity_rating)       subsysParts.push(`blanket ${blanketModularityWord(d.blanket_modularity_rating)}`);
+        }
         const subsysLine = `Major subsystems: ${subsysParts.join("; ")}.`;
         const umLine = `Replication: ${unitCountTier(d.unit_count_estimate)} → ${scoreTier(d.unit_multiplicity)}.`;
 
         const flags = [];
-        if (d.capex_shares_used && d.capex_shares_used.method === "equal_weight_fallback_sparse_capex") {
-          flags.push("⚠ Capex shares unreliable for this concept — used equal-weight fallback.");
+        const method = d.capex_shares_used && d.capex_shares_used.method;
+        // 3-slot fallback warnings (MFE) — these only fire when sparse-capex
+        // threshold trips or no cost model exists.
+        if (method === "equal_weight_fallback_sparse_capex") {
+          flags.push("⚠ Capex shares too sparse for the 3-slot blend — fell back to equal-weighting.");
         }
-        if (d.capex_shares_used && d.capex_shares_used.method === "equal_weight_fallback_missing_capex") {
+        if (method === "equal_weight_fallback_missing_capex") {
           flags.push("⚠ No cost model for this concept — used equal-weight fallback.");
+        }
+        // 2-slot fallback (IFE/MIF): only fires when both slot shares are zero.
+        if (method === "equal_weight_fallback_zero_capex") {
+          flags.push("⚠ Cost model reports zero $ to driver and chamber+blanket slots — used equal-weighting.");
         }
         if (d.blanket_assumed) {
           flags.push("⚠ Blanket = TBD; assumed Liquid metal.");

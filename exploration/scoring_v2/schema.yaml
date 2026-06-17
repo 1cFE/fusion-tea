@@ -82,6 +82,51 @@ laser_approach:
   extractor: taxonomy
   taxonomy_column: "Laser Approach"
 
+# IFE/MIF only — drives driver_modularity_rating lookup for the 2-slot
+# percent_mod path. MFE concepts use magnet_type/driver_technology via the
+# existing magnet_driver_lookup; MFE concepts get "N/A" here.
+driver_architecture:
+  type: enum
+  values:
+    # IFE
+    - "DPSSL"
+    - "KrF"
+    - "Nd:Glass"
+    - "Ultrashort-pulse"
+    - "Fiber laser CBC"
+    - "Heavy-ion LINAC"
+    - "Projectile gas gun"
+    - "Acoustic transducer"
+    # MIF
+    - "Capacitor bank"
+    - "LTD pulsed power"
+    - "Pneumatic piston"
+    - "Plasma gun"
+    - "Railgun"
+    # MFE / Non-Standard
+    - "N/A"
+  required: false
+  extractor: manual
+
+# IFE/MIF only — drives chamber_blanket_lookup.chamber_base for the 2-slot
+# percent_mod path. Captures the chamber assembly's modularity-relevant size
+# class (smaller = more factory-buildable, fewer custom beam penetrations).
+# MFE concepts use the existing vessel_lookup; MFE concepts get "N/A" here.
+chamber_size_class:
+  type: enum
+  values:
+    # IFE
+    - "small"        # < 5 m, generic geometry
+    - "medium"       # 5–10 m, multiple beamline penetrations
+    - "large"        # > 10 m, custom port pattern (covers NIF-class)
+    # MIF
+    - "compact"      # Helion linear FRC chamber
+    # MIF reuses "medium" (5-10 m) and "large" (LTD-integrated MagLIF-class)
+    # MFE / Non-Standard
+    - "N/A"
+  required: false
+  extractor: manual
+
 # Derived: collapses confinement_family / mfe_topology / ife_driver / mif_method
 # / non_standard_mechanism / laser_approach into a single canonical concept
 # label used by Technical Feasibility (triple-product lookup) and reporting.
@@ -186,6 +231,23 @@ w_coils:
   extractor: cost_model
 
 w_blanket:
+  type: float
+  required: false
+  extractor: cost_model
+
+# IFE/MIF 2-slot capex shares. Computed by cost_model.py using family-specific
+# CAS22 account groupings:
+#   IFE energy_delivery: C220104 + C220107 + C220103 (laser/driver + pulsed PS + ancillary coils)
+#   MIF energy_delivery: C220103 + C220104 + C220107 (compression coils + driver hw + pulsed PS)
+#   IFE/MIF containment: C220105 + C220106 + C220108 + C220101 + CAS27 (chamber + first wall + blanket)
+# MFE concepts omit these (the legacy 3-slot path via w_vessel/w_coils/w_blanket
+# continues to apply for MFE).
+w_energy_delivery:
+  type: float
+  required: false
+  extractor: cost_model
+
+w_containment:
   type: float
   required: false
   extractor: cost_model

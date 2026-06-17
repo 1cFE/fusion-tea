@@ -2,193 +2,211 @@ _meta:
   concept_id: 08-frc-w-direct-conversion
   name: FRC w/ Direct Conversion (D-He3)
 blanket_config:
-  value: Other/hybrid
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: Other/hybrid
+chamber_size_class:
+  confidence: high
+  extracted_at: '2026-06-17'
+  provenance: manual (modularity 2-slot, conversation 2026-06-17)
+  value: compact
 confinement_concept:
-  value: FRC compression (MIF)
-  provenance: derived
   confidence: high
   extracted_at: '2026-06-13'
+  provenance: derived
+  value: FRC compression (MIF)
 confinement_family:
-  value: MIF
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: MIF
 customization_diagnostics:
-  sub_factor_a:
-    feature: energy_capture
-    value: Direct (inductive)
-    classification: direct_conversion
-    score: 4
-  sub_factor_b:
-    feature: fuel
-    value: D-He3
-    score: 3
-  raw_average: 3.5
   customization_score: 4.33
   extracted_at: '2026-05-20'
+  raw_average: 3.5
+  sub_factor_a:
+    classification: direct_conversion
+    feature: energy_capture
+    score: 4
+    value: Direct (inductive)
+  sub_factor_b:
+    feature: fuel
+    score: 3
+    value: D-He3
 data_availability_diagnostics:
-  source_csv: exploration/concept_analysis/tables/design_point.csv
-  in_csv: true
-  design_name: "Orion \u2014 Helion 8th-generation first commercial plant (50 MWe\
-    \ Microsoft PPA, 2028 target)"
-  grounding_confidence: medium
-  primary_sources_count: 3
-  verified_by: null
   data_availability_score: 3.0
+  design_name: "Orion \xE2\u20AC\u201D Helion 8th-generation first commercial plant\
+    \ (50 MWe Microsoft PPA, 2028 target)"
   extracted_at: '2026-06-12'
+  grounding_confidence: medium
+  in_csv: true
+  primary_sources_count: 3
+  source_csv: exploration/concept_analysis/tables/design_point.csv
+  verified_by: null
 design_point_grounding_confidence:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: exploration/concept_analysis/tables/design_point.csv
   value: medium
-  provenance: exploration/concept_analysis/tables/design_point.csv
-  confidence: high
-  extracted_at: '2026-06-12'
 design_point_primary_sources_count:
-  value: 3
+  confidence: high
+  extracted_at: '2026-06-12'
   provenance: exploration/concept_analysis/tables/design_point.csv
+  value: 3
+driver_architecture:
   confidence: high
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
+  provenance: manual (modularity 2-slot, conversation 2026-06-17)
+  value: Capacitor bank
 driver_technology:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Pulsed EM coils (capacitor bank)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 energy_capture:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Direct (inductive)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 fuel:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: D-He3
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 ife_driver:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 laser_approach:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 magnet_type:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Resistive
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 mfe_topology:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: N/A
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 mif_method:
-  value: FRC compression
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: FRC compression
 modularity_diagnostics:
-  min_viable_device_scale: 5.0
-  percent_mod: 5.0
-  unit_multiplicity: 5.0
-  modularity_score: 5.0
-  mvs_lookup_key: MIF|FRC compression
-  vessel_lookup_key: MIF|FRC compression|*
-  magnet_driver_lookup_key: MIF|*|Capacitor compression
+  blanket_assumed: false
   blanket_lookup_key: D-He3|*
-  vessel_modularity_rating: 5.0
-  magnet_driver_modularity_rating: 5.0
   blanket_modularity_rating: 5.0
   capex_shares_used:
-    w_vessel: 0.0003
-    w_coils: 0.0072
+    method: equal_weight_fallback_missing_capex
+    sum_2slot: 0.0
+    sum_3slot: 0.0074
     w_blanket: 0.0
-    sum: 0.0074
-    method: equal_weight_fallback_sparse_capex
+    w_coils: 0.0072
+    w_containment: null
+    w_energy_delivery: null
+    w_vessel: 0.0003
+  chamber_blanket_lookup_key: MIF|compact
+  chamber_blanket_modularity_rating: 5.0
+  driver_lookup_key: MIF|Capacitor bank
+  driver_modularity_rating: 5.0
+  extracted_at: '2026-06-17'
+  magnet_driver_lookup_key: MIF|*|Capacitor compression
+  magnet_driver_modularity_rating: 5.0
+  min_viable_device_scale: 5.0
+  modularity_score: 5.0
+  mvs_lookup_key: MIF|FRC compression
+  percent_mod: 5.0
+  percent_mod_path: two_slot
   unit_count_estimate: 75
-  blanket_assumed: false
-  v5_calibration_target: 5.0
-  extracted_at: '2026-06-13'
+  unit_multiplicity: 5.0
+  v5_calibration_target: 4.55
+  vessel_lookup_key: MIF|FRC compression|*
+  vessel_modularity_rating: 5.0
 non_standard_mechanism:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: N/A
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 operation_mode:
-  value: Pulsed
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: Pulsed
 plant_complexity_diagnostics:
-  subsystems_triggered: {}
-  subsystem_complexity_weight: 0.0
-  plant_complexity_score: 5.0
   blanket_assumed: false
   extracted_at: '2026-05-20'
+  plant_complexity_score: 5.0
+  subsystem_complexity_weight: 0.0
+  subsystems_triggered: {}
 primary_heating:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Magnetic compression
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 repetition_rate:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: ~1 Hz
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 stellarator_type:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 supply_chain_diagnostics:
+  blanket_assumed: false
+  bottleneck_weight: 3.0
   bottlenecks_triggered:
     helium3: 3.0
-  bottleneck_weight: 3.0
+  extracted_at: '2026-05-20'
   supply_chain_score: 2.0
-  blanket_assumed: false
-  extracted_at: '2026-05-20'
 technical_feasibility_diagnostics:
-  required_triple_product: 5.0e+22
-  achieved_triple_product: 1.0e+19
   achieved_lookup_key: MIF|FRC compression (MIF)
-  triple_product_gap: 5000.0
-  log10_gap: 3.699
+  achieved_triple_product: 1.0e+19
   base_score_from_gap: 2.0
-  laser_approach_modifier: 0.0
-  technical_feasibility_score: 2.0
-  no_data_floor: false
   extracted_at: '2026-05-20'
+  laser_approach_modifier: 0.0
+  log10_gap: 3.699
+  no_data_floor: false
+  required_triple_product: 5.0e+22
+  technical_feasibility_score: 2.0
+  triple_product_gap: 5000.0
 tokamak_shape:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 unit_count_estimate:
-  value: 75
-  provenance: modularity_implementation_spec.md Change E
   confidence: high
   extracted_at: '2026-05-20'
+  provenance: modularity_implementation_spec.md Change E
+  value: 75
 upper_cf_diagnostics:
+  blanket_assumed: false
+  extracted_at: '2026-05-20'
+  operational_penalty_weight: 0.5
   penalties_triggered:
     pulsed_operation: 0.5
-  operational_penalty_weight: 0.5
   upper_cf_score: 4.5
-  blanket_assumed: false
-  extracted_at: '2026-05-20'
 w_blanket:
+  confidence: medium
+  extracted_at: '2026-06-12'
+  provenance: analyses/08-frc-w-direct-conversion/model_output.txt
   value: 0.0
-  provenance: analyses/08-frc-w-direct-conversion/model_output.txt
-  confidence: medium
-  extracted_at: '2026-06-12'
 w_coils:
+  confidence: medium
+  extracted_at: '2026-06-12'
+  provenance: analyses/08-frc-w-direct-conversion/model_output.txt
   value: 0.007153758107592521
-  provenance: analyses/08-frc-w-direct-conversion/model_output.txt
-  confidence: medium
-  extracted_at: '2026-06-12'
 w_vessel:
-  value: 0.00028615032430370085
-  provenance: analyses/08-frc-w-direct-conversion/model_output.txt
   confidence: medium
   extracted_at: '2026-06-12'
+  provenance: analyses/08-frc-w-direct-conversion/model_output.txt
+  value: 0.00028615032430370085

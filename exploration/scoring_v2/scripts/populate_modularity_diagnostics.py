@@ -44,7 +44,14 @@ def _v(doc: dict, key: str, default: str = "") -> str:
 
 def _populate_one(cid: str, doc: dict, weights: dict, schema: dict,
                   predicted: dict[str, float]) -> dict:
-    """Compute the diagnostic block for one concept."""
+    """Compute the diagnostic block for one concept.
+
+    Emits both 3-slot (MFE legacy) and 2-slot (IFE/MIF new) diagnostic
+    fields. Concepts use whichever slot path matches their confinement_family;
+    fields from the unused path are populated with None / empty values so
+    downstream consumers (e.g. the score explorer UI) can render either
+    cleanly.
+    """
     emb_values, _emb_conf = score._evaluate_concept(doc, weights, schema)
 
     cf       = _v(doc, "confinement_family")
@@ -60,6 +67,8 @@ def _populate_one(cid: str, doc: dict, weights: dict, schema: dict,
     laser_a  = _v(doc, "laser_approach")
     fuel     = _v(doc, "fuel")
     blanket  = _v(doc, "blanket_config")
+    drv_arch = _v(doc, "driver_architecture")
+    ch_size  = _v(doc, "chamber_size_class")
 
     mvs_key      = _mvs_key(cf, mfe_top, ife_drv, mif_meth, nsm, tok_sh,
                             drv_t, mt, ph, laser_a)
@@ -71,18 +80,32 @@ def _populate_one(cid: str, doc: dict, weights: dict, schema: dict,
     blanket_key  = (f"{fuel}|*" if fuel in ("p-B11", "D-D", "D-He3")
                     else f"{fuel}|{effective_blanket}")
 
-    # Capex shares used for the percent_mod weighted average
+    # 3-slot capex shares (MFE legacy path)
     w_vessel  = _v_num(doc, "w_vessel")
     w_coils   = _v_num(doc, "w_coils")
     w_blanket = _v_num(doc, "w_blanket")
     capex_total = sum(w for w in (w_vessel, w_coils, w_blanket) if w is not None)
     sparse_threshold = 0.30
     if any(w is None for w in (w_vessel, w_coils, w_blanket)):
-        percent_mod_method = "equal_weight_fallback_missing_capex"
+        percent_mod_method_3slot = "equal_weight_fallback_missing_capex"
     elif capex_total <= 0 or capex_total < sparse_threshold:
-        percent_mod_method = "equal_weight_fallback_sparse_capex"
+        percent_mod_method_3slot = "equal_weight_fallback_sparse_capex"
     else:
-        percent_mod_method = "capex_weighted"
+        percent_mod_method_3slot = "capex_weighted"
+
+    # 2-slot capex shares (IFE/MIF new path) — no sparse-capex threshold
+    w_ed = _v_num(doc, "w_energy_delivery")
+    w_co = _v_num(doc, "w_containment")
+    twoslot_total = sum(w for w in (w_ed, w_co) if w is not None)
+    if cf in ("IFE", "MIF"):
+        if w_ed is None or w_co is None:
+            percent_mod_method_2slot = "equal_weight_fallback_missing_capex"
+        elif twoslot_total <= 0:
+            percent_mod_method_2slot = "equal_weight_fallback_zero_capex"
+        else:
+            percent_mod_method_2slot = "capex_weighted"
+    else:
+        percent_mod_method_2slot = "n/a (MFE legacy 3-slot path)"
 
     mvs                = emb_values.get("min_viable_device_scale")
     pmod               = emb_values.get("percent_mod")
@@ -90,28 +113,51 @@ def _populate_one(cid: str, doc: dict, weights: dict, schema: dict,
     vessel_rating      = emb_values.get("vessel_modularity_rating")
     magnet_rating      = emb_values.get("magnet_driver_modularity_rating")
     blanket_rating     = emb_values.get("blanket_modularity_rating")
+    driver_rating      = emb_values.get("driver_modularity_rating")
+    cb_rating          = emb_values.get("chamber_blanket_modularity_rating")
 
     # Composite score per axis (matches what score.py emits)
     axis_block = weights.get("modularity") or {}
     composite_score, _ev = score._score_axis(axis_block, emb_values, _emb_conf)
+
+    # Dispatch-aware unified method tag for the explorer UI
+    percent_mod_method = (
+        percent_mod_method_2slot if cf in ("IFE", "MIF") else percent_mod_method_3slot
+    )
 
     block = {
         "min_viable_device_scale": _round(mvs),
         "percent_mod":             _round(pmod),
         "unit_multiplicity":       _round(um),
         "modularity_score":        _round(composite_score),
+        "percent_mod_path":        ("two_slot" if cf in ("IFE", "MIF") else "three_slot"),
+        # Lookup keys (all paths emit theirs; the unused path fields are
+        # populated so the explorer JSON has consistent shape)
         "mvs_lookup_key":          mvs_key,
         "vessel_lookup_key":       vessel_key,
         "magnet_driver_lookup_key": magnet_key,
         "blanket_lookup_key":      blanket_key,
+        "driver_lookup_key":       (f"{cf}|{drv_arch}" if cf in ("IFE", "MIF") and drv_arch
+                                    else None),
+        "chamber_blanket_lookup_key": (f"{cf}|{ch_size}" if cf in ("IFE", "MIF") and ch_size
+                                       else None),
+        # Subsystem ratings (3-slot legacy + 2-slot new)
         "vessel_modularity_rating":         _round(vessel_rating),
         "magnet_driver_modularity_rating":  _round(magnet_rating),
         "blanket_modularity_rating":        _round(blanket_rating),
+        "driver_modularity_rating":         _round(driver_rating),
+        "chamber_blanket_modularity_rating": _round(cb_rating),
+        # Capex shares — both paths' shares emitted for transparency
         "capex_shares_used": {
+            # 3-slot legacy
             "w_vessel":  _round(w_vessel),
             "w_coils":   _round(w_coils),
             "w_blanket": _round(w_blanket),
-            "sum":       _round(capex_total) if capex_total is not None else None,
+            "sum_3slot": _round(capex_total) if capex_total is not None else None,
+            # 2-slot new (IFE/MIF only)
+            "w_energy_delivery": _round(w_ed),
+            "w_containment":     _round(w_co),
+            "sum_2slot": _round(twoslot_total) if twoslot_total is not None else None,
             "method":    percent_mod_method,
         },
         "unit_count_estimate":   _v_int(doc, "unit_count_estimate"),

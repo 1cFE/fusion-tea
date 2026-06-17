@@ -2,125 +2,147 @@ _meta:
   concept_id: 29-negative-triangularity-tokamak
   name: Negative Triangularity Tokamak (D-T)
 blanket_config:
-  value: TBD
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: TBD
+chamber_size_class:
+  confidence: high
+  extracted_at: '2026-06-17'
+  provenance: manual (modularity 2-slot, MFE/Non-Standard default)
+  value: N/A
 confinement_concept:
-  value: Negative triangularity tokamak
-  provenance: derived
   confidence: high
   extracted_at: '2026-06-13'
+  provenance: derived
+  value: Negative triangularity tokamak
 confinement_family:
-  value: MFE
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: MFE
 customization_diagnostics:
-  sub_factor_a:
-    feature: energy_capture
-    value: Thermal (unspecified)
-    classification: thermal
-    score: 2
-  sub_factor_b:
-    feature: fuel
-    value: D-T
-    score: 1
-  raw_average: 1.5
   customization_score: 1.67
   extracted_at: '2026-05-20'
+  raw_average: 1.5
+  sub_factor_a:
+    classification: thermal
+    feature: energy_capture
+    score: 2
+    value: Thermal (unspecified)
+  sub_factor_b:
+    feature: fuel
+    score: 1
+    value: D-T
 data_availability_diagnostics:
-  source_csv: exploration/concept_analysis/tables/design_point.csv
-  in_csv: true
-  design_name: MANTA NT Fusion Pilot Plant (Rutherford et al. 2024)
-  grounding_confidence: high
-  primary_sources_count: 2
-  verified_by: null
   data_availability_score: 4.0
+  design_name: MANTA NT Fusion Pilot Plant (Rutherford et al. 2024)
   extracted_at: '2026-06-12'
+  grounding_confidence: high
+  in_csv: true
+  primary_sources_count: 2
+  source_csv: exploration/concept_analysis/tables/design_point.csv
+  verified_by: null
 design_point_grounding_confidence:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: exploration/concept_analysis/tables/design_point.csv
   value: high
-  provenance: exploration/concept_analysis/tables/design_point.csv
-  confidence: high
-  extracted_at: '2026-06-12'
 design_point_primary_sources_count:
-  value: 2
+  confidence: high
+  extracted_at: '2026-06-12'
   provenance: exploration/concept_analysis/tables/design_point.csv
+  value: 2
+driver_architecture:
   confidence: high
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
+  provenance: manual (modularity 2-slot, MFE/Non-Standard default)
+  value: N/A
 driver_technology:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: HTS magnets + NT plasma shaping
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 energy_capture:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Thermal (unspecified)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 fuel:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: D-T
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 ife_driver:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 laser_approach:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 magnet_type:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: HTS (wound)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 mfe_topology:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Tokamak
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 mif_method:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 modularity_diagnostics:
-  min_viable_device_scale: 3.0
-  percent_mod: 4.6668
-  unit_multiplicity: 4.0
-  modularity_score: 3.6667
-  mvs_lookup_key: MFE|Tokamak (negative-T)
-  vessel_lookup_key: MFE|Tokamak|non-compact
-  magnet_driver_lookup_key: MFE|HTS (wound)|*
+  blanket_assumed: true
   blanket_lookup_key: D-T|Liquid metal
-  vessel_modularity_rating: 2.0
-  magnet_driver_modularity_rating: 5.0
   blanket_modularity_rating: 5.0
   capex_shares_used:
-    w_vessel: 0.0423
-    w_coils: 0.3039
-    w_blanket: 0.0347
-    sum: 0.3808
     method: capex_weighted
+    sum_2slot: 0.0
+    sum_3slot: 0.3808
+    w_blanket: 0.0347
+    w_coils: 0.3039
+    w_containment: null
+    w_energy_delivery: null
+    w_vessel: 0.0423
+  chamber_blanket_lookup_key: null
+  chamber_blanket_modularity_rating: null
+  driver_lookup_key: null
+  driver_modularity_rating: null
+  extracted_at: '2026-06-17'
+  magnet_driver_lookup_key: MFE|HTS (wound)|*
+  magnet_driver_modularity_rating: 5.0
+  min_viable_device_scale: 3.0
+  modularity_score: 3.6667
+  mvs_lookup_key: MFE|Tokamak (negative-T)
+  percent_mod: 4.6668
+  percent_mod_path: three_slot
   unit_count_estimate: 16
-  blanket_assumed: true
-  v5_calibration_target: 3.71
-  extracted_at: '2026-06-13'
+  unit_multiplicity: 4.0
+  v5_calibration_target: 2.36
+  vessel_lookup_key: MFE|Tokamak|non-compact
+  vessel_modularity_rating: 2.0
 non_standard_mechanism:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: N/A
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 operation_mode:
-  value: Quasi-steady
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: Quasi-steady
 plant_complexity_diagnostics:
+  blanket_assumed: true
+  extracted_at: '2026-05-20'
+  plant_complexity_score: 1.0
+  subsystem_complexity_weight: 5.0
   subsystems_triggered:
     cryoplant_hts: 0.5
     current_drive: 0.5
@@ -129,74 +151,70 @@ plant_complexity_diagnostics:
     remote_maintenance: 1.0
     rf_aux: 0.5
     tritium_plant: 1.0
-  subsystem_complexity_weight: 5.0
-  plant_complexity_score: 1.0
-  blanket_assumed: true
-  extracted_at: '2026-05-20'
 primary_heating:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: RF (ECRH)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 repetition_rate:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 stellarator_type:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 supply_chain_diagnostics:
+  blanket_assumed: true
+  bottleneck_weight: 3.0
   bottlenecks_triggered:
     lithium6: 1.0
     tritium: 1.0
     vanadium: 1.0
-  bottleneck_weight: 3.0
+  extracted_at: '2026-05-20'
   supply_chain_score: 2.0
-  blanket_assumed: true
-  extracted_at: '2026-05-20'
 technical_feasibility_diagnostics:
-  required_triple_product: 3.0e+21
-  achieved_triple_product: 1.5e+21
   achieved_lookup_key: MFE|Negative triangularity tokamak
-  triple_product_gap: 2.0
-  log10_gap: 0.301
+  achieved_triple_product: 1.5e+21
   base_score_from_gap: 4.0
-  laser_approach_modifier: 0.0
-  technical_feasibility_score: 4.0
-  no_data_floor: false
   extracted_at: '2026-05-20'
+  laser_approach_modifier: 0.0
+  log10_gap: 0.301
+  no_data_floor: false
+  required_triple_product: 3.0e+21
+  technical_feasibility_score: 4.0
+  triple_product_gap: 2.0
 tokamak_shape:
-  value: Negative triangularity
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: Negative triangularity
 unit_count_estimate:
-  value: 16
-  provenance: modularity_implementation_spec.md Change E
   confidence: high
   extracted_at: '2026-05-20'
+  provenance: modularity_implementation_spec.md Change E
+  value: 16
 upper_cf_diagnostics:
+  blanket_assumed: true
+  extracted_at: '2026-05-20'
+  operational_penalty_weight: 1.0
   penalties_triggered:
     neutronic_fuel: 1.0
-  operational_penalty_weight: 1.0
   upper_cf_score: 4.0
-  blanket_assumed: true
-  extracted_at: '2026-05-20'
 w_blanket:
+  confidence: medium
+  extracted_at: '2026-06-12'
+  provenance: analyses/29-negative-triangularity-tokamak/model_output.txt
   value: 0.034668736441976634
-  provenance: analyses/29-negative-triangularity-tokamak/model_output.txt
-  confidence: medium
-  extracted_at: '2026-06-12'
 w_coils:
+  confidence: medium
+  extracted_at: '2026-06-12'
+  provenance: analyses/29-negative-triangularity-tokamak/model_output.txt
   value: 0.30385893685195137
-  provenance: analyses/29-negative-triangularity-tokamak/model_output.txt
-  confidence: medium
-  extracted_at: '2026-06-12'
 w_vessel:
-  value: 0.04229108205465003
-  provenance: analyses/29-negative-triangularity-tokamak/model_output.txt
   confidence: medium
   extracted_at: '2026-06-12'
+  provenance: analyses/29-negative-triangularity-tokamak/model_output.txt
+  value: 0.04229108205465003
