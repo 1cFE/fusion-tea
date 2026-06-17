@@ -359,14 +359,19 @@ technical_feasibility:
     "MIF|MagLIF":                               1.0e19    # Pacific Fusion
     "MIF|Magnetized target fusion":             1.0e18    # General Fusion / NearStar
 
-    # IFE Laser variants
-    "IFE|Laser ICF (direct drive)":             5.0e21    # OMEGA/NIF class
-    "IFE|Laser ICF (indirect drive)":           5.0e21    # NIF ignition 2022-2025
-    "IFE|Laser ICF (fast ignition)":            1.0e20    # FIREX
-    "IFE|Laser ICF (ultrashort pulse)":         1.0e18    # hb11-class
-    "IFE|Laser ICF (hybrid drive)":             1.0e21    # OMEGA-class precedent
-    # "IFE|Laser ICF (liquid jet)" — Cortex: no triple-product measurement;
-    # falls through to floor via no-data treatment
+    # IFE Laser ICF family — single family-best value across every laser-approach
+    # variant. All entries share 5.0e21 (NIF ignition 2022-2025, Abu-Shawareb et
+    # al. PRL 132, 065102, 2024). Sub-architectural maturity differences (direct
+    # vs indirect vs fast ignition vs ultrashort vs liquid jet) live in
+    # `laser_approach_modifier` below, so the lookup keys here all return the same
+    # number. Same principle the MFE families already use (one value per family,
+    # no per-variant judgment baked into the "achieved" input).
+    "IFE|Laser ICF (direct drive)":             5.0e21
+    "IFE|Laser ICF (indirect drive)":           5.0e21
+    "IFE|Laser ICF (fast ignition)":            5.0e21
+    "IFE|Laser ICF (ultrashort pulse)":         5.0e21
+    "IFE|Laser ICF (hybrid drive)":             5.0e21
+    "IFE|Laser ICF (liquid jet)":               5.0e21
 
     # IFE non-laser drivers
     "IFE|Heavy ion ICF":                        1.0e15    # NDCX-II / LBNL HIB research
@@ -380,18 +385,21 @@ technical_feasibility:
     # "Non-Standard|Muon-catalyzed fusion" — outside Lawson framework; floor
     # "Non-Standard|Electrostatic hybrid" — no measurement; floor
 
-  # Laser approach modifier (IFE only). Reflects the relative maturity of
-  # each laser drive approach vs the NIF indirect-drive ignition benchmark.
-  # Added to the bucket score after the gap-based score is computed.
+  # Laser approach modifier (IFE only). The achieved_triple_product table above
+  # collapses every laser ICF variant to the family-best (5.0e21, NIF ignition).
+  # All architectural-risk differentiation between variants lives in this single
+  # transparent table. Final score is bucket_score(log10(gap)) + modifier, clamped
+  # to [1.0, 5.0]. Modifier magnitudes were calibrated so that the per-concept TF
+  # scores under the pre-2026-06-17 split-achieved scheme are preserved exactly
+  # (see tests/scoring_v2/test_technical_feasibility.py::test_family_consistency).
   laser_approach_modifier:
-    "Indirect drive":                            0.00
-    "Direct drive":                             -0.25
-    "Hybrid drive":                             -0.25
-    "Fast ignition":                            -0.50
-    "Ultrashort pulse":                         -0.50
-    "N/A":                                       0.00
-    # "Liquid jet" intentionally omitted — Cortex is its own no-data
-    # architectural family, not a laser-approach variant of mainstream ICF
+    "Indirect drive":                            0.00    # NIF achieved ignition; reference
+    "Direct drive":                             -0.25    # OMEGA polar-drive projected to NIF energy; near-breakeven but no ignition shot
+    "Hybrid drive":                             -1.25    # Conceptual KrF + direct/indirect hybrid; no near-breakeven demonstration
+    "Fast ignition":                            -2.50    # FIREX-class results; significant gap to a fast-ignition power scheme
+    "Ultrashort pulse":                         -4.00    # Speculative ultrashort-pulse ICF; no peer-reviewed near-breakeven measurement
+    "Liquid jet":                               -4.00    # Liquid-jet target ICF; no peer-reviewed measurement at any scale
+    "N/A":                                       0.00    # Architecture-agnostic fallback
 
 # ─────────────────────────────────────────────────────────────────────────
 # Data Availability — deterministic 1-5 lookup on the design_point.csv

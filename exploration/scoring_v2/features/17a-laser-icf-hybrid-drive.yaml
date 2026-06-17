@@ -158,15 +158,15 @@ supply_chain_diagnostics:
   extracted_at: '2026-05-20'
 technical_feasibility_diagnostics:
   required_triple_product: 3.0e+21
-  achieved_triple_product: 1.0e+21
+  achieved_triple_product: 5.0e+21
   achieved_lookup_key: IFE|Laser ICF (hybrid drive)
-  triple_product_gap: 3.0
-  log10_gap: 0.477
-  base_score_from_gap: 4.0
-  laser_approach_modifier: -0.25
+  triple_product_gap: 0.6
+  log10_gap: -0.222
+  base_score_from_gap: 5.0
+  laser_approach_modifier: -1.25
   technical_feasibility_score: 3.75
   no_data_floor: false
-  extracted_at: '2026-05-20'
+  extracted_at: '2026-06-17'
 tokamak_shape:
   value: N/A
   provenance: taxonomy

@@ -153,15 +153,15 @@ supply_chain_diagnostics:
   extracted_at: '2026-05-20'
 technical_feasibility_diagnostics:
   required_triple_product: 3.0e+23
-  achieved_triple_product: null
+  achieved_triple_product: 5.0e+21
   achieved_lookup_key: IFE|Laser ICF (liquid jet)
-  triple_product_gap: null
-  log10_gap: null
-  base_score_from_gap: 1.0
-  laser_approach_modifier: 0.0
+  triple_product_gap: 60.0
+  log10_gap: 1.778
+  base_score_from_gap: 3.0
+  laser_approach_modifier: -4.0
   technical_feasibility_score: 1.0
-  no_data_floor: true
-  extracted_at: '2026-05-20'
+  no_data_floor: false
+  extracted_at: '2026-06-17'
 tokamak_shape:
   value: N/A
   provenance: taxonomy
