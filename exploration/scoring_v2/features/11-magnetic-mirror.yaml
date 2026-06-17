@@ -100,35 +100,35 @@ mif_method:
   provenance: taxonomy
   value: N/A
 modularity_diagnostics:
-  blanket_assumed: false
-  blanket_lookup_key: D-T|Liquid metal
-  blanket_modularity_rating: 5.0
-  capex_shares_used:
-    method: equal_weight_fallback_sparse_capex
-    sum_2slot: 0.0
-    sum_3slot: 0.0809
-    w_blanket: 0.0214
-    w_coils: 0.0398
-    w_containment: null
-    w_energy_delivery: null
-    w_vessel: 0.0198
-  chamber_blanket_lookup_key: null
-  chamber_blanket_modularity_rating: null
-  driver_lookup_key: null
-  driver_modularity_rating: null
-  extracted_at: '2026-06-17'
-  magnet_driver_lookup_key: MFE|HTS (wound)|*
-  magnet_driver_modularity_rating: 5.0
   min_viable_device_scale: 4.0
-  modularity_score: 4.1667
-  mvs_lookup_key: MFE|Mirror
   percent_mod: 4.6667
-  percent_mod_path: three_slot
-  unit_count_estimate: 12
   unit_multiplicity: 4.0
-  v5_calibration_target: 3.18
+  modularity_score: 4.1667
+  percent_mod_path: three_slot
+  mvs_lookup_key: MFE|Mirror
   vessel_lookup_key: MFE|Mirror|*
+  magnet_driver_lookup_key: MFE|HTS (wound)|*
+  blanket_lookup_key: D-T|Liquid metal
+  driver_lookup_key: null
+  chamber_blanket_lookup_key: null
   vessel_modularity_rating: 4.0
+  magnet_driver_modularity_rating: 5.0
+  blanket_modularity_rating: 5.0
+  driver_modularity_rating: null
+  chamber_blanket_modularity_rating: null
+  capex_shares_used:
+    w_vessel: 0.018
+    w_coils: 0.1157
+    w_blanket: 0.0194
+    sum_3slot: 0.1531
+    w_energy_delivery: null
+    w_containment: null
+    sum_2slot: 0.0
+    method: equal_weight_fallback_sparse_capex
+  unit_count_estimate: 12
+  blanket_assumed: false
+  v5_calibration_target: 3.18
+  extracted_at: '2026-06-17'
 non_standard_mechanism:
   confidence: high
   extracted_at: '2026-06-12'
@@ -205,16 +205,16 @@ upper_cf_diagnostics:
   upper_cf_score: 4.0
 w_blanket:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/11-magnetic-mirror/model_output.txt
-  value: 0.021357216672407853
+  value: 0.019420750807190013
 w_coils:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/11-magnetic-mirror/model_output.txt
-  value: 0.039773178939558555
+  value: 0.11570526721603779
 w_vessel:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/11-magnetic-mirror/model_output.txt
-  value: 0.01979384721375765
+  value: 0.017999132571924245

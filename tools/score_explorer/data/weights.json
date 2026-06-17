@@ -22,24 +22,6 @@
           "D-T|TBD": 4,
           "p-B11|*": 5
         },
-        "chamber_blanket_lookup": {
-          "blanket_penalty": {
-            "Liquid metal": 0.0,
-            "Molten salt": 0.0,
-            "None": 0.0,
-            "Other/hybrid": -0.5,
-            "Solid breeder": -1.0,
-            "TBD": -0.5
-          },
-          "chamber_base": {
-            "IFE|large": 2.5,
-            "IFE|medium": 4.0,
-            "IFE|small": 5.0,
-            "MIF|compact": 5.0,
-            "MIF|large": 3.0,
-            "MIF|medium": 4.0
-          }
-        },
         "driver_modularity_lookup": {
           "IFE|Acoustic transducer": 1.0,
           "IFE|DPSSL": 4.5,
@@ -56,12 +38,6 @@
           "MIF|Railgun": 2.0
         },
         "magnet_driver_lookup": {
-          "IFE|*|*": 3,
-          "IFE|*|Acoustic": 3,
-          "IFE|*|DPSSL Laser": 5,
-          "IFE|*|Gas Laser": 3,
-          "IFE|*|Heavy ion beam": 3,
-          "IFE|*|Projectile": 5,
           "MFE|*|*": 3,
           "MFE|HTS (continuous helical)|*": 3,
           "MFE|HTS (integrated)|*": 4,
@@ -74,11 +50,6 @@
           "MFE|N/A|*": 3,
           "MFE|Resistive|*": 3,
           "MFE|TBD|*": 3,
-          "MIF|*|*": 5,
-          "MIF|*|Capacitor compression": 5,
-          "MIF|*|Pneumatic": 5,
-          "MIF|*|Pulsed power": 5,
-          "MIF|*|Railgun": 5,
           "Non-Standard|*|*": 3,
           "Non-Standard|*|IEC": 5,
           "Non-Standard|*|Muon catalysis": 3,

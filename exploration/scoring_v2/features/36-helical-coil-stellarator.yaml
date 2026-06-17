@@ -204,16 +204,16 @@ upper_cf_diagnostics:
   upper_cf_score: 4.0
 w_blanket:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/36-helical-coil-stellarator/model_output.txt
   value: 0.027113834448134463
 w_coils:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/36-helical-coil-stellarator/model_output.txt
   value: 0.48369895692034237
 w_vessel:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/36-helical-coil-stellarator/model_output.txt
   value: 0.00500491136161654

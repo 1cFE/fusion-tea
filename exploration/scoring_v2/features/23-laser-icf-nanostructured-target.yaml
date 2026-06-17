@@ -102,9 +102,9 @@ mif_method:
   value: N/A
 modularity_diagnostics:
   min_viable_device_scale: 4.0
-  percent_mod: 4.25
+  percent_mod: 3.6986
   unit_multiplicity: 5.0
-  modularity_score: 4.3125
+  modularity_score: 4.1746
   percent_mod_path: two_slot
   mvs_lookup_key: IFE|Laser
   vessel_lookup_key: IFE|Laser|*
@@ -113,19 +113,19 @@ modularity_diagnostics:
   driver_lookup_key: IFE|Ultrashort-pulse
   chamber_blanket_lookup_key: IFE|small
   vessel_modularity_rating: 3.0
-  magnet_driver_modularity_rating: 5.0
+  magnet_driver_modularity_rating: null
   blanket_modularity_rating: 5.0
   driver_modularity_rating: 3.5
   chamber_blanket_modularity_rating: 5.0
   capex_shares_used:
-    w_vessel: 0.0185
+    w_vessel: 0.0175
     w_coils: 0.0008
-    w_blanket: 0.0024
-    sum_3slot: 0.0217
-    w_energy_delivery: null
-    w_containment: null
-    sum_2slot: 0.0
-    method: equal_weight_fallback_missing_capex
+    w_blanket: 0.0023
+    sum_3slot: 0.0206
+    w_energy_delivery: 0.1297
+    w_containment: 0.0198
+    sum_2slot: 0.1495
+    method: capex_weighted
   unit_count_estimate: 500
   blanket_assumed: false
   v5_calibration_target: 3.42
@@ -200,16 +200,26 @@ upper_cf_diagnostics:
   upper_cf_score: 4.5
 w_blanket:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/23-laser-icf-nanostructured-target/model_output.txt
-  value: 0.002378525314305131
+  value: 0.0022557360144367104
 w_coils:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/23-laser-icf-nanostructured-target/model_output.txt
-  value: 0.0008154943934760449
+  value: 0.0007733952049497294
+w_containment:
+  confidence: medium
+  extracted_at: '2026-06-17'
+  provenance: analyses/23-laser-icf-nanostructured-target/model_output.txt
+  value: 0.01978602732663057
+w_energy_delivery:
+  confidence: medium
+  extracted_at: '2026-06-17'
+  provenance: analyses/23-laser-icf-nanostructured-target/model_output.txt
+  value: 0.1296725960299046
 w_vessel:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/23-laser-icf-nanostructured-target/model_output.txt
-  value: 0.018484539585457017
+  value: 0.017530291312193864

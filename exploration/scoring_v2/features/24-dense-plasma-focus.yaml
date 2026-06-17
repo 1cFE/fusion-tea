@@ -195,16 +195,16 @@ upper_cf_diagnostics:
   upper_cf_score: 4.5
 w_blanket:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/24-dense-plasma-focus/model_output.txt
   value: 0.0
 w_coils:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/24-dense-plasma-focus/model_output.txt
   value: 0.0003863987635239567
 w_vessel:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/24-dense-plasma-focus/model_output.txt
   value: 0.00019319938176197836

@@ -107,7 +107,7 @@ modularity_diagnostics:
   driver_modularity_rating: 1.0
   extracted_at: '2026-06-17'
   magnet_driver_lookup_key: IFE|*|Acoustic
-  magnet_driver_modularity_rating: 3.0
+  magnet_driver_modularity_rating: null
   min_viable_device_scale: 5.0
   modularity_score: 4.5
   mvs_lookup_key: IFE|Acoustic

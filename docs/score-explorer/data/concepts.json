@@ -155,7 +155,7 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 5.0,
-      "modularity": 2.4253,
+      "modularity": 2.4252,
       "plant_complexity": 1.0,
       "supply_chain": 1.5,
       "technical_feasibility": 4.0,
@@ -164,7 +164,7 @@
   },
   {
     "company": "Sonofusion Energy",
-    "composite": 2.6497,
+    "composite": 2.6488,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -223,7 +223,7 @@
         "driver_modularity_rating": 1.0,
         "extracted_at": "2026-06-17",
         "magnet_driver_lookup_key": "IFE|*|Acoustic",
-        "magnet_driver_modularity_rating": 3.0,
+        "magnet_driver_modularity_rating": null,
         "min_viable_device_scale": 5.0,
         "modularity_score": 4.5,
         "mvs_lookup_key": "IFE|Acoustic",
@@ -308,7 +308,7 @@
     "scores": {
       "customization": 2.33,
       "data_availability": 1.0,
-      "modularity": 3.7307,
+      "modularity": 3.7243,
       "plant_complexity": 4.0,
       "supply_chain": 5.0,
       "technical_feasibility": 1.0,
@@ -317,7 +317,7 @@
   },
   {
     "company": "Cortex Fusion",
-    "composite": 2.4207,
+    "composite": 2.4199,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -376,7 +376,7 @@
         "driver_modularity_rating": 4.5,
         "extracted_at": "2026-06-17",
         "magnet_driver_lookup_key": "IFE|*|DPSSL Laser",
-        "magnet_driver_modularity_rating": 5.0,
+        "magnet_driver_modularity_rating": null,
         "min_viable_device_scale": 4.0,
         "modularity_score": 4.4375,
         "mvs_lookup_key": "IFE|Laser (liquid jet)",
@@ -464,7 +464,7 @@
     "scores": {
       "customization": 2.33,
       "data_availability": 2.0,
-      "modularity": 3.628,
+      "modularity": 3.6221,
       "plant_complexity": 2.0,
       "supply_chain": 4.5,
       "technical_feasibility": 1.0,
@@ -473,7 +473,7 @@
   },
   {
     "company": "hb11",
-    "composite": 3.0858,
+    "composite": 3.0794,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -483,7 +483,7 @@
       "technical_feasibility",
       "upper_cf"
     ],
-    "composite_evidence": "low",
+    "composite_evidence": "medium",
     "concept_id": "04-laser-icf",
     "diagnostics": {
       "customization_diagnostics": {
@@ -517,14 +517,14 @@
         "blanket_lookup_key": "p-B11|*",
         "blanket_modularity_rating": 5.0,
         "capex_shares_used": {
-          "method": "equal_weight_fallback_missing_capex",
-          "sum_2slot": 0.0,
-          "sum_3slot": 0.0811,
+          "method": "capex_weighted",
+          "sum_2slot": 0.2497,
+          "sum_3slot": 0.0778,
           "w_blanket": 0.001,
           "w_coils": 0.0,
-          "w_containment": null,
-          "w_energy_delivery": null,
-          "w_vessel": 0.0801
+          "w_containment": 0.0778,
+          "w_energy_delivery": 0.172,
+          "w_vessel": 0.0768
         },
         "chamber_blanket_lookup_key": "IFE|small",
         "chamber_blanket_modularity_rating": 5.0,
@@ -532,11 +532,11 @@
         "driver_modularity_rating": 4.5,
         "extracted_at": "2026-06-17",
         "magnet_driver_lookup_key": "IFE|*|DPSSL Laser",
-        "magnet_driver_modularity_rating": 5.0,
+        "magnet_driver_modularity_rating": null,
         "min_viable_device_scale": 4.0,
-        "modularity_score": 4.4375,
+        "modularity_score": 4.4139,
         "mvs_lookup_key": "IFE|Laser",
-        "percent_mod": 4.75,
+        "percent_mod": 4.6557,
         "percent_mod_path": "two_slot",
         "unit_count_estimate": 500,
         "unit_multiplicity": 5.0,
@@ -588,7 +588,7 @@
     "evidence": {
       "customization": "high",
       "data_availability": "high",
-      "modularity": "low",
+      "modularity": "medium",
       "plant_complexity": "high",
       "supply_chain": "high",
       "technical_feasibility": "high",
@@ -618,7 +618,7 @@
     "scores": {
       "customization": 3.67,
       "data_availability": 2.0,
-      "modularity": 3.628,
+      "modularity": 3.5835,
       "plant_complexity": 3.0,
       "supply_chain": 4.5,
       "technical_feasibility": 1.0,
@@ -627,7 +627,7 @@
   },
   {
     "company": "Thea Energy",
-    "composite": 2.5517,
+    "composite": 2.552,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -778,7 +778,7 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 5.0,
-      "modularity": 2.0474,
+      "modularity": 2.0492,
       "plant_complexity": 1.5,
       "supply_chain": 2.0,
       "technical_feasibility": 3.0,
@@ -787,7 +787,7 @@
   },
   {
     "company": "Pale Blue",
-    "composite": 3.5689,
+    "composite": 3.5688,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -928,7 +928,7 @@
     "scores": {
       "customization": 5.0,
       "data_availability": 2.0,
-      "modularity": 2.5222,
+      "modularity": 2.5217,
       "plant_complexity": 4.5,
       "supply_chain": 5.0,
       "technical_feasibility": 1.0,
@@ -937,7 +937,7 @@
   },
   {
     "company": "Pacific Fusion",
-    "composite": 2.299,
+    "composite": 2.307,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -947,7 +947,7 @@
       "technical_feasibility",
       "upper_cf"
     ],
-    "composite_evidence": "low",
+    "composite_evidence": "medium",
     "concept_id": "07-maglif",
     "diagnostics": {
       "customization_diagnostics": {
@@ -981,14 +981,14 @@
         "blanket_lookup_key": "D-T|Liquid metal",
         "blanket_modularity_rating": 5.0,
         "capex_shares_used": {
-          "method": "equal_weight_fallback_missing_capex",
-          "sum_2slot": 0.0,
-          "sum_3slot": 0.2269,
-          "w_blanket": 0.0419,
-          "w_coils": 0.1374,
-          "w_containment": null,
-          "w_energy_delivery": null,
-          "w_vessel": 0.0476
+          "method": "capex_weighted",
+          "sum_2slot": 0.2356,
+          "sum_3slot": 0.2351,
+          "w_blanket": 0.0413,
+          "w_coils": 0.1356,
+          "w_containment": 0.0995,
+          "w_energy_delivery": 0.1361,
+          "w_vessel": 0.0581
         },
         "chamber_blanket_lookup_key": "MIF|large",
         "chamber_blanket_modularity_rating": 2.5,
@@ -996,11 +996,11 @@
         "driver_modularity_rating": 4.5,
         "extracted_at": "2026-06-17",
         "magnet_driver_lookup_key": "MIF|*|Pulsed power",
-        "magnet_driver_modularity_rating": 5.0,
+        "magnet_driver_modularity_rating": null,
         "min_viable_device_scale": 5.0,
-        "modularity_score": 4.625,
+        "modularity_score": 4.6639,
         "mvs_lookup_key": "MIF|MagLIF",
-        "percent_mod": 3.5,
+        "percent_mod": 3.6555,
         "percent_mod_path": "two_slot",
         "unit_count_estimate": 100,
         "unit_multiplicity": 5.0,
@@ -1059,7 +1059,7 @@
     "evidence": {
       "customization": "high",
       "data_availability": "high",
-      "modularity": "low",
+      "modularity": "medium",
       "plant_complexity": "high",
       "supply_chain": "high",
       "technical_feasibility": "high",
@@ -1089,7 +1089,7 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 3.0,
-      "modularity": 3.9361,
+      "modularity": 3.9923,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
       "technical_feasibility": 3.0,
@@ -1098,7 +1098,7 @@
   },
   {
     "company": "Helion Energy",
-    "composite": 3.5264,
+    "composite": 3.5249,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -1108,7 +1108,7 @@
       "technical_feasibility",
       "upper_cf"
     ],
-    "composite_evidence": "low",
+    "composite_evidence": "medium",
     "concept_id": "08-frc-w-direct-conversion",
     "diagnostics": {
       "customization_diagnostics": {
@@ -1142,13 +1142,13 @@
         "blanket_lookup_key": "D-He3|*",
         "blanket_modularity_rating": 5.0,
         "capex_shares_used": {
-          "method": "equal_weight_fallback_missing_capex",
-          "sum_2slot": 0.0,
-          "sum_3slot": 0.0074,
+          "method": "capex_weighted",
+          "sum_2slot": 0.0769,
+          "sum_3slot": 0.0769,
           "w_blanket": 0.0,
-          "w_coils": 0.0072,
-          "w_containment": null,
-          "w_energy_delivery": null,
+          "w_coils": 0.0767,
+          "w_containment": 0.0003,
+          "w_energy_delivery": 0.0767,
           "w_vessel": 0.0003
         },
         "chamber_blanket_lookup_key": "MIF|compact",
@@ -1157,7 +1157,7 @@
         "driver_modularity_rating": 5.0,
         "extracted_at": "2026-06-17",
         "magnet_driver_lookup_key": "MIF|*|Capacitor compression",
-        "magnet_driver_modularity_rating": 5.0,
+        "magnet_driver_modularity_rating": null,
         "min_viable_device_scale": 5.0,
         "modularity_score": 5.0,
         "mvs_lookup_key": "MIF|FRC compression",
@@ -1211,7 +1211,7 @@
     "evidence": {
       "customization": "high",
       "data_availability": "high",
-      "modularity": "low",
+      "modularity": "medium",
       "plant_complexity": "high",
       "supply_chain": "high",
       "technical_feasibility": "high",
@@ -1241,7 +1241,7 @@
     "scores": {
       "customization": 4.33,
       "data_availability": 3.0,
-      "modularity": 4.5524,
+      "modularity": 4.542,
       "plant_complexity": 5.0,
       "supply_chain": 2.0,
       "technical_feasibility": 2.0,
@@ -1250,7 +1250,7 @@
   },
   {
     "company": "Proxima Fusion",
-    "composite": 2.4529,
+    "composite": 2.4536,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -1401,7 +1401,7 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 5.0,
-      "modularity": 1.3556,
+      "modularity": 1.3608,
       "plant_complexity": 1.5,
       "supply_chain": 2.0,
       "technical_feasibility": 3.0,
@@ -1410,7 +1410,7 @@
   },
   {
     "company": "Gauss Fusion",
-    "composite": 2.061,
+    "composite": 2.0619,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -1561,7 +1561,7 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 3.0,
-      "modularity": 1.1123,
+      "modularity": 1.1186,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
       "technical_feasibility": 3.0,
@@ -1570,7 +1570,7 @@
   },
   {
     "company": "Realta Fusion",
-    "composite": 2.3082,
+    "composite": 2.3077,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -1616,12 +1616,12 @@
         "capex_shares_used": {
           "method": "equal_weight_fallback_sparse_capex",
           "sum_2slot": 0.0,
-          "sum_3slot": 0.0809,
-          "w_blanket": 0.0214,
-          "w_coils": 0.0398,
+          "sum_3slot": 0.1531,
+          "w_blanket": 0.0194,
+          "w_coils": 0.1157,
           "w_containment": null,
           "w_energy_delivery": null,
-          "w_vessel": 0.0198
+          "w_vessel": 0.018
         },
         "chamber_blanket_lookup_key": null,
         "chamber_blanket_modularity_rating": null,
@@ -1722,7 +1722,7 @@
     "scores": {
       "customization": 2.33,
       "data_availability": 3.0,
-      "modularity": 3.1828,
+      "modularity": 3.1791,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
       "technical_feasibility": 2.0,
@@ -1731,7 +1731,7 @@
   },
   {
     "company": "OpenStar Technologies",
-    "composite": 1.9685,
+    "composite": 1.9694,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -1883,7 +1883,7 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 4.0,
-      "modularity": 1.1227,
+      "modularity": 1.129,
       "plant_complexity": 1.5,
       "supply_chain": 2.0,
       "technical_feasibility": 2.0,
@@ -1892,7 +1892,7 @@
   },
   {
     "company": "Avalanche Energy",
-    "composite": 2.3382,
+    "composite": 2.3367,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -2041,7 +2041,7 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 2.0,
-      "modularity": 4.5524,
+      "modularity": 4.542,
       "plant_complexity": 2.5,
       "supply_chain": 2.0,
       "technical_feasibility": 1.0,
@@ -2050,7 +2050,7 @@
   },
   {
     "company": "General Fusion",
-    "composite": 2.3284,
+    "composite": 2.3272,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -2060,7 +2060,7 @@
       "technical_feasibility",
       "upper_cf"
     ],
-    "composite_evidence": "low",
+    "composite_evidence": "medium",
     "concept_id": "14-magnetized-target-fusion-pneumatic-compression",
     "diagnostics": {
       "customization_diagnostics": {
@@ -2094,13 +2094,13 @@
         "blanket_lookup_key": "D-T|Liquid metal",
         "blanket_modularity_rating": 5.0,
         "capex_shares_used": {
-          "method": "equal_weight_fallback_missing_capex",
-          "sum_2slot": 0.0,
+          "method": "capex_weighted",
+          "sum_2slot": 0.0204,
           "sum_3slot": 0.0169,
           "w_blanket": 0.0112,
           "w_coils": 0.0013,
-          "w_containment": null,
-          "w_energy_delivery": null,
+          "w_containment": 0.0156,
+          "w_energy_delivery": 0.0047,
           "w_vessel": 0.0044
         },
         "chamber_blanket_lookup_key": "MIF|medium",
@@ -2109,7 +2109,7 @@
         "driver_modularity_rating": 4.0,
         "extracted_at": "2026-06-17",
         "magnet_driver_lookup_key": "MIF|*|Pneumatic",
-        "magnet_driver_modularity_rating": 5.0,
+        "magnet_driver_modularity_rating": null,
         "min_viable_device_scale": 5.0,
         "modularity_score": 4.75,
         "mvs_lookup_key": "MIF|Pneumatic compression",
@@ -2172,7 +2172,7 @@
     "evidence": {
       "customization": "high",
       "data_availability": "high",
-      "modularity": "low",
+      "modularity": "medium",
       "plant_complexity": "high",
       "supply_chain": "high",
       "technical_feasibility": "high",
@@ -2202,7 +2202,7 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 4.0,
-      "modularity": 4.1416,
+      "modularity": 4.1331,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
       "technical_feasibility": 2.0,
@@ -2211,7 +2211,7 @@
   },
   {
     "company": "Zap Energy",
-    "composite": 2.0681,
+    "composite": 2.0675,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -2363,7 +2363,7 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 3.0,
-      "modularity": 3.3198,
+      "modularity": 3.3154,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
       "technical_feasibility": 2.0,
@@ -2530,7 +2530,7 @@
   },
   {
     "company": "Xcimer Energy",
-    "composite": 2.0961,
+    "composite": 2.0969,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -2540,7 +2540,7 @@
       "technical_feasibility",
       "upper_cf"
     ],
-    "composite_evidence": "low",
+    "composite_evidence": "medium",
     "concept_id": "17a-laser-icf-hybrid-drive",
     "diagnostics": {
       "customization_diagnostics": {
@@ -2574,14 +2574,14 @@
         "blanket_lookup_key": "D-T|Molten salt",
         "blanket_modularity_rating": 5.0,
         "capex_shares_used": {
-          "method": "equal_weight_fallback_missing_capex",
-          "sum_2slot": 0.0,
-          "sum_3slot": 0.0922,
-          "w_blanket": 0.0526,
+          "method": "capex_weighted",
+          "sum_2slot": 0.3366,
+          "sum_3slot": 0.1217,
+          "w_blanket": 0.0504,
           "w_coils": 0.0,
-          "w_containment": null,
-          "w_energy_delivery": null,
-          "w_vessel": 0.0396
+          "w_containment": 0.1217,
+          "w_energy_delivery": 0.2149,
+          "w_vessel": 0.0712
         },
         "chamber_blanket_lookup_key": "IFE|medium",
         "chamber_blanket_modularity_rating": 4.0,
@@ -2589,7 +2589,7 @@
         "driver_modularity_rating": 4.0,
         "extracted_at": "2026-06-17",
         "magnet_driver_lookup_key": "IFE|*|Gas Laser",
-        "magnet_driver_modularity_rating": 3.0,
+        "magnet_driver_modularity_rating": null,
         "min_viable_device_scale": 3.0,
         "modularity_score": 3.0,
         "mvs_lookup_key": "IFE|Laser (Xcimer-class)",
@@ -2653,7 +2653,7 @@
     "evidence": {
       "customization": "high",
       "data_availability": "high",
-      "modularity": "low",
+      "modularity": "medium",
       "plant_complexity": "high",
       "supply_chain": "high",
       "technical_feasibility": "high",
@@ -2683,7 +2683,7 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 3.0,
-      "modularity": 1.2654,
+      "modularity": 1.271,
       "plant_complexity": 2.5,
       "supply_chain": 1.0,
       "technical_feasibility": 3.75,
@@ -2692,7 +2692,7 @@
   },
   {
     "company": "Focused Energy",
-    "composite": 1.9693,
+    "composite": 1.9722,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -2702,7 +2702,7 @@
       "technical_feasibility",
       "upper_cf"
     ],
-    "composite_evidence": "low",
+    "composite_evidence": "medium",
     "concept_id": "17b-laser-icf-fast-ignition",
     "diagnostics": {
       "customization_diagnostics": {
@@ -2736,14 +2736,14 @@
         "blanket_lookup_key": "D-T|Liquid metal",
         "blanket_modularity_rating": 5.0,
         "capex_shares_used": {
-          "method": "equal_weight_fallback_missing_capex",
-          "sum_2slot": 0.0,
-          "sum_3slot": 0.1725,
-          "w_blanket": 0.0639,
-          "w_coils": 0.0042,
-          "w_containment": null,
-          "w_energy_delivery": null,
-          "w_vessel": 0.1044
+          "method": "capex_weighted",
+          "sum_2slot": 0.4157,
+          "sum_3slot": 0.2648,
+          "w_blanket": 0.0555,
+          "w_coils": 0.0037,
+          "w_containment": 0.2611,
+          "w_energy_delivery": 0.1546,
+          "w_vessel": 0.2056
         },
         "chamber_blanket_lookup_key": "IFE|small",
         "chamber_blanket_modularity_rating": 5.0,
@@ -2751,11 +2751,11 @@
         "driver_modularity_rating": 4.5,
         "extracted_at": "2026-06-17",
         "magnet_driver_lookup_key": "IFE|*|DPSSL Laser",
-        "magnet_driver_modularity_rating": 5.0,
+        "magnet_driver_modularity_rating": null,
         "min_viable_device_scale": 4.0,
-        "modularity_score": 4.4375,
+        "modularity_score": 4.4535,
         "mvs_lookup_key": "IFE|Laser",
-        "percent_mod": 4.75,
+        "percent_mod": 4.814,
         "percent_mod_path": "two_slot",
         "unit_count_estimate": 200,
         "unit_multiplicity": 5.0,
@@ -2814,7 +2814,7 @@
     "evidence": {
       "customization": "high",
       "data_availability": "high",
-      "modularity": "low",
+      "modularity": "medium",
       "plant_complexity": "high",
       "supply_chain": "high",
       "technical_feasibility": "high",
@@ -2844,7 +2844,7 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 2.0,
-      "modularity": 3.628,
+      "modularity": 3.6482,
       "plant_complexity": 1.0,
       "supply_chain": 1.5,
       "technical_feasibility": 2.5,
@@ -2899,12 +2899,12 @@
         "capex_shares_used": {
           "method": "equal_weight_fallback_sparse_capex",
           "sum_2slot": 0.0,
-          "sum_3slot": 0.0388,
+          "sum_3slot": 0.0382,
           "w_blanket": 0.0013,
-          "w_coils": 0.0227,
+          "w_coils": 0.0223,
           "w_containment": null,
           "w_energy_delivery": null,
-          "w_vessel": 0.0149
+          "w_vessel": 0.0146
         },
         "chamber_blanket_lookup_key": null,
         "chamber_blanket_modularity_rating": null,
@@ -2994,7 +2994,7 @@
     "scores": {
       "customization": 3.67,
       "data_availability": 2.0,
-      "modularity": 2.498,
+      "modularity": 2.4977,
       "plant_complexity": 4.0,
       "supply_chain": 5.0,
       "technical_feasibility": 1.0,
@@ -3003,7 +3003,7 @@
   },
   {
     "company": "Zephyr Fusion",
-    "composite": 2.5784,
+    "composite": 2.5792,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -3148,7 +3148,7 @@
     "scores": {
       "customization": 4.33,
       "data_availability": 1.0,
-      "modularity": 1.2585,
+      "modularity": 1.2642,
       "plant_complexity": 3.5,
       "supply_chain": 2.0,
       "technical_feasibility": 1.0,
@@ -3157,7 +3157,7 @@
   },
   {
     "company": "Type One Energy",
-    "composite": 2.349,
+    "composite": 2.3498,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -3308,7 +3308,7 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 5.0,
-      "modularity": 1.2859,
+      "modularity": 1.2914,
       "plant_complexity": 2.0,
       "supply_chain": 2.0,
       "technical_feasibility": 3.0,
@@ -3317,7 +3317,7 @@
   },
   {
     "company": "Renaissance Fusion",
-    "composite": 2.1328,
+    "composite": 2.1336,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -3468,7 +3468,7 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 4.0,
-      "modularity": 1.2723,
+      "modularity": 1.2779,
       "plant_complexity": 1.5,
       "supply_chain": 2.0,
       "technical_feasibility": 3.0,
@@ -3477,7 +3477,7 @@
   },
   {
     "company": "Tokamak Energy",
-    "composite": 2.3844,
+    "composite": 2.3845,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -3630,7 +3630,7 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 3.0,
-      "modularity": 2.3764,
+      "modularity": 2.3766,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
       "technical_feasibility": 4.0,
@@ -3639,7 +3639,7 @@
   },
   {
     "company": "First Light Fusion",
-    "composite": 1.9067,
+    "composite": 1.9026,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -3649,7 +3649,7 @@
       "technical_feasibility",
       "upper_cf"
     ],
-    "composite_evidence": "low",
+    "composite_evidence": "medium",
     "concept_id": "22-projectile-icf",
     "diagnostics": {
       "customization_diagnostics": {
@@ -3683,14 +3683,14 @@
         "blanket_lookup_key": "D-T|Liquid metal",
         "blanket_modularity_rating": 5.0,
         "capex_shares_used": {
-          "method": "equal_weight_fallback_missing_capex",
-          "sum_2slot": 0.0,
-          "sum_3slot": 0.0722,
+          "method": "capex_weighted",
+          "sum_2slot": 0.16,
+          "sum_3slot": 0.0723,
           "w_blanket": 0.0631,
           "w_coils": 0.0,
-          "w_containment": null,
-          "w_energy_delivery": null,
-          "w_vessel": 0.0091
+          "w_containment": 0.0723,
+          "w_energy_delivery": 0.0877,
+          "w_vessel": 0.0092
         },
         "chamber_blanket_lookup_key": "IFE|medium",
         "chamber_blanket_modularity_rating": 4.0,
@@ -3698,11 +3698,11 @@
         "driver_modularity_rating": 2.5,
         "extracted_at": "2026-06-17",
         "magnet_driver_lookup_key": "IFE|*|Projectile",
-        "magnet_driver_modularity_rating": 5.0,
+        "magnet_driver_modularity_rating": null,
         "min_viable_device_scale": 3.0,
-        "modularity_score": 3.5625,
+        "modularity_score": 3.5444,
         "mvs_lookup_key": "IFE|Projectile",
-        "percent_mod": 3.25,
+        "percent_mod": 3.1775,
         "percent_mod_path": "two_slot",
         "unit_count_estimate": 50,
         "unit_multiplicity": 5.0,
@@ -3760,7 +3760,7 @@
     "evidence": {
       "customization": "high",
       "data_availability": "high",
-      "modularity": "low",
+      "modularity": "medium",
       "plant_complexity": "high",
       "supply_chain": "high",
       "technical_feasibility": "high",
@@ -3790,7 +3790,7 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 2.0,
-      "modularity": 2.1899,
+      "modularity": 2.1613,
       "plant_complexity": 2.0,
       "supply_chain": 2.0,
       "technical_feasibility": 2.0,
@@ -3799,7 +3799,7 @@
   },
   {
     "company": "Marvel Fusion",
-    "composite": 3.2221,
+    "composite": 3.1892,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -3809,7 +3809,7 @@
       "technical_feasibility",
       "upper_cf"
     ],
-    "composite_evidence": "low",
+    "composite_evidence": "medium",
     "concept_id": "23-laser-icf-nanostructured-target",
     "diagnostics": {
       "customization_diagnostics": {
@@ -3843,14 +3843,14 @@
         "blanket_lookup_key": "p-B11|*",
         "blanket_modularity_rating": 5.0,
         "capex_shares_used": {
-          "method": "equal_weight_fallback_missing_capex",
-          "sum_2slot": 0.0,
-          "sum_3slot": 0.0217,
-          "w_blanket": 0.0024,
+          "method": "capex_weighted",
+          "sum_2slot": 0.1495,
+          "sum_3slot": 0.0206,
+          "w_blanket": 0.0023,
           "w_coils": 0.0008,
-          "w_containment": null,
-          "w_energy_delivery": null,
-          "w_vessel": 0.0185
+          "w_containment": 0.0198,
+          "w_energy_delivery": 0.1297,
+          "w_vessel": 0.0175
         },
         "chamber_blanket_lookup_key": "IFE|small",
         "chamber_blanket_modularity_rating": 5.0,
@@ -3858,11 +3858,11 @@
         "driver_modularity_rating": 3.5,
         "extracted_at": "2026-06-17",
         "magnet_driver_lookup_key": "IFE|*|DPSSL Laser",
-        "magnet_driver_modularity_rating": 5.0,
+        "magnet_driver_modularity_rating": null,
         "min_viable_device_scale": 4.0,
-        "modularity_score": 4.3125,
+        "modularity_score": 4.1746,
         "mvs_lookup_key": "IFE|Laser",
-        "percent_mod": 4.25,
+        "percent_mod": 3.6986,
         "percent_mod_path": "two_slot",
         "unit_count_estimate": 500,
         "unit_multiplicity": 5.0,
@@ -3915,7 +3915,7 @@
     "evidence": {
       "customization": "high",
       "data_availability": "high",
-      "modularity": "low",
+      "modularity": "medium",
       "plant_complexity": "high",
       "supply_chain": "high",
       "technical_feasibility": "high",
@@ -3945,7 +3945,7 @@
     "scores": {
       "customization": 4.33,
       "data_availability": 3.0,
-      "modularity": 3.4225,
+      "modularity": 3.1922,
       "plant_complexity": 2.5,
       "supply_chain": 4.5,
       "technical_feasibility": 1.0,
@@ -3954,7 +3954,7 @@
   },
   {
     "company": "LPPFusion",
-    "composite": 3.4911,
+    "composite": 3.4909,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -4095,7 +4095,7 @@
     "scores": {
       "customization": 5.0,
       "data_availability": 2.0,
-      "modularity": 2.635,
+      "modularity": 2.6339,
       "plant_complexity": 5.0,
       "supply_chain": 5.0,
       "technical_feasibility": 1.0,
@@ -4104,7 +4104,7 @@
   },
   {
     "company": "Intensity Energy",
-    "composite": 1.7746,
+    "composite": 1.7877,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -4114,7 +4114,7 @@
       "technical_feasibility",
       "upper_cf"
     ],
-    "composite_evidence": "low",
+    "composite_evidence": "medium",
     "concept_id": "25-heavy-ion-beam-icf",
     "diagnostics": {
       "customization_diagnostics": {
@@ -4148,14 +4148,14 @@
         "blanket_lookup_key": "D-T|Liquid metal",
         "blanket_modularity_rating": 5.0,
         "capex_shares_used": {
-          "method": "equal_weight_fallback_missing_capex",
-          "sum_2slot": 0.0,
-          "sum_3slot": 0.1677,
-          "w_blanket": 0.0611,
-          "w_coils": 0.0068,
-          "w_containment": null,
-          "w_energy_delivery": null,
-          "w_vessel": 0.0998
+          "method": "capex_weighted",
+          "sum_2slot": 0.4487,
+          "sum_3slot": 0.2772,
+          "w_blanket": 0.0517,
+          "w_coils": 0.0057,
+          "w_containment": 0.2714,
+          "w_energy_delivery": 0.1772,
+          "w_vessel": 0.2197
         },
         "chamber_blanket_lookup_key": "IFE|medium",
         "chamber_blanket_modularity_rating": 4.0,
@@ -4163,11 +4163,11 @@
         "driver_modularity_rating": 2.0,
         "extracted_at": "2026-06-17",
         "magnet_driver_lookup_key": "IFE|*|Heavy ion beam",
-        "magnet_driver_modularity_rating": 3.0,
+        "magnet_driver_modularity_rating": null,
         "min_viable_device_scale": 4.0,
-        "modularity_score": 3.0,
+        "modularity_score": 3.0525,
         "mvs_lookup_key": "IFE|Heavy ion beam",
-        "percent_mod": 3.0,
+        "percent_mod": 3.21,
         "percent_mod_path": "two_slot",
         "unit_count_estimate": 1,
         "unit_multiplicity": 1.0,
@@ -4225,7 +4225,7 @@
     "evidence": {
       "customization": "high",
       "data_availability": "high",
-      "modularity": "low",
+      "modularity": "medium",
       "plant_complexity": "high",
       "supply_chain": "high",
       "technical_feasibility": "high",
@@ -4255,7 +4255,7 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 4.0,
-      "modularity": 1.2654,
+      "modularity": 1.3569,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
       "technical_feasibility": 1.0,
@@ -4264,7 +4264,7 @@
   },
   {
     "company": "EMC2",
-    "composite": 2.2208,
+    "composite": 2.2199,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -4413,7 +4413,7 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 2.0,
-      "modularity": 3.7307,
+      "modularity": 3.7243,
       "plant_complexity": 2.5,
       "supply_chain": 2.0,
       "technical_feasibility": 1.0,
@@ -4422,7 +4422,7 @@
   },
   {
     "company": "Energy Singularity",
-    "composite": 2.077,
+    "composite": 2.0771,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -4575,7 +4575,7 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 1.0,
-      "modularity": 2.2241,
+      "modularity": 2.2251,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
       "technical_feasibility": 4.0,
@@ -4584,7 +4584,7 @@
   },
   {
     "company": "Firefly Fusion",
-    "composite": 2.5251,
+    "composite": 2.5252,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -4737,7 +4737,7 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 4.0,
-      "modularity": 2.3612,
+      "modularity": 2.3614,
       "plant_complexity": 1.0,
       "supply_chain": 2.0,
       "technical_feasibility": 4.0,
@@ -4746,7 +4746,7 @@
   },
   {
     "company": "Inertia Enterprises",
-    "composite": 2.2531,
+    "composite": 2.2376,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -4756,7 +4756,7 @@
       "technical_feasibility",
       "upper_cf"
     ],
-    "composite_evidence": "low",
+    "composite_evidence": "medium",
     "concept_id": "30-laser-icf-nif-commercialization",
     "diagnostics": {
       "customization_diagnostics": {
@@ -4790,14 +4790,14 @@
         "blanket_lookup_key": "D-T|Liquid metal",
         "blanket_modularity_rating": 5.0,
         "capex_shares_used": {
-          "method": "equal_weight_fallback_missing_capex",
-          "sum_2slot": 0.0,
-          "sum_3slot": 0.1725,
-          "w_blanket": 0.0639,
-          "w_coils": 0.0042,
-          "w_containment": null,
-          "w_energy_delivery": null,
-          "w_vessel": 0.1044
+          "method": "capex_weighted",
+          "sum_2slot": 0.4157,
+          "sum_3slot": 0.2648,
+          "w_blanket": 0.0555,
+          "w_coils": 0.0037,
+          "w_containment": 0.2611,
+          "w_energy_delivery": 0.1546,
+          "w_vessel": 0.2056
         },
         "chamber_blanket_lookup_key": "IFE|large",
         "chamber_blanket_modularity_rating": 2.5,
@@ -4805,11 +4805,11 @@
         "driver_modularity_rating": 4.5,
         "extracted_at": "2026-06-17",
         "magnet_driver_lookup_key": "IFE|*|DPSSL Laser",
-        "magnet_driver_modularity_rating": 5.0,
+        "magnet_driver_modularity_rating": null,
         "min_viable_device_scale": 4.0,
-        "modularity_score": 4.125,
+        "modularity_score": 4.061,
         "mvs_lookup_key": "IFE|Laser",
-        "percent_mod": 3.5,
+        "percent_mod": 3.2438,
         "percent_mod_path": "two_slot",
         "unit_count_estimate": 1000,
         "unit_multiplicity": 5.0,
@@ -4868,7 +4868,7 @@
     "evidence": {
       "customization": "high",
       "data_availability": "high",
-      "modularity": "low",
+      "modularity": "medium",
       "plant_complexity": "high",
       "supply_chain": "high",
       "technical_feasibility": "high",
@@ -4898,7 +4898,7 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 2.0,
-      "modularity": 3.1144,
+      "modularity": 3.0062,
       "plant_complexity": 1.0,
       "supply_chain": 1.5,
       "technical_feasibility": 5.0,
@@ -4907,7 +4907,7 @@
   },
   {
     "company": "Blue Laser Fusion",
-    "composite": 2.4692,
+    "composite": 2.475,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -4917,7 +4917,7 @@
       "technical_feasibility",
       "upper_cf"
     ],
-    "composite_evidence": "low",
+    "composite_evidence": "medium",
     "concept_id": "31-laser-icf-oec-architecture",
     "diagnostics": {
       "customization_diagnostics": {
@@ -4951,14 +4951,14 @@
         "blanket_lookup_key": "D-T|Liquid metal",
         "blanket_modularity_rating": 5.0,
         "capex_shares_used": {
-          "method": "equal_weight_fallback_missing_capex",
-          "sum_2slot": 0.0,
-          "sum_3slot": 0.2209,
-          "w_blanket": 0.159,
-          "w_coils": 0.0086,
-          "w_containment": null,
-          "w_energy_delivery": null,
-          "w_vessel": 0.0533
+          "method": "capex_weighted",
+          "sum_2slot": 0.4628,
+          "sum_3slot": 0.2195,
+          "w_blanket": 0.158,
+          "w_coils": 0.0085,
+          "w_containment": 0.211,
+          "w_energy_delivery": 0.2518,
+          "w_vessel": 0.053
         },
         "chamber_blanket_lookup_key": "IFE|large",
         "chamber_blanket_modularity_rating": 2.5,
@@ -4966,11 +4966,11 @@
         "driver_modularity_rating": 5.0,
         "extracted_at": "2026-06-17",
         "magnet_driver_lookup_key": "IFE|*|DPSSL Laser",
-        "magnet_driver_modularity_rating": 5.0,
+        "magnet_driver_modularity_rating": null,
         "min_viable_device_scale": 4.0,
-        "modularity_score": 4.1875,
+        "modularity_score": 4.2151,
         "mvs_lookup_key": "IFE|Laser",
-        "percent_mod": 3.75,
+        "percent_mod": 3.8603,
         "percent_mod_path": "two_slot",
         "unit_count_estimate": 200,
         "unit_multiplicity": 5.0,
@@ -5030,7 +5030,7 @@
     "evidence": {
       "customization": "high",
       "data_availability": "high",
-      "modularity": "low",
+      "modularity": "medium",
       "plant_complexity": "high",
       "supply_chain": "high",
       "technical_feasibility": "high",
@@ -5060,7 +5060,7 @@
     "scores": {
       "customization": 2.33,
       "data_availability": 3.0,
-      "modularity": 3.2171,
+      "modularity": 3.2583,
       "plant_complexity": 1.0,
       "supply_chain": 1.5,
       "technical_feasibility": 4.75,
@@ -5069,7 +5069,7 @@
   },
   {
     "company": "GenF Systems",
-    "composite": 2.188,
+    "composite": 2.1684,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -5079,7 +5079,7 @@
       "technical_feasibility",
       "upper_cf"
     ],
-    "composite_evidence": "low",
+    "composite_evidence": "medium",
     "concept_id": "32-laser-icf-french-national",
     "diagnostics": {
       "customization_diagnostics": {
@@ -5113,14 +5113,14 @@
         "blanket_lookup_key": "D-T|Liquid metal",
         "blanket_modularity_rating": 5.0,
         "capex_shares_used": {
-          "method": "equal_weight_fallback_missing_capex",
-          "sum_2slot": 0.0,
-          "sum_3slot": 0.1948,
-          "w_blanket": 0.0741,
-          "w_coils": 0.0018,
-          "w_containment": null,
-          "w_energy_delivery": null,
-          "w_vessel": 0.119
+          "method": "capex_weighted",
+          "sum_2slot": 0.3685,
+          "sum_3slot": 0.3074,
+          "w_blanket": 0.0618,
+          "w_coils": 0.0015,
+          "w_containment": 0.3059,
+          "w_energy_delivery": 0.0626,
+          "w_vessel": 0.2441
         },
         "chamber_blanket_lookup_key": "IFE|large",
         "chamber_blanket_modularity_rating": 2.5,
@@ -5128,11 +5128,11 @@
         "driver_modularity_rating": 3.5,
         "extracted_at": "2026-06-17",
         "magnet_driver_lookup_key": "IFE|*|DPSSL Laser",
-        "magnet_driver_modularity_rating": 5.0,
+        "magnet_driver_modularity_rating": null,
         "min_viable_device_scale": 4.0,
-        "modularity_score": 4.0,
+        "modularity_score": 3.9175,
         "mvs_lookup_key": "IFE|Laser",
-        "percent_mod": 3.0,
+        "percent_mod": 2.6698,
         "percent_mod_path": "two_slot",
         "unit_count_estimate": 200,
         "unit_multiplicity": 5.0,
@@ -5191,7 +5191,7 @@
     "evidence": {
       "customization": "high",
       "data_availability": "high",
-      "modularity": "low",
+      "modularity": "medium",
       "plant_complexity": "high",
       "supply_chain": "high",
       "technical_feasibility": "high",
@@ -5221,7 +5221,7 @@
     "scores": {
       "customization": 1.67,
       "data_availability": 2.0,
-      "modularity": 2.9089,
+      "modularity": 2.7715,
       "plant_complexity": 1.0,
       "supply_chain": 1.5,
       "technical_feasibility": 4.75,
@@ -5392,7 +5392,7 @@
   },
   {
     "company": "Deutelio",
-    "composite": 2.3719,
+    "composite": 2.3728,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -5536,7 +5536,7 @@
     "scores": {
       "customization": 2.33,
       "data_availability": 1.0,
-      "modularity": 1.1285,
+      "modularity": 1.1347,
       "plant_complexity": 3.5,
       "supply_chain": 5.0,
       "technical_feasibility": 1.0,
@@ -5705,7 +5705,7 @@
   },
   {
     "company": "NearStar Fusion",
-    "composite": 2.5782,
+    "composite": 2.6357,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -5715,7 +5715,7 @@
       "technical_feasibility",
       "upper_cf"
     ],
-    "composite_evidence": "low",
+    "composite_evidence": "medium",
     "concept_id": "37-magnetized-target-inertial-fusion-mtif",
     "diagnostics": {
       "customization_diagnostics": {
@@ -5749,13 +5749,13 @@
         "blanket_lookup_key": "D-D|*",
         "blanket_modularity_rating": 5.0,
         "capex_shares_used": {
-          "method": "equal_weight_fallback_missing_capex",
-          "sum_2slot": 0.0,
+          "method": "capex_weighted",
+          "sum_2slot": 0.0094,
           "sum_3slot": 0.0094,
           "w_blanket": 0.0094,
           "w_coils": 0.0,
-          "w_containment": null,
-          "w_energy_delivery": null,
+          "w_containment": 0.0094,
+          "w_energy_delivery": 0.0,
           "w_vessel": 0.0
         },
         "chamber_blanket_lookup_key": "MIF|medium",
@@ -5764,11 +5764,11 @@
         "driver_modularity_rating": 2.0,
         "extracted_at": "2026-06-17",
         "magnet_driver_lookup_key": "MIF|*|Railgun",
-        "magnet_driver_modularity_rating": 5.0,
+        "magnet_driver_modularity_rating": null,
         "min_viable_device_scale": 5.0,
-        "modularity_score": 4.5,
+        "modularity_score": 4.75,
         "mvs_lookup_key": "MIF|Pneumatic compression",
-        "percent_mod": 3.0,
+        "percent_mod": 4.0,
         "percent_mod_path": "two_slot",
         "unit_count_estimate": 100,
         "unit_multiplicity": 5.0,
@@ -5821,7 +5821,7 @@
     "evidence": {
       "customization": "high",
       "data_availability": "high",
-      "modularity": "low",
+      "modularity": "medium",
       "plant_complexity": "high",
       "supply_chain": "high",
       "technical_feasibility": "high",
@@ -5851,7 +5851,7 @@
     "scores": {
       "customization": 2.33,
       "data_availability": 2.0,
-      "modularity": 3.7307,
+      "modularity": 4.1331,
       "plant_complexity": 2.5,
       "supply_chain": 5.0,
       "technical_feasibility": 1.0,
@@ -5860,7 +5860,7 @@
   },
   {
     "company": "ENN Energy",
-    "composite": 3.2548,
+    "composite": 3.2549,
     "composite_axes_included": [
       "customization",
       "data_availability",
@@ -6004,7 +6004,7 @@
     "scores": {
       "customization": 5.0,
       "data_availability": 1.0,
-      "modularity": 2.3236,
+      "modularity": 2.3241,
       "plant_complexity": 2.5,
       "supply_chain": 5.0,
       "technical_feasibility": 2.0,

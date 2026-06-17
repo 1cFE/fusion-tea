@@ -152,12 +152,23 @@ def build_weights() -> dict:
         "axes": [],
         "composite": full.get("composite", {}),
     }
+    # Sub-tables that exist in weights/default.yaml but don't render well in
+    # the explorer's flat key/value table UI. Nested-object sub-tables like
+    # modularity.chamber_blanket_lookup (which has both chamber_base AND
+    # blanket_penalty inner dicts) would emit one row per inner key with the
+    # inner dict JSON-stringified, which is unreadable. Edit weights.yaml
+    # directly to inspect their values.
+    EXCLUDED_SUB_TABLES = {
+        "chamber_blanket_lookup",
+    }
     for axis in AXES:
         block = full.get(axis) or {}
-        # Capture sub-tables (anything except axis_weight + embedding_weights)
+        # Capture sub-tables (anything except axis_weight + embedding_weights
+        # + the explicit exclusions above)
         sub_tables = {
             k: v for k, v in block.items()
             if k not in ("axis_weight", "embedding_weights")
+            and k not in EXCLUDED_SUB_TABLES
         }
         out["axes"].append({
             "name": axis,

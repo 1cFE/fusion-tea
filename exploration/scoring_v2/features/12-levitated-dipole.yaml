@@ -204,16 +204,16 @@ upper_cf_diagnostics:
   upper_cf_score: 3.5
 w_blanket:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/12-levitated-dipole/model_output.txt
   value: 0.1331977630910015
 w_coils:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/12-levitated-dipole/model_output.txt
   value: 0.2665281492451537
 w_vessel:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/12-levitated-dipole/model_output.txt
   value: 0.0034260957980592824

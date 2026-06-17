@@ -195,16 +195,16 @@ upper_cf_diagnostics:
   upper_cf_score: 4.0
 w_blanket:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/28-hts-tokamak-full-hts/model_output.txt
   value: 0.0431328687372738
 w_coils:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/28-hts-tokamak-full-hts/model_output.txt
   value: 0.13645358341219996
 w_vessel:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/28-hts-tokamak-full-hts/model_output.txt
   value: 0.04187100289655568

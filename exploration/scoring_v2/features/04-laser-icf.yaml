@@ -100,35 +100,35 @@ mif_method:
   provenance: taxonomy
   value: N/A
 modularity_diagnostics:
-  blanket_assumed: false
-  blanket_lookup_key: p-B11|*
-  blanket_modularity_rating: 5.0
-  capex_shares_used:
-    method: equal_weight_fallback_missing_capex
-    sum_2slot: 0.0
-    sum_3slot: 0.0811
-    w_blanket: 0.001
-    w_coils: 0.0
-    w_containment: null
-    w_energy_delivery: null
-    w_vessel: 0.0801
-  chamber_blanket_lookup_key: IFE|small
-  chamber_blanket_modularity_rating: 5.0
-  driver_lookup_key: IFE|DPSSL
-  driver_modularity_rating: 4.5
-  extracted_at: '2026-06-17'
-  magnet_driver_lookup_key: IFE|*|DPSSL Laser
-  magnet_driver_modularity_rating: 5.0
   min_viable_device_scale: 4.0
-  modularity_score: 4.4375
-  mvs_lookup_key: IFE|Laser
-  percent_mod: 4.75
-  percent_mod_path: two_slot
-  unit_count_estimate: 500
+  percent_mod: 4.6557
   unit_multiplicity: 5.0
-  v5_calibration_target: 3.63
+  modularity_score: 4.4139
+  percent_mod_path: two_slot
+  mvs_lookup_key: IFE|Laser
   vessel_lookup_key: IFE|Laser|*
+  magnet_driver_lookup_key: IFE|*|DPSSL Laser
+  blanket_lookup_key: p-B11|*
+  driver_lookup_key: IFE|DPSSL
+  chamber_blanket_lookup_key: IFE|small
   vessel_modularity_rating: 3.0
+  magnet_driver_modularity_rating: null
+  blanket_modularity_rating: 5.0
+  driver_modularity_rating: 4.5
+  chamber_blanket_modularity_rating: 5.0
+  capex_shares_used:
+    w_vessel: 0.0768
+    w_coils: 0.0
+    w_blanket: 0.001
+    sum_3slot: 0.0778
+    w_energy_delivery: 0.172
+    w_containment: 0.0778
+    sum_2slot: 0.2497
+    method: capex_weighted
+  unit_count_estimate: 500
+  blanket_assumed: false
+  v5_calibration_target: 3.63
+  extracted_at: '2026-06-17'
 non_standard_mechanism:
   confidence: high
   extracted_at: '2026-06-12'
@@ -198,16 +198,26 @@ upper_cf_diagnostics:
   upper_cf_score: 4.5
 w_blanket:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/04-laser-icf/model_output.txt
-  value: 0.0009952724558347848
+  value: 0.0009540846750149076
 w_coils:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/04-laser-icf/model_output.txt
   value: 0.0
+w_containment:
+  confidence: medium
+  extracted_at: '2026-06-17'
+  provenance: analyses/04-laser-icf/model_output.txt
+  value: 0.07775790101371496
+w_energy_delivery:
+  confidence: medium
+  extracted_at: '2026-06-17'
+  provenance: analyses/04-laser-icf/model_output.txt
+  value: 0.17197376267143707
 w_vessel:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/04-laser-icf/model_output.txt
-  value: 0.08011943269470019
+  value: 0.07680381633870006

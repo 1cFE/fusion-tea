@@ -265,9 +265,9 @@
     const PRESETS = {
       "Equal":            Object.fromEntries(AXES.map(a => [a, 1.0])),
       "Physics-first":    Object.fromEntries(AXES.map(a =>
-        [a, (a === "technical_feasibility" || a === "data_availability") ? 3.0 : 1.0])),
+        [a, (a === "technical_feasibility" || a === "data_availability") ? 3.0 : 0.0])),
       "Commercial-first": Object.fromEntries(AXES.map(a =>
-        [a, (a === "technical_feasibility" || a === "data_availability") ? 1.0 : 3.0])),
+        [a, (a === "technical_feasibility" || a === "data_availability") ? 1.5 : 3.0])),
     };
 
     // ── Onboarding walkthrough content ──────────────────────────────
@@ -550,7 +550,7 @@
           flags.push("⚠ Capex shares too sparse for the 3-slot blend — fell back to equal-weighting.");
         }
         if (method === "equal_weight_fallback_missing_capex") {
-          flags.push("⚠ No cost model for this concept — used equal-weight fallback.");
+          flags.push("⚠ No parseable capex data for this concept (no model_output.txt, or freeform/non-CAS format) — used equal-weight fallback.");
         }
         // 2-slot fallback (IFE/MIF): only fires when both slot shares are zero.
         if (method === "equal_weight_fallback_zero_capex") {
@@ -957,7 +957,9 @@
                 <div class="table-name">${tname}</div>
                 ${(Array.isArray(tbl)
                   ? tbl.map((v, i) => [`#${i}`, JSON.stringify(v)])
-                  : Object.entries(tbl)
+                  : (tbl !== null && typeof tbl === "object")
+                    ? Object.entries(tbl)
+                    : [["", String(tbl)]]   // scalar values (e.g. unit_count_floor_score: 5) render as single row
                 ).map(([k, v], i) => html`
                   <div class="row" key=${i}>
                     <span class="k">${k}</span>

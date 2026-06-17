@@ -100,35 +100,35 @@ mif_method:
   provenance: taxonomy
   value: N/A
 modularity_diagnostics:
-  blanket_assumed: false
-  blanket_lookup_key: p-B11|*
-  blanket_modularity_rating: 5.0
-  capex_shares_used:
-    method: equal_weight_fallback_sparse_capex
-    sum_2slot: 0.0
-    sum_3slot: 0.0388
-    w_blanket: 0.0013
-    w_coils: 0.0227
-    w_containment: null
-    w_energy_delivery: null
-    w_vessel: 0.0149
-  chamber_blanket_lookup_key: null
-  chamber_blanket_modularity_rating: null
-  driver_lookup_key: null
-  driver_modularity_rating: null
-  extracted_at: '2026-06-17'
-  magnet_driver_lookup_key: MFE|Resistive|*
-  magnet_driver_modularity_rating: 3.0
   min_viable_device_scale: 4.0
-  modularity_score: 3.75
-  mvs_lookup_key: MFE|FRC
   percent_mod: 4.0
-  percent_mod_path: three_slot
-  unit_count_estimate: 8
   unit_multiplicity: 3.0
-  v5_calibration_target: 2.5
+  modularity_score: 3.75
+  percent_mod_path: three_slot
+  mvs_lookup_key: MFE|FRC
   vessel_lookup_key: MFE|FRC|*
+  magnet_driver_lookup_key: MFE|Resistive|*
+  blanket_lookup_key: p-B11|*
+  driver_lookup_key: null
+  chamber_blanket_lookup_key: null
   vessel_modularity_rating: 4.0
+  magnet_driver_modularity_rating: 3.0
+  blanket_modularity_rating: 5.0
+  driver_modularity_rating: null
+  chamber_blanket_modularity_rating: null
+  capex_shares_used:
+    w_vessel: 0.0146
+    w_coils: 0.0223
+    w_blanket: 0.0013
+    sum_3slot: 0.0382
+    w_energy_delivery: null
+    w_containment: null
+    sum_2slot: 0.0
+    method: equal_weight_fallback_sparse_capex
+  unit_count_estimate: 8
+  blanket_assumed: false
+  v5_calibration_target: 2.5
+  extracted_at: '2026-06-17'
 non_standard_mechanism:
   confidence: high
   extracted_at: '2026-06-12'
@@ -196,16 +196,16 @@ upper_cf_diagnostics:
   upper_cf_score: 5.0
 w_blanket:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/18-p-b11-frc/model_output.txt
-  value: 0.0012965770366233146
+  value: 0.0012754851749376976
 w_coils:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/18-p-b11-frc/model_output.txt
-  value: 0.022680124471395516
+  value: 0.02231117913698711
 w_vessel:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/18-p-b11-frc/model_output.txt
-  value: 0.01486076757360568
+  value: 0.014619022389670534
