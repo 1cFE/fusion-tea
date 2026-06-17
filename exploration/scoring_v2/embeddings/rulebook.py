@@ -467,7 +467,105 @@ def _blanket_modularity_rating(
     return float(lookup[key])
 
 
-# ----- percent_mod (capex-weighted average of 3 subsystem ratings) ----------
+# ----- driver_modularity_rating (IFE/MIF only) ------------------------------
+
+
+@embedding(
+    "driver_modularity_rating",
+    inputs=["confinement_family", "driver_architecture"],
+)
+def _driver_modularity_rating(
+    confinement_family: str,
+    driver_architecture: str,
+    *, weights_yaml: dict,
+) -> float | None:
+    """Driver subsystem modularity rating for IFE/MIF concepts, 1-5.
+
+    Returns None for MFE / Non-Standard concepts — they use the legacy
+    magnet_driver_modularity_rating path. Returns None for missing or
+    "N/A" driver_architecture so MFE concepts with the default value
+    don't generate spurious ratings.
+
+    Lookup keys are "Family|driver_architecture" (e.g. "MIF|Capacitor bank",
+    "IFE|DPSSL"). Defined in weights/default.yaml under
+    `modularity.driver_modularity_lookup`.
+    """
+    if confinement_family not in ("IFE", "MIF"):
+        return None
+    if not driver_architecture or driver_architecture == "N/A":
+        return None
+    lookup = weights_yaml.get("modularity", {}).get("driver_modularity_lookup", {})
+    key = f"{confinement_family}|{driver_architecture}"
+    if key not in lookup:
+        return None
+    return float(lookup[key])
+
+
+# ----- chamber_blanket_modularity_rating (IFE/MIF only) ---------------------
+
+
+@embedding(
+    "chamber_blanket_modularity_rating",
+    inputs=["confinement_family", "chamber_size_class", "fuel", "blanket_config"],
+)
+def _chamber_blanket_modularity_rating(
+    confinement_family: str,
+    chamber_size_class: str,
+    fuel: str,
+    blanket_config: str,
+    *, weights_yaml: dict,
+) -> float | None:
+    """Combined chamber + blanket modularity rating for IFE/MIF, 1-5.
+
+    Rates the chamber + first wall + blanket as a single shippable
+    physical assembly. Computed as:
+
+        rating = clip(chamber_base[Family|size_class]
+                      + blanket_penalty[blanket_config],
+                      1.0, 5.0)
+
+    The penalty captures blanket integration complexity only — technology
+    novelty does not factor in here (that lives on the TF axis).
+
+    Aneutronic fuels (p-B11, D-He3, D-D) short-circuit blanket_config to
+    "None" — they don't require a breeding blanket regardless of what
+    blanket_config says.
+
+    Returns None for MFE / Non-Standard concepts (they use the legacy
+    vessel_modularity_rating + blanket_modularity_rating path) or for
+    missing / "N/A" chamber_size_class.
+    """
+    if confinement_family not in ("IFE", "MIF"):
+        return None
+    if not chamber_size_class or chamber_size_class == "N/A":
+        return None
+    lookup = weights_yaml.get("modularity", {}).get("chamber_blanket_lookup", {})
+    base_table = lookup.get("chamber_base", {})
+    penalty_table = lookup.get("blanket_penalty", {})
+
+    base_key = f"{confinement_family}|{chamber_size_class}"
+    if base_key not in base_table:
+        return None
+    chamber_base = float(base_table[base_key])
+
+    # Aneutronic fuels: no breeding blanket needed regardless of declared config.
+    if fuel in ("p-B11", "D-He3", "D-D"):
+        penalty_key = "None"
+    elif blanket_config in ("N/A", "N/A (no tritium)", "N/A (non-power)"):
+        penalty_key = "None"
+    else:
+        penalty_key = blanket_config
+
+    if penalty_key not in penalty_table:
+        # Unknown blanket_config — default to TBD penalty
+        penalty_key = "TBD"
+    blanket_penalty = float(penalty_table.get(penalty_key, 0.0))
+
+    rating = chamber_base + blanket_penalty
+    return max(1.0, min(5.0, rating))
+
+
+# ----- percent_mod (family-dispatched: 3-slot for MFE, 2-slot for IFE/MIF) --
 
 
 _PERCENT_MOD_SPARSE_THRESHOLD = 0.30
@@ -476,36 +574,71 @@ _PERCENT_MOD_SPARSE_THRESHOLD = 0.30
 @embedding(
     "percent_mod",
     inputs=[
+        # MFE 3-slot inputs (legacy path)
         "vessel_modularity_rating", "magnet_driver_modularity_rating",
         "blanket_modularity_rating", "w_vessel", "w_coils", "w_blanket",
+        # IFE/MIF 2-slot inputs (new path)
+        "confinement_family",
+        "driver_modularity_rating", "chamber_blanket_modularity_rating",
+        "w_energy_delivery", "w_containment",
     ],
 )
 def _percent_mod(
-    vessel_modularity_rating: float,
-    magnet_driver_modularity_rating: float,
-    blanket_modularity_rating: float,
+    vessel_modularity_rating: float | None,
+    magnet_driver_modularity_rating: float | None,
+    blanket_modularity_rating: float | None,
+    w_vessel: float | None,
+    w_coils: float | None,
+    w_blanket: float | None,
+    confinement_family: str | None,
+    driver_modularity_rating: float | None,
+    chamber_blanket_modularity_rating: float | None,
+    w_energy_delivery: float | None,
+    w_containment: float | None,
+) -> float | None:
+    """Family-dispatched percent_mod.
+
+    MFE / Non-Standard: legacy 3-slot capex-weighted blend of
+      (vessel, magnet_driver, blanket) ratings against (w_vessel, w_coils,
+      w_blanket) shares, with the 30% sparse-capex fallback to equal-weighting.
+
+    IFE / MIF: 2-slot capex-weighted blend of
+      (driver, chamber_blanket) ratings against (w_energy_delivery,
+      w_containment) shares. NO sparse-capex threshold — within-two
+      normalization is well-behaved at any share level. Only fallback
+      to equal-weighting is the genuine missing-data case (no model_output).
+    """
+    if confinement_family in ("IFE", "MIF"):
+        return _percent_mod_two_slot(
+            driver_modularity_rating, chamber_blanket_modularity_rating,
+            w_energy_delivery, w_containment,
+        )
+    return _percent_mod_three_slot(
+        vessel_modularity_rating, magnet_driver_modularity_rating,
+        blanket_modularity_rating, w_vessel, w_coils, w_blanket,
+    )
+
+
+def _percent_mod_three_slot(
+    vessel_modularity_rating: float | None,
+    magnet_driver_modularity_rating: float | None,
+    blanket_modularity_rating: float | None,
     w_vessel: float | None,
     w_coils: float | None,
     w_blanket: float | None,
 ) -> float | None:
-    """Percent modularization: capex-weighted average of three subsystem ratings.
+    """Legacy MFE 3-slot percent_mod. Behavior unchanged from pre-2026-06-17.
 
     Renormalizes (w_vessel, w_coils, w_blanket) to sum to 1.0 within this
     embedding (the source shares sum to 1.0 across all 7 subsystems; we
     drop the other 4 and rescale within the retained 3).
 
-    Falls back to equal weighting (1/3 each) in any of three cases:
+    Falls back to equal weighting (1/3 each) when:
       1. The concept lacks a model_output.txt (any w_* is None).
-      2. The sum of the three retained shares is non-positive (parser
-         classified zero dollars to all three).
+      2. The sum of the three retained shares is non-positive.
       3. The sum of the three retained shares is below
-         `_PERCENT_MOD_SPARSE_THRESHOLD` (0.30) of plant cost — the
-         signal is too sparse to support a confident cost-weighted blend.
-         This is the v5-calibration "equal-weight backstop": prevents one
-         subsystem with a tiny non-zero share from dominating the score.
-
-    Returns None only if any of the three subsystem ratings is None
-    (incomplete lookup coverage).
+         `_PERCENT_MOD_SPARSE_THRESHOLD` (0.30) of plant cost — prevents
+         one subsystem with a tiny non-zero share from dominating.
     """
     ratings = (vessel_modularity_rating, magnet_driver_modularity_rating,
                blanket_modularity_rating)
@@ -524,6 +657,50 @@ def _percent_mod(
         (float(w_vessel)  / total) * vessel_modularity_rating
         + (float(w_coils)   / total) * magnet_driver_modularity_rating
         + (float(w_blanket) / total) * blanket_modularity_rating
+    )
+
+
+def _percent_mod_two_slot(
+    driver_modularity_rating: float | None,
+    chamber_blanket_modularity_rating: float | None,
+    w_energy_delivery: float | None,
+    w_containment: float | None,
+) -> float | None:
+    """IFE/MIF 2-slot percent_mod. Added 2026-06-17.
+
+    Capex-weighted blend of two slot ratings:
+      slot A — energy_delivery (driver hardware)
+      slot B — containment (chamber + first wall + blanket)
+
+    NO sparse-capex threshold. Within-two normalization is well-behaved at
+    any share level — the "tiny share dominates" pathology that motivated
+    the 3-slot threshold does not arise in 2-slot. When slot shares are
+    small in absolute terms, the rating still correctly reflects the
+    relative split between the two slots within the modularity-relevant
+    capex bucket.
+
+    Falls back to equal weighting (mean of two ratings) only when:
+      1. The concept lacks a model_output.txt (any w_* is None).
+      2. Both slot weights sum to a non-positive value (degenerate case).
+
+    Returns None when any rating lookup failed (missing driver_architecture
+    or chamber_size_class).
+    """
+    ratings = (driver_modularity_rating, chamber_blanket_modularity_rating)
+    if any(r is None for r in ratings):
+        return None
+
+    weights = (w_energy_delivery, w_containment)
+    if any(w is None for w in weights):
+        return sum(ratings) / 2.0
+
+    total = sum(float(w) for w in weights)
+    if total <= 0:
+        return sum(ratings) / 2.0
+
+    return (
+        (float(w_energy_delivery) / total) * driver_modularity_rating
+        + (float(w_containment)    / total) * chamber_blanket_modularity_rating
     )
 
 

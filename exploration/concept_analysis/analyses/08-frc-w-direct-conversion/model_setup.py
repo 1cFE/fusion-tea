@@ -57,27 +57,31 @@ model = CostModel(concept=ConfinementConcept.PULSED_FRC, fuel=Fuel.DHE3)
 #     when no override references it).
 generic = generic_reference(model, spec, P_native)
 
-# 3. Override registry — six fields per entry, transcribed from Section 5b.
+# 3. Override registry.
+#
+# 2026-06-17: stripped four overrides that were fighting the PULSED_FRC library
+# design rather than augmenting it:
+#   - C220103 (resistive coils @ 4% of CAS22)
+#   - C220104 (capacitor bank @ $25M absolute)
+#   - C220107 ($0 to avoid double-counting after moving cap bank to C220104)
+#   - C220109 (DEC power electronics @ 8% of CAS22 absolute)
+#
+# PULSED_FRC was authored specifically for Helion (cas22.py:71 sets n_coils=0;
+# cas22.py:545-547 routes the capacitor bank through C220107 at $/J_stored;
+# cas22.py:601-608 computes C220109 INDUCTIVE_DEC as a markup on C220107). The
+# stripped overrides moved the cap bank to C220104 at a $25M absolute value and
+# zeroed C220107 to avoid double-counting — but the "double-counting" was created
+# by the move itself. They also broke the C220109 ↔ C220107 physical coupling
+# the library was designed to model. Net effect was an understated cap-bank cost
+# at all scales and an LCOE projection systematically too low at 1 GWe.
+#
+# The two remaining overrides are architectural facts, not cost re-routing:
+#   - C220102 (D-He3 lower neutron flux → lighter shielding)
+#   - CAS23 (direct inductive conversion, no steam cycle)
 overrides = [
-    {"account": "C220103", "value": 0.04 * generic.costs.cas22, "enabled": True,
-     "cost_basis": "noak", "provenance": "derived", "source": "helion-website-technology.md §Magnets; contrary-research-helion.md §Magnet Materials",
-     "rationale": "Helion uses pulsed resistive electromagnets ('regular aluminum magnets') rather than HTS-REBCO superconducting coils. The library default for C220103 assumes HTS magnet costs (~$50-150M for tokamak-scale coils). Resistive coils are 1-2 orders of magnitude cheaper per unit field strength-volume (aluminum and copper conductor, no cryogenics, no REBCO tape), but require continuous cooling and have I²R losses. At 40 T peak field and ~50 MJ stored energy, rough estimate: 50-100 tonnes aluminum/copper conductor at $2,500-9,000/tonne = $250K-$1M material; winding, insulation, structural support, and cooling systems add 10-50× material cost → $5-20M for coil subsystem at FOAK. This is ~10-20% of typical HTS coil costs for similar stored energy. To achieve absolute cost of $5-10M (midpoint $7.5M) at native scale where generic CAS22 ≈ $188M, override multiplier = $7.5M / $188M ≈ 0.04 (4% of generic CAS22 subtotal). This yields resistive magnet cost consistent with bottom-up material and fabrication estimates."},
-
     {"account": "C220102", "value": 0.2, "enabled": True,
      "cost_basis": "noak", "provenance": "derived", "source": "analysis.md §4 (Archetype Fit), lines 230-237; analogue cost proxies for borated concrete/polyethylene vs. D-T steel/lithium blankets",
      "rationale": "Helion's D-He3 fuel produces ~20× lower neutron flux than D-T (neutrons from side D-D reactions only, not primary fusion channel). The library default for C220102 assumes D-T tokamak radiation shielding: thick steel/lithium blankets and massive biological shields totaling $10-50M for 500 MWe, scaling to ~$2-10M for 50 MWe. Helion's lower neutron flux permits lighter shielding: borated polyethylene panels or borated concrete rather than thick steel/lithium blankets. Analysis estimates ~$50-100K for borated polyethylene/concrete shielding (industrial shielding panel costs at $50-200/m², ~500-1000 m² for vessel surface area → $25-200K material + installation). This is ~1-2% of D-T shielding costs. However, the library default likely includes biological shields, access labyrinths, and other fixed structures that scale with building volume, not neutron flux. Conservative override: 20% of library default (~$0.2M at 50 MWe scale) to account for lighter material but similar installation complexity. This brings C220102 from ~$1-2M (library default) to ~$0.2M."},
-
-    {"account": "C220104", "value": 25.0, "enabled": True,
-     "cost_basis": "noak", "provenance": "derived", "source": "helion-website-technology.md §Capacitor Bank; [industry capacitor cost proxies]",
-     "rationale": "Helion's capacitor bank ('>50 MJ total energy storage,' 'thousands of high-voltage pulsed capacitors') serves as the primary pulsed driver for FRC formation, acceleration, and compression. The library default for C220104 is laser driver or accelerator costs ($/J of driver energy), which are typically $100-500/J for ICF lasers or heavy-ion beamlines. Capacitors cost ~$0.05-$0.50/J at industrial volume (pulsed power applications). At 50 MJ, cost is $2.5M-$25M depending on voltage, ripple current, and cycle life. Adding IGBTs for switching (~$0.10-$0.50/W, 50 MW → $5-25M) gives combined capacitor-IGBT cost of $10-50M. Using midpoint $25M for FOAK. This is $/J basis: $25M / 50 MJ = $500/J, but this is total system cost, not driver-energy basis. Library expects $/J of *driver energy delivered to plasma*, not stored energy. If capacitor-to-plasma efficiency is 80%, then 50 MJ stored → 40 MJ delivered → $25M / 40 MJ = $625/J delivered. Using $25M as absolute override rather than $/J, since the library's $/J metric is laser/accelerator-specific and doesn't map cleanly to capacitor banks. Override: $25M capital cost for capacitor-IGBT system."},
-
-    {"account": "C220107", "value": 0.0, "enabled": True,
-     "cost_basis": "noak", "provenance": "derived", "source": "helion-website-technology.md §Capacitor Bank (capacitors already costed in C220104)",
-     "rationale": "C220107 is 'power supplies (steady-state magnet supplies / switchgear) or pulsed-power capacitor bank ($/J stored)'. For Helion, the capacitor bank is the pulsed power source and is already costed in C220104 (primary driver). The resistive magnets are powered by the same capacitor bank (capacitors discharge through coils to generate magnetic field for compression). There is no separate 'magnet power supply' distinct from the driver capacitor bank. To avoid double-counting, set C220107 = 0. This is an analyst-derived accounting decision based on the dual-function of the capacitor bank (driver + magnet power supply), not a company-stated cost figure. The source citation supports the technical rationale (capacitor bank serves both functions), but the zero value is analyst-determined to prevent double-counting within the model's cost structure."},
-
-    {"account": "C220109", "value": 0.08 * generic.costs.cas22, "enabled": True,
-     "cost_basis": "noak", "provenance": "derived", "source": "helion-website-technology.md §Energy Capture; Helion 2021 press release (95% round-trip efficiency); [analogue: electrostatic DEC costs for mirrors]",
-     "rationale": "Helion uses direct inductive energy conversion: expanding magnetized plasma induces current in surrounding coils, converting charged particle energy to electricity without a thermal cycle. The library default for C220109 assumes electrostatic direct energy converters (bias grids, collector plates) used in magnetic mirror concepts. Helion's inductive approach is fundamentally different: the same coils used for compression also serve as energy recovery coils (dual-function), and the conversion mechanism is Faraday induction, not electrostatic potential. Capital cost for inductive DEC is primarily the power electronics (IGBTs, transformers, grid interface) to convert pulsed AC (from coil flux change) to grid-quality DC or 60 Hz AC. Estimated at $10-20M for 50 MWe (power electronics are ~$0.20-$0.40/W for utility-scale converters, midpoint $15M). To achieve absolute cost of $10-20M (midpoint $15M) at native scale where generic CAS22 ≈ $188M, override multiplier = $15M / $188M ≈ 0.08 (8% of generic CAS22 subtotal). The coils themselves are already costed in C220103; this override captures only the power electronics and grid interface for energy recovery."},
 
     {"account": "CAS23", "value": 0.0, "enabled": True,
      "cost_basis": "noak", "provenance": "direct", "source": "helion-website-technology.md §Energy Capture; contrary-research-helion.md §Energy Recovery",

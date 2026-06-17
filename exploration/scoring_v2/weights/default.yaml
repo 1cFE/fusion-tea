@@ -109,14 +109,26 @@ modularity:
   # Vessel subsystem modularity. Keyed by Confinement Family | topology/method
   # | qualifier. Tokamak shape disambiguation; MIF pneumatic gets a fuel-level
   # split (D-T harder than D-D).
+  #
+  # 2026-06-17 retune (MFE/Non-Standard rebalancing):
+  #   - Compact/spherical tokamaks: 4 → 3 (integrated divertor/blanket/cryo
+  #     limits chamber modularity below the v5 anchor)
+  #   - FRC: 3 → 4 (Helion-stacked small cylinders are more modular than
+  #     the prior anchor implied)
+  #   - Mirror: 3 → 4 (open axisymmetric chambers; WHAM/Hammir class is
+  #     small + modular)
+  #   - Z-pinch: 3 → 4 (key is unreachable per _vessel_key but aligning
+  #     with Mirror for consistency)
+  #   - Electrostatic / Plasma focus: 3 → 5 (bench/room-scale devices;
+  #     Avalanche fits in a shipping container, DPF is bench-scale)
   vessel_lookup:
-    "MFE|Tokamak|compact":                4
-    "MFE|Tokamak|spherical":              4
+    "MFE|Tokamak|compact":                3    # was 4 — integrated divertor/blanket/cryo
+    "MFE|Tokamak|spherical":              3    # was 4 — same integrated-subsystems reality
     "MFE|Tokamak|non-compact":            2
     "MFE|Stellarator|*":                  2
-    "MFE|FRC|*":                          3
-    "MFE|Mirror|*":                       3
-    "MFE|Z-pinch|*":                      3
+    "MFE|FRC|*":                          4    # was 3 — Helion-stacked small cylinders
+    "MFE|Mirror|*":                       4    # was 3 — open axisymmetric, small modular pursuers (WHAM/Hammir)
+    "MFE|Z-pinch|*":                      4    # was 3 — unreachable key per _vessel_key; aligning with Mirror
     "MFE|Dipole|*":                       3
     "MFE|Other|*":                        3
 
@@ -130,8 +142,8 @@ modularity:
     "IFE|Projectile|*":                   3
     "IFE|Acoustic|*":                     3
 
-    "Non-Standard|Electrostatic|*":       3
-    "Non-Standard|Plasma focus|*":        3
+    "Non-Standard|Electrostatic|*":       5    # was 3 — bench/room-scale (Avalanche shipping-container scale)
+    "Non-Standard|Plasma focus|*":        5    # was 3 — bench-scale DPF
     "Non-Standard|Muon-catalyzed|*":      3
     "Non-Standard|Particle accelerator|*": 3
 
@@ -188,6 +200,55 @@ modularity:
     "D-T|N/A":                            5
     "D-T|N/A (no tritium)":               5
     "D-T|N/A (non-power)":                4
+
+  # ─── IFE / MIF 2-slot lookups (new 2026-06-17) ───────────────────────────
+  #
+  # MFE keeps the legacy vessel + magnet_driver + blanket 3-slot path above.
+  # IFE and MIF concepts dispatch to a 2-slot blend of (driver, chamber+blanket)
+  # implemented in _percent_mod_ife_mif. No sparse-capex threshold is applied
+  # for the 2-slot path — within-two normalization is well-behaved at any
+  # share level (no "tiny share dominates" pathology).
+  #
+  # The driver_modularity rating captures factory-buildability of one driver
+  # element (one beamline, one LTD cell, one cap-bank rack, one piston module).
+  # Driver SIZE shows up downstream via driver_count → unit_multiplicity, not
+  # here.
+
+  driver_modularity_lookup:
+    # IFE
+    "IFE|DPSSL":               4.5    # diode-pumped solid-state; modular beamlines
+    "IFE|KrF":                 4.0    # excimer; per-amplifier modules but gas-handling integration
+    "IFE|Nd:Glass":            3.5    # flashlamp-pumped; large monolithic amplifier slabs
+    "IFE|Ultrashort-pulse":    3.5    # femto/picosecond; specialty optics
+    "IFE|Fiber laser CBC":     5.0    # commodity telecom-grade fiber amplifier modules (Blue Laser)
+    "IFE|Heavy-ion LINAC":     2.0    # LINAC + final beamlines; precision alignment
+    "IFE|Projectile gas gun":  2.5    # integrated barrel/breech
+    "IFE|Acoustic transducer": 1.0    # exotic, no manufacturing precedent
+    # MIF
+    "MIF|Capacitor bank":      5.0    # cell stacks, factory-built (Helion)
+    "MIF|LTD pulsed power":    4.5    # LTD cells modular; triggering integration
+    "MIF|Pneumatic piston":    4.0    # commodity mechanical modules
+    "MIF|Plasma gun":          3.0    # modular guns but precise merge geometry
+    "MIF|Railgun":             2.0    # single integrated rails
+
+  # Combined chamber + blanket modularity rating, computed as:
+  #   rating = clip(chamber_base + blanket_penalty, 1.0, 5.0)
+  # Decomposed so values are easy to scrub independently.
+  chamber_blanket_lookup:
+    chamber_base:
+      "IFE|small":     5.0    # < 5 m, generic geometry
+      "IFE|medium":    4.0    # 5–10 m, multiple beamline penetrations
+      "IFE|large":     2.5    # > 10 m, custom port pattern (covers NIF-class)
+      "MIF|compact":   5.0    # Helion linear FRC chamber
+      "MIF|medium":    4.0    # GF MTF, NearStar Pb-pool chamber
+      "MIF|large":     3.0    # MagLIF-class integrated pulsed-power chamber
+    blanket_penalty:
+      "None":          0.0    # aneutronic; no blanket required
+      "Liquid metal":  0.0    # flowing fluid integrated as first wall + breeder
+      "Molten salt":   0.0    # flowing fluid integrated as first wall + breeder
+      "Solid breeder": -1.0   # per-port cassette assembly + neutron multiplier integration
+      "Other/hybrid":  -0.5
+      "TBD":           -0.5   # framework default leans liquid-metal
 
 # ─────────────────────────────────────────────────────────────────────────
 # Placeholders for the six remaining axes (P3-P5 will populate).

@@ -2,202 +2,220 @@ _meta:
   concept_id: 17a-laser-icf-hybrid-drive
   name: Laser ICF - Hybrid Direct Drive (D-T)
 blanket_config:
-  value: Molten salt
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: Molten salt
+chamber_size_class:
+  confidence: high
+  extracted_at: '2026-06-17'
+  provenance: manual (modularity 2-slot, conversation 2026-06-17)
+  value: medium
 confinement_concept:
-  value: Laser ICF (hybrid drive)
-  provenance: derived
   confidence: high
   extracted_at: '2026-06-13'
+  provenance: derived
+  value: Laser ICF (hybrid drive)
 confinement_family:
-  value: IFE
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: IFE
 customization_diagnostics:
-  sub_factor_a:
-    feature: energy_capture
-    value: Thermal (unspecified)
-    classification: thermal
-    score: 2
-  sub_factor_b:
-    feature: fuel
-    value: D-T
-    score: 1
-  raw_average: 1.5
   customization_score: 1.67
   extracted_at: '2026-05-20'
+  raw_average: 1.5
+  sub_factor_a:
+    classification: thermal
+    feature: energy_capture
+    score: 2
+    value: Thermal (unspecified)
+  sub_factor_b:
+    feature: fuel
+    score: 1
+    value: D-T
 data_availability_diagnostics:
-  source_csv: exploration/concept_analysis/tables/design_point.csv
-  in_csv: true
+  data_availability_score: 3.0
   design_name: Xcimer Athena pilot power plant (Galloway & Valys, XEC whitepaper Feb
     2026)
+  extracted_at: '2026-06-12'
   grounding_confidence: medium
+  in_csv: true
   primary_sources_count: 2
+  source_csv: exploration/concept_analysis/tables/design_point.csv
   verified_by: null
-  data_availability_score: 3.0
-  extracted_at: '2026-06-12'
 design_point_grounding_confidence:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: exploration/concept_analysis/tables/design_point.csv
   value: medium
-  provenance: exploration/concept_analysis/tables/design_point.csv
-  confidence: high
-  extracted_at: '2026-06-12'
 design_point_primary_sources_count:
-  value: 2
+  confidence: high
+  extracted_at: '2026-06-12'
   provenance: exploration/concept_analysis/tables/design_point.csv
+  value: 2
+driver_architecture:
   confidence: high
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
+  provenance: manual (modularity 2-slot, conversation 2026-06-17)
+  value: KrF
 driver_technology:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Excimer laser (KrF, 248 nm, 10+ MJ, ASPEN architecture)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 energy_capture:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Thermal (unspecified)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 fuel:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: D-T
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 ife_driver:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Laser
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 laser_approach:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Hybrid drive
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 magnet_type:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 mfe_topology:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 mif_method:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 modularity_diagnostics:
   min_viable_device_scale: 3.0
-  percent_mod: 3.6667
+  percent_mod: 4.0
   unit_multiplicity: 2.0
-  modularity_score: 2.9167
+  modularity_score: 3.0
+  percent_mod_path: two_slot
   mvs_lookup_key: IFE|Laser (Xcimer-class)
   vessel_lookup_key: IFE|Laser|*
   magnet_driver_lookup_key: IFE|*|Gas Laser
   blanket_lookup_key: D-T|Molten salt
+  driver_lookup_key: IFE|KrF
+  chamber_blanket_lookup_key: IFE|medium
   vessel_modularity_rating: 3.0
   magnet_driver_modularity_rating: 3.0
   blanket_modularity_rating: 5.0
+  driver_modularity_rating: 4.0
+  chamber_blanket_modularity_rating: 4.0
   capex_shares_used:
     w_vessel: 0.0396
     w_coils: 0.0
     w_blanket: 0.0526
-    sum: 0.0922
-    method: equal_weight_fallback_sparse_capex
+    sum_3slot: 0.0922
+    w_energy_delivery: null
+    w_containment: null
+    sum_2slot: 0.0
+    method: equal_weight_fallback_missing_capex
   unit_count_estimate: 4
   blanket_assumed: false
-  v5_calibration_target: 2.86
-  extracted_at: '2026-06-13'
+  v5_calibration_target: 1.27
+  extracted_at: '2026-06-17'
 non_standard_mechanism:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: N/A
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 operation_mode:
-  value: Pulsed
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: Pulsed
 plant_complexity_diagnostics:
+  blanket_assumed: false
+  extracted_at: '2026-05-20'
+  plant_complexity_score: 2.5
+  subsystem_complexity_weight: 2.5
   subsystems_triggered:
     remote_maintenance: 1.0
     target_factory_low: 0.5
     tritium_plant: 1.0
-  subsystem_complexity_weight: 2.5
-  plant_complexity_score: 2.5
-  blanket_assumed: false
-  extracted_at: '2026-05-20'
 primary_heating:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Laser (direct drive)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 repetition_rate:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Sub-Hz
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 stellarator_type:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 supply_chain_diagnostics:
+  blanket_assumed: false
+  bottleneck_weight: 4.0
   bottlenecks_triggered:
     beryllium: 1.0
     flibe: 0.5
     kdp: 0.5
     lithium6: 1.0
     tritium: 1.0
-  bottleneck_weight: 4.0
-  supply_chain_score: 1.0
-  blanket_assumed: false
   extracted_at: '2026-05-20'
+  supply_chain_score: 1.0
 technical_feasibility_diagnostics:
-  required_triple_product: 3.0e+21
-  achieved_triple_product: 5.0e+21
   achieved_lookup_key: IFE|Laser ICF (hybrid drive)
-  triple_product_gap: 0.6
-  log10_gap: -0.222
+  achieved_triple_product: 5.0e+21
   base_score_from_gap: 5.0
-  laser_approach_modifier: -1.25
-  technical_feasibility_score: 3.75
-  no_data_floor: false
   extracted_at: '2026-06-17'
+  laser_approach_modifier: -1.25
+  log10_gap: -0.222
+  no_data_floor: false
+  required_triple_product: 3.0e+21
+  technical_feasibility_score: 3.75
+  triple_product_gap: 0.6
 tokamak_shape:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 unit_count_estimate:
-  value: 4
-  provenance: modularity_implementation_spec.md Change E
   confidence: high
   extracted_at: '2026-05-20'
+  provenance: modularity_implementation_spec.md Change E
+  value: 4
 upper_cf_diagnostics:
+  blanket_assumed: false
+  extracted_at: '2026-05-20'
+  operational_penalty_weight: 2.0
   penalties_triggered:
     neutronic_fuel: 1.0
     non_renewable_blanket: 0.5
     pulsed_operation: 0.5
-  operational_penalty_weight: 2.0
   upper_cf_score: 3.0
-  blanket_assumed: false
-  extracted_at: '2026-05-20'
 w_blanket:
+  confidence: medium
+  extracted_at: '2026-06-12'
+  provenance: analyses/17a-laser-icf-hybrid-drive/model_output.txt
   value: 0.0525726053117713
-  provenance: analyses/17a-laser-icf-hybrid-drive/model_output.txt
-  confidence: medium
-  extracted_at: '2026-06-12'
 w_coils:
+  confidence: medium
+  extracted_at: '2026-06-12'
+  provenance: analyses/17a-laser-icf-hybrid-drive/model_output.txt
   value: 0.0
-  provenance: analyses/17a-laser-icf-hybrid-drive/model_output.txt
-  confidence: medium
-  extracted_at: '2026-06-12'
 w_vessel:
-  value: 0.03961115653674935
-  provenance: analyses/17a-laser-icf-hybrid-drive/model_output.txt
   confidence: medium
   extracted_at: '2026-06-12'
+  provenance: analyses/17a-laser-icf-hybrid-drive/model_output.txt
+  value: 0.03961115653674935

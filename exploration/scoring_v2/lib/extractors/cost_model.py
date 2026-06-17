@@ -1,27 +1,52 @@
 """Cost-model extractor.
 
 Parses exploration/concept_analysis/analyses/{concept_id}/model_output.txt and
-emits the three `w_*` capex weight-share features (w_vessel, w_coils,
-w_blanket) consumed by the modularity v5 `_percent_mod` embedding.
+emits capex weight-share features for the modularity axis:
 
-Behavior per design (.project/active/scoring-v2-component-modularity-slice/design.md):
+  Legacy 3-slot (MFE path):
+    w_vessel, w_coils, w_blanket
+    consumed by _percent_mod_mfe via the existing vessel/magnet_driver/blanket
+    lookups.
+
+  New 2-slot (IFE/MIF path, added 2026-06-17):
+    w_energy_delivery, w_containment
+    consumed by _percent_mod_ife_mif via driver_modularity_lookup and
+    chamber_blanket_lookup. Account groupings are family-specific:
+      IFE energy_delivery: C220104 + C220107 + C220103 (laser + pulsed PS + ancillary coils)
+      MIF energy_delivery: C220103 + C220104 + C220107 (compression coils + driver hw + pulsed PS)
+      IFE/MIF containment: C220105 + C220106 + C220108 + C220101 + CAS27
+    The new path drops the sparse-capex threshold — 2-slot within-two
+    normalization is well-behaved at any share level.
+
+Behavior:
 - Sum `$` per subsystem bucket using the static CAS_TO_SUBSYSTEM dict below
   (mapping kept across all 7 subsystems so the dollars are correctly
   classified before normalization).
 - Each `w_*` is the bucket's share of the 7-subsystem total covered $ (so
-  the source shares sum to 1.0 across all 7; the v5 percent_mod embedding
-  renormalizes the 3 retained shares to sum to 1.0 within itself).
+  the source shares sum to 1.0 across all 7; the percent_mod embedding
+  renormalizes the retained shares to sum to 1.0 within itself).
+- For the family-specific w_energy_delivery and w_containment features,
+  the extractor reads confinement_family from features/{cid}.yaml to
+  pick the correct CAS account grouping.
 - Codes seen in the file but absent from the dict are ignored (financial,
-  indirect, O&M, fuel, IDC, contingency — see the design note).
+  indirect, O&M, fuel, IDC, contingency).
 - Codes in the dict not seen in the file contribute 0 to that bucket.
 - If `model_output.txt` does not exist for the concept, the extractor
   returns no value (raises KeyError). No fallback.
 
-P2 of the scoring-v3 rewrite trimmed the EMITTED_SUBSYSTEMS tuple from
-seven to three. The internal SUBSYSTEMS tuple stays at seven so the
-parser correctly aggregates dollars classified to the retired
-bop/fuel_cycle/aux/civil subsystems before normalization. Only the
-three retained subsystems are visible to the bulk extractor pipeline.
+KNOWN LIMITATION — per-module vs plant-wide mixed basis:
+For concepts where the cost model uses n_mod > 1 (Helion, GF MTF, NearStar
+MTIF, possibly others), the model_output.txt sub-account values are emitted
+PER MODULE for the CAS22 sub-accounts (C220101-C220110, C220112) while the
+top-level CAS lines (CAS10, CAS21, ...) are plant-wide totals. The parser
+reads each dollar value without rescaling per-module subs to fleet aggregate,
+so capex SHARES for multi-module concepts mix per-module numerators with
+plant-wide denominators. Under the 2-slot path this no longer affects the
+percent_mod RATING (within-two normalization is invariant to the mismatch
+since both slots are per-module sub-accounts), but the shares as DISPLAYED
+in the diagnostic block remain on the mixed basis. File a separate issue
+to fix the parser to derive n_mod_eff from C220000 and scale per-module
+accounts before computing shares.
 
 The dispatcher signature `extract(cid, fname, schema_entry) -> (value, prov, conf)`
 is provided so the bulk pipeline can call this extractor like any other.
@@ -39,11 +64,15 @@ ANALYSES_DIR = ROOT / "exploration" / "concept_analysis" / "analyses"
 # below maps onto, so the parser can classify every $ in the file.
 SUBSYSTEMS = ("vessel", "coils", "blanket", "bop", "fuel_cycle", "aux", "civil")
 
-# Externally-exposed subsystem set: the modularity v5 percent_mod embedding
-# only consumes these three. P2 of the scoring-v3 rewrite retired the
-# other four (their shares dilute the modularity signal per v5).
+# Externally-exposed subsystem set: the modularity percent_mod embedding
+# consumes these. Legacy 3-slot (MFE path) uses vessel/coils/blanket.
+# 2-slot (IFE/MIF path) uses energy_delivery/containment.
 EMITTED_SUBSYSTEMS = ("vessel", "coils", "blanket")
+EMITTED_2SLOT = ("energy_delivery", "containment")
 
+# CAS account → subsystem bucket for the LEGACY 3-slot MFE path. The seven
+# buckets cover every classified CAS22 sub-account so dollars are correctly
+# normalized within the plant total.
 CAS_TO_SUBSYSTEM: dict[str, str] = {
     # vessel
     "C220105": "vessel", "C220106": "vessel", "C220108": "vessel",
@@ -63,6 +92,27 @@ CAS_TO_SUBSYSTEM: dict[str, str] = {
     # civil / shielding
     "C220102": "civil", "C220111": "civil",
     "CAS10":   "civil", "CAS21":   "civil",
+}
+
+# Family-specific account groupings for the 2-slot path. Both slots' shares
+# are computed against the same plant-wide classified total (i.e., same
+# denominator as the 3-slot path) so cross-family magnitudes are comparable.
+# - IFE energy_delivery: laser/driver lives in C220104; pulsed PS + ancillary
+#   coils in C220107/C220103 (small for most concepts).
+# - MIF energy_delivery: compression coils (C220103) + driver hardware
+#   (C220104) + pulsed PS (C220107) — all three contribute meaningfully
+#   depending on the MIF flavor.
+# - Containment: chamber + first wall + blanket. Same set across families
+#   (the chamber and blanket are physically intertwined).
+TWOSLOT_ACCOUNTS: dict[str, dict[str, list[str]]] = {
+    "IFE": {
+        "energy_delivery": ["C220104", "C220107", "C220103"],
+        "containment":     ["C220105", "C220106", "C220108", "C220101", "CAS27"],
+    },
+    "MIF": {
+        "energy_delivery": ["C220103", "C220104", "C220107"],
+        "containment":     ["C220105", "C220106", "C220108", "C220101", "CAS27"],
+    },
 }
 
 # Codes ignored even when present (financial, indirect, O&M, fuel, IDC, contingency,
@@ -140,7 +190,7 @@ def compute_weights(concept_id: str) -> dict[str, float] | None:
     p = _model_output_path(concept_id)
     if not p.exists():
         return None
-    rows = _parse_lines(p.read_text())
+    rows = _parse_lines(p.read_text(encoding="utf-8", errors="replace"))
     buckets: dict[str, float] = {s: 0.0 for s in SUBSYSTEMS}
     for code, dollars in rows.items():
         if code in _IGNORE_CODES:
@@ -153,6 +203,63 @@ def compute_weights(concept_id: str) -> dict[str, float] | None:
     if total <= 0:
         return None
     return {s: buckets[s] / total for s in SUBSYSTEMS}
+
+
+def _read_concept_family(concept_id: str) -> str | None:
+    """Read confinement_family from features/{cid}.yaml.
+
+    Returns None if the feature file is unreadable or family is missing.
+    The 2-slot extractor needs this to pick the correct CAS account grouping.
+    """
+    import yaml
+    features_path = ROOT / "exploration" / "scoring_v2" / "features" / f"{concept_id}.yaml"
+    if not features_path.exists():
+        return None
+    try:
+        data = yaml.safe_load(features_path.read_text(encoding="utf-8", errors="replace"))
+    except Exception:
+        return None
+    if not isinstance(data, dict):
+        return None
+    entry = data.get("confinement_family")
+    if isinstance(entry, dict):
+        return entry.get("value")
+    return entry
+
+
+def compute_twoslot_weights(concept_id: str) -> dict[str, float] | None:
+    """Return 2-slot capex shares (energy_delivery, containment) for IFE/MIF.
+
+    Same denominator as compute_weights() — sum of all classified accounts —
+    so the slot shares are interpretable as fraction-of-plant-cost directly.
+
+    Returns None if:
+      - no model_output.txt for the concept
+      - confinement_family not IFE/MIF (MFE uses the legacy 3-slot path)
+      - total classified $ is non-positive (no model output)
+    """
+    family = _read_concept_family(concept_id)
+    if family not in TWOSLOT_ACCOUNTS:
+        return None
+    p = _model_output_path(concept_id)
+    if not p.exists():
+        return None
+    rows = _parse_lines(p.read_text(encoding="utf-8", errors="replace"))
+    # Filter to classified accounts (same as legacy compute_weights)
+    classified_total = 0.0
+    for code, dollars in rows.items():
+        if code in _IGNORE_CODES:
+            continue
+        if CAS_TO_SUBSYSTEM.get(code) is None:
+            continue
+        classified_total += dollars
+    if classified_total <= 0:
+        return None
+    slot_accounts = TWOSLOT_ACCOUNTS[family]
+    return {
+        slot: sum(rows.get(c, 0.0) for c in codes) / classified_total
+        for slot, codes in slot_accounts.items()
+    }
 
 
 def unrecognized_codes(concept_id: str) -> list[str]:
@@ -175,21 +282,34 @@ def extract(
     Raises KeyError if no cost model exists for the concept — the bulk caller
     treats this as "leave the feature absent" rather than fabricating a value.
 
-    Only the three EMITTED_SUBSYSTEMS (vessel, coils, blanket) are
-    addressable through the dispatcher; the retired bop/fuel_cycle/aux/civil
-    raise ValueError per fail-loud policy.
+    Handled feature names:
+      Legacy 3-slot (all families):
+        w_vessel, w_coils, w_blanket
+      2-slot (IFE/MIF only, raises KeyError for MFE/Non-Standard):
+        w_energy_delivery, w_containment
     """
     if not feature_name.startswith("w_"):
         raise ValueError(
             f"cost_model extractor only handles w_* features, got {feature_name!r}"
         )
     subsystem = feature_name[2:]
+
+    if subsystem in EMITTED_2SLOT:
+        # 2-slot IFE/MIF path — family-conditional
+        weights = compute_twoslot_weights(concept_id)
+        if weights is None:
+            raise KeyError(
+                f"cost_model: 2-slot {feature_name!r} unavailable for "
+                f"{concept_id!r} (no model_output.txt, or family not IFE/MIF)"
+            )
+        return weights[subsystem], f"analyses/{concept_id}/model_output.txt", "medium"
+
     if subsystem not in EMITTED_SUBSYSTEMS:
         if subsystem in SUBSYSTEMS:
             raise ValueError(
                 f"cost_model: subsystem {subsystem!r} (feature {feature_name!r}) "
                 f"was retired by scoring-v3 P2 — only "
-                f"{EMITTED_SUBSYSTEMS} are emitted"
+                f"{EMITTED_SUBSYSTEMS} are emitted for the legacy 3-slot path"
             )
         raise ValueError(
             f"cost_model: unknown subsystem {subsystem!r} (feature {feature_name!r})"
