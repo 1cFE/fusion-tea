@@ -189,16 +189,16 @@ upper_cf_diagnostics:
   upper_cf_score: 5.0
 w_blanket:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/39-spherical-tokamak-cs-free-p-b11/model_output.txt
   value: 0.029936839391595773
 w_coils:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/39-spherical-tokamak-cs-free-p-b11/model_output.txt
   value: 0.3443219902036607
 w_vessel:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/39-spherical-tokamak-cs-free-p-b11/model_output.txt
   value: 0.10086362464552719

@@ -100,35 +100,35 @@ mif_method:
   provenance: taxonomy
   value: Magnetized target
 modularity_diagnostics:
-  blanket_assumed: false
-  blanket_lookup_key: D-T|Liquid metal
-  blanket_modularity_rating: 5.0
-  capex_shares_used:
-    method: equal_weight_fallback_missing_capex
-    sum_2slot: 0.0
-    sum_3slot: 0.0169
-    w_blanket: 0.0112
-    w_coils: 0.0013
-    w_containment: null
-    w_energy_delivery: null
-    w_vessel: 0.0044
-  chamber_blanket_lookup_key: MIF|medium
-  chamber_blanket_modularity_rating: 4.0
-  driver_lookup_key: MIF|Pneumatic piston
-  driver_modularity_rating: 4.0
-  extracted_at: '2026-06-17'
-  magnet_driver_lookup_key: MIF|*|Pneumatic
-  magnet_driver_modularity_rating: 5.0
   min_viable_device_scale: 5.0
-  modularity_score: 4.75
-  mvs_lookup_key: MIF|Pneumatic compression
   percent_mod: 4.0
-  percent_mod_path: two_slot
-  unit_count_estimate: 60
   unit_multiplicity: 5.0
-  v5_calibration_target: 4.14
+  modularity_score: 4.75
+  percent_mod_path: two_slot
+  mvs_lookup_key: MIF|Pneumatic compression
   vessel_lookup_key: MIF|Pneumatic compression|D-T
+  magnet_driver_lookup_key: MIF|*|Pneumatic
+  blanket_lookup_key: D-T|Liquid metal
+  driver_lookup_key: MIF|Pneumatic piston
+  chamber_blanket_lookup_key: MIF|medium
   vessel_modularity_rating: 4.0
+  magnet_driver_modularity_rating: null
+  blanket_modularity_rating: 5.0
+  driver_modularity_rating: 4.0
+  chamber_blanket_modularity_rating: 4.0
+  capex_shares_used:
+    w_vessel: 0.0044
+    w_coils: 0.0013
+    w_blanket: 0.0112
+    sum_3slot: 0.0169
+    w_energy_delivery: 0.0047
+    w_containment: 0.0156
+    sum_2slot: 0.0204
+    method: capex_weighted
+  unit_count_estimate: 60
+  blanket_assumed: false
+  v5_calibration_target: 4.14
+  extracted_at: '2026-06-17'
 non_standard_mechanism:
   confidence: high
   extracted_at: '2026-06-12'
@@ -205,16 +205,26 @@ upper_cf_diagnostics:
   upper_cf_score: 3.5
 w_blanket:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/14-magnetized-target-fusion-pneumatic-compression/model_output.txt
   value: 0.011227392806340176
 w_coils:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/14-magnetized-target-fusion-pneumatic-compression/model_output.txt
   value: 0.0012700670595407438
+w_containment:
+  confidence: medium
+  extracted_at: '2026-06-17'
+  provenance: analyses/14-magnetized-target-fusion-pneumatic-compression/model_output.txt
+  value: 0.015647226173541966
+w_energy_delivery:
+  confidence: medium
+  extracted_at: '2026-06-17'
+  provenance: analyses/14-magnetized-target-fusion-pneumatic-compression/model_output.txt
+  value: 0.004724649461491567
 w_vessel:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/14-magnetized-target-fusion-pneumatic-compression/model_output.txt
   value: 0.004419833367201788

@@ -267,7 +267,7 @@ def unrecognized_codes(concept_id: str) -> list[str]:
     p = _model_output_path(concept_id)
     if not p.exists():
         return []
-    rows = _parse_lines(p.read_text())
+    rows = _parse_lines(p.read_text(encoding="utf-8", errors="replace"))
     return sorted(
         code for code in rows
         if code not in CAS_TO_SUBSYSTEM and code not in _IGNORE_CODES

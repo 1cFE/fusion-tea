@@ -197,16 +197,16 @@ upper_cf_diagnostics:
   upper_cf_score: 5.0
 w_blanket:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/06-magnetic-mirror/model_output.txt
   value: 0.0
 w_coils:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/06-magnetic-mirror/model_output.txt
   value: 0.38359274737569515
 w_vessel:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/06-magnetic-mirror/model_output.txt
   value: 0.023956036723814536

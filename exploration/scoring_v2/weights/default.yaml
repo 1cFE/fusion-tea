@@ -147,9 +147,13 @@ modularity:
     "Non-Standard|Muon-catalyzed|*":      3
     "Non-Standard|Particle accelerator|*": 3
 
-  # Magnet/driver subsystem modularity. MFE keyed by magnet_type (with
-  # Z-pinch special case via primary_heating="Ohmic (self-pinch)");
-  # MIF/IFE/Non-Standard keyed by driver category.
+  # Magnet/driver subsystem modularity (3-slot path: MFE / Non-Standard only).
+  # MFE keyed by magnet_type (with Z-pinch special case via
+  # primary_heating="Ohmic (self-pinch)"); Non-Standard keyed by driver
+  # category.
+  #
+  # 2026-06-17: IFE and MIF entries removed — those families now use the
+  # 2-slot path via `driver_modularity_lookup` (see below).
   magnet_driver_lookup:
     "MFE|HTS (wound)|*":                  5
     "MFE|HTS (integrated)|*":             4
@@ -163,19 +167,6 @@ modularity:
     "MFE|N/A|*":                          3      # MFE fallback when magnet_type missing
     "MFE|TBD|*":                          3      # MFE fallback when magnet_type=TBD
     "MFE|*|*":                            3      # MFE final fallback (exotic configs)
-
-    "MIF|*|Pulsed power":                 5
-    "MIF|*|Pneumatic":                    5
-    "MIF|*|Capacitor compression":        5
-    "MIF|*|Railgun":                      5      # NearStar plasma armature railgun
-    "MIF|*|*":                            5      # MIF fallback — Pneumatic-class by default
-
-    "IFE|*|DPSSL Laser":                  5
-    "IFE|*|Gas Laser":                    3
-    "IFE|*|Heavy ion beam":               3
-    "IFE|*|Projectile":                   5
-    "IFE|*|Acoustic":                     3
-    "IFE|*|*":                            3      # IFE fallback
 
     "Non-Standard|*|IEC":                 5
     "Non-Standard|*|Plasma focus":        3
@@ -234,6 +225,11 @@ modularity:
   # Combined chamber + blanket modularity rating, computed as:
   #   rating = clip(chamber_base + blanket_penalty, 1.0, 5.0)
   # Decomposed so values are easy to scrub independently.
+  #
+  # This nested lookup is hidden from the score explorer's "advanced
+  # sub-tables" panel (it doesn't flatten into the table renderer cleanly,
+  # and the inner `blanket_penalty` key reads close to the legacy
+  # `blanket_lookup` table above). See tools/score_explorer/build.py.
   chamber_blanket_lookup:
     chamber_base:
       "IFE|small":     5.0    # < 5 m, generic geometry

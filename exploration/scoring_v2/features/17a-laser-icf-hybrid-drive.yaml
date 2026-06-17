@@ -112,19 +112,19 @@ modularity_diagnostics:
   driver_lookup_key: IFE|KrF
   chamber_blanket_lookup_key: IFE|medium
   vessel_modularity_rating: 3.0
-  magnet_driver_modularity_rating: 3.0
+  magnet_driver_modularity_rating: null
   blanket_modularity_rating: 5.0
   driver_modularity_rating: 4.0
   chamber_blanket_modularity_rating: 4.0
   capex_shares_used:
-    w_vessel: 0.0396
+    w_vessel: 0.0712
     w_coils: 0.0
-    w_blanket: 0.0526
-    sum_3slot: 0.0922
-    w_energy_delivery: null
-    w_containment: null
-    sum_2slot: 0.0
-    method: equal_weight_fallback_missing_capex
+    w_blanket: 0.0504
+    sum_3slot: 0.1217
+    w_energy_delivery: 0.2149
+    w_containment: 0.1217
+    sum_2slot: 0.3366
+    method: capex_weighted
   unit_count_estimate: 4
   blanket_assumed: false
   v5_calibration_target: 1.27
@@ -206,16 +206,26 @@ upper_cf_diagnostics:
   upper_cf_score: 3.0
 w_blanket:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/17a-laser-icf-hybrid-drive/model_output.txt
-  value: 0.0525726053117713
+  value: 0.05041675137223013
 w_coils:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/17a-laser-icf-hybrid-drive/model_output.txt
   value: 0.0
+w_containment:
+  confidence: medium
+  extracted_at: '2026-06-17'
+  provenance: analyses/17a-laser-icf-hybrid-drive/model_output.txt
+  value: 0.1216565504022304
+w_energy_delivery:
+  confidence: medium
+  extracted_at: '2026-06-17'
+  provenance: analyses/17a-laser-icf-hybrid-drive/model_output.txt
+  value: 0.21491011529637266
 w_vessel:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/17a-laser-icf-hybrid-drive/model_output.txt
-  value: 0.03961115653674935
+  value: 0.07123979903000029

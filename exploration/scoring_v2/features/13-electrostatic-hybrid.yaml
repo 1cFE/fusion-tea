@@ -202,16 +202,16 @@ upper_cf_diagnostics:
   upper_cf_score: 4.0
 w_blanket:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/13-electrostatic-hybrid/model_output.txt
   value: 0.0
 w_coils:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/13-electrostatic-hybrid/model_output.txt
   value: 0.0010421189752496743
 w_vessel:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/13-electrostatic-hybrid/model_output.txt
   value: 0.002692140686061659

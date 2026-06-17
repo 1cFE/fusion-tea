@@ -56,10 +56,14 @@ def extract_one(concept_id: str, feature_name: str, *, features_dir: Path) -> No
 
 
 def bulk_cost_model(*, features_dir: Path) -> tuple[int, int]:
-    """Populate the seven w_* features for every concept that has a model_output.txt.
+    """Populate every cost_model-extracted w_* feature for every concept.
 
     Returns (concepts_with_weights, concepts_skipped).
     Concepts without a cost model get no w_* features written (no fallback).
+
+    Per-feature dispatch via cost_model_ext.extract() so the family-conditional
+    2-slot outputs (w_energy_delivery / w_containment) get computed correctly
+    alongside the legacy 3-slot outputs (w_vessel / w_coils / w_blanket).
     """
     schema = schema_mod.load_schema()
     cost_features = [n for n, e in schema.items() if e["extractor"] == "cost_model"]
@@ -69,8 +73,12 @@ def bulk_cost_model(*, features_dir: Path) -> tuple[int, int]:
     written = 0
     skipped = 0
     for cid in ids:
-        weights = cost_model_ext.compute_weights(cid)
-        if weights is None:
+        # Probe whether ANY cost-model feature is available for this concept.
+        # 3-slot weights drive the "missing cost model" decision since they
+        # apply to all families; the 2-slot weights are family-conditional
+        # (IFE/MIF only) and can legitimately be absent for MFE/Non-Standard.
+        legacy_weights = cost_model_ext.compute_weights(cid)
+        if legacy_weights is None:
             skipped += 1
             # Remove stale w_* entries if a previous extraction left them behind.
             doc = feature_io.read_features(cid, features_dir=features_dir)
@@ -84,13 +92,20 @@ def bulk_cost_model(*, features_dir: Path) -> tuple[int, int]:
             continue
         doc = feature_io.read_features(cid, features_dir=features_dir)
         doc["_meta"] = {"concept_id": cid, "name": taxonomy_ext.concept_name(cid)}
-        prov = f"analyses/{cid}/model_output.txt"
         for fname in cost_features:
-            subsystem = fname[2:]
+            entry = schema[fname]
+            try:
+                value, prov, conf = cost_model_ext.extract(cid, fname, entry)
+            except KeyError:
+                # Family-conditional feature not applicable to this concept
+                # (e.g. w_energy_delivery requested for MFE). Skip silently.
+                if fname in doc:
+                    del doc[fname]
+                continue
             doc[fname] = {
-                "value": float(weights[subsystem]),
+                "value": float(value),
                 "provenance": prov,
-                "confidence": "medium",
+                "confidence": conf,
                 "extracted_at": _today(),
             }
         feature_io.write_features(cid, doc, features_dir=features_dir)

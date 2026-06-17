@@ -203,16 +203,16 @@ upper_cf_diagnostics:
   upper_cf_score: 4.0
 w_blanket:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/10-large-scale-stellarator/model_output.txt
   value: 0.13793005483110315
 w_coils:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/10-large-scale-stellarator/model_output.txt
   value: 0.48748543992727067
 w_vessel:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/10-large-scale-stellarator/model_output.txt
   value: 0.034205517202193246

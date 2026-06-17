@@ -205,16 +205,16 @@ upper_cf_diagnostics:
   upper_cf_score: 3.5
 w_blanket:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/15-sheared-flow-stabilized-z-pinch/model_output.txt
   value: 0.006315789473684211
 w_coils:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/15-sheared-flow-stabilized-z-pinch/model_output.txt
   value: 0.00021052631578947372
 w_vessel:
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
   provenance: analyses/15-sheared-flow-stabilized-z-pinch/model_output.txt
   value: 0.0014736842105263158
