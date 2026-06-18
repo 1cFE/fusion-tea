@@ -458,8 +458,11 @@
     // the stored value (FR-SO1). Rides every /api/compute call.
     let applyOverrides = true;
     let tornadoHandle = null; // captured below when renderTornado runs (used by Reset)
-    const isCostingfeForSticky =
-      concept.sources && concept.sources.model_setup != null;
+    // `sources.model_setup` was removed from the served payload in efa8e88
+    // (paths are derived from concept_id server-side now). Gate on model_type
+    // instead — "costingfe" identifies the same concepts that previously had
+    // a model_setup source path.
+    const isCostingfeForSticky = concept.model_type === "costingfe";
     const hasSlidersForSticky =
       isCostingfeForSticky
       && concept.has_sensitivities

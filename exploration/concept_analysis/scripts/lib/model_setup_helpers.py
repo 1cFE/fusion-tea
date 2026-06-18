@@ -136,6 +136,13 @@ def _wrap(out) -> SimpleNamespace:
         power_table=SimpleNamespace(**out.power_table),
         overridden=list(out.overridden),
         sensitivity=out.sensitivity,
+        # Pass the merged forward params through. Required by:
+        # - extract_explorer_data.verify_two_knob (reads result.params.net_electric_mw / n_mod)
+        # - server._compute_cached (uses result.params as the base for slider-driven overrides)
+        # FusionTeaOutput started exposing this field in 1costingfe PR #38;
+        # `getattr` keeps the wrapper tolerant of older library checkouts during
+        # the transition period.
+        params=dict(getattr(out, "params", {})),
     )
 
 
