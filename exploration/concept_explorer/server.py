@@ -226,6 +226,13 @@ def _forward_with_overrides(
     # eta_source × eta_couple for NBI/RF-heated concepts, library rejects pinning.
     extra = {k: v for k, v in extra.items() if v is not None}
     extra.pop("eta_pin", None)
+    # Deprecated kwargs the current library refuses to accept on forward(), but
+    # which appear in pre-regen stored result_1gw.params from older library
+    # versions. Drop defensively so sliders work against stale JSON until the
+    # next full regen lands.
+    # - b_center / r_bore: derived from B in tokamak post-0bec805
+    for stale in ("b_center", "r_bore"):
+        extra.pop(stale, None)
     # construction_time_yr is no longer a named arg on CostModel.forward()
     # (post-6fe39ce: sourced from concept YAML when not in kwargs). It flows
     # through **extra now; passing it both ways causes the multiple-values
