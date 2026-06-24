@@ -2,9 +2,10 @@
  * index_page.js — Entry view grid for the Fusion TEA Concept Explorer.
  *
  * Fetches GET /api/manifest, groups concepts by status ("approved" vs
- * "in_progress"), and renders concept cards into the pre-existing DOM
- * sections.  Never shows a partial grid: either the loading state or the
- * complete grid is visible, never both.
+ * "in_progress"), sorts each group by confinement family (MFE first,
+ * exotics last) then concept_id, and renders concept cards into the
+ * pre-existing DOM sections. Never shows a partial grid: either the
+ * loading state or the complete grid is visible, never both.
  */
 
 "use strict";
@@ -21,6 +22,29 @@
     mif: { label: "MIF", cls: "badge badge-mif" },
     nonstandard: { label: "Non-std", cls: "badge badge-nonstandard" },
   };
+
+  // Confinement-family display order. Matches the top-level family order in
+  // the "all concepts" matrix tab: MFE → IFE → MIF → Non-Standard (exotics
+  // last). Manifest entries use uppercase family codes — keys here mirror
+  // that. Unknown codes sort to the end (rank = +∞).
+  const FAMILY_ORDER = ["MFE", "IFE", "MIF", "NONSTANDARD"];
+  const FAMILY_RANK = Object.fromEntries(
+    FAMILY_ORDER.map((fam, idx) => [fam, idx])
+  );
+
+  /**
+   * Sort comparator: by confinement family rank (MFE → IFE → MIF →
+   * Non-Standard, unknown families to the end), then by concept_id
+   * ascending within each family.
+   */
+  function byFamilyThenId(a, b) {
+    const ra = FAMILY_RANK[a.confinement_family] ?? Number.POSITIVE_INFINITY;
+    const rb = FAMILY_RANK[b.confinement_family] ?? Number.POSITIVE_INFINITY;
+    if (ra !== rb) return ra - rb;
+    const ida = String(a.concept_id);
+    const idb = String(b.concept_id);
+    return ida < idb ? -1 : ida > idb ? 1 : 0;
+  }
 
   // ---------------------------------------------------------------------------
   // Confidence badge
@@ -232,8 +256,12 @@
       return;
     }
 
-    const approved = manifest.concepts.filter((c) => c.status === "approved");
-    const inProgress = manifest.concepts.filter((c) => c.status === "in_progress");
+    const approved = manifest.concepts
+      .filter((c) => c.status === "approved")
+      .sort(byFamilyThenId);
+    const inProgress = manifest.concepts
+      .filter((c) => c.status === "in_progress")
+      .sort(byFamilyThenId);
 
     populateGrid(
       document.getElementById("grid-approved"),
