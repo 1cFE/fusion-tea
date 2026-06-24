@@ -37,6 +37,79 @@ _DISPLAY_REGISTRY_PATH = _DATA_DIR / "parameter_display_registry.yaml"
 # generation or per-concept yaml.
 _REGISTRY_PATCH_FIELDS = frozenset({"display_name", "display_unit", "display_multiplier"})
 
+# Sensitivity keys we deliberately drop from the tornado / slider UI.
+#
+# Two reasons a key lands here:
+#
+# 1. Fixed-geometry-fixed-target-net sensitivity is misleading. For plasma-
+#    physics knobs (B, q95, f_GW, plasma_t internals like T_e/n_e/etc.), the
+#    library back-solves T_e to maintain the target net, so the marginal cost
+#    response at fixed geometry doesn't match the engineering question an
+#    analyst is asking ("would the LCOE shift if this design choice changed"
+#    — which would require re-sizing the machine). Until the projection
+#    pipeline supports proper design-point re-solving per-slider (the
+#    R0-bisection follow-up), these knobs read as ~0 elasticity or worse,
+#    and we'd rather hide them than show misleading bars.
+#
+# 2. Library-side broken (pre-fix). The p_nbi/p_ecrh/p_icrf/p_lhcd heating-
+#    mix breakdown was the original 1costingfe#35 bug: the renormalization
+#    branch is guarded by ``isinstance(v, numbers.Real)`` which is False
+#    under JAX tracing, so jax.grad reports ~0.44 elasticities that
+#    production never produces. Reid removed these from the sensitivity
+#    dict library-side in efcf5cc; post-regen they're naturally gone. We
+#    exclude them defensively so the stale pre-efcf5cc JSONs also drop
+#    them without waiting for the regen.
+#
+# Kept (engineering choices where fixed-geometry sensitivity IS meaningful):
+# R0, plasma_t, elon — cost cards scale with machine size; all eta_* —
+# plant conversion efficiencies; parasitic loads (p_coils, p_cool, etc.);
+# financial knobs; engineering thicknesses (blanket_t, vessel_t, etc.).
+_SENSITIVITY_EXCLUDE_KEYS: frozenset[str] = frozenset({
+    # Field strength — library cost cards don't scale with B; FD ≈ 0
+    "B", "b_center",
+    # Plasma operating point (back-solved or no cost path)
+    "q95", "f_GW",
+    "T_e", "T_min", "T_max", "n_e",
+    "Z_eff", "lambda_q", "M_ion", "T_i_over_T_e", "tau_ratio",
+    # Fuel mix (set by fuel choice, not analyst slider)
+    "dhe3_dd_frac", "dhe3_fuel_ratio", "pb11_fuel_ratio",
+    "dhe3_dd_frac_pin",
+    "dd_f_T", "dd_f_He3", "dhe3_f_T", "dhe3_f_He3",
+    "pb11_f_alpha_n", "pb11_f_p_n",
+    # Radiation / boundary
+    "f_rad_fus", "T_edge",
+    # Heating power (total + mix). p_input would re-design heating;
+    # p_nbi/p_ecrh/p_icrf/p_lhcd were the 1costingfe#35 broken sliders.
+    "p_input", "p_nbi", "p_ecrh", "p_icrf", "p_lhcd",
+    # Derived / deprecated
+    "eta_pin", "r_bore", "fw_area",
+    # Derived outputs masquerading as inputs. q_eng (engineering Q,
+    # p_net_electric / p_input_electric) and q_sci (scientific Q,
+    # p_fus / p_input) are computed by the forward and reported on the
+    # power_table, but the library schema also exposes them as keys in
+    # `result.params` with non-zero gradients. Overriding either via a
+    # slider has no effect on LCOE (the forward ignores the override
+    # because q_eng/q_sci aren't forward kwargs), so the elasticity is
+    # misleading.
+    "q_eng", "q_sci",
+    # Modeling factor — neutron energy multiplication is a blanket-physics
+    # constant tied to fuel choice, not an analyst-tunable input.
+    "mn",
+    # Behavior flag
+    "enforce_plasma_limits",
+})
+
+# Additional exclusions applied only to non-tokamak concepts. R0, plasma_t,
+# and elon are meaningful tokamak design knobs whose cost cards scale with
+# machine size (the user-accepted reasoning: "coil/blanket/vessel cost
+# scales with R0"). But they appear in every concept's params dict because
+# the library uses one schema across all families — for laser IFE, mirror,
+# FRC, etc., these keys carry library defaults (e.g. plasma_t=4.0 for
+# laser ICF concepts) with no physical correspondence to the concept's
+# geometry, and the tornado renders nonsensical "Minor Radius" sliders.
+# Drop them for everyone except tokamak.
+_NON_TOKAMAK_EXCLUDE_KEYS: frozenset[str] = frozenset({"R0", "plasma_t", "elon"})
+
 # Ensure project root is on sys.path so fully-qualified package imports work
 # when the script is run directly (uv run python exploration/.../extract_explorer_data.py)
 if str(_PROJECT_ROOT) not in sys.path:
@@ -255,8 +328,38 @@ def load_module_from_path(path: Path, module_name: str = "_concept_module") -> t
 # ---------------------------------------------------------------------------
 
 
+def _ns_to_dict(obj: Any) -> dict[str, Any]:
+    """Flatten a SimpleNamespace's attrs into a dict; pass through if dict."""
+    if isinstance(obj, dict):
+        return dict(obj)
+    return {k: v for k, v in vars(obj).items() if not k.startswith("_")}
+
+
+def _forward_result_to_dict(result: Any) -> dict[str, Any]:
+    """Convert the _wrap-produced result (SimpleNamespace) into the dict shape
+    CostModelData.from_forward_result expects.
+
+    Post-PR-#84 the adapter returns a FusionTeaOutput which model_setup_helpers
+    re-wraps into a SimpleNamespace mimicking the legacy ForwardResult surface
+    (``.costs.cas21``, ``.cas22_detail["C220103"]``, ``.power_table.rec_frac``
+    as attributes). That surface isn't a dataclass, so ``dataclasses.asdict``
+    can't flatten it; we vars() the nested namespaces by hand.
+    """
+    return {
+        "costs": _ns_to_dict(result.costs),
+        "cas22_detail": dict(result.cas22_detail),
+        "power_table": _ns_to_dict(result.power_table),
+        "overridden": list(getattr(result, "overridden", [])),
+        "params": dict(getattr(result, "params", {})),
+    }
+
+
 def build_sensitivity_analysis(
-    model: Any, result: Any, cost_overrides: dict[str, float] | None = None
+    model: Any,
+    result: Any,
+    cost_overrides: dict[str, float] | None = None,
+    *,
+    confinement_family: ConfinementFamily | None = None,
 ) -> SensitivityAnalysis:
     """Call model.sensitivity(result.params) and wrap output in SensitivityAnalysis.
 
@@ -269,9 +372,43 @@ def build_sensitivity_analysis(
     (INV-3) — the applied tornado is *not* the bare one with overridden accounts
     zeroed (``_scale_overrides`` keeps a rescaled library shape), so callers must
     pass the registry through, never post-adjust.
+
+    Two filters applied:
+
+    1. Pre-call: drop None-valued + ``eta_pin`` keys from ``result.params``
+       before passing to ``model.sensitivity``. The library re-runs forward
+       internally for each continuous key, and forward() strictly rejects
+       unknown / None-valued kwargs (e.g. ``dhe3_dd_frac_pin=None`` on a D-T
+       tokamak — present in the all-fuel union schema but invalid for the
+       active fuel). ``eta_pin`` is derived from ``eta_source × eta_couple``
+       for NBI/RF-heated concepts and the library refuses to pin it. Same
+       defensive filter as server._forward_with_overrides (PR #90).
+
+    2. Post-call: drop ``_SENSITIVITY_EXCLUDE_KEYS`` from the returned
+       sensitivity dicts before wrapping — see that constant's docstring for
+       which keys and why.
+
+    3. If ``confinement_family`` is set and is not MFE/tokamak-routed (i.e.,
+       any non-tokamak family — IFE / MIF / stellarator / mirror / FRC /
+       NONSTANDARD), additionally drop ``_NON_TOKAMAK_EXCLUDE_KEYS``
+       (``R0``, ``plasma_t``, ``elon``). The union-schema library populates
+       these keys for every concept with placeholder values, but they have
+       no physical correspondence outside tokamaks. NOTE: this only filters
+       *non-tokamak* concepts. Stellarator/mirror also map to ConfinementFamily.MFE
+       in this codebase, so we'd ideally key off the model's confinement
+       concept too. Today the corpus has only tokamak as the MFE family
+       that actually uses these knobs; if stellarator/mirror concepts re-
+       enter the MFE bucket with valid R0/plasma_t/elon defaults, revisit.
     """
+    family_excludes = (
+        _NON_TOKAMAK_EXCLUDE_KEYS
+        if confinement_family is not None and confinement_family != ConfinementFamily.MFE
+        else frozenset()
+    )
+    sens_params = {k: v for k, v in result.params.items() if v is not None}
+    sens_params.pop("eta_pin", None)
     sens_raw: dict[str, dict[str, float]] = model.sensitivity(
-        result.params, cost_overrides=cost_overrides
+        sens_params, cost_overrides=cost_overrides
     )
     params: dict[str, Any] = result.params
 
@@ -281,7 +418,10 @@ def build_sensitivity_analysis(
         return {
             k: SensitivityEntry(elasticity=float(v), baseline=float(params.get(k, 0.0)))
             for k, v in group.items()
-            if v is not None and math.isfinite(float(v))
+            if k not in _SENSITIVITY_EXCLUDE_KEYS
+            and k not in family_excludes
+            and v is not None
+            and math.isfinite(float(v))
         }
 
     return SensitivityAnalysis(
@@ -352,13 +492,27 @@ def generate_parameter_metadata(
 def _build_sensitivity_from_dict(
     sens_raw: dict[str, dict[str, float]],
     params: dict[str, float],
+    *,
+    confinement_family: ConfinementFamily | None = None,
 ) -> SensitivityAnalysis:
     """Build SensitivityAnalysis from freeform compute_sensitivity() output.
 
     sens_raw: {"engineering": {param: elasticity}, "financial": {param: elasticity}}
     params: {param: baseline_value} from to_explorer_dict()["params"]
+
+    Applies the same exclude filters as ``build_sensitivity_analysis``: global
+    ``_SENSITIVITY_EXCLUDE_KEYS`` always, plus ``_NON_TOKAMAK_EXCLUDE_KEYS``
+    for any non-MFE concept. Freeform scripts rarely produce these keys, but
+    if they do (e.g. a tokamak-style freeform with R0), the same UX rules
+    apply.
     """
     import math
+
+    family_excludes = (
+        _NON_TOKAMAK_EXCLUDE_KEYS
+        if confinement_family is not None and confinement_family != ConfinementFamily.MFE
+        else frozenset()
+    )
 
     def _entries(group: dict[str, float]) -> dict[str, SensitivityEntry]:
         return {
@@ -367,7 +521,10 @@ def _build_sensitivity_from_dict(
                 baseline=float(params.get(k, 0.0)),
             )
             for k, v in group.items()
-            if v is not None and math.isfinite(float(v))
+            if k not in _SENSITIVITY_EXCLUDE_KEYS
+            and k not in family_excludes
+            and v is not None
+            and math.isfinite(float(v))
         }
 
     return SensitivityAnalysis(
@@ -434,8 +591,14 @@ def extract_costingfe(
     raw_overrides = getattr(module, "overrides", []) or []
     enabled = _enabled_overrides(raw_overrides)
     override_records = _build_override_records(raw_overrides, confinement_family)
-    sensitivities = build_sensitivity_analysis(model, effective_result, cost_overrides=enabled)
-    sensitivities_bare = build_sensitivity_analysis(model, effective_result, cost_overrides=None)
+    sensitivities = build_sensitivity_analysis(
+        model, effective_result, cost_overrides=enabled,
+        confinement_family=confinement_family,
+    )
+    sensitivities_bare = build_sensitivity_analysis(
+        model, effective_result, cost_overrides=None,
+        confinement_family=confinement_family,
+    )
     # Three-layer merge (later wins):
     #   1. generate_parameter_metadata() — auto baseline + range + auto display_name
     #   2. shared display registry       — patches display_name/_unit/_multiplier
@@ -444,8 +607,12 @@ def extract_costingfe(
     patched = apply_display_patches(generated, _DISPLAY_REGISTRY)
     merged_metadata = {**patched, **param_metadata}
 
-    # dataclasses.asdict() flattens the nested ForwardResult into plain dicts
-    raw: dict[str, Any] = dataclasses.asdict(effective_result)
+    # Flatten the wrapped result (a SimpleNamespace produced by
+    # model_setup_helpers._wrap post-PR-#84 adapter migration) into the dict
+    # shape CostModelData.from_forward_result expects. Was dataclasses.asdict()
+    # when result_1gw was a real ForwardResult; the adapter wrap is a
+    # SimpleNamespace, so we vars()-flatten the nested namespaces by hand.
+    raw: dict[str, Any] = _forward_result_to_dict(effective_result)
 
     # availability lives in params, not power_table — inject it so from_forward_result
     # can compute capacity_factor via its "availability" fallback
@@ -760,7 +927,8 @@ def extract_standalone(
                 if sens_raw is not None:
                     params_dict = raw_dict.get("params", {})
                     cost_model.sensitivities = _build_sensitivity_from_dict(
-                        sens_raw, params_dict
+                        sens_raw, params_dict,
+                        confinement_family=confinement_family,
                     )
                     has_sensitivities = True
 
