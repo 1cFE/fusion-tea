@@ -54,6 +54,17 @@ spec = dict(
     p_input=23.0,  # MW — RETAINED from EHL-2 (17 MW NBI + 6 MW ECRH); commercial reactor heating power not separately quoted in the cited PoP commercial-reactor passage. UNCERTAIN: a 4m / 6T commercial p-B11 reactor likely needs substantially more heating than EHL-2's physics-experiment budget. Flag for follow-up.
     # elon (elongation) not stated in available sources; library default will apply (spherical tokamak typical: 1.8-2.5)
     # Ip plasma current not separately quoted in commercial-reactor passage; library back-solves from geometry/field
+
+    # 0D feasibility-gate opt-out. The cited Liu et al. 2024 commercial-reactor
+    # passage describes a p-B11 design that implies β_N ≈ 24 (far above the
+    # Troyon limit of ~4-5). The library's use_0d_model gate would raise
+    # OperatingPointInfeasible on this spec at native scale, halting extract.
+    # Per the analysis (Section 5: "no actual commercial plant design exists"),
+    # this is a stand-in spec for framework compliance — not a defensible
+    # operating point. Routing this concept around the gate via the legacy
+    # n_mod-stacking path produces a numeric LCOE estimate that should be
+    # read as exploratory only.
+    enforce_plasma_limits=False,
 )
 
 # P_native — EXPLORATORY VALUE for framework compliance (no actual design point).

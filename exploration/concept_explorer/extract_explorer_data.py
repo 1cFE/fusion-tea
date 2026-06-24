@@ -288,17 +288,27 @@ def verify_two_knob(
             f"{concept_id}: P-Native must be positive, got {p_native_f}"
         )
 
-    # The helper (model_setup_helpers.py:169) rounds n_mod to an integer:
-    #   n_mod = max(1, int(round(1000.0 / p_native)))
-    # The 1 GWe projection is a comparison convenience, not a real plant design
-    # point, so the rounding has no analytical meaning beyond "how many of this
-    # module to reach ~1 GWe." Verifier matches what the helper actually emits.
-    expected = max(1, round(1000.0 / p_native_f))
-    if n_mod is None or abs(float(n_mod) - expected) > 1e-9:
-        raise ExtractionError(
-            f"{concept_id}: result_1gw.params['n_mod'] expected {expected} "
-            f"(max(1, round(1000/{p_native_f}))), got {n_mod!r}"
-        )
+    # n_mod check is path-dependent (post-R0-bisection):
+    # - use_0d_model=True (tokamak 0D path): the projection scales R0 of a
+    #   single bigger machine to deliver 1 GWe at the native plasma regime,
+    #   so n_mod is held at 1. The helper bisects R0 instead of stacking
+    #   modules.
+    # - Otherwise (n_mod-stacking path for FRC / mirror / IFE / non-standard):
+    #   n_mod = max(1, round(1000/P_native)) is the replication count to
+    #   reach 1 GWe at native module power.
+    if params.get("use_0d_model"):
+        if n_mod is None or abs(float(n_mod) - 1.0) > 1e-9:
+            raise ExtractionError(
+                f"{concept_id}: result_1gw.params['n_mod'] expected 1 for "
+                f"use_0d_model=True (R0-bisection projection), got {n_mod!r}"
+            )
+    else:
+        expected = max(1, round(1000.0 / p_native_f))
+        if n_mod is None or abs(float(n_mod) - expected) > 1e-9:
+            raise ExtractionError(
+                f"{concept_id}: result_1gw.params['n_mod'] expected {expected} "
+                f"(max(1, round(1000/{p_native_f}))), got {n_mod!r}"
+            )
 
 
 def parse_status(frontmatter: dict[str, Any]) -> ConceptStatus:
