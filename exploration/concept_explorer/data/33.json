@@ -15,42 +15,42 @@
   "cost_model": {
     "cas10": {
       "name": "Preconstruction",
-      "cost_m_usd": 17.76776695251465,
+      "cost_m_usd": 18.500001907348633,
       "overridden": false
     },
     "cas21": {
       "name": "Buildings & Structures",
-      "cost_m_usd": 666.8878784179688,
+      "cost_m_usd": 623.7784423828125,
       "overridden": false
     },
     "cas22": {
       "name": "Reactor Plant Equipment",
-      "cost_m_usd": 7335.755859375,
+      "cost_m_usd": 7298.2861328125,
       "overridden": false
     },
     "cas23": {
       "name": "Turbine Plant Equipment",
-      "cost_m_usd": 251.86572265625,
+      "cost_m_usd": 227.80929565429688,
       "overridden": false
     },
     "cas24": {
       "name": "Electrical Plant Equipment",
-      "cost_m_usd": 107.27613067626953,
+      "cost_m_usd": 97.0298843383789,
       "overridden": false
     },
     "cas25": {
       "name": "Miscellaneous Plant Equipment",
-      "cost_m_usd": 65.29852294921875,
+      "cost_m_usd": 59.061668395996094,
       "overridden": false
     },
     "cas26": {
       "name": "Heat Rejection Systems",
-      "cost_m_usd": 108.83085632324219,
+      "cost_m_usd": 98.43611145019531,
       "overridden": false
     },
     "cas27": {
       "name": "Special Materials",
-      "cost_m_usd": 30.867742929654522,
+      "cost_m_usd": 68.79757939434472,
       "overridden": false
     },
     "cas28": {
@@ -65,63 +65,63 @@
     },
     "cas30": {
       "name": "Indirect Costs",
-      "cost_m_usd": 1714.3568115234375,
+      "cost_m_usd": 1695.639892578125,
       "overridden": false
     },
     "cas40": {
       "name": "Owner's Costs",
-      "cost_m_usd": 27.577165603637695,
+      "cost_m_usd": 39.00001525878906,
       "overridden": false
     },
     "cas50": {
       "name": "Supplementary Costs",
-      "cost_m_usd": 469.160888671875,
+      "cost_m_usd": 548.2467041015625,
       "overridden": false
     },
     "cas60": {
       "name": "Interest During Construction",
-      "cost_m_usd": 2076.047607421875,
+      "cost_m_usd": 2071.99951171875,
       "overridden": false
     },
     "cas70": {
       "name": "O&M Costs (annualised)",
-      "cost_m_usd": 241.67837524414062,
+      "cost_m_usd": 129.3531036376953,
       "overridden": false
     },
     "cas71": {
       "name": "Fixed O&M (annualised)",
-      "cost_m_usd": 52.96043395996094,
+      "cost_m_usd": 74.89738464355469,
       "overridden": false
     },
     "cas72": {
       "name": "Scheduled Replacement (annualised)",
-      "cost_m_usd": 188.7179412841797,
+      "cost_m_usd": 54.45572280883789,
       "overridden": false
     },
     "cas80": {
       "name": "Fuel Costs (annualised)",
-      "cost_m_usd": 0.8080578446388245,
+      "cost_m_usd": 0.7389383316040039,
       "overridden": false
     },
     "cas90": {
       "name": "Financial Costs",
-      "cost_m_usd": 965.8697509765625,
+      "cost_m_usd": 963.9863891601562,
       "overridden": false
     },
     "cas22_detail": {
       "C220101": {
         "name": "First Wall & Blanket",
-        "cost_m_usd": 601.376953125,
+        "cost_m_usd": 1912.8216552734375,
         "overridden": false
       },
       "C220102": {
         "name": "Radiation Shield",
-        "cost_m_usd": 353.1199645996094,
+        "cost_m_usd": 1645.075927734375,
         "overridden": false
       },
       "C220103": {
         "name": "Magnets / Coils",
-        "cost_m_usd": 1368.7605032425372,
+        "cost_m_usd": 1277.3148922536454,
         "overridden": false
       },
       "C220104": {
@@ -131,22 +131,22 @@
       },
       "C220105": {
         "name": "Primary Structure & Support",
-        "cost_m_usd": 37.85873031616211,
+        "cost_m_usd": 97.87454986572266,
         "overridden": false
       },
       "C220106": {
         "name": "Vacuum System",
-        "cost_m_usd": 187.84762573242188,
+        "cost_m_usd": 503.4003601074219,
         "overridden": false
       },
       "C220107": {
         "name": "Power Conditioning & Energy Storage",
-        "cost_m_usd": 58.354576110839844,
+        "cost_m_usd": 88.36445617675781,
         "overridden": false
       },
       "C220108": {
         "name": "Divertor",
-        "cost_m_usd": 75.72744750976562,
+        "cost_m_usd": 101.85199737548828,
         "overridden": false
       },
       "C220109": {
@@ -156,12 +156,12 @@
       },
       "C220110": {
         "name": "Remote Handling & Maintenance Equipment",
-        "cost_m_usd": 119.73562622070312,
+        "cost_m_usd": 161.0421600341797,
         "overridden": false
       },
       "C220111": {
         "name": "Installation Labor",
-        "cost_m_usd": 425.6898193359375,
+        "cost_m_usd": 843.5848388671875,
         "overridden": false
       },
       "C220112": {
@@ -171,248 +171,168 @@
       },
       "C220200": {
         "name": "Main & Secondary Coolant",
-        "cost_m_usd": 204.5538330078125,
+        "cost_m_usd": 202.4829864501953,
         "overridden": false
       },
       "C220300": {
         "name": "Auxiliary Cooling & Cryoplant",
-        "cost_m_usd": 14.889272689819336,
+        "cost_m_usd": 14.554547309875488,
         "overridden": false
       },
       "C220400": {
         "name": "Radioactive Waste Management",
-        "cost_m_usd": 6.244393348693848,
+        "cost_m_usd": 5.647973537445068,
         "overridden": false
       },
       "C220500": {
         "name": "Fuel Handling & Storage",
-        "cost_m_usd": 120.00001525878906,
+        "cost_m_usd": 120.00006866455078,
         "overridden": false
       },
       "C220600": {
         "name": "Other Reactor Plant Equipment",
-        "cost_m_usd": 11.500000953674316,
+        "cost_m_usd": 11.500008583068848,
         "overridden": false
       },
       "C220700": {
         "name": "Instrumentation & Control",
-        "cost_m_usd": 79.96076202392578,
+        "cost_m_usd": 74.90977478027344,
         "overridden": false
       }
     },
     "headline": {
-      "lcoe_per_mwh": 162.28257751464844,
-      "overnight_cost_per_kw": 12876.693359375,
-      "p_net_mw": 500.00006103515625,
-      "q_eng": 4.644767761230469,
+      "lcoe_per_mwh": 147.1438446044922,
+      "overnight_cost_per_kw": 10779.5859375,
+      "p_net_mw": 1000.0008544921875,
+      "q_eng": 7.5510711669921875,
       "capacity_factor": 0.85
     },
     "sensitivities": {
       "engineering": {
         "availability": {
-          "elasticity": -0.8490056016702133,
+          "elasticity": -0.9224098301614847,
           "baseline": 0.85
         },
         "construction_time_yr": {
-          "elasticity": 0.30786832395610286,
+          "elasticity": 0.33977243490996106,
           "baseline": 6.0
         },
-        "mn": {
-          "elasticity": -0.027310800737783292,
-          "baseline": 1.1
+        "lifetime_yr": {
+          "elasticity": -0.17079359081236256,
+          "baseline": 40.0
         },
         "eta_th": {
-          "elasticity": -0.27275758483404927,
+          "elasticity": -0.41474739918278325,
           "baseline": 0.4
         },
         "eta_p": {
-          "elasticity": -0.00001081674107179407,
+          "elasticity": 0.00010369981227222985,
           "baseline": 0.5
         },
         "f_sub": {
-          "elasticity": 0.0114330498992862,
+          "elasticity": 0.01622902062060397,
           "baseline": 0.03
         },
         "p_pump": {
-          "elasticity": 0.0005872874357753105,
+          "elasticity": 0.0002592495306805746,
           "baseline": 1.0
         },
         "p_trit": {
-          "elasticity": 0.005981041121166261,
+          "elasticity": 0.0043553921154336536,
           "baseline": 10.0
         },
         "p_house": {
-          "elasticity": 0.0023924164484665045,
+          "elasticity": 0.0019184465270362522,
           "baseline": 4.0
         },
         "p_cryo": {
-          "elasticity": 0.0010259887926646425,
+          "elasticity": 0.0008814484043139537,
           "baseline": 0.5
         },
         "blanket_t": {
-          "elasticity": 0.3303724419256776,
-          "baseline": 0.8
+          "elasticity": 0.3469277219567449,
+          "baseline": 1.0
         },
         "ht_shield_t": {
-          "elasticity": 0.05698263757352801,
-          "baseline": 0.2
+          "elasticity": 0.17224538818417376,
+          "baseline": 0.5
         },
         "structure_t": {
-          "elasticity": 0.02698524350120889,
+          "elasticity": 0.021776960577168266,
           "baseline": 0.2
         },
         "vessel_t": {
-          "elasticity": 0.05664614905026802,
+          "elasticity": 0.06719747835240494,
           "baseline": 0.2
         },
         "plasma_t": {
-          "elasticity": 0.4067177434459936,
-          "baseline": 1.91
+          "elasticity": 0.37316377446161914,
+          "baseline": 2.67002705078125
         },
         "burn_fraction": {
-          "elasticity": -0.00019868779764627576,
+          "elasticity": -0.0002073996245444597,
           "baseline": 0.05
         },
         "fuel_recovery": {
-          "elasticity": -0.010481381830167228,
+          "elasticity": -0.010681080664039675,
           "baseline": 0.99
-        },
-        "dd_f_T": {
-          "elasticity": 0.0,
-          "baseline": 0.969
-        },
-        "dd_f_He3": {
-          "elasticity": 0.0,
-          "baseline": 0.689
-        },
-        "dhe3_dd_frac": {
-          "elasticity": 0.0,
-          "baseline": 0.131
-        },
-        "dhe3_f_T": {
-          "elasticity": 0.0,
-          "baseline": 0.5
-        },
-        "p_input": {
-          "elasticity": 0.05103205261545483,
-          "baseline": 42.7
         },
         "eta_de": {
           "elasticity": 0.0,
           "baseline": 0.85
         },
         "p_coils": {
-          "elasticity": 0.0011962082242332522,
+          "elasticity": 0.0007777485920417238,
           "baseline": 2.0
         },
         "p_cool": {
-          "elasticity": 0.008194026221918472,
+          "elasticity": 0.006066439017925445,
           "baseline": 13.7
         },
         "R0": {
-          "elasticity": 0.6678542294407804,
-          "baseline": 6.25
+          "elasticity": 0.6092363970993504,
+          "baseline": 8.73699951171875
         },
         "elon": {
-          "elasticity": 0.3845858740552766,
+          "elasticity": 0.4604790163948366,
           "baseline": 2.0
-        },
-        "q95": {
-          "elasticity": 0.0,
-          "baseline": 3.5
-        },
-        "f_GW": {
-          "elasticity": 0.0,
-          "baseline": 0.85
-        },
-        "B": {
-          "elasticity": 0.0,
-          "baseline": 6.0
-        },
-        "T_e": {
-          "elasticity": 0.0,
-          "baseline": 15.0
-        },
-        "n_e": {
-          "elasticity": 0.0,
-          "baseline": 1e20
-        },
-        "Z_eff": {
-          "elasticity": 0.0,
-          "baseline": 1.5
         },
         "plasma_volume": {
           "elasticity": 0.0,
-          "baseline": 500.0
+          "baseline": 894.4
         },
         "R_w": {
           "elasticity": 0.0,
           "baseline": 0.6
         },
-        "T_edge": {
-          "elasticity": 0.0,
-          "baseline": 0.05
-        },
-        "tau_ratio": {
-          "elasticity": 0.0,
-          "baseline": 3.0
-        },
-        "b_center": {
-          "elasticity": 0.2832683612126695,
-          "baseline": 12.0
-        },
-        "r_bore": {
-          "elasticity": 0.0,
-          "baseline": 1.85
-        },
-        "p_nbi": {
-          "elasticity": 0.028893272756294133,
-          "baseline": 20.0
-        },
-        "p_ecrh": {
-          "elasticity": 0.018323548055609994,
-          "baseline": 15.0
-        },
-        "p_icrf": {
-          "elasticity": 0.010429086966870279,
-          "baseline": 15.0
-        },
-        "M_ion": {
-          "elasticity": 0.0,
-          "baseline": 2.5
-        },
-        "lambda_q": {
-          "elasticity": 0.0,
-          "baseline": 0.002
-        },
         "disruption_rate_base": {
           "elasticity": 0.0,
-          "baseline": 0.1
+          "baseline": 1.0
         },
         "disruption_steepness": {
           "elasticity": 0.0,
-          "baseline": 15.0
+          "baseline": 12.0
         },
         "disruption_damage": {
-          "elasticity": 0.0,
-          "baseline": 0.02
+          "elasticity": 0.0020739962454445963,
+          "baseline": 0.01
         },
         "disruption_downtime": {
-          "elasticity": 0.0,
+          "elasticity": 0.0012962476534028728,
           "baseline": 72.0
         },
         "eta_couple": {
-          "elasticity": -0.05195577637272731,
+          "elasticity": -0.0406503264107141,
           "baseline": 0.8333
         }
       },
       "financial": {
         "interest_rate": {
-          "elasticity": 0.7669016349274026,
+          "elasticity": 0.8282504006182998,
           "baseline": 0.07
         },
         "inflation_rate": {
-          "elasticity": 0.016854652209514473,
+          "elasticity": 0.026443452129418607,
           "baseline": 0.02
         }
       }
@@ -420,209 +340,129 @@
     "sensitivities_bare": {
       "engineering": {
         "availability": {
-          "elasticity": -0.8490056016702133,
+          "elasticity": -0.9224098301614847,
           "baseline": 0.85
         },
         "construction_time_yr": {
-          "elasticity": 0.30786832395610286,
+          "elasticity": 0.33977243490996106,
           "baseline": 6.0
         },
-        "mn": {
-          "elasticity": -0.027310800737783292,
-          "baseline": 1.1
+        "lifetime_yr": {
+          "elasticity": -0.17079359081236256,
+          "baseline": 40.0
         },
         "eta_th": {
-          "elasticity": -0.27275758483404927,
+          "elasticity": -0.41474739918278325,
           "baseline": 0.4
         },
         "eta_p": {
-          "elasticity": -0.00001081674107179407,
+          "elasticity": 0.00010369981227222985,
           "baseline": 0.5
         },
         "f_sub": {
-          "elasticity": 0.0114330498992862,
+          "elasticity": 0.01622902062060397,
           "baseline": 0.03
         },
         "p_pump": {
-          "elasticity": 0.0005872874357753105,
+          "elasticity": 0.0002592495306805746,
           "baseline": 1.0
         },
         "p_trit": {
-          "elasticity": 0.005981041121166261,
+          "elasticity": 0.0043553921154336536,
           "baseline": 10.0
         },
         "p_house": {
-          "elasticity": 0.0023924164484665045,
+          "elasticity": 0.0019184465270362522,
           "baseline": 4.0
         },
         "p_cryo": {
-          "elasticity": 0.0010259887926646425,
+          "elasticity": 0.0008814484043139537,
           "baseline": 0.5
         },
         "blanket_t": {
-          "elasticity": 0.3303724419256776,
-          "baseline": 0.8
+          "elasticity": 0.3469277219567449,
+          "baseline": 1.0
         },
         "ht_shield_t": {
-          "elasticity": 0.05698263757352801,
-          "baseline": 0.2
+          "elasticity": 0.17224538818417376,
+          "baseline": 0.5
         },
         "structure_t": {
-          "elasticity": 0.02698524350120889,
+          "elasticity": 0.021776960577168266,
           "baseline": 0.2
         },
         "vessel_t": {
-          "elasticity": 0.05664614905026802,
+          "elasticity": 0.06719747835240494,
           "baseline": 0.2
         },
         "plasma_t": {
-          "elasticity": 0.4067177434459936,
-          "baseline": 1.91
+          "elasticity": 0.37316377446161914,
+          "baseline": 2.67002705078125
         },
         "burn_fraction": {
-          "elasticity": -0.00019868779764627576,
+          "elasticity": -0.0002073996245444597,
           "baseline": 0.05
         },
         "fuel_recovery": {
-          "elasticity": -0.010481381830167228,
+          "elasticity": -0.010681080664039675,
           "baseline": 0.99
-        },
-        "dd_f_T": {
-          "elasticity": 0.0,
-          "baseline": 0.969
-        },
-        "dd_f_He3": {
-          "elasticity": 0.0,
-          "baseline": 0.689
-        },
-        "dhe3_dd_frac": {
-          "elasticity": 0.0,
-          "baseline": 0.131
-        },
-        "dhe3_f_T": {
-          "elasticity": 0.0,
-          "baseline": 0.5
-        },
-        "p_input": {
-          "elasticity": 0.05103205261545483,
-          "baseline": 42.7
         },
         "eta_de": {
           "elasticity": 0.0,
           "baseline": 0.85
         },
         "p_coils": {
-          "elasticity": 0.0011962082242332522,
+          "elasticity": 0.0007777485920417238,
           "baseline": 2.0
         },
         "p_cool": {
-          "elasticity": 0.008194026221918472,
+          "elasticity": 0.006066439017925445,
           "baseline": 13.7
         },
         "R0": {
-          "elasticity": 0.6678542294407804,
-          "baseline": 6.25
+          "elasticity": 0.6092363970993504,
+          "baseline": 8.73699951171875
         },
         "elon": {
-          "elasticity": 0.3845858740552766,
+          "elasticity": 0.4604790163948366,
           "baseline": 2.0
-        },
-        "q95": {
-          "elasticity": 0.0,
-          "baseline": 3.5
-        },
-        "f_GW": {
-          "elasticity": 0.0,
-          "baseline": 0.85
-        },
-        "B": {
-          "elasticity": 0.0,
-          "baseline": 6.0
-        },
-        "T_e": {
-          "elasticity": 0.0,
-          "baseline": 15.0
-        },
-        "n_e": {
-          "elasticity": 0.0,
-          "baseline": 1e20
-        },
-        "Z_eff": {
-          "elasticity": 0.0,
-          "baseline": 1.5
         },
         "plasma_volume": {
           "elasticity": 0.0,
-          "baseline": 500.0
+          "baseline": 894.4
         },
         "R_w": {
           "elasticity": 0.0,
           "baseline": 0.6
         },
-        "T_edge": {
-          "elasticity": 0.0,
-          "baseline": 0.05
-        },
-        "tau_ratio": {
-          "elasticity": 0.0,
-          "baseline": 3.0
-        },
-        "b_center": {
-          "elasticity": 0.2832683612126695,
-          "baseline": 12.0
-        },
-        "r_bore": {
-          "elasticity": 0.0,
-          "baseline": 1.85
-        },
-        "p_nbi": {
-          "elasticity": 0.028893272756294133,
-          "baseline": 20.0
-        },
-        "p_ecrh": {
-          "elasticity": 0.018323548055609994,
-          "baseline": 15.0
-        },
-        "p_icrf": {
-          "elasticity": 0.010429086966870279,
-          "baseline": 15.0
-        },
-        "M_ion": {
-          "elasticity": 0.0,
-          "baseline": 2.5
-        },
-        "lambda_q": {
-          "elasticity": 0.0,
-          "baseline": 0.002
-        },
         "disruption_rate_base": {
           "elasticity": 0.0,
-          "baseline": 0.1
+          "baseline": 1.0
         },
         "disruption_steepness": {
           "elasticity": 0.0,
-          "baseline": 15.0
+          "baseline": 12.0
         },
         "disruption_damage": {
-          "elasticity": 0.0,
-          "baseline": 0.02
+          "elasticity": 0.0020739962454445963,
+          "baseline": 0.01
         },
         "disruption_downtime": {
-          "elasticity": 0.0,
+          "elasticity": 0.0012962476534028728,
           "baseline": 72.0
         },
         "eta_couple": {
-          "elasticity": -0.05195577637272731,
+          "elasticity": -0.0406503264107141,
           "baseline": 0.8333
         }
       },
       "financial": {
         "interest_rate": {
-          "elasticity": 0.7669016349274026,
+          "elasticity": 0.8282504006182998,
           "baseline": 0.07
         },
         "inflation_rate": {
-          "elasticity": 0.016854652209514473,
+          "elasticity": 0.026443452129418607,
           "baseline": 0.02
         }
       }
@@ -645,31 +485,29 @@
       "p_trit": 10.0,
       "p_house": 4.0,
       "p_cryo": 0.5,
-      "b_center": 12.0,
-      "r_bore": 1.85,
-      "R0": 6.25,
-      "plasma_t": 1.91,
+      "R0": 8.73699951171875,
+      "plasma_t": 2.67002705078125,
       "elon": 2.0,
-      "blanket_t": 0.8,
-      "ht_shield_t": 0.2,
+      "blanket_t": 1.0,
+      "ht_shield_t": 0.5,
       "structure_t": 0.2,
       "vessel_t": 0.2,
       "vac_op_pressure_pa": 3.0,
       "construction_time_yr": 6.0,
-      "n_e": 1e20,
-      "T_e": 15.0,
+      "n_e": 1.1841e20,
+      "T_e": 16.49,
       "Z_eff": 1.5,
-      "plasma_volume": 500.0,
+      "plasma_volume": 894.4,
       "radiation_peaking_factor": 1.0,
       "B": 6.0,
       "T_edge": 0.05,
       "tau_ratio": 3.0,
       "R_w": 0.6,
-      "disruption_rate_base": 0.1,
-      "disruption_steepness": 15.0,
-      "disruption_damage": 0.02,
+      "disruption_rate_base": 1.0,
+      "disruption_steepness": 12.0,
+      "disruption_damage": 0.01,
       "disruption_downtime": 72.0,
-      "use_0d_model": 0.0,
+      "use_0d_model": 1.0,
       "q95": 3.5,
       "f_GW": 0.85,
       "M_ion": 2.5,
@@ -682,6 +520,21 @@
       "dhe3_f_T": 0.5,
       "pb11_f_alpha_n": 0.0,
       "pb11_f_p_n": 0.0,
+      "T_i_over_T_e": 1.0,
+      "dhe3_fuel_ratio": 1.0,
+      "pb11_fuel_ratio": 0.15,
+      "enforce_plasma_limits": 1.0,
+      "size_from_power": 0.0,
+      "optimize_lcoe": 0.0,
+      "aspect_ratio": 3.0,
+      "beta_N_max": 3.5,
+      "H_factor": 1.0,
+      "R0_min": 1.0,
+      "R0_max": 12.0,
+      "T_min": 5.0,
+      "T_max": 60.0,
+      "f_GW_min": 0.3,
+      "f_GW_max": 1.0,
       "site_permits": 3.0,
       "plant_studies_foak": 20.0,
       "plant_studies_noak": 4.0,
@@ -739,7 +592,6 @@
       "e_fus_mev_pb11": 8.7,
       "power_supplies_base": 80.0,
       "divertor_base": 60.0,
-      "target_factory_base": 244.0,
       "dec_base": 125.0,
       "dec_grid_cost": 12.0,
       "dec_grid_lifetime_dt": 2.0,
@@ -782,6 +634,10 @@
       "core_lifetime_dd": 10.0,
       "core_lifetime_dhe3": 30.0,
       "core_lifetime_pb11": 50.0,
+      "fluence_limit_dt": 18.0,
+      "fluence_limit_dd": 36.0,
+      "fluence_limit_dhe3": 108.0,
+      "fluence_limit_pb11": 180.0,
       "fuel_handling_dt_base": 120.0,
       "fuel_handling_dd_base": 60.0,
       "fuel_handling_dhe3_base": 40.0,
@@ -828,7 +684,7 @@
       "net_electric_mw": 1000.0,
       "availability": 0.85,
       "lifetime_yr": 40.0,
-      "n_mod": 2.0,
+      "n_mod": 1.0,
       "interest_rate": 0.07,
       "inflation_rate": 0.02,
       "noak": 1.0
@@ -863,16 +719,16 @@
       "source": null,
       "modeling_note": null
     },
-    "mn": {
-      "display_name": "Energy Multiplication Mₙ",
+    "lifetime_yr": {
+      "display_name": "Lifetime Yr",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 1.1,
+      "baseline": 40.0,
       "display_multiplier": 1.0,
       "display_unit": "",
       "range": [
-        0.77,
-        1.4300000000000002
+        28.0,
+        52.0
       ],
       "source": null,
       "modeling_note": null
@@ -979,12 +835,12 @@
       "display_name": "Blanket Thickness",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 0.8,
+      "baseline": 1.0,
       "display_multiplier": 1.0,
       "display_unit": "m",
       "range": [
-        0.5599999999999999,
-        1.04
+        0.7,
+        1.3
       ],
       "source": null,
       "modeling_note": null
@@ -993,12 +849,12 @@
       "display_name": "HT Shield Thickness",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 0.2,
+      "baseline": 0.5,
       "display_multiplier": 1.0,
       "display_unit": "m",
       "range": [
-        0.13999999999999999,
-        0.26
+        0.35,
+        0.65
       ],
       "source": null,
       "modeling_note": null
@@ -1035,12 +891,12 @@
       "display_name": "Minor Radius",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 1.91,
+      "baseline": 2.67002705078125,
       "display_multiplier": 1.0,
       "display_unit": "m",
       "range": [
-        1.337,
-        2.483
+        1.869018935546875,
+        3.4710351660156253
       ],
       "source": null,
       "modeling_note": null
@@ -1069,76 +925,6 @@
       "range": [
         0.693,
         1.0
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "dd_f_T": {
-      "display_name": "Dd F T",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 0.969,
-      "display_multiplier": 1.0,
-      "display_unit": "",
-      "range": [
-        0.6782999999999999,
-        1.2597
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "dd_f_He3": {
-      "display_name": "Dd F He3",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 0.689,
-      "display_multiplier": 1.0,
-      "display_unit": "",
-      "range": [
-        0.48229999999999995,
-        0.8956999999999999
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "dhe3_dd_frac": {
-      "display_name": "Dhe3 Dd Frac",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 0.131,
-      "display_multiplier": 1.0,
-      "display_unit": "",
-      "range": [
-        0.0917,
-        0.1703
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "dhe3_f_T": {
-      "display_name": "Dhe3 F T",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 0.5,
-      "display_multiplier": 1.0,
-      "display_unit": "",
-      "range": [
-        0.35,
-        0.65
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "p_input": {
-      "display_name": "Input Power",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 42.7,
-      "display_multiplier": 1.0,
-      "display_unit": "MW",
-      "range": [
-        29.89,
-        55.510000000000005
       ],
       "source": null,
       "modeling_note": null
@@ -1189,12 +975,12 @@
       "display_name": "Major Radius",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 6.25,
+      "baseline": 8.73699951171875,
       "display_multiplier": 1.0,
       "display_unit": "m",
       "range": [
-        4.375,
-        8.125
+        6.115899658203125,
+        11.358099365234375
       ],
       "source": null,
       "modeling_note": null
@@ -1213,100 +999,16 @@
       "source": null,
       "modeling_note": null
     },
-    "q95": {
-      "display_name": "Q95",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 3.5,
-      "display_multiplier": 1.0,
-      "display_unit": "",
-      "range": [
-        2.4499999999999997,
-        4.55
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "f_GW": {
-      "display_name": "F Gw",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 0.85,
-      "display_multiplier": 1.0,
-      "display_unit": "",
-      "range": [
-        0.595,
-        1.0
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "B": {
-      "display_name": "B",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 6.0,
-      "display_multiplier": 1.0,
-      "display_unit": "",
-      "range": [
-        4.199999999999999,
-        7.800000000000001
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "T_e": {
-      "display_name": "T E",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 15.0,
-      "display_multiplier": 1.0,
-      "display_unit": "",
-      "range": [
-        10.5,
-        19.5
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "n_e": {
-      "display_name": "N E",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 1e20,
-      "display_multiplier": 1.0,
-      "display_unit": "",
-      "range": [
-        6.999999999999999e19,
-        1.3e20
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "Z_eff": {
-      "display_name": "Z Eff",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 1.5,
-      "display_multiplier": 1.0,
-      "display_unit": "",
-      "range": [
-        1.0499999999999998,
-        1.9500000000000002
-      ],
-      "source": null,
-      "modeling_note": null
-    },
     "plasma_volume": {
       "display_name": "Plasma Volume",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 500.0,
+      "baseline": 894.4,
       "display_multiplier": 1.0,
       "display_unit": "",
       "range": [
-        350.0,
-        650.0
+        626.0799999999999,
+        1162.72
       ],
       "source": null,
       "modeling_note": null
@@ -1325,36 +1027,22 @@
       "source": null,
       "modeling_note": null
     },
-    "T_edge": {
-      "display_name": "T Edge",
+    "disruption_rate_base": {
+      "display_name": "Disruption Rate Base",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 0.05,
+      "baseline": 1.0,
       "display_multiplier": 1.0,
       "display_unit": "",
       "range": [
-        0.034999999999999996,
-        0.065
+        0.7,
+        1.3
       ],
       "source": null,
       "modeling_note": null
     },
-    "tau_ratio": {
-      "display_name": "Tau Ratio",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 3.0,
-      "display_multiplier": 1.0,
-      "display_unit": "",
-      "range": [
-        2.0999999999999996,
-        3.9000000000000004
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "b_center": {
-      "display_name": "B Center",
+    "disruption_steepness": {
+      "display_name": "Disruption Steepness",
       "category": "unclassified",
       "confidence": "unknown",
       "baseline": 12.0,
@@ -1367,128 +1055,16 @@
       "source": null,
       "modeling_note": null
     },
-    "r_bore": {
-      "display_name": "R Bore",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 1.85,
-      "display_multiplier": 1.0,
-      "display_unit": "",
-      "range": [
-        1.295,
-        2.4050000000000002
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "p_nbi": {
-      "display_name": "NBI Power",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 20.0,
-      "display_multiplier": 1.0,
-      "display_unit": "MW",
-      "range": [
-        14.0,
-        26.0
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "p_ecrh": {
-      "display_name": "ECRH Power",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 15.0,
-      "display_multiplier": 1.0,
-      "display_unit": "MW",
-      "range": [
-        10.5,
-        19.5
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "p_icrf": {
-      "display_name": "ICRF Power",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 15.0,
-      "display_multiplier": 1.0,
-      "display_unit": "MW",
-      "range": [
-        10.5,
-        19.5
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "M_ion": {
-      "display_name": "M Ion",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 2.5,
-      "display_multiplier": 1.0,
-      "display_unit": "",
-      "range": [
-        1.75,
-        3.25
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "lambda_q": {
-      "display_name": "Lambda Q",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 0.002,
-      "display_multiplier": 1.0,
-      "display_unit": "",
-      "range": [
-        0.0014,
-        0.0026000000000000003
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "disruption_rate_base": {
-      "display_name": "Disruption Rate Base",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 0.1,
-      "display_multiplier": 1.0,
-      "display_unit": "",
-      "range": [
-        0.06999999999999999,
-        0.13
-      ],
-      "source": null,
-      "modeling_note": null
-    },
-    "disruption_steepness": {
-      "display_name": "Disruption Steepness",
-      "category": "unclassified",
-      "confidence": "unknown",
-      "baseline": 15.0,
-      "display_multiplier": 1.0,
-      "display_unit": "",
-      "range": [
-        10.5,
-        19.5
-      ],
-      "source": null,
-      "modeling_note": null
-    },
     "disruption_damage": {
       "display_name": "Disruption Damage",
       "category": "unclassified",
       "confidence": "unknown",
-      "baseline": 0.02,
+      "baseline": 0.01,
       "display_multiplier": 1.0,
       "display_unit": "",
       "range": [
-        0.013999999999999999,
-        0.026000000000000002
+        0.006999999999999999,
+        0.013000000000000001
       ],
       "source": null,
       "modeling_note": null

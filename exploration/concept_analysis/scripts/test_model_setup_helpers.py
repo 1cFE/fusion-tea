@@ -49,6 +49,16 @@ ARC_SPEC = dict(
     p_input=38.6,
 )
 
+# n_mod-stacking variant of ARC_SPEC: same physics inputs but opts out of the
+# 0D feasibility gate via enforce_plasma_limits=False. Used by tests that
+# monkeypatch helpers.run_costing to inspect kwarg shape — the R0-bisection
+# tokamak path routes through `_run_costing_with_plasma_state` (not
+# run_costing) and does many forward calls per invocation, so monkeypatching
+# run_costing alone wouldn't capture them. The n_mod-stacking path goes
+# through run_costing twice (native + projection), matching the kwarg-shape
+# tests' assertions.
+ARC_SPEC_NMOD = {**ARC_SPEC, "enforce_plasma_limits": False}
+
 P_NATIVE = 233.0
 
 ARC_OVERRIDES = [
@@ -139,9 +149,13 @@ class TestOracle:
         native, result_1gw = run_native_and_1gw(
             model, ARC_SPEC, ARC_OVERRIDES, P_NATIVE
         )
-        assert generic.costs.lcoe == pytest.approx(169.3, abs=0.5)  # overrides OFF
-        assert native.costs.lcoe == pytest.approx(619.7, abs=0.5)  # overrides ON, 233 MWe
-        assert result_1gw.costs.lcoe == pytest.approx(546.0, abs=0.5)  # all-on, 1 GWe
+        # Post-R0-bisection 1 GWe projection (preserves spec B, aspect ratio,
+        # native β_N regime). ARC's projection lands at R0≈5.17m with B=9.2T
+        # preserved — much lower LCOE than the old n_mod-stacked number
+        # because a single bigger machine has cheaper per-MWe capital.
+        assert generic.costs.lcoe == pytest.approx(170.5, abs=0.5)  # overrides OFF
+        assert native.costs.lcoe == pytest.approx(608.3, abs=0.5)  # overrides ON, 233 MWe
+        assert result_1gw.costs.lcoe == pytest.approx(190.4, abs=0.5)  # all-on, 1 GWe (R0-bisection)
 
     def test_empty_overrides_is_library_bare(self):
         """No overrides → native == generic, and the 1 GWe projection is the
@@ -149,9 +163,9 @@ class TestOracle:
         model = _tokamak_model()
         generic = generic_reference(model, ARC_SPEC, P_NATIVE)
         native, result_1gw = run_native_and_1gw(model, ARC_SPEC, [], P_NATIVE)
-        assert generic.costs.lcoe == pytest.approx(169.3, abs=0.5)
+        assert generic.costs.lcoe == pytest.approx(170.5, abs=0.5)
         assert native.costs.lcoe == pytest.approx(generic.costs.lcoe)  # empty ⇒ equal
-        assert result_1gw.costs.lcoe == pytest.approx(131.5, abs=0.5)
+        assert result_1gw.costs.lcoe == pytest.approx(97.2, abs=0.5)  # 1 GWe via R0-bisection
 
 
 # ---------------------------------------------------------------------------
@@ -163,14 +177,20 @@ class TestForwardKwargShape:
     def test_no_financial_defaults_from_caller(self, monkeypatch):
         cap = CaptureCosting()
         monkeypatch.setattr(helpers, "run_costing", cap)
-        run_native_and_1gw(_tokamak_model(), ARC_SPEC, [], P_NATIVE)
+        # ARC_SPEC_NMOD opts out of the 0D path so the helper goes through
+        # run_costing twice (native + n_mod-stacked projection), which is what
+        # monkeypatching helpers.run_costing intercepts.
+        run_native_and_1gw(_tokamak_model(), ARC_SPEC_NMOD, [], P_NATIVE)
         assert len(cap.inputs) == 2
         for inp in cap.inputs:
             # The per-concept file contributes no financial values; the helper
             # passes none explicitly, so they ride the adapter/library defaults.
             assert inp.interest_rate == 0.07
             assert inp.inflation_rate == 0.02
-            assert inp.construction_time_yr == 6.0
+            # construction_time_yr defaults to None on FusionTeaInput now
+            # (post-6fe39ce in 1costingfe — sourced from concept YAML when
+            # not passed as a kwarg).
+            assert inp.construction_time_yr is None
             # availability / lifetime_yr are passed but library-sourced.
             assert inp.availability == 0.85
             assert inp.lifetime_yr == 40.0
@@ -189,7 +209,7 @@ class TestForwardKwargShape:
         enabled overrides and override_reference_mw=P_native (FR-3)."""
         cap = CaptureCosting()
         monkeypatch.setattr(helpers, "run_costing", cap)
-        run_native_and_1gw(_tokamak_model(), ARC_SPEC, ARC_OVERRIDES, P_NATIVE)
+        run_native_and_1gw(_tokamak_model(), ARC_SPEC_NMOD, ARC_OVERRIDES, P_NATIVE)
         native = next(i for i in cap.inputs if i.net_electric_mw == P_NATIVE)
         assert native.override_reference_mw == P_NATIVE
         assert native.cost_overrides == {
@@ -202,7 +222,7 @@ class TestForwardKwargShape:
     def test_projection_passes_override_reference_mw(self, monkeypatch):
         cap = CaptureCosting()
         monkeypatch.setattr(helpers, "run_costing", cap)
-        run_native_and_1gw(_tokamak_model(), ARC_SPEC, ARC_OVERRIDES, P_NATIVE)
+        run_native_and_1gw(_tokamak_model(), ARC_SPEC_NMOD, ARC_OVERRIDES, P_NATIVE)
         proj = next(i for i in cap.inputs if i.net_electric_mw == 1000.0)
         assert proj.override_reference_mw == P_NATIVE
         assert proj.cost_overrides == {
@@ -242,13 +262,25 @@ class TestPNative1000Collapses:
     def test_n_mod_is_one(self, monkeypatch):
         cap = CaptureCosting()
         monkeypatch.setattr(helpers, "run_costing", cap)
-        run_native_and_1gw(_tokamak_model(), ARC_SPEC, [], 1000.0)
+        # ARC_SPEC_NMOD routes through n_mod-stacking path, captured by
+        # the helpers.run_costing monkeypatch. The collapse property
+        # (n_mod=1 when P_native=1000) holds equally for both projection
+        # paths — n_mod-stacking rounds 1000/1000=1, R0-bisection always
+        # uses n_mod=1.
+        run_native_and_1gw(_tokamak_model(), ARC_SPEC_NMOD, [], 1000.0)
         proj = next(i for i in cap.inputs if i.net_electric_mw == 1000.0)
         assert proj.n_mod == 1
 
     def test_native_equals_projection(self):
+        # Tokamak 0D path with P_native=1000: the projection bisects R0 to
+        # match native β_N at target=1000 MWe. Since native is also at
+        # target=1000, the bisection should converge near spec R0 — but
+        # with bisection tolerance R0_tol=0.01 the converged R0 differs
+        # from spec by up to that tolerance, producing a small LCOE drift.
+        # Test with n_mod-stacking semantics (ARC_SPEC_NMOD) where the
+        # collapse is exact.
         model = _tokamak_model()
-        native, result_1gw = run_native_and_1gw(model, ARC_SPEC, [], 1000.0)
+        native, result_1gw = run_native_and_1gw(model, ARC_SPEC_NMOD, [], 1000.0)
         assert native.costs.lcoe == pytest.approx(result_1gw.costs.lcoe)
 
 
@@ -299,4 +331,4 @@ class TestPrintCasBreakdown:
         # run_model greps this exact pattern from model_setup.py stdout.
         m = re.search(r"LCOE:\s*([\d.]+)\s*\$/MWh", out)
         assert m, "print_cas_breakdown must emit a `LCOE: <n> $/MWh` line"
-        assert float(m.group(1)) == pytest.approx(546.0, abs=0.5)
+        assert float(m.group(1)) == pytest.approx(190.4, abs=0.5)
