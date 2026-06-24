@@ -83,12 +83,32 @@ _SENSITIVITY_EXCLUDE_KEYS: frozenset[str] = frozenset({
     "p_input", "p_nbi", "p_ecrh", "p_icrf", "p_lhcd",
     # Derived / deprecated
     "eta_pin", "r_bore", "fw_area",
+    # Derived outputs masquerading as inputs. q_eng (engineering Q,
+    # p_net_electric / p_input_electric) and q_sci (scientific Q,
+    # p_fus / p_input) are computed by the forward and reported on the
+    # power_table, but the library schema also exposes them as keys in
+    # `result.params` with non-zero gradients. Overriding either via a
+    # slider has no effect on LCOE (the forward ignores the override
+    # because q_eng/q_sci aren't forward kwargs), so the elasticity is
+    # misleading.
+    "q_eng", "q_sci",
     # Modeling factor — neutron energy multiplication is a blanket-physics
     # constant tied to fuel choice, not an analyst-tunable input.
     "mn",
     # Behavior flag
     "enforce_plasma_limits",
 })
+
+# Additional exclusions applied only to non-tokamak concepts. R0, plasma_t,
+# and elon are meaningful tokamak design knobs whose cost cards scale with
+# machine size (the user-accepted reasoning: "coil/blanket/vessel cost
+# scales with R0"). But they appear in every concept's params dict because
+# the library uses one schema across all families — for laser IFE, mirror,
+# FRC, etc., these keys carry library defaults (e.g. plasma_t=4.0 for
+# laser ICF concepts) with no physical correspondence to the concept's
+# geometry, and the tornado renders nonsensical "Minor Radius" sliders.
+# Drop them for everyone except tokamak.
+_NON_TOKAMAK_EXCLUDE_KEYS: frozenset[str] = frozenset({"R0", "plasma_t", "elon"})
 
 # Ensure project root is on sys.path so fully-qualified package imports work
 # when the script is run directly (uv run python exploration/.../extract_explorer_data.py)
@@ -335,7 +355,11 @@ def _forward_result_to_dict(result: Any) -> dict[str, Any]:
 
 
 def build_sensitivity_analysis(
-    model: Any, result: Any, cost_overrides: dict[str, float] | None = None
+    model: Any,
+    result: Any,
+    cost_overrides: dict[str, float] | None = None,
+    *,
+    confinement_family: ConfinementFamily | None = None,
 ) -> SensitivityAnalysis:
     """Call model.sensitivity(result.params) and wrap output in SensitivityAnalysis.
 
@@ -363,7 +387,24 @@ def build_sensitivity_analysis(
     2. Post-call: drop ``_SENSITIVITY_EXCLUDE_KEYS`` from the returned
        sensitivity dicts before wrapping — see that constant's docstring for
        which keys and why.
+
+    3. If ``confinement_family`` is set and is not MFE/tokamak-routed (i.e.,
+       any non-tokamak family — IFE / MIF / stellarator / mirror / FRC /
+       NONSTANDARD), additionally drop ``_NON_TOKAMAK_EXCLUDE_KEYS``
+       (``R0``, ``plasma_t``, ``elon``). The union-schema library populates
+       these keys for every concept with placeholder values, but they have
+       no physical correspondence outside tokamaks. NOTE: this only filters
+       *non-tokamak* concepts. Stellarator/mirror also map to ConfinementFamily.MFE
+       in this codebase, so we'd ideally key off the model's confinement
+       concept too. Today the corpus has only tokamak as the MFE family
+       that actually uses these knobs; if stellarator/mirror concepts re-
+       enter the MFE bucket with valid R0/plasma_t/elon defaults, revisit.
     """
+    family_excludes = (
+        _NON_TOKAMAK_EXCLUDE_KEYS
+        if confinement_family is not None and confinement_family != ConfinementFamily.MFE
+        else frozenset()
+    )
     sens_params = {k: v for k, v in result.params.items() if v is not None}
     sens_params.pop("eta_pin", None)
     sens_raw: dict[str, dict[str, float]] = model.sensitivity(
@@ -378,6 +419,7 @@ def build_sensitivity_analysis(
             k: SensitivityEntry(elasticity=float(v), baseline=float(params.get(k, 0.0)))
             for k, v in group.items()
             if k not in _SENSITIVITY_EXCLUDE_KEYS
+            and k not in family_excludes
             and v is not None
             and math.isfinite(float(v))
         }
@@ -450,13 +492,27 @@ def generate_parameter_metadata(
 def _build_sensitivity_from_dict(
     sens_raw: dict[str, dict[str, float]],
     params: dict[str, float],
+    *,
+    confinement_family: ConfinementFamily | None = None,
 ) -> SensitivityAnalysis:
     """Build SensitivityAnalysis from freeform compute_sensitivity() output.
 
     sens_raw: {"engineering": {param: elasticity}, "financial": {param: elasticity}}
     params: {param: baseline_value} from to_explorer_dict()["params"]
+
+    Applies the same exclude filters as ``build_sensitivity_analysis``: global
+    ``_SENSITIVITY_EXCLUDE_KEYS`` always, plus ``_NON_TOKAMAK_EXCLUDE_KEYS``
+    for any non-MFE concept. Freeform scripts rarely produce these keys, but
+    if they do (e.g. a tokamak-style freeform with R0), the same UX rules
+    apply.
     """
     import math
+
+    family_excludes = (
+        _NON_TOKAMAK_EXCLUDE_KEYS
+        if confinement_family is not None and confinement_family != ConfinementFamily.MFE
+        else frozenset()
+    )
 
     def _entries(group: dict[str, float]) -> dict[str, SensitivityEntry]:
         return {
@@ -465,7 +521,10 @@ def _build_sensitivity_from_dict(
                 baseline=float(params.get(k, 0.0)),
             )
             for k, v in group.items()
-            if v is not None and math.isfinite(float(v))
+            if k not in _SENSITIVITY_EXCLUDE_KEYS
+            and k not in family_excludes
+            and v is not None
+            and math.isfinite(float(v))
         }
 
     return SensitivityAnalysis(
@@ -532,8 +591,14 @@ def extract_costingfe(
     raw_overrides = getattr(module, "overrides", []) or []
     enabled = _enabled_overrides(raw_overrides)
     override_records = _build_override_records(raw_overrides, confinement_family)
-    sensitivities = build_sensitivity_analysis(model, effective_result, cost_overrides=enabled)
-    sensitivities_bare = build_sensitivity_analysis(model, effective_result, cost_overrides=None)
+    sensitivities = build_sensitivity_analysis(
+        model, effective_result, cost_overrides=enabled,
+        confinement_family=confinement_family,
+    )
+    sensitivities_bare = build_sensitivity_analysis(
+        model, effective_result, cost_overrides=None,
+        confinement_family=confinement_family,
+    )
     # Three-layer merge (later wins):
     #   1. generate_parameter_metadata() — auto baseline + range + auto display_name
     #   2. shared display registry       — patches display_name/_unit/_multiplier
@@ -862,7 +927,8 @@ def extract_standalone(
                 if sens_raw is not None:
                     params_dict = raw_dict.get("params", {})
                     cost_model.sensitivities = _build_sensitivity_from_dict(
-                        sens_raw, params_dict
+                        sens_raw, params_dict,
+                        confinement_family=confinement_family,
                     )
                     has_sensitivities = True
 
