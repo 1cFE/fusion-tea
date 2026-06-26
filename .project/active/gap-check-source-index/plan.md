@@ -217,7 +217,7 @@ Compute fleet aggregates:
 - [ ] Rerun `uv run python exploration/scoring_v2/scripts/populate_data_availability.py`
 - [ ] Run the scoring composite (whatever command the v3 pipeline uses for axis composition — check with `exploration/scoring_v2/` README or recent PR if unfamiliar)
 - [ ] Diff the resulting per-concept Data Availability scores against pre-Phase-2 scores; record any tier changes
-- [ ] If Score Explorer is consuming the scores, refresh the deployed `docs/score-explorer/` copy
+- [ ] If Score Explorer is consuming the scores, refresh the deployed `docs/` copy (index.html + data/)
 
 ### Validation
 
