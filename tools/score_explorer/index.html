@@ -560,8 +560,8 @@
           flags.push("⚠ Blanket = TBD; assumed Liquid metal.");
         }
         return [
-          `Modularity ${fmt(v, 2)} (${scoreTier(v)}).`,
-          `Raw score ${fmt(raw, 2)}; normalized to corpus mean 2.5, variance 1.25.`,
+          `Modularity ${fmt(v, 1)} (${scoreTier(v)}).`,
+          `Raw score ${fmt(raw, 1)}; normalized to corpus mean 2.5, variance 1.25.`,
           "",
           "What drove the raw score:",
           `• ${mvsLine}`,
@@ -587,7 +587,7 @@
         const hasHe3 = triggers.includes("helium3");
         if (triggers.length === 0) {
           return [
-            `Supply chain ${fmt(v, 2)} of 5 (${scoreTier(v)}).`,
+            `Supply chain ${fmt(v, 1)} of 5 (${scoreTier(v)}).`,
             "",
             "No critical-material bottlenecks. Fuel and blanket choices avoid scarce or regulated supply chains.",
           ].join("\n");
@@ -600,7 +600,7 @@
           ? "\n\n⚠ Blanket = TBD; assumed Liquid metal (changes which materials are flagged)."
           : "";
         return [
-          `Supply chain ${fmt(v, 2)} of 5 (${scoreTier(v)}).`,
+          `Supply chain ${fmt(v, 1)} of 5 (${scoreTier(v)}).`,
           "",
           lead,
           list,
@@ -633,11 +633,11 @@
           ? ["", "⚠ Blanket = TBD; assumed Liquid metal."]
           : [];
         if (triggers.length === 0) {
-          return [`Plant complexity ${fmt(v, 2)} of 5 (${scoreTier(v)}).`,
+          return [`Plant complexity ${fmt(v, 1)} of 5 (${scoreTier(v)}).`,
                   "", "No major subsystem flags triggered."].concat(flags).join("\n");
         }
         return [
-          `Plant complexity ${fmt(v, 2)} of 5 (${scoreTier(v)}).`,
+          `Plant complexity ${fmt(v, 1)} of 5 (${scoreTier(v)}).`,
           "",
           `${triggers.length} major subsystem${triggers.length > 1 ? "s" : ""} flagged:`,
           ...sortedByWeight.map(([k]) => `  • ${labels[k] || k}`),
@@ -662,7 +662,7 @@
           "D-T":    "full tritium handling + 14 MeV neutron exclusion zone",
         }[fuel] || fuel;
         return [
-          `Site-customization ${fmt(v, 2)} of 5 (${scoreTier(v)}).`,
+          `Site-customization ${fmt(v, 1)} of 5 (${scoreTier(v)}).`,
           "",
           "Higher = more site-flexible. Drivers:",
           `  • Cooling: ${aWord}`,
@@ -681,8 +681,8 @@
         };
         const triggers = Object.keys(d.penalties_triggered || {});
         const head = [
-          `Capacity factor ${fmt(v, 2)} (${scoreTier(v)}).`,
-          `Raw score ${fmt(raw, 2)}; normalized to corpus mean 2.5, variance 1.25.`,
+          `Capacity factor ${fmt(v, 1)} (${scoreTier(v)}).`,
+          `Raw score ${fmt(raw, 1)}; normalized to corpus mean 2.5, variance 1.25.`,
           "",
         ];
         if (triggers.length === 0) {
@@ -700,7 +700,7 @@
         const v = d.technical_feasibility_score;
         if (d.no_data_floor) {
           return [
-            `Technical feasibility ${fmt(v, 2)} of 5 (floor).`,
+            `Technical feasibility ${fmt(v, 1)} of 5 (floor).`,
             "",
             "⚠ This architectural family has no peer-reviewed measurement of plasma triple product (n·T·τ).",
             "",
@@ -716,7 +716,7 @@
         else if (log <= 5)  gapWord = "1000× to 100,000× below";
         else                gapWord = "more than 100,000× below";
         const lines = [
-          `Technical feasibility ${fmt(v, 2)} of 5 (${scoreTier(v)}).`,
+          `Technical feasibility ${fmt(v, 1)} of 5 (${scoreTier(v)}).`,
           "",
           `This architectural family has demonstrated plasma triple product`,
           `${gapWord} of the threshold for fusion breakeven with its fuel.`,
@@ -733,7 +733,7 @@
         const v = d.data_availability_score;
         if (!d.in_csv) {
           return [
-            `Data availability ${fmt(v, 2)} (floor).`,
+            `Data availability ${fmt(v, 1)} (floor).`,
             "",
             "⚠ Not in the design_point.csv table — no curated design point on record. Score floors at 1.0.",
           ].join("\n");
@@ -746,7 +746,7 @@
           low:    "low — company target or aspirational scale only; no peer-reviewed plant design",
         }[conf] || conf;
         const lines = [
-          `Data availability ${fmt(v, 2)} (${scoreTier(v)}).`,
+          `Data availability ${fmt(v, 1)} (${scoreTier(v)}).`,
           "",
           `Design point: ${d.design_name || "(unnamed)"}`,
           `Grounding confidence: ${confLabel}.`,
@@ -758,7 +758,7 @@
         return lines.join("\n");
       }
 
-      return `${AXIS_LABEL[axis]}: ${fmt(concept.scores[axis], 2)} (1-5 scale).`;
+      return `${AXIS_LABEL[axis]}: ${fmt(concept.scores[axis], 1)} (1-5 scale).`;
     }
 
     // Composite tooltip: lists which axes contributed and how.
@@ -767,7 +767,7 @@
       const inc = concept._included || [];
       const all = AXES.length;
       const lines = [
-        `Composite ${fmt(v, 2)} of 5 (${scoreTier(v)}).`,
+        `Composite ${fmt(v, 1)} of 5 (${scoreTier(v)}).`,
         "",
         `Weighted average of ${inc.length} of ${all} axes.`,
       ];
@@ -1005,12 +1005,12 @@
             return html`
               <td key=${a} class=${`num ${scoreClass(v)}`}
                   data-tooltip=${buildAxisTooltip(a, c)}>
-                ${fmt(v, 2)}
+                ${fmt(v, 1)}
               </td>
             `;
           })}
           <td class="composite" data-tooltip=${buildCompositeTooltip(c)}>
-            ${fmt(c._composite, 2)}
+            ${fmt(c._composite, 1)}
           </td>
         </tr>
       `);
@@ -1035,7 +1035,7 @@
           <h3>Composite</h3>
           <div style=${{ marginBottom: 8, fontSize: 13 }}>
             <span class=${scoreClass(selected._composite)} style=${{ fontSize: 18, fontWeight: 600 }}>
-              ${fmt(selected._composite, 2)}
+              ${fmt(selected._composite, 1)}
             </span>
             ${" — "}
             <span style=${{ color: "var(--text-dim)" }}>
@@ -1055,7 +1055,7 @@
               <div class="diagnostic" key=${a}>
                 <h3>
                   <span>${AXIS_LABEL[a]}</span>
-                  <span class=${`axis-score ${scoreClass(v)}`}>${fmt(v, 2)}</span>
+                  <span class=${`axis-score ${scoreClass(v)}`}>${fmt(v, 1)}</span>
                 </h3>
                 ${block
                   ? html`<pre>${JSON.stringify(block, null, 2)}</pre>`
