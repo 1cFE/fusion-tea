@@ -754,8 +754,6 @@
         ];
         if (d.verified_by) {
           lines.push(`Verified by: ${d.verified_by}.`);
-        } else {
-          lines.push("⚠ Not yet verified by analyst (LLM-proposed pending review).");
         }
         return lines.join("\n");
       }
