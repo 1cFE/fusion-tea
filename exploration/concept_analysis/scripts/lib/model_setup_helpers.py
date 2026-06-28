@@ -48,6 +48,7 @@ import warnings
 from types import SimpleNamespace
 from typing import Any, TypedDict
 
+import costingfe.model as _cfe_model
 from costingfe import ConfinementConcept, CostModel, Fuel, PowerCycle
 from costingfe.adapter import (
     FusionTeaInput,
@@ -58,6 +59,24 @@ from costingfe.adapter import (
 from costingfe.defaults import load_costing_constants
 from costingfe.layers.physics import OperatingPointInfeasible
 from costingfe.validation import CostingInput, default_availability
+
+# --- Option A bridge: re-enable the release-gated 0D physics + sizing solvers ---
+# The 1costingfe v0.1.0 release gated `use_0d_model` (0D tokamak/mirror inverse)
+# and `size_from_power`/`optimize_lcoe` behind two module-level flags in
+# costingfe.model, defaulting False, so the released build only *costs a
+# user-supplied operating point* (it raises NotImplementedError otherwise). The
+# fusion-tea three-forward contract below depends on the 0D inverse: every
+# tokamak concept routes its native + 1 GWe-projection forwards through
+# `use_0d_model=True` (see `_use_0d_path` / `_bisect_r0_at_native_beta`). The
+# solver code stays on disk in the released build — only the gate is closed —
+# so we flip both flags back on here, at the single costing chokepoint every
+# entry point (concept model_setup.py, the extractor, and the explorer server's
+# recompute) imports before any forward() call. Flags are plain module globals
+# read at call time inside forward(), so this runtime flip is sufficient and it
+# survives `1costingfe` library pulls (unlike editing the library source).
+# Rationale + alternatives: .project/research/20260628-132851_costingfe-release-migration.md
+_cfe_model.MODELS_0D_ENABLED = True
+_cfe_model.SIZING_FEATURES_ENABLED = True
 
 # The standardized plant lifetime is the library field default (Item-4 = 40 yr).
 _LIBRARY_LIFETIME_YR: float = CostingInput.model_fields["lifetime_yr"].default
