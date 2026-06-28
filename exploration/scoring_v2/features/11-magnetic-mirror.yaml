@@ -2,126 +2,148 @@ _meta:
   concept_id: 11-magnetic-mirror
   name: Magnetic Mirror (D-T)
 blanket_config:
-  value: Liquid metal
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: Liquid metal
+chamber_size_class:
+  confidence: high
+  extracted_at: '2026-06-17'
+  provenance: manual (modularity 2-slot, MFE/Non-Standard default)
+  value: N/A
 confinement_concept:
-  value: Mirror
-  provenance: derived
   confidence: high
   extracted_at: '2026-06-13'
+  provenance: derived
+  value: Mirror
 confinement_family:
-  value: MFE
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: MFE
 customization_diagnostics:
-  sub_factor_a:
-    feature: energy_capture
-    value: Hybrid (thermal + direct)
-    classification: hybrid
-    score: 3
-  sub_factor_b:
-    feature: fuel
-    value: D-T
-    score: 1
-  raw_average: 2.0
   customization_score: 2.33
   extracted_at: '2026-05-20'
+  raw_average: 2.0
+  sub_factor_a:
+    classification: hybrid
+    feature: energy_capture
+    score: 3
+    value: Hybrid (thermal + direct)
+  sub_factor_b:
+    feature: fuel
+    score: 1
+    value: D-T
 data_availability_diagnostics:
-  source_csv: exploration/concept_analysis/tables/design_point.csv
-  in_csv: true
-  design_name: "Hammir pilot plant \u2014 Frank et al. 2024 conservative operating\
-    \ point (Realta Fusion)"
-  grounding_confidence: medium
-  primary_sources_count: 2
-  verified_by: null
   data_availability_score: 3.0
+  design_name: "Hammir pilot plant \xE2\u20AC\u201D Frank et al. 2024 conservative\
+    \ operating point (Realta Fusion)"
   extracted_at: '2026-06-12'
+  grounding_confidence: medium
+  in_csv: true
+  primary_sources_count: 2
+  source_csv: exploration/concept_analysis/tables/design_point.csv
+  verified_by: null
 design_point_grounding_confidence:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: exploration/concept_analysis/tables/design_point.csv
   value: medium
-  provenance: exploration/concept_analysis/tables/design_point.csv
-  confidence: high
-  extracted_at: '2026-06-12'
 design_point_primary_sources_count:
-  value: 2
+  confidence: high
+  extracted_at: '2026-06-12'
   provenance: exploration/concept_analysis/tables/design_point.csv
+  value: 2
+driver_architecture:
   confidence: high
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
+  provenance: manual (modularity 2-slot, MFE/Non-Standard default)
+  value: N/A
 driver_technology:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: HTS mirror magnets (REBCO, 17+ T) + NBI + ECH
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 energy_capture:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Hybrid (thermal + direct)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 fuel:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: D-T
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 ife_driver:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 laser_approach:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 magnet_type:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: HTS (wound)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 mfe_topology:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Open/Linear
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 mif_method:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 modularity_diagnostics:
   min_viable_device_scale: 4.0
-  percent_mod: 4.3333
+  percent_mod: 4.6667
   unit_multiplicity: 4.0
-  modularity_score: 4.0833
+  modularity_score: 4.1667
+  percent_mod_path: three_slot
   mvs_lookup_key: MFE|Mirror
   vessel_lookup_key: MFE|Mirror|*
   magnet_driver_lookup_key: MFE|HTS (wound)|*
   blanket_lookup_key: D-T|Liquid metal
-  vessel_modularity_rating: 3.0
+  driver_lookup_key: null
+  chamber_blanket_lookup_key: null
+  vessel_modularity_rating: 4.0
   magnet_driver_modularity_rating: 5.0
   blanket_modularity_rating: 5.0
+  driver_modularity_rating: null
+  chamber_blanket_modularity_rating: null
   capex_shares_used:
-    w_vessel: 0.0198
-    w_coils: 0.0398
-    w_blanket: 0.0214
-    sum: 0.0809
+    w_vessel: 0.018
+    w_coils: 0.1157
+    w_blanket: 0.0194
+    sum_3slot: 0.1531
+    w_energy_delivery: null
+    w_containment: null
+    sum_2slot: 0.0
     method: equal_weight_fallback_sparse_capex
   unit_count_estimate: 12
   blanket_assumed: false
-  v5_calibration_target: 4.01
-  extracted_at: '2026-06-13'
+  v5_calibration_target: 3.18
+  extracted_at: '2026-06-17'
 non_standard_mechanism:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: N/A
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 operation_mode:
-  value: Steady-state
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: Steady-state
 plant_complexity_diagnostics:
+  blanket_assumed: false
+  extracted_at: '2026-05-20'
+  plant_complexity_score: 1.0
+  subsystem_complexity_weight: 4.5
   subsystems_triggered:
     cryoplant_hts: 0.5
     high_power_aux: 1.0
@@ -129,74 +151,70 @@ plant_complexity_diagnostics:
     liquid_metal_handling: 0.5
     remote_maintenance: 1.0
     tritium_plant: 1.0
-  subsystem_complexity_weight: 4.5
-  plant_complexity_score: 1.0
-  blanket_assumed: false
-  extracted_at: '2026-05-20'
 primary_heating:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: RF + NBI
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 repetition_rate:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 stellarator_type:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 supply_chain_diagnostics:
+  blanket_assumed: false
+  bottleneck_weight: 3.0
   bottlenecks_triggered:
     lithium6: 1.0
     tritium: 1.0
     vanadium: 1.0
-  bottleneck_weight: 3.0
+  extracted_at: '2026-05-20'
   supply_chain_score: 2.0
-  blanket_assumed: false
-  extracted_at: '2026-05-20'
 technical_feasibility_diagnostics:
-  required_triple_product: 3.0e+21
-  achieved_triple_product: 1.0e+18
   achieved_lookup_key: MFE|Mirror
-  triple_product_gap: 3000.0
-  log10_gap: 3.477
+  achieved_triple_product: 1.0e+18
   base_score_from_gap: 2.0
-  laser_approach_modifier: 0.0
-  technical_feasibility_score: 2.0
-  no_data_floor: false
   extracted_at: '2026-05-20'
+  laser_approach_modifier: 0.0
+  log10_gap: 3.477
+  no_data_floor: false
+  required_triple_product: 3.0e+21
+  technical_feasibility_score: 2.0
+  triple_product_gap: 3000.0
 tokamak_shape:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 unit_count_estimate:
-  value: 12
-  provenance: modularity_implementation_spec.md Change E
   confidence: high
   extracted_at: '2026-05-20'
+  provenance: modularity_implementation_spec.md Change E
+  value: 12
 upper_cf_diagnostics:
+  blanket_assumed: false
+  extracted_at: '2026-05-20'
+  operational_penalty_weight: 1.0
   penalties_triggered:
     neutronic_fuel: 1.0
-  operational_penalty_weight: 1.0
   upper_cf_score: 4.0
-  blanket_assumed: false
-  extracted_at: '2026-05-20'
 w_blanket:
-  value: 0.021357216672407853
-  provenance: analyses/11-magnetic-mirror/model_output.txt
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
+  provenance: analyses/11-magnetic-mirror/model_output.txt
+  value: 0.019420750807190013
 w_coils:
-  value: 0.039773178939558555
-  provenance: analyses/11-magnetic-mirror/model_output.txt
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
+  provenance: analyses/11-magnetic-mirror/model_output.txt
+  value: 0.11570526721603779
 w_vessel:
-  value: 0.01979384721375765
-  provenance: analyses/11-magnetic-mirror/model_output.txt
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
+  provenance: analyses/11-magnetic-mirror/model_output.txt
+  value: 0.017999132571924245

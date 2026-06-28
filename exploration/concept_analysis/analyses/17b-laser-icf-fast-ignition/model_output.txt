@@ -1,13 +1,13 @@
 Laser ICF — Fast Ignition D-T (Focused Energy)
 NOAK | 1 GWe | 75% availability | 30 yr | Rankine steam
-LCOE: 119.5 $/MWh | Overnight: 4797 $/kW
+LCOE: 127.9 $/MWh | Overnight: 5481 $/kW
 Fusion: 3060 MW | Net: 1000 MW | Q_eng: 4.0
 
 Code     Account                              M$
 ------------------------------------------------
 CAS10    Preconstruction                    18.5
 CAS21    Buildings                         696.9
-CAS22    Reactor Plant Equipment          1982.6
+CAS22    Reactor Plant Equipment          2474.8
 CAS23    Turbine Plant                     263.5
 CAS24    Electrical Plant                  112.2
 CAS25    Miscellaneous                      68.3
@@ -15,15 +15,15 @@ CAS26    Heat Rejection                    113.9
 CAS27    Special Materials                   6.7
 CAS28    Digital Twin                        5.0
 CAS29    Contingency                         0.0
-CAS30    Indirect Costs                    541.5
+CAS30    Indirect Costs                    623.6
 CAS40    Owner's Costs                      39.0
-CAS50    Supplementary                     322.2
-CAS60    IDC                               626.2
+CAS50    Supplementary                     343.1
+CAS60    IDC                               715.5
 CAS70    O&M (annualized)                  122.4
 CAS80    Fuel (annualized)                 276.2
-CAS90    Financial                         386.5
+CAS90    Financial                         441.7
 ------------------------------------------------
-         Total Capital                    4796.5
+         Total Capital                    5481.0
 
 CAS22 sub-account detail:
   Account                  M$
@@ -37,10 +37,10 @@ CAS22 sub-account detail:
   C220106_pump            0.4
   C220106_vessel         33.0
   C220107                13.8
-  C220108               298.4
+  C220108               730.2
   C220109                 0.0
   C220110                86.6
-  C220111               189.3
+  C220111               249.8
   C220112                 0.0
   C220200               205.5
   C220300                15.1
@@ -49,7 +49,7 @@ CAS22 sub-account detail:
   C220600                11.5
   C220700                82.3
   ----------------------------
-  C220000 Total        1982.6
+  C220000 Total        2474.8
 
 Key Assumptions:
   1. q_eng = 4.0: HIGHLY UNCERTAIN. Fast ignition has not demonstrated
@@ -72,24 +72,24 @@ Sensitivity (elasticity = %LCOE / %param)
 ------------------------------------------------
 
 Engineering levers:
-  availability                         -0.5998
-  q_eng                                -0.2807
-  f_rep                                +0.2488
-  construction_time_yr                 +0.2071
-  plasma_t                             +0.1529
-  eta_th                               -0.1417
-  eta_pin                              +0.1209
-  blanket_t                            +0.0689
-  mn                                   -0.0453
-  f_sub                                -0.0178
-  ht_shield_t                          +0.0146
-  vessel_t                             +0.0058
-  p_trit                               -0.0044
-  fuel_recovery                        -0.0024
-  structure_t                          +0.0023
-  p_house                              -0.0018
+  availability                         -0.6261
+  f_rep                                +0.2826
+  q_eng                                -0.2571
+  construction_time_yr                 +0.2144
+  eta_th                               -0.1492
+  plasma_t                             +0.1428
+  eta_pin                              +0.1128
+  blanket_t                            +0.0644
+  mn                                   -0.0560
+  f_sub                                -0.0166
+  ht_shield_t                          +0.0136
+  vessel_t                             +0.0054
+  p_trit                               -0.0042
+  fuel_recovery                        -0.0023
+  structure_t                          +0.0022
+  p_house                              -0.0017
   p_cryo                               +0.0009
-  p_pump                               -0.0005
+  p_pump                               -0.0004
   p_target                             -0.0004
   burn_fraction                        -0.0001
   dd_f_T                               +0.0000
@@ -100,45 +100,45 @@ Engineering levers:
   eta_dec                              +0.0000
 
 Financial:
-  interest_rate                        +0.3635
-  inflation_rate                       +0.1751
+  interest_rate                        +0.3949
+  inflation_rate                       +0.1636
 
 Costing constants (top 15):
-  driver_laser_per_mj                  +0.1214
-  om_cost_dt                           +0.0964
-  indirect_fraction                    +0.0649
-  blanket_unit_cost_dt                 +0.0633
-  target_factory_base                  +0.0486
-  dpssl_optics_replace_frac            +0.0280
-  installation_frac                    +0.0270
-  core_lifetime_dt                     -0.0270
-  shield_unit_cost                     +0.0230
-  dpssl_optics_shot_lifetime           -0.0203
-  fuel_handling_dt_base                +0.0171
-  electric_per_mw                      +0.0164
-  decom_provision_dt                   +0.0150
-  remote_handling_dt_base              +0.0141
-  misc_per_mw                          +0.0100
+  driver_laser_per_mj                  +0.1134
+  om_cost_dt                           +0.0901
+  indirect_fraction                    +0.0698
+  blanket_unit_cost_dt                 +0.0591
+  installation_frac                    +0.0333
+  dpssl_optics_replace_frac            +0.0262
+  core_lifetime_dt                     -0.0252
+  shield_unit_cost                     +0.0215
+  dpssl_optics_shot_lifetime           -0.0190
+  fuel_handling_dt_base                +0.0160
+  electric_per_mw                      +0.0153
+  decom_provision_dt                   +0.0140
+  remote_handling_dt_base              +0.0132
+  misc_per_mw                          +0.0093
+  construction_insurance_frac          +0.0072
 
 Ignition Laser Cost Premium Sweep
 (C220104 = baseline DPSSL driver cost; ignitor premium applied on top)
 Baseline C220104: 567.5 M$ (no ignitor premium)
    Premium   C220104 M$   LCOE $/MWh
 ------------------------------------
-  +0% ← lower bound            567.5       98.5
-  +25%                          709.4      101.8
-  +40% ← midpoint est.          794.5      103.8
-  +65%                          936.4      107.1
+  +0% ← lower bound            567.5      112.2
+  +25%                          709.4      115.5
+  +40% ← midpoint est.          794.5      117.4
+  +65%                          936.4      120.7
 
 η_coup Fast Ignition Viability Sweep
 (proportional mapping: q_eng = 4.0 × η_coup / 0.15; threshold failure below η_coup ≈ 0.07)
   η_coup    q_eng   LCOE $/MWh   Status
 ----------------------------------------------------
     0.05     0.80            —   NON-VIABLE (ignition failure, q_eng < 1)
-    0.10     2.67        118.6   viable
-    0.15     4.00         98.5   viable ← baseline
-    0.20     5.33         90.8   viable
-    0.30     8.00         84.1   viable
+    0.10     2.67        131.8   viable
+    0.15     4.00        112.2   viable ← baseline
+    0.20     5.33        104.6   viable
+    0.30     8.00         98.0   viable
 
 Repetition Rate Sweep
 NOTE: 1costingfe does not capture rep-rate-dependent capital amortization.
@@ -146,8 +146,8 @@ NOTE: 1costingfe does not capture rep-rate-dependent capital amortization.
       cannot be reproduced here — they require a per-shot cost model.
   f_rep Hz   LCOE $/MWh Note
 ----------------------------------------------------------------
-       5 Hz         99.1   (Meier: ~+12-16% vs. 20 Hz; not reproduced here)
-      10 Hz         98.5   ← Focused Energy target (Meier: ~+4% vs. 20 Hz; not reproduced here)
-      15 Hz        105.7   
-      20 Hz        114.4   ← Meier 2006 COE-minimum (not reproduced here)
-      25 Hz        123.8   
+       5 Hz        106.9   (Meier: ~+12-16% vs. 20 Hz; not reproduced here)
+      10 Hz        112.2   ← Focused Energy target (Meier: ~+4% vs. 20 Hz; not reproduced here)
+      15 Hz        125.1   
+      20 Hz        139.7   ← Meier 2006 COE-minimum (not reproduced here)
+      25 Hz        154.9   

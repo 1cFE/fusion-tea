@@ -219,12 +219,31 @@ def _forward_with_overrides(
     """
     params = {**base_params, **overrides}
     extra = {k: v for k, v in params.items() if k not in _FORWARD_NAMED and k not in _FORWARD_SKIP}
+    # Drop None-valued keys before forward(): base_params is result_1gw.params,
+    # the union of all-fuel params with None for inapplicable ones (e.g. D-T
+    # tokamak carries `dhe3_dd_frac_pin=None`). forward() rejects unknown
+    # kwargs strictly. Drop eta_pin for the same reason — derived from
+    # eta_source × eta_couple for NBI/RF-heated concepts, library rejects pinning.
+    extra = {k: v for k, v in extra.items() if v is not None}
+    extra.pop("eta_pin", None)
+    # Deprecated kwargs the current library refuses to accept on forward(), but
+    # which appear in pre-regen stored result_1gw.params from older library
+    # versions. Drop defensively so sliders work against stale JSON until the
+    # next full regen lands.
+    # - b_center / r_bore: derived from B in tokamak post-0bec805
+    for stale in ("b_center", "r_bore"):
+        extra.pop(stale, None)
+    # construction_time_yr is no longer a named arg on CostModel.forward()
+    # (post-6fe39ce: sourced from concept YAML when not in kwargs). It flows
+    # through **extra now; passing it both ways causes the multiple-values
+    # TypeError, so the explicit kwarg below was removed.
+    if "construction_time_yr" in extra:
+        extra["construction_time_yr"] = float(extra["construction_time_yr"])
     return model.forward(
         net_electric_mw=float(params["net_electric_mw"]),
         availability=float(params["availability"]),
         lifetime_yr=float(params["lifetime_yr"]),
         n_mod=float(params.get("n_mod", 1)),
-        construction_time_yr=float(params.get("construction_time_yr", 6.0)),
         interest_rate=float(params.get("interest_rate", 0.07)),
         inflation_rate=float(params.get("inflation_rate", 0.02)),
         noak=bool(params.get("noak", True)),

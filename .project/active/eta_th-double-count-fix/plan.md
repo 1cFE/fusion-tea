@@ -243,7 +243,7 @@ No new test code in this phase — Phase 3's tests still hold. The "stencil" is 
 - [ ] For each of the 8 affected concepts: open `model_output.txt`, note the LCOE; open `synthesis.md`, confirm the synthesis LCOE matches. Cross-reference the LCOE delta vs the pre-fix state (use `git show HEAD:<path>` for the prior `model_output.txt`).
 - [ ] Concept 11 specifically: confirm new LCOE lands in [115, 125] $/MWh band per Phase 1 hand-calc.
 - [ ] Read concept 06's `model_setup.py` DEVIATION block — confirm wording, sources, axis label all clean.
-- [ ] **Score Explorer regression check:** `uv run python -m http.server -d docs/score-explorer/ 8421` (or whichever entry point) + open in browser. Per `CLAUDE.md` use the `browser-inspect` skill: confirm Energy Capture column renders for all 39 concepts; confirm the 8 affected concepts show updated LCOE / composite scores; capture console errors.
+- [ ] **Score Explorer regression check:** `uv run python -m http.server -d docs/ 8421` (or open https://score-explorer.1cf.energy/) + open in browser. Per `CLAUDE.md` use the `browser-inspect` skill: confirm Energy Capture column renders for all 39 concepts; confirm the 8 affected concepts show updated LCOE / composite scores; capture console errors.
 
 **What We Know Works After This Phase:**
 - The fix is fully applied and the 8 affected concepts produce LCOE matching costingfe's intended power-balance semantics.

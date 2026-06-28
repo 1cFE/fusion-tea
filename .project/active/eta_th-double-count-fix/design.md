@@ -237,7 +237,7 @@ Affected concepts only: 06, 08, 11, 19, 23, 24, 31, 39.
 - **Verifier rate-limiting.** 39 sequential `claude -p` calls at Sonnet is ~3–5 min wall-clock. Acceptable for now. If we later want CI integration, parallelize with a small worker pool.
 - **Verifier prompt versioning.** The prompt template lives in `scripts/verify_canonical_params.py` as a constant. Treat changes to it as breaking; include a `prompt_version` string in the JSON output so drift-report diffs across runs are interpretable.
 - **`pyproject.toml` / `pytest`.** Existing tests under `exploration/concept_analysis/` should continue to pass. If `tests/test_canonical_params.py` exists (TBD — check during implementation), update it to cover the new `canonical_eta_de()` function and the tuple shape.
-- **Score Explorer regression check.** No code change is expected; the Energy Capture column is unchanged. Sanity check: open `docs/score-explorer/` in a browser after the runs, confirm Energy Capture renders, confirm the 8 affected concepts show shifted LCOE / composite scores.
+- **Score Explorer regression check.** No code change is expected; the Energy Capture column is unchanged. Sanity check: open `docs/index.html` (or https://score-explorer.1cf.energy/) in a browser after the runs, confirm Energy Capture renders, confirm the 8 affected concepts show shifted LCOE / composite scores.
 
 ---
 

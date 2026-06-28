@@ -2,201 +2,229 @@ _meta:
   concept_id: 30-laser-icf-nif-commercialization
   name: Laser ICF - NIF Commercialization (D-T)
 blanket_config:
-  value: Liquid metal
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: Liquid metal
+chamber_size_class:
+  confidence: high
+  extracted_at: '2026-06-17'
+  provenance: manual (modularity 2-slot, conversation 2026-06-17)
+  value: large
 confinement_concept:
-  value: Laser ICF (indirect drive)
-  provenance: derived
   confidence: high
   extracted_at: '2026-06-13'
+  provenance: derived
+  value: Laser ICF (indirect drive)
 confinement_family:
-  value: IFE
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: IFE
 customization_diagnostics:
-  sub_factor_a:
-    feature: energy_capture
-    value: Thermal (steam)
-    classification: thermal
-    score: 2
-  sub_factor_b:
-    feature: fuel
-    value: D-T
-    score: 1
-  raw_average: 1.5
   customization_score: 1.67
   extracted_at: '2026-05-20'
+  raw_average: 1.5
+  sub_factor_a:
+    classification: thermal
+    feature: energy_capture
+    score: 2
+    value: Thermal (steam)
+  sub_factor_b:
+    feature: fuel
+    score: 1
+    value: D-T
 data_availability_diagnostics:
-  source_csv: exploration/concept_analysis/tables/design_point.csv
-  in_csv: true
+  data_availability_score: 2.0
   design_name: Inertia Enterprises commercial plant (1,000-beamline Thunderwall, 1.5
     GWe stated)
+  extracted_at: '2026-06-12'
   grounding_confidence: low
+  in_csv: true
   primary_sources_count: 3
+  source_csv: exploration/concept_analysis/tables/design_point.csv
   verified_by: null
-  data_availability_score: 2.0
-  extracted_at: '2026-06-12'
 design_point_grounding_confidence:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: exploration/concept_analysis/tables/design_point.csv
   value: low
-  provenance: exploration/concept_analysis/tables/design_point.csv
-  confidence: high
-  extracted_at: '2026-06-12'
 design_point_primary_sources_count:
-  value: 3
+  confidence: high
+  extracted_at: '2026-06-12'
   provenance: exploration/concept_analysis/tables/design_point.csv
+  value: 3
+driver_architecture:
   confidence: high
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
+  provenance: manual (modularity 2-slot, conversation 2026-06-17)
+  value: DPSSL
 driver_technology:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Diode-pumped solid-state laser (DPSSL, 10 MJ, ~1000 beamlines)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 energy_capture:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Thermal (steam)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 fuel:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: D-T
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 ife_driver:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Laser
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 laser_approach:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Indirect drive
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 magnet_type:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 mfe_topology:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 mif_method:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 modularity_diagnostics:
   min_viable_device_scale: 4.0
-  percent_mod: 4.3333
+  percent_mod: 3.2438
   unit_multiplicity: 5.0
-  modularity_score: 4.3333
+  modularity_score: 4.061
+  percent_mod_path: two_slot
   mvs_lookup_key: IFE|Laser
   vessel_lookup_key: IFE|Laser|*
   magnet_driver_lookup_key: IFE|*|DPSSL Laser
   blanket_lookup_key: D-T|Liquid metal
+  driver_lookup_key: IFE|DPSSL
+  chamber_blanket_lookup_key: IFE|large
   vessel_modularity_rating: 3.0
-  magnet_driver_modularity_rating: 5.0
+  magnet_driver_modularity_rating: null
   blanket_modularity_rating: 5.0
+  driver_modularity_rating: 4.5
+  chamber_blanket_modularity_rating: 2.5
   capex_shares_used:
-    w_vessel: 0.1044
-    w_coils: 0.0042
-    w_blanket: 0.0639
-    sum: 0.1725
-    method: equal_weight_fallback_sparse_capex
+    w_vessel: 0.2056
+    w_coils: 0.0037
+    w_blanket: 0.0555
+    sum_3slot: 0.2648
+    w_energy_delivery: 0.1546
+    w_containment: 0.2611
+    sum_2slot: 0.4157
+    method: capex_weighted
   unit_count_estimate: 1000
   blanket_assumed: false
-  v5_calibration_target: 4.36
-  extracted_at: '2026-06-13'
+  v5_calibration_target: 3.11
+  extracted_at: '2026-06-17'
 non_standard_mechanism:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: N/A
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 operation_mode:
-  value: Pulsed
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: Pulsed
 plant_complexity_diagnostics:
+  blanket_assumed: false
+  extracted_at: '2026-05-20'
+  plant_complexity_score: 1.0
+  subsystem_complexity_weight: 4.5
   subsystems_triggered:
     liquid_metal_handling: 0.5
     remote_maintenance: 1.0
     target_factory_high: 2.0
     tritium_plant: 1.0
-  subsystem_complexity_weight: 4.5
-  plant_complexity_score: 1.0
-  blanket_assumed: false
-  extracted_at: '2026-05-20'
 primary_heating:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Laser (indirect drive)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 repetition_rate:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: ~10 Hz
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 stellarator_type:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 supply_chain_diagnostics:
+  blanket_assumed: false
+  bottleneck_weight: 3.5
   bottlenecks_triggered:
     kdp: 0.5
     lithium6: 1.0
     tritium: 1.0
     vanadium: 1.0
-  bottleneck_weight: 3.5
+  extracted_at: '2026-05-20'
   supply_chain_score: 1.5
-  blanket_assumed: false
-  extracted_at: '2026-05-20'
 technical_feasibility_diagnostics:
-  required_triple_product: 3.0e+21
-  achieved_triple_product: 5.0e+21
   achieved_lookup_key: IFE|Laser ICF (indirect drive)
-  triple_product_gap: 0.6
-  log10_gap: -0.222
+  achieved_triple_product: 5.0e+21
   base_score_from_gap: 5.0
-  laser_approach_modifier: 0.0
-  technical_feasibility_score: 5.0
-  no_data_floor: false
   extracted_at: '2026-05-20'
+  laser_approach_modifier: 0.0
+  log10_gap: -0.222
+  no_data_floor: false
+  required_triple_product: 3.0e+21
+  technical_feasibility_score: 5.0
+  triple_product_gap: 0.6
 tokamak_shape:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 unit_count_estimate:
-  value: 1000
-  provenance: modularity_implementation_spec.md Change E
   confidence: high
   extracted_at: '2026-05-20'
+  provenance: modularity_implementation_spec.md Change E
+  value: 1000
 upper_cf_diagnostics:
+  blanket_assumed: false
+  extracted_at: '2026-05-20'
+  operational_penalty_weight: 1.5
   penalties_triggered:
     neutronic_fuel: 1.0
     pulsed_operation: 0.5
-  operational_penalty_weight: 1.5
   upper_cf_score: 3.5
-  blanket_assumed: false
-  extracted_at: '2026-05-20'
 w_blanket:
-  value: 0.0639040215461835
-  provenance: analyses/30-laser-icf-nif-commercialization/model_output.txt
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
+  provenance: analyses/30-laser-icf-nif-commercialization/model_output.txt
+  value: 0.055536345985052
 w_coils:
-  value: 0.004223541653914428
-  provenance: analyses/30-laser-icf-nif-commercialization/model_output.txt
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
+  provenance: analyses/30-laser-icf-nif-commercialization/model_output.txt
+  value: 0.0036705056254488395
+w_containment:
+  confidence: medium
+  extracted_at: '2026-06-17'
+  provenance: analyses/30-laser-icf-nif-commercialization/model_output.txt
+  value: 0.261111258877038
+w_energy_delivery:
+  confidence: medium
+  extracted_at: '2026-06-17'
+  provenance: analyses/30-laser-icf-nif-commercialization/model_output.txt
+  value: 0.15461340000531953
 w_vessel:
-  value: 0.1043949317500153
-  provenance: analyses/30-laser-icf-nif-commercialization/model_output.txt
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
+  provenance: analyses/30-laser-icf-nif-commercialization/model_output.txt
+  value: 0.2055749128919861

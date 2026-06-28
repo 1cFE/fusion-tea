@@ -2,196 +2,224 @@ _meta:
   concept_id: 23-laser-icf-nanostructured-target
   name: Laser ICF - Nanostructured Target (p-B11)
 blanket_config:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
+chamber_size_class:
+  confidence: high
+  extracted_at: '2026-06-17'
+  provenance: manual (modularity 2-slot, conversation 2026-06-17)
+  value: small
 confinement_concept:
-  value: Laser ICF (ultrashort pulse)
-  provenance: derived
   confidence: high
   extracted_at: '2026-06-13'
+  provenance: derived
+  value: Laser ICF (ultrashort pulse)
 confinement_family:
-  value: IFE
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: IFE
 customization_diagnostics:
-  sub_factor_a:
-    feature: energy_capture
-    value: Hybrid (thermal + direct)
-    classification: hybrid
-    score: 3
-  sub_factor_b:
-    feature: fuel
-    value: p-B11
-    score: 4
-  raw_average: 3.5
   customization_score: 4.33
   extracted_at: '2026-05-20'
+  raw_average: 3.5
+  sub_factor_a:
+    classification: hybrid
+    feature: energy_capture
+    score: 3
+    value: Hybrid (thermal + direct)
+  sub_factor_b:
+    feature: fuel
+    score: 4
+    value: p-B11
 data_availability_diagnostics:
-  source_csv: exploration/concept_analysis/tables/design_point.csv
-  in_csv: true
+  data_availability_score: 3.0
   design_name: Marvel Fusion CFE-NANO Pilot Plant (EU Horizon EIC Project 101189082,
     100 MWe, 2033 milestone)
+  extracted_at: '2026-06-12'
   grounding_confidence: medium
+  in_csv: true
   primary_sources_count: 3
+  source_csv: exploration/concept_analysis/tables/design_point.csv
   verified_by: null
-  data_availability_score: 3.0
-  extracted_at: '2026-06-12'
 design_point_grounding_confidence:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: exploration/concept_analysis/tables/design_point.csv
   value: medium
-  provenance: exploration/concept_analysis/tables/design_point.csv
-  confidence: high
-  extracted_at: '2026-06-12'
 design_point_primary_sources_count:
-  value: 3
-  provenance: exploration/concept_analysis/tables/design_point.csv
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: exploration/concept_analysis/tables/design_point.csv
+  value: 3
+driver_architecture:
+  confidence: high
+  extracted_at: '2026-06-17'
+  provenance: manual (modularity 2-slot, conversation 2026-06-17)
+  value: Ultrashort-pulse
 driver_technology:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Femtosecond DPSSL + nanostructured Si targets (nanowire arrays, semiconductor
     lithography)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 energy_capture:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Hybrid (thermal + direct)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 fuel:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: p-B11
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 ife_driver:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Laser
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 laser_approach:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Ultrashort pulse
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 magnet_type:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 mfe_topology:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 mif_method:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 modularity_diagnostics:
   min_viable_device_scale: 4.0
-  percent_mod: 4.3333
+  percent_mod: 3.6986
   unit_multiplicity: 5.0
-  modularity_score: 4.3333
+  modularity_score: 4.1746
+  percent_mod_path: two_slot
   mvs_lookup_key: IFE|Laser
   vessel_lookup_key: IFE|Laser|*
   magnet_driver_lookup_key: IFE|*|DPSSL Laser
   blanket_lookup_key: p-B11|*
+  driver_lookup_key: IFE|Ultrashort-pulse
+  chamber_blanket_lookup_key: IFE|small
   vessel_modularity_rating: 3.0
-  magnet_driver_modularity_rating: 5.0
+  magnet_driver_modularity_rating: null
   blanket_modularity_rating: 5.0
+  driver_modularity_rating: 3.5
+  chamber_blanket_modularity_rating: 5.0
   capex_shares_used:
-    w_vessel: 0.0185
+    w_vessel: 0.0175
     w_coils: 0.0008
-    w_blanket: 0.0024
-    sum: 0.0217
-    method: equal_weight_fallback_sparse_capex
+    w_blanket: 0.0023
+    sum_3slot: 0.0206
+    w_energy_delivery: 0.1297
+    w_containment: 0.0198
+    sum_2slot: 0.1495
+    method: capex_weighted
   unit_count_estimate: 500
   blanket_assumed: false
-  v5_calibration_target: 4.37
-  extracted_at: '2026-06-13'
+  v5_calibration_target: 3.42
+  extracted_at: '2026-06-17'
 non_standard_mechanism:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: N/A
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 operation_mode:
-  value: Pulsed
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: Pulsed
 plant_complexity_diagnostics:
+  blanket_assumed: false
+  extracted_at: '2026-05-20'
+  plant_complexity_score: 2.5
+  subsystem_complexity_weight: 2.5
   subsystems_triggered:
     hybrid_energy: 0.5
     target_factory_high: 2.0
-  subsystem_complexity_weight: 2.5
-  plant_complexity_score: 2.5
-  blanket_assumed: false
-  extracted_at: '2026-05-20'
 primary_heating:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Laser (ultrashort pulse)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 repetition_rate:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: ~10 Hz
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 stellarator_type:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 supply_chain_diagnostics:
+  blanket_assumed: false
+  bottleneck_weight: 0.5
   bottlenecks_triggered:
     kdp: 0.5
-  bottleneck_weight: 0.5
-  supply_chain_score: 4.5
-  blanket_assumed: false
   extracted_at: '2026-05-20'
+  supply_chain_score: 4.5
 technical_feasibility_diagnostics:
-  required_triple_product: 1.4e+25
-  achieved_triple_product: 1.0e+18
   achieved_lookup_key: IFE|Laser ICF (ultrashort pulse)
-  triple_product_gap: 14000000.0
-  log10_gap: 7.146
-  base_score_from_gap: 1.0
-  laser_approach_modifier: -0.5
-  technical_feasibility_score: 1.0
+  achieved_triple_product: 5.0e+21
+  base_score_from_gap: 2.0
+  extracted_at: '2026-06-17'
+  laser_approach_modifier: -4.0
+  log10_gap: 3.447
   no_data_floor: false
-  extracted_at: '2026-05-21'
+  required_triple_product: 1.4e+25
+  technical_feasibility_score: 1.0
+  triple_product_gap: 2800.0
 tokamak_shape:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 unit_count_estimate:
-  value: 500
-  provenance: modularity_implementation_spec.md Change E
   confidence: high
   extracted_at: '2026-05-20'
+  provenance: modularity_implementation_spec.md Change E
+  value: 500
 upper_cf_diagnostics:
+  blanket_assumed: false
+  extracted_at: '2026-05-20'
+  operational_penalty_weight: 0.5
   penalties_triggered:
     pulsed_operation: 0.5
-  operational_penalty_weight: 0.5
   upper_cf_score: 4.5
-  blanket_assumed: false
-  extracted_at: '2026-05-20'
 w_blanket:
-  value: 0.002378525314305131
-  provenance: analyses/23-laser-icf-nanostructured-target/model_output.txt
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
+  provenance: analyses/23-laser-icf-nanostructured-target/model_output.txt
+  value: 0.0022557360144367104
 w_coils:
-  value: 0.0008154943934760449
-  provenance: analyses/23-laser-icf-nanostructured-target/model_output.txt
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
+  provenance: analyses/23-laser-icf-nanostructured-target/model_output.txt
+  value: 0.0007733952049497294
+w_containment:
+  confidence: medium
+  extracted_at: '2026-06-17'
+  provenance: analyses/23-laser-icf-nanostructured-target/model_output.txt
+  value: 0.01978602732663057
+w_energy_delivery:
+  confidence: medium
+  extracted_at: '2026-06-17'
+  provenance: analyses/23-laser-icf-nanostructured-target/model_output.txt
+  value: 0.1296725960299046
 w_vessel:
-  value: 0.018484539585457017
-  provenance: analyses/23-laser-icf-nanostructured-target/model_output.txt
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
+  provenance: analyses/23-laser-icf-nanostructured-target/model_output.txt
+  value: 0.017530291312193864

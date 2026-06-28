@@ -2,185 +2,203 @@ _meta:
   concept_id: 39-spherical-tokamak-cs-free-p-b11
   name: Spherical Tokamak - CS-free p-B11 (p-B11)
 blanket_config:
-  value: N/A (no tritium)
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A (no tritium)
+chamber_size_class:
+  confidence: high
+  extracted_at: '2026-06-17'
+  provenance: manual (modularity 2-slot, MFE/Non-Standard default)
+  value: N/A
 confinement_concept:
-  value: Spherical tokamak
-  provenance: derived
   confidence: high
   extracted_at: '2026-06-13'
+  provenance: derived
+  value: Spherical tokamak
 confinement_family:
-  value: MFE
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: MFE
 customization_diagnostics:
-  sub_factor_a:
-    feature: energy_capture
-    value: Direct (charged particle)
-    classification: direct_conversion
-    score: 4
-  sub_factor_b:
-    feature: fuel
-    value: p-B11
-    score: 4
-  raw_average: 4.0
   customization_score: 5.0
   extracted_at: '2026-05-20'
+  raw_average: 4.0
+  sub_factor_a:
+    classification: direct_conversion
+    feature: energy_capture
+    score: 4
+    value: Direct (charged particle)
+  sub_factor_b:
+    feature: fuel
+    score: 4
+    value: p-B11
 data_availability_diagnostics:
-  source_csv: exploration/concept_analysis/tables/design_point.csv
-  in_csv: false
-  design_name: null
-  grounding_confidence: null
-  primary_sources_count: null
-  verified_by: null
   data_availability_score: 1.0
+  design_name: null
   extracted_at: '2026-06-12'
+  grounding_confidence: null
+  in_csv: false
+  primary_sources_count: null
+  source_csv: exploration/concept_analysis/tables/design_point.csv
+  verified_by: null
+driver_architecture:
+  confidence: high
+  extracted_at: '2026-06-17'
+  provenance: manual (modularity 2-slot, MFE/Non-Standard default)
+  value: N/A
 driver_technology:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: CS-free spherical tokamak with ECRH non-inductive current drive (EXL-50U
     / EHL-2)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 energy_capture:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Direct (charged particle)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 fuel:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: p-B11
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 ife_driver:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 laser_approach:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 magnet_type:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: HTS (wound)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 mfe_topology:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Tokamak
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 mif_method:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 modularity_diagnostics:
-  min_viable_device_scale: 3.0
-  percent_mod: 4.7877
-  unit_multiplicity: 4.0
-  modularity_score: 3.6969
-  mvs_lookup_key: MFE|Tokamak (spherical)
-  vessel_lookup_key: MFE|Tokamak|spherical
-  magnet_driver_lookup_key: MFE|HTS (wound)|*
+  blanket_assumed: false
   blanket_lookup_key: p-B11|*
-  vessel_modularity_rating: 4.0
-  magnet_driver_modularity_rating: 5.0
   blanket_modularity_rating: 5.0
   capex_shares_used:
-    w_vessel: 0.1009
-    w_coils: 0.3443
-    w_blanket: 0.0299
-    sum: 0.4751
     method: capex_weighted
+    sum_2slot: 0.0
+    sum_3slot: 0.4751
+    w_blanket: 0.0299
+    w_coils: 0.3443
+    w_containment: null
+    w_energy_delivery: null
+    w_vessel: 0.1009
+  chamber_blanket_lookup_key: null
+  chamber_blanket_modularity_rating: null
+  driver_lookup_key: null
+  driver_modularity_rating: null
+  extracted_at: '2026-06-17'
+  magnet_driver_lookup_key: MFE|HTS (wound)|*
+  magnet_driver_modularity_rating: 5.0
+  min_viable_device_scale: 3.0
+  modularity_score: 3.6439
+  mvs_lookup_key: MFE|Tokamak (spherical)
+  percent_mod: 4.5754
+  percent_mod_path: three_slot
   unit_count_estimate: 14
-  blanket_assumed: false
-  v5_calibration_target: 3.63
-  extracted_at: '2026-06-13'
+  unit_multiplicity: 4.0
+  v5_calibration_target: 2.32
+  vessel_lookup_key: MFE|Tokamak|spherical
+  vessel_modularity_rating: 3.0
 non_standard_mechanism:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: N/A
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 operation_mode:
-  value: Quasi-steady
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: Quasi-steady
 plant_complexity_diagnostics:
+  blanket_assumed: false
+  extracted_at: '2026-05-20'
+  plant_complexity_score: 2.5
+  subsystem_complexity_weight: 2.5
   subsystems_triggered:
     cryoplant_hts: 0.5
     current_drive: 0.5
     disruption_mitigation: 1.0
     rf_aux: 0.5
-  subsystem_complexity_weight: 2.5
-  plant_complexity_score: 2.5
-  blanket_assumed: false
-  extracted_at: '2026-05-20'
 primary_heating:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: RF (ECRH)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 repetition_rate:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 stellarator_type:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: N/A
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 supply_chain_diagnostics:
-  bottlenecks_triggered: {}
+  blanket_assumed: false
   bottleneck_weight: 0.0
+  bottlenecks_triggered: {}
+  extracted_at: '2026-05-20'
   supply_chain_score: 5.0
-  blanket_assumed: false
-  extracted_at: '2026-05-20'
 technical_feasibility_diagnostics:
-  required_triple_product: 5.0e+24
-  achieved_triple_product: 1.5e+21
   achieved_lookup_key: MFE|Spherical tokamak
-  triple_product_gap: 3333.3333
-  log10_gap: 3.523
+  achieved_triple_product: 1.5e+21
   base_score_from_gap: 2.0
-  laser_approach_modifier: 0.0
-  technical_feasibility_score: 2.0
-  no_data_floor: false
   extracted_at: '2026-05-21'
+  laser_approach_modifier: 0.0
+  log10_gap: 3.523
+  no_data_floor: false
+  required_triple_product: 5.0e+24
+  technical_feasibility_score: 2.0
+  triple_product_gap: 3333.3333
 tokamak_shape:
-  value: Spherical
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: Spherical
 unit_count_estimate:
-  value: 14
-  provenance: modularity_implementation_spec.md Change E
   confidence: high
   extracted_at: '2026-05-20'
+  provenance: modularity_implementation_spec.md Change E
+  value: 14
 upper_cf_diagnostics:
-  penalties_triggered: {}
-  operational_penalty_weight: 0.0
-  upper_cf_score: 5.0
   blanket_assumed: false
   extracted_at: '2026-05-20'
+  operational_penalty_weight: 0.0
+  penalties_triggered: {}
+  upper_cf_score: 5.0
 w_blanket:
+  confidence: medium
+  extracted_at: '2026-06-17'
+  provenance: analyses/39-spherical-tokamak-cs-free-p-b11/model_output.txt
   value: 0.029936839391595773
-  provenance: analyses/39-spherical-tokamak-cs-free-p-b11/model_output.txt
-  confidence: medium
-  extracted_at: '2026-06-12'
 w_coils:
+  confidence: medium
+  extracted_at: '2026-06-17'
+  provenance: analyses/39-spherical-tokamak-cs-free-p-b11/model_output.txt
   value: 0.3443219902036607
-  provenance: analyses/39-spherical-tokamak-cs-free-p-b11/model_output.txt
-  confidence: medium
-  extracted_at: '2026-06-12'
 w_vessel:
-  value: 0.10086362464552719
-  provenance: analyses/39-spherical-tokamak-cs-free-p-b11/model_output.txt
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
+  provenance: analyses/39-spherical-tokamak-cs-free-p-b11/model_output.txt
+  value: 0.10086362464552719

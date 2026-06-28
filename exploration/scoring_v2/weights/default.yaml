@@ -109,14 +109,26 @@ modularity:
   # Vessel subsystem modularity. Keyed by Confinement Family | topology/method
   # | qualifier. Tokamak shape disambiguation; MIF pneumatic gets a fuel-level
   # split (D-T harder than D-D).
+  #
+  # 2026-06-17 retune (MFE/Non-Standard rebalancing):
+  #   - Compact/spherical tokamaks: 4 → 3 (integrated divertor/blanket/cryo
+  #     limits chamber modularity below the v5 anchor)
+  #   - FRC: 3 → 4 (Helion-stacked small cylinders are more modular than
+  #     the prior anchor implied)
+  #   - Mirror: 3 → 4 (open axisymmetric chambers; WHAM/Hammir class is
+  #     small + modular)
+  #   - Z-pinch: 3 → 4 (key is unreachable per _vessel_key but aligning
+  #     with Mirror for consistency)
+  #   - Electrostatic / Plasma focus: 3 → 5 (bench/room-scale devices;
+  #     Avalanche fits in a shipping container, DPF is bench-scale)
   vessel_lookup:
-    "MFE|Tokamak|compact":                4
-    "MFE|Tokamak|spherical":              4
+    "MFE|Tokamak|compact":                3    # was 4 — integrated divertor/blanket/cryo
+    "MFE|Tokamak|spherical":              3    # was 4 — same integrated-subsystems reality
     "MFE|Tokamak|non-compact":            2
     "MFE|Stellarator|*":                  2
-    "MFE|FRC|*":                          3
-    "MFE|Mirror|*":                       3
-    "MFE|Z-pinch|*":                      3
+    "MFE|FRC|*":                          4    # was 3 — Helion-stacked small cylinders
+    "MFE|Mirror|*":                       4    # was 3 — open axisymmetric, small modular pursuers (WHAM/Hammir)
+    "MFE|Z-pinch|*":                      4    # was 3 — unreachable key per _vessel_key; aligning with Mirror
     "MFE|Dipole|*":                       3
     "MFE|Other|*":                        3
 
@@ -130,14 +142,18 @@ modularity:
     "IFE|Projectile|*":                   3
     "IFE|Acoustic|*":                     3
 
-    "Non-Standard|Electrostatic|*":       3
-    "Non-Standard|Plasma focus|*":        3
+    "Non-Standard|Electrostatic|*":       5    # was 3 — bench/room-scale (Avalanche shipping-container scale)
+    "Non-Standard|Plasma focus|*":        5    # was 3 — bench-scale DPF
     "Non-Standard|Muon-catalyzed|*":      3
     "Non-Standard|Particle accelerator|*": 3
 
-  # Magnet/driver subsystem modularity. MFE keyed by magnet_type (with
-  # Z-pinch special case via primary_heating="Ohmic (self-pinch)");
-  # MIF/IFE/Non-Standard keyed by driver category.
+  # Magnet/driver subsystem modularity (3-slot path: MFE / Non-Standard only).
+  # MFE keyed by magnet_type (with Z-pinch special case via
+  # primary_heating="Ohmic (self-pinch)"); Non-Standard keyed by driver
+  # category.
+  #
+  # 2026-06-17: IFE and MIF entries removed — those families now use the
+  # 2-slot path via `driver_modularity_lookup` (see below).
   magnet_driver_lookup:
     "MFE|HTS (wound)|*":                  5
     "MFE|HTS (integrated)|*":             4
@@ -151,19 +167,6 @@ modularity:
     "MFE|N/A|*":                          3      # MFE fallback when magnet_type missing
     "MFE|TBD|*":                          3      # MFE fallback when magnet_type=TBD
     "MFE|*|*":                            3      # MFE final fallback (exotic configs)
-
-    "MIF|*|Pulsed power":                 5
-    "MIF|*|Pneumatic":                    5
-    "MIF|*|Capacitor compression":        5
-    "MIF|*|Railgun":                      5      # NearStar plasma armature railgun
-    "MIF|*|*":                            5      # MIF fallback — Pneumatic-class by default
-
-    "IFE|*|DPSSL Laser":                  5
-    "IFE|*|Gas Laser":                    3
-    "IFE|*|Heavy ion beam":               3
-    "IFE|*|Projectile":                   5
-    "IFE|*|Acoustic":                     3
-    "IFE|*|*":                            3      # IFE fallback
 
     "Non-Standard|*|IEC":                 5
     "Non-Standard|*|Plasma focus":        3
@@ -188,6 +191,60 @@ modularity:
     "D-T|N/A":                            5
     "D-T|N/A (no tritium)":               5
     "D-T|N/A (non-power)":                4
+
+  # ─── IFE / MIF 2-slot lookups (new 2026-06-17) ───────────────────────────
+  #
+  # MFE keeps the legacy vessel + magnet_driver + blanket 3-slot path above.
+  # IFE and MIF concepts dispatch to a 2-slot blend of (driver, chamber+blanket)
+  # implemented in _percent_mod_ife_mif. No sparse-capex threshold is applied
+  # for the 2-slot path — within-two normalization is well-behaved at any
+  # share level (no "tiny share dominates" pathology).
+  #
+  # The driver_modularity rating captures factory-buildability of one driver
+  # element (one beamline, one LTD cell, one cap-bank rack, one piston module).
+  # Driver SIZE shows up downstream via driver_count → unit_multiplicity, not
+  # here.
+
+  driver_modularity_lookup:
+    # IFE
+    "IFE|DPSSL":               4.5    # diode-pumped solid-state; modular beamlines
+    "IFE|KrF":                 4.0    # excimer; per-amplifier modules but gas-handling integration
+    "IFE|Nd:Glass":            3.5    # flashlamp-pumped; large monolithic amplifier slabs
+    "IFE|Ultrashort-pulse":    3.5    # femto/picosecond; specialty optics
+    "IFE|Fiber laser CBC":     5.0    # commodity telecom-grade fiber amplifier modules (Blue Laser)
+    "IFE|Heavy-ion LINAC":     2.0    # LINAC + final beamlines; precision alignment
+    "IFE|Projectile gas gun":  2.5    # integrated barrel/breech
+    "IFE|Acoustic transducer": 1.0    # exotic, no manufacturing precedent
+    # MIF
+    "MIF|Capacitor bank":      5.0    # cell stacks, factory-built (Helion)
+    "MIF|LTD pulsed power":    4.5    # LTD cells modular; triggering integration
+    "MIF|Pneumatic piston":    4.0    # commodity mechanical modules
+    "MIF|Plasma gun":          3.0    # modular guns but precise merge geometry
+    "MIF|Railgun":             2.0    # single integrated rails
+
+  # Combined chamber + blanket modularity rating, computed as:
+  #   rating = clip(chamber_base + blanket_penalty, 1.0, 5.0)
+  # Decomposed so values are easy to scrub independently.
+  #
+  # This nested lookup is hidden from the score explorer's "advanced
+  # sub-tables" panel (it doesn't flatten into the table renderer cleanly,
+  # and the inner `blanket_penalty` key reads close to the legacy
+  # `blanket_lookup` table above). See tools/score_explorer/build.py.
+  chamber_blanket_lookup:
+    chamber_base:
+      "IFE|small":     5.0    # < 5 m, generic geometry
+      "IFE|medium":    4.0    # 5–10 m, multiple beamline penetrations
+      "IFE|large":     2.5    # > 10 m, custom port pattern (covers NIF-class)
+      "MIF|compact":   5.0    # Helion linear FRC chamber
+      "MIF|medium":    4.0    # GF MTF, NearStar Pb-pool chamber
+      "MIF|large":     3.0    # MagLIF-class integrated pulsed-power chamber
+    blanket_penalty:
+      "None":          0.0    # aneutronic; no blanket required
+      "Liquid metal":  0.0    # flowing fluid integrated as first wall + breeder
+      "Molten salt":   0.0    # flowing fluid integrated as first wall + breeder
+      "Solid breeder": -1.0   # per-port cassette assembly + neutron multiplier integration
+      "Other/hybrid":  -0.5
+      "TBD":           -0.5   # framework default leans liquid-metal
 
 # ─────────────────────────────────────────────────────────────────────────
 # Placeholders for the six remaining axes (P3-P5 will populate).
@@ -359,14 +416,19 @@ technical_feasibility:
     "MIF|MagLIF":                               1.0e19    # Pacific Fusion
     "MIF|Magnetized target fusion":             1.0e18    # General Fusion / NearStar
 
-    # IFE Laser variants
-    "IFE|Laser ICF (direct drive)":             5.0e21    # OMEGA/NIF class
-    "IFE|Laser ICF (indirect drive)":           5.0e21    # NIF ignition 2022-2025
-    "IFE|Laser ICF (fast ignition)":            1.0e20    # FIREX
-    "IFE|Laser ICF (ultrashort pulse)":         1.0e18    # hb11-class
-    "IFE|Laser ICF (hybrid drive)":             1.0e21    # OMEGA-class precedent
-    # "IFE|Laser ICF (liquid jet)" — Cortex: no triple-product measurement;
-    # falls through to floor via no-data treatment
+    # IFE Laser ICF family — single family-best value across every laser-approach
+    # variant. All entries share 5.0e21 (NIF ignition 2022-2025, Abu-Shawareb et
+    # al. PRL 132, 065102, 2024). Sub-architectural maturity differences (direct
+    # vs indirect vs fast ignition vs ultrashort vs liquid jet) live in
+    # `laser_approach_modifier` below, so the lookup keys here all return the same
+    # number. Same principle the MFE families already use (one value per family,
+    # no per-variant judgment baked into the "achieved" input).
+    "IFE|Laser ICF (direct drive)":             5.0e21
+    "IFE|Laser ICF (indirect drive)":           5.0e21
+    "IFE|Laser ICF (fast ignition)":            5.0e21
+    "IFE|Laser ICF (ultrashort pulse)":         5.0e21
+    "IFE|Laser ICF (hybrid drive)":             5.0e21
+    "IFE|Laser ICF (liquid jet)":               5.0e21
 
     # IFE non-laser drivers
     "IFE|Heavy ion ICF":                        1.0e15    # NDCX-II / LBNL HIB research
@@ -380,18 +442,21 @@ technical_feasibility:
     # "Non-Standard|Muon-catalyzed fusion" — outside Lawson framework; floor
     # "Non-Standard|Electrostatic hybrid" — no measurement; floor
 
-  # Laser approach modifier (IFE only). Reflects the relative maturity of
-  # each laser drive approach vs the NIF indirect-drive ignition benchmark.
-  # Added to the bucket score after the gap-based score is computed.
+  # Laser approach modifier (IFE only). The achieved_triple_product table above
+  # collapses every laser ICF variant to the family-best (5.0e21, NIF ignition).
+  # All architectural-risk differentiation between variants lives in this single
+  # transparent table. Final score is bucket_score(log10(gap)) + modifier, clamped
+  # to [1.0, 5.0]. Modifier magnitudes were calibrated so that the per-concept TF
+  # scores under the pre-2026-06-17 split-achieved scheme are preserved exactly
+  # (see tests/scoring_v2/test_technical_feasibility.py::test_family_consistency).
   laser_approach_modifier:
-    "Indirect drive":                            0.00
-    "Direct drive":                             -0.25
-    "Hybrid drive":                             -0.25
-    "Fast ignition":                            -0.50
-    "Ultrashort pulse":                         -0.50
-    "N/A":                                       0.00
-    # "Liquid jet" intentionally omitted — Cortex is its own no-data
-    # architectural family, not a laser-approach variant of mainstream ICF
+    "Indirect drive":                            0.00    # NIF achieved ignition; reference
+    "Direct drive":                             -0.25    # OMEGA polar-drive projected to NIF energy; near-breakeven but no ignition shot
+    "Hybrid drive":                             -1.25    # Conceptual KrF + direct/indirect hybrid; no near-breakeven demonstration
+    "Fast ignition":                            -2.50    # FIREX-class results; significant gap to a fast-ignition power scheme
+    "Ultrashort pulse":                         -4.00    # Speculative ultrashort-pulse ICF; no peer-reviewed near-breakeven measurement
+    "Liquid jet":                               -4.00    # Liquid-jet target ICF; no peer-reviewed measurement at any scale
+    "N/A":                                       0.00    # Architecture-agnostic fallback
 
 # ─────────────────────────────────────────────────────────────────────────
 # Data Availability — deterministic 1-5 lookup on the design_point.csv

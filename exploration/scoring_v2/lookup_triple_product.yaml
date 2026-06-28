@@ -101,26 +101,30 @@ achieved_triple_product:
     value: 1.0e18
     source: "General Fusion PI / Plasma Compression demos"
 
-  ife_laser_direct_drive:
+  ife_laser_icf:
     value: 5.0e21
-    source: "OMEGA hydro-equivalent / NIF-class direct drive"
+    source: "NIF ignition (Abu-Shawareb et al., PRL 132, 065102, 2024)"
+    notes: |
+      Single family-best value applied to every laser ICF variant:
+      direct drive, indirect drive, fast ignition, ultrashort pulse,
+      hybrid drive, and liquid jet. NIF's December 2022 indirect-drive
+      ignition shot is the laser ICF family's best peer-reviewed triple
+      product. Per the dispatch-stated methodology, the achieved input
+      is family-level and architecture-independent; sub-architectural
+      risk (the gap between this benchmark and what each variant has
+      actually demonstrated at scale) lives entirely in the
+      laser_approach_modifier table below.
 
-  ife_laser_indirect_drive:
-    value: 5.0e21
-    source: "NIF ignition 2022-2025 (Abu-Shawareb et al., PRL 132, 065102, 2024)"
-
-  ife_laser_fast_ignition:
-    value: 1.0e20
-    source: "FIREX (Osaka)"
-
-  ife_laser_ultrashort_pulse:
-    value: 1.0e18
-    source: "hb11 / nanostructured-target extrapolations (no peer-reviewed measurement)"
-    notes: "Optimistic placeholder; analyst should revisit if measurements emerge."
-
-  ife_laser_hybrid_drive:
-    value: 1.0e21
-    source: "OMEGA-class precedent (Xcimer's hybrid KrF approach)"
+      History: prior to 2026-06-17 this entry was split into five
+      sub-architecture values (5e21 / 5e21 / 1e20 / 1e18 / 1e21 for
+      indirect / direct / fast ignition / ultrashort / hybrid). The
+      split moved load-bearing methodology decisions out of the rule
+      layer and into the data layer, defeating the framework's claim
+      of rule-based scoring. The MFE families never had this problem
+      (one value per family across all variants); this change brings
+      laser ICF in line with that pattern. The five sub-architecture
+      modifiers were re-tuned simultaneously so every per-concept TF
+      score is preserved exactly.
 
   ife_heavy_ion:
     value: 1.0e15
@@ -140,7 +144,10 @@ no_data_concepts:
     no peer-reviewed measurement exists for that architectural class.
     The embedding scores these concepts at 1.0 via the no-data floor.
   entries:
-    - "IFE|Laser ICF (liquid jet) (Cortex)"
+    # Note: "IFE|Laser ICF (liquid jet) (Cortex)" was previously listed here.
+    # As of 2026-06-17 it uses the laser ICF family-best achieved value (5.0e21)
+    # and is clamped to the 1.0 floor via a -4.00 laser_approach_modifier instead.
+    # Net per-concept TF score unchanged (still 1.0).
     - "IFE|Acoustic ICF (sonofusion)"
     - "Non-Standard|Polywell"
     - "Non-Standard|Electrostatic hybrid"
@@ -150,11 +157,16 @@ no_data_concepts:
 laser_approach_modifier:
   description: |
     IFE-only modifier added to the bucket score after the gap-based
-    score is computed. Reflects the relative maturity of each laser
-    drive approach vs the NIF indirect-drive ignition benchmark.
+    score is computed. With laser ICF collapsed to a single family-best
+    achieved value (5.0e21, NIF ignition), this table carries every bit
+    of architectural-risk differentiation between variants in one
+    transparent place. Magnitudes were calibrated so that the per-concept
+    TF scores under the prior split-achieved scheme are preserved exactly;
+    see tests/scoring_v2/test_technical_feasibility.py::test_family_consistency.
   values:
-    "Indirect drive":   {modifier:  0.0,  rationale: "NIF achieved ignition; reference point"}
-    "Direct drive":     {modifier: -0.25, rationale: "OMEGA hydro-equivalent ~75% of ignition"}
-    "Hybrid drive":     {modifier: -0.25, rationale: "Inherits OMEGA-class direct-drive precedent"}
-    "Fast ignition":    {modifier: -0.5,  rationale: "FIREX further from ignition pathway"}
-    "Ultrashort pulse": {modifier: -0.5,  rationale: "Different physics regime; less mature"}
+    "Indirect drive":   {modifier:  0.00, rationale: "NIF achieved ignition; reference point"}
+    "Direct drive":     {modifier: -0.25, rationale: "OMEGA polar-drive projected to NIF energy; near-breakeven, no ignition shot"}
+    "Hybrid drive":     {modifier: -1.25, rationale: "Conceptual KrF + direct/indirect hybrid; no near-breakeven demonstration"}
+    "Fast ignition":    {modifier: -2.50, rationale: "FIREX-class results; significant gap to a fast-ignition power scheme"}
+    "Ultrashort pulse": {modifier: -4.00, rationale: "Speculative ultrashort-pulse ICF; no peer-reviewed near-breakeven measurement"}
+    "Liquid jet":       {modifier: -4.00, rationale: "Liquid-jet target ICF; no peer-reviewed measurement at any scale"}

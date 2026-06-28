@@ -42,46 +42,58 @@
 #   23 Marvel, 31 Blue Laser, 32 GenF: imputed in v5 from architectural peers
 # ----------------------------------------------------------------------
 modularity:
-  "01-hts-compact-tokamak": 3.71              # CFS ARC (worked example A)
-  "02-acoustic-icf-sonofusion": 4.59          # Sonofusion (desktop acoustic + 100 units)
-  "03-laser-icf-liquid-jet-target": 4.41      # Cortex (DPSSL D-D)
-  "04-laser-icf": 4.37                        # hb11 (DPSSL p-B11)
-  "05-planar-coil-stellarator": 3.11          # Thea planar
-  "06-magnetic-mirror": 4.08                  # Pale Blue (aneutronic mirror)
-  "07-maglif": 4.93                           # Pacific MagLIF (matrix #3)
-  "08-frc-w-direct-conversion": 5.00          # Helion (worked example B; top)
-  "09-qi-stellarator-hts": 3.03               # Proxima QI
-  "10-large-scale-stellarator": 3.03          # Gauss HELIAS
-  "11-magnetic-mirror": 4.01                  # Realta (D-T mirror)
-  "12-levitated-dipole": 2.68                 # OpenStar (single dipole → um=1)
-  "13-electrostatic-hybrid": 4.78             # Avalanche (desktop + 200 units)
-  "14-magnetized-target-fusion-pneumatic-compression": 4.88  # General Fusion
-  "15-sheared-flow-stabilized-z-pinch": 4.07  # Zap (50 capacitor modules)
-  "16-muon-catalyzed-fusion": 2.54            # Acceleron (single accelerator)
-  "17a-laser-icf-hybrid-drive": 2.86          # Xcimer (matrix 27; ~4 e-beam tanks)
-  "17b-laser-icf-fast-ignition": 4.36         # Focused (matrix 17; DPSSL D-T)
-  "18-p-b11-frc": 3.77                        # TAE (aneutronic FRC)
-  "19-orbital-levitated-dipole": 2.70         # Zephyr (orbital dipole; um=1)
-  "20a-type-one-stellarator": 3.03            # Type One (matrix 20)
-  "20b-renaissance-stellarator": 3.03         # Renaissance (matrix 21)
-  "21-spherical-tokamak-hts": 3.59            # Tokamak Energy ST (matrix 22)
-  "22-projectile-icf": 3.80                   # First Light (matrix 23)
-  "23-laser-icf-nanostructured-target": 4.37  # Marvel (matrix 24; imputed from hb11)
-  "24-dense-plasma-focus": 3.59               # LPPFusion DPF (matrix 25)
-  "25-heavy-ion-beam-icf": 3.04               # Intensity heavy-ion (matrix 26; single accel)
-  "26-laser-icf-indirect-drive": 4.36         # Inertia indirect (matrix 31)
-  "27-polywell": 4.28                         # EMC2 Polywell (matrix 28; only 6 units)
-  "28-hts-tokamak-full-hts": 3.50             # Energy Singularity (matrix 29; integrated coils)
-  "29-negative-triangularity-tokamak": 3.71   # Firefly NTT (matrix 30; MANTA proxy)
-  "30-laser-icf-nif-commercialization": 4.36  # Inertia NIF-comm (matrix 31, same as #26)
-  "31-laser-icf-oec-architecture": 4.36       # Blue Laser OEC (matrix 32; imputed from Focused)
-  "32-laser-icf-french-national": 4.36        # GenF (matrix 33; imputed from Focused)
-  "33-state-backed-tokamak-best": 1.91        # BEST (matrix 34; worked example C; matrix bottom)
-  "35-polomac-magnetic-confinement": 2.84     # Polomac (D-D dipole; 4 poloidal magnets)
-  "36-helical-coil-stellarator": 2.03         # Helical Fusion (continuous winding → um=1)
-  "37-magnetized-target-inertial-fusion-mtif": 5.00  # NearStar MTIF (top tier with Helion)
-  "38-particle-accelerator-driven-fusion": 2.54  # SHINE (single accelerator)
-  "39-spherical-tokamak-cs-free-p-b11": 3.63  # ENN EHL-2 (compact spherical HTS + aneutronic)
+  # 2026-06-17 retune: two structural changes plus a normalization re-fit.
+  #   (1) IFE/MIF dispatch to a new 2-slot percent_mod that blends driver +
+  #       chamber/blanket ratings; the legacy 3-slot path stays for MFE/Non-Standard.
+  #       The 2-slot path has no sparse-capex fallback threshold (within-two
+  #       normalization is well-behaved at any share level).
+  #   (2) vessel_lookup retuned: compact/spherical tokamaks 4→3, FRC/Mirror/
+  #       Z-pinch 3→4, Electrostatic/Plasma focus 3→5.
+  #   (3) The post-normalization corpus distribution re-fits to its new shape
+  #       (target_mean=2.5, target_variance=1.25). Universal MFE drift is
+  #       expected — relative ranks within MFE are preserved.
+  # Predicted values below are post-normalization (matches what score.py
+  # writes to scores/table.csv, which the conformance test compares against).
+  "01-hts-compact-tokamak": 2.43
+  "02-acoustic-icf-sonofusion": 3.73           # 2-slot IFE
+  "03-laser-icf-liquid-jet-target": 3.63       # 2-slot IFE
+  "04-laser-icf": 3.63                         # 2-slot IFE
+  "05-planar-coil-stellarator": 2.05
+  "06-magnetic-mirror": 2.52                   # vessel 3→4 retune (Pale Blue)
+  "07-maglif": 3.94                            # 2-slot MIF
+  "08-frc-w-direct-conversion": 4.55           # 2-slot MIF
+  "09-qi-stellarator-hts": 1.36
+  "10-large-scale-stellarator": 1.11
+  "11-magnetic-mirror": 3.18                   # vessel 3→4 retune (Realta)
+  "12-levitated-dipole": 1.12
+  "13-electrostatic-hybrid": 4.55              # vessel 3→5 retune (Avalanche)
+  "14-magnetized-target-fusion-pneumatic-compression": 4.14  # 2-slot MIF
+  "15-sheared-flow-stabilized-z-pinch": 3.32   # vessel 3→4 retune (Zap)
+  "16-muon-catalyzed-fusion": 1.00
+  "17a-laser-icf-hybrid-drive": 1.27           # 2-slot IFE (Athena KrF + Pilot scale)
+  "17b-laser-icf-fast-ignition": 3.63          # 2-slot IFE
+  "18-p-b11-frc": 2.50                         # vessel 3→4 retune (TAE)
+  "19-orbital-levitated-dipole": 1.26
+  "20a-type-one-stellarator": 1.29
+  "20b-renaissance-stellarator": 1.27
+  "21-spherical-tokamak-hts": 2.38             # vessel 4→3 retune
+  "22-projectile-icf": 2.19                    # 2-slot IFE (First Light)
+  "23-laser-icf-nanostructured-target": 3.42   # 2-slot IFE (Marvel)
+  "24-dense-plasma-focus": 2.63                # vessel 3→5 retune (LPPFusion DPF)
+  "25-heavy-ion-beam-icf": 1.27                # 2-slot IFE (Intensity)
+  "26-laser-icf-indirect-drive": 2.91          # 2-slot IFE (NIF indirect)
+  "27-polywell": 3.73                          # vessel 3→5 retune (EMC2 Polywell)
+  "28-hts-tokamak-full-hts": 2.22              # vessel 4→3 retune
+  "29-negative-triangularity-tokamak": 2.36    # vessel 4→3 retune (Firefly NTT)
+  "30-laser-icf-nif-commercialization": 3.11   # 2-slot IFE (Inertia)
+  "31-laser-icf-oec-architecture": 3.22        # 2-slot IFE (Blue Laser)
+  "32-laser-icf-french-national": 2.91         # 2-slot IFE (LMJ)
+  "33-state-backed-tokamak-best": 1.00
+  "35-polomac-magnetic-confinement": 1.13
+  "36-helical-coil-stellarator": 1.00
+  "37-magnetized-target-inertial-fusion-mtif": 3.73  # 2-slot MIF (NearStar)
+  "38-particle-accelerator-driven-fusion": 1.00
+  "39-spherical-tokamak-cs-free-p-b11": 2.32   # vessel 4→3 retune (ENN EHL-2 p-B11)
 
 # ----------------------------------------------------------------------
 # Supply Chain — full 40 (from supply_chain_implementation_spec.md)

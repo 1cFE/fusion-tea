@@ -2,199 +2,217 @@ _meta:
   concept_id: 09-qi-stellarator-hts
   name: QI Stellarator - HTS (D-T)
 blanket_config:
-  value: Liquid metal
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: Liquid metal
+chamber_size_class:
+  confidence: high
+  extracted_at: '2026-06-17'
+  provenance: manual (modularity 2-slot, MFE/Non-Standard default)
+  value: N/A
 confinement_concept:
-  value: QI stellarator
-  provenance: derived
   confidence: high
   extracted_at: '2026-06-13'
+  provenance: derived
+  value: QI stellarator
 confinement_family:
-  value: MFE
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: MFE
 customization_diagnostics:
-  sub_factor_a:
-    feature: energy_capture
-    value: Thermal (unspecified)
-    classification: thermal
-    score: 2
-  sub_factor_b:
-    feature: fuel
-    value: D-T
-    score: 1
-  raw_average: 1.5
   customization_score: 1.67
   extracted_at: '2026-05-20'
+  raw_average: 1.5
+  sub_factor_a:
+    classification: thermal
+    feature: energy_capture
+    score: 2
+    value: Thermal (unspecified)
+  sub_factor_b:
+    feature: fuel
+    score: 1
+    value: D-T
 data_availability_diagnostics:
-  source_csv: exploration/concept_analysis/tables/design_point.csv
-  in_csv: true
-  design_name: Stellaris commercial plant concept (Proxima Fusion, FED Vol. 214, 2025)
-  grounding_confidence: high
-  primary_sources_count: 3
-  verified_by: null
   data_availability_score: 5.0
+  design_name: Stellaris commercial plant concept (Proxima Fusion, FED Vol. 214, 2025)
   extracted_at: '2026-06-12'
+  grounding_confidence: high
+  in_csv: true
+  primary_sources_count: 3
+  source_csv: exploration/concept_analysis/tables/design_point.csv
+  verified_by: null
 design_point_grounding_confidence:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: exploration/concept_analysis/tables/design_point.csv
   value: high
-  provenance: exploration/concept_analysis/tables/design_point.csv
-  confidence: high
-  extracted_at: '2026-06-12'
 design_point_primary_sources_count:
-  value: 3
+  confidence: high
+  extracted_at: '2026-06-12'
   provenance: exploration/concept_analysis/tables/design_point.csv
+  value: 3
+driver_architecture:
   confidence: high
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
+  provenance: manual (modularity 2-slot, MFE/Non-Standard default)
+  value: N/A
 driver_technology:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: 3D HTS stellarator coils (REBCO, 20 T)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 energy_capture:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Thermal (unspecified)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 fuel:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: D-T
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 ife_driver:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 laser_approach:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 magnet_type:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: HTS (3D stellarator)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 mfe_topology:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: Stellarator
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 mif_method:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 modularity_diagnostics:
-  min_viable_device_scale: 2.0
-  percent_mod: 3.2195
-  unit_multiplicity: 5.0
-  modularity_score: 3.0549
-  mvs_lookup_key: MFE|Stellarator
-  vessel_lookup_key: MFE|Stellarator|*
-  magnet_driver_lookup_key: MFE|HTS (continuous helical)|*
+  blanket_assumed: false
   blanket_lookup_key: D-T|Liquid metal
-  vessel_modularity_rating: 2.0
-  magnet_driver_modularity_rating: 3.0
   blanket_modularity_rating: 5.0
   capex_shares_used:
-    w_vessel: 0.0297
-    w_coils: 0.5145
-    w_blanket: 0.0838
-    sum: 0.6279
     method: capex_weighted
+    sum_2slot: 0.0
+    sum_3slot: 0.6279
+    w_blanket: 0.0838
+    w_coils: 0.5145
+    w_containment: null
+    w_energy_delivery: null
+    w_vessel: 0.0297
+  chamber_blanket_lookup_key: null
+  chamber_blanket_modularity_rating: null
+  driver_lookup_key: null
+  driver_modularity_rating: null
+  extracted_at: '2026-06-17'
+  magnet_driver_lookup_key: MFE|HTS (continuous helical)|*
+  magnet_driver_modularity_rating: 3.0
+  min_viable_device_scale: 2.0
+  modularity_score: 3.0549
+  mvs_lookup_key: MFE|Stellarator
+  percent_mod: 3.2195
+  percent_mod_path: three_slot
   unit_count_estimate: 50
-  blanket_assumed: false
-  v5_calibration_target: 3.03
-  extracted_at: '2026-06-13'
+  unit_multiplicity: 5.0
+  v5_calibration_target: 1.36
+  vessel_lookup_key: MFE|Stellarator|*
+  vessel_modularity_rating: 2.0
 non_standard_mechanism:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: N/A
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 operation_mode:
-  value: Steady-state
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: Steady-state
 plant_complexity_diagnostics:
+  blanket_assumed: false
+  extracted_at: '2026-05-20'
+  plant_complexity_score: 1.5
+  subsystem_complexity_weight: 3.5
   subsystems_triggered:
     cryoplant_hts: 0.5
     liquid_metal_handling: 0.5
     remote_maintenance: 1.0
     rf_aux: 0.5
     tritium_plant: 1.0
-  subsystem_complexity_weight: 3.5
-  plant_complexity_score: 1.5
-  blanket_assumed: false
-  extracted_at: '2026-05-20'
 primary_heating:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: RF (ECRH)
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 repetition_rate:
+  confidence: high
+  extracted_at: '2026-06-12'
+  provenance: taxonomy
   value: N/A
-  provenance: taxonomy
-  confidence: high
-  extracted_at: '2026-06-12'
 stellarator_type:
-  value: QI
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: QI
 supply_chain_diagnostics:
+  blanket_assumed: false
+  bottleneck_weight: 3.0
   bottlenecks_triggered:
     lithium6: 1.0
     tritium: 1.0
     vanadium: 1.0
-  bottleneck_weight: 3.0
+  extracted_at: '2026-05-20'
   supply_chain_score: 2.0
-  blanket_assumed: false
-  extracted_at: '2026-05-20'
 technical_feasibility_diagnostics:
-  required_triple_product: 3.0e+21
-  achieved_triple_product: 1.0e+20
   achieved_lookup_key: MFE|QI stellarator
-  triple_product_gap: 30.0
-  log10_gap: 1.477
+  achieved_triple_product: 1.0e+20
   base_score_from_gap: 3.0
-  laser_approach_modifier: 0.0
-  technical_feasibility_score: 3.0
-  no_data_floor: false
   extracted_at: '2026-05-20'
+  laser_approach_modifier: 0.0
+  log10_gap: 1.477
+  no_data_floor: false
+  required_triple_product: 3.0e+21
+  technical_feasibility_score: 3.0
+  triple_product_gap: 30.0
 tokamak_shape:
-  value: N/A
-  provenance: taxonomy
   confidence: high
   extracted_at: '2026-06-12'
+  provenance: taxonomy
+  value: N/A
 unit_count_estimate:
-  value: 50
-  provenance: modularity_implementation_spec.md Change E
   confidence: high
   extracted_at: '2026-05-20'
+  provenance: modularity_implementation_spec.md Change E
+  value: 50
 upper_cf_diagnostics:
+  blanket_assumed: false
+  extracted_at: '2026-05-20'
+  operational_penalty_weight: 1.0
   penalties_triggered:
     neutronic_fuel: 1.0
-  operational_penalty_weight: 1.0
   upper_cf_score: 4.0
-  blanket_assumed: false
-  extracted_at: '2026-05-20'
 w_blanket:
+  confidence: medium
+  extracted_at: '2026-06-17'
+  provenance: analyses/09-qi-stellarator-hts/model_output.txt
   value: 0.08377859306133505
-  provenance: analyses/09-qi-stellarator-hts/model_output.txt
-  confidence: medium
-  extracted_at: '2026-06-12'
 w_coils:
+  confidence: medium
+  extracted_at: '2026-06-17'
+  provenance: analyses/09-qi-stellarator-hts/model_output.txt
   value: 0.5144535001108019
-  provenance: analyses/09-qi-stellarator-hts/model_output.txt
-  confidence: medium
-  extracted_at: '2026-06-12'
 w_vessel:
-  value: 0.029707236599118513
-  provenance: analyses/09-qi-stellarator-hts/model_output.txt
   confidence: medium
-  extracted_at: '2026-06-12'
+  extracted_at: '2026-06-17'
+  provenance: analyses/09-qi-stellarator-hts/model_output.txt
+  value: 0.029707236599118513
