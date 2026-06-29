@@ -587,6 +587,19 @@
       // back at baseline). Updates the sticky headline + CAS breakdown. The
       // recompute uses whichever LCOE function the toggle selects, measured
       // against the current mode's baseline.
+      // Retry transient 5xx from /api/compute. The cold-start case on a
+      // freshly-deployed dyno: the first compute per concept triggers JAX
+      // JIT-compilation server-side (10-30s); Cloudflare's ~30s gateway
+      // timeout fires before the worker finishes and returns 502 to us, but
+      // the compile usually completes in the background and lands the result
+      // in _compute_cached. The next request is then a warm cache hit. So we
+      // retry on 502/503/504 with a short delay, keeping the spinner visible
+      // the whole time — the user sees "Recomputing ..." until success or
+      // we exhaust retries.
+      const _RETRY_STATUSES = new Set([502, 503, 504]);
+      const _MAX_COMPUTE_RETRIES = 3;
+      const _COMPUTE_RETRY_DELAY_MS = 3000;
+
       async function onSliderChange(overrides) {
         if (computeErrorEl) computeErrorEl.style.display = "none";
         if (headlineLoadingEl) headlineLoadingEl.style.display = "";
@@ -600,16 +613,24 @@
         const controller = new AbortController();
         inflightController = controller;
         try {
-          const resp = await fetch("/api/compute", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              concept_id: conceptId,
-              overrides,
-              apply_analyst_overrides: applyOverrides,
-            }),
-            signal: controller.signal,
-          });
+          let resp;
+          for (let attempt = 0; attempt <= _MAX_COMPUTE_RETRIES; attempt++) {
+            resp = await fetch("/api/compute", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                concept_id: conceptId,
+                overrides,
+                apply_analyst_overrides: applyOverrides,
+              }),
+              signal: controller.signal,
+            });
+            if (!_RETRY_STATUSES.has(resp.status)) break;
+            if (attempt === _MAX_COMPUTE_RETRIES) break;
+            // Sleep, but bail immediately if a newer slider fire arrives.
+            await new Promise((r) => setTimeout(r, _COMPUTE_RETRY_DELAY_MS));
+            if (controller.signal.aborted) return;
+          }
           if (!resp.ok) {
             const detail = await resp.json().catch(() => ({ detail: `HTTP ${resp.status}` }));
             throw new Error(detail.detail || `HTTP ${resp.status}`);

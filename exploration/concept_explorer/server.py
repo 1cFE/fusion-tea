@@ -1026,22 +1026,46 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
         #
         # Set EXPLORER_SKIP_WARMUP=1 to skip (useful for fast local dev iteration
         # where you restart the server frequently).
+        # Cap concurrency at ~half the dyno's vCPU so warm-up doesn't starve
+        # actual request handling. Railway Pro = 8 vCPU, so 4 parallel compiles
+        # roughly halves the warm-up window from serial without trampling
+        # request latency. Lower bound of 2 to keep at least some parallelism
+        # on small dynos. Override with EXPLORER_WARMUP_CONCURRENCY.
+        _warm_concurrency = max(
+            2, int(os.environ.get(
+                "EXPLORER_WARMUP_CONCURRENCY", str(max(2, (os.cpu_count() or 4) // 2))
+            ))
+        )
+
         async def _warm_compute_cache() -> None:
             t0 = time.monotonic()
             warmed, failed = 0, 0
-            for cid, c in concepts.items():
-                if c.model_type != ModelType.COSTINGFE:
-                    continue
-                try:
-                    # Mirror exactly what /api/compute does for a no-override
-                    # request — same cache key, so the real request hits.
-                    await asyncio.to_thread(
-                        _compute_cached, cid, frozenset(), True
-                    )
-                    warmed += 1
-                except Exception as exc:  # warm-up must never abort the server
-                    failed += 1
-                    logger.warning("JAX warm-up failed for %s: %s", cid, exc)
+            sem = asyncio.Semaphore(_warm_concurrency)
+
+            async def _warm_one(cid: str) -> bool:
+                # Mirror exactly what /api/compute does for a no-override
+                # request — same cache key, so the real request hits.
+                async with sem:
+                    try:
+                        await asyncio.to_thread(
+                            _compute_cached, cid, frozenset(), True
+                        )
+                        return True
+                    except Exception as exc:  # never abort the server
+                        logger.warning("JAX warm-up failed for %s: %s", cid, exc)
+                        return False
+
+            targets = [
+                cid for cid, c in concepts.items()
+                if c.model_type == ModelType.COSTINGFE
+            ]
+            logger.info(
+                "JAX warm-up starting: %d COSTINGFE concepts, "
+                "concurrency=%d", len(targets), _warm_concurrency,
+            )
+            results = await asyncio.gather(*[_warm_one(cid) for cid in targets])
+            warmed = sum(results)
+            failed = len(results) - warmed
             logger.info(
                 "JAX warm-up complete: %d concepts warmed, %d failed in %.1fs",
                 warmed, failed, time.monotonic() - t0,

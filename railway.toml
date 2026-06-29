@@ -13,3 +13,23 @@ builder = "dockerfile"
 [deploy]
 startCommand = "sh -c 'uvicorn exploration.concept_explorer.server:app --host 0.0.0.0 --port $PORT'"
 restartPolicyType = "on_failure"
+
+# Persistent JAX compile cache. JAX picks these up automatically — no Python
+# code change needed. The path must match the [deploy.volumes] mount below.
+# Effect: the first deploy on a fresh volume pays the full JIT-compile cost
+# during warm-up (~3-4 min with parallel warm-up), but every subsequent deploy
+# reads pre-compiled graphs from the volume and warm-up drops to ~5-10s. Cache
+# is invalidated only when JAX or costingfe versions change, or when traced
+# model code itself changes — ordinary explorer-code redeploys are near-instant.
+[deploy.envs]
+JAX_COMPILATION_CACHE_DIR = "/jax-cache"
+JAX_PERSISTENT_CACHE_MIN_ENTRY_SIZE_BYTES = "-1"
+JAX_PERSISTENT_CACHE_MIN_COMPILE_TIME_SECS = "0"
+
+# Volume survives container restarts and redeploys. Actual usage is ~30
+# concepts × 30-80 MB compiled = ~2 GB; 5 GB leaves headroom for growth and
+# costingfe-version-bump churn (old entries linger until evicted).
+[[deploy.volumes]]
+mountPath = "/jax-cache"
+name = "explorer-jax-cache"
+sizeMB = 5120

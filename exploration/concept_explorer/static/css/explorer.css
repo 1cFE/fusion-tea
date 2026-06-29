@@ -711,6 +711,37 @@ a:hover {
   to { transform: rotate(360deg); }
 }
 
+/* Inline recompute indicator — sits in-flow under the sticky headline while
+   /api/compute is running (or while we're retrying it; see concept_page.js).
+   Styled prominently because the first user on a cold dyno may wait 10-30s
+   on a JAX cold-start; a subtle indicator was invisible enough to feel like
+   "the tool is broken" rather than "the tool is working on it". The pulsing
+   background is intentional, low-frequency, and pure CSS (no JS hook). */
+.loading-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: var(--space-2) 0;
+  padding: var(--space-2) var(--space-3);
+  background-color: rgba(59, 130, 246, 0.10);
+  border: 1px solid rgba(59, 130, 246, 0.30);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  animation: pulse-bg 1.6s ease-in-out infinite;
+}
+
+.loading-inline .loading-spinner {
+  width: 18px;
+  height: 18px;
+}
+
+@keyframes pulse-bg {
+  0%, 100% { background-color: rgba(59, 130, 246, 0.10); }
+  50%      { background-color: rgba(59, 130, 246, 0.20); }
+}
+
 /* --------------------------------------------------------------------------
    Error State
    -------------------------------------------------------------------------- */
