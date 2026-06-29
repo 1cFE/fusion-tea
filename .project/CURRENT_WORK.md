@@ -28,6 +28,13 @@ What's merged:
 
 Railway container deployment of the concept_explorer: slim serving manifest (`requirements-serve.txt`), `Dockerfile` + `railway.toml`, `scripts/smoke_explorer.py`, operator runbook. Plus a separate static "score explorer" published from `docs/` with a CNAME. 5 commits ahead of `main`.
 
+### Compute OOM — debounce + cache quantization (implemented, ready to PR)
+
+**Status**: Implemented on `feat/compute-oom-debounce-quantize` (off `feat/explorer-web-hosting`). PR back into the hosting branch to trigger the Railway rebuild.
+**Location**: `.project/active/compute-oom-debounce-and-quantize/` (spec + design w/ impl notes)
+
+Fixes the Railway OOM-kill under multi-user slider load. Layer 1 (client): `tornado.js` debounce 200→400ms + `AbortController` in `concept_page.js:onSliderChange` (at most one in-flight compute/client; abort detected via `controller.signal.aborted`, indicator-hide guarded against superseded requests). Layer 2 (server): `_quantize_sig` rounds override floats to 4 sig figs before the `_compute_cached` LRU key so nearby slider positions share a `forward()`. Verified: 15/15 compute tests, parity gate 33/33 @1e-5, browser drag (6 events→1 request, headline updates, no error flash, 0 console errors). FR-SO1 untouched (no-op path sends empty overrides → nothing to quantize). Out of scope: `forward()` semaphore.
+
 ### Batch Pipeline Run (unblocked, not started)
 
 **Status**: Plan drafted, ready to start

@@ -535,6 +535,13 @@
       const headlineLoadingEl = document.getElementById("headline-loading");
       const computeErrorEl    = document.getElementById("compute-error");
 
+      // Tracks the in-flight /api/compute fetch from the slider path. A new
+      // debounced fire aborts the previous one, so at most one slider compute
+      // is outstanding per client at any time (reduces concurrent server
+      // forward() calls). Identity comparison against this var also tells a
+      // settling request whether it was superseded — see onSliderChange.
+      let inflightController = null;
+
       // Track baseline-vs-current state so the Reset button enables only when
       // at least one slider has been moved. Compares overrides to baselines
       // by parameter name.
@@ -587,6 +594,11 @@
         setResetEnabled(stickyEl, _hasNonBaseline(overrides));
         // Sensitivity header gets a "N CHANGED" pill when overrides exist.
         _updateSensitivityHint(overrides);
+        // Cancel the prior in-flight compute (if any) and become the current
+        // request. The aborted fetch rejects with an AbortError, handled below.
+        if (inflightController) inflightController.abort();
+        const controller = new AbortController();
+        inflightController = controller;
         try {
           const resp = await fetch("/api/compute", {
             method: "POST",
@@ -596,6 +608,7 @@
               overrides,
               apply_analyst_overrides: applyOverrides,
             }),
+            signal: controller.signal,
           });
           if (!resp.ok) {
             const detail = await resp.json().catch(() => ({ detail: `HTTP ${resp.status}` }));
@@ -611,13 +624,26 @@
           _refreshCASHint(newCostModel);
           postState(conceptId, overrides, []);
         } catch (err) {
+          // A superseded request was aborted by the next fire — fail silently
+          // and leave the "Recomputing…" indicator up for the request that
+          // replaced us (the finally below skips the hide for stale requests).
+          // Test the controller's own signal rather than the error type: it
+          // answers exactly "was *this* fetch aborted" and needs no error
+          // property read.
+          if (controller.signal.aborted) return;
           console.error("[concept_page] compute failed:", err);
           if (computeErrorEl) {
             computeErrorEl.textContent = `Compute error: ${err.message}`;
             computeErrorEl.style.display = "";
           }
         } finally {
-          if (headlineLoadingEl) headlineLoadingEl.style.display = "none";
+          // Only the current (non-superseded) request owns the indicator; a
+          // stale request hiding it would flicker off the final one still in
+          // flight. Clear the handle when the current request settles.
+          if (controller === inflightController) {
+            if (headlineLoadingEl) headlineLoadingEl.style.display = "none";
+            inflightController = null;
+          }
         }
       }
 
