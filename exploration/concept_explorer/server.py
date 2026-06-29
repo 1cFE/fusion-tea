@@ -18,6 +18,7 @@ import dataclasses
 import importlib.util
 import inspect
 import json
+import math
 import sys
 import threading
 import types
@@ -248,6 +249,28 @@ def _forward_with_overrides(
         override_reference_mw=override_reference_mw,
         **extra,
     )
+
+
+def _quantize_sig(x: float, sig: int = 4) -> float:
+    """Round ``x`` to ``sig`` significant figures.
+
+    Used to quantize slider override values at the ``_compute_cached`` boundary
+    so adjacent slider positions that differ only below display precision share
+    one cache key — collapsing them into a single ``forward()`` call instead of
+    thrashing the LRU with unique full-precision floats. 4 sig figs gives <0.01%
+    input error, orders of magnitude below the LCOE display precision
+    ($XXX.XX/MWh). See .project/active/compute-oom-debounce-and-quantize/.
+
+    Significant figures (not fixed decimals) because override params span many
+    orders of magnitude (availability ~0.85 vs cost ~5000); a fixed decimal
+    count is too coarse for small params and a no-op for large ones.
+
+    0 and non-finite values pass through unchanged (``log10`` is undefined there).
+    """
+    if x == 0.0 or not math.isfinite(x):
+        return x
+    exp = math.floor(math.log10(abs(x)))
+    return round(x, -(exp - (sig - 1)))
 
 
 # ---------------------------------------------------------------------------
@@ -1090,9 +1113,17 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
                 status_code=422,
                 detail="Slider computation only available for costingfe-backed concepts",
             )
+        # Quantize override values to 4 sig figs before the cache lookup so
+        # nearby slider positions share a key (one forward() instead of many).
+        # The ComputeRequest schema is unchanged — clients still send full
+        # precision; rounding is server-internal (L2-3). An empty overrides map
+        # quantizes to itself, so the FR-SO1 no-op recompute is untouched.
+        quantized_overrides = {
+            name: _quantize_sig(value) for name, value in body.overrides.items()
+        }
         return _compute_cached(
             body.concept_id,
-            frozenset(body.overrides.items()),
+            frozenset(quantized_overrides.items()),
             body.apply_analyst_overrides,
         )
 

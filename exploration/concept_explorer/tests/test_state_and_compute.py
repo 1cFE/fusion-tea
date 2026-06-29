@@ -12,6 +12,7 @@ Coverage (per specs/11-explorer-state.md and specs/12-computation-api.md):
 
 from __future__ import annotations
 
+import math
 from collections.abc import Generator
 from pathlib import Path
 
@@ -384,3 +385,67 @@ def test_compute_missing_concept_returns_404(client: TestClient) -> None:
     """Compute request for a non-existent concept_id returns 404."""
     resp = client.post("/api/compute", json={"concept_id": "nonexistent", "overrides": {}})
     assert resp.status_code == 404
+
+
+# ---------------------------------------------------------------------------
+# Compute — server-side cache quantization (L2)
+# ---------------------------------------------------------------------------
+
+
+def test_quantize_sig_rounds_to_four_significant_figures() -> None:
+    """_quantize_sig rounds to 4 sig figs and is 0/inf/negative-safe.
+
+    These are the exact properties the cache-collapse relies on: near floats
+    share a rounded value, baseline-ish values round to themselves, and the
+    degenerate inputs (0, inf, negatives) pass through without a math domain
+    error.
+    """
+    q = server_module._quantize_sig
+    # Full-precision drag float collapses to its 4-sig-fig form.
+    assert q(0.6901750000000001) == 0.6902
+    # Two near floats that agree in the first 4 sig figs collapse together.
+    assert q(0.69021) == q(0.69018) == 0.6902
+    # Values already at <=4 sig figs round to themselves (FR-SO1 safety).
+    assert q(0.85) == 0.85
+    assert q(2.0) == 2.0
+    # Sig figs, not decimals: a large param keeps 4 sig figs, not 4 decimals.
+    assert q(5000.4) == 5000.0
+    # Degenerate inputs pass through (log10 is undefined / would raise).
+    assert q(0.0) == 0.0
+    assert q(-0.012345) == -0.01235
+    assert math.isinf(q(float("inf")))
+
+
+def test_compute_quantizes_near_floats_to_one_forward_call(
+    client: TestClient, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Two near-but-distinct override floats collapse to one forward() call.
+
+    availability=0.69021 and 0.69018 both quantize to 0.6902 (4 sig figs), so
+    the second request is an LRU cache hit — the module-load counter stays at 1.
+    This is acceptance criterion #2: nearby slider positions share a cache key.
+
+    (The spec's literal 0.6902/0.6903 example was imprecise — those already have
+    4 sig figs and stay distinct. The quantization collapses floats that differ
+    only *below* the 4th sig fig, which is the real slider-drift case.)
+    """
+    load_calls: list[Path] = []
+    original_load = server_module._load_model_module
+
+    def _counting_load(path: Path, module_name: str = "_concept_module") -> object:
+        load_calls.append(path)
+        return original_load(path, module_name)
+
+    monkeypatch.setattr(server_module, "_load_model_module", _counting_load)
+
+    r1 = client.post("/api/compute", json={"concept_id": "04", "overrides": {"availability": 0.69021}})
+    r2 = client.post("/api/compute", json={"concept_id": "04", "overrides": {"availability": 0.69018}})
+
+    assert r1.status_code == 200
+    assert r2.status_code == 200
+    # Same cache entry → byte-identical response.
+    assert r1.json() == r2.json()
+    assert len(load_calls) == 1, (
+        f"Expected one forward()/module-load (second request a quantized cache hit), "
+        f"but the module-load counter saw {len(load_calls)} calls"
+    )
