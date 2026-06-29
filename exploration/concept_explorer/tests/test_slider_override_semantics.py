@@ -55,11 +55,24 @@ def real_concept_01_client(tmp_path: Path) -> Generator[TestClient, None, None]:
     if not _REAL_DATA_01.is_file():
         pytest.skip(f"real concept 01 data not found at {_REAL_DATA_01}")
 
-    data_dir = tmp_path / "data"
-    data_dir.mkdir()
+    # base_dir must nest one level deep: the compute path resolves the concept's
+    # model_setup.py via `_analyses_root(base_dir) == base_dir.parent /
+    # concept_analysis / analyses` (server.py, since efa8e885 dropped the
+    # per-concept stored module path). So put the explorer dir under tmp_path and
+    # expose the real analyses tree as its sibling via a symlink — the fixture
+    # otherwise FileNotFoundErrors before any costing runs.
+    explorer_dir = tmp_path / "concept_explorer"
+    data_dir = explorer_dir / "data"
+    data_dir.mkdir(parents=True)
     (data_dir / "01.json").write_text(_REAL_DATA_01.read_text())
 
-    app = create_app(base_dir=tmp_path)
+    analyses_parent = tmp_path / "concept_analysis"
+    analyses_parent.mkdir()
+    (analyses_parent / "analyses").symlink_to(
+        _REAL_CONCEPT_01_DIR.parent, target_is_directory=True
+    )
+
+    app = create_app(base_dir=explorer_dir)
     with TestClient(app) as c:
         yield c
 

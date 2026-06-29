@@ -11,3 +11,4 @@
 "26": "Redundant Inertia Enterprises entry — concept 30 (NIF commercialization) is the surviving Inertia design"
 "34": "Obsolete — Pranos Fusion compact spherical tokamak no longer tracked"
 "38": "Obsolete — Particle-accelerator-driven-fusion superseded by net-new 38 SHINE entry pending"
+"27": "Deferred (revisit, NOT obsolete) — model_setup.py routing/fuel mismatch: frontmatter is freeform-deferred but it ships a PB11 costingfe model the analysis disowns (analysis says D-T), so the extractor refuses it and it served stale data. Omitted as a stopgap; fix the model fuel + routing or make it genuinely freeform. See reports/2026-06-28_1costingfe-v0.1.0-migration.md"

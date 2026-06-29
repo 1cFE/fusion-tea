@@ -1,0 +1,30 @@
+# Slim serving-only dependency set for the concept-explorer web deployment.
+#
+# This is the single source of truth for the *deployed* environment. It is
+# intentionally separate from pyproject.toml / uv.lock so the offline pipeline
+# install (torch, docling, agentic-mbse, sysml-codegen, local path deps) stays
+# untouched (FR-3). See .project/active/explorer-web-hosting/{spec,design}.md.
+#
+# Compile to a fully-pinned lockfile (direct + transitive) with:
+#   uv pip compile requirements-serve.in -o requirements-serve.txt --prerelease=explicit
+# (--prerelease=explicit confines any pre-release allowance to packages pinned to
+#  one explicitly, so numpy/scipy/pydantic stay on stable releases. 1costingfe is
+#  now a stable release (0.1.0) so the flag is a no-op today, but keep it so a
+#  future alpha bump of 1costingfe doesn't drag transitive deps onto pre-releases.)
+# Commit both files. Regenerate on any bump (e.g. a new 1costingfe).
+#
+# NOTE: 1costingfe v0.1.0 gates off the 0D physics solvers by default; the
+# explorer re-enables them at runtime (model_setup_helpers.py flips
+# MODELS_0D_ENABLED / SIZING_FEATURES_ENABLED). This works because the published
+# 0.1.0 wheel still SHIPS the solver modules (layers/{tokamak,mirror,physics}.py).
+# If a future release deletes them from the wheel (not just gates), tokamak
+# concepts (01/21/28/29/33) will 500 — re-verify the parity check on any bump.
+
+1costingfe==0.1.0        # → import costingfe (+ jax, jaxlib) for /api/compute
+fastapi
+uvicorn[standard]
+jinja2
+pydantic>=2
+pyyaml
+markdown
+numpy

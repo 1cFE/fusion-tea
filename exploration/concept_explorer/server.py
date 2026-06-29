@@ -18,6 +18,7 @@ import dataclasses
 import importlib.util
 import inspect
 import json
+import math
 import sys
 import threading
 import types
@@ -222,17 +223,14 @@ def _forward_with_overrides(
     # Drop None-valued keys before forward(): base_params is result_1gw.params,
     # the union of all-fuel params with None for inapplicable ones (e.g. D-T
     # tokamak carries `dhe3_dd_frac_pin=None`). forward() rejects unknown
-    # kwargs strictly. Drop eta_pin for the same reason — derived from
-    # eta_source × eta_couple for NBI/RF-heated concepts, library rejects pinning.
+    # kwargs strictly.
     extra = {k: v for k, v in extra.items() if v is not None}
-    extra.pop("eta_pin", None)
-    # Deprecated kwargs the current library refuses to accept on forward(), but
-    # which appear in pre-regen stored result_1gw.params from older library
-    # versions. Drop defensively so sliders work against stale JSON until the
-    # next full regen lands.
-    # - b_center / r_bore: derived from B in tokamak post-0bec805
-    for stale in ("b_center", "r_bore"):
-        extra.pop(stale, None)
+    # Drop eta_pin only for NBI/RF-heated concepts, where the library derives
+    # it from eta_source × eta_couple and rejects direct pinning. Pulsed/
+    # electrostatic concepts (no eta_couple in their YAML) use eta_pin as a
+    # direct input and need it preserved.
+    if "eta_couple" in extra or "eta_couple" in params:
+        extra.pop("eta_pin", None)
     # construction_time_yr is no longer a named arg on CostModel.forward()
     # (post-6fe39ce: sourced from concept YAML when not in kwargs). It flows
     # through **extra now; passing it both ways causes the multiple-values
@@ -251,6 +249,28 @@ def _forward_with_overrides(
         override_reference_mw=override_reference_mw,
         **extra,
     )
+
+
+def _quantize_sig(x: float, sig: int = 4) -> float:
+    """Round ``x`` to ``sig`` significant figures.
+
+    Used to quantize slider override values at the ``_compute_cached`` boundary
+    so adjacent slider positions that differ only below display precision share
+    one cache key — collapsing them into a single ``forward()`` call instead of
+    thrashing the LRU with unique full-precision floats. 4 sig figs gives <0.01%
+    input error, orders of magnitude below the LCOE display precision
+    ($XXX.XX/MWh). See .project/active/compute-oom-debounce-and-quantize/.
+
+    Significant figures (not fixed decimals) because override params span many
+    orders of magnitude (availability ~0.85 vs cost ~5000); a fixed decimal
+    count is too coarse for small params and a no-op for large ones.
+
+    0 and non-finite values pass through unchanged (``log10`` is undefined there).
+    """
+    if x == 0.0 or not math.isfinite(x):
+        return x
+    exp = math.floor(math.log10(abs(x)))
+    return round(x, -(exp - (sig - 1)))
 
 
 # ---------------------------------------------------------------------------
@@ -1093,9 +1113,17 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
                 status_code=422,
                 detail="Slider computation only available for costingfe-backed concepts",
             )
+        # Quantize override values to 4 sig figs before the cache lookup so
+        # nearby slider positions share a key (one forward() instead of many).
+        # The ComputeRequest schema is unchanged — clients still send full
+        # precision; rounding is server-internal (L2-3). An empty overrides map
+        # quantizes to itself, so the FR-SO1 no-op recompute is untouched.
+        quantized_overrides = {
+            name: _quantize_sig(value) for name, value in body.overrides.items()
+        }
         return _compute_cached(
             body.concept_id,
-            frozenset(body.overrides.items()),
+            frozenset(quantized_overrides.items()),
             body.apply_analyst_overrides,
         )
 
