@@ -13,14 +13,18 @@ The server:
 from __future__ import annotations
 
 import argparse
+import asyncio
 import csv
 import dataclasses
 import importlib.util
 import inspect
 import json
+import logging
 import math
+import os
 import sys
 import threading
+import time
 import types
 from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager, redirect_stdout
@@ -36,6 +40,8 @@ from typing import Any
 _PROJECT_ROOT = Path(__file__).parent.parent.parent
 if str(_PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(_PROJECT_ROOT))
+
+logger = logging.getLogger(__name__)
 
 import uvicorn  # noqa: E402
 from fastapi import Depends, FastAPI, HTTPException, Request  # noqa: E402
@@ -1003,7 +1009,54 @@ def create_app(base_dir: Path = BASE_DIR) -> FastAPI:
             similarity_reports=similarity_reports,
             constellation=constellation,
         )
+
+        # Background JAX warm-up: trigger model.forward() once per COSTINGFE
+        # concept so the first user-facing /api/compute call doesn't pay the
+        # JIT-compile cost (10-30s per concept on a fresh dyno, which exceeds
+        # Cloudflare's ~30s gateway timeout and shows up as a 502 to the user).
+        # Each warmed compute lands in _compute_cached, so the first real
+        # request becomes a cache hit. PR #98's quantization makes that hit
+        # robust to small floating-point drift in the baseline params.
+        #
+        # Runs as a background task — does NOT block lifespan startup. Railway's
+        # health check sees the server listening immediately. Warm-up takes ~3-15
+        # minutes for a full set of concepts; users hitting an un-warmed concept
+        # during that window still pay one cold-start each (same as today),
+        # then everyone after them is fast.
+        #
+        # Set EXPLORER_SKIP_WARMUP=1 to skip (useful for fast local dev iteration
+        # where you restart the server frequently).
+        async def _warm_compute_cache() -> None:
+            t0 = time.monotonic()
+            warmed, failed = 0, 0
+            for cid, c in concepts.items():
+                if c.model_type != ModelType.COSTINGFE:
+                    continue
+                try:
+                    # Mirror exactly what /api/compute does for a no-override
+                    # request — same cache key, so the real request hits.
+                    await asyncio.to_thread(
+                        _compute_cached, cid, frozenset(), True
+                    )
+                    warmed += 1
+                except Exception as exc:  # warm-up must never abort the server
+                    failed += 1
+                    logger.warning("JAX warm-up failed for %s: %s", cid, exc)
+            logger.info(
+                "JAX warm-up complete: %d concepts warmed, %d failed in %.1fs",
+                warmed, failed, time.monotonic() - t0,
+            )
+
+        if os.environ.get("EXPLORER_SKIP_WARMUP") == "1":
+            logger.info("EXPLORER_SKIP_WARMUP=1 — skipping JAX warm-up")
+            warm_task: asyncio.Task[None] | None = None
+        else:
+            warm_task = asyncio.create_task(_warm_compute_cache())
+
         yield
+
+        if warm_task is not None and not warm_task.done():
+            warm_task.cancel()
         _compute_cached.cache_clear()
         _load_model_module.cache_clear()
         app.state.data = None
