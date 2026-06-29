@@ -159,7 +159,7 @@ Requirements below capture what must be true for the bug to be structurally fixe
 ### Quality & Integration
 
 - [ ] `table.csv` is unchanged (FR-10).
-- [ ] Score Explorer (`docs/`, published at https://score-explorer.1cf.energy/) renders Energy Capture column unchanged when sanity-checked in browser.
+- [ ] Score Explorer (`docs/`, published at https://scoring.1cf.energy/) renders Energy Capture column unchanged when sanity-checked in browser.
 - [ ] Existing tests in `exploration/concept_analysis/scripts/` and `exploration/concept_explorer/` continue to pass.
 - [ ] No regression in the 7 axes wired by the v3 rewrite (the LCOE re-runs may shift composite scores for affected concepts — that is expected and is the point — but axis logic itself must not change).
 - [ ] Standardization is deterministic; running `standardize_eta_th.py --apply` a second time produces a no-op diff (NFR-2).

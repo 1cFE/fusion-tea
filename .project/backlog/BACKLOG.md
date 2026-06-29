@@ -79,7 +79,7 @@ Surfaced by the first end-to-end run after `explorer-rework-unblock` landed. Non
 
 | Item | Priority | Description |
 |------|----------|-------------|
-| Refresh deployed Score Explorer UI after PR #33 | P2 | After PR #33 merges, mirror `tools/score_explorer/{index.html,data/concepts.json,data/weights.json}` → `docs/{index.html,data/concepts.json,data/weights.json}` and commit + push to main. Same straight-copy pattern as PR #28 (initial deploy) and PR #29 (TF correction refresh). Without this, the live URL at https://score-explorer.1cf.energy/ (and https://1cfe.github.io/fusion-tea/) will continue to show the pre-#32 data availability scores even though `tools/score_explorer/data/concepts.json` already has the refreshed values. Single commit, byte-level mirror of three files, ~5 min. |
+| Refresh deployed Score Explorer UI after PR #33 | P2 | After PR #33 merges, mirror `tools/score_explorer/{index.html,data/concepts.json,data/weights.json}` → `docs/{index.html,data/concepts.json,data/weights.json}` and commit + push to main. Same straight-copy pattern as PR #28 (initial deploy) and PR #29 (TF correction refresh). Without this, the live URL at https://scoring.1cf.energy/ (and https://1cfe.github.io/fusion-tea/) will continue to show the pre-#32 data availability scores even though `tools/score_explorer/data/concepts.json` already has the refreshed values. Single commit, byte-level mirror of three files, ~5 min. |
 
 ---
 
