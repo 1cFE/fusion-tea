@@ -222,17 +222,14 @@ def _forward_with_overrides(
     # Drop None-valued keys before forward(): base_params is result_1gw.params,
     # the union of all-fuel params with None for inapplicable ones (e.g. D-T
     # tokamak carries `dhe3_dd_frac_pin=None`). forward() rejects unknown
-    # kwargs strictly. Drop eta_pin for the same reason — derived from
-    # eta_source × eta_couple for NBI/RF-heated concepts, library rejects pinning.
+    # kwargs strictly.
     extra = {k: v for k, v in extra.items() if v is not None}
-    extra.pop("eta_pin", None)
-    # Deprecated kwargs the current library refuses to accept on forward(), but
-    # which appear in pre-regen stored result_1gw.params from older library
-    # versions. Drop defensively so sliders work against stale JSON until the
-    # next full regen lands.
-    # - b_center / r_bore: derived from B in tokamak post-0bec805
-    for stale in ("b_center", "r_bore"):
-        extra.pop(stale, None)
+    # Drop eta_pin only for NBI/RF-heated concepts, where the library derives
+    # it from eta_source × eta_couple and rejects direct pinning. Pulsed/
+    # electrostatic concepts (no eta_couple in their YAML) use eta_pin as a
+    # direct input and need it preserved.
+    if "eta_couple" in extra or "eta_couple" in params:
+        extra.pop("eta_pin", None)
     # construction_time_yr is no longer a named arg on CostModel.forward()
     # (post-6fe39ce: sourced from concept YAML when not in kwargs). It flows
     # through **extra now; passing it both ways causes the multiple-values
