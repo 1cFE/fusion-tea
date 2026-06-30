@@ -9,18 +9,28 @@
 #   uv pip compile requirements-serve.in -o requirements-serve.txt --prerelease=explicit
 # (--prerelease=explicit confines any pre-release allowance to packages pinned to
 #  one explicitly, so numpy/scipy/pydantic stay on stable releases. 1costingfe is
-#  now a stable release (0.1.0) so the flag is a no-op today, but keep it so a
+#  pinned to a public GitHub tag now, so the flag is a no-op, but keep it so a
 #  future alpha bump of 1costingfe doesn't drag transitive deps onto pre-releases.)
-# Commit both files. Regenerate on any bump (e.g. a new 1costingfe).
+# Commit both files. Regenerate on any bump (e.g. a new 1costingfe tag).
 #
-# NOTE: 1costingfe v0.1.0 gates off the 0D physics solvers by default; the
+# 1costingfe is pinned to the public GitHub tag v0.1.1 (1cFE/1costingfe), NOT a
+# PyPI release. We install from the tag's source tarball (codeload archive URL)
+# rather than git+https, so the slim Docker image needs no git binary — pip
+# fetches and builds it directly. The v0.1.1 build makes JAX OPTIONAL: numpy is
+# the base dependency and jax/jaxlib are an opt-in [jax] extra. We install WITHOUT
+# the extra, so the served image carries no jax/jaxlib (forward()/sensitivity()
+# run on numpy; the library auto-detects the backend). This drops jax+jaxlib+scipy
+# from the deploy, which is what fixes the Railway out-of-memory (the jaxlib RSS +
+# per-request tracing was tipping the container over its limit).
+#
+# NOTE: 1costingfe still gates off the 0D physics solvers by default; the
 # explorer re-enables them at runtime (model_setup_helpers.py flips
-# MODELS_0D_ENABLED / SIZING_FEATURES_ENABLED). This works because the published
-# 0.1.0 wheel still SHIPS the solver modules (layers/{tokamak,mirror,physics}.py).
-# If a future release deletes them from the wheel (not just gates), tokamak
-# concepts (01/21/28/29/33) will 500 — re-verify the parity check on any bump.
+# MODELS_0D_ENABLED / SIZING_FEATURES_ENABLED). This works because the v0.1.1
+# build still SHIPS the solver modules (layers/{tokamak,mirror,physics}.py).
+# If a future tag deletes them (not just gates), tokamak concepts
+# (01/21/28/29/33) will 500 — re-verify the parity check on any bump.
 
-1costingfe==0.1.0        # → import costingfe (+ jax, jaxlib) for /api/compute
+1costingfe @ https://github.com/1cFE/1costingfe/archive/refs/tags/v0.1.1.tar.gz  # numpy-only build (no jax/jaxlib) → import costingfe for /api/compute
 fastapi
 uvicorn[standard]
 jinja2
