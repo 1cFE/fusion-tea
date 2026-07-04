@@ -10,7 +10,7 @@
 | WI-013 | Pipeline Execution Spike | **DONE** — execution closed, 11/11 assertions exact | commit df5835e6 |
 | WI-014 | SysML Wiring Construct Validation | **done w/ riders** — 3 live checks pending license | verdicts via corpus proxy; see log |
 | WI-015 | IFE End-to-End Demonstration | **blocked on syside license** | plumbing proven (WI-013); IFE models have no extraction snapshot, so live extraction needs syside |
-| WI-016 | H2 Probe (blind derivation + differential) | **derivation done; comparison running** | firewall held (2 near-misses logged, no exposure) |
+| WI-016 | H2 Probe (blind derivation + differential) | **DONE** (all 3 parts) — SysML authoring of derived calcs deferred (license + library-bar decision) | commits 7d52f9dc, e17d1410, f7a00c07 |
 | WI-017 | Dossier & Explainer | rolling — dossier seeded | finalizes last |
 
 **WI-009 (MFE library)**: paused per user 2026-07-04 (spec.md Status set to `paused`). Its design.md stays as-is; the WI-016 firewall excludes it.
@@ -58,6 +58,16 @@
 - **SV-008 caveat for the dossier**: the original criterion (defaults within Hawker's $25–120 range) *failed*; validation was re-anchored to a hand-picked design point and the failure became DI-006. Defensible, but it's a criteria revision, not a clean pass — the dossier must say so.
 - Strongest autonomous H2 evidence in the chain: the bank-vs-beam driver-energy convention conflict caught by reproducing Osiris's published gain (~3× LCOE error averted), and the closed-form DCF derivation replacing Hawker's iterative formula (SysML can't loop).
 
+### 2026-07-04 — WI-016 comparison complete (commit f7a00c07): H2 substantially validated; two 1costingfe bugs found
+- **Functional forms match across the board**: P_fus derived/key ratio constant 0.942 over a 16-point R×B grid (identical scaling; the 6% is the quadratic-⟨σv⟩-vs-Bosch-Hale temperature choice, within the derivation's own stated 10% band); conductor ampere-meters bit-identical; power balance agrees to 0.01 MW at equal constants; Q_p identical (13.6)
+- **The derived model beat the answer key where it matters most**: its virial structure term reproduces ARC's structure-dominated magnet cost to −8% and the $1030M analyst override to 4% — the correction 1costingfe needs a manual override for
+- **Adjudication**: 4 equivalent / 6 both-defensible / **2 answer-key wrong** / 4 capture gaps (3 derived-over-key: structure term, profile factor, field derating; 1 key-over-derived: radiation channel)
+- **⚠ Two 1costingfe bugs to file upstream (production impact — explorer serves these numbers)**:
+  1. Stellarator coil cost priced at YAML `b_center=6 T`, ignoring the concept spec's 9 T → ~33% coil-cost undercount at concept 20a
+  2. `compute_beta_N` is exactly half the standard β convention → Troyon/disruption validation gates ~2× permissive
+- **Honest limits recorded**: M_n=1.2 was consistency-closure (no error signal if the source were inconsistent); C_prof calibrated and validated on the same machine; k_st=20 extrapolates absurdly off-anchor ($17.6B at 20a) — the derived model is trustworthy near its anchors, not globally
+- Remaining WI-016 follow-up (deferred): author the derived relations as SysML calc defs + SV entries — gated on the syside license and a user call on whether they meet the library bar (`comparison.md` has the recommendation inputs)
+
 ## Quality Gates (orchestrator-enforced before any item closes)
 
 1. Item has spec.md in `work/active/WI-XXX_*/` (light is fine; scope + success criteria + firewall/protocol where applicable)
@@ -75,7 +85,7 @@
 
 | Hypothesis | Evidence so far | Status |
 |-----------|----------------|--------|
-| H1 agentic modeling | IFE epic (prior); this epic adds the SV-008 oracle via WI-015 | partial |
-| H2 research loop | pending WI-016 | untested → in progress |
-| H3 SysML methodology | pending WI-014 (wiring constructs) | partial |
-| H4 executable exploration | pending WI-013/015 | untested → in progress |
+| H1 agentic modeling | IFE epic (prior) + retro-capture (incl. SV-008 criteria-revision caveat, DI-006 erratum); WI-015 adds the executable oracle | partial — oracle pending WI-015 |
+| H2 research loop | **strong**: blind derivation matched/exceeded answer key on all functional forms; virial term reproduced $1030M override to 4%; comparison found 2 answer-key bugs; limits honestly bounded (M_n closure, same-machine calibration, off-anchor k_st) | substantially validated (one family, one probe) |
+| H3 SysML methodology | WI-014: chaining idiom usable w/ part-usage rider; assert-constraint extraction stubbed (doc-only in generated code) | partial — live checks license-gated |
+| H4 executable exploration | WI-013: first end-to-end execution, 11/11 exact; constraint eval harness-side by necessity | plumbing validated — fusion demo pending WI-015 (license) |
