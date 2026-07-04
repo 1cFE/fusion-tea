@@ -1,0 +1,474 @@
+{
+  "artifacts": [
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__energy_production__annual_energy_mwh",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__energy_production__annual_energy_mwh.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__annualized_fuel__annual_fuel_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__annualized_fuel__annual_fuel_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__material_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__material_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__fab_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__fab_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__install_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__install_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__total_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__total_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__idiot_index",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__idiot_index.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__material_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__material_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__fab_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__fab_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__install_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__install_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__total_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__total_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__idiot_index",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__idiot_index.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__material_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__material_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__fab_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__fab_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__install_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__install_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__total_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__total_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__idiot_index",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__idiot_index.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__material_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__material_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__fab_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__fab_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__install_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__install_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__total_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__total_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__idiot_index",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__idiot_index.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__material_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__material_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__fab_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__fab_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__install_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__install_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__total_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__total_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__idiot_index",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__idiot_index.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__material_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__material_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__fab_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__fab_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__install_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__install_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__total_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__total_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__idiot_index",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__idiot_index.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__material_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__material_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__fab_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__fab_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__install_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__install_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__total_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__total_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__idiot_index",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__idiot_index.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__material_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__material_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__fab_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__fab_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__install_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__install_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__total_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__total_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__idiot_index",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__idiot_index.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__material_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__material_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__fab_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__fab_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__install_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__install_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__total_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__total_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__idiot_index",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__idiot_index.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__fastener_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__fastener_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__seal_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__seal_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__wiring_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__wiring_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__total_allocation",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__total_allocation.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__material_portion",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__material_portion.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__p_net_kw__p_net_kw",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__p_net_kw__p_net_kw.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__fabrication_cost__fabrication_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__fabrication_cost__fabrication_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__installation_cost__installation_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__installation_cost__installation_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__battery_system__capital_cost__capital_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__battery_system__capital_cost__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__battery_system__raw_material_cost__raw_material_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__battery_system__raw_material_cost__raw_material_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__battery_system__fabrication_cost__fabrication_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__battery_system__fabrication_cost__fabrication_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__battery_system__installation_cost__installation_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__battery_system__installation_cost__installation_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__site_infra__raw_material_cost__raw_material_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__site_infra__raw_material_cost__raw_material_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__site_infra__fabrication_cost__fabrication_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__site_infra__fabrication_cost__fabrication_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__site_infra__installation_cost__installation_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__site_infra__installation_cost__installation_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__site_infra__capital_cost__capital_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__site_infra__capital_cost__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__capital_cost__capital_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__capital_cost__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__raw_material_cost__raw_material_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__raw_material_cost__raw_material_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__annualized_om__annual_om_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__annualized_om__annual_om_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__battery_system__idiot_index__idiot_index",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__battery_system__idiot_index__idiot_index.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__fabrication_cost__fabrication_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__fabrication_cost__fabrication_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__installation_cost__installation_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__installation_cost__installation_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__site_infra__idiot_index__idiot_index",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__site_infra__idiot_index__idiot_index.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__capital_cost__capital_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__capital_cost__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__solar_array__idiot_index__idiot_index",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__solar_array__idiot_index__idiot_index.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__raw_material_cost__raw_material_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__raw_material_cost__raw_material_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__annualized_financial__capital_recovery_factor",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__annualized_financial__capital_recovery_factor.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__annualized_financial__annualized_capital_cost",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__annualized_financial__annualized_capital_cost.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__idiot_index__idiot_index",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__idiot_index__idiot_index.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "SolarBatteryDesign__solar_battery_plant__lcoe__lcoe_per_mwh",
+      "produced": true,
+      "relative_path": "SolarBatteryDesign__solar_battery_plant__lcoe__lcoe_per_mwh.json",
+      "type_name": "RootModel[float]"
+    }
+  ],
+  "base_output_dir": "/home/reid/1cfe/fusion-tea/exploration/pipeline_spike/outputs",
+  "metadata": {
+    "output_folder": "solar_battery_tea_results",
+    "run_description": "Generated pipeline for solar_battery_tea"
+  },
+  "run_directory": "solar-battery-tea-results-1055485c",
+  "run_name": "solar-battery-tea-results",
+  "short_id": "1055485c"
+}

@@ -1,0 +1,526 @@
+# Generated Pipeline Configuration for solar_battery_tea
+#
+# Auto-generated from SysML calc def dependency analysis
+# DO NOT EDIT - Regenerate using code generator
+
+metadata:
+  run_description: "Generated pipeline for solar_battery_tea"
+  output_folder: "solar_battery_tea_results"
+
+modules:
+  # Entry point - load inputs from JSON
+  entry_fusion:
+    module_type: EntryPoint
+    inputs:
+      library_params: LibraryParams ../inputs/library_params.json
+      design_params: DesignParams ../inputs/design_params.json
+      system_design: SystemDesign ../inputs/system_design.json
+
+
+  # solarbatterylibrary.EnergyProductionCalcModule
+  solarbatterydesign__solar_battery_plant__energy_production:
+    module_type: solarbatterylibrary.EnergyProductionCalcModule
+    inputs:
+      p_net_mw: float design_params.SolarBatteryDesign__solar_battery_plant__energy_production__p_net_mw
+      n_mod: float design_params.SolarBatteryDesign__solar_battery_plant__energy_production__n_mod
+      plant_availability: float design_params.SolarBatteryDesign__solar_battery_plant__energy_production__plant_availability
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__energy_production__annual_energy_mwh
+
+  # solarbatterylibrary.AnnualizedFuelCalcModule
+  solarbatterydesign__solar_battery_plant__annualized_fuel:
+    module_type: solarbatterylibrary.AnnualizedFuelCalcModule
+    inputs:
+      fuel_unit_cost: float design_params.SolarBatteryDesign__solar_battery_plant__annualized_fuel__fuel_unit_cost
+      fuel_consumption: float design_params.SolarBatteryDesign__solar_battery_plant__annualized_fuel__fuel_consumption
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__annualized_fuel__annual_fuel_cost
+
+  # solarbatterylibrary.PVModuleCostCalcModule
+  solarbatterydesign__solar_battery_plant__solar_array__pv_module__cost_model:
+    module_type: solarbatterylibrary.PVModuleCostCalcModule
+    inputs:
+      wattage: float system_design.SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__wattage
+      efficiency: float system_design.SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__efficiency
+      cost_per_watt: float library_params.SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__cost_per_watt
+      fab_factor: float library_params.SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__fab_factor
+      install_factor: float library_params.SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__install_factor
+    outputs:
+      material_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__material_cost
+      fab_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__fab_cost
+      install_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__install_cost
+      total_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__total_cost
+      idiot_index: float SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__idiot_index
+
+  # solarbatterylibrary.InverterCostCalcModule
+  solarbatterydesign__solar_battery_plant__solar_array__inverter__cost_model:
+    module_type: solarbatterylibrary.InverterCostCalcModule
+    inputs:
+      power_rating: float system_design.SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__power_rating
+      cost_per_watt: float library_params.SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__cost_per_watt
+      fab_factor: float library_params.SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__fab_factor
+      install_factor: float library_params.SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__install_factor
+    outputs:
+      material_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__material_cost
+      fab_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__fab_cost
+      install_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__install_cost
+      total_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__total_cost
+      idiot_index: float SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__idiot_index
+
+  # solarbatterylibrary.ArrayBOSCostCalcModule
+  solarbatterydesign__solar_battery_plant__solar_array__array_bos__cost_model:
+    module_type: solarbatterylibrary.ArrayBOSCostCalcModule
+    inputs:
+      string_count: float system_design.SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__string_count
+      panel_count: float system_design.SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__panel_count
+      cost_per_string: float library_params.SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__cost_per_string
+      cost_per_panel_bos: float library_params.SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__cost_per_panel_bos
+      fab_factor: float library_params.SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__fab_factor
+      install_factor: float library_params.SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__install_factor
+    outputs:
+      material_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__material_cost
+      fab_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__fab_cost
+      install_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__install_cost
+      total_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__total_cost
+      idiot_index: float SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__idiot_index
+
+  # solarbatterylibrary.BatteryPackCostCalcModule
+  solarbatterydesign__solar_battery_plant__battery_system__battery_pack__cost_model:
+    module_type: solarbatterylibrary.BatteryPackCostCalcModule
+    inputs:
+      capacity_kwh: float system_design.SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__capacity_kwh
+      chemistry_factor: float system_design.SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__chemistry_factor
+      cost_per_kwh: float library_params.SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__cost_per_kwh
+      fab_factor: float library_params.SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__fab_factor
+      install_factor: float library_params.SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__install_factor
+    outputs:
+      material_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__material_cost
+      fab_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__fab_cost
+      install_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__install_cost
+      total_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__total_cost
+      idiot_index: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__idiot_index
+
+  # solarbatterylibrary.HybridInverterCostCalcModule
+  solarbatterydesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model:
+    module_type: solarbatterylibrary.HybridInverterCostCalcModule
+    inputs:
+      power_rating: float system_design.SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__power_rating
+      cost_per_watt: float library_params.SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__cost_per_watt
+      fab_factor: float library_params.SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__fab_factor
+      install_factor: float library_params.SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__install_factor
+    outputs:
+      material_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__material_cost
+      fab_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__fab_cost
+      install_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__install_cost
+      total_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__total_cost
+      idiot_index: float SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__idiot_index
+
+  # solarbatterylibrary.BatteryBOSCostCalcModule
+  solarbatterydesign__solar_battery_plant__battery_system__battery_bos__cost_model:
+    module_type: solarbatterylibrary.BatteryBOSCostCalcModule
+    inputs:
+      pack_count: float system_design.SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__pack_count
+      cost_per_pack_bos: float library_params.SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__cost_per_pack_bos
+      fab_factor: float library_params.SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__fab_factor
+      install_factor: float library_params.SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__install_factor
+    outputs:
+      material_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__material_cost
+      fab_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__fab_cost
+      install_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__install_cost
+      total_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__total_cost
+      idiot_index: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__idiot_index
+
+  # solarbatterylibrary.RackingCostCalcModule
+  solarbatterydesign__solar_battery_plant__site_infra__racking__cost_model:
+    module_type: solarbatterylibrary.RackingCostCalcModule
+    inputs:
+      panel_count: float system_design.SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__panel_count
+      tilt_angle: float system_design.SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__tilt_angle
+      cost_per_panel_rack: float library_params.SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__cost_per_panel_rack
+      fab_factor: float library_params.SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__fab_factor
+      install_factor: float library_params.SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__install_factor
+    outputs:
+      material_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__material_cost
+      fab_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__fab_cost
+      install_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__install_cost
+      total_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__total_cost
+      idiot_index: float SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__idiot_index
+
+  # solarbatterylibrary.ElectricalPanelCostCalcModule
+  solarbatterydesign__solar_battery_plant__site_infra__electrical_panel__cost_model:
+    module_type: solarbatterylibrary.ElectricalPanelCostCalcModule
+    inputs:
+      circuit_count: float system_design.SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__circuit_count
+      base_cost: float library_params.SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__base_cost
+      cost_per_circuit: float library_params.SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__cost_per_circuit
+      fab_factor: float library_params.SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__fab_factor
+      install_factor: float library_params.SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__install_factor
+    outputs:
+      material_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__material_cost
+      fab_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__fab_cost
+      install_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__install_cost
+      total_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__total_cost
+      idiot_index: float SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__idiot_index
+
+  # solarbatterylibrary.PermittingCostCalcModule
+  solarbatterydesign__solar_battery_plant__site_infra__permitting__cost_model:
+    module_type: solarbatterylibrary.PermittingCostCalcModule
+    inputs:
+      system_capacity_kw: float system_design.SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__system_capacity_kw
+      cost_per_kw: float library_params.SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__cost_per_kw
+    outputs:
+      material_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__material_cost
+      fab_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__fab_cost
+      install_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__install_cost
+      total_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__total_cost
+      idiot_index: float SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__idiot_index
+
+  # solarbatterylibrary.AllocationCostCalcModule
+  solarbatterydesign__solar_battery_plant__solar_array__allocation_model:
+    module_type: solarbatterylibrary.AllocationCostCalcModule
+    inputs:
+      child_count: float library_params.SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__child_count
+      total_child_mass: float library_params.SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__total_child_mass
+      fastener_cost_per_child: float library_params.SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__fastener_cost_per_child
+      seal_cost_per_child: float library_params.SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__seal_cost_per_child
+      wiring_cost_per_kg: float library_params.SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__wiring_cost_per_kg
+    outputs:
+      fastener_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__fastener_cost
+      seal_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__seal_cost
+      wiring_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__wiring_cost
+      total_allocation: float SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__total_allocation
+      material_portion: float SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__material_portion
+
+  # source: computed_attribute (solarbatterydesign.solar_battery_plant.p_net_kwModule)
+  solarbatterydesign__solar_battery_plant__p_net_kw:
+    module_type: solarbatterydesign.solar_battery_plant.p_net_kwModule
+    inputs:
+      p_net_mw: float design_params.SolarBatteryDesign__solar_battery_plant__p_net_mw
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__p_net_kw__p_net_kw
+
+  # source: aggregation (solarbatterydesign.solar_battery_plant.solar_array.fabrication_costModule)
+  solarbatterydesign__solar_battery_plant__solar_array__fabrication_cost:
+    module_type: solarbatterydesign.solar_battery_plant.solar_array.fabrication_costModule
+    inputs:
+      pv_module_fabrication_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__fab_cost
+      module_count: float system_design.SolarBatteryDesign__solar_battery_plant__solar_array__module_count
+      inverter_fabrication_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__fab_cost
+      inverter_count: float system_design.SolarBatteryDesign__solar_battery_plant__solar_array__inverter_count
+      array_bos_fabrication_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__fab_cost
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__solar_array__fabrication_cost__fabrication_cost
+
+  # source: aggregation (solarbatterydesign.solar_battery_plant.solar_array.installation_costModule)
+  solarbatterydesign__solar_battery_plant__solar_array__installation_cost:
+    module_type: solarbatterydesign.solar_battery_plant.solar_array.installation_costModule
+    inputs:
+      pv_module_installation_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__install_cost
+      module_count: float system_design.SolarBatteryDesign__solar_battery_plant__solar_array__module_count
+      inverter_installation_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__install_cost
+      inverter_count: float system_design.SolarBatteryDesign__solar_battery_plant__solar_array__inverter_count
+      array_bos_installation_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__install_cost
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__solar_array__installation_cost__installation_cost
+
+  # source: aggregation (solarbatterydesign.solar_battery_plant.battery_system.capital_costModule)
+  solarbatterydesign__solar_battery_plant__battery_system__capital_cost:
+    module_type: solarbatterydesign.solar_battery_plant.battery_system.capital_costModule
+    inputs:
+      battery_pack_capital_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__total_cost
+      pack_count: float system_design.SolarBatteryDesign__solar_battery_plant__battery_system__pack_count
+      hybrid_inverter_capital_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__total_cost
+      battery_bos_capital_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__total_cost
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__battery_system__capital_cost__capital_cost
+
+  # source: aggregation (solarbatterydesign.solar_battery_plant.battery_system.raw_material_costModule)
+  solarbatterydesign__solar_battery_plant__battery_system__raw_material_cost:
+    module_type: solarbatterydesign.solar_battery_plant.battery_system.raw_material_costModule
+    inputs:
+      battery_pack_raw_material_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__material_cost
+      pack_count: float system_design.SolarBatteryDesign__solar_battery_plant__battery_system__pack_count
+      hybrid_inverter_raw_material_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__material_cost
+      battery_bos_raw_material_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__material_cost
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__battery_system__raw_material_cost__raw_material_cost
+
+  # source: aggregation (solarbatterydesign.solar_battery_plant.battery_system.fabrication_costModule)
+  solarbatterydesign__solar_battery_plant__battery_system__fabrication_cost:
+    module_type: solarbatterydesign.solar_battery_plant.battery_system.fabrication_costModule
+    inputs:
+      battery_pack_fabrication_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__fab_cost
+      pack_count: float system_design.SolarBatteryDesign__solar_battery_plant__battery_system__pack_count
+      hybrid_inverter_fabrication_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__fab_cost
+      battery_bos_fabrication_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__fab_cost
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__battery_system__fabrication_cost__fabrication_cost
+
+  # source: aggregation (solarbatterydesign.solar_battery_plant.battery_system.installation_costModule)
+  solarbatterydesign__solar_battery_plant__battery_system__installation_cost:
+    module_type: solarbatterydesign.solar_battery_plant.battery_system.installation_costModule
+    inputs:
+      battery_pack_installation_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__install_cost
+      pack_count: float system_design.SolarBatteryDesign__solar_battery_plant__battery_system__pack_count
+      hybrid_inverter_installation_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__install_cost
+      battery_bos_installation_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__install_cost
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__battery_system__installation_cost__installation_cost
+
+  # source: aggregation (solarbatterydesign.solar_battery_plant.site_infra.raw_material_costModule)
+  solarbatterydesign__solar_battery_plant__site_infra__raw_material_cost:
+    module_type: solarbatterydesign.solar_battery_plant.site_infra.raw_material_costModule
+    inputs:
+      racking_raw_material_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__material_cost
+      electrical_panel_raw_material_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__material_cost
+      permitting_raw_material_cost: float system_design.SolarBatteryDesign__solar_battery_plant__site_infra__raw_material_cost__permitting_raw_material_cost
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__site_infra__raw_material_cost__raw_material_cost
+
+  # source: aggregation (solarbatterydesign.solar_battery_plant.site_infra.fabrication_costModule)
+  solarbatterydesign__solar_battery_plant__site_infra__fabrication_cost:
+    module_type: solarbatterydesign.solar_battery_plant.site_infra.fabrication_costModule
+    inputs:
+      racking_fabrication_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__fab_cost
+      electrical_panel_fabrication_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__fab_cost
+      permitting_fabrication_cost: float system_design.SolarBatteryDesign__solar_battery_plant__site_infra__fabrication_cost__permitting_fabrication_cost
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__site_infra__fabrication_cost__fabrication_cost
+
+  # source: aggregation (solarbatterydesign.solar_battery_plant.site_infra.installation_costModule)
+  solarbatterydesign__solar_battery_plant__site_infra__installation_cost:
+    module_type: solarbatterydesign.solar_battery_plant.site_infra.installation_costModule
+    inputs:
+      racking_installation_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__install_cost
+      electrical_panel_installation_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__install_cost
+      permitting_installation_cost: float system_design.SolarBatteryDesign__solar_battery_plant__site_infra__installation_cost__permitting_installation_cost
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__site_infra__installation_cost__installation_cost
+
+  # source: aggregation (solarbatterydesign.solar_battery_plant.site_infra.capital_costModule)
+  solarbatterydesign__solar_battery_plant__site_infra__capital_cost:
+    module_type: solarbatterydesign.solar_battery_plant.site_infra.capital_costModule
+    inputs:
+      racking_capital_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__total_cost
+      electrical_panel_capital_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__total_cost
+      permitting_capital_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__total_cost
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__site_infra__capital_cost__capital_cost
+
+  # source: aggregation (solarbatterydesign.solar_battery_plant.solar_array.capital_costModule)
+  solarbatterydesign__solar_battery_plant__solar_array__capital_cost:
+    module_type: solarbatterydesign.solar_battery_plant.solar_array.capital_costModule
+    inputs:
+      pv_module_capital_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__total_cost
+      module_count: float system_design.SolarBatteryDesign__solar_battery_plant__solar_array__module_count
+      inverter_capital_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__total_cost
+      inverter_count: float system_design.SolarBatteryDesign__solar_battery_plant__solar_array__inverter_count
+      array_bos_capital_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__total_cost
+      misc_hardware_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__total_allocation
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__solar_array__capital_cost__capital_cost
+
+  # source: aggregation (solarbatterydesign.solar_battery_plant.solar_array.raw_material_costModule)
+  solarbatterydesign__solar_battery_plant__solar_array__raw_material_cost:
+    module_type: solarbatterydesign.solar_battery_plant.solar_array.raw_material_costModule
+    inputs:
+      pv_module_raw_material_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__material_cost
+      module_count: float system_design.SolarBatteryDesign__solar_battery_plant__solar_array__module_count
+      inverter_raw_material_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__material_cost
+      inverter_count: float system_design.SolarBatteryDesign__solar_battery_plant__solar_array__inverter_count
+      array_bos_raw_material_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__material_cost
+      allocation_model_material_portion: float SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__material_portion
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__solar_array__raw_material_cost__raw_material_cost
+
+  # solarbatterylibrary.AnnualizedOMCalcModule
+  solarbatterydesign__solar_battery_plant__annualized_om:
+    module_type: solarbatterylibrary.AnnualizedOMCalcModule
+    inputs:
+      om_rate_per_kw_year: float design_params.SolarBatteryDesign__solar_battery_plant__annualized_om__om_rate_per_kw_year
+      p_net_kw: float SolarBatteryDesign__solar_battery_plant__p_net_kw__p_net_kw.root
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__annualized_om__annual_om_cost
+
+  # source: aggregation (solarbatterydesign.solar_battery_plant.battery_system.idiot_indexModule)
+  solarbatterydesign__solar_battery_plant__battery_system__idiot_index:
+    module_type: solarbatterydesign.solar_battery_plant.battery_system.idiot_indexModule
+    inputs:
+      capital_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__capital_cost__capital_cost.root
+      raw_material_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__raw_material_cost__raw_material_cost.root
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__battery_system__idiot_index__idiot_index
+
+  # source: aggregation (solarbatterydesign.solar_battery_plant.fabrication_costModule)
+  solarbatterydesign__solar_battery_plant__fabrication_cost:
+    module_type: solarbatterydesign.solar_battery_plant.fabrication_costModule
+    inputs:
+      solar_array_fabrication_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__fabrication_cost__fabrication_cost.root
+      battery_system_fabrication_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__fabrication_cost__fabrication_cost.root
+      site_infra_fabrication_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__fabrication_cost__fabrication_cost.root
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__fabrication_cost__fabrication_cost
+
+  # source: aggregation (solarbatterydesign.solar_battery_plant.installation_costModule)
+  solarbatterydesign__solar_battery_plant__installation_cost:
+    module_type: solarbatterydesign.solar_battery_plant.installation_costModule
+    inputs:
+      solar_array_installation_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__installation_cost__installation_cost.root
+      battery_system_installation_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__installation_cost__installation_cost.root
+      site_infra_installation_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__installation_cost__installation_cost.root
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__installation_cost__installation_cost
+
+  # source: aggregation (solarbatterydesign.solar_battery_plant.site_infra.idiot_indexModule)
+  solarbatterydesign__solar_battery_plant__site_infra__idiot_index:
+    module_type: solarbatterydesign.solar_battery_plant.site_infra.idiot_indexModule
+    inputs:
+      capital_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__capital_cost__capital_cost.root
+      raw_material_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__raw_material_cost__raw_material_cost.root
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__site_infra__idiot_index__idiot_index
+
+  # source: aggregation (solarbatterydesign.solar_battery_plant.capital_costModule)
+  solarbatterydesign__solar_battery_plant__capital_cost:
+    module_type: solarbatterydesign.solar_battery_plant.capital_costModule
+    inputs:
+      solar_array_capital_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__capital_cost__capital_cost.root
+      battery_system_capital_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__capital_cost__capital_cost.root
+      site_infra_capital_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__capital_cost__capital_cost.root
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__capital_cost__capital_cost
+
+  # source: aggregation (solarbatterydesign.solar_battery_plant.solar_array.idiot_indexModule)
+  solarbatterydesign__solar_battery_plant__solar_array__idiot_index:
+    module_type: solarbatterydesign.solar_battery_plant.solar_array.idiot_indexModule
+    inputs:
+      capital_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__capital_cost__capital_cost.root
+      raw_material_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__raw_material_cost__raw_material_cost.root
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__solar_array__idiot_index__idiot_index
+
+  # source: aggregation (solarbatterydesign.solar_battery_plant.raw_material_costModule)
+  solarbatterydesign__solar_battery_plant__raw_material_cost:
+    module_type: solarbatterydesign.solar_battery_plant.raw_material_costModule
+    inputs:
+      solar_array_raw_material_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__raw_material_cost__raw_material_cost.root
+      battery_system_raw_material_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__raw_material_cost__raw_material_cost.root
+      site_infra_raw_material_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__raw_material_cost__raw_material_cost.root
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__raw_material_cost__raw_material_cost
+
+  # solarbatterylibrary.AnnualizedFinancialCalcModule
+  solarbatterydesign__solar_battery_plant__annualized_financial:
+    module_type: solarbatterylibrary.AnnualizedFinancialCalcModule
+    inputs:
+      total_capex: float SolarBatteryDesign__solar_battery_plant__capital_cost__capital_cost.root
+      discount_rate: float design_params.SolarBatteryDesign__solar_battery_plant__annualized_financial__discount_rate
+      plant_lifetime: float design_params.SolarBatteryDesign__solar_battery_plant__annualized_financial__plant_lifetime
+    outputs:
+      capital_recovery_factor: float SolarBatteryDesign__solar_battery_plant__annualized_financial__capital_recovery_factor
+      annualized_capital_cost: float SolarBatteryDesign__solar_battery_plant__annualized_financial__annualized_capital_cost
+
+  # source: aggregation (solarbatterydesign.solar_battery_plant.idiot_indexModule)
+  solarbatterydesign__solar_battery_plant__idiot_index:
+    module_type: solarbatterydesign.solar_battery_plant.idiot_indexModule
+    inputs:
+      capital_cost: float SolarBatteryDesign__solar_battery_plant__capital_cost__capital_cost.root
+      raw_material_cost: float SolarBatteryDesign__solar_battery_plant__raw_material_cost__raw_material_cost.root
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__idiot_index__idiot_index
+
+  # solarbatterylibrary.LCOECalcModule
+  solarbatterydesign__solar_battery_plant__lcoe:
+    module_type: solarbatterylibrary.LCOECalcModule
+    inputs:
+      annualized_capital_cost: float SolarBatteryDesign__solar_battery_plant__annualized_financial__annualized_capital_cost
+      annual_om_cost: float SolarBatteryDesign__solar_battery_plant__annualized_om__annual_om_cost.root
+      annual_fuel_cost: float SolarBatteryDesign__solar_battery_plant__annualized_fuel__annual_fuel_cost.root
+      yearly_inflation: float design_params.SolarBatteryDesign__solar_battery_plant__lcoe__yearly_inflation
+      plant_lifetime: float design_params.SolarBatteryDesign__solar_battery_plant__lcoe__plant_lifetime
+      annual_energy_mwh: float SolarBatteryDesign__solar_battery_plant__energy_production__annual_energy_mwh.root
+    outputs:
+      root: RootModel[float] SolarBatteryDesign__solar_battery_plant__lcoe__lcoe_per_mwh
+
+
+  # Exit point - capture all results
+  exit_point:
+    module_type: ExitPoint
+    outputs:
+      SolarBatteryDesign__solar_battery_plant__energy_production__annual_energy_mwh: RootModel[float] SolarBatteryDesign__solar_battery_plant__energy_production__annual_energy_mwh.json
+      SolarBatteryDesign__solar_battery_plant__annualized_fuel__annual_fuel_cost: RootModel[float] SolarBatteryDesign__solar_battery_plant__annualized_fuel__annual_fuel_cost.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__material_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__material_cost.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__fab_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__fab_cost.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__install_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__install_cost.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__total_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__total_cost.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__idiot_index: float SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__idiot_index.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__material_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__material_cost.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__fab_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__fab_cost.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__install_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__install_cost.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__total_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__total_cost.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__idiot_index: float SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__idiot_index.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__material_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__material_cost.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__fab_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__fab_cost.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__install_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__install_cost.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__total_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__total_cost.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__idiot_index: float SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__idiot_index.json
+      SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__material_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__material_cost.json
+      SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__fab_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__fab_cost.json
+      SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__install_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__install_cost.json
+      SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__total_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__total_cost.json
+      SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__idiot_index: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__idiot_index.json
+      SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__material_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__material_cost.json
+      SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__fab_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__fab_cost.json
+      SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__install_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__install_cost.json
+      SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__total_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__total_cost.json
+      SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__idiot_index: float SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__idiot_index.json
+      SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__material_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__material_cost.json
+      SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__fab_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__fab_cost.json
+      SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__install_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__install_cost.json
+      SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__total_cost: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__total_cost.json
+      SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__idiot_index: float SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__idiot_index.json
+      SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__material_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__material_cost.json
+      SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__fab_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__fab_cost.json
+      SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__install_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__install_cost.json
+      SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__total_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__total_cost.json
+      SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__idiot_index: float SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__idiot_index.json
+      SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__material_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__material_cost.json
+      SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__fab_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__fab_cost.json
+      SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__install_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__install_cost.json
+      SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__total_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__total_cost.json
+      SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__idiot_index: float SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__idiot_index.json
+      SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__material_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__material_cost.json
+      SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__fab_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__fab_cost.json
+      SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__install_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__install_cost.json
+      SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__total_cost: float SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__total_cost.json
+      SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__idiot_index: float SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__idiot_index.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__fastener_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__fastener_cost.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__seal_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__seal_cost.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__wiring_cost: float SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__wiring_cost.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__total_allocation: float SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__total_allocation.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__material_portion: float SolarBatteryDesign__solar_battery_plant__solar_array__allocation_model__material_portion.json
+      SolarBatteryDesign__solar_battery_plant__p_net_kw__p_net_kw: RootModel[float] SolarBatteryDesign__solar_battery_plant__p_net_kw__p_net_kw.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__fabrication_cost__fabrication_cost: RootModel[float] SolarBatteryDesign__solar_battery_plant__solar_array__fabrication_cost__fabrication_cost.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__installation_cost__installation_cost: RootModel[float] SolarBatteryDesign__solar_battery_plant__solar_array__installation_cost__installation_cost.json
+      SolarBatteryDesign__solar_battery_plant__battery_system__capital_cost__capital_cost: RootModel[float] SolarBatteryDesign__solar_battery_plant__battery_system__capital_cost__capital_cost.json
+      SolarBatteryDesign__solar_battery_plant__battery_system__raw_material_cost__raw_material_cost: RootModel[float] SolarBatteryDesign__solar_battery_plant__battery_system__raw_material_cost__raw_material_cost.json
+      SolarBatteryDesign__solar_battery_plant__battery_system__fabrication_cost__fabrication_cost: RootModel[float] SolarBatteryDesign__solar_battery_plant__battery_system__fabrication_cost__fabrication_cost.json
+      SolarBatteryDesign__solar_battery_plant__battery_system__installation_cost__installation_cost: RootModel[float] SolarBatteryDesign__solar_battery_plant__battery_system__installation_cost__installation_cost.json
+      SolarBatteryDesign__solar_battery_plant__site_infra__raw_material_cost__raw_material_cost: RootModel[float] SolarBatteryDesign__solar_battery_plant__site_infra__raw_material_cost__raw_material_cost.json
+      SolarBatteryDesign__solar_battery_plant__site_infra__fabrication_cost__fabrication_cost: RootModel[float] SolarBatteryDesign__solar_battery_plant__site_infra__fabrication_cost__fabrication_cost.json
+      SolarBatteryDesign__solar_battery_plant__site_infra__installation_cost__installation_cost: RootModel[float] SolarBatteryDesign__solar_battery_plant__site_infra__installation_cost__installation_cost.json
+      SolarBatteryDesign__solar_battery_plant__site_infra__capital_cost__capital_cost: RootModel[float] SolarBatteryDesign__solar_battery_plant__site_infra__capital_cost__capital_cost.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__capital_cost__capital_cost: RootModel[float] SolarBatteryDesign__solar_battery_plant__solar_array__capital_cost__capital_cost.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__raw_material_cost__raw_material_cost: RootModel[float] SolarBatteryDesign__solar_battery_plant__solar_array__raw_material_cost__raw_material_cost.json
+      SolarBatteryDesign__solar_battery_plant__annualized_om__annual_om_cost: RootModel[float] SolarBatteryDesign__solar_battery_plant__annualized_om__annual_om_cost.json
+      SolarBatteryDesign__solar_battery_plant__battery_system__idiot_index__idiot_index: RootModel[float] SolarBatteryDesign__solar_battery_plant__battery_system__idiot_index__idiot_index.json
+      SolarBatteryDesign__solar_battery_plant__fabrication_cost__fabrication_cost: RootModel[float] SolarBatteryDesign__solar_battery_plant__fabrication_cost__fabrication_cost.json
+      SolarBatteryDesign__solar_battery_plant__installation_cost__installation_cost: RootModel[float] SolarBatteryDesign__solar_battery_plant__installation_cost__installation_cost.json
+      SolarBatteryDesign__solar_battery_plant__site_infra__idiot_index__idiot_index: RootModel[float] SolarBatteryDesign__solar_battery_plant__site_infra__idiot_index__idiot_index.json
+      SolarBatteryDesign__solar_battery_plant__capital_cost__capital_cost: RootModel[float] SolarBatteryDesign__solar_battery_plant__capital_cost__capital_cost.json
+      SolarBatteryDesign__solar_battery_plant__solar_array__idiot_index__idiot_index: RootModel[float] SolarBatteryDesign__solar_battery_plant__solar_array__idiot_index__idiot_index.json
+      SolarBatteryDesign__solar_battery_plant__raw_material_cost__raw_material_cost: RootModel[float] SolarBatteryDesign__solar_battery_plant__raw_material_cost__raw_material_cost.json
+      SolarBatteryDesign__solar_battery_plant__annualized_financial__capital_recovery_factor: float SolarBatteryDesign__solar_battery_plant__annualized_financial__capital_recovery_factor.json
+      SolarBatteryDesign__solar_battery_plant__annualized_financial__annualized_capital_cost: float SolarBatteryDesign__solar_battery_plant__annualized_financial__annualized_capital_cost.json
+      SolarBatteryDesign__solar_battery_plant__idiot_index__idiot_index: RootModel[float] SolarBatteryDesign__solar_battery_plant__idiot_index__idiot_index.json
+      SolarBatteryDesign__solar_battery_plant__lcoe__lcoe_per_mwh: RootModel[float] SolarBatteryDesign__solar_battery_plant__lcoe__lcoe_per_mwh.json
