@@ -47,7 +47,7 @@ This file is the actionable feed for modeling work. Raw research lives in `knowl
 
 ### DI-006: LCOE nonlinearity: center-of-range defaults ≠ center LCOE
 - **Source**: work-item:WI-007/verify_ife_lcoe.py
-- **Context**: Hawker's 14 Monte Carlo parameter defaults (center of uniform distributions) produce LCOE=52/MWh — far above the 5-120/MWh range reported by Hawker. This is because LCOE is highly nonlinear: low frequency (0.2 Hz) yields a 44 MW plant where capital costs dominate. Realistic HIF parameters (f=5Hz, eta=0.25) give 8.69/MWh.
+- **Context**: Hawker's 14 Monte Carlo parameter defaults (center of uniform distributions) produce LCOE=$252.30/MWh — far above the $25-120/MWh range reported by Hawker. This is because LCOE is highly nonlinear: low frequency (0.2 Hz) yields a 44 MW plant where capital costs dominate. Realistic HIF parameters (f=5Hz, eta=0.25) give $68.69/MWh. *(Figures corrected 2026-07-04 — a digit corruption had dropped the leading "2"s; verified against `scripts/verify_ife_lcoe.py`. See WI-016 `retro_capture_hawker.md`.)*
 - **Model implications**: SV-008 verified at realistic design points, not Monte Carlo centers. Default parameters in ife_cost_parameters.sysml represent distribution ranges for Monte Carlo, not an optimized design.
 - **Analysis implications**: When running parametric sweeps, report LCOE distribution statistics rather than evaluating at parameter midpoints. Small plant sizes (<100 MW) amplify capital cost impact.
 - **Status**: captured

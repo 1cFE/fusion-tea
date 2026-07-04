@@ -50,7 +50,7 @@ This epic runs on **existing assets** (the validated IFE models, the catf_mfe/so
 
 - [ ] A generated pipeline (codegen + AI implementation pass) executes end-to-end through the teax executor and produces asserted numeric output — first time ever (Item 1)
 - [ ] Calc-chaining and part-level `assert constraint` validated through syside **and** codegen extraction, with the working idiom recorded for WI-010 (Item 2)
-- [ ] The IFE/HIF model runs SysML → Python → sweep → viability map: generated LCOE reproduces SV-008 (8.69 $/MWh) within a stated tolerance, and a parameter sweep partitions the input grid by the ηG > 10 constraint with the feasible region visualized (Item 3)
+- [ ] The IFE/HIF model runs SysML → Python → sweep → viability map: generated LCOE reproduces the verified anchors ($252.30/MWh at Hawker defaults, $68.69/MWh at the realistic HIF point, per `scripts/verify_ife_lcoe.py` — the widely-quoted "8.69" was a digit corruption, see WI-016 retro capture) within a stated tolerance, and a parameter sweep partitions the input grid by the ηG > 10 constraint with the feasible region visualized (Item 3)
 - [ ] H2 has written evidence: the tokamak physics/costing chain derived blind from the research corpus (firewalled from 1costingfe), compared against 1costingfe at real design points with every divergence adjudicated, and the agent research loop instrumented; plus the Hawker→IFE derivation captured retroactively (Item 4)
 - [ ] A hypothesis-evidence dossier maps H1–H4 → items → evidence → honest status, and a public-facing explainer section shows the closed loop (Item 5)
 - [ ] Every item ships its findings/process document — documentation is a deliverable, not a byproduct
