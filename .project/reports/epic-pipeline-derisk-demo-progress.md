@@ -11,7 +11,7 @@
 | WI-014 | SysML Wiring Construct Validation | **done w/ riders** — 3 live checks pending license | verdicts via corpus proxy; see log |
 | WI-015 | IFE End-to-End Demonstration | **blocked on syside license** | plumbing proven (WI-013); IFE models have no extraction snapshot, so live extraction needs syside |
 | WI-016 | H2 Probe (blind derivation + differential) | **DONE** (all 3 parts) — SysML authoring of derived calcs deferred (license + library-bar decision) | commits 7d52f9dc, e17d1410, f7a00c07 |
-| WI-017 | Dossier & Explainer | rolling — dossier seeded | finalizes last |
+| WI-017 | Dossier & Explainer | **phase 1 done** — dossier + 2 framings (commit fdeb4f7e); phase 2 (explainer + final status) after WI-015 | `modeling_project/HYPOTHESIS_DOSSIER.md` |
 
 **WI-009 (MFE library)**: paused per user 2026-07-04 (spec.md Status set to `paused`). Its design.md stays as-is; the WI-016 firewall excludes it.
 
@@ -67,6 +67,12 @@
   2. `compute_beta_N` is exactly half the standard β convention → Troyon/disruption validation gates ~2× permissive
 - **Honest limits recorded**: M_n=1.2 was consistency-closure (no error signal if the source were inconsistent); C_prof calibrated and validated on the same machine; k_st=20 extrapolates absurdly off-anchor ($17.6B at 20a) — the derived model is trustworthy near its anchors, not globally
 - Remaining WI-016 follow-up (deferred): author the derived relations as SysML calc defs + SV entries — gated on the syside license and a user call on whether they meet the library bar (`comparison.md` has the recommendation inputs)
+
+### 2026-07-04 — WI-017 phase 1 done (commit fdeb4f7e); epic now fully license-gated
+- `modeling_project/HYPOTHESIS_DOSSIER.md` written: H1 partial (weak oracle — SV-008 criteria revision, DI-006 4-month-old corruption), H2 substantially validated with limits, H3 partial (arithmetic envelope only, so far), H4 plumbing-proven. Upstream findings register (2 teax, 1 codegen Phase 6, 2 1costingfe bugs) + MFE-epic relabel + pending-evidence section.
+- Draft P2 framings committed: `epic-uncertainty-propagation.md`, `epic-inverse-solving.md` (framings only, no items invented).
+- **Everything runnable without the syside license is now done.** Remaining, all license-gated: WI-015 (the IFE demo — extraction step), WI-014's 3 live checks, WI-016's SysML authoring (also awaiting user's library-bar call), WI-017 phase 2 (needs WI-015 artifacts).
+- Day-1 tally: 4 of 5 items done or phase-1 done, 7 working commits, 5 upstream findings, 1 registry erratum. Timebox health: strong — 9 days of buffer against one external dependency.
 
 ## Quality Gates (orchestrator-enforced before any item closes)
 
