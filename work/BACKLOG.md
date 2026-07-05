@@ -71,8 +71,8 @@ epics:
   - id: WI-016
     name: 'H2 Probe: Blind Physics Derivation + 1costingfe Differential'
     scale: standard
-    status: backlog
-    completed: null
+    status: completed
+    completed: '2026-07-05'
   - id: WI-017
     name: Demonstration Dossier & Explainer
     scale: standard
@@ -113,5 +113,5 @@ standalone: []
 | WI-013 | Pipeline Execution Spike | standard | completed | Completed 2026-07-05 |
 | WI-014 | SysML Wiring Construct Validation | standard | completed | Completed 2026-07-05 |
 | WI-015 | IFE End-to-End Demonstration | standard | completed | Completed 2026-07-05 |
-| WI-016 | H2 Probe: Blind Physics Derivation + 1costingfe Differential | standard | backlog |  |
+| WI-016 | H2 Probe: Blind Physics Derivation + 1costingfe Differential | standard | completed | Completed 2026-07-05 |
 | WI-017 | Demonstration Dossier & Explainer | standard | completed | Completed 2026-07-05 |

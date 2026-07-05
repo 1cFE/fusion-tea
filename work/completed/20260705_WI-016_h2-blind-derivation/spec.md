@@ -1,9 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
-Epic: "Pipeline De-Risk & Demonstration"
+Epic: Pipeline De-Risk & Demonstration
 Owner: reid
 Created: 2026-07-04
+Updated: '2026-07-05'
 ---
 
 # WI-016 — H2 Probe: Blind Physics Derivation
@@ -43,3 +44,7 @@ Within dossiers: `model_setup.py` files contain values COMPUTED by the costing c
 - `spec.md` (this file)
 - `derivation.md`
 - `process_log.md`
+
+## Disposition (2026-07-05, user decision)
+
+The blind-derived relations stay in `exploration/` (derivation.md + comparison/compare.py). They are NOT authored into `models/library/` as calc defs — the probe was an H2 experiment, not library production; the MFE library work (WI-009, paused) remains the production path with the WI-016 adjudications as sourcing input.
