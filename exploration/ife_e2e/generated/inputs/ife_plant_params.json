@@ -1,0 +1,22 @@
+{
+  "hif_plant_pkg__hif_plant__lcoe_calc__availability": 0.9,
+  "hif_plant_pkg__hif_plant__lcoe_calc__blanket_energy_multiple": 1.15,
+  "hif_plant_pkg__hif_plant__lcoe_calc__discount_rate": 0.08,
+  "hif_plant_pkg__hif_plant__lcoe_calc__driver_cost_constant": 68.247088,
+  "hif_plant_pkg__hif_plant__lcoe_calc__driver_efficiency": 0.35,
+  "hif_plant_pkg__hif_plant__lcoe_calc__driver_energy": 14286000.0,
+  "hif_plant_pkg__hif_plant__lcoe_calc__driver_lifetime_shots": 6000000000.0,
+  "hif_plant_pkg__hif_plant__lcoe_calc__frequency": 3.5,
+  "hif_plant_pkg__hif_plant__lcoe_calc__gain": 80.0,
+  "hif_plant_pkg__hif_plant__lcoe_calc__om_cost_constant": 65.0,
+  "hif_plant_pkg__hif_plant__lcoe_calc__plant_cost_constant": 2000.0,
+  "hif_plant_pkg__hif_plant__lcoe_calc__target_cost_constant": 10.0,
+  "hif_plant_pkg__hif_plant__lcoe_calc__thermal_efficiency": 0.43,
+  "hif_plant_pkg__hif_plant__lcoe_calc__yield_cost_constant": 5000000.0,
+  "hif_plant_pkg__hif_plant__lcoe_calc__construction_years": 5.0,
+  "hif_plant_pkg__hif_plant__lcoe_calc__operational_years": 40.0,
+  "hif_plant_pkg__hif_plant__recirc_calc__eta": 0.35,
+  "hif_plant_pkg__hif_plant__recirc_calc__gain": 80.0,
+  "hif_plant_pkg__hif_plant__recirc_calc__blanket_multiplier": 1.15,
+  "hif_plant_pkg__hif_plant__recirc_calc__thermal_efficiency": 0.43
+}
