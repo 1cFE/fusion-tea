@@ -1,0 +1,30 @@
+{
+  "artifacts": [
+    {
+      "channel": "exp_toy__exp_plant__reactivity_calc__sigma_v",
+      "produced": true,
+      "relative_path": "exp_toy__exp_plant__reactivity_calc__sigma_v.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "exp_toy__exp_plant__doublings_calc__doublings",
+      "produced": true,
+      "relative_path": "exp_toy__exp_plant__doublings_calc__doublings.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "exp_toy__exp_plant__exp_control_calc__e_to_x",
+      "produced": true,
+      "relative_path": "exp_toy__exp_plant__exp_control_calc__e_to_x.json",
+      "type_name": "RootModel[float]"
+    }
+  ],
+  "base_output_dir": "/home/reid/1cfe/fusion-tea/exploration/exp_spike/outputs",
+  "metadata": {
+    "output_folder": "exp_toy_tea_results",
+    "run_description": "Generated pipeline for exp_toy_tea"
+  },
+  "run_directory": "exp-toy-tea-results-b205ea6d",
+  "run_name": "exp-toy-tea-results",
+  "short_id": "b205ea6d"
+}

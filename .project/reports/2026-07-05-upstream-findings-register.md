@@ -256,3 +256,16 @@ Nothing in the findings docs contradicts the dossier, and no dossier row is miss
 10. **The rest batched**: SC-6/SC-7/SC-8 as friction issues, SC-9/SC-10/SC-11, C-3, A-3 as enhancements — file when the blocking and wrong-numbers queue is clear.
 
 The order's logic: numbers being served wrong beat everything; then stop teaching the broken pattern; then silent failures before loud ones; then contract decisions that gate the next epic; enhancements last.
+
+---
+
+## Addendum (2026-07-05, exp() mini-spike)
+
+Two further sysml-codegen findings from the out-of-envelope spike (`exploration/exp_spike/findings.md`):
+
+| # | Title | Severity | Evidence |
+|---|-------|----------|----------|
+| C-12 | manual_required stencil renders literals as `LiteralRationalEvaluation()` — values lost | friction (misleads the AI pass) | `expression_utils.py:64` keys on wrong class names, falls to `str()` fallback at `:79` |
+| C-13 | Stencil renders binary ops without parentheses — `** (1.0/3.0)` reads as `(** 1.0) / 3.0` | friction (misleads the AI pass) | `expression_utils.py:96` |
+
+Both make the rendered expression in the stencil lossy; faithful AI-pass implementation currently relies on the file:line pointer back to the `.sysml` source (which the stencil does provide). Fix before pointing the AI pass at larger models.

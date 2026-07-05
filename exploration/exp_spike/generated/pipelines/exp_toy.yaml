@@ -1,0 +1,51 @@
+# Generated Pipeline Configuration for exp_toy_tea
+#
+# Auto-generated from SysML calc def dependency analysis
+# DO NOT EDIT - Regenerate using code generator
+
+metadata:
+  run_description: "Generated pipeline for exp_toy_tea"
+  output_folder: "exp_toy_tea_results"
+
+modules:
+  # Entry point - load inputs from JSON
+  entry_fusion:
+    module_type: EntryPoint
+    inputs:
+      exp_toy_params: ExpToyParams ../inputs/exp_toy_params.json
+
+
+  # exp_toy.BoschHaleReactivityModule
+  exp_toy__exp_plant__reactivity_calc:
+    module_type: exp_toy.BoschHaleReactivityModule
+    inputs:
+      t_kev: float exp_toy_params.exp_toy__exp_plant__reactivity_calc__t_kev
+      c_coeff: float exp_toy_params.exp_toy__exp_plant__reactivity_calc__c_coeff
+      b_gamow: float exp_toy_params.exp_toy__exp_plant__reactivity_calc__b_gamow
+    outputs:
+      root: RootModel[float] exp_toy__exp_plant__reactivity_calc__sigma_v
+
+  # exp_toy.GainDoublingsModule
+  exp_toy__exp_plant__doublings_calc:
+    module_type: exp_toy.GainDoublingsModule
+    inputs:
+      target_gain: float exp_toy_params.exp_toy__exp_plant__doublings_calc__target_gain
+    outputs:
+      root: RootModel[float] exp_toy__exp_plant__doublings_calc__doublings
+
+  # exp_toy.ExpControlModule
+  exp_toy__exp_plant__exp_control_calc:
+    module_type: exp_toy.ExpControlModule
+    inputs:
+      exponent_arg: float exp_toy_params.exp_toy__exp_plant__exp_control_calc__exponent_arg
+    outputs:
+      root: RootModel[float] exp_toy__exp_plant__exp_control_calc__e_to_x
+
+
+  # Exit point - capture all results
+  exit_point:
+    module_type: ExitPoint
+    outputs:
+      exp_toy__exp_plant__reactivity_calc__sigma_v: RootModel[float] exp_toy__exp_plant__reactivity_calc__sigma_v.json
+      exp_toy__exp_plant__doublings_calc__doublings: RootModel[float] exp_toy__exp_plant__doublings_calc__doublings.json
+      exp_toy__exp_plant__exp_control_calc__e_to_x: RootModel[float] exp_toy__exp_plant__exp_control_calc__e_to_x.json
