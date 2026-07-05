@@ -495,6 +495,7 @@ dialog::backdrop { background: rgba(0,0,0,0.5); }
     <a href="#domain-research"><span class="nav-num">6</span> Domain Research</a>
     <a href="#concept-modeling"><span class="nav-num">7</span> Concept Modeling</a>
     <a href="#visualization"><span class="nav-num">8</span> Visualization</a>
+    <a href="#closed-loop"><span class="nav-num">9</span> The Closed Loop</a>
     <div class="nav-group">Reference</div>
     <a href="#appendix-pdf-processing"><span class="nav-num">A</span> PDF Processing</a>
   </nav>
@@ -1679,6 +1680,98 @@ dialog::backdrop { background: rgba(0,0,0,0.5); }
      ============================================================ -->
 
 <p style="font-size:0.85rem;color:var(--color-text-muted);">With one concept modeled (HIF/Osiris), the infrastructure is proven. Adding a second concept &mdash; laser IFE, pulsed-power, or magnetic fusion &mdash; means specializing the same generic template with different driver parameters and source literature. The comparison axes (LCOE, CAS breakdown, sensitivity profile) are already built into the model structure.</p>
+
+</section>
+
+<hr class="section-divider">
+
+<!-- ************************************************************
+     SECTION 9: THE CLOSED LOOP
+     ************************************************************ -->
+<section id="closed-loop">
+<h2><span class="section-num">9.</span> The Closed Loop</h2>
+<p class="lead">Everything so far ends in a model you can read. Can the model itself do the computing?</p>
+
+<p>For four months there was only one way to get a number out of the SysML models in Section 7: a human re-typed the formulas into a Python script and ran that instead. On 2026-07-05 the loop closed &mdash; the models were mechanically converted to executable Python, run through the <code>teax</code> pipeline executor, checked against the verified answers, and swept across 11,505 design points to map where inertial fusion energy is economically viable. No step required a human to re-derive or re-type a formula.</p>
+
+<div class="trace-chain">
+  <div class="trace-node">
+    <div class="node-label">SysML v2 model</div>
+    <div class="node-file">models/library + designs/</div>
+  </div>
+  <div class="trace-arrow">&rarr;</div>
+  <div class="trace-node">
+    <div class="node-label">Live extraction</div>
+    <div class="node-file">syside</div>
+  </div>
+  <div class="trace-arrow">&rarr;</div>
+  <div class="trace-node">
+    <div class="node-label">Generated Python</div>
+    <div class="node-file">sysml-codegen</div>
+  </div>
+  <div class="trace-arrow">&rarr;</div>
+  <div class="trace-node">
+    <div class="node-label">Execution</div>
+    <div class="node-file">teax</div>
+  </div>
+  <div class="trace-arrow">&rarr;</div>
+  <div class="trace-node">
+    <div class="node-label">Anchor check</div>
+    <div class="node-file">SV-023</div>
+  </div>
+  <div class="trace-arrow">&rarr;</div>
+  <div class="trace-node">
+    <div class="node-label">Viability sweep</div>
+    <div class="node-file">11,505 points</div>
+  </div>
+</div>
+
+<p>The correctness gate came first: three design points had LCOE values verified against source literature, and the generated pipeline had to reproduce them within a relative tolerance of 10<sup>&minus;6</sup>. It did better &mdash; all three matched <em>bit-exactly</em>, because live extraction carries the model&rsquo;s compiled expression trees into the generated code, so every calculation body was emitted from the model&rsquo;s own math rather than translated by hand.</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr><th>Anchor</th><th>Design point</th><th>Expected ($/MWh)</th><th>Executed ($/MWh)</th><th>Result</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>A</strong></td><td>Hawker 14-parameter defaults</td><td>252.2999631</td><td>252.2999631</td><td><strong style="color:var(--color-user);">exact</strong></td></tr>
+    <tr><td><strong>B</strong></td><td>Realistic HIF (f = 5 Hz, &eta; = 0.25, G = 100)</td><td>68.6902017</td><td>68.6902017</td><td><strong style="color:var(--color-user);">exact</strong></td></tr>
+    <tr><td><strong>C</strong></td><td>Osiris plant point (SV-013)</td><td>270.1211779</td><td>270.1211779</td><td><strong style="color:var(--color-user);">exact</strong></td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>With the generated code proven at the anchors, the sweep varied driver efficiency &eta;, target gain G, and shot rate f across 11,505 combinations in 0.1&nbsp;s &mdash; and the map that came out shows real physics: the &ldquo;fusion cycle gain&rdquo; knee (&eta;G&nbsp;=&nbsp;10) the sources describe, emerging from generated code rather than a textbook figure.</p>
+
+<div class="card" style="text-align:center;padding:1.5rem;">
+  <img src="images/ife_viability_eta_gain.png" alt="LCOE heat map over driver efficiency and target gain at 5 Hz, showing the power-balance boundary, the eta-G = 10 viability knee, the $100/MWh contour, and anchor B marked with a white star" style="max-width:100%;height:auto;">
+  <p style="font-size:0.85rem;color:var(--color-text-muted);margin-top:0.75rem;text-align:left;">The &eta;&ndash;G plane at f&nbsp;=&nbsp;5&nbsp;Hz. Below the dashed line the plant consumes more power than it makes; between the dashed and solid (&eta;G&nbsp;=&nbsp;10) lines it is net-positive but recirculates so much power to its own driver that LCOE explodes past $1000/MWh. Past the knee, LCOE settles into a broad $50&ndash;80/MWh basin. The white star is anchor&nbsp;B &mdash; the checked point. 75.8% of the grid is viable; 64.5% also clears $100/MWh. Source: <code>data/ife_sweep/</code>.</p>
+</div>
+
+<details class="artifact-card">
+  <summary>What broke, and what we learned (nothing was free)</summary>
+  <div class="artifact-body">
+    <p>The chain did not run on the first try. Legal-SysML patterns broke the toolchain downstream of parsing, and each is now a recorded modeling rule or a filed toolchain gap:</p>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Break</th><th>Handling</th></tr></thead>
+      <tbody>
+        <tr><td><code>return</code>-style calc outputs are invisible to code generation</td><td>Six conversions to <code>out attribute</code> in the canonical models; gap filed</td></tr>
+        <tr><td>Quoted SysML names leak into Python identifiers &mdash; generated package isn&rsquo;t valid Python</td><td>Deterministic name sanitizer; gap filed</td></tr>
+        <tr><td>Cross-part references (the &gamma; &rarr; LCOE edge) drop to unwired entry points</td><td>Harness closes the loop explicitly &mdash; labeled as glue, not generated wiring</td></tr>
+        <tr><td>The model&rsquo;s viability constraint is silently dropped by the generator</td><td>&eta;G &gt; 10 evaluated in analysis code, as planned; generator fix filed</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>None of these traps is caught by static validation &mdash; they surface only when the pipeline executes. Every one has a file:line pointer in <code>work/active/WI-015_ife-end-to-end-demo/findings.md</code>.</p>
+  </div>
+</details>
+
+<div class="callout">
+  <strong>The full story has its own page.</strong> <a href="closed-loop.html">Closing the Loop</a> walks the demonstration end to end &mdash; the chain, the anchor check, both sweep figures, the blind-derivation experiment, and an honest account of what is still open. The hypothesis-by-hypothesis record is the dossier: <code>modeling_project/HYPOTHESIS_DOSSIER.md</code>.
+</div>
+
+<p style="font-size:0.85rem;color:var(--color-text-muted);">Bit-exact anchors prove faithful translation of the model into code &mdash; not that the model is right about the world. That distinction, and every other limit, is stated in the dossier as prominently as the wins.</p>
 
 </section>
 

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fusion TEA — Closing the Loop</title>
+<style>
+/* ============================================================
+   CSS Custom Properties (shared with index.html)
+   ============================================================ */
+:root {
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-text: #1a1a2e;
+  --color-text-muted: #555;
+  --color-text-light: #777;
+  --color-border: #e0e0e0;
+  --color-accent: #2563eb;
+  --color-accent-light: #dbeafe;
+  --color-tool: #3b82f6;
+  --color-tool-bg: #eff6ff;
+  --color-user: #16a34a;
+  --color-user-bg: #f0fdf4;
+  --color-stub: #d97706;
+  --color-stub-bg: #fffbeb;
+  --color-archive: #6b7280;
+  --color-archive-bg: #f3f4f6;
+  --color-terminal-bg: #1e1e2e;
+  --color-terminal-text: #cdd6f4;
+  --color-terminal-prompt: #a6e3a1;
+  --color-process: #7c3aed;
+  --color-process-bg: #f5f3ff;
+  --color-process-border: #c4b5fd;
+  --color-artifact: #059669;
+  --color-artifact-bg: #ecfdf5;
+  --color-artifact-border: #6ee7b7;
+  --sidebar-width: 260px;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "SF Mono", "Fira Code", "Fira Mono", Menlo, Consolas, monospace;
+}
+
+/* ============================================================
+   Reset & Base
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   Layout
+   ============================================================ */
+.layout { display: flex; min-height: 100vh; }
+.sidebar {
+  position: fixed; top: 0; left: 0;
+  width: var(--sidebar-width); height: 100vh;
+  background: var(--color-text); color: #ccc;
+  overflow-y: auto; z-index: 100;
+  display: flex; flex-direction: column;
+}
+.sidebar-header { padding: 1.5rem 1.25rem 1rem; border-bottom: 1px solid #333; }
+.sidebar-header h1 { font-size: 1.1rem; color: #fff; font-weight: 700; letter-spacing: -0.02em; }
+.sidebar-header .subtitle { font-size: 0.75rem; color: #888; margin-top: 0.25rem; }
+.sidebar nav { flex: 1; padding: 0.75rem 0; }
+.sidebar nav a {
+  display: block; padding: 0.45rem 1.25rem; color: #aaa; text-decoration: none;
+  font-size: 0.82rem; border-left: 3px solid transparent; transition: all 0.15s;
+}
+.sidebar nav a:hover { color: #fff; background: rgba(255,255,255,0.05); }
+.sidebar nav a.active { color: #fff; border-left-color: var(--color-accent); background: rgba(37,99,235,0.1); }
+.sidebar nav .nav-group {
+  font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em;
+  color: #666; padding: 0.8rem 1.25rem 0.3rem; margin-top: 0.25rem;
+}
+.sidebar nav a .nav-num { display: inline-block; width: 1.2rem; color: #666; font-size: 0.75rem; }
+.sidebar-footer { padding: 1rem 1.25rem; border-top: 1px solid #333; }
+.sidebar-footer a { color: #888; font-size: 0.78rem; text-decoration: none; }
+.sidebar-footer a:hover { color: #fff; }
+.hamburger {
+  display: none; position: fixed; top: 0.75rem; left: 0.75rem; z-index: 200;
+  background: var(--color-text); color: #fff; border: none; border-radius: 6px;
+  padding: 0.5rem 0.65rem; font-size: 1.2rem; cursor: pointer; line-height: 1;
+}
+.main { margin-left: var(--sidebar-width); flex: 1; max-width: 900px; padding: 3rem 3rem 6rem; }
+
+/* ============================================================
+   Typography
+   ============================================================ */
+h2 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; padding-top: 2rem; }
+h2 .section-num { color: var(--color-accent); font-weight: 400; margin-right: 0.25rem; }
+h3 { font-size: 1.15rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.5rem; }
+p { margin-bottom: 1rem; }
+.lead { font-size: 1.1rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+.section-divider { border: none; border-top: 1px solid var(--color-border); margin: 3rem 0; }
+code { font-family: var(--font-mono); font-size: 0.85em; background: #f1f5f9; padding: 0.15rem 0.35rem; border-radius: 4px; }
+
+/* ============================================================
+   Tables
+   ============================================================ */
+.table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+th, td { text-align: left; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--color-border); }
+th { font-weight: 600; background: var(--color-bg); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--color-text-muted); }
+td.num, th.num { font-family: var(--font-mono); font-size: 0.82rem; }
+.pass-badge {
+  display: inline-block; background: var(--color-user-bg); color: var(--color-user);
+  border: 1px solid #bbf7d0; border-radius: 4px; padding: 0.05rem 0.4rem;
+  font-size: 0.72rem; font-weight: 700;
+}
+
+/* ============================================================
+   Terminal blocks
+   ============================================================ */
+.terminal {
+  background: var(--color-terminal-bg); color: var(--color-terminal-text);
+  border-radius: 8px; padding: 1rem 1.25rem; font-family: var(--font-mono);
+  font-size: 0.82rem; line-height: 1.7; overflow-x: auto; margin: 1rem 0 1.5rem;
+}
+.terminal .prompt { color: var(--color-terminal-prompt); }
+.terminal .output { color: #bac2de; }
+.terminal .comment { color: #6c7086; }
+
+/* ============================================================
+   Callouts
+   ============================================================ */
+.callout {
+  border-left: 3px solid var(--color-accent); background: var(--color-accent-light);
+  padding: 0.8rem 1rem; border-radius: 0 6px 6px 0; font-size: 0.88rem; margin: 1rem 0 1.5rem;
+}
+.callout.callout-important { border-left-color: #dc2626; background: #fef2f2; }
+.callout.callout-warning { border-left-color: var(--color-stub); background: var(--color-stub-bg); }
+.callout strong { font-weight: 600; }
+
+/* ============================================================
+   Pipeline chain (trace-chain pattern from index.html)
+   ============================================================ */
+.trace-chain {
+  display: flex; align-items: stretch; gap: 0; margin: 1.5rem 0; overflow-x: auto; padding-bottom: 0.5rem;
+}
+.trace-node {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: 6px; padding: 0.6rem 0.8rem; text-align: center; min-width: 118px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.trace-node.node-live { border-color: var(--color-process-border); background: var(--color-process-bg); }
+.trace-node.node-check { border-color: var(--color-artifact-border); background: var(--color-artifact-bg); }
+.trace-node .node-label { font-size: 0.75rem; font-weight: 600; }
+.trace-node .node-file { font-family: var(--font-mono); font-size: 0.65rem; color: var(--color-text-light); margin-top: 0.15rem; word-break: break-all; }
+.trace-arrow { font-size: 1.2rem; color: var(--color-border); padding: 0 0.3rem; flex-shrink: 0; align-self: center; }
+
+/* ============================================================
+   Stat cards
+   ============================================================ */
+.stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin: 1rem 0 1.5rem; }
+.stat-card {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: 8px; padding: 0.9rem 1rem; text-align: center;
+}
+.stat-card .stat-value { font-size: 1.35rem; font-weight: 700; color: var(--color-accent); font-family: var(--font-mono); }
+.stat-card .stat-label { font-size: 0.72rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 0.2rem; }
+
+/* ============================================================
+   Figures
+   ============================================================ */
+.figure-box {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: 8px; padding: 1rem; margin: 1rem 0 1.5rem; text-align: center;
+}
+.figure-box img { max-width: 100%; height: auto; }
+.figure-box .fig-caption { font-size: 0.8rem; color: var(--color-text-muted); margin-top: 0.6rem; text-align: left; }
+
+/* ============================================================
+   Expandable detail cards (artifact-card pattern)
+   ============================================================ */
+.artifact-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; margin-bottom: 0.75rem; }
+.artifact-card summary {
+  padding: 1rem 1.25rem; cursor: pointer; font-weight: 600; font-size: 0.95rem;
+  list-style: none; display: flex; align-items: center; gap: 0.5rem;
+}
+.artifact-card summary::before { content: '\25B6'; font-size: 0.6rem; color: var(--color-text-light); transition: transform 0.15s; }
+.artifact-card[open] > summary::before { transform: rotate(90deg); }
+.artifact-card .artifact-body { padding: 0 1.25rem 1rem; font-size: 0.88rem; color: var(--color-text-muted); }
+.artifact-card .artifact-body table { margin-top: 0.5rem; }
+
+/* ============================================================
+   H2 experiment panel
+   ============================================================ */
+.experiment-flow {
+  display: flex; align-items: stretch; gap: 0; margin: 1.25rem 0; overflow-x: auto; padding-bottom: 0.5rem;
+}
+.experiment-flow .exp-step {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: 6px; padding: 0.7rem 0.9rem; min-width: 150px; flex: 1;
+}
+.experiment-flow .exp-step .exp-num {
+  font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--color-process); margin-bottom: 0.2rem;
+}
+.experiment-flow .exp-step .exp-text { font-size: 0.8rem; line-height: 1.45; color: var(--color-text-muted); }
+.experiment-flow .exp-step strong { color: var(--color-text); }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 900px) {
+  .sidebar { transform: translateX(-100%); transition: transform 0.25s; }
+  .sidebar.open { transform: translateX(0); }
+  .hamburger { display: block; }
+  .main { margin-left: 0; padding: 2rem 1.25rem 4rem; }
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+  .trace-chain, .experiment-flow { flex-wrap: wrap; gap: 0.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<!-- Hamburger (mobile) -->
+<button class="hamburger" aria-label="Toggle navigation" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776;</button>
+
+<!-- ============================================================
+     Sidebar Navigation
+     ============================================================ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <h1>Fusion TEA</h1>
+    <div class="subtitle">Closing the Loop</div>
+  </div>
+  <nav>
+    <div class="nav-group">The Demonstration</div>
+    <a href="#the-gap"><span class="nav-num">1</span> The Gap</a>
+    <a href="#the-chain"><span class="nav-num">2</span> The Chain That Ran</a>
+    <a href="#anchor-check"><span class="nav-num">3</span> The Anchor Check</a>
+    <a href="#viability-map"><span class="nav-num">4</span> The Viability Map</a>
+    <div class="nav-group">The Research Loop</div>
+    <a href="#blind-derivation"><span class="nav-num">5</span> The Blind Derivation</a>
+    <div class="nav-group">Honest Limits</div>
+    <a href="#still-open"><span class="nav-num">6</span> What Is Still Open</a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="index.html">&larr; Back to workflow explainer</a>
+  </div>
+</aside>
+
+<!-- ============================================================
+     Main Content
+     ============================================================ -->
+<main class="main">
+
+<!-- ************************************************************
+     SECTION 1: THE GAP
+     ************************************************************ -->
+<section id="the-gap">
+<h2><span class="section-num">1.</span> The Gap</h2>
+<p class="lead">A model that has never run is a diagram.</p>
+
+<p>The workflow explainer (<a href="index.html">sections 1&ndash;8</a>) ends with a complete SysML v2 cost model of a heavy-ion fusion plant: parsed, cited, validated. But for four months there was only one way to get a number out of it &mdash; a human re-typed every formula into a Python script (<code>scripts/verify_ife_lcoe.py</code>) and ran <em>that</em>. The formal model itself had never computed anything.</p>
+
+<p>That gap matters. The whole pitch of model-based engineering is that the model is the source of truth &mdash; vary an input, watch outputs and constraints respond. If turning the model into running code requires a human re-deriving the math by hand, the model is documentation, not machinery.</p>
+
+<div class="callout"><strong>What happened on 2026-07-05:</strong> the loop closed. The IFE SysML models were mechanically converted to executable Python &mdash; no human re-typing any formula &mdash; run through a pipeline executor, checked against the verified answers (all three matched <em>bit-exactly</em>), and swept across 11,505 design points to map where inertial fusion energy is economically viable.</p></div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ************************************************************
+     SECTION 2: THE CHAIN THAT RAN
+     ************************************************************ -->
+<section id="the-chain">
+<h2><span class="section-num">2.</span> The Chain That Ran</h2>
+<p class="lead">Six stages, one direction: from the formal model to a map of the design space.</p>
+
+<div class="trace-chain">
+  <div class="trace-node">
+    <div class="node-label">SysML v2 model</div>
+    <div class="node-file">models/library + designs/</div>
+  </div>
+  <div class="trace-arrow">&#8594;</div>
+  <div class="trace-node node-live">
+    <div class="node-label">Live extraction</div>
+    <div class="node-file">syside</div>
+  </div>
+  <div class="trace-arrow">&#8594;</div>
+  <div class="trace-node node-live">
+    <div class="node-label">Generated Python</div>
+    <div class="node-file">sysml-codegen</div>
+  </div>
+  <div class="trace-arrow">&#8594;</div>
+  <div class="trace-node node-live">
+    <div class="node-label">Execution</div>
+    <div class="node-file">teax</div>
+  </div>
+  <div class="trace-arrow">&#8594;</div>
+  <div class="trace-node node-check">
+    <div class="node-label">Anchor check</div>
+    <div class="node-file">3 anchors, rel 1e-6</div>
+  </div>
+  <div class="trace-arrow">&#8594;</div>
+  <div class="trace-node node-check">
+    <div class="node-label">Viability sweep</div>
+    <div class="node-file">11,505 points</div>
+  </div>
+</div>
+
+<p>The subject is the model set from <a href="index.html#concept-modeling">Section 7</a>: Hawker&rsquo;s 14-parameter LCOE calculation, the fusion-cycle viability relation, Meier&rsquo;s heavy-ion driver cost chain, and the Osiris plant that binds them. The extraction step parses the 11 SysML files with the syside compiler and carries the <em>compiled expression trees</em> forward &mdash; which is why the generated calculation bodies needed no hand translation at all: all six were emitted automatically from the model&rsquo;s own math, then reviewed line-by-line against the SysML.</p>
+
+<div class="terminal">
+<span class="comment"># 1. live extraction + code generation from the SysML models</span><br>
+<span class="prompt">$</span> sysml-codegen generate --models exploration/ife_e2e/models \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--output exploration/ife_e2e/generated --package-name ife_tea<br>
+<span class="comment"># 2. execute the generated pipeline at the three anchor points</span><br>
+<span class="prompt">$</span> python run_anchors.py<br>
+<span class="output">anchor A (Hawker defaults)&nbsp;&nbsp;lcoe = 252.2999631 $/MWh&nbsp;&nbsp;rel dev 0.0&nbsp;&nbsp;PASS</span><br>
+<span class="output">anchor B (realistic HIF)&nbsp;&nbsp;&nbsp;&nbsp;lcoe = &nbsp;68.6902017 $/MWh&nbsp;&nbsp;rel dev 0.0&nbsp;&nbsp;PASS</span><br>
+<span class="output">anchor C (Osiris, SV-013)&nbsp;&nbsp;&nbsp;lcoe = 270.1211779 $/MWh&nbsp;&nbsp;rel dev 0.0&nbsp;&nbsp;PASS</span><br>
+<span class="comment"># 3. sweep the design space with the same generated modules</span><br>
+<span class="prompt">$</span> python sweep_ife.py<br>
+<span class="output">11,505 points (39 &eta; &times; 59 G &times; 5 f) in 0.1 s &rarr; data/ife_sweep/</span>
+</div>
+
+<p style="font-size:0.85rem;color:var(--color-text-muted);">Full reproduce commands and artifacts: <code>exploration/ife_e2e/</code> (staged models, generated package, harnesses, run outputs) and <code>work/active/WI-015_ife-end-to-end-demo/</code> (report and findings).</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- ************************************************************
+     SECTION 3: THE ANCHOR CHECK
+     ************************************************************ -->
+<section id="anchor-check">
+<h2><span class="section-num">3.</span> The Anchor Check</h2>
+<p class="lead">Before trusting a map drawn by generated code, prove the generated code gets the known answers right.</p>
+
+<p>Three anchor points had verified LCOE values, computed independently by the hand-written verification script and reviewed against source literature. The generated pipeline was required to reproduce them within a relative tolerance of 10<sup>&minus;6</sup>. It did better than that:</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr><th>Anchor</th><th>Point</th><th class="num">Expected ($/MWh)</th><th class="num">Executed ($/MWh)</th><th class="num">Rel. deviation</th><th>Result</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>A</strong></td><td>Hawker 14-parameter defaults</td><td class="num">252.2999631</td><td class="num">252.2999631</td><td class="num">0.0</td><td><span class="pass-badge">EXACT</span></td></tr>
+    <tr><td><strong>B</strong></td><td>Realistic HIF (f = 5 Hz, &eta; = 0.25, E<sub>d</sub> = 5 MJ, G = 100)</td><td class="num">68.6902017</td><td class="num">68.6902017</td><td class="num">0.0</td><td><span class="pass-badge">EXACT</span></td></tr>
+    <tr><td><strong>C</strong></td><td>Osiris plant point (SV-013)</td><td class="num">270.1211779</td><td class="num">270.1211779</td><td class="num">0.0</td><td><span class="pass-badge">EXACT</span></td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Also checked per run: the recirculating power fraction, Meier&rsquo;s driver cost ($0.975B) and cost-per-joule (&gamma; = $68.247/J), and Meier&rsquo;s cost of electricity at Osiris (4.74 &cent;/kWh against the published ~5 &cent;/kWh, inside the &plusmn;15% validation band). The whole set is registered as validation entry <strong>SV-023, passing</strong>.</p>
+
+<div class="callout"><strong>Why bit-exact?</strong> The model is flat floating-point arithmetic, and the generated bodies came from the compiled expression trees &mdash; the pipeline reproduced the oracle&rsquo;s float operations exactly. The 10<sup>&minus;6</sup> tolerance existed to catch a wrong term or constant; nothing needed it. And to be precise about what this proves: the match shows the SysML &rarr; Python chain preserves the model&rsquo;s math. Whether the <em>model</em> is right about the world is a separate question &mdash; that is what the source citations and validation entries argue, and the dossier keeps them honest.</div>
+
+<details class="artifact-card">
+  <summary>What broke on the way (nothing was free)</summary>
+  <div class="artifact-body">
+    <p>The chain did not run on the first try. Three legal-SysML patterns broke the toolchain downstream of parsing, and each is now a recorded modeling rule:</p>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Break</th><th>Handling</th></tr></thead>
+      <tbody>
+        <tr><td><code>return</code>-style calc outputs are invisible to code generation (parses and evaluates fine; crashes generation)</td><td>Six conversions to <code>out attribute</code> in the canonical models; codegen gap filed</td></tr>
+        <tr><td>A part def whose only usage is a redefinition (<code>part :&gt;&gt; driver</code>) is treated as uninstantiated &mdash; its cost calc silently dropped</td><td>Added a concrete <code>hif_driver_instance</code>; codegen gap filed</td></tr>
+        <tr><td>Quoted SysML names (<code>'IFE LCOE'</code>) leak into Python identifiers &mdash; the generated package isn&rsquo;t valid Python</td><td>Deterministic name sanitizer (<code>sanitize_names.py</code>); codegen gap filed</td></tr>
+        <tr><td>Cross-part references (e.g. <code>driver.cost_per_joule = meier_cost.gamma</code>) drop to unwired entry points</td><td>Harness feeds run-A outputs into run C explicitly &mdash; labeled as glue, not generated wiring</td></tr>
+        <tr><td>Constraint predicates are not emitted at all (a known generator gap)</td><td>Viability evaluated harness-side in the sweep, as planned</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>Every break has a file:line pointer and a filed finding in <code>work/active/WI-015_ife-end-to-end-demo/findings.md</code>. A companion audit found that none of these traps is caught by the modeling validation stack today &mdash; they only surface when the pipeline actually executes (<code>.project/research/20260705-120000_validation-stack-gap-audit.md</code>).</p>
+  </div>
+</details>
+</section>
+
+<hr class="section-divider">
+
+<!-- ************************************************************
+     SECTION 4: THE VIABILITY MAP
+     ************************************************************ -->
+<section id="viability-map">
+<h2><span class="section-num">4.</span> The Viability Map</h2>
+<p class="lead">With the generated code proven at the anchors, sweep it: 11,505 combinations of driver efficiency, target gain, and shot rate.</p>
+
+<div class="stat-grid">
+  <div class="stat-card"><div class="stat-value">11,505</div><div class="stat-label">grid points (0.1 s)</div></div>
+  <div class="stat-card"><div class="stat-value">90.7%</div><div class="stat-label">power-positive</div></div>
+  <div class="stat-card"><div class="stat-value">75.8%</div><div class="stat-label">viable (&eta;G &gt; 10)</div></div>
+  <div class="stat-card"><div class="stat-value">64.5%</div><div class="stat-label">attractive (&le; $100/MWh)</div></div>
+</div>
+
+<div class="figure-box">
+  <img src="images/ife_viability_eta_gain.png" alt="LCOE heat map over driver efficiency and target gain at 5 Hz, showing the power-balance boundary, the eta-G = 10 viability knee, the $100/MWh contour, and anchor B marked with a white star">
+  <div class="fig-caption"><strong>The &eta;&ndash;G plane at f&nbsp;=&nbsp;5&nbsp;Hz.</strong> Two boundaries stack in the lower-left: below the dashed line the plant consumes more power than it makes; between the dashed and solid lines (&eta;G&nbsp;=&nbsp;10, insight DI-001) it is net-positive but recirculates so much power to its own driver that LCOE explodes through $250&nbsp;&rarr;&nbsp;$1000/MWh within a few grid cells. The white star is anchor&nbsp;B ($68.69/MWh) &mdash; the checked point, sitting in the basin. <em>Figure source: <code>data/ife_sweep/ife_viability_eta_gain.png</code>.</em></div>
+</div>
+
+<p>Three things the map shows, each a textbook claim now emerging from generated code:</p>
+<ul style="margin: 0 0 1rem 1.5rem; font-size: 0.92rem;">
+  <li style="margin-bottom:0.5rem;"><strong>The knee is real and sharp.</strong> The economic cliff sits just above the power-balance line &mdash; the &ldquo;fusion cycle gain&rdquo; knee the sources describe, reproduced from the model.</li>
+  <li style="margin-bottom:0.5rem;"><strong>Past the knee, the map goes flat.</strong> Once &eta;G &gtrsim; 25&ndash;30, LCOE settles into a broad $50&ndash;80/MWh basin and further gain buys little: capital and O&amp;M dominate, not recirculation.</li>
+  <li><strong>Driver type sets the required gain.</strong> Read the knee at fixed &eta;: a heavy-ion driver (&eta; &asymp; 0.25&ndash;0.35) needs G &gtrsim; 40; a laser driver at &eta; &asymp; 0.07 needs G &gtrsim; 143. DI-001&rsquo;s per-driver gain requirement, visible as one curve.</li>
+</ul>
+
+<details class="artifact-card">
+  <summary>Does shot rate move the knee? (the second figure)</summary>
+  <div class="artifact-body">
+    <div class="figure-box" style="margin-top:0.75rem;">
+      <img src="images/ife_viability_by_freq.png" alt="The same eta-gain viability plane repeated at rep rates of 1, 2, 5, 10, and 20 Hz, showing the knee position nearly invariant while the attractive share grows slightly with rep rate">
+      <div class="fig-caption">The same plane at f = 1, 2, 5, 10, 20 Hz. <em>Figure source: <code>data/ife_sweep/ife_viability_by_freq.png</code>.</em></div>
+    </div>
+    <p>Barely. The knee is set by the power balance, not the shot rate. What rep rate does change is plant size (net power scales with f), so higher f pushes the same physics point to bigger, cheaper-per-MWh plants: the attractive share edges up from 63% at 1&nbsp;Hz to 65%, and the $100/MWh contour hugs the knee more tightly. The same effect explains anchor&nbsp;A&rsquo;s $252/MWh at Hawker&rsquo;s defaults (f&nbsp;=&nbsp;0.2&nbsp;Hz): a 44&nbsp;MW plant is simply too small for its capital assumptions.</p>
+  </div>
+</details>
+
+<p style="font-size:0.85rem;color:var(--color-text-muted);">Sweep data: <code>data/ife_sweep/sweep_results.csv</code>. Non-swept parameters held at the anchor-B baseline; LCOE reported as undefined where net power &le; 0.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- ************************************************************
+     SECTION 5: THE BLIND DERIVATION
+     ************************************************************ -->
+<section id="blind-derivation">
+<h2><span class="section-num">5.</span> The Blind Derivation</h2>
+<p class="lead">A separate experiment tested the other half of the pipeline claim: can agents <em>derive</em> model physics from the research corpus, not just transcribe it?</p>
+
+<p>The setup was a controlled experiment with a held-out answer key. An agent derived three tokamak relations &mdash; fusion power, power balance, magnet cost &mdash; from the ingested research corpus alone, firewalled from the existing reference implementation (1costingfe) and every artifact derived from it. Only afterwards did a separate, unfirewalled step compare the derivation against the reference code at real design points.</p>
+
+<div class="experiment-flow">
+  <div class="exp-step">
+    <div class="exp-num">1 &middot; Firewall</div>
+    <div class="exp-text">Derive 3 tokamak relations from the <strong>research corpus only</strong> &mdash; reference code and its descendants excluded</div>
+  </div>
+  <div class="trace-arrow">&#8594;</div>
+  <div class="exp-step">
+    <div class="exp-num">2 &middot; Compare</div>
+    <div class="exp-text"><strong>Every functional form matched</strong> the answer key &mdash; fusion-power scaling identical (constant 0.942 ratio from one temperature-model choice), conductor costs bit-identical</div>
+  </div>
+  <div class="trace-arrow">&#8594;</div>
+  <div class="exp-step">
+    <div class="exp-num">3 &middot; Exceed</div>
+    <div class="exp-text">The derived magnet model includes a structure term the key lacks &mdash; it reproduces ARC&rsquo;s <strong>$1030M analyst override to 4%</strong>, a number the reference code only reaches by manual override</div>
+  </div>
+  <div class="trace-arrow">&#8594;</div>
+  <div class="exp-step">
+    <div class="exp-num">4 &middot; Audit</div>
+    <div class="exp-text">Holding the derivation against the code found <strong>2 bugs in the answer key</strong> itself &mdash; both filed upstream</div>
+  </div>
+</div>
+
+<p>Adjudicating all divergences: 4 equivalent, 6 both-defensible, 2 answer-key wrong, 4 where one side captures physics the other lacks (3 favoring the derivation, 1 favoring the key). The derivation&rsquo;s self-declared uncertainty was well calibrated &mdash; everything it flagged as weak is exactly where the divergences are.</p>
+
+<div class="callout callout-warning"><strong>Bounded claim:</strong> one concept family, one probe. Three deuterium-tritium tokamak relations against an answer key covering four fuels and eight-plus topologies. And the derived constants are trustworthy near their calibration anchors, not globally &mdash; one cost coefficient extrapolates absurdly off-anchor. The full evidence and its limits: <code>modeling_project/HYPOTHESIS_DOSSIER.md</code>, section H2.</div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ************************************************************
+     SECTION 6: WHAT IS STILL OPEN
+     ************************************************************ -->
+<section id="still-open">
+<h2><span class="section-num">6.</span> What Is Still Open</h2>
+<p class="lead">The model is no longer a diagram &mdash; it runs. But the loop closed on the easiest possible terms, and the record says so.</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr><th>Open item</th><th>What it means</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Constraints don&rsquo;t execute</strong></td>
+      <td>The model&rsquo;s viability constraint (&eta;G &gt; 10) parses and evaluates in the compiler, but the code generator silently drops it &mdash; the sweep applied it in analysis code, not generated code. Generator fix (Phase 6) filed.</td>
+    </tr>
+    <tr>
+      <td><strong>Cross-part wiring gap</strong></td>
+      <td>Bindings that cross part boundaries (the &gamma; &rarr; LCOE edge) come out unwired; the harness closed that loop by hand. The biggest gap to fix before plant-scale magnetic-fusion models, where everything is cross-part wiring.</td>
+    </tr>
+    <tr>
+      <td><strong>Arithmetic-only envelope</strong></td>
+      <td>Everything proven executes flat arithmetic (+ &minus; &times; &divide; and powers). No exponentials, conditionals, or loops have been through the chain yet &mdash; a toolchain boundary, not a language one.</td>
+    </tr>
+    <tr>
+      <td><strong>Correctness &ne; truth</strong></td>
+      <td>Bit-exact anchors prove faithful translation of the model, not that the model is right about the world. No model here has had independent expert review.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>The full hypothesis-by-hypothesis record &mdash; every claim, its evidence with file pointers, and its limits stated as prominently as the wins &mdash; is the dossier: <code>modeling_project/HYPOTHESIS_DOSSIER.md</code>.</p>
+
+<p style="font-size:0.85rem;color:var(--color-text-muted);">And the callback to where this page started: the next concept family modeled in <a href="index.html#concept-modeling">Section 7</a>&rsquo;s workflow will not end as a diagram. The path from formal model to running map now exists, its failure modes are characterized with file:line pointers, and the anchor-check pattern travels with it.</p>
+</section>
+
+</main>
+</div>
+
+<!-- ============================================================
+     Scroll-spy + mobile nav
+     ============================================================ -->
+<script>
+(function() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.sidebar nav a');
+  function onScroll() {
+    let current = '';
+    for (const s of sections) {
+      if (s.getBoundingClientRect().top <= 120) current = s.id;
+    }
+    navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  navLinks.forEach(l => l.addEventListener('click', () => {
+    if (window.innerWidth <= 900) document.querySelector('.sidebar').classList.remove('open');
+  }));
+})();
+</script>
+</body>
+</html>
