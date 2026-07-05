@@ -19,21 +19,29 @@ package toy_plant {
         **Basis**: Synthetic validation fixture — no domain content
         */
 
-        attribute length : Real = 4.0;
-        attribute width : Real = 3.0;
-        attribute unit_cost : Real = 250.0;
-        attribute budget : Real = 5000.0;
+        // NOTE (live validation 2026-07-05): part attributes are deliberately
+        // named differently from the calc def parameters they feed. A binding
+        // like `in length = length;` parses and passes `syside check`, but at
+        // evaluation time syside resolves the right-hand `length` to the calc
+        // usage's own `in` parameter (self-reference), and evaluation spins
+        // until the step limit ("Evaluating expression took too long").
+        // Renaming the part attributes (plant_*) makes the reference
+        // unambiguous and evaluation succeeds.
+        attribute plant_length : Real = 4.0;
+        attribute plant_width : Real = 3.0;
+        attribute plant_unit_cost : Real = 250.0;
+        attribute plant_budget : Real = 5000.0;
 
         // Stage 1: geometry
         calc area_calc : 'Panel Area' {
-            in length = length;
-            in width = width;
+            in length = plant_length;
+            in width = plant_width;
         }
 
         // Stage 2: cost — input chained from stage 1's result
         calc cost_calc : 'Panel Cost' {
             in area = area_calc.area;
-            in unit_cost = unit_cost;
+            in unit_cost = plant_unit_cost;
         }
 
         // Derived attribute reading a calc result
@@ -42,7 +50,7 @@ package toy_plant {
         // Part-level asserted constraint fed by a calc output
         assert constraint affordable : 'Cost Within Budget' {
             in cost = cost_calc.cost;
-            in budget = budget;
+            in budget = plant_budget;
         }
     }
 

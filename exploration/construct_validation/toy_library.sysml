@@ -15,7 +15,12 @@ package toy_library {
         in attribute length : Real;
         in attribute width : Real;
 
-        return area : Real = length * width;
+        // NOTE (live validation 2026-07-05): was `return area : Real = ...`.
+        // syside parses and evaluates both forms, but sysml-codegen only
+        // recognizes `out attribute` parameters as module outputs — with
+        // `return`, the generated module has zero outputs and template
+        // rendering crashes ("list object has no element 0").
+        out attribute area : Real = length * width;
     }
 
     calc def 'Panel Cost' {
@@ -32,7 +37,7 @@ package toy_library {
         in attribute area : Real;
         in attribute unit_cost : Real;
 
-        return cost : Real = area * unit_cost;
+        out attribute cost : Real = area * unit_cost;
     }
 
     constraint def 'Cost Within Budget' {
