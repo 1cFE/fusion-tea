@@ -56,18 +56,18 @@ epics:
   - id: WI-013
     name: Pipeline Execution Spike
     scale: standard
-    status: backlog
-    completed: null
+    status: completed
+    completed: '2026-07-05'
   - id: WI-014
     name: SysML Wiring Construct Validation
     scale: standard
-    status: backlog
-    completed: null
+    status: completed
+    completed: '2026-07-05'
   - id: WI-015
     name: IFE End-to-End Demonstration
     scale: standard
-    status: backlog
-    completed: null
+    status: completed
+    completed: '2026-07-05'
   - id: WI-016
     name: 'H2 Probe: Blind Physics Derivation + 1costingfe Differential'
     scale: standard
@@ -76,8 +76,8 @@ epics:
   - id: WI-017
     name: Demonstration Dossier & Explainer
     scale: standard
-    status: backlog
-    completed: null
+    status: completed
+    completed: '2026-07-05'
 standalone: []
 ---
 
@@ -110,8 +110,8 @@ standalone: []
 
 | ID | Item | Scale | Status | Notes |
 |------|------|-------|--------|-------|
-| WI-013 | Pipeline Execution Spike | standard | backlog |  |
-| WI-014 | SysML Wiring Construct Validation | standard | backlog |  |
-| WI-015 | IFE End-to-End Demonstration | standard | backlog |  |
+| WI-013 | Pipeline Execution Spike | standard | completed | Completed 2026-07-05 |
+| WI-014 | SysML Wiring Construct Validation | standard | completed | Completed 2026-07-05 |
+| WI-015 | IFE End-to-End Demonstration | standard | completed | Completed 2026-07-05 |
 | WI-016 | H2 Probe: Blind Physics Derivation + 1costingfe Differential | standard | backlog |  |
-| WI-017 | Demonstration Dossier & Explainer | standard | backlog |  |
+| WI-017 | Demonstration Dossier & Explainer | standard | completed | Completed 2026-07-05 |

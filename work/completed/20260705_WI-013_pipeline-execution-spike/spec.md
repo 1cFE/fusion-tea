@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
-Epic: "Pipeline De-Risk & Demonstration"
+Epic: Pipeline De-Risk & Demonstration
 Owner: reid
 Created: 2026-07-04
-Updated: 2026-07-04
+Updated: '2026-07-05'
 ---
 
 # WI-013: Pipeline Execution Spike

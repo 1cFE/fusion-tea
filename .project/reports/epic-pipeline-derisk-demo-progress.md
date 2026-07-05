@@ -3,6 +3,10 @@
 **Epic**: `work/backlog/epic-pipeline-derisk-demo.md` | **Timebox**: 2026-07-04 → 2026-07-18 | **Branch**: `epic/pipeline-derisk-demo`
 **Orchestration**: main session orchestrates; subagents execute item stages; orchestrator owns git, quality gates, and this report.
 
+## FINAL STATUS (2026-07-05): 4/5 items closed, day 2 of 10 — all epic success criteria met except the WI-016 tail
+
+WI-013/014/015/017 closed and archived to `work/completed/`. WI-016 stays active on one deferred decision: whether the blind-derived relations get authored into `models/library/` as cited calc defs (user's library-bar call; `comparison.md` has the inputs). Open user decisions: that call, filing the two 1costingfe bugs upstream, the agentic-mbse validation backlog item + conventions-stencil fix, and PR-to-main timing.
+
 ## Status Board
 
 | Item | Name | Status | Notes |
