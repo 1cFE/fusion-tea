@@ -1,9 +1,9 @@
 ---
-Status: draft
+Status: active
 Priority: P0
 Goal: null
 Created: 2026-07-04
-Updated: 2026-07-04
+Updated: 2026-07-05
 ---
 
 # Epic: Pipeline De-Risk & Demonstration
@@ -54,7 +54,7 @@ This epic runs on **existing assets** (the validated IFE models, the catf_mfe/so
 - [x] H2 has written evidence: the tokamak physics/costing chain derived blind from the research corpus (firewalled from 1costingfe), compared against 1costingfe at real design points with every divergence adjudicated, and the agent research loop instrumented; plus the Hawker→IFE derivation captured retroactively (Item 4)
 - [x] A hypothesis-evidence dossier maps H1–H4 → items → evidence → honest status, and a public-facing explainer section shows the closed loop (Item 5)
 - [x] Every item ships its findings/process document — documentation is a deliverable, not a byproduct
-- [x] All gaps discovered in `sysml-codegen`/`teax` filed as findings in those repos, not worked around silently
+- [x] All gaps discovered in `sysml-codegen`/`teax` filed as findings in those repos, not worked around silently — *partially: findings are documented with file:line in the WI-013/014/015 findings docs and the dossier's 12-row register, but issues have not yet been opened in the upstream repos (pending user go-ahead, incl. the two 1costingfe bugs)*
 - [x] Completed within the 2-week timebox (by 2026-07-18)
 
 ## Items

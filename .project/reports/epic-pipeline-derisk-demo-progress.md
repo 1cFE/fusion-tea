@@ -15,7 +15,7 @@ WI-013/014/015/017 closed and archived to `work/completed/`. WI-016 stays active
 | WI-014 | SysML Wiring Construct Validation | **DONE** — all live checks pass | commits 2211efd8, dae3942a |
 | WI-015 | IFE End-to-End Demonstration | **DONE** — chain closed, 3 anchors exact, 11,505-pt viability map | commit bcfeab04 |
 | WI-016 | H2 Probe (blind derivation + differential) | **DONE** (all 3 parts) — SysML authoring of derived calcs deferred (license + library-bar decision) | commits 7d52f9dc, e17d1410, f7a00c07 |
-| WI-017 | Dossier & Explainer | **phase 1 done** — dossier + 2 framings (commit fdeb4f7e); phase 2 (explainer + final status) after WI-015 | `modeling_project/HYPOTHESIS_DOSSIER.md` |
+| WI-017 | Dossier & Explainer | **DONE** — dossier finalized (H1 partial · H2 substantial · H3 substantial-for-envelope · H4 demonstrated); explainer Section 9 + `closed-loop.html`, browser-verified zero errors | phases: fdeb4f7e + 07-05 final |
 
 **WI-009 (MFE library)**: paused per user 2026-07-04 (spec.md Status set to `paused`). Its design.md stays as-is; the WI-016 firewall excludes it.
 
