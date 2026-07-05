@@ -8,8 +8,8 @@
 | Item | Name | Status | Notes |
 |------|------|--------|-------|
 | WI-013 | Pipeline Execution Spike | **DONE** — execution closed, 11/11 assertions exact | commit df5835e6 |
-| WI-014 | SysML Wiring Construct Validation | **done w/ riders** — 3 live checks pending license | verdicts via corpus proxy; see log |
-| WI-015 | IFE End-to-End Demonstration | **blocked on syside license** | plumbing proven (WI-013); IFE models have no extraction snapshot, so live extraction needs syside |
+| WI-014 | SysML Wiring Construct Validation | **DONE** — all live checks pass | commits 2211efd8, dae3942a |
+| WI-015 | IFE End-to-End Demonstration | **DONE** — chain closed, 3 anchors exact, 11,505-pt viability map | commit bcfeab04 |
 | WI-016 | H2 Probe (blind derivation + differential) | **DONE** (all 3 parts) — SysML authoring of derived calcs deferred (license + library-bar decision) | commits 7d52f9dc, e17d1410, f7a00c07 |
 | WI-017 | Dossier & Explainer | **phase 1 done** — dossier + 2 framings (commit fdeb4f7e); phase 2 (explainer + final status) after WI-015 | `modeling_project/HYPOTHESIS_DOSSIER.md` |
 
@@ -73,6 +73,27 @@
 - Draft P2 framings committed: `epic-uncertainty-propagation.md`, `epic-inverse-solving.md` (framings only, no items invented).
 - **Everything runnable without the syside license is now done.** Remaining, all license-gated: WI-015 (the IFE demo — extraction step), WI-014's 3 live checks, WI-016's SysML authoring (also awaiting user's library-bar call), WI-017 phase 2 (needs WI-015 artifacts).
 - Day-1 tally: 4 of 5 items done or phase-1 done, 7 working commits, 5 upstream findings, 1 registry erratum. Timebox health: strong — 9 days of buffer against one external dependency.
+
+### 2026-07-05 — Blocker cleared: syside license renewed
+- New key in `.env`; the new plan validates online (`syside-license check`'s air-gapped file flow is not included — expected). `import syside` OK; `uv run python -m syside check models/library/analyses/ife_lcoe.sysml` passes (no `syside` binary in the 0.8.6 venv — use the module form)
+- Relaunched: WI-014 live checks (fresh agent, updating findings.md in place) and WI-015 (full chain: first-ever live extraction of the IFE models → generation → AI pass → teax execution → anchor checks $252.30/$68.69/$270 → ηG>10 viability sweep → feasible-region figures)
+
+### 2026-07-05 — WI-014 fully closed: live checks all pass (commit dae3942a)
+- Parse ✓ (`python -m syside check`), evaluation ✓ (total_cost = 3000.0; asserted constraint predicate evaluates True), extraction ✓ for the chain (`area_calc__area` wired in pipeline.yaml) with the constraint **silently** dropped — no error, no warning. The silence is itself a finding: nothing tells a modeler their viability constraints vanished from generated code.
+- **Two syntax traps found live** (recorded in RAW_LEARNINGS for WI-010, toys fixed):
+  1. Self-named bindings (`in length = length;`) parse fine but infinite-recurse at syside evaluation — part attributes must not share names with the calc parameters they feed
+  2. Calc `return` style parses and evaluates in syside but yields **zero module outputs** in codegen and crashes template rendering — calcs must use `out attribute x : Real = expr;`
+- ⚠ Trap 2 likely hits WI-015 in flight: the IFE calc defs use `return` style. The WI-015 agent has license to characterize + apply trivially-safe fixes; expect a return→out-attribute conversion in its findings.
+
+### 2026-07-05 — WI-015 DONE: the demonstration centerpiece (commit bcfeab04)
+- Full chain closed on our models: first live IFE extraction → codegen → teax execution → **all 3 LCOE anchors exact to 1e-6** ($252.299963 / $68.690202 / $270.121178 per MWh; 9/9 assertions incl. Meier cross-checks) → **11,505-point viability sweep** (η×G×f in 0.1 s): 75.8% viable (ηG>10), knee on the ηG=10 hyperbola, feasible region rep-rate-invariant; figures in `data/ife_sweep/`. SV-023 registered passing.
+- 3 value-neutral model fixes (6× return→out-attribute, output promotion, concrete driver instance — the WI-014 traps hit exactly as predicted); orchestrator re-verified parse + anchor script post-edit.
+- Notable positive: with live extraction the AI pass had nothing to do — all 6 bodies auto-emitted correct from compiled ASTs.
+- New codegen findings: quoted-name sanitization required for importable Python; **cross-part bindings drop to unwired entry points** (biggest MFE-relevant gap — the WI-010 plant model will hit it; closed harness-side here).
+
+### 2026-07-05 — Validation-stack gap audit (user question): do we catch "unworkable SysML"?
+- **Answer: no.** Gap matrix for 7 traps + recommended homes: `.project/research/20260705-120000_validation-stack-gap-audit.md`. Level 6/ADR-002 checks exist but miss all the traps found this epic; negative fixtures don't contain them; the sysml-conventions skill stencil actively teaches the broken `return` pattern.
+- Recommended: agentic-mbse backlog item (checks 1–6 + negative fixtures); immediate fix to the conventions stencil.
 
 ## Quality Gates (orchestrator-enforced before any item closes)
 
