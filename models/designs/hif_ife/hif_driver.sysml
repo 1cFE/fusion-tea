@@ -96,25 +96,4 @@ package hif_driver {
             */
         }
     }
-
-    part hif_driver_instance : 'HIF Driver' {
-        doc /*
-        Concrete standalone instantiation of the HIF driver at the
-        Osiris operating point (5.0 MJ beam, single chamber, 3.5 Hz).
-
-        Exists so codegen template expansion emits the meier_cost
-        module: codegen keys calc modules off part *usages*, and the
-        redefining usage inside hif_plant (part :>> driver) is indexed
-        under its inherited type 'IFE Driver', not 'HIF Driver'
-        (WI-014 rider; see WI-015 findings).
-
-        **Source**: knowledge/sources/energy_from_inertial_fusion/output.md
-        **Ref**: Osiris operating parameters table
-        **Basis**: Same Osiris point as hif_plant's driver binding
-        */
-
-        :>> beam_energy_mj = 5.0;
-        :>> num_chambers = 1.0;
-        :>> pulse_rate_ref = 3.5;
-    }
 }
