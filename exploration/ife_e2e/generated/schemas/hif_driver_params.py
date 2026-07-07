@@ -6,9 +6,6 @@ class HifDriverParams(BaseModel):
 
     Generated from SysML calculation definitions.
     """
-    hif_driver__hif_driver_instance__meier_cost__beam_energy_mj: float = Field(description="Entry point: beam_energy_mj")
-    hif_driver__hif_driver_instance__meier_cost__driver_efficiency: float = Field(description="Entry point: driver_efficiency")
-    hif_driver__hif_driver_instance__meier_cost__num_chambers: float = Field(description="Entry point: num_chambers")
-    hif_driver__hif_driver_instance__meier_cost__rep_rate: float = Field(description="Entry point: rep_rate")
+    hif_driver__HIF_Driver__efficiency: float = Field(default=0.35, description="Entry point: efficiency")
 
     model_config = {"frozen": True, "extra": "forbid"}

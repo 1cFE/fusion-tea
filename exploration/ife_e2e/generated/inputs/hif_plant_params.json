@@ -1,8 +1,6 @@
 {
-  "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__thermal_power_gw": 2.054,
-  "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__num_units": 1.0,
-  "hif_plant_pkg__hif_plant__meier_capital_calc__driver_cost": 0.9749584000000001,
   "hif_plant_pkg__hif_plant__meier_capital_calc__target_factory_cost": 0.1,
-  "hif_plant_pkg__hif_plant__meier_coe_calc__availability": 0.9,
-  "hif_plant_pkg__hif_plant__meier_coe_calc__net_electric_power_gw": 1.0
+  "hif_plant_pkg__hif_plant__meier_coe_calc__net_electric_power_gw": 1.0,
+  "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__num_units": 1.0,
+  "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__thermal_power_gw": 2.054
 }

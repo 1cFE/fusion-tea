@@ -77,7 +77,7 @@ SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif
     SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:84
 
     Calculation Specification:
-        coe_cents_kwh = LiteralRationalEvaluation() * total_capital_billions / LiteralRationalEvaluation() * availability * net_electric_power_gw
+        coe_cents_kwh = 0.113 * total_capital_billions / (0.0876 * availability * net_electric_power_gw)
         
 Documentation:
 Cost of Electricity from Meier's engineering-economic model.

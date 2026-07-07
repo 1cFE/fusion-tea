@@ -82,7 +82,7 @@ SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/fus
 
     Calculation Specification:
         fusion_cycle_gain = eta * gain * blanket_multiplier * thermal_efficiency
-        f_recirc = LiteralRationalEvaluation() / fusion_cycle_gain
+        f_recirc = 1.0 / fusion_cycle_gain
         
 Documentation:
 Computes the recirculating power fraction for an IFE plant.

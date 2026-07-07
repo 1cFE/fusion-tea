@@ -69,7 +69,7 @@ SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif
     SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:65
 
     Calculation Specification:
-        total_capital_billions = LiteralRationalEvaluation() * reactor_cost + driver_cost + target_factory_cost
+        total_capital_billions = 1.83 * (reactor_cost + driver_cost + target_factory_cost)
         
 Documentation:
 Total plant capital cost including indirect cost multiplier.

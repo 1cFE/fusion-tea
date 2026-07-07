@@ -1,6 +1,3 @@
 {
-  "hif_driver__hif_driver_instance__meier_cost__beam_energy_mj": 5.0,
-  "hif_driver__hif_driver_instance__meier_cost__driver_efficiency": 0.35,
-  "hif_driver__hif_driver_instance__meier_cost__num_chambers": 1.0,
-  "hif_driver__hif_driver_instance__meier_cost__rep_rate": 3.5
+  "hif_driver__HIF_Driver__efficiency": 0.35
 }

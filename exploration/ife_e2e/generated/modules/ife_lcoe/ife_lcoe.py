@@ -151,22 +151,22 @@ SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife
     SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml:4
 
     Calculation Specification:
-        construction_years = LiteralRationalEvaluation()
-        operational_years = LiteralRationalEvaluation()
+        construction_years = 5.0
+        operational_years = 40.0
         energy_on_target = driver_efficiency * driver_energy
         fusion_energy_per_shot = gain * energy_on_target
-        net_electric_power = driver_energy * frequency * thermal_efficiency * blanket_energy_multiple * gain * driver_efficiency - LiteralRationalEvaluation()
-        net_electric_kw = net_electric_power / LiteralRationalEvaluation()
-        shots_per_year = LiteralRationalEvaluation() * frequency * availability
+        net_electric_power = driver_energy * frequency * (thermal_efficiency * blanket_energy_multiple * gain * driver_efficiency - 2.0)
+        net_electric_kw = net_electric_power / 1000.0
+        shots_per_year = 31557600.0 * frequency * availability
         driver_lifetime_years = driver_lifetime_shots / shots_per_year
-        annual_capital_cost = plant_cost_constant * net_electric_kw + yield_cost_constant * fusion_energy_per_shot / LiteralRationalEvaluation() + driver_cost_constant * driver_energy / construction_years
+        annual_capital_cost = (plant_cost_constant * net_electric_kw + yield_cost_constant * fusion_energy_per_shot / 1000000000.0 + driver_cost_constant * driver_energy) / construction_years
         annual_operating_cost = target_cost_constant * shots_per_year + om_cost_constant * net_electric_kw + driver_cost_constant * driver_energy / driver_lifetime_years
-        annual_energy = LiteralRationalEvaluation() * net_electric_kw * availability / LiteralRationalEvaluation()
-        discount_factor_con = LiteralRationalEvaluation() + discount_rate ** construction_years
-        pvf_construction = LiteralRationalEvaluation() - LiteralRationalEvaluation() / discount_factor_con / discount_rate
-        discount_factor_op = LiteralRationalEvaluation() + discount_rate ** operational_years
-        pvf_operation = LiteralRationalEvaluation() / discount_factor_con * LiteralRationalEvaluation() - LiteralRationalEvaluation() / discount_factor_op / discount_rate
-        lcoe = annual_capital_cost * pvf_construction + annual_operating_cost * pvf_operation / annual_energy * pvf_operation
+        annual_energy = 8760.0 * net_electric_kw * availability / 1000.0
+        discount_factor_con = (1.0 + discount_rate) ** construction_years
+        pvf_construction = (1.0 - 1.0 / discount_factor_con) / discount_rate
+        discount_factor_op = (1.0 + discount_rate) ** operational_years
+        pvf_operation = 1.0 / discount_factor_con * (1.0 - 1.0 / discount_factor_op) / discount_rate
+        lcoe = (annual_capital_cost * pvf_construction + annual_operating_cost * pvf_operation) / (annual_energy * pvf_operation)
         
 Documentation:
 Levelized Cost of Electricity for an IFE power plant using

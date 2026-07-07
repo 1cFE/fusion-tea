@@ -96,9 +96,9 @@ SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif
     SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:4
 
     Calculation Specification:
-        cost_billions = LiteralRationalEvaluation() + LiteralRationalEvaluation() * beam_energy_mj * LiteralRationalEvaluation() + LiteralRationalEvaluation() * num_chambers * LiteralRationalEvaluation() + LiteralRationalEvaluation() * rep_rate - LiteralRationalEvaluation()
-        bank_energy_joules = beam_energy_mj * LiteralRationalEvaluation() / driver_efficiency
-        gamma = cost_billions * LiteralRationalEvaluation() / bank_energy_joules
+        cost_billions = (0.32 + 0.088 * beam_energy_mj) * (1.25 + 0.05 * num_chambers) * (1.0 + 0.0088 * (rep_rate - 5.0))
+        bank_energy_joules = beam_energy_mj * 1000000.0 / driver_efficiency
+        gamma = cost_billions * 1000000000.0 / bank_energy_joules
         
 Documentation:
 Heavy-ion induction linac driver capital cost from Meier's
