@@ -1,0 +1,19 @@
+modules:
+  hif_plant_pkg__hif_plant__meier_reactor_cost_calc
+  hif_plant_pkg__hif_plant__driver__meier_cost
+  hif_plant_pkg__hif_plant__recirc_calc
+  hif_plant_pkg__hif_plant__meier_capital_calc
+  hif_plant_pkg__hif_plant__lcoe_calc
+  hif_plant_pkg__hif_plant__meier_coe_calc
+meier_cost instantiations: 1
+gamma edge producer: hif_plant_pkg__hif_plant__driver__meier_cost__gamma
+V11 offenders: 9
+   hif_plant_pkg__hif_plant__driver__meier_cost driver_efficiency
+   hif_plant_pkg__hif_plant__recirc_calc eta
+   hif_plant_pkg__hif_plant__recirc_calc blanket_multiplier
+   hif_plant_pkg__hif_plant__lcoe_calc blanket_energy_multiple
+   hif_plant_pkg__hif_plant__lcoe_calc driver_efficiency
+   hif_plant_pkg__hif_plant__lcoe_calc driver_energy
+   hif_plant_pkg__hif_plant__lcoe_calc driver_lifetime_shots
+   hif_plant_pkg__hif_plant__lcoe_calc target_cost_constant
+   hif_plant_pkg__hif_plant__lcoe_calc yield_cost_constant

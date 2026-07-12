@@ -1,0 +1,107 @@
+# Generated Pipeline Configuration for ife_tea
+#
+# Auto-generated from SysML calc def dependency analysis
+# DO NOT EDIT - Regenerate using code generator
+
+metadata:
+  run_description: "Generated pipeline for ife_tea"
+  output_folder: "ife_tea_results"
+
+modules:
+  # Entry point - load inputs from JSON
+  entry_fusion:
+    module_type: EntryPoint
+    inputs:
+      hif_driver_params: HifDriverParams ../inputs/hif_driver_params.json
+      hif_plant_params: HifPlantParams ../inputs/hif_plant_params.json
+      ife_plant_params: IfePlantParams ../inputs/ife_plant_params.json
+      system_design: SystemDesign ../inputs/system_design.json
+
+
+  # hif_economics.Meier_Reactor_CostModule
+  hif_plant_pkg__hif_plant__meier_reactor_cost_calc:
+    module_type: hif_economics.Meier_Reactor_CostModule
+    inputs:
+      thermal_power_gw: float hif_plant_params.hif_plant_pkg__hif_plant__meier_reactor_cost_calc__thermal_power_gw
+      num_units: float hif_plant_params.hif_plant_pkg__hif_plant__meier_reactor_cost_calc__num_units
+    outputs:
+      root: RootModel[float] hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions
+
+  # hif_economics.Meier_HIF_Driver_CostModule
+  hif_plant_pkg__hif_plant__driver__meier_cost:
+    module_type: hif_economics.Meier_HIF_Driver_CostModule
+    inputs:
+      beam_energy_mj: float system_design.hif_plant_pkg__hif_plant__driver__meier_cost__beam_energy_mj
+      driver_efficiency: float hif_driver_params.hif_driver__HIF_Driver__efficiency
+      num_chambers: float system_design.hif_plant_pkg__hif_plant__driver__meier_cost__num_chambers
+      rep_rate: float system_design.hif_plant_pkg__hif_plant__driver__meier_cost__rep_rate
+    outputs:
+      cost_billions: float hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions
+      gamma: float hif_plant_pkg__hif_plant__driver__meier_cost__gamma
+
+  # fusion_cycle.Recirculating_Power_FractionModule
+  hif_plant_pkg__hif_plant__recirc_calc:
+    module_type: fusion_cycle.Recirculating_Power_FractionModule
+    inputs:
+      eta: float ife_plant_params.hif_plant_pkg__hif_plant__driver__efficiency
+      gain: float system_design.hif_plant_pkg__hif_plant__recirc_calc__gain
+      blanket_multiplier: float ife_plant_params.hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple
+      thermal_efficiency: float system_design.hif_plant_pkg__hif_plant__recirc_calc__thermal_efficiency
+    outputs:
+      root: RootModel[float] hif_plant_pkg__hif_plant__recirc_calc__f_recirc
+
+  # hif_economics.Meier_Total_Capital_CostModule
+  hif_plant_pkg__hif_plant__meier_capital_calc:
+    module_type: hif_economics.Meier_Total_Capital_CostModule
+    inputs:
+      reactor_cost: float hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions.root
+      driver_cost: float hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions
+      target_factory_cost: float hif_plant_params.hif_plant_pkg__hif_plant__meier_capital_calc__target_factory_cost
+    outputs:
+      root: RootModel[float] hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions
+
+  # ife_lcoe.IFE_LCOEModule
+  hif_plant_pkg__hif_plant__lcoe_calc:
+    module_type: ife_lcoe.IFE_LCOEModule
+    inputs:
+      availability: float system_design.hif_plant_pkg__hif_plant__lcoe_calc__availability
+      blanket_energy_multiple: float ife_plant_params.hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple
+      discount_rate: float system_design.hif_plant_pkg__hif_plant__lcoe_calc__discount_rate
+      driver_cost_constant: float hif_plant_pkg__hif_plant__driver__meier_cost__gamma
+      driver_efficiency: float ife_plant_params.hif_plant_pkg__hif_plant__driver__efficiency
+      driver_energy: float ife_plant_params.hif_plant_pkg__hif_plant__driver__energy
+      driver_lifetime_shots: float ife_plant_params.hif_plant_pkg__hif_plant__driver__lifetime_shots
+      frequency: float system_design.hif_plant_pkg__hif_plant__lcoe_calc__frequency
+      gain: float system_design.hif_plant_pkg__hif_plant__lcoe_calc__gain
+      om_cost_constant: float system_design.hif_plant_pkg__hif_plant__lcoe_calc__om_cost_constant
+      plant_cost_constant: float system_design.hif_plant_pkg__hif_plant__lcoe_calc__plant_cost_constant
+      target_cost_constant: float ife_plant_params.hif_plant_pkg__hif_plant__target_factory__cost_per_target
+      thermal_efficiency: float system_design.hif_plant_pkg__hif_plant__lcoe_calc__thermal_efficiency
+      yield_cost_constant: float ife_plant_params.hif_plant_pkg__hif_plant__chamber__yield_cost_constant
+      construction_years: float ife_plant_params.hif_plant_pkg__hif_plant__lcoe_calc__construction_years
+      operational_years: float ife_plant_params.hif_plant_pkg__hif_plant__lcoe_calc__operational_years
+    outputs:
+      root: RootModel[float] hif_plant_pkg__hif_plant__lcoe_calc__lcoe
+
+  # hif_economics.Meier_COEModule
+  hif_plant_pkg__hif_plant__meier_coe_calc:
+    module_type: hif_economics.Meier_COEModule
+    inputs:
+      total_capital_billions: float hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions.root
+      availability: float system_design.hif_plant_pkg__hif_plant__meier_coe_calc__availability
+      net_electric_power_gw: float hif_plant_params.hif_plant_pkg__hif_plant__meier_coe_calc__net_electric_power_gw
+    outputs:
+      root: RootModel[float] hif_plant_pkg__hif_plant__meier_coe_calc__coe_cents_kwh
+
+
+  # Exit point - capture all results
+  exit_point:
+    module_type: ExitPoint
+    outputs:
+      hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions: RootModel[float] hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions.json
+      hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions: float hif_plant.driver__driver_cost_billions.json
+      hif_plant_pkg__hif_plant__driver__meier_cost__gamma: float hif_plant_pkg__hif_plant__driver__meier_cost__gamma.json
+      hif_plant_pkg__hif_plant__recirc_calc__f_recirc: RootModel[float] hif_plant__recirculating_fraction.json
+      hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions: RootModel[float] hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions.json
+      hif_plant_pkg__hif_plant__lcoe_calc__lcoe: RootModel[float] hif_plant__lcoe.json
+      hif_plant_pkg__hif_plant__meier_coe_calc__coe_cents_kwh: RootModel[float] hif_plant__meier_coe.json

@@ -1,0 +1,2367 @@
+{
+  "snapshot_format_version": 2,
+  "model_name": "models",
+  "captured_at": "2026-07-07T01:23:45.836437+00:00",
+  "compilation_results": {
+    "Meier_HIF_Driver_Cost": {
+      "calc_def_name": "Meier_HIF_Driver_Cost",
+      "overall_compilability": "fully_compilable",
+      "output_results": [
+        {
+          "output_name": "bank_energy_joules",
+          "compilability": "fully_compilable",
+          "python_expression": "((inputs.beam_energy_mj * 1000000.0) / inputs.driver_efficiency)",
+          "input_refs": [
+            "beam_energy_mj",
+            "driver_efficiency"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "cost_billions",
+          "compilability": "fully_compilable",
+          "python_expression": "(((0.32 + (0.088 * inputs.beam_energy_mj)) * (1.25 + (0.05 * inputs.num_chambers))) * (1.0 + (0.0088 * (inputs.rep_rate - 5.0))))",
+          "input_refs": [
+            "beam_energy_mj",
+            "num_chambers",
+            "rep_rate"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        },
+        {
+          "output_name": "gamma",
+          "compilability": "fully_compilable",
+          "python_expression": "((cost_billions * 1000000000.0) / bank_energy_joules)",
+          "input_refs": [],
+          "intermediate_refs": [
+            "cost_billions",
+            "bank_energy_joules"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        }
+      ],
+      "execution_order": [
+        "bank_energy_joules",
+        "cost_billions",
+        "gamma"
+      ]
+    },
+    "Meier_Reactor_Cost": {
+      "calc_def_name": "Meier_Reactor_Cost",
+      "overall_compilability": "fully_compilable",
+      "output_results": [
+        {
+          "output_name": "reactor_cost_billions",
+          "compilability": "fully_compilable",
+          "python_expression": "((0.66 * ((inputs.thermal_power_gw / 1.67) ** 0.49)) * ((0.72 * inputs.num_units) + 0.28))",
+          "input_refs": [
+            "thermal_power_gw",
+            "num_units"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        }
+      ],
+      "execution_order": [
+        "reactor_cost_billions"
+      ]
+    },
+    "Meier_Total_Capital_Cost": {
+      "calc_def_name": "Meier_Total_Capital_Cost",
+      "overall_compilability": "fully_compilable",
+      "output_results": [
+        {
+          "output_name": "total_capital_billions",
+          "compilability": "fully_compilable",
+          "python_expression": "(1.83 * ((inputs.reactor_cost + inputs.driver_cost) + inputs.target_factory_cost))",
+          "input_refs": [
+            "reactor_cost",
+            "driver_cost",
+            "target_factory_cost"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        }
+      ],
+      "execution_order": [
+        "total_capital_billions"
+      ]
+    },
+    "Meier_COE": {
+      "calc_def_name": "Meier_COE",
+      "overall_compilability": "fully_compilable",
+      "output_results": [
+        {
+          "output_name": "coe_cents_kwh",
+          "compilability": "fully_compilable",
+          "python_expression": "((0.113 * inputs.total_capital_billions) / ((0.0876 * inputs.availability) * inputs.net_electric_power_gw))",
+          "input_refs": [
+            "total_capital_billions",
+            "availability",
+            "net_electric_power_gw"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        }
+      ],
+      "execution_order": [
+        "coe_cents_kwh"
+      ]
+    },
+    "IFE_LCOE": {
+      "calc_def_name": "IFE_LCOE",
+      "overall_compilability": "fully_compilable",
+      "output_results": [
+        {
+          "output_name": "discount_factor_con",
+          "compilability": "fully_compilable",
+          "python_expression": "((1.0 + inputs.discount_rate) ** inputs.construction_years)",
+          "input_refs": [
+            "discount_rate",
+            "construction_years"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "discount_factor_op",
+          "compilability": "fully_compilable",
+          "python_expression": "((1.0 + inputs.discount_rate) ** inputs.operational_years)",
+          "input_refs": [
+            "discount_rate",
+            "operational_years"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "energy_on_target",
+          "compilability": "fully_compilable",
+          "python_expression": "(inputs.driver_efficiency * inputs.driver_energy)",
+          "input_refs": [
+            "driver_efficiency",
+            "driver_energy"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "fusion_energy_per_shot",
+          "compilability": "fully_compilable",
+          "python_expression": "(inputs.gain * energy_on_target)",
+          "input_refs": [
+            "gain"
+          ],
+          "intermediate_refs": [
+            "energy_on_target"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "net_electric_power",
+          "compilability": "fully_compilable",
+          "python_expression": "((inputs.driver_energy * inputs.frequency) * ((((inputs.thermal_efficiency * inputs.blanket_energy_multiple) * inputs.gain) * inputs.driver_efficiency) - 2.0))",
+          "input_refs": [
+            "driver_energy",
+            "frequency",
+            "thermal_efficiency",
+            "blanket_energy_multiple",
+            "gain",
+            "driver_efficiency"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "net_electric_kw",
+          "compilability": "fully_compilable",
+          "python_expression": "(net_electric_power / 1000.0)",
+          "input_refs": [],
+          "intermediate_refs": [
+            "net_electric_power"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "annual_capital_cost",
+          "compilability": "fully_compilable",
+          "python_expression": "((((inputs.plant_cost_constant * net_electric_kw) + ((inputs.yield_cost_constant * fusion_energy_per_shot) / 1000000000.0)) + (inputs.driver_cost_constant * inputs.driver_energy)) / inputs.construction_years)",
+          "input_refs": [
+            "plant_cost_constant",
+            "yield_cost_constant",
+            "driver_cost_constant",
+            "driver_energy",
+            "construction_years"
+          ],
+          "intermediate_refs": [
+            "net_electric_kw",
+            "fusion_energy_per_shot"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "annual_energy",
+          "compilability": "fully_compilable",
+          "python_expression": "(((8760.0 * net_electric_kw) * inputs.availability) / 1000.0)",
+          "input_refs": [
+            "availability"
+          ],
+          "intermediate_refs": [
+            "net_electric_kw"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "pvf_construction",
+          "compilability": "fully_compilable",
+          "python_expression": "((1.0 - (1.0 / discount_factor_con)) / inputs.discount_rate)",
+          "input_refs": [
+            "discount_rate"
+          ],
+          "intermediate_refs": [
+            "discount_factor_con"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "pvf_operation",
+          "compilability": "fully_compilable",
+          "python_expression": "(((1.0 / discount_factor_con) * (1.0 - (1.0 / discount_factor_op))) / inputs.discount_rate)",
+          "input_refs": [
+            "discount_rate"
+          ],
+          "intermediate_refs": [
+            "discount_factor_con",
+            "discount_factor_op"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "shots_per_year",
+          "compilability": "fully_compilable",
+          "python_expression": "((31557600.0 * inputs.frequency) * inputs.availability)",
+          "input_refs": [
+            "frequency",
+            "availability"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "driver_lifetime_years",
+          "compilability": "fully_compilable",
+          "python_expression": "(inputs.driver_lifetime_shots / shots_per_year)",
+          "input_refs": [
+            "driver_lifetime_shots"
+          ],
+          "intermediate_refs": [
+            "shots_per_year"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "annual_operating_cost",
+          "compilability": "fully_compilable",
+          "python_expression": "(((inputs.target_cost_constant * shots_per_year) + (inputs.om_cost_constant * net_electric_kw)) + ((inputs.driver_cost_constant * inputs.driver_energy) / driver_lifetime_years))",
+          "input_refs": [
+            "target_cost_constant",
+            "om_cost_constant",
+            "driver_cost_constant",
+            "driver_energy"
+          ],
+          "intermediate_refs": [
+            "shots_per_year",
+            "net_electric_kw",
+            "driver_lifetime_years"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "lcoe",
+          "compilability": "fully_compilable",
+          "python_expression": "(((annual_capital_cost * pvf_construction) + (annual_operating_cost * pvf_operation)) / (annual_energy * pvf_operation))",
+          "input_refs": [],
+          "intermediate_refs": [
+            "annual_capital_cost",
+            "pvf_construction",
+            "annual_operating_cost",
+            "pvf_operation",
+            "annual_energy"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        }
+      ],
+      "execution_order": [
+        "discount_factor_con",
+        "discount_factor_op",
+        "energy_on_target",
+        "fusion_energy_per_shot",
+        "net_electric_power",
+        "net_electric_kw",
+        "annual_capital_cost",
+        "annual_energy",
+        "pvf_construction",
+        "pvf_operation",
+        "shots_per_year",
+        "driver_lifetime_years",
+        "annual_operating_cost",
+        "lcoe"
+      ]
+    },
+    "Recirculating_Power_Fraction": {
+      "calc_def_name": "Recirculating_Power_Fraction",
+      "overall_compilability": "fully_compilable",
+      "output_results": [
+        {
+          "output_name": "fusion_cycle_gain",
+          "compilability": "fully_compilable",
+          "python_expression": "(((inputs.eta * inputs.gain) * inputs.blanket_multiplier) * inputs.thermal_efficiency)",
+          "input_refs": [
+            "eta",
+            "gain",
+            "blanket_multiplier",
+            "thermal_efficiency"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "f_recirc",
+          "compilability": "fully_compilable",
+          "python_expression": "(1.0 / fusion_cycle_gain)",
+          "input_refs": [],
+          "intermediate_refs": [
+            "fusion_cycle_gain"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        }
+      ],
+      "execution_order": [
+        "fusion_cycle_gain",
+        "f_recirc"
+      ]
+    }
+  },
+  "calc_defs": [
+    {
+      "name": "Meier_HIF_Driver_Cost",
+      "qualified_name": "hif_economics::'Meier HIF Driver Cost'",
+      "doc_comment": "Heavy-ion induction linac driver capital cost from Meier's\nparametric formula. Returns gamma ($/J of bank energy) as the\nprimary output for use in Hawker's LCOE model. Also exposes\ncost_billions as an intermediate for Meier's COE chain.\n\nInput E_d is beam energy on target (MJ), consistent with Meier's\nconvention. The calc converts to bank energy using driver efficiency\nto produce gamma in $/J of bank energy (Hawker's convention).\n\nConstants: 0.32, 0.088 = baseline + marginal accelerator cost\ncoefficients (fit to induction linac studies). Reference: 5 Hz,\nsingle chamber.\n\n*Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md\n*Ref**: Eq. 5 (lines 173-192)\n*Basis**: Meier 1986 parametric driver cost formula for HIF\ninduction linacs. Year-dollars: 1988$.",
+      "calc_expressions": [
+        "cost_billions = (0.32 + 0.088 * beam_energy_mj) * (1.25 + 0.05 * num_chambers) * (1.0 + 0.0088 * (rep_rate - 5.0))",
+        "bank_energy_joules = beam_energy_mj * 1000000.0 / driver_efficiency",
+        "gamma = cost_billions * 1000000000.0 / bank_energy_joules",
+        "\nDocumentation:\nHeavy-ion induction linac driver capital cost from Meier's\nparametric formula. Returns gamma ($/J of bank energy) as the\nprimary output for use in Hawker's LCOE model. Also exposes\ncost_billions as an intermediate for Meier's COE chain.\n\nInput E_d is beam energy on target (MJ), consistent with Meier's\nconvention. The calc converts to bank energy using driver efficiency\nto produce gamma in $/J of bank energy (Hawker's convention).\n\nConstants: 0.32, 0.088 = baseline + marginal accelerator cost\ncoefficients (fit to induction linac studies). Reference: 5 Hz,\nsingle chamber.\n\n*Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md\n*Ref**: Eq. 5 (lines 173-192)\n*Basis**: Meier 1986 parametric driver cost formula for HIF\ninduction linacs. Year-dollars: 1988$."
+      ],
+      "input_attributes": [
+        {
+          "name": "beam_energy_mj",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "driver_efficiency",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "num_chambers",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "rep_rate",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "output_attributes": [
+        {
+          "name": "cost_billions",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "gamma",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "references": [],
+      "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml",
+      "source_line": 4,
+      "source_hash": "3d583828f4aa53a101f63c7c16e34cefbcac3d43664240e60dbd87498f49690e",
+      "output_expression_asts": null,
+      "all_member_names": [
+        "bank_energy_joules",
+        "beam_energy_mj",
+        "cost_billions",
+        "driver_efficiency",
+        "gamma",
+        "num_chambers",
+        "rep_rate"
+      ],
+      "member_expressions": null
+    },
+    {
+      "name": "Meier_Reactor_Cost",
+      "qualified_name": "hif_economics::'Meier Reactor Cost'",
+      "doc_comment": "HIF reactor plant direct cost (excluding driver and target factory).\nScales from the HYLIFE/Cascade reference design using thermal power\nand accounts for multi-unit site savings.\n\nConstants: C_r = $0.66B (Cascade reference at 1.67 GWt),\nb = 0.49 (power scaling exponent).\n\n*Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md\n*Ref**: Eq. 3 (lines 119-137)\n*Basis**: Meier 1986 reactor cost scaling. Year-dollars: 1988$.",
+      "calc_expressions": [
+        "reactor_cost_billions = 0.66 * (thermal_power_gw / 1.67) ** 0.49 * (0.72 * num_units + 0.28)",
+        "\nDocumentation:\nHIF reactor plant direct cost (excluding driver and target factory).\nScales from the HYLIFE/Cascade reference design using thermal power\nand accounts for multi-unit site savings.\n\nConstants: C_r = $0.66B (Cascade reference at 1.67 GWt),\nb = 0.49 (power scaling exponent).\n\n*Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md\n*Ref**: Eq. 3 (lines 119-137)\n*Basis**: Meier 1986 reactor cost scaling. Year-dollars: 1988$."
+      ],
+      "input_attributes": [
+        {
+          "name": "thermal_power_gw",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "num_units",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "output_attributes": [
+        {
+          "name": "reactor_cost_billions",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "references": [],
+      "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml",
+      "source_line": 43,
+      "source_hash": "3d583828f4aa53a101f63c7c16e34cefbcac3d43664240e60dbd87498f49690e",
+      "output_expression_asts": null,
+      "all_member_names": [
+        "num_units",
+        "reactor_cost_billions",
+        "thermal_power_gw"
+      ],
+      "member_expressions": null
+    },
+    {
+      "name": "Meier_Total_Capital_Cost",
+      "qualified_name": "hif_economics::'Meier Total Capital Cost'",
+      "doc_comment": "Total plant capital cost including indirect cost multiplier.\nFactor 1.83 = total-to-direct cost ratio (midway between coal\nat 1.53 and nuclear-best at 2.07).\n\n*Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md\n*Ref**: Eq. 2 (lines 102-117)\n*Basis**: Meier 1986 indirect cost multiplier. Year-dollars: 1988$.",
+      "calc_expressions": [
+        "total_capital_billions = 1.83 * (reactor_cost + driver_cost + target_factory_cost)",
+        "\nDocumentation:\nTotal plant capital cost including indirect cost multiplier.\nFactor 1.83 = total-to-direct cost ratio (midway between coal\nat 1.53 and nuclear-best at 2.07).\n\n*Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md\n*Ref**: Eq. 2 (lines 102-117)\n*Basis**: Meier 1986 indirect cost multiplier. Year-dollars: 1988$."
+      ],
+      "input_attributes": [
+        {
+          "name": "reactor_cost",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "driver_cost",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "target_factory_cost",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "output_attributes": [
+        {
+          "name": "total_capital_billions",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "references": [],
+      "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml",
+      "source_line": 65,
+      "source_hash": "3d583828f4aa53a101f63c7c16e34cefbcac3d43664240e60dbd87498f49690e",
+      "output_expression_asts": null,
+      "all_member_names": [
+        "driver_cost",
+        "reactor_cost",
+        "target_factory_cost",
+        "total_capital_billions"
+      ],
+      "member_expressions": null
+    },
+    {
+      "name": "Meier_COE",
+      "qualified_name": "hif_economics::'Meier COE'",
+      "doc_comment": "Cost of Electricity from Meier's engineering-economic model.\nCombines fixed charge rate (8.3%) and O&M rate (3%) into a\nsingle capital charge rate (11.3%), then divides by annual\nenergy production.\n\nConstants: 0.113 = R + M (8.3% fixed charge + 3% O&M),\n0.0876 = GW-to-$/kWh conversion (8760 hr/yr * 1e6 kW/GW / 100 cents/$).\n\n*Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md\n*Ref**: Eq. 1 (lines 76-102)\n*Basis**: Meier 1986 COE formula. Year-dollars: 1988$.",
+      "calc_expressions": [
+        "coe_cents_kwh = 0.113 * total_capital_billions / (0.0876 * availability * net_electric_power_gw)",
+        "\nDocumentation:\nCost of Electricity from Meier's engineering-economic model.\nCombines fixed charge rate (8.3%) and O&M rate (3%) into a\nsingle capital charge rate (11.3%), then divides by annual\nenergy production.\n\nConstants: 0.113 = R + M (8.3% fixed charge + 3% O&M),\n0.0876 = GW-to-$/kWh conversion (8760 hr/yr * 1e6 kW/GW / 100 cents/$).\n\n*Source**: knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md\n*Ref**: Eq. 1 (lines 76-102)\n*Basis**: Meier 1986 COE formula. Year-dollars: 1988$."
+      ],
+      "input_attributes": [
+        {
+          "name": "total_capital_billions",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "availability",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "net_electric_power_gw",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "output_attributes": [
+        {
+          "name": "coe_cents_kwh",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "references": [],
+      "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml",
+      "source_line": 84,
+      "source_hash": "3d583828f4aa53a101f63c7c16e34cefbcac3d43664240e60dbd87498f49690e",
+      "output_expression_asts": null,
+      "all_member_names": [
+        "availability",
+        "coe_cents_kwh",
+        "net_electric_power_gw",
+        "total_capital_billions"
+      ],
+      "member_expressions": null
+    },
+    {
+      "name": "IFE_LCOE",
+      "qualified_name": "ife_lcoe::'IFE LCOE'",
+      "doc_comment": "Levelized Cost of Electricity for an IFE power plant using\nHawker's 14-parameter discounted cash flow model.\n\nThe formula evaluates a full DCF over a construction period\n(Yc years) and operational lifetime (N_op years). Capital costs\nare spread evenly across construction; operating costs accrue\nduring operation. Both cost and energy streams are discounted\nto present value.\n\nClosed-form present value factors replace year-by-year iteration:\n  PVF_con = (1 - (1+d)^(-Yc)) / d\n  PVF_op  = (1+d)^(-Yc) * (1 - (1+d)^(-N_op)) / d\n\nNet electric power per Hawker Eq. 2.12-2.16:\n  P_e = E_d * f * (mu_th * E_b * G * mu_d - 2)\nwhere the factor of 2 approximates recirculating power as\n2x driver power (driver + cooling).\n\n*Source**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md\n*Ref**: Equations 2.1-2.16 (complete LCOE model)\n*Basis**: Hawker 2020 DCF LCOE model with 14 technology-agnostic parameters;\nclosed-form PVF replaces year-by-year iteration per DD-3",
+      "calc_expressions": [
+        "construction_years = 5.0",
+        "operational_years = 40.0",
+        "energy_on_target = driver_efficiency * driver_energy",
+        "fusion_energy_per_shot = gain * energy_on_target",
+        "net_electric_power = driver_energy * frequency * (thermal_efficiency * blanket_energy_multiple * gain * driver_efficiency - 2.0)",
+        "net_electric_kw = net_electric_power / 1000.0",
+        "shots_per_year = 31557600.0 * frequency * availability",
+        "driver_lifetime_years = driver_lifetime_shots / shots_per_year",
+        "annual_capital_cost = (plant_cost_constant * net_electric_kw + yield_cost_constant * fusion_energy_per_shot / 1000000000.0 + driver_cost_constant * driver_energy) / construction_years",
+        "annual_operating_cost = target_cost_constant * shots_per_year + om_cost_constant * net_electric_kw + driver_cost_constant * driver_energy / driver_lifetime_years",
+        "annual_energy = 8760.0 * net_electric_kw * availability / 1000.0",
+        "discount_factor_con = (1.0 + discount_rate) ** construction_years",
+        "pvf_construction = (1.0 - 1.0 / discount_factor_con) / discount_rate",
+        "discount_factor_op = (1.0 + discount_rate) ** operational_years",
+        "pvf_operation = 1.0 / discount_factor_con * (1.0 - 1.0 / discount_factor_op) / discount_rate",
+        "lcoe = (annual_capital_cost * pvf_construction + annual_operating_cost * pvf_operation) / (annual_energy * pvf_operation)",
+        "\nDocumentation:\nLevelized Cost of Electricity for an IFE power plant using\nHawker's 14-parameter discounted cash flow model.\n\nThe formula evaluates a full DCF over a construction period\n(Yc years) and operational lifetime (N_op years). Capital costs\nare spread evenly across construction; operating costs accrue\nduring operation. Both cost and energy streams are discounted\nto present value.\n\nClosed-form present value factors replace year-by-year iteration:\n  PVF_con = (1 - (1+d)^(-Yc)) / d\n  PVF_op  = (1+d)^(-Yc) * (1 - (1+d)^(-N_op)) / d\n\nNet electric power per Hawker Eq. 2.12-2.16:\n  P_e = E_d * f * (mu_th * E_b * G * mu_d - 2)\nwhere the factor of 2 approximates recirculating power as\n2x driver power (driver + cooling).\n\n*Source**: knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md\n*Ref**: Equations 2.1-2.16 (complete LCOE model)\n*Basis**: Hawker 2020 DCF LCOE model with 14 technology-agnostic parameters;\nclosed-form PVF replaces year-by-year iteration per DD-3"
+      ],
+      "input_attributes": [
+        {
+          "name": "availability",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "blanket_energy_multiple",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "discount_rate",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "driver_cost_constant",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "driver_efficiency",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "driver_energy",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "driver_lifetime_shots",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "frequency",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "gain",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "om_cost_constant",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "plant_cost_constant",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "target_cost_constant",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "thermal_efficiency",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "yield_cost_constant",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "construction_years",
+          "sysml_type": "Real",
+          "default_value": "5.0",
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": true
+        },
+        {
+          "name": "operational_years",
+          "sysml_type": "Real",
+          "default_value": "40.0",
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": true
+        }
+      ],
+      "output_attributes": [
+        {
+          "name": "lcoe",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "references": [],
+      "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml",
+      "source_line": 4,
+      "source_hash": "874463f56c6e87263e2619f6923155debb093fb780e3a05b0577af183aa4b26b",
+      "output_expression_asts": null,
+      "all_member_names": [
+        "annual_capital_cost",
+        "annual_energy",
+        "annual_operating_cost",
+        "availability",
+        "blanket_energy_multiple",
+        "construction_years",
+        "discount_factor_con",
+        "discount_factor_op",
+        "discount_rate",
+        "driver_cost_constant",
+        "driver_efficiency",
+        "driver_energy",
+        "driver_lifetime_shots",
+        "driver_lifetime_years",
+        "energy_on_target",
+        "frequency",
+        "fusion_energy_per_shot",
+        "gain",
+        "lcoe",
+        "net_electric_kw",
+        "net_electric_power",
+        "om_cost_constant",
+        "operational_years",
+        "plant_cost_constant",
+        "pvf_construction",
+        "pvf_operation",
+        "shots_per_year",
+        "target_cost_constant",
+        "thermal_efficiency",
+        "yield_cost_constant"
+      ],
+      "member_expressions": null
+    },
+    {
+      "name": "Recirculating_Power_Fraction",
+      "qualified_name": "fusion_cycle::'Recirculating Power Fraction'",
+      "doc_comment": "Computes the recirculating power fraction for an IFE plant.\nf_recirc = 1 / (eta * G * M * epsilon)\n\nThe recirculating power fraction determines what fraction of\ngross electric output must be fed back to the driver. Values\nabove ~0.25 (fusion cycle gain below ~4) create a sharp knee\nin the cost curve.\n\n*Source**: knowledge/sources/energy_from_inertial_fusion/output.md\n*Ref**: Components section (fusion cycle gain discussion)\n*Basis**: DI-001 — eta*G must exceed ~10 for viability",
+      "calc_expressions": [
+        "fusion_cycle_gain = eta * gain * blanket_multiplier * thermal_efficiency",
+        "f_recirc = 1.0 / fusion_cycle_gain",
+        "\nDocumentation:\nComputes the recirculating power fraction for an IFE plant.\nf_recirc = 1 / (eta * G * M * epsilon)\n\nThe recirculating power fraction determines what fraction of\ngross electric output must be fed back to the driver. Values\nabove ~0.25 (fusion cycle gain below ~4) create a sharp knee\nin the cost curve.\n\n*Source**: knowledge/sources/energy_from_inertial_fusion/output.md\n*Ref**: Components section (fusion cycle gain discussion)\n*Basis**: DI-001 — eta*G must exceed ~10 for viability"
+      ],
+      "input_attributes": [
+        {
+          "name": "eta",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "gain",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "blanket_multiplier",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "thermal_efficiency",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "output_attributes": [
+        {
+          "name": "f_recirc",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "references": [],
+      "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/fusion_cycle.sysml",
+      "source_line": 4,
+      "source_hash": "9a66d1261f2ba53543cff260ce79a794240e05e80073ebf2ee26df44934490af",
+      "output_expression_asts": null,
+      "all_member_names": [
+        "blanket_multiplier",
+        "eta",
+        "f_recirc",
+        "fusion_cycle_gain",
+        "gain",
+        "thermal_efficiency"
+      ],
+      "member_expressions": null
+    }
+  ],
+  "calc_usages": [
+    {
+      "instance_name": "meier_reactor_cost_calc",
+      "calc_def_name": "Meier_Reactor_Cost",
+      "calc_def_qualified_name": "hif_economics::'Meier Reactor Cost'",
+      "module_type": "hif_economics.Meier_Reactor_CostModule",
+      "bindings": [
+        {
+          "param_name": "thermal_power_gw",
+          "source_path": "hif_plant_pkg::hif_plant::meier_reactor_cost_calc::thermal_power_gw",
+          "binding_type": "reference",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> hif_plant_pkg::hif_plant::meier_reactor_cost_calc::thermal_power_gw",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "thermal_power_gw"
+        },
+        {
+          "param_name": "num_units",
+          "source_path": "1.0",
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "LiteralExpression -> 1.0",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 1.0,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": null
+        }
+      ],
+      "unbound_params": [],
+      "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/designs/hif_ife/hif_plant.sysml",
+      "source_line": 177,
+      "parent_part_path": "",
+      "qualified_name": "hif_plant_pkg__hif_plant__meier_reactor_cost_calc",
+      "is_template": false,
+      "owning_part_def_qn": null,
+      "raw_element": null
+    },
+    {
+      "instance_name": "meier_capital_calc",
+      "calc_def_name": "Meier_Total_Capital_Cost",
+      "calc_def_qualified_name": "hif_economics::'Meier Total Capital Cost'",
+      "module_type": "hif_economics.Meier_Total_Capital_CostModule",
+      "bindings": [
+        {
+          "param_name": "reactor_cost",
+          "source_path": "meier_reactor_cost_calc.reactor_cost_billions",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> meier_reactor_cost_calc.reactor_cost_billions",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "meier_reactor_cost_calc",
+          "source_attribute_name": "reactor_cost_billions"
+        },
+        {
+          "param_name": "driver_cost",
+          "source_path": "driver.driver_cost_billions",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> driver.driver_cost_billions",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "driver",
+          "source_attribute_name": "driver_cost_billions"
+        },
+        {
+          "param_name": "target_factory_cost",
+          "source_path": "0.1",
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "LiteralExpression -> 0.1",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.1,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": null
+        }
+      ],
+      "unbound_params": [],
+      "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/designs/hif_ife/hif_plant.sysml",
+      "source_line": 190,
+      "parent_part_path": "",
+      "qualified_name": "hif_plant_pkg__hif_plant__meier_capital_calc",
+      "is_template": false,
+      "owning_part_def_qn": null,
+      "raw_element": null
+    },
+    {
+      "instance_name": "meier_coe_calc",
+      "calc_def_name": "Meier_COE",
+      "calc_def_qualified_name": "hif_economics::'Meier COE'",
+      "module_type": "hif_economics.Meier_COEModule",
+      "bindings": [
+        {
+          "param_name": "total_capital_billions",
+          "source_path": "meier_capital_calc.total_capital_billions",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> meier_capital_calc.total_capital_billions",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "meier_capital_calc",
+          "source_attribute_name": "total_capital_billions"
+        },
+        {
+          "param_name": "availability",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> hif_plant_pkg::hif_plant::meier_coe_calc::availability",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.9,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "availability"
+        },
+        {
+          "param_name": "net_electric_power_gw",
+          "source_path": "hif_plant_pkg::hif_plant::meier_coe_calc::net_electric_power_gw",
+          "binding_type": "reference",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> hif_plant_pkg::hif_plant::meier_coe_calc::net_electric_power_gw",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "net_electric_power_gw"
+        }
+      ],
+      "unbound_params": [],
+      "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/designs/hif_ife/hif_plant.sysml",
+      "source_line": 205,
+      "parent_part_path": "",
+      "qualified_name": "hif_plant_pkg__hif_plant__meier_coe_calc",
+      "is_template": false,
+      "owning_part_def_qn": null,
+      "raw_element": null
+    },
+    {
+      "instance_name": "hif_plant_pkg__hif_plant__driver__meier_cost",
+      "calc_def_name": "Meier_HIF_Driver_Cost",
+      "calc_def_qualified_name": "hif_economics::'Meier HIF Driver Cost'",
+      "module_type": "hif_economics.Meier_HIF_Driver_CostModule",
+      "bindings": [
+        {
+          "param_name": "beam_energy_mj",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> hif_driver::'HIF Driver'::meier_cost::beam_energy_mj",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 5.0,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "beam_energy_mj"
+        },
+        {
+          "param_name": "driver_efficiency",
+          "source_path": "hif_driver::'HIF Driver'::efficiency",
+          "binding_type": "reference",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> hif_driver::'HIF Driver'::efficiency",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "efficiency"
+        },
+        {
+          "param_name": "num_chambers",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> hif_driver::'HIF Driver'::meier_cost::num_chambers",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 1.0,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "num_chambers"
+        },
+        {
+          "param_name": "rep_rate",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> hif_driver::'HIF Driver'::pulse_rate_ref",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 3.5,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "pulse_rate_ref"
+        }
+      ],
+      "unbound_params": [],
+      "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/designs/hif_ife/hif_driver.sysml",
+      "source_line": 62,
+      "parent_part_path": "hif_plant.driver",
+      "qualified_name": "hif_plant_pkg__hif_plant__driver__meier_cost",
+      "is_template": false,
+      "owning_part_def_qn": "hif_driver__HIF_Driver",
+      "raw_element": null
+    },
+    {
+      "instance_name": "hif_plant_pkg__hif_plant__lcoe_calc",
+      "calc_def_name": "IFE_LCOE",
+      "calc_def_qualified_name": "ife_lcoe::'IFE LCOE'",
+      "module_type": "ife_lcoe.IFE_LCOEModule",
+      "bindings": [
+        {
+          "param_name": "availability",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> ife_plant::'IFE Power Plant'::lcoe_calc::availability",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.9,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "availability"
+        },
+        {
+          "param_name": "blanket_energy_multiple",
+          "source_path": "chamber.blanket_energy_multiple",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> chamber.blanket_energy_multiple",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "chamber",
+          "source_attribute_name": "blanket_energy_multiple"
+        },
+        {
+          "param_name": "discount_rate",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> ife_plant::'IFE Power Plant'::lcoe_calc::discount_rate",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.08,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "discount_rate"
+        },
+        {
+          "param_name": "driver_cost_constant",
+          "source_path": "driver.meier_cost.gamma",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> driver.cost_per_joule",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "driver",
+          "source_attribute_name": "cost_per_joule"
+        },
+        {
+          "param_name": "driver_efficiency",
+          "source_path": "driver.efficiency",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> driver.efficiency",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "driver",
+          "source_attribute_name": "efficiency"
+        },
+        {
+          "param_name": "driver_energy",
+          "source_path": "driver.energy",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> driver.energy",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "driver",
+          "source_attribute_name": "energy"
+        },
+        {
+          "param_name": "driver_lifetime_shots",
+          "source_path": "driver.lifetime_shots",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> driver.lifetime_shots",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "driver",
+          "source_attribute_name": "lifetime_shots"
+        },
+        {
+          "param_name": "frequency",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> ife_plant::'IFE Power Plant'::lcoe_calc::frequency",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 3.5,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "frequency"
+        },
+        {
+          "param_name": "gain",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> ife_plant::'IFE Power Plant'::lcoe_calc::gain",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 80.0,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "gain"
+        },
+        {
+          "param_name": "om_cost_constant",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> ife_plant::'IFE Power Plant'::lcoe_calc::om_cost_constant",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 65.0,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "om_cost_constant"
+        },
+        {
+          "param_name": "plant_cost_constant",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> ife_plant::'IFE Power Plant'::lcoe_calc::plant_cost_constant",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 2000.0,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "plant_cost_constant"
+        },
+        {
+          "param_name": "target_cost_constant",
+          "source_path": "target_factory.cost_per_target",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> target_factory.cost_per_target",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "target_factory",
+          "source_attribute_name": "cost_per_target"
+        },
+        {
+          "param_name": "thermal_efficiency",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> ife_plant::'IFE Power Plant'::lcoe_calc::thermal_efficiency",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.43,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "thermal_efficiency"
+        },
+        {
+          "param_name": "yield_cost_constant",
+          "source_path": "chamber.yield_cost_constant",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> chamber.yield_cost_constant",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "chamber",
+          "source_attribute_name": "yield_cost_constant"
+        }
+      ],
+      "unbound_params": [
+        "construction_years",
+        "operational_years"
+      ],
+      "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml",
+      "source_line": 98,
+      "parent_part_path": "hif_plant",
+      "qualified_name": "hif_plant_pkg__hif_plant__lcoe_calc",
+      "is_template": false,
+      "owning_part_def_qn": "ife_plant__IFE_Power_Plant",
+      "raw_element": null
+    },
+    {
+      "instance_name": "hif_plant_pkg__hif_plant__recirc_calc",
+      "calc_def_name": "Recirculating_Power_Fraction",
+      "calc_def_qualified_name": "fusion_cycle::'Recirculating Power Fraction'",
+      "module_type": "fusion_cycle.Recirculating_Power_FractionModule",
+      "bindings": [
+        {
+          "param_name": "eta",
+          "source_path": "driver.efficiency",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> driver.efficiency",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "driver",
+          "source_attribute_name": "efficiency"
+        },
+        {
+          "param_name": "gain",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> ife_plant::'IFE Power Plant'::recirc_calc::gain",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 80.0,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "gain"
+        },
+        {
+          "param_name": "blanket_multiplier",
+          "source_path": "chamber.blanket_energy_multiple",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> chamber.blanket_energy_multiple",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "chamber",
+          "source_attribute_name": "blanket_energy_multiple"
+        },
+        {
+          "param_name": "thermal_efficiency",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> ife_plant::'IFE Power Plant'::recirc_calc::thermal_efficiency",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.43,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "thermal_efficiency"
+        }
+      ],
+      "unbound_params": [],
+      "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml",
+      "source_line": 134,
+      "parent_part_path": "hif_plant",
+      "qualified_name": "hif_plant_pkg__hif_plant__recirc_calc",
+      "is_template": false,
+      "owning_part_def_qn": "ife_plant__IFE_Power_Plant",
+      "raw_element": null
+    }
+  ],
+  "design_attributes": {
+    "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml": [
+      {
+        "name": "cost_billions",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml",
+        "source_line": 31,
+        "parent_part": "",
+        "qualified_name": "hif_economics__Meier_HIF_Driver_Cost__cost_billions"
+      },
+      {
+        "name": "bank_energy_joules",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml",
+        "source_line": 37,
+        "parent_part": "",
+        "qualified_name": "hif_economics__Meier_HIF_Driver_Cost__bank_energy_joules"
+      },
+      {
+        "name": "gamma",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml",
+        "source_line": 40,
+        "parent_part": "",
+        "qualified_name": "hif_economics__Meier_HIF_Driver_Cost__gamma"
+      },
+      {
+        "name": "reactor_cost_billions",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml",
+        "source_line": 60,
+        "parent_part": "",
+        "qualified_name": "hif_economics__Meier_Reactor_Cost__reactor_cost_billions"
+      },
+      {
+        "name": "total_capital_billions",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml",
+        "source_line": 80,
+        "parent_part": "",
+        "qualified_name": "hif_economics__Meier_Total_Capital_Cost__total_capital_billions"
+      },
+      {
+        "name": "coe_cents_kwh",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml",
+        "source_line": 103,
+        "parent_part": "",
+        "qualified_name": "hif_economics__Meier_COE__coe_cents_kwh"
+      }
+    ],
+    "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml": [
+      {
+        "name": "construction_years",
+        "sysml_type": "Real",
+        "default_value": "5.0",
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml",
+        "source_line": 47,
+        "parent_part": "",
+        "qualified_name": "ife_lcoe__IFE_LCOE__construction_years"
+      },
+      {
+        "name": "operational_years",
+        "sysml_type": "Real",
+        "default_value": "40.0",
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml",
+        "source_line": 48,
+        "parent_part": "",
+        "qualified_name": "ife_lcoe__IFE_LCOE__operational_years"
+      },
+      {
+        "name": "energy_on_target",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml",
+        "source_line": 53,
+        "parent_part": "",
+        "qualified_name": "ife_lcoe__IFE_LCOE__energy_on_target"
+      },
+      {
+        "name": "fusion_energy_per_shot",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml",
+        "source_line": 57,
+        "parent_part": "",
+        "qualified_name": "ife_lcoe__IFE_LCOE__fusion_energy_per_shot"
+      },
+      {
+        "name": "net_electric_power",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml",
+        "source_line": 62,
+        "parent_part": "",
+        "qualified_name": "ife_lcoe__IFE_LCOE__net_electric_power"
+      },
+      {
+        "name": "net_electric_kw",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml",
+        "source_line": 66,
+        "parent_part": "",
+        "qualified_name": "ife_lcoe__IFE_LCOE__net_electric_kw"
+      },
+      {
+        "name": "shots_per_year",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml",
+        "source_line": 73,
+        "parent_part": "",
+        "qualified_name": "ife_lcoe__IFE_LCOE__shots_per_year"
+      },
+      {
+        "name": "driver_lifetime_years",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml",
+        "source_line": 77,
+        "parent_part": "",
+        "qualified_name": "ife_lcoe__IFE_LCOE__driver_lifetime_years"
+      },
+      {
+        "name": "annual_capital_cost",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml",
+        "source_line": 84,
+        "parent_part": "",
+        "qualified_name": "ife_lcoe__IFE_LCOE__annual_capital_cost"
+      },
+      {
+        "name": "annual_operating_cost",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml",
+        "source_line": 92,
+        "parent_part": "",
+        "qualified_name": "ife_lcoe__IFE_LCOE__annual_operating_cost"
+      },
+      {
+        "name": "annual_energy",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml",
+        "source_line": 98,
+        "parent_part": "",
+        "qualified_name": "ife_lcoe__IFE_LCOE__annual_energy"
+      },
+      {
+        "name": "discount_factor_con",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml",
+        "source_line": 105,
+        "parent_part": "",
+        "qualified_name": "ife_lcoe__IFE_LCOE__discount_factor_con"
+      },
+      {
+        "name": "pvf_construction",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml",
+        "source_line": 108,
+        "parent_part": "",
+        "qualified_name": "ife_lcoe__IFE_LCOE__pvf_construction"
+      },
+      {
+        "name": "discount_factor_op",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml",
+        "source_line": 113,
+        "parent_part": "",
+        "qualified_name": "ife_lcoe__IFE_LCOE__discount_factor_op"
+      },
+      {
+        "name": "pvf_operation",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml",
+        "source_line": 116,
+        "parent_part": "",
+        "qualified_name": "ife_lcoe__IFE_LCOE__pvf_operation"
+      },
+      {
+        "name": "lcoe",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml",
+        "source_line": 122,
+        "parent_part": "",
+        "qualified_name": "ife_lcoe__IFE_LCOE__lcoe"
+      }
+    ],
+    "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/fusion_cycle.sysml": [
+      {
+        "name": "fusion_cycle_gain",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/fusion_cycle.sysml",
+        "source_line": 24,
+        "parent_part": "",
+        "qualified_name": "fusion_cycle__Recirculating_Power_Fraction__fusion_cycle_gain"
+      },
+      {
+        "name": "f_recirc",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/fusion_cycle.sysml",
+        "source_line": 26,
+        "parent_part": "",
+        "qualified_name": "fusion_cycle__Recirculating_Power_Fraction__f_recirc"
+      },
+      {
+        "name": "threshold",
+        "sysml_type": "Real",
+        "default_value": "10.0",
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/fusion_cycle.sysml",
+        "source_line": 48,
+        "parent_part": "",
+        "qualified_name": "fusion_cycle__Viability_Threshold__threshold"
+      }
+    ],
+    "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/designs/hif_ife/hif_driver.sysml": [
+      {
+        "name": "driver_cost_billions",
+        "sysml_type": "Real",
+        "default_value": "meier_cost.cost_billions",
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/designs/hif_ife/hif_driver.sysml",
+        "source_line": 88,
+        "parent_part": "",
+        "qualified_name": "hif_driver__HIF_Driver__driver_cost_billions"
+      }
+    ],
+    "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/designs/hif_ife/hif_plant.sysml": [
+      {
+        "name": "thermal_power_gw",
+        "sysml_type": "Real",
+        "default_value": "2.054",
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/designs/hif_ife/hif_plant.sysml",
+        "source_line": 154,
+        "parent_part": "hif_plant",
+        "qualified_name": "hif_plant_pkg__hif_plant__thermal_power_gw"
+      },
+      {
+        "name": "net_electric_power_gw",
+        "sysml_type": "Real",
+        "default_value": "1.0",
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/designs/hif_ife/hif_plant.sysml",
+        "source_line": 166,
+        "parent_part": "hif_plant",
+        "qualified_name": "hif_plant_pkg__hif_plant__net_electric_power_gw"
+      },
+      {
+        "name": "meier_coe",
+        "sysml_type": "Real",
+        "default_value": "meier_coe_calc.coe_cents_kwh",
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/designs/hif_ife/hif_plant.sysml",
+        "source_line": 225,
+        "parent_part": "hif_plant",
+        "qualified_name": "hif_plant_pkg__hif_plant__meier_coe"
+      }
+    ],
+    "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml": [
+      {
+        "name": "lcoe",
+        "sysml_type": "Real",
+        "default_value": "lcoe_calc.lcoe",
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml",
+        "source_line": 130,
+        "parent_part": "",
+        "qualified_name": "ife_plant__IFE_Power_Plant__lcoe"
+      },
+      {
+        "name": "recirculating_fraction",
+        "sysml_type": "Real",
+        "default_value": "recirc_calc.f_recirc",
+        "unit": null,
+        "source_file": "/home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml",
+        "source_line": 151,
+        "parent_part": "",
+        "qualified_name": "ife_plant__IFE_Power_Plant__recirculating_fraction"
+      }
+    ]
+  },
+  "hierarchy_data": {
+    "redefinitions": [
+      {
+        "owning_part_qn": "hif_driver__HIF_Driver",
+        "attribute_name": "efficiency",
+        "redefinition_type": "literal",
+        "literal_value": 0.35,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "hif_driver__HIF_Driver",
+        "attribute_name": "cost_per_joule",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "meier_cost.gamma",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "hif_driver__HIF_Driver",
+        "attribute_name": "energy",
+        "redefinition_type": "literal",
+        "literal_value": 14286000.0,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "hif_driver__HIF_Driver",
+        "attribute_name": "lifetime_shots",
+        "redefinition_type": "literal",
+        "literal_value": 6000000000.0,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "ife_subsystems__CAS22_1_1_First_Wall_Blanket",
+        "attribute_name": "scope",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "shared",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "ife_subsystems__CAS22_1_2_Shield",
+        "attribute_name": "scope",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "shared",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "ife_subsystems__CAS22_1_3_Driver",
+        "attribute_name": "scope",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "ife_divergent",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "ife_subsystems__CAS22_1_5_Primary_Structure",
+        "attribute_name": "scope",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "shared",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "ife_subsystems__CAS22_1_8_Target_Factory",
+        "attribute_name": "scope",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "ife_divergent",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      }
+    ],
+    "design_overrides": [
+      {
+        "owning_part_qn": "hif_plant_pkg__hif_plant",
+        "attribute_name": "availability",
+        "redefinition_type": "literal",
+        "literal_value": 0.9,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "hif_plant_pkg__hif_plant",
+        "attribute_name": "frequency",
+        "redefinition_type": "literal",
+        "literal_value": 3.5,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "hif_plant_pkg__hif_plant",
+        "attribute_name": "gain",
+        "redefinition_type": "literal",
+        "literal_value": 80.0,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "hif_plant_pkg__hif_plant",
+        "attribute_name": "thermal_efficiency",
+        "redefinition_type": "literal",
+        "literal_value": 0.43,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "hif_plant_pkg__hif_plant",
+        "attribute_name": "discount_rate",
+        "redefinition_type": "literal",
+        "literal_value": 0.08,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "hif_plant_pkg__hif_plant",
+        "attribute_name": "plant_cost_constant",
+        "redefinition_type": "literal",
+        "literal_value": 2000.0,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "hif_plant_pkg__hif_plant",
+        "attribute_name": "om_cost_constant",
+        "redefinition_type": "literal",
+        "literal_value": 65.0,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "hif_plant_pkg__hif_plant__driver",
+        "attribute_name": "beam_energy_mj",
+        "redefinition_type": "literal",
+        "literal_value": 5.0,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "hif_plant_pkg__hif_plant__driver",
+        "attribute_name": "num_chambers",
+        "redefinition_type": "literal",
+        "literal_value": 1.0,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "hif_plant_pkg__hif_plant__driver",
+        "attribute_name": "pulse_rate_ref",
+        "redefinition_type": "literal",
+        "literal_value": 3.5,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "hif_plant_pkg__hif_plant__target_factory",
+        "attribute_name": "cost_per_target",
+        "redefinition_type": "literal",
+        "literal_value": 10.0,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "hif_plant_pkg__hif_plant__chamber",
+        "attribute_name": "wall_type",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "liquid_wall",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "hif_plant_pkg__hif_plant__chamber",
+        "attribute_name": "blanket_energy_multiple",
+        "redefinition_type": "literal",
+        "literal_value": 1.15,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "hif_plant_pkg__hif_plant__chamber",
+        "attribute_name": "yield_cost_constant",
+        "redefinition_type": "literal",
+        "literal_value": 5000000.0,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      }
+    ],
+    "multiplicities": [],
+    "aggregation_expressions": [],
+    "warnings": [],
+    "part_usage_names": {
+      "ife_subsystems__Reaction_Chamber": [
+        "blanket",
+        "shield",
+        "structure"
+      ],
+      "ife_plant__IFE_Power_Plant": [
+        "chamber",
+        "driver",
+        "target_factory"
+      ]
+    },
+    "usage_type_map": {
+      "[\"ife_subsystems__Reaction_Chamber\", \"blanket\"]": "ife_subsystems__CAS22_1_1_First_Wall_Blanket",
+      "[\"ife_subsystems__Reaction_Chamber\", \"shield\"]": "ife_subsystems__CAS22_1_2_Shield",
+      "[\"ife_subsystems__Reaction_Chamber\", \"structure\"]": "ife_subsystems__CAS22_1_5_Primary_Structure",
+      "[\"ife_plant__IFE_Power_Plant\", \"driver\"]": "ife_subsystems__IFE_Driver",
+      "[\"ife_plant__IFE_Power_Plant\", \"target_factory\"]": "ife_subsystems__Target_Factory",
+      "[\"ife_plant__IFE_Power_Plant\", \"chamber\"]": "ife_subsystems__Reaction_Chamber",
+      "[\"hif_plant_pkg__hif_plant\", \"driver\"]": "hif_driver__HIF_Driver"
+    }
+  },
+  "aggregation_expressions": [],
+  "computed_attributes": [
+    {
+      "name": "driver_cost_billions",
+      "python_name": "driver_cost_billions",
+      "owning_part_name": "HIF_Driver",
+      "owning_part_qualified_name": "hif_driver::'HIF Driver'",
+      "expression_ast": null,
+      "expression_text": "meier_cost.cost_billions",
+      "references": [
+        {
+          "name": "cost_billions",
+          "qualified_name": "hif_economics::'Meier HIF Driver Cost'::cost_billions",
+          "document_path": "file:///home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml"
+        },
+        {
+          "name": "meier_cost",
+          "qualified_name": "hif_driver::'HIF Driver'::meier_cost",
+          "document_path": "file:///home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/designs/hif_ife/hif_driver.sysml"
+        }
+      ],
+      "classification": "expose_pure",
+      "compilability": "manual_required",
+      "compiled_expression": null,
+      "is_on_part_definition": true,
+      "source_file": "unknown",
+      "source_line": 0,
+      "reference_chain": [
+        "meier_cost",
+        "cost_billions"
+      ]
+    },
+    {
+      "name": "lcoe",
+      "python_name": "lcoe",
+      "owning_part_name": "IFE_Power_Plant",
+      "owning_part_qualified_name": "ife_plant::'IFE Power Plant'",
+      "expression_ast": null,
+      "expression_text": "lcoe_calc.lcoe",
+      "references": [
+        {
+          "name": "lcoe",
+          "qualified_name": "ife_lcoe::'IFE LCOE'::lcoe",
+          "document_path": "file:///home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml"
+        },
+        {
+          "name": "lcoe_calc",
+          "qualified_name": "ife_plant::'IFE Power Plant'::lcoe_calc",
+          "document_path": "file:///home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml"
+        }
+      ],
+      "classification": "expose_pure",
+      "compilability": "manual_required",
+      "compiled_expression": null,
+      "is_on_part_definition": true,
+      "source_file": "unknown",
+      "source_line": 0,
+      "reference_chain": [
+        "lcoe_calc",
+        "lcoe"
+      ]
+    },
+    {
+      "name": "recirculating_fraction",
+      "python_name": "recirculating_fraction",
+      "owning_part_name": "IFE_Power_Plant",
+      "owning_part_qualified_name": "ife_plant::'IFE Power Plant'",
+      "expression_ast": null,
+      "expression_text": "recirc_calc.f_recirc",
+      "references": [
+        {
+          "name": "f_recirc",
+          "qualified_name": "fusion_cycle::'Recirculating Power Fraction'::f_recirc",
+          "document_path": "file:///home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/fusion_cycle.sysml"
+        },
+        {
+          "name": "recirc_calc",
+          "qualified_name": "ife_plant::'IFE Power Plant'::recirc_calc",
+          "document_path": "file:///home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml"
+        }
+      ],
+      "classification": "expose_pure",
+      "compilability": "manual_required",
+      "compiled_expression": null,
+      "is_on_part_definition": true,
+      "source_file": "unknown",
+      "source_line": 0,
+      "reference_chain": [
+        "recirc_calc",
+        "f_recirc"
+      ]
+    },
+    {
+      "name": "meier_coe",
+      "python_name": "meier_coe",
+      "owning_part_name": "hif_plant",
+      "owning_part_qualified_name": "hif_plant_pkg::hif_plant",
+      "expression_ast": null,
+      "expression_text": "meier_coe_calc.coe_cents_kwh",
+      "references": [
+        {
+          "name": "coe_cents_kwh",
+          "qualified_name": "hif_economics::'Meier COE'::coe_cents_kwh",
+          "document_path": "file:///home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml"
+        },
+        {
+          "name": "meier_coe_calc",
+          "qualified_name": "hif_plant_pkg::hif_plant::meier_coe_calc",
+          "document_path": "file:///home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/designs/hif_ife/hif_plant.sysml"
+        }
+      ],
+      "classification": "expose_pure",
+      "compilability": "manual_required",
+      "compiled_expression": null,
+      "is_on_part_definition": false,
+      "source_file": "unknown",
+      "source_line": 0,
+      "reference_chain": [
+        "meier_coe_calc",
+        "coe_cents_kwh"
+      ]
+    }
+  ],
+  "channel_aliases": [
+    {
+      "alias_name": "hif_plant.driver.cost_per_joule",
+      "canonical_name": "hif_plant.driver.meier_cost.gamma",
+      "owning_part_qn": "hif_driver__HIF_Driver",
+      "source": "redefinition"
+    },
+    {
+      "alias_name": "meier_coe",
+      "canonical_name": "meier_coe_calc.coe_cents_kwh",
+      "owning_part_qn": "hif_plant_pkg::hif_plant",
+      "source": "expose_pure"
+    }
+  ],
+  "dropped_constraints": [
+    {
+      "owner_kind": "part_def",
+      "owner_name": "IFE_Power_Plant",
+      "owner_qualified_name": "ife_plant::'IFE Power Plant'",
+      "constraint_name": "viability",
+      "constraint_kind": "assert",
+      "source_line": 155
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "relation1_arc_point": {
+    "published": 525.0,
+    "derived_state_form_Cprof105": 406.9,
+    "derived_state_form_Cprof100": 387.5,
+    "derived_beta_form_Cprof105": 521.7,
+    "answer_key_bosch_hale": 432.1,
+    "V_plasma": 153.0,
+    "q95_implied": 4.2,
+    "f_GW_implied": 0.669,
+    "beta_N_answer_key": 1.15,
+    "sigv_quadratic_13p9keV": 2.1253100000000003e-22
+  },
+  "reactivity_T_sweep": {
+    "5_keV": 2.013,
+    "8_keV": 1.131,
+    "10_keV": 0.968,
+    "13.9_keV": 0.896,
+    "15_keV": 0.903,
+    "20_keV": 1.016,
+    "25_keV": 1.216,
+    "30_keV": 1.482
+  },
+  "relation2_arc_point": {
+    "published": {
+      "p_net": 190.0,
+      "q_e": 3.0,
+      "q_p": 13.6
+    },
+    "derived_Mn12": {
+      "p_alpha": 105.0,
+      "p_n": 420.0,
+      "p_th": 647.6,
+      "p_gross": 259.04,
+      "p_recirc": 70.0,
+      "p_net": 189.04,
+      "q_p": 13.6,
+      "q_e": 2.7,
+      "f_recirc": 0.27
+    },
+    "derived_Mn11": {
+      "p_alpha": 105.0,
+      "p_n": 420.0,
+      "p_th": 605.6,
+      "p_gross": 242.24,
+      "p_recirc": 70.0,
+      "p_net": 172.24,
+      "q_p": 13.6,
+      "q_e": 2.46,
+      "f_recirc": 0.29
+    },
+    "key_mn11_full_loads": {
+      "p_ash": 105.12,
+      "p_neutron": 419.88,
+      "p_rad": 23.34,
+      "p_th": 606.09,
+      "p_the": 242.44,
+      "p_et": 242.44,
+      "p_net": 134.96,
+      "q_sci": 13.6,
+      "q_eng": 2.26,
+      "rec_frac": 0.44,
+      "p_input": 38.6
+    },
+    "key_mn12_full_loads": {
+      "p_ash": 105.12,
+      "p_neutron": 419.88,
+      "p_rad": 23.34,
+      "p_th": 648.08,
+      "p_the": 259.23,
+      "p_et": 259.23,
+      "p_net": 151.25,
+      "q_sci": 13.6,
+      "q_eng": 2.4,
+      "rec_frac": 0.42,
+      "p_input": 38.6
+    },
+    "key_mn12_arc_matched_loads": {
+      "p_ash": 105.12,
+      "p_neutron": 419.88,
+      "p_rad": 23.34,
+      "p_th": 647.58,
+      "p_the": 259.03,
+      "p_et": 259.03,
+      "p_net": 189.03,
+      "q_sci": 13.6,
+      "q_eng": 3.7,
+      "rec_frac": 0.27,
+      "p_input": 38.6
+    },
+    "note": "key rec_frac = recirc/p_et, same definition as derived f_recirc; key q_eng = p_et/recirc, so derived q_e = q_eng - 1 equivalent"
+  },
+  "concept01_native_run": {
+    "target_net_MW": 233.0,
+    "p_fus": 781.7,
+    "p_net": 233.0,
+    "p_th": 883.3,
+    "p_et": 353.3,
+    "q_eng": 2.94,
+    "rec_frac": 0.341,
+    "eta_th": 0.4,
+    "mn": 1.1,
+    "eta_pin": 0.0,
+    "C220103": 508.4,
+    "vessel_or": 3.45,
+    "plasma_state": {
+      "I_p": 8.67,
+      "T_e": 13.02,
+      "n_e20": 1.94,
+      "beta_N": 1.4,
+      "f_GW": 0.85,
+      "p_rad": 31.8
+    }
+  },
+  "concept01_coil_formula_check": {
+    "G": 39.5,
+    "kAm": 3290567.0,
+    "conductor": 164.5,
+    "c220103": 508.4
+  },
+  "concept01_magnet_cost": {
+    "answer_key_C220103_computed": 508.4,
+    "analyst_override_noak": 1030.0,
+    "arc_paper_foak_fabricated": "5100-5200 (2014$, structure-dominated)",
+    "derived_geombore": {
+      "NI": 151800000.0,
+      "L_tape_km": 4985.7,
+      "kAm": 3290567.0,
+      "conductor_lo": 89.7,
+      "conductor_hi": 179.5,
+      "E_mag_GJ": 26.1,
+      "M_struct_t": 6250.7,
+      "structure": 6625.8,
+      "total_lo": 6715.5,
+      "total_hi": 6805.3
+    },
+    "derived_arc_anchored_kst20": {
+      "NI": 151800000.0,
+      "L_tape_km": 5750.0,
+      "kAm": 3795000.0,
+      "conductor_lo": 103.5,
+      "conductor_hi": 207.0,
+      "E_mag_GJ": 18.0,
+      "M_struct_t": 4309.1,
+      "structure": 4567.6,
+      "total_lo": 4671.1,
+      "total_hi": 4774.6
+    },
+    "derived_arc_anchored_kst7": {
+      "NI": 151800000.0,
+      "L_tape_km": 5750.0,
+      "kAm": 3795000.0,
+      "conductor_lo": 103.5,
+      "conductor_hi": 207.0,
+      "E_mag_GJ": 18.0,
+      "M_struct_t": 1508.2,
+      "structure": 1598.7,
+      "total_lo": 1702.2,
+      "total_hi": 1805.7
+    },
+    "derived_effective_dollars_per_kAm": "27-55 (2014 FOAK tape at 23 T/20 K)",
+    "key_effective_dollars_per_kAm": 154.5
+  },
+  "concept20a_native_run": {
+    "target_net_MW": 350.0,
+    "p_fus": 992.4,
+    "p_net": 350.0,
+    "p_th": 1092.3,
+    "p_et": 436.9,
+    "q_eng": 5.03,
+    "rec_frac": 0.199,
+    "eta_th": 0.4,
+    "mn": 1.1,
+    "eta_pin": 0.0,
+    "C220103": 4080.1,
+    "vessel_or": 2.95,
+    "published": {
+      "p_fus": 800.0,
+      "q_p": 40.0,
+      "eta_th": ">0.30"
+    }
+  },
+  "concept20a_derived_balance": {
+    "published_p_net": 350.0,
+    "derived_small_house": {
+      "p_alpha": 160.0,
+      "p_n": 640.0,
+      "p_th": 948.0,
+      "p_gross": 312.84,
+      "p_recirc": 49.44,
+      "p_net": 263.4,
+      "q_p": 40.0,
+      "q_e": 5.33,
+      "f_recirc": 0.16
+    },
+    "derived_70MW_house": {
+      "p_alpha": 160.0,
+      "p_n": 640.0,
+      "p_th": 948.0,
+      "p_gross": 312.84,
+      "p_recirc": 114.44,
+      "p_net": 198.4,
+      "q_p": 40.0,
+      "q_e": 1.73,
+      "f_recirc": 0.37
+    }
+  },
+  "concept20a_magnet_cost": {
+    "answer_key_C220103": 4080.1,
+    "formula_check": {
+      "G": 79.0,
+      "kAm": 20852321.2,
+      "conductor": 1042.6,
+      "c220103": 6120.2
+    },
+    "derived_same_bore": {
+      "NI": 562500000.1,
+      "L_tape_km": 15797.2,
+      "kAm": 10426160.6,
+      "conductor_lo": 284.3,
+      "conductor_hi": 568.7,
+      "E_mag_GJ": 69.2,
+      "M_struct_t": 16566.9,
+      "structure": 17560.9,
+      "total_lo": 17845.3,
+      "total_hi": 18129.6
+    },
+    "key_stellarator_penalty_vs_tokamak": 3.8,
+    "derived_f3d_range": "2-5 (judgment; corpus gives direction only)"
+  }
+}

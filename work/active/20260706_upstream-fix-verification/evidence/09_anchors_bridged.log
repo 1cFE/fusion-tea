@@ -1,0 +1,17 @@
+=== Run A: Hawker defaults (module-level: generated impls called directly) ===
+  LCOE $/MWh                             actual=      252.29996307 expected=      252.29996307  OK
+  f_recirc                               actual=        0.04166667 expected=        0.04166667  OK
+=== Run B: realistic HIF (module-level: generated impls called directly) ===
+  LCOE $/MWh                             actual=       68.69020165 expected=       68.69020165  OK
+  f_recirc                               actual=        0.08333333 expected=        0.08333333  OK
+=== Run C: Osiris plant point — ONE pass, generated wiring, generated inputs ===
+  Meier driver cost $B (wired)           actual=        0.97495840 expected=        0.97495840  OK
+  Meier gamma $/J (wired)                actual=       68.24708800 expected=       68.24708800  OK
+  Meier capital $B (wired)               actual=        3.30388687 expected=        3.30388687  OK
+  Meier COE c/kWh                        actual=        4.73540355 expected=        4.73540355  OK
+  LCOE $/MWh (gamma via wiring)          actual=      270.12117794 expected=      270.12117794  OK
+  f_recirc                               actual=        0.07222302 expected=        0.07222302  OK
+
+Anchor C LCOE: $270.12/MWh (WI-015: $270.12, SV-013)
+Osiris Meier COE: 4.735 c/kWh (WI-015: 4.735)
+ALL ANCHOR CHECKS PASSED (rel tol 1e-6) — run C wired, single pass

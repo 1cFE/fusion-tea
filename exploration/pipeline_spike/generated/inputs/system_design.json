@@ -1,0 +1,21 @@
+{
+  "SolarBatteryDesign__solar_battery_plant__battery_system__battery_bos__cost_model__pack_count": 8.0,
+  "SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__capacity_kwh": 5.0,
+  "SolarBatteryDesign__solar_battery_plant__battery_system__battery_pack__cost_model__chemistry_factor": 1.0,
+  "SolarBatteryDesign__solar_battery_plant__battery_system__hybrid_inverter__cost_model__power_rating": 10000.0,
+  "SolarBatteryDesign__solar_battery_plant__battery_system__pack_count": 8.0,
+  "SolarBatteryDesign__solar_battery_plant__site_infra__electrical_panel__cost_model__circuit_count": 4.0,
+  "SolarBatteryDesign__solar_battery_plant__site_infra__fabrication_cost__permitting_fabrication_cost": 0.0,
+  "SolarBatteryDesign__solar_battery_plant__site_infra__installation_cost__permitting_installation_cost": 0.0,
+  "SolarBatteryDesign__solar_battery_plant__site_infra__permitting__cost_model__system_capacity_kw": 8.0,
+  "SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__panel_count": 20.0,
+  "SolarBatteryDesign__solar_battery_plant__site_infra__racking__cost_model__tilt_angle": 30.0,
+  "SolarBatteryDesign__solar_battery_plant__site_infra__raw_material_cost__permitting_raw_material_cost": 0.0,
+  "SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__panel_count": 20.0,
+  "SolarBatteryDesign__solar_battery_plant__solar_array__array_bos__cost_model__string_count": 4.0,
+  "SolarBatteryDesign__solar_battery_plant__solar_array__inverter__cost_model__power_rating": 2000.0,
+  "SolarBatteryDesign__solar_battery_plant__solar_array__inverter_count": 4.0,
+  "SolarBatteryDesign__solar_battery_plant__solar_array__module_count": 20.0,
+  "SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__efficiency": 0.21,
+  "SolarBatteryDesign__solar_battery_plant__solar_array__pv_module__cost_model__wattage": 400.0
+}

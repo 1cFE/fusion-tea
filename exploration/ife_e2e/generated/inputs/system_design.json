@@ -1,0 +1,15 @@
+{
+  "hif_plant_pkg__hif_plant__driver__meier_cost__beam_energy_mj": 5.0,
+  "hif_plant_pkg__hif_plant__driver__meier_cost__num_chambers": 1.0,
+  "hif_plant_pkg__hif_plant__driver__meier_cost__rep_rate": 3.5,
+  "hif_plant_pkg__hif_plant__lcoe_calc__availability": 0.9,
+  "hif_plant_pkg__hif_plant__lcoe_calc__discount_rate": 0.08,
+  "hif_plant_pkg__hif_plant__lcoe_calc__frequency": 3.5,
+  "hif_plant_pkg__hif_plant__lcoe_calc__gain": 80.0,
+  "hif_plant_pkg__hif_plant__lcoe_calc__om_cost_constant": 65.0,
+  "hif_plant_pkg__hif_plant__lcoe_calc__plant_cost_constant": 2000.0,
+  "hif_plant_pkg__hif_plant__lcoe_calc__thermal_efficiency": 0.43,
+  "hif_plant_pkg__hif_plant__meier_coe_calc__availability": 0.9,
+  "hif_plant_pkg__hif_plant__recirc_calc__gain": 80.0,
+  "hif_plant_pkg__hif_plant__recirc_calc__thermal_efficiency": 0.43
+}

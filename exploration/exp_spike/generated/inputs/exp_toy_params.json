@@ -1,0 +1,7 @@
+{
+  "exp_toy__exp_plant__reactivity_calc__t_kev": 5.0,
+  "exp_toy__exp_plant__reactivity_calc__c_coeff": 1.1e-13,
+  "exp_toy__exp_plant__reactivity_calc__b_gamow": 19.98,
+  "exp_toy__exp_plant__doublings_calc__target_gain": 30.0,
+  "exp_toy__exp_plant__exp_control_calc__exponent_arg": -1.0
+}

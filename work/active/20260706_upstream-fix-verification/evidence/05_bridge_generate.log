@@ -1,0 +1,14 @@
+[bridge] V11 offenders before bridge: 10
+[bridge] filled 10 valueless entry-point defaults:
+  BRIDGED hif_driver_params.hif_driver__hif_driver_instance__meier_cost__driver_efficiency
+  BRIDGED hif_driver_params.hif_plant_pkg__hif_plant__driver__meier_cost__driver_efficiency
+  BRIDGED ife_plant_params.hif_plant_pkg__hif_plant__lcoe_calc__blanket_energy_multiple
+  BRIDGED ife_plant_params.hif_plant_pkg__hif_plant__lcoe_calc__driver_efficiency
+  BRIDGED ife_plant_params.hif_plant_pkg__hif_plant__lcoe_calc__driver_energy
+  BRIDGED ife_plant_params.hif_plant_pkg__hif_plant__lcoe_calc__driver_lifetime_shots
+  BRIDGED ife_plant_params.hif_plant_pkg__hif_plant__lcoe_calc__target_cost_constant
+  BRIDGED ife_plant_params.hif_plant_pkg__hif_plant__lcoe_calc__yield_cost_constant
+  BRIDGED ife_plant_params.hif_plant_pkg__hif_plant__recirc_calc__blanket_multiplier
+  BRIDGED ife_plant_params.hif_plant_pkg__hif_plant__recirc_calc__eta
+[bridge] V11 offenders after bridge: 0
+[bridge] package emitted to /home/reid/1cfe/fusion-tea/exploration/ife_e2e/generated_bridged
