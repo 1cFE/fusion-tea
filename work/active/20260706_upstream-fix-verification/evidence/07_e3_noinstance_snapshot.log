@@ -1,0 +1,20 @@
+INFO: Template detection: 3 templates, 3 concrete CalcUsages
+INFO: Template expansion: 3 templates → 3 virtual instances
+INFO: Step 3.5: Hierarchy extraction complete — 9 redefinitions, 14 design overrides, 0 aggregation expressions, 14 bindings rewritten, 0 scoped aggregations, 1 CHAIN aliases
+INFO: Extracted 31 design attributes from 6 files (filter: '')
+INFO: Step 4.5: Extracted 4 computed attributes (4 expose_pure), removed 0 FORMULA from design_attrs, 1 EXPOSE_PURE aliases
+INFO: Step 5.5: OutputRegistry built — 7 Phase 1 channels, 1 Phase 2 CHAIN aliases, 1 Phase 3 EXPOSE_PURE aliases, 1 Phase 4 transitive aliases (23 total keys)
+INFO: Step 5.55: registered 3 part-def EXPOSE scoped alias(es)
+INFO: Step 6.5: Compiling expressions for 6 calculation definitions
+INFO:   Compiled 'Meier_HIF_Driver_Cost': fully_compilable
+INFO:   Compiled 'Meier_Reactor_Cost': fully_compilable
+INFO:   Compiled 'Meier_Total_Capital_Cost': fully_compilable
+INFO:   Compiled 'Meier_COE': fully_compilable
+INFO:   Compiled 'IFE_LCOE': fully_compilable
+INFO:   Compiled 'Recirculating_Power_Fraction': fully_compilable
+INFO: Step 6.5 complete: 6 compiled (6 fully_compilable), 0 skipped (no expressions)
+INFO: Derived 5 parameter groups: 5 design, 0 library
+INFO: Derived 1 parameter groups: 1 design, 0 library
+INFO: Derived 5 parameter groups: 5 design, 0 library
+INFO: Derived 1 parameter groups: 1 design, 0 library
+INFO: Wrote snapshot to /tmp/claude-1000/-home-reid-1cfe-fusion-tea/ef1e5567-624d-4cbb-bbd0-99d3b6d559ff/scratchpad/e3_noinstance.snapshot.json
