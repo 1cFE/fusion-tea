@@ -93,6 +93,24 @@ modules:
     outputs:
       root: RootModel[float] hif_plant_pkg__hif_plant__meier_coe_calc__coe_cents_kwh
 
+  # hif_plant_pkg.HifPlantViabilityConstraintModule
+  hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b:
+    module_type: hif_plant_pkg.HifPlantViabilityConstraintModule
+    inputs:
+      eta: float ife_plant_params.hif_plant_pkg__hif_plant__driver__efficiency
+      gain: float ife_plant_params.hif_plant_pkg__hif_plant__gain
+      threshold: float system_design.hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__threshold
+    outputs:
+      evaluation: ConstraintEvaluation hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation
+
+  # constraints.ConstraintReportAggregatorModule
+  constraint_report_aggregator:
+    module_type: constraints.ConstraintReportAggregatorModule
+    inputs:
+      hif_plant_pkg_hif_plant_viability_81ddf10fb1d1749b: ConstraintEvaluation hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation
+    outputs:
+      constraint_report: ConstraintReport constraint_report
+
 
   # Exit point - capture all results
   exit_point:
@@ -105,3 +123,5 @@ modules:
       hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions: RootModel[float] hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions.json
       hif_plant_pkg__hif_plant__lcoe_calc__lcoe: RootModel[float] hif_plant__lcoe.json
       hif_plant_pkg__hif_plant__meier_coe_calc__coe_cents_kwh: RootModel[float] hif_plant__meier_coe.json
+      hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation: ConstraintEvaluation hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation.json
+      constraint_report: ConstraintReport constraint_report.json

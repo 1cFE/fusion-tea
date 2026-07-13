@@ -19,5 +19,6 @@ class SystemDesign(BaseModel):
     hif_plant_pkg__hif_plant__meier_coe_calc__availability: float = Field(default=0.9, description="Entry point: availability")
     hif_plant_pkg__hif_plant__recirc_calc__gain: float = Field(default=80.0, description="Entry point: gain")
     hif_plant_pkg__hif_plant__recirc_calc__thermal_efficiency: float = Field(default=0.43, description="Entry point: thermal_efficiency")
+    hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__threshold: float = Field(default=10.0, description="Entry point: threshold")
 
     model_config = {"frozen": True, "extra": "forbid"}

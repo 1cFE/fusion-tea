@@ -118,7 +118,12 @@ def check(label: str, actual: float, expected: float) -> None:
 
 def run_pipeline() -> dict:
     """Execute the generated pipeline once (T-1/T-2 router kept) and return channels."""
-    router = create_output_router_with_json_schemas(["RootModel[float]"])
+    # CONSTRAINT-EXEC W1: the whole-plant package now carries a constraint module
+    # (ConstraintEvaluation/ConstraintReport ExitPoint outputs) that didn't exist when
+    # this router was first wired to just "RootModel[float]" — every custom type needs
+    # a registered write handler (PipelineValidator requires one per ExitPoint type).
+    schema_names = dict.fromkeys(["RootModel[float]"] + [t.__name__ for t in CUSTOM_SCHEMA_TYPES])
+    router = create_output_router_with_json_schemas(list(schema_names))
     router.register_handler(
         "float",
         WriteHandler(fn=lambda value, path: Path(path).write_text(json.dumps(value)),
@@ -131,9 +136,13 @@ def run_pipeline() -> dict:
         output_router=router,
         custom_schema_types=CUSTOM_SCHEMA_TYPES,
     )
+    # CONSTRAINT-EXEC W1: ExitPoint now also carries constraint evidence
+    # (ConstraintEvaluation/ConstraintReport), which isn't a scalar the anchor
+    # checks compare against — only numeric channels are collected here.
     return {
         chan: (float(val.root) if hasattr(val, "root") else float(val))
         for chan, val in result.outputs.items()
+        if hasattr(val, "root") or isinstance(val, (int, float))
     }
 
 

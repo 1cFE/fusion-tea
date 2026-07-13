@@ -1,0 +1,9 @@
+{
+  "n": 200,
+  "prepared_total_s": 0.033162460662424564,
+  "prepared_ms_per_case": 0.16581230331212282,
+  "rebuild_total_s": 5.566420933231711,
+  "rebuild_ms_per_case": 27.832104666158557,
+  "prepare_once_speedup_over_rebuild": 167.85307308449714,
+  "verdict_parity_cases": 200
+}

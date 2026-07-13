@@ -11,5 +11,6 @@
   "hif_plant_pkg__hif_plant__lcoe_calc__thermal_efficiency": 0.43,
   "hif_plant_pkg__hif_plant__meier_coe_calc__availability": 0.9,
   "hif_plant_pkg__hif_plant__recirc_calc__gain": 80.0,
-  "hif_plant_pkg__hif_plant__recirc_calc__thermal_efficiency": 0.43
+  "hif_plant_pkg__hif_plant__recirc_calc__thermal_efficiency": 0.43,
+  "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__threshold": 10.0
 }
