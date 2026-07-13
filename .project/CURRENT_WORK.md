@@ -6,6 +6,10 @@
 
 ## Active Work
 
+### Stellarator MBSE Demo — concept approved; first item in spec
+
+**Status**: Concept at `.project/concepts/stellarator-mbse-demo.md` (2026-07-12). First work item `aries-cs-holdout` (ARIES-CS ingestion + quarantine protocol) — spec in progress at `.project/active/aries-cs-holdout/`. On branch `feat/stellarator-mbse-demo`.
+
 ### EXPLORER-UX-V3 — Phase 1 verified; migration complete; pick next Phase-2 item
 
 **Status**: Phase 1 + Themes A/B1/F all merged to `main`; 1costingfe v0.1.0 migration complete and Phase 1 re-verified. **Next: pick the next Phase-2 item by leverage (top candidate D1).**
