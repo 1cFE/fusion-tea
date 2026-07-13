@@ -301,21 +301,29 @@ The epic closes where it started — the IFE sweep's hand-coded rule is dead, re
 **Reference:** `.project/reference/fusion-tea-ife-sweep/FACTS.md` carries the paths — harness `exploration/ife_e2e/sweep_ife.py`, deletion target `:82` (`viable = eta_g > ETA_G_MIN`, `ETA_G_MIN = 10`), LCOE overlay `:84` (stays hand-coded — policy), outputs `exploration/ife_e2e/outputs/`.
 
 **Task (D4/D5 one-run replay):**
-- [ ] **Regenerate the fusion-tea IFE package lowered** (the viability assertion `eta * gain >= threshold` now executes, thanks to W1). Live-vs-snapshot byte-diff of `fusion_tea` needs an **absolute** `--models` path (memory `item3-fusiontea-acceptance-facts`, abs-path parity gotcha).
-- [ ] **Route the sweep through the study layer** (teax study CLI/API, Items 10–12), **not** direct generated-impl calls — today `sweep_ife.py` calls impls directly (memory `item3-fusiontea-acceptance-facts`). CLI-vs-API is the implement session's choice; either satisfies the requirement (verdict from the generated assertion via the study layer). Map the sweep grid onto a `StudyDefinition` (list vs grid strategy).
-- [ ] **Replay the grid once through both rules** (the about-to-be-deleted hand rule + the generated verdict) to build the comparison, **then delete the hand rule at `:82`** (D4 — the one-run replay makes it self-evidently apples-to-apples; no separate golden to keep honest).
-- [ ] **Boundary detection (epsilon window, NTH4):** compute `eta*G` per point; flag any row within `abs(eta*G - 10.0) <= eps`. That window is where hand `>` and modeled `>=` diverge; a flagged row is a **real** semantic difference to report, not to reconcile away.
-- [ ] **Record the prepare-once benchmark** (S5 carry-forward (2)) on the real IFE package: prepare-once vs rebuild. A recorded measurement, not a tuning target (Non-Goals).
+- [x] **Regenerate the fusion-tea IFE package lowered** (the viability assertion `eta * gain >= threshold` now executes, thanks to W1). Live-vs-snapshot byte-diff of `fusion_tea` needs an **absolute** `--models` path (memory `item3-fusiontea-acceptance-facts`, abs-path parity gotcha).
+- [x] **Route the sweep through the study layer** (teax study CLI/API, Items 10–12), **not** direct generated-impl calls — today `sweep_ife.py` calls impls directly (memory `item3-fusiontea-acceptance-facts`). CLI-vs-API is the implement session's choice; either satisfies the requirement (verdict from the generated assertion via the study layer). Map the sweep grid onto a `StudyDefinition` (list vs grid strategy).
+- [x] **Replay the grid once through both rules** (the about-to-be-deleted hand rule + the generated verdict) to build the comparison, **then delete the hand rule at `:82`** (D4 — the one-run replay makes it self-evidently apples-to-apples; no separate golden to keep honest).
+- [x] **Boundary detection (epsilon window, NTH4):** compute `eta*G` per point; flag any row within `abs(eta*G - 10.0) <= eps`. That window is where hand `>` and modeled `>=` diverge; a flagged row is a **real** semantic difference to report, not to reconcile away.
+- [x] **Record the prepare-once benchmark** (S5 carry-forward (2)) on the real IFE package: prepare-once vs rebuild. A recorded measurement, not a tuning target (Non-Goals).
 
 **The committed acceptance artifact (D5):** a table `grid point (eta, G) → old viable → new verdict → match`, boundary rows flagged, committed under fusion-tea's harness dir as the acceptance evidence. **100% agreement modulo a surfaced boundary row is the epic's Critical Success Factor** — link it into the Phase-6 close-out report.
 
 **Validation:**
-- [ ] Package regenerates lowered (viability assertion executing).
-- [ ] Hand rule deleted (`grep -n "ETA_G_MIN\|eta_g >" sweep_ife.py` → zero at `:82`); LCOE overlay at `:84` intact.
-- [ ] Acceptance table shows 100% match (or a surfaced, flagged boundary row).
-- [ ] Prepare-once benchmark recorded.
+- [x] Package regenerates lowered (viability assertion executing).
+- [x] Hand rule deleted (`grep -n "ETA_G_MIN\|eta_g >" sweep_ife.py` → zero at `:82`); LCOE overlay at `:84` intact.
+- [x] Acceptance table shows 100% match (or a surfaced, flagged boundary row).
+- [x] Prepare-once benchmark recorded.
 
-**Report back:** the acceptance table path, match result, boundary-row disposition, and benchmark, for the Phase-6 reconcile.
+**Report back (completed 2026-07-13):** `exploration/ife_e2e/study/acceptance_table.csv`
+(2301 `(eta, gain)` grid points) — **2294/2301 match exactly (100% modulo 7 flagged boundary
+rows)**, where `eta*gain == 10.0` exactly and the retiring hand rule's strict `>` genuinely
+diverges from the generated assertion's `>=` (real semantic difference, not reconciled away).
+Benchmark: `exploration/ife_e2e/study/prepare_once_benchmark.json` — prepare-once ~168x
+faster than rebuild-per-case, 200/200 verdict parity. Full writeup, including three named
+sysml-codegen↔teax schema/wiring gaps this session's regeneration was the first to surface
+(a real multi-entry-channel whole-plant package had never been run through the certified
+study layer before): `exploration/ife_e2e/study/findings.md`.
 
 ---
 
