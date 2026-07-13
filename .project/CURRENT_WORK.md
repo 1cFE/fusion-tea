@@ -35,6 +35,13 @@ Railway container deployment of the concept_explorer: slim serving manifest (`re
 
 Fixes the Railway OOM-kill under multi-user slider load. Layer 1 (client): `tornado.js` debounce 200→400ms + `AbortController` in `concept_page.js:onSliderChange` (at most one in-flight compute/client; abort detected via `controller.signal.aborted`, indicator-hide guarded against superseded requests). Layer 2 (server): `_quantize_sig` rounds override floats to 4 sig figs before the `_compute_cached` LRU key so nearby slider positions share a `forward()`. Verified: 15/15 compute tests, parity gate 33/33 @1e-5, browser drag (6 events→1 request, headline updates, no error flash, 0 console errors). FR-SO1 untouched (no-op path sends empty overrides → nothing to quantize). Out of scope: `forward()` semaphore.
 
+### Compute OOM — Layer 3 forward() semaphore (implemented, ready to PR)
+
+**Status**: Implemented on `feat/compute-concurrency-semaphore` (off `main`). PR into `main`.
+**Location**: `.project/active/compute-concurrency-semaphore/` (spec + design w/ impl notes)
+
+Caps peak transient memory (Layer 3, complements debounce+quantize). Adds module-level `_MAX_CONCURRENT_FORWARD = 2` + `threading.Semaphore` in `server.py`; wraps only the `_forward_with_overrides` call inside `_compute_cached` in acquire/try-finally/release. Bounds concurrent JAX allocation to 2×per-forward regardless of user count; cache hits bypass it (`@lru_cache` returns before the body). No nesting with `_MODULE_LOAD_LOCK` (module load releases its lock before the semaphore is acquired) → deadlock-free. Verified: 21/21 previously-passing tests in `test_state_and_compute.py` + `test_slider_override_semantics.py` still pass. 1 pre-existing failure (`test_fr_so1_noop_compute_matches_stored_headline`, override-magnitude data drift) confirmed identical on base `bd4c403d` — not from this change. Parity gate + Railway multi-tab smoke deferred to deploy.
+
 ### Batch Pipeline Run (unblocked, not started)
 
 **Status**: Plan drafted, ready to start
