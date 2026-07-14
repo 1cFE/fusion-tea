@@ -33,8 +33,8 @@ The demo is clean-room: model-development sessions may not read ARIES-CS-*inform
 - `knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/aries-cs-compact-stellarator-study.md` (+ companion dir) — OSTI abstract stub
 - `knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/aries-cs-systems-optimization.md` (+ companion dir) — OSTI abstract stub
 - `knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/helios-stellarator-comparison.md` (+ companion dir) — the Helios comparison extraction; carries detailed ARIES-CS facts
-- `knowledge/sources/overview_of_the_helios_design_a_practical_planar_coil/**` — the Helios design-paper extraction; carries ARIES-CS-specific design facts (coil structure mass, port count, maintenance scheme, configuration comparisons). Added at ingestion under the principle above; the spec named one "Helios comparison extraction," ingestion verification found this second Helios artifact equally carries ARIES-CS data.
-- `knowledge/concept_research/36-helical-coil-stellarator/iter-02/sources/academia-144327326-the-aries-cs-compact-stellarator-fusion*` — an academia.edu landing-page extraction of the ARIES-CS overview paper (~6 KB, not full text) in concept 36's sources. Found by ingestion verification, not listed in the spec; barred under the principle above.
+- `knowledge/sources/overview_of_the_helios_design_a_practical_planar_coil/**` — the Helios design-paper extraction; carries ARIES-CS-specific design facts (coil structure mass, port count, maintenance scheme, configuration comparisons). Found at ingestion (the spec named only the iter-02 Helios comparison); barred under the principle above, ratified by owner 2026-07-13.
+- `knowledge/concept_research/36-helical-coil-stellarator/iter-02/sources/academia-144327326-the-aries-cs-compact-stellarator-fusion*` — an academia.edu landing-page extraction of the ARIES-CS overview paper (~6 KB, not full text) in concept 36's sources. Found at ingestion, not listed in the spec; barred under the principle above, ratified by owner 2026-07-13.
 
 ### Barred by default, documented-exception path
 
@@ -81,6 +81,7 @@ If the blind is violated before reveal (a sealed PDF or barred artifact read in 
 **Log:**
 
 - 2026-07-12 — sealed. Four PDFs ingested (see §7); no content read. Exceptions granted: none. Violations: none.
+- 2026-07-13 — owner ratified the two ingestion-time barred-list additions (Helios design-paper extraction in `knowledge/sources/`; concept-36 ARIES-CS stub).
 
 ## 7. Provenance
 

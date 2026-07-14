@@ -8,7 +8,7 @@
 
 ### Stellarator MBSE Demo — first item implemented (aries-cs-holdout)
 
-**Status**: `aries-cs-holdout` implemented 2026-07-12, uncommitted, pending `/_my_audit`. Quarantine live at `knowledge/holdout/aries-cs/` (4 PDFs + manifest + README + PROTOCOL.md, plus one CLAUDE.md line); all leak-surface verifications passed. Two owner-review items in the design's Implementation Completion notes: (1) two barred-list additions beyond the spec's lists (the `knowledge/sources` Helios extraction and a concept-36 ARIES-CS stub, both carrying ARIES-CS data), (2) mirrors are all dead — PDFs came from Wayback snapshots of the canonical URLs. Concept at `.project/concepts/stellarator-mbse-demo.md`. On branch `feat/stellarator-mbse-demo`. **Next: audit, commit (PDF durability starts at first commit), then next demo work item — every demo work item must list PROTOCOL.md as Required Reading.**
+**Status**: `aries-cs-holdout` implemented and committed (`8939d9dc` + ratification follow-up), pending `/_my_audit`. Quarantine live at `knowledge/holdout/aries-cs/` (4 PDFs + manifest + README + PROTOCOL.md, plus one CLAUDE.md line); all leak-surface verifications passed. Owner ratified (2026-07-13) the two ingestion-time barred-list additions (the `knowledge/sources` Helios extraction and a concept-36 ARIES-CS stub). Note: ARIES mirrors are all dead — PDFs came from Wayback snapshots of the canonical URLs, recorded in PROTOCOL §7. Concept at `.project/concepts/stellarator-mbse-demo.md`. On branch `feat/stellarator-mbse-demo`. **Next: audit, then next demo work item — every demo work item must list PROTOCOL.md as Required Reading.**
 
 ### EXPLORER-UX-V3 — Phase 1 verified; migration complete; pick next Phase-2 item
 

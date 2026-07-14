@@ -122,7 +122,7 @@ Next Step: After approval → `/_my_implement` (a plan file would be ceremony fo
 4. In-place SHA256 + byte sizes match `manifest.json` for all four PDFs; pypdf page counts (18/21/31/22) match the FS&T Vol 54 No 3 TOC exactly.
 5. R2 sync scope: `sync_research.sh` hardcodes `LOCAL_DIR=knowledge/concept_research` — `knowledge/holdout/` is untouchable by `pull`. PDFs confirmed not gitignored (`git check-ignore` negative), so git-tracking is the durability mechanism (D2); durable once committed.
 
-**Open for owner:**
-- Ratify the two barred-list additions (deviation 3).
-- The concept-36 ARIES-CS stub is a contamination-inventory addition the spec didn't know about — noted in PROTOCOL §5.
-- Changes are uncommitted; the PDFs' durability (D2) starts at first commit.
+**Open for owner:** none remaining.
+- Two barred-list additions (deviation 3): **ratified by owner 2026-07-13**, recorded in PROTOCOL §3 and its §6 log.
+- The concept-36 ARIES-CS stub also added to the contamination inventory (PROTOCOL §5).
+- Committed 2026-07-13 (`8939d9dc`); PDF durability (D2) in effect.
