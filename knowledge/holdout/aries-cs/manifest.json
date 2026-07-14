@@ -1,0 +1,43 @@
+{
+  "purpose": "Integrity manifest for the ARIES-CS hold-out quarantine. Content-free: checksums, sizes, and page counts only. No text was extracted or read at ingestion. Rules: PROTOCOL.md in this directory.",
+  "ingested": "2026-07-12",
+  "verification": "sha256sum -c against this file; page counts read via pypdf metadata only (uv run --with pypdf)",
+  "files": [
+    {
+      "filename": "08-FST-Najmabadi.pdf",
+      "paper": "Najmabadi et al., The ARIES-CS Compact Stellarator Fusion Power Plant, FS&T 54(3) 2008, pp 655-672",
+      "source_url": "http://aries.ucsd.edu/LIB/REPORT/JOURNAL/FST/08-FST-Najmabadi.pdf",
+      "retrieved_from": "http://web.archive.org/web/20170809003451id_/http://aries.ucsd.edu/LIB/REPORT/JOURNAL/FST/08-FST-Najmabadi.pdf",
+      "sha256": "5eb7889311beecd9b9be56837ecf82b0a92b8ff99804d01bb3fa5fac4a9b78e7",
+      "bytes": 1109098,
+      "pages": 18
+    },
+    {
+      "filename": "08-FST-Ku.pdf",
+      "paper": "Ku et al., Physics Design for ARIES-CS, FS&T 54(3) 2008, pp 673-693",
+      "source_url": "http://aries.ucsd.edu/LIB/REPORT/JOURNAL/FST/08-FST-Ku.pdf",
+      "retrieved_from": "http://web.archive.org/web/20120714063819id_/http://aries.ucsd.edu/LIB/REPORT/JOURNAL/FST/08-FST-Ku.pdf",
+      "sha256": "8fb35d57ec3563276af13076ee97728f6237630df803bd46639224d5f3e8a7f5",
+      "bytes": 1199694,
+      "pages": 21
+    },
+    {
+      "filename": "08-FST-Lyon.pdf",
+      "paper": "Lyon et al., Systems Studies and Optimization of the ARIES-CS Power Plant, FS&T 54(3) 2008, pp 694-724",
+      "source_url": "http://aries.ucsd.edu/LIB/REPORT/JOURNAL/FST/08-FST-Lyon.pdf",
+      "retrieved_from": "http://web.archive.org/web/20111206134434id_/http://aries.ucsd.edu/LIB/REPORT/JOURNAL/FST/08-FST-Lyon.pdf",
+      "sha256": "454d2aa0013fd52597373f18b5fca827be13d866320f639aaa520ef3404ed067",
+      "bytes": 1594295,
+      "pages": 31
+    },
+    {
+      "filename": "08-FST-Raffray.pdf",
+      "paper": "Raffray et al., Engineering Design of the ARIES-CS Power Plant, FS&T 54(3) 2008, pp 725-746",
+      "source_url": "http://aries.ucsd.edu/LIB/REPORT/JOURNAL/FST/08-FST-Raffray.pdf",
+      "retrieved_from": "http://web.archive.org/web/20170808114520id_/http://aries.ucsd.edu/LIB/REPORT/JOURNAL/FST/08-FST-Raffray.pdf",
+      "sha256": "5ffadb5f225e47bd453af0908c2de5ea146e2d68131a805ffd8dceb9010130b7",
+      "bytes": 1974632,
+      "pages": 22
+    }
+  ]
+}

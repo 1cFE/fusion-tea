@@ -1,14 +1,14 @@
 # Current Work
 
-**Last Updated**: 2026-06-28
+**Last Updated**: 2026-07-12
 
 ---
 
 ## Active Work
 
-### Stellarator MBSE Demo — concept approved; first item in spec
+### Stellarator MBSE Demo — first item implemented (aries-cs-holdout)
 
-**Status**: Concept at `.project/concepts/stellarator-mbse-demo.md` (2026-07-12). First work item `aries-cs-holdout` (ARIES-CS ingestion + quarantine protocol) — spec in progress at `.project/active/aries-cs-holdout/`. On branch `feat/stellarator-mbse-demo`.
+**Status**: `aries-cs-holdout` implemented 2026-07-12, uncommitted, pending `/_my_audit`. Quarantine live at `knowledge/holdout/aries-cs/` (4 PDFs + manifest + README + PROTOCOL.md, plus one CLAUDE.md line); all leak-surface verifications passed. Two owner-review items in the design's Implementation Completion notes: (1) two barred-list additions beyond the spec's lists (the `knowledge/sources` Helios extraction and a concept-36 ARIES-CS stub, both carrying ARIES-CS data), (2) mirrors are all dead — PDFs came from Wayback snapshots of the canonical URLs. Concept at `.project/concepts/stellarator-mbse-demo.md`. On branch `feat/stellarator-mbse-demo`. **Next: audit, commit (PDF durability starts at first commit), then next demo work item — every demo work item must list PROTOCOL.md as Required Reading.**
 
 ### EXPLORER-UX-V3 — Phase 1 verified; migration complete; pick next Phase-2 item
 

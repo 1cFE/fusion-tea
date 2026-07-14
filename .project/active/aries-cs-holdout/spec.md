@@ -1,6 +1,6 @@
 # Spec: ARIES-CS Hold-Out Ingestion and Quarantine Protocol
 
-**Status:** Draft
+**Status:** Implementation Complete (2026-07-12; pending `/_my_audit`)
 **Owner:** Reid W
 **Created:** 2026-07-12
 **Complexity:** MEDIUM
