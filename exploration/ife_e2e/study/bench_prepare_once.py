@@ -33,7 +33,6 @@ def main() -> None:
         package_dir=PACKAGE_DIR, package_name=PACKAGE_NAME, link_root=LINK_ROOT
     )
     module, _ = loader.load()
-    module.ToyPlantParams = module.IfePlantParams
     prepared = PreparedEvaluator(loader, PACKAGE_DIR / "pipelines" / "ife_hif.yaml")
     evaluator = MultiChannelEvaluator(prepared, PACKAGE_DIR, prepared.package)
     points = _points(N)
@@ -58,7 +57,6 @@ def main() -> None:
             package_dir=PACKAGE_DIR, package_name=PACKAGE_NAME, link_root=LINK_ROOT
         )
         module_i, _ = loader_i.load()
-        module_i.ToyPlantParams = module_i.IfePlantParams
         prepared_i = PreparedEvaluator(loader_i, PACKAGE_DIR / "pipelines" / "ife_hif.yaml")
         evaluator_i = MultiChannelEvaluator(prepared_i, PACKAGE_DIR, prepared_i.package)
         typed = {"ife_plant_params": prepared_i.package.IfePlantParams(**{

@@ -126,13 +126,7 @@ def main() -> None:
     loader = ProvisionalPackageLoader(
         package_dir=PACKAGE_DIR, package_name=PACKAGE_NAME, link_root=LINK_ROOT
     )
-    # Third named gap: `PreparedEvaluator.__init__` unconditionally does
-    # `self.ToyPlantParams = self.package.ToyPlantParams` (evaluator.py:107) — a
-    # toy-fixture leftover, not yet generalized past the single-package-name it was
-    # authored against. Harmless alias on the loaded module (no teax/sysml-codegen
-    # source touched) rather than a package-agnostic accessor.
     module, _ = loader.load()
-    module.ToyPlantParams = module.IfePlantParams
     prepared = PreparedEvaluator(loader, SPEC_PATH)
     evaluator: Evaluator = MultiChannelEvaluator(prepared, PACKAGE_DIR, prepared.package)
     definition = build_definition(prepared)
