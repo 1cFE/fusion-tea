@@ -73,3 +73,15 @@ Structural decisions about how the domain is decomposed into model packages. The
 **Rationale**: The calc def is pure math — it doesn't need to know about the parameter metadata (ranges, sensitivities). This separation means the calc can be reused with any parameter source (including concept-specific values that override defaults). WI-007 wires them together.
 
 **Origin**: WI-006 DD-6
+
+---
+
+## AD-007: Magnet System Defined in the Library, Not the Design Layer
+
+**Decision**: The MFE `'Magnet System'` costed component and the MFE-divergent CAS22 sub-account types (22.1.3 magnets, 22.1.4 heating/current-drive, 22.1.8 divertor) are concept-agnostic `part def`s in `models/library/cost_structure/mfe_power_core.sysml` — not design-layer types as the IFE epic placed its subsystems.
+
+**Rationale**: MR-3's own example states "a magnet system definition works for any MFE concept," so it belongs in the concept-agnostic library. The magnet system is fully parameterized (B, R0, r_coil, G, coil_markup, cost_per_kAm) with no concept values; WI-011 binds tokamak/stellarator values via `:>>`. This is a deliberate, more MR-3-consistent choice than the IFE precedent.
+
+**Alternative rejected**: Placing the magnet system in the design layer (IFE precedent) — would duplicate the definition per concept and understate its concept-agnostic nature.
+
+**Origin**: WI-009 (registered 2026-07-13)

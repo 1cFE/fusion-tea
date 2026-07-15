@@ -1,0 +1,156 @@
+{
+  "artifacts": [
+    {
+      "channel": "stellarator_09__stellaris__geom__V",
+      "produced": true,
+      "relative_path": "stellarator_09__stellaris__geom__V.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "stellarator_09__stellaris__magnet_cost__capital_cost",
+      "produced": true,
+      "relative_path": "stellarator_09__stellaris__magnet_cost__capital_cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "stellarator_09__stellaris__heating_cost__cost",
+      "produced": true,
+      "relative_path": "stellarator_09__stellaris__heating_cost__cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "stellarator_09__stellaris__turbine_cost__cost",
+      "produced": true,
+      "relative_path": "stellarator_09__stellaris__turbine_cost__cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "stellarator_09__stellaris__electric_cost__cost",
+      "produced": true,
+      "relative_path": "stellarator_09__stellaris__electric_cost__cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "stellarator_09__stellaris__heat_rejection_cost__cost",
+      "produced": true,
+      "relative_path": "stellarator_09__stellaris__heat_rejection_cost__cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "stellarator_09__stellaris__misc_cost__cost",
+      "produced": true,
+      "relative_path": "stellarator_09__stellaris__misc_cost__cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "stellarator_09__stellaris__contingency__cost",
+      "produced": true,
+      "relative_path": "stellaris__contingency_capital.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "stellarator_09__stellaris__indirect__cost",
+      "produced": true,
+      "relative_path": "stellaris__indirect_capital.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "stellarator_09__stellaris__fusion__p_fus",
+      "produced": true,
+      "relative_path": "stellarator_09__stellaris__fusion__p_fus.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "stellarator_09__stellaris__wall_load_calc__wall_load",
+      "produced": true,
+      "relative_path": "stellaris__neutron_wall_load.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "stellarator_09__stellaris__pb__p_th",
+      "produced": true,
+      "relative_path": "stellaris__p_th.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "stellarator_09__stellaris__pb__p_the",
+      "produced": true,
+      "relative_path": "stellaris__p_the.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "stellarator_09__stellaris__pb__p_et",
+      "produced": true,
+      "relative_path": "stellaris__p_et.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "stellarator_09__stellaris__pb__q_eng",
+      "produced": true,
+      "relative_path": "stellaris__q_eng.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "stellarator_09__stellaris__pb__rec_frac",
+      "produced": true,
+      "relative_path": "stellaris__rec_frac.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "stellarator_09__stellaris__pb__p_net",
+      "produced": true,
+      "relative_path": "stellaris__net_electric.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "stellarator_09__stellaris__blanket_cost__cost",
+      "produced": true,
+      "relative_path": "stellarator_09__stellaris__blanket_cost__cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "stellarator_09__stellaris__shield_cost__cost",
+      "produced": true,
+      "relative_path": "stellarator_09__stellaris__shield_cost__cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "stellarator_09__stellaris__structure_cost__cost",
+      "produced": true,
+      "relative_path": "stellarator_09__stellaris__structure_cost__cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "stellarator_09__stellaris__vessel_cost__cost",
+      "produced": true,
+      "relative_path": "stellarator_09__stellaris__vessel_cost__cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "stellarator_09__stellaris__power_supplies_cost__cost",
+      "produced": true,
+      "relative_path": "stellarator_09__stellaris__power_supplies_cost__cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "stellarator_09__stellaris__divertor_cost__cost",
+      "produced": true,
+      "relative_path": "stellarator_09__stellaris__divertor_cost__cost.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+      "produced": true,
+      "relative_path": "stellaris__lcoe.json",
+      "type_name": "RootModel[float]"
+    }
+  ],
+  "base_output_dir": "/home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/outputs/hs_pass_b",
+  "metadata": {
+    "output_folder": "stellarator_tea_results",
+    "run_description": "Generated pipeline for stellarator_tea"
+  },
+  "run_directory": "stellarator-tea-results-3a9386bb",
+  "run_name": "stellarator-tea-results",
+  "short_id": "3a9386bb"
+}

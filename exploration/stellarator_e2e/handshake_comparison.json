@@ -1,0 +1,209 @@
+{
+  "commit": "0254385",
+  "target": {
+    "net_electric_mw": 1000.0,
+    "availability": 0.9,
+    "lifetime_yr": 30,
+    "n_mod": 1,
+    "construction_time_yr": 8.0,
+    "interest_rate": 0.07,
+    "inflation_rate": 0.02,
+    "noak": true,
+    "elon": 1.6,
+    "fuel": "DT",
+    "concept": "stellarator"
+  },
+  "injection": {
+    "V": 562.8043213677184,
+    "sigma_v": 5.736186254024941e-23,
+    "p_fus_target": 2582.06591796875
+  },
+  "p_fus": {
+    "onecfe": 2582.06591796875,
+    "sysml": 2582.06591796875
+  },
+  "power_balance": [
+    {
+      "channel": "p_th",
+      "onecfe": 2819.072265625,
+      "sysml": 2356.16955219,
+      "rel": -0.16420391881382737
+    },
+    {
+      "channel": "p_the",
+      "onecfe": 1127.62890625,
+      "sysml": 942.4678208760001,
+      "rel": -0.1642039188138273
+    },
+    {
+      "channel": "p_et",
+      "onecfe": 1127.62890625,
+      "sysml": 942.4678208760001,
+      "rel": -0.1642039188138273
+    },
+    {
+      "channel": "p_net",
+      "onecfe": 1000.0000610351562,
+      "sysml": 764.8457169971601,
+      "rel": -0.23515432968531486
+    },
+    {
+      "channel": "q_eng",
+      "onecfe": 8.83521842956543,
+      "sysml": 5.306027798876195,
+      "rel": -0.39944577022334266
+    },
+    {
+      "channel": "rec_frac",
+      "onecfe": 0.11318339407444,
+      "sysml": 0.1884649002803562,
+      "rel": 0.39944576466986215
+    }
+  ],
+  "accounts": [
+    {
+      "account": "magnet",
+      "onecfe": 2129952695.2440765,
+      "sysml": 2129952694.0845816,
+      "rel_dev": -5.443758818919229e-10,
+      "iso_at_1cfe_power": 2129952694.0845816,
+      "iso_rel": -5.443758818919229e-10
+    },
+    {
+      "account": "heating",
+      "onecfe": 158487000.0,
+      "sysml": 158487000.0,
+      "rel_dev": 0.0,
+      "iso_at_1cfe_power": 158487000.0,
+      "iso_rel": 0.0
+    },
+    {
+      "account": "divertor",
+      "onecfe": 100740562.43896484,
+      "sysml": 92098916.32307081,
+      "rel_dev": -0.08578119782813108,
+      "iso_at_1cfe_power": 100740558.6457113,
+      "iso_rel": -3.765368635191942e-08
+    },
+    {
+      "account": "blanket",
+      "onecfe": 570419555.6640625,
+      "sysml": 512217744.86205876,
+      "rel_dev": -0.10203333708334601,
+      "iso_at_1cfe_power": 570419575.934804,
+      "iso_rel": 3.553654593548585e-08
+    },
+    {
+      "account": "shield",
+      "onecfe": 333281463.6230469,
+      "sysml": 299275643.59842676,
+      "rel_dev": -0.10203333739281073,
+      "iso_at_1cfe_power": 333281475.3518611,
+      "iso_rel": 3.519191767825577e-08
+    },
+    {
+      "account": "structure",
+      "onecfe": 25523571.014404297,
+      "sysml": 23334127.618667956,
+      "rel_dev": -0.08578123313938799,
+      "iso_at_1cfe_power": 25523569.067512274,
+      "iso_rel": -7.627819876724201e-08
+    },
+    {
+      "account": "vessel",
+      "onecfe": 87590721.1303711,
+      "sysml": 78653546.13029334,
+      "rel_dev": -0.10203335335914811,
+      "iso_at_1cfe_power": 87590722.65544574,
+      "iso_rel": 1.741137188553686e-08
+    },
+    {
+      "account": "power_supplies",
+      "onecfe": 81401321.41113281,
+      "sysml": 71796236.4124359,
+      "rel_dev": -0.1179966717024728,
+      "iso_at_1cfe_power": 81401320.02500258,
+      "iso_rel": -1.702835045684007e-08
+    },
+    {
+      "account": "turbine",
+      "onecfe": 228728240.96679688,
+      "sysml": 191170172.78648788,
+      "rel_dev": -0.16420389551179682,
+      "iso_at_1cfe_power": null,
+      "iso_rel": null
+    },
+    {
+      "account": "electric",
+      "onecfe": 97427139.28222656,
+      "sysml": 81429219.72368641,
+      "rel_dev": -0.16420393410297554,
+      "iso_at_1cfe_power": null,
+      "iso_rel": null
+    },
+    {
+      "account": "heat_rejection",
+      "onecfe": 98836669.921875,
+      "sysml": 82607304.4997814,
+      "rel_dev": -0.16420388743289335,
+      "iso_at_1cfe_power": null,
+      "iso_rel": null
+    },
+    {
+      "account": "misc",
+      "onecfe": 59302005.767822266,
+      "sysml": 49564382.69986885,
+      "rel_dev": -0.16420394119682755,
+      "iso_at_1cfe_power": null,
+      "iso_rel": null
+    }
+  ],
+  "passthrough": [
+    {
+      "name": "buildings (CAS21)",
+      "onecfe": 619435485.8398438,
+      "sysml": 619435485.8398438
+    },
+    {
+      "name": "preconstruction (CAS10)",
+      "onecfe": 18500000.0,
+      "sysml": 18500000.0
+    },
+    {
+      "name": "special_materials (CAS27)",
+      "onecfe": 20787933.22662967,
+      "sysml": 20787933.22662967
+    }
+  ],
+  "rollup": {
+    "contingency": {
+      "onecfe": 0.0,
+      "sysml": 0.0
+    },
+    "indirect": {
+      "onecfe": 1522919189.453125,
+      "sysml": 1181149442.0815554
+    },
+    "direct_or_cas20": {
+      "onecfe": 5710946289.0625,
+      "sysml": 4429310407.805833
+    },
+    "total_capital": {
+      "onecfe": 10095837890.625,
+      "sysml": 5610459849.887388
+    },
+    "lcoe": {
+      "onecfe": 123.74301147460938,
+      "sysml": 107.38661643423232
+    },
+    "net_electric": {
+      "onecfe": 1000.0000610351562,
+      "sysml": 764.8457169971601
+    }
+  },
+  "cas22_gap_musd": {
+    "onecfe_cas22_full": 4581.4287109375,
+    "sysml_powercore_musd": 3365.8159090295353,
+    "unmodeled_musd": 1215.6128019079647
+  }
+}

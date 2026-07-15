@@ -8,7 +8,32 @@
 
 ### Stellarator MBSE Demo — first item implemented (aries-cs-holdout)
 
-**Status**: `aries-cs-holdout` implemented and committed (`8939d9dc` + ratification follow-up), pending `/_my_audit`. Quarantine live at `knowledge/holdout/aries-cs/` (4 PDFs + manifest + README + PROTOCOL.md, plus one CLAUDE.md line); all leak-surface verifications passed. Owner ratified (2026-07-13) the two ingestion-time barred-list additions (the `knowledge/sources` Helios extraction and a concept-36 ARIES-CS stub). Note: ARIES mirrors are all dead — PDFs came from Wayback snapshots of the canonical URLs, recorded in PROTOCOL §7. Concept at `.project/concepts/stellarator-mbse-demo.md`. On branch `feat/stellarator-mbse-demo`. **Next: audit, then next demo work item — every demo work item must list PROTOCOL.md as Required Reading.**
+**Status**: `aries-cs-holdout` implemented and committed (`8939d9dc` + ratification follow-up), pending `/_my_audit`. Quarantine live at `knowledge/holdout/aries-cs/` (4 PDFs + manifest + README + PROTOCOL.md, plus one CLAUDE.md line); all leak-surface verifications passed. Owner ratified (2026-07-13) the two ingestion-time barred-list additions (the `knowledge/sources` Helios extraction and a concept-36 ARIES-CS stub). Note: ARIES mirrors are all dead — PDFs came from Wayback snapshots of the canonical URLs, recorded in PROTOCOL §7. Concept at `.project/concepts/stellarator-mbse-demo.md`. On branch `feat/stellarator-mbse-demo`.
+
+### Stellarator MBSE Demo — Stage 2 (initial model) BUILT, uncommitted (2026-07-13)
+
+**Status**: The full Stage-2 initial-model chain is built, validated, and end-to-end-run — **uncommitted in the worktree**, pending review/commit. All demo model-development sessions respected the ARIES-CS blocklist.
+
+**What was built (WI-009 → WI-010 → WI-018 → codegen → handshake):**
+- **WI-009 MFE cost-structure library** (`models/library/`, 7 files): enum `mfe_divergent`, MFE CAS22 sub-accounts + `'Magnet System'`, and the plasma-scaling / power-balance / magnet-cost / LCOE-DCF / viability calc+constraint defs. Sourced purely from **1costingFE @ `0254385`** (clean; ARIES-CS anchor dropped, barred citations re-pointed — see contamination note below). AD-007 registered; SV-019/020/021/022 passing.
+- **WI-010 generic MFE plant** (`models/designs/generic_mfe/`): composes subsystems, wires the physics→cost→LCOE spine, asserts viability. The two untested wiring constructs (cross-calc binding, part-level `assert constraint`) are **validated and survive extraction** (SV-024). Forward-pass fix: WI-009 power balance now exposes `p_th`/`p_the`/`p_et`.
+- **WI-018 concept-09 "Stellaris" instance** (`models/designs/stellarator_09/`): Stellaris design point — physics/geometry from the admissible Stellaris sources, cost/engineering params from 1costingFE stellarator defaults. Viability (beta, wall load, TBR) all pass. Mapping traps documented (r_coil, sigma_v, B-vs-b_center).
+- **Codegen → teax** (`exploration/stellarator_e2e/`): the chain **closed** — every executed channel bit-exact vs the pure-Python oracle. Headline: V=564 m³, fusion 2700 MW, net 575 MWe, **LCOE $250.95/MWh, total $9.783B**, magnet-dominated (44.9%). Via snapshot+V11-bridge (canonical `models/` untouched; codegen-adapted copies staged in `stellarator_e2e/`).
+- **Anchor A handshake** (`exploration/stellarator_e2e/HANDSHAKE_REPORT.md`): fed 1costingFE's solved 1 GWe point into the generated model. **Machinery validated: formula-isolation matches every account to ~1e-8** (magnet 5.4e-10). End-to-end LCOE −13%, total capital −44% — entirely documented model-scope simplifications, not codegen error.
+
+**Success criteria**: SC-1 (runs end-to-end, LCOE + full CAS) ✓; SC-2 (viability as modeled constraints) — DEFINED, execute at Stage 4 per owner decision (constraint-exec epic); SC-3 (1costingFE handshake) ✓ machinery bit-exact, discrepancies itemized.
+
+**Stage-3 backlog (from the handshake, ranked by leverage):**
+1. **Power balance fidelity** (top): SysML 0D `p_th` omits alpha/wall + radiation power to the blanket (~547 MW, 19%) → −16.4% p_th cascading into every power-scaled account. Align with `physics.py`.
+2. **CAS22 reactor-plant tail** (~1093 M$): remote handling, installation, coolant, cryoplant, waste, fuel handling, I&C. Plus CAS40 owner / CAS50 supplementary.
+3. **LCOE construction**: add CAS70 levelized O&M + CAS80 fuel; reconcile IDC treatment (SysML folds into DCF vs 1costingFE CAS60 line).
+4. Vessel gas-load pump sub-term; 0D reactivity/volume (sigma_v tuned to design power; torus-volume 564 vs Stellaris 448); ISS04 confinement-consistency constraint (deferred at Stage 2).
+
+**Codegen findings** (`exploration/stellarator_e2e/CODEGEN_FINDINGS.md`, file upstream): #8 EXPOSE-alias wires by consumer-input name (V11 blind spot, teax rejects; harness glue closes); #9 strict-mode `assert constraint` now aborts on plain design-attribute actuals (constraints commented in staged copies — Stage-4 scope).
+
+**Contamination note**: the pre-quarantine WI-009 `design.md` carried an ARIES-CS ~$9700/kW anchor + barred-doc citations; logged in PROTOCOL §5/§6 (2026-07-13), demo build re-sourced to 1costingFE only. No barred file was read by any build session.
+
+**Next**: owner review + commit; then Stage 3 (start with the power-balance fix — highest leverage). Every demo work item lists PROTOCOL.md as Required Reading.
 
 ### EXPLORER-UX-V3 — Phase 1 verified; migration complete; pick next Phase-2 item
 

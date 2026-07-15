@@ -1,10 +1,10 @@
 ---
-Status: paused
+Status: active
 Scale: standard
 Epic: MFE Cost Modeling — Tokamak & Stellarator
 Owner: reid
 Created: 2026-07-03
-Updated: 2026-07-03
+Updated: 2026-07-13
 ---
 
 # WI-009: MFE Cost Structure Library

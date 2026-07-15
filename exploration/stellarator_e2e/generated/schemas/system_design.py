@@ -1,0 +1,50 @@
+from pydantic import BaseModel, Field
+
+
+class SystemDesign(BaseModel):
+    """Parameters from hierarchy.
+
+    Generated from SysML calculation definitions.
+    """
+    mfe_plant__MFE_Power_Plant__p_et: float = Field(description="Entry point: p_et")
+    mfe_plant__MFE_Power_Plant__p_th: float = Field(description="Entry point: p_th")
+    mfe_plant__MFE_Power_Plant__p_the: float = Field(description="Entry point: p_the")
+    stellarator_09__stellaris__contingency__contingency_rate: float = Field(default=0.1, description="Entry point: contingency_rate")
+    stellarator_09__stellaris__divertor_cost__base: float = Field(default=60000000.0, description="Entry point: base")
+    stellarator_09__stellaris__fusion__E_fus: float = Field(default=2.817e-12, description="Entry point: E_fus")
+    stellarator_09__stellaris__fusion__n_e: float = Field(default=3.37e+20, description="Entry point: n_e")
+    stellarator_09__stellaris__fusion__sigma_v: float = Field(default=5.985e-23, description="Entry point: sigma_v")
+    stellarator_09__stellaris__geom__R: float = Field(default=12.7, description="Entry point: R")
+    stellarator_09__stellaris__geom__a: float = Field(default=1.5, description="Entry point: a")
+    stellarator_09__stellaris__geom__kappa: float = Field(default=1.0, description="Entry point: kappa")
+    stellarator_09__stellaris__heating_cost__ecrh_per_mw: float = Field(default=5282900.0, description="Entry point: ecrh_per_mw")
+    stellarator_09__stellaris__heating_cost__icrf_per_mw: float = Field(default=0.0, description="Entry point: icrf_per_mw")
+    stellarator_09__stellaris__heating_cost__lhcd_per_mw: float = Field(default=0.0, description="Entry point: lhcd_per_mw")
+    stellarator_09__stellaris__heating_cost__nbi_per_mw: float = Field(default=0.0, description="Entry point: nbi_per_mw")
+    stellarator_09__stellaris__heating_cost__p_ecrh: float = Field(default=50.0, description="Entry point: p_ecrh")
+    stellarator_09__stellaris__heating_cost__p_icrf: float = Field(default=0.0, description="Entry point: p_icrf")
+    stellarator_09__stellaris__heating_cost__p_lhcd: float = Field(default=0.0, description="Entry point: p_lhcd")
+    stellarator_09__stellaris__heating_cost__p_nbi: float = Field(default=0.0, description="Entry point: p_nbi")
+    stellarator_09__stellaris__indirect__construction_time: float = Field(default=8.0, description="Entry point: construction_time")
+    stellarator_09__stellaris__indirect__indirect_fraction: float = Field(default=0.2, description="Entry point: indirect_fraction")
+    stellarator_09__stellaris__lcoe_calc__annual_om: float = Field(default=41641000.0, description="Entry point: annual_om")
+    stellarator_09__stellaris__lcoe_calc__availability: float = Field(default=0.85, description="Entry point: availability")
+    stellarator_09__stellaris__lcoe_calc__construction_years: float = Field(default=8.0, description="Entry point: construction_years")
+    stellarator_09__stellaris__lcoe_calc__discount_rate: float = Field(default=0.07, description="Entry point: discount_rate")
+    stellarator_09__stellaris__lcoe_calc__operational_years: float = Field(default=30.0, description="Entry point: operational_years")
+    stellarator_09__stellaris__pb__eta_p: float = Field(default=0.5, description="Entry point: eta_p")
+    stellarator_09__stellaris__pb__eta_pin: float = Field(default=0.5, description="Entry point: eta_pin")
+    stellarator_09__stellaris__pb__eta_th: float = Field(default=0.333, description="Entry point: eta_th")
+    stellarator_09__stellaris__pb__f_sub: float = Field(default=0.03, description="Entry point: f_sub")
+    stellarator_09__stellaris__pb__fpcppf: float = Field(default=0.06, description="Entry point: fpcppf")
+    stellarator_09__stellaris__pb__mn: float = Field(default=1.2, description="Entry point: mn")
+    stellarator_09__stellaris__pb__p_cryo: float = Field(default=0.8, description="Entry point: p_cryo")
+    stellarator_09__stellaris__pb__p_house: float = Field(default=4.0, description="Entry point: p_house")
+    stellarator_09__stellaris__pb__p_input: float = Field(default=50.0, description="Entry point: p_input")
+    stellarator_09__stellaris__pb__p_pf: float = Field(default=0.0, description="Entry point: p_pf")
+    stellarator_09__stellaris__pb__p_pfcool: float = Field(default=0.0, description="Entry point: p_pfcool")
+    stellarator_09__stellaris__pb__p_tf: float = Field(default=111.0, description="Entry point: p_tf")
+    stellarator_09__stellaris__pb__p_tfcool: float = Field(default=15.0, description="Entry point: p_tfcool")
+    stellarator_09__stellaris__pb__p_trit: float = Field(default=10.0, description="Entry point: p_trit")
+
+    model_config = {"frozen": True, "extra": "forbid"}

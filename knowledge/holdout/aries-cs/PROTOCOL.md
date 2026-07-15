@@ -64,6 +64,7 @@ The pre-existing ARIES-CS exposure this quarantine does **not** undo, documented
 - The Helios comparison extraction's ARIES-CS quotes (both Helios artifacts in §3)
 - The academia.edu ARIES-CS overview-paper stub in concept 36's sources (found at ingestion; see §3)
 - ARIES-CS data points inside the Waganer and Araiinejad/Shirvan general costing docs
+- The pre-quarantine WI-009 MFE cost-library **design doc** (`work/active/WI-009_mfe-cost-structure-library/design.md`, written 2026-07-03/04): its validation-anchor table carries an ARIES-CS aggregate figure (~$9700/kW overnight capital) and it cites the barred Waganer/Araiinejad docs as sources. Surfaced 2026-07-13 while planning the demo's Stage-2 build; the aggregate $/kW figure entered that planning session's context (no barred file was opened). Mitigation: the demo's WI-009 build is re-sourced purely from 1costingFE, drops the ARIES-CS anchor, and re-points the barred citations — so ARIES-CS does not flow into the demo model or its validation. Residual exposure is the single aggregate $/kW number, not a per-component breakdown.
 - ARIES-lineage library defaults (1costingFE account-structure descent; C220107)
 - Model training-data priors — the underlying LLMs have read the ARIES-CS literature; this is irreducible and is disclosed in the write-up
 
@@ -82,6 +83,7 @@ If the blind is violated before reveal (a sealed PDF or barred artifact read in 
 
 - 2026-07-12 — sealed. Four PDFs ingested (see §7); no content read. Exceptions granted: none. Violations: none.
 - 2026-07-13 — owner ratified the two ingestion-time barred-list additions (Helios design-paper extraction in `knowledge/sources/`; concept-36 ARIES-CS stub).
+- 2026-07-13 — contamination disclosure (no barred file read). Planning the demo's WI-009→011 Stage-2 build surfaced that the pre-quarantine WI-009 `design.md` carries an ARIES-CS ~$9700/kW anchor and barred-doc citations; the $/kW figure entered the planning session's context. Added to §5 inventory. Owner ratified the mitigation (build WI-009 sourced from 1costingFE only, ARIES-CS anchor dropped, barred citations re-pointed). Status remains `sealed`; no reveal.
 
 ## 7. Provenance
 

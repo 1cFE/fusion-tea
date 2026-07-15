@@ -47,6 +47,11 @@ epics:
     scale: standard
     status: backlog
     completed: null
+  - id: WI-018
+    name: Concept-09 QI Stellarator Initial Model
+    scale: standard
+    status: backlog
+    completed: null
 - name: Pipeline De-Risk & Demonstration
   goal: null
   priority: P0
@@ -103,6 +108,7 @@ standalone: []
 | WI-010 | Generic MFE Plant Model | standard | backlog |  |
 | WI-011 | Tokamak & Stellarator Instantiations | standard | backlog |  |
 | WI-012 | Codegen + Viability Sweep | standard | backlog |  |
+| WI-018 | Concept-09 QI Stellarator Initial Model | standard | backlog |  |
 
 ## Epic: Pipeline De-Risk & Demonstration
 **Priority**: P0 | **Status**: active
