@@ -57,6 +57,16 @@ epics:
     scale: standard
     status: completed
     completed: '2026-07-14'
+  - id: WI-020
+    name: Stellarator-correct plasma geometry (shape factor)
+    scale: standard
+    status: completed
+    completed: '2026-07-17'
+  - id: WI-021
+    name: stellarator-correct-radial-build
+    scale: standard
+    status: completed
+    completed: '2026-07-17'
 - name: Pipeline De-Risk & Demonstration
   goal: null
   priority: P0
@@ -115,6 +125,8 @@ standalone: []
 | WI-012 | Codegen + Viability Sweep | standard | backlog |  |
 | WI-018 | Concept-09 QI Stellarator Initial Model | standard | backlog |  |
 | WI-019 | Faithful MFE Power Balance | standard | completed | Completed 2026-07-14 |
+| WI-020 | Stellarator-correct plasma geometry (shape factor) | standard | completed | Completed 2026-07-17 |
+| WI-021 | stellarator-correct-radial-build | standard | completed | Completed 2026-07-17 |
 
 ## Epic: Pipeline De-Risk & Demonstration
 **Priority**: P0 | **Status**: active

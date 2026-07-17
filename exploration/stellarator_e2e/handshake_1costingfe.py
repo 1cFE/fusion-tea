@@ -162,6 +162,7 @@ def set_1cfe_inputs(o):
     pw = o["power_table"]
     uc = o["unit_costs_musd"]
     geo = o["geometry"]
+    rbld = o["radial_build"]  # WI-021: 1cfe's radial-build inputs, fed into rb
     coil = o["coil"]
     refs = o["refs"]
     M = 1e6
@@ -184,6 +185,25 @@ def set_1cfe_inputs(o):
         f"{P}fusion__n_e": n_e, f"{P}fusion__E_fus": E_fus,
         f"{P}fusion__sigma_v": sigma_v,
         f"{P}geom__R": R, f"{P}geom__a": a, f"{P}geom__kappa": kappa,
+        # WI-020: 1costingFE's geometry is a pure elongated torus (no stellarator
+        # shaping), and the V above (line ~175) is the torus volume. The
+        # generated params carry the Stellaris instance's shape factor 0.794259,
+        # so f_shape MUST be overridden to 1.0 here to reproduce 1cfe's torus
+        # point — otherwise V (and the injected p_fus) is shrunk by 0.794259.
+        f"{P}geom__f_shape": 1.0,
+        # WI-021: feed 1costingFE's OWN radial build into the 'MFE Radial Build'
+        # calc (rb) so it reproduces 1cfe's aggregate material volumes (blanket/
+        # shield/structure/vessel), first-wall area, and coil bore. rb has its own
+        # params (rb__*), separate from geom, so the geom__a=1.8 plasma-path
+        # override above does NOT leak here. This replaces the former direct
+        # blanket__blanket_vol / ... volume injections (now computed, not settable).
+        f"{P}rb__R": rbld["R0"], f"{P}rb__a": rbld["plasma_t"], f"{P}rb__kappa": rbld["elon"],
+        f"{P}rb__vacuum_t": rbld["vacuum_t"], f"{P}rb__firstwall_t": rbld["firstwall_t"],
+        f"{P}rb__blanket_t": rbld["blanket_t"], f"{P}rb__reflector_t": rbld["reflector_t"],
+        f"{P}rb__ht_shield_t": rbld["ht_shield_t"], f"{P}rb__structure_t": rbld["structure_t"],
+        f"{P}rb__gap1_t": rbld["gap1_t"], f"{P}rb__vessel_t": rbld["vessel_t"],
+        f"{P}rb__coil_t": rbld["coil_t"], f"{P}rb__gap2_t": rbld["gap2_t"],
+        f"{P}rb__lt_shield_t": rbld["lt_shield_t"],
         # power-balance params mapped from 1costingFE merged params
         f"{P}pb__p_input": pb["p_input"], f"{P}pb__mn": pb["mn"],
         f"{P}pb__eta_th": pb["eta_th"], f"{P}pb__eta_p": pb["eta_p"],
@@ -222,24 +242,23 @@ def set_1cfe_inputs(o):
 
     mp = json.loads(MFE_PARAMS.read_text())
     mp.update({
-        # blanket (C220101)
-        f"{P}blanket__blanket_vol": geo["blanket_vol"],
+        # blanket (C220101). WI-021: blanket_vol is no longer an injectable param
+        # — it is computed by the 'MFE Radial Build' calc (rb), fed 1cfe's own
+        # radial build in the sd.update block above, so rb reproduces geo's
+        # aggregate volumes. Same for shield/structure/vessel volumes and r_coil.
         f"{P}blanket__structure_factor": 1.0,  # liquid_metal (PbLi) -> 1.0
         f"{P}blanket__unit_cost": uc["blanket_unit_cost_dt"] * M,
         f"{P}blanket_cost__alpha": 0.6, f"{P}blanket_cost__p_th_ref": refs["P_TH_REF"],
         # shield (C220102)
         f"{P}shield__shield_scale": refs["shield_scale_dt"],
-        f"{P}shield__shield_vol": geo["shield_vol"],
         f"{P}shield__unit_cost": uc["shield_unit_cost"] * M,
         f"{P}shield_cost__alpha": 0.6, f"{P}shield_cost__p_th_ref": refs["P_TH_REF"],
         # structure (C220105)
-        f"{P}structure__structure_vol": geo["structure_vol"],
         f"{P}structure__unit_cost": uc["structure_unit_cost"] * M,
         f"{P}structure_cost__alpha": 0.5,
         f"{P}structure_cost__p_et_ref": refs["ref_gross_power_mwe"],
         # vessel (C220106_vessel — shell term only)
         f"{P}vessel__unit_cost": uc["vessel_unit_cost"] * M,
-        f"{P}vessel__vessel_vol": geo["vessel_vol"],
         f"{P}vessel_cost__alpha": 0.6,
         f"{P}vessel_cost__p_et_ref": refs["ref_gross_power_mwe"],
         # power supplies (C220107, ARIES-CS-derived base — footnoted)
@@ -248,11 +267,10 @@ def set_1cfe_inputs(o):
         f"{P}power_supplies_cost__p_et_ref": refs["ref_gross_power_mwe"],
         # divertor (C220108)
         f"{P}divertor_cost__alpha": 0.5, f"{P}divertor_cost__p_th_ref": 1000.0,
-        # magnet (C220103): B <- b_center (NOT radiation B); r_coil <- vessel_or
+        # magnet (C220103): B <- b_center (NOT radiation B); r_coil now from rb.
         f"{P}magnet__B": coil["b_center"], f"{P}magnet__G": coil["G_8pi2"],
         f"{P}magnet__R0": coil["R0"], f"{P}magnet__coil_markup": coil["coil_markup"],
         f"{P}magnet__cost_per_kAm": coil["cost_per_kam"],
-        f"{P}magnet__r_coil": geo["r_coil_vessel_or"],
         # BOP per-MW rates (M$/MW -> $/MW)
         f"{P}turbine__cost_per_mw": uc["turbine_per_mw"] * M,
         f"{P}electric_plant__cost_per_mw": uc["electric_per_mw"] * M,

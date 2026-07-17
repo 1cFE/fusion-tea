@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_plasma_scaling.sysml:31
+SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_plasma_scaling.sysml:125
 
 SysML Expressions:
     p_fus = 0.25 * n_e ** 2 * sigma_v * E_fus * V * 1e-06
@@ -53,7 +53,7 @@ the machine -> density closure is a downstream design-layer concern.
 *Ref**: tokamak.py:102-114 (compute_fusion_power)
 *Basis**: Standard 0D D-T fusion power; MFE-generic
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_plasma_scaling.sysml:31
+SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_plasma_scaling.sysml:125
 
 SysML Expressions:
     p_fus = 0.25 * n_e ** 2 * sigma_v * E_fus * V * 1e-06

@@ -91,7 +91,11 @@ CH = dict(
 # calc outputs (documented Stage-3 pass-throughs). Supplied as harness inputs.
 BUILDINGS = 613650000.0
 PRECON = 33896000.0
-SPECIAL = 26289000.0
+# CAS27 special materials (WI-021): now MODEL-computed from the radial-build
+# blanket volume (special_materials_capital = rb.blanket_vol x 0.50 x 9400 x 5.0).
+# Harvested from the pipeline's rb.blanket_vol in PASS A (see below), not a
+# hardcoded constant — was 26289000.0.
+PBLI_VOL_FRAC, PBLI_DENSITY, PBLI_PRICE = 0.50, 9400.0, 5.0
 
 # Rollup rates / financing needed for the harness contingency+indirect closure
 # (also generated-module inputs; these match the instance bindings).
@@ -182,6 +186,9 @@ def main():
     powercore = sum(acc[k] for k in ["magnet", "heating", "divertor", "blanket",
                                      "shield", "structure", "vessel", "power_supplies"])
     bop = sum(acc[k] for k in ["turbine", "electric", "heat_rejection", "misc"])
+    # CAS27 special materials computed from the pipeline's forward radial-build
+    # blanket volume (WI-021), mirroring special_materials_capital in the SysML.
+    SPECIAL = a[f"{P}rb__blanket_vol"] * PBLI_VOL_FRAC * PBLI_DENSITY * PBLI_PRICE
     direct = powercore + bop + BUILDINGS + PRECON + SPECIAL
     contingency = run_contingency_cost(Contingency_CostInput(
         contingency_rate=CONTINGENCY_RATE, direct_subtotal=direct))
@@ -222,23 +229,28 @@ def main():
     check("total_capital", total, o["total_capital"])
     check("lcoe", b[CH["lcoe"]], o["lcoe"])
 
-    # ---- WI-019 headline oracle (looser, sanity band) ------------------------
-    # Updated for the WI-019 faithful power balance (was the WI-018 table:
-    # p_net 575, rec_frac 0.36, q_eng 2.8, total 9.78, LCOE 251).
-    print("\n=== WI-019 HEADLINE CHECK ===")
+    # ---- WI-020 headline oracle (looser, sanity band) ------------------------
+    # Updated for the WI-020 stellarator-correct geometry: plasma volume
+    # 564->448 m^3 (shape factor 0.7943), sigma_v unchanged so fusion power is a
+    # computed output that falls to ~2144 MW, re-baselining the headline. Net
+    # electric and LCOE land near the pre-WI-019 values because WI-019's
+    # power-balance gain and this volume correction nearly cancel. Magnet capital
+    # is power-independent, so it is unchanged. (Was WI-019: V 564, p_fus 2700,
+    # p_net 786, rec_frac 0.258, q_eng 3.87, total 10.09, LCOE 189.)
+    print("\n=== WI-020 HEADLINE CHECK ===")
     heads = [
-        ("plasma volume V [m3]", b[CH["V"]], 564, 2),
-        ("fusion power [MW]", b[CH["p_fus"]], 2700, 5),
-        ("net electric [MW]", b[CH["p_net"]], 786, 3),
-        ("rec_frac", b[CH["rec_frac"]], 0.258, 0.01),
-        ("q_eng", b[CH["q_eng"]], 3.87, 0.05),
-        ("total capital [$B]", total / 1e9, 10.09, 0.05),
-        ("LCOE [$/MWh]", b[CH["lcoe"]], 189, 2),
+        ("plasma volume V [m3]", b[CH["V"]], 448, 2),
+        ("fusion power [MW]", b[CH["p_fus"]], 2144.5, 2),
+        ("net electric [MW]", b[CH["p_net"]], 578, 3),
+        ("rec_frac", b[CH["rec_frac"]], 0.316, 0.01),
+        ("q_eng", b[CH["q_eng"]], 3.16, 0.05),
+        ("total capital [$B]", total / 1e9, 9.68, 0.05),
+        ("LCOE [$/MWh]", b[CH["lcoe"]], 247, 2),
         ("magnet capital [$B]", b[CH["magnet"]] / 1e9, 4.39, 0.05),
     ]
     for label, val, target, tol in heads:
         ok = abs(val - target) <= tol
-        print(f"  {label:24s} exec={val:14.4f}  WI-019~={target:<10}  "
+        print(f"  {label:24s} exec={val:14.4f}  WI-020~={target:<10}  "
               f"{'OK' if ok else 'FAIL'}")
         if not ok:
             failures.append("HEAD:" + label)
@@ -276,7 +288,7 @@ def main():
     if failures:
         raise SystemExit(f"{len(failures)} check(s) FAILED: {failures}")
     print(f"ALL CHECKS PASSED (channel-vs-oracle rel tol {REL_TOL}); "
-          "WI-019 headline reproduced.")
+          "WI-020 headline reproduced.")
 
 
 if __name__ == "__main__":

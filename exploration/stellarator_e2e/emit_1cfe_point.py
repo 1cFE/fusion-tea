@@ -38,6 +38,18 @@ out = {
                "structure_vol": geo.structure_vol, "vessel_vol": geo.vessel_vol,
                "r_coil_vessel_or": geo.vessel_or,
                "firstwall_area": float(geo.firstwall_area)},
+  # WI-021: the radial-build INPUTS (R0, minor radius, elongation, layer
+  # thicknesses) so the SysML 'MFE Radial Build' calc can be fed 1cfe's own
+  # build and reproduce the aggregate volumes above (handshake isolation now
+  # exercises rb instead of injecting the volumes directly).
+  "radial_build": {"R0": float(rb.R0), "plasma_t": float(rb.plasma_t),
+                   "elon": float(rb.elon),
+                   "vacuum_t": float(rb.vacuum_t), "firstwall_t": float(rb.firstwall_t),
+                   "blanket_t": float(rb.blanket_t), "reflector_t": float(rb.reflector_t),
+                   "ht_shield_t": float(rb.ht_shield_t), "structure_t": float(rb.structure_t),
+                   "gap1_t": float(rb.gap1_t), "vessel_t": float(rb.vessel_t),
+                   "coil_t": float(rb.coil_t), "gap2_t": float(rb.gap2_t),
+                   "lt_shield_t": float(rb.lt_shield_t)},
   "coil": {"b_center": float(p.get("b_center",0.0)), "B_radiation": float(p.get("B",0.0)),
            "G_8pi2": 8*math.pi**2, "coil_markup": float(cc.coil_markup["stellarator"]),
            "cost_per_kam": float(cc.conductor_cost_per_kam(CoilMaterial.REBCO_HTS)), "R0": float(p["R0"])},

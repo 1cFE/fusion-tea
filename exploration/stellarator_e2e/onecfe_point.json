@@ -95,6 +95,22 @@
     "r_coil_vessel_or": 3.5000000000000004,
     "firstwall_area": 660.0791423448563
   },
+  "radial_build": {
+    "R0": 5.5,
+    "plasma_t": 1.8,
+    "elon": 1.6,
+    "vacuum_t": 0.1,
+    "firstwall_t": 0.05,
+    "blanket_t": 0.8,
+    "reflector_t": 0.2,
+    "ht_shield_t": 0.2,
+    "structure_t": 0.15,
+    "gap1_t": 0.1,
+    "vessel_t": 0.1,
+    "coil_t": 0.3,
+    "gap2_t": 0.1,
+    "lt_shield_t": 0.15
+  },
   "coil": {
     "b_center": 6.0,
     "B_radiation": 5.0,

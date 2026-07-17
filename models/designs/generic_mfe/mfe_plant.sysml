@@ -47,6 +47,7 @@ package mfe_plant {
         // MFE-divergent power core (WI-009 mfe_power_core).
         part magnet : 'Magnet System' {
             :>> capital_cost = magnet_cost.capital_cost;
+            :>> r_coil = rb.r_coil;   // coil bore = radial-build vessel_or (WI-021)
         }
         part heating : 'Heating and CD' {
             :>> capital_cost = heating_cost.cost;
@@ -55,18 +56,23 @@ package mfe_plant {
             :>> capital_cost = divertor_cost.cost;
         }
 
-        // Shared power core (mfe_subsystems).
+        // Shared power core (mfe_subsystems). Material volumes forward-computed
+        // from the radial build (WI-021), replacing the injected constants.
         part blanket : 'Blanket' {
             :>> capital_cost = blanket_cost.cost;
+            :>> blanket_vol = rb.blanket_vol;
         }
         part shield : 'Shield' {
             :>> capital_cost = shield_cost.cost;
+            :>> shield_vol = rb.shield_vol;
         }
         part structure : 'Primary Structure' {
             :>> capital_cost = structure_cost.cost;
+            :>> structure_vol = rb.structure_vol;
         }
         part vessel : 'Vacuum Vessel' {
             :>> capital_cost = vessel_cost.cost;
+            :>> vessel_vol = rb.vessel_vol;
         }
         part power_supplies : 'Power Supplies' {
             :>> capital_cost = power_supplies_cost.cost;
@@ -100,11 +106,50 @@ package mfe_plant {
         attribute R : Real;       // major radius [m]
         attribute a : Real;       // minor radius [m]
         attribute kappa : Real;   // elongation
+        // Shape/packing factor (WI-020). Default 1.0 = pure elongated torus
+        // (tokamak); a shaped stellarator instance overrides it.
+        attribute f_shape : Real default 1.0;
 
         calc geom : 'Plasma Geometry' {
             in R = R;
             in a = a;
             in kappa = kappa;
+            in f_shape = f_shape;
+        }
+
+        // Radial-build layer thicknesses [m] (WI-021). Generic-plant machinery:
+        // the radial-build pattern is shared; concept instances override values.
+        // Defaults are the 1costingFE RadialBuild defaults (geometry.py:19-40).
+        attribute vacuum_t : Real default 0.10;
+        attribute firstwall_t : Real default 0.05;
+        attribute blanket_t : Real default 0.70;
+        attribute reflector_t : Real default 0.20;
+        attribute ht_shield_t : Real default 0.20;
+        attribute structure_t : Real default 0.15;
+        attribute gap1_t : Real default 0.10;
+        attribute vessel_t : Real default 0.10;
+        attribute coil_t : Real default 0.30;
+        attribute gap2_t : Real default 0.10;
+        attribute lt_shield_t : Real default 0.15;
+
+        // Forward radial build (WI-021): cumulative radii -> torus-shell volumes,
+        // first-wall area, coil-bore radius. Replaces the injected material-volume
+        // constants; shares the plant's R/a/kappa with geom.
+        calc rb : 'MFE Radial Build' {
+            in R = R;
+            in a = a;
+            in kappa = kappa;
+            in vacuum_t = vacuum_t;
+            in firstwall_t = firstwall_t;
+            in blanket_t = blanket_t;
+            in reflector_t = reflector_t;
+            in ht_shield_t = ht_shield_t;
+            in structure_t = structure_t;
+            in gap1_t = gap1_t;
+            in vessel_t = vessel_t;
+            in coil_t = coil_t;
+            in gap2_t = gap2_t;
+            in lt_shield_t = lt_shield_t;
         }
 
         // Fusion-power inputs (WI-011 sets density directly for the stellarator;
@@ -170,7 +215,7 @@ package mfe_plant {
             in G = magnet.G;
             in B = magnet.B;
             in R0 = magnet.R0;
-            in r_coil = magnet.r_coil;
+            in r_coil = rb.r_coil;
             in cost_per_kAm = magnet.cost_per_kAm;
             in coil_markup = magnet.coil_markup;
         }
@@ -179,14 +224,14 @@ package mfe_plant {
         calc blanket_cost : 'Blanket Cost' {
             in unit_cost = blanket.unit_cost;
             in structure_factor = blanket.structure_factor;
-            in blanket_vol = blanket.blanket_vol;
+            in blanket_vol = rb.blanket_vol;
             in p_th = p_th;
         }
 
         // Shield (CAS22.1.2).
         calc shield_cost : 'Shield Cost' {
             in unit_cost = shield.unit_cost;
-            in shield_vol = shield.shield_vol;
+            in shield_vol = rb.shield_vol;
             in shield_scale = shield.shield_scale;
             in p_th = p_th;
         }
@@ -194,14 +239,14 @@ package mfe_plant {
         // Primary structure (CAS22.1.5).
         calc structure_cost : 'Structure Cost' {
             in unit_cost = structure.unit_cost;
-            in structure_vol = structure.structure_vol;
+            in structure_vol = rb.structure_vol;
             in p_et = p_et;
         }
 
         // Vacuum vessel (CAS22.1.6, shell term).
         calc vessel_cost : 'Vessel Cost' {
             in unit_cost = vessel.unit_cost;
-            in vessel_vol = vessel.vessel_vol;
+            in vessel_vol = rb.vessel_vol;
             in p_et = p_et;
         }
 

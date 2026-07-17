@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_plasma_scaling.sysml:63
+SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_plasma_scaling.sysml:157
 
 SysML Expressions:
     ash_frac = 0.2002
@@ -56,7 +56,7 @@ This makes neutron wall load forward-computable from the power balance
 (ash_frac = (E_total-E_neutron)/E_total; p_neutron = p_fus*(1-ash_frac))
 *Basis**: Neutron wall load = neutron power / wall area; MFE-generic
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_plasma_scaling.sysml:63
+SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_plasma_scaling.sysml:157
 
 SysML Expressions:
     ash_frac = 0.2002

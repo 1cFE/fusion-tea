@@ -30,7 +30,10 @@ package stellarator_09 {
     part stellaris : 'MFE Power Plant' {
         doc /*
         Proxima Fusion "Stellaris" — concept-09 QI stellarator HTS power plant,
-        evaluated at operating point A / full-power design point (2700 MW fusion).
+        evaluated at operating point A. The Stellaris design target is 2700 MW
+        fusion; the 0D model computes ~2145 MW at the corrected plasma volume
+        (see the sigma_v note — the gap is the 0D single-temperature limitation,
+        item 2).
 
         STELLARATOR FAMILY CHOICES (applied inline, not concept-specific numbers):
           - Density is a direct input (no tokamak Greenwald closure) — already the
@@ -42,14 +45,20 @@ package stellarator_09 {
           - Stellarator coil geometry factor G = 8*pi^2 (vs tokamak 4*pi^2), bound
             on the magnet subsystem.
 
-        HEADLINE FORWARD-PASS RESULT (WI-019 faithful power balance; executed
-        cross-check in exploration/stellarator_e2e/run_stellaris.py): plasma
-        volume 564 m^3, fusion power 2700 MW, gross electric 1060 MW, net
-        electric 786 MW, recirculating fraction 0.258, total overnight capital
-        ~$10.09B, LCOE ~$189/MWh (FOAK). Magnet-dominated (~$4.4B) — the
-        REBCO conductor at the stellarator 5.87 manufacturing markup.
-        (Pre-WI-019, with the lossy power balance: net 575 MW, rec_frac 0.36,
-        ~$9.78B, ~$251/MWh.)
+        HEADLINE FORWARD-PASS RESULT (WI-020 stellarator-correct geometry;
+        executed cross-check in exploration/stellarator_e2e/run_stellaris.py):
+        plasma volume 448 m^3 (shape factor 0.7943 on the torus 564), fusion
+        power ~2145 MW (computed at the unchanged sigma_v — Decision A, no
+        re-solve), gross electric 845 MW, net electric 578 MW, recirculating
+        fraction 0.316, q_eng 3.16, total overnight capital ~$9.68B, LCOE
+        ~$247/MWh (FOAK). Magnet-dominated (~$4.4B, 45.4% — power-independent,
+        so unchanged) at the stellarator 5.87 REBCO markup.
+        (History: WI-018 lossy balance net 575, ~$251/MWh; WI-019 faithful
+        balance at torus volume net 786, ~$189/MWh; WI-020 corrects the volume,
+        dropping fusion power ~20%, so net electric and LCOE land back near the
+        WI-018 range — WI-019's power gain and this volume correction nearly
+        cancel. The old 2700 MW / $189 headline is recoverable at sigma_v =
+        7.535e-23, left as a visible input choice, not baked in.)
 
         THREE MAPPING TRAPS (documented at their bindings below): r_coil (coil
         bore = radial-build vessel outer radius, not a guess), sigma_v (D-T
@@ -104,8 +113,10 @@ package stellarator_09 {
             // Major radius [m]. Source: stellaris-design-details.md Table 2 /
             //   line 251 (R ~= 12.7 m).
             :>> R0 = 12.7;
-            // Coil-bore radius [m] = radial-build vessel_or (mapping trap above).
-            :>> r_coil = 3.20;
+            // Coil-bore radius [m] = radial-build vessel_or. Forward-computed
+            // (WI-021): the generic plant binds magnet.r_coil = rb.r_coil, so
+            // r_coil = 3.20 m falls out of the radial build (was an injected
+            // constant here).
             // REBCO HTS conductor [$/kA-m]. Source: costing_constants.yaml:57
             //   (conductor_cost_rebco = 50.0). NOT x1e6 — already $/kA-m; the
             //   magnet formula omits the /1e6 M$ conversion and yields $.
@@ -125,50 +136,54 @@ package stellarator_09 {
             HCLL (helium-cooled lithium-lead / PbLi) breeding blanket.
             unit_cost: costing_constants.yaml:37 (blanket_unit_cost_dt = 0.60 M$/m^3) x 1e6.
             structure_factor: types.py:153 (LIQUID_METAL = 1.0).
-            blanket_vol = firstwall_vol + blanket_vol + reflector_vol = 1118.695 m^3
-              (geometry.py; model.py:1205).
+            blanket_vol = firstwall_vol + blanket_vol + reflector_vol = 1118.695 m^3.
+              Forward-computed (WI-021): the generic plant binds
+              blanket.blanket_vol = rb.blanket_vol from the radial build, so this
+              value falls out of the layer thicknesses (was an injected constant).
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
-            **Ref**: costing_constants.yaml:37; types.py:152-157; geometry.py:157-160
+            **Ref**: costing_constants.yaml:37; types.py:152-157; geometry.py:157-160; model.py:1205
             **Basis**: volume-based blanket cost; Stellaris HCLL PbLi (details.md line 1342)
             */
             :>> unit_cost = 600000.0;
             :>> structure_factor = 1.0;
-            :>> blanket_vol = 1118.695;
         }
         part :>> shield {
             doc /*
             unit_cost: costing_constants.yaml:43 (shield_unit_cost = 0.74 M$/m^3) x 1e6.
             shield_scale: cas22.py:262 (DT = 1.0).
-            shield_vol = ht_shield_vol + lt_shield_vol = 552.140 m^3 (model.py:1206).
+            shield_vol = ht_shield_vol + lt_shield_vol = 552.140 m^3. Forward-
+              computed (WI-021): generic plant binds shield.shield_vol =
+              rb.shield_vol from the radial build (was an injected constant).
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
-            **Ref**: costing_constants.yaml:43; cas22.py:261-266; geometry.py:161,164
+            **Ref**: costing_constants.yaml:43; cas22.py:261-266; geometry.py:161,164; model.py:1206
             **Basis**: volume-based shield cost, DT neutron-load scale
             */
             :>> unit_cost = 740000.0;
             :>> shield_scale = 1.0;
-            :>> shield_vol = 552.140;
         }
         part :>> structure {
             doc /*
             unit_cost: costing_constants.yaml:46 (structure_unit_cost = 0.15 M$/m^3) x 1e6.
-            structure_vol = 219.979 m^3 (geometry.py).
+            structure_vol = 219.979 m^3. Forward-computed (WI-021): generic plant
+              binds structure.structure_vol = rb.structure_vol from the radial
+              build (was an injected constant).
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
-            **Ref**: costing_constants.yaml:46; geometry.py:162
+            **Ref**: costing_constants.yaml:46; geometry.py:162; model.py:1207
             **Basis**: volume-based primary-structure cost
             */
             :>> unit_cost = 150000.0;
-            :>> structure_vol = 219.979;
         }
         part :>> vessel {
             doc /*
             unit_cost: costing_constants.yaml:83 (vessel_unit_cost = 0.72 M$/m^3) x 1e6.
-            vessel_vol = 157.933 m^3 (geometry.py).
+            vessel_vol = 157.933 m^3 = vol(gap1_or, vessel_or). Forward-computed
+              (WI-021): generic plant binds vessel.vessel_vol = rb.vessel_vol from
+              the radial build (was an injected constant).
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
-            **Ref**: costing_constants.yaml:83; geometry.py:163
+            **Ref**: costing_constants.yaml:83; geometry.py:163; model.py:1208
             **Basis**: volume-based vacuum-vessel shell cost
             */
             :>> unit_cost = 720000.0;
-            :>> vessel_vol = 157.933;
         }
         part :>> power_supplies {
             doc /*
@@ -235,10 +250,14 @@ package stellarator_09 {
             p_fus=2700, n_mod=1: 613.650 M$ -> $. The per-building fuel-keyed base
             costs + scaling bases are a dict loop (out of the codegen envelope),
             so the total is a pass-through here.
-            STALE BASIS (surfaced at WI-019 close): those powers are the
-            pre-WI-019 power balance; the corrected powers are p_et=1059.7,
-            p_th=3182.4. Recomputing this pass-through at the corrected powers
-            belongs to the Stage-3 pass-through-scope item, not WI-019.
+            STALE BASIS (surfaced at WI-019 close, updated WI-020): the 613.650
+            M$ was computed at the pre-WI-019 powers (p_et=896.8, p_th=2693.1).
+            The current WI-020 powers are p_et=845.2, p_th=2538.0 (fusion power
+            fell to ~2145 MW when the volume was corrected). Recomputing this
+            pass-through at the current powers belongs to the Stage-3
+            pass-through-scope item, not WI-020. (Note: the WI-020 powers are
+            closer to the 896.8 basis than the WI-019 powers were, so the drift
+            is smaller than at WI-019 close.)
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
             **Ref**: costs.py:83-144 (cas21_buildings); costing_constants.yaml:175-197
             **Basis**: CAS21 buildings total at the Stellaris design point
@@ -247,12 +266,20 @@ package stellarator_09 {
         }
 
         // Physics geometry inputs.
-        // MAPPING/CROSS-CHECK NOTE (plasma volume): the geometry calc yields
-        // V = 2*pi^2*R*a^2*kappa = 564 m^3 from R=12.7, a=1.5, kappa=1.0. The
-        // Stellaris source tabulates V ~= 448 m^3 (Table 2 line 230), which is
-        // consistent with R=12.0, a=1.38 rather than R=12.7, a=1.5. The +26% gap
-        // is the R/a rounding difference in the source tables; flagged for the
-        // Anchor-A handshake, not silently reconciled.
+        // PLASMA SHAPING (WI-020): the QI stellarator plasma is a shaped, twisted
+        // column, not a smooth elongated torus. The torus term 2*pi^2*R*a^2*kappa
+        // over-predicts its volume: at R=12.7, a=1.5, kappa=1.0 it gives 564 m^3,
+        // but the Stellaris source tabulates 448 m^3 (Table 2 line 230). The
+        // shape factor f_shape = 448/564 = 0.7943 (bound below) corrects it.
+        // f_shape is an EMPIRICAL packing factor reconciling the model's geometry
+        // inputs to the tabulated volume, NOT a first-principles shaping
+        // coefficient: it bundles the ~16% physical QI shaping (448/533 at the
+        // source's own Table-2 R=12) with the source's internal inconsistency
+        // (Table 2 R=12 vs prose line 251 R~=12.7; a second tabulated volume
+        // 425 m^3 appears in the Fig. 2 text, line 253). Owner ruled 2026-07-17
+        // to target the Table-2 headline 448 m^3 at the model's R=12.7.
+        // (Supersedes the pre-WI-020 note that mis-attributed the gap to "R/a
+        // rounding" — arithmetically wrong: torus at R=12, a=1.5 = 533, not 448.)
         :>> R = 12.7 {        // major radius [m]. Source: details.md line 251.
             doc /* **Source**: stellaris-design-details.md **Ref**: line 251 (R ~= 12.7 m) **Basis**: Stellaris major radius */
         }
@@ -261,6 +288,50 @@ package stellarator_09 {
         }
         :>> kappa = 1.0 {     // elongation. QI stellarator ~ circular average.
             doc /* **Source**: stellaris-design-details.md **Ref**: line 251 (near-circular avg cross-section); analyst-patch-spec-anchors.md line 30 (elon=1.0) **Basis**: stellarator ~circular average cross-section */
+        }
+        :>> f_shape = 0.794259 {  // stellarator shape/packing factor [1].
+            doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md **Ref**: Table 2 line 230 (plasma volume = 448 m^3) **Basis**: empirical shape factor = tabulated V (448) / elongated-torus V (564.05) at R=12.7, a=1.5, kappa=1.0; corrects the smooth-torus over-prediction of the shaped QI plasma volume */
+        }
+
+        // Radial-build layer thicknesses [m] (WI-021). The Stellaris stellarator
+        // build: blanket_t/ht_shield_t/structure_t/vessel_t from 1costingFE's
+        // steady_state_stellarator.yaml; the remaining layers from the RadialBuild
+        // dataclass defaults. Bound explicitly (not left to the generic-plant
+        // defaults) so the generated snapshot carries the correct rb__*_t values
+        // and every thickness names its source. rb forward-computes the four CAS22
+        // volumes, the first-wall area, and the coil bore from these.
+        :>> blanket_t = 0.80 {
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:39 (blanket_t = 0.80) **Basis**: Stellaris breeding-blanket thickness */
+        }
+        :>> ht_shield_t = 0.20 {
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:40 (ht_shield_t = 0.20) **Basis**: Stellaris high-temp shield thickness */
+        }
+        :>> structure_t = 0.15 {
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:41 (structure_t = 0.15) **Basis**: Stellaris primary-structure thickness */
+        }
+        :>> vessel_t = 0.10 {
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:42 (vessel_t = 0.10) **Basis**: Stellaris vacuum-vessel wall thickness */
+        }
+        :>> vacuum_t = 0.10 {
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py **Ref**: geometry.py:29 (RadialBuild.vacuum_t = 0.10 default) **Basis**: radial-build vacuum-gap default */
+        }
+        :>> firstwall_t = 0.05 {
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py **Ref**: geometry.py:30 (RadialBuild.firstwall_t = 0.05 default) **Basis**: radial-build first-wall default */
+        }
+        :>> reflector_t = 0.20 {
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py **Ref**: geometry.py:32 (RadialBuild.reflector_t = 0.20 default) **Basis**: radial-build reflector default */
+        }
+        :>> gap1_t = 0.10 {
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py **Ref**: geometry.py:35 (RadialBuild.gap1_t = 0.10 default) **Basis**: radial-build assembly-gap default */
+        }
+        :>> coil_t = 0.30 {
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py **Ref**: geometry.py:37 (RadialBuild.coil_t = 0.30 default) **Basis**: radial-build coil-pack default */
+        }
+        :>> gap2_t = 0.10 {
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py **Ref**: geometry.py:38 (RadialBuild.gap2_t = 0.10 default) **Basis**: radial-build outer-gap default */
+        }
+        :>> lt_shield_t = 0.15 {
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py **Ref**: geometry.py:39 (RadialBuild.lt_shield_t = 0.15 default) **Basis**: radial-build low-temp shield default */
         }
 
         // Fusion-power inputs.
@@ -271,27 +342,41 @@ package stellarator_09 {
             doc /*
             MAPPING TRAP (sigma_v): Bosch-Hale reactivity cannot run in SysML
             (needs exp()). This is the 1costingFE Bosch-Hale D-T reactivity
-            (costingfe.layers.reactivity.sigv_dt) evaluated at the effective
-            0D temperature that reproduces the Stellaris 2700 MW design fusion
-            power under the mandated volume-averaged density (n_e = 3.37e20) and
-            the geometry volume (564 m^3): 5.985e-23 m^3/s, which lies on the
-            sigv_dt curve at T_eff ~= 7.9 keV.
+            (costingfe.layers.reactivity.sigv_dt) at an effective 0D temperature
+            T_eff ~= 7.9 keV — a genuine point on the sigv_dt curve, NOT a value
+            back-solved to a target power.
+
+            FUSION POWER IS A COMPUTED OUTPUT (WI-020, owner Decision A: do not
+            re-solve sigma_v). At the stellarator-corrected volume 448 m^3 (the
+            f_shape factor above) and the volume-averaged density n_e = 3.37e20,
+            this reactivity yields p_fus ~= 2145 MW — BELOW the Stellaris 2700 MW
+            design point (Table 5 line 742). The gap is the honest 0D
+            single-temperature limitation: the real (peaked) n and T profiles
+            concentrate fusion in the hot core, so a single volume-averaged
+            (density, temperature) pair under-predicts the profile-integrated
+            power. Closing that gap is item 2 (predictive confinement); it is
+            left VISIBLE here, not papered over with a back-solve.
+
+            (Pre-WI-020, sigma_v was justified as the value that reproduced
+            2700 MW at the torus volume 564 m^3. That back-solve is removed: the
+            volume is now correct at 448, sigma_v is a plain physical input, and
+            fusion power falls out. Various sigma_v / effective-temperature
+            inputs can be swept at the codegen execution phase.)
 
             Why not the peak temperature: sigv_dt at the peak ion temperature
-            T_i0 = 24.6 keV is 5.56e-22 m^3/s (~9x larger). A 0D formula that
-            pairs a peak-temperature reactivity with volume-averaged density
-            grossly overestimates fusion power (~20 GW), because the real
-            (peaked) n and T profiles concentrate fusion in the hot core. The
-            single-temperature 0D reactivity that is consistent with the
-            volume-averaged density is therefore well below the peak value.
-            Profile integration is a Stage-3 fidelity item.
+            T_i0 = 24.6 keV is 5.56e-22 m^3/s (~9x larger); pairing it with the
+            volume-averaged density would grossly overestimate fusion power
+            (~20 GW). The single-temperature reactivity consistent with the
+            volume-averaged density is far below the peak value.
 
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/reactivity.py
-            **Ref**: reactivity.py:54-70 (sigv_dt Bosch-Hale D-T); stellaris-
-                design-details.md Table 5 line 742 (P_fus = 2700 MW), line 738-739
-                (peak T_e0/T_i0 = 15.4/24.6 keV)
-            **Basis**: 0D-effective D-T reactivity consistent with the design
-                fusion power at volume-averaged density
+            **Ref**: reactivity.py:54-70 (sigv_dt Bosch-Hale D-T, the curve this
+                T_eff ~= 7.9 keV point lies on); stellaris-design-details.md
+                Table 5 line 742 (P_fus = 2700 MW design point, now shown unmet
+                by the 0D model), line 738-739 (peak T_e0/T_i0 = 15.4/24.6 keV)
+            **Basis**: unchanged 0D-effective D-T reactivity; fusion power is
+                computed at the corrected volume, and the design-point gap is
+                left visible for item 2
             */
         }
         :>> E_fus = 2.817e-12 {  // per-event D-T fusion energy [J].
@@ -393,22 +478,30 @@ package stellarator_09 {
             licensing constants (land scales as sqrt(P_net x ref)). Supplied
             without CAS10's own contingency to avoid double-counting the plant's
             CAS29 contingency.
-            STALE BASIS (surfaced at WI-019 close): P_net = 575.3 is the
-            pre-WI-019 value; corrected P_net = 786.1 MW. Recomputation belongs
-            to the Stage-3 pass-through-scope item, not WI-019.
+            STALE BASIS (surfaced at WI-019 close, updated WI-020): P_net = 575.3
+            was the WI-018 value. WI-019 moved it to 786.1; WI-020 (volume
+            correction, fusion power ~2145 MW) brings it back to 578.0 — nearly
+            the 575.3 basis this pass-through was computed at, so it is now
+            almost on-basis again. Recomputation still belongs to the Stage-3
+            pass-through-scope item, not WI-020.
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
             **Ref**: costs.py:52-80 (cas10_preconstruction); costing_constants.yaml:15-30
             **Basis**: CAS10 preconstruction subtotal at the Stellaris design point
             */
         }
-        :>> special_materials_capital = 26289000.0 {
+        :>> special_materials_capital = rb.blanket_vol * 0.50 * 9400.0 * 5.0 {
             doc /*
             CAS27 initial PbLi blanket-fill inventory = blanket_vol x vol_frac x
-            density x price / 1e6 = 1118.695 x 0.50 x 9400 x 5.0 / 1e6 = 26.289
-            M$ -> $.
+            density x price = blanket_vol x 0.50 x 9400 x 5.0 [$] (the M$/1e6 and
+            $-conversion x1e6 cancel). Forward-computed (WI-021): keyed to the
+            radial-build blanket_vol (blanket.blanket_vol = rb.blanket_vol =
+            1118.695 m^3), = 26.289 M$ -> $. Was an injected constant 26289000.0;
+            the rebind makes it track the computed blanket volume (~26,289,332,
+            a ~$332 refinement over the rounded constant, invisible at headline
+            precision).
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
             **Ref**: costing_constants.yaml:208 (pbli: density 9400, vol_frac 0.50, price 5.0); costs.py:182-202 (cas27_special_materials)
-            **Basis**: volume-based PbLi inventory
+            **Basis**: volume-based PbLi inventory keyed to the blanket volume
             */
         }
 
@@ -429,9 +522,12 @@ package stellarator_09 {
             CAS70 O&M = om_cost_dt x (P_net/1 GWe)^0.5 = 54.9 x (575.3/1000)^0.5 =
             41.641 M$/yr -> $. Inflation and scheduled-replacement (CAS72)
             refinements are a Stage-3 item.
-            STALE BASIS (surfaced at WI-019 close): P_net = 575.3 is the
-            pre-WI-019 value; corrected P_net = 786.1 MW. Recomputation belongs
-            to the Stage-3 pass-through-scope item, not WI-019.
+            STALE BASIS (surfaced at WI-019 close, updated WI-020): P_net = 575.3
+            was the WI-018 value. WI-019 moved it to 786.1; WI-020 (volume
+            correction, fusion power ~2145 MW) brings it back to 578.0 — nearly
+            the 575.3 basis this pass-through was computed at, so it is now
+            almost on-basis again. Recomputation still belongs to the Stage-3
+            pass-through-scope item, not WI-020.
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
             **Ref**: costing_constants.yaml:272 (om_cost_dt = 54.9 M$/yr at 1 GWe); costs.py:319-347 (power-law 0.5)
             **Basis**: staffing-based DT O&M, power-law scaled
@@ -459,30 +555,30 @@ package stellarator_09 {
             doc /* **Source**: stellaris-design-details.md **Ref**: line 273 (coils + boundary optimized at <beta>_V = 5%) **Basis**: Stellaris design beta target */
         }
 
-        // Neutron wall load (forward-computed from fusion power + wall area).
-        attribute wall_area : Real = 802.201 {  // first-wall area [m^2].
-            doc /*
-            First-wall area — the physically correct neutron-wall-load reference
-            area (neutron flux crosses the first wall, which stands off outboard
-            of the plasma). From the 1costingFE stellarator radial-build geometry
-            at the Stellaris build (R0=12.7, plasma_t=1.5 m minor radius, elon=1.0,
-            blanket_t=0.80): firstwall_area = 802.201 m^2 (same build that yields
-            vessel_or = 3.20 m and plasma_vol = 564 m^3, cross-checked here).
-            CROSS-CHECK: forward wall load = p_fus x (1 - 0.2002) / 802.201 =
-            2.69 MW/m^2, matching the Stellaris tabulated 2.87 avg (line 747)
-            within ~6% and below the 4.95 peak limit — the wall_load_ok
-            constraint passes. (The earlier plasma-surface-area basis, 327 m^2,
-            was the wrong area and over-reported the load; corrected here.)
-            **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py **Ref**: compute_geometry(STELLARATOR).firstwall_area at the Stellaris radial build; stellaris-design-details.md Table 5 line 747 (avg 2.87 MW/m^2 cross-check) **Basis**: neutron wall load over the first-wall area
-            */
-        }
+        // Neutron wall load (forward-computed from fusion power + first-wall area).
+        // First-wall area [m^2] is the physically correct reference area (neutron
+        // flux crosses the first wall, which stands off outboard of the plasma).
+        // Forward-computed (WI-021) as rb.wall_area = kappa*4*pi^2*R*vacuum_or over
+        // the first-wall standoff radius (vacuum_or = a + vacuum_t = 1.60 m),
+        // = 802.201 m^2 at the Stellaris build (R=12.7, a=1.5, kappa=1.0). Bound
+        // directly into wall_load_calc (the `in V = geom.V` idiom) so it forward-
+        // computes through codegen without a top-level derived-attribute offender.
+        // 1costingFE torus geometry, no shape factor on material geometry (owner
+        // Option 1, WI-021). Was an injected constant 802.201.
+        // CROSS-CHECK: wall load = p_fus x (1 - 0.2002) / 802.201 ~= 2.14 MW/m^2
+        // at the WI-020 p_fus ~= 2145 MW — below the Stellaris 2.87 avg (line 747)
+        // and the 4.95 peak limit; wall_load_ok passes. The gap to 2.87 tracks the
+        // 0D fusion-power under-prediction (2145 vs 2700; item 2). (The earlier
+        // plasma-surface-area basis, 327 m^2, was the wrong area; corrected.)
+        // Source: geometry.py _torus_surface_area / compute_geometry firstwall_area;
+        //   stellaris-design-details.md Table 5 line 747 (avg 2.87 MW/m^2).
         attribute wall_load_limit : Real = 4.95 {  // first-wall design limit [MW/m^2].
             doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 line 748 (peak neutron wall power 4.95 MW/m^2) **Basis**: Stellaris first-wall design neutron-load limit */
         }
 
         calc wall_load_calc : 'Neutron Wall Load' {
             in p_fus = fusion.p_fus;
-            in wall_area = wall_area;
+            in wall_area = rb.wall_area;
         }
 
         // TBR.

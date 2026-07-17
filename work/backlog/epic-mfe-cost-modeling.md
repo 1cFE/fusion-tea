@@ -165,5 +165,11 @@ Strictly sequential — each item builds on the previous. The critical path is a
 
 ---
 
-**Last Updated**: 2026-07-03
+## Deferred Decisions (revisit)
+
+- **Material shape factor on conformal subsystem volumes** — deferred by owner ruling 2026-07-17 (WI-021 checkpoint). WI-021 forward-computes the CAS22 material volumes (blanket/shield/structure/vessel), first-wall area, and coil-bore radius as **pure torus shells with no shape factor**, matching 1costingFE (Option 1). The alternative (Option 2) would apply a stellarator shaping factor to these engineered annuli — a blanket/shield conforming to a shaped plasma encloses less than a full torus shell, which would reduce the volume-scaled costs. Deferred because it deviates from the admissible engineering source (1costingFE, which uses torus shells) and needs a defensible per-layer factor the current sources do not provide. Revisit if a sourced conformal-volume basis becomes available or the hold-out comparison motivates it. Scope if picked up: re-baselines the four CAS22 volume-scaled costs and LCOE, parallel to WI-020's plasma-volume re-baseline.
+
+---
+
+**Last Updated**: 2026-07-17
 **Next Action**: `/spec-model` on Item 1 (MFE Cost Structure Library)

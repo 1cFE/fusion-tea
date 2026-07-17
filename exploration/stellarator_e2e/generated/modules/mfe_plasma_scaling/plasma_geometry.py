@@ -2,23 +2,29 @@
 
 TEAx module for Plasma_Geometry calculation.
 
-Plasma volume of an elongated torus [m^3].
+Plasma volume [m^3].
 
-  V = 2 * pi^2 * R * a^2 * kappa
+  V = 2 * pi^2 * R * a^2 * kappa * f_shape
 
-Concept-agnostic geometry: applies to any toroidal MFE plasma
-(tokamak or stellarator). R is major radius, a is minor radius,
-kappa is elongation.
+The elongated-torus term (2*pi^2*R*a^2*kappa) is the smooth-torus
+volume. f_shape is a dimensionless shape/packing factor: 1.0 for a pure
+torus (tokamak, and the 1costingFE torus geometry), < 1 for a shaped
+stellarator plasma whose twisted, non-circular cross-section encloses
+less volume than the torus of the same R, a, kappa. Concept-agnostic:
+R is major radius, a is minor radius, kappa is elongation, and the
+concept sets f_shape (default 1.0 leaves any existing torus consumer
+and the Anchor A handshake unchanged).
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/tokamak.py
-*Ref**: tokamak.py:172-174 (_plasma_volume)
-*Basis**: Standard elongated-torus volume; MFE-generic
+*Ref**: tokamak.py:172-174 (_plasma_volume, the f_shape = 1.0 torus term)
+*Basis**: elongated-torus volume with a concept shape factor; MFE-generic
 
 Inputs:
     - R: R parameter
     - a: a parameter
     - kappa: kappa parameter
     - pi: pi parameter
+    - f_shape: f_shape parameter
 
 Outputs:
     - V: V result
@@ -45,33 +51,41 @@ class Plasma_GeometryInput(BaseModel):
         a: a input
         kappa: kappa input
         pi: pi input
+        f_shape: f_shape input
     """
     R: float = Field(..., description="R input")
     a: float = Field(..., description="a input")
     kappa: float = Field(..., description="kappa input")
     pi: float = Field(..., description="pi input")
+    f_shape: float = Field(..., description="f_shape input")
 
 
 class Plasma_GeometryModule(ModuleBase[Plasma_GeometryInput, Float]):
     """TEAx module for Plasma_Geometry calculation.
 
-Plasma volume of an elongated torus [m^3].
+Plasma volume [m^3].
 
-  V = 2 * pi^2 * R * a^2 * kappa
+  V = 2 * pi^2 * R * a^2 * kappa * f_shape
 
-Concept-agnostic geometry: applies to any toroidal MFE plasma
-(tokamak or stellarator). R is major radius, a is minor radius,
-kappa is elongation.
+The elongated-torus term (2*pi^2*R*a^2*kappa) is the smooth-torus
+volume. f_shape is a dimensionless shape/packing factor: 1.0 for a pure
+torus (tokamak, and the 1costingFE torus geometry), < 1 for a shaped
+stellarator plasma whose twisted, non-circular cross-section encloses
+less volume than the torus of the same R, a, kappa. Concept-agnostic:
+R is major radius, a is minor radius, kappa is elongation, and the
+concept sets f_shape (default 1.0 leaves any existing torus consumer
+and the Anchor A handshake unchanged).
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/tokamak.py
-*Ref**: tokamak.py:172-174 (_plasma_volume)
-*Basis**: Standard elongated-torus volume; MFE-generic
+*Ref**: tokamak.py:172-174 (_plasma_volume, the f_shape = 1.0 torus term)
+*Basis**: elongated-torus volume with a concept shape factor; MFE-generic
 
 Inputs:
     - R: R parameter
     - a: a parameter
     - kappa: kappa parameter
     - pi: pi parameter
+    - f_shape: f_shape parameter
 
 Outputs:
     - V: V result
@@ -82,20 +96,26 @@ SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stell
 
     Calculation Specification:
         pi = 3.14159265358979
-        V = 2.0 * pi ** 2 * R * a ** 2 * kappa
+        f_shape = 1.0
+        V = 2.0 * pi ** 2 * R * a ** 2 * kappa * f_shape
         
 Documentation:
-Plasma volume of an elongated torus [m^3].
+Plasma volume [m^3].
 
-  V = 2 * pi^2 * R * a^2 * kappa
+  V = 2 * pi^2 * R * a^2 * kappa * f_shape
 
-Concept-agnostic geometry: applies to any toroidal MFE plasma
-(tokamak or stellarator). R is major radius, a is minor radius,
-kappa is elongation.
+The elongated-torus term (2*pi^2*R*a^2*kappa) is the smooth-torus
+volume. f_shape is a dimensionless shape/packing factor: 1.0 for a pure
+torus (tokamak, and the 1costingFE torus geometry), < 1 for a shaped
+stellarator plasma whose twisted, non-circular cross-section encloses
+less volume than the torus of the same R, a, kappa. Concept-agnostic:
+R is major radius, a is minor radius, kappa is elongation, and the
+concept sets f_shape (default 1.0 leaves any existing torus consumer
+and the Anchor A handshake unchanged).
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/tokamak.py
-*Ref**: tokamak.py:172-174 (_plasma_volume)
-*Basis**: Standard elongated-torus volume; MFE-generic
+*Ref**: tokamak.py:172-174 (_plasma_volume, the f_shape = 1.0 torus term)
+*Basis**: elongated-torus volume with a concept shape factor; MFE-generic
 
     IMPLEMENTATION: See stellarator_tea.handwritten.mfe_plasma_scaling.plasma_geometry_impl
     for manual implementation.
@@ -107,7 +127,7 @@ kappa is elongation.
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, R: float, a: float, kappa: float, pi: float    ) -> Plasma_GeometryInput:
+        self, R: float, a: float, kappa: float, pi: float, f_shape: float    ) -> Plasma_GeometryInput:
         """Validate inputs and fill defaults.
 
         Args:
@@ -115,14 +135,15 @@ kappa is elongation.
             a: a input
             kappa: kappa input
             pi: pi input
+            f_shape: f_shape input
 
         Returns:
             Validated input model
         """
-        return Plasma_GeometryInput(R=R, a=a, kappa=kappa, pi=pi)
+        return Plasma_GeometryInput(R=R, a=a, kappa=kappa, pi=pi, f_shape=f_shape)
 
     def run(
-        self, R: float, a: float, kappa: float, pi: float    ) -> ModuleResult[Float]:
+        self, R: float, a: float, kappa: float, pi: float, f_shape: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
@@ -130,12 +151,13 @@ kappa is elongation.
             a: a input
             kappa: kappa input
             pi: pi input
+            f_shape: f_shape input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(R, a, kappa, pi)
+        validated_inputs = self.validate_and_fill_default(R, a, kappa, pi, f_shape)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_plasma_scaling.plasma_geometry_impl import (

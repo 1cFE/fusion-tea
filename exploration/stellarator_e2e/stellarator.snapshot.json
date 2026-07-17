@@ -1,7 +1,7 @@
 {
   "snapshot_format_version": 3,
   "model_name": "models",
-  "captured_at": "2026-07-15T05:17:21.680073+00:00",
+  "captured_at": "2026-07-17T20:13:22.167233+00:00",
   "constraint_lowering_mode": "applied",
   "constraint_facts": {
     "contexts": [
@@ -768,12 +768,13 @@
         {
           "output_name": "V",
           "compilability": "fully_compilable",
-          "python_expression": "((((2.0 * (inputs.pi ** 2)) * inputs.R) * (inputs.a ** 2)) * inputs.kappa)",
+          "python_expression": "(((((2.0 * (inputs.pi ** 2)) * inputs.R) * (inputs.a ** 2)) * inputs.kappa) * inputs.f_shape)",
           "input_refs": [
             "pi",
             "R",
             "a",
-            "kappa"
+            "kappa",
+            "f_shape"
           ],
           "intermediate_refs": [],
           "unsupported_reason": null,
@@ -782,6 +783,334 @@
       ],
       "execution_order": [
         "V"
+      ]
+    },
+    "MFE_Radial_Build": {
+      "calc_def_name": "MFE_Radial_Build",
+      "overall_compilability": "fully_compilable",
+      "output_results": [
+        {
+          "output_name": "C",
+          "compilability": "fully_compilable",
+          "python_expression": "(((inputs.kappa * 2.0) * (inputs.pi ** 2)) * inputs.R)",
+          "input_refs": [
+            "kappa",
+            "pi",
+            "R"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "vacuum_or",
+          "compilability": "fully_compilable",
+          "python_expression": "(inputs.a + inputs.vacuum_t)",
+          "input_refs": [
+            "a",
+            "vacuum_t"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "firstwall_or",
+          "compilability": "fully_compilable",
+          "python_expression": "(vacuum_or + inputs.firstwall_t)",
+          "input_refs": [
+            "firstwall_t"
+          ],
+          "intermediate_refs": [
+            "vacuum_or"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "blanket_or",
+          "compilability": "fully_compilable",
+          "python_expression": "(firstwall_or + inputs.blanket_t)",
+          "input_refs": [
+            "blanket_t"
+          ],
+          "intermediate_refs": [
+            "firstwall_or"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "blanket_layer_vol",
+          "compilability": "fully_compilable",
+          "python_expression": "(C * ((blanket_or ** 2) - (firstwall_or ** 2)))",
+          "input_refs": [],
+          "intermediate_refs": [
+            "C",
+            "blanket_or",
+            "firstwall_or"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "firstwall_vol",
+          "compilability": "fully_compilable",
+          "python_expression": "(C * ((firstwall_or ** 2) - (vacuum_or ** 2)))",
+          "input_refs": [],
+          "intermediate_refs": [
+            "C",
+            "firstwall_or",
+            "vacuum_or"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "reflector_or",
+          "compilability": "fully_compilable",
+          "python_expression": "(blanket_or + inputs.reflector_t)",
+          "input_refs": [
+            "reflector_t"
+          ],
+          "intermediate_refs": [
+            "blanket_or"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "ht_shield_or",
+          "compilability": "fully_compilable",
+          "python_expression": "(reflector_or + inputs.ht_shield_t)",
+          "input_refs": [
+            "ht_shield_t"
+          ],
+          "intermediate_refs": [
+            "reflector_or"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "ht_shield_vol",
+          "compilability": "fully_compilable",
+          "python_expression": "(C * ((ht_shield_or ** 2) - (reflector_or ** 2)))",
+          "input_refs": [],
+          "intermediate_refs": [
+            "C",
+            "ht_shield_or",
+            "reflector_or"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "reflector_vol",
+          "compilability": "fully_compilable",
+          "python_expression": "(C * ((reflector_or ** 2) - (blanket_or ** 2)))",
+          "input_refs": [],
+          "intermediate_refs": [
+            "C",
+            "reflector_or",
+            "blanket_or"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "blanket_vol",
+          "compilability": "fully_compilable",
+          "python_expression": "((firstwall_vol + blanket_layer_vol) + reflector_vol)",
+          "input_refs": [],
+          "intermediate_refs": [
+            "firstwall_vol",
+            "blanket_layer_vol",
+            "reflector_vol"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        },
+        {
+          "output_name": "structure_or",
+          "compilability": "fully_compilable",
+          "python_expression": "(ht_shield_or + inputs.structure_t)",
+          "input_refs": [
+            "structure_t"
+          ],
+          "intermediate_refs": [
+            "ht_shield_or"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "gap1_or",
+          "compilability": "fully_compilable",
+          "python_expression": "(structure_or + inputs.gap1_t)",
+          "input_refs": [
+            "gap1_t"
+          ],
+          "intermediate_refs": [
+            "structure_or"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "structure_vol",
+          "compilability": "fully_compilable",
+          "python_expression": "(C * ((structure_or ** 2) - (ht_shield_or ** 2)))",
+          "input_refs": [],
+          "intermediate_refs": [
+            "C",
+            "structure_or",
+            "ht_shield_or"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        },
+        {
+          "output_name": "vessel_or",
+          "compilability": "fully_compilable",
+          "python_expression": "(gap1_or + inputs.vessel_t)",
+          "input_refs": [
+            "vessel_t"
+          ],
+          "intermediate_refs": [
+            "gap1_or"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "coil_or",
+          "compilability": "fully_compilable",
+          "python_expression": "(vessel_or + inputs.coil_t)",
+          "input_refs": [
+            "coil_t"
+          ],
+          "intermediate_refs": [
+            "vessel_or"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "gap2_or",
+          "compilability": "fully_compilable",
+          "python_expression": "(coil_or + inputs.gap2_t)",
+          "input_refs": [
+            "gap2_t"
+          ],
+          "intermediate_refs": [
+            "coil_or"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "lt_shield_or",
+          "compilability": "fully_compilable",
+          "python_expression": "(gap2_or + inputs.lt_shield_t)",
+          "input_refs": [
+            "lt_shield_t"
+          ],
+          "intermediate_refs": [
+            "gap2_or"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "lt_shield_vol",
+          "compilability": "fully_compilable",
+          "python_expression": "(C * ((lt_shield_or ** 2) - (gap2_or ** 2)))",
+          "input_refs": [],
+          "intermediate_refs": [
+            "C",
+            "lt_shield_or",
+            "gap2_or"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "r_coil",
+          "compilability": "fully_compilable",
+          "python_expression": "vessel_or",
+          "input_refs": [],
+          "intermediate_refs": [
+            "vessel_or"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        },
+        {
+          "output_name": "shield_vol",
+          "compilability": "fully_compilable",
+          "python_expression": "(ht_shield_vol + lt_shield_vol)",
+          "input_refs": [],
+          "intermediate_refs": [
+            "ht_shield_vol",
+            "lt_shield_vol"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        },
+        {
+          "output_name": "vessel_vol",
+          "compilability": "fully_compilable",
+          "python_expression": "(C * ((vessel_or ** 2) - (gap1_or ** 2)))",
+          "input_refs": [],
+          "intermediate_refs": [
+            "C",
+            "vessel_or",
+            "gap1_or"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        },
+        {
+          "output_name": "wall_area",
+          "compilability": "fully_compilable",
+          "python_expression": "((((inputs.kappa * 4.0) * (inputs.pi ** 2)) * inputs.R) * vacuum_or)",
+          "input_refs": [
+            "kappa",
+            "pi",
+            "R"
+          ],
+          "intermediate_refs": [
+            "vacuum_or"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        }
+      ],
+      "execution_order": [
+        "C",
+        "vacuum_or",
+        "firstwall_or",
+        "blanket_or",
+        "blanket_layer_vol",
+        "firstwall_vol",
+        "reflector_or",
+        "ht_shield_or",
+        "ht_shield_vol",
+        "reflector_vol",
+        "blanket_vol",
+        "structure_or",
+        "gap1_or",
+        "structure_vol",
+        "vessel_or",
+        "coil_or",
+        "gap2_or",
+        "lt_shield_or",
+        "lt_shield_vol",
+        "r_coil",
+        "shield_vol",
+        "vessel_vol",
+        "wall_area"
       ]
     },
     "DT_Fusion_Power": {
@@ -1539,11 +1868,12 @@
     {
       "name": "Plasma_Geometry",
       "qualified_name": "mfe_plasma_scaling::'Plasma Geometry'",
-      "doc_comment": "Plasma volume of an elongated torus [m^3].\n\n  V = 2 * pi^2 * R * a^2 * kappa\n\nConcept-agnostic geometry: applies to any toroidal MFE plasma\n(tokamak or stellarator). R is major radius, a is minor radius,\nkappa is elongation.\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/tokamak.py\n*Ref**: tokamak.py:172-174 (_plasma_volume)\n*Basis**: Standard elongated-torus volume; MFE-generic",
+      "doc_comment": "Plasma volume [m^3].\n\n  V = 2 * pi^2 * R * a^2 * kappa * f_shape\n\nThe elongated-torus term (2*pi^2*R*a^2*kappa) is the smooth-torus\nvolume. f_shape is a dimensionless shape/packing factor: 1.0 for a pure\ntorus (tokamak, and the 1costingFE torus geometry), < 1 for a shaped\nstellarator plasma whose twisted, non-circular cross-section encloses\nless volume than the torus of the same R, a, kappa. Concept-agnostic:\nR is major radius, a is minor radius, kappa is elongation, and the\nconcept sets f_shape (default 1.0 leaves any existing torus consumer\nand the Anchor A handshake unchanged).\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/tokamak.py\n*Ref**: tokamak.py:172-174 (_plasma_volume, the f_shape = 1.0 torus term)\n*Basis**: elongated-torus volume with a concept shape factor; MFE-generic",
       "calc_expressions": [
         "pi = 3.14159265358979",
-        "V = 2.0 * pi ** 2 * R * a ** 2 * kappa",
-        "\nDocumentation:\nPlasma volume of an elongated torus [m^3].\n\n  V = 2 * pi^2 * R * a^2 * kappa\n\nConcept-agnostic geometry: applies to any toroidal MFE plasma\n(tokamak or stellarator). R is major radius, a is minor radius,\nkappa is elongation.\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/tokamak.py\n*Ref**: tokamak.py:172-174 (_plasma_volume)\n*Basis**: Standard elongated-torus volume; MFE-generic"
+        "f_shape = 1.0",
+        "V = 2.0 * pi ** 2 * R * a ** 2 * kappa * f_shape",
+        "\nDocumentation:\nPlasma volume [m^3].\n\n  V = 2 * pi^2 * R * a^2 * kappa * f_shape\n\nThe elongated-torus term (2*pi^2*R*a^2*kappa) is the smooth-torus\nvolume. f_shape is a dimensionless shape/packing factor: 1.0 for a pure\ntorus (tokamak, and the 1costingFE torus geometry), < 1 for a shaped\nstellarator plasma whose twisted, non-circular cross-section encloses\nless volume than the torus of the same R, a, kappa. Concept-agnostic:\nR is major radius, a is minor radius, kappa is elongation, and the\nconcept sets f_shape (default 1.0 leaves any existing torus consumer\nand the Anchor A handshake unchanged).\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/tokamak.py\n*Ref**: tokamak.py:172-174 (_plasma_volume, the f_shape = 1.0 torus term)\n*Basis**: elongated-torus volume with a concept shape factor; MFE-generic"
       ],
       "input_attributes": [
         {
@@ -1597,6 +1927,19 @@
           "unit": null,
           "source_line": 0,
           "is_optional": true
+        },
+        {
+          "name": "f_shape",
+          "sysml_type": "Real",
+          "default_value": "1.0",
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": true
         }
       ],
       "output_attributes": [
@@ -1617,14 +1960,370 @@
       "references": [],
       "source_file": "models/analyses/mfe_plasma_scaling.sysml",
       "source_line": 4,
-      "source_hash": "91450fc84100df8507f28cbd311c5f9635dbff756708efff29b668d880dec36f",
+      "source_hash": "bea62d2cef50a3745355f45cbf0ae1f255ff9d5d3d3a6dc66c4081c43f0b21ba",
       "output_expression_asts": null,
       "all_member_names": [
         "R",
         "V",
         "a",
+        "f_shape",
         "kappa",
         "pi"
+      ],
+      "member_expressions": null
+    },
+    {
+      "name": "MFE_Radial_Build",
+      "qualified_name": "mfe_plasma_scaling::'MFE Radial Build'",
+      "doc_comment": "Forward radial build [m, m^2, m^3] for an MFE torus: cumulative layer\nradii from the plasma minor radius outward, then torus-shell volumes and\nthe first-wall surface area.\n\n  or_i      = or_{i-1} + t_i                              (cumulative radii)\n  layer_vol = kappa * 2*pi^2 * R * (or_out^2 - or_in^2)   (torus shell)\n  wall_area = kappa * 4*pi^2 * R * vacuum_or              (first-wall SA)\n\nAggregates match 1costingFE's CAS22 grouping (model.py:1205-1208):\nblanket = firstwall+blanket+reflector; shield = ht+lt; structure; vessel.\nConcept-agnostic: R major radius, a minor radius (= plasma_t), kappa\nelongation, per-layer thicknesses. Pure torus shells, no shape factor\n(owner Option 1, WI-021) — engineered annuli are sized by the radial\nbuild, not the plasma cross-section. ARIES/Starfire-lineage geometry,\nadmissible per PROTOCOL.md section 3.\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py\n*Ref**: geometry.py:67-81 (torus shell + surface area), 106-118\n(cumulative radii), 156-170 (per-layer volumes); model.py:1205-1208\n(CAS22 aggregation)\n*Basis**: forward radial build; torus branch; MFE-generic",
+      "calc_expressions": [
+        "pi = 3.14159265358979",
+        "vacuum_or = a + vacuum_t",
+        "firstwall_or = vacuum_or + firstwall_t",
+        "blanket_or = firstwall_or + blanket_t",
+        "reflector_or = blanket_or + reflector_t",
+        "ht_shield_or = reflector_or + ht_shield_t",
+        "structure_or = ht_shield_or + structure_t",
+        "gap1_or = structure_or + gap1_t",
+        "vessel_or = gap1_or + vessel_t",
+        "coil_or = vessel_or + coil_t",
+        "gap2_or = coil_or + gap2_t",
+        "lt_shield_or = gap2_or + lt_shield_t",
+        "C = kappa * 2.0 * pi ** 2 * R",
+        "firstwall_vol = C * (firstwall_or ** 2 - vacuum_or ** 2)",
+        "blanket_layer_vol = C * (blanket_or ** 2 - firstwall_or ** 2)",
+        "reflector_vol = C * (reflector_or ** 2 - blanket_or ** 2)",
+        "ht_shield_vol = C * (ht_shield_or ** 2 - reflector_or ** 2)",
+        "lt_shield_vol = C * (lt_shield_or ** 2 - gap2_or ** 2)",
+        "blanket_vol = firstwall_vol + blanket_layer_vol + reflector_vol",
+        "shield_vol = ht_shield_vol + lt_shield_vol",
+        "structure_vol = C * (structure_or ** 2 - ht_shield_or ** 2)",
+        "vessel_vol = C * (vessel_or ** 2 - gap1_or ** 2)",
+        "wall_area = kappa * 4.0 * pi ** 2 * R * vacuum_or",
+        "r_coil = vessel_or",
+        "\nDocumentation:\nForward radial build [m, m^2, m^3] for an MFE torus: cumulative layer\nradii from the plasma minor radius outward, then torus-shell volumes and\nthe first-wall surface area.\n\n  or_i      = or_{i-1} + t_i                              (cumulative radii)\n  layer_vol = kappa * 2*pi^2 * R * (or_out^2 - or_in^2)   (torus shell)\n  wall_area = kappa * 4*pi^2 * R * vacuum_or              (first-wall SA)\n\nAggregates match 1costingFE's CAS22 grouping (model.py:1205-1208):\nblanket = firstwall+blanket+reflector; shield = ht+lt; structure; vessel.\nConcept-agnostic: R major radius, a minor radius (= plasma_t), kappa\nelongation, per-layer thicknesses. Pure torus shells, no shape factor\n(owner Option 1, WI-021) — engineered annuli are sized by the radial\nbuild, not the plasma cross-section. ARIES/Starfire-lineage geometry,\nadmissible per PROTOCOL.md section 3.\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py\n*Ref**: geometry.py:67-81 (torus shell + surface area), 106-118\n(cumulative radii), 156-170 (per-layer volumes); model.py:1205-1208\n(CAS22 aggregation)\n*Basis**: forward radial build; torus branch; MFE-generic"
+      ],
+      "input_attributes": [
+        {
+          "name": "R",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "a",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "minor",
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "kappa",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "pi",
+          "sysml_type": "Real",
+          "default_value": "3.14159265358979",
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": true
+        },
+        {
+          "name": "vacuum_t",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "firstwall_t",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "blanket_t",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "reflector_t",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "ht_shield_t",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "structure_t",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "gap1_t",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "vessel_t",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "coil_t",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "gap2_t",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "lt_shield_t",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "output_attributes": [
+        {
+          "name": "blanket_vol",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "shield_vol",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "structure_vol",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "vessel_vol",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "wall_area",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "r_coil",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "references": [],
+      "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+      "source_line": 41,
+      "source_hash": "bea62d2cef50a3745355f45cbf0ae1f255ff9d5d3d3a6dc66c4081c43f0b21ba",
+      "output_expression_asts": null,
+      "all_member_names": [
+        "C",
+        "R",
+        "a",
+        "blanket_layer_vol",
+        "blanket_or",
+        "blanket_t",
+        "blanket_vol",
+        "coil_or",
+        "coil_t",
+        "firstwall_or",
+        "firstwall_t",
+        "firstwall_vol",
+        "gap1_or",
+        "gap1_t",
+        "gap2_or",
+        "gap2_t",
+        "ht_shield_or",
+        "ht_shield_t",
+        "ht_shield_vol",
+        "kappa",
+        "lt_shield_or",
+        "lt_shield_t",
+        "lt_shield_vol",
+        "pi",
+        "r_coil",
+        "reflector_or",
+        "reflector_t",
+        "reflector_vol",
+        "shield_vol",
+        "structure_or",
+        "structure_t",
+        "structure_vol",
+        "vacuum_or",
+        "vacuum_t",
+        "vessel_or",
+        "vessel_t",
+        "vessel_vol",
+        "wall_area"
       ],
       "member_expressions": null
     },
@@ -1707,8 +2406,8 @@
       ],
       "references": [],
       "source_file": "models/analyses/mfe_plasma_scaling.sysml",
-      "source_line": 31,
-      "source_hash": "91450fc84100df8507f28cbd311c5f9635dbff756708efff29b668d880dec36f",
+      "source_line": 125,
+      "source_hash": "bea62d2cef50a3745355f45cbf0ae1f255ff9d5d3d3a6dc66c4081c43f0b21ba",
       "output_expression_asts": null,
       "all_member_names": [
         "E_fus",
@@ -1786,8 +2485,8 @@
       ],
       "references": [],
       "source_file": "models/analyses/mfe_plasma_scaling.sysml",
-      "source_line": 63,
-      "source_hash": "91450fc84100df8507f28cbd311c5f9635dbff756708efff29b668d880dec36f",
+      "source_line": 157,
+      "source_hash": "bea62d2cef50a3745355f45cbf0ae1f255ff9d5d3d3a6dc66c4081c43f0b21ba",
       "output_expression_asts": null,
       "all_member_names": [
         "ash_frac",
@@ -3176,15 +3875,15 @@
         },
         {
           "param_name": "wall_area",
-          "source_path": "stellarator_09::stellaris::wall_load_calc::wall_area",
-          "binding_type": "reference",
-          "is_cross_file": false,
-          "raw_expression": "FeatureReferenceExpression -> stellarator_09::stellaris::wall_load_calc::wall_area",
+          "source_path": "rb.wall_area",
+          "binding_type": "chain",
+          "is_cross_file": true,
+          "raw_expression": "FeatureChainExpression -> rb.wall_area",
           "source_instance_elem": null,
           "source_attribute_elem": null,
           "literal_value": null,
           "expression_ast": null,
-          "source_instance_name": null,
+          "source_instance_name": "rb",
           "source_attribute_name": "wall_area"
         }
       ],
@@ -3192,7 +3891,7 @@
         "ash_frac"
       ],
       "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-      "source_line": 470,
+      "source_line": 579,
       "parent_part_path": "",
       "qualified_name": "stellarator_09__stellaris__wall_load_calc",
       "is_template": false,
@@ -3243,15 +3942,228 @@
           "expression_ast": null,
           "source_instance_name": null,
           "source_attribute_name": "kappa"
+        },
+        {
+          "param_name": "f_shape",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::geom::f_shape",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.794259,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "f_shape"
         }
       ],
       "unbound_params": [
         "pi"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 104,
+      "source_line": 113,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__geom",
+      "is_template": false,
+      "owning_part_def_qn": "mfe_plant__MFE_Power_Plant",
+      "raw_element": null
+    },
+    {
+      "instance_name": "stellarator_09__stellaris__rb",
+      "calc_def_name": "MFE_Radial_Build",
+      "calc_def_qualified_name": "mfe_plasma_scaling::'MFE Radial Build'",
+      "module_type": "mfe_plasma_scaling.MFE_Radial_BuildModule",
+      "bindings": [
+        {
+          "param_name": "R",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::rb::R",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 12.7,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "R"
+        },
+        {
+          "param_name": "a",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::rb::a",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 1.5,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "a"
+        },
+        {
+          "param_name": "kappa",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::rb::kappa",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 1.0,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "kappa"
+        },
+        {
+          "param_name": "vacuum_t",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::rb::vacuum_t",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.1,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "vacuum_t"
+        },
+        {
+          "param_name": "firstwall_t",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::rb::firstwall_t",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.05,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "firstwall_t"
+        },
+        {
+          "param_name": "blanket_t",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::rb::blanket_t",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.8,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "blanket_t"
+        },
+        {
+          "param_name": "reflector_t",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::rb::reflector_t",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.2,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "reflector_t"
+        },
+        {
+          "param_name": "ht_shield_t",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::rb::ht_shield_t",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.2,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "ht_shield_t"
+        },
+        {
+          "param_name": "structure_t",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::rb::structure_t",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.15,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "structure_t"
+        },
+        {
+          "param_name": "gap1_t",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::rb::gap1_t",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.1,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "gap1_t"
+        },
+        {
+          "param_name": "vessel_t",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::rb::vessel_t",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.1,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "vessel_t"
+        },
+        {
+          "param_name": "coil_t",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::rb::coil_t",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.3,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "coil_t"
+        },
+        {
+          "param_name": "gap2_t",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::rb::gap2_t",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.1,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "gap2_t"
+        },
+        {
+          "param_name": "lt_shield_t",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::rb::lt_shield_t",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.15,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "lt_shield_t"
+        }
+      ],
+      "unbound_params": [
+        "pi"
+      ],
+      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_line": 138,
+      "parent_part_path": "stellaris",
+      "qualified_name": "stellarator_09__stellaris__rb",
       "is_template": false,
       "owning_part_def_qn": "mfe_plant__MFE_Power_Plant",
       "raw_element": null
@@ -3317,7 +4229,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 116,
+      "source_line": 161,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__fusion",
       "is_template": false,
@@ -3528,7 +4440,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 139,
+      "source_line": 184,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__pb",
       "is_template": false,
@@ -3582,15 +4494,15 @@
         },
         {
           "param_name": "r_coil",
-          "source_path": "magnet.r_coil",
+          "source_path": "rb.r_coil",
           "binding_type": "chain",
           "is_cross_file": false,
-          "raw_expression": "FeatureChainExpression -> magnet.r_coil",
+          "raw_expression": "FeatureChainExpression -> rb.r_coil",
           "source_instance_elem": null,
           "source_attribute_elem": null,
           "literal_value": null,
           "expression_ast": null,
-          "source_instance_name": "magnet",
+          "source_instance_name": "rb",
           "source_attribute_name": "r_coil"
         },
         {
@@ -3624,7 +4536,7 @@
         "mu0"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 169,
+      "source_line": 214,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__magnet_cost",
       "is_template": false,
@@ -3665,15 +4577,15 @@
         },
         {
           "param_name": "blanket_vol",
-          "source_path": "blanket.blanket_vol",
+          "source_path": "rb.blanket_vol",
           "binding_type": "chain",
           "is_cross_file": false,
-          "raw_expression": "FeatureChainExpression -> blanket.blanket_vol",
+          "raw_expression": "FeatureChainExpression -> rb.blanket_vol",
           "source_instance_elem": null,
           "source_attribute_elem": null,
           "literal_value": null,
           "expression_ast": null,
-          "source_instance_name": "blanket",
+          "source_instance_name": "rb",
           "source_attribute_name": "blanket_vol"
         },
         {
@@ -3695,7 +4607,7 @@
         "p_th_ref"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 179,
+      "source_line": 224,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__blanket_cost",
       "is_template": false,
@@ -3723,15 +4635,15 @@
         },
         {
           "param_name": "shield_vol",
-          "source_path": "shield.shield_vol",
+          "source_path": "rb.shield_vol",
           "binding_type": "chain",
           "is_cross_file": false,
-          "raw_expression": "FeatureChainExpression -> shield.shield_vol",
+          "raw_expression": "FeatureChainExpression -> rb.shield_vol",
           "source_instance_elem": null,
           "source_attribute_elem": null,
           "literal_value": null,
           "expression_ast": null,
-          "source_instance_name": "shield",
+          "source_instance_name": "rb",
           "source_attribute_name": "shield_vol"
         },
         {
@@ -3766,7 +4678,7 @@
         "p_th_ref"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 187,
+      "source_line": 232,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__shield_cost",
       "is_template": false,
@@ -3794,15 +4706,15 @@
         },
         {
           "param_name": "structure_vol",
-          "source_path": "structure.structure_vol",
+          "source_path": "rb.structure_vol",
           "binding_type": "chain",
           "is_cross_file": false,
-          "raw_expression": "FeatureChainExpression -> structure.structure_vol",
+          "raw_expression": "FeatureChainExpression -> rb.structure_vol",
           "source_instance_elem": null,
           "source_attribute_elem": null,
           "literal_value": null,
           "expression_ast": null,
-          "source_instance_name": "structure",
+          "source_instance_name": "rb",
           "source_attribute_name": "structure_vol"
         },
         {
@@ -3824,7 +4736,7 @@
         "p_et_ref"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 195,
+      "source_line": 240,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__structure_cost",
       "is_template": false,
@@ -3852,15 +4764,15 @@
         },
         {
           "param_name": "vessel_vol",
-          "source_path": "vessel.vessel_vol",
+          "source_path": "rb.vessel_vol",
           "binding_type": "chain",
           "is_cross_file": false,
-          "raw_expression": "FeatureChainExpression -> vessel.vessel_vol",
+          "raw_expression": "FeatureChainExpression -> rb.vessel_vol",
           "source_instance_elem": null,
           "source_attribute_elem": null,
           "literal_value": null,
           "expression_ast": null,
-          "source_instance_name": "vessel",
+          "source_instance_name": "rb",
           "source_attribute_name": "vessel_vol"
         },
         {
@@ -3882,7 +4794,7 @@
         "p_et_ref"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 202,
+      "source_line": 247,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__vessel_cost",
       "is_template": false,
@@ -3927,7 +4839,7 @@
         "p_et_ref"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 209,
+      "source_line": 254,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__power_supplies_cost",
       "is_template": false,
@@ -3972,7 +4884,7 @@
         "p_th_ref"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 216,
+      "source_line": 261,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__divertor_cost",
       "is_template": false,
@@ -4092,7 +5004,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 231,
+      "source_line": 276,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__heating_cost",
       "is_template": false,
@@ -4147,7 +5059,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 245,
+      "source_line": 290,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__turbine_cost",
       "is_template": false,
@@ -4202,7 +5114,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 250,
+      "source_line": 295,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__electric_cost",
       "is_template": false,
@@ -4257,7 +5169,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 255,
+      "source_line": 300,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__heat_rejection_cost",
       "is_template": false,
@@ -4312,7 +5224,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 260,
+      "source_line": 305,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__misc_cost",
       "is_template": false,
@@ -4354,7 +5266,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 295,
+      "source_line": 340,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__contingency",
       "is_template": false,
@@ -4411,7 +5323,7 @@
         "reference_construction_time"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 304,
+      "source_line": 349,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__indirect",
       "is_template": false,
@@ -4518,7 +5430,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 327,
+      "source_line": 372,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__lcoe_calc",
       "is_template": false,
@@ -4640,9 +5552,19 @@
         "default_value": "3.14159265358979",
         "unit": null,
         "source_file": "models/analyses/mfe_plasma_scaling.sysml",
-        "source_line": 25,
+        "source_line": 30,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__Plasma_Geometry__pi"
+      },
+      {
+        "name": "f_shape",
+        "sysml_type": "Real",
+        "default_value": "1.0",
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 35,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__Plasma_Geometry__f_shape"
       },
       {
         "name": "V",
@@ -4650,9 +5572,249 @@
         "default_value": null,
         "unit": null,
         "source_file": "models/analyses/mfe_plasma_scaling.sysml",
-        "source_line": 27,
+        "source_line": 37,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__Plasma_Geometry__V"
+      },
+      {
+        "name": "pi",
+        "sysml_type": "Real",
+        "default_value": "3.14159265358979",
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 71,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__pi"
+      },
+      {
+        "name": "vacuum_or",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 88,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__vacuum_or"
+      },
+      {
+        "name": "firstwall_or",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 89,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__firstwall_or"
+      },
+      {
+        "name": "blanket_or",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 90,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__blanket_or"
+      },
+      {
+        "name": "reflector_or",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 91,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__reflector_or"
+      },
+      {
+        "name": "ht_shield_or",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 92,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__ht_shield_or"
+      },
+      {
+        "name": "structure_or",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 93,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__structure_or"
+      },
+      {
+        "name": "gap1_or",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 94,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__gap1_or"
+      },
+      {
+        "name": "vessel_or",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 95,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__vessel_or"
+      },
+      {
+        "name": "coil_or",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 96,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__coil_or"
+      },
+      {
+        "name": "gap2_or",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 97,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__gap2_or"
+      },
+      {
+        "name": "lt_shield_or",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 98,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__lt_shield_or"
+      },
+      {
+        "name": "C",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 101,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__C"
+      },
+      {
+        "name": "firstwall_vol",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 104,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__firstwall_vol"
+      },
+      {
+        "name": "blanket_layer_vol",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 105,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__blanket_layer_vol"
+      },
+      {
+        "name": "reflector_vol",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 106,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__reflector_vol"
+      },
+      {
+        "name": "ht_shield_vol",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 107,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__ht_shield_vol"
+      },
+      {
+        "name": "lt_shield_vol",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 108,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__lt_shield_vol"
+      },
+      {
+        "name": "blanket_vol",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 111,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__blanket_vol"
+      },
+      {
+        "name": "shield_vol",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 113,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__shield_vol"
+      },
+      {
+        "name": "structure_vol",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 114,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__structure_vol"
+      },
+      {
+        "name": "vessel_vol",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 116,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__vessel_vol"
+      },
+      {
+        "name": "wall_area",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 121,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__wall_area"
+      },
+      {
+        "name": "r_coil",
+        "sysml_type": "Real",
+        "default_value": "vessel_or",
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 122,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__r_coil"
       },
       {
         "name": "p_fus",
@@ -4660,7 +5822,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "models/analyses/mfe_plasma_scaling.sysml",
-        "source_line": 59,
+        "source_line": 153,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__DT_Fusion_Power__p_fus"
       },
@@ -4670,7 +5832,7 @@
         "default_value": "0.2002",
         "unit": null,
         "source_file": "models/analyses/mfe_plasma_scaling.sysml",
-        "source_line": 90,
+        "source_line": 184,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__Neutron_Wall_Load__ash_frac"
       },
@@ -4680,7 +5842,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "models/analyses/mfe_plasma_scaling.sysml",
-        "source_line": 94,
+        "source_line": 188,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__Neutron_Wall_Load__wall_load"
       }
@@ -5066,7 +6228,7 @@
         "default_value": "0.0276",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 442,
+        "source_line": 551,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__beta"
       },
@@ -5076,19 +6238,9 @@
         "default_value": "0.05",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 445,
+        "source_line": 554,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__beta_limit"
-      },
-      {
-        "name": "wall_area",
-        "sysml_type": "Real",
-        "default_value": "802.201",
-        "unit": null,
-        "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 450,
-        "parent_part": "stellaris",
-        "qualified_name": "stellarator_09__stellaris__wall_area"
       },
       {
         "name": "wall_load_limit",
@@ -5096,7 +6248,7 @@
         "default_value": "4.95",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 466,
+        "source_line": 575,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__wall_load_limit"
       },
@@ -5106,7 +6258,7 @@
         "default_value": "1.074",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 476,
+        "source_line": 585,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__tbr"
       },
@@ -5116,7 +6268,7 @@
         "default_value": "1.05",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 479,
+        "source_line": 588,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__tbr_floor"
       },
@@ -5126,19 +6278,139 @@
         "default_value": "wall_load_calc.wall_load",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 491,
+        "source_line": 600,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__neutron_wall_load"
       }
     ],
     "/home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml": [
       {
+        "name": "f_shape",
+        "sysml_type": "Real",
+        "default_value": "1.0",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 111,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__f_shape"
+      },
+      {
+        "name": "vacuum_t",
+        "sysml_type": "Real",
+        "default_value": "0.1",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 123,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__vacuum_t"
+      },
+      {
+        "name": "firstwall_t",
+        "sysml_type": "Real",
+        "default_value": "0.05",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 124,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__firstwall_t"
+      },
+      {
+        "name": "blanket_t",
+        "sysml_type": "Real",
+        "default_value": "0.7",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 125,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__blanket_t"
+      },
+      {
+        "name": "reflector_t",
+        "sysml_type": "Real",
+        "default_value": "0.2",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 126,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__reflector_t"
+      },
+      {
+        "name": "ht_shield_t",
+        "sysml_type": "Real",
+        "default_value": "0.2",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 127,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__ht_shield_t"
+      },
+      {
+        "name": "structure_t",
+        "sysml_type": "Real",
+        "default_value": "0.15",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 128,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__structure_t"
+      },
+      {
+        "name": "gap1_t",
+        "sysml_type": "Real",
+        "default_value": "0.1",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 129,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__gap1_t"
+      },
+      {
+        "name": "vessel_t",
+        "sysml_type": "Real",
+        "default_value": "0.1",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 130,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__vessel_t"
+      },
+      {
+        "name": "coil_t",
+        "sysml_type": "Real",
+        "default_value": "0.3",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 131,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__coil_t"
+      },
+      {
+        "name": "gap2_t",
+        "sysml_type": "Real",
+        "default_value": "0.1",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 132,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__gap2_t"
+      },
+      {
+        "name": "lt_shield_t",
+        "sysml_type": "Real",
+        "default_value": "0.15",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 133,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__lt_shield_t"
+      },
+      {
         "name": "p_th",
         "sysml_type": "Real",
         "default_value": "pb.p_th",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 160,
+        "source_line": 205,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__p_th"
       },
@@ -5148,7 +6420,7 @@
         "default_value": "pb.p_the",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 161,
+        "source_line": 206,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__p_the"
       },
@@ -5158,7 +6430,7 @@
         "default_value": "pb.p_et",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 162,
+        "source_line": 207,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__p_et"
       },
@@ -5168,7 +6440,7 @@
         "default_value": "1.0",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 244,
+        "source_line": 289,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__n_mod"
       },
@@ -5178,7 +6450,7 @@
         "default_value": "contingency.cost",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 299,
+        "source_line": 344,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__contingency_capital"
       },
@@ -5188,7 +6460,7 @@
         "default_value": "indirect.cost",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 309,
+        "source_line": 354,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__indirect_capital"
       },
@@ -5198,7 +6470,7 @@
         "default_value": "pb.p_net",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 354,
+        "source_line": 399,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__net_electric"
       },
@@ -5208,7 +6480,7 @@
         "default_value": "pb.q_eng",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 355,
+        "source_line": 400,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__q_eng"
       },
@@ -5218,7 +6490,7 @@
         "default_value": "pb.rec_frac",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 356,
+        "source_line": 401,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__rec_frac"
       },
@@ -5228,7 +6500,7 @@
         "default_value": "lcoe_calc.lcoe",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 357,
+        "source_line": 402,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__lcoe"
       },
@@ -5238,7 +6510,7 @@
         "default_value": "buildings.capital_cost",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 372,
+        "source_line": 417,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__buildings_capital"
       }
@@ -5448,6 +6720,162 @@
         "attribute_name": "kappa",
         "redefinition_type": "literal",
         "literal_value": 1.0,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "f_shape",
+        "redefinition_type": "literal",
+        "literal_value": 0.794259,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "blanket_t",
+        "redefinition_type": "literal",
+        "literal_value": 0.8,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "ht_shield_t",
+        "redefinition_type": "literal",
+        "literal_value": 0.2,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "structure_t",
+        "redefinition_type": "literal",
+        "literal_value": 0.15,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "vessel_t",
+        "redefinition_type": "literal",
+        "literal_value": 0.1,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "vacuum_t",
+        "redefinition_type": "literal",
+        "literal_value": 0.1,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "firstwall_t",
+        "redefinition_type": "literal",
+        "literal_value": 0.05,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "reflector_t",
+        "redefinition_type": "literal",
+        "literal_value": 0.2,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "gap1_t",
+        "redefinition_type": "literal",
+        "literal_value": 0.1,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "coil_t",
+        "redefinition_type": "literal",
+        "literal_value": 0.3,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "gap2_t",
+        "redefinition_type": "literal",
+        "literal_value": 0.1,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "lt_shield_t",
+        "redefinition_type": "literal",
+        "literal_value": 0.15,
         "source_path": null,
         "expression_ast": null,
         "expression_text": "",
@@ -5809,19 +7237,6 @@
       },
       {
         "owning_part_qn": "stellarator_09__stellaris",
-        "attribute_name": "special_materials_capital",
-        "redefinition_type": "literal",
-        "literal_value": 26289000.0,
-        "source_path": null,
-        "expression_ast": null,
-        "expression_text": "",
-        "target_path": [],
-        "is_deep_path": false,
-        "source_file": "unknown",
-        "source_line": 0
-      },
-      {
-        "owning_part_qn": "stellarator_09__stellaris",
         "attribute_name": "contingency_rate",
         "redefinition_type": "literal",
         "literal_value": 0.1,
@@ -5952,19 +7367,6 @@
       },
       {
         "owning_part_qn": "stellarator_09__stellaris__magnet",
-        "attribute_name": "r_coil",
-        "redefinition_type": "literal",
-        "literal_value": 3.2,
-        "source_path": null,
-        "expression_ast": null,
-        "expression_text": "",
-        "target_path": [],
-        "is_deep_path": false,
-        "source_file": "unknown",
-        "source_line": 0
-      },
-      {
-        "owning_part_qn": "stellarator_09__stellaris__magnet",
         "attribute_name": "cost_per_kAm",
         "redefinition_type": "literal",
         "literal_value": 50.0,
@@ -6016,19 +7418,6 @@
         "source_line": 0
       },
       {
-        "owning_part_qn": "stellarator_09__stellaris__blanket",
-        "attribute_name": "blanket_vol",
-        "redefinition_type": "literal",
-        "literal_value": 1118.695,
-        "source_path": null,
-        "expression_ast": null,
-        "expression_text": "",
-        "target_path": [],
-        "is_deep_path": false,
-        "source_file": "unknown",
-        "source_line": 0
-      },
-      {
         "owning_part_qn": "stellarator_09__stellaris__shield",
         "attribute_name": "unit_cost",
         "redefinition_type": "literal",
@@ -6055,19 +7444,6 @@
         "source_line": 0
       },
       {
-        "owning_part_qn": "stellarator_09__stellaris__shield",
-        "attribute_name": "shield_vol",
-        "redefinition_type": "literal",
-        "literal_value": 552.14,
-        "source_path": null,
-        "expression_ast": null,
-        "expression_text": "",
-        "target_path": [],
-        "is_deep_path": false,
-        "source_file": "unknown",
-        "source_line": 0
-      },
-      {
         "owning_part_qn": "stellarator_09__stellaris__structure",
         "attribute_name": "unit_cost",
         "redefinition_type": "literal",
@@ -6081,36 +7457,10 @@
         "source_line": 0
       },
       {
-        "owning_part_qn": "stellarator_09__stellaris__structure",
-        "attribute_name": "structure_vol",
-        "redefinition_type": "literal",
-        "literal_value": 219.979,
-        "source_path": null,
-        "expression_ast": null,
-        "expression_text": "",
-        "target_path": [],
-        "is_deep_path": false,
-        "source_file": "unknown",
-        "source_line": 0
-      },
-      {
         "owning_part_qn": "stellarator_09__stellaris__vessel",
         "attribute_name": "unit_cost",
         "redefinition_type": "literal",
         "literal_value": 720000.0,
-        "source_path": null,
-        "expression_ast": null,
-        "expression_text": "",
-        "target_path": [],
-        "is_deep_path": false,
-        "source_file": "unknown",
-        "source_line": 0
-      },
-      {
-        "owning_part_qn": "stellarator_09__stellaris__vessel",
-        "attribute_name": "vessel_vol",
-        "redefinition_type": "literal",
-        "literal_value": 157.933,
         "source_path": null,
         "expression_ast": null,
         "expression_text": "",

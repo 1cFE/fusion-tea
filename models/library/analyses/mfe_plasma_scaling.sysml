@@ -3,17 +3,22 @@ package mfe_plasma_scaling {
 
     calc def 'Plasma Geometry' {
         doc /*
-        Plasma volume of an elongated torus [m^3].
+        Plasma volume [m^3].
 
-          V = 2 * pi^2 * R * a^2 * kappa
+          V = 2 * pi^2 * R * a^2 * kappa * f_shape
 
-        Concept-agnostic geometry: applies to any toroidal MFE plasma
-        (tokamak or stellarator). R is major radius, a is minor radius,
-        kappa is elongation.
+        The elongated-torus term (2*pi^2*R*a^2*kappa) is the smooth-torus
+        volume. f_shape is a dimensionless shape/packing factor: 1.0 for a pure
+        torus (tokamak, and the 1costingFE torus geometry), < 1 for a shaped
+        stellarator plasma whose twisted, non-circular cross-section encloses
+        less volume than the torus of the same R, a, kappa. Concept-agnostic:
+        R is major radius, a is minor radius, kappa is elongation, and the
+        concept sets f_shape (default 1.0 leaves any existing torus consumer
+        and the Anchor A handshake unchanged).
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/tokamak.py
-        **Ref**: tokamak.py:172-174 (_plasma_volume)
-        **Basis**: Standard elongated-torus volume; MFE-generic
+        **Ref**: tokamak.py:172-174 (_plasma_volume, the f_shape = 1.0 torus term)
+        **Basis**: elongated-torus volume with a concept shape factor; MFE-generic
         */
 
         in attribute R : Real;
@@ -24,8 +29,97 @@ package mfe_plasma_scaling {
         // Source: mathematical constant; matches jnp.pi in tokamak.py:174.
         in attribute pi : Real default 3.14159265358979;
 
+        // Shape/packing factor. Default 1.0 = pure elongated torus (tokamak;
+        // 1costingFE torus geometry). A shaped stellarator sets f_shape < 1.
+        // Source: concept geometry; WI-020.
+        in attribute f_shape : Real default 1.0;
+
         out attribute V : Real =
-            2.0 * (pi ** 2) * R * (a ** 2) * kappa;
+            2.0 * (pi ** 2) * R * (a ** 2) * kappa * f_shape;
+    }
+
+    calc def 'MFE Radial Build' {
+        doc /*
+        Forward radial build [m, m^2, m^3] for an MFE torus: cumulative layer
+        radii from the plasma minor radius outward, then torus-shell volumes and
+        the first-wall surface area.
+
+          or_i      = or_{i-1} + t_i                              (cumulative radii)
+          layer_vol = kappa * 2*pi^2 * R * (or_out^2 - or_in^2)   (torus shell)
+          wall_area = kappa * 4*pi^2 * R * vacuum_or              (first-wall SA)
+
+        Aggregates match 1costingFE's CAS22 grouping (model.py:1205-1208):
+        blanket = firstwall+blanket+reflector; shield = ht+lt; structure; vessel.
+        Concept-agnostic: R major radius, a minor radius (= plasma_t), kappa
+        elongation, per-layer thicknesses. Pure torus shells, no shape factor
+        (owner Option 1, WI-021) — engineered annuli are sized by the radial
+        build, not the plasma cross-section. ARIES/Starfire-lineage geometry,
+        admissible per PROTOCOL.md section 3.
+
+        **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py
+        **Ref**: geometry.py:67-81 (torus shell + surface area), 106-118
+            (cumulative radii), 156-170 (per-layer volumes); model.py:1205-1208
+            (CAS22 aggregation)
+        **Basis**: forward radial build; torus branch; MFE-generic
+        */
+
+        in attribute R : Real;
+        in attribute a : Real;           // minor radius = plasma_t
+        in attribute kappa : Real;
+
+        // pi as a defaulted input (codegen-safe; no transcendental call).
+        in attribute pi : Real default 3.14159265358979;
+
+        // Radial-build layer thicknesses [m], center -> outboard.
+        // Source: geometry.py:19-40 (RadialBuild); concept overrides bind values.
+        in attribute vacuum_t : Real;
+        in attribute firstwall_t : Real;
+        in attribute blanket_t : Real;
+        in attribute reflector_t : Real;
+        in attribute ht_shield_t : Real;
+        in attribute structure_t : Real;
+        in attribute gap1_t : Real;
+        in attribute vessel_t : Real;
+        in attribute coil_t : Real;
+        in attribute gap2_t : Real;
+        in attribute lt_shield_t : Real;
+
+        // Cumulative radii from the plasma minor radius outward.
+        attribute vacuum_or : Real = a + vacuum_t;
+        attribute firstwall_or : Real = vacuum_or + firstwall_t;
+        attribute blanket_or : Real = firstwall_or + blanket_t;
+        attribute reflector_or : Real = blanket_or + reflector_t;
+        attribute ht_shield_or : Real = reflector_or + ht_shield_t;
+        attribute structure_or : Real = ht_shield_or + structure_t;
+        attribute gap1_or : Real = structure_or + gap1_t;
+        attribute vessel_or : Real = gap1_or + vessel_t;
+        attribute coil_or : Real = vessel_or + coil_t;
+        attribute gap2_or : Real = coil_or + gap2_t;
+        attribute lt_shield_or : Real = gap2_or + lt_shield_t;
+
+        // Torus-shell coefficient C = kappa * 2*pi^2 * R.
+        attribute C : Real = kappa * 2.0 * (pi ** 2) * R;
+
+        // Per-layer torus-shell volumes.
+        attribute firstwall_vol : Real = C * ((firstwall_or ** 2) - (vacuum_or ** 2));
+        attribute blanket_layer_vol : Real = C * ((blanket_or ** 2) - (firstwall_or ** 2));
+        attribute reflector_vol : Real = C * ((reflector_or ** 2) - (blanket_or ** 2));
+        attribute ht_shield_vol : Real = C * ((ht_shield_or ** 2) - (reflector_or ** 2));
+        attribute lt_shield_vol : Real = C * ((lt_shield_or ** 2) - (gap2_or ** 2));
+
+        // CAS22 aggregate volumes [m^3].
+        out attribute blanket_vol : Real =
+            firstwall_vol + blanket_layer_vol + reflector_vol;
+        out attribute shield_vol : Real = ht_shield_vol + lt_shield_vol;
+        out attribute structure_vol : Real =
+            C * ((structure_or ** 2) - (ht_shield_or ** 2));
+        out attribute vessel_vol : Real =
+            C * ((vessel_or ** 2) - (gap1_or ** 2));
+
+        // First-wall area [m^2] (standoff radius vacuum_or, not a) and
+        // coil-bore radius [m] = vessel outer radius.
+        out attribute wall_area : Real = kappa * 4.0 * (pi ** 2) * R * vacuum_or;
+        out attribute r_coil : Real = vessel_or;
     }
 
     calc def 'DT Fusion Power' {

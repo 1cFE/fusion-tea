@@ -10,6 +10,37 @@
 
 **Status**: `aries-cs-holdout` implemented and committed (`8939d9dc` + ratification follow-up), pending `/_my_audit`. Quarantine live at `knowledge/holdout/aries-cs/` (4 PDFs + manifest + README + PROTOCOL.md, plus one CLAUDE.md line); all leak-surface verifications passed. Owner ratified (2026-07-13) the two ingestion-time barred-list additions (the `knowledge/sources` Helios extraction and a concept-36 ARIES-CS stub). Note: ARIES mirrors are all dead — PDFs came from Wayback snapshots of the canonical URLs, recorded in PROTOCOL §7. Concept at `.project/concepts/stellarator-mbse-demo.md`. On branch `feat/stellarator-mbse-demo`.
 
+### Stellarator MBSE Demo — Stage 3 item 1 DONE: WI-021 stellarator-correct radial build (2026-07-17, uncommitted)
+
+**Status**: WI-021 implemented, validated, handshake-verified, closed — **uncommitted in the worktree** (stacked on the uncommitted WI-020), pending review/commit. Spec → owner checkpoint → design → plan → implement, same-day. PROTOCOL.md respected; radial-build formulas from 1costingFE @ `0254385` (admissible ARIES/Starfire-lineage exception, §3); R/a/kappa from the Stellaris source.
+
+**What changed**: the six injected geometry constants (blanket/shield/structure/vessel volumes, first-wall area, coil-bore radius) are replaced by a new `'MFE Radial Build'` calc that forward-computes them from the radial-build layer thicknesses (cumulative radii → torus-shell volumes → torus surface area), reproducing `costingfe.geometry.compute_geometry(STELLARATOR)`. **Owner ruled Option 1** (pure torus shells, no material shape factor — matches 1costingFE); Option 2 (shaping the material volumes) deferred to the epic. `special_materials_capital` (CAS27) rebound to the computed blanket_vol.
+
+**Results**: **SV-028 passing** — the six values reproduce the pre-item-1 constants (1118.695 / 552.140 / 219.979 / 157.933 / 802.201 / 3.20), generated pipeline bit-exact vs oracle at 1e-9. **Headline unchanged** (fidelity/traceability win, not a re-baseline): V 448, p_fus 2144.5, net 578.0 MW, q_eng 3.16, total $9.683B, LCOE $247.34/MWh, magnet $4.39B (45.4%). Only numeric movement: `special_materials` 26,289,000 → 26,289,332 (+$332, from the rebind; invisible at headline precision). Viability all pass (wall_load 2.14 < 4.95).
+
+**Handshake (notable)**: the closure test's Anchor A is 1costingFE's OWN reference reactor at R0=5.5 (not Stellaris R0=12.7) and it injected 1cfe's material volumes directly — those params vanish once volumes are computed. Closed via the emitter now exposing 1cfe's radial-build inputs, fed into `rb__*` (separate params from `geom__*`, so the plasma-path override doesn't leak); verified `rb` reproduces 1cfe's geo exactly. **SV-025/026 byte-identical to WI-020** (worst formula-isolation −7.63e-08). The handshake is now *stronger* — it exercises the rb math vs `compute_geometry`. Two codegen offenders fixed along the way (wall_area as a top-level derived attr → bound into wall_load_calc; cost calcs read `rb.<vol>` directly instead of the cross-part part attribute). L1=0, zero new L2/L6 offenders. No IFE files touched (SV-023 unaffected).
+
+**Next**: item 2 (predictive confinement) per the 3→4→1→2 order. Record: `work/completed/20260717_WI-021_stellarator-correct-radial-build/` (spec/design/plan).
+
+### Stellarator MBSE Demo — Stage 3 item 4 DONE: WI-020 stellarator-correct geometry (2026-07-17, uncommitted)
+
+**Status**: WI-020 implemented, validated, handshake-verified, closed — **uncommitted in the worktree**, pending review/commit. Spec → owner checkpoint → design → plan → implement, same-day. PROTOCOL.md respected; geometry sourced from the admissible Stellaris source, engineering from 1costingFE @ `0254385`.
+
+**Owner ruling at checkpoint (2026-07-17)**: Decision B = **B1** (target the Table-2 plasma volume 448 m³ at the model's R=12.7 → shape factor 0.7943). Decision A = **do NOT re-solve sigma_v** — "make sure the model is accurate. We can test various inputs at the codegen phase." So fusion power is a computed output, not pinned.
+
+**What changed**: `'Plasma Geometry'` gained a shape/packing factor `f_shape` (default 1.0 = pure torus); the Stellaris instance binds `f_shape = 0.794259`, correcting plasma volume from the torus over-prediction 564 m³ to the source's 448 m³. sigma_v unchanged, so fusion power falls to a computed **2144.5 MW** (was pinned 2700), re-baselining the headline. Also deleted the prior cross-check note that mis-diagnosed the gap as "R/a rounding" (arithmetically wrong: torus at R=12,a=1.5 = 533, not 448); rewrote the sigma_v doc to make the 2145-vs-2700 gap visible (the 0D single-temperature limitation, target of item 2).
+
+**Results**: **SV-027 passing** — V = 448.0 m³, pipeline bit-exact vs oracle at 1e-9. **New Stellaris headline: p_fus 2144.5, net 578.0 MW, q_eng 3.16, total $9.68B, LCOE $247.34/MWh, magnet $4.39B (45.4%, unchanged — power-independent).** Net electric and LCOE land near the pre-WI-019 range: WI-019's power-balance gain and this volume correction nearly cancel. All viability constraints pass (wall load 2.14 < 4.95). The old 2700 MW / $189 headline is exactly recoverable at sigma_v = 7.535e-23 (sensitivity table in the plan) — a visible input choice, not baked in.
+
+**Handshake**: the closure test caught a real bug first — the generated params carry the instance's f_shape=0.7943, so the handshake's 1cfe torus point was shrunk 20%. Fixed by explicitly injecting `geom__f_shape = 1.0` in `handshake_1costingfe.py`. Re-run: SV-025/026 **byte-identical to WI-019** — the structural −31% LCOE gap is unchanged (item 4 doesn't touch it). IFE regression SV-023 unchanged. L1=0, L2=3, L6=105 (WI-019 baseline; zero new issues).
+
+**Surfaced (owner attention)**:
+1. **SV-016** "Q_eng ~10–40" band reads low at q_eng 3.16 (carried open from WI-019; still `pending`). Needs owner adjust/annotate.
+2. STALE-BASIS pass-throughs are now nearly back on their 575.3 basis (p_net 578); annotations updated, recomputation still a Stage-3 account item.
+3. The 2145-vs-2700 fusion-power gap is now visible in the model — item 2 (predictive confinement) is where it closes.
+
+**Next**: owner review + commit; then demo item 1 (radial-build volumes) per the approved 3→4→1→2 order. Record: `work/active/WI-020_stellarator-correct-geometry/` (spec/design/plan).
+
 ### Stellarator MBSE Demo — Stage 3 item 1 DONE: WI-019 faithful power balance (2026-07-14, uncommitted)
 
 **Status**: WI-019 implemented, validated, handshake-verified — **uncommitted in the worktree**, pending review/commit. Spec → owner checkpoint (approved, order 3→4→1→2 confirmed) → design → plan → implement, all same-day. PROTOCOL.md respected; sourcing 1costingFE @ `0254385` only.
