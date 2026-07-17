@@ -1,0 +1,54 @@
+{
+  "artifacts": [
+    {
+      "channel": "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions",
+      "produced": true,
+      "relative_path": "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions",
+      "produced": true,
+      "relative_path": "hif_plant.driver__driver_cost_billions.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__driver__meier_cost__gamma",
+      "produced": true,
+      "relative_path": "hif_plant_pkg__hif_plant__driver__meier_cost__gamma.json",
+      "type_name": "float"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__recirc_calc__f_recirc",
+      "produced": true,
+      "relative_path": "hif_plant__recirculating_fraction.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions",
+      "produced": true,
+      "relative_path": "hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__lcoe",
+      "produced": true,
+      "relative_path": "hif_plant__lcoe.json",
+      "type_name": "RootModel[float]"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__meier_coe_calc__coe_cents_kwh",
+      "produced": true,
+      "relative_path": "hif_plant__meier_coe.json",
+      "type_name": "RootModel[float]"
+    }
+  ],
+  "base_output_dir": "/home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/ife_e2e/outputs/osiris",
+  "metadata": {
+    "output_folder": "ife_tea_results",
+    "run_description": "Generated pipeline for ife_tea"
+  },
+  "run_directory": "ife-tea-results-b8433ea7",
+  "run_name": "ife-tea-results",
+  "short_id": "b8433ea7"
+}

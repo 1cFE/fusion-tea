@@ -1,7 +1,7 @@
 {
   "snapshot_format_version": 3,
   "model_name": "models",
-  "captured_at": "2026-07-14T05:23:34.735097+00:00",
+  "captured_at": "2026-07-15T05:17:21.680073+00:00",
   "constraint_lowering_mode": "applied",
   "constraint_facts": {
     "contexts": [
@@ -1073,7 +1073,7 @@
         {
           "output_name": "p_alpha",
           "compilability": "fully_compilable",
-          "python_expression": "(0.2002 * inputs.p_nrl)",
+          "python_expression": "((3.52 / 17.58) * inputs.p_nrl)",
           "input_refs": [
             "p_nrl"
           ],
@@ -1133,17 +1133,16 @@
         {
           "output_name": "p_th",
           "compilability": "fully_compilable",
-          "python_expression": "(((inputs.mn * p_neutron) + inputs.p_input) + ((inputs.eta_th * ((inputs.fpcppf * inputs.eta_p) + inputs.f_sub)) * (inputs.mn * p_neutron)))",
+          "python_expression": "((((inputs.mn * p_neutron) + p_alpha) + inputs.p_input) + (inputs.eta_p * inputs.p_pump))",
           "input_refs": [
             "mn",
             "p_input",
-            "eta_th",
-            "fpcppf",
             "eta_p",
-            "f_sub"
+            "p_pump"
           ],
           "intermediate_refs": [
-            "p_neutron"
+            "p_neutron",
+            "p_alpha"
           ],
           "unsupported_reason": null,
           "is_undeclared_intermediate": false
@@ -1173,27 +1172,14 @@
           "is_undeclared_intermediate": false
         },
         {
-          "output_name": "p_pump",
-          "compilability": "fully_compilable",
-          "python_expression": "(inputs.fpcppf * p_the)",
-          "input_refs": [
-            "fpcppf"
-          ],
-          "intermediate_refs": [
-            "p_the"
-          ],
-          "unsupported_reason": null,
-          "is_undeclared_intermediate": true
-        },
-        {
           "output_name": "p_sub",
           "compilability": "fully_compilable",
-          "python_expression": "(inputs.f_sub * p_the)",
+          "python_expression": "(inputs.f_sub * p_et)",
           "input_refs": [
             "f_sub"
           ],
           "intermediate_refs": [
-            "p_the"
+            "p_et"
           ],
           "unsupported_reason": null,
           "is_undeclared_intermediate": true
@@ -1201,15 +1187,15 @@
         {
           "output_name": "recirculating",
           "compilability": "fully_compilable",
-          "python_expression": "((((((p_coils + p_pump) + p_sub) + p_aux) + p_cool) + inputs.p_cryo) + (inputs.p_input / inputs.eta_pin))",
+          "python_expression": "((((((p_coils + inputs.p_pump) + p_sub) + p_aux) + p_cool) + inputs.p_cryo) + (inputs.p_input / inputs.eta_pin))",
           "input_refs": [
+            "p_pump",
             "p_cryo",
             "p_input",
             "eta_pin"
           ],
           "intermediate_refs": [
             "p_coils",
-            "p_pump",
             "p_sub",
             "p_aux",
             "p_cool"
@@ -1262,7 +1248,6 @@
         "p_th",
         "p_the",
         "p_et",
-        "p_pump",
         "p_sub",
         "recirculating",
         "q_eng",
@@ -2837,23 +2822,22 @@
     {
       "name": "MFE_Power_Balance_Calc",
       "qualified_name": "mfe_power_balance::'MFE Power Balance Calc'",
-      "doc_comment": "MFE (Magnetic Fusion Energy) power balance for tokamaks and\nstellarators: fusion power -> net electric power, engineering Q, and\nrecirculating power fraction.\n\nPower flow:\n  - Alpha / neutron split of fusion power (D-T, inlined)\n  - Thermal power = neutron heating + input + recovered pumping heat\n  - Thermal electric via the conversion efficiency eta_th\n  - Recirculating power: coils + pumping + subsystems + auxiliary\n    + cooling + cryo + wall-plug heating\n  - Engineering Q = gross electric / recirculating\n\nTwo documented deviations from the base PyFECONS balance:\n  1. Direct energy conversion (p_dee, eta_de) is dropped, as in the\n     archived revival base and the WI-009 spec (out of scope).\n  2. The fuel-type-dependent 'Alpha Power Calc' is replaced by an\n     inlined D-T alpha fraction (see p_alpha below) so this calc stays\n     flat and codegen-safe (no nested calc invocation).\nThe top-level q_eng / rec_frac / p_net relations follow current\n1costingFE (physics.py:324-328), not the older archived q_eng\nnumerator.\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py\n*Ref**: physics.py:183-328 (mfe_forward_power_balance)\n*Basis**: Steady-state MFE power flow; tokamak/stellarator-generic",
+      "doc_comment": "MFE (Magnetic Fusion Energy) power balance for tokamaks and\nstellarators: fusion power -> net electric power, engineering Q, and\nrecirculating power fraction. Faithful to 1costingFE\nmfe_forward_power_balance in the DEC-free, non-radiation-limited\nregime (validity conditions below).\n\nPower flow:\n  - Alpha / neutron split of fusion power (D-T, inlined)\n  - Thermal power = blanket neutron heating + charged-particle (alpha)\n    power reaching the wall + heating power + recovered pumping heat\n  - Thermal electric via the conversion efficiency eta_th\n  - Recirculating power: coils + pumping + subsystems + auxiliary\n    + cooling + cryo + wall-plug heating\n  - Engineering Q = gross electric / recirculating\n\nThermal power derivation (WI-019): 1costingFE step 7 is\n  p_th = mn*p_neutron + p_rad + p_wall + eta_p*p_pump   (physics.py:303)\nwith p_wall = p_ash + p_input_eff - p_rad at f_dec = 0\n(physics.py:290-299), so p_rad cancels and\n  p_th = mn*p_neutron + p_alpha + p_input + eta_p*p_pump.\nCharged-particle power reaches the wall as radiation or as transport;\nboth are recovered thermally, so no radiation model is needed here.\n\nValidity conditions (documented regime, WI-019 MR-WI019-4):\n  1. f_dec = 0 -- no direct energy conversion (standing WI-009\n     deviation, out of scope).\n  2. p_rad - p_alpha <= p_input -- non-radiation-limited, so\n     p_input_eff = p_input (physics.py:290). Deep margin for D-T\n     (Anchor A point: p_rad 25.7 vs p_alpha 517 MW). Enforcement as\n     a viability constraint is deferred to the predictive-physics\n     item, which introduces p_rad to the model.\n\nOne further documented deviation from 1costingFE: the fuel-type\nash/neutron split (physics.py:160-181) is replaced by the inlined\nD-T ratio 3.52/17.58 (p_alpha below; 1costingFE calls it p_ash) so\nthis calc stays flat and codegen-safe (no nested calc invocation).\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py\n*Ref**: physics.py:290-328 (steps 4-14, mfe_forward_power_balance)\n*Basis**: Steady-state MFE power flow; tokamak/stellarator-generic",
       "calc_expressions": [
-        "p_alpha = 0.2002 * p_nrl",
+        "p_alpha = 3.52 / 17.58 * p_nrl",
         "p_neutron = p_nrl - p_alpha",
         "p_cool = p_tfcool + p_pfcool",
         "p_aux = p_trit + p_house",
         "p_coils = p_tf + p_pf",
-        "p_th = mn * p_neutron + p_input + eta_th * (fpcppf * eta_p + f_sub) * (mn * p_neutron)",
+        "p_th = mn * p_neutron + p_alpha + p_input + eta_p * p_pump",
         "p_the = eta_th * p_th",
         "p_et = p_the",
-        "p_pump = fpcppf * p_the",
-        "p_sub = f_sub * p_the",
+        "p_sub = f_sub * p_et",
         "recirculating = p_coils + p_pump + p_sub + p_aux + p_cool + p_cryo + p_input / eta_pin",
         "q_eng = p_et / recirculating",
         "rec_frac = 1.0 / q_eng",
         "p_net = (1.0 - rec_frac) * p_et",
-        "\nDocumentation:\nMFE (Magnetic Fusion Energy) power balance for tokamaks and\nstellarators: fusion power -> net electric power, engineering Q, and\nrecirculating power fraction.\n\nPower flow:\n  - Alpha / neutron split of fusion power (D-T, inlined)\n  - Thermal power = neutron heating + input + recovered pumping heat\n  - Thermal electric via the conversion efficiency eta_th\n  - Recirculating power: coils + pumping + subsystems + auxiliary\n    + cooling + cryo + wall-plug heating\n  - Engineering Q = gross electric / recirculating\n\nTwo documented deviations from the base PyFECONS balance:\n  1. Direct energy conversion (p_dee, eta_de) is dropped, as in the\n     archived revival base and the WI-009 spec (out of scope).\n  2. The fuel-type-dependent 'Alpha Power Calc' is replaced by an\n     inlined D-T alpha fraction (see p_alpha below) so this calc stays\n     flat and codegen-safe (no nested calc invocation).\nThe top-level q_eng / rec_frac / p_net relations follow current\n1costingFE (physics.py:324-328), not the older archived q_eng\nnumerator.\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py\n*Ref**: physics.py:183-328 (mfe_forward_power_balance)\n*Basis**: Steady-state MFE power flow; tokamak/stellarator-generic"
+        "\nDocumentation:\nMFE (Magnetic Fusion Energy) power balance for tokamaks and\nstellarators: fusion power -> net electric power, engineering Q, and\nrecirculating power fraction. Faithful to 1costingFE\nmfe_forward_power_balance in the DEC-free, non-radiation-limited\nregime (validity conditions below).\n\nPower flow:\n  - Alpha / neutron split of fusion power (D-T, inlined)\n  - Thermal power = blanket neutron heating + charged-particle (alpha)\n    power reaching the wall + heating power + recovered pumping heat\n  - Thermal electric via the conversion efficiency eta_th\n  - Recirculating power: coils + pumping + subsystems + auxiliary\n    + cooling + cryo + wall-plug heating\n  - Engineering Q = gross electric / recirculating\n\nThermal power derivation (WI-019): 1costingFE step 7 is\n  p_th = mn*p_neutron + p_rad + p_wall + eta_p*p_pump   (physics.py:303)\nwith p_wall = p_ash + p_input_eff - p_rad at f_dec = 0\n(physics.py:290-299), so p_rad cancels and\n  p_th = mn*p_neutron + p_alpha + p_input + eta_p*p_pump.\nCharged-particle power reaches the wall as radiation or as transport;\nboth are recovered thermally, so no radiation model is needed here.\n\nValidity conditions (documented regime, WI-019 MR-WI019-4):\n  1. f_dec = 0 -- no direct energy conversion (standing WI-009\n     deviation, out of scope).\n  2. p_rad - p_alpha <= p_input -- non-radiation-limited, so\n     p_input_eff = p_input (physics.py:290). Deep margin for D-T\n     (Anchor A point: p_rad 25.7 vs p_alpha 517 MW). Enforcement as\n     a viability constraint is deferred to the predictive-physics\n     item, which introduces p_rad to the model.\n\nOne further documented deviation from 1costingFE: the fuel-type\nash/neutron split (physics.py:160-181) is replaced by the inlined\nD-T ratio 3.52/17.58 (p_alpha below; 1costingFE calls it p_ash) so\nthis calc stays flat and codegen-safe (no nested calc invocation).\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py\n*Ref**: physics.py:290-328 (steps 4-14, mfe_forward_power_balance)\n*Basis**: Steady-state MFE power flow; tokamak/stellarator-generic"
       ],
       "input_attributes": [
         {
@@ -2935,7 +2919,7 @@
           "is_optional": false
         },
         {
-          "name": "fpcppf",
+          "name": "p_pump",
           "sysml_type": "Real",
           "default_value": null,
           "binding_type": "unbound",
@@ -3135,14 +3119,13 @@
       "references": [],
       "source_file": "models/analyses/mfe_power_balance.sysml",
       "source_line": 4,
-      "source_hash": "f27957f73ef2c5913ee8ee97e19095ca736b57208a8acee5cb96f7fd7b7c2704",
+      "source_hash": "57210c23e2947fa6be63558671488ebaad5b32d624fba7e0df3e747bb8e10556",
       "output_expression_asts": null,
       "all_member_names": [
         "eta_p",
         "eta_pin",
         "eta_th",
         "f_sub",
-        "fpcppf",
         "mn",
         "p_alpha",
         "p_aux",
@@ -3426,17 +3409,17 @@
           "source_attribute_name": "eta_pin"
         },
         {
-          "param_name": "fpcppf",
+          "param_name": "p_pump",
           "source_path": null,
           "binding_type": "literal",
           "is_cross_file": false,
-          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::pb::fpcppf",
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::pb::p_pump",
           "source_instance_elem": null,
           "source_attribute_elem": null,
-          "literal_value": 0.06,
+          "literal_value": 1.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "fpcppf"
+          "source_attribute_name": "p_pump"
         },
         {
           "param_name": "f_sub",
@@ -4951,7 +4934,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "models/analyses/mfe_power_balance.sysml",
-        "source_line": 67,
+        "source_line": 83,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__p_alpha"
       },
@@ -4961,7 +4944,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "models/analyses/mfe_power_balance.sysml",
-        "source_line": 70,
+        "source_line": 86,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__p_neutron"
       },
@@ -4971,7 +4954,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "models/analyses/mfe_power_balance.sysml",
-        "source_line": 73,
+        "source_line": 89,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__p_cool"
       },
@@ -4981,7 +4964,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "models/analyses/mfe_power_balance.sysml",
-        "source_line": 76,
+        "source_line": 92,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__p_aux"
       },
@@ -4991,7 +4974,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "models/analyses/mfe_power_balance.sysml",
-        "source_line": 79,
+        "source_line": 95,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__p_coils"
       },
@@ -5001,7 +4984,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "models/analyses/mfe_power_balance.sysml",
-        "source_line": 85,
+        "source_line": 103,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__p_th"
       },
@@ -5011,7 +4994,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "models/analyses/mfe_power_balance.sysml",
-        "source_line": 91,
+        "source_line": 108,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__p_the"
       },
@@ -5021,19 +5004,9 @@
         "default_value": "p_the",
         "unit": null,
         "source_file": "models/analyses/mfe_power_balance.sysml",
-        "source_line": 95,
+        "source_line": 112,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__p_et"
-      },
-      {
-        "name": "p_pump",
-        "sysml_type": "Real",
-        "default_value": null,
-        "unit": null,
-        "source_file": "models/analyses/mfe_power_balance.sysml",
-        "source_line": 98,
-        "parent_part": "",
-        "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__p_pump"
       },
       {
         "name": "p_sub",
@@ -5041,7 +5014,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "models/analyses/mfe_power_balance.sysml",
-        "source_line": 101,
+        "source_line": 115,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__p_sub"
       },
@@ -5051,7 +5024,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "models/analyses/mfe_power_balance.sysml",
-        "source_line": 105,
+        "source_line": 119,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__recirculating"
       },
@@ -5061,7 +5034,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "models/analyses/mfe_power_balance.sysml",
-        "source_line": 112,
+        "source_line": 126,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__q_eng"
       },
@@ -5071,7 +5044,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "models/analyses/mfe_power_balance.sysml",
-        "source_line": 115,
+        "source_line": 129,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__rec_frac"
       },
@@ -5081,7 +5054,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "models/analyses/mfe_power_balance.sysml",
-        "source_line": 118,
+        "source_line": 132,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__p_net"
       }
@@ -5589,9 +5562,9 @@
       },
       {
         "owning_part_qn": "stellarator_09__stellaris",
-        "attribute_name": "fpcppf",
+        "attribute_name": "p_pump",
         "redefinition_type": "literal",
-        "literal_value": 0.06,
+        "literal_value": 1.0,
         "source_path": null,
         "expression_ast": null,
         "expression_text": "",

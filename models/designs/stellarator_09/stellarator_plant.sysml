@@ -42,11 +42,14 @@ package stellarator_09 {
           - Stellarator coil geometry factor G = 8*pi^2 (vs tokamak 4*pi^2), bound
             on the magnet subsystem.
 
-        HEADLINE FORWARD-PASS RESULT (cross-check, see verification in the WI-018
-        report): plasma volume 564 m^3, fusion power 2700 MW, gross electric
-        897 MW, net electric 575 MW, recirculating fraction 0.36, total overnight
-        capital ~$9.78B, LCOE ~$251/MWh (FOAK). Magnet-dominated (~$4.4B) — the
+        HEADLINE FORWARD-PASS RESULT (WI-019 faithful power balance; executed
+        cross-check in exploration/stellarator_e2e/run_stellaris.py): plasma
+        volume 564 m^3, fusion power 2700 MW, gross electric 1060 MW, net
+        electric 786 MW, recirculating fraction 0.258, total overnight capital
+        ~$10.09B, LCOE ~$189/MWh (FOAK). Magnet-dominated (~$4.4B) — the
         REBCO conductor at the stellarator 5.87 manufacturing markup.
+        (Pre-WI-019, with the lossy power balance: net 575 MW, rec_frac 0.36,
+        ~$9.78B, ~$251/MWh.)
 
         THREE MAPPING TRAPS (documented at their bindings below): r_coil (coil
         bore = radial-build vessel outer radius, not a guess), sigma_v (D-T
@@ -232,6 +235,10 @@ package stellarator_09 {
             p_fus=2700, n_mod=1: 613.650 M$ -> $. The per-building fuel-keyed base
             costs + scaling bases are a dict loop (out of the codegen envelope),
             so the total is a pass-through here.
+            STALE BASIS (surfaced at WI-019 close): those powers are the
+            pre-WI-019 power balance; the corrected powers are p_et=1059.7,
+            p_th=3182.4. Recomputing this pass-through at the corrected powers
+            belongs to the Stage-3 pass-through-scope item, not WI-019.
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
             **Ref**: costs.py:83-144 (cas21_buildings); costing_constants.yaml:175-197
             **Basis**: CAS21 buildings total at the Stellaris design point
@@ -307,8 +314,8 @@ package stellarator_09 {
         :>> eta_pin = 0.5 {   // input-power wall-plug efficiency (ECRH).
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:105 (eta_source_ecrh = 0.50) x steady_state_stellarator.yaml:15 (eta_couple = 1.0) = 0.50 **Basis**: gyrotron wall-plug x ECRH coupling */
         }
-        :>> fpcppf = 0.06 {   // primary coolant pumping-power fraction.
-            doc /* **Source**: archived PyFECONS PowerBalance default **Ref**: archive/work/active/WI-005_power-balance-calculations/plan.md:106 (fpcppf = 0.06) **Basis**: PyFECONS primary-coolant pumping fraction */
+        :>> p_pump = 1.0 {    // primary coolant pumping power [MW].
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:21 (p_pump = 1.0) **Basis**: 1costingFE stellarator primary-coolant pumping power */
         }
         :>> f_sub = 0.03 {    // subsystem/control power fraction.
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:17 (f_sub = 0.03) **Basis**: 1costingFE stellarator subsystem power fraction */
@@ -386,6 +393,9 @@ package stellarator_09 {
             licensing constants (land scales as sqrt(P_net x ref)). Supplied
             without CAS10's own contingency to avoid double-counting the plant's
             CAS29 contingency.
+            STALE BASIS (surfaced at WI-019 close): P_net = 575.3 is the
+            pre-WI-019 value; corrected P_net = 786.1 MW. Recomputation belongs
+            to the Stage-3 pass-through-scope item, not WI-019.
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
             **Ref**: costs.py:52-80 (cas10_preconstruction); costing_constants.yaml:15-30
             **Basis**: CAS10 preconstruction subtotal at the Stellaris design point
@@ -419,6 +429,9 @@ package stellarator_09 {
             CAS70 O&M = om_cost_dt x (P_net/1 GWe)^0.5 = 54.9 x (575.3/1000)^0.5 =
             41.641 M$/yr -> $. Inflation and scheduled-replacement (CAS72)
             refinements are a Stage-3 item.
+            STALE BASIS (surfaced at WI-019 close): P_net = 575.3 is the
+            pre-WI-019 value; corrected P_net = 786.1 MW. Recomputation belongs
+            to the Stage-3 pass-through-scope item, not WI-019.
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
             **Ref**: costing_constants.yaml:272 (om_cost_dt = 54.9 M$/yr at 1 GWe); costs.py:319-347 (power-law 0.5)
             **Basis**: staffing-based DT O&M, power-law scaled

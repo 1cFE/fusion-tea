@@ -5,3 +5,4 @@ Element,File,Type,Knowledge,Requirement,Source_Type,Source_Document,Source_Locat
 'Meier COE',models/library/analyses/hif_economics.sysml,calc_def,,MR-WI008-3,authority,Meier 1986,Eq. 1 (lines 76-102),high,,2026-03-03
 'HIF Driver',models/designs/hif_ife/hif_driver.sysml,part_def,"DI-002,DI-004",MR-WI008-1,authority,EIF-1992,Osiris operating parameters,high,,2026-03-03
 hif_plant,models/designs/hif_ife/hif_plant.sysml,part_usage,"DI-001,DI-003,DI-005","MR-WI008-4,MR-WI008-5",mixed,"EIF-1992,Meier 1986,Bangerter 2013",Multiple tables and equations,high,"alpha and epsilon [ESTIMATED]",2026-03-03
+'MFE Power Balance Calc',models/library/analyses/mfe_power_balance.sysml,calc_def,,,codebase,1costingFE @ 0254385,physics.py:290-328 (steps 4-14); steady_state_stellarator.yaml:21,,,2026-07-14

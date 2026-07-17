@@ -222,21 +222,23 @@ def main():
     check("total_capital", total, o["total_capital"])
     check("lcoe", b[CH["lcoe"]], o["lcoe"])
 
-    # ---- WI-018 headline oracle (looser, sanity band) ------------------------
-    print("\n=== WI-018 HEADLINE CHECK ===")
+    # ---- WI-019 headline oracle (looser, sanity band) ------------------------
+    # Updated for the WI-019 faithful power balance (was the WI-018 table:
+    # p_net 575, rec_frac 0.36, q_eng 2.8, total 9.78, LCOE 251).
+    print("\n=== WI-019 HEADLINE CHECK ===")
     heads = [
         ("plasma volume V [m3]", b[CH["V"]], 564, 2),
         ("fusion power [MW]", b[CH["p_fus"]], 2700, 5),
-        ("net electric [MW]", b[CH["p_net"]], 575, 3),
-        ("rec_frac", b[CH["rec_frac"]], 0.36, 0.01),
-        ("q_eng", b[CH["q_eng"]], 2.8, 0.05),
-        ("total capital [$B]", total / 1e9, 9.78, 0.05),
-        ("LCOE [$/MWh]", b[CH["lcoe"]], 251, 2),
-        ("magnet capital [$B]", b[CH["magnet"]] / 1e9, 4.4, 0.05),
+        ("net electric [MW]", b[CH["p_net"]], 786, 3),
+        ("rec_frac", b[CH["rec_frac"]], 0.258, 0.01),
+        ("q_eng", b[CH["q_eng"]], 3.87, 0.05),
+        ("total capital [$B]", total / 1e9, 10.09, 0.05),
+        ("LCOE [$/MWh]", b[CH["lcoe"]], 189, 2),
+        ("magnet capital [$B]", b[CH["magnet"]] / 1e9, 4.39, 0.05),
     ]
     for label, val, target, tol in heads:
         ok = abs(val - target) <= tol
-        print(f"  {label:24s} exec={val:14.4f}  WI-018~={target:<10}  "
+        print(f"  {label:24s} exec={val:14.4f}  WI-019~={target:<10}  "
               f"{'OK' if ok else 'FAIL'}")
         if not ok:
             failures.append("HEAD:" + label)
@@ -274,7 +276,7 @@ def main():
     if failures:
         raise SystemExit(f"{len(failures)} check(s) FAILED: {failures}")
     print(f"ALL CHECKS PASSED (channel-vs-oracle rel tol {REL_TOL}); "
-          "WI-018 headline reproduced.")
+          "WI-019 headline reproduced.")
 
 
 if __name__ == "__main__":

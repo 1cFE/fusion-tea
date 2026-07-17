@@ -148,7 +148,7 @@ modules:
       eta_th: float system_design.stellarator_09__stellaris__pb__eta_th
       eta_p: float system_design.stellarator_09__stellaris__pb__eta_p
       eta_pin: float system_design.stellarator_09__stellaris__pb__eta_pin
-      fpcppf: float system_design.stellarator_09__stellaris__pb__fpcppf
+      p_pump: float system_design.stellarator_09__stellaris__pb__p_pump
       f_sub: float system_design.stellarator_09__stellaris__pb__f_sub
       p_tf: float system_design.stellarator_09__stellaris__pb__p_tf
       p_pf: float system_design.stellarator_09__stellaris__pb__p_pf

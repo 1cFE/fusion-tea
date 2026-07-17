@@ -126,7 +126,7 @@ package mfe_plant {
         attribute eta_th : Real;    // thermal-to-electric efficiency
         attribute eta_p : Real;     // pumping-power capture efficiency
         attribute eta_pin : Real;   // input-power wall-plug efficiency
-        attribute fpcppf : Real;    // primary coolant pumping-power fraction
+        attribute p_pump : Real;    // primary coolant pumping power [MW]
         attribute f_sub : Real;     // subsystem/control fraction
         attribute p_tf : Real;      // TF coil power [MW]
         attribute p_pf : Real;      // PF coil power [MW]
@@ -143,7 +143,7 @@ package mfe_plant {
             in eta_th = eta_th;
             in eta_p = eta_p;
             in eta_pin = eta_pin;
-            in fpcppf = fpcppf;
+            in p_pump = p_pump;
             in f_sub = f_sub;
             in p_tf = p_tf;
             in p_pf = p_pf;

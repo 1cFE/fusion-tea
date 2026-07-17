@@ -188,10 +188,9 @@ def set_1cfe_inputs(o):
         f"{P}pb__p_input": pb["p_input"], f"{P}pb__mn": pb["mn"],
         f"{P}pb__eta_th": pb["eta_th"], f"{P}pb__eta_p": pb["eta_p"],
         f"{P}pb__eta_pin": eta_pin, f"{P}pb__f_sub": pb["f_sub"],
-        # MAPPING TRAP: SysML models pumping as a fraction (fpcppf) of p_the;
-        # 1costingFE has no fpcppf (it uses an absolute p_pump MW). No 1cfe
-        # counterpart -> keep the SysML/Stellaris value 0.06 and footnote it.
-        f"{P}pb__fpcppf": 0.06,
+        # WI-019: pumping power is now the same absolute p_pump [MW] input as
+        # 1costingFE (former fpcppf mapping trap resolved).
+        f"{P}pb__p_pump": pb["p_pump"],
         # SysML splits coils/cooling into tf/pf; 1costingFE has single
         # p_coils / p_cool. Put the full 1cfe value in the tf slot, 0 in pf.
         f"{P}pb__p_tf": pb["p_coils"], f"{P}pb__p_pf": 0.0,

@@ -52,6 +52,11 @@ epics:
     scale: standard
     status: backlog
     completed: null
+  - id: WI-019
+    name: Faithful MFE Power Balance
+    scale: standard
+    status: completed
+    completed: '2026-07-14'
 - name: Pipeline De-Risk & Demonstration
   goal: null
   priority: P0
@@ -109,6 +114,7 @@ standalone: []
 | WI-011 | Tokamak & Stellarator Instantiations | standard | backlog |  |
 | WI-012 | Codegen + Viability Sweep | standard | backlog |  |
 | WI-018 | Concept-09 QI Stellarator Initial Model | standard | backlog |  |
+| WI-019 | Faithful MFE Power Balance | standard | completed | Completed 2026-07-14 |
 
 ## Epic: Pipeline De-Risk & Demonstration
 **Priority**: P0 | **Status**: active

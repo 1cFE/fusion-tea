@@ -17,7 +17,7 @@ IN = dict(
     n_e=3.37e20, sigma_v=5.985e-23, E_fus=2.817e-12,
     # power balance
     p_input=50.0, mn=1.2, eta_th=0.333, eta_p=0.5, eta_pin=0.5,
-    fpcppf=0.06, f_sub=0.03,
+    p_pump=1.0, f_sub=0.03,  # p_pump: 1costingFE steady_state_stellarator.yaml:21 (WI-019)
     p_tf=111.0, p_pf=0.0, p_tfcool=15.0, p_pfcool=0.0,
     p_trit=10.0, p_house=4.0, p_cryo=0.8,
     # magnet
@@ -56,19 +56,18 @@ def compute():
     V = 2.0 * (p["pi"] ** 2) * p["R"] * (p["a"] ** 2) * p["kappa"]
     # --- DT Fusion Power ---
     p_fus = 0.25 * (p["n_e"] ** 2) * p["sigma_v"] * p["E_fus"] * V * 1.0e-6
-    # --- MFE Power Balance ---
-    p_alpha = 0.2002 * p_fus
+    # --- MFE Power Balance (WI-019 faithful form; physics.py:290-328) ---
+    p_alpha = (3.52 / 17.58) * p_fus
     p_neutron = p_fus - p_alpha
     p_cool = p["p_tfcool"] + p["p_pfcool"]
     p_aux = p["p_trit"] + p["p_house"]
     p_coils = p["p_tf"] + p["p_pf"]
-    p_th = (p["mn"] * p_neutron + p["p_input"]
-            + p["eta_th"] * (p["fpcppf"] * p["eta_p"] + p["f_sub"]) * (p["mn"] * p_neutron))
+    p_th = (p["mn"] * p_neutron + p_alpha + p["p_input"]
+            + p["eta_p"] * p["p_pump"])
     p_the = p["eta_th"] * p_th
     p_et = p_the
-    p_pump = p["fpcppf"] * p_the
-    p_sub = p["f_sub"] * p_the
-    recirculating = (p_coils + p_pump + p_sub + p_aux + p_cool + p["p_cryo"]
+    p_sub = p["f_sub"] * p_et
+    recirculating = (p_coils + p["p_pump"] + p_sub + p_aux + p_cool + p["p_cryo"]
                      + p["p_input"] / p["eta_pin"])
     q_eng = p_et / recirculating
     rec_frac = 1.0 / q_eng

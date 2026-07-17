@@ -1,6 +1,6 @@
 # Current Work
 
-**Last Updated**: 2026-07-12
+**Last Updated**: 2026-07-14
 
 ---
 
@@ -10,9 +10,24 @@
 
 **Status**: `aries-cs-holdout` implemented and committed (`8939d9dc` + ratification follow-up), pending `/_my_audit`. Quarantine live at `knowledge/holdout/aries-cs/` (4 PDFs + manifest + README + PROTOCOL.md, plus one CLAUDE.md line); all leak-surface verifications passed. Owner ratified (2026-07-13) the two ingestion-time barred-list additions (the `knowledge/sources` Helios extraction and a concept-36 ARIES-CS stub). Note: ARIES mirrors are all dead — PDFs came from Wayback snapshots of the canonical URLs, recorded in PROTOCOL §7. Concept at `.project/concepts/stellarator-mbse-demo.md`. On branch `feat/stellarator-mbse-demo`.
 
-### Stellarator MBSE Demo — Stage 2 (initial model) BUILT, uncommitted (2026-07-13)
+### Stellarator MBSE Demo — Stage 3 item 1 DONE: WI-019 faithful power balance (2026-07-14, uncommitted)
 
-**Status**: The full Stage-2 initial-model chain is built, validated, and end-to-end-run — **uncommitted in the worktree**, pending review/commit. All demo model-development sessions respected the ARIES-CS blocklist.
+**Status**: WI-019 implemented, validated, handshake-verified — **uncommitted in the worktree**, pending review/commit. Spec → owner checkpoint (approved, order 3→4→1→2 confirmed) → design → plan → implement, all same-day. PROTOCOL.md respected; sourcing 1costingFE @ `0254385` only.
+
+**What changed**: `'MFE Power Balance Calc'` now computes the faithful thermal power `p_th = mn·p_neutron + p_alpha + p_input + eta_p·p_pump` — the collapsed form of 1costingFE physics.py steps 4–7 (p_rad cancels algebraically at f_dec=0; no radiation model needed). `p_pump` is 1costingFE's absolute input (fpcppf trap resolved), alpha fraction exact (3.52/17.58). Consumers rebound (generic plant, concept-09 instance, staged e2e copies, oracle); pipeline regenerated; handshake re-run.
+
+**Results**: **SV-025 passing** — all six power channels match 1costingFE at ≤6.3e-8 (float32 floor; tolerance was 1e-5). **SV-026 passing** — all 12 power-scaled accounts end-to-end ≤1e-7 (was −8.6…−16.4%). Net electric at the 1 GWe point now exact. **New Stellaris headline: p_net 786 MW (was 575), q_eng 3.87, total $10.09B, LCOE $189/MWh (was 251).** LCOE handshake gap moved −13%→−31% *by design*: the old figure was two errors partly cancelling (understated capital vs understated denominator); the −31% is the honest structural distance (unmodeled CAS22 tail + CAS40/50/60 + LCOE construction) and is the measured target for the remaining account-scope items.
+
+**Surfaced at close (owner attention)**:
+1. Three pass-throughs (`buildings_capital`, `preconstruction_capital`, `annual_om`) were derived at the old p_net=575; annotated STALE BASIS in the instance files. Recomputing them (Stage-3 account-scope item) will move capital/LCOE again.
+2. SV-016's "Q_eng ~10–40" band predates the fix; measured 3.87 (Stellaris) / 8.84 (1cfe 1 GWe). Needs owner adjust/annotate.
+3. Pre-existing broken test `tests/models/test_power_balance.py` (targets pre-WI-009 layout; fails at HEAD) — candidate small backlog item.
+
+**Next**: owner review + commit; then demo item 4 (stellarator-correct geometry) per the approved 3→4→1→2 order — new `/spec-model` + owner checkpoint.
+
+### Stellarator MBSE Demo — Stage 2 (initial model) BUILT + committed (2026-07-13, `c3f3089e`)
+
+**Status**: The full Stage-2 initial-model chain is built, validated, end-to-end-run, and committed at `c3f3089e`. All demo model-development sessions respected the ARIES-CS blocklist. (Stage-2 headline numbers below are pre-WI-019; see the Stage-3 entry above for current.)
 
 **What was built (WI-009 → WI-010 → WI-018 → codegen → handshake):**
 - **WI-009 MFE cost-structure library** (`models/library/`, 7 files): enum `mfe_divergent`, MFE CAS22 sub-accounts + `'Magnet System'`, and the plasma-scaling / power-balance / magnet-cost / LCOE-DCF / viability calc+constraint defs. Sourced purely from **1costingFE @ `0254385`** (clean; ARIES-CS anchor dropped, barred citations re-pointed — see contamination note below). AD-007 registered; SV-019/020/021/022 passing.

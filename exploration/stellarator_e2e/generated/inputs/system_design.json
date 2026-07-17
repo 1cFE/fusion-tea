@@ -26,17 +26,17 @@
   "stellarator_09__stellaris__pb__eta_pin": 0.5,
   "stellarator_09__stellaris__pb__eta_th": 0.333,
   "stellarator_09__stellaris__pb__f_sub": 0.03,
-  "stellarator_09__stellaris__pb__fpcppf": 0.06,
   "stellarator_09__stellaris__pb__mn": 1.2,
   "stellarator_09__stellaris__pb__p_cryo": 0.8,
   "stellarator_09__stellaris__pb__p_house": 4.0,
   "stellarator_09__stellaris__pb__p_input": 50.0,
   "stellarator_09__stellaris__pb__p_pf": 0.0,
   "stellarator_09__stellaris__pb__p_pfcool": 0.0,
+  "stellarator_09__stellaris__pb__p_pump": 1.0,
   "stellarator_09__stellaris__pb__p_tf": 111.0,
   "stellarator_09__stellaris__pb__p_tfcool": 15.0,
   "stellarator_09__stellaris__pb__p_trit": 10.0,
-  "mfe_plant__MFE_Power_Plant__p_th": 2693.145642138805,
-  "mfe_plant__MFE_Power_Plant__p_the": 896.8174988322222,
-  "mfe_plant__MFE_Power_Plant__p_et": 896.8174988322222
+  "mfe_plant__MFE_Power_Plant__p_th": 3182.3989700886755,
+  "mfe_plant__MFE_Power_Plant__p_the": 1059.738857039529,
+  "mfe_plant__MFE_Power_Plant__p_et": 1059.738857039529
 }

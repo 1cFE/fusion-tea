@@ -5,28 +5,43 @@ package mfe_power_balance {
         doc /*
         MFE (Magnetic Fusion Energy) power balance for tokamaks and
         stellarators: fusion power -> net electric power, engineering Q, and
-        recirculating power fraction.
+        recirculating power fraction. Faithful to 1costingFE
+        mfe_forward_power_balance in the DEC-free, non-radiation-limited
+        regime (validity conditions below).
 
         Power flow:
           - Alpha / neutron split of fusion power (D-T, inlined)
-          - Thermal power = neutron heating + input + recovered pumping heat
+          - Thermal power = blanket neutron heating + charged-particle (alpha)
+            power reaching the wall + heating power + recovered pumping heat
           - Thermal electric via the conversion efficiency eta_th
           - Recirculating power: coils + pumping + subsystems + auxiliary
             + cooling + cryo + wall-plug heating
           - Engineering Q = gross electric / recirculating
 
-        Two documented deviations from the base PyFECONS balance:
-          1. Direct energy conversion (p_dee, eta_de) is dropped, as in the
-             archived revival base and the WI-009 spec (out of scope).
-          2. The fuel-type-dependent 'Alpha Power Calc' is replaced by an
-             inlined D-T alpha fraction (see p_alpha below) so this calc stays
-             flat and codegen-safe (no nested calc invocation).
-        The top-level q_eng / rec_frac / p_net relations follow current
-        1costingFE (physics.py:324-328), not the older archived q_eng
-        numerator.
+        Thermal power derivation (WI-019): 1costingFE step 7 is
+          p_th = mn*p_neutron + p_rad + p_wall + eta_p*p_pump   (physics.py:303)
+        with p_wall = p_ash + p_input_eff - p_rad at f_dec = 0
+        (physics.py:290-299), so p_rad cancels and
+          p_th = mn*p_neutron + p_alpha + p_input + eta_p*p_pump.
+        Charged-particle power reaches the wall as radiation or as transport;
+        both are recovered thermally, so no radiation model is needed here.
+
+        Validity conditions (documented regime, WI-019 MR-WI019-4):
+          1. f_dec = 0 -- no direct energy conversion (standing WI-009
+             deviation, out of scope).
+          2. p_rad - p_alpha <= p_input -- non-radiation-limited, so
+             p_input_eff = p_input (physics.py:290). Deep margin for D-T
+             (Anchor A point: p_rad 25.7 vs p_alpha 517 MW). Enforcement as
+             a viability constraint is deferred to the predictive-physics
+             item, which introduces p_rad to the model.
+
+        One further documented deviation from 1costingFE: the fuel-type
+        ash/neutron split (physics.py:160-181) is replaced by the inlined
+        D-T ratio 3.52/17.58 (p_alpha below; 1costingFE calls it p_ash) so
+        this calc stays flat and codegen-safe (no nested calc invocation).
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py
-        **Ref**: physics.py:183-328 (mfe_forward_power_balance)
+        **Ref**: physics.py:290-328 (steps 4-14, mfe_forward_power_balance)
         **Basis**: Steady-state MFE power flow; tokamak/stellarator-generic
         */
 
@@ -40,8 +55,8 @@ package mfe_power_balance {
         in attribute eta_p : Real;      // Pumping power capture efficiency
         in attribute eta_pin : Real;    // Input power wall-plug efficiency
 
-        // === POWER FRACTIONS ===
-        in attribute fpcppf : Real;     // Primary coolant pumping power fraction
+        // === PUMPING / SUBSYSTEM POWER ===
+        in attribute p_pump : Real;     // Primary coolant pumping power [MW]
         in attribute f_sub : Real;      // Subsystem and control fraction
 
         // === COIL POWER ===
@@ -59,12 +74,13 @@ package mfe_power_balance {
 
         // === CALCULATIONS ===
 
-        // D-T alpha power: 0.2002 = E_alpha / Q = 3.52 MeV / 17.58 MeV, the
-        // charged-particle (ash) fraction of D-T fusion energy. Replaces the
-        // fuel-type 'Alpha Power Calc' with an inlined D-T constant.
+        // D-T alpha (ash) power at full precision: E_alpha / Q = 3.52 / 17.58,
+        // the charged-particle fraction of D-T fusion energy, written as the
+        // ratio (not a rounded literal) so p_th matches 1costingFE to float
+        // precision. Replaces the fuel-type 'Alpha Power Calc'.
         // Source: physics.py:32 (E_ALPHA_DT=3.52), physics.py:34 (Q_DT=17.58),
         //         physics.py:177 (ash_frac = (E_total - E_neutron)/E_total)
-        attribute p_alpha : Real = 0.2002 * p_nrl;
+        attribute p_alpha : Real = (3.52 / 17.58) * p_nrl;
 
         // Neutron power. Source: physics.py:179 (p_neutron = p_fus*(1-ash_frac))
         attribute p_neutron : Real = p_nrl - p_alpha;
@@ -78,13 +94,14 @@ package mfe_power_balance {
         // Coil power aggregation (TF + PF).
         attribute p_coils : Real = p_tf + p_pf;
 
-        // Thermal power (neutron heating + input + recovered pumping heat).
-        // Exposed as an output so the plant cost spine scales with the
-        // forward-computed thermal power (WI-010).
-        // Source: archived PyFECONS PowerBalance.py:15-21 (DEC-free form)
+        // Thermal power: blanket neutron heating + alpha power reaching the
+        // wall + heating power + recovered pumping heat. Collapsed form of
+        // 1costingFE steps 4-7 (derivation in the header doc). Exposed as an
+        // output so the plant cost spine scales with the forward-computed
+        // thermal power (WI-010).
+        // Source: physics.py:290-303 (p_input_eff, p_transport, p_wall, p_th)
         out attribute p_th : Real =
-            mn * p_neutron + p_input
-            + eta_th * (fpcppf * eta_p + f_sub) * (mn * p_neutron);
+            mn * p_neutron + p_alpha + p_input + eta_p * p_pump;
 
         // Thermal electric power. Exposed for the plant cost spine (WI-010).
         // Source: physics.py:306 (p_the = eta_th*p_th)
@@ -94,11 +111,8 @@ package mfe_power_balance {
         // spine (WI-010). Source: physics.py:309 (p_et, p_dee=0 here)
         out attribute p_et : Real = p_the;
 
-        // Pumping power. Source: archived PowerBalance.py:26 (p_pump=fpcppf*p_the)
-        attribute p_pump : Real = fpcppf * p_the;
-
         // Subsystem power. Source: physics.py:315 (p_sub = f_sub * p_et)
-        attribute p_sub : Real = f_sub * p_the;
+        attribute p_sub : Real = f_sub * p_et;
 
         // Recirculating power.
         // Source: physics.py:321-323
