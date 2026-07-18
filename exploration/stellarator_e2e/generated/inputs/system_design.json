@@ -39,7 +39,7 @@
   "stellarator_09__stellaris__pb__p_pf": 0.0,
   "stellarator_09__stellaris__pb__p_pfcool": 0.0,
   "stellarator_09__stellaris__pb__p_pump": 1.0,
-  "stellarator_09__stellaris__pb__p_tf": 111.0,
+  "stellarator_09__stellaris__pb__p_tf": 0.0,
   "stellarator_09__stellaris__pb__p_tfcool": 15.0,
   "stellarator_09__stellaris__pb__p_trit": 10.0,
   "stellarator_09__stellaris__rb__R": 12.7,

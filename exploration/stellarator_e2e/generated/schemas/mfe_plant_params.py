@@ -21,7 +21,7 @@ class MfePlantParams(BaseModel):
     stellarator_09__stellaris__indirect__direct_cost: float = Field(default=1.0, description="Entry point: direct_cost")
     stellarator_09__stellaris__indirect__reference_construction_time: float = Field(default=6.0, description="Entry point: reference_construction_time")
     stellarator_09__stellaris__lcoe_calc__total_capital: float = Field(default=1.0, description="Entry point: total_capital")
-    stellarator_09__stellaris__magnet__B: float = Field(default=5.86, description="Entry point: B")
+    stellarator_09__stellaris__magnet__B: float = Field(default=9.0, description="Entry point: B")
     stellarator_09__stellaris__magnet__G: float = Field(default=78.95683520871486, description="Entry point: G")
     stellarator_09__stellaris__magnet__R0: float = Field(default=12.7, description="Entry point: R0")
     stellarator_09__stellaris__magnet__coil_markup: float = Field(default=5.87, description="Entry point: coil_markup")

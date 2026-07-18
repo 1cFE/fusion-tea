@@ -63,10 +63,14 @@ IN = dict(
     # power balance
     p_input=50.0, mn=1.2, eta_th=0.333, eta_p=0.5, eta_pin=0.5,
     p_pump=1.0, f_sub=0.03,  # p_pump: 1costingFE steady_state_stellarator.yaml:21 (WI-019)
-    p_tf=111.0, p_pf=0.0, p_tfcool=15.0, p_pfcool=0.0,
+    # p_tf = 0.0 (WI-023): source defers parasitic electricity consumption; the
+    #   old 111.0 mapped a phantom "conduction power to coils" row (111 is the
+    #   stored magnetic energy in GJ). No invented value; derivation is WI-024.
+    p_tf=0.0, p_pf=0.0, p_tfcool=15.0, p_pfcool=0.0,
     p_trit=10.0, p_house=4.0, p_cryo=0.8,
-    # magnet
-    magnet_G=78.95683520871486, magnet_B=5.86, magnet_R0=12.7,
+    # magnet — B = 9.0 (WI-023): axis-averaged B_0 printed in the Table 2/5
+    #   images (the old 5.86 cited a phantom Table 3 text row).
+    magnet_G=78.95683520871486, magnet_B=9.0, magnet_R0=12.7,
     magnet_cost_per_kAm=50.0, magnet_coil_markup=5.87,  # r_coil now from radial build (WI-021)
     mu0=1.25663706212e-6,
     # blanket / shield / structure / vessel / power supplies (unit costs in $)

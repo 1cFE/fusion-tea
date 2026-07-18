@@ -46,28 +46,30 @@ package stellarator_09 {
           - Stellarator coil geometry factor G = 8*pi^2 (vs tokamak 4*pi^2), bound
             on the magnet subsystem.
 
-        HEADLINE FORWARD-PASS RESULT (WI-022 predictive confinement + errata
-        rebind; executed in exploration/stellarator_e2e/run_stellaris.py):
+        HEADLINE FORWARD-PASS RESULT (WI-023 magnet-field errata; executed in
+        exploration/stellarator_e2e/run_stellaris.py):
         plasma volume 425 m^3 (printed value; a = 1.3), fusion power 2748.1 MW
         (profile-integrated, +1.8% vs the 2700 design point), thermal power
-        3238 MW, gross electric 1078 MW, net electric 804.1 MW, recirculating
-        fraction 0.254, q_eng 3.93, total overnight capital $9.59B, LCOE
-        $176.07/MWh (FOAK). Magnet $4.12B (42.9%) at the stellarator 5.87
-        REBCO markup (bore shrank with the corrected a = 1.3).
+        3238 MW, gross electric 1078 MW, net electric 915.1 MW, recirculating
+        fraction 0.151, q_eng 6.61, total overnight capital $12.60B, LCOE
+        $201.46/MWh (FOAK). Magnet $6.32B (50.2%) at the printed axis-averaged
+        B_0 = 9.0 T and the stellarator 5.87 REBCO markup.
         (History: WI-018 lossy balance net 575, ~$251/MWh; WI-019 faithful
         balance at torus volume net 786, ~$189/MWh; WI-020 corrected the
         volume to the then-tabulated 448, net 578, ~$247/MWh; WI-022 replaced
         the 0D reactivity with the sourced profile integral and rebound the
-        geometry to the image-verified a = 1.3 / V = 425 — the WI-020-era
-        a = 1.5 / V = 448 rows were text-extraction artifacts.)
+        geometry to the image-verified a = 1.3 / V = 425, net 804.1,
+        ~$176/MWh, magnet 42.9%; WI-023 rebound the magnet field to the
+        printed 9.0 T — 5.86 was a phantom text row — and zeroed the phantom
+        p_tf = 111, which the paper prints only as stored magnetic energy in
+        GJ, not a power.)
 
         THREE MAPPING TRAPS (documented at their bindings below): r_coil (coil
         bore = radial-build vessel outer radius, not a guess), sigma_v (0D
         bypass input — sigma_v = 0 here selects the profile-integrated
         reactivity in the handwritten codegen stage), and B (coil-cost field is
-        the Table-3-cited 5.86 T loop-center value, NOT the 24.9 T
-        peak-on-winding; under review as WI-023 — the Table 2/5 images print
-        axis-averaged B_0 = 9.0 T).
+        the axis-averaged B_0 = 9.0 T printed in the Table 2/5 images, NOT the
+        24.9 T peak-on-winding).
 
         **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
         **Ref**: Table 2 image (images/page_002_table_0.png), Table 5 image
@@ -83,45 +85,52 @@ package stellarator_09 {
             doc /*
             Stellaris HTS modular-coil system.
 
-            MAPPING TRAP (B vs b_center): the coil-cost field is the loop-center
-            (on-axis) field 5.86 T, NOT the 24.9 T peak field on the winding pack.
-            The ampere-meter conductor-quantity model uses the field at the loop
-            center; the peak-on-winding is a conductor-grade concern, not a
-            cost-quantity term.
+            MAPPING TRAP (B vs b_center): the coil-cost field is the axis-averaged
+            (loop-center) field 9.0 T, NOT the 24.9 T peak field on the winding
+            pack printed beside it in Table 2. The ampere-meter conductor-quantity
+            model uses the field at the loop center; the peak-on-winding is a
+            conductor-grade concern, not a cost-quantity term.
+            (History: the prior B = 5.86 cited a Table 3 text row absent from the
+            table image and from the published paper — raw.pdf-confirmed, WI-023.)
 
             MAPPING TRAP (r_coil): the coil-bore radius = the radial-build vessel
             outer radius (vessel_or). From the stellarator radial build:
               vessel_or = a + vacuum_t + firstwall_t + blanket_t + reflector_t
                           + ht_shield_t + structure_t + gap1_t + vessel_t
-                        = 1.5 + 0.10 + 0.05 + 0.80 + 0.20 + 0.20 + 0.15 + 0.10 + 0.10
-                        = 3.20 m
+                        = 1.3 + 0.10 + 0.05 + 0.80 + 0.20 + 0.20 + 0.15 + 0.10 + 0.10
+                        = 3.00 m
             The blanket/shield/structure/vessel thicknesses are the 1costingFE
             stellarator defaults; the vacuum/firstwall/reflector/gap thicknesses
-            are the RadialBuild dataclass defaults; a = 1.5 m is the Stellaris
-            minor radius. Verified against costingfe.layers.geometry.
-            compute_geometry(STELLARATOR): vessel_or = 3.2000 m.
+            are the RadialBuild dataclass defaults; a = 1.3 m is the Stellaris
+            minor radius (Table 2 image, WI-022 errata rebind). Layer-sum formula
+            verified against costingfe.layers.geometry (geometry.py:106-114).
 
-            **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py
-            **Ref**: geometry.py:106-114 (vessel_or radial-build sum);
-                steady_state_stellarator.yaml:39-42 (blanket/shield/structure/
-                vessel thickness); stellaris-design-details.md line 228 (a=1.5 m);
-                stellaris-design-details.md Table 3 line 289 (B_0 = 5.86 T)
-            **Basis**: coil bore = radial-build vessel_or; on-axis field for cost
+            **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
+            **Ref**: Table 2 image (images/page_002_table_0.png: axis av. field 9.0 T; peak
+                conductor 24.9 T); Table 5 image (images/page_009_table_0.png: axis-averaged
+                B_0 9.0 T, Points A/B); phantom 5.86 refuted vs knowledge/concept_research/
+                09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/
+                tmpissrtbos/raw.pdf (no "5.86" in the published paper; Table 3 has no field
+                row); geometry.py:106-114 (vessel_or layer sum);
+                steady_state_stellarator.yaml:39-42 (thicknesses)
+            **Basis**: coil bore = radial-build vessel_or; axis-averaged on-axis field for cost
             */
 
             // G = 8*pi^2 stellarator geometry factor (family constant).
             // Source: costing_constants.yaml coil geometry (stellarator G=8pi^2);
             //   literal to stay in the codegen envelope (no redef expr drop).
             :>> G = 78.95683520871486;
-            // On-axis (loop-center) field [T]. Source: stellaris-design-details.md
-            //   Table 3 line 289 (B_0 = 5.86 T). NOT the 24.9 T peak-on-winding.
-            :>> B = 5.86;
+            // Axis-averaged (loop-center) field [T]. Source: Table 2 image
+            //   (page_002_table_0.png: "Axis av. magnetic field strength [T] 9.0") and
+            //   Table 5 image (page_009_table_0.png: "Axis averaged B_0 [T] 9.0", Points
+            //   A and B). NOT the 24.9 T peak-on-winding printed beside it in Table 2.
+            :>> B = 9.0;
             // Major radius [m]. Source: stellaris-design-details.md Table 2 /
             //   line 251 (R ~= 12.7 m).
             :>> R0 = 12.7;
             // Coil-bore radius [m] = radial-build vessel_or. Forward-computed
             // (WI-021): the generic plant binds magnet.r_coil = rb.r_coil, so
-            // r_coil = 3.20 m falls out of the radial build (was an injected
+            // r_coil = 3.00 m falls out of the radial build (was an injected
             // constant here).
             // REBCO HTS conductor [$/kA-m]. Source: costing_constants.yaml:57
             //   (conductor_cost_rebco = 50.0). NOT x1e6 — already $/kA-m; the
@@ -422,14 +431,25 @@ package stellarator_09 {
         :>> f_sub = 0.03 {    // subsystem/control power fraction.
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:17 (f_sub = 0.03) **Basis**: 1costingFE stellarator subsystem power fraction */
         }
-        :>> p_tf = 111.0 {    // coil power [MW] (conduction power to coils).
+        :>> p_tf = 0.0 {      // coil recirculating power [MW] — source defers; no invented value (WI-023).
             doc /*
-            Coil-system recirculating power, mapped from the Stellaris "conduction
-            power to coils" (111 MW). For SC modular coils this is the cold-mass
-            heat load driving the coil/cryo recirculating power; the spec directs
-            it to the p_tf coil-power slot (p_pf = 0, no PF coils). A finer
-            cold-mass -> cryo-electrical (COP) treatment is a Stage-3 item.
-            **Source**: stellaris-design-details.md **Ref**: Table 2 line 235 (conduction power to coils = 111 MW) **Basis**: Stellaris coil-system recirculating power
+            Coil-system recirculating power: bound 0.0 because no admissible source
+            prints one. The prior 111.0 mapped a "conduction power to coils" text row
+            that does not exist in the paper — the published Stellaris paper prints
+            111 only as stored magnetic energy [GJ] (Table 2 image) and explicitly
+            defers parasitic electricity consumption ("outside the scope of this
+            paper", conclusion; raw.pdf-confirmed). Its only coil-thermal figures —
+            35.5 W/m^3 winding-pack nuclear-heating density (Table 6 image) and
+            ~7.5 kW resistive-joint losses (sec. 2.9) — are not convertible to a
+            plant-level MW without invented inputs (winding-pack volume, 20 K cryo
+            COP), so per the no-fallbacks rule the slot carries no invented value
+            ([OWNER] ruling 2026-07-18). Known-optimistic until WI-024 (backlog:
+            recirculating-power derivation from heat loads + COP) lands; p_tfcool
+            (15 MW) and p_cryo (0.8 MW), both 1costingFE-sourced, still carry some
+            coil-adjacent load.
+            **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf
+            **Ref**: conclusion (parasitic electricity consumption outside the paper's scope); Table 2 image (iter-01 .../stellaris-design-details/images/page_002_table_0.png: 111 = stored magnetic energy [GJ]; no conduction-power row)
+            **Basis**: deferred by the source; 0.0 pending the WI-024 derivation — cites no MW value
             */
         }
         :>> p_tfcool = 15.0 { // coil cooling power [MW].
@@ -495,12 +515,12 @@ package stellarator_09 {
             licensing constants (land scales as sqrt(P_net x ref)). Supplied
             without CAS10's own contingency to avoid double-counting the plant's
             CAS29 contingency.
-            STALE BASIS (surfaced at WI-019 close, updated WI-022): P_net = 575.3
+            STALE BASIS (surfaced at WI-019 close, updated WI-023): P_net = 575.3
             was the WI-018 value. WI-019 moved it to 786.1, WI-020 to 578.0,
-            and WI-022 (profile-integrated reactivity + geometry rebind) to
-            804.1 — ~40% above the 575.3 basis this pass-through was computed
-            at. Recomputation still belongs to the Stage-3 pass-through-scope
-            item, not WI-022.
+            WI-022 (profile-integrated reactivity + geometry rebind) to 804.1,
+            and WI-023 (phantom p_tf = 111 zeroed) to 915.1 — ~59% above the
+            575.3 basis this pass-through was computed at. Recomputation still
+            belongs to the Stage-3 pass-through-scope item, not WI-023.
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
             **Ref**: costs.py:52-80 (cas10_preconstruction); costing_constants.yaml:15-30
             **Basis**: CAS10 preconstruction subtotal at the Stellaris design point
@@ -539,12 +559,12 @@ package stellarator_09 {
             CAS70 O&M = om_cost_dt x (P_net/1 GWe)^0.5 = 54.9 x (575.3/1000)^0.5 =
             41.641 M$/yr -> $. Inflation and scheduled-replacement (CAS72)
             refinements are a Stage-3 item.
-            STALE BASIS (surfaced at WI-019 close, updated WI-022): P_net = 575.3
+            STALE BASIS (surfaced at WI-019 close, updated WI-023): P_net = 575.3
             was the WI-018 value. WI-019 moved it to 786.1, WI-020 to 578.0,
-            and WI-022 (profile-integrated reactivity + geometry rebind) to
-            804.1 — ~40% above the 575.3 basis this pass-through was computed
-            at. Recomputation still belongs to the Stage-3 pass-through-scope
-            item, not WI-022.
+            WI-022 (profile-integrated reactivity + geometry rebind) to 804.1,
+            and WI-023 (phantom p_tf = 111 zeroed) to 915.1 — ~59% above the
+            575.3 basis this pass-through was computed at. Recomputation still
+            belongs to the Stage-3 pass-through-scope item, not WI-023.
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
             **Ref**: costing_constants.yaml:272 (om_cost_dt = 54.9 M$/yr at 1 GWe); costs.py:319-347 (power-law 0.5)
             **Basis**: staffing-based DT O&M, power-law scaled

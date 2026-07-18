@@ -229,30 +229,32 @@ def main():
     check("total_capital", total, o["total_capital"])
     check("lcoe", b[CH["lcoe"]], o["lcoe"])
 
-    # ---- WI-022 headline oracle (looser, sanity band) ------------------------
-    # WI-022 predictive confinement + errata rebind: fusion power is the
-    # profile-integrated Bosch-Hale reactivity over the source's own profiles
-    # (alpha_n=0.33, alpha_T=1.19, peak fuel 1.96e20/side, T_i0=14.63),
-    # executed through the handwritten codegen impl -> 2748.1 MW, within 1.8%
-    # of the 2700 MW design point with no tuning. Geometry rebound to the
-    # printed a=1.3 / V=425 (Table 2/5 images; the old a=1.5/V=448 rows were
-    # extraction artifacts), shrinking the radial build and the magnet bore.
-    # (Was WI-020: V 448, p_fus 2144.5, p_net 578, rec_frac 0.316, q_eng 3.16,
-    # total 9.68, LCOE 247, magnet 4.39.)
-    print("\n=== WI-022 HEADLINE CHECK ===")
+    # ---- WI-023 headline oracle (looser, sanity band) ------------------------
+    # WI-023 magnet-field errata: the coil-cost field is the axis-averaged
+    # B_0 = 9.0 T printed in the Table 2/5 images — the old 5.86 cited a
+    # phantom Table 3 text row absent from the table image and the published
+    # paper (raw.pdf-confirmed). Magnet cost is linear in B, so magnet capital
+    # scales exactly x9.0/5.86 -> $6.32B (50.2% share), total $12.60B. The
+    # phantom p_tf = 111 MW ("conduction power to coils" — the paper prints
+    # 111 only as stored magnetic energy in GJ) is zeroed per the owner's
+    # no-fallbacks ruling; derivation is WI-024. p_net 804.1 -> 915.1 MW,
+    # q_eng 3.93 -> 6.61, LCOE 176.07 -> 201.46.
+    # (Was WI-022: V 425, p_fus 2748.1, p_net 804.1, rec_frac 0.254,
+    # q_eng 3.93, total 9.59, LCOE 176, magnet 4.12.)
+    print("\n=== WI-023 HEADLINE CHECK ===")
     heads = [
         ("plasma volume V [m3]", b[CH["V"]], 425, 2),
         ("fusion power [MW]", b[CH["p_fus"]], 2748.1, 2),
-        ("net electric [MW]", b[CH["p_net"]], 804.1, 3),
-        ("rec_frac", b[CH["rec_frac"]], 0.254, 0.01),
-        ("q_eng", b[CH["q_eng"]], 3.93, 0.05),
-        ("total capital [$B]", total / 1e9, 9.59, 0.05),
-        ("LCOE [$/MWh]", b[CH["lcoe"]], 176, 2),
-        ("magnet capital [$B]", b[CH["magnet"]] / 1e9, 4.12, 0.05),
+        ("net electric [MW]", b[CH["p_net"]], 915.1, 3),
+        ("rec_frac", b[CH["rec_frac"]], 0.151, 0.01),
+        ("q_eng", b[CH["q_eng"]], 6.61, 0.05),
+        ("total capital [$B]", total / 1e9, 12.60, 0.05),
+        ("LCOE [$/MWh]", b[CH["lcoe"]], 201.5, 2),
+        ("magnet capital [$B]", b[CH["magnet"]] / 1e9, 6.32, 0.05),
     ]
     for label, val, target, tol in heads:
         ok = abs(val - target) <= tol
-        print(f"  {label:24s} exec={val:14.4f}  WI-022~={target:<10}  "
+        print(f"  {label:24s} exec={val:14.4f}  WI-023~={target:<10}  "
               f"{'OK' if ok else 'FAIL'}")
         if not ok:
             failures.append("HEAD:" + label)
@@ -290,7 +292,7 @@ def main():
     if failures:
         raise SystemExit(f"{len(failures)} check(s) FAILED: {failures}")
     print(f"ALL CHECKS PASSED (channel-vs-oracle rel tol {REL_TOL}); "
-          "WI-022 headline reproduced.")
+          "WI-023 headline reproduced.")
 
 
 if __name__ == "__main__":

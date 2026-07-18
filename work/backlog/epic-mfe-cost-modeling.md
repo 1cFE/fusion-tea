@@ -141,6 +141,14 @@ The tokamak/stellarator pair is deliberate. They share nearly every subsystem �
 
 ---
 
+### Item WI-024: Recirculating-power derivation model (coil/cryo parasitic loads)
+
+**Scale**: standard | **Priority**: P2 | **Registered**: 2026-07-18 ([OWNER] directive at the WI-023 spec checkpoint)
+
+**Intent (owner-stated):** derive/decompose and model *how* the recirculating power values are derived, instead of binding constants. WI-023's source sweep (spec §Sweep Findings, `work/active/WI-023_magnet-field-errata-B9/spec.md`) established that no admissible source prints a total coil-conduction or cryo-plant power for Stellaris — the paper defers parasitic electricity explicitly — so WI-023 rebound `p_tf = 0` with the deferral documented ([OWNER] ruling, no-fallbacks). This item builds the honest replacement: decompose the parasitic loads (coil conduction, cryo-plant electrical from heat loads, pumping/auxiliary splits) and model the derivation chain — e.g. winding-pack nuclear heating density (35.5 W/m³, Table 6 image) × cold-mass/winding volume → heat load at 20 K → cryo-plant electrical via COP — with every step sourced or explicitly parameterized. Subsumes the WI-018-era Stage-3 note (cold-mass → cryo-electrical COP treatment) in the p_tf doc.
+
+---
+
 ## Sequencing
 
 ```

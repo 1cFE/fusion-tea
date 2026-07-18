@@ -49,7 +49,7 @@ class SystemDesign(BaseModel):
     stellarator_09__stellaris__pb__p_pf: float = Field(default=0.0, description="Entry point: p_pf")
     stellarator_09__stellaris__pb__p_pfcool: float = Field(default=0.0, description="Entry point: p_pfcool")
     stellarator_09__stellaris__pb__p_pump: float = Field(default=1.0, description="Entry point: p_pump")
-    stellarator_09__stellaris__pb__p_tf: float = Field(default=111.0, description="Entry point: p_tf")
+    stellarator_09__stellaris__pb__p_tf: float = Field(default=0.0, description="Entry point: p_tf")
     stellarator_09__stellaris__pb__p_tfcool: float = Field(default=15.0, description="Entry point: p_tfcool")
     stellarator_09__stellaris__pb__p_trit: float = Field(default=10.0, description="Entry point: p_trit")
     stellarator_09__stellaris__rb__R: float = Field(default=12.7, description="Entry point: R")

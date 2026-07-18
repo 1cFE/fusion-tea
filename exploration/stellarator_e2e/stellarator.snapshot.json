@@ -1,7 +1,7 @@
 {
   "snapshot_format_version": 3,
   "model_name": "models",
-  "captured_at": "2026-07-18T16:26:19.278055+00:00",
+  "captured_at": "2026-07-18T17:39:23.024485+00:00",
   "constraint_lowering_mode": "applied",
   "constraint_facts": {
     "contexts": [
@@ -4009,7 +4009,7 @@
         "ash_frac"
       ],
       "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-      "source_line": 596,
+      "source_line": 616,
       "parent_part_path": "",
       "qualified_name": "stellarator_09__stellaris__wall_load_calc",
       "is_template": false,
@@ -4537,7 +4537,7 @@
           "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::pb::p_tf",
           "source_instance_elem": null,
           "source_attribute_elem": null,
-          "literal_value": 111.0,
+          "literal_value": 0.0,
           "expression_ast": null,
           "source_instance_name": null,
           "source_attribute_name": "p_tf"
@@ -6501,7 +6501,7 @@
         "default_value": "0.0276",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 568,
+        "source_line": 588,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__beta"
       },
@@ -6511,7 +6511,7 @@
         "default_value": "0.05",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 571,
+        "source_line": 591,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__beta_limit"
       },
@@ -6521,7 +6521,7 @@
         "default_value": "4.05",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 592,
+        "source_line": 612,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__wall_load_limit"
       },
@@ -6531,7 +6531,7 @@
         "default_value": "1.074",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 602,
+        "source_line": 622,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__tbr"
       },
@@ -6541,7 +6541,7 @@
         "default_value": "1.05",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 605,
+        "source_line": 625,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__tbr_floor"
       },
@@ -6551,7 +6551,7 @@
         "default_value": "wall_load_calc.wall_load",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 617,
+        "source_line": 637,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__neutron_wall_load"
       }
@@ -7416,7 +7416,7 @@
         "owning_part_qn": "stellarator_09__stellaris",
         "attribute_name": "p_tf",
         "redefinition_type": "literal",
-        "literal_value": 111.0,
+        "literal_value": 0.0,
         "source_path": null,
         "expression_ast": null,
         "expression_text": "",
@@ -7741,7 +7741,7 @@
         "owning_part_qn": "stellarator_09__stellaris__magnet",
         "attribute_name": "B",
         "redefinition_type": "literal",
-        "literal_value": 5.86,
+        "literal_value": 9.0,
         "source_path": null,
         "expression_ast": null,
         "expression_text": "",

@@ -75,6 +75,11 @@ epics:
   - id: WI-023
     name: magnet-field-errata-B9
     scale: standard
+    status: completed
+    completed: '2026-07-18'
+  - id: WI-024
+    name: Recirculating-power derivation model (coil/cryo parasitic loads)
+    scale: standard
     status: backlog
     completed: null
 - name: Pipeline De-Risk & Demonstration
@@ -138,7 +143,8 @@ standalone: []
 | WI-020 | Stellarator-correct plasma geometry (shape factor) | standard | completed | Completed 2026-07-17 |
 | WI-021 | stellarator-correct-radial-build | standard | completed | Completed 2026-07-17 |
 | WI-022 | predictive-confinement | standard | completed | Completed 2026-07-18 |
-| WI-023 | magnet-field-errata-B9 | standard | backlog |  |
+| WI-023 | magnet-field-errata-B9 | standard | completed | Completed 2026-07-18 |
+| WI-024 | Recirculating-power derivation model (coil/cryo parasitic loads) | standard | backlog |  |
 
 ## Epic: Pipeline De-Risk & Demonstration
 **Priority**: P0 | **Status**: active

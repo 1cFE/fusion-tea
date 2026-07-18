@@ -29,6 +29,8 @@ Artifacts:
 
 This is a genuinely different machine from the Stellaris SysML defaults (Stellaris: R=12.7 m, b_center=5.86 T; post-WI-019: p_net=786 MW, LCOE 189). The handshake uses 1costingFE's point throughout.
 
+> **Update (WI-023, 2026-07-18):** the b_center = 5.86 T above was an extraction phantom (text-only Table 3 row; the Table 2/5 images and the published paper print axis-averaged B₀ = 9.0 T) — the instance now binds 9.0. Likewise p_tf = 111 MW mapped a nonexistent "conduction power to coils" row (111 is the stored magnetic energy in GJ); the instance now binds 0.0 (source defers the value; WI-024). The handshake is unaffected by construction: `magnet__B` and `pb__p_tf` are injected from 1costingFE's own refs, and the comparison below stands unchanged.
+
 | quantity | value |
 |---|---|
 | fusion power `p_fus` | 2582.07 MW |

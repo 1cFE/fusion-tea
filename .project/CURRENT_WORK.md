@@ -6,6 +6,14 @@
 
 ## Active Work
 
+### Stellarator MBSE Demo — WI-023 magnet-field errata IMPLEMENTED (2026-07-18, uncommitted; audit + owner close pending)
+
+**Status**: WI-023 implemented and validated — uncommitted in the worktree; `/audit-models`, owner `pm close-item`, and commit are still pending (owner-held / orchestrator-held). PROTOCOL.md respected throughout.
+
+**What moved**: two phantom-row corrections in the concept-09 instance, owner-ratified. `magnet.B` 5.86 → **9.0 T** (the 5.86 cited a Table 3 text row that does not exist — the Table 2/5 images and the published paper print axis-averaged B₀ = 9.0; magnet cost is linear in B). `pb.p_tf` 111 → **0.0** (the "conduction power to coils = 111 MW" row does not exist; 111 is the stored magnetic energy in GJ; the paper defers parasitic electricity — no-fallbacks, [OWNER] option b). **WI-024 queued**: derive the recirculating-power values properly (coil conduction, cryo-electrical from heat loads + COP) instead of binding constants.
+
+**Executed headline (bit-exact vs oracle, rel 1e-9)**: V 425, p_fus 2748.1 MW, p_th 3238.1, gross 1078.3, **net 915.1 MW**, rec_frac 0.151, **q_eng 6.61**, total **$12.6015B**, **LCOE $201.46/MWh**, magnet **$6.3235B (50.2%)** — magnet exactly ×9.0/5.86 on the WI-022 baseline. SV-030 passing; SV-025/026 handshake byte-identical (both corrections injected from 1costingFE's own refs, zero handshake edits); IFE SV-023 unchanged; L1=0, offender set = the 6 pre-existing, zero new; WI-022 handwritten reactivity impl survived regen (content-verified). **SV-016 re-flagged**: q_eng 3.93 → 6.61, still below the ~10–40 band — awaiting owner adjust/annotate. Record: `work/active/WI-023_magnet-field-errata-B9/` (spec/design/plan + Implementation Record).
+
 ### Stellarator MBSE Demo — Stage 3 item 2 DONE: WI-022 predictive confinement (2026-07-18, uncommitted)
 
 **Status**: WI-022 implemented, validated, handshake-verified, closed — uncommitted in the worktree, stacked on `7f0b19ea` (which committed WI-019/020/021; the "uncommitted" notes on the entries below are stale). Last demo-deepening item (order 3→4→1→2) — the demo model is now complete pending the account-scope / hold-out stages. PROTOCOL.md respected throughout.
