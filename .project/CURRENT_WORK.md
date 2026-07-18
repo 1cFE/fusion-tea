@@ -6,6 +6,18 @@
 
 ## Active Work
 
+### Stellarator MBSE Demo — WI-024 recirculating-power derivation IMPLEMENTED (2026-07-18, uncommitted — awaiting audit → owner close → commit)
+
+**Status**: WI-024 implemented and validated (`work/active/WI-024_recirc-power-derivation/` — plan Implementation Record filled). NOT closed, NOTHING committed (owner-held / orchestrator-held). PROTOCOL.md respected throughout; orchestration brief at `work/orchestration/recirc-power-derivation.md`.
+
+**What moved**: p_cryo is now a **computed chain output**, not a bound constant. New library calc def `'Cryoplant Electrical Power'` (`models/library/analyses/mfe_cryo_plant.sysml`): winding-pack nuclear heating 35.5 W/m³ (Table 6 image) × 136.56 m³ winding volume (COMPUTED — Table 8 cross-sections × 8-fold symmetry × 25 m circumference) + 7.5 kW joint losses (§2.9), at 20 K through a 0.20-of-Carnot cryoplant (THE assumption, design D4; T_amb 300 K assumption; f_uplift 1.0 explicit lower-bound seam, D6) → **p_cryo = 0.8643516 MW** wall-plug. The 1cfe generic default 0.8 retired (D2, double-counting resolution); p_tf rescoped from deferral stopgap to **modeled zero** (SC coils, 1cfe's own `recirc_power_factor = 0`); p_tfcool 15.0 kept with a documented disjoint reading.
+
+**Executed headline (bit-exact vs oracle rel 1e-9, incl. the new derived-p_cryo channel)**: p_net **915.081 MW**, rec_frac **0.151362**, q_eng **6.6067**, **LCOE $201.472/MWh**; V 425 / p_fus 2748.1 / p_th 3238.1 / gross 1078.3 unchanged; total **$12,601,519,645.07** and magnet **$6,323,469,946.33 (50.2%)** unchanged to the cent. SV-031 passing with executed values; handshake byte-identical under the Ruling-3 successor bar (injection-map edit only, `handshake_comparison.json` diff empty); IFE anchors unchanged; L1–L6 offender list = the 6 pre-existing, zero new; WI-022 handwritten impl content-hash survived regen.
+
+**Flagged for owner**: SV-016 stays `pending` — q_eng 6.609 → 6.6067 at the derived parasitic power, still below the ~10–40 band; the derived value is a documented lower bound (unprinted cryo loads excluded, f_uplift seam). Band untouched per MR-WI024-6.
+
+**Next**: `/audit-models` → owner `pm close-item WI-024` → commit; then the STALE-BASIS pass-through recompute (sequenced after WI-024 per the owner's Option B ruling — recompute at the settled p_net 915.081; register at pick-up).
+
 ### Stellarator MBSE Demo — WI-023 magnet-field errata DONE: audited, closed, committed (2026-07-18, `adc43cda`)
 
 **Status**: WI-023 complete — implemented, independent audit **POSITIVE** (report: `work/analysis/20260718-105435_audit_WI-023_magnet-field-errata-B9.md`), owner-closed (`work/completed/20260718_WI-023_magnet-field-errata-B9/`), committed at `adc43cda`. PROTOCOL.md respected throughout; orchestration brief at `work/orchestration/magnet-field-errata-B9.md`.

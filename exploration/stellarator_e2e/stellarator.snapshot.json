@@ -1,7 +1,7 @@
 {
   "snapshot_format_version": 3,
   "model_name": "models",
-  "captured_at": "2026-07-18T17:39:23.024485+00:00",
+  "captured_at": "2026-07-18T19:56:56.270988+00:00",
   "constraint_lowering_mode": "applied",
   "constraint_facts": {
     "contexts": [
@@ -720,6 +720,71 @@
         "idc_factor",
         "annual_capital",
         "lcoe"
+      ]
+    },
+    "Cryoplant_Electrical_Power": {
+      "calc_def_name": "Cryoplant_Electrical_Power",
+      "overall_compilability": "fully_compilable",
+      "output_results": [
+        {
+          "output_name": "cop_carnot",
+          "compilability": "fully_compilable",
+          "python_expression": "(inputs.T_cold / (inputs.T_amb - inputs.T_cold))",
+          "input_refs": [
+            "T_cold",
+            "T_amb"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "cop",
+          "compilability": "fully_compilable",
+          "python_expression": "(inputs.f_carnot * cop_carnot)",
+          "input_refs": [
+            "f_carnot"
+          ],
+          "intermediate_refs": [
+            "cop_carnot"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "p_cold",
+          "compilability": "fully_compilable",
+          "python_expression": "((((inputs.q_nuc * inputs.vol_cold) * 1e-06) + inputs.p_fixed) * inputs.f_uplift)",
+          "input_refs": [
+            "q_nuc",
+            "vol_cold",
+            "p_fixed",
+            "f_uplift"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "p_elec",
+          "compilability": "fully_compilable",
+          "python_expression": "((p_cold / cop) + inputs.p_direct)",
+          "input_refs": [
+            "p_direct"
+          ],
+          "intermediate_refs": [
+            "p_cold",
+            "cop"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        }
+      ],
+      "execution_order": [
+        "cop_carnot",
+        "cop",
+        "p_cold",
+        "p_elec"
       ]
     },
     "Magnet_Coil_Cost": {
@@ -1762,6 +1827,167 @@
         "net_electric_mw",
         "operational_years",
         "total_capital"
+      ],
+      "member_expressions": null
+    },
+    {
+      "name": "Cryoplant_Electrical_Power",
+      "qualified_name": "mfe_cryo_plant::'Cryoplant Electrical Power'",
+      "doc_comment": "Cryoplant wall-plug electrical power [MW] from the cold-mass heat\nload (WI-024). Steady-state refrigeration power balance:\n    p_cold = (q_nuc * vol_cold * 1e-6 + p_fixed) * f_uplift\n    COP    = f_carnot * T_cold / (T_amb - T_cold)   (Carnot x fraction)\n    p_elec = p_cold / COP + p_direct\np_direct is an additive direct term for concepts that specify the\ncryoplant electrical outright (no chain); with zero heat inputs the\ncalc passes p_direct through exactly. f_uplift names the seam for\nheat loads missing from the inventory (>= 1). Dormant-safe defaults:\nan unbound concept computes p_elec = 0; f_carnot defaults 1.0 (not 0)\nso the dormant COP stays defined — the mode is selected by the heat\ninputs, never by the efficiency (WI-022 T_i0 precedent).\nOutput feeds the power-balance p_cryo slot (\"cryogenic system\npower\"), which 1costingFE's own defaults document as the cryoplant\nwall-plug electrical.\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py\n*Ref**: physics.py:321-323 (p_cryo in the recirculating sum);\nsteady_state_dipole.yaml:52-53 (slot semantics: \"Cryogenic\nwall-plug power\" = heat load x plant efficiency — semantics\nwitness only, value inadmissible)\n*Basis**: reversed-Carnot reference cycle x fraction-of-Carnot;\nconcept-agnostic (MR-3) — all values bound by instances",
+      "calc_expressions": [
+        "q_nuc = 0.0",
+        "vol_cold = 0.0",
+        "p_fixed = 0.0",
+        "f_uplift = 1.0",
+        "T_cold = 20.0",
+        "T_amb = 300.0",
+        "f_carnot = 1.0",
+        "p_direct = 0.0",
+        "p_cold = (q_nuc * vol_cold * 1e-06 + p_fixed) * f_uplift",
+        "cop_carnot = T_cold / (T_amb - T_cold)",
+        "cop = f_carnot * cop_carnot",
+        "p_elec = p_cold / cop + p_direct",
+        "\nDocumentation:\nCryoplant wall-plug electrical power [MW] from the cold-mass heat\nload (WI-024). Steady-state refrigeration power balance:\n    p_cold = (q_nuc * vol_cold * 1e-6 + p_fixed) * f_uplift\n    COP    = f_carnot * T_cold / (T_amb - T_cold)   (Carnot x fraction)\n    p_elec = p_cold / COP + p_direct\np_direct is an additive direct term for concepts that specify the\ncryoplant electrical outright (no chain); with zero heat inputs the\ncalc passes p_direct through exactly. f_uplift names the seam for\nheat loads missing from the inventory (>= 1). Dormant-safe defaults:\nan unbound concept computes p_elec = 0; f_carnot defaults 1.0 (not 0)\nso the dormant COP stays defined — the mode is selected by the heat\ninputs, never by the efficiency (WI-022 T_i0 precedent).\nOutput feeds the power-balance p_cryo slot (\"cryogenic system\npower\"), which 1costingFE's own defaults document as the cryoplant\nwall-plug electrical.\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py\n*Ref**: physics.py:321-323 (p_cryo in the recirculating sum);\nsteady_state_dipole.yaml:52-53 (slot semantics: \"Cryogenic\nwall-plug power\" = heat load x plant efficiency — semantics\nwitness only, value inadmissible)\n*Basis**: reversed-Carnot reference cycle x fraction-of-Carnot;\nconcept-agnostic (MR-3) — all values bound by instances"
+      ],
+      "input_attributes": [
+        {
+          "name": "q_nuc",
+          "sysml_type": "Real",
+          "default_value": "0.0",
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "volumetric",
+          "source_line": 0,
+          "is_optional": true
+        },
+        {
+          "name": "vol_cold",
+          "sysml_type": "Real",
+          "default_value": "0.0",
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "heated",
+          "source_line": 0,
+          "is_optional": true
+        },
+        {
+          "name": "p_fixed",
+          "sysml_type": "Real",
+          "default_value": "0.0",
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "fixed",
+          "source_line": 0,
+          "is_optional": true
+        },
+        {
+          "name": "f_uplift",
+          "sysml_type": "Real",
+          "default_value": "1.0",
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "unprinted-loads",
+          "source_line": 0,
+          "is_optional": true
+        },
+        {
+          "name": "T_cold",
+          "sysml_type": "Real",
+          "default_value": "20.0",
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "cold-mass",
+          "source_line": 0,
+          "is_optional": true
+        },
+        {
+          "name": "T_amb",
+          "sysml_type": "Real",
+          "default_value": "300.0",
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "heat-rejection",
+          "source_line": 0,
+          "is_optional": true
+        },
+        {
+          "name": "f_carnot",
+          "sysml_type": "Real",
+          "default_value": "1.0",
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "fraction-of-Carnot",
+          "source_line": 0,
+          "is_optional": true
+        },
+        {
+          "name": "p_direct",
+          "sysml_type": "Real",
+          "default_value": "0.0",
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "directly-specified",
+          "source_line": 0,
+          "is_optional": true
+        }
+      ],
+      "output_attributes": [
+        {
+          "name": "p_elec",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "references": [],
+      "source_file": "models/analyses/mfe_cryo_plant.sysml",
+      "source_line": 4,
+      "source_hash": "a5cbbdaba0b28af7f77980e13d43224bc418ff4112c6669ecd959e3f446dedf9",
+      "output_expression_asts": null,
+      "all_member_names": [
+        "T_amb",
+        "T_cold",
+        "cop",
+        "cop_carnot",
+        "f_carnot",
+        "f_uplift",
+        "p_cold",
+        "p_direct",
+        "p_elec",
+        "p_fixed",
+        "q_nuc",
+        "vol_cold"
       ],
       "member_expressions": null
     },
@@ -4009,7 +4235,7 @@
         "ash_frac"
       ],
       "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-      "source_line": 616,
+      "source_line": 704,
       "parent_part_path": "",
       "qualified_name": "stellarator_09__stellaris__wall_load_calc",
       "is_template": false,
@@ -4079,7 +4305,7 @@
         "pi"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 113,
+      "source_line": 114,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__geom",
       "is_template": false,
@@ -4279,7 +4505,7 @@
         "pi"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 138,
+      "source_line": 139,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__rb",
       "is_template": false,
@@ -4412,9 +4638,129 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 169,
+      "source_line": 170,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__fusion",
+      "is_template": false,
+      "owning_part_def_qn": "mfe_plant__MFE_Power_Plant",
+      "raw_element": null
+    },
+    {
+      "instance_name": "stellarator_09__stellaris__cryo_elec",
+      "calc_def_name": "Cryoplant_Electrical_Power",
+      "calc_def_qualified_name": "mfe_cryo_plant::'Cryoplant Electrical Power'",
+      "module_type": "mfe_cryo_plant.Cryoplant_Electrical_PowerModule",
+      "bindings": [
+        {
+          "param_name": "q_nuc",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::q_nuc_cryo",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 35.5,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "q_nuc_cryo"
+        },
+        {
+          "param_name": "vol_cold",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::vol_cold_cryo",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 136.56,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "vol_cold_cryo"
+        },
+        {
+          "param_name": "p_fixed",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::p_fixed_cryo",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.0075,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "p_fixed_cryo"
+        },
+        {
+          "param_name": "f_uplift",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::f_uplift_cryo",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 1.0,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "f_uplift_cryo"
+        },
+        {
+          "param_name": "T_cold",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::T_cold_cryo",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 20.0,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "T_cold_cryo"
+        },
+        {
+          "param_name": "T_amb",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::T_amb_cryo",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 300.0,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "T_amb_cryo"
+        },
+        {
+          "param_name": "f_carnot",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::f_carnot_cryo",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.2,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "f_carnot_cryo"
+        },
+        {
+          "param_name": "p_direct",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::p_cryo",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.0,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "p_cryo"
+        }
+      ],
+      "unbound_params": [],
+      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_line": 210,
+      "parent_part_path": "stellaris",
+      "qualified_name": "stellarator_09__stellaris__cryo_elec",
       "is_template": false,
       "owning_part_def_qn": "mfe_plant__MFE_Power_Plant",
       "raw_element": null
@@ -4609,21 +4955,21 @@
         },
         {
           "param_name": "p_cryo",
-          "source_path": null,
-          "binding_type": "literal",
+          "source_path": "cryo_elec.p_elec",
+          "binding_type": "chain",
           "is_cross_file": false,
-          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::pb::p_cryo",
+          "raw_expression": "FeatureChainExpression -> cryo_elec.p_elec",
           "source_instance_elem": null,
           "source_attribute_elem": null,
-          "literal_value": 0.8,
+          "literal_value": null,
           "expression_ast": null,
-          "source_instance_name": null,
-          "source_attribute_name": "p_cryo"
+          "source_instance_name": "cryo_elec",
+          "source_attribute_name": "p_elec"
         }
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 197,
+      "source_line": 221,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__pb",
       "is_template": false,
@@ -4719,7 +5065,7 @@
         "mu0"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 227,
+      "source_line": 251,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__magnet_cost",
       "is_template": false,
@@ -4790,7 +5136,7 @@
         "p_th_ref"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 237,
+      "source_line": 261,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__blanket_cost",
       "is_template": false,
@@ -4861,7 +5207,7 @@
         "p_th_ref"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 245,
+      "source_line": 269,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__shield_cost",
       "is_template": false,
@@ -4919,7 +5265,7 @@
         "p_et_ref"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 253,
+      "source_line": 277,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__structure_cost",
       "is_template": false,
@@ -4977,7 +5323,7 @@
         "p_et_ref"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 260,
+      "source_line": 284,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__vessel_cost",
       "is_template": false,
@@ -5022,7 +5368,7 @@
         "p_et_ref"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 267,
+      "source_line": 291,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__power_supplies_cost",
       "is_template": false,
@@ -5067,7 +5413,7 @@
         "p_th_ref"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 274,
+      "source_line": 298,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__divertor_cost",
       "is_template": false,
@@ -5187,7 +5533,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 289,
+      "source_line": 313,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__heating_cost",
       "is_template": false,
@@ -5242,7 +5588,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 303,
+      "source_line": 327,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__turbine_cost",
       "is_template": false,
@@ -5297,7 +5643,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 308,
+      "source_line": 332,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__electric_cost",
       "is_template": false,
@@ -5352,7 +5698,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 313,
+      "source_line": 337,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__heat_rejection_cost",
       "is_template": false,
@@ -5407,7 +5753,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 318,
+      "source_line": 342,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__misc_cost",
       "is_template": false,
@@ -5449,7 +5795,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 353,
+      "source_line": 377,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__contingency",
       "is_template": false,
@@ -5506,7 +5852,7 @@
         "reference_construction_time"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 362,
+      "source_line": 386,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__indirect",
       "is_template": false,
@@ -5613,7 +5959,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 385,
+      "source_line": 409,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__lcoe_calc",
       "is_template": false,
@@ -5694,6 +6040,128 @@
         "source_line": 59,
         "parent_part": "",
         "qualified_name": "mfe_lcoe_dcf__LCOE_DCF__lcoe"
+      }
+    ],
+    "/home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_cryo_plant.sysml": [
+      {
+        "name": "q_nuc",
+        "sysml_type": "Real",
+        "default_value": "0.0",
+        "unit": null,
+        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_line": 30,
+        "parent_part": "",
+        "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__q_nuc"
+      },
+      {
+        "name": "vol_cold",
+        "sysml_type": "Real",
+        "default_value": "0.0",
+        "unit": null,
+        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_line": 31,
+        "parent_part": "",
+        "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__vol_cold"
+      },
+      {
+        "name": "p_fixed",
+        "sysml_type": "Real",
+        "default_value": "0.0",
+        "unit": null,
+        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_line": 32,
+        "parent_part": "",
+        "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__p_fixed"
+      },
+      {
+        "name": "f_uplift",
+        "sysml_type": "Real",
+        "default_value": "1.0",
+        "unit": null,
+        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_line": 33,
+        "parent_part": "",
+        "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__f_uplift"
+      },
+      {
+        "name": "T_cold",
+        "sysml_type": "Real",
+        "default_value": "20.0",
+        "unit": null,
+        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_line": 34,
+        "parent_part": "",
+        "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__T_cold"
+      },
+      {
+        "name": "T_amb",
+        "sysml_type": "Real",
+        "default_value": "300.0",
+        "unit": null,
+        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_line": 35,
+        "parent_part": "",
+        "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__T_amb"
+      },
+      {
+        "name": "f_carnot",
+        "sysml_type": "Real",
+        "default_value": "1.0",
+        "unit": null,
+        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_line": 36,
+        "parent_part": "",
+        "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__f_carnot"
+      },
+      {
+        "name": "p_direct",
+        "sysml_type": "Real",
+        "default_value": "0.0",
+        "unit": null,
+        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_line": 37,
+        "parent_part": "",
+        "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__p_direct"
+      },
+      {
+        "name": "p_cold",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_line": 39,
+        "parent_part": "",
+        "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__p_cold"
+      },
+      {
+        "name": "cop_carnot",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_line": 40,
+        "parent_part": "",
+        "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__cop_carnot"
+      },
+      {
+        "name": "cop",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_line": 41,
+        "parent_part": "",
+        "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__cop"
+      },
+      {
+        "name": "p_elec",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_line": 43,
+        "parent_part": "",
+        "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__p_elec"
       }
     ],
     "/home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_magnet_cost.sysml": [
@@ -6501,7 +6969,7 @@
         "default_value": "0.0276",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 588,
+        "source_line": 676,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__beta"
       },
@@ -6511,7 +6979,7 @@
         "default_value": "0.05",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 591,
+        "source_line": 679,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__beta_limit"
       },
@@ -6521,7 +6989,7 @@
         "default_value": "4.05",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 612,
+        "source_line": 700,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__wall_load_limit"
       },
@@ -6531,7 +6999,7 @@
         "default_value": "1.074",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 622,
+        "source_line": 710,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__tbr"
       },
@@ -6541,7 +7009,7 @@
         "default_value": "1.05",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 625,
+        "source_line": 713,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__tbr_floor"
       },
@@ -6551,7 +7019,7 @@
         "default_value": "wall_load_calc.wall_load",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 637,
+        "source_line": 725,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__neutron_wall_load"
       }
@@ -6563,7 +7031,7 @@
         "default_value": "1.0",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 111,
+        "source_line": 112,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__f_shape"
       },
@@ -6573,7 +7041,7 @@
         "default_value": "0.1",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 123,
+        "source_line": 124,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__vacuum_t"
       },
@@ -6583,7 +7051,7 @@
         "default_value": "0.05",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 124,
+        "source_line": 125,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__firstwall_t"
       },
@@ -6593,7 +7061,7 @@
         "default_value": "0.7",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 125,
+        "source_line": 126,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__blanket_t"
       },
@@ -6603,7 +7071,7 @@
         "default_value": "0.2",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 126,
+        "source_line": 127,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__reflector_t"
       },
@@ -6613,7 +7081,7 @@
         "default_value": "0.2",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 127,
+        "source_line": 128,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__ht_shield_t"
       },
@@ -6623,7 +7091,7 @@
         "default_value": "0.15",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 128,
+        "source_line": 129,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__structure_t"
       },
@@ -6633,7 +7101,7 @@
         "default_value": "0.1",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 129,
+        "source_line": 130,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__gap1_t"
       },
@@ -6643,7 +7111,7 @@
         "default_value": "0.1",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 130,
+        "source_line": 131,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__vessel_t"
       },
@@ -6653,7 +7121,7 @@
         "default_value": "0.3",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 131,
+        "source_line": 132,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__coil_t"
       },
@@ -6663,7 +7131,7 @@
         "default_value": "0.1",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 132,
+        "source_line": 133,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__gap2_t"
       },
@@ -6673,7 +7141,7 @@
         "default_value": "0.15",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 133,
+        "source_line": 134,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__lt_shield_t"
       },
@@ -6683,7 +7151,7 @@
         "default_value": "0.0",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 161,
+        "source_line": 162,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__sigma_v"
       },
@@ -6693,7 +7161,7 @@
         "default_value": "0.0",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 163,
+        "source_line": 164,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__n_D0"
       },
@@ -6703,7 +7171,7 @@
         "default_value": "0.0",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 164,
+        "source_line": 165,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__n_T0"
       },
@@ -6713,7 +7181,7 @@
         "default_value": "1.0",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 165,
+        "source_line": 166,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__T_i0"
       },
@@ -6723,7 +7191,7 @@
         "default_value": "0.0",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 166,
+        "source_line": 167,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__alpha_n"
       },
@@ -6733,9 +7201,89 @@
         "default_value": "0.0",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 167,
+        "source_line": 168,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__alpha_T"
+      },
+      {
+        "name": "p_cryo",
+        "sysml_type": "Real",
+        "default_value": "0.0",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 196,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__p_cryo"
+      },
+      {
+        "name": "q_nuc_cryo",
+        "sysml_type": "Real",
+        "default_value": "0.0",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 202,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__q_nuc_cryo"
+      },
+      {
+        "name": "vol_cold_cryo",
+        "sysml_type": "Real",
+        "default_value": "0.0",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 203,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__vol_cold_cryo"
+      },
+      {
+        "name": "p_fixed_cryo",
+        "sysml_type": "Real",
+        "default_value": "0.0",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 204,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__p_fixed_cryo"
+      },
+      {
+        "name": "f_uplift_cryo",
+        "sysml_type": "Real",
+        "default_value": "1.0",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 205,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__f_uplift_cryo"
+      },
+      {
+        "name": "T_cold_cryo",
+        "sysml_type": "Real",
+        "default_value": "20.0",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 206,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__T_cold_cryo"
+      },
+      {
+        "name": "T_amb_cryo",
+        "sysml_type": "Real",
+        "default_value": "300.0",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 207,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__T_amb_cryo"
+      },
+      {
+        "name": "f_carnot_cryo",
+        "sysml_type": "Real",
+        "default_value": "1.0",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 208,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__f_carnot_cryo"
       },
       {
         "name": "p_th",
@@ -6743,7 +7291,7 @@
         "default_value": "pb.p_th",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 218,
+        "source_line": 242,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__p_th"
       },
@@ -6753,7 +7301,7 @@
         "default_value": "pb.p_the",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 219,
+        "source_line": 243,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__p_the"
       },
@@ -6763,7 +7311,7 @@
         "default_value": "pb.p_et",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 220,
+        "source_line": 244,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__p_et"
       },
@@ -6773,7 +7321,7 @@
         "default_value": "1.0",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 302,
+        "source_line": 326,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__n_mod"
       },
@@ -6783,7 +7331,7 @@
         "default_value": "contingency.cost",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 357,
+        "source_line": 381,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__contingency_capital"
       },
@@ -6793,7 +7341,7 @@
         "default_value": "indirect.cost",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 367,
+        "source_line": 391,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__indirect_capital"
       },
@@ -6803,7 +7351,7 @@
         "default_value": "pb.p_net",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 412,
+        "source_line": 436,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__net_electric"
       },
@@ -6813,7 +7361,7 @@
         "default_value": "pb.q_eng",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 413,
+        "source_line": 437,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__q_eng"
       },
@@ -6823,7 +7371,7 @@
         "default_value": "pb.rec_frac",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 414,
+        "source_line": 438,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__rec_frac"
       },
@@ -6833,7 +7381,7 @@
         "default_value": "lcoe_calc.lcoe",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 415,
+        "source_line": 439,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__lcoe"
       },
@@ -6843,7 +7391,7 @@
         "default_value": "buildings.capital_cost",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 430,
+        "source_line": 454,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__buildings_capital"
       }
@@ -7468,7 +8016,98 @@
         "owning_part_qn": "stellarator_09__stellaris",
         "attribute_name": "p_cryo",
         "redefinition_type": "literal",
-        "literal_value": 0.8,
+        "literal_value": 0.0,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "q_nuc_cryo",
+        "redefinition_type": "literal",
+        "literal_value": 35.5,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "vol_cold_cryo",
+        "redefinition_type": "literal",
+        "literal_value": 136.56,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "p_fixed_cryo",
+        "redefinition_type": "literal",
+        "literal_value": 0.0075,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "f_uplift_cryo",
+        "redefinition_type": "literal",
+        "literal_value": 1.0,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "T_cold_cryo",
+        "redefinition_type": "literal",
+        "literal_value": 20.0,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "T_amb_cryo",
+        "redefinition_type": "literal",
+        "literal_value": 300.0,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "f_carnot_cryo",
+        "redefinition_type": "literal",
+        "literal_value": 0.2,
         "source_path": null,
         "expression_ast": null,
         "expression_text": "",

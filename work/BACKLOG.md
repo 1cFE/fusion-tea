@@ -80,8 +80,8 @@ epics:
   - id: WI-024
     name: Recirculating-power derivation model (coil/cryo parasitic loads)
     scale: standard
-    status: backlog
-    completed: null
+    status: completed
+    completed: '2026-07-18'
 - name: Pipeline De-Risk & Demonstration
   goal: null
   priority: P0
@@ -144,7 +144,7 @@ standalone: []
 | WI-021 | stellarator-correct-radial-build | standard | completed | Completed 2026-07-17 |
 | WI-022 | predictive-confinement | standard | completed | Completed 2026-07-18 |
 | WI-023 | magnet-field-errata-B9 | standard | completed | Completed 2026-07-18 |
-| WI-024 | Recirculating-power derivation model (coil/cryo parasitic loads) | standard | backlog |  |
+| WI-024 | Recirculating-power derivation model (coil/cryo parasitic loads) | standard | completed | Completed 2026-07-18 |
 
 ## Epic: Pipeline De-Risk & Demonstration
 **Priority**: P0 | **Status**: active

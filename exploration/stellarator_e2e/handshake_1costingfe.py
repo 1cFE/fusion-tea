@@ -216,7 +216,15 @@ def set_1cfe_inputs(o):
         f"{P}pb__p_tf": pb["p_coils"], f"{P}pb__p_pf": 0.0,
         f"{P}pb__p_tfcool": pb["p_cool"], f"{P}pb__p_pfcool": 0.0,
         f"{P}pb__p_trit": pb["p_trit"], f"{P}pb__p_house": pb["p_house"],
-        f"{P}pb__p_cryo": pb["p_cryo"],
+        # WI-024 (design D7 successor injection): pb__p_cryo is now a
+        # chain-wired channel, not a settable leaf. Zero the chain's heat
+        # inputs and feed 1cfe's p_cryo through the additive direct term —
+        # the identity path is exact in IEEE arithmetic (0-heat chain
+        # contributes exactly 0; baked f_uplift/T/f_carnot values are inert
+        # at zero heat), so downstream floats match the pre-WI-024 record
+        # bit for bit.
+        f"{P}cryo_elec__q_nuc": 0.0, f"{P}cryo_elec__vol_cold": 0.0,
+        f"{P}cryo_elec__p_fixed": 0.0, f"{P}cryo_elec__p_direct": pb["p_cryo"],
         # heating (ECRH-only for the stellarator point)
         f"{P}heating_cost__ecrh_per_mw": uc["heating_ecrh_per_mw"] * M,
         f"{P}heating_cost__nbi_per_mw": uc["heating_nbi_per_mw"] * M,

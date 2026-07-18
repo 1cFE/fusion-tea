@@ -63,11 +63,21 @@ IN = dict(
     # power balance
     p_input=50.0, mn=1.2, eta_th=0.333, eta_p=0.5, eta_pin=0.5,
     p_pump=1.0, f_sub=0.03,  # p_pump: 1costingFE steady_state_stellarator.yaml:21 (WI-019)
-    # p_tf = 0.0 (WI-023): source defers parasitic electricity consumption; the
-    #   old 111.0 mapped a phantom "conduction power to coils" row (111 is the
-    #   stored magnetic energy in GJ). No invented value; derivation is WI-024.
+    # p_tf = 0.0 (WI-024): modeled zero for the SC coil set (recirc_power_factor
+    #   = 0 in 1cfe's own SC model; ~7.5 kW joint loss counted as 20 K heat in
+    #   the cryo chain). The old 111.0 mapped a phantom "conduction power to
+    #   coils" row (111 is the stored magnetic energy in GJ), zeroed at WI-023.
     p_tf=0.0, p_pf=0.0, p_tfcool=15.0, p_pfcool=0.0,
-    p_trit=10.0, p_house=4.0, p_cryo=0.8,
+    p_trit=10.0, p_house=4.0,
+    # Cryoplant electrical chain (WI-024): derived p_cryo replaces the retired
+    #   1cfe generic default 0.8. q_nuc 35.5 W/m^3 (Table 6 image), vol_cold
+    #   136.56 m^3 (computed, Table 8 cross-sections x 8 x 25 m), p_fixed
+    #   0.0075 MW (sec. 2.9 joints), f_uplift 1.0 (lower-bound seam, D6),
+    #   T_cold 20 K (sec. 2.9), T_amb 300 K (D4 assumption), f_carnot 0.20
+    #   (THE assumption, D4), p_cryo_direct 0.0 (0.8 default retired, D2).
+    q_nuc_cryo=35.5, vol_cold_cryo=136.56, p_fixed_cryo=0.0075,
+    f_uplift_cryo=1.0, T_cold_cryo=20.0, T_amb_cryo=300.0, f_carnot_cryo=0.20,
+    p_cryo_direct=0.0,
     # magnet — B = 9.0 (WI-023): axis-averaged B_0 printed in the Table 2/5
     #   images (the old 5.86 cited a phantom Table 3 text row).
     magnet_G=78.95683520871486, magnet_B=9.0, magnet_R0=12.7,
@@ -147,7 +157,13 @@ def compute():
     p_the = p["eta_th"] * p_th
     p_et = p_the
     p_sub = p["f_sub"] * p_et
-    recirculating = (p_coils + p["p_pump"] + p_sub + p_aux + p_cool + p["p_cryo"]
+    # Cryoplant electrical chain (WI-024) — mirrors the generated
+    # cryoplant_electrical_power_impl.py statement forms verbatim (bit-exact):
+    cop_carnot = (p["T_cold_cryo"] / (p["T_amb_cryo"] - p["T_cold_cryo"]))
+    cop = (p["f_carnot_cryo"] * cop_carnot)
+    p_cold = ((((p["q_nuc_cryo"] * p["vol_cold_cryo"]) * 1e-06) + p["p_fixed_cryo"]) * p["f_uplift_cryo"])
+    p_cryo = ((p_cold / cop) + p["p_cryo_direct"])
+    recirculating = (p_coils + p["p_pump"] + p_sub + p_aux + p_cool + p_cryo
                      + p["p_input"] / p["eta_pin"])
     q_eng = p_et / recirculating
     rec_frac = 1.0 / q_eng
@@ -198,6 +214,7 @@ def compute():
 
     return dict(
         V=V, p_fus=p_fus, p_th=p_th, p_the=p_the, p_et=p_et,
+        p_cryo=p_cryo,  # derived cryoplant electrical (WI-024 chain output)
         q_eng=q_eng, rec_frac=rec_frac, p_net=p_net, wall_load=wall_load,
         magnet=magnet, heating=heating, divertor=divertor, blanket=blanket,
         shield=shield, structure=structure, vessel=vessel,

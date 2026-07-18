@@ -76,6 +76,7 @@ P = "stellarator_09__stellaris__"
 CH = dict(
     V=f"{P}geom__V", p_fus=f"{P}fusion__p_fus", wall_load=f"{P}wall_load_calc__wall_load",
     p_th=f"{P}pb__p_th", p_the=f"{P}pb__p_the", p_et=f"{P}pb__p_et",
+    p_cryo=f"{P}cryo_elec__p_elec",  # derived cryoplant electrical (WI-024)
     q_eng=f"{P}pb__q_eng", rec_frac=f"{P}pb__rec_frac", p_net=f"{P}pb__p_net",
     magnet=f"{P}magnet_cost__capital_cost", heating=f"{P}heating_cost__cost",
     divertor=f"{P}divertor_cost__cost", blanket=f"{P}blanket_cost__cost",
@@ -214,8 +215,8 @@ def main():
     # ---- Oracle comparison --------------------------------------------------
     o = oracle_compute()
     print("\n=== PHYSICS SPINE (executed vs oracle) ===")
-    for k in ["V", "p_fus", "p_th", "p_the", "p_et", "q_eng", "rec_frac", "p_net",
-              "wall_load"]:
+    for k in ["V", "p_fus", "p_th", "p_the", "p_et", "p_cryo", "q_eng", "rec_frac",
+              "p_net", "wall_load"]:
         check(k, b[CH[k]], o[k])
 
     print("\n=== PER-ACCOUNT CAPITAL, $ (executed vs oracle) ===")
@@ -229,19 +230,20 @@ def main():
     check("total_capital", total, o["total_capital"])
     check("lcoe", b[CH["lcoe"]], o["lcoe"])
 
-    # ---- WI-023 headline oracle (looser, sanity band) ------------------------
-    # WI-023 magnet-field errata: the coil-cost field is the axis-averaged
-    # B_0 = 9.0 T printed in the Table 2/5 images — the old 5.86 cited a
-    # phantom Table 3 text row absent from the table image and the published
-    # paper (raw.pdf-confirmed). Magnet cost is linear in B, so magnet capital
-    # scales exactly x9.0/5.86 -> $6.32B (50.2% share), total $12.60B. The
-    # phantom p_tf = 111 MW ("conduction power to coils" — the paper prints
-    # 111 only as stored magnetic energy in GJ) is zeroed per the owner's
-    # no-fallbacks ruling; derivation is WI-024. p_net 804.1 -> 915.1 MW,
-    # q_eng 3.93 -> 6.61, LCOE 176.07 -> 201.46.
-    # (Was WI-022: V 425, p_fus 2748.1, p_net 804.1, rec_frac 0.254,
-    # q_eng 3.93, total 9.59, LCOE 176, magnet 4.12.)
-    print("\n=== WI-023 HEADLINE CHECK ===")
+    # ---- WI-024 headline oracle (looser, sanity band) ------------------------
+    # WI-024 recirculating-power derivation: p_cryo is now a computed chain
+    # output — winding-pack nuclear heating 35.5 W/m^3 (Table 6 image) x
+    # 136.56 m^3 winding volume (computed: Table 8 cross-sections x 8-fold
+    # symmetry x 25 m circumference) + 7.5 kW joint losses (sec. 2.9), at 20 K
+    # through a 0.20-of-Carnot cryoplant (THE assumption, design D4) ->
+    # 0.8643516 MW wall-plug, retiring the 1cfe generic default 0.8. p_tf is
+    # rescoped from deferral stopgap to modeled zero (SC coils, recirc factor
+    # 0 in 1cfe's own model). p_net 915.145 -> 915.081 MW, q_eng 6.609 ->
+    # 6.6067, rec_frac 0.15130 -> 0.15136, LCOE 201.458 -> 201.472; capital
+    # unchanged (no parasitic slot feeds capital).
+    # (Was WI-023: V 425, p_fus 2748.1, p_net 915.1, rec_frac 0.151,
+    # q_eng 6.61, total 12.60, LCOE 201.46, magnet 6.32.)
+    print("\n=== WI-024 HEADLINE CHECK ===")
     heads = [
         ("plasma volume V [m3]", b[CH["V"]], 425, 2),
         ("fusion power [MW]", b[CH["p_fus"]], 2748.1, 2),
@@ -254,7 +256,7 @@ def main():
     ]
     for label, val, target, tol in heads:
         ok = abs(val - target) <= tol
-        print(f"  {label:24s} exec={val:14.4f}  WI-023~={target:<10}  "
+        print(f"  {label:24s} exec={val:14.4f}  WI-024~={target:<10}  "
               f"{'OK' if ok else 'FAIL'}")
         if not ok:
             failures.append("HEAD:" + label)
@@ -292,7 +294,7 @@ def main():
     if failures:
         raise SystemExit(f"{len(failures)} check(s) FAILED: {failures}")
     print(f"ALL CHECKS PASSED (channel-vs-oracle rel tol {REL_TOL}); "
-          "WI-023 headline reproduced.")
+          "WI-024 headline reproduced.")
 
 
 if __name__ == "__main__":

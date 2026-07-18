@@ -4,6 +4,7 @@ package mfe_plant {
     private import mfe_subsystems::*;
     private import mfe_plasma_scaling::*;
     private import mfe_power_balance::*;
+    private import mfe_cryo_plant::*;
     private import mfe_magnet_cost::*;
     private import mfe_account_costs::*;
     private import mfe_lcoe_dcf::*;
@@ -192,7 +193,30 @@ package mfe_plant {
         attribute p_pfcool : Real;  // PF coil cooling [MW]
         attribute p_trit : Real;    // tritium systems [MW]
         attribute p_house : Real;   // housekeeping [MW]
-        attribute p_cryo : Real;    // cryogenic pumping [MW]
+        attribute p_cryo : Real default 0.0;  // directly-specified cryoplant electrical [MW] (additive direct term, WI-024)
+
+        // Cryoplant heat-load chain (WI-024). Dormant by default: a concept that
+        // knows its cryo electrical directly binds p_cryo (the direct term) and
+        // leaves these unbound; a concept deriving it binds the chain and zeroes
+        // p_cryo.
+        attribute q_nuc_cryo : Real default 0.0;
+        attribute vol_cold_cryo : Real default 0.0;
+        attribute p_fixed_cryo : Real default 0.0;
+        attribute f_uplift_cryo : Real default 1.0;
+        attribute T_cold_cryo : Real default 20.0;
+        attribute T_amb_cryo : Real default 300.0;
+        attribute f_carnot_cryo : Real default 1.0;
+
+        calc cryo_elec : 'Cryoplant Electrical Power' {
+            in q_nuc = q_nuc_cryo;
+            in vol_cold = vol_cold_cryo;
+            in p_fixed = p_fixed_cryo;
+            in f_uplift = f_uplift_cryo;
+            in T_cold = T_cold_cryo;
+            in T_amb = T_amb_cryo;
+            in f_carnot = f_carnot_cryo;
+            in p_direct = p_cryo;
+        }
 
         calc pb : 'MFE Power Balance Calc' {
             in p_nrl = fusion.p_fus;
@@ -209,7 +233,7 @@ package mfe_plant {
             in p_pfcool = p_pfcool;
             in p_trit = p_trit;
             in p_house = p_house;
-            in p_cryo = p_cryo;
+            in p_cryo = cryo_elec.p_elec;
         }
 
         // Cost-spine power aliases: read directly from the power balance so the

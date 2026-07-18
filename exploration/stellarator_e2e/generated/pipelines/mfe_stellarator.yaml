@@ -56,6 +56,21 @@ modules:
       wall_area: float stellarator_09__stellaris__rb__wall_area
       r_coil: float stellarator_09__stellaris__rb__r_coil
 
+  # mfe_cryo_plant.Cryoplant_Electrical_PowerModule
+  stellarator_09__stellaris__cryo_elec:
+    module_type: mfe_cryo_plant.Cryoplant_Electrical_PowerModule
+    inputs:
+      q_nuc: float system_design.stellarator_09__stellaris__cryo_elec__q_nuc
+      vol_cold: float system_design.stellarator_09__stellaris__cryo_elec__vol_cold
+      p_fixed: float system_design.stellarator_09__stellaris__cryo_elec__p_fixed
+      f_uplift: float system_design.stellarator_09__stellaris__cryo_elec__f_uplift
+      T_cold: float system_design.stellarator_09__stellaris__cryo_elec__T_cold
+      T_amb: float system_design.stellarator_09__stellaris__cryo_elec__T_amb
+      f_carnot: float system_design.stellarator_09__stellaris__cryo_elec__f_carnot
+      p_direct: float system_design.stellarator_09__stellaris__cryo_elec__p_direct
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__cryo_elec__p_elec
+
   # mfe_account_costs.Heating_CostModule
   stellarator_09__stellaris__heating_cost:
     module_type: mfe_account_costs.Heating_CostModule
@@ -189,7 +204,7 @@ modules:
       p_pfcool: float system_design.stellarator_09__stellaris__pb__p_pfcool
       p_trit: float system_design.stellarator_09__stellaris__pb__p_trit
       p_house: float system_design.stellarator_09__stellaris__pb__p_house
-      p_cryo: float system_design.stellarator_09__stellaris__pb__p_cryo
+      p_cryo: float stellarator_09__stellaris__cryo_elec__p_elec.root
     outputs:
       p_th: float stellarator_09__stellaris__pb__p_th
       p_the: float stellarator_09__stellaris__pb__p_the
@@ -296,6 +311,7 @@ modules:
       stellarator_09__stellaris__rb__vessel_vol: float stellarator_09__stellaris__rb__vessel_vol.json
       stellarator_09__stellaris__rb__wall_area: float stellarator_09__stellaris__rb__wall_area.json
       stellarator_09__stellaris__rb__r_coil: float stellarator_09__stellaris__rb__r_coil.json
+      stellarator_09__stellaris__cryo_elec__p_elec: RootModel[float] stellarator_09__stellaris__cryo_elec__p_elec.json
       stellarator_09__stellaris__heating_cost__cost: RootModel[float] stellarator_09__stellaris__heating_cost__cost.json
       stellarator_09__stellaris__turbine_cost__cost: RootModel[float] stellarator_09__stellaris__turbine_cost__cost.json
       stellarator_09__stellaris__electric_cost__cost: RootModel[float] stellarator_09__stellaris__electric_cost__cost.json

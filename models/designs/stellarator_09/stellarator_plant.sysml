@@ -46,13 +46,13 @@ package stellarator_09 {
           - Stellarator coil geometry factor G = 8*pi^2 (vs tokamak 4*pi^2), bound
             on the magnet subsystem.
 
-        HEADLINE FORWARD-PASS RESULT (WI-023 magnet-field errata; executed in
-        exploration/stellarator_e2e/run_stellaris.py):
+        HEADLINE FORWARD-PASS RESULT (WI-024 recirculating-power derivation;
+        executed in exploration/stellarator_e2e/run_stellaris.py):
         plasma volume 425 m^3 (printed value; a = 1.3), fusion power 2748.1 MW
         (profile-integrated, +1.8% vs the 2700 design point), thermal power
-        3238 MW, gross electric 1078 MW, net electric 915.1 MW, recirculating
-        fraction 0.151, q_eng 6.61, total overnight capital $12.60B, LCOE
-        $201.46/MWh (FOAK). Magnet $6.32B (50.2%) at the printed axis-averaged
+        3238 MW, gross electric 1078 MW, net electric 915.081 MW, recirculating
+        fraction 0.15136, q_eng 6.6067, total overnight capital $12.60B, LCOE
+        $201.472/MWh (FOAK). Magnet $6.32B (50.2%) at the printed axis-averaged
         B_0 = 9.0 T and the stellarator 5.87 REBCO markup.
         (History: WI-018 lossy balance net 575, ~$251/MWh; WI-019 faithful
         balance at torus volume net 786, ~$189/MWh; WI-020 corrected the
@@ -62,7 +62,9 @@ package stellarator_09 {
         ~$176/MWh, magnet 42.9%; WI-023 rebound the magnet field to the
         printed 9.0 T — 5.86 was a phantom text row — and zeroed the phantom
         p_tf = 111, which the paper prints only as stored magnetic energy in
-        GJ, not a power.)
+        GJ, not a power, net 915.145, ~$201.46/MWh; WI-024 derived the cryo
+        parasitic load from the winding-pack heat inventory, retired the
+        0.8 MW 1costingFE default, and rescoped p_tf to a modeled zero.)
 
         THREE MAPPING TRAPS (documented at their bindings below): r_coil (coil
         bore = radial-build vessel outer radius, not a guess), sigma_v (0D
@@ -431,29 +433,45 @@ package stellarator_09 {
         :>> f_sub = 0.03 {    // subsystem/control power fraction.
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:17 (f_sub = 0.03) **Basis**: 1costingFE stellarator subsystem power fraction */
         }
-        :>> p_tf = 0.0 {      // coil recirculating power [MW] — source defers; no invented value (WI-023).
+        :>> p_tf = 0.0 {      // coil electrical drive power [MW] — modeled zero for the SC coil set (WI-024).
             doc /*
-            Coil-system recirculating power: bound 0.0 because no admissible source
-            prints one. The prior 111.0 mapped a "conduction power to coils" text row
-            that does not exist in the paper — the published Stellaris paper prints
-            111 only as stored magnetic energy [GJ] (Table 2 image) and explicitly
-            defers parasitic electricity consumption ("outside the scope of this
-            paper", conclusion; raw.pdf-confirmed). Its only coil-thermal figures —
-            35.5 W/m^3 winding-pack nuclear-heating density (Table 6 image) and
-            ~7.5 kW resistive-joint losses (sec. 2.9) — are not convertible to a
-            plant-level MW without invented inputs (winding-pack volume, 20 K cryo
-            COP), so per the no-fallbacks rule the slot carries no invented value
-            ([OWNER] ruling 2026-07-18). Known-optimistic until WI-024 (backlog:
-            recirculating-power derivation from heat loads + COP) lands; p_tfcool
-            (15 MW) and p_cryo (0.8 MW), both 1costingFE-sourced, still carry some
-            coil-adjacent load.
+            Coil electrical drive power: modeled 0.0. The Stellaris coil set is
+            superconducting and operates steady-state DC — no resistive drive
+            power; 1costingFE's own superconductor model agrees
+            (recirc_power_factor = 0.0 for every SC conductor grade,
+            defaults.py:611-614; the resistive recirc model is copper-only). The
+            one printed steady-state electrical dissipation — ~7.5 kW
+            resistive-joint losses, "negligible" (sec. 2.9) — is counted as heat
+            at 20 K inside the WI-024 cryoplant chain (p_fixed_cryo below), not
+            as coil electrical. Current-lead and power-supply standing losses
+            are unprinted in any admissible source and are part of the chain's
+            documented lower bound (f_uplift_cryo). (History: the pre-WI-023
+            111.0 mapped a phantom "conduction power to coils" text row — the
+            paper prints 111 only as stored magnetic energy [GJ]; WI-023 zeroed
+            it as a deferral stopgap; WI-024 rescopes the zero from stopgap to
+            modeled value.)
             **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf
-            **Ref**: conclusion (parasitic electricity consumption outside the paper's scope); Table 2 image (iter-01 .../stellaris-design-details/images/page_002_table_0.png: 111 = stored magnetic energy [GJ]; no conduction-power row)
-            **Basis**: deferred by the source; 0.0 pending the WI-024 derivation — cites no MW value
+            **Ref**: sec. 2.9 (10 W per joint -> ~7.5 kW coil-set steady-state, "negligible"); /home/reid/1cfe/1costingfe/src/costingfe/defaults.py:611-614 (recirc_power_factor = 0.0 for superconductors)
+            **Basis**: modeled zero for a superconducting coil set — coil-adjacent parasitic load carried by the derived p_cryo (WI-024 design D1/D2, 2026-07-18)
             */
         }
         :>> p_tfcool = 15.0 { // coil cooling power [MW].
-            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:20 (p_cool = 15.0) **Basis**: 1costingFE stellarator cooling power */
+            doc /*
+            1costingFE stellarator cooling power, kept at the source default.
+            Post-WI-024 coverage (MR-WI024-3): read as the non-cryogenic
+            cooling-system electrical (component / room-temperature cooling
+            loops), disjoint from the 20 K cryoplant wall-plug now derived into
+            p_cryo — 1costingFE's own stellarator defaults carry p_cool = 15.0
+            and p_cryo = 0.8 side by side (steady_state_stellarator.yaml:20,24),
+            so in the source's intent they are distinct loads. The slot's
+            upstream composition is undocumented; any cryo-compressor share it
+            contains would overlap the derived p_cryo — a conservative-direction
+            residual (recirc overstated, LCOE up), documented here rather than
+            silently resolved.
+            **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml
+            **Ref**: steady_state_stellarator.yaml:20 (p_cool = 15.0); :24 (p_cryo = 0.8 carried side by side — disjoint in the source's intent)
+            **Basis**: 1costingFE stellarator cooling power; disjoint read vs the WI-024 derived cryoplant electrical (design D2, 2026-07-18)
+            */
         }
         :>> p_trit = 10.0 {   // tritium systems power [MW].
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:22 (p_trit = 10.0) **Basis**: 1costingFE stellarator tritium-processing power */
@@ -461,8 +479,74 @@ package stellarator_09 {
         :>> p_house = 4.0 {   // housekeeping power [MW].
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:23 (p_house = 4.0) **Basis**: 1costingFE stellarator housekeeping power */
         }
-        :>> p_cryo = 0.8 {    // cryogenic pumping power [MW].
-            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:24 (p_cryo = 0.8) **Basis**: 1costingFE stellarator cryogenic power */
+        :>> p_cryo = 0.0 {    // direct cryo-electrical term [MW] — zeroed; chain derives the slot (WI-024).
+            doc /*
+            The 1costingFE generic default 0.8 MW (steady_state_stellarator.yaml:24)
+            is retired: it and the WI-024 derivation are the same physical quantity
+            (cryoplant wall-plug electrical — 1cfe's own dipole defaults document
+            the p_cryo slot as "Cryogenic wall-plug power"), so coexisting would
+            double-count. The power-balance p_cryo slot now receives
+            cryo_elec.p_elec, derived from the winding-pack heat load below.
+            **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_dipole.yaml
+            **Ref**: steady_state_dipole.yaml:52-53 (slot semantics witness); steady_state_stellarator.yaml:24 (the retired generic default)
+            **Basis**: double-counting resolution, WI-024 design D2 (2026-07-18)
+            */
+        }
+        :>> q_nuc_cryo = 35.5 {   // winding-pack mean nuclear heating [W/m^3].
+            doc /* **Source**: stellaris-design-details.md **Ref**: Table 6 image (images/page_020_table_0.png: "Mean cryogenic nuclear heating (winding pack) [W/m^3] 35.5"); sec. 2.8 raw.pdf (magnets at 20 K; EU DEMO ~50 W/m^3 as viability reference) **Basis**: Stellaris winding-pack volumetric nuclear heating at 20 K */
+        }
+        :>> vol_cold_cryo = 136.56 {  // total winding-pack volume [m^3] (COMPUTED).
+            doc /*
+            Computed from sourced geometry (WI-024 design D5): six unique square
+            winding-pack cross-sections (Table 8 image side lengths 360/360/340/340/
+            320/300 mm) x 8 occurrences each (sec. 2.9: 48 coils = 4 periods x
+            (6 independent + 6 mirrored)) x 25 m typical circumference (sec. 2.9,
+            printed but approximate — per-coil circumferences are not printed; the
+            documented weak link). Sum of side^2 = 2x0.36^2 + 2x0.34^2 + 0.32^2
+            + 0.30^2 = 0.6828 m^2; x8 x25 = 136.56 m^3. Cross-checks: each side^2
+            equals turns x (20 mm)^2 exactly (sec. 2.9 unit cell; Table 8 turns
+            row); Table 8 no-casing masses (128.7 t x 8 = 1029.6 t) imply
+            ~7540 kg/m^3, consistent with the Table 7 material mix.
+            **Source**: stellaris-design-details.md
+            **Ref**: Table 8 image (images/page_022_table_0.png: side lengths, turns, masses); raw.pdf sec. 2.9 (square winding pack; 20 mm x 20 mm unit cell; 25 m typical circumference; 48 = 4 x (6+6) symmetry); Table 7 image (images/page_021_table_0.png: material fractions)
+            **Basis**: cross-section x circumference x symmetry; mass cross-checked
+            */
+        }
+        :>> p_fixed_cryo = 0.0075 {  // resistive-joint losses [MW] at 20 K.
+            doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf **Ref**: sec. 2.9 (10 W per joint -> ~7.5 kW steady-state for the entire coil set, "negligible ... within the cooling capacity of existing cryocooler designs") **Basis**: printed coil-set joint dissipation, counted as heat at 20 K */
+        }
+        :>> f_uplift_cryo = 1.0 {   // unprinted-loads multiplier — explicit lower bound (WI-024 D6).
+            doc /*
+            Bound 1.0 = printed loads only, a KNOWING LOWER BOUND: the paper defers
+            casing, coil-case, and 20 K support-structure nuclear heating ("will be
+            examined in future studies", sec. 2.9 raw.pdf), and current-lead /
+            radiation loads are unprinted. No admissible uplift value exists; the
+            parameter names the seam so the owner can raise it. Cited to the design
+            ruling, not a source.
+            **Source**: WI-024 design ruling (D6, 2026-07-18; sanctioned by spec Checkpoint Ruling 2)
+            **Ref**: raw.pdf sec. 2.9 (the future-studies deferral)
+            **Basis**: explicit assumption parameter — exclude-with-documented-bound
+            */
+        }
+        :>> T_cold_cryo = 20.0 {    // coil operating temperature [K].
+            doc /* **Source**: raw.pdf **Ref**: sec. 2.9 ("cooled to 20 K using supercritical helium at 15-20 bar"; Top set to 20 K); sec. 2.8; corroborated by 1costingFE defaults.py:611 (rebco_hts cryo_temp_k = 20.0) **Basis**: Stellaris HTS coil operating temperature */
+        }
+        :>> T_amb_cryo = 300.0 {    // heat-rejection reference temperature [K].
+            doc /* **Source**: WI-024 design ruling (D4, 2026-07-18) **Ref**: standard ambient reference for the Carnot COP **Basis**: explicit assumption parameter (standard engineering reference) */
+        }
+        :>> f_carnot_cryo = 0.20 {  // fraction-of-Carnot plant efficiency — THE assumption (WI-024 D4).
+            doc /*
+            Explicit owner-visible assumption (spec Checkpoint Ruling 2 delegated
+            value-setting to design; ruled 2026-07-18): no admissible source prints
+            a 20 K COP or specific power (sec. 2.8 is qualitative; W7-X and the
+            1costingFE dipole eta_cryo comment are value-inadmissible, shape only).
+            Basis, general cryogenic engineering practice: large cryoplants achieve
+            roughly 15-30% of Carnot; 0.20 taken at the conservative end. Yields
+            COP = 0.20 x 20/280 = 1/70, i.e. 70 W_e per W at 20 K.
+            **Source**: WI-024 design ruling (D4, 2026-07-18)
+            **Ref**: spec sec. Evidence link A4 (the no-admissible-value finding)
+            **Basis**: explicit assumption parameter — fraction of Carnot, general practice band
+            */
         }
 
         // Stellarator family choices (inline; see the instance doc).
@@ -515,12 +599,14 @@ package stellarator_09 {
             licensing constants (land scales as sqrt(P_net x ref)). Supplied
             without CAS10's own contingency to avoid double-counting the plant's
             CAS29 contingency.
-            STALE BASIS (surfaced at WI-019 close, updated WI-023): P_net = 575.3
+            STALE BASIS (surfaced at WI-019 close, updated WI-024): P_net = 575.3
             was the WI-018 value. WI-019 moved it to 786.1, WI-020 to 578.0,
             WI-022 (profile-integrated reactivity + geometry rebind) to 804.1,
-            and WI-023 (phantom p_tf = 111 zeroed) to 915.1 — ~59% above the
-            575.3 basis this pass-through was computed at. Recomputation still
-            belongs to the Stage-3 pass-through-scope item, not WI-023.
+            WI-023 (phantom p_tf = 111 zeroed) to 915.1, and WI-024 (derived
+            cryo parasitic) 915.145 -> 915.081 — negligible at the stated
+            precision, still ~59% above the 575.3 basis this pass-through was
+            computed at. Recomputation still belongs to the Stage-3
+            pass-through-scope item, sequenced after WI-024.
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
             **Ref**: costs.py:52-80 (cas10_preconstruction); costing_constants.yaml:15-30
             **Basis**: CAS10 preconstruction subtotal at the Stellaris design point
@@ -559,12 +645,14 @@ package stellarator_09 {
             CAS70 O&M = om_cost_dt x (P_net/1 GWe)^0.5 = 54.9 x (575.3/1000)^0.5 =
             41.641 M$/yr -> $. Inflation and scheduled-replacement (CAS72)
             refinements are a Stage-3 item.
-            STALE BASIS (surfaced at WI-019 close, updated WI-023): P_net = 575.3
+            STALE BASIS (surfaced at WI-019 close, updated WI-024): P_net = 575.3
             was the WI-018 value. WI-019 moved it to 786.1, WI-020 to 578.0,
             WI-022 (profile-integrated reactivity + geometry rebind) to 804.1,
-            and WI-023 (phantom p_tf = 111 zeroed) to 915.1 — ~59% above the
-            575.3 basis this pass-through was computed at. Recomputation still
-            belongs to the Stage-3 pass-through-scope item, not WI-023.
+            WI-023 (phantom p_tf = 111 zeroed) to 915.1, and WI-024 (derived
+            cryo parasitic) 915.145 -> 915.081 — negligible at the stated
+            precision, still ~59% above the 575.3 basis this pass-through was
+            computed at. Recomputation still belongs to the Stage-3
+            pass-through-scope item, sequenced after WI-024.
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
             **Ref**: costing_constants.yaml:272 (om_cost_dt = 54.9 M$/yr at 1 GWe); costs.py:319-347 (power-law 0.5)
             **Basis**: staffing-based DT O&M, power-law scaled
