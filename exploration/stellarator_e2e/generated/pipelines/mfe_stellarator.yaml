@@ -139,6 +139,11 @@ modules:
       sigma_v: float system_design.stellarator_09__stellaris__fusion__sigma_v
       E_fus: float system_design.stellarator_09__stellaris__fusion__E_fus
       V: float stellarator_09__stellaris__geom__V.root
+      n_D0: float system_design.stellarator_09__stellaris__fusion__n_D0
+      n_T0: float system_design.stellarator_09__stellaris__fusion__n_T0
+      T_i0: float system_design.stellarator_09__stellaris__fusion__T_i0
+      alpha_n: float system_design.stellarator_09__stellaris__fusion__alpha_n
+      alpha_T: float system_design.stellarator_09__stellaris__fusion__alpha_T
     outputs:
       root: RootModel[float] stellarator_09__stellaris__fusion__p_fus
 

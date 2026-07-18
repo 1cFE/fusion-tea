@@ -492,7 +492,7 @@ class TestMagnet_Coil_CostRunnable:
 class TestNeutron_Wall_LoadRunnable:
     """Verify neutron_wall_load implementation runs without error.
 
-    SysML Source: models/analyses/mfe_plasma_scaling.sysml:157
+    SysML Source: models/analyses/mfe_plasma_scaling.sysml:204
     """
 
     def test_import_and_run(self):

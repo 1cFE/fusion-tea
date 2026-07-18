@@ -1,10 +1,20 @@
 # Current Work
 
-**Last Updated**: 2026-07-14
+**Last Updated**: 2026-07-18
 
 ---
 
 ## Active Work
+
+### Stellarator MBSE Demo — Stage 3 item 2 DONE: WI-022 predictive confinement (2026-07-18, uncommitted)
+
+**Status**: WI-022 implemented, validated, handshake-verified, closed — uncommitted in the worktree, stacked on `7f0b19ea` (which committed WI-019/020/021; the "uncommitted" notes on the entries below are stale). Last demo-deepening item (order 3→4→1→2) — the demo model is now complete pending the account-scope / hold-out stages. PROTOCOL.md respected throughout.
+
+**The headline story**: the 2144-vs-2700 "0D gap" is **closed as sourced physics, no tuning**. Fusion power is now computed by integrating the Bosch-Hale reactivity over the Stellaris source's own profiles — n(ρ)=n₀(1−ρ²)^0.33, T(ρ)=T₀(1−ρ²)^1.19, peak fuel 1.96e20/side, T_i0 14.63 keV, every parameter fixed from the source's Fig. 16 panels and printed tables **blind to the power** — giving **2748.1 MW, +1.8% vs the 2700 MW design point**. The physics executes at the **handwritten codegen stage** (first Rung-B item: SysML calc routed manual_required via a transcendental; `preserve_handwritten=True`; oracle mirrors the integral exactly, runner asserts rel 1e-9).
+
+**Extraction-errata sweep (the session's second story)**: image-verifying the tables exposed that the text extraction's Tables 2/3/4/5 are corrupted reconstructions (garbled AND invented rows). Owner-ratified fold-in: **a = 1.3** (was 1.5 — artifact), **V = 425** (was 448 — artifact; the WI-020 f_shape 0.7943 reconciled two artifacts, now 1.0031567 ≈ true ~0.3% QI shaping), **n_e = 3.17e20** (was 3.37), **wall_load_limit = 4.05** (the "4.95" was a phantom row), T_i0 14.63 (doc said 24.6). The extracted Fig.-16 caption exponents (α_n=1.2, α_T=3.0) were refuted by digitizing the figure itself (would give 1165 MW). **WI-023 queued**: magnet B = 5.86 T cites a phantom Table-3 row; the images print axis-averaged 9.0 T (magnet = 43% of capital). **Parked for owner**: p_tf = 111 MW also cites a phantom row (111 is the stored magnetic energy in GJ).
+
+**Re-baselined headline (executed, bit-exact vs oracle)**: V 425, **p_fus 2748.1 MW**, p_th 3238, gross 1078, **net 804.1 MW**, rec_frac 0.254, q_eng 3.93, total **$9.586B**, **LCOE $176.07/MWh**, magnet **$4.117B (42.9%)**. SV-029 passing; **SV-025/026 handshake byte-identical** (sigma_v>0 bypass = exact legacy 0D path, zero handshake edits); IFE SV-023 unchanged; L1=0, zero new L2/L6 offenders; viability passes (wall load 3.13 < 4.05). SV-016 band still reads low (q_eng 3.93 vs "~10–40") — awaiting owner adjust/annotate. Record: `work/completed/` WI-022 (spec/design/plan + `prototype/` digitization evidence).
 
 ### Stellarator MBSE Demo — first item implemented (aries-cs-holdout)
 

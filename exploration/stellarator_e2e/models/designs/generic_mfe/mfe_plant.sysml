@@ -153,16 +153,29 @@ package mfe_plant {
         }
 
         // Fusion-power inputs (WI-011 sets density directly for the stellarator;
-        // no density closure here).
-        attribute n_e : Real;     // electron density [m^-3]
-        attribute sigma_v : Real; // D-T reactivity <sigma*v> [m^3/s]
-        attribute E_fus : Real;   // per-event D-T fusion energy [J]
+        // no density closure here). WI-022: sigma_v > 0 selects the exact 0D
+        // bypass; sigma_v = 0 (default) computes the profile integral from the
+        // five profile inputs below (defaults mirror the calc def — a 0D/flat
+        // concept binds sigma_v only and leaves the profile inputs dormant).
+        attribute n_e : Real;                    // electron density [m^-3]
+        attribute sigma_v : Real default 0.0;    // 0D-effective reactivity [m^3/s]; > 0 = bypass
+        attribute E_fus : Real;                  // per-event D-T fusion energy [J]
+        attribute n_D0 : Real default 0.0;       // peak deuterium density [m^-3]
+        attribute n_T0 : Real default 0.0;       // peak tritium density [m^-3]
+        attribute T_i0 : Real default 1.0;       // peak ion temperature [keV]
+        attribute alpha_n : Real default 0.0;    // density profile exponent
+        attribute alpha_T : Real default 0.0;    // temperature profile exponent
 
         calc fusion : 'DT Fusion Power' {
             in n_e = n_e;
             in sigma_v = sigma_v;
             in E_fus = E_fus;
             in V = geom.V;
+            in n_D0 = n_D0;
+            in n_T0 = n_T0;
+            in T_i0 = T_i0;
+            in alpha_n = alpha_n;
+            in alpha_T = alpha_T;
         }
 
         // Power-balance inputs (WI-011).

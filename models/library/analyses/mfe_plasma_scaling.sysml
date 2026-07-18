@@ -124,34 +124,81 @@ package mfe_plasma_scaling {
 
     calc def 'DT Fusion Power' {
         doc /*
-        D-T fusion power [MW] from density, reactivity, and plasma volume.
+        D-T fusion power [MW] — 0D bypass or profile-integrated (WI-022).
 
-          P_fus = (1/4) * n_e^2 * <sigma*v> * E_fus * V * 1e-6   [W -> MW]
+        MODE (bypass rule, selected by sigma_v alone):
+          sigma_v > 0  ->  0D form (exact legacy contract):
+              p_fus = 0.25 * n_e^2 * sigma_v * E_fus * V * 1e-6   [W -> MW]
+          sigma_v = 0 (default)  ->  profile-integrated form:
+              p_fus = n_D0 * n_T0 * I * E_fus * V * 1e-6
+              I = integral_0^1  u^(2*alpha_n) * sigv_dt(T_i0 * u^alpha_T) du
+          with u = 1 - rho^2 (dV/V = 2*rho*d(rho), so the rho-integral of the
+          profile product reduces to the u-integral above), profiles
+          n(rho) = n0*(1-rho^2)^alpha_n and T(rho) = T0*(1-rho^2)^alpha_T
+          (Stellaris Eqs. 2-3, image-verified). The fuel term is n_D*n_T with
+          the *diluted peak fuel densities* — NOT 0.25*n_e^2, which would
+          double-count helium ash and impurities. If sigma_v > 0 and profile
+          inputs are also bound, the bypass wins.
 
-        The factor 1/4 = n_D*n_T / n_e^2 for a 50/50 D-T mix. Reactivity
-        <sigma*v> enters as the input `sigma_v` [m^3/s] — the Bosch-Hale
-        temperature fit is NOT reproduced here (it needs exp(), outside the
-        codegen envelope). E_fus is the per-event D-T fusion energy in Joules
-        (an input; = 17.58 MeV * 1.602176634e-13 J/MeV in the source).
+        EXECUTABLE SEMANTIC (Rung B, WI-022): the Bosch-Hale curve needs
+        exp(), so this calc is routed to the handwritten codegen stage
+        (manual_required); the generated handwritten impl is normative and is
+        guarded bit-exact by the oracle (verify_stellaris.py). Discretization
+        contract for the impl and oracle: trapezoidal rule in rho over [0,1],
+        N = 200,000 intervals, temperature floor 1e-6 keV, pure-Python
+        float64. The intermediates below state the Bosch-Hale evaluation at
+        T_i0 (sigv_peak) in the model itself; e^x is written as e ** x
+        because the KerML standard library has sqrt but no exp.
 
-        Fusion power rises with n_e and with V (hence with R via 'Plasma
-        Geometry'), satisfying SV-017. Density and reactivity are inputs;
-        the machine -> density closure is a downstream design-layer concern.
+        Fusion power rises with n_e / the fuel densities and with V (hence
+        with R via 'Plasma Geometry'), satisfying SV-017. Densities,
+        temperature, and exponents are inputs; the machine -> profile closure
+        (ISS04 confinement solve) is out of scope (Rung C).
 
-        **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/tokamak.py
-        **Ref**: tokamak.py:102-114 (compute_fusion_power)
-        **Basis**: Standard 0D D-T fusion power; MFE-generic
+        **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/tokamak.py;
+            /home/reid/1cfe/1costingfe/src/costingfe/layers/reactivity.py
+        **Ref**: tokamak.py:102-114 (compute_fusion_power, the 0D bypass
+            form); reactivity.py:54-70 (sigv_dt Bosch-Hale D-T coefficients);
+            knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/
+            stellaris-design-details/images/page_007_eq_0.png and
+            page_007_eq_1.png (Eqs. 2-3 profile forms, image-verified);
+            stellaris-design-details.md Appendix A line 2912 (the source's own
+            0.5D volume-integrated power balance this reproduces)
+        **Basis**: profile-integrated D-T fusion power over (1-rho^2)^alpha
+            profiles with an exact 0D bypass; MFE-generic (flat/0D concepts
+            bind sigma_v > 0 and ignore the profile inputs)
         */
 
-        in attribute n_e : Real;
-        in attribute sigma_v : Real;
-        in attribute E_fus : Real;
-        in attribute V : Real;
+        in attribute n_e : Real;                  // vol-avg electron density [m^-3] (0D path only)
+        in attribute sigma_v : Real default 0.0;  // 0D-effective reactivity [m^3/s]; > 0 selects the 0D bypass
+        in attribute E_fus : Real;                // per-event D-T fusion energy [J]
+        in attribute V : Real;                    // plasma volume [m^3]
 
-        // 0.25 = n_D*n_T/n_e^2 for 50/50 DT (tokamak.py:114).
-        // 1.0e-6 = W -> MW (tokamak.py:114).
+        // Profile inputs (WI-022). Inert on the 0D bypass path. T_i0 defaults
+        // to 1.0 (not 0) so the dormant Bosch-Hale intermediates below stay
+        // numerically defined; the mode is selected by sigma_v, never by T_i0.
+        in attribute n_D0 : Real default 0.0;     // peak deuterium density [m^-3]
+        in attribute n_T0 : Real default 0.0;     // peak tritium density [m^-3]
+        in attribute T_i0 : Real default 1.0;     // peak ion temperature [keV]
+        in attribute alpha_n : Real default 0.0;  // density profile exponent
+        in attribute alpha_T : Real default 0.0;  // temperature profile exponent
+
+        // Bosch-Hale sigv_dt at the peak ion temperature (reactivity.py:54-70)
+        // — the model-resident statement of the reactivity curve. The sqrt
+        // invocation routes this calc to the handwritten codegen stage.
+        attribute theta : Real = T_i0 / (1.0
+            - T_i0 * (1.51361e-2 + T_i0 * (4.60643e-3 + T_i0 * -1.06750e-4))
+            / (1.0 + T_i0 * (7.51886e-2 + T_i0 * (1.35000e-2 + T_i0 * 1.36600e-5))));
+        attribute xi : Real = ((34.3827 * 34.3827) / (4.0 * theta)) ** (1.0 / 3.0);
+        attribute sigv_peak : Real = 1.17302e-9 * theta
+            * RealFunctions::sqrt(xi / (1124656.0 * (T_i0 ** 3)))
+            * (2.718281828459045 ** (-3.0 * xi)) * 1.0e-6;
+
+        // Model-resident peak-form statement; the handwritten impl computes
+        // the doc-specified bypass/integral semantic and is the executable
+        // meaning (guarded by the oracle).
         out attribute p_fus : Real =
-            0.25 * (n_e ** 2) * sigma_v * E_fus * V * 1.0e-6;
+            n_D0 * n_T0 * sigv_peak * E_fus * V * 1.0e-6;
     }
 
     calc def 'Neutron Wall Load' {

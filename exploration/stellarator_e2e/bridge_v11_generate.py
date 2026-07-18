@@ -102,6 +102,10 @@ def main() -> None:
         package_name="stellarator_tea",
         pipeline_name="mfe_stellarator",
         overwrite=True,
+        # WI-022 (MR-WI022-4): 'DT Fusion Power' is manual_required (Bosch-Hale
+        # profile integral); keep the hand-filled impl across regens instead of
+        # overwriting it with a fresh NotImplementedError stub.
+        preserve_handwritten=True,
     )
     _check_duplicate_output_paths(graph.modules)
     _reconcile_params_coverage(graph)  # must pass now

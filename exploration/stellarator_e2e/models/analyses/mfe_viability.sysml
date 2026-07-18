@@ -66,7 +66,7 @@ package mfe_viability {
         scaling), which forward-computes the load from fusion power and wall area.
 
         **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
-        **Ref**: Table 5 (peak neutron wall power 4.95 MW/m^2), lines 1757-1766 (DPA-limited first-wall lifetime)
+        **Ref**: Table 2 image (images/page_002_table_0.png: peak neutron wall load 4.05 MW/m^2), lines 1757-1766 (DPA-limited first-wall lifetime)
         **Basis**: Neutron wall load must not exceed the first-wall design limit
         */
 

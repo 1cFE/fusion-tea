@@ -30,10 +30,11 @@ package stellarator_09 {
     part stellaris : 'MFE Power Plant' {
         doc /*
         Proxima Fusion "Stellaris" — concept-09 QI stellarator HTS power plant,
-        evaluated at operating point A. The Stellaris design target is 2700 MW
-        fusion; the 0D model computes ~2145 MW at the corrected plasma volume
-        (see the sigma_v note — the gap is the 0D single-temperature limitation,
-        item 2).
+        evaluated at operating point A. The Stellaris design point is 2700 MW
+        fusion; the model computes 2748 MW (+1.8%) by integrating the
+        Bosch-Hale reactivity over the source's own profiles (WI-022 — every
+        profile parameter fixed from the source's figure and printed tables,
+        blind to the power; see the sigma_v note).
 
         STELLARATOR FAMILY CHOICES (applied inline, not concept-specific numbers):
           - Density is a direct input (no tokamak Greenwald closure) — already the
@@ -45,28 +46,33 @@ package stellarator_09 {
           - Stellarator coil geometry factor G = 8*pi^2 (vs tokamak 4*pi^2), bound
             on the magnet subsystem.
 
-        HEADLINE FORWARD-PASS RESULT (WI-020 stellarator-correct geometry;
-        executed cross-check in exploration/stellarator_e2e/run_stellaris.py):
-        plasma volume 448 m^3 (shape factor 0.7943 on the torus 564), fusion
-        power ~2145 MW (computed at the unchanged sigma_v — Decision A, no
-        re-solve), gross electric 845 MW, net electric 578 MW, recirculating
-        fraction 0.316, q_eng 3.16, total overnight capital ~$9.68B, LCOE
-        ~$247/MWh (FOAK). Magnet-dominated (~$4.4B, 45.4% — power-independent,
-        so unchanged) at the stellarator 5.87 REBCO markup.
+        HEADLINE FORWARD-PASS RESULT (WI-022 predictive confinement + errata
+        rebind; executed in exploration/stellarator_e2e/run_stellaris.py):
+        plasma volume 425 m^3 (printed value; a = 1.3), fusion power 2748.1 MW
+        (profile-integrated, +1.8% vs the 2700 design point), thermal power
+        3238 MW, gross electric 1078 MW, net electric 804.1 MW, recirculating
+        fraction 0.254, q_eng 3.93, total overnight capital $9.59B, LCOE
+        $176.07/MWh (FOAK). Magnet $4.12B (42.9%) at the stellarator 5.87
+        REBCO markup (bore shrank with the corrected a = 1.3).
         (History: WI-018 lossy balance net 575, ~$251/MWh; WI-019 faithful
-        balance at torus volume net 786, ~$189/MWh; WI-020 corrects the volume,
-        dropping fusion power ~20%, so net electric and LCOE land back near the
-        WI-018 range — WI-019's power gain and this volume correction nearly
-        cancel. The old 2700 MW / $189 headline is recoverable at sigma_v =
-        7.535e-23, left as a visible input choice, not baked in.)
+        balance at torus volume net 786, ~$189/MWh; WI-020 corrected the
+        volume to the then-tabulated 448, net 578, ~$247/MWh; WI-022 replaced
+        the 0D reactivity with the sourced profile integral and rebound the
+        geometry to the image-verified a = 1.3 / V = 425 — the WI-020-era
+        a = 1.5 / V = 448 rows were text-extraction artifacts.)
 
         THREE MAPPING TRAPS (documented at their bindings below): r_coil (coil
-        bore = radial-build vessel outer radius, not a guess), sigma_v (D-T
-        reactivity — Bosch-Hale can't run in SysML), and B (coil-cost field is the
-        5.86 T loop-center value, NOT the 24.9 T peak-on-winding).
+        bore = radial-build vessel outer radius, not a guess), sigma_v (0D
+        bypass input — sigma_v = 0 here selects the profile-integrated
+        reactivity in the handwritten codegen stage), and B (coil-cost field is
+        the Table-3-cited 5.86 T loop-center value, NOT the 24.9 T
+        peak-on-winding; under review as WI-023 — the Table 2/5 images print
+        axis-averaged B_0 = 9.0 T).
 
         **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
-        **Ref**: Table 2 (line 227), Table 3 (line 283), Table 5 (line 720)
+        **Ref**: Table 2 image (images/page_002_table_0.png), Table 5 image
+            (images/page_009_table_0.png), Fig. 16 panels (digitized,
+            work/active/WI-022_predictive-confinement/prototype/)
         **Basis**: Stellaris design point A + 1costingFE stellarator cost defaults
         */
 
@@ -250,14 +256,12 @@ package stellarator_09 {
             p_fus=2700, n_mod=1: 613.650 M$ -> $. The per-building fuel-keyed base
             costs + scaling bases are a dict loop (out of the codegen envelope),
             so the total is a pass-through here.
-            STALE BASIS (surfaced at WI-019 close, updated WI-020): the 613.650
+            STALE BASIS (surfaced at WI-019 close, updated WI-022): the 613.650
             M$ was computed at the pre-WI-019 powers (p_et=896.8, p_th=2693.1).
-            The current WI-020 powers are p_et=845.2, p_th=2538.0 (fusion power
-            fell to ~2145 MW when the volume was corrected). Recomputing this
-            pass-through at the current powers belongs to the Stage-3
-            pass-through-scope item, not WI-020. (Note: the WI-020 powers are
-            closer to the 896.8 basis than the WI-019 powers were, so the drift
-            is smaller than at WI-019 close.)
+            The current WI-022 powers are p_et=1078.3, p_th=3238.1 (fusion power
+            rose to 2748 MW with the profile-integrated reactivity).
+            Recomputing this pass-through at the current powers belongs to the
+            Stage-3 pass-through-scope item, not WI-022.
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
             **Ref**: costs.py:83-144 (cas21_buildings); costing_constants.yaml:175-197
             **Basis**: CAS21 buildings total at the Stellaris design point
@@ -266,31 +270,27 @@ package stellarator_09 {
         }
 
         // Physics geometry inputs.
-        // PLASMA SHAPING (WI-020): the QI stellarator plasma is a shaped, twisted
-        // column, not a smooth elongated torus. The torus term 2*pi^2*R*a^2*kappa
-        // over-predicts its volume: at R=12.7, a=1.5, kappa=1.0 it gives 564 m^3,
-        // but the Stellaris source tabulates 448 m^3 (Table 2 line 230). The
-        // shape factor f_shape = 448/564 = 0.7943 (bound below) corrects it.
-        // f_shape is an EMPIRICAL packing factor reconciling the model's geometry
-        // inputs to the tabulated volume, NOT a first-principles shaping
-        // coefficient: it bundles the ~16% physical QI shaping (448/533 at the
-        // source's own Table-2 R=12) with the source's internal inconsistency
-        // (Table 2 R=12 vs prose line 251 R~=12.7; a second tabulated volume
-        // 425 m^3 appears in the Fig. 2 text, line 253). Owner ruled 2026-07-17
-        // to target the Table-2 headline 448 m^3 at the model's R=12.7.
-        // (Supersedes the pre-WI-020 note that mis-attributed the gap to "R/a
-        // rounding" — arithmetically wrong: torus at R=12, a=1.5 = 533, not 448.)
-        :>> R = 12.7 {        // major radius [m]. Source: details.md line 251.
-            doc /* **Source**: stellaris-design-details.md **Ref**: line 251 (R ~= 12.7 m) **Basis**: Stellaris major radius */
+        // PLASMA GEOMETRY (WI-022 errata rebind, owner-amended ruling 2026-07-18):
+        // the printed Stellaris geometry is a = 1.3 m with plasma volume
+        // 425-428 m^3 (Table 2 image: a = 1.3, V = 428; Table 5 image: V = 425
+        // at R = 12.74). The circular torus at the model's R = 12.7 gives
+        // 2*pi^2*12.7*1.3^2 = 423.66 m^3, so the QI shaping correction is ~0.3%
+        // (f_shape below targets the printed 425). The pre-WI-022 bindings
+        // (a = 1.5, V = 448, f_shape = 0.7943) were built on garbled
+        // text-extraction rows of Tables 2/5; the WI-020 "empirical packing
+        // factor" reconciled one extraction artifact against another. R stays
+        // 12.7 (Table 2 image; magnet R0 consistency).
+        :>> R = 12.7 {        // major radius [m].
+            doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: major plasma radius 12.7 m); prose line 251 **Basis**: Stellaris major radius */
         }
-        :>> a = 1.5 {         // minor radius [m]. Source: details.md line 228.
-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 line 228 (a = 1.5 m) **Basis**: Stellaris minor radius */
+        :>> a = 1.3 {         // minor radius [m] (WI-022 errata rebind).
+            doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: minor plasma radius 1.3 m; the extracted text row "a = 1.5" is an extraction artifact) **Basis**: Stellaris plasma minor radius */
         }
         :>> kappa = 1.0 {     // elongation. QI stellarator ~ circular average.
             doc /* **Source**: stellaris-design-details.md **Ref**: line 251 (near-circular avg cross-section); analyst-patch-spec-anchors.md line 30 (elon=1.0) **Basis**: stellarator ~circular average cross-section */
         }
-        :>> f_shape = 0.794259 {  // stellarator shape/packing factor [1].
-            doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md **Ref**: Table 2 line 230 (plasma volume = 448 m^3) **Basis**: empirical shape factor = tabulated V (448) / elongated-torus V (564.05) at R=12.7, a=1.5, kappa=1.0; corrects the smooth-torus over-prediction of the shaped QI plasma volume */
+        :>> f_shape = 1.0031567 {  // QI shaping correction [1] (WI-022).
+            doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_009_table_0.png (Table 5: plasma volume 425 m^3); images/page_002_table_0.png (Table 2: 428 m^3) **Ref**: printed V = 425 / torus V(R=12.7, a=1.3, kappa=1.0) = 425/423.663 = 1.0031567 **Basis**: residual QI shaping correction (~0.3%) reconciling the circular torus to the printed plasma volume; supersedes the empirical 0.7943 built on garbled extraction rows */
         }
 
         // Radial-build layer thicknesses [m] (WI-021). The Stellaris stellarator
@@ -335,52 +335,69 @@ package stellarator_09 {
         }
 
         // Fusion-power inputs.
-        :>> n_e = 3.37e20 {   // vol-avg electron density [m^-3], point A.
-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 line 731 (vol-avg n_e = 3.37e20 m^-3, point A) **Basis**: Stellaris operating point A */
+        :>> n_e = 3.17e20 {   // vol-avg electron density [m^-3], point A (WI-022 corrected).
+            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: vol.-av. el. density 3.17e20 m^-3, Point A; the extracted text "3.37" is an extraction artifact) **Basis**: Stellaris operating point A. Reference/handshake-only in profile mode (sigma_v = 0 below): the profile path computes fusion from the peak fuel densities, not n_e. */
         }
-        :>> sigma_v = 5.985e-23 {  // D-T reactivity <sigma*v> [m^3/s].
+        :>> sigma_v = 0.0 {  // 0D bypass OFF -> profile-integrated reactivity (WI-022).
             doc /*
-            MAPPING TRAP (sigma_v): Bosch-Hale reactivity cannot run in SysML
-            (needs exp()). This is the 1costingFE Bosch-Hale D-T reactivity
-            (costingfe.layers.reactivity.sigv_dt) at an effective 0D temperature
-            T_eff ~= 7.9 keV — a genuine point on the sigv_dt curve, NOT a value
-            back-solved to a target power.
+            sigma_v = 0 selects the profile-integrated path of 'DT Fusion
+            Power': fusion power is computed by integrating the Bosch-Hale
+            reactivity over the source's own profiles (the n_D0/n_T0/T_i0/
+            alpha_n/alpha_T referents below) — the model's realization of the
+            source's 0.5D volume-integrated power balance (Appendix A). The
+            reactivity physics executes at the handwritten codegen stage
+            (Rung B, owner-ratified) and is guarded bit-exact by the oracle.
 
-            FUSION POWER IS A COMPUTED OUTPUT (WI-020, owner Decision A: do not
-            re-solve sigma_v). At the stellarator-corrected volume 448 m^3 (the
-            f_shape factor above) and the volume-averaged density n_e = 3.37e20,
-            this reactivity yields p_fus ~= 2145 MW — BELOW the Stellaris 2700 MW
-            design point (Table 5 line 742). The gap is the honest 0D
-            single-temperature limitation: the real (peaked) n and T profiles
-            concentrate fusion in the hot core, so a single volume-averaged
-            (density, temperature) pair under-predicts the profile-integrated
-            power. Closing that gap is item 2 (predictive confinement); it is
-            left VISIBLE here, not papered over with a back-solve.
+            This closes the former "0D gap": pre-WI-022 the injected
+            0D-effective reactivity (5.985e-23 at T_eff ~= 7.9 keV) gave
+            ~2145 MW vs the 2700 MW design point, the visible 0D
+            single-temperature limitation. The profile integral computes
+            ~2748 MW at the printed volume 425 m^3 — within ~2% of the design
+            point, with every parameter fixed from the source's own figure and
+            tables blind to the power (Decision A: honest physics, not tuned).
 
-            (Pre-WI-020, sigma_v was justified as the value that reproduced
-            2700 MW at the torus volume 564 m^3. That back-solve is removed: the
-            volume is now correct at 448, sigma_v is a plain physical input, and
-            fusion power falls out. Various sigma_v / effective-temperature
-            inputs can be swept at the codegen execution phase.)
-
-            Why not the peak temperature: sigv_dt at the peak ion temperature
-            T_i0 = 24.6 keV is 5.56e-22 m^3/s (~9x larger); pairing it with the
-            volume-averaged density would grossly overestimate fusion power
-            (~20 GW). The single-temperature reactivity consistent with the
-            volume-averaged density is far below the peak value.
+            The Anchor A handshake still injects sigma_v > 0, which selects
+            the exact legacy 0D form (0.25*n_e^2*sigma_v*E_fus*V) and
+            reproduces 1costingFE's 0D point unchanged.
 
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/reactivity.py
-            **Ref**: reactivity.py:54-70 (sigv_dt Bosch-Hale D-T, the curve this
-                T_eff ~= 7.9 keV point lies on); stellaris-design-details.md
-                Table 5 line 742 (P_fus = 2700 MW design point, now shown unmet
-                by the 0D model), line 738-739 (peak T_e0/T_i0 = 15.4/24.6 keV)
-            **Basis**: unchanged 0D-effective D-T reactivity; fusion power is
-                computed at the corrected volume, and the design-point gap is
-                left visible for item 2
+            **Ref**: reactivity.py:54-70 (sigv_dt Bosch-Hale D-T, realized in
+                the handwritten impl); stellaris-design-details.md Appendix A
+                line 2912 (0.5D volume-integrated power balance); Table 5 image
+                (images/page_009_table_0.png: fusion power 2700 MW, Point A)
+            **Basis**: profile-integrated reactivity replaces the 0D-effective
+                constant; sigma_v = 0 disables the bypass on this instance
             */
         }
         :>> E_fus = 2.817e-12 {  // per-event D-T fusion energy [J].
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py **Ref**: physics.py:31 (Q_DT = 17.58 MeV x 1.602176634e-13 J/MeV = 2.817e-12 J) **Basis**: D-T fusion Q-value */
+        }
+
+        // Profile referents (WI-022, Decision C): derived from the source's own
+        // primary data, fixed blind to the fusion power. Exponents are digitized
+        // fits of the Fig. 16 panels (work/active/WI-022_predictive-confinement/
+        // prototype/digitize_fig16.py: alpha_T = 1.19 all species rms 0.02;
+        // alpha_n(fuel) = 0.33 rms 0.006), corroborated by the a/L_T ~= 2.25
+        // gradient quote (line 714) and the rho = 0.8 GENE/TANGO boundary values
+        // (line 762). The extracted Fig.-16 caption "alpha_n = 1.2, alpha_T =
+        // 3.0" is an extraction artifact refuted by the figure it captions
+        // (spec errata). The fuel term is n_D*n_T with the diluted peak fuel
+        // densities — quasineutrality closes at the peak: 2x1.96 (fuel) +
+        // 2x0.56 (He ash) ~= 5.06 = printed peak n_e.
+        :>> n_D0 = 1.96e20 {  // peak deuterium density [m^-3].
+            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: peak D density 1.96e20, Point A) **Basis**: Stellaris Point-A peak deuterium density (ash/impurity-diluted) */
+        }
+        :>> n_T0 = 1.96e20 {  // peak tritium density [m^-3].
+            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: peak T density 1.96e20, Point A) **Basis**: Stellaris Point-A peak tritium density (50:50 fuel mix) */
+        }
+        :>> T_i0 = 14.63 {    // peak ion temperature [keV].
+            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: peak ion temperature 14.63 keV, Point A; the extracted text "24.60" is an extraction artifact) **Basis**: Stellaris Point-A peak ion temperature */
+        }
+        :>> alpha_n = 0.33 {  // fuel density profile exponent [1].
+            doc /* **Source**: stellaris-design-details.md Fig. 16 density panel **Ref**: images/stellaris-high-field-quasi-isodynamic-stellarator.pdf-9-0.png, digitized fit (prototype/digitize_fig16.py; D and T curves, rms log-residual 0.006) **Basis**: n(rho) = n0*(1-rho^2)^alpha_n (Eq. 3, image-verified) fuel-profile exponent, fixed blind to the fusion power */
+        }
+        :>> alpha_T = 1.19 {  // temperature profile exponent [1].
+            doc /* **Source**: stellaris-design-details.md Fig. 16 temperature panel **Ref**: images/stellaris-high-field-quasi-isodynamic-stellarator.pdf-9-1.png, digitized fit (prototype/digitize_fig16.py; all three species, rms log-residual 0.02); corroborated by a/L_T ~= 2.25 at rho=0.6 (line 714) and the rho=0.8 Dirichlet values 4.2/5.2 keV (line 762) **Basis**: T(rho) = T0*(1-rho^2)^alpha_T (Eq. 2, image-verified) exponent, fixed blind to the fusion power */
         }
 
         // Power-balance inputs.
@@ -478,12 +495,12 @@ package stellarator_09 {
             licensing constants (land scales as sqrt(P_net x ref)). Supplied
             without CAS10's own contingency to avoid double-counting the plant's
             CAS29 contingency.
-            STALE BASIS (surfaced at WI-019 close, updated WI-020): P_net = 575.3
-            was the WI-018 value. WI-019 moved it to 786.1; WI-020 (volume
-            correction, fusion power ~2145 MW) brings it back to 578.0 — nearly
-            the 575.3 basis this pass-through was computed at, so it is now
-            almost on-basis again. Recomputation still belongs to the Stage-3
-            pass-through-scope item, not WI-020.
+            STALE BASIS (surfaced at WI-019 close, updated WI-022): P_net = 575.3
+            was the WI-018 value. WI-019 moved it to 786.1, WI-020 to 578.0,
+            and WI-022 (profile-integrated reactivity + geometry rebind) to
+            804.1 — ~40% above the 575.3 basis this pass-through was computed
+            at. Recomputation still belongs to the Stage-3 pass-through-scope
+            item, not WI-022.
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
             **Ref**: costs.py:52-80 (cas10_preconstruction); costing_constants.yaml:15-30
             **Basis**: CAS10 preconstruction subtotal at the Stellaris design point
@@ -522,12 +539,12 @@ package stellarator_09 {
             CAS70 O&M = om_cost_dt x (P_net/1 GWe)^0.5 = 54.9 x (575.3/1000)^0.5 =
             41.641 M$/yr -> $. Inflation and scheduled-replacement (CAS72)
             refinements are a Stage-3 item.
-            STALE BASIS (surfaced at WI-019 close, updated WI-020): P_net = 575.3
-            was the WI-018 value. WI-019 moved it to 786.1; WI-020 (volume
-            correction, fusion power ~2145 MW) brings it back to 578.0 — nearly
-            the 575.3 basis this pass-through was computed at, so it is now
-            almost on-basis again. Recomputation still belongs to the Stage-3
-            pass-through-scope item, not WI-020.
+            STALE BASIS (surfaced at WI-019 close, updated WI-022): P_net = 575.3
+            was the WI-018 value. WI-019 moved it to 786.1, WI-020 to 578.0,
+            and WI-022 (profile-integrated reactivity + geometry rebind) to
+            804.1 — ~40% above the 575.3 basis this pass-through was computed
+            at. Recomputation still belongs to the Stage-3 pass-through-scope
+            item, not WI-022.
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
             **Ref**: costing_constants.yaml:272 (om_cost_dt = 54.9 M$/yr at 1 GWe); costs.py:319-347 (power-law 0.5)
             **Basis**: staffing-based DT O&M, power-law scaled
@@ -559,21 +576,21 @@ package stellarator_09 {
         // First-wall area [m^2] is the physically correct reference area (neutron
         // flux crosses the first wall, which stands off outboard of the plasma).
         // Forward-computed (WI-021) as rb.wall_area = kappa*4*pi^2*R*vacuum_or over
-        // the first-wall standoff radius (vacuum_or = a + vacuum_t = 1.60 m),
-        // = 802.201 m^2 at the Stellaris build (R=12.7, a=1.5, kappa=1.0). Bound
-        // directly into wall_load_calc (the `in V = geom.V` idiom) so it forward-
-        // computes through codegen without a top-level derived-attribute offender.
-        // 1costingFE torus geometry, no shape factor on material geometry (owner
-        // Option 1, WI-021). Was an injected constant 802.201.
-        // CROSS-CHECK: wall load = p_fus x (1 - 0.2002) / 802.201 ~= 2.14 MW/m^2
-        // at the WI-020 p_fus ~= 2145 MW — below the Stellaris 2.87 avg (line 747)
-        // and the 4.95 peak limit; wall_load_ok passes. The gap to 2.87 tracks the
-        // 0D fusion-power under-prediction (2145 vs 2700; item 2). (The earlier
-        // plasma-surface-area basis, 327 m^2, was the wrong area; corrected.)
+        // the first-wall standoff radius (vacuum_or = a + vacuum_t = 1.40 m at the
+        // WI-022 a = 1.3), = 701.926 m^2 at the Stellaris build (R=12.7, kappa=1.0).
+        // Bound directly into wall_load_calc (the `in V = geom.V` idiom) so it
+        // forward-computes through codegen without a top-level derived-attribute
+        // offender. 1costingFE torus geometry, no shape factor on material geometry
+        // (owner Option 1, WI-021).
+        // CROSS-CHECK: wall load = p_fus x (1 - 0.2002) / 701.926 ~= 3.13 MW/m^2
+        // at the WI-022 profile-integrated p_fus ~= 2748 MW — above the printed
+        // 2.87 avg (Table 5 image; the model's flat-wall average vs the source's
+        // shaped-wall average) and below the 4.05 printed peak limit;
+        // wall_load_ok passes.
         // Source: geometry.py _torus_surface_area / compute_geometry firstwall_area;
-        //   stellaris-design-details.md Table 5 line 747 (avg 2.87 MW/m^2).
-        attribute wall_load_limit : Real = 4.95 {  // first-wall design limit [MW/m^2].
-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 line 748 (peak neutron wall power 4.95 MW/m^2) **Basis**: Stellaris first-wall design neutron-load limit */
+        //   stellaris-design-details.md Table 5 image (avg 2.87 MW/m^2).
+        attribute wall_load_limit : Real = 4.05 {  // first-wall design limit [MW/m^2] (WI-022 corrected).
+            doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: peak neutron wall load 4.05 MW/m^2; the extracted text row "Table 5 ... 4.95" has no counterpart in the printed Table 5 image — extraction artifact) **Basis**: Stellaris first-wall peak neutron-load design value */
         }
 
         calc wall_load_calc : 'Neutron Wall Load' {

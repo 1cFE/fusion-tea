@@ -38,3 +38,6 @@ exploration/concept_explorer/dist/
 
 # Explorer dev-server logs
 explorer_server.log
+
+# Transient teax run-output dirs (pipeline/handshake executions)
+exploration/*/outputs/

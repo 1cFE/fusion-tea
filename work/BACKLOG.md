@@ -67,6 +67,16 @@ epics:
     scale: standard
     status: completed
     completed: '2026-07-17'
+  - id: WI-022
+    name: predictive-confinement
+    scale: standard
+    status: completed
+    completed: '2026-07-18'
+  - id: WI-023
+    name: magnet-field-errata-B9
+    scale: standard
+    status: backlog
+    completed: null
 - name: Pipeline De-Risk & Demonstration
   goal: null
   priority: P0
@@ -127,6 +137,8 @@ standalone: []
 | WI-019 | Faithful MFE Power Balance | standard | completed | Completed 2026-07-14 |
 | WI-020 | Stellarator-correct plasma geometry (shape factor) | standard | completed | Completed 2026-07-17 |
 | WI-021 | stellarator-correct-radial-build | standard | completed | Completed 2026-07-17 |
+| WI-022 | predictive-confinement | standard | completed | Completed 2026-07-18 |
+| WI-023 | magnet-field-errata-B9 | standard | backlog |  |
 
 ## Epic: Pipeline De-Risk & Demonstration
 **Priority**: P0 | **Status**: active

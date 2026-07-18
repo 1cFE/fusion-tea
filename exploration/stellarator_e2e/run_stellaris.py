@@ -229,28 +229,30 @@ def main():
     check("total_capital", total, o["total_capital"])
     check("lcoe", b[CH["lcoe"]], o["lcoe"])
 
-    # ---- WI-020 headline oracle (looser, sanity band) ------------------------
-    # Updated for the WI-020 stellarator-correct geometry: plasma volume
-    # 564->448 m^3 (shape factor 0.7943), sigma_v unchanged so fusion power is a
-    # computed output that falls to ~2144 MW, re-baselining the headline. Net
-    # electric and LCOE land near the pre-WI-019 values because WI-019's
-    # power-balance gain and this volume correction nearly cancel. Magnet capital
-    # is power-independent, so it is unchanged. (Was WI-019: V 564, p_fus 2700,
-    # p_net 786, rec_frac 0.258, q_eng 3.87, total 10.09, LCOE 189.)
-    print("\n=== WI-020 HEADLINE CHECK ===")
+    # ---- WI-022 headline oracle (looser, sanity band) ------------------------
+    # WI-022 predictive confinement + errata rebind: fusion power is the
+    # profile-integrated Bosch-Hale reactivity over the source's own profiles
+    # (alpha_n=0.33, alpha_T=1.19, peak fuel 1.96e20/side, T_i0=14.63),
+    # executed through the handwritten codegen impl -> 2748.1 MW, within 1.8%
+    # of the 2700 MW design point with no tuning. Geometry rebound to the
+    # printed a=1.3 / V=425 (Table 2/5 images; the old a=1.5/V=448 rows were
+    # extraction artifacts), shrinking the radial build and the magnet bore.
+    # (Was WI-020: V 448, p_fus 2144.5, p_net 578, rec_frac 0.316, q_eng 3.16,
+    # total 9.68, LCOE 247, magnet 4.39.)
+    print("\n=== WI-022 HEADLINE CHECK ===")
     heads = [
-        ("plasma volume V [m3]", b[CH["V"]], 448, 2),
-        ("fusion power [MW]", b[CH["p_fus"]], 2144.5, 2),
-        ("net electric [MW]", b[CH["p_net"]], 578, 3),
-        ("rec_frac", b[CH["rec_frac"]], 0.316, 0.01),
-        ("q_eng", b[CH["q_eng"]], 3.16, 0.05),
-        ("total capital [$B]", total / 1e9, 9.68, 0.05),
-        ("LCOE [$/MWh]", b[CH["lcoe"]], 247, 2),
-        ("magnet capital [$B]", b[CH["magnet"]] / 1e9, 4.39, 0.05),
+        ("plasma volume V [m3]", b[CH["V"]], 425, 2),
+        ("fusion power [MW]", b[CH["p_fus"]], 2748.1, 2),
+        ("net electric [MW]", b[CH["p_net"]], 804.1, 3),
+        ("rec_frac", b[CH["rec_frac"]], 0.254, 0.01),
+        ("q_eng", b[CH["q_eng"]], 3.93, 0.05),
+        ("total capital [$B]", total / 1e9, 9.59, 0.05),
+        ("LCOE [$/MWh]", b[CH["lcoe"]], 176, 2),
+        ("magnet capital [$B]", b[CH["magnet"]] / 1e9, 4.12, 0.05),
     ]
     for label, val, target, tol in heads:
         ok = abs(val - target) <= tol
-        print(f"  {label:24s} exec={val:14.4f}  WI-020~={target:<10}  "
+        print(f"  {label:24s} exec={val:14.4f}  WI-022~={target:<10}  "
               f"{'OK' if ok else 'FAIL'}")
         if not ok:
             failures.append("HEAD:" + label)
@@ -288,7 +290,7 @@ def main():
     if failures:
         raise SystemExit(f"{len(failures)} check(s) FAILED: {failures}")
     print(f"ALL CHECKS PASSED (channel-vs-oracle rel tol {REL_TOL}); "
-          "WI-020 headline reproduced.")
+          "WI-022 headline reproduced.")
 
 
 if __name__ == "__main__":

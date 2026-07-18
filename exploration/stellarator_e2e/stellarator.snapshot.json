@@ -1,7 +1,7 @@
 {
   "snapshot_format_version": 3,
   "model_name": "models",
-  "captured_at": "2026-07-17T20:13:22.167233+00:00",
+  "captured_at": "2026-07-18T16:26:19.278055+00:00",
   "constraint_lowering_mode": "applied",
   "constraint_facts": {
     "contexts": [
@@ -1115,24 +1115,60 @@
     },
     "DT_Fusion_Power": {
       "calc_def_name": "DT_Fusion_Power",
-      "overall_compilability": "fully_compilable",
+      "overall_compilability": "manual_required",
       "output_results": [
+        {
+          "output_name": "theta",
+          "compilability": "fully_compilable",
+          "python_expression": "(inputs.T_i0 / (1.0 - ((inputs.T_i0 * (0.0151361 + (inputs.T_i0 * (0.00460643 + (inputs.T_i0 * (-0.00010675)))))) / (1.0 + (inputs.T_i0 * (0.0751886 + (inputs.T_i0 * (0.0135 + (inputs.T_i0 * 1.366e-05)))))))))",
+          "input_refs": [
+            "T_i0"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "xi",
+          "compilability": "fully_compilable",
+          "python_expression": "(((34.3827 * 34.3827) / (4.0 * theta)) ** (1.0 / 3.0))",
+          "input_refs": [],
+          "intermediate_refs": [
+            "theta"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "sigv_peak",
+          "compilability": "manual_required",
+          "python_expression": null,
+          "input_refs": [],
+          "intermediate_refs": [],
+          "unsupported_reason": "unsupported node: invocation (['RealFunctions', 'sqrt'])",
+          "is_undeclared_intermediate": true
+        },
         {
           "output_name": "p_fus",
           "compilability": "fully_compilable",
-          "python_expression": "(((((0.25 * (inputs.n_e ** 2)) * inputs.sigma_v) * inputs.E_fus) * inputs.V) * 1e-06)",
+          "python_expression": "(((((inputs.n_D0 * inputs.n_T0) * sigv_peak) * inputs.E_fus) * inputs.V) * 1e-06)",
           "input_refs": [
-            "n_e",
-            "sigma_v",
+            "n_D0",
+            "n_T0",
             "E_fus",
             "V"
           ],
-          "intermediate_refs": [],
+          "intermediate_refs": [
+            "sigv_peak"
+          ],
           "unsupported_reason": null,
           "is_undeclared_intermediate": false
         }
       ],
       "execution_order": [
+        "theta",
+        "xi",
+        "sigv_peak",
         "p_fus"
       ]
     },
@@ -1960,7 +1996,7 @@
       "references": [],
       "source_file": "models/analyses/mfe_plasma_scaling.sysml",
       "source_line": 4,
-      "source_hash": "bea62d2cef50a3745355f45cbf0ae1f255ff9d5d3d3a6dc66c4081c43f0b21ba",
+      "source_hash": "ff9d7d4544f05757fc51d30380c1e2237256ea265c93358a797419cb10e7d63d",
       "output_expression_asts": null,
       "all_member_names": [
         "R",
@@ -2283,7 +2319,7 @@
       "references": [],
       "source_file": "models/analyses/mfe_plasma_scaling.sysml",
       "source_line": 41,
-      "source_hash": "bea62d2cef50a3745355f45cbf0ae1f255ff9d5d3d3a6dc66c4081c43f0b21ba",
+      "source_hash": "ff9d7d4544f05757fc51d30380c1e2237256ea265c93358a797419cb10e7d63d",
       "output_expression_asts": null,
       "all_member_names": [
         "C",
@@ -2330,10 +2366,19 @@
     {
       "name": "DT_Fusion_Power",
       "qualified_name": "mfe_plasma_scaling::'DT Fusion Power'",
-      "doc_comment": "D-T fusion power [MW] from density, reactivity, and plasma volume.\n\n  P_fus = (1/4) * n_e^2 * <sigma*v> * E_fus * V * 1e-6   [W -> MW]\n\nThe factor 1/4 = n_D*n_T / n_e^2 for a 50/50 D-T mix. Reactivity\n<sigma*v> enters as the input `sigma_v` [m^3/s] — the Bosch-Hale\ntemperature fit is NOT reproduced here (it needs exp(), outside the\ncodegen envelope). E_fus is the per-event D-T fusion energy in Joules\n(an input; = 17.58 MeV * 1.602176634e-13 J/MeV in the source).\n\nFusion power rises with n_e and with V (hence with R via 'Plasma\nGeometry'), satisfying SV-017. Density and reactivity are inputs;\nthe machine -> density closure is a downstream design-layer concern.\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/tokamak.py\n*Ref**: tokamak.py:102-114 (compute_fusion_power)\n*Basis**: Standard 0D D-T fusion power; MFE-generic",
+      "doc_comment": "D-T fusion power [MW] — 0D bypass or profile-integrated (WI-022).\n\nMODE (bypass rule, selected by sigma_v alone):\n  sigma_v > 0  ->  0D form (exact legacy contract):\n      p_fus = 0.25 * n_e^2 * sigma_v * E_fus * V * 1e-6   [W -> MW]\n  sigma_v = 0 (default)  ->  profile-integrated form:\n      p_fus = n_D0 * n_T0 * I * E_fus * V * 1e-6\n      I = integral_0^1  u^(2*alpha_n) * sigv_dt(T_i0 * u^alpha_T) du\n  with u = 1 - rho^2 (dV/V = 2*rho*d(rho), so the rho-integral of the\n  profile product reduces to the u-integral above), profiles\n  n(rho) = n0*(1-rho^2)^alpha_n and T(rho) = T0*(1-rho^2)^alpha_T\n  (Stellaris Eqs. 2-3, image-verified). The fuel term is n_D*n_T with\n  the *diluted peak fuel densities* — NOT 0.25*n_e^2, which would\n  double-count helium ash and impurities. If sigma_v > 0 and profile\n  inputs are also bound, the bypass wins.\n\nEXECUTABLE SEMANTIC (Rung B, WI-022): the Bosch-Hale curve needs\nexp(), so this calc is routed to the handwritten codegen stage\n(manual_required); the generated handwritten impl is normative and is\nguarded bit-exact by the oracle (verify_stellaris.py). Discretization\ncontract for the impl and oracle: trapezoidal rule in rho over [0,1],\nN = 200,000 intervals, temperature floor 1e-6 keV, pure-Python\nfloat64. The intermediates below state the Bosch-Hale evaluation at\nT_i0 (sigv_peak) in the model itself; e^x is written as e ** x\nbecause the KerML standard library has sqrt but no exp.\n\nFusion power rises with n_e / the fuel densities and with V (hence\nwith R via 'Plasma Geometry'), satisfying SV-017. Densities,\ntemperature, and exponents are inputs; the machine -> profile closure\n(ISS04 confinement solve) is out of scope (Rung C).\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/tokamak.py;\n/home/reid/1cfe/1costingfe/src/costingfe/layers/reactivity.py\n*Ref**: tokamak.py:102-114 (compute_fusion_power, the 0D bypass\nform); reactivity.py:54-70 (sigv_dt Bosch-Hale D-T coefficients);\nknowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/\nstellaris-design-details/images/page_007_eq_0.png and\npage_007_eq_1.png (Eqs. 2-3 profile forms, image-verified);\nstellaris-design-details.md Appendix A line 2912 (the source's own\n0.5D volume-integrated power balance this reproduces)\n*Basis**: profile-integrated D-T fusion power over (1-rho^2)^alpha\nprofiles with an exact 0D bypass; MFE-generic (flat/0D concepts\nbind sigma_v > 0 and ignore the profile inputs)",
       "calc_expressions": [
-        "p_fus = 0.25 * n_e ** 2 * sigma_v * E_fus * V * 1e-06",
-        "\nDocumentation:\nD-T fusion power [MW] from density, reactivity, and plasma volume.\n\n  P_fus = (1/4) * n_e^2 * <sigma*v> * E_fus * V * 1e-6   [W -> MW]\n\nThe factor 1/4 = n_D*n_T / n_e^2 for a 50/50 D-T mix. Reactivity\n<sigma*v> enters as the input `sigma_v` [m^3/s] — the Bosch-Hale\ntemperature fit is NOT reproduced here (it needs exp(), outside the\ncodegen envelope). E_fus is the per-event D-T fusion energy in Joules\n(an input; = 17.58 MeV * 1.602176634e-13 J/MeV in the source).\n\nFusion power rises with n_e and with V (hence with R via 'Plasma\nGeometry'), satisfying SV-017. Density and reactivity are inputs;\nthe machine -> density closure is a downstream design-layer concern.\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/tokamak.py\n*Ref**: tokamak.py:102-114 (compute_fusion_power)\n*Basis**: Standard 0D D-T fusion power; MFE-generic"
+        "sigma_v = 0.0",
+        "n_D0 = 0.0",
+        "n_T0 = 0.0",
+        "T_i0 = 1.0",
+        "alpha_n = 0.0",
+        "alpha_T = 0.0",
+        "theta = T_i0 / (1.0 - T_i0 * (0.0151361 + T_i0 * (0.00460643 + T_i0 * -0.00010675)) / (1.0 + T_i0 * (0.0751886 + T_i0 * (0.0135 + T_i0 * 1.366e-05))))",
+        "xi = (34.3827 * 34.3827 / (4.0 * theta)) ** (1.0 / 3.0)",
+        "sigv_peak = 1.17302e-09 * theta * sqrt(xi / (1124656.0 * T_i0 ** 3)) * 2.718281828459045 ** (-3.0 * xi) * 1e-06",
+        "p_fus = n_D0 * n_T0 * sigv_peak * E_fus * V * 1e-06",
+        "\nDocumentation:\nD-T fusion power [MW] — 0D bypass or profile-integrated (WI-022).\n\nMODE (bypass rule, selected by sigma_v alone):\n  sigma_v > 0  ->  0D form (exact legacy contract):\n      p_fus = 0.25 * n_e^2 * sigma_v * E_fus * V * 1e-6   [W -> MW]\n  sigma_v = 0 (default)  ->  profile-integrated form:\n      p_fus = n_D0 * n_T0 * I * E_fus * V * 1e-6\n      I = integral_0^1  u^(2*alpha_n) * sigv_dt(T_i0 * u^alpha_T) du\n  with u = 1 - rho^2 (dV/V = 2*rho*d(rho), so the rho-integral of the\n  profile product reduces to the u-integral above), profiles\n  n(rho) = n0*(1-rho^2)^alpha_n and T(rho) = T0*(1-rho^2)^alpha_T\n  (Stellaris Eqs. 2-3, image-verified). The fuel term is n_D*n_T with\n  the *diluted peak fuel densities* — NOT 0.25*n_e^2, which would\n  double-count helium ash and impurities. If sigma_v > 0 and profile\n  inputs are also bound, the bypass wins.\n\nEXECUTABLE SEMANTIC (Rung B, WI-022): the Bosch-Hale curve needs\nexp(), so this calc is routed to the handwritten codegen stage\n(manual_required); the generated handwritten impl is normative and is\nguarded bit-exact by the oracle (verify_stellaris.py). Discretization\ncontract for the impl and oracle: trapezoidal rule in rho over [0,1],\nN = 200,000 intervals, temperature floor 1e-6 keV, pure-Python\nfloat64. The intermediates below state the Bosch-Hale evaluation at\nT_i0 (sigv_peak) in the model itself; e^x is written as e ** x\nbecause the KerML standard library has sqrt but no exp.\n\nFusion power rises with n_e / the fuel densities and with V (hence\nwith R via 'Plasma Geometry'), satisfying SV-017. Densities,\ntemperature, and exponents are inputs; the machine -> profile closure\n(ISS04 confinement solve) is out of scope (Rung C).\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/tokamak.py;\n/home/reid/1cfe/1costingfe/src/costingfe/layers/reactivity.py\n*Ref**: tokamak.py:102-114 (compute_fusion_power, the 0D bypass\nform); reactivity.py:54-70 (sigv_dt Bosch-Hale D-T coefficients);\nknowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/\nstellaris-design-details/images/page_007_eq_0.png and\npage_007_eq_1.png (Eqs. 2-3 profile forms, image-verified);\nstellaris-design-details.md Appendix A line 2912 (the source's own\n0.5D volume-integrated power balance this reproduces)\n*Basis**: profile-integrated D-T fusion power over (1-rho^2)^alpha\nprofiles with an exact 0D bypass; MFE-generic (flat/0D concepts\nbind sigma_v > 0 and ignore the profile inputs)"
       ],
       "input_attributes": [
         {
@@ -2345,14 +2390,14 @@
           "is_output": false,
           "python_type": "float",
           "description": "",
-          "unit": null,
+          "unit": "vol-avg",
           "source_line": 0,
           "is_optional": false
         },
         {
           "name": "sigma_v",
           "sysml_type": "Real",
-          "default_value": null,
+          "default_value": "0.0",
           "binding_type": "unbound",
           "is_input": false,
           "is_output": false,
@@ -2360,7 +2405,7 @@
           "description": "",
           "unit": null,
           "source_line": 0,
-          "is_optional": false
+          "is_optional": true
         },
         {
           "name": "E_fus",
@@ -2371,7 +2416,7 @@
           "is_output": false,
           "python_type": "float",
           "description": "",
-          "unit": null,
+          "unit": "per-event",
           "source_line": 0,
           "is_optional": false
         },
@@ -2384,9 +2429,74 @@
           "is_output": false,
           "python_type": "float",
           "description": "",
-          "unit": null,
+          "unit": "plasma",
           "source_line": 0,
           "is_optional": false
+        },
+        {
+          "name": "n_D0",
+          "sysml_type": "Real",
+          "default_value": "0.0",
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "peak",
+          "source_line": 0,
+          "is_optional": true
+        },
+        {
+          "name": "n_T0",
+          "sysml_type": "Real",
+          "default_value": "0.0",
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "peak",
+          "source_line": 0,
+          "is_optional": true
+        },
+        {
+          "name": "T_i0",
+          "sysml_type": "Real",
+          "default_value": "1.0",
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "peak",
+          "source_line": 0,
+          "is_optional": true
+        },
+        {
+          "name": "alpha_n",
+          "sysml_type": "Real",
+          "default_value": "0.0",
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "density",
+          "source_line": 0,
+          "is_optional": true
+        },
+        {
+          "name": "alpha_T",
+          "sysml_type": "Real",
+          "default_value": "0.0",
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "temperature",
+          "source_line": 0,
+          "is_optional": true
         }
       ],
       "output_attributes": [
@@ -2407,14 +2517,22 @@
       "references": [],
       "source_file": "models/analyses/mfe_plasma_scaling.sysml",
       "source_line": 125,
-      "source_hash": "bea62d2cef50a3745355f45cbf0ae1f255ff9d5d3d3a6dc66c4081c43f0b21ba",
+      "source_hash": "ff9d7d4544f05757fc51d30380c1e2237256ea265c93358a797419cb10e7d63d",
       "output_expression_asts": null,
       "all_member_names": [
         "E_fus",
+        "T_i0",
         "V",
+        "alpha_T",
+        "alpha_n",
+        "n_D0",
+        "n_T0",
         "n_e",
         "p_fus",
-        "sigma_v"
+        "sigma_v",
+        "sigv_peak",
+        "theta",
+        "xi"
       ],
       "member_expressions": null
     },
@@ -2485,8 +2603,8 @@
       ],
       "references": [],
       "source_file": "models/analyses/mfe_plasma_scaling.sysml",
-      "source_line": 157,
-      "source_hash": "bea62d2cef50a3745355f45cbf0ae1f255ff9d5d3d3a6dc66c4081c43f0b21ba",
+      "source_line": 204,
+      "source_hash": "ff9d7d4544f05757fc51d30380c1e2237256ea265c93358a797419cb10e7d63d",
       "output_expression_asts": null,
       "all_member_names": [
         "ash_frac",
@@ -3891,7 +4009,7 @@
         "ash_frac"
       ],
       "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-      "source_line": 579,
+      "source_line": 596,
       "parent_part_path": "",
       "qualified_name": "stellarator_09__stellaris__wall_load_calc",
       "is_template": false,
@@ -3925,7 +4043,7 @@
           "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::geom::a",
           "source_instance_elem": null,
           "source_attribute_elem": null,
-          "literal_value": 1.5,
+          "literal_value": 1.3,
           "expression_ast": null,
           "source_instance_name": null,
           "source_attribute_name": "a"
@@ -3951,7 +4069,7 @@
           "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::geom::f_shape",
           "source_instance_elem": null,
           "source_attribute_elem": null,
-          "literal_value": 0.794259,
+          "literal_value": 1.0031567,
           "expression_ast": null,
           "source_instance_name": null,
           "source_attribute_name": "f_shape"
@@ -3995,7 +4113,7 @@
           "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::rb::a",
           "source_instance_elem": null,
           "source_attribute_elem": null,
-          "literal_value": 1.5,
+          "literal_value": 1.3,
           "expression_ast": null,
           "source_instance_name": null,
           "source_attribute_name": "a"
@@ -4182,7 +4300,7 @@
           "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::fusion::n_e",
           "source_instance_elem": null,
           "source_attribute_elem": null,
-          "literal_value": 3.37e+20,
+          "literal_value": 3.17e+20,
           "expression_ast": null,
           "source_instance_name": null,
           "source_attribute_name": "n_e"
@@ -4195,7 +4313,7 @@
           "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::fusion::sigma_v",
           "source_instance_elem": null,
           "source_attribute_elem": null,
-          "literal_value": 5.985e-23,
+          "literal_value": 0.0,
           "expression_ast": null,
           "source_instance_name": null,
           "source_attribute_name": "sigma_v"
@@ -4225,11 +4343,76 @@
           "expression_ast": null,
           "source_instance_name": "geom",
           "source_attribute_name": "V"
+        },
+        {
+          "param_name": "n_D0",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::fusion::n_D0",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 1.96e+20,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "n_D0"
+        },
+        {
+          "param_name": "n_T0",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::fusion::n_T0",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 1.96e+20,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "n_T0"
+        },
+        {
+          "param_name": "T_i0",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::fusion::T_i0",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 14.63,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "T_i0"
+        },
+        {
+          "param_name": "alpha_n",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::fusion::alpha_n",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.33,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "alpha_n"
+        },
+        {
+          "param_name": "alpha_T",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::fusion::alpha_T",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 1.19,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "alpha_T"
         }
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 161,
+      "source_line": 169,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__fusion",
       "is_template": false,
@@ -4440,7 +4623,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 184,
+      "source_line": 197,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__pb",
       "is_template": false,
@@ -4536,7 +4719,7 @@
         "mu0"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 214,
+      "source_line": 227,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__magnet_cost",
       "is_template": false,
@@ -4607,7 +4790,7 @@
         "p_th_ref"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 224,
+      "source_line": 237,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__blanket_cost",
       "is_template": false,
@@ -4678,7 +4861,7 @@
         "p_th_ref"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 232,
+      "source_line": 245,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__shield_cost",
       "is_template": false,
@@ -4736,7 +4919,7 @@
         "p_et_ref"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 240,
+      "source_line": 253,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__structure_cost",
       "is_template": false,
@@ -4794,7 +4977,7 @@
         "p_et_ref"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 247,
+      "source_line": 260,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__vessel_cost",
       "is_template": false,
@@ -4839,7 +5022,7 @@
         "p_et_ref"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 254,
+      "source_line": 267,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__power_supplies_cost",
       "is_template": false,
@@ -4884,7 +5067,7 @@
         "p_th_ref"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 261,
+      "source_line": 274,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__divertor_cost",
       "is_template": false,
@@ -5004,7 +5187,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 276,
+      "source_line": 289,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__heating_cost",
       "is_template": false,
@@ -5059,7 +5242,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 290,
+      "source_line": 303,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__turbine_cost",
       "is_template": false,
@@ -5114,7 +5297,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 295,
+      "source_line": 308,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__electric_cost",
       "is_template": false,
@@ -5169,7 +5352,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 300,
+      "source_line": 313,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__heat_rejection_cost",
       "is_template": false,
@@ -5224,7 +5407,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 305,
+      "source_line": 318,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__misc_cost",
       "is_template": false,
@@ -5266,7 +5449,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 340,
+      "source_line": 353,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__contingency",
       "is_template": false,
@@ -5323,7 +5506,7 @@
         "reference_construction_time"
       ],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 349,
+      "source_line": 362,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__indirect",
       "is_template": false,
@@ -5430,7 +5613,7 @@
       ],
       "unbound_params": [],
       "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 372,
+      "source_line": 385,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__lcoe_calc",
       "is_template": false,
@@ -5817,12 +6000,102 @@
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__r_coil"
       },
       {
+        "name": "sigma_v",
+        "sysml_type": "Real",
+        "default_value": "0.0",
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 173,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__DT_Fusion_Power__sigma_v"
+      },
+      {
+        "name": "n_D0",
+        "sysml_type": "Real",
+        "default_value": "0.0",
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 180,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__DT_Fusion_Power__n_D0"
+      },
+      {
+        "name": "n_T0",
+        "sysml_type": "Real",
+        "default_value": "0.0",
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 181,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__DT_Fusion_Power__n_T0"
+      },
+      {
+        "name": "T_i0",
+        "sysml_type": "Real",
+        "default_value": "1.0",
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 182,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__DT_Fusion_Power__T_i0"
+      },
+      {
+        "name": "alpha_n",
+        "sysml_type": "Real",
+        "default_value": "0.0",
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 183,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__DT_Fusion_Power__alpha_n"
+      },
+      {
+        "name": "alpha_T",
+        "sysml_type": "Real",
+        "default_value": "0.0",
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 184,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__DT_Fusion_Power__alpha_T"
+      },
+      {
+        "name": "theta",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 189,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__DT_Fusion_Power__theta"
+      },
+      {
+        "name": "xi",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 192,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__DT_Fusion_Power__xi"
+      },
+      {
+        "name": "sigv_peak",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_line": 193,
+        "parent_part": "",
+        "qualified_name": "mfe_plasma_scaling__DT_Fusion_Power__sigv_peak"
+      },
+      {
         "name": "p_fus",
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
         "source_file": "models/analyses/mfe_plasma_scaling.sysml",
-        "source_line": 153,
+        "source_line": 200,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__DT_Fusion_Power__p_fus"
       },
@@ -5832,7 +6105,7 @@
         "default_value": "0.2002",
         "unit": null,
         "source_file": "models/analyses/mfe_plasma_scaling.sysml",
-        "source_line": 184,
+        "source_line": 231,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__Neutron_Wall_Load__ash_frac"
       },
@@ -5842,7 +6115,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "models/analyses/mfe_plasma_scaling.sysml",
-        "source_line": 188,
+        "source_line": 235,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__Neutron_Wall_Load__wall_load"
       }
@@ -6228,7 +6501,7 @@
         "default_value": "0.0276",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 551,
+        "source_line": 568,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__beta"
       },
@@ -6238,17 +6511,17 @@
         "default_value": "0.05",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 554,
+        "source_line": 571,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__beta_limit"
       },
       {
         "name": "wall_load_limit",
         "sysml_type": "Real",
-        "default_value": "4.95",
+        "default_value": "4.05",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 575,
+        "source_line": 592,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__wall_load_limit"
       },
@@ -6258,7 +6531,7 @@
         "default_value": "1.074",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 585,
+        "source_line": 602,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__tbr"
       },
@@ -6268,7 +6541,7 @@
         "default_value": "1.05",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 588,
+        "source_line": 605,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__tbr_floor"
       },
@@ -6278,7 +6551,7 @@
         "default_value": "wall_load_calc.wall_load",
         "unit": null,
         "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 600,
+        "source_line": 617,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__neutron_wall_load"
       }
@@ -6405,12 +6678,72 @@
         "qualified_name": "mfe_plant__MFE_Power_Plant__lt_shield_t"
       },
       {
+        "name": "sigma_v",
+        "sysml_type": "Real",
+        "default_value": "0.0",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 161,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__sigma_v"
+      },
+      {
+        "name": "n_D0",
+        "sysml_type": "Real",
+        "default_value": "0.0",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 163,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__n_D0"
+      },
+      {
+        "name": "n_T0",
+        "sysml_type": "Real",
+        "default_value": "0.0",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 164,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__n_T0"
+      },
+      {
+        "name": "T_i0",
+        "sysml_type": "Real",
+        "default_value": "1.0",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 165,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__T_i0"
+      },
+      {
+        "name": "alpha_n",
+        "sysml_type": "Real",
+        "default_value": "0.0",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 166,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__alpha_n"
+      },
+      {
+        "name": "alpha_T",
+        "sysml_type": "Real",
+        "default_value": "0.0",
+        "unit": null,
+        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 167,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__alpha_T"
+      },
+      {
         "name": "p_th",
         "sysml_type": "Real",
         "default_value": "pb.p_th",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 205,
+        "source_line": 218,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__p_th"
       },
@@ -6420,7 +6753,7 @@
         "default_value": "pb.p_the",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 206,
+        "source_line": 219,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__p_the"
       },
@@ -6430,7 +6763,7 @@
         "default_value": "pb.p_et",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 207,
+        "source_line": 220,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__p_et"
       },
@@ -6440,7 +6773,7 @@
         "default_value": "1.0",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 289,
+        "source_line": 302,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__n_mod"
       },
@@ -6450,7 +6783,7 @@
         "default_value": "contingency.cost",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 344,
+        "source_line": 357,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__contingency_capital"
       },
@@ -6460,7 +6793,7 @@
         "default_value": "indirect.cost",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 354,
+        "source_line": 367,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__indirect_capital"
       },
@@ -6470,7 +6803,7 @@
         "default_value": "pb.p_net",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 399,
+        "source_line": 412,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__net_electric"
       },
@@ -6480,7 +6813,7 @@
         "default_value": "pb.q_eng",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 400,
+        "source_line": 413,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__q_eng"
       },
@@ -6490,7 +6823,7 @@
         "default_value": "pb.rec_frac",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 401,
+        "source_line": 414,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__rec_frac"
       },
@@ -6500,7 +6833,7 @@
         "default_value": "lcoe_calc.lcoe",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 402,
+        "source_line": 415,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__lcoe"
       },
@@ -6510,7 +6843,7 @@
         "default_value": "buildings.capital_cost",
         "unit": null,
         "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 417,
+        "source_line": 430,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__buildings_capital"
       }
@@ -6706,7 +7039,7 @@
         "owning_part_qn": "stellarator_09__stellaris",
         "attribute_name": "a",
         "redefinition_type": "literal",
-        "literal_value": 1.5,
+        "literal_value": 1.3,
         "source_path": null,
         "expression_ast": null,
         "expression_text": "",
@@ -6732,7 +7065,7 @@
         "owning_part_qn": "stellarator_09__stellaris",
         "attribute_name": "f_shape",
         "redefinition_type": "literal",
-        "literal_value": 0.794259,
+        "literal_value": 1.0031567,
         "source_path": null,
         "expression_ast": null,
         "expression_text": "",
@@ -6888,7 +7221,7 @@
         "owning_part_qn": "stellarator_09__stellaris",
         "attribute_name": "n_e",
         "redefinition_type": "literal",
-        "literal_value": 3.37e+20,
+        "literal_value": 3.17e+20,
         "source_path": null,
         "expression_ast": null,
         "expression_text": "",
@@ -6901,7 +7234,7 @@
         "owning_part_qn": "stellarator_09__stellaris",
         "attribute_name": "sigma_v",
         "redefinition_type": "literal",
-        "literal_value": 5.985e-23,
+        "literal_value": 0.0,
         "source_path": null,
         "expression_ast": null,
         "expression_text": "",
@@ -6915,6 +7248,71 @@
         "attribute_name": "E_fus",
         "redefinition_type": "literal",
         "literal_value": 2.817e-12,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "n_D0",
+        "redefinition_type": "literal",
+        "literal_value": 1.96e+20,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "n_T0",
+        "redefinition_type": "literal",
+        "literal_value": 1.96e+20,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "T_i0",
+        "redefinition_type": "literal",
+        "literal_value": 14.63,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "alpha_n",
+        "redefinition_type": "literal",
+        "literal_value": 0.33,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "alpha_T",
+        "redefinition_type": "literal",
+        "literal_value": 1.19,
         "source_path": null,
         "expression_ast": null,
         "expression_text": "",

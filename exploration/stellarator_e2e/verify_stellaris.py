@@ -9,18 +9,57 @@ All monetary values in dollars ($). Inputs are the Stellaris design-point bindin
 read from stellarator_plant.sysml.
 """
 
+import math
+
+# WI-022 discretization contract — EXACT mirror of the handwritten impl
+# (generated/handwritten/mfe_plasma_scaling/dt_fusion_power_impl.py). The
+# runner asserts the generated pipeline against this at rel 1e-9; do not
+# change one copy without the other.
+N_INTERVALS = 200_000
+
+
+def _sigv_dt(T_keV):
+    """Bosch-Hale D-T reactivity <sigma*v> [m^3/s] (reactivity.py:54-70)."""
+    T = max(T_keV, 1e-6)
+    theta = T / (
+        1.0
+        - T * (1.51361e-2 + T * (4.60643e-3 + T * -1.06750e-4))
+        / (1.0 + T * (7.51886e-2 + T * (1.35000e-2 + T * 1.36600e-5)))
+    )
+    xi = ((34.3827 * 34.3827) / (4.0 * theta)) ** (1.0 / 3.0)
+    return (
+        1.17302e-9 * theta
+        * math.sqrt(xi / (1124656.0 * T * T * T))
+        * math.exp(-3.0 * xi) * 1e-6
+    )
+
+
+def _profile_integral(alpha_n, alpha_T, T_i0):
+    """I = trapezoid_{rho in [0,1]} (1-rho^2)^(2*alpha_n) * sigv_dt(T_i0*(1-rho^2)^alpha_T) * 2*rho."""
+    acc = 0.0
+    n = N_INTERVALS
+    for i in range(n + 1):
+        rho = i / n
+        u = 1.0 - rho * rho
+        f = (u ** (2.0 * alpha_n)) * _sigv_dt(T_i0 * (u ** alpha_T)) * 2.0 * rho
+        acc += f if 0 < i < n else 0.5 * f
+    return acc / n
+
 # --- Stellaris design-point inputs (from stellarator_plant.sysml bindings) ---
 IN = dict(
-    # geometry
-    R=12.7, a=1.5, kappa=1.0, pi=3.14159265358979,
-    f_shape=0.794259,  # WI-020 stellarator shape/packing factor (V 564->448)
+    # geometry (WI-022 errata rebind: a = 1.3 per the Table 2 image; f_shape
+    # targets the printed V = 425, Table 5 image)
+    R=12.7, a=1.3, kappa=1.0, pi=3.14159265358979,
+    f_shape=1.0031567,
     # radial-build layer thicknesses [m] (WI-021): steady_state_stellarator.yaml
     # (blanket/ht_shield/structure/vessel) + RadialBuild defaults (rest)
     vacuum_t=0.10, firstwall_t=0.05, blanket_t=0.80, reflector_t=0.20,
     ht_shield_t=0.20, structure_t=0.15, gap1_t=0.10, vessel_t=0.10,
     coil_t=0.30, gap2_t=0.10, lt_shield_t=0.15,
-    # fusion power
-    n_e=3.37e20, sigma_v=5.985e-23, E_fus=2.817e-12,
+    # fusion power (WI-022: sigma_v = 0 -> profile-integrated path; n_e is
+    # reference-only in profile mode; profile referents per the spec)
+    n_e=3.17e20, sigma_v=0.0, E_fus=2.817e-12,
+    n_D0=1.96e20, n_T0=1.96e20, T_i0=14.63, alpha_n=0.33, alpha_T=1.19,
     # power balance
     p_input=50.0, mn=1.2, eta_th=0.333, eta_p=0.5, eta_pin=0.5,
     p_pump=1.0, f_sub=0.03,  # p_pump: 1costingFE steady_state_stellarator.yaml:21 (WI-019)
@@ -87,8 +126,12 @@ def compute():
     r_coil = vessel_or
     # CAS27 PbLi inventory keyed to the computed blanket volume (WI-021)
     special_materials_capital = blanket_vol * 0.50 * 9400.0 * 5.0
-    # --- DT Fusion Power ---
-    p_fus = 0.25 * (p["n_e"] ** 2) * p["sigma_v"] * p["E_fus"] * V * 1.0e-6
+    # --- DT Fusion Power (WI-022: 0D bypass or profile-integrated) ---
+    if p["sigma_v"] > 0.0:
+        p_fus = 0.25 * (p["n_e"] ** 2) * p["sigma_v"] * p["E_fus"] * V * 1.0e-6
+    else:
+        integral = _profile_integral(p["alpha_n"], p["alpha_T"], p["T_i0"])
+        p_fus = p["n_D0"] * p["n_T0"] * integral * p["E_fus"] * V * 1.0e-6
     # --- MFE Power Balance (WI-019 faithful form; physics.py:290-328) ---
     p_alpha = (3.52 / 17.58) * p_fus
     p_neutron = p_fus - p_alpha
