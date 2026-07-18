@@ -145,6 +145,8 @@ The tokamak/stellarator pair is deliberate. They share nearly every subsystem �
 
 **Scale**: standard | **Priority**: P2 | **Registered**: 2026-07-18 ([OWNER] directive at the WI-023 spec checkpoint)
 
+**Sequencing ([OWNER] 2026-07-18, WI-023 close-out):** WI-024 runs **before** the STALE-BASIS pass-through recompute (see note below) so that the recompute happens at a settled p_net — WI-024 will move p_net again, and recomputing first would immediately re-stale the pass-throughs. *Considered alternative, one line: recompute first with the pass-throughs rebound as forward-computed functions of p_net (immune to later p_net moves) — remains an option at the recompute item's design.* SV-016 (Q_eng ~10–40 band) also waits on this item: q_eng 6.609 at WI-023 close is knowingly optimistic (p_tf = 0) and moves again when a derived parasitic power lands.
+
 **Intent (owner-stated):** derive/decompose and model *how* the recirculating power values are derived, instead of binding constants. WI-023's source sweep (spec §Sweep Findings, `work/active/WI-023_magnet-field-errata-B9/spec.md`) established that no admissible source prints a total coil-conduction or cryo-plant power for Stellaris — the paper defers parasitic electricity explicitly — so WI-023 rebound `p_tf = 0` with the deferral documented ([OWNER] ruling, no-fallbacks). This item builds the honest replacement: decompose the parasitic loads (coil conduction, cryo-plant electrical from heat loads, pumping/auxiliary splits) and model the derivation chain — e.g. winding-pack nuclear heating density (35.5 W/m³, Table 6 image) × cold-mass/winding volume → heat load at 20 K → cryo-plant electrical via COP — with every step sourced or explicitly parameterized. Subsumes the WI-018-era Stage-3 note (cold-mass → cryo-electrical COP treatment) in the p_tf doc.
 
 ---
@@ -174,6 +176,8 @@ Strictly sequential — each item builds on the previous. The critical path is a
 ---
 
 ## Deferred Decisions (revisit)
+
+- **STALE-BASIS pass-through recompute (do not miss — next after WI-024).** The buildings, preconstruction, and annual O&M accounts were computed at p_net = 575.3 MW; the executed p_net is now **915.1 MW** (WI-023 close), ~59% off basis — the largest known honesty gap in the headline. Annotations in the instance track the drift, but the accounts themselves have not been recomputed. [OWNER] 2026-07-18: sequence this **after WI-024** (see the WI-024 sequencing note) so it recomputes at a settled p_net. Not yet registered as a work item — register at pick-up.
 
 - **Material shape factor on conformal subsystem volumes** — deferred by owner ruling 2026-07-17 (WI-021 checkpoint). WI-021 forward-computes the CAS22 material volumes (blanket/shield/structure/vessel), first-wall area, and coil-bore radius as **pure torus shells with no shape factor**, matching 1costingFE (Option 1). The alternative (Option 2) would apply a stellarator shaping factor to these engineered annuli — a blanket/shield conforming to a shaped plasma encloses less than a full torus shell, which would reduce the volume-scaled costs. Deferred because it deviates from the admissible engineering source (1costingFE, which uses torus shells) and needs a defensible per-layer factor the current sources do not provide. Revisit if a sourced conformal-volume basis becomes available or the hold-out comparison motivates it. Scope if picked up: re-baselines the four CAS22 volume-scaled costs and LCOE, parallel to WI-020's plasma-volume re-baseline.
 

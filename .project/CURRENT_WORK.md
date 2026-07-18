@@ -6,13 +6,17 @@
 
 ## Active Work
 
-### Stellarator MBSE Demo — WI-023 magnet-field errata IMPLEMENTED (2026-07-18, uncommitted; audit + owner close pending)
+### Stellarator MBSE Demo — WI-023 magnet-field errata DONE: audited, closed, committed (2026-07-18, `adc43cda`)
 
-**Status**: WI-023 implemented and validated — uncommitted in the worktree; `/audit-models`, owner `pm close-item`, and commit are still pending (owner-held / orchestrator-held). PROTOCOL.md respected throughout.
+**Status**: WI-023 complete — implemented, independent audit **POSITIVE** (report: `work/analysis/20260718-105435_audit_WI-023_magnet-field-errata-B9.md`), owner-closed (`work/completed/20260718_WI-023_magnet-field-errata-B9/`), committed at `adc43cda`. PROTOCOL.md respected throughout; orchestration brief at `work/orchestration/magnet-field-errata-B9.md`.
 
-**What moved**: two phantom-row corrections in the concept-09 instance, owner-ratified. `magnet.B` 5.86 → **9.0 T** (the 5.86 cited a Table 3 text row that does not exist — the Table 2/5 images and the published paper print axis-averaged B₀ = 9.0; magnet cost is linear in B). `pb.p_tf` 111 → **0.0** (the "conduction power to coils = 111 MW" row does not exist; 111 is the stored magnetic energy in GJ; the paper defers parasitic electricity — no-fallbacks, [OWNER] option b). **WI-024 queued**: derive the recirculating-power values properly (coil conduction, cryo-electrical from heat loads + COP) instead of binding constants.
+**What moved**: two phantom-row corrections in the concept-09 instance, owner-ratified. `magnet.B` 5.86 → **9.0 T** (the 5.86 cited a Table 3 text row that does not exist — the Table 2/5 images and the published paper print axis-averaged B₀ = 9.0; magnet cost is linear in B). `pb.p_tf` 111 → **0.0** (the "conduction power to coils = 111 MW" row does not exist; 111 is the stored magnetic energy in GJ; the paper defers parasitic electricity — no-fallbacks, [OWNER] option b). The published Stellaris PDF was found in the repo (admissible iter-02 companion dir) and confirms both phantoms outright; registered in `SOURCE_INDEX.md`.
 
-**Executed headline (bit-exact vs oracle, rel 1e-9)**: V 425, p_fus 2748.1 MW, p_th 3238.1, gross 1078.3, **net 915.1 MW**, rec_frac 0.151, **q_eng 6.61**, total **$12.6015B**, **LCOE $201.46/MWh**, magnet **$6.3235B (50.2%)** — magnet exactly ×9.0/5.86 on the WI-022 baseline. SV-030 passing; SV-025/026 handshake byte-identical (both corrections injected from 1costingFE's own refs, zero handshake edits); IFE SV-023 unchanged; L1=0, offender set = the 6 pre-existing, zero new; WI-022 handwritten reactivity impl survived regen (content-verified). **SV-016 re-flagged**: q_eng 3.93 → 6.61, still below the ~10–40 band — awaiting owner adjust/annotate. Record: `work/active/WI-023_magnet-field-errata-B9/` (spec/design/plan + Implementation Record).
+**Executed headline (audit-reproduced, bit-exact vs oracle rel 1e-9)**: V 425, p_fus 2748.1 MW, p_th 3238.1, gross 1078.3, **net 915.1 MW**, rec_frac 0.151, **q_eng 6.61**, total **$12.6015B**, **LCOE $201.46/MWh**, magnet **$6.3235B (50.2%)** — magnet exactly ×9.0/5.86 on the WI-022 baseline. SV-030 passing; SV-025/026 handshake byte-identical; IFE SV-023 unchanged; zero new validation offenders; WI-022 handwritten reactivity impl survived regen.
+
+**Owner rulings at close (2026-07-18)**: **SV-016** (Q_eng ~10–40 band) stays `pending` until WI-024 — q_eng 6.61 is knowingly optimistic at p_tf = 0, so the band is not adjusted to fit a provisional value. **Sequencing: WI-024 (recirculating-power derivation model) runs BEFORE the STALE-BASIS pass-through recompute** (Option B — recompute at a settled p_net; the pass-throughs are now ~59% off their p_net = 575.3 basis). Both recorded in `work/backlog/epic-mfe-cost-modeling.md` (WI-024 entry + Deferred Decisions).
+
+**Next**: WI-024 (`/spec-model` + owner checkpoint) → STALE-BASIS pass-through recompute (register at pick-up) → structural handshake-gap account items (−31%) → hold-out comparison stage (owner-triggered ARIES-CS reveal, PROTOCOL §6).
 
 ### Stellarator MBSE Demo — Stage 3 item 2 DONE: WI-022 predictive confinement (2026-07-18, uncommitted)
 
