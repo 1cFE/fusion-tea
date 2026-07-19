@@ -738,12 +738,19 @@ package stellarator_09 {
             doc /* **Source**: stellaris-design-details.md **Ref**: line 1530 (TBR > 1.05 self-sufficiency target) **Basis**: D-T tritium self-sufficiency floor */
         }
 
-        // Asserted viability constraints — removed in this staged demo copy
-        // (see mfe_plant.sysml DEMO NOTE): codegen strict-mode constraint
-        // resolution aborts on plain design-attribute actuals. Stage-4 scope.
-        // assert constraint beta_ok : 'Beta Limit' { in beta = beta; in beta_limit = beta_limit; }
-        // assert constraint wall_load_ok : 'Neutron Wall Load Limit' { in wall_load = wall_load_calc.wall_load; in wall_load_limit = wall_load_limit; }
-        // assert constraint tbr_ok : 'TBR Floor' { in tbr = tbr; in tbr_floor = tbr_floor; }
+        // Asserted viability constraints.
+        assert constraint beta_ok : 'Beta Limit' {
+            in beta = beta;
+            in beta_limit = beta_limit;
+        }
+        assert constraint wall_load_ok : 'Neutron Wall Load Limit' {
+            in wall_load = wall_load_calc.wall_load;
+            in wall_load_limit = wall_load_limit;
+        }
+        assert constraint tbr_ok : 'TBR Floor' {
+            in tbr = tbr;
+            in tbr_floor = tbr_floor;
+        }
 
         // Exposed neutron wall load (headline physics output).
         attribute neutron_wall_load : Real = wall_load_calc.wall_load;

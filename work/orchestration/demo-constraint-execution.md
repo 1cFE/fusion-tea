@@ -22,3 +22,5 @@
 ## Stage log
 
 - 2026-07-19: WI-027 registered (`pm add-item`, standalone, P0). Spec stage launched.
+- 2026-07-19: spec → design → plan complete (commits `47bcde69`, `21d00cc5`, `88e1c434`). Design discharged the defect-register premise flag (12/12 NOT-HIT); pin `512786c`.
+- 2026-07-19: **implement Phase 2 STOP** — INV-2 strict-mode capture aborts on literal-valued design-attribute actuals (`beta_ok.beta` et al.), CODEGEN_FINDINGS #9; the constraint-exec epic never closed the resolution gap and the IFE acceptance never exercised it. Three options surfaced to owner. **[OWNER] ruling 2026-07-19: option 1** — representation-only canonical rewiring (WI-021 pattern), zero numeric movement, no viability-semantics change; MR-WI027-8 amended accordingly. Upstream finding to be filed. Design session resumed to settle the rewiring with a capture probe; implement resumes on the amended design.

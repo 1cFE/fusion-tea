@@ -456,13 +456,13 @@ package mfe_plant {
         // VIABILITY CONSTRAINTS  (WI-009 mfe_viability)
         // =====================================================================
 
-        // DEMO NOTE (stellarator_e2e staged copy): assert-constraint blocks
-        // removed for codegen. The newer codegen resolves constraint actuals in
-        // strict mode (INV-2) and aborts on plain design-attribute actuals;
-        // constraints are Stage-4 scope (defined in canonical model, executed
-        // later). Mirrors WI-015 finding 7. Canonical model unchanged.
-        // assert constraint net_positive : 'Net Power Positive' { in net_electric = pb.p_net; }
-        // assert constraint recirc_ok : 'Economic Recirculating Threshold' { in rec_frac = pb.rec_frac; }
+        assert constraint net_positive : 'Net Power Positive' {
+            in net_electric = pb.p_net;
+        }
+
+        assert constraint recirc_ok : 'Economic Recirculating Threshold' {
+            in rec_frac = pb.rec_frac;
+        }
 
         // =====================================================================
         // EXPOSED DERIVED OUTPUTS
