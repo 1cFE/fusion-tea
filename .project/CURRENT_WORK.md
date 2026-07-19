@@ -6,6 +6,16 @@
 
 ## Active Work
 
+### Stellarator MBSE Demo — WI-025 STALE-BASIS pass-through recompute IMPLEMENTED (2026-07-18, uncommitted — awaiting audit → owner close → commit)
+
+**Status**: WI-025 implemented and validated (`work/active/WI-025_stale-basis-pass-through-recompute/` — plan Implementation Record filled). **NOT closed, NOTHING committed** (owner-held / orchestrator-held). PROTOCOL.md respected throughout; orchestration brief at `work/orchestration/stale-basis-recompute.md`.
+
+**What moved**: the last three pass-through cost accounts are now **forward-computed functions of the model's computed powers**, and all three STALE BASIS annotations are retired (grep-zero). Three new library calc defs in `models/library/analyses/mfe_account_costs.sysml` — `'Buildings Cost'` (CAS21, exact 6-term grouped collapse of the 1cfe 18-building DT loop, tracking p_fus/p_the/p_th/p_et), `'Preconstruction Cost'` (CAS10 pre-contingency subtotal, tracking p_net), `'Annual OM Cost'` (CAS70 unlevelized, tracking p_net) — wired in the generic plant (8 concept-input attributes + 3 calc usages) and bound by the Stellaris instance (all $-conversions of pinned 1costingFE constants; DT/FOAK/n_mod = 1 frozen as documented constants). Conventions preserved: CAS10 pre-contingency (CAS29 applies once), CAS21 raw, CAS70 unlevelized (CAS71/72 remain Stage-3).
+
+**Executed headline (bit-exact vs oracle rel 1e-9, incl. the three new account channels)**: CAS21 **$640,475,006.17** (was $613.65M at pre-WI-019 powers), CAS10 **$34,391,496.77** (was $33.896M at p_net 575.3), CAS70 **$52,517,269.06/yr** (was $41.641M/yr) → direct $9,247,944,633.47, total **$12,638,857,665.74** (+0.296%), **LCOE $203.647152/MWh** (+$2.1751). Denominator invariant: p_net 915.081088, q_eng 6.606662, rec_frac 0.151362, magnet $6,323,469,946.33 (50.03%) — all unchanged to the cent. SV-032 passing with the executed record; handshake byte-identical under the standing successor bar (injection-map-only edit — om_ref zeroed, 1cfe annual O&M via the om_direct identity path); IFE anchors unchanged; pytest tally unchanged (11/18/14/0); L1–L6 offender list = the 6 pre-existing (mfe_plant lines shifted only); WI-022 handwritten impl content-hash survived regen.
+
+**Next**: `/audit-models` → owner `pm close-item WI-025` → commit. SV-016 still `pending` (q_eng did not move this item).
+
 ### Stellarator MBSE Demo — WI-024 recirculating-power derivation IMPLEMENTED (2026-07-18, uncommitted — awaiting audit → owner close → commit)
 
 **Status**: WI-024 implemented and validated (`work/active/WI-024_recirc-power-derivation/` — plan Implementation Record filled). NOT closed, NOTHING committed (owner-held / orchestrator-held). PROTOCOL.md respected throughout; orchestration brief at `work/orchestration/recirc-power-derivation.md`.

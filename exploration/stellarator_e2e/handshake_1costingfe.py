@@ -239,8 +239,16 @@ def set_1cfe_inputs(o):
         f"{P}contingency__contingency_rate": refs["contingency_rate_noak"],
         f"{P}indirect__indirect_fraction": refs["indirect_fraction"],
         f"{P}indirect__construction_time": o["target"]["construction_time_yr"],
+        # WI-025 (design D6 successor injection): lcoe_calc__annual_om is now
+        # a chain-wired channel (annual_om = om_cost.annual_om), not a
+        # settable leaf. Zero the O&M reference here so the chain computes
+        # 0.0*(p_net/1000)^0.5 + om_direct = om_direct — exact in IEEE
+        # arithmetic (0*finite = 0, 0 + v = v; the WI-024 D7 identity-path
+        # precedent) — and feed 1cfe's unlevelized annual O&M through the
+        # additive om_direct term in the params block below, so lcoe receives
+        # 1cfe's value bit for bit.
+        f"{P}om_cost__om_ref": 0.0,
         # LCOE financing / performance
-        f"{P}lcoe_calc__annual_om": refs["annual_om_unlevelized_musd"] * M,
         f"{P}lcoe_calc__availability": o["target"]["availability"],
         f"{P}lcoe_calc__construction_years": o["target"]["construction_time_yr"],
         f"{P}lcoe_calc__discount_rate": o["target"]["interest_rate"],
@@ -286,6 +294,11 @@ def set_1cfe_inputs(o):
         f"{P}heat_rejection__cost_per_mw": uc["heat_rej_per_mw"] * M,
         # indirect reference construction time
         f"{P}indirect__reference_construction_time": refs["reference_construction_time"],
+        # WI-025 (D6): 1cfe's unlevelized annual O&M through the om_cost
+        # additive direct term (om_ref zeroed in the sd block above —
+        # IEEE-exact identity path; defaulted-input keys are settable here,
+        # the blanket_cost__alpha precedent).
+        f"{P}om_cost__om_direct": refs["annual_om_unlevelized_musd"] * M,
     })
     MFE_PARAMS.write_text(json.dumps(mp, indent=2))
     return dict(V=V, sigma_v=sigma_v, p_fus_target=p_fus_target)

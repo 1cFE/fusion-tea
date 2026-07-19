@@ -300,4 +300,118 @@ package mfe_account_costs {
             indirect_fraction * direct_cost
             * (construction_time / reference_construction_time);
     }
+
+    calc def 'Buildings Cost' {
+        doc /*
+        CAS21 buildings total, raw (pre-contingency; CAS29 applies contingency
+        once over the direct sum). Exact 6-term grouped collapse of the
+        1costingFE 18-building loop (WI-025): every building is linear in
+        exactly one scaling basis, so the loop groups into base-cost sums per
+        basis. Grouping is exact linear algebra, not a fit (design-stage proof:
+        bit-identical to the pinned loop at float64 at the executed powers).
+        p_the = p_et for a no-DEC plant (costs.py:104) — documented where the
+        instance binds. Base sums are concept inputs (fuel-keyed, MR-3);
+        reference powers are 1cfe calibration constants.
+          cost = fixed_base + fus_base*(p_fus*n_mod/p_fus_ref)
+               + staff_base*(p_et*n_mod/p_et_ref)**0.5
+               + the_base*(p_the*n_mod/p_the_ref)
+               + th_base*(p_th*n_mod/p_th_ref) + et_base*(p_et*n_mod/p_et_ref)
+        **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
+        **Ref**: costs.py:83-144 (cas21_buildings; scale_map :121-130, refs
+            :102-106, SC cryogenics gate :137); costing_constants.yaml:175-197
+        **Basis**: exact linear grouping of the per-building loop (WI-025 D1)
+        */
+
+        in attribute fixed_base : Real;   // sum of fixed-basis base costs [$]
+        in attribute fus_base : Real;     // sum of p_fus-scaled base costs [$]
+        in attribute staff_base : Real;   // sum of staff-scaled base costs [$]
+        in attribute the_base : Real;     // sum of p_the-scaled base costs [$]
+        in attribute th_base : Real;      // sum of p_th-scaled base costs [$]
+        in attribute et_base : Real;      // sum of p_et-scaled base costs [$]
+        in attribute p_fus : Real;        // fusion power [MW]
+        in attribute p_the : Real;        // thermal-electric power [MW]
+        in attribute p_th : Real;         // total thermal power [MW]
+        in attribute p_et : Real;         // gross electric power [MW]
+
+        // Module count (plant-total powers). Frozen n_mod = 1 at the demo
+        // design point (WI-025 checkpoint ruling 1). Source: costs.py:109-112.
+        in attribute n_mod : Real default 1.0;
+        // Calibration reference powers. Source: costs.py:105 (P_TH_REF=2500),
+        // :106 (P_FUS_REF=2300); costing_constants.yaml:12 (ref_gross 1100,
+        // used for both p_et and p_the — no-DEC).
+        in attribute p_fus_ref : Real default 2300.0;
+        in attribute p_the_ref : Real default 1100.0;
+        in attribute p_th_ref : Real default 2500.0;
+        in attribute p_et_ref : Real default 1100.0;
+
+        out attribute cost : Real =
+            fixed_base
+            + fus_base * (p_fus * n_mod / p_fus_ref)
+            + staff_base * (p_et * n_mod / p_et_ref) ** 0.5
+            + the_base * (p_the * n_mod / p_the_ref)
+            + th_base * (p_th * n_mod / p_th_ref)
+            + et_base * (p_et * n_mod / p_et_ref);
+    }
+
+    calc def 'Preconstruction Cost' {
+        doc /*
+        CAS10 preconstruction PRE-CONTINGENCY subtotal: land (sqrt of
+        plant-total net electric, anchored at ref_net_power) plus the fixed
+        adders (permits + licensing + studies + reports + other — fuel/FOAK-
+        keyed, so a concept input). costs.py:79 adds CAS10's own contingency;
+        deliberately NOT carried here — the plant's CAS29 applies contingency
+        once over the direct sum (convention preserved, MR-WI025-3; design-
+        stage check: 1cfe full CAS10 = this subtotal x 1.10 exactly).
+        **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
+        **Ref**: costs.py:52-80 (cas10_preconstruction);
+            costing_constants.yaml:8, :15-23
+        **Basis**: CAS10 subtotal, contingency deliberately omitted (CAS29)
+        */
+
+        in attribute fixed_precon : Real;  // fixed adders, fuel/FOAK-keyed [$]
+        in attribute p_net : Real;         // net electric power [MW]
+
+        // Frozen n_mod = 1 (WI-025 ruling 1). Source: costs.py:64.
+        in attribute n_mod : Real default 1.0;
+        // Land calibration. Source: costing_constants.yaml:21 (0.25 acres/MWe
+        // at ref), :22 ($10000/acre), :8 (ref_net_power_mwe 1000).
+        in attribute land_intensity : Real default 0.25;
+        in attribute land_cost : Real default 10000.0;
+        in attribute ref_net_power : Real default 1000.0;
+
+        out attribute cost : Real =
+            land_intensity * (p_net * n_mod * ref_net_power) ** 0.5 * land_cost
+            + fixed_precon;
+    }
+
+    calc def 'Annual OM Cost' {
+        doc /*
+        CAS70 UNLEVELIZED annual O&M: fuel-keyed staffing base (om_ref, a
+        concept input) scaled by sqrt of plant-total net electric. CAS71
+        inflation levelization and CAS72 scheduled replacement are documented
+        Stage-3 refinements, not carried (convention preserved, MR-WI025-3).
+        om_direct is an additive direct term for concepts that specify O&M
+        outright (WI-024 p_direct pattern); 0 -> pure costs.py:353 formula,
+        and with om_ref = 0 the calc passes om_direct through exactly (IEEE-
+        exact identity, the handshake injection path — WI-025 D5/D6).
+        **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
+        **Ref**: costs.py:319-357 (cas70_om; annual line :353);
+            costing_constants.yaml:272 (om_cost_dt 54.9), :8 (ref 1000)
+        **Basis**: staffing power-law O&M, unlevelized (CAS71/72 out of scope)
+        */
+
+        in attribute om_ref : Real;        // annual O&M at ref power, fuel-keyed [$/yr]
+        in attribute p_net : Real;         // net electric power [MW]
+
+        // Frozen n_mod = 1 (WI-025 ruling 1). Source: costs.py:353.
+        in attribute n_mod : Real default 1.0;
+        // Source: costing_constants.yaml:8 (ref_net_power_mwe 1000).
+        in attribute ref_net_power : Real default 1000.0;
+        // Staffing economy-of-scale exponent. Source: costs.py:353 (** 0.5).
+        in attribute alpha : Real default 0.5;
+        in attribute om_direct : Real default 0.0;  // directly-specified O&M (additive)
+
+        out attribute annual_om : Real =
+            om_ref * (p_net * n_mod / ref_net_power) ** alpha + om_direct;
+    }
 }

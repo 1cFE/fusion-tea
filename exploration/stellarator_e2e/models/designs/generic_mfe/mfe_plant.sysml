@@ -93,10 +93,12 @@ package mfe_plant {
             :>> capital_cost = misc_cost.cost;
         }
 
-        // Pass-through direct accounts (initial-model limitation; capital set
-        // directly by WI-011, in $).
-        part buildings : 'Buildings';                 // CAS21
-        attribute preconstruction_capital : Real;      // CAS10/20 pass-through
+        // Forward-computed direct accounts (WI-025): CAS21 via buildings_cost,
+        // CAS10 via precon_cost; CAS27 remains a pass-through (WI-011, in $).
+        part buildings : 'Buildings' {
+            :>> capital_cost = buildings_cost.cost;
+        }
+        attribute preconstruction_capital : Real = precon_cost.cost;
         attribute special_materials_capital : Real;    // CAS27 pass-through
 
         // =====================================================================
@@ -345,6 +347,40 @@ package mfe_plant {
             in n_mod = n_mod;
         }
 
+        // CAS21 grouped base-cost sums [$] (WI-025 D1; instance binds — fuel-keyed).
+        attribute bldg_fixed_base : Real;
+        attribute bldg_fus_base : Real;
+        attribute bldg_staff_base : Real;
+        attribute bldg_the_base : Real;
+        attribute bldg_th_base : Real;
+        attribute bldg_et_base : Real;
+        calc buildings_cost : 'Buildings Cost' {
+            in fixed_base = bldg_fixed_base;
+            in fus_base = bldg_fus_base;
+            in staff_base = bldg_staff_base;
+            in the_base = bldg_the_base;
+            in th_base = bldg_th_base;
+            in et_base = bldg_et_base;
+            in p_fus = fusion.p_fus;
+            in p_the = p_the;
+            in p_th = p_th;
+            in p_et = p_et;
+        }
+
+        // CAS10 fixed preconstruction adders [$] (WI-025; instance binds — fuel/FOAK-keyed).
+        attribute precon_fixed_base : Real;
+        calc precon_cost : 'Preconstruction Cost' {
+            in fixed_precon = precon_fixed_base;
+            in p_net = pb.p_net;
+        }
+
+        // CAS70 annual O&M at reference power [$/yr] (WI-025; instance binds — fuel-keyed).
+        attribute om_annual_ref : Real;
+        calc om_cost : 'Annual OM Cost' {
+            in om_ref = om_annual_ref;
+            in p_net = pb.p_net;
+        }
+
         // =====================================================================
         // CAPITAL ROLLUP  (all $)
         // =====================================================================
@@ -401,7 +437,7 @@ package mfe_plant {
         // LCOE  (WI-009 'LCOE DCF' core)
         // =====================================================================
 
-        attribute annual_om : Real;          // CAS70 O&M pass-through [$/yr] (WI-011)
+        attribute annual_om : Real = om_cost.annual_om;  // CAS70 O&M — forward-computed (WI-025) [$/yr]
         attribute availability : Real;       // capacity factor [0..1]
         attribute discount_rate : Real;      // discount / interest rate [1/yr]
         attribute operational_years : Real;  // operating lifetime N [yr]

@@ -82,6 +82,11 @@ epics:
     scale: standard
     status: completed
     completed: '2026-07-18'
+  - id: WI-025
+    name: STALE-BASIS Pass-Through Recompute
+    scale: standard
+    status: completed
+    completed: '2026-07-18'
 - name: Pipeline De-Risk & Demonstration
   goal: null
   priority: P0
@@ -113,7 +118,13 @@ epics:
     scale: standard
     status: completed
     completed: '2026-07-05'
-standalone: []
+standalone:
+- id: WI-026
+  name: Pytest Baseline Re-Record
+  scale: trivial
+  priority: P3
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -145,6 +156,7 @@ standalone: []
 | WI-022 | predictive-confinement | standard | completed | Completed 2026-07-18 |
 | WI-023 | magnet-field-errata-B9 | standard | completed | Completed 2026-07-18 |
 | WI-024 | Recirculating-power derivation model (coil/cryo parasitic loads) | standard | completed | Completed 2026-07-18 |
+| WI-025 | STALE-BASIS Pass-Through Recompute | standard | completed | Completed 2026-07-18 |
 
 ## Epic: Pipeline De-Risk & Demonstration
 **Priority**: P0 | **Status**: active
@@ -157,3 +169,9 @@ standalone: []
 | WI-015 | IFE End-to-End Demonstration | standard | completed | Completed 2026-07-05 |
 | WI-016 | H2 Probe: Blind Physics Derivation + 1costingfe Differential | standard | completed | Completed 2026-07-05 |
 | WI-017 | Demonstration Dossier & Explainer | standard | completed | Completed 2026-07-05 |
+
+## Standalone Items
+
+| ID | Item | Scale | Priority | Status | Notes |
+|------|------|-------|----------|--------|-------|
+| WI-026 | Pytest Baseline Re-Record | trivial | P3 | backlog |  |

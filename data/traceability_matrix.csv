@@ -7,3 +7,6 @@ Element,File,Type,Knowledge,Requirement,Source_Type,Source_Document,Source_Locat
 hif_plant,models/designs/hif_ife/hif_plant.sysml,part_usage,"DI-001,DI-003,DI-005","MR-WI008-4,MR-WI008-5",mixed,"EIF-1992,Meier 1986,Bangerter 2013",Multiple tables and equations,high,"alpha and epsilon [ESTIMATED]",2026-03-03
 'MFE Power Balance Calc',models/library/analyses/mfe_power_balance.sysml,calc_def,,,codebase,1costingFE @ 0254385,physics.py:290-328 (steps 4-14); steady_state_stellarator.yaml:21,,,2026-07-14
 'Cryoplant Electrical Power',models/library/analyses/mfe_cryo_plant.sysml,calc_def,,,codebase,1costingFE @ 0254385,physics.py:321-323; steady_state_dipole.yaml:52-53 (slot semantics),,,2026-07-18
+'Buildings Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,costs.py:83-144; costing_constants.yaml:175-197,,,2026-07-18
+'Preconstruction Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,"costs.py:52-80; costing_constants.yaml:8,15-23",,,2026-07-18
+'Annual OM Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,"costs.py:319-357; costing_constants.yaml:272,8",,,2026-07-18

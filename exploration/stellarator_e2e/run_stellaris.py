@@ -84,14 +84,15 @@ CH = dict(
     vessel=f"{P}vessel_cost__cost", power_supplies=f"{P}power_supplies_cost__cost",
     turbine=f"{P}turbine_cost__cost", electric=f"{P}electric_cost__cost",
     heat_rejection=f"{P}heat_rejection_cost__cost", misc=f"{P}misc_cost__cost",
+    # forward-computed direct accounts (WI-025): CAS21/CAS10/CAS70 are now
+    # generated-module outputs tracking the computed powers (the BUILDINGS/
+    # PRECON harness constants are retired).
+    buildings=f"{P}buildings_cost__cost", precon=f"{P}precon_cost__cost",
+    annual_om=f"{P}om_cost__annual_om",
     contingency=f"{P}contingency__cost", indirect=f"{P}indirect__cost",
     lcoe=f"{P}lcoe_calc__lcoe",
 )
 
-# Pass-through direct accounts — model literals (stellarator_plant.sysml), not
-# calc outputs (documented Stage-3 pass-throughs). Supplied as harness inputs.
-BUILDINGS = 613650000.0
-PRECON = 33896000.0
 # CAS27 special materials (WI-021): now MODEL-computed from the radial-build
 # blanket volume (special_materials_capital = rb.blanket_vol x 0.50 x 9400 x 5.0).
 # Harvested from the pipeline's rb.blanket_vol in PASS A (see below), not a
@@ -190,7 +191,8 @@ def main():
     # CAS27 special materials computed from the pipeline's forward radial-build
     # blanket volume (WI-021), mirroring special_materials_capital in the SysML.
     SPECIAL = a[f"{P}rb__blanket_vol"] * PBLI_VOL_FRAC * PBLI_DENSITY * PBLI_PRICE
-    direct = powercore + bop + BUILDINGS + PRECON + SPECIAL
+    # CAS21/CAS10 harvested from the generated account modules (WI-025).
+    direct = powercore + bop + a[CH["buildings"]] + a[CH["precon"]] + SPECIAL
     contingency = run_contingency_cost(Contingency_CostInput(
         contingency_rate=CONTINGENCY_RATE, direct_subtotal=direct))
     indirect = run_indirect_cost(Indirect_CostInput(
@@ -222,6 +224,9 @@ def main():
     print("\n=== PER-ACCOUNT CAPITAL, $ (executed vs oracle) ===")
     for k in accounts:
         check(k, b[CH[k]], o[k])
+    # Forward-computed accounts (WI-025): per-channel bit-exact checks.
+    for k in ["buildings", "precon", "annual_om"]:
+        check(k, b[CH[k]], o[k])
 
     print("\n=== ROLLUP + LCOE (executed vs oracle) ===")
     check("contingency", b[CH["contingency"]], o["contingency_capital"])
@@ -230,33 +235,36 @@ def main():
     check("total_capital", total, o["total_capital"])
     check("lcoe", b[CH["lcoe"]], o["lcoe"])
 
-    # ---- WI-024 headline oracle (looser, sanity band) ------------------------
-    # WI-024 recirculating-power derivation: p_cryo is now a computed chain
-    # output — winding-pack nuclear heating 35.5 W/m^3 (Table 6 image) x
-    # 136.56 m^3 winding volume (computed: Table 8 cross-sections x 8-fold
-    # symmetry x 25 m circumference) + 7.5 kW joint losses (sec. 2.9), at 20 K
-    # through a 0.20-of-Carnot cryoplant (THE assumption, design D4) ->
-    # 0.8643516 MW wall-plug, retiring the 1cfe generic default 0.8. p_tf is
-    # rescoped from deferral stopgap to modeled zero (SC coils, recirc factor
-    # 0 in 1cfe's own model). p_net 915.145 -> 915.081 MW, q_eng 6.609 ->
-    # 6.6067, rec_frac 0.15130 -> 0.15136, LCOE 201.458 -> 201.472; capital
-    # unchanged (no parasitic slot feeds capital).
-    # (Was WI-023: V 425, p_fus 2748.1, p_net 915.1, rec_frac 0.151,
-    # q_eng 6.61, total 12.60, LCOE 201.46, magnet 6.32.)
-    print("\n=== WI-024 HEADLINE CHECK ===")
+    # ---- WI-025 headline oracle (looser, sanity band) ------------------------
+    # WI-025 stale-basis pass-through recompute: the last three pass-through
+    # accounts — CAS21 buildings, CAS10 preconstruction, CAS70 annual O&M —
+    # are now forward-computed generated-module outputs tracking the model's
+    # own powers (CAS21 from p_fus/p_the/p_th/p_et via the exact 6-term
+    # grouped collapse of the 1cfe 18-building DT loop; CAS10 and CAS70 from
+    # p_net), retiring the stale literals computed at pre-WI-019 powers /
+    # p_net 575.3 and the final STALE-BASIS annotations. Conventions
+    # preserved: CAS10 pre-contingency subtotal, CAS21 raw, CAS70
+    # unlevelized; DT/FOAK/n_mod = 1 frozen. Buildings 613.65 -> 640.48 M$,
+    # precon 33.896 -> 34.391 M$, O&M 41.641 -> 52.517 M$/yr; total 12.60 ->
+    # 12.64 $B, LCOE 201.472 -> 203.647 $/MWh. The denominator does not move
+    # (costs feed nothing upstream): p_net 915.081, q_eng 6.6067, rec_frac
+    # 0.15136, magnet capital unchanged.
+    # (Was WI-024: V 425, p_fus 2748.1, p_net 915.081, rec_frac 0.15136,
+    # q_eng 6.6067, total 12.60, LCOE 201.472, magnet 6.32.)
+    print("\n=== WI-025 HEADLINE CHECK ===")
     heads = [
         ("plasma volume V [m3]", b[CH["V"]], 425, 2),
         ("fusion power [MW]", b[CH["p_fus"]], 2748.1, 2),
         ("net electric [MW]", b[CH["p_net"]], 915.1, 3),
         ("rec_frac", b[CH["rec_frac"]], 0.151, 0.01),
         ("q_eng", b[CH["q_eng"]], 6.61, 0.05),
-        ("total capital [$B]", total / 1e9, 12.60, 0.05),
-        ("LCOE [$/MWh]", b[CH["lcoe"]], 201.5, 2),
+        ("total capital [$B]", total / 1e9, 12.64, 0.05),
+        ("LCOE [$/MWh]", b[CH["lcoe"]], 203.6, 2),
         ("magnet capital [$B]", b[CH["magnet"]] / 1e9, 6.32, 0.05),
     ]
     for label, val, target, tol in heads:
         ok = abs(val - target) <= tol
-        print(f"  {label:24s} exec={val:14.4f}  WI-024~={target:<10}  "
+        print(f"  {label:24s} exec={val:14.4f}  WI-025~={target:<10}  "
               f"{'OK' if ok else 'FAIL'}")
         if not ok:
             failures.append("HEAD:" + label)
@@ -278,8 +286,8 @@ def main():
         ("25 Heat Rejection", b[CH["heat_rejection"]]),
         ("26 Miscellaneous", b[CH["misc"]]),
         ("  -> CAS23-26 BOP", bop),
-        ("21 Buildings (pass-thru)", BUILDINGS),
-        ("10 Preconstruction (pass-thru)", PRECON),
+        ("21 Buildings", b[CH["buildings"]]),
+        ("10 Preconstruction", b[CH["precon"]]),
         ("27 Special Materials (pass-thru)", SPECIAL),
         ("  -> Direct capital", direct),
         ("29 Contingency", b[CH["contingency"]]),
@@ -294,7 +302,7 @@ def main():
     if failures:
         raise SystemExit(f"{len(failures)} check(s) FAILED: {failures}")
     print(f"ALL CHECKS PASSED (channel-vs-oracle rel tol {REL_TOL}); "
-          "WI-024 headline reproduced.")
+          "WI-025 headline reproduced.")
 
 
 if __name__ == "__main__":

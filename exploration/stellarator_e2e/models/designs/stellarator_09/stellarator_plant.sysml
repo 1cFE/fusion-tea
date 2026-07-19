@@ -46,13 +46,13 @@ package stellarator_09 {
           - Stellarator coil geometry factor G = 8*pi^2 (vs tokamak 4*pi^2), bound
             on the magnet subsystem.
 
-        HEADLINE FORWARD-PASS RESULT (WI-024 recirculating-power derivation;
+        HEADLINE FORWARD-PASS RESULT (WI-025 stale-basis pass-through recompute;
         executed in exploration/stellarator_e2e/run_stellaris.py):
         plasma volume 425 m^3 (printed value; a = 1.3), fusion power 2748.1 MW
         (profile-integrated, +1.8% vs the 2700 design point), thermal power
         3238 MW, gross electric 1078 MW, net electric 915.081 MW, recirculating
-        fraction 0.15136, q_eng 6.6067, total overnight capital $12.60B, LCOE
-        $201.472/MWh (FOAK). Magnet $6.32B (50.2%) at the printed axis-averaged
+        fraction 0.15136, q_eng 6.6067, total overnight capital $12.64B, LCOE
+        $203.647/MWh (FOAK). Magnet $6.32B (50.03%) at the printed axis-averaged
         B_0 = 9.0 T and the stellarator 5.87 REBCO markup.
         (History: WI-018 lossy balance net 575, ~$251/MWh; WI-019 faithful
         balance at torus volume net 786, ~$189/MWh; WI-020 corrected the
@@ -64,7 +64,11 @@ package stellarator_09 {
         p_tf = 111, which the paper prints only as stored magnetic energy in
         GJ, not a power, net 915.145, ~$201.46/MWh; WI-024 derived the cryo
         parasitic load from the winding-pack heat inventory, retired the
-        0.8 MW 1costingFE default, and rescoped p_tf to a modeled zero.)
+        0.8 MW 1costingFE default, and rescoped p_tf to a modeled zero,
+        ~$201.47/MWh; WI-025 forward-computed the last three pass-through
+        cost accounts — CAS21 buildings, CAS10 preconstruction, CAS70 annual
+        O&M — from the model's computed powers, retiring the final STALE
+        BASIS annotations, total $12.60B -> $12.64B, ~$203.65/MWh.)
 
         THREE MAPPING TRAPS (documented at their bindings below): r_coil (coil
         bore = radial-build vessel outer radius, not a guess), sigma_v (0D
@@ -255,29 +259,61 @@ package stellarator_09 {
         }
 
         // ---------------------------------------------------------------------
-        // PASS-THROUGH DIRECT ACCOUNTS ($) — computed from the admissible
-        // 1costingFE account functions at the Stellaris design-point powers
-        // (documented initial-model pass-throughs; deepened in Stage 3).
+        // CAS21 BUILDINGS ($) — forward-computed (WI-025): buildings_cost tracks
+        // the model's p_fus/p_the/p_th/p_et (p_the = p_et, no DEC — costs.py:104).
+        // The six base sums below are the exact grouped collapse of the
+        // 18-building DT column (every building linear in exactly one scaling
+        // basis), cryogenics included (SC coils, REBCO HTS — costs.py:137);
+        // DT and n_mod = 1 frozen at the design point. Stale basis retired:
+        // the old $613.65M literal was computed at pre-WI-019 powers
+        // (p_et 896.8 / p_th 2693.1).
         // ---------------------------------------------------------------------
-        part :>> buildings {
-            doc /*
-            CAS21 buildings, raw (pre-contingency). Computed via costingfe.layers.
-            costs.cas21_buildings for a DT stellarator (SC coil -> cryoplant
-            building included) at p_et=896.8, p_the=896.8, p_th=2693.1,
-            p_fus=2700, n_mod=1: 613.650 M$ -> $. The per-building fuel-keyed base
-            costs + scaling bases are a dict loop (out of the codegen envelope),
-            so the total is a pass-through here.
-            STALE BASIS (surfaced at WI-019 close, updated WI-022): the 613.650
-            M$ was computed at the pre-WI-019 powers (p_et=896.8, p_th=2693.1).
-            The current WI-022 powers are p_et=1078.3, p_th=3238.1 (fusion power
-            rose to 2748 MW with the profile-integrated reactivity).
-            Recomputing this pass-through at the current powers belongs to the
-            Stage-3 pass-through-scope item, not WI-022.
-            **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
-            **Ref**: costs.py:83-144 (cas21_buildings); costing_constants.yaml:175-197
-            **Basis**: CAS21 buildings total at the Stellaris design point
-            */
-            :>> capital_cost = 613650000.0;
+        :>> bldg_fixed_base = 168500000.0 {  // fixed-basis base costs [$].
+            doc /* 168.5 M$ x 1e6 = site_improvements 85 + fuel_storage 9 +
+            control_room 14 + security 3.5 + maintenance 17 + site_services 5 +
+            cryogenics 14 (SC-gated, applies: REBCO HTS, costs.py:137) +
+            assembly_hall 21 (all DT column).
+            **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
+            **Ref**: costing_constants.yaml:177,183-185,188-189,195,197
+            **Basis**: exact grouped sum, fixed-scaling buildings (WI-025 D1) */
+        }
+        :>> bldg_fus_base = 288000000.0 {  // p_fus-scaled base costs [$].
+            doc /* 288 M$ x 1e6 = reactor_building 138 + hot_cell 104 +
+            reactor_auxiliaries 29 + ventilation_hvac 17 (DT column); scales
+            as p_fus x n_mod / 2300 (costs.py:106,126).
+            **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
+            **Ref**: costing_constants.yaml:179-181,186
+            **Basis**: exact grouped sum, p_fus-scaled buildings (WI-025 D1) */
+        }
+        :>> bldg_staff_base = 9000000.0 {  // staff-scaled base costs [$].
+            doc /* 9 M$ x 1e6 = administration 9 (DT column); staff-driven,
+            scales as sqrt(p_et x n_mod / 1100) (costs.py:127-129).
+            **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
+            **Ref**: costing_constants.yaml:187; costs.py:127-129
+            **Basis**: exact grouped sum, staff-scaled buildings (WI-025 D1) */
+        }
+        :>> bldg_the_base = 58000000.0 {  // p_the-scaled base costs [$].
+            doc /* 58 M$ x 1e6 = turbine_building 58 (fuel-independent);
+            scales as p_the x n_mod / 1100 (costs.py:104,124 — p_the = p_et,
+            no DEC; ref_gross costing_constants.yaml:12).
+            **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
+            **Ref**: costing_constants.yaml:191
+            **Basis**: exact grouped sum, p_the-scaled buildings (WI-025 D1) */
+        }
+        :>> bldg_th_base = 26000000.0 {  // p_th-scaled base costs [$].
+            doc /* 26 M$ x 1e6 = heat_exchanger 17 + service_water 9
+            (fuel-independent); scales as p_th x n_mod / 2500 (costs.py:105,125).
+            **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
+            **Ref**: costing_constants.yaml:192,196
+            **Basis**: exact grouped sum, p_th-scaled buildings (WI-025 D1) */
+        }
+        :>> bldg_et_base = 29000000.0 {  // p_et-scaled base costs [$].
+            doc /* 29 M$ x 1e6 = power_supply 17 + onsite_ac 12
+            (fuel-independent); scales as p_et x n_mod / 1100 (costs.py:103,123;
+            ref_gross costing_constants.yaml:12).
+            **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
+            **Ref**: costing_constants.yaml:193-194
+            **Basis**: exact grouped sum, p_et-scaled buildings (WI-025 D1) */
         }
 
         // Physics geometry inputs.
@@ -590,26 +626,20 @@ package stellarator_09 {
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:97 (divertor_base = 60.0 M$) x 1e6 **Basis**: power-scaled divertor cost */
         }
 
-        // Pass-through capitals (CAS10 preconstruction, CAS27 special materials).
-        :>> preconstruction_capital = 33896000.0 {
+        // CAS10 preconstruction — forward-computed (WI-025); CAS27 special
+        // materials — forward-computed (WI-021).
+        :>> precon_fixed_base = 32000000.0 {  // CAS10 fixed adders [$] (WI-025).
             doc /*
-            CAS10 preconstruction subtotal (land + permits + licensing + FOAK
-            studies + reports + other), pre-contingency, at P_net = 575.3 MW:
-            33.896 M$ -> $. Computed via the costing_constants land/permit/
-            licensing constants (land scales as sqrt(P_net x ref)). Supplied
-            without CAS10's own contingency to avoid double-counting the plant's
-            CAS29 contingency.
-            STALE BASIS (surfaced at WI-019 close, updated WI-024): P_net = 575.3
-            was the WI-018 value. WI-019 moved it to 786.1, WI-020 to 578.0,
-            WI-022 (profile-integrated reactivity + geometry rebind) to 804.1,
-            WI-023 (phantom p_tf = 111 zeroed) to 915.1, and WI-024 (derived
-            cryo parasitic) 915.145 -> 915.081 — negligible at the stated
-            precision, still ~59% above the 575.3 basis this pass-through was
-            computed at. Recomputation still belongs to the Stage-3
-            pass-through-scope item, sequenced after WI-024.
-            **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
-            **Ref**: costs.py:52-80 (cas10_preconstruction); costing_constants.yaml:15-30
-            **Basis**: CAS10 preconstruction subtotal at the Stellaris design point
+            32 M$ x 1e6 = site_permits 3 + licensing_cost_dt 5 (DT frozen) +
+            plant_permits 2 + plant_studies_foak 20 (FOAK frozen) +
+            plant_reports 1 + other_precon 1. preconstruction_capital now
+            tracks the computed p_net via precon_cost (land ~
+            sqrt(p_net x 1000 x 1)); bound pre-contingency (CAS29 applies
+            once — convention preserved). Stale basis retired: the old
+            $33.896M literal was computed at p_net = 575.3 (WI-018).
+            **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
+            **Ref**: costing_constants.yaml:15-23; costs.py:52-80 (:79 contingency not carried)
+            **Basis**: CAS10 fixed adders at the frozen DT/FOAK design point
             */
         }
         :>> special_materials_capital = rb.blanket_vol * 0.50 * 9400.0 * 5.0 {
@@ -640,22 +670,16 @@ package stellarator_09 {
         }
 
         // LCOE inputs (CAS70 O&M + financing).
-        :>> annual_om = 41641000.0 {   // annual O&M [$/yr].
+        :>> om_annual_ref = 54900000.0 {  // CAS70 O&M at 1 GWe, DT [$/yr] (WI-025).
             doc /*
-            CAS70 O&M = om_cost_dt x (P_net/1 GWe)^0.5 = 54.9 x (575.3/1000)^0.5 =
-            41.641 M$/yr -> $. Inflation and scheduled-replacement (CAS72)
-            refinements are a Stage-3 item.
-            STALE BASIS (surfaced at WI-019 close, updated WI-024): P_net = 575.3
-            was the WI-018 value. WI-019 moved it to 786.1, WI-020 to 578.0,
-            WI-022 (profile-integrated reactivity + geometry rebind) to 804.1,
-            WI-023 (phantom p_tf = 111 zeroed) to 915.1, and WI-024 (derived
-            cryo parasitic) 915.145 -> 915.081 — negligible at the stated
-            precision, still ~59% above the 575.3 basis this pass-through was
-            computed at. Recomputation still belongs to the Stage-3
-            pass-through-scope item, sequenced after WI-024.
+            om_cost_dt 54.9 M$/yr x 1e6. annual_om now tracks the computed
+            p_net via om_cost (x sqrt(p_net/1000)); unlevelized — CAS71
+            inflation and CAS72 scheduled replacement remain documented
+            Stage-3 refinements (convention preserved). Stale basis retired:
+            the old $41.641M/yr literal was computed at p_net = 575.3 (WI-018).
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
-            **Ref**: costing_constants.yaml:272 (om_cost_dt = 54.9 M$/yr at 1 GWe); costs.py:319-347 (power-law 0.5)
-            **Basis**: staffing-based DT O&M, power-law scaled
+            **Ref**: costing_constants.yaml:272; costs.py:319-357 (annual line :353)
+            **Basis**: staffing-based DT O&M, power-law scaled, unlevelized
             */
         }
         :>> availability = 0.85 {      // capacity factor.

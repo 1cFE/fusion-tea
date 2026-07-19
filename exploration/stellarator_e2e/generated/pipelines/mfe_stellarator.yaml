@@ -285,12 +285,60 @@ modules:
     outputs:
       root: RootModel[float] stellarator_09__stellaris__divertor_cost__cost
 
+  # mfe_account_costs.Buildings_CostModule
+  stellarator_09__stellaris__buildings_cost:
+    module_type: mfe_account_costs.Buildings_CostModule
+    inputs:
+      fixed_base: float system_design.stellarator_09__stellaris__buildings_cost__fixed_base
+      fus_base: float system_design.stellarator_09__stellaris__buildings_cost__fus_base
+      staff_base: float system_design.stellarator_09__stellaris__buildings_cost__staff_base
+      the_base: float system_design.stellarator_09__stellaris__buildings_cost__the_base
+      th_base: float system_design.stellarator_09__stellaris__buildings_cost__th_base
+      et_base: float system_design.stellarator_09__stellaris__buildings_cost__et_base
+      p_fus: float stellarator_09__stellaris__fusion__p_fus.root
+      p_the: float stellarator_09__stellaris__pb__p_the
+      p_th: float stellarator_09__stellaris__pb__p_th
+      p_et: float stellarator_09__stellaris__pb__p_et
+      n_mod: float mfe_plant_params.stellarator_09__stellaris__buildings_cost__n_mod
+      p_fus_ref: float mfe_plant_params.stellarator_09__stellaris__buildings_cost__p_fus_ref
+      p_the_ref: float mfe_plant_params.stellarator_09__stellaris__buildings_cost__p_the_ref
+      p_th_ref: float mfe_plant_params.stellarator_09__stellaris__buildings_cost__p_th_ref
+      p_et_ref: float mfe_plant_params.stellarator_09__stellaris__buildings_cost__p_et_ref
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__buildings_cost__cost
+
+  # mfe_account_costs.Preconstruction_CostModule
+  stellarator_09__stellaris__precon_cost:
+    module_type: mfe_account_costs.Preconstruction_CostModule
+    inputs:
+      fixed_precon: float system_design.stellarator_09__stellaris__precon_cost__fixed_precon
+      p_net: float stellarator_09__stellaris__pb__p_net
+      n_mod: float mfe_plant_params.stellarator_09__stellaris__precon_cost__n_mod
+      land_intensity: float mfe_plant_params.stellarator_09__stellaris__precon_cost__land_intensity
+      land_cost: float mfe_plant_params.stellarator_09__stellaris__precon_cost__land_cost
+      ref_net_power: float mfe_plant_params.stellarator_09__stellaris__precon_cost__ref_net_power
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__precon_cost__cost
+
+  # mfe_account_costs.Annual_OM_CostModule
+  stellarator_09__stellaris__om_cost:
+    module_type: mfe_account_costs.Annual_OM_CostModule
+    inputs:
+      om_ref: float system_design.stellarator_09__stellaris__om_cost__om_ref
+      p_net: float stellarator_09__stellaris__pb__p_net
+      n_mod: float mfe_plant_params.stellarator_09__stellaris__om_cost__n_mod
+      ref_net_power: float mfe_plant_params.stellarator_09__stellaris__om_cost__ref_net_power
+      alpha: float mfe_plant_params.stellarator_09__stellaris__om_cost__alpha
+      om_direct: float mfe_plant_params.stellarator_09__stellaris__om_cost__om_direct
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__om_cost__annual_om
+
   # mfe_lcoe_dcf.LCOE_DCFModule
   stellarator_09__stellaris__lcoe_calc:
     module_type: mfe_lcoe_dcf.LCOE_DCFModule
     inputs:
       total_capital: float mfe_plant_params.stellarator_09__stellaris__lcoe_calc__total_capital
-      annual_om: float system_design.stellarator_09__stellaris__lcoe_calc__annual_om
+      annual_om: float stellarator_09__stellaris__om_cost__annual_om.root
       net_electric_mw: float stellarator_09__stellaris__pb__p_net
       availability: float system_design.stellarator_09__stellaris__lcoe_calc__availability
       discount_rate: float system_design.stellarator_09__stellaris__lcoe_calc__discount_rate
@@ -334,4 +382,7 @@ modules:
       stellarator_09__stellaris__vessel_cost__cost: RootModel[float] stellarator_09__stellaris__vessel_cost__cost.json
       stellarator_09__stellaris__power_supplies_cost__cost: RootModel[float] stellarator_09__stellaris__power_supplies_cost__cost.json
       stellarator_09__stellaris__divertor_cost__cost: RootModel[float] stellarator_09__stellaris__divertor_cost__cost.json
+      stellarator_09__stellaris__buildings_cost__cost: RootModel[float] stellarator_09__stellaris__buildings_cost__cost.json
+      stellarator_09__stellaris__precon_cost__cost: RootModel[float] stellaris__preconstruction_capital.json
+      stellarator_09__stellaris__om_cost__annual_om: RootModel[float] stellaris__annual_om.json
       stellarator_09__stellaris__lcoe_calc__lcoe: RootModel[float] stellaris__lcoe.json

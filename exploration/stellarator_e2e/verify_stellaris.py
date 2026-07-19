@@ -98,14 +98,21 @@ IN = dict(
     # BOP per-MW rates ($/MW)
     turbine_per_mw=202840.0, electric_per_mw=86400.0,
     heat_rej_per_mw=35060.0, misc_per_mw=52590.0, n_mod=1.0,
-    # pass-through direct accounts ($)
-    buildings_capital=613650000.0,
-    preconstruction_capital=33896000.0,
+    # forward-computed direct accounts (WI-025) — CAS21 grouped base sums,
+    # CAS10 fixed adders, CAS70 O&M reference (concept inputs, $; the stale
+    # buildings/preconstruction/annual_om constants are retired)
+    bldg_fixed_base=168500000.0, bldg_fus_base=288000000.0,
+    bldg_staff_base=9000000.0, bldg_the_base=58000000.0,
+    bldg_th_base=26000000.0, bldg_et_base=29000000.0,
+    bldg_p_fus_ref=2300.0,  # p_the_ref = p_et_ref = 1100 (no DEC), reused below
+    precon_fixed_base=32000000.0, land_intensity=0.25, land_cost=10000.0,
+    ref_net_power=1000.0,
+    om_annual_ref=54900000.0, om_alpha=0.5, om_direct=0.0,
     # special_materials_capital now computed from blanket_vol (WI-021)
     # rollup rates / financing
     contingency_rate=0.10, indirect_fraction=0.20,
     reference_construction_time=6.0, construction_years=8.0,
-    annual_om=41641000.0, availability=0.85, discount_rate=0.07,
+    availability=0.85, discount_rate=0.07,
     operational_years=30.0,
 )
 
@@ -189,11 +196,25 @@ def compute():
     heat_rejection = p["n_mod"] * p_th * p["heat_rej_per_mw"]
     misc = p["n_mod"] * p_et * p["misc_per_mw"]
 
+    # Forward-computed direct accounts (WI-025) — mirror the generated
+    # buildings_cost / precon_cost / om_cost impl statement forms verbatim
+    # (bit-exact); p_the_ref = p_et_ref = 1100 (no DEC), n_mod frozen at 1.
+    buildings = (((((p["bldg_fixed_base"]
+        + (p["bldg_fus_base"] * ((p_fus * p["n_mod"]) / p["bldg_p_fus_ref"])))
+        + (p["bldg_staff_base"] * (((p_et * p["n_mod"]) / p["p_et_ref"]) ** 0.5)))
+        + (p["bldg_the_base"] * ((p_the * p["n_mod"]) / p["p_et_ref"])))
+        + (p["bldg_th_base"] * ((p_th * p["n_mod"]) / p["p_th_ref"])))
+        + (p["bldg_et_base"] * ((p_et * p["n_mod"]) / p["p_et_ref"])))
+    precon = (((p["land_intensity"] * (((p_net * p["n_mod"]) * p["ref_net_power"]) ** 0.5))
+               * p["land_cost"]) + p["precon_fixed_base"])
+    annual_om = ((p["om_annual_ref"] * (((p_net * p["n_mod"]) / p["ref_net_power"]) ** p["om_alpha"]))
+                 + p["om_direct"])
+
     powercore_capital = (magnet + heating + divertor + blanket + shield
                          + structure + vessel + power_supplies)
     bop_capital = turbine + electric + heat_rejection + misc
-    direct_capital = (powercore_capital + bop_capital + p["buildings_capital"]
-                      + p["preconstruction_capital"] + special_materials_capital)
+    direct_capital = (powercore_capital + bop_capital + buildings
+                      + precon + special_materials_capital)
     contingency_capital = p["contingency_rate"] * direct_capital
     indirect_capital = (p["indirect_fraction"] * direct_capital
                         * (p["construction_years"] / p["reference_construction_time"]))
@@ -207,7 +228,7 @@ def compute():
     idc_factor = (1.0 + d) ** (p["construction_years"] / 2.0)
     annual_capital = total_capital * idc_factor * crf
     annual_energy_mwh = 8760.0 * p_net * p["availability"]
-    lcoe = (annual_capital + p["annual_om"]) / annual_energy_mwh
+    lcoe = (annual_capital + annual_om) / annual_energy_mwh
 
     # --- Neutron wall load ---
     wall_load = p_fus * (1.0 - 0.2002) / wall_area
@@ -220,8 +241,8 @@ def compute():
         shield=shield, structure=structure, vessel=vessel,
         power_supplies=power_supplies, turbine=turbine, electric=electric,
         heat_rejection=heat_rejection, misc=misc,
-        buildings=p["buildings_capital"],
-        preconstruction=p["preconstruction_capital"],
+        buildings=buildings, precon=precon,  # forward-computed (WI-025)
+        annual_om=annual_om,                 # forward-computed (WI-025)
         special_materials=special_materials_capital,
         powercore_capital=powercore_capital, bop_capital=bop_capital,
         direct_capital=direct_capital, contingency_capital=contingency_capital,
