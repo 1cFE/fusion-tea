@@ -1,0 +1,24 @@
+# Orchestration brief — WI-027 Demo Constraint Execution (STELLARATOR-DEMO Item 2)
+
+**Run started:** 2026-07-19. Orchestrator-driven (`/_my_orchestrate Item 2`), Align held 2026-07-19.
+**Governing frame:** `.project/concepts/stellarator-mbse-demo.md`, criterion 2. Tracking home: `.project/backlog/epic_stellarator_mbse_demo.md`, Item 2.
+**Pipeline:** `/spec-model` → `/design-model` → `/plan-model` → `/implement-model` → `/audit-models` → owner close. Registered as standalone WI-027 (demo epic delegates modeling execution here; no mirrored modeling epic, [OWNER] ratified 2026-07-18).
+
+## Align rulings ([OWNER] 2026-07-19)
+
+1. **Post-spec checkpoint WAIVED for this item** — the pipeline runs spec → design without an owner pause (departure from the WI-024/025 precedent, by explicit ruling).
+2. **Owner holds close** — audit runs, the owner closes WI-027 and the orchestrator commits after close.
+3. **Executing-constraint set = everything already modeled, nothing new** — the canonical asserts (`net_positive`, `recirc_ok` in `mfe_plant.sysml`; beta / wall-load / TBR in the instance) execute; ISS04 confinement-consistency and other candidates stay Stage-3 refinement material (concept Open Question 3 resolved for this item).
+
+## Decision-carrying inputs, graded
+
+- **[OWNER] (epic Item 2, ratified frame):** criterion 2's bar — verdicts (`satisfied | violated | indeterminate`) appear as data in the demo run report at the Stellaris design point; **no hand-coded viability rule anywhere in the demo pipeline**.
+- **[OWNER 2026-07-19] (anchor spec ratification):** Item 2 is a **refinement-type** item under the amended successor bar — the **original bar applies unamended**: `handshake_1costingfe.py` editable only within `set_1cfe_inputs`'s injection map, and `git diff exploration/stellarator_e2e/handshake_comparison.json` **must be empty**. Constraint verdicts are additive data; every computed value stays bit-exact.
+- **[AGENT] (orchestrator):** the mechanism is regeneration of the staged stellarator package with constraint lowering, retiring the strip comment at the staged `stellarator_plant.sysml:741` (CODEGEN_FINDINGS #9 is the reason the asserts were stripped: pre-constraint-exec strict mode aborted on plain design-attribute actuals). The constraint-exec toolchain is delivered and proven in-repo (IFE acceptance `exploration/ife_e2e/study/`, 2294/2301). Design verifies mechanism details; this is orientation, not owner intent.
+- **[INHERITED: `work/orchestration/stale-basis-recompute.md` §inherited]** Standing bars re-verified at WI-025: L1=0 over 22 files; offender list exactly the 6 pre-existing; regen via sysml-codegen snapshot **no `--design-path-filter`** + `bridge_v11_generate.py` `preserve_handwritten=True` (WI-022 impl sha256 must survive); execute via `exploration/pipeline_spike/.venv-exec/bin/python`, bit-exact rel 1e-9; IFE anchors 252.30/68.69/270.12, Meier 4.735; pytest tally 11/18/14/0; `SYSIDE_LICENSE_KEY` in `.env`; next free SV = **SV-033**.
+- **[INHERITED: PROTOCOL]** `knowledge/holdout/aries-cs/PROTOCOL.md` §3 barred paths absolute; every demo work item lists PROTOCOL as Required Reading.
+- **[AGENT] premise flag (design must check, not assume):** the upstream PR wave is under P0 remediation (`~/1cfe/sysml-codegen/.project/backlog/epic_constraint_pr_wave_remediation.md`) with reproduced High defects — notably negated assertions executing with inverted meaning. Design checks the defect register against our five constraint forms and records the **sysml-codegen commit pin** for this item (WI-025 regen used `6db3212`; verify what the in-repo IFE acceptance actually ran and whether constraint emission needs a different local state). If a defect touches a construct we use → surface to orchestrator, do not build on it.
+
+## Stage log
+
+- 2026-07-19: WI-027 registered (`pm add-item`, standalone, P0). Spec stage launched.
