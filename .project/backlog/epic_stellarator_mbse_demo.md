@@ -58,8 +58,8 @@ These are the concept's 8 criteria, status as verified 2026-07-18. The checkbox 
 
 - [x] **1. Initial model runs end-to-end** — met. Stage 2 built and committed (`c3f3089e`), refined through WI-025 (`7ba3cd70`). Executed headline (bit-exact vs oracle, rel 1e-9): total $12,638,857,665.74, LCOE $203.647/MWh, p_net 915.081 MW, q_eng 6.607, magnet $6.3235B (50.03%). Every account sourced or forward-computed; zero STALE BASIS annotations.
 - [ ] **2. Viability checks execute as modeled constraints** — not met. `assert constraint`s exist in the canonical `mfe_plant.sysml` (`net_positive`, `recirc_ok`, plus beta/wall-load/TBR in the instance), but the staged demo copy strips them and codegen emits no constraint predicates; no verdicts appear in any run report. → Item 2.
-- [ ] **3. 1costingFE handshake (Anchor A)** — partial. Machinery parity is byte-stable and bit-exact at formula isolation, but the tolerance spec (concept Open Question 1) was never written, and parity covers several account scopes only via injected 1cfe values — the −31% structural LCOE-construction gap (CAS22 tail, CAS40/50/60, LCOE construction). → Items 1, 3, 4.
-- [ ] **4. ARIES-CS hold-out comparison (Anchor B)** — not started. Quarantine live and sealed since 2026-07-12; reveal is owner-triggered (PROTOCOL §6). Per-axis expectations (concept Open Question 2) not yet written. → Items 1, 7.
+- [ ] **3. 1costingFE handshake (Anchor A)** — partial. Machinery parity is byte-stable and bit-exact at formula isolation; the tolerance spec is now written and ratified (Item 1, 2026-07-19). Remaining: parity covers several account scopes only via injected 1cfe values — the −31% structural LCOE-construction gap (CAS22 tail, CAS40/50/60, LCOE construction). → Items 3, 4.
+- [ ] **4. ARIES-CS hold-out comparison (Anchor B)** — not started, but the per-axis expectations are now pre-committed and ratified (Item 1, 2026-07-19). Quarantine live and sealed since 2026-07-12; reveal is owner-triggered (PROTOCOL §6). → Item 7.
 - [ ] **5. Studies run through the teax study layer** — not started. Upstream machinery delivered and proven on the IFE sweep in this repo; the demo package does not yet execute constraints (gate: Item 2). → Item 5.
 - [ ] **6. Study outputs visualized** (figures + search-process animation) — not started. → Item 6.
 - [ ] **7. Public write-up exists** (blog draft + interactive HTML) — not started. → Item 8.
@@ -87,6 +87,8 @@ Registration convention: modeling items (2, 3, 4, 5, 7, 9) register in the model
 
 ### Item 1: Anchor acceptance spec (tolerances + hold-out expectations)
 
+**Status**: **COMPLETE 2026-07-19** — spec written, independently reviewed (3 must-fixes applied), ratified [OWNER] 2026-07-19 ("ratify all, G-8 amend as proposed"). Bars in force: Anchor A |rel dev| ≤ 1e-6 per account + itemized-signed-remainder LCOE form; Anchor B ratios [1/3,3] derived / [0.5,2.0] costs + structural checklist; sizing reallocation to criterion 8 confirmed; successor-bar amendment recorded at `work/orchestration/stale-basis-recompute.md`. Deliverable: `.project/active/demo-anchor-acceptance-spec/spec.md`.
+
 **Type**: Research/Spec (coding PM)
 **Effort**: 0.5–1 day
 **Dependencies**: None — do this first; Items 3, 4, 7 are judged against it.
@@ -103,10 +105,10 @@ Registration convention: modeling items (2, 3, 4, 5, 7, 9) register in the model
 - Reading any barred artifact (expectations are written blind, from the model side).
 
 **Success Criteria**:
-- [ ] Anchor A tolerance spec exists with per-account + LCOE thresholds and the commit-pin requirement
-- [ ] Anchor B per-axis expectations exist, marked pass/fail, written pre-reveal
-- [ ] Items 3–4 acceptance worded per the [OWNER] criterion-3 ruling (explain discrepancies; close errors)
-- [ ] Owner sign-off on both specs
+- [x] Anchor A tolerance spec exists with per-account + LCOE thresholds and the commit-pin requirement
+- [x] Anchor B per-axis expectations exist, marked pass/fail, written pre-reveal
+- [x] Items 3–4 acceptance worded per the [OWNER] criterion-3 ruling (explain discrepancies; close errors)
+- [x] Owner sign-off on both specs — ratified 2026-07-19
 
 **Deliverables**: `.project/active/demo-anchor-acceptance-spec/spec.md` (both anchors' bars + owner rulings)
 
@@ -396,5 +398,5 @@ Items 1 and 2 start independently (parallel). Items 3 and 4 parallel after 1. Cr
 
 ---
 
-**Last Updated**: 2026-07-18
-**Next Action**: Item 1 (anchor acceptance spec) — smallest item, and Items 3, 4, and 7 are judged against it. Item 2 (constraint execution) can start in parallel. Epic home and the criterion-3 bar are owner-ratified (2026-07-18).
+**Last Updated**: 2026-07-19
+**Next Action**: Items 3 and 4 (handshake account scopes — unblocked by the ratified bars and the G-8 amendment) and Item 2 (constraint execution) — all three can run in parallel. Item 1 complete 2026-07-19.

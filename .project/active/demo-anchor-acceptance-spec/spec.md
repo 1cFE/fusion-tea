@@ -1,6 +1,6 @@
 # Spec: Anchor Acceptance Bars — Anchor A handshake tolerances + Anchor B hold-out expectations
 
-**Status:** Draft — awaiting owner ratification of the proposals in the final section
+**Status:** Ratified — [OWNER] 2026-07-19: all proposals ratified as proposed; G-8 successor-bar amendment in force
 **Owner:** Reid W
 **Created:** 2026-07-18
 **Complexity:** MEDIUM
@@ -17,19 +17,19 @@ The stellarator demo validates its model two independent ways, and the concept r
 
 This spec writes both bars. The spec document is the deliverable; there is no design/plan/implement after it. A spec review follows, then owner ratification of the consolidated proposal list at the end. Items 3, 4, and 7 are judged against what this spec sets.
 
-**This spec proposes every number; the owner ratifies.** ([OWNER] reserved gate, 2026-07-18.) Nothing here is in force until the ratification section is marked.
+**This spec proposes every number; the owner ratifies.** ([OWNER] reserved gate, 2026-07-18.) The ratification section was marked **2026-07-19: all proposals ratified as proposed, G-8 amended as proposed** — everything in this spec is in force.
 
 ## Success Criteria
 
-- [ ] Anchor A has a per-account pass bar and an end-state LCOE acceptance form, with the three test tiers kept distinct.
-- [ ] The Anchor A gap boundary is drawn account-by-account: which accounts Items 3–4 must bring under the per-account bar, and what may remain as itemized-and-explained remainder.
-- [ ] The mapping-trap inventory is a spec requirement: every trap asserted in the handshake, not assumed; new traps added as Items 3–4 introduce them.
-- [ ] The 1costingFE commit pin is a recorded requirement, and a pin-bump procedure exists.
-- [ ] Anchor B has a per-axis, band-shaped, pre-reveal expectation for structural similarity, derived quantities, and rough per-component costs — each pass/fail.
-- [ ] The C220107 exclusion (Anchor B) and the sizing-axis exclusion (criterion 8, not 4) are stated.
-- [ ] The prior-leak bar is written into the spec as a constraint on how Item 7 argues.
-- [ ] The G-8 premise conflict is surfaced with a proposed amendment, marked pending — not resolved silently.
-- [ ] Owner sign-off on the consolidated proposal list (this is the concept's "owner sign-off on both specs").
+- [x] Anchor A has a per-account pass bar and an end-state LCOE acceptance form, with the three test tiers kept distinct.
+- [x] The Anchor A gap boundary is drawn account-by-account: which accounts Items 3–4 must bring under the per-account bar, and what may remain as itemized-and-explained remainder.
+- [x] The mapping-trap inventory is a spec requirement: every trap asserted in the handshake, not assumed; new traps added as Items 3–4 introduce them.
+- [x] The 1costingFE commit pin is a recorded requirement, and a pin-bump procedure exists.
+- [x] Anchor B has a per-axis, band-shaped, pre-reveal expectation for structural similarity, derived quantities, and rough per-component costs — each pass/fail.
+- [x] The C220107 exclusion (Anchor B) and the sizing-axis exclusion (criterion 8, not 4) are stated.
+- [x] The prior-leak bar is written into the spec as a constraint on how Item 7 argues.
+- [x] The G-8 premise conflict is surfaced with a proposed amendment, marked pending — not resolved silently (ruled by owner 2026-07-19: amended as proposed).
+- [x] Owner sign-off on the consolidated proposal list (this is the concept's "owner sign-off on both specs") — marked 2026-07-19.
 
 ## Known Requirements
 
@@ -145,7 +145,7 @@ C220107 power_supplies is **excluded or footnoted in Anchor B.** It is the one k
 
 **B-5a. Sizing-axis reallocation — owner confirmation pending.** [INHERITED: concept criterion 4 note — reallocation pending owner confirmation] [AGENT-PROPOSED — owner ratifies]
 
-The concept marks the "optimized sizing" axis's move out of criterion 4 as **[SURFACED to owner] — this reallocation needs owner confirmation**, and no record confirms it since. So this spec does not treat it as settled. The proposal: "optimized sizing" cannot be tested at a fixed design point (sizing is an input there), so it is excluded from criterion 4 and covered only by the stretch (criterion 8 / Item 9). If the owner confirms, this spec writes no criterion-4 sizing expectation and the axis lives in Item 9's scope. Until confirmed, the reallocation is pending — like G-8, not [HARD].
+The concept marks the "optimized sizing" axis's move out of criterion 4 as **[SURFACED to owner] — this reallocation needs owner confirmation**. The proposal: "optimized sizing" cannot be tested at a fixed design point (sizing is an input there), so it is excluded from criterion 4 and covered only by the stretch (criterion 8 / Item 9). **Confirmed [OWNER] 2026-07-19** — this spec writes no criterion-4 sizing expectation; the axis lives in Item 9's scope.
 
 **B-6. Pass/fail semantics and the comparison report.** [AGENT-PROPOSED — owner ratifies]
 
@@ -170,10 +170,10 @@ Every Anchor-B band (B-3, B-4) is on the ratio **model / reference**, matching t
 
 ## Open Questions / Deferred
 
-- **The G-8 premise conflict — surfaced, owner decision pending (below).** Not resolved in this spec.
+- **The G-8 premise conflict — surfaced, ruled by the owner 2026-07-19 (below): amended as proposed, in force.**
 - The exact accounts Items 3–4 can bring fully under the A-2 bar vs. must itemize as remainder is not knowable until those items run — the boundary in A-3 is the target, and each item records its actual result against A-4.
 
-### The G-8 premise conflict — [OWNER DECISION PENDING — proposed amendment, not in force]
+### The G-8 premise conflict — [OWNER ruled 2026-07-19: amended as proposed, in force]
 
 **The conflict** (research §G-8). A standing [OWNER] rule (the WI-024 successor bar, `work/orchestration/stale-basis-recompute.md:24`) says the handshake may be edited **only within `set_1cfe_inputs`'s injection map**, and `git diff exploration/stellarator_e2e/handshake_comparison.json` must be **empty** after a run. Items 3–4 add real modeled accounts — they **replace injected values with computed ones**, which **moves the comparison JSON** and **shrinks the injection map** by construction. Both clauses of the standing bar are violated by design. This is a premise conflict between a standing owner rule and this spec's own acceptance; per `capture-fidelity` §4 it is **surfaced, not resolved**.
 
@@ -182,21 +182,21 @@ Every Anchor-B band (B-3, B-4) is on the ratio **model / reference**, matching t
 - For **account-scope items** (3, 4, and any future account-adding item), the bar is **superseded by this spec's acceptance (A-3, A-4)**: comparison JSON moves are **expected** and re-baselined per item as a deliberate committed step; injection-map shrinkage is **documented** (each newly-modeled account named as it leaves the injection map); the item still may **not touch comparison *logic*** (the comparison machinery is fixed — only what feeds it changes).
 - Each account-scope item records: which accounts moved injected→computed, the signed magnitude of each move, and the re-baseline as an explicit commit (never a silent diff).
 
-Until the owner rules, this amendment is **not in force**; Items 3–4 must not proceed against a bar this spec cannot itself amend.
+**Ruled [OWNER] 2026-07-19: amended as proposed.** The amendment is in force and is recorded at the bar's home (`work/orchestration/stale-basis-recompute.md`, the ruling-3 bullet). Items 3–4 are unblocked.
 
 ---
 
 ## Ratification package — [OWNER: ratify or adjust each line]
 
-Success criterion "owner sign-off on both specs" is met by marking this list. Each line is proposed by this spec; none is in force until marked.
+Success criterion "owner sign-off on both specs" is met by marking this list. **Marked [OWNER] 2026-07-19: "ratify all, G-8 amend as proposed" — every line below is in force.**
 
 **Anchor A**
 
 | # | Proposal | Basis (one line) | Owner |
 |---|---|---|---|
-| A-2 | Per-account handshake pass bar: **\|relative deviation\| ≤ 1e-6** | ~10× above the ~1e-7 float32 floor, ~10⁴× below percent-scale real errors (research §B, §E) | ☐ ratify ☐ adjust: ____ |
-| A-4 | End-state LCOE acceptance = **all modeled accounts under A-2 + remainder itemized with signed magnitudes** (no blanket LCOE %) | makes every dollar of the −31% gap accountable per the criterion-3 ruling | ☐ ratify ☐ adjust: ____ |
-| A-6 | **Pin-bump procedure**: owner decides; a bump re-runs the handshake, re-asserts traps, re-checks every account against A-2, re-baselines JSON, records old→new commit | research §G-6, currently undocumented | ☐ ratify ☐ adjust: ____ |
+| A-2 | Per-account handshake pass bar: **\|relative deviation\| ≤ 1e-6** | ~10× above the ~1e-7 float32 floor, ~10⁴× below percent-scale real errors (research §B, §E) | ☑ **ratified 2026-07-19** |
+| A-4 | End-state LCOE acceptance = **all modeled accounts under A-2 + remainder itemized with signed magnitudes** (no blanket LCOE %) | makes every dollar of the −31% gap accountable per the criterion-3 ruling | ☑ **ratified 2026-07-19** |
+| A-6 | **Pin-bump procedure**: owner decides; a bump re-runs the handshake, re-asserts traps, re-checks every account against A-2, re-baselines JSON, records old→new commit | research §G-6, currently undocumented | ☑ **ratified 2026-07-19** |
 
 *(All [HARD] and [INHERITED] items — A-1 (pipeline-vs-oracle rel 1e-9 + the ~1e-7 float32 floor), A-3 (the [OWNER] criterion-3 ruling), A-5 (mapping-trap discipline), B-0, B-1, and the B-5 C220107 exclusion — are excluded from this table: their authority is physics, an interface, or an existing owner ruling, not a fresh proposal. The table carries only the [AGENT-PROPOSED] items. They are listed here for visibility, no ratification needed.)*
 
@@ -204,19 +204,19 @@ Success criterion "owner sign-off on both specs" is met by marking this list. Ea
 
 | # | Proposal | Basis (one line) | Owner |
 |---|---|---|---|
-| B-2 | Structural similarity: **qualitative checklist, pass = all three correspondences present** (subsystem decomposition, radial-build ordering, cost-account coverage) | concept criterion 4 axes | ☐ ratify ☐ adjust: ____ |
-| B-3 | Derived quantities: **model/reference ratio ∈ [1/3, 3]** ("same order of magnitude"); geometry-direct quantities *expected* inside 2× as a note | our own headline moved ±25–30%, p_net re-staled 575→915 MW (research §E) | ☐ ratify ☐ adjust: ____ |
-| B-4 | Rough per-component costs: **model/reference ratio ∈ [0.5, 2.0]** (−50%/+100%, factor-of-2 asymmetric high) | AACE Class 5 concept-stage accuracy (research §F) | ☐ ratify ☐ adjust: ____ |
-| B-5a | **Sizing-axis reallocation**: confirm criterion-4 sizing exclusion → covered only by criterion 8 / Item 9 (concept marks this [SURFACED to owner], unconfirmed) | sizing is an input at a fixed design point; concept criterion 4 note | ☐ confirm ☐ adjust: ____ ☐ keep in criterion 4 |
-| B-6 | Report records **per axis**: band, observed value, verdict, admissible-only explanation; a miss is a demo finding | concept criterion 4 honesty bar | ☐ ratify ☐ adjust: ____ |
-| B-7 | **AACE cross-check**: Item 7 verifies the extracted Class-5 table against the raw arXiv PDF; cites AACE 18R-97 | table is a dossier extraction, not a registered primary source (research §F caveat) | ☐ ratify ☐ adjust: ____ |
-| B-8 | **Ratio convention**: bands are on model/reference; Item 7 reports the ratio; convention fixes reported sign and any non-reciprocal adjustment | matches the handshake `rel_dev` sense | ☐ ratify ☐ adjust: ____ |
+| B-2 | Structural similarity: **qualitative checklist, pass = all three correspondences present** (subsystem decomposition, radial-build ordering, cost-account coverage) | concept criterion 4 axes | ☑ **ratified 2026-07-19** |
+| B-3 | Derived quantities: **model/reference ratio ∈ [1/3, 3]** ("same order of magnitude"); geometry-direct quantities *expected* inside 2× as a note | our own headline moved ±25–30%, p_net re-staled 575→915 MW (research §E) | ☑ **ratified 2026-07-19** |
+| B-4 | Rough per-component costs: **model/reference ratio ∈ [0.5, 2.0]** (−50%/+100%, factor-of-2 asymmetric high) | AACE Class 5 concept-stage accuracy (research §F) | ☑ **ratified 2026-07-19** |
+| B-5a | **Sizing-axis reallocation**: confirm criterion-4 sizing exclusion → covered only by criterion 8 / Item 9 (concept marks this [SURFACED to owner], unconfirmed) | sizing is an input at a fixed design point; concept criterion 4 note | ☑ **confirmed 2026-07-19** |
+| B-6 | Report records **per axis**: band, observed value, verdict, admissible-only explanation; a miss is a demo finding | concept criterion 4 honesty bar | ☑ **ratified 2026-07-19** |
+| B-7 | **AACE cross-check**: Item 7 verifies the extracted Class-5 table against the raw arXiv PDF; cites AACE 18R-97 | table is a dossier extraction, not a registered primary source (research §F caveat) | ☑ **ratified 2026-07-19** |
+| B-8 | **Ratio convention**: bands are on model/reference; Item 7 reports the ratio; convention fixes reported sign and any non-reciprocal adjustment | matches the handshake `rel_dev` sense | ☑ **ratified 2026-07-19** |
 
 **Standing-rule amendment**
 
 | # | Proposal | Owner |
 |---|---|---|
-| G-8 | Amend the WI-024 successor bar: empty-diff/injection-map-only governs **refinement** items; **account-scope** items (3, 4) may move the comparison JSON and shrink the injection map, re-baselined and documented per item, comparison *logic* untouched. **[OWNER DECISION PENDING]** | ☐ amend as proposed ☐ adjust: ____ ☐ keep bar as-is (blocks Items 3–4) |
+| G-8 | Amend the WI-024 successor bar: empty-diff/injection-map-only governs **refinement** items; **account-scope** items (3, 4) may move the comparison JSON and shrink the injection map, re-baselined and documented per item, comparison *logic* untouched. | ☑ **amended as proposed 2026-07-19** — recorded at the bar's home (`work/orchestration/stale-basis-recompute.md`) |
 
 ---
 
@@ -229,4 +229,4 @@ Success criterion "owner sign-off on both specs" is met by marking this list. Ea
 
 ---
 
-**Next Steps:** Spec review (fresh session), then owner ratification of the package above. No design/plan/implement — the spec is the deliverable. Once ratified, Items 3, 4, and 7 are judged against these bars.
+**Next Steps:** Done — reviewed (spec-review.md, all must-fixes applied) and ratified [OWNER] 2026-07-19. Items 3, 4, and 7 are judged against these bars; Items 3–4 are unblocked by the G-8 amendment.
