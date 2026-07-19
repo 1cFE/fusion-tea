@@ -275,4 +275,64 @@ Risks are carried from the design (§Risks) — the plan restates the mitigation
 
 **Assumptions about baseline state:** the staged twins carry the strip in commented form (not deleted), the snapshot/bridge/runner are at their WI-025 state, and the sysml-codegen editable dep is checked out at `512786c` on `constraint-exec-epic` — all verified 2026-07-19. If the sysml-codegen HEAD differs from `512786c` at implement time, that is a pin mismatch to surface (MR-6), not to silently accept.
 
+---
+
+## Implementation Record
+
+Executed 2026-07-19 in worktree `fusion-tea-stellarator-mbse-demo` (branch `feat/stellarator-mbse-demo`). Restore point: `git` HEAD `88e1c434` with a clean tracked tree (only `.orchestrate-logs/` untracked). sysml-codegen pin verified at implement start: `constraint-exec-epic` @ `512786c` ("Prepare certified GAP-CLOSE partial wave"), 20 modified files in the worktree — matches the design's recorded pin state exactly.
+
+### Phase 1 — Un-strip the staged twins ✅ GATE PASSED
+
+**What ran.** Replaced the DEMO NOTE strip comment + the two commented assert lines in staged `mfe_plant.sysml` with the canonical multi-line `net_positive` / `recirc_ok` assert blocks; replaced the strip comment + three commented assert lines in staged `stellarator_plant.sysml` with the canonical `beta_ok` / `wall_load_ok` / `tbr_ok` blocks. No canonical `models/` edit.
+
+**Gate evidence.**
+- MFE viability block (`VIABILITY CONSTRAINTS`→`EXPOSED DERIVED OUTPUTS`) staged vs canonical: **byte-identical** (`diff` empty).
+- Stellarator viability block staged vs canonical: **byte-identical** (`diff` empty).
+- `git diff exploration/stellarator_e2e/models/`: **only** the un-strip edits (2 files, the five assert blocks restored, strip comments removed). The two capital-rollup DEMO NOTEs (`grep -c "DEMO NOTE (staged copy)"` = 2) untouched.
+- `git diff models/`: **empty** (canonical untouched — MR-WI027-8).
+- Parse sanity: `uv run python -m syside check exploration/stellarator_e2e/models/` → **`Checks passed!`** (only pre-existing namespace-distinguishability shadow warnings, present in canonical too). The un-commented asserts resolve their constraint defs and operands.
+
+**Deviations.** None. Invocation note: `syside` has no console script in this worktree; parse check is `uv run python -m syside check` after `set -a && source ~/1cfe/fusion-tea/.env && set +a` (license lives in the primary checkout's `.env`, per the recipe).
+
+### Phase 2 — Recapture snapshot + regenerate ⛔ BLOCKED — STOP-AND-REPORT (surface-to-orchestrator)
+
+**What ran.** After Phase 1 (asserts live in both staged twins), ran the settled recipe verbatim from the worktree root:
+
+```
+set -a && source ~/1cfe/fusion-tea/.env && set +a          # SYSIDE_LICENSE_KEY set: yes
+uv run sysml-codegen snapshot \
+    -m exploration/stellarator_e2e/models \
+    -o exploration/stellarator_e2e/stellarator.snapshot.json     # NO --design-path-filter, per recipe
+```
+
+**Result — the snapshot capture aborted before writing any snapshot:**
+
+```
+sysml_codegen.orchestration.pipeline_context.CodeGenerationError:
+  stellarator_09__stellaris__beta_ok.beta: unresolved actual 'beta'
+  (strict mode: no fallback, no entry-point synthesis — INV-2)
+```
+
+Raised in `~/1cfe/sysml-codegen/src/sysml_codegen/analysis/dependency_backtracker.py:62`, via `constraint_lowering.py:290 resolve_actual` → `build_pipeline_context` (`pipeline_builder.py:889 lower_constraints`). The snapshot file was **not** mutated (still `usages: 0`) — the capture failed inside constraint lowering, before serialization.
+
+**Diagnosis — the design's central mechanism does not hold at the snapshot-capture step; the CODEGEN_FINDINGS #9 seam is NOT closed at `512786c`.**
+
+- The design's premise (§"Key research findings" #2/#4, §Prototype status) is that un-stripping the asserts lets the snapshot carry a constraint catalog, which the bridge then emits/executes. But the **snapshot capture itself runs strict-mode constraint lowering (INV-2)** and aborts on the un-stripped stellarator asserts before any catalog is produced.
+- This is exactly **CODEGEN_FINDINGS #9** (verbatim): *"Newer codegen strict mode (INV-2) actively **resolves** `assert constraint` actuals and **aborts** when an actual is a plain design attribute (e.g. `beta_ok.beta`)"* — the very example (`beta_ok.beta`) and reason the staged copies were stripped on 2026-07-13. The design treated this seam as closed by the constraint-exec epic; it is not.
+- **Root cause — the operand form:** the stellarator's `beta_ok` / `tbr_ok` read design attributes that carry literal defaults directly as constraint actuals: `beta = 0.0276` (`:700`), `beta_limit = 0.05` (`:703`), `tbr = 1.074` (`:734`), `tbr_floor = 1.05` (`:737`), `wall_load_limit = 4.05` (`:724`). INV-2 strict mode refuses to synthesize an entry point for a literal-valued design attribute → hard abort.
+- **The design's "proven machinery" (IFE acceptance) is a false analogy for this failure.** The IFE viability constraint (`exploration/ife_e2e/models/designs/generic_ife/ife_plant.sysml:155`) reads `in eta = driver.efficiency` (a part/subsystem output) and `in gain = gain`, where `gain` (`:49`) is a **free input attribute with no default** — both structurally resolvable by the strict resolver. IFE never exercised the plain-design-attribute-with-literal-default actual path that `beta_ok`/`tbr_ok` use. So the IFE proof does not cover our five forms at the capture step, contrary to §Prototype status.
+- **Not a pin regression.** The abort is inherent to un-stripping + INV-2 strict resolution (observed 2026-07-13 pre-dating both `6db3212` and `512786c`), independent of the `6db3212 → 512786c` delta. The pin bump did not cause it; the constraint-exec epic added emission/execution machinery but did not add a resolution path for literal-valued design-attribute actuals.
+
+**Why this stops the run (not fixable within Phase 2 scope).** Every path to make the capture succeed requires a barred move:
+- Route `beta`/`beta_limit`/`tbr`/`tbr_floor`/`wall_load_limit` through calc-usages in **canonical `models/`** so the actuals resolve → **forbidden by MR-WI027-8** (canonical semantic edit) and changes the canonical model under validation.
+- Diverge the **staged twins** from byte-identity to canonical (e.g. wrap the operands) → defeats MR-WI027-3 ("asserts live through codegen" byte-identical) and re-introduces a staged↔canonical divergence (design §Decision 5: any new divergence is a defect).
+- Change the **pin or codegen** → execution posture bars it; sysml-codegen is read/checkout-only this item.
+- Re-strip → defeats the entire item.
+
+This is the plan's named surface-to-orchestrator condition: "a blocking canonical↔codegen incompatibility (MR-8)" (Rollback Posture) and Phase-2's "a bridge abort … surfaces to the orchestrator." Per the execution posture, it is reported, not tuned away.
+
+**Tree end state (left as-is per brief).** Phase 1 complete and correct (both twins un-stripped, byte-identical to canonical, canonical untouched, parse-clean). Snapshot **unchanged** (`usages: 0`, capture never wrote). No regen, no runner edits, no records beyond this finding. sysml-codegen untouched (read-only). Nothing committed.
+
+**Gates reached:** Phase 1 ✅ passed. Phase 2 ⛔ blocked at snapshot capture (design-point incompatibility). Phases 3–5 not reached.
+
 ARTIFACT: work/active/WI-027_demo-constraint-execution/plan.md
