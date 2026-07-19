@@ -57,9 +57,10 @@ Three comparisons exist. They test different things and carry different bars. Th
 
 The pipeline-vs-oracle 1e-9 bar (float64) is a different test from the pipeline-vs-1cfe bar (against 1cfe's float32 runtime). Asking the handshake to meet 1e-9 would test float32 noise, not the machinery. Keep them apart in every report.
 
-**A-2. Per-account handshake pass bar: relative deviation ≤ 1e-6.** [AGENT-PROPOSED — owner ratifies]
+**A-2. Per-account handshake pass bar: |relative deviation| ≤ 1e-6.** [AGENT-PROPOSED — owner ratifies]
 
-- **Applies to:** each formula-reproduced account, comparing the SysML pipeline's end-to-end value against 1costingFE's float32 runtime value (the 12 accounts in research §A, and any account Items 3–4 bring under the bar).
+- **Applies to:** each formula-reproduced account, comparing the SysML pipeline's end-to-end value against 1costingFE's float32 runtime value (the 12 accounts in research §A, and any account Items 3–4 bring under the bar). The deviation is the handshake's `rel_dev` sense — (model − reference) / reference — and the bar is on its **magnitude**, so a −20.6% miss (`rel_dev = −0.206`) fails, not passes.
+- **Ceiling, not a shared floor:** 1e-6 is a ceiling. The 12 formula-reproduced accounts have a measured float32 floor of ~1e-7; accounts Items 3–4 newly bring under the bar are measured against the **same 1e-6 bar** at first measurement (no grandfathering), and most have less float32 noise, not more (research §B notes CAS70 O&M has "no jnp in line" — no float32 rounding at all), so they pass more easily. Any account that legitimately cannot meet 1e-6 becomes explained remainder under A-4, not a loosened bar.
 - **Basis:** 1costingFE runs jax at float32 at runtime, so per-account agreement has a hard floor of **~1e-7 relative** (worst measured −4.8e-8 at CAS21; power table +6.23e-8; heat_rejection end-to-end +1.0e-7) — research §B. A bar tighter than ~1e-7 is physically unachievable and would test float32 rounding, not the model. Real modeling or mapping errors show up at **percent scale** (research §E; the f_shape trap produced −20.6%). A bar of **1e-6** sits ~10× above the float32 floor with headroom and ~10⁴× below where real errors appear, so it passes clean machinery and fails any real error loudly.
 - **The ~1e-7 float32 floor is [HARD]** — the bar may be loosened above 1e-6 but not tightened below the floor.
 
@@ -72,7 +73,7 @@ The handshake currently reproduces 12 accounts under tolerance and fills the res
   - **Item 4** — CAS70 levelization into LCOE, CAS80 fuel, and IDC treatment reconciled with the model's DCF convention.
 - **May remain as itemized-and-explained remainder** (per the [OWNER] criterion-3 ruling, 2026-07-18): whatever 1costingFE legitimately carries that the model does not — documented simplifications (e.g. the C220106 vessel gas-load pump sub-term, $0.72M), or 1cfe quirks filed as findings ([OWNER] non-goal: no changes to 1costingFE).
 
-**[OWNER] criterion-3 ruling (2026-07-18), verbatim force:** remaining discrepancies after Items 3–4 are **itemized and explained**; anything shown to be an **error** (model, mapping, or sourcing mistake) is **closed**; full structural-gap closure is **not** required.
+**[OWNER] criterion-3 ruling, as ruled 2026-07-18** (an [OWNER] paraphrase from the epic, carried at full force): remaining discrepancies after Items 3–4 are **itemized and explained**; anything shown to be an **error** (model, mapping, or sourcing mistake) is **closed**; full structural-gap closure is **not** required.
 
 **Nuance to record (research §D):** CAS21 buildings, CAS10 preconstruction, and CAS70 O&M are *injected* in the handshake but already *forward-computed in the instance* (WI-025). "Injected in the handshake" therefore does not mean "unmodeled" for these three — the handshake injection is a handshake-point tautology, not a modeling gap.
 
@@ -80,8 +81,8 @@ The handshake currently reproduces 12 accounts under tolerance and fills the res
 
 After Items 3–4, the end-to-end LCOE comparison passes when **both** hold — not a blanket LCOE percentage:
 
-1. **Every modeled account** (the 12 formula-reproduced plus each account Items 3–4 bring in) is under the A-2 per-account bar (≤ 1e-6 relative).
-2. **The remainder is fully itemized with signed magnitudes**: every account that is not under the bar is listed with its 1cfe value, the model's value (or "structurally absent"), the signed dollar gap, and a one-line reason — closed-as-error, or explained-and-kept per the criterion-3 ruling. The residual LCOE gap equals the sum of the itemized remainder to within the per-account bar.
+1. **Every modeled account** (the 12 formula-reproduced plus each account Items 3–4 bring in) is under the A-2 per-account bar (|relative deviation| ≤ 1e-6).
+2. **The remainder is fully itemized with signed magnitudes**: every account that is not under the bar is listed with its 1cfe value, the model's value (or "structurally absent"), the signed dollar gap, and a one-line reason — closed-as-error, or explained-and-kept per the criterion-3 ruling. **Reconciliation:** the residual LCOE gap equals the itemized-remainder sum to within an aggregate tolerance — the accumulated per-account 1e-6 tolerances of the modeled accounts (equivalently, ≤ 1e-6 relative to LCOE) — distinct from the per-account bar itself.
 
 **Basis:** a single "LCOE within X%" bar would let a large error in one account hide under a small net percentage, or fail the whole comparison over an explained structural simplification. The itemized form makes every dollar of the gap accountable, which is exactly what the criterion-3 ruling asks for (explain the remainder; close errors). The signed-magnitude itemization *is* the pass artifact.
 
@@ -121,27 +122,30 @@ Structural similarity is qualitative, not a number. It passes when the model, ev
 
 - [ ] **Subsystem decomposition correspondence** — the model's major subsystems (plasma/physics, magnets, blanket/shield, vessel, heating, power conversion, BOP, buildings) map onto recognizable ARIES-CS subsystems, with no whole subsystem the model omits that ARIES-CS treats as first-order.
 - [ ] **Radial-build ordering** — the model's radial build orders the same layers in the same sequence (plasma → SOL → first wall → blanket → shield → vessel → coil bore), even where thicknesses differ.
-- [ ] **Cost-account coverage** — the model's CAS-account tree covers the same top-level accounts ARIES-CS reports at (CAS20 reactor plant with its 22x subsystems, CAS10/40/50/60/70/80), so the comparison is account-to-account, not apples-to-oranges.
+- [ ] **Cost-account coverage** — the model's CAS-account tree covers the standard CAS20 reactor plant (its 22x subsystems) plus CAS10/40/50/60/70/80, so that whatever ARIES-CS reports can be matched account-to-account, not apples-to-oranges.
 
 A missing correspondence is recorded as a structural finding with its reason; the axis fails if a first-order correspondence is absent.
 
 **B-3. Derived quantities — same order of magnitude.** [AGENT-PROPOSED — owner ratifies]
 
 - **Applies to:** the model's derived quantities at the ARIES-CS geometry — radial-build consequences (build thicknesses/dimensions), coil mass, power flows (p_th, p_net, recirculating power, etc.).
-- **Pass band:** each derived quantity lands **within the same order of magnitude** as the reference (leading power of ten matches; equivalently within a factor of ~3).
-- **Basis:** our own headline moved ±25–30% and p_net re-staled across 575→786→578→804→915 MW under legitimate modeling corrections *before any ARIES-CS contact* (research §E) — direct evidence that even our own derived quantities are stable only to tens of percent under corrections. A blind evaluation at a geometry the model never saw cannot honestly be held tighter than order-of-magnitude.
+- **Pass band:** the ratio **model / reference ∈ [1/3, 3]** (equivalently |log10(model/reference)| ≤ 0.5) — plainly, "same order of magnitude." This is the one operational test; Item 7 reports the ratio, not a signed percentage (convention pinned in B-8).
+- **Basis:** our own headline moved ±25–30% and p_net re-staled across 575→786→578→804→915 MW under legitimate modeling corrections *before any ARIES-CS contact* (research §E) — direct evidence that even our own derived quantities are stable only to tens of percent under corrections. A blind evaluation at a geometry the model never saw cannot honestly be held tighter than a factor of ~3.
 - **Expectation nuance (recorded, not a tighter pass gate):** geometry-direct quantities (radial-build dimensions, coil mass — computed straight from geometry and current density) are *expected* to land inside a factor of 2. This is a stronger-signal note for Item 7's report, not a separate pass bar; the pass bar for all derived quantities is same-order-of-magnitude.
 
 **B-4. Rough per-component costs — factor-of-2, asymmetric high (AACE Class 5).** [AGENT-PROPOSED — owner ratifies]
 
 - **Applies to:** rough per-component cost agreement versus ARIES-CS's published component costs.
-- **Pass band:** **−50% to +100%** (a factor of ~2, asymmetric high), i.e. AACE Class 5 concept-screening accuracy.
+- **Pass band:** **−50% to +100%** (a factor of ~2, asymmetric high) — the ratio **model / reference ∈ [0.5, 2.0]** (convention pinned in B-8) — i.e. AACE Class 5 concept-screening accuracy. This band is reciprocal (0.5 and 2.0 invert to each other), so the pass/fail verdict is the same whichever way the ratio is taken; the convention fixes only the reported sign and any future non-reciprocal adjustment.
 - **Basis:** the stellarator model is a conceptual-stage estimate (AACE Class 5, optimistically Class 4). AACE Class 5 accuracy is −30%/−50% low to +30%/+100% high at 80% confidence (research §F, arXiv 2602.19389 Table 3, confirmed admissible). Combined with our own ±25–30% headline swings and the magnet cost/share jump ($4.39B/43.5% → $6.32B/50%) on a single field errata (research §E), a factor-of-2 asymmetric-high band is the defensible pre-committed expectation. Tighter would claim an accuracy a concept-stage estimate does not have.
 
-**B-5. Exclusions.** [HARD] [INHERITED: research §G-2, §G-3, PROTOCOL §3]
+**B-5. C220107 exclusion — mandatory.** [HARD] [INHERITED: research §G-2, PROTOCOL §3]
 
-- **C220107 power_supplies — excluded or footnoted in Anchor B.** It is the one known ARIES-CS-derived 1cfe value; leaving it in the blind would make the comparison self-referential. It **stays included in Anchor A** (the handshake is not the blind). Mandatory.
-- **The sizing axis is criterion 8's, not criterion 4's.** "Optimized sizing" cannot be tested at a fixed design point (sizing is an input there); it belongs to the stretch (Item 9), marked [SURFACED to owner] in the concept. **This spec writes no criterion-4 sizing expectation** — the axis is stated as excluded here and lives in Item 9's scope.
+C220107 power_supplies is **excluded or footnoted in Anchor B.** It is the one known ARIES-CS-derived 1cfe value; leaving it in the blind would make the comparison self-referential. It **stays included in Anchor A** (the handshake is not the blind). This is forced, not a proposal.
+
+**B-5a. Sizing-axis reallocation — owner confirmation pending.** [INHERITED: concept criterion 4 note — reallocation pending owner confirmation] [AGENT-PROPOSED — owner ratifies]
+
+The concept marks the "optimized sizing" axis's move out of criterion 4 as **[SURFACED to owner] — this reallocation needs owner confirmation**, and no record confirms it since. So this spec does not treat it as settled. The proposal: "optimized sizing" cannot be tested at a fixed design point (sizing is an input there), so it is excluded from criterion 4 and covered only by the stretch (criterion 8 / Item 9). If the owner confirms, this spec writes no criterion-4 sizing expectation and the axis lives in Item 9's scope. Until confirmed, the reallocation is pending — like G-8, not [HARD].
 
 **B-6. Pass/fail semantics and the comparison report.** [AGENT-PROPOSED — owner ratifies]
 
@@ -150,6 +154,10 @@ Item 7's comparison report records, **per axis**: the pre-committed band (from B
 **B-7. AACE provenance cross-check.** [AGENT-PROPOSED — owner ratifies] [INHERITED: research §F caveat]
 
 The AACE Class-5 table (B-4's basis) is an in-repo *dossier extraction* (pandoc from arXiv HTML at `knowledge/concept_research/01-hts-compact-tokamak/iter-04/sources/arxiv-2602-19389/output.md:1318-1328`), not a `SOURCE_INDEX.md`-registered primary source. Because it is load-bearing, **Item 7 (or an earlier convenient moment) cross-checks the extracted table against the raw arXiv PDF** and cites **AACE 18R-97** as the standard, with this file recorded as where it is written down in-repo.
+
+**B-8. Ratio convention.** [AGENT-PROPOSED — owner ratifies]
+
+Every Anchor-B band (B-3, B-4) is on the ratio **model / reference**, matching the handshake's `rel_dev` sense (model over reference). Item 7 reports the **ratio**, not a signed percentage. The −50%/+100% cost band (B-4) is reciprocal so the verdict is convention-independent at its endpoints; fixing the convention still matters because Item 7 must print a consistent sign, and any owner adjustment to a **non-reciprocal** band (e.g. −30%/+100% → [0.7, 2.0]) breaks the invariance and would otherwise be ambiguous.
 
 ---
 
@@ -186,22 +194,23 @@ Success criterion "owner sign-off on both specs" is met by marking this list. Ea
 
 | # | Proposal | Basis (one line) | Owner |
 |---|---|---|---|
-| A-2 | Per-account handshake pass bar: **rel ≤ 1e-6** | ~10× above the ~1e-7 float32 floor, ~10⁴× below percent-scale real errors (research §B, §E) | ☐ ratify ☐ adjust: ____ |
+| A-2 | Per-account handshake pass bar: **\|relative deviation\| ≤ 1e-6** | ~10× above the ~1e-7 float32 floor, ~10⁴× below percent-scale real errors (research §B, §E) | ☐ ratify ☐ adjust: ____ |
 | A-4 | End-state LCOE acceptance = **all modeled accounts under A-2 + remainder itemized with signed magnitudes** (no blanket LCOE %) | makes every dollar of the −31% gap accountable per the criterion-3 ruling | ☐ ratify ☐ adjust: ____ |
 | A-6 | **Pin-bump procedure**: owner decides; a bump re-runs the handshake, re-asserts traps, re-checks every account against A-2, re-baselines JSON, records old→new commit | research §G-6, currently undocumented | ☐ ratify ☐ adjust: ____ |
 
-*(A-1 pipeline-vs-oracle rel 1e-9 and the ~1e-7 float32 floor are recorded as [HARD]/already-standing, not owner proposals — listed for visibility, no ratification needed.)*
+*(All [HARD] and [INHERITED] items — A-1 (pipeline-vs-oracle rel 1e-9 + the ~1e-7 float32 floor), A-3 (the [OWNER] criterion-3 ruling), A-5 (mapping-trap discipline), B-0, B-1, and the B-5 C220107 exclusion — are excluded from this table: their authority is physics, an interface, or an existing owner ruling, not a fresh proposal. The table carries only the [AGENT-PROPOSED] items. They are listed here for visibility, no ratification needed.)*
 
 **Anchor B**
 
 | # | Proposal | Basis (one line) | Owner |
 |---|---|---|---|
 | B-2 | Structural similarity: **qualitative checklist, pass = all three correspondences present** (subsystem decomposition, radial-build ordering, cost-account coverage) | concept criterion 4 axes | ☐ ratify ☐ adjust: ____ |
-| B-3 | Derived quantities: **same order of magnitude** (within ~3×); geometry-direct quantities *expected* inside 2× as a note | our own headline moved ±25–30%, p_net re-staled 575→915 MW (research §E) | ☐ ratify ☐ adjust: ____ |
-| B-4 | Rough per-component costs: **−50% to +100%** (factor-of-2, asymmetric high) | AACE Class 5 concept-stage accuracy (research §F) | ☐ ratify ☐ adjust: ____ |
-| B-5 | **C220107 excluded/footnoted** in Anchor B (stays in Anchor A); **sizing axis excluded** (criterion 8, not 4) | research §G-2, §G-3; the one ARIES-CS-derived value | ☐ ratify ☐ adjust: ____ |
+| B-3 | Derived quantities: **model/reference ratio ∈ [1/3, 3]** ("same order of magnitude"); geometry-direct quantities *expected* inside 2× as a note | our own headline moved ±25–30%, p_net re-staled 575→915 MW (research §E) | ☐ ratify ☐ adjust: ____ |
+| B-4 | Rough per-component costs: **model/reference ratio ∈ [0.5, 2.0]** (−50%/+100%, factor-of-2 asymmetric high) | AACE Class 5 concept-stage accuracy (research §F) | ☐ ratify ☐ adjust: ____ |
+| B-5a | **Sizing-axis reallocation**: confirm criterion-4 sizing exclusion → covered only by criterion 8 / Item 9 (concept marks this [SURFACED to owner], unconfirmed) | sizing is an input at a fixed design point; concept criterion 4 note | ☐ confirm ☐ adjust: ____ ☐ keep in criterion 4 |
 | B-6 | Report records **per axis**: band, observed value, verdict, admissible-only explanation; a miss is a demo finding | concept criterion 4 honesty bar | ☐ ratify ☐ adjust: ____ |
 | B-7 | **AACE cross-check**: Item 7 verifies the extracted Class-5 table against the raw arXiv PDF; cites AACE 18R-97 | table is a dossier extraction, not a registered primary source (research §F caveat) | ☐ ratify ☐ adjust: ____ |
+| B-8 | **Ratio convention**: bands are on model/reference; Item 7 reports the ratio; convention fixes reported sign and any non-reciprocal adjustment | matches the handshake `rel_dev` sense | ☐ ratify ☐ adjust: ____ |
 
 **Standing-rule amendment**
 
