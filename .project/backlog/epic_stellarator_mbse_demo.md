@@ -1,7 +1,7 @@
 # Epic: Stellarator MBSE Full Demo
 
 **Epic ID**: STELLARATOR-DEMO
-**Status**: Draft
+**Status**: Ready
 **Priority**: High
 **Created**: 2026-07-18
 **Estimated Effort**: ~10–14 days remaining (excluding the stretch item)
@@ -14,9 +14,9 @@
 
 **Every item in this epic lists `knowledge/holdout/aries-cs/PROTOCOL.md` as Required Reading.** The ARIES-CS hold-out is sealed; the barred-artifact lists in PROTOCOL §3 are absolute for demo sessions until the owner-triggered reveal.
 
-### Epic home — surfaced, needs owner ratification
+### Epic home — [OWNER] ratified 2026-07-18
 
-**[AGENT]** The concept's decomposition guidance says the demo "spans both PM systems … decompose accordingly rather than as one mega-epic in either" (concept, Decomposition guidance). The owner's directive was "a clear epic to match the concept," written via `/_my_epic_plan` (the coding-PM epic command). This epic reconciles the two readings: **one tracking home here in `.project/backlog/`, whose items delegate execution to the right PM system** — modeling items register in `work/` (via `pm add-item`) at pick-up, tooling/spec/write-up items run as coding-PM items in `.project/active/`. The epic tracks stage and criterion status; each item's execution records live in its own system. If the owner wants a different shape (e.g. a mirrored modeling epic in `work/backlog/`), say so and this section changes.
+Coding PM is the home base: **one tracking home here in `.project/backlog/`, whose items delegate execution to the right PM system** — modeling items are created in `work/` (via `pm add-item`) at pick-up; tooling/spec/write-up items run as coding-PM items in `.project/active/`. The epic tracks stage and criterion status; each item's execution records live in its own system. This satisfies the concept's decomposition guidance (the work "spans both PM systems") without a mega-epic in either.
 
 ---
 
@@ -96,7 +96,7 @@ Registration convention: modeling items (2, 3, 4, 5, 7, 9) register in the model
 **Scope**:
 1. **Anchor A tolerance spec**: per-account and LCOE agreement thresholds for the 1costingFE handshake; parameter-mapping traps enumerated (e.g. radiation-model `B` = 5 T vs coil-cost `b_center` = 6 T); the 1costingFE commit pin recorded as a spec requirement; float32-at-runtime in 1cfe cost layers (WI-025 finding) accounted for in the tolerance basis.
 2. **Anchor B expectations**: quantitative per-axis expectations (structural similarity, derived-quantity agreement at their design point, rough per-component costs) that are pass/fail for criterion 4 — committed *before* reveal so a miss cannot be narrated away. Include the C220107 exclusion/footnote rule (the one known ARIES-CS-derived 1cfe value).
-3. **Surface the criterion-3 outcome question to the owner**: the concept's literal bar is "discrepancies are itemized and explained" — does that require *closing* the −31% structural gap or *explaining* what remains after Items 3–4? Owner answers here; Items 3–4 acceptance inherits the ruling.
+3. **Apply the criterion-3 ruling** — **[OWNER] 2026-07-18: the bar is *explaining*, and closing any errors.** Remaining discrepancies after Items 3–4 must be itemized and explained; any discrepancy shown to be an error (model, mapping, or sourcing mistake) is closed. Closing the full structural gap is not required. The spec words Items 3–4's acceptance in these terms.
 
 **Out of Scope**:
 - Running either comparison — this item only writes the bars.
@@ -105,7 +105,7 @@ Registration convention: modeling items (2, 3, 4, 5, 7, 9) register in the model
 **Success Criteria**:
 - [ ] Anchor A tolerance spec exists with per-account + LCOE thresholds and the commit-pin requirement
 - [ ] Anchor B per-axis expectations exist, marked pass/fail, written pre-reveal
-- [ ] Criterion-3 close-vs-explain question surfaced and owner ruling recorded
+- [ ] Items 3–4 acceptance worded per the [OWNER] criterion-3 ruling (explain discrepancies; close errors)
 - [ ] Owner sign-off on both specs
 
 **Deliverables**: `.project/active/demo-anchor-acceptance-spec/spec.md` (both anchors' bars + owner rulings)
@@ -155,7 +155,7 @@ Registration convention: modeling items (2, 3, 4, 5, 7, 9) register in the model
 
 **Out of Scope**:
 - LCOE construction accounts (CAS70/80) — Item 4.
-- Closing the gap to zero regardless of cost — the bar is the Item 1 ruling.
+- Closing the gap to zero regardless of cost — the bar is the recorded [OWNER] ruling: explain what remains; close what is an error.
 
 **Success Criteria**:
 - [ ] Named account scopes forward-computed and sourced; injection list shrinks to the documented remainder
@@ -362,7 +362,7 @@ Items 1 and 2 start independently (parallel). Items 3 and 4 parallel after 1. Cr
 |------|--------|------------|
 | Hold-out comparison misses the pre-committed expectations ([OWNER-VERBATIM]: "But this is a risk.") | High | Expectations written pre-reveal (Item 1); a miss is reported as a demo finding per the concept — the honesty is the credibility. |
 | Upstream constraint-exec churn (P0 remediation wave; CE-F1/F2 open) shifts behavior under the demo | Medium | Pin the toolchain commit per item; re-verify standing bars on any bump; adopt wave output deliberately, not implicitly. |
-| The −31% structural gap resists the account-scope items within tolerance | Medium | The Item 1 close-vs-explain ruling bounds the work; remaining gap is itemized, not hidden. |
+| The −31% structural gap resists the account-scope items within tolerance | Medium | Bounded by the [OWNER] ruling (2026-07-18): remaining gap is itemized and explained, errors are closed; full closure is not required. |
 | 1costingFE float32 runtime layers complicate tolerance definition | Low | Item 1 sets tolerances with the float32 floor in evidence (WI-025 design finding, f64 comparison path exists). |
 | Frame loss recurs — future sessions assess progress from item records instead of the concept | Medium | This epic + the standing rule: every demo handoff/brief names the concept as governing frame; done-ness runs against the 8 criteria. |
 | Quarantine violated before reveal | High | PROTOCOL required reading on every item; §6 violation log + pre-decided deny-hook escalation. |
@@ -397,4 +397,4 @@ Items 1 and 2 start independently (parallel). Items 3 and 4 parallel after 1. Cr
 ---
 
 **Last Updated**: 2026-07-18
-**Next Action**: Owner ratifies the epic-home shape (see the surfaced note at top) and the Item 1 → Item 2 parallel start. First execution move: Item 1 (anchor acceptance spec) — it is the smallest item and three others are judged against it.
+**Next Action**: Item 1 (anchor acceptance spec) — smallest item, and Items 3, 4, and 7 are judged against it. Item 2 (constraint execution) can start in parallel. Epic home and the criterion-3 bar are owner-ratified (2026-07-18).
