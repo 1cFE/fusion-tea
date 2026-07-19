@@ -1,7 +1,7 @@
 ---
-Status: draft
+Status: blocked-surfaced
 Created: 2026-07-19
-Updated: 2026-07-19
+Updated: 2026-07-19 (amended after implement bounce — D7 added; Gate B surfaced)
 Related Artifacts:
   Spec: ./spec.md
   Orchestration: ../../orchestration/demo-constraint-execution.md
@@ -18,7 +18,29 @@ The demo criterion (concept criterion 2) wants the five already-modeled viabilit
 
 The whole job in one sentence: **un-strip the five asserts in the staged twins, recapture the snapshot so it carries the constraint facts, and regenerate through the existing bridge — the constraint modules then emit and execute for free, because the constraint-emission machinery already lives inside the exact generation functions the bridge calls.** Every numeric channel stays bit-exact; five verdicts appear alongside them.
 
-This design settles the six mechanism questions the brief handed off, records the defect-register check (all five forms NOT-HIT, no premise flag), and pins the toolchain commit.
+This design settles the six mechanism questions the brief handed off, records the defect-register check (all five forms NOT-HIT), and pins the toolchain commit.
+
+---
+
+## ⚠ SURFACED PREMISE FLAG (2026-07-19) — Gate B blocks emission; dependent conclusions parked
+
+**This item cannot reach "constraints emit and execute" without an owner decision. The rewiring the owner already ruled on (below, D7) is proven necessary and works — but a *second, independent* architectural gate, unknown when the ruling was made, blocks the generate-and-emit path. Every resolution is out of this item's authorized surfaces. I am surfacing, not designing around it (capture-fidelity §4).**
+
+Two gates stand between the un-stripped asserts and executed verdicts. Both were proven by capture probes at `512786c` (evidence in `.orchestrate-logs/wi027_probe/` and the CODEGEN_FINDINGS #9 addendum):
+
+- **Gate A — INV-2 refuses literal-valued design-attribute actuals** (the original implement bounce). **RESOLVED** by the owner-ruled rewiring (D7): route each literal-valued limit/value through a passthrough calc so the actual is a calc output. Proven — a capture then carries all five facts, correctly rewired.
+
+- **Gate B — constraint lowering is architecturally incompatible with the demo's V11 capital-rollup bridge. NOT RESOLVED; needs an owner decision.** `extend_graph_with_constraints` runs a whole-graph V11 coverage check that hard-fails on the 3 capital-rollup keys (`contingency__direct_subtotal`, `indirect__direct_cost`, `lcoe_calc__total_capital`) — the exact keys `bridge_v11_generate.py` fills at *generation*, not capture. Filling them clears coverage (proven: `uncovered AFTER placeholder fill: []`), but there is no capture-time bridge hook, and the from-snapshot lowering runs *before* the bridge fills placeholders. A lowering-OFF capture carries the facts but records no occurrence table, so a later force-lower dies `FrozenOccurrenceIndexCorruptionError`. The occurrence table and V11 coverage are produced together only during a *fully-covered, lowering-ON* capture — which the bridge pattern structurally prevents. The IFE acceptance never hit this: it has no cross-part capital-rollup bridge (its graph is fully covered at capture). **The design's original premise — "constraints emit for free through the existing bridge" — is false for a bridged whole-plant package.**
+
+**Resolution options for Gate B (each exceeds this item's current scope — owner picks one):**
+
+1. **Upstream sysml-codegen fix (recommended).** Scope the constraint-lowering V11 check to the constraint-added inputs only (beta/tbr/wall_load — all covered), not a re-check of pre-existing unrelated offenders the harness bridges; or run the check after entry-point bridging. Clean and correct, but sysml-codegen is read/checkout-only for this item — needs the remediation epic to take it (filed to CODEGEN_FINDINGS #9 addendum, "file upstream").
+2. **Cover the capital-rollup keys in the model at capture** — give `direct_capital`/`total_capital` placeholder defaults in the staged twin so the graph is V11-covered at capture (harness still overwrites at execution → zero numeric movement). Touches the finding-4 capital-rollup region, which is **spec Out-of-Scope** and named "left as-is"; also needs the bridge's offender-count assert changed (3 → 0). Requires the owner to widen scope.
+3. **Re-scope / defer WI-027** until the upstream fix lands (option 1), sequencing it behind the constraint-PR-wave remediation.
+
+**Parked pending the decision:** D1's generation recipe (emission step), D6's numeric-neutrality run, SV-033's executed record, and all downstream phases. D7 (the rewiring) stands regardless — it is the proven Gate-A fix and a prerequisite for every option. Do not proceed to `/implement-model` on the emission path until Gate B is decided.
+
+---
 
 ## Key research findings (mechanism facts this design rests on)
 
@@ -40,12 +62,15 @@ The recipe (from the WI-025 record and `CODEGEN_FINDINGS.md:29`), one added prec
 
 ```
 source ~/1cfe/fusion-tea/.env                       # SYSIDE_LICENSE_KEY
-# **precondition: five asserts un-commented in both staged twins (MR-3)**
+# **precondition 1: five asserts un-commented in both staged twins (MR-3)**
+# **precondition 2: D7 constraint-actual rewiring applied to canonical + staged twins**
 sysml-codegen snapshot -m exploration/stellarator_e2e/models \
     -o exploration/stellarator_e2e/stellarator.snapshot.json     # NO --design-path-filter
 cd ~/1cfe/sysml-codegen && uv run python <e2e>/bridge_v11_generate.py   # preserve_handwritten=True
 # execute via exploration/pipeline_spike/.venv-exec/bin/python run_stellaris.py
 ```
+
+**⚠ This recipe does NOT yet complete — Gate B (premise flag above) aborts the snapshot step under lowering-ON, which the emission path requires.** With D7 applied, the capture resolves all actuals (Gate A cleared) but `extend_graph_with_constraints` then hard-fails on the 3 capital-rollup keys the bridge fills only at generation. The recipe is correct in shape; the final emission step is **parked** pending the Gate-B decision. The `preserve_handwritten=True`, no-`--design-path-filter`, and exactly-3-bridged-offenders invariants are unchanged and still apply.
 
 - **`preserve_handwritten=True` is untouched** (`bridge_v11_generate.py:108`), so the WI-022 `dt_fusion_power_impl.py` sha256 (`8d2357…794a9f`) survives regen (MR-5.5). The Bosch-Hale hand impl is orthogonal to constraint emission.
 - **No `--design-path-filter`** (the WI-024 gotcha: the filter bakes 8 spurious V11 offenders into the snapshot). Control: the bridge must still report **exactly 3** bridged offenders (the capital-rollup keys) — `bridge_v11_generate.py:91-92` aborts otherwise. Constraints add only *covered* operands, so they introduce no new V11 offender.
@@ -153,9 +178,11 @@ Boundary hazard (the IFE 7-row `>` vs `>=` class): our design-point actuals sit 
 
 The staged twins already carry the five asserts in commented-out DEMO NOTE blocks (staged `mfe_plant.sysml:459-465`, staged `stellarator_plant.sysml:741-746`). Un-stripping means: **delete the DEMO NOTE strip comments and un-comment the five asserts, so the staged viability-constraint regions become byte-identical to canonical `models/`.**
 
+**Amendment (D7):** canonical is now also edited — the constraint-actual rewiring (D7) lands in canonical `models/` first (owner-ruled), and the staged twins mirror it. Canonical remains the source of truth; the twins stay byte-identical to it in the viability region. The `mfe_viability.sysml` library gains the `'Scalar Value'` passthrough def in both the canonical library and its staged copy (`models/analyses/mfe_viability.sysml`), byte-identical.
+
 **Twin diff-bar for this item (what may differ after the edit):**
 
-- The five assert blocks in both staged twins: **byte-identical to canonical** after un-strip (the strip retires — MR-3). `git diff` of the viability-constraint regions between staged and canonical is **empty**.
+- The five assert blocks **plus the D7 passthrough calcs** in both staged twins: **byte-identical to canonical** after un-strip + rewiring. `git diff` of the viability-constraint regions between staged and canonical is **empty**. (The rewiring is applied to canonical, then mirrored — so byte-identity holds by construction.)
 - The two **unrelated** capital-rollup DEMO NOTEs stay exactly as they are: staged `mfe_plant.sysml:400-409` (`direct_capital` → plain input) and `:430-434` (`total_capital` → plain input). WI-015 findings 4/8, out of scope (spec Out of Scope). These remain the *only* intentional staged↔canonical divergences.
 - **Nothing else may differ.** No other staged region changes. Any additional staged↔canonical delta introduced by this item is a defect.
 
@@ -188,11 +215,58 @@ All satisfied, none on a boundary. If any comes back `violated`/`indeterminate`,
 
 **Which SVs re-verify:** SV-025/026 (handshake byte-identity, original bar — sub-bar 2), SV-023 (IFE anchors — sub-bar 3). **L1–L6 expectation:** offender list exactly the 6 pre-existing, zero new; level-summary flags may shift with the added modules, so compare the *list*.
 
-**Canonical untouched (MR-8):** `git diff models/` for viability semantics is empty — this item edits only the staged twins and the harness under `exploration/stellarator_e2e/`. A blocking canonical↔codegen incompatibility would be surfaced, not silently fixed; none is expected (the asserts already parse in canonical, and codegen at `512786c` lowers exactly these forms per the IFE proof).
+**D7 rewiring numeric-neutrality (MR-8 amended — canonical now edited, but only representation).** The passthrough calcs carry constants that were already in the model; they are constraint-operand plumbing, not in the cost/physics dataflow, so no executed numeric channel moves. This must be *proven*, not assumed, once Gate B is resolved and the package emits — name the checks (all parked with Gate B):
+- **Oracle bit-exact** — every executed numeric channel matches `verify_stellaris.py` at rel < 1e-9, unchanged from WI-025 (the passthrough calcs add channels but touch none of the numeric spine).
+- **Headline to the cent** — total $12,638,857,665.74, LCOE $203.647152/MWh, p_net 915.081088 MW, magnet 50.03% — identical.
+- **Handshake** — `git diff exploration/stellarator_e2e/handshake_comparison.json` empty; injection map untouched.
+- **L1–L6 offender list = the 6 pre-existing** — the five new passthrough calc modules must add **zero** new offenders (compare the list, not level flags).
+- **WI-022 hash** — `dt_fusion_power_impl.py` sha256 `8d2357…794a9f` intact.
+
+**MR-8 status:** canonical `models/` is now edited by this item — but only the owner-ruled *representation-only* rewiring (D7), never viability semantics or values. Gate B (above) is the surfaced blocking canonical↔codegen incompatibility; it is surfaced, not silently fixed. The earlier claim that "codegen at `512786c` lowers exactly these forms per the IFE proof" was **wrong** (see Prototype-status correction).
+
+## Mechanism decision 7 — Constraint-actual rewiring (Gate A fix, owner-ruled 2026-07-19)
+
+**Decision: route each literal-valued design-attribute constraint actual through a passthrough calc so the actual resolves to a calc output. Keep the design attributes as the single documented value source (their MR-4 citations stay put); add one passthrough calc per literal actual and retarget the assert.** This is the WI-021 pattern (route a value through a calc so it forward-computes through codegen) and is representation-only, value-preserving, zero numeric movement, no viability-semantics change — within the owner's amended MR-WI027-8.
+
+**Exactly what changes (canonical `models/`, mirrored to the staged twins — D5).** Only the three asserts binding literal design attributes need it; `net_positive`/`recirc_ok` (read `pb.p_net`/`pb.rec_frac`) and `wall_load_ok`'s achieved `wall_load` (reads `wall_load_calc.wall_load`) already resolve.
+
+- **Library `models/library/analyses/mfe_viability.sysml`** — add one concept-agnostic passthrough calc def:
+  ```
+  calc def 'Scalar Value' {
+      in attribute v : Real;
+      out attribute value : Real = v;
+  }
+  ```
+- **Instance `models/designs/stellarator_09/stellarator_plant.sysml`** — keep `beta`/`beta_limit`/`wall_load_limit`/`tbr`/`tbr_floor` attributes as-is (unchanged values + docs); add five calc usages reading them, and retarget the three asserts:
+  ```
+  calc beta_val           : 'Scalar Value' { in v = beta; }
+  calc beta_limit_val     : 'Scalar Value' { in v = beta_limit; }
+  calc wall_load_limit_val: 'Scalar Value' { in v = wall_load_limit; }
+  calc tbr_val            : 'Scalar Value' { in v = tbr; }
+  calc tbr_floor_val      : 'Scalar Value' { in v = tbr_floor; }
+
+  assert constraint beta_ok : 'Beta Limit' {
+      in beta = beta_val.value;  in beta_limit = beta_limit_val.value; }
+  assert constraint wall_load_ok : 'Neutron Wall Load Limit' {
+      in wall_load = wall_load_calc.wall_load;  in wall_load_limit = wall_load_limit_val.value; }
+  assert constraint tbr_ok : 'TBR Floor' {
+      in tbr = tbr_val.value;  in tbr_floor = tbr_floor_val.value; }
+  ```
+
+**Capture-probe evidence (owner-mandated; run at `512786c`).** Applied the above to a scratch copy of the staged models tree and ran the D1 capture:
+
+- **Gate A cleared.** The INV-2 abort (`beta_ok.beta: unresolved actual 'beta'`) is gone. A capture with lowering deferred (`lower_constraints_enabled=False`) **succeeds and carries all five constraint facts**, with the rewired actuals captured exactly: `beta = beta_val.value`, `beta_limit = beta_limit_val.value`, `wall_load_limit = wall_load_limit_val.value`, `tbr = tbr_val.value`, `tbr_floor = tbr_floor_val.value`; `net_positive`/`recirc_ok` unchanged (`pb.p_net`/`pb.rec_frac`). Evidence: `.orchestrate-logs/wi027_probe/probeA_deferred.snapshot.json` (5 usages), `.../probe_deferred.py`.
+- **Gate B then surfaced** (see the premise flag above): a *lowering-ON* capture, which the emission path needs, aborts on the whole-graph V11 check over the 3 capital-rollup keys before writing a snapshot. `.../probeA.log`, `.../probe_forcelower.py`.
+
+So D7 is **proven to fix Gate A and to produce correct constraint facts**; it does not, by itself, make constraints emit — that is gated by Gate B, parked above. D7 is a prerequisite for every Gate-B resolution option, so it is recorded as settled.
+
+**Rejected alternative — fold the value inline** (`calc beta_val : 'Scalar Value' { in v = 0.0276; }`, drop the standalone attribute). Also resolves Gate A, but moves the value + MR-4 citation off the named design attribute onto a calc input binding, weakening traceability and duplicating nothing gained. The design-attribute-as-source form (chosen) keeps the documented value where it has always lived.
 
 ## Prototype status
 
-**No syside spike run — justified by proven precedent plus a static check, per the brief's "reuse the IFE evidence rather than re-spike."** The constraint-exec constructs (predicate compilation, per-constraint modules, aggregator, exit-point wiring, three-valued verdicts, violated-never-raises) are proven by the IFE acceptance (2294/2301). The one new-to-stellarator seam — *does our V11 bridge path emit constraints, or does the CLI do it in a step the bridge omits?* — is resolved by static inspection: constraint emission lives inside `_generate_schemas` / `_generate_modules` / `_generate_pipeline` (`cli/__init__.py:338,363,522`), all of which `bridge_v11_generate.py:112-121` calls, gated only on the snapshot's constraint catalog. The second seam — handwritten-impl coexistence — is orthogonal (`preserve_handwritten` restores one hand impl file; constraint modules are separate generated files). **The remaining uncertainty is entirely covered by the MR-5 bars at implement** (bit-exact, offender list, WI-022 hash, handshake diff), which are the true acceptance gate. Running syside here would reproduce, at a license cost, what the IFE acceptance already established and what the bars will confirm on the real regen.
+**CORRECTION (2026-07-19):** the original assessment below was **wrong**. It claimed no syside spike was needed because the IFE acceptance proved the machinery for our forms. It does not: the IFE constraint operands are calc outputs / free no-default inputs, so IFE exercised neither Gate A (literal-valued design-attribute actuals) nor Gate B (V11-bridge coexistence). The capture probes this amendment ran are the missing spike; they found both gates. The paragraph below is retained struck-through-in-spirit as the record of the error.
+
+~~**No syside spike run — justified by proven precedent plus a static check, per the brief's "reuse the IFE evidence rather than re-spike."**~~ The constraint-exec constructs (predicate compilation, per-constraint modules, aggregator, exit-point wiring, three-valued verdicts, violated-never-raises) are proven by the IFE acceptance (2294/2301). The one new-to-stellarator seam — *does our V11 bridge path emit constraints, or does the CLI do it in a step the bridge omits?* — is resolved by static inspection: constraint emission lives inside `_generate_schemas` / `_generate_modules` / `_generate_pipeline` (`cli/__init__.py:338,363,522`), all of which `bridge_v11_generate.py:112-121` calls, gated only on the snapshot's constraint catalog. The second seam — handwritten-impl coexistence — is orthogonal (`preserve_handwritten` restores one hand impl file; constraint modules are separate generated files). **The remaining uncertainty is entirely covered by the MR-5 bars at implement** (bit-exact, offender list, WI-022 hash, handshake diff), which are the true acceptance gate. Running syside here would reproduce, at a license cost, what the IFE acceptance already established and what the bars will confirm on the real regen.
 
 ## Implementation checklist (phased)
 
@@ -221,9 +295,9 @@ All satisfied, none on a boundary. If any comes back `violated`/`indeterminate`,
 
 ## Validation Report
 
-- **Prototype status:** PASS by proven-precedent + static confirmation (no syside spike; §Prototype status). The bridge path is confirmed to emit constraints via static read of the generation functions it calls; the machinery is proven by the IFE acceptance.
-- **Defect-register check:** complete, all twelve register defects NOT-HIT against the five forms (§Decision 4 table). No premise flag.
+- **Prototype status:** the capture probes (this amendment) are the spike. Gate A **PASS** (D7 rewiring resolves the actuals; five facts captured correctly). Gate B **FAIL/BLOCKED** — lowering-ON capture aborts on the V11-bridge incompatibility; emission is not reachable in-scope. The original "PASS by proven-precedent" claim was wrong (§Prototype status correction).
+- **Defect-register check:** the twelve *registered* R-series defects are NOT-HIT against the five forms (§Decision 4 table). **But the probes found a NEW, unregistered defect — Gate B** (V11-bridge/occurrence-table incompatibility), filed to CODEGEN_FINDINGS #9 addendum. This IS a premise flag (top of doc).
 - **Files this design implicates (implement):** un-strip — staged `mfe_plant.sysml`, staged `stellarator_plant.sysml`; recapture — `stellarator.snapshot.json`; regenerate — `generated/**` (additive: constraint modules, aggregator, evidence schemas, pipeline exit points); harness — `run_stellaris.py` (three marked adapters). Untouched: canonical `models/`, `verify_stellaris.py` (kind), `handshake_1costingfe.py` (expected), `handshake_comparison.json` (must stay byte-identical).
 - **Bars deferred to implement (the real gate):** oracle bit-exact, offender list = 6, WI-022 hash, handshake empty diff, IFE anchors, pytest tally, MR-2 grep — recorded in SV-033.
 
-**Ready for `/plan-model`.** `/review-model` available for independent design review.
+**NOT ready for `/plan-model` on the emission path.** D7 (Gate-A fix) is settled and proven; the emission mechanism (D1) and validation (D6) are **parked** pending the owner's Gate-B decision (premise flag, top). Once Gate B is resolved, the parked conclusions and the existing plan's Phases 2–5 resume from D7. `/review-model` available for independent review of D7 and the Gate-B surfacing.
