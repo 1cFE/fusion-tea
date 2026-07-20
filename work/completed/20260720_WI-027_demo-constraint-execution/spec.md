@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
-Epic: "STELLARATOR-DEMO (coding-PM tracking home; standalone in modeling PM)"
+Epic: STELLARATOR-DEMO (coding-PM tracking home; standalone in modeling PM)
 Owner: reid
 Created: 2026-07-19
-Updated: 2026-07-19
+Updated: '2026-07-20'
 ---
 
 # WI-027: Demo Constraint Execution (STELLARATOR-DEMO Item 2)

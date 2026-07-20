@@ -1,7 +1,7 @@
 ---
-Status: superseded-by-Item-10
+Status: complete
 Created: 2026-07-19
-Updated: 2026-07-20 (SUPERSEDED — see amendment below)
+Updated: '2026-07-20'
 Related Artifacts:
   Spec: ./spec.md
   Orchestration: ../../orchestration/demo-constraint-execution.md

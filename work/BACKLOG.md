@@ -129,8 +129,8 @@ standalone:
   name: Demo Constraint Execution (STELLARATOR-DEMO Item 2)
   scale: standard
   priority: P0
-  status: backlog
-  completed: null
+  status: completed
+  completed: '2026-07-20'
 ---
 
 # Project Backlog
@@ -181,4 +181,4 @@ standalone:
 | ID | Item | Scale | Priority | Status | Notes |
 |------|------|-------|----------|--------|-------|
 | WI-026 | Pytest Baseline Re-Record | trivial | P3 | backlog |  |
-| WI-027 | Demo Constraint Execution (STELLARATOR-DEMO Item 2) | standard | P0 | backlog |  |
+| WI-027 | Demo Constraint Execution (STELLARATOR-DEMO Item 2) | standard | P0 | completed | Completed 2026-07-20 |

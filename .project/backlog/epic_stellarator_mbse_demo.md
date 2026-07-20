@@ -57,10 +57,10 @@ Prove the agentic-mbse / sysml-codegen / teax methodology on a real fusion deep 
 These are the concept's 8 criteria, status as verified 2026-07-18. The checkbox is the concept's bar, not a restatement.
 
 - [x] **1. Initial model runs end-to-end** — met. Stage 2 built and committed (`c3f3089e`), refined through WI-025 (`7ba3cd70`). Executed headline (bit-exact vs oracle, rel 1e-9): total $12,638,857,665.74, LCOE $203.647/MWh, p_net 915.081 MW, q_eng 6.607, magnet $6.3235B (50.03%). Every account sourced or forward-computed; zero STALE BASIS annotations.
-- [ ] **2. Viability checks execute as modeled constraints** — not met. `assert constraint`s exist in the canonical `mfe_plant.sysml` (`net_positive`, `recirc_ok`, plus beta/wall-load/TBR in the instance), but the staged demo copy strips them and codegen emits no constraint predicates; no verdicts appear in any run report. → Item 2.
+- [x] **2. Viability checks execute as modeled constraints** — met 2026-07-20 (WI-027, audit POSITIVE, owner-closed). All five asserts (`net_positive`, `recirc_ok`, `beta_ok`, `wall_load_ok`, `tbr_ok`) execute as generated constraint modules; verdicts are data in the run report (`all_satisfied`, 5 assessed, all off-boundary); zero hand-coded viability (grep-proven); headline unchanged to the cent. Route is fully public post-lifecycle-Item-10 (bridge-free, no D7 passthroughs). Records: `work/completed/20260720_WI-027_demo-constraint-execution/`, SV-033, audit `work/analysis/20260720-163628_audit_WI-027_demo-constraint-execution.md`.
 - [ ] **3. 1costingFE handshake (Anchor A)** — partial. Machinery parity is byte-stable and bit-exact at formula isolation; the tolerance spec is now written and ratified (Item 1, 2026-07-19). Remaining: parity covers several account scopes only via injected 1cfe values — the −31% structural LCOE-construction gap (CAS22 tail, CAS40/50/60, LCOE construction). → Items 3, 4.
 - [ ] **4. ARIES-CS hold-out comparison (Anchor B)** — not started, but the per-axis expectations are now pre-committed and ratified (Item 1, 2026-07-19). Quarantine live and sealed since 2026-07-12; reveal is owner-triggered (PROTOCOL §6). → Item 7.
-- [ ] **5. Studies run through the teax study layer** — not started. Upstream machinery delivered and proven on the IFE sweep in this repo; the demo package does not yet execute constraints (gate: Item 2). → Item 5.
+- [ ] **5. Studies run through the teax study layer** — not started, now unblocked: the demo package executes constraints (criterion 2 met 2026-07-20), so verdicts can classify study points. → Item 5.
 - [ ] **6. Study outputs visualized** (figures + search-process animation) — not started. → Item 6.
 - [ ] **7. Public write-up exists** (blog draft + interactive HTML) — not started. → Item 8.
 - [ ] **8. (Stretch) Optimum rediscovery** — not started; post-reveal by design; a miss is ambiguous and does not fail the demo. → Item 9.
@@ -72,7 +72,7 @@ These are the concept's 8 criteria, status as verified 2026-07-18. The checkbox 
 | 1. Concept choice | Done — 09 penciled in ([OWNER]) | — |
 | 2. Initial model | Done — WI-009/010/018 substance + codegen chain + handshake machinery | — |
 | 3. Agentic research / refinement | Partial — WI-019–025 ran as errata-driven refinement; study-driven rounds have not happened (studies never ran) | interleaves with Item 5 |
-| 4. Studies | Not started | Items 2, 5, 6 |
+| 4. Studies | Constraint execution done (Item 2, 2026-07-20); studies + viz not started | Items 5, 6 |
 | 5. Write-up | Not started | Item 8 |
 | Anchor A (cross-stage) | Partial | Items 1, 3, 4 |
 | Anchor B (cross-stage) | Quarantine done (seam a); comparison not started | Items 1, 7 |
@@ -116,6 +116,8 @@ Registration convention: modeling items (2, 3, 4, 5, 7, 9) register in the model
 
 ### Item 2: Constraint execution in the demo pipeline
 
+**Status**: **COMPLETE 2026-07-20** — executed as WI-027 (registered 2026-07-19, owner-closed 2026-07-20, independent audit POSITIVE with all eight bars reproduced). The run surfaced two toolchain gates (Gate A: INV-2 literal actuals; Gate B: capture-time coverage check), both root-caused here and fixed upstream by the sysml-codegen constraint-execution-lifecycle-remediation epic (Items 2, 3, 10) — the demo now generates on the fully public single-pass route, no bridge, no passthroughs. One out-of-scope finding routed to that epic ([OWNER] ratified): teax-vs-HIF-package validator skew in the IFE Run C regression leg. Orchestration trail: `work/orchestration/demo-constraint-execution.md`.
+
 **Type**: Modeling (modeling PM, register at pick-up)
 **Effort**: 1–2 days
 **Dependencies**: None internally. External: constraint-execution toolchain — **delivered** (epic completed 2026-07-13; acceptance ran in this repo: `exploration/ife_e2e/study/`, 2294/2301 with the divergence being the hand rule's fault). Caveat: the upstream PR wave is under a P0 remediation epic (`~/1cfe/sysml-codegen/.project/backlog/epic_constraint_pr_wave_remediation.md`, 2026-07-18) and consumer-side follow-ons CE-F1 (standalone catalog emission) / CE-F2 (multi-channel CandidateBridge) are open — pin the local editable-dep commit for the demo and record it.
@@ -133,10 +135,10 @@ Registration convention: modeling items (2, 3, 4, 5, 7, 9) register in the model
 - Study definitions (Item 5).
 
 **Success Criteria**:
-- [ ] Constraint verdicts appear as data in the demo run report at the design point
-- [ ] No hand-coded viability rule anywhere in the demo pipeline
-- [ ] Toolchain commit pinned and recorded; all standing validation bars pass
-- [ ] Modeling-PM item record complete (spec → close per scale)
+- [x] Constraint verdicts appear as data in the demo run report at the design point
+- [x] No hand-coded viability rule anywhere in the demo pipeline
+- [x] Toolchain commit pinned and recorded; all standing validation bars pass (bar 5's literal IFE Run C leg out-of-scope by [OWNER] ruling — regression intent met, skew routed upstream)
+- [x] Modeling-PM item record complete (spec → close per scale)
 
 **Deliverables**: regenerated demo package with executing constraints; run report with verdicts; `work/` item record
 
@@ -398,5 +400,5 @@ Items 1 and 2 start independently (parallel). Items 3 and 4 parallel after 1. Cr
 
 ---
 
-**Last Updated**: 2026-07-19
-**Next Action**: Items 3 and 4 (handshake account scopes — unblocked by the ratified bars and the G-8 amendment) and Item 2 (constraint execution) — all three can run in parallel. Item 1 complete 2026-07-19.
+**Last Updated**: 2026-07-20
+**Next Action**: Items 3–4 (handshake account scopes) and Item 5 (studies — newly unblocked by criterion 2) can all run in parallel. Note for Items 3–4 pick-up: lifecycle Item 10 retired the handshake rollup glue and re-baselined `handshake_comparison.json` (single-pass route) — brief those items against the current harness, not the pre-Item-10 description. Items 1–2 complete.
