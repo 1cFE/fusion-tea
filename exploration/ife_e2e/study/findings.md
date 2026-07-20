@@ -86,6 +86,11 @@ clearly-marked adapter, not a silent workaround:
    templates. `StudyRunner`/`CandidateBridge`/`PreparedEvaluator` are unmodified — this plugs
    into the documented `Evaluator` protocol seam, the same seam the Item-0 spike proved
    pluggable by construction.
+   > **RESOLVED (Lifecycle Item 9, 2026-07-20):** stock teax now builds zero/one/many channels
+   > itself — `StudyDefinition` carries the `entry_models` map and `CandidateBridge` routes each
+   > field to its owning channel. `MultiChannelEvaluator` is deleted; the plain `PreparedEvaluator`
+   > runs the 2,301-point study green. (The four-channel decomposition quoted above predates Item 8;
+   > the regen is three channels.)
 3. **`PreparedEvaluator.__init__` unconditionally sets `self.ToyPlantParams =
    self.package.ToyPlantParams`** (`simkit/evaluation/evaluator.py:107`) — a toy-fixture
    convenience left in the constructor, not generalized to the loaded package's actual entry

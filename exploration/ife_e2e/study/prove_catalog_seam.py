@@ -8,23 +8,18 @@ embedded catalog straight from `contracts/model_contract.json` (no standalone
 seam (`load_model_contract` + embedded-catalog `StudyQuery`) and the def→usage FK join. The full
 2,301-point (eta, gain) acceptance sweep is Item 13's bar, not this phase's.
 
-It does NOT use `run_viability_study.py`'s `MultiChannelEvaluator`: that harness bridge hardcodes
-the package's older four-entry-channel decomposition (incl. `hif_driver_params`), which current
-codegen no longer emits (now three groups). That multi-channel wiring is Item 9's target
-(`CandidateBridge` for zero/one/many channels), independent of Item 8's catalog seam — so this
-runner fills the regen's actual three channels directly through the documented `Evaluator` seam.
+Multi-channel wiring is Item 9's stock `CandidateBridge` (zero/one/many channels), which this
+proof now uses directly: `StudyDefinition` carries the complete `entry_models` map and the plain
+`PreparedEvaluator` is the evaluator — no consumer wrapper. The candidate (the ife_plant_params
+template values) routes to its channel; the other two channels keep their modeled defaults.
 """
 from __future__ import annotations
 
 import json
 import shutil
 from pathlib import Path
-from typing import Mapping
-
-from pydantic import BaseModel
 
 from simkit.evaluation.evaluator import PreparedEvaluator
-from simkit.evaluation.evidence import ModelEvidence
 from simkit.evaluation.package_load import ProvisionalPackageLoader
 from simkit.study.definition import StudyDefinition
 from simkit.study.identity import digest_of
@@ -44,27 +39,7 @@ STORE_PATH = HERE / "_work" / "catalog_seam.db"
 SPEC_PATH = PACKAGE_DIR / "pipelines" / "pipeline.yaml"
 INPUTS = PACKAGE_DIR / "inputs"
 
-ENTRY_CHANNEL = "ife_plant_params"
 CONSTRAINT_ID = "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b"
-
-
-class ThreeChannelEvaluator:
-    """Fills the regen's three entry channels: the swept `ife_plant_params` from the candidate,
-    the other two from the package's own committed input templates."""
-
-    def __init__(self, prepared: PreparedEvaluator, package) -> None:
-        self._prepared = prepared
-        self._fixed: dict[str, BaseModel] = {
-            "hif_plant_params": package.HifPlantParams(
-                **json.loads((INPUTS / "hif_plant_params.json").read_text())
-            ),
-            "system_design": package.SystemDesign(
-                **json.loads((INPUTS / "system_design.json").read_text())
-            ),
-        }
-
-    def evaluate(self, typed_inputs: Mapping[str, BaseModel]) -> ModelEvidence:
-        return self._prepared.evaluate({**self._fixed, **typed_inputs})
 
 
 def _clean_build_artifacts() -> None:
@@ -90,15 +65,16 @@ def main() -> None:
     )
     loader.load()
     prepared = PreparedEvaluator(loader, SPEC_PATH)
-    evaluator = ThreeChannelEvaluator(prepared, prepared.package)
+    # Stock Item-9 multi-channel bridge: plain PreparedEvaluator, no consumer wrapper.
+    evaluator = prepared
 
     # One representative candidate: the ife_plant_params template values themselves.
+    # The stock bridge routes them to their channel; the other two channels default.
     candidate = json.loads((INPUTS / "ife_plant_params.json").read_text())
 
     definition = StudyDefinition(
         study_id="ife-catalog-seam-proof",
-        entry_channel=ENTRY_CHANNEL,
-        entry_model=prepared.package.IfePlantParams,
+        entry_models=prepared.entry_models,
         strategy=PreparedListStrategy([candidate]),
         validate_proposal=lambda raw: dict(raw),
         policy=ObjectivePolicy(objectives=(), response_roles={}),
