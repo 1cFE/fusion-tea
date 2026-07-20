@@ -143,8 +143,17 @@ def main() -> None:
 
     # --- Acceptance table: old hand rule vs new generated verdict ----------
     store = StudyStore(STORE_PATH)
-    query = StudyQuery(store, PACKAGE_DIR / "contracts" / "constraint_catalog.json")
+    # Item 8: read codegen's embedded catalog straight from the package dir's model_contract.json.
+    # No standalone constraint_catalog.json, no materializer.
+    query = StudyQuery(store, PACKAGE_DIR)
     cases = query.cases(constraint=CONSTRAINT_ID)
+    # Phase-3 gate: the IFE package carries exactly one eligible entry (B4, thin margin). Zero
+    # cases means the viability constraint stopped being eligible — a regression, not an empty pass.
+    if not cases:
+        raise SystemExit(
+            f"REGRESSION: no cases carry a verdict for {CONSTRAINT_ID!r} — the embedded catalog "
+            "has zero eligible entries where exactly one was expected (B4)."
+        )
     print(f"{len(cases)} cases carry a verdict for {CONSTRAINT_ID!r} "
           f"(of {len(ETA_GRID) * len(G_GRID)} grid points)")
 
