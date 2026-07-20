@@ -28,12 +28,19 @@ for f in Path("generated/inputs").glob("*.json"):
         for k in hit: d[k] = special
         f.write_text(json.dumps(d, indent=2)); print(f"[inject] special_materials_capital={special:,.2f} into {f.name}")
 
+# CONSTRAINT-EXEC (WI-027 adapter 1): the generated CUSTOM_SCHEMA_TYPES already carry
+# ConstraintEvaluation + ConstraintReport, so registering write handlers for every
+# CUSTOM_SCHEMA_TYPES name registers the constraint exit-point handlers generically —
+# no per-type hand wiring. Without them PipelineValidator would reject the constraint run.
 schema_names = dict.fromkeys(["RootModel[float]"] + [t.__name__ for t in CUSTOM_SCHEMA_TYPES])
 router = create_output_router_with_json_schemas(list(schema_names))
 router.register_handler("float", WriteHandler(fn=lambda v,p: Path(p).write_text(json.dumps(v)), extension=".json"))
 result = execute_pipeline(rs.PIPELINE, output_dir=rs.E2E/"outputs"/"single",
     registry=create_stellarator_tea_registry(), output_router=router, custom_schema_types=CUSTOM_SCHEMA_TYPES)
 out = result.outputs
+# CONSTRAINT-EXEC (WI-027 adapter 2): oracle-comparison map keeps ONLY scalar channels;
+# the two non-scalar verdict channels (ConstraintEvaluation/ConstraintReport) are skipped,
+# so MR-5.1 bit-exactness on numeric channels is exactly as it was — verdicts are not numbers.
 b = {c:(float(v.root) if hasattr(v,'root') else float(v)) for c,v in out.items() if hasattr(v,'root') or isinstance(v,(int,float))}
 P, CH = rs.P, rs.CH
 total = b[f"{P}total_capital__total_capital"]; magnet = b[CH["magnet"]]
@@ -49,10 +56,30 @@ for name,val,exp in anchors:
     allok &= ok
     print(f"  {name:16s} exec={val:20.6f}  expect={exp:<18}  {'OK' if ok else '*** DEVIATION'}")
 print(f"  magnet capital $ = {magnet:,.2f}")
-print("=== FIVE VERDICTS ===")
+# CONSTRAINT-EXEC (WI-027 adapter 3): harvest the generated ConstraintReport into the run
+# report and assert verdict PARITY against the static expected set (design §Decision 6).
+# This is a string-equality regression check on the model's own reported status — NOT a
+# physics comparison: no operand-vs-bound test appears here (MR-WI027-2). The verdict source
+# is the generated ConstraintReport; a non-satisfied verdict is a demo finding to surface
+# (MR-WI027-4), never tuned away.
+EXPECTED_VERDICTS = {  # design-point actuals table — all five satisfied, none on a boundary
+    "beta_ok": "satisfied", "net_positive": "satisfied", "recirc_ok": "satisfied",
+    "tbr_ok": "satisfied", "wall_load_ok": "satisfied",
+}
+report = out["constraint_report"]
+print("=== FIVE VERDICTS (generated ConstraintReport) ===")
+verdicts = {}
 for c,v in out.items():
     if c.endswith('__evaluation') and hasattr(v,'status'):
-        print(f"  {c.split('__')[2]:14s} {v.status}")
+        name = c.split("__")[2]
+        verdicts[name] = v.status
+        print(f"  {name:14s} {v.status}")
+assert report.headline == "all_satisfied", f"headline {report.headline!r} != all_satisfied"
+assert report.assessed_count == 5, f"assessed_count {report.assessed_count} != 5"
+for name, exp in EXPECTED_VERDICTS.items():
+    got = verdicts.get(name)
+    assert got == exp, f"VERDICT PARITY FAIL: {name} = {got!r}, expected {exp!r} (surface per MR-WI027-4)"
+print(f"VERDICT PARITY: PASS — headline={report.headline}, assessed_count={report.assessed_count}, all five == satisfied")
 print("ANCHORS", "GREEN" if allok else "*** STOP — DEVIATION ***")
 
 # --- Bit-exact oracle comparison (WI-027 standard: rel dev < 1e-9) ---
