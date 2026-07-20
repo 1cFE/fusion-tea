@@ -17,6 +17,7 @@ runner fills the regen's actual three channels directly through the documented `
 from __future__ import annotations
 
 import json
+import shutil
 from pathlib import Path
 from typing import Mapping
 
@@ -66,7 +67,20 @@ class ThreeChannelEvaluator:
         return self._prepared.evaluate({**self._fixed, **typed_inputs})
 
 
+def _clean_build_artifacts() -> None:
+    """Remove stale `.pytest_cache` dirs left inside the sealed package tree (audit N1).
+
+    The package's own pytest run drops `generated/tests/.pytest_cache/`, an EXTRA file the
+    Item-7 seal verifier rejects (`SealVerificationError`) before this proof can load the
+    package. A reproducer must start from a clean tree, so sweep them first.
+    """
+    for cache in PACKAGE_DIR.rglob(".pytest_cache"):
+        if cache.is_dir():
+            shutil.rmtree(cache, ignore_errors=True)
+
+
 def main() -> None:
+    _clean_build_artifacts()
     STORE_PATH.parent.mkdir(parents=True, exist_ok=True)
     if STORE_PATH.exists():
         STORE_PATH.unlink()
