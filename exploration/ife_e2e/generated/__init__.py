@@ -11,7 +11,6 @@ from ife_tea.modules.constraints.constraintreportaggregatormodule import Constra
 from ife_tea.modules.hif_plant_pkg.hifplantviabilityconstraintmodule import HifPlantViabilityConstraintModule
 
 from ife_tea.schemas.constraint_types import ConstraintEvaluation as ConstraintEvaluation, ConstraintReport as ConstraintReport
-from ife_tea.schemas.hif_driver_params import HifDriverParams as HifDriverParams
 from ife_tea.schemas.hif_plant_params import HifPlantParams as HifPlantParams
 from ife_tea.schemas.ife_plant_params import IfePlantParams as IfePlantParams
 from ife_tea.schemas.system_design import SystemDesign as SystemDesign
@@ -38,4 +37,4 @@ def create_ife_tea_registry() -> PipelineModuleRegistry:
 
 # Custom schema types for TEAx pipeline registration
 # Use with: execute_pipeline(..., custom_schema_types=CUSTOM_SCHEMA_TYPES)
-CUSTOM_SCHEMA_TYPES = [    HifDriverParams,    HifPlantParams,    IfePlantParams,    SystemDesign,    ConstraintEvaluation,    ConstraintReport,    Float,]
+CUSTOM_SCHEMA_TYPES = [    HifPlantParams,    IfePlantParams,    SystemDesign,    ConstraintEvaluation,    ConstraintReport,    Float,]

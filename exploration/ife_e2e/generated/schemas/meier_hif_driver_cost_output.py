@@ -22,7 +22,7 @@ single chamber.
 *Basis**: Meier 1986 parametric driver cost formula for HIF
 induction linacs. Year-dollars: 1988$.
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:4
+SysML Source: root-0/analyses/hif_economics.sysml:4
     """
     cost_billions: float = Field(description="cost_billions output")
     gamma: float = Field(description="gamma output")

@@ -50,7 +50,7 @@ PACKAGE_DIR = (E2E / "generated").resolve()
 PACKAGE_NAME = "ife_tea"
 LINK_ROOT = Path("/tmp/ife_study_pkg_link")
 STORE_PATH = HERE / "_work" / "viability_study.db"
-SPEC_PATH = PACKAGE_DIR / "pipelines" / "ife_hif.yaml"
+SPEC_PATH = PACKAGE_DIR / "pipelines" / "pipeline.yaml"
 
 ENTRY_CHANNEL = "ife_plant_params"
 ETA_FIELD = "hif_plant_pkg__hif_plant__driver__efficiency"

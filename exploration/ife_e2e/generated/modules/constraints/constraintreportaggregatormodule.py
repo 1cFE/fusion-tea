@@ -30,7 +30,7 @@ class ConstraintReportAggregatorModule(
     name: str = "constraint_report_aggregator"
     version: str = "v0.1"
 
-    CATALOG_FINGERPRINT = "d9b3a6aaaa5f725a92bd88dcaf736a92b167f98ff90185454f88ba1cedc08961"
+    CATALOG_FINGERPRINT = "90814c774f318665574086fd296e77a2206cd0e48b15eea7a5beae164d8608f8"
 
     def run(self, **evaluations) -> ModuleResult[ConstraintReportAggregatorOutput]:
         validated = ConstraintReportAggregatorInput(**evaluations)

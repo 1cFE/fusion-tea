@@ -1,0 +1,132 @@
+"""Item 8 phase-3 gate: prove the canonical embedded-catalog seam end-to-end on the real,
+license-regenerated IFE package (`generated/`, catalog_schema_version 2.0.0).
+
+Scope (labelled honestly): this is a *representative* study run — one real evaluation of the
+whole-plant package through teax's `StudyRunner`/store, then a `StudyQuery` that reads codegen's
+embedded catalog straight from `contracts/model_contract.json` (no standalone
+`constraint_catalog.json`, no materializer). It proves exactly what Item 8 delivers: the catalog
+seam (`load_model_contract` + embedded-catalog `StudyQuery`) and the def→usage FK join. The full
+2,301-point (eta, gain) acceptance sweep is Item 13's bar, not this phase's.
+
+It does NOT use `run_viability_study.py`'s `MultiChannelEvaluator`: that harness bridge hardcodes
+the package's older four-entry-channel decomposition (incl. `hif_driver_params`), which current
+codegen no longer emits (now three groups). That multi-channel wiring is Item 9's target
+(`CandidateBridge` for zero/one/many channels), independent of Item 8's catalog seam — so this
+runner fills the regen's actual three channels directly through the documented `Evaluator` seam.
+"""
+from __future__ import annotations
+
+import json
+from pathlib import Path
+from typing import Mapping
+
+from pydantic import BaseModel
+
+from simkit.evaluation.evaluator import PreparedEvaluator
+from simkit.evaluation.evidence import ModelEvidence
+from simkit.evaluation.package_load import ProvisionalPackageLoader
+from simkit.study.definition import StudyDefinition
+from simkit.study.identity import digest_of
+from simkit.study.model_contract import load_model_contract
+from simkit.study.policy import ObjectivePolicy
+from simkit.study.query import StudyQuery
+from simkit.study.runner import StudyRunner
+from simkit.study.store import StudyStore
+from simkit.study.strategy import PreparedListStrategy
+
+HERE = Path(__file__).parent
+E2E = HERE.parent
+PACKAGE_DIR = (E2E / "generated").resolve()
+PACKAGE_NAME = "ife_tea"
+LINK_ROOT = Path("/tmp/ife_seam_pkg_link")
+STORE_PATH = HERE / "_work" / "catalog_seam.db"
+SPEC_PATH = PACKAGE_DIR / "pipelines" / "pipeline.yaml"
+INPUTS = PACKAGE_DIR / "inputs"
+
+ENTRY_CHANNEL = "ife_plant_params"
+CONSTRAINT_ID = "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b"
+
+
+class ThreeChannelEvaluator:
+    """Fills the regen's three entry channels: the swept `ife_plant_params` from the candidate,
+    the other two from the package's own committed input templates."""
+
+    def __init__(self, prepared: PreparedEvaluator, package) -> None:
+        self._prepared = prepared
+        self._fixed: dict[str, BaseModel] = {
+            "hif_plant_params": package.HifPlantParams(
+                **json.loads((INPUTS / "hif_plant_params.json").read_text())
+            ),
+            "system_design": package.SystemDesign(
+                **json.loads((INPUTS / "system_design.json").read_text())
+            ),
+        }
+
+    def evaluate(self, typed_inputs: Mapping[str, BaseModel]) -> ModelEvidence:
+        return self._prepared.evaluate({**self._fixed, **typed_inputs})
+
+
+def main() -> None:
+    STORE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    if STORE_PATH.exists():
+        STORE_PATH.unlink()
+
+    loader = ProvisionalPackageLoader(
+        package_dir=PACKAGE_DIR, package_name=PACKAGE_NAME, link_root=LINK_ROOT
+    )
+    loader.load()
+    prepared = PreparedEvaluator(loader, SPEC_PATH)
+    evaluator = ThreeChannelEvaluator(prepared, prepared.package)
+
+    # One representative candidate: the ife_plant_params template values themselves.
+    candidate = json.loads((INPUTS / "ife_plant_params.json").read_text())
+
+    definition = StudyDefinition(
+        study_id="ife-catalog-seam-proof",
+        entry_channel=ENTRY_CHANNEL,
+        entry_model=prepared.package.IfePlantParams,
+        strategy=PreparedListStrategy([candidate]),
+        validate_proposal=lambda raw: dict(raw),
+        policy=ObjectivePolicy(objectives=(), response_roles={}),
+        executable_fingerprint=prepared.fingerprint,
+        # Item 8: bind the real semantic_fingerprint, read via the embedded-catalog seam.
+        model_contract_fingerprint=load_model_contract(PACKAGE_DIR).semantic_fingerprint,
+        input_schema_version="input-v1",
+        evidence_schema_version=prepared.EVIDENCE_SCHEMA_VERSION,
+        study_definition_fingerprint=digest_of({"proof": "catalog-seam"}),
+    )
+
+    store = StudyStore.create_or_open(STORE_PATH, definition.compatibility())
+    store.acquire_lease()
+    StudyRunner(store, definition, evaluator).run()
+    store.release_lease()
+    store.close()
+
+    # --- The Item-8 catalog seam: query reads the embedded catalog from the package dir. ---
+    store = StudyStore(STORE_PATH)
+    query = StudyQuery(store, PACKAGE_DIR)
+    cases = query.cases(constraint=CONSTRAINT_ID)
+    if not cases:
+        raise SystemExit(
+            f"REGRESSION: no case carries a verdict for {CONSTRAINT_ID!r} — the embedded catalog "
+            "has zero eligible entries where exactly one was expected (B4)."
+        )
+    view = cases[0].catalog[CONSTRAINT_ID]
+    verdict = cases[0].verdicts[CONSTRAINT_ID]
+    store.close()
+
+    print("=== Item 8 catalog-seam proof (representative run; full sweep is Item 13) ===")
+    print(f"schema_version : {load_model_contract(PACKAGE_DIR).catalog_schema_version}")
+    print(f"eligible entries carrying a verdict for the viability constraint: {len(cases)}")
+    print(f"constraint_id  : {view.constraint_id}")
+    print(f"source_form    : {view.source_form}")
+    print(f"owner_qn       : {view.owner_qn}")
+    print(f"definition_qn  : {view.definition_qn}   <- Item-8 def->usage join, read from the entry")
+    print(f"verdict        : {verdict}")
+    assert view.source_form == "definition_typed"
+    assert view.definition_qn == "fusion_cycle::'Viability Threshold'"
+    print("PASS: embedded catalog consumed directly; def->usage join present; >=1 eligible entry.")
+
+
+if __name__ == "__main__":
+    main()

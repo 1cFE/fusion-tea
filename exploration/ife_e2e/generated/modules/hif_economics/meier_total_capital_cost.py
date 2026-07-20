@@ -18,9 +18,9 @@ Inputs:
 Outputs:
     - total_capital_billions: total_capital_billions result
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:65
+SysML Source: root-0/analyses/hif_economics.sysml:65
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:65
+SysML Source: root-0/analyses/hif_economics.sysml:65
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/hif_economics/meier_total_capital_cost_impl.py
@@ -64,9 +64,9 @@ Inputs:
 Outputs:
     - total_capital_billions: total_capital_billions result
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:65
+SysML Source: root-0/analyses/hif_economics.sysml:65
 
-    SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:65
+    SysML Source: root-0/analyses/hif_economics.sysml:65
 
     Calculation Specification:
         total_capital_billions = 1.83 * (reactor_cost + driver_cost + target_factory_cost)

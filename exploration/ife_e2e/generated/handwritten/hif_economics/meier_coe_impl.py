@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:84
+SysML Source: root-0/analyses/hif_economics.sysml:84
 
 SysML Expressions:
     coe_cents_kwh = 0.113 * total_capital_billions / (0.0876 * availability * net_electric_power_gw)
@@ -41,7 +41,7 @@ Constants: 0.113 = R + M (8.3% fixed charge + 3% O&M),
 *Ref**: Eq. 1 (lines 76-102)
 *Basis**: Meier 1986 COE formula. Year-dollars: 1988$.
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:84
+SysML Source: root-0/analyses/hif_economics.sysml:84
 
 SysML Expressions:
     coe_cents_kwh = 0.113 * total_capital_billions / (0.0876 * availability * net_electric_power_gw)
