@@ -21,10 +21,20 @@ Run:  cd .../exploration/stellarator_e2e && \
         handshake_1costingfe.py
 
 The generated pipeline's execution path (physics spine + every per-account cost
-module + contingency/indirect/LCOE) is already certified bit-exact against the
-pure-Python oracle by run_stellaris.py (rel tol 1e-9); this handshake reuses the
-same execution path but drives it with 1costingFE's point instead of the
-Stellaris design-point bindings.
+module + the native capital rollup + contingency/indirect/LCOE) is already
+certified bit-exact against the pure-Python oracle by run_stellaris_single.py
+(rel tol 1e-9); this handshake reuses the same single teax-simkit pass but drives
+it with 1costingFE's point instead of the Stellaris design-point bindings.
+
+Item 10 note: the capital rollup (powercore/bop/direct/total_capital) is compiled
+by codegen as instance-scoped aggregation producers, so ONE pass computes it in
+the graph. The former two-pass HARNESS GLUE #2 (a Python capital rollup that
+overwrote three placeholder bridge keys via set_params) is retired. CAS27 special
+materials is fed as a declared design input via the injection map. CAS21 buildings
+and CAS10 preconstruction are NO LONGER 1costingFE pass-throughs: WI-025 made them
+SysML forward-computed modules, so the graph computes them at 1costingFE's fed
+powers and the rollup rows below compare that against 1costingFE (a formula check,
+not a tautology).
 """
 
 import json
@@ -51,14 +61,6 @@ from simkit.io.output_router import (  # noqa: E402
 )
 
 from stellarator_tea import CUSTOM_SCHEMA_TYPES, create_stellarator_tea_registry  # noqa: E402
-from stellarator_tea.handwritten.mfe_account_costs.contingency_cost_impl import (  # noqa: E402
-    run_contingency_cost,
-)
-from stellarator_tea.handwritten.mfe_account_costs.indirect_cost_impl import (  # noqa: E402
-    run_indirect_cost,
-)
-from stellarator_tea.modules.mfe_account_costs.contingency_cost import Contingency_CostInput  # noqa: E402
-from stellarator_tea.modules.mfe_account_costs.indirect_cost import Indirect_CostInput  # noqa: E402
 
 GEN = E2E / "generated"
 PIPELINE = GEN / "pipelines" / "mfe_stellarator.yaml"
@@ -82,6 +84,12 @@ CH = dict(
     heat_rejection=f"{P}heat_rejection_cost__cost", misc=f"{P}misc_cost__cost",
     contingency=f"{P}contingency__cost", indirect=f"{P}indirect__cost",
     lcoe=f"{P}lcoe_calc__lcoe",
+    # native capital-rollup aggregation channels (Item 10; no Python glue)
+    buildings=f"{P}buildings_cost__cost", precon=f"{P}precon_cost__cost",
+    powercore_capital=f"{P}powercore_capital__powercore_capital",
+    bop_capital=f"{P}bop_capital__bop_capital",
+    direct_capital=f"{P}direct_capital__direct_capital",
+    total_capital=f"{P}total_capital__total_capital",
 )
 
 # SysML powercore account -> 1costingFE cas22_detail key (formula-reproduced).
@@ -239,6 +247,10 @@ def set_1cfe_inputs(o):
         f"{P}contingency__contingency_rate": refs["contingency_rate_noak"],
         f"{P}indirect__indirect_fraction": refs["indirect_fraction"],
         f"{P}indirect__construction_time": o["target"]["construction_time_yr"],
+        # CAS27 special materials: declared design input to the direct_capital
+        # aggregation, fed 1costingFE's pass-through value (M$ -> $). Replaces the
+        # retired glue's Python addition of `special` into the capital sum.
+        f"{P}direct_capital__special_materials_capital": o["costs_musd"]["cas27"] * M,
         # WI-025 (design D6 successor injection): lcoe_calc__annual_om is now
         # a chain-wired channel (annual_om = om_cost.annual_om), not a
         # settable leaf. Zero the O&M reference here so the chain computes
@@ -304,14 +316,12 @@ def set_1cfe_inputs(o):
     return dict(V=V, sigma_v=sigma_v, p_fus_target=p_fus_target)
 
 
-def set_params(**kv):
-    data = json.loads(MFE_PARAMS.read_text())
-    data.update(kv)
-    MFE_PARAMS.write_text(json.dumps(data, indent=2))
-
-
 def run_pipeline(tag):
-    router = create_output_router_with_json_schemas(["RootModel[float]"])
+    # Register the constraint ExitPoint schema types alongside RootModel[float] so the
+    # regenerated package's ConstraintReport exit points get a write handler (the
+    # run_stellaris_single adapter pattern); float exits keep the plain JSON handler.
+    schema_names = dict.fromkeys(["RootModel[float]"] + [t.__name__ for t in CUSTOM_SCHEMA_TYPES])
+    router = create_output_router_with_json_schemas(list(schema_names))
     router.register_handler(
         "float",
         WriteHandler(fn=lambda v, p: Path(p).write_text(json.dumps(v)), extension=".json"),
@@ -321,8 +331,11 @@ def run_pipeline(tag):
         registry=create_stellarator_tea_registry(),
         output_router=router, custom_schema_types=CUSTOM_SCHEMA_TYPES,
     )
+    # Keep only float-valued channels; the constraint ExitPoints emit ConstraintEvaluation
+    # objects (the five verdicts), which the cost/power comparison below does not consume.
     return {c: (float(v.root) if hasattr(v, "root") else float(v))
-            for c, v in result.outputs.items()}
+            for c, v in result.outputs.items()
+            if hasattr(v, "root") or isinstance(v, (int, float))}
 
 
 def sysml_account_formula(name, o, p_th, p_et):
@@ -367,44 +380,28 @@ def main():
     snap = snapshot()
     rows_out = {}
     try:
-        patch_bop_wiring(o)
-        inj = set_1cfe_inputs(o)
+        patch_bop_wiring(o)          # HARNESS GLUE #1 (BOP wiring) — kept
+        inj = set_1cfe_inputs(o)     # 1costingFE injection map (incl. CAS27 special input)
 
-        # ---- PASS A: physics spine + per-account cost modules -----------------
-        a = run_pipeline("hs_pass_a")
-        acc = {k: a[CH[k]] for k in ACCOUNTS}
+        # ---- SINGLE PASS: physics spine + per-account costs + native capital rollup ----
+        # The capital rollup (powercore/bop/direct/total_capital), contingency, indirect and
+        # LCOE are all computed in the graph in one pass — codegen compiles the rollup as
+        # instance-scoped aggregation producers. The former two-pass HARNESS GLUE #2 (Python
+        # capital rollup + placeholder set_params overwrite) is retired.
+        M = 1e6
+        b = run_pipeline("hs")
+        acc = {k: b[CH[k]] for k in ACCOUNTS}
 
         # verify fusion-power injection reproduced 1cfe p_fus
-        p_fus_sysml = a[CH["p_fus"]]
+        p_fus_sysml = b[CH["p_fus"]]
 
-        # ---- HARNESS GLUE #2: capital rollup with 1cfe pass-throughs ----------
-        M = 1e6
-        buildings = o["costs_musd"]["cas21"] * M   # <- 1cfe CAS21 (pass-through)
-        precon = o["costs_musd"]["cas10"] * M       # <- 1cfe CAS10 (pass-through)
-        special = o["costs_musd"]["cas27"] * M      # <- 1cfe CAS27 (pass-through)
-        contingency_rate = o["refs"]["contingency_rate_noak"]
-        indirect_fraction = o["refs"]["indirect_fraction"]
-        construction_years = o["target"]["construction_time_yr"]
-        ref_ct = o["refs"]["reference_construction_time"]
-
-        powercore = sum(acc[k] for k in POWERCORE)
-        bop = sum(acc[k] for k in BOP)
-        direct = powercore + bop + buildings + precon + special
-        contingency = run_contingency_cost(Contingency_CostInput(
-            contingency_rate=contingency_rate, direct_subtotal=direct))
-        indirect = run_indirect_cost(Indirect_CostInput(
-            indirect_fraction=indirect_fraction, direct_cost=direct,
-            construction_time=construction_years, reference_construction_time=ref_ct))
-        total = direct + contingency + indirect
-
-        set_params(**{
-            f"{P}contingency__direct_subtotal": direct,
-            f"{P}indirect__direct_cost": direct,
-            f"{P}lcoe_calc__total_capital": total,
-        })
-
-        # ---- PASS B: contingency + indirect + LCOE DCF ------------------------
-        b = run_pipeline("hs_pass_b")
+        # capital rollup sourced from the graph's native aggregation channels (no Python glue)
+        powercore = b[CH["powercore_capital"]]
+        bop = b[CH["bop_capital"]]
+        direct = b[CH["direct_capital"]]
+        total = b[CH["total_capital"]]
+        # CAS27 special is a declared design input, fed 1cfe's value via the injection map.
+        special = o["costs_musd"]["cas27"] * M
 
         # ---- power balance (SysML pipeline vs 1cfe) ---------------------------
         pw = o["power_table"]
@@ -431,11 +428,16 @@ def main():
                                   iso_at_1cfe_power=iso,
                                   iso_rel=(rel(iso, onecfe) if iso is not None else None)))
 
-        # pass-throughs (tautological — fed 1cfe values)
+        # CAS21/CAS10 are now SysML forward-computed (WI-025) at 1cfe's fed powers — a
+        # formula comparison vs 1cfe, no longer a tautological pass-through. CAS27 special
+        # is still a fed design input (tautological). Buildings/precon divergence here is
+        # the model's documented simplification, previously masked by the retired glue.
+        buildings = b[CH["buildings"]]
+        precon = b[CH["precon"]]
         pass_rows = [
-            ("buildings (CAS21)", o["costs_musd"]["cas21"] * M, buildings),
-            ("preconstruction (CAS10)", o["costs_musd"]["cas10"] * M, precon),
-            ("special_materials (CAS27)", o["costs_musd"]["cas27"] * M, special),
+            ("buildings (CAS21) [SysML fwd@1cfe-pwr]", o["costs_musd"]["cas21"] * M, buildings),
+            ("preconstruction (CAS10) [SysML fwd@1cfe-pwr]", o["costs_musd"]["cas10"] * M, precon),
+            ("special_materials (CAS27) [design-input]", o["costs_musd"]["cas27"] * M, special),
         ]
 
         # rollup + LCOE
@@ -485,7 +487,7 @@ def main():
         print(f"worst formula-isolation rel dev (SysML formula @ 1cfe power): "
               f"{worst_iso[0]} = {worst_iso[1]:+.2e}")
 
-        print("\n--- PASS-THROUGH (tautological — fed 1cfe values), $ ---")
+        print("\n--- CAS21/CAS10 (SysML fwd-computed @ 1cfe power) + CAS27 (design input), $ ---")
         for name, one, sy in pass_rows:
             print(f"{name:28s} {one:16,.0f} {sy:16,.0f} {rel(sy, one):+9.2%}")
 
