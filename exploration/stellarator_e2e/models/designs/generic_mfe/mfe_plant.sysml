@@ -397,16 +397,13 @@ package mfe_plant {
             + heat_rejection.capital_cost + misc_plant.capital_cost;
 
         // Direct-cost subtotal (modeled + pass-through direct accounts).
-        // DEMO NOTE (staged copy): converted from a cross-part rollup formula to
-        // a plain input. Codegen cannot compile feature-chain reads across parts
-        // in a CalcDef output (powercore_capital/bop_capital -> manual_required),
-        // and the V11 guard makes the resulting dangling reference fatal. The
-        // harness computes this sum from the generated per-account cost module
-        // outputs and feeds it in (WI-015 finding 4 closure). Canonical model
-        // keeps the formula:
-        //   direct_capital = powercore_capital + bop_capital + buildings.capital_cost
-        //                    + preconstruction_capital + special_materials_capital
-        attribute direct_capital : Real;
+        // Item 10: codegen now compiles this cross-part rollup as an aggregation
+        // producer (child :>> capital_cost redefinitions resolve per instance),
+        // so the staged twin carries the canonical formula — byte-identical to
+        // models/. The private bridge and harness rollup glue are retired.
+        attribute direct_capital : Real =
+            powercore_capital + bop_capital + buildings.capital_cost
+            + preconstruction_capital + special_materials_capital;
 
         // Contingency (CAS29) on the direct subtotal.
         attribute contingency_rate : Real;  // FOAK 0.10 / NOAK 0.0 (WI-011)
@@ -427,11 +424,9 @@ package mfe_plant {
         attribute indirect_capital : Real = indirect.cost;
 
         // Total overnight capital [$].
-        // DEMO NOTE (staged copy): converted to a plain input for the same
-        // reason as direct_capital (its formula reads contingency/indirect
-        // computed attributes; the harness closes it). Canonical model keeps:
-        //   total_capital = direct_capital + contingency_capital + indirect_capital
-        attribute total_capital : Real;
+        // Item 10: restored to the canonical formula (see direct_capital note).
+        attribute total_capital : Real =
+            direct_capital + contingency_capital + indirect_capital;
 
         // =====================================================================
         // LCOE  (WI-009 'LCOE DCF' core)

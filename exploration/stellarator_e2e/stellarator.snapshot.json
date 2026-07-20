@@ -1,7 +1,7 @@
 {
-  "snapshot_format_version": 3,
+  "snapshot_format_version": 5,
   "model_name": "models",
-  "captured_at": "2026-07-18T21:52:11.109772+00:00",
+  "captured_at": "2026-07-20T22:08:29.396514+00:00",
   "constraint_lowering_mode": "applied",
   "constraint_facts": {
     "contexts": [
@@ -612,7 +612,10 @@
           "name": "stellaris",
           "qualified_name": "stellarator_09::stellaris"
         },
-        "inherited_constraints": [],
+        "inherited_constraints": [
+          "mfe_plant::'MFE Power Plant'::net_positive",
+          "mfe_plant::'MFE Power Plant'::recirc_ok"
+        ],
         "redefinitions": [],
         "types": [
           "mfe_plant::'MFE Power Plant'",
@@ -624,12 +627,1226 @@
         ]
       }
     ],
-    "definitions": [],
+    "definitions": [
+      {
+        "formals": [
+          {
+            "default": null,
+            "has_default": false,
+            "name": "beta",
+            "qualified_name": "mfe_viability::'Beta Limit'::beta",
+            "types": [
+              "ScalarValues::Real",
+              "Base::DataValue",
+              "Base::Anything"
+            ]
+          },
+          {
+            "default": null,
+            "has_default": false,
+            "name": "beta_limit",
+            "qualified_name": "mfe_viability::'Beta Limit'::beta_limit",
+            "types": [
+              "ScalarValues::Real",
+              "Base::DataValue",
+              "Base::Anything"
+            ]
+          }
+        ],
+        "identity": {
+          "kind": "ConstraintDefinition",
+          "name": "Beta Limit",
+          "qualified_name": "mfe_viability::'Beta Limit'"
+        },
+        "predicate": {
+          "kind": "operator",
+          "operand_type": null,
+          "operands": [
+            {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "beta",
+                "target": {
+                  "kind": "AttributeUsage",
+                  "name": "beta",
+                  "qualified_name": "mfe_viability::'Beta Limit'::beta"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            },
+            {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "beta_limit",
+                "target": {
+                  "kind": "AttributeUsage",
+                  "name": "beta_limit",
+                  "qualified_name": "mfe_viability::'Beta Limit'::beta_limit"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            }
+          ],
+          "operator": "<=",
+          "schema_version": "expression-ir/v1"
+        }
+      },
+      {
+        "formals": [
+          {
+            "default": null,
+            "has_default": false,
+            "name": "rec_frac",
+            "qualified_name": "mfe_viability::'Economic Recirculating Threshold'::rec_frac",
+            "types": [
+              "ScalarValues::Real",
+              "Base::DataValue",
+              "Base::Anything"
+            ]
+          },
+          {
+            "default": {
+              "kind": "literal",
+              "literal": {
+                "kind": "LiteralRational",
+                "result_type": "ScalarValues::Rational",
+                "value": 0.5
+              },
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "schema_version": "expression-ir/v1"
+            },
+            "has_default": true,
+            "name": "threshold",
+            "qualified_name": "mfe_viability::'Economic Recirculating Threshold'::threshold",
+            "types": [
+              "ScalarValues::Real",
+              "Base::DataValue",
+              "Base::Anything"
+            ]
+          }
+        ],
+        "identity": {
+          "kind": "ConstraintDefinition",
+          "name": "Economic Recirculating Threshold",
+          "qualified_name": "mfe_viability::'Economic Recirculating Threshold'"
+        },
+        "predicate": {
+          "kind": "operator",
+          "operand_type": null,
+          "operands": [
+            {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "rec_frac",
+                "target": {
+                  "kind": "AttributeUsage",
+                  "name": "rec_frac",
+                  "qualified_name": "mfe_viability::'Economic Recirculating Threshold'::rec_frac"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            },
+            {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "threshold",
+                "target": {
+                  "kind": "AttributeUsage",
+                  "name": "threshold",
+                  "qualified_name": "mfe_viability::'Economic Recirculating Threshold'::threshold"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            }
+          ],
+          "operator": "<=",
+          "schema_version": "expression-ir/v1"
+        }
+      },
+      {
+        "formals": [
+          {
+            "default": null,
+            "has_default": false,
+            "name": "net_electric",
+            "qualified_name": "mfe_viability::'Net Power Positive'::net_electric",
+            "types": [
+              "ScalarValues::Real",
+              "Base::DataValue",
+              "Base::Anything"
+            ]
+          }
+        ],
+        "identity": {
+          "kind": "ConstraintDefinition",
+          "name": "Net Power Positive",
+          "qualified_name": "mfe_viability::'Net Power Positive'"
+        },
+        "predicate": {
+          "kind": "operator",
+          "operand_type": null,
+          "operands": [
+            {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "net_electric",
+                "target": {
+                  "kind": "AttributeUsage",
+                  "name": "net_electric",
+                  "qualified_name": "mfe_viability::'Net Power Positive'::net_electric"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            },
+            {
+              "kind": "literal",
+              "literal": {
+                "kind": "LiteralRational",
+                "result_type": "ScalarValues::Rational",
+                "value": 0.0
+              },
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "schema_version": "expression-ir/v1"
+            }
+          ],
+          "operator": ">",
+          "schema_version": "expression-ir/v1"
+        }
+      },
+      {
+        "formals": [
+          {
+            "default": null,
+            "has_default": false,
+            "name": "wall_load",
+            "qualified_name": "mfe_viability::'Neutron Wall Load Limit'::wall_load",
+            "types": [
+              "ScalarValues::Real",
+              "Base::DataValue",
+              "Base::Anything"
+            ]
+          },
+          {
+            "default": null,
+            "has_default": false,
+            "name": "wall_load_limit",
+            "qualified_name": "mfe_viability::'Neutron Wall Load Limit'::wall_load_limit",
+            "types": [
+              "ScalarValues::Real",
+              "Base::DataValue",
+              "Base::Anything"
+            ]
+          }
+        ],
+        "identity": {
+          "kind": "ConstraintDefinition",
+          "name": "Neutron Wall Load Limit",
+          "qualified_name": "mfe_viability::'Neutron Wall Load Limit'"
+        },
+        "predicate": {
+          "kind": "operator",
+          "operand_type": null,
+          "operands": [
+            {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "wall_load",
+                "target": {
+                  "kind": "AttributeUsage",
+                  "name": "wall_load",
+                  "qualified_name": "mfe_viability::'Neutron Wall Load Limit'::wall_load"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            },
+            {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "wall_load_limit",
+                "target": {
+                  "kind": "AttributeUsage",
+                  "name": "wall_load_limit",
+                  "qualified_name": "mfe_viability::'Neutron Wall Load Limit'::wall_load_limit"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            }
+          ],
+          "operator": "<=",
+          "schema_version": "expression-ir/v1"
+        }
+      },
+      {
+        "formals": [
+          {
+            "default": null,
+            "has_default": false,
+            "name": "tbr",
+            "qualified_name": "mfe_viability::'TBR Floor'::tbr",
+            "types": [
+              "ScalarValues::Real",
+              "Base::DataValue",
+              "Base::Anything"
+            ]
+          },
+          {
+            "default": null,
+            "has_default": false,
+            "name": "tbr_floor",
+            "qualified_name": "mfe_viability::'TBR Floor'::tbr_floor",
+            "types": [
+              "ScalarValues::Real",
+              "Base::DataValue",
+              "Base::Anything"
+            ]
+          }
+        ],
+        "identity": {
+          "kind": "ConstraintDefinition",
+          "name": "TBR Floor",
+          "qualified_name": "mfe_viability::'TBR Floor'"
+        },
+        "predicate": {
+          "kind": "operator",
+          "operand_type": null,
+          "operands": [
+            {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "tbr",
+                "target": {
+                  "kind": "AttributeUsage",
+                  "name": "tbr",
+                  "qualified_name": "mfe_viability::'TBR Floor'::tbr"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            },
+            {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "tbr_floor",
+                "target": {
+                  "kind": "AttributeUsage",
+                  "name": "tbr_floor",
+                  "qualified_name": "mfe_viability::'TBR Floor'::tbr_floor"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            }
+          ],
+          "operator": ">=",
+          "schema_version": "expression-ir/v1"
+        }
+      }
+    ],
     "diagnostics": [],
-    "schema_version": "constraint-facts/v1",
-    "usages": []
+    "schema_version": "constraint-facts/v2",
+    "usages": [
+      {
+        "actuals": [
+          {
+            "direction": "in",
+            "formal_targets": [
+              "mfe_viability::'Net Power Positive'::net_electric"
+            ],
+            "name": "net_electric",
+            "value": {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [
+                  "pb",
+                  "p_net"
+                ],
+                "source_name": "pb.p_net",
+                "target": {
+                  "kind": "AttributeUsage",
+                  "name": "p_net",
+                  "qualified_name": "mfe_power_balance::'MFE Power Balance Calc'::p_net"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            }
+          }
+        ],
+        "identity": {
+          "kind": "AssertConstraintUsage",
+          "name": "net_positive",
+          "qualified_name": "mfe_plant::'MFE Power Plant'::net_positive"
+        },
+        "inherited_into": [
+          "stellarator_09::stellaris"
+        ],
+        "is_negated": false,
+        "location": {
+          "column": 9,
+          "file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+          "line": 454
+        },
+        "membership_kind": null,
+        "omitted_default_formals": [],
+        "owner": {
+          "owner": {
+            "kind": "PartDefinition",
+            "name": "MFE Power Plant",
+            "qualified_name": "mfe_plant::'MFE Power Plant'"
+          },
+          "owning_definition": {
+            "kind": "part_def",
+            "qualified_name": "mfe_plant::'MFE Power Plant'"
+          }
+        },
+        "predicate": {
+          "kind": "operator",
+          "operand_type": null,
+          "operands": [
+            {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "net_electric",
+                "target": {
+                  "kind": "AttributeUsage",
+                  "name": "net_electric",
+                  "qualified_name": "mfe_viability::'Net Power Positive'::net_electric"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            },
+            {
+              "kind": "literal",
+              "literal": {
+                "kind": "LiteralRational",
+                "result_type": "ScalarValues::Rational",
+                "value": 0.0
+              },
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "schema_version": "expression-ir/v1"
+            }
+          ],
+          "operator": ">",
+          "schema_version": "expression-ir/v1"
+        },
+        "scope": {
+          "kind": "AssertConstraintUsage",
+          "name": "net_positive",
+          "qualified_name": "mfe_plant::'MFE Power Plant'::net_positive"
+        },
+        "source": {
+          "asserted_constraint": {
+            "kind": "AssertConstraintUsage",
+            "name": "net_positive",
+            "qualified_name": "mfe_plant::'MFE Power Plant'::net_positive"
+          },
+          "constraint_definition": {
+            "kind": "ConstraintDefinition",
+            "name": "Net Power Positive",
+            "qualified_name": "mfe_viability::'Net Power Positive'"
+          },
+          "effective_predicate_source": {
+            "kind": "ConstraintDefinition",
+            "name": "Net Power Positive",
+            "qualified_name": "mfe_viability::'Net Power Positive'"
+          },
+          "form": "definition_typed",
+          "referenced_feature_target": null
+        }
+      },
+      {
+        "actuals": [
+          {
+            "direction": "in",
+            "formal_targets": [
+              "mfe_viability::'Economic Recirculating Threshold'::rec_frac"
+            ],
+            "name": "rec_frac",
+            "value": {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [
+                  "pb",
+                  "rec_frac"
+                ],
+                "source_name": "pb.rec_frac",
+                "target": {
+                  "kind": "AttributeUsage",
+                  "name": "rec_frac",
+                  "qualified_name": "mfe_power_balance::'MFE Power Balance Calc'::rec_frac"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            }
+          }
+        ],
+        "identity": {
+          "kind": "AssertConstraintUsage",
+          "name": "recirc_ok",
+          "qualified_name": "mfe_plant::'MFE Power Plant'::recirc_ok"
+        },
+        "inherited_into": [
+          "stellarator_09::stellaris"
+        ],
+        "is_negated": false,
+        "location": {
+          "column": 9,
+          "file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+          "line": 458
+        },
+        "membership_kind": null,
+        "omitted_default_formals": [
+          "mfe_viability::'Economic Recirculating Threshold'::threshold"
+        ],
+        "owner": {
+          "owner": {
+            "kind": "PartDefinition",
+            "name": "MFE Power Plant",
+            "qualified_name": "mfe_plant::'MFE Power Plant'"
+          },
+          "owning_definition": {
+            "kind": "part_def",
+            "qualified_name": "mfe_plant::'MFE Power Plant'"
+          }
+        },
+        "predicate": {
+          "kind": "operator",
+          "operand_type": null,
+          "operands": [
+            {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "rec_frac",
+                "target": {
+                  "kind": "AttributeUsage",
+                  "name": "rec_frac",
+                  "qualified_name": "mfe_viability::'Economic Recirculating Threshold'::rec_frac"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            },
+            {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "threshold",
+                "target": {
+                  "kind": "AttributeUsage",
+                  "name": "threshold",
+                  "qualified_name": "mfe_viability::'Economic Recirculating Threshold'::threshold"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            }
+          ],
+          "operator": "<=",
+          "schema_version": "expression-ir/v1"
+        },
+        "scope": {
+          "kind": "AssertConstraintUsage",
+          "name": "recirc_ok",
+          "qualified_name": "mfe_plant::'MFE Power Plant'::recirc_ok"
+        },
+        "source": {
+          "asserted_constraint": {
+            "kind": "AssertConstraintUsage",
+            "name": "recirc_ok",
+            "qualified_name": "mfe_plant::'MFE Power Plant'::recirc_ok"
+          },
+          "constraint_definition": {
+            "kind": "ConstraintDefinition",
+            "name": "Economic Recirculating Threshold",
+            "qualified_name": "mfe_viability::'Economic Recirculating Threshold'"
+          },
+          "effective_predicate_source": {
+            "kind": "ConstraintDefinition",
+            "name": "Economic Recirculating Threshold",
+            "qualified_name": "mfe_viability::'Economic Recirculating Threshold'"
+          },
+          "form": "definition_typed",
+          "referenced_feature_target": null
+        }
+      },
+      {
+        "actuals": [
+          {
+            "direction": "in",
+            "formal_targets": [
+              "mfe_viability::'Beta Limit'::beta"
+            ],
+            "name": "beta",
+            "value": {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "beta",
+                "target": {
+                  "kind": "ReferenceUsage",
+                  "name": "beta",
+                  "qualified_name": "stellarator_09::stellaris::beta_ok::beta"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            }
+          },
+          {
+            "direction": "in",
+            "formal_targets": [
+              "mfe_viability::'Beta Limit'::beta_limit"
+            ],
+            "name": "beta_limit",
+            "value": {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "beta_limit",
+                "target": {
+                  "kind": "ReferenceUsage",
+                  "name": "beta_limit",
+                  "qualified_name": "stellarator_09::stellaris::beta_ok::beta_limit"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            }
+          }
+        ],
+        "identity": {
+          "kind": "AssertConstraintUsage",
+          "name": "beta_ok",
+          "qualified_name": "stellarator_09::stellaris::beta_ok"
+        },
+        "inherited_into": [],
+        "is_negated": false,
+        "location": {
+          "column": 9,
+          "file": "root-0/designs/stellarator_09/stellarator_plant.sysml",
+          "line": 742
+        },
+        "membership_kind": null,
+        "omitted_default_formals": [],
+        "owner": {
+          "owner": {
+            "kind": "PartUsage",
+            "name": "stellaris",
+            "qualified_name": "stellarator_09::stellaris"
+          },
+          "owning_definition": {
+            "kind": "package",
+            "qualified_name": "stellarator_09"
+          }
+        },
+        "predicate": {
+          "kind": "operator",
+          "operand_type": null,
+          "operands": [
+            {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "beta",
+                "target": {
+                  "kind": "AttributeUsage",
+                  "name": "beta",
+                  "qualified_name": "mfe_viability::'Beta Limit'::beta"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            },
+            {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "beta_limit",
+                "target": {
+                  "kind": "AttributeUsage",
+                  "name": "beta_limit",
+                  "qualified_name": "mfe_viability::'Beta Limit'::beta_limit"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            }
+          ],
+          "operator": "<=",
+          "schema_version": "expression-ir/v1"
+        },
+        "scope": {
+          "kind": "AssertConstraintUsage",
+          "name": "beta_ok",
+          "qualified_name": "stellarator_09::stellaris::beta_ok"
+        },
+        "source": {
+          "asserted_constraint": {
+            "kind": "AssertConstraintUsage",
+            "name": "beta_ok",
+            "qualified_name": "stellarator_09::stellaris::beta_ok"
+          },
+          "constraint_definition": {
+            "kind": "ConstraintDefinition",
+            "name": "Beta Limit",
+            "qualified_name": "mfe_viability::'Beta Limit'"
+          },
+          "effective_predicate_source": {
+            "kind": "ConstraintDefinition",
+            "name": "Beta Limit",
+            "qualified_name": "mfe_viability::'Beta Limit'"
+          },
+          "form": "definition_typed",
+          "referenced_feature_target": null
+        }
+      },
+      {
+        "actuals": [
+          {
+            "direction": "in",
+            "formal_targets": [
+              "mfe_viability::'Neutron Wall Load Limit'::wall_load"
+            ],
+            "name": "wall_load",
+            "value": {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [
+                  "wall_load_calc",
+                  "wall_load"
+                ],
+                "source_name": "wall_load_calc.wall_load",
+                "target": {
+                  "kind": "AttributeUsage",
+                  "name": "wall_load",
+                  "qualified_name": "mfe_plasma_scaling::'Neutron Wall Load'::wall_load"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            }
+          },
+          {
+            "direction": "in",
+            "formal_targets": [
+              "mfe_viability::'Neutron Wall Load Limit'::wall_load_limit"
+            ],
+            "name": "wall_load_limit",
+            "value": {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "wall_load_limit",
+                "target": {
+                  "kind": "ReferenceUsage",
+                  "name": "wall_load_limit",
+                  "qualified_name": "stellarator_09::stellaris::wall_load_ok::wall_load_limit"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            }
+          }
+        ],
+        "identity": {
+          "kind": "AssertConstraintUsage",
+          "name": "wall_load_ok",
+          "qualified_name": "stellarator_09::stellaris::wall_load_ok"
+        },
+        "inherited_into": [],
+        "is_negated": false,
+        "location": {
+          "column": 9,
+          "file": "root-0/designs/stellarator_09/stellarator_plant.sysml",
+          "line": 746
+        },
+        "membership_kind": null,
+        "omitted_default_formals": [],
+        "owner": {
+          "owner": {
+            "kind": "PartUsage",
+            "name": "stellaris",
+            "qualified_name": "stellarator_09::stellaris"
+          },
+          "owning_definition": {
+            "kind": "package",
+            "qualified_name": "stellarator_09"
+          }
+        },
+        "predicate": {
+          "kind": "operator",
+          "operand_type": null,
+          "operands": [
+            {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "wall_load",
+                "target": {
+                  "kind": "AttributeUsage",
+                  "name": "wall_load",
+                  "qualified_name": "mfe_viability::'Neutron Wall Load Limit'::wall_load"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            },
+            {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "wall_load_limit",
+                "target": {
+                  "kind": "AttributeUsage",
+                  "name": "wall_load_limit",
+                  "qualified_name": "mfe_viability::'Neutron Wall Load Limit'::wall_load_limit"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            }
+          ],
+          "operator": "<=",
+          "schema_version": "expression-ir/v1"
+        },
+        "scope": {
+          "kind": "AssertConstraintUsage",
+          "name": "wall_load_ok",
+          "qualified_name": "stellarator_09::stellaris::wall_load_ok"
+        },
+        "source": {
+          "asserted_constraint": {
+            "kind": "AssertConstraintUsage",
+            "name": "wall_load_ok",
+            "qualified_name": "stellarator_09::stellaris::wall_load_ok"
+          },
+          "constraint_definition": {
+            "kind": "ConstraintDefinition",
+            "name": "Neutron Wall Load Limit",
+            "qualified_name": "mfe_viability::'Neutron Wall Load Limit'"
+          },
+          "effective_predicate_source": {
+            "kind": "ConstraintDefinition",
+            "name": "Neutron Wall Load Limit",
+            "qualified_name": "mfe_viability::'Neutron Wall Load Limit'"
+          },
+          "form": "definition_typed",
+          "referenced_feature_target": null
+        }
+      },
+      {
+        "actuals": [
+          {
+            "direction": "in",
+            "formal_targets": [
+              "mfe_viability::'TBR Floor'::tbr"
+            ],
+            "name": "tbr",
+            "value": {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "tbr",
+                "target": {
+                  "kind": "ReferenceUsage",
+                  "name": "tbr",
+                  "qualified_name": "stellarator_09::stellaris::tbr_ok::tbr"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            }
+          },
+          {
+            "direction": "in",
+            "formal_targets": [
+              "mfe_viability::'TBR Floor'::tbr_floor"
+            ],
+            "name": "tbr_floor",
+            "value": {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "tbr_floor",
+                "target": {
+                  "kind": "ReferenceUsage",
+                  "name": "tbr_floor",
+                  "qualified_name": "stellarator_09::stellaris::tbr_ok::tbr_floor"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            }
+          }
+        ],
+        "identity": {
+          "kind": "AssertConstraintUsage",
+          "name": "tbr_ok",
+          "qualified_name": "stellarator_09::stellaris::tbr_ok"
+        },
+        "inherited_into": [],
+        "is_negated": false,
+        "location": {
+          "column": 9,
+          "file": "root-0/designs/stellarator_09/stellarator_plant.sysml",
+          "line": 750
+        },
+        "membership_kind": null,
+        "omitted_default_formals": [],
+        "owner": {
+          "owner": {
+            "kind": "PartUsage",
+            "name": "stellaris",
+            "qualified_name": "stellarator_09::stellaris"
+          },
+          "owning_definition": {
+            "kind": "package",
+            "qualified_name": "stellarator_09"
+          }
+        },
+        "predicate": {
+          "kind": "operator",
+          "operand_type": null,
+          "operands": [
+            {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "tbr",
+                "target": {
+                  "kind": "AttributeUsage",
+                  "name": "tbr",
+                  "qualified_name": "mfe_viability::'TBR Floor'::tbr"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            },
+            {
+              "kind": "feature_ref",
+              "operand_type": {
+                "category": "real",
+                "enumeration": null,
+                "unit": null
+              },
+              "reference": {
+                "chain_segments": [],
+                "source_name": "tbr_floor",
+                "target": {
+                  "kind": "AttributeUsage",
+                  "name": "tbr_floor",
+                  "qualified_name": "mfe_viability::'TBR Floor'::tbr_floor"
+                },
+                "target_types": [
+                  "ScalarValues::Real",
+                  "Base::DataValue",
+                  "Base::Anything"
+                ]
+              },
+              "schema_version": "expression-ir/v1"
+            }
+          ],
+          "operator": ">=",
+          "schema_version": "expression-ir/v1"
+        },
+        "scope": {
+          "kind": "AssertConstraintUsage",
+          "name": "tbr_ok",
+          "qualified_name": "stellarator_09::stellaris::tbr_ok"
+        },
+        "source": {
+          "asserted_constraint": {
+            "kind": "AssertConstraintUsage",
+            "name": "tbr_ok",
+            "qualified_name": "stellarator_09::stellaris::tbr_ok"
+          },
+          "constraint_definition": {
+            "kind": "ConstraintDefinition",
+            "name": "TBR Floor",
+            "qualified_name": "mfe_viability::'TBR Floor'"
+          },
+          "effective_predicate_source": {
+            "kind": "ConstraintDefinition",
+            "name": "TBR Floor",
+            "qualified_name": "mfe_viability::'TBR Floor'"
+          },
+          "form": "definition_typed",
+          "referenced_feature_target": null
+        }
+      }
+    ]
   },
-  "part_occurrences": {},
+  "part_occurrences": {
+    "mfe_plant__MFE_Power_Plant": [
+      {
+        "part_def_qn": "mfe_plant__MFE_Power_Plant",
+        "steps": [
+          {
+            "owning_def_qn": "stellarator_09",
+            "feature_name": "stellaris",
+            "occurrence_index": null
+          }
+        ]
+      }
+    ]
+  },
   "compilation_results": {
     "LCOE_DCF": {
       "calc_def_name": "LCOE_DCF",
@@ -1893,7 +3110,7 @@
         }
       ],
       "references": [],
-      "source_file": "models/analyses/mfe_lcoe_dcf.sysml",
+      "source_file": "root-0/analyses/mfe_lcoe_dcf.sysml",
       "source_line": 4,
       "source_hash": "4ec679eb387cc9777c99634817d0ee9e2f2a8ea45dd495ce768739b223e04698",
       "output_expression_asts": null,
@@ -2055,7 +3272,7 @@
         }
       ],
       "references": [],
-      "source_file": "models/analyses/mfe_cryo_plant.sysml",
+      "source_file": "root-0/analyses/mfe_cryo_plant.sysml",
       "source_line": 4,
       "source_hash": "a5cbbdaba0b28af7f77980e13d43224bc418ff4112c6669ecd959e3f446dedf9",
       "output_expression_asts": null,
@@ -2194,7 +3411,7 @@
         }
       ],
       "references": [],
-      "source_file": "models/analyses/mfe_magnet_cost.sysml",
+      "source_file": "root-0/analyses/mfe_magnet_cost.sysml",
       "source_line": 4,
       "source_hash": "d82fd5a7790c6191ac1a4f6e2e3960bcd547a9d92260ccaa5763e4caa43dbd62",
       "output_expression_asts": null,
@@ -2304,7 +3521,7 @@
         }
       ],
       "references": [],
-      "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+      "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
       "source_line": 4,
       "source_hash": "ff9d7d4544f05757fc51d30380c1e2237256ea265c93358a797419cb10e7d63d",
       "output_expression_asts": null,
@@ -2627,7 +3844,7 @@
         }
       ],
       "references": [],
-      "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+      "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
       "source_line": 41,
       "source_hash": "ff9d7d4544f05757fc51d30380c1e2237256ea265c93358a797419cb10e7d63d",
       "output_expression_asts": null,
@@ -2825,7 +4042,7 @@
         }
       ],
       "references": [],
-      "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+      "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
       "source_line": 125,
       "source_hash": "ff9d7d4544f05757fc51d30380c1e2237256ea265c93358a797419cb10e7d63d",
       "output_expression_asts": null,
@@ -2912,7 +4129,7 @@
         }
       ],
       "references": [],
-      "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+      "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
       "source_line": 204,
       "source_hash": "ff9d7d4544f05757fc51d30380c1e2237256ea265c93358a797419cb10e7d63d",
       "output_expression_asts": null,
@@ -3030,7 +4247,7 @@
         }
       ],
       "references": [],
-      "source_file": "models/analyses/mfe_account_costs.sysml",
+      "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 22,
       "source_hash": "ce136f1bbeff9b477e43b746446ac6a9a930fc1c0a8cda5c7fc1e44ee7258658",
       "output_expression_asts": null,
@@ -3151,7 +4368,7 @@
         }
       ],
       "references": [],
-      "source_file": "models/analyses/mfe_account_costs.sysml",
+      "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 52,
       "source_hash": "ce136f1bbeff9b477e43b746446ac6a9a930fc1c0a8cda5c7fc1e44ee7258658",
       "output_expression_asts": null,
@@ -3259,7 +4476,7 @@
         }
       ],
       "references": [],
-      "source_file": "models/analyses/mfe_account_costs.sysml",
+      "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 81,
       "source_hash": "ce136f1bbeff9b477e43b746446ac6a9a930fc1c0a8cda5c7fc1e44ee7258658",
       "output_expression_asts": null,
@@ -3366,7 +4583,7 @@
         }
       ],
       "references": [],
-      "source_file": "models/analyses/mfe_account_costs.sysml",
+      "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 108,
       "source_hash": "ce136f1bbeff9b477e43b746446ac6a9a930fc1c0a8cda5c7fc1e44ee7258658",
       "output_expression_asts": null,
@@ -3460,7 +4677,7 @@
         }
       ],
       "references": [],
-      "source_file": "models/analyses/mfe_account_costs.sysml",
+      "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 140,
       "source_hash": "ce136f1bbeff9b477e43b746446ac6a9a930fc1c0a8cda5c7fc1e44ee7258658",
       "output_expression_asts": null,
@@ -3553,7 +4770,7 @@
         }
       ],
       "references": [],
-      "source_file": "models/analyses/mfe_account_costs.sysml",
+      "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 168,
       "source_hash": "ce136f1bbeff9b477e43b746446ac6a9a930fc1c0a8cda5c7fc1e44ee7258658",
       "output_expression_asts": null,
@@ -3696,7 +4913,7 @@
         }
       ],
       "references": [],
-      "source_file": "models/analyses/mfe_account_costs.sysml",
+      "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 196,
       "source_hash": "ce136f1bbeff9b477e43b746446ac6a9a930fc1c0a8cda5c7fc1e44ee7258658",
       "output_expression_asts": null,
@@ -3779,7 +4996,7 @@
         }
       ],
       "references": [],
-      "source_file": "models/analyses/mfe_account_costs.sysml",
+      "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 226,
       "source_hash": "ce136f1bbeff9b477e43b746446ac6a9a930fc1c0a8cda5c7fc1e44ee7258658",
       "output_expression_asts": null,
@@ -3843,7 +5060,7 @@
         }
       ],
       "references": [],
-      "source_file": "models/analyses/mfe_account_costs.sysml",
+      "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 255,
       "source_hash": "ce136f1bbeff9b477e43b746446ac6a9a930fc1c0a8cda5c7fc1e44ee7258658",
       "output_expression_asts": null,
@@ -3933,7 +5150,7 @@
         }
       ],
       "references": [],
-      "source_file": "models/analyses/mfe_account_costs.sysml",
+      "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 276,
       "source_hash": "ce136f1bbeff9b477e43b746446ac6a9a930fc1c0a8cda5c7fc1e44ee7258658",
       "output_expression_asts": null,
@@ -4172,7 +5389,7 @@
         }
       ],
       "references": [],
-      "source_file": "models/analyses/mfe_account_costs.sysml",
+      "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 304,
       "source_hash": "ce136f1bbeff9b477e43b746446ac6a9a930fc1c0a8cda5c7fc1e44ee7258658",
       "output_expression_asts": null,
@@ -4304,7 +5521,7 @@
         }
       ],
       "references": [],
-      "source_file": "models/analyses/mfe_account_costs.sysml",
+      "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 356,
       "source_hash": "ce136f1bbeff9b477e43b746446ac6a9a930fc1c0a8cda5c7fc1e44ee7258658",
       "output_expression_asts": null,
@@ -4427,7 +5644,7 @@
         }
       ],
       "references": [],
-      "source_file": "models/analyses/mfe_account_costs.sysml",
+      "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 387,
       "source_hash": "ce136f1bbeff9b477e43b746446ac6a9a930fc1c0a8cda5c7fc1e44ee7258658",
       "output_expression_asts": null,
@@ -4740,7 +5957,7 @@
         }
       ],
       "references": [],
-      "source_file": "models/analyses/mfe_power_balance.sysml",
+      "source_file": "root-0/analyses/mfe_power_balance.sysml",
       "source_line": 4,
       "source_hash": "57210c23e2947fa6be63558671488ebaad5b32d624fba7e0df3e747bb8e10556",
       "output_expression_asts": null,
@@ -4795,7 +6012,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "fusion",
-          "source_attribute_name": "p_fus"
+          "source_attribute_name": "p_fus",
+          "source_written_qualifier": null
         },
         {
           "param_name": "wall_area",
@@ -4808,13 +6026,14 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "rb",
-          "source_attribute_name": "wall_area"
+          "source_attribute_name": "wall_area",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [
         "ash_frac"
       ],
-      "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
+      "source_file": "root-0/designs/stellarator_09/stellarator_plant.sysml",
       "source_line": 728,
       "parent_part_path": "",
       "qualified_name": "stellarator_09__stellaris__wall_load_calc",
@@ -4839,7 +6058,8 @@
           "literal_value": 12.7,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "R"
+          "source_attribute_name": "R",
+          "source_written_qualifier": null
         },
         {
           "param_name": "a",
@@ -4852,7 +6072,8 @@
           "literal_value": 1.3,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "a"
+          "source_attribute_name": "a",
+          "source_written_qualifier": null
         },
         {
           "param_name": "kappa",
@@ -4865,7 +6086,8 @@
           "literal_value": 1.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "kappa"
+          "source_attribute_name": "kappa",
+          "source_written_qualifier": null
         },
         {
           "param_name": "f_shape",
@@ -4878,13 +6100,14 @@
           "literal_value": 1.0031567,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "f_shape"
+          "source_attribute_name": "f_shape",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [
         "pi"
       ],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
       "source_line": 116,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__geom",
@@ -4909,7 +6132,8 @@
           "literal_value": 12.7,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "R"
+          "source_attribute_name": "R",
+          "source_written_qualifier": null
         },
         {
           "param_name": "a",
@@ -4922,7 +6146,8 @@
           "literal_value": 1.3,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "a"
+          "source_attribute_name": "a",
+          "source_written_qualifier": null
         },
         {
           "param_name": "kappa",
@@ -4935,7 +6160,8 @@
           "literal_value": 1.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "kappa"
+          "source_attribute_name": "kappa",
+          "source_written_qualifier": null
         },
         {
           "param_name": "vacuum_t",
@@ -4948,7 +6174,8 @@
           "literal_value": 0.1,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "vacuum_t"
+          "source_attribute_name": "vacuum_t",
+          "source_written_qualifier": null
         },
         {
           "param_name": "firstwall_t",
@@ -4961,7 +6188,8 @@
           "literal_value": 0.05,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "firstwall_t"
+          "source_attribute_name": "firstwall_t",
+          "source_written_qualifier": null
         },
         {
           "param_name": "blanket_t",
@@ -4974,7 +6202,8 @@
           "literal_value": 0.8,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "blanket_t"
+          "source_attribute_name": "blanket_t",
+          "source_written_qualifier": null
         },
         {
           "param_name": "reflector_t",
@@ -4987,7 +6216,8 @@
           "literal_value": 0.2,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "reflector_t"
+          "source_attribute_name": "reflector_t",
+          "source_written_qualifier": null
         },
         {
           "param_name": "ht_shield_t",
@@ -5000,7 +6230,8 @@
           "literal_value": 0.2,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "ht_shield_t"
+          "source_attribute_name": "ht_shield_t",
+          "source_written_qualifier": null
         },
         {
           "param_name": "structure_t",
@@ -5013,7 +6244,8 @@
           "literal_value": 0.15,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "structure_t"
+          "source_attribute_name": "structure_t",
+          "source_written_qualifier": null
         },
         {
           "param_name": "gap1_t",
@@ -5026,7 +6258,8 @@
           "literal_value": 0.1,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "gap1_t"
+          "source_attribute_name": "gap1_t",
+          "source_written_qualifier": null
         },
         {
           "param_name": "vessel_t",
@@ -5039,7 +6272,8 @@
           "literal_value": 0.1,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "vessel_t"
+          "source_attribute_name": "vessel_t",
+          "source_written_qualifier": null
         },
         {
           "param_name": "coil_t",
@@ -5052,7 +6286,8 @@
           "literal_value": 0.3,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "coil_t"
+          "source_attribute_name": "coil_t",
+          "source_written_qualifier": null
         },
         {
           "param_name": "gap2_t",
@@ -5065,7 +6300,8 @@
           "literal_value": 0.1,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "gap2_t"
+          "source_attribute_name": "gap2_t",
+          "source_written_qualifier": null
         },
         {
           "param_name": "lt_shield_t",
@@ -5078,13 +6314,14 @@
           "literal_value": 0.15,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "lt_shield_t"
+          "source_attribute_name": "lt_shield_t",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [
         "pi"
       ],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
       "source_line": 141,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__rb",
@@ -5109,7 +6346,8 @@
           "literal_value": 3.17e+20,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "n_e"
+          "source_attribute_name": "n_e",
+          "source_written_qualifier": null
         },
         {
           "param_name": "sigma_v",
@@ -5122,7 +6360,8 @@
           "literal_value": 0.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "sigma_v"
+          "source_attribute_name": "sigma_v",
+          "source_written_qualifier": null
         },
         {
           "param_name": "E_fus",
@@ -5135,7 +6374,8 @@
           "literal_value": 2.817e-12,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "E_fus"
+          "source_attribute_name": "E_fus",
+          "source_written_qualifier": null
         },
         {
           "param_name": "V",
@@ -5148,7 +6388,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "geom",
-          "source_attribute_name": "V"
+          "source_attribute_name": "V",
+          "source_written_qualifier": null
         },
         {
           "param_name": "n_D0",
@@ -5161,7 +6402,8 @@
           "literal_value": 1.96e+20,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "n_D0"
+          "source_attribute_name": "n_D0",
+          "source_written_qualifier": null
         },
         {
           "param_name": "n_T0",
@@ -5174,7 +6416,8 @@
           "literal_value": 1.96e+20,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "n_T0"
+          "source_attribute_name": "n_T0",
+          "source_written_qualifier": null
         },
         {
           "param_name": "T_i0",
@@ -5187,7 +6430,8 @@
           "literal_value": 14.63,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "T_i0"
+          "source_attribute_name": "T_i0",
+          "source_written_qualifier": null
         },
         {
           "param_name": "alpha_n",
@@ -5200,7 +6444,8 @@
           "literal_value": 0.33,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "alpha_n"
+          "source_attribute_name": "alpha_n",
+          "source_written_qualifier": null
         },
         {
           "param_name": "alpha_T",
@@ -5213,11 +6458,12 @@
           "literal_value": 1.19,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "alpha_T"
+          "source_attribute_name": "alpha_T",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
       "source_line": 172,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__fusion",
@@ -5242,7 +6488,8 @@
           "literal_value": 35.5,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "q_nuc_cryo"
+          "source_attribute_name": "q_nuc_cryo",
+          "source_written_qualifier": null
         },
         {
           "param_name": "vol_cold",
@@ -5255,7 +6502,8 @@
           "literal_value": 136.56,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "vol_cold_cryo"
+          "source_attribute_name": "vol_cold_cryo",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_fixed",
@@ -5268,7 +6516,8 @@
           "literal_value": 0.0075,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_fixed_cryo"
+          "source_attribute_name": "p_fixed_cryo",
+          "source_written_qualifier": null
         },
         {
           "param_name": "f_uplift",
@@ -5281,7 +6530,8 @@
           "literal_value": 1.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "f_uplift_cryo"
+          "source_attribute_name": "f_uplift_cryo",
+          "source_written_qualifier": null
         },
         {
           "param_name": "T_cold",
@@ -5294,7 +6544,8 @@
           "literal_value": 20.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "T_cold_cryo"
+          "source_attribute_name": "T_cold_cryo",
+          "source_written_qualifier": null
         },
         {
           "param_name": "T_amb",
@@ -5307,7 +6558,8 @@
           "literal_value": 300.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "T_amb_cryo"
+          "source_attribute_name": "T_amb_cryo",
+          "source_written_qualifier": null
         },
         {
           "param_name": "f_carnot",
@@ -5320,7 +6572,8 @@
           "literal_value": 0.2,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "f_carnot_cryo"
+          "source_attribute_name": "f_carnot_cryo",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_direct",
@@ -5333,11 +6586,12 @@
           "literal_value": 0.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_cryo"
+          "source_attribute_name": "p_cryo",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
       "source_line": 212,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__cryo_elec",
@@ -5362,7 +6616,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "fusion",
-          "source_attribute_name": "p_fus"
+          "source_attribute_name": "p_fus",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_input",
@@ -5375,7 +6630,8 @@
           "literal_value": 50.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_input"
+          "source_attribute_name": "p_input",
+          "source_written_qualifier": null
         },
         {
           "param_name": "mn",
@@ -5388,7 +6644,8 @@
           "literal_value": 1.2,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "mn"
+          "source_attribute_name": "mn",
+          "source_written_qualifier": null
         },
         {
           "param_name": "eta_th",
@@ -5401,7 +6658,8 @@
           "literal_value": 0.333,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "eta_th"
+          "source_attribute_name": "eta_th",
+          "source_written_qualifier": null
         },
         {
           "param_name": "eta_p",
@@ -5414,7 +6672,8 @@
           "literal_value": 0.5,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "eta_p"
+          "source_attribute_name": "eta_p",
+          "source_written_qualifier": null
         },
         {
           "param_name": "eta_pin",
@@ -5427,7 +6686,8 @@
           "literal_value": 0.5,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "eta_pin"
+          "source_attribute_name": "eta_pin",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_pump",
@@ -5440,7 +6700,8 @@
           "literal_value": 1.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_pump"
+          "source_attribute_name": "p_pump",
+          "source_written_qualifier": null
         },
         {
           "param_name": "f_sub",
@@ -5453,7 +6714,8 @@
           "literal_value": 0.03,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "f_sub"
+          "source_attribute_name": "f_sub",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_tf",
@@ -5466,7 +6728,8 @@
           "literal_value": 0.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_tf"
+          "source_attribute_name": "p_tf",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_pf",
@@ -5479,7 +6742,8 @@
           "literal_value": 0.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_pf"
+          "source_attribute_name": "p_pf",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_tfcool",
@@ -5492,7 +6756,8 @@
           "literal_value": 15.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_tfcool"
+          "source_attribute_name": "p_tfcool",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_pfcool",
@@ -5505,7 +6770,8 @@
           "literal_value": 0.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_pfcool"
+          "source_attribute_name": "p_pfcool",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_trit",
@@ -5518,7 +6784,8 @@
           "literal_value": 10.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_trit"
+          "source_attribute_name": "p_trit",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_house",
@@ -5531,7 +6798,8 @@
           "literal_value": 4.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_house"
+          "source_attribute_name": "p_house",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_cryo",
@@ -5544,11 +6812,12 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "cryo_elec",
-          "source_attribute_name": "p_elec"
+          "source_attribute_name": "p_elec",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
       "source_line": 223,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__pb",
@@ -5573,7 +6842,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "magnet",
-          "source_attribute_name": "G"
+          "source_attribute_name": "G",
+          "source_written_qualifier": null
         },
         {
           "param_name": "B",
@@ -5586,7 +6856,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "magnet",
-          "source_attribute_name": "B"
+          "source_attribute_name": "B",
+          "source_written_qualifier": null
         },
         {
           "param_name": "R0",
@@ -5599,7 +6870,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "magnet",
-          "source_attribute_name": "R0"
+          "source_attribute_name": "R0",
+          "source_written_qualifier": null
         },
         {
           "param_name": "r_coil",
@@ -5612,7 +6884,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "rb",
-          "source_attribute_name": "r_coil"
+          "source_attribute_name": "r_coil",
+          "source_written_qualifier": null
         },
         {
           "param_name": "cost_per_kAm",
@@ -5625,7 +6898,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "magnet",
-          "source_attribute_name": "cost_per_kAm"
+          "source_attribute_name": "cost_per_kAm",
+          "source_written_qualifier": null
         },
         {
           "param_name": "coil_markup",
@@ -5638,13 +6912,14 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "magnet",
-          "source_attribute_name": "coil_markup"
+          "source_attribute_name": "coil_markup",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [
         "mu0"
       ],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
       "source_line": 253,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__magnet_cost",
@@ -5669,7 +6944,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "blanket",
-          "source_attribute_name": "unit_cost"
+          "source_attribute_name": "unit_cost",
+          "source_written_qualifier": null
         },
         {
           "param_name": "structure_factor",
@@ -5682,7 +6958,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "blanket",
-          "source_attribute_name": "structure_factor"
+          "source_attribute_name": "structure_factor",
+          "source_written_qualifier": null
         },
         {
           "param_name": "blanket_vol",
@@ -5695,7 +6972,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "rb",
-          "source_attribute_name": "blanket_vol"
+          "source_attribute_name": "blanket_vol",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_th",
@@ -5708,14 +6986,15 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_th"
+          "source_attribute_name": "p_th",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [
         "alpha",
         "p_th_ref"
       ],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
       "source_line": 263,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__blanket_cost",
@@ -5740,7 +7019,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "shield",
-          "source_attribute_name": "unit_cost"
+          "source_attribute_name": "unit_cost",
+          "source_written_qualifier": null
         },
         {
           "param_name": "shield_vol",
@@ -5753,7 +7033,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "rb",
-          "source_attribute_name": "shield_vol"
+          "source_attribute_name": "shield_vol",
+          "source_written_qualifier": null
         },
         {
           "param_name": "shield_scale",
@@ -5766,7 +7047,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "shield",
-          "source_attribute_name": "shield_scale"
+          "source_attribute_name": "shield_scale",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_th",
@@ -5779,14 +7061,15 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_th"
+          "source_attribute_name": "p_th",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [
         "alpha",
         "p_th_ref"
       ],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
       "source_line": 271,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__shield_cost",
@@ -5811,7 +7094,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "structure",
-          "source_attribute_name": "unit_cost"
+          "source_attribute_name": "unit_cost",
+          "source_written_qualifier": null
         },
         {
           "param_name": "structure_vol",
@@ -5824,7 +7108,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "rb",
-          "source_attribute_name": "structure_vol"
+          "source_attribute_name": "structure_vol",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_et",
@@ -5837,14 +7122,15 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_et"
+          "source_attribute_name": "p_et",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [
         "alpha",
         "p_et_ref"
       ],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
       "source_line": 279,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__structure_cost",
@@ -5869,7 +7155,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "vessel",
-          "source_attribute_name": "unit_cost"
+          "source_attribute_name": "unit_cost",
+          "source_written_qualifier": null
         },
         {
           "param_name": "vessel_vol",
@@ -5882,7 +7169,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "rb",
-          "source_attribute_name": "vessel_vol"
+          "source_attribute_name": "vessel_vol",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_et",
@@ -5895,14 +7183,15 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_et"
+          "source_attribute_name": "p_et",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [
         "alpha",
         "p_et_ref"
       ],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
       "source_line": 286,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__vessel_cost",
@@ -5927,7 +7216,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "power_supplies",
-          "source_attribute_name": "base"
+          "source_attribute_name": "base",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_et",
@@ -5940,14 +7230,15 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_et"
+          "source_attribute_name": "p_et",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [
         "alpha",
         "p_et_ref"
       ],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
       "source_line": 293,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__power_supplies_cost",
@@ -5972,7 +7263,8 @@
           "literal_value": 60000000.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "divertor_base"
+          "source_attribute_name": "divertor_base",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_th",
@@ -5985,14 +7277,15 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_th"
+          "source_attribute_name": "p_th",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [
         "alpha",
         "p_th_ref"
       ],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
       "source_line": 300,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__divertor_cost",
@@ -6017,7 +7310,8 @@
           "literal_value": 0.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "heating_nbi_per_mw"
+          "source_attribute_name": "heating_nbi_per_mw",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_nbi",
@@ -6030,7 +7324,8 @@
           "literal_value": 0.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_nbi"
+          "source_attribute_name": "p_nbi",
+          "source_written_qualifier": null
         },
         {
           "param_name": "icrf_per_mw",
@@ -6043,7 +7338,8 @@
           "literal_value": 0.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "heating_icrf_per_mw"
+          "source_attribute_name": "heating_icrf_per_mw",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_icrf",
@@ -6056,7 +7352,8 @@
           "literal_value": 0.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_icrf"
+          "source_attribute_name": "p_icrf",
+          "source_written_qualifier": null
         },
         {
           "param_name": "ecrh_per_mw",
@@ -6069,7 +7366,8 @@
           "literal_value": 5282900.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "heating_ecrh_per_mw"
+          "source_attribute_name": "heating_ecrh_per_mw",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_ecrh",
@@ -6082,7 +7380,8 @@
           "literal_value": 50.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_ecrh"
+          "source_attribute_name": "p_ecrh",
+          "source_written_qualifier": null
         },
         {
           "param_name": "lhcd_per_mw",
@@ -6095,7 +7394,8 @@
           "literal_value": 0.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "heating_lhcd_per_mw"
+          "source_attribute_name": "heating_lhcd_per_mw",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_lhcd",
@@ -6108,11 +7408,12 @@
           "literal_value": 0.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_lhcd"
+          "source_attribute_name": "p_lhcd",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
       "source_line": 315,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__heating_cost",
@@ -6137,7 +7438,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_the"
+          "source_attribute_name": "p_the",
+          "source_written_qualifier": null
         },
         {
           "param_name": "cost_per_mw",
@@ -6150,7 +7452,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "turbine",
-          "source_attribute_name": "cost_per_mw"
+          "source_attribute_name": "cost_per_mw",
+          "source_written_qualifier": null
         },
         {
           "param_name": "n_mod",
@@ -6163,11 +7466,12 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "n_mod"
+          "source_attribute_name": "n_mod",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
       "source_line": 329,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__turbine_cost",
@@ -6192,7 +7496,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_et"
+          "source_attribute_name": "p_et",
+          "source_written_qualifier": null
         },
         {
           "param_name": "cost_per_mw",
@@ -6205,7 +7510,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "electric_plant",
-          "source_attribute_name": "cost_per_mw"
+          "source_attribute_name": "cost_per_mw",
+          "source_written_qualifier": null
         },
         {
           "param_name": "n_mod",
@@ -6218,11 +7524,12 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "n_mod"
+          "source_attribute_name": "n_mod",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
       "source_line": 334,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__electric_cost",
@@ -6247,7 +7554,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_th"
+          "source_attribute_name": "p_th",
+          "source_written_qualifier": null
         },
         {
           "param_name": "cost_per_mw",
@@ -6260,7 +7568,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "heat_rejection",
-          "source_attribute_name": "cost_per_mw"
+          "source_attribute_name": "cost_per_mw",
+          "source_written_qualifier": null
         },
         {
           "param_name": "n_mod",
@@ -6273,11 +7582,12 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "n_mod"
+          "source_attribute_name": "n_mod",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
       "source_line": 339,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__heat_rejection_cost",
@@ -6302,7 +7612,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_et"
+          "source_attribute_name": "p_et",
+          "source_written_qualifier": null
         },
         {
           "param_name": "cost_per_mw",
@@ -6315,7 +7626,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "misc_plant",
-          "source_attribute_name": "cost_per_mw"
+          "source_attribute_name": "cost_per_mw",
+          "source_written_qualifier": null
         },
         {
           "param_name": "n_mod",
@@ -6328,11 +7640,12 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "n_mod"
+          "source_attribute_name": "n_mod",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
       "source_line": 344,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__misc_cost",
@@ -6357,7 +7670,8 @@
           "literal_value": 168500000.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "bldg_fixed_base"
+          "source_attribute_name": "bldg_fixed_base",
+          "source_written_qualifier": null
         },
         {
           "param_name": "fus_base",
@@ -6370,7 +7684,8 @@
           "literal_value": 288000000.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "bldg_fus_base"
+          "source_attribute_name": "bldg_fus_base",
+          "source_written_qualifier": null
         },
         {
           "param_name": "staff_base",
@@ -6383,7 +7698,8 @@
           "literal_value": 9000000.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "bldg_staff_base"
+          "source_attribute_name": "bldg_staff_base",
+          "source_written_qualifier": null
         },
         {
           "param_name": "the_base",
@@ -6396,7 +7712,8 @@
           "literal_value": 58000000.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "bldg_the_base"
+          "source_attribute_name": "bldg_the_base",
+          "source_written_qualifier": null
         },
         {
           "param_name": "th_base",
@@ -6409,7 +7726,8 @@
           "literal_value": 26000000.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "bldg_th_base"
+          "source_attribute_name": "bldg_th_base",
+          "source_written_qualifier": null
         },
         {
           "param_name": "et_base",
@@ -6422,7 +7740,8 @@
           "literal_value": 29000000.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "bldg_et_base"
+          "source_attribute_name": "bldg_et_base",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_fus",
@@ -6435,7 +7754,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "fusion",
-          "source_attribute_name": "p_fus"
+          "source_attribute_name": "p_fus",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_the",
@@ -6448,7 +7768,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_the"
+          "source_attribute_name": "p_the",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_th",
@@ -6461,7 +7782,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_th"
+          "source_attribute_name": "p_th",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_et",
@@ -6474,7 +7796,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "p_et"
+          "source_attribute_name": "p_et",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [
@@ -6484,7 +7807,7 @@
         "p_th_ref",
         "p_the_ref"
       ],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
       "source_line": 357,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__buildings_cost",
@@ -6509,7 +7832,8 @@
           "literal_value": 32000000.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "precon_fixed_base"
+          "source_attribute_name": "precon_fixed_base",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_net",
@@ -6522,7 +7846,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "pb",
-          "source_attribute_name": "p_net"
+          "source_attribute_name": "p_net",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [
@@ -6531,7 +7856,7 @@
         "n_mod",
         "ref_net_power"
       ],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
       "source_line": 372,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__precon_cost",
@@ -6556,7 +7881,8 @@
           "literal_value": 54900000.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "om_annual_ref"
+          "source_attribute_name": "om_annual_ref",
+          "source_written_qualifier": null
         },
         {
           "param_name": "p_net",
@@ -6569,7 +7895,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "pb",
-          "source_attribute_name": "p_net"
+          "source_attribute_name": "p_net",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [
@@ -6578,7 +7905,7 @@
         "om_direct",
         "ref_net_power"
       ],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
       "source_line": 379,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__om_cost",
@@ -6603,7 +7930,8 @@
           "literal_value": 0.1,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "contingency_rate"
+          "source_attribute_name": "contingency_rate",
+          "source_written_qualifier": null
         },
         {
           "param_name": "direct_subtotal",
@@ -6616,12 +7944,13 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "direct_capital"
+          "source_attribute_name": "direct_capital",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 413,
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+      "source_line": 410,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__contingency",
       "is_template": false,
@@ -6645,7 +7974,8 @@
           "literal_value": 0.2,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "indirect_fraction"
+          "source_attribute_name": "indirect_fraction",
+          "source_written_qualifier": null
         },
         {
           "param_name": "direct_cost",
@@ -6658,7 +7988,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "direct_capital"
+          "source_attribute_name": "direct_capital",
+          "source_written_qualifier": null
         },
         {
           "param_name": "construction_time",
@@ -6671,14 +8002,15 @@
           "literal_value": 8.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "construction_years"
+          "source_attribute_name": "construction_years",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [
         "reference_construction_time"
       ],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 422,
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+      "source_line": 419,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__indirect",
       "is_template": false,
@@ -6702,7 +8034,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "total_capital"
+          "source_attribute_name": "total_capital",
+          "source_written_qualifier": null
         },
         {
           "param_name": "annual_om",
@@ -6715,7 +8048,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "annual_om"
+          "source_attribute_name": "annual_om",
+          "source_written_qualifier": null
         },
         {
           "param_name": "net_electric_mw",
@@ -6728,7 +8062,8 @@
           "literal_value": null,
           "expression_ast": null,
           "source_instance_name": "pb",
-          "source_attribute_name": "p_net"
+          "source_attribute_name": "p_net",
+          "source_written_qualifier": null
         },
         {
           "param_name": "availability",
@@ -6741,7 +8076,8 @@
           "literal_value": 0.85,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "availability"
+          "source_attribute_name": "availability",
+          "source_written_qualifier": null
         },
         {
           "param_name": "discount_rate",
@@ -6754,7 +8090,8 @@
           "literal_value": 0.07,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "discount_rate"
+          "source_attribute_name": "discount_rate",
+          "source_written_qualifier": null
         },
         {
           "param_name": "construction_years",
@@ -6767,7 +8104,8 @@
           "literal_value": 8.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "construction_years"
+          "source_attribute_name": "construction_years",
+          "source_written_qualifier": null
         },
         {
           "param_name": "operational_years",
@@ -6780,12 +8118,13 @@
           "literal_value": 30.0,
           "expression_ast": null,
           "source_instance_name": null,
-          "source_attribute_name": "operational_years"
+          "source_attribute_name": "operational_years",
+          "source_written_qualifier": null
         }
       ],
       "unbound_params": [],
-      "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 445,
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+      "source_line": 440,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__lcoe_calc",
       "is_template": false,
@@ -6800,7 +8139,7 @@
         "sysml_type": "Real",
         "default_value": "0.5",
         "unit": null,
-        "source_file": "models/analyses/mfe_viability.sysml",
+        "source_file": "root-0/analyses/mfe_viability.sysml",
         "source_line": 35,
         "parent_part": "",
         "qualified_name": "mfe_viability__Economic_Recirculating_Threshold__threshold"
@@ -6812,7 +8151,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_lcoe_dcf.sysml",
+        "source_file": "root-0/analyses/mfe_lcoe_dcf.sysml",
         "source_line": 38,
         "parent_part": "",
         "qualified_name": "mfe_lcoe_dcf__LCOE_DCF__discount_pow_n"
@@ -6822,7 +8161,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_lcoe_dcf.sysml",
+        "source_file": "root-0/analyses/mfe_lcoe_dcf.sysml",
         "source_line": 42,
         "parent_part": "",
         "qualified_name": "mfe_lcoe_dcf__LCOE_DCF__crf"
@@ -6832,7 +8171,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_lcoe_dcf.sysml",
+        "source_file": "root-0/analyses/mfe_lcoe_dcf.sysml",
         "source_line": 47,
         "parent_part": "",
         "qualified_name": "mfe_lcoe_dcf__LCOE_DCF__idc_factor"
@@ -6842,7 +8181,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_lcoe_dcf.sysml",
+        "source_file": "root-0/analyses/mfe_lcoe_dcf.sysml",
         "source_line": 51,
         "parent_part": "",
         "qualified_name": "mfe_lcoe_dcf__LCOE_DCF__annual_capital"
@@ -6852,7 +8191,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_lcoe_dcf.sysml",
+        "source_file": "root-0/analyses/mfe_lcoe_dcf.sysml",
         "source_line": 55,
         "parent_part": "",
         "qualified_name": "mfe_lcoe_dcf__LCOE_DCF__annual_energy_mwh"
@@ -6862,7 +8201,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_lcoe_dcf.sysml",
+        "source_file": "root-0/analyses/mfe_lcoe_dcf.sysml",
         "source_line": 59,
         "parent_part": "",
         "qualified_name": "mfe_lcoe_dcf__LCOE_DCF__lcoe"
@@ -6874,7 +8213,7 @@
         "sysml_type": "Real",
         "default_value": "0.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_file": "root-0/analyses/mfe_cryo_plant.sysml",
         "source_line": 30,
         "parent_part": "",
         "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__q_nuc"
@@ -6884,7 +8223,7 @@
         "sysml_type": "Real",
         "default_value": "0.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_file": "root-0/analyses/mfe_cryo_plant.sysml",
         "source_line": 31,
         "parent_part": "",
         "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__vol_cold"
@@ -6894,7 +8233,7 @@
         "sysml_type": "Real",
         "default_value": "0.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_file": "root-0/analyses/mfe_cryo_plant.sysml",
         "source_line": 32,
         "parent_part": "",
         "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__p_fixed"
@@ -6904,7 +8243,7 @@
         "sysml_type": "Real",
         "default_value": "1.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_file": "root-0/analyses/mfe_cryo_plant.sysml",
         "source_line": 33,
         "parent_part": "",
         "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__f_uplift"
@@ -6914,7 +8253,7 @@
         "sysml_type": "Real",
         "default_value": "20.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_file": "root-0/analyses/mfe_cryo_plant.sysml",
         "source_line": 34,
         "parent_part": "",
         "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__T_cold"
@@ -6924,7 +8263,7 @@
         "sysml_type": "Real",
         "default_value": "300.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_file": "root-0/analyses/mfe_cryo_plant.sysml",
         "source_line": 35,
         "parent_part": "",
         "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__T_amb"
@@ -6934,7 +8273,7 @@
         "sysml_type": "Real",
         "default_value": "1.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_file": "root-0/analyses/mfe_cryo_plant.sysml",
         "source_line": 36,
         "parent_part": "",
         "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__f_carnot"
@@ -6944,7 +8283,7 @@
         "sysml_type": "Real",
         "default_value": "0.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_file": "root-0/analyses/mfe_cryo_plant.sysml",
         "source_line": 37,
         "parent_part": "",
         "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__p_direct"
@@ -6954,7 +8293,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_file": "root-0/analyses/mfe_cryo_plant.sysml",
         "source_line": 39,
         "parent_part": "",
         "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__p_cold"
@@ -6964,7 +8303,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_file": "root-0/analyses/mfe_cryo_plant.sysml",
         "source_line": 40,
         "parent_part": "",
         "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__cop_carnot"
@@ -6974,7 +8313,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_file": "root-0/analyses/mfe_cryo_plant.sysml",
         "source_line": 41,
         "parent_part": "",
         "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__cop"
@@ -6984,7 +8323,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_cryo_plant.sysml",
+        "source_file": "root-0/analyses/mfe_cryo_plant.sysml",
         "source_line": 43,
         "parent_part": "",
         "qualified_name": "mfe_cryo_plant__Cryoplant_Electrical_Power__p_elec"
@@ -6996,7 +8335,7 @@
         "sysml_type": "Real",
         "default_value": "1.25663706212e-06",
         "unit": null,
-        "source_file": "models/analyses/mfe_magnet_cost.sysml",
+        "source_file": "root-0/analyses/mfe_magnet_cost.sysml",
         "source_line": 41,
         "parent_part": "",
         "qualified_name": "mfe_magnet_cost__Magnet_Coil_Cost__mu0"
@@ -7006,7 +8345,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_magnet_cost.sysml",
+        "source_file": "root-0/analyses/mfe_magnet_cost.sysml",
         "source_line": 44,
         "parent_part": "",
         "qualified_name": "mfe_magnet_cost__Magnet_Coil_Cost__total_kAm"
@@ -7016,7 +8355,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_magnet_cost.sysml",
+        "source_file": "root-0/analyses/mfe_magnet_cost.sysml",
         "source_line": 47,
         "parent_part": "",
         "qualified_name": "mfe_magnet_cost__Magnet_Coil_Cost__capital_cost"
@@ -7028,7 +8367,7 @@
         "sysml_type": "Real",
         "default_value": "3.14159265358979",
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 30,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__Plasma_Geometry__pi"
@@ -7038,7 +8377,7 @@
         "sysml_type": "Real",
         "default_value": "1.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 35,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__Plasma_Geometry__f_shape"
@@ -7048,7 +8387,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 37,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__Plasma_Geometry__V"
@@ -7058,7 +8397,7 @@
         "sysml_type": "Real",
         "default_value": "3.14159265358979",
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 71,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__pi"
@@ -7068,7 +8407,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 88,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__vacuum_or"
@@ -7078,7 +8417,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 89,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__firstwall_or"
@@ -7088,7 +8427,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 90,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__blanket_or"
@@ -7098,7 +8437,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 91,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__reflector_or"
@@ -7108,7 +8447,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 92,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__ht_shield_or"
@@ -7118,7 +8457,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 93,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__structure_or"
@@ -7128,7 +8467,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 94,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__gap1_or"
@@ -7138,7 +8477,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 95,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__vessel_or"
@@ -7148,7 +8487,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 96,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__coil_or"
@@ -7158,7 +8497,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 97,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__gap2_or"
@@ -7168,7 +8507,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 98,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__lt_shield_or"
@@ -7178,7 +8517,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 101,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__C"
@@ -7188,7 +8527,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 104,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__firstwall_vol"
@@ -7198,7 +8537,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 105,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__blanket_layer_vol"
@@ -7208,7 +8547,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 106,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__reflector_vol"
@@ -7218,7 +8557,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 107,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__ht_shield_vol"
@@ -7228,7 +8567,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 108,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__lt_shield_vol"
@@ -7238,7 +8577,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 111,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__blanket_vol"
@@ -7248,7 +8587,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 113,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__shield_vol"
@@ -7258,7 +8597,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 114,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__structure_vol"
@@ -7268,7 +8607,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 116,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__vessel_vol"
@@ -7278,7 +8617,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 121,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__wall_area"
@@ -7288,7 +8627,7 @@
         "sysml_type": "Real",
         "default_value": "vessel_or",
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 122,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__MFE_Radial_Build__r_coil"
@@ -7298,7 +8637,7 @@
         "sysml_type": "Real",
         "default_value": "0.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 173,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__DT_Fusion_Power__sigma_v"
@@ -7308,7 +8647,7 @@
         "sysml_type": "Real",
         "default_value": "0.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 180,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__DT_Fusion_Power__n_D0"
@@ -7318,7 +8657,7 @@
         "sysml_type": "Real",
         "default_value": "0.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 181,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__DT_Fusion_Power__n_T0"
@@ -7328,7 +8667,7 @@
         "sysml_type": "Real",
         "default_value": "1.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 182,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__DT_Fusion_Power__T_i0"
@@ -7338,7 +8677,7 @@
         "sysml_type": "Real",
         "default_value": "0.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 183,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__DT_Fusion_Power__alpha_n"
@@ -7348,7 +8687,7 @@
         "sysml_type": "Real",
         "default_value": "0.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 184,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__DT_Fusion_Power__alpha_T"
@@ -7358,7 +8697,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 189,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__DT_Fusion_Power__theta"
@@ -7368,7 +8707,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 192,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__DT_Fusion_Power__xi"
@@ -7378,7 +8717,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 193,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__DT_Fusion_Power__sigv_peak"
@@ -7388,7 +8727,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 200,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__DT_Fusion_Power__p_fus"
@@ -7398,7 +8737,7 @@
         "sysml_type": "Real",
         "default_value": "0.2002",
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 231,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__Neutron_Wall_Load__ash_frac"
@@ -7408,7 +8747,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_plasma_scaling.sysml",
+        "source_file": "root-0/analyses/mfe_plasma_scaling.sysml",
         "source_line": 235,
         "parent_part": "",
         "qualified_name": "mfe_plasma_scaling__Neutron_Wall_Load__wall_load"
@@ -7420,7 +8759,7 @@
         "sysml_type": "Real",
         "default_value": "2500.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 44,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Blanket_Cost__p_th_ref"
@@ -7430,7 +8769,7 @@
         "sysml_type": "Real",
         "default_value": "0.6",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 46,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Blanket_Cost__alpha"
@@ -7440,7 +8779,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 48,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Blanket_Cost__cost"
@@ -7450,7 +8789,7 @@
         "sysml_type": "Real",
         "default_value": "2500.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 73,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Shield_Cost__p_th_ref"
@@ -7460,7 +8799,7 @@
         "sysml_type": "Real",
         "default_value": "0.6",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 75,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Shield_Cost__alpha"
@@ -7470,7 +8809,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 77,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Shield_Cost__cost"
@@ -7480,7 +8819,7 @@
         "sysml_type": "Real",
         "default_value": "1100.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 100,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Structure_Cost__p_et_ref"
@@ -7490,7 +8829,7 @@
         "sysml_type": "Real",
         "default_value": "0.5",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 102,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Structure_Cost__alpha"
@@ -7500,7 +8839,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 104,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Structure_Cost__cost"
@@ -7510,7 +8849,7 @@
         "sysml_type": "Real",
         "default_value": "1100.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 132,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Vessel_Cost__p_et_ref"
@@ -7520,7 +8859,7 @@
         "sysml_type": "Real",
         "default_value": "0.6",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 134,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Vessel_Cost__alpha"
@@ -7530,7 +8869,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 136,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Vessel_Cost__cost"
@@ -7540,7 +8879,7 @@
         "sysml_type": "Real",
         "default_value": "1100.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 160,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Power_Supplies_Cost__p_et_ref"
@@ -7550,7 +8889,7 @@
         "sysml_type": "Real",
         "default_value": "0.7",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 162,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Power_Supplies_Cost__alpha"
@@ -7560,7 +8899,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 164,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Power_Supplies_Cost__cost"
@@ -7570,7 +8909,7 @@
         "sysml_type": "Real",
         "default_value": "1000.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 188,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Divertor_Cost__p_th_ref"
@@ -7580,7 +8919,7 @@
         "sysml_type": "Real",
         "default_value": "0.5",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 190,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Divertor_Cost__alpha"
@@ -7590,7 +8929,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 192,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Divertor_Cost__cost"
@@ -7600,7 +8939,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 221,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Heating_Cost__cost"
@@ -7610,7 +8949,7 @@
         "sysml_type": "Real",
         "default_value": "1.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 249,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Linear_Power_Cost__n_mod"
@@ -7620,7 +8959,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 251,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Linear_Power_Cost__cost"
@@ -7630,7 +8969,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 272,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Contingency_Cost__cost"
@@ -7640,7 +8979,7 @@
         "sysml_type": "Real",
         "default_value": "6.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 297,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Indirect_Cost__reference_construction_time"
@@ -7650,7 +8989,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 299,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Indirect_Cost__cost"
@@ -7660,7 +8999,7 @@
         "sysml_type": "Real",
         "default_value": "1.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 338,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Buildings_Cost__n_mod"
@@ -7670,7 +9009,7 @@
         "sysml_type": "Real",
         "default_value": "2300.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 342,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Buildings_Cost__p_fus_ref"
@@ -7680,7 +9019,7 @@
         "sysml_type": "Real",
         "default_value": "1100.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 343,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Buildings_Cost__p_the_ref"
@@ -7690,7 +9029,7 @@
         "sysml_type": "Real",
         "default_value": "2500.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 344,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Buildings_Cost__p_th_ref"
@@ -7700,7 +9039,7 @@
         "sysml_type": "Real",
         "default_value": "1100.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 345,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Buildings_Cost__p_et_ref"
@@ -7710,7 +9049,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 347,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Buildings_Cost__cost"
@@ -7720,7 +9059,7 @@
         "sysml_type": "Real",
         "default_value": "1.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 375,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Preconstruction_Cost__n_mod"
@@ -7730,7 +9069,7 @@
         "sysml_type": "Real",
         "default_value": "0.25",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 378,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Preconstruction_Cost__land_intensity"
@@ -7740,7 +9079,7 @@
         "sysml_type": "Real",
         "default_value": "10000.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 379,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Preconstruction_Cost__land_cost"
@@ -7750,7 +9089,7 @@
         "sysml_type": "Real",
         "default_value": "1000.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 380,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Preconstruction_Cost__ref_net_power"
@@ -7760,7 +9099,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 382,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Preconstruction_Cost__cost"
@@ -7770,7 +9109,7 @@
         "sysml_type": "Real",
         "default_value": "1.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 407,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Annual_OM_Cost__n_mod"
@@ -7780,7 +9119,7 @@
         "sysml_type": "Real",
         "default_value": "1000.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 409,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Annual_OM_Cost__ref_net_power"
@@ -7790,7 +9129,7 @@
         "sysml_type": "Real",
         "default_value": "0.5",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 411,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Annual_OM_Cost__alpha"
@@ -7800,7 +9139,7 @@
         "sysml_type": "Real",
         "default_value": "0.0",
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 412,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Annual_OM_Cost__om_direct"
@@ -7810,7 +9149,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_account_costs.sysml",
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
         "source_line": 414,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Annual_OM_Cost__annual_om"
@@ -7822,7 +9161,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_power_balance.sysml",
+        "source_file": "root-0/analyses/mfe_power_balance.sysml",
         "source_line": 83,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__p_alpha"
@@ -7832,7 +9171,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_power_balance.sysml",
+        "source_file": "root-0/analyses/mfe_power_balance.sysml",
         "source_line": 86,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__p_neutron"
@@ -7842,7 +9181,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_power_balance.sysml",
+        "source_file": "root-0/analyses/mfe_power_balance.sysml",
         "source_line": 89,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__p_cool"
@@ -7852,7 +9191,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_power_balance.sysml",
+        "source_file": "root-0/analyses/mfe_power_balance.sysml",
         "source_line": 92,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__p_aux"
@@ -7862,7 +9201,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_power_balance.sysml",
+        "source_file": "root-0/analyses/mfe_power_balance.sysml",
         "source_line": 95,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__p_coils"
@@ -7872,7 +9211,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_power_balance.sysml",
+        "source_file": "root-0/analyses/mfe_power_balance.sysml",
         "source_line": 103,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__p_th"
@@ -7882,7 +9221,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_power_balance.sysml",
+        "source_file": "root-0/analyses/mfe_power_balance.sysml",
         "source_line": 108,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__p_the"
@@ -7892,7 +9231,7 @@
         "sysml_type": "Real",
         "default_value": "p_the",
         "unit": null,
-        "source_file": "models/analyses/mfe_power_balance.sysml",
+        "source_file": "root-0/analyses/mfe_power_balance.sysml",
         "source_line": 112,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__p_et"
@@ -7902,7 +9241,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_power_balance.sysml",
+        "source_file": "root-0/analyses/mfe_power_balance.sysml",
         "source_line": 115,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__p_sub"
@@ -7912,7 +9251,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_power_balance.sysml",
+        "source_file": "root-0/analyses/mfe_power_balance.sysml",
         "source_line": 119,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__recirculating"
@@ -7922,7 +9261,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_power_balance.sysml",
+        "source_file": "root-0/analyses/mfe_power_balance.sysml",
         "source_line": 126,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__q_eng"
@@ -7932,7 +9271,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_power_balance.sysml",
+        "source_file": "root-0/analyses/mfe_power_balance.sysml",
         "source_line": 129,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__rec_frac"
@@ -7942,7 +9281,7 @@
         "sysml_type": "Real",
         "default_value": null,
         "unit": null,
-        "source_file": "models/analyses/mfe_power_balance.sysml",
+        "source_file": "root-0/analyses/mfe_power_balance.sysml",
         "source_line": 132,
         "parent_part": "",
         "qualified_name": "mfe_power_balance__MFE_Power_Balance_Calc__p_net"
@@ -7954,7 +9293,7 @@
         "sysml_type": "Real",
         "default_value": "0.0276",
         "unit": null,
-        "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
+        "source_file": "root-0/designs/stellarator_09/stellarator_plant.sysml",
         "source_line": 700,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__beta"
@@ -7964,7 +9303,7 @@
         "sysml_type": "Real",
         "default_value": "0.05",
         "unit": null,
-        "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
+        "source_file": "root-0/designs/stellarator_09/stellarator_plant.sysml",
         "source_line": 703,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__beta_limit"
@@ -7974,7 +9313,7 @@
         "sysml_type": "Real",
         "default_value": "4.05",
         "unit": null,
-        "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
+        "source_file": "root-0/designs/stellarator_09/stellarator_plant.sysml",
         "source_line": 724,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__wall_load_limit"
@@ -7984,7 +9323,7 @@
         "sysml_type": "Real",
         "default_value": "1.074",
         "unit": null,
-        "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
+        "source_file": "root-0/designs/stellarator_09/stellarator_plant.sysml",
         "source_line": 734,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__tbr"
@@ -7994,7 +9333,7 @@
         "sysml_type": "Real",
         "default_value": "1.05",
         "unit": null,
-        "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
+        "source_file": "root-0/designs/stellarator_09/stellarator_plant.sysml",
         "source_line": 737,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__tbr_floor"
@@ -8004,8 +9343,8 @@
         "sysml_type": "Real",
         "default_value": "wall_load_calc.wall_load",
         "unit": null,
-        "source_file": "models/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 749,
+        "source_file": "root-0/designs/stellarator_09/stellarator_plant.sysml",
+        "source_line": 756,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__neutron_wall_load"
       }
@@ -8016,7 +9355,7 @@
         "sysml_type": "Real",
         "default_value": "precon_cost.cost",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 101,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__preconstruction_capital"
@@ -8026,7 +9365,7 @@
         "sysml_type": "Real",
         "default_value": "1.0",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 114,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__f_shape"
@@ -8036,7 +9375,7 @@
         "sysml_type": "Real",
         "default_value": "0.1",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 126,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__vacuum_t"
@@ -8046,7 +9385,7 @@
         "sysml_type": "Real",
         "default_value": "0.05",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 127,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__firstwall_t"
@@ -8056,7 +9395,7 @@
         "sysml_type": "Real",
         "default_value": "0.7",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 128,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__blanket_t"
@@ -8066,7 +9405,7 @@
         "sysml_type": "Real",
         "default_value": "0.2",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 129,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__reflector_t"
@@ -8076,7 +9415,7 @@
         "sysml_type": "Real",
         "default_value": "0.2",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 130,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__ht_shield_t"
@@ -8086,7 +9425,7 @@
         "sysml_type": "Real",
         "default_value": "0.15",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 131,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__structure_t"
@@ -8096,7 +9435,7 @@
         "sysml_type": "Real",
         "default_value": "0.1",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 132,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__gap1_t"
@@ -8106,7 +9445,7 @@
         "sysml_type": "Real",
         "default_value": "0.1",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 133,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__vessel_t"
@@ -8116,7 +9455,7 @@
         "sysml_type": "Real",
         "default_value": "0.3",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 134,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__coil_t"
@@ -8126,7 +9465,7 @@
         "sysml_type": "Real",
         "default_value": "0.1",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 135,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__gap2_t"
@@ -8136,7 +9475,7 @@
         "sysml_type": "Real",
         "default_value": "0.15",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 136,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__lt_shield_t"
@@ -8146,7 +9485,7 @@
         "sysml_type": "Real",
         "default_value": "0.0",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 164,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__sigma_v"
@@ -8156,7 +9495,7 @@
         "sysml_type": "Real",
         "default_value": "0.0",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 166,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__n_D0"
@@ -8166,7 +9505,7 @@
         "sysml_type": "Real",
         "default_value": "0.0",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 167,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__n_T0"
@@ -8176,7 +9515,7 @@
         "sysml_type": "Real",
         "default_value": "1.0",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 168,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__T_i0"
@@ -8186,7 +9525,7 @@
         "sysml_type": "Real",
         "default_value": "0.0",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 169,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__alpha_n"
@@ -8196,7 +9535,7 @@
         "sysml_type": "Real",
         "default_value": "0.0",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 170,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__alpha_T"
@@ -8206,7 +9545,7 @@
         "sysml_type": "Real",
         "default_value": "0.0",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 198,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__p_cryo"
@@ -8216,7 +9555,7 @@
         "sysml_type": "Real",
         "default_value": "0.0",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 204,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__q_nuc_cryo"
@@ -8226,7 +9565,7 @@
         "sysml_type": "Real",
         "default_value": "0.0",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 205,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__vol_cold_cryo"
@@ -8236,7 +9575,7 @@
         "sysml_type": "Real",
         "default_value": "0.0",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 206,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__p_fixed_cryo"
@@ -8246,7 +9585,7 @@
         "sysml_type": "Real",
         "default_value": "1.0",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 207,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__f_uplift_cryo"
@@ -8256,7 +9595,7 @@
         "sysml_type": "Real",
         "default_value": "20.0",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 208,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__T_cold_cryo"
@@ -8266,7 +9605,7 @@
         "sysml_type": "Real",
         "default_value": "300.0",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 209,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__T_amb_cryo"
@@ -8276,7 +9615,7 @@
         "sysml_type": "Real",
         "default_value": "1.0",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 210,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__f_carnot_cryo"
@@ -8286,7 +9625,7 @@
         "sysml_type": "Real",
         "default_value": "pb.p_th",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 244,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__p_th"
@@ -8296,7 +9635,7 @@
         "sysml_type": "Real",
         "default_value": "pb.p_the",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 245,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__p_the"
@@ -8306,7 +9645,7 @@
         "sysml_type": "Real",
         "default_value": "pb.p_et",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 246,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__p_et"
@@ -8316,7 +9655,7 @@
         "sysml_type": "Real",
         "default_value": "1.0",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
         "source_line": 328,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__n_mod"
@@ -8326,8 +9665,8 @@
         "sysml_type": "Real",
         "default_value": "contingency.cost",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 417,
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 414,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__contingency_capital"
       },
@@ -8336,8 +9675,8 @@
         "sysml_type": "Real",
         "default_value": "indirect.cost",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 427,
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 424,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__indirect_capital"
       },
@@ -8346,8 +9685,8 @@
         "sysml_type": "Real",
         "default_value": "om_cost.annual_om",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 440,
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 435,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__annual_om"
       },
@@ -8356,8 +9695,8 @@
         "sysml_type": "Real",
         "default_value": "pb.p_net",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 472,
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 467,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__net_electric"
       },
@@ -8366,8 +9705,8 @@
         "sysml_type": "Real",
         "default_value": "pb.q_eng",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 473,
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 468,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__q_eng"
       },
@@ -8376,8 +9715,8 @@
         "sysml_type": "Real",
         "default_value": "pb.rec_frac",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 474,
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 469,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__rec_frac"
       },
@@ -8386,8 +9725,8 @@
         "sysml_type": "Real",
         "default_value": "lcoe_calc.lcoe",
         "unit": null,
-        "source_file": "models/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 475,
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 470,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__lcoe"
       }
@@ -8427,6 +9766,240 @@
         "redefinition_type": "chain",
         "literal_value": null,
         "source_path": "mfe_divergent",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant__magnet",
+        "attribute_name": "capital_cost",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "magnet_cost.capital_cost",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant__magnet",
+        "attribute_name": "r_coil",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "rb.r_coil",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant__heating",
+        "attribute_name": "capital_cost",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "heating_cost.cost",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant__divertor",
+        "attribute_name": "capital_cost",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "divertor_cost.cost",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant__blanket",
+        "attribute_name": "capital_cost",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "blanket_cost.cost",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant__blanket",
+        "attribute_name": "blanket_vol",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "rb.blanket_vol",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant__shield",
+        "attribute_name": "capital_cost",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "shield_cost.cost",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant__shield",
+        "attribute_name": "shield_vol",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "rb.shield_vol",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant__structure",
+        "attribute_name": "capital_cost",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "structure_cost.cost",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant__structure",
+        "attribute_name": "structure_vol",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "rb.structure_vol",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant__vessel",
+        "attribute_name": "capital_cost",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "vessel_cost.cost",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant__vessel",
+        "attribute_name": "vessel_vol",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "rb.vessel_vol",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant__power_supplies",
+        "attribute_name": "capital_cost",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "power_supplies_cost.cost",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant__turbine",
+        "attribute_name": "capital_cost",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "turbine_cost.cost",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant__electric_plant",
+        "attribute_name": "capital_cost",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "electric_cost.cost",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant__heat_rejection",
+        "attribute_name": "capital_cost",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "heat_rejection_cost.cost",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant__misc_plant",
+        "attribute_name": "capital_cost",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "misc_cost.cost",
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant__buildings",
+        "attribute_name": "capital_cost",
+        "redefinition_type": "chain",
+        "literal_value": null,
+        "source_path": "buildings_cost.cost",
         "expression_ast": null,
         "expression_text": "",
         "target_path": [],
@@ -9682,7 +11255,169 @@
       "[\"mfe_plant__MFE_Power_Plant\", \"buildings\"]": "mfe_subsystems__Buildings"
     }
   },
-  "aggregation_expressions": [],
+  "aggregation_expressions": [
+    {
+      "expression": {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant",
+        "owning_part_name": "MFE_Power_Plant",
+        "attribute_name": "powercore_capital",
+        "raw_expression_text": "magnet.capital_cost + heating.capital_cost + divertor.capital_cost + blanket.capital_cost + shield.capital_cost + structure.capital_cost + vessel.capital_cost + power_supplies.capital_cost",
+        "transformed_expression": "(((((((magnet.capital_cost + heating.capital_cost) + divertor.capital_cost) + blanket.capital_cost) + shield.capital_cost) + structure.capital_cost) + vessel.capital_cost) + power_supplies.capital_cost)",
+        "sum_terms": [],
+        "singleton_terms": [
+          {
+            "source_path": "magnet.capital_cost"
+          },
+          {
+            "source_path": "heating.capital_cost"
+          },
+          {
+            "source_path": "divertor.capital_cost"
+          },
+          {
+            "source_path": "blanket.capital_cost"
+          },
+          {
+            "source_path": "shield.capital_cost"
+          },
+          {
+            "source_path": "structure.capital_cost"
+          },
+          {
+            "source_path": "vessel.capital_cost"
+          },
+          {
+            "source_path": "power_supplies.capital_cost"
+          }
+        ],
+        "local_terms": [],
+        "input_channels": [
+          "magnet.capital_cost",
+          "heating.capital_cost",
+          "divertor.capital_cost",
+          "blanket.capital_cost",
+          "shield.capital_cost",
+          "structure.capital_cost",
+          "vessel.capital_cost",
+          "power_supplies.capital_cost"
+        ],
+        "entry_points": [],
+        "compilability": "unknown",
+        "has_unsupported_nodes": false,
+        "aliases": [],
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      "instance_path": "stellarator_09__stellaris"
+    },
+    {
+      "expression": {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant",
+        "owning_part_name": "MFE_Power_Plant",
+        "attribute_name": "bop_capital",
+        "raw_expression_text": "turbine.capital_cost + electric_plant.capital_cost + heat_rejection.capital_cost + misc_plant.capital_cost",
+        "transformed_expression": "(((turbine.capital_cost + electric_plant.capital_cost) + heat_rejection.capital_cost) + misc_plant.capital_cost)",
+        "sum_terms": [],
+        "singleton_terms": [
+          {
+            "source_path": "turbine.capital_cost"
+          },
+          {
+            "source_path": "electric_plant.capital_cost"
+          },
+          {
+            "source_path": "heat_rejection.capital_cost"
+          },
+          {
+            "source_path": "misc_plant.capital_cost"
+          }
+        ],
+        "local_terms": [],
+        "input_channels": [
+          "turbine.capital_cost",
+          "electric_plant.capital_cost",
+          "heat_rejection.capital_cost",
+          "misc_plant.capital_cost"
+        ],
+        "entry_points": [],
+        "compilability": "unknown",
+        "has_unsupported_nodes": false,
+        "aliases": [],
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      "instance_path": "stellarator_09__stellaris"
+    },
+    {
+      "expression": {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant",
+        "owning_part_name": "MFE_Power_Plant",
+        "attribute_name": "direct_capital",
+        "raw_expression_text": "powercore_capital + bop_capital + buildings.capital_cost + preconstruction_capital + special_materials_capital",
+        "transformed_expression": "((((powercore_capital + bop_capital) + buildings.capital_cost) + preconstruction_capital) + special_materials_capital)",
+        "sum_terms": [],
+        "singleton_terms": [
+          {
+            "source_path": "buildings.capital_cost"
+          }
+        ],
+        "local_terms": [
+          {
+            "attribute_name": "powercore_capital"
+          },
+          {
+            "attribute_name": "bop_capital"
+          },
+          {
+            "attribute_name": "preconstruction_capital"
+          },
+          {
+            "attribute_name": "special_materials_capital"
+          }
+        ],
+        "input_channels": [
+          "buildings.capital_cost"
+        ],
+        "entry_points": [],
+        "compilability": "unknown",
+        "has_unsupported_nodes": false,
+        "aliases": [],
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      "instance_path": "stellarator_09__stellaris"
+    },
+    {
+      "expression": {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant",
+        "owning_part_name": "MFE_Power_Plant",
+        "attribute_name": "total_capital",
+        "raw_expression_text": "direct_capital + contingency_capital + indirect_capital",
+        "transformed_expression": "((direct_capital + contingency_capital) + indirect_capital)",
+        "sum_terms": [],
+        "singleton_terms": [],
+        "local_terms": [
+          {
+            "attribute_name": "direct_capital"
+          },
+          {
+            "attribute_name": "contingency_capital"
+          },
+          {
+            "attribute_name": "indirect_capital"
+          }
+        ],
+        "input_channels": [],
+        "entry_points": [],
+        "compilability": "unknown",
+        "has_unsupported_nodes": false,
+        "aliases": [],
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      "instance_path": "stellarator_09__stellaris"
+    }
+  ],
   "computed_attributes": [
     {
       "name": "preconstruction_capital",
@@ -9803,160 +11538,6 @@
         "pb",
         "p_et"
       ]
-    },
-    {
-      "name": "powercore_capital",
-      "python_name": "powercore_capital",
-      "owning_part_name": "MFE_Power_Plant",
-      "owning_part_qualified_name": "mfe_plant::'MFE Power Plant'",
-      "expression_ast": null,
-      "expression_text": "magnet.capital_cost + heating.capital_cost + divertor.capital_cost + blanket.capital_cost + shield.capital_cost + structure.capital_cost + vessel.capital_cost + power_supplies.capital_cost",
-      "references": [
-        {
-          "name": "capital_cost",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::magnet::capital_cost",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "magnet",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::magnet",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "capital_cost",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::heating::capital_cost",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "heating",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::heating",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "capital_cost",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::divertor::capital_cost",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "divertor",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::divertor",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "capital_cost",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::blanket::capital_cost",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "blanket",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::blanket",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "capital_cost",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::shield::capital_cost",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "shield",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::shield",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "capital_cost",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::structure::capital_cost",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "structure",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::structure",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "capital_cost",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::vessel::capital_cost",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "vessel",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::vessel",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "capital_cost",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::power_supplies::capital_cost",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "power_supplies",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::power_supplies",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        }
-      ],
-      "classification": "formula",
-      "compilability": "manual_required",
-      "compiled_expression": null,
-      "is_on_part_definition": true,
-      "source_file": "unknown",
-      "source_line": 0,
-      "reference_chain": null
-    },
-    {
-      "name": "bop_capital",
-      "python_name": "bop_capital",
-      "owning_part_name": "MFE_Power_Plant",
-      "owning_part_qualified_name": "mfe_plant::'MFE Power Plant'",
-      "expression_ast": null,
-      "expression_text": "turbine.capital_cost + electric_plant.capital_cost + heat_rejection.capital_cost + misc_plant.capital_cost",
-      "references": [
-        {
-          "name": "capital_cost",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::turbine::capital_cost",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "turbine",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::turbine",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "capital_cost",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::electric_plant::capital_cost",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "electric_plant",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::electric_plant",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "capital_cost",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::heat_rejection::capital_cost",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "heat_rejection",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::heat_rejection",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "capital_cost",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::misc_plant::capital_cost",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        },
-        {
-          "name": "misc_plant",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::misc_plant",
-          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
-        }
-      ],
-      "classification": "formula",
-      "compilability": "manual_required",
-      "compiled_expression": null,
-      "is_on_part_definition": true,
-      "source_file": "unknown",
-      "source_line": 0,
-      "reference_chain": null
     },
     {
       "name": "contingency_capital",

@@ -1,7 +1,7 @@
 ---
-Status: blocked-surfaced
+Status: superseded-by-Item-10
 Created: 2026-07-19
-Updated: 2026-07-19 (amended after implement bounce — D7 added; Gate B surfaced)
+Updated: 2026-07-20 (SUPERSEDED — see amendment below)
 Related Artifacts:
   Spec: ./spec.md
   Orchestration: ../../orchestration/demo-constraint-execution.md
@@ -9,6 +9,33 @@ Related Artifacts:
 ---
 
 # WI-027 Design — Demo Constraint Execution (STELLARATOR-DEMO Item 2)
+
+## ⚠ AMENDMENT / SUPERSESSION (2026-07-20, constraint-lifecycle Item 10)
+
+**Two of this design's load-bearing decisions are superseded by the ratified lifecycle contract
+and Item 10. Do not build on D7 or the Gate-B options below.**
+
+- **D7 (passthrough calcs for constraint actuals) is SUPERSEDED by owner decision D-2**
+  (`~/1cfe/sysml-codegen/.project/concepts/constraint-execution-authoritative-lifecycle-contract.md`,
+  D-2): a direct literal-valued design attribute is a valid actual; no passthrough calc is required.
+  D7 was designed but never landed; the staged asserts read design attributes directly. Nothing to remove.
+- **Gate A / Gate B are resolved upstream** — Gate A by lifecycle Item 2 (shared resolver), Gate B by
+  Item 3 (extension-time V11 check proven vacuous and deleted). The three Gate-B options here are moot.
+- **The cross-part capital rollup is now compiled by codegen** (Item 10, WI-015 finding #4 root closure):
+  `direct_capital`/`total_capital` are real instance-scoped aggregation producers. The staged twins now
+  carry the canonical formulas (the DEMO-NOTE plain-input conversions are removed), the snapshot is
+  recaptured (v5, 5 constraint facts), and public generation emits with **zero V11 offenders and zero
+  producer-completeness violations — no private bridge, no placeholder, no D7 passthrough.**
+- **Retired:** `bridge_v11_generate.py`, `run_stellaris.py` glue-2 rollup arithmetic, and
+  `handshake_1costingfe.py`'s rollup glue (its 1costingFE comparison role stays). The runner cuts over to
+  bridge-free execution; the six ordinary anchors stay bit-exact (anchor movement is a STOP) and the five
+  verdicts remain all-satisfied.
+
+Evidence: `~/1cfe/sysml-codegen/.project/active/constraint-lifecycle-producer-completeness/evidence.md`.
+The rest of this document is retained as the historical record of the pre-Item-10 blocked state.
+
+---
+
 
 **Required reading honored.** PROTOCOL §3 barred paths were not read, cited, or opened during this design. Admissible sources only: the staged demo package under `exploration/stellarator_e2e/`, the canonical `models/`, the sysml-codegen editable dep (`~/1cfe/sysml-codegen`), and the in-repo IFE constraint-exec acceptance in the primary checkout (`~/1cfe/fusion-tea/exploration/ife_e2e/`).
 
