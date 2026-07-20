@@ -68,7 +68,14 @@ EPS = 1e-9  # boundary window for eta*gain vs the threshold (NTH4; float grid ar
 class MultiChannelEvaluator:
     """Fills the three non-swept entry channels from the package's own committed
     JSON templates, once; merges them with the swept channel per case. See the
-    module-level docstring (second named schema gap)."""
+    module-level docstring (second named schema gap).
+
+    ITEM-9 BREADCRUMB (stale vs current codegen): this hardcodes the package's older *four*-channel
+    decomposition (incl. `hif_driver_params`). The Item-8 live regen of `generated/` collapsed the
+    entry groups to three (`hif_driver_params` gone), so this class's `__init__` raises on the
+    current package and the full-sweep `main()` below does not run as-is. The Item-8 catalog seam is
+    proven independently by `prove_catalog_seam.py`. Fixing this belongs to Item 9's multi-channel
+    `CandidateBridge` (zero/one/many typed channels), which deletes this harness bridge entirely."""
 
     def __init__(self, prepared: PreparedEvaluator, package_dir: Path, package) -> None:
         self._prepared = prepared
