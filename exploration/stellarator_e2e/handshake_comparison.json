@@ -160,17 +160,17 @@
   ],
   "passthrough": [
     {
-      "name": "buildings (CAS21)",
+      "name": "buildings (CAS21) [SysML fwd@1cfe-pwr]",
       "onecfe": 619435485.8398438,
-      "sysml": 619435485.8398438
+      "sysml": 619435439.3560541
     },
     {
-      "name": "preconstruction (CAS10)",
+      "name": "preconstruction (CAS10) [SysML fwd@1cfe-pwr]",
       "onecfe": 18500000.0,
-      "sysml": 18500000.0
+      "sysml": 34500000.13404431
     },
     {
-      "name": "special_materials (CAS27)",
+      "name": "special_materials (CAS27) [design-input]",
       "onecfe": 20787933.22662967,
       "sysml": 20787933.22662967
     }
@@ -182,19 +182,19 @@
     },
     "indirect": {
       "onecfe": 1522919189.453125,
-      "sysml": 1234777192.594322
+      "sysml": 1239043846.9010568
     },
     "direct_or_cas20": {
       "onecfe": 5710946289.0625,
-      "sysml": 4630414472.228707
+      "sysml": 4646414425.8789625
     },
     "total_capital": {
       "onecfe": 10095837890.625,
-      "sysml": 5865191664.8230295
+      "sysml": 5885458272.78002
     },
     "lcoe": {
       "onecfe": 123.74301147460938,
-      "sysml": 85.54716223542745
+      "sysml": 85.81870065696772
     },
     "net_electric": {
       "onecfe": 1000.0000610351562,
