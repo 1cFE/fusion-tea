@@ -289,6 +289,18 @@ The owner decides. My read of the evidence:
 **So my recommendation is a sequence, not a single pick:**
 
 1. **File finding #8/Gate B upstream now, as a new remediation-epic item** (this research is the design package). This is the thing that should have happened when finding #8 was written and didn't. Do it regardless of which demo path is chosen — the non-filing is the real process gap.
+
+   > **DONE, and resolved upstream (2026-07-19).** Filed and fixed in sysml-codegen as lifecycle
+   > Item 3. Response: `20260719-222000_gate-b-upstream-filing-response-from-sysml-codegen.md`.
+   > **Outcome differs from this report's recommended repair.** A spike proved extension *cannot*
+   > introduce a new V11 violation, so the extension-time check was **deleted** rather than scoped
+   > to a differential — a differential would have been dead code. Consequences for this report:
+   > option 1 shape 4.3(a) is superseded by deletion; the Section 4.5 "required negative
+   > regression" (pre-existing unwired key newly consumed by a constraint) has no model that
+   > produces it and was not written; the generation gate is unchanged and still strict, so the
+   > bridge's fill is still required. Option 2's placeholder defaults are no longer needed.
+   > The bridge remains stale against the current API and the cross-part rollup (WI-015 finding #4)
+   > is still open — neither is fixed by this.
 2. **Choose the demo's near-term path by timeline:**
    - If the demo can wait for the upstream item: **option 3** (defer WI-027 behind the fix), then finish WI-027 through the clean path. Best final state, no model wart.
    - If the demo can't wait: **option 2 as an explicitly interim, reversible bridge** — with the two placeholder defaults recorded as "pending upstream Gate-B fix," the revert path (Section 3) written into the item, and the numeric-neutrality proven by the oracle bar. It is numerically safe today and costs two model lines you delete later.
