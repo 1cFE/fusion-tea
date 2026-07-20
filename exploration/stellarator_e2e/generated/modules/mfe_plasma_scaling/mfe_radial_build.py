@@ -49,9 +49,9 @@ Outputs:
     - wall_area: wall_area result
     - r_coil: r_coil result
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_plasma_scaling.sysml:41
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:41
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_plasma_scaling.sysml:41
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:41
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_plasma_scaling/mfe_radial_build_impl.py
@@ -151,9 +151,9 @@ Outputs:
     - wall_area: wall_area result
     - r_coil: r_coil result
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_plasma_scaling.sysml:41
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:41
 
-    SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_plasma_scaling.sysml:41
+    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:41
 
     Calculation Specification:
         pi = 3.14159265358979

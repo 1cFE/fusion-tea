@@ -1,4 +1,7 @@
 {
+  "mfe_plant__MFE_Power_Plant__p_et": 1078.2942674840313,
+  "mfe_plant__MFE_Power_Plant__p_th": 3238.1209233754694,
+  "mfe_plant__MFE_Power_Plant__p_the": 1078.2942674840313,
   "stellarator_09__stellaris__buildings_cost__et_base": 29000000.0,
   "stellarator_09__stellaris__buildings_cost__fixed_base": 168500000.0,
   "stellarator_09__stellaris__buildings_cost__fus_base": 288000000.0,
@@ -14,6 +17,7 @@
   "stellarator_09__stellaris__cryo_elec__p_fixed": 0.0075,
   "stellarator_09__stellaris__cryo_elec__q_nuc": 35.5,
   "stellarator_09__stellaris__cryo_elec__vol_cold": 136.56,
+  "stellarator_09__stellaris__direct_capital__special_materials_capital": 23815042.059888843,
   "stellarator_09__stellaris__divertor_cost__base": 60000000.0,
   "stellarator_09__stellaris__fusion__E_fus": 2.817e-12,
   "stellarator_09__stellaris__fusion__T_i0": 14.63,
@@ -70,7 +74,5 @@
   "stellarator_09__stellaris__rb__structure_t": 0.15,
   "stellarator_09__stellaris__rb__vacuum_t": 0.1,
   "stellarator_09__stellaris__rb__vessel_t": 0.1,
-  "mfe_plant__MFE_Power_Plant__p_th": 3238.1209233754694,
-  "mfe_plant__MFE_Power_Plant__p_the": 1078.2942674840313,
-  "mfe_plant__MFE_Power_Plant__p_et": 1078.2942674840313
+  "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__threshold": 0.5
 }

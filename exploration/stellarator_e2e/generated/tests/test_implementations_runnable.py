@@ -50,7 +50,7 @@ def create_dummy_input(input_class: type[BaseModel]) -> BaseModel:
 class TestPlasma_GeometryRunnable:
     """Verify plasma_geometry implementation runs without error.
 
-    SysML Source: models/analyses/mfe_plasma_scaling.sysml:4
+    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:4
     """
 
     def test_import_and_run(self):
@@ -90,7 +90,7 @@ class TestPlasma_GeometryRunnable:
 class TestMFE_Radial_BuildRunnable:
     """Verify mfe_radial_build implementation runs without error.
 
-    SysML Source: models/analyses/mfe_plasma_scaling.sysml:41
+    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:41
     """
 
     def test_import_and_run(self):
@@ -132,7 +132,7 @@ class TestMFE_Radial_BuildRunnable:
 class TestCryoplant_Electrical_PowerRunnable:
     """Verify cryoplant_electrical_power implementation runs without error.
 
-    SysML Source: models/analyses/mfe_cryo_plant.sysml:4
+    SysML Source: root-0/analyses/mfe_cryo_plant.sysml:4
     """
 
     def test_import_and_run(self):
@@ -172,7 +172,7 @@ class TestCryoplant_Electrical_PowerRunnable:
 class TestHeating_CostRunnable:
     """Verify heating_cost implementation runs without error.
 
-    SysML Source: models/analyses/mfe_account_costs.sysml:196
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:196
     """
 
     def test_import_and_run(self):
@@ -212,7 +212,7 @@ class TestHeating_CostRunnable:
 class TestLinear_Power_CostRunnable:
     """Verify linear_power_cost implementation runs without error.
 
-    SysML Source: models/analyses/mfe_account_costs.sysml:226
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:226
     """
 
     def test_import_and_run(self):
@@ -252,7 +252,7 @@ class TestLinear_Power_CostRunnable:
 class TestLinear_Power_CostRunnable:
     """Verify linear_power_cost implementation runs without error.
 
-    SysML Source: models/analyses/mfe_account_costs.sysml:226
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:226
     """
 
     def test_import_and_run(self):
@@ -292,7 +292,7 @@ class TestLinear_Power_CostRunnable:
 class TestLinear_Power_CostRunnable:
     """Verify linear_power_cost implementation runs without error.
 
-    SysML Source: models/analyses/mfe_account_costs.sysml:226
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:226
     """
 
     def test_import_and_run(self):
@@ -332,7 +332,7 @@ class TestLinear_Power_CostRunnable:
 class TestLinear_Power_CostRunnable:
     """Verify linear_power_cost implementation runs without error.
 
-    SysML Source: models/analyses/mfe_account_costs.sysml:226
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:226
     """
 
     def test_import_and_run(self):
@@ -343,86 +343,6 @@ class TestLinear_Power_CostRunnable:
 
         # Import module wrapper for Input schema (ADR-003: namespaced path)
         module = importlib.import_module("stellarator_tea.modules.mfe_account_costs.linear_power_cost")
-
-        # Find Input class
-        input_class = None
-        for attr_name in dir(module):
-            if attr_name.endswith("Input") and not attr_name.startswith("_"):
-                candidate = getattr(module, attr_name)
-                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
-                    input_class = candidate
-                    break
-
-        assert input_class is not None, "No Input class found in module"
-
-        # Create dummy input
-        dummy_input = create_dummy_input(input_class)
-
-        # Call function - expect NotImplementedError or valid return
-        try:
-            result = func(dummy_input)
-
-            # If implemented, verify return type
-            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
-
-        except NotImplementedError:
-            # Expected for stencils - test passes
-            pass
-
-class TestContingency_CostRunnable:
-    """Verify contingency_cost implementation runs without error.
-
-    SysML Source: models/analyses/mfe_account_costs.sysml:255
-    """
-
-    def test_import_and_run(self):
-        """Test that run_contingency_cost can be imported and called."""
-        # Import implementation module (ADR-003: namespaced path)
-        impl = importlib.import_module("stellarator_tea.handwritten.mfe_account_costs.contingency_cost_impl")
-        func = getattr(impl, "run_contingency_cost")
-
-        # Import module wrapper for Input schema (ADR-003: namespaced path)
-        module = importlib.import_module("stellarator_tea.modules.mfe_account_costs.contingency_cost")
-
-        # Find Input class
-        input_class = None
-        for attr_name in dir(module):
-            if attr_name.endswith("Input") and not attr_name.startswith("_"):
-                candidate = getattr(module, attr_name)
-                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
-                    input_class = candidate
-                    break
-
-        assert input_class is not None, "No Input class found in module"
-
-        # Create dummy input
-        dummy_input = create_dummy_input(input_class)
-
-        # Call function - expect NotImplementedError or valid return
-        try:
-            result = func(dummy_input)
-
-            # If implemented, verify return type
-            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
-
-        except NotImplementedError:
-            # Expected for stencils - test passes
-            pass
-
-class TestIndirect_CostRunnable:
-    """Verify indirect_cost implementation runs without error.
-
-    SysML Source: models/analyses/mfe_account_costs.sysml:276
-    """
-
-    def test_import_and_run(self):
-        """Test that run_indirect_cost can be imported and called."""
-        # Import implementation module (ADR-003: namespaced path)
-        impl = importlib.import_module("stellarator_tea.handwritten.mfe_account_costs.indirect_cost_impl")
-        func = getattr(impl, "run_indirect_cost")
-
-        # Import module wrapper for Input schema (ADR-003: namespaced path)
-        module = importlib.import_module("stellarator_tea.modules.mfe_account_costs.indirect_cost")
 
         # Find Input class
         input_class = None
@@ -452,7 +372,7 @@ class TestIndirect_CostRunnable:
 class TestDT_Fusion_PowerRunnable:
     """Verify dt_fusion_power implementation runs without error.
 
-    SysML Source: models/analyses/mfe_plasma_scaling.sysml:125
+    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:125
     """
 
     def test_import_and_run(self):
@@ -492,7 +412,7 @@ class TestDT_Fusion_PowerRunnable:
 class TestMagnet_Coil_CostRunnable:
     """Verify magnet_coil_cost implementation runs without error.
 
-    SysML Source: models/analyses/mfe_magnet_cost.sysml:4
+    SysML Source: root-0/analyses/mfe_magnet_cost.sysml:4
     """
 
     def test_import_and_run(self):
@@ -532,7 +452,7 @@ class TestMagnet_Coil_CostRunnable:
 class TestNeutron_Wall_LoadRunnable:
     """Verify neutron_wall_load implementation runs without error.
 
-    SysML Source: models/analyses/mfe_plasma_scaling.sysml:204
+    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:204
     """
 
     def test_import_and_run(self):
@@ -572,7 +492,7 @@ class TestNeutron_Wall_LoadRunnable:
 class TestMFE_Power_Balance_CalcRunnable:
     """Verify mfe_power_balance_calc implementation runs without error.
 
-    SysML Source: models/analyses/mfe_power_balance.sysml:4
+    SysML Source: root-0/analyses/mfe_power_balance.sysml:4
     """
 
     def test_import_and_run(self):
@@ -614,7 +534,7 @@ class TestMFE_Power_Balance_CalcRunnable:
 class TestBlanket_CostRunnable:
     """Verify blanket_cost implementation runs without error.
 
-    SysML Source: models/analyses/mfe_account_costs.sysml:22
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:22
     """
 
     def test_import_and_run(self):
@@ -654,7 +574,7 @@ class TestBlanket_CostRunnable:
 class TestShield_CostRunnable:
     """Verify shield_cost implementation runs without error.
 
-    SysML Source: models/analyses/mfe_account_costs.sysml:52
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:52
     """
 
     def test_import_and_run(self):
@@ -694,7 +614,7 @@ class TestShield_CostRunnable:
 class TestStructure_CostRunnable:
     """Verify structure_cost implementation runs without error.
 
-    SysML Source: models/analyses/mfe_account_costs.sysml:81
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:81
     """
 
     def test_import_and_run(self):
@@ -734,7 +654,7 @@ class TestStructure_CostRunnable:
 class TestVessel_CostRunnable:
     """Verify vessel_cost implementation runs without error.
 
-    SysML Source: models/analyses/mfe_account_costs.sysml:108
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:108
     """
 
     def test_import_and_run(self):
@@ -774,7 +694,7 @@ class TestVessel_CostRunnable:
 class TestPower_Supplies_CostRunnable:
     """Verify power_supplies_cost implementation runs without error.
 
-    SysML Source: models/analyses/mfe_account_costs.sysml:140
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:140
     """
 
     def test_import_and_run(self):
@@ -814,7 +734,7 @@ class TestPower_Supplies_CostRunnable:
 class TestDivertor_CostRunnable:
     """Verify divertor_cost implementation runs without error.
 
-    SysML Source: models/analyses/mfe_account_costs.sysml:168
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:168
     """
 
     def test_import_and_run(self):
@@ -854,7 +774,7 @@ class TestDivertor_CostRunnable:
 class TestBuildings_CostRunnable:
     """Verify buildings_cost implementation runs without error.
 
-    SysML Source: models/analyses/mfe_account_costs.sysml:304
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:304
     """
 
     def test_import_and_run(self):
@@ -894,7 +814,7 @@ class TestBuildings_CostRunnable:
 class TestPreconstruction_CostRunnable:
     """Verify preconstruction_cost implementation runs without error.
 
-    SysML Source: models/analyses/mfe_account_costs.sysml:356
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:356
     """
 
     def test_import_and_run(self):
@@ -934,7 +854,7 @@ class TestPreconstruction_CostRunnable:
 class TestAnnual_OM_CostRunnable:
     """Verify annual_om_cost implementation runs without error.
 
-    SysML Source: models/analyses/mfe_account_costs.sysml:387
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:387
     """
 
     def test_import_and_run(self):
@@ -971,10 +891,90 @@ class TestAnnual_OM_CostRunnable:
             # Expected for stencils - test passes
             pass
 
+class TestContingency_CostRunnable:
+    """Verify contingency_cost implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:255
+    """
+
+    def test_import_and_run(self):
+        """Test that run_contingency_cost can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_account_costs.contingency_cost_impl")
+        func = getattr(impl, "run_contingency_cost")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_account_costs.contingency_cost")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestIndirect_CostRunnable:
+    """Verify indirect_cost implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:276
+    """
+
+    def test_import_and_run(self):
+        """Test that run_indirect_cost can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_account_costs.indirect_cost_impl")
+        func = getattr(impl, "run_indirect_cost")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_account_costs.indirect_cost")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
 class TestLCOE_DCFRunnable:
     """Verify lcoe_dcf implementation runs without error.
 
-    SysML Source: models/analyses/mfe_lcoe_dcf.sysml:4
+    SysML Source: root-0/analyses/mfe_lcoe_dcf.sysml:4
     """
 
     def test_import_and_run(self):

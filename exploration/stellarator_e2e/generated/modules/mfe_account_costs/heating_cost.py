@@ -28,9 +28,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml:196
+SysML Source: root-0/analyses/mfe_account_costs.sysml:196
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml:196
+SysML Source: root-0/analyses/mfe_account_costs.sysml:196
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/heating_cost_impl.py
@@ -94,9 +94,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml:196
+SysML Source: root-0/analyses/mfe_account_costs.sysml:196
 
-    SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml:196
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:196
 
     Calculation Specification:
         cost = nbi_per_mw * p_nbi + icrf_per_mw * p_icrf + ecrh_per_mw * p_ecrh + lhcd_per_mw * p_lhcd

@@ -24,6 +24,7 @@ class SystemDesign(BaseModel):
     stellarator_09__stellaris__cryo_elec__p_fixed: float = Field(default=0.0075, description="Entry point: p_fixed")
     stellarator_09__stellaris__cryo_elec__q_nuc: float = Field(default=35.5, description="Entry point: q_nuc")
     stellarator_09__stellaris__cryo_elec__vol_cold: float = Field(default=136.56, description="Entry point: vol_cold")
+    stellarator_09__stellaris__direct_capital__special_materials_capital: float = Field(description="Entry point: special_materials_capital")
     stellarator_09__stellaris__divertor_cost__base: float = Field(default=60000000.0, description="Entry point: base")
     stellarator_09__stellaris__fusion__E_fus: float = Field(default=2.817e-12, description="Entry point: E_fus")
     stellarator_09__stellaris__fusion__T_i0: float = Field(default=14.63, description="Entry point: T_i0")
@@ -80,5 +81,6 @@ class SystemDesign(BaseModel):
     stellarator_09__stellaris__rb__structure_t: float = Field(default=0.15, description="Entry point: structure_t")
     stellarator_09__stellaris__rb__vacuum_t: float = Field(default=0.1, description="Entry point: vacuum_t")
     stellarator_09__stellaris__rb__vessel_t: float = Field(default=0.1, description="Entry point: vessel_t")
+    stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__threshold: float = Field(default=0.5, description="Entry point: threshold")
 
     model_config = {"frozen": True, "extra": "forbid"}

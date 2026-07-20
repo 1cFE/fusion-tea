@@ -26,7 +26,9 @@ Complete all stages in order for a production-ready system.
 
 | Status | Module | Function | SysML Source | Complexity |
 |--------|--------|----------|--------------|------------|
-| [ ] | DT_Fusion_Power | `run_dt_fusion_power` | `models/analyses/mfe_plasma_scaling.sysml:125` | High |
+| [ ] | DT_Fusion_Power | `run_dt_fusion_power` | `root-0/analyses/mfe_plasma_scaling.sysml:125` | High |
+
+**4 aggregation module(s) auto-implemented** (not included in manual count above).
 
 ---
 

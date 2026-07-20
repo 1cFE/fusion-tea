@@ -35,9 +35,9 @@ Inputs:
 Outputs:
     - lcoe: lcoe result
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_lcoe_dcf.sysml:4
+SysML Source: root-0/analyses/mfe_lcoe_dcf.sysml:4
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_lcoe_dcf.sysml:4
+SysML Source: root-0/analyses/mfe_lcoe_dcf.sysml:4
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_lcoe_dcf/lcoe_dcf_impl.py
@@ -106,9 +106,9 @@ Inputs:
 Outputs:
     - lcoe: lcoe result
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_lcoe_dcf.sysml:4
+SysML Source: root-0/analyses/mfe_lcoe_dcf.sysml:4
 
-    SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_lcoe_dcf.sysml:4
+    SysML Source: root-0/analyses/mfe_lcoe_dcf.sysml:4
 
     Calculation Specification:
         discount_pow_n = (1.0 + discount_rate) ** operational_years

@@ -29,9 +29,9 @@ Inputs:
 Outputs:
     - wall_load: wall_load result
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_plasma_scaling.sysml:204
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:204
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_plasma_scaling.sysml:204
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:204
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_plasma_scaling/neutron_wall_load_impl.py
@@ -86,9 +86,9 @@ Inputs:
 Outputs:
     - wall_load: wall_load result
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_plasma_scaling.sysml:204
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:204
 
-    SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_plasma_scaling.sysml:204
+    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:204
 
     Calculation Specification:
         ash_frac = 0.2002

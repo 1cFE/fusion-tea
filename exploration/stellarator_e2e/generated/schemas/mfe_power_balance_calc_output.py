@@ -45,7 +45,7 @@ this calc stays flat and codegen-safe (no nested calc invocation).
 *Ref**: physics.py:290-328 (steps 4-14, mfe_forward_power_balance)
 *Basis**: Steady-state MFE power flow; tokamak/stellarator-generic
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_power_balance.sysml:4
+SysML Source: root-0/analyses/mfe_power_balance.sysml:4
     """
     p_th: float = Field(description="p_th output")
     p_the: float = Field(description="p_the output")
