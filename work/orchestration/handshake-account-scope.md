@@ -32,6 +32,11 @@
   - Next free SV: **SV-034**. MR-4 citations mandatory for every new quantitative value; concept-agnostic calc defs in `models/library/`, Stellaris bindings in `models/designs/stellarator_09/` (MR-3).
 - **[AGENT] (orchestrator orientation, design verifies):** the mechanism is expected to follow the WI-025 pattern — new library calc defs reproducing 1cfe's account formulas as functions of the model's computed powers/geometry, wired in the generic plant, bound by the Stellaris instance, plus handshake-side injection-map shrinkage. **Expect the Stellaris design-point headline to move** (new real accounts enter the rollup — a re-baseline like WI-025, not a regression); spec must state this expectation and the SV treatment explicitly. "Injected in the handshake" ≠ "unmodeled" for CAS21/CAS10/CAS70 (already forward-computed, WI-025) — do not re-model those.
 
+## Owner gate rulings ([OWNER] 2026-07-20, post-design)
+
+- **Decision 1 — rollup scope: Option 1, full rebuild.** The overnight assembly is restructured to mirror 1cfe (cas2x → contingency → cas20 → indirect → cas30 → overnight; CAS10 at overnight; cas28 added). F-2/F-3 are closed as errors under the criterion-3 ruling; the narrow-shadow alternative is rejected (recorded in design D2 as the rejected alternative).
+- **Decision 2 — CAS60/IDC convention: Option C.** CAS60 is computed and A-2-checked as a **reported line excluded from `total_capital`**; the model's DCF `idc_factor` stays untouched; the `total_capital` convention difference is itemized under A-4; LCOE-side IDC reconciliation remains Item 4's scope.
+
 ## Stage log
 
 - 2026-07-20: WI-028 registered (`pm add-item`, standalone, P0). Brief committed; spec stage launching.
