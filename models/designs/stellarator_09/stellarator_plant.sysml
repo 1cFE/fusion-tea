@@ -658,6 +658,63 @@ package stellarator_09 {
             */
         }
 
+        // ---------------------------------------------------------------------
+        // WI-028 CAS22 tail + CAS40 owner + CAS50 supplementary + CAS28 bases
+        // ($) — dollar conversions (x1e6 where the 1cfe constant is M$) of the
+        // pinned DT/toroidal constants at 0254385. concept_scale = 1.0
+        // (STELLARATOR) is bound HERE (instance), never a library default (MR-3).
+        // p_cryo is wired in the generic plant (cryo_elec.p_elec). Reference
+        // powers/exponents are library defaults / account-structural literals.
+        // ---------------------------------------------------------------------
+        :>> remote_handling_base = 150000000.0 {  // C220110 rh_base[DT] [$].
+            doc /* 150.0 M$ x 1e6. **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:131 (remote_handling_dt_base = 150.0); cas22.py:645 **Basis**: DT remote-handling base at ref_gross */
+        }
+        :>> concept_scale = 1.0 {  // C220110 toroidal (STELLARATOR) scale.
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py **Ref**: cas22.py:641 (ConfinementConcept.STELLARATOR: 1.0; end-access geometries 0.55) **Basis**: toroidal remote-handling concept scale */
+        }
+        :>> installation_frac = 0.14 {  // C220111 fraction of reactor subtotal.
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:137 (installation_frac = 0.14); cas22.py:652-664 **Basis**: installation labor fraction of C220101..110 */
+        }
+        :>> coolant_primary_base = 166000000.0 {  // C220200 primary coolant [$].
+            doc /* 166.0 M$ x 1e6 (linear in plant-total net). **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py **Ref**: cas22.py:684 (c220201 = 166.0 * p_net_total/ref_net) **Basis**: primary coolant loop */
+        }
+        :>> coolant_intermediate_base = 40600000.0 {  // C220200 intermediate [$].
+            doc /* 40.6 M$ x 1e6 (power-law in plant-total thermal, a=0.55). **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py **Ref**: cas22.py:685 (c220202 = 40.6 * (p_th_total/3500)**0.55) **Basis**: intermediate coolant loop */
+        }
+        :>> aux_per_mw = 1100.0 {  // C220300 aux coolant [$/MW_th].
+            doc /* 1.10e-3 M$/MW x 1e6 = 1100 $/MW (linear in plant-total thermal). **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py **Ref**: cas22.py:693 (c220301 = 1.10e-3 * p_th_total) **Basis**: auxiliary coolant per MW thermal */
+        }
+        :>> aux_cryo_base = 200000000.0 {  // C220300 cryoplant [$].
+            doc /* 200.0 M$ x 1e6 (power-law in per-module p_cryo, ref 30, a=0.7). **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py **Ref**: cas22.py:694 (c220302 = 200.0 * (p_cryo/30)**0.7) **Basis**: cryoplant base at 30 MW */
+        }
+        :>> waste_base = 1960000.0 {  // C220400 radwaste [$].
+            doc /* 1.96 M$ x 1e6 (linear in plant-total thermal, a=1.0). **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py **Ref**: cas22.py:702 (c220400 = 1.96 * p_th_total/1000) **Basis**: radwaste handling */
+        }
+        :>> fuel_handling_base = 120000000.0 {  // C220500 fuel handling DT [$].
+            doc /* 120.0 M$ x 1e6 (power-law in plant-total net, a=0.7). **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:165 (fuel_handling_dt_base = 120.0); cas22.py:718 **Basis**: DT tritium processing + containment */
+        }
+        :>> other_rpe_base = 11500000.0 {  // C220600 other reactor plant [$].
+            doc /* 11.5 M$ x 1e6 (power-law in plant-total net, a=0.8). **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py **Ref**: cas22.py:724 (c220600 = 11.5 * (p_net_total/1000)**0.8) **Basis**: other reactor-plant equipment */
+        }
+        :>> inc_base = 85000000.0 {  // C220700 instrumentation & control [$].
+            doc /* 85.0 M$ x 1e6 (power-law in plant-total thermal, ref 3500, a=0.65). **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py **Ref**: cas22.py:731 (c220700 = 85.0 * (p_th_total/3500)**0.65) **Basis**: reactor I&C */
+        }
+        :>> owner_base = 41200000.0 {  // CAS40 owner cost DT [$].
+            doc /* 41.2 M$ x 1e6 (power-law in plant-total net, ref 1000, a=0.5). **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:245 (owner_cost_dt = 41.2); costs.py:256 **Basis**: DT owner's cost (117 staff, pre-op training) */
+        }
+        :>> supplementary_spares_frac = 0.03 {  // CAS50 spare parts frac (DT).
+            doc /* fraction of CAS23..28. **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:253 (spare_parts_frac_dt = 0.03); costs.py:274 **Basis**: activated-component spares */
+        }
+        :>> supplementary_startup_base = 40000000.0 {  // CAS50 startup fuel DT [$].
+            doc /* 40.0 M$ x 1e6 (linear in plant-total net). **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:259 (startup_fuel_dt = 40.0); costs.py:277 **Basis**: tritium startup inventory */
+        }
+        :>> supplementary_decom_base = 272000000.0 {  // CAS50 decom provision DT [$].
+            doc /* 272.0 M$ x 1e6 (linear in plant-total net). **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:263 (decom_provision_dt = 272.0); costs.py:278 **Basis**: PV decommissioning provision */
+        }
+        :>> cas28_capital = 5000000.0 {  // CAS28 digital twin [$] (F-2).
+            doc /* 5.0 M$ x 1e6. **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:229 (digital_twin = 5.0); model.py:1479 **Basis**: digital-twin capital, part of c23..c28 */
+        }
+
         // Rollup rates (CAS29 contingency, CAS30 indirect, construction time).
         :>> contingency_rate = 0.10 {  // FOAK contingency on direct.
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:234 (contingency_rate_foak = 0.10) **Basis**: Gen-IV EMWG FOAK contingency */

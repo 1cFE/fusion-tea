@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml:168
+SysML Source: root-0/analyses/mfe_account_costs.sysml:168
 
 SysML Expressions:
     p_th_ref = 1000.0
@@ -43,7 +43,7 @@ steady-state MFE. Power-law in thermal power:
 *Ref**: cas22.py:570 (c220108 steady-state, divertor concepts)
 *Basis**: Power-scaled divertor cost; MFE analogue of IFE target factory
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml:168
+SysML Source: root-0/analyses/mfe_account_costs.sysml:168
 
 SysML Expressions:
     p_th_ref = 1000.0

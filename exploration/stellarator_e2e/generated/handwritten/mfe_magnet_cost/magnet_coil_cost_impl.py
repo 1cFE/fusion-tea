@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_magnet_cost.sysml:4
+SysML Source: root-0/analyses/mfe_magnet_cost.sysml:4
 
 SysML Expressions:
     mu0 = 1.25663706212e-06
@@ -71,7 +71,7 @@ cost_per_kAm is $/kA-m). Apply the M$ scaling downstream if desired.
 *Basis**: MFE coil conductor-quantity cost model; magnet cost rises
 with B, R0, r_coil (SV-018)
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_magnet_cost.sysml:4
+SysML Source: root-0/analyses/mfe_magnet_cost.sysml:4
 
 SysML Expressions:
     mu0 = 1.25663706212e-06

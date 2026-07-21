@@ -10,3 +10,26 @@ hif_plant,models/designs/hif_ife/hif_plant.sysml,part_usage,"DI-001,DI-003,DI-00
 'Buildings Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,costs.py:83-144; costing_constants.yaml:175-197,,,2026-07-18
 'Preconstruction Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,"costs.py:52-80; costing_constants.yaml:8,15-23",,,2026-07-18
 'Annual OM Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,"costs.py:319-357; costing_constants.yaml:272,8",,,2026-07-18
+'Plant Power-Law Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,"cas22.py:702,718,724,731; costs.py:256",,,2026-07-20
+'Remote Handling Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,"cas22.py:631-645,224",,,2026-07-20
+'Installation Labor Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,cas22.py:652-664,,,2026-07-20
+'Coolant Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,cas22.py:684-686,,,2026-07-20
+'Aux Cooling Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,cas22.py:693-695,,,2026-07-20
+'Supplementary Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,"costs.py:259-283; model.py:1492",,,2026-07-20
+'IDC Closed-Form Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,costs.py:286-297,,,2026-07-20
+remote_handling_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,costing_constants.yaml:131,,concept_scale bound here (MR-3),2026-07-20
+concept_scale,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,cas22.py:641,,STELLARATOR toroidal 1.0,2026-07-20
+installation_frac,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,costing_constants.yaml:137,,,2026-07-20
+coolant_primary_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,cas22.py:684,,,2026-07-20
+coolant_intermediate_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,cas22.py:685,,,2026-07-20
+aux_per_mw,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,cas22.py:693,,,2026-07-20
+aux_cryo_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,cas22.py:694,,,2026-07-20
+waste_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,cas22.py:702,,,2026-07-20
+fuel_handling_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,costing_constants.yaml:165,,,2026-07-20
+other_rpe_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,cas22.py:724,,,2026-07-20
+inc_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,cas22.py:731,,,2026-07-20
+owner_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,costing_constants.yaml:245,,,2026-07-20
+supplementary_spares_frac,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,costing_constants.yaml:253,,,2026-07-20
+supplementary_startup_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,costing_constants.yaml:259,,,2026-07-20
+supplementary_decom_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,costing_constants.yaml:263,,,2026-07-20
+cas28_capital,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,costing_constants.yaml:229,,F-2 digital twin,2026-07-20

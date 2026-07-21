@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml:304
+SysML Source: root-0/analyses/mfe_account_costs.sysml:304
 
 SysML Expressions:
     n_mod = 1.0
@@ -58,7 +58,7 @@ reference powers are 1cfe calibration constants.
 :102-106, SC cryogenics gate :137); costing_constants.yaml:175-197
 *Basis**: exact linear grouping of the per-building loop (WI-025 D1)
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml:304
+SysML Source: root-0/analyses/mfe_account_costs.sysml:304
 
 SysML Expressions:
     n_mod = 1.0

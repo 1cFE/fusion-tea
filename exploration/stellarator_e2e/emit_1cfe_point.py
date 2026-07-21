@@ -72,7 +72,20 @@ out = {
            "contingency_rate_noak": float(cc.contingency_rate(True)),
            "indirect_fraction": float(cc.indirect_fraction),
            "reference_construction_time": float(cc.reference_construction_time),
-           "annual_om_unlevelized_musd": annual_om_unlev},
+           "annual_om_unlevelized_musd": annual_om_unlev,
+           # WI-028 CAS22 tail + CAS40 + CAS50 CONST bases (M$; fracs unitless),
+           # DT-keyed, so the handshake can feed them (x1e6) and assert them (A-5).
+           "remote_handling_dt_base": float(cc.remote_handling_dt_base),
+           "concept_scale": 1.0,  # STELLARATOR toroidal (cas22.py:641)
+           "installation_frac": float(cc.installation_frac),
+           "fuel_handling_dt_base": float(cc.fuel_handling_dt_base),
+           "owner_cost_dt": float(cc.owner_cost(Fuel.DT)),
+           "shipping_frac": float(cc.shipping_frac),
+           "spare_parts_frac_dt": float(cc.spare_parts_frac(Fuel.DT)),
+           "tax_frac": float(cc.tax_frac),
+           "construction_insurance_frac": float(cc.construction_insurance_frac),
+           "startup_fuel_dt": float(cc.startup_fuel(Fuel.DT)),
+           "decom_provision_dt": float(cc.decom_provision(Fuel.DT))},
   "pb_params": {k: float(p[k]) for k in
     ["p_input","mn","eta_th","eta_p","f_sub","p_trit","p_house","p_cryo",
      "p_coils","p_cool","p_pump","p_ecrh"] if k in p},

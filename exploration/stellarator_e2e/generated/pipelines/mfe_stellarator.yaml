@@ -126,6 +126,30 @@ modules:
     outputs:
       root: RootModel[float] stellarator_09__stellaris__misc_cost__cost
 
+  # mfe_account_costs.Plant_Power_Law_CostModule
+  stellarator_09__stellaris__waste:
+    module_type: mfe_account_costs.Plant_Power_Law_CostModule
+    inputs:
+      base: float system_design.stellarator_09__stellaris__waste__base
+      power: float stellarator_09__stellaris__pb__p_th
+      n_mod: float mfe_plant_params.stellarator_09__stellaris__waste__n_mod
+      ref_power: float mfe_plant_params.stellarator_09__stellaris__waste__ref_power
+      alpha: float mfe_plant_params.stellarator_09__stellaris__waste__alpha
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__waste__cost
+
+  # mfe_account_costs.Plant_Power_Law_CostModule
+  stellarator_09__stellaris__inc_cost:
+    module_type: mfe_account_costs.Plant_Power_Law_CostModule
+    inputs:
+      base: float system_design.stellarator_09__stellaris__inc_cost__base
+      power: float stellarator_09__stellaris__pb__p_th
+      n_mod: float mfe_plant_params.stellarator_09__stellaris__inc_cost__n_mod
+      ref_power: float mfe_plant_params.stellarator_09__stellaris__inc_cost__ref_power
+      alpha: float mfe_plant_params.stellarator_09__stellaris__inc_cost__alpha
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__inc_cost__cost
+
   # mfe_plasma_scaling.DT_Fusion_PowerModule
   stellarator_09__stellaris__fusion:
     module_type: mfe_plasma_scaling.DT_Fusion_PowerModule
@@ -203,6 +227,16 @@ modules:
       q_eng: float stellarator_09__stellaris__pb__q_eng
       rec_frac: float stellarator_09__stellaris__pb__rec_frac
       p_net: float stellarator_09__stellaris__pb__p_net
+
+  # source: aggregation (stellarator_09.stellaris.cas23_to_28_capitalModule)
+  stellarator_09__stellaris__cas23_to_28_capital:
+    module_type: stellarator_09.stellaris.cas23_to_28_capitalModule
+    inputs:
+      bop_capital: float stellarator_09__stellaris__bop_capital__bop_capital.root
+      special_materials_capital: float system_design.stellarator_09__stellaris__cas23_to_28_capital__special_materials_capital
+      cas28_capital: float system_design.stellarator_09__stellaris__cas23_to_28_capital__cas28_capital
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital
 
   # mfe_account_costs.Blanket_CostModule
   stellarator_09__stellaris__blanket_cost:
@@ -324,6 +358,83 @@ modules:
     outputs:
       root: RootModel[float] stellarator_09__stellaris__om_cost__annual_om
 
+  # mfe_account_costs.Remote_Handling_CostModule
+  stellarator_09__stellaris__remote_handling:
+    module_type: mfe_account_costs.Remote_Handling_CostModule
+    inputs:
+      base: float system_design.stellarator_09__stellaris__remote_handling__base
+      concept_scale: float system_design.stellarator_09__stellaris__remote_handling__concept_scale
+      p_et: float stellarator_09__stellaris__pb__p_et
+      p_et_ref: float mfe_plant_params.stellarator_09__stellaris__remote_handling__p_et_ref
+      alpha: float mfe_plant_params.stellarator_09__stellaris__remote_handling__alpha
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__remote_handling__cost
+
+  # mfe_account_costs.Coolant_CostModule
+  stellarator_09__stellaris__coolant:
+    module_type: mfe_account_costs.Coolant_CostModule
+    inputs:
+      primary_base: float system_design.stellarator_09__stellaris__coolant__primary_base
+      p_net: float stellarator_09__stellaris__pb__p_net
+      intermediate_base: float system_design.stellarator_09__stellaris__coolant__intermediate_base
+      p_th: float stellarator_09__stellaris__pb__p_th
+      n_mod: float mfe_plant_params.stellarator_09__stellaris__coolant__n_mod
+      ref_net_power: float mfe_plant_params.stellarator_09__stellaris__coolant__ref_net_power
+      p_th_ref: float mfe_plant_params.stellarator_09__stellaris__coolant__p_th_ref
+      alpha: float mfe_plant_params.stellarator_09__stellaris__coolant__alpha
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__coolant__cost
+
+  # mfe_account_costs.Aux_Cooling_CostModule
+  stellarator_09__stellaris__aux_cooling:
+    module_type: mfe_account_costs.Aux_Cooling_CostModule
+    inputs:
+      aux_per_mw: float system_design.stellarator_09__stellaris__aux_cooling__aux_per_mw
+      p_th: float stellarator_09__stellaris__pb__p_th
+      cryo_base: float system_design.stellarator_09__stellaris__aux_cooling__cryo_base
+      p_cryo: float stellarator_09__stellaris__cryo_elec__p_elec.root
+      n_mod: float mfe_plant_params.stellarator_09__stellaris__aux_cooling__n_mod
+      p_cryo_ref: float mfe_plant_params.stellarator_09__stellaris__aux_cooling__p_cryo_ref
+      alpha: float mfe_plant_params.stellarator_09__stellaris__aux_cooling__alpha
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__aux_cooling__cost
+
+  # mfe_account_costs.Plant_Power_Law_CostModule
+  stellarator_09__stellaris__fuel_handling:
+    module_type: mfe_account_costs.Plant_Power_Law_CostModule
+    inputs:
+      base: float system_design.stellarator_09__stellaris__fuel_handling__base
+      power: float stellarator_09__stellaris__pb__p_net
+      n_mod: float mfe_plant_params.stellarator_09__stellaris__fuel_handling__n_mod
+      ref_power: float mfe_plant_params.stellarator_09__stellaris__fuel_handling__ref_power
+      alpha: float mfe_plant_params.stellarator_09__stellaris__fuel_handling__alpha
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__fuel_handling__cost
+
+  # mfe_account_costs.Plant_Power_Law_CostModule
+  stellarator_09__stellaris__other_rpe:
+    module_type: mfe_account_costs.Plant_Power_Law_CostModule
+    inputs:
+      base: float system_design.stellarator_09__stellaris__other_rpe__base
+      power: float stellarator_09__stellaris__pb__p_net
+      n_mod: float mfe_plant_params.stellarator_09__stellaris__other_rpe__n_mod
+      ref_power: float mfe_plant_params.stellarator_09__stellaris__other_rpe__ref_power
+      alpha: float mfe_plant_params.stellarator_09__stellaris__other_rpe__alpha
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__other_rpe__cost
+
+  # mfe_account_costs.Plant_Power_Law_CostModule
+  stellarator_09__stellaris__owner:
+    module_type: mfe_account_costs.Plant_Power_Law_CostModule
+    inputs:
+      base: float system_design.stellarator_09__stellaris__owner__base
+      power: float stellarator_09__stellaris__pb__p_net
+      n_mod: float mfe_plant_params.stellarator_09__stellaris__owner__n_mod
+      ref_power: float mfe_plant_params.stellarator_09__stellaris__owner__ref_power
+      alpha: float mfe_plant_params.stellarator_09__stellaris__owner__alpha
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__owner__cost
+
   # source: aggregation (stellarator_09.stellaris.powercore_capitalModule)
   stellarator_09__stellaris__powercore_capital:
     module_type: stellarator_09.stellaris.powercore_capitalModule
@@ -339,47 +450,134 @@ modules:
     outputs:
       root: RootModel[float] stellarator_09__stellaris__powercore_capital__powercore_capital
 
-  # source: aggregation (stellarator_09.stellaris.direct_capitalModule)
-  stellarator_09__stellaris__direct_capital:
-    module_type: stellarator_09.stellaris.direct_capitalModule
+  # source: aggregation (stellarator_09.stellaris.reactor_equipment_subtotalModule)
+  stellarator_09__stellaris__reactor_equipment_subtotal:
+    module_type: stellarator_09.stellaris.reactor_equipment_subtotalModule
+    inputs:
+      powercore_capital: float stellarator_09__stellaris__powercore_capital__powercore_capital.root
+      remote_handling_capital: float stellarator_09__stellaris__remote_handling__cost.root
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal
+
+  # mfe_account_costs.Installation_Labor_CostModule
+  stellarator_09__stellaris__installation:
+    module_type: mfe_account_costs.Installation_Labor_CostModule
+    inputs:
+      installation_frac: float system_design.stellarator_09__stellaris__installation__installation_frac
+      reactor_subtotal: float stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal.root
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__installation__cost
+
+  # source: aggregation (stellarator_09.stellaris.cas22_capitalModule)
+  stellarator_09__stellaris__cas22_capital:
+    module_type: stellarator_09.stellaris.cas22_capitalModule
+    inputs:
+      powercore_capital: float stellarator_09__stellaris__powercore_capital__powercore_capital.root
+      remote_handling_capital: float stellarator_09__stellaris__remote_handling__cost.root
+      installation_capital: float stellarator_09__stellaris__installation__cost.root
+      coolant_capital: float stellarator_09__stellaris__coolant__cost.root
+      aux_cooling_capital: float stellarator_09__stellaris__aux_cooling__cost.root
+      waste_capital: float stellarator_09__stellaris__waste__cost.root
+      fuel_handling_capital: float stellarator_09__stellaris__fuel_handling__cost.root
+      other_rpe_capital: float stellarator_09__stellaris__other_rpe__cost.root
+      inc_capital: float stellarator_09__stellaris__inc_cost__cost.root
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__cas22_capital__cas22_capital
+
+  # source: aggregation (stellarator_09.stellaris.cas2x_pre_contingencyModule)
+  stellarator_09__stellaris__cas2x_pre_contingency:
+    module_type: stellarator_09.stellaris.cas2x_pre_contingencyModule
     inputs:
       buildings_capital_cost: float stellarator_09__stellaris__buildings_cost__cost.root
-      powercore_capital: float stellarator_09__stellaris__powercore_capital__powercore_capital.root
+      cas22_capital: float stellarator_09__stellaris__cas22_capital__cas22_capital.root
       bop_capital: float stellarator_09__stellaris__bop_capital__bop_capital.root
-      preconstruction_capital: float stellarator_09__stellaris__precon_cost__cost.root
-      special_materials_capital: float system_design.stellarator_09__stellaris__direct_capital__special_materials_capital
+      special_materials_capital: float system_design.stellarator_09__stellaris__cas2x_pre_contingency__special_materials_capital
+      cas28_capital: float system_design.stellarator_09__stellaris__cas2x_pre_contingency__cas28_capital
     outputs:
-      root: RootModel[float] stellarator_09__stellaris__direct_capital__direct_capital
+      root: RootModel[float] stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency
 
   # mfe_account_costs.Contingency_CostModule
   stellarator_09__stellaris__contingency:
     module_type: mfe_account_costs.Contingency_CostModule
     inputs:
       contingency_rate: float system_design.stellarator_09__stellaris__contingency__contingency_rate
-      direct_subtotal: float stellarator_09__stellaris__direct_capital__direct_capital.root
+      direct_subtotal: float stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency.root
     outputs:
       root: RootModel[float] stellarator_09__stellaris__contingency__cost
+
+  # source: aggregation (stellarator_09.stellaris.cas20_capitalModule)
+  stellarator_09__stellaris__cas20_capital:
+    module_type: stellarator_09.stellaris.cas20_capitalModule
+    inputs:
+      cas2x_pre_contingency: float stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency.root
+      contingency_capital: float stellarator_09__stellaris__contingency__cost.root
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__cas20_capital__cas20_capital
 
   # mfe_account_costs.Indirect_CostModule
   stellarator_09__stellaris__indirect:
     module_type: mfe_account_costs.Indirect_CostModule
     inputs:
       indirect_fraction: float system_design.stellarator_09__stellaris__indirect__indirect_fraction
-      direct_cost: float stellarator_09__stellaris__direct_capital__direct_capital.root
+      direct_cost: float stellarator_09__stellaris__cas20_capital__cas20_capital.root
       construction_time: float system_design.stellarator_09__stellaris__indirect__construction_time
       reference_construction_time: float mfe_plant_params.stellarator_09__stellaris__indirect__reference_construction_time
     outputs:
       root: RootModel[float] stellarator_09__stellaris__indirect__cost
 
+  # mfe_account_costs.Supplementary_CostModule
+  stellarator_09__stellaris__supplementary:
+    module_type: mfe_account_costs.Supplementary_CostModule
+    inputs:
+      shipping_frac: float mfe_plant_params.stellarator_09__stellaris__supplementary__shipping_frac
+      tax_frac: float mfe_plant_params.stellarator_09__stellaris__supplementary__tax_frac
+      insurance_frac: float mfe_plant_params.stellarator_09__stellaris__supplementary__insurance_frac
+      spares_frac: float system_design.stellarator_09__stellaris__supplementary__spares_frac
+      startup_fuel_base: float system_design.stellarator_09__stellaris__supplementary__startup_fuel_base
+      decom_base: float system_design.stellarator_09__stellaris__supplementary__decom_base
+      contingency_rate: float mfe_plant_params.stellarator_09__stellaris__supplementary__contingency_rate
+      cas20: float stellarator_09__stellaris__cas20_capital__cas20_capital.root
+      cas23_to_28: float stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital.root
+      cas30: float stellarator_09__stellaris__indirect__cost.root
+      p_net: float stellarator_09__stellaris__pb__p_net
+      n_mod: float mfe_plant_params.stellarator_09__stellaris__supplementary__n_mod
+      ref_net_power: float mfe_plant_params.stellarator_09__stellaris__supplementary__ref_net_power
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__supplementary__cost
+
+  # source: aggregation (stellarator_09.stellaris.overnight_capitalModule)
+  stellarator_09__stellaris__overnight_capital:
+    module_type: stellarator_09.stellaris.overnight_capitalModule
+    inputs:
+      preconstruction_capital: float stellarator_09__stellaris__precon_cost__cost.root
+      cas20_capital: float stellarator_09__stellaris__cas20_capital__cas20_capital.root
+      cas30_capital: float stellarator_09__stellaris__indirect__cost.root
+      owner_capital: float stellarator_09__stellaris__owner__cost.root
+      supplementary_capital: float stellarator_09__stellaris__supplementary__cost.root
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__overnight_capital__overnight_capital
+
   # source: aggregation (stellarator_09.stellaris.total_capitalModule)
   stellarator_09__stellaris__total_capital:
     module_type: stellarator_09.stellaris.total_capitalModule
     inputs:
-      direct_capital: float stellarator_09__stellaris__direct_capital__direct_capital.root
-      contingency_capital: float stellarator_09__stellaris__contingency__cost.root
-      indirect_capital: float stellarator_09__stellaris__indirect__cost.root
+      preconstruction_capital: float stellarator_09__stellaris__precon_cost__cost.root
+      cas20_capital: float stellarator_09__stellaris__cas20_capital__cas20_capital.root
+      cas30_capital: float stellarator_09__stellaris__indirect__cost.root
+      owner_capital: float stellarator_09__stellaris__owner__cost.root
+      supplementary_capital: float stellarator_09__stellaris__supplementary__cost.root
     outputs:
       root: RootModel[float] stellarator_09__stellaris__total_capital__total_capital
+
+  # mfe_account_costs.IDC_Closed_Form_CostModule
+  stellarator_09__stellaris__idc:
+    module_type: mfe_account_costs.IDC_Closed_Form_CostModule
+    inputs:
+      interest_rate: float system_design.stellarator_09__stellaris__idc__interest_rate
+      construction_years: float system_design.stellarator_09__stellaris__idc__construction_years
+      overnight_cost: float stellarator_09__stellaris__overnight_capital__overnight_capital.root
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__idc__cost
 
   # mfe_lcoe_dcf.LCOE_DCFModule
   stellarator_09__stellaris__lcoe_calc:
@@ -469,6 +667,8 @@ modules:
       stellarator_09__stellaris__electric_cost__cost: RootModel[float] stellarator_09__stellaris__electric_cost__cost.json
       stellarator_09__stellaris__heat_rejection_cost__cost: RootModel[float] stellarator_09__stellaris__heat_rejection_cost__cost.json
       stellarator_09__stellaris__misc_cost__cost: RootModel[float] stellarator_09__stellaris__misc_cost__cost.json
+      stellarator_09__stellaris__waste__cost: RootModel[float] stellaris__waste_capital.json
+      stellarator_09__stellaris__inc_cost__cost: RootModel[float] stellaris__inc_capital.json
       stellarator_09__stellaris__fusion__p_fus: RootModel[float] stellarator_09__stellaris__fusion__p_fus.json
       stellarator_09__stellaris__magnet_cost__capital_cost: RootModel[float] stellarator_09__stellaris__magnet_cost__capital_cost.json
       stellarator_09__stellaris__bop_capital__bop_capital: RootModel[float] stellarator_09__stellaris__bop_capital__bop_capital.json
@@ -479,6 +679,7 @@ modules:
       stellarator_09__stellaris__pb__q_eng: float stellaris__q_eng.json
       stellarator_09__stellaris__pb__rec_frac: float stellaris__rec_frac.json
       stellarator_09__stellaris__pb__p_net: float stellaris__net_electric.json
+      stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital: RootModel[float] stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital.json
       stellarator_09__stellaris__blanket_cost__cost: RootModel[float] stellarator_09__stellaris__blanket_cost__cost.json
       stellarator_09__stellaris__shield_cost__cost: RootModel[float] stellarator_09__stellaris__shield_cost__cost.json
       stellarator_09__stellaris__structure_cost__cost: RootModel[float] stellarator_09__stellaris__structure_cost__cost.json
@@ -488,11 +689,24 @@ modules:
       stellarator_09__stellaris__buildings_cost__cost: RootModel[float] stellarator_09__stellaris__buildings_cost__cost.json
       stellarator_09__stellaris__precon_cost__cost: RootModel[float] stellaris__preconstruction_capital.json
       stellarator_09__stellaris__om_cost__annual_om: RootModel[float] stellaris__annual_om.json
+      stellarator_09__stellaris__remote_handling__cost: RootModel[float] stellaris__remote_handling_capital.json
+      stellarator_09__stellaris__coolant__cost: RootModel[float] stellaris__coolant_capital.json
+      stellarator_09__stellaris__aux_cooling__cost: RootModel[float] stellaris__aux_cooling_capital.json
+      stellarator_09__stellaris__fuel_handling__cost: RootModel[float] stellaris__fuel_handling_capital.json
+      stellarator_09__stellaris__other_rpe__cost: RootModel[float] stellaris__other_rpe_capital.json
+      stellarator_09__stellaris__owner__cost: RootModel[float] stellaris__owner_capital.json
       stellarator_09__stellaris__powercore_capital__powercore_capital: RootModel[float] stellarator_09__stellaris__powercore_capital__powercore_capital.json
-      stellarator_09__stellaris__direct_capital__direct_capital: RootModel[float] stellarator_09__stellaris__direct_capital__direct_capital.json
+      stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal: RootModel[float] stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal.json
+      stellarator_09__stellaris__installation__cost: RootModel[float] stellaris__installation_capital.json
+      stellarator_09__stellaris__cas22_capital__cas22_capital: RootModel[float] stellarator_09__stellaris__cas22_capital__cas22_capital.json
+      stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency: RootModel[float] stellarator_09__stellaris__cas2x_pre_contingency__cas2x_pre_contingency.json
       stellarator_09__stellaris__contingency__cost: RootModel[float] stellaris__contingency_capital.json
-      stellarator_09__stellaris__indirect__cost: RootModel[float] stellaris__indirect_capital.json
+      stellarator_09__stellaris__cas20_capital__cas20_capital: RootModel[float] stellarator_09__stellaris__cas20_capital__cas20_capital.json
+      stellarator_09__stellaris__indirect__cost: RootModel[float] stellaris__cas30_capital.json
+      stellarator_09__stellaris__supplementary__cost: RootModel[float] stellaris__supplementary_capital.json
+      stellarator_09__stellaris__overnight_capital__overnight_capital: RootModel[float] stellarator_09__stellaris__overnight_capital__overnight_capital.json
       stellarator_09__stellaris__total_capital__total_capital: RootModel[float] stellarator_09__stellaris__total_capital__total_capital.json
+      stellarator_09__stellaris__idc__cost: RootModel[float] stellaris__idc_capital.json
       stellarator_09__stellaris__lcoe_calc__lcoe: RootModel[float] stellaris__lcoe.json
       stellarator_09__stellaris__beta_ok__82b78aad420730d5__evaluation: ConstraintEvaluation stellarator_09__stellaris__beta_ok__82b78aad420730d5__evaluation.json
       stellarator_09__stellaris__net_positive__484521d56c02667a__evaluation: ConstraintEvaluation stellarator_09__stellaris__net_positive__484521d56c02667a__evaluation.json

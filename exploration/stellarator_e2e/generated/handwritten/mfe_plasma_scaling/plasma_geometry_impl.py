@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_plasma_scaling.sysml:4
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:4
 
 SysML Expressions:
     pi = 3.14159265358979
@@ -53,7 +53,7 @@ and the Anchor A handshake unchanged).
 *Ref**: tokamak.py:172-174 (_plasma_volume, the f_shape = 1.0 torus term)
 *Basis**: elongated-torus volume with a concept shape factor; MFE-generic
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_plasma_scaling.sysml:4
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:4
 
 SysML Expressions:
     pi = 3.14159265358979

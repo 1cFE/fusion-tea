@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml:140
+SysML Source: root-0/analyses/mfe_account_costs.sysml:140
 
 SysML Expressions:
     p_et_ref = 1100.0
@@ -43,7 +43,7 @@ M$ at 1 GWe in the source) — a concept input (WI-011).
 *Ref**: cas22.py:554 (c220107 steady-state), cas22.py:224 (P_ET_REF)
 *Basis**: Power-scaled power-supply cost
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml:140
+SysML Source: root-0/analyses/mfe_account_costs.sysml:140
 
 SysML Expressions:
     p_et_ref = 1100.0

@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml:226
+SysML Source: root-0/analyses/mfe_account_costs.sysml:226
 
 SysML Expressions:
     n_mod = 1.0
@@ -48,7 +48,7 @@ and per-MW unit cost (concept/power-cycle inputs, WI-011):
 *Ref**: costs.py:154 (turbine), :162 (electric), :170 (misc), :179 (heat_rej)
 *Basis**: Balance-of-plant cost linear in plant-total driving power
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml:226
+SysML Source: root-0/analyses/mfe_account_costs.sysml:226
 
 SysML Expressions:
     n_mod = 1.0

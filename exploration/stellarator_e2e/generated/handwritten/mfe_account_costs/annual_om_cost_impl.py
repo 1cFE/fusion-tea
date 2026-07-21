@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml:387
+SysML Source: root-0/analyses/mfe_account_costs.sysml:387
 
 SysML Expressions:
     n_mod = 1.0
@@ -47,7 +47,7 @@ exact identity, the handshake injection path — WI-025 D5/D6).
 costing_constants.yaml:272 (om_cost_dt 54.9), :8 (ref 1000)
 *Basis**: staffing power-law O&M, unlevelized (CAS71/72 out of scope)
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml:387
+SysML Source: root-0/analyses/mfe_account_costs.sysml:387
 
 SysML Expressions:
     n_mod = 1.0

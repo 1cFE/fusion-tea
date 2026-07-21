@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_cryo_plant.sysml:4
+SysML Source: root-0/analyses/mfe_cryo_plant.sysml:4
 
 SysML Expressions:
     q_nuc = 0.0
@@ -74,7 +74,7 @@ witness only, value inadmissible)
 *Basis**: reversed-Carnot reference cycle x fraction-of-Carnot;
 concept-agnostic (MR-3) — all values bound by instances
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_cryo_plant.sysml:4
+SysML Source: root-0/analyses/mfe_cryo_plant.sysml:4
 
 SysML Expressions:
     q_nuc = 0.0

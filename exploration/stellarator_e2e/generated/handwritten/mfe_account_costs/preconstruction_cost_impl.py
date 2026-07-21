@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml:356
+SysML Source: root-0/analyses/mfe_account_costs.sysml:356
 
 SysML Expressions:
     n_mod = 1.0
@@ -45,7 +45,7 @@ stage check: 1cfe full CAS10 = this subtotal x 1.10 exactly).
 costing_constants.yaml:8, :15-23
 *Basis**: CAS10 subtotal, contingency deliberately omitted (CAS29)
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml:356
+SysML Source: root-0/analyses/mfe_account_costs.sysml:356
 
 SysML Expressions:
     n_mod = 1.0

@@ -20,13 +20,20 @@ from stellarator_tea import CUSTOM_SCHEMA_TYPES, create_stellarator_tea_registry
 rs.patch_bop_wiring()  # glue-1 (kept); NO rollup glue-2, single pass
 o = oracle_compute()
 special = o["special_materials"]
-# Inject the CAS27 pass-through design input (a declared plain attribute, harness-supplied).
+# Inject the leaf design inputs surfaced as per-module entry points (WI-028: the
+# rebuilt overnight assembly consumes special_materials_capital in both
+# cas2x_pre_contingency and cas23_to_28_capital, and cas28_capital likewise;
+# each surfaces as its own module-scoped entry point). CAS27 special materials is
+# the harness-supplied pass-through; CAS28 digital twin is the 5.0 M$ constant.
+CAS28_CAPITAL = 5_000_000.0  # costing_constants.yaml:229 (digital_twin 5.0 M$) x 1e6
 for f in Path("generated/inputs").glob("*.json"):
     d = json.loads(f.read_text())
-    hit = [k for k in d if k.endswith("direct_capital__special_materials_capital")]
-    if hit:
-        for k in hit: d[k] = special
-        f.write_text(json.dumps(d, indent=2)); print(f"[inject] special_materials_capital={special:,.2f} into {f.name}")
+    changed = False
+    for k in list(d):
+        if k.endswith("__special_materials_capital"): d[k] = special; changed = True
+        elif k.endswith("__cas28_capital"): d[k] = CAS28_CAPITAL; changed = True
+    if changed:
+        f.write_text(json.dumps(d, indent=2)); print(f"[inject] special_materials={special:,.2f}, cas28={CAS28_CAPITAL:,.2f} into {f.name}")
 
 # CONSTRAINT-EXEC (WI-027 adapter 1): the generated CUSTOM_SCHEMA_TYPES already carry
 # ConstraintEvaluation + ConstraintReport, so registering write handlers for every
@@ -44,9 +51,12 @@ out = result.outputs
 b = {c:(float(v.root) if hasattr(v,'root') else float(v)) for c,v in out.items() if hasattr(v,'root') or isinstance(v,(int,float))}
 P, CH = rs.P, rs.CH
 total = b[f"{P}total_capital__total_capital"]; magnet = b[CH["magnet"]]
-anchors = [("total capital $",total,12_638_857_665.74),("LCOE $/MWh",b[CH["lcoe"]],203.647152),
+# WI-028 re-baseline (MR-WI028-9): total_capital/LCOE/magnet-share MOVE as the
+# CAS22 tail + CAS40 + CAS50 accounts enter the overnight assembly; p_net/q_eng
+# (physics spine) UNCHANGED. Authoritative gate is bit-exact vs oracle below.
+anchors = [("total capital $",total,16_145_706_216.04),("LCOE $/MWh",b[CH["lcoe"]],258.013640),
     ("p_net MW",b[CH["p_net"]],915.081088),("q_eng",b[CH["q_eng"]],6.606662),
-    ("rec_frac",b[CH["rec_frac"]],0.151362),("magnet %",magnet/total*100,50.03)]
+    ("rec_frac",b[CH["rec_frac"]],0.151362),("magnet %",magnet/total*100,39.165025)]
 print("\n=== SIX ANCHORS (single-pass, graph rollup, no bridge) ===")
 allok=True
 for name,val,exp in anchors:
@@ -85,7 +95,9 @@ print("ANCHORS", "GREEN" if allok else "*** STOP — DEVIATION ***")
 # --- Bit-exact oracle comparison (WI-027 standard: rel dev < 1e-9) ---
 print("\n=== BIT-EXACT vs ORACLE (rel<1e-9) ===")
 omap = {"total_capital":total, "lcoe":b[CH["lcoe"]], "p_net":b[CH["p_net"]],
-        "q_eng":b[CH["q_eng"]], "rec_frac":b[CH["rec_frac"]], "direct_capital":b[f"{P}direct_capital__direct_capital"]}
+        "q_eng":b[CH["q_eng"]], "rec_frac":b[CH["rec_frac"]],
+        "cas20_capital":b[f"{P}cas20_capital__cas20_capital"],
+        "overnight_capital":b[f"{P}overnight_capital__overnight_capital"]}
 bit=True
 for k,val in omap.items():
     exp=o[k]; rd=abs(val-exp)/(abs(exp) or 1); ok=rd<1e-9; bit&=ok

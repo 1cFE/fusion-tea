@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml:81
+SysML Source: root-0/analyses/mfe_account_costs.sysml:81
 
 SysML Expressions:
     p_et_ref = 1100.0
@@ -39,7 +39,7 @@ scaling:
 *Ref**: cas22.py:501 (c220105), cas22.py:224 (P_ET_REF=ref_gross_power_mwe)
 *Basis**: Volume-based structure cost with gross-electric power law
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml:81
+SysML Source: root-0/analyses/mfe_account_costs.sysml:81
 
 SysML Expressions:
     p_et_ref = 1100.0

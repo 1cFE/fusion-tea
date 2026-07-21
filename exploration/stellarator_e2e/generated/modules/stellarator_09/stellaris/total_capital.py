@@ -3,9 +3,11 @@
 TEAx module for total_capital calculation.
 
 Inputs:
-    - direct_capital: direct_capital parameter
-    - contingency_capital: contingency_capital parameter
-    - indirect_capital: indirect_capital parameter
+    - preconstruction_capital: preconstruction_capital parameter
+    - cas20_capital: cas20_capital parameter
+    - cas30_capital: cas30_capital parameter
+    - owner_capital: owner_capital parameter
+    - supplementary_capital: supplementary_capital parameter
 
 Outputs:
     - total_capital: total_capital result
@@ -28,22 +30,28 @@ class total_capitalInput(BaseModel):
     """Input model for total_capitalModule.
 
     Attributes:
-        direct_capital: direct_capital input
-        contingency_capital: contingency_capital input
-        indirect_capital: indirect_capital input
+        preconstruction_capital: preconstruction_capital input
+        cas20_capital: cas20_capital input
+        cas30_capital: cas30_capital input
+        owner_capital: owner_capital input
+        supplementary_capital: supplementary_capital input
     """
-    direct_capital: float = Field(..., description="direct_capital input")
-    contingency_capital: float = Field(..., description="contingency_capital input")
-    indirect_capital: float = Field(..., description="indirect_capital input")
+    preconstruction_capital: float = Field(..., description="preconstruction_capital input")
+    cas20_capital: float = Field(..., description="cas20_capital input")
+    cas30_capital: float = Field(..., description="cas30_capital input")
+    owner_capital: float = Field(..., description="owner_capital input")
+    supplementary_capital: float = Field(..., description="supplementary_capital input")
 
 
 class total_capitalModule(ModuleBase[total_capitalInput, Float]):
     """TEAx module for total_capital calculation.
 
 Inputs:
-    - direct_capital: direct_capital parameter
-    - contingency_capital: contingency_capital parameter
-    - indirect_capital: indirect_capital parameter
+    - preconstruction_capital: preconstruction_capital parameter
+    - cas20_capital: cas20_capital parameter
+    - cas30_capital: cas30_capital parameter
+    - owner_capital: owner_capital parameter
+    - supplementary_capital: supplementary_capital parameter
 
 Outputs:
     - total_capital: total_capital result
@@ -53,7 +61,7 @@ SysML Source: unknown:0
     SysML Source: unknown:0
 
     Calculation Specification:
-        direct_capital + contingency_capital + indirect_capital
+        preconstruction_capital + cas20_capital + cas30_capital + owner_capital + supplementary_capital
 
     IMPLEMENTATION: See stellarator_tea.handwritten.stellarator_09.stellaris.total_capital_impl
     for manual implementation.
@@ -65,33 +73,37 @@ SysML Source: unknown:0
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, direct_capital: float, contingency_capital: float, indirect_capital: float    ) -> total_capitalInput:
+        self, preconstruction_capital: float, cas20_capital: float, cas30_capital: float, owner_capital: float, supplementary_capital: float    ) -> total_capitalInput:
         """Validate inputs and fill defaults.
 
         Args:
-            direct_capital: direct_capital input
-            contingency_capital: contingency_capital input
-            indirect_capital: indirect_capital input
+            preconstruction_capital: preconstruction_capital input
+            cas20_capital: cas20_capital input
+            cas30_capital: cas30_capital input
+            owner_capital: owner_capital input
+            supplementary_capital: supplementary_capital input
 
         Returns:
             Validated input model
         """
-        return total_capitalInput(direct_capital=direct_capital, contingency_capital=contingency_capital, indirect_capital=indirect_capital)
+        return total_capitalInput(preconstruction_capital=preconstruction_capital, cas20_capital=cas20_capital, cas30_capital=cas30_capital, owner_capital=owner_capital, supplementary_capital=supplementary_capital)
 
     def run(
-        self, direct_capital: float, contingency_capital: float, indirect_capital: float    ) -> ModuleResult[Float]:
+        self, preconstruction_capital: float, cas20_capital: float, cas30_capital: float, owner_capital: float, supplementary_capital: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            direct_capital: direct_capital input
-            contingency_capital: contingency_capital input
-            indirect_capital: indirect_capital input
+            preconstruction_capital: preconstruction_capital input
+            cas20_capital: cas20_capital input
+            cas30_capital: cas30_capital input
+            owner_capital: owner_capital input
+            supplementary_capital: supplementary_capital input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(direct_capital, contingency_capital, indirect_capital)
+        validated_inputs = self.validate_and_fill_default(preconstruction_capital, cas20_capital, cas30_capital, owner_capital, supplementary_capital)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.stellarator_09.stellaris.total_capital_impl import (

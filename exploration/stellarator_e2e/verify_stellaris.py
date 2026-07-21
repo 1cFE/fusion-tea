@@ -114,6 +114,22 @@ IN = dict(
     reference_construction_time=6.0, construction_years=8.0,
     availability=0.85, discount_rate=0.07,
     operational_years=30.0,
+    # WI-028 CAS22 tail + CAS40 + CAS50 + CAS28 bases ($; M$ x 1e6) and their
+    # account-structural refs/exponents (instance bindings + library defaults).
+    remote_handling_base=150000000.0, concept_scale=1.0, rh_p_et_ref=1100.0, rh_alpha=0.5,
+    installation_frac=0.14,
+    coolant_primary_base=166000000.0, coolant_intermediate_base=40600000.0,
+    coolant_ref_net=1000.0, coolant_p_th_ref=3500.0, coolant_alpha=0.55,
+    aux_per_mw=1100.0, aux_cryo_base=200000000.0, aux_p_cryo_ref=30.0, aux_alpha=0.7,
+    waste_base=1960000.0, waste_ref=1000.0, waste_alpha=1.0,
+    fuel_handling_base=120000000.0, fuel_ref=1000.0, fuel_alpha=0.7,
+    other_rpe_base=11500000.0, other_ref=1000.0, other_alpha=0.8,
+    inc_base=85000000.0, inc_ref=3500.0, inc_alpha=0.65,
+    owner_base=41200000.0, owner_ref=1000.0, owner_alpha=0.5,
+    supp_spares_frac=0.03, supp_startup_base=40000000.0, supp_decom_base=272000000.0,
+    supp_shipping_frac=0.015, supp_tax_frac=0.01, supp_insurance_frac=0.015,
+    supp_contingency_rate=0.0,  # CAS50 c59 internal contingency: library default 0.0 (not instance-bound)
+    cas28_capital=5000000.0,
 )
 
 
@@ -213,12 +229,52 @@ def compute():
     powercore_capital = (magnet + heating + divertor + blanket + shield
                          + structure + vessel + power_supplies)
     bop_capital = turbine + electric + heat_rejection + misc
-    direct_capital = (powercore_capital + bop_capital + buildings
-                      + precon + special_materials_capital)
-    contingency_capital = p["contingency_rate"] * direct_capital
-    indirect_capital = (p["indirect_fraction"] * direct_capital
-                        * (p["construction_years"] / p["reference_construction_time"]))
-    total_capital = direct_capital + contingency_capital + indirect_capital
+
+    # --- WI-028 rebuilt overnight assembly (mirrors mfe_plant.sysml D2) ---
+    n = p["n_mod"]
+    # CAS22 tail accounts ($)
+    remote_handling = (p["remote_handling_base"] * p["concept_scale"]
+                       * (p_et / p["rh_p_et_ref"]) ** p["rh_alpha"])
+    reactor_equipment_subtotal = powercore_capital + remote_handling
+    installation = p["installation_frac"] * reactor_equipment_subtotal
+    coolant = (p["coolant_primary_base"] * (n * p_net / p["coolant_ref_net"])
+               + p["coolant_intermediate_base"] * (n * p_th / p["coolant_p_th_ref"]) ** p["coolant_alpha"])
+    aux_cooling = (p["aux_per_mw"] * (n * p_th)
+                   + p["aux_cryo_base"] * (p_cryo / p["aux_p_cryo_ref"]) ** p["aux_alpha"])
+    waste = p["waste_base"] * (n * p_th / p["waste_ref"]) ** p["waste_alpha"]
+    fuel_handling = p["fuel_handling_base"] * (n * p_net / p["fuel_ref"]) ** p["fuel_alpha"]
+    other_rpe = p["other_rpe_base"] * (n * p_net / p["other_ref"]) ** p["other_alpha"]
+    inc = p["inc_base"] * (n * p_th / p["inc_ref"]) ** p["inc_alpha"]
+    cas22_tail_capital = (remote_handling + installation + coolant + aux_cooling
+                          + waste + fuel_handling + other_rpe + inc)
+    cas22_capital = powercore_capital + cas22_tail_capital
+    cas28_capital = p["cas28_capital"]
+    # cas2x -> contingency -> cas20 -> indirect -> cas30 (CAS10 NOT in cas2x)
+    cas2x_pre_contingency = (buildings + cas22_capital + bop_capital
+                             + special_materials_capital + cas28_capital)
+    contingency_capital = p["contingency_rate"] * cas2x_pre_contingency
+    cas20_capital = cas2x_pre_contingency + contingency_capital
+    cas30_capital = (p["indirect_fraction"] * cas20_capital
+                     * (p["construction_years"] / p["reference_construction_time"]))
+    cas23_to_28_capital = bop_capital + special_materials_capital + cas28_capital
+    # CAS40 owner + CAS50 supplementary at overnight (no CAS29/CAS30 on them)
+    owner = p["owner_base"] * (n * p_net / p["owner_ref"]) ** p["owner_alpha"]
+    supplementary = ((p["supp_shipping_frac"] * cas20_capital
+                      + p["supp_spares_frac"] * cas23_to_28_capital
+                      + p["supp_tax_frac"] * cas20_capital
+                      + p["supp_insurance_frac"] * (cas20_capital + cas30_capital)
+                      + p["supp_startup_base"] * (n * p_net / p["ref_net_power"])
+                      + p["supp_decom_base"] * (n * p_net / p["ref_net_power"]))
+                     * (1.0 + p["supp_contingency_rate"]))
+    # CAS10 (precon) enters at overnight (no CAS29/CAS30)
+    overnight_capital = (precon + cas20_capital + cas30_capital + owner + supplementary)
+    # CAS60 IDC reported line (Option C: NOT summed into total_capital)
+    f_idc = ((1.0 + p["discount_rate"]) ** p["construction_years"] - 1.0) \
+        / (p["discount_rate"] * p["construction_years"]) - 1.0
+    idc_capital = f_idc * overnight_capital
+    total_capital = overnight_capital  # Option C
+    # legacy aliases (retained for downstream comparison rows)
+    indirect_capital = cas30_capital
 
     # --- LCOE DCF ($/MWh) ---
     d = p["discount_rate"]
@@ -245,7 +301,17 @@ def compute():
         annual_om=annual_om,                 # forward-computed (WI-025)
         special_materials=special_materials_capital,
         powercore_capital=powercore_capital, bop_capital=bop_capital,
-        direct_capital=direct_capital, contingency_capital=contingency_capital,
+        # WI-028 CAS22 tail + CAS40 + CAS50 + CAS60 accounts ($)
+        remote_handling=remote_handling, installation=installation,
+        coolant=coolant, aux_cooling=aux_cooling, waste=waste,
+        fuel_handling=fuel_handling, other_rpe=other_rpe, inc=inc,
+        owner=owner, supplementary=supplementary, idc_capital=idc_capital,
+        cas22_capital=cas22_capital, cas28_capital=cas28_capital,
+        # WI-028 rebuilt rollup aggregates ($)
+        cas2x_pre_contingency=cas2x_pre_contingency, cas20_capital=cas20_capital,
+        cas30_capital=cas30_capital, cas23_to_28_capital=cas23_to_28_capital,
+        overnight_capital=overnight_capital,
+        contingency_capital=contingency_capital,
         indirect_capital=indirect_capital, total_capital=total_capital, lcoe=lcoe,
     )
 

@@ -84,11 +84,19 @@ CH = dict(
     heat_rejection=f"{P}heat_rejection_cost__cost", misc=f"{P}misc_cost__cost",
     contingency=f"{P}contingency__cost", indirect=f"{P}indirect__cost",
     lcoe=f"{P}lcoe_calc__lcoe",
-    # native capital-rollup aggregation channels (Item 10; no Python glue)
+    # WI-028 CAS22 tail + CAS40 owner + CAS50 supplementary + CAS60 idc channels
+    remote_handling=f"{P}remote_handling__cost", installation=f"{P}installation__cost",
+    coolant=f"{P}coolant__cost", aux_cooling=f"{P}aux_cooling__cost",
+    waste=f"{P}waste__cost", fuel_handling=f"{P}fuel_handling__cost",
+    other_rpe=f"{P}other_rpe__cost", inc=f"{P}inc_cost__cost",
+    owner=f"{P}owner__cost", supplementary=f"{P}supplementary__cost",
+    idc=f"{P}idc__cost",
+    # native capital-rollup aggregation channels (Item 10 + WI-028 D2; no Python glue)
     buildings=f"{P}buildings_cost__cost", precon=f"{P}precon_cost__cost",
     powercore_capital=f"{P}powercore_capital__powercore_capital",
     bop_capital=f"{P}bop_capital__bop_capital",
-    direct_capital=f"{P}direct_capital__direct_capital",
+    cas20_capital=f"{P}cas20_capital__cas20_capital",
+    overnight_capital=f"{P}overnight_capital__overnight_capital",
     total_capital=f"{P}total_capital__total_capital",
 )
 
@@ -247,10 +255,34 @@ def set_1cfe_inputs(o):
         f"{P}contingency__contingency_rate": refs["contingency_rate_noak"],
         f"{P}indirect__indirect_fraction": refs["indirect_fraction"],
         f"{P}indirect__construction_time": o["target"]["construction_time_yr"],
-        # CAS27 special materials: declared design input to the direct_capital
-        # aggregation, fed 1costingFE's pass-through value (M$ -> $). Replaces the
-        # retired glue's Python addition of `special` into the capital sum.
-        f"{P}direct_capital__special_materials_capital": o["costs_musd"]["cas27"] * M,
+        # CAS27 special materials + CAS28 digital twin: fed 1cfe's values (M$ -> $)
+        # into the WI-028 rebuilt aggregations that consume them (each surfaces as
+        # a per-module entry point: cas2x_pre_contingency AND cas23_to_28_capital).
+        f"{P}cas2x_pre_contingency__special_materials_capital": o["costs_musd"]["cas27"] * M,
+        f"{P}cas2x_pre_contingency__cas28_capital": o["costs_musd"]["cas28"] * M,
+        f"{P}cas23_to_28_capital__special_materials_capital": o["costs_musd"]["cas27"] * M,
+        f"{P}cas23_to_28_capital__cas28_capital": o["costs_musd"]["cas28"] * M,
+        # WI-028 CAS22 tail + CAS40 + CAS50 + CAS60 bases at 1cfe values (A-5).
+        # Hardcoded cas22.py literals (166.0/40.6/1.10e-3/200.0/1.96/11.5/85.0)
+        # are not config constants; fed x1e6 directly with a cite.
+        f"{P}remote_handling__base": refs["remote_handling_dt_base"] * M,   # cas22.py:645
+        f"{P}remote_handling__concept_scale": refs["concept_scale"],       # cas22.py:641
+        f"{P}installation__installation_frac": refs["installation_frac"],  # cas22.py:664
+        f"{P}coolant__primary_base": 166.0 * M,        # cas22.py:684
+        f"{P}coolant__intermediate_base": 40.6 * M,    # cas22.py:685
+        f"{P}aux_cooling__aux_per_mw": 1.10e-3 * M,    # cas22.py:693 -> 1100 $/MW
+        f"{P}aux_cooling__cryo_base": 200.0 * M,       # cas22.py:694
+        f"{P}waste__base": 1.96 * M,                   # cas22.py:702
+        f"{P}fuel_handling__base": refs["fuel_handling_dt_base"] * M,  # cas22.py:718
+        f"{P}other_rpe__base": 11.5 * M,               # cas22.py:724
+        f"{P}inc_cost__base": 85.0 * M,                # cas22.py:731
+        f"{P}owner__base": refs["owner_cost_dt"] * M,  # costs.py:256
+        f"{P}supplementary__spares_frac": refs["spare_parts_frac_dt"],
+        f"{P}supplementary__startup_fuel_base": refs["startup_fuel_dt"] * M,
+        f"{P}supplementary__decom_base": refs["decom_provision_dt"] * M,
+        # CAS60 idc reads 1cfe's interest_rate + construction_time
+        f"{P}idc__interest_rate": o["target"]["interest_rate"],
+        f"{P}idc__construction_years": o["target"]["construction_time_yr"],
         # WI-025 (design D6 successor injection): lcoe_calc__annual_om is now
         # a chain-wired channel (annual_om = om_cost.annual_om), not a
         # settable leaf. Zero the O&M reference here so the chain computes
@@ -311,6 +343,11 @@ def set_1cfe_inputs(o):
         # IEEE-exact identity path; defaulted-input keys are settable here,
         # the blanket_cost__alpha precedent).
         f"{P}om_cost__om_direct": refs["annual_om_unlevelized_musd"] * M,
+        # WI-028 CAS50 fraction constants (fed 1cfe config; c59 NOAK contingency = 0)
+        f"{P}supplementary__shipping_frac": refs["shipping_frac"],
+        f"{P}supplementary__tax_frac": refs["tax_frac"],
+        f"{P}supplementary__insurance_frac": refs["construction_insurance_frac"],
+        f"{P}supplementary__contingency_rate": refs["contingency_rate_noak"],
     })
     MFE_PARAMS.write_text(json.dumps(mp, indent=2))
     return dict(V=V, sigma_v=sigma_v, p_fus_target=p_fus_target)
@@ -398,7 +435,9 @@ def main():
         # capital rollup sourced from the graph's native aggregation channels (no Python glue)
         powercore = b[CH["powercore_capital"]]
         bop = b[CH["bop_capital"]]
-        direct = b[CH["direct_capital"]]
+        cas20 = b[CH["cas20_capital"]]          # WI-028: was direct_capital
+        cas30 = b[CH["indirect"]]               # cas30_capital = indirect.cost
+        overnight = b[CH["overnight_capital"]]
         total = b[CH["total_capital"]]
         # CAS27 special is a declared design input, fed 1cfe's value via the injection map.
         special = o["costs_musd"]["cas27"] * M
@@ -440,13 +479,38 @@ def main():
             ("special_materials (CAS27) [design-input]", o["costs_musd"]["cas27"] * M, special),
         ]
 
-        # rollup + LCOE
+        # ---- WI-028 A-2: newly-scoped accounts (SysML $ vs 1cfe $, bar 1e-6) ----
+        # Tail accounts read 1cfe's cas22_detail; CAS40/50 read costs_musd; the
+        # CAS60 line is reported and A-2-checked but EXCLUDED from total_capital
+        # (Option C). The handshake feeds 1cfe's bases (x1e6) + powers, so this
+        # isolates each forward-reproduced formula.
+        TAIL_MAP = {
+            "remote_handling": "C220110", "installation": "C220111",
+            "coolant": "C220200", "aux_cooling": "C220300", "waste": "C220400",
+            "fuel_handling": "C220500", "other_rpe": "C220600", "inc": "C220700",
+        }
+        a2_rows = []
+        for k, ck in TAIL_MAP.items():
+            onecfe = o["cas22_detail_musd"][ck] * M
+            a2_rows.append((k, ck, onecfe, b[CH[k]], rel(b[CH[k]], onecfe)))
+        for k, ck in (("owner", "cas40"), ("supplementary", "cas50")):
+            onecfe = o["costs_musd"][ck] * M
+            a2_rows.append((k, ck.upper(), onecfe, b[CH[k]], rel(b[CH[k]], onecfe)))
+        # CAS60 reported line (Option C): closed-form idc on overnight
+        idc_1c = o["costs_musd"]["cas60"] * M
+        a2_rows.append(("idc (CAS60, reported)", "CAS60", idc_1c, b[CH["idc"]],
+                        rel(b[CH["idc"]], idc_1c)))
+
+        # rollup + LCOE (WI-028: direct->cas20; add cas30/overnight rollup match)
         onec = o["costs_musd"]
+        overnight_1c = (onec["cas10"] + onec["cas20"] + onec["cas30"]
+                        + onec["cas40"] + onec["cas50"]) * M
         rollup = dict(
             contingency=(onec["cas29"] * M, b[CH["contingency"]]),
-            indirect=(onec["cas30"] * M, b[CH["indirect"]]),
-            direct_or_cas20=(onec["cas20"] * M, direct),
-            total_capital=(onec["total_capital"] * M, total),
+            cas30_indirect=(onec["cas30"] * M, cas30),
+            cas20=(onec["cas20"] * M, cas20),
+            overnight=(overnight_1c, overnight),
+            total_capital=(onec["total_capital"] * M, total),  # 1cfe total = overnight + cas60 (Option-C A-4)
             lcoe=(onec["lcoe"], b[CH["lcoe"]]),
             net_electric=(pw["p_net"], b[CH["p_net"]]),
         )
@@ -497,7 +561,63 @@ def main():
             print(f"{k:20s} 1cfe={one:16,.4f}  SysML={sy:16,.4f}  "
                   f"rel={rel(sy, one):+8.2%}  [{unit}]")
 
+        print("\n--- WI-028 A-2: newly-scoped accounts (SysML $ vs 1cfe $, bar |rel|<=1e-6) ---")
+        print(f"{'account':22s} {'1cfe $':>18s} {'SysML $':>18s} {'rel dev':>12s}  bar")
+        a2_worst = (None, 0.0)
+        for name, ck, one, sy, r in a2_rows:
+            reported = "(reported, Option C)" if ck == "CAS60" else ""
+            bar = "PASS" if abs(r) <= 1e-6 else "*** MISS"
+            print(f"{name:22s} {one:18,.2f} {sy:18,.2f} {r:+12.2e}  {bar} {reported}")
+            if abs(r) > abs(a2_worst[1]):
+                a2_worst = (name, r)
+        print(f"A-2 worst rel dev: {a2_worst[0]} = {a2_worst[1]:+.2e}")
+
+        # ---- WI-028 D6 traps (A-5): assert every new mapping ----
+        traps = []
+        def trap(name, ok, detail):
+            traps.append(dict(name=name, ok=bool(ok), detail=detail))
+            assert ok, f"D6 TRAP FAIL [{name}]: {detail}"
+        # Trap 4 — fuel-keyed bases match cc config for DT
+        trap("fuel-keyed bases (DT)",
+             o["refs"]["remote_handling_dt_base"] == 150.0 and o["refs"]["fuel_handling_dt_base"] == 120.0
+             and o["refs"]["owner_cost_dt"] == 41.2 and o["refs"]["spare_parts_frac_dt"] == 0.03
+             and o["refs"]["startup_fuel_dt"] == 40.0 and o["refs"]["decom_provision_dt"] == 272.0,
+             "remote_handling=150, fuel=120, owner=41.2, spares=0.03, startup=40, decom=272")
+        # Trap 1/2 — plant-total vs per-module + reference-power split, proven by
+        # the CLEAN accounts (no A-4 remainder propagation) passing at 1e-6.
+        CLEAN = {"remote_handling", "coolant", "aux_cooling", "waste",
+                 "fuel_handling", "other_rpe", "inc", "owner"}
+        trap("plant-total/per-module + ref-power split (clean accounts @ 1e-6)",
+             all(abs(r) <= 1e-6 for n, _, _, _, r in a2_rows if n in CLEAN),
+             "8 remainder-free tail/CAS40 accounts under 1e-6 => power/ref/base mapping correct")
+        # Trap 3 — installation base = 14% * Sigma(C220101..110): the model's
+        # reactor subtotal is short only by C220106_pump (vessel shell-only, A-4);
+        # add it back and installation reconstructs 1cfe exactly.
+        pump_M = o["cas22_detail_musd"]["C220106_pump"] * M
+        inst_1c = next(one for n, _, one, _, _ in a2_rows if n == "installation")
+        inst_sy = next(sy for n, _, _, sy, _ in a2_rows if n == "installation")
+        inst_recon = rel(inst_sy + 0.14 * pump_M, inst_1c)
+        trap("installation base = 0.14*Sigma(C220101..110) [+ pump A-4]", abs(inst_recon) <= 1e-6,
+             f"installation reconstructs to 1cfe with +0.14*C220106_pump: rel {inst_recon:+.2e}")
+        # Trap 5 — F-2/F-3 structural: cas28 present (5.0); cas20 reconstructs to
+        # 1cfe when the pump remainder (1.14*pump: pump + 0.14*pump installation)
+        # is added back => CAS10 excluded from cas2x and indirect on post-contingency cas20.
+        cas20_recon = rel(cas20 + 1.14 * pump_M, onec["cas20"] * M)
+        cas30_recon = rel(cas30 + 0.20 * (8.0 / 6.0) * 1.14 * pump_M, onec["cas30"] * M)
+        trap("F-2/F-3 structural (cas28=5.0; cas20/cas30 reconstruct)",
+             o["costs_musd"]["cas28"] == 5.0 and abs(cas20_recon) <= 1e-6 and abs(cas30_recon) <= 1e-6,
+             f"cas28=5.0; cas20 recon rel {cas20_recon:+.2e}; cas30 recon rel {cas30_recon:+.2e}")
+        # Trap 6 — CAS60 Option C: total_capital == overnight_capital (idc NOT summed)
+        opt_c = abs(total - overnight) / (abs(overnight) or 1)
+        trap("CAS60 Option C (total==overnight, idc reported-only)", opt_c < 1e-12,
+             f"total_capital vs overnight_capital rel {opt_c:.2e}; idc line reported separately")
+        print("\n--- WI-028 D6 traps (A-5) ---")
+        for tr in traps:
+            print(f"  [{'PASS' if tr['ok'] else 'FAIL'}] {tr['name']}: {tr['detail']}")
+
         rows_out = dict(commit=o["commit"], target=t, injection=inj,
+                        a2=[dict(account=n, onecfe_1c=one, sysml=sy, rel_dev=r) for n, _, one, sy, r in a2_rows],
+                        traps=traps,
                         p_fus=dict(onecfe=pw["p_fus"], sysml=p_fus_sysml),
                         power_balance=[dict(channel=k, onecfe=one, sysml=sy, rel=r)
                                        for k, one, sy, r in pb_rows],

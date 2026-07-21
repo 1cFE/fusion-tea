@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_lcoe_dcf.sysml:4
+SysML Source: root-0/analyses/mfe_lcoe_dcf.sysml:4
 
 SysML Expressions:
     discount_pow_n = (1.0 + discount_rate) ** operational_years
@@ -64,7 +64,7 @@ adjustment. CRF and the annual-energy denominator follow 1costingFE.
 *Ref**: economics.py:6-10 (compute_crf), economics.py:88-92 (compute_lcoe)
 *Basis**: Standard DCF LCOE; annuitized capital + O&M over energy sold
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_lcoe_dcf.sysml:4
+SysML Source: root-0/analyses/mfe_lcoe_dcf.sysml:4
 
 SysML Expressions:
     discount_pow_n = (1.0 + discount_rate) ** operational_years

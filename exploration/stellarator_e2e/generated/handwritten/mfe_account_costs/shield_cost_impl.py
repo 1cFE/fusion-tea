@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml:52
+SysML Source: root-0/analyses/mfe_account_costs.sysml:52
 
 SysML Expressions:
     p_th_ref = 2500.0
@@ -43,7 +43,7 @@ pB11 0.1 in the source) — a concept input (WI-011).
 *Ref**: cas22.py:267-269 (c220102), cas22.py:223 (P_TH_REF=2500)
 *Basis**: Volume-based shield cost with fuel neutron-load scale
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml:52
+SysML Source: root-0/analyses/mfe_account_costs.sysml:52
 
 SysML Expressions:
     p_th_ref = 2500.0

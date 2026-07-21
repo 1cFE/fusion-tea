@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_plasma_scaling.sysml:41
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:41
 
 SysML Expressions:
     pi = 3.14159265358979
@@ -84,7 +84,7 @@ admissible per PROTOCOL.md section 3.
 (CAS22 aggregation)
 *Basis**: forward radial build; torus branch; MFE-generic
 
-SysML Source: /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_plasma_scaling.sysml:41
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:41
 
 SysML Expressions:
     pi = 3.14159265358979

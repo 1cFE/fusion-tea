@@ -382,7 +382,10 @@ package mfe_plant {
         }
 
         // =====================================================================
-        // CAPITAL ROLLUP  (all $)
+        // CAPITAL ROLLUP  (all $) — 1cfe overnight assembly (WI-028 D2)
+        //   cas2x -> contingency -> cas20 -> indirect -> cas30 -> overnight.
+        //   CAS10 enters at overnight (NOT in cas2x); CAS40/CAS50 at overnight;
+        //   CAS60 (idc) Option C: reported line, total_capital = overnight.
         // =====================================================================
 
         // Power-core capital (CAS22): divergent + shared sub-accounts.
@@ -396,32 +399,170 @@ package mfe_plant {
             turbine.capital_cost + electric_plant.capital_cost
             + heat_rejection.capital_cost + misc_plant.capital_cost;
 
-        // Direct-cost subtotal (modeled + pass-through direct accounts).
-        attribute direct_capital : Real =
-            powercore_capital + bop_capital + buildings.capital_cost
-            + preconstruction_capital + special_materials_capital;
+        // ---- CAS22 tail accounts (WI-028 D1/D5; bases bound at instance) ----
+        // C220110 remote handling (per-module p_et; concept-scaled).
+        attribute remote_handling_base : Real;   // rh_base[fuel] [$]
+        attribute concept_scale : Real;          // 1.0 toroidal / 0.55 end-access
+        calc remote_handling : 'Remote Handling Cost' {
+            in base = remote_handling_base;
+            in concept_scale = concept_scale;
+            in p_et = p_et;
+        }
+        attribute remote_handling_capital : Real = remote_handling.cost;  // expose for producer aggregation
+        // C220111 installation labor = frac * Sigma(C220101..C220110).
+        // reactor_subtotal via an intermediate attribute (WI-025 rollup pattern:
+        // calc inputs bind to a single attribute, not a mixed expression).
+        attribute installation_frac : Real;      // 0.14 (cas22.py:664)
+        attribute reactor_equipment_subtotal : Real =
+            powercore_capital + remote_handling_capital;
+        calc installation : 'Installation Labor Cost' {
+            in installation_frac = installation_frac;
+            in reactor_subtotal = reactor_equipment_subtotal;
+        }
+        // C220200 coolant (two-term, plant-total).
+        attribute coolant_primary_base : Real;       // 166.0 M$ -> $
+        attribute coolant_intermediate_base : Real;  // 40.6 M$ -> $
+        calc coolant : 'Coolant Cost' {
+            in primary_base = coolant_primary_base;
+            in p_net = pb.p_net;
+            in intermediate_base = coolant_intermediate_base;
+            in p_th = p_th;
+            in n_mod = n_mod;
+        }
+        // C220300 aux cooling (plant-total p_th) + cryoplant (per-module p_cryo).
+        attribute aux_per_mw : Real;             // 1.10e-3 M$/MW -> $/MW
+        attribute aux_cryo_base : Real;          // 200.0 M$ -> $
+        calc aux_cooling : 'Aux Cooling Cost' {
+            in aux_per_mw = aux_per_mw;
+            in p_th = p_th;
+            in cryo_base = aux_cryo_base;
+            in p_cryo = cryo_elec.p_elec;
+            in n_mod = n_mod;
+        }
+        // C220400 waste (a=1.0), C220500 fuel, C220600 other, C220700 I&C:
+        // shared 'Plant Power-Law Cost'. Account-structural ref/alpha literal;
+        // base bound at instance.
+        attribute waste_base : Real;             // 1.96 M$ -> $
+        calc waste : 'Plant Power-Law Cost' {
+            in base = waste_base; in power = p_th; in n_mod = n_mod;
+            in ref_power = 1000.0; in alpha = 1.0;
+        }
+        attribute fuel_handling_base : Real;     // fh_base[fuel] [$]
+        calc fuel_handling : 'Plant Power-Law Cost' {
+            in base = fuel_handling_base; in power = pb.p_net; in n_mod = n_mod;
+            in ref_power = 1000.0; in alpha = 0.7;
+        }
+        attribute other_rpe_base : Real;         // 11.5 M$ -> $
+        calc other_rpe : 'Plant Power-Law Cost' {
+            in base = other_rpe_base; in power = pb.p_net; in n_mod = n_mod;
+            in ref_power = 1000.0; in alpha = 0.8;
+        }
+        attribute inc_base : Real;               // 85.0 M$ -> $  (I&C)
+        calc inc_cost : 'Plant Power-Law Cost' {
+            in base = inc_base; in power = p_th; in n_mod = n_mod;
+            in ref_power = 3500.0; in alpha = 0.65;
+        }
 
-        // Contingency (CAS29) on the direct subtotal.
+        // Expose each tail calc cost as a sibling attribute so cas22_tail_capital
+        // is a sum-of-siblings aggregation producer (not expose_computed).
+        // remote_handling_capital is exposed above (installation subtotal).
+        attribute installation_capital : Real = installation.cost;
+        attribute coolant_capital : Real = coolant.cost;
+        attribute aux_cooling_capital : Real = aux_cooling.cost;
+        attribute waste_capital : Real = waste.cost;
+        attribute fuel_handling_capital : Real = fuel_handling.cost;
+        attribute other_rpe_capital : Real = other_rpe.cost;
+        attribute inc_capital : Real = inc_cost.cost;
+        // CAS22 tail folded directly into cas22_capital: powercore_capital
+        // references parts (magnet.capital_cost ...), so cas22_capital compiles
+        // instance-scoped and resolves the sibling tail exposures within its
+        // aggregation (the intermediate cas22_tail_capital would compile at
+        // part-def scope — no part reference — and dead-end the instance leaves).
+        attribute cas22_capital : Real =
+            powercore_capital + remote_handling_capital + installation_capital
+            + coolant_capital + aux_cooling_capital + waste_capital
+            + fuel_handling_capital + other_rpe_capital + inc_capital;
+
+        // CAS28 digital twin — fed design input (WI-028 F-2).
+        attribute cas28_capital : Real;          // 5.0 M$ -> $
+
+        // ---- CAS20 series: cas2x -> contingency -> cas20 -> indirect -> cas30 ----
+        // cas2x pre-contingency direct sum (1cfe cas2x; CAS10 NOT included).
+        attribute cas2x_pre_contingency : Real =
+            buildings.capital_cost + cas22_capital + bop_capital
+            + special_materials_capital + cas28_capital;
+
+        // Contingency (CAS29) on cas2x (WI-028: rebased off the CAS10-inclusive
+        // direct sum -> cas2x, F-3).
         attribute contingency_rate : Real;  // FOAK 0.10 / NOAK 0.0 (WI-011)
         calc contingency : 'Contingency Cost' {
             in contingency_rate = contingency_rate;
-            in direct_subtotal = direct_capital;
+            in direct_subtotal = cas2x_pre_contingency;
         }
         attribute contingency_capital : Real = contingency.cost;
+        attribute cas20_capital : Real = cas2x_pre_contingency + contingency_capital;  // c20
 
-        // Indirect service costs (CAS30) as a fraction of direct cost.
-        attribute indirect_fraction : Real;   // 0.20 of direct (WI-011)
+        // Indirect (CAS30) on cas20 (post-contingency), construction-time scaled
+        // (WI-028: rebased from the pre-contingency direct sum -> cas20, F-3).
+        attribute indirect_fraction : Real;   // 0.20 of cas20 (WI-011)
         attribute construction_years : Real;  // Yc [yr] (shared with LCOE + CAS30)
         calc indirect : 'Indirect Cost' {
             in indirect_fraction = indirect_fraction;
-            in direct_cost = direct_capital;
+            in direct_cost = cas20_capital;
             in construction_time = construction_years;
         }
-        attribute indirect_capital : Real = indirect.cost;
+        attribute cas30_capital : Real = indirect.cost;
 
-        // Total overnight capital [$].
+        // c23..c28 subtotal — CAS50 spares base (WI-028 F-1).
+        attribute cas23_to_28_capital : Real =
+            bop_capital + special_materials_capital + cas28_capital;
+
+        // ---- CAS40 owner + CAS50 supplementary at overnight (no CAS29/CAS30) ----
+        attribute owner_base : Real;             // owner_cost[fuel] [$]
+        calc owner : 'Plant Power-Law Cost' {
+            in base = owner_base; in power = pb.p_net; in n_mod = n_mod;
+            in ref_power = 1000.0; in alpha = 0.5;
+        }
+        attribute owner_capital : Real = owner.cost;   // CAS40 (expose calc cost as sibling attr)
+        attribute supplementary_spares_frac : Real;    // fuel-keyed
+        attribute supplementary_startup_base : Real;   // fuel-keyed [$]
+        attribute supplementary_decom_base : Real;     // fuel-keyed [$]
+        calc supplementary : 'Supplementary Cost' {
+            in spares_frac = supplementary_spares_frac;
+            in startup_fuel_base = supplementary_startup_base;
+            in decom_base = supplementary_decom_base;
+            in cas20 = cas20_capital;
+            in cas23_to_28 = cas23_to_28_capital;
+            in cas30 = indirect.cost;    // read the CAS30 producer directly (cas30_capital is expose_pure)
+            in p_net = pb.p_net;
+            in n_mod = n_mod;
+        }
+        attribute supplementary_capital : Real = supplementary.cost;   // CAS50 (expose calc cost as sibling attr)
+
+        // Overnight capital [$] — CAS10 (preconstruction) enters HERE per 1cfe:
+        // it receives neither CAS29 contingency nor CAS30 indirect. Aggregates
+        // sibling attributes only (owner/supplementary costs exposed above) so
+        // codegen emits it as an aggregation producer (not expose_computed).
+        attribute overnight_capital : Real =
+            preconstruction_capital + cas20_capital + cas30_capital
+            + owner_capital + supplementary_capital;
+
+        // ---- CAS60 IDC (Option C, owner-ruled 2026-07-20): reported line, ----
+        // ---- EXCLUDED from total_capital; DCF idc_factor untouched.       ----
+        calc idc : 'IDC Closed-Form Cost' {
+            in interest_rate = discount_rate;
+            in construction_years = construction_years;
+            in overnight_cost = overnight_capital;
+        }
+        attribute idc_capital : Real = idc.cost;   // CAS60 reported line (not in total_capital)
+
+        // Total capital [$] — Option C: equals overnight_capital (idc NOT summed
+        // in). Written as the overnight aggregation of sibling attributes (not a
+        // bare alias) so codegen emits a total_capital producer channel for the
+        // untouched lcoe_calc input.
         attribute total_capital : Real =
-            direct_capital + contingency_capital + indirect_capital;
+            preconstruction_capital + cas20_capital + cas30_capital
+            + owner_capital + supplementary_capital;
 
         // =====================================================================
         // LCOE  (WI-009 'LCOE DCF' core)

@@ -142,7 +142,18 @@
     "contingency_rate_noak": 0.0,
     "indirect_fraction": 0.2,
     "reference_construction_time": 6.0,
-    "annual_om_unlevelized_musd": 54.900001675415005
+    "annual_om_unlevelized_musd": 54.900001675415005,
+    "remote_handling_dt_base": 150.0,
+    "concept_scale": 1.0,
+    "installation_frac": 0.14,
+    "fuel_handling_dt_base": 120.0,
+    "owner_cost_dt": 41.2,
+    "shipping_frac": 0.015,
+    "spare_parts_frac_dt": 0.03,
+    "tax_frac": 0.01,
+    "construction_insurance_frac": 0.015,
+    "startup_fuel_dt": 40.0,
+    "decom_provision_dt": 272.0
   },
   "pb_params": {
     "p_input": 30.0,
