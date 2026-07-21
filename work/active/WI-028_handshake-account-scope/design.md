@@ -1,7 +1,7 @@
 ---
-Status: draft
+Status: approved
 Created: 2026-07-20
-Updated: 2026-07-20 (rev 2 — design-review fixes: staged-twin propagation M1; S1–S5)
+Updated: 2026-07-20 (rev 3 — owner gates ruled: D1 full rebuild, D2 CAS60 Option C; approved)
 Related Artifacts:
   Spec: ./spec.md
   Brief: ../../orchestration/handshake-account-scope.md
@@ -13,9 +13,9 @@ Related Artifacts:
 
 The model forward-computes 12 cost accounts and leaves the rest of the reactor-plant tail, the owner/supplementary accounts, and the IDC line structurally absent — the larger share of the −31% structural LCOE gap. This design brings them in.
 
-It adds seven concept-agnostic library calc defs serving eleven accounts (a shared power-law def covers five: the four flat tail accounts + CAS40; the rest are one-per-account — eight CAS22-tail, CAS50 supplementary, CAS60 IDC line), wires them into a **rebuilt overnight-capital assembly that mirrors 1costingFE exactly**, and binds the new unit-cost bases at the Stellaris instance as dollar conversions of the pinned 1cfe constants. The rebuild is the recommended path: the model's current rollup does not match 1cfe's account structure, so it fixes a knowingly-wrong headline LCOE and closes three latent errors. A narrower isolated-aggregate option would also get CAS50 under A-2 (recorded as a rejected alternative in D2); the owner gate below chooses between them.
+It adds seven concept-agnostic library calc defs serving eleven accounts (a shared power-law def covers five: the four flat tail accounts + CAS40; the rest are one-per-account — eight CAS22-tail, CAS50 supplementary, CAS60 IDC line), wires them into a **rebuilt overnight-capital assembly that mirrors 1costingFE exactly**, and binds the new unit-cost bases at the Stellaris instance as dollar conversions of the pinned 1cfe constants. The rebuild is the ruled path (owner, 2026-07-20): the model's current rollup does not match 1cfe's account structure, so it fixes a knowingly-wrong headline LCOE and closes three latent errors. A narrower isolated-aggregate option would also get CAS50 under A-2; it stays recorded as a rejected alternative in D2.
 
-Two decisions surface to the owner (final message): the **CAS60/IDC convention** (a genuine reserved gate) and the **overnight-rebuild vs narrow-shadow choice** — both get CAS50 under A-2; the rebuild additionally fixes the headline and closes three latent errors, but is a separately-motivated change bundled into an account-scope item.
+Both owner gates are **ruled** ([OWNER] 2026-07-20, `work/orchestration/handshake-account-scope.md` "Owner gate rulings"): the **overnight rebuild** is chosen over the narrow-shadow alternative (D2, unconditional), and **CAS60 is Option C** — a reported, A-2-checked line excluded from `total_capital`, with the DCF `idc_factor` untouched (D4). The narrow-shadow option stays recorded as a rejected alternative.
 
 ---
 
@@ -139,7 +139,7 @@ cas30_capital          = indirect.cost
 cas23_to_28_capital    = bop_capital + special_materials_capital + cas28_capital   # c23..c28
 overnight_capital      = preconstruction_capital + cas20_capital + cas30_capital
                          + owner.cost + supplementary.cost                # CAS10 enters HERE
-total_capital          = overnight_capital        [+ idc.cost per the CAS60 gate]
+total_capital          = overnight_capital        # CAS60 Option C: idc.cost is a REPORTED line, NOT added here
 ```
 
 What changes from today, and why each is correct against 1cfe:
@@ -153,7 +153,7 @@ What changes from today, and why each is correct against 1cfe:
 
 After this, at the handshake point `cas20_capital → 5710.95`, `cas30_capital → 1522.92`, `overnight → 7872.15` — matching 1cfe, so CAS50 (which consumes them) comes under A-2.
 
-**Rejected alternative — narrow isolated-aggregate (shadow cas20/cas30).** CAS50's A-2 needs only faithful `cas20`/`cas23_to_28`/`cas30` *as CAS50's inputs*. These could be built as dedicated shadow attributes feeding CAS40/CAS50 only, leaving `direct_capital`/contingency/indirect/`total_capital`/LCOE untouched. That is strictly less code and does not move the existing headline. **Rejected because:** it leaves two divergent notions of `cas20`/`cas30` coexisting in one model (the flat rollup's and CAS50's shadow), it leaves F-2/F-3/F-4 open as itemized A-4 remainders rather than closed errors (the criterion-3 ruling authorizes closing errors), and it keeps the model's headline LCOE knowingly wrong (indirect on a CAS10-inflated pre-contingency base). The full rebuild is one coherent 1cfe-faithful chain with a single `cas20`/`cas30`. Recorded per capture-fidelity §3; the owner gate below chooses between the two.
+**Rejected alternative — narrow isolated-aggregate (shadow cas20/cas30).** *(Owner ruled the full rebuild, 2026-07-20; this stays as a decision record, not an instruction.)* CAS50's A-2 needs only faithful `cas20`/`cas23_to_28`/`cas30` *as CAS50's inputs*. These could be built as dedicated shadow attributes feeding CAS40/CAS50 only, leaving `direct_capital`/contingency/indirect/`total_capital`/LCOE untouched. That is strictly less code and does not move the existing headline. **Rejected because:** it leaves two divergent notions of `cas20`/`cas30` coexisting in one model (the flat rollup's and CAS50's shadow), it leaves F-2/F-3/F-4 open as itemized A-4 remainders rather than closed errors (the criterion-3 ruling authorizes closing errors), and it keeps the model's headline LCOE knowingly wrong (indirect on a CAS10-inflated pre-contingency base). The full rebuild is one coherent 1cfe-faithful chain with a single `cas20`/`cas30`.
 
 ### D2b — Staged-twin propagation (codegen input; must not be skipped)
 
@@ -172,16 +172,23 @@ CAS50 consumes three derived aggregates — `cas20_capital`, `cas23_to_28_capita
 
 This extends the **proven** WI-025 pattern (calc output → attribute sum → calc input: `direct_capital → contingency/indirect`) by one level, and the WI-010 SV-024 precedent shows cross-calc binding codegens. The parse check on `plant_chain_probe.sysml` confirms the exact shape resolves (calc → attribute → calc → attribute → calc, with `supplementary` reading both `cas20_capital` and `cas30_capital`). **Binding order is a codegen-topological-sort question that parse cannot fully settle** — a full codegen capture is the first plan-stage checkpoint (Validation Plan), not a design blocker, given the two precedents.
 
-### D4 — CAS60 / IDC: reserved owner gate (MR-WI028-3)
+### D4 — CAS60 / IDC: Option C, ruled (MR-WI028-3)
 
 **Ruling: genuine convention choice, not mechanical fall-out.** Both conventions reduce to `annual_capital = CRF · overnight · IDC_multiplier`, but the multiplier differs and the placement of the CAS60 line differs:
 
 - **1cfe:** `IDC_mult = 1 + f_idc = 1.282476` (uniform-spend closed form); CAS60 is an explicit capital line; `total_capital = overnight + CAS60`; `CAS90 = CRF·total_capital`.
 - **model:** `idc_factor = (1+d)**(Yc/2) = 1.07**4 = 1.310796` (even-spend midpoint); no CAS60 line; `annual_capital = total_capital(overnight) · idc_factor · CRF` inside LCOE (`mfe_lcoe_dcf.sysml:47-52`).
 
-Different magnitudes (1.2825 vs 1.3108) and different financing conventions. **Double-count hazard:** adding CAS60 into `total_capital` while LCOE keeps multiplying by `idc_factor` counts IDC twice. Avoiding it is a deliberate choice, and it touches Item 4 (whose scope includes "IDC treatment reconciled with the DCF convention"). Per Align ruling 3 → **reserved owner gate.**
+Different magnitudes (1.2825 vs 1.3108) and different financing conventions. **Double-count hazard:** adding CAS60 into `total_capital` while LCOE keeps multiplying by `idc_factor` counts IDC twice.
 
-The design is built **CAS60-independent**: CAS22 tail, CAS40, CAS50 all feed `overnight_capital`, which is complete and correct without CAS60. The `'IDC Closed-Form Cost'` calc reproduces the 1cfe CAS60 line as a value (for the A-2 formula check against `costs_musd.cas60`) regardless of the gate; only its wiring into `total_capital` is gated. Options and recommendation are in the final message.
+**Ruled: Option C** ([OWNER] 2026-07-20, `work/orchestration/handshake-account-scope.md` "Owner gate rulings"). CAS60 is computed as a **reported, A-2-checked line, EXCLUDED from `total_capital`**; the model's DCF `idc_factor` (`mfe_lcoe_dcf.sysml:47-52`) stays **untouched**. Concretely:
+
+- The `'IDC Closed-Form Cost'` calc reproduces the 1cfe CAS60 line as a value and the handshake compares it under A-2 against `costs_musd.cas60` (exact closed-form on `overnight_capital`).
+- `total_capital = overnight_capital` — the CAS60 line is **not** added in. No double-count: the model's LCOE keeps its `idc_factor`, and CAS60 is reported-only.
+- The `total_capital` convention difference (1cfe folds CAS60 into `total_capital`; the model folds IDC into the LCOE `idc_factor`) is itemized under A-4 (D7).
+- LCOE-side reconciliation of the two IDC conventions remains **Item 4 scope**, not touched here.
+
+The design is CAS60-independent by construction: CAS22 tail, CAS40, CAS50 all feed a complete `overnight_capital`; Option C leaves that untouched and only adds a reported line.
 
 ### D5 — Handshake side (`emit_1cfe_point.py`, `handshake_1costingfe.py`)
 
@@ -217,14 +224,15 @@ Every new mapping asserted in the handshake, added to the trap table:
 3. **Installation base:** `reactor_subtotal = Σ(C220101..C220110)` = powercore + remote_handling (excludes C220111/112; C220109 = 0 for this concept, documented).
 4. **Fuel-keyed bases** match `cc` for DT: remote_handling 150, fuel_handling 120, owner 41.2, spares 0.03, startup 40, decom 272.
 5. **F-2/F-3 structural asserts:** `cas28_capital` present (5.0); CAS10 at overnight (absent from cas2x / contingency / indirect base); indirect on `cas20_capital` (post-contingency).
+6. **CAS60 Option C:** `total_capital == overnight_capital` (the CAS60 `idc.cost` line is reported but NOT summed into `total_capital`); the LCOE `idc_factor` is unchanged — guards the double-count hazard.
 
 ### D7 — A-4 itemized remainders after WI-028
 
 - **C220106_pump** $0.721 M — standing, explained (SysML vessel calc is shell-only).
 - **CAS10** model 34.5 vs 1cfe 18.5 M$ (+16.0 M$) — pre-existing WI-025 remainder (F-4), now isolated at the overnight level (no longer contaminates cas20/cas30/CAS50). Itemized, explained-and-kept.
-- **CAS60 / total_capital convention** — per the gate disposition; the CAS60 *account line* comes under A-2 (closed-form on overnight), while the `total_capital` row difference (1cfe folds CAS60 into total_capital; model folds IDC into LCOE via idc_factor) is itemized under A-4 unless Option A is chosen.
+- **CAS60 / total_capital convention** (Option C, ruled) — the CAS60 *account line* comes under A-2 (closed-form on `overnight_capital`), reported but excluded from `total_capital`. The `total_capital` row difference — 1cfe folds CAS60 into `total_capital` (10095.84 M$); the model keeps `total_capital = overnight_capital` (7872.15 M$) and folds IDC into the LCOE `idc_factor` — is itemized under A-4. LCOE-side reconciliation is Item 4 scope.
 
-The residual LCOE gap reconciles to this itemized sum plus the CAS60 disposition (A-4).
+The residual LCOE gap reconciles to this itemized sum plus the CAS60/`total_capital` convention difference (A-4).
 
 ---
 
@@ -276,16 +284,16 @@ Dataflow stays unidirectional: powers/geometry → accounts → cas2x → contin
 4. **Mirroring diff gate + recapture** (Validation Plan step 2): staged-vs-canonical region diff shows only the intended WI-028 edits + known Item-10/DEMO-NOTE divergences; then recapture `stellarator.snapshot.json` from the staged tree; codegen-capture checkpoint (confirm the 4-deep chain compiles) before proceeding.
 5. **Harness:** `emit_1cfe_point.py` refs additions; `handshake_1costingfe.py` channels + rows + injection + traps (D5/D6).
 6. **Re-baseline & validate:** SV-034 (against the recaptured snapshot); re-baseline `handshake_comparison.json` as an explicit commit; record design-point headline; oracle bit-exact; trap table.
-7. **CAS60 gate:** apply the owner's convention ruling to step 2's idc wiring + `mfe_lcoe_dcf` idc_factor (both trees).
+7. **CAS60 (Option C, ruled):** wire the `idc` calc to read `overnight_capital` and expose its `cost` as a **reported channel**; keep `total_capital = overnight_capital` (idc NOT summed in). Leave `mfe_lcoe_dcf` `idc_factor` untouched (both trees). Add the CAS60 A-2 comparison row and the `total_capital`-convention A-4 itemization (D7); LCOE-side reconciliation is Item 4, out of scope here.
 
 ---
 
 ## Risks
 
-1. **[Risk, medium] CAS60 gate unresolved blocks total_capital/LCOE finalization.** Mitigation: design is CAS60-independent; CAS22 tail/CAS40/CAS50 and the CAS60 *account line* (A-2) proceed; only total_capital wiring + LCOE idc_factor wait on the ruling.
+1. **[Risk, low] CAS60 double-count if Option C is mis-implemented.** Mitigation: Option C is ruled — CAS60 is a reported line, `total_capital = overnight_capital` (idc NOT summed in), `idc_factor` untouched; the D6 traps assert CAS60 is excluded from `total_capital`.
 2. **[Risk, high] Staged-twin skip (M1).** Codegen reads the staged twin, not canonical `models/`. If the D1/D2/D5 edits land only on canonical, every A-2/A-4/oracle result runs against the stale flat rollup — a silent wrong result. Mitigation: D2b makes twin propagation first-class — both trees edited region-identical, a staged-vs-canonical mirroring diff gate, recapture from the staged tree before any downstream step.
 3. **[Risk, medium] Codegen binding order on the 4-deep chain.** Mitigation: parse validated; WI-010/WI-025 precedent; explicit codegen-capture checkpoint (against the recaptured snapshot) before the A-2 runs.
-4. **[Risk, medium — scope] The overnight rebuild touches WI-025 contingency/indirect wiring.** It is one of two owner-gate options (the other is the narrow-shadow alternative, D2). The rebuild is required only if the owner wants F-2/F-3/F-4 *closed* (the criterion-3 ruling authorizes it) and the headline LCOE corrected; A-2 for CAS50 alone does not compel it. It moves the design-point headline beyond just "adding accounts". Surfaced to the owner (final message).
+4. **[Risk, medium — scope] The overnight rebuild touches WI-025 contingency/indirect wiring.** Ruled in-bounds by the owner (2026-07-20): it closes F-2/F-3/F-4 (criterion-3 authorizes closing errors) and corrects the headline LCOE. It moves the design-point headline beyond just "adding accounts" — expected re-baseline (MR-WI028-9), verified by the oracle bit-exact bar at the new point.
 5. **[Risk, low] n_mod=1 hides per-module vs plant-total.** Mitigation: n_mod explicit in every def; A-5 asserts the split.
 6. **[Risk, low] Float32 near the A-2 ceiling.** Mitigation: measure; itemize under A-4 if any account legitimately cannot meet 1e-6.
 
