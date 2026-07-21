@@ -56,9 +56,9 @@ Prove the agentic-mbse / sysml-codegen / teax methodology on a real fusion deep 
 
 These are the concept's 8 criteria, status as verified 2026-07-18. The checkbox is the concept's bar, not a restatement.
 
-- [x] **1. Initial model runs end-to-end** — met. Stage 2 built and committed (`c3f3089e`), refined through WI-025 (`7ba3cd70`). Executed headline (bit-exact vs oracle, rel 1e-9): total $12,638,857,665.74, LCOE $203.647/MWh, p_net 915.081 MW, q_eng 6.607, magnet $6.3235B (50.03%). Every account sourced or forward-computed; zero STALE BASIS annotations.
+- [x] **1. Initial model runs end-to-end** — met. Stage 2 built and committed (`c3f3089e`), refined through WI-025 (`7ba3cd70`). Executed headline at that point (bit-exact vs oracle, rel 1e-9): total $12,638,857,665.74, LCOE $203.647/MWh, p_net 915.081 MW, q_eng 6.607, magnet $6.3235B (50.03%). Every account sourced or forward-computed; zero STALE BASIS annotations. *(Headline re-baselined 2026-07-20 by Item 3's account additions + rollup rebuild: total $16,145,706,216.04, LCOE $258.013640/MWh; p_net/q_eng/rec_frac unchanged; oracle bit-exact at the new point — see criterion 3.)*
 - [x] **2. Viability checks execute as modeled constraints** — met 2026-07-20 (WI-027, audit POSITIVE, owner-closed). All five asserts (`net_positive`, `recirc_ok`, `beta_ok`, `wall_load_ok`, `tbr_ok`) execute as generated constraint modules; verdicts are data in the run report (`all_satisfied`, 5 assessed, all off-boundary); zero hand-coded viability (grep-proven); headline unchanged to the cent. Route is fully public post-lifecycle-Item-10 (bridge-free, no D7 passthroughs). Records: `work/completed/20260720_WI-027_demo-constraint-execution/`, SV-033, audit `work/analysis/20260720-163628_audit_WI-027_demo-constraint-execution.md`.
-- [ ] **3. 1costingFE handshake (Anchor A)** — partial. Machinery parity is byte-stable and bit-exact at formula isolation; the tolerance spec is now written and ratified (Item 1, 2026-07-19). Remaining: parity covers several account scopes only via injected 1cfe values — the −31% structural LCOE-construction gap (CAS22 tail, CAS40/50/60, LCOE construction). → Items 3, 4.
+- [ ] **3. 1costingFE handshake (Anchor A)** — partial; Item 3 done 2026-07-20 (WI-028, audit POSITIVE, owner close pending). The CAS22 tail + CAS40/50 are forward-computed and under the ratified A-2 bar — 8/11 newly-scoped accounts pass at ≤1e-6 outright; the 3 misses (installation, CAS50, CAS60) are the two documented A-4 remainders (C220106_pump $0.72M; CAS10 +$16.0M) propagating, each reconstructing 1cfe exactly when added back (audit-recomputed). The overnight assembly is rebuilt to mirror 1cfe ([OWNER] rebuild ruling 2026-07-20 — closed three latent rollup errors, retiring the old −18.64% direct/indirect rows); CAS60 is an A-2-checked reported line per the [OWNER] Option-C ruling. A spec correction: the tail/CAS40/50/60 were structurally *absent*, not injected — the item added them, nothing left an injection map. Remaining for criterion 3: Item 4 (CAS70/80 levelization + LCOE-side IDC reconciliation, consuming Item 3's CAS60 mapping) + the itemized remainders. Records: `work/active/WI-028_handshake-account-scope/`, SV-034, audit `work/analysis/20260720-195640_audit_WI-028_handshake-account-scope.md`, trail `work/orchestration/handshake-account-scope.md`. → Item 4.
 - [ ] **4. ARIES-CS hold-out comparison (Anchor B)** — not started, but the per-axis expectations are now pre-committed and ratified (Item 1, 2026-07-19). Quarantine live and sealed since 2026-07-12; reveal is owner-triggered (PROTOCOL §6). → Item 7.
 - [ ] **5. Studies run through the teax study layer** — not started, now unblocked: the demo package executes constraints (criterion 2 met 2026-07-20), so verdicts can classify study points. → Item 5.
 - [ ] **6. Study outputs visualized** (figures + search-process animation) — not started. → Item 6.
@@ -74,7 +74,7 @@ These are the concept's 8 criteria, status as verified 2026-07-18. The checkbox 
 | 3. Agentic research / refinement | Partial — WI-019–025 ran as errata-driven refinement; study-driven rounds have not happened (studies never ran) | interleaves with Item 5 |
 | 4. Studies | Constraint execution done (Item 2, 2026-07-20); studies + viz not started | Items 5, 6 |
 | 5. Write-up | Not started | Item 8 |
-| Anchor A (cross-stage) | Partial | Items 1, 3, 4 |
+| Anchor A (cross-stage) | Partial — Items 1, 3 done (Item 3 owner close pending); Item 4 remains | Item 4 |
 | Anchor B (cross-stage) | Quarantine done (seam a); comparison not started | Items 1, 7 |
 
 A plain statement, per the concept's honesty bar: WI-019–025 refined the Stage-2 model because execution surfaced defects (phantom table rows, stale bases, unfaithful power balance) — not because studies revealed critical subsystems. The concept's stage-3⇄4 interleave (studies drive refinement) starts with Item 5; further refinement rounds get registered at pick-up when studies surface them.
@@ -146,6 +146,8 @@ Registration convention: modeling items (2, 3, 4, 5, 7, 9) register in the model
 
 ### Item 3: Handshake account scope — CAS22 tail + CAS40/50/60
 
+**Status**: **IMPLEMENTED + AUDIT POSITIVE 2026-07-20, owner close pending** — executed as WI-028 (registered 2026-07-20, orchestrator-driven; all nine audit bars independently reproduced). All 11 target accounts forward-computed per the A-3 list; 8/11 under A-2 outright, 3 misses fully explained by the two documented A-4 remainders (audit-recomputed, no third source). Two owner gates ruled mid-run: **full overnight rebuild** (closed rollup errors F-2/F-3 — CAS10 wrongly inside direct capital, missing cas28, indirect on the wrong base) and **CAS60 Option C** (A-2-checked reported line excluded from total_capital; DCF idc_factor untouched; LCOE-side reconciliation stays Item 4). Design-point headline re-baselined: total $16.146B, LCOE $258.01/MWh (physics spine unchanged, all standing bars hold). Premise correction recorded: the target accounts were structurally absent, not injected. Upstream findings filed in the trail (sysml-codegen aggregation scoping; `pm update-validation` `|`-corruption; mid-run pin drift restored per A-6). Records: `work/active/WI-028_handshake-account-scope/`, SV-034 passing, audit `work/analysis/20260720-195640_audit_WI-028_handshake-account-scope.md`, trail `work/orchestration/handshake-account-scope.md`. **Next: owner `pm close-item WI-028`.**
+
 **Type**: Modeling (modeling PM, register at pick-up)
 **Effort**: 1–2 days
 **Dependencies**: Item 1 (acceptance judged against the tolerance spec). Parallel with Items 2 and 4.
@@ -162,11 +164,11 @@ Registration convention: modeling items (2, 3, 4, 5, 7, 9) register in the model
 - Closing the gap to zero regardless of cost — the bar is the recorded [OWNER] ruling: explain what remains; close what is an error.
 
 **Success Criteria**:
-- [ ] Named account scopes forward-computed and sourced; injection list shrinks to the documented remainder
-- [ ] Handshake re-run against the Item 1 tolerance spec; result recorded pass/fail per account
-- [ ] Standing validation bars pass (byte-identity where in-scope, IFE anchors, regen stability)
+- [x] Named account scopes forward-computed and sourced (all 11 per the A-3 list; MR-4-cited at pin `0254385`). *Premise correction: nothing left an injection map — the accounts were structurally absent, and the documented remainder is the A-4 table (pump, CAS10, CAS60/total_capital convention).*
+- [x] Handshake re-run against the Item 1 tolerance spec; result recorded pass/fail per account (8/11 pass A-2; 3 recorded as explained A-4 remainders reconstructing 1cfe exactly; comparison JSON re-baselined as its own commit `feb13ff3` per G-8)
+- [x] Standing validation bars pass (empty-diff bar superseded by G-8 for this item as ratified; oracle rel 1e-9 at the new headline; IFE Runs A/B byte-exact, Run C out-of-scope by [OWNER] ruling; regen stability; WI-022 hash intact; pytest 11/18/14/0)
 
-**Deliverables**: library/instance model additions; updated handshake report; `work/` item record
+**Deliverables**: library/instance model additions; updated handshake report; `work/` item record — all delivered (see Status).
 
 ---
 
@@ -174,7 +176,7 @@ Registration convention: modeling items (2, 3, 4, 5, 7, 9) register in the model
 
 **Type**: Modeling (modeling PM, register at pick-up)
 **Effort**: 1–1.5 days
-**Dependencies**: Item 1. Parallel with Item 3 (different accounts, same pattern).
+**Dependencies**: Item 1. Item 3 delivered its inputs (2026-07-20): the CAS60 mapping is ruled **Option C** ([OWNER] — CAS60 is an A-2-checked reported line excluded from total_capital; the model's DCF `idc_factor` untouched), so this item's IDC reconciliation starts from that mapping, not from scratch. Pick-up notes: brief against the post-WI-028 harness (rebuilt overnight assembly, new comparison rows, re-baselined `handshake_comparison.json` @ `feb13ff3`); the CAS10 remainder disposition (below) is an owner ruling to collect at pick-up.
 
 **Objective**: Close the LCOE-construction share of the structural gap: levelized O&M and fuel enter the LCOE the way 1costingFE constructs it.
 
@@ -333,6 +335,7 @@ Not epic items — decisions the owner makes, recorded in this epic when ruled s
 - **WI-009 / WI-010 / WI-018 disposition**: substance built and audited via WI-019–025, items never driven through their own bars (MFE epic, Item Status Assessment). Close-out audit vs own spec, or re-scope/fold-in — owner decision.
 - **SV-016 (Q_eng ~10–40 band)**: `pending` by owner ruling; q_eng 6.607 is a documented lower bound (unprinted cryo loads excluded). Revisit when refinement moves parasitic power or the owner adjusts the band.
 - **WI-026 (pytest baseline re-record)**: trivial P3 standalone, sequence at owner convenience.
+- **CAS10 remainder disposition (surfaced at WI-028 close, 2026-07-20)**: the model's CAS10 sits +$16.0M (+86.5%) above 1cfe at the handshake point — currently carried as explained-and-kept A-4 remainder (pre-existing WI-025 basis). If the owner rules it an *error* under the criterion-3 ruling, closing it is a small follow-up (natural home: Item 4 pick-up). Owner decision.
 - **Adjacent, not demo work** ([OWNER] non-goal): the tokamak instantiation and the self-contained viability sweep remain the MFE epic's own deferred goals; they do not gate or count toward any demo criterion.
 
 ---
@@ -401,4 +404,4 @@ Items 1 and 2 start independently (parallel). Items 3 and 4 parallel after 1. Cr
 ---
 
 **Last Updated**: 2026-07-20
-**Next Action**: Items 3–4 (handshake account scopes) and Item 5 (studies — newly unblocked by criterion 2) can all run in parallel. Note for Items 3–4 pick-up: lifecycle Item 10 retired the handshake rollup glue and re-baselined `handshake_comparison.json` (single-pass route) — brief those items against the current harness, not the pre-Item-10 description. Items 1–2 complete.
+**Next Action**: Owner closes WI-028 (`pm close-item WI-028` — Item 3 implemented, audit POSITIVE). Then Item 4 (LCOE construction — consumes Item 3's CAS60 Option-C mapping; collect the CAS10 disposition ruling at pick-up) and Item 5 (studies) can run in parallel. Items 1–3 otherwise complete.
