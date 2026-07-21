@@ -43,7 +43,8 @@ from ife_tea.handwritten.fusion_cycle.recirculating_power_fraction_impl import (
 )
 from ife_tea.handwritten.ife_lcoe.ife_lcoe_impl import run_ife_lcoe  # noqa: E402
 from ife_tea.modules.constraints.predicates import (  # noqa: E402
-    constraint_pred_ife_plant__ife_power_plant__viability,
+    _finalize_assertion,
+    constraint_pred_definition_fusion_cycle__viability_threshold,
 )
 from ife_tea.modules.fusion_cycle.recirculating_power_fraction import (  # noqa: E402
     Recirculating_Power_FractionInput,
@@ -90,9 +91,14 @@ def main() -> None:
                            (BASE["thermal_efficiency"] * BASE["blanket_energy_multiple"]
                             * g * eta - 2.0))
                 eta_g = eta * g
-                verdict = constraint_pred_ife_plant__ife_power_plant__viability(
+                # Per-definition predicate body + stock finalize (positive assertion:
+                # not negated, expected True). Migrated from the pre-epic per-usage
+                # predicate `constraint_pred_ife_plant__ife_power_plant__viability` to the
+                # per-definition API the pinned codegen emits (Item 13 compose migration).
+                _body = constraint_pred_definition_fusion_cycle__viability_threshold(
                     eta=eta, gain=g, threshold=VIABILITY_THRESHOLD
                 )
+                verdict = _finalize_assertion(_body, is_negated=False, expected_value=True)
                 viable = verdict.status == "satisfied"
                 power_positive = p_net_w > 0.0
                 attractive = viable and power_positive and lcoe <= LCOE_THRESHOLD
