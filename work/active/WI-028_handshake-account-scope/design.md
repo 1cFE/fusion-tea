@@ -1,7 +1,7 @@
 ---
 Status: draft
 Created: 2026-07-20
-Updated: 2026-07-20
+Updated: 2026-07-20 (rev 2 — design-review fixes: staged-twin propagation M1; S1–S5)
 Related Artifacts:
   Spec: ./spec.md
   Brief: ../../orchestration/handshake-account-scope.md
@@ -13,9 +13,9 @@ Related Artifacts:
 
 The model forward-computes 12 cost accounts and leaves the rest of the reactor-plant tail, the owner/supplementary accounts, and the IDC line structurally absent — the larger share of the −31% structural LCOE gap. This design brings them in.
 
-It adds ten concept-agnostic library calc defs (eight CAS22-tail accounts, CAS40 owner, CAS50 supplementary) plus a CAS60 IDC line, wires them into a **rebuilt overnight-capital assembly that mirrors 1costingFE exactly**, and binds the new unit-cost bases at the Stellaris instance as dollar conversions of the pinned 1cfe constants. The rebuild is the load-bearing part: the model's current rollup does not match 1cfe's account structure, and CAS50 cannot come under the A-2 bar until it does.
+It adds seven concept-agnostic library calc defs serving eleven accounts (a shared power-law def covers five: the four flat tail accounts + CAS40; the rest are one-per-account — eight CAS22-tail, CAS50 supplementary, CAS60 IDC line), wires them into a **rebuilt overnight-capital assembly that mirrors 1costingFE exactly**, and binds the new unit-cost bases at the Stellaris instance as dollar conversions of the pinned 1cfe constants. The rebuild is the recommended path: the model's current rollup does not match 1cfe's account structure, so it fixes a knowingly-wrong headline LCOE and closes three latent errors. A narrower isolated-aggregate option would also get CAS50 under A-2 (recorded as a rejected alternative in D2); the owner gate below chooses between them.
 
-Two decisions surface to the owner (final message): the **CAS60/IDC convention** (a genuine reserved gate) and the **CAS10-placement rebuild** (needed for CAS50's A-2, and it closes three latent errors — flagged for scope visibility, recommended).
+Two decisions surface to the owner (final message): the **CAS60/IDC convention** (a genuine reserved gate) and the **overnight-rebuild vs narrow-shadow choice** — both get CAS50 under A-2; the rebuild additionally fixes the headline and closes three latent errors, but is a separately-motivated change bundled into an account-scope item.
 
 ---
 
@@ -59,7 +59,7 @@ overnight = c10 + c20 + c30 + c40 + c50                     = 7872.149   (CAS10 
 c60       = f_idc(0.07,8) * overnight = 0.282476 * 7872.15  = 2223.688
 total_cap = overnight + c60                                 = 10095.837
 c90       = CRF(0.07,30) * total_cap                        = 813.587
-lcoe      = (c90+c70+c80)*1e6 / (8760*p_net*avail)          = 123.743
+lcoe      = (c90+c70+c80)*1e6 / (8760*p_net*n_mod*avail)    = 123.743   (economics.py:90; n_mod explicit)
 ```
 
 All eight rollup values reproduce bit-for-bit. Two structural facts drive the design:
@@ -86,21 +86,23 @@ Measured against 1cfe at the handshake point (existing `handshake_comparison.jso
 |---|---|---|---|
 | direct / cas20 | 5710.95 M$ | 4646.41 M$ | **−18.64%** |
 | indirect | 1522.92 M$ | 1239.04 M$ | **−18.64%** |
-| CAS10 (account) | 18.50 M$ | 34.50 M$ | **+46.4%** |
+| CAS10 (account) | 18.50 M$ | 34.50 M$ | **+86.5%** |
+
+(All rel devs use the 1cfe value as denominator, for consistency across rows. The `handshake_comparison.json` machinery reports CAS10 as +46.4% with a symmetric max-magnitude denominator; the +86.5% here is `(34.5−18.5)/18.5`, same convention as the −18.64% rows.)
 
 **FINDING F-2 — `direct_capital` ≠ 1cfe `cas20`.** The model's `direct_capital` folds in CAS10 (which 1cfe excludes from cas20) and omits `c28` (`cas28_digital_twin` = 5.0 M$, `model.py:1479`). Even after WI-028 adds the CAS22 tail (+1094 M$), `direct_capital` ≈ 5740 M$ vs 1cfe cas20 5711 M$ — off by +29.5 M$ = the wrong CAS10 (34.5, should be 0 in cas20) minus the missing c28 (5.0).
 
 **FINDING F-3 — indirect base is wrong twice.** The model applies indirect (and contingency) to `direct_capital`, which (a) includes CAS10 that 1cfe excludes, and (b) is pre-contingency where 1cfe's indirect is on `c20` (post-contingency). Both masked at NOAK, both real.
 
-**FINDING F-4 — CAS10 account itself diverges +46%** (34.5 vs 18.5 M$). Pre-existing WI-025 remainder, out of scope to fix here. But today it flows into `direct_capital` and contaminates contingency, indirect, and — after WI-028 — CAS50. Isolating it is a side benefit of the rebuild.
+**FINDING F-4 — CAS10 account itself diverges +86.5%** (34.5 vs 18.5 M$). Pre-existing WI-025 remainder, out of scope to fix here. But today it flows into `direct_capital` and contaminates contingency, indirect, and — after WI-028 — CAS50. Isolating it is a side benefit of the rebuild.
 
-**Consequence for CAS50.** CAS50 consumes `cas20` and `cas30` as bases (`shipping·cas20`, `insurance·(cas20+cas30)`, …). Fed the model's inflated `direct_capital`-based channels, CAS50 diverges ≈0.2% (≈1.2 M$ on 578.58) — **far outside the A-2 1e-6 bar.** CAS50 cannot come under A-2 unless it is fed a 1cfe-faithful cas20/cas30. That forces the rebuild below.
+**Consequence for CAS50.** CAS50 consumes `cas20` and `cas30` as bases (`shipping·cas20`, `insurance·(cas20+cas30)`, …). Fed the model's inflated `direct_capital`-based channels, CAS50 diverges ≈0.2% (≈1.2 M$ on 578.58) — **far outside the A-2 1e-6 bar.** CAS50 therefore needs *faithful* cas20/cas30 as its inputs. There are two ways to supply them: (a) the full overnight rebuild (D2), or (b) a narrow isolated-aggregate — dedicated `cas20`/`cas30` shadow attributes feeding CAS40/CAS50 only, leaving the existing rollup untouched. Both satisfy A-2 for CAS50 (the A-2 bar tests the account *value*, not the headline rollup — the same value/wiring separation used for CAS60). The design recommends (a) and records (b) as a rejected alternative in D2; the owner gate chooses.
 
 ---
 
 ## Design
 
-### D1 — Ten new library calc defs (`models/library/analyses/mfe_account_costs.sysml`)
+### D1 — Seven new library calc defs, serving eleven accounts (`models/library/analyses/mfe_account_costs.sysml` + staged twin)
 
 Concept-agnostic, codegen-envelope-clean (flat Real arithmetic, `+ - * / **`, no `if`/lookup/sum/nested-calc), one calc per account except a shared power-law. Bases and fuel/concept-specific factors are inputs (MR-3: bound at the instance); reference powers and exponents are defaulted inputs carrying their 1cfe citation (MR-4). Full stencils are parse-validated in `prototype/mfe_tail_supplementary_costs.sysml` (see Validation Report). Summary:
 
@@ -118,7 +120,7 @@ Reusing `'Plant Power-Law Cost'` for five accounts (four tail + CAS40) is exact:
 
 `concept_scale` (1.0 toroidal, 0.55 end-access) stays an **instance input**, not a library default — it is concept-specific (MR-3). `'IDC Closed-Form Cost'` uses a variable real exponent (`construction_years`); the model's existing `idc_factor = (1+d)**(construction_years/2)` at `mfe_lcoe_dcf.sysml:47` proves codegen handles variable exponents.
 
-### D2 — Rebuilt overnight assembly (`models/designs/generic_mfe/mfe_plant.sysml`)
+### D2 — Rebuilt overnight assembly (`mfe_plant.sysml`, both trees — see D2b)
 
 Replace the flat `direct_capital → contingency/indirect → total` chain with one that mirrors 1cfe's overnight assembly. This is the risky cross-calc construct; it is parse-validated in `prototype/plant_chain_probe.sysml`.
 
@@ -146,10 +148,23 @@ What changes from today, and why each is correct against 1cfe:
 - **`cas28_capital` added** (F-2): 5.0 M$ `cas28_digital_twin`, a fed design input with citation.
 - **Contingency rebased** from `direct_capital` to `cas2x_pre_contingency` — drops CAS10 from the base (F-3). ✓
 - **Indirect rebased** from `direct_capital` to `cas20_capital` (post-contingency) — matches 1cfe's `c30` on `c20` (F-3). ✓
-- **CAS10 moves to the overnight level** — no longer contingency/indirect-scaled, matching 1cfe; isolates its own +46% error (F-4) so it no longer contaminates cas20/cas30/CAS50. ✓
+- **CAS10 moves to the overnight level** — no longer contingency/indirect-scaled, matching 1cfe; isolates its own +86.5% error (F-4) so it no longer contaminates cas20/cas30/CAS50. ✓
 - **CAS40 and CAS50 added at the overnight level, NOT into cas2x** — they receive no CAS29/CAS30 (correct: 1cfe adds c40/c50 at overnight; CAS50 carries its own c59 internally). ✓
 
 After this, at the handshake point `cas20_capital → 5710.95`, `cas30_capital → 1522.92`, `overnight → 7872.15` — matching 1cfe, so CAS50 (which consumes them) comes under A-2.
+
+**Rejected alternative — narrow isolated-aggregate (shadow cas20/cas30).** CAS50's A-2 needs only faithful `cas20`/`cas23_to_28`/`cas30` *as CAS50's inputs*. These could be built as dedicated shadow attributes feeding CAS40/CAS50 only, leaving `direct_capital`/contingency/indirect/`total_capital`/LCOE untouched. That is strictly less code and does not move the existing headline. **Rejected because:** it leaves two divergent notions of `cas20`/`cas30` coexisting in one model (the flat rollup's and CAS50's shadow), it leaves F-2/F-3/F-4 open as itemized A-4 remainders rather than closed errors (the criterion-3 ruling authorizes closing errors), and it keeps the model's headline LCOE knowingly wrong (indirect on a CAS10-inflated pre-contingency base). The full rebuild is one coherent 1cfe-faithful chain with a single `cas20`/`cas30`. Recorded per capture-fidelity §3; the owner gate below chooses between the two.
+
+### D2b — Staged-twin propagation (codegen input; must not be skipped)
+
+Codegen's actual input is not the canonical `models/` tree — it is the **staged twin** at `exploration/stellarator_e2e/models/`, from which `stellarator.snapshot.json` was captured (59 path refs into the staged tree; `snapshot()` at `handshake_1costingfe.py:128` reads the staged files). `sysml-codegen generate --from-snapshot` consumes that snapshot; the `.sysml` files matter only at capture time, and capture reads the staged tree. **If D1/D2/D5 land only on canonical `models/`, the recapture reads a stale twin and every A-2/A-4 result and the design-point re-baseline is computed against the old flat rollup — a silent wrong result, not a loud failure.** This is the WI-025/WI-027 pattern.
+
+Therefore, as a first-class part of D1/D2/D5:
+
+- **Edit both trees region-identical.** The 7 new defs land in the library twin `exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml` (note: `models/analyses/`, not `models/library/analyses/`) as well as canonical; the D2 restructure lands in both `mfe_plant.sysml` copies; the D5 bindings land in both `stellarator_plant.sysml` copies.
+- **Reconcile, do not blind-overwrite.** The staged `mfe_plant.sysml` carries extra "Item 10" comment lines and known WI-015 `DEMO-NOTE` divergences; apply the same *regions*, keeping those staged-only lines.
+- **Mirroring diff gate.** Before recapture, a staged-vs-canonical region diff must show only the intended WI-028 edits plus the known Item-10 / DEMO-NOTE divergences — any other delta is a defect that blocks recapture.
+- **Recapture from the staged tree.** After the twin carries the restructure, recapture `stellarator.snapshot.json` from `exploration/stellarator_e2e/models/`; that snapshot is what codegen consumes for every downstream A-2/A-4/oracle result.
 
 ### D3 — CAS50 wiring (the risky construct)
 
@@ -175,7 +190,7 @@ The emitter already carries the reference values (`cas22_detail_musd` all eight 
 - **`emit_1cfe_point.py`:** add to `refs` the new CONST bases so the handshake can both feed them (×1e6) and assert them against 1cfe config (A-5): `remote_handling_dt_base` (150.0), `fuel_handling_dt_base` (120.0), `installation_frac` (0.14), `owner_cost_dt` (via `cc.owner_cost(DT)` = 41.2), `shipping_frac` (0.015), `spare_parts_frac_dt` (via `cc.spare_parts_frac(DT)` = 0.03), `tax_frac` (0.01), `construction_insurance_frac` (0.015), `startup_fuel_dt` (via `cc.startup_fuel(DT)` = 40.0), `decom_provision_dt` (via `cc.decom_provision(DT)` = 272.0), `cas28` (already in `costs_musd`), and `concept_scale` (1.0, stellarator).
 - **`handshake_1costingfe.py`:** add SysML channels for the ten accounts + CAS60 line to `CH`; feed the new bases into the injection map (×1e6); add explicit comparison rows for C220110/111/200/300/400/500/600/700, CAS40, CAS50, CAS60 (MR-WI028-8, A-4); the comparison *logic* is unchanged — only new rows and inputs.
 
-Instance bindings (`models/designs/stellarator_09/stellarator_plant.sysml`), all dollar conversions of pinned constants with MR-4 citations, placed next to the WI-025 building/precon bindings:
+Instance bindings (`models/designs/stellarator_09/stellarator_plant.sysml` **and its staged twin — D2b**), all dollar conversions of pinned constants with MR-4 citations, placed next to the WI-025 building/precon bindings:
 
 | Account | base (→ $) | ref/α | power |
 |---|---|---|---|
@@ -222,7 +237,8 @@ The residual LCOE gap reconciles to this itemized sum plus the CAS60 disposition
 | `powercore_capital` | `mfe_plant.sysml:389-392` | installation.reactor_subtotal, cas22_capital |
 | `cas20_capital`, `cas23_to_28_capital`, `cas30_capital` | new attrs (D2) | supplementary calc |
 | `overnight_capital` | new attr (D2) | idc calc (CAS60) |
-| new unit-cost bases | `stellarator_plant.sysml` instance | tail / owner / supplementary calcs |
+| new unit-cost bases | `stellarator_plant.sysml` instance (both trees, D2b) | tail / owner / supplementary calcs |
+| the whole D1/D2/D5 edit set | **canonical `models/` AND staged `exploration/stellarator_e2e/models/` (D2b)** | `stellarator.snapshot.json` recapture → codegen |
 
 Dataflow stays unidirectional: powers/geometry → accounts → cas2x → contingency → cas20 → indirect → cas30 → overnight → (gated) total_capital → LCOE. No cycles.
 
@@ -231,7 +247,7 @@ Dataflow stays unidirectional: powers/geometry → accounts → cas2x → contin
 ## Validation Plan
 
 1. **Parse (Level 1-3):** new calc defs and the restructured plant parse clean under `uv run python -m syside check`. **DONE this stage** (Validation Report).
-2. **Codegen capture (first plan-stage checkpoint):** snapshot + `sysml-codegen generate --from-snapshot` the restructured plant; confirm the 4-deep cas2x→…→supplementary chain compiles to instance-scoped aggregation producers in correct topological order (the WI-010/WI-025 precedent predicts pass; this is the explicit de-risk of D3).
+2. **Codegen capture (first plan-stage checkpoint):** after the D2b staged-twin edit + mirroring diff gate, **recapture** `stellarator.snapshot.json` from `exploration/stellarator_e2e/models/`, then `sysml-codegen generate --from-snapshot`; confirm the 4-deep cas2x→…→supplementary chain compiles to instance-scoped aggregation producers in correct topological order (the WI-010/WI-025 precedent predicts pass; this is the explicit de-risk of D3). Every downstream step runs against the recaptured snapshot.
 3. **A-2 per-account (SV-034):** run `handshake_1costingfe.py`; each of the eight tail accounts + CAS40 + CAS50 (+ CAS60 per gate) under |rel dev| ≤ 1e-6 vs 1cfe float32 at the handshake point.
 4. **Rollup match:** `cas20_capital → 5710.95`, `cas30_capital → 1522.92`, `overnight → 7872.15` reproduce 1cfe (the direct/indirect rows move from −18.64% to ~0).
 5. **Design-point re-baseline (MR-WI028-9):** record the new Stellaris headline; oracle bit-exact rel 1e-9 holds at the new point.
@@ -242,8 +258,8 @@ Dataflow stays unidirectional: powers/geometry → accounts → cas2x → contin
 
 ## Validation Report (design stage)
 
-- **Parse:** `mfe_tail_supplementary_costs.sysml` (10 calc defs) — **Checks passed!**
-- **Cross-calc chain:** `plant_chain_probe.sysml` (full cas2x→contingency→cas20→indirect→cas30→supplementary, with supplementary reading cas20 + cas30) parsed against the real `mfe_account_costs.sysml` deps — **Checks passed!** Two namespace-shadowing warnings are a probe artifact of `in p_net = p_net`; the real plant binds qualified names (`pb.p_net`, `cryo_elec.p_elec`) and does not trigger them.
+- **Parse:** `mfe_tail_supplementary_costs.sysml` (7 calc defs serving 11 accounts) — **Checks passed!**
+- **Cross-calc chain:** `plant_chain_probe.sysml` (full cas2x→contingency→cas20→indirect→cas30→supplementary, with supplementary reading cas20 + cas30) parsed against the real `mfe_account_costs.sysml` deps — **Checks passed!** The several namespace-shadowing *warnings* (on `alpha` ×5, `cas20`, `cas23_to_28`, `cas30`, `p_net`) are all probe artifacts of the `in x = x` binding idiom; the real plant binds qualified names (`pb.p_net`, `cryo_elec.p_elec`) and does not trigger them.
 - **Assembly reproduction:** the full 1cfe overnight/total/LCOE chain re-derived independently and matched to `onecfe_point.json` to the cent (see re-derivation section).
 - **Codegen capture:** NOT run this stage (requires a full-plant snapshot+generate — a plan-stage activity). Scheduled as Validation Plan step 2. Not fabricated.
 - **Prototype status:** PASS (parse + assembly-reproduction); codegen PENDING (plan step 1).
@@ -252,23 +268,26 @@ Dataflow stays unidirectional: powers/geometry → accounts → cas2x → contin
 
 ## Implementation Checklist (for `/plan-model`)
 
-1. **Library:** add the 10 calc defs to `models/library/analyses/mfe_account_costs.sysml` (from `prototype/mfe_tail_supplementary_costs.sysml`).
-2. **Generic plant:** restructure `mfe_plant.sysml` overnight assembly (D2): new tail account usages, `cas22_tail_capital`/`cas22_capital`/`cas28_capital`/`cas2x_pre_contingency`/`cas20_capital`/`cas30_capital`/`cas23_to_28_capital`/`overnight_capital`; rebind contingency → cas2x, indirect → cas20; add owner/supplementary at overnight; add idc (wiring per CAS60 gate).
-3. **Codegen capture checkpoint** (Validation Plan step 2) — before instance binding, confirm the chain compiles.
-4. **Instance:** bind the new bases in `stellarator_plant.sysml` (D5 table), MR-4 citations, next to WI-025 bindings.
+**Every `.sysml` edit lands region-identical in BOTH trees (D2b): canonical `models/` and staged `exploration/stellarator_e2e/models/`. The staged tree is what the snapshot recapture reads.**
+
+1. **Library (both trees):** add the 7 calc defs to `models/library/analyses/mfe_account_costs.sysml` AND the staged twin `exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml` (from `prototype/mfe_tail_supplementary_costs.sysml`).
+2. **Generic plant (both trees):** restructure `mfe_plant.sysml` overnight assembly (D2) in canonical and staged copies: new tail account usages, `cas22_tail_capital`/`cas22_capital`/`cas28_capital`/`cas2x_pre_contingency`/`cas20_capital`/`cas30_capital`/`cas23_to_28_capital`/`overnight_capital`; rebind contingency → cas2x, indirect → cas20; add owner/supplementary at overnight; add idc (wiring per CAS60 gate). Reconcile the staged copy's Item-10 / DEMO-NOTE lines, don't blind-overwrite.
+3. **Instance (both trees):** bind the new bases in `stellarator_plant.sysml` (D5 table) in canonical and staged copies, MR-4 citations, next to WI-025 bindings.
+4. **Mirroring diff gate + recapture** (Validation Plan step 2): staged-vs-canonical region diff shows only the intended WI-028 edits + known Item-10/DEMO-NOTE divergences; then recapture `stellarator.snapshot.json` from the staged tree; codegen-capture checkpoint (confirm the 4-deep chain compiles) before proceeding.
 5. **Harness:** `emit_1cfe_point.py` refs additions; `handshake_1costingfe.py` channels + rows + injection + traps (D5/D6).
-6. **Re-baseline & validate:** SV-034; re-baseline `handshake_comparison.json` as an explicit commit; record design-point headline; oracle bit-exact; trap table.
-7. **CAS60 gate:** apply the owner's convention ruling to step 2's idc wiring + `mfe_lcoe_dcf` idc_factor.
+6. **Re-baseline & validate:** SV-034 (against the recaptured snapshot); re-baseline `handshake_comparison.json` as an explicit commit; record design-point headline; oracle bit-exact; trap table.
+7. **CAS60 gate:** apply the owner's convention ruling to step 2's idc wiring + `mfe_lcoe_dcf` idc_factor (both trees).
 
 ---
 
 ## Risks
 
 1. **[Risk, medium] CAS60 gate unresolved blocks total_capital/LCOE finalization.** Mitigation: design is CAS60-independent; CAS22 tail/CAS40/CAS50 and the CAS60 *account line* (A-2) proceed; only total_capital wiring + LCOE idc_factor wait on the ruling.
-2. **[Risk, medium] Codegen binding order on the 4-deep chain.** Mitigation: parse validated; WI-010/WI-025 precedent; explicit codegen-capture checkpoint before instance work.
-3. **[Risk, medium — scope] The overnight rebuild touches WI-025 contingency/indirect wiring.** It is required for CAS50's A-2 and closes F-2/F-3/F-4 (errors the criterion-3 ruling authorizes closing). It moves the design-point headline beyond just "adding accounts" (also removes spurious indirect-on-CAS10, adds c28). Surfaced to the owner (final message) for visibility; recommended.
-4. **[Risk, low] n_mod=1 hides per-module vs plant-total.** Mitigation: n_mod explicit in every def; A-5 asserts the split.
-5. **[Risk, low] Float32 near the A-2 ceiling.** Mitigation: measure; itemize under A-4 if any account legitimately cannot meet 1e-6.
+2. **[Risk, high] Staged-twin skip (M1).** Codegen reads the staged twin, not canonical `models/`. If the D1/D2/D5 edits land only on canonical, every A-2/A-4/oracle result runs against the stale flat rollup — a silent wrong result. Mitigation: D2b makes twin propagation first-class — both trees edited region-identical, a staged-vs-canonical mirroring diff gate, recapture from the staged tree before any downstream step.
+3. **[Risk, medium] Codegen binding order on the 4-deep chain.** Mitigation: parse validated; WI-010/WI-025 precedent; explicit codegen-capture checkpoint (against the recaptured snapshot) before the A-2 runs.
+4. **[Risk, medium — scope] The overnight rebuild touches WI-025 contingency/indirect wiring.** It is one of two owner-gate options (the other is the narrow-shadow alternative, D2). The rebuild is required only if the owner wants F-2/F-3/F-4 *closed* (the criterion-3 ruling authorizes it) and the headline LCOE corrected; A-2 for CAS50 alone does not compel it. It moves the design-point headline beyond just "adding accounts". Surfaced to the owner (final message).
+5. **[Risk, low] n_mod=1 hides per-module vs plant-total.** Mitigation: n_mod explicit in every def; A-5 asserts the split.
+6. **[Risk, low] Float32 near the A-2 ceiling.** Mitigation: measure; itemize under A-4 if any account legitimately cannot meet 1e-6.
 
 ---
 
@@ -289,6 +308,7 @@ sysml-codegen and teax HEADs have advanced past the WI-027 pins (upstream lifecy
 
 - **1cfe formulas (pin 0254385):** `cas22.py:631-731`, `costs.py:239-297`, `model.py:1479-1500`, `economics.py:78-92` — all re-read this stage.
 - **Requirements:** MR-WI028-1..10 (spec); A-2/A-3/A-4/A-5/A-6 + G-8 (anchor spec); MR-3, MR-4.
-- **Model:** `models/library/analyses/mfe_account_costs.sysml`, `mfe_lcoe_dcf.sysml:47-52`, `models/designs/generic_mfe/mfe_plant.sysml`, `models/designs/stellarator_09/stellarator_plant.sysml`.
+- **Model (canonical):** `models/library/analyses/mfe_account_costs.sysml`, `mfe_lcoe_dcf.sysml:47-52`, `models/designs/generic_mfe/mfe_plant.sysml`, `models/designs/stellarator_09/stellarator_plant.sysml`.
+- **Model (staged twin — codegen input, D2b):** `exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml`, `.../models/designs/generic_mfe/mfe_plant.sysml`, `.../models/designs/stellarator_09/stellarator_plant.sysml`; snapshot `exploration/stellarator_e2e/stellarator.snapshot.json` (recaptured from the staged tree).
 - **Harness:** `exploration/stellarator_e2e/{emit_1cfe_point.py, handshake_1costingfe.py, handshake_comparison.json, onecfe_point.json}`.
 - **Prototype:** `prototype/mfe_tail_supplementary_costs.sysml`, `prototype/plant_chain_probe.sysml`.
