@@ -1,7 +1,7 @@
 ---
-Status: approved
+Status: complete
 Created: 2026-07-20
-Updated: 2026-07-20 (rev 3 — owner gates ruled: D1 full rebuild, D2 CAS60 Option C; approved)
+Updated: '2026-07-20'
 Related Artifacts:
   Spec: ./spec.md
   Brief: ../../orchestration/handshake-account-scope.md

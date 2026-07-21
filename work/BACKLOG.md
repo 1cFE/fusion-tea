@@ -135,8 +135,8 @@ standalone:
   name: Handshake account scope CAS22 tail + CAS40/50/60
   scale: standard
   priority: P0
-  status: backlog
-  completed: null
+  status: completed
+  completed: '2026-07-20'
 ---
 
 # Project Backlog
@@ -188,4 +188,4 @@ standalone:
 |------|------|-------|----------|--------|-------|
 | WI-026 | Pytest Baseline Re-Record | trivial | P3 | backlog |  |
 | WI-027 | Demo Constraint Execution (STELLARATOR-DEMO Item 2) | standard | P0 | completed | Completed 2026-07-20 |
-| WI-028 | Handshake account scope CAS22 tail + CAS40/50/60 | standard | P0 | backlog |  |
+| WI-028 | Handshake account scope CAS22 tail + CAS40/50/60 | standard | P0 | completed | Completed 2026-07-20 |

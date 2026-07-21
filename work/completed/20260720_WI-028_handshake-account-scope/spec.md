@@ -1,9 +1,9 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Owner: reidw
 Created: 2026-07-20
-Updated: 2026-07-20
+Updated: '2026-07-20'
 ---
 
 # WI-028 — Handshake account scope: CAS22 tail + CAS40/50/60

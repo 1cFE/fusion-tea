@@ -6,6 +6,20 @@
 
 ## Active Work
 
+### Stellarator MBSE Demo — epic Item 3 COMPLETE: handshake account scope CAS22 tail + CAS40/50/60 (WI-028 closed, 2026-07-20)
+
+**Status**: **Demo epic Item 3 complete** — WI-028 owner-closed after a POSITIVE independent audit (all nine bars reproduced, including the remainder-reconstruction arithmetic). Orchestrator-driven run (`/_my_orchestrate Item 3`); trail: `work/orchestration/handshake-account-scope.md`; records: `work/completed/20260720_WI-028_handshake-account-scope/`, SV-034 passing.
+
+**What moved**: the eight CAS22 tail accounts + CAS40 + CAS50 are forward-computed from the model's own powers (7 new concept-agnostic calc defs, MR-4-cited at 1cfe pin `0254385`), and the overnight assembly is **rebuilt to mirror 1cfe exactly** ([OWNER] ruling — closed three latent rollup errors: CAS10 wrongly inside direct capital, missing cas28 $5.0M, indirect on the wrong base; retires the old −18.64% direct/indirect handshake rows). CAS60 is an A-2-checked **reported** line excluded from total_capital per the [OWNER] Option-C ruling; the DCF `idc_factor` is untouched and the LCOE-side IDC reconciliation stays Item 4's scope. Spec-stage premise correction: these accounts were structurally *absent* from the handshake, not injected.
+
+**Anchor-A result**: 8/11 newly-scoped accounts under the ratified 1e-6 bar outright (worst +7.95e-08); the 3 misses (installation, CAS50, CAS60) are the two documented A-4 remainders (C220106_pump $0.72M; CAS10 +$16.0M) propagating — each reconstructs 1cfe exactly when added back (audit-recomputed, no third source). All six trap classes assert. `handshake_comparison.json` re-baselined as its own commit (`feb13ff3`, G-8 account-scope form).
+
+**New executed headline (re-baseline, physics spine unchanged)**: total **$16,145,706,216.04**, **LCOE $258.013640/MWh**; p_net 915.081088 / q_eng 6.606662 / rec_frac 0.151362 unchanged; magnet share 39.17%; 5 constraint verdicts satisfied; oracle bit-exact (worst 4.4e-16). Standing bars all hold (WI-022 hash, IFE A/B byte-exact w/ Run C out-of-scope, pytest 11/18/14/0, L1=0, regen stability, PROTOCOL sealed).
+
+**Upstream findings filed in the trail**: sysml-codegen aggregation part-def-vs-instance scoping (4 value-preserving D2 adaptations); `pm update-validation` corrupts rows containing `|`; `pm close-item` crashes on frontmatter colons; mid-run sysml-codegen worktree drift restored per A-6.
+
+**Demo board**: criteria 1–2 met · 3 partial (Items 1+3 done; Item 4 remains — consumes the CAS60 Option-C mapping; collect the CAS10 remainder disposition ruling at pick-up) · 4–7 not started · 8 stretch. **Next**: Item 4 (LCOE construction) ∥ Item 5 (studies).
+
 ### Stellarator MBSE Demo — criterion 2 MET: constraints execute (WI-027 closed, 2026-07-20)
 
 **Status**: **Demo epic Item 2 complete** — WI-027 owner-closed after a POSITIVE independent audit (all eight bars reproduced). The five viability asserts execute as generated constraint modules with verdicts as run-report data (`all_satisfied`, 5 assessed, all off-boundary); zero hand-coded viability; headline unchanged to the cent ($12,638,857,665.74 / $203.647152/MWh / p_net 915.081088). The item's two blockers (INV-2 literal actuals; capture-time coverage check) were root-caused here and fixed upstream by the sysml-codegen lifecycle-remediation epic (Items 2/3/10) — the demo now generates on the fully public single-pass route (bridge and D7 passthroughs gone). One out-of-scope finding routed upstream ([OWNER] ratified): teax-vs-HIF-package validator skew (IFE Run C leg). Records: `work/completed/20260720_WI-027_demo-constraint-execution/`, SV-033, `work/analysis/20260720-163628_audit_WI-027_demo-constraint-execution.md`, trail `work/orchestration/demo-constraint-execution.md`.
