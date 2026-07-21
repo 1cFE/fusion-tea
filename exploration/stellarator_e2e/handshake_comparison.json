@@ -18,6 +18,101 @@
     "sigma_v": 5.736186254024941e-23,
     "p_fus_target": 2582.06591796875
   },
+  "a2": [
+    {
+      "account": "remote_handling",
+      "onecfe_1c": 151872116.0888672,
+      "sysml": 151872111.1867611,
+      "rel_dev": -3.227785457081875e-08
+    },
+    {
+      "account": "installation",
+      "onecfe_1c": 509598571.77734375,
+      "sysml": 509497670.011161,
+      "rel_dev": -0.00019800245089149728
+    },
+    {
+      "account": "coolant",
+      "onecfe_1c": 202045181.27441406,
+      "sysml": 202045184.55319217,
+      "rel_dev": 1.622794481949654e-08
+    },
+    {
+      "account": "aux_cooling",
+      "onecfe_1c": 18921039.581298828,
+      "sysml": 18921039.028371293,
+      "rel_dev": -2.9222894051432984e-08
+    },
+    {
+      "account": "waste",
+      "onecfe_1c": 5525381.565093994,
+      "sysml": 5525381.9850038225,
+      "rel_dev": 7.599652467144439e-08
+    },
+    {
+      "account": "fuel_handling",
+      "onecfe_1c": 120000015.25878906,
+      "sysml": 120000009.00777769,
+      "rel_dev": -5.209175480629542e-08
+    },
+    {
+      "account": "other_rpe",
+      "onecfe_1c": 11500000.953674316,
+      "sysml": 11500000.986566134,
+      "rel_dev": 2.8601577886246886e-09
+    },
+    {
+      "account": "inc",
+      "onecfe_1c": 73848846.43554688,
+      "sysml": 73848852.31010237,
+      "rel_dev": 7.954836554119285e-08
+    },
+    {
+      "account": "owner",
+      "onecfe_1c": 41200000.76293945,
+      "sysml": 41200002.20905022,
+      "rel_dev": 3.509977409148427e-08
+    },
+    {
+      "account": "supplementary",
+      "onecfe_1c": 578584106.4453125,
+      "sysml": 578547979.93129,
+      "rel_dev": -6.24395202357398e-05
+    },
+    {
+      "account": "idc (CAS60, reported)",
+      "onecfe_1c": 2223687988.28125,
+      "sysml": 2227903357.0790434,
+      "rel_dev": 0.0018920788392365764
+    }
+  ],
+  "traps": [
+    {
+      "name": "fuel-keyed bases (DT)",
+      "ok": true,
+      "detail": "remote_handling=150, fuel=120, owner=41.2, spares=0.03, startup=40, decom=272"
+    },
+    {
+      "name": "plant-total/per-module + ref-power split (clean accounts @ 1e-6)",
+      "ok": true,
+      "detail": "8 remainder-free tail/CAS40 accounts under 1e-6 => power/ref/base mapping correct"
+    },
+    {
+      "name": "installation base = 0.14*Sigma(C220101..110) [+ pump A-4]",
+      "ok": true,
+      "detail": "installation reconstructs to 1cfe with +0.14*C220106_pump: rel -3.12e-08"
+    },
+    {
+      "name": "F-2/F-3 structural (cas28=5.0; cas20/cas30 reconstruct)",
+      "ok": true,
+      "detail": "cas28=5.0; cas20 recon rel -2.01e-08; cas30 recon rel -1.38e-07"
+    },
+    {
+      "name": "CAS60 Option C (total==overnight, idc reported-only)",
+      "ok": true,
+      "detail": "total_capital vs overnight_capital rel 0.00e+00; idc line reported separately"
+    }
+  ],
   "p_fus": {
     "onecfe": 2582.06591796875,
     "sysml": 2582.06591796875
@@ -180,21 +275,25 @@
       "onecfe": 0.0,
       "sysml": 0.0
     },
-    "indirect": {
+    "cas30_indirect": {
       "onecfe": 1522919189.453125,
-      "sysml": 1239043846.9010568
+      "sysml": 1522699913.2836938
     },
-    "direct_or_cas20": {
+    "cas20": {
       "onecfe": 5710946289.0625,
-      "sysml": 4646414425.8789625
+      "sysml": 5710124674.813852
+    },
+    "overnight": {
+      "onecfe": 7872149585.723877,
+      "sysml": 7887072570.37193
     },
     "total_capital": {
       "onecfe": 10095837890.625,
-      "sysml": 5885458272.78002
+      "sysml": 7887072570.37193
     },
     "lcoe": {
       "onecfe": 123.74301147460938,
-      "sysml": 85.81870065696772
+      "sysml": 112.63696190986101
     },
     "net_electric": {
       "onecfe": 1000.0000610351562,
