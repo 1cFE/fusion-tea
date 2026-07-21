@@ -1,0 +1,36 @@
+# Orchestration brief — WI-029 Handshake LCOE Construction: CAS70/80 + IDC (STELLARATOR-DEMO Item 4)
+
+**Run started:** 2026-07-20. Orchestrator-driven (`/_my_orchestrate Item 4`), Align held 2026-07-20.
+**Governing frame:** `.project/concepts/stellarator-mbse-demo.md`, criterion 3 (Anchor A). Tracking home: `.project/backlog/epic_stellarator_mbse_demo.md`, Item 4. **This item finishes criterion 3: after it, the Anchor-A verdict is written in the A-4 form — met or honestly failed, no third state.**
+**Pipeline:** `/spec-model` → `/design-model` (+ independent review) → `/plan-model` → `/implement-model` → `/audit-models` → owner close. Registered as standalone WI-029.
+
+## Align rulings ([OWNER] 2026-07-20)
+
+1. **Scope is Item 4**: CAS70 levelization into LCOE (WI-025's unlevelized CAS70 stands — the levelization step is what's missing) + CAS80 fuel, forward-computed and MR-4-sourced; IDC treatment reconciled end-to-end starting from Item 3's Option-C mapping; handshake re-run; **criterion-3 verdict written in the A-4 form**.
+2. **Owner holds close** — audit runs, owner closes WI-029, orchestrator commits after close.
+3. **LCOE/IDC convention is a conditional reserved gate** — if completing the end-to-end LCOE comparison forces a genuine convention choice (model adopts 1cfe's CAS60/CRF form vs keeps DCF with a documented mapped comparison form), park it for owner with options; if it falls out mechanically from the Option-C mapping, record and proceed.
+4. **CAS10 ruled (a) — error-to-close, WITH A STOP CONDITION** ([OWNER] verbatim: "please try (a) but stop if there is not a clear resolution"). Fold a CAS10 basis-correction into this item's scope (the WI-025 `'Preconstruction Cost'` calc diverges +$16.0M / +86.5% vs 1cfe at the handshake point). **STOP-and-surface if the divergence does not resolve to one clearly identified error** — ambiguous basis, multiple candidate causes, or a fix that does not reconstruct 1cfe cleanly → revert to explained-remainder treatment and park for owner; do not force it.
+5. **Everything else is execution detail** under the standing G-8 amendment (comparison JSON moves again; explicit re-baseline commit; account-scope form).
+
+## Decision-carrying inputs, graded
+
+- **[OWNER criterion-3 ruling, 2026-07-18]** The bar is *explaining*, and closing any errors — full structural-gap closure NOT required. This item writes the final verdict against it.
+- **[OWNER 2026-07-19] (anchor spec, ratified — `.project/active/demo-anchor-acceptance-spec/spec.md`):** A-2 per-account |rel dev| ≤ 1e-6 (no grandfathering); **A-4 end-state LCOE acceptance is THIS item's finish line** — (1) every modeled account under A-2, (2) remainder fully itemized with signed magnitudes, residual LCOE gap reconciling to the itemized sum within the aggregate tolerance; A-5 trap assertions for every new mapping; A-6 pin discipline (1costingFE `0254385`, owner-only bumps); G-8 account-scope form in force.
+- **[OWNER 2026-07-20] (Item 3 gate rulings, recorded `work/orchestration/handshake-account-scope.md`):** CAS60 = **Option C** — an A-2-checked reported line excluded from `total_capital`; the model's DCF `idc_factor` was left untouched *for this item to reconcile deliberately*. The full-rebuild ruling also stands: the overnight assembly now mirrors 1cfe exactly.
+- **[OWNER non-goal, concept]** No changes to 1costingFE — gaps filed, not fixed.
+- **[INHERITED: PROTOCOL]** `knowledge/holdout/aries-cs/PROTOCOL.md` §3 barred paths absolute; quarantine sealed; Required Reading every stage.
+- **[INHERITED: WI-028 close state — the current harness]** Spec surveys the current harness, not any earlier description:
+  - Overnight assembly rebuilt per D2 (WI-028): `cas2x → contingency → cas20 → indirect → cas30 → overnight (+CAS40+CAS50)`; `total_capital = overnight_capital`; CAS60 reported line (`idc` calc on overnight); rollup at handshake point cas20 5,710.12 / cas30 1,522.70 / overnight 7,887.07 M$ (deltas = the two documented remainders).
+  - 1cfe LCOE construction (re-derived, WI-028 design): `c60 = f_idc(0.07,8)·overnight`, `total_cap = overnight + c60`, `c90 = CRF(0.07,30)·total_cap`, `lcoe = (c90+c70+c80)·1e6/(8760·p_net·n_mod·avail)` = $123.743/MWh at the emitted point (`model.py:1483-1605`, `economics.py:78-92`).
+  - Model LCOE: `mfe_lcoe_dcf.sysml` — `idc_factor = (1+d)^(Yc/2)` (=1.310796 at d=0.07, Yc=8) inside the annualized capital charge; CAS70 currently unlevelized (WI-025 `'Annual OM Cost'`, $52.517M/yr at design point); no CAS80 anywhere.
+  - Handshake baseline: `handshake_comparison.json` @ `feb13ff3` (WI-028 G-8 re-baseline); comparison logic untouched since `5127efa4`.
+  - Two documented A-4 remainders inbound: C220106_pump $0.721M (stays explained); **CAS10 +$16.0M (+86.5%) — this item attempts closure per Align ruling 4** (WI-025 calc `'Preconstruction Cost'`, tracks p_net; 1cfe c10 = 18.5 M$ at the emitted point).
+  - Executed design-point headline (WI-028): total $16,145,706,216.04, LCOE $258.013640/MWh, p_net 915.081088, q_eng 6.606662, 5 verdicts satisfied, oracle bit-exact.
+  - Standing bars: oracle rel 1e-9; WI-022 sha256 `8d2357…794a9f` survives regen; IFE Runs A/B byte-exact (Run C out-of-scope by [OWNER] ruling 2026-07-20); pytest 11/18/14/0; L1=0, offenders = 6 pre-existing + WI-028's design-accepted rollup-key L6 set; regen stability; MR-3/MR-4; exec venv `exploration/pipeline_spike/.venv-exec/bin/python`; license via `set -a && source ~/1cfe/fusion-tea/.env && set +a`.
+  - Toolchain pins (this item stays on them; verify liveness at design; upstream HEADs moving): sysml-codegen `06d95f8`, teax `07eb0ac`, agentic-mbse `4c18d61`, 1costingFE `0254385`. Mid-run drift precedent: WI-028 caught the sysml-codegen worktree off-pin and restored per A-6 — re-check before every codegen/exec step.
+  - Next free SV: **SV-035**. Known toolchain quirks: `pm update-validation` corrupts rows containing `|` (edit the matrix row directly); `pm close-item` crashes on frontmatter values containing colons (keep frontmatter values plain).
+- **[AGENT] (orchestrator orientation — design verifies, does not inherit as fact):** expected shape is WI-025/WI-028-pattern library calcs for CAS70-levelized and CAS80 (1cfe `costs.py` / `economics.py` formulas), an LCOE-side reconciliation consistent with Option C, and possibly a handshake-comparable LCOE channel computed in 1cfe's form at the handshake point. The headline may move again (levelized O&M + fuel enter LCOE) — a re-baseline like WI-028, stated in the spec with SV-035 treatment. The design-point DCF convention vs the handshake-point 1cfe form is exactly where Align ruling 3's gate may trigger — the design rules mechanical-vs-choice with evidence, like WI-028's D4 did.
+
+## Stage log
+
+- 2026-07-20: WI-029 registered (`pm add-item`, standalone, P0). Brief committed; spec stage launching.
