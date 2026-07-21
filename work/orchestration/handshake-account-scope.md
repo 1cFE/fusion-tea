@@ -1,0 +1,37 @@
+# Orchestration brief — WI-028 Handshake Account Scope: CAS22 tail + CAS40/50/60 (STELLARATOR-DEMO Item 3)
+
+**Run started:** 2026-07-20. Orchestrator-driven (`/_my_orchestrate Item 3`), Align held 2026-07-20.
+**Governing frame:** `.project/concepts/stellarator-mbse-demo.md`, criterion 3 (Anchor A). Tracking home: `.project/backlog/epic_stellarator_mbse_demo.md`, Item 3.
+**Pipeline:** `/spec-model` → `/design-model` → `/plan-model` → `/implement-model` → `/audit-models` → owner close. Registered as standalone WI-028 (demo epic delegates modeling execution here, [OWNER] ratified 2026-07-18).
+
+## Align rulings ([OWNER] 2026-07-20: "all looks good, please launch")
+
+1. **Scope is Item 3 only** — CAS22 tail + CAS40/50/60. Item 4 (CAS70/80, LCOE construction) is a separate run; it consumes this item's CAS60 mapping.
+2. **Owner holds close** — audit runs, owner closes WI-028, orchestrator commits after close (WI-019–027 precedent).
+3. **CAS60/IDC mapping is a conditional reserved gate** — if reconciling 1cfe's CAS60 IDC line with the model's DCF convention turns out to be a genuine convention *choice*, park it for owner ruling; if it falls out mechanically, record it and proceed.
+4. **Everything else is execution detail under the ratified G-8 amendment** — including the comparison-JSON re-baseline commit.
+
+## Decision-carrying inputs, graded
+
+- **[OWNER criterion-3 ruling, 2026-07-18]** The bar is *explaining*, and closing any errors: remaining discrepancies after Items 3–4 are itemized and explained; anything shown to be an error (model, mapping, or sourcing mistake) is closed; full structural-gap closure is NOT required.
+- **[OWNER 2026-07-19] (anchor spec, ratified in full — `.project/active/demo-anchor-acceptance-spec/spec.md`):** WI-028 is an **account-scope** item and is judged against:
+  - **A-2**: per-account pass bar |rel dev| ≤ 1e-6 vs 1cfe's float32 runtime, no grandfathering for newly-brought accounts.
+  - **A-3 boundary (the target account list — authoritative over the epic's prose, which omits C220600/aux cooling):** CAS22 tail ~$1.094B at the 1 GWe point — C220110 remote handling, C220111 installation, C220200 coolant, C220300 aux cooling + cryoplant, C220400 waste, C220500 fuel handling, C220600 other, C220700 I&C — plus CAS40 owner ($41.2M), CAS50 supplementary ($578.6M), CAS60 IDC line ($2224M) reconciled with the model's DCF convention ("a documented mapping, not a fudge").
+  - **A-4 form**: any account that cannot come under A-2 becomes itemized-and-explained remainder with signed magnitudes — never a loosened bar.
+  - **A-5**: every new field mapping gets an assertion in the handshake (the f_shape −20.6% precedent); new traps added to the trap table as part of acceptance.
+  - **A-6**: 1costingFE pinned at `0254385` (hardcoded `emit_1cfe_point.py:22`, drift-asserted at run); pin bumps are owner-only.
+  - **G-8 amendment (in force, recorded at `work/orchestration/stale-basis-recompute.md` ruling-3):** for this item the WI-024 empty-diff successor bar is superseded — `handshake_comparison.json` moves are **expected** and re-baselined as an explicit commit; injection-map shrinkage is **documented** (each account named as it leaves the map, signed magnitude of each move); comparison *logic* stays untouched (only what feeds it changes).
+- **[OWNER non-goal, concept]** No changes to 1costingFE — gaps found there are filed, not fixed.
+- **[INHERITED: PROTOCOL]** `knowledge/holdout/aries-cs/PROTOCOL.md` §3 barred paths absolute; quarantine sealed; Required Reading for every stage session.
+- **[INHERITED: WI-027 close state, post-lifecycle-Item-10 — the current harness]** The epic's Item-3 description predates lifecycle Item 10; **spec surveys the current harness, not the epic's description**. Current facts (WI-027 implementation record):
+  - Single-pass route: `exploration/stellarator_e2e/run_stellaris_single.py`; bridge (`bridge_v11_generate.py`) and handshake rollup glue **deleted**; generation via public CLI `sysml-codegen generate --from-snapshot`; snapshot carries 5 constraint facts (`constraint_lowering_mode: applied`).
+  - `handshake_comparison.json` deliberately re-baselined to single-pass numbers at `342cc799`.
+  - Toolchain pins at WI-027 close: sysml-codegen `06d95f8` (Item 10 certified `1c85042`), agentic-mbse `4c18d61`, teax `07eb0ac`. Verify liveness at design; record this item's pins (upstream lifecycle epic still in flight — adopt movement deliberately, never implicitly).
+  - Standing bars: execute via `exploration/pipeline_spike/.venv-exec/bin/python`; oracle bit-exact rel 1e-9; WI-022 handwritten impl sha256 `8d2357…794a9f` survives regen (`preserve_handwritten` semantics now via Item-10 route); pytest tally 11/18/14/0; IFE anchors 252.30/68.69/270.12, Meier 4.735 — **IFE Run C leg out-of-scope by [OWNER] ruling 2026-07-20** (teax-vs-HIF-package validator skew, routed to the lifecycle epic; Runs A/B byte-exact is the live expectation); L1=0, offender list = the 6 pre-existing; `SYSIDE_LICENSE_KEY` via `set -a && source ~/1cfe/fusion-tea/.env && set +a`, parse check `uv run python -m syside check`.
+  - Current executed headline (WI-027, unchanged to the cent from WI-025): total $12,638,857,665.74, LCOE $203.647152/MWh, p_net 915.081088 MW, q_eng 6.606662, magnet $6,323,469,946.33 (50.03%).
+  - Next free SV: **SV-034**. MR-4 citations mandatory for every new quantitative value; concept-agnostic calc defs in `models/library/`, Stellaris bindings in `models/designs/stellarator_09/` (MR-3).
+- **[AGENT] (orchestrator orientation, design verifies):** the mechanism is expected to follow the WI-025 pattern — new library calc defs reproducing 1cfe's account formulas as functions of the model's computed powers/geometry, wired in the generic plant, bound by the Stellaris instance, plus handshake-side injection-map shrinkage. **Expect the Stellaris design-point headline to move** (new real accounts enter the rollup — a re-baseline like WI-025, not a regression); spec must state this expectation and the SV treatment explicitly. "Injected in the handshake" ≠ "unmodeled" for CAS21/CAS10/CAS70 (already forward-computed, WI-025) — do not re-model those.
+
+## Stage log
+
+- 2026-07-20: WI-028 registered (`pm add-item`, standalone, P0). Brief committed; spec stage launching.
