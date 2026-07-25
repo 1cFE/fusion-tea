@@ -44,3 +44,6 @@ burn_fraction,models/designs/stellarator_09/stellarator_plant.sysml,instance_bin
 fuel_recovery,models/designs/stellarator_09/stellarator_plant.sysml,instance_binding,,MR-WI029-3,codebase,1costingFE @ 0254385,steady_state_stellarator.yaml:65,,,2026-07-25
 fluence_limit,models/designs/stellarator_09/stellarator_plant.sysml,instance_binding,,MR-WI029-2,codebase,1costingFE @ 0254385,costing_constants.yaml:153 (fluence_limit_dt 18.0),,,2026-07-25
 ash_frac,models/designs/stellarator_09/stellarator_plant.sysml,instance_binding,,MR-WI029-2,codebase,1costingFE @ 0254385,physics.py:31-33; physics.py:177-179,,,2026-07-25
+'Annual Cost Rollup',models/library/analyses/mfe_account_costs.sysml,calc_def,,MR-WI029-4,codebase,1costingFE @ 0254385,model.py:1483-1605; economics.py:88-92,,,2026-07-25
+'1cfe-Form Capital Charge',models/library/analyses/mfe_account_costs.sysml,calc_def,,MR-WI029-4,codebase,1costingFE @ 0254385,costs.py:547-556,,,2026-07-25
+'1cfe-Form LCOE',models/library/analyses/mfe_account_costs.sysml,calc_def,,MR-WI029-4,codebase,1costingFE @ 0254385,economics.py:88-92,,,2026-07-25
