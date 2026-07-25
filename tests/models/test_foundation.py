@@ -309,14 +309,24 @@ class TestFoundationIntegration:
         assert len(errors) == 0, f"Foundation has {len(errors)} parse errors: {errors}"
 
     def test_foundation_element_counts(self, foundation_model):
-        """Foundation should have expected element counts."""
+        """Foundation should contain its core concept-agnostic definitions.
+
+        The foundation library was slimmed to the shared base interfaces
+        (WI-006+): the 'Costed Component' part def, the 'Economic Parameter'
+        attribute def, and the 'CAS Scope' enum. The old types/units/materials
+        files (13 enums, 6 units, 12 materials) were removed. Assert the
+        current definitions are present rather than the stale counts.
+        """
         model, _ = foundation_model
         syside = get_syside()
 
-        enum_defs = list(model.elements(syside.EnumerationDefinition))
-        attr_defs = list(model.elements(syside.AttributeDefinition))
-        part_defs = list(model.elements(syside.PartDefinition))
+        enum_names = {e.name for e in model.elements(syside.EnumerationDefinition) if e.name}
+        attr_names = {a.name for a in model.elements(syside.AttributeDefinition) if a.name}
+        part_names = {p.name for p in model.elements(syside.PartDefinition) if p.name}
 
-        assert len(enum_defs) >= 13, f"Expected >= 13 enums, found {len(enum_defs)}"
-        assert len(attr_defs) >= 6, f"Expected >= 6 attr defs, found {len(attr_defs)}"
-        assert len(part_defs) >= 12, f"Expected >= 12 part defs, found {len(part_defs)}"
+        assert "CAS Scope" in enum_names, \
+            f"Expected 'CAS Scope' enum def, found {enum_names}"
+        assert "Economic Parameter" in attr_names, \
+            f"Expected 'Economic Parameter' attribute def, found {attr_names}"
+        assert "Costed Component" in part_names, \
+            f"Expected 'Costed Component' part def, found {part_names}"
