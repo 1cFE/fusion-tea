@@ -31,6 +31,10 @@
   - Next free SV: **SV-035**. Known toolchain quirks: `pm update-validation` corrupts rows containing `|` (edit the matrix row directly); `pm close-item` crashes on frontmatter values containing colons (keep frontmatter values plain).
 - **[AGENT] (orchestrator orientation — design verifies, does not inherit as fact):** expected shape is WI-025/WI-028-pattern library calcs for CAS70-levelized and CAS80 (1cfe `costs.py` / `economics.py` formulas), an LCOE-side reconciliation consistent with Option C, and possibly a handshake-comparable LCOE channel computed in 1cfe's form at the handshake point. The headline may move again (levelized O&M + fuel enter LCOE) — a re-baseline like WI-028, stated in the spec with SV-035 treatment. The design-point DCF convention vs the handshake-point 1cfe form is exactly where Align ruling 3's gate may trigger — the design rules mechanical-vs-choice with evidence, like WI-028's D4 did.
 
+## Owner gate ruling ([OWNER] 2026-07-25, post-design)
+
+- **IDC convention: Option (ii) — mapped comparison channel.** The model's DCF headline `idc_factor` stays untouched (Option C stands); a second, 1cfe-form CAS90/LCOE comparison channel (`CRF · (overnight + CAS60)`, reusing the Item-3 CAS60 reported line) is added and compared under A-2 at the handshake point; the headline convention difference is itemized in the A-4 table with its exact magnitude.
+
 ## Stage log
 
 - 2026-07-20: WI-029 registered (`pm add-item`, standalone, P0). Brief committed; spec stage launching.
