@@ -213,6 +213,8 @@ Design-point headline **re-baselined** (not a regression): total capital $16,145
 
 **Objective**: Criterion 5 — at least one parameter sweep and one A/B instance-swap study run as `teax` study definitions, constraint verdicts classifying points, no hand-rolled sweep loops.
 
+**Pick-up notes** (2026-07-25): (1) WI-026 (pytest baseline re-record) is slotted before this item per the [OWNER] board ruling. (2) WI-029 audit follow-up, [OWNER]-accepted: the CAS71 `'Levelized Annual Cost'` calc omits 1cfe's `i ≈ g` guard branch — inert at pinned points, but a discount-rate sweep exercises it; if this item sweeps discount rate, address it first (small bounded fix in the library def + oracle mirror).
+
 **Scope**:
 1. Define the first study round (this absorbs the concept's "stage 3⇄4 interleave" spec need): which variables sweep, what the A/B swap is (magnet technology or blanket material are the concept's examples), and what result pattern triggers a research/refinement round.
 2. Run both studies through the study layer's delivered execution semantics (prepared lists/grids; resume/crash-safety is the upstream epic's acceptance, not re-proven here).
