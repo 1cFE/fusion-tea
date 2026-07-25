@@ -1,7 +1,7 @@
 ---
-Status: draft
+Status: approved
 Created: 2026-07-20
-Updated: 2026-07-20
+Updated: 2026-07-25
 Related Artifacts:
   Spec: ./spec.md
   Brief: ../../orchestration/handshake-lcoe-construction.md
@@ -17,12 +17,12 @@ WI-028 brought the model's overnight/total-capital assembly under the 1costingFE
 - **CAS71** (levelized O&M) — the WI-025 unlevelized annual O&M run through 1cfe's growing-annuity levelization. Flat-Real arithmetic → codegen.
 - **CAS72** (levelized scheduled replacement of first-wall/blanket + divertor) — the larger half of CAS70 ($82.23M), absent from the model today. Its closed form is flat-Real **except one `ceil`**, so it lands on the WI-022 handwritten rung (manual_required + oracle mirror), forward-computed and under the A-2 bar.
 - **CAS80** (levelized DT fuel) — small ($0.769M), flat-Real → codegen, reusing the CAS71 levelization wrapper.
-- **CAS90 / IDC** — the model and 1cfe fold construction-period financing into the annual capital charge with **different multipliers** (model 1.310796 vs 1cfe 1.282476). Aligning the end-to-end LCOE is a **genuine convention choice**, not mechanical fall-out — a reserved gate parked for owner (Align ruling 3), with options and a recommendation below.
+- **CAS90 / IDC** — the model and 1cfe fold construction-period financing into the annual capital charge with **different multipliers** (model 1.310796 vs 1cfe 1.282476). Aligning the end-to-end LCOE was ruled a **genuine convention choice**, not mechanical fall-out, and went to the owner as a reserved gate (Align ruling 3). **RULED Option (ii) — mapped comparison channel** ([OWNER] 2026-07-25): the DCF headline `idc_factor` stays untouched and a 1cfe-form CAS90/LCOE comparison channel is added, reusing the Item-3 CAS60 reported line.
 - **CAS10** — the pre-existing +$16.0M/+86.5% divergence resolves to **one clean error** (FOAK studies 20.0 frozen where the handshake runs NOAK 4.0); the bounded fix reconstructs 1cfe's 18.5 with zero residual. The owner stop condition does not fire.
 
 The deliverable is the **criterion-3 verdict in the A-4 form** — every modeled account under A-2, the remainder itemized with signed magnitudes, the residual LCOE gap reconciling to that sum.
 
-**One gate is open** (IDC/CAS90 convention). All IDC-independent design is complete; the gate is presented as a question in the final message, per the non-interactive protocol.
+**All gates ruled.** The IDC/CAS90 convention gate was ruled Option (ii) by the owner on 2026-07-25 (`work/orchestration/handshake-lcoe-construction.md`, "Owner gate ruling"); the design is resolved to that option throughout and is ready for `/plan-model`.
 
 ---
 
@@ -120,14 +120,24 @@ Handshake point: p_net 1000.0, availability **0.9**, n_mod 1, lifetime 30, const
 
 ---
 
-## IDC / LCOE reconciliation — RESERVED GATE (MR-WI029-4, Align ruling 3)
+## IDC / LCOE reconciliation — RULED: Option (ii), mapped comparison channel (MR-WI029-4, Align ruling 3)
 
 **Ruling: genuine convention choice, not mechanical fall-out. Parked for owner with options.** This mirrors WI-028's D4 finding (CAS60 was also ruled a genuine choice), and the reason is the same: the two sides fold construction-period financing into the annual capital charge with **different multipliers**, and Option C deliberately left the model's `idc_factor` untouched.
 
 - **1cfe:** `total_capital = overnight + CAS60`, `CAS60 = f_idc·overnight`, `f_idc = ((1+i)^T−1)/(i·T)−1` (uniform-spend closed form) → IDC multiplier **1.282476**; `CAS90 = CRF·total_capital = 813.587`.
 - **model:** `annual_capital = overnight · (1+d)^(Yc/2) · CRF` (even-spend midpoint) → IDC multiplier **1.310796**; the model's DCF LCOE keeps this (`mfe_lcoe_dcf.sysml:47-52`).
 
-The multipliers differ by **+2.208%** on the capital charge (model DCF-equivalent CAS90 = 831.553 vs 1cfe 813.587) → ≈+1.8% on LCOE. This is not a mechanical consequence of the Option-C mapping — it is a real convention difference, and adopting 1cfe's form would change the model's own headline LCOE. **→ reserved gate.** The options and my recommendation are in the final message; the design below is built to satisfy either option (CAS71/72/80 are IDC-independent; only the CAS90/LCOE channel wiring depends on the pick).
+The multipliers differ by **+2.208%** on the capital charge (model DCF-equivalent CAS90 = 831.553 vs 1cfe 813.587) → ≈+1.8% on LCOE. This is not a mechanical consequence of the Option-C mapping — it is a real convention difference, and adopting 1cfe's form would change the model's own headline LCOE. It therefore went to the owner as a reserved gate.
+
+**RULED: Option (ii) — mapped comparison channel** ([OWNER] 2026-07-25, recorded at `work/orchestration/handshake-lcoe-construction.md`, "Owner gate ruling"). Concretely:
+
+- The model's **DCF headline stays untouched** — `idc_factor = (1+d)^(Yc/2)` at `mfe_lcoe_dcf.sysml:47-52` is not modified, and `total_capital = overnight_capital` (Option C stands). The model's headline LCOE convention does not change.
+- A **1cfe-form CAS90 comparison channel** is added: `cas90_1cfe = CRF·(overnight_capital + CAS60)`, **reusing the Item-3 `'IDC Closed-Form Cost'` reported line** for CAS60 rather than recomputing `f_idc`. At the handshake point this reproduces 813.587 and comes under A-2.
+- A **1cfe-form LCOE comparison channel** follows: `lcoe_1cfe = (cas90_1cfe + cas70 + cas80)·1e6/(8760·p_net·n_mod·avail)`, compared under A-2 at the handshake point.
+- Two LCOE channels coexist by design: **headline (DCF)** and **comparison (1cfe-form)**. The trap table asserts the headline `idc_factor` is unchanged and that CAS60 is still excluded from `total_capital` — together these guard the double-count hazard.
+- The **headline convention difference is itemized in the A-4 table with its exact magnitude**: the model's DCF multiplier 1.310796 vs 1cfe's 1.282476, i.e. a DCF-equivalent CAS90 of 831.553 vs 1cfe 813.587 = **+$17.966M (+2.208%) on the annual capital charge**, ≈+1.8% on LCOE. This is a convention line, not an error — it is explained-and-kept.
+
+**Rejected alternatives** (decision record, not instructions): **(i) adopt-1cfe-form** — model drops `idc_factor` and sets `total_capital = overnight+CAS60`; one clean convention but it changes the model's own headline LCOE. **(iii) swap-multiplier-only** — replace the even-spend `idc_factor` with 1cfe's uniform-spend `f_idc`, keeping a single channel; changes the headline value but not its structure. Both were declined in favour of leaving the headline convention intact.
 
 ---
 
@@ -177,12 +187,16 @@ cas72_calc : 'Levelized Replacement Cost' ( cost_per_event, FPY inputs, i, n )  
 cas70      = cas71 + cas72
 ```
 
-`cost_per_event` for CAS72 sums the modeled replaceable accounts C220101 (blanket, `mfe_account_costs`) + C220108 (divertor) × n_mod — both are already modeled (WI-028 cas22 tail / core). The LCOE assembly then depends on the ruled IDC option:
+`cost_per_event` for CAS72 sums the modeled replaceable accounts C220101 (blanket, `mfe_account_costs`) + C220108 (divertor) × n_mod — both are already modeled (WI-028 cas22 tail / core). The LCOE tail follows the ruled **Option (ii)**:
 
-- **Option (ii) — mapped comparison (recommended):** model headline LCOE keeps its DCF `idc_factor` untouched (Option C stands); a separate **1cfe-form CAS90 channel** = `CRF·(overnight + CAS60)` reuses WI-028's already-reported `'IDC Closed-Form Cost'` (CAS60) line; the handshake compares a 1cfe-form LCOE `= (cas90_1cfe + cas70 + cas80)·1e6/(8760·p_net·avail)` at the handshake point. Two LCOE channels: one headline (DCF), one comparison (1cfe-form). No model headline-convention change.
-- **Option (i) — adopt 1cfe form:** the model drops `idc_factor`, sets `total_capital = overnight + CAS60`, `CAS90 = CRF·total_capital`; the model's own headline LCOE convention changes. Single channel.
+```
+# headline (unchanged, DCF): lcoe_calc : 'LCOE DCF' keeps idc_factor, total_capital = overnight_capital
+cas90_1cfe = crf * (overnight_capital + idc.cost)      # idc.cost = Item-3 CAS60 reported line
+lcoe_1cfe  = (cas90_1cfe + cas70 + cas80) * 1e6
+             / (8760 * p_net * n_mod * availability)   # comparison channel
+```
 
-Both are IDC-independent for CAS71/72/80; only the CAS90/LCOE tail differs. The design is complete for CAS71/72/80/CAS10 regardless; the CAS90/LCOE tail is one small wiring block selected by the gate.
+`crf` is the same capital-recovery factor the DCF core already computes (`mfe_lcoe_dcf.sysml:42-43`); the comparison channel reuses it rather than redefining CRF. `idc.cost` is WI-028's existing reported CAS60 line — no new IDC arithmetic. Both new channels are flat-Real (Rung A, codegen). The headline `'LCOE DCF'` usage is untouched.
 
 ### D2b — Staged-twin propagation (D2b inherited, binding)
 
@@ -193,7 +207,7 @@ Every `.sysml` edit lands **region-identical in both trees**: canonical `models/
 The emitter already solves the point **with inflation** and already emits `cas70/cas71/cas72/cas80/cas90` in `costs_musd` — the oracle values exist; they are simply not yet compared. Additions:
 
 - **`emit_1cfe_point.py` `refs`:** the handshake-point O&M base is **already emitted** as `annual_om_unlevelized_musd` = 54.900 (`emit_1cfe_point.py:75`) — trap 1b asserts against it directly, no new ref needed. Add `inflation_rate` (0.02, currently only in `target`), the DT fuel constants (`cost_per_rxn` or its components `M_D_KG·u_deuterium`, `M_Li6_KG·u_li6`, `q_eff=Q_DT`, `MEV_TO_JOULES`, `burn_fraction`, `fuel_recovery`), and the CAS72 replacement params (`fluence_limit_dt`, replaceable-account ids) — each `float(cc.<attr>)` so the handshake both feeds them (×conversions) and asserts them against 1cfe config (A-5).
-- **`handshake_1costingfe.py`:** add `CH` channels for `cas71`, `cas72`, `cas80` (and the 1cfe-form `cas90`/`lcoe` per gate); `lcoe` channel already exists. Add the injected inputs (`inflation_rate`, fuel constants) to the `set_1cfe_inputs` update blocks (same `f"{P}<module>__<input>"` pattern as availability at `:296`). Add A-2 comparison rows for cas71/cas72/cas80/cas90/lcoe. **Comparison logic untouched** — `rel(a,b)` and the row-loop machinery are generic (`:410-516`); only new rows + inputs.
+- **`handshake_1costingfe.py`:** add `CH` channels for `cas71`, `cas72`, `cas80`, and the 1cfe-form `cas90_1cfe` / `lcoe_1cfe` comparison channels (Option ii); the headline `lcoe` channel already exists and stays pointed at the DCF headline. Add the injected inputs (`inflation_rate`, fuel constants) to the `set_1cfe_inputs` update blocks (same `f"{P}<module>__<input>"` pattern as availability at `:296`). Add A-2 comparison rows for cas71/cas72/cas80/cas90/lcoe. **Comparison logic untouched** — `rel(a,b)` and the row-loop machinery are generic (`:410-516`); only new rows + inputs.
 
 ### D4 — Trap assertions (A-5, MR-WI029-8)
 
@@ -204,7 +218,7 @@ Every new mapping asserted in the handshake trap table (`trap(name, ok, detail)`
 2. **CAS72 replacement chain:** replaceable set = {C220101, C220108}; fluence_limit_dt = 18.0; q_n from modeled p_neutron/firstwall_area; **n_rep = 4** (assert the handwritten rung's computed integer); clip inert (assert FPY ∈ [0.5, n·avail]).
 3. **Fuel constants:** cost_per_rxn = M_D·u_D + M_Li6·u_Li6; q_eff = Q_DT = 17.58; burn correction ×1.19; assert each against `cc`.
 4. **Availability injection:** assert 0.9 (handshake) is injected over the model's 0.85 into CAS72 and the LCOE denominator — the duty-7 trap made explicit.
-5. **IDC (per gate):** if Option (ii), assert `cas90_1cfe = CRF·(overnight+CAS60)` and that the model headline `idc_factor` is unchanged (guards double-count).
+5. **IDC (Option ii, ruled):** assert `cas90_1cfe = CRF·(overnight_capital + CAS60)` and that it reads the Item-3 CAS60 reported line; assert the model headline `idc_factor` is **unchanged** at `(1+d)^(Yc/2)` and that CAS60 remains excluded from `total_capital` (`total_capital == overnight_capital`). Together these guard the double-count hazard across the two coexisting LCOE channels.
 
 ### D5 — CAS10 bounded fix
 
@@ -214,8 +228,8 @@ Per the CAS10 ruling: `precon_fixed_base` 32000000.0 → 16000000.0 (both trees)
 
 Extend `HANDSHAKE_REPORT.md` (currently stale, dated Jul 18 / pre-WI-028 numbers — re-baseline it) or a named successor, referenced from epic Item 4 / criterion 3. It contains:
 
-1. **Per-account A-2 pass table:** every modeled account (WI-025/WI-028 set + CAS71 + CAS80 + **CAS72 forward-computed** + CAS90 per gate) with |rel dev| vs 1cfe float32 and pass/fail at 1e-6.
-2. **Signed-magnitude remainder itemization:** each non-bar account with 1cfe value, model value (or "structurally absent"), signed dollar gap, one-line reason. After this item the standing remainders are **C220106_pump $0.721M** (explained, shell-only vessel calc) and the **total_capital/CAS90 convention line** (per the IDC gate); **CAS10 closes as error**; **CAS72 leaves the remainder** (now forward-computed).
+1. **Per-account A-2 pass table:** every modeled account (WI-025/WI-028 set + CAS71 + CAS80 + **CAS72 forward-computed** + the 1cfe-form CAS90 comparison channel) with |rel dev| vs 1cfe float32 and pass/fail at 1e-6.
+2. **Signed-magnitude remainder itemization:** each non-bar account with 1cfe value, model value (or "structurally absent"), signed dollar gap, one-line reason. After this item the standing remainders are **C220106_pump $0.721M** (explained, shell-only vessel calc) and the **headline IDC-convention line under Option (ii)** — the model's DCF multiplier 1.310796 vs 1cfe's 1.282476, itemized with its exact magnitude **+$17.966M (+2.208%)** on the annual capital charge (DCF-equivalent CAS90 831.553 vs 1cfe 813.587), ≈+1.8% on LCOE, explained-and-kept. **CAS10 closes as error**; **CAS72 leaves the remainder** (now forward-computed). Note the 1cfe-form comparison channel itself comes under A-2, so the convention line is a headline-vs-comparison difference, not a handshake gap.
 3. **Reconciliation arithmetic:** the residual end-to-end LCOE gap = the itemized-remainder sum within ≤1e-6 relative to LCOE — shown, not asserted.
 4. **Verdict:** met or honestly failed.
 
@@ -258,9 +272,9 @@ This item's pins: **sysml-codegen `06d95f8`, teax `07eb0ac`, agentic-mbse `4c18d
 
 1. **Parse (L1-3):** new calc defs + restructured plant parse clean. Flat-Real defs **DONE this stage** (Report). The handwritten-rung def parses (WI-022 precedent).
 2. **Codegen capture (first plan checkpoint):** at the pins (worktree checkout), after the D2b twin edit + mirroring diff gate, recapture `stellarator.snapshot.json` from the staged tree; `sysml-codegen generate --from-snapshot`; confirm the two flat-Real defs lower and the CAS72 def routes to `MANUAL_REQUIRED` with a stub; fill the handwritten impl **carrying 1cfe's `clip`/inner-`max`/outer-`max` guards verbatim** (not point-inert no-ops), and give the oracle mirror the identical guarded chain; confirm `preserve_handwritten` keeps it across regen. Spot-check a guard-live input (e.g. a wall-loading value that drives FPY to the cap or `ceil(n/t)−1 ≤ 0`) to confirm impl and mirror still agree where the guards bind — proving the guards are structural, not decorative.
-3. **A-2 per-account (SV-035):** cas71, cas72, cas80 (+ cas90 per gate) under |rel dev| ≤ 1e-6 vs 1cfe float32 at the handshake point. CAS72's handwritten impl matches its oracle mirror at rel 1e-9.
+3. **A-2 per-account (SV-035):** cas71, cas72, cas80, cas90_1cfe and lcoe_1cfe under |rel dev| ≤ 1e-6 vs 1cfe float32 at the handshake point. CAS72's handwritten impl matches its oracle mirror at rel 1e-9.
 4. **CAS10 closure:** model CAS10 → 18.5 exactly (residual 0) at the handshake point.
-5. **Design-point re-baseline (MR-WI029-9):** record the new Stellaris headline — LCOE moves up (levelized O&M + CAS72 + CAS80 enter); total_capital moves down $16M (CAS10 fix); oracle bit-exact rel 1e-9 at the new point. **The recorded headline LCOE depends on the ruled IDC option — name it once ruled: `[IDC-GATE → option __]`.** Under Option (ii)/(iii) the model keeps its DCF headline (the design-point LCOE re-baselines only from the new accounts + CAS10 fix); under Option (i) the headline convention *also* changes (drops `idc_factor`, so the headline LCOE shifts an additional ≈−1.4% from the multiplier swap). Record the design-point LCOE under the ruled option — or both, if the owner wants the delta visible.
+5. **Design-point re-baseline (MR-WI029-9):** record the new Stellaris headline — LCOE moves up (levelized O&M + CAS72 + CAS80 enter); total_capital moves down $16M (CAS10 fix); oracle bit-exact rel 1e-9 at the new point. **Recorded under the ruled IDC Option (ii)**: the model's headline LCOE **convention is unchanged** (`idc_factor` untouched, `total_capital = overnight_capital`), so the design-point headline moves for exactly two reasons — CAS71/CAS72/CAS80 entering the LCOE numerator (up), and the CAS10 error fix taking $16M off total_capital (down). No multiplier-swap component. The 1cfe-form comparison channel is reported alongside but is **not** the design-point headline.
 6. **G-8 re-baseline:** `handshake_comparison.json` gains the new rows, re-baselined as an explicit commit; comparison logic untouched.
 7. **Standing bars:** oracle rel 1e-9; WI-022 sha256 `8d2357…794a9f` survives regen (now joined by the CAS72 impl's sha); IFE A/B byte-exact; pytest 11/18/14/0; L1=0; PROTOCOL sealed.
 
@@ -268,7 +282,7 @@ This item's pins: **sysml-codegen `06d95f8`, teax `07eb0ac`, agentic-mbse `4c18d
 
 ## Validation report (design stage)
 
-- **Parse:** `prototype/wi029_lcoe_construction.sysml` — `'Levelized Annual Cost'` + `'DT Fuel Cost'` (the two flat-Real Rung-A defs) → **Checks passed!** (license sourced from `~/1cfe/fusion-tea/.env`).
+- **Parse:** `work/active/WI-029_handshake-lcoe-construction/prototype/wi029_lcoe_construction.sysml` — `'Levelized Annual Cost'` + `'DT Fuel Cost'` (the two flat-Real Rung-A defs) → **Checks passed!** (license sourced from `~/1cfe/fusion-tea/.env`).
 - **Assembly reproduction:** all six 1cfe outputs (cas71/72/70/80/90/lcoe) re-derived independently by calling the pinned functions and matched to `onecfe_point.json` to float32 precision (re-derivation section).
 - **CAS72 envelope:** codegen allow-list confirmed `+ − * / **` only (`calc_compat_renderer.py:39-46`); `ceil`/`clip`/`max` all break codegen, only `ceil` numerically live at the point — this justifies the manual rung. The handwritten impl **and** oracle mirror carry `clip`/inner-`max`/outer-`max` verbatim (MF-1), so sweep-extreme correctness is structural. Mechanism confirmed against the WI-022 close (`preserve_handwritten`, oracle mirror).
 - **CAS10:** reconstruction test residual 0.0 (studies 20→4).
@@ -282,7 +296,7 @@ This item's pins: **sysml-codegen `06d95f8`, teax `07eb0ac`, agentic-mbse `4c18d
 **Every `.sysml` edit lands region-identical in BOTH trees (D2b). The staged tree is what the snapshot recapture reads.**
 
 1. **Library (both trees):** add `'Levelized Annual Cost'`, `'DT Fuel Cost'`, `'Levelized Replacement Cost'` to `mfe_account_costs.sysml` + twin (`models/analyses/...`).
-2. **Generic plant (both trees):** wire cas71_calc / fuel_calc / cas80_calc / cas72_calc into `mfe_plant.sysml`; `cas70 = cas71+cas72`; LCOE tail per the ruled IDC option.
+2. **Generic plant (both trees):** wire cas71_calc / fuel_calc / cas80_calc / cas72_calc into `mfe_plant.sysml`; `cas70 = cas71+cas72`; add the Option-(ii) `cas90_1cfe` / `lcoe_1cfe` comparison channels reusing the Item-3 CAS60 line; leave the DCF headline (`idc_factor`, `total_capital`) untouched.
 3. **Instance (both trees):** bind `inflation_rate` (0.02), DT fuel constants, `fluence_limit_dt` in `stellarator_plant.sysml`, MR-4 cited; **CAS10 fix** `precon_fixed_base` 32M→16M + doc amendments.
 4. **Pins + mirroring diff gate + recapture:** checkout worktrees at the four pins; staged-vs-canonical diff clean; recapture snapshot from staged tree; codegen-capture checkpoint (flat-Real lower; CAS72 → MANUAL_REQUIRED); fill + oracle-mirror the CAS72 handwritten impl.
 5. **Harness:** `emit_1cfe_point.py` refs; `handshake_1costingfe.py` channels + injected inputs + rows + traps (D3/D4).
@@ -293,7 +307,7 @@ This item's pins: **sysml-codegen `06d95f8`, teax `07eb0ac`, agentic-mbse `4c18d
 ## Risks
 
 1. **[medium] CAS72 handwritten rung fill + oracle mirror.** The `ceil` forces the manual rung; the impl must reproduce the closed form exactly and the oracle mirror must match at 1e-9. Mitigation: WI-022 precedent is the exact pattern; the full numeric chain is re-derived here to check against.
-2. **[medium] IDC gate blocks the end-to-end verdict.** If the owner defers, the CAS90/LCOE row waits on the ruling. Mitigation: CAS71/72/80/CAS10 are IDC-independent and complete now; only the CAS90/LCOE tail is gated. Recommend Option (ii) (mapped comparison) — reuses Option C's CAS60 line, no headline-convention change, lowest risk.
+2. **[low, retired] IDC gate.** Ruled Option (ii) by the owner 2026-07-25 — no longer blocking. Residual risk is the double-count hazard from two coexisting LCOE channels (headline DCF + 1cfe-form comparison). Mitigation: trap 5 asserts `idc_factor` unchanged and `total_capital == overnight_capital`, so CAS60 cannot enter the headline capital base.
 3. **[high, inherited] Staged-twin skip.** Canonical-only edits → silent wrong result. Mitigation: D2b both-trees + mirroring diff gate + recapture from staged tree.
 4. **[medium] Pin drift.** Three repos are off-pin with no worktree at the pin. Mitigation: explicit worktree checkout at the pins before codegen/exec (A-6); lowering files verified byte-identical to HEAD.
 5. **[low] n_rep step-function at the design point.** Computed live in the handwritten rung (n_rep=4 at both points, checked); never frozen. Mitigation: oracle mirror recomputes each run.
@@ -308,4 +322,4 @@ This item's pins: **sysml-codegen `06d95f8`, teax `07eb0ac`, agentic-mbse `4c18d
 - **Model (canonical + staged twin, D2b):** `models/library/analyses/{mfe_account_costs,mfe_lcoe_dcf}.sysml`, `models/designs/{generic_mfe/mfe_plant,stellarator_09/stellarator_plant}.sysml` + `exploration/stellarator_e2e/models/...` twins; snapshot `.../stellarator.snapshot.json`.
 - **Harness:** `exploration/stellarator_e2e/{emit_1cfe_point.py:296, handshake_1costingfe.py:410-616, handshake_comparison.json@feb13ff3, onecfe_point.json, HANDSHAKE_REPORT.md, verify_stellaris.py, run_stellaris.py}`.
 - **Requirements:** MR-WI029-1..11; anchor A-2/A-3/A-4/A-5/A-6 + G-8; MR-3, MR-4; Align rulings 1–5.
-- **Prototype:** `prototype/wi029_lcoe_construction.sysml`.
+- **Prototype:** `work/active/WI-029_handshake-lcoe-construction/prototype/wi029_lcoe_construction.sysml`.
