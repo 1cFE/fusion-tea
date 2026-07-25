@@ -9,7 +9,7 @@ Complete all stages in order for a production-ready system.
 
 **Objective**: Implement each calculation definition in its handwritten file.
 
-**Total**: 1 functions to implement
+**Total**: 2 functions to implement
 
 **Instructions for each function**:
 1. Open the SysML source file at the line number shown below
@@ -27,8 +27,9 @@ Complete all stages in order for a production-ready system.
 | Status | Module | Function | SysML Source | Complexity |
 |--------|--------|----------|--------------|------------|
 | [ ] | DT_Fusion_Power | `run_dt_fusion_power` | `root-0/analyses/mfe_plasma_scaling.sysml:125` | High |
+| [ ] | Levelized_Replacement_Cost | `run_levelized_replacement_cost` | `root-0/analyses/mfe_account_costs.sysml:743` | High |
 
-**9 aggregation module(s) auto-implemented** (not included in manual count above).
+**10 aggregation module(s) auto-implemented** (not included in manual count above).
 
 ---
 
@@ -53,7 +54,7 @@ pytest tests/test_implementations_runnable.py -v
 All tests should pass (or pytest.skip for NotImplementedError stubs)
 
 **Test Coverage**:
-- 1 implementation functions
+- 2 implementation functions
 - Each function tested for: imports, signature, return type
 - Tests tolerate NotImplementedError (pass before implementation)
 - Tests verify return types (pass after implementation)
@@ -88,7 +89,7 @@ All tests should pass (or pytest.skip for NotImplementedError stubs)
 ## Completion Criteria
 
 The implementation is complete when:
-- Stage 1: All 1 functions implemented
+- Stage 1: All 2 functions implemented
 - Stage 2: All validations pass
 - Stage 3: Integration tests pass
 

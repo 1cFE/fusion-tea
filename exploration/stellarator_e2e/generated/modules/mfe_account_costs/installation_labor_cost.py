@@ -22,9 +22,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:479
+SysML Source: root-0/analyses/mfe_account_costs.sysml:483
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:479
+SysML Source: root-0/analyses/mfe_account_costs.sysml:483
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/installation_labor_cost_impl.py
@@ -70,9 +70,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:479
+SysML Source: root-0/analyses/mfe_account_costs.sysml:483
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:479
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:483
 
     Calculation Specification:
         installation_frac = 0.14

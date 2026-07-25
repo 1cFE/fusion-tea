@@ -27,9 +27,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:430
+SysML Source: root-0/analyses/mfe_account_costs.sysml:434
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:430
+SysML Source: root-0/analyses/mfe_account_costs.sysml:434
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/plant_power_law_cost_impl.py
@@ -86,9 +86,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:430
+SysML Source: root-0/analyses/mfe_account_costs.sysml:434
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:430
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:434
 
     Calculation Specification:
         n_mod = 1.0

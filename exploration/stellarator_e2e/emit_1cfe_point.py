@@ -3,6 +3,9 @@ import json, math, sys
 from costingfe import ConfinementConcept, CostModel, Fuel
 from costingfe.layers.geometry import RadialBuild, compute_geometry
 from costingfe.types import CoilMaterial
+from costingfe.layers.physics import (
+    E_ALPHA_DT, MEV_TO_JOULES, M_DEUTERIUM_KG, M_LI6_KG, Q_DT,
+)
 from dataclasses import fields as dc_fields
 
 model = CostModel(concept=ConfinementConcept.STELLARATOR, fuel=Fuel.DT)
@@ -85,7 +88,22 @@ out = {
            "tax_frac": float(cc.tax_frac),
            "construction_insurance_frac": float(cc.construction_insurance_frac),
            "startup_fuel_dt": float(cc.startup_fuel(Fuel.DT)),
-           "decom_provision_dt": float(cc.decom_provision(Fuel.DT))},
+           "decom_provision_dt": float(cc.decom_provision(Fuel.DT)),
+           # WI-029 CAS71/CAS80/CAS72 config refs (M$/unitless/physical), so the
+           # handshake can both FEED them and ASSERT them against cc (A-5).
+           "inflation_rate": float(p["inflation_rate"]),
+           # CAS80 DT fuel chemistry (costs.py:476-544 DT branch)
+           "M_D_KG": float(M_DEUTERIUM_KG), "u_deuterium": float(cc.u_deuterium),
+           "M_Li6_KG": float(M_LI6_KG), "u_li6": float(cc.u_li6),
+           "cost_per_rxn": float(M_DEUTERIUM_KG * cc.u_deuterium + M_LI6_KG * cc.u_li6),
+           "q_eff_dt": float(Q_DT), "MEV_TO_JOULES": float(MEV_TO_JOULES),
+           "burn_fraction": float(p["burn_fraction"]),
+           "fuel_recovery": float(p["fuel_recovery"]),
+           # CAS72 scheduled-replacement params
+           "fluence_limit_dt": float(cc.fluence_limit(Fuel.DT)),
+           "replaceable_accounts": list(cc.replaceable_accounts),
+           "ash_frac_dt": float(E_ALPHA_DT / Q_DT),
+           "firstwall_area": float(geo.firstwall_area)},
   "pb_params": {k: float(p[k]) for k in
     ["p_input","mn","eta_th","eta_p","f_sub","p_trit","p_house","p_cryo",
      "p_coils","p_cool","p_pump","p_ecrh"] if k in p},

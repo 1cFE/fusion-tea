@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Epic: MFE Cost Modeling — Tokamak & Stellarator
 Owner: reid
 Created: 2026-07-13
-Updated: 2026-07-13
+Updated: '2026-07-25'
 ---
 
 # WI-018: Concept-09 QI Stellarator Initial Model
@@ -83,3 +83,9 @@ Implemented. Concrete instance `part stellaris : 'MFE Power Plant'` in `models/d
 - **Mapping traps**: r_coil=3.20 m (radial-build vessel_or), sigma_v=5.985e-23 m³/s (0D-effective D-T reactivity reproducing 2700 MW at vol-avg density — a documented 0D limitation; profile integration is Stage-3), B=5.86 T (loop-center, not 24.9 T peak-on-winding).
 - **Documented fidelity gaps for Stage 3**: torus-volume formula 564 m³ vs Stellaris 448 m³ (R/a source rounding / stellarator shaping); 0D reactivity tuned to design power; buildings/preconstruction/special-materials/O&M are pass-throughs computed from admissible 1costingFE functions at the design point.
 - **Validation**: Level 1 clean; L6 binding/constraint/redef-drop = 0; abstract-instantiation flag cleared. Remaining L6: the WI-010 per-account rollup "references design attributes" (codegen watch item, handled at the codegen step).
+
+---
+
+## Disposition — closed as superseded ([OWNER] 2026-07-25)
+
+Closed under the demo epic's Board-housekeeping ruling (option c). The Stellaris instance this item set out to build exists (`models/designs/stellarator_09/`) and carries the demo headline; the item was spec-only, overtaken by the WI-019–028 corrective run whose audited records are the effective completion evidence.

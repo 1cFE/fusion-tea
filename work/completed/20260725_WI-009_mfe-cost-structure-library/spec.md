@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Epic: MFE Cost Modeling — Tokamak & Stellarator
 Owner: reid
 Created: 2026-07-03
-Updated: 2026-07-13
+Updated: '2026-07-25'
 ---
 
 # WI-009: MFE Cost Structure Library
@@ -266,3 +266,9 @@ Exact file grouping is a design choice (some of the analyses files may merge); t
 - **IFE precedent**: `work/completed/20260302_WI-006_ife-cost-structure-library/spec.md`
 - **Design**: `work/active/WI-009_mfe-cost-structure-library/design.md` (to be created)
 - **Plan**: `work/active/WI-009_mfe-cost-structure-library/plan.md` (to be created)
+
+---
+
+## Disposition — closed as superseded ([OWNER] 2026-07-25)
+
+Closed under the demo epic's Board-housekeeping ruling (option c: no close-out audit vs this spec, no re-scope). The item's substance — `mfe_power_core.sysml`, `mfe_power_balance.sysml`, `mfe_viability.sysml`, plus the later library additions (`mfe_magnet_cost`, `mfe_cryo_plant`, `mfe_account_costs`) — was built, re-sourced to 1costingFE per PROTOCOL §5, and then refined and independently audited through the WI-019–028 corrective run. Those records (`work/completed/`, WI-019–025/027/028) are the effective completion evidence. Note: this spec's source table predates the quarantine re-source and is stale (PyFECONS/ARIES citations); the shipped library cites 1costingFE @ `0254385`.

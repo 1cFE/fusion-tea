@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:555
+SysML Source: root-0/analyses/mfe_account_costs.sysml:559
 
 SysML Expressions:
     shipping_frac = 0.015
@@ -55,7 +55,7 @@ subtotal (NOAK 0).
 *Ref**: costs.py:259-283 (cas50_supplementary); model.py:1492 (spares base = c23..c28)
 *Basis**: Fraction-of-aggregate supplementary cost with internal contingency
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:555
+SysML Source: root-0/analyses/mfe_account_costs.sysml:559
 
 SysML Expressions:
     shipping_frac = 0.015

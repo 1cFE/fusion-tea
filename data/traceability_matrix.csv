@@ -33,3 +33,14 @@ supplementary_spares_frac,models/designs/stellarator_09/stellarator_plant.sysml,
 supplementary_startup_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,costing_constants.yaml:259,,,2026-07-20
 supplementary_decom_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,costing_constants.yaml:263,,,2026-07-20
 cas28_capital,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,costing_constants.yaml:229,,F-2 digital twin,2026-07-20
+'Levelized Annual Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,MR-WI029-1,codebase,1costingFE @ 0254385,economics.py:13-50,,,2026-07-25
+'DT Fuel Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,MR-WI029-3,codebase,1costingFE @ 0254385,costs.py:476-544,,,2026-07-25
+'Levelized Replacement Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,MR-WI029-2,codebase,1costingFE @ 0254385,economics.py:53-75; model.py:102-111,,,2026-07-25
+inflation_rate,models/designs/stellarator_09/stellarator_plant.sysml,instance_binding,,MR-WI029-1,codebase,1costingFE @ 0254385,adapter.py (inflation_rate 0.02),,,2026-07-25
+fuel_cost_per_rxn,models/designs/stellarator_09/stellarator_plant.sysml,instance_binding,,MR-WI029-3,codebase,1costingFE @ 0254385,physics.py:13-20; costing_constants.yaml:282-283,,,2026-07-25
+fuel_q_eff,models/designs/stellarator_09/stellarator_plant.sysml,instance_binding,,MR-WI029-3,codebase,1costingFE @ 0254385,physics.py:33 (Q_DT 17.58),,,2026-07-25
+mev_to_joules,models/designs/stellarator_09/stellarator_plant.sysml,instance_binding,,MR-WI029-3,codebase,1costingFE @ 0254385,physics.py:13,16 (MEV_TO_JOULES),,,2026-07-25
+burn_fraction,models/designs/stellarator_09/stellarator_plant.sysml,instance_binding,,MR-WI029-3,codebase,1costingFE @ 0254385,steady_state_stellarator.yaml:64,,,2026-07-25
+fuel_recovery,models/designs/stellarator_09/stellarator_plant.sysml,instance_binding,,MR-WI029-3,codebase,1costingFE @ 0254385,steady_state_stellarator.yaml:65,,,2026-07-25
+fluence_limit,models/designs/stellarator_09/stellarator_plant.sysml,instance_binding,,MR-WI029-2,codebase,1costingFE @ 0254385,costing_constants.yaml:153 (fluence_limit_dt 18.0),,,2026-07-25
+ash_frac,models/designs/stellarator_09/stellarator_plant.sysml,instance_binding,,MR-WI029-2,codebase,1costingFE @ 0254385,physics.py:31-33; physics.py:177-179,,,2026-07-25

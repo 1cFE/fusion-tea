@@ -357,11 +357,15 @@ package mfe_account_costs {
         doc /*
         CAS10 preconstruction PRE-CONTINGENCY subtotal: land (sqrt of
         plant-total net electric, anchored at ref_net_power) plus the fixed
-        adders (permits + licensing + studies + reports + other — fuel/FOAK-
-        keyed, so a concept input). costs.py:79 adds CAS10's own contingency;
-        deliberately NOT carried here — the plant's CAS29 applies contingency
-        once over the direct sum (convention preserved, MR-WI025-3; design-
-        stage check: 1cfe full CAS10 = this subtotal x 1.10 exactly).
+        adders (permits + licensing + studies + reports + other — fuel- and
+        FOAK/NOAK-keyed, so a concept input). costs.py:79 adds CAS10's own
+        contingency; deliberately NOT carried here — the plant's CAS29 applies
+        contingency once over the direct sum (convention preserved, MR-WI025-3).
+        WI-029 doc correction: the old note "1cfe full CAS10 = this subtotal
+        x 1.10 exactly" was a stale FOAK reading. At NOAK — the regime both the
+        design and handshake points run — contingency_rate_noak = 0.0, so 1cfe's
+        full CAS10 equals this subtotal exactly. No number changes; the model
+        applies no CAS10 contingency and that was already NOAK-correct.
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
         **Ref**: costs.py:52-80 (cas10_preconstruction);
             costing_constants.yaml:8, :15-23
@@ -618,5 +622,303 @@ package mfe_account_costs {
             ((1.0 + interest_rate) ** construction_years - 1.0)
             / (interest_rate * construction_years) - 1.0;
         out attribute cost : Real = f_idc * overnight_cost;
+    }
+
+    // ---- CAS71 / CAS80 shared levelization wrapper (WI-029) ----
+    calc def 'Levelized Annual Cost' {
+        doc /*
+        Levelized (growing-annuity) annual cost — the shared CAS71/CAS80
+        wrapper:
+
+          crf = i*(1+i)^n / ((1+i)^n - 1)
+          a1  = annual_cost * (1+g)^Tc
+          pv  = a1 * (1 - ((1+g)/(1+i))^n) / (i - g)
+          levelized = crf * pv
+
+        A real annual stream escalating at g from the first operating year is
+        present-valued over n operating years at discount rate i, then
+        annuitized by CRF. `project_time` Tc is the construction period that
+        escalates the stream to its first operating year — at NOAK that is
+        `construction_time` alone (1cfe adds licensing_time only when FOAK,
+        costs.py:41-44), so Tc = 8 at both the design and handshake points.
+
+        Used TWICE by the plant (MR-3, one def two usages): with
+        annual_cost = the unlevelized annual O&M -> CAS71, and with
+        annual_cost = the raw annual DT fuel cost -> CAS80.
+
+        Flat-Real (+ - * / **) — Rung A, lowers to generated arithmetic.
+
+        **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py (pin 0254385)
+        **Ref**: economics.py:13-50 (levelized_annual_cost); economics.py:6-10 (CRF);
+            costs.py:41-44 (_total_project_time, NOAK omits licensing_time)
+        **Basis**: Growing-annuity present value annuitized by the capital recovery factor
+        */
+
+        in attribute annual_cost : Real;        // raw annual stream [$/yr]
+        in attribute interest_rate : Real;      // i (discount rate)
+        in attribute inflation_rate : Real;     // g (escalation rate)
+        in attribute operational_years : Real;  // n
+        in attribute project_time : Real;       // Tc (NOAK: construction_time)
+
+        // CRF(i,n). Source: economics.py:6-10. Exposed as an OUT so the plant's
+        // 1cfe-form CAS90 comparison channel (WI-029 Option ii) REUSES this one
+        // capital-recovery factor instead of restating CRF a second time; the
+        // DCF core computes the identical CRF from the same discount_rate /
+        // operational_years and is left untouched (mfe_lcoe_dcf.sysml:42-43).
+        attribute disc_pow_n : Real = (1.0 + interest_rate) ** operational_years;
+        out attribute crf : Real = interest_rate * disc_pow_n / (disc_pow_n - 1.0);
+
+        // A1 = escalated first-operating-year cost. Source: economics.py:40.
+        attribute a1 : Real = annual_cost * (1.0 + inflation_rate) ** project_time;
+
+        // Growing-annuity present value. Source: economics.py:44-46.
+        attribute pv : Real =
+            a1 * (1.0 - ((1.0 + inflation_rate) / (1.0 + interest_rate)) ** operational_years)
+            / (interest_rate - inflation_rate);
+
+        out attribute levelized : Real = crf * pv;
+    }
+
+    // ---- CAS80 raw annual DT fuel cost (WI-029) ----
+    calc def 'DT Fuel Cost' {
+        doc /*
+        CAS80 RAW (unlevelized) annual D-T fuel cost:
+
+          annual_raw = n_mod * p_fus * (3600*8760) * availability
+                       * cost_per_rxn / (q_eff * mev_to_joules)
+          annual_fuel = annual_raw * (1 + (1-burn_fraction)/burn_fraction
+                                          * (1 - fuel_recovery))
+
+        The first line converts annual fusion energy to reactions (dividing by
+        the per-reaction energy q_eff in MeV, converted to joules) and prices
+        them at the blended deuterium + Li-6 cost per reaction. The second line
+        is the burn-up recovery correction: only `burn_fraction` of the fuel
+        injected is burnt, and `fuel_recovery` of the unburnt remainder is
+        recycled, so the make-up stream scales the raw cost.
+
+        The levelization to the reported CAS80 is NOT carried here — the plant
+        feeds `annual_fuel` into 'Levelized Annual Cost' (one levelization
+        wrapper, MR-3). The MFE target-consumable term of 1cfe's cas80_fuel is
+        structurally zero (IFE-only) and is likewise not carried.
+
+        All fuel constants are inputs, never library defaults (MR-3) — a
+        concept binds its own fuel chemistry and unit prices.
+
+        Flat-Real (+ - * / **) — Rung A, lowers to generated arithmetic.
+
+        **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
+        **Ref**: costs.py:476-544 (cas80_fuel, DT branch); defaults.py
+            (M_D_KG, u_deuterium, M_Li6_KG, u_li6, burn_fraction, fuel_recovery);
+            physics.py:31 (Q_DT = 17.58 MeV)
+        **Basis**: Reaction-rate-priced annual fuel with burn-up recovery correction
+        */
+
+        in attribute p_fus : Real;              // fusion power [MW]
+        in attribute n_mod : Real default 1.0;
+        in attribute availability : Real;
+        in attribute cost_per_rxn : Real;       // M_D*u_D + M_Li6*u_Li6 [$/rxn]
+        in attribute q_eff : Real;              // per-reaction energy [MeV]
+        in attribute mev_to_joules : Real;      // MeV -> J conversion
+        in attribute burn_fraction : Real;
+        in attribute fuel_recovery : Real;
+
+        // reactions/yr * $/rxn -> annual fuel [$/yr]. Source: costs.py:476-544.
+        // UNIT NOTE: p_fus is MW, so p_fus * seconds/yr is MJ/yr; the explicit
+        // 1e6 converts to J/yr before dividing by the per-reaction energy in J.
+        // 1cfe leaves that 1e6 implicit and so returns M$/yr; this def carries
+        // it, so with cost_per_rxn in $/rxn the output is $/yr — the money unit
+        // the plant rolls up in (the library's unit-transparency rule).
+        attribute annual_raw : Real =
+            n_mod * p_fus * (3600.0 * 8760.0) * 1.0e6 * availability * cost_per_rxn
+            / (q_eff * mev_to_joules);
+
+        // burn-up recovery correction. Source: costs.py:476-544.
+        attribute burn_correction : Real =
+            1.0 + (1.0 - burn_fraction) / burn_fraction * (1.0 - fuel_recovery);
+
+        out attribute annual_fuel : Real = annual_raw * burn_correction;
+    }
+
+    // ---- CAS72 levelized scheduled replacement (WI-029, Rung B) ----
+    calc def 'Levelized Replacement Cost' {
+        doc /*
+        CAS72 levelized scheduled-replacement cost of the neutron-damage-
+        limited in-vessel accounts (first wall / blanket + divertor):
+
+          p_neutron        = p_fus * (1 - ash_frac)              [MW]
+          q_n              = p_neutron / firstwall_area          [MW/m^2]
+          core_lifetime_FPY= clip(fluence_limit / max(q_n, 1e-6),
+                                  0.5, operational_years*availability)
+          core_lifetime_cal= core_lifetime_FPY / availability     [cal-yr]
+          s                = (1 + i)^(-core_lifetime_cal)
+          n_rep            = max(0, ceil(operational_years/core_lifetime_cal) - 1)
+          pv               = cost_per_event * s * (1 - s^n_rep) / (1 - s)
+          cost             = CRF(i, n) * pv
+
+        The replaceable core survives a fixed neutron fluence, so its life in
+        full-power years is the fluence limit divided by the wall load, and its
+        calendar life divides again by availability. Each replacement is a
+        discrete event discounted at its own date; `n_rep` counts the events
+        inside the plant life (the final core is never replaced, hence -1).
+
+        EXECUTABLE SEMANTIC (Rung B, WI-022 pattern): `max`, `min` and `floor`
+        are invocations, which fall outside the codegen arithmetic envelope
+        (+ - * / ** only, calc_compat_renderer.py:39-46), so this calc routes
+        to the handwritten codegen stage (manual_required). The generated
+        handwritten impl is normative and is guarded bit-exact (rel 1e-9) by
+        the oracle mirror in verify_stellaris.py. Both carry 1cfe's guards
+        VERBATIM — the clip floor/cap, the inner max(q_n, 1e-6), and the outer
+        max(0, ...) — rather than dropping them as point-inert no-ops: they go
+        live at study-sweep extremes and a dropped guard would return a wrong
+        CAS72 silently and discontinuously.
+
+        Two faithful re-expressions in the model statement below, both exact
+        identities changing no value: clip(z, lo, hi) is written min(max(z, lo),
+        hi) — jnp.clip's own order — and ceil(z) is written -floor(-z) (the KerML
+        Real function library has floor, min and max but no ceiling or clip). The handwritten impl
+        uses Python's math.ceil and the same guards directly.
+
+        `n_rep` is a discontinuous step function of the live neutron/geometry
+        chain and is computed every run — never frozen as a defaulted input.
+
+        Concept-agnostic: the fluence limit, the wall loading, the replaceable-
+        account cost, and the plant life are all inputs (MR-3).
+
+        **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py (pin 0254385)
+        **Ref**: economics.py:53-75 (levelized_replacement_cost); model.py:102-111
+            (_core_lifetime_fpy, the clip and inner max); economics.py:6-10 (CRF);
+            defaults.py:291 (fluence_limit_dt), defaults.py:299 (replaceable accounts)
+        **Basis**: Fluence-limited replacement schedule, discretely discounted and annuitized
+        */
+
+        in attribute cost_per_event : Real;     // plant-total replaceable-account cost [$]
+        // The neutron power is taken as fusion power x (1 - ash_frac) INSIDE this
+        // calc rather than from a plant-level derived attribute: codegen wires a
+        // calc input only from a producer channel, and an attribute mixing a calc
+        // output (fusion.p_fus) with a sibling (ash_frac) classifies EXPOSE_COMPUTED
+        // and produces none. Same arithmetic, same operand order (WI-029 adaptation).
+        in attribute p_fus : Real;              // fusion power [MW]
+        in attribute ash_frac : Real;           // charged-particle share of fusion energy
+        in attribute firstwall_area : Real;     // first-wall area [m^2]
+        in attribute fluence_limit : Real;      // core fluence limit [MW-yr/m^2]
+        in attribute availability : Real;
+        in attribute interest_rate : Real;      // i
+        in attribute operational_years : Real;  // n
+
+        // Neutron wall load. Source: physics.py:177-179, model.py:102-111.
+        attribute p_neutron : Real = p_fus * (1.0 - ash_frac);
+        attribute q_n : Real = p_neutron / firstwall_area;
+
+        // Fluence-limited core life, GUARDED. The inner max(q_n, 1e-6) keeps
+        // the 1/q_n gradient finite; the clip floor 0.5 and the cap
+        // n*availability stop replacement beyond plant life.
+        // Source: model.py:102-111.
+        attribute fpy_raw : Real = fluence_limit / RealFunctions::max(q_n, 1.0e-6);
+        attribute fpy_cap : Real = operational_years * availability;
+        // jnp.clip order: floor first, then cap (min outermost).
+        attribute core_lifetime_fpy : Real =
+            RealFunctions::min(RealFunctions::max(fpy_raw, 0.5), fpy_cap);
+
+        // Calendar life — where availability enters the replacement schedule.
+        attribute core_lifetime_cal : Real = core_lifetime_fpy / availability;
+
+        // Single-interval discount factor. Source: economics.py:53-75.
+        attribute s : Real = (1.0 + interest_rate) ** (0.0 - core_lifetime_cal);
+
+        // Replacement count, GUARDED: max(0, ceil(n/t) - 1), with
+        // ceil(z) written as -floor(-z). Source: economics.py:53-75.
+        attribute n_rep : Real = RealFunctions::max(
+            0.0,
+            (0.0 - RealFunctions::floor(0.0 - operational_years / core_lifetime_cal)) - 1.0);
+
+        // Geometric sum of the discounted replacement events.
+        attribute pv : Real = cost_per_event * s * (1.0 - s ** n_rep) / (1.0 - s);
+
+        // CRF(i,n). Source: economics.py:6-10.
+        attribute disc_pow_n : Real = (1.0 + interest_rate) ** operational_years;
+        attribute crf : Real = interest_rate * disc_pow_n / (disc_pow_n - 1.0);
+
+        out attribute cost : Real = crf * pv;
+    }
+
+    // ---- WI-029 producer-shaping defs (codegen mechanics, value-preserving) ----
+    // Codegen wires a calc input only from a PRODUCER channel: a calc output, or
+    // an aggregation that transitively reaches a part usage. A plant attribute
+    // that merely sums calc-output exposures classifies FORMULA-without-part-root
+    // (or EXPOSE_COMPUTED when it mixes a calc output with a sibling) and mints no
+    // channel — the WI-028 Phase-5 adaptation class. These three defs put the same
+    // arithmetic behind calc outputs so the downstream inputs resolve. No value,
+    // operand, or operand order changes.
+
+    calc def 'Annual Cost Rollup' {
+        doc /*
+        CAS70 = CAS71 + CAS72, and the total levelized annual cost the LCOE
+        numerator carries (CAS70 + CAS80). Pure addition — it introduces no new
+        economics, it makes the two sums producer channels the DCF core and the
+        1cfe-form comparison channel can read.
+
+        **Source**: /home/reid/1cfe/1costingfe/src/costingfe/model.py (pin 0254385)
+        **Ref**: model.py:1483-1605 (c70 = c71 + c72; lcoe numerator c90 + c70 + c80);
+            economics.py:88-92 (compute_lcoe)
+        **Basis**: 1costingFE CAS70 composition and LCOE annual-cost numerator
+        */
+        in attribute cas71 : Real;   // levelized O&M [$/yr]
+        in attribute cas72 : Real;   // levelized scheduled replacement [$/yr]
+        in attribute cas80 : Real;   // levelized fuel [$/yr]
+        out attribute cas70 : Real = cas71 + cas72;
+        out attribute annual_total : Real = cas71 + cas72 + cas80;
+    }
+
+    calc def '1cfe-Form Capital Charge' {
+        doc /*
+        CAS90 in 1costingFE's financing form — the annual capital charge on
+        overnight capital PLUS the closed-form CAS60 interest during
+        construction:
+
+          cas90 = crf * (overnight_cost + idc_cost)
+
+        WI-029 Option (ii), owner-ruled 2026-07-25: this is a COMPARISON channel.
+        The model's own DCF headline keeps its even-spend idc_factor and keeps
+        total_capital = overnight_capital (Option C), so CAS60 never enters the
+        headline capital base and the two channels cannot double-count. `crf` is
+        supplied by the plant from the capital-recovery factor it already
+        computes; `idc_cost` is the Item-3 CAS60 reported line — no new IDC
+        arithmetic is introduced here.
+
+        **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
+        **Ref**: costs.py:547-556 (cas90_annualized_capital = CRF * total_capital);
+            costs.py:286-297 (cas60_idc); model.py:1483-1605 (total_cap = overnight + c60)
+        **Basis**: 1costingFE annualized capital charge over overnight + IDC
+        */
+        in attribute crf : Real;             // capital recovery factor
+        in attribute overnight_cost : Real;  // overnight capital [$]
+        in attribute idc_cost : Real;        // CAS60 interest during construction [$]
+        out attribute cas90 : Real = crf * (overnight_cost + idc_cost);
+    }
+
+    calc def '1cfe-Form LCOE' {
+        doc /*
+        LCOE in 1costingFE's form — the comparison channel that pairs with
+        '1cfe-Form Capital Charge' (WI-029 Option ii):
+
+          lcoe = (cas90 + cas70 + cas80) / (8760 * net_electric_mw * n_mod * availability)
+
+        Money-unit transparent: with the cost inputs in $ the result is $/MWh.
+        This is NOT the design-point headline — 'LCOE DCF' remains the headline
+        and its convention is untouched. Both channels coexist by design.
+
+        **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py (pin 0254385)
+        **Ref**: economics.py:88-92 (compute_lcoe)
+        **Basis**: Annual cost over annual energy sold, 1costingFE denominator form
+        */
+        in attribute cas90 : Real;
+        in attribute cas70 : Real;
+        in attribute cas80 : Real;
+        in attribute net_electric_mw : Real;
+        in attribute n_mod : Real default 1.0;
+        in attribute availability : Real;
+        attribute annual_energy_mwh : Real =
+            8760.0 * net_electric_mw * n_mod * availability;
+        out attribute lcoe : Real = (cas90 + cas70 + cas80) / annual_energy_mwh;
     }
 }

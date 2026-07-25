@@ -91,6 +91,12 @@ CH = dict(
     annual_om=f"{P}om_cost__annual_om",
     contingency=f"{P}contingency__cost", indirect=f"{P}indirect__cost",
     lcoe=f"{P}lcoe_calc__lcoe",
+    # WI-029 annual-cost side + Option-(ii) 1cfe-form comparison channels
+    cas71=f"{P}cas71_calc__levelized", cas72=f"{P}cas72_calc__cost",
+    cas70=f"{P}cas70_calc__cas70", cas80=f"{P}cas80_calc__levelized",
+    annual_fuel=f"{P}fuel_calc__annual_fuel",
+    annual_om_levelized=f"{P}cas70_calc__annual_total",
+    cas90_1cfe=f"{P}cas90_1cfe_calc__cas90", lcoe_1cfe=f"{P}lcoe_1cfe_calc__lcoe",
 )
 
 # CAS27 special materials (WI-021): now MODEL-computed from the radial-build

@@ -302,6 +302,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__fuel_calc__annual_fuel",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__cas23_to_28_capital__cas23_to_28_capital",
       "field_name": "root",
       "python_type": "float"
@@ -382,8 +387,33 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__cas80_calc__crf",
+      "field_name": "crf",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cas80_calc__levelized",
+      "field_name": "levelized",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__powercore_capital__powercore_capital",
       "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cas71_calc__crf",
+      "field_name": "crf",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cas71_calc__levelized",
+      "field_name": "levelized",
       "python_type": "float"
     },
     {
@@ -392,8 +422,23 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__cas72_calc__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__installation__cost",
       "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cas70_calc__cas70",
+      "field_name": "cas70",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cas70_calc__annual_total",
+      "field_name": "annual_total",
       "python_type": "float"
     },
     {
@@ -443,6 +488,16 @@
     },
     {
       "channel_name": "stellarator_09__stellaris__lcoe_calc__lcoe",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cas90_1cfe_calc__cas90",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
       "field_name": "root",
       "python_type": "float"
     },
@@ -619,6 +674,13 @@
       "qualified_name": "stellarator_09__stellaris__electric_plant__cost_per_mw"
     },
     {
+      "default_value": 1.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_calc__n_mod"
+    },
+    {
       "default_value": 0.7,
       "entry_type": "usage_literal",
       "param_group": "mfe_plant_params",
@@ -687,6 +749,13 @@
       "param_group": "mfe_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__indirect__reference_construction_time"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__lcoe_1cfe_calc__n_mod"
     },
     {
       "default_value": 9.0,
@@ -1179,6 +1248,97 @@
       "qualified_name": "stellarator_09__stellaris__cas2x_pre_contingency__special_materials_capital"
     },
     {
+      "default_value": 0.02,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__cas71_calc__inflation_rate"
+    },
+    {
+      "default_value": 0.07,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__cas71_calc__interest_rate"
+    },
+    {
+      "default_value": 30.0,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__cas71_calc__operational_years"
+    },
+    {
+      "default_value": 8.0,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__cas71_calc__project_time"
+    },
+    {
+      "default_value": 0.2002275312855518,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__cas72_calc__ash_frac"
+    },
+    {
+      "default_value": 0.85,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__cas72_calc__availability"
+    },
+    {
+      "default_value": 18.0,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__cas72_calc__fluence_limit"
+    },
+    {
+      "default_value": 0.07,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__cas72_calc__interest_rate"
+    },
+    {
+      "default_value": 30.0,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__cas72_calc__operational_years"
+    },
+    {
+      "default_value": 0.02,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__cas80_calc__inflation_rate"
+    },
+    {
+      "default_value": 0.07,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__cas80_calc__interest_rate"
+    },
+    {
+      "default_value": 30.0,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__cas80_calc__operational_years"
+    },
+    {
+      "default_value": 8.0,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__cas80_calc__project_time"
+    },
+    {
       "default_value": 0.1,
       "entry_type": "usage_literal",
       "param_group": "system_design",
@@ -1261,6 +1421,48 @@
       "param_group": "system_design",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__divertor_cost__base"
+    },
+    {
+      "default_value": 0.85,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_calc__availability"
+    },
+    {
+      "default_value": 0.05,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_calc__burn_fraction"
+    },
+    {
+      "default_value": 1.7260641119988767e-23,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_calc__cost_per_rxn"
+    },
+    {
+      "default_value": 0.99,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_calc__fuel_recovery"
+    },
+    {
+      "default_value": 1.6021766339999998e-13,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_calc__mev_to_joules"
+    },
+    {
+      "default_value": 17.58,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel_calc__q_eff"
     },
     {
       "default_value": 120000000.0,
@@ -1456,6 +1658,13 @@
       "entry_type": "usage_literal",
       "param_group": "system_design",
       "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__lcoe_1cfe_calc__availability"
+    },
+    {
+      "default_value": 0.85,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__lcoe_calc__availability"
     },
     {
@@ -1592,7 +1801,7 @@
       "qualified_name": "stellarator_09__stellaris__pb__p_trit"
     },
     {
-      "default_value": 32000000.0,
+      "default_value": 16000000.0,
       "entry_type": "usage_literal",
       "param_group": "system_design",
       "python_type": "float",
@@ -1718,6 +1927,13 @@
       "qualified_name": "stellarator_09__stellaris__remote_handling__concept_scale"
     },
     {
+      "default_value": null,
+      "entry_type": "design_attribute",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__replacement_cost_per_event__n_mod"
+    },
+    {
       "default_value": 272000000.0,
       "entry_type": "usage_literal",
       "param_group": "system_design",
@@ -1746,5 +1962,5 @@
       "qualified_name": "stellarator_09__stellaris__waste__base"
     }
   ],
-  "semantic_fingerprint": "a97cde61d6e54a830791a8d0e485f56247e6581e3cc8ee94deec42b0e679b56d"
+  "semantic_fingerprint": "c9bc164050f0aac8a2009befb34497426d68923066ca1c1783a0b80e8048c261"
 }

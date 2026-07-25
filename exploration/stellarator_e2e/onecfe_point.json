@@ -153,7 +153,24 @@
     "tax_frac": 0.01,
     "construction_insurance_frac": 0.015,
     "startup_fuel_dt": 40.0,
-    "decom_provision_dt": 272.0
+    "decom_provision_dt": 272.0,
+    "inflation_rate": 0.02,
+    "M_D_KG": 3.3435837768e-27,
+    "u_deuterium": 2175.0,
+    "M_Li6_KG": 9.988346405448768e-27,
+    "u_li6": 1000.0,
+    "cost_per_rxn": 1.7260641119988767e-23,
+    "q_eff_dt": 17.58,
+    "MEV_TO_JOULES": 1.6021766339999998e-13,
+    "burn_fraction": 0.05,
+    "fuel_recovery": 0.99,
+    "fluence_limit_dt": 18.0,
+    "replaceable_accounts": [
+      "C220101",
+      "C220108"
+    ],
+    "ash_frac_dt": 0.2002275312855518,
+    "firstwall_area": 660.0791423448563
   },
   "pb_params": {
     "p_input": 30.0,

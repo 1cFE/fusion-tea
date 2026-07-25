@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:500
+SysML Source: root-0/analyses/mfe_account_costs.sysml:504
 
 SysML Expressions:
     n_mod = 1.0
@@ -45,7 +45,7 @@ thermal.
 *Ref**: cas22.py:684-686 (c220200); ref_net 1000 (:684), p_th_ref 3500 (:685), alpha 0.55 (:685)
 *Basis**: Plant-total two-term coolant cost
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:500
+SysML Source: root-0/analyses/mfe_account_costs.sysml:504
 
 SysML Expressions:
     n_mod = 1.0

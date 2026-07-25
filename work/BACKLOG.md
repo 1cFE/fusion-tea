@@ -30,13 +30,13 @@ epics:
   - id: WI-009
     name: MFE Cost Structure Library
     scale: standard
-    status: backlog
-    completed: null
+    status: completed
+    completed: '2026-07-25'
   - id: WI-010
     name: Generic MFE Plant Model
     scale: standard
-    status: backlog
-    completed: null
+    status: completed
+    completed: '2026-07-25'
   - id: WI-011
     name: Tokamak & Stellarator Instantiations
     scale: standard
@@ -50,8 +50,8 @@ epics:
   - id: WI-018
     name: Concept-09 QI Stellarator Initial Model
     scale: standard
-    status: backlog
-    completed: null
+    status: completed
+    completed: '2026-07-25'
   - id: WI-019
     name: Faithful MFE Power Balance
     scale: standard
@@ -163,11 +163,11 @@ standalone:
 
 | ID | Item | Scale | Status | Notes |
 |------|------|-------|--------|-------|
-| WI-009 | MFE Cost Structure Library | standard | backlog |  |
-| WI-010 | Generic MFE Plant Model | standard | backlog |  |
+| WI-009 | MFE Cost Structure Library | standard | completed | Completed 2026-07-25 |
+| WI-010 | Generic MFE Plant Model | standard | completed | Completed 2026-07-25 |
 | WI-011 | Tokamak & Stellarator Instantiations | standard | backlog |  |
 | WI-012 | Codegen + Viability Sweep | standard | backlog |  |
-| WI-018 | Concept-09 QI Stellarator Initial Model | standard | backlog |  |
+| WI-018 | Concept-09 QI Stellarator Initial Model | standard | completed | Completed 2026-07-25 |
 | WI-019 | Faithful MFE Power Balance | standard | completed | Completed 2026-07-14 |
 | WI-020 | Stellarator-correct plasma geometry (shape factor) | standard | completed | Completed 2026-07-17 |
 | WI-021 | stellarator-correct-radial-build | standard | completed | Completed 2026-07-17 |

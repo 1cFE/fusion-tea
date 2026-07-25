@@ -565,10 +565,107 @@ package mfe_plant {
             + owner_capital + supplementary_capital;
 
         // =====================================================================
+        // ANNUAL-COST SIDE — CAS71 / CAS72 / CAS80 (WI-029 D1/D2)
+        //   CAS71 = levelized O&M; CAS72 = levelized scheduled replacement of
+        //   the fluence-limited in-vessel accounts; CAS80 = levelized DT fuel.
+        //   CAS70 = CAS71 + CAS72. One levelization wrapper serves CAS71 and
+        //   CAS80 (MR-3, 'Levelized Annual Cost' used twice).
+        // =====================================================================
+
+        // Escalation rate g for the levelization (instance binds; 1cfe 0.02).
+        attribute inflation_rate : Real;
+
+        // CAS71 — levelized annual O&M [$/yr]. Tc = construction_years (NOAK).
+        calc cas71_calc : 'Levelized Annual Cost' {
+            in annual_cost = om_cost.annual_om;
+            in interest_rate = discount_rate;
+            in inflation_rate = inflation_rate;
+            in operational_years = operational_years;
+            in project_time = construction_years;
+        }
+        attribute cas71_annual : Real = cas71_calc.levelized;   // expose for producer aggregation
+
+        // ---- CAS80 DT fuel: raw annual, then the same levelization wrapper ----
+        // Fuel chemistry constants are instance inputs (MR-3) — no library defaults.
+        attribute fuel_cost_per_rxn : Real;   // M_D*u_D + M_Li6*u_Li6 [$/rxn]
+        attribute fuel_q_eff : Real;          // per-reaction energy [MeV]
+        attribute mev_to_joules : Real;       // MeV -> J
+        attribute burn_fraction : Real;
+        attribute fuel_recovery : Real;
+
+        calc fuel_calc : 'DT Fuel Cost' {
+            in p_fus = fusion.p_fus;
+            in n_mod = n_mod;
+            in availability = availability;
+            in cost_per_rxn = fuel_cost_per_rxn;
+            in q_eff = fuel_q_eff;
+            in mev_to_joules = mev_to_joules;
+            in burn_fraction = burn_fraction;
+            in fuel_recovery = fuel_recovery;
+        }
+        calc cas80_calc : 'Levelized Annual Cost' {
+            // Read the fuel producer directly. A bare `annual_fuel = fuel_calc.annual_fuel`
+            // alias resolves at part-def scope and mints no instance params key
+            // (the WI-028 bare-alias class); fuel_calc__annual_fuel is already a
+            // channel, so the A-2 row reads it without the alias.
+            in annual_cost = fuel_calc.annual_fuel;
+            in interest_rate = discount_rate;
+            in inflation_rate = inflation_rate;
+            in operational_years = operational_years;
+            in project_time = construction_years;
+        }
+        attribute cas80_annual : Real = cas80_calc.levelized;   // expose for producer aggregation
+
+        // ---- CAS72 scheduled replacement (Rung B, handwritten impl) ----------
+        // Replaceable set = the fluence-limited in-vessel accounts C220101
+        // (blanket/first wall) + C220108 (divertor), plant-total (x n_mod).
+        // Source: defaults.py:299 (replaceable_accounts), pin 0254385.
+        attribute replacement_cost_per_event : Real =
+            (blanket.capital_cost + divertor.capital_cost) * n_mod;
+
+        // Charged-particle (ash) share of the fusion energy; the neutron power
+        // that damages the first wall is the complement. Default 0.2002 is the
+        // rounded model value; the exact 1cfe constant is E_ALPHA_DT / Q_DT =
+        // 3.52 / 17.58. Source: physics.py:31, :177-179 (pin 0254385).
+        attribute ash_frac : Real default 0.2002;
+
+        // Core fluence limit [MW-yr/m^2] (instance binds; DT 18.0, defaults.py:291).
+        attribute fluence_limit : Real;
+
+        calc cas72_calc : 'Levelized Replacement Cost' {
+            in cost_per_event = replacement_cost_per_event;
+            in p_fus = fusion.p_fus;
+            in ash_frac = ash_frac;
+            in firstwall_area = rb.wall_area;
+            in fluence_limit = fluence_limit;
+            in availability = availability;
+            in interest_rate = discount_rate;
+            in operational_years = operational_years;
+        }
+        attribute cas72_annual : Real = cas72_calc.cost;   // expose_pure channel for A-2
+
+        // CAS70 = CAS71 + CAS72, and the LCOE numerator total = CAS70 + CAS80.
+        // Behind a calc so both sums are PRODUCER channels the LCOE cores can
+        // read (WI-029 codegen-mechanics adaptation; inputs read the calc
+        // outputs directly, the `in cas30 = indirect.cost` idiom).
+        calc cas70_calc : 'Annual Cost Rollup' {
+            in cas71 = cas71_calc.levelized;
+            in cas72 = cas72_calc.cost;
+            in cas80 = cas80_calc.levelized;
+        }
+        attribute cas70_annual : Real = cas70_calc.cas70;   // expose_pure channel for A-2
+
+        // =====================================================================
         // LCOE  (WI-009 'LCOE DCF' core)
         // =====================================================================
 
-        attribute annual_om : Real = om_cost.annual_om;  // CAS70 O&M — forward-computed (WI-025) [$/yr]
+        // WI-029: the DCF headline now takes the LEVELIZED annual-cost side —
+        // CAS70 (= CAS71 levelized O&M + CAS72 levelized replacement) + CAS80
+        // levelized fuel — replacing the unlevelized WI-025 O&M line that used
+        // to be bound here. The headline CONVENTION is unchanged (Option ii:
+        // idc_factor and total_capital = overnight_capital both untouched);
+        // only the annual-cost numerator becomes complete.
+        attribute annual_om : Real = cas70_calc.annual_total;  // CAS70+CAS80 levelized [$/yr]
         attribute availability : Real;       // capacity factor [0..1]
         attribute discount_rate : Real;      // discount / interest rate [1/yr]
         attribute operational_years : Real;  // operating lifetime N [yr]
@@ -582,6 +679,37 @@ package mfe_plant {
             in construction_years = construction_years;
             in operational_years = operational_years;
         }
+
+        // ---- 1cfe-form CAS90 / LCOE COMPARISON channels (WI-029, Option ii) --
+        // Owner ruling 2026-07-25: the DCF headline above stays untouched; these
+        // two channels restate the same plant in 1costingFE's financing form so
+        // the end-to-end LCOE can be compared account-for-account under A-2.
+        //   cas90_1cfe = CRF * (overnight_capital + CAS60)
+        //   lcoe_1cfe  = (cas90_1cfe + CAS70 + CAS80) / annual energy
+        // CAS60 is the Item-3 'IDC Closed-Form Cost' REPORTED line (idc_capital)
+        // — no new IDC arithmetic — and CRF is reused from cas71_calc, which
+        // computes it from the same discount_rate / operational_years the DCF
+        // core uses. total_capital stays == overnight_capital (Option C), so
+        // CAS60 cannot enter the headline capital base: the two channels coexist
+        // without double-counting. Comparison only — NOT the design-point headline.
+        // Source: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
+        // Ref: costs.py:547-556 (cas90 = CRF*total_capital); economics.py:88-92 (lcoe)
+        calc cas90_1cfe_calc : '1cfe-Form Capital Charge' {
+            in crf = cas71_calc.crf;
+            in overnight_cost = overnight_capital;
+            in idc_cost = idc.cost;
+        }
+        attribute cas90_1cfe : Real = cas90_1cfe_calc.cas90;   // expose_pure channel for A-2
+
+        calc lcoe_1cfe_calc : '1cfe-Form LCOE' {
+            in cas90 = cas90_1cfe_calc.cas90;
+            in cas70 = cas70_calc.cas70;
+            in cas80 = cas80_calc.levelized;
+            in net_electric_mw = pb.p_net;
+            in n_mod = n_mod;
+            in availability = availability;
+        }
+        attribute lcoe_1cfe : Real = lcoe_1cfe_calc.lcoe;      // expose_pure channel for A-2
 
         // =====================================================================
         // VIABILITY CONSTRAINTS  (WI-009 mfe_viability)

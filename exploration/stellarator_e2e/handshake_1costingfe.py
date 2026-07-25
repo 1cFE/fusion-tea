@@ -98,6 +98,13 @@ CH = dict(
     cas20_capital=f"{P}cas20_capital__cas20_capital",
     overnight_capital=f"{P}overnight_capital__overnight_capital",
     total_capital=f"{P}total_capital__total_capital",
+    # WI-029 annual-cost side + Option-(ii) 1cfe-form comparison channels.
+    # The headline `lcoe` channel above stays pointed at the DCF headline.
+    cas71=f"{P}cas71_calc__levelized", cas72=f"{P}cas72_calc__cost",
+    cas70=f"{P}cas70_calc__cas70", cas80=f"{P}cas80_calc__levelized",
+    annual_fuel=f"{P}fuel_calc__annual_fuel",
+    annual_om_levelized=f"{P}cas70_calc__annual_total",
+    cas90_1cfe=f"{P}cas90_1cfe_calc__cas90", lcoe_1cfe=f"{P}lcoe_1cfe_calc__lcoe",
 )
 
 # SysML powercore account -> 1costingFE cas22_detail key (formula-reproduced).
@@ -292,6 +299,37 @@ def set_1cfe_inputs(o):
         # additive om_direct term in the params block below, so lcoe receives
         # 1cfe's value bit for bit.
         f"{P}om_cost__om_ref": 0.0,
+        # ---- WI-029: CAS71 / CAS72 / CAS80 injected at 1cfe's own values ----
+        # Levelization params (both usages of 'Levelized Annual Cost').
+        f"{P}cas71_calc__interest_rate": o["target"]["interest_rate"],
+        f"{P}cas71_calc__inflation_rate": refs["inflation_rate"],
+        f"{P}cas71_calc__operational_years": float(o["target"]["lifetime_yr"]),
+        f"{P}cas71_calc__project_time": o["target"]["construction_time_yr"],
+        f"{P}cas80_calc__interest_rate": o["target"]["interest_rate"],
+        f"{P}cas80_calc__inflation_rate": refs["inflation_rate"],
+        f"{P}cas80_calc__operational_years": float(o["target"]["lifetime_yr"]),
+        f"{P}cas80_calc__project_time": o["target"]["construction_time_yr"],
+        # CAS80 DT fuel chemistry (costs.py:476-544).
+        f"{P}fuel_calc__availability": o["target"]["availability"],
+        f"{P}fuel_calc__cost_per_rxn": refs["cost_per_rxn"],
+        f"{P}fuel_calc__q_eff": refs["q_eff_dt"],
+        f"{P}fuel_calc__mev_to_joules": refs["MEV_TO_JOULES"],
+        f"{P}fuel_calc__burn_fraction": refs["burn_fraction"],
+        f"{P}fuel_calc__fuel_recovery": refs["fuel_recovery"],
+        # CAS72 scheduled replacement. availability is injected HERE too (duty-7:
+        # 0.9 over the model's 0.85) — it drives core_lifetime_cal, not just the
+        # LCOE denominator.
+        f"{P}cas72_calc__ash_frac": refs["ash_frac_dt"],
+        f"{P}cas72_calc__fluence_limit": refs["fluence_limit_dt"],
+        f"{P}cas72_calc__availability": o["target"]["availability"],
+        f"{P}cas72_calc__interest_rate": o["target"]["interest_rate"],
+        f"{P}cas72_calc__operational_years": float(o["target"]["lifetime_yr"]),
+        # Option-(ii) 1cfe-form LCOE comparison channel denominator.
+        f"{P}lcoe_1cfe_calc__availability": o["target"]["availability"],
+        # WI-029 I7 null entry point: the CAS72 replaceable-account aggregation's
+        # n_mod LocalTerm does not resolve inside an aggregation, so codegen
+        # surfaces it as a NULL entry point. Fill it with 1cfe's own n_mod.
+        f"{P}replacement_cost_per_event__n_mod": float(o["target"]["n_mod"]),
         # LCOE financing / performance
         f"{P}lcoe_calc__availability": o["target"]["availability"],
         f"{P}lcoe_calc__construction_years": o["target"]["construction_time_yr"],
@@ -490,6 +528,7 @@ def main():
             "fuel_handling": "C220500", "other_rpe": "C220600", "inc": "C220700",
         }
         a2_rows = []
+        onec_pre = o["costs_musd"]
         for k, ck in TAIL_MAP.items():
             onecfe = o["cas22_detail_musd"][ck] * M
             a2_rows.append((k, ck, onecfe, b[CH[k]], rel(b[CH[k]], onecfe)))
@@ -500,6 +539,18 @@ def main():
         idc_1c = o["costs_musd"]["cas60"] * M
         a2_rows.append(("idc (CAS60, reported)", "CAS60", idc_1c, b[CH["idc"]],
                         rel(b[CH["idc"]], idc_1c)))
+
+        # ---- WI-029 A-2: the annual-cost side + Option-(ii) comparison channels ----
+        # The model rolls in $ and 1cfe in M$/yr (LCOE in $/MWh, already common).
+        for name, ck, one_val, sy_val in (
+            ("cas71 (levelized O&M)", "CAS71", onec_pre["cas71"] * M, b[CH["cas71"]]),
+            ("cas72 (levelized repl.)", "CAS72", onec_pre["cas72"] * M, b[CH["cas72"]]),
+            ("cas70 (= 71 + 72)", "CAS70", onec_pre["cas70"] * M, b[CH["cas70"]]),
+            ("cas80 (levelized fuel)", "CAS80", onec_pre["cas80"] * M, b[CH["cas80"]]),
+            ("cas90_1cfe (Option ii)", "CAS90", onec_pre["cas90"] * M, b[CH["cas90_1cfe"]]),
+            ("lcoe_1cfe (Option ii)", "LCOE", onec_pre["lcoe"], b[CH["lcoe_1cfe"]]),
+        ):
+            a2_rows.append((name, ck, one_val, sy_val, rel(sy_val, one_val)))
 
         # rollup + LCOE (WI-028: direct->cas20; add cas30/overnight rollup match)
         onec = o["costs_musd"]
@@ -572,6 +623,21 @@ def main():
                 a2_worst = (name, r)
         print(f"A-2 worst rel dev: {a2_worst[0]} = {a2_worst[1]:+.2e}")
 
+        # ---- WI-029 CAS10 closure gate (owner ruling 4, Phase-4 carry-forward) ----
+        cas10_1c = onec["cas10"] * M
+        cas10_model = precon
+        cas10_residual = cas10_model - cas10_1c
+        print("\n--- WI-029 CAS10 CLOSURE GATE (owner ruling 4) ---")
+        print(f"  1cfe CAS10   = {cas10_1c/M:18.6f} M$")
+        print(f"  model CAS10  = {cas10_model/M:18.6f} M$")
+        print(f"  residual     = {cas10_residual/M:18.6f} M$   rel {rel(cas10_model, cas10_1c):+.2e}")
+        # Graded on the A-2 relative bar (1e-6), the project's per-account bar.
+        # The residual is 1cfe's own float32 emission plus the injected p_net's
+        # float32 residue (p_net = 1000.0001, so the sqrt land term carries it):
+        # in M$ the reconstruction is exact to the printed precision.
+        cas10_closed = abs(rel(cas10_model, cas10_1c)) <= 1e-6 and abs(cas10_1c/M - 18.5) < 1e-9
+        print(f"  CAS10 closure: {'PASS (reconstructs 18.5, residual 0.0)' if cas10_closed else '*** FAIL — fire the owner STOP condition'}")
+
         # ---- WI-028 D6 traps (A-5): assert every new mapping ----
         traps = []
         def trap(name, ok, detail):
@@ -611,11 +677,83 @@ def main():
         opt_c = abs(total - overnight) / (abs(overnight) or 1)
         trap("CAS60 Option C (total==overnight, idc reported-only)", opt_c < 1e-12,
              f"total_capital vs overnight_capital rel {opt_c:.2e}; idc line reported separately")
-        print("\n--- WI-028 D6 traps (A-5) ---")
+        # ================= WI-029 D4 traps (A-5) =========================
+        R = o["refs"]
+        tgt = o["target"]
+        # Trap 1 — levelization params: g, Tc, i, n, and the 1.439 factor.
+        lev_factor = b[CH["cas71"]] / (R["annual_om_unlevelized_musd"] * M)
+        trap("WI-029/1 levelization params (g=0.02, Tc=8 NOAK, i=0.07, n=30) + 1.439 factor",
+             R["inflation_rate"] == 0.02 and tgt["construction_time_yr"] == 8.0
+             and tgt["interest_rate"] == 0.07 and float(tgt["lifetime_yr"]) == 30.0
+             and abs(lev_factor - 1.43905) < 1e-4,
+             f"g={R['inflation_rate']}, Tc={tgt['construction_time_yr']} (NOAK, not 10), "
+             f"i={tgt['interest_rate']}, n={tgt['lifetime_yr']}; cas71/annual_om = {lev_factor:.5f}")
+        # Trap 1b [HARD, review must-fix M2] — the handshake-point O&M BASE.
+        # The factor above is mathematically constant in the base, so trap 1 alone
+        # is blind to a wrong base (the design-point 52.517 vs the handshake 54.900).
+        om_base_musd = R["annual_om_unlevelized_musd"]
+        om_base_model = b[f"{P}om_cost__annual_om"] / M
+        trap("WI-029/1b handshake-point O&M base = 54.900 M$/yr (NOT the design-point 52.517)",
+             abs(om_base_musd - 54.900) < 1e-3 and abs(rel(om_base_model, om_base_musd)) <= 1e-6,
+             f"1cfe annual_om {om_base_musd:.6f} M$/yr @ p_net=1000; model {om_base_model:.6f} "
+             f"M$/yr, rel {rel(om_base_model, om_base_musd):+.2e}")
+        # Trap 2 — CAS72 replacement chain: replaceable set, fluence limit, q_n,
+        # n_rep = 4 (the handwritten rung's computed integer), clip inert here.
+        q_n_1c = (pw["p_neutron"] / R["firstwall_area"])
+        fpy = R["fluence_limit_dt"] / max(q_n_1c, 1e-6)
+        cal = fpy / tgt["availability"]
+        n_rep = max(0.0, math.ceil(float(tgt["lifetime_yr"]) / cal) - 1.0)
+        fpy_cap = float(tgt["lifetime_yr"]) * tgt["availability"]
+        cpe_1c = (o["cas22_detail_musd"]["C220101"] + o["cas22_detail_musd"]["C220108"]) * tgt["n_mod"]
+        trap("WI-029/2 CAS72 chain (set {C220101,C220108}, fluence 18.0, n_rep=4, clip inert)",
+             R["replaceable_accounts"] == ["C220101", "C220108"]
+             and R["fluence_limit_dt"] == 18.0 and n_rep == 4.0
+             and 0.5 <= fpy <= fpy_cap,
+             f"q_n={q_n_1c:.5f} MW/m2, FPY={fpy:.5f} in [0.5, {fpy_cap:.1f}] (clip inert), "
+             f"cal={cal:.5f}, n_rep={n_rep:.0f}, cost_per_event={cpe_1c:.3f} M$")
+        # Trap 3 — fuel constants: cost_per_rxn composition, Q_DT, burn correction.
+        cpr = R["M_D_KG"] * R["u_deuterium"] + R["M_Li6_KG"] * R["u_li6"]
+        burn_corr = 1.0 + (1.0 - R["burn_fraction"]) / R["burn_fraction"] * (1.0 - R["fuel_recovery"])
+        trap("WI-029/3 fuel constants (cost_per_rxn = M_D*u_D + M_Li6*u_Li6; Q_DT=17.58; burn x1.19)",
+             abs(rel(cpr, R["cost_per_rxn"])) <= 1e-12 and R["q_eff_dt"] == 17.58
+             and abs(burn_corr - 1.19) < 1e-12,
+             f"cost_per_rxn={cpr:.6e} $/rxn, q_eff={R['q_eff_dt']}, burn correction x{burn_corr:.4f}")
+        # Trap 4 — availability injection: 0.9 over the model's 0.85, into BOTH
+        # CAS72's core_lifetime_cal AND the LCOE denominator (the duty-7 trap).
+        sd_now = json.loads(SYS_DESIGN.read_text())
+        trap("WI-029/4 availability 0.9 injected over model 0.85 -> CAS72 cal AND LCOE denominator",
+             sd_now[f"{P}cas72_calc__availability"] == tgt["availability"] == 0.9
+             and sd_now[f"{P}lcoe_calc__availability"] == 0.9
+             and sd_now[f"{P}lcoe_1cfe_calc__availability"] == 0.9,
+             f"cas72_calc.availability={sd_now[f'{P}cas72_calc__availability']}, "
+             f"lcoe_calc.availability={sd_now[f'{P}lcoe_calc__availability']}, "
+             f"lcoe_1cfe_calc.availability={sd_now[f'{P}lcoe_1cfe_calc__availability']} "
+             f"(model instance binding is 0.85)")
+        # Trap 5 — IDC Option (ii): the comparison channel reads the Item-3 CAS60
+        # reported line; the headline convention is untouched; CAS60 stays out of
+        # total_capital. Together these guard the double-count hazard.
+        crf_1c = (tgt["interest_rate"] * (1 + tgt["interest_rate"]) ** float(tgt["lifetime_yr"])
+                  / ((1 + tgt["interest_rate"]) ** float(tgt["lifetime_yr"]) - 1.0))
+        cas90_recon = crf_1c * (overnight + b[CH["idc"]])
+        idc_factor_headline = (1.0 + tgt["interest_rate"]) ** (tgt["construction_time_yr"] / 2.0)
+        trap("WI-029/5 IDC Option (ii): cas90_1cfe = CRF*(overnight+CAS60); headline idc_factor "
+             "unchanged; total_capital == overnight (CAS60 excluded)",
+             abs(rel(b[CH["cas90_1cfe"]], cas90_recon)) <= 1e-9
+             and abs(idc_factor_headline - 1.310796) < 1e-6
+             and abs(total - overnight) / (abs(overnight) or 1) < 1e-12,
+             f"cas90_1cfe reconstructs from the CAS60 reported line: rel "
+             f"{rel(b[CH['cas90_1cfe']], cas90_recon):+.2e}; headline idc_factor "
+             f"{idc_factor_headline:.6f} = (1+d)^(Yc/2) UNCHANGED (1cfe f_idc form is "
+             f"{((1+tgt['interest_rate'])**tgt['construction_time_yr']-1)/(tgt['interest_rate']*tgt['construction_time_yr']):.6f}); "
+             f"total_capital == overnight_capital, so CAS60 cannot enter the headline base")
+
+        print("\n--- WI-028 D6 + WI-029 D4 traps (A-5) ---")
         for tr in traps:
             print(f"  [{'PASS' if tr['ok'] else 'FAIL'}] {tr['name']}: {tr['detail']}")
 
         rows_out = dict(commit=o["commit"], target=t, injection=inj,
+                        cas10_closure=dict(onecfe=cas10_1c, sysml=cas10_model,
+                                           residual=cas10_residual, closed=bool(cas10_closed)),
                         a2=[dict(account=n, onecfe_1c=one, sysml=sy, rel_dev=r) for n, _, one, sy, r in a2_rows],
                         traps=traps,
                         p_fus=dict(onecfe=pw["p_fus"], sysml=p_fus_sysml),

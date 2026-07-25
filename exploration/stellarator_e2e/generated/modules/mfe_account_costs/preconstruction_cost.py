@@ -4,11 +4,15 @@ TEAx module for Preconstruction_Cost calculation.
 
 CAS10 preconstruction PRE-CONTINGENCY subtotal: land (sqrt of
 plant-total net electric, anchored at ref_net_power) plus the fixed
-adders (permits + licensing + studies + reports + other — fuel/FOAK-
-keyed, so a concept input). costs.py:79 adds CAS10's own contingency;
-deliberately NOT carried here — the plant's CAS29 applies contingency
-once over the direct sum (convention preserved, MR-WI025-3; design-
-stage check: 1cfe full CAS10 = this subtotal x 1.10 exactly).
+adders (permits + licensing + studies + reports + other — fuel- and
+FOAK/NOAK-keyed, so a concept input). costs.py:79 adds CAS10's own
+contingency; deliberately NOT carried here — the plant's CAS29 applies
+contingency once over the direct sum (convention preserved, MR-WI025-3).
+WI-029 doc correction: the old note "1cfe full CAS10 = this subtotal
+x 1.10 exactly" was a stale FOAK reading. At NOAK — the regime both the
+design and handshake points run — contingency_rate_noak = 0.0, so 1cfe's
+full CAS10 equals this subtotal exactly. No number changes; the model
+applies no CAS10 contingency and that was already NOAK-correct.
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
 *Ref**: costs.py:52-80 (cas10_preconstruction);
 costing_constants.yaml:8, :15-23
@@ -63,11 +67,15 @@ class Preconstruction_CostModule(ModuleBase[Preconstruction_CostInput, Float]):
 
 CAS10 preconstruction PRE-CONTINGENCY subtotal: land (sqrt of
 plant-total net electric, anchored at ref_net_power) plus the fixed
-adders (permits + licensing + studies + reports + other — fuel/FOAK-
-keyed, so a concept input). costs.py:79 adds CAS10's own contingency;
-deliberately NOT carried here — the plant's CAS29 applies contingency
-once over the direct sum (convention preserved, MR-WI025-3; design-
-stage check: 1cfe full CAS10 = this subtotal x 1.10 exactly).
+adders (permits + licensing + studies + reports + other — fuel- and
+FOAK/NOAK-keyed, so a concept input). costs.py:79 adds CAS10's own
+contingency; deliberately NOT carried here — the plant's CAS29 applies
+contingency once over the direct sum (convention preserved, MR-WI025-3).
+WI-029 doc correction: the old note "1cfe full CAS10 = this subtotal
+x 1.10 exactly" was a stale FOAK reading. At NOAK — the regime both the
+design and handshake points run — contingency_rate_noak = 0.0, so 1cfe's
+full CAS10 equals this subtotal exactly. No number changes; the model
+applies no CAS10 contingency and that was already NOAK-correct.
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
 *Ref**: costs.py:52-80 (cas10_preconstruction);
 costing_constants.yaml:8, :15-23
@@ -98,11 +106,15 @@ SysML Source: root-0/analyses/mfe_account_costs.sysml:356
 Documentation:
 CAS10 preconstruction PRE-CONTINGENCY subtotal: land (sqrt of
 plant-total net electric, anchored at ref_net_power) plus the fixed
-adders (permits + licensing + studies + reports + other — fuel/FOAK-
-keyed, so a concept input). costs.py:79 adds CAS10's own contingency;
-deliberately NOT carried here — the plant's CAS29 applies contingency
-once over the direct sum (convention preserved, MR-WI025-3; design-
-stage check: 1cfe full CAS10 = this subtotal x 1.10 exactly).
+adders (permits + licensing + studies + reports + other — fuel- and
+FOAK/NOAK-keyed, so a concept input). costs.py:79 adds CAS10's own
+contingency; deliberately NOT carried here — the plant's CAS29 applies
+contingency once over the direct sum (convention preserved, MR-WI025-3).
+WI-029 doc correction: the old note "1cfe full CAS10 = this subtotal
+x 1.10 exactly" was a stale FOAK reading. At NOAK — the regime both the
+design and handshake points run — contingency_rate_noak = 0.0, so 1cfe's
+full CAS10 equals this subtotal exactly. No number changes; the model
+applies no CAS10 contingency and that was already NOAK-correct.
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
 *Ref**: costs.py:52-80 (cas10_preconstruction);
 costing_constants.yaml:8, :15-23

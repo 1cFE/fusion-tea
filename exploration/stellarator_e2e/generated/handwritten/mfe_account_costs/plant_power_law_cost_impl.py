@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:430
+SysML Source: root-0/analyses/mfe_account_costs.sysml:434
 
 SysML Expressions:
     n_mod = 1.0
@@ -48,7 +48,7 @@ inputs (MR-3, bound at the instance).
 *Ref**: cas22.py:702 (waste), :718 (fuel), :724 (other), :731 (I&C); costs.py:256 (CAS40 owner)
 *Basis**: Plant-total power-law account cost
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:430
+SysML Source: root-0/analyses/mfe_account_costs.sysml:434
 
 SysML Expressions:
     n_mod = 1.0

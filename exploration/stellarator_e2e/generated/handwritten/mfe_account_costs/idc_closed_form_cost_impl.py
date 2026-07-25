@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:597
+SysML Source: root-0/analyses/mfe_account_costs.sysml:601
 
 SysML Expressions:
     f_idc = ((1.0 + interest_rate) ** construction_years - 1.0) / (interest_rate * construction_years) - 1.0
@@ -48,7 +48,7 @@ EXCLUDED from total_capital; the DCF idc_factor is untouched.
 *Ref**: costs.py:286-297 (cas60_idc)
 *Basis**: Uniform-spend closed-form interest during construction
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:597
+SysML Source: root-0/analyses/mfe_account_costs.sysml:601
 
 SysML Expressions:
     f_idc = ((1.0 + interest_rate) ** construction_years - 1.0) / (interest_rate * construction_years) - 1.0

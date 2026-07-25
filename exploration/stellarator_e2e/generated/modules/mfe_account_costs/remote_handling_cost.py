@@ -24,9 +24,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:456
+SysML Source: root-0/analyses/mfe_account_costs.sysml:460
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:456
+SysML Source: root-0/analyses/mfe_account_costs.sysml:460
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/remote_handling_cost_impl.py
@@ -80,9 +80,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:456
+SysML Source: root-0/analyses/mfe_account_costs.sysml:460
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:456
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:460
 
     Calculation Specification:
         p_et_ref = 1100.0

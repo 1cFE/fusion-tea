@@ -1,141 +1,145 @@
-# Anchor A — 1costingFE Machinery Handshake
+# Anchor A — 1costingFE handshake: the criterion-3 verdict (A-4 form)
 
-> **Updated 2026-07-14 (WI-019).** The faithful power balance landed: the SysML
-> thermal power now recovers the alpha power (collapsed form of physics.py
-> steps 4–7), `p_pump` is the same absolute input as 1costingFE, and the alpha
-> fraction is exact. Result: every power channel and every power-scaled account
-> now matches 1costingFE end-to-end at the float32 floor (≤1e-7). The remaining
-> end-to-end gap is purely the documented structural scope (unmodeled CAS22
-> tail, CAS40/50/60, LCOE construction). Numbers below are the re-run; the
-> pre-WI-019 numbers are quoted inline where the delta is the story.
+**Generated from an executed run** by `build_verdict_report.py`; 1costingFE commit `0254385` (pin `0254385`).
+Work item WI-029 (STELLARATOR-DEMO Item 4). Supersedes the Jul-18 report wholesale.
 
-Concept Success Criterion 3. Feed the generated SysML forward model the exact plant point 1costingFE solved for (its solved fusion power plus its full merged parameter set), then check that the generated SysML pipeline reproduces 1costingFE's per-account costs and LCOE. This isolates the codegen/execution machinery from modeling judgment: the SysML calc defs were reproduced from 1costingFE formulas, so where the formula is identical and codegen is faithful, the numbers match tightly. Divergences reveal the initial (Stellaris) model's documented simplifications.
+Handshake point: stellarator DT, net_electric 1000.0 MW, availability 0.9, lifetime 30 yr, construction 8.0 yr, interest 0.07, inflation 0.02, NOAK, n_mod 1.
 
-## What was run
+## Verdict
 
-- **1costingFE commit: `0254385`** (pinned; the handshake asserts the emitted point carries this commit).
-- 1costingFE `CostModel(STELLARATOR, DT).forward(net_electric_mw=1000, availability=0.90, lifetime_yr=30, n_mod=1, construction_time_yr=8.0, interest_rate=0.07, inflation_rate=0.02, noak=True, elon=1.6)` — the `examples/dt_stellarator.py` clean 1 GWe point.
-- The generated SysML pipeline (`generated/pipelines/mfe_stellarator.yaml`) executed twice through the teax executor, driven by 1costingFE's point instead of the Stellaris design-point bindings. This is the same execution path `run_stellaris.py` already certifies bit-exact against the pure-Python oracle (rel tol 1e-9); only the inputs change.
+### (1) Per-account A-2 pass table (|rel dev| vs 1cfe float32, bar 1e-6)
 
-Two interpreters are involved because `costingfe` (JAX) and `simkit` never coexist in one venv. The 1costingFE point is emitted to `onecfe_point.json` by `emit_1cfe_point.py` run in the 1costingfe uv env; the handshake itself runs in the teax exec venv.
+Every modeled account at the handshake point, fed 1cfe's own inputs.
 
-Artifacts:
-- `handshake_1costingfe.py` — the handshake (runs both, maps, compares, restores inputs).
-- `emit_1cfe_point.py` — the 1costingFE point emitter (run in the 1costingfe uv env).
-- `onecfe_point.json` — the emitted 1costingFE solved point + merged params.
-- `handshake_comparison.json` — the machine-readable comparison.
+| account | CAS | 1cfe | model | rel dev | A-2 |
+|---|---|---:|---:|---:|---|
+| magnet | C220103 | 2,129.9527 M$ | 2,129.9527 M$ | -5.44e-10 | PASS |
+| heating | C220104 | 158.4870 M$ | 158.4870 M$ | +0.00e+00 | PASS |
+| divertor | C220108 | 100.7406 M$ | 100.7406 M$ | -6.49e-09 | PASS |
+| blanket | C220101 | 570.4196 M$ | 570.4196 M$ | +7.29e-08 | PASS |
+| shield | C220102 | 333.2815 M$ | 333.2815 M$ | +7.26e-08 | PASS |
+| structure | C220105 | 25.5236 M$ | 25.5236 M$ | -4.51e-08 | PASS |
+| vessel | C220106_vessel | 87.5907 M$ | 87.5907 M$ | +5.48e-08 | PASS |
+| power_supplies | C220107 | 81.4013 M$ | 81.4013 M$ | +2.66e-08 | PASS |
+| turbine | CAS23 | 228.7282 M$ | 228.7283 M$ | +9.02e-08 | PASS |
+| electric | CAS24 | 97.4271 M$ | 97.4271 M$ | +4.40e-08 | PASS |
+| heat_rejection | CAS26 | 98.8367 M$ | 98.8367 M$ | +9.99e-08 | PASS |
+| misc | CAS25 | 59.3020 M$ | 59.3020 M$ | +3.55e-08 | PASS |
+| remote_handling | | 151.8721 M$ | 151.8721 M$ | -3.23e-08 | PASS |
+| installation | | 509.5986 M$ | 509.4977 M$ | -1.98e-04 | MISS |
+| coolant | | 202.0452 M$ | 202.0452 M$ | +1.62e-08 | PASS |
+| aux_cooling | | 18.9210 M$ | 18.9210 M$ | -2.92e-08 | PASS |
+| waste | | 5.5254 M$ | 5.5254 M$ | +7.60e-08 | PASS |
+| fuel_handling | | 120.0000 M$ | 120.0000 M$ | -5.21e-08 | PASS |
+| other_rpe | | 11.5000 M$ | 11.5000 M$ | +2.86e-09 | PASS |
+| inc | | 73.8488 M$ | 73.8489 M$ | +7.95e-08 | PASS |
+| owner | | 41.2000 M$ | 41.2000 M$ | +3.51e-08 | PASS |
+| supplementary | | 578.5841 M$ | 578.5480 M$ | -6.24e-05 | MISS |
+| idc (CAS60, reported) | | 2,223.6880 M$ | 2,223.3838 M$ | -1.37e-04 | MISS |
+| cas71 (levelized O&M) | | 79.0036 M$ | 79.0036 M$ | +1.08e-07 | PASS |
+| cas72 (levelized repl.) | | 82.2300 M$ | 82.2300 M$ | +5.22e-07 | PASS |
+| cas70 (= 71 + 72) | | 161.2336 M$ | 161.2337 M$ | +3.19e-07 | PASS |
+| cas80 (levelized fuel) | | 0.7691 M$ | 0.7691 M$ | +1.03e-07 | PASS |
+| cas90_1cfe (Option ii) | | 813.5873 M$ | 813.4759 M$ | -1.37e-04 | MISS |
+| lcoe_1cfe (Option ii) | | 123.7430 $/MWh | 123.7289 $/MWh | -1.14e-04 | MISS |
+| buildings (CAS21) [SysML fwd@1cfe-pwr] | | 619.4355 M$ | 619.4354 M$ | -7.50e-08 | PASS |
+| preconstruction (CAS10) [SysML fwd@1cfe-pwr] | | 18.5000 M$ | 18.5000 M$ | +7.25e-09 | PASS |
+| special_materials (CAS27) [design-input] | | 20.7879 M$ | 20.7879 M$ | +0.00e+00 | PASS |
 
-## The solved point (1costingFE)
+**Newly brought under the handshake by WI-029** — all four forward-computed accounts pass:
+- `cas71 (levelized O&M)` — 1cfe 79.00362 M$/yr, model 79.00363 M$/yr, rel +1.08e-07 — **PASS**
+- `cas72 (levelized repl.)` — 1cfe 82.22999 M$/yr, model 82.23003 M$/yr, rel +5.22e-07 — **PASS**
+- `cas70 (= 71 + 72)` — 1cfe 161.23361 M$/yr, model 161.23366 M$/yr, rel +3.19e-07 — **PASS**
+- `cas80 (levelized fuel)` — 1cfe 0.76907 M$/yr, model 0.76907 M$/yr, rel +1.03e-07 — **PASS**
 
-This is a genuinely different machine from the Stellaris SysML defaults (Stellaris: R=12.7 m, b_center=5.86 T; post-WI-019: p_net=786 MW, LCOE 189). The handshake uses 1costingFE's point throughout.
+CAS72 is forward-computed on the WI-022 handwritten rung (the `ceil` in `n_rep` breaks the codegen arithmetic envelope), with every 1cfe guard carried verbatim in both the impl and its independent oracle mirror; the two agree at rel 0.0 and the guards are proven live on synthetic inputs. n_rep = 4 at this point, computed every run, never frozen.
 
-> **Update (WI-023, 2026-07-18):** the b_center = 5.86 T above was an extraction phantom (text-only Table 3 row; the Table 2/5 images and the published paper print axis-averaged B₀ = 9.0 T) — the instance now binds 9.0. Likewise p_tf = 111 MW mapped a nonexistent "conduction power to coils" row (111 is the stored magnetic energy in GJ); the instance now binds 0.0 (source defers the value; WI-024). The handshake is unaffected by construction: `magnet__B` and `pb__p_tf` are injected from 1costingFE's own refs, and the comparison below stands unchanged.
+### (2) Full signed-magnitude remainder itemization
 
-| quantity | value |
-|---|---|
-| fusion power `p_fus` | 2582.07 MW |
-| thermal `p_th` / gross `p_et` | 2819.07 / 1127.63 MW |
-| net electric `p_net` | 1000.0 MW |
-| q_eng / rec_frac | 8.835 / 0.1132 |
-| LCOE | 123.74 $/MWh |
-| total capital | 10,095.8 M$ |
-| CAS22 (full) | 4581.4 M$ |
-| R0 / b_center / r_coil(vessel_or) | 5.5 m / 6.0 T / 3.5 m |
+| # | remainder | 1cfe | model | signed gap | reason |
+|---|---|---:|---:|---:|---|
+| R1 | C220106_pump (vacuum-pumping sub-account) | 0.7206 M$ | structurally absent | **-0.7206 M$** | The model's vessel calc is the shell term only. Documented WI-028 simplification, explained-and-kept. |
+| R2 | headline IDC convention (Option ii) | multiplier 1.282475 (uniform-spend closed form) | multiplier 1.310796 (even-spend midpoint) | **+17.9639 M$/yr** on the annual capital charge (+2.208%) | A genuine convention choice, ruled Option (ii) by the owner 2026-07-25: the model's DCF headline convention is kept and the difference is reported, not closed. Applies to the HEADLINE channel only. |
 
-Fusion power is GIVEN: the SysML `DT Fusion Power` calc was short-circuited by solving `sigma_v` so the geometry × density × reactivity product reproduces 1costingFE's `p_fus` exactly (injector reproduced 2582.066 MW, rel dev 0).
+**Closed this item, no longer remainders:**
+- **CAS10 — closed AS ERROR.** One mis-set binding (`precon_fixed_base` carried FOAK `plant_studies` 20.0 in a NOAK plant). Fixed 32 M$ -> 16 M$; the model now reconstructs 1cfe's CAS10 exactly: 1cfe 18.500000 M$, model 18.500000 M$, **residual 0.000000 M$** (rel +7.25e-09, 1cfe's float32 emission and the injected p_net's own residue). The owner stop condition did not fire.
+- **CAS72 — left the remainder.** Was $82.230M/yr structurally absent; now forward-computed and under A-2.
 
-## Per-account comparison (formula-reproduced), $
+R1 is a capital-side remainder, so it propagates into every downstream capital line. Its propagation factor through the WI-028 assembly is 1.14 (installation) x [1 + CAS30 0.20x(8/6) + CAS50 shipping 0.015 + tax 0.01 + insurance 0.015x(1+0.20x(8/6))] = 1.494160, giving an overnight gap of -1.0767 M$ against the executed -1.0770 M$.
 
-The primary table is the end-to-end SysML pipeline output vs 1costingFE. The last column is the **formula-isolation** check: the SysML cost formula fed 1costingFE's OWN p_th/p_et. Pre-WI-019 these two differed (the power balance diverged −16.4%); **after WI-019 the end-to-end run IS at 1costingFE's power, so both columns sit at the float32 floor.**
+The 1cfe-form comparison channel `cas90_1cfe` misses A-2 at -1.37e-04 for exactly this reason and no other: trap 5 shows it reconstructs from the model's own overnight capital and CAS60 reported line at rel 0.0, so the formula is exact and the deviation is entirely the inherited R1 propagation.
 
-| account | 1costingFE ($) | SysML pipeline ($) | end-to-end rel | formula-iso rel | note (pre-WI-019 end-to-end) |
-|---|---:|---:|---:|---:|---|
-| magnet (C220103) | 2,129,952,695 | 2,129,952,694 | −5.4e-10 | −5.4e-10 | power-independent; residual = mu0 constant precision (was −0.00%) |
-| heating (C220104) | 158,487,000 | 158,487,000 | 0 | 0 | ECRH, fixed p_ecrh; exact (was +0.00%) |
-| divertor (C220108) | 100,740,562 | 100,740,562 | −6.5e-9 | −3.8e-8 | (p_th/1000)^0.5 (was −8.58%) |
-| blanket (C220101) | 570,419,556 | 570,419,597 | +7.3e-8 | +3.6e-8 | (p_th/2500)^0.6 (was −10.20%) |
-| shield (C220102) | 333,281,464 | 333,281,488 | +7.3e-8 | +3.5e-8 | (p_th/2500)^0.6 (was −10.20%) |
-| structure (C220105) | 25,523,571 | 25,523,570 | −4.5e-8 | −7.6e-8 | (p_et/1100)^0.5 (was −8.58%) |
-| vessel (C220106_vessel) | 87,590,721 | 87,590,726 | +5.5e-8 | +1.7e-8 | (p_et/1100)^0.6 (was −10.20%). SysML models the vessel shell only; 1cfe C220106 also adds a 0.72 M$ gas-load pump sub-term |
-| power_supplies (C220107) | 81,401,321 | 81,401,324 | +2.7e-8 | −1.7e-8 | (p_et/1100)^0.7 (was −11.80%). ARIES-CS-derived base (see footnote) |
-| turbine (CAS23) | 228,728,241 | 228,728,262 | +9.0e-8 | (linear) | n_mod·p_the·rate (was −16.42%) |
-| electric (CAS24) | 97,427,139 | 97,427,144 | +4.4e-8 | (linear) | n_mod·p_et·rate (was −16.42%) |
-| heat_rejection (CAS26) | 98,836,670 | 98,836,680 | +1.0e-7 | (linear) | n_mod·p_th·rate (was −16.42%) |
-| misc (CAS25) | 59,302,006 | 59,302,008 | +3.6e-8 | (linear) | n_mod·p_et·rate (was −16.42%) |
+### (3) Reconciliation arithmetic (shown, not asserted)
 
-**Every account now matches 1costingFE end-to-end at 1costingFE's own numerical floor** (worst: heat_rejection +1.0e-7; the reference power table is JAX float32, ~1e-7 relative precision). The magnet, on the pure-float64 path, matches to 5.4e-10, its only residual the mu0 constant precision. **Codegen faithfulness (formula isolation) was already proven pre-WI-019; the end-to-end match is the new WI-019 result (SV-025/SV-026).**
+Two LCOE channels coexist by design under the ruled Option (ii). Both reconcile.
 
-Classification: all 12 accounts above are **formula-reproduced** (the real machinery test).
+**Channel A — the 1cfe-form comparison channel `lcoe_1cfe`** (the like-for-like handshake compare):
 
-## Power balance — RESOLVED by WI-019 (was the single root cause of the end-to-end gap)
+```
+  residual gap   = model 123.728888783  -  1cfe 123.743011475   =  -0.014122691 $/MWh
 
-The SysML power balance now matches 1costingFE channel-for-channel at the reference's float32 floor:
+  itemized sum   = (CAS90_1cfe gap + CAS70 gap + CAS80 gap) x 1e6 / annual energy
+                 = (-0.111349858 +0.000051486 +0.000000080) M$/yr x 1e6 / 7,884,000.481 MWh/yr
+                 = -0.014116982 $/MWh
+                 where CAS90_1cfe gap = CRF 0.080586404 x (1 + f_idc 0.282475321) x overnight gap -1.077015 M$
+                       overnight gap  = -1.494160 x C220106_pump 0.720613 M$   (R1)
 
-| channel | 1costingFE | SysML pipeline | rel dev | (pre-WI-019 rel dev) |
-|---|---:|---:|---:|---:|
-| p_th | 2819.07 | 2819.07 | +6.2e-8 | −16.42% |
-| p_the | 1127.63 | 1127.63 | +6.2e-8 | −16.42% |
-| p_et | 1127.63 | 1127.63 | +6.2e-8 | −16.42% |
-| p_net | 1000.00 | 1000.00 | +4.6e-8 | −23.52% |
-| q_eng | 8.835 | 8.835 | +3.4e-8 | −39.95% |
-| rec_frac | 0.1132 | 0.1132 | −4.3e-8 | +39.95% |
+  residual       = -0.014122691  -  -0.014116982  =  -5.709e-06 $/MWh
+                 = 4.61e-08 relative to LCOE     <= 1e-6   CLOSES
+```
 
-The fix (WI-019, `models/library/analyses/mfe_power_balance.sysml`): thermal power is the collapsed faithful form of 1costingFE steps 4–7 — `p_th = mn·p_neutron + p_alpha + p_input + eta_p·p_pump`, exact in the DEC-free, non-radiation-limited regime because `p_rad + p_wall = p_alpha + p_input` identically (radiated and transported charged-particle power are both recovered at the wall). The pre-WI-019 form omitted the alpha term (547 MW at this point, ~19% of p_th). Also part of the fix: `p_pump` is 1costingFE's absolute input (the former `fpcppf` fraction had no 1cfe counterpart) and the alpha fraction is the exact ratio 3.52/17.58. This satisfies SV-025 (≤1e-5 required; measured ≤6.3e-8).
+**Channel B — the model's DCF headline `lcoe`** (the design-point convention, unchanged):
 
-## Pass-through accounts (tautological)
+```
+  residual gap   = model 126.007408764  -  1cfe 123.743011475   =  +2.264397289 $/MWh   (+1.830%)
 
-The SysML takes these as harness inputs; feeding 1costingFE's values makes them match trivially. They are **not a real test** of the machinery.
+  itemized sum   = (IDC-convention line + CAS90_1cfe gap + CAS70 gap + CAS80 gap) x 1e6 / annual energy
+                 = (+17.963853456 -0.111349858 +0.000051486 +0.000000080) M$/yr x 1e6 / 7,884,000.481 MWh/yr
+                 = +2.264403104 $/MWh
+                 where the IDC-convention line (R2) = CRF 0.080586404 x overnight 7,871.0726 M$ x (1.310796 - 1.282475)
+                                                    = +17.963853 M$/yr = +2.278520 $/MWh (~+1.84% on LCOE)
 
-| account | 1costingFE ($) | SysML ($) | rel dev |
-|---|---:|---:|---:|
-| buildings (CAS21) | 619,435,486 | 619,435,486 | 0% |
-| preconstruction (CAS10) | 18,500,000 | 18,500,000 | 0% |
-| special_materials (CAS27) | 20,787,933 | 20,787,933 | 0% |
+  residual       = +2.264397289  -  +2.264403104  =  -5.815e-06 $/MWh
+                 = 4.70e-08 relative to LCOE     <= 1e-6   CLOSES
+```
 
-## Rollup + LCOE (SysML simplified model vs 1costingFE)
+The leftover in each channel is the float32 A-2 residue of the accounts themselves (1cfe emits float32; the model computes float64) — it is smaller than the 1e-6 aggregate tolerance by more than an order of magnitude.
 
-| line | 1costingFE | SysML | rel dev | (pre-WI-019) |
-|---|---:|---:|---:|---:|
-| contingency (CAS29) | 0 | 0 | 0% (both NOAK) | 0% |
-| indirect (CAS30) | 1,522,919,189 | 1,234,777,193 | −18.92% | −22.44% |
-| direct / CAS20 | 5,710,946,289 | 4,630,414,472 | −18.92% | −22.44% |
-| total capital | 10,095,837,891 | 5,865,191,665 | −41.90% | −44.43% |
-| LCOE ($/MWh) | 123.74 | 85.55 | −30.87% | −13.22% |
-| net electric (MW) | 1000.0 | 1000.0 | +0.00% | −23.52% |
+### (4) Criterion-3 verdict
 
-The rollup and LCOE gaps are **acknowledged SysML simplifications**, and after WI-019 they have exactly one cause left:
+**MET.**
 
-1. ~~Power-balance shrinkage~~ — **resolved by WI-019** (every power-scaled account now at the float floor).
-2. **Reduced account set (structural).** The SysML CAS22 models only the 8 powercore lines (C220101–C220108). 1costingFE's full CAS22 (4581 M$) additionally carries **1093 M$ of unmodeled reactor-plant lines** the SysML has no calc for: C220110 remote handling 151.9, C220111 installation labor 509.6, C220200 coolant 202.0, C220300 aux cooling+cryoplant 18.9, C220400 waste 5.5, C220500 fuel handling 120.0, C220600 other 11.5, C220700 I&C 73.8 (plus the 0.72 vessel pump sub-term). Above CAS22 the SysML also omits CAS40 owner (41.2), CAS50 supplementary (578.6), and CAS60 IDC (2224). The SysML instead folds construction financing into the LCOE via an `idc_factor`.
+The bar (owner ruling, 2026-07-18) is *explaining* the end-to-end LCOE gap, and closing any errors found. Both halves hold at the handshake point:
 
-LCOE construction also differs structurally. 1costingFE `LCOE = (CAS90 + CAS70 + CAS80)·1e6 / (8760·p_net·avail)` with CAS90 = CRF·total_capital, CAS70 an inflation-levelized O&M annuity, and CAS80 fuel. The SysML uses `LCOE = (total_capital·idc_factor·CRF + annual_om) / (8760·p_net·avail)` — a single CRF·IDC on total capital plus a flat O&M, no fuel term.
+- **Every account the model carries is under A-2 or itemized with a signed magnitude.** The four accounts WI-029 brought in — CAS71, CAS72, CAS70, CAS80 — all pass at 1e-6 (yes). The accounts that miss (`installation`, `supplementary`, `idc`/CAS60, `cas90_1cfe`, `lcoe_1cfe`) miss *only* by the propagation of the single itemized capital remainder R1, each with a reconstruction trap proving the formula itself is exact.
+- **The remainder is fully itemized and reconciles.** Two lines: R1 C220106_pump (a modeled simplification) and R2 the headline IDC convention (a ruled choice, kept deliberately). The residual end-to-end gap equals the itemized sum in both LCOE channels, within 1e-6 relative.
+- **The one error found was closed.** CAS10's +$16.0M/+86.5% divergence resolved to a single mis-set FOAK constant and now reconstructs 1cfe exactly.
 
-**Why the LCOE gap GREW from −13% to −31%: a cancellation was removed, not a regression introduced.** Pre-WI-019 the understated net electric (−23.5%, the LCOE denominator) pushed LCOE *up* while the understated capital pushed it *down*; the −13% was the accident of those two errors partly offsetting. With the denominator now exact, the LCOE gap honestly shows the missing capital scope (unmodeled accounts + LCOE construction). The −31% is the true structural distance, and it is the measured target for the Stage-3 account-scope items (CAS22 tail, CAS40/50/60, CAS70/80, IDC treatment).
+No structural gap remains unexplained. There is no third state: this is met, not partially met.
 
-## Itemized discrepancies, with cause
+### Note on the two coexisting LCOE channels
 
-1. **RESOLVED (WI-019). Power balance −16.4% on p_th (and downstream)** — the SysML balance now recovers the alpha power (collapsed physics.py steps 4–7); all six power channels ≤6.3e-8 (SV-025).
-2. **RESOLVED (WI-019). Power-scaled powercore accounts −8.6% to −11.8%** — pure consequence of (1); now ≤7.3e-8 end-to-end (SV-026).
-3. **RESOLVED (WI-019). BOP accounts −16.4%** — pure consequence of (1); now ≤1.0e-7 end-to-end (SV-026).
-4. **magnet −5.4e-10** — mu0 constant precision (SysML literal `1.25663706212e-6` vs 1cfe `4π·1e-7`). Trivial; noted, not fixed (it is the codegen'd model constant). Not blocking.
-5. **vessel: SysML omits the C220106 gas-load pump sub-term** (0.72 M$, ~0.8% of the vessel account here). Documented simplification. Not blocking.
-6. **CAS22 reduced account set: 1093 M$ unmodeled** (C220110/111/200/300/400/500/600/700). Structural — the initial SysML models only the 8 powercore lines. Not blocking.
-7. **Rollup omits CAS40/50/60** (41.2 / 578.6 / 2224 M$) — structural SysML simplification. Not blocking.
-8. **LCOE construction differs** (single CRF·IDC + flat O&M, no CAS70 levelization, no CAS80 fuel). Structural. Not blocking. Now fully visible as the −31% LCOE gap (see rollup section).
-9. **RESOLVED (WI-019). fpcppf has no 1costingFE counterpart** — the calc now takes 1costingFE's absolute `p_pump` [MW] directly; the mapping trap no longer exists.
+- **Headline (design point): `lcoe_calc` — the DCF core.** Keeps `idc_factor = (1+d)^(Yc/2)` = 1.310796 and `total_capital = overnight_capital` (CAS60 excluded, Item-3 Option C). This is the model's own LCOE and it is what the design-point run reports.
+- **Comparison: `lcoe_1cfe` — 1costingFE's financing form.** `CRF x (overnight + CAS60)` reusing the Item-3 CAS60 reported line, over the same denominator. Compared under A-2 at the handshake point. **Not** the design-point headline.
 
-No discrepancy was a blocking discovery. The machinery test — codegen faithfulness of the reproduced formulas — passes cleanly (formula-isolation ~1e-8, at 1costingFE's float32 floor).
+Trap 5 asserts on every run that the headline `idc_factor` is unchanged and that `total_capital == overnight_capital`, so CAS60 cannot enter the headline capital base — the two channels cannot double-count.
 
-## Mapping traps (handled)
+### Trap table (A-5) — every new mapping asserted
 
-- **Fusion power GIVEN** — injected via solved sigma_v; SysML reproduced 1cfe p_fus to rel 0.
-- **b_center vs B** — fed 1cfe's `b_center` = 6.0 T (coil-cost field) to the magnet `B` input, NOT the radiation `B` = 5.0 T.
-- **r_coil** — fed 1cfe's `vessel_or` = 3.5 m.
-- **G / coil_markup / cost_per_kAm** — confirmed from 1cfe: G = 8π² = 78.9568 (stellarator path_factor 2), markup 5.87, REBCO 50 $/kA·m.
-- **Money unit** — every 1cfe M$ coefficient (unit costs, per-MW rates, bases) fed ×1e6 so the SysML rolls up in $; magnet cost_per_kAm fed as-is ($, the SysML magnet omits the /1e6). Compared in $.
-- **Power-balance params** — mn, eta_th, eta_p, eta_pin(effective 0.5), f_sub, p_pump, p_trit, p_house, p_cryo mapped directly (p_pump direct since WI-019; see item 9). p_coils→p_tf (p_pf=0), p_cool→p_tfcool (p_pfcool=0).
+| trap | result | detail |
+|---|---|---|
+| fuel-keyed bases (DT) | PASS | remote_handling=150, fuel=120, owner=41.2, spares=0.03, startup=40, decom=272 |
+| plant-total/per-module + ref-power split (clean accounts @ 1e-6) | PASS | 8 remainder-free tail/CAS40 accounts under 1e-6 => power/ref/base mapping correct |
+| installation base = 0.14*Sigma(C220101..110) [+ pump A-4] | PASS | installation reconstructs to 1cfe with +0.14*C220106_pump: rel -3.12e-08 |
+| F-2/F-3 structural (cas28=5.0; cas20/cas30 reconstruct) | PASS | cas28=5.0; cas20 recon rel -2.01e-08; cas30 recon rel -1.38e-07 |
+| CAS60 Option C (total==overnight, idc reported-only) | PASS | total_capital vs overnight_capital rel 0.00e+00; idc line reported separately |
+| WI-029/1 levelization params (g=0.02, Tc=8 NOAK, i=0.07, n=30) + 1.439 factor | PASS | g=0.02, Tc=8.0 (NOAK, not 10), i=0.07, n=30; cas71/annual_om = 1.43905 |
+| WI-029/1b handshake-point O&M base = 54.900 M$/yr (NOT the design-point 52.517) | PASS | 1cfe annual_om 54.900002 M$/yr @ p_net=1000; model 54.900002 M$/yr, rel +0.00e+00 |
+| WI-029/2 CAS72 chain (set {C220101,C220108}, fluence 18.0, n_rep=4, clip inert) | PASS | q_n=3.12851 MW/m2, FPY=5.75353 in [0.5, 27.0] (clip inert), cal=6.39282, n_rep=4, cost_per_event=671.160 M$ |
+| WI-029/3 fuel constants (cost_per_rxn = M_D*u_D + M_Li6*u_Li6; Q_DT=17.58; burn x1.19) | PASS | cost_per_rxn=1.726064e-23 $/rxn, q_eff=17.58, burn correction x1.1900 |
+| WI-029/4 availability 0.9 injected over model 0.85 -> CAS72 cal AND LCOE denominator | PASS | cas72_calc.availability=0.9, lcoe_calc.availability=0.9, lcoe_1cfe_calc.availability=0.9 (model instance binding is 0.85) |
+| WI-029/5 IDC Option (ii): cas90_1cfe = CRF*(overnight+CAS60); headline idc_factor unchanged; total_capital == overnight (CAS60 excluded) | PASS | cas90_1cfe reconstructs from the CAS60 reported line: rel +0.00e+00; headline idc_factor 1.310796 = (1+d)^(Yc/2) UNCHANGED (1cfe f_idc form is 1.282475); total_capital == overnight_capital, so CAS60 cannot enter the headline base |
 
-## Footnotes
+---
 
-- **C220107 power supplies is ARIES-CS-derived.** It is INCLUDED here (this handshake is not the hold-out blind), and matches to the float32 floor when fed 1cfe power. It must be excluded/footnoted in the later ARIES-CS hold-out comparison. No ARIES-CS source was read; only 1costingFE's computed value (81.40 M$) is used.
-- No barred hold-out paths were read.
+PROTOCOL: `knowledge/holdout/aries-cs/PROTOCOL.md` §3 barred paths were not read at any stage of WI-029. The C220107 power-supplies sub-account remains the footnoted ARIES-CS-derived value in the 1costingFE lineage exception.

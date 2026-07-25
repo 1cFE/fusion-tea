@@ -1,7 +1,7 @@
 {
   "snapshot_format_version": 5,
   "model_name": "models",
-  "captured_at": "2026-07-21T02:26:55.168728+00:00",
+  "captured_at": "2026-07-25T15:59:16.147257+00:00",
   "constraint_lowering_mode": "applied",
   "constraint_facts": {
     "contexts": [
@@ -1098,7 +1098,7 @@
         "location": {
           "column": 9,
           "file": "root-0/designs/generic_mfe/mfe_plant.sysml",
-          "line": 596
+          "line": 724
         },
         "membership_kind": null,
         "omitted_default_formals": [],
@@ -1231,7 +1231,7 @@
         "location": {
           "column": 9,
           "file": "root-0/designs/generic_mfe/mfe_plant.sysml",
-          "line": 600
+          "line": 728
         },
         "membership_kind": null,
         "omitted_default_formals": [
@@ -1400,7 +1400,7 @@
         "location": {
           "column": 9,
           "file": "root-0/designs/stellarator_09/stellarator_plant.sysml",
-          "line": 799
+          "line": 869
         },
         "membership_kind": null,
         "omitted_default_formals": [],
@@ -1570,7 +1570,7 @@
         "location": {
           "column": 9,
           "file": "root-0/designs/stellarator_09/stellarator_plant.sysml",
-          "line": 803
+          "line": 873
         },
         "membership_kind": null,
         "omitted_default_formals": [],
@@ -1737,7 +1737,7 @@
         "location": {
           "column": 9,
           "file": "root-0/designs/stellarator_09/stellarator_plant.sysml",
-          "line": 807
+          "line": 877
         },
         "membership_kind": null,
         "omitted_default_formals": [],
@@ -2984,6 +2984,391 @@
       "execution_order": [
         "f_idc",
         "cost"
+      ]
+    },
+    "Levelized_Annual_Cost": {
+      "calc_def_name": "Levelized_Annual_Cost",
+      "overall_compilability": "fully_compilable",
+      "output_results": [
+        {
+          "output_name": "a1",
+          "compilability": "fully_compilable",
+          "python_expression": "(inputs.annual_cost * ((1.0 + inputs.inflation_rate) ** inputs.project_time))",
+          "input_refs": [
+            "annual_cost",
+            "inflation_rate",
+            "project_time"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "disc_pow_n",
+          "compilability": "fully_compilable",
+          "python_expression": "((1.0 + inputs.interest_rate) ** inputs.operational_years)",
+          "input_refs": [
+            "interest_rate",
+            "operational_years"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "crf",
+          "compilability": "fully_compilable",
+          "python_expression": "((inputs.interest_rate * disc_pow_n) / (disc_pow_n - 1.0))",
+          "input_refs": [
+            "interest_rate"
+          ],
+          "intermediate_refs": [
+            "disc_pow_n"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        },
+        {
+          "output_name": "pv",
+          "compilability": "fully_compilable",
+          "python_expression": "((a1 * (1.0 - (((1.0 + inputs.inflation_rate) / (1.0 + inputs.interest_rate)) ** inputs.operational_years))) / (inputs.interest_rate - inputs.inflation_rate))",
+          "input_refs": [
+            "inflation_rate",
+            "interest_rate",
+            "operational_years"
+          ],
+          "intermediate_refs": [
+            "a1"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "levelized",
+          "compilability": "fully_compilable",
+          "python_expression": "(crf * pv)",
+          "input_refs": [],
+          "intermediate_refs": [
+            "crf",
+            "pv"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        }
+      ],
+      "execution_order": [
+        "a1",
+        "disc_pow_n",
+        "crf",
+        "pv",
+        "levelized"
+      ]
+    },
+    "DT_Fuel_Cost": {
+      "calc_def_name": "DT_Fuel_Cost",
+      "overall_compilability": "fully_compilable",
+      "output_results": [
+        {
+          "output_name": "annual_raw",
+          "compilability": "fully_compilable",
+          "python_expression": "((((((inputs.n_mod * inputs.p_fus) * (3600.0 * 8760.0)) * 1000000.0) * inputs.availability) * inputs.cost_per_rxn) / (inputs.q_eff * inputs.mev_to_joules))",
+          "input_refs": [
+            "n_mod",
+            "p_fus",
+            "availability",
+            "cost_per_rxn",
+            "q_eff",
+            "mev_to_joules"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "burn_correction",
+          "compilability": "fully_compilable",
+          "python_expression": "(1.0 + (((1.0 - inputs.burn_fraction) / inputs.burn_fraction) * (1.0 - inputs.fuel_recovery)))",
+          "input_refs": [
+            "burn_fraction",
+            "fuel_recovery"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "annual_fuel",
+          "compilability": "fully_compilable",
+          "python_expression": "(annual_raw * burn_correction)",
+          "input_refs": [],
+          "intermediate_refs": [
+            "annual_raw",
+            "burn_correction"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        }
+      ],
+      "execution_order": [
+        "annual_raw",
+        "burn_correction",
+        "annual_fuel"
+      ]
+    },
+    "Levelized_Replacement_Cost": {
+      "calc_def_name": "Levelized_Replacement_Cost",
+      "overall_compilability": "manual_required",
+      "output_results": [
+        {
+          "output_name": "disc_pow_n",
+          "compilability": "fully_compilable",
+          "python_expression": "((1.0 + inputs.interest_rate) ** inputs.operational_years)",
+          "input_refs": [
+            "interest_rate",
+            "operational_years"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "crf",
+          "compilability": "fully_compilable",
+          "python_expression": "((inputs.interest_rate * disc_pow_n) / (disc_pow_n - 1.0))",
+          "input_refs": [
+            "interest_rate"
+          ],
+          "intermediate_refs": [
+            "disc_pow_n"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "fpy_cap",
+          "compilability": "fully_compilable",
+          "python_expression": "(inputs.operational_years * inputs.availability)",
+          "input_refs": [
+            "operational_years",
+            "availability"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "p_neutron",
+          "compilability": "fully_compilable",
+          "python_expression": "(inputs.p_fus * (1.0 - inputs.ash_frac))",
+          "input_refs": [
+            "p_fus",
+            "ash_frac"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "q_n",
+          "compilability": "fully_compilable",
+          "python_expression": "(p_neutron / inputs.firstwall_area)",
+          "input_refs": [
+            "firstwall_area"
+          ],
+          "intermediate_refs": [
+            "p_neutron"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "fpy_raw",
+          "compilability": "manual_required",
+          "python_expression": null,
+          "input_refs": [],
+          "intermediate_refs": [],
+          "unsupported_reason": "unsupported node: invocation (['RealFunctions', 'max'])",
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "core_lifetime_fpy",
+          "compilability": "manual_required",
+          "python_expression": null,
+          "input_refs": [],
+          "intermediate_refs": [],
+          "unsupported_reason": "unsupported node: invocation (['RealFunctions', 'min'])",
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "core_lifetime_cal",
+          "compilability": "fully_compilable",
+          "python_expression": "(core_lifetime_fpy / inputs.availability)",
+          "input_refs": [
+            "availability"
+          ],
+          "intermediate_refs": [
+            "core_lifetime_fpy"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "n_rep",
+          "compilability": "manual_required",
+          "python_expression": null,
+          "input_refs": [],
+          "intermediate_refs": [],
+          "unsupported_reason": "unsupported node: invocation (['RealFunctions', 'max'])",
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "s",
+          "compilability": "fully_compilable",
+          "python_expression": "((1.0 + inputs.interest_rate) ** (0.0 - core_lifetime_cal))",
+          "input_refs": [
+            "interest_rate"
+          ],
+          "intermediate_refs": [
+            "core_lifetime_cal"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "pv",
+          "compilability": "fully_compilable",
+          "python_expression": "(((inputs.cost_per_event * s) * (1.0 - (s ** n_rep))) / (1.0 - s))",
+          "input_refs": [
+            "cost_per_event"
+          ],
+          "intermediate_refs": [
+            "s",
+            "n_rep"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "cost",
+          "compilability": "fully_compilable",
+          "python_expression": "(crf * pv)",
+          "input_refs": [],
+          "intermediate_refs": [
+            "crf",
+            "pv"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        }
+      ],
+      "execution_order": [
+        "disc_pow_n",
+        "crf",
+        "fpy_cap",
+        "p_neutron",
+        "q_n",
+        "fpy_raw",
+        "core_lifetime_fpy",
+        "core_lifetime_cal",
+        "n_rep",
+        "s",
+        "pv",
+        "cost"
+      ]
+    },
+    "Annual_Cost_Rollup": {
+      "calc_def_name": "Annual_Cost_Rollup",
+      "overall_compilability": "fully_compilable",
+      "output_results": [
+        {
+          "output_name": "annual_total",
+          "compilability": "fully_compilable",
+          "python_expression": "((inputs.cas71 + inputs.cas72) + inputs.cas80)",
+          "input_refs": [
+            "cas71",
+            "cas72",
+            "cas80"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        },
+        {
+          "output_name": "cas70",
+          "compilability": "fully_compilable",
+          "python_expression": "(inputs.cas71 + inputs.cas72)",
+          "input_refs": [
+            "cas71",
+            "cas72"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        }
+      ],
+      "execution_order": [
+        "annual_total",
+        "cas70"
+      ]
+    },
+    "n_1cfe_Form_Capital_Charge": {
+      "calc_def_name": "n_1cfe_Form_Capital_Charge",
+      "overall_compilability": "fully_compilable",
+      "output_results": [
+        {
+          "output_name": "cas90",
+          "compilability": "fully_compilable",
+          "python_expression": "(inputs.crf * (inputs.overnight_cost + inputs.idc_cost))",
+          "input_refs": [
+            "crf",
+            "overnight_cost",
+            "idc_cost"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        }
+      ],
+      "execution_order": [
+        "cas90"
+      ]
+    },
+    "n_1cfe_Form_LCOE": {
+      "calc_def_name": "n_1cfe_Form_LCOE",
+      "overall_compilability": "fully_compilable",
+      "output_results": [
+        {
+          "output_name": "annual_energy_mwh",
+          "compilability": "fully_compilable",
+          "python_expression": "(((8760.0 * inputs.net_electric_mw) * inputs.n_mod) * inputs.availability)",
+          "input_refs": [
+            "net_electric_mw",
+            "n_mod",
+            "availability"
+          ],
+          "intermediate_refs": [],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": true
+        },
+        {
+          "output_name": "lcoe",
+          "compilability": "fully_compilable",
+          "python_expression": "(((inputs.cas90 + inputs.cas70) + inputs.cas80) / annual_energy_mwh)",
+          "input_refs": [
+            "cas90",
+            "cas70",
+            "cas80"
+          ],
+          "intermediate_refs": [
+            "annual_energy_mwh"
+          ],
+          "unsupported_reason": null,
+          "is_undeclared_intermediate": false
+        }
+      ],
+      "execution_order": [
+        "annual_energy_mwh",
+        "lcoe"
       ]
     },
     "MFE_Power_Balance_Calc": {
@@ -4438,7 +4823,7 @@
       "references": [],
       "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 22,
-      "source_hash": "73a695954b395f39f7e3e6764e5302db127efb8bb882a9f81669b91314d297ec",
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
       "output_expression_asts": null,
       "all_member_names": [
         "alpha",
@@ -4559,7 +4944,7 @@
       "references": [],
       "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 52,
-      "source_hash": "73a695954b395f39f7e3e6764e5302db127efb8bb882a9f81669b91314d297ec",
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
       "output_expression_asts": null,
       "all_member_names": [
         "alpha",
@@ -4667,7 +5052,7 @@
       "references": [],
       "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 81,
-      "source_hash": "73a695954b395f39f7e3e6764e5302db127efb8bb882a9f81669b91314d297ec",
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
       "output_expression_asts": null,
       "all_member_names": [
         "alpha",
@@ -4774,7 +5159,7 @@
       "references": [],
       "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 108,
-      "source_hash": "73a695954b395f39f7e3e6764e5302db127efb8bb882a9f81669b91314d297ec",
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
       "output_expression_asts": null,
       "all_member_names": [
         "alpha",
@@ -4868,7 +5253,7 @@
       "references": [],
       "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 140,
-      "source_hash": "73a695954b395f39f7e3e6764e5302db127efb8bb882a9f81669b91314d297ec",
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
       "output_expression_asts": null,
       "all_member_names": [
         "alpha",
@@ -4961,7 +5346,7 @@
       "references": [],
       "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 168,
-      "source_hash": "73a695954b395f39f7e3e6764e5302db127efb8bb882a9f81669b91314d297ec",
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
       "output_expression_asts": null,
       "all_member_names": [
         "alpha",
@@ -5104,7 +5489,7 @@
       "references": [],
       "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 196,
-      "source_hash": "73a695954b395f39f7e3e6764e5302db127efb8bb882a9f81669b91314d297ec",
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
       "output_expression_asts": null,
       "all_member_names": [
         "cost",
@@ -5187,7 +5572,7 @@
       "references": [],
       "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 226,
-      "source_hash": "73a695954b395f39f7e3e6764e5302db127efb8bb882a9f81669b91314d297ec",
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
       "output_expression_asts": null,
       "all_member_names": [
         "cost",
@@ -5251,7 +5636,7 @@
       "references": [],
       "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 255,
-      "source_hash": "73a695954b395f39f7e3e6764e5302db127efb8bb882a9f81669b91314d297ec",
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
       "output_expression_asts": null,
       "all_member_names": [
         "contingency_rate",
@@ -5341,7 +5726,7 @@
       "references": [],
       "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 276,
-      "source_hash": "73a695954b395f39f7e3e6764e5302db127efb8bb882a9f81669b91314d297ec",
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
       "output_expression_asts": null,
       "all_member_names": [
         "construction_time",
@@ -5580,7 +5965,7 @@
       "references": [],
       "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 304,
-      "source_hash": "73a695954b395f39f7e3e6764e5302db127efb8bb882a9f81669b91314d297ec",
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
       "output_expression_asts": null,
       "all_member_names": [
         "cost",
@@ -5605,14 +5990,14 @@
     {
       "name": "Preconstruction_Cost",
       "qualified_name": "mfe_account_costs::'Preconstruction Cost'",
-      "doc_comment": "CAS10 preconstruction PRE-CONTINGENCY subtotal: land (sqrt of\nplant-total net electric, anchored at ref_net_power) plus the fixed\nadders (permits + licensing + studies + reports + other — fuel/FOAK-\nkeyed, so a concept input). costs.py:79 adds CAS10's own contingency;\ndeliberately NOT carried here — the plant's CAS29 applies contingency\nonce over the direct sum (convention preserved, MR-WI025-3; design-\nstage check: 1cfe full CAS10 = this subtotal x 1.10 exactly).\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py\n*Ref**: costs.py:52-80 (cas10_preconstruction);\ncosting_constants.yaml:8, :15-23\n*Basis**: CAS10 subtotal, contingency deliberately omitted (CAS29)",
+      "doc_comment": "CAS10 preconstruction PRE-CONTINGENCY subtotal: land (sqrt of\nplant-total net electric, anchored at ref_net_power) plus the fixed\nadders (permits + licensing + studies + reports + other — fuel- and\nFOAK/NOAK-keyed, so a concept input). costs.py:79 adds CAS10's own\ncontingency; deliberately NOT carried here — the plant's CAS29 applies\ncontingency once over the direct sum (convention preserved, MR-WI025-3).\nWI-029 doc correction: the old note \"1cfe full CAS10 = this subtotal\nx 1.10 exactly\" was a stale FOAK reading. At NOAK — the regime both the\ndesign and handshake points run — contingency_rate_noak = 0.0, so 1cfe's\nfull CAS10 equals this subtotal exactly. No number changes; the model\napplies no CAS10 contingency and that was already NOAK-correct.\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py\n*Ref**: costs.py:52-80 (cas10_preconstruction);\ncosting_constants.yaml:8, :15-23\n*Basis**: CAS10 subtotal, contingency deliberately omitted (CAS29)",
       "calc_expressions": [
         "n_mod = 1.0",
         "land_intensity = 0.25",
         "land_cost = 10000.0",
         "ref_net_power = 1000.0",
         "cost = land_intensity * (p_net * n_mod * ref_net_power) ** 0.5 * land_cost + fixed_precon",
-        "\nDocumentation:\nCAS10 preconstruction PRE-CONTINGENCY subtotal: land (sqrt of\nplant-total net electric, anchored at ref_net_power) plus the fixed\nadders (permits + licensing + studies + reports + other — fuel/FOAK-\nkeyed, so a concept input). costs.py:79 adds CAS10's own contingency;\ndeliberately NOT carried here — the plant's CAS29 applies contingency\nonce over the direct sum (convention preserved, MR-WI025-3; design-\nstage check: 1cfe full CAS10 = this subtotal x 1.10 exactly).\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py\n*Ref**: costs.py:52-80 (cas10_preconstruction);\ncosting_constants.yaml:8, :15-23\n*Basis**: CAS10 subtotal, contingency deliberately omitted (CAS29)"
+        "\nDocumentation:\nCAS10 preconstruction PRE-CONTINGENCY subtotal: land (sqrt of\nplant-total net electric, anchored at ref_net_power) plus the fixed\nadders (permits + licensing + studies + reports + other — fuel- and\nFOAK/NOAK-keyed, so a concept input). costs.py:79 adds CAS10's own\ncontingency; deliberately NOT carried here — the plant's CAS29 applies\ncontingency once over the direct sum (convention preserved, MR-WI025-3).\nWI-029 doc correction: the old note \"1cfe full CAS10 = this subtotal\nx 1.10 exactly\" was a stale FOAK reading. At NOAK — the regime both the\ndesign and handshake points run — contingency_rate_noak = 0.0, so 1cfe's\nfull CAS10 equals this subtotal exactly. No number changes; the model\napplies no CAS10 contingency and that was already NOAK-correct.\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py\n*Ref**: costs.py:52-80 (cas10_preconstruction);\ncosting_constants.yaml:8, :15-23\n*Basis**: CAS10 subtotal, contingency deliberately omitted (CAS29)"
       ],
       "input_attributes": [
         {
@@ -5712,7 +6097,7 @@
       "references": [],
       "source_file": "root-0/analyses/mfe_account_costs.sysml",
       "source_line": 356,
-      "source_hash": "73a695954b395f39f7e3e6764e5302db127efb8bb882a9f81669b91314d297ec",
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
       "output_expression_asts": null,
       "all_member_names": [
         "cost",
@@ -5834,8 +6219,8 @@
       ],
       "references": [],
       "source_file": "root-0/analyses/mfe_account_costs.sysml",
-      "source_line": 387,
-      "source_hash": "73a695954b395f39f7e3e6764e5302db127efb8bb882a9f81669b91314d297ec",
+      "source_line": 391,
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
       "output_expression_asts": null,
       "all_member_names": [
         "alpha",
@@ -5867,7 +6252,7 @@
           "is_output": false,
           "python_type": "float",
           "description": "",
-          "unit": null,
+          "unit": "per-module",
           "source_line": 0,
           "is_optional": false
         },
@@ -5941,8 +6326,8 @@
       ],
       "references": [],
       "source_file": "root-0/analyses/mfe_account_costs.sysml",
-      "source_line": 430,
-      "source_hash": "73a695954b395f39f7e3e6764e5302db127efb8bb882a9f81669b91314d297ec",
+      "source_line": 434,
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
       "output_expression_asts": null,
       "all_member_names": [
         "alpha",
@@ -6048,8 +6433,8 @@
       ],
       "references": [],
       "source_file": "root-0/analyses/mfe_account_costs.sysml",
-      "source_line": 456,
-      "source_hash": "73a695954b395f39f7e3e6764e5302db127efb8bb882a9f81669b91314d297ec",
+      "source_line": 460,
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
       "output_expression_asts": null,
       "all_member_names": [
         "alpha",
@@ -6115,8 +6500,8 @@
       ],
       "references": [],
       "source_file": "root-0/analyses/mfe_account_costs.sysml",
-      "source_line": 479,
-      "source_hash": "73a695954b395f39f7e3e6764e5302db127efb8bb882a9f81669b91314d297ec",
+      "source_line": 483,
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
       "output_expression_asts": null,
       "all_member_names": [
         "cost",
@@ -6260,8 +6645,8 @@
       ],
       "references": [],
       "source_file": "root-0/analyses/mfe_account_costs.sysml",
-      "source_line": 500,
-      "source_hash": "73a695954b395f39f7e3e6764e5302db127efb8bb882a9f81669b91314d297ec",
+      "source_line": 504,
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
       "output_expression_asts": null,
       "all_member_names": [
         "alpha",
@@ -6397,8 +6782,8 @@
       ],
       "references": [],
       "source_file": "root-0/analyses/mfe_account_costs.sysml",
-      "source_line": 528,
-      "source_hash": "73a695954b395f39f7e3e6764e5302db127efb8bb882a9f81669b91314d297ec",
+      "source_line": 532,
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
       "output_expression_asts": null,
       "all_member_names": [
         "alpha",
@@ -6614,8 +6999,8 @@
       ],
       "references": [],
       "source_file": "root-0/analyses/mfe_account_costs.sysml",
-      "source_line": 555,
-      "source_hash": "73a695954b395f39f7e3e6764e5302db127efb8bb882a9f81669b91314d297ec",
+      "source_line": 559,
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
       "output_expression_asts": null,
       "all_member_names": [
         "cas20",
@@ -6702,8 +7087,8 @@
       ],
       "references": [],
       "source_file": "root-0/analyses/mfe_account_costs.sysml",
-      "source_line": 597,
-      "source_hash": "73a695954b395f39f7e3e6764e5302db127efb8bb882a9f81669b91314d297ec",
+      "source_line": 601,
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
       "output_expression_asts": null,
       "all_member_names": [
         "construction_years",
@@ -6711,6 +7096,744 @@
         "f_idc",
         "interest_rate",
         "overnight_cost"
+      ],
+      "member_expressions": null
+    },
+    {
+      "name": "Levelized_Annual_Cost",
+      "qualified_name": "mfe_account_costs::'Levelized Annual Cost'",
+      "doc_comment": "Levelized (growing-annuity) annual cost — the shared CAS71/CAS80\nwrapper:\n\n  crf = i*(1+i)^n / ((1+i)^n - 1)\n  a1  = annual_cost * (1+g)^Tc\n  pv  = a1 * (1 - ((1+g)/(1+i))^n) / (i - g)\n  levelized = crf * pv\n\nA real annual stream escalating at g from the first operating year is\npresent-valued over n operating years at discount rate i, then\nannuitized by CRF. `project_time` Tc is the construction period that\nescalates the stream to its first operating year — at NOAK that is\n`construction_time` alone (1cfe adds licensing_time only when FOAK,\ncosts.py:41-44), so Tc = 8 at both the design and handshake points.\n\nUsed TWICE by the plant (MR-3, one def two usages): with\nannual_cost = the unlevelized annual O&M -> CAS71, and with\nannual_cost = the raw annual DT fuel cost -> CAS80.\n\nFlat-Real (+ - * / **) — Rung A, lowers to generated arithmetic.\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py (pin 0254385)\n*Ref**: economics.py:13-50 (levelized_annual_cost); economics.py:6-10 (CRF);\ncosts.py:41-44 (_total_project_time, NOAK omits licensing_time)\n*Basis**: Growing-annuity present value annuitized by the capital recovery factor",
+      "calc_expressions": [
+        "disc_pow_n = (1.0 + interest_rate) ** operational_years",
+        "crf = interest_rate * disc_pow_n / (disc_pow_n - 1.0)",
+        "a1 = annual_cost * (1.0 + inflation_rate) ** project_time",
+        "pv = a1 * (1.0 - ((1.0 + inflation_rate) / (1.0 + interest_rate)) ** operational_years) / (interest_rate - inflation_rate)",
+        "levelized = crf * pv",
+        "\nDocumentation:\nLevelized (growing-annuity) annual cost — the shared CAS71/CAS80\nwrapper:\n\n  crf = i*(1+i)^n / ((1+i)^n - 1)\n  a1  = annual_cost * (1+g)^Tc\n  pv  = a1 * (1 - ((1+g)/(1+i))^n) / (i - g)\n  levelized = crf * pv\n\nA real annual stream escalating at g from the first operating year is\npresent-valued over n operating years at discount rate i, then\nannuitized by CRF. `project_time` Tc is the construction period that\nescalates the stream to its first operating year — at NOAK that is\n`construction_time` alone (1cfe adds licensing_time only when FOAK,\ncosts.py:41-44), so Tc = 8 at both the design and handshake points.\n\nUsed TWICE by the plant (MR-3, one def two usages): with\nannual_cost = the unlevelized annual O&M -> CAS71, and with\nannual_cost = the raw annual DT fuel cost -> CAS80.\n\nFlat-Real (+ - * / **) — Rung A, lowers to generated arithmetic.\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py (pin 0254385)\n*Ref**: economics.py:13-50 (levelized_annual_cost); economics.py:6-10 (CRF);\ncosts.py:41-44 (_total_project_time, NOAK omits licensing_time)\n*Basis**: Growing-annuity present value annuitized by the capital recovery factor"
+      ],
+      "input_attributes": [
+        {
+          "name": "annual_cost",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "raw",
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "interest_rate",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "i",
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "inflation_rate",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "g",
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "operational_years",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "n",
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "project_time",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "Tc",
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "output_attributes": [
+        {
+          "name": "crf",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "levelized",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "references": [],
+      "source_file": "root-0/analyses/mfe_account_costs.sysml",
+      "source_line": 628,
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
+      "output_expression_asts": null,
+      "all_member_names": [
+        "a1",
+        "annual_cost",
+        "crf",
+        "disc_pow_n",
+        "inflation_rate",
+        "interest_rate",
+        "levelized",
+        "operational_years",
+        "project_time",
+        "pv"
+      ],
+      "member_expressions": null
+    },
+    {
+      "name": "DT_Fuel_Cost",
+      "qualified_name": "mfe_account_costs::'DT Fuel Cost'",
+      "doc_comment": "CAS80 RAW (unlevelized) annual D-T fuel cost:\n\n  annual_raw = n_mod * p_fus * (3600*8760) * availability\ncost_per_rxn / (q_eff * mev_to_joules)\nannual_fuel = annual_raw * (1 + (1-burn_fraction)/burn_fraction\n(1 - fuel_recovery))\n\nThe first line converts annual fusion energy to reactions (dividing by\nthe per-reaction energy q_eff in MeV, converted to joules) and prices\nthem at the blended deuterium + Li-6 cost per reaction. The second line\nis the burn-up recovery correction: only `burn_fraction` of the fuel\ninjected is burnt, and `fuel_recovery` of the unburnt remainder is\nrecycled, so the make-up stream scales the raw cost.\n\nThe levelization to the reported CAS80 is NOT carried here — the plant\nfeeds `annual_fuel` into 'Levelized Annual Cost' (one levelization\nwrapper, MR-3). The MFE target-consumable term of 1cfe's cas80_fuel is\nstructurally zero (IFE-only) and is likewise not carried.\n\nAll fuel constants are inputs, never library defaults (MR-3) — a\nconcept binds its own fuel chemistry and unit prices.\n\nFlat-Real (+ - * / **) — Rung A, lowers to generated arithmetic.\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)\n*Ref**: costs.py:476-544 (cas80_fuel, DT branch); defaults.py\n(M_D_KG, u_deuterium, M_Li6_KG, u_li6, burn_fraction, fuel_recovery);\nphysics.py:31 (Q_DT = 17.58 MeV)\n*Basis**: Reaction-rate-priced annual fuel with burn-up recovery correction",
+      "calc_expressions": [
+        "n_mod = 1.0",
+        "annual_raw = n_mod * p_fus * (3600.0 * 8760.0) * 1000000.0 * availability * cost_per_rxn / (q_eff * mev_to_joules)",
+        "burn_correction = 1.0 + (1.0 - burn_fraction) / burn_fraction * (1.0 - fuel_recovery)",
+        "annual_fuel = annual_raw * burn_correction",
+        "\nDocumentation:\nCAS80 RAW (unlevelized) annual D-T fuel cost:\n\n  annual_raw = n_mod * p_fus * (3600*8760) * availability\ncost_per_rxn / (q_eff * mev_to_joules)\nannual_fuel = annual_raw * (1 + (1-burn_fraction)/burn_fraction\n(1 - fuel_recovery))\n\nThe first line converts annual fusion energy to reactions (dividing by\nthe per-reaction energy q_eff in MeV, converted to joules) and prices\nthem at the blended deuterium + Li-6 cost per reaction. The second line\nis the burn-up recovery correction: only `burn_fraction` of the fuel\ninjected is burnt, and `fuel_recovery` of the unburnt remainder is\nrecycled, so the make-up stream scales the raw cost.\n\nThe levelization to the reported CAS80 is NOT carried here — the plant\nfeeds `annual_fuel` into 'Levelized Annual Cost' (one levelization\nwrapper, MR-3). The MFE target-consumable term of 1cfe's cas80_fuel is\nstructurally zero (IFE-only) and is likewise not carried.\n\nAll fuel constants are inputs, never library defaults (MR-3) — a\nconcept binds its own fuel chemistry and unit prices.\n\nFlat-Real (+ - * / **) — Rung A, lowers to generated arithmetic.\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)\n*Ref**: costs.py:476-544 (cas80_fuel, DT branch); defaults.py\n(M_D_KG, u_deuterium, M_Li6_KG, u_li6, burn_fraction, fuel_recovery);\nphysics.py:31 (Q_DT = 17.58 MeV)\n*Basis**: Reaction-rate-priced annual fuel with burn-up recovery correction"
+      ],
+      "input_attributes": [
+        {
+          "name": "p_fus",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "fusion",
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "n_mod",
+          "sysml_type": "Real",
+          "default_value": "1.0",
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": true
+        },
+        {
+          "name": "availability",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "cost_per_rxn",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "q_eff",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "per-reaction",
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "mev_to_joules",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "MeV",
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "burn_fraction",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "fuel_recovery",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "reactions/yr",
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "output_attributes": [
+        {
+          "name": "annual_fuel",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "references": [],
+      "source_file": "root-0/analyses/mfe_account_costs.sysml",
+      "source_line": 683,
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
+      "output_expression_asts": null,
+      "all_member_names": [
+        "annual_fuel",
+        "annual_raw",
+        "availability",
+        "burn_correction",
+        "burn_fraction",
+        "cost_per_rxn",
+        "fuel_recovery",
+        "mev_to_joules",
+        "n_mod",
+        "p_fus",
+        "q_eff"
+      ],
+      "member_expressions": null
+    },
+    {
+      "name": "Levelized_Replacement_Cost",
+      "qualified_name": "mfe_account_costs::'Levelized Replacement Cost'",
+      "doc_comment": "CAS72 levelized scheduled-replacement cost of the neutron-damage-\nlimited in-vessel accounts (first wall / blanket + divertor):\n\n  p_neutron        = p_fus * (1 - ash_frac)              [MW]\n  q_n              = p_neutron / firstwall_area          [MW/m^2]\n  core_lifetime_FPY= clip(fluence_limit / max(q_n, 1e-6),\n                          0.5, operational_years*availability)\n  core_lifetime_cal= core_lifetime_FPY / availability     [cal-yr]\n  s                = (1 + i)^(-core_lifetime_cal)\n  n_rep            = max(0, ceil(operational_years/core_lifetime_cal) - 1)\n  pv               = cost_per_event * s * (1 - s^n_rep) / (1 - s)\n  cost             = CRF(i, n) * pv\n\nThe replaceable core survives a fixed neutron fluence, so its life in\nfull-power years is the fluence limit divided by the wall load, and its\ncalendar life divides again by availability. Each replacement is a\ndiscrete event discounted at its own date; `n_rep` counts the events\ninside the plant life (the final core is never replaced, hence -1).\n\nEXECUTABLE SEMANTIC (Rung B, WI-022 pattern): `max`, `min` and `floor`\nare invocations, which fall outside the codegen arithmetic envelope\n(+ - * / ** only, calc_compat_renderer.py:39-46), so this calc routes\nto the handwritten codegen stage (manual_required). The generated\nhandwritten impl is normative and is guarded bit-exact (rel 1e-9) by\nthe oracle mirror in verify_stellaris.py. Both carry 1cfe's guards\nVERBATIM — the clip floor/cap, the inner max(q_n, 1e-6), and the outer\nmax(0, ...) — rather than dropping them as point-inert no-ops: they go\nlive at study-sweep extremes and a dropped guard would return a wrong\nCAS72 silently and discontinuously.\n\nTwo faithful re-expressions in the model statement below, both exact\nidentities changing no value: clip(z, lo, hi) is written min(max(z, lo),\nhi) — jnp.clip's own order — and ceil(z) is written -floor(-z) (the KerML\nReal function library has floor, min and max but no ceiling or clip). The handwritten impl\nuses Python's math.ceil and the same guards directly.\n\n`n_rep` is a discontinuous step function of the live neutron/geometry\nchain and is computed every run — never frozen as a defaulted input.\n\nConcept-agnostic: the fluence limit, the wall loading, the replaceable-\naccount cost, and the plant life are all inputs (MR-3).\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py (pin 0254385)\n*Ref**: economics.py:53-75 (levelized_replacement_cost); model.py:102-111\n(_core_lifetime_fpy, the clip and inner max); economics.py:6-10 (CRF);\ndefaults.py:291 (fluence_limit_dt), defaults.py:299 (replaceable accounts)\n*Basis**: Fluence-limited replacement schedule, discretely discounted and annuitized",
+      "calc_expressions": [
+        "p_neutron = p_fus * (1.0 - ash_frac)",
+        "q_n = p_neutron / firstwall_area",
+        "fpy_raw = fluence_limit / max(q_n, 1e-06)",
+        "fpy_cap = operational_years * availability",
+        "core_lifetime_fpy = min(max(fpy_raw, 0.5), fpy_cap)",
+        "core_lifetime_cal = core_lifetime_fpy / availability",
+        "s = (1.0 + interest_rate) ** (0.0 - core_lifetime_cal)",
+        "n_rep = max(0.0, 0.0 - floor(0.0 - operational_years / core_lifetime_cal) - 1.0)",
+        "pv = cost_per_event * s * (1.0 - s ** n_rep) / (1.0 - s)",
+        "disc_pow_n = (1.0 + interest_rate) ** operational_years",
+        "crf = interest_rate * disc_pow_n / (disc_pow_n - 1.0)",
+        "cost = crf * pv",
+        "\nDocumentation:\nCAS72 levelized scheduled-replacement cost of the neutron-damage-\nlimited in-vessel accounts (first wall / blanket + divertor):\n\n  p_neutron        = p_fus * (1 - ash_frac)              [MW]\n  q_n              = p_neutron / firstwall_area          [MW/m^2]\n  core_lifetime_FPY= clip(fluence_limit / max(q_n, 1e-6),\n                          0.5, operational_years*availability)\n  core_lifetime_cal= core_lifetime_FPY / availability     [cal-yr]\n  s                = (1 + i)^(-core_lifetime_cal)\n  n_rep            = max(0, ceil(operational_years/core_lifetime_cal) - 1)\n  pv               = cost_per_event * s * (1 - s^n_rep) / (1 - s)\n  cost             = CRF(i, n) * pv\n\nThe replaceable core survives a fixed neutron fluence, so its life in\nfull-power years is the fluence limit divided by the wall load, and its\ncalendar life divides again by availability. Each replacement is a\ndiscrete event discounted at its own date; `n_rep` counts the events\ninside the plant life (the final core is never replaced, hence -1).\n\nEXECUTABLE SEMANTIC (Rung B, WI-022 pattern): `max`, `min` and `floor`\nare invocations, which fall outside the codegen arithmetic envelope\n(+ - * / ** only, calc_compat_renderer.py:39-46), so this calc routes\nto the handwritten codegen stage (manual_required). The generated\nhandwritten impl is normative and is guarded bit-exact (rel 1e-9) by\nthe oracle mirror in verify_stellaris.py. Both carry 1cfe's guards\nVERBATIM — the clip floor/cap, the inner max(q_n, 1e-6), and the outer\nmax(0, ...) — rather than dropping them as point-inert no-ops: they go\nlive at study-sweep extremes and a dropped guard would return a wrong\nCAS72 silently and discontinuously.\n\nTwo faithful re-expressions in the model statement below, both exact\nidentities changing no value: clip(z, lo, hi) is written min(max(z, lo),\nhi) — jnp.clip's own order — and ceil(z) is written -floor(-z) (the KerML\nReal function library has floor, min and max but no ceiling or clip). The handwritten impl\nuses Python's math.ceil and the same guards directly.\n\n`n_rep` is a discontinuous step function of the live neutron/geometry\nchain and is computed every run — never frozen as a defaulted input.\n\nConcept-agnostic: the fluence limit, the wall loading, the replaceable-\naccount cost, and the plant life are all inputs (MR-3).\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py (pin 0254385)\n*Ref**: economics.py:53-75 (levelized_replacement_cost); model.py:102-111\n(_core_lifetime_fpy, the clip and inner max); economics.py:6-10 (CRF);\ndefaults.py:291 (fluence_limit_dt), defaults.py:299 (replaceable accounts)\n*Basis**: Fluence-limited replacement schedule, discretely discounted and annuitized"
+      ],
+      "input_attributes": [
+        {
+          "name": "cost_per_event",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "plant-total",
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "p_fus",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "fusion",
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "ash_frac",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "charged-particle",
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "firstwall_area",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "first-wall",
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "fluence_limit",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "core",
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "availability",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "i",
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "interest_rate",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "n",
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "operational_years",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "Neutron",
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "output_attributes": [
+        {
+          "name": "cost",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "----",
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "references": [],
+      "source_file": "root-0/analyses/mfe_account_costs.sysml",
+      "source_line": 743,
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
+      "output_expression_asts": null,
+      "all_member_names": [
+        "ash_frac",
+        "availability",
+        "core_lifetime_cal",
+        "core_lifetime_fpy",
+        "cost",
+        "cost_per_event",
+        "crf",
+        "disc_pow_n",
+        "firstwall_area",
+        "fluence_limit",
+        "fpy_cap",
+        "fpy_raw",
+        "interest_rate",
+        "n_rep",
+        "operational_years",
+        "p_fus",
+        "p_neutron",
+        "pv",
+        "q_n",
+        "s"
+      ],
+      "member_expressions": null
+    },
+    {
+      "name": "Annual_Cost_Rollup",
+      "qualified_name": "mfe_account_costs::'Annual Cost Rollup'",
+      "doc_comment": "CAS70 = CAS71 + CAS72, and the total levelized annual cost the LCOE\nnumerator carries (CAS70 + CAS80). Pure addition — it introduces no new\neconomics, it makes the two sums producer channels the DCF core and the\n1cfe-form comparison channel can read.\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/model.py (pin 0254385)\n*Ref**: model.py:1483-1605 (c70 = c71 + c72; lcoe numerator c90 + c70 + c80);\neconomics.py:88-92 (compute_lcoe)\n*Basis**: 1costingFE CAS70 composition and LCOE annual-cost numerator",
+      "calc_expressions": [
+        "cas70 = cas71 + cas72",
+        "annual_total = cas71 + cas72 + cas80",
+        "\nDocumentation:\nCAS70 = CAS71 + CAS72, and the total levelized annual cost the LCOE\nnumerator carries (CAS70 + CAS80). Pure addition — it introduces no new\neconomics, it makes the two sums producer channels the DCF core and the\n1cfe-form comparison channel can read.\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/model.py (pin 0254385)\n*Ref**: model.py:1483-1605 (c70 = c71 + c72; lcoe numerator c90 + c70 + c80);\neconomics.py:88-92 (compute_lcoe)\n*Basis**: 1costingFE CAS70 composition and LCOE annual-cost numerator"
+      ],
+      "input_attributes": [
+        {
+          "name": "cas71",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "levelized",
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "cas72",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "levelized",
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "cas80",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "output_attributes": [
+        {
+          "name": "cas70",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "annual_total",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "references": [],
+      "source_file": "root-0/analyses/mfe_account_costs.sysml",
+      "source_line": 853,
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
+      "output_expression_asts": null,
+      "all_member_names": [
+        "annual_total",
+        "cas70",
+        "cas71",
+        "cas72",
+        "cas80"
+      ],
+      "member_expressions": null
+    },
+    {
+      "name": "n_1cfe_Form_Capital_Charge",
+      "qualified_name": "mfe_account_costs::'1cfe-Form Capital Charge'",
+      "doc_comment": "CAS90 in 1costingFE's financing form — the annual capital charge on\novernight capital PLUS the closed-form CAS60 interest during\nconstruction:\n\n  cas90 = crf * (overnight_cost + idc_cost)\n\nWI-029 Option (ii), owner-ruled 2026-07-25: this is a COMPARISON channel.\nThe model's own DCF headline keeps its even-spend idc_factor and keeps\ntotal_capital = overnight_capital (Option C), so CAS60 never enters the\nheadline capital base and the two channels cannot double-count. `crf` is\nsupplied by the plant from the capital-recovery factor it already\ncomputes; `idc_cost` is the Item-3 CAS60 reported line — no new IDC\narithmetic is introduced here.\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)\n*Ref**: costs.py:547-556 (cas90_annualized_capital = CRF * total_capital);\ncosts.py:286-297 (cas60_idc); model.py:1483-1605 (total_cap = overnight + c60)\n*Basis**: 1costingFE annualized capital charge over overnight + IDC",
+      "calc_expressions": [
+        "cas90 = crf * (overnight_cost + idc_cost)",
+        "\nDocumentation:\nCAS90 in 1costingFE's financing form — the annual capital charge on\novernight capital PLUS the closed-form CAS60 interest during\nconstruction:\n\n  cas90 = crf * (overnight_cost + idc_cost)\n\nWI-029 Option (ii), owner-ruled 2026-07-25: this is a COMPARISON channel.\nThe model's own DCF headline keeps its even-spend idc_factor and keeps\ntotal_capital = overnight_capital (Option C), so CAS60 never enters the\nheadline capital base and the two channels cannot double-count. `crf` is\nsupplied by the plant from the capital-recovery factor it already\ncomputes; `idc_cost` is the Item-3 CAS60 reported line — no new IDC\narithmetic is introduced here.\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)\n*Ref**: costs.py:547-556 (cas90_annualized_capital = CRF * total_capital);\ncosts.py:286-297 (cas60_idc); model.py:1483-1605 (total_cap = overnight + c60)\n*Basis**: 1costingFE annualized capital charge over overnight + IDC"
+      ],
+      "input_attributes": [
+        {
+          "name": "crf",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": "overnight",
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "overnight_cost",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "idc_cost",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "output_attributes": [
+        {
+          "name": "cas90",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "references": [],
+      "source_file": "root-0/analyses/mfe_account_costs.sysml",
+      "source_line": 872,
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
+      "output_expression_asts": null,
+      "all_member_names": [
+        "cas90",
+        "crf",
+        "idc_cost",
+        "overnight_cost"
+      ],
+      "member_expressions": null
+    },
+    {
+      "name": "n_1cfe_Form_LCOE",
+      "qualified_name": "mfe_account_costs::'1cfe-Form LCOE'",
+      "doc_comment": "LCOE in 1costingFE's form — the comparison channel that pairs with\n'1cfe-Form Capital Charge' (WI-029 Option ii):\n\n  lcoe = (cas90 + cas70 + cas80) / (8760 * net_electric_mw * n_mod * availability)\n\nMoney-unit transparent: with the cost inputs in $ the result is $/MWh.\nThis is NOT the design-point headline — 'LCOE DCF' remains the headline\nand its convention is untouched. Both channels coexist by design.\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py (pin 0254385)\n*Ref**: economics.py:88-92 (compute_lcoe)\n*Basis**: Annual cost over annual energy sold, 1costingFE denominator form",
+      "calc_expressions": [
+        "n_mod = 1.0",
+        "annual_energy_mwh = 8760.0 * net_electric_mw * n_mod * availability",
+        "lcoe = (cas90 + cas70 + cas80) / annual_energy_mwh",
+        "\nDocumentation:\nLCOE in 1costingFE's form — the comparison channel that pairs with\n'1cfe-Form Capital Charge' (WI-029 Option ii):\n\n  lcoe = (cas90 + cas70 + cas80) / (8760 * net_electric_mw * n_mod * availability)\n\nMoney-unit transparent: with the cost inputs in $ the result is $/MWh.\nThis is NOT the design-point headline — 'LCOE DCF' remains the headline\nand its convention is untouched. Both channels coexist by design.\n\n*Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py (pin 0254385)\n*Ref**: economics.py:88-92 (compute_lcoe)\n*Basis**: Annual cost over annual energy sold, 1costingFE denominator form"
+      ],
+      "input_attributes": [
+        {
+          "name": "cas90",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "cas70",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "cas80",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "net_electric_mw",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        },
+        {
+          "name": "n_mod",
+          "sysml_type": "Real",
+          "default_value": "1.0",
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": true
+        },
+        {
+          "name": "availability",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "output_attributes": [
+        {
+          "name": "lcoe",
+          "sysml_type": "Real",
+          "default_value": null,
+          "binding_type": "unbound",
+          "is_input": false,
+          "is_output": false,
+          "python_type": "float",
+          "description": "",
+          "unit": null,
+          "source_line": 0,
+          "is_optional": false
+        }
+      ],
+      "references": [],
+      "source_file": "root-0/analyses/mfe_account_costs.sysml",
+      "source_line": 899,
+      "source_hash": "3f5677980838d1c5fee5dcf3336195ca79ac3ee96ac23dadf0865f4f031c7cbe",
+      "output_expression_asts": null,
+      "all_member_names": [
+        "annual_energy_mwh",
+        "availability",
+        "cas70",
+        "cas80",
+        "cas90",
+        "lcoe",
+        "n_mod",
+        "net_electric_mw"
       ],
       "member_expressions": null
     },
@@ -7089,7 +8212,7 @@
         "ash_frac"
       ],
       "source_file": "root-0/designs/stellarator_09/stellarator_plant.sysml",
-      "source_line": 785,
+      "source_line": 855,
       "parent_part_path": "",
       "qualified_name": "stellarator_09__stellaris__wall_load_calc",
       "is_template": false,
@@ -8884,7 +10007,7 @@
           "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::precon_fixed_base",
           "source_instance_elem": null,
           "source_attribute_elem": null,
-          "literal_value": 32000000.0,
+          "literal_value": 16000000.0,
           "expression_ast": null,
           "source_instance_name": null,
           "source_attribute_name": "precon_fixed_base",
@@ -9979,6 +11102,492 @@
       "raw_element": null
     },
     {
+      "instance_name": "stellarator_09__stellaris__cas71_calc",
+      "calc_def_name": "Levelized_Annual_Cost",
+      "calc_def_qualified_name": "mfe_account_costs::'Levelized Annual Cost'",
+      "module_type": "mfe_account_costs.Levelized_Annual_CostModule",
+      "bindings": [
+        {
+          "param_name": "annual_cost",
+          "source_path": "om_cost.annual_om",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> om_cost.annual_om",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "om_cost",
+          "source_attribute_name": "annual_om",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "interest_rate",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::discount_rate",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.07,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "discount_rate",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "inflation_rate",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::cas71_calc::inflation_rate",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.02,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "inflation_rate",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "operational_years",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::cas71_calc::operational_years",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 30.0,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "operational_years",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "project_time",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::construction_years",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 8.0,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "construction_years",
+          "source_written_qualifier": null
+        }
+      ],
+      "unbound_params": [],
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+      "source_line": 585,
+      "parent_part_path": "stellaris",
+      "qualified_name": "stellarator_09__stellaris__cas71_calc",
+      "is_template": false,
+      "owning_part_def_qn": "mfe_plant__MFE_Power_Plant",
+      "raw_element": null
+    },
+    {
+      "instance_name": "stellarator_09__stellaris__fuel_calc",
+      "calc_def_name": "DT_Fuel_Cost",
+      "calc_def_qualified_name": "mfe_account_costs::'DT Fuel Cost'",
+      "module_type": "mfe_account_costs.DT_Fuel_CostModule",
+      "bindings": [
+        {
+          "param_name": "p_fus",
+          "source_path": "fusion.p_fus",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> fusion.p_fus",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "fusion",
+          "source_attribute_name": "p_fus",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "n_mod",
+          "source_path": "mfe_plant::'MFE Power Plant'::fuel_calc::n_mod",
+          "binding_type": "reference",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::fuel_calc::n_mod",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "n_mod",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "availability",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::fuel_calc::availability",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.85,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "availability",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "cost_per_rxn",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::fuel_cost_per_rxn",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 1.7260641119988767e-23,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "fuel_cost_per_rxn",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "q_eff",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::fuel_q_eff",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 17.58,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "fuel_q_eff",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "mev_to_joules",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::fuel_calc::mev_to_joules",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 1.6021766339999998e-13,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "mev_to_joules",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "burn_fraction",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::fuel_calc::burn_fraction",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.05,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "burn_fraction",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "fuel_recovery",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::fuel_calc::fuel_recovery",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.99,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "fuel_recovery",
+          "source_written_qualifier": null
+        }
+      ],
+      "unbound_params": [],
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+      "source_line": 602,
+      "parent_part_path": "stellaris",
+      "qualified_name": "stellarator_09__stellaris__fuel_calc",
+      "is_template": false,
+      "owning_part_def_qn": "mfe_plant__MFE_Power_Plant",
+      "raw_element": null
+    },
+    {
+      "instance_name": "stellarator_09__stellaris__cas80_calc",
+      "calc_def_name": "Levelized_Annual_Cost",
+      "calc_def_qualified_name": "mfe_account_costs::'Levelized Annual Cost'",
+      "module_type": "mfe_account_costs.Levelized_Annual_CostModule",
+      "bindings": [
+        {
+          "param_name": "annual_cost",
+          "source_path": "fuel_calc.annual_fuel",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> fuel_calc.annual_fuel",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "fuel_calc",
+          "source_attribute_name": "annual_fuel",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "interest_rate",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::discount_rate",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.07,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "discount_rate",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "inflation_rate",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::cas80_calc::inflation_rate",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.02,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "inflation_rate",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "operational_years",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::cas80_calc::operational_years",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 30.0,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "operational_years",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "project_time",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::construction_years",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 8.0,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "construction_years",
+          "source_written_qualifier": null
+        }
+      ],
+      "unbound_params": [],
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+      "source_line": 612,
+      "parent_part_path": "stellaris",
+      "qualified_name": "stellarator_09__stellaris__cas80_calc",
+      "is_template": false,
+      "owning_part_def_qn": "mfe_plant__MFE_Power_Plant",
+      "raw_element": null
+    },
+    {
+      "instance_name": "stellarator_09__stellaris__cas72_calc",
+      "calc_def_name": "Levelized_Replacement_Cost",
+      "calc_def_qualified_name": "mfe_account_costs::'Levelized Replacement Cost'",
+      "module_type": "mfe_account_costs.Levelized_Replacement_CostModule",
+      "bindings": [
+        {
+          "param_name": "cost_per_event",
+          "source_path": "mfe_plant::'MFE Power Plant'::replacement_cost_per_event",
+          "binding_type": "reference",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::replacement_cost_per_event",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "replacement_cost_per_event",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "p_fus",
+          "source_path": "fusion.p_fus",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> fusion.p_fus",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "fusion",
+          "source_attribute_name": "p_fus",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "ash_frac",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::cas72_calc::ash_frac",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.2002275312855518,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "ash_frac",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "firstwall_area",
+          "source_path": "rb.wall_area",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> rb.wall_area",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "rb",
+          "source_attribute_name": "wall_area",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "fluence_limit",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::cas72_calc::fluence_limit",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 18.0,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "fluence_limit",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "availability",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::cas72_calc::availability",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.85,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "availability",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "interest_rate",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::discount_rate",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.07,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "discount_rate",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "operational_years",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::cas72_calc::operational_years",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 30.0,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "operational_years",
+          "source_written_qualifier": null
+        }
+      ],
+      "unbound_params": [],
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+      "source_line": 641,
+      "parent_part_path": "stellaris",
+      "qualified_name": "stellarator_09__stellaris__cas72_calc",
+      "is_template": false,
+      "owning_part_def_qn": "mfe_plant__MFE_Power_Plant",
+      "raw_element": null
+    },
+    {
+      "instance_name": "stellarator_09__stellaris__cas70_calc",
+      "calc_def_name": "Annual_Cost_Rollup",
+      "calc_def_qualified_name": "mfe_account_costs::'Annual Cost Rollup'",
+      "module_type": "mfe_account_costs.Annual_Cost_RollupModule",
+      "bindings": [
+        {
+          "param_name": "cas71",
+          "source_path": "cas71_calc.levelized",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> cas71_calc.levelized",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "cas71_calc",
+          "source_attribute_name": "levelized",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "cas72",
+          "source_path": "cas72_calc.cost",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> cas72_calc.cost",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "cas72_calc",
+          "source_attribute_name": "cost",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "cas80",
+          "source_path": "cas80_calc.levelized",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> cas80_calc.levelized",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "cas80_calc",
+          "source_attribute_name": "levelized",
+          "source_written_qualifier": null
+        }
+      ],
+      "unbound_params": [],
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+      "source_line": 657,
+      "parent_part_path": "stellaris",
+      "qualified_name": "stellarator_09__stellaris__cas70_calc",
+      "is_template": false,
+      "owning_part_def_qn": "mfe_plant__MFE_Power_Plant",
+      "raw_element": null
+    },
+    {
       "instance_name": "stellarator_09__stellaris__lcoe_calc",
       "calc_def_name": "LCOE_DCF",
       "calc_def_qualified_name": "mfe_lcoe_dcf::'LCOE DCF'",
@@ -10085,9 +11694,167 @@
       ],
       "unbound_params": [],
       "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
-      "source_line": 582,
+      "source_line": 679,
       "parent_part_path": "stellaris",
       "qualified_name": "stellarator_09__stellaris__lcoe_calc",
+      "is_template": false,
+      "owning_part_def_qn": "mfe_plant__MFE_Power_Plant",
+      "raw_element": null
+    },
+    {
+      "instance_name": "stellarator_09__stellaris__cas90_1cfe_calc",
+      "calc_def_name": "n_1cfe_Form_Capital_Charge",
+      "calc_def_qualified_name": "mfe_account_costs::'1cfe-Form Capital Charge'",
+      "module_type": "mfe_account_costs.n_1cfe_Form_Capital_ChargeModule",
+      "bindings": [
+        {
+          "param_name": "crf",
+          "source_path": "cas71_calc.crf",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> cas71_calc.crf",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "cas71_calc",
+          "source_attribute_name": "crf",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "overnight_cost",
+          "source_path": "mfe_plant::'MFE Power Plant'::overnight_capital",
+          "binding_type": "reference",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::overnight_capital",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "overnight_capital",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "idc_cost",
+          "source_path": "idc.cost",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> idc.cost",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "idc",
+          "source_attribute_name": "cost",
+          "source_written_qualifier": null
+        }
+      ],
+      "unbound_params": [],
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+      "source_line": 703,
+      "parent_part_path": "stellaris",
+      "qualified_name": "stellarator_09__stellaris__cas90_1cfe_calc",
+      "is_template": false,
+      "owning_part_def_qn": "mfe_plant__MFE_Power_Plant",
+      "raw_element": null
+    },
+    {
+      "instance_name": "stellarator_09__stellaris__lcoe_1cfe_calc",
+      "calc_def_name": "n_1cfe_Form_LCOE",
+      "calc_def_qualified_name": "mfe_account_costs::'1cfe-Form LCOE'",
+      "module_type": "mfe_account_costs.n_1cfe_Form_LCOEModule",
+      "bindings": [
+        {
+          "param_name": "cas90",
+          "source_path": "cas90_1cfe_calc.cas90",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> cas90_1cfe_calc.cas90",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "cas90_1cfe_calc",
+          "source_attribute_name": "cas90",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "cas70",
+          "source_path": "cas70_calc.cas70",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> cas70_calc.cas70",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "cas70_calc",
+          "source_attribute_name": "cas70",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "cas80",
+          "source_path": "cas80_calc.levelized",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> cas80_calc.levelized",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "cas80_calc",
+          "source_attribute_name": "levelized",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "net_electric_mw",
+          "source_path": "pb.p_net",
+          "binding_type": "chain",
+          "is_cross_file": false,
+          "raw_expression": "FeatureChainExpression -> pb.p_net",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": "pb",
+          "source_attribute_name": "p_net",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "n_mod",
+          "source_path": "mfe_plant::'MFE Power Plant'::lcoe_1cfe_calc::n_mod",
+          "binding_type": "reference",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::lcoe_1cfe_calc::n_mod",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": null,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "n_mod",
+          "source_written_qualifier": null
+        },
+        {
+          "param_name": "availability",
+          "source_path": null,
+          "binding_type": "literal",
+          "is_cross_file": false,
+          "raw_expression": "FeatureReferenceExpression -> mfe_plant::'MFE Power Plant'::lcoe_1cfe_calc::availability",
+          "source_instance_elem": null,
+          "source_attribute_elem": null,
+          "literal_value": 0.85,
+          "expression_ast": null,
+          "source_instance_name": null,
+          "source_attribute_name": "availability",
+          "source_written_qualifier": null
+        }
+      ],
+      "unbound_params": [],
+      "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+      "source_line": 710,
+      "parent_part_path": "stellaris",
+      "qualified_name": "stellarator_09__stellaris__lcoe_1cfe_calc",
       "is_template": false,
       "owning_part_def_qn": "mfe_plant__MFE_Power_Plant",
       "raw_element": null
@@ -11021,7 +12788,7 @@
         "default_value": "1.0",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 375,
+        "source_line": 379,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Preconstruction_Cost__n_mod"
       },
@@ -11031,7 +12798,7 @@
         "default_value": "0.25",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 378,
+        "source_line": 382,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Preconstruction_Cost__land_intensity"
       },
@@ -11041,7 +12808,7 @@
         "default_value": "10000.0",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 379,
+        "source_line": 383,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Preconstruction_Cost__land_cost"
       },
@@ -11051,7 +12818,7 @@
         "default_value": "1000.0",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 380,
+        "source_line": 384,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Preconstruction_Cost__ref_net_power"
       },
@@ -11061,7 +12828,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 382,
+        "source_line": 386,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Preconstruction_Cost__cost"
       },
@@ -11071,7 +12838,7 @@
         "default_value": "1.0",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 407,
+        "source_line": 411,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Annual_OM_Cost__n_mod"
       },
@@ -11081,7 +12848,7 @@
         "default_value": "1000.0",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 409,
+        "source_line": 413,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Annual_OM_Cost__ref_net_power"
       },
@@ -11091,7 +12858,7 @@
         "default_value": "0.5",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 411,
+        "source_line": 415,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Annual_OM_Cost__alpha"
       },
@@ -11101,7 +12868,7 @@
         "default_value": "0.0",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 412,
+        "source_line": 416,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Annual_OM_Cost__om_direct"
       },
@@ -11111,7 +12878,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 414,
+        "source_line": 418,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Annual_OM_Cost__annual_om"
       },
@@ -11121,7 +12888,7 @@
         "default_value": "1.0",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 449,
+        "source_line": 453,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Plant_Power_Law_Cost__n_mod"
       },
@@ -11131,7 +12898,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 452,
+        "source_line": 456,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Plant_Power_Law_Cost__cost"
       },
@@ -11141,7 +12908,7 @@
         "default_value": "1100.0",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 473,
+        "source_line": 477,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Remote_Handling_Cost__p_et_ref"
       },
@@ -11151,7 +12918,7 @@
         "default_value": "0.5",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 474,
+        "source_line": 478,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Remote_Handling_Cost__alpha"
       },
@@ -11161,7 +12928,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 475,
+        "source_line": 479,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Remote_Handling_Cost__cost"
       },
@@ -11171,7 +12938,7 @@
         "default_value": "0.14",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 494,
+        "source_line": 498,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Installation_Labor_Cost__installation_frac"
       },
@@ -11181,7 +12948,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 496,
+        "source_line": 500,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Installation_Labor_Cost__cost"
       },
@@ -11191,7 +12958,7 @@
         "default_value": "1.0",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 518,
+        "source_line": 522,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Coolant_Cost__n_mod"
       },
@@ -11201,7 +12968,7 @@
         "default_value": "1000.0",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 519,
+        "source_line": 523,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Coolant_Cost__ref_net_power"
       },
@@ -11211,7 +12978,7 @@
         "default_value": "3500.0",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 520,
+        "source_line": 524,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Coolant_Cost__p_th_ref"
       },
@@ -11221,7 +12988,7 @@
         "default_value": "0.55",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 521,
+        "source_line": 525,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Coolant_Cost__alpha"
       },
@@ -11231,7 +12998,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 522,
+        "source_line": 526,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Coolant_Cost__cost"
       },
@@ -11241,7 +13008,7 @@
         "default_value": "1.0",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 546,
+        "source_line": 550,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Aux_Cooling_Cost__n_mod"
       },
@@ -11251,7 +13018,7 @@
         "default_value": "30.0",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 547,
+        "source_line": 551,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Aux_Cooling_Cost__p_cryo_ref"
       },
@@ -11261,7 +13028,7 @@
         "default_value": "0.7",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 548,
+        "source_line": 552,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Aux_Cooling_Cost__alpha"
       },
@@ -11271,7 +13038,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 549,
+        "source_line": 553,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Aux_Cooling_Cost__cost"
       },
@@ -11281,7 +13048,7 @@
         "default_value": "0.015",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 573,
+        "source_line": 577,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Supplementary_Cost__shipping_frac"
       },
@@ -11291,7 +13058,7 @@
         "default_value": "0.01",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 574,
+        "source_line": 578,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Supplementary_Cost__tax_frac"
       },
@@ -11301,7 +13068,7 @@
         "default_value": "0.015",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 575,
+        "source_line": 579,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Supplementary_Cost__insurance_frac"
       },
@@ -11311,7 +13078,7 @@
         "default_value": "0.0",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 579,
+        "source_line": 583,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Supplementary_Cost__contingency_rate"
       },
@@ -11321,7 +13088,7 @@
         "default_value": "1.0",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 584,
+        "source_line": 588,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Supplementary_Cost__n_mod"
       },
@@ -11331,7 +13098,7 @@
         "default_value": "1000.0",
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 585,
+        "source_line": 589,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Supplementary_Cost__ref_net_power"
       },
@@ -11341,7 +13108,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 586,
+        "source_line": 590,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__Supplementary_Cost__cost"
       },
@@ -11351,7 +13118,7 @@
         "default_value": null,
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 617,
+        "source_line": 621,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__IDC_Closed_Form_Cost__f_idc"
       },
@@ -11361,9 +13128,279 @@
         "default_value": null,
         "unit": null,
         "source_file": "root-0/analyses/mfe_account_costs.sysml",
-        "source_line": 620,
+        "source_line": 624,
         "parent_part": "",
         "qualified_name": "mfe_account_costs__IDC_Closed_Form_Cost__cost"
+      },
+      {
+        "name": "disc_pow_n",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 668,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__Levelized_Annual_Cost__disc_pow_n"
+      },
+      {
+        "name": "crf",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 669,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__Levelized_Annual_Cost__crf"
+      },
+      {
+        "name": "a1",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 672,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__Levelized_Annual_Cost__a1"
+      },
+      {
+        "name": "pv",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 675,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__Levelized_Annual_Cost__pv"
+      },
+      {
+        "name": "levelized",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 679,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__Levelized_Annual_Cost__levelized"
+      },
+      {
+        "name": "n_mod",
+        "sysml_type": "Real",
+        "default_value": "1.0",
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 717,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__DT_Fuel_Cost__n_mod"
+      },
+      {
+        "name": "annual_raw",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 731,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__DT_Fuel_Cost__annual_raw"
+      },
+      {
+        "name": "burn_correction",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 736,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__DT_Fuel_Cost__burn_correction"
+      },
+      {
+        "name": "annual_fuel",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 739,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__DT_Fuel_Cost__annual_fuel"
+      },
+      {
+        "name": "p_neutron",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 809,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__Levelized_Replacement_Cost__p_neutron"
+      },
+      {
+        "name": "q_n",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 810,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__Levelized_Replacement_Cost__q_n"
+      },
+      {
+        "name": "fpy_raw",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 816,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__Levelized_Replacement_Cost__fpy_raw"
+      },
+      {
+        "name": "fpy_cap",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 817,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__Levelized_Replacement_Cost__fpy_cap"
+      },
+      {
+        "name": "core_lifetime_fpy",
+        "sysml_type": "Real",
+        "default_value": "mfe_account_costs::'Levelized Replacement Cost'::core_lifetime_fpy::(anonymous InvocationExpression)",
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 819,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__Levelized_Replacement_Cost__core_lifetime_fpy"
+      },
+      {
+        "name": "core_lifetime_cal",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 823,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__Levelized_Replacement_Cost__core_lifetime_cal"
+      },
+      {
+        "name": "s",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 826,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__Levelized_Replacement_Cost__s"
+      },
+      {
+        "name": "n_rep",
+        "sysml_type": "Real",
+        "default_value": "mfe_account_costs::'Levelized Replacement Cost'::n_rep::(anonymous InvocationExpression)",
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 830,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__Levelized_Replacement_Cost__n_rep"
+      },
+      {
+        "name": "pv",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 835,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__Levelized_Replacement_Cost__pv"
+      },
+      {
+        "name": "disc_pow_n",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 838,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__Levelized_Replacement_Cost__disc_pow_n"
+      },
+      {
+        "name": "crf",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 839,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__Levelized_Replacement_Cost__crf"
+      },
+      {
+        "name": "cost",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 841,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__Levelized_Replacement_Cost__cost"
+      },
+      {
+        "name": "cas70",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 868,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__Annual_Cost_Rollup__cas70"
+      },
+      {
+        "name": "annual_total",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 869,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__Annual_Cost_Rollup__annual_total"
+      },
+      {
+        "name": "cas90",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 896,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__n_1cfe_Form_Capital_Charge__cas90"
+      },
+      {
+        "name": "n_mod",
+        "sysml_type": "Real",
+        "default_value": "1.0",
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 918,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__n_1cfe_Form_LCOE__n_mod"
+      },
+      {
+        "name": "annual_energy_mwh",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 920,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__n_1cfe_Form_LCOE__annual_energy_mwh"
+      },
+      {
+        "name": "lcoe",
+        "sysml_type": "Real",
+        "default_value": null,
+        "unit": null,
+        "source_file": "root-0/analyses/mfe_account_costs.sysml",
+        "source_line": 922,
+        "parent_part": "",
+        "qualified_name": "mfe_account_costs__n_1cfe_Form_LCOE__lcoe"
       }
     ],
     "/home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_power_balance.sysml": [
@@ -11505,7 +13542,7 @@
         "default_value": "0.0276",
         "unit": null,
         "source_file": "root-0/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 757,
+        "source_line": 827,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__beta"
       },
@@ -11515,7 +13552,7 @@
         "default_value": "0.05",
         "unit": null,
         "source_file": "root-0/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 760,
+        "source_line": 830,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__beta_limit"
       },
@@ -11525,7 +13562,7 @@
         "default_value": "4.05",
         "unit": null,
         "source_file": "root-0/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 781,
+        "source_line": 851,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__wall_load_limit"
       },
@@ -11535,7 +13572,7 @@
         "default_value": "1.074",
         "unit": null,
         "source_file": "root-0/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 791,
+        "source_line": 861,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__tbr"
       },
@@ -11545,7 +13582,7 @@
         "default_value": "1.05",
         "unit": null,
         "source_file": "root-0/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 794,
+        "source_line": 864,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__tbr_floor"
       },
@@ -11555,7 +13592,7 @@
         "default_value": "wall_load_calc.wall_load",
         "unit": null,
         "source_file": "root-0/designs/stellarator_09/stellarator_plant.sysml",
-        "source_line": 813,
+        "source_line": 883,
         "parent_part": "stellaris",
         "qualified_name": "stellarator_09__stellaris__neutron_wall_load"
       }
@@ -12002,14 +14039,84 @@
         "qualified_name": "mfe_plant__MFE_Power_Plant__idc_capital"
       },
       {
-        "name": "annual_om",
+        "name": "cas71_annual",
         "sysml_type": "Real",
-        "default_value": "om_cost.annual_om",
+        "default_value": "cas71_calc.levelized",
         "unit": null,
         "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 577,
+        "source_line": 592,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__cas71_annual"
+      },
+      {
+        "name": "cas80_annual",
+        "sysml_type": "Real",
+        "default_value": "cas80_calc.levelized",
+        "unit": null,
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 623,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__cas80_annual"
+      },
+      {
+        "name": "ash_frac",
+        "sysml_type": "Real",
+        "default_value": "0.2002",
+        "unit": null,
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 636,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__ash_frac"
+      },
+      {
+        "name": "cas72_annual",
+        "sysml_type": "Real",
+        "default_value": "cas72_calc.cost",
+        "unit": null,
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 651,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__cas72_annual"
+      },
+      {
+        "name": "cas70_annual",
+        "sysml_type": "Real",
+        "default_value": "cas70_calc.cas70",
+        "unit": null,
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 662,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__cas70_annual"
+      },
+      {
+        "name": "annual_om",
+        "sysml_type": "Real",
+        "default_value": "cas70_calc.annual_total",
+        "unit": null,
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 674,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__annual_om"
+      },
+      {
+        "name": "cas90_1cfe",
+        "sysml_type": "Real",
+        "default_value": "cas90_1cfe_calc.cas90",
+        "unit": null,
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 708,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__cas90_1cfe"
+      },
+      {
+        "name": "lcoe_1cfe",
+        "sysml_type": "Real",
+        "default_value": "lcoe_1cfe_calc.lcoe",
+        "unit": null,
+        "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
+        "source_line": 718,
+        "parent_part": "",
+        "qualified_name": "mfe_plant__MFE_Power_Plant__lcoe_1cfe"
       },
       {
         "name": "net_electric",
@@ -12017,7 +14124,7 @@
         "default_value": "pb.p_net",
         "unit": null,
         "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 609,
+        "source_line": 737,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__net_electric"
       },
@@ -12027,7 +14134,7 @@
         "default_value": "pb.q_eng",
         "unit": null,
         "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 610,
+        "source_line": 738,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__q_eng"
       },
@@ -12037,7 +14144,7 @@
         "default_value": "pb.rec_frac",
         "unit": null,
         "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 611,
+        "source_line": 739,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__rec_frac"
       },
@@ -12047,7 +14154,7 @@
         "default_value": "lcoe_calc.lcoe",
         "unit": null,
         "source_file": "root-0/designs/generic_mfe/mfe_plant.sysml",
-        "source_line": 612,
+        "source_line": 740,
         "parent_part": "",
         "qualified_name": "mfe_plant__MFE_Power_Plant__lcoe"
       }
@@ -13231,7 +15338,7 @@
         "owning_part_qn": "stellarator_09__stellaris",
         "attribute_name": "precon_fixed_base",
         "redefinition_type": "literal",
-        "literal_value": 32000000.0,
+        "literal_value": 16000000.0,
         "source_path": null,
         "expression_ast": null,
         "expression_text": "",
@@ -13531,6 +15638,110 @@
         "attribute_name": "operational_years",
         "redefinition_type": "literal",
         "literal_value": 30.0,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "inflation_rate",
+        "redefinition_type": "literal",
+        "literal_value": 0.02,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "fuel_cost_per_rxn",
+        "redefinition_type": "literal",
+        "literal_value": 1.7260641119988767e-23,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "fuel_q_eff",
+        "redefinition_type": "literal",
+        "literal_value": 17.58,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "mev_to_joules",
+        "redefinition_type": "literal",
+        "literal_value": 1.6021766339999998e-13,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "burn_fraction",
+        "redefinition_type": "literal",
+        "literal_value": 0.05,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "fuel_recovery",
+        "redefinition_type": "literal",
+        "literal_value": 0.99,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "fluence_limit",
+        "redefinition_type": "literal",
+        "literal_value": 18.0,
+        "source_path": null,
+        "expression_ast": null,
+        "expression_text": "",
+        "target_path": [],
+        "is_deep_path": false,
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      {
+        "owning_part_qn": "stellarator_09__stellaris",
+        "attribute_name": "ash_frac",
+        "redefinition_type": "literal",
+        "literal_value": 0.2002275312855518,
         "source_path": null,
         "expression_ast": null,
         "expression_text": "",
@@ -14119,6 +16330,40 @@
         "source_line": 0
       },
       "instance_path": "stellarator_09__stellaris"
+    },
+    {
+      "expression": {
+        "owning_part_qn": "mfe_plant__MFE_Power_Plant",
+        "owning_part_name": "MFE_Power_Plant",
+        "attribute_name": "replacement_cost_per_event",
+        "raw_expression_text": "(blanket.capital_cost + divertor.capital_cost) * n_mod",
+        "transformed_expression": "((blanket.capital_cost + divertor.capital_cost) * n_mod)",
+        "sum_terms": [],
+        "singleton_terms": [
+          {
+            "source_path": "blanket.capital_cost"
+          },
+          {
+            "source_path": "divertor.capital_cost"
+          }
+        ],
+        "local_terms": [
+          {
+            "attribute_name": "n_mod"
+          }
+        ],
+        "input_channels": [
+          "blanket.capital_cost",
+          "divertor.capital_cost"
+        ],
+        "entry_points": [],
+        "compilability": "unknown",
+        "has_unsupported_nodes": false,
+        "aliases": [],
+        "source_file": "unknown",
+        "source_line": 0
+      },
+      "instance_path": "stellarator_09__stellaris"
     }
   ],
   "computed_attributes": [
@@ -14633,21 +16878,21 @@
       ]
     },
     {
-      "name": "annual_om",
-      "python_name": "annual_om",
+      "name": "cas71_annual",
+      "python_name": "cas71_annual",
       "owning_part_name": "MFE_Power_Plant",
       "owning_part_qualified_name": "mfe_plant::'MFE Power Plant'",
       "expression_ast": null,
-      "expression_text": "om_cost.annual_om",
+      "expression_text": "cas71_calc.levelized",
       "references": [
         {
-          "name": "annual_om",
-          "qualified_name": "mfe_account_costs::'Annual OM Cost'::annual_om",
+          "name": "levelized",
+          "qualified_name": "mfe_account_costs::'Levelized Annual Cost'::levelized",
           "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml"
         },
         {
-          "name": "om_cost",
-          "qualified_name": "mfe_plant::'MFE Power Plant'::om_cost",
+          "name": "cas71_calc",
+          "qualified_name": "mfe_plant::'MFE Power Plant'::cas71_calc",
           "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
         }
       ],
@@ -14658,8 +16903,188 @@
       "source_file": "unknown",
       "source_line": 0,
       "reference_chain": [
-        "om_cost",
-        "annual_om"
+        "cas71_calc",
+        "levelized"
+      ]
+    },
+    {
+      "name": "cas80_annual",
+      "python_name": "cas80_annual",
+      "owning_part_name": "MFE_Power_Plant",
+      "owning_part_qualified_name": "mfe_plant::'MFE Power Plant'",
+      "expression_ast": null,
+      "expression_text": "cas80_calc.levelized",
+      "references": [
+        {
+          "name": "levelized",
+          "qualified_name": "mfe_account_costs::'Levelized Annual Cost'::levelized",
+          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml"
+        },
+        {
+          "name": "cas80_calc",
+          "qualified_name": "mfe_plant::'MFE Power Plant'::cas80_calc",
+          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
+        }
+      ],
+      "classification": "expose_pure",
+      "compilability": "manual_required",
+      "compiled_expression": null,
+      "is_on_part_definition": true,
+      "source_file": "unknown",
+      "source_line": 0,
+      "reference_chain": [
+        "cas80_calc",
+        "levelized"
+      ]
+    },
+    {
+      "name": "cas72_annual",
+      "python_name": "cas72_annual",
+      "owning_part_name": "MFE_Power_Plant",
+      "owning_part_qualified_name": "mfe_plant::'MFE Power Plant'",
+      "expression_ast": null,
+      "expression_text": "cas72_calc.cost",
+      "references": [
+        {
+          "name": "cost",
+          "qualified_name": "mfe_account_costs::'Levelized Replacement Cost'::cost",
+          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml"
+        },
+        {
+          "name": "cas72_calc",
+          "qualified_name": "mfe_plant::'MFE Power Plant'::cas72_calc",
+          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
+        }
+      ],
+      "classification": "expose_pure",
+      "compilability": "manual_required",
+      "compiled_expression": null,
+      "is_on_part_definition": true,
+      "source_file": "unknown",
+      "source_line": 0,
+      "reference_chain": [
+        "cas72_calc",
+        "cost"
+      ]
+    },
+    {
+      "name": "cas70_annual",
+      "python_name": "cas70_annual",
+      "owning_part_name": "MFE_Power_Plant",
+      "owning_part_qualified_name": "mfe_plant::'MFE Power Plant'",
+      "expression_ast": null,
+      "expression_text": "cas70_calc.cas70",
+      "references": [
+        {
+          "name": "cas70",
+          "qualified_name": "mfe_account_costs::'Annual Cost Rollup'::cas70",
+          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml"
+        },
+        {
+          "name": "cas70_calc",
+          "qualified_name": "mfe_plant::'MFE Power Plant'::cas70_calc",
+          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
+        }
+      ],
+      "classification": "expose_pure",
+      "compilability": "manual_required",
+      "compiled_expression": null,
+      "is_on_part_definition": true,
+      "source_file": "unknown",
+      "source_line": 0,
+      "reference_chain": [
+        "cas70_calc",
+        "cas70"
+      ]
+    },
+    {
+      "name": "annual_om",
+      "python_name": "annual_om",
+      "owning_part_name": "MFE_Power_Plant",
+      "owning_part_qualified_name": "mfe_plant::'MFE Power Plant'",
+      "expression_ast": null,
+      "expression_text": "cas70_calc.annual_total",
+      "references": [
+        {
+          "name": "annual_total",
+          "qualified_name": "mfe_account_costs::'Annual Cost Rollup'::annual_total",
+          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml"
+        },
+        {
+          "name": "cas70_calc",
+          "qualified_name": "mfe_plant::'MFE Power Plant'::cas70_calc",
+          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
+        }
+      ],
+      "classification": "expose_pure",
+      "compilability": "manual_required",
+      "compiled_expression": null,
+      "is_on_part_definition": true,
+      "source_file": "unknown",
+      "source_line": 0,
+      "reference_chain": [
+        "cas70_calc",
+        "annual_total"
+      ]
+    },
+    {
+      "name": "cas90_1cfe",
+      "python_name": "cas90_1cfe",
+      "owning_part_name": "MFE_Power_Plant",
+      "owning_part_qualified_name": "mfe_plant::'MFE Power Plant'",
+      "expression_ast": null,
+      "expression_text": "cas90_1cfe_calc.cas90",
+      "references": [
+        {
+          "name": "cas90",
+          "qualified_name": "mfe_account_costs::'1cfe-Form Capital Charge'::cas90",
+          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml"
+        },
+        {
+          "name": "cas90_1cfe_calc",
+          "qualified_name": "mfe_plant::'MFE Power Plant'::cas90_1cfe_calc",
+          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
+        }
+      ],
+      "classification": "expose_pure",
+      "compilability": "manual_required",
+      "compiled_expression": null,
+      "is_on_part_definition": true,
+      "source_file": "unknown",
+      "source_line": 0,
+      "reference_chain": [
+        "cas90_1cfe_calc",
+        "cas90"
+      ]
+    },
+    {
+      "name": "lcoe_1cfe",
+      "python_name": "lcoe_1cfe",
+      "owning_part_name": "MFE_Power_Plant",
+      "owning_part_qualified_name": "mfe_plant::'MFE Power Plant'",
+      "expression_ast": null,
+      "expression_text": "lcoe_1cfe_calc.lcoe",
+      "references": [
+        {
+          "name": "lcoe",
+          "qualified_name": "mfe_account_costs::'1cfe-Form LCOE'::lcoe",
+          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/analyses/mfe_account_costs.sysml"
+        },
+        {
+          "name": "lcoe_1cfe_calc",
+          "qualified_name": "mfe_plant::'MFE Power Plant'::lcoe_1cfe_calc",
+          "document_path": "file:///home/reid/1cfe/fusion-tea-stellarator-mbse-demo/exploration/stellarator_e2e/models/designs/generic_mfe/mfe_plant.sysml"
+        }
+      ],
+      "classification": "expose_pure",
+      "compilability": "manual_required",
+      "compiled_expression": null,
+      "is_on_part_definition": true,
+      "source_file": "unknown",
+      "source_line": 0,
+      "reference_chain": [
+        "lcoe_1cfe_calc",
+        "lcoe"
       ]
     },
     {

@@ -628,18 +628,31 @@ package stellarator_09 {
 
         // CAS10 preconstruction — forward-computed (WI-025); CAS27 special
         // materials — forward-computed (WI-021).
-        :>> precon_fixed_base = 32000000.0 {  // CAS10 fixed adders [$] (WI-025).
+        :>> precon_fixed_base = 16000000.0 {  // CAS10 fixed adders [$] (WI-025; WI-029 NOAK fix).
             doc /*
-            32 M$ x 1e6 = site_permits 3 + licensing_cost_dt 5 (DT frozen) +
-            plant_permits 2 + plant_studies_foak 20 (FOAK frozen) +
-            plant_reports 1 + other_precon 1. preconstruction_capital now
-            tracks the computed p_net via precon_cost (land ~
-            sqrt(p_net x 1000 x 1)); bound pre-contingency (CAS29 applies
-            once — convention preserved). Stale basis retired: the old
-            $33.896M literal was computed at p_net = 575.3 (WI-018).
+            16 M$ x 1e6 = site_permits 3 + licensing_cost_dt 5 (DT frozen) +
+            plant_permits 2 + plant_studies_noak 4 + plant_reports 1 +
+            other_precon 1. preconstruction_capital tracks the computed p_net
+            via precon_cost (land ~ sqrt(p_net x 1000 x 1)); bound
+            pre-contingency (CAS29 applies once — convention preserved).
+
+            WI-029 CORRECTION (one clean error, owner ruling 4): this base was
+            32 M$, carrying plant_studies at the FOAK 20.0 while every sibling
+            constant runs NOAK. Only plant_studies (foak 20 / noak 4) and
+            contingency_rate (foak 0.10 / noak 0.0) are FOAK/NOAK-sensitive
+            here, and the model's contingency handling is already NOAK-correct
+            (deferred to CAS29 = 0), so studies 20 -> 4 is the whole error.
+            The fix reconstructs 1cfe's CAS10 exactly at the handshake point:
+            land 0.25 x sqrt(1000 x 1 x 1000) x 10000 / 1e6 = 2.5, plus fixed
+            16.0, = 18.5 M$, residual 0.0. Because the fixed adders are
+            power-independent, the design-point total capital drops by exactly
+            $16M too — recorded as a re-baseline, not asserted unchanged.
+            Stale basis retired: the old $33.896M literal was computed at
+            p_net = 575.3 (WI-018).
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
-            **Ref**: costing_constants.yaml:15-23; costs.py:52-80 (:79 contingency not carried)
-            **Basis**: CAS10 fixed adders at the frozen DT/FOAK design point
+            **Ref**: costing_constants.yaml:15-23 (plant_studies_noak = 4.0);
+                costs.py:52-80 (cas10_preconstruction; :79 contingency not carried)
+            **Basis**: CAS10 fixed adders at the NOAK DT design point
             */
         }
         :>> special_materials_capital = rb.blanket_vol * 0.50 * 9400.0 * 5.0 {
@@ -747,6 +760,63 @@ package stellarator_09 {
         }
         :>> operational_years = 30.0 { // operating lifetime N [yr].
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/backcasting_bridge.py **Ref**: backcasting_bridge.py:49 (lifetime_yr = 30) **Basis**: 1costingFE reference plant lifetime */
+        }
+
+        // ---------------------------------------------------------------------
+        // ANNUAL-COST SIDE INPUTS — CAS71 / CAS72 / CAS80 (WI-029)
+        // Every constant below is an INSTANCE binding, not a library default
+        // (MR-3): the fuel chemistry, the fluence limit, and the escalation
+        // rate all belong to the concept, not to the concept-agnostic calcs.
+        // ---------------------------------------------------------------------
+
+        :>> inflation_rate = 0.02 {    // escalation rate g for CAS71/CAS80 levelization.
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/adapter.py **Ref**: adapter.py (inflation_rate = 0.02); emit_1cfe_point.py:10 (the handshake point runs inflation_rate = 0.02) **Basis**: 1costingFE reference escalation rate */
+        }
+
+        // ---- CAS80 DT fuel chemistry (costs.py:476-544 DT branch) ----
+        :>> fuel_cost_per_rxn = 1.7260641119988767e-23 {  // $/reaction.
+            doc /*
+            M_DEUTERIUM_KG * u_deuterium + M_LI6_KG * u_li6
+              = 3.3435837768e-27 kg * 2175 $/kg
+              + 6.015122795 * 1.66053906892e-27 kg * 1000 $/kg
+              = 1.7260641119988767e-23 $/rxn.
+            One deuteron plus one Li-6 atom (bred to tritium in the blanket)
+            per D-T event; the enriched Li-6 is the tritium feedstock.
+            **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py (pin 0254385)
+            **Ref**: physics.py:13-20 (M_DEUTERIUM_KG, M_LI6_KG, _ATOMIC_MASS);
+                costing_constants.yaml:282 (u_deuterium 2175), :283 (u_li6 1000);
+                costs.py:477 (cost_per_rxn, DT branch)
+            **Basis**: Blended D + Li-6 feedstock cost per D-T fusion event
+            */
+        }
+        :>> fuel_q_eff = 17.58 {       // per-reaction energy Q_DT [MeV].
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py **Ref**: physics.py:33 (Q_DT = 17.58) **Basis**: D-T fusion Q-value */
+        }
+        :>> mev_to_joules = 1.6021766339999998e-13 {  // 1 MeV in J.
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py **Ref**: physics.py:13,16 (MEV_TO_JOULES = _EV * 1e6, _EV = 1.602176634e-19 exact by the 2019 SI redefinition) **Basis**: CODATA 2018 / SI-exact energy conversion */
+        }
+        :>> burn_fraction = 0.05 {     // single-pass burn fraction (MFE-class).
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:64 (burn_fraction = 0.05) **Basis**: 1costingFE steady-state stellarator single-pass burn fraction */
+        }
+        :>> fuel_recovery = 0.99 {     // unburned-fuel recovery fraction (NOAK).
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:65 (fuel_recovery = 0.99) **Basis**: 1costingFE NOAK unburned-fuel recycle fraction */
+        }
+
+        // ---- CAS72 scheduled-replacement inputs ----
+        :>> fluence_limit = 18.0 {     // core fluence limit [MW-yr/m^2], DT.
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:153 (fluence_limit_dt = 18.0, "ARIES FS 200 dpa = 18 MW yr/m^2") **Basis**: DT first-wall/blanket neutron-fluence replacement limit */
+        }
+        :>> ash_frac = 0.2002275312855518 {  // charged-particle share of D-T energy.
+            doc /*
+            E_ALPHA_DT / Q_DT = 3.52 / 17.58. Bound exactly (not the calc def's
+            rounded 0.2002) because the CAS72 neutron-power chain feeds a
+            fluence-limited lifetime that is compared under A-2 at 1e-6 — the
+            rounded value shifts q_n by 3.4e-5 relative and would miss the bar.
+            **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py (pin 0254385)
+            **Ref**: physics.py:31-33 (E_ALPHA_DT = 3.52, Q_DT = 17.58);
+                physics.py:177-179 (p_neutron = p_fus * (1 - ash_frac))
+            **Basis**: Alpha share of the D-T fusion energy; the complement is the neutron power
+            */
         }
 
         // ---------------------------------------------------------------------

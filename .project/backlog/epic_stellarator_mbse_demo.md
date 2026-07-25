@@ -74,7 +74,7 @@ These are the concept's 8 criteria, status as verified 2026-07-18. The checkbox 
 | 3. Agentic research / refinement | Partial — WI-019–025 ran as errata-driven refinement; study-driven rounds have not happened (studies never ran) | interleaves with Item 5 |
 | 4. Studies | Constraint execution done (Item 2, 2026-07-20); studies + viz not started | Items 5, 6 |
 | 5. Write-up | Not started | Item 8 |
-| Anchor A (cross-stage) | Partial — Items 1, 3 done; Item 4 remains | Item 4 |
+| Anchor A (cross-stage) | Items 1, 3, 4 done — **criterion-3 verdict written: MET** (`exploration/stellarator_e2e/HANDSHAKE_REPORT.md`, WI-029, pending audit + owner close) | — |
 | Anchor B (cross-stage) | Quarantine done (seam a); comparison not started | Items 1, 7 |
 
 A plain statement, per the concept's honesty bar: WI-019–025 refined the Stage-2 model because execution surfaced defects (phantom table rows, stale bases, unfaithful power balance) — not because studies revealed critical subsystems. The concept's stage-3⇄4 interleave (studies drive refinement) starts with Item 5; further refinement rounds get registered at pick-up when studies surface them.
@@ -189,11 +189,19 @@ Registration convention: modeling items (2, 3, 4, 5, 7, 9) register in the model
 - Changes to 1costingFE itself ([OWNER] non-goal: gaps found there are filed, not fixed here).
 
 **Success Criteria**:
-- [ ] CAS70 levelization + CAS80 in the model's LCOE, sourced per MR-4
-- [ ] End-to-end LCOE handshake result recorded pass/fail against the Item 1 spec; criterion 3 verdict written down
-- [ ] Standing validation bars pass
+- [x] CAS70 levelization + CAS80 in the model's LCOE, sourced per MR-4 — CAS71 (+1.08e-07), CAS72 (+5.22e-07), CAS70 (+3.19e-07), CAS80 (+1.03e-07), all under the A-2 1e-6 bar
+- [x] End-to-end LCOE handshake result recorded pass/fail against the Item 1 spec; **criterion-3 verdict written: MET** — `exploration/stellarator_e2e/HANDSHAKE_REPORT.md`
+- [x] Standing validation bars pass
 
 **Deliverables**: model additions; final Anchor-A handshake report (criterion-3 evidence); `work/` item record
+
+**Status**: implemented 2026-07-25 as WI-029 (`work/active/WI-029_handshake-lcoe-construction/`), pending audit + owner close.
+
+**The criterion-3 verdict artifact is `exploration/stellarator_e2e/HANDSHAKE_REPORT.md`** — written in the A-4 form and generated from an executed run by `build_verdict_report.py`. It carries (1) the per-account A-2 pass table, (2) the full signed-magnitude remainder itemization, (3) the reconciliation arithmetic shown term by term, and (4) the verdict: **MET**.
+
+Headline results: the residual end-to-end LCOE gap reconciles to the itemized remainder sum in **both** LCOE channels — the 1cfe-form comparison channel at 4.61e-08 and the DCF headline at 4.70e-08 relative to LCOE, both far inside the 1e-6 aggregate tolerance. The remainder is two lines: **C220106_pump −$0.7206M** (the vessel shell-only simplification, explained-and-kept) and the **headline IDC convention +$17.9639M/yr (+2.208%)** on the annual capital charge, kept deliberately under the [OWNER] Option-(ii) ruling of 2026-07-25 (the DCF headline convention stays; a 1cfe-form comparison channel is added alongside). **CAS10 closed as an error** — one mis-set FOAK constant (`precon_fixed_base` 32M → 16M, `plant_studies` 20 → NOAK 4) now reconstructs 1cfe's 18.500000 M$ with residual 0.000000 M$; the owner stop condition did not fire. **CAS72 left the remainder**: $82.230M/yr, previously structurally absent, is now forward-computed on the WI-022 handwritten rung with every 1cfe guard carried verbatim and proven live.
+
+Design-point headline **re-baselined** (not a regression): total capital $16,145,706,216.04 → **$16,129,706,216.04** (down exactly $16,000,000.00 from the CAS10 fix) and LCOE $258.013640 → **$275.264220/MWh**, for exactly two causes and no third — the annual-cost side entering the numerator (+$17.498627/MWh) and the CAS10 capital correction (−$0.248047/MWh), summing to the observed +$17.250580 exactly. No multiplier-swap component: the headline convention is unchanged. The physics spine (p_net 915.081088, q_eng 6.606662, rec_frac 0.151362) is unmoved and all five constraint verdicts stay satisfied.
 
 ---
 
@@ -332,10 +340,10 @@ Registration convention: modeling items (2, 3, 4, 5, 7, 9) register in the model
 
 Not epic items — decisions the owner makes, recorded in this epic when ruled so the board stops carrying ambiguity:
 
-- **WI-009 / WI-010 / WI-018 disposition**: substance built and audited via WI-019–025, items never driven through their own bars (MFE epic, Item Status Assessment). Close-out audit vs own spec, or re-scope/fold-in — owner decision.
-- **SV-016 (Q_eng ~10–40 band)**: `pending` by owner ruling; q_eng 6.607 is a documented lower bound (unprinted cryo loads excluded). Revisit when refinement moves parasitic power or the owner adjusts the band.
-- **WI-026 (pytest baseline re-record)**: trivial P3 standalone, sequence at owner convenience.
-- **CAS10 remainder disposition (surfaced at WI-028 close, 2026-07-20)**: the model's CAS10 sits +$16.0M (+86.5%) above 1cfe at the handshake point — currently carried as explained-and-kept A-4 remainder (pre-existing WI-025 basis). If the owner rules it an *error* under the criterion-3 ruling, closing it is a small follow-up (natural home: Item 4 pick-up). Owner decision.
+- **WI-009 / WI-010 / WI-018 disposition — RULED [OWNER] 2026-07-25: close as superseded (option c).** Substance built and refined through the WI-019–028 corrective run, whose audited records are the effective completion evidence; each item closed with a disposition note in its record — no close-out audit vs own spec, no spec re-scope. Noted in the notes: WI-010's "LCOE within a credible MFE range at defaults" bar was never formally assessed (decision record, not an open action).
+- **SV-016 (Q_eng ~10–40 band) — RULED [OWNER] 2026-07-25: option (i), re-derive the band from source. EXECUTED same day; outcome: source silent, finding recorded.** The Stellaris paper prints gross electric ~1000 MW but never net electric, recirculating power, or Q_eng, and explicitly defers parasitic electricity ("outside the scope of this paper"). Recorded as a finding in the SV-016 row per the ruling; band not fitted. The check also surfaced that the ~10–40 band has no external source (it is internal to the WI-009 spec), while the only sourced admissible convention is 1costingFE's recirc knee (rec_frac ≤ 0.5, Q_eng ≥ 2 — `mfe_viability.sysml:21-38`) and 1cfe's own reference point runs q_eng 8.835, also below the band. **One follow-on parked for owner**: replace the band with the sourced knee (SV-016 becomes assessable and passes on sourced, measurement-independent grounds) vs keep the band and mark the row failed-explained.
+- **WI-026 (pytest baseline re-record) — RULED [OWNER] 2026-07-25: slot immediately after WI-029 close, before Item 5 (studies).** Fix-vs-retire choice for the 11 stale-path failures (1 test_foundation + 10 test_power_balance) made at pick-up.
+- **CAS10 remainder disposition — RESOLVED.** Ruled error-to-close at the WI-029 Align ([OWNER] 2026-07-20, ruling 4, with stop condition); design found one clean error (FOAK plant_studies 20.0 vs NOAK 4.0; fix reconstructs 1cfe's 18.5 with residual 0.0) — stop condition did not fire; the fix ships inside WI-029. Owner confirmed 2026-07-25; no separate action.
 - **Adjacent, not demo work** ([OWNER] non-goal): the tokamak instantiation and the self-contained viability sweep remain the MFE epic's own deferred goals; they do not gate or count toward any demo criterion.
 
 ---

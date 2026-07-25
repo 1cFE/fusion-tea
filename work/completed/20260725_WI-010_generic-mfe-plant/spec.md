@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Epic: MFE Cost Modeling — Tokamak & Stellarator
 Owner: reid
 Created: 2026-07-13
-Updated: 2026-07-13
+Updated: '2026-07-25'
 ---
 
 # WI-010: Generic MFE Plant Model
@@ -65,3 +65,9 @@ Implemented. Files: `models/designs/generic_mfe/mfe_plant.sysml` (abstract `'MFE
 - **Money unit**: dollars ($) throughout; WI-011 supplies unit costs in $ (1costingFE M$ × 1e6).
 - **Validation**: Level 1 clean across all files; L3/4/5 pass; L6 shows only expected abstract-layer flags (rollup "references design attributes" + "never instantiated") that clear when WI-011 instantiates the plant.
 - **Watch item for codegen**: confirm the per-account rollup attributes extract/compute correctly once the plant is instantiated (WI-011).
+
+---
+
+## Disposition — closed as superseded ([OWNER] 2026-07-25)
+
+Closed under the demo epic's Board-housekeeping ruling (option c: no close-out audit vs this spec, no re-scope). `mfe_plant.sysml` was built and is the demo's wiring backbone, refined and independently audited through the WI-019–028 corrective run — those records are the effective completion evidence. Decision record: the spec's "LCOE within a credible MFE range at defaults" bar was never formally assessed; the ruling accepts that gap.

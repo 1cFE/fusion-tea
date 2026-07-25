@@ -1,10 +1,20 @@
 # Current Work
 
-**Last Updated**: 2026-07-18
+**Last Updated**: 2026-07-25
 
 ---
 
 ## Active Work
+
+### Stellarator MBSE Demo — WI-029 (Item 4, LCOE construction) IN FLIGHT; four board decisions ruled + executed (2026-07-25)
+
+**WI-029 status**: spec, design, and independent design review complete and committed (design rev 2; both must-fixes applied). The run hard-halted on the IDC/CAS90 convention gate; **[OWNER] 2026-07-25 ruled Option (ii) — mapped comparison channel**: the DCF headline `idc_factor` stays untouched (Item 3's Option C stands), a 1cfe-form CAS90/LCOE comparison channel is added reusing the Item-3 CAS60 reported line, and the headline convention difference (+$17.966M / +2.208% on the capital charge, ≈+1.8% on LCOE) is itemized in the A-4 table as explained-and-kept. Design resolved to the ruling (Status: approved — **design.md edit uncommitted, commit pending**). CAS10 stop condition did NOT fire: one clean error (FOAK plant_studies 20.0 → NOAK 4.0; fix reconstructs 1cfe's 18.5 with residual 0.0), design-point total will drop exactly $16M. **Next**: commit the design update → `/plan-model` → `/implement-model` → `/audit-models` → owner close. Implement must restore drifted toolchain pin worktrees first (sysml-codegen `06d95f8`, teax `07eb0ac`, agentic-mbse `4c18d61`, 1cfe `0254385`). Trail: `work/orchestration/handshake-lcoe-construction.md`. This item finishes criterion 3 — the Anchor-A verdict gets written in the A-4 form.
+
+**Board rulings ([OWNER] 2026-07-25, recorded in the demo epic's Board housekeeping; execution status):**
+1. **WI-009/010/018 → closed as superseded (option c) — EXECUTED.** Disposition notes appended to each spec; `pm close-item` run; archived to `work/completed/20260725_WI-009/-010/-018_*`; MFE epic assessment + Next Action amended. The WI-019–028 corrective-run records are the effective completion evidence; no close-out audit, no re-scope.
+2. **SV-016 (Q_eng ~10–40 band) → option (i), re-derive from source — EXECUTED; outcome: source silent, finding recorded.** The Stellaris paper prints gross ~1000 MW but no net/recirc/Q_eng and defers parasitic electricity outright; finding recorded in the SV-016 row, band not fitted. Companion finding: the band itself has no external source (internal to WI-009 spec), while the only sourced convention is 1cfe's recirc knee (Q_eng ≥ 2) and 1cfe's own reference point runs q_eng 8.835 — also below the band. **One follow-on parked for owner**: replace band with the sourced knee (row passes on measurement-independent grounds) vs keep band, mark failed-explained.
+3. **WI-026 (pytest baseline re-record, trivial P3) → slotted immediately after WI-029 close, before Item 5 (studies).** Fix-vs-retire for the 11 stale-path failures (1 test_foundation + 10 test_power_balance) decided at pick-up.
+4. **CAS10 remainder → confirmed resolved inside WI-029** (Align ruling 4; stop condition did not fire). No separate action.
 
 ### Stellarator MBSE Demo — epic Item 3 COMPLETE: handshake account scope CAS22 tail + CAS40/50/60 (WI-028 closed, 2026-07-20)
 

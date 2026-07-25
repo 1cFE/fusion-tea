@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:479
+SysML Source: root-0/analyses/mfe_account_costs.sysml:483
 
 SysML Expressions:
     installation_frac = 0.14
@@ -44,7 +44,7 @@ under A-2 is single-module.
 *Ref**: cas22.py:652-664 (c220111); installation_frac cas22.py:664 (0.14)
 *Basis**: Fixed fraction of the reactor-equipment subtotal
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:479
+SysML Source: root-0/analyses/mfe_account_costs.sysml:483
 
 SysML Expressions:
     installation_frac = 0.14

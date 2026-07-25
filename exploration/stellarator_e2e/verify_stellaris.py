@@ -105,7 +105,7 @@ IN = dict(
     bldg_staff_base=9000000.0, bldg_the_base=58000000.0,
     bldg_th_base=26000000.0, bldg_et_base=29000000.0,
     bldg_p_fus_ref=2300.0,  # p_the_ref = p_et_ref = 1100 (no DEC), reused below
-    precon_fixed_base=32000000.0, land_intensity=0.25, land_cost=10000.0,
+    precon_fixed_base=16000000.0, land_intensity=0.25, land_cost=10000.0,
     ref_net_power=1000.0,
     om_annual_ref=54900000.0, om_alpha=0.5, om_direct=0.0,
     # special_materials_capital now computed from blanket_vol (WI-021)
@@ -130,7 +130,39 @@ IN = dict(
     supp_shipping_frac=0.015, supp_tax_frac=0.01, supp_insurance_frac=0.015,
     supp_contingency_rate=0.0,  # CAS50 c59 internal contingency: library default 0.0 (not instance-bound)
     cas28_capital=5000000.0,
+    # ---- WI-029 annual-cost side: CAS71 / CAS72 / CAS80 instance bindings ----
+    inflation_rate=0.02,
+    fuel_cost_per_rxn=1.7260641119988767e-23, fuel_q_eff=17.58,
+    mev_to_joules=1.6021766339999998e-13,
+    burn_fraction=0.05, fuel_recovery=0.99,
+    fluence_limit=18.0, ash_frac=0.2002275312855518,
 )
+
+
+def _oracle_levelized_replacement_cost(cost_per_event, p_fus, ash_frac,
+                                       firstwall_area, fluence_limit,
+                                       availability, interest_rate,
+                                       operational_years):
+    """ORACLE MIRROR of the CAS72 handwritten rung — an independent statement
+    of the same guarded chain, NOT an import of the impl.
+
+    Guards carried verbatim from 1cfe (model.py:102-111, economics.py:53-75):
+      * inner  max(q_n, 1e-6)          — keeps the 1/q_n gradient finite
+      * clip   (0.5, n * availability) — floor first, then cap (jnp.clip order)
+      * outer  max(0, ceil(n/t) - 1)   — the first core is capital, not a replacement
+    """
+    p_neutron = p_fus * (1.0 - ash_frac)
+    q_n = p_neutron / firstwall_area
+    fpy_raw = fluence_limit / max(q_n, 1e-6)                      # inner max
+    fpy_cap = operational_years * availability
+    core_lifetime_fpy = min(max(fpy_raw, 0.5), fpy_cap)           # clip
+    core_lifetime_cal = core_lifetime_fpy / availability
+    s = (1.0 + interest_rate) ** (-core_lifetime_cal)
+    n_rep = max(0.0, float(math.ceil(operational_years / core_lifetime_cal)) - 1.0)
+    pv = cost_per_event * s * (1.0 - s ** n_rep) / (1.0 - s)
+    disc_pow_n = (1.0 + interest_rate) ** operational_years
+    crf = interest_rate * disc_pow_n / (disc_pow_n - 1.0)
+    return crf * pv
 
 
 def compute():
@@ -223,7 +255,9 @@ def compute():
         + (p["bldg_et_base"] * ((p_et * p["n_mod"]) / p["p_et_ref"])))
     precon = (((p["land_intensity"] * (((p_net * p["n_mod"]) * p["ref_net_power"]) ** 0.5))
                * p["land_cost"]) + p["precon_fixed_base"])
-    annual_om = ((p["om_annual_ref"] * (((p_net * p["n_mod"]) / p["ref_net_power"]) ** p["om_alpha"]))
+    # Unlevelized annual O&M (WI-025). WI-029 levelizes it into CAS71 below;
+    # it is no longer the DCF numerator itself.
+    annual_om_unlevelized = ((p["om_annual_ref"] * (((p_net * p["n_mod"]) / p["ref_net_power"]) ** p["om_alpha"]))
                  + p["om_direct"])
 
     powercore_capital = (magnet + heating + divertor + blanket + shield
@@ -276,6 +310,50 @@ def compute():
     # legacy aliases (retained for downstream comparison rows)
     indirect_capital = cas30_capital
 
+    # --- WI-029 annual-cost side: CAS71 / CAS72 / CAS80 ---------------------
+    # INDEPENDENT re-derivation of the same chains the generated pipeline runs.
+    # The CAS72 block below is the ORACLE MIRROR of the handwritten Rung-B impl
+    # (generated/handwritten/mfe_account_costs/levelized_replacement_cost_impl.py)
+    # and deliberately carries every 1cfe guard VERBATIM — clip(., 0.5, n*avail),
+    # the inner max(q_n, 1e-6), and the outer max(0, ceil(n/t) - 1). A mirror
+    # that dropped the guards would be blind to exactly the divergence it
+    # exists to catch. It is written out here, not imported from the impl,
+    # so the rel-1e-9 assert in run_stellaris_single.py is not vacuous.
+    i_rate = p["discount_rate"]
+    n_life = p["operational_years"]
+    g_infl = p["inflation_rate"]
+    t_c = p["construction_years"]
+
+    def _levelized_annual_cost(annual_cost):
+        """economics.py:13-50 — growing-annuity PV annuitized by CRF."""
+        disc_pow_n_l = (1.0 + i_rate) ** n_life
+        crf_l = i_rate * disc_pow_n_l / (disc_pow_n_l - 1.0)
+        a1 = annual_cost * (1.0 + g_infl) ** t_c
+        pv_l = (a1 * (1.0 - ((1.0 + g_infl) / (1.0 + i_rate)) ** n_life)
+                / (i_rate - g_infl))
+        return crf_l * pv_l
+
+    cas71_annual = _levelized_annual_cost(annual_om_unlevelized)
+
+    # CAS80 raw annual DT fuel (costs.py:476-544, DT branch), then levelized.
+    annual_fuel_raw = (n * p_fus * (3600.0 * 8760.0) * 1.0e6 * p["availability"]
+                       * p["fuel_cost_per_rxn"]
+                       / (p["fuel_q_eff"] * p["mev_to_joules"]))
+    burn_correction = (1.0 + (1.0 - p["burn_fraction"]) / p["burn_fraction"]
+                       * (1.0 - p["fuel_recovery"]))
+    annual_fuel = annual_fuel_raw * burn_correction
+    cas80_annual = _levelized_annual_cost(annual_fuel)
+
+    replacement_cost_per_event = (blanket + divertor) * n
+    cas72_annual = _oracle_levelized_replacement_cost(
+        cost_per_event=replacement_cost_per_event,
+        p_fus=p_fus, ash_frac=p["ash_frac"], firstwall_area=wall_area,
+        fluence_limit=p["fluence_limit"], availability=p["availability"],
+        interest_rate=i_rate, operational_years=n_life,
+    )
+    cas70_annual = cas71_annual + cas72_annual
+    annual_om = cas70_annual + cas80_annual   # the DCF numerator (WI-029)
+
     # --- LCOE DCF ($/MWh) ---
     d = p["discount_rate"]
     N = p["operational_years"]
@@ -285,6 +363,15 @@ def compute():
     annual_capital = total_capital * idc_factor * crf
     annual_energy_mwh = 8760.0 * p_net * p["availability"]
     lcoe = (annual_capital + annual_om) / annual_energy_mwh
+
+    # --- WI-029 Option (ii): 1cfe-form comparison channels ------------------
+    # crf_71 is the CRF the CAS71 levelization computes; the pipeline reuses
+    # that same channel, so the mirror reads it the same way.
+    disc_pow_n_71 = (1.0 + i_rate) ** n_life
+    crf_71 = i_rate * disc_pow_n_71 / (disc_pow_n_71 - 1.0)
+    cas90_1cfe = crf_71 * (overnight_capital + idc_capital)
+    lcoe_1cfe = ((cas90_1cfe + cas70_annual + cas80_annual)
+                 / (8760.0 * p_net * n * p["availability"]))
 
     # --- Neutron wall load ---
     wall_load = p_fus * (1.0 - 0.2002) / wall_area
@@ -313,6 +400,11 @@ def compute():
         overnight_capital=overnight_capital,
         contingency_capital=contingency_capital,
         indirect_capital=indirect_capital, total_capital=total_capital, lcoe=lcoe,
+        # WI-029 annual-cost side + Option-(ii) comparison channels ($/yr, $/MWh)
+        annual_om_unlevelized=annual_om_unlevelized, annual_fuel=annual_fuel,
+        cas71_annual=cas71_annual, cas72_annual=cas72_annual,
+        cas70_annual=cas70_annual, cas80_annual=cas80_annual,
+        cas90_1cfe=cas90_1cfe, lcoe_1cfe=lcoe_1cfe,
     )
 
 
