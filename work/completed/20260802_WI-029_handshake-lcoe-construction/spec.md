@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Epic: Stellarator MBSE Full Demo
 Owner: reidw
 Created: 2026-07-20
-Updated: 2026-07-20
+Updated: '2026-08-02'
 ---
 
 # WI-029 Spec — Handshake account scope: LCOE construction (CAS70/80 + IDC)

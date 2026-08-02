@@ -1,14 +1,14 @@
 # Current Work
 
-**Last Updated**: 2026-07-25
+**Last Updated**: 2026-08-02
 
 ---
 
 ## Active Work
 
-### Stellarator MBSE Demo — WI-029 (Item 4, LCOE construction) IMPLEMENTED + AUDIT POSITIVE, criterion-3 verdict MET; awaiting owner close (2026-07-25)
+### Stellarator MBSE Demo — criterion 3 (Anchor A) MET: WI-029 closed, epic Items 1-4 complete (2026-08-02)
 
-**WI-029 status**: run complete through audit. IDC gate ruled **Option (ii) — mapped comparison channel** ([OWNER] 2026-07-25: DCF headline `idc_factor` untouched, 1cfe-form CAS90/LCOE comparison channels added reusing the Item-3 CAS60 reported line; headline convention difference +$17.966M / +2.208% on the capital charge itemized in the A-4 table as explained-and-kept). Implemented `f22bd288` (+ G-8 re-baseline `31161dbe`): CAS70 = CAS71+CAS72 + CAS80 forward-computed under A-2 (CAS72 on the handwritten rung, 1cfe guards verbatim); CAS10 closed with residual 0.0 (FOAK plant_studies 20 → NOAK 4); Option-(ii) comparison channels exact; **A-4 reconciliation closes both channels — criterion-3 verdict MET**. New headline **$16.130B / $275.264/MWh**. Audit POSITIVE 9/9 (`6ff7fc62`, fixes F2/F3 applied); post-audit rulings recorded (`836bf47a` — F1 A-4 reading ratified; levelization guard-branch follow-up is an Item-5 pick-up note). **Next**: owner runs `pm close-item WI-029` (item still in `work/active/`), then Item 5 (studies) ∥ Item 7 sequencing call. Trail: `work/orchestration/handshake-lcoe-construction.md`.
+**WI-029 status**: run complete through audit. IDC gate ruled **Option (ii) — mapped comparison channel** ([OWNER] 2026-07-25: DCF headline `idc_factor` untouched, 1cfe-form CAS90/LCOE comparison channels added reusing the Item-3 CAS60 reported line; headline convention difference +$17.966M / +2.208% on the capital charge itemized in the A-4 table as explained-and-kept). Implemented `f22bd288` (+ G-8 re-baseline `31161dbe`): CAS70 = CAS71+CAS72 + CAS80 forward-computed under A-2 (CAS72 on the handwritten rung, 1cfe guards verbatim); CAS10 closed with residual 0.0 (FOAK plant_studies 20 → NOAK 4); Option-(ii) comparison channels exact; **A-4 reconciliation closes both channels — criterion-3 verdict MET**. New headline **$16.130B / $275.264/MWh**. Audit POSITIVE 9/9 (`6ff7fc62`, fixes F2/F3 applied); post-audit rulings recorded (`836bf47a` — F1 A-4 reading ratified; levelization guard-branch follow-up is an Item-5 pick-up note). **CLOSED 2026-08-02** (`pm close-item WI-029`, archived to `work/completed/20260802_WI-029_handshake-lcoe-construction/`; epic criterion 3 flipped to MET). **Demo board: criteria 1-3 met · 4-7 not started · 8 stretch. Next**: Item 5 (studies — pick-up notes in the epic: CAS71 guard-branch if sweeping discount rate) ∥ Item 7 reveal timing is the owner's sequencing call now that Anchor A is finished. Trail: `work/orchestration/handshake-lcoe-construction.md`.
 
 **Board rulings ([OWNER] 2026-07-25, recorded in the demo epic's Board housekeeping; execution status):**
 1. **WI-009/010/018 → closed as superseded (option c) — EXECUTED.** Disposition notes appended to each spec; `pm close-item` run; archived to `work/completed/20260725_WI-009/-010/-018_*`; MFE epic assessment + Next Action amended. The WI-019–028 corrective-run records are the effective completion evidence; no close-out audit, no re-scope.

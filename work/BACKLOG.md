@@ -141,8 +141,8 @@ standalone:
   name: Handshake account scope LCOE construction CAS70/80 + IDC
   scale: standard
   priority: P0
-  status: backlog
-  completed: null
+  status: completed
+  completed: '2026-08-02'
 ---
 
 # Project Backlog
@@ -195,4 +195,4 @@ standalone:
 | WI-026 | Pytest Baseline Re-Record | trivial | P3 | completed | Completed 2026-07-25 |
 | WI-027 | Demo Constraint Execution (STELLARATOR-DEMO Item 2) | standard | P0 | completed | Completed 2026-07-20 |
 | WI-028 | Handshake account scope CAS22 tail + CAS40/50/60 | standard | P0 | completed | Completed 2026-07-20 |
-| WI-029 | Handshake account scope LCOE construction CAS70/80 + IDC | standard | P0 | backlog |  |
+| WI-029 | Handshake account scope LCOE construction CAS70/80 + IDC | standard | P0 | completed | Completed 2026-08-02 |
