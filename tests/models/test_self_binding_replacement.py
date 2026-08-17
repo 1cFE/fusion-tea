@@ -123,6 +123,26 @@ def _tree_bytes(root: Path) -> dict[str, bytes]:
     }
 
 
+def _model_files_by_logical_path(root: Path, *, strip_library: bool) -> dict[str, Path]:
+    """Every SysML file keyed by the corresponding cross-tree layout path."""
+
+    def logical(path: Path) -> str:
+        relative = path.relative_to(root).as_posix()
+        if strip_library and relative.startswith("library/"):
+            relative = relative[len("library/") :]
+        return relative
+
+    files: dict[str, Path] = {}
+    for path in sorted(root.rglob("*.sysml")):
+        name = logical(path)
+        assert name not in files, (
+            f"logical path collision {name!r}: "
+            f"{files[name].relative_to(root)} and {path.relative_to(root)}"
+        )
+        files[name] = path
+    return files
+
+
 def _entry_sources(output: Path) -> dict[tuple[str, str], float]:
     """Every shipped input value keyed by its complete ``(group, key)`` identity.
 
@@ -366,20 +386,8 @@ def test_the_two_maintained_model_trees_cannot_diverge() -> None:
     primary_root = REPO / MODEL_SETS[0]
     secondary_root = REPO / MODEL_SETS[1]
 
-    def logical(path: Path, root: Path, strip_library: bool) -> str:
-        relative = path.relative_to(root).as_posix()
-        if strip_library and relative.startswith("library/"):
-            relative = relative[len("library/") :]
-        return relative
-
-    primary = {
-        logical(path, primary_root, strip_library=True): path
-        for path in sorted(primary_root.rglob("*.sysml"))
-    }
-    secondary = {
-        logical(path, secondary_root, strip_library=False): path
-        for path in sorted(secondary_root.rglob("*.sysml"))
-    }
+    primary = _model_files_by_logical_path(primary_root, strip_library=True)
+    secondary = _model_files_by_logical_path(secondary_root, strip_library=False)
     assert set(primary) == set(secondary), (
         sorted(set(primary) ^ set(secondary))
     )
@@ -389,3 +397,16 @@ def test_the_two_maintained_model_trees_cannot_diverge() -> None:
         if primary[name].read_bytes() != secondary[name].read_bytes()
     ]
     assert diverged == [], diverged
+
+
+def test_cross_tree_layout_mapping_refuses_a_logical_path_collision(
+    tmp_path: Path,
+) -> None:
+    """Audit falsifier: ``library/x.sysml`` and ``x.sysml`` must not collapse."""
+    root = tmp_path / "models"
+    (root / "library").mkdir(parents=True)
+    (root / "library" / "x.sysml").write_text("package library_x {}\n")
+    (root / "x.sysml").write_text("package root_x {}\n")
+
+    with pytest.raises(AssertionError, match="logical path collision"):
+        _model_files_by_logical_path(root, strip_library=True)
