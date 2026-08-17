@@ -111,19 +111,19 @@ package ife_plant {
             **Basis**: Hawker 2020 parameter-to-subsystem mapping
             */
 
-            in availability = availability;
+            in availability_in = availability;
             in blanket_energy_multiple = chamber.blanket_energy_multiple;
-            in discount_rate = discount_rate;
+            in discount_rate_in = discount_rate;
             in driver_cost_constant = driver.cost_per_joule;
             in driver_efficiency = driver.efficiency;
             in driver_energy = driver.energy;
             in driver_lifetime_shots = driver.lifetime_shots;
-            in frequency = frequency;
-            in gain = gain;
-            in om_cost_constant = om_cost_constant;
-            in plant_cost_constant = plant_cost_constant;
+            in frequency_in = frequency;
+            in gain_in = gain;
+            in om_cost_constant_in = om_cost_constant;
+            in plant_cost_constant_in = plant_cost_constant;
             in target_cost_constant = target_factory.cost_per_target;
-            in thermal_efficiency = thermal_efficiency;
+            in thermal_efficiency_in = thermal_efficiency;
             in yield_cost_constant = chamber.yield_cost_constant;
         }
 
@@ -143,9 +143,9 @@ package ife_plant {
             */
 
             in eta = driver.efficiency;
-            in gain = gain;
+            in gain_in = gain;
             in blanket_multiplier = chamber.blanket_energy_multiple;
-            in thermal_efficiency = thermal_efficiency;
+            in thermal_efficiency_in = thermal_efficiency;
         }
 
         attribute recirculating_fraction : Real = recirc_calc.f_recirc;
@@ -165,7 +165,7 @@ package ife_plant {
             */
 
             in eta = driver.efficiency;
-            in gain = gain;
+            in gain_in = gain;
         }
     }
 }

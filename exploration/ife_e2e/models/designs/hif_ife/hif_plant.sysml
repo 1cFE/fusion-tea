@@ -183,7 +183,7 @@ package hif_plant_pkg {
             **Basis**: Meier 1986 reactor cost scaling
             */
 
-            in thermal_power_gw = thermal_power_gw;
+            in thermal_power_gw_in = thermal_power_gw;
             in num_units = 1.0;
         }
 
@@ -212,8 +212,8 @@ package hif_plant_pkg {
             */
 
             in total_capital_billions = meier_capital_calc.total_capital_billions;
-            in availability = availability;
-            in net_electric_power_gw = net_electric_power_gw;
+            in availability_in = availability;
+            in net_electric_power_gw_in = net_electric_power_gw;
         }
 
         // === Exposed cost outputs ===

@@ -70,9 +70,9 @@ package hif_driver {
             **Basis**: Meier 1986 parametric driver cost formula
             */
 
-            in beam_energy_mj = beam_energy_mj;
+            in beam_energy_mj_in = beam_energy_mj;
             in driver_efficiency = efficiency;
-            in num_chambers = num_chambers;
+            in num_chambers_in = num_chambers;
             in rep_rate = pulse_rate_ref;
         }
 
