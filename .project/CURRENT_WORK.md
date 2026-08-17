@@ -1,10 +1,22 @@
 # Current Work
 
-**Last Updated**: 2026-08-02
+**Last Updated**: 2026-08-16
 
 ---
 
 ## Active Work
+
+### Stellarator MBSE Demo — PROOF OF LIFE: design search runs end-to-end (2026-08-16, `b8c7e6db`)
+
+**What exists now**: the first real design-search studies on the stellarator demo — a 948-point (R, a) grid + 19-point availability sweep, run through the **stock teax study layer** (PreparedListStrategy → StudyRunner → StudyStore → StudyQuery, zero hand-rolled sweep loops), every point classified by the model's own 5 viability verdicts with LCOE recorded. Visual deliverable: `exploration/stellarator_e2e/study/report.html` (self-contained, light/dark, hover tooltips; regenerate with `make_report.py`).
+
+**Headline findings**: wall-load limit is the active fence (353/385 violations); best feasible design R=14 m, a=1.65 m at **$209.00/MWh (−24% vs the $275.26 baseline)**, sitting on the wall-load boundary (4.035 of 4.05) — a constrained optimum found by the model's own verdicts. Recirculation (Q_eng ≥ 2) kills the small-machine corner (32 pts); net-positive/beta/TBR never flip in-window (the latter two are bound inputs — cannot).
+
+**Verification**: baseline grid point reproduces the pinned WI-029 headline to all recorded digits (275.264220042, 5/5 satisfied); 24 sampled points (stratified across verdict outcomes) vs the independent oracle at worst rel dev **5.7e-16**; review pass 2 independently re-verified **every row of both CSVs** (worst 7.25e-16, zero verdict mismatches); verdicts re-derived from oracle operands + bound limits match; committed package byte-untouched (git-clean gate).
+
+**Load-bearing mechanics (read before touching)**: current teax main **refuses** the package's v1.0.0 seal (fail-closed re-vendor at CONSTRAINT-SEMANTICS Item 3) — studies run on a read-only teax worktree at `fa0e06a` (`/home/reid/1cfe/teax-v1-era`), the era that built/certified this package. `GlueAwareLoader` accepts exactly the two documented glue-edited files (pipeline YAML + system_design.json), refuses anything beyond. Glue ledger g1–g3 in `study/run_design_search.py` docstring — includes the NEW rung g3: CAS27 special_materials recomputed per point (geometry-dependent; not independently verified — disclosed). Duplicated-input defect ([OWNER] 2026-08-16, "5 inputs same variable") handled per draft policy §2.2: axes declared at SysML-attribute level, expanded to complete entry-key sets; `magnet__R0` recorded as a declared physical-identity tie. Era evidence layer records single-field channels only (p_net/q_eng reach the record via verdicts).
+
+**Process**: plan + review-pass-1 (adversarial critique, 12 findings folded) at `.project/active/demo-proof-of-life/plan.md`; passes 2 (correctness) + 3 (honesty/claims + readability) run post-commit. This is a pragmatic first cut of epic Items 5+6 — it does NOT close them (A/B swap study, owner Align/policy ratification, animation all outstanding).
 
 ### Stellarator MBSE Demo — criterion 3 (Anchor A) MET: WI-029 closed, epic Items 1-4 complete (2026-08-02)
 

@@ -2,6 +2,7 @@
   "sampled_rows_per_study": 12,
   "seed": 20260816,
   "worst_channel_rel_dev": 5.672432746546722e-16,
+  "sampling": "stratified by verdict combination, remainder random",
   "channels_checked": [
     "lcoe",
     "p_fus",
@@ -12,5 +13,5 @@
   "tolerance": 1e-09,
   "verdicts_rederived": true,
   "package_git_clean": true,
-  "cas27_note": "glue-fed on both sides (rung g3); not independently verified"
+  "glue_note": "glue-fed inputs (CAS27 per-point, cas28, n_mod) identical by construction on both sides; not independently verified"
 }

@@ -71,7 +71,7 @@ generated SysML pipeline and the stock teax study layer, classified by the model
 own viability constraints, and verified against an independent oracle.</p>
 
 <div class="stats">
-<div class="stat"><div class="stat-label">Design points evaluated</div><div class="stat-value">967</div><div class="stat-note">948-point (R, a) grid + 19-point availability sweep</div></div>
+<div class="stat"><div class="stat-label">Design points evaluated</div><div class="stat-value">967</div><div class="stat-note">947-cell (R, a) grid + baseline + 19-point availability sweep</div></div>
 <div class="stat"><div class="stat-label">Baseline reproduced</div><div class="stat-value">$275.264220</div><div class="stat-note">pinned WI-029 headline LCOE, exact</div></div>
 <div class="stat"><div class="stat-label">Best feasible point found</div><div class="stat-value">$209.00/MWh</div><div class="stat-note">-24% vs baseline, at R = 14 m, a = 1.65 m</div></div>
 <div class="stat"><div class="stat-label">Worst oracle deviation</div><div class="stat-value">5.7e-16</div><div class="stat-note">24 sampled points, 5 channels, tolerance 1e-9</div></div>
@@ -80,16 +80,21 @@ own viability constraints, and verified against an independent oracle.</p>
 <h2>What this is</h2>
 <p>The demo asks one thing of the toolchain: author a fusion power plant as a SysML&nbsp;v2
 model, generate executable code from it, and then <em>search the design space</em> —
-vary design levers, and get cost and feasibility back for every candidate. This report
-is the first end-to-end run of that loop on the stellarator (Stellaris, concept-09).</p>
-<p>Three layers did the work, none of them hand-rolled for this study:</p>
+vary design levers, and get back cost and feasibility for every candidate. Cost here
+is the levelized cost of electricity (LCOE, $/MWh — lifetime cost per delivered
+megawatt-hour). This report is the first end-to-end run of that loop on the
+stellarator (Stellaris, concept-09).</p>
+<p>Three layers did the work — none of the study machinery was hand-rolled
+(the small documented glue harness is itemized in the caveats):</p>
 <ul>
 <li>The <strong>SysML model</strong> owns the meaning: plasma geometry, profile-integrated
-fusion power, power balance, the full CAS cost stack, LCOE, and five viability
-constraints (beta limit, wall load, tritium breeding, recirculation, net power).</li>
+fusion power, power balance, the full cost-account stack (CAS — the standard fusion
+cost breakdown), LCOE, and five viability constraints (beta limit, wall load,
+tritium breeding, recirculation, net power).</li>
 <li>The <strong>generated package</strong> (sysml-codegen, sealed July build) owns evaluation —
 the same package that reproduces the pinned $275.26/MWh headline bit-exact.</li>
-<li>The <strong>teax study layer</strong> owns exploration: stock
+<li>The <strong>study layer of teax</strong> (the evaluation toolkit) owns exploration,
+pinned to the package's era (see caveats): stock
 <span class="mono">PreparedListStrategy → StudyRunner → StudyStore → StudyQuery</span>,
 with every swept SysML attribute expanded to its complete set of generated input keys.</li>
 </ul>
@@ -119,10 +124,10 @@ designs the model itself rejects; the dotted corner is geometrically impossible
 <ul>
 <li><strong>The wall-load limit is the active fence.</strong> 353 of
 385 constraint violations are the neutron wall load exceeding the
-sourced 4.05&nbsp;MW/m² limit. LCOE keeps falling as the plasma gets fatter — the
+sourced 4.05&nbsp;MW/m² limit. LCOE keeps falling as the plasma gets fatter: the
 cheapest point in the window is $163/MWh at
-R&nbsp;=&nbsp;9, a&nbsp;=&nbsp;2.2
-(wall load 5.46) — but the model correctly fences
+R&nbsp;=&nbsp;9, a&nbsp;=&nbsp;2.2,
+at wall load 5.46 — and the model correctly fences
 that whole region off.</li>
 <li><strong>The best feasible design sits on the boundary.</strong>
 R&nbsp;=&nbsp;14&nbsp;m, a&nbsp;=&nbsp;1.65&nbsp;m gives
@@ -130,8 +135,9 @@ $209.00/MWh (-24% vs the authored baseline) at wall load
 4.035 of 4.05 — the classic signature of a constrained
 optimum, found by the model's own verdicts, not by a hand rule.</li>
 <li><strong>Recirculation kills the small-machine corner.</strong> 32
-small-R·a designs fail the economic recirculation threshold (Q<sub>eng</sub> ≥ 2)
-before net power even goes negative — net-positive never fires in this window, and
+small-R·a designs fail the economic recirculation threshold — Q<sub>eng</sub>, the
+plant's engineering gain (gross electric over recirculated power), must be at least 2 —
+before net power even goes negative. Net-positive never fires in this window, and
 the beta and TBR verdicts cannot move on these axes (they are bound design inputs;
 see caveats).</li>
 </ul>
@@ -142,26 +148,30 @@ see caveats).</li>
 </div>
 
 <h2>The availability sweep</h2>
-<p>A second study exercises a non-geometry lever: availability. One SysML attribute
-fans out to four generated input keys (fuel throughput, scheduled replacement,
-both LCOE forms) — the study layer moves all four together, which is exactly the
-duplicated-input defect this harness was built to close (see caveats).</p>
+<p>A second study exercises a non-geometry lever: availability. The package carries
+this one attribute as four separate input keys (fuel throughput, scheduled
+replacement, both LCOE forms) — the known duplicated-input defect, where mutating
+one copy leaves the rest stale. The study layer moves all four together, closing
+the defect at the study surface (see caveats for what remains untied).</p>
 <figure>
 <svg viewBox="0 0 640 300" role="img" aria-label="LCOE versus availability at baseline geometry"><line x1="56" y1="228.3" x2="624" y2="228.3" stroke="var(--grid)" stroke-width="1"/><text x="48" y="232.3" text-anchor="end" class="tick">250</text><line x1="56" y1="182.2" x2="624" y2="182.2" stroke="var(--grid)" stroke-width="1"/><text x="48" y="186.2" text-anchor="end" class="tick">300</text><line x1="56" y1="136.0" x2="624" y2="136.0" stroke="var(--grid)" stroke-width="1"/><text x="48" y="140.0" text-anchor="end" class="tick">350</text><line x1="56" y1="89.8" x2="624" y2="89.8" stroke="var(--grid)" stroke-width="1"/><text x="48" y="93.8" text-anchor="end" class="tick">400</text><line x1="56" y1="43.7" x2="624" y2="43.7" stroke="var(--grid)" stroke-width="1"/><text x="48" y="47.7" text-anchor="end" class="tick">450</text><polyline points="56.0,39.0 87.6,58.5 119.1,76.3 150.7,90.8 182.2,105.6 213.8,119.2 245.3,131.8 276.9,143.5 308.4,154.4 340.0,164.5 371.6,174.0 403.1,181.6 434.7,189.9 466.2,197.6 497.8,205.0 529.3,211.9 560.9,218.5 592.4,224.7 624.0,230.6" fill="none" stroke="#2a78d6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle class="c" cx="56.0" cy="39.0" r="4" fill="#2a78d6" stroke="var(--surface)" stroke-width="2" data-tip="availability 0.5&#10;LCOE $455.10/MWh&#10;feasible"/><circle class="c" cx="87.6" cy="58.5" r="4" fill="#2a78d6" stroke="var(--surface)" stroke-width="2" data-tip="availability 0.525&#10;LCOE $433.96/MWh&#10;feasible"/><circle class="c" cx="119.1" cy="76.3" r="4" fill="#2a78d6" stroke="var(--surface)" stroke-width="2" data-tip="availability 0.55&#10;LCOE $414.72/MWh&#10;feasible"/><circle class="c" cx="150.7" cy="90.8" r="4" fill="#2a78d6" stroke="var(--surface)" stroke-width="2" data-tip="availability 0.575&#10;LCOE $399.01/MWh&#10;feasible"/><circle class="c" cx="182.2" cy="105.6" r="4" fill="#2a78d6" stroke="var(--surface)" stroke-width="2" data-tip="availability 0.6&#10;LCOE $382.95/MWh&#10;feasible"/><circle class="c" cx="213.8" cy="119.2" r="4" fill="#2a78d6" stroke="var(--surface)" stroke-width="2" data-tip="availability 0.625&#10;LCOE $368.16/MWh&#10;feasible"/><circle class="c" cx="245.3" cy="131.8" r="4" fill="#2a78d6" stroke="var(--surface)" stroke-width="2" data-tip="availability 0.65&#10;LCOE $354.50/MWh&#10;feasible"/><circle class="c" cx="276.9" cy="143.5" r="4" fill="#2a78d6" stroke="var(--surface)" stroke-width="2" data-tip="availability 0.675&#10;LCOE $341.83/MWh&#10;feasible"/><circle class="c" cx="308.4" cy="154.4" r="4" fill="#2a78d6" stroke="var(--surface)" stroke-width="2" data-tip="availability 0.7&#10;LCOE $330.05/MWh&#10;feasible"/><circle class="c" cx="340.0" cy="164.5" r="4" fill="#2a78d6" stroke="var(--surface)" stroke-width="2" data-tip="availability 0.725&#10;LCOE $319.07/MWh&#10;feasible"/><circle class="c" cx="371.6" cy="174.0" r="4" fill="#2a78d6" stroke="var(--surface)" stroke-width="2" data-tip="availability 0.75&#10;LCOE $308.81/MWh&#10;feasible"/><circle class="c" cx="403.1" cy="181.6" r="4" fill="#2a78d6" stroke="var(--surface)" stroke-width="2" data-tip="availability 0.775&#10;LCOE $300.63/MWh&#10;feasible"/><circle class="c" cx="434.7" cy="189.9" r="4" fill="#2a78d6" stroke="var(--surface)" stroke-width="2" data-tip="availability 0.8&#10;LCOE $291.66/MWh&#10;feasible"/><circle class="c" cx="466.2" cy="197.6" r="4" fill="#2a78d6" stroke="var(--surface)" stroke-width="2" data-tip="availability 0.825&#10;LCOE $283.22/MWh&#10;feasible"/><circle class="c" cx="497.8" cy="205.0" r="4" fill="#2a78d6" stroke="var(--surface)" stroke-width="2" data-tip="availability 0.85&#10;LCOE $275.26/MWh&#10;feasible"/><circle class="c" cx="529.3" cy="211.9" r="4" fill="#2a78d6" stroke="var(--surface)" stroke-width="2" data-tip="availability 0.875&#10;LCOE $267.76/MWh&#10;feasible"/><circle class="c" cx="560.9" cy="218.5" r="4" fill="#2a78d6" stroke="var(--surface)" stroke-width="2" data-tip="availability 0.9&#10;LCOE $260.66/MWh&#10;feasible"/><circle class="c" cx="592.4" cy="224.7" r="4" fill="#2a78d6" stroke="var(--surface)" stroke-width="2" data-tip="availability 0.925&#10;LCOE $253.94/MWh&#10;feasible"/><circle class="c" cx="624.0" cy="230.6" r="4" fill="#2a78d6" stroke="var(--surface)" stroke-width="2" data-tip="availability 0.95&#10;LCOE $247.56/MWh&#10;feasible"/><circle cx="497.8" cy="205.0" r="7" fill="none" stroke="var(--ink)" stroke-width="2"/><text x="497.8" y="191.0" text-anchor="middle" class="lbl">baseline 0.85 → $275.26</text><text x="56.0" y="274" text-anchor="middle" class="tick">0.5</text><text x="182.2" y="274" text-anchor="middle" class="tick">0.6</text><text x="308.4" y="274" text-anchor="middle" class="tick">0.7</text><text x="434.7" y="274" text-anchor="middle" class="tick">0.8</text><text x="560.9" y="274" text-anchor="middle" class="tick">0.9</text><text x="340.0" y="294" text-anchor="middle" class="axis">availability (capacity factor lever)</text><text transform="translate(14 136.0) rotate(-90)" text-anchor="middle" class="axis">LCOE ($/MWh)</text></svg>
 <figcaption>LCOE at baseline geometry, availability 0.50 → 0.95:
 $455 → $248/MWh. The 0.85 point
-is the Stellaris baseline and reproduces the pinned headline exactly.</figcaption>
+is the Stellaris baseline and reproduces the pinned headline to all recorded digits.
+The slope kink near 0.775 is the scheduled-replacement count stepping (a ceiling
+function in the model) — real model behavior, not noise.</figcaption>
 </figure>
 
 <h2>Verification</h2>
 <table>
 <tr><th>Check</th><th>Result</th></tr>
-<tr><td>Baseline grid point vs pinned WI-029 headline</td>
-<td>LCOE $275.264220042 — exact; 5/5 verdicts satisfied</td></tr>
-<tr><td>24 random off-baseline points vs independent oracle
+<tr><td>Baseline point vs the pinned headline from the July certification run (WI-029)</td>
+<td>LCOE $275.264220042 — matches to all recorded digits; 5/5 verdicts satisfied</td></tr>
+<tr><td>24 randomly sampled points (12 per study,
+stratified so every observed verdict outcome is covered) vs the independent oracle
 (<span class="mono">verify_stellaris.py</span>), 5 channels each</td>
 <td>worst relative deviation 5.7e-16 (tolerance 1e-9)</td></tr>
-<tr><td>All 5 verdicts re-derived from oracle physics at sampled points</td>
+<tr><td>All 5 verdicts re-derived from oracle operands and the package's bound limits</td>
 <td>match the package's ConstraintReport at every sample</td></tr>
 <tr><td>Committed generated package after all runs</td>
 <td>byte-untouched (git-clean gate)</td></tr>
@@ -170,23 +180,42 @@ is the Stellaris baseline and reproduces the pinned headline exactly.</figcaptio
 </table>
 <p>The oracle is a line-by-line pure-Python mirror of the SysML calc definitions,
 written independently of the generated code. Channels checked: LCOE, fusion power,
-magnet capital, total capital, wall load.</p>
+magnet capital, total capital, wall load. One ingredient sits outside this check's
+independence: the CAS27 special-materials cost is supplied by the same formula on
+both sides (see caveats).</p>
 
 <h2>What this does not prove (read before quoting)</h2>
 <ul class="caveat">
 <li><strong>The package runs at its own era, behind a scoped seal exception.</strong>
 Current teax refuses this July package's v1.0.0 seal (a deliberate fail-closed
 version gate). The studies ran on a read-only teax worktree pinned to the era that
-built and certified this package. Two files differ from their sealed hashes — exactly
-the two the documented harness glue edits; the loader verifies every other artifact
-and refuses anything beyond those two. Regenerating the package on the current
-toolchain is the queued upstream work (the canonical stellarator models are refused
-by the current exact route: 114 self-binding sites).</li>
+built and certified this package, through a small harness-side wrapper around the
+era's loader (GlueAwareLoader, <span class="mono">study/run_design_search.py</span>).
+Two files differ from their sealed hashes — exactly the two the documented harness
+glue edits; the loader verifies every other artifact and refuses anything beyond
+those two. Regenerating the package on the current toolchain is known upstream work,
+currently parked (unowned, behind a July hold): the current code generator refuses
+the canonical stellarator models — at least 114 uses of a modeling pattern it no
+longer accepts (self-binding), counting only the first diagnostic class.</li>
 <li><strong>Three values are harness-supplied per point (glue), not model-computed:</strong>
 the CAS27 special-materials cost (recomputed per point from the blanket volume — the
 package cannot wire it cross-part, so the oracle check does not independently verify
 this one ingredient), the CAS28 digital-twin constant, and a replacement-schedule
-module count. All inherited from the documented WI-018/028/029 glue ledger.</li>
+module count. All inherited from the documented glue ledger of the July build items
+(WI-018/028/029).</li>
+<li><strong>Only the three declared axes are safe to sweep.</strong> R, a, and
+availability carry complete attribute→entry-key expansion maps; the package's
+remaining duplicated input keys (interest rate ×4, operational years ×4, and others)
+are untied, so sweeping anything else would silently leave stale siblings. The
+expansion completeness check is name-based; <span class="mono">magnet__R0</span>
+rides with R as a hand-declared physical-identity tie (the magnet-cost current runs
+on the major radius), and known semantic duplicates under different names are held
+fixed (installed heating power appears twice; one fraction appears at two
+precisions).</li>
+<li><strong>Interest rate is deliberately not swept.</strong> The model's
+levelization calc lacks a guard for the degenerate case where interest rate
+approaches the inflation rate — a known library gap that only a regenerated package
+can fix.</li>
 <li><strong>This is a power-balance-and-cost feasibility map under an assumed plasma.</strong>
 Density and temperature profiles, heating power, cryo loads, and the magnet shape
 factor are held at Stellaris baseline values at every point; no confinement-scaling
@@ -196,12 +225,19 @@ verdicts cannot flip on these axes.</li>
 <li><strong>The sweep window is engineered.</strong> Ranges were chosen by oracle
 pre-scan so the constraint boundaries sit in frame; the feasible fraction (59%) is a
 property of the window, not a finding about stellarators.</li>
-<li><strong>The study store records single-field channels only</strong> (era evidence
-layer): net electric power and Q<sub>eng</sub> reach the record through their
-verdicts, not as stored numbers.</li>
+<li><strong>The study store records only single-number outputs</strong> at this
+toolchain version: net electric power and Q<sub>eng</sub> reach the record through
+their verdicts, not as stored numbers.</li>
+<li><strong>This is a first cut of the demo epic's design-search items, not their
+close-out.</strong> The instance-swap (A/B) study, the formal review and
+policy-ratification step, and the search-process animation remain open.</li>
 </ul>
 
 <h2>Reproduce</h2>
+<p>Prerequisite: a read-only teax worktree at commit <span class="mono">fa0e06a</span>
+at <span class="mono">/home/reid/1cfe/teax-v1-era</span> (the era pin — see the
+script docstring). On a machine without it, create one with
+<span class="mono">git worktree add ../teax-v1-era fa0e06a</span> from the teax repo.</p>
 <pre>cd exploration/stellarator_e2e
 uv run python study/run_design_search.py run     # both studies + gates (~2 min)
 uv run python study/run_design_search.py verify  # oracle spot-checks

@@ -91,6 +91,13 @@ Independent adversarial review returned 2 blockers, 6 should-fix, 4 notes. All f
 
 ## Implementation record
 
-*(fill as phases complete)*
 - [x] Phase 0 — stock layer probe PASS (see above)
+- [x] Phase 2 — both studies ran through the stock study layer at `b8c7e6db`: 948/948 grid + 19/19 sweep cases completed (2m16s); baseline gate exact; package git-clean.
+- [x] Phase 3 — verify: 12 sampled rows per study (stratified across verdict outcomes after pass-2 fix), 5 channels rel < 1e-9 (worst 5.67e-16), verdicts re-derived from oracle operands + bound limits all match.
+- [x] Phase 4 — `study/report.html` (self-contained, light+dark, hover tooltips, zero console/page errors in browser-inspect on both themes). Regeneration: `study/make_report.py`.
+- [x] **Review pass 2 (correctness)** — NO BLOCKERS. Reviewer independently re-verified **every row of both CSVs** against the oracle: worst channel dev 7.25e-16, zero verdict/feasible-flag mismatches, grid set-exact (33×29 − 10 excluded + baseline), boundary margins ≥ 10 orders above float noise, oracle mutation-safety confirmed. Fixes applied: dead-filler grep broadened (any-channel resurrection now trips it), verify sampling stratified by verdict combination, glue-disclosure widened to cas28/n_mod.
+- [x] **Review pass 3 (honesty/claims)** — every headline number recomputed exactly from committed artifacts; 1 blocker fixed ("off-baseline" was false — the fixed-seed availability sample includes the 0.85 baseline row; wording corrected here, in the report, and in CURRENT_WORK). All promised-but-missing caveats added (only-declared-axes limit, interest-rate/CAS71 gap, Items-5/6 non-closure, tied-inputs machinery incl. the R0 hand-declared tie), "queued" → "parked (unowned, July hold)", era pin surfaced at the claim site, GlueAwareLoader named, reproduce prerequisite added, "at least 114" (first diagnostic class).
+- [x] **Review pass 4 (readability/visual)** — LCOE/Q_eng/CAS/teax glossed at first use, availability-paragraph referent fixed, staircase kink annotated in caption, dark-mode label halos fixed, browser check clean on both themes.
+
+**Result**: proof of life delivered. Committed: `study/run_design_search.py`, `make_report.py`, `report.html`, both CSVs, `verification_summary.json`, this plan.
 - [x] Phase 1 — oracle scan done (memoized profile integral; ~ms/point). Windows ([AGENT] exploration windows, engineered — H1 not claimable): R ∈ [4, 20] step 0.5, a ∈ [0.8, 2.2] step 0.05, availability ∈ [0.5, 0.95] step 0.025. Scan story: wall-load limit (4.05 MW/m²) binds above a ≈ 1.65 (R-independent, ∝ a²/(a+0.1)); recirc threshold kills the small-R·a corner; along the wall-load boundary the R optimum is interior (~15 m, LCOE ≈ 215.6 vs baseline 275.3); geometric-validity mask excludes the R ≤ a + 2.25 corner. Study script: `exploration/stellarator_e2e/study/run_design_search.py` (glue ledger g1–g3 in its docstring).

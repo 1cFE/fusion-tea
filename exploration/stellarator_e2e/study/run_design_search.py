@@ -234,8 +234,12 @@ def preflight_checks() -> None:
         raise SystemExit(f"unexpected R0 keys: {r0_keys}")
     # The 3 p_* schema fillers must be dead: nothing in the executed spec may
     # read them as mfe_plant_params-sourced inputs (glue-1 repointed them).
+    # Broad pattern deliberately: a resurrection wired from ANY channel
+    # (system_design included) must trip this, since glue feeds these fillers
+    # per-point from the oracle — a live consumer would be undisclosed
+    # both-sides circularity.
     spec_text = SPEC_PATH.read_text()
-    if "mfe_plant_params.mfe_plant__MFE_Power_Plant__p_" in spec_text:
+    if "MFE_Power_Plant__p_" in spec_text:
         raise SystemExit("schema fillers are LIVE in the pipeline spec — stale-input hazard")
     print("[preflight] expansion sets complete (name-based); schema fillers dead")
 
@@ -371,7 +375,17 @@ def cmd_verify(k: int = 12, seed: int = 20260816) -> None:
     worst = 0.0
     for csv_name, to_overrides in checks:
         rows = list(csv.DictReader((HERE / csv_name).open()))
-        sample = rng.sample(rows, min(k, len(rows)))
+        # Stratified: guarantee at least one row per observed verdict
+        # combination (a plain random sample can miss the 32-row recirc
+        # stratum entirely), then fill the rest randomly.
+        strata: dict[tuple, list] = {}
+        for r in rows:
+            key = tuple(r[v] for v in ("net_positive", "recirc_ok", "wall_load_ok",
+                                       "beta_ok", "tbr_ok"))
+            strata.setdefault(key, []).append(r)
+        sample = [rng.choice(members) for members in strata.values()]
+        rest = [r for r in rows if r not in sample]
+        sample += rng.sample(rest, min(max(0, k - len(sample)), len(rest)))
         for r in sample:
             o = oracle_at(**to_overrides(r))
             for name, okey in [("lcoe", "lcoe"), ("p_fus", "p_fus"), ("magnet_capital", "magnet"),
@@ -394,14 +408,17 @@ def cmd_verify(k: int = 12, seed: int = 20260816) -> None:
         print(f"[verify] {csv_name}: {len(sample)} sampled rows, channels rel<1e-9, "
               f"verdicts match oracle re-derivation")
     print(f"[verify] worst channel rel dev: {worst:.2e}")
-    print("[verify] NOTE: CAS27 special_materials is glue-fed on both sides (rung g3) "
-          "and is not independently verified by this check.")
+    print("[verify] NOTE: the glue-fed inputs (CAS27 special_materials per point, "
+          "cas28 constant, n_mod) are identical by construction on both sides "
+          "and are not independently verified by this check.")
     assert_package_untouched()
     (HERE / "verification_summary.json").write_text(json.dumps({
         "sampled_rows_per_study": k, "seed": seed, "worst_channel_rel_dev": worst,
+        "sampling": "stratified by verdict combination, remainder random",
         "channels_checked": ["lcoe", "p_fus", "magnet_capital", "total_capital", "wall_load"],
         "tolerance": 1e-9, "verdicts_rederived": True, "package_git_clean": True,
-        "cas27_note": "glue-fed on both sides (rung g3); not independently verified",
+        "glue_note": "glue-fed inputs (CAS27 per-point, cas28, n_mod) identical by "
+                     "construction on both sides; not independently verified",
     }, indent=2))
     print(f"[verify] wrote verification_summary.json")
 

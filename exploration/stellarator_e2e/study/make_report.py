@@ -298,7 +298,7 @@ generated SysML pipeline and the stock teax study layer, classified by the model
 own viability constraints, and verified against an independent oracle.</p>
 
 <div class="stats">
-{stat("Design points evaluated", f"{len(ROWS) + len(AV)}", "948-point (R, a) grid + 19-point availability sweep")}
+{stat("Design points evaluated", f"{len(ROWS) + len(AV)}", f"{len(ROWS)-1}-cell (R, a) grid + baseline + 19-point availability sweep")}
 {stat("Baseline reproduced", "$275.264220", "pinned WI-029 headline LCOE, exact")}
 {stat("Best feasible point found", f"${best_lcoe:,.2f}/MWh", f"{delta_pct:+.0f}% vs baseline, at R = {best_R:g} m, a = {best_a:g} m")}
 {stat("Worst oracle deviation", f"{VER['worst_channel_rel_dev']:.1e}", f"{2*VER['sampled_rows_per_study']} sampled points, 5 channels, tolerance 1e-9")}
@@ -307,16 +307,21 @@ own viability constraints, and verified against an independent oracle.</p>
 <h2>What this is</h2>
 <p>The demo asks one thing of the toolchain: author a fusion power plant as a SysML&nbsp;v2
 model, generate executable code from it, and then <em>search the design space</em> —
-vary design levers, and get cost and feasibility back for every candidate. This report
-is the first end-to-end run of that loop on the stellarator (Stellaris, concept-09).</p>
-<p>Three layers did the work, none of them hand-rolled for this study:</p>
+vary design levers, and get back cost and feasibility for every candidate. Cost here
+is the levelized cost of electricity (LCOE, $/MWh — lifetime cost per delivered
+megawatt-hour). This report is the first end-to-end run of that loop on the
+stellarator (Stellaris, concept-09).</p>
+<p>Three layers did the work — none of the study machinery was hand-rolled
+(the small documented glue harness is itemized in the caveats):</p>
 <ul>
 <li>The <strong>SysML model</strong> owns the meaning: plasma geometry, profile-integrated
-fusion power, power balance, the full CAS cost stack, LCOE, and five viability
-constraints (beta limit, wall load, tritium breeding, recirculation, net power).</li>
+fusion power, power balance, the full cost-account stack (CAS — the standard fusion
+cost breakdown), LCOE, and five viability constraints (beta limit, wall load,
+tritium breeding, recirculation, net power).</li>
 <li>The <strong>generated package</strong> (sysml-codegen, sealed July build) owns evaluation —
 the same package that reproduces the pinned $275.26/MWh headline bit-exact.</li>
-<li>The <strong>teax study layer</strong> owns exploration: stock
+<li>The <strong>study layer of teax</strong> (the evaluation toolkit) owns exploration,
+pinned to the package's era (see caveats): stock
 <span class="mono">PreparedListStrategy → StudyRunner → StudyStore → StudyQuery</span>,
 with every swept SysML attribute expanded to its complete set of generated input keys.</li>
 </ul>
@@ -346,10 +351,10 @@ designs the model itself rejects; the dotted corner is geometrically impossible
 <ul>
 <li><strong>The wall-load limit is the active fence.</strong> {VIOL['wall_load_ok']} of
 {sum(VIOL.values())} constraint violations are the neutron wall load exceeding the
-sourced 4.05&nbsp;MW/m² limit. LCOE keeps falling as the plasma gets fatter — the
+sourced 4.05&nbsp;MW/m² limit. LCOE keeps falling as the plasma gets fatter: the
 cheapest point in the window is ${cheap_lcoe:,.0f}/MWh at
-R&nbsp;=&nbsp;{float(CHEAPEST_ANY['R']):g}, a&nbsp;=&nbsp;{float(CHEAPEST_ANY['a']):g}
-(wall load {float(CHEAPEST_ANY['wall_load']):.2f}) — but the model correctly fences
+R&nbsp;=&nbsp;{float(CHEAPEST_ANY['R']):g}, a&nbsp;=&nbsp;{float(CHEAPEST_ANY['a']):g},
+at wall load {float(CHEAPEST_ANY['wall_load']):.2f} — and the model correctly fences
 that whole region off.</li>
 <li><strong>The best feasible design sits on the boundary.</strong>
 R&nbsp;=&nbsp;{best_R:g}&nbsp;m, a&nbsp;=&nbsp;{best_a:g}&nbsp;m gives
@@ -357,8 +362,9 @@ ${best_lcoe:,.2f}/MWh ({delta_pct:+.0f}% vs the authored baseline) at wall load
 {float(BEST['wall_load']):.3f} of 4.05 — the classic signature of a constrained
 optimum, found by the model's own verdicts, not by a hand rule.</li>
 <li><strong>Recirculation kills the small-machine corner.</strong> {VIOL['recirc_ok']}
-small-R·a designs fail the economic recirculation threshold (Q<sub>eng</sub> ≥ 2)
-before net power even goes negative — net-positive never fires in this window, and
+small-R·a designs fail the economic recirculation threshold — Q<sub>eng</sub>, the
+plant's engineering gain (gross electric over recirculated power), must be at least 2 —
+before net power even goes negative. Net-positive never fires in this window, and
 the beta and TBR verdicts cannot move on these axes (they are bound design inputs;
 see caveats).</li>
 </ul>
@@ -369,26 +375,30 @@ see caveats).</li>
 </div>
 
 <h2>The availability sweep</h2>
-<p>A second study exercises a non-geometry lever: availability. One SysML attribute
-fans out to four generated input keys (fuel throughput, scheduled replacement,
-both LCOE forms) — the study layer moves all four together, which is exactly the
-duplicated-input defect this harness was built to close (see caveats).</p>
+<p>A second study exercises a non-geometry lever: availability. The package carries
+this one attribute as four separate input keys (fuel throughput, scheduled
+replacement, both LCOE forms) — the known duplicated-input defect, where mutating
+one copy leaves the rest stale. The study layer moves all four together, closing
+the defect at the study surface (see caveats for what remains untied).</p>
 <figure>
 {availability_svg()}
 <figcaption>LCOE at baseline geometry, availability 0.50 → 0.95:
 ${float(AV[0]['lcoe']):,.0f} → ${float(AV[-1]['lcoe']):,.0f}/MWh. The 0.85 point
-is the Stellaris baseline and reproduces the pinned headline exactly.</figcaption>
+is the Stellaris baseline and reproduces the pinned headline to all recorded digits.
+The slope kink near 0.775 is the scheduled-replacement count stepping (a ceiling
+function in the model) — real model behavior, not noise.</figcaption>
 </figure>
 
 <h2>Verification</h2>
 <table>
 <tr><th>Check</th><th>Result</th></tr>
-<tr><td>Baseline grid point vs pinned WI-029 headline</td>
-<td>LCOE $275.264220042 — exact; 5/5 verdicts satisfied</td></tr>
-<tr><td>{2*VER['sampled_rows_per_study']} random off-baseline points vs independent oracle
+<tr><td>Baseline point vs the pinned headline from the July certification run (WI-029)</td>
+<td>LCOE $275.264220042 — matches to all recorded digits; 5/5 verdicts satisfied</td></tr>
+<tr><td>{2*VER['sampled_rows_per_study']} randomly sampled points (12 per study,
+stratified so every observed verdict outcome is covered) vs the independent oracle
 (<span class="mono">verify_stellaris.py</span>), 5 channels each</td>
 <td>worst relative deviation {VER['worst_channel_rel_dev']:.1e} (tolerance 1e-9)</td></tr>
-<tr><td>All 5 verdicts re-derived from oracle physics at sampled points</td>
+<tr><td>All 5 verdicts re-derived from oracle operands and the package's bound limits</td>
 <td>match the package's ConstraintReport at every sample</td></tr>
 <tr><td>Committed generated package after all runs</td>
 <td>byte-untouched (git-clean gate)</td></tr>
@@ -397,23 +407,42 @@ is the Stellaris baseline and reproduces the pinned headline exactly.</figcaptio
 </table>
 <p>The oracle is a line-by-line pure-Python mirror of the SysML calc definitions,
 written independently of the generated code. Channels checked: LCOE, fusion power,
-magnet capital, total capital, wall load.</p>
+magnet capital, total capital, wall load. One ingredient sits outside this check's
+independence: the CAS27 special-materials cost is supplied by the same formula on
+both sides (see caveats).</p>
 
 <h2>What this does not prove (read before quoting)</h2>
 <ul class="caveat">
 <li><strong>The package runs at its own era, behind a scoped seal exception.</strong>
 Current teax refuses this July package's v1.0.0 seal (a deliberate fail-closed
 version gate). The studies ran on a read-only teax worktree pinned to the era that
-built and certified this package. Two files differ from their sealed hashes — exactly
-the two the documented harness glue edits; the loader verifies every other artifact
-and refuses anything beyond those two. Regenerating the package on the current
-toolchain is the queued upstream work (the canonical stellarator models are refused
-by the current exact route: 114 self-binding sites).</li>
+built and certified this package, through a small harness-side wrapper around the
+era's loader (GlueAwareLoader, <span class="mono">study/run_design_search.py</span>).
+Two files differ from their sealed hashes — exactly the two the documented harness
+glue edits; the loader verifies every other artifact and refuses anything beyond
+those two. Regenerating the package on the current toolchain is known upstream work,
+currently parked (unowned, behind a July hold): the current code generator refuses
+the canonical stellarator models — at least 114 uses of a modeling pattern it no
+longer accepts (self-binding), counting only the first diagnostic class.</li>
 <li><strong>Three values are harness-supplied per point (glue), not model-computed:</strong>
 the CAS27 special-materials cost (recomputed per point from the blanket volume — the
 package cannot wire it cross-part, so the oracle check does not independently verify
 this one ingredient), the CAS28 digital-twin constant, and a replacement-schedule
-module count. All inherited from the documented WI-018/028/029 glue ledger.</li>
+module count. All inherited from the documented glue ledger of the July build items
+(WI-018/028/029).</li>
+<li><strong>Only the three declared axes are safe to sweep.</strong> R, a, and
+availability carry complete attribute→entry-key expansion maps; the package's
+remaining duplicated input keys (interest rate ×4, operational years ×4, and others)
+are untied, so sweeping anything else would silently leave stale siblings. The
+expansion completeness check is name-based; <span class="mono">magnet__R0</span>
+rides with R as a hand-declared physical-identity tie (the magnet-cost current runs
+on the major radius), and known semantic duplicates under different names are held
+fixed (installed heating power appears twice; one fraction appears at two
+precisions).</li>
+<li><strong>Interest rate is deliberately not swept.</strong> The model's
+levelization calc lacks a guard for the degenerate case where interest rate
+approaches the inflation rate — a known library gap that only a regenerated package
+can fix.</li>
 <li><strong>This is a power-balance-and-cost feasibility map under an assumed plasma.</strong>
 Density and temperature profiles, heating power, cryo loads, and the magnet shape
 factor are held at Stellaris baseline values at every point; no confinement-scaling
@@ -423,12 +452,19 @@ verdicts cannot flip on these axes.</li>
 <li><strong>The sweep window is engineered.</strong> Ranges were chosen by oracle
 pre-scan so the constraint boundaries sit in frame; the feasible fraction (59%) is a
 property of the window, not a finding about stellarators.</li>
-<li><strong>The study store records single-field channels only</strong> (era evidence
-layer): net electric power and Q<sub>eng</sub> reach the record through their
-verdicts, not as stored numbers.</li>
+<li><strong>The study store records only single-number outputs</strong> at this
+toolchain version: net electric power and Q<sub>eng</sub> reach the record through
+their verdicts, not as stored numbers.</li>
+<li><strong>This is a first cut of the demo epic's design-search items, not their
+close-out.</strong> The instance-swap (A/B) study, the formal review and
+policy-ratification step, and the search-process animation remain open.</li>
 </ul>
 
 <h2>Reproduce</h2>
+<p>Prerequisite: a read-only teax worktree at commit <span class="mono">fa0e06a</span>
+at <span class="mono">/home/reid/1cfe/teax-v1-era</span> (the era pin — see the
+script docstring). On a machine without it, create one with
+<span class="mono">git worktree add ../teax-v1-era fa0e06a</span> from the teax repo.</p>
 <pre>cd exploration/stellarator_e2e
 uv run python study/run_design_search.py run     # both studies + gates (~2 min)
 uv run python study/run_design_search.py verify  # oracle spot-checks
