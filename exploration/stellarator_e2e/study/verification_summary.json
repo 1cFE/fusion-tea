@@ -1,0 +1,16 @@
+{
+  "sampled_rows_per_study": 12,
+  "seed": 20260816,
+  "worst_channel_rel_dev": 5.672432746546722e-16,
+  "channels_checked": [
+    "lcoe",
+    "p_fus",
+    "magnet_capital",
+    "total_capital",
+    "wall_load"
+  ],
+  "tolerance": 1e-09,
+  "verdicts_rederived": true,
+  "package_git_clean": true,
+  "cas27_note": "glue-fed on both sides (rung g3); not independently verified"
+}
