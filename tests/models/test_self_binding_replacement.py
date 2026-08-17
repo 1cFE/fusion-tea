@@ -66,21 +66,26 @@ USAGE_LITERALS = {
     "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__num_units",
 }
 
-GAIN_KEY = "hif_plant_pkg__hif_plant__gain"
-BEAM_KEY = "hif_plant_pkg__hif_plant__driver__beam_energy_mj"
+#: Mutated sources as complete public identities: ``(input group, key)``. A bare
+#: key is not an identity — two groups could mint the same key and a merged dict
+#: would hide one of them (audit F1).
+GAIN_SOURCE = ("hif_plant_params", "hif_plant_pkg__hif_plant__gain")
+BEAM_SOURCE = ("hif_plant_params", "hif_plant_pkg__hif_plant__driver__beam_energy_mj")
 
-#: Every bound consumer of the two mutated keys, by pipeline module name and the
-#: formal it binds. The viability constraint module is a consumer of gain — the
-#: consumer class every-and-only has historically dropped.
+#: Every bound consumer of the two mutated sources as complete ``(module, formal)``
+#: port identities — a ``{module: formal}`` dict would collapse two bound ports on
+#: one module (audit F1). The viability constraint module is a consumer of gain —
+#: the consumer class every-and-only has historically dropped.
 GAIN_CONSUMERS = {
-    "hif_plant_pkg__hif_plant__lcoe_calc": "gain_in",
-    "hif_plant_pkg__hif_plant__recirc_calc": "gain_in",
-    "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b": "gain_in",
+    ("hif_plant_pkg__hif_plant__lcoe_calc", "gain_in"),
+    ("hif_plant_pkg__hif_plant__recirc_calc", "gain_in"),
+    ("hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b", "gain_in"),
 }
 BEAM_CONSUMERS = {
-    "hif_plant_pkg__hif_plant__driver__meier_cost": "beam_energy_mj_in",
+    ("hif_plant_pkg__hif_plant__driver__meier_cost", "beam_energy_mj_in"),
 }
 
+VIABILITY_DEF_QN = "fusion_cycle::'Viability Threshold'"
 VIABILITY_FORMAL_QN = "fusion_cycle::'Viability Threshold'::gain_in"
 
 
@@ -118,11 +123,25 @@ def _tree_bytes(root: Path) -> dict[str, bytes]:
     }
 
 
-def _entry_values(output: Path) -> dict[str, float]:
-    values: dict[str, float] = {}
-    for group in sorted((output / "inputs").glob("*.json")):
-        values.update(json.loads(group.read_text()))
-    return values
+def _entry_sources(output: Path) -> dict[tuple[str, str], float]:
+    """Every shipped input value keyed by its complete ``(group, key)`` identity.
+
+    Asserts identity uniqueness both ways: no ``(group, key)`` repeats, and no
+    bare key appears in two groups — either duplication would let a merged view
+    silently drop a value (audit F1).
+    """
+    sources: dict[tuple[str, str], float] = {}
+    for group_file in sorted((output / "inputs").glob("*.json")):
+        group = group_file.stem
+        for key, value in json.loads(group_file.read_text()).items():
+            identity = (group, key)
+            assert identity not in sources, f"duplicate input identity {identity}"
+            sources[identity] = value
+    bare_keys = [key for (_group, key) in sources]
+    assert len(bare_keys) == len(set(bare_keys)), (
+        "a bare key appears in more than one input group; the oracle must not merge"
+    )
+    return sources
 
 
 def _parameters(output: Path) -> list[dict]:
@@ -130,15 +149,46 @@ def _parameters(output: Path) -> list[dict]:
     return contract["parameters"]
 
 
-def _consumers_of(output: Path, key: str) -> dict[str, str]:
-    """``{module_name: formal_name}`` for every pipeline input wired to ``key``."""
+def _consumers_of(output: Path, source: tuple[str, str]) -> set[tuple[str, str]]:
+    """Complete ``(module, formal)`` port identities wired to one ``(group, key)``.
+
+    The pipeline serializes an entry-point input as ``"<type> <group>.<key>"``;
+    the match is on the exact source token, never a suffix, and every bound port
+    is kept — two ports on one module stay two identities (audit F1)."""
+    group, key = source
+    expected = f"{group}.{key}"
     pipeline = yaml.safe_load((output / "pipelines" / "pipeline.yaml").read_text())
-    consumers: dict[str, str] = {}
+    consumers: set[tuple[str, str]] = set()
     for name, module in pipeline["modules"].items():
-        for formal, source in (module.get("inputs") or {}).items():
-            if isinstance(source, str) and source.endswith("." + key):
-                consumers[name] = formal
+        if module.get("module_type") == "EntryPoint":
+            continue
+        for formal, wired in (module.get("inputs") or {}).items():
+            if not isinstance(wired, str):
+                continue
+            parts = wired.split()
+            if len(parts) == 2 and parts[1] == expected:
+                consumers.add((name, formal))
     return consumers
+
+
+def _predicate_feature_refs(entry: dict) -> list[dict]:
+    """Every ``feature_ref`` reference node in a catalog entry's predicate IR,
+    walked structurally from the parsed JSON — never matched as substrings."""
+    predicate = json.loads(entry["predicate_ir"])
+    references: list[dict] = []
+
+    def walk(node: object) -> None:
+        if isinstance(node, dict):
+            if node.get("kind") == "feature_ref":
+                references.append(node["reference"])
+            for value in node.values():
+                walk(value)
+        elif isinstance(node, list):
+            for item in node:
+                walk(item)
+
+    walk(predicate)
+    return references
 
 
 def _mutated_copy(destination: Path, original: str, replacement: str) -> Path:
@@ -207,7 +257,8 @@ def test_full_classification_oracle_is_23_entry_points_18_design_attributes(
 
 def test_renamed_supplier_sub_oracle_is_exactly_the_eleven_keys(baseline: Path) -> None:
     """The migrated formals' suppliers: every one a design-attribute entry point
-    keyed by its display path, present in the shipped inputs with a value."""
+    keyed by its display path, present in exactly one shipped input group with a
+    numeric value."""
     design = {
         p["qualified_name"]
         for p in _parameters(baseline)
@@ -216,9 +267,15 @@ def test_renamed_supplier_sub_oracle_is_exactly_the_eleven_keys(baseline: Path) 
     assert EXPECTED_ELEVEN <= design, sorted(EXPECTED_ELEVEN - design)
     assert design - NON_RENAMED_DESIGN == EXPECTED_ELEVEN
 
-    values = _entry_values(baseline)
-    missing = [key for key in EXPECTED_ELEVEN if not isinstance(values.get(key), (int, float))]
-    assert missing == [], missing
+    sources = _entry_sources(baseline)
+    for expected_key in EXPECTED_ELEVEN:
+        carriers = [
+            (group, key, value)
+            for (group, key), value in sources.items()
+            if key == expected_key
+        ]
+        assert len(carriers) == 1, f"{expected_key}: {carriers}"
+        assert isinstance(carriers[0][2], (int, float)), carriers
 
 
 def test_the_seven_non_renamed_design_attributes_survive_unrenamed(
@@ -235,21 +292,21 @@ def test_the_seven_non_renamed_design_attributes_survive_unrenamed(
 def test_gain_mutation_reaches_every_and_only_its_three_consumers(
     baseline: Path, tmp_path: Path
 ) -> None:
-    """The spine. 80.0 → 81.0 at the one authored site: exactly the gain key moves,
-    and its consumers are the two calc modules plus the viability constraint module
-    — asserted by the constraint's formal identity, not only its module name."""
+    """The spine. 80.0 → 81.0 at the one authored site: exactly the gain source
+    identity moves, and its consumers are the two calc modules plus the viability
+    constraint module — asserted structurally down to the constraint's formal."""
     mutated = tmp_path / "package"
     assert _generate(
         _mutated_copy(tmp_path, ":>> gain = 80.0", ":>> gain = 81.0"), mutated
     )
 
-    before, after = _entry_values(baseline), _entry_values(mutated)
+    before, after = _entry_sources(baseline), _entry_sources(mutated)
     assert set(before) == set(after)
-    changed = {key for key in before if before[key] != after[key]}
-    assert changed == {GAIN_KEY}
-    assert after[GAIN_KEY] == 81.0
+    changed = {source for source in before if before[source] != after[source]}
+    assert changed == {GAIN_SOURCE}
+    assert after[GAIN_SOURCE] == 81.0
 
-    assert _consumers_of(mutated, GAIN_KEY) == GAIN_CONSUMERS
+    assert _consumers_of(mutated, GAIN_SOURCE) == GAIN_CONSUMERS
 
     catalog = json.loads(
         (mutated / "contracts" / "model_contract.json").read_text()
@@ -257,20 +314,30 @@ def test_gain_mutation_reaches_every_and_only_its_three_consumers(
     viability = [
         entry
         for entry in catalog["concrete_entries"]
-        if entry["definition_qualified_name"] == "fusion_cycle::'Viability Threshold'"
+        if entry["definition_qualified_name"] == VIABILITY_DEF_QN
     ]
     assert len(viability) == 1
-    assert VIABILITY_FORMAL_QN in viability[0]["predicate_ir"], (
-        "the constraint consumes gain through its own renamed formal identity"
-    )
+
+    # The formal identity, read structurally from the parsed predicate IR: the
+    # predicate consumes gain through exactly one feature reference whose target
+    # is the renamed formal on the constraint's own definition — never a
+    # substring match over the serialized payload (audit F2).
+    gain_refs = [
+        reference
+        for reference in _predicate_feature_refs(viability[0])
+        if reference["target"]["qualified_name"] == VIABILITY_FORMAL_QN
+    ]
+    assert len(gain_refs) == 1, gain_refs
+    assert gain_refs[0]["source_name"] == "gain_in"
+    assert gain_refs[0]["target"]["kind"] == "AttributeUsage"
 
 
 def test_beam_energy_mutation_reaches_its_nested_consumer_and_nothing_else(
     baseline: Path, tmp_path: Path
 ) -> None:
     """A second occurrence depth: the nested driver's beam_energy_mj. Only the
-    nested key moves, and every bound consumer is enumerated — never weakened to
-    'the package still generates'."""
+    nested source identity moves, and every bound consumer port is enumerated —
+    never weakened to 'the package still generates'."""
     mutated = tmp_path / "package"
     assert _generate(
         _mutated_copy(
@@ -279,10 +346,46 @@ def test_beam_energy_mutation_reaches_its_nested_consumer_and_nothing_else(
         mutated,
     )
 
-    before, after = _entry_values(baseline), _entry_values(mutated)
+    before, after = _entry_sources(baseline), _entry_sources(mutated)
     assert set(before) == set(after)
-    changed = {key for key in before if before[key] != after[key]}
-    assert changed == {BEAM_KEY}
-    assert after[BEAM_KEY] == 6.5
+    changed = {source for source in before if before[source] != after[source]}
+    assert changed == {BEAM_SOURCE}
+    assert after[BEAM_SOURCE] == 6.5
 
-    assert _consumers_of(mutated, BEAM_KEY) == BEAM_CONSUMERS
+    assert _consumers_of(mutated, BEAM_SOURCE) == BEAM_CONSUMERS
+
+
+def test_the_two_maintained_model_trees_cannot_diverge() -> None:
+    """The retained cross-tree gate (audit F2): the customer keeps two
+    synchronized model sets, and the spine's mutations run against ``models/``.
+    That coverage is only honest while the trees agree, so this kept test fails
+    on any divergence — a missing counterpart or a byte difference — instead of
+    letting the second tree drift silently. The exploration set stores the
+    library files without the ``library/`` prefix; the mapping below is that
+    layout fact, not a fuzz."""
+    primary_root = REPO / MODEL_SETS[0]
+    secondary_root = REPO / MODEL_SETS[1]
+
+    def logical(path: Path, root: Path, strip_library: bool) -> str:
+        relative = path.relative_to(root).as_posix()
+        if strip_library and relative.startswith("library/"):
+            relative = relative[len("library/") :]
+        return relative
+
+    primary = {
+        logical(path, primary_root, strip_library=True): path
+        for path in sorted(primary_root.rglob("*.sysml"))
+    }
+    secondary = {
+        logical(path, secondary_root, strip_library=False): path
+        for path in sorted(secondary_root.rglob("*.sysml"))
+    }
+    assert set(primary) == set(secondary), (
+        sorted(set(primary) ^ set(secondary))
+    )
+    diverged = [
+        name
+        for name in sorted(primary)
+        if primary[name].read_bytes() != secondary[name].read_bytes()
+    ]
+    assert diverged == [], diverged
