@@ -10,8 +10,8 @@ from pathlib import Path
 from typing import Any, cast
 
 ROOT = Path(__file__).resolve().parents[1]
-A_FINAL = "3f8bd587af40f05b929dd56645901dada7daea37"
-C_PROD = "707346d616e508e55103c9246b63d172ed6a862b"
+A_FINAL = "443388823f0db46c14df1728d3843d0a74ee7590"
+C_PROD = "22348458baa5aec314850cc6fcc8d1e90355ce58"
 COSTINGFE = "02543850089be175ea7c28b92a8b2a4184e1637e"
 URLS = {
     "agentic-mbse": "https://github.com/1cFE/agentic-mbse.git",
@@ -29,8 +29,8 @@ VERSIONS = {
     "1costingfe": "0.1.0",
 }
 WHEEL_HASHES = {
-    "agentic": "9754e9eb9dd788b4276a7cb3cb1a26638d52fd193a38abae2c688fba7d16fce3",
-    "codegen": "22dc3f3bf090407c3418c123e90eac253398dab0282dc1406ea07ab450fec602",
+    "agentic": "7505028f2fc720ae06a244c5dd95019b8ae52a796ddbfec3b3492e2ad56954f7",
+    "codegen": "8dc82e809bc5a6e9534ac41d6030e3479285143b4241542f2e69a363be576325",
     "costingfe": "970ed533d8fae042de25256933ec99d3385092903e4d407ab2b96baa7a2fcfd6",
 }
 

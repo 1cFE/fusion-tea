@@ -45,7 +45,7 @@ wheels = [
 [[package]]
 name = "agentic-mbse"
 version = "0.1.3"
-source = { git = "https://github.com/1cFE/agentic-mbse.git?rev=3f8bd587af40f05b929dd56645901dada7daea37#3f8bd587af40f05b929dd56645901dada7daea37" }
+source = { git = "https://github.com/1cFE/agentic-mbse.git?rev=443388823f0db46c14df1728d3843d0a74ee7590#443388823f0db46c14df1728d3843d0a74ee7590" }
 dependencies = [
     { name = "img2table" },
     { name = "pydantic" },
@@ -757,7 +757,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "1costingfe", git = "https://github.com/1cFE/1costingfe.git?rev=02543850089be175ea7c28b92a8b2a4184e1637e" },
-    { name = "agentic-mbse", extras = ["extract-full", "web"], git = "https://github.com/1cFE/agentic-mbse.git?rev=3f8bd587af40f05b929dd56645901dada7daea37" },
+    { name = "agentic-mbse", extras = ["extract-full", "web"], git = "https://github.com/1cFE/agentic-mbse.git?rev=443388823f0db46c14df1728d3843d0a74ee7590" },
     { name = "fastapi", specifier = ">=0.128.0" },
     { name = "graphviz", specifier = ">=0.21" },
     { name = "httpx", specifier = ">=0.28.1" },
@@ -771,7 +771,7 @@ requires-dist = [
     { name = "python-dotenv", specifier = ">=1.2.1" },
     { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "pyzotero", specifier = ">=1.10.0" },
-    { name = "sysml-codegen", git = "https://github.com/1cFE/sysml-codegen.git?rev=707346d616e508e55103c9246b63d172ed6a862b" },
+    { name = "sysml-codegen", git = "https://github.com/1cFE/sysml-codegen.git?rev=22348458baa5aec314850cc6fcc8d1e90355ce58" },
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.40.0" },
 ]
 provides-extras = ["e2e"]
@@ -3152,7 +3152,7 @@ wheels = [
 [[package]]
 name = "sysml-codegen"
 version = "0.1.1"
-source = { git = "https://github.com/1cFE/sysml-codegen.git?rev=707346d616e508e55103c9246b63d172ed6a862b#707346d616e508e55103c9246b63d172ed6a862b" }
+source = { git = "https://github.com/1cFE/sysml-codegen.git?rev=22348458baa5aec314850cc6fcc8d1e90355ce58#22348458baa5aec314850cc6fcc8d1e90355ce58" }
 dependencies = [
     { name = "agentic-mbse" },
     { name = "jinja2" },
