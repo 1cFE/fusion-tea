@@ -771,7 +771,7 @@ requires-dist = [
     { name = "python-dotenv", specifier = ">=1.2.1" },
     { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "pyzotero", specifier = ">=1.10.0" },
-    { name = "sysml-codegen", git = "https://github.com/1cFE/sysml-codegen.git?rev=7b39fc7cf0d32471fc18724b5173e43b3c0e78af" },
+    { name = "sysml-codegen", git = "https://github.com/1cFE/sysml-codegen.git?rev=707346d616e508e55103c9246b63d172ed6a862b" },
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.40.0" },
 ]
 provides-extras = ["e2e"]
@@ -3152,7 +3152,7 @@ wheels = [
 [[package]]
 name = "sysml-codegen"
 version = "0.1.1"
-source = { git = "https://github.com/1cFE/sysml-codegen.git?rev=7b39fc7cf0d32471fc18724b5173e43b3c0e78af#7b39fc7cf0d32471fc18724b5173e43b3c0e78af" }
+source = { git = "https://github.com/1cFE/sysml-codegen.git?rev=707346d616e508e55103c9246b63d172ed6a862b#707346d616e508e55103c9246b63d172ed6a862b" }
 dependencies = [
     { name = "agentic-mbse" },
     { name = "jinja2" },
