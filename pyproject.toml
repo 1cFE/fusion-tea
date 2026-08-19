@@ -5,9 +5,9 @@ description = "Fusion Techno-Economic Analysis"
 requires-python = ">=3.12"
 dependencies = [
     # Pipeline dependencies
-    "agentic-mbse[extract-full,web]",
-    "1costingfe",
-    "sysml-codegen",
+    "agentic-mbse[extract-full,web]==0.1.3",
+    "1costingfe==0.1.0",
+    "sysml-codegen==0.1.1",
     "pytest>=8.0",
     "fastapi>=0.128.0",
     "uvicorn[standard]>=0.40.0",
@@ -31,9 +31,9 @@ e2e = ["playwright>=1.58.0"]
 dev = ["mypy>=1.10", "ruff>=0.4", "types-pyyaml"]
 
 [tool.uv.sources]
-1costingfe = { path = "../1costingfe", editable = true }
-agentic-mbse = { path = "../agentic-mbse", editable = true }
-sysml-codegen = { path = "../sysml-codegen", editable = true }
+1costingfe = { git = "https://github.com/1cFE/1costingfe.git", rev = "02543850089be175ea7c28b92a8b2a4184e1637e" }
+agentic-mbse = { git = "https://github.com/1cFE/agentic-mbse.git", rev = "3f8bd587af40f05b929dd56645901dada7daea37" }
+sysml-codegen = { git = "https://github.com/1cFE/sysml-codegen.git", rev = "a0a42528472146428c079b30293527137399db4b" }
 
 [tool.ruff]
 line-length = 100
