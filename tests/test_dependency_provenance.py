@@ -30,7 +30,7 @@ VERSIONS = {
 }
 WHEEL_HASHES = {
     "agentic": "9754e9eb9dd788b4276a7cb3cb1a26638d52fd193a38abae2c688fba7d16fce3",
-    "codegen": "f221c509c73f8539d38b5ae0f72edd23482c9904503152d9e4c7e64cdb1ec3c5",
+    "codegen": "26856622891d1f25b205d91d3c3a75706bddadb39a91c070728e59616d639743",
     "costingfe": "970ed533d8fae042de25256933ec99d3385092903e4d407ab2b96baa7a2fcfd6",
 }
 
