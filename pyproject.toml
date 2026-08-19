@@ -33,7 +33,7 @@ dev = ["mypy>=1.10", "ruff>=0.4", "types-pyyaml"]
 [tool.uv.sources]
 1costingfe = { git = "https://github.com/1cFE/1costingfe.git", rev = "02543850089be175ea7c28b92a8b2a4184e1637e" }
 agentic-mbse = { git = "https://github.com/1cFE/agentic-mbse.git", rev = "3f8bd587af40f05b929dd56645901dada7daea37" }
-sysml-codegen = { git = "https://github.com/1cFE/sysml-codegen.git", rev = "a0a42528472146428c079b30293527137399db4b" }
+sysml-codegen = { git = "https://github.com/1cFE/sysml-codegen.git", rev = "95355b933ef0718819a00a0deb89ec60abb1f07d" }
 
 [tool.ruff]
 line-length = 100
