@@ -11,7 +11,7 @@ from typing import Any, cast
 
 ROOT = Path(__file__).resolve().parents[1]
 A_FINAL = "3f8bd587af40f05b929dd56645901dada7daea37"
-C_PROD = "f02258c61d5b79e62b8b98057dd723e64d160297"
+C_PROD = "7b39fc7cf0d32471fc18724b5173e43b3c0e78af"
 COSTINGFE = "02543850089be175ea7c28b92a8b2a4184e1637e"
 URLS = {
     "agentic-mbse": "https://github.com/1cFE/agentic-mbse.git",
