@@ -301,7 +301,12 @@ Field names marked **(Item 3)** are copied from
                                     "expected": "<satisfied | violated>" } ] },
       "oracle": { "kind": "python_callable",                            // (Item 3)
                   "module": "<module>", "callable": "<callable>",
-                  "note": "<how it is parameterized>" }
+                  "note": "<how it is parameterized>",
+                  // Resolved at snapshot time over the oracle's own source files, the
+                  // same recipe as tools[]. Names WHICH oracle verified this study;
+                  // the manifest carries no digest (gap G1, run-study-cold-pickup).
+                  "source_digest": { "recipe": "tool-source-digest/v1",
+                                     "digest": "<sha256>" } }
     }
   },
 
