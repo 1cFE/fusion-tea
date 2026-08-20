@@ -226,32 +226,197 @@ framing-conditional nil belongs in §6.>`
 
 ### Appendix: `snapshot.json` shape
 
-**DRAFT — replaced in Phase 3 with the full field list written against Item 3's design.**
+`snapshot.json` sits beside `record.md` in the record directory and holds resolved
+values only. It is written once, at record commit, from values resolved at execution
+time — never by citing a live file. Deleting or editing the manifest, the adapter, or
+the package cannot change what a committed snapshot says.
 
-Scoping rule: any field that can differ between arms is arm-scoped. A single-arm study
-is the one-element case of the same shape.
+**Scoping rule.** Any field that can differ between arms is arm-scoped, under `arms[]`.
+Only genuinely study-wide facts stay top-level. A single-arm study is the one-element
+case of this shape, not a different shape. A store's compatibility tuple is stated once
+in `stores[]` and referenced by `store_id`, so two arms sharing a store cannot drift.
+
+Field names marked **(Item 3)** are copied from
+`.project/active/run-study-indicators/design.md` and are not this contract's to rename.
 
 ```jsonc
 {
   "snapshot_schema_version": "1",
-  "study_id": "...",
-  "package": { "path": "...", "git_clean": true, "repo_commit": "..." },
-  "fingerprints": { "<every name the manifest declares>": "<value>" },
-  "manifest": { "digest": "...",
-                "content_used": { "fingerprint_names": [ "...", "..." ] } },
-  "stores": [ { "store_id": "...", "path": "...", "compatibility_tuple": { } } ],
-  "arms": [ { "arm_id": "arm-<slug>", "store_id": "...",
-              "effective_executable_fingerprint": { "value": "...", "inputs": { } },
-              "entry_models": { }, "strategy": "...",
-              "window": { "bounds": null, "provenance": "engineered|sourced" },
-              "verification": { "command": "...", "tool_revision": "...",
-                                "sampling_scheme": "...", "tolerance": "...",
-                                "summary_sha256": "..." },
-              "artifacts": [ { "path": "results/...", "sha256": "..." } ] } ],
-  "glue_ledger": [ ],
-  "tools": [ { "path": "...", "revision": "..." } ],
-  "teax": { "revision": "...", "era_pin": "..." },
-  "indicators": { "path": "indicators.json", "sha256": "...",
-                  "output_schema_version": "..." }
+  "study_id": "<YYYYMMDD>-<goal-slug>",
+
+  "package": {
+    "path": "<repo-relative POSIX>",          // (Item 3) manifest package.path
+    "package_name": "<contracts/package_contract.json package_name>",   // (Item 3)
+    "repo_commit": "<sha at execution>",
+    "git_clean": true                          // the package cleanliness gate's result
+  },
+
+  // Every fingerprint the manifest declares, keyed by the dotted path that names it
+  // inside the manifest's `fingerprints` block. The set is open above the floor.
+  "fingerprints": {
+    "indicator_inputs": {                      // (Item 3) fingerprints.indicator_inputs
+      "recipe": "indicator-input-fingerprint/v1",                       // (Item 3)
+      "digest": "<sha256>",
+      "files": [ { "path": "<repo-relative POSIX>", "sha256": "<sha256>" } ]
+    },
+    "recorded_provenance.executable_fingerprint": "<sealed>",           // (Item 3)
+    "recorded_provenance.semantic_fingerprint": "<model contract>"      // (Item 3)
+  },
+
+  "manifest": {
+    "path": "<repo-relative POSIX>",           // (Item 3) report manifest.path
+    "schema_version": "study-package-manifest/v1",                      // (Item 3)
+    "digest": "<sha256 of manifest bytes>",    // (Item 3) report manifest.digest
+
+    // The manifest content actually used, copied in. Nothing here is resolved by
+    // reading the live manifest at read time.
+    "content_used": {
+      "fingerprint_names": [ "indicator_inputs",
+                             "recorded_provenance.executable_fingerprint",
+                             "recorded_provenance.semantic_fingerprint" ],
+      "ties": [ { "key": "<qualified key>",                             // (Item 3)
+                  "rides_with": [ "<qualified key>" ],
+                  "note": "<who declared the physical identity, and on what grounds>" } ],
+      "objective_catalog": [ { "name": "<objective name>",              // (Item 3)
+                               "channel": "<qualified channel>",
+                               "note": "<...>" } ],
+      "baseline": { "point": { "<qualified key>": 0 },                  // (Item 3)
+                    "headline": { "channel": "<qualified channel>", "value": 0 },
+                    "verdicts": [ { "source_local_identity": "<local identity>",
+                                    "expected": "<satisfied | violated>" } ] },
+      "oracle": { "kind": "python_callable",                            // (Item 3)
+                  "module": "<module>", "callable": "<callable>",
+                  "note": "<how it is parameterized>" }
+    }
+  },
+
+  "stores": [
+    { "store_id": "<stable id, referenced by arms[]>",
+      "path": "<repo-relative POSIX>",
+      "compatibility_tuple": { "<the complete teax tuple, every field>": "<value>" } }
+  ],
+
+  "arms": [
+    { "arm_id": "arm-<slug>",
+      "store_id": "<resolves into stores[]>",
+
+      "effective_executable_fingerprint": {
+        "value": "<sha256>",
+        "inputs": { "sealed_fingerprint": "<sealed>",
+                    "allowed_modified_files": [ { "path": "<repo-relative POSIX>",
+                                                  "sha256": "<sha256>" } ],
+                    "adapter_source_digest": "<sha256>" }
+      },
+      // ...or the explicit nil, when no adapter exists:
+      // "effective_executable_fingerprint": {
+      //   "value": "<sealed>", "inputs": null,
+      //   "no_adapter": true,
+      //   "note": "no adapter exists; the sealed fingerprint is the identity" },
+
+      "entry_models": { "<the complete map, as the study definition carried it>": "<...>" },
+      "strategy": "<strategy identity as the study definition carried it>",
+
+      "window": {
+        "bounds": { "<axis>": { "<the swept values or their generating rule>": "<...>" } },
+        "provenance": "<engineered | sourced>"
+        // How it was chosen is an argument and lives in record.md §11.
+      },
+
+      "verification": {
+        "command": "<the command as run>",
+        "tool_revision": "<revision or source digest of the verification tool>",
+        "sampling_scheme": "<how rows were sampled>",
+        "tolerance": "<numeric tolerance and the channels it applies to>",
+        "summary_sha256": "<sha256 of results/verification_summary.json>"
+        // The outcome and what it licenses live in record.md §13.
+      },
+
+      "glue_ledger": [ { "rung": "<id>",
+                         "supplies": "<what the harness supplies>",
+                         "keys": [ "<qualified key>" ],
+                         "why_the_model_cannot": "<...>" } ],
+      // ...or, for an arm with no glue:
+      // "glue_ledger": [], "glue_ledger_none": true,
+
+      "artifacts": [ { "path": "results/<file>", "sha256": "<sha256>" } ]
+    }
+  ],
+
+  "tools": [
+    { "path": "scripts/study/<tool>.py",       // (Item 3) report tool.path
+      "revision": { "recipe": "tool-source-digest/v1",                  // (Item 3)
+                    "digest": "<sha256>" } }
+  ],
+
+  "teax": { "revision": "<revision as run>",
+            "era_pin": "<the era pin and its worktree path, or null when none>" },
+
+  "indicators": {
+    "path": "indicators.json",                 // inside the record directory
+    "sha256": "<sha256>",
+    "output_schema_version": "study-indicators/v1",                     // (Item 3)
+    "axis_declaration": { "path": "<repo-relative POSIX>",              // (Item 3)
+                          "schema_version": "study-axis-declaration/v1",
+                          "digest": "<sha256 of file bytes>",
+                          "groups_declared": [ "<axis>" ],
+                          "subset": false }
+  }
 }
 ```
+
+#### The rules that govern it
+
+**1. Fingerprint completeness is checkable from inside the record.**
+`manifest.content_used.fingerprint_names` lists the fingerprint names the manifest
+declared, and the rule is internal: *every name listed there appears as a key under
+`fingerprints`*. An administrator audits completeness without opening the live
+manifest — which it may not do.
+
+The names are **derived at snapshot time** by flattening the manifest's `fingerprints`
+block to dotted paths, one name per fingerprint value. For the schema as Item 3
+accepts it that is exactly three: `indicator_inputs`,
+`recorded_provenance.executable_fingerprint`, and
+`recorded_provenance.semantic_fingerprint`. The `fingerprints` map above is keyed by
+those same dotted paths, so the check is a set comparison. The manifest itself carries
+no flat names list and needs no change to support this. (Settled by orchestrator ruling
+2026-08-19; the plan raised it as an open seam.)
+
+**The floor holds independently of what the manifest declares.** Three fingerprints are
+present in every snapshot:
+
+| Spec floor fingerprint | Snapshot key |
+|---|---|
+| sealed package fingerprint | `fingerprints["recorded_provenance.executable_fingerprint"]` |
+| model-contract / semantic fingerprint | `fingerprints["recorded_provenance.semantic_fingerprint"]` |
+| indicator-input fingerprint | `fingerprints["indicator_inputs"]` |
+
+The set stays open above that floor: a manifest that grows a fourth fingerprint lands
+in `fingerprints` and in `fingerprint_names` without this template being revised.
+
+**2. `arms[].effective_executable_fingerprint` carries its three inputs or its explicit
+nil.** The three inputs are the sealed fingerprint, the digest of each allowed-modified
+file, and the adapter source digest. When no adapter exists, the nil form states so and
+records that the sealed fingerprint is the identity. A bare value with neither is a
+defective snapshot.
+
+**3. Stores are named once and referenced by id.** `stores[]` holds one entry per
+complete teax compatibility tuple; each arm names its `store_id`. Two arms sharing a
+store reference the same entry, so the tuple is stated once and cannot drift between
+arms. Every `arms[].store_id` must resolve into `stores[]`.
+
+**4. `arms[].verification` is the values half only.** Command, tool revision, sampling
+scheme, tolerance, and the digest of `results/verification_summary.json` live here. The
+outcome, what it licenses, and what it did not cover live in `record.md` §13. Neither
+restates the other.
+
+**5. The glue ledger is arm-scoped, and an arm with no glue states it.** `glue_ledger`
+is a list; an arm with no glue carries `[]` together with a `glue_ledger_none: true`
+sibling, because an empty list and a forgotten field look identical in JSON. Glue is
+arm-scoped rather than study-wide because a sealed-versus-adapter A/B differs in
+exactly this field, and that difference is what the comparison is about. The
+interpretive half — what each rung means for the claims — lives in `record.md` §10.
+
+**6. `indicators.axis_declaration.subset` is `false` in any record-feeding run.** Item 3
+sets `subset: true` when the indicator run was narrowed with `--group`, which is a
+debugging aid. A snapshot carrying `subset: true` is a defective record: the study
+declared axes the indicator run did not trace.

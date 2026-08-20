@@ -219,18 +219,18 @@ Names to copy exactly (source: `.project/active/run-study-indicators/design.md`)
 | `tools[].revision` for `indicators.py` | `tool.source_digest.{recipe, digest}`, recipe `tool-source-digest/v1` | `:194`, `:168` |
 | package identity fields | `package.{path, package_name, semantic_fingerprint, recorded_executable_fingerprint}` | `:195-199` |
 
-- [ ] Write the appendix with the arm-scoping rule stated once at the top (`design.md:239`), then the full literal shape
-- [ ] Write the five snapshot rules from `design.md:267-273` as prose beneath it — internal fingerprint completeness, `effective_executable_fingerprint`'s three inputs or its nil, stores-by-id, `arms[].verification`'s value half, `glue_ledger: []` with `glue_ledger_none: true`
-- [ ] Record the snapshot's `indicators.axis_declaration.subset` expectation: a record-feeding run is `false` (Item 3 Invariant 11, `:135`); a snapshot carrying `subset: true` is a defective record
-- [ ] Write the `fingerprint_names` dotted-path resolution and mark it as the plan's proposal awaiting owner confirmation
-- [ ] Delete the draft shape; one home only
+- [x] Write the appendix with the arm-scoping rule stated once at the top (`design.md:239`), then the full literal shape
+- [x] Write the five snapshot rules from `design.md:267-273` as prose beneath it — internal fingerprint completeness, `effective_executable_fingerprint`'s three inputs or its nil, stores-by-id, `arms[].verification`'s value half, `glue_ledger: []` with `glue_ledger_none: true`
+- [x] Record the snapshot's `indicators.axis_declaration.subset` expectation: a record-feeding run is `false` (Item 3 Invariant 11, `:135`); a snapshot carrying `subset: true` is a defective record
+- [x] Write the `fingerprint_names` dotted-path resolution and mark it as the plan's proposal awaiting owner confirmation
+- [x] Delete the draft shape; one home only
 
 ### Validation
 
-- [ ] The `grep -qF` loop above prints nothing
-- [ ] The spec's three floor fingerprints (`spec.md:88`) each map to a named snapshot key, stated in the appendix
-- [ ] Every `spec.md:87-98` snapshot bullet appears in the appendix or is explicitly homed in `record.md` with the section named (the SF1 window split is the only one)
-- [ ] Re-run Phase 2's two-arm audit against the final shape
+- [x] The `grep -qF` loop above prints nothing
+- [x] The spec's three floor fingerprints (`spec.md:88`) each map to a named snapshot key, stated in the appendix
+- [x] Every `spec.md:87-98` snapshot bullet appears in the appendix or is explicitly homed in `record.md` with the section named (the SF1 window split is the only one)
+- [x] Re-run Phase 2's two-arm audit against the final shape
 
 **What We Know Works After This Phase:** the snapshot names real fields, and the one place it doesn't is flagged loudly rather than resolved silently.
 
@@ -450,6 +450,30 @@ No new dependencies; this item writes markdown. **See CLAUDE.md** for the `uv ru
 - The two structural fixes above, both made in response to the check stencil rather than after it.
 - Recorded, not a deviation: the proof-of-life ran two studies (grid + availability sweep), which under the contract are two records rather than two arms of one — arms are variants of the same question. `dry-run.md` states this up front so a reader coming from the proof-of-life is not surprised.
 ### Phase 3 Completion
+
+**Completed:** 2026-08-19
+
+**Changes Made:**
+- Replaced the draft snapshot shape in `record-template.md`'s appendix with the full field list. Every externally-owned name is copied from `.project/active/run-study-indicators/design.md` and marked `(Item 3)` inline, so a future reader can see which names are not this contract's to rename.
+- Wrote the six rules that govern the snapshot beneath it: internal fingerprint completeness with the floor table, `effective_executable_fingerprint`'s three inputs or its nil, stores-by-id, `arms[].verification` as the values half only, the arm-scoped glue ledger with its `glue_ledger_none: true` nil, and `subset: false` in any record-feeding run.
+- Deleted the draft shape. One home only.
+
+**Check stencil:** the `grep -qF` loop printed nothing — all thirteen externally-owned tokens are present in Item 3's design at implement time. Item 3's design header now reads **Accepted**, not Draft, so the plan's second flag is discharged; the field shapes were re-read at `design.md:147-157` (manifest) and `:192-204` (report) rather than trusted from the plan's table, and every one matched.
+
+**One naming detail worth recording.** The manifest's `fingerprints.indicator_inputs.files` is a list of plain path strings, while the indicator report's `package.indicator_input_fingerprint.files` is a list of `{path, sha256}` objects. The snapshot copies the richer form, since a per-file digest is what makes the pin auditable from inside the record.
+
+**The `fingerprint_names` seam is resolved, not parked.** The orchestrator ruled 2026-08-19 that the list is **derived at snapshot time** by flattening Item 3's manifest `fingerprints` block to dotted-path names — `indicator_inputs`, `recorded_provenance.executable_fingerprint`, `recorded_provenance.semantic_fingerprint` — with **no Item 3 manifest change**. The appendix states it that way and cites the ruling. The plan's "awaiting owner confirmation" marker is therefore not written; MF1's rule text is unchanged either way, as the plan anticipated.
+
+**`glue_ledger` moved to `arms[]`,** carrying forward Phase 2's two-arm audit finding. `design.md:258`'s sketch shows it top-level; `design.md:239`'s scoping rule is normative and puts it under `arms[]`, because a sealed-versus-adapter A/B differs in exactly this field. The rule's `glue_ledger_none: true` nil is now per arm.
+
+**Validation:**
+- Three floor fingerprints each map to a named snapshot key, stated as a table in the appendix.
+- All eleven of `spec.md:87-98`'s snapshot bullets have a home. Ten land in the appendix; the SF1 split is the only one homed across two files, and the appendix names it at the field (`window` carries bounds and provenance; "how it was chosen" is `record.md` §11).
+- Two-arm audit re-run against the final shape: every arm-scoped field passes, both `store_id`s resolve, and the one field that had no correct home now has one.
+- `grep -c '^## '` still 17 and `grep -c '^**Applies:**'` still 2 — the appendix sits under the template-guidance heading and does not disturb the record's structural counts.
+
+**Deviations from Plan:**
+- The plan's `- [ ] Write the fingerprint_names dotted-path resolution and mark it as the plan's proposal awaiting owner confirmation` was executed without the awaiting-confirmation marker, because the orchestrator ruling settled it. Recorded above rather than left implicit.
 ### Phase 4 Completion
 ### Phase 5 Completion
 ### Phase 6 Completion
