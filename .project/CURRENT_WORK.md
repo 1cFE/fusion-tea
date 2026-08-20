@@ -1,10 +1,19 @@
 # Current Work
 
-**Last Updated**: 2026-08-16
+**Last Updated**: 2026-08-19
 
 ---
 
 ## Active Work
+
+### run-study capability — concept design ACCEPTED ([OWNER] 2026-08-19); next: capability epic
+
+**What exists**: `.project/concepts/run-study-skill-design.md` (Accepted) — the four-home design for AI-run studies: skill (`.claude/skills/run-study/`, execute + administer modes) + runbook + policy rulebook + tools (`scripts/study/`: `indicators.py`, `preflight.py`, `verify.py`). Execution stays on stock teax via two named routes (CLI grids / study-local direct-API `PreparedListStrategy` for coordinated blocks). Axis groups are **author-declared qualified entry keys** (suffix scan = sibling warnings only — suffixes are not identity: 18 keys end `__n_mod`). Indicators report conservative reachability (`constraints_reachable`, `no_constraint_response` is the sound negative; "unresisted" is the agent's judgment, user rules before points run). Package facts split: data-only `manifest.json` (ties, objectives, baseline, oracle command) + temporary `era_adapter.py` (GlueAwareLoader, glue, self-checks) carrying an **effective executable fingerprint** (sealed + modified-file digests + adapter source) so glue drift = new teax lineage; adapter deleted whole when package fixes land ([OWNER] 2026-08-18: fixes expected soon). Records at `exploration/<pkg>/studies/<id>/` are immutable snapshots (synthesis a separate file); one store per complete teax compatibility tuple; A/B correlation stated in the record. Discovery log per package.
+
+**Process trail**: input concept `.project/concepts/run-study-skill.md` (amended for coherence, pointers at each open question) · review `.project/concepts/run-study-skill-design-review.md` (two rounds, Closed — C1–C5/M1–M8/m1–m4 all dispositioned; owner accepted directly, waiving a third pass). ADR filing blocked: `.project/adr/` + `adr.sh` absent — decisions and ratification grades recorded in the design's ADR Candidates section instead.
+
+**Next**: `/_my_epic_plan` for the parallel capability epic (likely items per the input concept: runbook v1 + skill skeleton; tool promotion + indicator builder — first de-risk is the reachability spike, known answers in design Appendix A; A/B consumer run; administrator mode on the proof-of-life store). Open for owner at the Item-5 Align: policy ratification + `modeling_project/STUDY_POLICY.md` home ([AGENT], overridable). Gitignore needs `!.claude/skills/run-study/` when the skill lands.
+
 
 ### Stellarator MBSE Demo — PROOF OF LIFE: design search runs end-to-end (2026-08-16, `b8c7e6db`)
 
