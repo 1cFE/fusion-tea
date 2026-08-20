@@ -269,24 +269,24 @@ grep -c '^### ' $RB                 # expect 14 execute steps
 
 **See `design.md#runbookmd`** for the micro-schema and the fourteen steps; **`design.md#discovery_logmd-row`** for the row; **`design.md#synthesismd`** for its sections.
 
-- [ ] Write the fourteen execute steps in the `**Calls:** / **Deposits:** / **Fails closed when:** / **Annex:**` schema, in the design's order
-- [ ] Step 4 deposits **twice**: §5 first half (framing as proposed) + §8, and its pre-execution critique verdict into §14 as a named review outcome (MF7a, discharging `spec.md:82`)
-- [ ] Step 10 is the post-run framing judgment feeding §5's second half (MF7b, discharging `spec.md:77`)
-- [ ] Step 7 carries the glue disclosure into §10 — never §17 (MF4)
-- [ ] Step 12's report states the era pin as a reproduce prerequisite at the claim site while the pin exists (SF6)
-- [ ] Annex links only on package-specific steps, at `exploration/<pkg>/studies/ANNEX.md § <topic>` (D9). Item 4 authors the content; this is the link only
-- [ ] Indicator vocabulary used exactly as `spec.md:58` fixes it — `no_constraint_response` sound negative, `constraints_reachable` a possible path, `unresisted` an agent judgment
-- [ ] `**Fails closed when:**` names only mechanical conditions; an interpretive condition never gates (`spec.md:60`)
-- [ ] Administer sequence as a second ordered list in the same file (per the handoff: start with one file): read the record directory only → recover the fresh-administrator facts → write `synthesis.md` → state what the record does not support. It ends there; no discovery-log row (MF6)
-- [ ] `synthesis.md` header + sections per `design.md:190-192`, including the mandatory "What the record does not support"
-- [ ] `DISCOVERY_LOG.md` six-column row format, `<study-id>#<n>` join key, `Home` never blank (`unrouted` is a stated state)
-- [ ] Study id convention `<YYYYMMDD>-<goal-slug>`, same-day collisions `-b`, `-c` (D3); arms as `arm-<slug>` (D4)
+- [x] Write the fourteen execute steps in the `**Calls:** / **Deposits:** / **Fails closed when:** / **Annex:**` schema, in the design's order
+- [x] Step 4 deposits **twice**: §5 first half (framing as proposed) + §8, and its pre-execution critique verdict into §14 as a named review outcome (MF7a, discharging `spec.md:82`)
+- [x] Step 10 is the post-run framing judgment feeding §5's second half (MF7b, discharging `spec.md:77`)
+- [x] Step 7 carries the glue disclosure into §10 — never §17 (MF4)
+- [x] Step 12's report states the era pin as a reproduce prerequisite at the claim site while the pin exists (SF6)
+- [x] Annex links only on package-specific steps, at `exploration/<pkg>/studies/ANNEX.md § <topic>` (D9). Item 4 authors the content; this is the link only
+- [x] Indicator vocabulary used exactly as `spec.md:58` fixes it — `no_constraint_response` sound negative, `constraints_reachable` a possible path, `unresisted` an agent judgment
+- [x] `**Fails closed when:**` names only mechanical conditions; an interpretive condition never gates (`spec.md:60`)
+- [x] Administer sequence as a second ordered list in the same file (per the handoff: start with one file): read the record directory only → recover the fresh-administrator facts → write `synthesis.md` → state what the record does not support. It ends there; no discovery-log row (MF6)
+- [x] `synthesis.md` header + sections per `design.md:190-192`, including the mandatory "What the record does not support"
+- [x] `DISCOVERY_LOG.md` six-column row format, `<study-id>#<n>` join key, `Home` never blank (`unrouted` is a stated state)
+- [x] Study id convention `<YYYYMMDD>-<goal-slug>`, same-day collisions `-b`, `-c` (D3); arms as `arm-<slug>` (D4)
 
 ### Validation
 
-- [ ] All four check-stencil greps give the expected results
-- [ ] **Read-check for judgment**: read every step's imperative and confirm none states a preference among axes, framings, routes, or results. "Argue and record the framing" is in bounds; "prefer search framing" is not. Record the reading in the phase notes — this is not greppable
-- [ ] Every `**Deposits:**` target names a heading that exists in the Phase 2/3 template (first direction of the two-way check; the second direction runs in Phase 6)
+- [x] All four check-stencil greps give the expected results
+- [x] **Read-check for judgment**: read every step's imperative and confirm none states a preference among axes, framings, routes, or results. "Argue and record the framing" is in bounds; "prefer search framing" is not. Record the reading in the phase notes — this is not greppable
+- [x] Every `**Deposits:**` target names a heading that exists in the Phase 2/3 template (first direction of the two-way check; the second direction runs in Phase 6)
 
 **What We Know Works After This Phase:** the obligation set is complete, package-free, and lands every output somewhere.
 
@@ -475,6 +475,31 @@ No new dependencies; this item writes markdown. **See CLAUDE.md** for the `uv ru
 **Deviations from Plan:**
 - The plan's `- [ ] Write the fingerprint_names dotted-path resolution and mark it as the plan's proposal awaiting owner confirmation` was executed without the awaiting-confirmation marker, because the orchestrator ruling settled it. Recorded above rather than left implicit.
 ### Phase 4 Completion
+
+**Completed:** 2026-08-19
+
+**Changes Made:**
+- Wrote `.claude/skills/run-study/runbook.md`: a preamble fixing the rulebook path, the record path, the annex path, what "fails closed" means, and the indicator vocabulary; fourteen execute steps in the four-line micro-schema in the design's order; the administer sequence; the `synthesis.md` convention; the `DISCOVERY_LOG.md` row; and the study-id and arm-id naming rules.
+- Step 4 deposits three ways on one line: §5 (framing as proposed), §8 (rulings and the model-development findings), and §14 (the pre-execution critique verdict) — MF7a.
+- Step 10 is the post-run framing judgment feeding §5's second half — MF7b — and also writes §6's per-axis account, which the judged framing is what determines.
+- Step 7 carries the glue disclosure into §10 and nowhere else — MF4.
+- Step 12 states the era pin as a reproduce prerequisite at the claim site, not only in a provenance footnote — SF6.
+- Annex links land on the six package-specific steps only (2, 5, 6, 7, 8, 9), at `exploration/<pkg>/studies/ANNEX.md § <topic>`. Item 4 authors the content; these are links.
+
+**Check stencil:** zero package specifics, zero `STUDY_POLICY` references, one citation of the policy at its current path, `**Deposits:**` count 14, `### ` count 14. The `### ` count came back 15 on the first write — `synthesis.md` had been given a `### ` heading inside the administer section. Demoted to `####`, which is also the right level for it: it is a convention the administer sequence uses, not an execute step.
+
+**Deposit completeness, direction one — a real orphan found and fixed.** A script pairing every `**Deposits:**` target against the template's `## <n>. <heading>` lines found §15 Findings named by no step. Step 14 had been written as "append the discovery-log rows" and deposited only into the log, so the record's own findings register had no depositing step and the log rows would have had nothing to join to. Step 14 is now "Register the findings and append the discovery-log rows" and deposits §15 + `DISCOVERY_LOG.md`. Re-run: zero orphans in either direction. Step count stayed at fourteen.
+
+**Read-check for judgment — the reading, recorded.** Read all fourteen imperatives against the bar "argue and record the framing is in bounds; prefer search framing is not." Four sentences were weighed and all four are obligations rather than preferences:
+- Step 6, "an engineered window is not a defect; an undisclosed one is" — a rule about disclosure, and it takes no side between `engineered` and `sourced`.
+- Step 7, "two routes, and no third", with a clause each on what the routes can run — capability statements, not a ranking. The step requires the choice to be argued and does not make it.
+- Step 8, "no hand-rolled sweep loop" — a policy obligation about how points execute, not a preference among results.
+- Step 11, "correctness, honesty, and readability are the lenses a study normally owes" — a floor on review coverage. It states no preference among axes, framings, routes, or results.
+No sentence states which axis to sweep, which framing is right, which route fits, or what a result means. The preamble says so outright so a reader knows the file's stance before step 1.
+
+**Cross-item dependency flagged.** The annex path `exploration/<pkg>/studies/ANNEX.md` is pinned by this design (D9) and Item 4 authors the file. If Item 4 moves it, six `**Annex:**` lines in one file need updating. Noted here for the epic per `design.md:324`.
+
+**Deviations from Plan:** none beyond the two fixes above, both made in response to a check rather than after one.
 ### Phase 5 Completion
 ### Phase 6 Completion
 
