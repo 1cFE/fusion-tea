@@ -46,11 +46,11 @@ Build the durable capability that lets an agent run a disciplined study from a p
 - [ ] **[OWNER] Axis forces before execution:** every proposed axis, including declined axes, has recorded deterministic indicators and an agent search-versus-sensitivity judgment; every `no_constraint_response` case has the user's ruling before any point runs.
 - [ ] **[OWNER] Evidence-complete record and cold pickup:** every capability-compliant record carries the LCOE objective and result plus the qualified identity and `satisfied | violated | indeterminate` status of every executing constraint; a fresh session using only that record recovers the framing, those results, and evidence-backed findings in its synthesis.
 - [ ] **[OWNER] Addressable improvement loop:** each model or process finding is indexed in the package discovery log with its disposition and destination, and at least one proof-of-life process lesson is inherited by the next study from exactly one tool, runbook, policy, or skill home.
-- [ ] **[AGENT] (ratified by owner, 2026-08-19) Mechanical proof obligations:** indicator known-answer tests pass for R, a, availability, interest rate, and beta; generic tools contain no package-specific behavior; missing-key, dirty-package, and fingerprint failures exit non-zero while interpretive conditions never gate.
-- [ ] **[AGENT] (ratified by owner, 2026-08-19) Temporary-route integrity:** if the era adapter is still required, its route reproduces the committed proof-of-life CSVs byte-for-byte and a glue or adapter change creates a new effective fingerprint that refuses resume of the old store; this criterion retires with the adapter.
+- [x] **[AGENT] (ratified by owner, 2026-08-19) Mechanical proof obligations:** *(met 2026-08-20 — Items 3+4: known-answer tests green, generic tools grep-clean, mechanical failures exit non-zero, interpretive facts never gate; evidence: tests/study 273 green, Item 3+4 audits)* indicator known-answer tests pass for R, a, availability, interest rate, and beta; generic tools contain no package-specific behavior; missing-key, dirty-package, and fingerprint failures exit non-zero while interpretive conditions never gate.
+- [x] **[AGENT] (ratified by owner, 2026-08-19) Temporary-route integrity:** *(met 2026-08-20 — Item 4: both CSVs byte-equal incl. 948-point grid; glue/adapter/shim edits each refuse old-store resume; pre-capability stores correctly refused under the earned fingerprint)* if the era adapter is still required, its route reproduces the committed proof-of-life CSVs byte-for-byte and a glue or adapter change creates a new effective fingerprint that refuses resume of the old store; this criterion retires with the adapter.
 - [ ] **[AGENT] (ratified by owner, 2026-08-19) First consumer:** the demo A/B swap runs through the skill and records each arm's complete teax compatibility tuple, correct store separation or sharing, and explicit cross-fingerprint correlation when applicable.
 - [ ] **[AGENT] (ratified by owner, 2026-08-19) Policy disposition:** the demo Item-5 Align records the policy decision; if ratified, the capability moves it to `modeling_project/STUDY_POLICY.md`, updates citations, adds axis-forces rules, and scopes H1 to search-framed studies.
-- [ ] Project tests and study-specific validation pass with no regression to the committed proof-of-life evidence or package cleanliness.
+- [x] *(Items 1-4 scope, 2026-08-20: tests/study 273 green, proof-of-life evidence byte-identical, package git-clean)* Project tests and study-specific validation pass with no regression to the committed proof-of-life evidence or package cleanliness.
 
 ---
 
@@ -135,10 +135,10 @@ Gate: CLEAR
 - Inferring axis identity from suffixes or deriving monotonicity.
 
 **Success Criteria**:
-- [ ] All five known-answer cases match Appendix A, or a premise conflict is surfaced and dependent implementation is parked.
-- [ ] The findings state why `no_constraint_response` is a sound negative and why positive reachability is only possible-path evidence.
-- [ ] Missing keys and unparseable references are distinguished from a valid empty result.
-- [ ] The production-facing fixture contract is specific enough for Item 3 to keep as tests.
+- [x] All five known-answer cases match Appendix A, or a premise conflict is surfaced and dependent implementation is parked.
+- [x] The findings state why `no_constraint_response` is a sound negative and why positive reachability is only possible-path evidence.
+- [x] Missing keys and unparseable references are distinguished from a valid empty result.
+- [x] The production-facing fixture contract is specific enough for Item 3 to keep as tests.
 
 **Estimated Effort**: 0.5–1 day (brief 1h, probe 3–5h, findings 1h)
 
@@ -498,5 +498,5 @@ Item 1 — Reachability spike
 
 ---
 
-**Last Updated**: 2026-08-19
-**Next Action**: Start Item 1, the indicator reachability spike.
+**Last Updated**: 2026-08-20
+**Next Action**: Items 1-4 COMPLETE (orchestrated run 2026-08-19/20; per-item audits: I2 PASS-WITH-FIXES applied, I3 PASS certified, I4 PASS). Next: Item 5 (legacy cold-pickup exercise), then Item 6 (owner Align: policy disposition + first A/B consumer). Criteria 1-4 and 7-8 land with Items 5-6.

@@ -1,14 +1,18 @@
 # Current Work
 
-**Last Updated**: 2026-08-19
+**Last Updated**: 2026-08-20
 
 ---
 
 ## Active Work
 
-### run-study Item 4 — Quality Tools and Era Adapter Promotion (spec drafted)
+### RUN-STUDY epic — Items 1–4 COMPLETE (orchestrated run, 2026-08-19/20)
 
-`.project/active/run-study-quality-tools/` — epic RUN-STUDY, Item 4. Promotes the proof-of-life's generic mechanical gates into `scripts/study/preflight.py` and `scripts/study/verify.py`, isolates the era workarounds in a package-local self-checking `exploration/stellarator_e2e/studies/era_adapter.py` under a truthful effective executable fingerprint, and authors the package annex at `exploration/stellarator_e2e/studies/ANNEX.md`. **Item-start probe done 2026-08-19: the stock loader refuses** — 2 of 139 sealed artifacts (`inputs/system_design.json`, `pipelines/mfe_stellarator.yaml`) are TAMPER against `artifact_hashes` — so the adapter branch is live and the deletion condition, not deletion, discharges "absent not dormant". `spec.md` drafted; product-lens BLOCKED on F1 (manifest-staleness gate dropped) and F2 (SC1 demanded an adapter-owned check from the generic tools), both fixed — gate now CLEAR (`product-lens.md`). Next: `/_my_spec_review`, then `/_my_design`.
+One orchestrated session drove Items 1–4 through spec → design → design-review → plan → implement → audit, a subagent per stage, orchestrator-reviewed at every artifact, commit trail per decision (briefs committed under each item's `briefs/`). Item 1 spike CONFIRMED (all five Appendix A known answers). Item 2 delivered the tracked `run-study` skill (15-step runbook after the Item 4 coordination insertion, 17-section record template, `.gitignore` negation) — audit PASS-WITH-FIXES, fixes applied. Item 3 delivered `indicators.py` + `manifest.py` + schemas + stellarator manifest — audit PASS (Certify). Item 4 delivered the quality tools and adapter under the effective fingerprint — audit PASS. Epic criteria 5, 6, 9 ticked; 1–4 and 7–8 land with Items 5–6 (Item 6 needs the owner Align: policy disposition). Watch-item for owner: `tests/scoring_v2/test_score_explorer_build.py` regenerates `tools/score_explorer/data/concepts.json` in place and the regenerated content differs from HEAD (pre-existing drift, reverted twice this run; scope pytest runs to `tests/study`).
+
+### run-study Item 4 — Quality Tools and Era Adapter Promotion (COMPLETE 2026-08-20, audit PASS)
+
+`.project/active/run-study-quality-tools/` — epic RUN-STUDY, Item 4. Promotes the proof-of-life's generic mechanical gates into `scripts/study/preflight.py` and `scripts/study/verify.py`, isolates the era workarounds in a package-local self-checking `exploration/stellarator_e2e/studies/era_adapter.py` under a truthful effective executable fingerprint, and authors the package annex at `exploration/stellarator_e2e/studies/ANNEX.md`. **Item-start probe done 2026-08-19: the stock loader refuses** — 2 of 139 sealed artifacts (`inputs/system_design.json`, `pipelines/mfe_stellarator.yaml`) are TAMPER against `artifact_hashes` — so the adapter branch is live and the deletion condition, not deletion, discharges "absent not dormant". Full pipeline done (spec → design rev 2 with review L1–L6 folded → plan → implement → audit PASS): four generic modules (`identity.py`, `common.py`, `preflight.py`, `verify.py`), four schemas, `era_adapter.py` + `oracle_entry.py` + `ANNEX.md`, promotion equivalence byte-exact on BOTH proof-of-life CSVs (948-point grid included), lineage refusal proven on glue/adapter/shim edits. Notable: pre-capability stores are now refused by `verify.py` (they carry the unearned sealed fingerprint — the integrity criterion working); `p_fus`/`magnet_capital` verification-coverage delta recorded in `ANNEX.md § Oracle` as an Item 3 manifest question.
 
 ### run-study Item 3 — Indicator Tool and Package Manifest (CERTIFIED 2026-08-20, audit PASS)
 
