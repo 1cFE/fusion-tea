@@ -1,6 +1,6 @@
 # Implementation Plan: Quality Tools and Era Adapter Promotion (RUN-STUDY Item 4)
 
-**Status:** Draft
+**Status:** Complete
 **Created:** 2026-08-20
 **Last Updated:** 2026-08-20
 **Branch:** `feat/stellarator-mbse-demo`
@@ -501,22 +501,22 @@ That the six annex sections the delivered runbook links are all fillable from wh
 
 **See `design.md` for:** the annex table with its six sections and their linking steps (`design.md#exploration-stellarator_e2e-studies-annex-md`), L6.
 
-- [ ] `exploration/stellarator_e2e/studies/ANNEX.md` (NEW): `§ Declared ties`, `§ Baseline pin`, `§ Oracle`, `§ Validity masks`, `§ Loader exception and glue` (carrying the deletion condition verbatim), `§ Era pin`. Package fact only, never a rule; nothing inlined into the runbook.
-- [ ] `tests/study/test_era_pin.py`: enable the annex half of the pin-consistency assertion (all three files now exist).
-- [ ] `tests/study/test_annex.py` (NEW, small): every one of the six section headings exists verbatim, and the `R > a + 2.25 m` mask is stated as a derived geometric bound rather than a design screen.
+- [x] `exploration/stellarator_e2e/studies/ANNEX.md` (NEW): `§ Declared ties`, `§ Baseline pin`, `§ Oracle`, `§ Validity masks`, `§ Loader exception and glue` (carrying the deletion condition verbatim), `§ Era pin`. Package fact only, never a rule; nothing inlined into the runbook.
+- [x] `tests/study/test_era_pin.py`: enable the annex half of the pin-consistency assertion (all three files now exist).
+- [x] `tests/study/test_annex.py` (NEW, small): every one of the six section headings exists verbatim, and the `R > a + 2.25 m` mask is stated as a derived geometric bound rather than a design screen.
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study -q` → green
-- [ ] `STUDY_REQUIRE_ERA=1 uv run python -m pytest tests/study -q -rs` → green with **zero skips**
-- [ ] `uv run python -m pytest tests/study -q -m slow` → the 948-point grid reproduces byte-for-byte
-- [ ] `uv run ruff check scripts/study exploration/stellarator_e2e/studies tests/study` clean
+- [x] `uv run python -m pytest tests/study -q` → green
+- [x] `STUDY_REQUIRE_ERA=1 uv run python -m pytest tests/study -q -rs` → green with **zero skips**
+- [x] `uv run python -m pytest tests/study -q -m slow` → the 948-point grid reproduces byte-for-byte
+- [x] `uv run ruff check scripts/study exploration/stellarator_e2e/studies tests/study` clean
 
 **Manual:**
-- [ ] Full route end to end on the real package: load through the adapter → emit `package_identity.json` + `baseline_result.json` → `preflight.py gates` (all six pass) → execute → `preflight.py clean` → `verify.py` → `preflight.py clean`. Three cleanliness sites preserved.
-- [ ] Every spec success-criteria box in `spec.md#success-criteria` checked against evidence, and the count of era-dependent tests recorded in Implementation Notes.
-- [ ] `git status --porcelain exploration/stellarator_e2e/study` empty — the pre-capability record is untouched.
+- [x] Full route end to end on the real package: load through the adapter → emit `package_identity.json` + `baseline_result.json` → `preflight.py gates` (all six pass) → execute → `preflight.py clean` → `verify.py` → `preflight.py clean`. Three cleanliness sites preserved.
+- [x] Every spec success-criteria box in `spec.md#success-criteria` checked against evidence, and the count of era-dependent tests recorded in Implementation Notes.
+- [x] `git status --porcelain exploration/stellarator_e2e/study` empty — the pre-capability record is untouched.
 
 **What we know works after this phase:** the whole item, end to end, on the real package, with the annex the runbook links.
 
@@ -695,9 +695,39 @@ pass  package_clean: package tree is byte-untouched (git clean)
 **Deviations:** none beyond the two findings above.
 
 ### Phase 8 Completion
-**Era-dependent test count:**
+**Completed:** 2026-08-20.
+
+**Era-dependent test count: 61.** `TEAX_V1_ERA=/nonexistent uv run python -m pytest tests/study -q -rs` → 212 passed, **61 skipped**, every skip naming the resolved path, the pinned commit, what was found, and the override. A future silent skip is visible as a number that changed. With the worktree present and `STUDY_REQUIRE_ERA=1`: **273 passed, zero skips.**
+
+**Actual changes:**
+- `exploration/stellarator_e2e/studies/ANNEX.md` (NEW): the six runbook-named sections, with the deletion condition inside `§ Loader exception and glue` rather than a seventh section no step links.
+- `tests/study/test_annex.py` (NEW, 11): every linked heading verbatim, no seventh section, the runbook links nothing the annex lacks, and the two content facts most likely to soften — the mask stated as a derived geometric bound rather than a design screen, and main's refusal stated as principled and not to be chased upstream.
+- `tests/study/test_era_pin.py` needed no edit: `ANNEX.md § Era pin` was already in its declaration table and now matches, so the pin is asserted across all three files.
+
+**Full route end to end on the real package, all three cleanliness sites preserved:**
+```
+1. prepare route + execute pinned baseline  -> package_identity.json, baseline_result.json
+2. preflight gates                          -> 6/6 pass, exit 0
+3. execute points                           -> availability_sweep.csv
+4. preflight clean (post-run)               -> pass
+5. verify                                   -> 12 rows, 6 channels, worst 4.81e-16,
+                                               5 verdicts re-derived, g3 disclosed
+6. preflight clean (post-verify)            -> pass
+```
+
+**Final gates:** `ruff` clean over `scripts/study`, `exploration/stellarator_e2e/studies`, `tests/study`. `git status --porcelain` empty over both `pkg/` and `study/` — the committed package and the pre-capability record are untouched. The 948-point grid ran once more behind `-m slow` and reproduced byte for byte.
+
+**Spec success criteria:** all ten ticked in `spec.md`, each against evidence in these notes.
+
+**Deviations:** none.
 
 ---
 
-**Status:** Draft → In Progress → Complete
-**Next Step:** `/_my_implement`
+## Deviations summary (whole item)
+
+Nine phases, all executed; nothing deferred. Four things went differently from the plan and each is recorded above at its phase. (1) The `package_copy` identity convenience moved from Phase 0 to Phase 3, where `identity.py` and the adapter exist to write it against. (2) `test_lineage_refusal.py` builds its store from the era API rather than through `promotion_equivalence.py`, which does not exist until Phase 4 — and deliberately so, since the claim is identity binding, not proposal construction. (3) Four of Phase 5's five negatives mutate the documents preflight reads rather than the package, keeping the committed package read-only and the other gates carrying real outcomes; the dirty-tree negative is aimed at the `clean` subcommand against a scratch tree git can actually see. (4) Phase 7's manual step said to diff `verify.py`'s summary against the committed proof-of-life stores; those stores are **refused**, because they carry the sealed fingerprint the old loader never earned, so the diff was taken against a promoted-route store and the refusal recorded as evidence rather than worked around. Two findings were surfaced rather than absorbed: the oracle's `annual_om` is the levelized annual O&M and the package channel is the unlevelized one, a 158% error that a name match would have shipped (Phase 1); and `p_fus` and `magnet_capital` are no longer compared, because a generic tool can only check the manifest's objectives plus what a binding resolves and those two are neither — recovering them is a manifest edit, which is Item 3's file (Phase 7).
+
+---
+
+**Status:** Complete (all nine phases executed 2026-08-20)
+**Next Step:** `/_my_audit`

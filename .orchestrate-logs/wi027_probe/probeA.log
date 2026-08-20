@@ -1,0 +1,76 @@
+INFO: Template detection: 23 templates, 6 concrete CalcUsages
+INFO: Template expansion: 23 templates → 23 virtual instances
+INFO: Usage extraction: 29 usages, 127 bindings, 30 unbound params, 2 cross-file bindings, 0 warning(s).
+INFO: Step 3.5: Hierarchy extraction complete — 13 redefinitions, 83 design overrides, 0 aggregation expressions, 71 bindings rewritten, 0 scoped aggregations, 0 CHAIN aliases
+INFO: Extracted 174 design attributes from 9 files (filter: '')
+WARNING: FORMULA compilation failed for 'powercore_capital' on 'MFE_Power_Plant': feature chain expression not supported in CalcDef output
+WARNING: FORMULA compilation failed for 'bop_capital' on 'MFE_Power_Plant': feature chain expression not supported in CalcDef output
+INFO: Step 4.5: Extracted 27 computed attributes (13 expose_chain_tentative, 12 expose_pure, 2 formula), removed 2 FORMULA from design_attrs, 1 EXPOSE_PURE aliases
+INFO: Phase 3b: confirmed 0 multi-hop EXPOSE alias(es), reverted 13 unresolvable tentative(s) to FORMULA
+INFO: Step 5.5: OutputRegistry built — 39 Phase 1 channels, 0 Phase 2 CHAIN aliases, 1 Phase 3 EXPOSE_PURE aliases, 1 Phase 4 transitive aliases (118 total keys)
+INFO: Step 5.55: part-def EXPOSE scoped aliases — scanned 11 candidate(s), registered 11.
+INFO: Step 5.56: rescued 10 self-named binding(s) to upstream
+INFO: supplied-value materializer scanned 64 referenced bindings: 16 literal applied, 0 non-literal skipped.
+INFO: Phantom catalog: scanned 29 usage(s), cataloged 21 output name(s), 0 usage(s) skipped (unknown calc def).
+INFO: Step 6.5: Compiling expressions for 22 calculation definitions
+INFO:   Compiled 'Scalar_Value': fully_compilable
+INFO:   Compiled 'LCOE_DCF': fully_compilable
+INFO:   Compiled 'Cryoplant_Electrical_Power': fully_compilable
+INFO:   Compiled 'Magnet_Coil_Cost': fully_compilable
+INFO:   Compiled 'Plasma_Geometry': fully_compilable
+INFO:   Compiled 'MFE_Radial_Build': fully_compilable
+INFO:   Compiled 'DT_Fusion_Power': manual_required
+INFO:   Compiled 'Neutron_Wall_Load': fully_compilable
+INFO:   Compiled 'Blanket_Cost': fully_compilable
+INFO:   Compiled 'Shield_Cost': fully_compilable
+INFO:   Compiled 'Structure_Cost': fully_compilable
+INFO:   Compiled 'Vessel_Cost': fully_compilable
+INFO:   Compiled 'Power_Supplies_Cost': fully_compilable
+INFO:   Compiled 'Divertor_Cost': fully_compilable
+INFO:   Compiled 'Heating_Cost': fully_compilable
+INFO:   Compiled 'Linear_Power_Cost': fully_compilable
+INFO:   Compiled 'Contingency_Cost': fully_compilable
+INFO:   Compiled 'Indirect_Cost': fully_compilable
+INFO:   Compiled 'Buildings_Cost': fully_compilable
+INFO:   Compiled 'Preconstruction_Cost': fully_compilable
+INFO:   Compiled 'Annual_OM_Cost': fully_compilable
+INFO:   Compiled 'MFE_Power_Balance_Calc': fully_compilable
+INFO: Step 6.5 complete: 22 compiled (21 fully_compilable, 1 manual_required), 0 skipped (no expressions)
+WARNING: Computed attribute 'MFE_Power_Plant.powercore_capital' is FORMULA but not FULLY_COMPILABLE (manual_required); no pipeline module produced. Its expression could not be compiled — a manual implementation is required.
+WARNING: Computed attribute 'MFE_Power_Plant.bop_capital' is FORMULA but not FULLY_COMPILABLE (manual_required); no pipeline module produced. Its expression could not be compiled — a manual implementation is required.
+WARNING: Computed attribute 'MFE_Power_Plant.magnet_capital' is FORMULA but not FULLY_COMPILABLE (manual_required); no pipeline module produced. Its expression could not be compiled — a manual implementation is required.
+WARNING: Computed attribute 'MFE_Power_Plant.heating_capital' is FORMULA but not FULLY_COMPILABLE (manual_required); no pipeline module produced. Its expression could not be compiled — a manual implementation is required.
+WARNING: Computed attribute 'MFE_Power_Plant.divertor_capital' is FORMULA but not FULLY_COMPILABLE (manual_required); no pipeline module produced. Its expression could not be compiled — a manual implementation is required.
+WARNING: Computed attribute 'MFE_Power_Plant.blanket_capital' is FORMULA but not FULLY_COMPILABLE (manual_required); no pipeline module produced. Its expression could not be compiled — a manual implementation is required.
+WARNING: Computed attribute 'MFE_Power_Plant.shield_capital' is FORMULA but not FULLY_COMPILABLE (manual_required); no pipeline module produced. Its expression could not be compiled — a manual implementation is required.
+WARNING: Computed attribute 'MFE_Power_Plant.structure_capital' is FORMULA but not FULLY_COMPILABLE (manual_required); no pipeline module produced. Its expression could not be compiled — a manual implementation is required.
+WARNING: Computed attribute 'MFE_Power_Plant.vessel_capital' is FORMULA but not FULLY_COMPILABLE (manual_required); no pipeline module produced. Its expression could not be compiled — a manual implementation is required.
+WARNING: Computed attribute 'MFE_Power_Plant.power_supplies_capital' is FORMULA but not FULLY_COMPILABLE (manual_required); no pipeline module produced. Its expression could not be compiled — a manual implementation is required.
+WARNING: Computed attribute 'MFE_Power_Plant.turbine_capital' is FORMULA but not FULLY_COMPILABLE (manual_required); no pipeline module produced. Its expression could not be compiled — a manual implementation is required.
+WARNING: Computed attribute 'MFE_Power_Plant.electric_capital' is FORMULA but not FULLY_COMPILABLE (manual_required); no pipeline module produced. Its expression could not be compiled — a manual implementation is required.
+WARNING: Computed attribute 'MFE_Power_Plant.heat_rejection_capital' is FORMULA but not FULLY_COMPILABLE (manual_required); no pipeline module produced. Its expression could not be compiled — a manual implementation is required.
+WARNING: Computed attribute 'MFE_Power_Plant.misc_capital' is FORMULA but not FULLY_COMPILABLE (manual_required); no pipeline module produced. Its expression could not be compiled — a manual implementation is required.
+WARNING: Computed attribute 'MFE_Power_Plant.buildings_capital' is FORMULA but not FULLY_COMPILABLE (manual_required); no pipeline module produced. Its expression could not be compiled — a manual implementation is required.
+INFO: Derived 7 parameter groups: 7 design, 0 library
+INFO: Derived 2 parameter groups: 2 design, 0 library
+INFO: Derived 7 parameter groups: 7 design, 0 library
+INFO: Derived 2 parameter groups: 2 design, 0 library
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea-stellarator-mbse-demo/.venv/bin/sysml-codegen", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/reid/1cfe/sysml-codegen/src/sysml_codegen/cli/__init__.py", line 928, in main
+    sys.exit(args.func(args))
+             ^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/sysml-codegen/src/sysml_codegen/cli/__init__.py", line 733, in cmd_snapshot
+    out = capture_snapshot([models_path], output_path, design_path_filter=args.design_path_filter)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/sysml-codegen/src/sysml_codegen/snapshot/capture.py", line 47, in capture_snapshot
+    ctx = build_pipeline_context(
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/sysml-codegen/src/sysml_codegen/orchestration/pipeline_builder.py", line 1002, in build_pipeline_context
+    computation_graph = extend_graph_with_constraints(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/sysml-codegen/src/sysml_codegen/analysis/constraint_lowering.py", line 1350, in extend_graph_with_constraints
+    raise _generation_error(f"V11 coverage violations in extended graph: {uncovered}")
+sysml_codegen.orchestration.pipeline_context.CodeGenerationError: V11 coverage violations in extended graph: [UncoveredInput(module='stellarator_09__stellaris__contingency', input='direct_subtotal', missing_key='mfe_plant_params.stellarator_09__stellaris__contingency__direct_subtotal'), UncoveredInput(module='stellarator_09__stellaris__indirect', input='direct_cost', missing_key='mfe_plant_params.stellarator_09__stellaris__indirect__direct_cost'), UncoveredInput(module='stellarator_09__stellaris__lcoe_calc', input='total_capital', missing_key='mfe_plant_params.stellarator_09__stellaris__lcoe_calc__total_capital')]

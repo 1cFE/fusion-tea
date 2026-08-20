@@ -1,6 +1,6 @@
 # Spec: Quality Tools and Era Adapter Promotion
 
-**Status:** Accepted (orchestrated review, 2026-08-19)
+**Status:** Accepted (orchestrated review, 2026-08-19) · **Implemented 2026-08-20** — all success criteria verified against evidence; see `plan.md` Implementation Notes
 **Owner:** Reid W
 **Created:** 2026-08-19
 **Complexity:** HIGH
@@ -27,16 +27,16 @@ The epic requires probing, at item start, whether the stock teax loader accepts 
 
 ## Success Criteria
 
-- [ ] Every mechanical gate the proof-of-life ran survives promotion, each in its designed home: the generic gates in `scripts/study/preflight.py` and `scripts/study/verify.py`, which contain no package name, no key prefix, and no adapter import (grep-checkable); the adapter-owned checks in the adapter.
-- [ ] The adapter's self-checks run on every adapter-route execution and fail closed — the dead-filler assertion above all, which is the one proof-of-life gate that moves *into* the adapter rather than into a tool.
-- [ ] Preflight refuses to gate a study against a manifest whose declared package facts were pinned to a package generation that is no longer on disk.
-- [ ] The promoted route reproduces both committed proof-of-life CSVs — `design_search_R_a.csv` and `availability_sweep.csv` — byte-for-byte, with the committed files themselves unedited.
-- [ ] Verification stays stratified by verdict combination, re-derives every verdict, compares channels at rel < 1e-9, and writes a `verification_summary.json` that carries everything the record's `arms[].verification` block needs.
-- [ ] The study definition binds to the effective executable fingerprint, never to the bypassed seal. Touching an allowed glue file, or changing the adapter's source, changes the effective fingerprint and the pre-existing store refuses to resume.
-- [ ] Four negative cases each fail closed with a message that locates the fault: missing declared key, dirty package, wrong fingerprint, modified-glue resume refusal. A fifth holds the loader's accept-set: a third modified sealed artifact is refused, not accepted.
-- [ ] `exploration/stellarator_e2e/studies/ANNEX.md` exists at the path Item 2 pinned and carries the era pin, the oracle parameterization, the glue rungs, the loader exception, the package-specific validity masks, and the adapter's exact deletion condition.
-- [ ] Every point still executes through `StudyRunner`; neither tool owns execution.
-- [ ] No tool exits non-zero on an interpretive condition; every mechanical failure exits non-zero.
+- [x] Every mechanical gate the proof-of-life ran survives promotion, each in its designed home: the generic gates in `scripts/study/preflight.py` and `scripts/study/verify.py`, which contain no package name, no key prefix, and no adapter import (grep-checkable); the adapter-owned checks in the adapter.
+- [x] The adapter's self-checks run on every adapter-route execution and fail closed — the dead-filler assertion above all, which is the one proof-of-life gate that moves *into* the adapter rather than into a tool.
+- [x] Preflight refuses to gate a study against a manifest whose declared package facts were pinned to a package generation that is no longer on disk.
+- [x] The promoted route reproduces both committed proof-of-life CSVs — `design_search_R_a.csv` and `availability_sweep.csv` — byte-for-byte, with the committed files themselves unedited.
+- [x] Verification stays stratified by verdict combination, re-derives every verdict, compares channels at rel < 1e-9, and writes a `verification_summary.json` that carries everything the record's `arms[].verification` block needs.
+- [x] The study definition binds to the effective executable fingerprint, never to the bypassed seal. Touching an allowed glue file, or changing the adapter's source, changes the effective fingerprint and the pre-existing store refuses to resume.
+- [x] Four negative cases each fail closed with a message that locates the fault: missing declared key, dirty package, wrong fingerprint, modified-glue resume refusal. A fifth holds the loader's accept-set: a third modified sealed artifact is refused, not accepted.
+- [x] `exploration/stellarator_e2e/studies/ANNEX.md` exists at the path Item 2 pinned and carries the era pin, the oracle parameterization, the glue rungs, the loader exception, the package-specific validity masks, and the adapter's exact deletion condition.
+- [x] Every point still executes through `StudyRunner`; neither tool owns execution.
+- [x] No tool exits non-zero on an interpretive condition; every mechanical failure exits non-zero.
 
 ## Known Requirements
 
