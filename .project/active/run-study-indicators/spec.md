@@ -21,17 +21,19 @@ The obligation this work carries has decision force and comes from the owner: **
 
 ## Success Criteria
 
-- [ ] Known-answer tests pass for `availability`, `interest_rate`, `R`, `R`+tie, `a`, and `beta`, matching the Item 1 fixture contract field for field — constraints reached, operand class per reached operand, operator, `bound_vs_bound`, objectives reachable and unreachable, sibling candidates, and the module/channel trace counts.
-- [ ] A valid empty result exits 0 with `no_constraint_response: true` and `group_valid: true`. A missing declared key, an indicator-input fingerprint mismatch, an unparseable reference, a corrupt pipeline line, and an objective channel produced by no module each exit non-zero and emit no partial indicator output.
-- [ ] A declared key that names a produced channel rather than an entry key exits non-zero with a message that says so, distinct from the absent-key message.
-- [ ] Each declared key's `fan_out | tie` provenance survives from input to output, so the record can snapshot it.
-- [ ] Every mechanical failure message locates the fault: the absent key by name, the computed quantity by name and by what it is, the reference quoted verbatim, the corrupt construct by file and position, the ghost objective channel by name.
-- [ ] Suffix-sibling matches and manifest tie candidates appear as warnings in the output and never change which keys are traced.
-- [ ] `scripts/study/indicators.py` contains no stellarator-specific name and imports no adapter; grepping the file for the package name, its key prefix, and `era_adapter` returns nothing.
-- [ ] `manifest.json` parses as data, contains no executable content, and separates stable package catalog facts from per-study choices — no axes, no windows, no selected objectives.
-- [ ] Every report states, in its own output, that monotonicity or sign of response, same-quantity identity across differing key names, and intra-module operand dependency are not derivable, and that a reachable positive is a possible path and never "responds".
-- [ ] The output JSON schema is documented and versioned, so Items 2 and 4 can consume it as a fixed seam.
-- [ ] Tests run under `uv run python -m pytest`.
+- [x] Known-answer tests pass for `availability`, `interest_rate`, `R`, `R`+tie, `a`, and `beta`, matching the Item 1 fixture contract field for field — constraints reached, operand class per reached operand, operator, `bound_vs_bound`, objectives reachable and unreachable, sibling candidates, and the module/channel trace counts.
+- [x] A valid empty result exits 0 with `no_constraint_response: true` and `group_valid: true`. A missing declared key, an indicator-input fingerprint mismatch, an unparseable reference, a corrupt pipeline line, and an objective channel produced by no module each exit non-zero and emit no partial indicator output.
+- [x] A declared key that names a produced channel rather than an entry key exits non-zero with a message that says so, distinct from the absent-key message.
+- [x] Each declared key's `fan_out | tie` provenance survives from input to output, so the record can snapshot it.
+- [x] Every mechanical failure message locates the fault: the absent key by name, the computed quantity by name and by what it is, the reference quoted verbatim, the corrupt construct by file and position, the ghost objective channel by name.
+- [x] Suffix-sibling matches and manifest tie candidates appear in the output and never change which keys are traced. *(Landed per the accepted design's M2 rather than the spec's wording: suffix siblings go to the group's own `sibling_candidates` field, which Appendix A names, and tie candidates go to group `warnings`. Both are in the output; neither is folded into a generic bag. `test_warnings.py` asserts the split and that the traced fields are identical with and without either.)*
+- [x] `scripts/study/indicators.py` contains no stellarator-specific name and imports no adapter; grepping the file for the package name, its key prefix, and `era_adapter` returns nothing.
+- [x] `manifest.json` parses as data, contains no executable content, and separates stable package catalog facts from per-study choices — no axes, no windows, no selected objectives.
+- [x] Every report states, in its own output, that monotonicity or sign of response, same-quantity identity across differing key names, and intra-module operand dependency are not derivable, and that a reachable positive is a possible path and never "responds".
+- [x] The output JSON schema is documented and versioned, so Items 2 and 4 can consume it as a fixed seam.
+- [x] Tests run under `uv run python -m pytest`.
+
+All eleven met as of 2026-08-19; see `plan.md` Phase 7 for the invariant sweep and which test asserts each.
 
 ## Known Requirements
 
