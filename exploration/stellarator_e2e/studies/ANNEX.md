@@ -99,6 +99,12 @@ are 158% apart, because the package channel is the *unlevelized* annual O&M. The
 right source is `annual_om_unlevelized`. The map is validated against executed
 evidence, not read for plausibility.
 
+Known verification-coverage delta (Item 4 audit, 2026-08-20): `p_fus` and
+`magnet_capital` are not compared by generic `verify.py` — coverage is the manifest's
+objective catalog plus predicate-resolved operands, and those two channels are neither.
+Recovering them is a data-only addition to `manifest.json`'s objective catalog (an
+Item 3-owned file), not a tool change.
+
 ---
 
 ## § Validity masks
