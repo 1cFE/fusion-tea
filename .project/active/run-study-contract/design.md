@@ -1,6 +1,6 @@
 # Design: Skill, Runbook, and Record Contract (RUN-STUDY Item 2)
 
-**Status:** Draft
+**Status:** Draft — review fixes folded (design review 2026-08-19: MF1–MF7, SF1–SF7)
 **Owner:** Reid W
 **Created:** 2026-08-19
 **Updated:** 2026-08-19
@@ -27,6 +27,7 @@ Design the file architecture for the `run-study` capability's three human-readab
 - **Item 3 seam:** `.project/active/run-study-indicators/spec.md` — manifest fields, output schema versioning
 - **Item 1 spike:** `.project/active/run-study-reachability-spike/findings.md`
 - **Product-lens:** `.project/active/run-study-contract/product-lens.md`
+- **Design review:** `.project/active/run-study-contract/design-review.md` — APPROVE-WITH-FIXES; MF1–MF7 and SF1–SF7 are folded into this revision, each marked at its landing site.
 - **Decision records:** `.project/adr/` is absent — 0 entries, no index to check. `adr.sh` is also absent; the gap is noted, no ids hand-minted (same finding as `run-study-skill-design.md:84`).
 
 ---
@@ -75,15 +76,16 @@ The runbook sits above this as a list of obligations, each naming what it deposi
 - **B2.** No required record fact is genuinely both a resolved value and an argument, so the values/arguments split assigns every fact exactly one home without residue. *If false → the same fact lands in both files, drifts, and the record starts lying about itself — the failure Principle 5 exists to prevent.*
 - **B3.** Fixed heading text is a strong enough structural contract that a human reader can tell a missing section from a nil-discharged one, before any linter exists. *If false → records drift structurally, cold pickup degrades study by study, and the contract needs a checker tool that no epic item currently owns.*
 - **B4.** The universal/annex split the spec drew holds for a second package. Every step the runbook states without package specifics is one another package could execute. *If false → the runbook silently encodes stellarator assumptions, and the first non-stellarator study discovers them by failing.*
+- **B5.** A record can be audited for completeness from inside itself — every rule the contract states can be evaluated by a reader who opens nothing outside the record directory. *If false → the fresh-administrator check cannot certify a record, and completeness rules have to be enforced upstream by a tool the executor runs, moving the guarantee out of the contract and into an unowned checker.* (Surfaced by design review; it is the bet MF1 caught this design falsifying, and the `manifest.content_used.fingerprint_names` copy is what restores it.)
 
 ---
 
 ## Key Decisions
 
 - **D1. `record-template.md` ships as a fill-in skeleton, not a checklist.** The executor copies it to `<study-id>/record.md` and fills it in. *Rejected: a checklist the executor writes prose against (the record's structure would then depend on the executor's habits, and the fresh-administrator check would have nothing stable to find facts by).*
-- **D2. Snapshot lives in a sibling `snapshot.json`; `record.md` § Snapshot carries only its filename, sha256, and schema version.** The field set is open-ended (every fingerprint the manifest names), which prose cannot enumerate; the content is digests and tuples, which is what a checker reads and a human skips. Human readability is not lost, because the *interpretive* facts a human needs — window rationale, route rationale, glue disclosure — stay in `record.md` sections of their own. *Rejected: the full snapshot inline in `record.md` (unenumerable field set, and it buries the argument sections under two pages of hashes); rejected: both, with the JSON normative and a prose summary (two copies of the same fact drift — capture-fidelity §3).*
-- **D3. Study id is `<YYYYMMDD>-<goal-slug>`.** Date-prefixed sorts the studies directory chronologically; the slug makes it recognizable. Same-day collision appends `-b`, `-c`. *Rejected: fingerprint-tagged (an A/B study can span fingerprints, so a single-fingerprint tag in the id would be false); rejected: slug-only (no ordering, and re-running the same goal collides).*
-- **D4. A/B arms share one record directory and one `record.md`, distinguished by a stable `arm-<slug>` id used identically in record subsections, snapshot store entries, and result filenames.** The design requires the comparison to live in the record and never in a merged store; sibling directories would put the comparison outside any single record. *Rejected: one directory per arm plus a comparison directory (three records, no single cold-readable artifact).*
+- **D2. Snapshot lives in a sibling `snapshot.json`; `record.md` § Snapshot carries only its filename, sha256, and schema version.** The field set is open-ended (every fingerprint the manifest names), which prose cannot enumerate; the content is digests and tuples, which is what a checker reads and a human skips. Human readability is not lost, because the *interpretive* facts a human needs — window rationale, route rationale, glue disclosure — stay in `record.md` sections of their own. *Rejected: the full snapshot inline in `record.md` (unenumerable field set, and it buries the argument sections under two pages of hashes); rejected: both, with the JSON normative and a prose summary (two copies of the same fact drift — capture-fidelity §3).* **Amended by MF2:** the snapshot is arm-scoped, not a single-arm block — see Snapshot Structure below.
+- **D3. Study id is `<YYYYMMDD>-<goal-slug>`.** Date-prefixed sorts the studies directory chronologically; the slug makes it recognizable. On a same-day collision the first study is unsuffixed and subsequent ones append `-b`, `-c` (SF7). *Rejected: fingerprint-tagged (an A/B study can span fingerprints, so a single-fingerprint tag in the id would be false); rejected: slug-only (no ordering, and re-running the same goal collides).*
+- **D4. A/B arms share one record directory and one `record.md`, distinguished by a stable `arm-<slug>` id used identically in record subsections, snapshot store entries, and result filenames.** The design requires the comparison to live in the record and never in a merged store; sibling directories would put the comparison outside any single record. *Rejected: one directory per arm plus a comparison directory (three records, no single cold-readable artifact).* **Amended by MF2:** every snapshot field that can differ between arms is arm-scoped, so a cross-fingerprint A/B fits the shape.
 - **D5. The explicit-nil rule, one convention for every conditional obligation.** Every framing-conditional section ships present in the skeleton with a required `**Applies:**` line directly under its heading; nil discharge must name the condition. *Rejected: deleting non-applicable sections (omission and forgetting become indistinguishable); rejected: per-obligation bespoke wording (four mechanisms where one does).*
 - **D6. The skill owns naming the record path; the runbook's step 1 references it.** Administer mode is *given* a record path — the same field, opposite direction — so both modes share the step and it belongs in the shared entry point. This confirms the accepted design's assignment (`run-study-skill-design.md:107`) rather than overturning it. *Rejected: runbook step 1 owning it (the runbook is execute-only; administer mode would then have a path-naming step with no home).*
 - **D7. `DISCOVERY_LOG.md` is an append-only markdown table, newest row last, six columns.** Six short fields render, grep, and diff cleanly. *Rejected: one prose block per finding (the design calls it an index, not a second copy; prose invites re-stating the record).*
@@ -96,8 +98,12 @@ The runbook sits above this as a list of obligations, each naming what it deposi
 ## Orchestrator Rulings Recorded
 
 - **The package annex file and its content are authored by Item 4**, not Item 3. Its content is the era pin, the oracle parameterization, and the glue — Item 4 material. Item 2 defines the annex **link** (D9) and the universal/annex split only. **This supersedes the spec's non-goal line at `spec.md:136`, which named Item 3 as the annex's author.** The rest of that non-goal stands: this item does not write annex content.
-- **The snapshot's fingerprint field set is open, not a closed triple.** Item 3's accepted spec adds an **indicator-input fingerprint** — a tool-computed digest over the artifacts the trace reads — alongside the sealed `executable_fingerprint` and the `semantic_fingerprint` (`run-study-indicators/spec.md:40,42`). The snapshot's rule is "every fingerprint the manifest declares, copied by name", so a manifest that grows a fourth fingerprint does not need this template revised.
+- **The snapshot's fingerprint field set is open, not a closed triple.** Item 3's accepted spec adds an **indicator-input fingerprint** — a tool-computed digest over the artifacts the trace reads — alongside the sealed `executable_fingerprint` and the `semantic_fingerprint` (`run-study-indicators/spec.md:40,42`). The snapshot copies every fingerprint the manifest declares, by the manifest's own name for it, so a manifest that grows a fourth fingerprint does not need this template revised. **The open set does not replace the spec's floor** (`spec.md:88`): the sealed package fingerprint, the model-contract/semantic fingerprint, and the indicator-input fingerprint are required in every snapshot regardless of what the manifest declares. Completeness beyond the floor is made checkable from inside the record by MF1's fix below.
 - **Item 3's output JSON schema is versioned** (`run-study-indicators/spec.md:33`), so the snapshot's `indicators` block records that schema version alongside the file's digest.
+
+### Spec deviations surfaced
+
+- **`spec.md:95`'s "how it was chosen" is read as the argument half and homed in `record.md` §11**, while the window's bounds and its `engineered | sourced` provenance stay snapshot values (SF1). The spec places the whole clause inside the snapshot; splitting it follows this design's values/arguments rule, and the move is stated here rather than made silently.
 
 ---
 
@@ -119,13 +125,14 @@ exploration/<pkg>/studies/
     record.md       arguments and judgments; fixed headings
     snapshot.json   resolved values and digests                           (D2)
     indicators.json copied in from the tool, with its schema version
-    results/        CSVs, report, generation script
+    results/        CSVs, report, generation script,
+                    verification_summary.json                             (MF5)
     synthesis.md    administrator only; never touched by the executor     (D8)
 ```
 
-**Data flow.** Intake enters at the skill and is deposited verbatim in `record.md` § Intake. Tool outputs (`indicators.json`, preflight results, `verification_summary.json`) enter through runbook steps; each step names its deposit section. `snapshot.json` is written once, at record commit, from resolved values — never from a live file. `record.md` § Snapshot then carries `snapshot.json`'s digest, and that is the only cross-file digest reference; `snapshot.json` never references `record.md` (a two-way digest is uncomputable).
+**Data flow.** Intake enters at the skill and is deposited verbatim in `record.md` § Intake. Tool outputs (`indicators.json`, preflight results, `results/verification_summary.json`) enter through runbook steps; each step names its deposit section. `snapshot.json` is written once, at record commit, from resolved values — never from a live file. `record.md` § Snapshot then carries `snapshot.json`'s digest, and that is the only cross-file digest reference; `snapshot.json` never references `record.md` (a two-way digest is uncomputable).
 
-**Role boundary.** The executor writes everything except `synthesis.md`. The administrator writes only `synthesis.md` and reads nothing outside the record directory. Neither writes the other's files. The discovery log is written by both — a row per finding, at the moment the finding is filed.
+**Role boundary.** The executor writes everything except `synthesis.md`, and is the sole writer of `DISCOVERY_LOG.md`. The administrator writes only `synthesis.md` and reads nothing outside the record directory. Neither writes the other's files. An administrator finding therefore lands in `synthesis.md`'s "what the record does not support" section and nowhere else; the discovery-log row for it is filed by whoever acts on the synthesis (MF6). This keeps the administrator boundary whole — the administrator is not even given `<pkg>`, so it could not resolve the log's path.
 
 **Immutability and revision.** Committed evidence is never edited. A correction to `record.md` appends `## Addendum <YYYY-MM-DD>` at the end and leaves prior text intact. An addendum may correct the record's *statement* of a fact; it may never alter `snapshot.json`, `indicators.json`, or anything under `results/`. A changed snapshot value is a different study and gets a new study id.
 
@@ -149,7 +156,24 @@ Two ordered lists — the execute sequence and the administer sequence. Each exe
 **Annex:** exploration/<pkg>/studies/ANNEX.md § <topic>     ← only on package-specific steps
 ```
 
-Steps, from the spec's universal list: intake capture → axis-group declaration → indicators → framing argument and the user's ruling on any `no_constraint_response` axis (with its model-development finding) → preflight gates → oracle range scan and window choice → route selection → execution on the stock teax lifecycle → verification → review outcomes → report → snapshot and record commit → discovery-log rows. The administer sequence: read the record directory only → recover the fresh-administrator facts → write `synthesis.md` → state what the record does not support → file any record-contract gap as a process finding.
+Steps, from the spec's universal list:
+
+1. intake capture → §2
+2. axis-group declaration → §7
+3. indicators → §8 + `indicators.json`
+4. **framing argument** — the user's ruling on any `no_constraint_response` axis with its model-development finding → §5 (first half, framing as proposed) + §8; **and its pre-execution critique verdict → §14 as a named review outcome** (MF7a, discharging `spec.md:82`)
+5. preflight gates → §9
+6. oracle range scan and window choice → §11 + snapshot `arms[].window`
+7. route selection → §10, including the glue disclosure (MF4)
+8. execution on the stock teax lifecycle → `results/`
+9. verification → §13 + snapshot `arms[].verification` + `results/verification_summary.json`
+10. **post-run framing judgment** — judge each axis's framing against the observed result → §5 (second half, framing as judged) (MF7b, discharging `spec.md:77`)
+11. review outcomes → §14
+12. report → `results/`; the report states the era pin as a reproduce prerequisite at the claim site while the pin exists (SF6)
+13. snapshot and record commit → `snapshot.json` + §16
+14. discovery-log rows → `DISCOVERY_LOG.md`
+
+The administer sequence: read the record directory only → recover the fresh-administrator facts → write `synthesis.md` → state what the record does not support. It ends there. An administrator does not file a discovery-log row (MF6).
 
 ### `record-template.md`
 
@@ -184,10 +208,10 @@ Answer first, then the reasoning that qualifies it, then the machine evidence. A
 | 7 | Axis groups | 4 |
 | 8 | Indicators and rulings — incl. the model-development finding per `no_constraint_response` axis | 5 |
 | 9 | Preflight results — pass/fail per gate | 7 |
-| 10 | Execution route and why | 8 |
-| 11 | Study definition and window provenance — the argument | snapshot's "how it was chosen" |
-| 12 | Compatibility tuples and cross-fingerprint correlation | 9 |
-| 13 | Verification | 10 |
+| 10 | Execution route and why — **including the glue disclosure** | 8, and the glue disclosure (`spec.md:94`, `:120`) |
+| 11 | Study definition and window provenance — the argument | snapshot's "how it was chosen" (SF1) |
+| 12 | Cross-fingerprint correlation and what it means | 9 — argument half; the tuples themselves live in snapshot `arms[].store` |
+| 13 | Verification — outcome and its argument | 10 — outcome half; command, sampling scheme, tolerance live in snapshot `arms[].verification` |
 | 14 | Review outcomes | 11 |
 | 15 | Findings | 12 |
 | 16 | Snapshot — filename, sha256, schema version | 13 |
@@ -200,7 +224,11 @@ Answer first, then the reasoning that qualifies it, then the machine evidence. A
 **Applies:** yes | not applicable — <axis> is sensitivity-framed
 ```
 
-and the sensitivity counterpart, whose content owes the observed response plus an explicit statement that no boundary claim is made. Weight follows `/show-me` (**[INHERITED: concept, [OWNER] [REFERENT]]**): sections are short and adaptive; only presence is mandatory.
+and the sensitivity counterpart, whose content owes the observed response, an explicit statement that no boundary claim is made, and — for any constraint that goes violated anywhere in the sweep — where in the swept space it does (SF2, adopting the carried lens smell from `product-lens.md:26`). Locating a violation is a fact about the run, not a boundary claim, so it costs the sensitivity framing nothing.
+
+§10's glue disclosure is the interpretive half of the glue ledger: what each rung supplies that the model does not, and what that means for the claims. The ledger's entries are snapshot values; §10 argues them. Glue exists only on the adapter route, which is why it belongs with the route argument that introduces it — and never in §17, which is reserved for gaps in the record itself (MF4).
+
+Weight follows `/show-me` (**[INHERITED: concept, [OWNER] [REFERENT]]**): sections are short and adaptive; only presence is mandatory.
 
 ---
 
@@ -208,45 +236,59 @@ and the sensitivity counterpart, whose content owes the observed response plus a
 
 `snapshot.json` holds resolved values only. Shape (illustrative — the plan stage writes the field list out in full):
 
+**Scoping rule (MF2): any field that can differ between arms is arm-scoped.** A cross-fingerprint A/B has a different executable per arm, therefore a different study definition, strategy identity, effective fingerprint, window, verification run, and result artifacts per arm. Only genuinely study-wide facts stay top-level. That one rule makes the plan's full field list derivable rather than guessed.
+
 ```jsonc
 {
   "snapshot_schema_version": "1",
+  "study_id": "...",
   "package": { "path": "...", "git_clean": true, "repo_commit": "..." },
   "fingerprints": { "<every name the manifest declares>": "<value>" },
-  "effective_executable_fingerprint": { "value": "...", "inputs": { ... } },
-  "manifest": { "digest": "...", "content_used": { ... } },
-  "study": { "study_id": "...", "entry_models": { ... }, "strategy": "...",
-             "window": { "bounds": ..., "provenance": "engineered|sourced" } },
-  "arms": [ { "arm_id": "arm-<slug>", "store": { "compatibility_tuple": { ... } } } ],
+  "manifest": { "digest": "...",
+                "content_used": { "fingerprint_names": [ "...", ... ], ... } },
+  "stores": [ { "store_id": "...", "path": "...", "compatibility_tuple": { ... } } ],
+  "arms": [ { "arm_id": "arm-<slug>", "store_id": "...",
+              "effective_executable_fingerprint": { "value": "...", "inputs": { ... } },
+              "entry_models": { ... }, "strategy": "...",
+              "window": { "bounds": ..., "provenance": "engineered|sourced" },
+              "verification": { "command": "...", "tool_revision": "...",
+                                "sampling_scheme": "...", "tolerance": "...",
+                                "summary_sha256": "..." },
+              "artifacts": [ { "path": "results/...", "sha256": "..." } ] } ],
   "glue_ledger": [ ... ],
   "tools": [ { "path": "...", "revision": "..." } ],
   "teax": { "revision": "...", "era_pin": "..." },
-  "indicators": { "path": "indicators.json", "sha256": "...", "output_schema_version": "..." },
-  "artifacts": [ { "path": "results/...", "sha256": "..." } ]
+  "indicators": { "path": "indicators.json", "sha256": "...", "output_schema_version": "..." }
 }
 ```
 
-Three rules govern it:
+A single-arm study is the one-element case of the same shape, not a different shape.
 
-- **Every fingerprint the manifest names appears under `fingerprints`, by the manifest's own name for it.** Not a closed triple. Item 3's indicator-input fingerprint arrives this way with no template change.
-- **`effective_executable_fingerprint` carries its three inputs** (sealed fingerprint, digest of each allowed-modified file, adapter source digest) **or the explicit nil**: no adapter exists and the sealed fingerprint is the identity.
-- **`glue_ledger` is a list, and an empty study states `[]` with a `glue_ledger_none: true` sibling** — the explicit-nil rule again, because an empty list and a forgotten field look identical in JSON.
+Five rules govern it:
 
-Everything argued rather than resolved stays in `record.md`: the window's rationale in §11, the route's rationale in §10, the correlation's meaning in §12, the glue's disclosure in §17.
+- **Fingerprint completeness is checkable from inside the record (MF1).** `manifest.content_used.fingerprint_names` copies in the list of fingerprint names the manifest declared, so the rule becomes internal: *every name listed there appears as a key under `fingerprints`.* The administrator can now audit completeness without opening the live manifest — which it may not do. The spec's floor holds independently: the sealed package fingerprint, the model-contract/semantic fingerprint, and the indicator-input fingerprint are present in every snapshot (`spec.md:88`; `run-study-indicators/spec.md:40,42`). The set stays open above that floor.
+- **`arms[].effective_executable_fingerprint` carries its three inputs** (sealed fingerprint, digest of each allowed-modified file, adapter source digest) **or the explicit nil**: no adapter exists and the sealed fingerprint is the identity.
+- **Stores are named once and referenced by id (SF5).** `stores[]` holds one entry per complete teax compatibility tuple; each arm names its `store_id`. Two arms sharing a store — the concept-design's same-definition case (`run-study-skill-design.md:129`) — reference the same entry, so the tuple is stated once and cannot drift between arms.
+- **`arms[].verification` is the values half of spec item 10 (MF5)**: the command, the tool revision, the sampling scheme, the tolerance, and the digest of `results/verification_summary.json`. The outcome and what it means stay in `record.md` §13.
+- **`glue_ledger` is a list, and a study with no glue states `[]` with a `glue_ledger_none: true` sibling** — the explicit-nil rule again, because an empty list and a forgotten field look identical in JSON.
+
+Everything argued rather than resolved stays in `record.md`: the window's rationale in §11, the route's rationale and the glue disclosure in §10, the correlation's meaning in §12, the verification outcome in §13.
 
 ---
 
 ## Required Invariants
 
-- **Values/arguments split.** No required fact appears in both `snapshot.json` and `record.md`. `record.md` § Snapshot contains a filename, a digest, and a schema version — no snapshot content.
+- **Values/arguments split.** `record.md` never restates content from any committed data file in the record directory — `snapshot.json`, `indicators.json`, or anything under `results/` (SF3). `record.md` § Snapshot contains a filename, a digest, and a schema version, no snapshot content. **One deliberate exception**, stated because the administrator must read `indicators.json` against a schema documented outside the record (`run-study-indicators/spec.md:33`): §8 carries the human-readable per-axis indicator statements the administrator needs, and `indicators.json` is the machine copy of the same facts.
 - **One digest direction.** `record.md` references `snapshot.json` by digest; `snapshot.json` never references `record.md`.
+- **Fingerprint completeness is internal.** Every name under `manifest.content_used.fingerprint_names` appears as a key under `fingerprints`, and the spec's floor (sealed, semantic, indicator-input) is present regardless.
 - **Explicit nil.** Every conditional obligation is discharged by content or by a stated nil naming the condition. Silence discharges nothing.
-- **Fixed headings.** A compliant `record.md` carries all seventeen section headings verbatim from the template, in order.
+- **Arm scoping.** Any snapshot field that can differ between arms is under `arms[]`; a store's compatibility tuple is stated once in `stores[]` and referenced by id.
+- **Fixed headings.** A compliant `record.md` carries all seventeen section headings verbatim from the template, in order; addendum headings may follow the seventeenth (SF4).
 - **No unreplaced tokens.** A committed record contains no `<...>` placeholder from the template.
 - **Zero package names.** `SKILL.md`, `runbook.md`, and `record-template.md` contain no stellarator name, no package key prefix, and no oracle name. Grep-checkable.
 - **No judgment in obligations.** No sentence in the three documents states a preference among axes, framings, routes, or results. "Argue and record the framing" is in bounds; "prefer search framing" is not.
 - **Every runbook step names its record deposit.** No step exists whose output lands nowhere.
-- **Role separation.** The executor never writes `synthesis.md`; the administrator writes nothing else and reads nothing outside the record directory.
+- **Role separation.** The executor never writes `synthesis.md`, and is the sole writer of `DISCOVERY_LOG.md`. The administrator writes only `synthesis.md` and reads nothing outside the record directory — including the discovery log, which it neither reads nor appends to.
 - **Append-only.** `record.md` corrections are addenda; `snapshot.json`, `indicators.json`, and `results/` are never edited after commit.
 - **Tracking.** `.gitignore` gains exactly one negation line; no other skill's tracking status changes.
 
@@ -276,7 +318,7 @@ Everything argued rather than resolved stays in `record.md`: the window's ration
 
 ## Potential Risks
 
-- **No mechanical enforcement of the record contract.** Every invariant above is checkable, and nothing checks them. A drifting record is caught only by the next administrator. *Mitigation for now:* the fresh-administrator check is the contract's own acceptance step, and its "what the record does not support" output routes to the discovery log as a process finding. *Named for the epic:* a `record_lint.py` is the obvious home if drift shows up; no item owns it and this design does not create one on speculation.
+- **No mechanical enforcement of the record contract.** Every invariant above is checkable, and nothing checks them. A drifting record is caught only by the next administrator. *Mitigation for now:* the fresh-administrator check is the contract's own acceptance step, and its "what the record does not support" output reaches the discovery log through whoever acts on the synthesis (MF6). *Named for the epic:* a `record_lint.py` is the obvious home if drift shows up; no item owns it and this design does not create one on speculation.
 - **Skeleton fatigue.** Seventeen sections plus an explicit-nil line on the conditional ones can read as ceremony, and a fatigued executor writes "n/a" everywhere. *Mitigation:* `/show-me` weight — sections are short and adaptive, presence is what is mandatory; and a nil must *name its condition*, which makes a lazy nil visibly inconsistent with §5's framing statement.
 - **The values/arguments split has a genuine seam at the window** (bounds are a value, "how it was chosen" is an argument). B2 says the split is clean; this is the case most likely to falsify it. *Mitigation:* the split is stated once, in the template header, with the window named as the worked example.
 - **Item 4's annex may want a different path.** This design pins `exploration/<pkg>/studies/ANNEX.md` so the runbook link is real. If Item 4 has cause to move it, that is a link update in one file, not a redesign — but it is a cross-item dependency the plan should flag.
@@ -299,7 +341,8 @@ Neither PM system gains state from this. Records live beside the package and out
 - **Grep gates.** Zero stellarator names, key prefixes, or oracle names across the three documents. Zero `modeling_project/STUDY_POLICY.md` references. Zero preference sentences among axes, framings, or routes (read, not grepped — the reviewer's job).
 - **`.gitignore` behavior.** `git check-ignore -v` on a file under `.claude/skills/run-study/` returns nothing; the same command on a file under an untracked skill still returns line 21.
 - **Deposit completeness.** Every runbook step's `**Deposits:**` line names a section that exists in the template; every template section is named by at least one runbook step or is header/nil material. A two-way check, run by reading both files side by side.
-- **Spec coverage.** Each of the spec's fourteen mandatory content items maps to exactly one template section (the table above is that map, and it is the artifact to re-check after the template is written).
+- **Spec coverage.** Each of the spec's fourteen mandatory content items maps to exactly one home — a template section, a snapshot block, or a stated split across the two (items 9 and 10 are the split cases). The table above is that map, and it is the artifact to re-check after the template is written.
+- **Snapshot self-audit.** On a filled snapshot: every name under `manifest.content_used.fingerprint_names` is a key under `fingerprints`; the three floor fingerprints are present; every `arms[].store_id` resolves to a `stores[]` entry; every arm has its own window, strategy, effective fingerprint, verification block, and artifact list. Run against the two-arm case, not just the one-arm case.
 - **Skeleton dry run.** Fill the template against the proof-of-life's known facts and see which sections have no source. That list is the honest gap between the pre-capability record and the contract, and it is the input to Item 5's exercise — not a reason to soften the contract.
 - **Fresh-administrator check** is the real acceptance test and cannot run here: it needs a compliant record, which arrives with the first consumer study. Recorded as an unowned proof, consistent with `run-study-skill-design.md:210`.
 
@@ -307,21 +350,24 @@ Neither PM system gains state from this. Records live beside the package and out
 
 ## Next-Stage Handoff
 
-**Fixed for the plan:**
-- Three files under `.claude/skills/run-study/`; one `.gitignore` line; record directory layout as drawn.
-- The values/arguments split (D2) and the explicit-nil rule (D5) — every other convention follows from these two.
-- Seventeen record sections in the stated order, with the spec mapping.
-- Study id `<YYYYMMDD>-<goal-slug>`; arms as `arm-<slug>` inside one record directory.
+**Fixed for the plan** (as corrected by design review MF1–MF7, SF1–SF7):
+- Three files under `.claude/skills/run-study/`; one `.gitignore` line; record directory layout as drawn, with `verification_summary.json` under `results/`.
+- The values/arguments split (D2) and the explicit-nil rule (D5) — every other convention follows from these two. The split governs `record.md` against *every* committed data file, with §8's indicator restatement as the one stated exception.
+- Seventeen record sections in the stated order. Two spec items are split across homes and the plan must build both halves: item 9 (tuples in snapshot `stores[]`, correlation argument in §12) and item 10 (verification values in snapshot `arms[].verification`, outcome and argument in §13). Glue is disclosed in §10, never §17.
+- **The snapshot is arm-scoped.** Any field that can differ between arms lives under `arms[]`; stores are named once in `stores[]` and referenced by id. A single-arm study is the one-element case. This is structural and settled here — not a field-naming detail for the plan.
+- **Fingerprint completeness is internal**: `manifest.content_used.fingerprint_names` is copied in, the rule checks against it, and the spec's floor (sealed, semantic, indicator-input) holds regardless. The `indicators` block records Item 3's output schema version.
+- Fourteen runbook execute steps as listed, including the framing step's §14 critique deposit and the post-run framing-judgment step feeding §5's second half.
+- Study id `<YYYYMMDD>-<goal-slug>`, first same-day study unsuffixed; arms as `arm-<slug>` inside one record directory.
 - Skill owns record-path naming (D6); runbook step 1 references it.
 - Annex linked per step at `exploration/<pkg>/studies/ANNEX.md`; Item 4 authors the content.
-- Snapshot's fingerprint set is open — "every fingerprint the manifest declares" — and the `indicators` block records Item 3's output schema version.
+- The administrator writes only `synthesis.md`. The executor is the sole writer of `DISCOVERY_LOG.md`.
 
 **Open for the plan:**
 - The exact wording of every step, section, and placeholder token. This design fixes structure only.
 - Whether the runbook's administer sequence is a second ordered list in `runbook.md` or its own file. Start with one file; split only if the execute sequence makes it hard to read.
-- The `snapshot.json` field list written out in full, against Item 3's manifest schema once that design lands.
+- The `snapshot.json` field *names* written out in full, against Item 3's manifest schema once that design lands. The scoping is fixed; only naming is open.
 
-**De-risk first:** the skeleton dry run against the proof-of-life. It is cheap, it exercises B1 and B2 on real facts, and a section that cannot be filled from the best study this project has run is a section worth re-examining before the template is finished.
+**De-risk first:** the skeleton dry run against the proof-of-life. It is cheap, it exercises B1 and B2 on real facts, and a section that cannot be filled from the best study this project has run is a section worth re-examining before the template is finished. Run the snapshot self-audit against a two-arm case in the same pass — MF2 was found precisely because the drawn shape was only ever checked against one arm.
 
 ---
 

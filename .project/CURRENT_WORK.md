@@ -6,6 +6,12 @@
 
 ## Active Work
 
+### run-study Item 3 — Indicator Tool and Package Manifest (design accepted, review folded)
+
+`.project/active/run-study-indicators/` — epic RUN-STUDY, Item 3. Builds `scripts/study/indicators.py` (package-agnostic) plus `exploration/stellarator_e2e/studies/manifest.json` (data-only package catalog) on the Item 1 spike's confirmed trace. `spec.md` drafted 2026-08-19; product-lens BLOCKED then CLEAR after two fixes (per-key `fan_out | tie` provenance; computed-quantity keys as their own mechanical outcome). Next: `/_my_spec_review`, then `/_my_design`.
+
+**One finding to carry forward**: the two artifacts the trace reads — `pipelines/mfe_stellarator.yaml` and `inputs/system_design.json` — are exactly the two files the era adapter may modify, and both differ on disk from their sealed `artifact_hashes`. So neither the sealed `executable_fingerprint` nor the model contract's `semantic_fingerprint` can serve as the indicator gate; the manifest pins a tool-computed indicator-input fingerprint instead. Item 4's preflight "manifest-fingerprint match" gate inherits the same problem and needs its own answer.
+
 ### run-study capability — epic READY; next: Item 1 reachability spike
 
 **What exists**: `.project/concepts/run-study-skill-design.md` (Accepted) — the four-home design for AI-run studies: skill (`.claude/skills/run-study/`, execute + administer modes) + runbook + policy rulebook + tools (`scripts/study/`: `indicators.py`, `preflight.py`, `verify.py`). Execution stays on stock teax via two named routes (CLI grids / study-local direct-API `PreparedListStrategy` for coordinated blocks). Axis groups are **author-declared qualified entry keys** (suffix scan = sibling warnings only — suffixes are not identity: 18 keys end `__n_mod`). Indicators report conservative reachability (`constraints_reachable`, `no_constraint_response` is the sound negative; "unresisted" is the agent's judgment, user rules before points run). Package facts split: data-only `manifest.json` (ties, objectives, baseline, oracle command) + temporary `era_adapter.py` (GlueAwareLoader, glue, self-checks) carrying an **effective executable fingerprint** (sealed + modified-file digests + adapter source) so glue drift = new teax lineage; adapter deleted whole when package fixes land ([OWNER] 2026-08-18: fixes expected soon). Records at `exploration/<pkg>/studies/<id>/` are immutable snapshots (synthesis a separate file); one store per complete teax compatibility tuple; A/B correlation stated in the record. Discovery log per package.
@@ -16,6 +22,12 @@
 
 **Next**: Item 1, Indicator Reachability Spike. It proves the Appendix-A known answers on the real YAML before production implementation. Open for owner at Item 6 Align: policy ratification + `modeling_project/STUDY_POLICY.md` home ([AGENT], overridable). Gitignore gains `!.claude/skills/run-study/` in Item 2.
 
+
+### run-study Item 2 — Skill, Runbook, and Record Contract — spec drafted
+
+**Location**: `.project/active/run-study-contract/` (epic RUN-STUDY, Item 2). `spec.md` drafted 2026-08-19: the tracked `run-study` skill (execute/administer modes), the universal runbook with the package annex linked not inlined, and the immutable record contract. Mandatory in every record: LCOE objective and result; every executing constraint's qualified identity and `satisfied | violated | indeterminate` status; preflight gate outcomes; intake verbatim; axis groups with per-key provenance; indicators plus the user's ruling **and** a model-development finding for every `no_constraint_response` axis; framing; execution route; compatibility tuples; verification; named review outcomes; findings; a snapshot of resolved package facts (never cited from mutable files); and a missing-evidence statement. Synthesis is a separate `synthesis.md`; executed evidence is immutable. A routing table sends each proof-of-life lesson to exactly one home (tool / runbook / policy / skill) — policy-bound lessons are recorded only; Item 6 makes those edits. Product-lens: BLOCKED on two owner-grade findings (preflight not mandatory in the record; no-resistance axis owed only a ruling), both fixed in the spec — gate now CLEAR (`product-lens.md`).
+
+**Next**: `/_my_spec_review` in a fresh session, then `/_my_design`.
 
 ### Stellarator MBSE Demo — PROOF OF LIFE: design search runs end-to-end (2026-08-16, `b8c7e6db`)
 
