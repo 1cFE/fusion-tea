@@ -1,6 +1,6 @@
 # Implementation Plan: Indicator Tool and Package Manifest
 
-**Status:** In Progress
+**Status:** Complete
 **Created:** 2026-08-19
 **Last Updated:** 2026-08-19
 **Branch:** `feat/stellarator-mbse-demo`
@@ -466,23 +466,23 @@ def test_tool_modules_are_generic(needle):
 
 **See `design.md` for:** all twelve invariants (`design.md#required-invariants`), D4 determinism, M4 path normalization, M5 tool-source digest, and `design.md#implementation-notes` for the `probe_lineno.py` disposition.
 
-- [ ] `tests/study/test_output_contract.py`: extend with byte-determinism across working directories, JSON Schema validation of real output, `not_derivable` byte-equality, constraint completeness on **both** halves (S4), `tool.source_digest` recipe id + recomputation (M5)
-- [ ] `tests/study/test_generic.py` (NEW): grep-clean for the package name, the key prefix, and `era_adapter` in both tool modules
-- [ ] `scripts/study/indicators.py` / `manifest.py`: fix anything the above surfaces (sort keys, path normalization, removed timestamps)
-- [ ] Sweep all twelve invariants against the test suite; note in Implementation Notes which test asserts each
-- [ ] `.project/active/run-study-indicators/probe_lineno.py`: leave in the work-item folder as the throwaway it is, or delete — it never moves to `scripts/`
+- [x] `tests/study/test_output_contract.py`: extend with byte-determinism across working directories, JSON Schema validation of real output, `not_derivable` byte-equality, constraint completeness on **both** halves (S4), `tool.source_digest` recipe id + recomputation (M5)
+- [x] `tests/study/test_generic.py` (NEW): grep-clean for the package name, the key prefix, and `era_adapter` in both tool modules
+- [x] `scripts/study/indicators.py` / `manifest.py`: fix anything the above surfaces (sort keys, path normalization, removed timestamps)
+- [x] Sweep all twelve invariants against the test suite; note in Implementation Notes which test asserts each
+- [x] `.project/active/run-study-indicators/probe_lineno.py`: leave in the work-item folder as the throwaway it is, or delete — it never moves to `scripts/`
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study` → green, full suite
-- [ ] `uv run ruff check scripts/study tests/study` → clean
-- [ ] All four standing checks green: pytest, grep-clean, byte-determinism, schema validation of real output and real manifest
+- [x] `uv run python -m pytest tests/study` → green, full suite
+- [x] `uv run ruff check scripts/study tests/study` → clean
+- [x] All four standing checks green: pytest, grep-clean, byte-determinism, schema validation of real output and real manifest
 
 **Manual:**
-- [ ] Run the tool from two different directories and `diff` the two outputs → no differences
-- [ ] Read the committed `indicators.v1.schema.json` and confirm the two load-bearing `description` lines are there: `recorded_executable_fingerprint` is read live from `contracts/package_contract.json` and is **outside** the digested set (N1); `axis_declaration.subset` tells whether `groups` is the whole declaration (S1)
-- [ ] Confirm the twelve-invariant sweep leaves none unasserted
+- [x] Run the tool from two different directories and `diff` the two outputs → no differences
+- [x] Read the committed `indicators.v1.schema.json` and confirm the two load-bearing `description` lines are there: `recorded_executable_fingerprint` is read live from `contracts/package_contract.json` and is **outside** the digested set (N1); `axis_declaration.subset` tells whether `groups` is the whole declaration (S1)
+- [x] Confirm the twelve-invariant sweep leaves none unasserted
 
 **What We Know Works After This Phase:** the output is a citable, versioned, deterministic seam that Items 2 and 4 can build on.
 
@@ -509,7 +509,6 @@ def test_tool_modules_are_generic(needle):
 
 ## Implementation Notes
 
-[TO BE FILLED DURING IMPLEMENTATION]
 
 ### Phase 1 Completion
 **Completed:** 2026-08-19
@@ -608,8 +607,42 @@ def test_tool_modules_are_generic(needle):
 **Manual verification:** `--group R` emits `subset: true` with `groups` narrowed to `["R"]` while `groups_declared` still lists all six — a subset cannot be snapshotted into a record and pass for complete. The `not_derivable` block carries all four disclosures, including the positive reading ("a possible path exists in the module graph. It never means the axis responds").
 
 ### Phase 7 Completion
+**Completed:** 2026-08-19
+**Actual Changes:**
+- `tests/study/test_output_contract.py`: 12 more tests — byte determinism across working directories with no absolute path anywhere in the document (Invariant 2 / M4), two runs from the same directory byte-identical, real output against `indicators.v1.schema.json`, the declaration against its schema, `not_derivable` byte-equal at document and group level (Invariant 7), constraint completeness on both halves (Invariant 5 / S4), `bounds` authoritative and axis-varying (S2), every list sorted by its stated key (D4), the tool source digest emitted as `{recipe, digest}` and matching a recomputation (M5), all three package fingerprints, and no timestamp anywhere.
+- `tests/study/test_generic.py` (NEW): 15 tests — grep-clean for the package name, the key prefix, and `era_adapter` in both tool modules; no pipeline filename, objective channel, oracle name, or `exploration` path in either; the manifest holds no executable content; `scripts/study/` holds exactly the two modules and no `__init__.py`; the three schema files are the committed set; the committed package is byte-untouched after the whole suite (a `git status --porcelain` assertion); and the tool resolves its own repo root from `__file__`.
+- `.project/active/run-study-indicators/probe_lineno.py`: left in the work-item folder as the throwaway it is. It never moves to `scripts/`.
+
+**Issues:**
+- None.
+
+**Deviations:**
+- `.project/CURRENT_WORK.md` was not touched. It carries an uncommitted modification from Item 2's parallel implementation, and the brief scoped this item away from files it does not own.
+
+**Invariant sweep — which test asserts each:**
+
+| # | Invariant | Asserted by |
+|---|---|---|
+| 1 | No partial output | `test_mechanical_failures.py::test_fails_closed` (9 cases), `test_multipipeline.py::test_mechanical_failure`, `test_read_set_coverage.py` (both failure cases) — each asserts non-zero exit **and** empty stdout **and** no output file |
+| 2 | Determinism, including across working directories | `test_output_contract.py::test_byte_determinism_across_working_directories`, `::test_two_runs_from_the_same_directory_are_byte_identical` |
+| 3 | Declared-only membership | `test_warnings.py::test_advisory_never_changes_the_trace`, `::test_suffix_siblings_never_join_the_traced_set` |
+| 4 | `no_constraint_response == (constraints_reachable == [])`, emitted always | `test_valid_empty.py::test_no_constraint_response_is_emitted_even_when_false` |
+| 5 | Constraint completeness, both halves | `test_output_contract.py::test_constraint_completeness` |
+| 6 | Grep-clean | `test_generic.py::test_tool_modules_are_generic` (6 cases) |
+| 7 | Disclosure parity | `test_output_contract.py::test_not_derivable_is_byte_equal` |
+| 8 | Provenance round-trip | `test_provenance.py::test_provenance_round_trips_from_the_declaration` |
+| 9 | Interpretive facts never gate | `test_valid_empty.py::test_a_group_with_no_constraint_reach_exits_zero`, `test_warnings.py::test_provenance_drift_warns_on_both_recorded_fingerprints` |
+| 10 | Read-set coverage | `test_read_set_coverage.py` (all six) |
+| 11 | The record-feeding run is a full-document run | `test_subset_flag.py::test_a_full_run_covers_the_whole_declaration`, `::test_a_group_run_is_visibly_narrower` |
+| 12 | `sibling_candidates` is a named group field | `test_warnings.py::test_suffix_siblings_land_in_their_own_named_field` |
+
+None left unasserted.
+
+**Manual verification:** ran the tool from the repo root and from `/tmp` and diffed the two documents — identical, and `grep -c '"/'` returns 0, so no absolute path appears. Read `indicators.v1.schema.json` and confirmed both load-bearing `description` lines are present: `recorded_executable_fingerprint` is read live from `contracts/package_contract.json` and is outside the digested set (N1), and `axis_declaration.subset` tells whether `groups` is the whole declaration (S1). `git status --porcelain exploration/stellarator_e2e/pkg` is empty after the full suite.
+
+**Final state:** `uv run python -m pytest tests/study` → 134 passed. `uv run ruff check scripts/study tests/study` → clean.
 
 ---
 
-**Status**: Draft → In Progress → Complete
-**Next Step:** `/_my_implement`
+**Status**: Complete (all seven phases, 2026-08-19)
+**Next Step:** `/_my_audit`

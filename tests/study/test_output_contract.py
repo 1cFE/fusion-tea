@@ -8,6 +8,7 @@ completeness.
 
 import hashlib
 import json
+import re
 import subprocess
 import sys
 
@@ -15,6 +16,7 @@ import jsonschema
 import pytest
 
 from scripts.study import manifest
+from tests.study.conftest import DATA_DIR, REAL_MANIFEST, REAL_PACKAGE, run_tool, run_tool_raw
 
 
 def test_fingerprint_recipe_is_stable_and_path_sorted(real_package_path):
@@ -186,3 +188,127 @@ def test_schemas_are_closed(stem, load_schema):
                 walk(value)
 
     walk(schema)
+
+
+# --------------------------------------------- the output as a fixed seam (Phase 7)
+
+
+def _report(cwd=None):
+    return run_tool(REAL_PACKAGE, REAL_MANIFEST, DATA_DIR / "axes.known_answers.json", cwd=cwd)
+
+
+def _report_text(cwd=None):
+    rc, out, err = run_tool_raw(
+        REAL_PACKAGE, REAL_MANIFEST, DATA_DIR / "axes.known_answers.json", cwd=cwd
+    )
+    assert rc == 0, err
+    return out
+
+
+def test_byte_determinism_across_working_directories(repo_root, tmp_path):
+    """Invariant 2 / M4. Item 2 snapshots this document's digest into every record,
+    so identical facts must produce identical bytes wherever the agent ran."""
+    a = _report_text(cwd=repo_root)
+    b = _report_text(cwd=tmp_path)
+    assert a == b
+    assert "/home/" not in a
+    assert not re.search(r'"/', a)  # no absolute path anywhere in the document
+
+
+def test_two_runs_from_the_same_directory_are_byte_identical(repo_root):
+    assert _report_text(cwd=repo_root) == _report_text(cwd=repo_root)
+
+
+def test_the_real_output_validates_against_its_schema(load_schema):
+    jsonschema.validate(_report(), load_schema("indicators.v1"))
+
+
+def test_the_axis_declaration_validates_against_its_schema(load_schema):
+    declaration = json.loads((DATA_DIR / "axes.known_answers.json").read_text())
+    jsonschema.validate(declaration, load_schema("axis_declaration.v1"))
+
+
+def test_not_derivable_is_byte_equal(load_schema):
+    """Invariant 7 / D5: a group excerpted into a per-axis framing section still
+    carries the disclosure."""
+    doc = _report()
+    document_block = json.dumps(doc["not_derivable"], sort_keys=True)
+    assert len(doc["not_derivable"]["statements"]) == 3
+    for group in doc["groups"]:
+        assert json.dumps(group["not_derivable"], sort_keys=True) == document_block
+
+
+def test_constraint_completeness(real_package_path):
+    """Invariant 5 / S4: both halves. Every catalog constraint appears exactly once
+    in bounds and exactly once across reachable + unreachable."""
+    contract = json.loads(
+        (real_package_path / "contracts" / "model_contract.json").read_text()
+    )
+    catalog_ids = sorted(
+        e["constraint_id"] for e in contract["constraint_catalog"]["concrete_entries"]
+    )
+    for group in _report()["groups"]:
+        assert sorted(c["constraint_id"] for c in group["bounds"]) == catalog_ids
+        partition = group["constraints_reachable"] + group["constraints_unreachable"]
+        assert sorted(c["constraint_id"] for c in partition) == catalog_ids
+
+
+def test_bounds_is_authoritative_and_axis_varying():
+    """S2: the two partition lists are bounds filtered on 'any operand reached'."""
+    doc = _report()
+    for group in doc["groups"]:
+        reachable = [c for c in group["bounds"] if any(o["reached"] for o in c["operands"])]
+        assert reachable == group["constraints_reachable"]
+        unreachable = [
+            c for c in group["bounds"] if not any(o["reached"] for o in c["operands"])
+        ]
+        assert unreachable == group["constraints_unreachable"]
+    by_axis = {g["axis"]: g["bounds"] for g in doc["groups"]}
+    assert by_axis["R"] != by_axis["beta"]  # bounds vary per axis, not a constant block
+
+
+def test_lists_are_sorted_by_a_stated_key():
+    """D4: deterministic order, no set-iteration leaking through."""
+    doc = _report()
+    assert [g["axis"] for g in doc["groups"]] == sorted(g["axis"] for g in doc["groups"])
+    assert [o["name"] for o in doc["objective_catalog"]] == sorted(
+        o["name"] for o in doc["objective_catalog"]
+    )
+    for group in doc["groups"]:
+        for key in ("bounds", "constraints_reachable", "constraints_unreachable"):
+            ids = [c["constraint_id"] for c in group[key]]
+            assert ids == sorted(ids)
+        assert [k["key"] for k in group["declared_keys"]] == sorted(
+            k["key"] for k in group["declared_keys"]
+        )
+        for key in ("objectives_reachable", "objectives_unreachable", "sibling_candidates"):
+            assert group[key] == sorted(group[key])
+
+
+def test_the_report_carries_its_tool_source_digest():
+    """M5: emitted as {recipe, digest}, never a bare hash."""
+    tool = _report()["tool"]
+    assert tool["path"] == "scripts/study/indicators.py"
+    assert tool["source_digest"] == manifest.tool_source_digest()
+    assert set(tool["source_digest"]) == {"recipe", "digest"}
+
+
+def test_the_report_carries_the_three_package_fingerprints(real_package_path):
+    package = _report()["package"]
+    assert package["semantic_fingerprint"] == manifest.read_semantic_fingerprint(
+        real_package_path
+    )
+    assert package["recorded_executable_fingerprint"] == manifest.read_executable_fingerprint(
+        real_package_path
+    )
+    assert package["indicator_input_fingerprint"] == manifest.indicator_input_fingerprint(
+        real_package_path
+    )
+
+
+def test_the_report_carries_no_timestamp():
+    """A generation time would break the digest stability the record depends on;
+    the record supplies the time."""
+    text = _report_text()
+    assert "timestamp" not in text
+    assert "generated_at" not in text

@@ -1,6 +1,6 @@
 # Spec: Indicator Tool and Package Manifest
 
-**Status:** Accepted (orchestrated review, 2026-08-19)
+**Status:** Implementation Complete (2026-08-19) — accepted at orchestrated review, built in `plan.md` Phases 1–7
 **Owner:** Reid W
 **Created:** 2026-08-19
 **Complexity:** MEDIUM
