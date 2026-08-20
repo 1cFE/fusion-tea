@@ -385,20 +385,20 @@ def test_each_negative_fails_closed_and_still_writes_a_complete_document(...):
 
 **See `design.md` for:** the six-check table and its record §9 row mapping (`design.md#scripts-study-preflight-py-six-named-checks`), D1, D9, S2, S5, Invariants 2, 6, 7.
 
-- [ ] `tests/study/test_preflight_negatives.py`, `tests/study/test_preflight_gates.py` (NEW — first)
-- [ ] `scripts/study/schemas/preflight_results.v1.schema.json` (NEW, additive)
-- [ ] `scripts/study/preflight.py` (NEW): subcommands `gates` and `clean`; `clean` is what the post-run and post-verify sites use (`run_design_search.py:358,414,443`)
-- [ ] `tests/study/test_generic.py`: add `preflight.py` to `TOOL_MODULES`
-- [ ] Error wording — the design left it open; each message must **locate the fault**: name the key, the file, the drifting fingerprint, or the recomputed-vs-declared pair.
+- [x] `tests/study/test_preflight_negatives.py`, `tests/study/test_preflight_gates.py` (NEW — first)
+- [x] `scripts/study/schemas/preflight_results.v1.schema.json` (NEW, additive)
+- [x] `scripts/study/preflight.py` (NEW): subcommands `gates` and `clean`; `clean` is what the post-run and post-verify sites use (`run_design_search.py:358,414,443`)
+- [x] `tests/study/test_generic.py`: add `preflight.py` to `TOOL_MODULES`
+- [x] Error wording — the design left it open; each message must **locate the fault**: name the key, the file, the drifting fingerprint, or the recomputed-vs-declared pair.
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study -q` → green
-- [ ] every negative exits non-zero **and** leaves a complete results document
+- [x] `uv run python -m pytest tests/study -q` → green
+- [x] every negative exits non-zero **and** leaves a complete results document
 
 **Manual:**
-- [ ] `uv run python scripts/study/preflight.py gates …` against the real package → all six pass, exit 0, and the six results map onto record §9's five rows (the two fingerprint checks share a row).
+- [x] `uv run python scripts/study/preflight.py gates …` against the real package → all six pass, exit 0, and the six results map onto record §9's five rows (the two fingerprint checks share a row).
 
 **What we know works after this phase:** the gates are generic, honest by recomputation, and auditable from their own output.
 
@@ -634,6 +634,35 @@ That the six annex sections the delivered runbook links are all fillable from wh
 **Deviations:** none.
 
 ### Phase 5 Completion
+**Completed:** 2026-08-20.
+
+**Actual changes:**
+- `scripts/study/preflight.py` (NEW): `gates` and `clean`, six checks, an always-complete results document, non-zero exit on any mechanical failure. It imports no teax, no adapter, and names no package — asserted by grep and by `test_preflight_imports_no_teax_and_no_adapter`.
+- `scripts/study/schemas/preflight_results.v1.schema.json` (NEW, additive).
+- `tests/study/test_preflight_gates.py` (9) and `tests/study/test_preflight_negatives.py` (10).
+- `tests/study/test_generic.py`: `preflight.py` added to `TOOL_MODULES`.
+
+**Real-package run — all six pass, exit 0:**
+```
+pass  declared_keys: 16 declared keys across 6 groups, all package inputs
+pass  sibling_scan: pass
+pass  identity: kind effective, digest cf877bf9… recomputed from 2 allowed-modified
+      file(s) and 3 declared source(s); every other sealed artifact matches
+pass  manifest_currency: both recorded package fingerprints match the package on disk
+pass  baseline_headline: …lcoe_calc__lcoe reproduces at relative deviation 0.000e+00;
+      5/5 pinned verdicts match
+pass  package_clean: package tree is byte-untouched (git clean)
+```
+
+**Error wording (the design left it open).** Each message locates its fault: `declared_keys` names the key and says *computed quantity* when the key is a produced channel; `identity` prints the declared and the recomputed digest side by side, or names the file that moved; `manifest_currency` names which fingerprint drifted and both values; `baseline_headline` names the channel, both values, and the relative deviation, or names the constraint whose verdict differs; `package_clean` reproduces git's own porcelain lines.
+
+**Issues:**
+- `run_clean` first hard-coded `outcome: "pass"`, so a dirty tree would have been reported and exited zero. Caught before commit; the outcome now derives from the gate.
+- Preflight needed the repo-root `sys.path` insert `indicators.py` already does when invoked as a script (N3: follow it exactly, do not invent a second answer).
+
+**Deviations:**
+- Four of the five plan-listed negatives are produced by mutating the *documents* preflight reads rather than the package, which keeps the committed package read-only and leaves the other gates carrying their real outcomes. The dirty-tree negative is aimed at the `clean` subcommand against a scratch tree inside the repository, because "a tree git cannot see" and "a tree git can see is dirty" are different failures and only the second is the gate under test. Three negatives beyond the plan's five were added: a baseline executed under another identity (Invariant 5), a wrong headline, and a differing verdict.
+
 ### Phase 6 Completion
 **New manifest digest:**
 ### Phase 7 Completion
