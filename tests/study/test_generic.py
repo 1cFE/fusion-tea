@@ -12,6 +12,7 @@ TOOL_MODULES = [
     "scripts/study/indicators.py",
     "scripts/study/manifest.py",
     "scripts/study/preflight.py",
+    "scripts/study/verify.py",
 ]
 PACKAGE_NAME = "stellarator_tea"
 KEY_PREFIX = "stellarator_09__stellaris__"

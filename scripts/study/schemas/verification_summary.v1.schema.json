@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "verification_summary.v1.schema.json",
+  "title": "Study verification summary",
+  "description": "What a sampled check of a study's own evidence against the package's independent oracle actually established. A superset of the proof-of-life's committed summary and of the record snapshot's arms[].verification block, so a record can be filled from this document rather than by hand from a terminal. Three claims are earned rather than asserted: stratification guarantees every observed verdict combination is sampled, the worst channel deviation carries a number, and verdicts_rederived is true only when every operand of every catalog constraint resolved through a binding the package published.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "tool", "command", "teax", "package", "identity", "manifest",
+    "oracle", "stores", "tolerance", "channels_checked", "verdicts_rederived",
+    "constraints_rederived", "verdict_mismatches", "not_independently_verified",
+    "worst_channel_rel_dev", "outcome"
+  ],
+  "properties": {
+    "schema_version": {"const": "study-verification-summary/v1"},
+    "tool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "source_digest"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "source_digest": {"$ref": "#/$defs/sourceDigest"}
+      }
+    },
+    "command": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "The invocation, repo-relative. No absolute paths, so two agents produce identical bytes for identical facts."
+    },
+    "teax": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["module_path", "revision"],
+      "properties": {
+        "module_path": {"type": "string", "minLength": 1},
+        "revision": {"type": "string", "minLength": 1}
+      },
+      "description": "Where the study layer came from. The tool imports it from the ambient environment and records the answer; the pin itself is the caller's and the package annex's, never the tool's."
+    },
+    "package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "package_name", "git_clean"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "package_name": {"type": "string", "minLength": 1},
+        "git_clean": {
+          "const": true,
+          "description": "Checked AFTER the verify run, not before: a mutation the run introduced is exactly what a pre-run check cannot see. A dirty tree exits non-zero, so this can only ever be true."
+        }
+      }
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "digest", "matches_preflight"],
+      "properties": {
+        "kind": {"enum": ["effective", "sealed"]},
+        "digest": {"$ref": "#/$defs/sha256"},
+        "matches_preflight": {
+          "const": true,
+          "description": "Invariant 5: the identity preflight gated, the identity the store bound, and the identity present after the run are one value. Every sampled case is checked against it; a case that ran under another identity is a mechanical failure."
+        }
+      }
+    },
+    "manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "schema_version", "digest"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "schema_version": {"type": "string", "minLength": 1},
+        "digest": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "oracle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "sys_path", "module", "callable", "operand_bindings_digest"],
+      "properties": {
+        "kind": {"type": "string", "minLength": 1},
+        "sys_path": {"type": "string", "minLength": 1},
+        "module": {"type": "string", "minLength": 1},
+        "callable": {"type": "string", "minLength": 1},
+        "operand_bindings_digest": {
+          "$ref": "#/$defs/sha256",
+          "description": "sha256 over json.dumps(bindings, sort_keys=True, separators=(',',':')). A record cites it so a later reader can tell whether the bindings a verdict was re-derived through are the ones on disk today."
+        }
+      }
+    },
+    "stores": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path", "study_id", "compatibility", "cases_total", "cases_completed",
+          "sampling", "worst_channel_rel_dev", "worst_at"
+        ],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "study_id": {"type": "string", "minLength": 1},
+          "compatibility": {"type": "object"},
+          "cases_total": {"type": "integer", "minimum": 0},
+          "cases_completed": {"type": "integer", "minimum": 1},
+          "sampling": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "scheme", "seed", "seed_source", "sample_size_requested",
+              "strata_observed", "sampled_rows", "sampled_case_ids"
+            ],
+            "properties": {
+              "scheme": {"const": "stratified-by-verdict-combination/v1"},
+              "seed": {"type": "string", "minLength": 1},
+              "seed_source": {
+                "enum": ["derived", "explicit"],
+                "description": "'derived' means seed = int(sha256(study_id + '\\n' + compatibility_digest + '\\n').hexdigest()[:16], 16). Recorded either way, so a reader holding the record can reproduce the draw."
+              },
+              "sample_size_requested": {"type": "integer", "minimum": 1},
+              "strata_observed": {"type": "integer", "minimum": 1},
+              "sampled_rows": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "May exceed sample_size_requested: stratification is a floor, never a cap. A plain random sample can miss a small stratum entirely, and that is the stratum worth looking at."
+              },
+              "sampled_case_ids": {"type": "array", "items": {"type": "string"}}
+            }
+          },
+          "worst_channel_rel_dev": {"type": "number", "minimum": 0},
+          "worst_at": {"type": ["object", "null"]}
+        }
+      }
+    },
+    "tolerance": {"type": "number", "exclusiveMinimum": 0},
+    "channels_checked": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["channel", "objective"],
+        "properties": {
+          "channel": {"type": "string", "minLength": 1},
+          "objective": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "verdicts_rederived": {
+      "const": true,
+      "description": "True only when every operand of every catalog constraint resolved through a published binding. Anything unresolved or ambiguous is a mechanical failure naming the constraint and the operand, so this field can never be emitted on weaker evidence."
+    },
+    "constraints_rederived": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Per constraint, how many feature_ref operands were resolved. This is what makes verdicts_rederived auditable rather than asserted.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["constraint_id", "source_local_identity", "operands_resolved"],
+        "properties": {
+          "constraint_id": {"type": "string", "minLength": 1},
+          "source_local_identity": {"type": "string", "minLength": 1},
+          "operands_resolved": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    "verdict_mismatches": {"type": "array", "maxItems": 0},
+    "not_independently_verified": {
+      "type": "array",
+      "description": "Inputs fed identically to the package and to the oracle. Oracle parity verifies the package's arithmetic GIVEN these values, and saying so is mandatory output rather than a comment in a script.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["rung", "keys", "note"],
+        "properties": {
+          "rung": {"type": "string", "minLength": 1},
+          "keys": {"type": "array", "items": {"type": "string"}},
+          "note": {"type": "string"}
+        }
+      }
+    },
+    "worst_channel_rel_dev": {"type": "number", "minimum": 0},
+    "outcome": {"const": "pass"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "sourceDigest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recipe", "digest", "files"],
+      "properties": {
+        "recipe": {"const": "tool-source-digest/v1"},
+        "digest": {"$ref": "#/$defs/sha256"},
+        "files": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "sha256"],
+            "properties": {
+              "path": {"type": "string", "minLength": 1},
+              "sha256": {"$ref": "#/$defs/sha256"}
+            }
+          }
+        }
+      }
+    }
+  }
+}

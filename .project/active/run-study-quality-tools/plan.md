@@ -465,21 +465,21 @@ def test_the_summary_is_a_superset_of_the_committed_field_set(...):
 
 **See `design.md` for:** D7, D8/N2 (the written-out seed derivation), D12, the four-step per-case procedure and the full summary field list (`design.md#scripts-study-verify-py-the-generic-sampler`), Invariant 5, B5.
 
-- [ ] `tests/study/test_verify.py` (NEW — first)
-- [ ] `scripts/study/schemas/verification_summary.v1.schema.json` (NEW, additive)
-- [ ] `scripts/study/verify.py` (NEW)
-- [ ] `tests/study/test_generic.py`: add `verify.py` to `TOOL_MODULES`
-- [ ] Settle the last open item: `operand_bindings_digest` canonicalization — `json.dumps(sort_keys=True, separators=(",",":"))` over the table, sha256 of the UTF-8 bytes. Recorded in the schema description so it is not re-invented.
+- [x] `tests/study/test_verify.py` (NEW — first)
+- [x] `scripts/study/schemas/verification_summary.v1.schema.json` (NEW, additive)
+- [x] `scripts/study/verify.py` (NEW)
+- [x] `tests/study/test_generic.py`: add `verify.py` to `TOOL_MODULES`
+- [x] Settle the last open item: `operand_bindings_digest` canonicalization — `json.dumps(sort_keys=True, separators=(",",":"))` over the table, sha256 of the UTF-8 bytes. Recorded in the schema description so it is not re-invented.
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study -q` → green
+- [x] `uv run python -m pytest tests/study -q` → green
 
 **Manual:**
-- [ ] Run `verify.py` against the real package and the committed proof-of-life stores; diff the summary **field by field** against `exploration/stellarator_e2e/study/verification_summary.json`. Every committed field survives by name or named generalization (`sampled_rows_per_study` → per-store `sampling.sampled_rows`, `glue_note` → `not_independently_verified`, etc.). Worst channel deviation should land near `5.67e-16`.
-- [ ] The glue disclosure is present: the CAS27 `special_materials` rung named as not independently verified.
-- [ ] Committed stores unmodified afterwards (`git status --porcelain` empty; stores opened read-only).
+- [x] Run `verify.py` against the real package and the committed proof-of-life stores; diff the summary **field by field** against `exploration/stellarator_e2e/study/verification_summary.json`. Every committed field survives by name or named generalization (`sampled_rows_per_study` → per-store `sampling.sampled_rows`, `glue_note` → `not_independently_verified`, etc.). Worst channel deviation should land near `5.67e-16`.
+- [x] The glue disclosure is present: the CAS27 `special_materials` rung named as not independently verified.
+- [x] Committed stores unmodified afterwards (`git status --porcelain` empty; stores opened read-only).
 
 **What we know works after this phase:** verification is generic, fails closed on anything unresolved, and emits everything the record needs.
 
@@ -674,6 +674,26 @@ pass  package_clean: package tree is byte-untouched (git clean)
 
 **Deviations:** none.
 ### Phase 7 Completion
+**Completed:** 2026-08-20.
+
+**Actual changes:**
+- `scripts/study/verify.py` (NEW): oracle resolution through the manifest's typed block, stratified store sampling with the derived seed, channel parity at rel < 1e-9, verdict re-derivation from `predicate_ir` through the published bindings, identity continuity per sampled case, the post-run cleanliness gate, and the summary document.
+- `scripts/study/schemas/verification_summary.v1.schema.json` (NEW, additive).
+- `tests/study/test_verify.py` (NEW, 18 tests). `verify.py` added to `TOOL_MODULES`.
+- `operand_bindings_digest` canonicalization settled: `json.dumps(table, sort_keys=True, separators=(",", ":"))`, sha256 of the UTF-8 bytes, recorded in the schema description so it is not re-invented.
+
+**Real run against the promoted route's store:** 12 sampled rows, 6 channels at rel < 1e-9, **worst 4.81e-16**, 5 verdicts re-derived, exit 0. The glue disclosure prints the CAS27 rung as not independently verified.
+
+**Field-by-field against the committed summary.** All nine of its fields survive: `channels_checked`, `tolerance`, `verdicts_rederived`, `worst_channel_rel_dev` by name; `package_git_clean` → `package.git_clean`; `glue_note` → `not_independently_verified`; `sampled_rows_per_study` → `stores[].sampling.sampled_rows`; `sampling` → `stores[].sampling.scheme`; `seed` → `stores[].sampling.seed`. Held by `test_the_summary_is_a_superset_of_the_committed_field_set`, which also fails if the committed file's field set ever moves.
+
+**Two findings worth surfacing.**
+
+1. **The committed pre-capability stores are refused, and that is the item's whole point made concrete.** Running `verify.py` against `study/_work/availability_sweep.db` exits 1: `case … ran under executable fingerprint ad912041… (the SEALED value), not the gated identity cf877bf9…`. The old loader handed teax a fingerprint it had not earned; the promoted route does not, so the two lineages are different and verify says so instead of mixing them. The plan's manual step said to diff against those stores; the honest diff is against a promoted-route store, and the refusal is recorded here rather than worked around.
+
+2. **A channel-coverage delta, by design, in both directions.** The proof-of-life compared five channels chosen by hand (`lcoe`, `p_fus`, `magnet_capital`, `total_capital`, `wall_load`). A generic tool can only compare what the manifest names plus what a binding resolves, so the promoted run compares six: the five objective-catalog channels (`lcoe`, `lcoe_1cfe`, `cas72`, `fuel`, `total_capital`) plus `wall_load`. **`p_fus` and `magnet_capital` are no longer compared** — they are in no objective catalog and no predicate binding. Recovering them is a manifest edit (adding objectives), which is Item 3's file and not this item's to make. Flagged rather than silently absorbed.
+
+**Deviations:** none beyond the two findings above.
+
 ### Phase 8 Completion
 **Era-dependent test count:**
 
