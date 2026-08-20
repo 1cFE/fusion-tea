@@ -2,7 +2,7 @@
 
 Prioritized list of epics and features.
 
-**Last Updated**: 2026-07-18
+**Last Updated**: 2026-08-19
 
 ---
 
@@ -24,12 +24,31 @@ Prioritized list of epics and features.
 | Pipeline Hardening (ad-hoc) | P0 | **Complete 2026-04-11** | 2026-04-05 | 6 items archived (pipeline-hardening, output-validation-retry, concept-landscape-context, orig-md-research, feedback-routing-fix, explorer-merge). Analysis pipeline now safe for batch runs. |
 | Ontology v3 Migration | P0 | In Progress | 2026-05-17 | 6 items, ~5.5–8d. Item 1 complete (PR #15 merged 2026-05-17). Next: Item 2 — branch off `main`, merge `fix/concept-renumbering-robustness`. File: `epic_ontology_v3_migration.md`. |
 | Concept-Analysis Pipeline Rework | P0 | Draft | 2026-05-30 | 11 items (~10–14d) + 1 aspirational Phase 3. Phase 0 throwaway probes (prototype + stability + critic acuity) before plumbing. Two-layer split, two-knob 1 GWe NOAK replication floor + aspirational native-scale supplement, override registry, standalone `model_critic`. File: `epic_concept_analysis_rework.md`. |
-| Stellarator MBSE Full Demo | P0 | Ready | 2026-07-18 | Tracking home for `.project/concepts/stellarator-mbse-demo.md` (the governing frame). 9 items (~10–14d + optional stretch): anchor acceptance spec → handshake account scopes → constraint execution → studies → visualization → owner-triggered ARIES-CS reveal/comparison → public write-up. Stages 1–2 done, Stage 3 partially (WI-019–025, errata-driven). Modeling items delegate to `work/` at pick-up. File: `epic_stellarator_mbse_demo.md`. |
+| Stellarator MBSE Full Demo | P0 | On Hold | 2026-07-18 | On hold by owner 2026-08-19. The Run-Study Capability epic owns the A/B proof; this epic consumes that evidence if resumed. File: `epic_stellarator_mbse_demo.md`. |
 | Explorer UX v3 — Provenance & Coherence | P1 | Draft | 2026-06-06 | Phase 1 (2 items, ~3–3.5d): slider/tornado/headline coherence (option c toggle) → override-inspection surface. J2/J3 "why is this number, can I trust it?" spine. Later phases (per-account decomposition, family/comparables, landing reframe, maturity panel) not yet decomposed. File: `epic_explorer_ux_v3.md`. Research: `.project/research/20260605-150329_concept-explorer-ux-user-journeys.md`. |
+| Run-Study Capability | P1 | Ready | 2026-08-19 | 6 items (~6–9d): reachability spike → skill/record and indicators in parallel → quality tools + legacy cold pickup → owned A/B proof and policy cutover. File: `epic_run_study_capability.md`. |
 
 ---
 
 ## P1 - High Priority
+
+### Run-Study Capability
+
+**Priority**: P1
+**Effort**: ~6–9 days (6 items)
+**Status**: Ready — scope and decomposition approved; product-lens gate clear 2026-08-19
+
+Turn the verified proof-of-life study discipline into a durable `run-study` skill, runbook, policy, package-agnostic tools, and evidence-complete records. This epic owns the first A/B proof while the Stellarator MBSE Demo epic is on hold.
+
+**Items**:
+- [ ] Item 1: Indicator Reachability Spike (0.5–1 day)
+- [ ] Item 2: Skill, Runbook, and Record Contract (1–1.5 days)
+- [ ] Item 3: Indicator Tool and Package Manifest (1–1.5 days)
+- [ ] Item 4: Quality Tools and Era Adapter Promotion (1.5–2 days)
+- [ ] Item 5: Cold-Pickup Administrator Exercise (0.5–1 day)
+- [ ] Item 6: First A/B Consumer and Policy Cutover (1.5–2 days)
+
+**File**: `epic_run_study_capability.md`
 
 ### Knowledge Database Integration
 

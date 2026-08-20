@@ -1,10 +1,12 @@
 # Epic: Stellarator MBSE Full Demo
 
 **Epic ID**: STELLARATOR-DEMO
-**Status**: Ready
+**Status**: On Hold
 **Priority**: High
 **Created**: 2026-07-18
 **Estimated Effort**: ~10–14 days remaining (excluding the stretch item)
+
+**Hold — [OWNER-VERBATIM] (2026-08-19):** "I'm fine with this epic owning the A/B proof -- the demo epic is on hold." Here, "this epic" is `.project/backlog/epic_run_study_capability.md`.
 
 ---
 
@@ -207,32 +209,31 @@ Design-point headline **re-baselined** (not a regression): total capital $16,145
 
 ---
 
-### Item 5: Studies — parameter sweep + A/B swap via the teax study layer
+### Item 5: Studies — evidence intake (on hold)
 
-**Type**: Modeling/Execution (modeling PM, register at pick-up)
-**Effort**: 1–2 days
-**Dependencies**: Item 2 (verdicts must classify points). Items 3–4 improve cost fidelity but do not block starting.
+**Status**: On hold with this epic. The Run-Study Capability epic owns the A/B execution and proof; this item must not register or run a duplicate study.
 
-**Objective**: Criterion 5 — at least one parameter sweep and one A/B instance-swap study run as `teax` study definitions, constraint verdicts classifying points, no hand-rolled sweep loops.
+**Type**: Modeling/Assessment (modeling PM, register only when the demo resumes)
+**Effort**: 0.5–1 day on resume
+**Dependencies**: Run-Study Capability Item 6; the existing proof-of-life parameter sweep.
 
-**Pick-up notes** (2026-07-25): (1) WI-026 (pytest baseline re-record) is slotted before this item per the [OWNER] board ruling. (2) WI-029 audit follow-up, [OWNER]-accepted: the CAS71 `'Levelized Annual Cost'` calc omits 1cfe's `i ≈ g` guard branch — inert at pinned points, but a discount-rate sweep exercises it; if this item sweeps discount rate, address it first (small bounded fix in the library def + oracle mirror). (3) *(added 2026-08-02)* **Required reading for the Align: `.project/active/demo-study-parameterization-policy/policy.md`** (Draft — owner ratifies at the Align). It carries the axis rule ([OWNER]: sweep causal design levers only, declared at the SysML-attribute level), the constraint-triage rule (inequalities accumulate; discovered couplings internalize, never stand as equality asserts over swept axes), the distributed-cycle resolution ladder, the barred anti-patterns, the in-scope teax construct list, and the three hypotheses (H1–H3) the first study round tests.
+**Objective**: Assess criterion 5 from the committed proof-of-life sweep and the capability epic's A/B record when the demo resumes.
 
 **Scope**:
-1. Define the first study round (this absorbs the concept's "stage 3⇄4 interleave" spec need): which variables sweep, what the A/B swap is (magnet technology or blanket material are the concept's examples), and what result pattern triggers a research/refinement round.
-2. Run both studies through the study layer's delivered execution semantics (prepared lists/grids; resume/crash-safety is the upstream epic's acceptance, not re-proven here).
-3. Classified results (viable / violated / indeterminate) land as committed study artifacts; findings ranked by leverage feed the refinement queue (new refinement items register at pick-up, in this epic's frame).
+1. Confirm both records used teax lifecycle semantics and carried named constraint verdicts for every point.
+2. Assess the combined evidence against demo criterion 5 and update the criterion status.
+3. Route study findings into the demo refinement queue without duplicating the capability discovery log.
 
 **Out of Scope**:
-- Optimizer/adaptive strategies ([AGENT] non-goal in the concept — grids suffice, even for the stretch).
+- Running another A/B study or rebuilding capability tools.
 - Visualization (Item 6).
 
 **Success Criteria**:
-- [ ] One sweep + one A/B study defined as teax studies and run to completion
-- [ ] Constraint verdicts classify every point; zero hand-rolled harness code
-- [ ] Research-trigger rule written; refinement candidates (if any) recorded
-- [ ] Study artifacts committed; `work/` item record complete
+- [ ] The demo assessment cites the existing sweep and capability-owned A/B record.
+- [ ] Criterion 5 receives an evidence-backed verdict without duplicate execution.
+- [ ] Any demo refinement candidates cite their originating study finding.
 
-**Deliverables**: study definitions + result stores; first-study-round findings note; `work/` item record
+**Deliverables**: demo Item-5 assessment record citing the two study records
 
 ---
 
@@ -398,7 +399,7 @@ Items 1 and 2 start independently (parallel). Items 3 and 4 parallel after 1. Cr
 | 2. Constraint execution | 1–2 d | None (external pin) |
 | 3. CAS22 tail + 40/50/60 | 1–2 d | Item 1 |
 | 4. LCOE construction | 1–1.5 d | Item 1 |
-| 5. Studies | 1–2 d | Item 2 |
+| 5. Studies evidence intake | 0.5–1 d | Run-Study Capability Item 6; on hold |
 | 6. Visualization | 1–2 d | Item 5 |
 | 7. Reveal + comparison | 1.5–2 d | Items 1, 3, 4; owner-triggered |
 | 8. Write-up | 1.5–2 d | Items 4, 5, 6, 7 |
@@ -415,5 +416,5 @@ Items 1 and 2 start independently (parallel). Items 3 and 4 parallel after 1. Cr
 
 ---
 
-**Last Updated**: 2026-08-02
-**Next Action**: Item 5 (studies — pick-up notes in its section: WI-026 done, CAS71 guard-branch follow-up if sweeping discount rate). Anchor A is finished (criterion 3 MET); Item 7 (owner-triggered reveal) is now sequenced behind at least one Item-5 study round per its dependency note — the reveal timing is the owner's call. Items 1–4 complete.
+**Last Updated**: 2026-08-19
+**Next Action**: On hold. No demo item starts while held. If resumed, Item 5 assesses the proof-of-life sweep and the Run-Study Capability epic's owned A/B record; it does not rerun the study.
