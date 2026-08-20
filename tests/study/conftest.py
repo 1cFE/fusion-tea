@@ -71,5 +71,10 @@ def minimal_manifest_dict() -> dict:
             "headline": {"channel": "some_pkg__cost_calc__cost", "value": 2.0},
             "verdicts": [{"source_local_identity": "ok", "expected": "satisfied"}],
         },
-        "oracle": {"kind": "python_callable", "module": "some.module", "callable": "compute"},
+        "oracle": {
+            "kind": "python_callable",
+            "module": "some_oracle",
+            "callable": "compute",
+            "sys_path": "some/where",
+        },
     }

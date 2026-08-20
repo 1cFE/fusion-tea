@@ -1,0 +1,249 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "indicators.v1.schema.json",
+  "title": "Study indicator report",
+  "description": "Conservative constraint/objective reachability per declared axis group. The trace is deliberately over-approximate: every module output is taken to depend on every module input. A negative (no_constraint_response) is therefore sound — no finer analysis can find a path this one missed. A positive means only that the module graph admits a route; it never means the axis responds.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "tool",
+    "package",
+    "manifest",
+    "axis_declaration",
+    "objective_catalog",
+    "not_derivable",
+    "warnings",
+    "groups"
+  ],
+  "properties": {
+    "schema_version": {"const": "study-indicators/v1"},
+    "tool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "source_digest"],
+      "properties": {
+        "path": {"type": "string"},
+        "source_digest": {"$ref": "#/$defs/digest"}
+      }
+    },
+    "package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "package_name",
+        "semantic_fingerprint",
+        "recorded_executable_fingerprint",
+        "indicator_input_fingerprint"
+      ],
+      "properties": {
+        "path": {"type": "string", "description": "Repo-relative POSIX, copied from the manifest's package.path."},
+        "package_name": {"type": "string"},
+        "semantic_fingerprint": {"type": "string", "description": "Read live from contracts/model_contract.json."},
+        "recorded_executable_fingerprint": {
+          "type": "string",
+          "description": "Read live from contracts/package_contract.json, which is OUTSIDE the digested set because the trace never reads it. It records which package build this is; it is not gated on."
+        },
+        "indicator_input_fingerprint": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["recipe", "digest", "files"],
+          "properties": {
+            "recipe": {"type": "string"},
+            "digest": {"type": "string"},
+            "files": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["path", "sha256"],
+                "properties": {
+                  "path": {"type": "string", "description": "Package-relative POSIX, matching the manifest's pinned files list."},
+                  "sha256": {"type": "string"}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "schema_version", "digest"],
+      "properties": {
+        "path": {"type": "string"},
+        "schema_version": {"type": "string"},
+        "digest": {"type": "string", "description": "sha256 over the manifest file's raw bytes."}
+      }
+    },
+    "axis_declaration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "schema_version", "digest", "groups_declared", "subset"],
+      "properties": {
+        "path": {"type": "string"},
+        "schema_version": {"type": "string"},
+        "digest": {"type": "string", "description": "sha256 over the declaration file's raw bytes."},
+        "groups_declared": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Every axis name in the declaration file, whether traced or not."
+        },
+        "subset": {
+          "type": "boolean",
+          "description": "Whether groups is narrower than the whole declaration. A record-feeding run is always a full-document run and emits false; true means --group was used, which is a debugging aid. A subset run cannot be snapshotted into a record and pass for complete."
+        }
+      }
+    },
+    "objective_catalog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "channel"],
+        "properties": {"name": {"type": "string"}, "channel": {"type": "string"}}
+      }
+    },
+    "not_derivable": {"$ref": "#/$defs/not_derivable"},
+    "warnings": {"type": "array", "items": {"$ref": "#/$defs/warning"}},
+    "groups": {"type": "array", "items": {"$ref": "#/$defs/group"}}
+  },
+  "$defs": {
+    "digest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recipe", "digest"],
+      "properties": {"recipe": {"type": "string"}, "digest": {"type": "string"}}
+    },
+    "warning": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "detail"],
+      "properties": {
+        "kind": {"enum": ["provenance_drift", "duplicate_key_across_groups", "tie_candidate"]},
+        "detail": {"type": "string"}
+      }
+    },
+    "not_derivable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["statements", "positive_reading"],
+      "description": "Fixed text, versioned with the schema, emitted byte-equal at the document level and inside every group so a group excerpted into a per-axis framing section still carries it.",
+      "properties": {
+        "statements": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "positive_reading": {"type": "string"}
+      }
+    },
+    "operand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["operand", "class", "reached"],
+      "properties": {
+        "operand": {"type": "string", "description": "The constraint module's input port name, or <literal>."},
+        "class": {"enum": ["computed", "bound", "literal"]},
+        "ref": {"type": "string", "description": "Qualified channel (computed) or qualified input key (bound). Absent for a literal."},
+        "reached": {"type": "boolean"},
+        "entry_type": {
+          "enum": ["usage_literal", "library_default", "design_attribute"],
+          "description": "Bound operands only."
+        },
+        "value": {"type": "number", "description": "Literal operands only, taken from predicate_ir."}
+      }
+    },
+    "constraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "constraint_id",
+        "definition_qualified_name",
+        "source_local_identity",
+        "operator",
+        "operand_classes",
+        "bound_vs_bound",
+        "operands"
+      ],
+      "description": "One shape serves bounds, constraints_reachable, and constraints_unreachable. constraint_id is the pipeline module name and carries a hash suffix that does not survive regeneration; cross-fingerprint correlation matches on definition_qualified_name plus source_local_identity, so all three identities are carried.",
+      "properties": {
+        "constraint_id": {"type": "string"},
+        "definition_qualified_name": {"type": "string"},
+        "source_local_identity": {"type": "string"},
+        "operator": {"type": "string"},
+        "operand_classes": {"type": "array", "items": {"enum": ["computed", "bound"]}},
+        "bound_vs_bound": {
+          "type": "boolean",
+          "description": "Both non-literal operands are bound inputs — a constant comparison the axis cannot move unless it is one of them."
+        },
+        "operands": {"type": "array", "items": {"$ref": "#/$defs/operand"}}
+      }
+    },
+    "group": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "axis",
+        "declared_keys",
+        "group_valid",
+        "no_constraint_response",
+        "constraints_reachable",
+        "constraints_unreachable",
+        "bounds",
+        "objectives_reachable",
+        "objectives_unreachable",
+        "sibling_candidates",
+        "trace_size",
+        "warnings",
+        "not_derivable"
+      ],
+      "properties": {
+        "axis": {"type": "string"},
+        "declared_keys": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["key", "provenance", "entry_type"],
+            "properties": {
+              "key": {"type": "string"},
+              "provenance": {"enum": ["fan_out", "tie"]},
+              "entry_type": {"enum": ["usage_literal", "library_default", "design_attribute"]}
+            }
+          }
+        },
+        "group_valid": {"type": "boolean"},
+        "no_constraint_response": {
+          "type": "boolean",
+          "description": "True exactly when constraints_reachable is empty. Sound: the over-approximate trace found no path, so no finer analysis can."
+        },
+        "constraints_reachable": {"type": "array", "items": {"$ref": "#/$defs/constraint"}},
+        "constraints_unreachable": {"type": "array", "items": {"$ref": "#/$defs/constraint"}},
+        "bounds": {
+          "type": "array",
+          "description": "The full constraint catalog under this axis, and the authoritative list: the two partition lists are derived from it by filtering on 'any operand reached'. Axis-varying, because reached differs per axis.",
+          "items": {"$ref": "#/$defs/constraint"}
+        },
+        "objectives_reachable": {"type": "array", "items": {"type": "string"}},
+        "objectives_unreachable": {"type": "array", "items": {"type": "string"}},
+        "sibling_candidates": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Advisory suffix matches outside the group. Never merged into the traced key set, and never mirrored into warnings — there is exactly one place to read them."
+        },
+        "trace_size": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["modules_fired", "channels_tainted"],
+          "properties": {
+            "modules_fired": {"type": "integer"},
+            "channels_tainted": {"type": "integer"}
+          }
+        },
+        "warnings": {"type": "array", "items": {"$ref": "#/$defs/warning"}},
+        "not_derivable": {"$ref": "#/$defs/not_derivable"}
+      }
+    }
+  }
+}

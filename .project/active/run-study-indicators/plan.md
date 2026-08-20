@@ -153,8 +153,8 @@ def test_real_manifest_pin_matches_live_package(real_package_path, real_manifest
 
 **See `design.md` for:** the manifest instance contents (`design.md#explorationstellarator_e2estudiesmanifestjson--the-stellarator-instance`), the schema files and their two load-bearing `description` lines (D9, N1), and the oracle shape (D6).
 
-- [ ] `exploration/stellarator_e2e/studies/` created (N5 — deliberately, not as a side effect)
-- [ ] `exploration/stellarator_e2e/studies/manifest.json` (NEW), authored by hand:
+- [x] `exploration/stellarator_e2e/studies/` created (N5 — deliberately, not as a side effect)
+- [x] `exploration/stellarator_e2e/studies/manifest.json` (NEW), authored by hand:
   - `package.name` copied from `contracts/package_contract.json` `package_name`; `package.path` repo-relative
   - `fingerprints.indicator_inputs` — digest and `files` list pasted from `--print-fingerprint`
   - `fingerprints.recorded_provenance` — sealed `executable_fingerprint`, contract `semantic_fingerprint`
@@ -162,20 +162,20 @@ def test_real_manifest_pin_matches_live_package(real_package_path, real_manifest
   - `ties` — `magnet__R0` rides with `geom__R`, `rb__R`
   - `baseline` — `R = 12.7`, `a = 1.3`, `availability = 0.85`, headline LCOE `275.2642200420774`, five verdicts satisfied
   - `oracle` — `{"kind": "python_callable", …}` for `verify_stellaris.compute()`
-- [ ] `scripts/study/schemas/indicators.v1.schema.json`, `study_package_manifest.v1.schema.json`, `axis_declaration.v1.schema.json` (NEW) — `additionalProperties: false` throughout, plus the N1 and S1 `description` lines
-- [ ] `tests/study/conftest.py`: add the `real_manifest_path` fixture and a `load_schema` helper
-- [ ] `tests/study/test_output_contract.py`: the two stencil tests
+- [x] `scripts/study/schemas/indicators.v1.schema.json`, `study_package_manifest.v1.schema.json`, `axis_declaration.v1.schema.json` (NEW) — `additionalProperties: false` throughout, plus the N1 and S1 `description` lines
+- [x] `tests/study/conftest.py`: add the `real_manifest_path` fixture and a `load_schema` helper
+- [x] `tests/study/test_output_contract.py`: the two stencil tests
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study` → green
-- [ ] `uv run ruff check scripts/study tests/study` → clean
-- [ ] Real manifest validates against `study_package_manifest.v1.schema.json` (standing check #4, first half)
+- [x] `uv run python -m pytest tests/study` → green
+- [x] `uv run ruff check scripts/study tests/study` → clean
+- [x] Real manifest validates against `study_package_manifest.v1.schema.json` (standing check #4, first half)
 
 **Manual:**
-- [ ] Re-run `--print-fingerprint` and eyeball that the pasted digest and `files` list match exactly
-- [ ] Confirm the manifest holds **no** per-study choices — no axes, no windows, no selected objectives (spec, `[NEED][OWNER]`)
+- [x] Re-run `--print-fingerprint` and eyeball that the pasted digest and `files` list match exactly
+- [x] Confirm the manifest holds **no** per-study choices — no axes, no windows, no selected objectives (spec, `[NEED][OWNER]`)
 
 **What We Know Works After This Phase:** the manifest schema holds the real package's facts, and the pin is live.
 
@@ -528,6 +528,19 @@ def test_tool_modules_are_generic(needle):
 - **The `tool-source-digest/v1` recomputation test moved to Phase 2.** The recipe's file list includes the three `scripts/study/schemas/*.json` files, which Phase 2 authors; the test cannot pass before they exist. `tool_source_digest()` itself shipped in this phase.
 
 ### Phase 2 Completion
+**Completed:** 2026-08-19
+**Actual Changes:**
+- `exploration/stellarator_e2e/studies/` created deliberately as the manifest's home (N5).
+- `exploration/stellarator_e2e/studies/manifest.json` (NEW): package identity (`stellarator_tea`), the live indicator-input pin `612edfc9…bbb9` over five files, recorded provenance (sealed `executable_fingerprint` `ad912041…fa2d`, contract `semantic_fingerprint` `c9bc1640…c261`), the five spike objective channels, the one declared tie, the pinned baseline (nine qualified keys read from the live inputs; headline LCOE `275.2642200420774`; five verdicts satisfied), and the oracle entry point.
+- `scripts/study/schemas/{study_package_manifest,axis_declaration,indicators}.v1.schema.json` (NEW): `additionalProperties: false` throughout, carrying the N1 and S1 descriptions plus the soundness note on `no_constraint_response` and the `bounds`-is-authoritative note.
+- `tests/study/test_output_contract.py`: ten more tests — real manifest validates against both the hand-rolled validator and its JSON Schema, the pin matches the live package file-for-file, package identity, no per-study choices in the manifest, manifest digest is over its own bytes, `tool-source-digest/v1` recomputation (M5), the two load-bearing schema descriptions, and a walk asserting every schema object is closed.
+
+**Issues:**
+- The oracle's importable name is bare `verify_stellaris`, which only resolves with `exploration/stellarator_e2e` on `sys.path` (that is how `run_design_search.py` imports it). Recording only `module` + `callable` would force Item 4's `verify.py` to hard-code a package-specific directory — the exact thing Design Principle 4 forbids.
+
+**Deviations:**
+- **The `python_callable` oracle carries a required `sys_path` field** (repo-relative POSIX directory), beyond the design's rendered `{kind, module, callable, note}`. It keeps the package-specific path in the data where it belongs. This is additive within D6's typed-object shape, not a change of kind.
+- The manifest's `baseline.point` records **nine qualified keys**, not three axis names: the two `R` keys plus the tie `magnet__R0`, the two `a` keys, and the four `availability` keys, each with the value read from the live inputs. The design's `{"<key>": 12.7}` rendering asks for keys; three bare axis names would not be a point a gate can set.
 
 ### Phase 3 Completion
 

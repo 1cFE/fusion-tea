@@ -349,9 +349,10 @@ def _validate_oracle(value: object) -> None:
     kind = _string(oracle.get("kind"), "manifest.oracle.kind")
     if kind != "python_callable":
         raise ManifestError(f"manifest.oracle.kind: unknown kind {kind!r}")
-    _keys(oracle, "manifest.oracle", ("kind", "module", "callable"), ("note",))
+    _keys(oracle, "manifest.oracle", ("kind", "module", "callable", "sys_path"), ("note",))
     _string(oracle["module"], "manifest.oracle.module")
     _string(oracle["callable"], "manifest.oracle.callable")
+    _string(oracle["sys_path"], "manifest.oracle.sys_path")
     if "note" in oracle:
         _string(oracle["note"], "manifest.oracle.note")
 

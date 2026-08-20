@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "study_package_manifest.v1.schema.json",
+  "title": "Study package manifest",
+  "description": "Data-only catalog of the stable facts a generated teax package supplies to the study tools. Holds no per-study choices: no axes, no windows, no selected objectives. Cited by path plus the schema_version string.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "package",
+    "fingerprints",
+    "objective_catalog",
+    "ties",
+    "baseline",
+    "oracle"
+  ],
+  "properties": {
+    "schema_version": {"const": "study-package-manifest/v1"},
+    "package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "path"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Must equal the live contracts/package_contract.json package_name. A mismatch is 'wrong manifest for this package', a mechanical failure."
+        },
+        "path": {"type": "string", "minLength": 1, "description": "Repo-relative POSIX path to the package root."}
+      }
+    },
+    "fingerprints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["indicator_inputs", "recorded_provenance"],
+      "properties": {
+        "indicator_inputs": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["recipe", "digest", "files"],
+          "description": "The gate. Computed over exactly the artifacts the trace reads, as they exist on disk. Neither existing package fingerprint can serve: the sealed executable_fingerprint always fails while the era adapter edits two artifacts, and the model contract's semantic_fingerprint covers neither the pipeline wiring nor the inputs.",
+          "properties": {
+            "recipe": {"const": "indicator-input-fingerprint/v1"},
+            "digest": {"type": "string", "minLength": 1},
+            "files": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {"type": "string", "minLength": 1},
+              "description": "Package-relative POSIX paths, sorted. Invariant 10 checks every path the reader resolves against this list."
+            }
+          }
+        },
+        "recorded_provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["executable_fingerprint", "semantic_fingerprint"],
+          "description": "Provenance only — never gated on. A record states which package revision the indicators were derived against; a stale value raises a provenance_drift warning, not a failure.",
+          "properties": {
+            "executable_fingerprint": {"type": "string", "minLength": 1},
+            "semantic_fingerprint": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "objective_catalog": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Keyed on the produced channel, never on the exit-point output filename (R6) — keying on the filename silently misses.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "channel"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "channel": {"type": "string", "minLength": 1},
+          "note": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "ties": {
+      "type": "array",
+      "description": "Advisory in exactly the way the suffix scan is. A declared group holding a tie's rides_with partners but not the tie key earns a tie_candidate warning; the key is never added to the group.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["key", "rides_with"],
+        "properties": {
+          "key": {"type": "string", "minLength": 1},
+          "rides_with": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "note": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "baseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["point", "headline", "verdicts"],
+      "description": "Validated in full but never read by indicators.py — a malformed baseline is a failure at the first tool that opens the file, not a surprise for a later one. The baseline gate is its only consumer.",
+      "properties": {
+        "point": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {"type": "number"},
+          "description": "Qualified input key to pinned value."
+        },
+        "headline": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["channel", "value"],
+          "properties": {
+            "channel": {"type": "string", "minLength": 1},
+            "value": {"type": "number"}
+          }
+        },
+        "verdicts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["source_local_identity", "expected"],
+            "properties": {
+              "source_local_identity": {"type": "string", "minLength": 1},
+              "expected": {"enum": ["satisfied", "violated"]}
+            }
+          }
+        }
+      }
+    },
+    "oracle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "module", "callable", "sys_path"],
+      "description": "The package-owned entry point as it exists today, typed so a later command form (kind: cli) is an additive amendment rather than a rewrite. indicators.py never reads this block.",
+      "properties": {
+        "kind": {"const": "python_callable"},
+        "module": {"type": "string", "minLength": 1, "description": "Importable module name, not a file path."},
+        "callable": {"type": "string", "minLength": 1},
+        "sys_path": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Repo-relative POSIX directory that must be on sys.path for the module name to import. Recorded as data so no consumer hard-codes a package-specific path."
+        },
+        "note": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}
