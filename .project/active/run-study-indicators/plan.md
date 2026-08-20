@@ -286,19 +286,19 @@ def test_mechanical_failure(synthetic_pkg, mutate, expect, tmp_path):
 
 **See `design.md` for:** the multi-pipeline stance (spec's recorded decision, carried into `design.md#the-graph-and-the-closure`), the M1 glob strictness rules, and the `package_copy` factory's two rules (`design.md#validation-approach`).
 
-- [ ] `tests/study/data/synthetic_pkg/` (NEW): two pipeline files with a handful of modules each, its own `inputs/*.json`, a minimal `contracts/model_contract.json` with a small constraint catalog, a minimal `contracts/package_contract.json`, its own `manifest.json`, and an axis-declaration file. Module list is the implementer's call ("Open for the plan") — smallest set that exercises a cross-file channel and one constraint per file.
-- [ ] `tests/study/conftest.py`: the `package_copy` factory — copies the package tree plus the manifest into `tmp_path`, returns both paths, and carries **both rules**: (a) every mutation helper asserts its target substring exists in the copy before replacing (Item 1's probe 4 passed against an uncorrupted file because the target string was wrong), and (b) re-pins the copy's `indicator_inputs` digest by default, with re-pinning switchable off for the fingerprint-mismatch test
-- [ ] `tests/study/test_multipipeline.py` (NEW): the four cases — package-scoped graph, cross-file duplicate producer, two EntryPoints in one file, a `.yml` file in `pipelines/`
+- [x] `tests/study/data/synthetic_pkg/` (NEW): two pipeline files with a handful of modules each, its own `inputs/*.json`, a minimal `contracts/model_contract.json` with a small constraint catalog, a minimal `contracts/package_contract.json`, its own `manifest.json`, and an axis-declaration file. Module list is the implementer's call ("Open for the plan") — smallest set that exercises a cross-file channel and one constraint per file.
+- [x] `tests/study/conftest.py`: the `package_copy` factory — copies the package tree plus the manifest into `tmp_path`, returns both paths, and carries **both rules**: (a) every mutation helper asserts its target substring exists in the copy before replacing (Item 1's probe 4 passed against an uncorrupted file because the target string was wrong), and (b) re-pins the copy's `indicator_inputs` digest by default, with re-pinning switchable off for the fingerprint-mismatch test
+- [x] `tests/study/test_multipipeline.py` (NEW): the four cases — package-scoped graph, cross-file duplicate producer, two EntryPoints in one file, a `.yml` file in `pipelines/`
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study` → green
-- [ ] `uv run ruff check scripts/study tests/study` → clean
+- [x] `uv run python -m pytest tests/study` → green
+- [x] `uv run ruff check scripts/study tests/study` → clean
 
 **Manual:**
-- [ ] Run the tool against the synthetic package by hand and read the output — confirm the cross-file reach is real and not an artifact of how the fixture was written
-- [ ] Deliberately break one mutation helper's target string and confirm the assert-before-mutating rule fires (then restore) — the factory's own guard, proven once
+- [x] Run the tool against the synthetic package by hand and read the output — confirm the cross-file reach is real and not an artifact of how the fixture was written
+- [x] Deliberately break one mutation helper's target string and confirm the assert-before-mutating rule fires (then restore) — the factory's own guard, proven once
 
 **What We Know Works After This Phase:** package-scoped channels across files, the three multi-pipeline mechanical failures, and a trustworthy mutation harness for Phase 5.
 
@@ -560,6 +560,19 @@ def test_tool_modules_are_generic(needle):
 **Verification against the Item 1 evidence:** a field-by-field programmatic diff of all six groups against `.project/active/run-study-reachability-spike/indicators.json` — declared keys, entry types, `no_constraint_response`, modules fired, channels tainted, both objective lists, the reachable-constraint set, and per-constraint `constraint_id` / operator / operand classes / `bound_vs_bound` / operand detail — reported **no mismatches**. `availability` comes back `no_constraint_response: true`.
 
 ### Phase 4 Completion
+**Completed:** 2026-08-19
+**Actual Changes:**
+- `tests/study/data/synthetic_pkg/` (NEW): package root at `pkg/` (two pipelines, two inputs files, a minimal model contract with two constraints, a minimal package contract) with `manifest.json` and `axes.json` beside it. Pipeline A produces `syn__a__y`; pipeline B consumes it and produces `syn__b__w`; one constraint lives in each file, and B's compares a computed channel against a `predicate_ir` literal.
+- `tests/study/conftest.py`: the `PackageCopy` dataclass and the `package_copy` factory, plus `synthetic_copy` and `real_copy` fixtures. `edit` asserts its target substring before replacing; `run` re-pins the copy by default and `run(repin=False)` is the fingerprint-mismatch form.
+- `tests/study/test_multipipeline.py` (NEW): 10 tests — the package-scoped cross-file reach, that the reach discriminates (B's key never reaches A), the literal operand, three mechanical failures (cross-file duplicate producer, two EntryPoints in one file, a `.yml` in `pipelines/`), a duplicate module name across files, the named-both-producers message, the factory's own assert-before-mutating guard, and a check that the committed synthetic pin is live.
+
+**Issues:**
+- The stray-`.yml` case cannot re-pin: `indicator_input_read_set` raises on the stray file, so the re-pin helper would raise the same error the tool is supposed to raise. That case runs with `repin=False`, which is sound because the mutation changes no digested byte and the glob check fires before any digest comparison. The reason is a comment on the case.
+
+**Deviations:**
+- The synthetic package root sits at `data/synthetic_pkg/pkg/` with `manifest.json` and `axes.json` as siblings rather than inside it. The design left the location open; a manifest inside the package root would read as a package artifact, which it is not.
+
+**Manual verification:** ran the tool against the synthetic package by hand and read the output. `cross` (a key entering through pipeline A) reaches both constraints and both objectives via `syn__a__x` → `syn__a_calc` → `syn__a__y` → `syn__b_calc` → `syn__b__w` → `b_ok`; `b_only` reaches only `b_ok` and only the `w` objective, so the cross-file reach is a real edge and not an artifact of everything being reachable. The assert-before-mutating rule is proven by a test rather than by a one-off manual break.
 
 ### Phase 5 Completion
 

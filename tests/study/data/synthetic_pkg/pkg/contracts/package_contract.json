@@ -1,0 +1,6 @@
+{
+  "package_name": "synthetic_pkg",
+  "executable_fingerprint": "syntheticexecutablefingerprint000000000000000000000000000000000",
+  "generator_version": "0.1.0",
+  "runtime_contract_version": "1.0.0"
+}

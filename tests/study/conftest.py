@@ -5,9 +5,13 @@ these tests. Anything that mutates a package goes through the ``package_copy``
 factory (added in Phase 4), which copies into ``tmp_path``.
 """
 
+import itertools
 import json
+import os
+import shutil
 import subprocess
 import sys
+from dataclasses import dataclass
 from pathlib import Path
 
 import pytest
@@ -119,3 +123,102 @@ def run_tool(package, manifest_path, groups, *, group=(), cwd=None):
 @pytest.fixture
 def known_answer_declaration() -> Path:
     return KNOWN_ANSWER_DECLARATION
+
+
+SYNTHETIC_DIR = DATA_DIR / "synthetic_pkg"
+
+
+@dataclass
+class PackageCopy:
+    """A writable copy of a package plus its manifest and axis declaration.
+
+    Two rules make the negative tests trustworthy:
+
+    * **Assert before mutating.** ``edit`` asserts its target substring exists in the
+      copy before replacing. Item 1's probe 4 passed against an uncorrupted file
+      because the target string was wrong — a negative test that corrupts nothing
+      looks exactly like a passing one.
+    * **Re-pin unless the test is about the pin.** The fingerprint gate runs before
+      the parse, so a mutation test must rewrite the copy's pinned digest to reach
+      the failure it means to test. ``run`` re-pins by default; ``run(repin=False)``
+      is the fingerprint-mismatch test.
+    """
+
+    path: Path
+    manifest: Path
+    axes: Path
+
+    def edit(self, relative: str, old: str, new: str) -> None:
+        """Replace a substring inside one file of the copy, asserting the target first."""
+        target = self.path / relative
+        text = target.read_text()
+        assert old in text, f"mutation target not found in {relative}: {old!r}"
+        target.write_text(text.replace(old, new, 1))
+
+    def edit_manifest(self, mutate) -> None:
+        data = json.loads(self.manifest.read_text())
+        mutate(data)
+        self.manifest.write_text(json.dumps(data, indent=2) + "\n")
+
+    def edit_axes(self, mutate) -> None:
+        data = json.loads(self.axes.read_text())
+        mutate(data)
+        self.axes.write_text(json.dumps(data, indent=2) + "\n")
+
+    def write(self, relative: str, text: str) -> None:
+        """Add a new file to the copy. Only for tests about files that should not exist."""
+        target = self.path / relative
+        assert not target.exists(), f"{relative} already exists in the copy"
+        target.write_text(text)
+
+    def repin(self) -> None:
+        from scripts.study import manifest as manifest_mod
+
+        computed = manifest_mod.indicator_input_fingerprint(self.path)
+        self.edit_manifest(
+            lambda data: data["fingerprints"]["indicator_inputs"].update(
+                digest=computed["digest"], files=[f["path"] for f in computed["files"]]
+            )
+        )
+
+    def run(self, *, repin=True, out=None, group=()):
+        if repin:
+            self.repin()
+        return run_tool_raw(self.path, self.manifest, self.axes, out=out, group=group)
+
+
+@pytest.fixture
+def package_copy(tmp_path):
+    """Factory: copy a package tree plus its manifest and axes into tmp_path."""
+
+    counter = itertools.count()
+
+    def _copy(package: Path, manifest_path: Path, axes_path: Path) -> PackageCopy:
+        root = tmp_path / f"copy{next(counter)}"
+        root.mkdir()
+        package_dest = root / "pkg"
+        shutil.copytree(package, package_dest)
+        manifest_dest = root / "manifest.json"
+        manifest_dest.write_bytes(manifest_path.read_bytes())
+        axes_dest = root / "axes.json"
+        axes_dest.write_bytes(axes_path.read_bytes())
+        copy = PackageCopy(path=package_dest, manifest=manifest_dest, axes=axes_dest)
+        # package.path is repo-relative by schema; the copy lives outside the repo.
+        copy.edit_manifest(
+            lambda data: data["package"].update(path=os.path.relpath(package_dest, REPO_ROOT))
+        )
+        return copy
+
+    return _copy
+
+
+@pytest.fixture
+def synthetic_copy(package_copy):
+    return package_copy(
+        SYNTHETIC_DIR / "pkg", SYNTHETIC_DIR / "manifest.json", SYNTHETIC_DIR / "axes.json"
+    )
+
+
+@pytest.fixture
+def real_copy(package_copy):
+    return package_copy(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWER_DECLARATION)

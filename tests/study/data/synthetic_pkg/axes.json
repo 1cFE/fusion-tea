@@ -1,0 +1,15 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "cross",
+      "note": "A key that enters through pipeline A's entry point. It must reach the constraint defined in pipeline B, through the cross-file channel syn__a__y.",
+      "keys": [{"key": "syn__a__x", "provenance": "fan_out"}]
+    },
+    {
+      "axis": "b_only",
+      "note": "A key that enters through pipeline B's entry point. It reaches B's constraint and not A's.",
+      "keys": [{"key": "syn__b__z", "provenance": "fan_out"}]
+    }
+  ]
+}
