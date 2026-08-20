@@ -1,7 +1,7 @@
 # Epic: Run-Study Capability
 
 **Epic ID**: RUN-STUDY
-**Status**: Ready
+**Status**: Active — Items 1–4 complete (2026-08-20); Items 5–6 remaining
 **Priority**: High
 **Created**: 2026-08-19
 **Estimated Effort**: ~6–9 days
@@ -104,7 +104,9 @@ Gate: CLEAR
 
 ## Backlog Items
 
-### Item 1: Indicator Reachability Spike
+### Item 1: Indicator Reachability Spike ✅
+
+**Completed 2026-08-19** — CONFIRMED, no premise conflict. Ran as a spike (brief/probe/findings — the spec/design/plan lines below were template residue; decision recorded at commit `a92251a7`). Artifacts: `.project/active/run-study-reachability-spike/` (findings.md, trace.py, cases.py, indicators.json, run.log).
 
 **Type**: Research/Spike
 
@@ -155,7 +157,9 @@ Gate: CLEAR
 
 ---
 
-### Item 2: Skill, Runbook, and Record Contract
+### Item 2: Skill, Runbook, and Record Contract ✅
+
+**Completed 2026-08-20** — audit PASS-WITH-FIXES, all four fixes applied and re-verified (`.project/active/run-study-contract/audit.md`). Delivered: tracked skill (`.claude/skills/run-study/`: SKILL.md 77 lines, runbook.md — 15 execute steps after the Item 4 coordination insertion of step 5 (route load + pinned baseline before preflight), record-template.md with 17 sections + snapshot appendix), the `.gitignore` negation, plus committed evidence `dry-run.md` and `coverage.md`.
 
 **Type**: Implementation
 
@@ -187,11 +191,11 @@ Gate: CLEAR
 - Choosing the first A/B block or interpreting study results.
 
 **Success Criteria**:
-- [ ] The tracked skill supports goal-only execute intake and record-only administration.
-- [ ] The runbook names obligations and outputs without encoding axis choice, framing verdicts, or result interpretation.
-- [ ] The record contract makes LCOE and all named constraint outcomes mandatory and snapshots facts rather than citing mutable configuration for content.
-- [ ] Executed evidence is immutable; synthesis is a separate file; missing evidence is reported rather than inferred.
-- [ ] `.gitignore` admits only `.claude/skills/run-study/` in addition to the existing tracked skills.
+- [x] The tracked skill supports goal-only execute intake and record-only administration.
+- [x] The runbook names obligations and outputs without encoding axis choice, framing verdicts, or result interpretation.
+- [x] The record contract makes LCOE and all named constraint outcomes mandatory and snapshots facts rather than citing mutable configuration for content.
+- [x] Executed evidence is immutable; synthesis is a separate file; missing evidence is reported rather than inferred.
+- [x] `.gitignore` admits only `.claude/skills/run-study/` in addition to the existing tracked skills.
 
 **Estimated Effort**: 1–1.5 days (spec 1h, design 2h, plan 1h, execute 4–7h)
 
@@ -263,7 +267,9 @@ Gate: CLEAR
 
 ---
 
-### Item 4: Quality Tools and Era Adapter Promotion
+### Item 4: Quality Tools and Era Adapter Promotion ✅
+
+**Completed 2026-08-20** — audit PASS (`.project/active/run-study-quality-tools/audit.md`). Item-start probe: stock loader REFUSES the package (2 of 139 sealed artifacts differ), so the adapter branch ran. Delivered: `scripts/study/{identity,common,preflight,verify}.py` + four schemas; `exploration/stellarator_e2e/studies/{era_adapter,oracle_entry,promotion_equivalence}.py` + `ANNEX.md`; manifest oracle-block value edit (pre-authorized). Promotion equivalence byte-exact on both CSVs (948-point grid executed, 2m10s, `-m slow`); 273 tests green with zero era skips. Known verification-coverage delta (`p_fus`, `magnet_capital`) recorded in `ANNEX.md § Oracle`.
 
 **Type**: Code/Integration
 
@@ -297,12 +303,12 @@ Gate: CLEAR
 - Interpretive gating based on indicators or study outcomes.
 
 **Success Criteria**:
-- [ ] Generic tools reproduce the proof-of-life mechanical gates with no package-specific code.
-- [ ] Verification stays stratified, re-derives verdicts, and produces the required summary at rel < 1e-9.
-- [ ] If retained, the adapter route reproduces both committed CSVs byte-for-byte.
-- [ ] If retained, changing an allowed glue file or adapter source changes effective identity and the old store refuses resume.
-- [ ] If stock loading works, the adapter is absent rather than retained as dormant compatibility code.
-- [ ] Every point still executes through `StudyRunner`; tools do not own execution.
+- [x] Generic tools reproduce the proof-of-life mechanical gates with no package-specific code.
+- [x] Verification stays stratified, re-derives verdicts, and produces the required summary at rel < 1e-9.
+- [x] If retained, the adapter route reproduces both committed CSVs byte-for-byte.
+- [x] If retained, changing an allowed glue file or adapter source changes effective identity and the old store refuses resume.
+- [x] If stock loading works, the adapter is absent rather than retained as dormant compatibility code. *(Condition probed false 2026-08-19 and re-probed at implementation: stock loading refuses, adapter retained live with its exact deletion condition stated in the adapter and `ANNEX.md` — 'absent not dormant' is discharged by the deletion condition.)*
+- [x] Every point still executes through `StudyRunner`; tools do not own execution.
 
 **Estimated Effort**: 1.5–2 days (spec 1h, design 3h, plan 1h, execute 7–11h)
 
