@@ -234,7 +234,7 @@ The design works as a system only if the record really is self-sufficient and th
 - Input concept Open Questions 4 (policy ratification path) and 6 (which A/B shape the delivered swap semantics select) — the epic plan and the Item-5 spec, respectively.
 
 **First risk to de-risk:**
-- Reachability correctness of the indicator builder on the real YAML (`.root` stripping, multi-field channels, exit-point renames). Use `/_my_spike`: build the trace, assert the known answers above.
+- Reachability correctness of the indicator builder on the real YAML (`.root` stripping, multi-field channels, exit-point renames). Use `/_my_spike`: build the trace, assert the known answers above. **Resolved 2026-08-19** — the spike built the trace and reproduced all five Appendix A known answers on the committed package (no premise conflict); `.root` stripping, entry-prefixed refs, multi-field channels and exit-point renames are all handled, and missing keys / unparseable refs / valid-empty results are mechanically distinguishable. Twelve normalization rules and a per-axis fixture contract for Item 3 are in `.project/active/run-study-reachability-spike/findings.md`.
 
 **Proof obligations (epic items must own):**
 - Adapter-route agreement and lineage refusal — deliverables: the byte-equal comparison and the modified-glue-file-refuses-resume test in the tool-promotion item; both retire with the adapter.
@@ -263,3 +263,4 @@ Input: declared axis groups — qualified entry keys with per-key provenance (`f
 - `no_constraint_response`: true when `constraints_reachable` is empty — sound because even the conservative trace finds no path. "Unresisted" is the agent's judgment, recorded separately with its reasoning.
 - Not derivable, stated in every report: monotonicity/sign of any response (the input concept's monotone-benefit-with-no-bound flag is a contraction — the static trace cannot supply it); same-quantity identity across names; intra-module operand dependency.
 - Known answers on the current package (asserted by the spike): availability → no constraint path, LCOE/CAS72/fuel reachable; interest_rate → no constraint path; R, a → `wall_load_ok` and `recirc_ok` reachable via computed operands, `net_positive` via `pb`; beta → `beta_ok` bound-vs-bound only.
+- **Spike verdict (2026-08-19): all five confirmed** on fingerprint `c9bc164050f0aac8a2009befb34497426d68923066ca1c1783a0b80e8048c261`. Two facts the appendix did not state and the spike added: `beta` reaches no objective channel at all, and `interest_rate` reaches LCOE and CAS72 but not the fuel channel. The declared tie `magnet__R0` changes nothing about reach. Full fixture contract: `.project/active/run-study-reachability-spike/findings.md`.

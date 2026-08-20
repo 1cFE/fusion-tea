@@ -1,0 +1,1021 @@
+{
+ "R": {
+  "bounds": {
+   "beta_ok": {
+    "operands": [
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "beta",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__beta"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "beta_limit",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__beta_limit"
+     }
+    ],
+    "operator": "<="
+   },
+   "net_positive": {
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "net_electric",
+      "reached": true,
+      "ref": "stellarator_09__stellaris__pb__p_net"
+     },
+     {
+      "class": "literal",
+      "operand": "<literal>",
+      "reached": false,
+      "value": 0.0
+     }
+    ],
+    "operator": ">"
+   },
+   "recirc_ok": {
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "rec_frac",
+      "reached": true,
+      "ref": "stellarator_09__stellaris__pb__rec_frac"
+     },
+     {
+      "class": "bound",
+      "entry_type": "library_default",
+      "operand": "threshold",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__threshold"
+     }
+    ],
+    "operator": "<="
+   },
+   "tbr_ok": {
+    "operands": [
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "tbr",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__tbr"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "tbr_floor",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__tbr_floor"
+     }
+    ],
+    "operator": ">="
+   },
+   "wall_load_ok": {
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "wall_load",
+      "reached": true,
+      "ref": "stellarator_09__stellaris__wall_load_calc__wall_load"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "wall_load_limit",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__wall_load_limit"
+     }
+    ],
+    "operator": "<="
+   }
+  },
+  "channels_tainted": 67,
+  "constraints_reachable": {
+   "net_positive": {
+    "bound_vs_bound": false,
+    "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+    "operand_classes": [
+     "computed"
+    ],
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "net_electric",
+      "reached": true,
+      "ref": "stellarator_09__stellaris__pb__p_net"
+     },
+     {
+      "class": "literal",
+      "operand": "<literal>",
+      "reached": false,
+      "value": 0.0
+     }
+    ],
+    "operator": ">"
+   },
+   "recirc_ok": {
+    "bound_vs_bound": false,
+    "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+    "operand_classes": [
+     "bound",
+     "computed"
+    ],
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "rec_frac",
+      "reached": true,
+      "ref": "stellarator_09__stellaris__pb__rec_frac"
+     },
+     {
+      "class": "bound",
+      "entry_type": "library_default",
+      "operand": "threshold",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__threshold"
+     }
+    ],
+    "operator": "<="
+   },
+   "wall_load_ok": {
+    "bound_vs_bound": false,
+    "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+    "operand_classes": [
+     "bound",
+     "computed"
+    ],
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "wall_load",
+      "reached": true,
+      "ref": "stellarator_09__stellaris__wall_load_calc__wall_load"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "wall_load_limit",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__wall_load_limit"
+     }
+    ],
+    "operator": "<="
+   }
+  },
+  "declared_keys": [
+   "stellarator_09__stellaris__geom__R",
+   "stellarator_09__stellaris__rb__R"
+  ],
+  "entry_types": {
+   "stellarator_09__stellaris__geom__R": "usage_literal",
+   "stellarator_09__stellaris__rb__R": "usage_literal"
+  },
+  "group": "R",
+  "group_valid": true,
+  "modules_fired": 54,
+  "no_constraint_response": false,
+  "not_derivable": [
+   "monotonicity / sign of any response",
+   "same-quantity identity across differing key names",
+   "intra-module operand dependency (trace is module-level)"
+  ],
+  "objectives_reachable": {
+   "cas72": true,
+   "fuel": true,
+   "lcoe": true,
+   "lcoe_1cfe": true,
+   "total_capital": true
+  },
+  "objectives_unreachable": [],
+  "semantic_fingerprint": "c9bc164050f0aac8a2009befb34497426d68923066ca1c1783a0b80e8048c261",
+  "sibling_candidates": []
+ },
+ "R+tie": {
+  "bounds": {
+   "beta_ok": {
+    "operands": [
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "beta",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__beta"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "beta_limit",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__beta_limit"
+     }
+    ],
+    "operator": "<="
+   },
+   "net_positive": {
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "net_electric",
+      "reached": true,
+      "ref": "stellarator_09__stellaris__pb__p_net"
+     },
+     {
+      "class": "literal",
+      "operand": "<literal>",
+      "reached": false,
+      "value": 0.0
+     }
+    ],
+    "operator": ">"
+   },
+   "recirc_ok": {
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "rec_frac",
+      "reached": true,
+      "ref": "stellarator_09__stellaris__pb__rec_frac"
+     },
+     {
+      "class": "bound",
+      "entry_type": "library_default",
+      "operand": "threshold",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__threshold"
+     }
+    ],
+    "operator": "<="
+   },
+   "tbr_ok": {
+    "operands": [
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "tbr",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__tbr"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "tbr_floor",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__tbr_floor"
+     }
+    ],
+    "operator": ">="
+   },
+   "wall_load_ok": {
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "wall_load",
+      "reached": true,
+      "ref": "stellarator_09__stellaris__wall_load_calc__wall_load"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "wall_load_limit",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__wall_load_limit"
+     }
+    ],
+    "operator": "<="
+   }
+  },
+  "channels_tainted": 67,
+  "constraints_reachable": {
+   "net_positive": {
+    "bound_vs_bound": false,
+    "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+    "operand_classes": [
+     "computed"
+    ],
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "net_electric",
+      "reached": true,
+      "ref": "stellarator_09__stellaris__pb__p_net"
+     },
+     {
+      "class": "literal",
+      "operand": "<literal>",
+      "reached": false,
+      "value": 0.0
+     }
+    ],
+    "operator": ">"
+   },
+   "recirc_ok": {
+    "bound_vs_bound": false,
+    "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+    "operand_classes": [
+     "bound",
+     "computed"
+    ],
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "rec_frac",
+      "reached": true,
+      "ref": "stellarator_09__stellaris__pb__rec_frac"
+     },
+     {
+      "class": "bound",
+      "entry_type": "library_default",
+      "operand": "threshold",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__threshold"
+     }
+    ],
+    "operator": "<="
+   },
+   "wall_load_ok": {
+    "bound_vs_bound": false,
+    "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+    "operand_classes": [
+     "bound",
+     "computed"
+    ],
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "wall_load",
+      "reached": true,
+      "ref": "stellarator_09__stellaris__wall_load_calc__wall_load"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "wall_load_limit",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__wall_load_limit"
+     }
+    ],
+    "operator": "<="
+   }
+  },
+  "declared_keys": [
+   "stellarator_09__stellaris__geom__R",
+   "stellarator_09__stellaris__magnet__R0",
+   "stellarator_09__stellaris__rb__R"
+  ],
+  "entry_types": {
+   "stellarator_09__stellaris__geom__R": "usage_literal",
+   "stellarator_09__stellaris__magnet__R0": "design_attribute",
+   "stellarator_09__stellaris__rb__R": "usage_literal"
+  },
+  "group": "R+tie",
+  "group_valid": true,
+  "modules_fired": 54,
+  "no_constraint_response": false,
+  "not_derivable": [
+   "monotonicity / sign of any response",
+   "same-quantity identity across differing key names",
+   "intra-module operand dependency (trace is module-level)"
+  ],
+  "objectives_reachable": {
+   "cas72": true,
+   "fuel": true,
+   "lcoe": true,
+   "lcoe_1cfe": true,
+   "total_capital": true
+  },
+  "objectives_unreachable": [],
+  "semantic_fingerprint": "c9bc164050f0aac8a2009befb34497426d68923066ca1c1783a0b80e8048c261",
+  "sibling_candidates": []
+ },
+ "a": {
+  "bounds": {
+   "beta_ok": {
+    "operands": [
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "beta",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__beta"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "beta_limit",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__beta_limit"
+     }
+    ],
+    "operator": "<="
+   },
+   "net_positive": {
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "net_electric",
+      "reached": true,
+      "ref": "stellarator_09__stellaris__pb__p_net"
+     },
+     {
+      "class": "literal",
+      "operand": "<literal>",
+      "reached": false,
+      "value": 0.0
+     }
+    ],
+    "operator": ">"
+   },
+   "recirc_ok": {
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "rec_frac",
+      "reached": true,
+      "ref": "stellarator_09__stellaris__pb__rec_frac"
+     },
+     {
+      "class": "bound",
+      "entry_type": "library_default",
+      "operand": "threshold",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__threshold"
+     }
+    ],
+    "operator": "<="
+   },
+   "tbr_ok": {
+    "operands": [
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "tbr",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__tbr"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "tbr_floor",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__tbr_floor"
+     }
+    ],
+    "operator": ">="
+   },
+   "wall_load_ok": {
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "wall_load",
+      "reached": true,
+      "ref": "stellarator_09__stellaris__wall_load_calc__wall_load"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "wall_load_limit",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__wall_load_limit"
+     }
+    ],
+    "operator": "<="
+   }
+  },
+  "channels_tainted": 67,
+  "constraints_reachable": {
+   "net_positive": {
+    "bound_vs_bound": false,
+    "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+    "operand_classes": [
+     "computed"
+    ],
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "net_electric",
+      "reached": true,
+      "ref": "stellarator_09__stellaris__pb__p_net"
+     },
+     {
+      "class": "literal",
+      "operand": "<literal>",
+      "reached": false,
+      "value": 0.0
+     }
+    ],
+    "operator": ">"
+   },
+   "recirc_ok": {
+    "bound_vs_bound": false,
+    "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+    "operand_classes": [
+     "bound",
+     "computed"
+    ],
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "rec_frac",
+      "reached": true,
+      "ref": "stellarator_09__stellaris__pb__rec_frac"
+     },
+     {
+      "class": "bound",
+      "entry_type": "library_default",
+      "operand": "threshold",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__threshold"
+     }
+    ],
+    "operator": "<="
+   },
+   "wall_load_ok": {
+    "bound_vs_bound": false,
+    "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+    "operand_classes": [
+     "bound",
+     "computed"
+    ],
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "wall_load",
+      "reached": true,
+      "ref": "stellarator_09__stellaris__wall_load_calc__wall_load"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "wall_load_limit",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__wall_load_limit"
+     }
+    ],
+    "operator": "<="
+   }
+  },
+  "declared_keys": [
+   "stellarator_09__stellaris__geom__a",
+   "stellarator_09__stellaris__rb__a"
+  ],
+  "entry_types": {
+   "stellarator_09__stellaris__geom__a": "usage_literal",
+   "stellarator_09__stellaris__rb__a": "usage_literal"
+  },
+  "group": "a",
+  "group_valid": true,
+  "modules_fired": 54,
+  "no_constraint_response": false,
+  "not_derivable": [
+   "monotonicity / sign of any response",
+   "same-quantity identity across differing key names",
+   "intra-module operand dependency (trace is module-level)"
+  ],
+  "objectives_reachable": {
+   "cas72": true,
+   "fuel": true,
+   "lcoe": true,
+   "lcoe_1cfe": true,
+   "total_capital": true
+  },
+  "objectives_unreachable": [],
+  "semantic_fingerprint": "c9bc164050f0aac8a2009befb34497426d68923066ca1c1783a0b80e8048c261",
+  "sibling_candidates": []
+ },
+ "availability": {
+  "bounds": {
+   "beta_ok": {
+    "operands": [
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "beta",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__beta"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "beta_limit",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__beta_limit"
+     }
+    ],
+    "operator": "<="
+   },
+   "net_positive": {
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "net_electric",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__pb__p_net"
+     },
+     {
+      "class": "literal",
+      "operand": "<literal>",
+      "reached": false,
+      "value": 0.0
+     }
+    ],
+    "operator": ">"
+   },
+   "recirc_ok": {
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "rec_frac",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__pb__rec_frac"
+     },
+     {
+      "class": "bound",
+      "entry_type": "library_default",
+      "operand": "threshold",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__threshold"
+     }
+    ],
+    "operator": "<="
+   },
+   "tbr_ok": {
+    "operands": [
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "tbr",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__tbr"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "tbr_floor",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__tbr_floor"
+     }
+    ],
+    "operator": ">="
+   },
+   "wall_load_ok": {
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "wall_load",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__wall_load_calc__wall_load"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "wall_load_limit",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__wall_load_limit"
+     }
+    ],
+    "operator": "<="
+   }
+  },
+  "channels_tainted": 8,
+  "constraints_reachable": {},
+  "declared_keys": [
+   "stellarator_09__stellaris__cas72_calc__availability",
+   "stellarator_09__stellaris__fuel_calc__availability",
+   "stellarator_09__stellaris__lcoe_1cfe_calc__availability",
+   "stellarator_09__stellaris__lcoe_calc__availability"
+  ],
+  "entry_types": {
+   "stellarator_09__stellaris__cas72_calc__availability": "usage_literal",
+   "stellarator_09__stellaris__fuel_calc__availability": "usage_literal",
+   "stellarator_09__stellaris__lcoe_1cfe_calc__availability": "usage_literal",
+   "stellarator_09__stellaris__lcoe_calc__availability": "usage_literal"
+  },
+  "group": "availability",
+  "group_valid": true,
+  "modules_fired": 6,
+  "no_constraint_response": true,
+  "not_derivable": [
+   "monotonicity / sign of any response",
+   "same-quantity identity across differing key names",
+   "intra-module operand dependency (trace is module-level)"
+  ],
+  "objectives_reachable": {
+   "cas72": true,
+   "fuel": true,
+   "lcoe": true,
+   "lcoe_1cfe": true
+  },
+  "objectives_unreachable": [
+   "total_capital"
+  ],
+  "semantic_fingerprint": "c9bc164050f0aac8a2009befb34497426d68923066ca1c1783a0b80e8048c261",
+  "sibling_candidates": []
+ },
+ "beta": {
+  "bounds": {
+   "beta_ok": {
+    "operands": [
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "beta",
+      "reached": true,
+      "ref": "stellarator_09__stellaris__beta"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "beta_limit",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__beta_limit"
+     }
+    ],
+    "operator": "<="
+   },
+   "net_positive": {
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "net_electric",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__pb__p_net"
+     },
+     {
+      "class": "literal",
+      "operand": "<literal>",
+      "reached": false,
+      "value": 0.0
+     }
+    ],
+    "operator": ">"
+   },
+   "recirc_ok": {
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "rec_frac",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__pb__rec_frac"
+     },
+     {
+      "class": "bound",
+      "entry_type": "library_default",
+      "operand": "threshold",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__threshold"
+     }
+    ],
+    "operator": "<="
+   },
+   "tbr_ok": {
+    "operands": [
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "tbr",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__tbr"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "tbr_floor",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__tbr_floor"
+     }
+    ],
+    "operator": ">="
+   },
+   "wall_load_ok": {
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "wall_load",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__wall_load_calc__wall_load"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "wall_load_limit",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__wall_load_limit"
+     }
+    ],
+    "operator": "<="
+   }
+  },
+  "channels_tainted": 2,
+  "constraints_reachable": {
+   "beta_ok": {
+    "bound_vs_bound": true,
+    "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+    "operand_classes": [
+     "bound"
+    ],
+    "operands": [
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "beta",
+      "reached": true,
+      "ref": "stellarator_09__stellaris__beta"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "beta_limit",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__beta_limit"
+     }
+    ],
+    "operator": "<="
+   }
+  },
+  "declared_keys": [
+   "stellarator_09__stellaris__beta"
+  ],
+  "entry_types": {
+   "stellarator_09__stellaris__beta": "design_attribute"
+  },
+  "group": "beta",
+  "group_valid": true,
+  "modules_fired": 2,
+  "no_constraint_response": false,
+  "not_derivable": [
+   "monotonicity / sign of any response",
+   "same-quantity identity across differing key names",
+   "intra-module operand dependency (trace is module-level)"
+  ],
+  "objectives_reachable": {},
+  "objectives_unreachable": [
+   "cas72",
+   "fuel",
+   "lcoe",
+   "lcoe_1cfe",
+   "total_capital"
+  ],
+  "semantic_fingerprint": "c9bc164050f0aac8a2009befb34497426d68923066ca1c1783a0b80e8048c261",
+  "sibling_candidates": []
+ },
+ "interest_rate": {
+  "bounds": {
+   "beta_ok": {
+    "operands": [
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "beta",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__beta"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "beta_limit",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__beta_limit"
+     }
+    ],
+    "operator": "<="
+   },
+   "net_positive": {
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "net_electric",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__pb__p_net"
+     },
+     {
+      "class": "literal",
+      "operand": "<literal>",
+      "reached": false,
+      "value": 0.0
+     }
+    ],
+    "operator": ">"
+   },
+   "recirc_ok": {
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "rec_frac",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__pb__rec_frac"
+     },
+     {
+      "class": "bound",
+      "entry_type": "library_default",
+      "operand": "threshold",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__threshold"
+     }
+    ],
+    "operator": "<="
+   },
+   "tbr_ok": {
+    "operands": [
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "tbr",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__tbr"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "tbr_floor",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__tbr_floor"
+     }
+    ],
+    "operator": ">="
+   },
+   "wall_load_ok": {
+    "operands": [
+     {
+      "class": "computed",
+      "entry_type": null,
+      "operand": "wall_load",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__wall_load_calc__wall_load"
+     },
+     {
+      "class": "bound",
+      "entry_type": "design_attribute",
+      "operand": "wall_load_limit",
+      "reached": false,
+      "ref": "stellarator_09__stellaris__wall_load_limit"
+     }
+    ],
+    "operator": "<="
+   }
+  },
+  "channels_tainted": 11,
+  "constraints_reachable": {},
+  "declared_keys": [
+   "stellarator_09__stellaris__cas71_calc__interest_rate",
+   "stellarator_09__stellaris__cas72_calc__interest_rate",
+   "stellarator_09__stellaris__cas80_calc__interest_rate",
+   "stellarator_09__stellaris__idc__interest_rate"
+  ],
+  "entry_types": {
+   "stellarator_09__stellaris__cas71_calc__interest_rate": "usage_literal",
+   "stellarator_09__stellaris__cas72_calc__interest_rate": "usage_literal",
+   "stellarator_09__stellaris__cas80_calc__interest_rate": "usage_literal",
+   "stellarator_09__stellaris__idc__interest_rate": "usage_literal"
+  },
+  "group": "interest_rate",
+  "group_valid": true,
+  "modules_fired": 8,
+  "no_constraint_response": true,
+  "not_derivable": [
+   "monotonicity / sign of any response",
+   "same-quantity identity across differing key names",
+   "intra-module operand dependency (trace is module-level)"
+  ],
+  "objectives_reachable": {
+   "cas72": true,
+   "lcoe": true,
+   "lcoe_1cfe": true
+  },
+  "objectives_unreachable": [
+   "fuel",
+   "total_capital"
+  ],
+  "semantic_fingerprint": "c9bc164050f0aac8a2009befb34497426d68923066ca1c1783a0b80e8048c261",
+  "sibling_candidates": []
+ }
+}
