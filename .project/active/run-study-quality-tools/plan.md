@@ -418,19 +418,19 @@ That the change is values-only and the delivered closed schema accepts it — `k
 
 ### Changes required
 
-- [ ] `exploration/stellarator_e2e/studies/manifest.json` — oracle block only: `sys_path: "exploration/stellarator_e2e/studies"`, `module: "oracle_entry"`, `callable: "evaluate"`, and a `note` stating the generic signature and the `operand_bindings` companion. No other key touched. No `scripts/study/*` file touched.
+- [x] `exploration/stellarator_e2e/studies/manifest.json` — oracle block only: `sys_path: "exploration/stellarator_e2e/studies"`, `module: "oracle_entry"`, `callable: "evaluate"`, and a `note` stating the generic signature and the `operand_bindings` companion. No other key touched. No `scripts/study/*` file touched.
 
 **Digest consequence (stated because it matters downstream):** the manifest's digest is the sha256 of its own bytes (`manifest.py` `load()`), so this edit changes it — currently `bd271da0…`. Verified 2026-08-20: **no committed file references that digest**, and no test pins it (`test_output_contract.py:146` recomputes). So the blast radius is (a) any *future* record snapshot must cite the new digest, and (b) any indicator report generated before this edit is stale. Neither is a code change. Item 3's `indicator_inputs` fingerprint is over package artifacts, not the manifest, and does not move.
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study -q` → green (Item 3's manifest tests validate the edited file)
-- [ ] `uv run python -m pytest tests/study -q -k manifest` → green
+- [x] `uv run python -m pytest tests/study -q` → green (Item 3's manifest tests validate the edited file)
+- [x] `uv run python -m pytest tests/study -q -k manifest` → green
 
 **Manual:**
-- [ ] `git diff exploration/stellarator_e2e/studies/manifest.json` shows changes **inside the oracle block only**
-- [ ] record the new digest in this plan's Implementation Notes
+- [x] `git diff exploration/stellarator_e2e/studies/manifest.json` shows changes **inside the oracle block only**
+- [x] record the new digest in this plan's Implementation Notes
 
 **What we know works after this phase:** the manifest names the seam `verify.py` will import, and nothing else moved.
 
@@ -664,7 +664,15 @@ pass  package_clean: package tree is byte-untouched (git clean)
 - Four of the five plan-listed negatives are produced by mutating the *documents* preflight reads rather than the package, which keeps the committed package read-only and leaves the other gates carrying their real outcomes. The dirty-tree negative is aimed at the `clean` subcommand against a scratch tree inside the repository, because "a tree git cannot see" and "a tree git can see is dirty" are different failures and only the second is the gate under test. Three negatives beyond the plan's five were added: a baseline executed under another identity (Invariant 5), a wrong headline, and a differing verdict.
 
 ### Phase 6 Completion
-**New manifest digest:**
+**Completed:** 2026-08-20. **Data-only edit, its own commit.**
+
+**New manifest digest:** `feb1920f1b54c586259a51d7b6aaf5306861ec4a78968072bf95ef39a5bc82ea` (was `bd271da04c194c5b01ab8c3ab2f756473334c1919510468340c57a0b36019eea`).
+
+**Actual changes:** `exploration/stellarator_e2e/studies/manifest.json`, oracle block only — `module: "oracle_entry"`, `callable: "evaluate"`, `sys_path: "exploration/stellarator_e2e/studies"`, and a `note` stating the generic signature and the `operand_bindings` companion. `kind` stays `python_callable`; the `cli` amendment is declined and the delivered validator rejects it anyway. `git diff --stat` is 4 insertions, 4 deletions, all inside the oracle block. No `scripts/study/*` file touched, and no other manifest key.
+
+**Blast radius, as the plan predicted:** no committed file references the old digest and no test pins it. Any future record snapshot cites the new one; any indicator report generated before this edit is stale. Item 3's `indicator_inputs` fingerprint is over package artifacts and did not move.
+
+**Deviations:** none.
 ### Phase 7 Completion
 ### Phase 8 Completion
 **Era-dependent test count:**

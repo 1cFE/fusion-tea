@@ -84,9 +84,9 @@
   },
   "oracle": {
     "kind": "python_callable",
-    "module": "verify_stellaris",
-    "callable": "compute",
-    "sys_path": "exploration/stellarator_e2e",
-    "note": "Pure-Python recompute of the whole plant chain, independent of the generated package. It has no CLI: compute() takes no arguments and reads the module-global IN dict, which a caller mutates to move a point. Recorded as the entry point that exists; a later CLI form would be a new oracle kind, not a rewrite of this one."
+    "module": "oracle_entry",
+    "callable": "evaluate",
+    "sys_path": "exploration/stellarator_e2e/studies",
+    "note": "Package-owned oracle seam. evaluate(point) takes a mapping of qualified entry keys to floats and returns a mapping of qualified channel names to floats; it wraps the independent pure-Python oracle verify_stellaris.py, which is imported and never modified. The module also publishes a fixed-name companion, operand_bindings() -> {constraint_id: {source_name: {kind, key}}}, which says which qualified input key or channel each predicate operand means. A generic verifier requires both and fails closed on anything unresolved: on this package one operand of five constraints resolves to nothing by name at all, so a tool that inferred bindings would compare the wrong number and read as a pass."
   }
 }
