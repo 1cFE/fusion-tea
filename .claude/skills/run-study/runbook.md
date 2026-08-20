@@ -255,7 +255,9 @@ read is a separate opinion, not a revision of someone else's.
 Header stamps the administrator, the date, and the `snapshot.json` digest it read.
 Sections: what the study set out to do; what it found; the framing verdict per axis;
 the constraint structure; findings carried forward; and **What the record does not
-support**. Only paths inside the record directory may be cited.
+support**. Only paths inside the record directory may be cited. A fact the administrator
+cannot recover from the record is a defect in the record contract, not in the synthesis —
+file it as a process finding against the contract, not as a weakness of the read.
 
 ---
 

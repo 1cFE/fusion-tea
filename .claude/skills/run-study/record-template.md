@@ -37,12 +37,12 @@ different study and gets a new study id.
 
 ## 1. Study header
 
-- **Study id:** `<YYYYMMDD>-<goal-slug>`
+- **Study id:** `<study-id: YYYYMMDD-goal-slug>`
 - **Package:** `<pkg>`
 - **Date executed:** `<YYYY-MM-DD>`
 - **Executor:** `<session or person>`
 - **Mode:** execute
-- **Arms:** `<arm-<slug>, ... — or: single arm>`
+- **Arms:** `<arm ids, comma-separated — or: single arm>`
 
 Arms are variants of the same question, run to be compared. Two studies asking different
 questions of the same package are two records, not two arms of one.
@@ -95,13 +95,13 @@ One pair of subsections per axis. Both ship present; the `**Applies:**` line
 discharges the one the axis's framing does not owe.
 
 #### `<axis>` — feasible structure (search framing)
-**Applies:** `<yes \| not applicable — <axis> is sensitivity-framed>`
+**Applies:** `<yes \| not applicable — this axis is sensitivity-framed>`
 
 `<which constraint is active, where the boundary sits, whether a constrained optimum
 was found and where>`
 
 #### `<axis>` — observed response (sensitivity framing)
-**Applies:** `<yes \| not applicable — <axis> is search-framed>`
+**Applies:** `<yes \| not applicable — this axis is search-framed>`
 
 `<the observed response; an explicit statement that no boundary claim is made; and,
 for any constraint that goes violated anywhere in the sweep, where in the swept space
@@ -144,8 +144,8 @@ such with its condition.
 
 | Gate | Outcome | Detail |
 |---|---|---|
-| Declared-group key validation | `<pass \| fail \| did not run — <condition>>` | `<detail>` |
-| Suffix-sibling scan (warnings only) | `<pass \| warnings: <n>>` | `<the siblings found, or none>` |
+| Declared-group key validation | `<pass \| fail \| did not run, with the condition>` | `<detail>` |
+| Suffix-sibling scan (warnings only) | `<pass \| warnings with count>` | `<the siblings found, or none>` |
 | Baseline gate against the pinned headline | `<pass \| fail>` | `<expected vs observed>` |
 | Manifest / package fingerprint match | `<pass \| fail>` | `<detail>` |
 | Package cleanliness | `<pass \| fail>` | `<detail>` |
@@ -264,6 +264,9 @@ Field names marked **(Item 3)** are copied from
     "indicator_inputs": {                      // (Item 3) fingerprints.indicator_inputs
       "recipe": "indicator-input-fingerprint/v1",                       // (Item 3)
       "digest": "<sha256>",
+      // `files` uses the REPORT's {path, sha256} object shape (study-indicators/v1),
+      // copied here under the manifest's dotted name — the manifest itself stores files
+      // as a flat path list; the snapshot keeps the richer per-file digest shape.
       "files": [ { "path": "<repo-relative POSIX>", "sha256": "<sha256>" } ]
     },
     "recorded_provenance.executable_fingerprint": "<sealed>",           // (Item 3)
@@ -351,8 +354,8 @@ Field names marked **(Item 3)** are copied from
 
   "tools": [
     { "path": "scripts/study/<tool>.py",       // (Item 3) report tool.path
-      "revision": { "recipe": "tool-source-digest/v1",                  // (Item 3)
-                    "digest": "<sha256>" } }
+      "source_digest": { "recipe": "tool-source-digest/v1",             // (Item 3) name
+                         "digest": "<sha256>" } }
   ],
 
   "teax": { "revision": "<revision as run>",
