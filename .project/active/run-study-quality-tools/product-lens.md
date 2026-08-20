@@ -45,3 +45,31 @@ Smells addressed:
 - The era pin is restated as a prerequisite the adapter asserts and fails closed on, with the annex recording it — not as something the adapter merely records.
 
 Gate: CLEAR
+
+---
+
+## run-study-quality-tools (Item 4) — 2026-08-19 — rev design.md (draft, at repo commit `becee37c`)
+
+Epic: RUN-STUDY
+
+Point (re-derived, independently of the design's own framing): The proof-of-life's mechanical discipline moves into package-agnostic tools that gate and verify but never execute and never judge; every package-specific fact splits by kind — stable declarative facts to the data-only manifest, era workarounds to a self-checking temporary adapter that folds itself into a truthful teax lineage identity and states the condition under which it is deleted whole. [source: `.project/concepts/run-study-skill.md` Owner's Words + Non-Goals, grade: owner; `.project/concepts/run-study-skill-design.md` Design Principles 1/4, Tools, Required Invariants, Validation Strategy, grade: agent (ratified by owner 2026-08-19); `.project/concepts/run-study-skill-design-review.md` C4/C5/M6/m3, grade: agent (accepted); `.project/backlog/epic_run_study_capability.md` Item 4 scope, grade: owner via epic scope]
+
+Epic gate context: the epic's live product-lens gate is CLEAR. `epic-F1` and `epic-F2` are FIXED on owner authority and nothing below reopens either.
+
+Falsifier: The design can be fully implemented although a committed record states that every verdict was independently re-derived from the package's own predicate declarations, on evidence that does not support the claim.
+
+Resolves (carried from the spec revision):
+- `F1`: still FIXED — the design gives the manifest-currency gate its own named preflight gate against both contract fingerprints, and the currency-vs-identity split is sound: neither contract file is in the loader's accept-set, so a glue edit cannot move either value and the gate cannot pass by looking away. Verified on disk.
+- `F2`: still FIXED — the dead-filler assertion has a stated home (adapter, Invariant 8) and runs on every adapter-route load.
+
+Findings (new at this revision):
+- `F3` [DO] The design assigns generic `verify.py` the job of resolving each `predicate_ir` operand to a value, and the producer emits no binding that makes that possible. codegen's `constraint_catalog` operands are `feature_ref`s carrying a short `source_name` and a SysML qualified name with empty `chain_segments`; the contract's `parameters` (204) and `outputs` (71) carry no back-reference to those qualified names. Three of the package's five constraints resolve only under three *different* composition rules, and `net_positive`'s `net_electric` resolves to no parameter and no channel at all — its value is `stellarator_09__stellaris__pb__p_net`, which the proof-of-life reached only by knowing the package. So a record can carry `verdicts_rederived: true` on evidence weaker than a reader will assume, and the design does not say what verify does with an operand it cannot resolve. Against the owner-graded rule that glue honesty is mandatory output rather than a comment, an unstatable resolution failure is the same defect one level down. — `.project/active/run-study-quality-tools/spec.md:66,68` (`[HARD]` + owner-graded honesty rule); `exploration/stellarator_e2e/generated/contracts/model_contract.json` (checked directly) — disposition: FIX BEFORE PLAN (not BLOCK — the fix is a package-owned binding declaration plus a fail-closed rule, and it does not contest any decision the owner made)
+
+Smells:
+- **A consumer compensating for a producer guarantee.** The operand-resolution job belongs to codegen (emit the binding) or to the package side (declare it); the design silently hands it to the tool that is forbidden from holding package knowledge. Fired, and escalated into the review's fundamental assessment rather than left in the rubric. — `design.md:68,188`
+- **Ownership moved without saying so, small version.** Who calls the oracle for the `g3` glue rung is unstated, so whether `oracle_entry.py` can change a fed value — and must therefore enter the adapter's declared source set — is unresolved. `special_materials` corresponds to no package output channel, so the shim's declared generic signature cannot serve `g3` as written. — `design.md:80,122,228`
+- The design binds to Items 2 and 3 as *accepted designs*, which was correct when written and is now stale: both are delivered, and four of the design's asks do not match what is on disk (oracle `sys_path`, `tests/study/test_generic.py`'s file-set assertions, `tool_source_digest()` without `files`, the annex's section names). Not a point failure; a currency failure of exactly the kind the item's own `manifest_currency` gate exists to catch.
+
+Gate: CLEAR (`F3` is FIX BEFORE PLAN, not BLOCK)
+
+Note on method: `~/.claude/scripts/product-lens.md` is outside this session's permitted paths, so the ledger format follows the two blocks above rather than the spec directly, and the lens was run by the reviewing agent inline rather than by a separate subagent. Every finding was checked against the cited file, and the operand-resolution finding was checked against the committed model contract rather than against any document.
