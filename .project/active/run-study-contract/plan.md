@@ -156,18 +156,18 @@ Also under test: **MF2's arm scoping**, checked against a two-arm case, not just
 
 **See `design.md#record-section-order`** for the seventeen headings and the two `**Applies:**` subsections in §6; **`design.md#snapshot-structure`** for the arm-scoping rule.
 
-- [ ] Write draft `.claude/skills/run-study/record-template.md`: seventeen headings verbatim, `**Applies:**` lines on §6's two conditional subsections, typed placeholder tokens (`<one-line goal, owner's words>`), no plausible-looking example values
-- [ ] Draft the snapshot shape as `design.md:241-263` draws it, with `arms[]` and `stores[]`
-- [ ] Fill the template against `exploration/stellarator_e2e/study/` (`verification_summary.json`, the two CSVs, `run_design_search.py`, `make_report.py`, `report.html`) plus `.project/active/demo-proof-of-life/plan.md` (phases at :39-65, review dispositions at :74-86, per-phase results at :92-103)
-- [ ] Record every unfillable section and field with its reason, in `.project/active/run-study-contract/dry-run.md`
-- [ ] **Two-arm snapshot self-audit**: hand-construct a two-arm case where the arms span fingerprints, and check that each arm carries its own `window`, `strategy`, `effective_executable_fingerprint`, `verification`, and `artifacts`; that both `store_id`s resolve into `stores[]`; and that nothing arm-varying sits at top level
-- [ ] Record in `dry-run.md` where the window's bounds/rationale split landed, as the B2 verdict
+- [x] Write draft `.claude/skills/run-study/record-template.md`: seventeen headings verbatim, `**Applies:**` lines on §6's two conditional subsections, typed placeholder tokens (`<one-line goal, owner's words>`), no plausible-looking example values
+- [x] Draft the snapshot shape as `design.md:241-263` draws it, with `arms[]` and `stores[]`
+- [x] Fill the template against `exploration/stellarator_e2e/study/` (`verification_summary.json`, the two CSVs, `run_design_search.py`, `make_report.py`, `report.html`) plus `.project/active/demo-proof-of-life/plan.md` (phases at :39-65, review dispositions at :74-86, per-phase results at :92-103)
+- [x] Record every unfillable section and field with its reason, in `.project/active/run-study-contract/dry-run.md`
+- [x] **Two-arm snapshot self-audit**: hand-construct a two-arm case where the arms span fingerprints, and check that each arm carries its own `window`, `strategy`, `effective_executable_fingerprint`, `verification`, and `artifacts`; that both `store_id`s resolve into `stores[]`; and that nothing arm-varying sits at top level
+- [x] Record in `dry-run.md` where the window's bounds/rationale split landed, as the B2 verdict
 
 ### Validation
 
-- [ ] Every one of the seventeen sections is either filled from a cited `file:line` or listed as NO SOURCE with a reason — no section left unaddressed
-- [ ] The two-arm audit produces either a clean pass or a named field that has no correct home
-- [ ] `dry-run.md` states the B2 verdict on the window in one sentence
+- [x] Every one of the seventeen sections is either filled from a cited `file:line` or listed as NO SOURCE with a reason — no section left unaddressed
+- [x] The two-arm audit produces either a clean pass or a named field that has no correct home
+- [x] `dry-run.md` states the B2 verdict on the window in one sentence
 
 **What We Know Works After This Phase:** whether the structure survives contact with the best study this project has run. Per `design.md:346`, a gap is the honest distance between the pre-capability record and the contract — it is input to Item 5, **not** a reason to soften the contract. Only a section that cannot be filled *by any compliant study* is a structural defect, and that is the finding this phase is hunting.
 
@@ -426,6 +426,29 @@ No new dependencies; this item writes markdown. **See CLAUDE.md** for the `uv ru
 **Deviations from Plan:**
 - The plan's neighbour check names `.claude/skills/pdf-analysis/SKILL.md`. That path errors with `fatal: pathspec ... is beyond a symbolic link` — every skill in this repo other than the two tracked ones is a symlink into `~/1cfe/agentic-mbse/claude/skills/`. The check was run against the symlink path itself (`.claude/skills/pdf-analysis`), which is the same assertion and does resolve. Same substitution applies to Phase 6's re-confirmation.
 ### Phase 2 Completion
+
+**Completed:** 2026-08-19
+
+**Changes Made:**
+- Created draft `.claude/skills/run-study/record-template.md` — seventeen `## ` headings verbatim in the design's order, `**Applies:**` lines on §6's two conditional subsections, typed placeholder tokens throughout, no plausible-looking example values. Header states the values/arguments split with the window as the worked example, the fixed-heading rule, the explicit-nil rule, `/show-me` weight, the unreplaced-token defect, and the append-only addendum rule.
+- Added the draft snapshot shape as the template's appendix, marked DRAFT and replaced in Phase 3. It lives in the appendix rather than in `dry-run.md` so that Phase 3's "delete the draft shape; one home only" does not have to edit committed evidence.
+- Created `.project/active/run-study-contract/dry-run.md` — the section-by-section fill against the proof-of-life, the tally, the B1 and B2 verdicts, and the two-arm snapshot self-audit.
+
+**Check stencil, run before the fill:** two structural counts failed on the first draft and were fixed before the fill proceeded.
+- `grep -c '^## '` returned 18, not 17 — the snapshot appendix was authored at `## `. Demoted to `### ` under the `# Template guidance` heading, which also makes the appendix visibly template material rather than a record section.
+- `grep -c '^**Applies:**'` returned 3, not 2 — §12 (cross-fingerprint correlation) had been given an `**Applies:**` line too. §12 is arm-conditional, not framing-conditional; its nil is discharged in prose by naming the condition, per the explicit-nil rule. `**Applies:**` is now reserved for the framing-conditional subsections, which is what D5 assigns it to.
+
+**Dry-run outcome.** Eight sections fill from a committed artifact; three fill by mapping or extraction; four are partial; two (§8 indicators, §16 snapshot) are largely or wholly unsourced. **No section is a structural defect** — every gap traces to a capability the proof-of-life predates, or to a fact that existed and was dropped on export. Nothing in the template was softened. The clearest single case of what the contract adds is §4: `short_verdicts()` (`run_design_search.py:298`) truncated the qualified constraint id before export, so the committed CSVs carry short names only and the qualified identity was lost. §10's glue disclosure was the strongest confirmation — the script's `GLUE LEDGER` docstring block is already in §10's exact shape.
+
+**B1 verdict.** Holds. The exercise found no fact the two files could not hold, and found four facts the proof-of-life *had* and lost for want of a heading.
+
+**B2 verdict on the window.** Holds, and it is stated in one sentence in `dry-run.md`: the proof-of-life, with no contract telling it to, already put the bounds (`run_design_search.py:123-125`) and the scan story (`demo-proof-of-life/plan.md`, Phase 1 result) in two different places.
+
+**Two-arm self-audit — one field flagged.** Constructed a cross-fingerprint A/B (`arm-sealed` vs `arm-adapter`). Every arm-scoped field passed and every `store_id` resolved. **`glue_ledger` has no correct home at top level**: in a sealed-vs-adapter A/B, glue is exactly what differs between the arms, and that difference is the point of the comparison. The design's own scoping rule ("any field that can differ between arms is arm-scoped") puts it under `arms[]` with a per-arm `glue_ledger_none: true` nil. `design.md:258`'s sketch shows it top-level, which the design labels illustrative while the scoping rule at `design.md:239` is normative — so this is the rule being applied, not a design change. Phase 3 writes it arm-scoped. Same class of miss as MF2, found by the same method.
+
+**Deviations from Plan:**
+- The two structural fixes above, both made in response to the check stencil rather than after it.
+- Recorded, not a deviation: the proof-of-life ran two studies (grid + availability sweep), which under the contract are two records rather than two arms of one — arms are variants of the same question. `dry-run.md` states this up front so a reader coming from the proof-of-life is not surprised.
 ### Phase 3 Completion
 ### Phase 4 Completion
 ### Phase 5 Completion
