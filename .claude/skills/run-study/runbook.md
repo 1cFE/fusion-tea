@@ -88,10 +88,26 @@ record that critique's verdict as a named review outcome.
 **Fails closed when:** an axis reported `no_constraint_response` reaches execution with no user ruling recorded
 **Annex:** none
 
-### 5. Run the preflight gates
+### 5. Prepare the execution route and execute the pinned baseline point
+
+Load the route and let it emit the package's identity document, then run exactly the
+manifest's pinned baseline point and deposit its result. Both documents are inputs to
+the gates in step 6 — the identity gate reads the identity document and the baseline
+gate reads the baseline result — so they must exist before those gates can read them.
+Nothing is argued here; the route's rationale is recorded at step 8, after the route has
+been exercised.
+
+**Calls:** the route under evaluation
+**Deposits:** `results/package_identity.json` + `results/baseline_result.json`
+**Fails closed when:** whichever route is under evaluation cannot load the package; the adapter's own self-check fails
+**Annex:** `exploration/<pkg>/studies/ANNEX.md § Loader exception and glue` and `§ Baseline pin`
+
+### 6. Run the preflight gates
 
 Every gate runs and every gate's outcome is recorded, pass or fail. A gate that did not
-run is recorded as not run, with its condition. A cold reader must be able to see that
+run is recorded as not run, with its condition. The identity and baseline gates read the
+two documents step 5 deposited; they read them as data and never execute anything
+themselves. A cold reader must be able to see that
 the gates ran, not only that the study proceeded. Suffix-sibling findings are warnings
 and never gate.
 
@@ -100,7 +116,7 @@ and never gate.
 **Fails closed when:** declared-group key validation fails; the baseline point does not reproduce the pinned headline; the manifest and package fingerprints disagree; the package is not git-clean
 **Annex:** `exploration/<pkg>/studies/ANNEX.md § Baseline pin`
 
-### 6. Scan the candidate range with the independent oracle, then fix the window
+### 7. Scan the candidate range with the independent oracle, then fix the window
 
 The window is chosen after a scan, not before. Record what was scanned, what the scan
 showed, and what that fixed — and record the window's provenance as `engineered` or
@@ -113,22 +129,24 @@ derivation is recorded.
 **Fails closed when:** the oracle is unavailable or fails to run on the candidate range
 **Annex:** `exploration/<pkg>/studies/ANNEX.md § Oracle` and `§ Validity masks`
 
-### 7. Choose the execution route and record why
+### 8. Choose the execution route and record why
 
 Two routes, and no third. The **`teax-study` CLI** runs plain Cartesian grids on a
 stock-loadable package. A **study-local direct-API definition** (`StudyRunner` +
 `PreparedListStrategy`) runs coordinated axis-group blocks, and is the only route for a
-package needing an adapter. Record which route and what about this study led there. If
+package needing an adapter. Record which route and what about this study led there. The
+rationale is written here, after step 5 first exercised the route and step 6 gated it —
+so it is an account of a route already known to load, not a prediction. If
 the route is the adapter route, disclose the glue in the same place: per rung, what the
 harness supplies that the model does not, why the model cannot, and which claims that
 scopes. A study with no glue says so.
 
 **Calls:** none
 **Deposits:** record.md § 10 Execution route and why, including the glue disclosure
-**Fails closed when:** the chosen route cannot load the package; the adapter's own self-check fails
+**Fails closed when:** nothing mechanical — the route's mechanical conditions gate at step 5
 **Annex:** `exploration/<pkg>/studies/ANNEX.md § Loader exception and glue`
 
-### 8. Run every point through the stock teax lifecycle
+### 9. Run every point through the stock teax lifecycle
 
 No hand-rolled sweep loop. Every point goes through the delivered lifecycle so that
 each one carries its inputs, its channels, and its per-constraint verdict into the
@@ -136,12 +154,12 @@ store. The objective result and every executing constraint's status come out of 
 run and into the record by qualified identity — `constraint_id` and
 `source_local_identity`, not a short display name.
 
-**Calls:** the route chosen in step 7
+**Calls:** the route prepared at step 5 and argued at step 8
 **Deposits:** `results/` + record.md § 3 Objective and result + § 4 Constraint outcomes
 **Fails closed when:** any point fails to evaluate; the store rejects the study definition's compatibility tuple; the package is not git-clean after the run
 **Annex:** `exploration/<pkg>/studies/ANNEX.md § Era pin`
 
-### 9. Verify a sample against the package-owned oracle
+### 10. Verify a sample against the package-owned oracle
 
 Sample stratified by verdict combination, so the sample cannot miss a verdict the study
 produced. Re-derive the verdicts from the oracle's own operands rather than comparing
@@ -154,7 +172,7 @@ independently verified, and saying so is part of the outcome.
 **Fails closed when:** a sampled point exceeds the tolerance on a named channel; a re-derived verdict disagrees with the recorded one
 **Annex:** `exploration/<pkg>/studies/ANNEX.md § Oracle`
 
-### 10. Judge each axis's framing against the observed result
+### 11. Judge each axis's framing against the observed result
 
 The framing proposed at intake is a proposal. After the run, judge each axis's framing
 against what the run showed, and record it as judged next to it as proposed — with
@@ -168,7 +186,7 @@ boundary claim is made.
 **Fails closed when:** nothing mechanical
 **Annex:** none
 
-### 11. Record the review outcomes
+### 12. Record the review outcomes
 
 Each review is a named lens with a verdict and a disposition, never a pass count. One
 pass may cover several lenses; several passes may cover one. Correctness, honesty, and
@@ -181,7 +199,7 @@ outcome.
 **Fails closed when:** nothing mechanical
 **Annex:** none
 
-### 12. Write the report
+### 13. Write the report
 
 Every number in the report traces to a committed artifact. A number that cannot be
 recomputed from something in `results/` does not go in. While the package runs under an
@@ -194,7 +212,7 @@ takes to reproduce it.
 **Fails closed when:** nothing mechanical
 **Annex:** `exploration/<pkg>/studies/ANNEX.md § Era pin`
 
-### 13. Resolve the snapshot and commit the record
+### 14. Resolve the snapshot and commit the record
 
 Every snapshot value is resolved at this moment and copied in. Nothing in the record
 cites a live file for content: deleting or editing the manifest, the adapter, or the
@@ -209,7 +227,7 @@ immutable: corrections are addenda, and `snapshot.json`, `indicators.json`, and
 **Fails closed when:** an unreplaced `<...>` placeholder remains in `record.md`; a name under `manifest.content_used.fingerprint_names` has no key under `fingerprints`; an `arms[].store_id` does not resolve into `stores[]`; a result artifact has no digest
 **Annex:** none
 
-### 14. Register the findings and append the discovery-log rows
+### 15. Register the findings and append the discovery-log rows
 
 Collect every finding the study produced — the model-development findings from step 4,
 and whatever the run and the reviews turned up — into the record's findings register,

@@ -210,7 +210,7 @@ Gate: CLEAR
 
 ---
 
-### Item 3: Indicator Tool and Package Manifest
+### Item 3: Indicator Tool and Package Manifest ✅
 
 **Type**: Implementation
 
@@ -241,11 +241,11 @@ Gate: CLEAR
 - Package-specific names or imports in the generic tool.
 
 **Success Criteria**:
-- [ ] Known-answer tests pass for R, a, availability, interest rate, and beta.
-- [ ] A valid empty result exits 0; missing keys, fingerprint mismatch, and unparseable artifacts exit non-zero.
-- [ ] Suffix matches are warnings only and never alter declared membership.
-- [ ] The generic tool contains no stellarator-specific name and never imports an adapter.
-- [ ] The manifest is data-only and separates stable package catalog facts from study choices.
+- [x] Known-answer tests pass for R, a, availability, interest rate, and beta.
+- [x] A valid empty result exits 0; missing keys, fingerprint mismatch, and unparseable artifacts exit non-zero.
+- [x] Suffix matches are warnings only and never alter declared membership.
+- [x] The generic tool contains no stellarator-specific name and never imports an adapter.
+- [x] The manifest is data-only and separates stable package catalog facts from study choices.
 
 **Estimated Effort**: 1–1.5 days (spec 1h, design 2h, plan 1h, execute 4–7h)
 

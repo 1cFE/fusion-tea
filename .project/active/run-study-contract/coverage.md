@@ -10,20 +10,20 @@ Re-derived by reading the three written documents under `.claude/skills/run-stud
 
 | # | Spec item | Home | Deposited by |
 |---|---|---|---|
-| 1 | Objective and result | `record.md` §3 Objective and result | runbook step 8 |
-| 2 | Constraint outcomes, by qualified identity, `satisfied \| violated \| indeterminate` | `record.md` §4 Constraint outcomes | runbook step 8 |
+| 1 | Objective and result | `record.md` §3 Objective and result | runbook step 9 |
+| 2 | Constraint outcomes, by qualified identity, `satisfied \| violated \| indeterminate` | `record.md` §4 Constraint outcomes | runbook step 9 |
 | 3 | Intake, the owner's words verbatim | `record.md` §2 Intake | runbook step 1 |
 | 4 | Axis groups, per-key `fan_out \| tie` provenance | `record.md` §7 Axis groups | runbook step 2 |
 | 5 | Indicators per proposed axis, the not-derivable disclosure, the user's ruling, and the model-development finding per `no_constraint_response` axis | `record.md` §8 Indicators and rulings | runbook steps 3 and 4 |
-| 6 | Framing, as proposed and as judged | `record.md` §5 Framing | runbook steps 4 and 10 |
-| 7 | Preflight results, pass or fail per gate | `record.md` §9 Preflight results | runbook step 5 |
-| 8 | Execution route and why | `record.md` §10 Execution route and why | runbook step 7 |
-| 9 | Compatibility tuples and cross-fingerprint correlation | **SPLIT** — values in `snapshot.json` `stores[].compatibility_tuple`; the correlation argument in `record.md` §12 | runbook steps 8 and 13 |
-| 10 | Verification — command, sampling scheme, tolerance, outcome | **SPLIT** — command, sampling scheme, tolerance and summary digest in `snapshot.json` `arms[].verification`; outcome and what it licenses in `record.md` §13 | runbook step 9 |
-| 11 | Review outcomes — each named lens, verdict, disposition | `record.md` §14 Review outcomes | runbook steps 4 and 11 |
-| 12 | Findings, model and process, each with its routed home | `record.md` §15 Findings | runbook step 14 |
-| 13 | Snapshot — the resolved-facts block | **SPLIT** — the resolved facts in `snapshot.json`; the window's "how it was chosen" clause in `record.md` §11. `record.md` §16 is a filename/digest/schema-version pointer, not a second copy | runbook steps 6 and 13 |
-| 14 | Missing-evidence statement | `record.md` §17 What this record does not contain | runbook step 13 |
+| 6 | Framing, as proposed and as judged | `record.md` §5 Framing | runbook steps 4 and 11 |
+| 7 | Preflight results, pass or fail per gate | `record.md` §9 Preflight results | runbook step 6 |
+| 8 | Execution route and why | `record.md` §10 Execution route and why | runbook step 8 |
+| 9 | Compatibility tuples and cross-fingerprint correlation | **SPLIT** — values in `snapshot.json` `stores[].compatibility_tuple`; the correlation argument in `record.md` §12 | runbook steps 9 and 14 |
+| 10 | Verification — command, sampling scheme, tolerance, outcome | **SPLIT** — command, sampling scheme, tolerance and summary digest in `snapshot.json` `arms[].verification`; outcome and what it licenses in `record.md` §13 | runbook step 10 |
+| 11 | Review outcomes — each named lens, verdict, disposition | `record.md` §14 Review outcomes | runbook steps 4 and 12 |
+| 12 | Findings, model and process, each with its routed home | `record.md` §15 Findings | runbook step 15 |
+| 13 | Snapshot — the resolved-facts block | **SPLIT** — the resolved facts in `snapshot.json`; the window's "how it was chosen" clause in `record.md` §11. `record.md` §16 is a filename/digest/schema-version pointer, not a second copy | runbook steps 7 and 14 |
+| 14 | Missing-evidence statement | `record.md` §17 What this record does not contain | runbook step 14 |
 
 **Zero items with no home. Zero items with two homes that are not a declared split.**
 
@@ -58,3 +58,14 @@ Phase 2's dry run tested exactly this seam and found it clean: the proof-of-life
 | `indicators.json` in the record directory, with its digest | `indicators` |
 
 The one clause not in the appendix is the window's "how it was chosen", homed in §11 — the SF1 split above, and the only one.
+
+
+---
+
+## Amendment, 2026-08-20 — runbook step insertion (Item 4 design rev 2, L3)
+
+A new step 5 **Prepare the execution route and execute the pinned baseline point** sits before the preflight gates, and the steps after it renumber 5-14 → 6-15. The step references in the map above are updated; **no spec item changed its home, and no record section was added or removed.**
+
+Why the insertion is a correction rather than an addition: preflight's identity gate reads `package_identity.json`, which the adapter emits at load, and its baseline gate reads `baseline_result.json`, which only an executed point produces. In the delivered order both inputs came into existence two steps *after* the step that consumes them, and the old step 7 already carried fail-closed conditions presupposing a load that had not happened. Those two conditions moved to the new step 5. Step 8 keeps the route rationale and the glue disclosure, and now states that the rationale is written after the route was first exercised -- an account of a route known to load, not a prediction.
+
+The new step deposits two files into `results/` and no record section, so it adds no row here. The two-way deposit check was re-run against the amended text: seventeen sections, fifteen steps, zero orphans in either direction.

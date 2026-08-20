@@ -584,3 +584,20 @@ Every one of the fourteen steps also deposits at least one non-section artifact 
 ---
 
 **Status**: Draft → In Progress → **Complete** (all six phases, 2026-08-19)
+
+
+---
+
+## Cross-item Amendment — 2026-08-20
+
+**Ordered by:** the orchestrator, from RUN-STUDY Item 4 design rev 2, `.project/active/run-study-quality-tools/design.md` § Coordination ask 1 [L3]. The Item 2 audit (commit `32d0594e`) already named this as the one amendment pending Item 4's folded design.
+
+**What changed.** A new runbook step 5, **Prepare the execution route and execute the pinned baseline point**, inserted before the preflight gates. It calls the route under evaluation and deposits `results/package_identity.json` and `results/baseline_result.json`. Steps 5-14 renumber to 6-15; the runbook now carries **fifteen** execute steps, not fourteen.
+
+**Why it is a correction, not an addition.** The delivered order had a real dependency inversion. Preflight's identity gate reads `package_identity.json`, which the adapter emits at load, and its baseline gate reads `baseline_result.json`, which only an executed point produces -- so both inputs came into existence two steps after the step consuming them. The old step 7 gave the tell: its fail-closed conditions ("the chosen route cannot load the package; the adapter's own self-check fails") presupposed a load that had not happened. Those two conditions moved to the new step 5. Step 8 (the old 7) keeps the route rationale and the glue disclosure, states that the rationale is written after the route was first exercised, and its **Fails closed when:** line is now "nothing mechanical".
+
+**Record template.** The section set is unchanged -- still seventeen `## ` headings, still two `**Applies:**` lines. Two clauses were added: §9 says the identity and baseline gates read the documents the route-preparation step deposited and that the detail column should name them, and §10 says the rationale is recorded after the route was exercised and gated. The four audit fixes from `32d0594e` are intact, confirmed by grep.
+
+**Checks re-run on the amended text.** Fifteen `### ` steps, fifteen each of `**Calls:**`, `**Deposits:**`, `**Fails closed when:**`, `**Annex:**` -- the micro-schema holds on every step. Two-way deposit pairing: seventeen sections, zero orphans in either direction. Steps 5 and 13 deposit artifacts rather than sections, which is the same shape the report step already had; no step's output lands nowhere. Grep gates: zero package names, zero `STUDY_POLICY` references. `coverage.md`'s step references are renumbered and carry their own amendment note.
+
+**What this does not change.** No spec item changed its home. The fourteen-step counts written in the Phase 4 and Phase 6 completion notes above were correct when those phases ran and are left as written; this section is the amendment record, and the live count is fifteen.

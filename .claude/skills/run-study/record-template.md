@@ -139,7 +139,9 @@ addition to the user's ruling. The ruling does not discharge it.
 
 ## 9. Preflight results
 
-Every mechanical gate that ran, with its outcome. A gate that did not run is stated as
+Every mechanical gate that ran, with its outcome. The identity and baseline gates
+read the documents the route-preparation step deposited in `results/`; name those
+files in the detail column so a cold reader can open what the gate read. A gate that did not run is stated as
 such with its condition.
 
 | Gate | Outcome | Detail |
@@ -154,6 +156,9 @@ such with its condition.
 
 - **Route:** `<teax-study CLI \| study-local direct-API>`
 - **Why this route:** `<what about this study forced or allowed it>`
+
+The rationale is recorded after the route was first exercised and gated, so it accounts
+for a route already known to load rather than predicting one.
 
 **Glue disclosure.** What the harness supplies that the model does not, and what that
 means for the claims. The ledger's entries are values and live in `snapshot.json`
