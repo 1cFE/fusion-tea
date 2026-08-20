@@ -227,21 +227,21 @@ def test_recompute_mismatch_and_missing_declared_file_both_fail(): ...
 
 **See `design.md` for:** D4, D2, D3, S1 (`design.md#scripts-study-identity-py-the-identity-seam`), D10 (`common.py`'s four jobs), the L5c recipe-id note in `design.md#potential-risks`.
 
-- [ ] `tests/study/test_identity.py` (NEW — first)
-- [ ] `scripts/study/schemas/package_identity.v1.schema.json` (NEW, additive; Item 3's three schema files untouched)
-- [ ] `scripts/study/identity.py` (NEW)
-- [ ] `scripts/study/common.py` (NEW): git-clean gate, atomic deterministic document write, per-tool source digest under `tool-source-digest/v1` **carrying `files[]` in the delivered `{path, sha256}` shape**, exit/error convention. No teax import.
-- [ ] `tests/study/test_generic.py`: extend `TOOL_MODULES` with `identity.py` and `common.py` (Invariant 1). Delivered subset assertions need no change.
+- [x] `tests/study/test_identity.py` (NEW — first)
+- [x] `scripts/study/schemas/package_identity.v1.schema.json` (NEW, additive; Item 3's three schema files untouched)
+- [x] `scripts/study/identity.py` (NEW)
+- [x] `scripts/study/common.py` (NEW): git-clean gate, atomic deterministic document write, per-tool source digest under `tool-source-digest/v1` **carrying `files[]` in the delivered `{path, sha256}` shape**, exit/error convention. No teax import.
+- [x] `tests/study/test_generic.py`: extend `TOOL_MODULES` with `identity.py` and `common.py` (Invariant 1). Delivered subset assertions need no change.
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study -q` → green
-- [ ] grep-clean tests pass for the two new modules
-- [ ] `uv run ruff check scripts/study` clean
+- [x] `uv run python -m pytest tests/study -q` → green
+- [x] grep-clean tests pass for the two new modules
+- [x] `uv run ruff check scripts/study` clean
 
 **Manual:**
-- [ ] Build the effective identity for the real package by hand and confirm the digest is stable across two invocations from different working directories (determinism).
+- [x] Build the effective identity for the real package by hand and confirm the digest is stable across two invocations from different working directories (determinism).
 
 **What we know works after this phase:** the identity seam exists as data, with a pinned canonical text, and both tools can recompute rather than trust.
 
@@ -576,6 +576,24 @@ That the six annex sections the delivered runbook links are all fillable from wh
 **Deviations:** none.
 
 ### Phase 2 Completion
+**Completed:** 2026-08-20.
+
+**Actual changes:**
+- `scripts/study/common.py` (NEW): the git-clean gate, atomic document writing, the per-tool `tool-source-digest/v1` over a named file list carrying `files[]` in Item 3's `{path, sha256}` shape, `read_json`, `relative_deviation`, and `ToolError` as the one exit convention. No teax import.
+- `scripts/study/identity.py` (NEW): the `effective-executable-fingerprint/v1` recipe and its canonical text, `build_effective` / `build_sealed`, structural `load`, and the two-part gate — `recompute` (from declared inputs plus the bytes on disk) and `assert_seal_outside_allowed_set`.
+- `scripts/study/schemas/package_identity.v1.schema.json` (NEW, additive). Item 3's three schema files untouched.
+- `tests/study/test_identity.py` (NEW, 18 tests) and `tests/study/test_common.py` (NEW, 10 tests).
+- `tests/study/test_generic.py`: `TOOL_MODULES` extended with `common.py` and `identity.py`. The delivered subset assertions needed no change, as the plan expected.
+
+**Determinism confirmed:** the identity document is byte-identical when built from a different working directory (`test_the_document_is_deterministic_across_working_directories`), because every path comes from the repo root.
+
+**Issues:**
+- `git status --porcelain` collapses an untracked *directory* to a single line, so the gate reported a directory where the design requires it to name the file a run left behind. Added `--untracked-files=all`. Re-checked: both `pkg/` and `study/` are still clean under the stricter flag.
+- The first draft of the git-clean negative test asserted against a path outside the repository, which fails for a different reason than the one it claimed to test. Replaced with a real one: create an untracked file inside the repo, gate it, assert the filename is named, clean up. A second test covers the outside-the-repo case explicitly, since a gate that silently passed there would report "clean" about a tree it never looked at.
+- `common.tool_source_digest` calls Item 3's `manifest._canonical_digest` rather than re-implementing the canonical text. Reaching for a private name is a smell, but one recipe id must mean one algorithm across three tools, and two implementations of a digest recipe disagree exactly once, silently. Commented at the call site.
+
+**Deviations:** none.
+
 ### Phase 3 Completion
 ### Phase 4 Completion
 ### Phase 5 Completion

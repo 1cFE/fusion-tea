@@ -6,7 +6,12 @@ logic. This is the grep that keeps the two apart.
 
 import pytest
 
-TOOL_MODULES = ["scripts/study/indicators.py", "scripts/study/manifest.py"]
+TOOL_MODULES = [
+    "scripts/study/common.py",
+    "scripts/study/identity.py",
+    "scripts/study/indicators.py",
+    "scripts/study/manifest.py",
+]
 PACKAGE_NAME = "stellarator_tea"
 KEY_PREFIX = "stellarator_09__stellaris__"
 
