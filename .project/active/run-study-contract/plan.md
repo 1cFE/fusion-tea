@@ -1,6 +1,6 @@
 # Implementation Plan: Skill, Runbook, and Record Contract (RUN-STUDY Item 2)
 
-**Status:** Draft
+**Status:** In Progress
 **Created:** 2026-08-19
 **Last Updated:** 2026-08-19
 **Branch:** `feat/stellarator-mbse-demo`
@@ -108,16 +108,16 @@ git status --porcelain .claude/skills/
 
 **See `design.md#implementation-notes`** for the exact line and the trailing-slash rationale (D10).
 
-- [ ] Capture `git status --porcelain .claude/skills/` output before the edit, as the comparison baseline
-- [ ] Add `!.claude/skills/run-study/` to `.gitignore` immediately after line 23
-- [ ] Create `.claude/skills/run-study/`
+- [x] Capture `git status --porcelain .claude/skills/` output before the edit, as the comparison baseline
+- [x] Add `!.claude/skills/run-study/` to `.gitignore` immediately after line 23
+- [x] Create `.claude/skills/run-study/`
 
 ### Validation
 
-- [ ] `git check-ignore -v .claude/skills/run-study/SKILL.md` → no output
-- [ ] `git check-ignore -v .claude/skills/pdf-analysis/SKILL.md` → still reports `.gitignore:21`
-- [ ] `git diff .gitignore` → exactly one added line, zero removed
-- [ ] `git status --porcelain .claude/skills/` → identical to the baseline apart from the new directory
+- [x] `git check-ignore -v .claude/skills/run-study/SKILL.md` → no output
+- [x] `git check-ignore -v .claude/skills/pdf-analysis/SKILL.md` → still reports `.gitignore:21`
+- [x] `git diff .gitignore` → exactly one added line, zero removed
+- [x] `git status --porcelain .claude/skills/` → identical to the baseline apart from the new directory
 
 **What We Know Works After This Phase:** the tracking mechanism, on the real line, with no collateral change.
 
@@ -410,6 +410,21 @@ No new dependencies; this item writes markdown. **See CLAUDE.md** for the `uv ru
 [TO BE FILLED DURING IMPLEMENTATION]
 
 ### Phase 1 Completion
+
+**Completed:** 2026-08-19
+
+**Changes Made:**
+- `.gitignore:24` — added `!.claude/skills/run-study/` immediately after line 23. One added line, zero removed.
+- Created `.claude/skills/run-study/`.
+
+**Checks run:**
+- Before the edit, `git check-ignore -v .claude/skills/run-study/SKILL.md` reported `.gitignore:21:.claude/skills/*` (exit 0) — the file was ignored.
+- After the edit, the same command exits 1 with no output; `git check-ignore -v .claude/skills/run-study` reports the new `.gitignore:24` negation, which is git descending past the star as designed (D10).
+- Neighbour check on three untracked skills (`pdf-analysis`, `model-validation`, `toolkit-awareness`) still reports `.gitignore:21`. No other skill's tracking status moved.
+- `git status --porcelain .claude/skills/` was empty before the edit and empty after (the new directory is empty until Phase 2 writes into it), matching the baseline.
+
+**Deviations from Plan:**
+- The plan's neighbour check names `.claude/skills/pdf-analysis/SKILL.md`. That path errors with `fatal: pathspec ... is beyond a symbolic link` — every skill in this repo other than the two tracked ones is a symlink into `~/1cfe/agentic-mbse/claude/skills/`. The check was run against the symlink path itself (`.claude/skills/pdf-analysis`), which is the same assertion and does resolve. Same substitution applies to Phase 6's re-confirmation.
 ### Phase 2 Completion
 ### Phase 3 Completion
 ### Phase 4 Completion
