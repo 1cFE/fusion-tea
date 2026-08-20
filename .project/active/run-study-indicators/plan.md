@@ -347,22 +347,22 @@ def test_fails_closed(name, mutate, expect, real_package_path, tmp_path):
 
 **See `design.md` for:** declared-key resolution order and its three distinct messages, the gate order (D8) and its test consequence (a corrupt-artifact fixture must re-pin its copy or it fails at the fingerprint gate instead), the read-set coverage check (M3), and Invariant 1. Error message wording is "Open for the plan" — each must locate its fault per the spec's success criterion: the absent key by name, the computed quantity by name **and by what it is**, the reference quoted verbatim, the corrupt construct by file and position, the ghost objective channel by name.
 
-- [ ] `tests/study/test_mechanical_failures.py` (NEW): the nine cases above. The computed-quantity case uses a real channel from the trace (e.g. a `pb__p_net`-style channel) — no synthetic fixture needed.
-- [ ] `tests/study/test_read_set_coverage.py` (NEW): an EntryPoint ref rewritten to a file outside the pinned `files` list (re-pinned so the pre-parse gate passes) exits non-zero naming that file; a ref resolving outside the package root exits non-zero; `pipelines/__init__.py` in the real package does **not** fail gate one (M1)
-- [ ] `scripts/study/indicators.py`: wire the read-set coverage check as one post-parse assertion (it does not disturb the D8 gate order)
-- [ ] `scripts/study/indicators.py`: finalize every mechanical-failure message to locate its fault; ghost-objective check (a catalog channel produced by no module)
-- [ ] `tests/study/conftest.py`: mutation helpers for the nine cases, each asserting its target first
+- [x] `tests/study/test_mechanical_failures.py` (NEW): the nine cases above. The computed-quantity case uses a real channel from the trace (e.g. a `pb__p_net`-style channel) — no synthetic fixture needed.
+- [x] `tests/study/test_read_set_coverage.py` (NEW): an EntryPoint ref rewritten to a file outside the pinned `files` list (re-pinned so the pre-parse gate passes) exits non-zero naming that file; a ref resolving outside the package root exits non-zero; `pipelines/__init__.py` in the real package does **not** fail gate one (M1)
+- [x] `scripts/study/indicators.py`: wire the read-set coverage check as one post-parse assertion (it does not disturb the D8 gate order)
+- [x] `scripts/study/indicators.py`: finalize every mechanical-failure message to locate its fault; ghost-objective check (a catalog channel produced by no module)
+- [x] `tests/study/conftest.py`: mutation helpers for the nine cases, each asserting its target first
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study` → green
-- [ ] `uv run ruff check scripts/study tests/study` → clean
-- [ ] Every failure test asserts non-zero exit **and** empty stdout **and** no output file (Invariant 1)
+- [x] `uv run python -m pytest tests/study` → green
+- [x] `uv run ruff check scripts/study tests/study` → clean
+- [x] Every failure test asserts non-zero exit **and** empty stdout **and** no output file (Invariant 1)
 
 **Manual:**
-- [ ] Trigger the corrupt-pipeline case by hand and read the message — confirm it carries file, line, and key path (the design's probe showed `…/p.yaml:24 (key path modules.…geom.inputs.R)`)
-- [ ] Trigger the computed-quantity case and confirm the message says the key names a **computed quantity**, visibly distinct from the absent-key message — an author told "your key is missing" when they picked a model output goes looking in the wrong place
+- [x] Trigger the corrupt-pipeline case by hand and read the message — confirm it carries file, line, and key path (the design's probe showed `…/p.yaml:24 (key path modules.…geom.inputs.R)`)
+- [x] Trigger the computed-quantity case and confirm the message says the key names a **computed quantity**, visibly distinct from the absent-key message — an author told "your key is missing" when they picked a model output goes looking in the wrong place
 
 **What We Know Works After This Phase:** the fail-closed half of the owner's rule, end to end, with located messages.
 
@@ -575,6 +575,20 @@ def test_tool_modules_are_generic(needle):
 **Manual verification:** ran the tool against the synthetic package by hand and read the output. `cross` (a key entering through pipeline A) reaches both constraints and both objectives via `syn__a__x` → `syn__a_calc` → `syn__a__y` → `syn__b_calc` → `syn__b__w` → `b_ok`; `b_only` reaches only `b_ok` and only the `w` objective, so the cross-file reach is a real edge and not an artifact of everything being reachable. The assert-before-mutating rule is proven by a test rather than by a one-off manual break.
 
 ### Phase 5 Completion
+**Completed:** 2026-08-19
+**Actual Changes:**
+- `tests/study/test_mechanical_failures.py` (NEW): 19 tests. The nine parameterized cases (missing key, key naming a produced channel, unclassifiable key, fingerprint mismatch with re-pinning off, unparseable reference, corrupt pipeline line, ghost objective channel, wrong manifest, malformed baseline), each asserting non-zero exit, a located message, empty stdout, and no output file. Plus the distinctness of the absent-key and computed-quantity messages, the file/line/key-path content of the corrupt-line message, the fingerprint message's per-file digests, a non-standard node tag inside `modules`, an unknown key inside a module, and three axis-declaration failures.
+- `tests/study/test_read_set_coverage.py` (NEW): 6 tests — a ref pointing at a package file outside the pinned list, a ref resolving outside the package root, that the check fires by path before the file is opened, the invariant stated positively on the committed package, `pipelines/__init__.py` not failing the glob gate (M1), and a renamed inputs file being followed rather than reconstructed.
+- `scripts/study/indicators.py`: split `build_graph` into `read_pipelines` (parse + resolve artifact paths) and `build_graph` (wire the channel graph), so the read-set coverage check runs at the call site **between** them — the inputs files are checked against the pin before any of them is opened. Fixed a defect the unparseable-reference test found (below).
+
+**Issues:**
+- **Defect found and fixed: `.root` was stripped without re-applying R4.** `classify_ref` returned `<channel>.value.deep` as a valid channel when the ref was `<channel>.value.deep.root`, because the strip happened in a branch that returned immediately. R3 now strips and falls through to the R4 dotted-ref check, so a deeper field path behind a `.root` suffix raises like any other. The test that caught it is the `unparseable_reference` case; without the split-then-check ordering it exited 0.
+- The `unclassifiable_key` case needed a key present in `inputs/` but absent from `contract.parameters`; the mutation adds one to the copy's `system_design.json` and re-pins.
+
+**Deviations:**
+- None.
+
+**Manual verification:** triggered the corrupt-pipeline case by hand — the message reads `…/mfe_stellarator.yaml:24 (key path modules.stellarator_09__stellaris__geom.inputs.R): cannot split type/ref in 'floatonly_one_token'`, carrying file, line, and key path. Triggered the computed-quantity case — the message names the key, says it names a **computed quantity**, and names the producing module, visibly distinct from the absent-key wording. Both wrote zero bytes to stdout.
 
 ### Phase 6 Completion
 

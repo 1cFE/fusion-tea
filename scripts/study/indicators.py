@@ -249,45 +249,75 @@ def classify_ref(raw: str, entry_groups: set[str], where: str) -> tuple[str, str
             )
         return "bound", rest
     if ref.endswith(".root"):
-        return "channel", ref[: -len(".root")]
+        ref = ref[: -len(".root")]  # R3: RootModel outputs declare a single field
     if "." in ref:
         raise IndicatorError(f"{where}: unparseable reference {raw!r}")
     return "channel", ref
 
 
-def build_graph(package_root: Path) -> PackageGraph:
-    """Read every pipeline file and wire one package-scoped channel graph.
+@dataclass
+class ParsedPipelines:
+    """Every pipeline file, parsed, with the artifact paths the reader resolved.
 
-    A channel produced by more than one module — same file or across files — is a
-    mechanical failure, as is a module name that appears in two files.
+    Kept separate from the graph so the read-set coverage check (M3) runs between
+    the two: the inputs files are named by the pipelines themselves, so they are
+    checked against the manifest's pin before a single one of them is opened.
     """
-    graph = PackageGraph()
-    pipeline_paths = sorted((package_root / "pipelines").glob("*.yaml"))
-    if not pipeline_paths:
+
+    modules: dict[str, Module] = field(default_factory=dict)
+    entry_groups: set[str] = field(default_factory=set)
+    input_files: list[Path] = field(default_factory=list)
+    pipeline_files: list[Path] = field(default_factory=list)
+
+    @property
+    def artifact_paths(self) -> list[Path]:
+        return [*self.pipeline_files, *self.input_files]
+
+
+def read_pipelines(package_root: Path) -> ParsedPipelines:
+    """Parse every ``pipelines/*.yaml`` and resolve the inputs files they declare.
+
+    Each file must carry exactly one EntryPoint and one ExitPoint (R11), and a module
+    name may not appear in two files. Inputs paths come from the EntryPoint block's
+    own refs, relative to the pipeline file's directory — never reconstructed.
+    """
+    parsed = ParsedPipelines()
+    parsed.pipeline_files = sorted((package_root / "pipelines").glob("*.yaml"))
+    if not parsed.pipeline_files:
         raise IndicatorError("no pipeline files at pipelines/*.yaml")
 
-    entries: list[tuple[Module, Path]] = []
-    for path in pipeline_paths:
+    for path in parsed.pipeline_files:
         file_modules = read_pipeline(path)
         for name, module in file_modules.items():
-            if name in graph.modules:
+            if name in parsed.modules:
                 raise IndicatorError(
                     f"module {name!r} is declared in two pipeline files: "
-                    f"{manifest_mod.repo_relative_posix(graph.modules[name].file)} and "
+                    f"{manifest_mod.repo_relative_posix(parsed.modules[name].file)} and "
                     f"{manifest_mod.repo_relative_posix(path)}"
                 )
-            graph.modules[name] = module
+            parsed.modules[name] = module
         entry = _sole_module_of_type(file_modules, "EntryPoint", path)
         _sole_module_of_type(file_modules, "ExitPoint", path)
-        entries.append((entry, path))
-
-    for entry, path in entries:
         for group, port in entry.inputs.items():
-            graph.entry_groups.add(group)
+            parsed.entry_groups.add(group)
             resolved = (path.parent / port.ref).resolve()
-            if resolved not in graph.input_files:
-                graph.input_files.append(resolved)
+            if resolved not in parsed.input_files:
+                parsed.input_files.append(resolved)
+    parsed.input_files.sort()
+    return parsed
 
+
+def build_graph(parsed: ParsedPipelines) -> PackageGraph:
+    """Wire one package-scoped channel graph over every parsed module.
+
+    A channel produced by more than one module — same file or across files — is a
+    mechanical failure.
+    """
+    graph = PackageGraph(
+        modules=parsed.modules,
+        entry_groups=parsed.entry_groups,
+        input_files=parsed.input_files,
+    )
     for module in graph.modules.values():
         if module.module_type in ("EntryPoint", "ExitPoint"):
             continue  # R11: neither participates in the closure
@@ -309,7 +339,6 @@ def build_graph(package_root: Path) -> PackageGraph:
                 )
             graph.producer[port.ref] = module.name
 
-    graph.input_files.sort()
     for path in graph.input_files:
         for key in _read_input_keys(path):
             if key in graph.input_keys:
@@ -774,13 +803,12 @@ def build_report(
     fingerprint = manifest_mod.indicator_input_fingerprint(package_root)
     manifest_mod.assert_pin_matches(loaded, fingerprint)
 
-    graph = build_graph(package_root)
+    parsed = read_pipelines(package_root)
     contract_path = package_root / "contracts" / "model_contract.json"
     manifest_mod.assert_read_set_covered(
-        [m.file for m in graph.modules.values()] + graph.input_files + [contract_path],
-        package_root,
-        loaded,
+        parsed.artifact_paths + [contract_path], package_root, loaded
     )
+    graph = build_graph(parsed)
     contract = read_model_contract(package_root)
 
     objective_catalog = [
