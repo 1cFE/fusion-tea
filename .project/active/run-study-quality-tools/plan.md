@@ -282,19 +282,19 @@ def test_touching_a_declared_source_retires_the_store(source, package_copy, tmp_
 
 **See `design.md` for:** `design.md#exploration-stellarator_e2e-studies-era_adapter-py`, Invariants 3, 4, 8, D13, and the "do not `db.unlink()`" note in `design.md#implementation-notes`.
 
-- [ ] `tests/study/test_accept_set.py`, `tests/study/test_lineage_refusal.py`, `tests/study/test_glue_mapping_agreement.py` (NEW — first)
-- [ ] `exploration/stellarator_e2e/studies/era_adapter.py` (NEW): first line names it temporary; declared source set is `era_adapter.py`, `oracle_entry.py`, `verify_stellaris.py`; `g3` values come from `oracle_entry.glue_values()` (D13); era pin **asserted** against the worktree at `fa0e06a` and failing closed; emits `package_identity.json` with `identity` + `glue_ledger` (D2).
-- [ ] Deletion condition written verbatim in the adapter's docstring (the same words go into `ANNEX.md § Loader exception and glue` in Phase 8).
-- [ ] `tests/study/test_era_pin.py`: enable the `era_adapter.py` half of the pin-consistency assertion.
+- [x] `tests/study/test_accept_set.py`, `tests/study/test_lineage_refusal.py`, `tests/study/test_glue_mapping_agreement.py` (NEW — first)
+- [x] `exploration/stellarator_e2e/studies/era_adapter.py` (NEW): first line names it temporary; declared source set is `era_adapter.py`, `oracle_entry.py`, `verify_stellaris.py`; `g3` values come from `oracle_entry.glue_values()` (D13); era pin **asserted** against the worktree at `fa0e06a` and failing closed; emits `package_identity.json` with `identity` + `glue_ledger` (D2).
+- [x] Deletion condition written verbatim in the adapter's docstring (the same words go into `ANNEX.md § Loader exception and glue` in Phase 8).
+- [x] `tests/study/test_era_pin.py`: enable the `era_adapter.py` half of the pin-consistency assertion.
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study -q` → green; era-dependent tests actually **ran** (`-rs` shows no unexpected skips with `STUDY_REQUIRE_ERA=1`)
+- [x] `uv run python -m pytest tests/study -q` → green; era-dependent tests actually **ran** (`-rs` shows no unexpected skips with `STUDY_REQUIRE_ERA=1`)
 
 **Manual:**
-- [ ] Load the real package through the adapter and diff the emitted `package_identity.json` against the probe's `[P1] effective` line — the digest **will differ** (N1: the recipe's canonical text changed), and that is expected. What must match is the sealed value and the two allowed-modified paths.
-- [ ] Break the era pin deliberately (point `TEAX_V1_ERA` at a different commit) → the adapter fails closed with a message naming the expected and found commits.
+- [x] Load the real package through the adapter and diff the emitted `package_identity.json` against the probe's `[P1] effective` line — the digest **will differ** (N1: the recipe's canonical text changed), and that is expected. What must match is the sealed value and the two allowed-modified paths.
+- [x] Break the era pin deliberately (point `TEAX_V1_ERA` at a different commit) → the adapter fails closed with a message naming the expected and found commits.
 
 **What we know works after this phase:** the identity is earned, drift in any of the three declared sources retires stores, and the exception did not widen.
 
@@ -595,6 +595,25 @@ That the six annex sections the delivered runbook links are all fillable from wh
 **Deviations:** none.
 
 ### Phase 3 Completion
+**Completed:** 2026-08-20.
+
+**Actual changes:**
+- `exploration/stellarator_e2e/studies/era_adapter.py` (NEW): the deletion condition first in the docstring, `GlueAwareLoader` returning the **effective** fingerprint, the g1 accept-set, `GLUE_CONSTANTS` + `glue_fields()` with the per-point half from `oracle_entry.glue_values()` (D13), `assert_era_pin` and `assert_schema_fillers_are_dead` running on every load, `identity_document` / `effective_fingerprint` / `write_identity_document`, and the three-rung `GLUE_LEDGER`.
+- `tests/study/test_accept_set.py` (8), `tests/study/test_lineage_refusal.py` (6), `tests/study/test_glue_mapping_agreement.py` (7).
+- `tests/study/conftest.py`: the third `package_copy` convenience, deferred here from Phase 0 — `emit_identity()` and `edit_glue(..., reemit_identity=)` with **no default** for the flag, because a default would silently decide which half of the identity gate a negative test was aiming at.
+- `tests/study/test_era_pin.py` needed no edit: it already parametrizes over the files that exist, and `era_adapter.py`'s `ERA_PIN_COMMIT` is now one of them.
+
+**Manual checks:**
+- Real package loaded through the adapter: effective fingerprint `cf877bf9…`. It differs from the probe's `badcfeae…` exactly as N1 predicted — the recipe now emits one `adapter <path> <sha256>` line per declared source where the probe emitted one. What must match does: the sealed value `ad912041…` and the two allowed-modified paths.
+- Era pin broken deliberately (a fake simkit location): the adapter refuses with `era pin violated`, naming the expected commit and what was found. Covered by `test_the_era_pin_is_asserted_not_merely_recorded`.
+- Four lineage refusals, not three: the three declared sources plus the allowed-modified glue file.
+
+**Issues:**
+- The adapter's first `loader()` defaulted `link_root` to a directory beside the package — inside the repo. The era loader writes an import symlink there, so the adapter would dirty the very tree the cleanliness gate watches, and it did once during a smoke test (removed). `link_root` is now a required positional with no default, and both paths are resolved because the era writes an absolute-or-broken symlink.
+
+**Deviations:**
+- `test_lineage_refusal.py` builds its two-point store directly from the era API rather than through `promotion_equivalence.py`'s route, which does not exist until Phase 4. Deliberate beyond the ordering: the claim under test is identity binding, and a test routed through the production route would fail for either reason.
+
 ### Phase 4 Completion
 ### Phase 5 Completion
 ### Phase 6 Completion

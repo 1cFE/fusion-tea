@@ -186,6 +186,34 @@ class PackageCopy:
             self.repin()
         return run_tool_raw(self.path, self.manifest, self.axes, out=out, group=group)
 
+    # --- Item 4: the identity document, and the third rule that comes with it ---
+    #
+    # A mutation test against the identity gate has to say which half it is aiming at.
+    # Editing a glue file and re-emitting the document is a *legitimately new* identity
+    # (the route bypassed different bytes and says so). Editing it and NOT re-emitting
+    # is the wrong-fingerprint negative. Neither is the default, because a default here
+    # would silently decide which failure the test was testing.
+
+    def emit_identity(self, out_path=None):
+        """Write this copy's identity document through the package's own adapter."""
+        import sys
+
+        studies = REPO_ROOT / "exploration" / "stellarator_e2e" / "studies"
+        for entry in (str(studies), str(REPO_ROOT)):
+            if entry not in sys.path:
+                sys.path.insert(0, entry)
+        import era_adapter
+
+        return era_adapter.write_identity_document(
+            self.path, out_path or self.path.parent / "package_identity.json"
+        )
+
+    def edit_glue(self, relative, old, new, *, reemit_identity):
+        """Edit one of the route's allowed-modified files, re-emitting the identity or not."""
+        self.edit(relative, old, new)
+        if reemit_identity:
+            self.emit_identity()
+
 
 @pytest.fixture
 def package_copy(tmp_path):
