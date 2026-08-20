@@ -40,10 +40,10 @@ and intra-module operand dependency.
 
 ## Execute
 
-### 1. Open the record and capture intake verbatim
+### 1. Open the record and deposit the captured intake
 
-Copy `record-template.md` to the record path, stamp the study header, and write the
-owner's goal and scope in their own words. What the executor adds to make the goal
+Copy `record-template.md` to the record path `SKILL.md` named, stamp the study header,
+and write the owner's goal and scope there in their own words. What the executor adds to make the goal
 executable is marked as the executor's own and kept separate from the quote.
 
 **Calls:** none

@@ -318,15 +318,15 @@ head -14 .claude/skills/browser-inspect/SKILL.md    # frontmatter convention to 
 
 **See `design.md#skillmd`** for the body order and `design.md:51` for the local frontmatter convention.
 
-- [ ] Frontmatter: `name`, multi-line trigger-carrying `description`, `allowed-tools`, `user-invocable: true`, matching `browser-inspect/SKILL.md:1-14`
-- [ ] Body: what a study is (two sentences); the three roles, one line each (`spec.md:50`); mode selection as an explicit question, never guessed; intake capture stated as collaborative and flexible — "study whatever you can find" through to a named parameter list, no fixed questionnaire; record-path naming (D6, both directions — execute names it, administer is given it); pointers to `runbook.md`, the policy at its current path, and `scripts/study/`
-- [ ] No `scripts/study/` tool is invoked by the skill directly (`design.md:331`)
+- [x] Frontmatter: `name`, multi-line trigger-carrying `description`, `allowed-tools`, `user-invocable: true`, matching `browser-inspect/SKILL.md:1-14`
+- [x] Body: what a study is (two sentences); the three roles, one line each (`spec.md:50`); mode selection as an explicit question, never guessed; intake capture stated as collaborative and flexible — "study whatever you can find" through to a named parameter list, no fixed questionnaire; record-path naming (D6, both directions — execute names it, administer is given it); pointers to `runbook.md`, the policy at its current path, and `scripts/study/`
+- [x] No `scripts/study/` tool is invoked by the skill directly (`design.md:331`)
 
 ### Validation
 
-- [ ] Check-stencil greps pass; line count under ~90
-- [ ] **Read-check for step-shaped sentences**: any sentence in `SKILL.md` that reads as a runbook step is a defect (`design.md:145`). Read the file against `runbook.md` and confirm zero overlap of content, only a pointer
-- [ ] The record path is named in exactly one of the two files — `SKILL.md` owns it, `runbook.md` step 1 references it
+- [x] Check-stencil greps pass; line count under ~90
+- [x] **Read-check for step-shaped sentences**: any sentence in `SKILL.md` that reads as a runbook step is a defect (`design.md:145`). Read the file against `runbook.md` and confirm zero overlap of content, only a pointer
+- [x] The record path is named in exactly one of the two files — `SKILL.md` owns it, `runbook.md` step 1 references it
 
 **What We Know Works After This Phase:** a goal-only prompt has a landing place that routes without deciding anything (spec SC1).
 
@@ -501,6 +501,24 @@ No sentence states which axis to sweep, which framing is right, which route fits
 
 **Deviations from Plan:** none beyond the two fixes above, both made in response to a check rather than after one.
 ### Phase 5 Completion
+
+**Completed:** 2026-08-19
+
+**Changes Made:**
+- Wrote `.claude/skills/run-study/SKILL.md`, 77 lines. Frontmatter matches the local convention at `browser-inspect/SKILL.md:1-14` — `name`, a multi-line trigger-carrying `description`, `allowed-tools`, `user-invocable: true`. Body in the design's order: what a study is in two sentences; the three roles with one line each; mode selection stated as an explicit question with the cost of guessing wrong; intake capture as collaborative and flexible with no questionnaire; record-path naming in both directions; then pointers to `runbook.md`, `record-template.md`, the policy at its current path, and `scripts/study/`.
+- The skill invokes no tool. The `scripts/study/` pointer says outright that runbook steps call them and the skill never does.
+
+**Check stencil:** 77 lines (under the ~90 target), zero package names, zero `STUDY_POLICY` references. The skill registered cleanly in the session's skill list on write, which confirms the frontmatter parses.
+
+**Read-check for step-shaped sentences — two overlaps found and fixed.** Read `SKILL.md` against the finished `runbook.md`:
+- `SKILL.md`'s "Capture the intake" sat next to runbook step 1, then titled "Open the record and capture intake verbatim". Two files appeared to own capturing intake. The division is real and is now visible: the skill **elicits** intake from the user, the runbook **deposits** what was elicited. Step 1 is retitled "Open the record and deposit the captured intake" and now says it copies the template to the record path `SKILL.md` named.
+- The study-id convention `<YYYYMMDD>-<goal-slug>` was written out in both files. It now has one home, `runbook.md § Naming`, which is also where the same-day collision rule and the arm-id rule live; `SKILL.md` mints the id by citing that home. The skill still owns the *act* of naming, per D6.
+
+After the fixes: `SKILL.md` names no record section number, carries no deposit, calls no tool, and states no obligation the runbook states. The overlap is a pointer only.
+
+**Record path, one owner:** `SKILL.md` names it. `runbook.md`'s preamble and step 1 reference it as already named. Both directions of D6 are stated in `SKILL.md` — execute mints it, administer is given it and confirms it.
+
+**Deviations from Plan:** none beyond the two read-check fixes.
 ### Phase 6 Completion
 
 ---
