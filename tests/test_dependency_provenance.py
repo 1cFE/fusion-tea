@@ -11,7 +11,7 @@ from typing import Any, cast
 
 ROOT = Path(__file__).resolve().parents[1]
 A_FINAL = "443388823f0db46c14df1728d3843d0a74ee7590"
-C_PROD = "ffccc4b9a70ba056df2f56417ab3f64f1ff8a12a"
+C_PROD = "8a758e9240707b58fe32a509c3b509941ca4fa01"
 COSTINGFE = "02543850089be175ea7c28b92a8b2a4184e1637e"
 URLS = {
     "agentic-mbse": "https://github.com/1cFE/agentic-mbse.git",
@@ -30,7 +30,7 @@ VERSIONS = {
 }
 WHEEL_HASHES = {
     "agentic": "7505028f2fc720ae06a244c5dd95019b8ae52a796ddbfec3b3492e2ad56954f7",
-    "codegen": "e76f4351bb29dc4cf69aa2633d2e1a0830b5092d8733633db68edb4e43068493",
+    "codegen": "cca661ce1ad5b7c7326cf48f8167e9358c22982343185bb82a8e059089cddbc5",
     "costingfe": "970ed533d8fae042de25256933ec99d3385092903e4d407ab2b96baa7a2fcfd6",
 }
 
