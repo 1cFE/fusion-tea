@@ -6,6 +6,8 @@ factory (added in Phase 4), which copies into ``tmp_path``.
 """
 
 import json
+import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -78,3 +80,42 @@ def minimal_manifest_dict() -> dict:
             "sys_path": "some/where",
         },
     }
+
+
+KNOWN_ANSWER_DECLARATION = DATA_DIR / "axes.known_answers.json"
+INDICATORS_CLI = REPO_ROOT / "scripts" / "study" / "indicators.py"
+
+
+def run_tool_raw(package, manifest_path, groups, *, out=None, group=(), cwd=None):
+    """Invoke the CLI as a subprocess. Returns (returncode, stdout, stderr).
+
+    A subprocess is the honest check for Invariant 1: a partial report would show up
+    as bytes on stdout or a file on disk, and neither survives an in-process call.
+    """
+    argv = [
+        sys.executable,
+        str(INDICATORS_CLI),
+        "--package", str(package),
+        "--manifest", str(manifest_path),
+        "--groups", str(groups),
+    ]
+    for name in group:
+        argv += ["--group", name]
+    if out is not None:
+        argv += ["--out", str(out)]
+    done = subprocess.run(
+        argv, capture_output=True, text=True, cwd=str(cwd) if cwd else str(REPO_ROOT)
+    )
+    return done.returncode, done.stdout, done.stderr
+
+
+def run_tool(package, manifest_path, groups, *, group=(), cwd=None):
+    """Invoke the CLI and return the parsed report. Raises if the run failed."""
+    rc, out, err = run_tool_raw(package, manifest_path, groups, group=group, cwd=cwd)
+    assert rc == 0, f"tool exited {rc}\n{err}"
+    return json.loads(out)
+
+
+@pytest.fixture
+def known_answer_declaration() -> Path:
+    return KNOWN_ANSWER_DECLARATION

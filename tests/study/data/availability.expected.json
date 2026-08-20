@@ -1,0 +1,315 @@
+{
+  "derived_against_semantic_fingerprint": "c9bc164050f0aac8a2009befb34497426d68923066ca1c1783a0b80e8048c261",
+  "note": "Derived from the committed package by the tool and checked field for field against the Item 1 fixture contract (.project/active/run-study-reachability-spike/findings.md). If the package is regenerated, re-derive this file; never patch it to make a test pass.",
+  "group": {
+    "axis": "availability",
+    "declared_keys": [
+      {
+        "key": "stellarator_09__stellaris__cas72_calc__availability",
+        "provenance": "fan_out",
+        "entry_type": "usage_literal"
+      },
+      {
+        "key": "stellarator_09__stellaris__fuel_calc__availability",
+        "provenance": "fan_out",
+        "entry_type": "usage_literal"
+      },
+      {
+        "key": "stellarator_09__stellaris__lcoe_1cfe_calc__availability",
+        "provenance": "fan_out",
+        "entry_type": "usage_literal"
+      },
+      {
+        "key": "stellarator_09__stellaris__lcoe_calc__availability",
+        "provenance": "fan_out",
+        "entry_type": "usage_literal"
+      }
+    ],
+    "group_valid": true,
+    "no_constraint_response": true,
+    "constraints_reachable": [],
+    "constraints_unreachable": [
+      {
+        "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+        "definition_qualified_name": "mfe_viability::'Beta Limit'",
+        "source_local_identity": "beta_ok",
+        "operator": "<=",
+        "operand_classes": [
+          "bound"
+        ],
+        "bound_vs_bound": true,
+        "operands": [
+          {
+            "operand": "beta",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__beta",
+            "reached": false,
+            "entry_type": "design_attribute"
+          },
+          {
+            "operand": "beta_limit",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__beta_limit",
+            "reached": false,
+            "entry_type": "design_attribute"
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+        "definition_qualified_name": "mfe_viability::'Net Power Positive'",
+        "source_local_identity": "net_positive",
+        "operator": ">",
+        "operand_classes": [
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "net_electric",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__pb__p_net",
+            "reached": false
+          },
+          {
+            "operand": "<literal>",
+            "class": "literal",
+            "reached": false,
+            "value": 0.0
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+        "definition_qualified_name": "mfe_viability::'Economic Recirculating Threshold'",
+        "source_local_identity": "recirc_ok",
+        "operator": "<=",
+        "operand_classes": [
+          "bound",
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "rec_frac",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__pb__rec_frac",
+            "reached": false
+          },
+          {
+            "operand": "threshold",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__threshold",
+            "reached": false,
+            "entry_type": "library_default"
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+        "definition_qualified_name": "mfe_viability::'TBR Floor'",
+        "source_local_identity": "tbr_ok",
+        "operator": ">=",
+        "operand_classes": [
+          "bound"
+        ],
+        "bound_vs_bound": true,
+        "operands": [
+          {
+            "operand": "tbr",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__tbr",
+            "reached": false,
+            "entry_type": "design_attribute"
+          },
+          {
+            "operand": "tbr_floor",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__tbr_floor",
+            "reached": false,
+            "entry_type": "design_attribute"
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+        "definition_qualified_name": "mfe_viability::'Neutron Wall Load Limit'",
+        "source_local_identity": "wall_load_ok",
+        "operator": "<=",
+        "operand_classes": [
+          "bound",
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "wall_load",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__wall_load_calc__wall_load",
+            "reached": false
+          },
+          {
+            "operand": "wall_load_limit",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__wall_load_limit",
+            "reached": false,
+            "entry_type": "design_attribute"
+          }
+        ]
+      }
+    ],
+    "bounds": [
+      {
+        "constraint_id": "stellarator_09__stellaris__beta_ok__82b78aad420730d5",
+        "definition_qualified_name": "mfe_viability::'Beta Limit'",
+        "source_local_identity": "beta_ok",
+        "operator": "<=",
+        "operand_classes": [
+          "bound"
+        ],
+        "bound_vs_bound": true,
+        "operands": [
+          {
+            "operand": "beta",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__beta",
+            "reached": false,
+            "entry_type": "design_attribute"
+          },
+          {
+            "operand": "beta_limit",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__beta_limit",
+            "reached": false,
+            "entry_type": "design_attribute"
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
+        "definition_qualified_name": "mfe_viability::'Net Power Positive'",
+        "source_local_identity": "net_positive",
+        "operator": ">",
+        "operand_classes": [
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "net_electric",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__pb__p_net",
+            "reached": false
+          },
+          {
+            "operand": "<literal>",
+            "class": "literal",
+            "reached": false,
+            "value": 0.0
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
+        "definition_qualified_name": "mfe_viability::'Economic Recirculating Threshold'",
+        "source_local_identity": "recirc_ok",
+        "operator": "<=",
+        "operand_classes": [
+          "bound",
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "rec_frac",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__pb__rec_frac",
+            "reached": false
+          },
+          {
+            "operand": "threshold",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__threshold",
+            "reached": false,
+            "entry_type": "library_default"
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
+        "definition_qualified_name": "mfe_viability::'TBR Floor'",
+        "source_local_identity": "tbr_ok",
+        "operator": ">=",
+        "operand_classes": [
+          "bound"
+        ],
+        "bound_vs_bound": true,
+        "operands": [
+          {
+            "operand": "tbr",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__tbr",
+            "reached": false,
+            "entry_type": "design_attribute"
+          },
+          {
+            "operand": "tbr_floor",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__tbr_floor",
+            "reached": false,
+            "entry_type": "design_attribute"
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
+        "definition_qualified_name": "mfe_viability::'Neutron Wall Load Limit'",
+        "source_local_identity": "wall_load_ok",
+        "operator": "<=",
+        "operand_classes": [
+          "bound",
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "wall_load",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__wall_load_calc__wall_load",
+            "reached": false
+          },
+          {
+            "operand": "wall_load_limit",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__wall_load_limit",
+            "reached": false,
+            "entry_type": "design_attribute"
+          }
+        ]
+      }
+    ],
+    "objectives_reachable": [
+      "cas72",
+      "fuel",
+      "lcoe",
+      "lcoe_1cfe"
+    ],
+    "objectives_unreachable": [
+      "total_capital"
+    ],
+    "sibling_candidates": [],
+    "trace_size": {
+      "modules_fired": 6,
+      "channels_tainted": 8
+    },
+    "warnings": [],
+    "not_derivable": {
+      "statements": [
+        "monotonicity or sign of any response",
+        "same-quantity identity across differing key names",
+        "intra-module operand dependency (the trace is module-level)"
+      ],
+      "positive_reading": "A reachable constraint or objective means a possible path exists in the module graph. It never means the axis responds."
+    }
+  }
+}

@@ -221,27 +221,27 @@ def test_known_answer(axis, real_package_path, real_manifest_path, tmp_path):
 
 **See `design.md` for:** the strict reader and its accept-set scoping (`design.md#componentscriptsstudyindicatorspy--the-reader-the-trace-the-report`, D2, S6), declared-key resolution order, the constraint-entry shape and `bounds` authority (S2, D10), the report document shape, the not-derivable constant (D5), and the gate order (D8). Implementation gotchas: `design.md#implementation-notes` — `.root` stripping is load-bearing (65 edges), line numbers are 0-based on `start_mark` (report `line + 1`), resolve inputs paths from the EntryPoint block's refs, assemble-then-write.
 
-- [ ] `tests/study/data/axes.known_answers.json` (NEW): the axis-declaration file covering all six cases with per-key `fan_out | tie` provenance
-- [ ] `tests/study/data/{availability,interest_rate,R,R+tie,a,beta}.expected.json` (NEW): expectation files, each recording the semantic fingerprint it was derived against
-- [ ] `tests/study/test_known_answers.py` (NEW): stencil above
-- [ ] `scripts/study/indicators.py`: strict node reader (file, line, key path on every raise; `str`/`map` accept-set scoped to the `modules` subtree; null-tagged empty `inputs:`/`outputs:` treated as empty map, not a raise)
-- [ ] `scripts/study/indicators.py`: reference classification R1–R4 verbatim from the spike; channel graph keyed on fully qualified names (R5); cross-file/same-file duplicate producer is a mechanical failure
-- [ ] `scripts/study/indicators.py`: conservative closure to fixpoint (R10); EntryPoint/ExitPoint excluded (R11)
-- [ ] `scripts/study/indicators.py`: contract reader; constraint-operand join through `predicate_ir` (R7, R8); the three identities (D10)
-- [ ] `scripts/study/indicators.py`: axis-declaration file reader (strict; duplicate axis, duplicate key in group, empty group, unknown key all mechanical failures)
-- [ ] `scripts/study/indicators.py`: report assembly in memory, single write at the end; `--out` atomic (temp file in the same directory, then rename); human summary to stderr only
-- [ ] `scripts/study/indicators.py`: `not_derivable` module-level constant, emitted at document and group level
+- [x] `tests/study/data/axes.known_answers.json` (NEW): the axis-declaration file covering all six cases with per-key `fan_out | tie` provenance
+- [x] `tests/study/data/{availability,interest_rate,R,R+tie,a,beta}.expected.json` (NEW): expectation files, each recording the semantic fingerprint it was derived against
+- [x] `tests/study/test_known_answers.py` (NEW): stencil above
+- [x] `scripts/study/indicators.py`: strict node reader (file, line, key path on every raise; `str`/`map` accept-set scoped to the `modules` subtree; null-tagged empty `inputs:`/`outputs:` treated as empty map, not a raise)
+- [x] `scripts/study/indicators.py`: reference classification R1–R4 verbatim from the spike; channel graph keyed on fully qualified names (R5); cross-file/same-file duplicate producer is a mechanical failure
+- [x] `scripts/study/indicators.py`: conservative closure to fixpoint (R10); EntryPoint/ExitPoint excluded (R11)
+- [x] `scripts/study/indicators.py`: contract reader; constraint-operand join through `predicate_ir` (R7, R8); the three identities (D10)
+- [x] `scripts/study/indicators.py`: axis-declaration file reader (strict; duplicate axis, duplicate key in group, empty group, unknown key all mechanical failures)
+- [x] `scripts/study/indicators.py`: report assembly in memory, single write at the end; `--out` atomic (temp file in the same directory, then rename); human summary to stderr only
+- [x] `scripts/study/indicators.py`: `not_derivable` module-level constant, emitted at document and group level
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study` → green, including all six known-answer cases
-- [ ] `uv run ruff check scripts/study tests/study` → clean
+- [x] `uv run python -m pytest tests/study` → green, including all six known-answer cases
+- [x] `uv run ruff check scripts/study tests/study` → clean
 
 **Manual:**
-- [ ] Run the tool against the committed package with all six groups, `--out /tmp/indicators.json`
-- [ ] **Diff against the spike:** compare each group object to `.project/active/run-study-reachability-spike/indicators.json` for the fields both carry (constraints reached, operand classes, operator, `bound_vs_bound`, objective lists, sibling candidates, trace counts). Any difference is a regression against Item 1's evidence and must be explained before proceeding.
-- [ ] Confirm `availability` comes back `no_constraint_response: true` — the original finding, now mechanical
+- [x] Run the tool against the committed package with all six groups, `--out /tmp/indicators.json`
+- [x] **Diff against the spike:** compare each group object to `.project/active/run-study-reachability-spike/indicators.json` for the fields both carry (constraints reached, operand classes, operator, `bound_vs_bound`, objective lists, sibling candidates, trace counts). Any difference is a regression against Item 1's evidence and must be explained before proceeding.
+- [x] Confirm `availability` comes back `no_constraint_response: true` — the original finding, now mechanical
 
 **What We Know Works After This Phase:** the trace core is preserved through the rewrite, verified against the real package and the Item 1 evidence.
 
@@ -543,6 +543,21 @@ def test_tool_modules_are_generic(needle):
 - The manifest's `baseline.point` records **nine qualified keys**, not three axis names: the two `R` keys plus the tie `magnet__R0`, the two `a` keys, and the four `availability` keys, each with the value read from the live inputs. The design's `{"<key>": 12.7}` rendering asks for keys; three bare axis names would not be a point a gate can set.
 
 ### Phase 3 Completion
+**Completed:** 2026-08-19
+**Actual Changes:**
+- `scripts/study/indicators.py`: the substance. Strict `yaml.compose` node reader (`read_pipeline`) with file, line, and key path on every raise, the `str`/`map` accept-set scoped to the `modules` subtree, `metadata` shape-checked only, and null-tagged empty `inputs:`/`outputs:` read as empty maps. Reference classification R1–R4 (`classify_ref`); package-scoped channel graph across every pipeline file (`build_graph`) with duplicate producer and duplicate module name as mechanical failures; conservative closure to fixpoint (`reachable_channels`, R10) with EntryPoint/ExitPoint excluded (R11); model contract reader and the `predicate_ir` operand join (R7, R8) carrying all three constraint identities (D10); strict axis-declaration reader; declared-key resolution in the three-message order; report assembly in memory with a single write, `--out` atomic via temp-file rename, human summary to stderr only; `NOT_DERIVABLE` emitted at document and group level.
+- `tests/study/data/axes.known_answers.json` (NEW): the six cases with per-key `fan_out | tie` provenance.
+- `tests/study/data/{availability,interest_rate,R,R+tie,a,beta}.expected.json` (NEW): frozen group objects, each recording the semantic fingerprint it was derived against and a note saying to re-derive rather than patch.
+- `tests/study/test_known_answers.py` (NEW): 24 tests — fixture binding, per-axis expectation-file comparison, a `FIXTURE_CONTRACT` table restated from Item 1's findings so the frozen files are not the only guard, plus the availability, beta bound-vs-bound, `net_positive`-through-`.root`, tie-changes-nothing, and three-identity cases.
+- `tests/study/conftest.py`: `run_tool` / `run_tool_raw` subprocess helpers (a subprocess is the honest check for Invariant 1).
+
+**Issues:**
+- None. The trace core survived the rewrite unchanged.
+
+**Deviations:**
+- None in substance. Two items the plan schedules for Phase 6 shipped here because the report cannot validate against its own schema without them: the `axis_declaration` block (with `groups_declared` and `subset`) and the two advisory scans. Their tests still land in Phase 6.
+
+**Verification against the Item 1 evidence:** a field-by-field programmatic diff of all six groups against `.project/active/run-study-reachability-spike/indicators.json` — declared keys, entry types, `no_constraint_response`, modules fired, channels tainted, both objective lists, the reachable-constraint set, and per-constraint `constraint_id` / operator / operand classes / `bound_vs_bound` / operand detail — reported **no mismatches**. `availability` comes back `no_constraint_response: true`.
 
 ### Phase 4 Completion
 
