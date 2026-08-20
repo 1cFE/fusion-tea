@@ -1,6 +1,6 @@
 # Spec: Indicator Tool and Package Manifest
 
-**Status:** Draft
+**Status:** Accepted (orchestrated review, 2026-08-19)
 **Owner:** Reid W
 **Created:** 2026-08-19
 **Complexity:** MEDIUM

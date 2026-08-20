@@ -1,6 +1,6 @@
 # Spec: Skill, Runbook, and Record Contract (RUN-STUDY Item 2)
 
-**Status:** Draft
+**Status:** Accepted (orchestrated review, 2026-08-19)
 **Owner:** Reid W
 **Created:** 2026-08-19
 **Complexity:** MEDIUM

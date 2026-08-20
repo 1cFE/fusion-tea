@@ -1,6 +1,6 @@
 # Design: Skill, Runbook, and Record Contract (RUN-STUDY Item 2)
 
-**Status:** Draft — review fixes folded (design review 2026-08-19: MF1–MF7, SF1–SF7)
+**Status:** Accepted (orchestrated review, 2026-08-19) — review fixes folded (design review 2026-08-19: MF1–MF7, SF1–SF7)
 **Owner:** Reid W
 **Created:** 2026-08-19
 **Updated:** 2026-08-19

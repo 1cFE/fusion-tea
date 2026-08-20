@@ -1,6 +1,6 @@
 # Design: Indicator Tool and Package Manifest
 
-**Status:** Draft
+**Status:** Accepted (orchestrated review, 2026-08-19)
 **Owner:** Reid W
 **Created:** 2026-08-19
 **Updated:** 2026-08-19 (rev 2 — design-review M1–M5, S1–S6 folded)
