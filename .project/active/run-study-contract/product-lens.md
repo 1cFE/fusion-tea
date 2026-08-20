@@ -27,3 +27,22 @@ Resolves:
 - Smell (one lesson with no durable home): ACCEPTED — recorded in the spec as an explicit exception with its reason, rather than forced into a home it does not fit.
 
 Gate: CLEAR
+
+## design — 2026-08-19 — rev draft design (`.project/active/run-study-contract/design.md`)
+
+*Run inline by the design reviewer against the same SOURCES (concept, concept-design, epic, spec), not as a subagent. Point re-derived independently of the design's own framing.*
+
+Point (re-derived): A study run from a goal-only prompt must leave one committed directory from which a second agent with no execution memory recovers the framing per axis, the LCOE result, every named constraint outcome, and every finding — each traced to a committed artifact — and every process lesson must land in exactly one home. [source: `.project/concepts/run-study-skill.md` (Owner's Words, SC-1/SC-3/SC-5); `.project/concepts/run-study-skill-design.md` (Principles 3 and 5, Core Model — record); `.project/backlog/epic_run_study_capability.md` Critical Success Factor, grade: owner]
+
+Falsifier: A record can satisfy every rule this design states and still leave the administrator unable to tell whether it is complete — because the completeness rule is stated relative to a file the administrator is forbidden to read.
+
+Findings:
+- `design-F1` [DO] The snapshot's completeness rule ("every fingerprint the manifest declares, by the manifest's own name", `design.md:231`) is not executable from inside the record. The administrator reads nothing outside the record directory (`design.md:249`), so the set the rule quantifies over is unavailable to the only reader who audits it. — `.project/concepts/run-study-skill-design.md:129` "never cites a live file"; `:107` administrator boundary (owner-ratified) — disposition: FIX (field addition, not rework)
+- `design-F2` [DO] A cross-fingerprint A/B — the epic's first consumer (Item 6) and the case D4 exists for — cannot be expressed in the snapshot shape drawn at `design.md:212-227`: study definition, strategy, window, and effective executable fingerprint are all study-scoped scalars, while the concept's store rule makes them arm-scoped whenever the tuple differs. — `.project/concepts/run-study-skill-design.md:129` A/B store rule (owner-ratified) — disposition: FIX
+- `design-F3` [NOTE] The carried spec-hop smell (locate a sensitivity-framed constraint violation in the swept space) was handed to the design (`product-lens.md:26`) and is not addressed: `design.md:203` gives the sensitivity section the observed response and a no-boundary-claim statement only. — `.project/concepts/study-driven-model-development.md:31` (owner) — disposition: NOTE
+
+Smells:
+- *Consumer compensating for a producer guarantee* — examined, did not fire structurally. D2 keeps the invariant with the executor and states the rule plainly; what is missing is the reader's ability to check it. Recorded as `design-F1`, fixable by copying the declared name list into the snapshot. Not escalated to Rework.
+- *Changed invariant ownership without saying so* — examined, did not fire. The values/arguments split is stated as the design's core concept and its consequences are drawn explicitly.
+
+Gate: CLEAR-WITH-FIXES (`design-F1`, `design-F2` are must-fix in the design review; neither is a rework trigger)
