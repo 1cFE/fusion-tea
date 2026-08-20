@@ -6,11 +6,11 @@
 
 ## Active Work
 
-### run-study Item 5 — Cold-Pickup Administrator Exercise — spec in progress
+### run-study Item 5 — Cold-Pickup Administrator Exercise — COMPLETE 2026-08-20 (audit pending)
 
-`.project/active/run-study-cold-pickup/` (epic RUN-STUDY, Item 5). Spec drafted 2026-08-20: a fresh-context administrator reads only the git-tracked proof-of-life directory, writes `synthesis.md`, and `gaps.md` sorts every absence into template gap / runbook gap / pre-capability limitation; only load-bearing gaps edit the Item 2 template or runbook. Product-lens CLEAR (F2 disposed by owner: `gaps.md` is a one-time contract check, no discovery log). Design skipped by owner; `plan.md` written — five phases: isolate → read → compare → classify → apply. Next: `/_my_implement`.
+`.project/active/run-study-cold-pickup/` (epic RUN-STUDY, Item 5). Design skipped by owner. A fresh `general-purpose` agent read only the git-tracked proof-of-life files (scratch copy; brief at `brief.md`) and wrote `exploration/stellarator_e2e/study/synthesis.md` — 20 unrecoverable facts, citations clean. `gaps.md`: 18 limitations the contract already covers, 1 not-an-absence, 2 gaps. G1 (the record pins every piece of code the verification leans on except the oracle's own source) applied to `record-template.md` at `316fc3a0` by owner decision though not load-bearing; G2 (SKILL.md has no pre-capability allowance) not applied. **Owner question opened, for the Item 6 Align:** the oracle is a dev-process mechanism, not part of what a "study" is in general — revisit whether runbook step 10 (verification, fails closed without an oracle) should be a mandatory study step at all (`plan.md § Revisit`). Next: `/_my_audit`, then Item 6.
 
-### RUN-STUDY epic — Items 1–4 COMPLETE (orchestrated run, 2026-08-19/20)
+### RUN-STUDY epic — Items 1–5 COMPLETE (Items 1–4 orchestrated run 2026-08-19/20; Item 5 2026-08-20)
 
 One orchestrated session drove Items 1–4 through spec → design → design-review → plan → implement → audit, a subagent per stage, orchestrator-reviewed at every artifact, commit trail per decision (briefs committed under each item's `briefs/`). Item 1 spike CONFIRMED (all five Appendix A known answers). Item 2 delivered the tracked `run-study` skill (15-step runbook after the Item 4 coordination insertion, 17-section record template, `.gitignore` negation) — audit PASS-WITH-FIXES, fixes applied. Item 3 delivered `indicators.py` + `manifest.py` + schemas + stellarator manifest — audit PASS (Certify). Item 4 delivered the quality tools and adapter under the effective fingerprint — audit PASS. Epic criteria 5, 6, 9 ticked; 1–4 and 7–8 land with Items 5–6 (Item 6 needs the owner Align: policy disposition). Watch-item for owner: `tests/scoring_v2/test_score_explorer_build.py` regenerates `tools/score_explorer/data/concepts.json` in place and the regenerated content differs from HEAD (pre-existing drift, reverted twice this run; scope pytest runs to `tests/study`).
 

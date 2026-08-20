@@ -1,6 +1,6 @@
 # Implementation Plan: Cold-Pickup Administrator Exercise
 
-**Status:** In Progress — Phases 1–4 complete, paused before Phase 5 (owner review of gaps.md)
+**Status:** Complete
 **Created:** 2026-08-20
 **Last Updated:** 2026-08-20
 
@@ -182,15 +182,15 @@ git status --porcelain exploration/stellarator_e2e/study/            # only synt
 ```
 
 ### Changes Required
-- [ ] For each `applied` gap: one edit, one commit, message citing `gaps.md` and the gap's row. No edit to a section's heading text; no rename of an `(Item 3)` field.
-- [ ] Copy `synthesis.md` from the scratch directory to `exploration/stellarator_e2e/study/synthesis.md`, unmodified. Nothing else in that directory changes.
-- [ ] Commit `spec.md`, `plan.md`, `brief.md`, `gaps.md`, `product-lens.md`, and the synthesis.
-- [ ] Tick Item 5's four success-criteria boxes in `.project/backlog/epic_run_study_capability.md` with a one-line evidence note each; update the epic's Status and Next Action lines; update `.project/CURRENT_WORK.md`.
+- [x] For each `applied` gap: one edit, one commit, message citing `gaps.md` and the gap's row. No edit to a section's heading text; no rename of an `(Item 3)` field.
+- [x] Copy `synthesis.md` from the scratch directory to `exploration/stellarator_e2e/study/synthesis.md`, unmodified. Nothing else in that directory changes.
+- [x] Commit `spec.md`, `plan.md`, `brief.md`, `gaps.md`, `product-lens.md`, and the synthesis.
+- [x] Tick Item 5's four success-criteria boxes in `.project/backlog/epic_run_study_capability.md` with a one-line evidence note each; update the epic's Status and Next Action lines; update `.project/CURRENT_WORK.md`.
 
 ### Validation
-- [ ] Heading count 17; no nested tokens; `tests/study` green; study directory shows only `synthesis.md` added.
-- [ ] `git log` shows one commit per applied gap.
-- [ ] Epic Item 5 boxes ticked with evidence; criteria 1–4 of the epic still marked as landing with Item 6.
+- [x] Heading count 17; no nested tokens; `tests/study` green; study directory shows only `synthesis.md` added.
+- [x] `git log` shows one commit per applied gap.
+- [x] Epic Item 5 boxes ticked with evidence; criteria 1–4 of the epic still marked as landing with Item 6.
 
 **What we know works after this phase:** Item 6 starts against a template that has survived one cold reader.
 
@@ -232,7 +232,11 @@ git status --porcelain exploration/stellarator_e2e/study/            # only synt
 **Checked against Item 4 schemas:** `verification_summary.v1` already carries sampled case ids, oracle module/callable, and the verifier's source digest; `preflight_results.v1` records gate observations and document digests — so reader entries 9, 11 (partly), and 12 are covered. The oracle's own source digest is the one thing no schema or snapshot field holds.
 **Deviations:** none. Paused here for the owner per instruction before Phase 5.
 ### Phase 5 Completion
+**Completed:** 2026-08-20 07:20
+**Changes made:** G1 applied to `record-template.md` (`316fc3a0`); `synthesis.md` copied byte-identical into `exploration/stellarator_e2e/study/` and committed with the item artifacts (`5ec1dbe1`); epic Item 5 boxes ticked with evidence; CURRENT_WORK updated.
+**Checks:** 17 headings; no nested tokens; `tests/study` 273 green (the one transient failure was the git-clean gate seeing the not-yet-committed `synthesis.md`; green after commit); study dir shows only `synthesis.md` added.
+**Deviations:** G1 applied although not load-bearing — owner decision at the pause, with the § Revisit note recorded above.
 
 ---
 
-**Status**: Draft
+**Status**: Complete

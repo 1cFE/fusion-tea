@@ -1,6 +1,6 @@
 # Spec: Cold-Pickup Administrator Exercise
 
-**Status:** Draft
+**Status:** Implemented 2026-08-20 (plan complete; audit pending)
 **Owner:** Reid W
 **Created:** 2026-08-20
 **Complexity:** LOW
