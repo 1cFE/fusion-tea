@@ -399,23 +399,23 @@ def test_advisory_never_changes_the_trace(real_package_path, tmp_path):
 
 **See `design.md` for:** the advisory scans and where each lands (M2, S3), the `axis_declaration` block and `subset` (S1, D11, Invariant 11), provenance round-trip (Invariant 8), and `no_constraint_response` (Invariant 4).
 
-- [ ] `tests/study/test_valid_empty.py` (NEW): a group with genuinely no constraint reach exits 0 with `no_constraint_response: true`, `group_valid: true`, and the expected objective lists
-- [ ] `tests/study/test_warnings.py` (NEW): the stencil above — suffix siblings in `sibling_candidates` (M2), tie candidates in group `warnings` as `{kind: "tie_candidate", detail}`, neither changing the trace
-- [ ] `tests/study/test_provenance.py` (NEW): per-key `fan_out | tie` round-trips declaration → output; a tie key traces identically to a fan-out key
-- [ ] `tests/study/test_subset_flag.py` (NEW): a full run emits `subset: false` with `groups` covering `groups_declared`; a `--group` run emits `subset: true` and the narrower list; the `axis_declaration` digest matches the declaration file's bytes
-- [ ] `scripts/study/indicators.py`: suffix-sibling scan (R12) and tie-candidate scan, both computed after the trace, never merged into the group
-- [ ] `scripts/study/indicators.py`: `axis_declaration` block with `groups_declared` + `subset`; `--group` forces `subset: true`
-- [ ] `scripts/study/indicators.py`: document-level `duplicate_key_across_groups` warning; `provenance_drift` warning covering **both** recorded fingerprints (S5) — neither gates
+- [x] `tests/study/test_valid_empty.py` (NEW): a group with genuinely no constraint reach exits 0 with `no_constraint_response: true`, `group_valid: true`, and the expected objective lists
+- [x] `tests/study/test_warnings.py` (NEW): the stencil above — suffix siblings in `sibling_candidates` (M2), tie candidates in group `warnings` as `{kind: "tie_candidate", detail}`, neither changing the trace
+- [x] `tests/study/test_provenance.py` (NEW): per-key `fan_out | tie` round-trips declaration → output; a tie key traces identically to a fan-out key
+- [x] `tests/study/test_subset_flag.py` (NEW): a full run emits `subset: false` with `groups` covering `groups_declared`; a `--group` run emits `subset: true` and the narrower list; the `axis_declaration` digest matches the declaration file's bytes
+- [x] `scripts/study/indicators.py`: suffix-sibling scan (R12) and tie-candidate scan, both computed after the trace, never merged into the group
+- [x] `scripts/study/indicators.py`: `axis_declaration` block with `groups_declared` + `subset`; `--group` forces `subset: true`
+- [x] `scripts/study/indicators.py`: document-level `duplicate_key_across_groups` warning; `provenance_drift` warning covering **both** recorded fingerprints (S5) — neither gates
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study` → green
-- [ ] `uv run ruff check scripts/study tests/study` → clean
+- [x] `uv run python -m pytest tests/study` → green
+- [x] `uv run ruff check scripts/study tests/study` → clean
 
 **Manual:**
-- [ ] Run with `--group R` and confirm `subset: true` plus the narrower `groups` list — a subset cannot be snapshotted into a record and pass for complete
-- [ ] Read a report's `not_derivable` block and confirm all four disclosure statements are present, including the positive reading ("a possible path exists", never "responds")
+- [x] Run with `--group R` and confirm `subset: true` plus the narrower `groups` list — a subset cannot be snapshotted into a record and pass for complete
+- [x] Read a report's `not_derivable` block and confirm all four disclosure statements are present, including the positive reading ("a possible path exists", never "responds")
 
 **What We Know Works After This Phase:** interpretive facts never gate, advisory stays advisory, and Item 2 can check axis coverage mechanically.
 
@@ -591,6 +591,21 @@ def test_tool_modules_are_generic(needle):
 **Manual verification:** triggered the corrupt-pipeline case by hand — the message reads `…/mfe_stellarator.yaml:24 (key path modules.stellarator_09__stellaris__geom.inputs.R): cannot split type/ref in 'floatonly_one_token'`, carrying file, line, and key path. Triggered the computed-quantity case — the message names the key, says it names a **computed quantity**, and names the producing module, visibly distinct from the absent-key wording. Both wrote zero bytes to stdout.
 
 ### Phase 6 Completion
+**Completed:** 2026-08-19
+**Actual Changes:**
+- `tests/study/data/axes.extras.json` (NEW): four groups the known-answer declaration cannot supply — `land_cost` (the valid empty result), `n_mod` (one of the 18 keys sharing a suffix, so the advisory scan has something to find), `R_partial` (the R fan-out without the tie, so the tie catalog has a candidate), and `R_shared` (a key declared twice, for the document warning).
+- `tests/study/test_valid_empty.py` (NEW): 4 tests — exit 0 with `no_constraint_response: true`, `group_valid: true`, and the expected objective lists from the Item 1 fixture contract; the full catalog still carried under an empty result; `no_constraint_response` emitted for every group including where false (Invariant 4); the document on stdout and the summary on stderr.
+- `tests/study/test_warnings.py` (NEW): 8 tests — removing the manifest tie leaves nine trace fields byte-identical (Invariant 3), the tie candidate names the key and says it was not added, a declared tie earns no candidate, suffix siblings land in `sibling_candidates` and nowhere else (M2), 17 candidates against 1 traced key, `magnet__R0` is not a suffix sibling, the duplicate-key document warning, and provenance drift warning on **both** recorded fingerprints while still exiting 0.
+- `tests/study/test_provenance.py` (NEW): 5 tests — provenance present on every key, round-tripping declaration to output, the tie key marked and the others not, a tie key tracing identically to a fan-out key (only the provenance field moves), and per-key `entry_type`.
+- `tests/study/test_subset_flag.py` (NEW): 5 tests — a full run emits `subset: false` covering `groups_declared`, `--group` emits `subset: true` with the narrower list while `groups_declared` still names the whole file, several groups selectable, a subset group byte-identical to its full-run counterpart, and the declaration digest matching the file bytes.
+
+**Issues:**
+- None. The advisory scans and the `axis_declaration` block shipped in Phase 3 because the report could not validate without them; this phase added their tests as planned.
+
+**Deviations:**
+- None.
+
+**Manual verification:** `--group R` emits `subset: true` with `groups` narrowed to `["R"]` while `groups_declared` still lists all six — a subset cannot be snapshotted into a record and pass for complete. The `not_derivable` block carries all four disclosures, including the positive reading ("a possible path exists in the module graph. It never means the axis responds").
 
 ### Phase 7 Completion
 
