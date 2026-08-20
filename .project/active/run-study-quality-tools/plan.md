@@ -186,7 +186,7 @@ Plus the three fail-closed cases: a removed binding, an unknown key, and an ambi
 - [x] `uv run python -m pytest tests/study -q` → green
 
 **Manual:**
-- [ ] `uv run python -c "from … import oracle_entry; print(oracle_entry.evaluate(BASELINE))"` reproduces LCOE `275.2642200420774` within rel < 1e-9 (the probe's value).
+- [x] `uv run python -c "... oracle_entry.evaluate(BASELINE)"` reproduces LCOE `275.2642200420775` against the probe's `275.2642200420774` — rel 4e-16, well within 1e-9. Also held by `test_the_shim_reproduces_the_pinned_headline`.
 
 **What we know works after this phase:** B4 holds on the real package; verdict re-derivation is buildable; the oracle seam exists with `verify_stellaris.py` untouched.
 
