@@ -175,15 +175,15 @@ Plus the three fail-closed cases: a removed binding, an unknown key, and an ambi
 
 **See `design.md` for:** D5 (shim location and ownership), D12 (the binding contract and its exact signature), D13 (`glue_values`), Invariant 9, the operand-resolution finding in `design.md#research-findings`.
 
-- [ ] `tests/study/test_operand_bindings.py` (NEW — first)
-- [ ] `exploration/stellarator_e2e/studies/oracle_entry.py` (NEW): `evaluate()`, `operand_bindings()`, `glue_values()`; owns the entry-key → oracle-input map, the oracle-output → qualified-channel map, the `IN` save/restore (`run_design_search.py:144-152`), and the `_profile_integral` memoization. It puts `exploration/stellarator_e2e` on `sys.path` itself. `verify_stellaris.py` is **not** touched.
-- [ ] Record the binding for `net_positive.net_electric` explicitly — `…__pb__p_net`, `kind: "channel"` — since it is the one that resolves to nothing by name and is the reason D12 exists.
+- [x] `tests/study/test_operand_bindings.py` (NEW — first)
+- [x] `exploration/stellarator_e2e/studies/oracle_entry.py` (NEW): `evaluate()`, `operand_bindings()`, `glue_values()`; owns the entry-key → oracle-input map, the oracle-output → qualified-channel map, the `IN` save/restore (`run_design_search.py:144-152`), and the `_profile_integral` memoization. It puts `exploration/stellarator_e2e` on `sys.path` itself. `verify_stellaris.py` is **not** touched.
+- [x] Record the binding for `net_positive.net_electric` explicitly — `…__pb__p_net`, `kind: "channel"` — since it is the one that resolves to nothing by name and is the reason D12 exists.
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study/test_operand_bindings.py -q` → green, 5/5 constraints
-- [ ] `uv run python -m pytest tests/study -q` → green
+- [x] `uv run python -m pytest tests/study/test_operand_bindings.py -q` → green, 5/5 constraints
+- [x] `uv run python -m pytest tests/study -q` → green
 
 **Manual:**
 - [ ] `uv run python -c "from … import oracle_entry; print(oracle_entry.evaluate(BASELINE))"` reproduces LCOE `275.2642200420774` within rel < 1e-9 (the probe's value).
@@ -561,6 +561,20 @@ That the six annex sections the delivered runbook links are all fillable from wh
 - The `package_copy` third convenience (mutate a glue file *and* optionally re-emit the identity document) is **deferred to Phase 3**, where `identity.py` and the adapter exist and it can be written against them instead of against a stub.
 
 ### Phase 1 Completion
+**Completed:** 2026-08-20. **B4 holds:** all nine `feature_ref` operands across all five catalog constraints resolve through published bindings.
+
+**Actual changes:**
+- `exploration/stellarator_e2e/studies/oracle_entry.py` (NEW): `evaluate()`, `operand_bindings()`, `glue_values()`, plus the three declared tables (`ENTRY_KEY_TO_ORACLE_INPUT`, `ORACLE_OUTPUT_TO_CHANNEL`, `GLUE_VALUE_KEYS`) and `OracleSeamError`. `verify_stellaris.py` untouched.
+- `tests/study/test_operand_bindings.py` (NEW): nine tests — full resolution over all five constraints, the `net_electric` case asserted explicitly, headline reproduction, and five fail-closed cases.
+
+**The nine bindings.** `beta_ok`: `beta`, `beta_limit` → inputs. `tbr_ok`: `tbr`, `tbr_floor` → inputs. `recirc_ok`: `rec_frac` → channel `pb__rec_frac`, `threshold` → the constraint-id-prefixed input `recirc_ok__afc3be66f0a3421b__threshold`. `wall_load_ok`: `wall_load` → channel `wall_load_calc__wall_load`, `wall_load_limit` → input. `net_positive`: `net_electric` → channel `pb__p_net` — no input key and no channel contains the string `net_electric`, which is the operand D12 exists for and is asserted by its own test.
+
+**Issue found and fixed — a name that agreed while the numbers did not.** The first channel map sent the oracle's `annual_om` to `om_cost__annual_om`. Checked against the committed store, it is off by 158%: the package channel is the *unlevelized* annual O&M and the oracle's `annual_om` is the levelized one. `annual_om_unlevelized` is the right source. This is the concrete form of the risk D12 names, caught by validating the published map instead of trusting it.
+
+**Channel-map validation.** 51 oracle outputs mapped to qualified channels. Against both committed stores, the 45 that the era records agree at worst rel 7.1e-16 (sampled every 37th case of the 948-point grid and every case of the 19-point sweep). The 6 unrecorded ones are all `pb__*` fields of the multi-field power-balance model, which the era evidence layer does not record — the exact limitation `run_design_search.py:127-131` documents. `net_positive` and `recirc_ok` reach their operands through those six, which is why D12 routes channel operands through the oracle's return rather than the store's outputs.
+
+**Deviations:** none.
+
 ### Phase 2 Completion
 ### Phase 3 Completion
 ### Phase 4 Completion
