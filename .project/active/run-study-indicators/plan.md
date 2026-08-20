@@ -1,6 +1,6 @@
 # Implementation Plan: Indicator Tool and Package Manifest
 
-**Status:** Draft
+**Status:** In Progress
 **Created:** 2026-08-19
 **Last Updated:** 2026-08-19
 **Branch:** `feat/stellarator-mbse-demo`
@@ -101,23 +101,23 @@ def test_manifest_validator_raises_on_unknown_key(minimal_manifest_dict):
 
 **See `design.md` for:** the manifest schema block-by-block (`design.md#componentscriptsstudymanifestpy--the-package-catalog-seam`), both digest recipes byte for byte, the M1 glob strictness rules, the identity check, path normalization (M4), and the `--print-fingerprint` decision (D7).
 
-- [ ] `uv add jsonschema` (already resolved transitively in `uv.lock`; this makes it explicit — nothing new downloads)
-- [ ] `scripts/study/` created, **no `__init__.py`**
-- [ ] `tests/study/` created with `conftest.py` (path fixtures only at this phase: repo root, real package path)
-- [ ] `scripts/study/manifest.py` (NEW): manifest schema validator (hand-rolled, raise on unknown keys anywhere — per-block functions or one table-driven walk, implementer's call per the design's "Open for the plan"); `indicator-input-fingerprint/v1`; `tool-source-digest/v1` (M5); read-set coverage helper (M3, called in Phase 5); identity check; repo-relative POSIX path normalization (M4)
-- [ ] `scripts/study/indicators.py` (NEW): argparse surface for both invocation forms per `design.md#the-cli`; only `--print-fingerprint` implemented, prints the fingerprint plus every per-file digest and exits 0
-- [ ] `tests/study/test_output_contract.py` (NEW): the two stencil tests plus a `tool-source-digest/v1` recomputation test over the named file list
+- [x] `uv add jsonschema` (already resolved transitively in `uv.lock`; this makes it explicit — nothing new downloads)
+- [x] `scripts/study/` created, **no `__init__.py`**
+- [x] `tests/study/` created with `conftest.py` (path fixtures only at this phase: repo root, real package path)
+- [x] `scripts/study/manifest.py` (NEW): manifest schema validator (hand-rolled, raise on unknown keys anywhere — per-block functions or one table-driven walk, implementer's call per the design's "Open for the plan"); `indicator-input-fingerprint/v1`; `tool-source-digest/v1` (M5); read-set coverage helper (M3, called in Phase 5); identity check; repo-relative POSIX path normalization (M4)
+- [x] `scripts/study/indicators.py` (NEW): argparse surface for both invocation forms per `design.md#the-cli`; only `--print-fingerprint` implemented, prints the fingerprint plus every per-file digest and exits 0
+- [x] `tests/study/test_output_contract.py` (NEW): the two stencil tests plus a `tool-source-digest/v1` recomputation test over the named file list
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study` → green
-- [ ] `uv run ruff check scripts/study tests/study` → clean
+- [x] `uv run python -m pytest tests/study` → green
+- [x] `uv run ruff check scripts/study tests/study` → clean
 
 **Manual:**
-- [ ] `uv run python scripts/study/indicators.py --package exploration/stellarator_e2e/pkg/stellarator_tea --print-fingerprint` → prints a digest plus per-file lines; exits 0
-- [ ] Run the same command from a different working directory → byte-identical output (M4)
-- [ ] Confirm the file list contains `pipelines/mfe_stellarator.yaml`, the three `inputs/*.json`, and `contracts/model_contract.json` — and **not** either `__init__.py`
+- [x] `uv run python scripts/study/indicators.py --package exploration/stellarator_e2e/pkg/stellarator_tea --print-fingerprint` → prints a digest plus per-file lines; exits 0
+- [x] Run the same command from a different working directory → byte-identical output (M4)
+- [x] Confirm the file list contains `pipelines/mfe_stellarator.yaml`, the three `inputs/*.json`, and `contracts/model_contract.json` — and **not** either `__init__.py`
 
 **What We Know Works After This Phase:** the fingerprint recipe on the real package, the manifest validator's raise-on-unknown behavior, and the CLI skeleton.
 
@@ -512,10 +512,20 @@ def test_tool_modules_are_generic(needle):
 [TO BE FILLED DURING IMPLEMENTATION]
 
 ### Phase 1 Completion
-**Completed:**
+**Completed:** 2026-08-19
 **Actual Changes:**
+- `pyproject.toml` + `uv.lock`: `jsonschema>=4.26.0` added as an explicit dependency (two lock lines, nothing downloaded).
+- `scripts/study/manifest.py` (NEW, no `__init__.py` in the package dir): strict hand-rolled manifest validator (per-block functions), both digest recipes, the read-set coverage helper (`assert_read_set_covered`, wired in Phase 5), the identity check, the pin gate (`assert_pin_matches`), and path normalization.
+- `scripts/study/indicators.py` (NEW): full argparse surface for both invocation forms; `--print-fingerprint` implemented.
+- `tests/study/conftest.py` (NEW): repo-root, real-package, real-manifest, `load_schema`, and `minimal_manifest_dict` fixtures.
+- `tests/study/test_output_contract.py` (NEW): 12 tests — recipe stability and path sorting, the three-leg read set, working-directory independence via the CLI, and seven validator cases (unknown key, four located missing keys, malformed baseline, duplicate objective name, unknown oracle kind).
+
 **Issues:**
+- Running `indicators.py` as a script puts `scripts/study/` on `sys.path`, not the repo root, so `from scripts.study import manifest` fails. Added a three-line `sys.path` bootstrap guarded on `__package__ in (None, "")`, so both `uv run python scripts/study/indicators.py` and the pytest import path work.
+
 **Deviations:**
+- **Fingerprint paths are package-relative, not repo-relative.** The design's recipe prose says "sorted by repo-relative POSIX path" but its own manifest schema example pins `files: ["pipelines/mfe_stellarator.yaml", ...]` — package-relative. Resolved in favour of the schema example, because the pinned `files` list is what Invariant 10 compares resolved reads against, and a package-relative pin stays valid if the package moves inside the repo. Sort determinism (the point of the prose) is unaffected. Every *other* path in the report stays repo-relative POSIX per M4.
+- **The `tool-source-digest/v1` recomputation test moved to Phase 2.** The recipe's file list includes the three `scripts/study/schemas/*.json` files, which Phase 2 authors; the test cannot pass before they exist. `tool_source_digest()` itself shipped in this phase.
 
 ### Phase 2 Completion
 
