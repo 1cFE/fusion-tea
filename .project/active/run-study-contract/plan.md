@@ -1,6 +1,6 @@
 # Implementation Plan: Skill, Runbook, and Record Contract (RUN-STUDY Item 2)
 
-**Status:** In Progress
+**Status:** Complete
 **Created:** 2026-08-19
 **Last Updated:** 2026-08-19
 **Branch:** `feat/stellarator-mbse-demo`
@@ -362,20 +362,20 @@ git status --porcelain $D             # expect all three tracked/added
 
 ### Changes Required
 
-- [ ] Fold `dry-run.md`'s findings into `record-template.md` — wording and placeholder fixes only. A section the proof-of-life could not fill is **not** removed; the contract is not softened (`design.md:346`)
-- [ ] **Deposit completeness, two-way** (`design.md:343`): every runbook `**Deposits:**` names a template section that exists (Phase 4 direction, re-run on final text), **and** every template section is named by at least one runbook step or is header/nil material. Read both files side by side; record the pairing table in the phase notes
-- [ ] **Spec-coverage remap** (`design.md:344`): re-derive the mapping of each of the spec's fourteen mandatory content items (`spec.md:71-100`) to exactly one home — a template section, a snapshot block, or a stated split. Items 9 and 10 are the two split cases. Write the finished map to `.project/active/run-study-contract/coverage.md`. Re-derive it from the written documents; do not copy `design.md`'s table forward, since that would only prove the design agrees with itself
-- [ ] Confirm the template header states the values/arguments split once, with the window as the worked example (`design.md:323`)
-- [ ] Confirm the routing homes in §15 guidance are the set `{tool, runbook step, policy rule, skill, modeling item, research round, documented seam}` — not the proof-of-life's specific rows, which are spec history (`design.md:314`)
-- [ ] Confirm no unreplaced-token exception: the template says an unreplaced `<...>` in a committed record is a commit-blocking defect
+- [x] Fold `dry-run.md`'s findings into `record-template.md` — wording and placeholder fixes only. A section the proof-of-life could not fill is **not** removed; the contract is not softened (`design.md:346`)
+- [x] **Deposit completeness, two-way** (`design.md:343`): every runbook `**Deposits:**` names a template section that exists (Phase 4 direction, re-run on final text), **and** every template section is named by at least one runbook step or is header/nil material. Read both files side by side; record the pairing table in the phase notes
+- [x] **Spec-coverage remap** (`design.md:344`): re-derive the mapping of each of the spec's fourteen mandatory content items (`spec.md:71-100`) to exactly one home — a template section, a snapshot block, or a stated split. Items 9 and 10 are the two split cases. Write the finished map to `.project/active/run-study-contract/coverage.md`. Re-derive it from the written documents; do not copy `design.md`'s table forward, since that would only prove the design agrees with itself
+- [x] Confirm the template header states the values/arguments split once, with the window as the worked example (`design.md:323`)
+- [x] Confirm the routing homes in §15 guidance are the set `{tool, runbook step, policy rule, skill, modeling item, research round, documented seam}` — not the proof-of-life's specific rows, which are spec history (`design.md:314`)
+- [x] Confirm no unreplaced-token exception: the template says an unreplaced `<...>` in a committed record is a commit-blocking defect
 
 ### Validation
 
-- [ ] All check-stencil commands give expected results
-- [ ] `coverage.md` maps all fourteen spec items; zero items with no home; zero items with two homes except the two declared splits
-- [ ] Deposit pairing table has no orphan on either side
-- [ ] **Read-check, no judgment**, across all three files: zero sentences stating a preference among axes, framings, routes, or results
-- [ ] Every invariant in `design.md#required-invariants` is either checked above or explicitly listed in the phase notes as "stated in the documents, unenforced" — with `record_lint.py` named as the future home and owned by no item (`design.md:321`)
+- [x] All check-stencil commands give expected results
+- [x] `coverage.md` maps all fourteen spec items; zero items with no home; zero items with two homes except the two declared splits
+- [x] Deposit pairing table has no orphan on either side
+- [x] **Read-check, no judgment**, across all three files: zero sentences stating a preference among axes, framings, routes, or results
+- [x] Every invariant in `design.md#required-invariants` is either checked above or explicitly listed in the phase notes as "stated in the documents, unenforced" — with `record_lint.py` named as the future home and owned by no item (`design.md:321`)
 
 **What We Know Works After This Phase:** the contract is internally consistent, spec-complete, and package-free. What still does **not** work, and is honestly out of reach here: the **fresh-administrator check**, the real acceptance test, which needs a compliant record and arrives with the first consumer study (`design.md:347`).
 
@@ -521,6 +521,66 @@ After the fixes: `SKILL.md` names no record section number, carries no deposit, 
 **Deviations from Plan:** none beyond the two read-check fixes.
 ### Phase 6 Completion
 
+**Completed:** 2026-08-19
+
+**Changes Made:**
+- Folded `dry-run.md`'s two wording findings into `record-template.md`. §1 now states that arms are variants of the same question and that two studies asking different questions are two records — the confusion a reader coming from the proof-of-life would arrive with. §4 now states that a short display name is not a qualified identity, and that recovering the qualified identity is part of the section — which is the exact fact the proof-of-life had and dropped on export. **Nothing was removed and no obligation was softened.** The sections the proof-of-life could not fill (§8, §16) stand as written.
+- Wrote `.project/active/run-study-contract/coverage.md`, re-derived by reading the three finished documents rather than by copying `design.md`'s table.
+
+**Check stencil, all pass.** Zero package names, key prefixes, or oracle names across the three files. Zero `modeling_project/STUDY_POLICY.md` references. `<pkg>` present as a placeholder in all three (1, 2, and 12 occurrences). `grep -c '^## '` on the template is 17 and `grep -c '^**Applies:**'` is 2. `git check-ignore` returns nothing for all three files, and all three are tracked.
+
+**Deposit completeness, two-way — no orphan on either side.** Pairing table, generated from the final text:
+
+| § | Template heading | Deposited by step(s) |
+|---|---|---|
+| 1 | Study header | 1 |
+| 2 | Intake | 1 |
+| 3 | Objective and result | 8 |
+| 4 | Constraint outcomes | 8 |
+| 5 | Framing | 4, 10 |
+| 6 | Per-axis account | 10 |
+| 7 | Axis groups | 2 |
+| 8 | Indicators and rulings | 3, 4 |
+| 9 | Preflight results | 5 |
+| 10 | Execution route and why | 7 |
+| 11 | Study definition and window provenance | 6 |
+| 12 | Cross-fingerprint correlation and what it means | 13 |
+| 13 | Verification | 9 |
+| 14 | Review outcomes | 4, 11 |
+| 15 | Findings | 14 |
+| 16 | Snapshot | 13 |
+| 17 | What this record does not contain | 13 |
+
+Every one of the fourteen steps also deposits at least one non-section artifact or section, so no step's output lands nowhere.
+
+**Spec coverage — fourteen items, fourteen homes, three splits.** `coverage.md` has the map. Items 9 and 10 are the splits the plan named. **Item 13 is a third**, and it is recorded rather than absorbed into the count: the SF1 move takes the window's "how it was chosen" clause out of the snapshot and into §11. The design declares it under "Spec deviations surfaced", so it is a stated deviation and not a new one, but the plan's phrasing expected two splits and the honest number is three. Zero items have no home; zero have two homes that are not one of the three declared splits. All eleven of `spec.md:87-98`'s snapshot bullets are cross-checked against the appendix in `coverage.md`.
+
+**Confirmations:** the values/arguments split is stated exactly once, in the template header, with the window as the worked example. §15's routing homes are the set {tool, runbook step, policy rule, skill, modeling item, research round, documented seam}, not the proof-of-life's specific rows — a grep for `verify.py`, `preflight.py`, `H1`, and `feasible-fraction` in the template returns nothing. The template states that an unreplaced `<...>` in a committed record is a commit-blocking defect.
+
+**Read-check, no judgment, across all three files.** Zero sentences state a preference among axes, framings, routes, or results. Weighed again on the final text: the template's §11 is symmetric between `engineered` and `sourced` (each owes a statement, neither is preferred); §5 and §6 are symmetric between `search` and `sensitivity`; `SKILL.md`'s "a study executed when a synthesis was wanted wastes a run" is about mode selection and not about any study's content.
+
+**Invariant status — what is checked, and what is only stated.** Nothing mechanically enforces the record contract; this item deliberately does not build a linter, and no epic item owns one. `record_lint.py` is the obvious home if drift shows up. Each of the design's thirteen Required Invariants:
+
+| Invariant | Status |
+|---|---|
+| Zero package names | **checked** — grep, Phases 4, 5, 6 |
+| Fixed headings (seventeen, verbatim, in order) | **checked** — `grep -c '^## '` = 17 |
+| Every runbook step names its record deposit | **checked** — pairing script, both directions, zero orphans |
+| Arm scoping | **checked** — two-arm self-audit, Phase 2 and re-run in Phase 3; it is what moved `glue_ledger` under `arms[]` |
+| One digest direction | **checked** — the snapshot appendix carries no digest of `record.md`, only prose pointers to its sections |
+| No judgment in obligations | **checked** — read-check, recorded in Phases 4 and 6 |
+| Tracking, exactly one negation line | **checked** — `git check-ignore` + `git diff .gitignore`, Phase 1 |
+| Values/arguments split | **stated in the documents, unenforced.** Needs a filled record to check |
+| Fingerprint completeness is internal | **stated, unenforced.** The rule is written; checking it needs a real `snapshot.json` |
+| Explicit nil | **stated, unenforced** |
+| No unreplaced tokens | **stated, unenforced.** Trivially greppable once a record exists; nothing runs that grep |
+| Role separation | **stated, unenforced.** `SKILL.md` and the administer sequence both state it; nothing prevents an administrator opening the package |
+| Append-only | **stated, unenforced** |
+
+**What still does not work, honestly.** The **fresh-administrator check** is this contract's real acceptance test and it cannot run here — it needs a compliant record, which arrives with the first consumer study. Everything above proves the contract is internally consistent, spec-complete, and package-free. None of it proves a second agent can actually recover a study from a record, because no record exists yet.
+
+**Deviations from Plan:** the third split (item 13 / SF1) is the only one, and it is a counting correction rather than a change of substance.
+
 ---
 
-**Status**: Draft → In Progress → Complete
+**Status**: Draft → In Progress → **Complete** (all six phases, 2026-08-19)

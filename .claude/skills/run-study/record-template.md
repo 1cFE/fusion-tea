@@ -44,6 +44,9 @@ different study and gets a new study id.
 - **Mode:** execute
 - **Arms:** `<arm-<slug>, ... — or: single arm>`
 
+Arms are variants of the same question, run to be compared. Two studies asking different
+questions of the same package are two records, not two arms of one.
+
 ## 2. Intake
 
 The owner's goal and scope, in their own words, verbatim.
@@ -67,6 +70,10 @@ Every executing constraint, by qualified identity, with its status.
 | `constraint_id` | `source_local_identity` | Status | Note |
 |---|---|---|---|
 | `<qualified id>` | `<local identity>` | `<satisfied \| violated \| indeterminate>` | `<where and why, one line>` |
+
+A short display name is not a qualified identity. If the executed artifacts carry only
+the short name, the qualified identity was dropped on export and recovering it is part
+of this section, not optional.
 
 ## 5. Framing
 
