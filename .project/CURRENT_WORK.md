@@ -6,6 +6,10 @@
 
 ## Active Work
 
+### run-study Item 4 — Quality Tools and Era Adapter Promotion (spec drafted)
+
+`.project/active/run-study-quality-tools/` — epic RUN-STUDY, Item 4. Promotes the proof-of-life's generic mechanical gates into `scripts/study/preflight.py` and `scripts/study/verify.py`, isolates the era workarounds in a package-local self-checking `exploration/stellarator_e2e/studies/era_adapter.py` under a truthful effective executable fingerprint, and authors the package annex at `exploration/stellarator_e2e/studies/ANNEX.md`. **Item-start probe done 2026-08-19: the stock loader refuses** — 2 of 139 sealed artifacts (`inputs/system_design.json`, `pipelines/mfe_stellarator.yaml`) are TAMPER against `artifact_hashes` — so the adapter branch is live and the deletion condition, not deletion, discharges "absent not dormant". `spec.md` drafted; product-lens BLOCKED on F1 (manifest-staleness gate dropped) and F2 (SC1 demanded an adapter-owned check from the generic tools), both fixed — gate now CLEAR (`product-lens.md`). Next: `/_my_spec_review`, then `/_my_design`.
+
 ### run-study Item 3 — Indicator Tool and Package Manifest (design accepted, review folded)
 
 `.project/active/run-study-indicators/` — epic RUN-STUDY, Item 3. Builds `scripts/study/indicators.py` (package-agnostic) plus `exploration/stellarator_e2e/studies/manifest.json` (data-only package catalog) on the Item 1 spike's confirmed trace. `spec.md` drafted 2026-08-19; product-lens BLOCKED then CLEAR after two fixes (per-key `fan_out | tie` provenance; computed-quantity keys as their own mechanical outcome). Next: `/_my_spec_review`, then `/_my_design`.

@@ -29,13 +29,13 @@ The accepted design (`.project/concepts/run-study-skill-design.md`) settles the 
 
 - [ ] **Goal-only execute intake works.** Invoking `run-study` with content carrying only a goal and scope — no process, verification, or reporting instructions — puts the agent on the runbook with intake captured verbatim and the record path named.
 - [ ] **Record-only administration works.** Invoking `run-study` in administer mode against a record directory produces a synthesis written from that directory alone, with any missing required fact reported as missing.
-- [ ] **The runbook names obligations, not decisions.** A reader can list every step a study owes and what each step deposits in the record, and finds nowhere in it a choice of axis, a framing verdict, or an interpretation of a result.
-- [ ] **The record contract is evidence-complete.** Every capability-compliant record carries the LCOE objective and its result; the qualified identity plus `satisfied | violated | indeterminate` status of every executing constraint; and the recorded outcome of every mechanical gate that ran.
-- [ ] **An axis nothing resists produces a finding, not just a ruling.** Every `no_constraint_response` axis reaches the record with both the user's ruling and a model-development finding naming what should push back and is not modeled.
-- [ ] **Facts are snapshotted, never cited.** No required record content resolves through a mutable file; deleting or editing the manifest, the adapter, or the package cannot change what a committed record says.
-- [ ] **Evidence is immutable and synthesis is separate.** The record contract states that executed evidence is never edited and that the administrator's output lands in `synthesis.md`; missing evidence is reported, never inferred.
-- [ ] **Every proof-of-life lesson has exactly one named home.** A routing table maps each lesson to skill, runbook, policy, or tool, and no lesson appears in two.
-- [ ] **`.gitignore` admits only `.claude/skills/run-study/`** beyond the two already-tracked skills.
+- [x] **The runbook names obligations, not decisions.** A reader can list every step a study owes and what each step deposits in the record, and finds nowhere in it a choice of axis, a framing verdict, or an interpretation of a result.
+- [x] **The record contract is evidence-complete.** Every capability-compliant record carries the LCOE objective and its result; the qualified identity plus `satisfied | violated | indeterminate` status of every executing constraint; and the recorded outcome of every mechanical gate that ran.
+- [x] **An axis nothing resists produces a finding, not just a ruling.** Every `no_constraint_response` axis reaches the record with both the user's ruling and a model-development finding naming what should push back and is not modeled.
+- [x] **Facts are snapshotted, never cited.** No required record content resolves through a mutable file; deleting or editing the manifest, the adapter, or the package cannot change what a committed record says.
+- [x] **Evidence is immutable and synthesis is separate.** The record contract states that executed evidence is never edited and that the administrator's output lands in `synthesis.md`; missing evidence is reported, never inferred.
+- [x] **Every proof-of-life lesson has exactly one named home.** A routing table maps each lesson to skill, runbook, policy, or tool, and no lesson appears in two.
+- [x] **`.gitignore` admits only `.claude/skills/run-study/`** beyond the two already-tracked skills.
 
 ---
 
