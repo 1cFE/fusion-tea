@@ -39,21 +39,25 @@ def test_the_manifest_holds_no_executable_content(needle, real_manifest_path):
     assert needle not in real_manifest_path.read_text()
 
 
-def test_the_tool_modules_are_the_only_python_under_scripts_study(repo_root):
+def test_the_tool_modules_exist_and_no_init(repo_root):
     """No __init__.py — implicit namespace packages plus pythonpath = ['.'] make the
-    import work, and an empty module file would be a file nobody reads."""
+    import work, and an empty module file would be a file nobody reads. Other epic
+    items (preflight.py, verify.py, identity.py, common.py — Item 4) share this
+    directory, so this test asserts presence, never an exact listing."""
     found = sorted(p.name for p in (repo_root / "scripts" / "study").glob("*.py"))
-    assert found == ["indicators.py", "manifest.py"]
+    assert {"indicators.py", "manifest.py"} <= set(found)
     assert not (repo_root / "scripts" / "study" / "__init__.py").exists()
 
 
 def test_the_schema_files_are_the_committed_contract(repo_root):
+    """Item 3's three schemas must exist; Item 4 adds its own to the same directory,
+    so this is a subset assertion, not an exact listing."""
     found = sorted(p.name for p in (repo_root / "scripts" / "study" / "schemas").glob("*.json"))
-    assert found == [
+    assert {
         "axis_declaration.v1.schema.json",
         "indicators.v1.schema.json",
         "study_package_manifest.v1.schema.json",
-    ]
+    } <= set(found)
 
 
 def test_the_committed_package_is_untouched(repo_root):

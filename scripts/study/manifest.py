@@ -154,7 +154,11 @@ def tool_source_digest() -> dict:
         if not path.is_file():
             raise ManifestError(f"tool source file missing: {rel}")
         entries.append((rel, sha256_file(path)))
-    return {"recipe": TOOL_SOURCE_RECIPE, "digest": _canonical_digest(TOOL_SOURCE_RECIPE, entries)}
+    return {
+        "recipe": TOOL_SOURCE_RECIPE,
+        "digest": _canonical_digest(TOOL_SOURCE_RECIPE, entries),
+        "files": [{"path": rel, "sha256": digest} for rel, digest in entries],
+    }
 
 
 # ------------------------------------------------------- schema validation

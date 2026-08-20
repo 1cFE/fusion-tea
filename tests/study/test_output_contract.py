@@ -286,11 +286,14 @@ def test_lists_are_sorted_by_a_stated_key():
 
 
 def test_the_report_carries_its_tool_source_digest():
-    """M5: emitted as {recipe, digest}, never a bare hash."""
+    """M5: emitted as {recipe, digest, files}, never a bare hash. The files list
+    carries per-file digests so a record's tool revision names what it covered
+    (Item 4 coordination, orchestrator 2026-08-20)."""
     tool = _report()["tool"]
     assert tool["path"] == "scripts/study/indicators.py"
     assert tool["source_digest"] == manifest.tool_source_digest()
-    assert set(tool["source_digest"]) == {"recipe", "digest"}
+    assert set(tool["source_digest"]) == {"recipe", "digest", "files"}
+    assert all(set(f) == {"path", "sha256"} for f in tool["source_digest"]["files"])
 
 
 def test_the_report_carries_the_three_package_fingerprints(real_package_path):
