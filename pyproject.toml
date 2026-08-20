@@ -50,3 +50,6 @@ warn_unused_configs = true
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
+markers = [
+    "slow: long-running promotion-equivalence runs (the 948-point design-search grid)",
+]

@@ -222,3 +222,86 @@ def synthetic_copy(package_copy):
 @pytest.fixture
 def real_copy(package_copy):
     return package_copy(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWER_DECLARATION)
+
+
+# --------------------------------------------------------------- Item 4: the era dependency
+#
+# The era teax worktree is a read-only external dependency: not in this repo, not
+# installed by uv. A machine without it legitimately cannot run the era-dependent
+# tests, so those tests skip with a reason that names the resolved path, the pinned
+# commit, what was found, and the override. Silence is the real risk, so
+# ``STUDY_REQUIRE_ERA=1`` turns every such skip into a hard failure — this item's
+# own validation runs set it, and it is the flag CI would use.
+#
+# The committed proof-of-life stores under ``study/_work/`` are gitignored, so they
+# are the same kind of dependency and follow the same rule.
+
+ERA_PIN_COMMIT = "fa0e06a"
+ERA_DEFAULT_WORKTREE = Path("/home/reid/1cfe/teax-v1-era")
+ERA_SIMKIT_SUBPATH = "packages/teax-simkit"
+
+
+def _require_era() -> bool:
+    return os.environ.get("STUDY_REQUIRE_ERA") == "1"
+
+
+def _unavailable(reason: str):
+    """Skip on an absent external dependency, unless STUDY_REQUIRE_ERA=1 promotes it."""
+    if _require_era():
+        pytest.fail(reason)
+    pytest.skip(reason)
+
+
+def _era_worktree() -> Path:
+    return Path(os.environ.get("TEAX_V1_ERA") or ERA_DEFAULT_WORKTREE)
+
+
+@pytest.fixture
+def era_simkit_path() -> Path:
+    """The pinned era ``teax-simkit`` directory, put on ``sys.path``.
+
+    Resolves ``$TEAX_V1_ERA`` if set, else the default worktree. Requires both the
+    ``packages/teax-simkit`` directory and the pinned HEAD.
+    """
+    worktree = _era_worktree()
+    simkit = worktree / ERA_SIMKIT_SUBPATH
+    override = "set TEAX_V1_ERA to override the worktree location"
+    if not simkit.is_dir():
+        _unavailable(
+            f"era teax worktree unavailable: expected {ERA_SIMKIT_SUBPATH} under "
+            f"{worktree} at commit {ERA_PIN_COMMIT}, found no such directory ({override})"
+        )
+    head = subprocess.run(
+        ["git", "-C", str(worktree), "rev-parse", "--short", "HEAD"],
+        capture_output=True, text=True,
+    )
+    found = head.stdout.strip()
+    if head.returncode != 0 or not found.startswith(ERA_PIN_COMMIT[:7]):
+        _unavailable(
+            f"era teax worktree is at the wrong commit: {worktree} expected "
+            f"{ERA_PIN_COMMIT}, found {found or 'no git HEAD'} ({override})"
+        )
+    if str(simkit) not in sys.path:
+        sys.path.insert(0, str(simkit))
+    return simkit
+
+
+COMMITTED_STUDY_DIR = REPO_ROOT / "exploration" / "stellarator_e2e" / "study"
+COMMITTED_WORK_DIR = COMMITTED_STUDY_DIR / "_work"
+
+
+@pytest.fixture
+def committed_store_path():
+    """Factory for a proof-of-life store path. Read-only — these stores are evidence."""
+
+    def _store(name: str) -> Path:
+        path = COMMITTED_WORK_DIR / name
+        if not path.is_file():
+            _unavailable(
+                f"proof-of-life store unavailable: {path} (gitignored executed evidence; "
+                f"re-produce it by running exploration/stellarator_e2e/study/run_design_search.py "
+                f"under the era pin {ERA_PIN_COMMIT})"
+            )
+        return path
+
+    return _store

@@ -117,23 +117,23 @@ def test_the_committed_store_speaks_the_generic_vocabulary(era_simkit_path, repo
 
 **See `design.md` for:** the store's vocabulary (`design.md#research-findings`), D7, the `package_copy` rules (`design.md#implementation-notes`).
 
-- [ ] `tests/study/conftest.py`: add `era_simkit_path` fixture per the era policy above (skip-with-loud-reason; `STUDY_REQUIRE_ERA=1` promotes to failure), and extend the `package_copy` factory with the third convenience the design names — mutate a glue file *and* optionally re-emit the identity document.
-- [ ] `pyproject.toml` `[tool.pytest.ini_options]`: register `markers = ["slow: long-running equivalence runs (948-point grid)"]`. Needed by D11's `-m slow` gate; `pythonpath = ["."]` is already correct.
-- [ ] `tests/study/test_committed_store.py` (NEW) — the stencil above. Read-only; assert the store file is unmodified afterwards.
-- [ ] `tests/study/test_era_pin.py` (NEW) — `test_era_pin_is_declared_consistently`, never skips. Asserts the conftest constant only for now; the adapter and annex assertions are enabled in Phases 3 and 8 (marked `xfail(strict=False)` until then is **not** acceptable — instead the test parametrizes over files that exist, so it grows as they land).
-- [ ] Re-run `.project/active/run-study-quality-tools/probe_effective_fingerprint.py` and paste its `[P3]` line into this plan's Implementation Notes.
+- [x] `tests/study/conftest.py`: add `era_simkit_path` fixture per the era policy above (skip-with-loud-reason; `STUDY_REQUIRE_ERA=1` promotes to failure), and extend the `package_copy` factory with the third convenience the design names — mutate a glue file *and* optionally re-emit the identity document.
+- [x] `pyproject.toml` `[tool.pytest.ini_options]`: register `markers = ["slow: long-running equivalence runs (948-point grid)"]`. Needed by D11's `-m slow` gate; `pythonpath = ["."]` is already correct.
+- [x] `tests/study/test_committed_store.py` (NEW) — the stencil above. Read-only; assert the store file is unmodified afterwards.
+- [x] `tests/study/test_era_pin.py` (NEW) — `test_era_pin_is_declared_consistently`, never skips. Asserts the conftest constant only for now; the adapter and annex assertions are enabled in Phases 3 and 8 (marked `xfail(strict=False)` until then is **not** acceptable — instead the test parametrizes over files that exist, so it grows as they land).
+- [x] Re-run `.project/active/run-study-quality-tools/probe_effective_fingerprint.py` and paste its `[P3]` line into this plan's Implementation Notes.
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study -q` → green (134 + new)
-- [ ] `uv run python -m pytest tests/study -q` with `TEAX_V1_ERA=/nonexistent` → the store test **skips with a message naming the path and commit**, suite still green
-- [ ] same with `STUDY_REQUIRE_ERA=1 TEAX_V1_ERA=/nonexistent` → that test **fails** loudly
+- [x] `uv run python -m pytest tests/study -q` → green (134 + new)
+- [x] `uv run python -m pytest tests/study -q` with `TEAX_V1_ERA=/nonexistent` → the store test **skips with a message naming the path and commit**, suite still green
+- [x] same with `STUDY_REQUIRE_ERA=1 TEAX_V1_ERA=/nonexistent` → that test **fails** loudly
 
 **Manual:**
-- [ ] Probe `[P3]` reports `artifacts=139 differing=2` on exactly `inputs/system_design.json` and `pipelines/mfe_stellarator.yaml`.
+- [x] Probe `[P3]` reports `artifacts=139 differing=2` on exactly `inputs/system_design.json` and `pipelines/mfe_stellarator.yaml`.
   **If it reports 0 differing**, the package was regenerated and the stock loader may now accept it: **STOP and surface it** — spec §"Item-start probe" says the adapter is then *absent*, not retained, and Phases 3, 4, and the promotion-equivalence gate retire with it. Do not proceed to Phase 1 under a stale premise.
-- [ ] `git status --porcelain exploration/stellarator_e2e` → empty.
+- [x] `git status --porcelain exploration/stellarator_e2e` → empty.
 
 **What we know works after this phase:** the adapter branch is live; the store exposes what D7 needs; era-absent behaviour is defined, loud, and testable.
 
@@ -542,8 +542,23 @@ That the six annex sections the delivered runbook links are all fillable from wh
 [TO BE FILLED DURING IMPLEMENTATION]
 
 ### Phase 0 Completion
-**Probe `[P3]` result:**
-**Completed:** · **Actual changes:** · **Issues:** · **Deviations:**
+**Probe `[P3]` result:** `runtime_contract_version=1.0.0 artifacts=139 differing=2 -> ['inputs/system_design.json', 'pipelines/mfe_stellarator.yaml']` — the adapter branch is **live**, the accept-set is exactly the two documented glue files, and the package has not been regenerated. Phases 3, 4 and the promotion-equivalence gate stand.
+
+**Completed:** 2026-08-20.
+
+**Actual changes:**
+- `tests/study/conftest.py`: `era_simkit_path` fixture (resolves `$TEAX_V1_ERA`, else `/home/reid/1cfe/teax-v1-era`; requires `packages/teax-simkit` and HEAD `fa0e06a`), `committed_store_path` factory, and the shared `_unavailable()` skip-or-fail helper that `STUDY_REQUIRE_ERA=1` promotes.
+- `pyproject.toml`: registered the `slow` marker.
+- `tests/study/test_committed_store.py` (NEW): read-only open of both committed stores, sha256 before/after, asserts qualified input keys, qualified channels, string verdicts, an executable fingerprint, and a catalog join carrying `predicate_ir` for every verdict.
+- `tests/study/test_era_pin.py` (NEW): never-skipping pin agreement across the files that declare it, growing as they land.
+
+**Issues:**
+- The plan's stencil used `case.status` and `case_id`; the era's `CaseView` fields are `state` and `candidate_id` (`teax-v1-era/.../simkit/study/query.py:45-57`). Used the real API.
+- The proof-of-life stores under `study/_work/` are **gitignored**, so they are an external dependency of the same kind as the era worktree. `committed_store_path` gives them the same loud skip-or-fail treatment rather than a bare assert.
+- Under `STUDY_REQUIRE_ERA=1` a fixture-level `pytest.fail` surfaces as ERROR, not FAILED. Loud and non-zero either way.
+
+**Deviations:**
+- The `package_copy` third convenience (mutate a glue file *and* optionally re-emit the identity document) is **deferred to Phase 3**, where `identity.py` and the adapter exist and it can be written against them instead of against a stub.
 
 ### Phase 1 Completion
 ### Phase 2 Completion
