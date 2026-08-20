@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "baseline_result.v1.schema.json",
+  "title": "Executed baseline point result",
+  "description": "One executed point, written by the route and read by preflight's baseline gate as data. Preflight owns the gate and does not own the execution that produces the point: it neither imports the route's adapter nor constructs a typed input, both of which are package knowledge a generic tool must not hold. The route executes exactly the manifest's pinned baseline point, deposits this document, and preflight compares it to the manifest's pinned headline and verdicts. Verdicts carry source_local_identity read from the package's own contracts/model_contract.json constraint catalog, because that is where it lives — the era's catalog view does not expose it.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "executed_under", "point", "channels", "verdicts"],
+  "properties": {
+    "schema_version": {"const": "study-baseline-result/v1"},
+    "executed_under": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identity_digest", "store_id", "case_id"],
+      "properties": {
+        "identity_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "The executable identity this point actually ran under, taken from the case's evidence provenance. Preflight requires it to equal the identity document's digest: a baseline executed under a different identity gates nothing."
+        },
+        "store_id": {"type": "string", "minLength": 1},
+        "case_id": {"type": "string", "minLength": 1}
+      }
+    },
+    "point": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"type": "number"},
+      "description": "The pinned baseline point, keyed by qualified entry key."
+    },
+    "channels": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"type": "number"},
+      "description": "Every channel the run recorded, keyed by qualified channel name."
+    },
+    "verdicts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "constraint_id",
+          "definition_qualified_name",
+          "source_local_identity",
+          "status"
+        ],
+        "properties": {
+          "constraint_id": {"type": "string", "minLength": 1},
+          "definition_qualified_name": {"type": ["string", "null"]},
+          "source_local_identity": {"type": "string", "minLength": 1},
+          "status": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

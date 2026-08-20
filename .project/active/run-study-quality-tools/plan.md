@@ -331,20 +331,20 @@ def test_the_design_search_grid_reproduces_byte_for_byte(tmp_path, era_simkit_pa
 
 **See `design.md` for:** D11, D1 (the baseline result document and its schema), `design.md#exploration-stellarator_e2e-studies-promotion_equivalence-py`, and the byte-for-byte caution in `design.md#implementation-notes` (proposals must be built from the same rungs in the same order).
 
-- [ ] `tests/study/test_promotion_equivalence.py` (NEW — first)
-- [ ] `scripts/study/schemas/baseline_result.v1.schema.json` (NEW, additive)
-- [ ] `exploration/stellarator_e2e/studies/promotion_equivalence.py` (NEW): both studies under the promoted structure; **exports to a caller-supplied `out_dir`, defaulting to `tmp_path` in tests** — no gitignore entry, nothing written inside the repo tree. *(This settles the design's open question on export location.)*
-- [ ] The route's baseline path: execute the manifest's pinned baseline point and deposit `package_identity.json` + `baseline_result.json`. This is what Item 2's inserted step (Coordination ask 1 to Item 2, applied by the orchestrator) calls.
+- [x] `tests/study/test_promotion_equivalence.py` (NEW — first)
+- [x] `scripts/study/schemas/baseline_result.v1.schema.json` (NEW, additive)
+- [x] `exploration/stellarator_e2e/studies/promotion_equivalence.py` (NEW): both studies under the promoted structure; **exports to a caller-supplied `out_dir`, defaulting to `tmp_path` in tests** — no gitignore entry, nothing written inside the repo tree. *(This settles the design's open question on export location.)*
+- [x] The route's baseline path: execute the manifest's pinned baseline point and deposit `package_identity.json` + `baseline_result.json`. This is what Item 2's inserted step (Coordination ask 1 to Item 2, applied by the orchestrator) calls.
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study -q` → green, including the 19-point sweep in the default suite
-- [ ] `uv run python -m pytest tests/study -q -m slow` → the 948-point grid reproduces `design_search_R_a.csv` byte-for-byte
+- [x] `uv run python -m pytest tests/study -q` → green, including the 19-point sweep in the default suite
+- [x] `uv run python -m pytest tests/study -q -m slow` → the 948-point grid reproduces `design_search_R_a.csv` byte-for-byte
 
 **Manual:**
-- [ ] `git status --porcelain exploration/stellarator_e2e` empty after both runs — the committed CSVs and the proof-of-life directory are untouched.
-- [ ] `baseline_result.json` validates against its schema and carries `source_local_identity` read from `contracts/model_contract.json` (S3), not from the era catalog view.
+- [x] `git status --porcelain exploration/stellarator_e2e` empty after both runs — the committed CSVs and the proof-of-life directory are untouched.
+- [x] `baseline_result.json` validates against its schema and carries `source_local_identity` read from `contracts/model_contract.json` (S3), not from the era catalog view.
 
 **What we know works after this phase:** the promoted route is the proof-of-life's route. Both committed CSVs reproduce exactly.
 
@@ -615,6 +615,24 @@ That the six annex sections the delivered runbook links are all fillable from wh
 - `test_lineage_refusal.py` builds its two-point store directly from the era API rather than through `promotion_equivalence.py`'s route, which does not exist until Phase 4. Deliberate beyond the ordering: the claim under test is identity binding, and a test routed through the production route would fail for either reason.
 
 ### Phase 4 Completion
+**Completed:** 2026-08-20. **DE-RISK 2 passes: both committed CSVs reproduce byte for byte.**
+
+- `availability_sweep.csv` — 4,136 bytes, equal. In the default suite.
+- `design_search_R_a.csv` — 201,294 bytes, equal. **Executed, not deferred:** `pytest -m slow` ran the full 948-point grid in 140 s and passed.
+
+**Actual changes:**
+- `exploration/stellarator_e2e/studies/promotion_equivalence.py` (NEW): the study-local direct-API definition (`StudyRunner` + `PreparedListStrategy`), the axis expansions, the declared tie, the exploration windows, the `R > a + 2.25 m` mask, `export_csv`, both studies, and `execute_baseline()` — the route's baseline path, which deposits `package_identity.json` and `baseline_result.json`. Exports to a caller-supplied directory; tests pass `tmp_path`, so nothing is written inside the repo and no gitignore entry is needed (this settles the design's open question on export location).
+- `scripts/study/schemas/baseline_result.v1.schema.json` (NEW, additive).
+- `tests/study/test_promotion_equivalence.py` (NEW, 6 tests — one `slow`).
+
+**Notes:**
+- No `db.unlink()` in the promoted definition, per the design's implementation note. The store is left on disk; deleting is a caller's choice.
+- `execute_baseline` reads `source_local_identity` and `definition_qualified_name` from `contracts/model_contract.json`'s catalog (S3), not from the era's `EmbeddedCatalogView`, which does not expose the first.
+- The route's identity continuity is asserted at the seam: the executed point's evidence-provenance fingerprint equals the emitted identity document's digest.
+- Runtime cost: the default study suite is now ~158 s (was ~12 s), because equivalence executes 19 + 19 + 1 real points. Accepted — D11 keeps it as a regression rather than one-time evidence, and it is the only thing that would catch a silent behaviour change in the adapter or the promoted definition while the adapter exists.
+
+**Deviations:** none.
+
 ### Phase 5 Completion
 ### Phase 6 Completion
 **New manifest digest:**
