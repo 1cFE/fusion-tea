@@ -389,7 +389,7 @@ Gate: CLEAR
 - ✅ The proof-of-life package and study layer provide a verified execution base.
 - ✅ Items 2–5 will provide the capability contract, tools, and legacy gap corrections.
 - ⚠️ The delivered A/B representation and resulting teax compatibility tuples must be confirmed from the executable revision at spec time.
-- ⚠️ The study policy is still Draft pending owner Align.
+- ✅ Owner Align held 2026-08-21 — `.project/active/run-study-first-consumer/align.md`: policy ratified whole (owner reviews the final draft before commit); the magnet comparison is left to design-stage research and may need new modeling; oracle verification runs for this demo only, then leaves the study contract; 1costingFE handshake stays outside the study.
 - ❌ No A/B study, capability-compliant record, or new-record cold-pickup proof exists.
 
 **Required Reading**:
