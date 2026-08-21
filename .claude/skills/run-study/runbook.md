@@ -6,7 +6,7 @@ right, which route fits, and what a result means are the study's to argue and th
 record's to carry — this file only says that they must be argued and where the argument
 lands.
 
-**The rulebook** is `.project/active/demo-study-parameterization-policy/policy.md`. This
+**The rulebook** is `modeling_project/STUDY_POLICY.md`. This
 runbook does not restate it. Where a step must satisfy a rule, the step names the rule
 and the policy says what it is.
 

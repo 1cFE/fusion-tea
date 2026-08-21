@@ -71,7 +71,7 @@ rather than blending it into their words.
   administer sequence. Both modes continue there.
 - **`record-template.md`** — the record contract: the seventeen sections, the
   values/arguments split, and the `snapshot.json` field list.
-- **`.project/active/demo-study-parameterization-policy/policy.md`** — the rulebook. It
+- **`modeling_project/STUDY_POLICY.md`** — the rulebook. It
   says what a legitimate axis is and what a study may claim; this skill does not restate
   it.
 - **`scripts/study/`** — the tools. Runbook steps call them; this skill never does.

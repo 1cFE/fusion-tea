@@ -97,7 +97,7 @@ Every lesson has a home: mechanical → a tool; procedural → a runbook step; n
 
 ### Existing artifacts to modify
 
-- The draft study parameterization policy (`.project/active/demo-study-parameterization-policy/policy.md`) — gains the axis-forces / worth-sweeping material; placement and final form deferred to concept design [OWNER].
+- The draft study parameterization policy (`.project/active/demo-study-parameterization-policy/policy.md`; *ratified and moved to `modeling_project/STUDY_POLICY.md` 2026-08-21*) — gains the axis-forces / worth-sweeping material; placement and final form deferred to concept design [OWNER].
 - Policy §7 hypotheses — H1's feasible-fraction bar likely re-scopes to search-framed studies (a sensitivity sweep at 100% feasible is expected behavior, not falsification); see Open Questions.
 
 ### Behavior changes by workflow stage

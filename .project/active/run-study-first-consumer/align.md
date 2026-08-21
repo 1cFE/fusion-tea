@@ -8,7 +8,7 @@
 
 ### 1. Study policy — ratified whole, after a brief review
 
-**[OWNER] 2026-08-21.** Ratify the draft policy (`.project/active/demo-study-parameterization-policy/policy.md`) as written and move it whole to `modeling_project/STUDY_POLICY.md`, with the two planned edits: an axis-forces section, and H1's 5–95% feasible-fraction bar scoped to search-framed studies. **The plan must include a review step: the owner approves the final draft before it is committed.** Citations in the skill, runbook, and concept docs move with it.
+**[OWNER] 2026-08-21.** Ratify the draft policy (then `.project/active/demo-study-parameterization-policy/policy.md`, now `modeling_project/STUDY_POLICY.md`) as written and move it whole to `modeling_project/STUDY_POLICY.md`, with the two planned edits: an axis-forces section, and H1's 5–95% feasible-fraction bar scoped to search-framed studies. **The plan must include a review step: the owner approves the final draft before it is committed.** Citations in the skill, runbook, and concept docs move with it.
 
 Rejected alternative: split the demo-specific sections (§4 cycle ladder, §7 hypotheses, §8 tripwire) into a separate note. Not required; the demo epic can pull them out when it resumes.
 

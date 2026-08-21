@@ -1,6 +1,6 @@
 # Spec: Run-Study First Consumer (RUN-STUDY Item 6)
 
-**Status:** Draft
+**Status:** Implementation In Progress (Phase 1 complete 2026-08-21)
 **Owner:** Reid W
 **Created:** 2026-08-21 13:58
 **Complexity:** HIGH
@@ -85,7 +85,7 @@ Three things this item also settles because the first consumer is where they lan
 
 - **Epic:** `.project/backlog/epic_run_study_capability.md` — Item 6
 - **Align record:** `.project/active/run-study-first-consumer/align.md` (decisions 2026-08-21, starting facts for design)
-- **Required Reading:** `.project/concepts/run-study-skill.md`; `.project/concepts/run-study-skill-design.md`; `.project/active/demo-study-parameterization-policy/policy.md`; `.project/backlog/epic_stellarator_mbse_demo.md` (Item 5 historical scope and the on-hold boundary); Items 1–5 outputs under `.project/completed/20260821_run-study-*/`; teax study docs at `744745f`
+- **Required Reading:** `.project/concepts/run-study-skill.md`; `.project/concepts/run-study-skill-design.md`; `modeling_project/STUDY_POLICY.md` (moved at Phase 1); `.project/backlog/epic_stellarator_mbse_demo.md` (Item 5 historical scope and the on-hold boundary); Items 1–5 outputs under `.project/completed/20260821_run-study-*/`; teax study docs at `744745f`
 - **Capability surfaces:** `.claude/skills/run-study/{SKILL,runbook,record-template}.md`; `scripts/study/`; `exploration/stellarator_e2e/studies/{ANNEX.md,manifest.json,study_route.py,oracle_entry.py}`
 - **Research:** `.project/research/20260821-141439_item6-ab-candidates.md` (the four candidates, ranking, modeling changes, second-arm data tables)
 - **Migration evidence:** `exploration/stellarator_e2e/studies/AFTER_MIGRATION_RECORD.md`

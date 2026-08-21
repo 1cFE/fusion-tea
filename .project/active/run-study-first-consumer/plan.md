@@ -1,6 +1,6 @@
 # Implementation Plan: Run-Study First Consumer (RUN-STUDY Item 6)
 
-**Status:** Draft
+**Status:** In Progress — Phase 1 complete (owner-approved 2026-08-21); Phase 2 gated on WI-031
 **Created:** 2026-08-21
 **Last Updated:** 2026-08-21
 **Branch:** `feat/run-study-first-consumer`, cut from `main` at `8d6c443b` (migration PR #107 merged 2026-08-21). One branch for all four phases; Phase 1 is a reviewable first commit.
@@ -67,31 +67,31 @@ def test_oracle_source_digest_carries_files(repo_root):
 **See `design.md` for:** D8 (policy mechanics), Research Findings "The policy citation surface", "The oracle digest gap (G1)", D10 (administrator briefs).
 
 #### 1. Tests
-- [ ] `tests/study/test_policy_path.py`, `tests/study/test_record_template.py` — write; confirm both fail on the unmodified tree
+- [x] `tests/study/test_policy_path.py`, `tests/study/test_record_template.py` — write; confirm both fail on the unmodified tree
 
 #### 2. Policy cutover
-- [ ] `git mv .project/active/demo-study-parameterization-policy/policy.md modeling_project/STUDY_POLICY.md`
-- [ ] Header: Status "Ratified [OWNER] 2026-08-21 (Item 6 Align)"; governing frame line updated (the demo epic is on hold; the run-study capability is the consumer)
-- [ ] § 6 heading: drop "for Item 5"; the list is the machinery any study may use
-- [ ] § 7 H1: add "applies to search-framed studies; a sensitivity-framed sweep at 100% feasible is expected behavior" (concept-design `run-study-skill-design.md:113`)
-- [ ] New § 9 "Axis forces and framing": every proposed axis (swept or declined) carries its indicator results and a search-vs-sensitivity judgment before execution; `no_constraint_response` is a sound negative that returns to the owner with a model-development finding; indicators inform, never gate (concept `run-study-skill.md` SC-2/3, Settled; runbook steps 2–4 are the procedure, not restated)
-- [ ] New § 10 "Verification and the 1costingFE handshake": the oracle is a fidelity check on generated code, runs for Item 6's two studies, and leaves the study contract afterward (retirement filed at Item 6 close); the handshake is outside the study contract, used when a direct comparison is readily possible. Quote `align.md` § 3 verbatim for both.
-- [ ] Live citations → new path: `SKILL.md:74`, `runbook.md:9`, `run_design_search.py:13`, `.project/backlog/BACKLOG.md` (Active Work Items row: retire it), `epic_run_study_capability.md`, `CURRENT_WORK.md`, the three concept docs (one-line "moved 2026-08-21" note each), this item's spec/design/align
-- [ ] **Owner review checkpoint:** present the full `STUDY_POLICY.md` diff and the citation diff; commit only on approval (spec SC 1, Align Q1)
+- [x] `git mv .project/active/demo-study-parameterization-policy/policy.md modeling_project/STUDY_POLICY.md`
+- [x] Header: Status "Ratified [OWNER] 2026-08-21 (Item 6 Align)"; governing frame line updated (the demo epic is on hold; the run-study capability is the consumer)
+- [x] § 6 heading: drop "for Item 5"; the list is the machinery any study may use
+- [x] § 7 H1: add "applies to search-framed studies; a sensitivity-framed sweep at 100% feasible is expected behavior" (concept-design `run-study-skill-design.md:113`)
+- [x] New § 9 "Axis forces and framing": every proposed axis (swept or declined) carries its indicator results and a search-vs-sensitivity judgment before execution; `no_constraint_response` is a sound negative that returns to the owner with a model-development finding; indicators inform, never gate (concept `run-study-skill.md` SC-2/3, Settled; runbook steps 2–4 are the procedure, not restated)
+- [x] New § 10 "Verification and the 1costingFE handshake": the oracle is a fidelity check on generated code, runs for Item 6's two studies, and leaves the study contract afterward (retirement filed at Item 6 close); the handshake is outside the study contract, used when a direct comparison is readily possible. Quote `align.md` § 3 verbatim for both.
+- [x] Live citations → new path: `SKILL.md:74`, `runbook.md:9`, `run_design_search.py:13`, `.project/backlog/BACKLOG.md` (Active Work Items row: retire it), `epic_run_study_capability.md`, `CURRENT_WORK.md`, the three concept docs (one-line "moved 2026-08-21" note each), this item's spec/design/align
+- [x] **Owner review checkpoint:** full `STUDY_POLICY.md` diff presented; § 10 rewritten at the owner's direction (plain: 1costingFE is the validation reference when applicable; the oracle is not a study obligation); approved 2026-08-21
 
 #### 3. G1 template fix
-- [ ] `.claude/skills/run-study/record-template.md:308` and `:367`: `source_digest` carries `{recipe, digest, files: [{path, sha256}]}`; the rule-text paragraph for G1 updated to say why (`common.tool_source_digest` emits `files`)
+- [x] `.claude/skills/run-study/record-template.md:308` and `:367`: `source_digest` carries `{recipe, digest, files: [{path, sha256}]}`; the rule-text paragraph for G1 updated to say why (`common.tool_source_digest` emits `files`)
 
 #### 4. Administrator briefs
-- [ ] `.project/active/run-study-first-consumer/briefs/administer-template.md`: Item 5's `brief.md` minus the pre-capability waiver; placeholders only for the record path; states the three skill files, the read-only rule, `knowledge/holdout/` never read, one output file `synthesis.md`
+- [x] `.project/active/run-study-first-consumer/briefs/administer-template.md`: Item 5's `brief.md` minus the pre-capability waiver; placeholders only for the record path; states the three skill files, the read-only rule, `knowledge/holdout/` never read, one output file `synthesis.md`
 
 ### Validation
 **Automated:**
-- [ ] `uv run pytest tests/study -q` green (the two new tests included)
-- [ ] `grep -rn demo-study-parameterization-policy --include=*.md --include=*.py . | grep -v "^./.project/completed\|^./.project/reports\|^./.project/research"` → empty
+- [x] `uv run pytest tests/study -q` green (the two new tests included)
+- [x] `grep -rn demo-study-parameterization-policy --include=*.md --include=*.py . | grep -v "^./.project/completed\|^./.project/reports\|^./.project/research"` → only historical notes remain (the policy's own status line, the concepts' "moved" notes, the test's constant, this plan)
 
 **Manual:**
-- [ ] Owner approved the policy draft (recorded in Implementation Notes with the date)
+- [x] Owner approved the policy draft 2026-08-21 (after the § 10 rewrite)
 - [ ] PR opened against `main`; small enough to review in one sitting
 
 **What We Know Works After This Phase:** both records will cite one policy at a stable path; the snapshot shape names which oracle verified a study; the administrator mechanism is ready to spawn.
@@ -256,10 +256,22 @@ Study stores go under `exploration/stellarator_e2e/studies/<study-id>/_work/` (g
 [TO BE FILLED DURING IMPLEMENTATION]
 
 ### Phase 1 Completion
-**Completed:**
+**Completed:** 2026-08-21 (owner approved the policy after one rewrite of § 10)
 **Actual Changes:**
-**Issues:**
-**Deviations:**
+- `tests/study/test_policy_path.py` (NEW, 8 tests) and `tests/study/test_record_template.py` (NEW, 2 tests): written first; 5 failed / 4 errors on the unmodified tree, 10 pass after.
+- `git mv .project/active/demo-study-parameterization-policy/policy.md modeling_project/STUDY_POLICY.md`; the empty directory removed. Header rewritten (Status "Ratified whole — [OWNER] 2026-08-21", consumers named, demo frame noted as on hold); § 3 and § 4 headings mark the ratification; § 6 heading drops "for Item 5"; § 7 H1 carries the search-framed scope and the sensitivity exemption; new § 9 "Axis forces and framing" (concept SC-2/SC-3, owner-grade, with the "indicators inform, never gate" rule and the finding obligation); new § 10 "Verification and the 1costingFE handshake" with the Align's two owner quotes verbatim and the retirement disposition.
+- Live citations moved: `SKILL.md:74`, `runbook.md:9`, `run_design_search.py:13`, `.project/backlog/BACKLOG.md` (Active Work Items row struck through with the move note), `epic_run_study_capability.md` (3 sites), `CURRENT_WORK.md:41`, the three concept docs (path plus a one-line "moved 2026-08-21" note, history kept legible), this item's spec/design/align, `work/active/WI-030_…/spec.md`.
+- `record-template.md:306-313` and `:371-374`: both `source_digest` blocks carry `files: [{path, sha256}]` with a comment saying why (G1).
+- `briefs/administer-template.md` (NEW): Item 5's brief without the pre-capability waiver; adds the policy as vocabulary-only reading, the per-arm recovery list, and the hold-out prohibition.
+- `tests/study`: 267 passed / 1 skipped with `STUDY_REQUIRE_TEAX=1`; ruff clean on the two new files.
+
+**Issues Encountered:**
+- The grep for the old path is not empty and cannot be: the policy's own status line, the concepts' "moved" notes, the test constant, and this plan all name it deliberately. The validation line now says so; the test checks the three live surfaces, which is the obligation.
+
+**Deviations from Plan:**
+- § 9 and § 10 were appended after § 8 (the append-only tripwire table) rather than renumbering; existing citations to § 7/§ 8 stay valid.
+- The plan said "the rule-text paragraph for G1 updated"; the template has no separate G1 paragraph, only the in-block comment, which was extended.
+- Owner review: § 10 as first drafted quoted the Align verbatim and read as confused; rewritten to the durable rules only (1costingFE is the validation reference when a direct comparison is possible and applicable, never a limit on the model; the oracle is a development check, retired from the study contract after Item 6). Test updated to the new wording.
 
 ### Phase 2 Completion
 ### Phase 3 Completion

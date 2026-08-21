@@ -15,7 +15,7 @@ Run the run-study capability end to end for the first time, twice: a power-cycle
 - **Align record:** `.project/active/run-study-first-consumer/align.md` (owner rulings 2026-08-21)
 - **Research:** `.project/research/20260821-141439_item6-ab-candidates.md` (the candidates, the modeling changes, the second-arm data tables)
 - **Epic:** `.project/backlog/epic_run_study_capability.md` Item 6
-- **Required Reading:** `.project/concepts/run-study-skill.md`, `.project/concepts/run-study-skill-design.md`, `.project/active/demo-study-parameterization-policy/policy.md`, `.project/backlog/epic_stellarator_mbse_demo.md`, `.project/completed/20260821_run-study-*/`
+- **Required Reading:** `.project/concepts/run-study-skill.md`, `.project/concepts/run-study-skill-design.md`, `modeling_project/STUDY_POLICY.md`, `.project/backlog/epic_stellarator_mbse_demo.md`, `.project/completed/20260821_run-study-*/`
 - **Capability surfaces:** `.claude/skills/run-study/{SKILL,runbook,record-template}.md`, `scripts/study/`, `exploration/stellarator_e2e/studies/{study_route.py,manifest.json,oracle_entry.py,ANNEX.md}`
 - **Decision records:** `.project/adr/` is empty; no prior entries overlap.
 

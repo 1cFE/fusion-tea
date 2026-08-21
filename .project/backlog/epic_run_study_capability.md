@@ -176,7 +176,7 @@ Gate: CLEAR
 - `.project/concepts/run-study-skill.md`
 - `.project/concepts/run-study-skill-design.md` — Core Model, Required Invariants, and execute/administer flows
 - `.project/completed/20260821_demo-proof-of-life/plan.md`
-- `.project/active/demo-study-parameterization-policy/policy.md`
+- `modeling_project/STUDY_POLICY.md` (ratified and moved 2026-08-21; was `.project/active/demo-study-parameterization-policy/policy.md`)
 
 **Scope**:
 1. Create `.claude/skills/run-study/SKILL.md` with collaborative intake and explicit execute/administer mode selection; add the narrow `.gitignore` negation.
@@ -395,7 +395,7 @@ Gate: CLEAR
 **Required Reading**:
 - `.project/concepts/run-study-skill.md`
 - `.project/concepts/run-study-skill-design.md` — execute flow, A/B store rule, and proof obligations
-- `.project/active/demo-study-parameterization-policy/policy.md`
+- `modeling_project/STUDY_POLICY.md`
 - `.project/backlog/epic_stellarator_mbse_demo.md` — Item 5 historical scope and the on-hold boundary
 - Items 1–5 outputs
 - Teax evaluation/study and compatibility documentation at the executable revision selected during Align
@@ -449,7 +449,7 @@ Gate: CLEAR
 
 **Internal**:
 - `.project/concepts/run-study-skill-design.md` is the accepted technical frame.
-- `.project/active/demo-study-parameterization-policy/policy.md` remains the rulebook until Item 6 dispositions it.
+- `modeling_project/STUDY_POLICY.md` is the rulebook (ratified and moved by Item 6, 2026-08-21).
 - `exploration/stellarator_e2e/study/` supplies the immutable proof-of-life evidence used for promotion and the legacy cold-pickup exercise.
 - The Stellarator MBSE Demo epic is on hold by owner decision (2026-08-19); it may consume this epic's A/B evidence later but does not own the proof.
 
