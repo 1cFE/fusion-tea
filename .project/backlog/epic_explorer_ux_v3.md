@@ -68,7 +68,7 @@ These were settled in discussion before decomposition; specs/designs inherit the
 **Objective**: A single `apply_analyst_overrides` toggle (default on, in the hero block) drives slider recompute, tornado source, and the headline in lockstep, so the three never describe different LCOE functions. Resolves the −17.8% phantom discontinuity.
 
 **Current State**:
-- ✅ Spec already exists (draft) at `.project/active/explorer-slider-override-semantics/spec.md` with options (a)/(b)/(c) analyzed and (c) recommended.
+- ✅ Spec already exists (draft) at `.project/completed/20260821_explorer-slider-override-semantics/spec.md` with options (a)/(b)/(c) analyzed and (c) recommended.
 - ✅ Three-forward contract (`generic`/`native`/`result_1gw`) and `enabled_overrides()` available at module level (`model_setup_helpers.py`).
 - ⚠️ `_forward_with_overrides` (server.py:143) deliberately drops `cost_overrides` on recompute.
 - ⚠️ Tornado built `cost_overrides=None` (`extract_explorer_data.py:184`, library-bare).
@@ -87,7 +87,7 @@ These were settled in discussion before decomposition; specs/designs inherit the
 - Editing the registry from the UI.
 - Any landing-page / family / comparables work.
 
-**Status**: ✅ Complete (implemented + browser-validated 2026-06-06). See `.project/active/explorer-slider-override-semantics/plan.md` for the full implementation record.
+**Status**: ✅ Complete (implemented + browser-validated 2026-06-06). See `.project/completed/20260821_explorer-slider-override-semantics/plan.md` for the full implementation record.
 
 **Success Criteria**:
 - [x] FR-SO1: no-op compute at default state matches stored headline for ≥3 concepts spanning fit-grade tiers (01 ✓, 17a ✓, 24 ✓ — verified through the server compute path). *Note: `data/24.json` was found stale during this verification (8.51 vs the module's 16.05) and re-extracted; see plan Phase 2 notes + FU2 below.*
@@ -100,12 +100,12 @@ These were settled in discussion before decomposition; specs/designs inherit the
 
 **Estimated Effort**: 1.5–2 days (spec exists; design ~3h to lock option (c) + cache/`P_native` provisioning, plan ~1h, execute ~8–10h)
 
-**Location**: `.project/active/explorer-slider-override-semantics/`
+**Location**: `.project/completed/20260821_explorer-slider-override-semantics/`
 
 **Dependencies**: `explorer-rework-unblock` (landed). Independent of Item 2's data layer.
 
 **Deliverables**:
-- `.project/active/explorer-slider-override-semantics/{design.md,plan.md}` (spec exists)
+- `.project/completed/20260821_explorer-slider-override-semantics/{design.md,plan.md}` (spec exists)
 - Changes to `server.py` (`_forward_with_overrides`, LRU key, compute), `extract_explorer_data.py` (dual sensitivities), `models.py`/`ExplorerState`, concept-page JS (hero toggle + lockstep), `explorer.css`
 - FR-SO1 regression test
 
@@ -143,16 +143,16 @@ These were settled in discussion before decomposition; specs/designs inherit the
 - [x] `overrides` records present in the extracted JSON for all registry-bearing concepts (17 served concepts re-extracted; 37 & 39 blocked by pre-existing concept-side `model_setup.py` bugs — see below).
 - [x] Existing tests pass; panel does not fetch on every render (preloaded with payload).
 
-**Status**: ✅ Complete (implemented + browser-validated + review-hardened 2026-06-06). Panel form = **fixed drawer**; `source` = plain text (link-ification deferred). Code-review follow-ups M1/m1/m2/m3 resolved (CapEx-bar match moved to Plotly `customdata` so the trigger no longer couples the Python/JS name maps). See `.project/active/explorer-override-inspection/{design.md,spec.md}`.
+**Status**: ✅ Complete (implemented + browser-validated + review-hardened 2026-06-06). Panel form = **fixed drawer**; `source` = plain text (link-ification deferred). Code-review follow-ups M1/m1/m2/m3 resolved (CapEx-bar match moved to Plotly `customdata` so the trigger no longer couples the Python/JS name maps). See `.project/completed/20260821_explorer-override-inspection/{design.md,spec.md}`.
 
 **Estimated Effort**: 1.5 days (spec ~1h, design ~2h — panel form: drawer vs popover vs expand, plan ~1h, execute ~7h)
 
-**Location**: `.project/active/explorer-override-inspection/`
+**Location**: `.project/completed/20260821_explorer-override-inspection/`
 
 **Dependencies**: Item 1 (the hero toggle + count chip is the primary trigger). Item 1's compute change and Item 2's schema emission are independent reads of the registry, so only the UI trigger creates the ordering.
 
 **Deliverables**:
-- `.project/active/explorer-override-inspection/{spec.md,design.md,plan.md}`
+- `.project/completed/20260821_explorer-override-inspection/{spec.md,design.md,plan.md}`
 - Changes to `extract_explorer_data.py` + `models.py` (`OverrideRecord` schema), new inspection-panel JS, edits to `cas_breakdown.js` / treemap / CapEx compare view, `explorer.css`
 
 ---
@@ -231,13 +231,13 @@ This supersedes the old three-link nav (*Taxonomy / All Concepts / Compare*). **
 
 #### Themed items (sequencing flexible; the spine underpins the rest)
 
-**Theme A — Identity & shared spine** *(cross-cutting prerequisite)* — ✅ **DONE (2026-06-07)** — all three (A1+A2+A3) implemented on `feat/explorer-identity-spine`; **PR #58** (→ `main`). Spec/design/plan in `.project/active/explorer-identity-spine/`.
+**Theme A — Identity & shared spine** *(cross-cutting prerequisite)* — ✅ **DONE (2026-06-07)** — all three (A1+A2+A3) implemented on `feat/explorer-identity-spine`; **PR #58** (→ `main`). Spec/design/plan in `.project/completed/20260821_explorer-identity-spine/`.
 - **A1 — Canonical naming + visible concept code.** ✅ Done. `resolve_identity()` (server) + `conceptLabel()` (JS) — one canonical `Name (Fuel)` + visible `#code`, used on every naming surface (matrix row, concept header, compare columns, constellation nodes).
 - **A2 — Shared facet + color vocabulary.** ✅ Done. `ontology_palette.js` exports `ontologyPalette` + `facetModel` (10 facets) + `filterState`, colored from `:root` tokens traceable to `concept_ontology_v3.png`; the single color authority both maps consume (B1 already does).
 - **A3 — Honest-caveat device** (generalizes research idea 6). ✅ Done. `caveatMarker()` — one uncertainty marker (low-grounding asterisk, archetype-fit None, "not recorded"), used identically across surfaces.
 
 **Theme B — Landing as the living ontology map** — **status: B1 ✅ done (PR #59); B2 ⬜ not started; B3 ⬜ not started.** B1 (the centerpiece) is the only Theme B item built; B2 and B3 are deferred Phase-2 follow-ups for which B1 deliberately left clean hooks (a second view-toggle slot for B2; a `project`/column extension point for B3).
-- **B1 — The living ontology matrix (centerpiece).** ✅ **DONE (2026-06-07)** — implemented on `feat/explorer-ontology-matrix` (off `feat/explorer-identity-spine`); **PR #59** (→ `main`, stacks on #58); spec/design/plan in `.project/active/explorer-ontology-matrix/`. Matrix is the new home (`/`), card grid relocated to `/pipeline`. All four interactions live (filter / re-group / sort / hover), honest degradation throughout, rendered entirely through Theme A's authorities; no refetch. Rows = concepts grouped under the collapsible family tree; columns = ontology dimensions; cells = color-coded category chips (v3 palette). Interactions: **filter by clicking** a cell/chip (stack facets across columns); **re-group** rows under any column's categories (flip the organizing hierarchy live); **sort within group**; row → concept page; hover cell → value + source/caveat. Leftmost column carries the # + canonical name (A1). Dense — the whole field (~40 concepts × ~10 dimensions) on one screen, which the card grid can't do. Replaces the Approved/In-Progress pipeline split.
+- **B1 — The living ontology matrix (centerpiece).** ✅ **DONE (2026-06-07)** — implemented on `feat/explorer-ontology-matrix` (off `feat/explorer-identity-spine`); **PR #59** (→ `main`, stacks on #58); spec/design/plan in `.project/completed/20260821_explorer-ontology-matrix/`. Matrix is the new home (`/`), card grid relocated to `/pipeline`. All four interactions live (filter / re-group / sort / hover), honest degradation throughout, rendered entirely through Theme A's authorities; no refetch. Rows = concepts grouped under the collapsible family tree; columns = ontology dimensions; cells = color-coded category chips (v3 palette). Interactions: **filter by clicking** a cell/chip (stack facets across columns); **re-group** rows under any column's categories (flip the organizing hierarchy live); **sort within group**; row → concept page; hover cell → value + source/caveat. Leftmost column carries the # + canonical name (A1). Dense — the whole field (~40 concepts × ~10 dimensions) on one screen, which the card grid can't do. Replaces the Approved/In-Progress pipeline split.
 - **B2 — Parallel-categories "flows" lens** ⬜ **not started** *(optional secondary view toggle on the same page)*. Dimensions as axes, ribbons = concept flows, thickness = count. Answers "how do these attributes co-occur" (do all stellarators use HTS? do pulsed concepts cluster on certain drivers?). Tradeoff: individual concepts dissolve into ribbons — good for structure, bad for find-my-concept; hence secondary, not the default. *(B1 left a view-toggle slot in the controls bar for this.)*
 - **B3 — Economics as ride-along** ⬜ **not started**. LCOE / confidence appear as optional matrix columns to sort/color by — present and honest, never the organizing principle. *(Explicitly excluded from B1 per FR-B1.9; B1 left a column/sort extension point.)*
 
@@ -259,7 +259,7 @@ This supersedes the old three-link nav (*Taxonomy / All Concepts / Compare*). **
 
 The realization of the J2 journey ("why is this concept's LCOE higher than its neighbors?") at both scopes — within a family and across the whole field — on a standalone, deliberately cost-forward page. Legitimately economics-first because it is a destination the user navigates to on purpose (see Navigation & page taxonomy); the economics-demotion decision constrains only the landing surface. Reads the override-registry records already extracted in Item 2 for its "why"; the Phase-1 cost spine and Theme A's identity/caveat authorities carry over.
 
-- **F1 — LCOE landscape (stacked-bar) page.** ✅ **DONE (merged 2026-06-08, PR #64).** Spec/design/plan in `.project/active/explorer-cost-landscape/`. *Caveat: shipped before the #84 adapter migration and the #93–#95 R0-bisection regen churn — its data and decomposition want a re-verify against current `data/*.json` (see "Post-merge status" below).*
+- **F1 — LCOE landscape (stacked-bar) page.** ✅ **DONE (merged 2026-06-08, PR #64).** Spec/design/plan in `.project/completed/20260821_explorer-cost-landscape/`. *Caveat: shipped before the #84 adapter migration and the #93–#95 R0-bisection regen churn — its data and decomposition want a re-verify against current `data/*.json` (see "Post-merge status" below).*
   - **Viz**: one **stacked bar per concept**; bar height = headline LCOE ($/MWh); stack segments = LCOE **decomposed by cost category**, broken out by color. Hover a segment → that category's **LCOE contribution, its % of total, and source/override notes** for the category.
   - **X-axis**: the concept **# code** (A1), with the **same caveat marker (A3)** rendered next to the code; hover the code → the full canonical name (A1).
   - **Grouping** (reuses the matrix's control idiom — Theme A2 facets): `[no grouping]`, **Family (tree)**, **Fuel**, **Driver**, **Energy Capture**, **Operation Mode**. Re-group live, as on All Concepts.

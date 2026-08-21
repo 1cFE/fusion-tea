@@ -19,17 +19,17 @@ inputs (MR-3, bound at the instance).
 
 Inputs:
     - base: base parameter
-    - power: power parameter
-    - n_mod: n_mod parameter
     - ref_power: ref_power parameter
     - alpha: alpha parameter
+    - n_mod_in: n_mod_in parameter
+    - power: power parameter
 
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:434
+SysML Source: root-0/analyses/mfe_account_costs.sysml:449
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:434
+SysML Source: root-0/analyses/mfe_account_costs.sysml:449
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/plant_power_law_cost_impl.py
@@ -46,16 +46,16 @@ class Plant_Power_Law_CostInput(BaseModel):
 
     Attributes:
         base: base input
-        power: power input
-        n_mod: n_mod input
         ref_power: ref_power input
         alpha: alpha input
+        n_mod_in: n_mod_in input
+        power: power input
     """
     base: float = Field(..., description="base input")
-    power: float = Field(..., description="power input")
-    n_mod: float = Field(..., description="n_mod input")
     ref_power: float = Field(..., description="ref_power input")
     alpha: float = Field(..., description="alpha input")
+    n_mod_in: float = Field(..., description="n_mod_in input")
+    power: float = Field(..., description="power input")
 
 
 class Plant_Power_Law_CostModule(ModuleBase[Plant_Power_Law_CostInput, Float]):
@@ -78,21 +78,21 @@ inputs (MR-3, bound at the instance).
 
 Inputs:
     - base: base parameter
-    - power: power parameter
-    - n_mod: n_mod parameter
     - ref_power: ref_power parameter
     - alpha: alpha parameter
+    - n_mod_in: n_mod_in parameter
+    - power: power parameter
 
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:434
+SysML Source: root-0/analyses/mfe_account_costs.sysml:449
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:434
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:449
 
     Calculation Specification:
-        n_mod = 1.0
-        cost = base * (n_mod * power / ref_power) ** alpha
+        n_mod_in = 1.0
+        cost = base * (n_mod_in * power / ref_power) ** alpha
         
 Documentation:
 Generic plant power-law account:
@@ -120,37 +120,37 @@ inputs (MR-3, bound at the instance).
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, base: float, power: float, n_mod: float, ref_power: float, alpha: float    ) -> Plant_Power_Law_CostInput:
+        self, base: float, ref_power: float, alpha: float, n_mod_in: float, power: float    ) -> Plant_Power_Law_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
             base: base input
-            power: power input
-            n_mod: n_mod input
             ref_power: ref_power input
             alpha: alpha input
+            n_mod_in: n_mod_in input
+            power: power input
 
         Returns:
             Validated input model
         """
-        return Plant_Power_Law_CostInput(base=base, power=power, n_mod=n_mod, ref_power=ref_power, alpha=alpha)
+        return Plant_Power_Law_CostInput(base=base, ref_power=ref_power, alpha=alpha, n_mod_in=n_mod_in, power=power)
 
     def run(
-        self, base: float, power: float, n_mod: float, ref_power: float, alpha: float    ) -> ModuleResult[Float]:
+        self, base: float, ref_power: float, alpha: float, n_mod_in: float, power: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
             base: base input
-            power: power input
-            n_mod: n_mod input
             ref_power: ref_power input
             alpha: alpha input
+            n_mod_in: n_mod_in input
+            power: power input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(base, power, n_mod, ref_power, alpha)
+        validated_inputs = self.validate_and_fill_default(base, ref_power, alpha, n_mod_in, power)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.plant_power_law_cost_impl import (

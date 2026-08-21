@@ -15,7 +15,7 @@ cost = conductor quantity * $/kA-m * a manufacturing markup (winding,
 quench protection, cryostat, testing).
 
 Fully parameterized (MR-WI009-8): G, B, R0, r_coil, cost_per_kAm, and
-coil_markup are all inputs — the concept sets them in WI-011. See the
+coil_markup are all inputs -- the concept sets them in WI-011. See the
 reconciliation note below for the current 1costingFE values.
 
 Note on units: the 1costingFE source divides the conductor cost by 1e6
@@ -29,13 +29,13 @@ cost_per_kAm is $/kA-m). Apply the M$ scaling downstream if desired.
 with B, R0, r_coil (SV-018)
 
 Inputs:
-    - G: G parameter
-    - B: B parameter
-    - R0: R0 parameter
-    - r_coil: r_coil parameter
-    - cost_per_kAm: cost_per_kAm parameter
     - coil_markup: coil_markup parameter
     - mu0: mu0 parameter
+    - cost_per_kAm: cost_per_kAm parameter
+    - G: G parameter
+    - r_coil: r_coil parameter
+    - B: B parameter
+    - R0: R0 parameter
 
 Outputs:
     - capital_cost: capital_cost result
@@ -58,21 +58,21 @@ class Magnet_Coil_CostInput(BaseModel):
     """Input model for Magnet_Coil_CostModule.
 
     Attributes:
-        G: G input
-        B: B input
-        R0: R0 input
-        r_coil: r_coil input
-        cost_per_kAm: cost_per_kAm input
         coil_markup: coil_markup input
         mu0: mu0 input
+        cost_per_kAm: cost_per_kAm input
+        G: G input
+        r_coil: r_coil input
+        B: B input
+        R0: R0 input
     """
-    G: float = Field(..., description="G input")
-    B: float = Field(..., description="B input")
-    R0: float = Field(..., description="R0 input")
-    r_coil: float = Field(..., description="r_coil input")
-    cost_per_kAm: float = Field(..., description="cost_per_kAm input")
     coil_markup: float = Field(..., description="coil_markup input")
     mu0: float = Field(..., description="mu0 input")
+    cost_per_kAm: float = Field(..., description="cost_per_kAm input")
+    G: float = Field(..., description="G input")
+    r_coil: float = Field(..., description="r_coil input")
+    B: float = Field(..., description="B input")
+    R0: float = Field(..., description="R0 input")
 
 
 class Magnet_Coil_CostModule(ModuleBase[Magnet_Coil_CostInput, Float]):
@@ -91,7 +91,7 @@ cost = conductor quantity * $/kA-m * a manufacturing markup (winding,
 quench protection, cryostat, testing).
 
 Fully parameterized (MR-WI009-8): G, B, R0, r_coil, cost_per_kAm, and
-coil_markup are all inputs — the concept sets them in WI-011. See the
+coil_markup are all inputs -- the concept sets them in WI-011. See the
 reconciliation note below for the current 1costingFE values.
 
 Note on units: the 1costingFE source divides the conductor cost by 1e6
@@ -105,13 +105,13 @@ cost_per_kAm is $/kA-m). Apply the M$ scaling downstream if desired.
 with B, R0, r_coil (SV-018)
 
 Inputs:
-    - G: G parameter
-    - B: B parameter
-    - R0: R0 parameter
-    - r_coil: r_coil parameter
-    - cost_per_kAm: cost_per_kAm parameter
     - coil_markup: coil_markup parameter
     - mu0: mu0 parameter
+    - cost_per_kAm: cost_per_kAm parameter
+    - G: G parameter
+    - r_coil: r_coil parameter
+    - B: B parameter
+    - R0: R0 parameter
 
 Outputs:
     - capital_cost: capital_cost result
@@ -139,7 +139,7 @@ cost = conductor quantity * $/kA-m * a manufacturing markup (winding,
 quench protection, cryostat, testing).
 
 Fully parameterized (MR-WI009-8): G, B, R0, r_coil, cost_per_kAm, and
-coil_markup are all inputs — the concept sets them in WI-011. See the
+coil_markup are all inputs -- the concept sets them in WI-011. See the
 reconciliation note below for the current 1costingFE values.
 
 Note on units: the 1costingFE source divides the conductor cost by 1e6
@@ -162,41 +162,41 @@ with B, R0, r_coil (SV-018)
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, G: float, B: float, R0: float, r_coil: float, cost_per_kAm: float, coil_markup: float, mu0: float    ) -> Magnet_Coil_CostInput:
+        self, coil_markup: float, mu0: float, cost_per_kAm: float, G: float, r_coil: float, B: float, R0: float    ) -> Magnet_Coil_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
-            G: G input
-            B: B input
-            R0: R0 input
-            r_coil: r_coil input
-            cost_per_kAm: cost_per_kAm input
             coil_markup: coil_markup input
             mu0: mu0 input
+            cost_per_kAm: cost_per_kAm input
+            G: G input
+            r_coil: r_coil input
+            B: B input
+            R0: R0 input
 
         Returns:
             Validated input model
         """
-        return Magnet_Coil_CostInput(G=G, B=B, R0=R0, r_coil=r_coil, cost_per_kAm=cost_per_kAm, coil_markup=coil_markup, mu0=mu0)
+        return Magnet_Coil_CostInput(coil_markup=coil_markup, mu0=mu0, cost_per_kAm=cost_per_kAm, G=G, r_coil=r_coil, B=B, R0=R0)
 
     def run(
-        self, G: float, B: float, R0: float, r_coil: float, cost_per_kAm: float, coil_markup: float, mu0: float    ) -> ModuleResult[Float]:
+        self, coil_markup: float, mu0: float, cost_per_kAm: float, G: float, r_coil: float, B: float, R0: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            G: G input
-            B: B input
-            R0: R0 input
-            r_coil: r_coil input
-            cost_per_kAm: cost_per_kAm input
             coil_markup: coil_markup input
             mu0: mu0 input
+            cost_per_kAm: cost_per_kAm input
+            G: G input
+            r_coil: r_coil input
+            B: B input
+            R0: R0 input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(G, B, R0, r_coil, cost_per_kAm, coil_markup, mu0)
+        validated_inputs = self.validate_and_fill_default(coil_markup, mu0, cost_per_kAm, G, r_coil, B, R0)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_magnet_cost.magnet_coil_cost_impl import (

@@ -17,7 +17,7 @@ apart, from these ordered steps:
 ``native → result_1gw`` isolates pure replication scaling at fixed overrides.
 The helper owns the two-knob forward shapes so no concept re-derives them, and
 ``print_cas_breakdown`` owns the inspection block. See
-``.project/active/concept-rework-three-forward-contract/design.md`` for the
+``.project/completed/20260821_concept-rework-three-forward-contract/design.md`` for the
 contract, decisions, and the pinned oracle.
 
 Library-sourced defaults (not hardcoded):

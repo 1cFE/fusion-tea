@@ -99,8 +99,8 @@ been exercised.
 
 **Calls:** the route under evaluation
 **Deposits:** `results/package_identity.json` + `results/baseline_result.json`
-**Fails closed when:** whichever route is under evaluation cannot load the package; the adapter's own self-check fails
-**Annex:** `exploration/<pkg>/studies/ANNEX.md § Loader exception and glue` and `§ Baseline pin`
+**Fails closed when:** whichever route is under evaluation cannot load the package; an adapter's own self-check fails
+**Annex:** `exploration/<pkg>/studies/ANNEX.md § Baseline pin`; and `§ Loader exception and glue` when the annex has one (a package on the stock route has none)
 
 ### 6. Run the preflight gates
 
@@ -144,7 +144,7 @@ scopes. A study with no glue says so.
 **Calls:** none
 **Deposits:** record.md § 10 Execution route and why, including the glue disclosure
 **Fails closed when:** nothing mechanical — the route's mechanical conditions gate at step 5
-**Annex:** `exploration/<pkg>/studies/ANNEX.md § Loader exception and glue`
+**Annex:** `exploration/<pkg>/studies/ANNEX.md § Loader exception and glue` when the annex has one; a package with no adapter has no such section and the record says "glue ledger: none"
 
 ### 9. Run every point through the stock teax lifecycle
 
@@ -157,7 +157,7 @@ run and into the record by qualified identity — `constraint_id` and
 **Calls:** the route prepared at step 5 and argued at step 8
 **Deposits:** `results/` + record.md § 3 Objective and result + § 4 Constraint outcomes
 **Fails closed when:** any point fails to evaluate; the store rejects the study definition's compatibility tuple; the package is not git-clean after the run
-**Annex:** `exploration/<pkg>/studies/ANNEX.md § Era pin`
+**Annex:** `exploration/<pkg>/studies/ANNEX.md § Era pin` when the annex has one (a package on stock teax has none)
 
 ### 10. Verify a sample against the package-owned oracle
 
@@ -210,7 +210,7 @@ takes to reproduce it.
 **Calls:** none
 **Deposits:** `results/`
 **Fails closed when:** nothing mechanical
-**Annex:** `exploration/<pkg>/studies/ANNEX.md § Era pin`
+**Annex:** `exploration/<pkg>/studies/ANNEX.md § Era pin` when the annex has one
 
 ### 14. Register the findings and append the discovery-log rows
 

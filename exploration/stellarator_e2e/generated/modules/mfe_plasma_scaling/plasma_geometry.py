@@ -20,11 +20,11 @@ and the Anchor A handshake unchanged).
 *Basis**: elongated-torus volume with a concept shape factor; MFE-generic
 
 Inputs:
-    - R: R parameter
-    - a: a parameter
-    - kappa: kappa parameter
+    - f_shape_in: f_shape_in parameter
     - pi: pi parameter
-    - f_shape: f_shape parameter
+    - R_in: R_in parameter
+    - a_in: a_in parameter
+    - kappa_in: kappa_in parameter
 
 Outputs:
     - V: V result
@@ -47,17 +47,17 @@ class Plasma_GeometryInput(BaseModel):
     """Input model for Plasma_GeometryModule.
 
     Attributes:
-        R: R input
-        a: a input
-        kappa: kappa input
+        f_shape_in: f_shape_in input
         pi: pi input
-        f_shape: f_shape input
+        R_in: R_in input
+        a_in: a_in input
+        kappa_in: kappa_in input
     """
-    R: float = Field(..., description="R input")
-    a: float = Field(..., description="a input")
-    kappa: float = Field(..., description="kappa input")
+    f_shape_in: float = Field(..., description="f_shape_in input")
     pi: float = Field(..., description="pi input")
-    f_shape: float = Field(..., description="f_shape input")
+    R_in: float = Field(..., description="R_in input")
+    a_in: float = Field(..., description="a_in input")
+    kappa_in: float = Field(..., description="kappa_in input")
 
 
 class Plasma_GeometryModule(ModuleBase[Plasma_GeometryInput, Float]):
@@ -81,11 +81,11 @@ and the Anchor A handshake unchanged).
 *Basis**: elongated-torus volume with a concept shape factor; MFE-generic
 
 Inputs:
-    - R: R parameter
-    - a: a parameter
-    - kappa: kappa parameter
+    - f_shape_in: f_shape_in parameter
     - pi: pi parameter
-    - f_shape: f_shape parameter
+    - R_in: R_in parameter
+    - a_in: a_in parameter
+    - kappa_in: kappa_in parameter
 
 Outputs:
     - V: V result
@@ -95,9 +95,9 @@ SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:4
     SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:4
 
     Calculation Specification:
+        f_shape_in = 1.0
         pi = 3.14159265358979
-        f_shape = 1.0
-        V = 2.0 * pi ** 2 * R * a ** 2 * kappa * f_shape
+        V = 2.0 * pi ** 2 * R_in * a_in ** 2 * kappa_in * f_shape_in
         
 Documentation:
 Plasma volume [m^3].
@@ -127,37 +127,37 @@ and the Anchor A handshake unchanged).
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, R: float, a: float, kappa: float, pi: float, f_shape: float    ) -> Plasma_GeometryInput:
+        self, f_shape_in: float, pi: float, R_in: float, a_in: float, kappa_in: float    ) -> Plasma_GeometryInput:
         """Validate inputs and fill defaults.
 
         Args:
-            R: R input
-            a: a input
-            kappa: kappa input
+            f_shape_in: f_shape_in input
             pi: pi input
-            f_shape: f_shape input
+            R_in: R_in input
+            a_in: a_in input
+            kappa_in: kappa_in input
 
         Returns:
             Validated input model
         """
-        return Plasma_GeometryInput(R=R, a=a, kappa=kappa, pi=pi, f_shape=f_shape)
+        return Plasma_GeometryInput(f_shape_in=f_shape_in, pi=pi, R_in=R_in, a_in=a_in, kappa_in=kappa_in)
 
     def run(
-        self, R: float, a: float, kappa: float, pi: float, f_shape: float    ) -> ModuleResult[Float]:
+        self, f_shape_in: float, pi: float, R_in: float, a_in: float, kappa_in: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            R: R input
-            a: a input
-            kappa: kappa input
+            f_shape_in: f_shape_in input
             pi: pi input
-            f_shape: f_shape input
+            R_in: R_in input
+            a_in: a_in input
+            kappa_in: kappa_in input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(R, a, kappa, pi, f_shape)
+        validated_inputs = self.validate_and_fill_default(f_shape_in, pi, R_in, a_in, kappa_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_plasma_scaling.plasma_geometry_impl import (

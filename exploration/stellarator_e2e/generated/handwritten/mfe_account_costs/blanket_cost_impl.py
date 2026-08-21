@@ -7,7 +7,7 @@ SysML Source: root-0/analyses/mfe_account_costs.sysml:22
 SysML Expressions:
     p_th_ref = 2500.0
     alpha = 0.6
-    cost = unit_cost * structure_factor * blanket_vol * (p_th / p_th_ref) ** alpha
+    cost = unit_cost * structure_factor * blanket_vol * (p_th_in / p_th_ref) ** alpha
     
 Documentation:
 CAS22.1.1 First-wall + blanket + neutron-multiplier cost. Hybrid
@@ -50,7 +50,7 @@ SysML Source: root-0/analyses/mfe_account_costs.sysml:22
 SysML Expressions:
     p_th_ref = 2500.0
     alpha = 0.6
-    cost = unit_cost * structure_factor * blanket_vol * (p_th / p_th_ref) ** alpha
+    cost = unit_cost * structure_factor * blanket_vol * (p_th_in / p_th_ref) ** alpha
     
 Documentation:
 CAS22.1.1 First-wall + blanket + neutron-multiplier cost. Hybrid
@@ -76,4 +76,4 @@ Example:
     >>> inputs = Blanket_CostInput(...)
     >>> result = run_blanket_cost(inputs)
     """
-    return (((inputs.unit_cost * inputs.structure_factor) * inputs.blanket_vol) * ((inputs.p_th / inputs.p_th_ref) ** inputs.alpha))
+    return (((inputs.unit_cost * inputs.structure_factor) * inputs.blanket_vol) * ((inputs.p_th_in / inputs.p_th_ref) ** inputs.alpha))

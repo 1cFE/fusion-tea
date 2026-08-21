@@ -14,7 +14,7 @@ import json
 
 import pytest
 
-PIPELINE = "pipelines/mfe_stellarator.yaml"
+PIPELINE = "pipelines/pipeline.yaml"
 ABSENT_KEY = "stellarator_09__stellaris__geom__NOPE"
 COMPUTED_QUANTITY = "stellarator_09__stellaris__pb__p_net"
 UNCLASSIFIED_KEY = "stellarator_09__stellaris__not_in_the_contract"
@@ -40,7 +40,7 @@ def key_names_produced_channel(copy):
 def unclassifiable_key(copy):
     """Present in inputs/ but absent from the contract parameters, so its entry type
     cannot be classified."""
-    path = copy.path / "inputs" / "system_design.json"
+    path = copy.path / "inputs" / "stellarator_plant_params.json"
     data = json.loads(path.read_text())
     assert UNCLASSIFIED_KEY not in data, "fixture key already exists in the package"
     data[UNCLASSIFIED_KEY] = 1.0
@@ -63,8 +63,8 @@ def unparseable_reference(copy):
 def corrupt_pipeline_line(copy):
     copy.edit(
         PIPELINE,
-        "R: float system_design.stellarator_09__stellaris__geom__R",
-        "R: floatonly_one_token",
+        "R_in: float stellarator_plant_params.stellarator_09__stellaris__R",
+        "R_in: floatonly_one_token",
     )
 
 
@@ -88,7 +88,7 @@ CASES = [
     ("unclassifiable_key", unclassifiable_key, "not in contract parameters", True),
     ("fingerprint_mismatch", fingerprint_mismatch, "indicator-input fingerprint", False),
     ("unparseable_reference", unparseable_reference, "wall_load.value.deep", True),
-    ("corrupt_pipeline_line", corrupt_pipeline_line, "mfe_stellarator.yaml:", True),
+    ("corrupt_pipeline_line", corrupt_pipeline_line, "pipeline.yaml:", True),
     ("ghost_objective_channel", ghost_objective_channel, "produced by no module", True),
     ("wrong_manifest_for_package", wrong_manifest_for_package, "package_name", True),
     ("malformed_manifest_baseline", malformed_manifest_baseline, "baseline", True),
@@ -128,8 +128,8 @@ def test_the_computed_quantity_message_names_the_producing_module(real_copy, tmp
 def test_the_corrupt_line_carries_file_line_and_key_path(real_copy, tmp_path):
     corrupt_pipeline_line(real_copy)
     _, _, err = real_copy.run(out=tmp_path / "c.json")
-    assert "mfe_stellarator.yaml:24" in err
-    assert "key path modules.stellarator_09__stellaris__geom.inputs.R" in err
+    assert "pipeline.yaml:49" in err
+    assert "key path modules.stellarator_09__stellaris__rb.inputs.R_in" in err
     assert "floatonly_one_token" in err
 
 
@@ -138,7 +138,7 @@ def test_the_fingerprint_mismatch_names_the_live_digests(real_copy, tmp_path):
     _, _, err = real_copy.run(repin=False, out=tmp_path / "d.json")
     assert "manifest pins" in err
     assert "live per-file digests" in err
-    assert "pipelines/mfe_stellarator.yaml" in err
+    assert "pipelines/pipeline.yaml" in err
     assert "--print-fingerprint" in err
 
 
@@ -153,8 +153,8 @@ def test_a_nonstandard_node_tag_inside_modules_is_a_failure(real_copy, tmp_path)
     than read. Nothing executes either way — compose does not construct."""
     real_copy.edit(
         PIPELINE,
-        "R: float system_design.stellarator_09__stellaris__geom__R",
-        "R: !!python/object/apply:os.system ['echo pwned']",
+        "R_in: float stellarator_plant_params.stellarator_09__stellaris__R",
+        "R_in: !!python/object/apply:os.system ['echo pwned']",
     )
     rc, out, err = real_copy.run(out=tmp_path / "f.json")
     assert rc != 0

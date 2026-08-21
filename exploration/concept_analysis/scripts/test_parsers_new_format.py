@@ -5,11 +5,11 @@ The five named producers (parse_verdict_from_feedback, has_model_category_findin
 validate_feedback_verdict, validate_review_verdict, parse_proposed_actions) had
 their internals swapped from the MULTILINE regex constants to line-anchored
 scanning. These tests pin the return shapes row-for-row against
-.project/active/concept-rework-helpers-validators/signal_contract.md and prove
+.project/completed/20260821_concept-rework-helpers-validators/signal_contract.md and prove
 that pre-rework "old format" artifacts are rejected loudly (at the validator
 gate) rather than silently mis-parsed.
 
-Stencil source: .project/active/concept-rework-prompt-templates/plan.md, Phase 2.
+Stencil source: .project/completed/20260821_concept-rework-prompt-templates/plan.md, Phase 2.
 
 Deviation from the plan stencil (documented in plan.md Phase 2 Completion):
 `parse_verdict_from_feedback` keeps its `("FAIL", 0)` contract on unrecognized

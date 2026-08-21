@@ -1,6 +1,6 @@
 """Ingest design-point proposals into the project tables.
 
-For each `*.proposal.yaml` in `.project/active/concept-rework-tables/proposals/`:
+For each `*.proposal.yaml` in `.project/completed/20260821_concept-rework-tables/proposals/`:
 - Validate the YAML schema against the spec.
 - Copy the trace.md and proposal.yaml into the per-concept analysis directory at
   `exploration/concept_analysis/analyses/{cid}/design-points/baseline.{md,yaml}`.
@@ -29,7 +29,7 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parents[2].parent
-PROPOSALS_DIR = ROOT / ".project/active/concept-rework-tables/proposals"
+PROPOSALS_DIR = ROOT / ".project/completed/20260821_concept-rework-tables/proposals"
 ANALYSES_DIR = ROOT / "exploration/concept_analysis/analyses"
 DESIGN_POINT_CSV = ROOT / "exploration/concept_analysis/tables/design_point.csv"
 FREEFORM_LOG = ROOT / "exploration/concept_analysis/tables/design_point_freeform_routes.md"

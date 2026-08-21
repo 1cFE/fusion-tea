@@ -2,11 +2,11 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:434
+SysML Source: root-0/analyses/mfe_account_costs.sysml:449
 
 SysML Expressions:
-    n_mod = 1.0
-    cost = base * (n_mod * power / ref_power) ** alpha
+    n_mod_in = 1.0
+    cost = base * (n_mod_in * power / ref_power) ** alpha
     
 Documentation:
 Generic plant power-law account:
@@ -48,11 +48,11 @@ inputs (MR-3, bound at the instance).
 *Ref**: cas22.py:702 (waste), :718 (fuel), :724 (other), :731 (I&C); costs.py:256 (CAS40 owner)
 *Basis**: Plant-total power-law account cost
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:434
+SysML Source: root-0/analyses/mfe_account_costs.sysml:449
 
 SysML Expressions:
-    n_mod = 1.0
-    cost = base * (n_mod * power / ref_power) ** alpha
+    n_mod_in = 1.0
+    cost = base * (n_mod_in * power / ref_power) ** alpha
     
 Documentation:
 Generic plant power-law account:
@@ -80,4 +80,4 @@ Example:
     >>> inputs = Plant_Power_Law_CostInput(...)
     >>> result = run_plant_power_law_cost(inputs)
     """
-    return (inputs.base * (((inputs.n_mod * inputs.power) / inputs.ref_power) ** inputs.alpha))
+    return (inputs.base * (((inputs.n_mod_in * inputs.power) / inputs.ref_power) ** inputs.alpha))

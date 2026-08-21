@@ -55,7 +55,7 @@ const TORNADO_CONFIDENCE_OPACITY = {
 // 400ms (was 200ms) halves the steady-state request rate during a sustained
 // drag (~5 req/s → ~2.5 req/s) to reduce server compute load. The "Recomputing…"
 // indicator fires on slider input before this debounce, so the UI still feels
-// responsive. See .project/active/compute-oom-debounce-and-quantize/.
+// responsive. See .project/completed/20260821_compute-oom-debounce-and-quantize/.
 const SLIDER_DEBOUNCE_MS = 400;
 const ROW_GRID_TEMPLATE = "220px minmax(180px, 1fr) minmax(200px, 1fr) 90px";
 const LABEL_COL_WIDTH_PX = 220;

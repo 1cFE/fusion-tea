@@ -5,7 +5,7 @@
 # from the copied repo tree. This is the single artifact every candidate
 # platform (Railway primary; Render/HF fallback) consumes; it deliberately
 # bypasses pyproject.toml / uv.lock / [tool.uv.sources] so the offline pipeline
-# install stays untouched (FR-3). See .project/active/explorer-web-hosting/.
+# install stays untouched (FR-3). See .project/completed/20260821_explorer-web-hosting/.
 FROM python:3.12-slim
 
 # Unbuffered stdout/stderr so logs stream to the platform; no .pyc litter.

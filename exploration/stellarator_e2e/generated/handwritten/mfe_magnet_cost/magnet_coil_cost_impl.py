@@ -23,7 +23,7 @@ cost = conductor quantity * $/kA-m * a manufacturing markup (winding,
 quench protection, cryostat, testing).
 
 Fully parameterized (MR-WI009-8): G, B, R0, r_coil, cost_per_kAm, and
-coil_markup are all inputs — the concept sets them in WI-011. See the
+coil_markup are all inputs -- the concept sets them in WI-011. See the
 reconciliation note below for the current 1costingFE values.
 
 Note on units: the 1costingFE source divides the conductor cost by 1e6
@@ -58,7 +58,7 @@ cost = conductor quantity * $/kA-m * a manufacturing markup (winding,
 quench protection, cryostat, testing).
 
 Fully parameterized (MR-WI009-8): G, B, R0, r_coil, cost_per_kAm, and
-coil_markup are all inputs — the concept sets them in WI-011. See the
+coil_markup are all inputs -- the concept sets them in WI-011. See the
 reconciliation note below for the current 1costingFE values.
 
 Note on units: the 1costingFE source divides the conductor cost by 1e6
@@ -92,7 +92,7 @@ cost = conductor quantity * $/kA-m * a manufacturing markup (winding,
 quench protection, cryostat, testing).
 
 Fully parameterized (MR-WI009-8): G, B, R0, r_coil, cost_per_kAm, and
-coil_markup are all inputs — the concept sets them in WI-011. See the
+coil_markup are all inputs -- the concept sets them in WI-011. See the
 reconciliation note below for the current 1costingFE values.
 
 Note on units: the 1costingFE source divides the conductor cost by 1e6

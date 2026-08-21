@@ -18,9 +18,9 @@ and per-MW unit cost (concept/power-cycle inputs, WI-011):
 *Basis**: Balance-of-plant cost linear in plant-total driving power
 
 Inputs:
-    - power: power parameter
     - cost_per_mw: cost_per_mw parameter
-    - n_mod: n_mod parameter
+    - n_mod_in: n_mod_in parameter
+    - power: power parameter
 
 Outputs:
     - cost: cost result
@@ -43,13 +43,13 @@ class Linear_Power_CostInput(BaseModel):
     """Input model for Linear_Power_CostModule.
 
     Attributes:
-        power: power input
         cost_per_mw: cost_per_mw input
-        n_mod: n_mod input
+        n_mod_in: n_mod_in input
+        power: power input
     """
-    power: float = Field(..., description="power input")
     cost_per_mw: float = Field(..., description="cost_per_mw input")
-    n_mod: float = Field(..., description="n_mod input")
+    n_mod_in: float = Field(..., description="n_mod_in input")
+    power: float = Field(..., description="power input")
 
 
 class Linear_Power_CostModule(ModuleBase[Linear_Power_CostInput, Float]):
@@ -71,9 +71,9 @@ and per-MW unit cost (concept/power-cycle inputs, WI-011):
 *Basis**: Balance-of-plant cost linear in plant-total driving power
 
 Inputs:
-    - power: power parameter
     - cost_per_mw: cost_per_mw parameter
-    - n_mod: n_mod parameter
+    - n_mod_in: n_mod_in parameter
+    - power: power parameter
 
 Outputs:
     - cost: cost result
@@ -83,8 +83,8 @@ SysML Source: root-0/analyses/mfe_account_costs.sysml:226
     SysML Source: root-0/analyses/mfe_account_costs.sysml:226
 
     Calculation Specification:
-        n_mod = 1.0
-        cost = n_mod * power * cost_per_mw
+        n_mod_in = 1.0
+        cost = n_mod_in * power * cost_per_mw
         
 Documentation:
 Generic balance-of-plant account cost linear in plant-total power:
@@ -112,33 +112,33 @@ and per-MW unit cost (concept/power-cycle inputs, WI-011):
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, power: float, cost_per_mw: float, n_mod: float    ) -> Linear_Power_CostInput:
+        self, cost_per_mw: float, n_mod_in: float, power: float    ) -> Linear_Power_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
-            power: power input
             cost_per_mw: cost_per_mw input
-            n_mod: n_mod input
+            n_mod_in: n_mod_in input
+            power: power input
 
         Returns:
             Validated input model
         """
-        return Linear_Power_CostInput(power=power, cost_per_mw=cost_per_mw, n_mod=n_mod)
+        return Linear_Power_CostInput(cost_per_mw=cost_per_mw, n_mod_in=n_mod_in, power=power)
 
     def run(
-        self, power: float, cost_per_mw: float, n_mod: float    ) -> ModuleResult[Float]:
+        self, cost_per_mw: float, n_mod_in: float, power: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            power: power input
             cost_per_mw: cost_per_mw input
-            n_mod: n_mod input
+            n_mod_in: n_mod_in input
+            power: power input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(power, cost_per_mw, n_mod)
+        validated_inputs = self.validate_and_fill_default(cost_per_mw, n_mod_in, power)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.linear_power_cost_impl import (

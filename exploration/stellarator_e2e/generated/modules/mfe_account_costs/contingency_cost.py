@@ -7,15 +7,15 @@ CAS29 contingency on direct costs:
   cost = contingency_rate * direct_subtotal
 
 `contingency_rate` is the FOAK/NOAK rate (0.10 FOAK, 0.0 NOAK in the
-source) — a concept/maturity input (WI-011).
+source) -- a concept/maturity input (WI-011).
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
 *Ref**: costs.py:220 (cas29_contingency)
 *Basis**: Fractional contingency on the direct-cost subtotal
 
 Inputs:
-    - contingency_rate: contingency_rate parameter
     - direct_subtotal: direct_subtotal parameter
+    - contingency_rate_in: contingency_rate_in parameter
 
 Outputs:
     - cost: cost result
@@ -38,11 +38,11 @@ class Contingency_CostInput(BaseModel):
     """Input model for Contingency_CostModule.
 
     Attributes:
-        contingency_rate: contingency_rate input
         direct_subtotal: direct_subtotal input
+        contingency_rate_in: contingency_rate_in input
     """
-    contingency_rate: float = Field(..., description="contingency_rate input")
     direct_subtotal: float = Field(..., description="direct_subtotal input")
+    contingency_rate_in: float = Field(..., description="contingency_rate_in input")
 
 
 class Contingency_CostModule(ModuleBase[Contingency_CostInput, Float]):
@@ -53,15 +53,15 @@ CAS29 contingency on direct costs:
   cost = contingency_rate * direct_subtotal
 
 `contingency_rate` is the FOAK/NOAK rate (0.10 FOAK, 0.0 NOAK in the
-source) — a concept/maturity input (WI-011).
+source) -- a concept/maturity input (WI-011).
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
 *Ref**: costs.py:220 (cas29_contingency)
 *Basis**: Fractional contingency on the direct-cost subtotal
 
 Inputs:
-    - contingency_rate: contingency_rate parameter
     - direct_subtotal: direct_subtotal parameter
+    - contingency_rate_in: contingency_rate_in parameter
 
 Outputs:
     - cost: cost result
@@ -71,7 +71,7 @@ SysML Source: root-0/analyses/mfe_account_costs.sysml:255
     SysML Source: root-0/analyses/mfe_account_costs.sysml:255
 
     Calculation Specification:
-        cost = contingency_rate * direct_subtotal
+        cost = contingency_rate_in * direct_subtotal
         
 Documentation:
 CAS29 contingency on direct costs:
@@ -79,7 +79,7 @@ CAS29 contingency on direct costs:
   cost = contingency_rate * direct_subtotal
 
 `contingency_rate` is the FOAK/NOAK rate (0.10 FOAK, 0.0 NOAK in the
-source) — a concept/maturity input (WI-011).
+source) -- a concept/maturity input (WI-011).
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
 *Ref**: costs.py:220 (cas29_contingency)
@@ -95,31 +95,31 @@ source) — a concept/maturity input (WI-011).
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, contingency_rate: float, direct_subtotal: float    ) -> Contingency_CostInput:
+        self, direct_subtotal: float, contingency_rate_in: float    ) -> Contingency_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
-            contingency_rate: contingency_rate input
             direct_subtotal: direct_subtotal input
+            contingency_rate_in: contingency_rate_in input
 
         Returns:
             Validated input model
         """
-        return Contingency_CostInput(contingency_rate=contingency_rate, direct_subtotal=direct_subtotal)
+        return Contingency_CostInput(direct_subtotal=direct_subtotal, contingency_rate_in=contingency_rate_in)
 
     def run(
-        self, contingency_rate: float, direct_subtotal: float    ) -> ModuleResult[Float]:
+        self, direct_subtotal: float, contingency_rate_in: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            contingency_rate: contingency_rate input
             direct_subtotal: direct_subtotal input
+            contingency_rate_in: contingency_rate_in input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(contingency_rate, direct_subtotal)
+        validated_inputs = self.validate_and_fill_default(direct_subtotal, contingency_rate_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.contingency_cost_impl import (

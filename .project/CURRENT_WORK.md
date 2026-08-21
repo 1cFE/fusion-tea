@@ -1,48 +1,52 @@
 # Current Work
 
-**Last Updated**: 2026-08-20
+**Last Updated**: 2026-08-21
 
 ---
 
-## Where `main` stands (2026-08-20)
+## Where `main` stands (2026-08-21)
 
-- **Stop-parser shipment merged** — PR #102 (`5338db5f`). fusion-tea now pins agentic-mbse / sysml-codegen / 1costingfe to sealed git SHAs; `tests/test_dependency_provenance.py` verifies the chain. The shipment record (every gate and deviation) is in sysml-codegen: `.project/completed/20260820_stop-parser-pr-shipment/plan.md`. Tags `stop-parser/*` must not move.
-- **CONSTRAINT-EXEC fusion-side items done** — Item 8 (IFE package regenerated with the embedded constraint catalog, hand-built catalog script deleted), Item 9 (stock multi-channel bridge, wrappers deleted), Item 14 Appendix C (IFE viability acceptance). All committed 2026-07-20 and on `main`. Record: `work/active/20260713_constraint-exec-acceptance/brief.md`. The `item8-fusion-embedded-catalog` branch was deleted 2026-08-20; it had no commits of its own.
-- **Explorer** — UX v3 Phase 1 + Themes A/B1/F merged; 1costingfe v0.1.0 migration done 2026-06-28 (`reports/2026-06-28_1costingfe-v0.1.0-migration.md`). Web hosting merged (#97). OOM Layers 1–2 merged (#98), JAX pre-warm (#99), deploy switched to numpy-only 1costingfe v0.1.1 (#100).
-- **Working tree** — cleaned 2026-08-20: stale `uv.lock` edit discarded (`main`'s lock is current, `uv lock --check` passes), IFE run residue and `_bridged` scratch dirs deleted, stranded `.project/` docs committed.
+- **Stellarator demo landing merged** — PR #104 (`d0e4398d`): run-study skill and tools (`.claude/skills/run-study/`, `scripts/study/`, `tests/study/` 273), proof-of-life design search (`exploration/stellarator_e2e/study/`), before-migration record. The certified migration is archived at `.project/completed/20260821_stellarator-model-migration/`.
+- **Stop-parser shipment merged** — PR #102 (`5338db5f`). fusion-tea pins agentic-mbse / sysml-codegen / 1costingfe to sealed git SHAs; `tests/test_dependency_provenance.py` verifies the chain. Shipment record in sysml-codegen: `.project/completed/20260820_stop-parser-pr-shipment/plan.md`. Tags `stop-parser/*` must not move.
+- **CONSTRAINT-EXEC fusion-side items done** — Items 8, 9, 14 Appendix C committed 2026-07-20. Record: `work/active/20260713_constraint-exec-acceptance/brief.md`.
+- **Explorer** — UX v3 Phase 1 + Themes A/B1/F merged; 1costingfe v0.1.0 migration 2026-06-28; web hosting (#97; operator runbook `.project/completed/20260821_explorer-web-hosting/RUNBOOK.md`); OOM Layers 1–2 (#98), JAX pre-warm (#99), numpy-only deploy on 1costingfe v0.1.1 (#100).
+- **`.project/` archival pass done 2026-08-21** (on this branch): 56 item dirs and 6 epics moved to `completed/` with the `20260821_` prefix, 3 empty dirs deleted, live path references rewritten. `active/` now holds 5 dirs. Record: `.project/completed/CHANGELOG.md`, report `.project/reports/2026-08-21-1339-status-report.md`.
 
-## Next up
+## Next up (in order, 2026-08-21)
 
-### Whole-plant regeneration on the elaborate-first route
+1. **RUN-STUDY Item 6** (first A/B consumer + policy cutover) on the stock route — unblocked by the archived stellarator migration certification (`.project/completed/20260821_stellarator-model-migration/audit.md`). Owner Align held 2026-08-21 (`.project/active/run-study-first-consumer/align.md`: policy ratified, comparison left to design research, oracle for this demo only); spec drafted 2026-08-21 (`spec.md`, Draft). Next: `/_my_design`, whose first phase is research into the comparison.
+2. **Upstream filings to sysml-codegen** — three rows written 2026-08-21 by the archived migration (scalar-function vocabulary, unit-scrape byte offset, plus the unit-scrape defect); they sit uncommitted in `/home/reid/1cfe/sysml-codegen/.project/backlog/BACKLOG.md` for the owner's commit.
+3. **IFE whole-plant regeneration on the elaborate-first route** — fusion-tea's half of sysml-codegen's ELABORATE-FIRST Item 8, step B after codegen's scope scrub A (owner order 2026-08-15). Context: sysml-codegen `.project/CURRENT_WORK.md` ("2026-08-15: Item 8 sequencing").
+4. **Explorer UX v3 — Phase 2**: pick by leverage, D1 top candidate. Epic: `.project/backlog/epic_explorer_ux_v3.md`.
 
-Fusion-tea's half of sysml-codegen's ELABORATE-FIRST Item 8. Owner-decided order (2026-08-15): codegen's scope scrub first (A), then fusion-tea whole-plant regeneration (B). Branch off `main`. Context and premises: sysml-codegen `.project/CURRENT_WORK.md` ("2026-08-15: Item 8 sequencing"). The Stellarator model is split out of this item (lives in `~/1cfe/fusion-tea-stellarator-mbse-demo`).
+## Recently Completed
 
-### Explorer UX v3 — Phase 2
+### 2026-08-21: Stellarator Model Migration
 
-Pick the next item by leverage; D1 (per-account override decomposition) is the top candidate. Epic: `.project/backlog/epic_explorer_ux_v3.md`. Small loose ends listed there: concept 27 stale data, FR-SO1 test's stale `>5%` assertion, re-extract 37 & 39.
+- Regenerated and sealed the stellarator package at runtime contract 2.0.0 on stock teax with numerical identity across the baseline, 948-point grid, and 19-point sweep.
+- Promoted the MFE models into `models/`, preserved both family regression spines, closed the CAS27 verification gap, and retired the primary era adapter whole.
+- Made study publication and the single-point evidence command fail closed; all SC1–SC11 criteria were certified. Archive: `.project/completed/20260821_stellarator-model-migration/`.
 
 ## Open decisions
 
 - **`feat/compute-concurrency-semaphore`** (1 commit, unmerged, off an old `main`). It caps concurrent JAX `forward()` calls, but #100 made the deploy numpy-only, so the memory profile it guards against may be gone. Decide: land it or delete the branch. Background: `.project/reports/2026-07-03-1114-status-report.md`.
 - **`run_analysis.py` CLI step semantics** — a real bug with a paused spec (`.project/active/run-analysis-cli-step-semantics/spec.md`, BACKLOG row). `analyze` and `model-setup` look like peers but overlap; `regenerate-concept` chains them so the weaker path overwrites the loop's output. Schedule or drop.
+- ~~Rework design-point gate never signed~~ — accepted as-is `[OWNER 2026-08-21]`; BACKLOG Flagged row.
+- **Delete `.project/completed/` folders before a cutoff date, keep `CHANGELOG.md`** `[OWNER 2026-08-21]` — not yet; a later pass. Cutoff date still to be chosen. Git history keeps everything; the changelog stays as the index. Live citations into the deleted folders (`ingest_design_point_proposals.py:32`, `test_validators.py:547`, `.claude/skills/run-study/record-template.md`, `knowledge/holdout/aries-cs/PROTOCOL.md`) will need repointing in that pass.
 
 ## Paused / deferred
 
-- `batch-pipeline-run` — plan drafted, unblocked since 2026-04-11, not started.
-- `traceability-system` — spec + plan, awaiting prioritization.
-- `loop-dry-run-symmetry` — spec only; `archive/fix-feedback-data-leak-2026-04-13` tag holds the implementation work.
+- `traceability-system` — spec + design + plan (2026-03-02), never started; still the citation-format reference for CLAUDE.md / MR-4.
+- `loop-dry-run-symmetry` — spec only; the gap is still live at `exploration/concept_analysis/scripts/lib/loop.py:620`.
+- `demo-study-parameterization-policy/policy.md` — not a work item: the run-study skill's rulebook, named by path in `.claude/skills/run-study/SKILL.md` and `runbook.md`. Stays in `active/` until RUN-STUDY Item 6 ratifies and moves it.
 
 ## Housekeeping owed
 
-- **`.project/active/` archival pass.** ~50 item dirs, most finished but never moved to `completed/`. Last archival was 2026-04-11 (`.project/completed/CHANGELOG.md`).
-- **Branch / worktree tidy.** Local branches already merged: `chore/retire-pipeline-truth-workarounds` (#101), `feat/explorer-web-hosting` (#97), `stop-parser-fusion-r2` (#102), `self-binding-replacement` (in `main`). Unmerged: `epic/pipeline-derisk-demo`, `feat/compute-concurrency-semaphore`, `stop-parser-verification`. Worktrees: `fusion-tea-portfolio-audit-stage` (detached), `fusion-tea-self-binding`, `fusion-tea-stellarator-mbse-demo` (active), plus `/tmp/stop-parser.QVJIIP/*` and `/tmp/ft-main` (prunable). Each deletion needs owner sign-off. Earlier cleanup record: `.project/reports/2026-05-22-branch-cleanup.md`.
+- **Branch / worktree tidy.** Local branches already merged: `chore/retire-pipeline-truth-workarounds` (#101), `feat/explorer-web-hosting` (#97), `stop-parser-fusion-r2` (#102), `self-binding-replacement` (in `main`). Unmerged: `epic/pipeline-derisk-demo`, `feat/compute-concurrency-semaphore`, `stop-parser-verification`. Remote `fix/eta-th-double-count` is dead (PR #31 closed; fixed in 1costingFE YAMLs instead). Worktrees: `fusion-tea-portfolio-audit-stage` (detached), `fusion-tea-self-binding`, `fusion-tea-stellarator-mbse-demo`, `/home/reid/1cfe/teax-v1-era` (unused since the migration), plus `/tmp/stop-parser.QVJIIP/*` and `/tmp/ft-main` (prunable). Each deletion needs owner sign-off. Earlier cleanup record: `.project/reports/2026-05-22-branch-cleanup.md`.
 - **Merge flow reminder.** Branch protection needs a review the author can't self-provide; agent pushes + opens the PR, owner merges with `! gh pr merge <n> --repo 1cFE/fusion-tea --merge --admin`. Use a merge commit for anything a downstream pin depends on.
 
-## Stellarator demo + run-study capability (landed from `feat/stellarator-mbse-demo`)
+## Stellarator demo + run-study capability
 
-- **Run-Study Capability epic** (`.project/backlog/epic_run_study_capability.md`): Items 1–5 complete and audited 2026-08-20. Delivered: `.claude/skills/run-study/`, `scripts/study/` (indicators, manifest, identity, preflight, verify), `exploration/stellarator_e2e/studies/` (manifest, era adapter, oracle seam, ANNEX), `tests/study/` (273). **Item 6 (first A/B consumer) runs after the model migration** `[OWNER 2026-08-21]`, on the stock teax route.
-- **Stellarator MBSE Demo epic** (`epic_stellarator_mbse_demo.md`): On Hold by owner (2026-08-19). Items 1–4 done (handshake to 1costingFE: LCOE 275.264220, 5/5 verdicts). Proof-of-life design search (948-point grid) in `exploration/stellarator_e2e/study/`.
-- **Package state**: sealed 2026-07-25 on codegen `06d95f8`, `runtime_contract_version 1.0.0`; runs only on the era teax worktree (`/home/reid/1cfe/teax-v1-era` @ `fa0e06a`) through `era_adapter.py`. Current teax main refuses it by design.
-- **MFE models live only in the staged twin** `exploration/stellarator_e2e/models/` for now (owner decision Q1 → A): main's spine test generates the whole `models/` tree and the MFE models cannot generate on the pinned codegen yet (94 self-named bindings + three further refusal classes). See `.project/research/20260820-221835_stellarator-demo-reconciliation-plan.md` § 2–3.
-- **Landing (PR 1) done on this branch** — plan `.project/active/stellarator-demo-landing/plan.md`, all phases complete 2026-08-21: merge of `main`, Option A, both suites green (tests/models 40/13 incl. spine 10/10; tests/study 273 with era required), before-record at `exploration/stellarator_e2e/studies/BEFORE_MIGRATION_RECORD.md`. Awaiting owner admin-merge into `main`.
-- **Next**: the model-migration item (D-5 rename, scalar-function rewrites, unit-comment and positional-binding fixes, regenerate at 2.0.0, retire the adapter, promote MFE models into `models/`, reshape the spine test). Enters at `/_my_spec`. Carry the two P1 BACKLOG rows: "Test cleanup" and "`uv.lock` on main is not regenerable".
+- **Run-Study Capability epic** (`.project/backlog/epic_run_study_capability.md`): Items 1–5 complete and audited 2026-08-20 (dirs archived under `completed/20260821_run-study-*`). Item 6 is unblocked after the certified model migration `[OWNER 2026-08-21]`, on the stock teax route.
+- **Stellarator MBSE Demo epic** (`epic_stellarator_mbse_demo.md`): On Hold by owner (2026-08-19). Items 1–4 done (handshake to 1costingFE: LCOE 275.264220, 5/5 verdicts). The ARIES-CS barred/admissible lists live in `completed/20260821_aries-cs-holdout/spec.md` (pointer updated in `knowledge/holdout/aries-cs/PROTOCOL.md`).
+- **Package state**: regenerated 2026-08-21 on the pinned codegen `8a758e92`, `runtime_contract_version 2.0.0`, runs on stock teax (`744745f`) with no adapter. MFE models live in `models/` with `exploration/stellarator_e2e/models/` as the byte-identical twin; `tests/models/test_model_family_spines.py` generates each family from its own canonical subset.

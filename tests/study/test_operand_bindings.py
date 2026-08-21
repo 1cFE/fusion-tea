@@ -22,15 +22,10 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 STUDIES = REPO_ROOT / "exploration" / "stellarator_e2e" / "studies"
 
 BASELINE_POINT = {
-    "stellarator_09__stellaris__geom__R": 12.7,
-    "stellarator_09__stellaris__rb__R": 12.7,
+    "stellarator_09__stellaris__R": 12.7,
     "stellarator_09__stellaris__magnet__R0": 12.7,
-    "stellarator_09__stellaris__geom__a": 1.3,
-    "stellarator_09__stellaris__rb__a": 1.3,
-    "stellarator_09__stellaris__cas72_calc__availability": 0.85,
-    "stellarator_09__stellaris__fuel_calc__availability": 0.85,
-    "stellarator_09__stellaris__lcoe_calc__availability": 0.85,
-    "stellarator_09__stellaris__lcoe_1cfe_calc__availability": 0.85,
+    "stellarator_09__stellaris__a": 1.3,
+    "stellarator_09__stellaris__availability": 0.85,
 }
 PINNED_LCOE = 275.2642200420774
 
@@ -132,10 +127,13 @@ def test_an_undeclared_entry_key_fails_closed_naming_the_key(oracle_entry):
     assert "some_pkg__unheard_of__key" in str(exc.value)
 
 
-def test_keys_that_disagree_about_one_oracle_input_fail_closed(oracle_entry):
-    """geom__R and rb__R are one physical quantity; two values are two geometries."""
-    point = dict(BASELINE_POINT)
-    point["stellarator_09__stellaris__rb__R"] = 9.0
+def test_keys_that_disagree_about_one_oracle_input_fail_closed(oracle_entry, monkeypatch):
+    """Two keys carrying one oracle input must agree: two values are two geometries.
+
+    Since the model migration no two real keys share an oracle input (each swept
+    attribute is one entry point), so the rule is exercised through a declared alias."""
+    monkeypatch.setitem(oracle_entry.ENTRY_KEY_TO_ORACLE_INPUT, "some_pkg__alias__R", "R")
+    point = dict(BASELINE_POINT, some_pkg__alias__R=9.0)
     with pytest.raises(oracle_entry.OracleSeamError) as exc:
         oracle_entry.evaluate(point)
     assert "R" in str(exc.value) and "9.0" in str(exc.value)
@@ -146,26 +144,3 @@ def test_an_unmapped_oracle_output_fails_closed_naming_the_channel(oracle_entry,
     with pytest.raises(oracle_entry.OracleSeamError) as exc:
         oracle_entry.evaluate(BASELINE_POINT)
     assert "no_such_output" in str(exc.value) and "pkg__nowhere" in str(exc.value)
-
-
-def test_glue_values_carry_the_five_injected_keys(oracle_entry):
-    values = oracle_entry.glue_values(BASELINE_POINT)
-    assert set(values) == set(oracle_entry.GLUE_VALUE_KEYS)
-    special = values["stellarator_09__stellaris__cas23_to_28_capital__special_materials_capital"]
-    assert special > 0
-    # The two CAS27 keys are one quantity fed to two accounts.
-    assert (
-        values["stellarator_09__stellaris__cas2x_pre_contingency__special_materials_capital"]
-        == special
-    )
-
-
-def test_the_oracle_module_globals_are_restored_after_a_point(oracle_entry):
-    """A leaked override would make every later point silently wrong."""
-    import verify_stellaris as vs
-
-    before = dict(vs.IN)
-    oracle_entry.evaluate(dict(BASELINE_POINT, **{"stellarator_09__stellaris__geom__R": 9.0,
-                                                  "stellarator_09__stellaris__rb__R": 9.0,
-                                                  "stellarator_09__stellaris__magnet__R0": 9.0}))
-    assert vs.IN == before

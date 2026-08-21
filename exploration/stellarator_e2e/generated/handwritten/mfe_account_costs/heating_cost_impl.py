@@ -5,7 +5,7 @@ AUTO_IMPLEMENTED = True
 SysML Source: root-0/analyses/mfe_account_costs.sysml:196
 
 SysML Expressions:
-    cost = nbi_per_mw * p_nbi + icrf_per_mw * p_icrf + ecrh_per_mw * p_ecrh + lhcd_per_mw * p_lhcd
+    cost = nbi_per_mw * p_nbi_in + icrf_per_mw * p_icrf_in + ecrh_per_mw * p_ecrh_in + lhcd_per_mw * p_lhcd_in
     
 Documentation:
 CAS22.1.4 Supplementary heating & current drive cost, steady-state MFE.
@@ -46,7 +46,7 @@ All per-MW rates and delivered powers are the concept heating mix
 SysML Source: root-0/analyses/mfe_account_costs.sysml:196
 
 SysML Expressions:
-    cost = nbi_per_mw * p_nbi + icrf_per_mw * p_icrf + ecrh_per_mw * p_ecrh + lhcd_per_mw * p_lhcd
+    cost = nbi_per_mw * p_nbi_in + icrf_per_mw * p_icrf_in + ecrh_per_mw * p_ecrh_in + lhcd_per_mw * p_lhcd_in
     
 Documentation:
 CAS22.1.4 Supplementary heating & current drive cost, steady-state MFE.
@@ -72,4 +72,4 @@ Example:
     >>> inputs = Heating_CostInput(...)
     >>> result = run_heating_cost(inputs)
     """
-    return ((((inputs.nbi_per_mw * inputs.p_nbi) + (inputs.icrf_per_mw * inputs.p_icrf)) + (inputs.ecrh_per_mw * inputs.p_ecrh)) + (inputs.lhcd_per_mw * inputs.p_lhcd))
+    return ((((inputs.nbi_per_mw * inputs.p_nbi_in) + (inputs.icrf_per_mw * inputs.p_icrf_in)) + (inputs.ecrh_per_mw * inputs.p_ecrh_in)) + (inputs.lhcd_per_mw * inputs.p_lhcd_in))

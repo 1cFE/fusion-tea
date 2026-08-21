@@ -2,7 +2,7 @@
 propagate_staleness regeneration-set exemption, and in-loop regression.
 
 Covers the contract established in
-``.project/active/staleness-propagation-fix/design.md``:
+``.project/completed/20260821_staleness-propagation-fix/design.md``:
 
   - Every producer clears its own marker on successful write.
   - ``propagate_staleness`` exempts members of an explicit ``regenerated`` set.

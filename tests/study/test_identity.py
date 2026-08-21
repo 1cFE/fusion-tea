@@ -1,6 +1,6 @@
 """The identity recipe, its canonical text, and the gate that recomputes it.
 
-The design probe confirmed the *mechanism* — the era stack accepts a computed
+The design probe confirmed the *mechanism* — the teax stack accepts a computed
 fingerprint at the loader seam, and a store bound to one refuses another — but it
 emitted a single `adapter <digest>` line where the design emits one
 `adapter <path> <sha256>` line per declared source (N1). Nothing rests on the
@@ -17,7 +17,7 @@ from scripts.study import common, identity
 
 SEALED = "ab" * 32
 MOD = [("inputs/x.json", "11" * 32)]
-SRC = [("a/era_adapter.py", "22" * 32)]
+SRC = [("a/route_adapter.py", "22" * 32)]
 
 
 def test_the_recipe_canonical_text_is_exactly_this():
@@ -25,7 +25,7 @@ def test_the_recipe_canonical_text_is_exactly_this():
         "effective-executable-fingerprint/v1\n"
         "sealed " + "ab" * 32 + "\n"
         "modified inputs/x.json " + "11" * 32 + "\n"
-        "adapter a/era_adapter.py " + "22" * 32 + "\n"
+        "adapter a/route_adapter.py " + "22" * 32 + "\n"
     )
 
 
@@ -58,7 +58,7 @@ def test_touching_any_of_the_three_inputs_changes_the_digest():
     base = identity.effective_digest(SEALED, MOD, SRC)
     assert identity.effective_digest("cd" * 32, MOD, SRC) != base
     assert identity.effective_digest(SEALED, [("inputs/x.json", "99" * 32)], SRC) != base
-    assert identity.effective_digest(SEALED, MOD, [("a/era_adapter.py", "99" * 32)]) != base
+    assert identity.effective_digest(SEALED, MOD, [("a/route_adapter.py", "99" * 32)]) != base
 
 
 # ------------------------------------------------------------------ the document
@@ -129,7 +129,7 @@ def _effective_doc(package_root, modified_rel, source_rel):
 
 
 ADAPTER_SOURCE = "exploration/stellarator_e2e/studies/oracle_entry.py"
-GLUE_FILES = ["inputs/system_design.json", "pipelines/mfe_stellarator.yaml"]
+GLUE_FILES = ["inputs/stellarator_plant_params.json", "pipelines/pipeline.yaml"]
 
 
 def test_the_gate_passes_on_the_real_package(real_package_path):
@@ -162,7 +162,7 @@ def test_the_gate_recomputes_and_does_not_trust(real_package_path, tmp_path):
     shutil.copytree(real_package_path, copy)
     doc = _effective_doc(copy, GLUE_FILES, [ADAPTER_SOURCE])
     identity.assert_matches(doc, copy)
-    target = copy / "inputs" / "system_design.json"
+    target = copy / "inputs" / "stellarator_plant_params.json"  # an allowed-modified file
     target.write_text(target.read_text().replace("}", ", \"x\": 1}", 1))
     with pytest.raises(identity.IdentityError) as exc:
         identity.assert_matches(doc, copy)
@@ -178,11 +178,11 @@ def test_a_sealed_artifact_outside_the_allowed_set_fails_naming_the_file(
     copy = tmp_path / "pkg"
     shutil.copytree(real_package_path, copy)
     doc = _effective_doc(copy, GLUE_FILES, [ADAPTER_SOURCE])
-    target = copy / "inputs" / "stellarator_plant_params.json"
+    target = copy / "inputs" / "mfe_plant_params.json"  # sealed, NOT in the allowed set
     target.write_text(target.read_text().replace("}", ", \"x\": 1}", 1))
     with pytest.raises(identity.IdentityError) as exc:
         identity.assert_seal_outside_allowed_set(doc, copy)
-    assert "inputs/stellarator_plant_params.json" in str(exc.value)
+    assert "inputs/mfe_plant_params.json" in str(exc.value)
 
 
 def test_an_allowed_modified_file_that_is_not_a_sealed_artifact_is_refused(real_package_path):

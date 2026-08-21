@@ -65,7 +65,7 @@ def _profile_integral(alpha_n: float, alpha_T: float, T_i0: float) -> float:
 
 def run_dt_fusion_power(inputs: DT_Fusion_PowerInput) -> float:
     """D-T fusion power [MW]: 0D bypass (sigma_v > 0) or profile integral."""
-    if inputs.sigma_v > 0.0:
-        return 0.25 * (inputs.n_e ** 2) * inputs.sigma_v * inputs.E_fus * inputs.V * 1e-6
-    integral = _profile_integral(inputs.alpha_n, inputs.alpha_T, inputs.T_i0)
-    return inputs.n_D0 * inputs.n_T0 * integral * inputs.E_fus * inputs.V * 1e-6
+    if inputs.sigma_v_in > 0.0:
+        return 0.25 * (inputs.n_e_in ** 2) * inputs.sigma_v_in * inputs.E_fus_in * inputs.V * 1e-6
+    integral = _profile_integral(inputs.alpha_n_in, inputs.alpha_T_in, inputs.T_i0_in)
+    return inputs.n_D0_in * inputs.n_T0_in * integral * inputs.E_fus_in * inputs.V * 1e-6

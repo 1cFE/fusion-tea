@@ -1,6 +1,5 @@
 {
-  "derived_against_semantic_fingerprint": "c9bc164050f0aac8a2009befb34497426d68923066ca1c1783a0b80e8048c261",
-  "note": "Derived from the committed package by the tool and checked field for field against the Item 1 fixture contract (.project/active/run-study-reachability-spike/findings.md). If the package is regenerated, re-derive this file; never patch it to make a test pass.",
+  "derived_against_semantic_fingerprint": "1be51d890e5e2f973da919a9ff3cb5ef04a75652e5f906f13cea2a519f97b3aa",
   "group": {
     "axis": "beta",
     "declared_keys": [
@@ -24,14 +23,14 @@
         "bound_vs_bound": true,
         "operands": [
           {
-            "operand": "beta",
+            "operand": "beta_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__beta",
             "reached": true,
             "entry_type": "design_attribute"
           },
           {
-            "operand": "beta_limit",
+            "operand": "beta_limit_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__beta_limit",
             "reached": false,
@@ -85,7 +84,7 @@
           {
             "operand": "threshold",
             "class": "bound",
-            "ref": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__threshold",
+            "ref": "stellarator_09__stellaris__recirc_ok__threshold",
             "reached": false,
             "entry_type": "library_default"
           }
@@ -102,14 +101,14 @@
         "bound_vs_bound": true,
         "operands": [
           {
-            "operand": "tbr",
+            "operand": "tbr_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__tbr",
             "reached": false,
             "entry_type": "design_attribute"
           },
           {
-            "operand": "tbr_floor",
+            "operand": "tbr_floor_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__tbr_floor",
             "reached": false,
@@ -135,7 +134,7 @@
             "reached": false
           },
           {
-            "operand": "wall_load_limit",
+            "operand": "wall_load_limit_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__wall_load_limit",
             "reached": false,
@@ -156,14 +155,14 @@
         "bound_vs_bound": true,
         "operands": [
           {
-            "operand": "beta",
+            "operand": "beta_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__beta",
             "reached": true,
             "entry_type": "design_attribute"
           },
           {
-            "operand": "beta_limit",
+            "operand": "beta_limit_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__beta_limit",
             "reached": false,
@@ -215,7 +214,7 @@
           {
             "operand": "threshold",
             "class": "bound",
-            "ref": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__threshold",
+            "ref": "stellarator_09__stellaris__recirc_ok__threshold",
             "reached": false,
             "entry_type": "library_default"
           }
@@ -232,14 +231,14 @@
         "bound_vs_bound": true,
         "operands": [
           {
-            "operand": "tbr",
+            "operand": "tbr_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__tbr",
             "reached": false,
             "entry_type": "design_attribute"
           },
           {
-            "operand": "tbr_floor",
+            "operand": "tbr_floor_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__tbr_floor",
             "reached": false,
@@ -265,7 +264,7 @@
             "reached": false
           },
           {
-            "operand": "wall_load_limit",
+            "operand": "wall_load_limit_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__wall_load_limit",
             "reached": false,
@@ -276,6 +275,7 @@
     ],
     "objectives_reachable": [],
     "objectives_unreachable": [
+      "cas27",
       "cas72",
       "fuel",
       "lcoe",

@@ -45,7 +45,7 @@
   - `17b-laser-icf-fast-ignition/` (this dir) — Focused Energy
 - **Classification resolved**: Focused Energy reclassified as `Laser ICF (fast ignition)` (was `Laser ICF (direct drive)` in shared dossier). Rationale: the company's two-pulse architecture (DPSSL compression + petawatt CPA ignitor with proton/ion fast ignition) matches the schema definition of fast ignition. The "direct drive" branding refers to the compression-stage geometry.
 - **Primary Heating** updated to `Laser (fast ignition)` (was `Laser (direct drive)`); confidence high.
-- **Sources partitioned**: per `.project/active/concept-research-17-split/source_partition.csv`. This dir holds 4 Focused-specific source dirs (`focused-energy-technology`, `focused-energy-callahan-interview`, `prnewswire-…focused-energy-and-amplitude-enter`) plus the Meier 2006 fast-ignition economics paper (`osti-servlets-purl-1438678`), and 13 shared IFE-background source dirs duplicated with 17a.
+- **Sources partitioned**: per `.project/completed/20260821_concept-research-17-split/source_partition.csv`. This dir holds 4 Focused-specific source dirs (`focused-energy-technology`, `focused-energy-callahan-interview`, `prnewswire-…focused-energy-and-amplitude-enter`) plus the Meier 2006 fast-ignition economics paper (`osti-servlets-purl-1438678`), and 13 shared IFE-background source dirs duplicated with 17a.
 - **Dossier**: rewritten as Focused-Energy-only. Cross-company commentary removed.
 - **Legacy dir archived** at `archive/concept_research_legacy/17-laser-icf-direct-drive/`.
 

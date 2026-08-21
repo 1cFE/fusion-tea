@@ -5,9 +5,9 @@ AUTO_IMPLEMENTED = True
 SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:4
 
 SysML Expressions:
+    f_shape_in = 1.0
     pi = 3.14159265358979
-    f_shape = 1.0
-    V = 2.0 * pi ** 2 * R * a ** 2 * kappa * f_shape
+    V = 2.0 * pi ** 2 * R_in * a_in ** 2 * kappa_in * f_shape_in
     
 Documentation:
 Plasma volume [m^3].
@@ -56,9 +56,9 @@ and the Anchor A handshake unchanged).
 SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:4
 
 SysML Expressions:
+    f_shape_in = 1.0
     pi = 3.14159265358979
-    f_shape = 1.0
-    V = 2.0 * pi ** 2 * R * a ** 2 * kappa * f_shape
+    V = 2.0 * pi ** 2 * R_in * a_in ** 2 * kappa_in * f_shape_in
     
 Documentation:
 Plasma volume [m^3].
@@ -88,4 +88,4 @@ Example:
     >>> inputs = Plasma_GeometryInput(...)
     >>> result = run_plasma_geometry(inputs)
     """
-    return (((((2.0 * (inputs.pi ** 2)) * inputs.R) * (inputs.a ** 2)) * inputs.kappa) * inputs.f_shape)
+    return (((((2.0 * (inputs.pi ** 2)) * inputs.R_in) * (inputs.a_in ** 2)) * inputs.kappa_in) * inputs.f_shape_in)

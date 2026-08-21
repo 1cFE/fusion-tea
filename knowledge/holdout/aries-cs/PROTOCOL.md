@@ -6,7 +6,7 @@ revealed: null
 
 # ARIES-CS Hold-Out Quarantine Protocol
 
-This is the single rule home for the ARIES-CS hold-out. The demo's validation claim — a stellarator model built with no ARIES-CS material in context, then graded against ARIES-CS at a deliberate reveal — is only as good as this protocol. Work item: `.project/active/aries-cs-holdout/`; concept: `.project/concepts/stellarator-mbse-demo.md` (Key Concept 2).
+This is the single rule home for the ARIES-CS hold-out. The demo's validation claim — a stellarator model built with no ARIES-CS material in context, then graded against ARIES-CS at a deliberate reveal — is only as good as this protocol. Work item: `.project/completed/20260821_aries-cs-holdout/`; concept: `.project/concepts/stellarator-mbse-demo.md` (Key Concept 2).
 
 ## 1. Status
 

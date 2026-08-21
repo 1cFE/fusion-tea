@@ -2,18 +2,18 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:483
+SysML Source: root-0/analyses/mfe_account_costs.sysml:503
 
 SysML Expressions:
-    installation_frac = 0.14
-    cost = installation_frac * reactor_subtotal
+    installation_frac_in = 0.14
+    cost = installation_frac_in * reactor_subtotal
     
 Documentation:
 Installation-labor account:
 
   cost = installation_frac * reactor_subtotal
 
-reactor_subtotal = Σ(C220101..C220110) per-module (includes C220109 = 0
+reactor_subtotal = Sigma(C220101..C220110) per-module (includes C220109 = 0
 for this concept, excludes 111/112). The multi-unit labor factor (0.92)
 is a plant-aggregate concern at n_mod > 1; the account value compared
 under A-2 is single-module.
@@ -35,7 +35,7 @@ Installation-labor account:
 
   cost = installation_frac * reactor_subtotal
 
-reactor_subtotal = Σ(C220101..C220110) per-module (includes C220109 = 0
+reactor_subtotal = Sigma(C220101..C220110) per-module (includes C220109 = 0
 for this concept, excludes 111/112). The multi-unit labor factor (0.92)
 is a plant-aggregate concern at n_mod > 1; the account value compared
 under A-2 is single-module.
@@ -44,18 +44,18 @@ under A-2 is single-module.
 *Ref**: cas22.py:652-664 (c220111); installation_frac cas22.py:664 (0.14)
 *Basis**: Fixed fraction of the reactor-equipment subtotal
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:483
+SysML Source: root-0/analyses/mfe_account_costs.sysml:503
 
 SysML Expressions:
-    installation_frac = 0.14
-    cost = installation_frac * reactor_subtotal
+    installation_frac_in = 0.14
+    cost = installation_frac_in * reactor_subtotal
     
 Documentation:
 Installation-labor account:
 
   cost = installation_frac * reactor_subtotal
 
-reactor_subtotal = Σ(C220101..C220110) per-module (includes C220109 = 0
+reactor_subtotal = Sigma(C220101..C220110) per-module (includes C220109 = 0
 for this concept, excludes 111/112). The multi-unit labor factor (0.92)
 is a plant-aggregate concern at n_mod > 1; the account value compared
 under A-2 is single-module.
@@ -74,4 +74,4 @@ Example:
     >>> inputs = Installation_Labor_CostInput(...)
     >>> result = run_installation_labor_cost(inputs)
     """
-    return (inputs.installation_frac * inputs.reactor_subtotal)
+    return (inputs.installation_frac_in * inputs.reactor_subtotal)

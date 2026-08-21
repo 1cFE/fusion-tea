@@ -39,8 +39,7 @@ def test_the_tie_key_is_marked_and_the_others_are_not():
     doc = run_tool(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWERS)
     tied = {e["key"]: e["provenance"] for e in group_by_axis(doc, "R+tie")["declared_keys"]}
     assert tied["stellarator_09__stellaris__magnet__R0"] == "tie"
-    assert tied["stellarator_09__stellaris__geom__R"] == "fan_out"
-    assert tied["stellarator_09__stellaris__rb__R"] == "fan_out"
+    assert tied["stellarator_09__stellaris__R"] == "fan_out"
 
 
 def test_a_tie_key_traces_identically_to_a_fan_out_key(package_copy):
@@ -65,7 +64,7 @@ def test_a_tie_key_traces_identically_to_a_fan_out_key(package_copy):
         return {k: v for k, v in group.items() if k != "declared_keys"}
 
     assert without_declared_keys(as_fan_out) == without_declared_keys(as_declared)
-    assert [e["provenance"] for e in as_fan_out["declared_keys"]] == ["fan_out"] * 3
+    assert [e["provenance"] for e in as_fan_out["declared_keys"]] == ["fan_out"] * 2
 
 
 def test_entry_type_is_reported_per_declared_key():
@@ -77,4 +76,7 @@ def test_entry_type_is_reported_per_declared_key():
     }
     assert types["stellarator_09__stellaris__beta"] == "design_attribute"
     assert types["stellarator_09__stellaris__magnet__R0"] == "design_attribute"
-    assert types["stellarator_09__stellaris__geom__R"] == "usage_literal"
+    # Since the model migration the swept plant attributes are design attributes too
+    # (one entry point per authored attribute); the usage-literal class is exercised
+    # by the known-answers test on the recirc threshold.
+    assert types["stellarator_09__stellaris__R"] == "design_attribute"

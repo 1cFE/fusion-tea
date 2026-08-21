@@ -1,18 +1,12 @@
 {
-  "derived_against_semantic_fingerprint": "c9bc164050f0aac8a2009befb34497426d68923066ca1c1783a0b80e8048c261",
-  "note": "Derived from the committed package by the tool and checked field for field against the Item 1 fixture contract (.project/active/run-study-reachability-spike/findings.md). If the package is regenerated, re-derive this file; never patch it to make a test pass.",
+  "derived_against_semantic_fingerprint": "1be51d890e5e2f973da919a9ff3cb5ef04a75652e5f906f13cea2a519f97b3aa",
   "group": {
     "axis": "R",
     "declared_keys": [
       {
-        "key": "stellarator_09__stellaris__geom__R",
+        "key": "stellarator_09__stellaris__R",
         "provenance": "fan_out",
-        "entry_type": "usage_literal"
-      },
-      {
-        "key": "stellarator_09__stellaris__rb__R",
-        "provenance": "fan_out",
-        "entry_type": "usage_literal"
+        "entry_type": "design_attribute"
       }
     ],
     "group_valid": true,
@@ -62,7 +56,7 @@
           {
             "operand": "threshold",
             "class": "bound",
-            "ref": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__threshold",
+            "ref": "stellarator_09__stellaris__recirc_ok__threshold",
             "reached": false,
             "entry_type": "library_default"
           }
@@ -86,7 +80,7 @@
             "reached": true
           },
           {
-            "operand": "wall_load_limit",
+            "operand": "wall_load_limit_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__wall_load_limit",
             "reached": false,
@@ -107,14 +101,14 @@
         "bound_vs_bound": true,
         "operands": [
           {
-            "operand": "beta",
+            "operand": "beta_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__beta",
             "reached": false,
             "entry_type": "design_attribute"
           },
           {
-            "operand": "beta_limit",
+            "operand": "beta_limit_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__beta_limit",
             "reached": false,
@@ -133,14 +127,14 @@
         "bound_vs_bound": true,
         "operands": [
           {
-            "operand": "tbr",
+            "operand": "tbr_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__tbr",
             "reached": false,
             "entry_type": "design_attribute"
           },
           {
-            "operand": "tbr_floor",
+            "operand": "tbr_floor_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__tbr_floor",
             "reached": false,
@@ -161,14 +155,14 @@
         "bound_vs_bound": true,
         "operands": [
           {
-            "operand": "beta",
+            "operand": "beta_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__beta",
             "reached": false,
             "entry_type": "design_attribute"
           },
           {
-            "operand": "beta_limit",
+            "operand": "beta_limit_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__beta_limit",
             "reached": false,
@@ -220,7 +214,7 @@
           {
             "operand": "threshold",
             "class": "bound",
-            "ref": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__threshold",
+            "ref": "stellarator_09__stellaris__recirc_ok__threshold",
             "reached": false,
             "entry_type": "library_default"
           }
@@ -237,14 +231,14 @@
         "bound_vs_bound": true,
         "operands": [
           {
-            "operand": "tbr",
+            "operand": "tbr_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__tbr",
             "reached": false,
             "entry_type": "design_attribute"
           },
           {
-            "operand": "tbr_floor",
+            "operand": "tbr_floor_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__tbr_floor",
             "reached": false,
@@ -270,7 +264,7 @@
             "reached": true
           },
           {
-            "operand": "wall_load_limit",
+            "operand": "wall_load_limit_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__wall_load_limit",
             "reached": false,
@@ -280,6 +274,7 @@
       }
     ],
     "objectives_reachable": [
+      "cas27",
       "cas72",
       "fuel",
       "lcoe",
@@ -289,13 +284,13 @@
     "objectives_unreachable": [],
     "sibling_candidates": [],
     "trace_size": {
-      "modules_fired": 54,
-      "channels_tainted": 67
+      "modules_fired": 55,
+      "channels_tainted": 68
     },
     "warnings": [
       {
         "kind": "tie_candidate",
-        "detail": "the manifest declares 'stellarator_09__stellaris__magnet__R0' as riding with stellarator_09__stellaris__geom__R, stellarator_09__stellaris__rb__R, all of which are in this group. Membership is declared-only, so the key was not added \u2014 declare it if it belongs."
+        "detail": "the manifest declares 'stellarator_09__stellaris__magnet__R0' as riding with stellarator_09__stellaris__R, all of which are in this group. Membership is declared-only, so the key was not added \u2014 declare it if it belongs."
       }
     ],
     "not_derivable": {

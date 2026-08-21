@@ -8,7 +8,7 @@ CAS60 interest-during-construction line (closed form, uniform spend):
           / (interest_rate * construction_years) - 1
   cost  = f_idc * overnight_cost
 
-Variable real exponent construction_years — the idc_factor precedent
+Variable real exponent construction_years -- the idc_factor precedent
 (mfe_lcoe_dcf.sysml:47) proves the codegen envelope handles it. WI-028
 Option C (owner-ruled): this line is A-2-checked and reported but
 EXCLUDED from total_capital; the DCF idc_factor is untouched.
@@ -18,16 +18,16 @@ EXCLUDED from total_capital; the DCF idc_factor is untouched.
 *Basis**: Uniform-spend closed-form interest during construction
 
 Inputs:
-    - interest_rate: interest_rate parameter
-    - construction_years: construction_years parameter
     - overnight_cost: overnight_cost parameter
+    - interest_rate: interest_rate parameter
+    - construction_years_in: construction_years_in parameter
 
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:601
+SysML Source: root-0/analyses/mfe_account_costs.sysml:643
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:601
+SysML Source: root-0/analyses/mfe_account_costs.sysml:643
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/idc_closed_form_cost_impl.py
@@ -43,13 +43,13 @@ class IDC_Closed_Form_CostInput(BaseModel):
     """Input model for IDC_Closed_Form_CostModule.
 
     Attributes:
-        interest_rate: interest_rate input
-        construction_years: construction_years input
         overnight_cost: overnight_cost input
+        interest_rate: interest_rate input
+        construction_years_in: construction_years_in input
     """
-    interest_rate: float = Field(..., description="interest_rate input")
-    construction_years: float = Field(..., description="construction_years input")
     overnight_cost: float = Field(..., description="overnight_cost input")
+    interest_rate: float = Field(..., description="interest_rate input")
+    construction_years_in: float = Field(..., description="construction_years_in input")
 
 
 class IDC_Closed_Form_CostModule(ModuleBase[IDC_Closed_Form_CostInput, Float]):
@@ -61,7 +61,7 @@ CAS60 interest-during-construction line (closed form, uniform spend):
           / (interest_rate * construction_years) - 1
   cost  = f_idc * overnight_cost
 
-Variable real exponent construction_years — the idc_factor precedent
+Variable real exponent construction_years -- the idc_factor precedent
 (mfe_lcoe_dcf.sysml:47) proves the codegen envelope handles it. WI-028
 Option C (owner-ruled): this line is A-2-checked and reported but
 EXCLUDED from total_capital; the DCF idc_factor is untouched.
@@ -71,19 +71,19 @@ EXCLUDED from total_capital; the DCF idc_factor is untouched.
 *Basis**: Uniform-spend closed-form interest during construction
 
 Inputs:
-    - interest_rate: interest_rate parameter
-    - construction_years: construction_years parameter
     - overnight_cost: overnight_cost parameter
+    - interest_rate: interest_rate parameter
+    - construction_years_in: construction_years_in parameter
 
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:601
+SysML Source: root-0/analyses/mfe_account_costs.sysml:643
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:601
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:643
 
     Calculation Specification:
-        f_idc = ((1.0 + interest_rate) ** construction_years - 1.0) / (interest_rate * construction_years) - 1.0
+        f_idc = ((1.0 + interest_rate) ** construction_years_in - 1.0) / (interest_rate * construction_years_in) - 1.0
         cost = f_idc * overnight_cost
         
 Documentation:
@@ -93,7 +93,7 @@ CAS60 interest-during-construction line (closed form, uniform spend):
           / (interest_rate * construction_years) - 1
   cost  = f_idc * overnight_cost
 
-Variable real exponent construction_years — the idc_factor precedent
+Variable real exponent construction_years -- the idc_factor precedent
 (mfe_lcoe_dcf.sysml:47) proves the codegen envelope handles it. WI-028
 Option C (owner-ruled): this line is A-2-checked and reported but
 EXCLUDED from total_capital; the DCF idc_factor is untouched.
@@ -112,33 +112,33 @@ EXCLUDED from total_capital; the DCF idc_factor is untouched.
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, interest_rate: float, construction_years: float, overnight_cost: float    ) -> IDC_Closed_Form_CostInput:
+        self, overnight_cost: float, interest_rate: float, construction_years_in: float    ) -> IDC_Closed_Form_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
-            interest_rate: interest_rate input
-            construction_years: construction_years input
             overnight_cost: overnight_cost input
+            interest_rate: interest_rate input
+            construction_years_in: construction_years_in input
 
         Returns:
             Validated input model
         """
-        return IDC_Closed_Form_CostInput(interest_rate=interest_rate, construction_years=construction_years, overnight_cost=overnight_cost)
+        return IDC_Closed_Form_CostInput(overnight_cost=overnight_cost, interest_rate=interest_rate, construction_years_in=construction_years_in)
 
     def run(
-        self, interest_rate: float, construction_years: float, overnight_cost: float    ) -> ModuleResult[Float]:
+        self, overnight_cost: float, interest_rate: float, construction_years_in: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            interest_rate: interest_rate input
-            construction_years: construction_years input
             overnight_cost: overnight_cost input
+            interest_rate: interest_rate input
+            construction_years_in: construction_years_in input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(interest_rate, construction_years, overnight_cost)
+        validated_inputs = self.validate_and_fill_default(overnight_cost, interest_rate, construction_years_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.idc_closed_form_cost_impl import (

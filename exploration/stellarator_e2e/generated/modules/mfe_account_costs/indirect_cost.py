@@ -15,10 +15,10 @@ construction time relative to a reference duration:
 *Basis**: Direct-cost fraction scaled by construction-time ratio
 
 Inputs:
-    - indirect_fraction: indirect_fraction parameter
     - direct_cost: direct_cost parameter
-    - construction_time: construction_time parameter
+    - indirect_fraction_in: indirect_fraction_in parameter
     - reference_construction_time: reference_construction_time parameter
+    - construction_time: construction_time parameter
 
 Outputs:
     - cost: cost result
@@ -41,15 +41,15 @@ class Indirect_CostInput(BaseModel):
     """Input model for Indirect_CostModule.
 
     Attributes:
-        indirect_fraction: indirect_fraction input
         direct_cost: direct_cost input
-        construction_time: construction_time input
+        indirect_fraction_in: indirect_fraction_in input
         reference_construction_time: reference_construction_time input
+        construction_time: construction_time input
     """
-    indirect_fraction: float = Field(..., description="indirect_fraction input")
     direct_cost: float = Field(..., description="direct_cost input")
-    construction_time: float = Field(..., description="construction_time input")
+    indirect_fraction_in: float = Field(..., description="indirect_fraction_in input")
     reference_construction_time: float = Field(..., description="reference_construction_time input")
+    construction_time: float = Field(..., description="construction_time input")
 
 
 class Indirect_CostModule(ModuleBase[Indirect_CostInput, Float]):
@@ -68,10 +68,10 @@ construction time relative to a reference duration:
 *Basis**: Direct-cost fraction scaled by construction-time ratio
 
 Inputs:
-    - indirect_fraction: indirect_fraction parameter
     - direct_cost: direct_cost parameter
-    - construction_time: construction_time parameter
+    - indirect_fraction_in: indirect_fraction_in parameter
     - reference_construction_time: reference_construction_time parameter
+    - construction_time: construction_time parameter
 
 Outputs:
     - cost: cost result
@@ -82,7 +82,7 @@ SysML Source: root-0/analyses/mfe_account_costs.sysml:276
 
     Calculation Specification:
         reference_construction_time = 6.0
-        cost = indirect_fraction * direct_cost * (construction_time / reference_construction_time)
+        cost = indirect_fraction_in * direct_cost * (construction_time / reference_construction_time)
         
 Documentation:
 CAS30 indirect service costs, a fraction of total direct cost scaled by
@@ -107,35 +107,35 @@ construction time relative to a reference duration:
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, indirect_fraction: float, direct_cost: float, construction_time: float, reference_construction_time: float    ) -> Indirect_CostInput:
+        self, direct_cost: float, indirect_fraction_in: float, reference_construction_time: float, construction_time: float    ) -> Indirect_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
-            indirect_fraction: indirect_fraction input
             direct_cost: direct_cost input
-            construction_time: construction_time input
+            indirect_fraction_in: indirect_fraction_in input
             reference_construction_time: reference_construction_time input
+            construction_time: construction_time input
 
         Returns:
             Validated input model
         """
-        return Indirect_CostInput(indirect_fraction=indirect_fraction, direct_cost=direct_cost, construction_time=construction_time, reference_construction_time=reference_construction_time)
+        return Indirect_CostInput(direct_cost=direct_cost, indirect_fraction_in=indirect_fraction_in, reference_construction_time=reference_construction_time, construction_time=construction_time)
 
     def run(
-        self, indirect_fraction: float, direct_cost: float, construction_time: float, reference_construction_time: float    ) -> ModuleResult[Float]:
+        self, direct_cost: float, indirect_fraction_in: float, reference_construction_time: float, construction_time: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            indirect_fraction: indirect_fraction input
             direct_cost: direct_cost input
-            construction_time: construction_time input
+            indirect_fraction_in: indirect_fraction_in input
             reference_construction_time: reference_construction_time input
+            construction_time: construction_time input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(indirect_fraction, direct_cost, construction_time, reference_construction_time)
+        validated_inputs = self.validate_and_fill_default(direct_cost, indirect_fraction_in, reference_construction_time, construction_time)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.indirect_cost_impl import (

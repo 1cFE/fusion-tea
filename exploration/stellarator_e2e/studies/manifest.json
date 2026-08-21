@@ -7,18 +7,20 @@
   "fingerprints": {
     "indicator_inputs": {
       "recipe": "indicator-input-fingerprint/v1",
-      "digest": "612edfc9959d8d4de294b9dad3323a11817feaf2add3fd8f4b15b5bf2920bbb9",
+      "digest": "dec4d2cd7caab3b1b05b6419b2f744115fd2d72dc1deb9e0bffdccc20c894953",
       "files": [
         "contracts/model_contract.json",
+        "inputs/mfe_account_costs_params.json",
+        "inputs/mfe_magnet_cost_params.json",
         "inputs/mfe_plant_params.json",
+        "inputs/mfe_plasma_scaling_params.json",
         "inputs/stellarator_plant_params.json",
-        "inputs/system_design.json",
-        "pipelines/mfe_stellarator.yaml"
+        "pipelines/pipeline.yaml"
       ]
     },
     "recorded_provenance": {
-      "executable_fingerprint": "ad9120413ebda3770f0e8de2eef39711b9bc931b5e141748d912b4baa60ffa2d",
-      "semantic_fingerprint": "c9bc164050f0aac8a2009befb34497426d68923066ca1c1783a0b80e8048c261"
+      "executable_fingerprint": "bf480f687963b7f89a70fb3d36cfca230745f3ec8bd0755a28cc5212782c7049",
+      "semantic_fingerprint": "1be51d890e5e2f973da919a9ff3cb5ef04a75652e5f906f13cea2a519f97b3aa"
     }
   },
   "objective_catalog": [
@@ -46,40 +48,54 @@
       "name": "total_capital",
       "channel": "stellarator_09__stellaris__total_capital__total_capital",
       "note": "Total capital cost including interest during construction."
+    },
+    {
+      "name": "cas27",
+      "channel": "stellarator_09__stellaris__special_materials_capital__special_materials_capital",
+      "note": "CAS27 special-materials capital, computed in-package from the radial-build blanket volume since the model migration (2026-08-21). Declared as an objective so generic verification compares it against the oracle's own recompute: on the era route this value was glue-fed to both sides and never independently verified."
     }
   ],
   "ties": [
     {
       "key": "stellarator_09__stellaris__magnet__R0",
       "rides_with": [
-        "stellarator_09__stellaris__geom__R",
-        "stellarator_09__stellaris__rb__R"
+        "stellarator_09__stellaris__R"
       ],
-      "note": "Magnet coil major radius is the same physical quantity as the plasma major radius. Its suffix is R0, not R, so no suffix scan will ever surface it — the tie must be declared. Advisory here: a group holding geom__R and rb__R but not this key earns a tie_candidate warning, never an added key."
+      "note": "Magnet coil major radius is the same physical quantity as the plasma major radius. Its suffix is R0, not R, so no suffix scan will ever surface it -- the tie must be declared. Advisory here: a group holding R but not this key earns a tie_candidate warning, never an added key. Since the model migration the plasma major radius is one plant-level entry point (R), not the geom__R / rb__R fan-out."
     }
   ],
   "baseline": {
     "point": {
-      "stellarator_09__stellaris__geom__R": 12.7,
-      "stellarator_09__stellaris__rb__R": 12.7,
+      "stellarator_09__stellaris__R": 12.7,
       "stellarator_09__stellaris__magnet__R0": 12.7,
-      "stellarator_09__stellaris__geom__a": 1.3,
-      "stellarator_09__stellaris__rb__a": 1.3,
-      "stellarator_09__stellaris__cas72_calc__availability": 0.85,
-      "stellarator_09__stellaris__fuel_calc__availability": 0.85,
-      "stellarator_09__stellaris__lcoe_calc__availability": 0.85,
-      "stellarator_09__stellaris__lcoe_1cfe_calc__availability": 0.85
+      "stellarator_09__stellaris__a": 1.3,
+      "stellarator_09__stellaris__availability": 0.85
     },
     "headline": {
       "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
       "value": 275.2642200420774
     },
     "verdicts": [
-      {"source_local_identity": "beta_ok", "expected": "satisfied"},
-      {"source_local_identity": "net_positive", "expected": "satisfied"},
-      {"source_local_identity": "recirc_ok", "expected": "satisfied"},
-      {"source_local_identity": "tbr_ok", "expected": "satisfied"},
-      {"source_local_identity": "wall_load_ok", "expected": "satisfied"}
+      {
+        "source_local_identity": "beta_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "net_positive",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "recirc_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "tbr_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "wall_load_ok",
+        "expected": "satisfied"
+      }
     ]
   },
   "oracle": {

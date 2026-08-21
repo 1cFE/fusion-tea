@@ -70,27 +70,27 @@ def _norm0(x):
     """Normalize an exact-boundary signed zero (-0.0) to 0.0 (`[HARD]`)."""
     return 0.0 if x == 0.0 else x
 
+# definition:mfe_viability::'Economic Recirculating Threshold'
+def constraint_pred_definition_mfe_viability__economic_recirculating_threshold(rec_frac, threshold):
+    value = _cmp('<=', rec_frac, threshold)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((threshold - rec_frac)) if (_fin(rec_frac) and _fin(threshold)) else None))
+
 # definition:mfe_viability::'Beta Limit'
-def constraint_pred_definition_mfe_viability__beta_limit(beta, beta_limit):
-    value = _cmp('<=', beta, beta_limit)
-    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((beta_limit - beta)) if (_fin(beta) and _fin(beta_limit)) else None))
+def constraint_pred_definition_mfe_viability__beta_limit(beta_in, beta_limit_in):
+    value = _cmp('<=', beta_in, beta_limit_in)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((beta_limit_in - beta_in)) if (_fin(beta_in) and _fin(beta_limit_in)) else None))
 
 # definition:mfe_viability::'Net Power Positive'
 def constraint_pred_definition_mfe_viability__net_power_positive(net_electric):
     value = _cmp('>', net_electric, 0.0)
     return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((net_electric - 0.0)) if (_fin(net_electric) and _fin(0.0)) else None))
 
-# definition:mfe_viability::'Economic Recirculating Threshold'
-def constraint_pred_definition_mfe_viability__economic_recirculating_threshold(rec_frac, threshold):
-    value = _cmp('<=', rec_frac, threshold)
-    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((threshold - rec_frac)) if (_fin(rec_frac) and _fin(threshold)) else None))
+# definition:mfe_viability::'Neutron Wall Load Limit'
+def constraint_pred_definition_mfe_viability__neutron_wall_load_limit(wall_load, wall_load_limit_in):
+    value = _cmp('<=', wall_load, wall_load_limit_in)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((wall_load_limit_in - wall_load)) if (_fin(wall_load) and _fin(wall_load_limit_in)) else None))
 
 # definition:mfe_viability::'TBR Floor'
-def constraint_pred_definition_mfe_viability__tbr_floor(tbr, tbr_floor):
-    value = _cmp('>=', tbr, tbr_floor)
-    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((tbr - tbr_floor)) if (_fin(tbr) and _fin(tbr_floor)) else None))
-
-# definition:mfe_viability::'Neutron Wall Load Limit'
-def constraint_pred_definition_mfe_viability__neutron_wall_load_limit(wall_load, wall_load_limit):
-    value = _cmp('<=', wall_load, wall_load_limit)
-    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((wall_load_limit - wall_load)) if (_fin(wall_load) and _fin(wall_load_limit)) else None))
+def constraint_pred_definition_mfe_viability__tbr_floor(tbr_in, tbr_floor_in):
+    value = _cmp('>=', tbr_in, tbr_floor_in)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((tbr_in - tbr_floor_in)) if (_fin(tbr_in) and _fin(tbr_floor_in)) else None))

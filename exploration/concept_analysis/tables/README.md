@@ -1,6 +1,6 @@
 # Project-Level Tables
 
-Single source of truth for the upstream judgments the concept-analysis pipeline reads at runtime. Schemas are pinned in `.project/active/concept-rework-tables/spec.md` (CONCEPT-REWORK Item 5).
+Single source of truth for the upstream judgments the concept-analysis pipeline reads at runtime. Schemas are pinned in `.project/completed/20260821_concept-rework-tables/spec.md` (CONCEPT-REWORK Item 5).
 
 All four tables are CSV, UTF-8, one row per concept. `concept_id` is the directory slug under `knowledge/concept_research/` and is the join key across all four.
 
@@ -45,7 +45,7 @@ Two values added to `ontology.csv` vocabularies during population, beyond the sp
 
 ## Verification gate logs
 
-Recorded as work progresses. See `.project/active/concept-rework-tables/gate_log.md`.
+Recorded as work progresses. See `.project/completed/20260821_concept-rework-tables/gate_log.md`.
 
 | Table | Verified by | Date | Notes |
 |---|---|---|---|

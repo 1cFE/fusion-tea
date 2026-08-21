@@ -24,13 +24,13 @@ adjustment. CRF and the annual-energy denominator follow 1costingFE.
 *Basis**: Standard DCF LCOE; annuitized capital + O&M over energy sold
 
 Inputs:
-    - total_capital: total_capital parameter
-    - annual_om: annual_om parameter
+    - discount_rate_in: discount_rate_in parameter
+    - availability_in: availability_in parameter
+    - construction_years_in: construction_years_in parameter
     - net_electric_mw: net_electric_mw parameter
-    - availability: availability parameter
-    - discount_rate: discount_rate parameter
-    - construction_years: construction_years parameter
-    - operational_years: operational_years parameter
+    - annual_om_in: annual_om_in parameter
+    - operational_years_in: operational_years_in parameter
+    - total_capital_in: total_capital_in parameter
 
 Outputs:
     - lcoe: lcoe result
@@ -53,21 +53,21 @@ class LCOE_DCFInput(BaseModel):
     """Input model for LCOE_DCFModule.
 
     Attributes:
-        total_capital: total_capital input
-        annual_om: annual_om input
+        discount_rate_in: discount_rate_in input
+        availability_in: availability_in input
+        construction_years_in: construction_years_in input
         net_electric_mw: net_electric_mw input
-        availability: availability input
-        discount_rate: discount_rate input
-        construction_years: construction_years input
-        operational_years: operational_years input
+        annual_om_in: annual_om_in input
+        operational_years_in: operational_years_in input
+        total_capital_in: total_capital_in input
     """
-    total_capital: float = Field(..., description="total_capital input")
-    annual_om: float = Field(..., description="annual_om input")
+    discount_rate_in: float = Field(..., description="discount_rate_in input")
+    availability_in: float = Field(..., description="availability_in input")
+    construction_years_in: float = Field(..., description="construction_years_in input")
     net_electric_mw: float = Field(..., description="net_electric_mw input")
-    availability: float = Field(..., description="availability input")
-    discount_rate: float = Field(..., description="discount_rate input")
-    construction_years: float = Field(..., description="construction_years input")
-    operational_years: float = Field(..., description="operational_years input")
+    annual_om_in: float = Field(..., description="annual_om_in input")
+    operational_years_in: float = Field(..., description="operational_years_in input")
+    total_capital_in: float = Field(..., description="total_capital_in input")
 
 
 class LCOE_DCFModule(ModuleBase[LCOE_DCFInput, Float]):
@@ -95,13 +95,13 @@ adjustment. CRF and the annual-energy denominator follow 1costingFE.
 *Basis**: Standard DCF LCOE; annuitized capital + O&M over energy sold
 
 Inputs:
-    - total_capital: total_capital parameter
-    - annual_om: annual_om parameter
+    - discount_rate_in: discount_rate_in parameter
+    - availability_in: availability_in parameter
+    - construction_years_in: construction_years_in parameter
     - net_electric_mw: net_electric_mw parameter
-    - availability: availability parameter
-    - discount_rate: discount_rate parameter
-    - construction_years: construction_years parameter
-    - operational_years: operational_years parameter
+    - annual_om_in: annual_om_in parameter
+    - operational_years_in: operational_years_in parameter
+    - total_capital_in: total_capital_in parameter
 
 Outputs:
     - lcoe: lcoe result
@@ -111,12 +111,12 @@ SysML Source: root-0/analyses/mfe_lcoe_dcf.sysml:4
     SysML Source: root-0/analyses/mfe_lcoe_dcf.sysml:4
 
     Calculation Specification:
-        discount_pow_n = (1.0 + discount_rate) ** operational_years
-        crf = discount_rate * discount_pow_n / (discount_pow_n - 1.0)
-        idc_factor = (1.0 + discount_rate) ** (construction_years / 2.0)
-        annual_capital = total_capital * idc_factor * crf
-        annual_energy_mwh = 8760.0 * net_electric_mw * availability
-        lcoe = (annual_capital + annual_om) / annual_energy_mwh
+        discount_pow_n = (1.0 + discount_rate_in) ** operational_years_in
+        crf = discount_rate_in * discount_pow_n / (discount_pow_n - 1.0)
+        idc_factor = (1.0 + discount_rate_in) ** (construction_years_in / 2.0)
+        annual_capital = total_capital_in * idc_factor * crf
+        annual_energy_mwh = 8760.0 * net_electric_mw * availability_in
+        lcoe = (annual_capital + annual_om_in) / annual_energy_mwh
         
 Documentation:
 Generic discounted-cash-flow LCOE core [$/MWh]. Concept-agnostic: it
@@ -150,41 +150,41 @@ adjustment. CRF and the annual-energy denominator follow 1costingFE.
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, total_capital: float, annual_om: float, net_electric_mw: float, availability: float, discount_rate: float, construction_years: float, operational_years: float    ) -> LCOE_DCFInput:
+        self, discount_rate_in: float, availability_in: float, construction_years_in: float, net_electric_mw: float, annual_om_in: float, operational_years_in: float, total_capital_in: float    ) -> LCOE_DCFInput:
         """Validate inputs and fill defaults.
 
         Args:
-            total_capital: total_capital input
-            annual_om: annual_om input
+            discount_rate_in: discount_rate_in input
+            availability_in: availability_in input
+            construction_years_in: construction_years_in input
             net_electric_mw: net_electric_mw input
-            availability: availability input
-            discount_rate: discount_rate input
-            construction_years: construction_years input
-            operational_years: operational_years input
+            annual_om_in: annual_om_in input
+            operational_years_in: operational_years_in input
+            total_capital_in: total_capital_in input
 
         Returns:
             Validated input model
         """
-        return LCOE_DCFInput(total_capital=total_capital, annual_om=annual_om, net_electric_mw=net_electric_mw, availability=availability, discount_rate=discount_rate, construction_years=construction_years, operational_years=operational_years)
+        return LCOE_DCFInput(discount_rate_in=discount_rate_in, availability_in=availability_in, construction_years_in=construction_years_in, net_electric_mw=net_electric_mw, annual_om_in=annual_om_in, operational_years_in=operational_years_in, total_capital_in=total_capital_in)
 
     def run(
-        self, total_capital: float, annual_om: float, net_electric_mw: float, availability: float, discount_rate: float, construction_years: float, operational_years: float    ) -> ModuleResult[Float]:
+        self, discount_rate_in: float, availability_in: float, construction_years_in: float, net_electric_mw: float, annual_om_in: float, operational_years_in: float, total_capital_in: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            total_capital: total_capital input
-            annual_om: annual_om input
+            discount_rate_in: discount_rate_in input
+            availability_in: availability_in input
+            construction_years_in: construction_years_in input
             net_electric_mw: net_electric_mw input
-            availability: availability input
-            discount_rate: discount_rate input
-            construction_years: construction_years input
-            operational_years: operational_years input
+            annual_om_in: annual_om_in input
+            operational_years_in: operational_years_in input
+            total_capital_in: total_capital_in input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(total_capital, annual_om, net_electric_mw, availability, discount_rate, construction_years, operational_years)
+        validated_inputs = self.validate_and_fill_default(discount_rate_in, availability_in, construction_years_in, net_electric_mw, annual_om_in, operational_years_in, total_capital_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_lcoe_dcf.lcoe_dcf_impl import (

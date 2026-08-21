@@ -4,7 +4,7 @@
 The canonical-account schema is the first de-risk gate: it must author cleanly,
 surface the right accounts per archetype, fail loudly on library drift, and
 render to a prompt-appropriate block. Stencil from
-.project/active/concept-rework-prompt-templates/plan.md, Phase 1.
+.project/completed/20260821_concept-rework-prompt-templates/plan.md, Phase 1.
 """
 
 from unittest.mock import patch

@@ -7,14 +7,14 @@ SysML Source: root-0/analyses/mfe_power_balance.sysml:4
 SysML Expressions:
     p_alpha = 3.52 / 17.58 * p_nrl
     p_neutron = p_nrl - p_alpha
-    p_cool = p_tfcool + p_pfcool
-    p_aux = p_trit + p_house
-    p_coils = p_tf + p_pf
-    p_th = mn * p_neutron + p_alpha + p_input + eta_p * p_pump
-    p_the = eta_th * p_th
+    p_cool = p_tfcool_in + p_pfcool_in
+    p_aux = p_trit_in + p_house_in
+    p_coils = p_tf_in + p_pf_in
+    p_th = mn_in * p_neutron + p_alpha + p_input_in + eta_p_in * p_pump_in
+    p_the = eta_th_in * p_th
     p_et = p_the
-    p_sub = f_sub * p_et
-    recirculating = p_coils + p_pump + p_sub + p_aux + p_cool + p_cryo + p_input / eta_pin
+    p_sub = f_sub_in * p_et
+    recirculating = p_coils + p_pump_in + p_sub + p_aux + p_cool + p_cryo + p_input_in / eta_pin_in
     q_eng = p_et / recirculating
     rec_frac = 1.0 / q_eng
     p_net = (1.0 - rec_frac) * p_et
@@ -116,14 +116,14 @@ SysML Source: root-0/analyses/mfe_power_balance.sysml:4
 SysML Expressions:
     p_alpha = 3.52 / 17.58 * p_nrl
     p_neutron = p_nrl - p_alpha
-    p_cool = p_tfcool + p_pfcool
-    p_aux = p_trit + p_house
-    p_coils = p_tf + p_pf
-    p_th = mn * p_neutron + p_alpha + p_input + eta_p * p_pump
-    p_the = eta_th * p_th
+    p_cool = p_tfcool_in + p_pfcool_in
+    p_aux = p_trit_in + p_house_in
+    p_coils = p_tf_in + p_pf_in
+    p_th = mn_in * p_neutron + p_alpha + p_input_in + eta_p_in * p_pump_in
+    p_the = eta_th_in * p_th
     p_et = p_the
-    p_sub = f_sub * p_et
-    recirculating = p_coils + p_pump + p_sub + p_aux + p_cool + p_cryo + p_input / eta_pin
+    p_sub = f_sub_in * p_et
+    recirculating = p_coils + p_pump_in + p_sub + p_aux + p_cool + p_cryo + p_input_in / eta_pin_in
     q_eng = p_et / recirculating
     rec_frac = 1.0 / q_eng
     p_net = (1.0 - rec_frac) * p_et
@@ -174,30 +174,29 @@ Args:
     inputs: Input parameters validated against MFE_Power_Balance_CalcInput schema
 
 Returns:
-    tuple[float, ...]: (p_th, p_the, p_et, q_eng, rec_frac, p_net)
+    tuple[float, ...]: (p_the, p_et, q_eng, p_th, p_net, rec_frac)
 
 Example:
     >>> inputs = MFE_Power_Balance_CalcInput(...)
-    >>> p_th, p_the, p_et, q_eng, rec_frac, p_net = run_mfe_power_balance_calc(inputs)
+    >>> p_the, p_et, q_eng, p_th, p_net, rec_frac = run_mfe_power_balance_calc(inputs)
     """
+    p_aux = (inputs.p_trit_in + inputs.p_house_in)
+    p_coils = (inputs.p_tf_in + inputs.p_pf_in)
+    p_cool = (inputs.p_tfcool_in + inputs.p_pfcool_in)
     p_alpha = ((3.52 / 17.58) * inputs.p_nrl)
-    p_aux = (inputs.p_trit + inputs.p_house)
-    p_coils = (inputs.p_tf + inputs.p_pf)
-    p_cool = (inputs.p_tfcool + inputs.p_pfcool)
     p_neutron = (inputs.p_nrl - p_alpha)
-    p_th = ((((inputs.mn * p_neutron) + p_alpha) + inputs.p_input) + (inputs.eta_p * inputs.p_pump))
-    p_the = (inputs.eta_th * p_th)
+    p_th = ((((inputs.mn_in * p_neutron) + p_alpha) + inputs.p_input_in) + (inputs.eta_p_in * inputs.p_pump_in))
+    p_the = (inputs.eta_th_in * p_th)
     p_et = p_the
-    p_sub = (inputs.f_sub * p_et)
-    recirculating = ((((((p_coils + inputs.p_pump) + p_sub) + p_aux) + p_cool) + inputs.p_cryo) + (inputs.p_input / inputs.eta_pin))
+    p_sub = (inputs.f_sub_in * p_et)
+    recirculating = ((((((p_coils + inputs.p_pump_in) + p_sub) + p_aux) + p_cool) + inputs.p_cryo) + (inputs.p_input_in / inputs.eta_pin_in))
     q_eng = (p_et / recirculating)
     rec_frac = (1.0 / q_eng)
-    p_net = ((1.0 - rec_frac) * p_et)
     return (
-        p_th,
         p_the,
         p_et,
         q_eng,
+        p_th,
+        ((1.0 - rec_frac) * p_et),  # p_net
         rec_frac,
-        p_net,
     )

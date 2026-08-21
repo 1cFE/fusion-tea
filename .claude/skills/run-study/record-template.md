@@ -249,7 +249,7 @@ case of this shape, not a different shape. A store's compatibility tuple is stat
 in `stores[]` and referenced by `store_id`, so two arms sharing a store cannot drift.
 
 Field names marked **(Item 3)** are copied from
-`.project/active/run-study-indicators/design.md` and are not this contract's to rename.
+`.project/completed/20260821_run-study-indicators/design.md` and are not this contract's to rename.
 
 ```jsonc
 {

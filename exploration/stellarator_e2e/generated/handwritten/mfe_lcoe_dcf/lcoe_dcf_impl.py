@@ -5,12 +5,12 @@ AUTO_IMPLEMENTED = True
 SysML Source: root-0/analyses/mfe_lcoe_dcf.sysml:4
 
 SysML Expressions:
-    discount_pow_n = (1.0 + discount_rate) ** operational_years
-    crf = discount_rate * discount_pow_n / (discount_pow_n - 1.0)
-    idc_factor = (1.0 + discount_rate) ** (construction_years / 2.0)
-    annual_capital = total_capital * idc_factor * crf
-    annual_energy_mwh = 8760.0 * net_electric_mw * availability
-    lcoe = (annual_capital + annual_om) / annual_energy_mwh
+    discount_pow_n = (1.0 + discount_rate_in) ** operational_years_in
+    crf = discount_rate_in * discount_pow_n / (discount_pow_n - 1.0)
+    idc_factor = (1.0 + discount_rate_in) ** (construction_years_in / 2.0)
+    annual_capital = total_capital_in * idc_factor * crf
+    annual_energy_mwh = 8760.0 * net_electric_mw * availability_in
+    lcoe = (annual_capital + annual_om_in) / annual_energy_mwh
     
 Documentation:
 Generic discounted-cash-flow LCOE core [$/MWh]. Concept-agnostic: it
@@ -67,12 +67,12 @@ adjustment. CRF and the annual-energy denominator follow 1costingFE.
 SysML Source: root-0/analyses/mfe_lcoe_dcf.sysml:4
 
 SysML Expressions:
-    discount_pow_n = (1.0 + discount_rate) ** operational_years
-    crf = discount_rate * discount_pow_n / (discount_pow_n - 1.0)
-    idc_factor = (1.0 + discount_rate) ** (construction_years / 2.0)
-    annual_capital = total_capital * idc_factor * crf
-    annual_energy_mwh = 8760.0 * net_electric_mw * availability
-    lcoe = (annual_capital + annual_om) / annual_energy_mwh
+    discount_pow_n = (1.0 + discount_rate_in) ** operational_years_in
+    crf = discount_rate_in * discount_pow_n / (discount_pow_n - 1.0)
+    idc_factor = (1.0 + discount_rate_in) ** (construction_years_in / 2.0)
+    annual_capital = total_capital_in * idc_factor * crf
+    annual_energy_mwh = 8760.0 * net_electric_mw * availability_in
+    lcoe = (annual_capital + annual_om_in) / annual_energy_mwh
     
 Documentation:
 Generic discounted-cash-flow LCOE core [$/MWh]. Concept-agnostic: it
@@ -106,9 +106,9 @@ Example:
     >>> inputs = LCOE_DCFInput(...)
     >>> result = run_lcoe_dcf(inputs)
     """
-    annual_energy_mwh = ((8760.0 * inputs.net_electric_mw) * inputs.availability)
-    discount_pow_n = ((1.0 + inputs.discount_rate) ** inputs.operational_years)
-    crf = ((inputs.discount_rate * discount_pow_n) / (discount_pow_n - 1.0))
-    idc_factor = ((1.0 + inputs.discount_rate) ** (inputs.construction_years / 2.0))
-    annual_capital = ((inputs.total_capital * idc_factor) * crf)
-    return ((annual_capital + inputs.annual_om) / annual_energy_mwh)
+    discount_pow_n = ((1.0 + inputs.discount_rate_in) ** inputs.operational_years_in)
+    crf = ((inputs.discount_rate_in * discount_pow_n) / (discount_pow_n - 1.0))
+    idc_factor = ((1.0 + inputs.discount_rate_in) ** (inputs.construction_years_in / 2.0))
+    annual_capital = ((inputs.total_capital_in * idc_factor) * crf)
+    annual_energy_mwh = ((8760.0 * inputs.net_electric_mw) * inputs.availability_in)
+    return ((annual_capital + inputs.annual_om_in) / annual_energy_mwh)

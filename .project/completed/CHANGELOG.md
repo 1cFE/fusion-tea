@@ -4,6 +4,72 @@ Historical record of completed work.
 
 ---
 
+## [2026-08-21] - Stellarator Model Migration
+
+**Type**: Item
+**Duration**: 1 day
+
+### Summary
+Regenerated and sealed the stellarator package at runtime contract 2.0.0 so it executes on stock teax without the frozen-era adapter or injected glue. Preserved numerical identity across the baseline, 948-point radius grid, and 19-point availability sweep; closed the CAS27 verification gap; promoted the MFE sources into the canonical model tree; and made every evidence-producing command fail closed.
+
+### Deliverables
+- Archived workflow record: `20260821_stellarator-model-migration/{spec,design,plan,audit,product-lens}.md`
+- Sealed stellarator package, stock study route, re-pinned manifest, and `AFTER_MIGRATION_RECORD.md`
+- Canonical MFE model sources plus the 506-row `models/stellarator_migration_ledger.md`
+- Two-family generation, census, mutation, stock-route, and fail-closed publication regression tests
+- Retired primary era adapter and recorded temporary codegen workarounds in the local and upstream backlogs
+
+### Lessons Learned
+[TODO: Add lessons learned]
+
+## [2026-08-21] - Bulk Archival: April–August Work Items and Six Epics
+
+**Type**: Housekeeping
+**Duration**: 1 session (on `feat/stellarator-model-migration`)
+
+### Summary
+Cleared the `.project/active/` backlog of everything finished or dead since the last archival on 2026-04-11: 56 item directories and 6 epic files moved to `completed/` under the `20260821_` prefix, 3 empty untracked directories deleted. Every item was checked against `main` (claimed commits reachable, deliverables present) before moving. Live path references (code, tests, skills, knowledge docs, kept epics) were rewritten to the new locations; historical records (`.project/completed|reports|research`, `work/completed|analysis|orchestration`, `archive/`) were left as written. `BACKLOG.md` and `CURRENT_WORK.md` were purged down to live work. `active/` now holds 5 directories.
+
+### Epics Archived
+- **Knowledge Database Integration** — Complete (Items 1–3, 5; Item 4 abandoned, superseded by IFE source ingestion).
+- **Concept Analysis v2** — Complete (Item 2 visuals superseded by the concept explorer). Never had a BACKLOG row.
+- **Explorer UX v2** — Complete (all 5 items, 2026-04-06). Never had a BACKLOG row.
+- **Source Extraction Fix & Re-extraction** — Abandoned. Never decomposed; the cleanup goals were delivered by `source-replacement` + `orig-md-research`. The original table-quality complaint (`11-magnetic-mirror` arXiv 2411.06644 Table 3) was never addressed.
+- **Ontology v3 Migration** — Complete (Items 1–4 merged via PRs #15/#16/#19/#20; Item 5 superseded by the rework's full regeneration; Item 6 discharged here).
+- **Concept-Analysis Pipeline Rework** — Complete in substance (PR #44, regen PRs #46/#48; Items 2–3 superseded by the prototype; Item 12 aspirational). **Open**: Item 5's per-row verification gate on `design_point.csv` was never signed (`verified_by` blank on 33/33 rows) — recorded as a BACKLOG Flagged row for the owner.
+
+### Items Archived — complete (52)
+- Analysis pipeline, April: `cleanup-feedback-flag` (2055cdb3), `costingfe-scaled-overrides` (PR #9), `feedback-dispatch-symmetry` (150d5721), `manifest-elimination` (bdc55c59), `model-feedback-starvation` (PR #8), `parameter-metadata-generation` (6345555), `power-standardization` (PR #6; α=0.6 approach later replaced by scaled overrides), `staleness-propagation-fix` (PR #10), `template-nesting-bug` (PR #8), `concept-capex-ranked-bars` (87d540d4).
+- Down-select and scoring, May: `concept-downselect-merge` (PR #17), `concept-research-17-split` (PR #18), `scoring-v3-rewrite` (PRs #19–#26, #28/#29), `scoring-v2-component-modularity-slice` and `scoring-v2-modularity-slice` (shipped, then replaced by v3 P2), `gap-check-source-index` (PR #32).
+- Concept-analysis rework, May–June: `concept-rework-prototype`, `costingfe-library-preconditions`, `concept-rework-tables` (Phases A–D; E/F gate unsigned), `concept-rework-pipeline-glue`, `concept-rework-helpers-validators`, `concept-rework-three-forward-contract`, `concept-rework-prompt-templates`, `concept-rework-model-critic` (Phase 5 archived-concept simulation never run; tool is in production use), `concept-rework-explorer-pilot` (Phases 1–2; 3–5 overtaken by the June bulk regen), `concept-rework-bulk-regeneration`, `prompt-updates-for-1gw-estimate-policy` (860adf93), `concept-explorer-omit-list` (4b098c9e).
+- Ontology v3: `ontology-v3-merge`, `ontology-v3-close-gaps`, `ontology-v3-design-decisions` (PR #16).
+- Explorer, June: `explorer-rework-unblock` (PR #49), `explorer-extractor-resilience` (PR #50), `explorer-slider-override-semantics` and `explorer-override-inspection` (PR #52), `explorer-identity-spine` (PR #58), `explorer-ontology-matrix` (PR #59), `explorer-cost-landscape` (PR #64), `explorer-model-setup-path-normalization` (PR #82), `explorer-web-hosting` (PR #97; operator runbook now at `20260821_explorer-web-hosting/RUNBOOK.md`), `compute-oom-debounce-and-quantize` (PR #98), `portfolio-audit-stage` (PR #63), `model-setup-feedback-timeout` (ticket, resolved 70b6fbe1).
+- Stellarator demo and run-study, July–August: `aries-cs-holdout` (barred/admissible lists — pointer updated in `knowledge/holdout/aries-cs/PROTOCOL.md`), `demo-anchor-acceptance-spec` (ratified bars, still govern demo Item 7), `demo-proof-of-life`, `run-study-reachability-spike`, `run-study-contract`, `run-study-indicators`, `run-study-quality-tools`, `run-study-cold-pickup`, `stellarator-demo-landing` (PR #104).
+
+### Items Archived — abandoned or superseded (4)
+- `batch-pipeline-run` — plan never started; every step calls `stage1-all`, deleted 2026-04-13, and all 41 concepts have since been regenerated.
+- `costingfe-two-knob-projection` — draft spec re-specced the next day as `costingfe-library-preconditions`.
+- `eta_th-double-count-fix` — implemented on `fix/eta-th-double-count`, PR #31 closed unmerged ("Fixed in 1costingFE yamls instead"); remote branch deletable.
+- `explorer-rework-enrich` — never started; the surviving ideas live in Explorer UX v3 (D2/D3/C2).
+
+### Deleted (empty, untracked)
+- `1gw-override-cohort-rerun/`, `relative-override-semantics-prompt-fix/`, `server-recompute-param-drops/`.
+
+### BACKLOG.md rows dropped (verified done or moot on `main`)
+- Refresh synthesis.md for 13 concepts — done (8598403c).
+- Concept 20a capital-side coupling and concept 09 dual-site availability — both `model_setup.py` files were regenerated under the three-forward contract; the suspected overrides no longer exist.
+- Non-D-T availability policy and the DEFAULT-label audit script — the rework moved availability and defaults into the 1costingfe library (`lib/model_setup_helpers.py:61`, `validate_model_setup_contract`); `canonical_availability` survives only for `standardize_availability.py`.
+- Refresh deployed Score Explorer after PR #33 — done (`docs/` mirrors `tools/score_explorer/` byte-for-byte).
+- Ideas "MFE concept modeling" and "Cross-concept comparison tooling" — delivered by the stellarator demo and the explorer.
+
+### Remaining Active
+- `stellarator-model-migration` — live; needs work after the 2026-08-21 audit.
+- `run-analysis-cli-step-semantics` — paused spec, real bug.
+- `traceability-system`, `loop-dry-run-symmetry` — paused; gaps still open.
+- `demo-study-parameterization-policy` — the run-study skill's rulebook, stays until RUN-STUDY Item 6.
+
+---
+
 ## [2026-04-11] - Pipeline Hardening, Explorer Merge, Source Cleanup
 
 **Type**: Feature + robustness (8 work items + 2 deletions)
