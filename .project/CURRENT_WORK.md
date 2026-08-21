@@ -1,6 +1,6 @@
 # Current Work
 
-**Last Updated**: 2026-08-20
+**Last Updated**: 2026-08-21
 
 ---
 
@@ -11,15 +11,13 @@
 - **Explorer** — UX v3 Phase 1 + Themes A/B1/F merged; 1costingfe v0.1.0 migration done 2026-06-28 (`reports/2026-06-28_1costingfe-v0.1.0-migration.md`). Web hosting merged (#97). OOM Layers 1–2 merged (#98), JAX pre-warm (#99), deploy switched to numpy-only 1costingfe v0.1.1 (#100).
 - **Working tree** — cleaned 2026-08-20: stale `uv.lock` edit discarded (`main`'s lock is current, `uv lock --check` passes), IFE run residue and `_bridged` scratch dirs deleted, stranded `.project/` docs committed.
 
-## Next up
+## Next up (in order, 2026-08-21)
 
-### Whole-plant regeneration on the elaborate-first route
-
-Fusion-tea's half of sysml-codegen's ELABORATE-FIRST Item 8. Owner-decided order (2026-08-15): codegen's scope scrub first (A), then fusion-tea whole-plant regeneration (B). Branch off `main`. Context and premises: sysml-codegen `.project/CURRENT_WORK.md` ("2026-08-15: Item 8 sequencing"). The Stellarator model is split out of this item (lives in `~/1cfe/fusion-tea-stellarator-mbse-demo`).
-
-### Explorer UX v3 — Phase 2
-
-Pick the next item by leverage; D1 (per-account override decomposition) is the top candidate. Epic: `.project/backlog/epic_explorer_ux_v3.md`. Small loose ends listed there: concept 27 stale data, FR-SO1 test's stale `>5%` assertion, re-extract 37 & 39.
+1. **Stellarator model migration** — `.project/active/stellarator-model-migration/` (spec in progress). D-5 rename (mechanized via sysml-codegen `scripts/make_d5_variant.py --root`), the six scalar-function rewrites (`[OWNER]` rewrite now / file upstream / revert later), unit-comment harmonization, the four positional-binding fixes; iterate `sysml-codegen generate` until it seals at `runtime_contract_version 2.0.0`. Then regenerate, delete `era_adapter.py` and the glue, re-pin `studies/manifest.json`, promote the MFE models from the staged twin into `models/`, reshape the spine test per design family, and prove the "after" bars against `exploration/stellarator_e2e/studies/BEFORE_MIGRATION_RECORD.md`. Unknown: what refusals lie past the three found so far. Background: `.project/research/20260820-221835_stellarator-demo-reconciliation-plan.md` § 3–5.
+2. **RUN-STUDY Item 6** (first A/B consumer + policy cutover) on the stock route, after 1. Owner Align first (policy disposition; whether oracle verification is mandatory).
+3. **Two upstream filings to sysml-codegen**: the positional parameter-redefinition finding (a calc usage that skips a leading defaulted formal mis-wires on the exact route; not filed anywhere yet), and the six `sqrt`/`max`/`min`/`floor` sites as the motivating case for `[SCALAR-FUNCTION-VOCABULARY]`.
+4. **IFE whole-plant regeneration on the elaborate-first route** — fusion-tea's half of sysml-codegen's ELABORATE-FIRST Item 8, step B after codegen's scope scrub A (owner order 2026-08-15). Context: sysml-codegen `.project/CURRENT_WORK.md` ("2026-08-15: Item 8 sequencing").
+5. **Explorer UX v3 — Phase 2**: pick by leverage, D1 top candidate. Epic: `.project/backlog/epic_explorer_ux_v3.md`.
 
 ## Open decisions
 
