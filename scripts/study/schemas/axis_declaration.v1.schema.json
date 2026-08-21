@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "axis_declaration.v1.schema.json",
+  "title": "Study axis declaration",
+  "description": "The per-study set of axis groups handed to the indicator tool. Membership is author-declared and nothing else: no suffix scan and no manifest tie ever changes which keys are traced.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "groups"],
+  "properties": {
+    "schema_version": {"const": "study-axis-declaration/v1"},
+    "groups": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["axis", "keys"],
+        "properties": {
+          "axis": {"type": "string", "minLength": 1},
+          "keys": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["key", "provenance"],
+              "properties": {
+                "key": {"type": "string", "minLength": 1},
+                "provenance": {
+                  "enum": ["fan_out", "tie"],
+                  "description": "Why the key is in the group. Never changes what is traced — a tie key and a fan-out key are traced identically; it changes what a cold reader can tell about the group."
+                }
+              }
+            }
+          },
+          "note": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

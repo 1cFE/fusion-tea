@@ -21,6 +21,7 @@ wheels/
 .claude/skills/*
 !.claude/skills/browser-inspect/
 !.claude/skills/concept-research-navigation/
+!.claude/skills/run-study/
 .claude/hooks/
 modeling_project/MODELING_GUIDE.md
 modeling_project/MODELING_PROCESS.md
@@ -38,3 +39,9 @@ exploration/concept_explorer/dist/
 
 # Explorer dev-server logs
 explorer_server.log
+
+# Transient teax run-output dirs (pipeline/handshake executions)
+exploration/stellarator_e2e/outputs/
+
+# Agent orchestration run logs (never tracked)
+.orchestrate-logs/

@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "preflight_results.v1.schema.json",
+  "title": "Study preflight results",
+  "description": "One pass/fail result per named gate, and the digests of every document the gates read. The document is ALWAYS complete: every gate appears with its real outcome, including the ones after a failing one, and a gate that could not run appears as 'did not run' with the condition that stopped it. A cold reader must be able to see that the gates ran, not only that the study proceeded — a record section fillable only by hand from stderr is the hand-copying that snapshot rules exist to prevent. This is not a weakening of no-partial-output, which bars torn writes: the document is written once, atomically, complete. The process exits non-zero whenever outcome is 'fail'.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "tool",
+    "subcommand",
+    "inputs",
+    "input_digests",
+    "gates",
+    "outcome"
+  ],
+  "properties": {
+    "schema_version": {"const": "study-preflight-results/v1"},
+    "tool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "source_digest"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "source_digest": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["recipe", "digest", "files"],
+          "description": "tool-source-digest/v1 names an algorithm — canonical text over a NAMED file list — not one particular list. files[] is therefore required: without it one recipe id would silently mean different things across the tools that emit it.",
+          "properties": {
+            "recipe": {"const": "tool-source-digest/v1"},
+            "digest": {"$ref": "#/$defs/sha256"},
+            "files": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["path", "sha256"],
+                "properties": {
+                  "path": {"type": "string", "minLength": 1},
+                  "sha256": {"$ref": "#/$defs/sha256"}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "subcommand": {"enum": ["gates", "clean"]},
+    "inputs": {
+      "type": "object",
+      "additionalProperties": {"type": "string", "minLength": 1},
+      "description": "Repo-relative paths of what was gated. Never absolute."
+    },
+    "input_digests": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/sha256"},
+      "description": "sha256 of each document that was readable. A document that could not be read has no digest and its dependent gates read 'did not run'."
+    },
+    "gates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["gate", "status", "checked", "detail"],
+        "properties": {
+          "gate": {
+            "enum": [
+              "declared_keys",
+              "sibling_scan",
+              "identity",
+              "manifest_currency",
+              "baseline_headline",
+              "package_clean"
+            ]
+          },
+          "status": {
+            "enum": ["pass", "fail", "did not run"],
+            "description": "'did not run' carries the condition that stopped it in detail, so a reader can tell a gate that refused from a gate that never got the chance."
+          },
+          "checked": {"type": "string", "minLength": 1},
+          "detail": {
+            "type": "string",
+            "minLength": 1,
+            "description": "On failure this must LOCATE the fault: the key, the file, the drifting fingerprint, or the recomputed-versus-declared pair."
+          },
+          "warnings": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "description": "Advisory only, and only on sibling_scan, which can never fail. A suffix match is a hint about a quantity, not evidence about one, and it is never merged into declared membership."
+          }
+        }
+      }
+    },
+    "outcome": {"enum": ["pass", "fail"]}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

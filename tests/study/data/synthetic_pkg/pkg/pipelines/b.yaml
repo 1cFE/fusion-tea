@@ -1,0 +1,32 @@
+# Synthetic pipeline B. Its calc consumes a channel produced in pipeline A,
+# so a key declared through A's entry point must reach B's constraint.
+
+metadata:
+  run_description: "synthetic pipeline B"
+  output_folder: "synthetic_results"
+
+modules:
+  entry_b:
+    module_type: EntryPoint
+    inputs:
+      params_b: ParamsB ../inputs/params_b.json
+
+  syn__b_calc:
+    module_type: synthetic.BCalcModule
+    inputs:
+      y: float syn__a__y.root
+      z: float params_b.syn__b__z
+    outputs:
+      root: RootModel[float] syn__b__w
+
+  syn__b_ok__2222222222222222:
+    module_type: synthetic.ConstraintModule
+    inputs:
+      w: float syn__b__w.root
+    outputs:
+      evaluation: ConstraintEvaluation syn__b_ok__2222222222222222__evaluation
+
+  exit_b:
+    module_type: ExitPoint
+    outputs:
+      syn__b__w: RootModel[float] syn__b_w.json

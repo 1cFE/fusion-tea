@@ -5,3 +5,45 @@ Element,File,Type,Knowledge,Requirement,Source_Type,Source_Document,Source_Locat
 'Meier COE',models/library/analyses/hif_economics.sysml,calc_def,,MR-WI008-3,authority,Meier 1986,Eq. 1 (lines 76-102),high,,2026-03-03
 'HIF Driver',models/designs/hif_ife/hif_driver.sysml,part_def,"DI-002,DI-004",MR-WI008-1,authority,EIF-1992,Osiris operating parameters,high,,2026-03-03
 hif_plant,models/designs/hif_ife/hif_plant.sysml,part_usage,"DI-001,DI-003,DI-005","MR-WI008-4,MR-WI008-5",mixed,"EIF-1992,Meier 1986,Bangerter 2013",Multiple tables and equations,high,"alpha and epsilon [ESTIMATED]",2026-03-03
+'MFE Power Balance Calc',models/library/analyses/mfe_power_balance.sysml,calc_def,,,codebase,1costingFE @ 0254385,physics.py:290-328 (steps 4-14); steady_state_stellarator.yaml:21,,,2026-07-14
+'Cryoplant Electrical Power',models/library/analyses/mfe_cryo_plant.sysml,calc_def,,,codebase,1costingFE @ 0254385,physics.py:321-323; steady_state_dipole.yaml:52-53 (slot semantics),,,2026-07-18
+'Buildings Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,costs.py:83-144; costing_constants.yaml:175-197,,,2026-07-18
+'Preconstruction Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,"costs.py:52-80; costing_constants.yaml:8,15-23",,,2026-07-18
+'Annual OM Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,"costs.py:319-357; costing_constants.yaml:272,8",,,2026-07-18
+'Plant Power-Law Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,"cas22.py:702,718,724,731; costs.py:256",,,2026-07-20
+'Remote Handling Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,"cas22.py:631-645,224",,,2026-07-20
+'Installation Labor Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,cas22.py:652-664,,,2026-07-20
+'Coolant Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,cas22.py:684-686,,,2026-07-20
+'Aux Cooling Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,cas22.py:693-695,,,2026-07-20
+'Supplementary Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,"costs.py:259-283; model.py:1492",,,2026-07-20
+'IDC Closed-Form Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,,codebase,1costingFE @ 0254385,costs.py:286-297,,,2026-07-20
+remote_handling_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,costing_constants.yaml:131,,concept_scale bound here (MR-3),2026-07-20
+concept_scale,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,cas22.py:641,,STELLARATOR toroidal 1.0,2026-07-20
+installation_frac,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,costing_constants.yaml:137,,,2026-07-20
+coolant_primary_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,cas22.py:684,,,2026-07-20
+coolant_intermediate_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,cas22.py:685,,,2026-07-20
+aux_per_mw,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,cas22.py:693,,,2026-07-20
+aux_cryo_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,cas22.py:694,,,2026-07-20
+waste_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,cas22.py:702,,,2026-07-20
+fuel_handling_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,costing_constants.yaml:165,,,2026-07-20
+other_rpe_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,cas22.py:724,,,2026-07-20
+inc_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,cas22.py:731,,,2026-07-20
+owner_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,costing_constants.yaml:245,,,2026-07-20
+supplementary_spares_frac,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,costing_constants.yaml:253,,,2026-07-20
+supplementary_startup_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,costing_constants.yaml:259,,,2026-07-20
+supplementary_decom_base,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,costing_constants.yaml:263,,,2026-07-20
+cas28_capital,models/designs/stellarator_09/stellarator_plant.sysml,attribute_binding,,,codebase,1costingFE @ 0254385,costing_constants.yaml:229,,F-2 digital twin,2026-07-20
+'Levelized Annual Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,MR-WI029-1,codebase,1costingFE @ 0254385,economics.py:13-50,,,2026-07-25
+'DT Fuel Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,MR-WI029-3,codebase,1costingFE @ 0254385,costs.py:476-544,,,2026-07-25
+'Levelized Replacement Cost',models/library/analyses/mfe_account_costs.sysml,calc_def,,MR-WI029-2,codebase,1costingFE @ 0254385,economics.py:53-75; model.py:102-111,,,2026-07-25
+inflation_rate,models/designs/stellarator_09/stellarator_plant.sysml,instance_binding,,MR-WI029-1,codebase,1costingFE @ 0254385,adapter.py (inflation_rate 0.02),,,2026-07-25
+fuel_cost_per_rxn,models/designs/stellarator_09/stellarator_plant.sysml,instance_binding,,MR-WI029-3,codebase,1costingFE @ 0254385,physics.py:13-20; costing_constants.yaml:282-283,,,2026-07-25
+fuel_q_eff,models/designs/stellarator_09/stellarator_plant.sysml,instance_binding,,MR-WI029-3,codebase,1costingFE @ 0254385,physics.py:33 (Q_DT 17.58),,,2026-07-25
+mev_to_joules,models/designs/stellarator_09/stellarator_plant.sysml,instance_binding,,MR-WI029-3,codebase,1costingFE @ 0254385,physics.py:13,16 (MEV_TO_JOULES),,,2026-07-25
+burn_fraction,models/designs/stellarator_09/stellarator_plant.sysml,instance_binding,,MR-WI029-3,codebase,1costingFE @ 0254385,steady_state_stellarator.yaml:64,,,2026-07-25
+fuel_recovery,models/designs/stellarator_09/stellarator_plant.sysml,instance_binding,,MR-WI029-3,codebase,1costingFE @ 0254385,steady_state_stellarator.yaml:65,,,2026-07-25
+fluence_limit,models/designs/stellarator_09/stellarator_plant.sysml,instance_binding,,MR-WI029-2,codebase,1costingFE @ 0254385,costing_constants.yaml:153 (fluence_limit_dt 18.0),,,2026-07-25
+ash_frac,models/designs/stellarator_09/stellarator_plant.sysml,instance_binding,,MR-WI029-2,codebase,1costingFE @ 0254385,physics.py:31-33; physics.py:177-179,,,2026-07-25
+'Annual Cost Rollup',models/library/analyses/mfe_account_costs.sysml,calc_def,,MR-WI029-4,codebase,1costingFE @ 0254385,model.py:1483-1605; economics.py:88-92,,,2026-07-25
+'1cfe-Form Capital Charge',models/library/analyses/mfe_account_costs.sysml,calc_def,,MR-WI029-4,codebase,1costingFE @ 0254385,costs.py:547-556,,,2026-07-25
+'1cfe-Form LCOE',models/library/analyses/mfe_account_costs.sysml,calc_def,,MR-WI029-4,codebase,1costingFE @ 0254385,economics.py:88-92,,,2026-07-25

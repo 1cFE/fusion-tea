@@ -15,11 +15,24 @@ from pathlib import Path
 from agentic_mbse.sysml.syside_adapter import get_syside
 
 
-# Path to models directory
+# Path to the MFE model library.
+#
+# TEMPORARY (stellarator-demo-landing, 2026-08-21): the MFE models live only in
+# the staged twin `exploration/stellarator_e2e/models/` until the stellarator
+# migration PR promotes them into `models/library/` — main's spine test generates
+# the whole `models/` tree and the MFE models cannot generate on the pinned
+# codegen yet. The twin mirrors `models/library/` minus the `library/` prefix
+# (`foundation/`, `analyses/`, `cost_structure/`, `designs/`). When the models are
+# promoted, point LIBRARY_DIR back at `models/library` and delete this note.
+# See exploration/stellarator_e2e/STAGED_MODELS.md and
+# .project/research/20260820-221835_stellarator-demo-reconciliation-plan.md § 2.
 TESTS_DIR = Path(__file__).parent.parent.parent
-MODELS_DIR = TESTS_DIR / "models"
-LIBRARY_DIR = MODELS_DIR / "library"
-POWER_BALANCE_DIR = LIBRARY_DIR / "calculations" / "power_balance"
+LIBRARY_DIR = TESTS_DIR / "exploration" / "stellarator_e2e" / "models"
+# Power balance moved from the old `calculations/power_balance/` tree into the
+# analyses library (WI-009+). The generic `power_balance.sysml` and the
+# standalone 'Alpha Power Calc' / 'Power Balance Calc' were collapsed into a
+# single faithful 'MFE Power Balance Calc' in analyses/mfe_power_balance.sysml.
+POWER_BALANCE_DIR = LIBRARY_DIR / "analyses"
 
 
 # ============================================================================
@@ -58,12 +71,20 @@ def power_balance_model():
 
 
 class TestPowerBalanceFilesExist:
-    """Verify power balance files exist in expected locations."""
+    """Verify power balance files exist in their current location."""
 
-    def test_power_balance_sysml_exists(self):
-        """Verify power_balance.sysml exists."""
-        path = POWER_BALANCE_DIR / "power_balance.sysml"
-        assert path.exists(), f"Expected {path} to exist"
+    def test_power_balance_lives_in_analyses(self):
+        """Power balance relocated into the analyses library.
+
+        The old generic `calculations/power_balance/power_balance.sysml` no
+        longer exists — it was collapsed into the single faithful MFE power
+        balance. Verify the power balance model now lives under
+        `library/analyses/` (the WI-009+ layout).
+        """
+        assert POWER_BALANCE_DIR.name == "analyses", \
+            f"Expected power balance in analyses/, got {POWER_BALANCE_DIR}"
+        assert (POWER_BALANCE_DIR / "mfe_power_balance.sysml").exists(), \
+            f"Expected power balance model in {POWER_BALANCE_DIR}"
 
     def test_mfe_power_balance_sysml_exists(self):
         """Verify mfe_power_balance.sysml exists."""
@@ -111,29 +132,47 @@ class TestPowerBalanceParsing:
 
 
 class TestCalcDefinitionsExist:
-    """Verify required calc definitions exist in the model."""
+    """Verify the current power balance calc definitions exist in the model."""
 
-    def test_alpha_power_calc_exists(self, library_model):
-        """Verify 'Alpha Power Calc' calc def exists."""
+    def test_alpha_power_calc_inlined_not_standalone(self, library_model):
+        """Alpha power is inlined, not a standalone 'Alpha Power Calc'.
+
+        The fuel-type alpha/neutron split was inlined into 'MFE Power Balance
+        Calc' as the D-T ratio 3.52/17.58 (keeps the calc flat and
+        codegen-safe). Verify no standalone 'Alpha Power Calc' remains and the
+        alpha term (p_alpha) lives inside the MFE calc instead.
+        """
         model, _ = library_model
         syside = get_syside()
 
         calc_defs = list(model.elements(syside.CalculationDefinition))
         calc_names = [c.name for c in calc_defs]
 
-        assert "Alpha Power Calc" in calc_names, \
-            f"Expected 'Alpha Power Calc' in {calc_names}"
+        assert "Alpha Power Calc" not in calc_names, \
+            f"'Alpha Power Calc' should have been inlined; found in {calc_names}"
 
-    def test_power_balance_calc_exists(self, library_model):
-        """Verify 'Power Balance Calc' calc def exists."""
+        mfe_calc = next((c for c in calc_defs if c.name == "MFE Power Balance Calc"), None)
+        assert mfe_calc is not None, "MFE Power Balance Calc not found"
+        member_names = [m.declared_name for m in mfe_calc.owned_members if m.declared_name]
+        assert "p_alpha" in member_names, \
+            f"Expected inlined 'p_alpha' in MFE calc members {member_names}"
+
+    def test_power_balance_calc_collapsed_to_mfe(self, library_model):
+        """Generic 'Power Balance Calc' collapsed into 'MFE Power Balance Calc'.
+
+        The old generic base calc no longer exists; the single faithful power
+        balance is the MFE calc. Verify that.
+        """
         model, _ = library_model
         syside = get_syside()
 
         calc_defs = list(model.elements(syside.CalculationDefinition))
         calc_names = [c.name for c in calc_defs]
 
-        assert "Power Balance Calc" in calc_names, \
-            f"Expected 'Power Balance Calc' in {calc_names}"
+        assert "Power Balance Calc" not in calc_names, \
+            f"Generic 'Power Balance Calc' should be collapsed; found in {calc_names}"
+        assert "MFE Power Balance Calc" in calc_names, \
+            f"Expected 'MFE Power Balance Calc' in {calc_names}"
 
     def test_mfe_power_balance_calc_exists(self, library_model):
         """Verify 'MFE Power Balance Calc' calc def exists."""
@@ -152,57 +191,64 @@ class TestCalcDefinitionsExist:
 # ============================================================================
 
 
-class TestAlphaPowerCalcInterface:
-    """Verify Alpha Power Calc has correct interface."""
+class TestInlinedAlphaHandling:
+    """Verify alpha power handling inlined into 'MFE Power Balance Calc'.
 
-    def test_has_p_nrl_input(self, library_model):
-        """Verify Alpha Power Calc has p_nrl input."""
+    The old standalone 'Alpha Power Calc' (inputs p_nrl + fuel_type, return
+    p_alpha) was inlined as the D-T ratio 3.52/17.58 inside the MFE calc.
+    These tests check the equivalent constructs in their new home.
+    """
+
+    def _mfe_calc(self, model, syside):
+        calc_defs = list(model.elements(syside.CalculationDefinition))
+        mfe_calc = next((c for c in calc_defs if c.name == "MFE Power Balance Calc"), None)
+        assert mfe_calc is not None, "MFE Power Balance Calc not found"
+        return mfe_calc
+
+    def test_alpha_driven_by_p_nrl_input(self, library_model):
+        """Alpha power derives from p_nrl, which is an input of the MFE calc.
+
+        (Was: Alpha Power Calc has p_nrl input.)
+        """
         model, _ = library_model
         syside = get_syside()
 
-        calc_defs = list(model.elements(syside.CalculationDefinition))
-        alpha_calc = next((c for c in calc_defs if c.name == "Alpha Power Calc"), None)
-
-        assert alpha_calc is not None, "Alpha Power Calc not found"
-
-        # Get input parameters using the inputs accessor
-        inputs = list(alpha_calc.inputs)
-        input_names = [p.declared_name for p in inputs if p.declared_name]
+        mfe_calc = self._mfe_calc(model, syside)
+        input_names = [p.declared_name for p in mfe_calc.inputs if p.declared_name]
 
         assert "p_nrl" in input_names, \
             f"Expected 'p_nrl' input in {input_names}"
 
-    def test_has_fuel_type_input(self, library_model):
-        """Verify Alpha Power Calc has fuel_type input."""
+    def test_fuel_type_inlined_to_dt(self, library_model):
+        """fuel_type is no longer parameterized — alpha fraction inlined to D-T.
+
+        (Was: Alpha Power Calc has fuel_type input.) The fuel-type split was
+        replaced by the fixed D-T ratio 3.52/17.58, so 'fuel_type' must NOT be
+        an input of the MFE calc.
+        """
         model, _ = library_model
         syside = get_syside()
 
-        calc_defs = list(model.elements(syside.CalculationDefinition))
-        alpha_calc = next((c for c in calc_defs if c.name == "Alpha Power Calc"), None)
+        mfe_calc = self._mfe_calc(model, syside)
+        input_names = [p.declared_name for p in mfe_calc.inputs if p.declared_name]
 
-        assert alpha_calc is not None, "Alpha Power Calc not found"
+        assert "fuel_type" not in input_names, \
+            f"'fuel_type' should be inlined to D-T, but found in inputs {input_names}"
 
-        inputs = list(alpha_calc.inputs)
-        input_names = [p.declared_name for p in inputs if p.declared_name]
+    def test_mfe_calc_has_p_alpha(self, library_model):
+        """Alpha power (p_alpha) exists as an intermediate member of the MFE calc.
 
-        assert "fuel_type" in input_names, \
-            f"Expected 'fuel_type' input in {input_names}"
-
-    def test_has_p_alpha_output(self, library_model):
-        """Verify Alpha Power Calc has p_alpha return."""
+        (Was: Alpha Power Calc returns p_alpha.) p_alpha is now an intermediate
+        attribute inside 'MFE Power Balance Calc', not a standalone return.
+        """
         model, _ = library_model
         syside = get_syside()
 
-        calc_defs = list(model.elements(syside.CalculationDefinition))
-        alpha_calc = next((c for c in calc_defs if c.name == "Alpha Power Calc"), None)
+        mfe_calc = self._mfe_calc(model, syside)
+        member_names = [m.declared_name for m in mfe_calc.owned_members if m.declared_name]
 
-        assert alpha_calc is not None, "Alpha Power Calc not found"
-
-        # Check the result parameter specifically
-        result = alpha_calc.result
-        assert result is not None, "Alpha Power Calc should have a return"
-        assert result.declared_name == "p_alpha", \
-            f"Expected return 'p_alpha', got '{result.declared_name}'"
+        assert "p_alpha" in member_names, \
+            f"Expected 'p_alpha' member in MFE calc, got {member_names}"
 
 
 # ============================================================================
@@ -214,7 +260,12 @@ class TestMFEPowerBalanceCalcInterface:
     """Verify MFE Power Balance Calc has correct interface."""
 
     def test_has_all_required_inputs(self, library_model):
-        """Verify MFE Power Balance Calc has all 17 required inputs."""
+        """Verify MFE Power Balance Calc has all required inputs (current layout).
+
+        The faithful 1costingFE rewrite dropped `fuel_type` (alpha inlined to
+        D-T) and `fpcppf`, and takes the coolant pumping power `p_pump`
+        directly. Current interface is 15 inputs.
+        """
         model, _ = library_model
         syside = get_syside()
 
@@ -227,11 +278,11 @@ class TestMFEPowerBalanceCalcInterface:
         inputs = list(mfe_calc.inputs)
         input_names = [p.declared_name for p in inputs if p.declared_name]
 
-        # Required inputs per spec (16 inputs - note: we have 16 not 17)
+        # Required inputs per current model (analyses/mfe_power_balance.sysml)
         required_inputs = [
-            "p_nrl", "fuel_type", "p_input",  # Generic
+            "p_nrl", "p_input",  # Primary
             "mn", "eta_th", "eta_p", "eta_pin",  # Efficiencies
-            "fpcppf", "f_sub",  # Fractions
+            "p_pump", "f_sub",  # Pumping / subsystem
             "p_tf", "p_pf",  # Coil power
             "p_tfcool", "p_pfcool",  # Cooling
             "p_trit", "p_house", "p_cryo"  # Auxiliary
@@ -242,7 +293,11 @@ class TestMFEPowerBalanceCalcInterface:
                 f"Expected input '{input_name}' in {input_names}"
 
     def test_has_p_net_output(self, library_model):
-        """Verify MFE Power Balance Calc has p_net return."""
+        """Verify MFE Power Balance Calc exposes p_net as an output.
+
+        p_net is an `out attribute` (not the calc's `result` return), so it
+        appears via the outputs accessor.
+        """
         model, _ = library_model
         syside = get_syside()
 
@@ -251,11 +306,11 @@ class TestMFEPowerBalanceCalcInterface:
 
         assert mfe_calc is not None, "MFE Power Balance Calc not found"
 
-        # Check the result parameter specifically
-        result = mfe_calc.result
-        assert result is not None, "MFE Power Balance Calc should have a return"
-        assert result.declared_name == "p_net", \
-            f"Expected return 'p_net', got '{result.declared_name}'"
+        outputs = list(mfe_calc.outputs)
+        output_names = [p.declared_name for p in outputs if p.declared_name]
+
+        assert "p_net" in output_names, \
+            f"Expected 'p_net' in outputs {output_names}"
 
     def test_has_intermediate_outputs(self, library_model):
         """Verify MFE Power Balance Calc has key intermediate outputs."""
@@ -298,19 +353,24 @@ class TestMFEPowerBalanceCalcInterface:
 class TestDocumentation:
     """Verify calc defs have required documentation."""
 
-    def test_alpha_power_calc_has_doc(self, library_model):
-        """Verify Alpha Power Calc has documentation."""
+    def test_alpha_handling_documented(self, library_model):
+        """Verify the inlined alpha handling is documented in the MFE calc.
+
+        (Was: Alpha Power Calc has documentation.) The alpha/neutron split and
+        its D-T inlining are now documented inside 'MFE Power Balance Calc'.
+        """
         model, _ = library_model
         syside = get_syside()
 
         calc_defs = list(model.elements(syside.CalculationDefinition))
-        alpha_calc = next((c for c in calc_defs if c.name == "Alpha Power Calc"), None)
+        mfe_calc = next((c for c in calc_defs if c.name == "MFE Power Balance Calc"), None)
 
-        assert alpha_calc is not None, "Alpha Power Calc not found"
+        assert mfe_calc is not None, "MFE Power Balance Calc not found"
 
-        # Check for documentation
-        docs = list(alpha_calc.documentation)
-        assert len(docs) > 0, "Alpha Power Calc should have documentation"
+        docs = list(mfe_calc.documentation)
+        assert len(docs) > 0, "MFE Power Balance Calc should have documentation"
+        assert any("alpha" in d.body.lower() for d in docs), \
+            "MFE calc documentation should describe the alpha handling"
 
     def test_mfe_power_balance_calc_has_doc(self, library_model):
         """Verify MFE Power Balance Calc has documentation."""

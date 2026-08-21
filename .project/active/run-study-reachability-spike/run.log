@@ -1,0 +1,93 @@
+
+=== availability  keys=4
+  entry_types: {'stellarator_09__stellaris__cas72_calc__availability': 'usage_literal', 'stellarator_09__stellaris__fuel_calc__availability': 'usage_literal', 'stellarator_09__stellaris__lcoe_1cfe_calc__availability': 'usage_literal', 'stellarator_09__stellaris__lcoe_calc__availability': 'usage_literal'}
+  no_constraint_response: True
+  objectives_reachable: ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe']
+  objectives_unreachable: ['total_capital']
+  modules_fired=6 channels_tainted=8
+  sibling_candidates (advisory): 0
+   [PASS] no_constraint_response   got=[]
+   [PASS] objective lcoe reachable   got=['cas72', 'fuel', 'lcoe', 'lcoe_1cfe']
+   [PASS] objective cas72 reachable   got=['cas72', 'fuel', 'lcoe', 'lcoe_1cfe']
+   [PASS] objective fuel reachable   got=['cas72', 'fuel', 'lcoe', 'lcoe_1cfe']
+
+=== interest_rate  keys=4
+  entry_types: {'stellarator_09__stellaris__cas71_calc__interest_rate': 'usage_literal', 'stellarator_09__stellaris__cas72_calc__interest_rate': 'usage_literal', 'stellarator_09__stellaris__cas80_calc__interest_rate': 'usage_literal', 'stellarator_09__stellaris__idc__interest_rate': 'usage_literal'}
+  no_constraint_response: True
+  objectives_reachable: ['cas72', 'lcoe', 'lcoe_1cfe']
+  objectives_unreachable: ['fuel', 'total_capital']
+  modules_fired=8 channels_tainted=11
+  sibling_candidates (advisory): 0
+   [PASS] no_constraint_response   got=[]
+
+=== R  keys=2
+  entry_types: {'stellarator_09__stellaris__geom__R': 'usage_literal', 'stellarator_09__stellaris__rb__R': 'usage_literal'}
+  no_constraint_response: False
+    net_positive: >  (net_electric[computed*], <literal>[literal]=0.0)  bound_vs_bound=False
+    recirc_ok: <=  (rec_frac[computed*], threshold[bound])  bound_vs_bound=False
+    wall_load_ok: <=  (wall_load[computed*], wall_load_limit[bound])  bound_vs_bound=False
+  objectives_reachable: ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'total_capital']
+  objectives_unreachable: []
+  modules_fired=54 channels_tainted=67
+  sibling_candidates (advisory): 0
+   [PASS] wall_load_ok reachable via computed operand   got=['bound', 'computed']
+   [PASS] recirc_ok reachable via computed operand   got=['bound', 'computed']
+   [PASS] net_positive reachable via pb   got=['stellarator_09__stellaris__pb__p_net']
+   [PASS] not no_constraint_response   got=['net_positive', 'recirc_ok', 'wall_load_ok']
+
+=== a  keys=2
+  entry_types: {'stellarator_09__stellaris__geom__a': 'usage_literal', 'stellarator_09__stellaris__rb__a': 'usage_literal'}
+  no_constraint_response: False
+    net_positive: >  (net_electric[computed*], <literal>[literal]=0.0)  bound_vs_bound=False
+    recirc_ok: <=  (rec_frac[computed*], threshold[bound])  bound_vs_bound=False
+    wall_load_ok: <=  (wall_load[computed*], wall_load_limit[bound])  bound_vs_bound=False
+  objectives_reachable: ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'total_capital']
+  objectives_unreachable: []
+  modules_fired=54 channels_tainted=67
+  sibling_candidates (advisory): 0
+   [PASS] wall_load_ok reachable via computed operand   got=['bound', 'computed']
+   [PASS] recirc_ok reachable via computed operand   got=['bound', 'computed']
+   [PASS] net_positive reachable via pb   got=['stellarator_09__stellaris__pb__p_net']
+   [PASS] not no_constraint_response   got=['net_positive', 'recirc_ok', 'wall_load_ok']
+
+=== beta  keys=1
+  entry_types: {'stellarator_09__stellaris__beta': 'design_attribute'}
+  no_constraint_response: False
+    beta_ok: <=  (beta[bound*], beta_limit[bound])  bound_vs_bound=True
+  objectives_reachable: []
+  objectives_unreachable: ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'total_capital']
+  modules_fired=2 channels_tainted=2
+  sibling_candidates (advisory): 0
+   [PASS] beta_ok reachable   got=['beta_ok']
+   [PASS] beta_ok is bound-vs-bound   got=['bound']
+   [PASS] only beta_ok reached   got=['beta_ok']
+
+=== R+tie  keys=3
+  entry_types: {'stellarator_09__stellaris__geom__R': 'usage_literal', 'stellarator_09__stellaris__magnet__R0': 'design_attribute', 'stellarator_09__stellaris__rb__R': 'usage_literal'}
+  no_constraint_response: False
+    net_positive: >  (net_electric[computed*], <literal>[literal]=0.0)  bound_vs_bound=False
+    recirc_ok: <=  (rec_frac[computed*], threshold[bound])  bound_vs_bound=False
+    wall_load_ok: <=  (wall_load[computed*], wall_load_limit[bound])  bound_vs_bound=False
+  objectives_reachable: ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'total_capital']
+  objectives_unreachable: []
+  modules_fired=54 channels_tainted=67
+  sibling_candidates (advisory): 0
+   [PASS] wall_load_ok reachable via computed operand   got=['bound', 'computed']
+   [PASS] recirc_ok reachable via computed operand   got=['bound', 'computed']
+   [PASS] net_positive reachable via pb   got=['stellarator_09__stellaris__pb__p_net']
+   [PASS] not no_constraint_response   got=['net_positive', 'recirc_ok', 'wall_load_ok']
+
+=== failure probe 1: missing declared key
+  MissingKey: declared keys absent from inputs/: ['stellarator_09__stellaris__geom__NOPE']
+=== failure probe 2: unparseable reference
+  Unparseable: unparseable reference 'stellarator_09__stellaris__wall_load_calc__wall_load.value.deep'
+=== failure probe 3: valid empty result exits 0
+  no_constraint_response: True  objectives: ['lcoe', 'lcoe_1cfe', 'total_capital']  group_valid: True
+=== failure probe 4: structurally corrupt pipeline artifact
+  Unparseable: /tmp/tmpo9uni5w8/pkg/pipelines/mfe_stellarator.yaml:24: cannot split type/ref in 'floatonly_one_token'
+=== failure probe 5: objective channel produced by no module
+  Unparseable: objective channel 'stellarator_09__stellaris__not_a_channel' is produced by no module
+
+wrote /home/reid/1cfe/fusion-tea-stellarator-mbse-demo/.project/active/run-study-reachability-spike/indicators.json
+
+ALL KNOWN ANSWERS MATCHED

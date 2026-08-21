@@ -1,8 +1,8 @@
 ---
-Status: draft
+Status: active
 Priority: P0
 Created: 2026-07-03
-Updated: 2026-07-03
+Updated: 2026-07-18
 ---
 
 # Epic: MFE Cost Modeling — Tokamak & Stellarator
@@ -54,16 +54,18 @@ The tokamak/stellarator pair is deliberate. They share nearly every subsystem �
 
 ## Success Criteria
 
-- [ ] Magnet/coil system modeled as a `'Costed Component'`, reading as the dominant CAS22 cost driver (RQ-1)
-- [ ] MFE-divergent CAS22 sub-accounts (magnets 22.1.3, heating/current-drive 22.1.4, divertor 22.1.8) specialize the shared CAS accounts; CAS20–21, 23–27, 90 reused unchanged from the IFE library (MR-3 reuse demonstrated, not re-authored)
-- [ ] MFE power-balance calc produces net electric power and engineering Q
-- [ ] Viability expressed as SysML `constraint def`s (at minimum: net electric power > 0; recirculating-power fraction bounded)
-- [ ] Tokamak and stellarator instantiations differ **only** in the magnet/current-drive subsystems; every other subsystem is inherited
-- [ ] LCOE output within a credible MFE range cross-checked against ARIES / TEA-D-T-MFE
-- [ ] `sysml-codegen` produces a Python `forward()` plus evaluable constraint predicates from the MFE models
-- [ ] A self-contained sweep harness varies R, B, plasma gain, and availability and partitions the input grid into constraint-satisfying (viable) vs. constraint-violating (non-viable) regions, with the feasible boundary visualized
-- [ ] Every quantitative value carries an MR-4 `Source / Ref / Basis` citation
-- [ ] Models pass validation Levels 1–3
+Status annotated 2026-07-18 (post-WI-025; evidence in the cited item records under `work/completed/`):
+
+- [x] Magnet/coil system modeled as a `'Costed Component'`, reading as the dominant CAS22 cost driver (RQ-1) — met: magnet $6.323B = 50.03% of total capital (`mfe_power_core.sysml`, `mfe_magnet_cost.sysml`; WI-023 record, SV-030)
+- [x] MFE-divergent CAS22 sub-accounts (magnets 22.1.3, heating/current-drive 22.1.4, divertor 22.1.8) specialize the shared CAS accounts; CAS20–21, 23–27, 90 reused unchanged from the IFE library (MR-3 reuse demonstrated, not re-authored) — met: `mfe_power_core.sysml` specializations + `mfe_divergent` scope member; IFE models undisturbed (SV-023 anchors unchanged through every regen)
+- [x] MFE power-balance calc produces net electric power and engineering Q — met: executed p_net 915.081 MW, q_eng 6.607 (WI-019 baseline; refined WI-022–025)
+- [x] Viability expressed as SysML `constraint def`s (at minimum: net electric power > 0; recirculating-power fraction bounded) — met in the canonical model: `mfe_viability.sysml`, asserted in `mfe_plant.sysml` (`net_positive`, `recirc_ok`). NOT evaluated in the executed pipeline: the staged demo copy strips the asserts and codegen does not emit constraint predicates (see the codegen criterion below).
+- [ ] Tokamak and stellarator instantiations differ **only** in the magnet/current-drive subsystems; every other subsystem is inherited — not met: no tokamak model exists
+- [ ] LCOE output within a credible MFE range cross-checked against ARIES / TEA-D-T-MFE — not met as written, deliberately: both named references are barred-by-default under the hold-out (PROTOCOL §3). The 1costingFE handshake is the stand-in, and it proves parity only via injected values for the account scopes the model does not yet construct the same way (the −31% structural LCOE-construction gap: CAS22 tail, CAS40/50/60, LCOE construction). The genuine cross-check is the hold-out comparison at reveal.
+- [ ] `sysml-codegen` produces a Python `forward()` plus evaluable constraint predicates from the MFE models — half met: `forward()` proven end-to-end, bit-exact rel 1e-9, regen-stable (WI-022–025); constraint predicates are not emitted or evaluated
+- [ ] A self-contained sweep harness varies R, B, plasma gain, and availability and partitions the input grid into constraint-satisfying (viable) vs. constraint-violating (non-viable) regions, with the feasible boundary visualized — not started (no MFE sweep artifacts; `data/ife_sweep/` is the IFE epic's)
+- [x] Every quantitative value carries an MR-4 `Source / Ref / Basis` citation — met for every executed value (WI-019–025 audits verified citation-by-citation)
+- [x] Models pass validation Levels 1–3 — met with the accepted baseline: L1 = 0 over 22 files; the 6 pre-existing higher-level offenders (recorded list) predate the demo run, zero added
 
 ---
 
@@ -141,6 +143,29 @@ The tokamak/stellarator pair is deliberate. They share nearly every subsystem �
 
 ---
 
+### Item WI-024: Recirculating-power derivation model (coil/cryo parasitic loads)
+
+**Scale**: standard | **Priority**: P2 | **Registered**: 2026-07-18 ([OWNER] directive at the WI-023 spec checkpoint)
+
+**Sequencing ([OWNER] 2026-07-18, WI-023 close-out):** WI-024 runs **before** the STALE-BASIS pass-through recompute (see note below) so that the recompute happens at a settled p_net — WI-024 will move p_net again, and recomputing first would immediately re-stale the pass-throughs. *Considered alternative, one line: recompute first with the pass-throughs rebound as forward-computed functions of p_net (immune to later p_net moves) — remains an option at the recompute item's design.* SV-016 (Q_eng ~10–40 band) also waits on this item: q_eng 6.609 at WI-023 close is knowingly optimistic (p_tf = 0) and moves again when a derived parasitic power lands.
+
+**Intent (owner-stated):** derive/decompose and model *how* the recirculating power values are derived, instead of binding constants. WI-023's source sweep (spec §Sweep Findings, `work/active/WI-023_magnet-field-errata-B9/spec.md`) established that no admissible source prints a total coil-conduction or cryo-plant power for Stellaris — the paper defers parasitic electricity explicitly — so WI-023 rebound `p_tf = 0` with the deferral documented ([OWNER] ruling, no-fallbacks). This item builds the honest replacement: decompose the parasitic loads (coil conduction, cryo-plant electrical from heat loads, pumping/auxiliary splits) and model the derivation chain — e.g. winding-pack nuclear heating density (35.5 W/m³, Table 6 image) × cold-mass/winding volume → heat load at 20 K → cryo-plant electrical via COP — with every step sourced or explicitly parameterized. Subsumes the WI-018-era Stage-3 note (cold-mass → cryo-electrical COP treatment) in the p_tf doc.
+
+---
+
+### Executed corrective items (WI-019–WI-025, 2026-07-14 → 07-18)
+
+These were not planned epic items. Each was registered at pick-up when executing Items 1–3's objectives surfaced a defect the item bars could not absorb — the rolling-handoff run exists because the original items were attempted but did not meet their objectives on the first pass. Full records in `work/completed/`. **Frame note (2026-07-18):** in the governing demo concept's terms (`.project/concepts/stellarator-mbse-demo.md`), WI-018 was the demo's Stage-2 initial model and WI-019–025 its Stage-3 refinement; they were registered here only because no demo epic existed. The demo's tracking home is the dedicated demo epic (`.project/backlog/epic_stellarator_mbse_demo.md`); this epic keeps these entries as historical item records, not as demo tracking.
+
+- **WI-019 faithful-mfe-power-balance** (07-14) — replaced the unfaithful power-balance treatment; first honest p_net.
+- **WI-020 stellarator-correct-geometry** / **WI-021 stellarator-correct-radial-build** (07-17) — stellarator-correct plasma volume and radial build (torus-shell volumes per 1costingFE; shape-factor deferral below).
+- **WI-022 predictive-confinement** (07-18) — fusion power from profile-integrated Bosch-Hale reactivity, blind to the design power (+1.8% vs the 2700 MW design point); exposed the table-extraction errata.
+- **WI-023 magnet-field-errata-B9** (07-18) — phantom-row corrections: B → 9.0 T, phantom p_tf 111 → 0.
+- **WI-024 recirc-power-derivation** (07-18) — p_cryo derived (heat load → COP → wall-plug) instead of bound.
+- **WI-025 stale-basis-pass-through-recompute** (07-18) — last three pass-through accounts forward-computed from the model's powers; STALE BASIS annotations retired.
+
+---
+
 ## Sequencing
 
 ```
@@ -151,6 +176,16 @@ Item 1: MFE Cost Structure Library (reuses IFE library)
 ```
 
 Strictly sequential — each item builds on the previous. The critical path is all four. Items 1–3 follow the proven IFE pattern and carry low execution risk; Item 4 is where the novel, higher-risk work concentrates.
+
+## Item Status Assessment (2026-07-18, post-WI-025)
+
+Done-ness against each item's own requirements. The honest pattern: Items 1–2 and the WI-018 instance were attempted (specs 2026-07-13; WI-009 reached design), their build outputs landed piecemeal, and each execution attempt surfaced defects that became the WI-019–025 corrective run. The artifacts now exist at audited quality; the items themselves were never driven through their own completion bars.
+
+- **Item 1 / WI-009** — **CLOSED AS SUPERSEDED ([OWNER] 2026-07-25, demo epic Board housekeeping).** Substance built (`mfe_power_core.sysml` CAS22.1.3/.4/.8 + `mfe_divergent`, `mfe_power_balance.sysml`, `mfe_viability.sysml`, plus later additions `mfe_magnet_cost`, `mfe_cryo_plant`, `mfe_account_costs`; re-sourced from 1costingFE per the PROTOCOL §5 mitigation) and refined/audited through the WI-019–028 corrective run, whose records are the effective completion evidence. No close-out audit vs own spec, no re-scope; disposition note in the item record.
+- **Item 2 / WI-010** — **CLOSED AS SUPERSEDED ([OWNER] 2026-07-25, same ruling).** `mfe_plant.sysml` is the wiring backbone, refined/audited via WI-019–028. Decision record: its "LCOE within a credible MFE range at defaults" bar was never formally assessed; the ruling accepts that gap rather than opening a close-out audit.
+- **Item 3 / WI-011** (backlog) — **half done, unevenly.** The stellarator half exists far beyond the item's bar (the WI-018 instance + seven audited corrective items). The tokamak half is not started, so the item's stated deliverable — two designs differing only in the magnet/current-drive subsystems — is not yet possible. The LCOE cross-check half is deferred to the reveal (see the Success Criteria annotation).
+- **Item 4 / WI-012** (backlog) — **half done.** Codegen → Python `forward()` proven end-to-end, bit-exact rel 1e-9, regen-stable — the epic's highest-risk unknown, retired. Not done: constraint predicates are not emitted (the staged pipeline strips the viability asserts), and the sweep harness + feasible-region visualization do not exist.
+- **WI-018** — **CLOSED AS SUPERSEDED ([OWNER] 2026-07-25, same ruling).** The instance it set out to build exists and carries the demo headline; the item was spec-only, overtaken by the corrective run. Disposition note in the item record.
 
 ---
 
@@ -165,5 +200,13 @@ Strictly sequential — each item builds on the previous. The critical path is a
 
 ---
 
-**Last Updated**: 2026-07-03
-**Next Action**: `/spec-model` on Item 1 (MFE Cost Structure Library)
+## Deferred Decisions (revisit)
+
+- **STALE-BASIS pass-through recompute — DONE (WI-025, closed 2026-07-18).** Executed as WI-025 `STALE-BASIS Pass-Through Recompute`: the buildings, preconstruction, and annual O&M accounts are now forward-computed functions of the model's computed powers ([AGENT] ratified by owner 2026-07-18 — supersedes the point-recompute variant recorded at WI-024), retiring the STALE BASIS annotations structurally. Records: `work/completed/20260718_WI-025_stale-basis-pass-through-recompute/`, alignment brief `work/orchestration/stale-basis-recompute.md`, audit `work/analysis/20260718-220847_audit_WI-025_stale-basis-recompute.md`, SV-032.
+
+- **Material shape factor on conformal subsystem volumes** — deferred by owner ruling 2026-07-17 (WI-021 checkpoint). WI-021 forward-computes the CAS22 material volumes (blanket/shield/structure/vessel), first-wall area, and coil-bore radius as **pure torus shells with no shape factor**, matching 1costingFE (Option 1). The alternative (Option 2) would apply a stellarator shaping factor to these engineered annuli — a blanket/shield conforming to a shaped plasma encloses less than a full torus shell, which would reduce the volume-scaled costs. Deferred because it deviates from the admissible engineering source (1costingFE, which uses torus shells) and needs a defensible per-layer factor the current sources do not provide. Revisit if a sourced conformal-volume basis becomes available or the hold-out comparison motivates it. Scope if picked up: re-baselines the four CAS22 volume-scaled costs and LCOE, parallel to WI-020's plasma-volume re-baseline.
+
+---
+
+**Last Updated**: 2026-07-25
+**Next Action**: none scheduled within this epic. Demo work — including the account-scope/handshake-gap items and the hold-out comparison — is governed by `.project/concepts/stellarator-mbse-demo.md` and tracks in the dedicated demo epic (`.project/backlog/epic_stellarator_mbse_demo.md`), not here. The Item 1/2/WI-018 disposition was ruled 2026-07-25 (closed as superseded — see Item Status Assessment). This epic retains only its own residual, non-demo goals: the tokamak instantiation (Item 3's other half — a demo Non-Goal, so it waits on its own merits) and the viability sweep (Item 4). Both are owner sequencing calls, likely post-reveal.

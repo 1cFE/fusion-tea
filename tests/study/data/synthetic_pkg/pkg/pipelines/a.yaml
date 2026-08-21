@@ -1,0 +1,32 @@
+# Synthetic pipeline A for the multi-pipeline stance.
+# Produces syn__a__y, which pipeline B consumes: the cross-file channel.
+
+metadata:
+  run_description: "synthetic pipeline A"
+  output_folder: "synthetic_results"
+
+modules:
+  entry_a:
+    module_type: EntryPoint
+    inputs:
+      params_a: ParamsA ../inputs/params_a.json
+
+  syn__a_calc:
+    module_type: synthetic.ACalcModule
+    inputs:
+      x: float params_a.syn__a__x
+    outputs:
+      root: RootModel[float] syn__a__y
+
+  syn__a_ok__1111111111111111:
+    module_type: synthetic.ConstraintModule
+    inputs:
+      y: float syn__a__y.root
+      limit: float params_a.syn__a__limit
+    outputs:
+      evaluation: ConstraintEvaluation syn__a_ok__1111111111111111__evaluation
+
+  exit_a:
+    module_type: ExitPoint
+    outputs:
+      syn__a__y: RootModel[float] syn__a_y.json

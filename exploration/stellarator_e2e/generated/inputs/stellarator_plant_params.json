@@ -1,0 +1,8 @@
+{
+  "stellarator_09__stellaris__beta": 0.0276,
+  "stellarator_09__stellaris__beta_limit": 0.05,
+  "stellarator_09__stellaris__tbr": 1.074,
+  "stellarator_09__stellaris__tbr_floor": 1.05,
+  "stellarator_09__stellaris__wall_load_calc__ash_frac": 0.2002,
+  "stellarator_09__stellaris__wall_load_limit": 4.05
+}

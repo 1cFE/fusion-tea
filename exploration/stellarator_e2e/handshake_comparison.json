@@ -1,0 +1,380 @@
+{
+  "commit": "0254385",
+  "target": {
+    "net_electric_mw": 1000.0,
+    "availability": 0.9,
+    "lifetime_yr": 30,
+    "n_mod": 1,
+    "construction_time_yr": 8.0,
+    "interest_rate": 0.07,
+    "inflation_rate": 0.02,
+    "noak": true,
+    "elon": 1.6,
+    "fuel": "DT",
+    "concept": "stellarator"
+  },
+  "injection": {
+    "V": 562.8043213677184,
+    "sigma_v": 5.736186254024941e-23,
+    "p_fus_target": 2582.06591796875
+  },
+  "cas10_closure": {
+    "onecfe": 18500000.0,
+    "sysml": 18500000.13404431,
+    "residual": 0.13404430821537971,
+    "closed": true
+  },
+  "a2": [
+    {
+      "account": "remote_handling",
+      "onecfe_1c": 151872116.0888672,
+      "sysml": 151872111.1867611,
+      "rel_dev": -3.227785457081875e-08
+    },
+    {
+      "account": "installation",
+      "onecfe_1c": 509598571.77734375,
+      "sysml": 509497670.011161,
+      "rel_dev": -0.00019800245089149728
+    },
+    {
+      "account": "coolant",
+      "onecfe_1c": 202045181.27441406,
+      "sysml": 202045184.55319217,
+      "rel_dev": 1.622794481949654e-08
+    },
+    {
+      "account": "aux_cooling",
+      "onecfe_1c": 18921039.581298828,
+      "sysml": 18921039.028371293,
+      "rel_dev": -2.9222894051432984e-08
+    },
+    {
+      "account": "waste",
+      "onecfe_1c": 5525381.565093994,
+      "sysml": 5525381.9850038225,
+      "rel_dev": 7.599652467144439e-08
+    },
+    {
+      "account": "fuel_handling",
+      "onecfe_1c": 120000015.25878906,
+      "sysml": 120000009.00777769,
+      "rel_dev": -5.209175480629542e-08
+    },
+    {
+      "account": "other_rpe",
+      "onecfe_1c": 11500000.953674316,
+      "sysml": 11500000.986566134,
+      "rel_dev": 2.8601577886246886e-09
+    },
+    {
+      "account": "inc",
+      "onecfe_1c": 73848846.43554688,
+      "sysml": 73848852.31010237,
+      "rel_dev": 7.954836554119285e-08
+    },
+    {
+      "account": "owner",
+      "onecfe_1c": 41200000.76293945,
+      "sysml": 41200002.20905022,
+      "rel_dev": 3.509977409148427e-08
+    },
+    {
+      "account": "supplementary",
+      "onecfe_1c": 578584106.4453125,
+      "sysml": 578547979.93129,
+      "rel_dev": -6.24395202357398e-05
+    },
+    {
+      "account": "idc (CAS60, reported)",
+      "onecfe_1c": 2223687988.28125,
+      "sysml": 2223383751.9409885,
+      "rel_dev": -0.0001368161099330361
+    },
+    {
+      "account": "cas71 (levelized O&M)",
+      "onecfe_1c": 79003623.96240234,
+      "sysml": 79003632.49673383,
+      "rel_dev": 1.0802454540279408e-07
+    },
+    {
+      "account": "cas72 (levelized repl.)",
+      "onecfe_1c": 82229988.09814453,
+      "sysml": 82230031.04962409,
+      "rel_dev": 5.22333252291441e-07
+    },
+    {
+      "account": "cas70 (= 71 + 72)",
+      "onecfe_1c": 161233612.06054688,
+      "sysml": 161233663.54635793,
+      "rel_dev": 3.193242026650555e-07
+    },
+    {
+      "account": "cas80 (levelized fuel)",
+      "onecfe_1c": 769069.7312355042,
+      "sysml": 769069.8108177312,
+      "rel_dev": 1.0347854762381219e-07
+    },
+    {
+      "account": "cas90_1cfe (Option ii)",
+      "onecfe_1c": 813587280.2734375,
+      "sysml": 813475930.4151963,
+      "rel_dev": -0.00013686283075096383
+    },
+    {
+      "account": "lcoe_1cfe (Option ii)",
+      "onecfe_1c": 123.74301147460938,
+      "sysml": 123.7288887831671,
+      "rel_dev": -0.00011412920434039568
+    }
+  ],
+  "traps": [
+    {
+      "name": "fuel-keyed bases (DT)",
+      "ok": true,
+      "detail": "remote_handling=150, fuel=120, owner=41.2, spares=0.03, startup=40, decom=272"
+    },
+    {
+      "name": "plant-total/per-module + ref-power split (clean accounts @ 1e-6)",
+      "ok": true,
+      "detail": "8 remainder-free tail/CAS40 accounts under 1e-6 => power/ref/base mapping correct"
+    },
+    {
+      "name": "installation base = 0.14*Sigma(C220101..110) [+ pump A-4]",
+      "ok": true,
+      "detail": "installation reconstructs to 1cfe with +0.14*C220106_pump: rel -3.12e-08"
+    },
+    {
+      "name": "F-2/F-3 structural (cas28=5.0; cas20/cas30 reconstruct)",
+      "ok": true,
+      "detail": "cas28=5.0; cas20 recon rel -2.01e-08; cas30 recon rel -1.38e-07"
+    },
+    {
+      "name": "CAS60 Option C (total==overnight, idc reported-only)",
+      "ok": true,
+      "detail": "total_capital vs overnight_capital rel 0.00e+00; idc line reported separately"
+    },
+    {
+      "name": "WI-029/1 levelization params (g=0.02, Tc=8 NOAK, i=0.07, n=30) + 1.439 factor",
+      "ok": true,
+      "detail": "g=0.02, Tc=8.0 (NOAK, not 10), i=0.07, n=30; cas71/annual_om = 1.43905"
+    },
+    {
+      "name": "WI-029/1b handshake-point O&M base = 54.900 M$/yr (NOT the design-point 52.517)",
+      "ok": true,
+      "detail": "1cfe annual_om 54.900002 M$/yr @ p_net=1000; model 54.900002 M$/yr, rel +0.00e+00"
+    },
+    {
+      "name": "WI-029/2 CAS72 chain (set {C220101,C220108}, fluence 18.0, n_rep=4, clip inert)",
+      "ok": true,
+      "detail": "q_n=3.12851 MW/m2, FPY=5.75353 in [0.5, 27.0] (clip inert), cal=6.39282, n_rep=4, cost_per_event=671.160 M$"
+    },
+    {
+      "name": "WI-029/3 fuel constants (cost_per_rxn = M_D*u_D + M_Li6*u_Li6; Q_DT=17.58; burn x1.19)",
+      "ok": true,
+      "detail": "cost_per_rxn=1.726064e-23 $/rxn, q_eff=17.58, burn correction x1.1900"
+    },
+    {
+      "name": "WI-029/4 availability 0.9 injected over model 0.85 -> CAS72 cal AND LCOE denominator",
+      "ok": true,
+      "detail": "cas72_calc.availability=0.9, lcoe_calc.availability=0.9, lcoe_1cfe_calc.availability=0.9 (model instance binding is 0.85)"
+    },
+    {
+      "name": "WI-029/5 IDC Option (ii): cas90_1cfe = CRF*(overnight+CAS60); headline idc_factor unchanged; total_capital == overnight (CAS60 excluded)",
+      "ok": true,
+      "detail": "cas90_1cfe reconstructs from the CAS60 reported line: rel +0.00e+00; headline idc_factor 1.310796 = (1+d)^(Yc/2) UNCHANGED (1cfe f_idc form is 1.282475); total_capital == overnight_capital, so CAS60 cannot enter the headline base"
+    }
+  ],
+  "p_fus": {
+    "onecfe": 2582.06591796875,
+    "sysml": 2582.06591796875
+  },
+  "power_balance": [
+    {
+      "channel": "p_th",
+      "onecfe": 2819.072265625,
+      "sysml": 2819.0724413284806,
+      "rel": 6.232669939946726e-08
+    },
+    {
+      "channel": "p_the",
+      "onecfe": 1127.62890625,
+      "sysml": 1127.6289765313923,
+      "rel": 6.232669939946726e-08
+    },
+    {
+      "channel": "p_et",
+      "onecfe": 1127.62890625,
+      "sysml": 1127.6289765313923,
+      "rel": 6.232669939946726e-08
+    },
+    {
+      "channel": "p_net",
+      "onecfe": 1000.0000610351562,
+      "sysml": 1000.0001072354505,
+      "rel": 4.620028930974497e-08
+    },
+    {
+      "channel": "q_eng",
+      "onecfe": 8.83521842956543,
+      "sysml": 8.835218730306872,
+      "rel": 3.4038935718080566e-08
+    },
+    {
+      "channel": "rec_frac",
+      "onecfe": 0.11318339407444,
+      "sysml": 0.11318338917516162,
+      "rel": -4.3286194285173286e-08
+    }
+  ],
+  "accounts": [
+    {
+      "account": "magnet",
+      "onecfe": 2129952695.2440765,
+      "sysml": 2129952694.0845816,
+      "rel_dev": -5.443758818919229e-10,
+      "iso_at_1cfe_power": 2129952694.0845816,
+      "iso_rel": -5.443758818919229e-10
+    },
+    {
+      "account": "heating",
+      "onecfe": 158487000.0,
+      "sysml": 158487000.0,
+      "rel_dev": 0.0,
+      "iso_at_1cfe_power": 158487000.0,
+      "iso_rel": 0.0
+    },
+    {
+      "account": "divertor",
+      "onecfe": 100740562.43896484,
+      "sysml": 100740561.78512472,
+      "rel_dev": -6.490336253614078e-09,
+      "iso_at_1cfe_power": 100740558.6457113,
+      "iso_rel": -3.765368635191942e-08
+    },
+    {
+      "account": "blanket",
+      "onecfe": 570419555.6640625,
+      "sysml": 570419597.2662256,
+      "rel_dev": 7.293256275868138e-08,
+      "iso_at_1cfe_power": 570419575.934804,
+      "iso_rel": 3.553654593548585e-08
+    },
+    {
+      "account": "shield",
+      "onecfe": 333281463.6230469,
+      "sysml": 333281487.81526166,
+      "rel_dev": 7.258793443821925e-08,
+      "iso_at_1cfe_power": 333281475.3518611,
+      "iso_rel": 3.519191767825577e-08
+    },
+    {
+      "account": "structure",
+      "onecfe": 25523571.014404297,
+      "sysml": 25523569.86291216,
+      "rel_dev": -4.5114852338336706e-08,
+      "iso_at_1cfe_power": 25523569.067512274,
+      "iso_rel": -7.627819876724201e-08
+    },
+    {
+      "account": "vessel",
+      "onecfe": 87590721.1303711,
+      "sysml": 87590725.93099013,
+      "rel_dev": 5.480738953735233e-08,
+      "iso_at_1cfe_power": 87590722.65544574,
+      "iso_rel": 1.741137188553686e-08
+    },
+    {
+      "account": "power_supplies",
+      "onecfe": 81401321.41113281,
+      "sysml": 81401323.57643571,
+      "rel_dev": 2.660034023189908e-08,
+      "iso_at_1cfe_power": 81401320.02500258,
+      "iso_rel": -1.702835045684007e-08
+    },
+    {
+      "account": "turbine",
+      "onecfe": 228728240.96679688,
+      "sysml": 228728261.5996276,
+      "rel_dev": 9.020673962510845e-08,
+      "iso_at_1cfe_power": null,
+      "iso_rel": null
+    },
+    {
+      "account": "electric",
+      "onecfe": 97427139.28222656,
+      "sysml": 97427143.5723123,
+      "rel_dev": 4.4033783354765763e-08,
+      "iso_at_1cfe_power": null,
+      "iso_rel": null
+    },
+    {
+      "account": "heat_rejection",
+      "onecfe": 98836669.921875,
+      "sysml": 98836679.79297653,
+      "rel_dev": 9.987285640394e-08,
+      "iso_at_1cfe_power": null,
+      "iso_rel": null
+    },
+    {
+      "account": "misc",
+      "onecfe": 59302005.767822266,
+      "sysml": 59302007.87578592,
+      "rel_dev": 3.5546244164852396e-08,
+      "iso_at_1cfe_power": null,
+      "iso_rel": null
+    }
+  ],
+  "passthrough": [
+    {
+      "name": "buildings (CAS21) [SysML fwd@1cfe-pwr]",
+      "onecfe": 619435485.8398438,
+      "sysml": 619435439.3560541
+    },
+    {
+      "name": "preconstruction (CAS10) [SysML fwd@1cfe-pwr]",
+      "onecfe": 18500000.0,
+      "sysml": 18500000.13404431
+    },
+    {
+      "name": "special_materials (CAS27) [design-input]",
+      "onecfe": 20787933.22662967,
+      "sysml": 20787933.22662967
+    }
+  ],
+  "rollup": {
+    "contingency": {
+      "onecfe": 0.0,
+      "sysml": 0.0
+    },
+    "cas30_indirect": {
+      "onecfe": 1522919189.453125,
+      "sysml": 1522699913.2836938
+    },
+    "cas20": {
+      "onecfe": 5710946289.0625,
+      "sysml": 5710124674.813852
+    },
+    "overnight": {
+      "onecfe": 7872149585.723877,
+      "sysml": 7871072570.37193
+    },
+    "total_capital": {
+      "onecfe": 10095837890.625,
+      "sysml": 7871072570.37193
+    },
+    "lcoe": {
+      "onecfe": 123.74301147460938,
+      "sysml": 126.00740876410642
+    },
+    "net_electric": {
+      "onecfe": 1000.0000610351562,
+      "sysml": 1000.0001072354505
+    }
+  },
+  "cas22_gap_musd": {
+    "onecfe_cas22_full": 4581.4287109375,
+    "sysml_powercore_musd": 3487.396960321532,
+    "unmodeled_musd": 1094.0317506159681
+  }
+}

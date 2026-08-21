@@ -1,0 +1,57 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "availability",
+      "note": "Plant capacity factor, fanned out to the four modules that each need it: replacement costing, fuel throughput, and the two LCOE variants.",
+      "keys": [
+        {"key": "stellarator_09__stellaris__cas72_calc__availability", "provenance": "fan_out"},
+        {"key": "stellarator_09__stellaris__fuel_calc__availability", "provenance": "fan_out"},
+        {"key": "stellarator_09__stellaris__lcoe_calc__availability", "provenance": "fan_out"},
+        {"key": "stellarator_09__stellaris__lcoe_1cfe_calc__availability", "provenance": "fan_out"}
+      ]
+    },
+    {
+      "axis": "interest_rate",
+      "note": "One financing rate, fanned out to three levelizing calcs and interest-during-construction. lcoe_calc__discount_rate is deliberately excluded — whether it is the same quantity is a modelling question the trace cannot settle.",
+      "keys": [
+        {"key": "stellarator_09__stellaris__cas71_calc__interest_rate", "provenance": "fan_out"},
+        {"key": "stellarator_09__stellaris__cas72_calc__interest_rate", "provenance": "fan_out"},
+        {"key": "stellarator_09__stellaris__cas80_calc__interest_rate", "provenance": "fan_out"},
+        {"key": "stellarator_09__stellaris__idc__interest_rate", "provenance": "fan_out"}
+      ]
+    },
+    {
+      "axis": "R",
+      "note": "Major radius, consumed by the plasma-geometry and radial-build modules.",
+      "keys": [
+        {"key": "stellarator_09__stellaris__geom__R", "provenance": "fan_out"},
+        {"key": "stellarator_09__stellaris__rb__R", "provenance": "fan_out"}
+      ]
+    },
+    {
+      "axis": "R+tie",
+      "note": "The R group plus the declared tie magnet__R0, to show the tie changes nothing about constraint reach.",
+      "keys": [
+        {"key": "stellarator_09__stellaris__geom__R", "provenance": "fan_out"},
+        {"key": "stellarator_09__stellaris__rb__R", "provenance": "fan_out"},
+        {"key": "stellarator_09__stellaris__magnet__R0", "provenance": "tie"}
+      ]
+    },
+    {
+      "axis": "a",
+      "note": "Minor radius, same two consumers as R.",
+      "keys": [
+        {"key": "stellarator_09__stellaris__geom__a", "provenance": "fan_out"},
+        {"key": "stellarator_09__stellaris__rb__a", "provenance": "fan_out"}
+      ]
+    },
+    {
+      "axis": "beta",
+      "note": "Plasma beta, a single design_attribute key consumed only by the beta constraint module. beta_limit is excluded — it is the bound the axis is compared against, not the axis.",
+      "keys": [
+        {"key": "stellarator_09__stellaris__beta", "provenance": "fan_out"}
+      ]
+    }
+  ]
+}

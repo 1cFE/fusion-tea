@@ -2,7 +2,7 @@
 
 Prioritized list of epics and features.
 
-**Last Updated**: 2026-08-20
+**Last Updated**: 2026-08-21
 
 ---
 
@@ -12,6 +12,16 @@ Prioritized list of epics and features.
 - **P1**: High - Important, do soon
 - **P2**: Medium - Valuable, do when possible
 - **P3**: Low - Nice to have, do eventually
+
+---
+
+## Flagged — don't lose
+
+| Item | Priority | Description |
+|------|----------|-------------|
+| Test cleanup: one-plant assumptions and migration-era asserts | P1 | Reshape `tests/models/test_self_binding_replacement.py`: it generates the *whole* `models/` tree and hard-codes the IFE plant's census (23 entry points / 18 design attributes, the 11 renamed keys, the 7 un-renamed). Split into one census per design family (IFE now, MFE after the stellarator migration), each generated from its own tree or subset; keep the regression-guard asserts (zero refusals, live == snapshot, mutation every-and-only), drop or quarantine the one-time D-5 rename asserts. While there, sweep `tests/` for other tests that encode "models/ holds one plant" or pin a toolchain-migration moment rather than a behavior. Surfaced 2026-08-21 by the stellarator-demo reconciliation research (`.project/research/20260820-221835_stellarator-demo-reconciliation-plan.md` § 2). Do it in the migration PR, not before — the MFE census needs a package that actually generates. |
+| Revert the six scalar-function rewrites in the stellarator model once codegen admits them | P2 | `[OWNER 2026-08-21]` chose "rewrite now, file upstream, revert later" for the six `sqrt`/`max`/`min`/`floor` sites (`models/library/analyses/mfe_plasma_scaling.sysml:194`, `mfe_account_costs.sysml:816, 820, 830-832`) that block regeneration on the pinned codegen. When `[SCALAR-FUNCTION-VOCABULARY]` (sysml-codegen `BACKLOG.md:36-41`) lands and fusion-tea's codegen pin moves past it, restore the original function calls and regenerate. Exact pre-rewrite text is in git at the migration PR's parent. |
+| `uv.lock` on main is not regenerable — fix upstream and re-pin | P1 | `uv lock` cannot resolve `pyproject.toml` from scratch (uv 0.8.22 / 0.9.5 / 0.10.0, online or offline): at the pinned commit, sysml-codegen's `pyproject.toml` declares `agentic-mbse = { path = "../agentic-mbse" }` under `[tool.uv.sources]`, and uv resolves a relative path inside a *git* source as a subdirectory of that checkout, which does not exist. The stop-parser pin commits (`510d8208`…`8cb0b838`) edited the lock by text substitution and only ever ran `uv lock --check`, which verifies consistency, not resolvability. Consequence: no dependency can be added to fusion-tea without hand-editing the lock (done once, verified by `uv lock --check`, for `jsonschema` on 2026-08-21 — see `.project/active/stellarator-demo-landing/plan.md` Phase 1 notes). Fix: sysml-codegen drops or workspace-scopes the relative source; fusion-tea re-pins through the provenance chain (`tests/test_dependency_provenance.py`). Surfaced 2026-08-21. |
 
 ---
 
@@ -25,10 +35,30 @@ Prioritized list of epics and features.
 | Ontology v3 Migration | P0 | In Progress | 2026-05-17 | 6 items, ~5.5–8d. Item 1 complete (PR #15 merged 2026-05-17). Next: Item 2 — branch off `main`, merge `fix/concept-renumbering-robustness`. File: `epic_ontology_v3_migration.md`. |
 | Concept-Analysis Pipeline Rework | P0 | Draft | 2026-05-30 | 11 items (~10–14d) + 1 aspirational Phase 3. Phase 0 throwaway probes (prototype + stability + critic acuity) before plumbing. Two-layer split, two-knob 1 GWe NOAK replication floor + aspirational native-scale supplement, override registry, standalone `model_critic`. File: `epic_concept_analysis_rework.md`. |
 | Explorer UX v3 — Provenance & Coherence | P1 | Draft | 2026-06-06 | Phase 1 (2 items, ~3–3.5d): slider/tornado/headline coherence (option c toggle) → override-inspection surface. J2/J3 "why is this number, can I trust it?" spine. Later phases (per-account decomposition, family/comparables, landing reframe, maturity panel) not yet decomposed. File: `epic_explorer_ux_v3.md`. Research: `.project/research/20260605-150329_concept-explorer-ux-user-journeys.md`. |
+| Stellarator MBSE Full Demo | P0 | On Hold | 2026-07-18 | On hold by owner 2026-08-19. Items 1–4 complete (handshake to 1costingFE: LCOE 275.264220, 5/5 verdicts). The Run-Study Capability epic owns the A/B proof; this epic consumes that evidence if resumed. File: `epic_stellarator_mbse_demo.md`. |
+| Run-Study Capability | P1 | In Progress | 2026-08-19 | Items 1–5 complete and audited (2026-08-20). Item 6 (first A/B consumer + policy cutover) runs **after the stellarator model migration** `[OWNER 2026-08-21]`, on the stock teax route. File: `epic_run_study_capability.md`. |
 
 ---
 
 ## P1 - High Priority
+
+### Run-Study Capability
+
+**Priority**: P1
+**Effort**: ~6–9 days (6 items)
+**Status**: In Progress — Items 1–5 complete and audited 2026-08-20; Item 6 after the stellarator model migration `[OWNER 2026-08-21]`
+
+Turn the verified proof-of-life study discipline into a durable `run-study` skill, runbook, policy, package-agnostic tools, and evidence-complete records. This epic owns the first A/B proof while the Stellarator MBSE Demo epic is on hold.
+
+**Items**:
+- [x] Item 1: Indicator Reachability Spike — complete 2026-08-19
+- [x] Item 2: Skill, Runbook, and Record Contract — complete 2026-08-20
+- [x] Item 3: Indicator Tool and Package Manifest — complete 2026-08-20
+- [x] Item 4: Quality Tools and Era Adapter Promotion — complete 2026-08-20
+- [x] Item 5: Cold-Pickup Administrator Exercise — complete 2026-08-20 (owner-approved)
+- [ ] Item 6: First A/B Consumer and Policy Cutover — after migration (stock route, no era adapter)
+
+**File**: `epic_run_study_capability.md`
 
 ### Knowledge Database Integration
 

@@ -1,0 +1,44 @@
+{
+  "schema_version": "study-package-manifest/v1",
+  "package": {
+    "name": "synthetic_pkg",
+    "path": "tests/study/data/synthetic_pkg/pkg"
+  },
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "d61adb9fbc0bc10b492dff1c0620a7c6abf08a25301e2e5876618520c2c016d2",
+      "files": [
+        "contracts/model_contract.json",
+        "inputs/params_a.json",
+        "inputs/params_b.json",
+        "pipelines/a.yaml",
+        "pipelines/b.yaml"
+      ]
+    },
+    "recorded_provenance": {
+      "executable_fingerprint": "syntheticexecutablefingerprint000000000000000000000000000000000",
+      "semantic_fingerprint": "syntheticsemanticfingerprint00000000000000000000000000000000000"
+    }
+  },
+  "objective_catalog": [
+    {"name": "y", "channel": "syn__a__y", "note": "Produced in pipeline A."},
+    {"name": "w", "channel": "syn__b__w", "note": "Produced in pipeline B from A's channel."}
+  ],
+  "ties": [],
+  "baseline": {
+    "point": {"syn__a__x": 2.0, "syn__b__z": 3.0},
+    "headline": {"channel": "syn__b__w", "value": 6.0},
+    "verdicts": [
+      {"source_local_identity": "a_ok", "expected": "satisfied"},
+      {"source_local_identity": "b_ok", "expected": "satisfied"}
+    ]
+  },
+  "oracle": {
+    "kind": "python_callable",
+    "module": "synthetic_oracle",
+    "callable": "compute",
+    "sys_path": "tests/study/data/synthetic_pkg",
+    "note": "Placeholder — the synthetic package has no oracle; the field is here because the schema requires it."
+  }
+}

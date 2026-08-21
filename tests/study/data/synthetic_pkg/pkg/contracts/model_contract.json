@@ -1,0 +1,57 @@
+{
+  "catalog_schema_version": "1.0",
+  "semantic_fingerprint": "syntheticsemanticfingerprint00000000000000000000000000000000000",
+  "parameters": [
+    {
+      "qualified_name": "syn__a__x",
+      "entry_type": "usage_literal",
+      "param_group": "params_a",
+      "python_type": "float",
+      "default_value": 2.0
+    },
+    {
+      "qualified_name": "syn__a__limit",
+      "entry_type": "design_attribute",
+      "param_group": "params_a",
+      "python_type": "float",
+      "default_value": 10.0
+    },
+    {
+      "qualified_name": "syn__b__z",
+      "entry_type": "library_default",
+      "param_group": "params_b",
+      "python_type": "float",
+      "default_value": 3.0
+    }
+  ],
+  "outputs": [
+    {
+      "channel_name": "syn__a__y",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "syn__b__w",
+      "field_name": "root",
+      "python_type": "float"
+    }
+  ],
+  "constraint_catalog": {
+    "concrete_entries": [
+      {
+        "constraint_id": "syn__a_ok__1111111111111111",
+        "definition_qualified_name": "synthetic::'A Limit'",
+        "source_local_identity": "a_ok",
+        "evaluation_channel": "syn__a_ok__1111111111111111__evaluation",
+        "predicate_ir": "{\"kind\":\"operator\",\"operator\":\"<=\",\"operands\":[{\"kind\":\"feature_ref\",\"reference\":{\"source_name\":\"y\"}},{\"kind\":\"feature_ref\",\"reference\":{\"source_name\":\"limit\"}}]}"
+      },
+      {
+        "constraint_id": "syn__b_ok__2222222222222222",
+        "definition_qualified_name": "synthetic::'B Positive'",
+        "source_local_identity": "b_ok",
+        "evaluation_channel": "syn__b_ok__2222222222222222__evaluation",
+        "predicate_ir": "{\"kind\":\"operator\",\"operator\":\">\",\"operands\":[{\"kind\":\"feature_ref\",\"reference\":{\"source_name\":\"w\"}},{\"kind\":\"literal\",\"literal\":{\"value\":0.0}}]}"
+      }
+    ]
+  }
+}

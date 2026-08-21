@@ -30,13 +30,13 @@ epics:
   - id: WI-009
     name: MFE Cost Structure Library
     scale: standard
-    status: backlog
-    completed: null
+    status: completed
+    completed: '2026-07-25'
   - id: WI-010
     name: Generic MFE Plant Model
     scale: standard
-    status: backlog
-    completed: null
+    status: completed
+    completed: '2026-07-25'
   - id: WI-011
     name: Tokamak & Stellarator Instantiations
     scale: standard
@@ -47,6 +47,46 @@ epics:
     scale: standard
     status: backlog
     completed: null
+  - id: WI-018
+    name: Concept-09 QI Stellarator Initial Model
+    scale: standard
+    status: completed
+    completed: '2026-07-25'
+  - id: WI-019
+    name: Faithful MFE Power Balance
+    scale: standard
+    status: completed
+    completed: '2026-07-14'
+  - id: WI-020
+    name: Stellarator-correct plasma geometry (shape factor)
+    scale: standard
+    status: completed
+    completed: '2026-07-17'
+  - id: WI-021
+    name: stellarator-correct-radial-build
+    scale: standard
+    status: completed
+    completed: '2026-07-17'
+  - id: WI-022
+    name: predictive-confinement
+    scale: standard
+    status: completed
+    completed: '2026-07-18'
+  - id: WI-023
+    name: magnet-field-errata-B9
+    scale: standard
+    status: completed
+    completed: '2026-07-18'
+  - id: WI-024
+    name: Recirculating-power derivation model (coil/cryo parasitic loads)
+    scale: standard
+    status: completed
+    completed: '2026-07-18'
+  - id: WI-025
+    name: STALE-BASIS Pass-Through Recompute
+    scale: standard
+    status: completed
+    completed: '2026-07-18'
 - name: Pipeline De-Risk & Demonstration
   goal: null
   priority: P0
@@ -78,7 +118,31 @@ epics:
     scale: standard
     status: completed
     completed: '2026-07-05'
-standalone: []
+standalone:
+- id: WI-026
+  name: Pytest Baseline Re-Record
+  scale: trivial
+  priority: P3
+  status: completed
+  completed: '2026-07-25'
+- id: WI-027
+  name: Demo Constraint Execution (STELLARATOR-DEMO Item 2)
+  scale: standard
+  priority: P0
+  status: completed
+  completed: '2026-07-20'
+- id: WI-028
+  name: Handshake account scope CAS22 tail + CAS40/50/60
+  scale: standard
+  priority: P0
+  status: completed
+  completed: '2026-07-20'
+- id: WI-029
+  name: Handshake account scope LCOE construction CAS70/80 + IDC
+  scale: standard
+  priority: P0
+  status: completed
+  completed: '2026-08-02'
 ---
 
 # Project Backlog
@@ -99,10 +163,18 @@ standalone: []
 
 | ID | Item | Scale | Status | Notes |
 |------|------|-------|--------|-------|
-| WI-009 | MFE Cost Structure Library | standard | backlog |  |
-| WI-010 | Generic MFE Plant Model | standard | backlog |  |
+| WI-009 | MFE Cost Structure Library | standard | completed | Completed 2026-07-25 |
+| WI-010 | Generic MFE Plant Model | standard | completed | Completed 2026-07-25 |
 | WI-011 | Tokamak & Stellarator Instantiations | standard | backlog |  |
 | WI-012 | Codegen + Viability Sweep | standard | backlog |  |
+| WI-018 | Concept-09 QI Stellarator Initial Model | standard | completed | Completed 2026-07-25 |
+| WI-019 | Faithful MFE Power Balance | standard | completed | Completed 2026-07-14 |
+| WI-020 | Stellarator-correct plasma geometry (shape factor) | standard | completed | Completed 2026-07-17 |
+| WI-021 | stellarator-correct-radial-build | standard | completed | Completed 2026-07-17 |
+| WI-022 | predictive-confinement | standard | completed | Completed 2026-07-18 |
+| WI-023 | magnet-field-errata-B9 | standard | completed | Completed 2026-07-18 |
+| WI-024 | Recirculating-power derivation model (coil/cryo parasitic loads) | standard | completed | Completed 2026-07-18 |
+| WI-025 | STALE-BASIS Pass-Through Recompute | standard | completed | Completed 2026-07-18 |
 
 ## Epic: Pipeline De-Risk & Demonstration
 **Priority**: P0 | **Status**: active
@@ -115,3 +187,12 @@ standalone: []
 | WI-015 | IFE End-to-End Demonstration | standard | completed | Completed 2026-07-05 |
 | WI-016 | H2 Probe: Blind Physics Derivation + 1costingfe Differential | standard | completed | Completed 2026-07-05 |
 | WI-017 | Demonstration Dossier & Explainer | standard | completed | Completed 2026-07-05 |
+
+## Standalone Items
+
+| ID | Item | Scale | Priority | Status | Notes |
+|------|------|-------|----------|--------|-------|
+| WI-026 | Pytest Baseline Re-Record | trivial | P3 | completed | Completed 2026-07-25 |
+| WI-027 | Demo Constraint Execution (STELLARATOR-DEMO Item 2) | standard | P0 | completed | Completed 2026-07-20 |
+| WI-028 | Handshake account scope CAS22 tail + CAS40/50/60 | standard | P0 | completed | Completed 2026-07-20 |
+| WI-029 | Handshake account scope LCOE construction CAS70/80 + IDC | standard | P0 | completed | Completed 2026-08-02 |

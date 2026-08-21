@@ -237,6 +237,8 @@ For directory layout, source quality tiers, image inspection, and R2 sync setup,
 
 Source selection is iterative — sources are ingested as the investigation identifies data needs (see OVERVIEW.md, Source Strategy).
 
+**⛔ `knowledge/holdout/` is quarantined hold-out material — never read, cite, or register its contents; see `knowledge/holdout/aries-cs/PROTOCOL.md`.**
+
 ## Installed Tools
 
 **agentic-mbse**: MBSE workflow commands, 6-level model validation, and PDF extraction (v4 pipeline with quality gates and ensemble table detection). Installed as editable dependency. Source code at `~/1cfe/agentic-mbse`.
