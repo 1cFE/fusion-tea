@@ -415,13 +415,13 @@ def test_retired_identifiers_appear_only_in_historical_records(repo_root):
 ### Validation
 
 **Automated:**
-- [x] `uv run python -m pytest tests/study/test_no_retired_identifiers.py -q` → pass
-- [x] `STUDY_REQUIRE_TEAX=1 uv run python -m pytest tests/study -q` → green, 0 skipped (record the new count; before: 273)
+- [ ] `uv run python -m pytest tests/study/test_no_retired_identifiers.py -q` → pass
+- [ ] `STUDY_REQUIRE_TEAX=1 uv run python -m pytest tests/study -q` → green, 0 skipped (record the new count; before: 273)
 - [x] `uv run python -m pytest tests/models -q` → still green
-- [x] `uv run ruff check scripts/study tests/study exploration/stellarator_e2e` → clean
+- [ ] `uv run ruff check scripts/study tests/study exploration/stellarator_e2e` → clean
 
 **Manual:**
-- [x] `grep -rn "fa0e06a\|teax-v1-era\|era_adapter\|promotion_equivalence" exploration scripts tests .claude docs` → only the historical files
+- [ ] `grep -rn "fa0e06a\|teax-v1-era\|era_adapter\|promotion_equivalence" exploration scripts tests .claude docs` → only the historical files
 - [x] `git -C /home/reid/1cfe/teax-v1-era` is **not** touched (tidy pass is a Non-Goal)
 
 **What We Know Works After This Phase:**
@@ -447,11 +447,11 @@ No new tests. The gate list below is the checklist.
 - [x] `source …/.env; uv run python -m pytest tests/models -q` → record counts
 - [x] `STUDY_REQUIRE_TEAX=1 uv run python -m pytest tests/study -q` → record counts
 - [x] Root acceptance pair with both `STOP_PARSER_*` vars → green
-- [x] `uv run python -m pytest tests/test_dependency_provenance.py -q` → green; `uv lock --check` → passes
+- [ ] `uv run python -m pytest tests/test_dependency_provenance.py -q` → green; `uv lock --check` → passes
 - [x] `uv run agentic-mbse validate models --level 1` → pass; `uv run agentic-mbse validate models --complete` → record offender delta vs `main` (Levels 2 and 6 already red on `main`; the delta must be zero new offenders)
 - [x] MR-4 review: every value the ledger marks "introduced or relocated" has `Source`/`Ref`/`Basis`; the two manual-interface docs keep their citations (I4)
 - [x] `AFTER_MIGRATION_RECORD.md` complete: § 1–6 from Phases 2–3 plus § 7 suites table and § 8 "what changed and why" (ledger summary by class: A count, B count, C none)
-- [x] Upstream filings (SC9) in `/home/reid/1cfe/sysml-codegen/.project/backlog/BACKLOG.md`: (a) new row — positional parameter redefinition skipping a leading defaulted formal, the four sites with file:line, the research note that the legacy route matched by name; (b) attach the six scalar-function sites to `[SCALAR-FUNCTION-VOCABULARY]` (`:36-41`) as the motivating case; (c) close `[STELLARATOR-D5-MIGRATION]` (`:403-412`) as done by this item; (d) any Phase 1 Class A/B class not in the spec. Committing in that repo is the owner's call; record the diff hunk in the after-record.
+- [ ] Upstream filings (SC9) in `/home/reid/1cfe/sysml-codegen/.project/backlog/BACKLOG.md`: (a) new row — positional parameter redefinition skipping a leading defaulted formal, the four sites with file:line, the research note that the legacy route matched by name; (b) attach the six scalar-function sites to `[SCALAR-FUNCTION-VOCABULARY]` (`:36-41`) as the motivating case; (c) close `[STELLARATOR-D5-MIGRATION]` (`:403-412`) as done by this item; (d) any Phase 1 Class A/B class not in the spec. Committing in that repo is the owner's call; record the diff hunk in the after-record.
 - [x] `.project/backlog/BACKLOG.md`: "Test cleanup" row → discharged (link the family spine); "Revert the six scalar-function rewrites" row → point at `models/stellarator_migration_ledger.md` rows and the two calc defs' canonical paths; note to the "generated artifacts" row that the package was regenerated and the after-CSVs sit in `_work/`
 - [x] `.project/CURRENT_WORK.md`: package state (2.0.0, stock route), MFE models in `models/`, Item 6 unblocked
 - [x] `plan.md` Implementation Notes filled for every phase
@@ -498,7 +498,7 @@ The item is auditable end to end. Next: `/_my_audit`, then `/_my_pre_pr`.
 - Generation fails fast on the first diagnostic class, so each repair class needed its own `generate` run (expression → self-binding → positional → metadata).
 - The D-5 transformer's `--formals` input is the list of refused formal names, not sites; derived from codegen's own `SI_SELF_BINDING` census on a scratch copy with the six expression sites neutered (94 in `mfe_plant.sysml` incl. five on one-line multi-binding usages, 5 in `stellarator_plant.sysml`). The earlier textual census of 94 was the regex missing those five.
 - **A fifth refusal class, not in the spec's four (ledger F3).** After D14's comment move, `SI_RENDERING_COLLISION` "conflicting projected metadata" persisted. Instrumenting `_Projection._entry_source` showed the CAS72 formal projecting `unit='Manual'` — the first word of a comment two lines *below* it. Root cause in codegen `extraction/feature_metadata.py::_unit_from_source`: the declaration line is located by `cst_node.start_byte` but the file is walked by character count, so multi-byte characters earlier in the file (153 `—`, 2 `Σ`) shift the scanned line by 42–62 bytes. Second mechanism: the first word after `//` on a declaration line is projected as the unit (`'module'`, `'operating'`), so plant/design attributes with trailing comments collide with their consumers too.
-- Handled as Class B (toolchain limitation with an equivalent form, filed upstream, revert optional): ASCII punctuation in comment/doc text of the 8 files that contain `//` comments, guarded so no non-ASCII character outside a comment/doc is touched; and D14's move extended from formals to every declaration line. **Flagged for the owner:** this is my classification, not a ruling; the ASCII edit is trivially reversible if you want a different route (e.g. wait for the upstream fix). Shared files were left untouched so Phase 4's twin equality is unaffected.
+- Handled as Class B (toolchain limitation with an equivalent form, filed upstream, revert optional): ASCII punctuation in comment/doc text of the 8 files that contain `//` comments, guarded so no non-ASCII character outside a comment/doc is touched; and D14's move extended from formals to every declaration line. Shared files were left untouched so Phase 4's twin equality is unaffected. **Ruled 2026-08-21 (`/_my_ask_me` Q1): accepted as Class B**; filed upstream as `[UNIT-SCRAPE-BYTE-OFFSET]`, revert row in fusion-tea `BACKLOG.md`. Not an open question.
 
 **Deviations from Plan:**
 - D14's premise (trailing comments on formals are the collision source) was incomplete: the source is the scraper's byte/char drift plus its first-word heuristic, on formals *and* attributes. The move was extended to all 174 declaration lines and the ASCII normalization added; design D14 carries a dated note.
@@ -580,7 +580,7 @@ The item is auditable end to end. Next: `/_my_audit`, then `/_my_pre_pr`.
 - Suites: `tests/study` 245 passed / 1 skipped in one invocation (era and stock fixtures no longer collide); `tests/models` 43/13; root acceptance 20/20; ruff clean on `scripts/study`, `tests/study`, `studies/`, `run_stellaris.py` (`run_stellaris_single.py` keeps its pre-existing E501/E702 style; only the lines I wrote are clean).
 
 **Issues Encountered:**
-- **Surfaced, not touched: `exploration/stellarator_e2e/handshake_1costingfe.py`.** The Item 1–4 handshake harness carries its own `patch_bop_wiring(o)` and a 1costingFE injection map (incl. the old CAS27/CAS28/`n_mod` glue keys) and reads `pipelines/mfe_stellarator.yaml` / `inputs/system_design.json`, so it cannot run on the 2.0.0 package and, if it did, would mutate the sealed tree (I6). It is named in neither the spec's SC3 inventory nor the design's retirement boundary, and it belongs to the on-hold Stellarator Demo epic's evidence (`HANDSHAKE_REPORT.md`). Left as is and listed in the sweep's HISTORICAL set; the owner decides whether it is rewritten as proposals through the stock route or archived.
+- **Surfaced, not touched: `exploration/stellarator_e2e/handshake_1costingfe.py`.** The Item 1–4 handshake harness carries its own `patch_bop_wiring(o)` and a 1costingFE injection map (incl. the old CAS27/CAS28/`n_mod` glue keys) and reads `pipelines/mfe_stellarator.yaml` / `inputs/system_design.json`, so it cannot run on the 2.0.0 package and, if it did, would mutate the sealed tree (I6). It is named in neither the spec's SC3 inventory nor the design's retirement boundary, and it belongs to the on-hold Stellarator Demo epic's evidence (`HANDSHAKE_REPORT.md`). Left as is and listed in the sweep's HISTORICAL set. **Ruled 2026-08-21 (`/_my_ask_me` Q2): leave it**, with a HISTORICAL header note and the P3 BACKLOG row "Rewrite handshake_1costingfe.py" for if the demo epic resumes. Not an open question.
 - `make_report.py`, `report.html`, `synthesis.md` under `study/` describe the July proof-of-life run (era pin, glue caveats) and are kept as historical evidence, also in the sweep's HISTORICAL set.
 
 **Deviations from Plan:**
@@ -592,7 +592,7 @@ The item is auditable end to end. Next: `/_my_audit`, then `/_my_pre_pr`.
 **Actual Changes:**
 - Gates run and recorded in `AFTER_MIGRATION_RECORD.md` § 7: `tests/models` 43/13, `tests/study` 245/1 in one invocation, root acceptance 20/20, `uv lock --check` passes, `validate models --level 1` passes, `--complete` Levels 2 and 6 red exactly as on `main` with the offender delta equal to the pre-migration twin's own offenders (zero introduced), lint clean on everything this item wrote, single-point runner green.
 - MR-4 review: no ledger row introduces or relocates a value; the two opaque calcs keep Source/Ref/Basis and carry their formulas verbatim.
-- Upstream filings written (uncommitted, owner's commit) in `/home/reid/1cfe/sysml-codegen/.project/backlog/BACKLOG.md`: `[POSITIONAL-FORMAL-REDEFINITION]`, `[UNIT-SCRAPE-BYTE-OFFSET]`, the motivating case on `[SCALAR-FUNCTION-VOCABULARY]`, `[STELLARATOR-D5-MIGRATION]` closed.
+- Upstream filings written in `/home/reid/1cfe/sysml-codegen/.project/backlog/BACKLOG.md` — left uncommitted **by owner ruling (`/_my_ask_me` Q3: "fine to just write the rows")**; the commit there is the owner's: `[POSITIONAL-FORMAL-REDEFINITION]`, `[UNIT-SCRAPE-BYTE-OFFSET]`, the motivating case on `[SCALAR-FUNCTION-VOCABULARY]`, `[STELLARATOR-D5-MIGRATION]` closed.
 - `.project/backlog/BACKLOG.md`: "Test cleanup" discharged; revert row widened to the ASCII normalization and pointed at the ledger rows and appendices; generated-artifacts row annotated; new P3 row for `handshake_1costingfe.py`. The harness itself got a HISTORICAL header note.
 - After-record § 8 (ledger by class, SC→evidence map, what is left for the owner); `CURRENT_WORK.md` and spec status updated.
 
