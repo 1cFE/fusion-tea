@@ -1,6 +1,6 @@
 # Spec: Cold-Pickup Administrator Exercise
 
-**Status:** Needs Work — audit 2026-08-20
+**Status:** Approved — owner, 2026-08-20
 **Owner:** Reid W
 **Created:** 2026-08-20
 **Complexity:** LOW
@@ -23,7 +23,7 @@ What the exercise is testing is the **contract**, not the old study. The old stu
 
 ## Success Criteria
 
-- [ ] **A directory-only synthesis exists.** `exploration/stellarator_e2e/study/synthesis.md`, written by a context with no memory of the execution session, citing only files inside that directory. It states what the study set out to do, the LCOE result, each constraint's outcome, the framing verdict per axis, and the findings, each with the file it came from.
+- [x] **A directory-only synthesis exists.** *(owner-accepted 2026-08-20 with the audit's noted deviation: three findings cite support elsewhere in the synthesis rather than beside the bullet)* `exploration/stellarator_e2e/study/synthesis.md`, written by a context with no memory of the execution session, citing only files inside that directory. It states what the study set out to do, the LCOE result, each constraint's outcome, the framing verdict per axis, and the findings, each with the file it came from.
 - [x] **Recorded facts, missing facts, and administrator interpretations are kept apart.** The synthesis's "What the record does not support" section lists every required fact the reader could not find in the directory. An administrator may state an evidence-backed interpretation when it is clearly labeled as the administrator's reading and cites the supporting record evidence. That interpretation must not be attributed to the executor or used to claim that a missing historical fact was recorded.
 - [x] **`gaps.md` sorts every absence into one of three buckets** (record template, runbook, or stated pre-capability limitation), per the epic. An entry in the first two buckets is a contract gap: a fact the write-up needed that the contract does not require. An entry in the third is a limitation: a fact the contract already requires and the old study simply predates — one line, no action.
 - [x] **Every gap carries a disposition, and every load-bearing gap is applied before Item 6 starts.** A load-bearing gap is applied as one edit to `record-template.md` or `runbook.md`, recorded once in `gaps.md` with the edit it produced. A gap is load-bearing when its absence from a new record would leave Item 6's administrator unable to recover one of the four fresh-administrator facts (framing per axis, LCOE, named constraint outcomes, evidence-backed findings). A gap that is real but not load-bearing does not need to be applied. If it is applied by explicit owner decision, `gaps.md` records the edit, reason, and authority; otherwise it records `not applied: <reason>`. **[OWNER] 2026-08-20, audit walkthrough:** optional application is allowed when recorded this way.

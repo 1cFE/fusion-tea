@@ -6,13 +6,11 @@
 
 ## Active Work
 
-### run-study Item 5 — Cold-Pickup Administrator Exercise — audit blocker FIXED, re-audit pending (2026-08-20)
+### run-study Item 5 — Cold-Pickup Administrator Exercise — COMPLETE, owner-approved 2026-08-20
 
-`.project/active/run-study-cold-pickup/` (epic RUN-STUDY, Item 5). Audit verdict: **Needs Work**. The 273 study tests pass, the legacy study files are unchanged, and the committed synthesis is byte-identical to the cold reader's output. The 17-section comparison and absence classification are complete without rerunning or editing the reader's synthesis, the product-lens ledger is clear, and SC4 now allows the owner-approved optional application of non-load-bearing G1. The remaining blocker is the runbook committing and freezing a record before step 15 fills its findings register; the owner chose to leave it unresolved in this walkthrough. Several findings lack direct evidence citations, but the audit grades that as low-risk and non-blocking. The oracle's role and exact evidence contract remain deferred to the future Align discussion. See `audit.md`.
+`.project/active/run-study-cold-pickup/` (epic RUN-STUDY, Item 5). A fresh agent read only the git-tracked proof-of-life files and wrote `exploration/stellarator_e2e/study/synthesis.md` (byte-identical to the reader's output, never edited). `gaps.md`: 20 absences → 18 limitations the contract already covers, 1 not-an-absence, 2 gaps — G1 (oracle source digest) applied at `316fc3a0` by owner decision, G2 (SKILL.md pre-capability allowance) not applied. Audit came back Needs Work on one blocker — runbook step 14 froze the record before step 15 filled § 15 Findings — fixed at `d9ced308` (steps swapped, cross-refs renumbered). Owner approved without a re-audit; the SC1 citation-placement deviation is accepted. 273 study tests green; legacy evidence unchanged. **Open for the Item 6 Align:** whether verification against an oracle is a mandatory study step at all (`plan.md § Revisit`). Next: `/_my_close`, then Item 6.
 
-**Update, same day:** the one certification blocker (runbook step 14 froze the record before step 15 filled § 15 Findings) is fixed by owner instruction — steps swapped, cross-refs renumbered, checks clean. Remaining: a fresh `/_my_audit` re-check to flip the verdict; the verification/oracle question stays with the Item 6 Align.
-
-### RUN-STUDY epic — Items 1–4 complete; Item 5 needs work; Item 6 waiting
+### RUN-STUDY epic — Items 1–5 complete; Item 6 waiting on owner Align
 
 Items 1–4 retain their prior audit results. Item 5 cannot advance to Item 6 until its audit findings are fixed and re-audited. The owner question remains open for the later Item 6 Align: whether verification/oracle is a mandatory study step, package-conditional, or outside the general study contract (`run-study-cold-pickup/plan.md § Revisit`).
 

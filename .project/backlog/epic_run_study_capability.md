@@ -1,7 +1,7 @@
 # Epic: Run-Study Capability
 
 **Epic ID**: RUN-STUDY
-**Status**: Active — Items 1–4 complete; Item 5 audit Needs Work; Item 6 remaining
+**Status**: Active — Items 1–5 complete (Item 5 owner-approved 2026-08-20); Item 6 remaining
 **Priority**: High
 **Created**: 2026-08-19
 **Estimated Effort**: ~6–9 days
@@ -327,9 +327,9 @@ Gate: CLEAR
 
 ---
 
-### Item 5: Cold-Pickup Administrator Exercise
+### Item 5: Cold-Pickup Administrator Exercise ✅
 
-**Implemented 2026-08-20; audit Needs Work** — design skipped by owner; see `.project/active/run-study-cold-pickup/audit.md`. The legacy evidence stayed unchanged, 273 study tests pass, and the cold-reader comparison and gap classification are complete. Certification now waits only on the runbook's commit/findings order, which the owner chose to leave unresolved in this walkthrough. **Owner note for Item 6 Align:** revisit whether verification/oracle is a mandatory study step at all; G1's exact fingerprint shape is deferred with that question (`run-study-cold-pickup/plan.md § Revisit`).
+**Completed 2026-08-20 — approved by owner** (audit Needs Work → sole blocker, the runbook step 14/15 commit-ordering conflict, fixed at `d9ced308`; re-audit waived). Design skipped by owner. A fresh agent read only the git-tracked proof-of-life files and wrote `exploration/stellarator_e2e/study/synthesis.md`; `gaps.md` classified its 20 absences (18 limitations, 1 not-an-absence, 2 gaps: G1 oracle source digest applied at `316fc3a0`, G2 not applied). Legacy evidence unchanged; 273 study tests green. **Carried to the Item 6 Align:** whether verification against an oracle is a mandatory study step at all (`run-study-cold-pickup/plan.md § Revisit`).
 
 **Type**: Testing/Integration
 
@@ -507,4 +507,4 @@ Item 1 — Reachability spike
 ---
 
 **Last Updated**: 2026-08-20
-**Next Action**: Resolve Item 5's `audit.md` findings and re-audit. Item 6 waits; its owner Align still owns the policy disposition and the question of whether verification/oracle is a mandatory study step.
+**Next Action**: Items 1-5 COMPLETE. Next: Item 6 — owner Align first (policy disposition; and whether verification/oracle is mandatory, package-conditional, or outside the general study contract), then the first A/B consumer and new-record cold pickup. Criteria 1-4 and 7-8 land with Item 6.

@@ -1,6 +1,6 @@
 # Audit: Cold-Pickup Administrator Exercise
 
-**Verdict:** Needs Work
+**Verdict:** APPROVED — owner, 2026-08-20 (Needs Work at audit; sole blocker fixed at `d9ced308`; re-audit waived by owner)
 **Audited:** 2026-08-20
 **Branch:** feat/stellarator-mbse-demo
 **Commit:** a27e882c
@@ -68,3 +68,5 @@ Marked: spec SC2 through SC5, the Phase 2 citation validation, the Phase 3 cross
 ## Post-audit disposition — 2026-08-20
 
 **Runbook commit ordering — FIXED by owner instruction ("fix it please").** `runbook.md` steps 14 and 15 swapped: step 14 now registers the findings and appends the discovery-log rows; step 15 resolves the snapshot and commits, with its placeholder check now naming § 15 explicitly. Cross-references renumbered in `run-study-contract/coverage.md` and `run-study-cold-pickup/gaps.md`. Checks: fifteen execute steps in order; record template 17 headings; `git diff --check` clean. The verdict above is left as written; a fresh re-audit owns flipping it.
+
+**Owner approval — 2026-08-20.** The owner reviewed the walkthrough and the step 14/15 fix and approved the item without a re-audit. The SC1 traceability deviation (three synthesis findings without a filename beside the bullet, support present elsewhere in the same synthesis) is accepted as-is.
