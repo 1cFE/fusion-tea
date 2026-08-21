@@ -210,7 +210,7 @@ uv run python -c "import json;v=json.load(open('study/verification_summary.json'
 ```
 
 ### Changes Required
-- [ ] **File:** `exploration/stellarator_e2e/studies/BEFORE_MIGRATION_RECORD.md` (NEW). Sections, each with the command that produced it and its output:
+- [x] **File:** `exploration/stellarator_e2e/studies/BEFORE_MIGRATION_RECORD.md` (NEW). Sections, each with the command that produced it and its output:
   1. Identity: branch SHA (the Phase 2 commit), package `executable_fingerprint` / `semantic_fingerprint` / `runtime_contract_version 1.0.0` / 139 sealed artifacts with 2 `TAMPER` (the g1 pair), generator codegen `06d95f8`, era teax `fa0e06a`, WI-029 teax `07eb0ac`.
   2. Proof-of-life CSVs: sha256 of both; row counts (948 / 19).
   3. Verification: the `verification_summary.json` headline fields (worst rel, seed, `package_git_clean`, `not_independently_verified`).
@@ -218,11 +218,11 @@ uv run python -c "import json;v=json.load(open('study/verification_summary.json'
   5. Suites: Phase 3 counts verbatim.
   6. Known gaps carried forward: g3 CAS27 not independently verified; `p_fus` / `magnet_capital` not compared by `verify.py` (ANNEX § Oracle).
   7. What "after" must match, by value: pointer to research doc § 5 "after" list.
-- [ ] Commit: "Before-migration record: era-route evidence reproduced on the merged tree".
+- [x] Commit: "Before-migration record: era-route evidence reproduced on the merged tree".
 
 ### Validation
-- [ ] Every number in the file has the command above it and was produced in this session (spot-check three against fresh runs).
-- [ ] The file names nothing outside the tracked tree except the era worktree path and commit.
+- [x] Every number in the file has the command above it and was produced in this session (spot-check three against fresh runs).
+- [x] The file names nothing outside the tracked tree except the era worktree path and commit.
 
 **What we know works after this phase:** the migration PR has a fixed "before" to diff against; SC5 met.
 
@@ -301,7 +301,10 @@ See CLAUDE.md (always `uv run`). Extra for this plan:
 **Deviations:** SC1's "enum member stays" clause did not survive — the member now lives only in the staged twin. That is the deviation SC1 itself anticipated; `models/` is byte-identical to main's IFE set. The 13 skips are the pre-existing WI-026 "types/units/materials not found" skips and one template test, unchanged from the demo branch.
 
 ### Phase 4 Completion
-—
+**Completed:** 2026-08-21
+**Actual changes:** `exploration/stellarator_e2e/studies/BEFORE_MIGRATION_RECORD.md` (NEW), seven sections as planned.
+**Issues:** `promotion_equivalence.execute_baseline()` needs the era simkit on `sys.path` (the test fixture does this; calling it directly does not) — added `/home/reid/1cfe/teax-v1-era/packages/teax-simkit` before import. Baseline executed into the scratchpad; `package_identity.json` effective digest `cf877bf9…`, `baseline_result.json` LCOE `275.2642200420774` (equals the manifest pin to all digits), total capital `16129706216.036476`, 5/5 verdicts satisfied. Tamper count recomputed independently from `artifact_hashes`: exactly the two g1 files.
+**Deviations:** None. Two provenance SHAs (codegen `06d95f8`, teax `07eb0ac`) are labelled "from records, not reproduced" in the file because the generating toolchain is not re-run here.
 
 ### Phase 5 Completion
 —
