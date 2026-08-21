@@ -4,14 +4,15 @@ Package fact, not rule. The universal runbook links to a section here at each st
 that needs something only true of this package; nothing in this file is an
 instruction, and nothing in it is inlined into the runbook.
 
-Six sections, named exactly as the runbook links them.
+Four sections, named exactly as the runbook links them. The two the runbook treats as optional -- `§ Loader exception and glue` and `§ Era pin` -- do not exist for this package: since the stellarator model migration (2026-08-21) it is sealed at runtime contract 2.0.0 and runs on stock teax with no adapter and no glue (`studies/AFTER_MIGRATION_RECORD.md`).
 
 ---
 
 ## § Declared ties
 
-`stellarator_09__stellaris__magnet__R0` rides with the major radius group
-(`geom__R`, `rb__R`).
+`stellarator_09__stellaris__magnet__R0` rides with the major radius
+`stellarator_09__stellaris__R` (one plant-level entry point since the model migration;
+before it, the `geom__R` / `rb__R` fan-out).
 
 It is the same physical quantity under a separately authored attribute. The
 magnet-cost model runs Ampère's law on the coil major radius
@@ -55,27 +56,26 @@ Python recompute of the whole plant chain that shares no code with the generated
 package. It is **not modified** by the study capability — that independence is the
 entire value of comparing against it.
 
-The study seam is `oracle_entry.py`, beside this file, and it publishes three things
+The study seam is `oracle_entry.py`, beside this file, and it publishes two things
 and nothing else:
 
 | Surface | Contract |
 |---|---|
 | `evaluate(point)` | qualified entry keys → qualified channel values |
 | `operand_bindings()` | `{constraint_id: {source_name: {"kind", "key"}}}` |
-| `glue_values(point)` | qualified entry keys → the values the adapter injects per point |
 
 **Parameterization.** A point arrives keyed by the package's own qualified entry
-keys. `ENTRY_KEY_TO_ORACLE_INPUT` maps each one to an oracle input name; several keys
-carry one quantity (`geom__R` and `rb__R` are both the major radius) and they must
-agree, because the oracle can only be given one. Two categories map to no oracle
-input at all and say so: glue-fed values the oracle recomputes itself, and the dead
-schema fillers. An undeclared key is a mechanical failure, never a silently skipped
-one. The oracle's module-global `IN` is saved and restored around every call, and
+keys. `ENTRY_KEY_TO_ORACLE_INPUT` maps each one to an oracle input name -- four keys
+today: `R`, `magnet__R0`, `a`, `availability`. Should two keys ever carry one quantity
+again they must agree, because the oracle can only be given one. An undeclared key is a
+mechanical failure, never a silently skipped one. The oracle's module-global `IN` is saved and restored around every call, and
 `_profile_integral` is memoized — exactly, since it depends only on inputs no study
 sweeps.
 
-**Return.** 51 oracle outputs are mapped to qualified channels. The era's evidence
-layer records only single-field float channels, so 45 of them appear in a study store
+**Return.** 52 oracle outputs are mapped to qualified channels, CAS27
+(`special_materials_capital`) among them since the migration -- the oracle recomputes it
+from its own blanket volume, so parity verifies it for the first time. The evidence
+layer records only single-field float channels, so 46 of them appear in a study store
 and 6 do not: the `pb__*` power-balance fields, which are fields of one multi-field
 model. `net_positive` and `recirc_ok` reach their operands through those six, which
 is why channel operands resolve from the oracle's return rather than from the store.
@@ -83,8 +83,9 @@ is why channel operands resolve from the oracle's return rather than from the st
 **The operand-binding table, and why it exists.** A predicate operand in
 `contracts/model_contract.json` carries a short `source_name` and a SysML qualified
 name, and neither resolves to a flat package key by construction. Checked against all
-five constraints: `recirc_ok.threshold` is constraint-id-prefixed,
-`beta_ok.beta_limit` is owner-instance-prefixed, `wall_load_ok.wall_load` is a channel
+five constraints: `recirc_ok.threshold` is usage-prefixed (`recirc_ok__threshold`),
+`beta_ok.beta_limit_in` is owner-instance-prefixed and carries the library formal's
+`_in` suffix while the key does not, `wall_load_ok.wall_load` is a channel
 whose producing block name appears nowhere in the operand, and
 **`net_positive.net_electric` resolves to nothing at all** — no parameter and no
 channel contains that string; its value is `pb__p_net`. So a generic verifier that
@@ -136,77 +137,3 @@ frame. They are **not sourced design bounds**, and a study run inside them is no
 testing whether the window is right.
 
 ---
-
-## § Loader exception and glue
-
-Current teax main refuses this package's `v1.0.0` seal, so studies run under the era
-pin (below) through `era_adapter.py`. That adapter is temporary and states its own
-expiry.
-
-**The accept-set is exactly two files.** Of the 139 sealed artifacts in
-`contracts/package_contract.json`, exactly two differ from their sealed hashes:
-
-- `inputs/system_design.json`
-- `pipelines/mfe_stellarator.yaml`
-
-The adapter runs the era's **full** verification — version gate, authenticated
-verifier, per-file hashes — and accepts only if every diagnostic is a `TAMPER` on one
-of those two. A different file, a different diagnostic kind, or an era-version
-mismatch still refuses. This is a precisely scoped exception, not a relaxation of
-sealing, and its scope is held by a negative test that modifies a third artifact.
-
-**The identity is earned, not borrowed.** The adapter does *not* return the sealed
-`executable_fingerprint` as the identity of a route that bypassed the seal. It
-returns an **effective executable fingerprint** over three declared inputs: the sealed
-fingerprint, the actual digests of the two allowed-modified files, and the digests of
-its own declared sources. Touch any of them and the identity changes, so a
-pre-existing store refuses to resume.
-
-**Declared sources — editing any of these retires every existing store:**
-`studies/era_adapter.py`, `studies/oracle_entry.py`, `verify_stellaris.py`. All three
-can move a number that is fed into a run. It is a sharp edge, and it is the correct
-one; the refusal message names the file whose digest moved.
-
-**Consequence for the pre-capability evidence.** The committed proof-of-life stores
-under `study/_work/` were written under the *sealed* fingerprint, which that route
-never earned. `verify.py` refuses them for exactly that reason. They stay as executed
-evidence of what ran before the capability existed, and they are not re-verified under
-the promoted identity because they are not that lineage.
-
-**The glue ledger.**
-
-| Rung | What it supplies that the model does not | Independently verified |
-|---|---|---|
-| `g1` | The two seal exceptions above: a BOP repoint and three schema fillers. | Yes — every *other* sealed artifact is checked on every load, and both files' actual digests are inputs to the identity. |
-| `g2` | Constant injections per proposal: the CAS28 costing constant (2 keys, 5.0 M$), the declared replacement `n_mod` default codegen could not resolve, and three dead `mfe_plant__MFE_Power_Plant__p_*` schema fillers. | Yes — the three fillers are asserted **dead** on every load: nothing in the executed pipeline spec reads them, so they move no number either way. |
-| `g3` | `special_materials_capital` (2 keys). CAS27 is a function of the radial-build blanket volume, which the package cannot wire cross-part, so it is recomputed **per point** from the same formula the oracle uses and off-baseline points stay self-consistent. | **No.** Fed identically to the package and to the oracle, so oracle parity verifies the package's arithmetic *given* this value. The CAS27 ingredient itself is not independently checked. `verification_summary.json` says so in `not_independently_verified`. |
-
-### Deletion condition
-
-The stock `ProvisionalPackageLoader` accepts the (regenerated) package with
-`strict=True`. When it does, `era_adapter.py` is deleted whole, the study-local
-definition swaps this loader for the stock one and `scripts/study/identity.py`'s
-sealed emitter, the sealed `executable_fingerprint` becomes the identity again,
-`promotion_equivalence.py` is deleted with it, and `oracle_entry.py` stays — it is the
-verification seam, not glue. There is no partial retirement and no dormant
-compatibility branch.
-
----
-
-## § Era pin
-
-Studies on this package run against a **read-only git worktree of teax at `fa0e06a`**,
-at `/home/reid/1cfe/teax-v1-era` (`packages/teax-simkit` on `sys.path`; override the
-location with `TEAX_V1_ERA`).
-
-`fa0e06a` is the commit that built the study layer, and the same v1 era that generated
-and certified this package. The adapter **asserts** the pin on every load — it reads
-the worktree's HEAD and fails closed naming the expected and found commits — rather
-than merely recording it.
-
-**Current teax main refuses this package's `v1.0.0` seal, and that refusal is
-principled. It is not to be chased upstream.** Main's fail-closed re-vendor is doing
-its job; the package is from an earlier runtime contract. The fix is regenerating the
-package, not weakening the loader — and regenerating it is also what retires the
-adapter (see § Loader exception and glue → Deletion condition). Nothing in teax or
-sysml-codegen is modified by this capability.

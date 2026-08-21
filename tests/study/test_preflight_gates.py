@@ -39,16 +39,9 @@ RECORD_ROWS = {
 
 
 @pytest.fixture(scope="session")
-def executed_baseline(tmp_path_factory, stock_simkit_session_path):
+def executed_baseline(stock_route_run):
     """One executed baseline point plus the two documents it deposits (stock route)."""
-    studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
-    if studies not in sys.path:
-        sys.path.insert(0, studies)
-    import study_route
-
-    out = tmp_path_factory.mktemp("baseline")
-    study_route.execute_baseline(out)
-    return out
+    return stock_route_run["dir"]
 
 
 def run_preflight(*argv, expect=None):

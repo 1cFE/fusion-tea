@@ -1,47 +1,33 @@
-"""Single-pass stellarator runner (Item 10 cutover) — NO bridge, NO two-pass rollup glue.
+"""Single-pass stellarator runner: the sealed package at its authored design point.
 
-The cross-part capital rollup (powercore/bop/direct/total_capital) is now compiled by codegen
-as instance-scoped aggregation producers, so a single teax-simkit pass computes it in the graph.
-glue-1 (patch_bop_wiring) is kept; glue-2 (the Python rollup + placeholder overwrite) is retired
-with bridge_v11_generate.py. special_materials_capital (CAS27 pass-through, a declared plain
-design input) is harness-supplied. Anchors verified bit-exact vs oracle (rel<1e-9); five verdicts
-all satisfied.
+The cross-part capital rollup (powercore/bop/direct/total_capital) is compiled by codegen
+as instance-scoped aggregation producers, so one teax-simkit pass computes it in the
+graph. Since the stellarator model migration (2026-08-21) there is no harness glue of any
+kind: the BOP repoint, CAS27 special materials, the CAS28 constant and the replacement
+`n_mod` are authored in the model and shipped in the sealed package's own inputs, which
+stock teax's strict loader verifies before import (`run_stellaris.py`). Anchors are
+checked bit-exact vs the oracle (rel < 1e-9); all five verdicts must be satisfied.
+
+Run (repository root, with STOP_PARSER_TEAX_ROOT exported):
+    uv run python exploration/stellarator_e2e/run_stellaris_single.py
 """
-import sys, json
+import json
+import sys
 from pathlib import Path
-sys.path.insert(0, "/home/reid/1cfe/teax/packages/teax-simkit")
-sys.path.insert(0, ".")
-import run_stellaris as rs
-from verify_stellaris import compute as oracle_compute
-from simkit.core.pipeline import execute_pipeline
-from simkit.io.output_router import WriteHandler, create_output_router_with_json_schemas
-from stellarator_tea import CUSTOM_SCHEMA_TYPES, create_stellarator_tea_registry
 
-rs.patch_bop_wiring()  # glue-1 (kept); NO rollup glue-2, single pass
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import run_stellaris as rs  # noqa: E402  (strict-loads the sealed package)
+from simkit.core.pipeline import execute_pipeline  # noqa: E402
+from simkit.io.output_router import (  # noqa: E402
+    WriteHandler,
+    create_output_router_with_json_schemas,
+)
+from verify_stellaris import compute as oracle_compute  # noqa: E402
+
+CUSTOM_SCHEMA_TYPES = rs.CUSTOM_SCHEMA_TYPES
+create_stellarator_tea_registry = rs.create_stellarator_tea_registry
+
 o = oracle_compute()
-special = o["special_materials"]
-# Inject the leaf design inputs surfaced as per-module entry points (WI-028: the
-# rebuilt overnight assembly consumes special_materials_capital in both
-# cas2x_pre_contingency and cas23_to_28_capital, and cas28_capital likewise;
-# each surfaces as its own module-scoped entry point). CAS27 special materials is
-# the harness-supplied pass-through; CAS28 digital twin is the 5.0 M$ constant.
-CAS28_CAPITAL = 5_000_000.0  # costing_constants.yaml:229 (digital_twin 5.0 M$) x 1e6
-# WI-029: the CAS72 replaceable-account aggregation carries a plant-level n_mod
-# LocalTerm that codegen cannot resolve inside an aggregation, so it surfaces as
-# a NULL entry point (the WI-028 I7 class). Fill it with the plant's own value —
-# mfe_plant.sysml:328 `attribute n_mod : Real default 1.0`, the single-module
-# demo. Value-preserving: it restores the declared default, it does not choose one.
-N_MOD = 1.0
-for f in Path("generated/inputs").glob("*.json"):
-    d = json.loads(f.read_text())
-    changed = False
-    for k in list(d):
-        if k.endswith("__special_materials_capital"): d[k] = special; changed = True
-        elif k.endswith("__cas28_capital"): d[k] = CAS28_CAPITAL; changed = True
-        elif k == "stellarator_09__stellaris__replacement_cost_per_event__n_mod":
-            d[k] = N_MOD; changed = True
-    if changed:
-        f.write_text(json.dumps(d, indent=2)); print(f"[inject] special_materials={special:,.2f}, cas28={CAS28_CAPITAL:,.2f} into {f.name}")
 
 # CONSTRAINT-EXEC (WI-027 adapter 1): the generated CUSTOM_SCHEMA_TYPES already carry
 # ConstraintEvaluation + ConstraintReport, so registering write handlers for every
@@ -109,12 +95,14 @@ for c,v in out.items():
         name = c.split("__")[2]
         verdicts[name] = v.status
         print(f"  {name:14s} {v.status}")
-assert report.headline == "all_satisfied", f"headline {report.headline!r} != all_satisfied"
-assert report.assessed_count == 5, f"assessed_count {report.assessed_count} != 5"
+# Runtime contract 2.0.0 vocabulary: `full_satisfaction` is the headline token for "every
+# assessed entry satisfied"; the occurrence tier is `assessed_entry_count`.
+assert report.headline == "full_satisfaction", f"headline {report.headline!r} != full_satisfaction"
+assert report.assessed_entry_count == 5, f"assessed_entry_count {report.assessed_entry_count} != 5"
 for name, exp in EXPECTED_VERDICTS.items():
     got = verdicts.get(name)
     assert got == exp, f"VERDICT PARITY FAIL: {name} = {got!r}, expected {exp!r} (surface per MR-WI027-4)"
-print(f"VERDICT PARITY: PASS — headline={report.headline}, assessed_count={report.assessed_count}, all five == satisfied")
+print(f"VERDICT PARITY: PASS — headline={report.headline}, assessed_entry_count={report.assessed_entry_count}, all five == satisfied")
 print("ANCHORS", "GREEN" if allok else "*** STOP — DEVIATION ***")
 
 # --- Bit-exact oracle comparison (WI-027 standard: rel dev < 1e-9) ---
@@ -142,10 +130,10 @@ print("BIT-EXACT vs oracle:", "PASS" if bit else "*** FAIL ***")
 # the mirror in verify_stellaris.py is an independent statement of the chain,
 # so the comparison is not vacuous. Guards that never bind are decoration —
 # these two cases drive them live and prove they are structural.
-from stellarator_tea.handwritten.mfe_account_costs.levelized_replacement_cost_impl import (
+from stellarator_tea.handwritten.mfe_account_costs.levelized_replacement_cost_impl import (  # noqa: E402
     levelized_replacement_cost as _cas72_impl,
 )
-from verify_stellaris import _oracle_levelized_replacement_cost as _cas72_mirror
+from verify_stellaris import _oracle_levelized_replacement_cost as _cas72_mirror  # noqa: E402
 
 print("\n=== WI-029 CAS72 GUARD-LIVE SPOT-CHECK (impl vs oracle mirror, rel<1e-9) ===")
 GUARD_CASES = [

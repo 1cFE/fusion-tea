@@ -39,22 +39,9 @@ FIELD_SURVIVAL = {
 
 
 @pytest.fixture(scope="session")
-def promoted_run(tmp_path_factory, stock_simkit_session_path):
-    """A stock-route store plus the sealed identity document that scopes it."""
-    studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
-    if studies not in sys.path:
-        sys.path.insert(0, studies)
-    import study_route
-
-    out = tmp_path_factory.mktemp("verify_run")
-    study_route.run_availability_sweep(out)
-    study_route.execute_baseline(out)
-    return {
-        "dir": out,
-        "identity": out / "package_identity.json",
-        "store": out / "_work" / "stellarator-availability-sweep-v1.db",
-        "simkit": stock_simkit_session_path,
-    }
+def promoted_run(stock_route_run):
+    """The stock-route store plus the sealed identity document that scopes it."""
+    return stock_route_run
 
 
 def run_verify(promoted_run, out, *extra, expect=None):

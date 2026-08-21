@@ -186,34 +186,6 @@ class PackageCopy:
             self.repin()
         return run_tool_raw(self.path, self.manifest, self.axes, out=out, group=group)
 
-    # --- Item 4: the identity document, and the third rule that comes with it ---
-    #
-    # A mutation test against the identity gate has to say which half it is aiming at.
-    # Editing a glue file and re-emitting the document is a *legitimately new* identity
-    # (the route bypassed different bytes and says so). Editing it and NOT re-emitting
-    # is the wrong-fingerprint negative. Neither is the default, because a default here
-    # would silently decide which failure the test was testing.
-
-    def emit_identity(self, out_path=None):
-        """Write this copy's identity document through the package's own adapter."""
-        import sys
-
-        studies = REPO_ROOT / "exploration" / "stellarator_e2e" / "studies"
-        for entry in (str(studies), str(REPO_ROOT)):
-            if entry not in sys.path:
-                sys.path.insert(0, entry)
-        import era_adapter
-
-        return era_adapter.write_identity_document(
-            self.path, out_path or self.path.parent / "package_identity.json"
-        )
-
-    def edit_glue(self, relative, old, new, *, reemit_identity):
-        """Edit one of the route's allowed-modified files, re-emitting the identity or not."""
-        self.edit(relative, old, new)
-        if reemit_identity:
-            self.emit_identity()
-
 
 @pytest.fixture
 def package_copy(tmp_path):
@@ -252,73 +224,11 @@ def real_copy(package_copy):
     return package_copy(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWER_DECLARATION)
 
 
-# --------------------------------------------------------------- Item 4: the era dependency
-#
-# The era teax worktree is a read-only external dependency: not in this repo, not
-# installed by uv. A machine without it legitimately cannot run the era-dependent
-# tests, so those tests skip with a reason that names the resolved path, the pinned
-# commit, what was found, and the override. Silence is the real risk, so
-# ``STUDY_REQUIRE_ERA=1`` turns every such skip into a hard failure — this item's
-# own validation runs set it, and it is the flag CI would use.
-#
-# The committed proof-of-life stores under ``study/_work/`` are gitignored, so they
-# are the same kind of dependency and follow the same rule.
-
-ERA_PIN_COMMIT = "fa0e06a"
-ERA_DEFAULT_WORKTREE = Path("/home/reid/1cfe/teax-v1-era")
-ERA_SIMKIT_SUBPATH = "packages/teax-simkit"
-
-
-def _require_era() -> bool:
-    return os.environ.get("STUDY_REQUIRE_ERA") == "1"
-
-
-def _unavailable(reason: str):
-    """Skip on an absent external dependency, unless STUDY_REQUIRE_ERA=1 promotes it."""
-    if _require_era():
-        pytest.fail(reason)
-    pytest.skip(reason)
-
-
-def _era_worktree() -> Path:
-    return Path(os.environ.get("TEAX_V1_ERA") or ERA_DEFAULT_WORKTREE)
-
-
-@pytest.fixture
-def era_simkit_path() -> Path:
-    """The pinned era ``teax-simkit`` directory, put on ``sys.path``.
-
-    Resolves ``$TEAX_V1_ERA`` if set, else the default worktree. Requires both the
-    ``packages/teax-simkit`` directory and the pinned HEAD.
-    """
-    worktree = _era_worktree()
-    simkit = worktree / ERA_SIMKIT_SUBPATH
-    override = "set TEAX_V1_ERA to override the worktree location"
-    if not simkit.is_dir():
-        _unavailable(
-            f"era teax worktree unavailable: expected {ERA_SIMKIT_SUBPATH} under "
-            f"{worktree} at commit {ERA_PIN_COMMIT}, found no such directory ({override})"
-        )
-    head = subprocess.run(
-        ["git", "-C", str(worktree), "rev-parse", "--short", "HEAD"],
-        capture_output=True, text=True,
-    )
-    found = head.stdout.strip()
-    if head.returncode != 0 or not found.startswith(ERA_PIN_COMMIT[:7]):
-        _unavailable(
-            f"era teax worktree is at the wrong commit: {worktree} expected "
-            f"{ERA_PIN_COMMIT}, found {found or 'no git HEAD'} ({override})"
-        )
-    if str(simkit) not in sys.path:
-        sys.path.insert(0, str(simkit))
-    return simkit
-
-
 # ------------------------------------------------ stellarator-model-migration: the stock route
 #
 # The regenerated package runs on stock teax, reached through the sealed-runner contract's
 # ``STOP_PARSER_TEAX_ROOT`` (design D4): the root of a teax checkout whose
-# ``packages/teax-simkit`` goes on ``sys.path``. Like the era worktree above, it is an
+# ``packages/teax-simkit`` goes on ``sys.path``. It is an
 # external dependency that uv does not install, so its absence skips with the resolved path
 # in the reason; ``STUDY_REQUIRE_TEAX=1`` turns that skip into a failure.
 
@@ -360,22 +270,22 @@ def stock_simkit_session_path() -> Path:
     return _stock_simkit_path()
 
 
-COMMITTED_STUDY_DIR = REPO_ROOT / "exploration" / "stellarator_e2e" / "study"
-COMMITTED_WORK_DIR = COMMITTED_STUDY_DIR / "_work"
+@pytest.fixture(scope="session")
+def stock_route_run(tmp_path_factory, stock_simkit_session_path):
+    """One stock-route execution per session: the availability sweep's store plus the
+    sealed identity document and baseline result the route deposits."""
+    studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+    if studies not in sys.path:
+        sys.path.insert(0, studies)
+    import study_route
 
-
-@pytest.fixture
-def committed_store_path():
-    """Factory for a proof-of-life store path. Read-only — these stores are evidence."""
-
-    def _store(name: str) -> Path:
-        path = COMMITTED_WORK_DIR / name
-        if not path.is_file():
-            _unavailable(
-                f"proof-of-life store unavailable: {path} (gitignored executed evidence; "
-                f"re-produce it by running exploration/stellarator_e2e/study/run_design_search.py "
-                f"under the era pin {ERA_PIN_COMMIT})"
-            )
-        return path
-
-    return _store
+    out = tmp_path_factory.mktemp("stock_route_run")
+    study_route.run_availability_sweep(out)
+    study_route.execute_baseline(out)
+    return {
+        "dir": out,
+        "identity": out / "package_identity.json",
+        "baseline_result": out / "baseline_result.json",
+        "store": out / "_work" / "stellarator-availability-sweep-v1.db",
+        "simkit": stock_simkit_session_path,
+    }

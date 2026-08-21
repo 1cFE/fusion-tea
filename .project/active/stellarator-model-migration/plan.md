@@ -1,6 +1,6 @@
 # Implementation Plan: Stellarator Model Migration
 
-**Status:** In Progress (Phases 1–4 complete)
+**Status:** In Progress (Phases 1–5 complete)
 **Created:** 2026-08-21
 **Last Updated:** 2026-08-21
 **Branch:** `feat/stellarator-model-migration` (one PR; see design D5)
@@ -403,26 +403,26 @@ def test_retired_identifiers_appear_only_in_historical_records(repo_root):
 - Annex/runbook handling → D11
 
 **Specific changes:**
-- [ ] Delete `exploration/stellarator_e2e/studies/era_adapter.py`, `studies/promotion_equivalence.py`
-- [ ] `tests/study/conftest.py`: delete the era section (`ERA_PIN_COMMIT`, `_era_worktree`, `era_simkit_path`, `PackageCopy.emit_identity`/`edit_glue`); `committed_store_path` points at stock-route stores or is deleted with its users
-- [ ] Delete or rewrite against the stock route (inventory by `grep -ln "era\|glue" tests/study/*.py`, not the spec's count): `test_era_pin.py` (delete), `test_promotion_equivalence.py` (delete — D12), `test_glue_mapping_agreement.py` (delete), `test_accept_set.py`, `test_committed_store.py`, `test_lineage_refusal.py`, `test_identity.py` (era-named fixture data only → rename), `test_preflight_gates.py:46-51`, `test_verify.py:46-82` (stock fixture). Keep `test_generic.py:21`'s "no `era_adapter` in `scripts/study`" needle — it is the package-agnostic gate.
-- [ ] `exploration/stellarator_e2e/run_stellaris.py:128-154` (`patch_bop_wiring`, glue-1) and `run_stellaris_single.py:25-44` (`CAS28_CAPITAL`, `N_MOD` injection): delete the glue; the runners load the sealed package strictly or are reduced to the helpers that `verify_stellaris.py`/`build_verdict_report.py` still import (check importers first)
-- [ ] `exploration/stellarator_e2e/study/make_report.py:420-431`: the glue caveat text describes the proof-of-life run (historical); leave as a dated statement or mark it as describing the before-run — do not let it claim the current route has glue
-- [ ] `studies/ANNEX.md`: remove `§ Loader exception and glue` (`:140-195`, incl. the deletion-condition note, now met) and `§ Era pin` (`:196-`); `.claude/skills/run-study/runbook.md:103,147,160,213` → conditional reads ("when the annex has such a section")
-- [ ] Delete the Phase 3 comparison harness from wherever it lived; keep the after-record
-- [ ] `pyproject.toml:53-55`: drop the `slow` marker if no test uses it after `test_promotion_equivalence.py` goes
+- [x] Delete `exploration/stellarator_e2e/studies/era_adapter.py`, `studies/promotion_equivalence.py`
+- [x] `tests/study/conftest.py`: delete the era section (`ERA_PIN_COMMIT`, `_era_worktree`, `era_simkit_path`, `PackageCopy.emit_identity`/`edit_glue`); `committed_store_path` points at stock-route stores or is deleted with its users
+- [x] Delete or rewrite against the stock route (inventory by `grep -ln "era\|glue" tests/study/*.py`, not the spec's count): `test_era_pin.py` (delete), `test_promotion_equivalence.py` (delete — D12), `test_glue_mapping_agreement.py` (delete), `test_accept_set.py`, `test_committed_store.py`, `test_lineage_refusal.py`, `test_identity.py` (era-named fixture data only → rename), `test_preflight_gates.py:46-51`, `test_verify.py:46-82` (stock fixture). Keep `test_generic.py:21`'s "no `era_adapter` in `scripts/study`" needle — it is the package-agnostic gate.
+- [x] `exploration/stellarator_e2e/run_stellaris.py:128-154` (`patch_bop_wiring`, glue-1) and `run_stellaris_single.py:25-44` (`CAS28_CAPITAL`, `N_MOD` injection): delete the glue; the runners load the sealed package strictly or are reduced to the helpers that `verify_stellaris.py`/`build_verdict_report.py` still import (check importers first)
+- [x] `exploration/stellarator_e2e/study/make_report.py:420-431`: the glue caveat text describes the proof-of-life run (historical); leave as a dated statement or mark it as describing the before-run — do not let it claim the current route has glue
+- [x] `studies/ANNEX.md`: remove `§ Loader exception and glue` (`:140-195`, incl. the deletion-condition note, now met) and `§ Era pin` (`:196-`); `.claude/skills/run-study/runbook.md:103,147,160,213` → conditional reads ("when the annex has such a section")
+- [x] Delete the Phase 3 comparison harness from wherever it lived; keep the after-record
+- [x] `pyproject.toml:53-55`: drop the `slow` marker if no test uses it after `test_promotion_equivalence.py` goes
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study/test_no_retired_identifiers.py -q` → pass
-- [ ] `STUDY_REQUIRE_TEAX=1 uv run python -m pytest tests/study -q` → green, 0 skipped (record the new count; before: 273)
-- [ ] `uv run python -m pytest tests/models -q` → still green
-- [ ] `uv run ruff check scripts/study tests/study exploration/stellarator_e2e` → clean
+- [x] `uv run python -m pytest tests/study/test_no_retired_identifiers.py -q` → pass
+- [x] `STUDY_REQUIRE_TEAX=1 uv run python -m pytest tests/study -q` → green, 0 skipped (record the new count; before: 273)
+- [x] `uv run python -m pytest tests/models -q` → still green
+- [x] `uv run ruff check scripts/study tests/study exploration/stellarator_e2e` → clean
 
 **Manual:**
-- [ ] `grep -rn "fa0e06a\|teax-v1-era\|era_adapter\|promotion_equivalence" exploration scripts tests .claude docs` → only the historical files
-- [ ] `git -C /home/reid/1cfe/teax-v1-era` is **not** touched (tidy pass is a Non-Goal)
+- [x] `grep -rn "fa0e06a\|teax-v1-era\|era_adapter\|promotion_equivalence" exploration scripts tests .claude docs` → only the historical files
+- [x] `git -C /home/reid/1cfe/teax-v1-era` is **not** touched (tidy pass is a Non-Goal)
 
 **What We Know Works After This Phase:**
 SC3 met. The study and test paths have one route: stock teax, sealed identity.
@@ -569,10 +569,23 @@ The item is auditable end to end. Next: `/_my_audit`, then `/_my_pre_pr`.
 - The MFE census is a JSON fixture rather than inline sets: 166 qualified names inline would bury the test; the fixture is bound to the semantic fingerprint exactly like the study known answers.
 
 ### Phase 5 Completion
-**Completed:**
+**Completed:** 2026-08-21
 **Actual Changes:**
-**Issues:**
-**Deviations:**
+- Deleted whole: `studies/era_adapter.py`, `studies/promotion_equivalence.py`, `tests/study/test_era_pin.py`, `test_accept_set.py`, `test_glue_mapping_agreement.py`, `test_promotion_equivalence.py`, `test_lineage_refusal.py` (era-API mechanism; the stock-route refusal of a store bound to another identity is `test_verify.py::test_a_store_bound_to_another_identity_is_refused`).
+- `tests/study/conftest.py`: era section, `emit_identity`/`edit_glue`, `committed_store_path` gone; one session fixture `stock_route_run` (availability sweep + baseline on the stock route) shared by `test_verify.py`, `test_preflight_gates.py`, and the rewritten `test_committed_store.py` (S4 on a stock store). `test_identity.py` synthetic data renamed (`a/route_adapter.py`).
+- `run_stellaris.py`: helpers only -- glue-1 (`patch_bop_wiring`), `SYS_DESIGN`/`MFE_PARAMS`, the unused contingency/indirect imports gone; the package is now strict-loaded through `ProvisionalPackageLoader` (link in a scratch dir) with teax from `STOP_PARSER_TEAX_ROOT`; `PIPELINE = pipelines/pipeline.yaml`. `run_stellaris_single.py`: the `[inject]` loop and the glue-1 call gone; 2.0.0 report vocabulary (`full_satisfaction`, `assessed_entry_count`). Run on the sealed package: anchors GREEN, verdict parity PASS, bit-exact vs oracle PASS, CAS72 guard-live PASS.
+- `studies/ANNEX.md`: `§ Loader exception and glue` (incl. the deletion condition, now met) and `§ Era pin` removed; "Four sections" with the reason the two optional ones do not exist; `§ Declared ties` and `§ Oracle` re-keyed (one `R` entry point, two published surfaces, 52 mapped / 46 recorded channels, CAS27 compared, usage-prefixed threshold, `_in` operand names). `.claude/skills/run-study/runbook.md`: the four links to the two sections read "when the annex has one".
+- `tests/study/test_annex.py`: four-section contract, optional sections must be absent and explained, runbook links to them must be conditional, oracle section must publish two surfaces and compare CAS27.
+- `tests/study/test_no_retired_identifiers.py` (NEW): retired identifiers survive only in the named historical records and absence-guards. `pyproject.toml`: `slow` marker removed with the grid test.
+- Suites: `tests/study` 245 passed / 1 skipped in one invocation (era and stock fixtures no longer collide); `tests/models` 43/13; root acceptance 20/20; ruff clean on `scripts/study`, `tests/study`, `studies/`, `run_stellaris.py` (`run_stellaris_single.py` keeps its pre-existing E501/E702 style; only the lines I wrote are clean).
+
+**Issues Encountered:**
+- **Surfaced, not touched: `exploration/stellarator_e2e/handshake_1costingfe.py`.** The Item 1–4 handshake harness carries its own `patch_bop_wiring(o)` and a 1costingFE injection map (incl. the old CAS27/CAS28/`n_mod` glue keys) and reads `pipelines/mfe_stellarator.yaml` / `inputs/system_design.json`, so it cannot run on the 2.0.0 package and, if it did, would mutate the sealed tree (I6). It is named in neither the spec's SC3 inventory nor the design's retirement boundary, and it belongs to the on-hold Stellarator Demo epic's evidence (`HANDSHAKE_REPORT.md`). Left as is and listed in the sweep's HISTORICAL set; the owner decides whether it is rewritten as proposals through the stock route or archived.
+- `make_report.py`, `report.html`, `synthesis.md` under `study/` describe the July proof-of-life run (era pin, glue caveats) and are kept as historical evidence, also in the sweep's HISTORICAL set.
+
+**Deviations from Plan:**
+- `test_lineage_refusal.py` was deleted rather than rewritten: its claim (a store bound to one identity refuses another) is already held on the stock route by `test_verify.py`, and its mechanism (adapter-source digests) no longer exists.
+- The sweep allow-lists three tests that name a retired identifier only to assert its absence (`test_annex.py`, `test_generic.py`, `test_preflight_gates.py`).
 
 ### Phase 6 Completion
 **Completed:**
