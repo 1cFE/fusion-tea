@@ -14,10 +14,38 @@ Findings:
 Smells: none fired (spec stage; the §4 smells are design-review and audit tripwires).
 Gate: BLOCKED (spec-F1, spec-F2)
 
-
 ### Dispositions — 2026-08-20 (spec author)
 - spec-F1: FIXED — Success Criteria 4 reworded: every gap entry, load-bearing or not, carries a disposition (`applied` | `deferred to <home>` | `dropped, <reason>`).
 - spec-F3: FIXED — directory-only rule regraded `[HARD]` → `[NEED]` with the concept SC4 cite.
 - spec-F2: OPEN — awaiting owner pick between (a) Item 5 creates `DISCOVERY_LOG.md` and files its rows, or (b) an explicit Item 5 → Item 6 handoff deliverable named in the epic's Item 6 scope. Gate stays BLOCKED until dispositioned.
 - spec-F2: DISPOSED by owner ruling (2026-08-20) — the finding conflated two things. `gaps.md` entries are contract-check results (a one-time verification of the Item 2 template), not study findings; they get no discovery-log row and Item 5 creates no log. Model findings appear in Item 5 only as content the synthesis reports with cites; routing and indexing them is out of scope here (Item 6 owns the log). Spec amended: Problem (two senses of "gap"), Known Requirements, Non-Goals; open question removed.
 - Gate: CLEAR (F1 fixed, F2 disposed by owner, F3 fixed).
+
+## audit — 2026-08-20 — rev a27e882c
+
+Point (re-derived): A fresh administrator must recover the study framing, LCOE result, named constraint outcomes, and evidence-backed findings from the committed record alone; anything missing stays explicit rather than being imported or inferred.   [source: `.project/concepts/run-study-skill.md` Owner’s Words (roles) + Success Criterion 4, grade: owner]
+Falsifier: A fresh administrator given only a template-conforming record cannot recover a required fact or must consult an external file to understand the evidence behind it.
+Findings:
+- audit-F1 [DO] The G1 amendment records the oracle’s `tool-source-digest/v1` as only `{recipe, digest}`, omitting the named `files[]` that defines what this digest covers; the emitted digest contract and its tests require `{recipe, digest, files}`, so a template-conforming record cannot tell a cold reader which oracle sources were pinned. The same hand-written truncation exists under `tools[].source_digest`, and all 273 tests pass because none checks the template against the emitted shape. Concrete falsifier: fill `snapshot.json` exactly from `record-template.md`, then ask an administrator which files the oracle digest covers without leaving the record; the record cannot answer. — `.project/concepts/run-study-skill-design.md` “The study record” and Required Invariants (agent/ratified) — disposition: DISPOSE-and-proceed; before Item 6, carry the full `{recipe, digest, files[]}` shape in both template locations and add a contract check against the emitted shape.
+Smells: **1. Two representations must be manually kept synchronized** fired; the hand-written snapshot digest shape has diverged from the producer/test contract and is the basis of audit-F1. Smells 3, 4, 5, and 6 did not fire.
+Gate: BLOCKED (spec-F1, spec-F2)
+
+## audit — 2026-08-20 — rev owner walkthrough 1
+
+Point (re-derived): A fresh administrator must recover the study framing, LCOE result, named constraint outcomes, and evidence-backed findings from the committed record alone; anything missing stays explicit rather than being imported or inferred.   [source: `.project/concepts/run-study-skill.md` Owner’s Words (roles) + Success Criterion 4, grade: owner]
+Falsifier: A fresh administrator given only the committed record cannot recover a required study fact without outside study evidence.
+Findings: None.
+Resolves:
+- audit-F1: DEFERRED — authority: owner — basis: the oracle's role in a general study is conceptually unsettled; G1 is non-load-bearing for this cold-pickup exercise, so its exact fingerprint shape is a future Align question rather than an Item 5 certification blocker. This also disposes the associated smell for Item 5.
+Gate: BLOCKED (spec-F1, spec-F2)
+
+## audit — 2026-08-20 — rev owner walkthrough 2
+
+Point (re-derived): A cold administrator uses only committed study evidence, keeps recorded facts, missing facts, and labeled interpretation distinct, and exposes any contract gaps before the first compliant study. [source: `.project/concepts/run-study-skill.md`, grade: owner]
+Falsifier: The synthesis imports or reconstructs missing evidence, or a fact needed to recover framing, LCOE, named constraint outcomes, or findings remains absent from the contract without a recorded disposition.
+Findings: None.
+Smells: None unresolved; smell 1 was disposed with `audit-F1` in the prior owner-authorized resolution.
+Resolves:
+- `spec-F1`: FIXED — authority: owner — basis: spec Success Criterion 4 now requires a disposition for every gap, and `gaps.md` records dispositions for G1 and G2.
+- `spec-F2`: DEFERRED — authority: owner — basis: Item 5 tests the record contract and does not own discovery-log creation or model-finding routing; Item 6 owns that log.
+Gate: CLEAR

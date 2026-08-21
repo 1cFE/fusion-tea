@@ -1,7 +1,7 @@
 # Epic: Run-Study Capability
 
 **Epic ID**: RUN-STUDY
-**Status**: Active — Items 1–5 complete (2026-08-20); Item 6 remaining
+**Status**: Active — Items 1–4 complete; Item 5 audit Needs Work; Item 6 remaining
 **Priority**: High
 **Created**: 2026-08-19
 **Estimated Effort**: ~6–9 days
@@ -327,9 +327,9 @@ Gate: CLEAR
 
 ---
 
-### Item 5: Cold-Pickup Administrator Exercise ✅
+### Item 5: Cold-Pickup Administrator Exercise
 
-**Completed 2026-08-20** — design skipped by owner; plan 5 phases. A fresh agent read only the git-tracked proof-of-life files and wrote `exploration/stellarator_e2e/study/synthesis.md` (20 unrecoverable facts, citations clean). `gaps.md`: 18 limitations the contract already covers, 1 not-an-absence, 2 gaps — G1 (oracle source digest not snapshotted) applied at `316fc3a0` by owner decision; G2 (SKILL.md pre-capability allowance) not applied. **Owner note for Item 6 Align:** revisit whether verification/oracle is a mandatory study step at all (`run-study-cold-pickup/plan.md § Revisit`).
+**Implemented 2026-08-20; audit Needs Work** — design skipped by owner; see `.project/active/run-study-cold-pickup/audit.md`. The legacy evidence stayed unchanged, 273 study tests pass, and the cold-reader comparison and gap classification are complete. Certification now waits only on the runbook's commit/findings order, which the owner chose to leave unresolved in this walkthrough. **Owner note for Item 6 Align:** revisit whether verification/oracle is a mandatory study step at all; G1's exact fingerprint shape is deferred with that question (`run-study-cold-pickup/plan.md § Revisit`).
 
 **Type**: Testing/Integration
 
@@ -338,7 +338,7 @@ Gate: CLEAR
 **Current State**:
 - ✅ The proof-of-life directory contains result CSVs, a verification summary, a report, and regeneration scripts.
 - ⚠️ It predates the capability and has no `record.md`, explicit record snapshot, or complete administrator contract.
-- ❌ Administer mode has not been exercised by a fresh context.
+- ✅ Administer mode ran in a fresh context; its synthesis is preserved byte-identical and the post-read comparison is complete.
 
 **Required Reading**:
 - `.project/concepts/run-study-skill.md` — cold-pickup owner statements
@@ -358,10 +358,10 @@ Gate: CLEAR
 - Running new study points.
 
 **Success Criteria**:
-- [x] A fresh-context synthesis exists and cites only artifacts inside the legacy study directory. *(`exploration/stellarator_e2e/study/synthesis.md`; citation grep clean, Phase 2 notes)*
-- [x] The synthesis distinguishes recorded evidence from missing evidence explicitly. *(§ 6 "What the record does not support", 20 entries; evidence grades stated in the header)*
-- [x] A gap list maps each missing fact to the record template, runbook, or a stated pre-capability limitation. *(`gaps.md § Absences`, every entry bucketed with the covering section cited)*
-- [x] Item 2 artifacts incorporate all load-bearing gaps before Item 6 starts. *(none were load-bearing; G1 applied anyway at `316fc3a0`, G2 not applied with reason)*
+- [x] A fresh-context synthesis exists and its evidentiary citations name artifacts inside the legacy study directory. *(The Phase 2 notes distinguish in-directory evidence from filenames named only to report their absence.)*
+- [x] The synthesis distinguishes recorded evidence, missing evidence, and labeled administrator interpretation explicitly. *(The synthesis leaves executor framing missing while labeling its evidence-backed search/sensitivity judgments as the administrator's reading.)*
+- [x] A gap list maps each missing fact to the record template, runbook, or a stated pre-capability limitation. *(`gaps.md § Absences`; row 8 separates recorded prose bounds from missing resolved evidence.)*
+- [x] Item 2 artifacts incorporate all load-bearing gaps before Item 6 starts. *(Both gaps were classified non-load-bearing, so no load-bearing edit was required; G1's optional amendment remains open after audit.)*
 
 **Estimated Effort**: 0.5–1 day (brief 1h, exercise 2–4h, contract fixes 1–2h)
 
@@ -507,4 +507,4 @@ Item 1 — Reachability spike
 ---
 
 **Last Updated**: 2026-08-20
-**Next Action**: Items 1-5 COMPLETE. Next: Item 6 — owner Align first (policy disposition; plus the new question from Item 5: is verification/oracle a mandatory study step?), then the first A/B consumer and new-record cold pickup. Criteria 1-4 and 7-8 land with Item 6.
+**Next Action**: Resolve Item 5's `audit.md` findings and re-audit. Item 6 waits; its owner Align still owns the policy disposition and the question of whether verification/oracle is a mandatory study step.

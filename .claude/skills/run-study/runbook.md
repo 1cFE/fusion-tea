@@ -212,7 +212,21 @@ takes to reproduce it.
 **Fails closed when:** nothing mechanical
 **Annex:** `exploration/<pkg>/studies/ANNEX.md § Era pin`
 
-### 14. Resolve the snapshot and commit the record
+### 14. Register the findings and append the discovery-log rows
+
+Collect every finding the study produced — the model-development findings from step 4,
+and whatever the run and the reviews turned up — into the record's findings register,
+each with an id, a kind, a disposition, and a home. `Home` is never blank; `unrouted`
+is a stated state. Then append one log row per finding, joined to the record by the
+same `<study-id>#<n>` id. The executor is the sole writer of the log. This happens
+before the record is committed, so § 15 is filled when step 15 freezes it.
+
+**Calls:** none
+**Deposits:** record.md § 15 Findings + `exploration/<pkg>/studies/DISCOVERY_LOG.md`
+**Fails closed when:** a § 15 finding has no row, or a row names an id that is not in § 15
+**Annex:** none
+
+### 15. Resolve the snapshot and commit the record
 
 Every snapshot value is resolved at this moment and copied in. Nothing in the record
 cites a live file for content: deleting or editing the manifest, the adapter, or the
@@ -224,20 +238,7 @@ immutable: corrections are addenda, and `snapshot.json`, `indicators.json`, and
 
 **Calls:** none
 **Deposits:** `snapshot.json` + record.md § 12 Cross-fingerprint correlation + § 16 Snapshot + § 17 What this record does not contain
-**Fails closed when:** an unreplaced `<...>` placeholder remains in `record.md`; a name under `manifest.content_used.fingerprint_names` has no key under `fingerprints`; an `arms[].store_id` does not resolve into `stores[]`; a result artifact has no digest
-**Annex:** none
-
-### 15. Register the findings and append the discovery-log rows
-
-Collect every finding the study produced — the model-development findings from step 4,
-and whatever the run and the reviews turned up — into the record's findings register,
-each with an id, a kind, a disposition, and a home. `Home` is never blank; `unrouted`
-is a stated state. Then append one log row per finding, joined to the record by the
-same `<study-id>#<n>` id. The executor is the sole writer of the log.
-
-**Calls:** none
-**Deposits:** record.md § 15 Findings + `exploration/<pkg>/studies/DISCOVERY_LOG.md`
-**Fails closed when:** a § 15 finding has no row, or a row names an id that is not in § 15
+**Fails closed when:** an unreplaced `<...>` placeholder remains in `record.md` (the § 15 findings register from step 14 included); a name under `manifest.content_used.fingerprint_names` has no key under `fingerprints`; an `arms[].store_id` does not resolve into `stores[]`; a result artifact has no digest
 **Annex:** none
 
 ---
@@ -254,7 +255,12 @@ elsewhere.
    outside the directory.
 2. **Recover the fresh-administrator facts.** The framing per axis, the LCOE result,
    every named constraint outcome, and every finding — each traced to a committed
-   artifact in the directory. A fact that cannot be recovered is noted as it is found.
+   artifact in the directory. Keep recorded facts, missing facts, and the
+   administrator's interpretations distinct. The administrator may state an
+   evidence-backed interpretation when it is labeled as the administrator's reading
+   and cites the supporting record evidence. It must not attribute that interpretation
+   to the executor or use it to claim that a missing historical fact was recorded. A
+   fact that cannot be recovered is noted as it is found.
 3. **Write `synthesis.md`** in the same directory. It is the administrator's only
    output; the executor's files are never touched.
 4. **State what the record does not support.** Every fact that could not be recovered,

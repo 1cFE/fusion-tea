@@ -18,12 +18,12 @@ Re-derived by reading the three written documents under `.claude/skills/run-stud
 | 6 | Framing, as proposed and as judged | `record.md` §5 Framing | runbook steps 4 and 11 |
 | 7 | Preflight results, pass or fail per gate | `record.md` §9 Preflight results | runbook step 6 |
 | 8 | Execution route and why | `record.md` §10 Execution route and why | runbook step 8 |
-| 9 | Compatibility tuples and cross-fingerprint correlation | **SPLIT** — values in `snapshot.json` `stores[].compatibility_tuple`; the correlation argument in `record.md` §12 | runbook steps 9 and 14 |
+| 9 | Compatibility tuples and cross-fingerprint correlation | **SPLIT** — values in `snapshot.json` `stores[].compatibility_tuple`; the correlation argument in `record.md` §12 | runbook steps 9 and 15 |
 | 10 | Verification — command, sampling scheme, tolerance, outcome | **SPLIT** — command, sampling scheme, tolerance and summary digest in `snapshot.json` `arms[].verification`; outcome and what it licenses in `record.md` §13 | runbook step 10 |
 | 11 | Review outcomes — each named lens, verdict, disposition | `record.md` §14 Review outcomes | runbook steps 4 and 12 |
-| 12 | Findings, model and process, each with its routed home | `record.md` §15 Findings | runbook step 15 |
-| 13 | Snapshot — the resolved-facts block | **SPLIT** — the resolved facts in `snapshot.json`; the window's "how it was chosen" clause in `record.md` §11. `record.md` §16 is a filename/digest/schema-version pointer, not a second copy | runbook steps 7 and 14 |
-| 14 | Missing-evidence statement | `record.md` §17 What this record does not contain | runbook step 14 |
+| 12 | Findings, model and process, each with its routed home | `record.md` §15 Findings | runbook step 14 |
+| 13 | Snapshot — the resolved-facts block | **SPLIT** — the resolved facts in `snapshot.json`; the window's "how it was chosen" clause in `record.md` §11. `record.md` §16 is a filename/digest/schema-version pointer, not a second copy | runbook steps 7 and 15 |
+| 14 | Missing-evidence statement | `record.md` §17 What this record does not contain | runbook step 15 |
 
 **Zero items with no home. Zero items with two homes that are not a declared split.**
 

@@ -1,6 +1,6 @@
 # Implementation Plan: Cold-Pickup Administrator Exercise
 
-**Status:** Complete
+**Status:** Needs Work — audit 2026-08-20
 **Created:** 2026-08-20
 **Last Updated:** 2026-08-20
 
@@ -79,11 +79,13 @@ SYN="$SCRATCH/synthesis.md"
 # required sections present (runbook § synthesis.md)
 for h in "set out to do" "found" "framing" "constraint" "findings" "does not support"; do
   grep -qi "$h" "$SYN" || echo "MISSING SECTION: $h"; done
-# citations stay inside the directory: no repo paths, no excluded files
-! grep -nE '\.project/|exploration/|plan\.md|dry-run\.md|_work/|manifest\.json|ANNEX' "$SYN" && echo "CITES OK"
-# every cited file exists in the scratch dir
+# flag repo or excluded-path mentions for review
+grep -nE '\.project/|exploration/|plan\.md|dry-run\.md|_work/|manifest\.json|ANNEX' "$SYN" || true
+# flag named files absent from the scratch directory for review
 grep -oE '`[A-Za-z_./-]+\.(csv|json|py|html)`' "$SYN" | tr -d '`' | sort -u | while read f; do
-  [ -e "$SCRATCH/$(basename $f)" ] || echo "CITED BUT ABSENT: $f"; done
+  [ -e "$SCRATCH/$(basename $f)" ] || echo "ABSENT FILE MENTION: $f"; done
+# Review every hit in context. It passes when the mention reports an exclusion or
+# absence rather than using an outside or absent file as evidence for a claim.
 ```
 
 ### Changes Required
@@ -92,7 +94,7 @@ grep -oE '`[A-Za-z_./-]+\.(csv|json|py|html)`' "$SYN" | tr -d '`' | sort -u | wh
 - [x] Do not edit `synthesis.md`. If the checks fail on form (a missing section), re-run with the brief amended; if they fail on a citation outside the directory, the read is contaminated and is re-run.
 
 ### Validation
-- [x] All section checks pass; `CITES OK`; no `CITED BUT ABSENT`.
+- [x] All section checks pass; every flagged path or absent-file mention was reviewed in context; each reports an exclusion or absence, and no claim uses an outside or absent file as evidence.
 - [x] "What the record does not support" is non-empty (it will be — the directory predates the contract).
 - [x] Spot-read: no sentence states a fact the directory does not carry (the quickest tells: a qualified constraint id, an owner quote, a teax commit, a window rationale — none of these exist in the tracked files).
 
@@ -205,7 +207,7 @@ git status --porcelain exploration/stellarator_e2e/study/            # only synt
 
 ## Revisit — verification as a mandatory study step
 
-**`[OWNER]` 2026-08-20, during the Phase 5 pause.** The oracle (`verify_stellaris.py`, the hand-written second implementation the study is checked against) is a development-process mechanism for the generated package, not part of what a "study" is in general. For fusion-tea it may always be available; the general run-study capability should not assume every package has one. Runbook step 10 currently makes verification a gate that fails closed when no oracle exists, and the manifest requires an oracle command. **Revisit this decision altogether** — whether verification is a mandatory study obligation, a package-conditional step, or a dev-time check outside the study contract. Not settled in this item; G1 was applied as a consistency fix inside the contract as it stands today, and stays correct under any of those answers (when an oracle is used, its version is pinned).
+**`[OWNER]` 2026-08-20, during the Phase 5 pause and confirmed during the audit walkthrough.** The oracle (`verify_stellaris.py`, the hand-written second implementation the study is checked against) is a development-process mechanism for the generated package, not part of what a "study" is in general. For fusion-tea it may always be available; the general run-study capability should not assume every package has one. Runbook step 10 currently makes verification a gate that fails closed when no oracle exists, and the manifest requires an oracle command. **Revisit this decision altogether** — whether verification is a mandatory study obligation, a package-conditional step, or a dev-time check outside the study contract. G1's existing field is provisional; its exact shape is not refined in Item 5 and follows the future decision about the oracle's role.
 
 ## Implementation Notes
 
@@ -223,8 +225,8 @@ git status --porcelain exploration/stellarator_e2e/study/            # only synt
 **Deviations:** none. The reader did not ask questions.
 ### Phase 3 Completion
 **Completed:** 2026-08-20 06:58
-**Changes made:** comparison table built (scratch `phase3_table.md`, summarized in `gaps.md § Cross-check`). Inside/outside column settled by grep of the tracked files: the report's "What this does not prove" section carries four facts `dry-run.md` had sourced only to `plan.md`.
-**Result:** two reader misses (qualified objective channel name; declined-axis row half-recovered), neither hiding a gap. No absence carried to Phase 4 has `inside = yes`.
+**Changes made:** the 17-section comparison table is preserved in `gaps.md § Cross-check`, completed during the audit walkthrough from `dry-run.md`, the unchanged synthesis, and the tracked study-directory files. Mixed inside/outside rows stay mixed rather than being forced into a false binary. The cold reader was not rerun.
+**Result:** three reader misses (qualified objective channel name; declined-axis row half-recovered; two prose bounds overclaimed as absent), none hiding a gap. No absence carried to Phase 4 has `inside = yes`.
 **Deviations:** none.
 ### Phase 4 Completion
 **Completed:** 2026-08-20 07:05
@@ -239,4 +241,4 @@ git status --porcelain exploration/stellarator_e2e/study/            # only synt
 
 ---
 
-**Status**: Complete
+**Status**: Needs Work — see `audit.md`
