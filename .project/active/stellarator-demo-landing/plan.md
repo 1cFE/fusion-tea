@@ -1,8 +1,8 @@
 # Implementation Plan: Stellarator Demo Landing (PR 1 of the reconciliation)
 
-**Status:** In Progress
+**Status:** Complete (pending owner admin-merge; SC6 closes on merge)
 **Created:** 2026-08-21
-**Last Updated:** 2026-08-21
+**Last Updated:** 2026-08-21 (Phase 5)
 **Owner:** Reid W
 **Branch:** `feat/stellarator-mbse-demo` in the worktree `~/1cfe/fusion-tea-stellarator-mbse-demo` → PR into `main`, merge commit, owner admin-merge
 
@@ -22,13 +22,13 @@ It also commits the "before" half of the migration's before/after evidence, capt
 
 ## Success Criteria
 
-- [ ] **SC1 — Everything lands except the 11 MFE files in `models/`.** `main` contains the demo branch's full tree (skill, `scripts/study/`, `tests/study/`, `exploration/stellarator_e2e/`, `knowledge/holdout/`, `.project/` and `work/` records) minus `.orchestrate-logs/`, the two IFE osiris output dirs, and the 11 MFE model files under `models/`. The additive `mfe_divergent` enum member in `models/library/foundation/economic_parameter.sysml` stays (unless SC3 forces it out — then it moves to the staged twin and the deviation is recorded).
-- [ ] **SC2 — Not one executable byte changes.** `exploration/stellarator_e2e/models/` (14 files) and `exploration/stellarator_e2e/generated/` (140 files) have the same git tree hashes after the merge as at `6689400d`; the `pkg/stellarator_tea` symlink is intact.
-- [ ] **SC3 — Main's contract holds.** `uv lock --check` passes; `tests/test_dependency_provenance.py::test_project_and_lock_pin_full_immutable_production_identities` passes; licensed `tests/models` passes, including `test_self_binding_replacement.py` with its IFE census (23 entry points / 18 design attributes) and live-vs-snapshot byte-identity unchanged.
-- [ ] **SC4 — The demo's contract holds on the merged tree.** In the demo worktree: `STUDY_REQUIRE_ERA=1 uv run python -m pytest tests/study -q -m slow` → 273 passed, 0 era skips, both proof-of-life CSVs byte-equal; `tests/models` → 30 passed / 13 skipped.
-- [ ] **SC5 — A committed before-record.** One file with the era-route evidence (CSV sha256s, verification numbers, package fingerprints, baseline headline + five verdicts, test counts, env SHAs), reproduced in this session, not copied from old records.
+- [x] **SC1 — Everything lands except the 11 MFE files in `models/`.** `main` contains the demo branch's full tree (skill, `scripts/study/`, `tests/study/`, `exploration/stellarator_e2e/`, `knowledge/holdout/`, `.project/` and `work/` records) minus `.orchestrate-logs/`, the two IFE osiris output dirs, and the 11 MFE model files under `models/`. The additive `mfe_divergent` enum member in `models/library/foundation/economic_parameter.sysml` stays (unless SC3 forces it out — then it moves to the staged twin and the deviation is recorded).
+- [x] **SC2 — Not one executable byte changes.** `exploration/stellarator_e2e/models/` (14 files) and `exploration/stellarator_e2e/generated/` (140 files) have the same git tree hashes after the merge as at `6689400d`; the `pkg/stellarator_tea` symlink is intact.
+- [x] **SC3 — Main's contract holds.** `uv lock --check` passes; `tests/test_dependency_provenance.py::test_project_and_lock_pin_full_immutable_production_identities` passes; licensed `tests/models` passes, including `test_self_binding_replacement.py` with its IFE census (23 entry points / 18 design attributes) and live-vs-snapshot byte-identity unchanged.
+- [x] **SC4 — The demo's contract holds on the merged tree.** In the demo worktree: `STUDY_REQUIRE_ERA=1 uv run python -m pytest tests/study -q -m slow` → 273 passed, 0 era skips, both proof-of-life CSVs byte-equal; `tests/models` → 30 passed / 13 skipped.
+- [x] **SC5 — A committed before-record.** One file with the era-route evidence (CSV sha256s, verification numbers, package fingerprints, baseline headline + five verdicts, test counts, env SHAs), reproduced in this session, not copied from old records.
 - [ ] **SC6 — History preserved.** `git merge main` (no rebase); every SHA cited in `work/completed/**` and `.project/active/run-study-*/**` still resolves; PR merged with a merge commit.
-- [ ] **SC7 — Docs merged by hand, not by accident.** `.project/CURRENT_WORK.md` is main's 2026-08-20 rewrite plus one stellarator section; `.project/backlog/BACKLOG.md` is the union (main's "Flagged" rows + run_analysis row; demo's two epic rows + section); the ignore rule is narrowed to `exploration/stellarator_e2e/outputs/`.
+- [x] **SC7 — Docs merged by hand, not by accident.** `.project/CURRENT_WORK.md` is main's 2026-08-20 rewrite plus one stellarator section; `.project/backlog/BACKLOG.md` is the union (main's "Flagged" rows + run_analysis row; demo's two epic rows + section); the ignore rule is narrowed to `exploration/stellarator_e2e/outputs/`.
 
 ## Implementation Strategy
 
@@ -234,9 +234,9 @@ uv run python -c "import json;v=json.load(open('study/verification_summary.json'
 Ship, with the docs reflecting the shipped state.
 
 ### Changes Required
-- [ ] `.project/CURRENT_WORK.md` (worktree copy, merged in Phase 1): set the stellarator section's status to "landed on main via PR <n>; next: migration item (spec next)". Mark this plan's Status → Complete in the same commit.
-- [ ] `git push origin feat/stellarator-mbse-demo`.
-- [ ] `gh pr create --repo 1cFE/fusion-tea --base main --head feat/stellarator-mbse-demo` with a body that: states Option A and why; lists the three conflict resolutions; pastes Phase 3 counts; links the research doc, this plan, and the before-record; says "merge commit required" (SC6).
+- [x] `.project/CURRENT_WORK.md` (worktree copy, merged in Phase 1): set the stellarator section's status to "landed on main via PR <n>; next: migration item (spec next)". Mark this plan's Status → Complete in the same commit.
+- [x] `git push origin feat/stellarator-mbse-demo`.
+- [x] `gh pr create --repo 1cFE/fusion-tea --base main --head feat/stellarator-mbse-demo` with a body that: states Option A and why; lists the three conflict resolutions; pastes Phase 3 counts; links the research doc, this plan, and the before-record; says "merge commit required" (SC6).
 - [ ] Owner merges: `! gh pr merge <n> --repo 1cFE/fusion-tea --merge --admin`.
 - [ ] Post-merge, in `~/1cfe/fusion-tea`: `git checkout main && git pull --ff-only && uv lock --check && uv run python -m pytest tests/test_dependency_provenance.py -q -k "project_and_lock"`.
 - [ ] Leave the demo worktree and branch in place — the migration item works there next.
@@ -307,7 +307,9 @@ See CLAUDE.md (always `uv run`). Extra for this plan:
 **Deviations:** None. Two provenance SHAs (codegen `06d95f8`, teax `07eb0ac`) are labelled "from records, not reproduced" in the file because the generating toolchain is not re-run here.
 
 ### Phase 5 Completion
-—
+**Completed:** 2026-08-21 (push + PR; merge is the owner's step)
+**Actual changes:** CURRENT_WORK stellarator section updated to "landed, awaiting merge"; plan marked Complete; branch pushed; PR opened (number in the PR link below). SC1–SC5, SC7 checked with evidence in the phase notes above. SC6 (merge commit on main) checks after the admin merge; the post-merge verification (`uv lock --check` + pin test on `main`) is the last step.
+**Note for SC1:** final state is "11 MFE files out of `models/` **and** the enum member out" (Phase 3); `models/` is byte-identical to main's IFE set.
 
 ---
 
