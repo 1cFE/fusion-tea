@@ -1,6 +1,6 @@
 # Implementation Plan: Stellarator Demo Landing (PR 1 of the reconciliation)
 
-**Status:** Complete (pending owner admin-merge; SC6 closes on merge)
+**Status:** Complete — merged to `main` as PR #104 (`d0e4398d`, merge commit, parents `ebe4d376` + `3ae54308`); post-merge `uv lock --check` and pin tests green 2026-08-21
 **Created:** 2026-08-21
 **Last Updated:** 2026-08-21 (Phase 5)
 **Owner:** Reid W
@@ -27,7 +27,7 @@ It also commits the "before" half of the migration's before/after evidence, capt
 - [x] **SC3 — Main's contract holds.** `uv lock --check` passes; `tests/test_dependency_provenance.py::test_project_and_lock_pin_full_immutable_production_identities` passes; licensed `tests/models` passes, including `test_self_binding_replacement.py` with its IFE census (23 entry points / 18 design attributes) and live-vs-snapshot byte-identity unchanged.
 - [x] **SC4 — The demo's contract holds on the merged tree.** In the demo worktree: `STUDY_REQUIRE_ERA=1 uv run python -m pytest tests/study -q -m slow` → 273 passed, 0 era skips, both proof-of-life CSVs byte-equal; `tests/models` → 30 passed / 13 skipped.
 - [x] **SC5 — A committed before-record.** One file with the era-route evidence (CSV sha256s, verification numbers, package fingerprints, baseline headline + five verdicts, test counts, env SHAs), reproduced in this session, not copied from old records.
-- [ ] **SC6 — History preserved.** `git merge main` (no rebase); every SHA cited in `work/completed/**` and `.project/active/run-study-*/**` still resolves; PR merged with a merge commit.
+- [x] **SC6 — History preserved.** `git merge main` (no rebase); every SHA cited in `work/completed/**` and `.project/active/run-study-*/**` still resolves; PR merged with a merge commit.
 - [x] **SC7 — Docs merged by hand, not by accident.** `.project/CURRENT_WORK.md` is main's 2026-08-20 rewrite plus one stellarator section; `.project/backlog/BACKLOG.md` is the union (main's "Flagged" rows + run_analysis row; demo's two epic rows + section); the ignore rule is narrowed to `exploration/stellarator_e2e/outputs/`.
 
 ## Implementation Strategy
@@ -237,13 +237,13 @@ Ship, with the docs reflecting the shipped state.
 - [x] `.project/CURRENT_WORK.md` (worktree copy, merged in Phase 1): set the stellarator section's status to "landed on main via PR <n>; next: migration item (spec next)". Mark this plan's Status → Complete in the same commit.
 - [x] `git push origin feat/stellarator-mbse-demo`.
 - [x] `gh pr create --repo 1cFE/fusion-tea --base main --head feat/stellarator-mbse-demo` with a body that: states Option A and why; lists the three conflict resolutions; pastes Phase 3 counts; links the research doc, this plan, and the before-record; says "merge commit required" (SC6).
-- [ ] Owner merges: `! gh pr merge <n> --repo 1cFE/fusion-tea --merge --admin`.
-- [ ] Post-merge, in `~/1cfe/fusion-tea`: `git checkout main && git pull --ff-only && uv lock --check && uv run python -m pytest tests/test_dependency_provenance.py -q -k "project_and_lock"`.
-- [ ] Leave the demo worktree and branch in place — the migration item works there next.
+- [x] Owner merges: `! gh pr merge <n> --repo 1cFE/fusion-tea --merge --admin`.
+- [x] Post-merge, in `~/1cfe/fusion-tea`: `git checkout main && git pull --ff-only && uv lock --check && uv run python -m pytest tests/test_dependency_provenance.py -q -k "project_and_lock"`.
+- [x] Leave the demo worktree and branch in place — the migration item works there next.
 
 ### Validation
-- [ ] `main` contains the merge commit; `git log --oneline main -3` shows the PR merge on top of `ebe4d376`.
-- [ ] SC1–SC7 each checked off above with the evidence named.
+- [x] `main` contains the merge commit; `git log --oneline main -3` shows the PR merge on top of `ebe4d376`.
+- [x] SC1–SC7 each checked off above with the evidence named.
 
 **What we know works after this phase:** main carries the demo work; the migration item has its base and its "before".
 
