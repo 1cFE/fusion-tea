@@ -1,5 +1,12 @@
 """Anchor A — the 1costingFE machinery handshake (WI-018 / concept SC-3).
 
+HISTORICAL (2026-08-21, stellarator-model-migration): this harness targets the retired
+runtime-contract-1.0.0 package -- it edits `pipelines/mfe_stellarator.yaml` in place and injects
+the per-usage CAS27/CAS28/n_mod keys -- and does not run on the sealed 2.0.0 package under
+`generated/`, whose strict loader refuses any in-place edit. It is kept as the evidence behind
+HANDSHAKE_REPORT.md. A stock-route successor feeds 1cfe's values as a proposal through
+`studies/study_route.py`; see the BACKLOG row "Rewrite handshake_1costingfe.py".
+
 Feed the generated SysML forward model the EXACT plant point 1costingFE solved
 for (its solved fusion power + its full merged parameter set), then check that
 the generated SysML pipeline reproduces 1costingFE's per-account costs and LCOE.

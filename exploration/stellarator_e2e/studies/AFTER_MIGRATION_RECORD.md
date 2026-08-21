@@ -124,6 +124,29 @@ Executed through the sealed package on the stock route as *proposals* (sealed in
 The structural every-and-only proofs (consumer port sets read from the shipped pipeline) are the MFE mutations in `tests/models/test_model_family_spines.py` (plan Phase 4).
 
 
-## 7. Suites (plan Phase 6)
+## 7. Suites and gates (plan Phase 6; on the branch at `1050743b` + the Phase 6 doc edits)
 
-_pending_
+Environment: `SYSIDE_LICENSE_KEY` from `/home/reid/1cfe/agentic-mbse/.env`; `STOP_PARSER_TEAX_ROOT=/home/reid/1cfe/teax` (`744745f`); `STOP_PARSER_WHEEL_TARGET=.venv/lib/python3.12/site-packages`; `STUDY_REQUIRE_TEAX=1`.
+
+| Suite / gate | Command | Result | Before-record |
+|---|---|---|---|
+| `tests/models` (licensed, both families) | `uv run python -m pytest tests/models -q` | **43 passed / 13 skipped** (the 13 are the pre-existing WI-026 "types/units/materials not found" skips + 1 template) | 40 passed / 13 skipped (spine 10/10, IFE-only) |
+| `tests/study` (stock route, teax required) | `STUDY_REQUIRE_TEAX=1 uv run python -m pytest tests/study -q` | **245 passed / 1 skipped**, one invocation, no era dependency | 273 passed with the era required |
+| root acceptance (IFE canonical subset + twin) | `PYTHONPATH=$STOP_PARSER_TEAX_ROOT/packages/teax-simkit uv run python -m pytest tests/test_codegen_teax_acceptance.py tests/test_occurrence_mutation_teax.py -q` | **20 passed** | -- |
+| dependency provenance | `uv run python -m pytest tests/test_dependency_provenance.py -q` | 2 passed; `test_installed_artifacts_are_the_recorded_wheels_and_public_apis` needs the sealed-runner's `STOP_PARSER_AGENTIC_WHEEL` (and sibling) environment, which this shell does not carry -- it reads the env at line 85 and is unchanged by this item | -- |
+| `uv lock --check` | | passes (`Resolved 179 packages`) | passes |
+| model validation, project bar | `uv run agentic-mbse validate models --level 1` | **passes** (22 files) | passes (11 files) |
+| model validation, complete | `uv run agentic-mbse validate models --complete` | Levels 1, 3, 4, 5 pass; **Levels 2 and 6 red exactly as on `main`**. Offender delta is the union: Level 2 placeholder-binding warnings 12 = `main` 2 + the pre-migration twin's 10 (all literal `ref_power`/`alpha` usage bindings in `mfe_plant.sysml`); Level 6 issues 219 = 26 + 193, `L6_DESIGN_ATTR_INCOMPLETE` 98 = 18 + 80. **Zero offenders introduced** by the repairs (parent twin measured at `7ee0c22a`). | Levels 2 and 6 red on `main` |
+| lint | `uv run ruff check scripts/study tests/study exploration/stellarator_e2e/studies exploration/stellarator_e2e/run_stellaris.py tests/model_families.py tests/models/test_model_family_spines.py` | clean (`run_stellaris_single.py` and `test_power_balance.py` keep their pre-existing style findings; every line this item wrote is clean) | `scripts/study tests/study` clean |
+| single-point runner | `uv run python exploration/stellarator_e2e/run_stellaris_single.py` | anchors GREEN, verdict parity PASS (`full_satisfaction`, 5 assessed), bit-exact vs oracle PASS, CAS72 guard-live PASS | same, on the era package with injection |
+| preflight / verify | § 5 / § 4 | 6/6; pass, `not_independently_verified: []` | 6/6; g3 disclosed |
+| MR-4 | review | no value introduced or relocated by any ledger row; the two opaque calc docs keep their `**Source**`/`**Ref**`/`**Basis**` (4/4/4 and 26/26/26 occurrences in the two files) and carry the pre-rewrite formulas verbatim | -- |
+
+## 8. What changed, and why -- the ledger by class
+
+`models/stellarator_migration_ledger.md`: **A 365** (99 D-5 bindings + 95 renamed declaring formals; 167 declaration-line comments moved above their declaration; 4 formal reorders), **B 141** (6 scalar-function invocation sites made opaque + 1 doc wording; 134 comment/doc lines ASCII-normalized), **C 0**. Upstream filings (sysml-codegen `.project/backlog/BACKLOG.md`, rows written 2026-08-21, commit is the owner's): `[POSITIONAL-FORMAL-REDEFINITION]` (new), `[UNIT-SCRAPE-BYTE-OFFSET]` (new, defect), the six sites attached to `[SCALAR-FUNCTION-VOCABULARY]`, `[STELLARATOR-D5-MIGRATION]` closed. Revert: fusion-tea `BACKLOG.md` row "Revert the six scalar-function rewrites and the ASCII comment normalization".
+
+Every SC of the spec has its evidence: SC1 § 1; SC2 § 2-3; SC3 Phase 5 commit `1050743b` + `tests/study/test_no_retired_identifiers.py`; SC4 § 4; SC5 § 5 + `git diff -- scripts/study/` empty across the branch; SC6-SC7 Phase 4 commit `8f3b510c` (`tests/model_families.py`, `tests/models/test_model_family_spines.py`); SC8 the ledger; SC9 the filings above; SC10 § 6 + the two MFE spine mutations; SC11 this section.
+
+Left for the owner: `exploration/stellarator_e2e/handshake_1costingfe.py` (BACKLOG row "Rewrite handshake_1costingfe.py"); the era teax worktree at `/home/reid/1cfe/teax-v1-era` (deletion is a tidy-pass non-goal).
+

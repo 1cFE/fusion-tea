@@ -1,6 +1,6 @@
 # Implementation Plan: Stellarator Model Migration
 
-**Status:** In Progress (Phases 1–5 complete)
+**Status:** Complete (all six phases, 2026-08-21) — next `/_my_audit`
 **Created:** 2026-08-21
 **Last Updated:** 2026-08-21
 **Branch:** `feat/stellarator-model-migration` (one PR; see design D5)
@@ -444,21 +444,21 @@ No new tests. The gate list below is the checklist.
 
 **See `design.md#validation-approach` for the per-SC proof table.**
 
-- [ ] `source …/.env; uv run python -m pytest tests/models -q` → record counts
-- [ ] `STUDY_REQUIRE_TEAX=1 uv run python -m pytest tests/study -q` → record counts
-- [ ] Root acceptance pair with both `STOP_PARSER_*` vars → green
-- [ ] `uv run python -m pytest tests/test_dependency_provenance.py -q` → green; `uv lock --check` → passes
-- [ ] `uv run agentic-mbse validate models --level 1` → pass; `uv run agentic-mbse validate models --complete` → record offender delta vs `main` (Levels 2 and 6 already red on `main`; the delta must be zero new offenders)
-- [ ] MR-4 review: every value the ledger marks "introduced or relocated" has `Source`/`Ref`/`Basis`; the two manual-interface docs keep their citations (I4)
-- [ ] `AFTER_MIGRATION_RECORD.md` complete: § 1–6 from Phases 2–3 plus § 7 suites table and § 8 "what changed and why" (ledger summary by class: A count, B count, C none)
-- [ ] Upstream filings (SC9) in `/home/reid/1cfe/sysml-codegen/.project/backlog/BACKLOG.md`: (a) new row — positional parameter redefinition skipping a leading defaulted formal, the four sites with file:line, the research note that the legacy route matched by name; (b) attach the six scalar-function sites to `[SCALAR-FUNCTION-VOCABULARY]` (`:36-41`) as the motivating case; (c) close `[STELLARATOR-D5-MIGRATION]` (`:403-412`) as done by this item; (d) any Phase 1 Class A/B class not in the spec. Committing in that repo is the owner's call; record the diff hunk in the after-record.
-- [ ] `.project/backlog/BACKLOG.md`: "Test cleanup" row → discharged (link the family spine); "Revert the six scalar-function rewrites" row → point at `models/stellarator_migration_ledger.md` rows and the two calc defs' canonical paths; note to the "generated artifacts" row that the package was regenerated and the after-CSVs sit in `_work/`
-- [ ] `.project/CURRENT_WORK.md`: package state (2.0.0, stock route), MFE models in `models/`, Item 6 unblocked
-- [ ] `plan.md` Implementation Notes filled for every phase
+- [x] `source …/.env; uv run python -m pytest tests/models -q` → record counts
+- [x] `STUDY_REQUIRE_TEAX=1 uv run python -m pytest tests/study -q` → record counts
+- [x] Root acceptance pair with both `STOP_PARSER_*` vars → green
+- [x] `uv run python -m pytest tests/test_dependency_provenance.py -q` → green; `uv lock --check` → passes
+- [x] `uv run agentic-mbse validate models --level 1` → pass; `uv run agentic-mbse validate models --complete` → record offender delta vs `main` (Levels 2 and 6 already red on `main`; the delta must be zero new offenders)
+- [x] MR-4 review: every value the ledger marks "introduced or relocated" has `Source`/`Ref`/`Basis`; the two manual-interface docs keep their citations (I4)
+- [x] `AFTER_MIGRATION_RECORD.md` complete: § 1–6 from Phases 2–3 plus § 7 suites table and § 8 "what changed and why" (ledger summary by class: A count, B count, C none)
+- [x] Upstream filings (SC9) in `/home/reid/1cfe/sysml-codegen/.project/backlog/BACKLOG.md`: (a) new row — positional parameter redefinition skipping a leading defaulted formal, the four sites with file:line, the research note that the legacy route matched by name; (b) attach the six scalar-function sites to `[SCALAR-FUNCTION-VOCABULARY]` (`:36-41`) as the motivating case; (c) close `[STELLARATOR-D5-MIGRATION]` (`:403-412`) as done by this item; (d) any Phase 1 Class A/B class not in the spec. Committing in that repo is the owner's call; record the diff hunk in the after-record.
+- [x] `.project/backlog/BACKLOG.md`: "Test cleanup" row → discharged (link the family spine); "Revert the six scalar-function rewrites" row → point at `models/stellarator_migration_ledger.md` rows and the two calc defs' canonical paths; note to the "generated artifacts" row that the package was regenerated and the after-CSVs sit in `_work/`
+- [x] `.project/CURRENT_WORK.md`: package state (2.0.0, stock route), MFE models in `models/`, Item 6 unblocked
+- [x] `plan.md` Implementation Notes filled for every phase
 
 ### Validation
-- [ ] Every SC1–SC11 line in `design.md#validation-approach` has a pointer to its evidence (test name, record section, or command output)
-- [ ] `git status` clean apart from intended changes; no scratch files committed
+- [x] Every SC1–SC11 line in `design.md#validation-approach` has a pointer to its evidence (test name, record section, or command output)
+- [x] `git status` clean apart from intended changes; no scratch files committed
 
 **What We Know Works After This Phase:**
 The item is auditable end to end. Next: `/_my_audit`, then `/_my_pre_pr`.
@@ -588,11 +588,20 @@ The item is auditable end to end. Next: `/_my_audit`, then `/_my_pre_pr`.
 - The sweep allow-lists three tests that name a retired identifier only to assert its absence (`test_annex.py`, `test_generic.py`, `test_preflight_gates.py`).
 
 ### Phase 6 Completion
-**Completed:**
+**Completed:** 2026-08-21
 **Actual Changes:**
-**Issues:**
-**Deviations:**
+- Gates run and recorded in `AFTER_MIGRATION_RECORD.md` § 7: `tests/models` 43/13, `tests/study` 245/1 in one invocation, root acceptance 20/20, `uv lock --check` passes, `validate models --level 1` passes, `--complete` Levels 2 and 6 red exactly as on `main` with the offender delta equal to the pre-migration twin's own offenders (zero introduced), lint clean on everything this item wrote, single-point runner green.
+- MR-4 review: no ledger row introduces or relocates a value; the two opaque calcs keep Source/Ref/Basis and carry their formulas verbatim.
+- Upstream filings written (uncommitted, owner's commit) in `/home/reid/1cfe/sysml-codegen/.project/backlog/BACKLOG.md`: `[POSITIONAL-FORMAL-REDEFINITION]`, `[UNIT-SCRAPE-BYTE-OFFSET]`, the motivating case on `[SCALAR-FUNCTION-VOCABULARY]`, `[STELLARATOR-D5-MIGRATION]` closed.
+- `.project/backlog/BACKLOG.md`: "Test cleanup" discharged; revert row widened to the ASCII normalization and pointed at the ledger rows and appendices; generated-artifacts row annotated; new P3 row for `handshake_1costingfe.py`. The harness itself got a HISTORICAL header note.
+- After-record § 8 (ledger by class, SC→evidence map, what is left for the owner); `CURRENT_WORK.md` and spec status updated.
+
+**Issues Encountered:**
+- `tests/test_dependency_provenance.py::test_installed_artifacts_are_the_recorded_wheels_and_public_apis` cannot run outside the sealed-runner environment (`STOP_PARSER_AGENTIC_WHEEL` etc.); the other two pass. Not a regression -- the test reads the env and this item touched no dependency.
+
+**Deviations from Plan:**
+- Owner decisions taken during `/_my_ask_me` (2026-08-21): F3 accepted as Class B with filings both sides; `handshake_1costingfe.py` left with a note and a BACKLOG row; fusion-tea commits at each phase end, sysml-codegen rows written but not committed.
 
 ---
 
-**Status**: Draft → In Progress → Complete
+**Status**: Complete
