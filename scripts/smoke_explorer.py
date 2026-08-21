@@ -6,7 +6,7 @@ page shells, the data + findings APIs, and — most importantly — that
 ``/api/compute`` actually recomputes an LCOE (i.e. the JAX/costingfe path
 works). This is the reusable gate run against (1) the slim clean venv, (2) the
 local Docker container, and (3) the live URL — see
-.project/active/explorer-web-hosting/plan.md.
+.project/completed/20260821_explorer-web-hosting/plan.md.
 
 Uses only the standard library so it can run from any interpreter, including
 the slim serving venv itself.

@@ -544,7 +544,7 @@ class TestHasModelCategoryFindings:
 # `generic`/`native`); the contract fixtures below supply that shape.
 PROTOTYPE_PATH = (
     Path(__file__).parents[3]
-    / ".project/active/concept-rework-prototype/artifacts/model_setup.py"
+    / ".project/completed/20260821_concept-rework-prototype/artifacts/model_setup.py"
 )
 PROTOTYPE_TEXT = PROTOTYPE_PATH.read_text(encoding="utf-8")
 

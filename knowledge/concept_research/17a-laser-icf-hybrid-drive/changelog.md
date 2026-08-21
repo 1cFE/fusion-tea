@@ -45,7 +45,7 @@
   - `17a-laser-icf-hybrid-drive/` (this dir) — Xcimer Energy
   - `17b-laser-icf-fast-ignition/` — Focused Energy
 - **Classification resolved**: Xcimer remains `Laser ICF (direct drive)`. Focused Energy reclassified as `Laser ICF (fast ignition)`. Per-side confidence on `Confinement Concept` upgraded from medium → high (Xcimer side).
-- **Sources partitioned**: per `.project/active/concept-research-17-split/source_partition.csv`. This dir holds 5 Xcimer-specific source dirs (`xcimer-energy-approach`, `xcimer-science-page`, `xec-…-shared-24-feb`, `sciencedirect-…s0920379624001868` — HYLIFE-III XEC nuclear analysis; plus `hylife-energy-conversion-notes` from iter-02) and 13 shared IFE-background source dirs duplicated with 17b.
+- **Sources partitioned**: per `.project/completed/20260821_concept-research-17-split/source_partition.csv`. This dir holds 5 Xcimer-specific source dirs (`xcimer-energy-approach`, `xcimer-science-page`, `xec-…-shared-24-feb`, `sciencedirect-…s0920379624001868` — HYLIFE-III XEC nuclear analysis; plus `hylife-energy-conversion-notes` from iter-02) and 13 shared IFE-background source dirs duplicated with 17b.
 - **Dossier**: rewritten as Xcimer-only. Cross-company commentary removed; Xcimer-side confidence values locked in.
 - **Legacy dir archived** at `archive/concept_research_legacy/17-laser-icf-direct-drive/`.
 

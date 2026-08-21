@@ -1,7 +1,7 @@
 """Populate `unit_count_estimate` (manual feature) for every concept.
 
 The per-concept values come from `modularity_implementation_spec.md`
-Change E (`.project/active/scoring-v3-rewrite/specs/`). They are the
+Change E (`.project/completed/20260821_scoring-v3-rewrite/specs/`). They are the
 analyst's architectural-review counts of identical factory-built
 precision units per plant (TF coil segments, DPSSL beamlines,
 capacitor brick arrays, mirror cells, single bespoke drivers, etc.).

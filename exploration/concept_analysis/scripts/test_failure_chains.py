@@ -1047,7 +1047,7 @@ class TestIntegration_ModelSetup:
 #   - post_feedback.md  — output from assess (immutable transcript)
 #
 # These tests pin the three plan-stencil invariants from the original rename
-# work plan (`.project/active/feedback-dispatch-symmetry/plan.md`):
+# work plan (`.project/completed/20260821_feedback-dispatch-symmetry/plan.md`):
 #   1. Case 5 (default) writes pre_feedback.md as a byte-equal copy of the
 #      prior iter's post_feedback.md.
 #   2. Case 3 (source-integration) writes pre_feedback.md as a byte-equal copy
@@ -1692,7 +1692,7 @@ class TestExternalFeedbackGuards:
     """`--feedback` fail-fast guards in cmd_analyze.
 
     Each guard must exit non-zero BEFORE invoking Claude or creating any
-    iter directory. See .project/active/cleanup-feedback-flag/spec.md FR-6.
+    iter directory. See .project/completed/20260821_cleanup-feedback-flag/spec.md FR-6.
     """
 
     def _concept(self, cid: str = "test-concept") -> dict:

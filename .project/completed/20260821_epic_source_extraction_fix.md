@@ -1,5 +1,7 @@
 # Epic: Source Extraction Fix & Re-extraction
 
+> **Archived 2026-08-21** — Abandoned — superseded by source-replacement + orig-md-research (2026-04-11). Status audit: `.project/reports/2026-08-21-1339-status-report.md`.
+
 **Epic ID**: SOURCE-FIX
 **Status**: Draft
 **Priority**: P0

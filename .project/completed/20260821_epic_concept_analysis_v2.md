@@ -1,5 +1,7 @@
 # Epic: Concept Analysis Pipeline v2
 
+> **Archived 2026-08-21** — Complete (Item 2 superseded by the concept explorer). Status audit: `.project/reports/2026-08-21-1339-status-report.md`.
+
 **Epic ID**: ANALYSIS-V2
 **Status**: Active
 **Priority**: High

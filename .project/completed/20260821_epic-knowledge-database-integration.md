@@ -1,5 +1,7 @@
 # Epic: Knowledge Database Integration (Zotero + Extraction Pipeline)
 
+> **Archived 2026-08-21** — Complete (Item 4 abandoned). Status audit: `.project/reports/2026-08-21-1339-status-report.md`.
+
 **Epic ID**: KNOW-DB
 **Status**: In Progress
 **Priority**: P1

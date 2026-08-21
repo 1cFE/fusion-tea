@@ -14,7 +14,7 @@ It guards the design's central bet (B2) and would have caught a concept whose
 model_type and on-disk reality disagree before the schema field was removed.
 
 See:
-- .project/active/explorer-model-setup-path-normalization/design.md (INV-2, B2)
+- .project/completed/20260821_explorer-model-setup-path-normalization/design.md (INV-2, B2)
 - findings.py:find_concept_dir (the production resolver this mirrors)
 """
 

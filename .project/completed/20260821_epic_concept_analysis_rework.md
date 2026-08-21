@@ -1,5 +1,7 @@
 # Epic: Concept-Analysis Pipeline Rework
 
+> **Archived 2026-08-21** — Complete (Items 2–3 superseded, Item 12 aspirational; design-point gate unsigned — see BACKLOG Flagged). Status audit: `.project/reports/2026-08-21-1339-status-report.md`.
+
 **Epic ID**: CONCEPT-REWORK
 **Status**: Draft
 **Priority**: P0

@@ -1,5 +1,7 @@
 # Epic: Ontology v3 Migration
 
+> **Archived 2026-08-21** — Complete (Items 1–4; Item 5 superseded by the rework regeneration, Item 6 discharged by this cleanup). Status audit: `.project/reports/2026-08-21-1339-status-report.md`.
+
 **Epic ID**: ONTOLOGY-V3
 **Status**: In Progress (Items 1–3 complete 2026-05-17; Item 3 has two carry-forwards — see Item 3 notes)
 **Priority**: P0

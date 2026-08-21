@@ -86,4 +86,4 @@ proposal:
 
 The proposal selects **ARC 2015 Conservative Pilot phase** at **P_native = 233 MWe**. The key call is preferring the Conservative Pilot over the FNSF phase (190 MWe): the FNSF phase is the paper's analytically primary case but is explicitly positioned as an experimental facility first, pilot plant second. The most significant open question is the 400 MWe Virginia target — if CFS publishes engineering parameters, that would force a re-selection.
 
-If you'd like me to write this to `.project/active/concept-rework-tables/proposals/01-hts-compact-tokamak.proposal.md`, I can do so once you approve the write permission.
+If you'd like me to write this to `.project/completed/20260821_concept-rework-tables/proposals/01-hts-compact-tokamak.proposal.md`, I can do so once you approve the write permission.

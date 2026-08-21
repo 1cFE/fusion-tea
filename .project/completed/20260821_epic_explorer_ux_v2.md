@@ -1,5 +1,7 @@
 # Epic: Explorer UX v2
 
+> **Archived 2026-08-21** — Complete. Status audit: `.project/reports/2026-08-21-1339-status-report.md`.
+
 **Epic ID**: EXPLORER-UX-V2
 **Status**: Active
 **Priority**: High

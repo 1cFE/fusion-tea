@@ -1,6 +1,6 @@
 """Tests for explorer-slider-override-semantics, Phase 1 (compute-path correctness).
 
-Spec/design/plan: .project/active/explorer-slider-override-semantics/
+Spec/design/plan: .project/completed/20260821_explorer-slider-override-semantics/
 
 Phase 1 covers the backend only — the `apply_analyst_overrides` flag threaded
 through `POST /api/compute`:

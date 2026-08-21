@@ -185,7 +185,7 @@ def get_extraction_state(
 # ---------------------------------------------------------------------------
 # Staleness marker stripping — the inverse of propagate_staleness, called by
 # producers after a successful write. See
-# .project/active/staleness-propagation-fix/design.md for the contract.
+# .project/completed/20260821_staleness-propagation-fix/design.md for the contract.
 # ---------------------------------------------------------------------------
 
 

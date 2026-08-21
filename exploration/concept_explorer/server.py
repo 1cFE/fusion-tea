@@ -265,7 +265,7 @@ def _quantize_sig(x: float, sig: int = 4) -> float:
     one cache key — collapsing them into a single ``forward()`` call instead of
     thrashing the LRU with unique full-precision floats. 4 sig figs gives <0.01%
     input error, orders of magnitude below the LCOE display precision
-    ($XXX.XX/MWh). See .project/active/compute-oom-debounce-and-quantize/.
+    ($XXX.XX/MWh). See .project/completed/20260821_compute-oom-debounce-and-quantize/.
 
     Significant figures (not fixed decimals) because override params span many
     orders of magnitude (availability ~0.85 vs cost ~5000); a fixed decimal

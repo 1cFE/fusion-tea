@@ -1,7 +1,7 @@
 """Comparables sanity-check.
 
 Reads one concept's `result_1gw` plus its comparables' `result_1gw`s and emits a
-structured JSON document per the schema locked in `.project/active/concept-rework-tables/spec.md`.
+structured JSON document per the schema locked in `.project/completed/20260821_concept-rework-tables/spec.md`.
 
 It COMPUTES and FLAGS; it does NOT assess. The `assess` stage feeds this JSON
 to an LLM reviewer for interpretation.

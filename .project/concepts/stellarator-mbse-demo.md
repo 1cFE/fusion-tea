@@ -163,7 +163,7 @@ The write-up's central contrast: 1costingFE commits at design time to what is in
 - **[OWNER]** Write-up is public-facing: primary blog post + supporting GitHub-hosted interactive HTML (possibly a live tool).
 - **[OWNER]** The demo assumes the constraint-execution epic completes first.
 - **[OWNER]** Quarantine strictness: full ARIES-CS blocklist until the comparison stage ("first try" the strict variant — may be relaxed by the owner if it proves unworkable).
-- **[OWNER]** Clean-room admissibility (2026-07-12, resolving the aries-cs-holdout spec review's L1-1): the blocklist extends to existing ARIES-CS-informed repo artifacts, not just the held-out papers — barred/admissible lists live in `.project/active/aries-cs-holdout/spec.md`.
+- **[OWNER]** Clean-room admissibility (2026-07-12, resolving the aries-cs-holdout spec review's L1-1): the blocklist extends to existing ARIES-CS-informed repo artifacts, not just the held-out papers — barred/admissible lists live in `.project/completed/20260821_aries-cs-holdout/spec.md`.
 - **[OWNER]** The 1costingFE comparison works by feeding the SysML forward model the parameter set 1costingFE solved for.
 - **[AGENT] (ratified by owner, 2026-07-12)** Hold-out test = evaluate at the ARIES-CS design point (committed) + optimum-rediscovery (stretch only).
 - **[AGENT] (ratified by owner, 2026-07-12)** Initial model includes viability physics as assert constraints (one notch deeper than 1costingFE's fixed-operating-point power balance).

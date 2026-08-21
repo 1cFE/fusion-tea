@@ -4,7 +4,7 @@ Validates the strict-consumer contract (Bet 1, Invariant 1), routing cross-check
 (Bet 7, Invariant 2), pending-design-point skip (Bet 8, Invariant 5), and
 asterisk_in_comparison threading (Bet 2, Invariant 4) against synthetic fixtures.
 
-See `.project/active/concept-rework-explorer-pilot/{spec,design,plan}.md`.
+See `.project/completed/20260821_concept-rework-explorer-pilot/{spec,design,plan}.md`.
 """
 
 from __future__ import annotations

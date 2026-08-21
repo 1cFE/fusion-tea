@@ -106,7 +106,7 @@ Gate: CLEAR
 
 ### Item 1: Indicator Reachability Spike ✅
 
-**Completed 2026-08-19** — CONFIRMED, no premise conflict. Ran as a spike (brief/probe/findings — the spec/design/plan lines below were template residue; decision recorded at commit `a92251a7`). Artifacts: `.project/active/run-study-reachability-spike/` (findings.md, trace.py, cases.py, indicators.json, run.log).
+**Completed 2026-08-19** — CONFIRMED, no premise conflict. Ran as a spike (brief/probe/findings — the spec/design/plan lines below were template residue; decision recorded at commit `a92251a7`). Artifacts: `.project/completed/20260821_run-study-reachability-spike/` (findings.md, trace.py, cases.py, indicators.json, run.log).
 
 **Type**: Research/Spike
 
@@ -144,22 +144,22 @@ Gate: CLEAR
 
 **Estimated Effort**: 0.5–1 day (brief 1h, probe 3–5h, findings 1h)
 
-**Location**: `.project/active/run-study-reachability-spike/`
+**Location**: `.project/completed/20260821_run-study-reachability-spike/`
 
 **Dependencies**: None
 
 **Deliverables**:
-- `.project/active/run-study-reachability-spike/spec.md`
-- `.project/active/run-study-reachability-spike/design.md`
-- `.project/active/run-study-reachability-spike/plan.md`
-- `.project/active/run-study-reachability-spike/findings.md`
+- `.project/completed/20260821_run-study-reachability-spike/spec.md`
+- `.project/completed/20260821_run-study-reachability-spike/design.md`
+- `.project/completed/20260821_run-study-reachability-spike/plan.md`
+- `.project/completed/20260821_run-study-reachability-spike/findings.md`
 - Known-answer fixture definition for Item 3
 
 ---
 
 ### Item 2: Skill, Runbook, and Record Contract ✅
 
-**Completed 2026-08-20** — audit PASS-WITH-FIXES, all four fixes applied and re-verified (`.project/active/run-study-contract/audit.md`). Delivered: tracked skill (`.claude/skills/run-study/`: SKILL.md 77 lines, runbook.md — 15 execute steps after the Item 4 coordination insertion of step 5 (route load + pinned baseline before preflight), record-template.md with 17 sections + snapshot appendix), the `.gitignore` negation, plus committed evidence `dry-run.md` and `coverage.md`.
+**Completed 2026-08-20** — audit PASS-WITH-FIXES, all four fixes applied and re-verified (`.project/completed/20260821_run-study-contract/audit.md`). Delivered: tracked skill (`.claude/skills/run-study/`: SKILL.md 77 lines, runbook.md — 15 execute steps after the Item 4 coordination insertion of step 5 (route load + pinned baseline before preflight), record-template.md with 17 sections + snapshot appendix), the `.gitignore` negation, plus committed evidence `dry-run.md` and `coverage.md`.
 
 **Type**: Implementation
 
@@ -175,7 +175,7 @@ Gate: CLEAR
 **Required Reading**:
 - `.project/concepts/run-study-skill.md`
 - `.project/concepts/run-study-skill-design.md` — Core Model, Required Invariants, and execute/administer flows
-- `.project/active/demo-proof-of-life/plan.md`
+- `.project/completed/20260821_demo-proof-of-life/plan.md`
 - `.project/active/demo-study-parameterization-policy/policy.md`
 
 **Scope**:
@@ -199,14 +199,14 @@ Gate: CLEAR
 
 **Estimated Effort**: 1–1.5 days (spec 1h, design 2h, plan 1h, execute 4–7h)
 
-**Location**: `.project/active/run-study-contract/`
+**Location**: `.project/completed/20260821_run-study-contract/`
 
 **Dependencies**: Item 1 for confirmed indicator vocabulary; can proceed in parallel with Item 3 after the spike.
 
 **Deliverables**:
-- `.project/active/run-study-contract/spec.md`
-- `.project/active/run-study-contract/design.md`
-- `.project/active/run-study-contract/plan.md`
+- `.project/completed/20260821_run-study-contract/spec.md`
+- `.project/completed/20260821_run-study-contract/design.md`
+- `.project/completed/20260821_run-study-contract/plan.md`
 - `.claude/skills/run-study/SKILL.md`
 - `.claude/skills/run-study/runbook.md`
 - `.claude/skills/run-study/record-template.md`
@@ -253,14 +253,14 @@ Gate: CLEAR
 
 **Estimated Effort**: 1–1.5 days (spec 1h, design 2h, plan 1h, execute 4–7h)
 
-**Location**: `.project/active/run-study-indicators/`
+**Location**: `.project/completed/20260821_run-study-indicators/`
 
 **Dependencies**: Item 1
 
 **Deliverables**:
-- `.project/active/run-study-indicators/spec.md`
-- `.project/active/run-study-indicators/design.md`
-- `.project/active/run-study-indicators/plan.md`
+- `.project/completed/20260821_run-study-indicators/spec.md`
+- `.project/completed/20260821_run-study-indicators/design.md`
+- `.project/completed/20260821_run-study-indicators/plan.md`
 - `scripts/study/indicators.py`
 - `exploration/stellarator_e2e/studies/manifest.json`
 - Indicator and manifest tests
@@ -269,7 +269,7 @@ Gate: CLEAR
 
 ### Item 4: Quality Tools and Era Adapter Promotion ✅
 
-**Completed 2026-08-20** — audit PASS (`.project/active/run-study-quality-tools/audit.md`). Item-start probe: stock loader REFUSES the package (2 of 139 sealed artifacts differ), so the adapter branch ran. Delivered: `scripts/study/{identity,common,preflight,verify}.py` + four schemas; `exploration/stellarator_e2e/studies/{era_adapter,oracle_entry,promotion_equivalence}.py` + `ANNEX.md`; manifest oracle-block value edit (pre-authorized). Promotion equivalence byte-exact on both CSVs (948-point grid executed, 2m10s, `-m slow`); 273 tests green with zero era skips. Known verification-coverage delta (`p_fus`, `magnet_capital`) recorded in `ANNEX.md § Oracle`.
+**Completed 2026-08-20** — audit PASS (`.project/completed/20260821_run-study-quality-tools/audit.md`). Item-start probe: stock loader REFUSES the package (2 of 139 sealed artifacts differ), so the adapter branch ran. Delivered: `scripts/study/{identity,common,preflight,verify}.py` + four schemas; `exploration/stellarator_e2e/studies/{era_adapter,oracle_entry,promotion_equivalence}.py` + `ANNEX.md`; manifest oracle-block value edit (pre-authorized). Promotion equivalence byte-exact on both CSVs (948-point grid executed, 2m10s, `-m slow`); 273 tests green with zero era skips. Known verification-coverage delta (`p_fus`, `magnet_capital`) recorded in `ANNEX.md § Oracle`.
 
 **Type**: Code/Integration
 
@@ -312,14 +312,14 @@ Gate: CLEAR
 
 **Estimated Effort**: 1.5–2 days (spec 1h, design 3h, plan 1h, execute 7–11h)
 
-**Location**: `.project/active/run-study-quality-tools/`
+**Location**: `.project/completed/20260821_run-study-quality-tools/`
 
 **Dependencies**: Item 3
 
 **Deliverables**:
-- `.project/active/run-study-quality-tools/spec.md`
-- `.project/active/run-study-quality-tools/design.md`
-- `.project/active/run-study-quality-tools/plan.md`
+- `.project/completed/20260821_run-study-quality-tools/spec.md`
+- `.project/completed/20260821_run-study-quality-tools/design.md`
+- `.project/completed/20260821_run-study-quality-tools/plan.md`
 - `scripts/study/preflight.py`
 - `scripts/study/verify.py`
 - Quality-tool tests and promotion-equivalence evidence
@@ -365,15 +365,15 @@ Gate: CLEAR
 
 **Estimated Effort**: 0.5–1 day (brief 1h, exercise 2–4h, contract fixes 1–2h)
 
-**Location**: `.project/active/run-study-cold-pickup/`
+**Location**: `.project/completed/20260821_run-study-cold-pickup/`
 
 **Dependencies**: Item 2; can run in parallel with Item 4.
 
 **Deliverables**:
-- `.project/active/run-study-cold-pickup/spec.md`
-- ~~`.project/active/run-study-cold-pickup/design.md`~~ (skipped, owner 2026-08-20)
-- `.project/active/run-study-cold-pickup/plan.md`
-- `.project/active/run-study-cold-pickup/gaps.md`
+- `.project/completed/20260821_run-study-cold-pickup/spec.md`
+- ~~`.project/completed/20260821_run-study-cold-pickup/design.md`~~ (skipped, owner 2026-08-20)
+- `.project/completed/20260821_run-study-cold-pickup/plan.md`
+- `.project/completed/20260821_run-study-cold-pickup/gaps.md`
 - `exploration/stellarator_e2e/study/synthesis.md`
 - Any resulting Item 2 record-template or runbook amendments
 

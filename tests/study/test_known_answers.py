@@ -23,7 +23,7 @@ EXPECTED_SEMANTIC_FINGERPRINT = (
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,
 #:          modules fired, channels tainted). Read straight off the Item 1 fixture
-#: contract in .project/active/run-study-reachability-spike/findings.md, re-derived
+#: contract in .project/completed/20260821_run-study-reachability-spike/findings.md, re-derived
 #: on the 2.0.0 package after the stellarator model migration (2026-08-21): the
 #: qualitative contract is unchanged; R and a fire one more module and taint one
 #: more channel because CAS27 is now computed in-package and declared as the

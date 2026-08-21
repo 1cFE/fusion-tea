@@ -408,7 +408,7 @@ def has_model_category_findings(feedback_text: str) -> bool:
 # so they survive the prompt-format change Item 8 makes. They are pure
 # functions over their text inputs (no LLM, no network) and are NOT wired into
 # the live loop by Item 7 — Item 8 chains the output gates at loop.py:638.
-# See .project/active/concept-rework-helpers-validators/design.md.
+# See .project/completed/20260821_concept-rework-helpers-validators/design.md.
 # ---------------------------------------------------------------------------
 
 _REQUIRED_OVERRIDE_FIELDS = {

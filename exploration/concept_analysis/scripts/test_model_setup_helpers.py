@@ -16,7 +16,7 @@ the route change. Three forwards (each one dimension apart):
     1 GWe projection, library-bare (no overrides)    LCOE = 131.5 $/MWh
 
 Prior (pre-upgrade) values were 174.5 / 629.0 / 584.5 / 137.2.
-See .project/active/concept-rework-three-forward-contract/design.md (Validation
+See .project/completed/20260821_concept-rework-three-forward-contract/design.md (Validation
 Approach) for the pinned-oracle provenance.
 """
 

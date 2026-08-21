@@ -34,7 +34,7 @@ Prove the agentic-mbse / sysml-codegen / teax methodology on a real fusion deep 
 
 - `.project/concepts/stellarator-mbse-demo.md` — **concept** (governing; owner-verbatim decisions, non-goals, 8 criteria, five-stage arc)
 - `knowledge/holdout/aries-cs/PROTOCOL.md` — **protocol** (quarantine rules, barred lists, reveal procedure, contamination inventory)
-- `.project/active/aries-cs-holdout/spec.md` — **spec** (clean-room barred/admissible lists; the demo's first item, complete)
+- `.project/completed/20260821_aries-cs-holdout/spec.md` — **spec** (clean-room barred/admissible lists; the demo's first item, complete)
 - `work/backlog/epic-mfe-cost-modeling.md` — **epic (adjacent)** (per-item status assessment of WI-009–025; holds the tokamak and sweep as its own non-demo goals)
 - `.project/CURRENT_WORK.md` — **status narrative** (Stage 2/3 build history, WI-019–025 records)
 - `~/1cfe/sysml-codegen/.project/completed/20260713_epic_constraint_execution.md` — **external epic** (constraint execution + study layer: completed 2026-07-13, IFE acceptance 2294/2301 in this repo)
@@ -89,7 +89,7 @@ Registration convention: modeling items (2, 3, 4, 5, 7, 9) register in the model
 
 ### Item 1: Anchor acceptance spec (tolerances + hold-out expectations)
 
-**Status**: **COMPLETE 2026-07-19** — spec written, independently reviewed (3 must-fixes applied), ratified [OWNER] 2026-07-19 ("ratify all, G-8 amend as proposed"). Bars in force: Anchor A |rel dev| ≤ 1e-6 per account + itemized-signed-remainder LCOE form; Anchor B ratios [1/3,3] derived / [0.5,2.0] costs + structural checklist; sizing reallocation to criterion 8 confirmed; successor-bar amendment recorded at `work/orchestration/stale-basis-recompute.md`. Deliverable: `.project/active/demo-anchor-acceptance-spec/spec.md`.
+**Status**: **COMPLETE 2026-07-19** — spec written, independently reviewed (3 must-fixes applied), ratified [OWNER] 2026-07-19 ("ratify all, G-8 amend as proposed"). Bars in force: Anchor A |rel dev| ≤ 1e-6 per account + itemized-signed-remainder LCOE form; Anchor B ratios [1/3,3] derived / [0.5,2.0] costs + structural checklist; sizing reallocation to criterion 8 confirmed; successor-bar amendment recorded at `work/orchestration/stale-basis-recompute.md`. Deliverable: `.project/completed/20260821_demo-anchor-acceptance-spec/spec.md`.
 
 **Type**: Research/Spec (coding PM)
 **Effort**: 0.5–1 day
@@ -112,7 +112,7 @@ Registration convention: modeling items (2, 3, 4, 5, 7, 9) register in the model
 - [x] Items 3–4 acceptance worded per the [OWNER] criterion-3 ruling (explain discrepancies; close errors)
 - [x] Owner sign-off on both specs — ratified 2026-07-19
 
-**Deliverables**: `.project/active/demo-anchor-acceptance-spec/spec.md` (both anchors' bars + owner rulings)
+**Deliverables**: `.project/completed/20260821_demo-anchor-acceptance-spec/spec.md` (both anchors' bars + owner rulings)
 
 ---
 
