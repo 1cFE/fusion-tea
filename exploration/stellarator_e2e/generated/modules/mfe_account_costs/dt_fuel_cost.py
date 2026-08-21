@@ -16,15 +16,15 @@ is the burn-up recovery correction: only `burn_fraction` of the fuel
 injected is burnt, and `fuel_recovery` of the unburnt remainder is
 recycled, so the make-up stream scales the raw cost.
 
-The levelization to the reported CAS80 is NOT carried here — the plant
+The levelization to the reported CAS80 is NOT carried here -- the plant
 feeds `annual_fuel` into 'Levelized Annual Cost' (one levelization
 wrapper, MR-3). The MFE target-consumable term of 1cfe's cas80_fuel is
 structurally zero (IFE-only) and is likewise not carried.
 
-All fuel constants are inputs, never library defaults (MR-3) — a
+All fuel constants are inputs, never library defaults (MR-3) -- a
 concept binds its own fuel chemistry and unit prices.
 
-Flat-Real (+ - * / **) — Rung A, lowers to generated arithmetic.
+Flat-Real (+ - * / **) -- Rung A, lowers to generated arithmetic.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
 *Ref**: costs.py:476-544 (cas80_fuel, DT branch); defaults.py
@@ -33,21 +33,21 @@ physics.py:31 (Q_DT = 17.58 MeV)
 *Basis**: Reaction-rate-priced annual fuel with burn-up recovery correction
 
 Inputs:
+    - fuel_recovery_in: fuel_recovery_in parameter
+    - availability_in: availability_in parameter
     - p_fus: p_fus parameter
-    - n_mod: n_mod parameter
-    - availability: availability parameter
+    - mev_to_joules_in: mev_to_joules_in parameter
+    - n_mod_in: n_mod_in parameter
+    - burn_fraction_in: burn_fraction_in parameter
     - cost_per_rxn: cost_per_rxn parameter
     - q_eff: q_eff parameter
-    - mev_to_joules: mev_to_joules parameter
-    - burn_fraction: burn_fraction parameter
-    - fuel_recovery: fuel_recovery parameter
 
 Outputs:
     - annual_fuel: annual_fuel result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:683
+SysML Source: root-0/analyses/mfe_account_costs.sysml:730
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:683
+SysML Source: root-0/analyses/mfe_account_costs.sysml:730
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/dt_fuel_cost_impl.py
@@ -63,23 +63,23 @@ class DT_Fuel_CostInput(BaseModel):
     """Input model for DT_Fuel_CostModule.
 
     Attributes:
+        fuel_recovery_in: fuel_recovery_in input
+        availability_in: availability_in input
         p_fus: p_fus input
-        n_mod: n_mod input
-        availability: availability input
+        mev_to_joules_in: mev_to_joules_in input
+        n_mod_in: n_mod_in input
+        burn_fraction_in: burn_fraction_in input
         cost_per_rxn: cost_per_rxn input
         q_eff: q_eff input
-        mev_to_joules: mev_to_joules input
-        burn_fraction: burn_fraction input
-        fuel_recovery: fuel_recovery input
     """
+    fuel_recovery_in: float = Field(..., description="fuel_recovery_in input")
+    availability_in: float = Field(..., description="availability_in input")
     p_fus: float = Field(..., description="p_fus input")
-    n_mod: float = Field(..., description="n_mod input")
-    availability: float = Field(..., description="availability input")
+    mev_to_joules_in: float = Field(..., description="mev_to_joules_in input")
+    n_mod_in: float = Field(..., description="n_mod_in input")
+    burn_fraction_in: float = Field(..., description="burn_fraction_in input")
     cost_per_rxn: float = Field(..., description="cost_per_rxn input")
     q_eff: float = Field(..., description="q_eff input")
-    mev_to_joules: float = Field(..., description="mev_to_joules input")
-    burn_fraction: float = Field(..., description="burn_fraction input")
-    fuel_recovery: float = Field(..., description="fuel_recovery input")
 
 
 class DT_Fuel_CostModule(ModuleBase[DT_Fuel_CostInput, Float]):
@@ -99,15 +99,15 @@ is the burn-up recovery correction: only `burn_fraction` of the fuel
 injected is burnt, and `fuel_recovery` of the unburnt remainder is
 recycled, so the make-up stream scales the raw cost.
 
-The levelization to the reported CAS80 is NOT carried here — the plant
+The levelization to the reported CAS80 is NOT carried here -- the plant
 feeds `annual_fuel` into 'Levelized Annual Cost' (one levelization
 wrapper, MR-3). The MFE target-consumable term of 1cfe's cas80_fuel is
 structurally zero (IFE-only) and is likewise not carried.
 
-All fuel constants are inputs, never library defaults (MR-3) — a
+All fuel constants are inputs, never library defaults (MR-3) -- a
 concept binds its own fuel chemistry and unit prices.
 
-Flat-Real (+ - * / **) — Rung A, lowers to generated arithmetic.
+Flat-Real (+ - * / **) -- Rung A, lowers to generated arithmetic.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
 *Ref**: costs.py:476-544 (cas80_fuel, DT branch); defaults.py
@@ -116,26 +116,26 @@ physics.py:31 (Q_DT = 17.58 MeV)
 *Basis**: Reaction-rate-priced annual fuel with burn-up recovery correction
 
 Inputs:
+    - fuel_recovery_in: fuel_recovery_in parameter
+    - availability_in: availability_in parameter
     - p_fus: p_fus parameter
-    - n_mod: n_mod parameter
-    - availability: availability parameter
+    - mev_to_joules_in: mev_to_joules_in parameter
+    - n_mod_in: n_mod_in parameter
+    - burn_fraction_in: burn_fraction_in parameter
     - cost_per_rxn: cost_per_rxn parameter
     - q_eff: q_eff parameter
-    - mev_to_joules: mev_to_joules parameter
-    - burn_fraction: burn_fraction parameter
-    - fuel_recovery: fuel_recovery parameter
 
 Outputs:
     - annual_fuel: annual_fuel result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:683
+SysML Source: root-0/analyses/mfe_account_costs.sysml:730
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:683
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:730
 
     Calculation Specification:
-        n_mod = 1.0
-        annual_raw = n_mod * p_fus * (3600.0 * 8760.0) * 1000000.0 * availability * cost_per_rxn / (q_eff * mev_to_joules)
-        burn_correction = 1.0 + (1.0 - burn_fraction) / burn_fraction * (1.0 - fuel_recovery)
+        n_mod_in = 1.0
+        annual_raw = n_mod_in * p_fus * (3600.0 * 8760.0) * 1000000.0 * availability_in * cost_per_rxn / (q_eff * mev_to_joules_in)
+        burn_correction = 1.0 + (1.0 - burn_fraction_in) / burn_fraction_in * (1.0 - fuel_recovery_in)
         annual_fuel = annual_raw * burn_correction
         
 Documentation:
@@ -153,15 +153,15 @@ is the burn-up recovery correction: only `burn_fraction` of the fuel
 injected is burnt, and `fuel_recovery` of the unburnt remainder is
 recycled, so the make-up stream scales the raw cost.
 
-The levelization to the reported CAS80 is NOT carried here — the plant
+The levelization to the reported CAS80 is NOT carried here -- the plant
 feeds `annual_fuel` into 'Levelized Annual Cost' (one levelization
 wrapper, MR-3). The MFE target-consumable term of 1cfe's cas80_fuel is
 structurally zero (IFE-only) and is likewise not carried.
 
-All fuel constants are inputs, never library defaults (MR-3) — a
+All fuel constants are inputs, never library defaults (MR-3) -- a
 concept binds its own fuel chemistry and unit prices.
 
-Flat-Real (+ - * / **) — Rung A, lowers to generated arithmetic.
+Flat-Real (+ - * / **) -- Rung A, lowers to generated arithmetic.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
 *Ref**: costs.py:476-544 (cas80_fuel, DT branch); defaults.py
@@ -179,43 +179,43 @@ physics.py:31 (Q_DT = 17.58 MeV)
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, p_fus: float, n_mod: float, availability: float, cost_per_rxn: float, q_eff: float, mev_to_joules: float, burn_fraction: float, fuel_recovery: float    ) -> DT_Fuel_CostInput:
+        self, fuel_recovery_in: float, availability_in: float, p_fus: float, mev_to_joules_in: float, n_mod_in: float, burn_fraction_in: float, cost_per_rxn: float, q_eff: float    ) -> DT_Fuel_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
+            fuel_recovery_in: fuel_recovery_in input
+            availability_in: availability_in input
             p_fus: p_fus input
-            n_mod: n_mod input
-            availability: availability input
+            mev_to_joules_in: mev_to_joules_in input
+            n_mod_in: n_mod_in input
+            burn_fraction_in: burn_fraction_in input
             cost_per_rxn: cost_per_rxn input
             q_eff: q_eff input
-            mev_to_joules: mev_to_joules input
-            burn_fraction: burn_fraction input
-            fuel_recovery: fuel_recovery input
 
         Returns:
             Validated input model
         """
-        return DT_Fuel_CostInput(p_fus=p_fus, n_mod=n_mod, availability=availability, cost_per_rxn=cost_per_rxn, q_eff=q_eff, mev_to_joules=mev_to_joules, burn_fraction=burn_fraction, fuel_recovery=fuel_recovery)
+        return DT_Fuel_CostInput(fuel_recovery_in=fuel_recovery_in, availability_in=availability_in, p_fus=p_fus, mev_to_joules_in=mev_to_joules_in, n_mod_in=n_mod_in, burn_fraction_in=burn_fraction_in, cost_per_rxn=cost_per_rxn, q_eff=q_eff)
 
     def run(
-        self, p_fus: float, n_mod: float, availability: float, cost_per_rxn: float, q_eff: float, mev_to_joules: float, burn_fraction: float, fuel_recovery: float    ) -> ModuleResult[Float]:
+        self, fuel_recovery_in: float, availability_in: float, p_fus: float, mev_to_joules_in: float, n_mod_in: float, burn_fraction_in: float, cost_per_rxn: float, q_eff: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
+            fuel_recovery_in: fuel_recovery_in input
+            availability_in: availability_in input
             p_fus: p_fus input
-            n_mod: n_mod input
-            availability: availability input
+            mev_to_joules_in: mev_to_joules_in input
+            n_mod_in: n_mod_in input
+            burn_fraction_in: burn_fraction_in input
             cost_per_rxn: cost_per_rxn input
             q_eff: q_eff input
-            mev_to_joules: mev_to_joules input
-            burn_fraction: burn_fraction input
-            fuel_recovery: fuel_recovery input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(p_fus, n_mod, availability, cost_per_rxn, q_eff, mev_to_joules, burn_fraction, fuel_recovery)
+        validated_inputs = self.validate_and_fill_default(fuel_recovery_in, availability_in, p_fus, mev_to_joules_in, n_mod_in, burn_fraction_in, cost_per_rxn, q_eff)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.dt_fuel_cost_impl import (

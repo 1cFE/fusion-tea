@@ -46,31 +46,46 @@ package mfe_power_balance {
         */
 
         // === PRIMARY INPUTS ===
-        in attribute p_nrl : Real;      // Fusion power [MW]
-        in attribute p_input : Real;    // Plasma heating power [MW]
+        // Fusion power [MW]
+        in attribute p_nrl : Real;
+        // Plasma heating power [MW]
+        in attribute p_input_in : Real;
 
         // === EFFICIENCIES ===
-        in attribute mn : Real;         // Neutron energy multiplier (blanket)
-        in attribute eta_th : Real;     // Thermal-to-electric efficiency
-        in attribute eta_p : Real;      // Pumping power capture efficiency
-        in attribute eta_pin : Real;    // Input power wall-plug efficiency
+        // Neutron energy multiplier (blanket)
+        in attribute mn_in : Real;
+        // Thermal-to-electric efficiency
+        in attribute eta_th_in : Real;
+        // Pumping power capture efficiency
+        in attribute eta_p_in : Real;
+        // Input power wall-plug efficiency
+        in attribute eta_pin_in : Real;
 
         // === PUMPING / SUBSYSTEM POWER ===
-        in attribute p_pump : Real;     // Primary coolant pumping power [MW]
-        in attribute f_sub : Real;      // Subsystem and control fraction
+        // Primary coolant pumping power [MW]
+        in attribute p_pump_in : Real;
+        // Subsystem and control fraction
+        in attribute f_sub_in : Real;
 
         // === COIL POWER ===
-        in attribute p_tf : Real;       // TF coil power [MW]
-        in attribute p_pf : Real;       // PF coil power [MW]
+        // TF coil power [MW]
+        in attribute p_tf_in : Real;
+        // PF coil power [MW]
+        in attribute p_pf_in : Real;
 
         // === COOLING POWER ===
-        in attribute p_tfcool : Real;   // TF coil cooling [MW]
-        in attribute p_pfcool : Real;   // PF coil cooling [MW]
+        // TF coil cooling [MW]
+        in attribute p_tfcool_in : Real;
+        // PF coil cooling [MW]
+        in attribute p_pfcool_in : Real;
 
         // === AUXILIARY POWER ===
-        in attribute p_trit : Real;     // Tritium systems [MW]
-        in attribute p_house : Real;    // Housekeeping [MW]
-        in attribute p_cryo : Real;     // Cryogenic pumping [MW]
+        // Tritium systems [MW]
+        in attribute p_trit_in : Real;
+        // Housekeeping [MW]
+        in attribute p_house_in : Real;
+        // Cryogenic pumping [MW]
+        in attribute p_cryo : Real;
 
         // === CALCULATIONS ===
 
@@ -86,13 +101,13 @@ package mfe_power_balance {
         attribute p_neutron : Real = p_nrl - p_alpha;
 
         // Cooling aggregation.
-        attribute p_cool : Real = p_tfcool + p_pfcool;
+        attribute p_cool : Real = p_tfcool_in + p_pfcool_in;
 
         // Auxiliary aggregation. Source: physics.py:294 (p_aux = p_trit+p_house)
-        attribute p_aux : Real = p_trit + p_house;
+        attribute p_aux : Real = p_trit_in + p_house_in;
 
         // Coil power aggregation (TF + PF).
-        attribute p_coils : Real = p_tf + p_pf;
+        attribute p_coils : Real = p_tf_in + p_pf_in;
 
         // Thermal power: blanket neutron heating + alpha power reaching the
         // wall + heating power + recovered pumping heat. Collapsed form of
@@ -101,24 +116,24 @@ package mfe_power_balance {
         // thermal power (WI-010).
         // Source: physics.py:290-303 (p_input_eff, p_transport, p_wall, p_th)
         out attribute p_th : Real =
-            mn * p_neutron + p_alpha + p_input + eta_p * p_pump;
+            mn_in * p_neutron + p_alpha + p_input_in + eta_p_in * p_pump_in;
 
         // Thermal electric power. Exposed for the plant cost spine (WI-010).
         // Source: physics.py:306 (p_the = eta_th*p_th)
-        out attribute p_the : Real = eta_th * p_th;
+        out attribute p_the : Real = eta_th_in * p_th;
 
         // Gross electric (no direct conversion). Exposed for the plant cost
         // spine (WI-010). Source: physics.py:309 (p_et, p_dee=0 here)
         out attribute p_et : Real = p_the;
 
         // Subsystem power. Source: physics.py:315 (p_sub = f_sub * p_et)
-        attribute p_sub : Real = f_sub * p_et;
+        attribute p_sub : Real = f_sub_in * p_et;
 
         // Recirculating power.
         // Source: physics.py:321-323
         attribute recirculating : Real =
-            p_coils + p_pump + p_sub + p_aux + p_cool + p_cryo
-            + p_input / eta_pin;
+            p_coils + p_pump_in + p_sub + p_aux + p_cool + p_cryo
+            + p_input_in / eta_pin_in;
 
         // === OUTPUTS ===
 

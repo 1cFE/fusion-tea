@@ -39,24 +39,15 @@ RECORD_ROWS = {
 
 
 @pytest.fixture(scope="session")
-def executed_baseline(tmp_path_factory):
-    """One executed baseline point plus the two documents it deposits."""
-    import os
-
-    worktree = Path(os.environ.get("TEAX_V1_ERA") or "/home/reid/1cfe/teax-v1-era")
-    simkit = worktree / "packages" / "teax-simkit"
-    if not simkit.is_dir():
-        if os.environ.get("STUDY_REQUIRE_ERA") == "1":
-            pytest.fail(f"era teax worktree unavailable at {worktree}")
-        pytest.skip(f"era teax worktree unavailable at {worktree}")
-    for path in (str(simkit), str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies"),
-                 str(REPO_ROOT)):
-        if path not in sys.path:
-            sys.path.insert(0, path)
-    import promotion_equivalence
+def executed_baseline(tmp_path_factory, stock_simkit_session_path):
+    """One executed baseline point plus the two documents it deposits (stock route)."""
+    studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+    if studies not in sys.path:
+        sys.path.insert(0, studies)
+    import study_route
 
     out = tmp_path_factory.mktemp("baseline")
-    promotion_equivalence.execute_baseline(out)
+    study_route.execute_baseline(out)
     return out
 
 

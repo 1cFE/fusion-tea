@@ -22,16 +22,16 @@ This makes neutron wall load forward-computable from the power balance
 *Basis**: Neutron wall load = neutron power / wall area; MFE-generic
 
 Inputs:
-    - p_fus: p_fus parameter
-    - ash_frac: ash_frac parameter
+    - ash_frac_in: ash_frac_in parameter
     - wall_area: wall_area parameter
+    - p_fus: p_fus parameter
 
 Outputs:
     - wall_load: wall_load result
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:204
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:221
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:204
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:221
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_plasma_scaling/neutron_wall_load_impl.py
@@ -47,13 +47,13 @@ class Neutron_Wall_LoadInput(BaseModel):
     """Input model for Neutron_Wall_LoadModule.
 
     Attributes:
-        p_fus: p_fus input
-        ash_frac: ash_frac input
+        ash_frac_in: ash_frac_in input
         wall_area: wall_area input
+        p_fus: p_fus input
     """
-    p_fus: float = Field(..., description="p_fus input")
-    ash_frac: float = Field(..., description="ash_frac input")
+    ash_frac_in: float = Field(..., description="ash_frac_in input")
     wall_area: float = Field(..., description="wall_area input")
+    p_fus: float = Field(..., description="p_fus input")
 
 
 class Neutron_Wall_LoadModule(ModuleBase[Neutron_Wall_LoadInput, Float]):
@@ -79,20 +79,20 @@ This makes neutron wall load forward-computable from the power balance
 *Basis**: Neutron wall load = neutron power / wall area; MFE-generic
 
 Inputs:
-    - p_fus: p_fus parameter
-    - ash_frac: ash_frac parameter
+    - ash_frac_in: ash_frac_in parameter
     - wall_area: wall_area parameter
+    - p_fus: p_fus parameter
 
 Outputs:
     - wall_load: wall_load result
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:204
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:221
 
-    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:204
+    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:221
 
     Calculation Specification:
-        ash_frac = 0.2002
-        wall_load = p_fus * (1.0 - ash_frac) / wall_area
+        ash_frac_in = 0.2002
+        wall_load = p_fus * (1.0 - ash_frac_in) / wall_area
         
 Documentation:
 First-wall neutron wall load [MW/m^2] from fusion power and wall area.
@@ -124,33 +124,33 @@ This makes neutron wall load forward-computable from the power balance
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, p_fus: float, ash_frac: float, wall_area: float    ) -> Neutron_Wall_LoadInput:
+        self, ash_frac_in: float, wall_area: float, p_fus: float    ) -> Neutron_Wall_LoadInput:
         """Validate inputs and fill defaults.
 
         Args:
-            p_fus: p_fus input
-            ash_frac: ash_frac input
+            ash_frac_in: ash_frac_in input
             wall_area: wall_area input
+            p_fus: p_fus input
 
         Returns:
             Validated input model
         """
-        return Neutron_Wall_LoadInput(p_fus=p_fus, ash_frac=ash_frac, wall_area=wall_area)
+        return Neutron_Wall_LoadInput(ash_frac_in=ash_frac_in, wall_area=wall_area, p_fus=p_fus)
 
     def run(
-        self, p_fus: float, ash_frac: float, wall_area: float    ) -> ModuleResult[Float]:
+        self, ash_frac_in: float, wall_area: float, p_fus: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            p_fus: p_fus input
-            ash_frac: ash_frac input
+            ash_frac_in: ash_frac_in input
             wall_area: wall_area input
+            p_fus: p_fus input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(p_fus, ash_frac, wall_area)
+        validated_inputs = self.validate_and_fill_default(ash_frac_in, wall_area, p_fus)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_plasma_scaling.neutron_wall_load_impl import (

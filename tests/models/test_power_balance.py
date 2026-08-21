@@ -278,14 +278,15 @@ class TestMFEPowerBalanceCalcInterface:
         inputs = list(mfe_calc.inputs)
         input_names = [p.declared_name for p in inputs if p.declared_name]
 
-        # Required inputs per current model (analyses/mfe_power_balance.sysml)
+        # Required inputs per current model (analyses/mfe_power_balance.sysml); the
+        # `_in` names are the D-5 rename (models/stellarator_migration_ledger.md)
         required_inputs = [
-            "p_nrl", "p_input",  # Primary
-            "mn", "eta_th", "eta_p", "eta_pin",  # Efficiencies
-            "p_pump", "f_sub",  # Pumping / subsystem
-            "p_tf", "p_pf",  # Coil power
-            "p_tfcool", "p_pfcool",  # Cooling
-            "p_trit", "p_house", "p_cryo"  # Auxiliary
+            "p_nrl", "p_input_in",  # Primary
+            "mn_in", "eta_th_in", "eta_p_in", "eta_pin_in",  # Efficiencies
+            "p_pump_in", "f_sub_in",  # Pumping / subsystem
+            "p_tf_in", "p_pf_in",  # Coil power
+            "p_tfcool_in", "p_pfcool_in",  # Cooling
+            "p_trit_in", "p_house_in", "p_cryo"  # Auxiliary
         ]
 
         for input_name in required_inputs:

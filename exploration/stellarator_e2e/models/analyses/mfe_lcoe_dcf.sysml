@@ -25,38 +25,45 @@ package mfe_lcoe_dcf {
         **Basis**: Standard DCF LCOE; annuitized capital + O&M over energy sold
         */
 
-        in attribute total_capital : Real;      // Total overnight capital [$]
-        in attribute annual_om : Real;          // Annual O&M cost [$/yr]
-        in attribute net_electric_mw : Real;    // Net electric power [MW]
-        in attribute availability : Real;       // Capacity factor [0..1]
-        in attribute discount_rate : Real;      // Discount / interest rate [1/yr]
-        in attribute construction_years : Real; // Construction period Yc [yr]
-        in attribute operational_years : Real;  // Operating lifetime N [yr]
+        // Total overnight capital [$]
+        in attribute total_capital_in : Real;
+        // Annual O&M cost [$/yr]
+        in attribute annual_om_in : Real;
+        // Net electric power [MW]
+        in attribute net_electric_mw : Real;
+        // Capacity factor [0..1]
+        in attribute availability_in : Real;
+        // Discount / interest rate [1/yr]
+        in attribute discount_rate_in : Real;
+        // Construction period Yc [yr]
+        in attribute construction_years_in : Real;
+        // Operating lifetime N [yr]
+        in attribute operational_years_in : Real;
 
         // (1+d)^N, reused in the CRF numerator and denominator.
         // Source: economics.py:10.
         attribute discount_pow_n : Real =
-            (1.0 + discount_rate) ** operational_years;
+            (1.0 + discount_rate_in) ** operational_years_in;
 
         // Capital recovery factor. Source: economics.py:6-10.
         attribute crf : Real =
-            discount_rate * discount_pow_n / (discount_pow_n - 1.0);
+            discount_rate_in * discount_pow_n / (discount_pow_n - 1.0);
 
         // Interest during construction (even-spend midpoint). 2.0 = midpoint of
         // an evenly spread construction spend.
         attribute idc_factor : Real =
-            (1.0 + discount_rate) ** (construction_years / 2.0);
+            (1.0 + discount_rate_in) ** (construction_years_in / 2.0);
 
         // Annualized capital charge.
         attribute annual_capital : Real =
-            total_capital * idc_factor * crf;
+            total_capital_in * idc_factor * crf;
 
         // Annual energy sold [MWh/yr]. 8760.0 = hours/year. Source: economics.py:90.
         attribute annual_energy_mwh : Real =
-            8760.0 * net_electric_mw * availability;
+            8760.0 * net_electric_mw * availability_in;
 
         // Levelized cost of electricity [$/MWh]. Source: economics.py:88-92.
         out attribute lcoe : Real =
-            (annual_capital + annual_om) / annual_energy_mwh;
+            (annual_capital + annual_om_in) / annual_energy_mwh;
     }
 }

@@ -2,24 +2,20 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:429
 
 SysML Expressions:
-    turbine.capital_cost + electric_plant.capital_cost + heat_rejection.capital_cost + misc_plant.capital_cost
 """
 
 AUTO_IMPLEMENTED = True
 
-from stellarator_tea.modules.stellarator_09.stellaris.bop_capital import bop_capitalInput
+from stellarator_tea.modules.mfe_plant.mfe_power_plant.bop_capital import bop_capitalInput
 
 
 def run_bop_capital(inputs: bop_capitalInput) -> float:
     """Execute bop_capital calculation.
 
-SysML Source: unknown:0
-
-SysML Expressions:
-    turbine.capital_cost + electric_plant.capital_cost + heat_rejection.capital_cost + misc_plant.capital_cost
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:429
 
 Args:
     inputs: Input parameters validated against bop_capitalInput schema

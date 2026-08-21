@@ -2,13 +2,13 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:871
+SysML Source: root-0/analyses/mfe_account_costs.sysml:913
 
 SysML Expressions:
     cas90 = crf * (overnight_cost + idc_cost)
     
 Documentation:
-CAS90 in 1costingFE's financing form — the annual capital charge on
+CAS90 in 1costingFE's financing form -- the annual capital charge on
 overnight capital PLUS the closed-form CAS60 interest during
 construction:
 
@@ -19,7 +19,7 @@ The model's own DCF headline keeps its even-spend idc_factor and keeps
 total_capital = overnight_capital (Option C), so CAS60 never enters the
 headline capital base and the two channels cannot double-count. `crf` is
 supplied by the plant from the capital-recovery factor it already
-computes; `idc_cost` is the Item-3 CAS60 reported line — no new IDC
+computes; `idc_cost` is the Item-3 CAS60 reported line -- no new IDC
 arithmetic is introduced here.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
@@ -36,7 +36,7 @@ from stellarator_tea.modules.mfe_account_costs.n_1cfe_form_capital_charge import
 def run_n_1cfe_form_capital_charge(inputs: n_1cfe_Form_Capital_ChargeInput) -> float:
     """Execute n_1cfe_Form_Capital_Charge calculation.
 
-CAS90 in 1costingFE's financing form — the annual capital charge on
+CAS90 in 1costingFE's financing form -- the annual capital charge on
 overnight capital PLUS the closed-form CAS60 interest during
 construction:
 
@@ -47,7 +47,7 @@ The model's own DCF headline keeps its even-spend idc_factor and keeps
 total_capital = overnight_capital (Option C), so CAS60 never enters the
 headline capital base and the two channels cannot double-count. `crf` is
 supplied by the plant from the capital-recovery factor it already
-computes; `idc_cost` is the Item-3 CAS60 reported line — no new IDC
+computes; `idc_cost` is the Item-3 CAS60 reported line -- no new IDC
 arithmetic is introduced here.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
@@ -55,13 +55,13 @@ arithmetic is introduced here.
 costs.py:286-297 (cas60_idc); model.py:1483-1605 (total_cap = overnight + c60)
 *Basis**: 1costingFE annualized capital charge over overnight + IDC
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:871
+SysML Source: root-0/analyses/mfe_account_costs.sysml:913
 
 SysML Expressions:
     cas90 = crf * (overnight_cost + idc_cost)
     
 Documentation:
-CAS90 in 1costingFE's financing form — the annual capital charge on
+CAS90 in 1costingFE's financing form -- the annual capital charge on
 overnight capital PLUS the closed-form CAS60 interest during
 construction:
 
@@ -72,7 +72,7 @@ The model's own DCF headline keeps its even-spend idc_factor and keeps
 total_capital = overnight_capital (Option C), so CAS60 never enters the
 headline capital base and the two channels cannot double-count. `crf` is
 supplied by the plant from the capital-recovery factor it already
-computes; `idc_cost` is the Item-3 CAS60 reported line — no new IDC
+computes; `idc_cost` is the Item-3 CAS60 reported line -- no new IDC
 arithmetic is introduced here.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)

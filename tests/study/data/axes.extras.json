@@ -3,26 +3,43 @@
   "groups": [
     {
       "axis": "land_cost",
-      "note": "A valid group with genuinely no constraint reach — the exit-0 empty result.",
-      "keys": [{"key": "stellarator_09__stellaris__precon_cost__land_cost", "provenance": "fan_out"}]
+      "note": "A valid group with genuinely no constraint reach \u2014 the exit-0 empty result.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__precon_cost__land_cost",
+          "provenance": "fan_out"
+        }
+      ]
     },
     {
       "axis": "n_mod",
-      "note": "One key from the 18 that share the __n_mod suffix, so the advisory suffix scan has something to find. Membership is still declared-only: the other 17 are candidates, not members.",
-      "keys": [{"key": "stellarator_09__stellaris__aux_cooling__n_mod", "provenance": "fan_out"}]
+      "note": "One key from the three that share the __n_mod_in suffix (buildings_cost, om_cost, precon_cost -- the library defaults the plant does not bind), so the advisory suffix scan has something to find. Membership is still declared-only: the other two are candidates, not members.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__buildings_cost__n_mod_in",
+          "provenance": "fan_out"
+        }
+      ]
     },
     {
       "axis": "R_partial",
-      "note": "The R fan-out without the declared tie magnet__R0, so the manifest tie catalog has a candidate to report.",
+      "note": "R without its declared tie magnet__R0, so the manifest tie catalog has a candidate to report.",
       "keys": [
-        {"key": "stellarator_09__stellaris__geom__R", "provenance": "fan_out"},
-        {"key": "stellarator_09__stellaris__rb__R", "provenance": "fan_out"}
+        {
+          "key": "stellarator_09__stellaris__R",
+          "provenance": "fan_out"
+        }
       ]
     },
     {
       "axis": "R_shared",
       "note": "Declares a key that R_partial also declares, so the document-level duplicate-key warning has a case.",
-      "keys": [{"key": "stellarator_09__stellaris__geom__R", "provenance": "fan_out"}]
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__R",
+          "provenance": "fan_out"
+        }
+      ]
     }
   ]
 }

@@ -15,21 +15,21 @@ thermal.
 *Basis**: Plant-total two-term coolant cost
 
 Inputs:
-    - primary_base: primary_base parameter
-    - p_net: p_net parameter
-    - intermediate_base: intermediate_base parameter
-    - p_th: p_th parameter
-    - n_mod: n_mod parameter
-    - ref_net_power: ref_net_power parameter
     - p_th_ref: p_th_ref parameter
+    - n_mod_in: n_mod_in parameter
+    - ref_net_power: ref_net_power parameter
+    - intermediate_base: intermediate_base parameter
     - alpha: alpha parameter
+    - p_th_in: p_th_in parameter
+    - p_net: p_net parameter
+    - primary_base: primary_base parameter
 
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:504
+SysML Source: root-0/analyses/mfe_account_costs.sysml:526
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:504
+SysML Source: root-0/analyses/mfe_account_costs.sysml:526
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/coolant_cost_impl.py
@@ -45,23 +45,23 @@ class Coolant_CostInput(BaseModel):
     """Input model for Coolant_CostModule.
 
     Attributes:
-        primary_base: primary_base input
-        p_net: p_net input
-        intermediate_base: intermediate_base input
-        p_th: p_th input
-        n_mod: n_mod input
-        ref_net_power: ref_net_power input
         p_th_ref: p_th_ref input
+        n_mod_in: n_mod_in input
+        ref_net_power: ref_net_power input
+        intermediate_base: intermediate_base input
         alpha: alpha input
+        p_th_in: p_th_in input
+        p_net: p_net input
+        primary_base: primary_base input
     """
-    primary_base: float = Field(..., description="primary_base input")
-    p_net: float = Field(..., description="p_net input")
-    intermediate_base: float = Field(..., description="intermediate_base input")
-    p_th: float = Field(..., description="p_th input")
-    n_mod: float = Field(..., description="n_mod input")
-    ref_net_power: float = Field(..., description="ref_net_power input")
     p_th_ref: float = Field(..., description="p_th_ref input")
+    n_mod_in: float = Field(..., description="n_mod_in input")
+    ref_net_power: float = Field(..., description="ref_net_power input")
+    intermediate_base: float = Field(..., description="intermediate_base input")
     alpha: float = Field(..., description="alpha input")
+    p_th_in: float = Field(..., description="p_th_in input")
+    p_net: float = Field(..., description="p_net input")
+    primary_base: float = Field(..., description="primary_base input")
 
 
 class Coolant_CostModule(ModuleBase[Coolant_CostInput, Float]):
@@ -80,28 +80,28 @@ thermal.
 *Basis**: Plant-total two-term coolant cost
 
 Inputs:
-    - primary_base: primary_base parameter
-    - p_net: p_net parameter
-    - intermediate_base: intermediate_base parameter
-    - p_th: p_th parameter
-    - n_mod: n_mod parameter
-    - ref_net_power: ref_net_power parameter
     - p_th_ref: p_th_ref parameter
+    - n_mod_in: n_mod_in parameter
+    - ref_net_power: ref_net_power parameter
+    - intermediate_base: intermediate_base parameter
     - alpha: alpha parameter
+    - p_th_in: p_th_in parameter
+    - p_net: p_net parameter
+    - primary_base: primary_base parameter
 
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:504
+SysML Source: root-0/analyses/mfe_account_costs.sysml:526
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:504
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:526
 
     Calculation Specification:
-        n_mod = 1.0
+        n_mod_in = 1.0
         ref_net_power = 1000.0
         p_th_ref = 3500.0
         alpha = 0.55
-        cost = primary_base * (n_mod * p_net / ref_net_power) + intermediate_base * (n_mod * p_th / p_th_ref) ** alpha
+        cost = primary_base * (n_mod_in * p_net / ref_net_power) + intermediate_base * (n_mod_in * p_th_in / p_th_ref) ** alpha
         
 Documentation:
 Coolant account (two-term, plant-total):
@@ -126,43 +126,43 @@ thermal.
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, primary_base: float, p_net: float, intermediate_base: float, p_th: float, n_mod: float, ref_net_power: float, p_th_ref: float, alpha: float    ) -> Coolant_CostInput:
+        self, p_th_ref: float, n_mod_in: float, ref_net_power: float, intermediate_base: float, alpha: float, p_th_in: float, p_net: float, primary_base: float    ) -> Coolant_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
-            primary_base: primary_base input
-            p_net: p_net input
-            intermediate_base: intermediate_base input
-            p_th: p_th input
-            n_mod: n_mod input
-            ref_net_power: ref_net_power input
             p_th_ref: p_th_ref input
+            n_mod_in: n_mod_in input
+            ref_net_power: ref_net_power input
+            intermediate_base: intermediate_base input
             alpha: alpha input
+            p_th_in: p_th_in input
+            p_net: p_net input
+            primary_base: primary_base input
 
         Returns:
             Validated input model
         """
-        return Coolant_CostInput(primary_base=primary_base, p_net=p_net, intermediate_base=intermediate_base, p_th=p_th, n_mod=n_mod, ref_net_power=ref_net_power, p_th_ref=p_th_ref, alpha=alpha)
+        return Coolant_CostInput(p_th_ref=p_th_ref, n_mod_in=n_mod_in, ref_net_power=ref_net_power, intermediate_base=intermediate_base, alpha=alpha, p_th_in=p_th_in, p_net=p_net, primary_base=primary_base)
 
     def run(
-        self, primary_base: float, p_net: float, intermediate_base: float, p_th: float, n_mod: float, ref_net_power: float, p_th_ref: float, alpha: float    ) -> ModuleResult[Float]:
+        self, p_th_ref: float, n_mod_in: float, ref_net_power: float, intermediate_base: float, alpha: float, p_th_in: float, p_net: float, primary_base: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            primary_base: primary_base input
-            p_net: p_net input
-            intermediate_base: intermediate_base input
-            p_th: p_th input
-            n_mod: n_mod input
-            ref_net_power: ref_net_power input
             p_th_ref: p_th_ref input
+            n_mod_in: n_mod_in input
+            ref_net_power: ref_net_power input
+            intermediate_base: intermediate_base input
             alpha: alpha input
+            p_th_in: p_th_in input
+            p_net: p_net input
+            primary_base: primary_base input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(primary_base, p_net, intermediate_base, p_th, n_mod, ref_net_power, p_th_ref, alpha)
+        validated_inputs = self.validate_and_fill_default(p_th_ref, n_mod_in, ref_net_power, intermediate_base, alpha, p_th_in, p_net, primary_base)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.coolant_cost_impl import (

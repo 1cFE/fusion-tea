@@ -47,9 +47,9 @@ this calc stays flat and codegen-safe (no nested calc invocation).
 
 SysML Source: root-0/analyses/mfe_power_balance.sysml:4
     """
-    p_th: float = Field(description="p_th output")
     p_the: float = Field(description="p_the output")
     p_et: float = Field(description="p_et output")
     q_eng: float = Field(description="q_eng output")
-    rec_frac: float = Field(description="rec_frac output")
+    p_th: float = Field(description="p_th output")
     p_net: float = Field(description="p_net output")
+    rec_frac: float = Field(description="rec_frac output")

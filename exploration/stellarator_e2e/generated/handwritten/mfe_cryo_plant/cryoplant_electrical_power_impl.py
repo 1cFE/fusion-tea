@@ -29,7 +29,7 @@ cryoplant electrical outright (no chain); with zero heat inputs the
 calc passes p_direct through exactly. f_uplift names the seam for
 heat loads missing from the inventory (>= 1). Dormant-safe defaults:
 an unbound concept computes p_elec = 0; f_carnot defaults 1.0 (not 0)
-so the dormant COP stays defined — the mode is selected by the heat
+so the dormant COP stays defined -- the mode is selected by the heat
 inputs, never by the efficiency (WI-022 T_i0 precedent).
 Output feeds the power-balance p_cryo slot ("cryogenic system
 power"), which 1costingFE's own defaults document as the cryoplant
@@ -37,10 +37,10 @@ wall-plug electrical.
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py
 *Ref**: physics.py:321-323 (p_cryo in the recirculating sum);
 steady_state_dipole.yaml:52-53 (slot semantics: "Cryogenic
-wall-plug power" = heat load x plant efficiency — semantics
+wall-plug power" = heat load x plant efficiency -- semantics
 witness only, value inadmissible)
 *Basis**: reversed-Carnot reference cycle x fraction-of-Carnot;
-concept-agnostic (MR-3) — all values bound by instances
+concept-agnostic (MR-3) -- all values bound by instances
 """
 
 AUTO_IMPLEMENTED = True
@@ -61,7 +61,7 @@ cryoplant electrical outright (no chain); with zero heat inputs the
 calc passes p_direct through exactly. f_uplift names the seam for
 heat loads missing from the inventory (>= 1). Dormant-safe defaults:
 an unbound concept computes p_elec = 0; f_carnot defaults 1.0 (not 0)
-so the dormant COP stays defined — the mode is selected by the heat
+so the dormant COP stays defined -- the mode is selected by the heat
 inputs, never by the efficiency (WI-022 T_i0 precedent).
 Output feeds the power-balance p_cryo slot ("cryogenic system
 power"), which 1costingFE's own defaults document as the cryoplant
@@ -69,10 +69,10 @@ wall-plug electrical.
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py
 *Ref**: physics.py:321-323 (p_cryo in the recirculating sum);
 steady_state_dipole.yaml:52-53 (slot semantics: "Cryogenic
-wall-plug power" = heat load x plant efficiency — semantics
+wall-plug power" = heat load x plant efficiency -- semantics
 witness only, value inadmissible)
 *Basis**: reversed-Carnot reference cycle x fraction-of-Carnot;
-concept-agnostic (MR-3) — all values bound by instances
+concept-agnostic (MR-3) -- all values bound by instances
 
 SysML Source: root-0/analyses/mfe_cryo_plant.sysml:4
 
@@ -101,7 +101,7 @@ cryoplant electrical outright (no chain); with zero heat inputs the
 calc passes p_direct through exactly. f_uplift names the seam for
 heat loads missing from the inventory (>= 1). Dormant-safe defaults:
 an unbound concept computes p_elec = 0; f_carnot defaults 1.0 (not 0)
-so the dormant COP stays defined — the mode is selected by the heat
+so the dormant COP stays defined -- the mode is selected by the heat
 inputs, never by the efficiency (WI-022 T_i0 precedent).
 Output feeds the power-balance p_cryo slot ("cryogenic system
 power"), which 1costingFE's own defaults document as the cryoplant
@@ -109,10 +109,10 @@ wall-plug electrical.
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py
 *Ref**: physics.py:321-323 (p_cryo in the recirculating sum);
 steady_state_dipole.yaml:52-53 (slot semantics: "Cryogenic
-wall-plug power" = heat load x plant efficiency — semantics
+wall-plug power" = heat load x plant efficiency -- semantics
 witness only, value inadmissible)
 *Basis**: reversed-Carnot reference cycle x fraction-of-Carnot;
-concept-agnostic (MR-3) — all values bound by instances
+concept-agnostic (MR-3) -- all values bound by instances
 
 Args:
     inputs: Input parameters validated against Cryoplant_Electrical_PowerInput schema
@@ -124,7 +124,7 @@ Example:
     >>> inputs = Cryoplant_Electrical_PowerInput(...)
     >>> result = run_cryoplant_electrical_power(inputs)
     """
+    p_cold = ((((inputs.q_nuc * inputs.vol_cold) * 1e-06) + inputs.p_fixed) * inputs.f_uplift)
     cop_carnot = (inputs.T_cold / (inputs.T_amb - inputs.T_cold))
     cop = (inputs.f_carnot * cop_carnot)
-    p_cold = ((((inputs.q_nuc * inputs.vol_cold) * 1e-06) + inputs.p_fixed) * inputs.f_uplift)
     return ((p_cold / cop) + inputs.p_direct)

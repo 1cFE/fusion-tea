@@ -6,7 +6,7 @@ SysML Source: root-0/analyses/mfe_account_costs.sysml:276
 
 SysML Expressions:
     reference_construction_time = 6.0
-    cost = indirect_fraction * direct_cost * (construction_time / reference_construction_time)
+    cost = indirect_fraction_in * direct_cost * (construction_time / reference_construction_time)
     
 Documentation:
 CAS30 indirect service costs, a fraction of total direct cost scaled by
@@ -46,7 +46,7 @@ SysML Source: root-0/analyses/mfe_account_costs.sysml:276
 
 SysML Expressions:
     reference_construction_time = 6.0
-    cost = indirect_fraction * direct_cost * (construction_time / reference_construction_time)
+    cost = indirect_fraction_in * direct_cost * (construction_time / reference_construction_time)
     
 Documentation:
 CAS30 indirect service costs, a fraction of total direct cost scaled by
@@ -71,4 +71,4 @@ Example:
     >>> inputs = Indirect_CostInput(...)
     >>> result = run_indirect_cost(inputs)
     """
-    return ((inputs.indirect_fraction * inputs.direct_cost) * (inputs.construction_time / inputs.reference_construction_time))
+    return ((inputs.indirect_fraction_in * inputs.direct_cost) * (inputs.construction_time / inputs.reference_construction_time))

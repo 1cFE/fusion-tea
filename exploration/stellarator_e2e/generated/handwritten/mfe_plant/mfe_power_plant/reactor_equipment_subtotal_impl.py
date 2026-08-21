@@ -2,24 +2,20 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:456
 
 SysML Expressions:
-    powercore_capital + remote_handling_capital
 """
 
 AUTO_IMPLEMENTED = True
 
-from stellarator_tea.modules.stellarator_09.stellaris.reactor_equipment_subtotal import reactor_equipment_subtotalInput
+from stellarator_tea.modules.mfe_plant.mfe_power_plant.reactor_equipment_subtotal import reactor_equipment_subtotalInput
 
 
 def run_reactor_equipment_subtotal(inputs: reactor_equipment_subtotalInput) -> float:
     """Execute reactor_equipment_subtotal calculation.
 
-SysML Source: unknown:0
-
-SysML Expressions:
-    powercore_capital + remote_handling_capital
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:456
 
 Args:
     inputs: Input parameters validated against reactor_equipment_subtotalInput schema

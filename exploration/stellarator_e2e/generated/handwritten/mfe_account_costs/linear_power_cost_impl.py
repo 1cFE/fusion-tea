@@ -5,8 +5,8 @@ AUTO_IMPLEMENTED = True
 SysML Source: root-0/analyses/mfe_account_costs.sysml:226
 
 SysML Expressions:
-    n_mod = 1.0
-    cost = n_mod * power * cost_per_mw
+    n_mod_in = 1.0
+    cost = n_mod_in * power * cost_per_mw
     
 Documentation:
 Generic balance-of-plant account cost linear in plant-total power:
@@ -51,8 +51,8 @@ and per-MW unit cost (concept/power-cycle inputs, WI-011):
 SysML Source: root-0/analyses/mfe_account_costs.sysml:226
 
 SysML Expressions:
-    n_mod = 1.0
-    cost = n_mod * power * cost_per_mw
+    n_mod_in = 1.0
+    cost = n_mod_in * power * cost_per_mw
     
 Documentation:
 Generic balance-of-plant account cost linear in plant-total power:
@@ -80,4 +80,4 @@ Example:
     >>> inputs = Linear_Power_CostInput(...)
     >>> result = run_linear_power_cost(inputs)
     """
-    return ((inputs.n_mod * inputs.power) * inputs.cost_per_mw)
+    return ((inputs.n_mod_in * inputs.power) * inputs.cost_per_mw)

@@ -31,7 +31,7 @@ package mfe_subsystems {
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
         **Ref**: cas22.py:252-254 (c220101)
-        **Basis**: DI-002 — blanket is a shared (concept-agnostic) CAS22 account
+        **Basis**: DI-002 -- blanket is a shared (concept-agnostic) CAS22 account
         */
         :>> scope = 'CAS Scope'::shared;
 
@@ -48,7 +48,7 @@ package mfe_subsystems {
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
         **Ref**: cas22.py:267-269 (c220102)
-        **Basis**: DI-002 — shield is a shared (concept-agnostic) CAS22 account
+        **Basis**: DI-002 -- shield is a shared (concept-agnostic) CAS22 account
         */
         :>> scope = 'CAS Scope'::shared;
 
@@ -65,7 +65,7 @@ package mfe_subsystems {
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
         **Ref**: cas22.py:501 (c220105)
-        **Basis**: DI-002 — primary structure is a shared CAS22 account
+        **Basis**: DI-002 -- primary structure is a shared CAS22 account
         */
         :>> scope = 'CAS Scope'::shared;
 
@@ -81,7 +81,7 @@ package mfe_subsystems {
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
         **Ref**: cas22.py:515 (c220106_vessel)
-        **Basis**: DI-002 — vacuum vessel is a shared CAS22 account
+        **Basis**: DI-002 -- vacuum vessel is a shared CAS22 account
         */
         :>> scope = 'CAS Scope'::shared;
 
@@ -96,7 +96,7 @@ package mfe_subsystems {
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
         **Ref**: cas22.py:554 (c220107 steady-state)
-        **Basis**: DI-002 — power supplies is a shared CAS22 account
+        **Basis**: DI-002 -- power supplies is a shared CAS22 account
         */
         :>> scope = 'CAS Scope'::shared;
 
@@ -138,7 +138,7 @@ package mfe_subsystems {
         doc /*
         CAS25 Heat rejection (cooling towers, circulating water). Linear in
         total thermal power; feeds 'Linear Power Cost' with power = p_th.
-        (1costingFE numbers this account CAS26 — see file header note.)
+        (1costingFE numbers this account CAS26 -- see file header note.)
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
         **Ref**: costs.py:179 (cas26_heat_rejection)
@@ -153,7 +153,7 @@ package mfe_subsystems {
         doc /*
         CAS26 Miscellaneous plant equipment (fire protection, compressed air,
         HVAC). Linear in gross electric; feeds 'Linear Power Cost' with
-        power = p_et. (1costingFE numbers this account CAS25 — see header note.)
+        power = p_et. (1costingFE numbers this account CAS25 -- see header note.)
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
         **Ref**: costs.py:170 (cas25_misc)
@@ -175,7 +175,7 @@ package mfe_subsystems {
         initial-model pass-through for Stage-3 deepening.
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
-        **Ref**: costs.py:97-152 (cas21_buildings — dict loop, out of envelope)
+        **Ref**: costs.py:97-152 (cas21_buildings -- dict loop, out of envelope)
         **Basis**: Pass-through; buildings model needs sum/lookup constructs
         */
         :>> scope = 'CAS Scope'::shared;

@@ -8,19 +8,19 @@ scaling with a fuel-dependent shield-mass scale factor:
   cost = unit_cost * shield_vol * shield_scale * (p_th/p_th_ref)^alpha
 
 `shield_scale` is the fuel neutron-load factor (DT 1.0, DD 0.7, DHe3 0.3,
-pB11 0.1 in the source) — a concept input (WI-011).
+pB11 0.1 in the source) -- a concept input (WI-011).
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
 *Ref**: cas22.py:267-269 (c220102), cas22.py:223 (P_TH_REF=2500)
 *Basis**: Volume-based shield cost with fuel neutron-load scale
 
 Inputs:
-    - unit_cost: unit_cost parameter
-    - shield_vol: shield_vol parameter
-    - shield_scale: shield_scale parameter
-    - p_th: p_th parameter
     - p_th_ref: p_th_ref parameter
+    - shield_vol: shield_vol parameter
+    - unit_cost: unit_cost parameter
     - alpha: alpha parameter
+    - shield_scale: shield_scale parameter
+    - p_th_in: p_th_in parameter
 
 Outputs:
     - cost: cost result
@@ -43,19 +43,19 @@ class Shield_CostInput(BaseModel):
     """Input model for Shield_CostModule.
 
     Attributes:
-        unit_cost: unit_cost input
-        shield_vol: shield_vol input
-        shield_scale: shield_scale input
-        p_th: p_th input
         p_th_ref: p_th_ref input
+        shield_vol: shield_vol input
+        unit_cost: unit_cost input
         alpha: alpha input
+        shield_scale: shield_scale input
+        p_th_in: p_th_in input
     """
-    unit_cost: float = Field(..., description="unit_cost input")
-    shield_vol: float = Field(..., description="shield_vol input")
-    shield_scale: float = Field(..., description="shield_scale input")
-    p_th: float = Field(..., description="p_th input")
     p_th_ref: float = Field(..., description="p_th_ref input")
+    shield_vol: float = Field(..., description="shield_vol input")
+    unit_cost: float = Field(..., description="unit_cost input")
     alpha: float = Field(..., description="alpha input")
+    shield_scale: float = Field(..., description="shield_scale input")
+    p_th_in: float = Field(..., description="p_th_in input")
 
 
 class Shield_CostModule(ModuleBase[Shield_CostInput, Float]):
@@ -67,19 +67,19 @@ scaling with a fuel-dependent shield-mass scale factor:
   cost = unit_cost * shield_vol * shield_scale * (p_th/p_th_ref)^alpha
 
 `shield_scale` is the fuel neutron-load factor (DT 1.0, DD 0.7, DHe3 0.3,
-pB11 0.1 in the source) — a concept input (WI-011).
+pB11 0.1 in the source) -- a concept input (WI-011).
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
 *Ref**: cas22.py:267-269 (c220102), cas22.py:223 (P_TH_REF=2500)
 *Basis**: Volume-based shield cost with fuel neutron-load scale
 
 Inputs:
-    - unit_cost: unit_cost parameter
-    - shield_vol: shield_vol parameter
-    - shield_scale: shield_scale parameter
-    - p_th: p_th parameter
     - p_th_ref: p_th_ref parameter
+    - shield_vol: shield_vol parameter
+    - unit_cost: unit_cost parameter
     - alpha: alpha parameter
+    - shield_scale: shield_scale parameter
+    - p_th_in: p_th_in parameter
 
 Outputs:
     - cost: cost result
@@ -91,7 +91,7 @@ SysML Source: root-0/analyses/mfe_account_costs.sysml:52
     Calculation Specification:
         p_th_ref = 2500.0
         alpha = 0.6
-        cost = unit_cost * shield_vol * shield_scale * (p_th / p_th_ref) ** alpha
+        cost = unit_cost * shield_vol * shield_scale * (p_th_in / p_th_ref) ** alpha
         
 Documentation:
 CAS22.1.2 Shield (HT + LT + bioshield) cost. Volume x thermal-power
@@ -100,7 +100,7 @@ scaling with a fuel-dependent shield-mass scale factor:
   cost = unit_cost * shield_vol * shield_scale * (p_th/p_th_ref)^alpha
 
 `shield_scale` is the fuel neutron-load factor (DT 1.0, DD 0.7, DHe3 0.3,
-pB11 0.1 in the source) — a concept input (WI-011).
+pB11 0.1 in the source) -- a concept input (WI-011).
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
 *Ref**: cas22.py:267-269 (c220102), cas22.py:223 (P_TH_REF=2500)
@@ -116,39 +116,39 @@ pB11 0.1 in the source) — a concept input (WI-011).
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, unit_cost: float, shield_vol: float, shield_scale: float, p_th: float, p_th_ref: float, alpha: float    ) -> Shield_CostInput:
+        self, p_th_ref: float, shield_vol: float, unit_cost: float, alpha: float, shield_scale: float, p_th_in: float    ) -> Shield_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
-            unit_cost: unit_cost input
-            shield_vol: shield_vol input
-            shield_scale: shield_scale input
-            p_th: p_th input
             p_th_ref: p_th_ref input
+            shield_vol: shield_vol input
+            unit_cost: unit_cost input
             alpha: alpha input
+            shield_scale: shield_scale input
+            p_th_in: p_th_in input
 
         Returns:
             Validated input model
         """
-        return Shield_CostInput(unit_cost=unit_cost, shield_vol=shield_vol, shield_scale=shield_scale, p_th=p_th, p_th_ref=p_th_ref, alpha=alpha)
+        return Shield_CostInput(p_th_ref=p_th_ref, shield_vol=shield_vol, unit_cost=unit_cost, alpha=alpha, shield_scale=shield_scale, p_th_in=p_th_in)
 
     def run(
-        self, unit_cost: float, shield_vol: float, shield_scale: float, p_th: float, p_th_ref: float, alpha: float    ) -> ModuleResult[Float]:
+        self, p_th_ref: float, shield_vol: float, unit_cost: float, alpha: float, shield_scale: float, p_th_in: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            unit_cost: unit_cost input
-            shield_vol: shield_vol input
-            shield_scale: shield_scale input
-            p_th: p_th input
             p_th_ref: p_th_ref input
+            shield_vol: shield_vol input
+            unit_cost: unit_cost input
             alpha: alpha input
+            shield_scale: shield_scale input
+            p_th_in: p_th_in input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(unit_cost, shield_vol, shield_scale, p_th, p_th_ref, alpha)
+        validated_inputs = self.validate_and_fill_default(p_th_ref, shield_vol, unit_cost, alpha, shield_scale, p_th_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.shield_cost_impl import (

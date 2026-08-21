@@ -314,6 +314,52 @@ def era_simkit_path() -> Path:
     return simkit
 
 
+# ------------------------------------------------ stellarator-model-migration: the stock route
+#
+# The regenerated package runs on stock teax, reached through the sealed-runner contract's
+# ``STOP_PARSER_TEAX_ROOT`` (design D4): the root of a teax checkout whose
+# ``packages/teax-simkit`` goes on ``sys.path``. Like the era worktree above, it is an
+# external dependency that uv does not install, so its absence skips with the resolved path
+# in the reason; ``STUDY_REQUIRE_TEAX=1`` turns that skip into a failure.
+
+TEAX_ROOT_ENV = "STOP_PARSER_TEAX_ROOT"
+TEAX_SIMKIT_SUBPATH = "packages/teax-simkit"
+
+
+def _unavailable_teax(reason: str):
+    if os.environ.get("STUDY_REQUIRE_TEAX") == "1":
+        pytest.fail(reason)
+    pytest.skip(reason)
+
+
+def _stock_simkit_path() -> Path:
+    root = os.environ.get(TEAX_ROOT_ENV)
+    if not root:
+        _unavailable_teax(f"{TEAX_ROOT_ENV} is not set; point it at a teax checkout")
+    simkit_dir = Path(root) / TEAX_SIMKIT_SUBPATH
+    if not simkit_dir.is_dir():
+        _unavailable_teax(f"{TEAX_ROOT_ENV}={root} has no {TEAX_SIMKIT_SUBPATH}")
+    if str(simkit_dir) not in sys.path:
+        sys.path.insert(0, str(simkit_dir))
+    import simkit
+
+    assert Path(simkit.__file__).resolve().is_relative_to(simkit_dir.resolve()), simkit.__file__
+    return simkit_dir
+
+
+@pytest.fixture
+def stock_simkit_path() -> Path:
+    """Stock teax's ``teax-simkit`` directory from ``STOP_PARSER_TEAX_ROOT``, on ``sys.path``,
+    with the imported ``simkit`` asserted to come from under that root."""
+    return _stock_simkit_path()
+
+
+@pytest.fixture(scope="session")
+def stock_simkit_session_path() -> Path:
+    """The same, for the session-scoped route fixtures (one baseline execution per session)."""
+    return _stock_simkit_path()
+
+
 COMMITTED_STUDY_DIR = REPO_ROOT / "exploration" / "stellarator_e2e" / "study"
 COMMITTED_WORK_DIR = COMMITTED_STUDY_DIR / "_work"
 

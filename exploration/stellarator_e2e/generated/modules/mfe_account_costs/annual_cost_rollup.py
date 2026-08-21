@@ -3,7 +3,7 @@
 TEAx module for Annual_Cost_Rollup calculation.
 
 CAS70 = CAS71 + CAS72, and the total levelized annual cost the LCOE
-numerator carries (CAS70 + CAS80). Pure addition — it introduces no new
+numerator carries (CAS70 + CAS80). Pure addition -- it introduces no new
 economics, it makes the two sums producer channels the DCF core and the
 1cfe-form comparison channel can read.
 
@@ -21,9 +21,9 @@ Outputs:
     - cas70: cas70 result
     - annual_total: annual_total result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:853
+SysML Source: root-0/analyses/mfe_account_costs.sysml:891
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:853
+SysML Source: root-0/analyses/mfe_account_costs.sysml:891
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/annual_cost_rollup_impl.py
@@ -53,7 +53,7 @@ class Annual_Cost_RollupModule(ModuleBase[Annual_Cost_RollupInput, Annual_Cost_R
     """TEAx module for Annual_Cost_Rollup calculation.
 
 CAS70 = CAS71 + CAS72, and the total levelized annual cost the LCOE
-numerator carries (CAS70 + CAS80). Pure addition — it introduces no new
+numerator carries (CAS70 + CAS80). Pure addition -- it introduces no new
 economics, it makes the two sums producer channels the DCF core and the
 1cfe-form comparison channel can read.
 
@@ -71,9 +71,9 @@ Outputs:
     - cas70: cas70 result
     - annual_total: annual_total result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:853
+SysML Source: root-0/analyses/mfe_account_costs.sysml:891
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:853
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:891
 
     Calculation Specification:
         cas70 = cas71 + cas72
@@ -81,7 +81,7 @@ SysML Source: root-0/analyses/mfe_account_costs.sysml:853
         
 Documentation:
 CAS70 = CAS71 + CAS72, and the total levelized annual cost the LCOE
-numerator carries (CAS70 + CAS80). Pure addition — it introduces no new
+numerator carries (CAS70 + CAS80). Pure addition -- it introduces no new
 economics, it makes the two sums producer channels the DCF core and the
 1cfe-form comparison channel can read.
 

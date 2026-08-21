@@ -71,15 +71,15 @@ def test_suffix_siblings_land_in_their_own_named_field():
     warnings — there is exactly one place to read them."""
     doc = run_tool(REAL_PACKAGE, REAL_MANIFEST, EXTRAS)
     group = group_by_axis(doc, "n_mod")
-    assert len(group["sibling_candidates"]) == 17  # 18 keys share the suffix, 1 declared
-    assert all(key.endswith("__n_mod") for key in group["sibling_candidates"])
+    assert len(group["sibling_candidates"]) == 2  # 3 keys share the suffix, 1 declared
+    assert all(key.endswith("__n_mod_in") for key in group["sibling_candidates"])
     assert group["sibling_candidates"] == sorted(group["sibling_candidates"])
     assert warning_kinds(doc, "n_mod") == []
     assert "sibling" not in json.dumps(group["warnings"])
 
 
 def test_suffix_siblings_never_join_the_traced_set():
-    """Invariant 3: 17 candidates, 1 traced key."""
+    """Invariant 3: 2 candidates, 1 traced key."""
     doc = run_tool(REAL_PACKAGE, REAL_MANIFEST, EXTRAS)
     group = group_by_axis(doc, "n_mod")
     assert len(group["declared_keys"]) == 1
@@ -98,7 +98,7 @@ def test_a_key_in_two_groups_earns_a_document_warning():
     doc = run_tool(REAL_PACKAGE, REAL_MANIFEST, EXTRAS)
     duplicates = [w for w in doc["warnings"] if w["kind"] == "duplicate_key_across_groups"]
     assert len(duplicates) == 1
-    assert "geom__R" in duplicates[0]["detail"]
+    assert "stellarator_09__stellaris__R" in duplicates[0]["detail"]
     assert "R_partial" in duplicates[0]["detail"] and "R_shared" in duplicates[0]["detail"]
 
 

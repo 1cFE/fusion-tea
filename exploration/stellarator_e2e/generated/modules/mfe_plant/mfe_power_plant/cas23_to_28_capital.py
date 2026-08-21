@@ -10,12 +10,12 @@ Inputs:
 Outputs:
     - cas23_to_28_capital: cas23_to_28_capital result
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:570
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:570
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
-Handwritten implementation required in handwritten/stellarator_09/stellaris/cas23_to_28_capital_impl.py
+Handwritten implementation required in handwritten/mfe_plant/mfe_power_plant/cas23_to_28_capital_impl.py
 """
 
 from pydantic import BaseModel, Field, RootModel
@@ -48,14 +48,13 @@ Inputs:
 Outputs:
     - cas23_to_28_capital: cas23_to_28_capital result
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:570
 
-    SysML Source: unknown:0
+    SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:570
 
     Calculation Specification:
-        bop_capital + special_materials_capital + cas28_capital
 
-    IMPLEMENTATION: See stellarator_tea.handwritten.stellarator_09.stellaris.cas23_to_28_capital_impl
+    IMPLEMENTATION: See stellarator_tea.handwritten.mfe_plant.mfe_power_plant.cas23_to_28_capital_impl
     for manual implementation.
 
     NOTE: Single-output module - returns Float directly (no MultiOutput needed).
@@ -94,7 +93,7 @@ SysML Source: unknown:0
         validated_inputs = self.validate_and_fill_default(bop_capital, special_materials_capital, cas28_capital)
 
         # Import handwritten implementation
-        from stellarator_tea.handwritten.stellarator_09.stellaris.cas23_to_28_capital_impl import (
+        from stellarator_tea.handwritten.mfe_plant.mfe_power_plant.cas23_to_28_capital_impl import (
             run_cas23_to_28_capital,
         )
 

@@ -2,24 +2,20 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:605
 
 SysML Expressions:
-    preconstruction_capital + cas20_capital + cas30_capital + owner_capital + supplementary_capital
 """
 
 AUTO_IMPLEMENTED = True
 
-from stellarator_tea.modules.stellarator_09.stellaris.overnight_capital import overnight_capitalInput
+from stellarator_tea.modules.mfe_plant.mfe_power_plant.overnight_capital import overnight_capitalInput
 
 
 def run_overnight_capital(inputs: overnight_capitalInput) -> float:
     """Execute overnight_capital calculation.
 
-SysML Source: unknown:0
-
-SysML Expressions:
-    preconstruction_capital + cas20_capital + cas30_capital + owner_capital + supplementary_capital
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:605
 
 Args:
     inputs: Input parameters validated against overnight_capitalInput schema

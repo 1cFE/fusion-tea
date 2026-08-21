@@ -6,21 +6,20 @@ nothing else. Everything that is *this package's* knowledge lives here —
 * which qualified entry key becomes which oracle input (`ENTRY_KEY_TO_ORACLE_INPUT`),
 * which oracle output is which qualified channel (`ORACLE_OUTPUT_TO_CHANNEL`),
 * which qualified key or channel each constraint's predicate operand means
-  (`operand_bindings`, design D12), and
-* the glue values the era adapter feeds per point (`glue_values`, design D13).
+  (`operand_bindings`, design D12).
 
-Three published surfaces and nothing else: `evaluate`, `operand_bindings`,
-`glue_values`. The independent oracle `verify_stellaris.py` is imported and
-never modified — it stays independent evidence, and a study-seam edit to it
-would compromise that.
+Two published surfaces and nothing else: `evaluate` and `operand_bindings`. The
+independent oracle `verify_stellaris.py` is imported and never modified — it stays
+independent evidence, and a study-seam edit to it would compromise that.
 
 Everything here fails closed. An entry key with no declared mapping, two keys
 that map to one oracle input but disagree, or an oracle output with no channel
 is a mechanical failure, not a silently skipped comparison.
 
-**Editing this file retires every existing study store.** It is one of the era
-adapter's three declared sources (design Invariant 4), because it feeds numbers
-into a run — so its bytes are part of the effective executable fingerprint.
+Nothing here feeds a number *into* a run. Since the stellarator model migration
+(2026-08-21) the package runs sealed on stock teax and the oracle only recomputes;
+CAS27 (`special_materials_capital`) is now a package channel the oracle recomputes
+from its own blanket volume, so oracle parity verifies it for the first time.
 """
 
 from __future__ import annotations
@@ -44,35 +43,16 @@ if not hasattr(vs._profile_integral, "cache_info"):
 
 P = "stellarator_09__stellaris__"
 
-#: Sentinel: the key is fed to the package by glue and is *not* an oracle input —
-#: the oracle recomputes the same quantity from its own inputs. Feeding it back
-#: would make the check circular, so it is dropped, and the glue ledger discloses it.
-GLUE_FED = "<glue-fed, recomputed by the oracle>"
-
-#: Sentinel: the key is a dead schema filler. Nothing in the executed pipeline reads
-#: it (the adapter asserts that on every load), so it moves no number either way.
-DEAD_FILLER = "<dead schema filler>"
-
 #: Qualified entry key -> oracle input name. Every key that can appear in a proposal
 #: or in a recorded case's inputs is declared here; an undeclared key is a failure.
+#: One key per swept plant attribute since the model migration (the library formals
+#: are bound by the `_in` convention, so codegen projects one entry point per
+#: authored attribute); `magnet__R0` is the separately authored tie.
 ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
-    f"{P}geom__R": "R",
-    f"{P}rb__R": "R",
+    f"{P}R": "R",
     f"{P}magnet__R0": "magnet_R0",
-    f"{P}geom__a": "a",
-    f"{P}rb__a": "a",
-    f"{P}cas72_calc__availability": "availability",
-    f"{P}fuel_calc__availability": "availability",
-    f"{P}lcoe_calc__availability": "availability",
-    f"{P}lcoe_1cfe_calc__availability": "availability",
-    f"{P}cas23_to_28_capital__cas28_capital": "cas28_capital",
-    f"{P}cas2x_pre_contingency__cas28_capital": "cas28_capital",
-    f"{P}replacement_cost_per_event__n_mod": "n_mod",
-    f"{P}cas23_to_28_capital__special_materials_capital": GLUE_FED,
-    f"{P}cas2x_pre_contingency__special_materials_capital": GLUE_FED,
-    "mfe_plant__MFE_Power_Plant__p_th": DEAD_FILLER,
-    "mfe_plant__MFE_Power_Plant__p_the": DEAD_FILLER,
-    "mfe_plant__MFE_Power_Plant__p_et": DEAD_FILLER,
+    f"{P}a": "a",
+    f"{P}availability": "availability",
 }
 
 #: Oracle output name -> qualified channel name. Only channels the package records
@@ -128,21 +108,13 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "indirect_capital": f"{P}indirect__cost",
     "total_capital": f"{P}total_capital__total_capital",
     "lcoe": f"{P}lcoe_calc__lcoe",
+    # CAS27, recomputed by the oracle from its own blanket volume and compared against
+    # the package's in-package producer — the ingredient the era route could not verify.
+    "special_materials": f"{P}special_materials_capital__special_materials_capital",
     "annual_fuel": f"{P}fuel_calc__annual_fuel",
     "cas72_annual": f"{P}cas72_calc__cost",
     "cas90_1cfe": f"{P}cas90_1cfe_calc__cas90",
     "lcoe_1cfe": f"{P}lcoe_1cfe_calc__lcoe",
-}
-
-#: Qualified entry keys the era adapter injects per point, and the oracle output
-#: each one carries (design D13, glue rungs g2/g3). These are *parameters* of the
-#: package, not output channels, so they cannot travel through `evaluate`'s return.
-GLUE_VALUE_KEYS: dict[str, str] = {
-    f"{P}cas23_to_28_capital__special_materials_capital": "special_materials",
-    f"{P}cas2x_pre_contingency__special_materials_capital": "special_materials",
-    "mfe_plant__MFE_Power_Plant__p_th": "p_th",
-    "mfe_plant__MFE_Power_Plant__p_the": "p_the",
-    "mfe_plant__MFE_Power_Plant__p_et": "p_et",
 }
 
 #: constraint_id -> source_name -> {"kind", "key"} (design D12).
@@ -153,28 +125,34 @@ GLUE_VALUE_KEYS: dict[str, str] = {
 #: could be name-matched use three different composition rules. A tool that guessed
 #: would compare the wrong number and read as a pass.
 OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
+    # Operand names are the constraint definitions' formal names as the catalog's
+    # predicate IR spells them: `_in`-suffixed where the D-5 rename touched the formal
+    # (beta, beta_limit, tbr, tbr_floor, wall_load_limit), bare where it did not
+    # (net_electric, rec_frac, threshold, wall_load).
     f"{P}beta_ok__82b78aad420730d5": {
-        "beta": {"kind": "input", "key": f"{P}beta"},
-        "beta_limit": {"kind": "input", "key": f"{P}beta_limit"},
+        "beta_in": {"kind": "input", "key": f"{P}beta"},
+        "beta_limit_in": {"kind": "input", "key": f"{P}beta_limit"},
     },
     f"{P}net_positive__484521d56c02667a": {
         # No parameter and no key contains "net_electric": it is the power-balance
-        # net electric channel, which the era store does not record but the oracle
-        # returns. This operand is why bindings are published rather than inferred.
+        # net electric channel, which the store does not record (multi-field model)
+        # but the oracle returns. This operand is why bindings are published rather
+        # than inferred.
         "net_electric": {"kind": "channel", "key": f"{P}pb__p_net"},
     },
     f"{P}recirc_ok__afc3be66f0a3421b": {
         "rec_frac": {"kind": "channel", "key": f"{P}pb__rec_frac"},
-        # Constraint-id-prefixed: one of the three composition rules in play.
-        "threshold": {"kind": "input", "key": f"{P}recirc_ok__afc3be66f0a3421b__threshold"},
+        # Usage-prefixed (the constraint usage's own default), not a plant attribute:
+        # one of the three composition rules in play.
+        "threshold": {"kind": "input", "key": f"{P}recirc_ok__threshold"},
     },
     f"{P}tbr_ok__2cd198f674d413e4": {
-        "tbr": {"kind": "input", "key": f"{P}tbr"},
-        "tbr_floor": {"kind": "input", "key": f"{P}tbr_floor"},
+        "tbr_in": {"kind": "input", "key": f"{P}tbr"},
+        "tbr_floor_in": {"kind": "input", "key": f"{P}tbr_floor"},
     },
     f"{P}wall_load_ok__ab2c790419af93bb": {
         "wall_load": {"kind": "channel", "key": f"{P}wall_load_calc__wall_load"},
-        "wall_load_limit": {"kind": "input", "key": f"{P}wall_load_limit"},
+        "wall_load_limit_in": {"kind": "input", "key": f"{P}wall_load_limit"},
     },
 }
 
@@ -196,10 +174,8 @@ def _oracle_overrides(point: Mapping[str, float]) -> dict[str, float]:
         if name is None:
             raise OracleSeamError(
                 f"entry key has no declared oracle mapping: {key!r} "
-                f"(declare it in ENTRY_KEY_TO_ORACLE_INPUT, or as GLUE_FED/DEAD_FILLER)"
+                f"(declare it in ENTRY_KEY_TO_ORACLE_INPUT)"
             )
-        if name in (GLUE_FED, DEAD_FILLER):
-            continue
         if name in overrides and overrides[name] != float(value):
             raise OracleSeamError(
                 f"entry keys disagree on oracle input {name!r}: already {overrides[name]}, "
@@ -244,19 +220,3 @@ def operand_bindings() -> dict[str, dict[str, dict[str, str]]]:
         cid: {name: dict(binding) for name, binding in ops.items()}
         for cid, ops in OPERAND_BINDINGS.items()
     }
-
-
-def glue_values(point: Mapping[str, float]) -> dict[str, float]:
-    """The per-point values the era adapter injects as glue (D13, rungs g2/g3).
-
-    These are package *parameters*, not channels, so they travel on their own call
-    rather than through `evaluate`. One mapping and one save/restore, in one file,
-    so the adapter's injection and the verifier's recompute cannot drift apart.
-    """
-    result = _compute(_oracle_overrides(point))
-    values = {}
-    for key, name in GLUE_VALUE_KEYS.items():
-        if name not in result:
-            raise OracleSeamError(f"oracle returned no output {name!r} declared for key {key!r}")
-        values[key] = float(result[name])
-    return values

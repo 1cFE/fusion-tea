@@ -7,7 +7,7 @@ Auxiliary cooling + cryoplant account:
   cost = aux_per_mw * (n_mod * p_th) + cryo_base * (p_cryo / p_cryo_ref) ** alpha
 
 aux term linear in plant-total thermal; cryoplant power-law in
-per-module cryo electric power (NOT scaled by n_mod — each module has
+per-module cryo electric power (NOT scaled by n_mod -- each module has
 its own cryoplant).
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py (pin 0254385)
@@ -15,20 +15,20 @@ its own cryoplant).
 *Basis**: Plant-total aux + per-module cryoplant power law
 
 Inputs:
-    - aux_per_mw: aux_per_mw parameter
-    - p_th: p_th parameter
-    - cryo_base: cryo_base parameter
-    - p_cryo: p_cryo parameter
-    - n_mod: n_mod parameter
-    - p_cryo_ref: p_cryo_ref parameter
     - alpha: alpha parameter
+    - p_th_in: p_th_in parameter
+    - p_cryo_ref: p_cryo_ref parameter
+    - p_cryo: p_cryo parameter
+    - cryo_base: cryo_base parameter
+    - n_mod_in: n_mod_in parameter
+    - aux_per_mw_in: aux_per_mw_in parameter
 
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:532
+SysML Source: root-0/analyses/mfe_account_costs.sysml:559
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:532
+SysML Source: root-0/analyses/mfe_account_costs.sysml:559
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/aux_cooling_cost_impl.py
@@ -44,21 +44,21 @@ class Aux_Cooling_CostInput(BaseModel):
     """Input model for Aux_Cooling_CostModule.
 
     Attributes:
-        aux_per_mw: aux_per_mw input
-        p_th: p_th input
-        cryo_base: cryo_base input
-        p_cryo: p_cryo input
-        n_mod: n_mod input
-        p_cryo_ref: p_cryo_ref input
         alpha: alpha input
+        p_th_in: p_th_in input
+        p_cryo_ref: p_cryo_ref input
+        p_cryo: p_cryo input
+        cryo_base: cryo_base input
+        n_mod_in: n_mod_in input
+        aux_per_mw_in: aux_per_mw_in input
     """
-    aux_per_mw: float = Field(..., description="aux_per_mw input")
-    p_th: float = Field(..., description="p_th input")
-    cryo_base: float = Field(..., description="cryo_base input")
-    p_cryo: float = Field(..., description="p_cryo input")
-    n_mod: float = Field(..., description="n_mod input")
-    p_cryo_ref: float = Field(..., description="p_cryo_ref input")
     alpha: float = Field(..., description="alpha input")
+    p_th_in: float = Field(..., description="p_th_in input")
+    p_cryo_ref: float = Field(..., description="p_cryo_ref input")
+    p_cryo: float = Field(..., description="p_cryo input")
+    cryo_base: float = Field(..., description="cryo_base input")
+    n_mod_in: float = Field(..., description="n_mod_in input")
+    aux_per_mw_in: float = Field(..., description="aux_per_mw_in input")
 
 
 class Aux_Cooling_CostModule(ModuleBase[Aux_Cooling_CostInput, Float]):
@@ -69,7 +69,7 @@ Auxiliary cooling + cryoplant account:
   cost = aux_per_mw * (n_mod * p_th) + cryo_base * (p_cryo / p_cryo_ref) ** alpha
 
 aux term linear in plant-total thermal; cryoplant power-law in
-per-module cryo electric power (NOT scaled by n_mod — each module has
+per-module cryo electric power (NOT scaled by n_mod -- each module has
 its own cryoplant).
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py (pin 0254385)
@@ -77,26 +77,26 @@ its own cryoplant).
 *Basis**: Plant-total aux + per-module cryoplant power law
 
 Inputs:
-    - aux_per_mw: aux_per_mw parameter
-    - p_th: p_th parameter
-    - cryo_base: cryo_base parameter
-    - p_cryo: p_cryo parameter
-    - n_mod: n_mod parameter
-    - p_cryo_ref: p_cryo_ref parameter
     - alpha: alpha parameter
+    - p_th_in: p_th_in parameter
+    - p_cryo_ref: p_cryo_ref parameter
+    - p_cryo: p_cryo parameter
+    - cryo_base: cryo_base parameter
+    - n_mod_in: n_mod_in parameter
+    - aux_per_mw_in: aux_per_mw_in parameter
 
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:532
+SysML Source: root-0/analyses/mfe_account_costs.sysml:559
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:532
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:559
 
     Calculation Specification:
-        n_mod = 1.0
+        n_mod_in = 1.0
         p_cryo_ref = 30.0
         alpha = 0.7
-        cost = aux_per_mw * (n_mod * p_th) + cryo_base * (p_cryo / p_cryo_ref) ** alpha
+        cost = aux_per_mw_in * (n_mod_in * p_th_in) + cryo_base * (p_cryo / p_cryo_ref) ** alpha
         
 Documentation:
 Auxiliary cooling + cryoplant account:
@@ -104,7 +104,7 @@ Auxiliary cooling + cryoplant account:
   cost = aux_per_mw * (n_mod * p_th) + cryo_base * (p_cryo / p_cryo_ref) ** alpha
 
 aux term linear in plant-total thermal; cryoplant power-law in
-per-module cryo electric power (NOT scaled by n_mod — each module has
+per-module cryo electric power (NOT scaled by n_mod -- each module has
 its own cryoplant).
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py (pin 0254385)
@@ -121,41 +121,41 @@ its own cryoplant).
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, aux_per_mw: float, p_th: float, cryo_base: float, p_cryo: float, n_mod: float, p_cryo_ref: float, alpha: float    ) -> Aux_Cooling_CostInput:
+        self, alpha: float, p_th_in: float, p_cryo_ref: float, p_cryo: float, cryo_base: float, n_mod_in: float, aux_per_mw_in: float    ) -> Aux_Cooling_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
-            aux_per_mw: aux_per_mw input
-            p_th: p_th input
-            cryo_base: cryo_base input
-            p_cryo: p_cryo input
-            n_mod: n_mod input
-            p_cryo_ref: p_cryo_ref input
             alpha: alpha input
+            p_th_in: p_th_in input
+            p_cryo_ref: p_cryo_ref input
+            p_cryo: p_cryo input
+            cryo_base: cryo_base input
+            n_mod_in: n_mod_in input
+            aux_per_mw_in: aux_per_mw_in input
 
         Returns:
             Validated input model
         """
-        return Aux_Cooling_CostInput(aux_per_mw=aux_per_mw, p_th=p_th, cryo_base=cryo_base, p_cryo=p_cryo, n_mod=n_mod, p_cryo_ref=p_cryo_ref, alpha=alpha)
+        return Aux_Cooling_CostInput(alpha=alpha, p_th_in=p_th_in, p_cryo_ref=p_cryo_ref, p_cryo=p_cryo, cryo_base=cryo_base, n_mod_in=n_mod_in, aux_per_mw_in=aux_per_mw_in)
 
     def run(
-        self, aux_per_mw: float, p_th: float, cryo_base: float, p_cryo: float, n_mod: float, p_cryo_ref: float, alpha: float    ) -> ModuleResult[Float]:
+        self, alpha: float, p_th_in: float, p_cryo_ref: float, p_cryo: float, cryo_base: float, n_mod_in: float, aux_per_mw_in: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            aux_per_mw: aux_per_mw input
-            p_th: p_th input
-            cryo_base: cryo_base input
-            p_cryo: p_cryo input
-            n_mod: n_mod input
-            p_cryo_ref: p_cryo_ref input
             alpha: alpha input
+            p_th_in: p_th_in input
+            p_cryo_ref: p_cryo_ref input
+            p_cryo: p_cryo input
+            cryo_base: cryo_base input
+            n_mod_in: n_mod_in input
+            aux_per_mw_in: aux_per_mw_in input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(aux_per_mw, p_th, cryo_base, p_cryo, n_mod, p_cryo_ref, alpha)
+        validated_inputs = self.validate_and_fill_default(alpha, p_th_in, p_cryo_ref, p_cryo, cryo_base, n_mod_in, aux_per_mw_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.aux_cooling_cost_impl import (

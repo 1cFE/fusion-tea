@@ -15,12 +15,12 @@ Inputs:
 Outputs:
     - powercore_capital: powercore_capital result
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:423
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:423
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
-Handwritten implementation required in handwritten/stellarator_09/stellaris/powercore_capital_impl.py
+Handwritten implementation required in handwritten/mfe_plant/mfe_power_plant/powercore_capital_impl.py
 """
 
 from pydantic import BaseModel, Field, RootModel
@@ -68,14 +68,13 @@ Inputs:
 Outputs:
     - powercore_capital: powercore_capital result
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:423
 
-    SysML Source: unknown:0
+    SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:423
 
     Calculation Specification:
-        magnet.capital_cost + heating.capital_cost + divertor.capital_cost + blanket.capital_cost + shield.capital_cost + structure.capital_cost + vessel.capital_cost + power_supplies.capital_cost
 
-    IMPLEMENTATION: See stellarator_tea.handwritten.stellarator_09.stellaris.powercore_capital_impl
+    IMPLEMENTATION: See stellarator_tea.handwritten.mfe_plant.mfe_power_plant.powercore_capital_impl
     for manual implementation.
 
     NOTE: Single-output module - returns Float directly (no MultiOutput needed).
@@ -124,7 +123,7 @@ SysML Source: unknown:0
         validated_inputs = self.validate_and_fill_default(magnet_capital_cost, heating_capital_cost, divertor_capital_cost, blanket_capital_cost, shield_capital_cost, structure_capital_cost, vessel_capital_cost, power_supplies_capital_cost)
 
         # Import handwritten implementation
-        from stellarator_tea.handwritten.stellarator_09.stellaris.powercore_capital_impl import (
+        from stellarator_tea.handwritten.mfe_plant.mfe_power_plant.powercore_capital_impl import (
             run_powercore_capital,
         )
 

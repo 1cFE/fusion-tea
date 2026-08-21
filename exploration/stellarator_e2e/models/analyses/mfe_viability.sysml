@@ -51,10 +51,10 @@ package mfe_viability {
         **Basis**: MHD beta limit — operating beta must not exceed the design beta
         */
 
-        in attribute beta : Real;
-        in attribute beta_limit : Real;
+        in attribute beta_in : Real;
+        in attribute beta_limit_in : Real;
 
-        beta <= beta_limit
+        beta_in <= beta_limit_in
     }
 
     constraint def 'Neutron Wall Load Limit' {
@@ -71,9 +71,9 @@ package mfe_viability {
         */
 
         in attribute wall_load : Real;
-        in attribute wall_load_limit : Real;
+        in attribute wall_load_limit_in : Real;
 
-        wall_load <= wall_load_limit
+        wall_load <= wall_load_limit_in
     }
 
     constraint def 'TBR Floor' {
@@ -88,9 +88,9 @@ package mfe_viability {
         **Basis**: D-T tritium self-sufficiency floor
         */
 
-        in attribute tbr : Real;
-        in attribute tbr_floor : Real;
+        in attribute tbr_in : Real;
+        in attribute tbr_floor_in : Real;
 
-        tbr >= tbr_floor
+        tbr_in >= tbr_floor_in
     }
 }

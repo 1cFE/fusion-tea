@@ -2,11 +2,11 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:204
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:221
 
 SysML Expressions:
-    ash_frac = 0.2002
-    wall_load = p_fus * (1.0 - ash_frac) / wall_area
+    ash_frac_in = 0.2002
+    wall_load = p_fus * (1.0 - ash_frac_in) / wall_area
     
 Documentation:
 First-wall neutron wall load [MW/m^2] from fusion power and wall area.
@@ -56,11 +56,11 @@ This makes neutron wall load forward-computable from the power balance
 (ash_frac = (E_total-E_neutron)/E_total; p_neutron = p_fus*(1-ash_frac))
 *Basis**: Neutron wall load = neutron power / wall area; MFE-generic
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:204
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:221
 
 SysML Expressions:
-    ash_frac = 0.2002
-    wall_load = p_fus * (1.0 - ash_frac) / wall_area
+    ash_frac_in = 0.2002
+    wall_load = p_fus * (1.0 - ash_frac_in) / wall_area
     
 Documentation:
 First-wall neutron wall load [MW/m^2] from fusion power and wall area.
@@ -92,4 +92,4 @@ Example:
     >>> inputs = Neutron_Wall_LoadInput(...)
     >>> result = run_neutron_wall_load(inputs)
     """
-    return ((inputs.p_fus * (1.0 - inputs.ash_frac)) / inputs.wall_area)
+    return ((inputs.p_fus * (1.0 - inputs.ash_frac_in)) / inputs.wall_area)

@@ -2,24 +2,20 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:423
 
 SysML Expressions:
-    magnet.capital_cost + heating.capital_cost + divertor.capital_cost + blanket.capital_cost + shield.capital_cost + structure.capital_cost + vessel.capital_cost + power_supplies.capital_cost
 """
 
 AUTO_IMPLEMENTED = True
 
-from stellarator_tea.modules.stellarator_09.stellaris.powercore_capital import powercore_capitalInput
+from stellarator_tea.modules.mfe_plant.mfe_power_plant.powercore_capital import powercore_capitalInput
 
 
 def run_powercore_capital(inputs: powercore_capitalInput) -> float:
     """Execute powercore_capital calculation.
 
-SysML Source: unknown:0
-
-SysML Expressions:
-    magnet.capital_cost + heating.capital_cost + divertor.capital_cost + blanket.capital_cost + shield.capital_cost + structure.capital_cost + vessel.capital_cost + power_supplies.capital_cost
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:423
 
 Args:
     inputs: Input parameters validated against powercore_capitalInput schema

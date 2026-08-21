@@ -16,12 +16,12 @@ Inputs:
 Outputs:
     - cas22_capital: cas22_capital result
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:529
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:529
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
-Handwritten implementation required in handwritten/stellarator_09/stellaris/cas22_capital_impl.py
+Handwritten implementation required in handwritten/mfe_plant/mfe_power_plant/cas22_capital_impl.py
 """
 
 from pydantic import BaseModel, Field, RootModel
@@ -72,14 +72,13 @@ Inputs:
 Outputs:
     - cas22_capital: cas22_capital result
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:529
 
-    SysML Source: unknown:0
+    SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:529
 
     Calculation Specification:
-        powercore_capital + remote_handling_capital + installation_capital + coolant_capital + aux_cooling_capital + waste_capital + fuel_handling_capital + other_rpe_capital + inc_capital
 
-    IMPLEMENTATION: See stellarator_tea.handwritten.stellarator_09.stellaris.cas22_capital_impl
+    IMPLEMENTATION: See stellarator_tea.handwritten.mfe_plant.mfe_power_plant.cas22_capital_impl
     for manual implementation.
 
     NOTE: Single-output module - returns Float directly (no MultiOutput needed).
@@ -130,7 +129,7 @@ SysML Source: unknown:0
         validated_inputs = self.validate_and_fill_default(powercore_capital, remote_handling_capital, installation_capital, coolant_capital, aux_cooling_capital, waste_capital, fuel_handling_capital, other_rpe_capital, inc_capital)
 
         # Import handwritten implementation
-        from stellarator_tea.handwritten.stellarator_09.stellaris.cas22_capital_impl import (
+        from stellarator_tea.handwritten.mfe_plant.mfe_power_plant.cas22_capital_impl import (
             run_cas22_capital,
         )
 

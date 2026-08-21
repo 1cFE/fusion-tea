@@ -5,7 +5,7 @@ package stellarator_09 {
     private import mfe_viability::*;
 
     // =========================================================================
-    // CONCRETE INSTANCE — concept-09 Proxima "Stellaris" QI stellarator
+    // CONCRETE INSTANCE -- concept-09 Proxima "Stellaris" QI stellarator
     //
     // Binds the Stellaris design point. Physics/geometry cite the admissible
     // Stellaris sources; engineering and cost inputs cite 1costingFE defaults
@@ -18,7 +18,7 @@ package stellarator_09 {
     // `abstract part def 'Stellarator Plant' :> 'MFE Power Plant'` (spec item A,
     // marked optional). It was collapsed into this concrete instance because
     // syside's PartUsage.types does not surface a grandparent through an
-    // intermediate abstract def — a `part x : 'Stellarator Plant'` reports
+    // intermediate abstract def -- a `part x : 'Stellarator Plant'` reports
     // types ['Stellarator Plant', 'Part', ...] and never 'MFE Power Plant', so
     // the two-level chain leaves 'MFE Power Plant' flagged NO_INSTANTIATION
     // (its template calcs would be dropped at extraction). Typing the instance
@@ -29,15 +29,15 @@ package stellarator_09 {
 
     part stellaris : 'MFE Power Plant' {
         doc /*
-        Proxima Fusion "Stellaris" — concept-09 QI stellarator HTS power plant,
+        Proxima Fusion "Stellaris" -- concept-09 QI stellarator HTS power plant,
         evaluated at operating point A. The Stellaris design point is 2700 MW
         fusion; the model computes 2748 MW (+1.8%) by integrating the
-        Bosch-Hale reactivity over the source's own profiles (WI-022 — every
+        Bosch-Hale reactivity over the source's own profiles (WI-022 -- every
         profile parameter fixed from the source's figure and printed tables,
         blind to the power; see the sigma_v note).
 
         STELLARATOR FAMILY CHOICES (applied inline, not concept-specific numbers):
-          - Density is a direct input (no tokamak Greenwald closure) — already the
+          - Density is a direct input (no tokamak Greenwald closure) -- already the
             generic plant's behaviour (n_e is a plain input to 'DT Fusion Power').
           - ECRH-only heating, no current drive: p_nbi = p_icrf = p_lhcd = 0 and
             their per-MW costs = 0 (QI stellarator is intrinsically steady-state).
@@ -60,19 +60,19 @@ package stellarator_09 {
         the 0D reactivity with the sourced profile integral and rebound the
         geometry to the image-verified a = 1.3 / V = 425, net 804.1,
         ~$176/MWh, magnet 42.9%; WI-023 rebound the magnet field to the
-        printed 9.0 T — 5.86 was a phantom text row — and zeroed the phantom
+        printed 9.0 T -- 5.86 was a phantom text row -- and zeroed the phantom
         p_tf = 111, which the paper prints only as stored magnetic energy in
         GJ, not a power, net 915.145, ~$201.46/MWh; WI-024 derived the cryo
         parasitic load from the winding-pack heat inventory, retired the
         0.8 MW 1costingFE default, and rescoped p_tf to a modeled zero,
         ~$201.47/MWh; WI-025 forward-computed the last three pass-through
-        cost accounts — CAS21 buildings, CAS10 preconstruction, CAS70 annual
-        O&M — from the model's computed powers, retiring the final STALE
+        cost accounts -- CAS21 buildings, CAS10 preconstruction, CAS70 annual
+        O&M -- from the model's computed powers, retiring the final STALE
         BASIS annotations, total $12.60B -> $12.64B, ~$203.65/MWh.)
 
         THREE MAPPING TRAPS (documented at their bindings below): r_coil (coil
         bore = radial-build vessel outer radius, not a guess), sigma_v (0D
-        bypass input — sigma_v = 0 here selects the profile-integrated
+        bypass input -- sigma_v = 0 here selects the profile-integrated
         reactivity in the handwritten codegen stage), and B (coil-cost field is
         the axis-averaged B_0 = 9.0 T printed in the Table 2/5 images, NOT the
         24.9 T peak-on-winding).
@@ -97,7 +97,7 @@ package stellarator_09 {
             model uses the field at the loop center; the peak-on-winding is a
             conductor-grade concern, not a cost-quantity term.
             (History: the prior B = 5.86 cited a Table 3 text row absent from the
-            table image and from the published paper — raw.pdf-confirmed, WI-023.)
+            table image and from the published paper -- raw.pdf-confirmed, WI-023.)
 
             MAPPING TRAP (r_coil): the coil-bore radius = the radial-build vessel
             outer radius (vessel_or). From the stellarator radial build:
@@ -139,7 +139,7 @@ package stellarator_09 {
             // r_coil = 3.00 m falls out of the radial build (was an injected
             // constant here).
             // REBCO HTS conductor [$/kA-m]. Source: costing_constants.yaml:57
-            //   (conductor_cost_rebco = 50.0). NOT x1e6 — already $/kA-m; the
+            //   (conductor_cost_rebco = 50.0). NOT x1e6 -- already $/kA-m; the
             //   magnet formula omits the /1e6 M$ conversion and yields $.
             :>> cost_per_kAm = 50.0;
             // Stellarator conductor->installed markup. Source: costing_constants.
@@ -148,7 +148,7 @@ package stellarator_09 {
         }
 
         // ---------------------------------------------------------------------
-        // SHARED POWER-CORE SUBSYSTEMS (CAS22.1.x) — cost drivers ($, volumes m^3)
+        // SHARED POWER-CORE SUBSYSTEMS (CAS22.1.x) -- cost drivers ($, volumes m^3)
         // Volumes from costingfe.layers.geometry.compute_geometry(STELLARATOR)
         // at the Stellaris radial build; unit costs are 1costingFE M$ x 1e6.
         // ---------------------------------------------------------------------
@@ -217,7 +217,7 @@ package stellarator_09 {
         }
 
         // ---------------------------------------------------------------------
-        // BALANCE OF PLANT (CAS23-26) — per-MW rates ($/MW), Rankine steam cycle
+        // BALANCE OF PLANT (CAS23-26) -- per-MW rates ($/MW), Rankine steam cycle
         // ---------------------------------------------------------------------
         part :>> turbine {
             doc /*
@@ -259,11 +259,11 @@ package stellarator_09 {
         }
 
         // ---------------------------------------------------------------------
-        // CAS21 BUILDINGS ($) — forward-computed (WI-025): buildings_cost tracks
-        // the model's p_fus/p_the/p_th/p_et (p_the = p_et, no DEC — costs.py:104).
+        // CAS21 BUILDINGS ($) -- forward-computed (WI-025): buildings_cost tracks
+        // the model's p_fus/p_the/p_th/p_et (p_the = p_et, no DEC -- costs.py:104).
         // The six base sums below are the exact grouped collapse of the
         // 18-building DT column (every building linear in exactly one scaling
-        // basis), cryogenics included (SC coils, REBCO HTS — costs.py:137);
+        // basis), cryogenics included (SC coils, REBCO HTS -- costs.py:137);
         // DT and n_mod = 1 frozen at the design point. Stale basis retired:
         // the old $613.65M literal was computed at pre-WI-019 powers
         // (p_et 896.8 / p_th 2693.1).
@@ -294,7 +294,7 @@ package stellarator_09 {
         }
         :>> bldg_the_base = 58000000.0 {  // p_the-scaled base costs [$].
             doc /* 58 M$ x 1e6 = turbine_building 58 (fuel-independent);
-            scales as p_the x n_mod / 1100 (costs.py:104,124 — p_the = p_et,
+            scales as p_the x n_mod / 1100 (costs.py:104,124 -- p_the = p_et,
             no DEC; ref_gross costing_constants.yaml:12).
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
             **Ref**: costing_constants.yaml:191
@@ -390,7 +390,7 @@ package stellarator_09 {
             sigma_v = 0 selects the profile-integrated path of 'DT Fusion
             Power': fusion power is computed by integrating the Bosch-Hale
             reactivity over the source's own profiles (the n_D0/n_T0/T_i0/
-            alpha_n/alpha_T referents below) — the model's realization of the
+            alpha_n/alpha_T referents below) -- the model's realization of the
             source's 0.5D volume-integrated power balance (Appendix A). The
             reactivity physics executes at the handwritten codegen stage
             (Rung B, owner-ratified) and is guarded bit-exact by the oracle.
@@ -399,7 +399,7 @@ package stellarator_09 {
             0D-effective reactivity (5.985e-23 at T_eff ~= 7.9 keV) gave
             ~2145 MW vs the 2700 MW design point, the visible 0D
             single-temperature limitation. The profile integral computes
-            ~2748 MW at the printed volume 425 m^3 — within ~2% of the design
+            ~2748 MW at the printed volume 425 m^3 -- within ~2% of the design
             point, with every parameter fixed from the source's own figure and
             tables blind to the power (Decision A: honest physics, not tuned).
 
@@ -429,7 +429,7 @@ package stellarator_09 {
         // (line 762). The extracted Fig.-16 caption "alpha_n = 1.2, alpha_T =
         // 3.0" is an extraction artifact refuted by the figure it captions
         // (spec errata). The fuel term is n_D*n_T with the diluted peak fuel
-        // densities — quasineutrality closes at the peak: 2x1.96 (fuel) +
+        // densities -- quasineutrality closes at the peak: 2x1.96 (fuel) +
         // 2x0.56 (He ash) ~= 5.06 = printed peak n_e.
         :>> n_D0 = 1.96e20 {  // peak deuterium density [m^-3].
             doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: peak D density 1.96e20, Point A) **Basis**: Stellaris Point-A peak deuterium density (ash/impurity-diluted) */
@@ -469,26 +469,26 @@ package stellarator_09 {
         :>> f_sub = 0.03 {    // subsystem/control power fraction.
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:17 (f_sub = 0.03) **Basis**: 1costingFE stellarator subsystem power fraction */
         }
-        :>> p_tf = 0.0 {      // coil electrical drive power [MW] — modeled zero for the SC coil set (WI-024).
+        :>> p_tf = 0.0 {      // coil electrical drive power [MW] -- modeled zero for the SC coil set (WI-024).
             doc /*
             Coil electrical drive power: modeled 0.0. The Stellaris coil set is
-            superconducting and operates steady-state DC — no resistive drive
+            superconducting and operates steady-state DC -- no resistive drive
             power; 1costingFE's own superconductor model agrees
             (recirc_power_factor = 0.0 for every SC conductor grade,
             defaults.py:611-614; the resistive recirc model is copper-only). The
-            one printed steady-state electrical dissipation — ~7.5 kW
-            resistive-joint losses, "negligible" (sec. 2.9) — is counted as heat
+            one printed steady-state electrical dissipation -- ~7.5 kW
+            resistive-joint losses, "negligible" (sec. 2.9) -- is counted as heat
             at 20 K inside the WI-024 cryoplant chain (p_fixed_cryo below), not
             as coil electrical. Current-lead and power-supply standing losses
             are unprinted in any admissible source and are part of the chain's
             documented lower bound (f_uplift_cryo). (History: the pre-WI-023
-            111.0 mapped a phantom "conduction power to coils" text row — the
+            111.0 mapped a phantom "conduction power to coils" text row -- the
             paper prints 111 only as stored magnetic energy [GJ]; WI-023 zeroed
             it as a deferral stopgap; WI-024 rescopes the zero from stopgap to
             modeled value.)
             **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf
             **Ref**: sec. 2.9 (10 W per joint -> ~7.5 kW coil-set steady-state, "negligible"); /home/reid/1cfe/1costingfe/src/costingfe/defaults.py:611-614 (recirc_power_factor = 0.0 for superconductors)
-            **Basis**: modeled zero for a superconducting coil set — coil-adjacent parasitic load carried by the derived p_cryo (WI-024 design D1/D2, 2026-07-18)
+            **Basis**: modeled zero for a superconducting coil set -- coil-adjacent parasitic load carried by the derived p_cryo (WI-024 design D1/D2, 2026-07-18)
             */
         }
         :>> p_tfcool = 15.0 { // coil cooling power [MW].
@@ -497,15 +497,15 @@ package stellarator_09 {
             Post-WI-024 coverage (MR-WI024-3): read as the non-cryogenic
             cooling-system electrical (component / room-temperature cooling
             loops), disjoint from the 20 K cryoplant wall-plug now derived into
-            p_cryo — 1costingFE's own stellarator defaults carry p_cool = 15.0
+            p_cryo -- 1costingFE's own stellarator defaults carry p_cool = 15.0
             and p_cryo = 0.8 side by side (steady_state_stellarator.yaml:20,24),
             so in the source's intent they are distinct loads. The slot's
             upstream composition is undocumented; any cryo-compressor share it
-            contains would overlap the derived p_cryo — a conservative-direction
+            contains would overlap the derived p_cryo -- a conservative-direction
             residual (recirc overstated, LCOE up), documented here rather than
             silently resolved.
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml
-            **Ref**: steady_state_stellarator.yaml:20 (p_cool = 15.0); :24 (p_cryo = 0.8 carried side by side — disjoint in the source's intent)
+            **Ref**: steady_state_stellarator.yaml:20 (p_cool = 15.0); :24 (p_cryo = 0.8 carried side by side -- disjoint in the source's intent)
             **Basis**: 1costingFE stellarator cooling power; disjoint read vs the WI-024 derived cryoplant electrical (design D2, 2026-07-18)
             */
         }
@@ -515,11 +515,11 @@ package stellarator_09 {
         :>> p_house = 4.0 {   // housekeeping power [MW].
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:23 (p_house = 4.0) **Basis**: 1costingFE stellarator housekeeping power */
         }
-        :>> p_cryo = 0.0 {    // direct cryo-electrical term [MW] — zeroed; chain derives the slot (WI-024).
+        :>> p_cryo = 0.0 {    // direct cryo-electrical term [MW] -- zeroed; chain derives the slot (WI-024).
             doc /*
             The 1costingFE generic default 0.8 MW (steady_state_stellarator.yaml:24)
             is retired: it and the WI-024 derivation are the same physical quantity
-            (cryoplant wall-plug electrical — 1cfe's own dipole defaults document
+            (cryoplant wall-plug electrical -- 1cfe's own dipole defaults document
             the p_cryo slot as "Cryogenic wall-plug power"), so coexisting would
             double-count. The power-balance p_cryo slot now receives
             cryo_elec.p_elec, derived from the winding-pack heat load below.
@@ -537,7 +537,7 @@ package stellarator_09 {
             winding-pack cross-sections (Table 8 image side lengths 360/360/340/340/
             320/300 mm) x 8 occurrences each (sec. 2.9: 48 coils = 4 periods x
             (6 independent + 6 mirrored)) x 25 m typical circumference (sec. 2.9,
-            printed but approximate — per-coil circumferences are not printed; the
+            printed but approximate -- per-coil circumferences are not printed; the
             documented weak link). Sum of side^2 = 2x0.36^2 + 2x0.34^2 + 0.32^2
             + 0.30^2 = 0.6828 m^2; x8 x25 = 136.56 m^3. Cross-checks: each side^2
             equals turns x (20 mm)^2 exactly (sec. 2.9 unit cell; Table 8 turns
@@ -551,7 +551,7 @@ package stellarator_09 {
         :>> p_fixed_cryo = 0.0075 {  // resistive-joint losses [MW] at 20 K.
             doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf **Ref**: sec. 2.9 (10 W per joint -> ~7.5 kW steady-state for the entire coil set, "negligible ... within the cooling capacity of existing cryocooler designs") **Basis**: printed coil-set joint dissipation, counted as heat at 20 K */
         }
-        :>> f_uplift_cryo = 1.0 {   // unprinted-loads multiplier — explicit lower bound (WI-024 D6).
+        :>> f_uplift_cryo = 1.0 {   // unprinted-loads multiplier -- explicit lower bound (WI-024 D6).
             doc /*
             Bound 1.0 = printed loads only, a KNOWING LOWER BOUND: the paper defers
             casing, coil-case, and 20 K support-structure nuclear heating ("will be
@@ -561,7 +561,7 @@ package stellarator_09 {
             ruling, not a source.
             **Source**: WI-024 design ruling (D6, 2026-07-18; sanctioned by spec Checkpoint Ruling 2)
             **Ref**: raw.pdf sec. 2.9 (the future-studies deferral)
-            **Basis**: explicit assumption parameter — exclude-with-documented-bound
+            **Basis**: explicit assumption parameter -- exclude-with-documented-bound
             */
         }
         :>> T_cold_cryo = 20.0 {    // coil operating temperature [K].
@@ -570,7 +570,7 @@ package stellarator_09 {
         :>> T_amb_cryo = 300.0 {    // heat-rejection reference temperature [K].
             doc /* **Source**: WI-024 design ruling (D4, 2026-07-18) **Ref**: standard ambient reference for the Carnot COP **Basis**: explicit assumption parameter (standard engineering reference) */
         }
-        :>> f_carnot_cryo = 0.20 {  // fraction-of-Carnot plant efficiency — THE assumption (WI-024 D4).
+        :>> f_carnot_cryo = 0.20 {  // fraction-of-Carnot plant efficiency -- THE assumption (WI-024 D4).
             doc /*
             Explicit owner-visible assumption (spec Checkpoint Ruling 2 delegated
             value-setting to design; ruled 2026-07-18): no admissible source prints
@@ -581,7 +581,7 @@ package stellarator_09 {
             COP = 0.20 x 20/280 = 1/70, i.e. 70 W_e per W at 20 K.
             **Source**: WI-024 design ruling (D4, 2026-07-18)
             **Ref**: spec sec. Evidence link A4 (the no-admissible-value finding)
-            **Basis**: explicit assumption parameter — fraction of Carnot, general practice band
+            **Basis**: explicit assumption parameter -- fraction of Carnot, general practice band
             */
         }
 
@@ -613,7 +613,7 @@ package stellarator_09 {
             doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 line 237 (ECRH only) **Basis**: no LHCD installed (power = 0) */
         }
 
-        // Heating mix — ECRH only (nbi/icrf/lhcd zeroed above).
+        // Heating mix -- ECRH only (nbi/icrf/lhcd zeroed above).
         :>> heating_ecrh_per_mw = 5282900.0 {  // ECRH capital [$/MW].
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/defaults.py **Ref**: defaults.py:98-100 (heating_ecrh_per_mw = 5.2829 M$/MW) x 1e6 **Basis**: gyrotron ECRH per-MW capital */
         }
@@ -626,15 +626,15 @@ package stellarator_09 {
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:97 (divertor_base = 60.0 M$) x 1e6 **Basis**: power-scaled divertor cost */
         }
 
-        // CAS10 preconstruction — forward-computed (WI-025); CAS27 special
-        // materials — forward-computed (WI-021).
+        // CAS10 preconstruction -- forward-computed (WI-025); CAS27 special
+        // materials -- forward-computed (WI-021).
         :>> precon_fixed_base = 16000000.0 {  // CAS10 fixed adders [$] (WI-025; WI-029 NOAK fix).
             doc /*
             16 M$ x 1e6 = site_permits 3 + licensing_cost_dt 5 (DT frozen) +
             plant_permits 2 + plant_studies_noak 4 + plant_reports 1 +
             other_precon 1. preconstruction_capital tracks the computed p_net
             via precon_cost (land ~ sqrt(p_net x 1000 x 1)); bound
-            pre-contingency (CAS29 applies once — convention preserved).
+            pre-contingency (CAS29 applies once -- convention preserved).
 
             WI-029 CORRECTION (one clean error, owner ruling 4): this base was
             32 M$, carrying plant_studies at the FOAK 20.0 while every sibling
@@ -646,7 +646,7 @@ package stellarator_09 {
             land 0.25 x sqrt(1000 x 1 x 1000) x 10000 / 1e6 = 2.5, plus fixed
             16.0, = 18.5 M$, residual 0.0. Because the fixed adders are
             power-independent, the design-point total capital drops by exactly
-            $16M too — recorded as a re-baseline, not asserted unchanged.
+            $16M too -- recorded as a re-baseline, not asserted unchanged.
             Stale basis retired: the old $33.896M literal was computed at
             p_net = 575.3 (WI-018).
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml
@@ -673,7 +673,7 @@ package stellarator_09 {
 
         // ---------------------------------------------------------------------
         // WI-028 CAS22 tail + CAS40 owner + CAS50 supplementary + CAS28 bases
-        // ($) — dollar conversions (x1e6 where the 1cfe constant is M$) of the
+        // ($) -- dollar conversions (x1e6 where the 1cfe constant is M$) of the
         // pinned DT/toroidal constants at 0254385. concept_scale = 1.0
         // (STELLARATOR) is bound HERE (instance), never a library default (MR-3).
         // p_cryo is wired in the generic plant (cryo_elec.p_elec). Reference
@@ -743,7 +743,7 @@ package stellarator_09 {
         :>> om_annual_ref = 54900000.0 {  // CAS70 O&M at 1 GWe, DT [$/yr] (WI-025).
             doc /*
             om_cost_dt 54.9 M$/yr x 1e6. annual_om now tracks the computed
-            p_net via om_cost (x sqrt(p_net/1000)); unlevelized — CAS71
+            p_net via om_cost (x sqrt(p_net/1000)); unlevelized -- CAS71
             inflation and CAS72 scheduled replacement remain documented
             Stage-3 refinements (convention preserved). Stale basis retired:
             the old $41.641M/yr literal was computed at p_net = 575.3 (WI-018).
@@ -763,7 +763,7 @@ package stellarator_09 {
         }
 
         // ---------------------------------------------------------------------
-        // ANNUAL-COST SIDE INPUTS — CAS71 / CAS72 / CAS80 (WI-029)
+        // ANNUAL-COST SIDE INPUTS -- CAS71 / CAS72 / CAS80 (WI-029)
         // Every constant below is an INSTANCE binding, not a library default
         // (MR-3): the fuel chemistry, the fluence limit, and the escalation
         // rate all belong to the concept, not to the concept-agnostic calcs.
@@ -810,7 +810,7 @@ package stellarator_09 {
             doc /*
             E_ALPHA_DT / Q_DT = 3.52 / 17.58. Bound exactly (not the calc def's
             rounded 0.2002) because the CAS72 neutron-power chain feeds a
-            fluence-limited lifetime that is compared under A-2 at 1e-6 — the
+            fluence-limited lifetime that is compared under A-2 at 1e-6 -- the
             rounded value shifts q_n by 3.4e-5 relative and would miss the bar.
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py (pin 0254385)
             **Ref**: physics.py:31-33 (E_ALPHA_DT = 3.52, Q_DT = 17.58);
@@ -824,10 +824,12 @@ package stellarator_09 {
         // ---------------------------------------------------------------------
 
         // Beta.
-        attribute beta : Real = 0.0276 {  // volume-averaged plasma beta.
+        // volume-averaged plasma beta.
+        attribute beta : Real = 0.0276 {
             doc /* **Source**: stellaris-design-details.md / analyst-patch-spec-anchors.md **Ref**: analyst-patch-spec-anchors.md line 44 (beta = 0.0276, details.md 2.3) **Basis**: Stellaris vol-avg operating beta */
         }
-        attribute beta_limit : Real = 0.05 {  // design/optimization beta target.
+        // design/optimization beta target.
+        attribute beta_limit : Real = 0.05 {
             doc /* **Source**: stellaris-design-details.md **Ref**: line 273 (coils + boundary optimized at <beta>_V = 5%) **Basis**: Stellaris design beta target */
         }
 
@@ -842,14 +844,15 @@ package stellarator_09 {
         // offender. 1costingFE torus geometry, no shape factor on material geometry
         // (owner Option 1, WI-021).
         // CROSS-CHECK: wall load = p_fus x (1 - 0.2002) / 701.926 ~= 3.13 MW/m^2
-        // at the WI-022 profile-integrated p_fus ~= 2748 MW — above the printed
+        // at the WI-022 profile-integrated p_fus ~= 2748 MW -- above the printed
         // 2.87 avg (Table 5 image; the model's flat-wall average vs the source's
         // shaped-wall average) and below the 4.05 printed peak limit;
         // wall_load_ok passes.
         // Source: geometry.py _torus_surface_area / compute_geometry firstwall_area;
         //   stellaris-design-details.md Table 5 image (avg 2.87 MW/m^2).
-        attribute wall_load_limit : Real = 4.05 {  // first-wall design limit [MW/m^2] (WI-022 corrected).
-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: peak neutron wall load 4.05 MW/m^2; the extracted text row "Table 5 ... 4.95" has no counterpart in the printed Table 5 image — extraction artifact) **Basis**: Stellaris first-wall peak neutron-load design value */
+        // first-wall design limit [MW/m^2] (WI-022 corrected).
+        attribute wall_load_limit : Real = 4.05 {
+            doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: peak neutron wall load 4.05 MW/m^2; the extracted text row "Table 5 ... 4.95" has no counterpart in the printed Table 5 image -- extraction artifact) **Basis**: Stellaris first-wall peak neutron-load design value */
         }
 
         calc wall_load_calc : 'Neutron Wall Load' {
@@ -858,25 +861,27 @@ package stellarator_09 {
         }
 
         // TBR.
-        attribute tbr : Real = 1.074 {   // achieved tritium breeding ratio.
+        // achieved tritium breeding ratio.
+        attribute tbr : Real = 1.074 {
             doc /* **Source**: stellaris-design-details.md **Ref**: line 1659 (final TBR = 1.074) **Basis**: Stellaris 3D-neutronics TBR */
         }
-        attribute tbr_floor : Real = 1.05 {  // self-sufficiency floor.
+        // self-sufficiency floor.
+        attribute tbr_floor : Real = 1.05 {
             doc /* **Source**: stellaris-design-details.md **Ref**: line 1530 (TBR > 1.05 self-sufficiency target) **Basis**: D-T tritium self-sufficiency floor */
         }
 
         // Asserted viability constraints.
         assert constraint beta_ok : 'Beta Limit' {
-            in beta = beta;
-            in beta_limit = beta_limit;
+            in beta_in = beta;
+            in beta_limit_in = beta_limit;
         }
         assert constraint wall_load_ok : 'Neutron Wall Load Limit' {
             in wall_load = wall_load_calc.wall_load;
-            in wall_load_limit = wall_load_limit;
+            in wall_load_limit_in = wall_load_limit;
         }
         assert constraint tbr_ok : 'TBR Floor' {
-            in tbr = tbr;
-            in tbr_floor = tbr_floor;
+            in tbr_in = tbr;
+            in tbr_floor_in = tbr_floor;
         }
 
         // Exposed neutron wall load (headline physics output).

@@ -2,24 +2,20 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:529
 
 SysML Expressions:
-    powercore_capital + remote_handling_capital + installation_capital + coolant_capital + aux_cooling_capital + waste_capital + fuel_handling_capital + other_rpe_capital + inc_capital
 """
 
 AUTO_IMPLEMENTED = True
 
-from stellarator_tea.modules.stellarator_09.stellaris.cas22_capital import cas22_capitalInput
+from stellarator_tea.modules.mfe_plant.mfe_power_plant.cas22_capital import cas22_capitalInput
 
 
 def run_cas22_capital(inputs: cas22_capitalInput) -> float:
     """Execute cas22_capital calculation.
 
-SysML Source: unknown:0
-
-SysML Expressions:
-    powercore_capital + remote_handling_capital + installation_capital + coolant_capital + aux_cooling_capital + waste_capital + fuel_handling_capital + other_rpe_capital + inc_capital
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:529
 
 Args:
     inputs: Input parameters validated against cas22_capitalInput schema

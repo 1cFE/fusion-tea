@@ -12,7 +12,7 @@ cryoplant electrical outright (no chain); with zero heat inputs the
 calc passes p_direct through exactly. f_uplift names the seam for
 heat loads missing from the inventory (>= 1). Dormant-safe defaults:
 an unbound concept computes p_elec = 0; f_carnot defaults 1.0 (not 0)
-so the dormant COP stays defined — the mode is selected by the heat
+so the dormant COP stays defined -- the mode is selected by the heat
 inputs, never by the efficiency (WI-022 T_i0 precedent).
 Output feeds the power-balance p_cryo slot ("cryogenic system
 power"), which 1costingFE's own defaults document as the cryoplant
@@ -20,20 +20,20 @@ wall-plug electrical.
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py
 *Ref**: physics.py:321-323 (p_cryo in the recirculating sum);
 steady_state_dipole.yaml:52-53 (slot semantics: "Cryogenic
-wall-plug power" = heat load x plant efficiency — semantics
+wall-plug power" = heat load x plant efficiency -- semantics
 witness only, value inadmissible)
 *Basis**: reversed-Carnot reference cycle x fraction-of-Carnot;
-concept-agnostic (MR-3) — all values bound by instances
+concept-agnostic (MR-3) -- all values bound by instances
 
 Inputs:
-    - q_nuc: q_nuc parameter
+    - p_direct: p_direct parameter
     - vol_cold: vol_cold parameter
-    - p_fixed: p_fixed parameter
+    - T_amb: T_amb parameter
     - f_uplift: f_uplift parameter
     - T_cold: T_cold parameter
-    - T_amb: T_amb parameter
+    - q_nuc: q_nuc parameter
+    - p_fixed: p_fixed parameter
     - f_carnot: f_carnot parameter
-    - p_direct: p_direct parameter
 
 Outputs:
     - p_elec: p_elec result
@@ -56,23 +56,23 @@ class Cryoplant_Electrical_PowerInput(BaseModel):
     """Input model for Cryoplant_Electrical_PowerModule.
 
     Attributes:
-        q_nuc: q_nuc input
+        p_direct: p_direct input
         vol_cold: vol_cold input
-        p_fixed: p_fixed input
+        T_amb: T_amb input
         f_uplift: f_uplift input
         T_cold: T_cold input
-        T_amb: T_amb input
+        q_nuc: q_nuc input
+        p_fixed: p_fixed input
         f_carnot: f_carnot input
-        p_direct: p_direct input
     """
-    q_nuc: float = Field(..., description="q_nuc input")
+    p_direct: float = Field(..., description="p_direct input")
     vol_cold: float = Field(..., description="vol_cold input")
-    p_fixed: float = Field(..., description="p_fixed input")
+    T_amb: float = Field(..., description="T_amb input")
     f_uplift: float = Field(..., description="f_uplift input")
     T_cold: float = Field(..., description="T_cold input")
-    T_amb: float = Field(..., description="T_amb input")
+    q_nuc: float = Field(..., description="q_nuc input")
+    p_fixed: float = Field(..., description="p_fixed input")
     f_carnot: float = Field(..., description="f_carnot input")
-    p_direct: float = Field(..., description="p_direct input")
 
 
 class Cryoplant_Electrical_PowerModule(ModuleBase[Cryoplant_Electrical_PowerInput, Float]):
@@ -88,7 +88,7 @@ cryoplant electrical outright (no chain); with zero heat inputs the
 calc passes p_direct through exactly. f_uplift names the seam for
 heat loads missing from the inventory (>= 1). Dormant-safe defaults:
 an unbound concept computes p_elec = 0; f_carnot defaults 1.0 (not 0)
-so the dormant COP stays defined — the mode is selected by the heat
+so the dormant COP stays defined -- the mode is selected by the heat
 inputs, never by the efficiency (WI-022 T_i0 precedent).
 Output feeds the power-balance p_cryo slot ("cryogenic system
 power"), which 1costingFE's own defaults document as the cryoplant
@@ -96,20 +96,20 @@ wall-plug electrical.
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py
 *Ref**: physics.py:321-323 (p_cryo in the recirculating sum);
 steady_state_dipole.yaml:52-53 (slot semantics: "Cryogenic
-wall-plug power" = heat load x plant efficiency — semantics
+wall-plug power" = heat load x plant efficiency -- semantics
 witness only, value inadmissible)
 *Basis**: reversed-Carnot reference cycle x fraction-of-Carnot;
-concept-agnostic (MR-3) — all values bound by instances
+concept-agnostic (MR-3) -- all values bound by instances
 
 Inputs:
-    - q_nuc: q_nuc parameter
+    - p_direct: p_direct parameter
     - vol_cold: vol_cold parameter
-    - p_fixed: p_fixed parameter
+    - T_amb: T_amb parameter
     - f_uplift: f_uplift parameter
     - T_cold: T_cold parameter
-    - T_amb: T_amb parameter
+    - q_nuc: q_nuc parameter
+    - p_fixed: p_fixed parameter
     - f_carnot: f_carnot parameter
-    - p_direct: p_direct parameter
 
 Outputs:
     - p_elec: p_elec result
@@ -143,7 +143,7 @@ cryoplant electrical outright (no chain); with zero heat inputs the
 calc passes p_direct through exactly. f_uplift names the seam for
 heat loads missing from the inventory (>= 1). Dormant-safe defaults:
 an unbound concept computes p_elec = 0; f_carnot defaults 1.0 (not 0)
-so the dormant COP stays defined — the mode is selected by the heat
+so the dormant COP stays defined -- the mode is selected by the heat
 inputs, never by the efficiency (WI-022 T_i0 precedent).
 Output feeds the power-balance p_cryo slot ("cryogenic system
 power"), which 1costingFE's own defaults document as the cryoplant
@@ -151,10 +151,10 @@ wall-plug electrical.
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py
 *Ref**: physics.py:321-323 (p_cryo in the recirculating sum);
 steady_state_dipole.yaml:52-53 (slot semantics: "Cryogenic
-wall-plug power" = heat load x plant efficiency — semantics
+wall-plug power" = heat load x plant efficiency -- semantics
 witness only, value inadmissible)
 *Basis**: reversed-Carnot reference cycle x fraction-of-Carnot;
-concept-agnostic (MR-3) — all values bound by instances
+concept-agnostic (MR-3) -- all values bound by instances
 
     IMPLEMENTATION: See stellarator_tea.handwritten.mfe_cryo_plant.cryoplant_electrical_power_impl
     for manual implementation.
@@ -166,43 +166,43 @@ concept-agnostic (MR-3) — all values bound by instances
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, q_nuc: float, vol_cold: float, p_fixed: float, f_uplift: float, T_cold: float, T_amb: float, f_carnot: float, p_direct: float    ) -> Cryoplant_Electrical_PowerInput:
+        self, p_direct: float, vol_cold: float, T_amb: float, f_uplift: float, T_cold: float, q_nuc: float, p_fixed: float, f_carnot: float    ) -> Cryoplant_Electrical_PowerInput:
         """Validate inputs and fill defaults.
 
         Args:
-            q_nuc: q_nuc input
+            p_direct: p_direct input
             vol_cold: vol_cold input
-            p_fixed: p_fixed input
+            T_amb: T_amb input
             f_uplift: f_uplift input
             T_cold: T_cold input
-            T_amb: T_amb input
+            q_nuc: q_nuc input
+            p_fixed: p_fixed input
             f_carnot: f_carnot input
-            p_direct: p_direct input
 
         Returns:
             Validated input model
         """
-        return Cryoplant_Electrical_PowerInput(q_nuc=q_nuc, vol_cold=vol_cold, p_fixed=p_fixed, f_uplift=f_uplift, T_cold=T_cold, T_amb=T_amb, f_carnot=f_carnot, p_direct=p_direct)
+        return Cryoplant_Electrical_PowerInput(p_direct=p_direct, vol_cold=vol_cold, T_amb=T_amb, f_uplift=f_uplift, T_cold=T_cold, q_nuc=q_nuc, p_fixed=p_fixed, f_carnot=f_carnot)
 
     def run(
-        self, q_nuc: float, vol_cold: float, p_fixed: float, f_uplift: float, T_cold: float, T_amb: float, f_carnot: float, p_direct: float    ) -> ModuleResult[Float]:
+        self, p_direct: float, vol_cold: float, T_amb: float, f_uplift: float, T_cold: float, q_nuc: float, p_fixed: float, f_carnot: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            q_nuc: q_nuc input
+            p_direct: p_direct input
             vol_cold: vol_cold input
-            p_fixed: p_fixed input
+            T_amb: T_amb input
             f_uplift: f_uplift input
             T_cold: T_cold input
-            T_amb: T_amb input
+            q_nuc: q_nuc input
+            p_fixed: p_fixed input
             f_carnot: f_carnot input
-            p_direct: p_direct input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(q_nuc, vol_cold, p_fixed, f_uplift, T_cold, T_amb, f_carnot, p_direct)
+        validated_inputs = self.validate_and_fill_default(p_direct, vol_cold, T_amb, f_uplift, T_cold, q_nuc, p_fixed, f_carnot)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_cryo_plant.cryoplant_electrical_power_impl import (

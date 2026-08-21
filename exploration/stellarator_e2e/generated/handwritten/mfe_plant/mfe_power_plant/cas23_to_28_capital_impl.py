@@ -2,24 +2,20 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:570
 
 SysML Expressions:
-    bop_capital + special_materials_capital + cas28_capital
 """
 
 AUTO_IMPLEMENTED = True
 
-from stellarator_tea.modules.stellarator_09.stellaris.cas23_to_28_capital import cas23_to_28_capitalInput
+from stellarator_tea.modules.mfe_plant.mfe_power_plant.cas23_to_28_capital import cas23_to_28_capitalInput
 
 
 def run_cas23_to_28_capital(inputs: cas23_to_28_capitalInput) -> float:
     """Execute cas23_to_28_capital calculation.
 
-SysML Source: unknown:0
-
-SysML Expressions:
-    bop_capital + special_materials_capital + cas28_capital
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:570
 
 Args:
     inputs: Input parameters validated against cas23_to_28_capitalInput schema

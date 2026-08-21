@@ -9,12 +9,12 @@ Inputs:
 Outputs:
     - reactor_equipment_subtotal: reactor_equipment_subtotal result
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:456
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:456
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
-Handwritten implementation required in handwritten/stellarator_09/stellaris/reactor_equipment_subtotal_impl.py
+Handwritten implementation required in handwritten/mfe_plant/mfe_power_plant/reactor_equipment_subtotal_impl.py
 """
 
 from pydantic import BaseModel, Field, RootModel
@@ -44,14 +44,13 @@ Inputs:
 Outputs:
     - reactor_equipment_subtotal: reactor_equipment_subtotal result
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:456
 
-    SysML Source: unknown:0
+    SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:456
 
     Calculation Specification:
-        powercore_capital + remote_handling_capital
 
-    IMPLEMENTATION: See stellarator_tea.handwritten.stellarator_09.stellaris.reactor_equipment_subtotal_impl
+    IMPLEMENTATION: See stellarator_tea.handwritten.mfe_plant.mfe_power_plant.reactor_equipment_subtotal_impl
     for manual implementation.
 
     NOTE: Single-output module - returns Float directly (no MultiOutput needed).
@@ -88,7 +87,7 @@ SysML Source: unknown:0
         validated_inputs = self.validate_and_fill_default(powercore_capital, remote_handling_capital)
 
         # Import handwritten implementation
-        from stellarator_tea.handwritten.stellarator_09.stellaris.reactor_equipment_subtotal_impl import (
+        from stellarator_tea.handwritten.mfe_plant.mfe_power_plant.reactor_equipment_subtotal_impl import (
             run_reactor_equipment_subtotal,
         )
 

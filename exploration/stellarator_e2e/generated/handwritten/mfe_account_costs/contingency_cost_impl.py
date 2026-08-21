@@ -5,7 +5,7 @@ AUTO_IMPLEMENTED = True
 SysML Source: root-0/analyses/mfe_account_costs.sysml:255
 
 SysML Expressions:
-    cost = contingency_rate * direct_subtotal
+    cost = contingency_rate_in * direct_subtotal
     
 Documentation:
 CAS29 contingency on direct costs:
@@ -13,7 +13,7 @@ CAS29 contingency on direct costs:
   cost = contingency_rate * direct_subtotal
 
 `contingency_rate` is the FOAK/NOAK rate (0.10 FOAK, 0.0 NOAK in the
-source) — a concept/maturity input (WI-011).
+source) -- a concept/maturity input (WI-011).
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
 *Ref**: costs.py:220 (cas29_contingency)
@@ -33,7 +33,7 @@ CAS29 contingency on direct costs:
   cost = contingency_rate * direct_subtotal
 
 `contingency_rate` is the FOAK/NOAK rate (0.10 FOAK, 0.0 NOAK in the
-source) — a concept/maturity input (WI-011).
+source) -- a concept/maturity input (WI-011).
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
 *Ref**: costs.py:220 (cas29_contingency)
@@ -42,7 +42,7 @@ source) — a concept/maturity input (WI-011).
 SysML Source: root-0/analyses/mfe_account_costs.sysml:255
 
 SysML Expressions:
-    cost = contingency_rate * direct_subtotal
+    cost = contingency_rate_in * direct_subtotal
     
 Documentation:
 CAS29 contingency on direct costs:
@@ -50,7 +50,7 @@ CAS29 contingency on direct costs:
   cost = contingency_rate * direct_subtotal
 
 `contingency_rate` is the FOAK/NOAK rate (0.10 FOAK, 0.0 NOAK in the
-source) — a concept/maturity input (WI-011).
+source) -- a concept/maturity input (WI-011).
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py
 *Ref**: costs.py:220 (cas29_contingency)
@@ -66,4 +66,4 @@ Example:
     >>> inputs = Contingency_CostInput(...)
     >>> result = run_contingency_cost(inputs)
     """
-    return (inputs.contingency_rate * inputs.direct_subtotal)
+    return (inputs.contingency_rate_in * inputs.direct_subtotal)

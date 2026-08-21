@@ -26,10 +26,10 @@ Complete all stages in order for a production-ready system.
 
 | Status | Module | Function | SysML Source | Complexity |
 |--------|--------|----------|--------------|------------|
-| [ ] | DT_Fusion_Power | `run_dt_fusion_power` | `root-0/analyses/mfe_plasma_scaling.sysml:125` | High |
-| [ ] | Levelized_Replacement_Cost | `run_levelized_replacement_cost` | `root-0/analyses/mfe_account_costs.sysml:743` | High |
+| [ ] | DT_Fusion_Power | `run_dt_fusion_power` | `root-0/analyses/mfe_plasma_scaling.sysml:132` | High |
+| [ ] | Levelized_Replacement_Cost | `run_levelized_replacement_cost` | `root-0/analyses/mfe_account_costs.sysml:794` | High |
 
-**10 aggregation module(s) auto-implemented** (not included in manual count above).
+**11 computed attribute module(s) auto-implemented** (not included in manual count above).
 
 ---
 

@@ -10,12 +10,12 @@ Inputs:
 Outputs:
     - replacement_cost_per_event: replacement_cost_per_event result
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:689
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:689
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
-Handwritten implementation required in handwritten/stellarator_09/stellaris/replacement_cost_per_event_impl.py
+Handwritten implementation required in handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py
 """
 
 from pydantic import BaseModel, Field, RootModel
@@ -48,14 +48,13 @@ Inputs:
 Outputs:
     - replacement_cost_per_event: replacement_cost_per_event result
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:689
 
-    SysML Source: unknown:0
+    SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:689
 
     Calculation Specification:
-        (blanket.capital_cost + divertor.capital_cost) * n_mod
 
-    IMPLEMENTATION: See stellarator_tea.handwritten.stellarator_09.stellaris.replacement_cost_per_event_impl
+    IMPLEMENTATION: See stellarator_tea.handwritten.mfe_plant.mfe_power_plant.replacement_cost_per_event_impl
     for manual implementation.
 
     NOTE: Single-output module - returns Float directly (no MultiOutput needed).
@@ -94,7 +93,7 @@ SysML Source: unknown:0
         validated_inputs = self.validate_and_fill_default(blanket_capital_cost, divertor_capital_cost, n_mod)
 
         # Import handwritten implementation
-        from stellarator_tea.handwritten.stellarator_09.stellaris.replacement_cost_per_event_impl import (
+        from stellarator_tea.handwritten.mfe_plant.mfe_power_plant.replacement_cost_per_event_impl import (
             run_replacement_cost_per_event,
         )
 

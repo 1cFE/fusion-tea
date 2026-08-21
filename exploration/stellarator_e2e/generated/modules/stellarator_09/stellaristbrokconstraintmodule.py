@@ -14,8 +14,8 @@ from stellarator_tea.modules.constraints.predicates import _finalize_assertion, 
 
 class StellarisTbrOkConstraintInput(BaseModel):
     """Exact input schema: one field per resolved formal."""
-    tbr: float
-    tbr_floor: float
+    tbr_floor_in: float
+    tbr_in: float
 
 
 class StellarisTbrOkConstraintOutput(MultiOutput):
@@ -28,9 +28,9 @@ class StellarisTbrOkConstraintModule(ModuleBase[StellarisTbrOkConstraintInput, S
 
     CONSTRAINT_ID = "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4"
 
-    def run(self, tbr: float, tbr_floor: float) -> ModuleResult[StellarisTbrOkConstraintOutput]:
-        StellarisTbrOkConstraintInput(tbr=tbr, tbr_floor=tbr_floor)  # validate every resolved formal
-        body = constraint_pred_definition_mfe_viability__tbr_floor(tbr=tbr, tbr_floor=tbr_floor)
+    def run(self, tbr_floor_in: float, tbr_in: float) -> ModuleResult[StellarisTbrOkConstraintOutput]:
+        StellarisTbrOkConstraintInput(tbr_floor_in=tbr_floor_in, tbr_in=tbr_in)  # validate every resolved formal
+        body = constraint_pred_definition_mfe_viability__tbr_floor(tbr_in=tbr_in, tbr_floor_in=tbr_floor_in)
         verdict = _finalize_assertion(
             body,
             is_negated=False,
@@ -43,7 +43,7 @@ class StellarisTbrOkConstraintModule(ModuleBase[StellarisTbrOkConstraintInput, S
                     actual_value=verdict.actual_value,
                     status=verdict.status,
                     margin=verdict.margin,
-                    observed={"tbr": float(tbr), "tbr_floor": float(tbr_floor)},
+                    observed={"tbr_in": float(tbr_in), "tbr_floor_in": float(tbr_floor_in)},
                 )
             )
         )

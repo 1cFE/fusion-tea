@@ -98,10 +98,10 @@ def run_levelized_replacement_cost(inputs: Levelized_Replacement_CostInput) -> f
     return levelized_replacement_cost(
         cost_per_event=inputs.cost_per_event,
         p_fus=inputs.p_fus,
-        ash_frac=inputs.ash_frac,
+        ash_frac=inputs.ash_frac_in,
         firstwall_area=inputs.firstwall_area,
-        fluence_limit=inputs.fluence_limit,
-        availability=inputs.availability,
+        fluence_limit=inputs.fluence_limit_in,
+        availability=inputs.availability_in,
         interest_rate=inputs.interest_rate,
-        operational_years=inputs.operational_years,
+        operational_years=inputs.operational_years_in,
     )

@@ -2,24 +2,20 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:689
 
 SysML Expressions:
-    (blanket.capital_cost + divertor.capital_cost) * n_mod
 """
 
 AUTO_IMPLEMENTED = True
 
-from stellarator_tea.modules.stellarator_09.stellaris.replacement_cost_per_event import replacement_cost_per_eventInput
+from stellarator_tea.modules.mfe_plant.mfe_power_plant.replacement_cost_per_event import replacement_cost_per_eventInput
 
 
 def run_replacement_cost_per_event(inputs: replacement_cost_per_eventInput) -> float:
     """Execute replacement_cost_per_event calculation.
 
-SysML Source: unknown:0
-
-SysML Expressions:
-    (blanket.capital_cost + divertor.capital_cost) * n_mod
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:689
 
 Args:
     inputs: Input parameters validated against replacement_cost_per_eventInput schema

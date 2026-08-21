@@ -15,7 +15,7 @@ from stellarator_tea.modules.constraints.predicates import _finalize_assertion, 
 class StellarisWallLoadOkConstraintInput(BaseModel):
     """Exact input schema: one field per resolved formal."""
     wall_load: float
-    wall_load_limit: float
+    wall_load_limit_in: float
 
 
 class StellarisWallLoadOkConstraintOutput(MultiOutput):
@@ -28,9 +28,9 @@ class StellarisWallLoadOkConstraintModule(ModuleBase[StellarisWallLoadOkConstrai
 
     CONSTRAINT_ID = "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb"
 
-    def run(self, wall_load: float, wall_load_limit: float) -> ModuleResult[StellarisWallLoadOkConstraintOutput]:
-        StellarisWallLoadOkConstraintInput(wall_load=wall_load, wall_load_limit=wall_load_limit)  # validate every resolved formal
-        body = constraint_pred_definition_mfe_viability__neutron_wall_load_limit(wall_load=wall_load, wall_load_limit=wall_load_limit)
+    def run(self, wall_load: float, wall_load_limit_in: float) -> ModuleResult[StellarisWallLoadOkConstraintOutput]:
+        StellarisWallLoadOkConstraintInput(wall_load=wall_load, wall_load_limit_in=wall_load_limit_in)  # validate every resolved formal
+        body = constraint_pred_definition_mfe_viability__neutron_wall_load_limit(wall_load=wall_load, wall_load_limit_in=wall_load_limit_in)
         verdict = _finalize_assertion(
             body,
             is_negated=False,
@@ -43,7 +43,7 @@ class StellarisWallLoadOkConstraintModule(ModuleBase[StellarisWallLoadOkConstrai
                     actual_value=verdict.actual_value,
                     status=verdict.status,
                     margin=verdict.margin,
-                    observed={"wall_load": float(wall_load), "wall_load_limit": float(wall_load_limit)},
+                    observed={"wall_load": float(wall_load), "wall_load_limit_in": float(wall_load_limit_in)},
                 )
             )
         )

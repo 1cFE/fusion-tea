@@ -20,7 +20,7 @@ package mfe_plant {
 
         Abstract: WI-011 specializes it with concept-09 (stellarator) values and
         the family density closure. All parameters here are inputs or defaulted
-        calibration constants — no concept-specific values (MR-3).
+        calibration constants -- no concept-specific values (MR-3).
 
         MONEY UNIT: the whole rollup and LCOE are in DOLLARS ($). WI-009's
         'Magnet Coil Cost' omits the 1costingFE /1e6 M$ conversion, so it yields
@@ -32,7 +32,7 @@ package mfe_plant {
         PHYSICS-SPINE / COST-SPINE: WI-009's 'MFE Power Balance Calc' exposes
         p_th, p_the, p_et as outputs (alongside p_net, q_eng, rec_frac), so the
         volume/power-scaled account costs read the forward-computed powers
-        directly via `pb.p_th` etc. — the full forward pass (geometry -> fusion
+        directly via `pb.p_th` etc. -- the full forward pass (geometry -> fusion
         power -> power balance -> per-account cost -> LCOE) stays intact with no
         externally injected power values.
 
@@ -99,25 +99,29 @@ package mfe_plant {
             :>> capital_cost = buildings_cost.cost;
         }
         attribute preconstruction_capital : Real = precon_cost.cost;
-        attribute special_materials_capital : Real;    // CAS27 pass-through
+        // CAS27 pass-through
+        attribute special_materials_capital : Real;
 
         // =====================================================================
         // PHYSICS SPINE  (Plasma Geometry -> DT Fusion Power -> Power Balance)
         // =====================================================================
 
         // Plasma geometry inputs (WI-011).
-        attribute R : Real;       // major radius [m]
-        attribute a : Real;       // minor radius [m]
-        attribute kappa : Real;   // elongation
+        // major radius [m]
+        attribute R : Real;
+        // minor radius [m]
+        attribute a : Real;
+        // elongation
+        attribute kappa : Real;
         // Shape/packing factor (WI-020). Default 1.0 = pure elongated torus
         // (tokamak); a shaped stellarator instance overrides it.
         attribute f_shape : Real default 1.0;
 
         calc geom : 'Plasma Geometry' {
-            in R = R;
-            in a = a;
-            in kappa = kappa;
-            in f_shape = f_shape;
+            in R_in = R;
+            in a_in = a;
+            in kappa_in = kappa;
+            in f_shape_in = f_shape;
         }
 
         // Radial-build layer thicknesses [m] (WI-021). Generic-plant machinery:
@@ -139,63 +143,85 @@ package mfe_plant {
         // first-wall area, coil-bore radius. Replaces the injected material-volume
         // constants; shares the plant's R/a/kappa with geom.
         calc rb : 'MFE Radial Build' {
-            in R = R;
-            in a = a;
-            in kappa = kappa;
-            in vacuum_t = vacuum_t;
-            in firstwall_t = firstwall_t;
-            in blanket_t = blanket_t;
-            in reflector_t = reflector_t;
-            in ht_shield_t = ht_shield_t;
-            in structure_t = structure_t;
-            in gap1_t = gap1_t;
-            in vessel_t = vessel_t;
-            in coil_t = coil_t;
-            in gap2_t = gap2_t;
-            in lt_shield_t = lt_shield_t;
+            in R_in = R;
+            in a_in = a;
+            in kappa_in = kappa;
+            in vacuum_t_in = vacuum_t;
+            in firstwall_t_in = firstwall_t;
+            in blanket_t_in = blanket_t;
+            in reflector_t_in = reflector_t;
+            in ht_shield_t_in = ht_shield_t;
+            in structure_t_in = structure_t;
+            in gap1_t_in = gap1_t;
+            in vessel_t_in = vessel_t;
+            in coil_t_in = coil_t;
+            in gap2_t_in = gap2_t;
+            in lt_shield_t_in = lt_shield_t;
         }
 
         // Fusion-power inputs (WI-011 sets density directly for the stellarator;
         // no density closure here). WI-022: sigma_v > 0 selects the exact 0D
         // bypass; sigma_v = 0 (default) computes the profile integral from the
-        // five profile inputs below (defaults mirror the calc def — a 0D/flat
+        // five profile inputs below (defaults mirror the calc def -- a 0D/flat
         // concept binds sigma_v only and leaves the profile inputs dormant).
-        attribute n_e : Real;                    // electron density [m^-3]
-        attribute sigma_v : Real default 0.0;    // 0D-effective reactivity [m^3/s]; > 0 = bypass
-        attribute E_fus : Real;                  // per-event D-T fusion energy [J]
-        attribute n_D0 : Real default 0.0;       // peak deuterium density [m^-3]
-        attribute n_T0 : Real default 0.0;       // peak tritium density [m^-3]
-        attribute T_i0 : Real default 1.0;       // peak ion temperature [keV]
-        attribute alpha_n : Real default 0.0;    // density profile exponent
-        attribute alpha_T : Real default 0.0;    // temperature profile exponent
+        // electron density [m^-3]
+        attribute n_e : Real;
+        // 0D-effective reactivity [m^3/s]; > 0 = bypass
+        attribute sigma_v : Real default 0.0;
+        // per-event D-T fusion energy [J]
+        attribute E_fus : Real;
+        // peak deuterium density [m^-3]
+        attribute n_D0 : Real default 0.0;
+        // peak tritium density [m^-3]
+        attribute n_T0 : Real default 0.0;
+        // peak ion temperature [keV]
+        attribute T_i0 : Real default 1.0;
+        // density profile exponent
+        attribute alpha_n : Real default 0.0;
+        // temperature profile exponent
+        attribute alpha_T : Real default 0.0;
 
         calc fusion : 'DT Fusion Power' {
-            in n_e = n_e;
-            in sigma_v = sigma_v;
-            in E_fus = E_fus;
+            in n_e_in = n_e;
+            in sigma_v_in = sigma_v;
+            in E_fus_in = E_fus;
             in V = geom.V;
-            in n_D0 = n_D0;
-            in n_T0 = n_T0;
-            in T_i0 = T_i0;
-            in alpha_n = alpha_n;
-            in alpha_T = alpha_T;
+            in n_D0_in = n_D0;
+            in n_T0_in = n_T0;
+            in T_i0_in = T_i0;
+            in alpha_n_in = alpha_n;
+            in alpha_T_in = alpha_T;
         }
 
         // Power-balance inputs (WI-011).
-        attribute p_input : Real;   // plasma heating power [MW]
-        attribute mn : Real;        // neutron energy multiplier
-        attribute eta_th : Real;    // thermal-to-electric efficiency
-        attribute eta_p : Real;     // pumping-power capture efficiency
-        attribute eta_pin : Real;   // input-power wall-plug efficiency
-        attribute p_pump : Real;    // primary coolant pumping power [MW]
-        attribute f_sub : Real;     // subsystem/control fraction
-        attribute p_tf : Real;      // TF coil power [MW]
-        attribute p_pf : Real;      // PF coil power [MW]
-        attribute p_tfcool : Real;  // TF coil cooling [MW]
-        attribute p_pfcool : Real;  // PF coil cooling [MW]
-        attribute p_trit : Real;    // tritium systems [MW]
-        attribute p_house : Real;   // housekeeping [MW]
-        attribute p_cryo : Real default 0.0;  // directly-specified cryoplant electrical [MW] (additive direct term, WI-024)
+        // plasma heating power [MW]
+        attribute p_input : Real;
+        // neutron energy multiplier
+        attribute mn : Real;
+        // thermal-to-electric efficiency
+        attribute eta_th : Real;
+        // pumping-power capture efficiency
+        attribute eta_p : Real;
+        // input-power wall-plug efficiency
+        attribute eta_pin : Real;
+        // primary coolant pumping power [MW]
+        attribute p_pump : Real;
+        // subsystem/control fraction
+        attribute f_sub : Real;
+        // TF coil power [MW]
+        attribute p_tf : Real;
+        // PF coil power [MW]
+        attribute p_pf : Real;
+        // TF coil cooling [MW]
+        attribute p_tfcool : Real;
+        // PF coil cooling [MW]
+        attribute p_pfcool : Real;
+        // tritium systems [MW]
+        attribute p_trit : Real;
+        // housekeeping [MW]
+        attribute p_house : Real;
+        // directly-specified cryoplant electrical [MW] (additive direct term, WI-024)
+        attribute p_cryo : Real default 0.0;
 
         // Cryoplant heat-load chain (WI-024). Dormant by default: a concept that
         // knows its cryo electrical directly binds p_cryo (the direct term) and
@@ -222,34 +248,37 @@ package mfe_plant {
 
         calc pb : 'MFE Power Balance Calc' {
             in p_nrl = fusion.p_fus;
-            in p_input = p_input;
-            in mn = mn;
-            in eta_th = eta_th;
-            in eta_p = eta_p;
-            in eta_pin = eta_pin;
-            in p_pump = p_pump;
-            in f_sub = f_sub;
-            in p_tf = p_tf;
-            in p_pf = p_pf;
-            in p_tfcool = p_tfcool;
-            in p_pfcool = p_pfcool;
-            in p_trit = p_trit;
-            in p_house = p_house;
+            in p_input_in = p_input;
+            in mn_in = mn;
+            in eta_th_in = eta_th;
+            in eta_p_in = eta_p;
+            in eta_pin_in = eta_pin;
+            in p_pump_in = p_pump;
+            in f_sub_in = f_sub;
+            in p_tf_in = p_tf;
+            in p_pf_in = p_pf;
+            in p_tfcool_in = p_tfcool;
+            in p_pfcool_in = p_pfcool;
+            in p_trit_in = p_trit;
+            in p_house_in = p_house;
             in p_cryo = cryo_elec.p_elec;
         }
 
         // Cost-spine power aliases: read directly from the power balance so the
         // cost accounts scale with the forward-computed powers (WI-009 exposes
-        // p_th/p_the/p_et as outputs). No external input — keeps the forward pass.
-        attribute p_th : Real = pb.p_th;    // total thermal power [MW]
-        attribute p_the : Real = pb.p_the;  // thermal-electric power [MW]
-        attribute p_et : Real = pb.p_et;    // gross electric power [MW]
+        // p_th/p_the/p_et as outputs). No external input -- keeps the forward pass.
+        // total thermal power [MW]
+        attribute p_th : Real = pb.p_th;
+        // thermal-electric power [MW]
+        attribute p_the : Real = pb.p_the;
+        // gross electric power [MW]
+        attribute p_et : Real = pb.p_et;
 
         // =====================================================================
         // ACCOUNT COST CALCS  (bind subsystem drivers + spine powers -> cost)
         // =====================================================================
 
-        // Magnet (CAS22.1.3) — WI-009 'Magnet Coil Cost'.
+        // Magnet (CAS22.1.3) -- WI-009 'Magnet Coil Cost'.
         calc magnet_cost : 'Magnet Coil Cost' {
             in G = magnet.G;
             in B = magnet.B;
@@ -264,7 +293,7 @@ package mfe_plant {
             in unit_cost = blanket.unit_cost;
             in structure_factor = blanket.structure_factor;
             in blanket_vol = rb.blanket_vol;
-            in p_th = p_th;
+            in p_th_in = p_th;
         }
 
         // Shield (CAS22.1.2).
@@ -272,37 +301,38 @@ package mfe_plant {
             in unit_cost = shield.unit_cost;
             in shield_vol = rb.shield_vol;
             in shield_scale = shield.shield_scale;
-            in p_th = p_th;
+            in p_th_in = p_th;
         }
 
         // Primary structure (CAS22.1.5).
         calc structure_cost : 'Structure Cost' {
             in unit_cost = structure.unit_cost;
             in structure_vol = rb.structure_vol;
-            in p_et = p_et;
+            in p_et_in = p_et;
         }
 
         // Vacuum vessel (CAS22.1.6, shell term).
         calc vessel_cost : 'Vessel Cost' {
             in unit_cost = vessel.unit_cost;
             in vessel_vol = rb.vessel_vol;
-            in p_et = p_et;
+            in p_et_in = p_et;
         }
 
         // Power supplies (CAS22.1.7).
         calc power_supplies_cost : 'Power Supplies Cost' {
             in base = power_supplies.base;
-            in p_et = p_et;
+            in p_et_in = p_et;
         }
 
-        // Divertor (CAS22.1.8) — WI-009 carrier has no drivers; supplied here.
-        attribute divertor_base : Real;   // divertor cost at 1 GWth [$] (WI-011)
+        // Divertor (CAS22.1.8) -- WI-009 carrier has no drivers; supplied here.
+        // divertor cost at 1 GWth [$] (WI-011)
+        attribute divertor_base : Real;
         calc divertor_cost : 'Divertor Cost' {
             in base = divertor_base;
-            in p_th = p_th;
+            in p_th_in = p_th;
         }
 
-        // Heating & CD (CAS22.1.4) — WI-009 carrier has no drivers; the heating
+        // Heating & CD (CAS22.1.4) -- WI-009 carrier has no drivers; the heating
         // mix (per-MW rates + delivered powers) is supplied here (WI-011).
         attribute heating_nbi_per_mw : Real;
         attribute p_nbi : Real;
@@ -314,40 +344,41 @@ package mfe_plant {
         attribute p_lhcd : Real;
         calc heating_cost : 'Heating Cost' {
             in nbi_per_mw = heating_nbi_per_mw;
-            in p_nbi = p_nbi;
+            in p_nbi_in = p_nbi;
             in icrf_per_mw = heating_icrf_per_mw;
-            in p_icrf = p_icrf;
+            in p_icrf_in = p_icrf;
             in ecrh_per_mw = heating_ecrh_per_mw;
-            in p_ecrh = p_ecrh;
+            in p_ecrh_in = p_ecrh;
             in lhcd_per_mw = heating_lhcd_per_mw;
-            in p_lhcd = p_lhcd;
+            in p_lhcd_in = p_lhcd;
         }
 
         // Balance-of-plant (CAS23 turbine, CAS24 electric, CAS25 heat rej,
-        // CAS26 misc) — one 'Linear Power Cost' calc each.
-        attribute n_mod : Real default 1.0;  // module count; single-module demo
+        // CAS26 misc) -- one 'Linear Power Cost' calc each.
+        // module count; single-module demo
+        attribute n_mod : Real default 1.0;
         calc turbine_cost : 'Linear Power Cost' {
             in power = p_the;
             in cost_per_mw = turbine.cost_per_mw;
-            in n_mod = n_mod;
+            in n_mod_in = n_mod;
         }
         calc electric_cost : 'Linear Power Cost' {
             in power = p_et;
             in cost_per_mw = electric_plant.cost_per_mw;
-            in n_mod = n_mod;
+            in n_mod_in = n_mod;
         }
         calc heat_rejection_cost : 'Linear Power Cost' {
             in power = p_th;
             in cost_per_mw = heat_rejection.cost_per_mw;
-            in n_mod = n_mod;
+            in n_mod_in = n_mod;
         }
         calc misc_cost : 'Linear Power Cost' {
             in power = p_et;
             in cost_per_mw = misc_plant.cost_per_mw;
-            in n_mod = n_mod;
+            in n_mod_in = n_mod;
         }
 
-        // CAS21 grouped base-cost sums [$] (WI-025 D1; instance binds — fuel-keyed).
+        // CAS21 grouped base-cost sums [$] (WI-025 D1; instance binds -- fuel-keyed).
         attribute bldg_fixed_base : Real;
         attribute bldg_fus_base : Real;
         attribute bldg_staff_base : Real;
@@ -362,19 +393,19 @@ package mfe_plant {
             in th_base = bldg_th_base;
             in et_base = bldg_et_base;
             in p_fus = fusion.p_fus;
-            in p_the = p_the;
-            in p_th = p_th;
-            in p_et = p_et;
+            in p_the_in = p_the;
+            in p_th_in = p_th;
+            in p_et_in = p_et;
         }
 
-        // CAS10 fixed preconstruction adders [$] (WI-025; instance binds — fuel/FOAK-keyed).
+        // CAS10 fixed preconstruction adders [$] (WI-025; instance binds -- fuel/FOAK-keyed).
         attribute precon_fixed_base : Real;
         calc precon_cost : 'Preconstruction Cost' {
             in fixed_precon = precon_fixed_base;
             in p_net = pb.p_net;
         }
 
-        // CAS70 annual O&M at reference power [$/yr] (WI-025; instance binds — fuel-keyed).
+        // CAS70 annual O&M at reference power [$/yr] (WI-025; instance binds -- fuel-keyed).
         attribute om_annual_ref : Real;
         calc om_cost : 'Annual OM Cost' {
             in om_ref = om_annual_ref;
@@ -382,7 +413,7 @@ package mfe_plant {
         }
 
         // =====================================================================
-        // CAPITAL ROLLUP  (all $) — 1cfe overnight assembly (WI-028 D2)
+        // CAPITAL ROLLUP  (all $) -- 1cfe overnight assembly (WI-028 D2)
         //   cas2x -> contingency -> cas20 -> indirect -> cas30 -> overnight.
         //   CAS10 enters at overnight (NOT in cas2x); CAS40/CAS50 at overnight;
         //   CAS60 (idc) Option C: reported line, total_capital = overnight.
@@ -401,70 +432,82 @@ package mfe_plant {
 
         // Item 10: codegen now compiles this cross-part rollup as an aggregation
         // producer (child :>> capital_cost redefinitions resolve per instance),
-        // so the staged twin carries the canonical formula — byte-identical to
+        // so the staged twin carries the canonical formula -- byte-identical to
         // models/. The private bridge and harness rollup glue are retired.
 
         // ---- CAS22 tail accounts (WI-028 D1/D5; bases bound at instance) ----
         // C220110 remote handling (per-module p_et; concept-scaled).
-        attribute remote_handling_base : Real;   // rh_base[fuel] [$]
-        attribute concept_scale : Real;          // 1.0 toroidal / 0.55 end-access
+        // rh_base[fuel] [$]
+        attribute remote_handling_base : Real;
+        // 1.0 toroidal / 0.55 end-access
+        attribute concept_scale : Real;
         calc remote_handling : 'Remote Handling Cost' {
             in base = remote_handling_base;
-            in concept_scale = concept_scale;
-            in p_et = p_et;
+            in concept_scale_in = concept_scale;
+            in p_et_in = p_et;
         }
-        attribute remote_handling_capital : Real = remote_handling.cost;  // expose for producer aggregation
+        // expose for producer aggregation
+        attribute remote_handling_capital : Real = remote_handling.cost;
         // C220111 installation labor = frac * Sigma(C220101..C220110).
         // reactor_subtotal via an intermediate attribute (WI-025 rollup pattern:
         // calc inputs bind to a single attribute, not a mixed expression).
-        attribute installation_frac : Real;      // 0.14 (cas22.py:664)
+        // 0.14 (cas22.py:664)
+        attribute installation_frac : Real;
         attribute reactor_equipment_subtotal : Real =
             powercore_capital + remote_handling_capital;
         calc installation : 'Installation Labor Cost' {
-            in installation_frac = installation_frac;
+            in installation_frac_in = installation_frac;
             in reactor_subtotal = reactor_equipment_subtotal;
         }
         // C220200 coolant (two-term, plant-total).
-        attribute coolant_primary_base : Real;       // 166.0 M$ -> $
-        attribute coolant_intermediate_base : Real;  // 40.6 M$ -> $
+        // 166.0 M$ -> $
+        attribute coolant_primary_base : Real;
+        // 40.6 M$ -> $
+        attribute coolant_intermediate_base : Real;
         calc coolant : 'Coolant Cost' {
             in primary_base = coolant_primary_base;
             in p_net = pb.p_net;
             in intermediate_base = coolant_intermediate_base;
-            in p_th = p_th;
-            in n_mod = n_mod;
+            in p_th_in = p_th;
+            in n_mod_in = n_mod;
         }
         // C220300 aux cooling (plant-total p_th) + cryoplant (per-module p_cryo).
-        attribute aux_per_mw : Real;             // 1.10e-3 M$/MW -> $/MW
-        attribute aux_cryo_base : Real;          // 200.0 M$ -> $
+        // 1.10e-3 M$/MW -> $/MW
+        attribute aux_per_mw : Real;
+        // 200.0 M$ -> $
+        attribute aux_cryo_base : Real;
         calc aux_cooling : 'Aux Cooling Cost' {
-            in aux_per_mw = aux_per_mw;
-            in p_th = p_th;
+            in aux_per_mw_in = aux_per_mw;
+            in p_th_in = p_th;
             in cryo_base = aux_cryo_base;
             in p_cryo = cryo_elec.p_elec;
-            in n_mod = n_mod;
+            in n_mod_in = n_mod;
         }
         // C220400 waste (a=1.0), C220500 fuel, C220600 other, C220700 I&C:
         // shared 'Plant Power-Law Cost'. Account-structural ref/alpha literal;
         // base bound at instance.
-        attribute waste_base : Real;             // 1.96 M$ -> $
+        // 1.96 M$ -> $
+        attribute waste_base : Real;
         calc waste : 'Plant Power-Law Cost' {
-            in base = waste_base; in power = p_th; in n_mod = n_mod;
+            in base = waste_base; in power = p_th; in n_mod_in = n_mod;
             in ref_power = 1000.0; in alpha = 1.0;
         }
-        attribute fuel_handling_base : Real;     // fh_base[fuel] [$]
+        // fh_base[fuel] [$]
+        attribute fuel_handling_base : Real;
         calc fuel_handling : 'Plant Power-Law Cost' {
-            in base = fuel_handling_base; in power = pb.p_net; in n_mod = n_mod;
+            in base = fuel_handling_base; in power = pb.p_net; in n_mod_in = n_mod;
             in ref_power = 1000.0; in alpha = 0.7;
         }
-        attribute other_rpe_base : Real;         // 11.5 M$ -> $
+        // 11.5 M$ -> $
+        attribute other_rpe_base : Real;
         calc other_rpe : 'Plant Power-Law Cost' {
-            in base = other_rpe_base; in power = pb.p_net; in n_mod = n_mod;
+            in base = other_rpe_base; in power = pb.p_net; in n_mod_in = n_mod;
             in ref_power = 1000.0; in alpha = 0.8;
         }
-        attribute inc_base : Real;               // 85.0 M$ -> $  (I&C)
+        // 85.0 M$ -> $  (I&C)
+        attribute inc_base : Real;
         calc inc_cost : 'Plant Power-Law Cost' {
-            in base = inc_base; in power = p_th; in n_mod = n_mod;
+            in base = inc_base; in power = p_th; in n_mod_in = n_mod;
             in ref_power = 3500.0; in alpha = 0.65;
         }
 
@@ -482,14 +525,15 @@ package mfe_plant {
         // references parts (magnet.capital_cost ...), so cas22_capital compiles
         // instance-scoped and resolves the sibling tail exposures within its
         // aggregation (the intermediate cas22_tail_capital would compile at
-        // part-def scope — no part reference — and dead-end the instance leaves).
+        // part-def scope -- no part reference -- and dead-end the instance leaves).
         attribute cas22_capital : Real =
             powercore_capital + remote_handling_capital + installation_capital
             + coolant_capital + aux_cooling_capital + waste_capital
             + fuel_handling_capital + other_rpe_capital + inc_capital;
 
-        // CAS28 digital twin — fed design input (WI-028 F-2).
-        attribute cas28_capital : Real;          // 5.0 M$ -> $
+        // CAS28 digital twin -- fed design input (WI-028 F-2).
+        // 5.0 M$ -> $
+        attribute cas28_capital : Real;
 
         // ---- CAS20 series: cas2x -> contingency -> cas20 -> indirect -> cas30 ----
         // cas2x pre-contingency direct sum (1cfe cas2x; CAS10 NOT included).
@@ -499,39 +543,48 @@ package mfe_plant {
 
         // Contingency (CAS29) on cas2x (WI-028: rebased off the CAS10-inclusive
         // direct sum -> cas2x, F-3).
-        attribute contingency_rate : Real;  // FOAK 0.10 / NOAK 0.0 (WI-011)
+        // FOAK 0.10 / NOAK 0.0 (WI-011)
+        attribute contingency_rate : Real;
         calc contingency : 'Contingency Cost' {
-            in contingency_rate = contingency_rate;
+            in contingency_rate_in = contingency_rate;
             in direct_subtotal = cas2x_pre_contingency;
         }
         attribute contingency_capital : Real = contingency.cost;
-        attribute cas20_capital : Real = cas2x_pre_contingency + contingency_capital;  // c20
+        // c20
+        attribute cas20_capital : Real = cas2x_pre_contingency + contingency_capital;
 
         // Indirect (CAS30) on cas20 (post-contingency), construction-time scaled
         // (WI-028: rebased from the pre-contingency direct sum -> cas20, F-3).
-        attribute indirect_fraction : Real;   // 0.20 of cas20 (WI-011)
-        attribute construction_years : Real;  // Yc [yr] (shared with LCOE + CAS30)
+        // 0.20 of cas20 (WI-011)
+        attribute indirect_fraction : Real;
+        // Yc [yr] (shared with LCOE + CAS30)
+        attribute construction_years : Real;
         calc indirect : 'Indirect Cost' {
-            in indirect_fraction = indirect_fraction;
+            in indirect_fraction_in = indirect_fraction;
             in direct_cost = cas20_capital;
             in construction_time = construction_years;
         }
         attribute cas30_capital : Real = indirect.cost;
 
-        // c23..c28 subtotal — CAS50 spares base (WI-028 F-1).
+        // c23..c28 subtotal -- CAS50 spares base (WI-028 F-1).
         attribute cas23_to_28_capital : Real =
             bop_capital + special_materials_capital + cas28_capital;
 
         // ---- CAS40 owner + CAS50 supplementary at overnight (no CAS29/CAS30) ----
-        attribute owner_base : Real;             // owner_cost[fuel] [$]
+        // owner_cost[fuel] [$]
+        attribute owner_base : Real;
         calc owner : 'Plant Power-Law Cost' {
-            in base = owner_base; in power = pb.p_net; in n_mod = n_mod;
+            in base = owner_base; in power = pb.p_net; in n_mod_in = n_mod;
             in ref_power = 1000.0; in alpha = 0.5;
         }
-        attribute owner_capital : Real = owner.cost;   // CAS40 (expose calc cost as sibling attr)
-        attribute supplementary_spares_frac : Real;    // fuel-keyed
-        attribute supplementary_startup_base : Real;   // fuel-keyed [$]
-        attribute supplementary_decom_base : Real;     // fuel-keyed [$]
+        // CAS40 (expose calc cost as sibling attr)
+        attribute owner_capital : Real = owner.cost;
+        // fuel-keyed
+        attribute supplementary_spares_frac : Real;
+        // fuel-keyed [$]
+        attribute supplementary_startup_base : Real;
+        // fuel-keyed [$]
+        attribute supplementary_decom_base : Real;
         calc supplementary : 'Supplementary Cost' {
             in spares_frac = supplementary_spares_frac;
             in startup_fuel_base = supplementary_startup_base;
@@ -540,11 +593,12 @@ package mfe_plant {
             in cas23_to_28 = cas23_to_28_capital;
             in cas30 = indirect.cost;    // read the CAS30 producer directly (cas30_capital is expose_pure)
             in p_net = pb.p_net;
-            in n_mod = n_mod;
+            in n_mod_in = n_mod;
         }
-        attribute supplementary_capital : Real = supplementary.cost;   // CAS50 (expose calc cost as sibling attr)
+        // CAS50 (expose calc cost as sibling attr)
+        attribute supplementary_capital : Real = supplementary.cost;
 
-        // Overnight capital [$] — CAS10 (preconstruction) enters HERE per 1cfe:
+        // Overnight capital [$] -- CAS10 (preconstruction) enters HERE per 1cfe:
         // it receives neither CAS29 contingency nor CAS30 indirect. Aggregates
         // sibling attributes only (owner/supplementary costs exposed above) so
         // codegen emits it as an aggregation producer (not expose_computed).
@@ -556,13 +610,14 @@ package mfe_plant {
         // ---- EXCLUDED from total_capital; DCF idc_factor untouched.       ----
         calc idc : 'IDC Closed-Form Cost' {
             in interest_rate = discount_rate;
-            in construction_years = construction_years;
+            in construction_years_in = construction_years;
             in overnight_cost = overnight_capital;
         }
-        attribute idc_capital : Real = idc.cost;   // CAS60 reported line (not in total_capital)
+        // CAS60 reported line (not in total_capital)
+        attribute idc_capital : Real = idc.cost;
 
         // Item 10: restored to the canonical formula (see direct_capital note).
-        // Total capital [$] — Option C: equals overnight_capital (idc NOT summed
+        // Total capital [$] -- Option C: equals overnight_capital (idc NOT summed
         // in). Written as the overnight aggregation of sibling attributes (not a
         // bare alias) so codegen emits a total_capital producer channel for the
         // untouched lcoe_calc input.
@@ -571,7 +626,7 @@ package mfe_plant {
             + owner_capital + supplementary_capital;
 
         // =====================================================================
-        // ANNUAL-COST SIDE — CAS71 / CAS72 / CAS80 (WI-029 D1/D2)
+        // ANNUAL-COST SIDE -- CAS71 / CAS72 / CAS80 (WI-029 D1/D2)
         //   CAS71 = levelized O&M; CAS72 = levelized scheduled replacement of
         //   the fluence-limited in-vessel accounts; CAS80 = levelized DT fuel.
         //   CAS70 = CAS71 + CAS72. One levelization wrapper serves CAS71 and
@@ -581,33 +636,37 @@ package mfe_plant {
         // Escalation rate g for the levelization (instance binds; 1cfe 0.02).
         attribute inflation_rate : Real;
 
-        // CAS71 — levelized annual O&M [$/yr]. Tc = construction_years (NOAK).
+        // CAS71 -- levelized annual O&M [$/yr]. Tc = construction_years (NOAK).
         calc cas71_calc : 'Levelized Annual Cost' {
             in annual_cost = om_cost.annual_om;
             in interest_rate = discount_rate;
-            in inflation_rate = inflation_rate;
-            in operational_years = operational_years;
+            in inflation_rate_in = inflation_rate;
+            in operational_years_in = operational_years;
             in project_time = construction_years;
         }
-        attribute cas71_annual : Real = cas71_calc.levelized;   // expose for producer aggregation
+        // expose for producer aggregation
+        attribute cas71_annual : Real = cas71_calc.levelized;
 
         // ---- CAS80 DT fuel: raw annual, then the same levelization wrapper ----
-        // Fuel chemistry constants are instance inputs (MR-3) — no library defaults.
-        attribute fuel_cost_per_rxn : Real;   // M_D*u_D + M_Li6*u_Li6 [$/rxn]
-        attribute fuel_q_eff : Real;          // per-reaction energy [MeV]
-        attribute mev_to_joules : Real;       // MeV -> J
+        // Fuel chemistry constants are instance inputs (MR-3) -- no library defaults.
+        // M_D*u_D + M_Li6*u_Li6 [$/rxn]
+        attribute fuel_cost_per_rxn : Real;
+        // per-reaction energy [MeV]
+        attribute fuel_q_eff : Real;
+        // MeV -> J
+        attribute mev_to_joules : Real;
         attribute burn_fraction : Real;
         attribute fuel_recovery : Real;
 
         calc fuel_calc : 'DT Fuel Cost' {
             in p_fus = fusion.p_fus;
-            in n_mod = n_mod;
-            in availability = availability;
+            in n_mod_in = n_mod;
+            in availability_in = availability;
             in cost_per_rxn = fuel_cost_per_rxn;
             in q_eff = fuel_q_eff;
-            in mev_to_joules = mev_to_joules;
-            in burn_fraction = burn_fraction;
-            in fuel_recovery = fuel_recovery;
+            in mev_to_joules_in = mev_to_joules;
+            in burn_fraction_in = burn_fraction;
+            in fuel_recovery_in = fuel_recovery;
         }
         calc cas80_calc : 'Levelized Annual Cost' {
             // Read the fuel producer directly. A bare `annual_fuel = fuel_calc.annual_fuel`
@@ -616,11 +675,12 @@ package mfe_plant {
             // channel, so the A-2 row reads it without the alias.
             in annual_cost = fuel_calc.annual_fuel;
             in interest_rate = discount_rate;
-            in inflation_rate = inflation_rate;
-            in operational_years = operational_years;
+            in inflation_rate_in = inflation_rate;
+            in operational_years_in = operational_years;
             in project_time = construction_years;
         }
-        attribute cas80_annual : Real = cas80_calc.levelized;   // expose for producer aggregation
+        // expose for producer aggregation
+        attribute cas80_annual : Real = cas80_calc.levelized;
 
         // ---- CAS72 scheduled replacement (Rung B, handwritten impl) ----------
         // Replaceable set = the fluence-limited in-vessel accounts C220101
@@ -641,14 +701,15 @@ package mfe_plant {
         calc cas72_calc : 'Levelized Replacement Cost' {
             in cost_per_event = replacement_cost_per_event;
             in p_fus = fusion.p_fus;
-            in ash_frac = ash_frac;
+            in ash_frac_in = ash_frac;
             in firstwall_area = rb.wall_area;
-            in fluence_limit = fluence_limit;
-            in availability = availability;
+            in fluence_limit_in = fluence_limit;
+            in availability_in = availability;
             in interest_rate = discount_rate;
-            in operational_years = operational_years;
+            in operational_years_in = operational_years;
         }
-        attribute cas72_annual : Real = cas72_calc.cost;   // expose_pure channel for A-2
+        // expose_pure channel for A-2
+        attribute cas72_annual : Real = cas72_calc.cost;
 
         // CAS70 = CAS71 + CAS72, and the LCOE numerator total = CAS70 + CAS80.
         // Behind a calc so both sums are PRODUCER channels the LCOE cores can
@@ -659,31 +720,36 @@ package mfe_plant {
             in cas72 = cas72_calc.cost;
             in cas80 = cas80_calc.levelized;
         }
-        attribute cas70_annual : Real = cas70_calc.cas70;   // expose_pure channel for A-2
+        // expose_pure channel for A-2
+        attribute cas70_annual : Real = cas70_calc.cas70;
 
         // =====================================================================
         // LCOE  (WI-009 'LCOE DCF' core)
         // =====================================================================
 
-        // WI-029: the DCF headline now takes the LEVELIZED annual-cost side —
+        // WI-029: the DCF headline now takes the LEVELIZED annual-cost side --
         // CAS70 (= CAS71 levelized O&M + CAS72 levelized replacement) + CAS80
-        // levelized fuel — replacing the unlevelized WI-025 O&M line that used
+        // levelized fuel -- replacing the unlevelized WI-025 O&M line that used
         // to be bound here. The headline CONVENTION is unchanged (Option ii:
         // idc_factor and total_capital = overnight_capital both untouched);
         // only the annual-cost numerator becomes complete.
-        attribute annual_om : Real = cas70_calc.annual_total;  // CAS70+CAS80 levelized [$/yr]
-        attribute availability : Real;       // capacity factor [0..1]
-        attribute discount_rate : Real;      // discount / interest rate [1/yr]
-        attribute operational_years : Real;  // operating lifetime N [yr]
+        // CAS70+CAS80 levelized [$/yr]
+        attribute annual_om : Real = cas70_calc.annual_total;
+        // capacity factor [0..1]
+        attribute availability : Real;
+        // discount / interest rate [1/yr]
+        attribute discount_rate : Real;
+        // operating lifetime N [yr]
+        attribute operational_years : Real;
 
         calc lcoe_calc : 'LCOE DCF' {
-            in total_capital = total_capital;
-            in annual_om = annual_om;
+            in total_capital_in = total_capital;
+            in annual_om_in = annual_om;
             in net_electric_mw = pb.p_net;
-            in availability = availability;
-            in discount_rate = discount_rate;
-            in construction_years = construction_years;
-            in operational_years = operational_years;
+            in availability_in = availability;
+            in discount_rate_in = discount_rate;
+            in construction_years_in = construction_years;
+            in operational_years_in = operational_years;
         }
 
         // ---- 1cfe-form CAS90 / LCOE COMPARISON channels (WI-029, Option ii) --
@@ -693,11 +759,11 @@ package mfe_plant {
         //   cas90_1cfe = CRF * (overnight_capital + CAS60)
         //   lcoe_1cfe  = (cas90_1cfe + CAS70 + CAS80) / annual energy
         // CAS60 is the Item-3 'IDC Closed-Form Cost' REPORTED line (idc_capital)
-        // — no new IDC arithmetic — and CRF is reused from cas71_calc, which
+        // -- no new IDC arithmetic -- and CRF is reused from cas71_calc, which
         // computes it from the same discount_rate / operational_years the DCF
         // core uses. total_capital stays == overnight_capital (Option C), so
         // CAS60 cannot enter the headline capital base: the two channels coexist
-        // without double-counting. Comparison only — NOT the design-point headline.
+        // without double-counting. Comparison only -- NOT the design-point headline.
         // Source: /home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py (pin 0254385)
         // Ref: costs.py:547-556 (cas90 = CRF*total_capital); economics.py:88-92 (lcoe)
         calc cas90_1cfe_calc : '1cfe-Form Capital Charge' {
@@ -705,17 +771,19 @@ package mfe_plant {
             in overnight_cost = overnight_capital;
             in idc_cost = idc.cost;
         }
-        attribute cas90_1cfe : Real = cas90_1cfe_calc.cas90;   // expose_pure channel for A-2
+        // expose_pure channel for A-2
+        attribute cas90_1cfe : Real = cas90_1cfe_calc.cas90;
 
         calc lcoe_1cfe_calc : '1cfe-Form LCOE' {
             in cas90 = cas90_1cfe_calc.cas90;
             in cas70 = cas70_calc.cas70;
             in cas80 = cas80_calc.levelized;
             in net_electric_mw = pb.p_net;
-            in n_mod = n_mod;
-            in availability = availability;
+            in n_mod_in = n_mod;
+            in availability_in = availability;
         }
-        attribute lcoe_1cfe : Real = lcoe_1cfe_calc.lcoe;      // expose_pure channel for A-2
+        // expose_pure channel for A-2
+        attribute lcoe_1cfe : Real = lcoe_1cfe_calc.lcoe;
 
         // =====================================================================
         // VIABILITY CONSTRAINTS  (WI-009 mfe_viability)

@@ -39,29 +39,21 @@ FIELD_SURVIVAL = {
 
 
 @pytest.fixture(scope="session")
-def promoted_run(tmp_path_factory):
-    """A promoted-route store plus the identity document that scopes it."""
-    import os
-
-    worktree = Path(os.environ.get("TEAX_V1_ERA") or "/home/reid/1cfe/teax-v1-era")
-    simkit = worktree / "packages" / "teax-simkit"
-    if not simkit.is_dir():
-        if os.environ.get("STUDY_REQUIRE_ERA") == "1":
-            pytest.fail(f"era teax worktree unavailable at {worktree}")
-        pytest.skip(f"era teax worktree unavailable at {worktree}")
-    for path in (str(simkit), str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies"),
-                 str(REPO_ROOT)):
-        if path not in sys.path:
-            sys.path.insert(0, path)
-    import promotion_equivalence
+def promoted_run(tmp_path_factory, stock_simkit_session_path):
+    """A stock-route store plus the sealed identity document that scopes it."""
+    studies = str(REPO_ROOT / "exploration" / "stellarator_e2e" / "studies")
+    if studies not in sys.path:
+        sys.path.insert(0, studies)
+    import study_route
 
     out = tmp_path_factory.mktemp("verify_run")
-    promotion_equivalence.run_availability_sweep(out)
-    promotion_equivalence.execute_baseline(out)
+    study_route.run_availability_sweep(out)
+    study_route.execute_baseline(out)
     return {
         "dir": out,
         "identity": out / "package_identity.json",
         "store": out / "_work" / "stellarator-availability-sweep-v1.db",
+        "simkit": stock_simkit_session_path,
     }
 
 
@@ -77,9 +69,7 @@ def run_verify(promoted_run, out, *extra, expect=None):
     done = subprocess.run(
         [sys.executable, str(VERIFY), *argv],
         capture_output=True, text=True, cwd=str(REPO_ROOT),
-        env={**__import__("os").environ,
-             "PYTHONPATH": str(Path(__import__("os").environ.get(
-                 "TEAX_V1_ERA", "/home/reid/1cfe/teax-v1-era")) / "packages" / "teax-simkit")},
+        env={**__import__("os").environ, "PYTHONPATH": str(promoted_run["simkit"])},
     )
     if expect is not None:
         assert done.returncode == expect, f"exit {done.returncode}\n{done.stderr}"
@@ -105,7 +95,9 @@ def test_the_summary_is_a_superset_of_the_committed_field_set(summary):
     assert summary["verdicts_rederived"] is True
     assert isinstance(summary["worst_channel_rel_dev"], float)
     assert summary["package"]["git_clean"] is True
-    assert summary["not_independently_verified"], "the glue note must survive as data"
+    # The field survives as data; on the stock route it is empty (SC4): nothing is fed
+    # to both sides, so every compared channel is independently verified.
+    assert summary["not_independently_verified"] == []
     assert store["sampling"]["sampled_rows"] >= 1
     assert store["sampling"]["scheme"] == "stratified-by-verdict-combination/v1"
     assert store["sampling"]["seed"]
@@ -153,11 +145,18 @@ def test_an_explicit_seed_is_recorded_as_explicit(promoted_run, tmp_path):
     assert store["sampling"] == {**store["sampling"], "seed": "beef", "seed_source": "explicit"}
 
 
-def test_the_glue_disclosure_names_the_cas27_rung(summary):
-    rungs = {r["rung"] for r in summary["not_independently_verified"]}
-    assert rungs == {"g3"}
-    note = summary["not_independently_verified"][0]["note"].lower()
-    assert "not independently verified" in note
+def test_cas27_is_compared_and_nothing_is_undisclosed(summary):
+    """The era route fed CAS27 (special materials) identically to the package and to
+    the oracle and disclosed it as not independently verified. On the regenerated
+    package CAS27 is computed in-package, declared as the `cas27` objective, and
+    compared against the oracle's own recompute -- the disclosure list is empty and
+    the comparison names the channel (stellarator-model-migration SC4)."""
+    assert summary["not_independently_verified"] == []
+    compared = {c["channel"]: c["objective"] for c in summary["channels_checked"]}
+    P = "stellarator_09__stellaris__"
+    assert compared[f"{P}special_materials_capital__special_materials_capital"] == "cas27"
+    assert compared[f"{P}total_capital__total_capital"] == "total_capital"
+    assert compared[f"{P}lcoe_calc__lcoe"] == "lcoe"
 
 
 def test_the_command_carries_no_absolute_paths(summary):

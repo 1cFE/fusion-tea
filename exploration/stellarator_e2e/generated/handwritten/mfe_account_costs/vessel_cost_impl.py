@@ -7,7 +7,7 @@ SysML Source: root-0/analyses/mfe_account_costs.sysml:108
 SysML Expressions:
     p_et_ref = 1100.0
     alpha = 0.6
-    cost = unit_cost * vessel_vol * (p_et / p_et_ref) ** alpha
+    cost = unit_cost * vessel_vol * (p_et_in / p_et_ref) ** alpha
     
 Documentation:
 CAS22.1.6 Vacuum-vessel SHELL cost (double-walled SS chamber, port
@@ -54,7 +54,7 @@ SysML Source: root-0/analyses/mfe_account_costs.sysml:108
 SysML Expressions:
     p_et_ref = 1100.0
     alpha = 0.6
-    cost = unit_cost * vessel_vol * (p_et / p_et_ref) ** alpha
+    cost = unit_cost * vessel_vol * (p_et_in / p_et_ref) ** alpha
     
 Documentation:
 CAS22.1.6 Vacuum-vessel SHELL cost (double-walled SS chamber, port
@@ -82,4 +82,4 @@ Example:
     >>> inputs = Vessel_CostInput(...)
     >>> result = run_vessel_cost(inputs)
     """
-    return ((inputs.unit_cost * inputs.vessel_vol) * ((inputs.p_et / inputs.p_et_ref) ** inputs.alpha))
+    return ((inputs.unit_cost * inputs.vessel_vol) * ((inputs.p_et_in / inputs.p_et_ref) ** inputs.alpha))

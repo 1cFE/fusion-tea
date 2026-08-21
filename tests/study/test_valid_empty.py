@@ -27,7 +27,7 @@ def test_a_group_with_no_constraint_reach_exits_zero(tmp_path):
     assert group["no_constraint_response"] is True
     assert group["constraints_reachable"] == []
     assert group["objectives_reachable"] == ["lcoe", "lcoe_1cfe", "total_capital"]
-    assert group["objectives_unreachable"] == ["cas72", "fuel"]
+    assert group["objectives_unreachable"] == ["cas27", "cas72", "fuel"]
 
 
 def test_the_empty_result_still_carries_the_whole_catalog(tmp_path):

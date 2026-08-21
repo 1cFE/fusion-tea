@@ -6,7 +6,7 @@ Installation-labor account:
 
   cost = installation_frac * reactor_subtotal
 
-reactor_subtotal = Σ(C220101..C220110) per-module (includes C220109 = 0
+reactor_subtotal = Sigma(C220101..C220110) per-module (includes C220109 = 0
 for this concept, excludes 111/112). The multi-unit labor factor (0.92)
 is a plant-aggregate concern at n_mod > 1; the account value compared
 under A-2 is single-module.
@@ -16,15 +16,15 @@ under A-2 is single-module.
 *Basis**: Fixed fraction of the reactor-equipment subtotal
 
 Inputs:
-    - installation_frac: installation_frac parameter
     - reactor_subtotal: reactor_subtotal parameter
+    - installation_frac_in: installation_frac_in parameter
 
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:483
+SysML Source: root-0/analyses/mfe_account_costs.sysml:503
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:483
+SysML Source: root-0/analyses/mfe_account_costs.sysml:503
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/installation_labor_cost_impl.py
@@ -40,11 +40,11 @@ class Installation_Labor_CostInput(BaseModel):
     """Input model for Installation_Labor_CostModule.
 
     Attributes:
-        installation_frac: installation_frac input
         reactor_subtotal: reactor_subtotal input
+        installation_frac_in: installation_frac_in input
     """
-    installation_frac: float = Field(..., description="installation_frac input")
     reactor_subtotal: float = Field(..., description="reactor_subtotal input")
+    installation_frac_in: float = Field(..., description="installation_frac_in input")
 
 
 class Installation_Labor_CostModule(ModuleBase[Installation_Labor_CostInput, Float]):
@@ -54,7 +54,7 @@ Installation-labor account:
 
   cost = installation_frac * reactor_subtotal
 
-reactor_subtotal = Σ(C220101..C220110) per-module (includes C220109 = 0
+reactor_subtotal = Sigma(C220101..C220110) per-module (includes C220109 = 0
 for this concept, excludes 111/112). The multi-unit labor factor (0.92)
 is a plant-aggregate concern at n_mod > 1; the account value compared
 under A-2 is single-module.
@@ -64,26 +64,26 @@ under A-2 is single-module.
 *Basis**: Fixed fraction of the reactor-equipment subtotal
 
 Inputs:
-    - installation_frac: installation_frac parameter
     - reactor_subtotal: reactor_subtotal parameter
+    - installation_frac_in: installation_frac_in parameter
 
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:483
+SysML Source: root-0/analyses/mfe_account_costs.sysml:503
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:483
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:503
 
     Calculation Specification:
-        installation_frac = 0.14
-        cost = installation_frac * reactor_subtotal
+        installation_frac_in = 0.14
+        cost = installation_frac_in * reactor_subtotal
         
 Documentation:
 Installation-labor account:
 
   cost = installation_frac * reactor_subtotal
 
-reactor_subtotal = Σ(C220101..C220110) per-module (includes C220109 = 0
+reactor_subtotal = Sigma(C220101..C220110) per-module (includes C220109 = 0
 for this concept, excludes 111/112). The multi-unit labor factor (0.92)
 is a plant-aggregate concern at n_mod > 1; the account value compared
 under A-2 is single-module.
@@ -102,31 +102,31 @@ under A-2 is single-module.
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, installation_frac: float, reactor_subtotal: float    ) -> Installation_Labor_CostInput:
+        self, reactor_subtotal: float, installation_frac_in: float    ) -> Installation_Labor_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
-            installation_frac: installation_frac input
             reactor_subtotal: reactor_subtotal input
+            installation_frac_in: installation_frac_in input
 
         Returns:
             Validated input model
         """
-        return Installation_Labor_CostInput(installation_frac=installation_frac, reactor_subtotal=reactor_subtotal)
+        return Installation_Labor_CostInput(reactor_subtotal=reactor_subtotal, installation_frac_in=installation_frac_in)
 
     def run(
-        self, installation_frac: float, reactor_subtotal: float    ) -> ModuleResult[Float]:
+        self, reactor_subtotal: float, installation_frac_in: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            installation_frac: installation_frac input
             reactor_subtotal: reactor_subtotal input
+            installation_frac_in: installation_frac_in input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(installation_frac, reactor_subtotal)
+        validated_inputs = self.validate_and_fill_default(reactor_subtotal, installation_frac_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.installation_labor_cost_impl import (

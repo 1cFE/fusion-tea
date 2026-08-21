@@ -129,7 +129,7 @@ def _effective_doc(package_root, modified_rel, source_rel):
 
 
 ADAPTER_SOURCE = "exploration/stellarator_e2e/studies/oracle_entry.py"
-GLUE_FILES = ["inputs/system_design.json", "pipelines/mfe_stellarator.yaml"]
+GLUE_FILES = ["inputs/stellarator_plant_params.json", "pipelines/pipeline.yaml"]
 
 
 def test_the_gate_passes_on_the_real_package(real_package_path):
@@ -162,7 +162,7 @@ def test_the_gate_recomputes_and_does_not_trust(real_package_path, tmp_path):
     shutil.copytree(real_package_path, copy)
     doc = _effective_doc(copy, GLUE_FILES, [ADAPTER_SOURCE])
     identity.assert_matches(doc, copy)
-    target = copy / "inputs" / "system_design.json"
+    target = copy / "inputs" / "stellarator_plant_params.json"  # an allowed-modified file
     target.write_text(target.read_text().replace("}", ", \"x\": 1}", 1))
     with pytest.raises(identity.IdentityError) as exc:
         identity.assert_matches(doc, copy)
@@ -178,11 +178,11 @@ def test_a_sealed_artifact_outside_the_allowed_set_fails_naming_the_file(
     copy = tmp_path / "pkg"
     shutil.copytree(real_package_path, copy)
     doc = _effective_doc(copy, GLUE_FILES, [ADAPTER_SOURCE])
-    target = copy / "inputs" / "stellarator_plant_params.json"
+    target = copy / "inputs" / "mfe_plant_params.json"  # sealed, NOT in the allowed set
     target.write_text(target.read_text().replace("}", ", \"x\": 1}", 1))
     with pytest.raises(identity.IdentityError) as exc:
         identity.assert_seal_outside_allowed_set(doc, copy)
-    assert "inputs/stellarator_plant_params.json" in str(exc.value)
+    assert "inputs/mfe_plant_params.json" in str(exc.value)
 
 
 def test_an_allowed_modified_file_that_is_not_a_sealed_artifact_is_refused(real_package_path):

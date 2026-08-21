@@ -16,12 +16,12 @@ is the blanket-form multiplier. Both are concept inputs (WI-011).
 *Basis**: Volume-based blanket cost with thermal-intensity power law
 
 Inputs:
-    - unit_cost: unit_cost parameter
-    - structure_factor: structure_factor parameter
-    - blanket_vol: blanket_vol parameter
-    - p_th: p_th parameter
+    - p_th_in: p_th_in parameter
     - p_th_ref: p_th_ref parameter
+    - structure_factor: structure_factor parameter
     - alpha: alpha parameter
+    - blanket_vol: blanket_vol parameter
+    - unit_cost: unit_cost parameter
 
 Outputs:
     - cost: cost result
@@ -44,19 +44,19 @@ class Blanket_CostInput(BaseModel):
     """Input model for Blanket_CostModule.
 
     Attributes:
-        unit_cost: unit_cost input
-        structure_factor: structure_factor input
-        blanket_vol: blanket_vol input
-        p_th: p_th input
+        p_th_in: p_th_in input
         p_th_ref: p_th_ref input
+        structure_factor: structure_factor input
         alpha: alpha input
+        blanket_vol: blanket_vol input
+        unit_cost: unit_cost input
     """
-    unit_cost: float = Field(..., description="unit_cost input")
-    structure_factor: float = Field(..., description="structure_factor input")
-    blanket_vol: float = Field(..., description="blanket_vol input")
-    p_th: float = Field(..., description="p_th input")
+    p_th_in: float = Field(..., description="p_th_in input")
     p_th_ref: float = Field(..., description="p_th_ref input")
+    structure_factor: float = Field(..., description="structure_factor input")
     alpha: float = Field(..., description="alpha input")
+    blanket_vol: float = Field(..., description="blanket_vol input")
+    unit_cost: float = Field(..., description="unit_cost input")
 
 
 class Blanket_CostModule(ModuleBase[Blanket_CostInput, Float]):
@@ -76,12 +76,12 @@ is the blanket-form multiplier. Both are concept inputs (WI-011).
 *Basis**: Volume-based blanket cost with thermal-intensity power law
 
 Inputs:
-    - unit_cost: unit_cost parameter
-    - structure_factor: structure_factor parameter
-    - blanket_vol: blanket_vol parameter
-    - p_th: p_th parameter
+    - p_th_in: p_th_in parameter
     - p_th_ref: p_th_ref parameter
+    - structure_factor: structure_factor parameter
     - alpha: alpha parameter
+    - blanket_vol: blanket_vol parameter
+    - unit_cost: unit_cost parameter
 
 Outputs:
     - cost: cost result
@@ -93,7 +93,7 @@ SysML Source: root-0/analyses/mfe_account_costs.sysml:22
     Calculation Specification:
         p_th_ref = 2500.0
         alpha = 0.6
-        cost = unit_cost * structure_factor * blanket_vol * (p_th / p_th_ref) ** alpha
+        cost = unit_cost * structure_factor * blanket_vol * (p_th_in / p_th_ref) ** alpha
         
 Documentation:
 CAS22.1.1 First-wall + blanket + neutron-multiplier cost. Hybrid
@@ -119,39 +119,39 @@ is the blanket-form multiplier. Both are concept inputs (WI-011).
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, unit_cost: float, structure_factor: float, blanket_vol: float, p_th: float, p_th_ref: float, alpha: float    ) -> Blanket_CostInput:
+        self, p_th_in: float, p_th_ref: float, structure_factor: float, alpha: float, blanket_vol: float, unit_cost: float    ) -> Blanket_CostInput:
         """Validate inputs and fill defaults.
 
         Args:
-            unit_cost: unit_cost input
-            structure_factor: structure_factor input
-            blanket_vol: blanket_vol input
-            p_th: p_th input
+            p_th_in: p_th_in input
             p_th_ref: p_th_ref input
+            structure_factor: structure_factor input
             alpha: alpha input
+            blanket_vol: blanket_vol input
+            unit_cost: unit_cost input
 
         Returns:
             Validated input model
         """
-        return Blanket_CostInput(unit_cost=unit_cost, structure_factor=structure_factor, blanket_vol=blanket_vol, p_th=p_th, p_th_ref=p_th_ref, alpha=alpha)
+        return Blanket_CostInput(p_th_in=p_th_in, p_th_ref=p_th_ref, structure_factor=structure_factor, alpha=alpha, blanket_vol=blanket_vol, unit_cost=unit_cost)
 
     def run(
-        self, unit_cost: float, structure_factor: float, blanket_vol: float, p_th: float, p_th_ref: float, alpha: float    ) -> ModuleResult[Float]:
+        self, p_th_in: float, p_th_ref: float, structure_factor: float, alpha: float, blanket_vol: float, unit_cost: float    ) -> ModuleResult[Float]:
         """Execute calculation.
 
         Args:
-            unit_cost: unit_cost input
-            structure_factor: structure_factor input
-            blanket_vol: blanket_vol input
-            p_th: p_th input
+            p_th_in: p_th_in input
             p_th_ref: p_th_ref input
+            structure_factor: structure_factor input
             alpha: alpha input
+            blanket_vol: blanket_vol input
+            unit_cost: unit_cost input
 
         Returns:
             Module result with Float (single-output mode)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(unit_cost, structure_factor, blanket_vol, p_th, p_th_ref, alpha)
+        validated_inputs = self.validate_and_fill_default(p_th_in, p_th_ref, structure_factor, alpha, blanket_vol, unit_cost)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_account_costs.blanket_cost_impl import (

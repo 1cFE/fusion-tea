@@ -2,24 +2,20 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:624
 
 SysML Expressions:
-    preconstruction_capital + cas20_capital + cas30_capital + owner_capital + supplementary_capital
 """
 
 AUTO_IMPLEMENTED = True
 
-from stellarator_tea.modules.stellarator_09.stellaris.total_capital import total_capitalInput
+from stellarator_tea.modules.mfe_plant.mfe_power_plant.total_capital import total_capitalInput
 
 
 def run_total_capital(inputs: total_capitalInput) -> float:
     """Execute total_capital calculation.
 
-SysML Source: unknown:0
-
-SysML Expressions:
-    preconstruction_capital + cas20_capital + cas30_capital + owner_capital + supplementary_capital
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:624
 
 Args:
     inputs: Input parameters validated against total_capitalInput schema

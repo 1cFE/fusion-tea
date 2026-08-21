@@ -18,35 +18,39 @@ from tests.study.conftest import DATA_DIR, run_tool
 CASES = ["availability", "interest_rate", "R", "R+tie", "a", "beta"]
 
 EXPECTED_SEMANTIC_FINGERPRINT = (
-    "c9bc164050f0aac8a2009befb34497426d68923066ca1c1783a0b80e8048c261"
+    "1be51d890e5e2f973da919a9ff3cb5ef04a75652e5f906f13cea2a519f97b3aa"
 )
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,
 #:          modules fired, channels tainted). Read straight off the Item 1 fixture
-#: contract in .project/active/run-study-reachability-spike/findings.md.
+#: contract in .project/active/run-study-reachability-spike/findings.md, re-derived
+#: on the 2.0.0 package after the stellarator model migration (2026-08-21): the
+#: qualitative contract is unchanged; R and a fire one more module and taint one
+#: more channel because CAS27 is now computed in-package and declared as the
+#: `cas27` objective, and each swept attribute is one plant-level entry point.
 FIXTURE_CONTRACT = {
     "availability": (True, [], ["cas72", "fuel", "lcoe", "lcoe_1cfe"], 6, 8),
     "interest_rate": (True, [], ["cas72", "lcoe", "lcoe_1cfe"], 8, 11),
     "R": (
         False,
         ["net_positive", "recirc_ok", "wall_load_ok"],
-        ["cas72", "fuel", "lcoe", "lcoe_1cfe", "total_capital"],
-        54,
-        67,
+        ["cas27", "cas72", "fuel", "lcoe", "lcoe_1cfe", "total_capital"],
+        55,
+        68,
     ),
     "R+tie": (
         False,
         ["net_positive", "recirc_ok", "wall_load_ok"],
-        ["cas72", "fuel", "lcoe", "lcoe_1cfe", "total_capital"],
-        54,
-        67,
+        ["cas27", "cas72", "fuel", "lcoe", "lcoe_1cfe", "total_capital"],
+        55,
+        68,
     ),
     "a": (
         False,
         ["net_positive", "recirc_ok", "wall_load_ok"],
-        ["cas72", "fuel", "lcoe", "lcoe_1cfe", "total_capital"],
-        54,
-        67,
+        ["cas27", "cas72", "fuel", "lcoe", "lcoe_1cfe", "total_capital"],
+        55,
+        68,
     ),
     "beta": (False, ["beta_ok"], [], 2, 2),
 }
@@ -139,7 +143,7 @@ def test_the_declared_tie_does_not_change_reach(report):
               "objectives_reachable", "objectives_unreachable", "trace_size",
               "no_constraint_response", "sibling_candidates")
     assert {k: plain[k] for k in traced} == {k: tied[k] for k in traced}
-    assert len(tied["declared_keys"]) == 3
+    assert len(tied["declared_keys"]) == 2
 
 
 def test_every_constraint_carries_all_three_identities(report):

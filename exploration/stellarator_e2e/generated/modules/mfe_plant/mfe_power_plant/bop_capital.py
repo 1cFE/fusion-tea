@@ -11,12 +11,12 @@ Inputs:
 Outputs:
     - bop_capital: bop_capital result
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:429
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:429
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
-Handwritten implementation required in handwritten/stellarator_09/stellaris/bop_capital_impl.py
+Handwritten implementation required in handwritten/mfe_plant/mfe_power_plant/bop_capital_impl.py
 """
 
 from pydantic import BaseModel, Field, RootModel
@@ -52,14 +52,13 @@ Inputs:
 Outputs:
     - bop_capital: bop_capital result
 
-SysML Source: unknown:0
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:429
 
-    SysML Source: unknown:0
+    SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:429
 
     Calculation Specification:
-        turbine.capital_cost + electric_plant.capital_cost + heat_rejection.capital_cost + misc_plant.capital_cost
 
-    IMPLEMENTATION: See stellarator_tea.handwritten.stellarator_09.stellaris.bop_capital_impl
+    IMPLEMENTATION: See stellarator_tea.handwritten.mfe_plant.mfe_power_plant.bop_capital_impl
     for manual implementation.
 
     NOTE: Single-output module - returns Float directly (no MultiOutput needed).
@@ -100,7 +99,7 @@ SysML Source: unknown:0
         validated_inputs = self.validate_and_fill_default(turbine_capital_cost, electric_plant_capital_cost, heat_rejection_capital_cost, misc_plant_capital_cost)
 
         # Import handwritten implementation
-        from stellarator_tea.handwritten.stellarator_09.stellaris.bop_capital_impl import (
+        from stellarator_tea.handwritten.mfe_plant.mfe_power_plant.bop_capital_impl import (
             run_bop_capital,
         )
 

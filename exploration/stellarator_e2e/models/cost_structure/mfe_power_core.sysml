@@ -10,20 +10,20 @@ package mfe_power_core {
     // 22.1.3 (magnets), 22.1.4 (heating & current drive), and 22.1.8 (divertor)
     // have completely different cost structures by confinement approach; each is
     // tagged `mfe_divergent` here, mirroring the IFE side. These are concept-
-    // agnostic TYPES — no tokamak/stellarator values (MR-WI009-8); WI-011 sets
+    // agnostic TYPES -- no tokamak/stellarator values (MR-WI009-8); WI-011 sets
     // concept values on the costed components below.
     // =========================================================================
 
     part def 'CAS22.1.3 Magnet System' :> 'CAS22 Power Core' {
         doc /*
         CAS Account 22.1.3 (MFE): Magnet System. The MFE analogue of the IFE
-        driver — the dominant MFE power-core cost driver (RQ-1). Superconducting
+        driver -- the dominant MFE power-core cost driver (RQ-1). Superconducting
         or resistive confinement coils (TF/CS/PF for tokamaks, modular coils for
         stellarators).
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
         **Ref**: cas22.py:271-444 (C220103 coil costing)
-        **Basis**: DI-002 — CAS22.1.3 is MFE-divergent; coils replace the IFE driver
+        **Basis**: DI-002 -- CAS22.1.3 is MFE-divergent; coils replace the IFE driver
         */
         :>> scope = 'CAS Scope'::mfe_divergent;
     }
@@ -35,7 +35,7 @@ package mfe_power_core {
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
         **Ref**: cas22.py:446-459 (C220104 supplementary heating, per-MW costs)
-        **Basis**: DI-002 — CAS22.1.4 is MFE-divergent (heating vs ignition)
+        **Basis**: DI-002 -- CAS22.1.4 is MFE-divergent (heating vs ignition)
         */
         :>> scope = 'CAS Scope'::mfe_divergent;
     }
@@ -47,7 +47,7 @@ package mfe_power_core {
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
         **Ref**: cas22.py:556-570 (C220108 divertor, power-scaled)
-        **Basis**: DI-002 — CAS22.1.8 is MFE-divergent (divertor vs target factory)
+        **Basis**: DI-002 -- CAS22.1.8 is MFE-divergent (divertor vs target factory)
         */
         :>> scope = 'CAS Scope'::mfe_divergent;
     }
@@ -65,17 +65,17 @@ package mfe_power_core {
     part def 'Magnet System' :> 'CAS22.1.3 Magnet System' {
         doc /*
         Concept-agnostic magnet/coil system carrying the coil-cost parameters
-        for the bilinear toroidal conductor model. All parameters are inputs —
+        for the bilinear toroidal conductor model. All parameters are inputs --
         WI-011 binds tokamak/stellarator values. `capital_cost` is populated by
         the 'Magnet Coil Cost' calc (mfe_magnet_cost.sysml).
 
         Parameters (all concept-set, MR-WI009-8):
-          B            — field at the loop center (axis) [T]
-          R0           — major radius [m]
-          r_coil       — coil-bore radius [m]
-          G            — geometry factor (tokamak 4*pi^2, stellarator 8*pi^2)
-          coil_markup  — conductor -> installed magnet manufacturing markup
-          cost_per_kAm — conductor cost [$/kA-m], by coil material
+          B            -- field at the loop center (axis) [T]
+          R0           -- major radius [m]
+          r_coil       -- coil-bore radius [m]
+          G            -- geometry factor (tokamak 4*pi^2, stellarator 8*pi^2)
+          coil_markup  -- conductor -> installed magnet manufacturing markup
+          cost_per_kAm -- conductor cost [$/kA-m], by coil material
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
         **Ref**: cas22.py:427 (total_kAm), cas22.py:440-444 (SC coil cost)
