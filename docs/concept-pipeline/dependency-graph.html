@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fusion TEA — Pipeline Dependency Graph</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+  :root {
+    --color-bg: #DFDCD7;
+    --color-surface: #ffffff;
+    --color-text: #191919;
+    --color-text-muted: #5F5F5F;
+    --color-border: #D7D3CC;
+    --color-accent: #55b7f9;
+    --color-accent-dark: #182949;
+    --color-warning-bg: #fffbeb;
+    --color-warning-border: #d97706;
+    --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: "SF Mono", "Fira Code", Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.55;
+  }
+  .wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 32px 28px 80px;
+  }
+  h1 {
+    font-size: 2rem;
+    margin: 0 0 4px;
+    color: var(--color-accent-dark);
+  }
+  h2 {
+    font-size: 1.35rem;
+    margin: 36px 0 12px;
+    color: var(--color-accent-dark);
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 6px;
+  }
+  h3 {
+    font-size: 1.05rem;
+    margin: 20px 0 8px;
+    color: var(--color-accent-dark);
+  }
+  .lede {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+    margin: 0 0 28px;
+    max-width: 820px;
+  }
+  .legend {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 0 0 24px;
+    font-size: 0.92rem;
+  }
+  .legend-item { display: flex; align-items: center; gap: 8px; }
+  .swatch {
+    display: inline-block;
+    width: 16px; height: 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+  }
+  .swatch.stage { background: #cfe8fb; border-color: #55b7f9; }
+  .swatch.artifact { background: #fff7d6; border-color: #d4b454; }
+  .swatch.external { background: #e6dffb; border-color: #8a6ed8; }
+  .swatch.ui { background: #d8f3dc; border-color: #2d6a4f; }
+  .diagram-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 24px;
+    overflow-x: auto;
+  }
+  .mermaid { font-size: 13px; }
+  code, kbd {
+    font-family: var(--font-mono);
+    background: #efece6;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 0.92em;
+  }
+  pre {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    padding: 14px 16px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.45;
+  }
+  pre code { background: transparent; color: inherit; padding: 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 12px 0;
+    font-size: 0.93rem;
+  }
+  th, td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: top;
+  }
+  th { background: #efece6; font-weight: 600; }
+  tr:last-child td { border-bottom: none; }
+  .callout {
+    background: var(--color-warning-bg);
+    border-left: 4px solid var(--color-warning-border);
+    padding: 10px 14px;
+    border-radius: 4px;
+    margin: 10px 0;
+    font-size: 0.93rem;
+  }
+  .callout strong { color: #92400e; }
+  ol li, ul li { margin: 4px 0; }
+  .toc {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 0 0 28px;
+    font-size: 0.95rem;
+  }
+  .toc ol { margin: 4px 0 0 18px; padding: 0; }
+  .toc a { color: var(--color-accent-dark); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Fusion TEA — Pipeline Dependency Graph</h1>
+<p class="lede">
+Map of the stages, scripts, and artifacts that turn raw fusion-concept research into the
+two downstream UIs (Concept Explorer for deep-dive, Score Explorer for downselect). Captures
+which artifacts feed which steps, where the pipeline branches, and the fragile cross-cuts.
+</p>
+
+<div class="legend">
+  <div class="legend-item"><span class="swatch stage"></span>Stage / operation</div>
+  <div class="legend-item"><span class="swatch artifact"></span>Artifact (file/dir)</div>
+  <div class="legend-item"><span class="swatch external"></span>External / authored input</div>
+  <div class="legend-item"><span class="swatch ui"></span>End-user UI</div>
+</div>
+
+<div class="toc">
+  <strong>Sections</strong>
+  <ol>
+    <li><a href="#overview">End-to-end overview</a></li>
+    <li><a href="#sources">Source acquisition</a></li>
+    <li><a href="#concept-analysis">Concept analysis (per-concept loop)</a></li>
+    <li><a href="#explorer">Concept Explorer packaging</a></li>
+    <li><a href="#scoring">Scoring v2 → Score Explorer (downselect)</a></li>
+    <li><a href="#non-nominal">Non-nominal model cases (FOAK, scenarios, sweeps)</a></li>
+    <li><a href="#fragility">Cross-cutting fragility</a></li>
+  </ol>
+</div>
+
+<h2 id="overview">1. End-to-end overview</h2>
+<p>
+The library has two parallel downstream pipelines that share early artifacts and diverge at the
+end. <strong>Concept Explorer</strong> is the per-concept deep-dive UI. <strong>Score Explorer</strong>
+is the cross-concept downselect UI. They draw from overlapping but distinct artifact sets.
+</p>
+
+<div class="diagram-card">
+<pre class="mermaid">
+flowchart LR
+  classDef stage fill:#cfe8fb,stroke:#55b7f9,color:#182949
+  classDef artifact fill:#fff7d6,stroke:#d4b454,color:#3d2e00
+  classDef external fill:#e6dffb,stroke:#8a6ed8,color:#2b1f4d
+  classDef ui fill:#d8f3dc,stroke:#2d6a4f,color:#1b3a2a
+
+  subgraph S1 ["1 - Source acquisition"]
+    direction TB
+    Z["zotero_ingest.py"]:::stage
+    AS["add-source"]:::stage
+    RS["research step"]:::stage
+    SRC[("knowledge/sources/<br/>knowledge/concept_research/")]:::artifact
+    Z --> SRC
+    AS --> SRC
+    RS --> SRC
+  end
+
+  subgraph S2 ["2 - Concept analysis loop"]
+    direction TB
+    GC["gap-check"]:::stage
+    AN["analyze"]:::stage
+    MS["model-setup"]:::stage
+    AX["assess"]:::stage
+    RV["review"]:::stage
+    AR["address-review"]:::stage
+    SY["synthesize"]:::stage
+    AP["approve"]:::stage
+
+    GR[("gap_report.md")]:::artifact
+    AMD[("analysis.md")]:::artifact
+    MSP[("model_setup.py")]:::artifact
+    MOT[("model_output.txt")]:::artifact
+    VJ[("iter-N/verdict.json")]:::artifact
+    RVM[("review.md")]:::artifact
+    SYM[("synthesis.md")]:::artifact
+
+    GC --> GR
+    AN --> AMD
+    AMD --> MS
+    MS --> MSP
+    MSP --> MOT
+    AMD --> AX
+    MOT --> AX
+    AX --> VJ
+    VJ -. FAIL .-> AN
+    AMD --> RV
+    RV --> RVM
+    RVM -. REVISE .-> AN
+    RVM -. PROCEED .-> AR
+    AR --> AMD
+    AMD --> SY
+    SY --> SYM
+    SY --> AP
+  end
+
+  subgraph S3 ["3 - Concept Explorer"]
+    direction TB
+    EXT["extract_explorer_data.py"]:::stage
+    CJ[("data/[id].json<br/>ConceptData")]:::artifact
+    SRV["concept_explorer/server.py"]:::stage
+    UICX["Concept Explorer UI"]:::ui
+    EXT --> CJ
+    CJ --> SRV
+    SRV --> UICX
+  end
+
+  subgraph S4 ["4 - Scoring v2 to downselect"]
+    direction TB
+    EX2["scoring_v2/extract.py +<br/>populate_*_diagnostics.py"]:::stage
+    FY[("features/[id].yaml")]:::artifact
+    SC["scoring_v2/score.py"]:::stage
+    TBL[("scores/table.csv")]:::artifact
+    BLD["tools/score_explorer/build.py"]:::stage
+    CJS[("score_explorer/data/<br/>concepts.json + weights.json")]:::artifact
+    MIR["manual mirror to<br/>docs/score-explorer/"]:::stage
+    UISC["Score Explorer UI<br/>GitHub Pages"]:::ui
+    EX2 --> FY
+    FY --> SC
+    SC --> TBL
+    TBL --> BLD
+    BLD --> CJS
+    CJS --> MIR
+    MIR --> UISC
+  end
+
+  SRC --> GC
+  SRC --> AN
+  GR --> EX2
+  AMD --> EXT
+  MSP --> EXT
+  MOT --> EXT
+  AMD --> EX2
+  MOT --> EX2
+</pre>
+</div>
+
+<h2 id="sources">2. Source acquisition</h2>
+<p>Three independent producers all write into the same source pool consumed downstream by gap-check, analyze, and (indirectly) scoring.</p>
+<table>
+  <tr><th>Stage</th><th>Trigger</th><th>Output</th></tr>
+  <tr><td><code>zotero_ingest.py</code></td><td>Manual / batch</td><td><code>knowledge/sources/{name}/output.md</code> + images</td></tr>
+  <tr><td><code>add-source</code></td><td>Manual mid-loop side door</td><td><code>knowledge/concept_research/{id}/iter-NN/sources/</code></td></tr>
+  <tr><td>autonomous research step</td><td><code>analyze --research</code></td><td>same <code>iter-NN/sources/</code> location, via <code>lib/research.py</code></td></tr>
+</table>
+
+<h2 id="concept-analysis">3. Concept analysis (per-concept iterative loop)</h2>
+<p>Driver: <code>scripts/run_analysis.py</code> + <code>scripts/lib/loop.py</code>. Per-concept state lives under <code>analyses/{id}/</code>.</p>
+
+<div class="diagram-card">
+<pre class="mermaid">
+flowchart TB
+  classDef stage fill:#cfe8fb,stroke:#55b7f9,color:#182949;
+  classDef artifact fill:#fff7d6,stroke:#d4b454,color:#3d2e00;
+  classDef external fill:#e6dffb,stroke:#8a6ed8,color:#2b1f4d;
+
+  SI[(SOURCE_INDEX.md)]:::external
+  SRCS[(knowledge/sources/**)]:::external
+  TPL[(prompts/gap_check.md)]:::external
+
+  GC[gap-check]:::stage
+  GR[(gap_report.md)]:::artifact
+  GCP[(prompts/gap_check_prompt.md)]:::artifact
+
+  SI --> GC
+  SRCS --> GC
+  TPL --> GC
+  GC --> GR
+  GC --> GCP
+
+  FP{feedback-producer<br/>cold_start / assess / review /<br/>source_integration / research / external}:::stage
+  AN[analyze]:::stage
+  AMD[(analysis.md)]:::artifact
+  AO[(iter-N/analysis_output.md)]:::artifact
+
+  FP --> AN
+  AN --> AMD
+  AN --> AO
+
+  MS[model-setup]:::stage
+  MSP[(model_setup.py)]:::artifact
+  MOT[(model_output.txt)]:::artifact
+  AMD --> MS --> MSP
+  MSP -- run via 1costingfe --> MOT
+
+  AX[assess]:::stage
+  PFB[(iter-N/post_feedback.md)]:::artifact
+  VJ[(iter-N/verdict.json)]:::artifact
+  AMD --> AX
+  MSP --> AX
+  MOT --> AX
+  AX --> PFB
+  AX --> VJ
+  VJ -. FAIL → next iter .-> FP
+
+  RV[review]:::stage
+  RVM[(review.md)]:::artifact
+  AMD --> RV
+  MSP --> RV
+  MOT --> RV
+  RV --> RVM
+
+  AR[address-review]:::stage
+  SY[synthesize]:::stage
+  SYM[("synthesis.md<br/>editorial only")]:::artifact
+  AP[approve]:::stage
+
+  RVM -. PROCEED .-> AR --> AMD
+  RVM -. REVISE .-> FP
+  AMD --> SY --> SYM
+  SY --> AP
+  AP --> AMD
+  AP --> SYM
+</pre>
+</div>
+
+<p>State is derived from filesystem by <code>lib/state.py:get_concept_state()</code>. Staleness propagates via <code>propagate_staleness()</code> when <code>analysis.md</code> mutates — marking <code>model_setup.py</code>, <code>review.md</code>, and <code>synthesis.md</code> with <code># STALE:</code> / <code>Stale: true</code>.</p>
+
+<p><strong>Note on <code>synthesis.md</code>:</strong> the synthesis is a terminal artifact — a colored editorial interpretation of the analysis (executive summary, what matters for LCOE, risk verdicts, cross-concept positioning, modeling confidence, what would change my mind). It is read by humans only; no downstream automation consumes it.</p>
+
+<h2 id="explorer">4. Concept Explorer packaging</h2>
+<p>The deep-dive UI (per-concept profile, tornado chart, CAS cost breakdown, sliders for costingfe-backed concepts).</p>
+
+<div class="diagram-card">
+<pre class="mermaid">
+flowchart LR
+  classDef stage fill:#cfe8fb,stroke:#55b7f9,color:#182949
+  classDef artifact fill:#fff7d6,stroke:#d4b454,color:#3d2e00
+  classDef ui fill:#d8f3dc,stroke:#2d6a4f,color:#1b3a2a
+
+  AMD[("analysis.md<br/>frontmatter + narrative")]:::artifact
+  MSP[("model_setup.py<br/>.forward / .sensitivity")]:::artifact
+  MOT[("model_output.txt")]:::artifact
+  MMD[("model_metadata.yaml (optional)")]:::artifact
+  PDR[("parameter_display_registry.yaml")]:::artifact
+
+  EXT["extract_explorer_data.py<br/>costingfe or standalone path<br/>+ claude -p NarrativeData"]:::stage
+
+  CJ[("data/[id].json - ConceptData")]:::artifact
+  STL[("data/[id].json.stale")]:::artifact
+  MAN[("ConceptManifest + ParameterIndex sidecars")]:::artifact
+
+  SRV["concept_explorer/server.py"]:::stage
+  UI["Concept Explorer UI"]:::ui
+
+  AMD --> EXT
+  MSP --> EXT
+  MOT --> EXT
+  MMD --> EXT
+  PDR --> EXT
+  EXT --> CJ
+  EXT --> MAN
+  CJ --> SRV
+  SRV --> UI
+  CJ -. "analysis.md mutation sets" .-> STL
+</pre>
+</div>
+
+<h2 id="scoring">5. Scoring v2 → Score Explorer (downselect)</h2>
+<p>Seven peer axes (modularity, supply_chain, plant_complexity, customization, upper_cf, technical_feasibility, data_availability) + a weighted-mean composite. This is what drives concept downselect.</p>
+
+<div class="diagram-card">
+<pre class="mermaid">
+flowchart TB
+  classDef stage fill:#cfe8fb,stroke:#55b7f9,color:#182949
+  classDef artifact fill:#fff7d6,stroke:#d4b454,color:#3d2e00
+  classDef external fill:#e6dffb,stroke:#8a6ed8,color:#2b1f4d
+  classDef ui fill:#d8f3dc,stroke:#2d6a4f,color:#1b3a2a
+
+  AMD[("analyses/[id]/analysis.md")]:::artifact
+  MOT[("model_output.txt")]:::artifact
+  GR[("gap_report.md")]:::artifact
+  TAX[("concept_analysis/table.csv<br/>taxonomy")]:::external
+  SCH[("scoring_v2/schema.yaml")]:::external
+  WTS[("weights/default.yaml")]:::external
+  EMB[("embeddings/rulebook.py")]:::external
+
+  EX2["scoring_v2/extract.py<br/>+ populate_*_diagnostics.py<br/>+ populate_data_availability.py"]:::stage
+  FY[("features/[id].yaml")]:::artifact
+  SC["scoring_v2/score.py"]:::stage
+  TBL[("scores/table.csv")]:::artifact
+
+  AMD --> EX2
+  MOT --> EX2
+  GR --> EX2
+  TAX --> EX2
+  SCH --> EX2
+  EX2 --> FY
+  FY --> SC
+  WTS --> SC
+  EMB --> SC
+  SC --> TBL
+
+  BLD["tools/score_explorer/build.py"]:::stage
+  CJS[("tools/score_explorer/data/<br/>concepts.json + weights.json")]:::artifact
+  MIR["chore: manual mirror<br/>tools/score_explorer to docs/score-explorer/"]:::stage
+  DOC[("docs/score-explorer/<br/>index.html + data/")]:::artifact
+  UISC["Score Explorer UI<br/>GitHub Pages"]:::ui
+
+  TBL --> BLD
+  FY --> BLD
+  WTS --> BLD
+  TAX --> BLD
+  BLD --> CJS
+  CJS --> MIR
+  MIR --> DOC
+  DOC --> UISC
+</pre>
+</div>
+
+<h3>Operating sequence</h3>
+<pre><code>uv run python exploration/scoring_v2/extract.py --bulk-taxonomy
+uv run python exploration/scoring_v2/scripts/populate_data_availability.py
+uv run python exploration/scoring_v2/score.py
+uv run python tools/score_explorer/build.py
+# then mirror to docs/score-explorer/ (manual chore commit)
+</code></pre>
+
+<h2 id="non-nominal">6. Non-nominal model cases (FOAK, scenarios, sweeps)</h2>
+<p>
+Most <code>model_setup.py</code> files compute more than one case. Only the <strong>nominal</strong> case reaches automation; everything else is for human consumption.
+</p>
+
+<div class="diagram-card">
+<pre class="mermaid">
+flowchart LR
+  classDef stage fill:#cfe8fb,stroke:#55b7f9,color:#182949
+  classDef artifact fill:#fff7d6,stroke:#d4b454,color:#3d2e00
+  classDef ui fill:#d8f3dc,stroke:#2d6a4f,color:#1b3a2a
+  classDef human fill:#ffe0d6,stroke:#c45a3b,color:#5a1f0e
+
+  MSP["model_setup.py"]:::stage
+
+  RN[("result = model.forward(...)<br/>NOMINAL NOAK case")]:::artifact
+  R1GW[("result_1gw<br/>(per-account 1 GWe normalization,<br/>not a scenario)")]:::artifact
+  SENS[("model.sensitivity(result.params)<br/>elasticity sweep around nominal")]:::artifact
+  ALT[("result_foak / result_steam /<br/>result_ohmic / result_phys_high /<br/>result_phys_low / ... (named alternates)")]:::artifact
+  SCN[("scenarios = { ... } dict<br/>freeform models e.g. concept 16")]:::artifact
+
+  MSP --> RN
+  MSP --> R1GW
+  MSP --> SENS
+  MSP --> ALT
+  MSP --> SCN
+
+  MOT[("model_output.txt")]:::artifact
+  RN -- "full CAS breakdown" --> MOT
+  R1GW -- "summary + 1-GWe table" --> MOT
+  ALT -- "LCOE / OCC summary lines only<br/>(no CAS block)" --> MOT
+  SCN -- "comparison table only" --> MOT
+  SENS -. "structured object, not printed" .-> EXT
+
+  EXT["extract_explorer_data.py"]:::stage
+  EX2["scoring_v2 cost_model extractor"]:::stage
+  LLM["LLM stages: assess, review,<br/>address-review, synthesize, next analyze"]:::human
+
+  RN --> EXT
+  R1GW -- "overrides RN when present" --> EXT
+  SENS --> EXT
+  MOT -- "regex-parses CAS lines only" --> EX2
+  MOT -- "reads as prose context" --> LLM
+
+  ALT -. "not consumed by automation" .-> LLM
+  SCN -. "not consumed by automation" .-> LLM
+</pre>
+</div>
+
+<h3>Examples</h3>
+<table>
+  <tr><th>Concept</th><th>Nominal</th><th>Non-nominal cases</th></tr>
+  <tr><td><code>01-hts-compact-tokamak</code></td><td><code>result</code> (NOAK)</td><td><code>result_foak</code> (2× C220103 + <code>noak=False</code>)</td></tr>
+  <tr><td><code>17a-laser-icf-hybrid-drive</code></td><td><code>result_noak</code></td><td><code>result_steam</code>, <code>result_foak</code>, <code>result_noak_low</code>, <code>result_noak_high</code></td></tr>
+  <tr><td><code>20a-type-one-stellarator</code></td><td><code>result</code></td><td><code>result_1gw</code> (per-account scaled — overrides nominal in Concept Explorer)</td></tr>
+  <tr><td><code>29-negative-triangularity-tokamak</code></td><td><code>result</code></td><td><code>result_ohmic</code>, <code>result_eta_lo</code>, <code>result_ohmic_1gw</code></td></tr>
+  <tr><td><code>34-compact-spherical-tokamak-india</code></td><td><code>result</code></td><td><code>result_foak</code>, <code>result_phys_high</code>, <code>result_phys_low</code></td></tr>
+  <tr><td><code>16-muon-catalyzed-fusion</code> (freeform)</td><td><code>"Baseline (breakthrough)"</code></td><td><code>scenarios = {"Current physics (LAMPF)", "Acceleron target", "Acceleron stretch target", "Optimistic breakthrough"}</code></td></tr>
+</table>
+
+<h3>What the consumers actually read</h3>
+<table>
+  <tr><th>Consumer</th><th>Reads</th><th>Ignores</th></tr>
+  <tr>
+    <td><code>extract_explorer_data.py</code></td>
+    <td><code>module.result</code> (or <code>result_1gw</code> if defined) + <code>model.sensitivity(result.params)</code></td>
+    <td><code>result_foak</code>, <code>result_steam</code>, <code>result_ohmic</code>, freeform <code>scenarios</code> — never accessed</td>
+  </tr>
+  <tr>
+    <td><code>scoring_v2/lib/extractors/cost_model.py</code></td>
+    <td>Regex-parses CAS code lines in <code>model_output.txt</code>. Only the nominal block prints full CAS dumps by convention.</td>
+    <td>Alternate-scenario summary lines (<code>LCOE: ... | Overnight: ...</code>) don't match the regex.</td>
+  </tr>
+  <tr>
+    <td>LLM stages (assess / review / synthesize / next-iter analyze)</td>
+    <td>Whole-file text of <code>model_output.txt</code> as narrative context — sees the scenario tables and may cite them in prose.</td>
+    <td>No structured extraction.</td>
+  </tr>
+</table>
+
+<p>So: <strong>only the nominal case feeds scoring and the Concept Explorer.</strong> Non-nominal cases exist purely for the analyst and for LLM-stage narrative context.</p>
+
+<h2 id="fragility">7. Cross-cutting fragility</h2>
+
+<div class="callout">
+  <strong>1. <code>synthesis.md</code> is editorial-only and has no downstream consumer.</strong>
+  Neither <code>scoring_v2</code> nor the Concept Explorer reads it. The synthesis prompt is
+  intentionally a colored interpretation document — voice, framing, cross-concept positioning.
+  Producing it is pure analyst-facing output; no automated pipeline depends on it.
+</div>
+
+<div class="callout">
+  <strong>2. <code>gap_report.md</code> is a quiet upstream of downselect.</strong>
+  It isn't read by the analysis loop after gap-check completes, but
+  <code>scoring_v2/scripts/populate_data_availability.py</code> reads it to score the Data Availability
+  axis. Regenerating gap reports ⇒ must re-run populate ⇒ re-score ⇒ rebuild explorer JSON.
+</div>
+
+<div class="callout">
+  <strong>3. <code>docs/score-explorer/</code> is a manual mirror of <code>tools/score_explorer/</code>.</strong>
+  No script ties them — a <code>chore</code> commit copies them (e.g. <code>33bde4f</code>). Easy to
+  forget after <code>build.py</code> runs; the GitHub Pages site will silently lag.
+</div>
+
+<div class="callout">
+  <strong>4. <code>model_output.txt</code> feeds two independent consumers.</strong>
+  Concept Explorer extractor and <code>scoring_v2</code> cost-model extractor both read it.
+  Re-running <code>model-setup</code> invalidates both — but only the <code>.stale</code>
+  markers on Concept Explorer JSON are tracked automatically.
+</div>
+
+<div class="callout">
+  <strong>5. <code>concept_analysis/table.csv</code> is taxonomy ground truth referenced twice.</strong>
+  Both <code>scoring_v2/extract.py</code> and <code>tools/score_explorer/build.py</code> use it.
+  Orphan concepts — <code>analyses/</code> dir present, no row in <code>table.csv</code> (e.g.
+  <code>34-compact-spherical-tokamak-india</code>) — fall out silently.
+</div>
+
+<div class="callout">
+  <strong>6. Scoring v2 CAS-line parser would silently double-count an alt-scenario CAS dump.</strong>
+  <code>scoring_v2/lib/extractors/cost_model.py:_parse_lines</code> sums every CAS-code line in
+  <code>model_output.txt</code>. The current "alt scenarios print summary lines only" convention is
+  what protects us — there is no delimiter, no header check, and no duplicate-code detection. If a
+  future <code>model_setup.py</code> author prints a full CAS breakdown for a FOAK result, the
+  subsystem weights inflate proportionally without warning.
+</div>
+
+<div class="callout">
+  <strong>7. <code>result_1gw</code> is a silent override in the Concept Explorer.</strong>
+  <code>extract_explorer_data.py:262</code> replaces <code>result</code> with <code>result_1gw</code>
+  whenever the module defines both. Today this is used for per-account 1-GWe normalization
+  (concepts 20a, 29, 34), not as a scenario, but nothing in code enforces that distinction. No
+  frontmatter flag, no warning if a future author uses <code>result_1gw</code> to hold an actual
+  alt-scenario.
+</div>
+
+</div>
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    themeVariables: {
+      fontFamily: 'Manrope, sans-serif',
+      primaryColor: '#cfe8fb',
+      primaryTextColor: '#182949',
+      primaryBorderColor: '#55b7f9',
+      lineColor: '#5F5F5F',
+      secondaryColor: '#fff7d6',
+      tertiaryColor: '#e6dffb'
+    },
+    flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' }
+  });
+</script>
+</body>
+</html>
