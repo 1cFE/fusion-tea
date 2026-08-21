@@ -2,7 +2,7 @@
 
 Prioritized list of epics and features.
 
-**Last Updated**: 2026-05-28
+**Last Updated**: 2026-08-20
 
 ---
 
@@ -56,6 +56,7 @@ Zotero → pyzotero → agentic-mbse extract → SOURCE_INDEX.md pipeline. Batch
 | Batch Pipeline Run | P0 | Not started; unblocked by pipeline-hardening | `.project/active/batch-pipeline-run/` |
 | Loop Dry-Run Symmetry | P2 | Spec only (2026-04-10); LOW complexity follow-up | `.project/active/loop-dry-run-symmetry/` |
 | Traceability System | P1 | Spec + plan complete, awaiting prioritization | `.project/active/traceability-system/` |
+| run_analysis.py CLI Step Semantics | P1 | Paused — spec drafted 2026-06-05, never started, filed 2026-08-20. `analyze` and `model-setup` present as peers but overlap; `regenerate-concept` chains them so the weaker model-setup path overwrites the loop's output. Still present on `main` (`run_analysis.py:1449`, `:1312`). | `.project/active/run-analysis-cli-step-semantics/` |
 
 ### Availability-standardization follow-ups (2026-05-17)
 
