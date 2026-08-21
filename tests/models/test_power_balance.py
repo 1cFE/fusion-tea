@@ -15,10 +15,19 @@ from pathlib import Path
 from agentic_mbse.sysml.syside_adapter import get_syside
 
 
-# Path to models directory
+# Path to the MFE model library.
+#
+# TEMPORARY (stellarator-demo-landing, 2026-08-21): the MFE models live only in
+# the staged twin `exploration/stellarator_e2e/models/` until the stellarator
+# migration PR promotes them into `models/library/` — main's spine test generates
+# the whole `models/` tree and the MFE models cannot generate on the pinned
+# codegen yet. The twin mirrors `models/library/` minus the `library/` prefix
+# (`foundation/`, `analyses/`, `cost_structure/`, `designs/`). When the models are
+# promoted, point LIBRARY_DIR back at `models/library` and delete this note.
+# See exploration/stellarator_e2e/STAGED_MODELS.md and
+# .project/research/20260820-221835_stellarator-demo-reconciliation-plan.md § 2.
 TESTS_DIR = Path(__file__).parent.parent.parent
-MODELS_DIR = TESTS_DIR / "models"
-LIBRARY_DIR = MODELS_DIR / "library"
+LIBRARY_DIR = TESTS_DIR / "exploration" / "stellarator_e2e" / "models"
 # Power balance moved from the old `calculations/power_balance/` tree into the
 # analyses library (WI-009+). The generic `power_balance.sysml` and the
 # standalone 'Alpha Power Calc' / 'Power Balance Calc' were collapsed into a

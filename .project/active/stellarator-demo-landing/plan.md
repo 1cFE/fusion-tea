@@ -134,25 +134,25 @@ grep -rn "models/designs/generic_mfe\|models/designs/stellarator_09\|models/libr
 # tests/models must not enumerate MFE files by path (they load models/ generically — check):
 grep -n "mfe\|stellarator" tests/models/*.py
 ```
-- [ ] Both greps reviewed. Any hit in `tests/models` means the test needs the file and Option A must be reconsidered — stop and report.
+- [x] Both greps reviewed. Any hit in `tests/models` means the test needs the file and Option A must be reconsidered — stop and report.
 
 ### Changes Required
-- [ ] `git rm` the 11 files: `models/library/analyses/mfe_{account_costs,cryo_plant,lcoe_dcf,magnet_cost,plasma_scaling,power_balance,viability}.sysml`, `models/library/cost_structure/mfe_power_core.sysml`, `models/designs/generic_mfe/mfe_plant.sysml`, `models/designs/generic_mfe/mfe_subsystems.sysml`, `models/designs/stellarator_09/stellarator_plant.sysml`. Leave `models/library/foundation/economic_parameter.sysml` as merged.
-- [ ] Add a 6-line `exploration/stellarator_e2e/models/README.md`: this twin is the MFE models' only home until the migration PR promotes them to `models/`; why (spine test generates the whole tree; MFE can't generate on the pinned codegen yet); pointer to the research doc § 2 and the BACKLOG "Test cleanup" row.
-- [ ] `.gitignore`: change `exploration/*/outputs/` → `exploration/stellarator_e2e/outputs/`. Keep the `!.claude/skills/run-study/` negation.
-- [ ] `git rm -r .orchestrate-logs/` (126 files) and add `.orchestrate-logs/` to `.gitignore`.
-- [ ] `git rm -r exploration/ife_e2e/outputs/osiris/ife-tea-results-5f077ef7 exploration/ife_e2e/outputs/osiris/ife-tea-results-b8433ea7`.
-- [ ] Commit: "Land stellarator demo on main: MFE models staged-only (Option A), hygiene".
+- [x] `git rm` the 11 files: `models/library/analyses/mfe_{account_costs,cryo_plant,lcoe_dcf,magnet_cost,plasma_scaling,power_balance,viability}.sysml`, `models/library/cost_structure/mfe_power_core.sysml`, `models/designs/generic_mfe/mfe_plant.sysml`, `models/designs/generic_mfe/mfe_subsystems.sysml`, `models/designs/stellarator_09/stellarator_plant.sysml`. Leave `models/library/foundation/economic_parameter.sysml` as merged.
+- [x] Add a 6-line `exploration/stellarator_e2e/models/README.md`: this twin is the MFE models' only home until the migration PR promotes them to `models/`; why (spine test generates the whole tree; MFE can't generate on the pinned codegen yet); pointer to the research doc § 2 and the BACKLOG "Test cleanup" row.
+- [x] `.gitignore`: change `exploration/*/outputs/` → `exploration/stellarator_e2e/outputs/`. Keep the `!.claude/skills/run-study/` negation.
+- [x] `git rm -r .orchestrate-logs/` (126 files) and add `.orchestrate-logs/` to `.gitignore`.
+- [x] `git rm -r exploration/ife_e2e/outputs/osiris/ife-tea-results-5f077ef7 exploration/ife_e2e/outputs/osiris/ife-tea-results-b8433ea7`.
+- [x] Commit: "Land stellarator demo on main: MFE models staged-only (Option A), hygiene".
 
 ### Validation
 **Automated:**
-- [ ] `git rev-parse HEAD:exploration/stellarator_e2e/models` == TWIN_TREE and `HEAD:exploration/stellarator_e2e/generated` == PKG_TREE (SC2)
-- [ ] `git ls-files -s exploration/stellarator_e2e/pkg` still mode 120000
-- [ ] `git ls-files models | grep -c "mfe_\|stellarator"` → 0
-- [ ] `git ls-files .orchestrate-logs | wc -l` → 0
+- [x] `git rev-parse HEAD:exploration/stellarator_e2e/models` == TWIN_TREE and `HEAD:exploration/stellarator_e2e/generated` == PKG_TREE (SC2)
+- [x] `git ls-files -s exploration/stellarator_e2e/pkg` still mode 120000
+- [x] `git ls-files models | grep -c "mfe_\|stellarator"` → 0
+- [x] `git ls-files .orchestrate-logs | wc -l` → 0
 
 **Manual:**
-- [ ] `git diff HEAD~1 --stat` shows exactly: 11 deletions under `models/`, 126 under `.orchestrate-logs/`, 16 under `ife_e2e/outputs/osiris/`, `.gitignore`, the new README.
+- [x] `git diff HEAD~1 --stat` shows exactly: 11 deletions under `models/`, 126 under `.orchestrate-logs/`, 16 under `ife_e2e/outputs/osiris/`, `.gitignore`, the new README.
 
 **What we know works after this phase:** `models/` is IFE-only again (plus one additive enum member); the staged twin and the sealed package are byte-identical to before the merge.
 
@@ -286,7 +286,10 @@ See CLAUDE.md (always `uv run`). Extra for this plan:
 **Deviations:** `[OWNER 2026-08-21]` chose **Option A**: `uv.lock` = main's bytes + two hand-added lines in the root `fusion-tea` entry (`{ name = "jsonschema" }` in `dependencies`, `{ name = "jsonschema", specifier = ">=4.26.0" }` in `requires-dist`); `jsonschema 4.26.0` was already resolved via `docling-core`. Verified by `uv lock --check` (exit 0, "Resolved 179 packages") and the pin tests (2 passed). The plan's "never hand-merge the lock" rule is currently impossible to follow; the defect row carries the real fix (upstream source change + re-pin).
 
 ### Phase 2 Completion
-—
+**Completed:** 2026-08-21
+**Actual changes:** 11 MFE files removed from `models/` (`economic_parameter.sysml` enum member kept); `.gitignore` narrowed to `exploration/stellarator_e2e/outputs/` and `.orchestrate-logs/` added; 126 `.orchestrate-logs/` files and the two IFE osiris result dirs (16 files) removed; staged-twin note added; `tests/models/test_power_balance.py` retargeted.
+**Issues:** The Phase 2 stencil caught a reader of the MFE models under `models/` that the research missed: `tests/models/test_power_balance.py` (the demo's WI-026 rewrite) globs `models/library/**/*.sysml` and asserts the 'MFE Power Balance Calc' is present with its inputs/outputs (25 tests). Under Option A it would fail on the two file-exists tests and skip the rest.
+**Deviations:** (1) `LIBRARY_DIR` in that test now points at the staged twin (`exploration/stellarator_e2e/models`, same layout minus the `library/` prefix), with a TEMPORARY note saying to point it back when the migration PR promotes the models. 25 passed, licensed. This is Option A applied consistently, not a reconsideration of it; the migration PR's "Test cleanup" row now also covers this retarget. (2) The staged-twin note lives at `exploration/stellarator_e2e/STAGED_MODELS.md`, not inside `models/`, so the twin's tree hash stays the SC2 oracle exactly (a README inside the dir would have changed it). Index tree hashes before commit: twin `9a40c004…` ✓, package `0b42192a…` ✓, symlink mode 120000 ✓.
 
 ### Phase 3 Completion
 —
