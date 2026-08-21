@@ -6,7 +6,7 @@
 
 ## Where `main` stands (2026-08-21)
 
-- **Stellarator demo landing merged** — PR #104 (`d0e4398d`): run-study skill and tools (`.claude/skills/run-study/`, `scripts/study/`, `tests/study/` 273), proof-of-life design search (`exploration/stellarator_e2e/study/`), before-migration record. The migration itself is on this branch (below).
+- **Stellarator demo landing merged** — PR #104 (`d0e4398d`): run-study skill and tools (`.claude/skills/run-study/`, `scripts/study/`, `tests/study/` 273), proof-of-life design search (`exploration/stellarator_e2e/study/`), before-migration record. The certified migration is archived at `.project/completed/20260821_stellarator-model-migration/`.
 - **Stop-parser shipment merged** — PR #102 (`5338db5f`). fusion-tea pins agentic-mbse / sysml-codegen / 1costingfe to sealed git SHAs; `tests/test_dependency_provenance.py` verifies the chain. Shipment record in sysml-codegen: `.project/completed/20260820_stop-parser-pr-shipment/plan.md`. Tags `stop-parser/*` must not move.
 - **CONSTRAINT-EXEC fusion-side items done** — Items 8, 9, 14 Appendix C committed 2026-07-20. Record: `work/active/20260713_constraint-exec-acceptance/brief.md`.
 - **Explorer** — UX v3 Phase 1 + Themes A/B1/F merged; 1costingfe v0.1.0 migration 2026-06-28; web hosting (#97; operator runbook `.project/completed/20260821_explorer-web-hosting/RUNBOOK.md`); OOM Layers 1–2 (#98), JAX pre-warm (#99), numpy-only deploy on 1costingfe v0.1.1 (#100).
@@ -14,11 +14,18 @@
 
 ## Next up (in order, 2026-08-21)
 
-1. **Stellarator model migration — needs work after audit 2026-08-21** (`.project/active/stellarator-model-migration/audit.md`). SC1 and SC3–SC10 are verified; SC2 and SC11 remain open. The owner's `/_my_ask_me` rulings settle the historical handshake scope and allow the sysml-codegen rows to remain uncommitted. Certification still waits on the verdict-identity contract, fail-closed study export/single-point commands, unresolved representation smells, and the complete validation gates. Implementation evidence: `exploration/stellarator_e2e/studies/AFTER_MIGRATION_RECORD.md`.
-2. **RUN-STUDY Item 6** (first A/B consumer + policy cutover) on the stock route — waits for item 1 certification. Owner Align held 2026-08-21 (`.project/active/run-study-first-consumer/align.md`: policy ratified, comparison left to design research, oracle for this demo only); spec drafted 2026-08-21 (`spec.md`, Draft); next `/_my_design`, whose first phase is research into the comparison.
-3. **Upstream filings to sysml-codegen** — three rows written 2026-08-21 by item 1 (scalar-function vocabulary, unit-scrape byte offset, plus the unit-scrape defect); they sit uncommitted in `/home/reid/1cfe/sysml-codegen/.project/backlog/BACKLOG.md` for the owner's commit.
-4. **IFE whole-plant regeneration on the elaborate-first route** — fusion-tea's half of sysml-codegen's ELABORATE-FIRST Item 8, step B after codegen's scope scrub A (owner order 2026-08-15). Context: sysml-codegen `.project/CURRENT_WORK.md` ("2026-08-15: Item 8 sequencing").
-5. **Explorer UX v3 — Phase 2**: pick by leverage, D1 top candidate. Epic: `.project/backlog/epic_explorer_ux_v3.md`.
+1. **RUN-STUDY Item 6** (first A/B consumer + policy cutover) on the stock route — unblocked by the archived stellarator migration certification (`.project/completed/20260821_stellarator-model-migration/audit.md`). Owner Align held 2026-08-21 (`.project/active/run-study-first-consumer/align.md`: policy ratified, comparison left to design research, oracle for this demo only); spec drafted 2026-08-21 (`spec.md`, Draft). Next: `/_my_design`, whose first phase is research into the comparison.
+2. **Upstream filings to sysml-codegen** — three rows written 2026-08-21 by the archived migration (scalar-function vocabulary, unit-scrape byte offset, plus the unit-scrape defect); they sit uncommitted in `/home/reid/1cfe/sysml-codegen/.project/backlog/BACKLOG.md` for the owner's commit.
+3. **IFE whole-plant regeneration on the elaborate-first route** — fusion-tea's half of sysml-codegen's ELABORATE-FIRST Item 8, step B after codegen's scope scrub A (owner order 2026-08-15). Context: sysml-codegen `.project/CURRENT_WORK.md` ("2026-08-15: Item 8 sequencing").
+4. **Explorer UX v3 — Phase 2**: pick by leverage, D1 top candidate. Epic: `.project/backlog/epic_explorer_ux_v3.md`.
+
+## Recently Completed
+
+### 2026-08-21: Stellarator Model Migration
+
+- Regenerated and sealed the stellarator package at runtime contract 2.0.0 on stock teax with numerical identity across the baseline, 948-point grid, and 19-point sweep.
+- Promoted the MFE models into `models/`, preserved both family regression spines, closed the CAS27 verification gap, and retired the primary era adapter whole.
+- Made study publication and the single-point evidence command fail closed; all SC1–SC11 criteria were certified. Archive: `.project/completed/20260821_stellarator-model-migration/`.
 
 ## Open decisions
 
@@ -40,6 +47,6 @@
 
 ## Stellarator demo + run-study capability
 
-- **Run-Study Capability epic** (`.project/backlog/epic_run_study_capability.md`): Items 1–5 complete and audited 2026-08-20 (dirs archived under `completed/20260821_run-study-*`). Item 6 after the model migration `[OWNER 2026-08-21]`, on the stock teax route.
+- **Run-Study Capability epic** (`.project/backlog/epic_run_study_capability.md`): Items 1–5 complete and audited 2026-08-20 (dirs archived under `completed/20260821_run-study-*`). Item 6 is unblocked after the certified model migration `[OWNER 2026-08-21]`, on the stock teax route.
 - **Stellarator MBSE Demo epic** (`epic_stellarator_mbse_demo.md`): On Hold by owner (2026-08-19). Items 1–4 done (handshake to 1costingFE: LCOE 275.264220, 5/5 verdicts). The ARIES-CS barred/admissible lists live in `completed/20260821_aries-cs-holdout/spec.md` (pointer updated in `knowledge/holdout/aries-cs/PROTOCOL.md`).
 - **Package state**: regenerated 2026-08-21 on the pinned codegen `8a758e92`, `runtime_contract_version 2.0.0`, runs on stock teax (`744745f`) with no adapter. MFE models live in `models/` with `exploration/stellarator_e2e/models/` as the byte-identical twin; `tests/models/test_model_family_spines.py` generates each family from its own canonical subset.

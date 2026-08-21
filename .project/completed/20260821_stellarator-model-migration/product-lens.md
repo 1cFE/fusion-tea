@@ -28,3 +28,25 @@ Findings:
 - audit-F3 [DON'T] The retired-route guard exempts executable `handshake_1costingfe.py` as “historical” although it still contains glue and targets deleted 1.0.0 files; the green test depends on that interpretation. — `.project/backlog/epic_run_study_capability.md` temporary-route integrity (agent/ratified) — falsifier: remove the historical whitelist and the passing guard reports `patch_bop_wiring`; execute it and the deleted pipeline/input paths fail — disposition: DISPOSE-and-proceed
 Smells: **1. Two representations must be manually kept synchronized** (`audit-F2`); **3. A special category exempts a case whose user-visible meaning is unchanged** and **6. A test passes only because it selects one duplicate, one route, or one interpretation** (`audit-F3`).
 Gate: BLOCKED (audit-F1)
+
+## audit resolution — 2026-08-21 — rev 56c587f6
+Resolves:
+- audit-F1: DEFERRED — authority: owner — basis: `/_my_ask_me` Q3, recorded in `plan.md:595,603`, explicitly permits the sysml-codegen rows to remain uncommitted for the owner's later commit.
+Gate: DISPOSED (audit-F1, audit-F2, audit-F3)
+
+## audit — 2026-08-21 — rev worktree B2/B4/B5 repairs atop c4c48ebe
+
+Point (re-derived): Stock-route study and single-point commands must fail closed; incomplete execution or a failed numerical gate must never publish valid-looking evidence or report success. [source: `.project/concepts/stellarator-mbse-demo.md`; `.project/research/20260820-221835_stellarator-demo-reconciliation-plan.md`, grade: owner]
+
+Falsifier: A missing result/verdict, failed study case, or failed single-point comparison still produces or replaces a CSV, or exits successfully.
+
+Findings: None.
+
+Smells: No unresolved smell in the repaired surface. Contract-derived verdict identities clear smell 4; shared pre-publication validation and command-level failure tests clear the B4 manifestation of smell 6.
+
+Resolves:
+- `audit-F1`: DEFERRED — authority: owner — basis: prior structured resolution in `product-lens.md` rev `56c587f6`.
+- `audit-F2`: DEFERRED — authority: owner — basis: `audit.md` § B1 retains synchronized exploration copies only until the demo epics finish.
+- `audit-F3`: DEFERRED — authority: owner — basis: `audit.md` Q2 disposition retains the historical handshake with a backlog rewrite.
+
+Gate: CLEAR

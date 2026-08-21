@@ -115,18 +115,20 @@ def cmd_run() -> None:
     print(f"[study A] {len(grid)} proposals ({excluded} geometrically invalid "
           f"points excluded by R > a + {route.BUILD_STACK_M}); baseline appended")
     cases_a, _ = route.run_points("stellarator-design-search-ra-v1", grid, WORK)
-    completed_a = [c for c in cases_a if c.state == "completed"]
+    completed_a = route._completed(cases_a, "design search")
     print(f"[study A] {len(completed_a)}/{len(cases_a)} cases completed")
-    route.export_csv(completed_a, ["R", "a"], WORK / "design_search_R_a.csv")
 
     sweep = route.availability_sweep_proposals()
     cases_b, _ = route.run_points("stellarator-availability-sweep-v1", sweep, WORK)
-    completed_b = [c for c in cases_b if c.state == "completed"]
+    completed_b = route._completed(cases_b, "availability sweep")
     print(f"[study B] {len(completed_b)}/{len(cases_b)} cases completed")
-    route.export_csv(completed_b, ["availability"], WORK / "availability_sweep.csv")
 
     _baseline_gate(cases_a)
     assert_package_untouched()
+    radius_rows = route.csv_rows(completed_a, ["R", "a"])
+    availability_rows = route.csv_rows(completed_b, ["availability"])
+    route.write_csv(radius_rows, WORK / "design_search_R_a.csv")
+    route.write_csv(availability_rows, WORK / "availability_sweep.csv")
 
 
 def cmd_export() -> None:
@@ -134,18 +136,23 @@ def cmd_export() -> None:
     from simkit.study.query import StudyQuery
     from simkit.study.store import StudyStore
 
+    exports = []
+    radius_cases = None
     for study_id, axes, csv_name in [
         ("stellarator-design-search-ra-v1", ["R", "a"], "design_search_R_a.csv"),
         ("stellarator-availability-sweep-v1", ["availability"], "availability_sweep.csv"),
     ]:
         db = WORK / f"{study_id}.db"
         cases = StudyQuery(StudyStore(db), route.PACKAGE_DIR.resolve()).cases()
-        completed = [c for c in cases if c.state == "completed"]
+        completed = route._completed(cases, study_id)
         print(f"[export] {db.name}: {len(completed)}/{len(cases)} completed")
-        route.export_csv(completed, axes, WORK / csv_name)
         if "R" in axes:
-            _baseline_gate(completed)
+            radius_cases = completed
+        exports.append((route.csv_rows(completed, axes), WORK / csv_name))
+    _baseline_gate(radius_cases)
     assert_package_untouched()
+    for rows, path in exports:
+        route.write_csv(rows, path)
 
 
 if __name__ == "__main__":

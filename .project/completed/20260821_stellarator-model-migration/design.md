@@ -1,6 +1,6 @@
 # Design: Stellarator Model Migration
 
-**Status:** Draft
+**Status:** Implemented — not separately reviewed before implementation
 **Owner:** Reid W
 **Created:** 2026-08-21 08:37 PDT
 **Updated:** 2026-08-21 09:01 PDT
@@ -209,10 +209,8 @@ This is one branch and one merge. Each numbered boundary is a checkpoint in the 
 | SC10 | A CAS28-capital mutation changes exactly its direct consumers. A nested blanket-thickness mutation changes exactly its direct consumers. Both run through the regenerated stock package and assert non-consumers remain unchanged. |
 | SC11 | Licensed `tests/models`, `tests/study`, and the two root acceptance surfaces pass with family-scoped inputs; dependency-provenance tests and `uv lock --check` pass; `uv run agentic-mbse validate models --level 1` is green. `--complete` is recorded as an existing-offender delta, not misreported as the passing gate. Review confirms MR-4 citations. |
 
-## Next-Stage Handoff
+## As-Built Handoff
 
-The implementation plan must preserve these fixed decisions: staged-tree-first migration; 99 binding sites; manual DT and CAS72 interfaces backed by the two existing handwritten implementations; smart regeneration; stock strict loading and sealed identity; one-time numerical equivalence; family-scoped promotion tests; full adapter deletion; and Level 1 as the current model-validation gate.
+Implementation followed the staged-tree migration, pinned regeneration, stock-runtime cutover, one-time numerical comparison, family-scoped promotion, and adapter deletion described above. The actual changes and deviations are recorded under each phase in `plan.md`; post-implementation certification findings and owner dispositions are recorded in `audit.md`.
 
-Plan the riskiest checkpoint first: apply the known source repairs and attempt a clean pinned generation before spending effort on promotion, manifest churn, or adapter deletion. An unknown refusal is the only anticipated owner stop. The exact MFE census and qualified contract keys are implementation outputs, but their derivation method is fixed: read them from the first clean sealed package and record them rather than guessing from the retired contract.
-
-After design approval, run `$my-design-review` for an independent pressure test, then `$my-plan` to turn the six integration boundaries into persistent checked phases. Do not begin implementation from this draft.
+This agent-authored design was not separately approved or reviewed before implementation. Do not treat its decisions as owner-originated unless the individual decision carries an owner provenance marker.

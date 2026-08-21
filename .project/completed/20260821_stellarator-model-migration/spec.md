@@ -1,6 +1,6 @@
 # Spec: Stellarator Model Migration
 
-**Status:** Implementation Complete 2026-08-21 (audit pending)
+**Status:** Certified 2026-08-21
 **Owner:** Reid W
 **Created:** 2026-08-21 08:23
 **Complexity:** HIGH
@@ -26,15 +26,15 @@ The owner hold on editing the stellarator model (sysml-codegen `BACKLOG.md:403-4
 
 - [x] **SC1 — Generates clean on the pinned toolchain.** `sysml-codegen generate` over the MFE model tree completes with zero readiness diagnostics and seals at `runtime_contract_version 2.0.0`; stock `ProvisionalPackageLoader(..., strict=True)` on teax main accepts it; zero sealed artifacts differ from their hashes. (Today: 1.0.0, refused, 2 of 139 differ.)
 - [x] **SC2 — Same numbers.** On the regenerated package, the baseline point (`R = 12.7`, `a = 1.3`, `availability = 0.85`) gives LCOE within rel 1e-9 of `275.2642200420774` and the same five verdicts `satisfied`, matched by `source_local_identity`; the 948-point grid and 19-point sweep match `exploration/stellarator_e2e/studies/BEFORE_MIGRATION_RECORD.md` § 2's CSVs **by value** (rel < 1e-9 on LCOE and identical verdicts per point, keyed by (R, a) / availability — not by column name or bytes, since entry keys move with the rename). Any drift is a finding to explain, not a tolerance to widen.
-- [ ] **SC3 — Adapter gone, not dormant.** `studies/era_adapter.py` and `studies/promotion_equivalence.py` deleted; the glue loader and constants in `study/run_design_search.py` and `run_stellaris.py` deleted; the era fixtures in `tests/study/conftest.py` and the seven era-bound test files deleted or rewritten against the stock route; `ANNEX.md` § Loader exception and glue and § Era pin removed; no reference to `fa0e06a` or `teax-v1-era` remains outside `BEFORE_MIGRATION_RECORD.md` and historical records. `oracle_entry.py` and `verify_stellaris.py` stay.
+- [x] **SC3 — Adapter gone, not dormant.** `studies/era_adapter.py` and `studies/promotion_equivalence.py` deleted; the glue loader and constants in `study/run_design_search.py` and `run_stellaris.py` deleted; the era fixtures in `tests/study/conftest.py` and the seven era-bound test files deleted or rewritten against the stock route; `ANNEX.md` § Loader exception and glue and § Era pin removed; no reference to `fa0e06a` or `teax-v1-era` remains outside `BEFORE_MIGRATION_RECORD.md` and historical records. `oracle_entry.py` and `verify_stellaris.py` stay.
 - [x] **SC4 — Verification closes the hole.** `scripts/study/verify.py` stratified oracle parity at rel < 1e-9 on the regenerated package with an **empty** `not_independently_verified` list — CAS27 is now computed in-package and checked against the oracle for the first time.
 - [x] **SC5 — Manifest re-pinned, tools unchanged.** `studies/manifest.json` fingerprints, baseline, ties, and objective catalog re-declared against the new package; `preflight.py`'s `manifest_currency`, `identity`, `baseline_headline`, and `package_clean` gates pass on the stock route; no package-specific code enters `scripts/study/`.
 - [x] **SC6 — MFE models promoted.** The MFE/stellarator model files live in `models/library/` and `models/designs/` again, with `exploration/stellarator_e2e/models/` as a byte-identical twin (the IFE precedent), and `tests/models/test_power_balance.py` reads `models/library/` again with its TEMPORARY note removed. `exploration/stellarator_e2e/STAGED_MODELS.md` is deleted or rewritten as the twin's note.
 - [x] **SC7 — Spine test reshaped, not weakened.** `tests/models/test_self_binding_replacement.py` (or its successor) generates each design family from its own tree and asserts that family's census; the IFE assertions (23 entry points / 18 design attributes, live == snapshot, both mutation proofs) still pass unchanged; an MFE census of the same kind is added; the one-time D-5 rename asserts are either kept under the IFE entry or dropped, by a recorded choice. This discharges the "Test cleanup" row at the top of `BACKLOG.md`.
 - [x] **SC8 — Every model edit is ledgered.** One table, committed beside the models, with a row per change: file:line, the refusal or rule it answers, its class (see R5), what it replaced, the rationale, and — for any value a change introduces or relocates — its `Source`/`Ref`/`Basis` citation per MR-4 (`modeling_project/REQUIREMENTS.md`). Rewrites that exist only because the toolchain lacks a feature are marked for revert and the `BACKLOG.md` revert row updated to point at the ledger.
-- [ ] **SC9 — Upstream filings made.** The positional-redefinition finding is filed in sysml-codegen's backlog with the four sites; the six scalar-function sites are attached to `[SCALAR-FUNCTION-VOCABULARY]` as the motivating case; any further toolchain-limitation class found during the work is filed the same way.
+- [x] **SC9 — Upstream filings made.** The positional-redefinition finding is filed in sysml-codegen's backlog with the four sites; the six scalar-function sites are attached to `[SCALAR-FUNCTION-VOCABULARY]` as the motivating case; any further toolchain-limitation class found during the work is filed the same way.
 - [x] **SC10 — Mutation proof on the new package.** Move one input (e.g. `cas28_capital`) and exactly the expected consuming modules react; move a second, nested one (e.g. a radial-build thickness) and only its consumers react — the spine-test pattern, on the stellarator.
-- [ ] **SC11 — Suites and model validation green.** Licensed `tests/models` (incl. the reshaped spine test) and `tests/study` pass on the stock route with no era dependency; `tests/test_dependency_provenance.py` pin tests pass; `uv lock --check` passes; `uv run agentic-mbse validate models/` passes at the level the project runs today (record the level), and every new or moved quantitative value carries an MR-4 citation (checked by review — no audit script exists yet; `traceability-system` is paused).
+- [x] **SC11 — Suites and model validation green.** Licensed `tests/models` (incl. the reshaped spine test) and `tests/study` pass on the stock route with no era dependency; `tests/test_dependency_provenance.py` pin tests pass; `uv lock --check` passes; `uv run agentic-mbse validate models/` passes at the level the project runs today (record the level), and every new or moved quantitative value carries an MR-4 citation (checked by review — no audit script exists yet; `traceability-system` is paused).
 
 ## Known Requirements
 
@@ -88,12 +88,12 @@ The owner hold on editing the stellarator model (sysml-codegen `BACKLOG.md:403-4
 - **Research:** `.project/research/20260820-221835_stellarator-demo-reconciliation-plan.md` (§ 3 model blockers, § 4 glue retirement, § 5 before/after bars, Decisions Q1–Q3)
 - **Before-record (acceptance oracle):** `exploration/stellarator_e2e/studies/BEFORE_MIGRATION_RECORD.md`
 - **Adapter contract:** `exploration/stellarator_e2e/studies/era_adapter.py:1-40`, `exploration/stellarator_e2e/studies/ANNEX.md`
-- **Predecessor:** `.project/active/stellarator-demo-landing/plan.md` (PR #104; Option A; the retargeted `test_power_balance.py`)
+- **Predecessor:** `.project/completed/20260821_stellarator-demo-landing/plan.md` (PR #104; Option A; the retargeted `test_power_balance.py`)
 - **Backlog rows discharged or touched:** "Test cleanup" (P1), "Revert the six scalar-function rewrites" (P2, updated to point at the ledger); coordinated with "Review codegen-generated artifacts" (P1).
 - **Upstream references:** sysml-codegen `BACKLOG.md:36-41` (`[SCALAR-FUNCTION-VOCABULARY]`), `:403-412` (`[STELLARATOR-D5-MIGRATION]` hold, released), `scripts/make_d5_variant.py`, `.project/completed/20260814_cutover-recovery/plan.md` "Slice 3D" (the IFE route to mirror)
 - **Product-lens:** `.project/active/stellarator-model-migration/product-lens.md`
-- **Design:** `.project/active/stellarator-model-migration/design.md` (to be created)
+- **Design:** `.project/active/stellarator-model-migration/design.md`
 
 ---
 
-**Next Steps:** After approval, `/_my_spec_review` in a fresh session (HIGH complexity), then `/_my_design`.
+**Closed:** Certified and archived to `.project/completed/20260821_stellarator-model-migration/` on 2026-08-21.

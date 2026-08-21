@@ -45,6 +45,7 @@ PACKAGE_DIR = E2E / "generated"
 MANIFEST_PATH = HERE / "manifest.json"
 P = "stellarator_09__stellaris__"
 BASELINE_RESULT_SCHEMA_VERSION = "study-baseline-result/v1"
+EXPECTED_CONSTRAINT_COUNT = 5
 
 # --- Axis declarations: SysML attribute -> complete entry-key expansion ------
 AXES: dict[str, list[str]] = {
@@ -210,21 +211,76 @@ def write_identity_document(package_dir: Path, out_path: Path) -> Path:
 # ------------------------------------------------------------------ the studies
 
 
-def short_verdicts(case) -> dict[str, str]:
-    return {cid.rsplit("__", 2)[-2]: status for cid, status in case.verdicts.items()}
+def _export_catalog(package_dir: Path) -> dict[str, dict]:
+    catalog = _catalog_by_constraint_id(package_dir)
+    if len(catalog) != EXPECTED_CONSTRAINT_COUNT:
+        raise RouteError(
+            f"expected exactly {EXPECTED_CONSTRAINT_COUNT} catalogued checks, "
+            f"found {len(catalog)}"
+        )
+    identities = [entry.get("source_local_identity") for entry in catalog.values()]
+    if any(not isinstance(identity, str) or not identity for identity in identities):
+        raise RouteError("every catalogued check must have a source_local_identity")
+    if len(set(identities)) != len(identities):
+        raise RouteError(f"catalogued source_local_identity values are not unique: {identities}")
+    return catalog
 
 
-def export_csv(cases, axes: list[str], path: Path) -> Path:
+def _short_verdicts(case, catalog: dict[str, dict]) -> dict[str, str]:
+    expected = set(catalog)
+    actual = set(case.verdicts)
+    if actual != expected:
+        missing = sorted(expected - actual)
+        unexpected = sorted(actual - expected)
+        raise RouteError(
+            "case verdicts do not match the emitted constraint catalog: "
+            f"missing={missing}, unexpected={unexpected}"
+        )
+    by_identity = {
+        catalog[constraint_id]["source_local_identity"]: status
+        for constraint_id, status in case.verdicts.items()
+    }
+    return {identity: by_identity[identity] for identity in sorted(by_identity)}
+
+
+def short_verdicts(case, package_dir: Path = PACKAGE_DIR) -> dict[str, str]:
+    """Resolve verdict names through the emitted contract, never identifier text."""
+    return _short_verdicts(case, _export_catalog(package_dir))
+
+
+def csv_rows(cases, axes: list[str], package_dir: Path = PACKAGE_DIR) -> list[dict]:
+    """Validate every case and build rows without publishing any bytes."""
+    cases = list(cases)
+    if not cases:
+        raise RouteError("cannot export a CSV with no cases")
+    catalog = _export_catalog(package_dir)
     rows = []
     for case in cases:
+        missing_inputs = [axis for axis in axes if AXES[axis][0] not in case.inputs]
+        if missing_inputs:
+            raise RouteError(f"case is missing required axes: {missing_inputs}")
+        missing_outputs = [
+            name
+            for name, channel in CHANNELS.items()
+            if channel not in case.outputs or case.outputs[channel] is None
+        ]
+        if missing_outputs:
+            raise RouteError(f"case is missing required result channels: {missing_outputs}")
         row = {axis: case.inputs[AXES[axis][0]] for axis in axes}
         for name, channel in CHANNELS.items():
-            row[name] = case.outputs.get(channel)
-        verdicts = short_verdicts(case)
+            row[name] = case.outputs[channel]
+        verdicts = _short_verdicts(case, catalog)
         row.update(verdicts)
         row["feasible"] = all(status == "satisfied" for status in verdicts.values())
         rows.append(row)
     rows.sort(key=lambda r: tuple(r[axis] for axis in axes))
+    return rows
+
+
+def write_csv(rows: list[dict], path: Path) -> Path:
+    """Publish rows that have already passed the complete export contract."""
+    if not rows:
+        raise RouteError("cannot write a CSV with no validated rows")
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="") as handle:
@@ -232,6 +288,12 @@ def export_csv(cases, axes: list[str], path: Path) -> Path:
         writer.writeheader()
         writer.writerows(rows)
     return path
+
+
+def export_csv(
+    cases, axes: list[str], path: Path, package_dir: Path = PACKAGE_DIR
+) -> Path:
+    return write_csv(csv_rows(cases, axes, package_dir), path)
 
 
 def design_search_proposals() -> list[dict[str, float]]:

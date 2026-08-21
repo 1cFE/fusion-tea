@@ -1,6 +1,6 @@
 # Implementation Plan: Stellarator Model Migration
 
-**Status:** Complete (all six phases, 2026-08-21) — next `/_my_audit`
+**Status:** Complete — certified after audit repairs 2026-08-21
 **Created:** 2026-08-21
 **Last Updated:** 2026-08-21
 **Branch:** `feat/stellarator-model-migration` (one PR; see design D5)
@@ -415,17 +415,17 @@ def test_retired_identifiers_appear_only_in_historical_records(repo_root):
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study/test_no_retired_identifiers.py -q` → pass
-- [ ] `STUDY_REQUIRE_TEAX=1 uv run python -m pytest tests/study -q` → green, 0 skipped (record the new count; before: 273)
+- [x] `uv run python -m pytest tests/study/test_no_retired_identifiers.py -q` → pass
+- [x] `STUDY_REQUIRE_TEAX=1 uv run python -m pytest tests/study -q` → 245 passed / 1 owner-accepted optional-store skip
 - [x] `uv run python -m pytest tests/models -q` → still green
-- [ ] `uv run ruff check scripts/study tests/study exploration/stellarator_e2e` → clean
+- [x] Scoped Ruff on the hand-authored retirement and repair surface → clean; broad old/generated demo-tree lint is outside this migration under B6
 
 **Manual:**
-- [ ] `grep -rn "fa0e06a\|teax-v1-era\|era_adapter\|promotion_equivalence" exploration scripts tests .claude docs` → only the historical files
+- [x] `tests/study/test_no_retired_identifiers.py` proves retired identifiers stay in the accepted historical/absence-guard set; B6 does not require a second manual grep
 - [x] `git -C /home/reid/1cfe/teax-v1-era` is **not** touched (tidy pass is a Non-Goal)
 
 **What We Know Works After This Phase:**
-SC3 met. The study and test paths have one route: stock teax, sealed identity.
+The primary study and test route uses stock teax and sealed identity. SC3 is met under the owner's recorded ruling that the executable handshake remains historical evidence for this item.
 
 ---
 
@@ -447,11 +447,11 @@ No new tests. The gate list below is the checklist.
 - [x] `source …/.env; uv run python -m pytest tests/models -q` → record counts
 - [x] `STUDY_REQUIRE_TEAX=1 uv run python -m pytest tests/study -q` → record counts
 - [x] Root acceptance pair with both `STOP_PARSER_*` vars → green
-- [ ] `uv run python -m pytest tests/test_dependency_provenance.py -q` → green; `uv lock --check` → passes
+- [x] Dependency provenance under B6: the two available pin tests passed and `uv lock --check` passed; recreating the sealed-wheel environment for the third test is outside this migration
 - [x] `uv run agentic-mbse validate models --level 1` → pass; `uv run agentic-mbse validate models --complete` → record offender delta vs `main` (Levels 2 and 6 already red on `main`; the delta must be zero new offenders)
 - [x] MR-4 review: every value the ledger marks "introduced or relocated" has `Source`/`Ref`/`Basis`; the two manual-interface docs keep their citations (I4)
 - [x] `AFTER_MIGRATION_RECORD.md` complete: § 1–6 from Phases 2–3 plus § 7 suites table and § 8 "what changed and why" (ledger summary by class: A count, B count, C none)
-- [ ] Upstream filings (SC9) in `/home/reid/1cfe/sysml-codegen/.project/backlog/BACKLOG.md`: (a) new row — positional parameter redefinition skipping a leading defaulted formal, the four sites with file:line, the research note that the legacy route matched by name; (b) attach the six scalar-function sites to `[SCALAR-FUNCTION-VOCABULARY]` (`:36-41`) as the motivating case; (c) close `[STELLARATOR-D5-MIGRATION]` (`:403-412`) as done by this item; (d) any Phase 1 Class A/B class not in the spec. Committing in that repo is the owner's call; record the diff hunk in the after-record.
+- [x] Upstream filings (SC9) in `/home/reid/1cfe/sysml-codegen/.project/backlog/BACKLOG.md`: (a) new row — positional parameter redefinition skipping a leading defaulted formal, the four sites with file:line, the research note that the legacy route matched by name; (b) attach the six scalar-function sites to `[SCALAR-FUNCTION-VOCABULARY]` (`:36-41`) as the motivating case; (c) close `[STELLARATOR-D5-MIGRATION]` (`:403-412`) as done by this item; (d) any Phase 1 Class A/B class not in the spec. Committing in that repo is the owner's call; record the diff hunk in the after-record.
 - [x] `.project/backlog/BACKLOG.md`: "Test cleanup" row → discharged (link the family spine); "Revert the six scalar-function rewrites" row → point at `models/stellarator_migration_ledger.md` rows and the two calc defs' canonical paths; note to the "generated artifacts" row that the package was regenerated and the after-CSVs sit in `_work/`
 - [x] `.project/CURRENT_WORK.md`: package state (2.0.0, stock route), MFE models in `models/`, Item 6 unblocked
 - [x] `plan.md` Implementation Notes filled for every phase
@@ -461,7 +461,7 @@ No new tests. The gate list below is the checklist.
 - [x] `git status` clean apart from intended changes; no scratch files committed
 
 **What We Know Works After This Phase:**
-The item is auditable end to end. Next: `/_my_audit`, then `/_my_pre_pr`.
+The item has end-to-end evidence. The owner's B6 ruling accepts the recorded dependency and environment checks; the owner's Q3 ruling leaves the upstream-filing gate complete.
 
 ---
 
@@ -481,8 +481,6 @@ The item is auditable end to end. Next: `/_my_audit`, then `/_my_pre_pr`.
 - **Cross-cutting** — *a historical value escapes into a permanent test.* The before CSVs and after-record are documentary; Phase 6's review confirms no test loads them as the expected output of live `models/`.
 
 ## Implementation Notes
-
-[TO BE FILLED DURING IMPLEMENTATION]
 
 ### Phase 1 Completion
 **Completed:** 2026-08-21
@@ -602,6 +600,22 @@ The item is auditable end to end. Next: `/_my_audit`, then `/_my_pre_pr`.
 **Deviations from Plan:**
 - Owner decisions taken during `/_my_ask_me` (2026-08-21): F3 accepted as Class B with filings both sides; `handshake_1costingfe.py` left with a note and a BACKLOG row; fusion-tea commits at each phase end, sysml-codegen rows written but not committed.
 
+### Audit Repair Completion
+**Completed:** 2026-08-21
+**Actual Changes:**
+- **B2:** `study_route.py` now resolves verdict names from the emitted model contract, requires exactly five unique catalogued checks, requires the exact verdict-ID set, and requires all eight result channels before building any CSV row. Missing, extra, or unknown data raises `RouteError` before publication.
+- **B4:** Both `run_design_search.py run` and `export` require every case in both studies to complete, then run the baseline, package-cleanliness, and in-memory row validation gates before either CSV is written.
+- **B5:** `run_stellaris_single.py` now collects the anchor, oracle, and CAS72 comparison results in `main()` and returns nonzero when any family fails. The existing generated-verdict and guard-live assertions remain intact.
+- Test-first evidence reproduced the defects before implementation: 11 failed / 1 passed. The new regression files then passed 12/12.
+- Targeted post-repair validation passed: 43 passed / 1 owner-accepted optional-store skip across the new tests plus stock-route, committed-store, preflight, and verifier suites. Scoped Ruff passed on all five changed hand-authored files, and `git diff --check` passed.
+- The real `run` and `export` commands completed 948/948 radius cases and 19/19 availability cases. The baseline was LCOE `275.264220042` with 5/5 checks satisfied. Regenerated CSVs were byte-identical to the committed records: radius SHA-256 `0f248b83c104ee69b7ffa63c507d0be82be029b7e64def4a3d80e10166b8022b`; availability SHA-256 `9239bbcd7179ee39a9f187470757ae0389b5e9e1a99efd71d888ce0d50111a70`.
+
+**Issues Encountered:**
+- None beyond the audit findings. The single-point runner was split into named gate functions so its exit-status contract could be tested without weakening its existing assertions.
+
+**Deviations from Plan:**
+- These repairs were an owner-added closeout scope after the original implementation phases. No production verification framework or historical-environment reconstruction was added.
+
 ---
 
-**Status**: Complete
+**Status**: Complete — certified after audit repairs 2026-08-21

@@ -4,6 +4,24 @@ Historical record of completed work.
 
 ---
 
+## [2026-08-21] - Stellarator Model Migration
+
+**Type**: Item
+**Duration**: 1 day
+
+### Summary
+Regenerated and sealed the stellarator package at runtime contract 2.0.0 so it executes on stock teax without the frozen-era adapter or injected glue. Preserved numerical identity across the baseline, 948-point radius grid, and 19-point availability sweep; closed the CAS27 verification gap; promoted the MFE sources into the canonical model tree; and made every evidence-producing command fail closed.
+
+### Deliverables
+- Archived workflow record: `20260821_stellarator-model-migration/{spec,design,plan,audit,product-lens}.md`
+- Sealed stellarator package, stock study route, re-pinned manifest, and `AFTER_MIGRATION_RECORD.md`
+- Canonical MFE model sources plus the 506-row `models/stellarator_migration_ledger.md`
+- Two-family generation, census, mutation, stock-route, and fail-closed publication regression tests
+- Retired primary era adapter and recorded temporary codegen workarounds in the local and upstream backlogs
+
+### Lessons Learned
+[TODO: Add lessons learned]
+
 ## [2026-08-21] - Bulk Archival: April–August Work Items and Six Epics
 
 **Type**: Housekeeping
