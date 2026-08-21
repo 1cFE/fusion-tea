@@ -15,7 +15,7 @@
 ## Next up (in order, 2026-08-21)
 
 1. **Stellarator model migration — needs work after audit 2026-08-21** (`.project/active/stellarator-model-migration/audit.md`). SC1 and SC3–SC10 are verified; SC2 and SC11 remain open. The owner's `/_my_ask_me` rulings settle the historical handshake scope and allow the sysml-codegen rows to remain uncommitted. Certification still waits on the verdict-identity contract, fail-closed study export/single-point commands, unresolved representation smells, and the complete validation gates. Implementation evidence: `exploration/stellarator_e2e/studies/AFTER_MIGRATION_RECORD.md`.
-2. **RUN-STUDY Item 6** (first A/B consumer + policy cutover) on the stock route — waits for item 1 certification. Owner Align first (policy disposition; whether oracle verification is mandatory — carried from `.project/completed/20260821_run-study-cold-pickup/plan.md` § Revisit).
+2. **RUN-STUDY Item 6** (first A/B consumer + policy cutover) on the stock route — waits for item 1 certification. Owner Align held 2026-08-21 (`.project/active/run-study-first-consumer/align.md`: policy ratified, comparison left to design research, oracle for this demo only); spec drafted 2026-08-21 (`spec.md`, Draft); next `/_my_design`, whose first phase is research into the comparison.
 3. **Upstream filings to sysml-codegen** — three rows written 2026-08-21 by item 1 (scalar-function vocabulary, unit-scrape byte offset, plus the unit-scrape defect); they sit uncommitted in `/home/reid/1cfe/sysml-codegen/.project/backlog/BACKLOG.md` for the owner's commit.
 4. **IFE whole-plant regeneration on the elaborate-first route** — fusion-tea's half of sysml-codegen's ELABORATE-FIRST Item 8, step B after codegen's scope scrub A (owner order 2026-08-15). Context: sysml-codegen `.project/CURRENT_WORK.md` ("2026-08-15: Item 8 sequencing").
 5. **Explorer UX v3 — Phase 2**: pick by leverage, D1 top candidate. Epic: `.project/backlog/epic_explorer_ux_v3.md`.
@@ -24,8 +24,8 @@
 
 - **`feat/compute-concurrency-semaphore`** (1 commit, unmerged, off an old `main`). It caps concurrent JAX `forward()` calls, but #100 made the deploy numpy-only, so the memory profile it guards against may be gone. Decide: land it or delete the branch. Background: `.project/reports/2026-07-03-1114-status-report.md`.
 - **`run_analysis.py` CLI step semantics** — a real bug with a paused spec (`.project/active/run-analysis-cli-step-semantics/spec.md`, BACKLOG row). `analyze` and `model-setup` look like peers but overlap; `regenerate-concept` chains them so the weaker path overwrites the loop's output. Schedule or drop.
-- **Rework design-point gate never signed** — `design_point.csv` has no `verified_by` on any row, yet the June regeneration consumed it. Accept as-is or file a verification item. BACKLOG "Flagged" row.
-- **Delete `.project/completed/` contents** — the owner's stated follow-up to the archival pass. Decide whether the archive (now 115 item dirs + 10 epic files, ~25 MB incl. `20260821_concept-rework-tables/`) is kept in git history only.
+- ~~Rework design-point gate never signed~~ — accepted as-is `[OWNER 2026-08-21]`; BACKLOG Flagged row.
+- **Delete `.project/completed/` folders before a cutoff date, keep `CHANGELOG.md`** `[OWNER 2026-08-21]` — not yet; a later pass. Cutoff date still to be chosen. Git history keeps everything; the changelog stays as the index. Live citations into the deleted folders (`ingest_design_point_proposals.py:32`, `test_validators.py:547`, `.claude/skills/run-study/record-template.md`, `knowledge/holdout/aries-cs/PROTOCOL.md`) will need repointing in that pass.
 
 ## Paused / deferred
 
