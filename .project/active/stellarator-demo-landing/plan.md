@@ -176,18 +176,18 @@ uv run python -m pytest tests/study -q -rs                     # default lane
 ```
 
 ### Changes Required
-- [ ] None expected. If `test_self_binding_replacement.py` is red **only** because of the enum member: move `mfe_divergent` out of `models/library/foundation/economic_parameter.sysml` (the staged twin keeps its own copy, untouched), re-run, and record the deviation against SC1.
-- [ ] If red for any other reason: stop, record the failure verbatim in Implementation Notes, and report. Do not patch the spine test in this PR (that's the BACKLOG "Test cleanup" row, owned by the migration PR).
+- [x] None expected. If `test_self_binding_replacement.py` is red **only** because of the enum member: move `mfe_divergent` out of `models/library/foundation/economic_parameter.sysml` (the staged twin keeps its own copy, untouched), re-run, and record the deviation against SC1.
+- [x] If red for any other reason: stop, record the failure verbatim in Implementation Notes, and report. Do not patch the spine test in this PR (that's the BACKLOG "Test cleanup" row, owned by the migration PR).
 
 ### Validation
 **Automated:**
-- [ ] `tests/models` → 30 passed / 13 skipped for the WI-026 files **and** `test_self_binding_replacement.py` all passed (record the exact counts)
-- [ ] `tests/study -m slow` with `STUDY_REQUIRE_ERA=1` → 273 passed, 0 skipped-for-era
-- [ ] `tests/study` default → passed, with the `slow` tests deselected
-- [ ] `uv run ruff check scripts/study tests/study` → clean (the demo's own bar)
+- [x] `tests/models` → 30 passed / 13 skipped for the WI-026 files **and** `test_self_binding_replacement.py` all passed (record the exact counts)
+- [x] `tests/study -m slow` with `STUDY_REQUIRE_ERA=1` → 273 passed, 0 skipped-for-era
+- [x] `tests/study` default → passed, with the `slow` tests deselected
+- [x] `uv run ruff check scripts/study tests/study` → clean (the demo's own bar)
 
 **Manual:**
-- [ ] `git status --short` under `exploration/stellarator_e2e/generated` → empty (package-clean gate; the study tools assert this too)
+- [x] `git status --short` under `exploration/stellarator_e2e/generated` → empty (package-clean gate; the study tools assert this too)
 
 **What we know works after this phase:** main's pinned contract and the demo's study contract both hold on one tree. This is the evidence the PR description cites.
 
@@ -289,10 +289,16 @@ See CLAUDE.md (always `uv run`). Extra for this plan:
 **Completed:** 2026-08-21
 **Actual changes:** 11 MFE files removed from `models/` (`economic_parameter.sysml` enum member kept); `.gitignore` narrowed to `exploration/stellarator_e2e/outputs/` and `.orchestrate-logs/` added; 126 `.orchestrate-logs/` files and the two IFE osiris result dirs (16 files) removed; staged-twin note added; `tests/models/test_power_balance.py` retargeted.
 **Issues:** The Phase 2 stencil caught a reader of the MFE models under `models/` that the research missed: `tests/models/test_power_balance.py` (the demo's WI-026 rewrite) globs `models/library/**/*.sysml` and asserts the 'MFE Power Balance Calc' is present with its inputs/outputs (25 tests). Under Option A it would fail on the two file-exists tests and skip the rest.
-**Deviations:** (1) `LIBRARY_DIR` in that test now points at the staged twin (`exploration/stellarator_e2e/models`, same layout minus the `library/` prefix), with a TEMPORARY note saying to point it back when the migration PR promotes the models. 25 passed, licensed. This is Option A applied consistently, not a reconsideration of it; the migration PR's "Test cleanup" row now also covers this retarget. (2) The staged-twin note lives at `exploration/stellarator_e2e/STAGED_MODELS.md`, not inside `models/`, so the twin's tree hash stays the SC2 oracle exactly (a README inside the dir would have changed it). Index tree hashes before commit: twin `9a40c004…` ✓, package `0b42192a…` ✓, symlink mode 120000 ✓.
+**Deviations:** (1) `LIBRARY_DIR` in that test now points at the staged twin (`exploration/stellarator_e2e/models`, same layout minus the `library/` prefix), with a TEMPORARY note saying to point it back when the migration PR promotes the models. 25 passed, licensed. This is Option A applied consistently, not a reconsideration of it; the migration PR's "Test cleanup" row now also covers this retarget. (2) The staged-twin note lives at `exploration/stellarator_e2e/STAGED_MODELS.md`, not inside `models/`, so the twin's tree hash stays the SC2 oracle exactly (a README inside the dir would have changed it). Index tree hashes before commit: twin `9a40c004…` ✓, package `0b42192a…` ✓, symlink mode 120000 ✓. (3) Narrowing the ignore rule exposed 20 untracked IFE run-output dirs in the worktree dated 2026-07-12…18 (old harness residue the broad rule had hidden); removed with `git clean` on that path only; the 3 tracked osiris fixtures remain.
 
 ### Phase 3 Completion
-—
+**Completed:** 2026-08-21
+**Results (worktree, venv on main's git pins):**
+- `tests/models` (licensed): first run **1 failed / 39 passed / 13 skipped** — `test_the_two_maintained_model_trees_cannot_diverge` reported `foundation/economic_parameter.sysml` differing between `models/` and `exploration/ife_e2e/models/` (the demo's added `mfe_divergent` enum member). Applied the plan's mitigation: `git checkout main -- models/library/foundation/economic_parameter.sysml`; the staged twin keeps its own copy with the member. Re-run: **40 passed / 13 skipped**; the spine test's 10 tests pass by name (both sets generate with zero readiness diagnostics; live == snapshot; census 23/18; 11 renamed keys; 7 unrenamed; both mutation proofs; cross-tree identity; layout-collision refusal).
+- `STUDY_REQUIRE_ERA=1 tests/study -m slow`: **1 passed** (the 948-point promotion-equivalence grid, byte-equal to the committed CSVs) in 2:15.
+- `STUDY_REQUIRE_ERA=1 tests/study` (default lane, which includes `slow`): **273 passed, 0 skipped** in 3:02.
+- `ruff check scripts/study tests/study`: clean. Package-clean gate: `generated/` untouched.
+**Deviations:** SC1's "enum member stays" clause did not survive — the member now lives only in the staged twin. That is the deviation SC1 itself anticipated; `models/` is byte-identical to main's IFE set. The 13 skips are the pre-existing WI-026 "types/units/materials not found" skips and one template test, unchanged from the demo branch.
 
 ### Phase 4 Completion
 —

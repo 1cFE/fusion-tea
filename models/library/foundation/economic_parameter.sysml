@@ -23,20 +23,13 @@ package economic_parameter {
         Classification of CAS cost accounts by applicability across
         fusion confinement approaches.
 
-        Three-member classification: `shared` (cost structure common to all
-        approaches), `ife_divergent` (IFE-specific power-core structure), and
-        `mfe_divergent` (MFE-specific power-core structure — the CAS22.1.x
-        magnet/heating/divertor sub-accounts).
-
-        **Source**: models/library/cost_structure/cas_hierarchy.sysml ('CAS22 Power Core'); 1costingFE CAS account structure
-        **Ref**: DI-002 (CAS22 is the IFE/MFE divergence point)
-        **Basis**: DI-002 identifies CAS22 as the IFE/MFE divergence point;
-            `mfe_divergent` added (WI-009) to tag the MFE CAS22.1.x sub-accounts,
-            mirroring `ife_divergent`. Additive — existing IFE members unchanged.
+        **Source**: knowledge/sources/aries_cost_account_documentation/output.md
+        **Ref**: L185-186 (universality), L1005-1008 (CAS22 divergence)
+        **Basis**: Two-member classification (shared vs ife_divergent) derived
+            from ARIES CAS analysis; DI-002 identifies CAS22 as divergence point
         */
 
         shared;
         ife_divergent;
-        mfe_divergent;
     }
 }
