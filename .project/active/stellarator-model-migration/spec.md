@@ -4,7 +4,7 @@
 **Owner:** Reid W
 **Created:** 2026-08-21 08:23
 **Complexity:** HIGH
-**Branch:** TBD — recommend `feat/stellarator-model-migration` off `main` (`7ee0c22a`), worked in the demo worktree `~/1cfe/fusion-tea-stellarator-mbse-demo`
+**Branch:** `feat/stellarator-model-migration` (off `main` `7ee0c22a`); spec, design, plan, and implementation for this item all live here, one PR at the end
 
 ---
 
