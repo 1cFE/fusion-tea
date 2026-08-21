@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:4
+SysML Source: root-0/analyses/hif_economics.sysml:4
 
 SysML Expressions:
     cost_billions = (0.32 + 0.088 * beam_energy_mj) * (1.25 + 0.05 * num_chambers) * (1.0 + 0.0088 * (rep_rate - 5.0))
@@ -55,7 +55,7 @@ single chamber.
 *Basis**: Meier 1986 parametric driver cost formula for HIF
 induction linacs. Year-dollars: 1988$.
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:4
+SysML Source: root-0/analyses/hif_economics.sysml:4
 
 SysML Expressions:
     cost_billions = (0.32 + 0.088 * beam_energy_mj) * (1.25 + 0.05 * num_chambers) * (1.0 + 0.0088 * (rep_rate - 5.0))

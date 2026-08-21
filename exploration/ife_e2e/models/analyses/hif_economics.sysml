@@ -22,20 +22,20 @@ package hif_economics {
             induction linacs. Year-dollars: 1988$.
         */
 
-        in attribute beam_energy_mj : Real;
+        in attribute beam_energy_mj_in : Real;
         in attribute driver_efficiency : Real;
-        in attribute num_chambers : Real;
+        in attribute num_chambers_in : Real;
         in attribute rep_rate : Real;
 
         // Meier Eq. 5: driver direct cost [$B, 1988$]
         out attribute cost_billions : Real =
-            (0.32 + 0.088 * beam_energy_mj)
-            * (1.25 + 0.05 * num_chambers)
+            (0.32 + 0.088 * beam_energy_mj_in)
+            * (1.25 + 0.05 * num_chambers_in)
             * (1.0 + 0.0088 * (rep_rate - 5.0));
 
         // Bridge to Hawker: gamma = C_dd / E_d_bank
         attribute bank_energy_joules : Real =
-            beam_energy_mj * 1.0e6 / driver_efficiency;
+            beam_energy_mj_in * 1.0e6 / driver_efficiency;
 
         out attribute gamma : Real = cost_billions * 1.0e9 / bank_energy_joules;
     }
@@ -54,11 +54,11 @@ package hif_economics {
         **Basis**: Meier 1986 reactor cost scaling. Year-dollars: 1988$.
         */
 
-        in attribute thermal_power_gw : Real;
+        in attribute thermal_power_gw_in : Real;
         in attribute num_units : Real;
 
         out attribute reactor_cost_billions : Real =
-            0.66 * (thermal_power_gw / 1.67) ** 0.49
+            0.66 * (thermal_power_gw_in / 1.67) ** 0.49
             * (0.72 * num_units + 0.28);
     }
 
@@ -97,11 +97,11 @@ package hif_economics {
         */
 
         in attribute total_capital_billions : Real;
-        in attribute availability : Real;
-        in attribute net_electric_power_gw : Real;
+        in attribute availability_in : Real;
+        in attribute net_electric_power_gw_in : Real;
 
         out attribute coe_cents_kwh : Real =
             (0.113 * total_capital_billions)
-            / (0.0876 * availability * net_electric_power_gw);
+            / (0.0876 * availability_in * net_electric_power_gw_in);
     }
 }

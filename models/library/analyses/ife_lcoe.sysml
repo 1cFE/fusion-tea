@@ -28,19 +28,19 @@ package ife_lcoe {
         */
 
         // === The 14 Hawker parameters ===
-        in attribute availability : Real;
+        in attribute availability_in : Real;
         in attribute blanket_energy_multiple : Real;
-        in attribute discount_rate : Real;
+        in attribute discount_rate_in : Real;
         in attribute driver_cost_constant : Real;
         in attribute driver_efficiency : Real;
         in attribute driver_energy : Real;
         in attribute driver_lifetime_shots : Real;
-        in attribute frequency : Real;
-        in attribute gain : Real;
-        in attribute om_cost_constant : Real;
-        in attribute plant_cost_constant : Real;
+        in attribute frequency_in : Real;
+        in attribute gain_in : Real;
+        in attribute om_cost_constant_in : Real;
+        in attribute plant_cost_constant_in : Real;
         in attribute target_cost_constant : Real;
-        in attribute thermal_efficiency : Real;
+        in attribute thermal_efficiency_in : Real;
         in attribute yield_cost_constant : Real;
 
         // === Fixed model constants ===
@@ -55,12 +55,12 @@ package ife_lcoe {
 
         // Fusion energy per shot [J] (Eq. 2.15)
         attribute fusion_energy_per_shot : Real =
-            gain * energy_on_target;
+            gain_in * energy_on_target;
 
         // Net electric power [W] (Eqs. 2.12-2.14, 2.16 combined)
         // P_e = E_d * f * (mu_th * E_b * G * mu_d - 2)
         attribute net_electric_power : Real =
-            driver_energy * frequency * (thermal_efficiency * blanket_energy_multiple * gain * driver_efficiency - 2.0);
+            driver_energy * frequency_in * (thermal_efficiency_in * blanket_energy_multiple * gain_in * driver_efficiency - 2.0);
 
         // Net electric power [kWe]
         attribute net_electric_kw : Real =
@@ -71,7 +71,7 @@ package ife_lcoe {
         // Shots per year (Eq. 2.9)
         // 31557600 = seconds per Julian year (365.25 * 24 * 3600)
         attribute shots_per_year : Real =
-            31557600.0 * frequency * availability;
+            31557600.0 * frequency_in * availability_in;
 
         // Driver lifetime in years (Eq. 2.8)
         attribute driver_lifetime_years : Real =
@@ -82,7 +82,7 @@ package ife_lcoe {
         // Annual capital cost during construction [$/year] (Eqs. 2.4-2.6)
         // = (plant_cost + yield_cost + driver_construction_cost) / Yc
         attribute annual_capital_cost : Real =
-            (plant_cost_constant * net_electric_kw
+            (plant_cost_constant_in * net_electric_kw
              + yield_cost_constant * fusion_energy_per_shot / 1.0e9
              + driver_cost_constant * driver_energy)
             / construction_years;
@@ -91,32 +91,32 @@ package ife_lcoe {
         // = target_cost + om_cost + driver_replacement_cost
         attribute annual_operating_cost : Real =
             target_cost_constant * shots_per_year
-            + om_cost_constant * net_electric_kw
+            + om_cost_constant_in * net_electric_kw
             + driver_cost_constant * driver_energy / driver_lifetime_years;
 
         // Annual energy production [MWh/year] (Eq. 2.2)
         attribute annual_energy : Real =
-            8760.0 * net_electric_kw * availability / 1000.0;
+            8760.0 * net_electric_kw * availability_in / 1000.0;
 
         // === Intermediate: present value factors ===
 
         // Capital recovery factor for construction period
         // PVF_con = (1 - (1+d)^(-Yc)) / d
         attribute discount_factor_con : Real =
-            (1.0 + discount_rate) ** construction_years;
+            (1.0 + discount_rate_in) ** construction_years;
 
         attribute pvf_construction : Real =
-            (1.0 - 1.0 / discount_factor_con) / discount_rate;
+            (1.0 - 1.0 / discount_factor_con) / discount_rate_in;
 
         // Present value factor for operation period
         // PVF_op = (1+d)^(-Yc) * (1 - (1+d)^(-N_op)) / d
         attribute discount_factor_op : Real =
-            (1.0 + discount_rate) ** operational_years;
+            (1.0 + discount_rate_in) ** operational_years;
 
         attribute pvf_operation : Real =
             (1.0 / discount_factor_con)
             * (1.0 - 1.0 / discount_factor_op)
-            / discount_rate;
+            / discount_rate_in;
 
         // === Result: LCOE [$/MWh] ===
         out attribute lcoe : Real =

@@ -22,9 +22,9 @@ Inputs:
 Outputs:
     - coe_cents_kwh: coe_cents_kwh result
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:84
+SysML Source: root-0/analyses/hif_economics.sysml:84
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:84
+SysML Source: root-0/analyses/hif_economics.sysml:84
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/hif_economics/meier_coe_impl.py
@@ -72,9 +72,9 @@ Inputs:
 Outputs:
     - coe_cents_kwh: coe_cents_kwh result
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:84
+SysML Source: root-0/analyses/hif_economics.sysml:84
 
-    SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:84
+    SysML Source: root-0/analyses/hif_economics.sysml:84
 
     Calculation Specification:
         coe_cents_kwh = 0.113 * total_capital_billions / (0.0876 * availability * net_electric_power_gw)

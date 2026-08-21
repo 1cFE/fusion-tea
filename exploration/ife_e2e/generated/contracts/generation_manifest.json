@@ -1,0 +1,43 @@
+{
+  "codegen_produced": [
+    "IMPLEMENTATION_BACKLOG.md",
+    "__init__.py",
+    "contracts/generation_manifest.json",
+    "contracts/model_contract.json",
+    "contracts/verify.py",
+    "inputs/__init__.py",
+    "inputs/hif_plant_params.json",
+    "inputs/ife_plant_params.json",
+    "inputs/system_design.json",
+    "modules/__init__.py",
+    "modules/constraints/__init__.py",
+    "modules/constraints/constraintreportaggregatormodule.py",
+    "modules/constraints/predicates.py",
+    "modules/fusion_cycle/__init__.py",
+    "modules/fusion_cycle/recirculating_power_fraction.py",
+    "modules/hif_economics/__init__.py",
+    "modules/hif_economics/meier_coe.py",
+    "modules/hif_economics/meier_hif_driver_cost.py",
+    "modules/hif_economics/meier_reactor_cost.py",
+    "modules/hif_economics/meier_total_capital_cost.py",
+    "modules/hif_plant_pkg/__init__.py",
+    "modules/hif_plant_pkg/hifplantviabilityconstraintmodule.py",
+    "modules/ife_lcoe/__init__.py",
+    "modules/ife_lcoe/ife_lcoe.py",
+    "pipelines/__init__.py",
+    "pipelines/pipeline.yaml",
+    "primitives.py",
+    "schemas/__init__.py",
+    "schemas/constraint_types.py",
+    "schemas/hif_plant_params.py",
+    "schemas/ife_plant_params.py",
+    "schemas/meier_hif_driver_cost_output.py",
+    "schemas/system_design.py",
+    "tests/__init__.py",
+    "tests/test_implementations_runnable.py"
+  ],
+  "handwritten_globs": [
+    "handwritten/**"
+  ],
+  "runtime_globs": []
+}

@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/fusion_cycle.sysml:4
+SysML Source: root-0/analyses/fusion_cycle.sysml:4
 
 SysML Expressions:
     fusion_cycle_gain = eta * gain * blanket_multiplier * thermal_efficiency
@@ -42,7 +42,7 @@ in the cost curve.
 *Ref**: Components section (fusion cycle gain discussion)
 *Basis**: DI-001 — eta*G must exceed ~10 for viability
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/fusion_cycle.sysml:4
+SysML Source: root-0/analyses/fusion_cycle.sysml:4
 
 SysML Expressions:
     fusion_cycle_gain = eta * gain * blanket_multiplier * thermal_efficiency

@@ -12,13 +12,15 @@ from pathlib import Path
 
 from simkit.evaluation.evaluator import PreparedEvaluator
 from simkit.evaluation.package_load import ProvisionalPackageLoader
+from simkit.study.bridge import CandidateBridge
 
 from run_viability_study import (  # noqa: E402
-    ETA_FIELD, ETA_GRID, G_GRID, GAIN_FIELD, MultiChannelEvaluator, PACKAGE_DIR, PACKAGE_NAME,
+    ETA_FIELD, ETA_GRID, G_GRID, GAIN_FIELD, PACKAGE_DIR, PACKAGE_NAME,
 )
 
 N = 200
 LINK_ROOT = Path("/tmp/ife_bench_pkg_link")
+SPEC_PATH = PACKAGE_DIR / "pipelines" / "pipeline.yaml"
 
 
 def _points(n: int) -> list[tuple[float, float]]:
@@ -33,18 +35,16 @@ def main() -> None:
         package_dir=PACKAGE_DIR, package_name=PACKAGE_NAME, link_root=LINK_ROOT
     )
     module, _ = loader.load()
-    prepared = PreparedEvaluator(loader, PACKAGE_DIR / "pipelines" / "ife_hif.yaml")
-    evaluator = MultiChannelEvaluator(prepared, PACKAGE_DIR, prepared.package)
+    prepared = PreparedEvaluator(loader, SPEC_PATH)
+    bridge = CandidateBridge(prepared.entry_models)  # stock Item-9 multi-channel bridge
     points = _points(N)
 
     # Prepare-once: PreparedEvaluator built once above; evaluate N cases against it.
     t0 = time.perf_counter()
     prepared_verdicts = []
     for eta, gain in points:
-        typed = {"ife_plant_params": prepared.package.IfePlantParams(**{
-            ETA_FIELD: eta, GAIN_FIELD: gain,
-        })}
-        evidence = evaluator.evaluate(typed)
+        typed = bridge.build({ETA_FIELD: eta, GAIN_FIELD: gain})
+        evidence = prepared.evaluate(typed)
         prepared_verdicts.append(evidence.responses)
     prepared_elapsed = time.perf_counter() - t0
 
@@ -57,12 +57,10 @@ def main() -> None:
             package_dir=PACKAGE_DIR, package_name=PACKAGE_NAME, link_root=LINK_ROOT
         )
         module_i, _ = loader_i.load()
-        prepared_i = PreparedEvaluator(loader_i, PACKAGE_DIR / "pipelines" / "ife_hif.yaml")
-        evaluator_i = MultiChannelEvaluator(prepared_i, PACKAGE_DIR, prepared_i.package)
-        typed = {"ife_plant_params": prepared_i.package.IfePlantParams(**{
-            ETA_FIELD: eta, GAIN_FIELD: gain,
-        })}
-        evidence = evaluator_i.evaluate(typed)
+        prepared_i = PreparedEvaluator(loader_i, SPEC_PATH)
+        bridge_i = CandidateBridge(prepared_i.entry_models)
+        typed = bridge_i.build({ETA_FIELD: eta, GAIN_FIELD: gain})
+        evidence = prepared_i.evaluate(typed)
         rebuild_verdicts.append(evidence.responses)
     rebuild_elapsed = time.perf_counter() - t0
 

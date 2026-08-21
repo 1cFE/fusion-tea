@@ -50,7 +50,7 @@ def create_dummy_input(input_class: type[BaseModel]) -> BaseModel:
 class TestMeier_Reactor_CostRunnable:
     """Verify meier_reactor_cost implementation runs without error.
 
-    SysML Source: models/analyses/hif_economics.sysml:43
+    SysML Source: root-0/analyses/hif_economics.sysml:43
     """
 
     def test_import_and_run(self):
@@ -90,7 +90,7 @@ class TestMeier_Reactor_CostRunnable:
 class TestMeier_HIF_Driver_CostRunnable:
     """Verify meier_hif_driver_cost implementation runs without error.
 
-    SysML Source: models/analyses/hif_economics.sysml:4
+    SysML Source: root-0/analyses/hif_economics.sysml:4
     """
 
     def test_import_and_run(self):
@@ -132,7 +132,7 @@ class TestMeier_HIF_Driver_CostRunnable:
 class TestRecirculating_Power_FractionRunnable:
     """Verify recirculating_power_fraction implementation runs without error.
 
-    SysML Source: models/analyses/fusion_cycle.sysml:4
+    SysML Source: root-0/analyses/fusion_cycle.sysml:4
     """
 
     def test_import_and_run(self):
@@ -172,7 +172,7 @@ class TestRecirculating_Power_FractionRunnable:
 class TestMeier_Total_Capital_CostRunnable:
     """Verify meier_total_capital_cost implementation runs without error.
 
-    SysML Source: models/analyses/hif_economics.sysml:65
+    SysML Source: root-0/analyses/hif_economics.sysml:65
     """
 
     def test_import_and_run(self):
@@ -212,7 +212,7 @@ class TestMeier_Total_Capital_CostRunnable:
 class TestIFE_LCOERunnable:
     """Verify ife_lcoe implementation runs without error.
 
-    SysML Source: models/analyses/ife_lcoe.sysml:4
+    SysML Source: root-0/analyses/ife_lcoe.sysml:4
     """
 
     def test_import_and_run(self):
@@ -252,7 +252,7 @@ class TestIFE_LCOERunnable:
 class TestMeier_COERunnable:
     """Verify meier_coe implementation runs without error.
 
-    SysML Source: models/analyses/hif_economics.sysml:84
+    SysML Source: root-0/analyses/hif_economics.sysml:84
     """
 
     def test_import_and_run(self):

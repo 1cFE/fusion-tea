@@ -4,7 +4,6 @@
   "hif_plant_pkg__hif_plant__driver__efficiency": 0.35,
   "hif_plant_pkg__hif_plant__driver__energy": 14286000.0,
   "hif_plant_pkg__hif_plant__driver__lifetime_shots": 6000000000.0,
-  "hif_plant_pkg__hif_plant__gain": 80.0,
   "hif_plant_pkg__hif_plant__lcoe_calc__construction_years": 5.0,
   "hif_plant_pkg__hif_plant__lcoe_calc__operational_years": 40.0,
   "hif_plant_pkg__hif_plant__target_factory__cost_per_target": 10.0

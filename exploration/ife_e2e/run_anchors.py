@@ -76,7 +76,9 @@ CH_CB = f"{P}driver__meier_cost__cost_billions"
 CH_COE = f"{P}meier_coe_calc__coe_cents_kwh"
 CH_CAPITAL = f"{P}meier_capital_calc__total_capital_billions"
 
-PIPELINE = E2E / "generated/pipelines/ife_hif.yaml"
+# Pinned codegen emits the default pipeline filename `pipeline.yaml` (was `ife_hif.yaml`
+# in the pre-epic package); migrated for Item 13 compose (test-infra only).
+PIPELINE = E2E / "generated/pipelines/pipeline.yaml"
 INPUTS_DIR = E2E / "generated/inputs"
 GAIN_LCOE_KEY = f"{P}lcoe_calc__gain"   # the emitted per-consumer lcoe gain key
 

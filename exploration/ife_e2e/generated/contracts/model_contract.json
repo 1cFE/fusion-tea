@@ -1,18 +1,25 @@
 {
+  "catalog_schema_version": "2.0.0",
   "constraint_catalog": {
     "concrete_entries": [
       {
         "constraint_id": "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b",
+        "definition_qualified_name": "fusion_cycle::'Viability Threshold'",
         "evaluation_channel": "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation",
         "expected_value": true,
         "is_negated": false,
         "membership_kind": null,
         "owner_instance_path": "hif_plant_pkg__hif_plant",
+        "owner_qualified_name": "ife_plant::'IFE Power Plant'",
         "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"eta\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"eta\",\"qualified_name\":\"fusion_cycle::'Viability Threshold'::eta\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"gain\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"gain\",\"qualified_name\":\"fusion_cycle::'Viability Threshold'::gain\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"*\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"threshold\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"threshold\",\"qualified_name\":\"fusion_cycle::'Viability Threshold'::threshold\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:fusion_cycle::'Viability Threshold'",
+        "source_form": "definition_typed",
+        "source_local_identity": "viability",
         "usage_qualified_name": "ife_plant::'IFE Power Plant'::viability"
       }
     ],
-    "fingerprint": "d9b3a6aaaa5f725a92bd88dcaf736a92b167f98ff90185454f88ba1cedc08961",
+    "excluded_records": [],
+    "fingerprint": "90814c774f318665574086fd296e77a2206cd0e48b15eea7a5beae164d8608f8",
     "source_records": [
       {
         "definition_qualified_name": "fusion_cycle::'Viability Threshold'",
@@ -21,6 +28,19 @@
           "gain",
           "threshold"
         ]
+      }
+    ],
+    "usage_records": [
+      {
+        "definition_qualified_name": "fusion_cycle::'Viability Threshold'",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_kind": "part_def",
+        "owner_qualified_name": "ife_plant::'IFE Power Plant'",
+        "source_form": "definition_typed",
+        "source_local_identity": "viability",
+        "usage_qualified_name": "ife_plant::'IFE Power Plant'::viability"
       }
     ]
   },
@@ -74,11 +94,11 @@
   ],
   "parameters": [
     {
-      "default_value": 0.35,
+      "default_value": 80.0,
       "entry_type": "design_attribute",
-      "param_group": "hif_driver_params",
+      "param_group": "hif_plant_params",
       "python_type": "float",
-      "qualified_name": "hif_driver__HIF_Driver__efficiency"
+      "qualified_name": "hif_plant_pkg__hif_plant__gain"
     },
     {
       "default_value": 0.1,
@@ -92,21 +112,21 @@
       "entry_type": "usage_literal",
       "param_group": "hif_plant_params",
       "python_type": "float",
-      "qualified_name": "hif_plant_pkg__hif_plant__meier_coe_calc__net_electric_power_gw"
-    },
-    {
-      "default_value": 1.0,
-      "entry_type": "usage_literal",
-      "param_group": "hif_plant_params",
-      "python_type": "float",
       "qualified_name": "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__num_units"
     },
     {
-      "default_value": 2.054,
-      "entry_type": "usage_literal",
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
       "param_group": "hif_plant_params",
       "python_type": "float",
-      "qualified_name": "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__thermal_power_gw"
+      "qualified_name": "hif_plant_pkg__hif_plant__net_electric_power_gw"
+    },
+    {
+      "default_value": 2.054,
+      "entry_type": "design_attribute",
+      "param_group": "hif_plant_params",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__thermal_power_gw"
     },
     {
       "default_value": 1.15,
@@ -142,13 +162,6 @@
       "param_group": "ife_plant_params",
       "python_type": "float",
       "qualified_name": "hif_plant_pkg__hif_plant__driver__lifetime_shots"
-    },
-    {
-      "default_value": 80.0,
-      "entry_type": "design_attribute",
-      "param_group": "ife_plant_params",
-      "python_type": "float",
-      "qualified_name": "hif_plant_pkg__hif_plant__gain"
     },
     {
       "default_value": 5.0,
@@ -270,5 +283,5 @@
       "qualified_name": "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__threshold"
     }
   ],
-  "semantic_fingerprint": "90123271ec4714c374c8d8a9705d78cc73c292207895badf53127600fbd5f3ed"
+  "semantic_fingerprint": "4b0c9d2a5c3479889f7b6479187a7913cbc5fee7163bcf16f72c65058345281b"
 }

@@ -20,9 +20,9 @@ Inputs:
 Outputs:
     - reactor_cost_billions: reactor_cost_billions result
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:43
+SysML Source: root-0/analyses/hif_economics.sysml:43
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:43
+SysML Source: root-0/analyses/hif_economics.sysml:43
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/hif_economics/meier_reactor_cost_impl.py
@@ -66,9 +66,9 @@ Inputs:
 Outputs:
     - reactor_cost_billions: reactor_cost_billions result
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:43
+SysML Source: root-0/analyses/hif_economics.sysml:43
 
-    SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:43
+    SysML Source: root-0/analyses/hif_economics.sysml:43
 
     Calculation Specification:
         reactor_cost_billions = 0.66 * (thermal_power_gw / 1.67) ** 0.49 * (0.72 * num_units + 0.28)

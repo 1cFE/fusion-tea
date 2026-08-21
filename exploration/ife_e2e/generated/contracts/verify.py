@@ -16,7 +16,7 @@ import hashlib
 import json
 import re
 from dataclasses import dataclass, field
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 TAMPER = "TAMPER"
 MISSING = "MISSING"
@@ -30,8 +30,51 @@ EXTRA = "EXTRA"
 GENERATOR_MISMATCH = "GENERATOR_MISMATCH"
 RUNTIME_MISMATCH = "RUNTIME_MISMATCH"
 NAME_MISMATCH = "NAME_MISMATCH"
+SEAL_MISSING = "SEAL_MISSING"
+SEAL_UNREADABLE = "SEAL_UNREADABLE"
+SEAL_MALFORMED = "SEAL_MALFORMED"
+ARTIFACT_UNREADABLE = "ARTIFACT_UNREADABLE"
+INVALID_PATH = "INVALID_PATH"
 
-_INTEGRITY_KINDS = frozenset({TAMPER, MISSING, EXTRA, NAME_MISMATCH})
+_INTEGRITY_KINDS = frozenset(
+    {
+        TAMPER,
+        MISSING,
+        EXTRA,
+        NAME_MISMATCH,
+        SEAL_MISSING,
+        SEAL_UNREADABLE,
+        SEAL_MALFORMED,
+        ARTIFACT_UNREADABLE,
+        INVALID_PATH,
+    }
+)
+
+_SHA256_HEX = re.compile(r"^[0-9a-f]{64}$")
+_FORBIDDEN_SYMLINK_MESSAGE = "symlinks are forbidden beneath the package root"
+
+
+def _inspect_package_tree(root: Path) -> tuple[str | None, list[tuple[str, Path]]]:
+    """Return the first forbidden symlink and a sorted clean descendant list."""
+    if root.is_symlink():
+        return ".", []
+    paths = list(root.rglob("*"))
+    entries = sorted((path.relative_to(root).as_posix(), path) for path in paths)
+    for rel_path, path in entries:
+        if path.is_symlink():
+            return rel_path, []
+    return None, entries
+
+
+def _artifact_path_error(path: str) -> str | None:
+    if not path:
+        return "artifact path must not be empty"
+    pure_path = PurePosixPath(path)
+    if pure_path.is_absolute():
+        return "artifact path must be package-relative"
+    if pure_path.as_posix() != path or any(part in (".", "..") for part in pure_path.parts):
+        return "artifact path must be canonical POSIX form without '.' or '..' segments"
+    return None
 
 
 @dataclass(frozen=True)
@@ -97,6 +140,195 @@ def _is_covered(rel_path: str, policy: dict) -> bool:
     return not any(_glob_to_regex(pattern).match(rel_path) for pattern in patterns)
 
 
+def _seal_schema_error(seal: object) -> str | None:
+    """Return a concise structural error for the stdlib-only package-seal schema."""
+    if not isinstance(seal, dict):
+        return "seal root must be a JSON object"
+
+    string_fields = (
+        "package_name",
+        "executable_fingerprint",
+        "generator_version",
+        "runtime_contract_version",
+    )
+    for field_name in string_fields:
+        if not isinstance(seal.get(field_name), str):
+            return f"seal field {field_name!r} must be a string"
+
+    artifact_hashes = seal.get("artifact_hashes")
+    if not isinstance(artifact_hashes, dict) or not all(
+        isinstance(path, str) and isinstance(digest, str)
+        for path, digest in artifact_hashes.items()
+    ):
+        return "seal field 'artifact_hashes' must be an object of string hashes"
+    for path, digest in artifact_hashes.items():
+        path_error = _artifact_path_error(path)
+        if path_error is not None:
+            return f"invalid artifact path {path!r}: {path_error}"
+        if _SHA256_HEX.fullmatch(digest) is None:
+            return f"artifact digest for {path!r} must be 64 lowercase SHA-256 hex characters"
+    if _SHA256_HEX.fullmatch(seal["executable_fingerprint"]) is None:
+        return "seal field 'executable_fingerprint' must be 64 lowercase SHA-256 hex characters"
+
+    policy = seal.get("coverage_policy")
+    if not isinstance(policy, dict):
+        return "seal field 'coverage_policy' must be an object"
+    for field_name in ("exclude_globs", "runtime_output_globs"):
+        patterns = policy.get(field_name)
+        if not isinstance(patterns, list) or not all(
+            isinstance(pattern, str) for pattern in patterns
+        ):
+            return f"coverage_policy field {field_name!r} must be a list of strings"
+    return None
+
+
+def _seal_failure(kind: str, seal_path: Path, message: str) -> VerificationResult:
+    return VerificationResult(
+        ok=False,
+        diagnostics=[
+            Diagnostic(
+                kind=kind,
+                path="contracts/package_contract.json",
+                message=f"{seal_path}: {message}",
+            )
+        ],
+    )
+
+
+def _load_seal(seal_path: Path) -> tuple[dict | None, VerificationResult | None]:
+    try:
+        seal_text = seal_path.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        return None, _seal_failure(SEAL_MISSING, seal_path, "seal file is missing")
+    except UnicodeError as error:
+        return None, _seal_failure(SEAL_MALFORMED, seal_path, f"seal is not valid UTF-8: {error}")
+    except OSError as error:
+        return None, _seal_failure(SEAL_UNREADABLE, seal_path, f"seal file is unreadable: {error}")
+    try:
+        seal = json.loads(seal_text)
+    except json.JSONDecodeError as error:
+        return None, _seal_failure(SEAL_MALFORMED, seal_path, f"seal is not valid JSON: {error}")
+    schema_error = _seal_schema_error(seal)
+    if schema_error is not None:
+        return None, _seal_failure(SEAL_MALFORMED, seal_path, schema_error)
+    return seal, None
+
+
+def _recorded_artifact_diagnostics(
+    package_dir: Path, recorded_hashes: dict[str, str]
+) -> list[Diagnostic]:
+    diagnostics: list[Diagnostic] = []
+    try:
+        package_root = package_dir.resolve()
+    except OSError as error:
+        return [
+            Diagnostic(
+                kind=ARTIFACT_UNREADABLE,
+                path=None,
+                message=f"package root cannot be resolved: {error}",
+            )
+        ]
+    for rel_path, expected_hash in sorted(recorded_hashes.items()):
+        file_path = package_dir / rel_path
+        try:
+            resolved_path = file_path.resolve()
+        except OSError as error:
+            diagnostics.append(
+                Diagnostic(kind=ARTIFACT_UNREADABLE, path=rel_path, message=str(error))
+            )
+            continue
+        if not resolved_path.is_relative_to(package_root):
+            diagnostics.append(
+                Diagnostic(
+                    kind=INVALID_PATH,
+                    path=rel_path,
+                    message="recorded artifact resolves outside the package root",
+                )
+            )
+            continue
+        try:
+            is_file = file_path.is_file()
+        except OSError as error:
+            diagnostics.append(
+                Diagnostic(kind=ARTIFACT_UNREADABLE, path=rel_path, message=str(error))
+            )
+            continue
+        if not is_file:
+            diagnostics.append(
+                Diagnostic(kind=MISSING, path=rel_path, message="recorded file is missing")
+            )
+            continue
+        try:
+            content = file_path.read_bytes()
+        except OSError as error:
+            diagnostics.append(
+                Diagnostic(kind=ARTIFACT_UNREADABLE, path=rel_path, message=str(error))
+            )
+            continue
+        actual_hash = hashlib.sha256(content).hexdigest()
+        if actual_hash != expected_hash:
+            diagnostics.append(
+                Diagnostic(kind=TAMPER, path=rel_path, message="content hash does not match")
+            )
+    return diagnostics
+
+
+def _extra_artifact_diagnostics(
+    entries: list[tuple[str, Path]], recorded_hashes: dict[str, str], policy: dict
+) -> list[Diagnostic]:
+    diagnostics: list[Diagnostic] = []
+    for rel_path, path in entries:
+        try:
+            is_file = path.is_file()
+        except OSError as error:
+            diagnostics.append(
+                Diagnostic(
+                    kind=ARTIFACT_UNREADABLE,
+                    path=rel_path,
+                    message=str(error),
+                )
+            )
+            continue
+        if not is_file:
+            continue
+        if rel_path == "contracts/package_contract.json" or not _is_covered(rel_path, policy):
+            continue
+        if rel_path not in recorded_hashes:
+            diagnostics.append(
+                Diagnostic(kind=EXTRA, path=rel_path, message="file is not in the recorded seal")
+            )
+    return diagnostics
+
+
+def _executable_fingerprint_diagnostic(seal: dict) -> Diagnostic | None:
+    recorded_hashes = seal["artifact_hashes"]
+    actual = hashlib.sha256(
+        "\n".join(f"{path}:{digest}" for path, digest in sorted(recorded_hashes.items())).encode(
+            "utf-8"
+        )
+    ).hexdigest()
+    if actual == seal["executable_fingerprint"]:
+        return None
+    return Diagnostic(
+        kind=TAMPER,
+        path="contracts/package_contract.json",
+        message="executable_fingerprint does not match the recorded artifact hashes",
+    )
+
+
+def _runtime_diagnostic(seal: dict, runtime_version: str | None) -> Diagnostic | None:
+    if runtime_version is None or seal["runtime_contract_version"] == runtime_version:
+        return None
+    return Diagnostic(
+        kind=RUNTIME_MISMATCH,
+        path=None,
+        message=(
+            f"loading environment runtime {runtime_version!r} does not match "
+            f"recorded runtime_contract_version {seal['runtime_contract_version']!r}"
+        ),
+    )
+
+
 def verify_package(
     package_dir: Path,
     package_name: str,
@@ -118,9 +350,39 @@ def verify_package(
         mismatch) are always fatal; env-compat mismatches are advisory unless
         ``strict``.
     """
-    diagnostics: list[Diagnostic] = []
+    try:
+        forbidden_path, entries = _inspect_package_tree(package_dir)
+    except OSError as error:
+        return VerificationResult(
+            ok=False,
+            diagnostics=[
+                Diagnostic(
+                    kind=ARTIFACT_UNREADABLE,
+                    path=None,
+                    message=f"package artifact preflight failed: {error}",
+                )
+            ],
+        )
+    if forbidden_path is not None:
+        return VerificationResult(
+            ok=False,
+            diagnostics=[
+                Diagnostic(
+                    kind=INVALID_PATH,
+                    path=forbidden_path,
+                    message=_FORBIDDEN_SYMLINK_MESSAGE,
+                )
+            ],
+        )
+
     seal_path = package_dir / "contracts" / "package_contract.json"
-    seal = json.loads(seal_path.read_text())
+    seal, failure = _load_seal(seal_path)
+    if failure is not None:
+        return failure
+    if seal is None:  # narrowed by failure; protects optimized-Python execution too
+        raise RuntimeError("seal loader returned neither a seal nor a failure")
+
+    diagnostics: list[Diagnostic] = []
 
     if seal["package_name"] != package_name:
         diagnostics.append(
@@ -135,48 +397,19 @@ def verify_package(
         )
 
     recorded_hashes: dict[str, str] = seal["artifact_hashes"]
-    for rel_path, expected_hash in recorded_hashes.items():
-        file_path = package_dir / rel_path
-        if not file_path.is_file():
-            diagnostics.append(
-                Diagnostic(kind=MISSING, path=rel_path, message="recorded file is missing")
-            )
-            continue
-        actual_hash = hashlib.sha256(file_path.read_bytes()).hexdigest()
-        if actual_hash != expected_hash:
-            diagnostics.append(
-                Diagnostic(kind=TAMPER, path=rel_path, message="content hash does not match")
-            )
-
-    policy = seal["coverage_policy"]
-    for path in sorted(package_dir.rglob("*")):
-        if not path.is_file():
-            continue
-        rel_path = path.relative_to(package_dir).as_posix()
-        if rel_path == "contracts/package_contract.json":
-            continue
-        if not _is_covered(rel_path, policy):
-            continue
-        if rel_path not in recorded_hashes:
-            diagnostics.append(
-                Diagnostic(kind=EXTRA, path=rel_path, message="file is not in the recorded seal")
-            )
-
-    if runtime_version is not None:
-        if seal["runtime_contract_version"] != runtime_version:
-            diagnostics.append(
-                Diagnostic(
-                    kind=RUNTIME_MISMATCH,
-                    path=None,
-                    message=(
-                        f"loading environment runtime {runtime_version!r} does not match "
-                        f"recorded runtime_contract_version {seal['runtime_contract_version']!r}"
-                    ),
-                )
-            )
+    fingerprint_diagnostic = _executable_fingerprint_diagnostic(seal)
+    if fingerprint_diagnostic is not None:
+        diagnostics.append(fingerprint_diagnostic)
+    diagnostics.extend(_recorded_artifact_diagnostics(package_dir, recorded_hashes))
+    diagnostics.extend(
+        _extra_artifact_diagnostics(entries, recorded_hashes, seal["coverage_policy"])
+    )
+    runtime_diagnostic = _runtime_diagnostic(seal, runtime_version)
+    if runtime_diagnostic is not None:
+        diagnostics.append(runtime_diagnostic)
 
     fatal = any(d.kind in _INTEGRITY_KINDS for d in diagnostics) or (
-        strict and any(d.kind is RUNTIME_MISMATCH for d in diagnostics)
+        strict and any(d.kind == RUNTIME_MISMATCH for d in diagnostics)
     )
     return VerificationResult(ok=not fatal, diagnostics=diagnostics)
 
@@ -204,6 +437,11 @@ __all__ = [
     "GENERATOR_MISMATCH",
     "RUNTIME_MISMATCH",
     "NAME_MISMATCH",
+    "SEAL_MISSING",
+    "SEAL_UNREADABLE",
+    "SEAL_MALFORMED",
+    "ARTIFACT_UNREADABLE",
+    "INVALID_PATH",
     "Diagnostic",
     "VerificationResult",
     "verify_package",
