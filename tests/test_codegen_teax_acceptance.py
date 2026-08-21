@@ -14,10 +14,21 @@ from sysml_codegen.snapshot.capture import (  # type: ignore[import-untyped]
 )
 
 REPOSITORY = Path(__file__).resolve().parents[1]
+#: The IFE family's two model trees. ``models/`` holds two design families since the
+#: stellarator model migration, so "primary" is the IFE family's canonical subset,
+#: materialized per module (tests/model_families.py); "exploration" is the IFE twin.
 MODEL_TREES = {
-    "primary": REPOSITORY / "models",
+    "primary": "canonical-ife-subset",
     "exploration": REPOSITORY / "exploration" / "ife_e2e" / "models",
 }
+
+
+def _resolve_models(tree_name: str, root: Path) -> Path:
+    from tests.model_families import IFE, materialize_canonical_subset
+
+    if MODEL_TREES[tree_name] == "canonical-ife-subset":
+        return materialize_canonical_subset(IFE, root / "canonical-ife-subset")
+    return MODEL_TREES[tree_name]
 PACKAGE_NAME = "fusion_tea_final"
 EXPECTED_CHANNELS = {
     "constraint_report",
@@ -73,8 +84,8 @@ def _execute(package: Path, root: Path):
 @pytest.fixture(scope="module", params=tuple(MODEL_TREES))
 def public_routes(request, tmp_path_factory):
     tree_name = request.param
-    models = MODEL_TREES[tree_name]
     root = tmp_path_factory.mktemp(f"fusion-final-{tree_name}")
+    models = _resolve_models(tree_name, root)
     live = _generate(
         GenerationConfig(
             models_path=models,

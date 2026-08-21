@@ -67,20 +67,38 @@ Command: `study_route.run_design_search(out)` (948 points, 132 s) and `study_rou
 Channels compared per point: lcoe, wall_load, p_fus, plasma_volume, total_capital, magnet_capital, overnight_capital, lcoe_1cfe; verdicts: beta_ok, net_positive, recirc_ok, tbr_ok, wall_load_ok, feasible. The bar was rel < 1e-9 by value; the result is bit-for-bit equality of every exported number and verdict at every point. Every Class A and Class B edit in the ledger is therefore numerically inert over the whole accepted study space, not only at the baseline (bet B1).
 
 
-## 4. Verification summary (plan Phase 3)
+## 4. Verification summary (plan Phase 3; run after the Phase 1–3 commit `89f78130`)
 
-`scripts/study/verify.py` was run against the grid and sweep stores with the sealed identity. It passes identity and manifest currency and loads the oracle seam (`studies/oracle_entry.py`, re-keyed to the renamed entry points and the renamed predicate operands `beta_in`, `beta_limit_in`, `tbr_in`, `tbr_floor_in`, `wall_load_limit_in`; CAS27 mapped as an oracle-computed channel; the glue surfaces `GLUE_FED`, `DEAD_FILLER`, `GLUE_VALUE_KEYS`, `glue_values()` removed), then stops at its package-cleanliness precondition on the uncommitted tree. The full summary (stratified parity at rel < 1e-9, `not_independently_verified: []`, CAS27 / `total_capital` / LCOE among `channels_checked`) is produced after the branch commit and recorded in § 7.
+```
+PYTHONPATH=$STOP_PARSER_TEAX_ROOT/packages/teax-simkit uv run python scripts/study/verify.py \
+    --package exploration/stellarator_e2e/pkg/stellarator_tea --manifest exploration/stellarator_e2e/studies/manifest.json \
+    --identity <out>/package_identity.json --store <out>/_work/stellarator-design-search-ra-v1.db \
+    --store <out>/_work/stellarator-availability-sweep-v1.db --out <out>/verification_summary.json
+```
 
-On the stock route the identity document's `glue_ledger` is empty by construction (`identity.build_sealed`), so `not_independently_verified` is `[]`; `tests/study/test_verify.py::test_cas27_is_compared_and_nothing_is_undisclosed` asserts both that and the presence of the CAS27 comparison.
+| Field | Value |
+|---|---|
+| `outcome` | `pass` |
+| stores | `stellarator-design-search-ra-v1` (948 completed, 12 sampled over 3 verdict strata), `stellarator-availability-sweep-v1` (19 completed, 12 sampled over 1 verdict strata) |
+| `channels_checked` | 7: `cas72`, `fuel`, `lcoe_1cfe`, `lcoe`, `cas27`, `total_capital`, `wall_load` -- CAS27 (`special_materials_capital`), `total_capital` and LCOE among them |
+| `tolerance` | 1e-09 |
+| `worst_channel_rel_dev` | 6.270e-16 (before-record: 5.67e-16) |
+| `verdicts_rederived` / `constraints_rederived` | True / `beta_ok` (2), `net_positive` (1), `recirc_ok` (2), `tbr_ok` (2), `wall_load_ok` (2) |
+| **`not_independently_verified`** | **`[]`** (before-record: the g3 CAS27 rung) -- SC4 |
+| `identity.kind` / digest | `sealed` / `bf480f687963b7f8…` == sealed executable fingerprint |
+| `package.git_clean` | True |
 
+The oracle seam (`studies/oracle_entry.py`) is re-keyed to the renamed entry points and the renamed predicate operands (`beta_in`, `beta_limit_in`, `tbr_in`, `tbr_floor_in`, `wall_load_limit_in`); CAS27 is mapped as an oracle-computed channel; the glue surfaces (`GLUE_FED`, `DEAD_FILLER`, `GLUE_VALUE_KEYS`, `glue_values()`) are gone. `tests/study/test_verify.py::test_cas27_is_compared_and_nothing_is_undisclosed` asserts the empty disclosure and the CAS27 comparison.
 
-## 5. Preflight gates (plan Phase 3)
+## 5. Preflight gates (plan Phase 3; run after the Phase 1–3 commit `89f78130`)
 
 ```
 uv run python scripts/study/preflight.py gates --package exploration/stellarator_e2e/pkg/stellarator_tea \
     --manifest exploration/stellarator_e2e/studies/manifest.json --groups tests/study/data/axes.known_answers.json \
     --identity <out>/package_identity.json --baseline-result <out>/baseline_result.json --out <out>/preflight_results.json
 ```
+
+Outcome: **`pass`** -- all six gates.
 
 | Gate | Status | Detail |
 |---|---|---|
@@ -89,12 +107,11 @@ uv run python scripts/study/preflight.py gates --package exploration/stellarator
 | `identity` | pass | kind sealed, digest bf480f687963b7f89a70fb3d36cfca230745f3ec8bd0755a28cc5212782c7049 recomputed from 0 allowed-modified file(s) and 0 declared source( |
 | `manifest_currency` | pass | both recorded package fingerprints match the package on disk |
 | `baseline_headline` | pass | stellarator_09__stellaris__lcoe_calc__lcoe reproduces at relative deviation 0.000e+00; 5/5 pinned verdicts match |
-| `package_clean` | fail | the package tree is not git-clean — a run mutated the committed package: |
+| `package_clean` | pass | package tree is byte-untouched (git clean) |
 
-`package_clean` fails on the working tree *before the branch commit* because the regenerated package is uncommitted -- the gate is doing its job. It is re-run after the commit (plan Phase 6) and the pass is recorded there; `scripts/study/verify.py` carries the same cleanliness precondition and is re-run at the same point.
+Before the commit, `package_clean` alone refused (the regenerated package was uncommitted) -- the gate doing its job; the other five passed on the working tree.
 
-Manifest re-pin (from the sealed contracts, never by suffix substitution): `recorded_provenance` = new executable + semantic fingerprints; `indicator_inputs` recomputed over `contracts/model_contract.json`, the five `inputs/*.json`, `pipelines/pipeline.yaml`; baseline point re-keyed; tie `magnet__R0 rides_with [R]`; objective catalog + `cas27` (`stellarator_09__stellaris__special_materials_capital__special_materials_capital`) so generic verification compares CAS27 against the oracle's recompute. `git diff -- scripts/study/` is empty.
-
+Manifest re-pin (from the sealed contracts, never by suffix substitution): `recorded_provenance` = new executable + semantic fingerprints; `indicator_inputs` recomputed over `contracts/model_contract.json`, the five `inputs/*.json`, `pipelines/pipeline.yaml`; baseline point re-keyed; tie `magnet__R0 rides_with [R]`; objective catalog + `cas27` so generic verification compares CAS27 against the oracle's recompute. `git diff -- scripts/study/` is empty.
 
 ## 6. Mutation probes (plan Phase 3–4)
 

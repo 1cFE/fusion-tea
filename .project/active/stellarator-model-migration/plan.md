@@ -1,6 +1,6 @@
 # Implementation Plan: Stellarator Model Migration
 
-**Status:** In Progress (Phases 1–3 complete; two gates await the branch commit)
+**Status:** In Progress (Phases 1–4 complete)
 **Created:** 2026-08-21
 **Last Updated:** 2026-08-21
 **Branch:** `feat/stellarator-model-migration` (one PR; see design D5)
@@ -341,35 +341,35 @@ def test_mfe_blanket_thickness_mutation_reaches_every_and_only_its_consumers(...
 **Specific changes:**
 
 #### 1. Promote source
-- [ ] Copy the 14 staged files into `models/library/{foundation,cost_structure,analyses}/` and `models/designs/{generic_mfe,stellarator_09}/` (logical-path mapping = the existing `strip_library` rule)
-- [ ] `economic_parameter.sysml` (3-member enum): canonical ← staged; copy to `exploration/ife_e2e/models/foundation/` too
-- [ ] Confirm `cas_hierarchy.sysml` and `costed_component.sysml` are byte-identical across canonical, IFE twin, MFE twin (if not, that is a finding: resolve to one file in all three and ledger it)
-- [ ] Canonical now has 22 `.sysml` files
+- [x] Copy the 14 staged files into `models/library/{foundation,cost_structure,analyses}/` and `models/designs/{generic_mfe,stellarator_09}/` (logical-path mapping = the existing `strip_library` rule)
+- [x] `economic_parameter.sysml` (3-member enum): canonical ← staged; copy to `exploration/ife_e2e/models/foundation/` too
+- [x] Confirm `cas_hierarchy.sysml` and `costed_component.sysml` are byte-identical across canonical, IFE twin, MFE twin (if not, that is a finding: resolve to one file in all three and ledger it)
+- [x] Canonical now has 22 `.sysml` files
 
 #### 2. Family spine
-- [ ] `tests/models/test_model_family_spines.py`: grow the Phase 1 file into the stencil; port `_entry_sources`, `_consumers_of`, `_predicate_feature_refs`, `_model_files_by_logical_path` unchanged from the old module
-- [ ] MFE census numbers and consumer sets: read from the Phase 2 sealed package (`contracts/model_contract.json`, `pipelines/*.yaml`), never from the retired `1.0.0` contract (`design.md#implementation-notes`)
-- [ ] IFE: the 11 + 7 identity sets merge into one 18-set; 23/18 classification, `LIBRARY_DEFAULTS`, `USAGE_LITERALS`, both mutations unchanged (D7 — record the choice in the module docstring and in SC7's ledger line)
-- [ ] Delete `tests/models/test_self_binding_replacement.py`
+- [x] `tests/models/test_model_family_spines.py`: grow the Phase 1 file into the stencil; port `_entry_sources`, `_consumers_of`, `_predicate_feature_refs`, `_model_files_by_logical_path` unchanged from the old module
+- [x] MFE census numbers and consumer sets: read from the Phase 2 sealed package (`contracts/model_contract.json`, `pipelines/*.yaml`), never from the retired `1.0.0` contract (`design.md#implementation-notes`)
+- [x] IFE: the 11 + 7 identity sets merge into one 18-set; 23/18 classification, `LIBRARY_DEFAULTS`, `USAGE_LITERALS`, both mutations unchanged (D7 — record the choice in the module docstring and in SC7's ledger line)
+- [x] Delete `tests/models/test_self_binding_replacement.py`
 
 #### 3. Root acceptance tests
-- [ ] `tests/test_codegen_teax_acceptance.py:16-32` and `tests/test_occurrence_mutation_teax.py:18-28`: `MODEL_TREES["primary"]` becomes a materialized IFE canonical subset (reuse the family registry's owned-path list), expectations unchanged
+- [x] `tests/test_codegen_teax_acceptance.py:16-32` and `tests/test_occurrence_mutation_teax.py:18-28`: `MODEL_TREES["primary"]` becomes a materialized IFE canonical subset (reuse the family registry's owned-path list), expectations unchanged
 
 #### 4. Power-balance test and notes
-- [ ] `tests/models/test_power_balance.py:20-30`: `LIBRARY_DIR = models/library`, delete the TEMPORARY note
-- [ ] `exploration/stellarator_e2e/STAGED_MODELS.md` → rewrite as the twin's note (mirror of `models/`, kept byte-identical by the family spine), or delete if `exploration/ife_e2e/` carries no equivalent; record the choice
-- [ ] Ledger: switch file:line references to canonical paths (design "Finalize ledger line references")
+- [x] `tests/models/test_power_balance.py:20-30`: `LIBRARY_DIR = models/library`, delete the TEMPORARY note
+- [x] `exploration/stellarator_e2e/STAGED_MODELS.md` → rewrite as the twin's note (mirror of `models/`, kept byte-identical by the family spine), or delete if `exploration/ife_e2e/` carries no equivalent; record the choice
+- [x] Ledger: switch file:line references to canonical paths (design "Finalize ledger line references")
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/models -q` → green; family spine: both families generate, censuses exact, four mutations pass
-- [ ] `STOP_PARSER_TEAX_ROOT=… STOP_PARSER_WHEEL_TARGET=… uv run python -m pytest tests/test_codegen_teax_acceptance.py tests/test_occurrence_mutation_teax.py -q` → green on the IFE subset
-- [ ] `uv run agentic-mbse validate models --level 1` → pass (the current project bar; `design.md#research-findings`)
+- [x] `uv run python -m pytest tests/models -q` → green; family spine: both families generate, censuses exact, four mutations pass
+- [x] `STOP_PARSER_TEAX_ROOT=… STOP_PARSER_WHEEL_TARGET=… uv run python -m pytest tests/test_codegen_teax_acceptance.py tests/test_occurrence_mutation_teax.py -q` → green on the IFE subset
+- [x] `uv run agentic-mbse validate models --level 1` → pass (the current project bar; `design.md#research-findings`)
 
 **Manual:**
-- [ ] `find models -name '*.sysml' | wc -l` → 22; `diff -r` canonical logical paths vs each twin → empty
-- [ ] IFE census unchanged: 23 entry points / 18 design attributes (proves the enum member is inert, D9)
+- [x] `find models -name '*.sysml' | wc -l` → 22; `diff -r` canonical logical paths vs each twin → empty
+- [x] IFE census unchanged: 23 entry points / 18 design attributes (proves the enum member is inert, D9)
 
 **What We Know Works After This Phase:**
 SC6, SC7, SC10 (structural) met. `models/` is a two-family source collection with byte-identical twins, and each family generates alone. The "Test cleanup" BACKLOG row is discharged in substance.
@@ -548,10 +548,25 @@ The item is auditable end to end. Next: `/_my_audit`, then `/_my_pre_pr`.
 - The after CSVs turned out byte-identical to the before CSVs, so the "by value" join is stronger than required; the record states both.
 
 ### Phase 4 Completion
-**Completed:**
+**Completed:** 2026-08-21
 **Actual Changes:**
-**Issues:**
-**Deviations:**
+- Phase 1–3 committed first as `89f78130` (owner: "commit"); then preflight 6/6 (`package_clean` included) and `verify.py` `outcome: pass` -- 7 channels incl. `cas27`, worst 6.3e-16, `not_independently_verified: []`, 5 verdicts re-derived -- recorded in `AFTER_MIGRATION_RECORD.md` § 4/§ 5 (SC4, SC5).
+- Promotion: the 14 staged files copied into `models/library/{foundation,cost_structure,analyses}/` and `models/designs/{generic_mfe,stellarator_09}/`; the three-member `economic_parameter.sysml` synchronized into `exploration/ife_e2e/models/` (D9). Canonical now has 22 SysML files; the three shared files are byte-identical in all three homes.
+- `tests/model_families.py` (NEW): the family registry -- owned logical paths per family, shared paths, canonical↔twin layout mapping, `materialize_canonical_subset` (D6/D8).
+- `tests/models/test_model_family_spines.py`: the full spine (13 tests) -- owned-path coverage, per-family twin equality, shared-file agreement in three homes, layout-collision falsifier, per-family generation + live==snapshot, IFE census (23/18 with the 11+7 sets merged into one, D7; library defaults and usage literals unchanged), MFE census from `tests/models/data/mfe_census.json` (NEW, captured from the sealed 2.0.0 contract and bound to its semantic fingerprint), the two IFE mutations unchanged, two MFE mutations (`cas28_capital` → exactly the two CAS2x rollups; `blanket_t` → exactly `rb.blanket_t_in`). `tests/models/test_self_binding_replacement.py` deleted.
+- `tests/test_codegen_teax_acceptance.py`, `tests/test_occurrence_mutation_teax.py`: "primary" is the IFE canonical subset materialized per module through the registry; expectations unchanged; 20/20 with `STOP_PARSER_*` set.
+- `tests/models/test_power_balance.py`: `LIBRARY_DIR = models/library`, TEMPORARY note deleted.
+- `exploration/stellarator_e2e/STAGED_MODELS.md`: rewritten as the twin's note.
+- `tests/study/test_verify.py`: the unresolvable-binding test uses the renamed operand `beta_limit_in` (last stock-route failure).
+- Checks: `tests/models` 43 passed / 13 pre-existing skips; `validate models --level 1` passes; ruff clean on all new/changed files (the three pre-existing findings in `test_power_balance.py` untouched).
+
+**Issues Encountered:**
+- The IFE census is unchanged by the enum promotion (23/18, same sets), so the new `mfe_divergent` member is inert for IFE (D9 proved).
+- The sealed model contract carries no unit field, so the 73 `:>>` redefinition lines in `stellarator_plant.sysml` that still have trailing comments (the Phase 1 move matched `attribute` lines only -- a `\b` after `:>>` never matches) affect nothing sealed; left as is and noted in the ledger header.
+
+**Deviations from Plan:**
+- The family registry is a module under `tests/` (`tests/model_families.py`) imported by both the spine and the root acceptance tests, rather than living inside the spine module: the root tests need the same owned-path list and materializer.
+- The MFE census is a JSON fixture rather than inline sets: 166 qualified names inline would bury the test; the fixture is bound to the semantic fingerprint exactly like the study known answers.
 
 ### Phase 5 Completion
 **Completed:**

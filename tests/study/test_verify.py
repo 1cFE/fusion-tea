@@ -232,14 +232,14 @@ def test_an_unresolvable_binding_fails_naming_the_constraint_and_operand(
 
     def broken():
         table = real()
-        table[cid]["beta_limit"] = {"kind": "input", "key": "no_such__key"}
+        table[cid]["beta_limit_in"] = {"kind": "input", "key": "no_such__key"}
         return table
 
     monkeypatch.setattr(oracle_entry, "operand_bindings", broken)
     with pytest.raises(verify.VerifyError) as exc:
         verify.build_summary(PACKAGE, MANIFEST, promoted_run["identity"],
                              [promoted_run["store"]], 12, None, [])
-    assert cid in str(exc.value) and "beta_limit" in str(exc.value)
+    assert cid in str(exc.value) and "beta_limit_in" in str(exc.value)
     assert "no_such__key" in str(exc.value)
 
 

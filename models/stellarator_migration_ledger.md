@@ -1,7 +1,7 @@
 # Stellarator model migration ledger
 
 **Item:** `.project/active/stellarator-model-migration/` (spec SC8, R5; design D1, D2, D13, D14)
-**Tree:** the MFE model source, repaired in the staged twin `exploration/stellarator_e2e/models/` and promoted byte-for-byte into `models/library/` and `models/designs/` (plan Phase 4). `file:line` below is the path inside either tree (the twin stores library files without the `library/` prefix); line numbers are those of the repaired tree at Phase 1 exit and are re-checked at promotion.
+**Tree:** the MFE model source, repaired in the staged twin `exploration/stellarator_e2e/models/` and promoted byte-for-byte into `models/library/` and `models/designs/` (plan Phase 4). `file:line` below is the path inside either tree (the twin stores library files without the `library/` prefix); line numbers are those of the repaired tree at Phase 1 exit; promotion (plan Phase 4, 2026-08-21) copied the files byte-for-byte, so they hold for `models/library/<path>` and `models/designs/<path>` alike. Note: 73 `:>>` redefinition lines in `stellarator_plant.sysml` still carry trailing `//` comments (the declaration-comment move matched `attribute` lines only); they were left because the sealed contract carries no unit field and generation is clean with them in place -- they are not ledgered as changes because nothing changed.
 **Toolchain:** sysml-codegen `8a758e92` (fusion-tea's pin; the installed package), D-5 transformer `scripts/make_d5_variant.py` at that same commit (blob `765dccad41426420b70f62f385bb3af1d337028f`), teax `744745f`. Pre-rewrite text is in git at the PR parent `7ee0c22a`.
 **Date:** 2026-08-21
 
