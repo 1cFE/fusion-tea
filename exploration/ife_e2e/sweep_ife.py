@@ -4,12 +4,20 @@ Calls the codegen-generated implementation functions directly
 (ife_tea.handwritten.*) — the same code the teax executor ran for the anchor
 checks — in-process, so a ~10k-point grid takes seconds instead of hours.
 
-Classification per point (harness-side, per WI-014: constraints do not
-survive codegen extraction — Phase 6 gap):
-  - viable:      eta * G > 10      (DI-001, fusion_cycle.sysml
-                                    'Viability Threshold')
+Classification per point:
+  - viable: the GENERATED 'Viability Threshold' predicate (eta * gain >= threshold,
+    threshold default 10.0; fusion_cycle.sysml, DI-001), called directly —
+    CONSTRAINT-EXEC Item 14 (W1) landed the fix that lets this constraint lower and
+    execute; W4 retired the harness's hand-duplicated `eta * G > 10` rule (formerly
+    here) in favor of the model's own assertion. See
+    `study/run_viability_study.py` for the full acceptance replay (old hand rule vs
+    this predicate, over the same grid) that authorized the retirement — 100%
+    agreement except grid points exactly ON the threshold, where the hand rule's
+    strict `>` and the model's `>=` genuinely diverge (7 such points; flagged, not
+    reconciled away, in `study/acceptance_table.csv`).
   - power_positive: P_net > 0      (Hawker Eq. 2.12: eta_th*M*G*eta > 2)
-  - attractive:  viable AND lcoe <= $100/MWh (LCOE-threshold overlay)
+  - attractive:  viable AND lcoe <= $100/MWh (LCOE-threshold overlay; policy,
+    stays hand-coded — not a modeled constraint)
 
 Non-swept parameters are held at the realistic-HIF baseline (anchor B),
 so the f=5 Hz, eta=0.25, G=100 grid point reproduces the $68.69 anchor.
@@ -34,6 +42,10 @@ from ife_tea.handwritten.fusion_cycle.recirculating_power_fraction_impl import (
     run_recirculating_power_fraction,
 )
 from ife_tea.handwritten.ife_lcoe.ife_lcoe_impl import run_ife_lcoe  # noqa: E402
+from ife_tea.modules.constraints.predicates import (  # noqa: E402
+    _finalize_assertion,
+    constraint_pred_definition_fusion_cycle__viability_threshold,
+)
 from ife_tea.modules.fusion_cycle.recirculating_power_fraction import (  # noqa: E402
     Recirculating_Power_FractionInput,
 )
@@ -52,8 +64,8 @@ ETA_GRID = [0.02 + 0.01 * i for i in range(39)]          # 0.02 .. 0.40
 G_GRID = [10.0 + 5.0 * i for i in range(59)]             # 10 .. 300
 F_GRID = [1.0, 2.0, 5.0, 10.0, 20.0]                     # Hz
 
-LCOE_THRESHOLD = 100.0  # $/MWh overlay
-ETA_G_MIN = 10.0        # DI-001
+LCOE_THRESHOLD = 100.0    # $/MWh overlay (policy, hand-coded — see module docstring)
+VIABILITY_THRESHOLD = 10.0  # 'Viability Threshold' constraint default (fusion_cycle.sysml)
 
 
 def main() -> None:
@@ -79,7 +91,15 @@ def main() -> None:
                            (BASE["thermal_efficiency"] * BASE["blanket_energy_multiple"]
                             * g * eta - 2.0))
                 eta_g = eta * g
-                viable = eta_g > ETA_G_MIN
+                # Per-definition predicate body + stock finalize (positive assertion:
+                # not negated, expected True). Migrated from the pre-epic per-usage
+                # predicate `constraint_pred_ife_plant__ife_power_plant__viability` to the
+                # per-definition API the pinned codegen emits (Item 13 compose migration).
+                _body = constraint_pred_definition_fusion_cycle__viability_threshold(
+                    eta=eta, gain=g, threshold=VIABILITY_THRESHOLD
+                )
+                verdict = _finalize_assertion(_body, is_negated=False, expected_value=True)
+                viable = verdict.status == "satisfied"
                 power_positive = p_net_w > 0.0
                 attractive = viable and power_positive and lcoe <= LCOE_THRESHOLD
                 rows.append(dict(
@@ -103,7 +123,7 @@ def main() -> None:
     npp = sum(r["power_positive"] for r in rows)
     print(f"{n} grid points in {time.time()-t0:.1f}s -> {path}")
     print(f"power-positive: {npp} ({100*npp/n:.1f}%)")
-    print(f"viable (eta*G>10): {nv} ({100*nv/n:.1f}%)")
+    print(f"viable ('Viability Threshold' satisfied): {nv} ({100*nv/n:.1f}%)")
     print(f"attractive (viable & LCOE<=${LCOE_THRESHOLD:.0f}): {na} ({100*na/n:.1f}%)")
 
     # sanity: anchor B point must be on the grid and reproduce $68.69

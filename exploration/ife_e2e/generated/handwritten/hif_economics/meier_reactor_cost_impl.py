@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:43
+SysML Source: root-0/analyses/hif_economics.sysml:43
 
 SysML Expressions:
     reactor_cost_billions = 0.66 * (thermal_power_gw / 1.67) ** 0.49 * (0.72 * num_units + 0.28)
@@ -39,7 +39,7 @@ b = 0.49 (power scaling exponent).
 *Ref**: Eq. 3 (lines 119-137)
 *Basis**: Meier 1986 reactor cost scaling. Year-dollars: 1988$.
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:43
+SysML Source: root-0/analyses/hif_economics.sysml:43
 
 SysML Expressions:
     reactor_cost_billions = 0.66 * (thermal_power_gw / 1.67) ** 0.49 * (0.72 * num_units + 0.28)

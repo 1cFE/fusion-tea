@@ -1,0 +1,287 @@
+{
+  "catalog_schema_version": "2.0.0",
+  "constraint_catalog": {
+    "concrete_entries": [
+      {
+        "constraint_id": "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b",
+        "definition_qualified_name": "fusion_cycle::'Viability Threshold'",
+        "evaluation_channel": "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "hif_plant_pkg__hif_plant",
+        "owner_qualified_name": "ife_plant::'IFE Power Plant'",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"eta\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"eta\",\"qualified_name\":\"fusion_cycle::'Viability Threshold'::eta\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"gain\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"gain\",\"qualified_name\":\"fusion_cycle::'Viability Threshold'::gain\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"*\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"threshold\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"threshold\",\"qualified_name\":\"fusion_cycle::'Viability Threshold'::threshold\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:fusion_cycle::'Viability Threshold'",
+        "source_form": "definition_typed",
+        "source_local_identity": "viability",
+        "usage_qualified_name": "ife_plant::'IFE Power Plant'::viability"
+      }
+    ],
+    "excluded_records": [],
+    "fingerprint": "90814c774f318665574086fd296e77a2206cd0e48b15eea7a5beae164d8608f8",
+    "source_records": [
+      {
+        "definition_qualified_name": "fusion_cycle::'Viability Threshold'",
+        "formal_names": [
+          "eta",
+          "gain",
+          "threshold"
+        ]
+      }
+    ],
+    "usage_records": [
+      {
+        "definition_qualified_name": "fusion_cycle::'Viability Threshold'",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_kind": "part_def",
+        "owner_qualified_name": "ife_plant::'IFE Power Plant'",
+        "source_form": "definition_typed",
+        "source_local_identity": "viability",
+        "usage_qualified_name": "ife_plant::'IFE Power Plant'::viability"
+      }
+    ]
+  },
+  "evaluation_semantics": "kleene-three-valued",
+  "outputs": [
+    {
+      "channel_name": "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions",
+      "field_name": "cost_billions",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "hif_plant_pkg__hif_plant__driver__meier_cost__gamma",
+      "field_name": "gamma",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "hif_plant_pkg__hif_plant__recirc_calc__f_recirc",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "hif_plant_pkg__hif_plant__lcoe_calc__lcoe",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "hif_plant_pkg__hif_plant__meier_coe_calc__coe_cents_kwh",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "constraint_report",
+      "field_name": "constraint_report",
+      "python_type": "ConstraintReport"
+    }
+  ],
+  "parameters": [
+    {
+      "default_value": 80.0,
+      "entry_type": "design_attribute",
+      "param_group": "hif_plant_params",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__gain"
+    },
+    {
+      "default_value": 0.1,
+      "entry_type": "usage_literal",
+      "param_group": "hif_plant_params",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__meier_capital_calc__target_factory_cost"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "usage_literal",
+      "param_group": "hif_plant_params",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__num_units"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "hif_plant_params",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__net_electric_power_gw"
+    },
+    {
+      "default_value": 2.054,
+      "entry_type": "design_attribute",
+      "param_group": "hif_plant_params",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__thermal_power_gw"
+    },
+    {
+      "default_value": 1.15,
+      "entry_type": "design_attribute",
+      "param_group": "ife_plant_params",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple"
+    },
+    {
+      "default_value": 5000000.0,
+      "entry_type": "design_attribute",
+      "param_group": "ife_plant_params",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__chamber__yield_cost_constant"
+    },
+    {
+      "default_value": 0.35,
+      "entry_type": "design_attribute",
+      "param_group": "ife_plant_params",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__driver__efficiency"
+    },
+    {
+      "default_value": 14286000.0,
+      "entry_type": "design_attribute",
+      "param_group": "ife_plant_params",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__driver__energy"
+    },
+    {
+      "default_value": 6000000000.0,
+      "entry_type": "design_attribute",
+      "param_group": "ife_plant_params",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__driver__lifetime_shots"
+    },
+    {
+      "default_value": 5.0,
+      "entry_type": "library_default",
+      "param_group": "ife_plant_params",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__lcoe_calc__construction_years"
+    },
+    {
+      "default_value": 40.0,
+      "entry_type": "library_default",
+      "param_group": "ife_plant_params",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__lcoe_calc__operational_years"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "ife_plant_params",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__target_factory__cost_per_target"
+    },
+    {
+      "default_value": 5.0,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__driver__meier_cost__beam_energy_mj"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__driver__meier_cost__num_chambers"
+    },
+    {
+      "default_value": 3.5,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__driver__meier_cost__rep_rate"
+    },
+    {
+      "default_value": 0.9,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__lcoe_calc__availability"
+    },
+    {
+      "default_value": 0.08,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__lcoe_calc__discount_rate"
+    },
+    {
+      "default_value": 3.5,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__lcoe_calc__frequency"
+    },
+    {
+      "default_value": 80.0,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__lcoe_calc__gain"
+    },
+    {
+      "default_value": 65.0,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__lcoe_calc__om_cost_constant"
+    },
+    {
+      "default_value": 2000.0,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__lcoe_calc__plant_cost_constant"
+    },
+    {
+      "default_value": 0.43,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__lcoe_calc__thermal_efficiency"
+    },
+    {
+      "default_value": 0.9,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__meier_coe_calc__availability"
+    },
+    {
+      "default_value": 80.0,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__recirc_calc__gain"
+    },
+    {
+      "default_value": 0.43,
+      "entry_type": "usage_literal",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__recirc_calc__thermal_efficiency"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "library_default",
+      "param_group": "system_design",
+      "python_type": "float",
+      "qualified_name": "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__threshold"
+    }
+  ],
+  "semantic_fingerprint": "4b0c9d2a5c3479889f7b6479187a7913cbc5fee7163bcf16f72c65058345281b"
+}

@@ -12,7 +12,6 @@ modules:
   entry_fusion:
     module_type: EntryPoint
     inputs:
-      hif_driver_params: HifDriverParams ../inputs/hif_driver_params.json
       hif_plant_params: HifPlantParams ../inputs/hif_plant_params.json
       ife_plant_params: IfePlantParams ../inputs/ife_plant_params.json
       system_design: SystemDesign ../inputs/system_design.json
@@ -22,7 +21,7 @@ modules:
   hif_plant_pkg__hif_plant__meier_reactor_cost_calc:
     module_type: hif_economics.Meier_Reactor_CostModule
     inputs:
-      thermal_power_gw: float hif_plant_params.hif_plant_pkg__hif_plant__meier_reactor_cost_calc__thermal_power_gw
+      thermal_power_gw: float hif_plant_params.hif_plant_pkg__hif_plant__thermal_power_gw
       num_units: float hif_plant_params.hif_plant_pkg__hif_plant__meier_reactor_cost_calc__num_units
     outputs:
       root: RootModel[float] hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions
@@ -32,7 +31,7 @@ modules:
     module_type: hif_economics.Meier_HIF_Driver_CostModule
     inputs:
       beam_energy_mj: float system_design.hif_plant_pkg__hif_plant__driver__meier_cost__beam_energy_mj
-      driver_efficiency: float hif_driver_params.hif_driver__HIF_Driver__efficiency
+      driver_efficiency: float ife_plant_params.hif_plant_pkg__hif_plant__driver__efficiency
       num_chambers: float system_design.hif_plant_pkg__hif_plant__driver__meier_cost__num_chambers
       rep_rate: float system_design.hif_plant_pkg__hif_plant__driver__meier_cost__rep_rate
     outputs:
@@ -89,9 +88,27 @@ modules:
     inputs:
       total_capital_billions: float hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions.root
       availability: float system_design.hif_plant_pkg__hif_plant__meier_coe_calc__availability
-      net_electric_power_gw: float hif_plant_params.hif_plant_pkg__hif_plant__meier_coe_calc__net_electric_power_gw
+      net_electric_power_gw: float hif_plant_params.hif_plant_pkg__hif_plant__net_electric_power_gw
     outputs:
       root: RootModel[float] hif_plant_pkg__hif_plant__meier_coe_calc__coe_cents_kwh
+
+  # hif_plant_pkg.HifPlantViabilityConstraintModule
+  hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b:
+    module_type: hif_plant_pkg.HifPlantViabilityConstraintModule
+    inputs:
+      eta: float ife_plant_params.hif_plant_pkg__hif_plant__driver__efficiency
+      gain: float hif_plant_params.hif_plant_pkg__hif_plant__gain
+      threshold: float system_design.hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__threshold
+    outputs:
+      evaluation: ConstraintEvaluation hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation
+
+  # constraints.ConstraintReportAggregatorModule
+  constraint_report_aggregator:
+    module_type: constraints.ConstraintReportAggregatorModule
+    inputs:
+      hif_plant_pkg_hif_plant_viability_81ddf10fb1d1749b: ConstraintEvaluation hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation
+    outputs:
+      constraint_report: ConstraintReport constraint_report
 
 
   # Exit point - capture all results
@@ -105,3 +122,5 @@ modules:
       hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions: RootModel[float] hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions.json
       hif_plant_pkg__hif_plant__lcoe_calc__lcoe: RootModel[float] hif_plant__lcoe.json
       hif_plant_pkg__hif_plant__meier_coe_calc__coe_cents_kwh: RootModel[float] hif_plant__meier_coe.json
+      hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation: ConstraintEvaluation hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation.json
+      constraint_report: ConstraintReport constraint_report.json

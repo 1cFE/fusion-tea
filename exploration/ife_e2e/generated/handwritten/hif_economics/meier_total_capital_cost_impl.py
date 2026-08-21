@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:65
+SysML Source: root-0/analyses/hif_economics.sysml:65
 
 SysML Expressions:
     total_capital_billions = 1.83 * (reactor_cost + driver_cost + target_factory_cost)
@@ -33,7 +33,7 @@ at 1.53 and nuclear-best at 2.07).
 *Ref**: Eq. 2 (lines 102-117)
 *Basis**: Meier 1986 indirect cost multiplier. Year-dollars: 1988$.
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/hif_economics.sysml:65
+SysML Source: root-0/analyses/hif_economics.sysml:65
 
 SysML Expressions:
     total_capital_billions = 1.83 * (reactor_cost + driver_cost + target_factory_cost)

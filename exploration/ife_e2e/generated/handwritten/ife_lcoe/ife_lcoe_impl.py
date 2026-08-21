@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml:4
+SysML Source: root-0/analyses/ife_lcoe.sysml:4
 
 SysML Expressions:
     construction_years = 5.0
@@ -78,7 +78,7 @@ where the factor of 2 approximates recirculating power as
 *Basis**: Hawker 2020 DCF LCOE model with 14 technology-agnostic parameters;
 closed-form PVF replaces year-by-year iteration per DD-3
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/ife_lcoe.sysml:4
+SysML Source: root-0/analyses/ife_lcoe.sysml:4
 
 SysML Expressions:
     construction_years = 5.0

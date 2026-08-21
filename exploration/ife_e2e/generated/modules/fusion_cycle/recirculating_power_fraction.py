@@ -23,9 +23,9 @@ Inputs:
 Outputs:
     - f_recirc: f_recirc result
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/fusion_cycle.sysml:4
+SysML Source: root-0/analyses/fusion_cycle.sysml:4
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/fusion_cycle.sysml:4
+SysML Source: root-0/analyses/fusion_cycle.sysml:4
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/fusion_cycle/recirculating_power_fraction_impl.py
@@ -76,9 +76,9 @@ Inputs:
 Outputs:
     - f_recirc: f_recirc result
 
-SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/fusion_cycle.sysml:4
+SysML Source: root-0/analyses/fusion_cycle.sysml:4
 
-    SysML Source: /home/reid/1cfe/fusion-tea/exploration/ife_e2e/models/analyses/fusion_cycle.sysml:4
+    SysML Source: root-0/analyses/fusion_cycle.sysml:4
 
     Calculation Specification:
         fusion_cycle_gain = eta * gain * blanket_multiplier * thermal_efficiency

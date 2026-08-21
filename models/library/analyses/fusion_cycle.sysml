@@ -17,11 +17,11 @@ package fusion_cycle {
         */
 
         in attribute eta : Real;
-        in attribute gain : Real;
+        in attribute gain_in : Real;
         in attribute blanket_multiplier : Real;
-        in attribute thermal_efficiency : Real;
+        in attribute thermal_efficiency_in : Real;
 
-        attribute fusion_cycle_gain : Real = eta * gain * blanket_multiplier * thermal_efficiency;
+        attribute fusion_cycle_gain : Real = eta * gain_in * blanket_multiplier * thermal_efficiency_in;
 
         out attribute f_recirc : Real = 1.0 / fusion_cycle_gain;
     }
@@ -44,9 +44,9 @@ package fusion_cycle {
         */
 
         in attribute eta : Real;
-        in attribute gain : Real;
+        in attribute gain_in : Real;
         in attribute threshold : Real default 10.0;
 
-        eta * gain >= threshold
+        eta * gain_in >= threshold
     }
 }
