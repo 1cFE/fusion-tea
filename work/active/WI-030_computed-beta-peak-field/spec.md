@@ -21,7 +21,7 @@ Add two library elements and wire them into the generic MFE plant and the Stella
 
 **Research questions served:** RQ-1 (magnet cost is the dominant CAS22 driver; this item makes the field a physics lever, not only a cost term), RQ-5 (the B–beta–fusion-power coupling is high-sensitivity and its omission is the current model's largest silent assumption for any field-dependent study).
 
-**Epic context.** Epic Item 4 ("Codegen + Viability Sweep", `work/backlog/epic-mfe-cost-modeling.md:128`) is half done: constraint predicates now execute (WI-027, SV-033), but the viability set compares two bound inputs. This item converts one of them (`beta_ok`) into a verdict that responds to design levers and adds the first conductor-technology constraint. It is the policy's "internalize and retire the axis" move (`.project/active/demo-study-parameterization-policy/policy.md` § 2.3, § 3 row 3) and the R1 rung of its cycle ladder (§ 4: conductor feasibility "enters as an inequality, not as a solve").
+**Epic context.** Epic Item 4 ("Codegen + Viability Sweep", `work/backlog/epic-mfe-cost-modeling.md:128`) is half done: constraint predicates now execute (WI-027, SV-033), but the viability set compares two bound inputs. This item converts one of them (`beta_ok`) into a verdict that responds to design levers and adds the first conductor-technology constraint. It is the policy's "internalize and retire the axis" move (`modeling_project/STUDY_POLICY.md` § 2.3, § 3 row 3) and the R1 rung of its cycle ladder (§ 4: conductor feasibility "enters as an inequality, not as a solve").
 
 **Insights.** No DI-XXX in `knowledge/KNOWLEDGE.md` covers MFE beta or conductor limits; DI-002 (CAS22 is the divergence point) is the structural frame. A DI for "B enters physics through beta, not only cost" is a candidate insight at close.
 
@@ -53,9 +53,9 @@ The model SHALL compute the volume-averaged beta as `beta = 2 μ0 Σ_s [n_s0 T_s
 
 #### MR-WI030-2: Conductor peak-field limit is an executing constraint
 **Type:** Functional | **Priority:** P0 | **Source:** policy § 4 R1; research § 2b
-The model SHALL assert `B_axis × peak_ratio ≤ B_max` as a viability constraint (`'Conductor Peak Field Limit'`, local identity `peak_field_ok`) beside the existing five, where `peak_ratio` is a bound geometry fact (Stellaris 24.9/9.0 = 2.7667, Table 2 image) and `B_max` a bound conductor ceiling.
+The model SHALL assert `B_peak ≤ B_max` as a viability constraint (`'Conductor Peak Field Limit'`, local identity `peak_field_ok`) beside the existing five, where `B_peak = B_axis × peak_ratio` is forward-computed by a library calc (`'Conductor Peak Field'`), `peak_ratio` is a bound geometry fact (Stellaris 24.9/9.0, bound as its float64 value `2.7666666666666666`, Table 2 image) and `B_max` a bound conductor ceiling. *Amended 2026-08-21 (design, ratified by owner via `/_my_ask_me`): the spec's original single predicate `B_axis × peak_ratio ≤ B_max` compiles on the pinned codegen but `scripts/study/indicators.py:469` and `verify.py:193` cannot parse an arithmetic operand, so the calc-then-compare shape is required; `2.7667` would read `24.9003 > 24.9` (violated) at the design point.*
 **Rationale:** an LTS arm at the Stellaris field must be rejected by the model's own verdict, not by a hand rule in the study.
-**Validation:** six constraints in the catalog; at the Stellaris point `peak_field_ok` is `satisfied` with margin 0.0 (24.9 ≤ 24.9 by the owner's binding) and at `B_max = 13.0` it is `violated`; the predicate compiles with the arithmetic operand, or the R1 fallback (a plant attribute `B_peak`) is used and recorded.
+**Validation:** six constraints in the catalog; at the Stellaris point `peak_field_ok` is `satisfied` with margin 0.0 (24.9 ≤ 24.9 by the owner's binding) and at `B_max = 13.0` it is `violated`; `B_peak` is a calc output channel (`peak_field_calc__B_peak`) and the six constraints parse in `scripts/study/indicators.py` and `verify.py` (amended 2026-08-21; see MR text).
 
 #### MR-WI030-3: Library stays concept-agnostic; values live in the instance
 **Type:** Constraint | **Priority:** P0 | **Source:** MR-3
@@ -64,7 +64,7 @@ The calc def and constraint def SHALL carry no concept values; `μ0` and `e_keV`
 
 #### MR-WI030-4: Every new value sourced (no fallbacks)
 **Type:** Traceability | **Priority:** P0 | **Source:** MR-4; **[OWNER 2026-08-21]** no-fallbacks
-Every new bound value SHALL carry `Source / Ref / Basis`: `n_e0 = 5.06e20`, `T_e0 = 15.40`, `n_He0 = 0.56e20` (Table 5 image Point A); `α_n,e` derived from the printed vol-av/peak pair 3.17/5.06 = 0.596 (derivation in the doc) or the fuel exponent 0.33, per the design's choice; `peak_ratio = 2.7667` (Table 2 image); `B_max = 24.9` (**[OWNER]**, Table 2 image; doc states the 1costingFE ceiling 23.0 T at `defaults.py:611` and that the design value was chosen). Nothing is bound from a typical-literature value.
+Every new bound value SHALL carry `Source / Ref / Basis`: `n_e0 = 5.06e20`, `T_e0 = 15.40`, `n_He0 = 0.56e20` (Table 5 image Point A); `α_n,e` derived from the printed vol-av/peak pair 3.17/5.06 = 0.596 (derivation in the doc) or the fuel exponent 0.33, per the design's choice; `peak_ratio = 2.7666666666666666` (= 24.9/9.0 in float64, Table 2 image; amended 2026-08-21); `B_max = 24.9` (**[OWNER]**, Table 2 image; doc states the 1costingFE ceiling 23.0 T at `defaults.py:611` and that the design value was chosen). Nothing is bound from a typical-literature value.
 **Validation:** citation-by-citation read at audit; every Ref resolves to an image or a pinned upstream line.
 
 #### MR-WI030-5: Regenerate, re-pin, and keep the study capability green
@@ -110,12 +110,12 @@ At the Stellaris design point, LCOE, total capital, `p_net`, `q_eng`, `rec_frac`
 **Verification (SV-036, pending)**
 - [ ] Computed beta at Point A within ±3.5 % of 0.0276 and at Point B within ±3.5 % of 0.0281 (Table 5 image), oracle bit-exact rel 1e-9
 - [ ] Design-point headline unchanged to the cent; six verdicts, all satisfied, `peak_field_ok` margin 0.0
-- [ ] With `B_max = 13.0` and `B = 9.0`: `peak_field_ok` violated; with `B = 4.70`: satisfied and `beta_ok` violated (β ≈ 0.10) — the two verdicts that make Item 6's LTS arm honest
+- [ ] With `B_max = 13.0` and `B = 9.0`: `peak_field_ok` violated; with `B = 4.69`: satisfied (margin +0.024) and `beta_ok` violated (β = 0.0988) — the two verdicts that make Item 6's LTS arm honest. *Amended 2026-08-21: 4.70 T gives `B_peak = 13.0033 > 13.0` (violated); the exact Nb3Sn ceiling on axis is 13.0 × 9.0/24.9 = 4.6988 T.*
 - [ ] `preflight.py gates` 6/6 and `verify.py` pass on the regenerated package with the re-pinned manifest
 
 ## Assumptions & Risks
 
-1. **R1 — arithmetic in a constraint predicate.** Research cites the predicate compiler admitting it; unconfirmed on this package. Likelihood low, impact low: fallback is a plant attribute `B_peak = magnet.B * peak_ratio` and a plain comparison. Confirm in the first hour.
+1. **R1 — arithmetic in a constraint predicate.** *Resolved 2026-08-21 (design research, spike on the pinned codegen):* the predicate compiler admits it, but the study tools (`indicators.py`, `verify.py`) do not parse it. Resolution: `'Conductor Peak Field'` calc + plain comparison (design D1); the plant-attribute fallback was rejected because it would add a Level 6 offender.
 2. **R2 — helium exponent choice.** The two defensible choices bracket the printed beta at −3.3 % / +2.5 %. Design picks one, records the other as the tolerance; neither is a fallback (both derive from the image).
 3. **R3 — entry-point shape.** Plant-level attributes project one entry point each (post-migration convention); the twin and census must be recaptured together or the spine test fails. Mechanical.
 4. **R4 — regeneration drift.** Every known-answer fixture is bound to the semantic fingerprint and fails first by design; re-derivation is a known procedure (migration Phase 3).

@@ -10,7 +10,7 @@ import hashlib
 from tests.study.conftest import DATA_DIR, REAL_MANIFEST, REAL_PACKAGE, run_tool
 
 KNOWN_ANSWERS = DATA_DIR / "axes.known_answers.json"
-ALL_AXES = ["R", "R+tie", "a", "availability", "beta", "interest_rate"]
+ALL_AXES = ["B", "R", "R+tie", "a", "availability", "interest_rate"]
 
 
 def test_a_full_run_covers_the_whole_declaration():
@@ -28,16 +28,16 @@ def test_a_group_run_is_visibly_narrower():
 
 
 def test_several_groups_can_be_selected():
-    doc = run_tool(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWERS, group=("beta", "R"))
+    doc = run_tool(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWERS, group=("B", "R"))
     assert doc["axis_declaration"]["subset"] is True
-    assert [g["axis"] for g in doc["groups"]] == ["R", "beta"]
+    assert [g["axis"] for g in doc["groups"]] == ["B", "R"]
 
 
 def test_a_subset_group_is_byte_identical_to_its_full_run_counterpart():
     """The debugging aid answers the same question, just about fewer axes."""
     full = run_tool(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWERS)
-    subset = run_tool(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWERS, group=("beta",))
-    assert next(g for g in full["groups"] if g["axis"] == "beta") == subset["groups"][0]
+    subset = run_tool(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWERS, group=("B",))
+    assert next(g for g in full["groups"] if g["axis"] == "B") == subset["groups"][0]
 
 
 def test_the_axis_declaration_digest_matches_the_file_bytes():

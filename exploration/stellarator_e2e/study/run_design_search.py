@@ -7,7 +7,7 @@ machinery (PreparedListStrategy -> StudyRunner -> StudyStore -> StudyQuery, no
 hand-rolled sweep loops):
 
   A. 2D grid over the two causal geometry levers — major radius R, minor
-     radius a — LCOE + all 5 viability verdicts recorded per point.
+     radius a — LCOE + all 6 viability verdicts recorded per point.
   B. 1D sweep over availability (operations lever), same recording.
 
 Axis rule compliance (modeling_project/STUDY_POLICY.md §2):

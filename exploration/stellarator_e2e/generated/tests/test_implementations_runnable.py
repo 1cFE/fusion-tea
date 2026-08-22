@@ -8,7 +8,7 @@ Tests verify that handwritten implementation functions:
 4. Tolerate NotImplementedError (before agent implements)
 5. Validate return types (after agent implements)
 
-Generated from 42 calculation definitions.
+Generated from 44 calculation definitions.
 """
 
 import importlib
@@ -47,6 +47,46 @@ def create_dummy_input(input_class: type[BaseModel]) -> BaseModel:
 
 # Generated test classes for each module
 
+class TestConductor_Peak_FieldRunnable:
+    """Verify conductor_peak_field implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:328
+    """
+
+    def test_import_and_run(self):
+        """Test that run_conductor_peak_field can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_plasma_scaling.conductor_peak_field_impl")
+        func = getattr(impl, "run_conductor_peak_field")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_plasma_scaling.conductor_peak_field")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
 class TestCryoplant_Electrical_PowerRunnable:
     """Verify cryoplant_electrical_power implementation runs without error.
 
@@ -61,6 +101,46 @@ class TestCryoplant_Electrical_PowerRunnable:
 
         # Import module wrapper for Input schema (ADR-003: namespaced path)
         module = importlib.import_module("stellarator_tea.modules.mfe_cryo_plant.cryoplant_electrical_power")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestVolume_Averaged_BetaRunnable:
+    """Verify volume_averaged_beta implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:257
+    """
+
+    def test_import_and_run(self):
+        """Test that run_volume_averaged_beta can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_plasma_scaling.volume_averaged_beta_impl")
+        func = getattr(impl, "run_volume_averaged_beta")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_plasma_scaling.volume_averaged_beta")
 
         # Find Input class
         input_class = None

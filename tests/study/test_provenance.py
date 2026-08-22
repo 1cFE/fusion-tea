@@ -74,7 +74,8 @@ def test_entry_type_is_reported_per_declared_key():
         for group in doc["groups"]
         for entry in group["declared_keys"]
     }
-    assert types["stellarator_09__stellaris__beta"] == "design_attribute"
+    # WI-030: the bound beta retired; the swept field and its conductor facts are design attributes
+    assert types["stellarator_09__stellaris__magnet__B"] == "design_attribute"
     assert types["stellarator_09__stellaris__magnet__R0"] == "design_attribute"
     # Since the model migration the swept plant attributes are design attributes too
     # (one entry point per authored attribute); the usage-literal class is exercised

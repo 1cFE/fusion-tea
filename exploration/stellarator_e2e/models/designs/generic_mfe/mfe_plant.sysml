@@ -181,6 +181,40 @@ package mfe_plant {
         // temperature profile exponent
         attribute alpha_T : Real default 0.0;
 
+        // Beta inputs (WI-030). No defaults: a beta without its peaks is not a
+        // beta. The fuel peaks, T_i0, and the two exponents above are shared
+        // with the fusion-power profile integral.
+        // peak electron density [m^-3]
+        attribute n_e0 : Real;
+        // peak electron temperature [keV]
+        attribute T_e0 : Real;
+        // peak helium-ash density [m^-3]
+        attribute n_He0 : Real;
+        // electron density profile exponent [1]
+        attribute alpha_n_e : Real;
+
+        // Volume-averaged beta (WI-030): B enters the physics here, read from
+        // the magnet part the way magnet_cost reads it.
+        calc beta_calc : 'Volume-Averaged Beta' {
+            in n_e0_in = n_e0;
+            in T_e0_in = T_e0;
+            in n_D0_in = n_D0;
+            in n_T0_in = n_T0;
+            in n_He0_in = n_He0;
+            in T_i0_in = T_i0;
+            in alpha_n_in = alpha_n;
+            in alpha_n_e_in = alpha_n_e;
+            in alpha_T_in = alpha_T;
+            in B_in = magnet.B;
+        }
+
+        // Peak field on the winding (WI-030), compared against the conductor
+        // ceiling by peak_field_ok below.
+        calc peak_field_calc : 'Conductor Peak Field' {
+            in B_axis_in = magnet.B;
+            in peak_ratio_in = magnet.peak_ratio;
+        }
+
         calc fusion : 'DT Fusion Power' {
             in n_e_in = n_e;
             in sigma_v_in = sigma_v;
@@ -795,6 +829,13 @@ package mfe_plant {
 
         assert constraint recirc_ok : 'Economic Recirculating Threshold' {
             in rec_frac = pb.rec_frac;
+        }
+
+        // Conductor peak-field limit (WI-030): every MFE instance states its
+        // coil set's peak/axis ratio and its conductor ceiling on the magnet.
+        assert constraint peak_field_ok : 'Conductor Peak Field Limit' {
+            in B_peak = peak_field_calc.B_peak;
+            in B_max_in = magnet.B_max;
         }
 
         // =====================================================================

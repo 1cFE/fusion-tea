@@ -19,6 +19,15 @@ modules:
       stellarator_plant_params: StellaratorPlantParams ../inputs/stellarator_plant_params.json
 
 
+  # mfe_plasma_scaling.Conductor_Peak_FieldModule
+  stellarator_09__stellaris__peak_field_calc:
+    module_type: mfe_plasma_scaling.Conductor_Peak_FieldModule
+    inputs:
+      peak_ratio_in: float stellarator_plant_params.stellarator_09__stellaris__magnet__peak_ratio
+      B_axis_in: float stellarator_plant_params.stellarator_09__stellaris__magnet__B
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__peak_field_calc__B_peak
+
   # mfe_cryo_plant.Cryoplant_Electrical_PowerModule
   stellarator_09__stellaris__cryo_elec:
     module_type: mfe_cryo_plant.Cryoplant_Electrical_PowerModule
@@ -33,6 +42,25 @@ modules:
       f_carnot: float stellarator_plant_params.stellarator_09__stellaris__f_carnot_cryo
     outputs:
       root: RootModel[float] stellarator_09__stellaris__cryo_elec__p_elec
+
+  # mfe_plasma_scaling.Volume_Averaged_BetaModule
+  stellarator_09__stellaris__beta_calc:
+    module_type: mfe_plasma_scaling.Volume_Averaged_BetaModule
+    inputs:
+      n_D0_in: float stellarator_plant_params.stellarator_09__stellaris__n_D0
+      mu0: float mfe_plasma_scaling_params.stellarator_09__stellaris__beta_calc__mu0
+      alpha_n_in: float stellarator_plant_params.stellarator_09__stellaris__alpha_n
+      T_e0_in: float stellarator_plant_params.stellarator_09__stellaris__T_e0
+      alpha_n_e_in: float stellarator_plant_params.stellarator_09__stellaris__alpha_n_e
+      n_He0_in: float stellarator_plant_params.stellarator_09__stellaris__n_He0
+      alpha_T_in: float stellarator_plant_params.stellarator_09__stellaris__alpha_T
+      T_i0_in: float stellarator_plant_params.stellarator_09__stellaris__T_i0
+      e_keV: float mfe_plasma_scaling_params.stellarator_09__stellaris__beta_calc__e_keV
+      B_in: float stellarator_plant_params.stellarator_09__stellaris__magnet__B
+      n_e0_in: float stellarator_plant_params.stellarator_09__stellaris__n_e0
+      n_T0_in: float stellarator_plant_params.stellarator_09__stellaris__n_T0
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__beta_calc__beta
 
   # mfe_plasma_scaling.MFE_Radial_BuildModule
   stellarator_09__stellaris__rb:
@@ -716,7 +744,7 @@ modules:
   stellarator_09__stellaris__beta_ok__82b78aad420730d5:
     module_type: stellarator_09.StellarisBetaOkConstraintModule
     inputs:
-      beta_in: float stellarator_plant_params.stellarator_09__stellaris__beta
+      beta_in: float stellarator_09__stellaris__beta_calc__beta.root
       beta_limit_in: float stellarator_plant_params.stellarator_09__stellaris__beta_limit
     outputs:
       evaluation: ConstraintEvaluation stellarator_09__stellaris__beta_ok__82b78aad420730d5__evaluation
@@ -747,6 +775,15 @@ modules:
     outputs:
       evaluation: ConstraintEvaluation stellarator_09__stellaris__tbr_ok__2cd198f674d413e4__evaluation
 
+  # stellarator_09.StellarisPeakFieldOkConstraintModule
+  stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5:
+    module_type: stellarator_09.StellarisPeakFieldOkConstraintModule
+    inputs:
+      B_max_in: float stellarator_plant_params.stellarator_09__stellaris__magnet__B_max
+      B_peak: float stellarator_09__stellaris__peak_field_calc__B_peak.root
+    outputs:
+      evaluation: ConstraintEvaluation stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5__evaluation
+
   # constraints.ConstraintReportAggregatorModule
   constraint_report_aggregator:
     module_type: constraints.ConstraintReportAggregatorModule
@@ -756,6 +793,7 @@ modules:
       stellarator_09_stellaris_net_positive_484521d56c02667a: ConstraintEvaluation stellarator_09__stellaris__net_positive__484521d56c02667a__evaluation
       stellarator_09_stellaris_wall_load_ok_ab2c790419af93bb: ConstraintEvaluation stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb__evaluation
       stellarator_09_stellaris_tbr_ok_2cd198f674d413e4: ConstraintEvaluation stellarator_09__stellaris__tbr_ok__2cd198f674d413e4__evaluation
+      stellarator_09_stellaris_peak_field_ok_49c6b8228a73cac5: ConstraintEvaluation stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5__evaluation
     outputs:
       constraint_report: ConstraintReport constraint_report
 
@@ -764,7 +802,9 @@ modules:
   exit_point:
     module_type: ExitPoint
     outputs:
+      stellarator_09__stellaris__peak_field_calc__B_peak: RootModel[float] stellarator_09__stellaris__peak_field_calc__B_peak.json
       stellarator_09__stellaris__cryo_elec__p_elec: RootModel[float] stellarator_09__stellaris__cryo_elec__p_elec.json
+      stellarator_09__stellaris__beta_calc__beta: RootModel[float] stellarator_09__stellaris__beta_calc__beta.json
       stellarator_09__stellaris__rb__wall_area: float stellarator_09__stellaris__rb__wall_area.json
       stellarator_09__stellaris__rb__shield_vol: float stellaris__shield__shield_vol.json
       stellarator_09__stellaris__rb__structure_vol: float stellaris__structure__structure_vol.json
@@ -835,4 +875,5 @@ modules:
       stellarator_09__stellaris__net_positive__484521d56c02667a__evaluation: ConstraintEvaluation stellarator_09__stellaris__net_positive__484521d56c02667a__evaluation.json
       stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb__evaluation: ConstraintEvaluation stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb__evaluation.json
       stellarator_09__stellaris__tbr_ok__2cd198f674d413e4__evaluation: ConstraintEvaluation stellarator_09__stellaris__tbr_ok__2cd198f674d413e4__evaluation.json
+      stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5__evaluation: ConstraintEvaluation stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5__evaluation.json
       constraint_report: ConstraintReport constraint_report.json

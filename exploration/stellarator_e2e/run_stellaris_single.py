@@ -2,7 +2,7 @@
 
 The cross-part capital rollup is compiled by codegen and computed in one teax-simkit
 pass. The package is strict-loaded with no harness glue. This demo/regression command
-checks recorded anchors, all five generated verdicts, numerical agreement with the
+checks recorded anchors, all six generated verdicts, numerical agreement with the
 independent demo oracle, and three synthetic CAS72 guard cases. Any failed gate family
 produces a nonzero process exit after the diagnostic output is printed.
 
@@ -35,6 +35,7 @@ EXPECTED_VERDICTS = {
     "recirc_ok": "satisfied",
     "tbr_ok": "satisfied",
     "wall_load_ok": "satisfied",
+    "peak_field_ok": "satisfied",  # WI-030 conductor peak-field limit
 }
 
 
@@ -104,9 +105,9 @@ def _anchor_gate(values: dict[str, float]) -> bool:
 
 
 def _assert_generated_verdicts(outputs) -> None:
-    """The model's five design-point verdicts remain a separate assertion gate."""
+    """The model's six design-point verdicts remain a separate assertion gate."""
     report = outputs["constraint_report"]
-    print("=== FIVE VERDICTS (generated ConstraintReport) ===")
+    print("=== SIX VERDICTS (generated ConstraintReport) ===")
     verdicts = {}
     for channel, value in outputs.items():
         if channel.endswith("__evaluation") and hasattr(value, "status"):
@@ -117,8 +118,8 @@ def _assert_generated_verdicts(outputs) -> None:
     assert report.headline == "full_satisfaction", (
         f"headline {report.headline!r} != full_satisfaction"
     )
-    assert report.assessed_entry_count == 5, (
-        f"assessed_entry_count {report.assessed_entry_count} != 5"
+    assert report.assessed_entry_count == 6, (
+        f"assessed_entry_count {report.assessed_entry_count} != 6"
     )
     for name, expected in EXPECTED_VERDICTS.items():
         actual = verdicts.get(name)
@@ -129,7 +130,7 @@ def _assert_generated_verdicts(outputs) -> None:
     print(
         "VERDICT PARITY: PASS -- "
         f"headline={report.headline}, assessed_entry_count={report.assessed_entry_count}, "
-        "all five == satisfied"
+        "all six == satisfied"
     )
 
 
@@ -150,6 +151,9 @@ def _oracle_gate(values: dict[str, float], oracle: dict[str, float]) -> bool:
         "annual_fuel": values[CH["annual_fuel"]],
         "cas90_1cfe": values[CH["cas90_1cfe"]],
         "lcoe_1cfe": values[CH["lcoe_1cfe"]],
+        # WI-030 physics channels
+        "beta": values[CH["beta"]],
+        "B_peak": values[CH["B_peak"]],
     }
 
     print("\n=== BIT-EXACT vs ORACLE (rel<1e-9) ===")

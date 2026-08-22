@@ -56,11 +56,11 @@
       ]
     },
     {
-      "axis": "beta",
-      "note": "Plasma beta, a single design_attribute key consumed only by the beta constraint module. beta_limit is excluded \u2014 it is the bound the axis is compared against, not the axis.",
+      "axis": "B",
+      "note": "Axis-averaged on-axis field, one magnet-part entry point. Since WI-030 it reaches beta_ok through 'Volume-Averaged Beta' and peak_field_ok through 'Conductor Peak Field' (both computed-vs-bound), and the magnet cost. The retired bound-input beta axis lived here before.",
       "keys": [
         {
-          "key": "stellarator_09__stellaris__beta",
+          "key": "stellarator_09__stellaris__magnet__B",
           "provenance": "fan_out"
         }
       ]

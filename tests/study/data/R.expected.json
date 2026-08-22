@@ -1,5 +1,5 @@
 {
-  "derived_against_semantic_fingerprint": "1be51d890e5e2f973da919a9ff3cb5ef04a75652e5f906f13cea2a519f97b3aa",
+  "derived_against_semantic_fingerprint": "1ca93d0c988c2828bb1ce3fef18be85be86947a296a33b236d77daeb0f1ab860",
   "group": {
     "axis": "R",
     "declared_keys": [
@@ -96,21 +96,47 @@
         "source_local_identity": "beta_ok",
         "operator": "<=",
         "operand_classes": [
-          "bound"
+          "bound",
+          "computed"
         ],
-        "bound_vs_bound": true,
+        "bound_vs_bound": false,
         "operands": [
           {
             "operand": "beta_in",
-            "class": "bound",
-            "ref": "stellarator_09__stellaris__beta",
-            "reached": false,
-            "entry_type": "design_attribute"
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__beta_calc__beta",
+            "reached": false
           },
           {
             "operand": "beta_limit_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__beta_limit",
+            "reached": false,
+            "entry_type": "design_attribute"
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+        "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
+        "source_local_identity": "peak_field_ok",
+        "operator": "<=",
+        "operand_classes": [
+          "bound",
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "B_peak",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__peak_field_calc__B_peak",
+            "reached": false
+          },
+          {
+            "operand": "B_max_in",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__magnet__B_max",
             "reached": false,
             "entry_type": "design_attribute"
           }
@@ -150,16 +176,16 @@
         "source_local_identity": "beta_ok",
         "operator": "<=",
         "operand_classes": [
-          "bound"
+          "bound",
+          "computed"
         ],
-        "bound_vs_bound": true,
+        "bound_vs_bound": false,
         "operands": [
           {
             "operand": "beta_in",
-            "class": "bound",
-            "ref": "stellarator_09__stellaris__beta",
-            "reached": false,
-            "entry_type": "design_attribute"
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__beta_calc__beta",
+            "reached": false
           },
           {
             "operand": "beta_limit_in",
@@ -191,6 +217,32 @@
             "class": "literal",
             "reached": false,
             "value": 0.0
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+        "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
+        "source_local_identity": "peak_field_ok",
+        "operator": "<=",
+        "operand_classes": [
+          "bound",
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "B_peak",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__peak_field_calc__B_peak",
+            "reached": false
+          },
+          {
+            "operand": "B_max_in",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__magnet__B_max",
+            "reached": false,
+            "entry_type": "design_attribute"
           }
         ]
       },
@@ -281,7 +333,9 @@
       "lcoe_1cfe",
       "total_capital"
     ],
-    "objectives_unreachable": [],
+    "objectives_unreachable": [
+      "beta"
+    ],
     "sibling_candidates": [],
     "trace_size": {
       "modules_fired": 55,

@@ -7,7 +7,7 @@
   "fingerprints": {
     "indicator_inputs": {
       "recipe": "indicator-input-fingerprint/v1",
-      "digest": "dec4d2cd7caab3b1b05b6419b2f744115fd2d72dc1deb9e0bffdccc20c894953",
+      "digest": "00badf7f32d9b1b7365e04141293829717393060ca0a561da9e7f696e19c2141",
       "files": [
         "contracts/model_contract.json",
         "inputs/mfe_account_costs_params.json",
@@ -19,8 +19,8 @@
       ]
     },
     "recorded_provenance": {
-      "executable_fingerprint": "bf480f687963b7f89a70fb3d36cfca230745f3ec8bd0755a28cc5212782c7049",
-      "semantic_fingerprint": "1be51d890e5e2f973da919a9ff3cb5ef04a75652e5f906f13cea2a519f97b3aa"
+      "executable_fingerprint": "7447efea9f205dc64543a976e6a3c21a9fd468726f2de78aaf8d845e6f2d9a97",
+      "semantic_fingerprint": "1ca93d0c988c2828bb1ce3fef18be85be86947a296a33b236d77daeb0f1ab860"
     }
   },
   "objective_catalog": [
@@ -53,6 +53,11 @@
       "name": "cas27",
       "channel": "stellarator_09__stellaris__special_materials_capital__special_materials_capital",
       "note": "CAS27 special-materials capital, computed in-package from the radial-build blanket volume since the model migration (2026-08-21). Declared as an objective so generic verification compares it against the oracle's own recompute: on the era route this value was glue-fed to both sides and never independently verified."
+    },
+    {
+      "name": "beta",
+      "channel": "stellarator_09__stellaris__beta_calc__beta",
+      "note": "Volume-averaged thermal beta computed by 'Volume-Averaged Beta' from the profile referents and magnet__B (WI-030); replaces the retired bound input beta. Compared against the oracle's closed form so a magnet study verifies the physics lever it moves."
     }
   ],
   "ties": [
@@ -82,6 +87,10 @@
       },
       {
         "source_local_identity": "net_positive",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "peak_field_ok",
         "expected": "satisfied"
       },
       {

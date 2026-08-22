@@ -1,0 +1,10 @@
+   - WARN: Unused calc def: mfe_plasma_scaling::'Volume-Averaged Beta' at file:models/library/analyses/mfe_plasma_scaling.sysml:257
+   - WARN: Unused calc def: mfe_plasma_scaling::'Conductor Peak Field' at file:models/library/analyses/mfe_plasma_scaling.sysml:328
+   - WARN: Input 'ref_power' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::waste' - consider binding to attribute or calc output at file:models/designs/generic_mfe/mfe_plant.sysml:491
+   - WARN: Input 'alpha' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::waste' - consider binding to attribute or calc output at file:models/designs/generic_mfe/mfe_plant.sysml:491
+   - WARN: Input 'ref_power' bound to literal value in calc 'mfe_plant::'MFE Power Plant'::fuel_handling' - consider binding to attribute or calc output at file:models/designs/generic_mfe/mfe_plant.sysml:497
+   - ERROR: Derived expression references design attributes: ['capital_cost', 'capital_cost', 'capital_cost', 'capital_cost', 'capital_cost', 'capital_cost', 'capital_cost', 'capital_cost'] at file:models/designs/generic_mfe/mfe_plant.sysml:423
+   - ERROR: Derived expression references design attributes: ['capital_cost', 'capital_cost', 'capital_cost', 'capital_cost'] at file:models/designs/generic_mfe/mfe_plant.sysml:429
+   - ERROR: Derived expression references design attributes: ['capital_cost', 'cas22_capital', 'bop_capital', 'special_materials_capital', 'cas28_capital'] at file:models/designs/generic_mfe/mfe_plant.sysml:540
+   - ERROR: Derived expression references design attributes: ['capital_cost', 'capital_cost', 'n_mod'] at file:models/designs/generic_mfe/mfe_plant.sysml:689
+   - ERROR: Unsupported operator '.' in attribute 'ife_plant::'IFE Power Plant'::lcoe' at file:models/designs/generic_ife/ife_plant.sysml:130
