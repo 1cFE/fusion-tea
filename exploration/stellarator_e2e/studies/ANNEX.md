@@ -33,10 +33,10 @@ different precisions. None of the three is swept today.
 
 ## § Baseline pin
 
-The pinned baseline point, its headline, and its five expected verdicts live in
+The pinned baseline point, its headline, and its six expected verdicts live in
 `manifest.json` → `baseline`. Today: `R = 12.7 m`, `a = 1.3 m`,
 `availability = 0.85`, headline `stellarator_09__stellaris__lcoe_calc__lcoe` =
-`275.2642200420774`, all five viability constraints satisfied.
+`275.2642200420774`, all six viability constraints satisfied (six since WI-030 added `peak_field_ok`).
 
 The route executes exactly that point before preflight runs and deposits
 `baseline_result.json`; preflight's `baseline_headline` gate compares the two at
@@ -65,8 +65,10 @@ and nothing else:
 | `operand_bindings()` | `{constraint_id: {source_name: {"kind", "key"}}}` |
 
 **Parameterization.** A point arrives keyed by the package's own qualified entry
-keys. `ENTRY_KEY_TO_ORACLE_INPUT` maps each one to an oracle input name -- four keys
-today: `R`, `magnet__R0`, `a`, `availability`. Should two keys ever carry one quantity
+keys. `ENTRY_KEY_TO_ORACLE_INPUT` maps each one to an oracle input name. The map is not
+fixed: it grows with each study that moves a new key (four keys at the migration;
+WI-030's magnet and profile keys and the power-cycle study's block and discount-rate
+keys since -- finding `20260821-power-cycle-ab#4`, `DISCOVERY_LOG.md`). Should two keys ever carry one quantity
 again they must agree, because the oracle can only be given one. An undeclared key is a
 mechanical failure, never a silently skipped one. The oracle's module-global `IN` is saved and restored around every call, and
 `_profile_integral` is memoized — exactly, since it depends only on inputs no study
@@ -83,13 +85,13 @@ is why channel operands resolve from the oracle's return rather than from the st
 **The operand-binding table, and why it exists.** A predicate operand in
 `contracts/model_contract.json` carries a short `source_name` and a SysML qualified
 name, and neither resolves to a flat package key by construction. Checked against all
-five constraints: `recirc_ok.threshold` is usage-prefixed (`recirc_ok__threshold`),
+six constraints: `recirc_ok.threshold` is usage-prefixed (`recirc_ok__threshold`),
 `beta_ok.beta_limit_in` is owner-instance-prefixed and carries the library formal's
 `_in` suffix while the key does not, `wall_load_ok.wall_load` is a channel
 whose producing block name appears nowhere in the operand, and
 **`net_positive.net_electric` resolves to nothing at all** — no parameter and no
 channel contains that string; its value is `pb__p_net`. So a generic verifier that
-matched names would guess wrong on one of five and guess among three composition rules
+matched names would guess wrong on one of six and guess among three composition rules
 on three others. The package publishes the table instead, and the verifier fails
 closed on anything it cannot resolve. A tool that guesses is worse than one that
 refuses.
@@ -100,11 +102,11 @@ are 158% apart, because the package channel is the *unlevelized* annual O&M. The
 right source is `annual_om_unlevelized`. The map is validated against executed
 evidence, not read for plausibility.
 
-Known verification-coverage delta (Item 4 audit, 2026-08-20): `p_fus` and
-`magnet_capital` are not compared by generic `verify.py` — coverage is the manifest's
-objective catalog plus predicate-resolved operands, and those two channels are neither.
-Recovering them is a data-only addition to `manifest.json`'s objective catalog (an
-Item 3-owned file), not a tool change.
+Known verification-coverage delta (Item 4 audit, 2026-08-20): `p_fus` is not
+compared by generic `verify.py` — coverage is the manifest's objective catalog plus
+predicate-resolved operands, and that channel is neither. `magnet_capital` was in the
+same position until Item 6 added it to the objective catalog (design D9, 2026-08-21);
+recovering `p_fus` is the same data-only addition, not a tool change.
 
 ---
 

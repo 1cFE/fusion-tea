@@ -46,11 +46,14 @@ ARMS: dict[str, dict[str, float]] = {
 BASELINE = {"R": 12.7, "a": 1.3, "availability": 0.85, "discount_rate": 0.07}
 R_VALUES = route.R_VALUES                      # 4.0 .. 20.0 step 0.5 (proof-of-life)
 A_VALUES = route.A_VALUES                      # 0.80 .. 2.20 step 0.05 (proof-of-life)
-AVAIL_VALUES = route.AVAIL_VALUES              # 0.50 .. 0.95 step 0.025 (proof-of-life)
-DISCOUNT_VALUES = [round(0.03 + 0.005 * i, 3) for i in range(19)]   # 0.03 .. 0.12
 BUILD_STACK_M = route.BUILD_STACK_M            # validity mask R > a + 2.25 (ANNEX)
 
-SWEEPS = ("grid", "availability", "discount_rate")
+# availability and discount_rate were proposed, came back `no_constraint_response`,
+# and were declined by the owner (record.md section 8, 2026-08-22). They are held at
+# their baseline values in every proposal and never swept. The A/B runs across the
+# whole (R, a) window in every arm -- that is the "different geometries" the owner asked
+# for, not an economic sweep repeated at a few points.
+SWEEPS = ("grid",)
 
 
 def point(arm: str, sweep: str, *, R=None, a=None, availability=None, discount_rate=None):
@@ -69,7 +72,7 @@ def point(arm: str, sweep: str, *, R=None, a=None, availability=None, discount_r
 
 
 def proposals() -> list[tuple[str, str, dict[str, float]]]:
-    """(arm_id, sweep, proposal) in a fixed order: arm-major, then grid, availability, discount."""
+    """(arm_id, sweep, proposal) in a fixed order: arm-major, row-major over (R, a)."""
     out = []
     for arm in ARMS:
         for R in R_VALUES:
@@ -77,10 +80,6 @@ def proposals() -> list[tuple[str, str, dict[str, float]]]:
                 if R > a + BUILD_STACK_M:
                     out.append((arm, "grid", point(arm, "grid", R=R, a=a)))
         out.append((arm, "grid", point(arm, "grid")))               # the baseline geometry
-        for av in AVAIL_VALUES:
-            out.append((arm, "availability", point(arm, "availability", availability=av)))
-        for d in DISCOUNT_VALUES:
-            out.append((arm, "discount_rate", point(arm, "discount_rate", discount_rate=d)))
     return out
 
 
@@ -93,14 +92,11 @@ def arm_of(inputs: dict) -> str:
 
 
 def sweep_of(inputs: dict) -> str:
-    """Attribute a case to its sweep from which non-baseline axis it moved."""
-    moved = {
-        ax for ax in ("availability", "discount_rate")
-        if abs(float(inputs[f"{P}{ax}"]) - BASELINE[ax]) > 1e-12
-    }
-    if len(moved) > 1:
-        raise route.RouteError(f"case moved two sensitivity axes at once: {inputs}")
-    return moved.pop() if moved else "grid"
+    """Every case is a grid case; a moved economic axis means a foreign store."""
+    for ax in ("availability", "discount_rate"):
+        if abs(float(inputs[f"{P}{ax}"]) - BASELINE[ax]) > 1e-12:
+            raise route.RouteError(f"case moved a declined axis ({ax}): {inputs}")
+    return "grid"
 
 
 CHANNELS = dict(route.CHANNELS, p_net=f"{P}pb__p_net", rec_frac=f"{P}pb__rec_frac",

@@ -336,6 +336,7 @@
       "fuel",
       "lcoe",
       "lcoe_1cfe",
+      "magnet_capital",
       "total_capital"
     ],
     "objectives_unreachable": [

@@ -333,6 +333,7 @@
     "objectives_unreachable": [
       "beta",
       "cas27",
+      "magnet_capital",
       "total_capital"
     ],
     "sibling_candidates": [],

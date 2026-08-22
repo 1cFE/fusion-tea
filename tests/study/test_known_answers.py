@@ -34,28 +34,31 @@ FIXTURE_CONTRACT = {
     "R": (
         False,
         ["net_positive", "recirc_ok", "wall_load_ok"],
-        ["cas27", "cas72", "fuel", "lcoe", "lcoe_1cfe", "total_capital"],
+        ["cas27", "cas72", "fuel", "lcoe", "lcoe_1cfe", "magnet_capital", "total_capital"],
         55,
         68,
     ),
     "R+tie": (
         False,
         ["net_positive", "recirc_ok", "wall_load_ok"],
-        ["cas27", "cas72", "fuel", "lcoe", "lcoe_1cfe", "total_capital"],
+        ["cas27", "cas72", "fuel", "lcoe", "lcoe_1cfe", "magnet_capital", "total_capital"],
         55,
         68,
     ),
     "a": (
         False,
         ["net_positive", "recirc_ok", "wall_load_ok"],
-        ["cas27", "cas72", "fuel", "lcoe", "lcoe_1cfe", "total_capital"],
+        ["cas27", "cas72", "fuel", "lcoe", "lcoe_1cfe", "magnet_capital", "total_capital"],
         55,
         68,
     ),
     # WI-030: the bound-input beta axis retired; the field reaches both field-dependent
     # verdicts through calcs ("Volume-Averaged Beta", "Conductor Peak Field") and the
     # magnet cost, and the computed beta is itself a catalogued objective.
-    "B": (False, ["beta_ok", "peak_field_ok"], ["beta", "lcoe", "lcoe_1cfe", "total_capital"], 21, 21),
+    # Item 6 (design D9, 2026-08-21): `magnet_capital` declared as a catalogued objective,
+    # so every axis that reaches the magnet-cost module reaches one more objective.
+    "B": (False, ["beta_ok", "peak_field_ok"],
+          ["beta", "lcoe", "lcoe_1cfe", "magnet_capital", "total_capital"], 21, 21),
 }
 
 
