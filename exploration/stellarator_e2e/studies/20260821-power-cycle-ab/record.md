@@ -272,3 +272,24 @@ No snapshot content is restated here.
 - **Per-arm stratified verification.** The sample is arm-blind (§ 13); no claim that each verdict combination was checked in each arm.
 - **Wall-clock.** 3,792 points ran in 9 min 2 s on the stock route (0.14 s/point); recorded here only, not in a result artifact.
 - **Plots.** None; the CSV is the result.
+
+## Addendum 2026-08-22
+
+Written by the executor after the administrator's `synthesis.md` (committed `e41150e8`), which was read against this record. Nothing above this line, and nothing in `snapshot.json`, `indicators.json`, or `results/`, is changed. Three statements above are corrected and three findings are added.
+
+**Corrections of statements (numbers recomputed from `results/points.csv`):**
+
+- § 3: "within 0.1 $/MWh over R 13–15 m" along the a = 1.65 fence overstates the flatness. The LCOE at R 13.0–15.0 on that fence lies within 0.26 $/MWh of the arm's feasible minimum (0.15 / 0.17 / 0.24 / 0.26 $/MWh for paper / upstream / sco2-eta-only / sco2). The optimum is shallow; the number was too tight.
+- § 6 (`R`): "the four best points of each arm lie within 0.07 $/MWh" — the spread is 0.055 / 0.076 / 0.062 / 0.068 $/MWh; read "within 0.08".
+- § 6 (cycle block): "the sCO2 rate advantage is worth at most 1.1 % of LCOE anywhere in the window" holds over the points feasible in both arms (−0.5 % to −1.1 %, § 3). Over the whole window, including `wall_load_ok`-violated points, it reaches 1.33 % (at R 5.5, a 2.2). The conclusion — the efficiency, not the rates, carries the sCO2 case — stands.
+- § 10 "three arms that each hold a three-key block constant while four axes sweep" is stale text from before the fourth arm and the two declines: four arms, two swept axes. The same stale sentence is in the docstring of `study.py` (lines 3–4 and 33 as committed); `study.py` is digested into `snapshot.json` `arms[].artifacts` and is therefore not edited. The code ran four arms over (R, a) only, as `results/points.csv` shows.
+
+**Findings added (rows appended to `DISCOVERY_LOG.md`):**
+
+| Id | Kind | Finding | Disposition | Home |
+|---|---|---|---|---|
+| `20260821-power-cycle-ab#7` | process | The record carries every verdict but not, as data, the bound values the verdicts were judged against (`wall_load_limit` 4.05, `recirc_ok__threshold` 0.5, `tbr` 1.074 / `tbr_floor` 1.05, `beta_limit` 0.05, `magnet__B_max` 24.9): they appear only as prose in § 4. `indicators.json` names the bound keys (`bounds[].operands[].ref`) and carries a `value` only for literal operands, not for bound design attributes; no `results/` artifact carries them either. A reader cannot check a fence against its limit from the directory alone (synthesis § 6 entry 5, *(contract)*). | Stated here; no artifact added (results are frozen). The contract should require the bound values as snapshot data, or the indicator tool should emit them for bound operands as it does for literals. | skill — `.claude/skills/run-study/record-template.md` (contract); alternatively tool `scripts/study/indicators.py`; not edited in Item 6 (design I1) |
+| `20260821-power-cycle-ab#8` | process | `results/verification_summary.json` `teax.revision` is the string `"unrecorded"`: `verify.py` reads `simkit.__version__`, which stock teax does not define, so the verification artifact does not say which teax it ran under. The snapshot's `teax.revision` (`744745f`, from `git rev-parse` in the teax checkout) has no verification-side artifact behind it (synthesis § 5, § 6 entry 10). | Disclosed; the snapshot value stands on the executor's resolution. The tool should record the checkout's git revision (the module path it already records resolves to it). | tool — `scripts/study/verify.py`; not edited in Item 6 (design I1) |
+| `20260821-power-cycle-ab#9` | process | Stale pre-execution text survived into the committed record and its definition file (§ 10 "three arms … four axes"; `study.py` docstring), because the arm count and the axis set changed after those sentences were written and the step-15 placeholder check catches only unreplaced placeholder tokens, not stale prose. | Corrected above for the record; `study.py` left as digested. A pre-commit read of § 1 against § 10 and the definition's docstring would have caught it. | runbook step 15 (a stale-prose check beside the placeholder check); not edited in Item 6 (design I1) |
+
+**Classification of the synthesis's "What the record does not support" entries**, for the Item 6 plan: entries 5 and 10 are contract gaps (findings #7, #8); every other entry is either a gap this record states itself in § 17 (1, 2, 3, 4, 6, 7, 8, 9, 15, 16, 17) or a fact the record contract places outside the directory by design (11 the store, 12 the commit state, 13 the rulings as events, 14 the critique text). No entry is a reader miss: nothing the administrator reported missing is in the directory.

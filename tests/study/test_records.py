@@ -41,14 +41,14 @@ def test_arms_share_one_store_when_fingerprints_agree(record):
 def test_findings_join_the_discovery_log(record):
     """Runbook step 14: every § 15 finding has a log row, and every row for this
     record names a finding § 15 carries."""
+    # § 15 rows plus any addendum rows after § 17: an addendum may add findings.
     text = (record / "record.md").read_text()
-    section = text.split("## 15. Findings")[1].split("## 16.")[0]
     in_record = {
         cell.strip("` ")
-        for line in section.splitlines()
+        for line in text.splitlines()
         if line.startswith("| `")
         for cell in [line.split("|")[1]]
-        if "#" in cell
+        if cell.strip("` ").startswith(f"{record.name}#")
     }
     log = (STUDIES / "DISCOVERY_LOG.md").read_text()
     in_log = {

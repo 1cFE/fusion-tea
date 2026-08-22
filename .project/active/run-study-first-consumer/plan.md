@@ -1,8 +1,8 @@
 # Implementation Plan: Run-Study First Consumer (RUN-STUDY Item 6)
 
-**Status:** In Progress — Phase 1 complete (owner-approved 2026-08-21); Phase 2 gated on WI-031
+**Status:** In Progress — Phases 1–2 complete (2026-08-22); Phase 3 gated on WI-030's merge to `main` and the DI-009/DI-010 ingest decision
 **Created:** 2026-08-21
-**Last Updated:** 2026-08-21
+**Last Updated:** 2026-08-22
 **Branch:** `feat/run-study-first-consumer`, cut from `main` at `8d6c443b` (migration PR #107 merged 2026-08-21). One branch for all four phases; Phase 1 is a reviewable first commit.
 
 ## Source Documents
@@ -132,37 +132,37 @@ def test_record_is_closed(record):
 **See `design.md` for:** D1–D3, D5–D6 (arms, one store, windows), D9 (manifest objective), D10 (administrator), Implementation Notes (study.py rules), Appendix A (arm table for study 2).
 
 #### 1. Test
-- [ ] `tests/study/test_records.py` — write; passes vacuously with no record, then for real after step 9
+- [x] `tests/study/test_records.py` — written 2026-08-22 (three generic checks: closed snapshot/no placeholders/arms match CSV; one store per fingerprint; § 15 ↔ `DISCOVERY_LOG.md` join); passes over the committed record
 
 #### 2. Manifest (data-only)
-- [ ] `exploration/stellarator_e2e/studies/manifest.json`: add `magnet_capital` (`stellarator_09__stellaris__magnet_cost__capital_cost`) to `objective_catalog` with a note; re-run `indicators.py --print-fingerprint` (the manifest is not in the indicator-input set, so the fingerprint is unchanged; confirm)
+- [x] `exploration/stellarator_e2e/studies/manifest.json`: add `magnet_capital` (`stellarator_09__stellaris__magnet_cost__capital_cost`) to `objective_catalog` with a note; re-run `indicators.py --print-fingerprint` (the manifest is not in the indicator-input set, so the fingerprint is unchanged; confirm)
 
 #### 3. The study, through the skill (execute mode)
-- [ ] **Owner gives the intake** for study 2 in their own words (goal + scope only). Record it verbatim; mint `<study-id>` per `runbook.md § Naming`
-- [ ] Runbook steps 1–4: record opened; `axes.json` declares R, a (proof-of-life groups) and the cycle block as a declined-as-axis, held-per-arm block with its three keys; `indicators.py` run (no subset); framing argued (search on R/a, sensitivity on the block); pre-execution critique recorded (§ 14)
-- [ ] `studies/<study-id>/study.py`: arm blocks per Appendix A; `proposals()` = arms × window; `export()` with `arm_id`; imports only `study_route`
-- [ ] Steps 5–6: `execute_baseline` → `preflight.py gates` 6/6 (§ 9)
-- [ ] Step 7: oracle scan of the window; `arms[].window` provenance `engineered`, reused from the proof-of-life with the reason (§ 11)
-- [ ] Step 8: route rationale (direct-API; coordinated block) and "glue ledger: none" (§ 10)
-- [ ] Step 9: `run_points` once, one store; `git status` clean under `generated/`; § 3–4 from `StudyQuery` per arm with qualified constraint ids
-- [ ] Step 10: `verify.py --store <db>` → `results/verification_summary.json`; § 13 names uncovered channels (`p_fus`) and cites `verify.py` stratified sampling as the inherited home (spec SC 10)
-- [ ] Steps 11–14: framing as judged; per-arm account; review outcomes; findings with homes; `DISCOVERY_LOG.md` created, one row per finding
-- [ ] Step 15: snapshot resolved (G1 `files[]` present); § 12 nil discharged ("single fingerprint"); § 17 states that the paper names no cycle; § 15 carries the DI-008 `p_pump` finding with home = WI-031 R4 item; commit
+- [x] **Owner gives the intake** for study 2 in their own words (goal + scope only). Record it verbatim; mint `<study-id>` per `runbook.md § Naming`
+- [x] Runbook steps 1–4: record opened; `axes.json` declares R, a (proof-of-life groups) and the cycle block as a declined-as-axis, held-per-arm block with its three keys; `indicators.py` run (no subset); framing argued (search on R/a, sensitivity on the block); pre-execution critique recorded (§ 14)
+- [x] `studies/<study-id>/study.py`: arm blocks per Appendix A; `proposals()` = arms × window; `export()` with `arm_id`; imports only `study_route`
+- [x] Steps 5–6: `execute_baseline` → `preflight.py gates` 6/6 (§ 9)
+- [x] Step 7: oracle scan of the window; `arms[].window` provenance `engineered`, reused from the proof-of-life with the reason (§ 11)
+- [x] Step 8: route rationale (direct-API; coordinated block) and "glue ledger: none" (§ 10)
+- [x] Step 9: `run_points` once, one store; `git status` clean under `generated/`; § 3–4 from `StudyQuery` per arm with qualified constraint ids
+- [x] Step 10: `verify.py --store <db>` → `results/verification_summary.json`; § 13 names uncovered channels (`p_fus`) and cites `verify.py` stratified sampling as the inherited home (spec SC 10)
+- [x] Steps 11–14: framing as judged; per-arm account; review outcomes; findings with homes; `DISCOVERY_LOG.md` created, one row per finding
+- [x] Step 15: snapshot resolved (G1 `files[]` present); § 12 nil discharged ("single fingerprint"); § 17 states that the paper names no cycle; § 15 carries the DI-008 `p_pump` finding with home = WI-031 R4 item; commit
 
 #### 4. Administrator
-- [ ] `briefs/administer-<study-id>.md` from the template; spawn one `general-purpose` subagent with the brief verbatim as its entire prompt (never `fork`)
-- [ ] `synthesis.md` lands in the record; commit; its "does not support" entries classified reader-miss vs contract-gap in Implementation Notes (Item 5 pattern)
+- [x] `briefs/administer-<study-id>.md` from the template; spawn one `general-purpose` subagent with the brief verbatim as its entire prompt (never `fork`)
+- [x] `synthesis.md` lands in the record; commit (`e41150e8`); its "does not support" entries classified reader-miss vs contract-gap in Implementation Notes and in the record's addendum
 
 ### Validation
 **Automated:**
-- [ ] `uv run pytest tests/study tests/models -q` green, `test_records.py` included
-- [ ] `preflight_results.json` 6/6; `verification_summary.json` `outcome: pass`
-- [ ] `git diff --stat main -- scripts/study .claude/skills/run-study/runbook.md` → empty (I1)
+- [x] `uv run pytest tests/study tests/models -q` green, `test_records.py` included (270 + 48 passed; `tests/models` needs `SYSIDE_LICENSE_KEY` *exported*, `.env` does not export it)
+- [x] `preflight_results.json` 6/6; `verification_summary.json` `outcome: pass`
+- [x] `git diff --stat main -- scripts/study .claude/skills/run-study/runbook.md` → only the Phase 1 policy-path citation in the runbook (allowed by I1)
 
 **Manual:**
-- [ ] § 8 shows no `no_constraint_response` axis (expected for this block) or carries the owner's ruling if one appears
-- [ ] The synthesis recovers: three arms' framing, LCOE per arm, every constraint outcome by qualified id, findings traced to `results/`
-- [ ] The block's effect reads as expected: `recirc_ok` fence moves with η, wall-load fence does not
+- [x] § 8 shows no `no_constraint_response` axis (expected for this block) or carries the owner's ruling if one appears — two appeared (`availability`, `discount_rate`); owner's ruling "no sensitivity" recorded verbatim, axes declined, findings #1/#2 filed
+- [x] The synthesis recovers: four arms' framing, LCOE per arm, every constraint outcome by qualified id, findings traced to `results/` — all recovered and independently recomputed from `results/points.csv`
+- [x] The block's effect reads as expected: `recirc_ok` fence moves with η, wall-load fence does not — record § 4, § 6
 
 **What We Know Works After This Phase:** the capability runs whole on a multi-arm study; a stranger can read the result; the discovery log exists.
 
@@ -280,6 +280,35 @@ Study stores go under `exploration/stellarator_e2e/studies/<study-id>/_work/` (g
 **Handoff:** written 2026-08-22 to the OS temp dir (path in the session transcript).
 
 ### Phase 2 Completion
+**Completed:** 2026-08-22 (commits `0d176a8c` record, `e41150e8` synthesis, plus the addendum commit)
+**Actual Changes:**
+- Ruling conflict resolved by the owner ("I thought the suggestion was to run the A/B studies at different geometries"): econ axes stay declined, held at 0.85 / 0.07; the A/B at different geometries is the per-arm (R, a) grid. Fourth arm `arm-sco2-eta-only` added on the owner's yes.
+- Step 9: 4 × 948 = 3,792 points, one store, stock route, 9 min 2 s (0.14 s/point); package clean after (`results/postrun_clean.json`).
+- Step 10: `verify.py` pass — 12 rows / 3 strata / 10 channels / worst 4e-16 / 6 verdicts re-derived. Sample arm-blind (3/1/6/2 by arm); every stratum occurs in every arm.
+- Steps 11–15: §§ 3–6, 11–17 filled from `results/` only; `snapshot.json` from a throwaway scratch builder (values resolved from the deposited documents, the store's compatibility row, and the route's `prepare()`); zero placeholders; committed.
+- Result: LCOE ordering sco2 < sco2-eta-only < rankine-upstream < rankine-paper at every point; the cycle moves only the `recirc_ok` fence (small-machine corner, 22 points between extreme arms); `wall_load_ok` fences a ≥ 1.70 m identically in every arm; optimum on that fence at R 14.0 → 13.5 → 13.0 as η rises; the sCO2 rate advantage is ≤ 1.1 % of feasible LCOE, the efficiency 13–23 %; total capital rises with η at every point.
+- `DISCOVERY_LOG.md` created: findings #1–#6 (record § 15) + #7–#9 (record addendum, from the synthesis).
+- Administrator: one fresh `general-purpose` subagent, brief verbatim (`briefs/administer-20260821-power-cycle-ab.md`); `synthesis.md` with 17 "does not support" entries; the synthesis recomputed every number and found three slightly over-tight numbers and one stale sentence in the record, corrected by addendum.
+- `tests/study/test_records.py` (3 generic checks); known-answer fixtures and `test_known_answers.py` / `test_valid_empty.py` re-pinned for the `magnet_capital` objective (the scaffold commit added it to the manifest without re-pinning: 11 red tests on the branch before this session). `ANNEX.md` counts corrected (six verdicts; oracle key map grows per study; `magnet_capital` now covered).
+
+**Synthesis "does not support" classification (17 entries):**
+- Contract gaps (2): entry 5 — the bound values the verdicts compare against are not in any artifact, only in § 4 prose (`indicators.json` carries values for literal operands only) → finding #7, home `record-template.md` / `indicators.py`; entry 10 — `verify.py` writes `teax.revision: "unrecorded"` → finding #8, home `verify.py`.
+- Stated by the record itself in § 17 (11): entries 1, 2, 3, 4, 6, 7, 8, 9, 15, 16, 17.
+- Outside the directory by contract design (4): 11 (the gitignored store), 12 (commit state), 13 (rulings as events), 14 (the critique text).
+- Reader misses: none. Everything the administrator reported missing is absent from the directory.
+
+**Issues Encountered:**
+- The store does not record the five `pb__*` power-balance channels (multi-field model; the annex said so); `study.py` declared them and the export has five empty columns. Kept and disclosed (finding #5); the recirculation account uses the verdict column.
+- The handoff's "267 passed" predated the manifest's `magnet_capital` edit; 11 tests were red at session start. Data-only re-pin, same kind as WI-030's for `beta`.
+- `tests/models` errors on `SYSIDE_LICENSE_KEY` unless the variable is exported (`set -a; source .env; set +a`); the plan's Environment Setup line `source .env` is not enough.
+- A pre-existing ruff E501 in `tests/study/test_mechanical_failures.py:131` (WI-030's) fails `ruff check tests/study`; not touched.
+
+**Deviations from Plan:**
+- Four arms, not three (owner, on the critique's recommendation).
+- Econ axes declined, not swept as sensitivity; the plan's "sensitivity on the block" became search on the block (the arms are the levels of one categorical axis; the block moves verdict structure).
+- The snapshot was built by a scratch script, not a tool (none exists; the runbook says "resolved and copied in"). The script is not kept; the snapshot is the artifact.
+- Record addendum written after the synthesis (immutability rule): the record's § 10 stale sentence and three numbers are corrected there, not in place; `study.py` (digested) is left as committed.
+
 ### Phase 3 Completion
 ### Phase 4 Completion
 
