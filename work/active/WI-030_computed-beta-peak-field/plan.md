@@ -1,5 +1,5 @@
 ---
-Status: draft
+Status: implemented (pending /audit-models)
 Created: 2026-08-21
 Updated: 2026-08-21
 Related Artifacts:
@@ -199,9 +199,9 @@ Environment: stock teax at `/home/reid/1cfe/teax` (`744745f`); export `STOP_PARS
 **Owner checkpoint:** commit point. The WI-030 file set for the commit: the five model files and their twins, `generated/**`, `stellarator.snapshot.json`, `tests/models/data/mfe_census.json`, `tests/models/test_beta_peak_field.py`, `verify_stellaris.py`, `oracle_entry.py`, `run_stellaris_single.py`, `studies/manifest.json`, `tests/study/data/*`, the edited `tests/study/*.py`, `data/traceability_matrix.csv`, this plan. Item 6's files are not part of it.
 
 **Validation checkpoint (after the commit)**
-- [ ] `uv run python scripts/study/preflight.py gates --package exploration/stellarator_e2e/pkg/stellarator_tea --manifest exploration/stellarator_e2e/studies/manifest.json --groups tests/study/data/axes.known_answers.json --identity <_work>/package_identity.json --baseline-result <_work>/baseline_result.json` → 6/6
-- [ ] `uv run python scripts/study/verify.py --package … --manifest … --identity … --store <_work>/<baseline store>.db --out <_work>/verification_summary.json` → `outcome: pass`, `not_independently_verified: []`, six verdicts re-derived, `beta` among the compared channels
-- [ ] `STUDY_REQUIRE_TEAX=1 … uv run pytest tests/study tests/models -q` → green; IFE anchors untouched (`tests/models` IFE census 23/18)
+- [x] `uv run python scripts/study/preflight.py gates --package exploration/stellarator_e2e/pkg/stellarator_tea --manifest exploration/stellarator_e2e/studies/manifest.json --groups tests/study/data/axes.known_answers.json --identity <_work>/package_identity.json --baseline-result <_work>/baseline_result.json` → 6/6
+- [x] `uv run python scripts/study/verify.py --package … --manifest … --identity … --store <_work>/<baseline store>.db --out <_work>/verification_summary.json` → `outcome: pass`, `not_independently_verified: []`, six verdicts re-derived, `beta` among the compared channels
+- [x] `STUDY_REQUIRE_TEAX=1 … uv run pytest tests/study tests/models -q` → green; IFE anchors untouched (`tests/models` IFE census 23/18)
 
 **Gate:** runner six-for-six at the unchanged headline; manifest validates; preflight 6/6; verify pass; both suites green.
 
@@ -220,32 +220,32 @@ Environment: stock teax at `/home/reid/1cfe/teax` (`744745f`); export `STOP_PARS
 - REFINE `.project/CURRENT_WORK.md` — WI-030 implemented; next `/audit-models`; Item 6 settle-up note (key names and 4.69 T come from the model)
 
 **Checklist**
-- [ ] **Beta at Points A and B.** Oracle: Point A `0.026834` (−2.77 % of 0.0276); Point B by overriding the eleven Table-5 keys (`n_e0 6.89e20`, `T_e0 12.25`, `n_D0 = n_T0 = 2.60e20`, `T_i0 11.64`, `n_He0 0.83e20`, `alpha_n_e 0.6366`, `n_e 4.21e20`, `p_input 14.77` for the record) → `0.028691` (+2.10 % of 0.0281). Package: one study point per Point through `study_route.run_points` (a proposal dict is any numeric-keyed mapping, `study_route.py:101-106`) → `beta_calc__beta` rel 1e-9 vs the oracle
-- [ ] **Headline unchanged.** `run_stellaris_single.py` anchors at the design point, to the cent (Phase 4 evidence, re-stated)
-- [ ] **Six verdicts.** all satisfied; `peak_field_ok` margin `0.0`; `beta_ok` margin `0.05 − 0.026834 = 0.023166`
-- [ ] **LTS points** through `study_route.run_points` on the committed package: baseline point + `magnet__B_max = 13.0`, `magnet__B = 9.0` → `peak_field_ok` violated (margin −11.9); baseline point + `magnet__B_max = 13.0`, `magnet__B = 4.69` → `peak_field_ok` satisfied (+0.0243) and `beta_ok` violated (beta 0.0988, margin −0.0488); oracle agrees on both at rel 1e-9; also record `4.70` → violated (−0.0033) as the reason for D6
-- [ ] **Contract facts.** `beta` absent; the six design attributes + two library defaults present; `beta_calc__beta` and `peak_field_calc__B_peak` channels; 173 / 75 / 6
-- [ ] **Study tools.** preflight 6/6 and verify pass (Phase 4 evidence, re-stated with the run ids)
-- [ ] **Suites.** `pytest tests/study tests/models` tallies; IFE census and anchors unchanged
-- [ ] **MR-3 / MR-4 read.** citation-by-citation read of the six instance docs and three library docs: every Ref resolves to an image path or a pinned upstream line; no typical-literature value
-- [ ] `verification_record.md` written; SV-036 row updated; spec Success Criteria ticked; `CURRENT_WORK.md` updated
-- [ ] Hand-offs recorded (not executed here): Item 6 design table settle-up (`magnet__peak_ratio`, `magnet__B_max`, 4.69 T — the model is the source of truth); DI candidate text for close (design D3); the `.project/backlog/BACKLOG.md` run-study row already filed
+- [x] **Beta at Points A and B.** Oracle: Point A `0.026834` (−2.77 % of 0.0276); Point B by overriding the eleven Table-5 keys (`n_e0 6.89e20`, `T_e0 12.25`, `n_D0 = n_T0 = 2.60e20`, `T_i0 11.64`, `n_He0 0.83e20`, `alpha_n_e 0.6366`, `n_e 4.21e20`, `p_input 14.77` for the record) → `0.028691` (+2.10 % of 0.0281). Package: one study point per Point through `study_route.run_points` (a proposal dict is any numeric-keyed mapping, `study_route.py:101-106`) → `beta_calc__beta` rel 1e-9 vs the oracle
+- [x] **Headline unchanged.** `run_stellaris_single.py` anchors at the design point, to the cent (Phase 4 evidence, re-stated)
+- [x] **Six verdicts.** all satisfied; `peak_field_ok` margin `0.0`; `beta_ok` margin `0.05 − 0.026834 = 0.023166`
+- [x] **LTS points** through `study_route.run_points` on the committed package: baseline point + `magnet__B_max = 13.0`, `magnet__B = 9.0` → `peak_field_ok` violated (margin −11.9); baseline point + `magnet__B_max = 13.0`, `magnet__B = 4.69` → `peak_field_ok` satisfied (+0.0243) and `beta_ok` violated (beta 0.0988, margin −0.0488); oracle agrees on both at rel 1e-9; also record `4.70` → violated (−0.0033) as the reason for D6
+- [x] **Contract facts.** `beta` absent; the six design attributes + two library defaults present; `beta_calc__beta` and `peak_field_calc__B_peak` channels; 173 / 75 / 6
+- [x] **Study tools.** preflight 6/6 and verify pass (Phase 4 evidence, re-stated with the run ids)
+- [x] **Suites.** `pytest tests/study tests/models` tallies; IFE census and anchors unchanged
+- [x] **MR-3 / MR-4 read.** citation-by-citation read of the six instance docs and three library docs: every Ref resolves to an image path or a pinned upstream line; no typical-literature value
+- [x] `verification_record.md` written; SV-036 row updated; spec Success Criteria ticked; `CURRENT_WORK.md` updated
+- [x] Hand-offs recorded (not executed here): Item 6 design table settle-up (`magnet__peak_ratio`, `magnet__B_max`, 4.69 T — the model is the source of truth); DI candidate text for close (design D3); the `.project/backlog/BACKLOG.md` run-study row already filed
 
 **Validation checkpoint (final, comprehensive)**
-- [ ] `uv run agentic-mbse validate --complete models` → L1 0; L2/L6 offender list identical to `baseline_validate.txt`
-- [ ] `uv run pytest tests/models -q` green; `STUDY_REQUIRE_TEAX=1 STOP_PARSER_TEAX_ROOT=… uv run pytest tests/study -q` green
-- [ ] `uv run pytest tests/test_dependency_provenance.py -q` green (pins untouched)
-- [ ] `uv run agentic-mbse status` → SV-036 row parses (no new matrix warning beyond the pre-existing SV-034/035 `rel dev` ones)
-- [ ] Spec acceptance criteria, verified explicitly:
-  - [ ] `'Volume-Averaged Beta'` and `'Conductor Peak Field Limit'` exist in the library with MR-4 docs; wired in `mfe_plant.sysml`; bound in `stellarator_plant.sysml`
-  - [ ] `beta` is no longer an entry point; `beta_calc__beta` is a channel; `peak_field_ok` is the sixth constraint
-  - [ ] Level 1 passes; Levels 2 and 6 offender list unchanged
-  - [ ] Generation exit 0, zero readiness diagnostics, `runtime_contract_version 2.0.0`
-  - [ ] `tests/models` and `tests/study` green; IFE census and anchors unchanged
-  - [ ] Computed beta within ±3.5 % at Points A and B; oracle bit-exact rel 1e-9
-  - [ ] Design-point headline unchanged to the cent; six verdicts satisfied, `peak_field_ok` margin 0.0
-  - [ ] `B_max = 13.0`: `B = 9.0` violated; `B = 4.69` satisfied with `beta_ok` violated
-  - [ ] `preflight.py gates` 6/6 and `verify.py` pass on the regenerated package with the re-pinned manifest
+- [x] `uv run agentic-mbse validate --complete models` → L1 0; L2/L6 offender list identical to `baseline_validate.txt`
+- [x] `uv run pytest tests/models -q` green; `STUDY_REQUIRE_TEAX=1 STOP_PARSER_TEAX_ROOT=… uv run pytest tests/study -q` green
+- [x] `uv run pytest tests/test_dependency_provenance.py -q` green (pins untouched)
+- [x] `uv run agentic-mbse status` → SV-036 row parses (no new matrix warning beyond the pre-existing SV-034/035 `rel dev` ones)
+- [x] Spec acceptance criteria, verified explicitly:
+  - [x] `'Volume-Averaged Beta'` and `'Conductor Peak Field Limit'` exist in the library with MR-4 docs; wired in `mfe_plant.sysml`; bound in `stellarator_plant.sysml`
+  - [x] `beta` is no longer an entry point; `beta_calc__beta` is a channel; `peak_field_ok` is the sixth constraint
+  - [x] Level 1 passes; Levels 2 and 6 offender list unchanged
+  - [x] Generation exit 0, zero readiness diagnostics, `runtime_contract_version 2.0.0`
+  - [x] `tests/models` and `tests/study` green; IFE census and anchors unchanged
+  - [x] Computed beta within ±3.5 % at Points A and B; oracle bit-exact rel 1e-9
+  - [x] Design-point headline unchanged to the cent; six verdicts satisfied, `peak_field_ok` margin 0.0
+  - [x] `B_max = 13.0`: `B = 9.0` violated; `B = 4.69` satisfied with `beta_ok` violated
+  - [x] `preflight.py gates` 6/6 and `verify.py` pass on the regenerated package with the re-pinned manifest
 
 **Gate:** SV-036 `passing` with evidence; spec criteria all ticked; suites green. Then `/audit-models` (do not self-certify), then `/status close WI-030` with the DI.
 
@@ -299,3 +299,13 @@ Environment: stock teax at `/home/reid/1cfe/teax` (`744745f`); export `STOP_PARS
 - Tests re-targeted: `test_known_answers.py` (CASES, contract row, fingerprint, `== 6`, `test_B_reaches_both_field_constraints_through_calcs`), `test_provenance.py:77` (`magnet__B`), `test_verify.py:100`, `test_operand_bindings.py` (6 / 11), `test_valid_empty.py` (6 bounds; `beta` joins `objectives_unreachable` for `land_cost`), `test_mechanical_failures.py` (`pipeline.yaml:49` → `:77`, the `rb.inputs.R_in` line moved when two modules were added), `test_output_contract.py` (`B`), `test_subset_flag.py` (`B` sorts first; group selections). Item 6's three new tests needed nothing.
 - `pytest tests/study`: **246 passed, 1 skipped, 5 failed, 16 errors — every failure/error is the git-clean gate** (`test_common::git_clean_gate`, `test_preflight_gates::clean_subcommand` + 7 fixture errors, `test_verify` 3 + 9 fixture errors), exactly the pre-commit state the migration recorded (`plan.md:538`). `grep -rn "stellaris__beta\b"` over `tests/`, `studies/`, `study/`: only the retired-key mention in the `B` axis note.
 - **Commit checkpoint reached.** File set listed in the turn's report; Item 6's own uncommitted edit (`run_design_search.py` — the docstring line WI-030 also touched) is the one overlap.
+
+### Phase 4, after the commit (2026-08-21, `ba5c9945`)
+- Owner committed WI-030's 74-file set (the one overlap, `run_design_search.py`, carried only the docstring line). `preflight.py gates` → pass 6/6 incl. `package_clean` and `baseline_headline` 0.000e+00 with 6/6 verdicts; `verify.py` → pass, 9 channels incl. `beta` and `B_peak`, worst rel 4.13e-16, six verdicts re-derived, nothing undisclosed (note: `verify.py` imports `simkit` at `build_summary`, so it needs `packages/teax-simkit` on `sys.path` — run it with the teax root exported, as the tests do).
+- `pytest tests/study tests/models tests/test_dependency_provenance.py`: 317 passed, 14 skipped, 1 failed — `test_installed_artifacts_are_the_recorded_wheels_and_public_apis` needs `STOP_PARSER_WHEEL_TARGET` in the environment (unset here); unrelated to the model.
+
+### Phase 5 (2026-08-21)
+- SV-036 executed through the study route at five points (design, LTS 9.0 / 4.69 / 4.70 T, Point B) with oracle parity 0.0 on `beta` and `B_peak` at every point; margins from the generated predicates. Record: `./verification_record.md`. `VALIDATION_MATRIX.md` SV-036 → passing. Spec Success Criteria all ticked.
+- MR-4 read: every new Ref resolves (image files present; `defaults.py:605-614`, `tokamak.py:36-40`, `:117-126` at pin `0254385`).
+- Hand-offs: Item 6 settle-up (the model is the source of truth: `magnet__peak_ratio`, `magnet__B_max`, LTS point 4.69 T) and the DI at close are recorded in `.project/CURRENT_WORK.md`; the run-study operand-parsing row is in `.project/backlog/BACKLOG.md`.
+- Next: `/audit-models WI-030`, then `/status close WI-030` with the DI.

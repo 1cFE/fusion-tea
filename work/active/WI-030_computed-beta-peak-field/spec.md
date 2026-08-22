@@ -99,19 +99,21 @@ At the Stellaris design point, LCOE, total capital, `p_net`, `q_eng`, `rec_frac`
 ## Success Criteria
 
 **Functional**
-- [ ] `'Volume-Averaged Beta'` and `'Conductor Peak Field Limit'` exist in the library with MR-4 docs; wired in `mfe_plant.sysml`; bound in `stellarator_plant.sysml`
-- [ ] `beta` is no longer an entry point; `beta_calc__beta` is a channel; `peak_field_ok` is the sixth constraint
+- [x] `'Volume-Averaged Beta'` and `'Conductor Peak Field Limit'` exist in the library with MR-4 docs; wired in `mfe_plant.sysml`; bound in `stellarator_plant.sysml`
+- [x] `beta` is no longer an entry point; `beta_calc__beta` is a channel; `peak_field_ok` is the sixth constraint
 
 **Quality**
-- [ ] `uv run agentic-mbse validate models --level 1` passes; Levels 2 and 6 offender list unchanged from the migration's (zero introduced)
-- [ ] Generation: exit 0, zero readiness diagnostics, `runtime_contract_version 2.0.0`
-- [ ] `tests/models` and `tests/study` green; IFE census and anchors unchanged
+- [x] `uv run agentic-mbse validate models --level 1` passes; Levels 2 and 6 offender list unchanged from the migration's (zero introduced)
+- [x] Generation: exit 0, zero readiness diagnostics, `runtime_contract_version 2.0.0`
+- [x] `tests/models` and `tests/study` green; IFE census and anchors unchanged
 
 **Verification (SV-036, pending)**
-- [ ] Computed beta at Point A within ±3.5 % of 0.0276 and at Point B within ±3.5 % of 0.0281 (Table 5 image), oracle bit-exact rel 1e-9
-- [ ] Design-point headline unchanged to the cent; six verdicts, all satisfied, `peak_field_ok` margin 0.0
-- [ ] With `B_max = 13.0` and `B = 9.0`: `peak_field_ok` violated; with `B = 4.69`: satisfied (margin +0.024) and `beta_ok` violated (β = 0.0988) — the two verdicts that make Item 6's LTS arm honest. *Amended 2026-08-21: 4.70 T gives `B_peak = 13.0033 > 13.0` (violated); the exact Nb3Sn ceiling on axis is 13.0 × 9.0/24.9 = 4.6988 T.*
-- [ ] `preflight.py gates` 6/6 and `verify.py` pass on the regenerated package with the re-pinned manifest
+- [x] Computed beta at Point A within ±3.5 % of 0.0276 and at Point B within ±3.5 % of 0.0281 (Table 5 image), oracle bit-exact rel 1e-9
+- [x] Design-point headline unchanged to the cent; six verdicts, all satisfied, `peak_field_ok` margin 0.0
+- [x] With `B_max = 13.0` and `B = 9.0`: `peak_field_ok` violated; with `B = 4.69`: satisfied (margin +0.024) and `beta_ok` violated (β = 0.0988) — the two verdicts that make Item 6's LTS arm honest. *Amended 2026-08-21: 4.70 T gives `B_peak = 13.0033 > 13.0` (violated); the exact Nb3Sn ceiling on axis is 13.0 × 9.0/24.9 = 4.6988 T.*
+- [x] `preflight.py gates` 6/6 and `verify.py` pass on the regenerated package with the re-pinned manifest
+
+*All criteria verified 2026-08-21 at commit `ba5c9945`; evidence in `./verification_record.md` (SV-036).*
 
 ## Assumptions & Risks
 
