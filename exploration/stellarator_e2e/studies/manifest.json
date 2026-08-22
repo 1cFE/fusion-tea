@@ -58,6 +58,11 @@
       "name": "beta",
       "channel": "stellarator_09__stellaris__beta_calc__beta",
       "note": "Volume-averaged thermal beta computed by 'Volume-Averaged Beta' from the profile referents and magnet__B (WI-030); replaces the retired bound input beta. Compared against the oracle's closed form so a magnet study verifies the physics lever it moves."
+    },
+    {
+      "name": "magnet_capital",
+      "channel": "stellarator_09__stellaris__magnet_cost__capital_cost",
+      "note": "CAS22.1.3 magnet capital. Declared as an objective (Item 6 design D9, 2026-08-21) so generic verification compares it against the oracle: a magnet-technology study moves this channel first, and it was a known coverage gap (ANNEX \u00a7 Oracle)."
     }
   ],
   "ties": [

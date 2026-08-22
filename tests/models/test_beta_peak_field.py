@@ -1,7 +1,7 @@
 """WI-030 structural tests: the computed-beta and conductor-peak-field definitions.
 
 The two calc defs and the constraint def exist in the library with exactly the
-design's formals (work/active/WI-030_computed-beta-peak-field/design.md,
+design's formals (work/completed/20260822_WI-030_computed-beta-peak-field/design.md,
 Elements 1-4), the defaulted constants are declared last (the pinned codegen
 refuses a usage that binds later formals by name while skipping an earlier
 defaulted one), and the magnet part def carries the two conductor facts.

@@ -1,7 +1,7 @@
 ---
-Status: approved
+Status: complete
 Created: 2026-08-21
-Updated: 2026-08-21
+Updated: '2026-08-22'
 Related Artifacts:
   Spec: ./spec.md
   Research: ../../../knowledge/research/approved/20260821-152108_wi030-computed-beta-peak-field.md

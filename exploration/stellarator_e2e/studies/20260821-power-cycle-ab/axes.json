@@ -1,0 +1,67 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "R",
+      "note": "Plasma major radius (one plant-level entry point) with its declared physical-identity tie: the magnet-cost Ampere's-law current runs on the same major radius under a separately authored attribute (manifest `ties`, ANNEX \u00a7 Declared ties).",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__R",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09__stellaris__magnet__R0",
+          "provenance": "tie"
+        }
+      ]
+    },
+    {
+      "axis": "a",
+      "note": "Plasma minor radius, one plant-level entry point.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__a",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "availability",
+      "note": "Plant capacity factor, one plant-level entry point since the migration (the consuming calcs bind it by the `_in` convention).",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__availability",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "discount_rate",
+      "note": "Discount / interest rate, one plant-level entry point; reaches CAS71/CAS72/CAS80 levelization and IDC.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__discount_rate",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "cycle_block",
+      "note": "The power-conversion block that defines the arms: thermal-to-electric efficiency plus the CAS23 turbine and CAS26 heat-rejection rates. Declared so its reach is on record; it is NOT swept as an axis -- each arm holds one fixed triple (DI-007: the three values are what a cycle choice changes upstream; p_pump is cycle-independent and held at 1.0 in every arm).",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__eta_th",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09__stellaris__turbine__cost_per_mw",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09__stellaris__heat_rejection__cost_per_mw",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}

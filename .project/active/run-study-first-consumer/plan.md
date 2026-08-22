@@ -9,7 +9,7 @@
 - **Spec:** `.project/active/run-study-first-consumer/spec.md`
 - **Design:** `.project/active/run-study-first-consumer/design.md` ← components, decisions D1–D11, invariants I1–I9, arm tables (Appendix A)
 - **Align:** `.project/active/run-study-first-consumer/align.md`
-- **Modeling PM prerequisites:** `work/active/WI-030_computed-beta-peak-field/spec.md` (modeling item), `work/active/WI-031_research-round-item6-values/spec.md` (research round)
+- **Modeling PM prerequisites:** `work/completed/20260822_WI-030_computed-beta-peak-field/spec.md` (modeling item), `work/completed/20260822_WI-031_research-round-item6-values/spec.md` (research round)
 
 ## The Point
 
@@ -105,10 +105,10 @@ The first complete pass through the capability: intake → definition → stock 
 
 ### Gate (all mechanical; do not start without them)
 - [x] Migration PR #107 merged; branch cut from `main` `8d6c443b` (2026-08-21)
-- [ ] `STOP_PARSER_TEAX_ROOT` HEAD is `744745f`
-- [ ] Phase 1 committed on this branch (owner-reviewed policy)
-- [ ] WI-031 closed (`uv run agentic-mbse status` shows it completed); its research doc read for `p_pump` and `eta_th` provenance
-- [ ] Baseline timing: `execute_baseline` wall-clock recorded; if 3 × 948 points would exceed ~2 h, coarsen the grid and record why in § 11
+- [x] `STOP_PARSER_TEAX_ROOT` HEAD is `744745f` (checked 2026-08-21)
+- [x] Phase 1 committed on this branch (`dcf159d5`, owner-reviewed policy)
+- [x] WI-031 research approved 2026-08-21 (`knowledge/research/approved/20260821-165616_wi031-item6-second-arm-values.md`, DI-007–DI-010); study 2's two values resolved (`p_pump` cycle-independent, `eta_th` PDF-cited); design Appendix A corrected. Closing the item is the owner's (`pm close-item WI-031`).
+- [x] Baseline timing (2026-08-21, stock route, warm process): `execute_baseline` 0.72 s incl. load; 19-point sweep 2.71 s → **0.14 s/point**. 3 × 948 points ≈ 7 min; a 50 × 50 × 2-arm magnet grid ≈ 12 min. No coarsening needed; proof-of-life window reused as is.
 
 ### Assumption Under Test
 Design B1: the runbook, tools, and record contract carry a multi-arm study unmodified. Design B4 (fresh administrator) gets its first real test.
@@ -145,9 +145,9 @@ def test_record_is_closed(record):
 - [ ] Step 7: oracle scan of the window; `arms[].window` provenance `engineered`, reused from the proof-of-life with the reason (§ 11)
 - [ ] Step 8: route rationale (direct-API; coordinated block) and "glue ledger: none" (§ 10)
 - [ ] Step 9: `run_points` once, one store; `git status` clean under `generated/`; § 3–4 from `StudyQuery` per arm with qualified constraint ids
-- [ ] Step 10: `verify.py --store <db>` → `results/verification_summary.json`; § 13 names uncovered channels (`p_fus`, and `p_pump` if unsourced) and cites `verify.py` stratified sampling as the inherited home (spec SC 10)
+- [ ] Step 10: `verify.py --store <db>` → `results/verification_summary.json`; § 13 names uncovered channels (`p_fus`) and cites `verify.py` stratified sampling as the inherited home (spec SC 10)
 - [ ] Steps 11–14: framing as judged; per-arm account; review outcomes; findings with homes; `DISCOVERY_LOG.md` created, one row per finding
-- [ ] Step 15: snapshot resolved (G1 `files[]` present); § 12 nil discharged ("single fingerprint"); § 17 holds listed (`p_pump`, η provenance); commit
+- [ ] Step 15: snapshot resolved (G1 `files[]` present); § 12 nil discharged ("single fingerprint"); § 17 states that the paper names no cycle; § 15 carries the DI-008 `p_pump` finding with home = WI-031 R4 item; commit
 
 #### 4. Administrator
 - [ ] `briefs/administer-<study-id>.md` from the template; spawn one `general-purpose` subagent with the brief verbatim as its entire prompt (never `fork`)
@@ -176,7 +176,7 @@ The epic's named study, on the regenerated package, with the two new verdicts ca
 ### Gate
 - [ ] WI-030 closed and merged to `main`; `main` merged into this branch; `model_contract.json` resolves `n_e0`, `T_e0`, `n_He0`, `alpha_n_e`, `peak_ratio`, `B_max` as parameters and `peak_field_ok` as a constraint id; `beta` absent; `beta_calc__beta` in the manifest objective catalog
 - [ ] `preflight.py gates` 6/6 on the regenerated package with the re-pinned manifest (WI-030's exit criterion, re-run here)
-- [ ] WI-031's findings for `f_carnot_cryo` at 4.5 K and the Nb3Sn winding pack read; held values and holds decided per Appendix A
+- [ ] DI-009/DI-010 sources ingested via `/manage-sources`, or not: decides whether `f_carnot_cryo` is a citation or a hold and whether arm B's `vol_cold_cryo` is derived or held (Appendix A)
 
 ### Assumption Under Test
 Design B3: the computed beta makes `beta_ok` respond to B and density, so the Nb3Sn arm's feasible region is carved by the model's verdicts, not by a hand rule. Design B2: one package, one store, no cross-fingerprint section.
@@ -272,6 +272,12 @@ Study stores go under `exploration/stellarator_e2e/studies/<study-id>/_work/` (g
 - § 9 and § 10 were appended after § 8 (the append-only tripwire table) rather than renumbering; existing citations to § 7/§ 8 stay valid.
 - The plan said "the rule-text paragraph for G1 updated"; the template has no separate G1 paragraph, only the in-block comment, which was extended.
 - Owner review: § 10 as first drafted quoted the Align verbatim and read as confused; rewritten to the durable rules only (1costingFE is the validation reference when a direct comparison is possible and applicable, never a limit on the model; the oracle is a development check, retired from the study contract after Item 6). Test updated to the new wording.
+
+### Phase 2 Progress (not complete) — 2026-08-21/22
+**Done:** gate fully open (WI-030 landed on this branch as `ba5c9945`/`72dc7699`, so study 2 runs on the post-WI-030 package `7447efea…`, six constraints — the plan's "study 2 before WI-030" ordering is moot; both studies share one package). Record opened at `exploration/stellarator_e2e/studies/20260821-power-cycle-ab/` with § 1–2 (owner intake verbatim, 2026-08-21), § 5 proposed, § 7, § 8 (rulings + two model-development findings), § 9 (preflight 6/6), § 10, § 11, § 14 (critique). `axes.json`, `indicators.json` (no subset), `results/{package_identity,baseline_result,preflight_results,oracle_scan}.json`, `study.py` (four arms, proposal builder, export). Seam edit: `studies/oracle_entry.py` maps the three block keys and `discount_rate` to oracle inputs. Manifest: `magnet_capital` objective added. `studies/.gitignore`: `*/_work/`.
+**Owner rulings 2026-08-22:** availability and discount_rate "no sensitivity" → declined, not swept; fourth arm yes (`arm-sco2-eta-only`); econ sweeps at more geometries yes — conflicts with the first ruling; unresolved, see handoff.
+**Not done:** runbook steps 9–15 (execution, verification, judgment, findings, discovery log, snapshot, commit) and the administrator. `study.py` still carries the availability / discount sweeps; remove or keep per the resolved ruling before step 9. Nothing under the record is committed.
+**Handoff:** written 2026-08-22 to the OS temp dir (path in the session transcript).
 
 ### Phase 2 Completion
 ### Phase 3 Completion

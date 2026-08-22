@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Epic: MFE Cost Modeling — Tokamak & Stellarator
 Owner: reid
 Created: 2026-08-21
-Updated: 2026-08-21
+Updated: '2026-08-22'
 ---
 
 # WI-030: Computed Beta and Conductor Peak-Field Limit (Stellaris)

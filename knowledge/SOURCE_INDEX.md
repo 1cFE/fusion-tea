@@ -189,6 +189,34 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Raw Path**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf
 - **Date Added**: 2026-07-18
 
+### ITER Cryoplant — iter.org pages (Cryogenics; "As cold as it gets")
+- **Type**: documentation
+- **Location**: knowledge/sources/iter_cryoplant_iter_org/ (two extractions: `cryogenics/output.md`, `as_cold_as_it_gets/output.md`; raw HTML alongside)
+- **Use for**: Published ITER cryoplant capacity and electrical figures — "installed cooling power of 75 kW at 4.5 K (helium) and 1300 kW at 80 K (nitrogen)" (`cryogenics/output.md:30`); "Operating the cryoplant will require 35 MW of electrical power" (`as_cold_as_it_gets/output.md:36`). Basis for the plant-level fraction-of-Carnot (0.24 at T_amb = 300 K) in DI-009 and for the Nb3Sn-arm `f_carnot_cryo` in RUN-STUDY Item 6 study 1. Serves RQ-1 (cryogenic recirculating power as an MFE cost driver).
+- **Validation**: Any derived fraction-of-Carnot must show the arithmetic against these three numbers; the 80 K load is not modeled in `mfe_cryo_plant.sysml`, so the plant-level (both-load) fraction is the like-for-like value. Note the two pages differ in age; "As cold as it gets" is a construction-era article.
+- **Caveat**: Ingested by WI-031 (2026-08-21) directly from the web via `agentic-mbse extract` (trafilatura), not through Zotero; no Zotero key.
+
+#### Extended Metadata
+- **Source URL**: https://www.iter.org/machine/supporting-systems/cryogenics ; https://www.iter.org/node/20687/cold-it-gets
+- **Raw SHA256**: fdaa0c67130973635664ef3c0b23504e1e8ee965dc69955ec7676cfbb7337ed9 (cryogenics/raw.html) ; 5cc95ef1235cd8fcf9070928469d8dc005eb3ace372a91614f1b6eb6976c1c76 (as_cold_as_it_gets/raw.html)
+- **Extracted Path**: knowledge/sources/iter_cryoplant_iter_org/
+- **Extract SHA256**: f1acf34d0a29bba7e9a4d621414dd7f890fb939514a9ffcd0c8b217b420e426a (cryogenics/output.md) ; 5af4522e82a4e92dc4e6c0c2281a6500a17d3160b8e8d9860a21b695342173e7 (as_cold_as_it_gets/output.md)
+- **Date Added**: 2026-08-21
+
+### Preliminary Design of a High Current R&W TF Coil Conductor for the EU DEMO (Demattè & Bruzzone, SPC/EPFL)
+- **Type**: documentation
+- **Location**: knowledge/sources/eu_demo_rw_tf_coil_conductor_dematte_bruzzone/
+- **Use for**: EU DEMO Nb3Sn toroidal-field winding-pack geometry and current: reference design 226 turns × 66 kA (14.9 MA-turns), proposed react-and-wind design 142 turns × 104.95 kA with a winding pack 1296 mm toroidal × 411 mm radial, sized for 12.04 T at 6.5 K (`output.md:45-49`). Basis for the Nb3Sn overall winding-pack current density (14.6–28 A/mm²) in DI-010 and for the Nb3Sn-arm `vol_cold_cryo` scaling in RUN-STUDY Item 6 study 1. Serves RQ-1 (magnet cost drivers: LTS vs HTS coil volume).
+- **Validation**: The "14.9 MA" figure is split across a line break in the text extraction (`output.md:45`); verify against `raw.pdf` p. 2 or the Fig. 1 image. Derived current densities must state the winding-pack area used (proposed 1296 × 411 mm; reference ≈ 1240 × 821 mm, inferred from the paper's "56 mm larger" / "∼410 mm less" statements).
+- **Caveat**: Conference preprint (IEEE Trans. Appl. Supercond., paper THU-PO3-205-11) hosted open-access on EPFL infoscience; ingested by WI-031 (2026-08-21) directly from the URL via `agentic-mbse extract`, not through Zotero. Contains no ARIES-CS material (checked by string count).
+
+#### Extended Metadata
+- **Source URL**: https://infoscience.epfl.ch/server/api/core/bitstreams/72370f60-ba0d-4700-a09a-56813d0eb052/content
+- **Raw SHA256**: 13b728b3ceb9b51bc91d2451fb9ec0b57ed4f8ac2622ffd5291f0b417c2fe00d
+- **Extracted Path**: knowledge/sources/eu_demo_rw_tf_coil_conductor_dematte_bruzzone/
+- **Extract SHA256**: b7c7046ac962ca8f1e515198d513f37c653de22802fe313798057ea91ddee428
+- **Date Added**: 2026-08-21
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

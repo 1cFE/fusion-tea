@@ -90,13 +90,13 @@ epics:
   - id: WI-030
     name: Computed beta and conductor peak-field limit (Stellaris)
     scale: standard
-    status: backlog
-    completed: null
+    status: completed
+    completed: '2026-08-22'
   - id: WI-031
     name: 'Research round: second-arm values for the Item 6 A/B studies'
     scale: trivial
-    status: backlog
-    completed: null
+    status: completed
+    completed: '2026-08-22'
 - name: Pipeline De-Risk & Demonstration
   goal: null
   priority: P0
@@ -185,8 +185,8 @@ standalone:
 | WI-023 | magnet-field-errata-B9 | standard | completed | Completed 2026-07-18 |
 | WI-024 | Recirculating-power derivation model (coil/cryo parasitic loads) | standard | completed | Completed 2026-07-18 |
 | WI-025 | STALE-BASIS Pass-Through Recompute | standard | completed | Completed 2026-07-18 |
-| WI-030 | Computed beta and conductor peak-field limit (Stellaris) | standard | backlog |  |
-| WI-031 | Research round: second-arm values for the Item 6 A/B studies | trivial | backlog |  |
+| WI-030 | Computed beta and conductor peak-field limit (Stellaris) | standard | completed | Completed 2026-08-22 |
+| WI-031 | Research round: second-arm values for the Item 6 A/B studies | trivial | completed | Completed 2026-08-22 |
 
 ## Epic: Pipeline De-Risk & Demonstration
 **Priority**: P0 | **Status**: active

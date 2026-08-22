@@ -193,10 +193,10 @@ Qualified keys carry the `stellarator_09__stellaris__` prefix. "Held" values are
 
 | key | arm-rankine-paper | arm-rankine-upstream | arm-sco2 | source |
 |---|---|---|---|---|
-| `eta_th` | 0.333 | 0.40 | 0.47 | paper `stellaris-design-details.md:251`; upstream `defaults.py:579`; `defaults.py:583` |
+| `eta_th` | 0.333 | 0.40 | 0.47 | paper: "assuming a simple electrical conversion efficiency of 1/3", Stellaris `raw.pdf` p. 3 (`knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf`; the extractions' "single-element" is a paraphrase artifact, WI-031 § 2); upstream `defaults.py:579`; `defaults.py:583`. The paper names no cycle: "rankine" in the arm label is Item 6's, because the cost rates are the upstream Rankine preset; the record says so. |
 | `turbine__cost_per_mw` | 202,840 | 202,840 | 159,080 | `defaults.py:580` (= `stellarator_plant.sysml:231`); `defaults.py:585` |
 | `heat_rejection__cost_per_mw` | 35,060 | 35,060 | 22,580 | `defaults.py:581` (= `stellarator_plant.sysml:249`); `defaults.py:586` |
-| `p_pump` (held unless sourced) | 1.0 | 1.0 | 1.0 | `steady_state_stellarator.yaml:21`; sCO2 value: **no source in repo** → research round, else disclosed hold |
+| `p_pump` (held, cycle-independent) | 1.0 | 1.0 | 1.0 | `steady_state_stellarator.yaml:21`. **DI-007** (WI-031): the cycle is the secondary side; upstream presets carry only `eta_th`, turbine, heat-rejection (`CAS23_26_balance_of_plant.md:163-166`); sCO2 compressor work is inside `eta_th`. Resolved by construction, not a hold. **DI-008** finding, carried in § 15 and the discovery log, not in the arms: 1.0 MW is ~100× below helium-primary circulator figures (2–6 % of blanket thermal); re-sourcing is a separate modeling item (WI-031 R4), never folded into this A/B. |
 | `eta_p` (held) | 0.5 | 0.5 | 0.5 | no cycle dependence in any source |
 
 Sweep per arm: the proof-of-life (R, a) window (`study_route.R_VALUES` × `A_VALUES`, mask R > a + 2.25), availability 0.85. Indicators for the block (research § 1, run 2026-08-21): reaches `net_positive`, `recirc_ok`; objectives `cas72`, `lcoe`, `lcoe_1cfe`, `total_capital`. No `no_constraint_response`; no ruling needed. Framing proposed: sensitivity on the block, search on (R, a).
@@ -212,8 +212,8 @@ Sweep per arm: the proof-of-life (R, a) window (`study_route.R_VALUES` × `A_VAL
 | `magnet__coil_markup` (held) | 5.87 | 5.87 | `costing_constants.yaml:60-75` (concept-keyed, conductor-independent) |
 | `p_tf` (held) | 0.0 | 0.0 | `defaults.py:611-614` (SC grades) |
 | `q_nuc_cryo` (held) | 35.5 | 35.5 | Stellaris Table 6 image (shield result, conductor-independent) |
-| `f_carnot_cryo` (held, disclosed) | 0.20 | 0.20 | model assumption WI-024 D4; 4.5 K value **no source in repo** → research round |
-| `vol_cold_cryo` (held, disclosed) | 136.56 | 136.56 | Stellaris; Nb3Sn winding pack **no source in repo** → research round |
+| `f_carnot_cryo` (held equal in both arms) | 0.20 | 0.20 | model assumption WI-024 D4. **DI-009** (WI-031): large helium cryoplants run at 0.22–0.30 of Carnot roughly independent of temperature (ITER 0.24, LHC 0.30, W7-X ≥ 0.22; web sources, ingestion pending). Equal-f rule: hold the fraction equal so the A/B isolates `T_cold`; disclosed hold until the sources are ingested, then a citation. |
+| `vol_cold_cryo` | 136.56 | 136.56 held, or 575–1100 derived | Stellaris Table 8 (REBCO, 112–124 A/mm²). **DI-010** (WI-031): Nb3Sn packs run 15–28 A/mm² (EU DEMO TF), so at equal Amp-turns the LTS cold volume is 4–8× larger. If the source is ingested before Phase 3, arm B binds the derived range's midpoint with the derivation cited and the range disclosed; else held at 136.56 as a disclosed hold that understates arm B's cryo load. |
 
 Sweep per arm, identical in both: `magnet__B` over a window spanning ~4.7 T to past 9.0 T, and one declared density axis with the tied fan-out `{n_D0, n_T0, n_e0, n_He0}` scaled together at fixed `T_i0`, `T_e0`, spanning below 0.5× to 1.0× of Point A. Exact bounds from the step-7 oracle scan. Indicators: run on the regenerated package at intake; expected reach `peak_field_ok`, `beta_ok`, `net_positive`, `recirc_ok`, `wall_load_ok`; `tbr_ok` inert. Framing proposed: search on both axes in both arms.
 

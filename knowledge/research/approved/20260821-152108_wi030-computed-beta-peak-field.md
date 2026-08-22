@@ -12,7 +12,7 @@ research_type: model
 
 ## Research Question
 
-What does the design of WI-030 (`work/active/WI-030_computed-beta-peak-field/spec.md`) need to know that the spec leaves open: the shape the pinned codegen and the study tooling admit for the peak-field constraint (risk R1), the helium/electron exponent choice (R2), the exact bound values and their arithmetic at the verdict boundary, the placement of the new attributes and asserts, and what the regeneration touches (R3, R4).
+What does the design of WI-030 (`work/completed/20260822_WI-030_computed-beta-peak-field/spec.md`) need to know that the spec leaves open: the shape the pinned codegen and the study tooling admit for the peak-field constraint (risk R1), the helium/electron exponent choice (R2), the exact bound values and their arithmetic at the verdict boundary, the placement of the new attributes and asserts, and what the regeneration touches (R3, R4).
 
 ## Summary
 

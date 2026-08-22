@@ -64,6 +64,13 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}n_D0": "n_D0",
     f"{P}n_T0": "n_T0",
     f"{P}T_i0": "T_i0",
+    # Item 6 study 2 (20260821-power-cycle-ab): the power-conversion block that
+    # defines the arms, and the discount-rate lever. Oracle input names per
+    # `verify_stellaris.IN` (eta_th, turbine_per_mw, heat_rej_per_mw, discount_rate).
+    f"{P}eta_th": "eta_th",
+    f"{P}turbine__cost_per_mw": "turbine_per_mw",
+    f"{P}heat_rejection__cost_per_mw": "heat_rej_per_mw",
+    f"{P}discount_rate": "discount_rate",
 }
 
 #: Oracle output name -> qualified channel name. Only channels the package records

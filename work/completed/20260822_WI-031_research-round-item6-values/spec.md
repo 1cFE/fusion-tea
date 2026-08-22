@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: trivial
 Epic: MFE Cost Modeling — Tokamak & Stellarator
 Owner: reid
 Created: 2026-08-21
-Updated: 2026-08-21
+Updated: '2026-08-22'
 ---
 
 # WI-031: Research round — second-arm values for the Item 6 A/B studies
