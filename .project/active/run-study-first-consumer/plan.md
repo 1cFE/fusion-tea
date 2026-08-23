@@ -317,6 +317,8 @@ Study stores go under `exploration/stellarator_e2e/studies/<study-id>/_work/` (g
 **Not done:** steps 9–15 and the administrator. Owner asked for a handoff instead of running (2026-08-23).
 
 ### Phase 3 Completion
+**Certification (2026-08-23, owner's reviewing session):** every headline number re-derived from `results/points.csv` and `results/oracle_operands.csv`; verification (48 rows / 11 strata / 10 channels / 4.3e-16) and the snapshot read; both suites green (321 passed / 14 skipped). Certified; nothing reopened. One addendum added (finding `#11`, logged): the empty-Nb3Sn-arm headline was re-evaluated through the oracle seam across the sourced range of `f_carnot_cryo` (0.20–0.30) and `vol_cold_cryo` (285–390 m³) — the arm stays empty at grid resolution in every case (rec_frac 0.504–0.516 vs 0.5), so the result is robust to the held cryo assumptions, with the margin stated. Two process slips for the Phase 4 runbook-sentence list: re-run preflight whenever `axes.json` changes (`#10`); export `case_id` in `points.csv` (`#6`).
+
 **Completed:** 2026-08-23 (commits `829dda6d` record + seam + log, the synthesis commit, and the addendum commit)
 **Actual Changes:**
 - Step 9: 2 × 74 × 56 = 8,288 points, one store beside the record (`studies/_work/20260823-magnet-technology-ab/`, finding #11 applied), stock route, 20 min 17 s (0.147 s/point); package clean after (`results/postrun_clean.json`). `results/oracle_operands.csv` carries `p_net`, `rec_frac`, `q_eng`, `p_th`, `p_et` and the bound values for every case (findings #10, #7 applied).
