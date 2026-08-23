@@ -1,0 +1,97 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "B",
+      "note": "Axis-averaged on-axis field, one magnet-part entry point. Since WI-030 it reaches beta_ok ('Volume-Averaged Beta') and peak_field_ok ('Conductor Peak Field'), and the magnet cost.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__B",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "density",
+      "note": "Plasma density as one scale factor on the four species peaks. n_D0 is the declared lever; n_T0, n_e0, n_He0 ride with it as declared ties: quasineutrality at the peak (n_e0 = n_D0 + n_T0 + 2 n_He0 = 5.06e20 at Point A) is invariant under a common scale, so scaling the four together is the only consistent way to move density (executor's declaration from the Table 5 image, Item 6 design D7).",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__n_D0",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09__stellaris__n_T0",
+          "provenance": "tie"
+        },
+        {
+          "key": "stellarator_09__stellaris__n_e0",
+          "provenance": "tie"
+        },
+        {
+          "key": "stellarator_09__stellaris__n_He0",
+          "provenance": "tie"
+        }
+      ]
+    },
+    {
+      "axis": "temperature",
+      "note": "Peak ion and electron temperature, moved together. Proposed and DECLINED by the executor (pre-execution critique): the package has no confinement or ignition closure, so temperature is a free input nothing pushes back on; it is held at Point A (14.63 / 15.40 keV) and the density sweep is therefore a fixed-temperature pressure sweep. Declared for its indicator.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__T_i0",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09__stellaris__T_e0",
+          "provenance": "tie"
+        }
+      ]
+    },
+    {
+      "axis": "R",
+      "note": "Plasma major radius with its declared tie. Proposed and DECLINED by the executor for this study: geometry was the axis pair of 20260821-power-cycle-ab; held at 12.7 m here.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__R",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09__stellaris__magnet__R0",
+          "provenance": "tie"
+        }
+      ]
+    },
+    {
+      "axis": "a",
+      "note": "Plasma minor radius. Proposed and DECLINED by the executor for this study (see R); held at 1.3 m.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__a",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "conductor_block",
+      "note": "The block that defines the arms: conductor cost, coil operating temperature, peak-field ceiling, winding-pack cold volume. Declared so its reach is on record; it is the arm definition, held per arm, not an axis and not framed (a two-level factor has no boundary to search).",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__cost_per_kAm",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09__stellaris__T_cold_cryo",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09__stellaris__magnet__B_max",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09__stellaris__vol_cold_cryo",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}

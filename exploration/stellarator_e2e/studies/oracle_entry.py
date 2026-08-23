@@ -71,6 +71,11 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}turbine__cost_per_mw": "turbine_per_mw",
     f"{P}heat_rejection__cost_per_mw": "heat_rej_per_mw",
     f"{P}discount_rate": "discount_rate",
+    # Item 6 study 1 (20260823-magnet-technology-ab): the conductor block that
+    # defines the arms. Oracle input names per `verify_stellaris.IN`.
+    f"{P}magnet__cost_per_kAm": "magnet_cost_per_kAm",
+    f"{P}T_cold_cryo": "T_cold_cryo",
+    f"{P}vol_cold_cryo": "vol_cold_cryo",
 }
 
 #: Oracle output name -> qualified channel name. Only channels the package records

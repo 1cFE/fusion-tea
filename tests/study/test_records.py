@@ -51,10 +51,14 @@ def test_findings_join_the_discovery_log(record):
         if cell.strip("` ").startswith(f"{record.name}#")
     }
     log = (STUDIES / "DISCOVERY_LOG.md").read_text()
+    # Join on the Record column only: a row's Finding cell may legitimately cite
+    # another record's id (a recurring finding), and that is not a row for it.
     in_log = {
-        line.split("|")[3].strip().strip("`")
+        cell
         for line in log.splitlines()
-        if line.startswith("| 20") and f"`{record.name}#" in line
+        if line.startswith("| 20")
+        for cell in [line.split("|")[3].strip().strip("`")]
+        if cell.startswith(f"{record.name}#")
     }
     assert in_record, "a committed record carries at least one finding"
     assert in_record == in_log
