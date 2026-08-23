@@ -1,8 +1,8 @@
 # Implementation Plan: Run-Study First Consumer (RUN-STUDY Item 6)
 
-**Status:** In Progress — Phases 1–2 complete; Phase 2 certified by the owner's reviewing session 2026-08-23 (`881d4448`); Phase 3 gated on the DI-009/DI-010 ingest decision and the owner's intake for study 1
+**Status:** In Progress — Phases 1–3 complete (Phase 2 certified `881d4448`; Phase 3 record `829dda6d`, synthesis and addendum committed 2026-08-23); Phase 4 (close) not started — its items (merge to `main`, the oracle-retirement BACKLOG row, WI-030's DI note) are the owner's call
 **Created:** 2026-08-21
-**Last Updated:** 2026-08-22
+**Last Updated:** 2026-08-23
 **Branch:** `feat/run-study-first-consumer`, cut from `main` at `8d6c443b` (migration PR #107 merged 2026-08-21). One branch for all four phases; Phase 1 is a reviewable first commit.
 
 ## Source Documents
@@ -174,9 +174,9 @@ def test_record_is_closed(record):
 The epic's named study, on the regenerated package, with the two new verdicts carving the arms' feasible regions.
 
 ### Gate
-- [ ] WI-030 closed and merged to `main`; `main` merged into this branch; `model_contract.json` resolves `n_e0`, `T_e0`, `n_He0`, `alpha_n_e`, `peak_ratio`, `B_max` as parameters and `peak_field_ok` as a constraint id; `beta` absent; `beta_calc__beta` in the manifest objective catalog
-- [ ] `preflight.py gates` 6/6 on the regenerated package with the re-pinned manifest (WI-030's exit criterion, re-run here)
-- [ ] DI-009/DI-010 sources ingested via `/manage-sources`, or not: decides whether `f_carnot_cryo` is a citation or a hold and whether arm B's `vol_cold_cryo` is derived or held (Appendix A)
+- [x] WI-030 closed (landed on this branch, `ba5c9945`/`72dc7699`; not yet on `main` — Phase 4 merge); `model_contract.json` resolves `n_e0`, `T_e0`, `n_He0`, `alpha_n_e`, `peak_ratio`, `B_max` as parameters and `peak_field_ok` as a constraint id; `beta` absent; `beta_calc__beta` in the manifest objective catalog
+- [x] `preflight.py gates` 6/6 on the regenerated package with the re-pinned manifest (WI-030's exit criterion, re-run here) — `results/preflight_results.json`
+- [x] DI-009/DI-010 sources ingested via `/manage-sources` (2026-08-23): `f_carnot_cryo` held equal at 0.20 with DI-009 cited, arm B's `vol_cold_cryo` derived (390 m³) — decides whether `f_carnot_cryo` is a citation or a hold and whether arm B's `vol_cold_cryo` is derived or held (Appendix A)
 
 ### Assumption Under Test
 Design B3: the computed beta makes `beta_ok` respond to B and density, so the Nb3Sn arm's feasible region is carved by the model's verdicts, not by a hand rule. Design B2: one package, one store, no cross-fingerprint section.
@@ -194,19 +194,19 @@ def test_arms_share_one_store_when_fingerprints_agree(record):
 ### Changes Required
 **See `design.md` for:** D6–D7 (B × density window, tied fan-out), Appendix A (study 1 table), Potential Risks (24.9 T binds arm A exactly at 9.0 T).
 
-- [ ] Owner intake for study 1, verbatim; mint `<study-id>`
-- [ ] Steps 1–4 on the regenerated package: `axes.json` declares `B` (one key) and `density` (four-key tied fan-out, provenance `tie` for the scale relation); indicators run; **if any group reports `no_constraint_response`, stop and obtain the owner's ruling and file the finding before step 5**
-- [ ] `studies/<study-id>/study.py`: two arm blocks per Appendix A; shared (B, density-scale) window; held values with their sources in the module docstring
-- [ ] Steps 5–10 as Phase 2; step 7's oracle scan fixes the exact B and density bounds (arm B's `peak_field_ok` should bind near 4.7 T; the density floor sits below the LTS arm's beta-limited pressure)
-- [ ] Steps 11–15: § 6 per arm names the binding constraints (expected: `peak_field_ok` + `beta_ok` in arm B, `wall_load_ok` in arm A at high density); § 15 cites at least one study-2 log row by `<study-id>#<n>` (spec SC 10); § 12 nil discharged; § 17 holds (`f_carnot_cryo`, `vol_cold_cryo` unless WI-031 sourced them)
-- [ ] Administrator as Phase 2
+- [x] Owner intake for study 1, verbatim (2026-08-23); study id `20260823-magnet-technology-ab`
+- [x] Steps 1–4 on the regenerated package (no `no_constraint_response`; no ruling needed): `axes.json` declares `B` (one key) and `density` (four-key tied fan-out, provenance `tie` for the scale relation); indicators run; **if any group reports `no_constraint_response`, stop and obtain the owner's ruling and file the finding before step 5**
+- [x] `studies/20260823-magnet-technology-ab/study.py`: two arm blocks per Appendix A; shared (B, density-scale) window; held values with their sources in the module docstring
+- [x] Steps 5–10 as Phase 2 (run `829dda6d`: 8,288 points, 20 min 17 s; verify 48 rows / 11 strata / worst 4.27e-16); step 7's oracle scan fixed the exact B and density bounds (arm B's `peak_field_ok` should bind near 4.7 T; the density floor sits below the LTS arm's beta-limited pressure)
+- [x] Steps 11–15 (record committed `829dda6d`, zero placeholders; § 15 cites `20260821-power-cycle-ab#4`, `#5`, `#10`, `#3`, `#8`; § 12 nil discharged; § 17 holds `f_carnot_cryo` equal, `vol_cold_cryo` held): § 6 per arm names the binding constraints (expected: `peak_field_ok` + `beta_ok` in arm B, `wall_load_ok` in arm A at high density); § 15 cites at least one study-2 log row by `<study-id>#<n>` (spec SC 10); § 12 nil discharged; § 17 holds (`f_carnot_cryo`, `vol_cold_cryo` unless WI-031 sourced them)
+- [x] Administrator as Phase 2 — one fresh `general-purpose` subagent, brief verbatim (`briefs/administer-20260823-magnet-technology-ab.md`); `synthesis.md` committed; 20 "does not support" entries classified below; addendum written for its two corrections
 
 ### Validation
 **Automated:** as Phase 2; `test_records.py` over both records.
 **Manual:**
-- [ ] Arm B's feasible region is non-empty and bounded by the two new verdicts; arm A's by wall load
-- [ ] LCOE per arm reported with the magnet-capital channel verified by the oracle (D9)
-- [ ] The synthesis recovers both arms' framing, LCOE, named outcomes, and findings
+- [ ] ~~Arm B's feasible region is non-empty and bounded by the two new verdicts~~ **not met as expected, and that is the result**: arm B has no feasible point — its ceiling (`peak_field_ok`, B ≤ 4.69 T) and the beta fence (density ≤ 0.50× at that field) cross the recirculation fence (density ≥ 0.51×) inside one grid step. The model carved the region with its own verdicts (design B3 holds); the region is empty. Arm A: bounded by `wall_load_ok` at ≥ 1.14×, `recirc_ok` at ≤ 0.49×, `beta_ok` diagonally, `peak_field_ok` at 9.0 T — 1,002 / 4,144 feasible
+- [x] LCOE per arm reported with the magnet-capital channel verified by the oracle (D9) — `magnet_cost__capital_cost` among the 10 compared channels
+- [x] The synthesis recovers both arms' framing, LCOE, named outcomes, and findings — all recovered, every number re-derived by the administrator from `results/`; two record statements corrected by addendum
 
 **What We Know Works After This Phase:** the magnet-technology A/B exists as an immutable record; the model rejects an LTS arm on its own verdicts.
 
@@ -311,7 +311,35 @@ Study stores go under `exploration/stellarator_e2e/studies/<study-id>/_work/` (g
 - The snapshot was built by a scratch script, not a tool (none exists; the runbook says "resolved and copied in"). The script is not kept; the snapshot is the artifact.
 - Record addendum written after the synthesis (immutability rule): the record's § 10 stale sentence and three numbers are corrected there, not in place; `study.py` (digested) is left as committed.
 
+### Phase 3 Progress (not complete) — 2026-08-23
+**Done (runbook steps 1–8):** record opened at `exploration/stellarator_e2e/studies/20260823-magnet-technology-ab/` with the owner's intake verbatim (2026-08-23) and the executor's additions; `axes.json` (B; density as a four-key tied fan-out; temperature, R, a proposed and declined; the conductor block declared, not framed); `indicators.json` — no axis `no_constraint_response`, no ruling needed; baseline + preflight 6/6 (`results/`); oracle scan (`results/oracle_scan.json`) incl. the 0.44–0.59 density band at the Nb3Sn ceiling; pre-execution critique PROCEED WITH CHANGES, all five changes applied (block not framed; arm-B `vol_cold_cryo` re-derived at its 4.69 T ceiling = 390 m³; temperature declared/declined; 4.69 T node + denser 4–5 T grid; bound values in the per-point oracle artifact). `study.py`: two arms, 74 B × 56 density = 8,288 points (~19 min), store beside the record (`studies/_work/<id>/`, finding #11), `results/oracle_operands.csv` with p_net / rec_frac / bounds (findings #10, #7). Record §§ 5, 7–11, 14 filled; placeholders remain only in post-run sections. Seam edit: `studies/oracle_entry.py` maps `magnet__cost_per_kAm`, `T_cold_cryo`, `vol_cold_cryo`. Nothing committed.
+**Two facts from the scan:** (1) the package cannot evaluate a point with negative net power (√p_net in CAS10 → `execution_failed`; confirmed with a scratch probe), so the density window has a floor at 0.36× and `net_positive` can never read `violated` — model-development finding to file at § 15; (2) at Nb3Sn's 4.69 T ceiling the beta fence (density ≤ 0.50×) and the recirculation fence (≥ 0.51×) cross: no feasible node on the 0.01 grid, while REBCO at the same (B, density) is feasible — the difference is the 4.5 K cryo load (7.0 vs 0.9 MW). Expected headline, to be confirmed by the run.
+**Not done:** steps 9–15 and the administrator. Owner asked for a handoff instead of running (2026-08-23).
+
 ### Phase 3 Completion
+**Completed:** 2026-08-23 (commits `829dda6d` record + seam + log, the synthesis commit, and the addendum commit)
+**Actual Changes:**
+- Step 9: 2 × 74 × 56 = 8,288 points, one store beside the record (`studies/_work/20260823-magnet-technology-ab/`, finding #11 applied), stock route, 20 min 17 s (0.147 s/point); package clean after (`results/postrun_clean.json`). `results/oracle_operands.csv` carries `p_net`, `rec_frac`, `q_eng`, `p_th`, `p_et` and the bound values for every case (findings #10, #7 applied).
+- Step 10: `verify.py --sample-size 48` pass — 48 rows / 11 strata (every verdict combination in the study) / 10 channels / worst 4.27e-16 / 6 verdicts re-derived; 24 / 24 by arm by position (arm-blind scheme).
+- Steps 11–15: §§ 3–6, 12–17 filled from `results/` only (every number recomputed by a throwaway script, including LCOE monotonicity on every row and column of both arms and the cross-arm identity of β, B_peak, p_fus, wall load); `snapshot.json` from a scratch builder (values from the deposited documents, the store's compatibility row, the route's `prepare()`, tool/oracle source digests, teax `git rev-parse`); zero placeholders and zero `<` characters; findings #1–#8 in § 15 and `DISCOVERY_LOG.md`.
+- Result: `arm-rebco` 1,002 / 4,144 feasible (24.2 %, H1 in band), best feasible LCOE 204.1 $/MWh at (7.0 T, 1.12×) vs 275.3 at the design point; `arm-nb3sn` 0 / 4,144 (H1 falsified by physics, reported per arm) and cheaper at all 4,144 points (139 vs 275 at the design point), so no common feasible point and the LCOE ordering is not a result. The block moves `peak_field_ok` (2,240 points) and `recirc_ok` (74 points, the 0.50× row, via 7.0 vs 0.9 MW cryo); β, B_peak, p_fus, wall load identical across arms at every point. Three interaction results in § 6: field is never worth its price in this package (no confinement closure); the conductor *temperature*, not the ceiling alone, takes arm B's last node; the wall-load and recirculation fences are B-independent.
+- `tests/study/test_records.py`: the discovery-log join now reads the Record column only — the old substring match counted study 1's row #5 (which cites `20260821-power-cycle-ab#4`, per spec SC 10) as a study-2 row and failed for the study-2 record. Suites before the fix: 320 passed / 1 failed / 14 skipped; `test_records.py` green after.
+
+**Synthesis "does not support" classification (20 entries):**
+- Statement defects (2): entry 9 — "31 points at 1.00×" is 20 (wrong column read); entry 10 — "every combination in every arm was sampled" overreaches (7 of 9 REBCO combinations, 8 of 9 Nb3Sn; all 11 across the store). Both corrected in the record's addendum.
+- Contract gaps (3): entry 11 — `axes.json` changed after the preflight gate (temperature group added for its indicator), so the gated declaration is not in the directory → finding #10, home runbook step 6; entry 12 — the two CSVs join only by arm then row order and order the arms oppositely → finding #6 sharpened; entry 13 — the baseline point's `results/_work/` (with a symlink to the package) and `__pycache__/` live inside the record directory, undigested → finding #9, home `study_route.execute_baseline` / runbook step 5.
+- Stated by the record itself in § 13 / § 17 (10): entries 3, 4, 7, 8, 15, 16, 17, 18, 19, 20.
+- Outside the directory by contract design (5): 1 (the discovery log), 2 (the critique text), 5 (the cited sources), 6 (the prior study's ruling), 14 (the manifest's package alias).
+- Reader misses: none.
+
+**Issues Encountered:**
+- `points.csv` carries no `case_id`, so the operand artifact joins by row order within arm; the join was checked (two verdicts re-derived at every row) and disclosed — finding #6.
+- The evaluability floor's evidence (four failing package points) lives in a discarded scratch store; the runbook has no home for probe points — finding #7.
+
+**Deviations from Plan:**
+- The plan's Validation expectation "arm B non-empty, bounded by the two new verdicts" is not met and was not forced: the verdicts carved the region and it is empty (the third constraint, `recirc_ok`, closes the last node). Recorded as the result, not a defect.
+- Arm B's cold volume is derived (DI-010 ingested), not held at 136.56; re-derived at arm B's own ceiling after the critique (390 m³, not the first 749 m³).
+- `verify.py --sample-size 48` (default 12), per the Phase 2 certification note.
 ### Phase 4 Completion
 
 ---

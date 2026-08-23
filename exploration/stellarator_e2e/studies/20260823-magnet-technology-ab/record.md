@@ -291,3 +291,23 @@ No snapshot content is restated here.
 - **Wall-clock.** 8,288 points ran in 20 min 17 s on the stock route (0.147 s/point); recorded here only.
 - **Plots.** None; the CSVs are the result.
 
+
+## Addendum 2026-08-23
+
+Written by the executor after the administrator's `synthesis.md` (committed separately), which was read against this record. Nothing above this line, and nothing in `snapshot.json`, `indicators.json`, or `results/`, is changed. Two statements are corrected, one finding is sharpened, and two findings are added.
+
+**Corrections of statements (recomputed from `results/points.csv` and `results/verification_summary.json`):**
+
+- § 6 (`B`): "the feasible band in B is 6.625–9.0 T (31 points at 1.00×)" — the band is right, the count is wrong: 20 points (6.625 to 9.0 T in 0.125 T steps). The 31 was the feasible *density* count at B = 6.625 T, read from the wrong column. Nothing else depends on it.
+- § 13: "every combination in every arm that has one was sampled" overreaches. Across the store all 11 verdict combinations were sampled, which is what the arm-blind scheme guarantees. Per arm, the 48 rows covered 7 of `arm-rebco`'s 9 combinations (not sampled: `peak_field_ok` + `recirc_ok`; `peak_field_ok` + `wall_load_ok`) and 8 of `arm-nb3sn`'s 9 (not sampled: `recirc_ok` alone). The sentence that follows it in § 13, and § 17, already say the scheme did not set out to check each combination in each arm; read the stronger sentence as deleted.
+
+**Finding sharpened:** `20260823-magnet-technology-ab#6` — the two CSVs also order the arms oppositely: `points.csv` is sorted with `arm-nb3sn` first (`study.py` `export` sorts by `arm_id`), `oracle_operands.csv` is in case order with `arm-rebco` first (`c0000`–`c4143`). The join is by arm *then* row order within arm; a positional join over the whole file gives 148 wrong `recirc_ok` rows (synthesis § 6, § 7 entry 12). The home and disposition stand: the next study's export carries `case_id`.
+
+**Findings added (rows appended to `DISCOVERY_LOG.md`):**
+
+| Id | Kind | Finding | Disposition | Home |
+|---|---|---|---|---|
+| `20260823-magnet-technology-ab#9` | process | `results/_work/` — the baseline point's store (`stellarator-baseline-point-v1.db`), its artifact json, an empty `staging/` and a `pkg_link/` symlink to the package outside this directory — and `__pycache__/` sit inside the record directory on disk, gitignored, undigested and unmentioned in § 17. The committed directory and the directory on disk are not the same thing, and the symlink means the on-disk tree is not self-contained (synthesis § 6, § 7 entry 13). Study-2 finding `#11` moved the *study* store beside the record; the route's baseline executor (`study_route.execute_baseline`) still writes its own `_work/` under `results/`. | Stated; nothing moved (the baseline result names its store by id). From the next study on, the baseline executor is given a work directory beside the record, as the study store is. | study definition convention / route — `exploration/stellarator_e2e/studies/study_route.py` `execute_baseline`; runbook step 5 |
+| `20260823-magnet-technology-ab#10` | process | `axes.json` changed after the preflight gate ran: the temperature group was added for its indicator (§ 9), so `results/preflight_results.json` names a declaration (`0d2c37b2…`, 5 groups / 12 keys) that is not in the directory, and the temperature keys were traced by `indicators.json` but never passed the declared-keys gate (synthesis § 6, § 7 entry 11). Nothing in `results/` depends on it (temperature was not swept), but the gate's evidence no longer matches the declaration the record carries. | Stated. From the next study on, the gates are re-run after any change to the axis declaration, so the deposited gate results and `axes.json` agree. | runbook step 6 (re-run after a declaration change) |
+
+**Classification of the synthesis's "What the record does not support" entries**, for the Item 6 plan: entries 9 and 10 are statement defects, corrected above; entries 11, 12 and 13 are contract gaps (findings `#10`, `#6` sharpened, `#9`); entries 3, 4, 7, 8, 15, 16, 17, 18, 19 and 20 are gaps this record states itself in § 13 or § 17; entries 1, 2, 5, 6 and 14 are facts the record contract places outside the directory by design (the discovery log, the critique text, the cited sources, the prior study's ruling, the manifest's package alias). No entry is a reader miss: nothing the administrator reported missing is in the directory.
