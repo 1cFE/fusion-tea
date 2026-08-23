@@ -1,6 +1,6 @@
 # Implementation Plan: Run-Study First Consumer (RUN-STUDY Item 6)
 
-**Status:** In Progress — Phases 1–2 complete (2026-08-22); Phase 3 gated on WI-030's merge to `main` and the DI-009/DI-010 ingest decision
+**Status:** In Progress — Phases 1–2 complete; Phase 2 certified by the owner's reviewing session 2026-08-23 (`881d4448`); Phase 3 gated on the DI-009/DI-010 ingest decision and the owner's intake for study 1
 **Created:** 2026-08-21
 **Last Updated:** 2026-08-22
 **Branch:** `feat/run-study-first-consumer`, cut from `main` at `8d6c443b` (migration PR #107 merged 2026-08-21). One branch for all four phases; Phase 1 is a reviewable first commit.
@@ -302,6 +302,8 @@ Study stores go under `exploration/stellarator_e2e/studies/<study-id>/_work/` (g
 - The handoff's "267 passed" predated the manifest's `magnet_capital` edit; 11 tests were red at session start. Data-only re-pin, same kind as WI-030's for `beta`.
 - `tests/models` errors on `SYSIDE_LICENSE_KEY` unless the variable is exported (`set -a; source .env; set +a`); the plan's Environment Setup line `source .env` is not enough.
 - A pre-existing ruff E501 in `tests/study/test_mechanical_failures.py:131` (WI-030's) fails `ruff check tests/study`; not touched.
+
+**Certification (2026-08-23, owner's reviewing session):** every headline number re-derived from `results/points.csv`, verification and snapshot read, both suites green (`tests/study` 270; `tests/models` 48 with the license exported). Certified; nothing reopened. Two process findings added by a second addendum and logged (`881d4448`): **#10** an unrecorded predicate operand (`rec_frac`) is emitted from the oracle as a labelled artifact before verification rather than argued from five scan points — study 1 does this as executor practice, the runbook sentence lands at Phase 4; **#11** study stores go beside the record directory, not inside it — study 1's `study.py` `run()` places `_work/` beside the record. Also for study 1: raise `verify.py --sample-size` (12 of 3,792 was thin for four arms; the magnet arms differ in physics, not three scalars). Reviewer's reading of the science: the efficiency-vs-rates split is the solid result; "capital rises with η" is the cost model doing what it says (CAS23 per MWe); the recirculation-leverage interaction is the one worth a sentence and its best evidence sits in the oracle scan, hence #10.
 
 **Deviations from Plan:**
 - Four arms, not three (owner, on the critique's recommendation).
