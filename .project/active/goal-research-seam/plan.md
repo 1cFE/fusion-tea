@@ -225,17 +225,17 @@ def test_missing_anchor_raises(knowledge_tree):
 
 **See design.md for:** anchor decision → `design.md#key-decisions` D5; profile split and the R-B6 narrowing → D6; field list → *Field spellings* above.
 
-- [ ] `tests/research/test_index_writer.py` (NEW)
-- [ ] `scripts/zotero_ingest.py:210-251` — add `profile`, `source_url`/`origin_path`, `use_for`, `validation`, `caveat`, `source_kind`, `source_id`, `raw_artifact_sha256`; anchor becomes `## How Sources Are Used`; the warn-and-append-at-end branch is **replaced by a raise**
-- [ ] Extend `tests/research/test_zotero_path_contract.py` with the position assertion, now that the anchor is real
+- [x] `tests/research/test_index_writer.py` (NEW)
+- [x] `scripts/zotero_ingest.py:210-251` — add `profile`, `source_url`/`origin_path`, `use_for`, `validation`, `caveat`, `source_kind`, `source_id`, `raw_artifact_sha256`; anchor becomes `## How Sources Are Used`; the warn-and-append-at-end branch is **replaced by a raise**
+- [x] Extend `tests/research/test_zotero_path_contract.py` with the position assertion, now that the anchor is real
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/research/ -q -m "not slow"` → pass, characterization test included
+- [x] `uv run python -m pytest tests/research/ -q -m "not slow"` → pass, characterization test included
 
 **Manual:**
-- [ ] `git diff scripts/zotero_ingest.py` → the zotero-batch branch emits the same lines as before
+- [x] `git diff scripts/zotero_ingest.py` → the zotero-batch branch emits the same lines as before
 
 **What We Know Works After This Phase:** an index block can be written correctly by code, in the right place, and a seam block without its three prose fields cannot be written at all.
 
@@ -606,6 +606,16 @@ Crash-recovery machinery (D7); search counting in code (D8); DI minting (R-C3); 
 - None. The plan's `grep -rn "holdout_ack\|--holdout-ack" scripts/ tests/` gate passes with no matches (the AST test carries no such literal).
 
 ### Phase 3 Completion
+**Completed:** 2026-08-25
+**Actual Changes:**
+- `scripts/zotero_ingest.py` — `append_source_index_entry` now dispatches on `profile`. `zotero-batch` (the default) builds today's block through `_zotero_batch_block_lines`, empty `Use for`/`Validation` included, so unattended ingestion is unchanged. `seam` builds through `_seam_block_lines`, which raises `ValueError` naming every blank prose field and refuses without a `source_url` or `origin_path` (R-B6). The anchor is now `## How Sources Are Used`, and a missing anchor **raises** instead of warning and appending at end (D5) — the write is attempted only after the block is built, so a refusal leaves the index byte-identical.
+- `tests/research/test_index_writer.py` (NEW, 10 tests) — blank-field refusal per field, missing-origin refusal, seam field order, the local-PDF `Origin Path` variant, insertion position for both profiles, missing-anchor raise leaving the file untouched, and two blocks stacking in write order.
+
+**Issues:**
+- Making the new metadata keyword-only turned `item_key` and `pdf_sha256` into keyword arguments, which broke the two positional call sites in `process_zotero_item` and `process_local_pdf`. Both rewritten to keyword form in this phase; Phase 6 replaces them outright.
+
+**Deviations:**
+- The plan's "extend `test_zotero_path_contract.py` with the position assertion" landed in `test_index_writer.py::test_zotero_batch_block_also_lands_before_the_anchor` instead. Position is now a property of the writer's fixed anchor, not of the legacy contract being pinned; keeping the characterization file to what it pins (fields, values, row shape, dedupe) matches design M7.
 
 ### Phase 4 Completion
 

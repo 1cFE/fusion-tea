@@ -207,16 +207,71 @@ def resolve_slug(slug: str, item_key: str | None) -> str:
     return f"{slug}_{n}"
 
 
+SEAM_ANCHOR = "\n## How Sources Are Used"
+
+
 def append_source_index_entry(
     title: str,
     slug: str,
-    item_key: str | None,
-    pdf_sha256: str,
     extract_sha256: str,
+    *,
+    profile: str = "zotero-batch",
+    item_key: str | None = None,
+    pdf_sha256: str | None = None,
+    source_kind: str | None = None,
+    source_url: str | None = None,
+    origin_path: str | None = None,
+    use_for: str | None = None,
+    validation: str | None = None,
+    caveat: str | None = None,
+    source_id: str | None = None,
+    raw_sha256: str | None = None,
+    raw_artifact_sha256: str | None = None,
 ) -> None:
-    """Append a new entry to SOURCE_INDEX.md before the 'How MBSE Commands Use This File' section."""
-    today = date.today().isoformat()
+    """Insert one SOURCE_INDEX.md block before the 'How Sources Are Used' section.
 
+    Two profiles, one writer (design D6). `zotero-batch` reproduces the block the
+    unattended Zotero ingest has always written, empty `Use for`/`Validation`
+    included, because a batch caller has no per-item prose to supply. `seam`
+    requires the prose fields and an origin, and refuses without them.
+
+    Raises RuntimeError if the anchor heading is absent — a missing anchor means
+    the index is not the file this writer was built for, and appending at the end
+    would put new sources after the explanatory section (design D5).
+    """
+    if profile == "seam":
+        lines = _seam_block_lines(
+            title=title, slug=slug, source_kind=source_kind, source_url=source_url,
+            origin_path=origin_path, use_for=use_for, validation=validation,
+            caveat=caveat, source_id=source_id, raw_sha256=raw_sha256,
+            raw_artifact_sha256=raw_artifact_sha256, extract_sha256=extract_sha256,
+        )
+    elif profile == "zotero-batch":
+        lines = _zotero_batch_block_lines(
+            title=title, slug=slug, item_key=item_key,
+            pdf_sha256=pdf_sha256, extract_sha256=extract_sha256,
+        )
+    else:
+        raise ValueError(f"unknown index-block profile: {profile!r}")
+
+    entry_block = "\n".join(lines)
+    content = SOURCE_INDEX_PATH.read_text()
+    if SEAM_ANCHOR not in content:
+        raise RuntimeError(
+            f"{SOURCE_INDEX_PATH}: anchor '## How Sources Are Used' not found; "
+            "refusing to write an index block into a file this writer does not recognise"
+        )
+    SOURCE_INDEX_PATH.write_text(
+        content.replace(SEAM_ANCHOR, f"\n{entry_block}\n{SEAM_ANCHOR}", 1)
+    )
+    print(f"  Appended SOURCE_INDEX.md entry: {title}")
+
+
+def _zotero_batch_block_lines(
+    *, title: str, slug: str, item_key: str | None,
+    pdf_sha256: str | None, extract_sha256: str,
+) -> list[str]:
+    """Today's block, unchanged. `Use for` and `Validation` stay empty by design."""
     lines = [
         f"### {title}",
         "- **Type**: documentation",
@@ -226,29 +281,59 @@ def append_source_index_entry(
         "",
         "#### Extended Metadata",
     ]
-
     if item_key is not None:
         lines.append(f"- **Zotero Key**: {GROUP_ID}:{item_key}")
-
     lines.extend([
         f"- **Raw SHA256**: {pdf_sha256}",
         f"- **Extracted Path**: knowledge/sources/{slug}/",
         f"- **Extract SHA256**: {extract_sha256}",
-        f"- **Date Added**: {today}",
+        f"- **Date Added**: {date.today().isoformat()}",
     ])
+    return lines
 
-    entry_block = "\n".join(lines)
 
-    content = SOURCE_INDEX_PATH.read_text()
-    marker = "\n## How MBSE Commands Use This File"
-    if marker in content:
-        content = content.replace(marker, f"\n{entry_block}\n{marker}")
-    else:
-        print("  WARNING: '## How MBSE Commands Use This File' not found, appending to end")
-        content = content.rstrip() + f"\n\n{entry_block}\n"
+def _seam_block_lines(
+    *, title: str, slug: str, source_kind: str | None, source_url: str | None,
+    origin_path: str | None, use_for: str | None, validation: str | None,
+    caveat: str | None, source_id: str | None, raw_sha256: str | None,
+    raw_artifact_sha256: str | None, extract_sha256: str,
+) -> list[str]:
+    """The seam block: every field required by spec R-B6, or a refusal."""
+    blank = [
+        name for name, value in
+        (("use_for", use_for), ("validation", validation), ("caveat", caveat))
+        if not (value or "").strip()
+    ]
+    if blank:
+        raise ValueError(
+            "seam-profile index block requires non-empty "
+            + ", ".join(blank)
+            + " (spec R-B6)"
+        )
+    if not (source_url or "").strip() and not (origin_path or "").strip():
+        raise ValueError("seam-profile index block requires source_url or origin_path")
 
-    SOURCE_INDEX_PATH.write_text(content)
-    print(f"  Appended SOURCE_INDEX.md entry: {title}")
+    origin_line = (
+        f"- **Source URL**: {source_url}" if (source_url or "").strip()
+        else f"- **Origin Path**: {origin_path}"
+    )
+    return [
+        f"### {title}",
+        f"- **Type**: {source_kind or 'documentation'}",
+        f"- **Location**: knowledge/sources/{slug}/",
+        f"- **Use for**: {use_for}",
+        f"- **Validation**: {validation}",
+        f"- **Caveat**: {caveat}",
+        "",
+        "#### Extended Metadata",
+        origin_line,
+        f"- **Source ID**: {source_id}",
+        f"- **Raw SHA256**: {raw_sha256}",
+        f"- **Raw Artifact SHA256**: {raw_artifact_sha256}",
+        f"- **Extracted Path**: knowledge/sources/{slug}/",
+        f"- **Extract SHA256**: {extract_sha256}",
+        f"- **Date Added**: {date.today().isoformat()}",
+    ]
 
 
 def fetch_all_processable_items(zot) -> list[dict]:
@@ -428,7 +513,10 @@ def process_zotero_item(zot, item: dict, args) -> str:
 
     # Step 8: Append SOURCE_INDEX.md entry
     try:
-        append_source_index_entry(title, slug, item_key, result.sha256, extract_sha)
+        append_source_index_entry(
+            title=title, slug=slug, item_key=item_key,
+            pdf_sha256=result.sha256, extract_sha256=extract_sha,
+        )
     except Exception as e:
         print(f"  Failed to update SOURCE_INDEX.md: {e}")
         return "failed"
@@ -518,7 +606,10 @@ def process_local_pdf(args) -> None:
         extract_sha = sha256_of(extract_doc)
 
     # Append SOURCE_INDEX.md entry (no Zotero key)
-    append_source_index_entry(title, slug, item_key=None, pdf_sha256=pdf_sha256, extract_sha256=extract_sha)
+    append_source_index_entry(
+        title=title, slug=slug, item_key=None,
+        pdf_sha256=pdf_sha256, extract_sha256=extract_sha,
+    )
 
     print(f"\nSummary: 1 found, 1 extracted, 0 skipped (no PDF), 0 failed")
 
