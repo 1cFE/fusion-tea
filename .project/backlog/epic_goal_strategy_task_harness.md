@@ -229,7 +229,7 @@ Gate: CLEAR
 
 ---
 
-### Item 3: Verified Package Integration Seam
+### Item 3: Verified Package Integration Seam ✅
 
 **Type**: Code/Integration
 
@@ -267,11 +267,11 @@ Gate: CLEAR
 - A goal-side effects ledger, idempotency wrapper, or duplicate verification implementation.
 
 **Success Criteria**:
-- [ ] A known audited model change produces one candidate return with resolvable package, manifest, pin, semantic fingerprint, executable fingerprint, and verification evidence.
-- [ ] Each existing producer-owned gate is invoked rather than reimplemented, and a deliberate failure reports its native blocker without promoting a candidate.
-- [ ] Re-running against unchanged inputs does not produce a second conflicting candidate identity.
-- [ ] The candidate is accepted by the stock study preflight and verification route.
-- [ ] Focused integration tests plus model-family, provenance, and affected study regressions pass.
+- [x] A known audited model change produces one candidate return with resolvable package, manifest, pin, semantic fingerprint, executable fingerprint, and verification evidence.
+- [x] Each existing producer-owned gate is invoked rather than reimplemented, and a deliberate failure reports its native blocker without promoting a candidate.
+- [x] Re-running against unchanged inputs does not produce a second conflicting candidate identity.
+- [x] The candidate is accepted by the stock study preflight and verification route.
+- [x] Focused integration tests plus model-family, provenance, and affected study regressions pass.
 
 **Estimated Effort**: 1.5 days (spec 1h, design 2h, plan 1h, execute 8h)
 

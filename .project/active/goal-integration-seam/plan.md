@@ -336,18 +336,18 @@ def test_doctored_wheel_hash_refuses_gate_1a(integration_workspace, tmp_path, mo
 
 **See `design.md` for:** the gate table rows 1a/1b/5 and their two-mode rules → `design.md#architecture`; per-gate scope → D13; why the seam does 1b itself → D5, R-B5; what junit does and does not carry → `design.md#implementation-notes`.
 
-- [ ] `tests/study/test_integrate_refusals.py` (NEW) — the two fixtures above
-- [ ] `scripts/integrate.py` — the subprocess runner using D16's environment; `--junitxml` into `<out-dir>/junit/`; the junit reader mapping `<failure>` → `refused` and `<error>`/non-1 exit → `could_not_run`; gate 1a (`pytest tests/test_dependency_provenance.py`, scope `repo`); gate 1b (`git -C $STOP_PARSER_TEAX_ROOT rev-parse HEAD`, compared casefolded with expected matched as a prefix of actual, both recorded in full); gate 5 (`pytest tests/models/test_model_family_spines.py`, scope `repo`); the stop rule and the `not reached` fill for later gates
+- [x] `tests/study/test_integrate_refusals.py` (NEW) — the two fixtures above
+- [x] `scripts/integrate.py` — the subprocess runner using D16's environment; `--junitxml` into `<out-dir>/junit/`; the junit reader mapping `<failure>` → `refused` and `<error>`/non-1 exit → `could_not_run`; gate 1a (`pytest tests/test_dependency_provenance.py`, scope `repo`); gate 1b (`git -C $STOP_PARSER_TEAX_ROOT rev-parse HEAD`, compared casefolded with expected matched as a prefix of actual, both recorded in full); gate 5 (`pytest tests/models/test_model_family_spines.py`, scope `repo`); the stop rule and the `not reached` fill for later gates
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study/test_integrate_refusals.py -q` → pass
-- [ ] `uv run python -m pytest tests/study -q` → green
-- [ ] `git status --porcelain` → clean (the wheel fixture touches no tracked file)
+- [x] `uv run python -m pytest tests/study/test_integrate_refusals.py -q` → pass
+- [x] `uv run python -m pytest tests/study -q` → green
+- [x] `git status --porcelain` → clean (the wheel fixture touches no tracked file)
 
 **Manual:**
-- [ ] Run the seam with the real environment and confirm gates 1a, 1b and 5 all pass and each carries `scope` in the return
+- [x] Run the seam with the real environment and confirm gates 1a, 1b and 5 all pass and each carries `scope` in the return
 
 **What We Know Works After This Phase:** the junit-to-status mapping is proven by a real `<failure>` from a real producer — which is the only proof gate 5's refusal path will get, per the coverage boundary above. Gates 1a and 5 declare `scope: repo` in the return, so no reader mistakes what a pass covered.
 
