@@ -505,18 +505,18 @@ def test_wrong_expected_fingerprint_refuses_at_gate_9(integration_workspace):
 
 **See `design.md` for:** gate 9's row and why it is last → `design.md#architecture`; the ten-entry invariant → `design.md#required-invariants`; `blocker.producer` on the two self-judged gates → M6.
 
-- [ ] `tests/study/test_integrate_success.py` (NEW), `tests/study/test_integrate_lineage.py` (NEW)
-- [ ] `scripts/integrate.py` — gate 9 (live semantic and executable fingerprints against the request's expected pair; absent expected → `could_not_run`); the sequence driver with the stop rule, `not reached` fill, and the `CANDIDATE` assembly; `pin` read from the manifest's `fingerprints.indicator_inputs.digest`, not recomputed as a new number
+- [x] `tests/study/test_integrate_success.py` (NEW), `tests/study/test_integrate_lineage.py` (NEW)
+- [x] `scripts/integrate.py` — gate 9 (live semantic and executable fingerprints against the request's expected pair; absent expected → `could_not_run`); the sequence driver with the stop rule, `not reached` fill, and the `CANDIDATE` assembly; `pin` read from the manifest's `fingerprints.indicator_inputs.digest`, not recomputed as a new number
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study/test_integrate_success.py tests/study/test_integrate_lineage.py -q` → pass
-- [ ] `uv run python -m pytest tests/study -q` → green
-- [ ] `git status --porcelain` → clean after a full success run
+- [x] `uv run python -m pytest tests/study/test_integrate_success.py tests/study/test_integrate_lineage.py -q` → pass
+- [x] `uv run python -m pytest tests/study -q` → green
+- [x] `git status --porcelain` → clean after a full success run
 
 **Manual:**
-- [ ] Read `integration_return.json` from the success run end to end; every path, digest and identity resolves (R-E3)
+- [x] Read `integration_return.json` from the success run end to end; every path, digest and identity resolves (R-E3)
 
 **What We Know Works After This Phase:** SC1. One invocation produces one candidate whose every field resolves and matches the lineage the request named, with the tracked tree byte-identical before and after.
 
@@ -1004,6 +1004,37 @@ gate 6 with `manifest-stale` after gates 1a–5 pass; a drifted `recorded_proven
 6 and refuses at gate 7 with `preflight-refused`, which is the split the two producers actually
 own — the pin is `manifest.py`'s and the recorded provenance is `check_manifest_currency`'s.
 ### Phase 7 Completion
+
+**Completed:** 2026-08-26. **SC1 is met.**
+
+One invocation against the committed stellarator package returns one `CANDIDATE`, exit 0,
+with all ten gates `pass`, every candidate field resolving on disk, both fingerprints equal to
+the lineage the request named, and the package byte-identical before and after. B3 holds:
+audited work does arrive regenerated and committed, so the seam is a seam and not a linter.
+
+**Changes made**
+- `scripts/integrate.py` — `gate_lineage` and `build_candidate`; `run()` assembles the
+  candidate once the sequence completes.
+- `tests/study/test_integrate_success.py` (NEW) — 8 tests off one shared passing run.
+- `tests/study/test_integrate_lineage.py` (NEW) — 2 tests.
+
+**Test counts.** `tests/study` 317 → **327 passed, 1 skipped**.
+
+**`pin` is read, never recomputed.** It is the manifest's own
+`fingerprints.indicator_inputs.digest` — the value gate 6 recomputed and compared — so the
+seam names an identity the producers already compute rather than minting one. A test reads the
+manifest independently and asserts the two are the same string.
+
+**Gate 9 refuses on a request whose expected lineage is a digit off**, after gates 1a–8 pass,
+with structured `expected` and `actual` blocks rather than prose. Both expected fingerprints
+absent is `could_not_run` naming both — a candidate that cannot be shown to be the lineage the
+caller meant is not a candidate.
+
+**Wall clock, measured, carried to Phase 10.** A full passing run is ~16 s; the spine suite and
+the baseline execution dominate. `test_integrate_success.py` re-runs it once per test because
+`integration_workspace` is function-scoped, so that module alone is **160 s**. The plan left
+"whether the fixtures share one workspace" open for Phase 10 on exactly this measurement; it is
+now taken, and the decision belongs there rather than here.
 ### Phase 8 Completion
 ### Phase 9 Completion
 ### Phase 10 Completion

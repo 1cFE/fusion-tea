@@ -1298,6 +1298,69 @@ def gate_verification(request: Request, env: dict[str, str],
 
 
 
+def gate_lineage(request: Request, env: dict[str, str],
+                 state: SequenceState) -> GateOutcome:
+    """Gate 9: the package that came out is the lineage the request named.
+
+    Last, because a package that failed an earlier gate has no lineage worth reporting. This
+    is the check that was missing at the hop: a manifest and a package can agree with
+    themselves and not with the audited work a caller meant, and nothing else in the sequence
+    would notice.
+    """
+    expected = {
+        "semantic_fingerprint": request.expected_semantic_fingerprint,
+        "executable_fingerprint": request.expected_executable_fingerprint,
+    }
+    unasked_fingerprints = sorted(name for name, value in expected.items() if not value)
+    if unasked_fingerprints:
+        raise unasked(
+            GATES[9],
+            "the request named no expected " + " or ".join(unasked_fingerprints)
+            + ", so the candidate cannot be shown to be the lineage the caller meant",
+        )
+    actual = {
+        "semantic_fingerprint": manifest_mod.read_semantic_fingerprint(request.package),
+        "executable_fingerprint": manifest_mod.read_executable_fingerprint(request.package),
+    }
+    if actual != expected:
+        raise SeamBlocker(
+            gate=GATES[9].name, producer=GATES[9].producer, scope=GATES[9].scope,
+            mode=REFUSED, condition="lineage-mismatch",
+            detail="the package verifies cleanly but is not the lineage the request named",
+            expected=expected, actual=actual,
+        )
+    return GateOutcome(
+        f"semantic {actual['semantic_fingerprint']} and executable "
+        f"{actual['executable_fingerprint']} are the lineage the request named",
+        (),
+    )
+
+
+def build_candidate(request: Request, state: SequenceState) -> dict:
+    """The one study-ready identity a passing sequence names.
+
+    ``pin`` is the manifest's own ``fingerprints.indicator_inputs.digest`` — the value gate 6
+    recomputed and compared — rather than a new number the seam minted. The seam adds no
+    identity scheme; it names the ones the producers already compute.
+    """
+    if state.baseline is None:
+        raise RuntimeError("a candidate was assembled before the baseline point executed")
+    loaded = manifest_mod.load(request.manifest)
+    return {
+        "package": manifest_mod.repo_relative_posix(request.package),
+        "manifest": manifest_mod.repo_relative_posix(request.manifest),
+        "pin": loaded.pinned_digest,
+        "semantic_fingerprint": manifest_mod.read_semantic_fingerprint(request.package),
+        "executable_fingerprint": manifest_mod.read_executable_fingerprint(request.package),
+        "identity_document": manifest_mod.repo_relative_posix(state.baseline.identity),
+        "baseline_result": manifest_mod.repo_relative_posix(state.baseline.baseline_result),
+        "verification_summary": manifest_mod.repo_relative_posix(
+            request.out_dir / "verification_summary.json"
+        ),
+    }
+
+
+
 # ------------------------------------------------------------------- the sequence
 
 
@@ -1312,6 +1375,7 @@ GATE_IMPLEMENTATIONS = {
     "manifest": gate_manifest,
     "preflight": gate_preflight,
     "verification": gate_verification,
+    "lineage": gate_lineage,
 }
 
 
@@ -1353,6 +1417,7 @@ def run(args: argparse.Namespace, argv: list[str]) -> tuple[dict, Path | None]:
     request = None
     blocker = None
     results: list[dict] = []
+    candidate = None
     out_dir = None
     broke = False
     try:
@@ -1366,6 +1431,7 @@ def run(args: argparse.Namespace, argv: list[str]) -> tuple[dict, Path | None]:
             backup_dir=backup(request.package, request.out_dir / "_backup"),
         )
         run_sequence(request, env, state, results)
+        candidate = build_candidate(request, state)
     except SeamBlocker as exc:
         blocker = exc
     except Exception:  # noqa: BLE001 — the seam broke; say so, and exit 2 rather than 1
@@ -1381,7 +1447,7 @@ def run(args: argparse.Namespace, argv: list[str]) -> tuple[dict, Path | None]:
 
     document = build_return(
         request=request, args=args, argv=argv, env=env,
-        results=results, blocker=blocker, candidate=None,
+        results=results, blocker=blocker, candidate=candidate,
     )
     if broke:
         document["exit_code"] = 2
