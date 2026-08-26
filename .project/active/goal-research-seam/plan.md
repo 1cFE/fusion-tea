@@ -173,18 +173,18 @@ def test_term_match_survives_hyphenation():
 
 **See design.md for:** the guard's contract and normalization rules → `design.md#component-overview` (`holdout_guard.py`); why no override exists → `design.md#key-decisions` D12; residual risk → `design.md#potential-risks`.
 
-- [ ] `tests/research/fixtures/protocol/reformatted_bullets.md` (NEW) — structurally reformatted, **no** ARIES-CS design or cost content (R-D4)
-- [ ] `tests/research/test_holdout_guard_parse.py` (NEW)
-- [ ] `scripts/holdout_guard.py` (NEW) — parse **both** §3 lists (`### Barred`, `### Barred by default, documented-exception path`); term list; normalization (casefold, strip U+002D/U+2010/U+2011/U+00AD, collapse whitespace); `scan_terms(text) -> [Match(rule_id, count, offsets)]`; `check_input_path(path)`. No override parameter exists anywhere in the module (D12).
+- [x] `tests/research/fixtures/protocol/reformatted_bullets.md` (NEW) — structurally reformatted, **no** ARIES-CS design or cost content (R-D4)
+- [x] `tests/research/test_holdout_guard_parse.py` (NEW)
+- [x] `scripts/holdout_guard.py` (NEW) — parse **both** §3 lists (`### Barred`, `### Barred by default, documented-exception path`); term list; normalization (casefold, strip U+002D/U+2010/U+2011/U+00AD, collapse whitespace); `scan_terms(text) -> [Match(rule_id, count, offsets)]`; `check_input_path(path)`. No override parameter exists anywhere in the module (D12).
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/research/test_holdout_guard_parse.py -q` → pass
-- [ ] `uv run grep -rn "holdout_ack\|--holdout-ack" scripts/ tests/` → no matches
+- [x] `uv run python -m pytest tests/research/test_holdout_guard_parse.py -q` → pass
+- [x] `uv run grep -rn "holdout_ack\|--holdout-ack" scripts/ tests/` → no matches
 
 **Manual:**
-- [ ] `uv run python -c "import sys; sys.path.insert(0,'.'); from scripts import holdout_guard; print(len(holdout_guard.barred_paths()))"` → matches the count in `PROTOCOL.md` §3
+- [x] `uv run python -c "import sys; sys.path.insert(0,'.'); from scripts import holdout_guard; print(len(holdout_guard.barred_paths()))"` → matches the count in `PROTOCOL.md` §3
 
 **What We Know Works After This Phase:** the barred set is derived from the protocol, not from a copy, and a protocol edit that would shorten it stops registrations instead of passing them.
 
@@ -593,6 +593,17 @@ Crash-recovery machinery (D7); search counting in code (D8); DI minting (R-C3); 
 - The characterization test file also carries the `load_manifest_rows` / `truncate_manifest` assertions, since they are the same contract surface. The pinning tests were green before the loader change; the tolerance test was the one red test, as intended.
 
 ### Phase 2 Completion
+**Completed:** 2026-08-25
+**Actual Changes:**
+- `scripts/holdout_guard.py` (NEW) — parses **both** §3 lists of `knowledge/holdout/aries-cs/PROTOCOL.md` (`### Barred (do not read in demo sessions)` and `### Barred by default, documented-exception path`), taking the first backticked path from each `- ` bullet. A missing heading, or a section that yields no backticked path, raises `ProtocolParseError` — the fail-closed direction. `check_input_path()` matches an input identity against those globs (`/**` is prefix-matched, everything else is `fnmatch`). `scan_terms()` matches the six terms — `aries-cs`, `aries.ucsd.edu`, and the four sealed-paper stems — on a normalized copy (NFKC, casefold, hyphen-plus-following-whitespace dropped, whitespace collapsed) with an index array mapping every offset back into the original text. Each term matches in two forms, joined and hyphen-broken-to-space, which is what makes `ARIES-CS`, `ARIES‑CS`, `ARIES-\nCS`, `ARIES\nCS` and `ARIES CS` all hit `term:aries-cs`.
+- `tests/research/test_holdout_guard_parse.py` (NEW, 18 tests) — pins the parsed set by exact content **and** count (9 patterns, both lists), proves a reformatted-bullet protocol and a missing-section protocol each fail closed, covers all five hyphenation/line-break spellings, checks offsets land on the original text, and covers the input-path bar.
+- `tests/research/fixtures/protocol/reformatted_bullets.md` (NEW) — structurally reformatted, prose bullets, no ARIES-CS design or cost content (R-D4).
+
+**Issues:**
+- The stencil's `test_module_exposes_no_override` did a substring scan of the whole module, which matched innocuous prose ("ba**ck**ticked", "no **waive**r"). Rewritten as `test_no_waiver_identifier_exists_in_the_guard`: it walks the module's AST and checks function, class, argument, name, attribute and non-docstring string-constant identifiers against a waiver-word regex. That tests the actual claim (no in-code waiver exists, D12) rather than the module's spelling.
+
+**Deviations:**
+- None. The plan's `grep -rn "holdout_ack\|--holdout-ack" scripts/ tests/` gate passes with no matches (the AST test carries no such literal).
 
 ### Phase 3 Completion
 
