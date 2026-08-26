@@ -522,17 +522,17 @@ Prove no regression anywhere the seam reaches, and map every success criterion t
 
 ### Changes Required
 
-- [ ] Run the full affected set (below), all green
-- [ ] Fill in the Implementation Notes sections
-- [ ] Update `.project/CURRENT_WORK.md`
+- [x] Run the full affected set (below), all green
+- [x] Fill in the Implementation Notes sections
+- [x] Update `.project/CURRENT_WORK.md`
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/research/ -q` — full, **including** slow
-- [ ] `uv run python -m pytest tests/test_dependency_provenance.py -q` — the `agentic-mbse` pin is untouched
-- [ ] `uv run python -m pytest tests/ -q` — whole suite; no other reader of `SOURCE_INDEX.md` / `MANIFEST.jsonl` exists (repo-wide grep found only `zotero_lib.py` and `zotero_ingest.py`), so re-run that grep to confirm it is still true
-- [ ] `uv run python scripts/source_registry.py verify` → legacy only, no faults
+- [x] `uv run python -m pytest tests/research/ -q` — full, **including** slow
+- [x] `uv run python -m pytest tests/test_dependency_provenance.py -q` — the `agentic-mbse` pin is untouched
+- [x] `uv run python -m pytest tests/ -q` — whole suite; no other reader of `SOURCE_INDEX.md` / `MANIFEST.jsonl` exists (repo-wide grep found only `zotero_lib.py` and `zotero_ingest.py`), so re-run that grep to confirm it is still true
+- [x] `uv run python scripts/source_registry.py verify` → legacy only, no faults
 
 ### SC → verification map
 
@@ -702,8 +702,36 @@ Crash-recovery machinery (D7); search counting in code (D8); DI minting (R-C3); 
 - SC9 is not verified here. It needs a non-author to walk the guide, which happens at `/_my_audit`. The test asserts the guide covers what SC9 requires it to cover; it cannot assert a stranger understood it.
 
 ### Phase 9 Completion
+**Completed:** 2026-08-25
+
+**Results, as run:**
+
+| Check | Result |
+|---|---|
+| `pytest tests/research/ -q` (full, slow included) | **120 passed** in 64 s |
+| `pytest tests/ -q --ignore=tests/models` (whole suite) | 706 passed, 45 failed, 87 skipped, 20 errors — **identical failure and error counts to the pre-work baseline taken in Phase 1**, and every failure is in the pre-existing set |
+| `source_registry.py verify` | **0 faults, 3 legacy**, exit 0, tree left clean |
+| `pytest tests/test_dependency_provenance.py -q` | 2 passed, **1 failed** — see below |
+| Manifest / index reader grep | see below |
+
+**The `agentic-mbse` pin is untouched, and here is the evidence.** `test_dependency_provenance.py` has three tests. The two that assert the pin itself — the recorded git SHAs in `pyproject.toml` and `uv.lock`, and the absence of any editable or path dependency — **pass**. The third, `test_installed_artifacts_are_the_recorded_wheels_and_public_apis`, fails with `KeyError: 'STOP_PARSER_WHEEL_TARGET'`: it needs four environment variables naming wheel files that are not present in this environment. That failure is pre-existing and documented in the repo's own records (`work/completed/20260822_WI-030_computed-beta-peak-field/verification_record.md:54` reports the same `KeyError` and calls it unrelated). This item's whole diff to `pyproject.toml` is two lines inside `[tool.pytest.ini_options]`; `git diff main -- pyproject.toml` shows nothing else, and `uv.lock` is unchanged.
+
+**Pre-existing failures, unchanged by this item:** 34 in `tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand` (verified in Phase 1 to fail identically with the `pythonpath` change reverted), the one pin test above, and the two teax suites erroring on the same missing environment. `tests/models/` needs a syside licence key to collect and was excluded from the sweep.
+
+**The manifest/index reader grep found two files the design's grep did not.** Neither is affected:
+- `exploration/concept_analysis/scripts/lib/paths.py:31` defines `SOURCE_INDEX_PATH`, which `run_analysis.py:240` reads as **raw text** into a prompt. It parses no blocks, so the seam-profile block shape does not reach it.
+- `scripts/migrate_research.py` writes a *different* `SOURCE_INDEX.md`, the one inside `knowledge/concept_research/`. Unrelated file, unrelated writer.
+
+The design's claim that only `zotero_lib.py` and `zotero_ingest.py` **parse** those two files still holds; `source_registry.py` is now the third, by design.
+
+**Also done:** `.project/CURRENT_WORK.md` updated with the implementation status, the two behaviour changes an operator will meet (`--local-pdf` now requires the three metadata flags; a missing index anchor raises), the carried R-F2 ADR line, and the owed commit in the `agentic-mbse` repo.
+
+**Left for the next stage, named rather than dropped:**
+- **SC9 is not verified.** It requires a non-author to walk `docs/research_seam_operator_guide.md` and perform the three operator actions. That happens at `/_my_audit`. The Phase 8 tests assert the guide *covers* what SC9 requires; they cannot assert a stranger understood it.
+- **The two upstream filings are uncommitted** in `~/1cfe/agentic-mbse/.project/backlog/BACKLOG.md`. They are written in that repo's established pattern; committing in another repository was not authorised.
+- **The R-F2 ADR** (design.md Appendix A) is not filed. Item 1 establishes the ADR home; this is a `/_my_close` line, as the plan states.
 
 ---
 
-**Status**: Draft → In Progress → Complete
-**Next Step:** `/_my_implement`
+**Status**: Draft → In Progress → **Complete** (all nine phases, 2026-08-25)
+**Next Step:** `/_my_audit` — where SC9 is verified.
