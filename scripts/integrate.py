@@ -108,6 +108,10 @@ COULD_NOT_RUN = "could_not_run"
 CANDIDATE = "CANDIDATE"
 BLOCKER = "BLOCKER"
 
+#: The stage after the last gate, named so an internal error there cannot be misread as a
+#: gate's verdict. It is not a gate and never appears in the ``gates`` array.
+CANDIDATE_ASSEMBLY = "candidate assembly"
+
 #: Gate 0's own name in the ``blocker.gate`` field. It is not one of the ten sequence
 #: entries: it is the sweep that runs before any producer.
 PRECONDITIONS = "preconditions"
@@ -527,12 +531,16 @@ def assert_environment(env: dict[str, str]) -> None:
         )
 
 
-def assert_package_clean(request: Request, env: dict[str, str]) -> str:
+def assert_package_clean(request: Request, env: dict[str, str]) -> None:
     """Gate 0, step 3: the package tree is git-clean, through the producer's own subcommand.
 
     ``preflight.py clean`` is exactly this check and it already exists, so it is invoked
     rather than reimplemented. Inside the gitignored test workspace git has nothing to say,
     which is why the byte gates run on the seam's own digest instead (D8).
+
+    Returns nothing. Gate 0 is not one of the ten rows and the return schema has no field for
+    its evidence, so the results document is written where the guide says it is and cited by
+    the blocker when this check refuses — and by nothing when it passes.
     """
     out = request.out_dir / "clean.json"
     done = run_producer(
@@ -548,7 +556,6 @@ def assert_package_clean(request: Request, env: dict[str, str]) -> str:
                    "carry is not reproducible from what is committed: " + done.stderr.strip(),
             evidence=(manifest_mod.repo_relative_posix(out),) if out.is_file() else (),
         )
-    return manifest_mod.repo_relative_posix(out)
 
 
 # ------------------------------------------------------------------- the return
@@ -607,9 +614,48 @@ def not_reached(gate: Gate) -> dict:
     }
 
 
-def fill_not_reached(results: list[dict]) -> list[dict]:
-    """The ten-entry invariant: every gate appears, whatever happened."""
-    return [*results, *(not_reached(gate) for gate in GATES[len(results):])]
+def stopping_gate_result(gate: Gate, blocker: SeamBlocker) -> dict:
+    """The row of the gate that stopped the sequence, in that gate's own status vocabulary.
+
+    ``refused`` is ``preflight``'s ``fail``; ``could not run`` is its ``did not run``. The
+    blocker's producer and scope are used rather than the gate's declared ones, because a
+    gate with two producers — the snapshot capture and the census helper — refuses as one of
+    them and the row must name the one that actually judged.
+    """
+    return {
+        "gate": gate.name,
+        "producer": blocker.producer,
+        "scope": blocker.scope,
+        "status": FAIL if blocker.mode == REFUSED else DID_NOT_RUN,
+        "checked": gate.checked,
+        "detail": blocker.detail,
+        "evidence": list(blocker.evidence),
+    }
+
+
+def gate_rows(results: list[dict], blocker: SeamBlocker | None) -> list[dict]:
+    """The ten-entry invariant: every gate appears, whatever happened.
+
+    A blocker that names one of the ten gates carries that gate's own row; gate 0's
+    refusals and a fault during candidate assembly name no gate in the sequence, so all ten
+    rows read ``not reached`` — which is true, because the sequence never ran or never
+    stopped.
+
+    Three statuses can appear, and the difference between the last two is the whole point:
+    a gate that ran and said no is ``fail`` or ``did not run``; a gate the sequence never
+    got to is ``not reached``. Recording the stopping gate as ``not reached`` would tell a
+    reader the check never happened when it happened and failed.
+    """
+    rows = list(results)
+    names = {gate.name for gate in GATES}
+    if blocker is not None and blocker.gate in names:
+        if len(rows) >= len(GATES) or GATES[len(rows)].name != blocker.gate:
+            raise RuntimeError(
+                f"the blocker names gate {blocker.gate!r} but the sequence stopped after "
+                f"{len(rows)} gate(s); the gate rows and the blocker disagree"
+            )
+        rows.append(stopping_gate_result(GATES[len(rows)], blocker))
+    return [*rows, *(not_reached(gate) for gate in GATES[len(rows):])]
 
 
 def build_return(*, request: Request | None, args: argparse.Namespace, argv: list[str],
@@ -622,7 +668,7 @@ def build_return(*, request: Request | None, args: argparse.Namespace, argv: lis
     sequence lost track of its own stop rule, which is a fault in the seam and not a
     verdict about the package — so it raises, and the caller sees exit 2.
     """
-    gates = fill_not_reached(results)
+    gates = gate_rows(results, blocker)
     if blocker is None and any(gate["status"] != PASS for gate in gates):
         unpassed = [gate["gate"] for gate in gates if gate["status"] != PASS]
         raise RuntimeError(
@@ -792,7 +838,9 @@ class BaselineEvidence:
 class SequenceState:
     """What the gates hand each other: the package as it stood at entry, and its backup.
 
-    ``baseline`` is filled by gate 7, which is the gate that needs it first; gate 8 reads the
+    ``executing`` names the stage the sequence is in, so an unexpected exception can say
+    where it died instead of blaming gate 0. ``baseline`` is filled by gate 7, which is the
+    gate that needs it first; gate 8 reads the
     same evidence rather than producing a second store of its own. It is ``None`` before then
     and a gate that finds it ``None`` has been reached out of order, which is a fault in the
     seam, not a verdict — so that reads as an internal error rather than a refusal.
@@ -801,6 +849,7 @@ class SequenceState:
     entry_digests: dict[str, str]
     backup_dir: Path
     baseline: BaselineEvidence | None = None
+    executing: str | None = None
 
     def moved_since_entry(self, package_root: Path) -> list[str]:
         return moved_paths(self.entry_digests, package_digests(package_root))
@@ -1400,7 +1449,9 @@ def run_sequence(request: Request, env: dict[str, str], state: SequenceState,
     the caller still has to report every gate that ran before it.
     """
     for gate in GATES:
+        state.executing = gate.name
         results.append(gate_result(gate, GATE_IMPLEMENTATIONS[gate.name](request, env, state)))
+    state.executing = CANDIDATE_ASSEMBLY
 
 
 # ------------------------------------------------------------------------- the CLI
@@ -1420,6 +1471,7 @@ def run(args: argparse.Namespace, argv: list[str]) -> tuple[dict, Path | None]:
     candidate = None
     out_dir = None
     broke = False
+    state = None
     try:
         request = build_request(args)
         out_dir = request.out_dir
@@ -1438,10 +1490,12 @@ def run(args: argparse.Namespace, argv: list[str]) -> tuple[dict, Path | None]:
         broke = True
         out_dir = Path(args.out_dir).resolve() if args.out_dir else None
         trace = _write_traceback(out_dir)
+        failed_at = state.executing if state is not None and state.executing else PRECONDITIONS
         blocker = SeamBlocker(
-            gate=PRECONDITIONS, producer=SEAM_PATH, scope="request",
+            gate=failed_at, producer=SEAM_PATH, scope="request",
             mode=COULD_NOT_RUN, condition="seam-internal-error",
-            detail="the seam raised an unexpected exception; it did not judge the package",
+            detail=f"the seam raised an unexpected exception at {failed_at}; it did not "
+                   f"judge the package",
             evidence=(trace,) if trace else (),
         )
 

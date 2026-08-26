@@ -57,7 +57,7 @@ Nine inputs. Four of them are optional to `argparse` but **not** optional to the
 | `--package` | The generated package root. Supply it **once**; two values refuse as ambiguous lineage. | Yes |
 | `--manifest` | The study-package manifest beside the route, `studies/manifest.json`. Once, same rule. | Yes |
 | `--groups` | The axis declaration `preflight.py` calls `--groups`. The known-answer declaration under `tests/study/data/` is the usual one. | Yes |
-| `--out-dir` | Anywhere you like, as long as it resolves **outside** the package root. Everything the run produces lands here. | Yes |
+| `--out-dir` | Anywhere you like, as long as it resolves **outside** the package root. Everything the run produces lands here. A directory outside the repository works, and is cited with `../` segments that resolve from the repository root — see "Reading the answer". | Yes |
 | `--route-sys-path`, `--route-module`, `--route-callable` | The package's own study route — the module holding `execute_baseline`. The seam invokes it rather than importing it, so it stays generic. | Yes |
 | `--census-file` | `tests/models/data/mfe_census.json`. **Reaches gate 4 and nothing else** — see below. | Gate 4 cannot judge without it |
 | `--expected-semantic-fingerprint` | `contracts/model_contract.json` → `semantic_fingerprint`, as recorded by the audited work. | Gate 9 cannot judge without it |
@@ -122,7 +122,11 @@ The return is at `<out-dir>/integration_return.json`, and a human-readable summa
   "gates": [ /* ten entries, all "pass" */ ] }
 ```
 
-Every path is repo-relative. `pin` is the manifest's own `fingerprints.indicator_inputs.digest` — the seam mints no identity of its own, it names the ones the producers already compute.
+**Every path is relative to the repository root**, not to your working directory and not to `--out-dir`. An `--out-dir` outside the repository is cited with leading `../` segments — `--out-dir /tmp/integration-run` gives `identity_document: "../../../../tmp/integration-run/package_identity.json"` — which resolves correctly *from the repository root and nowhere else*. Run the citation commands below from the repository root, or join each path onto it yourself.
+
+**`candidate.package` is the path the package root resolves to, which may not be the one you typed.** The tracked stellarator root is a symlink: pass `--package exploration/stellarator_e2e/pkg/stellarator_tea` and the candidate names `exploration/stellarator_e2e/generated`. That is deliberate — every gate digests, backs up and compares the real tree — and both paths name the same package.
+
+`pin` is the manifest's own `fingerprints.indicator_inputs.digest` — the seam mints no identity of its own, it names the ones the producers already compute.
 
 ### A `BLOCKER`
 
@@ -141,7 +145,14 @@ Three fields carry the weight:
 - **`condition`** — one of fourteen stable slugs. The table below is what to do about each.
 - **`scope`** — `repo` or `request`. See the next section; on a gate-1a or gate-5 refusal this is the first thing to check.
 
-Gates after the stop read **`not reached`**, never `did not run`. That distinction matters: `not reached` means the seam never got there, and tells you nothing about that gate.
+Each row in `gates` carries one of four statuses, and the difference between the last two is the one to get right:
+
+- **`pass`** — the gate ran and said yes.
+- **`fail`** — the gate ran and refused. The stopping gate's own row says this, with the blocker's detail.
+- **`did not run`** — the gate was reached and could not judge. The stopping gate's row says this when `mode` is `could_not_run`.
+- **`not reached`** — the sequence never got to this gate. It tells you nothing about it, one way or the other.
+
+So the gate that stopped the run always carries its own verdict. Only the gates strictly after it read `not reached`.
 
 ---
 
@@ -223,6 +234,8 @@ uv run --env-file ~/1cfe/agentic-mbse/.env --env-file .venv/integration.env \
 ```
 
 **The one thing you derive rather than read: the store path.** `verify.py` needs `--store`, and the return does not carry it, because the route does not return one — it records a `store_id` inside the baseline result. Resolve it in two lines: read `executed_under.store_id` from the `baseline_result` the candidate cites; it is repo-relative when the run's output directory was under the repo root, and a bare filename otherwise, in which case the store is at `<out-dir>/_work/<that filename>`.
+
+Run these **from the repository root**: every path in the return resolves against it.
 
 Record the candidate's `pin` and both fingerprints in the study record. They are the lineage that study's results belong to.
 

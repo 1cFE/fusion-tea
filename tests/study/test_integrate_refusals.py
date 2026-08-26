@@ -22,6 +22,24 @@ from tests.study.conftest import run_seam, run_seam_raw
 CONTRACT = "contracts/model_contract.json"
 
 
+def assert_stopping_row(document, *, index, gate, status):
+    """The gate that stopped the sequence carries its own verdict, not ``not reached``.
+
+    A reader told a gate was *not reached* concludes the check never happened. When the
+    check happened and failed, that is the return lying about its own evidence — so the
+    stopping row is pinned by index, name and status, and every row after it is pinned as
+    genuinely unreached.
+    """
+    rows = document["gates"]
+    assert rows[index]["gate"] == gate
+    assert rows[index]["status"] == status, rows[index]
+    assert rows[index]["detail"] == document["blocker"]["detail"]
+    assert rows[index]["producer"] == document["blocker"]["producer"]
+    assert [row["status"] for row in rows[index + 1:]] == ["not reached"] * (
+        len(rows) - index - 1
+    )
+
+
 @pytest.fixture
 def seam_environment() -> dict[str, str]:
     """The session's own environment, which a fixture doctors one variable of."""
@@ -42,7 +60,7 @@ def test_wrong_expected_teax_revision_refuses_gate_1b(integration_workspace, tmp
     assert blocker["expected"] == "0" * 40
     assert blocker["actual"] == integration_workspace.expected_teax_revision
     assert document["gates"][0]["status"] == "pass"
-    assert [gate["status"] for gate in document["gates"][2:]] == ["not reached"] * 8
+    assert_stopping_row(document, index=1, gate="teax-revision", status="fail")
     assert document["candidate"] is None
 
 
@@ -92,7 +110,7 @@ def test_doctored_wheel_hash_refuses_gate_1a(
     junit = out / "junit" / "pinned-packages.xml"
     assert junit.is_file()
     assert blocker["evidence"] == [manifest_mod.repo_relative_posix(junit)]
-    assert [gate["status"] for gate in document["gates"][1:]] == ["not reached"] * 9
+    assert_stopping_row(document, index=0, gate="pinned-packages", status="fail")
     assert document["candidate"] is None
 
 
@@ -132,7 +150,7 @@ def test_edited_package_byte_refuses_gate_2_and_the_tree_is_restored(
     assert integrate.package_digests(integration_workspace.package) == entry, (
         "a byte-movement refusal must leave the tree exactly as it found it"
     )
-    assert [gate["status"] for gate in document["gates"][3:]] == ["not reached"] * 7
+    assert_stopping_row(document, index=2, gate="regeneration", status="fail")
 
 
 def test_doctored_census_refuses_gate_4(integration_workspace, tmp_path):
@@ -153,15 +171,19 @@ def test_doctored_census_refuses_gate_4(integration_workspace, tmp_path):
     assert [gate["status"] for gate in document["gates"][:4]] == ["pass"] * 4, (
         "gates 1a, 1b, 2 and 3 must pass before a census refusal means anything"
     )
+    assert_stopping_row(document, index=4, gate="census-snapshot", status="fail")
 
 
 def test_absent_census_file_could_not_run_rather_than_pass(integration_workspace, tmp_path):
     out = tmp_path / "out"
     argv = integration_workspace.request_argv(out, **{"--census-file": None})
-    blocker = run_seam(argv, out)["blocker"]
+    document = run_seam(argv, out)
+    assert_stopping_row(document, index=4, gate="census-snapshot", status="did not run")
+    blocker = document["blocker"]
     assert blocker["gate"] == "census-snapshot"
     assert blocker["mode"] == "could_not_run"
     assert blocker["condition"] == "input-missing"
+
 
 
 def test_two_snapshots_beside_the_models_root_are_input_invalid(
@@ -204,6 +226,7 @@ def test_doctored_pin_refuses_gate_6(integration_workspace, tmp_path):
     assert blocker["condition"] == "manifest-stale"
     assert "indicator-input fingerprint mismatch" in blocker["detail"]
     assert [gate["status"] for gate in document["gates"][:6]] == ["pass"] * 6
+    assert_stopping_row(document, index=6, gate="manifest", status="fail")
 
 
 def test_drifted_recorded_provenance_refuses_gate_7(integration_workspace, tmp_path):
@@ -231,6 +254,7 @@ def test_drifted_recorded_provenance_refuses_gate_7(integration_workspace, tmp_p
     results = json.loads((out / "preflight_results.json").read_text())
     assert len(results["gates"]) == 6, "all six checks are reported whatever happened"
     assert [gate["status"] for gate in document["gates"][:7]] == ["pass"] * 7
+    assert_stopping_row(document, index=7, gate="preflight", status="fail")
 
 
 def test_the_baseline_store_resolves_from_the_baseline_result(tmp_path):

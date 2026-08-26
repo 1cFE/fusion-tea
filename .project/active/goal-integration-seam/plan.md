@@ -668,12 +668,16 @@ Prove no regression anywhere the seam reaches, and map every success criterion t
 
 **Environment for this phase and every test phase:**
 ```bash
-set -a; source ~/1cfe/agentic-mbse/.env; set +a     # SYSIDE_LICENSE_KEY (the file does not export it)
-export STOP_PARSER_TEAX_ROOT=...                    # per tests/study/conftest.py:239-270
-export STUDY_REQUIRE_TEAX=1                         # a teax skip must fail, not report green
-export STOP_PARSER_WHEEL_TARGET=... STOP_PARSER_AGENTIC_WHEEL=... \
-       STOP_PARSER_CODEGEN_WHEEL=... STOP_PARSER_COSTINGFE_WHEEL=...
+# As shipped. The six STOP_PARSER_* values live in .venv/integration.env (gitignored);
+# the SysIDE licence lives in agentic-mbse's .env, which does not export it itself.
+uv run --env-file ~/1cfe/agentic-mbse/.env --env-file .venv/integration.env \
+  python -m pytest tests/models tests/study tests/test_dependency_provenance.py -q
 ```
+
+The `set -a; source ...; export ...` recipe this block used to carry does not work in the
+sandbox the implement sessions run in, and is not what shipped. The sealed wheels the four
+`STOP_PARSER_*_WHEEL` paths point at live at `/home/reid/1cfe/stop-parser-sealed-wheels/`;
+`docs/integration_seam_operator_guide.md` § The environment is the operator-facing copy.
 
 ### SC → verification map
 
@@ -1207,3 +1211,83 @@ the reproducing command.
 
 **Status**: Complete — all ten phases implemented and committed
 **Next Step:** `/_my_implement`
+
+
+---
+
+## Audit Fix Pass — 2026-08-26
+
+Audit verdict **POSITIVE (Certify)** (`audit.md`). All six findings and both SC6 blemishes
+addressed in one pass. Bounded to the findings: no new surface, no new flag, no schema field.
+
+**Finding 1 — the stopping gate's row carried `not reached`, which was false.** `fill_not_reached`
+filled every row from `len(results)` onward, and `results` held only the gates that *passed*, so
+the gate that refused got the later-gate treatment. `FAIL` and `DID_NOT_RUN` were imported and
+never written into a seam row: the gate vocabulary was two-valued in practice.
+
+Fixed as D4 designed it. `gate_rows(results, blocker)` replaces `fill_not_reached`: when the
+blocker names one of the ten gates, that gate's own row is built by `stopping_gate_result` and
+carries **`fail`** for `refused` or **`did not run`** for `could_not_run`, with the blocker's
+detail, producer and evidence. Only the rows strictly after it read `not reached`. The row uses
+the *blocker's* producer and scope rather than the gate's declared ones, because gate 4 has two
+producers and refuses as one of them — the row must name the one that actually judged. If the
+blocker names a gate that is not the one the sequence stopped at, that is the rows and the
+blocker disagreeing about the same run, so it raises rather than emitting either version.
+
+Gate 0's refusals and a fault during candidate assembly name no gate in the sequence, so all ten
+rows read `not reached` — which is true: the sequence never started, or never stopped.
+
+**The tests now pin what they previously stepped over.** `assert_stopping_row(document, index=,
+gate=, status=)` in `test_integrate_refusals.py` asserts the stopping row by index, name and
+status, that its detail and producer equal the blocker's, and that every row after it is
+genuinely unreached. Applied to all six refusal fixtures and the two could-not-run ones; the
+lineage tests assert gate 9's own row directly. The audit's note is answered: no refusal test
+steps over the blocking index any more.
+
+**`docs/integration_seam_operator_guide.md` is now true as written** rather than edited to match
+the bug. The § "Reading the answer" line that said `not reached` "tells you nothing about that
+gate" is replaced with the four-status list and the sentence that matters: *the gate that stopped
+the run always carries its own verdict; only the gates strictly after it read `not reached`.*
+
+**Finding 2 — an internal error blamed gate 0.** `SequenceState` gained `executing`, set by
+`run_sequence` before each gate and set to the `candidate assembly` sentinel after the loop. The
+top-level handler reads it, so a fault at gate 3 reports `blocker.gate: "handwritten-preservation"`
+and its detail names the stage. `candidate assembly` is deliberately not a gate name, so it can
+never be misread as a gate's verdict.
+
+**Finding 3 — the exit-2 path had no test.** `tests/study/test_integrate_internal_error.py` (NEW,
+3 tests) replaces one gate implementation with one that raises and runs everything before it for
+real. It asserts exit **2** (not 1 — exit 1 would say the seam judged and refused), the
+`seam-internal-error` condition, the gate it died at, `seam_traceback.txt` written and cited by
+path, and that the three gates that passed before the crash survive in the return. That last one
+is the regression test for the bug Phase 7 found by hand.
+
+**Finding 4 — `--out-dir` outside the repo, resolved against what.** Chosen: **state it, do not
+normalize.** Emitting an absolute path would break R-E3's repo-relative citation rule and the
+design's "never absolute" invariant, for one convenience. The guide now says every path is
+relative to the **repository root** — not the working directory, not `--out-dir` — shows the
+`../`-escaping form with the exact example the auditor hit, and tells the reader to run the
+citation commands from the repository root. The `--out-dir` row in the input table points at it.
+
+**SC6 blemish — `candidate.package` is the resolved symlink target.** Added to the CANDIDATE
+section with the concrete pair: pass `pkg/stellarator_tea`, get `generated`. Says why (every gate
+digests, backs up and compares the real tree) and that both paths name the same package.
+
+**SC6 blemish — the lineage refusal printed `not reached`.** Falls out of finding 1: the stderr
+summary reads the same rows the JSON does, so gate 9 now prints `fail` with its own detail.
+
+**Finding 5 — the discarded `clean.json` path.** Removed rather than cited. Gate 0 is not one of
+the ten rows and the return schema has no field for its evidence; adding one would be new surface
+this pass is not for. `assert_package_clean` returns `None`, its docstring says why, and the
+document is still written where the guide lists it and still cited by the blocker when the check
+refuses.
+
+**Finding 6 — the stale environment recipe.** `plan.md`'s Phase 10 block now shows the shipped
+`uv run --env-file ~/1cfe/agentic-mbse/.env --env-file .venv/integration.env` form, says plainly
+that the `set -a; source` recipe does not work in the sandbox these sessions run in, and points at
+the guide as the operator-facing copy.
+
+**Suite.** `tests/study` 341 → **344 passed, 1 skipped**. Regression gate
+`pytest tests/models tests/study tests/test_dependency_provenance.py` → **395 passed, 14
+skipped**, 0 failed. `git diff --stat -- scripts/study/ tests/models/ tests/test_dependency_provenance.py`
+empty. Tree clean.

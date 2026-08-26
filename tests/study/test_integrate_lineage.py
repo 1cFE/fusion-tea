@@ -37,6 +37,11 @@ def test_wrong_expected_fingerprint_refuses_at_gate_9(integration_workspace, tmp
     assert [gate["status"] for gate in document["gates"][:9]] == ["pass"] * 9, (
         "the whole sequence must have passed for a lineage mismatch to mean anything"
     )
+    assert document["gates"][9]["status"] == "fail", (
+        "gate 9 read both fingerprints and compared them; recording it 'not reached' would "
+        "tell a reader the lineage was never checked"
+    )
+    assert document["gates"][9]["detail"] == blocker["detail"]
     assert document["candidate"] is None
 
 
@@ -49,9 +54,11 @@ def test_absent_expected_fingerprints_could_not_run_rather_than_pass(
         **{"--expected-semantic-fingerprint": None,
            "--expected-executable-fingerprint": None},
     )
-    blocker = run_seam(argv, out)["blocker"]
+    document = run_seam(argv, out)
+    blocker = document["blocker"]
     assert blocker["gate"] == "lineage"
     assert blocker["mode"] == "could_not_run"
     assert blocker["condition"] == "input-missing"
+    assert document["gates"][9]["status"] == "did not run"
     assert "executable_fingerprint" in blocker["detail"]
     assert "semantic_fingerprint" in blocker["detail"]
