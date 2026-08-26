@@ -392,20 +392,20 @@ def test_verify_writes_nothing(knowledge_tree):
 
 **See design.md for:** `verify` scope and the never-repair rule → D14 and `design.md#architecture`; R-B1a/R-B1c → D6.
 
-- [ ] `tests/research/test_verify.py` (NEW)
-- [ ] `scripts/source_registry.py` — `verify` subcommand: orphan source dirs, rows without blocks, unresolvable paths, dirs absent from the manifest; baseline entries reported as class `legacy`; **never writes**
-- [ ] `knowledge/.registry_baseline.json` (NEW, **checked in**) — populated from a real `verify` run against the repo as it stands; format per *Field spellings*
-- [ ] `scripts/zotero_ingest.py:385-437` (`process_zotero_item`) and `:474-521` (`process_local_pdf`) — call `source_registry.register`; local PDF thereby gets its manifest row (R-B1a) and moves to the seam profile, so it now **requires** `--use-for` / `--validation` / `--caveat`; the error message names all three
+- [x] `tests/research/test_verify.py` (NEW)
+- [x] `scripts/source_registry.py` — `verify` subcommand: orphan source dirs, rows without blocks, unresolvable paths, dirs absent from the manifest; baseline entries reported as class `legacy`; **never writes**
+- [x] `knowledge/.registry_baseline.json` (NEW, **checked in**) — populated from a real `verify` run against the repo as it stands; format per *Field spellings*
+- [x] `scripts/zotero_ingest.py:385-437` (`process_zotero_item`) and `:474-521` (`process_local_pdf`) — call `source_registry.register`; local PDF thereby gets its manifest row (R-B1a) and moves to the seam profile, so it now **requires** `--use-for` / `--validation` / `--caveat`; the error message names all three
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/research/ -q -m "not slow"` → pass, characterization test still green
-- [ ] `uv run python scripts/source_registry.py verify` → reports the 13 dirs + loose `COST_MODELING.md` vs 11 rows as `legacy`, zero faults
-- [ ] `git status` → `verify` left the tree clean
+- [x] `uv run python -m pytest tests/research/ -q -m "not slow"` → pass, characterization test still green
+- [x] `uv run python scripts/source_registry.py verify` → reports the 13 dirs + loose `COST_MODELING.md` vs 11 rows as `legacy`, zero faults
+- [x] `git status` → `verify` left the tree clean
 
 **Manual:**
-- [ ] `uv run python scripts/zotero_ingest.py --local-pdf <some.pdf>` without metadata flags → errors naming the three flags
+- [x] `uv run python scripts/zotero_ingest.py --local-pdf <some.pdf>` without metadata flags → errors naming the three flags
 
 **What We Know Works After This Phase:** SC2 plus the two-window detection that D7 depends on, and there is no longer a code path into `knowledge/` that bypasses the door.
 
@@ -651,6 +651,20 @@ Crash-recovery machinery (D7); search counting in code (D8); DI minting (R-C3); 
 - The `--holdout-ack` grep gate is covered by `test_holdout.py::test_no_flag_can_waive_a_holdout_hit`, which asserts the parser rejects the flag rather than grepping for its spelling.
 
 ### Phase 6 Completion
+**Completed:** 2026-08-25
+**Actual Changes:**
+- `scripts/source_registry.py` — a third source type, `ZoteroSource(path, item_key)`, and the `isinstance` branches replaced by properties every source type answers: `kind`, `identity`, `capture_target`, `staged_input`, `index_profile`, `slug_suffix`, `row_extras`. Capture, the raw copy, the manifest row, the index profile and slug collision all read those uniformly, so adding the Zotero kind added no new branch to the flow. `_resolve_slug` takes the suffix, which keeps Zotero's `_<item_key>` disambiguation exactly as it was.
+- `scripts/source_registry.py` — `verify(paths)` returning a `VerifyReport` of `Finding(kind, klass, path, detail)` over four shapes: `loose_file`, `orphan_source_dir`, `unresolvable_path`, `row_without_block`. Baseline entries come back `klass="legacy"`, everything else `"fault"`. It writes nothing, and the `verify` CLI subcommand exits non-zero only on a fault.
+- `knowledge/.registry_baseline.json` (NEW, checked in) — populated from the actual first `verify` run, not from memory: the two WI-031 URL sources with no manifest row, and the loose `COST_MODELING.md`. After it landed, `verify` reports **0 faults, 3 legacy**.
+- `scripts/zotero_ingest.py` — `process_zotero_item` and `process_local_pdf` are now callers of `register`. Both share `_report_registration`, which maps a registration outcome onto the batch's three-way tally (a duplicate counts as `skipped` — the item is already in the registry, which is what the queue means by nothing-to-do). The local-PDF path gained a manifest row (R-B1a) and moved to the seam profile, so it now requires `--use-for`, `--validation`, `--caveat`; the new `--title` flag overrides the filename-derived title. The old `run_extraction` remains, used by `--re-extract` only.
+- `tests/research/test_verify.py` (6 tests), `tests/research/test_zotero_paths_are_callers.py` (5 tests) — the Zotero batch path, which had **no test of any kind** before this item, is now driven end to end against a stub Zotero client with no network: it registers, carries a `source_id` alongside its `zotero_key`, keeps the batch block's empty `Use for`, skips a second pass as a duplicate, and skips an item with no PDF.
+
+**Issues:**
+- `source_registry` imports the index writer from `zotero_ingest`, so `zotero_ingest` importing `source_registry` at module level would be circular. The two call sites use a function-level import with a comment saying why. Moving the writer to a third module would have been the alternative, but the spec binds the writer's home to `zotero_ingest.py:210-251`.
+- `SourceMetadata`'s three prose fields now default to empty, and `_pre_capture_refusal` requires them only when `source.index_profile == "seam"`. Without that, `register` would demand prose the unattended batch has none of — the exact fallback D6 exists to avoid.
+
+**Deviations:**
+- The plan's expected first-`verify` output was "13 dirs + loose `COST_MODELING.md` vs 11 rows". The actual run reports **3** findings, not 14: the other 11 directories each match a manifest row and are correct. The baseline records exactly the three that do not.
 
 ### Phase 7 Completion
 

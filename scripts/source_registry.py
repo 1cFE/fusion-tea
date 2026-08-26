@@ -58,28 +58,95 @@ class RegistrationError(RuntimeError):
 
 @dataclass(frozen=True)
 class UrlSource:
-    """A source identified by the URL it is fetched from."""
+    """A source fetched from a URL."""
 
     url: str
 
     kind = "url"
+    index_profile = "seam"
+    slug_suffix = None
 
     @property
     def identity(self) -> str:
         return self.url
 
+    @property
+    def capture_target(self) -> str:
+        return self.url
+
+    @property
+    def staged_input(self) -> Path | None:
+        return None
+
+    @property
+    def row_extras(self) -> dict:
+        return {"source_url": self.url}
+
 
 @dataclass(frozen=True)
 class LocalPdfSource:
-    """A source identified by a PDF already on this machine."""
+    """A PDF already on this machine, handed in by an operator."""
 
     path: Path
 
     kind = "local_pdf"
+    index_profile = "seam"
+    slug_suffix = None
 
     @property
     def identity(self) -> str:
         return str(self.path)
+
+    @property
+    def capture_target(self) -> Path:
+        return self.path
+
+    @property
+    def staged_input(self) -> Path:
+        return self.path
+
+    @property
+    def row_extras(self) -> dict:
+        return {"origin_path": str(self.path)}
+
+
+@dataclass(frozen=True)
+class ZoteroSource:
+    """A PDF downloaded from the Zotero group library by the batch ingest.
+
+    Registers through the same door as everything else, but keeps the batch
+    index-block profile: an unattended run over a large queue has no per-item
+    prose to supply, and inventing it would be a fallback (design D6).
+    """
+
+    path: Path
+    item_key: str
+
+    kind = "zotero"
+    index_profile = "zotero-batch"
+
+    @property
+    def slug_suffix(self) -> str:
+        return self.item_key
+
+    @property
+    def identity(self) -> str:
+        return f"zotero:{self.item_key}"
+
+    @property
+    def capture_target(self) -> Path:
+        return self.path
+
+    @property
+    def staged_input(self) -> Path:
+        return self.path
+
+    @property
+    def row_extras(self) -> dict:
+        return {"zotero_key": self.item_key}
+
+
+Source = UrlSource | LocalPdfSource | ZoteroSource
 
 
 @dataclass(frozen=True)
@@ -88,12 +155,15 @@ class SourceMetadata:
 
     Drawn from the request and the triage record (spec R-B7). Registration never
     invents any of it.
+
+    The three prose fields are required for a seam-profile source and left empty
+    by the unattended Zotero batch, which has no per-item prose to supply (D6).
     """
 
     title: str
-    use_for: str
-    validation: str
-    caveat: str
+    use_for: str = ""
+    validation: str = ""
+    caveat: str = ""
 
 
 @dataclass(frozen=True)
@@ -120,7 +190,7 @@ class RegistrationResult:
 
 
 def register(
-    source: UrlSource | LocalPdfSource,
+    source: Source,
     metadata: SourceMetadata,
     *,
     paths: RegistryPaths | None = None,
@@ -146,7 +216,7 @@ def register(
 
 
 def _attempt(
-    source: UrlSource | LocalPdfSource,
+    source: Source,
     metadata: SourceMetadata,
     *,
     paths: RegistryPaths,
@@ -189,7 +259,7 @@ def _sweep_staging(paths: RegistryPaths) -> None:
 
 
 def _pre_capture_refusal(
-    source: UrlSource | LocalPdfSource,
+    source: Source,
     metadata: SourceMetadata,
     *,
     paths: RegistryPaths,
@@ -200,41 +270,41 @@ def _pre_capture_refusal(
     Ordered so the cheapest refusals come first and nothing is downloaded that a
     later check would have thrown away.
     """
-    blank = [
-        name for name in ("title", "use_for", "validation", "caveat")
-        if not getattr(metadata, name).strip()
-    ]
+    required = ("title", "use_for", "validation", "caveat") \
+        if source.index_profile == "seam" else ("title",)
+    blank = [name for name in required if not getattr(metadata, name).strip()]
     if blank:
         return RegistrationResult(
             outcome="precondition_failed",
             reason=f"caller must supply non-empty {', '.join(blank)}",
         )
-    if isinstance(source, LocalPdfSource) and not source.path.is_file():
+    staged = source.staged_input
+    if staged is not None and not staged.is_file():
         return RegistrationResult(
-            outcome="precondition_failed", reason=f"local PDF not found: {source.path}"
+            outcome="precondition_failed", reason=f"input file not found: {staged}"
         )
 
     hit = _input_identity_holdout_hit(source, metadata)
     if hit is not None:
         return hit
 
-    if isinstance(source, UrlSource):
-        existing = _row_matching_url(source.url, paths)
-        if existing is not None:
-            return _duplicate_of(existing, reason=f"already registered from {source.url}")
+    existing = _row_matching_input_identity(source, paths)
+    if existing is not None:
+        return _duplicate_of(existing, reason=f"already registered as {existing['slug']}")
 
     return _limit_refusal(run_dir)
 
 
 def _input_identity_holdout_hit(
-    source: UrlSource | LocalPdfSource, metadata: SourceMetadata
+    source: Source, metadata: SourceMetadata
 ) -> RegistrationResult | None:
     """Bar the *input identity* — the path or URL handed in, and the caller's title.
 
     The destination slug is newly minted and could never match, so it is not checked.
     """
-    if isinstance(source, LocalPdfSource):
-        path_match = holdout_guard.check_input_path(source.path)
+    staged = source.staged_input
+    if staged is not None:
+        path_match = holdout_guard.check_input_path(staged)
         if path_match is not None:
             return _holdout_refusal(path_match)
     for text in (source.identity, metadata.title):
@@ -297,21 +367,35 @@ def _duplicate_of(row: dict, *, reason: str) -> RegistrationResult:
     )
 
 
-def _row_matching_url(url: str, paths: RegistryPaths) -> dict | None:
-    """Exact match first, then scheme/host-lowercased and fragment-stripped (design D2)."""
-    normalized = _normalize_url(url)
+def _row_matching_input_identity(source: Source, paths: RegistryPaths) -> dict | None:
+    """Dedupe before the fetch, on whatever identity the input already carries.
+
+    A Zotero key is exact; a URL also matches scheme/host-lowercased and
+    fragment-stripped (design D2). A bare local PDF carries neither, so it is
+    caught after capture by its `source_id` instead.
+    """
+    if isinstance(source, ZoteroSource):
+        return _first_row(paths, lambda row: row.get("zotero_key") == source.item_key)
+    if isinstance(source, UrlSource):
+        normalized = _normalize_url(source.url)
+        return _first_row(
+            paths,
+            lambda row: bool(row.get("source_url"))
+            and (row["source_url"] == source.url
+                 or _normalize_url(row["source_url"]) == normalized),
+        )
+    return None
+
+
+def _first_row(paths: RegistryPaths, matches) -> dict | None:
     for row in load_manifest_rows(paths):
-        recorded = row.get("source_url")
-        if recorded and (recorded == url or _normalize_url(recorded) == normalized):
+        if matches(row):
             return row
     return None
 
 
 def _row_matching_source_id(source_id: str, paths: RegistryPaths) -> dict | None:
-    for row in load_manifest_rows(paths):
-        if row.get("source_id") == source_id:
-            return row
-    return None
+    return _first_row(paths, lambda row: row.get("source_id") == source_id)
 
 
 def _normalize_url(url: str) -> str:
@@ -336,17 +420,18 @@ class _Captured:
 
 
 def _capture(
-    source: UrlSource | LocalPdfSource, staging: Path, *, budget: float
+    source: Source, staging: Path, *, budget: float
 ) -> _Captured | RegistrationResult:
     """Run the real extractor into staging, flatten it, and read the provenance."""
-    if isinstance(source, LocalPdfSource):
-        staged_input = staging / ".rawin" / source.path.name
+    original = source.staged_input
+    if original is not None:
+        staged_input = staging / ".rawin" / original.name
         staged_input.parent.mkdir(parents=True)
-        shutil.copy2(source.path, staged_input)
+        shutil.copy2(original, staged_input)
         target = staged_input
     else:
         staged_input = None
-        target = source.url
+        target = source.capture_target
 
     completed = subprocess.run(
         ["uv", "run", "agentic-mbse", "extract", str(target),
@@ -419,7 +504,7 @@ def _sha256(path: Path) -> str:
 
 
 def _commit(
-    source: UrlSource | LocalPdfSource,
+    source: Source,
     metadata: SourceMetadata,
     captured: _Captured,
     *,
@@ -431,7 +516,7 @@ def _commit(
     and its failure only has to undo cheap, exactly-known things.
     """
     with _registry_lock(paths):
-        slug = _resolve_slug(slugify(metadata.title), paths.sources)
+        slug = _resolve_slug(slugify(metadata.title), paths.sources, source.slug_suffix)
         source_dir = paths.sources / slug
         raw_copy = _raw_copy_destination(source, paths)
         manifest_mark = paths.manifest.stat().st_size if paths.manifest.exists() else 0
@@ -484,23 +569,26 @@ def _registry_lock(paths: RegistryPaths):
             fcntl.flock(handle, fcntl.LOCK_UN)
 
 
-def _resolve_slug(slug: str, sources_dir: Path) -> str:
-    """Numeric suffix on collision (design D10). Seam slugs carry no Zotero key."""
+def _resolve_slug(slug: str, sources_dir: Path, suffix: str | None) -> str:
+    """Disambiguate a slug collision (design D10).
+
+    A Zotero source disambiguates with its item key, as it always has; anything
+    else takes a numeric suffix.
+    """
     if not (sources_dir / slug).exists():
         return slug
+    if suffix is not None:
+        return f"{slug}_{suffix}"
     n = 2
     while (sources_dir / f"{slug}_{n}").exists():
         n += 1
     return f"{slug}_{n}"
 
 
-def _raw_copy_destination(
-    source: UrlSource | LocalPdfSource, paths: RegistryPaths
-) -> Path | None:
-    """Where the staged raw input belongs, for the one kind that stages one."""
-    if isinstance(source, LocalPdfSource):
-        return paths.raw / source.path.name
-    return None
+def _raw_copy_destination(source: Source, paths: RegistryPaths) -> Path | None:
+    """Where the staged raw input belongs, for the kinds that stage one."""
+    staged = source.staged_input
+    return paths.raw / staged.name if staged is not None else None
 
 
 def _rename_into_sources(staging: Path, source_dir: Path) -> None:
@@ -521,7 +609,7 @@ def _move_raw_copy(source_dir: Path, raw_copy: Path | None) -> Path | None:
 
 
 def _manifest_row(
-    source: UrlSource | LocalPdfSource,
+    source: Source,
     metadata: SourceMetadata,
     captured: _Captured,
     *,
@@ -534,10 +622,7 @@ def _manifest_row(
         "slug": slug,
         "title": metadata.title,
     }
-    if isinstance(source, UrlSource):
-        row["source_url"] = source.url
-    else:
-        row["origin_path"] = str(source.path)
+    row.update(source.row_extras)
     row["raw_sha256"] = captured.source_id
     row["raw_artifact_sha256"] = _sha256(raw_copy) if raw_copy else captured.raw_artifact_sha256
     row["extract_sha256"] = captured.extract_sha256
@@ -553,7 +638,7 @@ def _append_manifest_row(row: dict, paths: RegistryPaths) -> None:
 
 
 def _insert_index_block(
-    source: UrlSource | LocalPdfSource,
+    source: Source,
     metadata: SourceMetadata,
     captured: _Captured,
     *,
@@ -561,13 +646,16 @@ def _insert_index_block(
     paths: RegistryPaths,
 ) -> None:
     """Rung (d): the index read-modify-write, last because it is the riskiest."""
+    extras = source.row_extras
     append_source_index_entry(
-        profile="seam",
+        profile=source.index_profile,
         title=metadata.title,
         slug=slug,
         source_kind=source.kind,
-        source_url=source.url if isinstance(source, UrlSource) else None,
-        origin_path=str(source.path) if isinstance(source, LocalPdfSource) else None,
+        source_url=extras.get("source_url"),
+        origin_path=extras.get("origin_path"),
+        item_key=extras.get("zotero_key"),
+        pdf_sha256=captured.source_id,
         use_for=metadata.use_for,
         validation=metadata.validation,
         caveat=metadata.caveat,
@@ -576,6 +664,98 @@ def _insert_index_block(
         raw_artifact_sha256=captured.raw_artifact_sha256,
         extract_sha256=captured.extract_sha256,
     )
+
+
+# --- verify: report drift, repair nothing (design D14) ------------------------
+
+
+@dataclass(frozen=True)
+class Finding:
+    """One thing `verify` noticed. `klass` says whether it is this seam's problem."""
+
+    kind: str
+    klass: str
+    path: str
+    detail: str
+
+
+@dataclass(frozen=True)
+class VerifyReport:
+    findings: list[Finding]
+
+    @property
+    def has_faults(self) -> bool:
+        return any(f.klass == "fault" for f in self.findings)
+
+
+def verify(paths: RegistryPaths | None = None) -> VerifyReport:
+    """Check that every source directory has one row and one block, and vice versa.
+
+    Reports the two windows a hard kill inside the commit lock can leave, plus
+    pre-existing drift. Entries listed in the checked-in baseline are reported as
+    `legacy` so the first run does not read as a broken tool. Writes nothing.
+    """
+    paths = paths or default_paths()
+    baseline = _load_baseline(paths)
+    rows = load_manifest_rows(paths)
+    index_text = paths.index.read_text() if paths.index.exists() else ""
+
+    findings: list[Finding] = []
+    slugs_with_rows = {row["slug"] for row in rows if "slug" in row}
+
+    for entry in sorted(paths.sources.iterdir()) if paths.sources.exists() else []:
+        location = f"knowledge/sources/{entry.name}"
+        if not entry.is_dir():
+            findings.append(Finding(
+                kind="loose_file",
+                klass=_klass(location, baseline["loose_files"]),
+                path=location,
+                detail="not a source directory",
+            ))
+        elif entry.name not in slugs_with_rows:
+            findings.append(Finding(
+                kind="orphan_source_dir",
+                klass=_klass(location, baseline["orphan_source_dirs"]),
+                path=location,
+                detail="source directory with no manifest row",
+            ))
+
+    for row in rows:
+        slug = row.get("slug")
+        if slug is None:
+            continue
+        location = f"knowledge/sources/{slug}"
+        if not (paths.sources / slug).is_dir():
+            findings.append(Finding(
+                kind="unresolvable_path",
+                klass=_klass(location, baseline["orphan_source_dirs"]),
+                path=location,
+                detail="manifest row whose source directory does not exist",
+            ))
+        elif f"knowledge/sources/{slug}/" not in index_text:
+            findings.append(Finding(
+                kind="row_without_block",
+                klass=_klass(location, baseline["orphan_source_dirs"]),
+                path=location,
+                detail="manifest row with no SOURCE_INDEX.md block",
+            ))
+
+    return VerifyReport(findings=findings)
+
+
+def _load_baseline(paths: RegistryPaths) -> dict:
+    """The checked-in list of pre-seam drift. An absent baseline means none is expected."""
+    if not paths.baseline.exists():
+        return {"orphan_source_dirs": [], "loose_files": []}
+    recorded = json.loads(paths.baseline.read_text())
+    return {
+        "orphan_source_dirs": [p.rstrip("/") for p in recorded.get("orphan_source_dirs", [])],
+        "loose_files": [p.rstrip("/") for p in recorded.get("loose_files", [])],
+    }
+
+
+def _klass(location: str, baseline_entries: list[str]) -> str:
+    return "legacy" if location in baseline_entries else "fault"
 
 
 # --- receipts: what a run can count on, written by the door itself (D8) ----------
@@ -601,7 +781,7 @@ def _read_receipts(run_dir: Path) -> list[dict]:
 
 def _write_receipt(
     run_dir: Path,
-    source: UrlSource | LocalPdfSource,
+    source: Source,
     result: RegistrationResult,
     *,
     triage: str,
@@ -664,11 +844,15 @@ def _build_parser() -> argparse.ArgumentParser:
                           "against the run's max_captures")
     reg.add_argument("--triage", choices=["keeper", "rejected"], default="keeper",
                      help="The triage decision recorded on the receipt (default: keeper)")
+
+    sub.add_parser("verify", help="Report registry drift. Never repairs, never writes.")
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     args = _build_parser().parse_args(argv)
+    if args.command == "verify":
+        return _run_verify()
     source = UrlSource(url=args.url) if args.url else LocalPdfSource(path=args.local_pdf)
     result = register(
         source,
@@ -682,6 +866,16 @@ def main(argv: list[str] | None = None) -> int:
     )
     print(json.dumps(_result_as_json(result), indent=2))
     return 0 if result.outcome == "registered" else 1
+
+
+def _run_verify() -> int:
+    report = verify()
+    for finding in report.findings:
+        print(f"{finding.klass:7} {finding.kind:20} {finding.path} — {finding.detail}")
+    legacy = sum(1 for f in report.findings if f.klass == "legacy")
+    faults = sum(1 for f in report.findings if f.klass == "fault")
+    print(f"\n{faults} fault(s), {legacy} legacy entry(ies)")
+    return 1 if report.has_faults else 0
 
 
 def _result_as_json(result: RegistrationResult) -> dict:
