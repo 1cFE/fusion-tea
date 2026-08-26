@@ -20,6 +20,7 @@ import argparse
 import fcntl
 import hashlib
 import json
+import posixpath
 import re
 import shutil
 import subprocess
@@ -27,11 +28,19 @@ import sys
 import uuid
 from contextlib import contextmanager
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, datetime, timezone
 from pathlib import Path
+from urllib.parse import urlsplit, urlunsplit
 
+import holdout_guard
 from zotero_ingest import EXTRACT_OUTPUT, append_source_index_entry
-from zotero_lib import RegistryPaths, default_paths, slugify, truncate_manifest
+from zotero_lib import (
+    RegistryPaths,
+    default_paths,
+    load_manifest_rows,
+    slugify,
+    truncate_manifest,
+)
 
 FRONTMATTER_HASH_RE = re.compile(r'^content_hash_sha256: "([0-9a-f]{64})"', re.MULTILINE)
 CAPTURE_TIMEOUT_S = 900
@@ -116,17 +125,38 @@ def register(
     *,
     paths: RegistryPaths | None = None,
     budget: float = DEFAULT_BUDGET,
+    run_dir: Path | None = None,
+    triage: str = "keeper",
 ) -> RegistrationResult:
     """Capture, holdout-check and register one source. The only door into `knowledge/`.
 
     Returns a `RegistrationResult` for every refusal the seam expects — bad
     metadata, a holdout hit, a duplicate, a failed capture. Raises
     `RegistrationError` only when a commit rung failed after the ladder ran.
+
+    `run_dir` is what a research invocation passes so the attempt is receipted
+    and counted against the run's `max_captures` (design D8). A standalone
+    operator call passes none and is unaffected.
     """
     paths = paths or default_paths()
+    result = _attempt(source, metadata, paths=paths, budget=budget, run_dir=run_dir)
+    if run_dir is not None:
+        _write_receipt(run_dir, source, result, triage=triage)
+    return result
+
+
+def _attempt(
+    source: UrlSource | LocalPdfSource,
+    metadata: SourceMetadata,
+    *,
+    paths: RegistryPaths,
+    budget: float,
+    run_dir: Path | None,
+) -> RegistrationResult:
+    """The seven-step flow, without the receipt bookkeeping wrapped around it."""
     _sweep_staging(paths)
 
-    refusal = _precondition_refusal(source, metadata)
+    refusal = _pre_capture_refusal(source, metadata, paths=paths, run_dir=run_dir)
     if refusal is not None:
         return refusal
 
@@ -136,6 +166,11 @@ def register(
         captured = _capture(source, staging, budget=budget)
         if isinstance(captured, RegistrationResult):
             return captured
+
+        refusal = _post_capture_refusal(captured, paths=paths)
+        if refusal is not None:
+            return refusal
+
         return _commit(source, metadata, captured, paths=paths)
     finally:
         shutil.rmtree(staging, ignore_errors=True)
@@ -153,10 +188,18 @@ def _sweep_staging(paths: RegistryPaths) -> None:
         shutil.rmtree(leftover, ignore_errors=True) if leftover.is_dir() else leftover.unlink()
 
 
-def _precondition_refusal(
-    source: UrlSource | LocalPdfSource, metadata: SourceMetadata
+def _pre_capture_refusal(
+    source: UrlSource | LocalPdfSource,
+    metadata: SourceMetadata,
+    *,
+    paths: RegistryPaths,
+    run_dir: Path | None,
 ) -> RegistrationResult | None:
-    """Everything checkable before a byte is fetched. None means proceed."""
+    """Step 1 — everything checkable before a byte is fetched. None means proceed.
+
+    Ordered so the cheapest refusals come first and nothing is downloaded that a
+    later check would have thrown away.
+    """
     blank = [
         name for name in ("title", "use_for", "validation", "caveat")
         if not getattr(metadata, name).strip()
@@ -170,7 +213,114 @@ def _precondition_refusal(
         return RegistrationResult(
             outcome="precondition_failed", reason=f"local PDF not found: {source.path}"
         )
+
+    hit = _input_identity_holdout_hit(source, metadata)
+    if hit is not None:
+        return hit
+
+    if isinstance(source, UrlSource):
+        existing = _row_matching_url(source.url, paths)
+        if existing is not None:
+            return _duplicate_of(existing, reason=f"already registered from {source.url}")
+
+    return _limit_refusal(run_dir)
+
+
+def _input_identity_holdout_hit(
+    source: UrlSource | LocalPdfSource, metadata: SourceMetadata
+) -> RegistrationResult | None:
+    """Bar the *input identity* — the path or URL handed in, and the caller's title.
+
+    The destination slug is newly minted and could never match, so it is not checked.
+    """
+    if isinstance(source, LocalPdfSource):
+        path_match = holdout_guard.check_input_path(source.path)
+        if path_match is not None:
+            return _holdout_refusal(path_match)
+    for text in (source.identity, metadata.title):
+        matches = holdout_guard.scan_terms(text)
+        if matches:
+            return _holdout_refusal(matches[0])
     return None
+
+
+def _limit_refusal(run_dir: Path | None) -> RegistrationResult | None:
+    """Refuse when this run has spent its `max_captures` (design D8)."""
+    if run_dir is None:
+        return None
+    limit = _run_limits(run_dir).get("max_captures")
+    if limit is None:
+        return None
+    spent = sum(1 for receipt in _read_receipts(run_dir) if receipt.get("captured"))
+    if spent < limit:
+        return None
+    return RegistrationResult(
+        outcome="limit_reached",
+        reason=f"run has spent its max_captures limit of {limit}",
+    )
+
+
+def _post_capture_refusal(
+    captured: "_Captured", *, paths: RegistryPaths
+) -> RegistrationResult | None:
+    """Steps 4-5 — the content holdout scan, then dedupe on the bytes as fetched."""
+    for artifact in (captured.extract, captured.raw_artifact):
+        matches = holdout_guard.scan_file(artifact)
+        if matches:
+            return _holdout_refusal(matches[0])
+
+    existing = _row_matching_source_id(captured.source_id, paths)
+    if existing is not None:
+        return _duplicate_of(
+            existing, reason=f"same bytes already registered (source_id {captured.source_id})"
+        )
+    return None
+
+
+def _holdout_refusal(match: holdout_guard.Match) -> RegistrationResult:
+    """Record the rule that fired and where — never the content that fired it (R-D4)."""
+    return RegistrationResult(
+        outcome="holdout_hit",
+        reason=f"{match.rule_id} matched {match.count}x",
+        rule_id=match.rule_id,
+        offsets=match.offsets,
+    )
+
+
+def _duplicate_of(row: dict, *, reason: str) -> RegistrationResult:
+    return RegistrationResult(
+        outcome="duplicate",
+        reason=reason,
+        source_id=row.get("source_id"),
+        existing_slug=row["slug"],
+        existing_path=f"knowledge/sources/{row['slug']}/",
+    )
+
+
+def _row_matching_url(url: str, paths: RegistryPaths) -> dict | None:
+    """Exact match first, then scheme/host-lowercased and fragment-stripped (design D2)."""
+    normalized = _normalize_url(url)
+    for row in load_manifest_rows(paths):
+        recorded = row.get("source_url")
+        if recorded and (recorded == url or _normalize_url(recorded) == normalized):
+            return row
+    return None
+
+
+def _row_matching_source_id(source_id: str, paths: RegistryPaths) -> dict | None:
+    for row in load_manifest_rows(paths):
+        if row.get("source_id") == source_id:
+            return row
+    return None
+
+
+def _normalize_url(url: str) -> str:
+    parts = urlsplit(url)
+    return urlunsplit((
+        parts.scheme.lower(), parts.netloc.lower(),
+        posixpath.normpath(parts.path) if parts.path else parts.path,
+        parts.query, "",
+    ))
 
 
 @dataclass(frozen=True)
@@ -286,19 +436,14 @@ def _commit(
         raw_copy = _raw_copy_destination(source, paths)
         manifest_mark = paths.manifest.stat().st_size if paths.manifest.exists() else 0
 
-        _rename_into_sources(captured.staging, source_dir)
         try:
+            _rename_into_sources(captured.staging, source_dir)
             staged_raw = _move_raw_copy(source_dir, raw_copy)
             row = _manifest_row(source, metadata, captured, slug=slug, raw_copy=staged_raw)
             _append_manifest_row(row, paths)
-            try:
-                _insert_index_block(source, metadata, captured, slug=slug, paths=paths)
-            except Exception:
-                truncate_manifest(manifest_mark, paths)
-                raise
+            _insert_index_block(source, metadata, captured, slug=slug, paths=paths)
         except Exception as error:
-            _undo_raw_copy(raw_copy)
-            shutil.rmtree(source_dir, ignore_errors=True)
+            _roll_back(source_dir, raw_copy, manifest_mark, paths)
             raise RegistrationError(f"commit failed for {source.identity}: {error}") from error
 
     return RegistrationResult(
@@ -311,6 +456,20 @@ def _commit(
         raw_artifact_sha256=row["raw_artifact_sha256"],
         extract_sha256=captured.extract_sha256,
     )
+
+
+def _roll_back(
+    source_dir: Path, raw_copy: Path | None, manifest_mark: int, paths: RegistryPaths
+) -> None:
+    """Undo the commit rungs in reverse. Each step is a no-op if its rung never ran.
+
+    The slug was resolved against a non-existent directory under the lock, so
+    removing `source_dir` can only ever remove what this attempt created.
+    """
+    truncate_manifest(manifest_mark, paths)
+    if raw_copy is not None:
+        raw_copy.unlink(missing_ok=True)
+    shutil.rmtree(source_dir, ignore_errors=True)
 
 
 @contextmanager
@@ -359,11 +518,6 @@ def _move_raw_copy(source_dir: Path, raw_copy: Path | None) -> Path | None:
     shutil.move(str(staged), str(raw_copy))
     shutil.rmtree(source_dir / ".rawin", ignore_errors=True)
     return raw_copy
-
-
-def _undo_raw_copy(raw_copy: Path | None) -> None:
-    if raw_copy is not None:
-        raw_copy.unlink(missing_ok=True)
 
 
 def _manifest_row(
@@ -424,6 +578,69 @@ def _insert_index_block(
     )
 
 
+# --- receipts: what a run can count on, written by the door itself (D8) ----------
+
+RECEIPTS_DIRNAME = "receipts"
+RUN_RECORD_NAME = "run.json"
+
+# Outcomes reached only after the extractor actually ran. These are what spend a
+# capture; a refusal decided before the fetch costs the run nothing.
+POST_CAPTURE_OUTCOMES = frozenset({"registered", "capture_failed"})
+
+
+def _run_limits(run_dir: Path) -> dict:
+    return json.loads((run_dir / RUN_RECORD_NAME).read_text()).get("limits", {})
+
+
+def _read_receipts(run_dir: Path) -> list[dict]:
+    directory = run_dir / RECEIPTS_DIRNAME
+    if not directory.is_dir():
+        return []
+    return [json.loads(p.read_text()) for p in sorted(directory.iterdir())]
+
+
+def _write_receipt(
+    run_dir: Path,
+    source: UrlSource | LocalPdfSource,
+    result: RegistrationResult,
+    *,
+    triage: str,
+) -> Path:
+    """One receipt per attempt, whatever the outcome. This is what `close` reads.
+
+    `captured` records whether the extractor ran, which is what `max_captures`
+    counts — a duplicate or holdout hit caught before the fetch costs nothing.
+    """
+    directory = run_dir / RECEIPTS_DIRNAME
+    directory.mkdir(parents=True, exist_ok=True)
+    attempt = len(_read_receipts(run_dir)) + 1
+    now = datetime.now(timezone.utc)
+    receipt = {
+        "attempt": attempt,
+        "outcome": result.outcome,
+        "candidate": source.identity,
+        "slug": result.slug,
+        "path": result.location,
+        "source_id": result.source_id,
+        "triage": triage,
+        "reason": result.reason,
+        "rule_id": result.rule_id,
+        "captured": _spent_a_capture(result),
+        "at": now.isoformat(),
+    }
+    path = directory / f"{now.strftime('%Y%m%dT%H%M%S')}-{attempt:03d}.json"
+    path.write_text(json.dumps(receipt, indent=2) + "\n")
+    return path
+
+
+def _spent_a_capture(result: RegistrationResult) -> bool:
+    if result.outcome in POST_CAPTURE_OUTCOMES:
+        return True
+    # A duplicate or a holdout hit can be decided either side of the fetch; only
+    # the post-capture ones carry a source_id read out of the extraction.
+    return result.outcome in {"duplicate", "holdout_hit"} and result.source_id is not None
+
+
 # --- CLI ---------------------------------------------------------------------
 
 
@@ -442,6 +659,11 @@ def _build_parser() -> argparse.ArgumentParser:
     reg.add_argument("--caveat", required=True, help="What limits its authority")
     reg.add_argument("--budget", type=float, default=DEFAULT_BUDGET,
                      help=f"Claude budget in USD for extraction (default {DEFAULT_BUDGET})")
+    reg.add_argument("--run", dest="run_dir", type=Path,
+                     help="Research run directory; receipts this attempt and counts it "
+                          "against the run's max_captures")
+    reg.add_argument("--triage", choices=["keeper", "rejected"], default="keeper",
+                     help="The triage decision recorded on the receipt (default: keeper)")
     return parser
 
 
@@ -455,6 +677,8 @@ def main(argv: list[str] | None = None) -> int:
             validation=args.validation, caveat=args.caveat,
         ),
         budget=args.budget,
+        run_dir=args.run_dir,
+        triage=args.triage,
     )
     print(json.dumps(_result_as_json(result), indent=2))
     return 0 if result.outcome == "registered" else 1

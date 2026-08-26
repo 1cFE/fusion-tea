@@ -340,19 +340,19 @@ def test_same_bytes_different_url_is_duplicate(...): ...
 
 **See design.md for:** failure ladder and uncovered windows → `design.md#architecture`; dedupe order → D2; receipts → D8; path bar scope → `holdout_guard.py` bullet in `design.md#component-overview`.
 
-- [ ] `tests/research/fixtures/web/marker.html` (NEW) — carries a **synthetic** holdout marker, never real ARIES-CS text (R-D4)
-- [ ] `tests/research/test_duplicate.py`, `test_rollback.py`, `test_holdout.py` (NEW)
-- [ ] `scripts/source_registry.py` — step 1 dedupe (`zotero_key` → `source_url` exact, then scheme/host-lowercased and fragment-stripped) and input-identity path bar; step 4 content scan over `output.md` and the stored raw artifact; step 5 `source_id` dedupe; the full ladder including `truncate_manifest`
-- [ ] `scripts/source_registry.py` — `--run <run-dir>`: write a receipt for every attempt, refuse with `limit_reached` when the run's `max_captures` is spent
+- [x] `tests/research/fixtures/web/marker.html` (NEW) — carries a **synthetic** holdout marker, never real ARIES-CS text (R-D4)
+- [x] `tests/research/test_duplicate.py`, `test_rollback.py`, `test_holdout.py` (NEW)
+- [x] `scripts/source_registry.py` — step 1 dedupe (`zotero_key` → `source_url` exact, then scheme/host-lowercased and fragment-stripped) and input-identity path bar; step 4 content scan over `output.md` and the stored raw artifact; step 5 `source_id` dedupe; the full ladder including `truncate_manifest`
+- [x] `scripts/source_registry.py` — `--run <run-dir>`: write a receipt for every attempt, refuse with `limit_reached` when the run's `max_captures` is spent
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/research/ -q -m "not slow"` → pass
-- [ ] `uv run grep -rn "aries" tests/research/fixtures/ -i` → no matches
+- [x] `uv run python -m pytest tests/research/ -q -m "not slow"` → pass
+- [x] `uv run grep -rn "aries" tests/research/fixtures/ -i` → no matches
 
 **Manual:**
-- [ ] Register the same URL twice by CLI → second run prints `duplicate` naming the existing slug and path
+- [x] Register the same URL twice by CLI → second run prints `duplicate` naming the existing slug and path
 
 **What We Know Works After This Phase:** SC3, SC4, SC5. Nothing lands under `knowledge/` before the content scan passes, and a mid-commit failure is invisible in the repo.
 
@@ -635,6 +635,20 @@ Crash-recovery machinery (D7); search counting in code (D8); DI minting (R-C3); 
 - `ruff --fix` also removed one already-unused import and seven extraneous `f` prefixes in `zotero_ingest.py`. No behaviour change. One pre-existing over-long line at `zotero_ingest.py:532` is left alone.
 
 ### Phase 5 Completion
+**Completed:** 2026-08-25
+**Actual Changes:**
+- `scripts/source_registry.py` — `register` now wraps `_attempt` so every attempt is receipted, and `_attempt` runs the full seven-step flow. `_pre_capture_refusal` (step 1) checks caller metadata, then the input-identity holdout bar, then URL dedupe, then the run's capture limit — cheapest refusal first, nothing downloaded that a later check would discard. `_post_capture_refusal` (steps 4-5) scans `output.md` and the stored raw artifact, then dedupes on `source_id`. The commit ladder became one `try` with `_roll_back`, which truncates the manifest to the recorded mark, unlinks the raw copy and removes the source directory — each a no-op if its rung never ran, and safe because the slug was resolved against a non-existent directory under the lock.
+- `scripts/source_registry.py` — receipts: `--run <run-dir>` reads `run.json`'s `limits.max_captures`, refuses with `limit_reached` once spent, and writes one receipt per attempt into `<run-dir>/receipts/`. `--triage keeper|rejected` records the triage decision the mapping table needs. `--run` is optional, so the standalone R-B0 call is untouched.
+- `tests/research/fixtures/web/marker.html` (NEW) — trips the content scan with one bibliographic token (a sealed-paper filename) and nothing else. `grep -rni aries tests/research/fixtures/` is clean.
+- `tests/research/test_holdout.py` (5), `test_duplicate.py` (5), `test_rollback.py` (6, parametrized over all three rungs), `test_receipts.py` (5) — barred content / URL / title / local-PDF path each write nothing and name the rule; same URL, scheme-host-case-and-fragment variant, and same-bytes-at-a-different-URL each dedupe; a failure at each rung leaves the index and manifest byte-identical and preserves an earlier registration; receipts cover success, refusal, a pre-capture refusal not spending a capture, and the `max_captures`+1 refusal.
+
+**Issues:**
+- The first dedupe test uppercased the whole URL including the path, which servers treat as a different resource. Corrected to uppercase only scheme and host, which is what design D2 actually normalizes.
+
+**Deviations:**
+- **The receipt carries one field beyond the plan's pinned shape: `captured` (bool).** `max_captures` counts captures, and a duplicate or holdout hit decided *before* the fetch spends none — so the count needs to know which side of the fetch the outcome came from. Recording it is exact; inferring it from the outcome name is not. Nothing was removed from the pinned shape.
+- Failure injection replaces the real rung functions (`_rename_into_sources`, `_append_manifest_row`, `_insert_index_block`), so the production commit path runs and only the rung body is swapped — the plan's Phase 5 risk note requires exactly this.
+- The `--holdout-ack` grep gate is covered by `test_holdout.py::test_no_flag_can_waive_a_holdout_hit`, which asserts the parser rejects the flag rather than grepping for its spelling.
 
 ### Phase 6 Completion
 
