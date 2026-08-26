@@ -66,3 +66,13 @@ Notes (no finding):
 Smells: **one fires.** *Solution changes who owns an invariant without saying so* — FIRES on design-F1 (holdout exception ownership moves from PROTOCOL/owner to the caller). Escalated into the review's Fundamental Assessment as the top must-fix rather than left in the rubric. *Consumer compensating for a producer or platform guarantee* — does not fire as an ownership problem: the design works around `extract`'s asymmetries in fusion-tea code, but says so explicitly, files them upstream under R-F1, and is bound by R-B4 not to edit the pinned dependency. The related defect is the inverse (design-F2: it *assumes* a producer guarantee instead of compensating for its absence).
 
 Gate: BLOCKED (design-F1)
+
+## design — 2026-08-25 — rev `81378776` (post-review revision)
+
+Resolves (verification recorded by the orchestrator against the revision diff; authority: reviewer-expected dispositions, each objectively met):
+- design-F1: FIXED — D12 deletes `--holdout-ack` entirely; a term or path hit returns `OPERATOR_QUEUE` with rule id and offsets, never waived in code; the human path is the owner's PROTOCOL §6 log, outside the seam; extending the protocol is named an owner question and not taken. Matches the expected disposition exactly. Orchestrator ruling recorded in the design-review resume brief (commit `81378776`).
+- design-F2: FIXED — D1 separates `source_id`/`raw_sha256` (as-fetched identity) from `raw_artifact_sha256` (as-stored integrity); the two are never compared; non-UTF-8 fixture added to the test table; byte-exact-`raw.html` request folded into the R-F1 upstream filing.
+- design-F3: FIXED — local-PDF raw copy is staged, scanned in staging, moved into `knowledge/raw/` only at commit rung (b), removed by every lower rung; staging swept at step 1 and gitignored; the invariant is restated over `knowledge/`.
+- design-F4: FIXED — D14 ships `verify` in the first build as the compensating control; checked-in legacy baseline (13 source dirs + loose `COST_MODELING.md` vs 11 rows) reported as a distinct `legacy` class, never repaired; reading a `verify` report added as a third operator action in the R-E6 guide.
+
+Gate: CLEAR
