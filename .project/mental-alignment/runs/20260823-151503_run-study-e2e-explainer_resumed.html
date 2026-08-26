@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run-Study End to End — Model to Verified A/B</title>
+<style>
+:root{--ink:#1d2129;--mut:#5a6270;--line:#d9d5cc;--bg:#faf8f4;--card:#ffffff;
+--acc:#0f6f5c;--warn:#8a5a00;--warnbg:#fdf3df;--holdbg:#f3eee4;--code:#f1efe9}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg)}
+nav{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);
+padding:.5rem 1rem;display:flex;flex-wrap:wrap;gap:.3rem 1.1rem;font-family:system-ui,sans-serif;font-size:.82rem}
+nav a{color:var(--acc);text-decoration:none}
+nav a:hover{text-decoration:underline}
+nav .brand{font-weight:700;color:var(--ink);margin-right:.4rem}
+main{max-width:60rem;margin:0 auto;padding:1.2rem 1.2rem 4rem}
+h1{font-size:1.75rem;line-height:1.25;margin:1.4rem 0 .4rem}
+h2{font-size:1.32rem;margin:2.6rem 0 .6rem;padding-top:.8rem;border-top:2px solid var(--line)}
+h3{font-size:1.02rem;margin:1.4rem 0 .4rem;font-family:system-ui,sans-serif}
+p{margin:.55rem 0}
+.lede{font-size:1.08rem;color:var(--mut)}
+.small{font-size:.85rem;color:var(--mut)}
+code,pre{font-family:ui-monospace,'Cascadia Code',Consolas,monospace;font-size:.83em;background:var(--code);border-radius:3px}
+code{padding:.06em .3em}
+pre{padding:.7rem .9rem;overflow-x:auto;border:1px solid var(--line);line-height:1.45}
+table{border-collapse:collapse;width:100%;margin:.7rem 0;font-family:system-ui,sans-serif;font-size:.86rem}
+th,td{border:1px solid var(--line);padding:.4rem .55rem;text-align:left;vertical-align:top}
+th{background:var(--holdbg)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding: .9rem 1.1rem;margin:.9rem 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+@media(max-width:46rem){.grid2{grid-template-columns:1fr}}
+details{border:1px solid var(--line);border-radius:6px;background:var(--card);margin:.6rem 0;padding:.15rem .8rem}
+details summary{cursor:pointer;font-family:system-ui,sans-serif;font-weight:600;font-size:.92rem;padding:.45rem 0;color:var(--acc)}
+.flow{display:flex;flex-wrap:wrap;gap:.4rem;align-items:stretch;font-family:system-ui,sans-serif;font-size:.85rem;margin:.8rem 0}
+.flow .st{flex:1 1 10rem;background:var(--card);border:1.5px solid var(--acc);border-radius:6px;padding:.5rem .6rem}
+.flow .st b{display:block;margin-bottom:.15rem}
+.flow .ar{align-self:center;color:var(--mut);font-size:1.2rem}
+.tag{display:inline-block;font-family:system-ui,sans-serif;font-size:.72rem;font-weight:700;
+padding:.06rem .45rem;border-radius:9px;vertical-align:middle}
+.tag.owner{background:#e8f2ee;color:#0f6f5c;border:1px solid #0f6f5c55}
+.tag.designed{background:#eef;color:#3b3b8f;border:1px solid #3b3b8f55}
+.tag.pkg{background:var(--warnbg);color:var(--warn);border:1px solid #8a5a0055}
+.honest{background:var(--warnbg);border:1px solid #e3c98f;border-radius:8px;padding:.8rem 1rem;margin:.9rem 0}
+.honest h3{margin-top:.1rem}
+.prompt{background:#20242c;color:#e8e6df;border-radius:8px;padding:.7rem .95rem;font-family:ui-monospace,Consolas,monospace;font-size:.83rem;line-height:1.5}
+.lg{display:inline-flex;align-items:center;gap:.32rem;margin:.15rem .8rem .15rem 0;font-family:system-ui,sans-serif;font-size:.78rem}
+.sw{width:.85rem;height:.85rem;border-radius:2px;display:inline-block;border:1px solid #0002}
+.ladder{font-family:ui-monospace,Consolas,monospace;font-size:.85rem;line-height:1.7}
+.footer{margin-top:3rem;border-top:2px solid var(--line);padding-top:1rem}
+ul{margin:.4rem 0 .6rem;padding-left:1.3rem}
+li{margin:.25rem 0}
+.kv td:first-child{white-space:nowrap;font-weight:600;font-family:system-ui,sans-serif}
+</style>
+</head>
+<body>
+<nav aria-label="Sections"><span class="brand">Run-Study, End to End</span>
+<a href="#s1">1 · The bet &amp; the test</a>
+<a href="#s2">2 · Model → package</a>
+<a href="#s3">3 · Prompt → record</a>
+<a href="#s4">4 · What the runs showed</a>
+<a href="#s5">5 · Every miss filed</a>
+<a href="#sources">Sources</a>
+</nav>
+<main>
+
+<h1>Can one model carry a plant's techno-economics? The test is running general studies on it</h1>
+<p class="lede">A SysML v2 model of a stellarator power plant was mechanically compiled into a sealed
+Python package, and two A/B parameter studies — asked in three lines each — ran against it end to end,
+leaving verified verdicts, immutable records, and a filed list of everything the model could not yet
+answer. This page walks that chain.</p>
+
+<h2 id="s1">1 · The bet, and the test that exercises it</h2>
+
+<p>Fusion techno-economic analysis (TEA — estimating what a power plant concept would cost per unit
+of electricity) is normally one bespoke cost code per concept, welded to the design it was written
+for. The bet here: a <strong>SysML v2 model</strong> of the plant — structure, physics relations,
+cost accounts, and viability checks in one artifact — is the <em>single source</em>, mechanically
+compiled into a runnable package, so analyses run against the model itself. Component swap is
+designed into that structure <span class="tag designed">designed — not yet demonstrated at component
+level</span>: the two studies below swap parameter blocks on one sealed package, not components.</p>
+
+<h3>The four tools in the chain</h3>
+<table>
+<tr><th>Tool</th><th>What it does</th><th>Where it lives</th></tr>
+<tr><td><strong>agentic-mbse</strong></td><td>Agent workflow, modeling patterns, and 6-level validation that build and check the SysML models</td><td>installed toolkit (source: <code>~/1cfe/agentic-mbse</code>)</td></tr>
+<tr><td><strong>sysml-codegen</strong></td><td>Sensemetry SysIDE backend: compiles SysML v2 calcs and constraints into a typed Python package</td><td>upstream tool</td></tr>
+<tr><td><strong>teax</strong></td><td>Execution engine: module lifecycle, study runner, evidence store with per-case inputs, channels, verdicts</td><td>upstream tool (simkit)</td></tr>
+<tr><td><strong>fusion-tea</strong></td><td>This repository: the models, the knowledge base, and the run-study capability (runbook, policy, tools)</td><td><code>models/</code>, <code>knowledge/</code>, <code>.claude/skills/run-study/</code></td></tr>
+</table>
+
+<h3>The chain as stations</h3>
+<div class="flow" role="img" aria-label="Pipeline: SysML model to generated package to teax run to study record">
+<div class="st"><b>SysML v2 model</b><code>models/library/</code> + <code>exploration/stellarator_e2e/models/</code><br>~13 files: parts, calcs, constraints</div>
+<div class="ar">→</div>
+<div class="st"><b>Generated package</b><code>generated/</code> — 173 bound entry points, six constraint checks (§ 2 grades both counts)</div>
+<div class="ar">→</div>
+<div class="st"><b>teax run</b>StudyRunner → StudyStore (<code>studies/study_route.py:180</code>): every point carries inputs, channels, verdicts</div>
+<div class="ar">→</div>
+<div class="st"><b>Study record</b><code>studies/&lt;id&gt;/</code> — immutable; a stranger re-derives it (§ 3)</div>
+</div>
+
+<h3>The test: two three-line prompts</h3>
+<p>If the structure is real, "compare A against B, sweep the rest" should run with no per-question
+re-modeling. Two such studies ran, as parameter-block swaps on one sealed package. They are the
+demonstration, not the headline — the owner's own framing: not impressive on their own
+<span class="tag owner">OWNER</span>.</p>
+<div class="grid2">
+<div class="card"><div class="prompt">Compare steam Rankine against sCO2 on the stellarator<br>Run sensitivity analysis on other axes for each type<br>Try to find a non-intuitive result on the interactions</div>
+<p class="small" style="margin-bottom:0"><strong>Study 1</strong> (<code>20260821-power-cycle-ab</code>, 4 arms, 3,792 points):
+the sCO2 case is the <em>efficiency</em>, not the equipment price — in this package the cheaper sCO2
+turbine and heat-rejection rates are worth ≤ ~1.3 % of LCOE anywhere, the efficiency step 13–23 %.</p></div>
+<div class="card"><div class="prompt">Compare magnet technology A/B (REBCO vs Nb3Sn) on the stellarator<br>Run sensitivity analysis on other axes for each type<br>Try to find a non-intuitive result on the interactions</div>
+<p class="small" style="margin-bottom:0"><strong>Study 2</strong> (<code>20260823-magnet-technology-ab</code>, 2 arms, 8,288 points):
+the cheap conductor never gets to bid — the model rejects every Nb3Sn plant before price can matter,
+and the 4.5&nbsp;K cryogenic load closes the region, not the field ceiling alone.</p></div>
+</div>
+<p>Where the model could not push back on an axis, the pipeline said so <em>before any point ran</em>
+and filed the gap as model-development work (§ 3, § 5). Every number was re-derived against a
+hand-written mirror of the model's equations that shares no code with the generated package —
+what that check catches and what it cannot is § 3's verification station, not an opening claim.</p>
+
+<details><summary>Why the machinery? Why not just a Python script, or 1costingFE directly?</summary>
+<p>The counterfactual sits in the repo: <code>exploration/stellarator_e2e/verify_stellaris.py</code>, 432 lines of
+plain Python, computes the same plant. And 1costingFE — the project's existing costing code — is the
+acknowledged source of most cost relations and constraint thresholds here (the viability doc comments cite its
+<code>validation.py</code> throughout). What the SysML route buys over both:</p>
+<ul>
+<li><strong>Typed contracts</strong> — every input is a named, classified entry point (<code>model_contract.json</code>); nothing is a buried constant you have to grep for.</li>
+<li><strong>Constraint identity</strong> — each check has a qualified identity and its verdict is data in an evidence store, not a log line.</li>
+<li><strong>Sealed fingerprints</strong> — a study result is bound to an exact package digest; a changed model refuses to resume an old store.</li>
+<li><strong>Cross-concept reuse</strong> — the library definitions (costed components, CAS accounts, DCF core) are concept-agnostic; the stellarator binds values, it does not re-derive structure.</li>
+</ul></details>
+
+<details><summary>How does this compare to systems codes like PROCESS, SYCOMORE, or ARIES?</summary>
+<p>What those codes have that this package does not, yet: self-consistent physics (confinement scaling closures),
+optimizers, engineering loops (coil stress ⇄ radial build), and a portfolio of studied concepts. What this has
+that they do not: the model itself as the single source, mechanical derivation of the executable, and study
+records auditable by a reader with no access to the session that ran them. The roadmap claim is kept modest:
+one concept has passed through the chain; cross-concept comparison is the goal, not the achievement.</p></details>
+
+<h2 id="s2">2 · A stellarator plant in ~13 SysML files, compiled into a sealed 173-parameter package</h2>
+
+<p>The model is the published <em>Stellaris</em> stellarator design, deliberately simple —
+fixed-profile 0-D physics — and run under a disciplined, auditable process.</p>
+
+<h3>What is in the model</h3>
+<table>
+<tr><th>Layer</th><th>Contents</th><th>File</th></tr>
+<tr><td>Physics calcs</td><td>plasma geometry, radial build, DT fusion power, neutron wall load, volume-averaged beta, conductor peak field</td><td><code>models/analyses/mfe_plasma_scaling.sysml</code></td></tr>
+<tr><td>Plant balance</td><td>power balance (net electric, recirculating fraction), cryogenic plant</td><td><code>mfe_power_balance.sysml</code>, <code>mfe_cryo_plant.sysml</code></td></tr>
+<tr><td>Costs</td><td>magnet cost (Ampère's-law kA·m pricing), CAS cost accounts, LCOE DCF core</td><td><code>mfe_magnet_cost.sysml</code>, <code>mfe_account_costs.sysml</code>, <code>mfe_lcoe_dcf.sysml</code></td></tr>
+<tr><td>Viability</td><td>six constraint checks, each with a documented source</td><td><code>mfe_viability.sysml</code></td></tr>
+</table>
+
+<h3>The six constraint checks, graded plainly</h3>
+<table>
+<tr><th>Check</th><th>Definition</th><th>Predicate</th><th>Grade</th></tr>
+<tr><td><code>beta_ok</code></td><td><code>mfe_viability::'Beta Limit'</code></td><td>β ≤ 0.05</td><td><strong>live fence</strong> — plasma pressure stability</td></tr>
+<tr><td><code>peak_field_ok</code></td><td><code>'Conductor Peak Field Limit'</code></td><td>B_peak ≤ B_max</td><td><strong>live fence</strong> — the conductor's ceiling</td></tr>
+<tr><td><code>recirc_ok</code></td><td><code>'Economic Recirculating Threshold'</code></td><td>rec_frac ≤ 0.5</td><td><strong>live fence</strong> — parasitic-power knee</td></tr>
+<tr><td><code>wall_load_ok</code></td><td><code>'Neutron Wall Load Limit'</code></td><td>wall_load ≤ 4.05 MW/m²</td><td><strong>live fence</strong> — first-wall neutron flux</td></tr>
+<tr><td><code>tbr_ok</code></td><td><code>'TBR Floor'</code></td><td>1.074 ≥ 1.05</td><td><strong>held-input comparison</strong> — both sides are fixed inputs; constant at every point of every study</td></tr>
+<tr><td><code>net_positive</code></td><td><code>'Net Power Positive'</code></td><td>p_net &gt; 0</td><td><strong>unreachable</strong> — a cost term takes √p_net, so a net-negative point fails to evaluate before any verdict is written (study 2 finding #1)</td></tr>
+</table>
+<p class="small">The four live fences are algebraic inequalities; there are no engineering loops
+(no coil-stress ⇄ radial-build coupling, no confinement closure). That honesty matters in § 4.</p>
+
+<h3>The costed-component pattern — the designed swap mechanism</h3>
+<p>Every cost-bearing subsystem specializes one abstract definition, so the capital rollup never
+cares which concrete component fills a slot <span class="tag designed">designed — the committed
+studies swapped parameter blocks only; a component-level swap through the same rollup is not yet shown</span>:</p>
+<div class="card ladder" role="img" aria-label="Specialization ladder from Costed Component down to Magnet System">
+'Costed Component' <span class="small">(abstract: capital_cost + cas_code — <code>models/library/foundation/costed_component.sysml:4-19</code>)</span><br>
+&nbsp;└─ 'CAS Account' <span class="small">(+ account_name, scope — <code>cas_hierarchy.sysml:6</code>)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;└─ 'CAS22 Power Core' <span class="small">(the MFE/IFE divergence point — <code>cas_hierarchy.sysml:48</code>)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ 'CAS22.1.3 Magnet System' <span class="small">(<code>mfe_power_core.sysml:17</code>)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ 'Magnet System' <span class="small">(concrete, parameterized: B, R0, r_coil, G, markup, cost_per_kAm — <code>mfe_power_core.sysml:65</code>, AD-005/AD-007)</span>
+</div>
+
+<h3>SysML → Python, side by side</h3>
+<p>The code generator emits, per calc: a typed module wrapper and an implementation carrying the
+SysML expressions. All but two calcs are auto-implemented from those expressions; two — DT fusion
+power and levelized replacement cost — are hand-implemented and pinned.</p>
+<div class="grid2">
+<div><h3 style="margin-top:0">The SysML calc (<code>models/analyses/mfe_lcoe_dcf.sysml:4</code>)</h3>
+<pre>calc def 'LCOE DCF' {
+  in attribute total_capital_in : Real;
+  in attribute annual_om_in : Real;
+  in attribute net_electric_mw : Real;
+  in attribute availability_in : Real;
+  in attribute discount_rate_in : Real;
+  // ... construction + operating years
+
+  attribute crf : Real =
+    discount_rate_in * discount_pow_n
+      / (discount_pow_n - 1.0);
+  attribute idc_factor : Real =
+    (1.0 + discount_rate_in)
+      ** (construction_years_in / 2.0);
+  // annual capital, annual energy, out lcoe
+}</pre></div>
+<div><h3 style="margin-top:0">The generated implementation (<code>generated/handwritten/mfe_lcoe_dcf/lcoe_dcf_impl.py</code>)</h3>
+<pre># AUTO_IMPLEMENTED = True
+# SysML Source: analyses/mfe_lcoe_dcf.sysml:4
+def run_lcoe_dcf(inputs: LCOE_DCFInput) -> float:
+    ...
+    crf = (discount_rate_in * discount_pow_n
+           / (discount_pow_n - 1.0))
+    idc_factor = ((1.0 + discount_rate_in)
+           ** (construction_years_in / 2.0))
+    annual_capital = (total_capital_in
+           * idc_factor * crf)
+    annual_energy_mwh = (8760.0
+           * net_electric_mw * availability_in)
+    return ((annual_capital + annual_om_in)
+           / annual_energy_mwh)</pre></div>
+</div>
+<p class="small">Each doc comment survives the trip, source citation included (the DCF follows
+1costingFE's <code>economics.py</code>). The wrapper also restates the expressions as a
+"Calculation Specification" block, so the Python names its own SysML line.</p>
+
+<h3>What the package's inputs look like</h3>
+<p>Compilation flattens every bindable value into one contract
+(<code>generated/contracts/model_contract.json</code>) with flat keys
+<code>&lt;design&gt;__&lt;usage&gt;__&lt;attribute&gt;</code>, mirrored by per-module JSON files under
+<code>generated/inputs/</code>. The honest count beside the big one:</p>
+<table>
+<tr><th>Entry type</th><th>Count</th><th>Examples</th></tr>
+<tr><td><code>design_attribute</code></td><td>118</td><td><code>stellarator_09__stellaris__R</code> = 12.7, <code>…__magnet__B</code>, <code>…__E_fus</code> (includes physical constants and ~30 costing base rates)</td></tr>
+<tr><td><code>library_default</code></td><td>45</td><td><code>…__aux_cooling__alpha</code> = 0.7, <code>…__blanket_cost__alpha</code> = 0.6</td></tr>
+<tr><td><code>usage_literal</code></td><td>10</td><td><code>…__fuel_handling__ref_power</code> = 1000.0</td></tr>
+<tr><td colspan="2"><strong>173 total — of which ~12 distinct keys were ever swept</strong> across both studies</td><td>sweeping <em>any</em> of the 173 is mechanical; the studies moved the ones their questions named</td></tr>
+</table>
+
+<details><summary>How the LCOE math works (one worked path)</summary>
+<p>The DCF core is four lines: a capital recovery factor CRF = d(1+d)ᴺ⁄((1+d)ᴺ−1); an
+interest-during-construction factor (1+d)^(Yc/2) (even-spend midpoint); annual capital =
+total capital × IDC × CRF; and LCOE = (annual capital + annual O&amp;M) ⁄ (8760 · P_net ·
+availability). The total capital it consumes is the CAS rollup: every subsystem's
+<code>capital_cost</code> (magnets by kA·m, accounts by power-law scaling) summed through the
+costed-component ladder above. Constraint verdicts ride beside the number: each check's qualified
+identity (e.g. <code>stellarator_09__stellaris__beta_ok__82b78aad…</code>) names its verdict column
+in the evidence store.</p></details>
+
+<h2 id="s3">3 · Three lines of intake become an immutable record a stranger can re-derive</h2>
+
+<p>This is the run-study capability — the layer the owner ruled must be shown by example
+<span class="tag owner">OWNER-VERBATIM</span>. Three roles, one seam:</p>
+<div class="flow" role="img" aria-label="Roles: user sets intent and rulings; executor runs runbook and commits record; administrator reads only the record and writes synthesis">
+<div class="st"><b>User</b>sets intent; rules on any axis the model does not resist — before any point runs</div>
+<div class="ar">→</div>
+<div class="st"><b>Executor</b>works the 15-step runbook; commits the record and every artifact in it</div>
+<div class="ar">→ <em>the record is the only seam</em> →</div>
+<div class="st"><b>Administrator</b>a fresh session with no memory of the run; reads <em>only</em> the record directory; writes the synthesis</div>
+</div>
+<p>Plainly: executor, pre-execution critic, and administrator were all Claude agents. The honest
+defense is not independence of vendor but the mechanical recount — the administrator recomputed
+every number from the committed CSVs and caught real errors (a 31-vs-20 count, an overreaching
+sampling claim), which became addenda.</p>
+
+<h3>The stations, each with its real exhibit</h3>
+
+<details><summary>Intake — the owner's words, kept verbatim</summary>
+<p>The record's § 2 opens with the goal exactly as typed (the three-line prompts in § 1 above), then
+a marked block: <em>"Executor's additions (mine, not the owner's)"</em> — how "Rankine vs sCO2"
+became three package keys, how "REBCO vs Nb3Sn" became four. The translation is on the record as the
+executor's own, never blended into the owner's words.</p></details>
+
+<details><summary>Axes — declared as key groups, with a declared tie</summary>
+<p>Every axis is declared at attribute level and expanded to its complete entry-key set
+(<code>axes.json</code>), each key tagged <code>fan_out</code> or <code>tie</code>. The teachable
+tie: <code>stellarator_09__stellaris__magnet__R0</code> rides with the major radius
+<code>…__R</code> — the magnet-cost calc runs Ampère's law on the coil major radius, which <em>is</em>
+the plasma major radius under a separately authored name. Its suffix is R0, not R, so no name scan
+would find it; it must be declared. Sweeping R while holding R0 would price coils for a machine that
+does not exist. Study 2's density axis is a four-key tie (n_D0 with n_T0, n_e0, n_He0 riding at one
+scale factor, preserving quasineutrality).</p></details>
+
+<details><summary>Indicators and rulings — what pushes back, decided before any point runs</summary>
+<p>A deterministic trace over the package's artifacts reports, per axis, which constraints and cost
+channels it can reach. Fixed vocabulary: <code>no_constraint_response</code> (a sound negative —
+nothing pushes back), <code>constraints_reachable</code> (a possible path, never a claim of
+response), <code>unresisted</code> (the agent's judgment, never a tool output). In study 1,
+<code>availability</code> and <code>discount_rate</code> came back <code>no_constraint_response</code>;
+the owner ruled — verbatim, "no sensitivity" — and both were declined before execution. The ruling
+does not discharge the finding: each declined axis still filed a model-development gap (what
+<em>should</em> push back and is not modeled), rows #1 and #2 of the discovery log.</p></details>
+
+<details><summary>Preflight — six mechanical gates, all recorded</summary>
+<table>
+<tr><th>Gate</th><th>Study 1</th><th>Study 2</th></tr>
+<tr><td>Declared-group key validation</td><td>pass (8 keys / 5 groups)</td><td>pass (12 keys / 5 groups at gate time)</td></tr>
+<tr><td>Suffix-sibling scan (warn-only)</td><td>2 warnings, excluded on purpose</td><td>none</td></tr>
+<tr><td>Package identity (sealed digest)</td><td>pass — <code>7447efea…</code></td><td>pass — same digest</td></tr>
+<tr><td>Pinned baseline reproduces</td><td>pass — headline at 0 relative deviation, 6/6 verdicts</td><td>pass — same</td></tr>
+<tr><td>Manifest ↔ package fingerprint</td><td>pass</td><td>pass</td></tr>
+<tr><td>Package git-clean (before &amp; after)</td><td>pass</td><td>pass</td></tr>
+</table>
+<p class="small">Only mechanical conditions gate. An axis that looks uninteresting or a result that
+looks wrong never stops a study — it is recorded and argued (<code>runbook.md</code>).</p></details>
+
+<details><summary>Execution — arms × window through stock teax</summary>
+<p>Arms are fixed value-blocks; both arms sweep one common window so the constraints, not the
+executor, carve each arm's region. One sealed fingerprint, one store per study.</p>
+<div class="grid2">
+<pre># study 1 — power-conversion block
+ARMS = {
+ "arm-rankine-paper":    {eta_th: 0.333, turbine: 202840, heat_rej: 35060},
+ "arm-rankine-upstream": {eta_th: 0.40,  turbine: 202840, heat_rej: 35060},
+ "arm-sco2":             {eta_th: 0.47,  turbine: 159080, heat_rej: 22580},
+ "arm-sco2-eta-only":    {eta_th: 0.47,  turbine: 202840, heat_rej: 35060},
+}  # 4 arms x 948 (R, a) points = 3,792; 9 min 2 s</pre>
+<pre># study 2 — conductor block
+ARMS = {
+ "arm-rebco": {cost_per_kAm: 50, T_cold: 20.0,
+               B_max: 24.9, vol_cold: 136.56},
+ "arm-nb3sn": {cost_per_kAm: 7,  T_cold: 4.5,
+               B_max: 13.0, vol_cold: 390.0},
+}  # 2 arms x 4,144 (B, density) points = 8,288; 20 min 17 s</pre>
+</div>
+<p class="small">(Abbreviated from the committed <code>study.py</code> of each record; full keys are
+package-qualified. Study 1's fourth arm was added on the owner's yes, to split "cheaper cycle" into
+an efficiency part and an equipment-price part.)</p></details>
+
+<details><summary>Verification — what the mirror check is, and is not</summary>
+<p>10 of 75 output channels were re-derived at stratified sample points — 12 of 3,792 and 48 of
+8,288 cases, sampled so that every verdict combination the study produced is covered — with worst
+relative deviation ~4×10⁻¹⁶, and all six verdicts re-derived from the predicate IR through the
+package's published operand bindings, with zero mismatches. The mirror
+(<code>verify_stellaris.py</code>) is a hand-written recompute of the whole plant chain that shares
+no code with the generated package — but it transcribes the <em>same SysML equations</em>, so it
+catches codegen and execution bugs, not a wrong equation; two functions are contractually shared and
+pinned. Verification bounds transcription error, not model error. This oracle check retires after
+the current epic item; what remains for future studies is the baseline pin, the sealed fingerprints,
+and verdict re-derivation.</p></details>
+
+<details><summary>The record, the cold read, and the log</summary>
+<p>Each record is one directory with 17 fixed sections: verbatim intake, axis groups, indicators and
+rulings, preflight results, route and glue disclosure ("glue ledger: none" — nothing was
+harness-supplied in either study), window provenance, constraint outcomes by qualified identity,
+verification, review outcomes, findings, and a closing section titled <em>"What this record does not
+contain"</em>. Once committed it is immutable — corrections land as dated addenda; both records
+carry them. Then a fresh agent with no memory of the run read each directory alone and wrote
+<code>synthesis.md</code>: every number recomputed, recorded facts, missing facts, and the reader's
+own interpretations kept apart, ending with a mandatory "What the record does not support" list.
+Nothing the administrators reported missing was actually in the directories — the misses were
+contract gaps, and they were filed as findings.</p></details>
+
+<h2 id="s4">4 · The capability held; the findings are graded "what this package could push back on"</h2>
+
+<p><strong>The capability verdict first:</strong> both three-line prompts ran end to end — intake,
+declared axes, rulings before execution, gated preflight, sealed execution, verification, immutable
+record, cold synthesis, filed findings — in 9 and 20 minutes of compute. That is § 1's test passing.
+The domain findings below are exhibits of the model pushing back (or failing to). They are, in the
+records' own words, statements <em>about this package, not about stellarators</em>.</p>
+
+<h3>Study 1 — the sCO2 case is the efficiency, not the equipment price</h3>
+<p>Across all 948 grid points per arm the LCOE ordering never flips: η 0.33 → 0.47 is worth 13–23 %
+of LCOE; the cheaper sCO2 turbine/heat-rejection rates at most ~1.3 % anywhere in the window. Two
+fences shape the space in every arm: <code>recirc_ok</code> closes the small-machine corner (and
+moves inward as η rises — the one verdict the cycle touches), <code>wall_load_ok</code> closes
+a ≥ 1.70 m at every R. And capital <em>rises</em> with efficiency while LCOE falls — the turbine is
+priced per MW electric, so a more efficient plant buys a bigger turbine and wins on energy sold.</p>
+<figure class="card" style="overflow-x:auto"><svg viewBox="0 0 359 335" role="img" style="max-width:359px;width:100%;height:auto"><style>.tk{font:10px sans-serif;fill:#555}.ax{font:11px sans-serif;fill:#333}.ttl{font:600 12px sans-serif;fill:#222}.mk{font:600 10px sans-serif;fill:#111}</style><rect x="52" y="280" width="81" height="9" fill="#3f6fb5"/><rect x="133" y="280" width="216" height="9" fill="#2f7d4f"/><rect x="52" y="271" width="63" height="9" fill="#3f6fb5"/><rect x="115" y="271" width="234" height="9" fill="#2f7d4f"/><rect x="52" y="262" width="54" height="9" fill="#3f6fb5"/><rect x="106" y="262" width="243" height="9" fill="#2f7d4f"/><rect x="52" y="253" width="36" height="9" fill="#3f6fb5"/><rect x="88" y="253" width="261" height="9" fill="#2f7d4f"/><rect x="52" y="244" width="27" height="9" fill="#3f6fb5"/><rect x="79" y="244" width="270" height="9" fill="#2f7d4f"/><rect x="52" y="235" width="18" height="9" fill="#3f6fb5"/><rect x="70" y="235" width="279" height="9" fill="#2f7d4f"/><rect x="52" y="226" width="9" height="9" fill="#3f6fb5"/><rect x="61" y="226" width="288" height="9" fill="#2f7d4f"/><rect x="52" y="217" width="297" height="9" fill="#2f7d4f"/><rect x="52" y="208" width="297" height="9" fill="#2f7d4f"/><rect x="52" y="199" width="297" height="9" fill="#2f7d4f"/><rect x="52" y="190" width="297" height="9" fill="#2f7d4f"/><rect x="52" y="181" width="297" height="9" fill="#2f7d4f"/><rect x="52" y="172" width="297" height="9" fill="#2f7d4f"/><rect x="52" y="163" width="297" height="9" fill="#2f7d4f"/><rect x="52" y="154" width="297" height="9" fill="#2f7d4f"/><rect x="52" y="145" width="297" height="9" fill="#2f7d4f"/><rect x="52" y="136" width="297" height="9" fill="#2f7d4f"/><rect x="52" y="127" width="297" height="9" fill="#2f7d4f"/><rect x="52" y="118" width="297" height="9" fill="#d9822b"/><rect x="52" y="109" width="9" height="9" fill="#d7d2c8"/><rect x="61" y="109" width="288" height="9" fill="#d9822b"/><rect x="52" y="100" width="9" height="9" fill="#d7d2c8"/><rect x="61" y="100" width="288" height="9" fill="#d9822b"/><rect x="52" y="91" width="9" height="9" fill="#d7d2c8"/><rect x="61" y="91" width="288" height="9" fill="#d9822b"/><rect x="52" y="82" width="9" height="9" fill="#d7d2c8"/><rect x="61" y="82" width="288" height="9" fill="#d9822b"/><rect x="52" y="73" width="9" height="9" fill="#d7d2c8"/><rect x="61" y="73" width="288" height="9" fill="#d9822b"/><rect x="52" y="64" width="9" height="9" fill="#d7d2c8"/><rect x="61" y="64" width="288" height="9" fill="#d9822b"/><rect x="52" y="55" width="9" height="9" fill="#d7d2c8"/><rect x="61" y="55" width="288" height="9" fill="#d9822b"/><rect x="52" y="46" width="9" height="9" fill="#d7d2c8"/><rect x="61" y="46" width="288" height="9" fill="#d9822b"/><rect x="52" y="37" width="9" height="9" fill="#d7d2c8"/><rect x="61" y="37" width="288" height="9" fill="#d9822b"/><rect x="52" y="28" width="9" height="9" fill="#d7d2c8"/><rect x="61" y="28" width="288" height="9" fill="#d9822b"/><text x="56" y="305" text-anchor="middle" class="tk">4</text><text x="102" y="305" text-anchor="middle" class="tk">6.5</text><text x="146" y="305" text-anchor="middle" class="tk">9</text><text x="192" y="305" text-anchor="middle" class="tk">11.5</text><text x="236" y="305" text-anchor="middle" class="tk">14</text><text x="282" y="305" text-anchor="middle" class="tk">16.5</text><text x="326" y="305" text-anchor="middle" class="tk">19</text><text x="46" y="288" text-anchor="end" class="tk">0.8</text><text x="46" y="252" text-anchor="end" class="tk">1</text><text x="46" y="216" text-anchor="end" class="tk">1.2</text><text x="46" y="180" text-anchor="end" class="tk">1.4</text><text x="46" y="144" text-anchor="end" class="tk">1.6</text><text x="46" y="108" text-anchor="end" class="tk">1.8</text><text x="46" y="72" text-anchor="end" class="tk">2</text><text x="46" y="36" text-anchor="end" class="tk">2.2</text><text x="200" y="327" text-anchor="middle" class="ax">major radius R [m]</text><text transform="translate(14 158) rotate(-90)" text-anchor="middle" class="ax">minor radius a [m]</text><text x="52" y="16" class="ttl">Study 1 — arm-rankine-paper: verdicts over (R, a); 948-point grid, of this package</text><circle cx="236" cy="132" r="4.2" fill="none" stroke="#111" stroke-width="1.8"/><circle cx="236" cy="132" r="1.6" fill="#111"/><text x="228" y="124" text-anchor="end" class="mk">best feasible 209 $/MWh</text></svg>
+<figcaption class="small">Verdict map, study 1, <code>arm-rankine-paper</code> (the paper's
+η = 1/3): green is feasible (563 of 948); orange, wall-load violated above a = 1.65 m; blue, the
+recirculation corner at small R and a; beige, no grid point (the torus would self-intersect).
+Best feasible: 209 $/MWh at (14.0 m, 1.65 m) — of this package. Regenerated from
+<code>results/points.csv</code>.</figcaption></figure>
+
+<h3>Study 2 — the cheap conductor never gets to bid</h3>
+<p>Nb3Sn's conductor costs 7× less than REBCO's, and its arm has <em>no feasible point in 4,144</em>:
+its 13 T ceiling caps the field at 4.69 T, where the beta limit allows density ≤ 0.50× but the
+recirculation threshold demands ≥ 0.51× — and what tips that one remaining node is the 4.5 K
+cryogenic load (7.0 MW vs REBCO's 0.9 MW), not the ceiling alone. REBCO at the same node is
+feasible. Subordinate, and explicitly not a result: Nb3Sn's LCOE is lower at every grid point —
+but every one of those points is a plant its own verdicts reject. Also: the 9.0 T design field is
+never optimal here — LCOE rises with B at every density, because this package has no confinement
+closure, so field buys only magnet capital and beta margin (filed as finding #4).</p>
+<div class="grid2">
+<figure class="card" style="overflow-x:auto"><svg viewBox="0 0 728 578" role="img" style="max-width:728px;width:100%;height:auto"><style>.tk{font:10px sans-serif;fill:#555}.ax{font:11px sans-serif;fill:#333}.ttl{font:600 12px sans-serif;fill:#222}.mk{font:600 10px sans-serif;fill:#111}</style><rect x="52" y="523" width="72" height="9" fill="#534d8e"/><rect x="124" y="523" width="522" height="9" fill="#3f6fb5"/><rect x="646" y="523" width="72" height="9" fill="#694b68"/><rect x="52" y="514" width="90" height="9" fill="#534d8e"/><rect x="142" y="514" width="504" height="9" fill="#3f6fb5"/><rect x="646" y="514" width="72" height="9" fill="#694b68"/><rect x="52" y="505" width="117" height="9" fill="#534d8e"/><rect x="169" y="505" width="477" height="9" fill="#3f6fb5"/><rect x="646" y="505" width="72" height="9" fill="#694b68"/><rect x="52" y="496" width="126" height="9" fill="#534d8e"/><rect x="178" y="496" width="468" height="9" fill="#3f6fb5"/><rect x="646" y="496" width="72" height="9" fill="#694b68"/><rect x="52" y="487" width="135" height="9" fill="#534d8e"/><rect x="187" y="487" width="459" height="9" fill="#3f6fb5"/><rect x="646" y="487" width="72" height="9" fill="#694b68"/><rect x="52" y="478" width="144" height="9" fill="#534d8e"/><rect x="196" y="478" width="450" height="9" fill="#3f6fb5"/><rect x="646" y="478" width="72" height="9" fill="#694b68"/><rect x="52" y="469" width="153" height="9" fill="#534d8e"/><rect x="205" y="469" width="441" height="9" fill="#3f6fb5"/><rect x="646" y="469" width="72" height="9" fill="#694b68"/><rect x="52" y="460" width="171" height="9" fill="#534d8e"/><rect x="223" y="460" width="423" height="9" fill="#3f6fb5"/><rect x="646" y="460" width="72" height="9" fill="#694b68"/><rect x="52" y="451" width="180" height="9" fill="#534d8e"/><rect x="232" y="451" width="414" height="9" fill="#3f6fb5"/><rect x="646" y="451" width="72" height="9" fill="#694b68"/><rect x="52" y="442" width="189" height="9" fill="#534d8e"/><rect x="241" y="442" width="405" height="9" fill="#3f6fb5"/><rect x="646" y="442" width="72" height="9" fill="#694b68"/><rect x="52" y="433" width="198" height="9" fill="#534d8e"/><rect x="250" y="433" width="396" height="9" fill="#3f6fb5"/><rect x="646" y="433" width="72" height="9" fill="#694b68"/><rect x="52" y="424" width="207" height="9" fill="#534d8e"/><rect x="259" y="424" width="387" height="9" fill="#3f6fb5"/><rect x="646" y="424" width="72" height="9" fill="#694b68"/><rect x="52" y="415" width="225" height="9" fill="#8e4fa8"/><rect x="277" y="415" width="369" height="9" fill="#2f7d4f"/><rect x="646" y="415" width="72" height="9" fill="#c34a4a"/><rect x="52" y="406" width="243" height="9" fill="#8e4fa8"/><rect x="295" y="406" width="351" height="9" fill="#2f7d4f"/><rect x="646" y="406" width="72" height="9" fill="#c34a4a"/><rect x="52" y="397" width="252" height="9" fill="#8e4fa8"/><rect x="304" y="397" width="342" height="9" fill="#2f7d4f"/><rect x="646" y="397" width="72" height="9" fill="#c34a4a"/><rect x="52" y="388" width="252" height="9" fill="#8e4fa8"/><rect x="304" y="388" width="342" height="9" fill="#2f7d4f"/><rect x="646" y="388" width="72" height="9" fill="#c34a4a"/><rect x="52" y="379" width="261" height="9" fill="#8e4fa8"/><rect x="313" y="379" width="333" height="9" fill="#2f7d4f"/><rect x="646" y="379" width="72" height="9" fill="#c34a4a"/><rect x="52" y="370" width="279" height="9" fill="#8e4fa8"/><rect x="331" y="370" width="315" height="9" fill="#2f7d4f"/><rect x="646" y="370" width="72" height="9" fill="#c34a4a"/><rect x="52" y="361" width="288" height="9" fill="#8e4fa8"/><rect x="340" y="361" width="306" height="9" fill="#2f7d4f"/><rect x="646" y="361" width="72" height="9" fill="#c34a4a"/><rect x="52" y="352" width="297" height="9" fill="#8e4fa8"/><rect x="349" y="352" width="297" height="9" fill="#2f7d4f"/><rect x="646" y="352" width="72" height="9" fill="#c34a4a"/><rect x="52" y="343" width="306" height="9" fill="#8e4fa8"/><rect x="358" y="343" width="288" height="9" fill="#2f7d4f"/><rect x="646" y="343" width="72" height="9" fill="#c34a4a"/><rect x="52" y="334" width="306" height="9" fill="#8e4fa8"/><rect x="358" y="334" width="288" height="9" fill="#2f7d4f"/><rect x="646" y="334" width="72" height="9" fill="#c34a4a"/><rect x="52" y="325" width="306" height="9" fill="#8e4fa8"/><rect x="358" y="325" width="288" height="9" fill="#2f7d4f"/><rect x="646" y="325" width="72" height="9" fill="#c34a4a"/><rect x="52" y="316" width="315" height="9" fill="#8e4fa8"/><rect x="367" y="316" width="279" height="9" fill="#2f7d4f"/><rect x="646" y="316" width="72" height="9" fill="#c34a4a"/><rect x="52" y="307" width="324" height="9" fill="#8e4fa8"/><rect x="376" y="307" width="270" height="9" fill="#2f7d4f"/><rect x="646" y="307" width="72" height="9" fill="#c34a4a"/><rect x="52" y="298" width="324" height="9" fill="#8e4fa8"/><rect x="376" y="298" width="270" height="9" fill="#2f7d4f"/><rect x="646" y="298" width="72" height="9" fill="#c34a4a"/><rect x="52" y="289" width="333" height="9" fill="#8e4fa8"/><rect x="385" y="289" width="261" height="9" fill="#2f7d4f"/><rect x="646" y="289" width="72" height="9" fill="#c34a4a"/><rect x="52" y="280" width="342" height="9" fill="#8e4fa8"/><rect x="394" y="280" width="252" height="9" fill="#2f7d4f"/><rect x="646" y="280" width="72" height="9" fill="#c34a4a"/><rect x="52" y="271" width="342" height="9" fill="#8e4fa8"/><rect x="394" y="271" width="252" height="9" fill="#2f7d4f"/><rect x="646" y="271" width="72" height="9" fill="#c34a4a"/><rect x="52" y="262" width="351" height="9" fill="#8e4fa8"/><rect x="403" y="262" width="243" height="9" fill="#2f7d4f"/><rect x="646" y="262" width="72" height="9" fill="#c34a4a"/><rect x="52" y="253" width="351" height="9" fill="#8e4fa8"/><rect x="403" y="253" width="243" height="9" fill="#2f7d4f"/><rect x="646" y="253" width="72" height="9" fill="#c34a4a"/><rect x="52" y="244" width="360" height="9" fill="#8e4fa8"/><rect x="412" y="244" width="234" height="9" fill="#2f7d4f"/><rect x="646" y="244" width="72" height="9" fill="#c34a4a"/><rect x="52" y="235" width="369" height="9" fill="#8e4fa8"/><rect x="421" y="235" width="225" height="9" fill="#2f7d4f"/><rect x="646" y="235" width="72" height="9" fill="#c34a4a"/><rect x="52" y="226" width="369" height="9" fill="#8e4fa8"/><rect x="421" y="226" width="225" height="9" fill="#2f7d4f"/><rect x="646" y="226" width="72" height="9" fill="#c34a4a"/><rect x="52" y="217" width="378" height="9" fill="#8e4fa8"/><rect x="430" y="217" width="216" height="9" fill="#2f7d4f"/><rect x="646" y="217" width="72" height="9" fill="#c34a4a"/><rect x="52" y="208" width="378" height="9" fill="#8e4fa8"/><rect x="430" y="208" width="216" height="9" fill="#2f7d4f"/><rect x="646" y="208" width="72" height="9" fill="#c34a4a"/><rect x="52" y="199" width="387" height="9" fill="#8e4fa8"/><rect x="439" y="199" width="207" height="9" fill="#2f7d4f"/><rect x="646" y="199" width="72" height="9" fill="#c34a4a"/><rect x="52" y="190" width="396" height="9" fill="#8e4fa8"/><rect x="448" y="190" width="198" height="9" fill="#2f7d4f"/><rect x="646" y="190" width="72" height="9" fill="#c34a4a"/><rect x="52" y="181" width="396" height="9" fill="#8e4fa8"/><rect x="448" y="181" width="198" height="9" fill="#2f7d4f"/><rect x="646" y="181" width="72" height="9" fill="#c34a4a"/><rect x="52" y="172" width="405" height="9" fill="#8e4fa8"/><rect x="457" y="172" width="189" height="9" fill="#2f7d4f"/><rect x="646" y="172" width="72" height="9" fill="#c34a4a"/><rect x="52" y="163" width="405" height="9" fill="#8e4fa8"/><rect x="457" y="163" width="189" height="9" fill="#2f7d4f"/><rect x="646" y="163" width="72" height="9" fill="#c34a4a"/><rect x="52" y="154" width="414" height="9" fill="#8e4fa8"/><rect x="466" y="154" width="180" height="9" fill="#2f7d4f"/><rect x="646" y="154" width="72" height="9" fill="#c34a4a"/><rect x="52" y="145" width="414" height="9" fill="#8e4fa8"/><rect x="466" y="145" width="180" height="9" fill="#2f7d4f"/><rect x="646" y="145" width="72" height="9" fill="#c34a4a"/><rect x="52" y="136" width="423" height="9" fill="#8e4fa8"/><rect x="475" y="136" width="171" height="9" fill="#2f7d4f"/><rect x="646" y="136" width="72" height="9" fill="#c34a4a"/><rect x="52" y="127" width="423" height="9" fill="#8e4fa8"/><rect x="475" y="127" width="171" height="9" fill="#2f7d4f"/><rect x="646" y="127" width="72" height="9" fill="#c34a4a"/><rect x="52" y="118" width="432" height="9" fill="#8e4fa8"/><rect x="484" y="118" width="162" height="9" fill="#2f7d4f"/><rect x="646" y="118" width="72" height="9" fill="#c34a4a"/><rect x="52" y="109" width="432" height="9" fill="#8e4fa8"/><rect x="484" y="109" width="162" height="9" fill="#2f7d4f"/><rect x="646" y="109" width="72" height="9" fill="#c34a4a"/><rect x="52" y="100" width="441" height="9" fill="#8e4fa8"/><rect x="493" y="100" width="153" height="9" fill="#2f7d4f"/><rect x="646" y="100" width="72" height="9" fill="#c34a4a"/><rect x="52" y="91" width="441" height="9" fill="#8e4fa8"/><rect x="493" y="91" width="153" height="9" fill="#2f7d4f"/><rect x="646" y="91" width="72" height="9" fill="#c34a4a"/><rect x="52" y="82" width="450" height="9" fill="#925556"/><rect x="502" y="82" width="144" height="9" fill="#d9822b"/><rect x="646" y="82" width="72" height="9" fill="#a8532f"/><rect x="52" y="73" width="450" height="9" fill="#925556"/><rect x="502" y="73" width="144" height="9" fill="#d9822b"/><rect x="646" y="73" width="72" height="9" fill="#a8532f"/><rect x="52" y="64" width="459" height="9" fill="#925556"/><rect x="511" y="64" width="135" height="9" fill="#d9822b"/><rect x="646" y="64" width="72" height="9" fill="#a8532f"/><rect x="52" y="55" width="459" height="9" fill="#925556"/><rect x="511" y="55" width="135" height="9" fill="#d9822b"/><rect x="646" y="55" width="72" height="9" fill="#a8532f"/><rect x="52" y="46" width="468" height="9" fill="#925556"/><rect x="520" y="46" width="126" height="9" fill="#d9822b"/><rect x="646" y="46" width="72" height="9" fill="#a8532f"/><rect x="52" y="37" width="468" height="9" fill="#925556"/><rect x="520" y="37" width="126" height="9" fill="#d9822b"/><rect x="646" y="37" width="72" height="9" fill="#a8532f"/><rect x="52" y="28" width="477" height="9" fill="#925556"/><rect x="529" y="28" width="117" height="9" fill="#d9822b"/><rect x="646" y="28" width="72" height="9" fill="#a8532f"/><text x="56" y="548" text-anchor="middle" class="tk">3</text><text x="164" y="548" text-anchor="middle" class="tk">4.15</text><text x="272" y="548" text-anchor="middle" class="tk">4.65</text><text x="380" y="548" text-anchor="middle" class="tk">5.375</text><text x="488" y="548" text-anchor="middle" class="tk">6.875</text><text x="596" y="548" text-anchor="middle" class="tk">8.375</text><text x="704" y="548" text-anchor="middle" class="tk">9.875</text><text x="46" y="530" text-anchor="end" class="tk">0.36</text><text x="46" y="450" text-anchor="end" class="tk">0.47</text><text x="46" y="368" text-anchor="end" class="tk">0.56</text><text x="46" y="288" text-anchor="end" class="tk">0.7</text><text x="46" y="206" text-anchor="end" class="tk">0.88</text><text x="46" y="126" text-anchor="end" class="tk">1.06</text><text x="46" y="44" text-anchor="end" class="tk">1.24</text><text x="385" y="570" text-anchor="middle" class="ax">on-axis field B [T]</text><text transform="translate(14 280) rotate(-90)" text-anchor="middle" class="ax">density scale × Point A</text><text x="52" y="16" class="ttl">Study 2 — arm-rebco: verdicts over (B, density); 4,144-point grid, of this package</text><circle cx="498" cy="96" r="4.2" fill="none" stroke="#111" stroke-width="1.8"/><circle cx="498" cy="96" r="1.6" fill="#111"/><text x="506" y="88" text-anchor="start" class="mk">best feasible 204 $/MWh</text></svg>
+<figcaption class="small"><code>arm-rebco</code>: 1,002 of 4,144 feasible (24.2 % — of this
+engineered window). The feasible triangle sits between the beta fence (purple, rising with density),
+the 9.0 T ceiling (red), the wall-load lid (orange, density ≥ 1.14×), and the recirculation floor
+(blue). Best feasible: 204 $/MWh at (7.0 T, 1.12×).</figcaption></figure>
+<figure class="card" style="overflow-x:auto"><svg viewBox="0 0 728 578" role="img" style="max-width:728px;width:100%;height:auto"><style>.tk{font:10px sans-serif;fill:#555}.ax{font:11px sans-serif;fill:#333}.ttl{font:600 12px sans-serif;fill:#222}.mk{font:600 10px sans-serif;fill:#111}</style><rect x="52" y="523" width="72" height="9" fill="#534d8e"/><rect x="124" y="523" width="162" height="9" fill="#3f6fb5"/><rect x="286" y="523" width="432" height="9" fill="#694b68"/><rect x="52" y="514" width="90" height="9" fill="#534d8e"/><rect x="142" y="514" width="144" height="9" fill="#3f6fb5"/><rect x="286" y="514" width="432" height="9" fill="#694b68"/><rect x="52" y="505" width="117" height="9" fill="#534d8e"/><rect x="169" y="505" width="117" height="9" fill="#3f6fb5"/><rect x="286" y="505" width="432" height="9" fill="#694b68"/><rect x="52" y="496" width="126" height="9" fill="#534d8e"/><rect x="178" y="496" width="108" height="9" fill="#3f6fb5"/><rect x="286" y="496" width="432" height="9" fill="#694b68"/><rect x="52" y="487" width="135" height="9" fill="#534d8e"/><rect x="187" y="487" width="99" height="9" fill="#3f6fb5"/><rect x="286" y="487" width="432" height="9" fill="#694b68"/><rect x="52" y="478" width="144" height="9" fill="#534d8e"/><rect x="196" y="478" width="90" height="9" fill="#3f6fb5"/><rect x="286" y="478" width="432" height="9" fill="#694b68"/><rect x="52" y="469" width="153" height="9" fill="#534d8e"/><rect x="205" y="469" width="81" height="9" fill="#3f6fb5"/><rect x="286" y="469" width="432" height="9" fill="#694b68"/><rect x="52" y="460" width="171" height="9" fill="#534d8e"/><rect x="223" y="460" width="63" height="9" fill="#3f6fb5"/><rect x="286" y="460" width="432" height="9" fill="#694b68"/><rect x="52" y="451" width="180" height="9" fill="#534d8e"/><rect x="232" y="451" width="54" height="9" fill="#3f6fb5"/><rect x="286" y="451" width="432" height="9" fill="#694b68"/><rect x="52" y="442" width="189" height="9" fill="#534d8e"/><rect x="241" y="442" width="45" height="9" fill="#3f6fb5"/><rect x="286" y="442" width="432" height="9" fill="#694b68"/><rect x="52" y="433" width="198" height="9" fill="#534d8e"/><rect x="250" y="433" width="36" height="9" fill="#3f6fb5"/><rect x="286" y="433" width="432" height="9" fill="#694b68"/><rect x="52" y="424" width="207" height="9" fill="#534d8e"/><rect x="259" y="424" width="27" height="9" fill="#3f6fb5"/><rect x="286" y="424" width="432" height="9" fill="#694b68"/><rect x="52" y="415" width="225" height="9" fill="#534d8e"/><rect x="277" y="415" width="9" height="9" fill="#3f6fb5"/><rect x="286" y="415" width="432" height="9" fill="#694b68"/><rect x="52" y="406" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="406" width="9" height="9" fill="#893e63"/><rect x="295" y="406" width="423" height="9" fill="#c34a4a"/><rect x="52" y="397" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="397" width="18" height="9" fill="#893e63"/><rect x="304" y="397" width="414" height="9" fill="#c34a4a"/><rect x="52" y="388" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="388" width="18" height="9" fill="#893e63"/><rect x="304" y="388" width="414" height="9" fill="#c34a4a"/><rect x="52" y="379" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="379" width="27" height="9" fill="#893e63"/><rect x="313" y="379" width="405" height="9" fill="#c34a4a"/><rect x="52" y="370" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="370" width="45" height="9" fill="#893e63"/><rect x="331" y="370" width="387" height="9" fill="#c34a4a"/><rect x="52" y="361" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="361" width="54" height="9" fill="#893e63"/><rect x="340" y="361" width="378" height="9" fill="#c34a4a"/><rect x="52" y="352" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="352" width="63" height="9" fill="#893e63"/><rect x="349" y="352" width="369" height="9" fill="#c34a4a"/><rect x="52" y="343" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="343" width="72" height="9" fill="#893e63"/><rect x="358" y="343" width="360" height="9" fill="#c34a4a"/><rect x="52" y="334" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="334" width="72" height="9" fill="#893e63"/><rect x="358" y="334" width="360" height="9" fill="#c34a4a"/><rect x="52" y="325" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="325" width="72" height="9" fill="#893e63"/><rect x="358" y="325" width="360" height="9" fill="#c34a4a"/><rect x="52" y="316" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="316" width="81" height="9" fill="#893e63"/><rect x="367" y="316" width="351" height="9" fill="#c34a4a"/><rect x="52" y="307" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="307" width="90" height="9" fill="#893e63"/><rect x="376" y="307" width="342" height="9" fill="#c34a4a"/><rect x="52" y="298" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="298" width="90" height="9" fill="#893e63"/><rect x="376" y="298" width="342" height="9" fill="#c34a4a"/><rect x="52" y="289" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="289" width="99" height="9" fill="#893e63"/><rect x="385" y="289" width="333" height="9" fill="#c34a4a"/><rect x="52" y="280" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="280" width="108" height="9" fill="#893e63"/><rect x="394" y="280" width="324" height="9" fill="#c34a4a"/><rect x="52" y="271" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="271" width="108" height="9" fill="#893e63"/><rect x="394" y="271" width="324" height="9" fill="#c34a4a"/><rect x="52" y="262" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="262" width="117" height="9" fill="#893e63"/><rect x="403" y="262" width="315" height="9" fill="#c34a4a"/><rect x="52" y="253" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="253" width="117" height="9" fill="#893e63"/><rect x="403" y="253" width="315" height="9" fill="#c34a4a"/><rect x="52" y="244" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="244" width="126" height="9" fill="#893e63"/><rect x="412" y="244" width="306" height="9" fill="#c34a4a"/><rect x="52" y="235" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="235" width="135" height="9" fill="#893e63"/><rect x="421" y="235" width="297" height="9" fill="#c34a4a"/><rect x="52" y="226" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="226" width="135" height="9" fill="#893e63"/><rect x="421" y="226" width="297" height="9" fill="#c34a4a"/><rect x="52" y="217" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="217" width="144" height="9" fill="#893e63"/><rect x="430" y="217" width="288" height="9" fill="#c34a4a"/><rect x="52" y="208" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="208" width="144" height="9" fill="#893e63"/><rect x="430" y="208" width="288" height="9" fill="#c34a4a"/><rect x="52" y="199" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="199" width="153" height="9" fill="#893e63"/><rect x="439" y="199" width="279" height="9" fill="#c34a4a"/><rect x="52" y="190" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="190" width="162" height="9" fill="#893e63"/><rect x="448" y="190" width="270" height="9" fill="#c34a4a"/><rect x="52" y="181" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="181" width="162" height="9" fill="#893e63"/><rect x="448" y="181" width="270" height="9" fill="#c34a4a"/><rect x="52" y="172" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="172" width="171" height="9" fill="#893e63"/><rect x="457" y="172" width="261" height="9" fill="#c34a4a"/><rect x="52" y="163" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="163" width="171" height="9" fill="#893e63"/><rect x="457" y="163" width="261" height="9" fill="#c34a4a"/><rect x="52" y="154" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="154" width="180" height="9" fill="#893e63"/><rect x="466" y="154" width="252" height="9" fill="#c34a4a"/><rect x="52" y="145" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="145" width="180" height="9" fill="#893e63"/><rect x="466" y="145" width="252" height="9" fill="#c34a4a"/><rect x="52" y="136" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="136" width="189" height="9" fill="#893e63"/><rect x="475" y="136" width="243" height="9" fill="#c34a4a"/><rect x="52" y="127" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="127" width="189" height="9" fill="#893e63"/><rect x="475" y="127" width="243" height="9" fill="#c34a4a"/><rect x="52" y="118" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="118" width="198" height="9" fill="#893e63"/><rect x="484" y="118" width="234" height="9" fill="#c34a4a"/><rect x="52" y="109" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="109" width="198" height="9" fill="#893e63"/><rect x="484" y="109" width="234" height="9" fill="#c34a4a"/><rect x="52" y="100" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="100" width="207" height="9" fill="#893e63"/><rect x="493" y="100" width="225" height="9" fill="#c34a4a"/><rect x="52" y="91" width="234" height="9" fill="#8e4fa8"/><rect x="286" y="91" width="207" height="9" fill="#893e63"/><rect x="493" y="91" width="225" height="9" fill="#c34a4a"/><rect x="52" y="82" width="234" height="9" fill="#925556"/><rect x="286" y="82" width="216" height="9" fill="#964d4d"/><rect x="502" y="82" width="216" height="9" fill="#a8532f"/><rect x="52" y="73" width="234" height="9" fill="#925556"/><rect x="286" y="73" width="216" height="9" fill="#964d4d"/><rect x="502" y="73" width="216" height="9" fill="#a8532f"/><rect x="52" y="64" width="234" height="9" fill="#925556"/><rect x="286" y="64" width="225" height="9" fill="#964d4d"/><rect x="511" y="64" width="207" height="9" fill="#a8532f"/><rect x="52" y="55" width="234" height="9" fill="#925556"/><rect x="286" y="55" width="225" height="9" fill="#964d4d"/><rect x="511" y="55" width="207" height="9" fill="#a8532f"/><rect x="52" y="46" width="234" height="9" fill="#925556"/><rect x="286" y="46" width="234" height="9" fill="#964d4d"/><rect x="520" y="46" width="198" height="9" fill="#a8532f"/><rect x="52" y="37" width="234" height="9" fill="#925556"/><rect x="286" y="37" width="234" height="9" fill="#964d4d"/><rect x="520" y="37" width="198" height="9" fill="#a8532f"/><rect x="52" y="28" width="234" height="9" fill="#925556"/><rect x="286" y="28" width="243" height="9" fill="#964d4d"/><rect x="529" y="28" width="189" height="9" fill="#a8532f"/><text x="56" y="548" text-anchor="middle" class="tk">3</text><text x="164" y="548" text-anchor="middle" class="tk">4.15</text><text x="272" y="548" text-anchor="middle" class="tk">4.65</text><text x="380" y="548" text-anchor="middle" class="tk">5.375</text><text x="488" y="548" text-anchor="middle" class="tk">6.875</text><text x="596" y="548" text-anchor="middle" class="tk">8.375</text><text x="704" y="548" text-anchor="middle" class="tk">9.875</text><text x="46" y="530" text-anchor="end" class="tk">0.36</text><text x="46" y="450" text-anchor="end" class="tk">0.47</text><text x="46" y="368" text-anchor="end" class="tk">0.56</text><text x="46" y="288" text-anchor="end" class="tk">0.7</text><text x="46" y="206" text-anchor="end" class="tk">0.88</text><text x="46" y="126" text-anchor="end" class="tk">1.06</text><text x="46" y="44" text-anchor="end" class="tk">1.24</text><text x="385" y="570" text-anchor="middle" class="ax">on-axis field B [T]</text><text transform="translate(14 280) rotate(-90)" text-anchor="middle" class="ax">density scale × Point A</text><text x="52" y="16" class="ttl">Study 2 — arm-nb3sn: verdicts over (B, density); 4,144-point grid, of this package</text></svg>
+<figcaption class="small"><code>arm-nb3sn</code>: 0 of 4,144 feasible. The red ceiling now falls at
+4.69 T; below it, beta (purple) and recirculation (blue) leave no room — the two fences cross inside
+one grid hundredth. No green anywhere.</figcaption></figure>
+</div>
+<p class="small">Legend for all three maps: <span class="lg"><span class="sw" style="background:#2f7d4f"></span>feasible (all six checks satisfied)</span><span class="lg"><span class="sw" style="background:#d9822b"></span>wall_load_ok violated</span><span class="lg"><span class="sw" style="background:#3f6fb5"></span>recirc_ok violated</span><span class="lg"><span class="sw" style="background:#8e4fa8"></span>beta_ok violated</span><span class="lg"><span class="sw" style="background:#c34a4a"></span>peak_field_ok violated</span><span class="lg"><span class="sw" style="background:#893e63"></span>beta + peak_field</span><span class="lg"><span class="sw" style="background:#964d4d"></span>beta + peak_field + wall_load</span><span class="lg"><span class="sw" style="background:#534d8e"></span>beta + recirc</span><span class="lg"><span class="sw" style="background:#925556"></span>beta + wall_load</span><span class="lg"><span class="sw" style="background:#694b68"></span>peak_field + recirc</span><span class="lg"><span class="sw" style="background:#a8532f"></span>peak_field + wall_load</span><span class="lg"><span class="sw" style="background:#d7d2c8"></span>no grid point (R ≤ a + 2.25 m: the torus would self-intersect)</span></p>
+<p class="small">Text equivalent: study 1's map is green through the middle with an orange band across
+the top (a ≥ 1.70 m) and a small blue wedge at bottom-left (small R, small a). Study 2's REBCO map has a
+green triangle in the upper middle (B 4.7–9.0 T, density 0.51–1.12×); the Nb3Sn map is the same picture
+with everything right of 4.69 T turned red and no green at all.</p>
+
+<div class="honest">
+<h3>What these numbers are not</h3>
+<ul>
+<li><strong>Not plant estimates.</strong> Every LCOE is "of this package": fixed-profile 0-D physics, no confinement closure, engineered sweep windows chosen to contain the fences the pre-run scan found. A result at a window edge is a result about the window.</li>
+<li><strong>Study 1:</strong> the five power-balance channels (<code>p_net</code>, <code>rec_frac</code>, …) are not recordable in the evidence store (finding #5) — the record's recirculation numbers at corners come from the labelled oracle scan. <code>p_pump</code> is held ~100× below sourced circulator figures; it biases no arm, but understates recirculation everywhere.</li>
+<li><strong>Study 2:</strong> Nb3Sn's cold volume (390 m³) is held — exact at its ceiling, an overstatement below it; the closure verdict was re-checked across every sourced value of the two held cryo assumptions in a certification addendum and the arm stays empty at grid resolution, with the margin narrowing to 0.004 of recirculating fraction. Below ~0.35× density the package cannot evaluate at all (√p_net goes complex), so the <code>net_positive</code> fence is never located.</li>
+<li><strong>Both:</strong> the records carry dated addenda correcting their own overstatements (a too-tight flatness claim, a wrong count, an overreaching sampling sentence). The corrected numbers are the ones on this page. Verification bounds transcription error, not model error — model accuracy is unquantified.</li>
+</ul>
+</div>
+
+<h2 id="s5">5 · Every miss is filed work: 22 discovery-log rows, each with a home</h2>
+
+<p>Two studies, 22 filed findings, zero silent fixes. The per-package discovery log
+(<code>studies/DISCOVERY_LOG.md</code>) is burn-in evidence, and the count is owned: roughly half
+the rows are the pipeline breaking in new places, and five addenda correct the records themselves —
+that correction machinery working is the point. Every row carries a disposition and a home;
+"unrouted" is a stated state, not a blank.</p>
+
+<table>
+<tr><th>Kind</th><th>Finding (one line)</th><th>Home</th></tr>
+<tr><td>model</td><td>Nothing couples capacity factor to core lifetime or replacement outage — the model accepts any availability at any wall load (#1, study 1)</td><td>unrouted → candidate modeling item</td></tr>
+<tr><td>model</td><td>Discount rate is a free multiplier — no coupling to construction duration or financing (#2, study 1)</td><td>unrouted</td></tr>
+<tr><td>model</td><td>No confinement closure: B buys only magnet capital and beta margin, temperature is free (#4, study 2)</td><td>policy § 4 R3 → modeling item</td></tr>
+<tr><td>model</td><td>No coil-thickness / radial-build / stress coupling; B_max enters only as a verdict bound (#3, study 2)</td><td>policy § 4 R1 → modeling item</td></tr>
+<tr><td>model</td><td>Winding-pack cold volume is a held input; it should follow the ampere-turns the model already computes (#2, study 2)</td><td>MFE cost modeling epic</td></tr>
+<tr><td>model</td><td>√p_net in the CAS10 land term makes <code>net_positive</code> unreachable (#1, study 2)</td><td>modeling item, <code>mfe_account_costs.sysml</code></td></tr>
+<tr><td>process</td><td>Store evidence layer records single-field floats only — power-balance operands invisible per point (#5, study 1)</td><td>upstream evidence-layer question</td></tr>
+<tr><td>process</td><td>+ 15 more: oracle seam growth, stale prose surviving commit, store placement, gate re-runs after declaration changes, knife-edge margin practice, …</td><td>runbook steps, tools, policy, template — each named</td></tr>
+</table>
+
+<p><strong>Closing the loop on § 1:</strong> the bet was that one structured model could carry
+general techno-economic questions. Two arbitrary A/B questions later: the structure held — three-line
+prompts became verified, auditable, cold-readable answers — and every place the model could not push
+back is now named, graded, and routed as work. What is <em>not</em> demonstrated, plainly:
+real-plant claims, sourced sweep windows, a component-level swap, a confinement-consistent optimum.
+The quality lives in the runbook, policy, and tools — not in prompt phrasing
+<span class="tag owner">OWNER frame</span>.</p>
+
+<details><summary>Production notes for the full explainer page (owner-bound form rules)</summary>
+<ul>
+<li>Every section title states its content, never its function <span class="tag owner">OWNER</span>.</li>
+<li>Always-visible nav with position indicator; collapsibles for expected questions; no text blocks.</li>
+<li>Every number cites its committed artifact; LCOE at 3 significant figures; every number "of this package".</li>
+<li>Wording bounds: "hand-written mirror … sharing no code", never "independent implementation"; "10 channels at stratified sample points", never "every channel"; "disciplined, auditable process", never "production".</li>
+<li>Self-contained static HTML (1cFE styling, ~1500-line target per file — this content likely needs a multi-page split); the deliverable lives in <code>exploration/stellarator_e2e/studies/</code>; a fresh-reader subagent test gates close.</li>
+</ul></details>
+
+<div class="footer" id="sources">
+<h3>Sources this page drew on</h3>
+<p class="small">
+<code>exploration/stellarator_e2e/studies/20260821-power-cycle-ab/</code> (record.md + 2 addenda, synthesis.md, axes.json, study.py, results/points.csv, verification_summary.json, preflight_results.json) ·
+<code>…/20260823-magnet-technology-ab/</code> (same set, + oracle_operands.csv description) ·
+<code>…/studies/ANNEX.md</code>, <code>DISCOVERY_LOG.md</code>, <code>study_route.py</code>, <code>manifest.json</code> ·
+<code>.claude/skills/run-study/SKILL.md</code>, <code>runbook.md</code>, <code>record-template.md</code> ·
+<code>exploration/stellarator_e2e/generated/</code> (contracts/model_contract.json, inputs/*.json, modules/mfe_lcoe_dcf/, handwritten/mfe_lcoe_dcf/, IMPLEMENTATION_BACKLOG.md) ·
+<code>exploration/stellarator_e2e/models/analyses/mfe_lcoe_dcf.sysml</code>, <code>mfe_plasma_scaling.sysml</code>, <code>mfe_viability.sysml</code> ·
+<code>models/library/foundation/costed_component.sysml</code>, <code>models/library/cost_structure/cas_hierarchy.sysml</code>, <code>mfe_power_core.sysml</code> ·
+<code>modeling_project/ARCHITECTURE.md</code> (AD-005–AD-007) ·
+<code>.project/active/run-study-e2e-explainer/spec.md</code> ·
+<code>.project/concepts/run-study-skill.md</code>.
+The three verdict maps were regenerated from the committed <code>results/points.csv</code> files.
+Quarantined material under <code>knowledge/holdout/</code> was not read.</p>
+</div>
+</main>
+</body>
+</html>
