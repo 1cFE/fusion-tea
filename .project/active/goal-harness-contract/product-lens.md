@@ -62,3 +62,37 @@ Disposition (orchestrator, 2026-08-25): the `[REFERENT]` **force stands** — it
 No finding reopened; no gate change.
 
 Gate: CLEAR
+
+---
+
+## design — 2026-08-25 — rev drafted Item 1 design (`.project/active/goal-harness-contract/design.md`)
+Epic: epic_goal_strategy_task_harness
+
+**Method note:** run inline by the design-review session, not by an independent subagent (session-level instruction bars spawning agents unasked). Point re-derived from sources, not inherited from the design's own § The Point.
+
+Point (re-derived): Item 1 puts the goal layer on disk so a non-builder can operate it — seven approved decisions filed in a repository-native ADR home with their recorded grades intact and the guidance one contradicts amended (`CLAUDE.md:73`); three lean files whose conventions let a fresh reader derive current goal state without mirroring native stage state; one lightweight fresh non-author checkpoint over a study reading and its proposed dispositions before any semantic follow-up executes, distinct in timing and responsibility from the post-round `RoundReview`; five textual homes agreed on joined `<study-id>#<n>` disposition rows with no touched row left `unrouted`; and one shared `GOAL_RUNBOOK.md` a human and an agent operate against identically. Under the lean-first rule: no hardening mechanism without a recorded observed failure of the prose-and-native-facts route. [source: `.project/concepts/goal-driven-model-development-harness.md` § Owner's Words + SC 5, 8; `.project/concepts/goal-strategy-task-harness-design.md` § First-Build Persistence, § Findings and Learning, § Review Pattern, § Recorded Rulings; `.project/concepts/goal-strategy-task-harness-design-review.md` § Resolutions C1/P2-M4/Goal evidence seam; `.project/backlog/epic_goal_strategy_task_harness.md` Item 1, grade: owner]
+
+Falsifier: Item 1 closes while an inherited contract rule silently has no home on disk; while a control-plane mechanism enters under a different word; or while the runbook satisfies every stated criterion and still cannot be operated by anyone but the builder.
+
+Findings:
+- `design-F1` [DO] The inherited rule "external mutation voids task authority" has no home in the design, and its natural mechanism is the barred one. `spec.md:74` `[INHERITED]`: "If a referenced native work item changes outside an active goal task, the task loses authority; re-ground or close the round before more work." Absent from I1–I12, from the trail entry kinds, from § Component Overview's runbook sections, and from § Non-Goals. Detecting that a cited artifact moved is a stale-authority check, which I6 and § Non-Goals bar. The spec attached an explicit surfacing duty to exactly this seam (`spec.md:42`); it went unexercised in both directions — not designed, not surfaced. — `.project/active/goal-harness-contract/spec.md:74` (`[INHERITED]` from `goal-strategy-task-harness-design.md` § Required Invariants); `spec.md:42` (surfacing duty) — disposition: BLOCK (expected: a prose home — a `RoundReview` check plus a runbook re-grounding paragraph plus an invariant — or a surfaced collision with the dependent choice parked)
+- `design-F2` [DO] Round-closure conditions are not designed. `spec.md:64` `[INHERITED]` carries the one-pin/one-study bound and six close triggers; the design states them only inside a table cell justifying the absence of a task cap (`design.md:176`). SC 2's bar is that current goal state is derivable from the files, and "is this round open?" is the first such question. — `.project/active/goal-harness-contract/spec.md:64`; epic SC 2 (owner-ratified) — disposition: BLOCK (expected: an invariant and a runbook section at the grain the design gives the trail entry headings)
+- `design-F3` [NOTE] The hardening boundary is claimed testable and is not tested. § Validation's SC 6 mapping names I6 "the testable form of the hardening boundary"; none of the four `test_goal_contract.py` tests asserts it. — `design.md:249` vs `:241-245` — disposition: NOTE (expected: add a phrase-level assertion or drop the testability claim)
+- `design-F4` [NOTE] `<path>@<commit-sha>` does not pin untracked evidence — gitignored study stores (`run-study-first-consumer/plan.md:244`) and R2-synced research binaries are the mutable-evidence class the owner's digest term most plausibly targets, and a commit sha pins nothing for them. Naming the gap discharges it; inventing a scheme would cross the boundary. — `design.md:83`; `CLAUDE.md` § Research Artifact Sync — disposition: NOTE
+
+Reverse check: CLEAR — every design element traces to a spec requirement, a settled Open Question, or a recorded and re-derived judgment call (D4's `adr.sh`, which names its own deviation and grounds it in `epic:111`'s "filing mechanism"). No orphan scope found.
+
+Notes (no finding):
+- The lean-first ruling is held. No envelope, ledger, idempotency, reconciliation, concurrency, or dispatch mechanism enters. `adr.sh` was checked directly against the boundary: it mints an id, copies a template, appends an index row, and touches no goal-loop authority question.
+- D8's digest re-derivation is sound for tracked artifacts. The function split — read by a person versus compared by a procedure — is real, and I6 states it as a rule rather than leaving it implicit. Correctly handled as `[INFERRED]`, challenged by re-derivation rather than by asking the owner.
+- The `[REFERENT]` bar survives at its stated force: § Research Findings analyzes the referent's actual prose shape rather than gesturing at it, and Implementation Notes binds the runbook to it.
+
+Smells:
+- *Two false claims about the repo's own conventions, one of them load-bearing on a decision.* D7 rejects a slash command because "every file in `.claude/commands/` is an agentic-mbse symlink" — `.claude/commands/manage-concept.md` is a real fusion-tea file. `design.md:42` says "every other entry in `.claude/skills/` is a symlink" — three are local directories. The conclusions survive; the recorded reasons are what future agents re-derive against.
+- *The joined-row guarantee is a docstring.* The spec asked that the set-comparison accident become a stated guarantee; the design's assertions do not fail if `in_log` is rewritten from a set to a list, which is the exact edit that kills append-as-update.
+
+Neither design-level structural smell fired: the writer-ownership change does move an invariant, but it says so across six edits, an ADR, and a test rather than silently; and the goal round writing into the study producer's log is the owner's own ruling with the producer's contract amended, not a consumer compensating around a producer guarantee.
+
+Gate: BLOCKED (`design-F1`, `design-F2`)
+
+Epic ledger state: `.project/backlog/epic_goal_strategy_task_harness.md` § Product-Lens reads CLEAR (2026-08-25, owner-dispositioned decomposition). This design-hop block does not change that gate.
