@@ -11,6 +11,7 @@ Repository, orchestration, and tooling decisions. Model-architecture decisions (
 | `005` | [One fresh round critic, plus one pre-execution disposition checkpoint](005-review-topology.md) | accepted | `[AGENT]` topology, owner may override; `[OWNER]` 2026-08-25 checkpoint placement | 2026-08-25 |
 | `006` | [Goal artifacts may cite `.project/` by path and digest](006-goal-evidence-seam.md) | accepted | `[OWNER]` 2026-08-23 | 2026-08-25 |
 | `007` | [The task is the authority unit; the finding stays the traceability unit](007-supersession.md) | accepted | `[AGENT]` half; `[OWNER]` 2026-08-23 half | 2026-08-25 |
+| `008` | [A non-Zotero source's durable identity is the raw-bytes SHA-256, as fetched](008-source-identity-raw-bytes-sha256.md) | accepted | `[AGENT]` delegated by owner at Align 2026-08-25 | 2026-08-25 |
 
 ## Prior art, outside the register
 

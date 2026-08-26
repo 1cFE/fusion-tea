@@ -20,7 +20,6 @@ Requires .env with:
 """
 
 import argparse
-import shutil
 import subprocess
 import sys
 from datetime import date
@@ -28,12 +27,10 @@ from pathlib import Path
 
 from zotero_lib import (
     GROUP_ID,
-    MANIFEST_PATH,
     RAW_DIR,
     SOURCE_INDEX_PATH,
     SOURCES_DIR,
     add_tag,
-    append_manifest_entry,
     connect,
     download_pdf_from_info,
     load_api_key,
@@ -41,7 +38,6 @@ from zotero_lib import (
     manifest_keys,
     resolve_pdf_info,
     sha256_of,
-    slugify,
     tag_extracted,
 )
 
@@ -66,6 +62,22 @@ def parse_args():
         "--local-pdf",
         type=Path,
         help="Process a local PDF (bypass Zotero query)",
+    )
+    parser.add_argument(
+        "--title", type=str,
+        help="Title for a --local-pdf entry (default: derived from the filename)",
+    )
+    parser.add_argument(
+        "--use-for", type=str,
+        help="Required with --local-pdf: what the source establishes, and which RQ it serves",
+    )
+    parser.add_argument(
+        "--validation", type=str,
+        help="Required with --local-pdf: how a reader checks its numbers",
+    )
+    parser.add_argument(
+        "--caveat", type=str,
+        help="Required with --local-pdf: what limits its authority",
     )
     parser.add_argument(
         "--budget", type=float, default=DEFAULT_BUDGET,
@@ -207,16 +219,71 @@ def resolve_slug(slug: str, item_key: str | None) -> str:
     return f"{slug}_{n}"
 
 
+SEAM_ANCHOR = "\n## How Sources Are Used"
+
+
 def append_source_index_entry(
     title: str,
     slug: str,
-    item_key: str | None,
-    pdf_sha256: str,
     extract_sha256: str,
+    *,
+    profile: str = "zotero-batch",
+    item_key: str | None = None,
+    pdf_sha256: str | None = None,
+    source_kind: str | None = None,
+    source_url: str | None = None,
+    origin_path: str | None = None,
+    use_for: str | None = None,
+    validation: str | None = None,
+    caveat: str | None = None,
+    source_id: str | None = None,
+    raw_sha256: str | None = None,
+    raw_artifact_sha256: str | None = None,
 ) -> None:
-    """Append a new entry to SOURCE_INDEX.md before the 'How MBSE Commands Use This File' section."""
-    today = date.today().isoformat()
+    """Insert one SOURCE_INDEX.md block before the 'How Sources Are Used' section.
 
+    Two profiles, one writer (design D6). `zotero-batch` reproduces the block the
+    unattended Zotero ingest has always written, empty `Use for`/`Validation`
+    included, because a batch caller has no per-item prose to supply. `seam`
+    requires the prose fields and an origin, and refuses without them.
+
+    Raises RuntimeError if the anchor heading is absent — a missing anchor means
+    the index is not the file this writer was built for, and appending at the end
+    would put new sources after the explanatory section (design D5).
+    """
+    if profile == "seam":
+        lines = _seam_block_lines(
+            title=title, slug=slug, source_kind=source_kind, source_url=source_url,
+            origin_path=origin_path, use_for=use_for, validation=validation,
+            caveat=caveat, source_id=source_id, raw_sha256=raw_sha256,
+            raw_artifact_sha256=raw_artifact_sha256, extract_sha256=extract_sha256,
+        )
+    elif profile == "zotero-batch":
+        lines = _zotero_batch_block_lines(
+            title=title, slug=slug, item_key=item_key,
+            pdf_sha256=pdf_sha256, extract_sha256=extract_sha256,
+        )
+    else:
+        raise ValueError(f"unknown index-block profile: {profile!r}")
+
+    entry_block = "\n".join(lines)
+    content = SOURCE_INDEX_PATH.read_text()
+    if SEAM_ANCHOR not in content:
+        raise RuntimeError(
+            f"{SOURCE_INDEX_PATH}: anchor '## How Sources Are Used' not found; "
+            "refusing to write an index block into a file this writer does not recognise"
+        )
+    SOURCE_INDEX_PATH.write_text(
+        content.replace(SEAM_ANCHOR, f"\n{entry_block}\n{SEAM_ANCHOR}", 1)
+    )
+    print(f"  Appended SOURCE_INDEX.md entry: {title}")
+
+
+def _zotero_batch_block_lines(
+    *, title: str, slug: str, item_key: str | None,
+    pdf_sha256: str | None, extract_sha256: str,
+) -> list[str]:
+    """Today's block, unchanged. `Use for` and `Validation` stay empty by design."""
     lines = [
         f"### {title}",
         "- **Type**: documentation",
@@ -226,29 +293,59 @@ def append_source_index_entry(
         "",
         "#### Extended Metadata",
     ]
-
     if item_key is not None:
         lines.append(f"- **Zotero Key**: {GROUP_ID}:{item_key}")
-
     lines.extend([
         f"- **Raw SHA256**: {pdf_sha256}",
         f"- **Extracted Path**: knowledge/sources/{slug}/",
         f"- **Extract SHA256**: {extract_sha256}",
-        f"- **Date Added**: {today}",
+        f"- **Date Added**: {date.today().isoformat()}",
     ])
+    return lines
 
-    entry_block = "\n".join(lines)
 
-    content = SOURCE_INDEX_PATH.read_text()
-    marker = "\n## How MBSE Commands Use This File"
-    if marker in content:
-        content = content.replace(marker, f"\n{entry_block}\n{marker}")
-    else:
-        print("  WARNING: '## How MBSE Commands Use This File' not found, appending to end")
-        content = content.rstrip() + f"\n\n{entry_block}\n"
+def _seam_block_lines(
+    *, title: str, slug: str, source_kind: str | None, source_url: str | None,
+    origin_path: str | None, use_for: str | None, validation: str | None,
+    caveat: str | None, source_id: str | None, raw_sha256: str | None,
+    raw_artifact_sha256: str | None, extract_sha256: str,
+) -> list[str]:
+    """The seam block: every field required by spec R-B6, or a refusal."""
+    blank = [
+        name for name, value in
+        (("use_for", use_for), ("validation", validation), ("caveat", caveat))
+        if not (value or "").strip()
+    ]
+    if blank:
+        raise ValueError(
+            "seam-profile index block requires non-empty "
+            + ", ".join(blank)
+            + " (spec R-B6)"
+        )
+    if not (source_url or "").strip() and not (origin_path or "").strip():
+        raise ValueError("seam-profile index block requires source_url or origin_path")
 
-    SOURCE_INDEX_PATH.write_text(content)
-    print(f"  Appended SOURCE_INDEX.md entry: {title}")
+    origin_line = (
+        f"- **Source URL**: {source_url}" if (source_url or "").strip()
+        else f"- **Origin Path**: {origin_path}"
+    )
+    return [
+        f"### {title}",
+        f"- **Type**: {source_kind or 'documentation'}",
+        f"- **Location**: knowledge/sources/{slug}/",
+        f"- **Use for**: {use_for}",
+        f"- **Validation**: {validation}",
+        f"- **Caveat**: {caveat}",
+        "",
+        "#### Extended Metadata",
+        origin_line,
+        f"- **Source ID**: {source_id}",
+        f"- **Raw SHA256**: {raw_sha256}",
+        f"- **Raw Artifact SHA256**: {raw_artifact_sha256}",
+        f"- **Extracted Path**: knowledge/sources/{slug}/",
+        f"- **Extract SHA256**: {extract_sha256}",
+        f"- **Date Added**: {date.today().isoformat()}",
+    ]
 
 
 def fetch_all_processable_items(zot) -> list[dict]:
@@ -343,7 +440,7 @@ def re_extract_sources(zot, args) -> None:
 
         pdf_info = resolve_pdf_info(zot, item)
         if pdf_info is None:
-            print(f"  No PDF attachment — skipping")
+            print("  No PDF attachment — skipping")
             stats["skipped"] += 1
             continue
 
@@ -361,7 +458,7 @@ def re_extract_sources(zot, args) -> None:
                 budget=args.budget, model=args.model, force=True,
             )
         except subprocess.TimeoutExpired:
-            print(f"  Extraction timed out")
+            print("  Extraction timed out")
             stats["failed"] += 1
             continue
         if not ok:
@@ -383,61 +480,56 @@ def re_extract_sources(zot, args) -> None:
 
 
 def process_zotero_item(zot, item: dict, args) -> str:
-    """Process a single Zotero item through the full pipeline.
-    Returns 'extracted', 'skipped', or 'failed'."""
+    """Download one Zotero item's PDF and register it through the one write door.
+
+    Returns 'extracted', 'skipped', or 'failed'. A duplicate counts as 'skipped':
+    the item is already in the registry, which is what the batch queue means by
+    nothing-to-do.
+    """
+    # Imported here because `source_registry` imports this module's index writer;
+    # a module-level import either way would be circular.
+    from source_registry import RegistrationError, SourceMetadata, ZoteroSource, register
+
     item_key = item["key"]
 
-    # Step 1-2: Resolve PDF info (handles both parent items and standalone attachments)
     pdf_info = resolve_pdf_info(zot, item)
     if pdf_info is None:
         print(f"\n--- {item['data'].get('title', '(no title)')} [{item_key}] ---")
-        print(f"  No PDF attachment — skipping")
+        print("  No PDF attachment — skipping")
         return "skipped"
 
     title = pdf_info.title
     print(f"\n--- {title} [{item_key}] ---")
 
-    # Step 3: Download PDF
     try:
-        result = download_pdf_from_info(zot, pdf_info, args.output_dir)
+        download = download_pdf_from_info(zot, pdf_info, args.output_dir)
     except RuntimeError as e:
         print(f"  Download failed: {e}")
         return "failed"
 
-    # Step 4-5: Generate and resolve slug
-    slug = slugify(title)
-    slug = resolve_slug(slug, item_key)
-    output_dir = SOURCES_DIR / slug
-
-    # Step 6: Run extraction
     try:
-        ok = run_extraction(result.path, output_dir, budget=args.budget, model=args.model)
-    except subprocess.TimeoutExpired:
-        print(f"  Extraction timed out")
-        return "failed"
-    if not ok:
-        return "failed"
-
-    # Step 7: Compute SHA256 of output.md
-    extract_doc = output_dir / EXTRACT_OUTPUT
-    if not extract_doc.exists():
-        print(f"  WARNING: {EXTRACT_OUTPUT} not found at {extract_doc}")
-        extract_sha = "(not found)"
-    else:
-        extract_sha = sha256_of(extract_doc)
-
-    # Step 8: Append SOURCE_INDEX.md entry
-    try:
-        append_source_index_entry(title, slug, item_key, result.sha256, extract_sha)
-    except Exception as e:
-        print(f"  Failed to update SOURCE_INDEX.md: {e}")
+        result = register(
+            ZoteroSource(path=download.path, item_key=item_key),
+            SourceMetadata(title=title),
+            budget=args.budget,
+        )
+    except (RegistrationError, subprocess.TimeoutExpired) as e:
+        print(f"  Registration failed: {e}")
         return "failed"
 
-    # Step 9: Append to manifest (immediately, crash-safe)
-    append_manifest_entry(item_key, slug, title)
-    print(f"  Manifest updated: {item_key} → {slug}")
+    return _report_registration(result)
 
-    return "extracted"
+
+def _report_registration(result) -> str:
+    """Turn a registration outcome into the batch's own three-way tally."""
+    if result.outcome == "registered":
+        print(f"  Registered: {result.location} (source_id {result.source_id[:16]}...)")
+        return "extracted"
+    if result.outcome == "duplicate":
+        print(f"  Already registered as {result.existing_slug} — skipping")
+        return "skipped"
+    print(f"  {result.outcome}: {result.reason}")
+    return "failed"
 
 
 def print_dry_run(zot, items: list, total_items: int, known_count: int) -> None:
@@ -457,7 +549,7 @@ def print_dry_run(zot, items: list, total_items: int, known_count: int) -> None:
         else:
             title = item["data"].get("title", "(no title)")
             print(f"  [{item_key}] {title}")
-            print(f"           (no PDF — will skip)")
+            print("           (no PDF — will skip)")
 
 
 def print_summary(stats: dict) -> None:
@@ -472,55 +564,57 @@ def print_summary(stats: dict) -> None:
 
 
 def process_local_pdf(args) -> None:
-    """Process a local PDF without Zotero."""
+    """Register one local PDF through the one write door.
+
+    Since this item, the path writes a manifest row (it wrote none before) and
+    uses the seam index-block profile, so it requires the three metadata flags
+    (design D6). That is a deliberate breaking change to this operator path: an
+    entry that cannot say what it is for should not be written.
+    """
+    from source_registry import LocalPdfSource, RegistrationError, SourceMetadata, register
+
     pdf_path = args.local_pdf
     if not pdf_path.exists():
         print(f"ERROR: File not found: {pdf_path}")
         sys.exit(1)
 
-    title = " ".join(pdf_path.stem.replace("_", " ").replace("-", " ").split()).title()
-    slug = slugify(pdf_path.stem)
-    slug = resolve_slug(slug, item_key=None)
-    output_dir = SOURCES_DIR / slug
+    missing = [
+        flag for flag, value in (
+            ("--use-for", args.use_for),
+            ("--validation", args.validation),
+            ("--caveat", args.caveat),
+        )
+        if not (value or "").strip()
+    ]
+    if missing:
+        print(f"ERROR: --local-pdf requires {', '.join(missing)}. "
+              "A source index entry must say what the source is for, how to check "
+              "its numbers, and what limits its authority.")
+        sys.exit(1)
 
+    title = args.title or " ".join(
+        pdf_path.stem.replace("_", " ").replace("-", " ").split()
+    ).title()
     print(f"\n--- {title} (local PDF) ---")
 
-    # Copy to raw dir if not already there
-    RAW_DIR.mkdir(parents=True, exist_ok=True)
-    raw_copy = RAW_DIR / pdf_path.name
-    if pdf_path.resolve() == raw_copy.resolve():
-        print(f"  Source is already in {RAW_DIR}: {pdf_path.name}")
-    elif not raw_copy.exists():
-        shutil.copy2(pdf_path, raw_copy)
-        print(f"  Copied to {raw_copy}")
-    else:
-        print(f"  Already in {RAW_DIR}: {pdf_path.name}")
-
-    pdf_sha256 = sha256_of(raw_copy)
-
-    # Run extraction
     try:
-        ok = run_extraction(raw_copy, output_dir, budget=args.budget, model=args.model)
-    except subprocess.TimeoutExpired:
-        print(f"  Extraction timed out")
-        print(f"\nSummary: 1 found, 0 extracted, 0 skipped (no PDF), 1 failed")
+        result = register(
+            LocalPdfSource(path=pdf_path),
+            SourceMetadata(title=title, use_for=args.use_for,
+                           validation=args.validation, caveat=args.caveat),
+            budget=args.budget,
+        )
+    except (RegistrationError, subprocess.TimeoutExpired) as e:
+        print(f"  Registration failed: {e}")
+        print("\nSummary: 1 found, 0 extracted, 0 skipped (no PDF), 1 failed")
         sys.exit(1)
-    if not ok:
-        print(f"\nSummary: 1 found, 0 extracted, 0 skipped (no PDF), 1 failed")
+
+    tally = _report_registration(result)
+    counts = {"extracted": (1, 0, 0), "skipped": (0, 1, 0), "failed": (0, 0, 1)}[tally]
+    print(f"\nSummary: 1 found, {counts[0]} extracted, "
+          f"{counts[1]} skipped (no PDF), {counts[2]} failed")
+    if tally == "failed":
         sys.exit(1)
-
-    # Compute extract SHA256
-    extract_doc = output_dir / EXTRACT_OUTPUT
-    if not extract_doc.exists():
-        print(f"  WARNING: {EXTRACT_OUTPUT} not found at {extract_doc}")
-        extract_sha = "(not found)"
-    else:
-        extract_sha = sha256_of(extract_doc)
-
-    # Append SOURCE_INDEX.md entry (no Zotero key)
-    append_source_index_entry(title, slug, item_key=None, pdf_sha256=pdf_sha256, extract_sha256=extract_sha)
-
-    print(f"\nSummary: 1 found, 1 extracted, 0 skipped (no PDF), 0 failed")
 
 
 def main():

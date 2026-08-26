@@ -49,5 +49,5 @@ warn_return_any = true
 warn_unused_configs = true
 
 [tool.pytest.ini_options]
-pythonpath = ["."]
-markers = []
+pythonpath = [".", "scripts"]
+markers = ["slow: long-running integration tests"]

@@ -1,0 +1,11 @@
+{
+  "generated": "2026-08-25",
+  "note": "pre-seam drift; verify reports these as class=legacy, never repairs",
+  "orphan_source_dirs": [
+    "knowledge/sources/eu_demo_rw_tf_coil_conductor_dematte_bruzzone",
+    "knowledge/sources/iter_cryoplant_iter_org"
+  ],
+  "loose_files": [
+    "knowledge/sources/COST_MODELING.md"
+  ]
+}

@@ -17,6 +17,7 @@ wheels/
 # Tool-owned files (managed by agentic-mbse init --dev)
 .claude/commands/*
 !.claude/commands/manage-concept.md
+!.claude/commands/research-acquire.md
 .claude/agents/
 .claude/skills/*
 !.claude/skills/browser-inspect/
@@ -32,6 +33,8 @@ work/backlog/epic_template.md
 
 # Project-specific
 knowledge/LOCAL_SOURCES.yaml
+knowledge/.staging/
+knowledge/.registry.lock
 
 # Explorer build artifacts
 exploration/concept_explorer/dist/
