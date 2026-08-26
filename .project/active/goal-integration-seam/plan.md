@@ -837,6 +837,53 @@ means that until the sequence exists, a fully valid request exits **2** with
 `seam-internal-error` — the seam saying it is incomplete rather than minting an empty
 candidate. No test encodes that interim state.
 ### Phase 4 Completion
+
+**Not started — stopped here and reported. This is an environment premise problem, not a
+plan defect, and it blocks Phases 4 through 8 as written.**
+
+**The finding, measured.** Gate 1a's producer cannot pass on this machine.
+`tests/test_dependency_provenance.py::test_installed_artifacts_are_the_recorded_wheels_and_public_apis`
+compares each installed wheel's sha256 against `WHEEL_HASHES` (`:88-89`). The recorded wheel
+artifacts do not exist here. The only wheels present anywhere on the machine are uv's own
+git-built ones under `~/.cache/uv/sdists-v9/git/`, and their hashes differ:
+
+| distribution | recorded in the producer | present on this machine |
+|---|---|---|
+| agentic-mbse | `7505028f2fc7…54f7` | `067f749ea90e…b7d4` |
+| sysml-codegen | `cca661ce1ad5…dbc5` | `b5cbe6713561…5a65` |
+| 1costingfe | `970ed533d8fa…fcfd6` | `32be90e7987c…cbc4` |
+
+Run with all four `STOP_PARSER_*` variables exported and the pinned modules resolving under
+`STOP_PARSER_WHEEL_TARGET`: **1 failed, 2 passed**, on the hash assertion. The repo's own
+records call this the sealed-runner environment's business
+(`.project/completed/20260821_stellarator-model-migration/plan.md:598`).
+
+**Why it blocks more than gate 1a.** The stop rule is the contract: no gate runs after an
+earlier one refuses. Gate 1a is first, so every invocation in this environment stops there.
+That makes unreachable, as written:
+
+- Phase 4's gate-1b fixture (`test_wrong_expected_teax_revision_refuses_gate_1b`)
+- Phase 5's gate-2 and gate-4 refusal fixtures
+- Phase 6's gate-7 refusal fixture and the baseline-store resolution check
+- Phase 7's `CANDIDATE` (SC1) and the gate-9 lineage refusal
+- Phase 8's re-run and stock-route tests (SC3, SC4)
+
+What *is* reachable and unaffected: gate 1a's own refusal fixture — the standing state is
+already a real `<failure>` from a real producer, so the junit-to-status mapping the coverage
+boundary rests on can still be proven without doctoring anything.
+
+**What this is not.** It is not a reason to relax gate 1a, to mock a producer (R-G4 forbids
+it in letter and spirit), or to drop gate 1a from the sequence (R-B1 is `[HARD]`: each gate
+is invoked). The seam is behaving correctly: in an environment whose toolchain artifacts are
+not the recorded ones, the honest return *is* `BLOCKER / pinned-packages / toolchain-drift`.
+
+**The decision the plan cannot make.** Either (a) the recorded wheel artifacts are restored
+to this machine and the four variables point at them, after which Phases 4–8 run as written;
+or (b) the success-path and past-gate-1a tests take a stated environment precondition and
+skip with the resolved reason when it is unmet, on the pattern `tests/study/conftest.py:239-270`
+already uses for teax, with an escalation variable so a CI run fails rather than reports
+green. (b) changes what SC1/SC3/SC4 are proven by and needs recording in the SC map, so it
+is surfaced rather than taken.
 ### Phase 5 Completion
 ### Phase 6 Completion
 ### Phase 7 Completion
