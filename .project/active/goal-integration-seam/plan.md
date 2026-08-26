@@ -559,18 +559,18 @@ def test_return_rebuilds_the_stock_commands(integration_workspace):
 
 **See `design.md` for:** the re-run invariant and what is excluded from it → `design.md#required-invariants`, R-D1/A8; why SC4 needs no hand-off step → D11.
 
-- [ ] `tests/study/test_integrate_rerun.py` (NEW)
-- [ ] `tests/study/test_integrate_stock_route.py` (NEW) — command lines rebuilt from `integration_return.json` fields only, no seam import
-- [ ] `scripts/integrate.py` — only if the tests find a leak; no new machinery is planned here
+- [x] `tests/study/test_integrate_rerun.py` (NEW)
+- [x] `tests/study/test_integrate_stock_route.py` (NEW) — command lines rebuilt from `integration_return.json` fields only, no seam import
+- [x] `scripts/integrate.py` — only if the tests find a leak; no new machinery is planned here
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study/test_integrate_rerun.py tests/study/test_integrate_stock_route.py -q` → pass
-- [ ] `uv run python -m pytest tests/study -q` → green
+- [x] `uv run python -m pytest tests/study/test_integrate_rerun.py tests/study/test_integrate_stock_route.py -q` → pass
+- [x] `uv run python -m pytest tests/study -q` → green
 
 **Manual:**
-- [ ] `uv run grep -n "integrate" tests/study/test_integrate_stock_route.py` → only the run helper, no seam-internal import
+- [x] `uv run grep -n "integrate" tests/study/test_integrate_stock_route.py` → only the run helper, no seam-internal import
 
 **What We Know Works After This Phase:** SC3 and SC4. The seam is safe to call twice, and a study can consume its candidate with no seam-specific accommodation.
 
@@ -1036,6 +1036,51 @@ the baseline execution dominate. `test_integrate_success.py` re-runs it once per
 "whether the fixtures share one workspace" open for Phase 10 on exactly this measurement; it is
 now taken, and the decision belongs there rather than here.
 ### Phase 8 Completion
+
+**Completed:** 2026-08-26. **SC3 and SC4 are met, and the seam needed no change to meet them.**
+
+**Changes made**
+- `tests/study/test_integrate_rerun.py` (NEW) — 2 tests.
+- `tests/study/test_integrate_stock_route.py` (NEW) — 2 tests.
+- `scripts/integrate.py` — **nothing**. The plan allowed for a change here only if the tests
+  found a leak from the seam's own output into the identity. They found none.
+
+**Test counts.** `tests/study` 327 → **331 passed, 1 skipped** (5 m 23 s for the module).
+
+**SC3.** Two invocations with different `--out-dir` values return the same `package`,
+`manifest`, `pin` and both fingerprints. The three candidate fields that are paths under
+`--out-dir` are asserted to **differ**, which is the honest form of A8's exclusion: stating
+what is not claimed, and proving it is not accidentally equal.
+
+**Which branch of R-D4 fires, pinned.** A re-run regenerates again, in place, on a tree the
+first run already regenerated. The contract holds either way — the prior identity or a
+blocker, never a second conflicting identity — but a seam that always refused on its second
+call would be useless to a caller that retries, so a second test pins that the second run is a
+`CANDIDATE`.
+
+**SC4.** `test_integrate_stock_route.py` imports nothing from `scripts.integrate`, and a test
+in it asserts that by reading its own import lines. The two stock command lines are rebuilt
+from `integration_return.json` and the documents it cites, and both pass — preflight exit 0,
+verify `outcome: pass`.
+
+**One thing a consumer derives rather than reads, recorded.** The return names the baseline
+result but not the store, because `execute_baseline` does not return a store path — it records
+a `store_id` inside the baseline result, repo-relative or bare. A study rebuilding the verify
+command resolves it in two lines from the document the candidate already cites. That is
+written out in the test rather than hidden in a helper, and it belongs in the guide.
+
+**The study environment is rebuilt by hand in that test, on purpose.** Reusing the seam's own
+`seam_env()` would prove the seam agrees with itself. Building `PYTHONPATH` from
+`STOP_PARSER_TEAX_ROOT` the way the guide tells an operator to is what proves the guide is
+sufficient.
+
+**One operational caveat, measured.** The workspace is a single fixed path, so two concurrent
+`tests/study` sessions collide — a run that finds `.integration_workspace` already present
+fails immediately with the path in the message rather than reusing a tree another session is
+doctoring. That fired once during this phase when two background sessions overlapped, and the
+guard is what made it legible instead of a mystery gate refusal. Recorded as a property, not a
+defect: the alternative is a per-session directory, which would cost the `repo_root()`-relative
+resolution the whole fixture exists to get.
 ### Phase 9 Completion
 ### Phase 10 Completion
 
