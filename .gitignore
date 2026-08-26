@@ -31,6 +31,8 @@ work/backlog/epic_template.md
 
 # Project-specific
 knowledge/LOCAL_SOURCES.yaml
+knowledge/.staging/
+knowledge/.registry.lock
 
 # Explorer build artifacts
 exploration/concept_explorer/dist/

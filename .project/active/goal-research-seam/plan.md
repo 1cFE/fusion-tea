@@ -1,6 +1,6 @@
 # Implementation Plan: Native Research Acquisition and Registration Seam
 
-**Status:** Draft
+**Status:** In Progress
 **Created:** 2026-08-25
 **Last Updated:** 2026-08-25
 **Branch:** `feat/goal-research-seam` (worktree `../fusion-tea-goal-research-seam`)
@@ -118,22 +118,22 @@ def test_loaders_tolerate_rows_without_zotero_key(knowledge_tree):
 
 **See design.md for:** loader strategy → `design.md#implementation-notes`; component boundaries → `design.md#component-overview`.
 
-- [ ] `tests/research/__init__.py`, `tests/research/conftest.py` (NEW) — `knowledge_tree` fixture: temp registry tree with a minimal `SOURCE_INDEX.md` carrying the **real** headings (`# Source Index`, `## Primary Sources`, `## How Sources Are Used`), empty `MANIFEST.jsonl`, empty `knowledge/raw/`, empty baseline file
-- [ ] `tests/research/test_zotero_path_contract.py` (NEW) — stencil above, written and green **before** the next bullet
-- [ ] `scripts/zotero_lib.py:25-50` — `load_manifest` and `manifest_keys` skip rows lacking `zotero_key` instead of raising; semantics otherwise unchanged
-- [ ] `scripts/zotero_lib.py` — add `load_manifest_rows()` returning all rows as a list (do **not** re-key `load_manifest`), and `truncate_manifest(byte_len)` for the rollback ladder
-- [ ] `scripts/zotero_lib.py` — add an injectable paths object defaulting to the existing `SOURCES_DIR` / `SOURCE_INDEX_PATH` / `MANIFEST_PATH` constants; **do not change the constants**
-- [ ] `.gitignore` — add `knowledge/.staging/` (nothing covers it today)
-- [ ] `pyproject.toml:53` — `markers = ["slow: long-running integration tests"]`
+- [x] `tests/research/__init__.py`, `tests/research/conftest.py` (NEW) — `knowledge_tree` fixture: temp registry tree with a minimal `SOURCE_INDEX.md` carrying the **real** headings (`# Source Index`, `## Primary Sources`, `## How Sources Are Used`), empty `MANIFEST.jsonl`, empty `knowledge/raw/`, empty baseline file
+- [x] `tests/research/test_zotero_path_contract.py` (NEW) — stencil above, written and green **before** the next bullet
+- [x] `scripts/zotero_lib.py:25-50` — `load_manifest` and `manifest_keys` skip rows lacking `zotero_key` instead of raising; semantics otherwise unchanged
+- [x] `scripts/zotero_lib.py` — add `load_manifest_rows()` returning all rows as a list (do **not** re-key `load_manifest`), and `truncate_manifest(byte_len)` for the rollback ladder
+- [x] `scripts/zotero_lib.py` — add an injectable paths object defaulting to the existing `SOURCES_DIR` / `SOURCE_INDEX_PATH` / `MANIFEST_PATH` constants; **do not change the constants**
+- [x] `.gitignore` — add `knowledge/.staging/` (nothing covers it today)
+- [x] `pyproject.toml:53` — `markers = ["slow: long-running integration tests"]`
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/research/test_zotero_path_contract.py -q` → pass, both before and after the loader change
-- [ ] `uv run python -m pytest tests/ -q -m "not slow"` → no regressions
+- [x] `uv run python -m pytest tests/research/test_zotero_path_contract.py -q` → pass, both before and after the loader change
+- [x] `uv run python -m pytest tests/ -q -m "not slow"` → no regressions
 
 **Manual:**
-- [ ] `git check-ignore knowledge/.staging/x` → prints the path
+- [x] `git check-ignore knowledge/.staging/x` → prints the path
 
 **What We Know Works After This Phase:** a manifest containing non-Zotero rows can be read by every existing caller, and today's Zotero output shape is pinned against silent drift.
 
@@ -576,13 +576,21 @@ Crash-recovery machinery (D7); search counting in code (D8); DI minting (R-C3); 
 
 ## Implementation Notes
 
-[TO BE FILLED DURING IMPLEMENTATION]
-
 ### Phase 1 Completion
-**Completed:**
+**Completed:** 2026-08-25
 **Actual Changes:**
+- `tests/research/__init__.py`, `tests/research/conftest.py` (NEW) — `KnowledgeTree` + `knowledge_tree` / `knowledge_tree_factory` fixtures. The temp tree carries the real `SOURCE_INDEX.md` headings, an empty manifest, `raw/`, `sources/` and a baseline file. It both builds a `RegistryPaths` for new code and monkeypatches the legacy module constants in **both** `zotero_lib` and `zotero_ingest` (the latter imported them by value), so no `chdir` is needed.
+- `tests/research/test_zotero_path_contract.py` (NEW, 9 tests) — written and run green against unmodified `zotero_ingest`/`zotero_lib` before the loader change. Pins the Zotero block's field names, order and values, the local-PDF block omitting `Zotero Key`, the four-key manifest row, and Zotero-key dedupe. Insertion position deliberately not pinned here (design M7).
+- `scripts/zotero_lib.py` — `load_manifest` / `manifest_keys` now skip rows lacking `zotero_key` (shared `_manifest_lines` helper); added `RegistryPaths` (frozen dataclass, `.under(knowledge_dir)`), `default_paths()`, `load_manifest_rows(paths)`, `truncate_manifest(byte_len, paths)`, and the `STAGING_DIR` / `LOCK_PATH` / `BASELINE_PATH` constants. Existing constants untouched.
+- `.gitignore` — `knowledge/.staging/` and `knowledge/.registry.lock`.
+- `pyproject.toml` — `markers = ["slow: long-running integration tests"]`.
+
 **Issues:**
+- Pre-existing suite failures, unrelated to this item, recorded here as the baseline so later phases are not blamed for them: 34 failures in `tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand` (verified to fail identically with the `pythonpath` change reverted), and `tests/test_dependency_provenance.py` + the two teax suites erroring on missing environment (`KeyError: STOP_PARSER_WHEEL_TARGET`; see auto-memory `gotcha_syside_env_not_exported`). `tests/models/` cannot collect without a syside licence key. **Nothing in this item changed any of these.** Full run: 45 failed, 613 passed, 87 skipped, 20 errors.
+
 **Deviations:**
+- **`pyproject.toml` also gained `"scripts"` to `pythonpath`** (plan listed only the marker). `zotero_ingest.py` does `from zotero_lib import ...`, a bare top-level import, so `scripts/` must be importable as a root or no test can import either module. Verified this does not change any other suite's result (the scoring failures reproduce with it reverted).
+- The characterization test file also carries the `load_manifest_rows` / `truncate_manifest` assertions, since they are the same contract surface. The pinning tests were green before the loader change; the tolerance test was the one red test, as intended.
 
 ### Phase 2 Completion
 
