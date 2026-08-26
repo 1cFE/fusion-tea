@@ -93,7 +93,31 @@ Otherwise the voice is good: the Problem section leads with the point, the WI-03
 
 ## Resolutions
 
-*(To be filled in as the owner resolves findings. Entries keyed by finding ID.)*
+Dispositioned by the orchestrator, 2026-08-25. All must-fix findings accepted; all advisory findings adopted. Spec revised in the same pass.
+
+| Finding | Resolution |
+|---|---|
+| **L3-1** | **Accepted, option (b).** The no-network reading is not relitigated, but the offline proof is widened: **R-E2** requires the whole capture → holdout → register chain to run offline for both a URL input and a local PDF input, against fixtures injected at the capture boundary. SC8 states it. Item 5 owns only the *live network* proof. Fixture shape filed as an Open Question. |
+| **L2-1** | **Accepted — standalone invocability is a requirement.** New **R-B0**, `[INHERITED]` from concept US-7 (`goal-driven-model-development-harness.md:90`) and research doc rec 1: registration has its own entry point; R-C1 now says the research surface *calls* it rather than owning it. New **SC2**. |
+| **L2-2, L2-3** | **Accepted.** R-B1's "keeps working unchanged" is gone. The Problem section now states both verified defects (local-PDF path writes no manifest row, `zotero_ingest.py:521` vs `:437`; the `## How MBSE Commands Use This File` anchor is absent from `SOURCE_INDEX.md`, so every write falls through to append-at-end). **R-B1a** requires a manifest row for every registered source including local PDFs; **R-B1b** requires design to fix the anchor or adopt append-at-end deliberately; **R-B1c** preserves the Zotero *behavioral contract* and its regressions. |
+| **L1-1** | **Accepted.** R-E1 regraded `[NEED]` → `[INFERRED]`, citing `align.md:13` as an `[AGENT]` orchestrator reading. |
+| **L1-2** | **Accepted.** R-B3 regraded `[NEED]` → `[INHERITED: epic Item 2 scope 2 and epic SC1]`, with the owner's deferral of the *mechanism* kept inline as `[OWNER 2026-08-25]`. |
+| **L1-3** | **Accepted.** Split: **R-D1** `[HARD]` keeps only the forced half (enforcement must live in the operation's code); **R-D2** `[INHERITED: epic Item 2 scope 4]` carries the two-point structure and is marked challengeable. |
+| **L1-4** | **Accepted.** R-C3 regraded `[OWNER 2026-08-25]` → `[NEED]`, carrying the owner quote from `align.md:9` verbatim. The reserved-gates Non-Goal bullet likewise reads `[NEED]`. |
+| **L1-5** | **Accepted.** R-B6 now carries `[INHERITED: research doc rec 1]` as its register grade alongside the `[REFERENT]` payload marker. |
+| **L1-6** | **Accepted.** New **R-D6** `[INHERITED: goal-driven-model-development-harness.md:114]`: a recorded negative *blocks* a silent repeat — a matching request surfaces the prior negative and does not re-search without an explicit, recorded override reason. R-D5's head grade corrected to `[INHERITED]`. SC6 restated to match. |
+| **L1-7** | **Accepted.** The unresolvable `[INHERITED: project testing preference]` is regraded `[INFERRED]` (now R-E4), which says outright that no repo artifact states the preference. |
+| **L1-8** | **Adopted.** A decision record after the Non-Goals states that the research critic is deliberately not in this item, with the trace (concept-design review topology → Item 1's single checkpoint → epic resolution of `epic-plan-F2`) and which requirements carry its substance. Phrased as a decision record, not a prohibition. |
+| **L2-4** | **Accepted.** R-B4 gains an `[INFERRED]` clause: `--save-source` is not symmetric across input kinds; for a local PDF the raw artifact is the input file copied to `knowledge/raw/` (`zotero_ingest.py:489-499`), and R-B5's raw hash must be satisfiable both ways. |
+| **L3-2, L5-1** | **Accepted.** A new **§ The four return classes** section, before the requirements, defines all four with their decision boundaries. The stated line: operator queue is about a *source* (a named candidate blocked on accessibility or admissibility), blocker is about the *seam* (precondition, tooling, or contract failure, nothing established about any candidate). Mixed registered/queued invocations return `REGISTERED` with the queued candidates inside. |
+| **L3-3** | **Accepted.** New **R-B7** `[INFERRED]`: the caller supplies `Use for` / `Validation` / `Caveat` at registration time, drawn from the request and the triage/instrumented record. The request shape does not carry them; registration does not invent them. |
+| **L3-4** | **Accepted.** R-B6's bar is now presence and non-emptiness of `Use for`, `Validation`, `Caveat`, and `Source URL`. The uncheckable "blocks of that quality" phrasing is gone; the WI-031 entries stay as `[REFERENT]` for what the fields should say. |
+| **L3-5** | **Accepted.** SC9 (was SC8) is graded `[INHERITED: epic Item 2 deliverables]` and given a verification path: a non-author walks the doc and exercises all four return classes and both operator actions. R-E6 lists what the doc must cover. |
+| **L3-6** | **Adopted.** New **R-F1**: the two upstream `agentic-mbse` filings are made during implementation and are deliverables of this item. The upstream *fix* is not. |
+| **L3-7** | **Adopted.** New **R-F2**: this item's durable decisions (manifest identity above all) file as ADRs in the home Item 1 establishes, coordinated at design time per `align.md:15`. This item does not create or edit that home. |
+| **L4-1** | **Accepted.** Section D renumbered flat (R-D1…R-D6); the interpolated `R-D2a` is gone. Section B likewise renumbered to absorb R-B0 and R-B7. |
+
+**Note on the reviewer's own reading:** L2-3's two code claims were re-verified independently before being written into the Problem section. Both hold — `grep` finds no `## How MBSE Commands Use This File` in `knowledge/SOURCE_INDEX.md`, and `append_manifest_entry` appears once as a call, at `zotero_ingest.py:437`, inside the Zotero path only.
 
 ---
 
