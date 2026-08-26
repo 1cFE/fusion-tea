@@ -138,13 +138,13 @@ Gate: CLEAR
 - Replacing or mirroring coding-PM, modeling-PM, research, integration, or run-study state.
 - Automating owner-reserved gates, close, archive, commits, or pushes.
 
-**Success Criteria**:
-- [ ] The architecture decisions are live, provenance-graded, and cited by the runbook and affected project guidance.
-- [ ] The three lean files and their decision/task/round conventions are sufficient to derive current goal state without copying native stage state.
-- [ ] The independent pre-execution disposition checkpoint and the post-round `RoundReview` have distinct timing and responsibilities.
-- [ ] Runbook step 14, the administrator section, and the discovery-log header agree on writer ownership and joined `<study-id>#<n>` disposition rows.
-- [ ] `GOAL_RUNBOOK.md` describes the same artifacts, gates, returns, and reviews for human and goal-agent operation.
-- [ ] Documentation and contract tests pass; no hardening-path mechanism enters the implementation.
+**Success Criteria** *(audited 2026-08-25 — `.project/active/goal-harness-contract/audit.md`; verdict Needs Work; `audit-F1`/`audit-F2` fixed same day, product-lens gate CLEAR)*:
+- [x] The architecture decisions are live, provenance-graded, and cited by the runbook and affected project guidance. — *verified; `audit-F1` fixed 2026-08-25: ADR-005 frontmatter and index now write the split grade.*
+- [x] The three lean files and their decision/task/round conventions are sufficient to derive current goal state without copying native stage state.
+- [x] The independent pre-execution disposition checkpoint and the post-round `RoundReview` have distinct timing and responsibilities.
+- [x] Runbook step 14, the administrator section, and the discovery-log header agree on writer ownership and joined `<study-id>#<n>` disposition rows.
+- [x] `GOAL_RUNBOOK.md` describes the same artifacts, gates, returns, and reviews for human and goal-agent operation. — *`audit-F2` fixed 2026-08-25: § What "fresh" means states the owner's session boundary and the agent's handoff stop.*
+- [x] Documentation and contract tests pass; no hardening-path mechanism enters the implementation. — *258 passed, 43 skipped after fixes.*
 
 **Estimated Effort**: 1.5 days (spec 1h, design 2h, plan 1h, execute 8h)
 

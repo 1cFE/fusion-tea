@@ -1,6 +1,6 @@
 # Spec: Lean Goal Contract and Operator Runbook
 
-**Status:** Implementation Complete — pending audit
+**Status:** Audited 2026-08-25 — **Needs Work** (2 blocking defects: `audit-F1`, `audit-F2`; see `audit.md`)
 **Owner:** Reid W
 **Created:** 2026-08-25
 **Complexity:** MEDIUM
@@ -25,12 +25,12 @@ There is also no shared operating document. The owner's stated bar is `[OWNER-VE
 
 Verbatim from epic Item 1:
 
-- [ ] The architecture decisions are live, provenance-graded, and cited by the runbook and affected project guidance.
-- [ ] The three lean files and their decision/task/round conventions are sufficient to derive current goal state without copying native stage state.
-- [ ] The independent pre-execution disposition checkpoint and the post-round `RoundReview` have distinct timing and responsibilities.
-- [ ] Runbook step 14, the administrator section, and the discovery-log header agree on writer ownership and joined `<study-id>#<n>` disposition rows.
-- [ ] `GOAL_RUNBOOK.md` describes the same artifacts, gates, returns, and reviews for human and goal-agent operation.
-- [ ] Documentation and contract tests pass; no hardening-path mechanism enters the implementation.
+- [x] The architecture decisions are live, provenance-graded, and cited by the runbook and affected project guidance. — *live and cited: verified at audit. Provenance-graded: `audit-F1` resolved 2026-08-25 — ADR-005's frontmatter and `INDEX.md:11` now write the split, `[AGENT]` topology + `[OWNER 2026-08-25]` checkpoint placement, per `README.md:45`.*
+- [x] The three lean files and their decision/task/round conventions are sufficient to derive current goal state without copying native stage state.
+- [x] The independent pre-execution disposition checkpoint and the post-round `RoundReview` have distinct timing and responsibilities.
+- [x] Runbook step 14, the administrator section, and the discovery-log header agree on writer ownership and joined `<study-id>#<n>` disposition rows.
+- [x] `GOAL_RUNBOOK.md` describes the same artifacts, gates, returns, and reviews for human and goal-agent operation.
+- [x] Documentation and contract tests pass; no hardening-path mechanism enters the implementation.
 
 ## Known Requirements
 

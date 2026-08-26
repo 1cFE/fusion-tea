@@ -12,7 +12,7 @@ An agent never fills two of these roles for the same round.
 
 That is a rule, and it is the runbook's — `GOAL_RUNBOOK.md` states freshness at each place it applies (§ The pre-execution disposition checkpoint: "a fresh agent who did not do the work"; § The fresh review: "a fresh agent — one who did not do the round's work"). Two homes for one rule is the drift the design's cite-don't-restate discipline exists to prevent, and the skill's own preamble promises it restates nothing (D7).
 
-It is the only such sentence in the file — the rest of `SKILL.md` is roles, modes, paths, and pointers.
+**Correction, 2026-08-25:** an earlier version of this file claimed it was the only such sentence. It is not — `SKILL.md:42` and `:46` also restate runbook rules, and are handled in `skill-edit-2.md`. The keyword grep behind the original claim could not see restatements phrased as description.
 
 ## The edit
 

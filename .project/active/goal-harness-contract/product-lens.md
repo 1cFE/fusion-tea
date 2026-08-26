@@ -153,3 +153,23 @@ Neither design-level structural smell fired: the writer-ownership change moves a
 Gate: BLOCKED (`audit-F1`, `audit-F2`)
 
 Epic ledger state: `.project/backlog/epic_goal_strategy_task_harness.md` § Product-Lens reads CLEAR (2026-08-25, owner-dispositioned decomposition). This audit-hop block does not change that gate.
+
+---
+
+## Resolution — audit-fix hop, 2026-08-25
+
+Applied by the implement stage under the orchestrator's audit-fix brief (`a317e103`), which dispositioned every audit finding APPLY. Authority basis is given per finding; nothing here re-decides an approved decision.
+
+**`audit-F1` — RESOLVED.** ADR-005's frontmatter grade and its `INDEX.md` row now write the split: `[AGENT] inference (topology; owner may override) + [OWNER 2026-08-25] (pre-execution checkpoint placement)`, with the index cell matching. *Authority:* the register's own rule, `.project/adr/README.md:45` — "Write the split; do not round it to the stronger half" — which this had rounded to the *weaker* half; and capture-fidelity law 1, preserve the grade across every hop. The record's body already carried the owner half with its own grade and source, so this corrects the two scanning surfaces and invents nothing. The implement stage's original reasoning (`plan.md` § Phase 1) was sound for the topology half and was simply not re-checked after the owner half entered the body.
+
+**`audit-F2` — RESOLVED, prose only.** `GOAL_RUNBOOK.md` gains § What "fresh" means, which (a) quotes the owner's rule at verbatim strength — "The critic is never the author's session", `[OWNER]`, `.project/concepts/goal-driven-model-development-harness.md:47`, SC 5 — and says plainly it is a session boundary rather than a work boundary; (b) states who obtains the reviewer on each path; and (c) defines the agent's move when it cannot start a session: a recorded `### Stop` of kind `handoff` that hands the material back to the operator, with the entry's shape given literally. Both gates now point at that section and both say what an agent does instead of proceeding. `handoff` joins the trail template's stop-kind vocabulary. *Authority:* owner SC 5 for the rule; ADR-003 for why the alternative is barred — building a way to start a session is unattended dispatch, which stays on the hardening path. **The prose handoff is the lean answer, not a placeholder for dispatch.** Guarded by `test_fresh_is_defined_at_owner_strength_with_an_agent_move`. `SKILL.md`'s overclaim at `:28-30` is corrected to point at the new section (staged at `staging/skill-edit-2.md`, edit 1).
+
+**`audit-F3` — RESOLVED.** `CLAUDE.md` § Project Structure gains an `adr/` row under `.project/`; `modeling_project/ARCHITECTURE.md` gains a § Scope sentence naming the `AD-XXX` versus `ADR-NNN` split and pointing at `.project/adr/`. *Authority:* audit finding, dispositioned APPLY. The split was previously asserted only in the file a modeling agent does not read.
+
+**Smaller confirmed findings — all applied.** Three uncited runbook pointers (the `run-study` runbook by path at the seams table; a one-line gloss of *pin* with a pointer to where the study layer owns the term; and the integration pattern rewritten to the honest form — no written pattern exists, so it is a `PREREQUISITE` return until epic Item 3 lands). Two dead § Affected seams cross-references now cite the live heading "The fresh review". `adr.sh:28` and `template.md:5` default to `[GRADE — copy from source]`, a placeholder that cannot be left as-is. The prior-art paragraph in `INDEX.md` gains a sentence on the loose `ADR-00X` usage in `work/completed/20260303_WI-008.../design.md`. `SKILL.md:42` and `:46` become pointers (staged, edits 2–3), and the "only such sentence" over-claim is corrected by a dated amendment note in `plan.md`.
+
+**Left as recorded, not resolved.** The fourth smell — the owner's "pre-defined checkpoints" stop trigger having no home in `goal.md` — stands as the lens recorded it: inherited narrowing from the owner-accepted concept-design (`goal-strategy-task-harness-design.md:110`), not introduced by this item. Changing it would re-decide an approved decision, which is outside an audit-fix hop.
+
+**Gate: CLEAR.**
+
+Two things a later reader should carry, neither a block: the runtime half of every claim here is unverified — these are document checks, and Items 4–6 are the proofs; and the runbook is still written by the agent that built the layer, so any finding Item 4's cold-grounding proof raises against it is an **Item 1 defect**.

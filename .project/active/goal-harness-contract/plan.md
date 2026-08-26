@@ -1,6 +1,6 @@
 # Implementation Plan: Lean Goal Contract and Operator Runbook
 
-**Status:** Complete — all seven phases; one staged `.claude/` edit pending (`staging/skill-edit-1.md`)
+**Status:** Complete — all seven phases plus the audit-fix hop; `staging/skill-edit-2.md` pending application
 **Created:** 2026-08-25
 **Last Updated:** 2026-08-25
 **Branch:** `feat/run-study-first-consumer` (`[OWNER 2026-08-25]` — no child branch; merge/push and item close stay owner-held)
@@ -234,7 +234,7 @@ Shared conventions across all three templates: unwrapped prose, newest entry las
 
 **Manual:**
 - [x] Copy `trail.md` into a scratch directory and hand-write one round of the `20260823-magnet-technology-ab` study through it. Every field must have somewhere to go without invention
-- [ ] Confirm `SKILL.md` states no rule the runbook owns
+- [x] Confirm `SKILL.md` states no rule the runbook owns — the staged fix landed in `21c46dc5` and was verified against `staging/skill-edit-1.md` by the audit (2026-08-25). Note: the audit found the attached claim "the only such sentence in the file" does not hold — `SKILL.md:42` and `:46` still restate `GOAL_RUNBOOK.md:72` and `:35`. See `audit.md` § Plan completion.
 
 **What We Know Works After This Phase:** the contract surfaces exist at their contracted paths; SC2's conventions are copyable.
 
@@ -684,9 +684,28 @@ That the item as built actually satisfies the criteria as written — and, speci
 
 **One defect found by Phase 3's manual check, staged not applied.** `SKILL.md` closes § Three roles with "An agent never fills two of these roles for the same round" — a rule the runbook owns, stated twice. It is the only such sentence in the file. The one-line replacement is staged at `.project/active/goal-harness-contract/staging/skill-edit-1.md`; the plan box stays unchecked until it lands. Low severity: the rule is correct and an operator following it does the right thing; the cost is a second home that can drift.
 
+**Amendment 2026-08-25 — amends the paragraph above.** The claim "it is the only such sentence in the file" is **wrong** and is withdrawn. The audit found two more restatements: `SKILL.md:42` restates `GOAL_RUNBOOK.md:72` (how to tell whether a round is open) and `SKILL.md:46` restates `GOAL_RUNBOOK.md:35` ("the headings are the contract"). The check behind the claim was `grep -nE 'must|never|always|at most|only when'`, which finds normative phrasing and cannot see a restatement written as description — so the check was weaker than the claim it was used to support. Both are corrected to pointers in `staging/skill-edit-2.md` (edits 2–3), and the same correction is noted in `staging/skill-edit-1.md`. The lesson is the check, not the sentences: a restatement check has to be a read, not a keyword grep.
+
 **Branch state:** one commit per phase — `f83a9742` (Phase 1 accepted), `586f3568` (Phase 2), `488f1d8d` (Phase 3 templates), `d36d4b0d` (Phase 4), `17e61516` (Phase 3 skill + Phase 5 edits 1–4). Nothing merged, nothing pushed. Merge, push, and item close stay owner-held (Align ruling 2).
+
+
+### Audit-fix hop — 2026-08-25
+
+Every audit finding dispositioned APPLY by the orchestrator (`a317e103`). Resolution block with authority bases appended at `product-lens.md`; **gate now CLEAR**.
+
+**`audit-F1`** — ADR-005 frontmatter and `INDEX.md:11` now write the split grade (`[AGENT]` topology, owner may override; `[OWNER 2026-08-25]` checkpoint placement), per `README.md:45`. The body already carried the owner half; these are the two scanning surfaces.
+
+**`audit-F2`** — `GOAL_RUNBOOK.md` gains § What "fresh" means: the owner's rule quoted at verbatim strength ("The critic is never the author's session", `goal-driven-model-development-harness.md:47`), stated as a *session* boundary rather than a work boundary; who obtains the reviewer on each path; and the agent's defined move when it cannot start one — a `### Stop` of kind `handoff` whose entry shape is given literally. Both gates now point there and both say what an agent does instead of proceeding. `handoff` joins the trail template's stop-kind vocabulary. No dispatch: building a way to start a session is the barred mechanism (ADR-003), and the prose handoff is the lean answer. `SKILL.md`'s overclaim is staged.
+
+**Smaller findings, all applied:** three uncited runbook pointers (the `run-study` runbook by path at the seams table; a *pin* gloss with a pointer to where the study layer owns the term; the integration pattern rewritten to the honest form — no written pattern exists, so it is a `PREREQUISITE` return until epic Item 3). Two dead § Affected seams cross-refs now cite "The fresh review". `adr.sh:28` and `template.md:5` default to `[GRADE — copy from source]`. `INDEX.md`'s prior-art paragraph gains the loose-`ADR-00X` sentence. `audit-F3`: `CLAUDE.md` § Project Structure gains an `adr/` row, `modeling_project/ARCHITECTURE.md` gains a § Scope sentence. `SKILL.md:42`/`:46` staged as pointers, and the "only such sentence" over-claim corrected by a dated amendment above.
+
+**Suites:** `uv run python -m pytest tests/study tests/orchestration -q` → **258 passed, 43 skipped** (was 256; +1 the new stage assertion, +1 `test_fresh_is_defined_at_owner_strength_with_an_agent_move`). `ruff check tests/orchestration` clean. **No test expectation was adjusted for old wording** — `test_writer_ownership_agrees` and `test_the_skill_is_a_door_and_not_a_second_copy` passed unchanged through every edit. One regex was widened at authoring time only (`session\W{0,2} boundary`), because the runbook italicises *session*.
+
+**Two guards added beyond the brief.** `test_fresh_is_defined_at_owner_strength_with_an_agent_move` makes `audit-F2` a checked fact rather than prose that can quietly regress. And `test_register_is_coherent` now rejects the grade placeholder itself, so "cannot be left as-is" is mechanical rather than a hope — verified by minting a record from the template and observing it go red, then reverting.
+
+**Two notes for the reader.** The prior-art sentence went into `INDEX.md`, not `README.md` — the "Prior art, outside the register" paragraph the audit meant lives there, and that is where a reader hits it. And `SKILL.md` edits are staged at `staging/skill-edit-2.md` rather than applied: writes under `.claude/` remain blocked in this session.
 
 ---
 
-**Status**: Complete (2026-08-25) — ready for `/_my_audit`
-**Next Step**: `/_my_audit`. Merge, push, and item close stay owner-held.
+**Status**: Complete (2026-08-25) — audited, findings applied, product-lens gate CLEAR
+**Next Step**: apply `staging/skill-edit-2.md`, then `/_my_close`. Merge, push, and item close stay owner-held.
