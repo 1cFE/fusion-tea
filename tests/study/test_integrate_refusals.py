@@ -176,3 +176,84 @@ def test_two_snapshots_beside_the_models_root_are_input_invalid(
     assert blocker["mode"] == "could_not_run"
     assert blocker["condition"] == "input-invalid"
     assert "exactly one *.snapshot.json" in blocker["detail"]
+
+
+# ----------------------------------------- gates 6, 7 and 8: the manifest and the study gates
+
+
+def _edit_manifest(path, mutate):
+    data = json.loads(path.read_text())
+    mutate(data)
+    path.write_text(json.dumps(data, indent=2) + "\n")
+
+
+def test_doctored_pin_refuses_gate_6(integration_workspace, tmp_path):
+    """The manifest's pin must recompute over the live package, or it is not this package's."""
+    out = tmp_path / "out"
+    _edit_manifest(
+        integration_workspace.manifest,
+        lambda data: data["fingerprints"]["indicator_inputs"].update(digest="0" * 64),
+    )
+
+    document = run_seam(integration_workspace.request_argv(out), out)
+
+    blocker = document["blocker"]
+    assert blocker["gate"] == "manifest"
+    assert blocker["producer"] == "scripts/study/manifest.py"
+    assert blocker["mode"] == "refused"
+    assert blocker["condition"] == "manifest-stale"
+    assert "indicator-input fingerprint mismatch" in blocker["detail"]
+    assert [gate["status"] for gate in document["gates"][:6]] == ["pass"] * 6
+
+
+def test_drifted_recorded_provenance_refuses_gate_7(integration_workspace, tmp_path):
+    """`check_manifest_currency` is the re-pin read backwards, and it is preflight's to make."""
+    out = tmp_path / "out"
+    _edit_manifest(
+        integration_workspace.manifest,
+        lambda data: data["fingerprints"]["recorded_provenance"].update(
+            semantic_fingerprint="0" * 64
+        ),
+    )
+
+    document = run_seam(integration_workspace.request_argv(out), out)
+
+    blocker = document["blocker"]
+    assert blocker["gate"] == "preflight"
+    assert blocker["producer"] == "scripts/study/preflight.py"
+    assert blocker["mode"] == "refused"
+    assert blocker["condition"] == "preflight-refused"
+    assert "manifest_currency" in blocker["detail"]
+    assert blocker["evidence"] == [
+        manifest_mod.repo_relative_posix(out / "preflight_results.json")
+    ], "a preflight refusal cites the whole results document, never one sub-gate"
+
+    results = json.loads((out / "preflight_results.json").read_text())
+    assert len(results["gates"]) == 6, "all six checks are reported whatever happened"
+    assert [gate["status"] for gate in document["gates"][:7]] == ["pass"] * 7
+
+
+def test_the_baseline_store_resolves_from_the_baseline_result(tmp_path):
+    """The route deposits two documents and names the store in one of them; it returns
+    neither the store nor its path, so both spellings of ``store_id`` are resolved."""
+    out = tmp_path / "out"
+    work = out / "_work"
+    work.mkdir(parents=True)
+    (work / "some-study.db").write_bytes(b"")
+    document = out / "baseline_result.json"
+
+    document.write_text(json.dumps({"executed_under": {"store_id": "some-study.db"}}))
+    assert integrate.resolve_store(document, out) == work / "some-study.db"
+
+    inside = manifest_mod.repo_relative_posix(work / "some-study.db")
+    document.write_text(json.dumps({"executed_under": {"store_id": inside}}))
+    assert integrate.resolve_store(document, out) == work / "some-study.db"
+
+
+def test_a_store_that_resolves_to_nothing_raises_rather_than_being_guessed(tmp_path):
+    out = tmp_path / "out"
+    out.mkdir()
+    document = out / "baseline_result.json"
+    document.write_text(json.dumps({"executed_under": {"store_id": "no-such-store.db"}}))
+    with pytest.raises(Exception, match="resolves to no file"):
+        integrate.resolve_store(document, out)

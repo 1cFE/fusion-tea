@@ -446,17 +446,17 @@ def test_baseline_store_resolves_from_the_baseline_result(integration_workspace)
 
 **See `design.md` for:** the gate table rows 6/7/8 → `design.md#architecture`; the route contract → D6; `assert_read_set_covered` out of reach → D17; gate 8's one discriminating signal → D15; store-path resolution → `design.md#implementation-notes`.
 
-- [ ] `tests/study/test_integrate_refusals.py` — the fixtures above
-- [ ] `scripts/integrate.py` — gate 6 (`manifest.load` → `assert_package_identity` → `assert_pin_matches`; `ManifestError` from `load` is `could_not_run`, from an assertion is `refused` with `manifest-stale`; the return records that `assert_read_set_covered` was **not** run, per D17); baseline execution between gates 6 and 7 via the caller-named route triple, its failure reported as gate 7 `could_not_run`; store resolution from `baseline_result.executed_under.store_id` with the `<out-dir>/_work/<name>` fallback; gate 7 (`preflight.py gates …--out`, `preflight-refused`); gate 8 (`verify.py …--out`, stderr captured to `<out-dir>/verify_stderr.txt`, any non-zero exit → `refused`, `verification-refused`)
+- [x] `tests/study/test_integrate_refusals.py` — the fixtures above
+- [x] `scripts/integrate.py` — gate 6 (`manifest.load` → `assert_package_identity` → `assert_pin_matches`; `ManifestError` from `load` is `could_not_run`, from an assertion is `refused` with `manifest-stale`; the return records that `assert_read_set_covered` was **not** run, per D17); baseline execution between gates 6 and 7 via the caller-named route triple, its failure reported as gate 7 `could_not_run`; store resolution from `baseline_result.executed_under.store_id` with the `<out-dir>/_work/<name>` fallback; gate 7 (`preflight.py gates …--out`, `preflight-refused`); gate 8 (`verify.py …--out`, stderr captured to `<out-dir>/verify_stderr.txt`, any non-zero exit → `refused`, `verification-refused`)
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study/test_integrate_refusals.py -q` → pass
-- [ ] `uv run python -m pytest tests/study -q` → green
+- [x] `uv run python -m pytest tests/study/test_integrate_refusals.py -q` → pass
+- [x] `uv run python -m pytest tests/study -q` → green
 
 **Manual:**
-- [ ] With the full environment, run the seam through gate 8 on the untouched workspace and confirm `preflight_results.json` reads 6/6 and `verification_summary.json` reads `outcome: pass`
+- [x] With the full environment, run the seam through gate 8 on the untouched workspace and confirm `preflight_results.json` reads 6/6 and `verification_summary.json` reads `outcome: pass`
 
 **What We Know Works After This Phase:** the seam runs the stock study producers with the arguments a study uses, on evidence it produced itself, and a preflight refusal cites the whole results document rather than one sub-gate (R-B4).
 
@@ -951,6 +951,58 @@ which is what a goal caller retries); a producer that judged and said no carries
 condition. `run_pytest_gate` now takes its refusal condition from the call site rather than a
 lookup table, so the policy reads where the gate is declared.
 ### Phase 6 Completion
+
+**Completed:** 2026-08-26
+
+**Gates 1a through 8 all pass on an untouched workspace.** Preflight reports 6/6 and
+`verify.py` returns `outcome: pass` against the store this run executed itself, in about
+16 s wall for the whole sequence. Only gate 9 remains.
+
+**Changes made**
+- `scripts/integrate.py` — `gate_manifest`, `ROUTE_DRIVER_SOURCE`, `resolve_store`,
+  `execute_baseline`, `gate_preflight`, `gate_verification`, and `BaselineEvidence`.
+  `SequenceState` gained a `baseline` field, filled by gate 7 and read by gate 8.
+- `tests/study/test_integrate_refusals.py` — 4 more fixtures (12 total).
+
+**Test counts.** `tests/study` 313 → **317 passed, 1 skipped**.
+
+**The route is invoked, not imported.** `execute_baseline` runs a six-argument driver in a
+subprocess under D16's environment. The seam sits above every package, so importing one would
+break the invariant every module below it holds; and the subprocess is also what guarantees
+the route gets the same `PYTHONPATH` and `STUDY_REQUIRE_TEAX` every other producer gets.
+
+**Gate 7's mode comes from preflight's own vocabulary, not from its exit code.** `preflight
+gates` returns 1 for both a failed check and a check that could not run, so the seam reads the
+results document: any `did not run` with no `fail` is could-not-run, anything else is refused.
+If preflight wrote no document at all — its unreadable-package path returns before the write —
+that is could-not-run too. A refusal cites the **whole** results document, never one row: a
+test asserts the evidence list is exactly `preflight_results.json` and that all six checks are
+reported in it.
+
+**Gate 8's residual is stated at the point of use.** `verify.py` returns 1 for every cause and
+writes no summary when it refuses, so past gate 0's `simkit` probe a non-zero exit is read as
+`refused`. Its stderr is captured to `verify_stderr.txt` and cited. The shortfall is filed
+against `verify.py` in Phase 9.
+
+**`assert_read_set_covered` is named in the return, not omitted quietly.** Gate 6 runs three of
+R-B1.6's four assertions and its passing detail says in words that the fourth was **not** run
+and is covered by nothing else. A reader of a `CANDIDATE` sees the boundary without reading
+the design.
+
+**Store resolution raises rather than guesses.** `execute_baseline` does not return the store
+path; the baseline result names it, repo-relative when the output directory is under the repo
+root and a bare filename otherwise. Both spellings resolve, and a `store_id` that resolves to
+neither raises with the id and both places it looked — two tests, one per spelling, plus one
+for the unresolvable case.
+
+**Ordering invariant, made loud.** Gate 8 reads the evidence gate 7 produced. Reaching gate 8
+with no baseline means the sequence ran out of order, which is a fault in the seam rather than
+a verdict about the package, so it raises and exits 2 instead of refusing.
+
+**Two refusal fixtures added at these gates.** A doctored `indicator_inputs.digest` refuses
+gate 6 with `manifest-stale` after gates 1a–5 pass; a drifted `recorded_provenance` passes gate
+6 and refuses at gate 7 with `preflight-refused`, which is the split the two producers actually
+own — the pin is `manifest.py`'s and the recorded provenance is `check_manifest_currency`'s.
 ### Phase 7 Completion
 ### Phase 8 Completion
 ### Phase 9 Completion

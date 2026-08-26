@@ -61,6 +61,7 @@ property of those producers, recorded per gate, not of the seam.
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import shutil
 import subprocess
@@ -779,11 +780,27 @@ PRESERVED_SUBTREE = "handwritten/"
 
 
 @dataclass(frozen=True)
+class BaselineEvidence:
+    """What executing the manifest's pinned baseline point deposited, and where its store is."""
+
+    identity: Path
+    baseline_result: Path
+    store: Path
+
+
+@dataclass
 class SequenceState:
-    """What the gates hand each other: the package as it stood at entry, and its backup."""
+    """What the gates hand each other: the package as it stood at entry, and its backup.
+
+    ``baseline`` is filled by gate 7, which is the gate that needs it first; gate 8 reads the
+    same evidence rather than producing a second store of its own. It is ``None`` before then
+    and a gate that finds it ``None`` has been reached out of order, which is a fault in the
+    seam, not a verdict — so that reads as an internal error rather than a refusal.
+    """
 
     entry_digests: dict[str, str]
     backup_dir: Path
+    baseline: BaselineEvidence | None = None
 
     def moved_since_entry(self, package_root: Path) -> list[str]:
         return moved_paths(self.entry_digests, package_digests(package_root))
@@ -1099,6 +1116,188 @@ def gate_census_snapshot(request: Request, env: dict[str, str],
 
 
 
+def gate_manifest(request: Request, env: dict[str, str],
+                  state: SequenceState) -> GateOutcome:
+    """Gate 6: the manifest is this package's, and its pin recomputes to what it records.
+
+    Three of R-B1.6's four assertions. The fourth, ``assert_read_set_covered``, needs the
+    paths the indicator reader opened from the pipeline's own refs, which exist only inside
+    that reader — so it is **not run here and is covered by nothing else in the repository**.
+    Named in the return rather than left silent, and filed against its own home.
+    """
+    try:
+        loaded = manifest_mod.load(request.manifest)
+    except manifest_mod.ManifestError as exc:
+        raise SeamBlocker(
+            gate=GATES[6].name, producer=GATES[6].producer, scope=GATES[6].scope,
+            mode=COULD_NOT_RUN, condition="input-invalid",
+            detail=f"the manifest could not be read or did not validate: {exc}",
+        ) from exc
+    try:
+        manifest_mod.assert_package_identity(loaded, request.package)
+        manifest_mod.assert_pin_matches(
+            loaded, manifest_mod.indicator_input_fingerprint(request.package)
+        )
+    except manifest_mod.ManifestError as exc:
+        raise SeamBlocker(
+            gate=GATES[6].name, producer=GATES[6].producer, scope=GATES[6].scope,
+            mode=REFUSED, condition="manifest-stale", detail=str(exc),
+            evidence=(manifest_mod.repo_relative_posix(request.manifest),),
+        ) from exc
+    return GateOutcome(
+        f"the manifest is {loaded.data['package']['name']}'s and its pin "
+        f"{loaded.pinned_digest} recomputes over the live package; assert_read_set_covered "
+        f"was NOT run — it is out of reach here and covered by nothing else (filed)",
+        (manifest_mod.repo_relative_posix(request.manifest),),
+    )
+
+
+#: The driver that invokes the caller-named route. A subprocess, so the route is *invoked*
+#: rather than imported into the seam — which is what keeps a tool that sits above every
+#: package from importing one — and so it runs under the same environment every other
+#: producer gets.
+ROUTE_DRIVER_SOURCE = """
+import importlib, json, sys
+from pathlib import Path
+
+sys_path, module_name, callable_name, out_dir, package_dir, manifest_path = sys.argv[1:]
+sys.path.insert(0, sys_path)
+module = importlib.import_module(module_name)
+deposited = getattr(module, callable_name)(
+    Path(out_dir), package_dir=Path(package_dir), manifest_path=Path(manifest_path)
+)
+print(json.dumps({key: str(value) for key, value in deposited.items()}))
+"""
+
+
+def resolve_store(baseline_result: Path, out_dir: Path) -> Path:
+    """The executed store, named by the baseline result rather than returned by the route.
+
+    ``execute_baseline`` deposits two documents and returns their paths, but not the store's;
+    the store id it records is repo-relative when the output directory is under the repo root
+    and a bare filename otherwise. Both are resolved here, and a store that resolves to
+    nothing raises rather than being guessed at.
+    """
+    document = common.read_json(baseline_result, "baseline result document")
+    store_id = document["executed_under"]["store_id"]
+    for candidate in (manifest_mod.repo_root() / store_id, out_dir / "_work" / Path(store_id).name):
+        if candidate.is_file():
+            return candidate.resolve()
+    raise common.ToolError(
+        f"the baseline result records store_id {store_id!r}, which resolves to no file under "
+        f"the repository root or {manifest_mod.repo_relative_posix(out_dir / '_work')}"
+    )
+
+
+def execute_baseline(request: Request, env: dict[str, str]) -> BaselineEvidence:
+    """Run the manifest's own pinned baseline point through the caller-named route.
+
+    Gates 7 and 8 both read what this deposits and neither can judge without it, so its
+    failure is reported as gate 7 could-not-run rather than as a refusal about the package.
+    """
+    sys_path, module_name, callable_name = request.route
+    done = run_producer(
+        [sys.executable, "-c", ROUTE_DRIVER_SOURCE, str(sys_path), module_name, callable_name,
+         str(request.out_dir), str(resolve_package(request.package)), str(request.manifest)],
+        env,
+    )
+    if done.returncode != 0:
+        raise producer_could_not_run(
+            GATES[7],
+            f"the route {module_name}.{callable_name} could not execute the manifest's "
+            f"pinned baseline point\n{done.stderr.strip()[-2000:]}",
+        )
+    deposited = json.loads(done.stdout)
+    baseline_result = Path(deposited["baseline_result"])
+    try:
+        store = resolve_store(baseline_result, request.out_dir)
+    except common.ToolError as exc:
+        raise producer_could_not_run(GATES[7], str(exc)) from exc
+    return BaselineEvidence(
+        identity=Path(deposited["identity"]), baseline_result=baseline_result, store=store
+    )
+
+
+def gate_preflight(request: Request, env: dict[str, str],
+                   state: SequenceState) -> GateOutcome:
+    """Gate 7: the six mechanical gates a study passes, run the way a study runs them.
+
+    Refusal is producer-grain, not sub-gate-grain: ``preflight gates`` reports all six checks
+    whatever happened, so the blocker cites the whole results document rather than one row —
+    it may carry several failures at once and the reader needs all of them.
+    """
+    state.baseline = execute_baseline(request, env)
+    results = request.out_dir / "preflight_results.json"
+    done = run_producer(
+        [sys.executable, "scripts/study/preflight.py", "gates",
+         "--package", str(request.package), "--manifest", str(request.manifest),
+         "--groups", str(request.groups), "--identity", str(state.baseline.identity),
+         "--baseline-result", str(state.baseline.baseline_result), "--out", str(results)],
+        env,
+    )
+    if done.returncode == 0:
+        return GateOutcome(
+            "all six preflight gates pass", (manifest_mod.repo_relative_posix(results),)
+        )
+    if not results.is_file():
+        raise producer_could_not_run(
+            GATES[7],
+            f"preflight wrote no results document: {done.stderr.strip()[-2000:]}",
+        )
+    evidence = (manifest_mod.repo_relative_posix(results),)
+    document = common.read_json(results, "preflight results")
+    blocked = [gate["gate"] for gate in document["gates"] if gate["status"] == DID_NOT_RUN]
+    failed = [gate["gate"] for gate in document["gates"] if gate["status"] == FAIL]
+    if blocked and not failed:
+        raise producer_could_not_run(
+            GATES[7], "preflight could not run: " + ", ".join(blocked), evidence
+        )
+    raise SeamBlocker(
+        gate=GATES[7].name, producer=GATES[7].producer, scope=GATES[7].scope,
+        mode=REFUSED, condition="preflight-refused",
+        detail="preflight refused: " + ", ".join(failed + blocked),
+        evidence=evidence,
+    )
+
+
+def gate_verification(request: Request, env: dict[str, str],
+                      state: SequenceState) -> GateOutcome:
+    """Gate 8: oracle parity and re-derived verdicts, over the store this run executed.
+
+    ``verify.py`` returns 1 for every cause and writes no document when it refuses, so exit
+    code and output cannot separate a refusal from an inability to run. Gate 0 checked this
+    producer's one environmental precondition — that ``simkit`` imports under the environment
+    the subprocess gets — so past it a non-zero exit is a refusal, full stop. The residual is
+    stated rather than hidden: a teax import failure the probe did not predict lands here as
+    ``refused``, and that shortfall is filed against ``verify.py``.
+    """
+    if state.baseline is None:
+        raise RuntimeError("gate 8 was reached before gate 7 executed the baseline point")
+    summary = request.out_dir / "verification_summary.json"
+    stderr_path = request.out_dir / "verify_stderr.txt"
+    done = run_producer(
+        [sys.executable, "scripts/study/verify.py",
+         "--package", str(request.package), "--manifest", str(request.manifest),
+         "--identity", str(state.baseline.identity), "--store", str(state.baseline.store),
+         "--out", str(summary)],
+        env,
+    )
+    stderr_path.write_text(done.stderr, encoding="utf-8")
+    if done.returncode != 0:
+        raise SeamBlocker(
+            gate=GATES[8].name, producer=GATES[8].producer, scope=GATES[8].scope,
+            mode=REFUSED, condition="verification-refused",
+            detail=f"verify.py exited {done.returncode}: {done.stderr.strip()[-2000:]}",
+            evidence=(manifest_mod.repo_relative_posix(stderr_path),),
+        )
+    return GateOutcome(
+        "oracle parity holds and every verdict re-derived",
+        (manifest_mod.repo_relative_posix(summary),
+         manifest_mod.repo_relative_posix(stderr_path)),
+    )
+
+
+
 # ------------------------------------------------------------------- the sequence
 
 
@@ -1110,6 +1309,9 @@ GATE_IMPLEMENTATIONS = {
     "handwritten-preservation": gate_handwritten_preservation,
     "census-snapshot": gate_census_snapshot,
     "model-family-spine": gate_model_family_spine,
+    "manifest": gate_manifest,
+    "preflight": gate_preflight,
+    "verification": gate_verification,
 }
 
 
