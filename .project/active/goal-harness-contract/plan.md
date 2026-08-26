@@ -156,34 +156,34 @@ A section that cannot answer all four is not finished. (The pytest form of this 
 
 **See `design.md` for:** the full section list → `design.md#component-overview` (`GOAL_RUNBOOK.md` entry); entry headings and vocabularies → `design.md#section-conventions`; the caps and their grounding → `design.md#default-limits`; the checkpoint-vs-review split → `design.md#architecture` (last paragraph); the external-mutation reading → I13 and D11.
 
-- [ ] `work/orchestration/GOAL_RUNBOOK.md` (NEW) — sections in this order:
-  - [ ] What the layer is and what it is not
-  - [ ] The five surfaces and which question each answers
-  - [ ] Grounding a goal (draft → grounded; I1)
-  - [ ] Opening and closing a round — the one-pin/one-study bound, the six close triggers, stop reason *derived* from last outcome + limits, and how to tell an open round from a closed one (I14, I15, D12)
-  - [ ] Running one task — scope → write-ahead → native work → return (I2, I3, I5)
-  - [ ] The pre-execution disposition checkpoint
-  - [ ] The fresh `RoundReview` — including the post-execution disposition audit (owner criterion 5's home)
-  - [ ] **The two checks are distinct** — one table, timing and responsibility side by side (SC3)
-  - [ ] When a cited artifact moves — how to check, what to write, re-ground or close; the plain statement that this is a *reading*, and that a machine check is the barred stale-authority guard needing an owner ruling (I13, I6)
-  - [ ] Resuming an interruption
-  - [ ] The limits table (2 retries / 2 checkpoint revisions / 6 rounds; the declared value wins; hitting the checkpoint cap **stops**, it does not permit execution)
-  - [ ] The discovery-log rules an operator must know — append only under an existing `<study-id>#<n>`, never mint one, **scan for the id rather than stopping at the first matching row** because the newest row is current state, and where a goal-originated finding goes instead (I7, I8, `design.md#component-overview` last entry)
-  - [ ] The native seams table — `research` and `integrate` labelled **pending native repair**, naming the documented WI-031 hand pattern and the current manual integration pattern, with the standing rule that a goal round may not silently absorb either repair
-  - [ ] Citations to the seven ADR records — cited, never restated
+- [x] `work/orchestration/GOAL_RUNBOOK.md` (NEW) — sections in this order:
+  - [x] What the layer is and what it is not
+  - [x] The five surfaces and which question each answers
+  - [x] Grounding a goal (draft → grounded; I1)
+  - [x] Opening and closing a round — the one-pin/one-study bound, the six close triggers, stop reason *derived* from last outcome + limits, and how to tell an open round from a closed one (I14, I15, D12)
+  - [x] Running one task — scope → write-ahead → native work → return (I2, I3, I5)
+  - [x] The pre-execution disposition checkpoint
+  - [x] The fresh `RoundReview` — including the post-execution disposition audit (owner criterion 5's home)
+  - [x] **The two checks are distinct** — one table, timing and responsibility side by side (SC3)
+  - [x] When a cited artifact moves — how to check, what to write, re-ground or close; the plain statement that this is a *reading*, and that a machine check is the barred stale-authority guard needing an owner ruling (I13, I6)
+  - [x] Resuming an interruption
+  - [x] The limits table (2 retries / 2 checkpoint revisions / 6 rounds; the declared value wins; hitting the checkpoint cap **stops**, it does not permit execution)
+  - [x] The discovery-log rules an operator must know — append only under an existing `<study-id>#<n>`, never mint one, **scan for the id rather than stopping at the first matching row** because the newest row is current state, and where a goal-originated finding goes instead (I7, I8, `design.md#component-overview` last entry)
+  - [x] The native seams table — `research` and `integrate` labelled **pending native repair**, naming the documented WI-031 hand pattern and the current manual integration pattern, with the standing rule that a goal round may not silently absorb either repair
+  - [x] Citations to the seven ADR records — cited, never restated
 
 **Prose convention:** unwrapped paragraphs, matching `work/orchestration/handshake-lcoe-construction.md` and the other files in that directory.
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/orchestration -q` → still green (Phase 6 adds the runbook assertions)
+- [x] `uv run python -m pytest tests/orchestration -q` → still green (Phase 6 adds the runbook assertions)
 
 **Manual:**
-- [ ] Read `GOAL_RUNBOOK.md` beside `work/orchestration/handshake-lcoe-construction.md` — same density, same explicit grading, same dated-entry discipline
-- [ ] For each section, confirm the four stencil questions are answered
-- [ ] Confirm no section splits into a human path and an agent path (B4)
-- [ ] Grep the file for the comparison verbs applied to "digest" — `matches`, `compare`, `recompute`, `verify the digest`. Any hit is either a violation of I6 or must be the sentence that *names the bar*, not one that instructs the act
+- [x] Read `GOAL_RUNBOOK.md` beside `work/orchestration/handshake-lcoe-construction.md` — same density, same explicit grading, same dated-entry discipline
+- [x] For each section, confirm the four stencil questions are answered
+- [x] Confirm no section splits into a human path and an agent path (B4)
+- [x] Grep the file for the comparison verbs applied to "digest" — `matches`, `compare`, `recompute`, `verify the digest`. Any hit is either a violation of I6 or must be the sentence that *names the bar*, not one that instructs the act
 
 **What We Know Works After This Phase:** the operating contract exists in one place; SC5's document exists to be tested.
 
@@ -219,9 +219,9 @@ def test_templates_carry_their_contracted_headings(repo_root):
 
 **See `design.md` for:** template home and why → D6; heading lists and entry shapes → `design.md#section-conventions`; skill form and why a skill not a command → D7.
 
-- [ ] `work/orchestration/goal-templates/goal.md` (NEW) — headings in the fixed order; `Limits` restates the four numbers explicitly (never inherited silently)
-- [ ] `work/orchestration/goal-templates/trail.md` (NEW) — `## Round N — <strategy-slug>` and the entry headings in occurrence order: `Strategy revision` · `T-00N scope` · `T-00N start` · `T-00N return` · `Checkpoint C-00N.rK` · `Round N result` · `Round N review` · `Stop`. Each with its named fields. Note in place: a `RetryCheck` is a `### T-00N start` under the same id, not a new entry kind; each checkpoint submission is a **new** `rK` entry, never an amendment (I4)
-- [ ] `work/orchestration/goal-templates/learnings.md` (NEW) — `## L-00N — <one-line claim>` with Evidence · Scope · Implication · Supersedes · Accepted by
+- [x] `work/orchestration/goal-templates/goal.md` (NEW) — headings in the fixed order; `Limits` restates the four numbers explicitly (never inherited silently)
+- [x] `work/orchestration/goal-templates/trail.md` (NEW) — `## Round N — <strategy-slug>` and the entry headings in occurrence order: `Strategy revision` · `T-00N scope` · `T-00N start` · `T-00N return` · `Checkpoint C-00N.rK` · `Round N result` · `Round N review` · `Stop`. Each with its named fields. Note in place: a `RetryCheck` is a `### T-00N start` under the same id, not a new entry kind; each checkpoint submission is a **new** `rK` entry, never an amendment (I4)
+- [x] `work/orchestration/goal-templates/learnings.md` (NEW) — `## L-00N — <one-line claim>` with Evidence · Scope · Implication · Supersedes · Accepted by
 - [ ] `.claude/skills/run-goal/SKILL.md` (NEW) — frontmatter (`name`, `description` with triggers, `allowed-tools`, `user-invocable: true`), then the three roles, the four modes (`ground | round | checkpoint | review`), name the goal directory, then "go here" → `GOAL_RUNBOOK.md`, the templates, the ADR register. **Restates no rule** — the `run-study/SKILL.md` precedent
 
 Shared conventions across all three templates: unwrapped prose, newest entry last, ISO dates, no entry edited in place, corrections as `### Amendment YYYY-MM-DD — amends <entry heading>`.
@@ -229,11 +229,11 @@ Shared conventions across all three templates: unwrapped prose, newest entry las
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/orchestration -q` → the heading test passes
+- [x] `uv run python -m pytest tests/orchestration -q` → the heading test passes
 - [ ] `uv run python -c "import yaml,sys; print(yaml.safe_load(open('.claude/skills/run-goal/SKILL.md').read().split('---')[1]))"` → frontmatter parses
 
 **Manual:**
-- [ ] Copy `trail.md` into a scratch directory and hand-write one round of the `20260823-magnet-technology-ab` study through it. Every field must have somewhere to go without invention
+- [x] Copy `trail.md` into a scratch directory and hand-write one round of the `20260823-magnet-technology-ab` study through it. Every field must have somewhere to go without invention
 - [ ] Confirm `SKILL.md` states no rule the runbook owns
 
 **What We Know Works After This Phase:** the contract surfaces exist at their contracted paths; SC2's conventions are copyable.
@@ -273,19 +273,19 @@ def test_a_joined_disposition_row_is_legal(tmp_path):
 
 **See `design.md` for:** the split-by-subject rule → D9; what the extraction must preserve → `design.md#validation-approach` (first block); I8 (positional row kind) and I9 (six columns, order fixed).
 
-- [ ] `tests/study/test_records.py` — extract the join logic from `test_findings_join_the_discovery_log` (`:41-64`) into two module-level helpers, `_ids_in_record(text, prefix)` and `_ids_in_log(text, prefix)`. The existing test then calls them, unchanged in behaviour. **`_ids_in_log` keeps `line.split("|")[3]`** — the `Record` column at index 3 (I9)
-- [ ] `tests/study/test_records.py` — correct the docstring of `test_findings_join_the_discovery_log`: the set comparison guarantees the joined-row shape *by intent*, not by accident
-- [ ] `tests/study/test_records.py` — add the fixture test above, with a comment naming the obligation it guards. The disposition row **follows** its sighting in file order, because row kind is positional (I8), and the assertion is that multiplicity is *legal*, not merely tolerated
+- [x] `tests/study/test_records.py` — extract the join logic from `test_findings_join_the_discovery_log` (`:41-64`) into two module-level helpers, `_ids_in_record(text, prefix)` and `_ids_in_log(text, prefix)`. The existing test then calls them, unchanged in behaviour. **`_ids_in_log` keeps `line.split("|")[3]`** — the `Record` column at index 3 (I9)
+- [x] `tests/study/test_records.py` — correct the docstring of `test_findings_join_the_discovery_log`: the set comparison guarantees the joined-row shape *by intent*, not by accident
+- [x] `tests/study/test_records.py` — add the fixture test above, with a comment naming the obligation it guards. The disposition row **follows** its sighting in file order, because row kind is positional (I8), and the assertion is that multiplicity is *legal*, not merely tolerated
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study -q` → full suite green, no regressions
-- [ ] **Red check:** temporarily rewrite `_ids_in_log`'s set comprehension to a list, rerun → the fixture test fails. Revert. Record the observed failure in Implementation Notes
-- [ ] `uv run ruff check tests/study` → no *new* findings (a pre-existing E501 at `tests/study/test_mechanical_failures.py:131` is not this item's; leave it)
+- [x] `uv run python -m pytest tests/study -q` → full suite green, no regressions
+- [x] **Red check:** temporarily rewrite `_ids_in_log`'s set comprehension to a list, rerun → the fixture test fails. Revert. Record the observed failure in Implementation Notes
+- [x] `uv run ruff check tests/study` → no *new* findings (a pre-existing E501 at `tests/study/test_mechanical_failures.py:131` is not this item's; leave it)
 
 **Manual:**
-- [ ] Confirm the fixture uses the same helpers the real test uses — no second parser (D9's whole reason)
+- [x] Confirm the fixture uses the same helpers the real test uses — no second parser (D9's whole reason)
 
 **What We Know Works After This Phase:** append-as-update is a checked guarantee, before any prose says it is allowed.
 
@@ -309,15 +309,15 @@ That Item 6's pending runbook sentences and this item's edits are textually disj
 
 Item 6 runs concurrently in `.project/active/run-study-first-consumer/`. Finding ids are **study-scoped and both studies carry a `#10`**, so the protected set is up to four sentences, not three (`design.md#amendment-text-plan` § Room for Item 6).
 
-- [ ] Read `.project/active/run-study-first-consumer/plan.md` Phase 3 and Phase 4 **Implementation Notes** at `:309`, `:323`, `:335` — *not* Phase 4's § Changes Required at `:224-227`, which carries no runbook-sentence checkbox at all
-- [ ] Resolve each `#10` to its study:
+- [x] Read `.project/active/run-study-first-consumer/plan.md` Phase 3 and Phase 4 **Implementation Notes** at `:309`, `:323`, `:335` — *not* Phase 4's § Changes Required at `:224-227`, which carries no runbook-sentence checkbox at all
+- [x] Resolve each `#10` to its study:
   - study 1 (`20260821-power-cycle-ab`) `#10` — oracle operands emitted as a labelled artifact before verification; "the runbook sentence lands at Phase 4" (`:309`)
   - study 1 `#11` — study stores go beside the record directory, not inside it
   - study 2 (`20260823-magnet-technology-ab`) `#10` — re-run preflight whenever `axes.json` changes; home runbook step 6 (`:335`)
   - study 2 `#6` — export `case_id` in `points.csv`
-- [ ] Their homes are runbook steps 5/6/7/9 and the study-definition convention. This item touches step 14, the administrator paragraph, and § `DISCOVERY_LOG.md` — disjoint
-- [ ] `git log --oneline -- .claude/skills/run-study/runbook.md` — if Item 6 has landed any of the four, apply the edits below **around** the new sentences, never through them
-- [ ] If any edit below cannot be applied without displacing a landed Item 6 sentence: **stop and surface it** — do not resolve it silently in either direction (capture-fidelity law 4)
+- [x] Their homes are runbook steps 5/6/7/9 and the study-definition convention. This item touches step 14, the administrator paragraph, and § `DISCOVERY_LOG.md` — disjoint
+- [x] `git log --oneline -- .claude/skills/run-study/runbook.md` — if Item 6 has landed any of the four, apply the edits below **around** the new sentences, never through them
+- [x] If any edit below cannot be applied without displacing a landed Item 6 sentence: **stop and surface it** — do not resolve it silently in either direction (capture-fidelity law 4)
 
 ### Test Stencil (Write This First, Red)
 
@@ -579,14 +579,59 @@ That the item as built actually satisfies the criteria as written — and, speci
 - `test_register_is_coherent` globs `*.md` and filters on the `NNN-slug` name pattern rather than the stencil's `[0-9][0-9][0-9]-*.md` glob, so `README.md`, `INDEX.md`, and `template.md` are excluded by an explicit rule a reader can see.
 
 ### Phase 2 Completion
+**Completed:** 2026-08-25
+
+**Actual Changes:**
+- `work/orchestration/GOAL_RUNBOOK.md` (NEW, 246 lines, unwrapped prose) — the fourteen sections in the plan's order, ending in a table citing all seven ADR records by relative path.
+
+**Validation run:**
+- `uv run python -m pytest tests/orchestration -q` → 1 passed (Phase 6 adds the runbook assertions).
+- Digest verb scan (`match|compar|recomput|verif` within 80 characters of "digest"): exactly one hit, and it is the sentence that *names* the bar — "No goal procedure compares a cited digest against a stored or computed one… barred until a real run shows this reading failing". No sentence instructs the act. The load-bearing phrase "Digests are read by people" is present for Phase 6 test 5.
+- All seven ADR relative links resolve from `work/orchestration/`.
+- Human/agent split scan (`the agent does` / `the human does` / `if you are an agent|human`): no hits. B4 holds — no section forks by operator kind.
+
+**Cold read against the four-question stencil:** the six procedural sections (grounding, round open/close, running a task, the checkpoint, the fresh review, resuming) each answer *what do I do* and *who checks it*, and each carries an explicit **Write:** line. Three of them did **not** answer *where does it go* on the first pass — round open/close, running a task, and the fresh review all left `trail.md` implied by the heading names. Fixed in place: each now carries a **Where:** line, and the round section states the append-only and dated-amendment rule once, for all the entries that follow it.
+
+**Reading against the referent (`handshake-lcoe-construction.md`):** the referent is a *run record* and this is a *procedure*, so the match is on density and explicitness rather than genre — no hedging, every rule cited to its record rather than restated, vocabularies fixed and used exactly. The closer structural precedent in the repo is `.claude/skills/run-study/runbook.md`, whose "states obligations, not decisions" framing and cite-don't-restate discipline this file follows deliberately; its opening paragraph says so.
+
+**Issues:** none.
+
+**Deviations:** none.
 
 ### Phase 3 Completion
+**Completed (partial):** 2026-08-25 — templates done, `run-goal/SKILL.md` **BLOCKED**
+
+**Actual Changes:**
+- `work/orchestration/goal-templates/goal.md` (NEW) — the ten headings in the fixed order; `Limits` restates all four numbers explicitly.
+- `work/orchestration/goal-templates/trail.md` (NEW) — `## Round N — <strategy-slug>` and the eight entry headings in occurrence order, each with its named fields. Carries the two notes in place: a retry is another `### T-00N start` under the same id, not a new entry kind; each checkpoint submission is a new `rK` entry, never an amendment.
+- `work/orchestration/goal-templates/learnings.md` (NEW) — `## L-00N — <claim>` with Evidence · Scope · Implication · Supersedes · Accepted by.
+
+**BLOCKED:** `.claude/skills/run-goal/SKILL.md` could not be written — writes under `.claude/` require an approval this non-interactive session cannot obtain. The file is drafted and ready; see the report to the orchestrator.
+
+**Assumption under test — held.** Every template heading came from the runbook; no template needed a convention the runbook does not carry.
 
 ### Phase 4 Completion
-**Red-check observed:** [record the failure seen when `_ids_in_log` is rewritten to a list]
+**Completed:** 2026-08-25
 
-### Phase 5 Completion
-**Re-check result:** [what Item 6 had landed at re-check time; how each `#10` resolved]
+**Actual Changes:**
+- `tests/study/test_records.py` — join logic extracted to module-level `_ids_in_record(text, prefix)` and `_ids_in_log(text, prefix)`; `test_findings_join_the_discovery_log` now calls them and is otherwise unchanged. `_ids_in_log` keeps `line.split("|")[3]` (I9).
+- Docstrings corrected: the set comparison guarantees the joined-row shape **by intent**, and `_ids_in_log`'s docstring says plainly that returning a set is load-bearing.
+- Added `test_a_joined_disposition_row_is_legal`, using the same helpers the real test uses — no second parser (D9).
+
+**Validation run:**
+- `uv run python -m pytest tests/study -q` → 232 passed, 43 skipped (was 231; +1 is the new test).
+- `uv run ruff check tests/study` → only the pre-existing E501 at `test_mechanical_failures.py:131`. No new findings.
+
+**Red-check observed:** rewriting `_ids_in_log`'s set comprehension to a list turns **three** tests red, not one — `test_a_joined_disposition_row_is_legal` plus `test_findings_join_the_discovery_log` for both committed records (`20260821-power-cycle-ab`, `20260823-magnet-technology-ab`). The real records already carry a repeated id under the Record column, so the guarantee is exercised by live data as well as by the fixture. Reverted; suite green again.
+
+### Phase 5 Completion — **NOT STARTED (partially blocked)**
+**Re-check result (Step 0, done 2026-08-25):** Item 6 has landed **none** of the four pending runbook sentences. The most recent commit touching `.claude/skills/run-study/runbook.md` is `ad2fb4ea` "Item 6 Phase 1: ratify and move the study policy; G1 template fix; briefs" — Phase 1, not Phase 4. `run-study-first-consumer/plan.md` Phase 3's certification note still lists all four as pending for "the Phase 4 runbook-sentence list".
+
+Each `#10` resolved to its study: study 1 (`20260821-power-cycle-ab`) `#10` is the oracle-emitted predicate operand (`rec_frac`), sentence due at step 5/7; study 2 (`20260823-magnet-technology-ab`) `#10` is re-run preflight whenever `axes.json` changes, home step 6. With `#11` (stores beside the record) and study 2's `#6` (`case_id` in `points.csv`), the protected set is steps 5/6/7/9 and the study-definition convention.
+
+**This item's edits touch step 14, the administrator paragraph, and § `DISCOVERY_LOG.md` — disjoint from all four. No collision; the surfacing stop did not fire.**
+
+**BLOCKED:** edits 1–4 target `.claude/skills/run-study/runbook.md`, and writes under `.claude/` require an approval this non-interactive session cannot obtain. Edits 5 (`DISCOVERY_LOG.md`) and 6 (`CLAUDE.md`) are unblocked but were **not applied** — applying half the amendment would leave the five homes disagreeing, which is the exact failure SC4 exists to prevent.
 
 ### Phase 6 Completion
 
