@@ -606,7 +606,7 @@ That the item as built actually satisfies the criteria as written — and, speci
 - `work/orchestration/goal-templates/trail.md` (NEW) — `## Round N — <strategy-slug>` and the eight entry headings in occurrence order, each with its named fields. Carries the two notes in place: a retry is another `### T-00N start` under the same id, not a new entry kind; each checkpoint submission is a new `rK` entry, never an amendment.
 - `work/orchestration/goal-templates/learnings.md` (NEW) — `## L-00N — <claim>` with Evidence · Scope · Implication · Supersedes · Accepted by.
 
-**BLOCKED:** `.claude/skills/run-goal/SKILL.md` could not be written — writes under `.claude/` require an approval this non-interactive session cannot obtain. The file is drafted and ready; see the report to the orchestrator.
+**BLOCKED, staged for the orchestrator:** `.claude/skills/run-goal/SKILL.md` could not be written — writes under `.claude/` require an approval this non-interactive session cannot obtain, and the block fires on the literal `.claude` path component anywhere in the path, including inside a staging directory. The finished file is staged at `.project/active/goal-harness-contract/staging/dot-claude/skills/run-goal/SKILL.md` (the `dot-claude` name is the workaround, not the target). Frontmatter parses; it points at the runbook, the templates, and the register, and restates no rule.
 
 **Assumption under test — held.** Every template heading came from the runbook; no template needed a convention the runbook does not carry.
 
@@ -631,7 +631,7 @@ Each `#10` resolved to its study: study 1 (`20260821-power-cycle-ab`) `#10` is t
 
 **This item's edits touch step 14, the administrator paragraph, and § `DISCOVERY_LOG.md` — disjoint from all four. No collision; the surfacing stop did not fire.**
 
-**BLOCKED:** edits 1–4 target `.claude/skills/run-study/runbook.md`, and writes under `.claude/` require an approval this non-interactive session cannot obtain. Edits 5 (`DISCOVERY_LOG.md`) and 6 (`CLAUDE.md`) are unblocked but were **not applied** — applying half the amendment would leave the five homes disagreeing, which is the exact failure SC4 exists to prevent.
+**BLOCKED, staged for the orchestrator:** edits 1–4 target `.claude/skills/run-study/runbook.md`, and writes under `.claude/` require an approval this non-interactive session cannot obtain. All four are staged as verbatim find/replace pairs at `.project/active/goal-harness-contract/staging/runbook-edits-1-4.md`, pre-wrapped to the file's ~90-column convention, each find string verified to occur exactly once in the runbook at `f83a9742`, with the Item 6 disjointness table and the post-apply checks. Edits 5 (`DISCOVERY_LOG.md`) and 6 (`CLAUDE.md`) are unblocked but were **not applied** — applying half the amendment would leave the five homes disagreeing, which is the exact failure SC4 exists to prevent.
 
 ### Phase 6 Completion
 
