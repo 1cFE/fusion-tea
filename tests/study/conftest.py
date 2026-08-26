@@ -289,3 +289,135 @@ def stock_route_run(tmp_path_factory, stock_simkit_session_path):
         "store": out / "_work" / "stellarator-availability-sweep-v1.db",
         "simkit": stock_simkit_session_path,
     }
+
+
+# --------------------------------------------- the integration seam's hermetic workspace
+#
+# The seam's gates run producers that regenerate a package in place and read
+# ``repo_root()``-relative paths, so a gate test needs a package tree *inside* the worktree
+# (``tmp_path`` is outside it, and git errors rather than judging there) that no test may
+# write into if it were tracked. The answer is a gitignored directory at the repo root,
+# materialized from the committed state and removed in a ``finally``.
+#
+# The equality assertion is the point, not a formality. Two of the seam's ten gates judge
+# the **repository** — the toolchain pin and the model-family spine suite, whose producers
+# accept no package argument. Those gates only mean something while the workspace really is
+# the committed state, so that is checked before the seam ever sees it rather than hoped.
+
+WORKSPACE_ROOT = REPO_ROOT / ".integration_workspace"
+E2E = REPO_ROOT / "exploration" / "stellarator_e2e"
+REAL_MODELS = E2E / "models"
+REAL_SNAPSHOT = E2E / "stellarator.snapshot.json"
+REAL_ROUTE_DIR = E2E / "studies"
+REAL_CENSUS = REPO_ROOT / "tests" / "models" / "data" / "mfe_census.json"
+
+
+@dataclass
+class IntegrationWorkspace:
+    """A committed-state copy of everything one integration request names.
+
+    ``source_digests`` maps each workspace-relative path to the sha256 of the **tracked**
+    file it came from, so a test can prove materialization moved no byte.
+    ``entry_digests`` is what the workspace actually holds once it is ready — the same
+    values, except for the one file the manifest schema forces the fixture to rewrite,
+    ``package.path``. A restore is proven against ``entry_digests``.
+    """
+
+    root: Path
+    package: Path
+    models: Path
+    manifest: Path
+    axes: Path
+    census: Path
+    snapshot: Path
+    route_sys_path: Path
+    source_digests: dict[str, str]
+    entry_digests: dict[str, str]
+    repo_clean_over_sources: bool
+
+
+def _copy_tree_digests(source: Path, destination: Path, root: Path) -> dict[str, str]:
+    """Copy a tree and return the *source* digest of every file, keyed workspace-relative."""
+    from scripts.study import manifest as manifest_mod
+
+    shutil.copytree(source, destination, symlinks=True)
+    digests = {}
+    for path in sorted(p for p in source.rglob("*") if p.is_file() and not p.is_symlink()):
+        relative = destination / path.relative_to(source)
+        digests[str(relative.relative_to(root))] = manifest_mod.sha256_file(path)
+    return digests
+
+
+def _copy_file_digest(source: Path, destination: Path, root: Path) -> dict[str, str]:
+    from scripts.study import manifest as manifest_mod
+
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_bytes(source.read_bytes())
+    return {str(destination.relative_to(root)): manifest_mod.sha256_file(source)}
+
+
+def _repo_clean_over(paths) -> bool:
+    done = subprocess.run(
+        ["git", "status", "--porcelain", "--untracked-files=all", "--", *(str(p) for p in paths)],
+        cwd=str(REPO_ROOT), capture_output=True, text=True,
+    )
+    assert done.returncode == 0, done.stderr
+    return not done.stdout.strip()
+
+
+@pytest.fixture
+def integration_workspace(stock_simkit_path):
+    """The committed stellarator package and its inputs, materialized inside the worktree.
+
+    Function-scoped: the refusal fixtures doctor different files, and a shared workspace
+    would couple their assertions to each other's mutations.
+    """
+    from scripts.study import manifest as manifest_mod
+
+    assert not WORKSPACE_ROOT.exists(), f"a previous run left {WORKSPACE_ROOT} behind"
+    root = WORKSPACE_ROOT
+    root.mkdir()
+    try:
+        digests: dict[str, str] = {}
+        # The package root is a tracked symlink to ``../generated``; the layout is mirrored
+        # so the seam's resolve-before-digesting is exercised the way production hits it.
+        digests |= _copy_tree_digests(REAL_PACKAGE.resolve(), root / "generated", root)
+        (root / "pkg").mkdir()
+        (root / "pkg" / REAL_PACKAGE.name).symlink_to(Path("..") / "generated")
+        digests |= _copy_tree_digests(REAL_MODELS, root / "models", root)
+        digests |= _copy_file_digest(REAL_SNAPSHOT, root / REAL_SNAPSHOT.name, root)
+        digests |= _copy_file_digest(REAL_MANIFEST, root / "studies" / "manifest.json", root)
+        digests |= _copy_file_digest(KNOWN_ANSWER_DECLARATION, root / "studies" / "axes.json", root)
+        digests |= _copy_file_digest(REAL_CENSUS, root / "mfe_census.json", root)
+
+        for relative, digest in digests.items():
+            assert manifest_mod.sha256_file(root / relative) == digest, relative
+
+        package = root / "pkg" / REAL_PACKAGE.name
+        manifest_path = root / "studies" / "manifest.json"
+        # package.path is repo-relative by schema, and the workspace is a different root.
+        data = json.loads(manifest_path.read_text())
+        data["package"]["path"] = os.path.relpath(package.resolve(), REPO_ROOT)
+        manifest_path.write_text(json.dumps(data, indent=2) + "\n")
+        entry_digests = dict(digests)
+        entry_digests[str(manifest_path.relative_to(root))] = manifest_mod.sha256_file(
+            manifest_path
+        )
+
+        yield IntegrationWorkspace(
+            root=root,
+            package=package,
+            models=root / "models",
+            manifest=manifest_path,
+            axes=root / "studies" / "axes.json",
+            census=root / "mfe_census.json",
+            snapshot=root / REAL_SNAPSHOT.name,
+            route_sys_path=REAL_ROUTE_DIR,
+            source_digests=digests,
+            entry_digests=entry_digests,
+            repo_clean_over_sources=_repo_clean_over(
+                [REAL_PACKAGE.resolve(), REAL_MODELS, REAL_SNAPSHOT, REAL_MANIFEST, REAL_CENSUS]
+            ),
+        )
+    finally:
+        shutil.rmtree(root, ignore_errors=True)

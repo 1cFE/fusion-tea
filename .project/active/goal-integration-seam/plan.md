@@ -221,19 +221,19 @@ def test_workspace_is_gitignored_and_removed(tmp_path):
 
 **See `design.md` for:** the fixture's contract and why it lives in `tests/study/conftest.py` → `design.md#component-overview`; the equality assertion → D10; reuse of the teax/licence machinery → `conftest.py:239-270`.
 
-- [ ] `.gitignore` — add `/.integration_workspace/`
-- [ ] `tests/study/test_integration_workspace.py` (NEW)
-- [ ] `tests/study/conftest.py` — one new fixture `integration_workspace`, materializing from `REAL_PACKAGE`, `REAL_MANIFEST`, `KNOWN_ANSWER_DECLARATION`, `models/`, `tests/models/data/mfe_census.json`; asserts each materialized file's sha256 equals the tracked file's and that the repo is clean over the source paths; rewrites `package.path` repo-relative the way `package_copy` does (`:207`); removes the workspace in a `finally`. Reuses `_stock_simkit_path` and the `STUDY_REQUIRE_TEAX` machinery rather than duplicating it. **No existing fixture's behaviour changes** (A12).
+- [x] `.gitignore` — add `/.integration_workspace/`
+- [x] `tests/study/test_integration_workspace.py` (NEW)
+- [x] `tests/study/conftest.py` — one new fixture `integration_workspace`, materializing from `REAL_PACKAGE`, `REAL_MANIFEST`, `KNOWN_ANSWER_DECLARATION`, `models/`, `tests/models/data/mfe_census.json`; asserts each materialized file's sha256 equals the tracked file's and that the repo is clean over the source paths; rewrites `package.path` repo-relative the way `package_copy` does (`:207`); removes the workspace in a `finally`. Reuses `_stock_simkit_path` and the `STUDY_REQUIRE_TEAX` machinery rather than duplicating it. **No existing fixture's behaviour changes** (A12).
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study/test_integration_workspace.py -q` → pass
-- [ ] `uv run python -m pytest tests/study -q` → the pre-existing tally is unmoved except by the new tests. Record the before/after counts in Implementation Notes; A12 is checked by that number, not by assertion.
-- [ ] `git status --porcelain` → clean after the run (the workspace is removed and ignored)
+- [x] `uv run python -m pytest tests/study/test_integration_workspace.py -q` → pass
+- [x] `uv run python -m pytest tests/study -q` → the pre-existing tally is unmoved except by the new tests. Record the before/after counts in Implementation Notes; A12 is checked by that number, not by assertion.
+- [x] `git status --porcelain` → clean after the run (the workspace is removed and ignored)
 
 **Manual:**
-- [ ] Interrupt a test mid-run (`-x` with a deliberate failure); confirm the `finally` still removes the workspace
+- [x] Interrupt a test mid-run (`-x` with a deliberate failure); confirm the `finally` still removes the workspace
 
 **What We Know Works After This Phase:** gate tests have somewhere hermetic to run, and repo-scoped gates 1a and 5 are meaningful by construction rather than by luck.
 
@@ -768,6 +768,38 @@ this machine: the only wheels present are uv's own git-built ones
 `7505028f…` for agentic-mbse). Measured, not inferred — the suite was run with all four
 variables exported. Consequence for the plan is recorded under Phase 4.
 ### Phase 2 Completion
+
+**Completed:** 2026-08-26
+
+**Changes made**
+- `.gitignore` — `/.integration_workspace/`.
+- `tests/study/conftest.py` — one new fixture, `integration_workspace`, plus the
+  `IntegrationWorkspace` record. Materializes the resolved package tree, `models/`, the
+  tracked snapshot, the manifest, the axis declaration and `mfe_census.json` into a
+  gitignored directory at the repo root, asserts every materialized file's sha256 equals the
+  tracked file's *before* the one rewrite the schema forces, and removes the tree in a
+  `finally`. Reuses `stock_simkit_path`, so a missing teax root fails loudly under
+  `STUDY_REQUIRE_TEAX=1` rather than reporting green. No existing fixture changed.
+- `tests/study/test_integration_workspace.py` (NEW) — 10 tests.
+
+**Test counts.** `tests/study` 288 → **298 passed, 1 skipped**. Pre-existing tally unmoved.
+
+**Two decisions the stencil did not fix**
+- **`source_digests` and `entry_digests` are separate.** The stencil asserts every
+  materialized file equals its tracked digest, but the fixture must rewrite
+  `package.path` — the schema requires it repo-relative and the workspace is a different
+  root. One field would have to lie about one file. So `source_digests` is the tracked
+  truth (the materialization proof) and `entry_digests` is what the workspace holds at
+  entry (the restore target Phase 3 and Phase 5 compare against). A test asserts the two
+  differ in exactly one file, and names it.
+- **The layout mirrors the tracked tree.** The package root is a symlink to `../generated`
+  and the snapshot sits beside the models root, because gate 4 *finds* the tracked snapshot
+  rather than being told it — the request has no `--snapshot` flag, per the design's own
+  data-flow list — and the seam must resolve the symlink before digesting. A test pins each.
+
+**Manual check.** A deliberately failing test under `-x` still leaves no
+`.integration_workspace/`: the `finally` runs on the fixture's generator teardown, and
+`test_the_workspace_is_removed_after_the_fixture` asserts the absence from a later test.
 ### Phase 3 Completion
 ### Phase 4 Completion
 ### Phase 5 Completion

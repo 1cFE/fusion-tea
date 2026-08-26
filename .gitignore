@@ -36,6 +36,9 @@ knowledge/LOCAL_SOURCES.yaml
 knowledge/.staging/
 knowledge/.registry.lock
 
+# The integration seam's test workspace (tests/study/conftest.py: integration_workspace)
+/.integration_workspace/
+
 # Explorer build artifacts
 exploration/concept_explorer/dist/
 
