@@ -10,12 +10,16 @@ condition slug, and where its own evidence sits.
 from __future__ import annotations
 
 import hashlib
+import json
 import os
 
 import pytest
 
+from scripts import integrate
 from scripts.study import manifest as manifest_mod
 from tests.study.conftest import run_seam, run_seam_raw
+
+CONTRACT = "contracts/model_contract.json"
 
 
 @pytest.fixture
@@ -51,7 +55,7 @@ def test_absent_expected_teax_revision_could_not_run_rather_than_pass(
     blocker = run_seam(argv, out)["blocker"]
     assert blocker["gate"] == "teax-revision"
     assert blocker["mode"] == "could_not_run"
-    assert blocker["condition"] == "toolchain-drift"
+    assert blocker["condition"] == "input-missing"
 
 
 def _wrong_bytes_wheel(tmp_path):
@@ -101,3 +105,74 @@ def test_a_refusing_run_exits_one_and_leaves_the_repo_clean(
     done = run_seam_raw(integration_workspace.request_argv(out), env)
     assert done.returncode == 1
     assert integration_workspace.repo_clean_over_sources is True
+
+
+# --------------------------------------------------- gates 2, 3 and 4: the mutating gates
+
+
+def test_edited_package_byte_refuses_gate_2_and_the_tree_is_restored(
+    integration_workspace, tmp_path
+):
+    """A package that regeneration rewrites was not the integrated form of its model."""
+    out = tmp_path / "out"
+    target = integrate.resolve_package(integration_workspace.package) / CONTRACT
+    target.write_text(target.read_text().replace('"parameters"', '"parameters_edited"', 1))
+    entry = integrate.package_digests(integration_workspace.package)
+
+    document = run_seam(integration_workspace.request_argv(out), out)
+
+    blocker = document["blocker"]
+    assert blocker["gate"] == "regeneration"
+    assert blocker["producer"] == "sysml-codegen generate"
+    assert blocker["scope"] == "request"
+    assert blocker["mode"] == "refused"
+    assert blocker["condition"] == "package-not-integrated"
+    assert blocker["evidence"] == [manifest_mod.repo_relative_posix(out / "moved_files.txt")]
+    assert CONTRACT in (out / "moved_files.txt").read_text()
+    assert integrate.package_digests(integration_workspace.package) == entry, (
+        "a byte-movement refusal must leave the tree exactly as it found it"
+    )
+    assert [gate["status"] for gate in document["gates"][3:]] == ["not reached"] * 7
+
+
+def test_doctored_census_refuses_gate_4(integration_workspace, tmp_path):
+    out = tmp_path / "out"
+    census = json.loads(integration_workspace.census.read_text())
+    census["entry_points"] += 1
+    integration_workspace.census.write_text(json.dumps(census, indent=2) + "\n")
+
+    document = run_seam(integration_workspace.request_argv(out), out)
+
+    blocker = document["blocker"]
+    assert blocker["gate"] == "census-snapshot"
+    assert blocker["producer"] == "tests/models/test_model_family_spines.py::_by_entry_type"
+    assert blocker["scope"] == "request"
+    assert blocker["mode"] == "refused"
+    assert blocker["condition"] == "census-stale"
+    assert "entry points" in blocker["detail"]
+    assert [gate["status"] for gate in document["gates"][:4]] == ["pass"] * 4, (
+        "gates 1a, 1b, 2 and 3 must pass before a census refusal means anything"
+    )
+
+
+def test_absent_census_file_could_not_run_rather_than_pass(integration_workspace, tmp_path):
+    out = tmp_path / "out"
+    argv = integration_workspace.request_argv(out, **{"--census-file": None})
+    blocker = run_seam(argv, out)["blocker"]
+    assert blocker["gate"] == "census-snapshot"
+    assert blocker["mode"] == "could_not_run"
+    assert blocker["condition"] == "input-missing"
+
+
+def test_two_snapshots_beside_the_models_root_are_input_invalid(
+    integration_workspace, tmp_path
+):
+    """The snapshot is found rather than named, so ambiguity refuses rather than guesses."""
+    out = tmp_path / "out"
+    (integration_workspace.models.parent / "a_second.snapshot.json").write_text("{}")
+
+    blocker = run_seam(integration_workspace.request_argv(out), out)["blocker"]
+    assert blocker["gate"] == "census-snapshot"
+    assert blocker["mode"] == "could_not_run"
+    assert blocker["condition"] == "input-invalid"
+    assert "exactly one *.snapshot.json" in blocker["detail"]

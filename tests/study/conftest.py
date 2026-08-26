@@ -376,9 +376,16 @@ def _copy_tree_digests(source: Path, destination: Path, root: Path) -> dict[str,
     """Copy a tree and return the *source* digest of every file, keyed workspace-relative."""
     from scripts.study import manifest as manifest_mod
 
-    shutil.copytree(source, destination, symlinks=True)
+    # Interpreter bytecode caches are not artifacts and the repository ignores them; copying
+    # them would put files in the workspace that no tracked digest can be compared against.
+    shutil.copytree(source, destination, symlinks=True,
+                    ignore=shutil.ignore_patterns(integrate.CACHE_DIRECTORY))
     digests = {}
-    for path in sorted(p for p in source.rglob("*") if p.is_file() and not p.is_symlink()):
+    for path in sorted(source.rglob("*")):
+        if not path.is_file() or path.is_symlink():
+            continue
+        if integrate.CACHE_DIRECTORY in path.relative_to(source).parts:
+            continue
         relative = destination / path.relative_to(source)
         digests[str(relative.relative_to(root))] = manifest_mod.sha256_file(path)
     return digests

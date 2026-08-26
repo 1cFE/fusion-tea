@@ -155,22 +155,6 @@ CONDITIONS = (
 )
 
 
-#: What each gate's own refusal is called. One slug per gate, so the operator action a
-#: caller reads off the guide is decided by which producer refused, not by parsing prose.
-REFUSAL_CONDITION = {
-    "pinned-packages": "toolchain-drift",
-    "teax-revision": "toolchain-drift",
-    "regeneration": "package-not-integrated",
-    "handwritten-preservation": "handwritten-lost",
-    "census-snapshot": "census-stale",
-    "model-family-spine": "repo-lineage-broken",
-    "manifest": "manifest-stale",
-    "preflight": "preflight-refused",
-    "verification": "verification-refused",
-    "lineage": "lineage-mismatch",
-}
-
-
 @dataclass(frozen=True)
 class GateOutcome:
     """A gate that passed: what it checked, and where its own output sits."""
@@ -247,6 +231,31 @@ class SeamBlocker(Exception):
             "actual": self.actual,
             "evidence": self.evidence,
         }
+
+
+def unasked(gate: Gate, detail: str) -> SeamBlocker:
+    """A gate whose caller-supplied input was not supplied. It could not run; it did not pass.
+
+    The slug is ``input-missing`` rather than the gate's own refusal condition, because the
+    operator action is to change the request, not to change the package.
+    """
+    return SeamBlocker(
+        gate=gate.name, producer=gate.producer, scope=gate.scope,
+        mode=COULD_NOT_RUN, condition="input-missing", detail=detail,
+    )
+
+
+def producer_could_not_run(gate: Gate, detail: str, evidence: tuple[str, ...] = ()) -> SeamBlocker:
+    """A producer that reached for its work and could not do it, past gate 0's sweep.
+
+    ``env-missing`` is the slug for every one of these: a producer that crashes, errors, or
+    exits oddly *after* the environment sweep passed is an operational accident, which is
+    what that slug tells a goal caller. The detail carries what actually happened.
+    """
+    return SeamBlocker(
+        gate=gate.name, producer=gate.producer, scope=gate.scope,
+        mode=COULD_NOT_RUN, condition="env-missing", detail=detail, evidence=evidence,
+    )
 
 
 def precondition_blocker(condition: str, detail: str) -> SeamBlocker:
@@ -675,8 +684,20 @@ def resolve_package(package: Path) -> Path:
     return Path(package).resolve()
 
 
+#: Interpreter bytecode caches. Not package artifacts: nothing authors them, the package
+#: contract does not seal them, and the repository ignores them everywhere — so a rewritten
+#: ``.pyc`` is not package movement, and a gate that called it movement would refuse every
+#: package that had ever been imported. Excluding them keeps the seam's digest judging the
+#: same set of files the repository's own cleanliness gate judges.
+CACHE_DIRECTORY = "__pycache__"
+
+
+def is_package_artifact(path: Path, package_root: Path) -> bool:
+    return CACHE_DIRECTORY not in path.relative_to(package_root).parts
+
+
 def package_digests(package_root: Path) -> dict[str, str]:
-    """Every file under the package tree, package-relative path to sha256.
+    """Every artifact under the package tree, package-relative path to sha256.
 
     The seam judges byte movement with this rather than with git, because a package inside
     a gitignored directory reports clean whatever its bytes do — which is exactly where the
@@ -690,7 +711,8 @@ def package_digests(package_root: Path) -> dict[str, str]:
     root = resolve_package(package_root)
     return {
         manifest_mod.package_relative_posix(path, root): manifest_mod.sha256_file(path)
-        for path in sorted(p for p in root.rglob("*") if p.is_file() and not p.is_symlink())
+        for path in sorted(root.rglob("*"))
+        if path.is_file() and not path.is_symlink() and is_package_artifact(path, root)
     }
 
 
@@ -706,7 +728,8 @@ def backup(package_root: Path, backup_dir: Path) -> Path:
     root = resolve_package(package_root)
     if backup_dir.exists():
         shutil.rmtree(backup_dir)
-    shutil.copytree(root, backup_dir, symlinks=True)
+    shutil.copytree(root, backup_dir, symlinks=True,
+                    ignore=shutil.ignore_patterns(CACHE_DIRECTORY))
     return backup_dir
 
 
@@ -750,6 +773,43 @@ def run_producer(argv: list[str], env: dict[str, str]) -> subprocess.CompletedPr
     )
 
 
+#: The one subtree regeneration must never open. A codegen layout convention, not a package
+#: name: every generated package puts its preserved hand-written implementations here.
+PRESERVED_SUBTREE = "handwritten/"
+
+
+@dataclass(frozen=True)
+class SequenceState:
+    """What the gates hand each other: the package as it stood at entry, and its backup."""
+
+    entry_digests: dict[str, str]
+    backup_dir: Path
+
+    def moved_since_entry(self, package_root: Path) -> list[str]:
+        return moved_paths(self.entry_digests, package_digests(package_root))
+
+
+def byte_movement_blocker(gate: Gate, condition: str, request: Request, state: SequenceState,
+                          moved: list[str], detail: str) -> SeamBlocker:
+    """Restore the package, record what moved, and refuse.
+
+    The restore happens here rather than at the call site because the two are one decision:
+    a byte-movement refusal that left the tree moved would be the seam performing the very
+    mutation it exists to refuse.
+    """
+    cited = cite_moved(request.package, moved)
+    listing = request.out_dir / "moved_files.txt"
+    listing.write_text("\n".join(cited) + "\n", encoding="utf-8")
+    restore(request.package, state.backup_dir, state.entry_digests)
+    return SeamBlocker(
+        gate=gate.name, producer=gate.producer, scope=gate.scope,
+        mode=REFUSED, condition=condition,
+        detail=f"{detail} — {len(moved)} file(s) moved",
+        evidence=(manifest_mod.repo_relative_posix(listing),),
+    )
+
+
+
 # --------------------------------------------------------------- the pytest producers
 
 
@@ -767,7 +827,8 @@ def junit_outcome(junit_path: Path) -> tuple[int, int]:
     return len(root.findall(".//failure")), len(root.findall(".//error"))
 
 
-def run_pytest_gate(gate: Gate, target: str, request: Request, env: dict[str, str]) -> GateOutcome:
+def run_pytest_gate(gate: Gate, target: str, condition: str, request: Request,
+                    env: dict[str, str]) -> GateOutcome:
     """A pytest suite as a gate: exit 0 passes, a ``<failure>`` refuses, anything else could
     not run.
 
@@ -788,32 +849,33 @@ def run_pytest_gate(gate: Gate, target: str, request: Request, env: dict[str, st
     if done.returncode == 1 and failures and not errors:
         raise SeamBlocker(
             gate=gate.name, producer=gate.producer, scope=gate.scope,
-            mode=REFUSED, condition=REFUSAL_CONDITION[gate.name],
+            mode=REFUSED, condition=condition,
             detail=f"{target}: {failures} failing check(s)\n{done.stdout.strip()[-2000:]}",
             evidence=evidence,
         )
-    raise SeamBlocker(
-        gate=gate.name, producer=gate.producer, scope=gate.scope,
-        mode=COULD_NOT_RUN, condition="env-missing",
-        detail=f"{target} could not judge: pytest exited {done.returncode} with "
-               f"{errors} error(s) and {failures} failure(s)\n{done.stderr.strip()[-2000:]}",
-        evidence=evidence,
+    raise producer_could_not_run(
+        gate,
+        f"{target} could not judge: pytest exited {done.returncode} with {errors} error(s) "
+        f"and {failures} failure(s)\n{done.stderr.strip()[-2000:]}",
+        evidence,
     )
 
 
 # ------------------------------------------------------------------------ the gates
 
 
-def gate_pinned_packages(request: Request, env: dict[str, str]) -> GateOutcome:
+def gate_pinned_packages(request: Request, env: dict[str, str],
+                         state: SequenceState) -> GateOutcome:
     """Gate 1a: the toolchain the package was generated through, judged by the repo's own
     provenance suite. Repo-scoped — the suite reads ``pyproject.toml``, ``uv.lock`` and the
     installed wheels, and accepts no package argument."""
     return run_pytest_gate(
-        GATES[0], "tests/test_dependency_provenance.py", request, env
+        GATES[0], "tests/test_dependency_provenance.py", "toolchain-drift", request, env
     )
 
 
-def gate_teax_revision(request: Request, env: dict[str, str]) -> GateOutcome:
+def gate_teax_revision(request: Request, env: dict[str, str],
+                       state: SequenceState) -> GateOutcome:
     """Gate 1b: the teax checkout's revision against the one the caller expects.
 
     The seam does this comparison itself because no producer anywhere does it — teax is a
@@ -824,18 +886,15 @@ def gate_teax_revision(request: Request, env: dict[str, str]) -> GateOutcome:
     expected = request.expected_teax_revision
     teax_root = Path(env["STOP_PARSER_TEAX_ROOT"])
     if not expected:
-        raise SeamBlocker(
-            gate=GATES[1].name, producer=GATES[1].producer, scope=GATES[1].scope,
-            mode=COULD_NOT_RUN, condition="toolchain-drift",
-            detail="--expected-teax-revision was not supplied, and the seam does not mint "
-                   "a pin of its own; the caller is the one who knows the lineage",
+        raise unasked(
+            GATES[1],
+            "--expected-teax-revision was not supplied, and the seam does not mint a pin of "
+            "its own; the caller is the one who knows the lineage",
         )
     actual = teax_revision(teax_root)
     if actual is None:
-        raise SeamBlocker(
-            gate=GATES[1].name, producer=GATES[1].producer, scope=GATES[1].scope,
-            mode=COULD_NOT_RUN, condition="toolchain-drift",
-            detail=f"git could not read HEAD of the teax checkout at {teax_root}",
+        raise producer_could_not_run(
+            GATES[1], f"git could not read HEAD of the teax checkout at {teax_root}"
         )
     if not actual.casefold().startswith(expected.casefold()):
         raise SeamBlocker(
@@ -847,7 +906,8 @@ def gate_teax_revision(request: Request, env: dict[str, str]) -> GateOutcome:
     return GateOutcome(f"teax is at {actual}, matching the expected {expected}", ())
 
 
-def gate_model_family_spine(request: Request, env: dict[str, str]) -> GateOutcome:
+def gate_model_family_spine(request: Request, env: dict[str, str],
+                            state: SequenceState) -> GateOutcome:
     """Gate 5: the canonical tree, the family twins and the tracked census.
 
     Repo-scoped, and that is a property of the producer rather than a choice: the suite
@@ -856,8 +916,187 @@ def gate_model_family_spine(request: Request, env: dict[str, str]) -> GateOutcom
     operator is standing in rather than about ``--package``; ``scope`` is what says so.
     """
     return run_pytest_gate(
-        GATES[5], "tests/models/test_model_family_spines.py", request, env
+        GATES[5], "tests/models/test_model_family_spines.py", "repo-lineage-broken", request, env
     )
+
+
+def gate_regeneration(request: Request, env: dict[str, str],
+                      state: SequenceState) -> GateOutcome:
+    """Gate 2: regeneration on the pin, in place, required to move no generated byte.
+
+    The package is regenerated into itself. Anything that moves is the refusal, not a
+    result to accept: a package whose regeneration rewrites it was not the integrated form
+    of the model, and finishing that work belongs to the modeling item. The tree is put
+    back before the return is written, so a refused run leaves nothing half-performed.
+    """
+    package_name = manifest_mod.read_package_name(request.package)
+    done = run_producer(
+        ["uv", "run", "sysml-codegen", "generate",
+         "--models", str(request.models_root),
+         "--output", str(resolve_package(request.package)),
+         "--package-name", package_name,
+         "--overwrite", "--smart-regen", "--preserve-handwritten"],
+        env,
+    )
+    if done.returncode != 0:
+        restore(request.package, state.backup_dir, state.entry_digests)
+        raise producer_could_not_run(
+            GATES[2],
+            f"sysml-codegen generate exited {done.returncode}\n{done.stderr.strip()[-2000:]}",
+        )
+
+    moved = [path for path in state.moved_since_entry(request.package)
+             if not path.startswith(PRESERVED_SUBTREE)]
+    if moved:
+        raise byte_movement_blocker(
+            GATES[2], "package-not-integrated", request, state, moved,
+            "regenerating on the pin rewrote the package, so what is committed is not the "
+            "integrated form of the model it was generated from",
+        )
+    return GateOutcome(
+        f"regeneration through {package_name} rewrote no byte outside {PRESERVED_SUBTREE}", ()
+    )
+
+
+def gate_handwritten_preservation(request: Request, env: dict[str, str],
+                                  state: SequenceState) -> GateOutcome:
+    """Gate 3: the handwritten implementations survive regeneration byte for byte.
+
+    Its own gate rather than a corollary of gate 2, because it fails for its own reason and
+    the operator action is different: a stubbed normative implementation is a lost hand-written
+    proof, not a stale package. Gate 2 owns everything regeneration rewrites and this gate
+    owns the subtree it must never open; between them they cover the whole package.
+    """
+    preserved = [path for path in state.entry_digests if path.startswith(PRESERVED_SUBTREE)]
+    moved = [path for path in state.moved_since_entry(request.package)
+             if path.startswith(PRESERVED_SUBTREE)]
+    if moved:
+        raise byte_movement_blocker(
+            GATES[3], "handwritten-lost", request, state, moved,
+            "regeneration did not preserve the hand-written implementations; a stubbed "
+            "normative file is a failed gate even when the seal is clean",
+        )
+    return GateOutcome(
+        f"{len(preserved)} file(s) under {PRESERVED_SUBTREE} are byte-identical", ()
+    )
+
+
+def tracked_snapshot(models_root: Path) -> Path:
+    """The tracked instance-graph snapshot: found beside the models root, not named.
+
+    The request carries no ``--snapshot`` flag, so the snapshot is discovered the way
+    ``study_route.spec_path`` discovers a package's one pipeline spec — by finding exactly
+    one, and refusing rather than guessing when there is not exactly one.
+    """
+    candidates = sorted(models_root.parent.glob("*.snapshot.json"))
+    if len(candidates) != 1:
+        raise SeamBlocker(
+            gate=GATES[4].name, producer=SEAM_PATH, scope=GATES[4].scope,
+            mode=COULD_NOT_RUN, condition="input-invalid",
+            detail=f"expected exactly one *.snapshot.json beside the models root at "
+                   f"{manifest_mod.repo_relative_posix(models_root.parent)}, found "
+                   f"{len(candidates)}: "
+                   + ", ".join(manifest_mod.repo_relative_posix(c) for c in candidates),
+        )
+    return candidates[0]
+
+
+def recapture_snapshot(request: Request) -> Path:
+    """Recapture the instance graph from the models root into ``--out-dir``."""
+    from sysml_codegen.snapshot.capture import capture_instance_graph_snapshot
+
+    recaptured = request.out_dir / "recaptured.snapshot.json"
+    try:
+        capture_instance_graph_snapshot([request.models_root], recaptured)
+    except Exception as exc:  # noqa: BLE001 — the producer's own failure, reported as its own
+        raise producer_could_not_run(
+            GATES[4], f"snapshot capture raised {type(exc).__name__}: {exc}"
+        ) from exc
+    return recaptured
+
+
+def rederived_census(package_root: Path) -> dict:
+    """The entry-point census, re-derived through the spine suite's own helper.
+
+    Imported rather than reimplemented: the classification is the producer's and a second
+    implementation of it is exactly the drift this gate exists to catch. That the helper is
+    private to a test module is a real smell whose cause — the census derivation has no
+    importable home — is filed against that module rather than worked around here.
+    """
+    from tests.models.test_model_family_spines import _by_entry_type
+
+    contract = common.read_json(
+        Path(package_root) / "contracts" / "model_contract.json", "model contract"
+    )
+    return {
+        "entry_points": len(contract["parameters"]),
+        "by_entry_type": {
+            key: sorted(value) for key, value in _by_entry_type(Path(package_root)).items()
+        },
+    }
+
+
+def gate_census_snapshot(request: Request, env: dict[str, str],
+                         state: SequenceState) -> GateOutcome:
+    """Gate 4: the snapshot recaptures byte-identically and the census re-derives exactly.
+
+    Two checks with two different refusals, because the operator action differs. A snapshot
+    that moved says the model state the package was generated from is not the one on disk;
+    a census that moved says the model's meaning moved and the fixture was never re-derived.
+    Both are the modeling item's unfinished work, and the return says which.
+    """
+    tracked = tracked_snapshot(request.models_root)
+    recaptured = recapture_snapshot(request)
+    evidence = (manifest_mod.repo_relative_posix(recaptured),)
+    if manifest_mod.sha256_file(recaptured) != manifest_mod.sha256_file(tracked):
+        raise SeamBlocker(
+            gate=GATES[4].name, producer="sysml_codegen.snapshot.capture",
+            scope=GATES[4].scope, mode=REFUSED, condition="snapshot-drift",
+            detail=f"the snapshot recaptured from "
+                   f"{manifest_mod.repo_relative_posix(request.models_root)} is not the "
+                   f"tracked {manifest_mod.repo_relative_posix(tracked)}. The "
+                   f"snapshot pins the toolchain as well as the model, so check the "
+                   f"toolchain pin gate's result before reading this as model drift",
+            evidence=evidence,
+        )
+
+    if request.census is None:
+        raise unasked(
+            GATES[4],
+            "--census-file was not supplied, so the entry-point census could not be checked "
+            "against the sealed package; it reaches this gate and no other",
+        )
+    declared = common.read_json(request.census, "entry-point census")
+    live = rederived_census(request.package)
+    live_semantic = manifest_mod.read_semantic_fingerprint(request.package)
+    drifted = []
+    if declared["derived_against_semantic_fingerprint"] != live_semantic:
+        drifted.append(
+            f"the census was derived against semantic fingerprint "
+            f"{declared['derived_against_semantic_fingerprint']} and the package carries "
+            f"{live_semantic} — model meaning moved, so the census must be re-derived"
+        )
+    if declared["entry_points"] != live["entry_points"]:
+        drifted.append(
+            f"entry points: census records {declared['entry_points']}, the package has "
+            f"{live['entry_points']}"
+        )
+    if declared["by_entry_type"] != live["by_entry_type"]:
+        drifted.append("the entry-point classification differs from the sealed package's")
+    if drifted:
+        raise SeamBlocker(
+            gate=GATES[4].name,
+            producer="tests/models/test_model_family_spines.py::_by_entry_type",
+            scope=GATES[4].scope, mode=REFUSED, condition="census-stale",
+            detail="; ".join(drifted),
+            evidence=(manifest_mod.repo_relative_posix(request.census),),
+        )
+    return GateOutcome(
+        f"the snapshot recaptures byte-identically and {live['entry_points']} entry points "
+        f"re-derive to the census as bound",
+        evidence,
+    )
+
 
 
 # ------------------------------------------------------------------- the sequence
@@ -867,6 +1106,9 @@ def gate_model_family_spine(request: Request, env: dict[str, str]) -> GateOutcom
 GATE_IMPLEMENTATIONS = {
     "pinned-packages": gate_pinned_packages,
     "teax-revision": gate_teax_revision,
+    "regeneration": gate_regeneration,
+    "handwritten-preservation": gate_handwritten_preservation,
+    "census-snapshot": gate_census_snapshot,
     "model-family-spine": gate_model_family_spine,
 }
 
@@ -883,7 +1125,8 @@ def gate_result(gate: Gate, outcome: GateOutcome) -> dict:
     }
 
 
-def run_sequence(request: Request, env: dict[str, str], results: list[dict]) -> None:
+def run_sequence(request: Request, env: dict[str, str], state: SequenceState,
+                 results: list[dict]) -> None:
     """Run the ten gates in order, stopping at the first that is not a pass.
 
     Results are appended to the caller's list rather than returned, because the stop rule
@@ -891,39 +1134,40 @@ def run_sequence(request: Request, env: dict[str, str], results: list[dict]) -> 
     the caller still has to report every gate that ran before it.
     """
     for gate in GATES:
-        results.append(gate_result(gate, GATE_IMPLEMENTATIONS[gate.name](request, env)))
+        results.append(gate_result(gate, GATE_IMPLEMENTATIONS[gate.name](request, env, state)))
 
 
 # ------------------------------------------------------------------------- the CLI
 
 
 def run(args: argparse.Namespace, argv: list[str]) -> tuple[dict, Path | None]:
-    """One invocation: gate 0, then the sequence. Returns the document and where it goes."""
+    """One invocation: gate 0, then the sequence. Returns the document and where it goes.
+
+    Both failure paths are caught here rather than at the CLI boundary, because both have to
+    report the gates that *did* run. A seam-internal error that threw away the partial
+    sequence would tell the reader nothing ran when six gates had passed.
+    """
     env = seam_env()
     request = None
     blocker = None
     results: list[dict] = []
+    out_dir = None
+    broke = False
     try:
         request = build_request(args)
+        out_dir = request.out_dir
         assert_environment(env)
-        request.out_dir.mkdir(parents=True, exist_ok=True)
+        out_dir.mkdir(parents=True, exist_ok=True)
         assert_package_clean(request, env)
-        run_sequence(request, env, results)
+        state = SequenceState(
+            entry_digests=package_digests(request.package),
+            backup_dir=backup(request.package, request.out_dir / "_backup"),
+        )
+        run_sequence(request, env, state, results)
     except SeamBlocker as exc:
         blocker = exc
-    document = build_return(
-        request=request, args=args, argv=argv, env=env,
-        results=results, blocker=blocker, candidate=None,
-    )
-    return document, request.out_dir if request is not None else None
-
-
-def main(argv: list[str] | None = None) -> int:
-    argv = list(sys.argv[1:] if argv is None else argv)
-    args = build_parser().parse_args(argv)
-    try:
-        document, out_dir = run(args, argv)
-    except BaseException:  # noqa: BLE001 — the seam broke; say so and exit 2, never 1
+    except Exception:  # noqa: BLE001 — the seam broke; say so, and exit 2 rather than 1
+        broke = True
         out_dir = Path(args.out_dir).resolve() if args.out_dir else None
         trace = _write_traceback(out_dir)
         blocker = SeamBlocker(
@@ -932,14 +1176,20 @@ def main(argv: list[str] | None = None) -> int:
             detail="the seam raised an unexpected exception; it did not judge the package",
             evidence=(trace,) if trace else (),
         )
-        document = build_return(
-            request=None, args=args, argv=argv, env=dict(os.environ),
-            results=[], blocker=blocker, candidate=None,
-        )
-        document["exit_code"] = 2
-        emit(document, out_dir)
-        return 2
 
+    document = build_return(
+        request=request, args=args, argv=argv, env=env,
+        results=results, blocker=blocker, candidate=None,
+    )
+    if broke:
+        document["exit_code"] = 2
+    return document, out_dir
+
+
+def main(argv: list[str] | None = None) -> int:
+    argv = list(sys.argv[1:] if argv is None else argv)
+    args = build_parser().parse_args(argv)
+    document, out_dir = run(args, argv)
     emit(document, out_dir)
     return document["exit_code"]
 

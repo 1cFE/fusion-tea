@@ -394,18 +394,18 @@ def test_doctored_census_refuses_gate_4(integration_workspace):
 
 **See `design.md` for:** the gate table rows 2/3/4 → `design.md#architecture`; the census re-derivation through the producer's own helper and the `--census-file` scope → D9; whole-file snapshot byte comparison and why there is nothing to exclude → B2; the `{k: sorted(v)}` normalization → `design.md#implementation-notes`.
 
-- [ ] `tests/study/test_integrate_refusals.py` — the two fixtures above
-- [ ] `scripts/integrate.py` — gate 2 (`sysml-codegen generate --smart-regen --preserve-handwritten` in place, then the digest comparison; on movement, restore and refuse with `package-not-integrated`); gate 3 (the same comparison scoped to `generated/handwritten/`, `handwritten-lost`); gate 4 (`capture_instance_graph_snapshot` into `<out-dir>/recaptured.snapshot.json` compared whole-file against the tracked snapshot → `snapshot-drift`; `_by_entry_type` on the sealed package, normalized `{k: sorted(v)}`, against `--census-file`'s `by_entry_type` and `entry_points`, plus its `derived_against_semantic_fingerprint` against the live semantic fingerprint → `census-stale`; `--census-file` absent → `could_not_run`)
+- [x] `tests/study/test_integrate_refusals.py` — the two fixtures above
+- [x] `scripts/integrate.py` — gate 2 (`sysml-codegen generate --smart-regen --preserve-handwritten` in place, then the digest comparison; on movement, restore and refuse with `package-not-integrated`); gate 3 (the same comparison scoped to `generated/handwritten/`, `handwritten-lost`); gate 4 (`capture_instance_graph_snapshot` into `<out-dir>/recaptured.snapshot.json` compared whole-file against the tracked snapshot → `snapshot-drift`; `_by_entry_type` on the sealed package, normalized `{k: sorted(v)}`, against `--census-file`'s `by_entry_type` and `entry_points`, plus its `derived_against_semantic_fingerprint` against the live semantic fingerprint → `census-stale`; `--census-file` absent → `could_not_run`)
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study/test_integrate_refusals.py -q` → pass
-- [ ] `uv run python -m pytest tests/study -q` → green
+- [x] `uv run python -m pytest tests/study/test_integrate_refusals.py -q` → pass
+- [x] `uv run python -m pytest tests/study -q` → green
 
 **Manual:**
-- [ ] Run gate 2 alone against an untouched workspace and confirm zero moved paths (the B1-in-workspace proof); record the timing in Implementation Notes
-- [ ] Confirm the restored workspace's digests equal the entry digests after the gate-2 refusal fixture
+- [x] Run gate 2 alone against an untouched workspace and confirm zero moved paths (the B1-in-workspace proof); record the timing in Implementation Notes
+- [x] Confirm the restored workspace's digests equal the entry digests after the gate-2 refusal fixture
 
 **What We Know Works After This Phase:** the three mutating gates are no-ops on an integrated package, a byte that moves is caught and undone, and a stale census refuses at the package-scoped gate rather than the repo-scoped one.
 
@@ -889,6 +889,67 @@ already uses for teax, with an escalation variable so a CI run fails rather than
 green. (b) changes what SC1/SC3/SC4 are proven by and needs recording in the SC map, so it
 is surfaced rather than taken.
 ### Phase 5 Completion
+
+**Completed:** 2026-08-26
+
+**The second proof point holds. B1 is confirmed inside the workspace.** Regeneration in place
+against the workspace's own models root moved **zero** bytes, the snapshot recaptured
+byte-identically to the tracked file, and the census re-derived exactly — gates 1a, 1b, 2, 3,
+4 and 5 all pass on an untouched workspace, in about 14 s wall for the whole run (the spine
+suite dominates; generation is ~2 s and capture ~1.7 s). The fixture needed one correction to
+get there, recorded as D21 below; the gate was not relaxed.
+
+**Changes made**
+- `scripts/integrate.py` — `SequenceState` (the entry digests and backup the gates hand each
+  other), `byte_movement_blocker` (restore, record `moved_files.txt`, refuse — one decision,
+  so one function), `PRESERVED_SUBTREE`, `gate_regeneration`, `gate_handwritten_preservation`,
+  `tracked_snapshot`, `recapture_snapshot`, `rederived_census`, `gate_census_snapshot`. Gate 0
+  step 4 is now wired: the before-digest and the backup are taken before the first mutating
+  gate.
+- `tests/study/test_integrate_refusals.py` — 4 more fixtures (8 total).
+- `tests/study/conftest.py` — the workspace no longer copies `__pycache__`.
+- `design.md` — **D19, D20, D21** added, and the gate-4 row now names the snapshot-discovery
+  could-not-run.
+
+**Test counts.** `tests/study` 309 → **313 passed, 1 skipped**.
+
+**Three decisions, all recorded in `design.md` rather than left in the code**
+- **D19 — the snapshot is found, not named** (the owner's ruling, implemented). Exactly one
+  `*.snapshot.json` beside the models root; zero or several is `input-invalid` with
+  `mode: could_not_run`, the same slug two `--package` values get. Two tests pin it: the
+  workspace layout test from Phase 2 and a new two-snapshot refusal.
+- **D20 — gates 2 and 3 partition the package.** Gate 2 compares everything outside
+  `handwritten/`, gate 3 everything inside it. If gate 2 compared the whole tree it would
+  always refuse first and gate 3's `handwritten-lost` could never fire — an unreachable
+  refusal path, which is dead code wearing a gate's name. The union is the whole package, so
+  nothing is uncovered.
+- **D21 — `__pycache__` is excluded from the seam's digest, and this was measured.** With it
+  included, gate 2 refused on 60+ `.pyc` files whose bytes moved because copying the tree
+  reset their source mtimes. Nothing authors or seals them and the repository ignores them
+  everywhere, so `check_package_clean` never sees them either. Excluding them makes the
+  seam's digest judge the same file set the repository's own cleanliness gate judges, which
+  is what D8 said the two were for. This is the one place the phase's named risk fired, and
+  the answer was to fix what the seam was looking at, not what it demanded.
+
+**One bug found and fixed while proving the above.** The seam-internal-error path built its
+return with an empty `results` list, so a crash after six passing gates reported all ten as
+`not reached`. Both failure paths now live in `run()` where the partial sequence is in scope.
+A `seam-internal-error` return now carries every gate that ran.
+
+**Refusal fixtures added.** A doctored package byte refuses gate 2 with
+`package-not-integrated`, cites `moved_files.txt`, and **leaves the tree exactly as it found
+it** (asserted against digests taken after the doctoring, not against the pristine state — a
+restore that reverted the test's own edit would be the seam performing an integration). A
+doctored census refuses gate 4 with `census-stale` *after* gates 1a–3 pass. An absent
+`--census-file` and an absent `--expected-teax-revision` each land as `could_not_run` with
+`input-missing`.
+
+**A consistency rule the plan did not fix, applied throughout.** Three kinds of non-pass, three
+slugs: a caller input that was never supplied is `input-missing` (change the request); a
+producer that could not judge past gate 0's sweep is `env-missing` (an operational accident,
+which is what a goal caller retries); a producer that judged and said no carries its own gate's
+condition. `run_pytest_gate` now takes its refusal condition from the call site rather than a
+lookup table, so the policy reads where the gate is declared.
 ### Phase 6 Completion
 ### Phase 7 Completion
 ### Phase 8 Completion
