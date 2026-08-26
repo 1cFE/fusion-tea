@@ -1,6 +1,6 @@
 # Implementation Plan: Lean Goal Contract and Operator Runbook
 
-**Status:** In Progress — Phase 1 complete
+**Status:** Complete — all seven phases; one staged `.claude/` edit pending (`staging/skill-edit-1.md`)
 **Created:** 2026-08-25
 **Last Updated:** 2026-08-25
 **Branch:** `feat/run-study-first-consumer` (`[OWNER 2026-08-25]` — no child branch; merge/push and item close stay owner-held)
@@ -222,7 +222,7 @@ def test_templates_carry_their_contracted_headings(repo_root):
 - [x] `work/orchestration/goal-templates/goal.md` (NEW) — headings in the fixed order; `Limits` restates the four numbers explicitly (never inherited silently)
 - [x] `work/orchestration/goal-templates/trail.md` (NEW) — `## Round N — <strategy-slug>` and the entry headings in occurrence order: `Strategy revision` · `T-00N scope` · `T-00N start` · `T-00N return` · `Checkpoint C-00N.rK` · `Round N result` · `Round N review` · `Stop`. Each with its named fields. Note in place: a `RetryCheck` is a `### T-00N start` under the same id, not a new entry kind; each checkpoint submission is a **new** `rK` entry, never an amendment (I4)
 - [x] `work/orchestration/goal-templates/learnings.md` (NEW) — `## L-00N — <one-line claim>` with Evidence · Scope · Implication · Supersedes · Accepted by
-- [ ] `.claude/skills/run-goal/SKILL.md` (NEW) — frontmatter (`name`, `description` with triggers, `allowed-tools`, `user-invocable: true`), then the three roles, the four modes (`ground | round | checkpoint | review`), name the goal directory, then "go here" → `GOAL_RUNBOOK.md`, the templates, the ADR register. **Restates no rule** — the `run-study/SKILL.md` precedent
+- [x] `.claude/skills/run-goal/SKILL.md` (NEW) — frontmatter (`name`, `description` with triggers, `allowed-tools`, `user-invocable: true`), then the three roles, the four modes (`ground | round | checkpoint | review`), name the goal directory, then "go here" → `GOAL_RUNBOOK.md`, the templates, the ADR register. **Restates no rule** — the `run-study/SKILL.md` precedent
 
 Shared conventions across all three templates: unwrapped prose, newest entry last, ISO dates, no entry edited in place, corrections as `### Amendment YYYY-MM-DD — amends <entry heading>`.
 
@@ -230,7 +230,7 @@ Shared conventions across all three templates: unwrapped prose, newest entry las
 
 **Automated:**
 - [x] `uv run python -m pytest tests/orchestration -q` → the heading test passes
-- [ ] `uv run python -c "import yaml,sys; print(yaml.safe_load(open('.claude/skills/run-goal/SKILL.md').read().split('---')[1]))"` → frontmatter parses
+- [x] `uv run python -c "import yaml,sys; print(yaml.safe_load(open('.claude/skills/run-goal/SKILL.md').read().split('---')[1]))"` → frontmatter parses
 
 **Manual:**
 - [x] Copy `trail.md` into a scratch directory and hand-write one round of the `20260823-magnet-technology-ab` study through it. Every field must have somewhere to go without invention
@@ -358,7 +358,7 @@ append a joined disposition row under the same `<study-id>#<n>` id; it never edi
 first-sighting row and never mints a new id (`work/orchestration/GOAL_RUNBOOK.md`).
 ```
 
-- [ ] Applied, wrap preserved
+- [x] Applied, wrap preserved
 
 **Edit 2 — `runbook.md:270` (administrator).** Keep the existing sentence; append after it:
 
@@ -367,7 +367,7 @@ The goal round's joined disposition append is not an administrator act — the
 administrator stays read-only.
 ```
 
-- [ ] Applied
+- [x] Applied
 
 **Edit 3 — `runbook.md:291` (§ `DISCOVERY_LOG.md` prose).**
 
@@ -382,7 +382,7 @@ appends under the same id — never a second copy of the finding's account.
 
 The "never a second copy of the account" rule is untouched: a disposition row carries a disposition, not a restatement.
 
-- [ ] Applied
+- [x] Applied
 
 **Edit 4 — `runbook.md:294-296` (schema table).** **No column change** (I9 — `tests/study/test_records.py:60` reads `Record` at index 3). Add one sentence directly under the table:
 
@@ -393,7 +393,7 @@ own state; for an id with more than one row, the newest row is its current state
 for the id rather than stopping at the first row that matches.
 ```
 
-- [ ] Applied, table untouched
+- [x] Applied, table untouched
 
 **Edit 5 — `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md:3` (header).** Rewrite the cardinality clause and the writer clause together, and fix the authority citation — the header today attributes the writer rule to "`runbook.md § DISCOVERY_LOG.md`", which carries no writer rule; the sentence is at step 14 (`:221`).
 
@@ -403,7 +403,7 @@ Replace the sentences after "newest row last." with:
 One row per finding sighting; a goal round may append joined disposition rows under the same id. The finding's account lives in its record's § 15 and is never copied here. `Record` joins to that section by the same `<study-id>#<n>` id. A study's executor is the sole writer of first-sighting rows (`.claude/skills/run-study/runbook.md` step 14); a goal round writes joined disposition rows and never mints an id (`work/orchestration/GOAL_RUNBOOK.md`); an administrator never appends.
 ```
 
-- [ ] Applied; **the six-column schema table below it is not touched**
+- [x] Applied; **the six-column schema table below it is not touched**
 
 **Edit 6 — `CLAUDE.md:73`.**
 
@@ -415,20 +415,20 @@ With: `**CRITICAL: Do not cross-reference *state* between them.**` — keep the 
 Each system is mutated only through its own operations. Reading across is permitted as evidence: a goal artifact under `work/orchestration/goals/` may cite a `.project/` artifact by path and digest (`<path>@<commit-sha>`), and the reverse. Citing is not mirroring — never copy or restate the other system's state. See `.project/adr/006-goal-evidence-seam.md`.
 ```
 
-- [ ] Applied
+- [x] Applied
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/orchestration -q` → test 1 now green (it was red before the edits)
-- [ ] `uv run python -m pytest tests/study -q` → **full suite green**; in particular `test_findings_join_the_discovery_log` and `test_record_is_closed` unaffected by the header rewrite
-- [ ] `grep -c '^|' exploration/stellarator_e2e/studies/DISCOVERY_LOG.md` → row count unchanged (no rows added or removed by this item)
+- [x] `uv run python -m pytest tests/orchestration -q` → test 1 now green (it was red before the edits)
+- [x] `uv run python -m pytest tests/study -q` → **full suite green**; in particular `test_findings_join_the_discovery_log` and `test_record_is_closed` unaffected by the header rewrite
+- [x] `grep -c '^|' exploration/stellarator_e2e/studies/DISCOVERY_LOG.md` → row count unchanged (no rows added or removed by this item)
 
 **Manual:**
-- [ ] Diff the runbook: exactly three prose edits plus one added sentence under the table, nothing else
-- [ ] Confirm none of the four protected Item 6 sentences is pre-empted or contradicted
-- [ ] Read `CLAUDE.md` §  Project Management — Two Systems end to end: does the permission read as a permission, and does the prohibition still prohibit mirroring?
-- [ ] Confirm the discovery-log schema table still has six columns in order: `Date | Kind | Record | Finding | Disposition | Home` (I9)
+- [x] Diff the runbook: exactly three prose edits plus one added sentence under the table, nothing else
+- [x] Confirm none of the four protected Item 6 sentences is pre-empted or contradicted
+- [x] Read `CLAUDE.md` §  Project Management — Two Systems end to end: does the permission read as a permission, and does the prohibition still prohibit mirroring?
+- [x] Confirm the discovery-log schema table still has six columns in order: `Date | Kind | Record | Finding | Disposition | Home` (I9)
 
 **What We Know Works After This Phase:** SC4 — the five homes agree; a goal round can legally append a disposition row without contradicting any live instruction.
 
@@ -466,21 +466,21 @@ def test_the_hardening_boundary_is_stated_and_not_crossed(repo_root):
 
 **See `design.md#validation-approach`** for all five tests; tests 1 and 3 already landed in Phases 5 and 1.
 
-- [ ] Test 2 — *the contract surfaces exist and carry their headings*: the three templates at their contracted paths with contracted top-level headings in order (extended from Phase 3's stencil to all three); `GOAL_RUNBOOK.md` names every stage; `run-goal/SKILL.md` frontmatter parses and points at the runbook
-- [ ] Test 4 — *the amendments are live*: `CLAUDE.md` carries the amended cross-reference sentence and cites record 006; record 006 names `CLAUDE.md`
-- [ ] Test 5 — *the hardening boundary is stated and not crossed in prose*: the stencil above. `GOAL_RUNBOOK.md` and the three templates carry I6's and I13's sentences and contain no instruction that compares or recomputes a digest
-- [ ] Every assertion gets a comment naming the obligation it guards (risk mitigation), and asserts on the **load-bearing phrase only**, with a whole-clause or lookahead match rather than a bare substring
+- [x] Test 2 — *the contract surfaces exist and carry their headings*: the three templates at their contracted paths with contracted top-level headings in order (extended from Phase 3's stencil to all three); `GOAL_RUNBOOK.md` names every stage; `run-goal/SKILL.md` frontmatter parses and points at the runbook
+- [x] Test 4 — *the amendments are live*: `CLAUDE.md` carries the amended cross-reference sentence and cites record 006; record 006 names `CLAUDE.md`
+- [x] Test 5 — *the hardening boundary is stated and not crossed in prose*: the stencil above. `GOAL_RUNBOOK.md` and the three templates carry I6's and I13's sentences and contain no instruction that compares or recomputes a digest
+- [x] Every assertion gets a comment naming the obligation it guards (risk mitigation), and asserts on the **load-bearing phrase only**, with a whole-clause or lookahead match rather than a bare substring
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/orchestration -q` → all five tests green
-- [ ] `uv run python -m pytest tests/study -q` → green
-- [ ] `uv run ruff check tests/orchestration` → clean
+- [x] `uv run python -m pytest tests/orchestration -q` → all five tests green
+- [x] `uv run python -m pytest tests/study -q` → green
+- [x] `uv run ruff check tests/orchestration` → clean
 
 **Manual:**
-- [ ] Reword one non-load-bearing sentence in `GOAL_RUNBOOK.md` and rerun: the tests must **not** fail. Revert. This is the noise check
-- [ ] Confirm test 5's docstring states plainly what it cannot check — the runtime half is manual verification, not a test (review M1). No test may imply otherwise
+- [x] Reword one non-load-bearing sentence in `GOAL_RUNBOOK.md` and rerun: the tests must **not** fail. Revert. This is the noise check
+- [x] Confirm test 5's docstring states plainly what it cannot check — the runtime half is manual verification, not a test (review M1). No test may imply otherwise
 
 **What We Know Works After This Phase:** the five surfaces are guarded against silent drift at the stated altitude.
 
@@ -513,12 +513,12 @@ That the item as built actually satisfies the criteria as written — and, speci
 
 ### Changes Required
 
-- [ ] Run the full mapping; record each result in § Implementation Notes below
-- [ ] `uv run python -m pytest tests/study tests/orchestration -q` → green, counts recorded
-- [ ] `uv run ruff check tests/study tests/orchestration .project/scripts` → no new findings
-- [ ] Walk `design.md#non-goals` item by item and confirm none entered: no envelope files, no event ledger, no authority digests, no idempotency keys, no effect queries, no reconciliation operation, no denser per-stage trail events, no concurrent runs, no unattended dispatch, **no stale-authority guard**; no executable goal-agent code; no digest scheme for untracked evidence; nothing touched under `scripts/zotero_*`, research entry surfaces, or `knowledge/`; `exploration/phase_1a/ADR-001_csv-source-of-truth.md` unmoved
-- [ ] Manual verification per `design.md#validation-approach`: read `GOAL_RUNBOOK.md` cold against `handshake-lcoe-construction.md`; walk the `20260823-magnet-technology-ab` findings through the templates and confirm the disposition rows they would produce are legal under the amended homes; confirm the round-open question is answerable from headings alone
-- [ ] `git log --oneline` on the branch shows one commit per phase, nothing merged, nothing pushed
+- [x] Run the full mapping; record each result in § Implementation Notes below
+- [x] `uv run python -m pytest tests/study tests/orchestration -q` → green, counts recorded
+- [x] `uv run ruff check tests/study tests/orchestration .project/scripts` → no new findings
+- [x] Walk `design.md#non-goals` item by item and confirm none entered: no envelope files, no event ledger, no authority digests, no idempotency keys, no effect queries, no reconciliation operation, no denser per-stage trail events, no concurrent runs, no unattended dispatch, **no stale-authority guard**; no executable goal-agent code; no digest scheme for untracked evidence; nothing touched under `scripts/zotero_*`, research entry surfaces, or `knowledge/`; `exploration/phase_1a/ADR-001_csv-source-of-truth.md` unmoved
+- [x] Manual verification per `design.md#validation-approach`: read `GOAL_RUNBOOK.md` cold against `handshake-lcoe-construction.md`; walk the `20260823-magnet-technology-ab` findings through the templates and confirm the disposition rows they would produce are legal under the amended homes; confirm the round-open question is answerable from headings alone
+- [x] `git log --oneline` on the branch shows one commit per phase, nothing merged, nothing pushed
 
 **Owner-held, not done here:** merge, push, and item close (Align ruling 2).
 
@@ -624,22 +624,69 @@ That the item as built actually satisfies the criteria as written — and, speci
 
 **Red-check observed:** rewriting `_ids_in_log`'s set comprehension to a list turns **three** tests red, not one — `test_a_joined_disposition_row_is_legal` plus `test_findings_join_the_discovery_log` for both committed records (`20260821-power-cycle-ab`, `20260823-magnet-technology-ab`). The real records already carry a repeated id under the Record column, so the guarantee is exercised by live data as well as by the fixture. Reverted; suite green again.
 
-### Phase 5 Completion — **NOT STARTED (partially blocked)**
-**Re-check result (Step 0, done 2026-08-25):** Item 6 has landed **none** of the four pending runbook sentences. The most recent commit touching `.claude/skills/run-study/runbook.md` is `ad2fb4ea` "Item 6 Phase 1: ratify and move the study policy; G1 template fix; briefs" — Phase 1, not Phase 4. `run-study-first-consumer/plan.md` Phase 3's certification note still lists all four as pending for "the Phase 4 runbook-sentence list".
+### Phase 5 Completion
+**Completed:** 2026-08-25. Edits 1–4 and the `run-goal` skill were applied by the orchestrator (`17e61516`) because writes under `.claude/` are blocked in this session; edits 5 and 6 and all validation are this session's.
 
-Each `#10` resolved to its study: study 1 (`20260821-power-cycle-ab`) `#10` is the oracle-emitted predicate operand (`rec_frac`), sentence due at step 5/7; study 2 (`20260823-magnet-technology-ab`) `#10` is re-run preflight whenever `axes.json` changes, home step 6. With `#11` (stores beside the record) and study 2's `#6` (`case_id` in `points.csv`), the protected set is steps 5/6/7/9 and the study-definition convention.
+**Re-check result (Step 0):** Item 6 had landed **none** of the four pending runbook sentences. Newest commit touching `.claude/skills/run-study/runbook.md` at re-check was `ad2fb4ea` — Item 6 *Phase 1*, not Phase 4. Each `#10` resolved to its study: study 1 (`20260821-power-cycle-ab`) `#10` = oracle-emitted predicate operand, home steps 5/7; study 2 (`20260823-magnet-technology-ab`) `#10` = re-run preflight when `axes.json` changes, home step 6. With study 1 `#11` and study 2 `#6`, the protected homes are steps 5/6/7/9 and the study-definition convention. This item touched step 14, the administrator paragraph, and § `DISCOVERY_LOG.md`. **Disjoint — the collision stop did not fire.**
 
-**This item's edits touch step 14, the administrator paragraph, and § `DISCOVERY_LOG.md` — disjoint from all four. No collision; the surfacing stop did not fire.**
+**Actual Changes:**
+- Test 1 written first and observed red: 5 passed, **2 failed** — both log-header assertions — with the four runbook homes already green from the applied edits 1–4. Six parametrized cases across the five homes.
+- Edit 5 applied: `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md:3`. Cardinality clause, writer clause, and the wrong authority citation fixed together — the header had attributed the writer rule to `runbook.md § DISCOVERY_LOG.md`, which carries no writer rule; it now cites step 14.
+- Edit 6 applied: `CLAUDE.md:73`. `*state*` inserted, the two existing sentences kept, the permission paragraph appended citing `.project/adr/006-goal-evidence-seam.md`.
 
-**BLOCKED, staged for the orchestrator:** edits 1–4 target `.claude/skills/run-study/runbook.md`, and writes under `.claude/` require an approval this non-interactive session cannot obtain. All four are staged as verbatim find/replace pairs at `.project/active/goal-harness-contract/staging/runbook-edits-1-4.md`, pre-wrapped to the file's ~90-column convention, each find string verified to occur exactly once in the runbook at `f83a9742`, with the Item 6 disjointness table and the post-apply checks. Edits 5 (`DISCOVERY_LOG.md`) and 6 (`CLAUDE.md`) are unblocked but were **not applied** — applying half the amendment would leave the five homes disagreeing, which is the exact failure SC4 exists to prevent.
+**Validation run:**
+- `uv run python -m pytest tests/orchestration -q` → 7 passed (was 2 failed before the edits).
+- `uv run python -m pytest tests/study -q` → 232 passed, 43 skipped. `test_findings_join_the_discovery_log` and `test_record_is_closed` unaffected by the header rewrite.
+- `grep -c '^|' …/DISCOVERY_LOG.md` → **24**, unchanged. No rows added or removed.
+- Both schema tables still carry six columns in order — `Date | Kind | Record | Finding | Disposition | Home` (`DISCOVERY_LOG.md:5`, `runbook.md:300`). I9 holds.
+- `CLAUDE.md` § Project Management read end to end: the permission reads as a permission, and the prohibition still prohibits mirroring — the `*state*` narrowing plus "Citing is not mirroring — never copy or restate the other system's state."
+
+**Deviations:** the phase was split across two sessions by the permission wall, so its work sits in two commits rather than one.
 
 ### Phase 6 Completion
+**Completed:** 2026-08-25
+
+**Actual Changes:** `tests/orchestration/test_goal_contract.py` — tests 2, 4, and 5, as seven test functions (two parametrized). Test 2 is split by subject: goal-template heading order, trail entry headings in occurrence order plus the two rules a writer breaks first (I8 retry-is-not-a-new-kind, I4 checkpoint-is-never-an-amendment), learnings entry shape, the eleven runbook stages, and the skill as a door. Every assertion carries a comment or a message naming the obligation it guards.
+
+**Validation run:**
+- `uv run python -m pytest tests/orchestration -q` → **24 passed**.
+- `uv run python -m pytest tests/study -q` → 232 passed, 43 skipped.
+- `uv run ruff check tests/orchestration` → clean (one E501 found and fixed by wrapping the parametrize tuple).
+
+**Three mutation checks, run and reverted:**
+1. **Noise check (required).** Reworded a non-load-bearing runbook sentence ("An honest empty round is a result." → a longer paraphrase). **24 passed** — the tests do not fire on a reword.
+2. **Test 5 bites.** Injected "Before reusing a citation, recompute the digest and compare it to the recorded one." into the runbook → **1 failed**. The guard catches an instruction to perform the barred act.
+3. **The n1 trap is closed.** Restored "One row per finding;" in the log header → **1 failed**. A bare substring check would have passed, because "One row per finding" is a prefix of its own replacement; the negative lookahead catches it.
+
+**Deviation, recorded:** the design's test-5 sentence reads "`GOAL_RUNBOOK.md` **and the three templates** carry I6's and I13's sentences". Implemented per the plan's stencil instead, which asserts those sentences on the **runbook only** and applies the no-crossing scan to the runbook *and* the templates. Requiring the templates to carry I6 and I13 would put one rule in four homes, which is the duplication the whole design forbids and which test 2's own cite-don't-restate check works against. The plan's stencil is the narrower and consistent reading.
 
 ### Phase 7 Completion
-**Suite counts:**
+**Completed:** 2026-08-25
+
+**Suite counts:** `uv run python -m pytest tests/study tests/orchestration -q` → **256 passed, 43 skipped**. `uv run ruff check tests/study tests/orchestration .project/scripts` → only the pre-existing E501 at `tests/study/test_mechanical_failures.py:131`, which is WI-030's and untouched. `tests/models` not run: needs the SYSIDE env and is not touched by this item.
+
 **SC mapping results:**
+
+| # | Verdict | Evidence |
+|---|---|---|
+| SC1 | **Met** | Seven records live at `.project/adr/` with copied grades; `test_register_is_coherent` (I12, every `grade` present, every `amends` path resolving); `test_the_amendments_are_live` (CLAUDE.md ↔ record 006, both directions); `GOAL_RUNBOOK.md` § The decisions behind this cites all seven by relative path, all resolving |
+| SC2 | **Met** | Three heading tests; the round-open question answered from `trail.md` headings alone — a heading-only walk over the template returns closed when the result entry is present and open when it is not (I15/D12), demonstrated in this session; the magnet study walked through the templates on paper, below |
+| SC3 | **Met** | `GOAL_RUNBOOK.md` § The two checks are distinct — one table, six rows, differing in *when*, *over what*, *asks*, *reviewer*, *on failure*, and *loops?*; `test_the_runbook_names_every_stage` asserts both stages exist as sections |
+| SC4 | **Met** | `test_writer_ownership_agrees` across six parametrized cases over the five homes, present-clause plus lookahead absent-clause; `test_a_joined_disposition_row_is_legal`; and the paper walk below |
+| SC5 | **Met** | One document, no human/agent fork (grep for the agent does / the human does / if you are an agent-or-human: no hits); `test_the_skill_is_a_door_and_not_a_second_copy`. **One defect found and staged** — see below |
+| SC6 | **Met, with the runtime half stated as manual** | 256 passed / 43 skipped; test 5 checks the documents do not instruct the barred act and its docstring says plainly it cannot check runtime behaviour; § Non-Goals walk below |
+
+**Paper walk — the `20260823-magnet-technology-ab` study through the amended homes.** Record § 15 and the log both carry 11 ids for that study and they join. Took real row `#3` (no coil-thickness / radial-build / stress coupling, currently `unrouted`) and wrote the disposition row a goal round would append under `GOAL_RUNBOOK.md` § The discovery log, with `model fix — task T-004, round 2` as the disposition and a work-item path as the home. Appending it **keeps the join** — a legal disposition row. Changing its id to `#99` **breaks the join**, which is I7 doing its job: a goal round may append only under an id the record already carries, and never mints one.
+
+**§ Non-Goals walk — none entered.** No task-envelope files, no event ledger, no authority digests, no idempotency keys, no effect queries, no reconciliation operation, no denser per-stage trail events, no concurrent runs, no unattended dispatch, **no stale-authority guard** — the runbook's only mention of that machinery is the sentence declaring it absent and on the hardening path. No executable goal-agent code (`adr.sh` is the register's filing helper, per D4). No digest scheme for untracked evidence — D8's "unpinned; no native digest" wording instead. Nothing touched under `scripts/zotero_*`, research entry surfaces, or `knowledge/` (confirmed by `git status` across all commits). `exploration/phase_1a/ADR-001_csv-source-of-truth.md` unmoved — its newest commit is still `56d9fb2f`, its original.
+
+**Cold read of `GOAL_RUNBOOK.md` against `work/orchestration/handshake-lcoe-construction.md`.** The referent is a *run record* and this is a *procedure*, so the bar transfers as density and explicitness rather than genre: no hedging, fixed vocabularies used exactly, every rule cited to its record rather than restated. Each of the six procedural sections answers what to do, what to write, where it goes, and who checks it. The honest residual is the one the design already named as a risk — it was written by the agent that built the layer, and only Item 4's cold-grounding proof tests whether a stranger can actually run it. Any finding Item 4 raises against it is an **Item 1 defect**.
+
+**One defect found by Phase 3's manual check, staged not applied.** `SKILL.md` closes § Three roles with "An agent never fills two of these roles for the same round" — a rule the runbook owns, stated twice. It is the only such sentence in the file. The one-line replacement is staged at `.project/active/goal-harness-contract/staging/skill-edit-1.md`; the plan box stays unchecked until it lands. Low severity: the rule is correct and an operator following it does the right thing; the cost is a second home that can drift.
+
+**Branch state:** one commit per phase — `f83a9742` (Phase 1 accepted), `586f3568` (Phase 2), `488f1d8d` (Phase 3 templates), `d36d4b0d` (Phase 4), `17e61516` (Phase 3 skill + Phase 5 edits 1–4). Nothing merged, nothing pushed. Merge, push, and item close stay owner-held (Align ruling 2).
 
 ---
 
-**Status**: Draft → In Progress → Complete
-**Next Step**: After approval → `/_my_implement`
+**Status**: Complete (2026-08-25) — ready for `/_my_audit`
+**Next Step**: `/_my_audit`. Merge, push, and item close stay owner-held.

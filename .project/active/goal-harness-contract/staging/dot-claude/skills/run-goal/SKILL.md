@@ -25,8 +25,7 @@ This file is the entry point and nothing else. It names the roles, picks the mod
 - **Round agent** — pursues one strategy, scopes and runs one task at a time, writes the result.
 - **Fresh reviewer** — did not do the work. Reads a study's proposed dispositions before follow-up executes, or reviews the closed round and writes the next strategy.
 
-Which role you are in decides which section you read. The runbook says what
-"fresh" means at each place it matters.
+An agent never fills two of these roles for the same round.
 
 ## Pick the mode
 
