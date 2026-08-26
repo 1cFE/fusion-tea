@@ -1,6 +1,6 @@
 # Implementation Plan: Verified Package Integration Seam
 
-**Status:** Draft
+**Status:** In Progress
 **Created:** 2026-08-26
 **Last Updated:** 2026-08-26
 **Branch:** `feat/goal-integration-seam`
@@ -165,20 +165,20 @@ def test_simkit_probe_agrees_with_the_verify_subprocess(integration_workspace):
 
 **See `design.md` for:** gate 0's four steps → `design.md#architecture`; the subprocess environment → D16; exit codes → D18; the return schema → `design.md#architecture` "Return shape"; input validation → D2.
 
-- [ ] `tests/study/test_integrate_preconditions.py` (NEW)
-- [ ] `scripts/integrate.py` (NEW) — argparse surface per *Field spellings*; input validation (present, resolvable, exactly one package root and one manifest, `--out-dir` resolves outside the resolved package root); gate 0's env sweep naming all six variables; the D16 environment builder used by every later subprocess; the `simkit` probe; the return-document builder using `common.write_document`; `common.tool_source_digest` for `tool.source_digest`; the `preflight`-style human summary on stderr; the top-level exception handler writing `seam-internal-error` with the traceback path and exiting 2
-- [ ] Import `preflight.PASS` / `FAIL` / `DID_NOT_RUN` rather than re-spelling them
+- [x] `tests/study/test_integrate_preconditions.py` (NEW)
+- [x] `scripts/integrate.py` (NEW) — argparse surface per *Field spellings*; input validation (present, resolvable, exactly one package root and one manifest, `--out-dir` resolves outside the resolved package root); gate 0's env sweep naming all six variables; the D16 environment builder used by every later subprocess; the `simkit` probe; the return-document builder using `common.write_document`; `common.tool_source_digest` for `tool.source_digest`; the `preflight`-style human summary on stderr; the top-level exception handler writing `seam-internal-error` with the traceback path and exiting 2
+- [x] Import `preflight.PASS` / `FAIL` / `DID_NOT_RUN` rather than re-spelling them
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study/test_integrate_preconditions.py -q` → pass
-- [ ] `uv run python -m pytest tests/study -q` → no regressions
-- [ ] `git diff --stat -- scripts/study/ tests/models/ tests/test_dependency_provenance.py` → empty
+- [x] `uv run python -m pytest tests/study/test_integrate_preconditions.py -q` → pass
+- [x] `uv run python -m pytest tests/study -q` → no regressions
+- [x] `git diff --stat -- scripts/study/ tests/models/ tests/test_dependency_provenance.py` → empty
 
 **Manual:**
-- [ ] `uv run python scripts/integrate.py --out-dir /tmp/i1` → `BLOCKER`, `input-missing`, exit 1, document written
-- [ ] With the full environment exported, run the probe standalone and confirm it agrees with a `verify.py` subprocess launched under `seam_env()`
+- [x] `uv run python scripts/integrate.py --out-dir /tmp/i1` → `BLOCKER`, `input-missing`, exit 1, document written
+- [x] With the full environment exported, run the probe standalone and confirm it agrees with a `verify.py` subprocess launched under `seam_env()`
 
 **What We Know Works After This Phase:** every environment precondition is decided in one place, before any producer runs, so the standing wheel-variable `KeyError` can never be reported as a refusal; and a return document exists in every exit path including the crash path.
 
@@ -721,9 +721,52 @@ An `--apply` mode or any two-call perform-then-gate shape (owner question, `desi
 
 ## Implementation Notes
 
-[TO BE FILLED DURING IMPLEMENTATION]
 
 ### Phase 1 Completion
+
+**Completed:** 2026-08-26 · **Commit:** see `impl(goal-integration-seam) phase 1:`
+
+**Changes made**
+- `scripts/integrate.py` (NEW, 560 lines) — the whole return-document surface plus gate 0's
+  input validation and environment sweep. The ten-gate table is declared (`GATES`), the
+  fourteen `condition` slugs are a closed set the `SeamBlocker` constructor enforces, and
+  `preflight.PASS` / `FAIL` / `DID_NOT_RUN` are imported rather than re-spelled. No producer
+  runs yet: every gate fills `not reached`.
+- `tests/study/test_integrate_preconditions.py` (NEW) — 14 tests, all green.
+
+**Test counts.** `tests/study` was **274 passed, 1 skipped** before this phase and is
+**288 passed, 1 skipped** after. The pre-existing tally is unmoved (A12).
+
+**First Proof Point — the de-risk passed.** `test_simkit_probe_agrees_with_the_verify_subprocess`
+compares gate 0's probe with an independently built subprocess that does the bare
+`import simkit` `verify.build_summary` opens with. They agree, with the teax root set and
+with it unset. **D15's classification rule is sound and gate 8's residual stays narrow.**
+
+**Decisions the plan left to implementation**
+- **Where the return goes when `--out-dir` is unusable.** A rejected request answers on
+  **stdout** (the convention `preflight.py`/`verify.py` use when `--out` is absent), so a
+  return document exists in every exit path even when `--out-dir` is the input that was
+  wrong. `--out-dir` inside the package root is refused *before* anything is written, and a
+  test asserts the directory does not appear.
+- **`--package` and `--manifest` are `action="append"`.** R-A3/R-C5 say ambiguous lineage is
+  itself a `BLOCKER`; a plain flag would silently take the last one. Two `--package` values
+  refuse with `input-invalid`.
+- **Gate 0 step 3 (`preflight.py clean`) and step 4 (digest + backup) are deferred to Phase 3.**
+  The plan's Phase 1 goal says "no producer runs yet" and `preflight.py clean` is a producer
+  invocation; step 4 is Phase 3's own subject. Both land with the digest mechanism.
+
+**Deviation from the stencil.** The Phase 1 stencil takes `integration_workspace`, which does
+not exist until Phase 2. Gate 0 runs no producer and writes nothing outside `--out-dir`, so
+these tests build a real request against the **committed** package read-only, with `--out-dir`
+under `tmp_path`. R-G3 holds: no test writes a tracked file.
+
+**Named risk, found before Phase 2 — gate 1a cannot pass in this environment.**
+`tests/test_dependency_provenance.py::test_installed_artifacts_are_the_recorded_wheels_and_public_apis`
+compares each wheel's sha256 against `WHEEL_HASHES`. The recorded wheel artifacts are not on
+this machine: the only wheels present are uv's own git-built ones
+(`~/.cache/uv/sdists-v9/git/...`), whose hashes differ (`067f749e…` vs the recorded
+`7505028f…` for agentic-mbse). Measured, not inferred — the suite was run with all four
+variables exported. Consequence for the plan is recorded under Phase 4.
 ### Phase 2 Completion
 ### Phase 3 Completion
 ### Phase 4 Completion
