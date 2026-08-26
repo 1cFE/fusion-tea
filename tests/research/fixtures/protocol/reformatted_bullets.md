@@ -2,7 +2,7 @@
 
 Used only to prove that a protocol whose §3 bullets no longer carry backticked
 paths stops the parser instead of silently yielding a shorter barred set.
-Contains no ARIES-CS design or cost data (spec R-D4).
+Carries no held-out design or cost data (spec R-D4).
 
 ## 3. Clean-room admissibility
 

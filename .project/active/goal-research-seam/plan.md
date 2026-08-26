@@ -282,21 +282,21 @@ def test_local_pdf_registers_flattened_with_raw_copy(knowledge_tree, generated_p
 
 **See design.md for:** the seven-step flow → `design.md#architecture`; two hashes → D1; fixture shape → D11; flatten reuse and `--index`/`--summarize` prohibition → `design.md#implementation-notes`.
 
-- [ ] `tests/research/fixtures/web/utf8.html`, `latin1.html` (NEW) — `latin1.html` declares `charset=iso-8859-1` and contains non-ASCII bytes; neither contains ARIES-CS content
-- [ ] `tests/research/conftest.py` — add `local_site` fixture: threaded `http.server` on `127.0.0.1:0` over the fixtures dir; add `generated_pdf` fixture
-- [ ] `tests/research/test_register_url_chain.py`, `tests/research/test_register_pdf_chain.py` (NEW)
-- [ ] `scripts/source_registry.py` (NEW) — steps 1 (required-fields only for now), 2, 3, 6, 7 of the architecture flow; staging sweep; `os.rename` commit under `fcntl.flock` on `knowledge/.registry.lock`; local-PDF raw copy staged then moved at rung (b); flatten via the existing `_flatten_extraction_output` logic (`zotero_ingest.py:158-180`); slug via `slugify(title)` + `resolve_slug(slug, item_key=None)` (D10), missing title is a `precondition_failed`
-- [ ] `scripts/source_registry.py` — argparse CLI: `register` subcommand
+- [x] `tests/research/fixtures/web/utf8.html`, `latin1.html` (NEW) — `latin1.html` declares `charset=iso-8859-1` and contains non-ASCII bytes; neither contains ARIES-CS content
+- [x] `tests/research/conftest.py` — add `local_site` fixture: threaded `http.server` on `127.0.0.1:0` over the fixtures dir; add `generated_pdf` fixture
+- [x] `tests/research/test_register_url_chain.py`, `tests/research/test_register_pdf_chain.py` (NEW)
+- [x] `scripts/source_registry.py` (NEW) — steps 1 (required-fields only for now), 2, 3, 6, 7 of the architecture flow; staging sweep; `os.rename` commit under `fcntl.flock` on `knowledge/.registry.lock`; local-PDF raw copy staged then moved at rung (b); flatten via the existing `_flatten_extraction_output` logic (`zotero_ingest.py:158-180`); slug via `slugify(title)` + `resolve_slug(slug, item_key=None)` (D10), missing title is a `precondition_failed`
+- [x] `scripts/source_registry.py` — argparse CLI: `register` subcommand
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/research/test_register_url_chain.py -q` → pass
-- [ ] `uv run python -m pytest tests/research/test_register_pdf_chain.py -q` → pass (slow, ~15 s+)
+- [x] `uv run python -m pytest tests/research/test_register_url_chain.py -q` → pass
+- [x] `uv run python -m pytest tests/research/test_register_pdf_chain.py -q` → pass (slow, ~15 s+)
 
 **Manual:**
-- [ ] After a run: `ls knowledge/.staging/` → empty
-- [ ] Open the written index block → `Location` is repo-relative and resolves (R-B2/MR-4)
+- [x] After a run: `ls knowledge/.staging/` → empty
+- [x] Open the written index block → `Location` is repo-relative and resolves (R-B2/MR-4)
 
 **What We Know Works After This Phase:** SC1 end-to-end for both input kinds, and the two-hash model verified against the asymmetry that falsified the original single-hash bet.
 
@@ -618,6 +618,21 @@ Crash-recovery machinery (D7); search counting in code (D8); DI minting (R-C3); 
 - The plan's "extend `test_zotero_path_contract.py` with the position assertion" landed in `test_index_writer.py::test_zotero_batch_block_also_lands_before_the_anchor` instead. Position is now a property of the writer's fixed anchor, not of the legacy contract being pinned; keeping the characterization file to what it pins (fields, values, row shape, dedupe) matches design M7.
 
 ### Phase 4 Completion
+**Completed:** 2026-08-25
+**Actual Changes:**
+- **B2 re-measured before any code was written**, against a loopback server and a generated PDF. All four claims hold: HTML with `--output DIR` lands **flat** (`output.md`, `raw.html`, `metrics.json`); a local PDF lands **nested** under a `<stem>/` directory with `output.md`, `metrics.json`, `decisions.json`, `images/` and **no `raw.pdf`** even with `--save-source`; the frontmatter `content_hash_sha256` equals the digest of the source **as fetched** (URL) or of the input file (PDF); and on an `iso-8859-1` page `raw.html` on disk differs from the fetched bytes (served/frontmatter `3b6596c0…`, `raw.html` `afb0c4a6…`). No stop-and-report trigger fired.
+- `scripts/source_registry.py` (NEW) — `register(source, metadata, *, paths, budget)` where `source` is a `UrlSource` or a `LocalPdfSource`, so nothing branches on a sentinel to pick a mode. Staging sweep; capture as a real `agentic-mbse extract` subprocess into `knowledge/.staging/<uuid>/` with `--save-source` and no `--index`/`--summarize`; `_flatten` lifts a nested PDF stem directory; provenance read off disk (frontmatter hash → `source_id`/`raw_sha256`, stored artifact → `raw_artifact_sha256`, `output.md` → `extract_sha256`), each missing piece a hard `capture_failed`; commit under `fcntl.flock` on `knowledge/.registry.lock` in the fixed rung order (rename → raw copy → manifest row → index block) with the ladder undoing exactly its own rungs. `register` subcommand CLI printing the result as JSON.
+- `tests/research/conftest.py` — `local_site` (session-scoped `ThreadingHTTPServer` on `127.0.0.1:0` over `fixtures/web/`) and `generated_pdf` (drawn with matplotlib, already a dependency).
+- `tests/research/fixtures/web/utf8.html`, `latin1.html` (NEW) — wholly invented content; `grep -rni aries tests/research/fixtures/` is clean.
+- `tests/research/test_register_url_chain.py` (13 tests), `tests/research/test_register_pdf_chain.py` (4 tests, three marked slow) — full provenance, the two-hash split on the `iso-8859-1` page, every required index field, `Location` resolving on disk, empty staging after success, exactly one row and one block, per-field precondition refusals, slug collision suffix, and an unreachable URL leaving nothing behind.
+
+**Issues:**
+- The `iso-8859-1` fixture first had its charset only in a `<meta>` tag. The fetcher decodes by the **HTTP header**, so extraction died with `UnicodeDecodeError` and wrote nothing. The `local_site` handler now serves `Content-Type: text/html; charset=iso-8859-1` for that fixture, which is what reproduces the re-encoding asymmetry the design measured. Worth recording: a wrong-charset page is a real `capture_failed`, and the seam handles it as one.
+- For a local PDF the input is staged under `<staging>/.rawin/` rather than at the staging root, so `_flatten` cannot mistake it for extraction output; rung (b) moves it to `knowledge/raw/` and removes `.rawin`.
+
+**Deviations:**
+- The plan's stencil signature was `register(url=..., title=..., ...)`. Implemented as `register(source, metadata, ...)` with `UrlSource` / `LocalPdfSource` / `SourceMetadata` instead, because `url=` and `local_pdf=` as mutually exclusive optionals is exactly the sentinel-branching shape the standing code-quality rule forbids. Behaviour is the plan's; only the call shape differs.
+- `ruff --fix` also removed one already-unused import and seven extraneous `f` prefixes in `zotero_ingest.py`. No behaviour change. One pre-existing over-long line at `zotero_ingest.py:532` is left alone.
 
 ### Phase 5 Completion
 

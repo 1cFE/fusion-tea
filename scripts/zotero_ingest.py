@@ -28,7 +28,6 @@ from pathlib import Path
 
 from zotero_lib import (
     GROUP_ID,
-    MANIFEST_PATH,
     RAW_DIR,
     SOURCE_INDEX_PATH,
     SOURCES_DIR,
@@ -428,7 +427,7 @@ def re_extract_sources(zot, args) -> None:
 
         pdf_info = resolve_pdf_info(zot, item)
         if pdf_info is None:
-            print(f"  No PDF attachment — skipping")
+            print("  No PDF attachment — skipping")
             stats["skipped"] += 1
             continue
 
@@ -446,7 +445,7 @@ def re_extract_sources(zot, args) -> None:
                 budget=args.budget, model=args.model, force=True,
             )
         except subprocess.TimeoutExpired:
-            print(f"  Extraction timed out")
+            print("  Extraction timed out")
             stats["failed"] += 1
             continue
         if not ok:
@@ -476,7 +475,7 @@ def process_zotero_item(zot, item: dict, args) -> str:
     pdf_info = resolve_pdf_info(zot, item)
     if pdf_info is None:
         print(f"\n--- {item['data'].get('title', '(no title)')} [{item_key}] ---")
-        print(f"  No PDF attachment — skipping")
+        print("  No PDF attachment — skipping")
         return "skipped"
 
     title = pdf_info.title
@@ -498,7 +497,7 @@ def process_zotero_item(zot, item: dict, args) -> str:
     try:
         ok = run_extraction(result.path, output_dir, budget=args.budget, model=args.model)
     except subprocess.TimeoutExpired:
-        print(f"  Extraction timed out")
+        print("  Extraction timed out")
         return "failed"
     if not ok:
         return "failed"
@@ -545,7 +544,7 @@ def print_dry_run(zot, items: list, total_items: int, known_count: int) -> None:
         else:
             title = item["data"].get("title", "(no title)")
             print(f"  [{item_key}] {title}")
-            print(f"           (no PDF — will skip)")
+            print("           (no PDF — will skip)")
 
 
 def print_summary(stats: dict) -> None:
@@ -590,11 +589,11 @@ def process_local_pdf(args) -> None:
     try:
         ok = run_extraction(raw_copy, output_dir, budget=args.budget, model=args.model)
     except subprocess.TimeoutExpired:
-        print(f"  Extraction timed out")
-        print(f"\nSummary: 1 found, 0 extracted, 0 skipped (no PDF), 1 failed")
+        print("  Extraction timed out")
+        print("\nSummary: 1 found, 0 extracted, 0 skipped (no PDF), 1 failed")
         sys.exit(1)
     if not ok:
-        print(f"\nSummary: 1 found, 0 extracted, 0 skipped (no PDF), 1 failed")
+        print("\nSummary: 1 found, 0 extracted, 0 skipped (no PDF), 1 failed")
         sys.exit(1)
 
     # Compute extract SHA256
@@ -611,7 +610,7 @@ def process_local_pdf(args) -> None:
         pdf_sha256=pdf_sha256, extract_sha256=extract_sha,
     )
 
-    print(f"\nSummary: 1 found, 1 extracted, 0 skipped (no PDF), 0 failed")
+    print("\nSummary: 1 found, 1 extracted, 0 skipped (no PDF), 0 failed")
 
 
 def main():

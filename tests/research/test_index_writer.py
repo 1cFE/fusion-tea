@@ -3,7 +3,6 @@
 import re
 
 import pytest
-
 from zotero_ingest import append_source_index_entry
 
 SEAM_KWARGS = dict(
@@ -85,4 +84,6 @@ def test_two_seam_blocks_stack_in_write_order(knowledge_tree):
     append_source_index_entry(**SEAM_KWARGS)
     append_source_index_entry(**(SEAM_KWARGS | {"title": "Second", "slug": "second"}))
     body = knowledge_tree.index.read_text()
-    assert body.index("### Coil Note") < body.index("### Second") < body.index("## How Sources Are Used")
+    assert (body.index("### Coil Note")
+            < body.index("### Second")
+            < body.index("## How Sources Are Used"))

@@ -12,7 +12,6 @@ import json
 import re
 
 import pytest
-
 from zotero_ingest import append_source_index_entry
 from zotero_lib import append_manifest_entry, load_manifest, manifest_keys
 

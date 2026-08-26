@@ -6,11 +6,14 @@ Zotero writer (which reads module-level path constants) and the new seam code
 """
 
 import json
+import threading
+import urllib.request
 from dataclasses import dataclass
+from functools import partial
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 import pytest
-
 import zotero_ingest
 import zotero_lib
 
@@ -97,3 +100,78 @@ def knowledge_tree_factory(tmp_path, monkeypatch):
         return tree
 
     return _make
+
+
+# --- offline capture fixtures (design D11) -----------------------------------
+#
+# `file://` is rejected by `agentic-mbse extract`, so the fixture URL has to be
+# real HTTP. A thread-local server over `fixtures/web/` lets the seam run the
+# actual extract subprocess without touching the network.
+
+FIXTURE_WEB = Path(__file__).parent / "fixtures" / "web"
+
+# Declared charset per fixture. The header is what the fetcher decodes by, so a
+# page has to be served as iso-8859-1 to exercise the re-encoding asymmetry.
+FIXTURE_CHARSET = {"latin1.html": "iso-8859-1"}
+
+
+class _FixtureHandler(SimpleHTTPRequestHandler):
+    def guess_type(self, path):
+        charset = FIXTURE_CHARSET.get(Path(path).name)
+        if charset:
+            return f"text/html; charset={charset}"
+        return super().guess_type(path)
+
+    def log_message(self, *args):
+        pass
+
+
+@dataclass(frozen=True)
+class LocalSite:
+    port: int
+
+    def url(self, name: str) -> str:
+        return f"http://127.0.0.1:{self.port}/{name}"
+
+    def fetched_bytes(self, name: str) -> bytes:
+        with urllib.request.urlopen(self.url(name)) as response:
+            return response.read()
+
+
+@pytest.fixture(scope="session")
+def local_site():
+    server = ThreadingHTTPServer(
+        ("127.0.0.1", 0),
+        partial(_FixtureHandler, directory=str(FIXTURE_WEB)),
+    )
+    thread = threading.Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    try:
+        yield LocalSite(port=server.server_address[1])
+    finally:
+        server.shutdown()
+        server.server_close()
+
+
+@pytest.fixture(scope="session")
+def generated_pdf(tmp_path_factory) -> Path:
+    """A small text PDF, drawn with matplotlib so the suite adds no dependency."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    lines = [
+        "Widget Coil Note (synthetic fixture)",
+        "",
+        "The widget winding pack measures 1000 mm by 400 mm.",
+        "The invented conductor carries 100.0 kA across 150 turns.",
+        "This document exists only to exercise the local-PDF capture path.",
+    ]
+    figure = plt.figure(figsize=(8.5, 11))
+    for i, line in enumerate(lines):
+        figure.text(0.1, 0.9 - 0.04 * i, line, fontsize=12)
+    path = tmp_path_factory.mktemp("pdf") / "widget_coil_note.pdf"
+    figure.savefig(path)
+    plt.close(figure)
+    return path

@@ -10,9 +10,8 @@ import ast
 import re
 from pathlib import Path
 
-import pytest
-
 import holdout_guard
+import pytest
 
 FIXTURES = Path(__file__).parent / "fixtures" / "protocol"
 
