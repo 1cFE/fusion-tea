@@ -49,3 +49,16 @@ Smells dispositioned:
 - *Missing hardening row* — FIXED. "Denser per-stage trail events" added to § Non-Goals, so the list is now the design's full hardening table.
 
 Gate: CLEAR
+
+---
+
+## correction — 2026-08-25 — to this ledger's `spec-F3` resolution
+Epic: epic_goal_strategy_task_harness
+
+The `spec-F3` resolution above records the `[REFERENT]` marking of `work/orchestration/handshake-lcoe-construction.md` as "authority: owner". The independent spec review (`spec-review.md` L1-2) checked and found no owner statement marking it binding — the phrase "proven prose referent" is the epic's Required Reading text (`epic_goal_strategy_task_harness.md:120`), which is owner-ratified but agent-authored. The reviewer is right.
+
+Disposition (orchestrator, 2026-08-25): the `[REFERENT]` **force stands** — it is the bar `GOAL_RUNBOOK.md` must match, not an illustration. Only the provenance changes: `spec.md` now grades it `[INHERITED: epic Item 1 Required Reading — "proven prose referent"]`. Recorded here because this ledger is append-only and a later reader would otherwise inherit the overstated grade.
+
+No finding reopened; no gate change.
+
+Gate: CLEAR
