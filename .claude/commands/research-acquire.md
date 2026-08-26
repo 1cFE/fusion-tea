@@ -50,8 +50,17 @@ For each candidate, use WebFetch to judge reachability and relevance only (rule 
 
 ```bash
 uv run python scripts/research_seam.py log <run-dir> --candidate <url> --triage keeper --note "<why>"
+uv run python scripts/research_seam.py log <run-dir> --candidate <url> --triage rejected --note "<why not>"
 uv run python scripts/research_seam.py log <run-dir> --failure <url> --reason "paywalled"
 ```
+
+`--triage` takes exactly `keeper` or `rejected`.
+
+The difference between `--candidate --triage rejected` and `--failure` decides the return class, so get it right:
+
+- **`--candidate --triage rejected`** — you saw it and it is not useful. Off topic, superseded, no numbers. Nothing for a person to do.
+- **`--failure`** — you could not bring it in, and somebody could: paywalled, behind a login wall, repeatedly unreachable. This **queues the candidate for the operator** and stops the run writing a bounded negative that would block the request. That is the default, and it is the right default.
+- **`--failure ... --disposition closed`** — you could not bring it in and nobody should try: a dead link. Recorded in the negative, not routed to a person.
 
 A keeper is a source you can say three things about, because registration requires all three:
 
@@ -84,7 +93,7 @@ The command prints JSON. Read the `outcome`:
 | `registered` | Done. The `location` is citable under MR-4. |
 | `duplicate` | The source is already in the registry under `existing_slug`. Use it; do not try again. |
 | `holdout_hit` | Stop on that candidate. It is queued for the operator, rule id and all. |
-| `capture_failed` | Try once more if the reason looks transient. Otherwise log the failure and move on. |
+| `capture_failed` | Try once more if the reason looks transient. Otherwise it is already receipted and queued for the operator; move on. |
 | `precondition_failed` | You left out metadata, or named a file that is not there. Fix and retry. |
 | `limit_reached` | The run has spent its captures. Go to step 5. |
 
@@ -96,11 +105,13 @@ uv run python scripts/research_seam.py close <run-dir> --adequacy exhausted
 
 Use `--adequacy limit_reached` if you stopped because of a declared limit rather than because you ran out of places to look.
 
-`close` reads the receipts, not your account of the run, and computes the class. If you believed the search found nothing but a source was registered, the return will say `REGISTERED` — that is the mechanism working, not a bug.
+`close` computes the class; you do not declare it. `registered[]` comes from the receipts alone, so if you believed the search found nothing but a source was registered, the return says `REGISTERED` — that is the mechanism working, not a bug. `queued[]` comes from the receipts **and** your `log --failure` entries, because a paywall is something only you saw.
 
 ### 6. Report
 
 State the class, and for each registered source its repo path. Point at the run directory. If the class is `BOUNDED_NEGATIVE`, point at the negative file. If anything was queued, name each candidate and its reason.
+
+Commit the run directory with the work. Everything under `knowledge/research/requests/` — the request, the run record, the receipts, `return.json` and any bounded negative — is committed evidence, not scratch. A negative that lives only in one working tree does not block the next search, and a return nobody can read is not a return.
 
 Then hand off: a research document written from these sources goes through the owner's `/research` approval flow as it always has. That is where insights are made.
 

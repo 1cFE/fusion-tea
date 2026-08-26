@@ -7,7 +7,6 @@ Covers every row of the vocabulary-mapping table (design D13), plus R-A5's
 import json
 
 import pytest
-
 import research_seam
 
 REQUEST = {

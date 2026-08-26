@@ -5,7 +5,6 @@ the production one; only the rung's own body is replaced.
 """
 
 import pytest
-
 import source_registry
 from source_registry import RegistrationError, SourceMetadata, UrlSource
 

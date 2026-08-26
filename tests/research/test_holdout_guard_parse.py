@@ -125,3 +125,36 @@ def test_no_waiver_identifier_exists_in_the_guard():
                 names.add(node.value)
     waiver = re.compile(r"(ack\b|_ack|acknowledge|override|waiv|bypass|allowlist)", re.I)
     assert not [n for n in names if waiver.search(n)]
+
+
+def test_repo_root_is_derived_from_the_module_location():
+    """F6: not from a hardcoded checkout name."""
+    root = holdout_guard.repo_root()
+    assert (root / "scripts" / "holdout_guard.py").is_file()
+    assert (root / "knowledge" / "holdout" / "aries-cs" / "PROTOCOL.md").is_file()
+
+
+def test_an_absolute_path_in_this_checkout_is_barred():
+    absolute = holdout_guard.repo_root() / "knowledge/holdout/aries-cs/08-FST-Ku.pdf"
+    match = holdout_guard.check_input_path(absolute)
+    assert match is not None
+    assert match.rule_id == "path:knowledge/holdout/aries-cs/*.pdf"
+
+
+def test_a_differently_named_checkout_still_bars_the_path(tmp_path, monkeypatch):
+    """The failure the literal caused: a clone called anything else failed open."""
+    checkout = tmp_path / "some-other-clone-name"
+    (checkout / "scripts").mkdir(parents=True)
+    monkeypatch.setattr(holdout_guard, "__file__", str(checkout / "scripts" / "holdout_guard.py"))
+
+    assert holdout_guard.repo_root() == checkout
+    barred = checkout / "knowledge/holdout/aries-cs/08-FST-Lyon.pdf"
+    barred.parent.mkdir(parents=True)
+    barred.write_bytes(b"stand-in; no held-out content")
+
+    match = holdout_guard.check_input_path(barred)
+    assert match is not None and match.rule_id == "path:knowledge/holdout/aries-cs/*.pdf"
+
+
+def test_a_path_outside_the_checkout_is_not_barred(tmp_path):
+    assert holdout_guard.check_input_path(tmp_path / "some_clean_paper.pdf") is None

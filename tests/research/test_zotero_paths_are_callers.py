@@ -5,10 +5,10 @@ had no test at all now has one, with no network involved.
 """
 
 import json
+from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
-
 import zotero_ingest
 
 ITEM_KEY = "ABCD1234"
@@ -17,7 +17,7 @@ ITEM_KEY = "ABCD1234"
 class StubZotero:
     """Just enough of pyzotero for `resolve_pdf_info` and `download_pdf_from_info`."""
 
-    def __init__(self, pdf: "Path", title: str):
+    def __init__(self, pdf: Path, title: str):
         self._pdf = pdf
         self._title = title
 
@@ -29,8 +29,6 @@ class StubZotero:
                  "data": {"contentType": "application/pdf", "filename": self._pdf.name}}]
 
     def dump(self, child_key, filename, directory):
-        from pathlib import Path
-
         Path(directory).mkdir(parents=True, exist_ok=True)
         (Path(directory) / filename).write_bytes(self._pdf.read_bytes())
 

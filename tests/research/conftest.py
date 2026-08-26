@@ -8,7 +8,7 @@ Zotero writer (which reads module-level path constants) and the new seam code
 import json
 import threading
 import urllib.request
-from dataclasses import dataclass
+from dataclasses import dataclass, fields
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -63,16 +63,35 @@ def _build_tree(root: Path, baseline: dict) -> KnowledgeTree:
     return KnowledgeTree(root=root, paths=paths)
 
 
-def _point_legacy_constants_at(tree: KnowledgeTree, monkeypatch) -> None:
-    """The pre-seam writer reads module constants; redirect them at the temp tree.
+# Every RegistryPaths field, and the module constant `default_paths()` builds it
+# from. All seven must be redirected or the suite is not hermetic: any code path
+# that reaches `default_paths()` — the Zotero callers do — would otherwise stage
+# into the real repository's `knowledge/.staging` and take the real registry lock.
+_PATH_CONSTANTS = {
+    "sources": "SOURCES_DIR",
+    "index": "SOURCE_INDEX_PATH",
+    "manifest": "MANIFEST_PATH",
+    "raw": "RAW_DIR",
+    "staging": "STAGING_DIR",
+    "lock": "LOCK_PATH",
+    "baseline": "BASELINE_PATH",
+}
+assert set(_PATH_CONSTANTS) == set(f.name for f in fields(zotero_lib.RegistryPaths))
 
-    `zotero_ingest` imported the constants by value, so both modules are patched.
+
+def _point_legacy_constants_at(tree: KnowledgeTree, monkeypatch) -> None:
+    """Redirect every registry path constant at the temp tree.
+
+    This patches constants rather than only injecting `RegistryPaths` for two
+    reasons: the pre-seam writer reads the constants directly, and
+    `default_paths()` builds from them — so redirecting them is what keeps an
+    un-injected call site inside the temp tree too. `zotero_ingest` imported the
+    constants by value, so both modules are patched.
     """
     for module in (zotero_lib, zotero_ingest):
-        monkeypatch.setattr(module, "SOURCES_DIR", tree.paths.sources, raising=False)
-        monkeypatch.setattr(module, "SOURCE_INDEX_PATH", tree.paths.index, raising=False)
-        monkeypatch.setattr(module, "MANIFEST_PATH", tree.paths.manifest, raising=False)
-        monkeypatch.setattr(module, "RAW_DIR", tree.paths.raw, raising=False)
+        for field, constant in _PATH_CONSTANTS.items():
+            monkeypatch.setattr(module, constant, getattr(tree.paths, field),
+                                raising=False)
 
 
 EMPTY_BASELINE = {

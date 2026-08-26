@@ -51,9 +51,9 @@ The boundary that matters: **operator queue is about a source, blocker is about 
 - [x] **SC4** — A registration that fails partway leaves no partial state: no orphan `knowledge/sources/` directory, no index block, no manifest row.
 - [x] **SC5** — A barred URL, title, or content case writes nothing under `knowledge/sources/` and records which rule matched, or the operator-queue outcome.
 - [x] **SC6** — An adequate search that finds no usable source returns a durable bounded negative recording the queries run and the candidates attempted, and a later invocation against that same request surfaces the prior negative instead of silently re-searching.
-- [ ] **SC7** — The research entry surface consumes the bounded request and emits exactly one of the four return classes, with native references, while the owner's research-approval gate stays where it is and no DI is minted by acquisition.
+- [x] **SC7** — The research entry surface consumes the bounded request and emits exactly one of the four return classes, with native references, while the owner's research-approval gate stays where it is and no DI is minted by acquisition.
 - [x] **SC8** — The whole capture → holdout → register chain is proven end-to-end offline, for both a URL input and a local PDF input, against fixtures rather than the live network. A duplicate, a rollback, a barred write, and a bounded negative are each proven the same way. Focused registration/acquisition tests and the affected knowledge-pipeline regressions pass.
-- [ ] **SC9** `[INHERITED: epic Item 2 deliverables]` — A non-author walks the seam's operator documentation and can, from it alone, form a bounded request, invoke the operation, identify which of the four return classes came back, and act on a queued source and on a bounded negative.
+- [x] **SC9** `[INHERITED: epic Item 2 deliverables]` — A non-author walks the seam's operator documentation and can, from it alone, form a bounded request, invoke the operation, identify which of the four return classes came back, and act on a queued source and on a bounded negative.
 
 ## Known Requirements
 

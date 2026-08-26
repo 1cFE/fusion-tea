@@ -3,7 +3,6 @@
 import json
 
 import pytest
-
 import research_seam
 
 REQUEST = {
@@ -36,7 +35,11 @@ def _dry_run(home, request_path, adequacy="exhausted"):
     assert opened.exit_code == 0
     research_seam.log_search(opened.run_dir, "nb3sn winding pack current density")
     research_seam.log_candidate(opened.run_dir, "https://example.org/a", "rejected", "paywalled")
-    research_seam.log_failure(opened.run_dir, "https://example.org/b", "404")
+    # `closed`, not the default: a queue-worthy failure would (correctly) make this
+    # run an OPERATOR_QUEUE and write no negative at all. The queueing default is
+    # covered in `test_triage_queue.py`.
+    research_seam.log_failure(opened.run_dir, "https://example.org/b", "404",
+                              disposition="closed")
     return research_seam.close(opened.run_dir, adequacy=adequacy)
 
 

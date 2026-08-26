@@ -34,6 +34,12 @@ RECEIPTS = "receipts"
 
 QUEUEING_OUTCOMES = frozenset({"holdout_hit", "capture_failed", "precondition_failed"})
 
+# What a `log --failure` entry means for the return. "A source was identified but
+# could not be brought in" is the spec's own OPERATOR_QUEUE definition, so that is
+# the default; `closed` is for a candidate nobody should spend time on, which stays
+# a recorded failure inside the bounded negative.
+FAILURE_DISPOSITIONS = ("queued", "closed")
+
 
 class SeamError(RuntimeError):
     """The bookkeeper was asked to work on something that is not a run."""
@@ -147,12 +153,23 @@ def log_candidate(run_dir: Path, ref: str, triage: str, note: str = "") -> None:
     )
 
 
-def log_failure(run_dir: Path, ref: str, reason: str) -> None:
-    """Record a candidate that could not be brought in, and why."""
+def log_failure(run_dir: Path, ref: str, reason: str, disposition: str = "queued") -> None:
+    """Record a candidate that could not be brought in, and why.
+
+    Defaults to `queued`: a paywall, a login wall or a repeated fetch failure is
+    the spec's first-named reason to hand a source to a person, and defaulting the
+    other way writes a durable negative over a candidate somebody could still get.
+    Pass `closed` for a candidate nobody should chase — a dead link — which is
+    recorded in the negative instead of routed to a human.
+    """
+    if disposition not in FAILURE_DISPOSITIONS:
+        raise SeamError(
+            f"disposition must be one of {FAILURE_DISPOSITIONS}: {disposition!r}"
+        )
     _append(
         run_dir,
-        {"kind": "failure", "ref": ref, "reason": reason},
-        f"- failed {ref} — {reason}",
+        {"kind": "failure", "ref": ref, "reason": reason, "disposition": disposition},
+        f"- failed {ref} — {reason} ({disposition})",
     )
 
 
@@ -162,10 +179,14 @@ def log_fault(run_dir: Path, reason: str) -> None:
 
 
 def close(run_dir: Path, *, adequacy: str = "exhausted") -> dict:
-    """Compute the seam's return class from the receipts and write `return.json`.
+    """Compute the seam's return class and write `return.json`.
 
-    The agent's log entries describe the search; the receipts describe what
-    actually reached the registry. Where they disagree, the receipts win (R-B9).
+    Two sources, each authoritative over what only it can know. The receipts say
+    what reached the registry, and nothing the agent logs can add to or subtract
+    from `registered[]` (R-B9). The run record says which candidates were blocked
+    before there was anything to register — only the agent saw the paywall — and
+    that is where `queued[]` gets its triage half (design D13, corrected
+    2026-08-26).
     """
     run_dir = Path(run_dir)
     meta_path = run_dir / RUN_META
@@ -177,10 +198,7 @@ def close(run_dir: Path, *, adequacy: str = "exhausted") -> dict:
     entries = _read_run_record(run_dir)
 
     registered = _registered_entries(receipts)
-    queued = [
-        {"candidate": r["candidate"], "reason": r.get("reason") or r.get("outcome")}
-        for r in receipts if r["outcome"] in QUEUEING_OUTCOMES
-    ]
+    queued = _queued_entries(receipts, entries)
     faults = [e["reason"] for e in entries if e["kind"] == "fault"]
     limit = _limit_reached(meta, receipts, entries)
 
@@ -227,6 +245,26 @@ def _seam_class(*, registered: list, queued: list, faults: list, candidates: lis
     if faults and not candidates:
         return "BLOCKER"
     return "BOUNDED_NEGATIVE"
+
+
+def _queued_entries(receipts: list[dict], entries: list[dict]) -> list[dict]:
+    """Candidates a person has to resolve, from both places one can be found.
+
+    A registration attempt that was refused leaves a receipt. A candidate blocked
+    at triage — paywalled, behind a login wall, unreachable — never reaches
+    `register` at all, so it exists only in the run record. Reading receipts alone
+    made the spec's first-named queue case unreachable (audit F2).
+    """
+    queued = [
+        {"candidate": r["candidate"], "reason": r.get("reason") or r.get("outcome")}
+        for r in receipts if r["outcome"] in QUEUEING_OUTCOMES
+    ]
+    queued += [
+        {"candidate": e["ref"], "reason": e["reason"]}
+        for e in entries
+        if e["kind"] == "failure" and e.get("disposition", "queued") == "queued"
+    ]
+    return queued
 
 
 def _registered_entries(receipts: list[dict]) -> list[dict]:
@@ -376,6 +414,10 @@ def _build_parser() -> argparse.ArgumentParser:
                         help="Required with --candidate")
     logger.add_argument("--note", default="", help="Free text for --candidate")
     logger.add_argument("--reason", default="", help="Required with --failure")
+    logger.add_argument("--disposition", choices=list(FAILURE_DISPOSITIONS), default="queued",
+                        help="With --failure: 'queued' hands the candidate to a person "
+                             "(default; paywall, login wall, repeated fetch failure); "
+                             "'closed' records it in the bounded negative instead")
 
     closer = sub.add_parser("close", help="Compute the return class and write return.json")
     closer.add_argument("run_dir", type=Path)
@@ -411,7 +453,7 @@ def _run_log(args) -> int:
         if not args.reason:
             print("ERROR: --failure requires --reason")
             return 2
-        log_failure(args.run_dir, args.failure, args.reason)
+        log_failure(args.run_dir, args.failure, args.reason, args.disposition)
     else:
         log_fault(args.run_dir, args.fault)
     return 0

@@ -101,3 +101,11 @@ Notes (no finding):
 Smells: **one fires.** *Correctness depends on downstream knowledge of an internal representation* — FIRES on impl-F2: the return class is legible only to a caller who knows that `queued[]` reads receipts and not the run log, and both operator documents teach the sequence that gets it wrong. Escalated into the audit's Product Judgment as the controlling finding, not left in the rubric. *Two representations manually kept synchronized* — fires weakly on `raw_artifact_sha256` being derived twice (`:627` vs `:664`); they agree today and nothing checks them, recorded as a LOW finding rather than escalated. *A test passes only because it selects one duplicate, route or interpretation* — does not fire; the suite drives the real code path, and failure injection replaces rung bodies rather than adding a test-only branch. *A special category exempts a case whose user-visible meaning is unchanged* — does not fire; the Zotero batch profile is a genuinely different case (unattended, no per-item prose) and D6 states why. *A baseline preserves behavior contradicting the product's reason for existing* — does not fire; the `verify` legacy baseline records pre-seam drift as drift and repairs nothing.
 
 Gate: BLOCKED (impl-F1, impl-F2)
+
+## implementation — 2026-08-26 — audit fix pass (orchestrator-verified salvage)
+
+Resolves:
+- impl-F1: FIXED — sweep is lock-held and age-thresholded; each attempt owns and removes its own staging dir; concurrency regression test added. Design D7 amended 2026-08-26 with the reason. Verified by orchestrator against the diff and a green 150-test run.
+- impl-F2: FIXED — `close` computes `queued[]` from triage-logged failures and receipts; the guide's paywall sequence now closes OPERATOR_QUEUE with no negative written; D13 corrected against the spec's class table (the authority). Regression test reproduces the audited failure.
+
+Gate: CLEAR

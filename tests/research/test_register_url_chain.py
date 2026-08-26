@@ -141,3 +141,13 @@ def test_unreachable_url_is_a_capture_failure_leaving_nothing(knowledge_tree):
     assert not list(knowledge_tree.paths.sources.iterdir())
     assert not list(knowledge_tree.paths.staging.iterdir())
     assert knowledge_tree.manifest.read_text() == ""
+
+
+def test_manifest_and_index_carry_the_same_raw_artifact_hash(local_site, knowledge_tree):
+    """F7: one value, one derivation, handed to both writers."""
+    result = _register(local_site, knowledge_tree, page="latin1.html",
+                       metadata=METADATA)
+    row = _only_row(knowledge_tree)
+    block = _block_for(knowledge_tree, METADATA.title)
+    assert f"- **Raw Artifact SHA256**: {row['raw_artifact_sha256']}" in block
+    assert result.raw_artifact_sha256 == row["raw_artifact_sha256"]

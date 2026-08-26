@@ -127,14 +127,29 @@ def _backticked_paths(section: str) -> set[str]:
     return found
 
 
+def repo_root() -> Path:
+    """This checkout's root, derived from where this module actually sits.
+
+    `scripts/holdout_guard.py` is one directory below the root, and that holds in
+    any clone or worktree whatever the directory is called. The previous version
+    looked for the literal string "fusion-tea" in the path, so a checkout under
+    any other name left the path absolute, matched no glob, and silently let the
+    path bar through — failing open, in the one module where that is the wrong
+    direction (audit F6).
+    """
+    return Path(__file__).resolve().parent.parent
+
+
 def _repo_relative(path: Path) -> str:
-    text = path.as_posix()
-    marker = "/fusion-tea"
-    if path.is_absolute() and marker in text:
-        # Trim any worktree prefix so patterns stay repo-relative.
-        tail = text.split(marker, 1)[1]
-        text = tail.split("/", 1)[1] if "/" in tail else tail
-    return text.lstrip("./")
+    """The path as the protocol's globs spell it: relative to this checkout's root."""
+    if path.is_absolute():
+        try:
+            return path.resolve().relative_to(repo_root()).as_posix()
+        except ValueError:
+            # Outside this checkout. Nothing under a barred repo path can be, so
+            # the absolute form is returned and simply matches no glob.
+            return path.as_posix()
+    return path.as_posix().lstrip("./")
 
 
 def _path_matches(candidate: str, pattern: str) -> bool:

@@ -25,6 +25,7 @@ import re
 import shutil
 import subprocess
 import sys
+import time
 import uuid
 from contextlib import contextmanager
 from dataclasses import dataclass
@@ -45,6 +46,11 @@ from zotero_lib import (
 FRONTMATTER_HASH_RE = re.compile(r'^content_hash_sha256: "([0-9a-f]{64})"', re.MULTILINE)
 CAPTURE_TIMEOUT_S = 900
 DEFAULT_BUDGET = 0.0
+
+# A staging directory older than this cannot belong to a live attempt: capture is
+# hard-bounded by CAPTURE_TIMEOUT_S and commit is a few syscalls under the lock.
+# Four times the bound is the conservative margin (design D7, amended 2026-08-26).
+STALE_STAGING_AGE_S = 4 * CAPTURE_TIMEOUT_S
 
 # `--index`/`--summarize` invoke the `claude` CLI, which refuses to run inside a
 # Claude Code session. The seam is agent-invoked by construction, so it never
@@ -224,7 +230,7 @@ def _attempt(
     run_dir: Path | None,
 ) -> RegistrationResult:
     """The seven-step flow, without the receipt bookkeeping wrapped around it."""
-    _sweep_staging(paths)
+    _sweep_stale_staging(paths)
 
     refusal = _pre_capture_refusal(source, metadata, paths=paths, run_dir=run_dir)
     if refusal is not None:
@@ -249,13 +255,38 @@ def _attempt(
 # --- steps 1-3: preconditions, capture, provenance ---------------------------
 
 
-def _sweep_staging(paths: RegistryPaths) -> None:
-    """Discard anything a previous run left behind. Unscanned content never persists."""
-    if not paths.staging.exists():
-        paths.staging.mkdir(parents=True)
-        return
-    for leftover in paths.staging.iterdir():
-        shutil.rmtree(leftover, ignore_errors=True) if leftover.is_dir() else leftover.unlink()
+def _sweep_stale_staging(paths: RegistryPaths) -> None:
+    """Discard staging left behind by a killed run — and nothing else.
+
+    Each attempt works in its own `knowledge/.staging/<uuid>/` and removes it in a
+    `finally`, so the only thing this has to collect is what a hard kill orphaned.
+    It takes the registry lock and removes only entries older than
+    `STALE_STAGING_AGE_S`, because the alternative — clearing the whole staging
+    root — deletes the working directory of every other attempt in flight.
+
+    The threshold is safe by construction: capture is hard-bounded by the
+    subprocess timeout (`CAPTURE_TIMEOUT_S`), and commit is a handful of
+    filesystem calls under the lock, so no live attempt can reach four times that
+    age. See design.md D7, amendment 2026-08-26.
+    """
+    paths.staging.mkdir(parents=True, exist_ok=True)
+    cutoff = time.time() - STALE_STAGING_AGE_S
+    with _registry_lock(paths):
+        for leftover in paths.staging.iterdir():
+            if _modified_at(leftover) > cutoff:
+                continue
+            if leftover.is_dir():
+                shutil.rmtree(leftover, ignore_errors=True)
+            else:
+                leftover.unlink(missing_ok=True)
+
+
+def _modified_at(path: Path) -> float:
+    """The entry's own mtime, or now if it vanished under us — never sweep a racer."""
+    try:
+        return path.stat().st_mtime
+    except OSError:
+        return time.time()
 
 
 def _pre_capture_refusal(
@@ -524,9 +555,17 @@ def _commit(
         try:
             _rename_into_sources(captured.staging, source_dir)
             staged_raw = _move_raw_copy(source_dir, raw_copy)
-            row = _manifest_row(source, metadata, captured, slug=slug, raw_copy=staged_raw)
+            # Digested once, here, and handed to both writers. Deriving it twice
+            # gave the manifest and the index two routes to one number that had to
+            # stay in step, with nothing checking they did (audit F7).
+            raw_artifact_sha256 = (
+                _sha256(staged_raw) if staged_raw else captured.raw_artifact_sha256
+            )
+            row = _manifest_row(source, metadata, captured, slug=slug,
+                                raw_artifact_sha256=raw_artifact_sha256)
             _append_manifest_row(row, paths)
-            _insert_index_block(source, metadata, captured, slug=slug, paths=paths)
+            _insert_index_block(source, metadata, captured, slug=slug, paths=paths,
+                                raw_artifact_sha256=raw_artifact_sha256)
         except Exception as error:
             _roll_back(source_dir, raw_copy, manifest_mark, paths)
             raise RegistrationError(f"commit failed for {source.identity}: {error}") from error
@@ -538,7 +577,7 @@ def _commit(
         location=f"knowledge/sources/{slug}/",
         source_id=captured.source_id,
         raw_sha256=captured.source_id,
-        raw_artifact_sha256=row["raw_artifact_sha256"],
+        raw_artifact_sha256=raw_artifact_sha256,
         extract_sha256=captured.extract_sha256,
     )
 
@@ -614,7 +653,7 @@ def _manifest_row(
     captured: _Captured,
     *,
     slug: str,
-    raw_copy: Path | None,
+    raw_artifact_sha256: str,
 ) -> dict:
     row = {
         "source_id": captured.source_id,
@@ -624,7 +663,7 @@ def _manifest_row(
     }
     row.update(source.row_extras)
     row["raw_sha256"] = captured.source_id
-    row["raw_artifact_sha256"] = _sha256(raw_copy) if raw_copy else captured.raw_artifact_sha256
+    row["raw_artifact_sha256"] = raw_artifact_sha256
     row["extract_sha256"] = captured.extract_sha256
     row["date_extracted"] = date.today().isoformat()
     return row
@@ -644,6 +683,7 @@ def _insert_index_block(
     *,
     slug: str,
     paths: RegistryPaths,
+    raw_artifact_sha256: str,
 ) -> None:
     """Rung (d): the index read-modify-write, last because it is the riskiest."""
     extras = source.row_extras
@@ -661,7 +701,7 @@ def _insert_index_block(
         caveat=metadata.caveat,
         source_id=captured.source_id,
         raw_sha256=captured.source_id,
-        raw_artifact_sha256=captured.raw_artifact_sha256,
+        raw_artifact_sha256=raw_artifact_sha256,
         extract_sha256=captured.extract_sha256,
     )
 

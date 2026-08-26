@@ -3,7 +3,6 @@
 import json
 
 import pytest
-
 import source_registry
 from source_registry import SourceMetadata, UrlSource
 
@@ -92,7 +91,9 @@ def test_the_capture_after_the_limit_is_refused_and_named(local_site, knowledge_
     assert [r["outcome"] for r in _receipts(run)] == ["registered", "limit_reached"]
 
 
-def test_a_run_dir_is_optional_so_the_standalone_operation_is_unaffected(local_site, knowledge_tree):
+def test_a_run_dir_is_optional_so_the_standalone_operation_is_unaffected(
+    local_site, knowledge_tree
+):
     """R-B0 / SC2: a direct call registers with no run directory in sight."""
     result = source_registry.register(
         UrlSource(url=local_site.url("utf8.html")), METADATA, paths=knowledge_tree.paths

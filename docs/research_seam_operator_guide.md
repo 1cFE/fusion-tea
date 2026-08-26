@@ -27,7 +27,9 @@ Or `--local-pdf path/to/file.pdf` instead of `--url`.
 
 The three prose flags are required and there is no default for them. An index entry that cannot say what a source is for, how to check its numbers, and what limits its authority is not worth writing, so the operation refuses rather than writing a blank one.
 
-**This is a breaking change to `zotero_ingest.py --local-pdf`.** That flag used to take a path and nothing else. It now requires `--use-for`, `--validation` and `--caveat` too, and errors naming all three if you leave them out. `--title` is new and optional; without it the title is still derived from the filename.
+**This is a breaking change to `zotero_ingest.py --local-pdf`.** That flag used to take a path and nothing else. It now requires `--use-for`, `--validation` and `--caveat` too, and errors naming all three if you leave them out.
+
+`--title` is required as well, on both entry points, and is not derived from anything. A title is what the slug and the index heading are built from, and a filename-derived guess would put a wrong name on a permanent registry entry. Omitting it exits 2 with an argparse error. (`zotero_ingest.py --local-pdf` still accepts `--title` as an optional override of its filename-derived title; the registry CLI does not.)
 
 It prints JSON. `outcome` is one of:
 
@@ -61,6 +63,25 @@ Every entry records two SHA-256 values, and they do different jobs.
 - **`Raw Artifact SHA256`** is the digest of the artifact **as stored** in the repository. It is the integrity check you can recompute yourself with `sha256sum`.
 
 They are the same number for a plain UTF-8 page or a PDF. They differ for a page served in another encoding, because the extractor writes `raw.html` re-encoded as UTF-8. Do not expect one to verify the other.
+
+### Trying it without the network
+
+The URL path can be exercised offline by serving a page from your own machine. The test suite does exactly this — `tests/research/conftest.py` runs a threaded `http.server` over `tests/research/fixtures/web/` — and you can do it by hand:
+
+```bash
+python3 -m http.server 8799 --directory tests/research/fixtures/web &
+uv run python scripts/source_registry.py register \
+    --url http://127.0.0.1:8799/utf8.html \
+    --title "Widget Coil Note" \
+    --use-for "Checking the seam works before I trust it." \
+    --validation "Compare against the fixture page itself." \
+    --caveat "A test fixture. It states nothing about any real machine."
+kill %1
+```
+
+That runs the real `agentic-mbse extract` subprocess, the real hold-out scan and the real commit — everything but the live fetch. Register it into a scratch tree, or `git checkout` the two registry files afterwards, if you do not want the entry.
+
+Note that `agentic-mbse extract` rejects `file://` URLs, so a local file is not a substitute for the loopback server here.
 
 ---
 
@@ -96,8 +117,17 @@ Normally `/research-acquire` drives this. By hand:
 RUN=$(uv run python scripts/research_seam.py open knowledge/research/requests/REQ-031-01.json | tail -1)
 
 uv run python scripts/research_seam.py log "$RUN" --search "nb3sn winding pack current density"
+
+# --triage takes exactly keeper or rejected.
 uv run python scripts/research_seam.py log "$RUN" --candidate https://example.org/a --triage keeper --note "has the table"
+uv run python scripts/research_seam.py log "$RUN" --candidate https://example.org/c --triage rejected --note "off topic"
+
+# A candidate you could not bring in. This queues it for a person by default.
 uv run python scripts/research_seam.py log "$RUN" --failure https://example.org/b --reason "paywalled"
+
+# ... unless you say nobody should chase it, which records it in the negative instead.
+uv run python scripts/research_seam.py log "$RUN" --failure https://example.org/gone \
+    --reason "404, link is dead" --disposition closed
 
 uv run python scripts/source_registry.py register --url https://example.org/a \
     --title "..." --use-for "..." --validation "..." --caveat "..." --run "$RUN"
@@ -107,7 +137,22 @@ uv run python scripts/research_seam.py close "$RUN" --adequacy exhausted
 
 `close` writes `return.json` in the run directory.
 
-**The return is computed from disk, not from the log.** `register --run` drops a receipt for every attempt. `close` reads those receipts. If the agent reported finding nothing but a source was registered, the return says `REGISTERED`. That is deliberate: what landed on disk is the truth of what happened.
+### Commit the run directory with the work
+
+Everything under `knowledge/research/requests/` is **committed evidence**, not scratch: the requests, the bounded negatives, the run records, the receipts and the returns. Commit them alongside whatever the round produced.
+
+That is what makes a negative durable. A negative that lives only in one working tree answers nobody: a fresh clone would not have it, the next operator would re-run the same fruitless search, and the goal layer could not cite the return it is supposed to route on. R-D5 asks for a *durable* negative and R-D6 asks a later invocation to find it — neither survives if the file is local scratch.
+
+The receipts matter for the same reason. They are the evidence behind the class in `return.json`; without them the return is an assertion rather than a record.
+
+
+**Where the return comes from.** Two places, each authoritative over what only it can know.
+
+`register --run` drops a receipt for every attempt, and `registered[]` is built from those receipts alone. If the agent reported finding nothing but a source was registered, the return says `REGISTERED`. What landed on disk is the truth of what was registered, and nothing in the log can change it.
+
+`queued[]` comes from both the receipts and the run record, because a candidate can be blocked in two different places. A registration that was refused — hold-out hit, capture failure — leaves a receipt. A candidate blocked at triage never reaches `register` at all: only the agent saw the paywall, so `log --failure` is the only record of it. Both end up in `queued[]`, in the same shape.
+
+**A queued candidate means no bounded negative is written.** A negative exists to stop a *fruitless* search being repeated. A request with a named source somebody can still get is not fruitless, so it stays searchable while a human works the queue.
 
 ---
 
@@ -130,7 +175,7 @@ An entry in `registered[]` carries `pre_existing: true` when the source was alre
 
 ## Act on a queued source
 
-Read `queued[]` in the return. Each entry names a candidate and a reason.
+Read `queued[]` in the return. Each entry names a candidate and a reason. Entries arrive from two places and read the same: a registration the seam refused, and a candidate the agent recorded with `log --failure` before there was anything to register.
 
 **Paywall or login wall.** Get the PDF through whatever access you have, then register it directly:
 

@@ -5,7 +5,6 @@ held-out design or cost content, which is what R-D4 bars.
 """
 
 import pytest
-
 import source_registry
 from source_registry import LocalPdfSource, SourceMetadata, UrlSource
 

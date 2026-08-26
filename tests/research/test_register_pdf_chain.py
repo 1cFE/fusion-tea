@@ -79,3 +79,12 @@ def test_missing_local_pdf_is_a_precondition_failure(knowledge_tree, tmp_path):
     )
     assert result.outcome == "precondition_failed" and "absent.pdf" in result.reason
     assert not list(knowledge_tree.paths.sources.iterdir())
+
+
+@pytest.mark.slow
+def test_manifest_and_index_agree_on_the_raw_artifact_hash(knowledge_tree, registered_pdf):
+    """F7: the PDF path is where the two derivations used to read different files."""
+    row = json.loads(knowledge_tree.manifest.read_text().strip())
+    block = knowledge_tree.index.read_text().split(f"### {METADATA.title}", 1)[1]
+    assert f"- **Raw Artifact SHA256**: {row['raw_artifact_sha256']}" in block
+    assert registered_pdf.raw_artifact_sha256 == row["raw_artifact_sha256"]
