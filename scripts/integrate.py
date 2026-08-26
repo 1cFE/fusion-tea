@@ -69,6 +69,7 @@ import traceback
 from dataclasses import dataclass
 from importlib import metadata
 from pathlib import Path
+from xml.etree import ElementTree
 
 if __package__ in (None, ""):  # invoked as a script: put the repo root on sys.path
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -152,6 +153,30 @@ CONDITIONS = (
     "lineage-mismatch",
     "seam-internal-error",
 )
+
+
+#: What each gate's own refusal is called. One slug per gate, so the operator action a
+#: caller reads off the guide is decided by which producer refused, not by parsing prose.
+REFUSAL_CONDITION = {
+    "pinned-packages": "toolchain-drift",
+    "teax-revision": "toolchain-drift",
+    "regeneration": "package-not-integrated",
+    "handwritten-preservation": "handwritten-lost",
+    "census-snapshot": "census-stale",
+    "model-family-spine": "repo-lineage-broken",
+    "manifest": "manifest-stale",
+    "preflight": "preflight-refused",
+    "verification": "verification-refused",
+    "lineage": "lineage-mismatch",
+}
+
+
+@dataclass(frozen=True)
+class GateOutcome:
+    """A gate that passed: what it checked, and where its own output sits."""
+
+    detail: str
+    evidence: tuple[str, ...]
 
 
 @dataclass(frozen=True)
@@ -725,6 +750,150 @@ def run_producer(argv: list[str], env: dict[str, str]) -> subprocess.CompletedPr
     )
 
 
+# --------------------------------------------------------------- the pytest producers
+
+
+def junit_outcome(junit_path: Path) -> tuple[int, int]:
+    """How many ``<failure>`` and ``<error>`` elements a junit report carries.
+
+    That split is all junit gives, and on its own it does **not** carry the
+    refused-versus-could-not-run distinction: an absent wheel variable raises inside a test
+    *body* and lands as a ``<failure>``. Gate 0's environment sweep is what makes this
+    reading sound; junit is the secondary signal and the evidence file.
+    """
+    if not junit_path.is_file():
+        return 0, 0
+    root = ElementTree.parse(junit_path).getroot()
+    return len(root.findall(".//failure")), len(root.findall(".//error"))
+
+
+def run_pytest_gate(gate: Gate, target: str, request: Request, env: dict[str, str]) -> GateOutcome:
+    """A pytest suite as a gate: exit 0 passes, a ``<failure>`` refuses, anything else could
+    not run.
+
+    Past gate 0 there is no environment cause left for this producer, so a ``<failure>`` is
+    a genuine negative verdict. An ``<error>`` is a collection or fixture fault, and an exit
+    code other than 0 or 1 is pytest itself stopping — usage, interruption, internal error —
+    neither of which is a verdict about the package.
+    """
+    junit = request.out_dir / "junit" / f"{gate.name}.xml"
+    junit.parent.mkdir(parents=True, exist_ok=True)
+    done = run_producer(
+        [sys.executable, "-m", "pytest", target, "-q", f"--junitxml={junit}"], env
+    )
+    evidence = (manifest_mod.repo_relative_posix(junit),) if junit.is_file() else ()
+    failures, errors = junit_outcome(junit)
+    if done.returncode == 0:
+        return GateOutcome(f"{target} passed", evidence)
+    if done.returncode == 1 and failures and not errors:
+        raise SeamBlocker(
+            gate=gate.name, producer=gate.producer, scope=gate.scope,
+            mode=REFUSED, condition=REFUSAL_CONDITION[gate.name],
+            detail=f"{target}: {failures} failing check(s)\n{done.stdout.strip()[-2000:]}",
+            evidence=evidence,
+        )
+    raise SeamBlocker(
+        gate=gate.name, producer=gate.producer, scope=gate.scope,
+        mode=COULD_NOT_RUN, condition="env-missing",
+        detail=f"{target} could not judge: pytest exited {done.returncode} with "
+               f"{errors} error(s) and {failures} failure(s)\n{done.stderr.strip()[-2000:]}",
+        evidence=evidence,
+    )
+
+
+# ------------------------------------------------------------------------ the gates
+
+
+def gate_pinned_packages(request: Request, env: dict[str, str]) -> GateOutcome:
+    """Gate 1a: the toolchain the package was generated through, judged by the repo's own
+    provenance suite. Repo-scoped — the suite reads ``pyproject.toml``, ``uv.lock`` and the
+    installed wheels, and accepts no package argument."""
+    return run_pytest_gate(
+        GATES[0], "tests/test_dependency_provenance.py", request, env
+    )
+
+
+def gate_teax_revision(request: Request, env: dict[str, str]) -> GateOutcome:
+    """Gate 1b: the teax checkout's revision against the one the caller expects.
+
+    The seam does this comparison itself because no producer anywhere does it — teax is a
+    working checkout, not a pinned dependency, and it exposes no ``__version__``. The
+    expectation is the caller's for a reason: a seam that recorded its own would be minting
+    a pin, and a self-recorded value re-records itself on drift and could never refuse.
+    """
+    expected = request.expected_teax_revision
+    teax_root = Path(env["STOP_PARSER_TEAX_ROOT"])
+    if not expected:
+        raise SeamBlocker(
+            gate=GATES[1].name, producer=GATES[1].producer, scope=GATES[1].scope,
+            mode=COULD_NOT_RUN, condition="toolchain-drift",
+            detail="--expected-teax-revision was not supplied, and the seam does not mint "
+                   "a pin of its own; the caller is the one who knows the lineage",
+        )
+    actual = teax_revision(teax_root)
+    if actual is None:
+        raise SeamBlocker(
+            gate=GATES[1].name, producer=GATES[1].producer, scope=GATES[1].scope,
+            mode=COULD_NOT_RUN, condition="toolchain-drift",
+            detail=f"git could not read HEAD of the teax checkout at {teax_root}",
+        )
+    if not actual.casefold().startswith(expected.casefold()):
+        raise SeamBlocker(
+            gate=GATES[1].name, producer=GATES[1].producer, scope=GATES[1].scope,
+            mode=REFUSED, condition="toolchain-drift",
+            detail=f"the teax checkout at {teax_root} is not the revision the request named",
+            expected=expected, actual=actual,
+        )
+    return GateOutcome(f"teax is at {actual}, matching the expected {expected}", ())
+
+
+def gate_model_family_spine(request: Request, env: dict[str, str]) -> GateOutcome:
+    """Gate 5: the canonical tree, the family twins and the tracked census.
+
+    Repo-scoped, and that is a property of the producer rather than a choice: the suite
+    generates from the repository's own ``models/`` tree and compares against the tracked
+    census, and takes no package argument. A refusal here can be about the working tree the
+    operator is standing in rather than about ``--package``; ``scope`` is what says so.
+    """
+    return run_pytest_gate(
+        GATES[5], "tests/models/test_model_family_spines.py", request, env
+    )
+
+
+# ------------------------------------------------------------------- the sequence
+
+
+#: Which callable judges which gate. The order is ``GATES``'s, never this mapping's.
+GATE_IMPLEMENTATIONS = {
+    "pinned-packages": gate_pinned_packages,
+    "teax-revision": gate_teax_revision,
+    "model-family-spine": gate_model_family_spine,
+}
+
+
+def gate_result(gate: Gate, outcome: GateOutcome) -> dict:
+    return {
+        "gate": gate.name,
+        "producer": gate.producer,
+        "scope": gate.scope,
+        "status": PASS,
+        "checked": gate.checked,
+        "detail": outcome.detail,
+        "evidence": list(outcome.evidence),
+    }
+
+
+def run_sequence(request: Request, env: dict[str, str], results: list[dict]) -> None:
+    """Run the ten gates in order, stopping at the first that is not a pass.
+
+    Results are appended to the caller's list rather than returned, because the stop rule
+    means the interesting case is the *partial* one: a blocker propagates out of here and
+    the caller still has to report every gate that ran before it.
+    """
+    for gate in GATES:
+        results.append(gate_result(gate, GATE_IMPLEMENTATIONS[gate.name](request, env)))
+
+
 # ------------------------------------------------------------------------- the CLI
 
 
@@ -739,6 +908,7 @@ def run(args: argparse.Namespace, argv: list[str]) -> tuple[dict, Path | None]:
         assert_environment(env)
         request.out_dir.mkdir(parents=True, exist_ok=True)
         assert_package_clean(request, env)
+        run_sequence(request, env, results)
     except SeamBlocker as exc:
         blocker = exc
     document = build_return(

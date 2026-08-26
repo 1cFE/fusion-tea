@@ -838,7 +838,11 @@ means that until the sequence exists, a fully valid request exits **2** with
 candidate. No test encodes that interim state.
 ### Phase 4 Completion
 
-**Not started — stopped here and reported. This is an environment premise problem, not a
+**Complete 2026-08-26 — second attempt, after the environment blocker below was resolved by the orchestrator.** Gates 1a/1b/5 implemented (`junit_outcome`, `run_pytest_gate`, `REFUSAL_CONDITION`, `GateOutcome`, `run_sequence` with the stop rule); `tests/study/test_integrate_refusals.py` added (4 tests; the gate-1a refusal is a real hash failure at `tests/test_dependency_provenance.py:89` via a doctored `STOP_PARSER_CODEGEN_WHEEL` — the one proof of the shared junit mapping, per the gate-5 coverage boundary). `tests/study` 309 passed 1 skipped; provenance 3/3 green against the restored sealed wheels. **Wheel home:** `/home/reid/1cfe/stop-parser-sealed-wheels/` (outside the repo, sha256-verified against `WHEEL_HASHES`; recovered from `/tmp/stop-parser-rev2/artifacts-closeout-sealed/wheels/`) — goes in the operator guide env section (Phase 9). Env delivery: `.venv/integration.env` (gitignored) + `uv run --env-file` because the sandbox rejects `set -a; source`. Committed by the orchestrator: the resumed session lost git approval (resume does not inherit implement's bypassPermissions — the known permission wall). The record below is the first attempt's finding, kept as history; its "blocks Phases 4-8" conclusion is superseded by the wheel restoration.
+
+---
+
+**First-attempt record (superseded): stopped here and reported. This is an environment premise problem, not a
 plan defect, and it blocks Phases 4 through 8 as written.**
 
 **The finding, measured.** Gate 1a's producer cannot pass on this machine.

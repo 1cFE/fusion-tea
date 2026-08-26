@@ -16,6 +16,8 @@ from pathlib import Path
 
 import pytest
 
+from scripts import integrate
+
 REPO_ROOT = Path(__file__).resolve().parents[2]
 REAL_PACKAGE = REPO_ROOT / "exploration" / "stellarator_e2e" / "pkg" / "stellarator_tea"
 REAL_MANIFEST = REPO_ROOT / "exploration" / "stellarator_e2e" / "studies" / "manifest.json"
@@ -334,6 +336,40 @@ class IntegrationWorkspace:
     source_digests: dict[str, str]
     entry_digests: dict[str, str]
     repo_clean_over_sources: bool
+    expected_teax_revision: str
+    expected_semantic_fingerprint: str
+    expected_executable_fingerprint: str
+
+    def request_argv(self, out_dir, **overrides) -> list[str]:
+        """A complete integration request against this workspace.
+
+        The expected lineage is read off the workspace itself — the package's own contracts
+        and the teax checkout's own HEAD — because that is what a caller integrating
+        *already-audited* work supplies. A refusal fixture overrides one value and nothing
+        else, so the test names exactly the drift it is driving.
+        """
+        request = {
+            "--audited-work": "exploration/stellarator_e2e/generated@HEAD",
+            "--models-root": str(self.models),
+            "--package": str(self.package),
+            "--manifest": str(self.manifest),
+            "--groups": str(self.axes),
+            "--census-file": str(self.census),
+            "--expected-teax-revision": self.expected_teax_revision,
+            "--expected-semantic-fingerprint": self.expected_semantic_fingerprint,
+            "--expected-executable-fingerprint": self.expected_executable_fingerprint,
+            "--route-sys-path": str(self.route_sys_path),
+            "--route-module": "study_route",
+            "--route-callable": "execute_baseline",
+            "--out-dir": str(out_dir),
+        }
+        request.update(overrides)
+        return [
+            token
+            for flag, value in request.items()
+            if value is not None
+            for token in (flag, value)
+        ]
 
 
 def _copy_tree_digests(source: Path, destination: Path, root: Path) -> dict[str, str]:
@@ -418,6 +454,40 @@ def integration_workspace(stock_simkit_path):
             repo_clean_over_sources=_repo_clean_over(
                 [REAL_PACKAGE.resolve(), REAL_MODELS, REAL_SNAPSHOT, REAL_MANIFEST, REAL_CENSUS]
             ),
+            expected_teax_revision=integrate.teax_revision(
+                Path(os.environ["STOP_PARSER_TEAX_ROOT"])
+            ),
+            expected_semantic_fingerprint=manifest_mod.read_semantic_fingerprint(package),
+            expected_executable_fingerprint=manifest_mod.read_executable_fingerprint(package),
         )
     finally:
         shutil.rmtree(root, ignore_errors=True)
+
+
+# ------------------------------------------------------ invoking the seam from a test
+#
+# A subprocess, never an import: the exit code is half the contract (0 candidate, 1
+# blocker, 2 the seam itself broke), and an in-process call would answer a different
+# question than the one a goal agent's Bash tool asks.
+
+SEAM_CLI = REPO_ROOT / "scripts" / "integrate.py"
+
+
+def run_seam_raw(argv, env=None):
+    return subprocess.run(
+        [sys.executable, str(SEAM_CLI), *argv],
+        capture_output=True, text=True, cwd=str(REPO_ROOT), env=env,
+    )
+
+
+def read_return(done, out_dir) -> dict:
+    """The return document: under ``--out-dir`` when gate 0 accepted the request, else stdout."""
+    written = Path(out_dir) / "integration_return.json"
+    if written.is_file():
+        return json.loads(written.read_text())
+    assert done.stdout, f"the seam wrote no return document\n{done.stderr}"
+    return json.loads(done.stdout)
+
+
+def run_seam(argv, out_dir, env=None) -> dict:
+    return read_return(run_seam_raw(argv, env), out_dir)
