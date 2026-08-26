@@ -207,3 +207,59 @@ Recorded 2026-08-26 by the design agent, after orchestrator steering (`[AGENT]`)
 **Must-fix (blocks plan):** M1, M2, M3, M4, M5, M6, M7, M8
 **Advisory:** A1–A12
 **Next Steps:** Record resolutions above, then return to the design-agent session (or re-run `/_my_design`) pointed at this file. The core shape — prove-don't-perform, one CLI, one JSON return, producers invoked not reimplemented — survives intact; what needs work is three gates' scoping and detection, and two fields in the return.
+
+---
+
+## Round-2 Verification (final round) — 2026-08-26
+
+Fresh verification pass against `design.md` @ `76c0e1c8`. Scope was narrow by brief: verify the resolutions, do not re-open the review. Every *new* code claim the revision introduced was checked in this worktree.
+
+### New code claims — all confirmed
+
+| Claim | Verified |
+|---|---|
+| `{k: sorted(v)}` is the producer's own normalization | ✓ `test_model_family_spines.py:358` exactly |
+| The fifth fixture is a real, hermetic `<failure>` | ✓ `tests/test_dependency_provenance.py:88-89` is the wheel-hash assert; a doctored `STOP_PARSER_CODEGEN_WHEEL` fails it for real, writes no tracked file, and needs the other five variables set — consistent with gate 0 |
+| `preflight.py` has a standalone `clean` subcommand | ✓ `:487` `sub.add_parser("clean", …)` |
+| `verify.py` returns 1 before writing a document | ✓ `:527-529`, the catch sits above `write_document` |
+| `manifest.load` validates | ✓ `:384-398` |
+| `STUDY_REQUIRE_TEAX` turns a teax skip into a failure | ✓ `conftest.py:239-242` |
+| The tracked snapshot has no `captured_at` | ✓ zero occurrences in `exploration/stellarator_e2e/stellarator.snapshot.json` — B2's stronger result reproduced independently |
+| The four wheel variables are `AGENTIC` / `CODEGEN` / `COSTINGFE` + `WHEEL_TARGET` | ✓ `WHEEL_HASHES` keys at `:31-35`, read at `:83-86` |
+
+### M1–M8
+
+- **M1 — resolved.** Not by forcing gate 5 into a shape its producer cannot take, which would have been the wrong fix, but by declaring scope truthfully per gate (D13), narrowing the "names no package" claim in all three places it appeared, asserting workspace-equals-committed-state so repo-scoped gates are meaningful by construction rather than by luck (D10, plus a Required Invariant), moving the stale-census fixture to the package-scoped gate 4, and filing the producer gap. The gate-5 refusal coverage boundary is stated **loudly enough**: a bolded paragraph in Validation Approach with the reason every driver breaks R-G3 or R-B2 and with what *is* covered instead, a Non-Goals bullet, and a pointer from the SC2 test row. Plan and audit will both see it.
+- **M2 — resolved.** Gate 0 owns every environment precondition in one place and names all six variables; the junit Implementation Note is retired and replaced with what junit actually does; a test pins each variable unset in turn. The standing `KeyError` can no longer be reported as a refusal.
+- **M3 — resolved, and re-derived rather than patched.** One restore mechanism, git-independent, driven by D8's before-digest, with the full restore set spelled out (replace changed, delete added, restore removed). It works identically in the tracked tree and the gitignored workspace, which is what the finding asked for. The rejection of the own-git-repo option carries a real reason beyond "two mechanisms" — it would change what gate 7's `check_package_clean` judges.
+- **M4 — resolved.** Gate 0 probes verify's preconditions under the same environment the subprocess gets; past gate 0 a non-zero exit is `refused`, full stop. Stderr string-matching is rejected with the right reason (R-B2 freezes the messages, so the coupling could never be made safe from the other side). The residual — an unpredicted import failure landing as `refused` — is stated, bounded and filed rather than hidden.
+- **M5 — resolved as a recorded boundary, which was the honest answer.** D17 names the obligation, says plainly that nothing else covers it either, rejects both alternatives in writing, and files it. It also appears in gate 6's table row and in Non-Goals — three visible places.
+- **M6 — resolved.** Lineage is gate 9 with a producer, a scope and its own two-mode rules; `blocker` gains `expected` and `actual`; the invariant states ten entries with the arithmetic. A1 folds in cleanly.
+- **M7 — resolved, and better than the finding asked for.** The finding would have accepted prose in the guide. D14 gives Item 6 a stable machine-readable key instead, keeps the seam two-class and two-mode, puts the mapping where the goal layer owns it, and adds a Non-Goal forbidding the vocabulary in `scripts/integrate.py`. The four `PREREQUISITE` slugs are the right four.
+- **M8 — resolved.** D16 defines the environment once, with the `STUDY_REQUIRE_TEAX=1` detail that stops a teax-dependent producer from skipping green, and the guide lists the same variables so a hand invocation matches.
+
+**A1–A12** all dispositioned; A4, A5, A9, A10 spot-checked against code and correct. **B2** closed by spike and independently reproduced here. **B6** is a good catch by the author — the census/package co-derivation was the unstated bet the round-1 review hunted out, and it is now written down as the thing that breaks first when a second package appears.
+
+### Product-lens
+
+The ledger had not in fact been updated for this hop — it still ended at the round-1 `Gate: BLOCKED`. Appended the resolves block and the final gate. **design-F1 FIXED**, **design-F2 FIXED**, **design-F3 FIXED**. The consumer-compensating smell still fires structurally, because the three producer shortfalls are real and unfixed here — but it no longer fires as a *silent* compensation, which is what the smell exists to catch. All three are named, bounded and routed home. **Gate: CLEAR.**
+
+### R-F5 filings
+
+All three new ones appear in Integration Strategy, each with a named home: the spine suite's non-parameterizability (item 3, `tests/models/test_model_family_spines.py`), `verify.py` collapsing both R-A6 modes with no summary on refusal (item 4, `scripts/study/verify.py`), and `assert_read_set_covered` having no reachable caller (item 5, `manifest.py` / `indicators.py`). Five total with the two carried from the first draft.
+
+### Residual — advisory only, for the plan to absorb
+
+Neither blocks the plan starting.
+
+- **`--out-dir` must resolve outside the resolved package root.** Nothing says so. If a caller puts it inside, D7's `_backup/` copy and D8's before/after digest both take the seam's own output into their scope, and gate 2 refuses on bytes the seam wrote. One validated precondition at gate 0.
+- **Carry the gate-5 coverage boundary into `plan.md`.** It is loud in `design.md`, but `/_my_audit` walks the plan first. One line in the plan's validation section keeps it from being rediscovered as a gap.
+
+---
+
+**Round-2 verdict: APPROVED — the plan may start.**
+
+All eight must-fix findings are resolved in the design, not deferred to the plan. Both blocking lens findings are fixed and the lens gate is CLEAR. The two coverage boundaries the design chose to state rather than close — gate 5's refusal path and `assert_read_set_covered` — are the right call and are recorded where plan and audit will find them. The effort estimate is honestly restated at 14–15 h with the five additions itemized rather than absorbed.
+
+**Overall (superseding the round-1 verdict):** **Approve**
+**Next Steps:** `/_my_plan`. Carry the two advisory residuals above into the plan's preconditions and validation sections.
