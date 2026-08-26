@@ -654,17 +654,17 @@ Prove no regression anywhere the seam reaches, and map every success criterion t
 
 ### Changes Required
 
-- [ ] Run the full affected set (below), all green
-- [ ] Fill in the Implementation Notes sections, including the Phase 2 before/after tally and the Phase 5 timings
-- [ ] Update `.project/CURRENT_WORK.md`
+- [x] Run the full affected set (below), all green
+- [x] Fill in the Implementation Notes sections, including the Phase 2 before/after tally and the Phase 5 timings
+- [x] Update `.project/CURRENT_WORK.md`
 
 ### Validation
 
 **Automated (the R-B2 / R-G2 regression gate):**
-- [ ] `uv run python -m pytest tests/models tests/study tests/test_dependency_provenance.py -q` → green
-- [ ] `git diff --stat -- scripts/study/ tests/models/ tests/test_dependency_provenance.py` → **empty**
-- [ ] `git status --porcelain` → clean
-- [ ] `uv run python -m pytest tests/ -q` → whole suite, no other consumer disturbed
+- [x] `uv run python -m pytest tests/models tests/study tests/test_dependency_provenance.py -q` → green
+- [x] `git diff --stat -- scripts/study/ tests/models/ tests/test_dependency_provenance.py` → **empty**
+- [x] `git status --porcelain` → clean
+- [x] `uv run python -m pytest tests/ -q` → whole suite, no other consumer disturbed
 
 **Environment for this phase and every test phase:**
 ```bash
@@ -679,15 +679,15 @@ export STOP_PARSER_WHEEL_TARGET=... STOP_PARSER_AGENTIC_WHEEL=... \
 
 | SC | Verified by |
 |---|---|
-| SC1 | `test_integrate_success.py` — ten gates pass, every candidate field resolves, both fingerprints match the request's lineage, tracked tree byte-identical |
-| SC2 | `test_integrate_refusals.py` — five real refusals from real producers (gates 1a, 1b, 2, 4, 7), each naming producer, scope, mode, condition and its own evidence. **Gate 5's refusal path is a stated boundary, untested** — see Overall Validation Approach |
-| SC3 | `test_integrate_rerun.py` — same pin, same both fingerprints, same package and manifest across two runs |
-| SC4 | `test_integrate_stock_route.py` — stock commands rebuilt from the return document alone, both pass, no seam import |
-| SC5 | The regression gate above |
-| SC6 | **Not a test.** A fresh session that did not build the seam walks `docs/integration_seam_operator_guide.md` at `/_my_audit` and records every point where it had to read source or guess (spec SC6 Evidence form) |
-| R-A6 could-not-run | `test_integrate_preconditions.py` — six variables unset in turn, all refusing at gate 0 before any producer runs |
-| R-C8 / D7 | `test_integrate_restore.py` plus the gate-2 refusal fixture — the workspace is restored to its entry digests |
-| R-B1.6 fourth assertion | **Covered by nothing.** D17 boundary, filed in Phase 9 item 5 |
+| SC1 | `test_integrate_success.py` — **MET.** Ten gates pass on the committed package, every candidate field resolves on disk, both fingerprints equal the request's lineage, the package is byte-identical before and after, `pin` equals the manifest's own value read independently, and the cited `verification_summary.json` reads `outcome: pass` with `verdicts_rederived: true` |
+| SC2 | `test_integrate_refusals.py` — **MET.** Six real refusals from real producers: gate 1a (doctored wheel hash → a genuine `<failure>` at `tests/test_dependency_provenance.py:89`), gate 1b (wrong expected revision), gate 2 (a doctored package byte regeneration rewrites), gate 4 (a doctored census), gate 6 (a doctored pin), gate 7 (drifted `recorded_provenance` through `check_manifest_currency`). Each names its producer, scope, mode and condition and cites its own evidence; later gates read `not reached`; no candidate. Plus four could-not-run fixtures. **Gate 5's refusal path is a stated boundary, untested** — see Overall Validation Approach |
+| SC3 | `test_integrate_rerun.py` — **MET.** Same `package`, `manifest`, `pin` and both fingerprints across two runs; the three `--out-dir` paths asserted to differ, which is A8's exclusion proven rather than assumed; the second run is a `CANDIDATE`, not a refusal |
+| SC4 | `test_integrate_stock_route.py` — **MET.** Both stock command lines rebuilt from `integration_return.json` and the documents it cites, both pass, no seam import anywhere in the module (asserted by reading its own import lines) |
+| SC5 | **MET.** `pytest tests/models tests/study tests/test_dependency_provenance.py` → 392 passed, 14 skipped; `git diff --stat` over the three frozen paths empty |
+| SC6 | **Not a test, and not met yet by construction.** A fresh session that did not build the seam walks `docs/integration_seam_operator_guide.md` at `/_my_audit` and records every point where it had to read source or guess (spec SC6 Evidence form). `test_integrate_guide_contract.py` checks only that the guide is *complete* — every condition slug, environment variable, exit code, CLI flag and gate name, all read from `scripts/integrate.py` — so the walk is not wasted on an obvious hole |
+| R-A6 could-not-run | `test_integrate_preconditions.py` — six variables unset in turn, all refusing at gate 0 before any producer runs; plus four unasked-input fixtures at gates 1b, 4 and 9 |
+| R-C8 / D7 | `test_integrate_restore.py` plus the gate-2 refusal fixture — changed, added and removed all restored; the workspace returns to its entry digests; nothing outside the moved set is rewritten |
+| R-B1.6 fourth assertion | **Covered by nothing.** D17 boundary, stated in gate 6's own passing detail, in the guide's "what the seam does not check", and filed as BACKLOG row 5 |
 
 **What We Know Works After This Phase:** the item is auditable against its spec.
 
@@ -1139,7 +1139,71 @@ does not discharge it, because the summary `verify.py` writes is still unrecorde
 (`work/BACKLOG.md` epic status drift, and the known escaped-pipe rows in `VALIDATION_MATRIX.md`).
 ### Phase 10 Completion
 
+**Completed:** 2026-08-26
+
+**The regression gate (R-B2 / R-G2), run as written.**
+
+| Check | Result |
+|---|---|
+| `pytest tests/models tests/study tests/test_dependency_provenance.py -q` | **392 passed, 14 skipped**, 0 failed (5 m 33 s) |
+| `git diff --stat -- scripts/study/ tests/models/ tests/test_dependency_provenance.py` | **empty** |
+| `git status --porcelain` after a full run | clean |
+
+`tests/test_dependency_provenance.py` is 3/3 against the restored sealed wheels — the standing
+`KeyError` the repo's own records carried for months is gone from this environment, and gate 1a
+passes rather than refusing.
+
+**Test tally across the item.** `tests/study` was **274 passed, 1 skipped** at the start and is
+**341 passed, 1 skipped** at the end: 67 new tests, no pre-existing test moved (A12).
+
+**Timings, measured rather than assumed.**
+- One full passing invocation: **~16 s**. Generation ~2 s, snapshot capture ~1.7 s; the
+  model-family spine suite and the baseline execution dominate the rest.
+- `tests/study` end to end: **5 m 22 s**, of which `test_integrate_success.py` alone is 160 s
+  because `integration_workspace` is function-scoped and each of its eight tests re-runs the
+  whole sequence.
+- **The fixture-sharing question the plan left open for this phase, answered: leave it.** The
+  cost is real and the fix — a module-scoped workspace for the success module — is cheap, but
+  it buys 2.5 minutes at the cost of a second workspace fixture whose scope rules differ from
+  the first. The refusal fixtures genuinely need one workspace each; a success module that
+  shared one would be the only exception, and an exception is what future readers get wrong. If
+  the suite's wall clock becomes a problem, the measurement above is what to reopen it with.
+
+**Files this item added or changed, in full**
+- `scripts/integrate.py` (NEW) — the seam.
+- `tests/study/conftest.py` — one new fixture and its record, the workspace helpers, and the
+  shared `run_seam` helpers. No existing fixture's behaviour changed.
+- `tests/study/test_integrate_preconditions.py`, `test_integration_workspace.py`,
+  `test_integrate_restore.py`, `test_integrate_refusals.py`, `test_integrate_success.py`,
+  `test_integrate_lineage.py`, `test_integrate_rerun.py`, `test_integrate_stock_route.py`,
+  `test_integrate_guide_contract.py` (all NEW).
+- `docs/integration_seam_operator_guide.md` (NEW).
+- `.project/adr/009-integration-is-a-fixed-point-proof.md` (NEW) + `INDEX.md` row.
+- `.project/backlog/BACKLOG.md` — six Flagged rows.
+- `.gitignore` — `/.integration_workspace/`.
+- `design.md` — D19, D20, D21 and the gate-4 row's could-not-run.
+
+Nothing under `scripts/study/`, `tests/models/`, or `tests/test_dependency_provenance.py`.
+
+**The whole-suite run, and what it surfaced.** `pytest tests/ -q` → **44 failed, 940 passed, 58
+skipped** (10 m 46 s). Every failure is in
+`tests/scoring_v2/test_spec_conformance.py::TestSpecPredictedScoresLand`, the `upper_cf` axis.
+This item touches nothing under `exploration/scoring_v2/` or `tools/`, and the last recorded
+baseline for that class was 34 failures (`.project/active/goal-research-seam/plan.md:589`), so
+the count has grown independently of this work. Two findings, filed as one BACKLOG row rather
+than absorbed:
+
+1. The suite is **not hermetic** — a full `pytest tests/` run leaves
+   `tools/score_explorer/data/concepts.json` modified, 107 lines rewritten. So
+   `git status --porcelain` is dirty after the whole-suite sweep for a reason that has nothing
+   to do with the seam. Restored by hand here; the tree is clean at this commit.
+2. The 44 failures are 10 more than the last recorded baseline in the same class.
+
+Neither is this item's to fix — R-B2 does not cover them and they are outside its surface —
+but a whole-suite gate that nobody can read is worse than no gate, so the row names both with
+the reproducing command.
+
 ---
 
-**Status**: Draft → In Progress → Complete
+**Status**: Complete — all ten phases implemented and committed
 **Next Step:** `/_my_implement`
