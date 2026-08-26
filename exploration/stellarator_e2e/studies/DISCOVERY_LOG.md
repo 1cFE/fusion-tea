@@ -1,6 +1,6 @@
 # Discovery log — `stellarator_tea` studies
 
-Append-only index of findings from study records under this directory, newest row last. One row per finding; the finding's account lives in its record's § 15 and is never copied here. `Record` joins to that section by the same `<study-id>#<n>` id. Only a study's executor appends rows (`.claude/skills/run-study/runbook.md § DISCOVERY_LOG.md`).
+Append-only index of findings from study records under this directory, newest row last. One row per finding sighting; a goal round may append joined disposition rows under the same id. The finding's account lives in its record's § 15 and is never copied here. `Record` joins to that section by the same `<study-id>#<n>` id. A study's executor is the sole writer of first-sighting rows (`.claude/skills/run-study/runbook.md` step 14); a goal round writes joined disposition rows and never mints an id (`work/orchestration/GOAL_RUNBOOK.md`); an administrator never appends.
 
 | Date | Kind | Record | Finding | Disposition | Home |
 |---|---|---|---|---|---|

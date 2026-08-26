@@ -70,7 +70,9 @@ fusion-tea/
 
 This project uses **two separate PM systems** for different types of work. They share a similar lifecycle (spec → design → plan → implement) but have distinct authority, state directories, and commands.
 
-**CRITICAL: Do not cross-reference between them.** Coding epics belong in `.project/backlog/`. Modeling epics belong in `work/backlog/`. Each system manages its own state.
+**CRITICAL: Do not cross-reference *state* between them.** Coding epics belong in `.project/backlog/`. Modeling epics belong in `work/backlog/`. Each system manages its own state.
+
+Each system is mutated only through its own operations. Reading across is permitted as evidence: a goal artifact under `work/orchestration/goals/` may cite a `.project/` artifact by path and digest (`<path>@<commit-sha>`), and the reverse. Citing is not mirroring — never copy or restate the other system's state. See `.project/adr/006-goal-evidence-seam.md`.
 
 ### Coding PM (`agentic-project-init`)
 
