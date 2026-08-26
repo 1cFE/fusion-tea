@@ -2,7 +2,7 @@
 status: accepted
 date: YYYY-MM-DD
 deciders: [Reid W]
-grade: "[AGENT]"
+grade: "[GRADE — copy from source]"
 supersedes: none
 amends: none
 ---

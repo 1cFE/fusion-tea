@@ -77,6 +77,6 @@ The review never resumes the closed round.
 
 ### Stop — YYYY-MM-DD
 
-- **Kind:** `interruption | limit | cap | owner gate | external mutation`.
+- **Kind:** `interruption | limit | cap | owner gate | handoff | external mutation`. `handoff` is an agent that reached a gate needing a fresh session it cannot start (`GOAL_RUNBOOK.md` § What "fresh" means).
 - **What is true on disk:** the native state, read as truth.
 - **What the owner must see:** the decision or the unresolved item.

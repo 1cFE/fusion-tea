@@ -29,7 +29,7 @@ The mandatory result is what makes rounds finite. Without it, a round that went 
 
 ## Affected seams
 
-- `work/orchestration/GOAL_RUNBOOK.md` § Opening and closing a round, § The fresh `RoundReview`.
+- `work/orchestration/GOAL_RUNBOOK.md` § Opening and closing a round, § The fresh review.
 - `work/orchestration/goal-templates/trail.md` — the round result and round review headings.
 - `learnings.md`: the result *proposes* the learning delta; the fresh review accepts or corrects it before append.
 

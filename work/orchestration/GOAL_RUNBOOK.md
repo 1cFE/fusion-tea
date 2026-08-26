@@ -8,7 +8,7 @@ This runbook states obligations, not decisions. What question is worth asking, w
 
 ## What this is, and what it is not
 
-A goal is a grounded question someone wants answered, pursued in rounds. A round is one agent's bounded attempt at one strategy. Under a strategy the agent runs one bounded task at a time. Each round ends in a mandatory written result and a review by a fresh agent who did not do the work.
+A goal is a grounded question someone wants answered, pursued in rounds. A round is one agent's bounded attempt at one strategy. Under a strategy the agent runs one bounded task at a time. Each round ends in a mandatory written result and a review by a fresh agent — one whose session did not do the work (§ What "fresh" means).
 
 The goal layer decides *what to work on next and what the evidence means*. It does not do the work. The work happens in the native workflows — the coding PM in `.project/`, the modeling PM in `work/`, the research pipeline, the study runbook — and each of those keeps its own stage records exactly as it does today.
 
@@ -34,6 +34,33 @@ Nothing is duplicated across them, so nothing can disagree. If you cannot find w
 
 Templates for the three goal files are at `work/orchestration/goal-templates/`. Copy them; the headings are the contract.
 
+## What "fresh" means
+
+Two gates in this runbook require a fresh reviewer, and "fresh" is the word both rest on. It has one definition, and it is the owner's:
+
+> **The critic is never the author's session.** — `[OWNER]`, `.project/concepts/goal-driven-model-development-harness.md:47` (success criterion 5)
+
+That is a *session* boundary, not a work boundary. It is stronger than "someone who did not do the work," and the difference matters: an agent can honestly claim it did not do a particular piece of work while still carrying the whole round in its context. Reading your own round with your own reasoning still in front of you is not a review.
+
+**Who obtains the reviewer, by path:**
+
+- **A human operator** starts a new session for the reviewer, or asks a second person. Nothing else is needed.
+- **A goal agent cannot start a session.** It has no dispatch, and building one is barred — unattended dispatch is on the hardening path, not in this build (ADR-003). So when an agent reaches a gate that needs a fresh critic, its move is **to stop and hand back**. It does not review its own work, and it does not wave the gate through.
+
+**The agent's handoff, exactly.** Append to `trail.md`:
+
+```text
+### Stop — YYYY-MM-DD
+Kind: handoff
+What is true on disk: <the native state, and what is ready to be reviewed>
+What the owner must see: a fresh session is needed to review <the reading / the round>
+The material to review: <paths>. Resume at <this runbook's section>.
+```
+
+Then stop. The operator starts the fresh session; that session picks up from the handoff entry and writes the checkpoint or review entry as normal. The handoff is a real stop with a real record, which is what makes it the lean answer rather than an omission — nothing proceeds silently, and the trail shows exactly where the gate bound.
+
+**An agent may not review a round it authored any part of.** If a fresh session is not available, the round waits.
+
 ## Grounding a goal
 
 **Do:** sit with the operator and write `goal.md` from the template. Everything in it is meant to be stable for the life of the goal, so take the time.
@@ -52,7 +79,7 @@ Revisions to a grounded goal are rare and are written as dated amendments, never
 
 **Write:** `## Round N — <strategy-slug>`, then `### Strategy revision — YYYY-MM-DD` carrying the approach, the assumptions it rests on, the conditions under which you would abandon it, the model increment you intend, and the study question you intend. **No future task list** (ADR-001). If you can predict all the tasks, the strategy is a plan and the round has stopped being an experiment.
 
-**A round is bounded.** At most one promoted pin and at most one committed study. That is the bound that makes a round finite and comparable.
+**A round is bounded.** At most one promoted pin and at most one committed study. A *pin* is the exact package version a study runs against — promoting one fixes what "the model" means for that study, so that two results are comparable. The study layer owns the term and its identity rules (`.claude/skills/run-study/runbook.md`; `modeling_project/STUDY_POLICY.md`). That is the bound that makes a round finite and comparable.
 
 **A round closes on exactly one of six triggers:**
 
@@ -110,7 +137,9 @@ The return also carries the evidence refs, the goal-level reading of them, and f
 
 **When:** after a study reading produces proposed dispositions, and **before any semantic follow-up task executes**. Not after. The whole point is to catch a misread before work compounds on it.
 
-**Do:** hand the reading and its proposed dispositions to a fresh agent who did not do the work. They read both and return a verdict. The author revises and resubmits until it passes or the cap is hit.
+**Do:** hand the reading and its proposed dispositions to a fresh reviewer — a session that did not produce them (§ What "fresh" means). They read both and return a verdict. The author revises and resubmits until it passes or the cap is hit.
+
+**If you are an agent and cannot obtain that session, you do not proceed.** Write the handoff stop from § What "fresh" means and stop there. An unreviewed reading may not authorize a follow-up task, and reviewing your own dispositions does not satisfy this gate.
 
 **Write:** `### Checkpoint C-00N.rK — YYYY-MM-DD`, naming the reviewer, the reading reviewed, the dispositions reviewed, the verdict, and what the author changed. Each submission is a **new** `rK` entry — `r1`, `r2`, `r3`. Never amend a previous one; the sequence of submissions is the record of the disagreement.
 
@@ -126,7 +155,9 @@ Routine native stages get no separate goal critics. Their own reviews are native
 
 **When:** after the round result is written, and never before.
 
-**Do:** a fresh agent — one who did not do the round's work — reads the round end to end and returns `PASS`, `FINDINGS`, or `OWNER_GATE`.
+**Do:** a fresh agent — one whose session did not do the round's work (§ What "fresh" means) — reads the round end to end and returns `PASS`, `FINDINGS`, or `OWNER_GATE`.
+
+The round agent's last act is the round result; it does not review it. If no fresh session is available, write the handoff stop from § What "fresh" means. The round stays closed and unreviewed until one is.
 
 **What it checks:**
 
@@ -214,7 +245,7 @@ Every goal restates these numbers in its own `Limits` section, explicitly. They 
 
 ## The native seams
 
-What a round invokes, and what it gets back.
+What a round invokes, and what it gets back. The two `study.*` seams are the study layer's; its obligations, step by step, are in `.claude/skills/run-study/runbook.md`, and its rules are in `modeling_project/STUDY_POLICY.md`. A goal round invokes that runbook and reads what it deposits — it never restates its steps here.
 
 | Seam | Invoke with | Native return | The goal-level question |
 |---|---|---|---|
@@ -227,7 +258,7 @@ What a round invokes, and what it gets back.
 **Two seams are not repaired yet, and a goal round may not silently absorb either repair.**
 
 - **`research`** has no native tracked procedure for search → triage → capture → holdout check → register. Until it does, use the hand pattern documented by WI-031 (`work/completed/20260822_WI-031_research-round-item6-values/spec.md`): a modeling-PM work item runs the round, insights land in `knowledge/research/approved/`, and the DIs are minted at close.
-- **`integrate`** has no native tracked procedure for regeneration → verification → pin. Until it does, use the current manual integration pattern.
+- **`integrate`** has no native tracked procedure for regeneration → verification → pin. **There is no written pattern to follow** — unlike `research`, this seam has no documented hand pattern anywhere in the repository. Until epic Item 3 lands the repair, integration work is a `PREREQUISITE` return naming the seam, handed to the operator. Do not improvise one and do not treat someone's remembered practice as the pattern.
 
 "May not silently absorb" means: if a task finds itself performing the repair rather than the hand pattern, that is a `PREREQUISITE` return naming the seam, not a quiet expansion of scope. The repairs have their own owners and their own failure contracts.
 

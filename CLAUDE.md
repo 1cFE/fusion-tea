@@ -34,6 +34,7 @@ fusion-tea/
 │   ├── active/                      #   In-progress coding work items (spec.md, design.md, plan.md)
 │   ├── backlog/                     #   Coding epics and backlog
 │   ├── completed/                   #   Archived coding work
+│   ├── adr/                         #   Architecture decision records (ADR-NNN) — repository, orchestration, tooling
 │   ├── EPIC_GUIDE.md               #   Epic decomposition methodology
 │   └── epic_template.md            #   Template for new epics
 ├── models/

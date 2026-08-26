@@ -23,10 +23,12 @@ This file is the entry point and nothing else. It names the roles, picks the mod
 
 - **Operator** — sets the question and holds the gates. Grounds the goal, rules on reserved gates, and closes.
 - **Round agent** — pursues one strategy, scopes and runs one task at a time, writes the result.
-- **Fresh reviewer** — did not do the work. Reads a study's proposed dispositions before follow-up executes, or reviews the closed round and writes the next strategy.
+- **Fresh reviewer** — a session that did not do the work. Reads a study's proposed dispositions before follow-up executes, or reviews the closed round and writes the next strategy.
 
-Which role you are in decides which section you read. The runbook says what
-"fresh" means at each place it matters.
+Which role you are in decides which section you read. `GOAL_RUNBOOK.md` § What
+"fresh" means defines the boundary, says who obtains the reviewer on each path, and
+gives the agent its move when it cannot start a session — read it before either
+review mode.
 
 ## Pick the mode
 
@@ -39,11 +41,11 @@ Which role you are in decides which section you read. The runbook says what
 
 If `trail.md` shows a `T-00N start` with no return and no stop, the run was interrupted: go to § Resuming an interruption before anything else.
 
-To tell whether a round is open, read the headings — a round is open exactly when its `## Round N` section carries a `### Strategy revision` and no `### Round N result`.
+To tell whether a round is open, read `trail.md`'s headings — `GOAL_RUNBOOK.md` § Opening and closing a round gives the rule.
 
 ## Name the goal directory
 
-`work/orchestration/goals/<goal-slug>/`, holding `goal.md`, `trail.md`, and `learnings.md`. Confirm the slug with the operator before creating it. Templates are at `work/orchestration/goal-templates/` — copy them; their headings are the contract.
+`work/orchestration/goals/<goal-slug>/`, holding `goal.md`, `trail.md`, and `learnings.md`. Confirm the slug with the operator before creating it. Templates are at `work/orchestration/goal-templates/`; copy them rather than writing the files from scratch.
 
 ## Then go here
 

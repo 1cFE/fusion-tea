@@ -2,7 +2,7 @@
 status: accepted
 date: 2026-08-25
 deciders: [Reid W]
-grade: "[AGENT] inference; owner may override"
+grade: "[AGENT] inference (topology; owner may override) + [OWNER 2026-08-25] (pre-execution checkpoint placement)"
 supersedes: none
 amends: none
 ---
@@ -37,7 +37,7 @@ Owner criterion 5 also asks that, after dispositions execute, something checks e
 
 ## Affected seams
 
-- `work/orchestration/GOAL_RUNBOOK.md` § The pre-execution disposition checkpoint, § The fresh `RoundReview`, and the table that puts the two side by side.
+- `work/orchestration/GOAL_RUNBOOK.md` § The pre-execution disposition checkpoint, § The fresh review, and the table that puts the two side by side.
 - `work/orchestration/goal-templates/trail.md` — the checkpoint entry and round review headings.
 - Native review stages, which are unchanged and are cited rather than repeated.
 

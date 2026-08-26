@@ -59,6 +59,13 @@ def test_register_is_coherent(repo_root):
             continue
         fm = _frontmatter(p)
         assert fm["grade"], f"{p.name} carries a capture-fidelity grade"
+        # `adr.sh new` and template.md seed this placeholder deliberately, so a record
+        # filed without copying its grade from the source fails here rather than
+        # shipping under the weaker default (audit smell: the first owner-graded
+        # record came out under-graded).
+        assert "GRADE" not in str(fm["grade"]), (
+            f"{p.name} still carries the grade placeholder — copy the grade from its source"
+        )
         if fm["amends"] != "none":
             amended = repo_root / str(fm["amends"]).split(":")[0]
             assert amended.exists(), f"{p.name} amends a surface that exists"
@@ -96,7 +103,7 @@ TRAIL_ENTRIES = [
 ]
 # Every stage an operator has to find. The runbook is the only place they are described.
 RUNBOOK_STAGES = [
-    "Grounding a goal", "Opening and closing a round", "Running one task",
+    'What "fresh" means', "Grounding a goal", "Opening and closing a round", "Running one task",
     "The pre-execution disposition checkpoint", "The fresh review",
     "The two checks are distinct", "When a cited artifact moves",
     "Resuming an interruption", "Limits", "The discovery log", "The native seams",
@@ -193,3 +200,23 @@ def test_the_hardening_boundary_is_stated_and_not_crossed(repo_root):
     # I13: external mutation is noticed by a reader, and the runbook says so plainly.
     assert re.search(r"external mutation", runbook)
     assert re.search(r"a reading, not a machine check", runbook)
+
+
+def test_fresh_is_defined_at_owner_strength_with_an_agent_move(repo_root):
+    """audit-F2: "fresh" is the word two gates rest on, and it is the owner's rule.
+
+    `.project/concepts/goal-driven-model-development-harness.md:47` ([OWNER], SC 5)
+    reads "The critic is never the author's session" — a session boundary, not a
+    work boundary. An agent cannot start a session and dispatch stays barred
+    (ADR-003), so the contract has to define the move it makes instead: a recorded
+    handoff stop. Without that, the gate has no agent path and gets waved through.
+    """
+    runbook = (repo_root / RUNBOOK).read_text()
+    assert re.search(r"critic is never the author's session", runbook, re.I)
+    assert re.search(r"session\W{0,2} boundary, not a work boundary", runbook, re.I)
+    # The agent's defined move, and the stop kind that records it.
+    assert re.search(r"Kind: handoff", runbook)
+    assert re.search(r"cannot start a session", runbook, re.I)
+    # The stop kind is in the trail vocabulary too, or the move has nowhere to land.
+    trail = (repo_root / TEMPLATES[1]).read_text()
+    assert "handoff" in trail

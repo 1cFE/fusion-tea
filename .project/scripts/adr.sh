@@ -25,7 +25,7 @@ case "${1-}" in
     [ -e "$file" ] && { echo "adr.sh: $file already exists" >&2; exit 1; }
     sed -e "s/^# ADR-NNN: .*/# ADR-$id: <one-line decision, stated as a decision>/" \
         -e "s/^date: YYYY-MM-DD/date: $(date +%F)/" "$ADR_DIR/template.md" > "$file"
-    row=$(printf '| `%s` | [<title>](%s-%s.md) | accepted | `[AGENT]` | %s |' \
+    row=$(printf '| `%s` | [<title>](%s-%s.md) | accepted | `[GRADE — copy from source]` | %s |' \
       "$id" "$id" "$slug" "$(date +%F)")
     last_row=$(grep -n '^| `[0-9]' "$INDEX" | tail -1 | cut -d: -f1)
     [ -n "$last_row" ] || { echo "adr.sh: no table rows found in $INDEX" >&2; exit 1; }
