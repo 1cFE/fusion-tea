@@ -279,17 +279,17 @@ def test_symlinked_package_root_resolves_before_digesting(integration_workspace)
 
 **See `design.md` for:** why the seam digests rather than trusting git → D8; the restore mechanism and its rejected alternatives → D7; the symlink and mtime traps → `design.md#implementation-notes`.
 
-- [ ] `tests/study/test_integrate_restore.py` (NEW)
-- [ ] `scripts/integrate.py` — `package_digests()` (per-file sha256 via `manifest.sha256_file`, resolved package root, repo-relative keys); `moved_paths(before, after)`; `backup()` copying to `<out-dir>/_backup/`; `restore()` driven by the before-digest so the restore set is exactly what moved; `moved_files.txt` written on a byte-movement refusal. **No mtime is read anywhere** — 95 of 153 files move mtime on a byte-identical run.
+- [x] `tests/study/test_integrate_restore.py` (NEW)
+- [x] `scripts/integrate.py` — `package_digests()` (per-file sha256 via `manifest.sha256_file`, resolved package root, repo-relative keys); `moved_paths(before, after)`; `backup()` copying to `<out-dir>/_backup/`; `restore()` driven by the before-digest so the restore set is exactly what moved; `moved_files.txt` written on a byte-movement refusal. **No mtime is read anywhere** — 95 of 153 files move mtime on a byte-identical run.
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study/test_integrate_restore.py -q` → pass
-- [ ] `uv run python -m pytest tests/study -q` → green
+- [x] `uv run python -m pytest tests/study/test_integrate_restore.py -q` → pass
+- [x] `uv run python -m pytest tests/study -q` → green
 
 **Manual:**
-- [ ] `uv run grep -rn "st_mtime\|getmtime" scripts/integrate.py` → no matches
+- [x] `uv run grep -rn "st_mtime\|getmtime" scripts/integrate.py` → no matches
 
 **What We Know Works After This Phase:** byte movement is detected and undone inside a gitignored tree, where `git status` reports clean whatever the bytes do. Every mutating gate can now be built safely.
 
@@ -801,6 +801,41 @@ variables exported. Consequence for the plan is recorded under Phase 4.
 `.integration_workspace/`: the `finally` runs on the fixture's generator teardown, and
 `test_the_workspace_is_removed_after_the_fixture` asserts the absence from a later test.
 ### Phase 3 Completion
+
+**Completed:** 2026-08-26
+
+**Changes made**
+- `scripts/integrate.py` — `resolve_package`, `package_digests`, `moved_paths`, `backup`,
+  `restore`, `cite_moved`, and the producer subprocess runner `run_producer`. Gate 0's
+  step 3 is wired: `assert_package_clean` invokes `preflight.py clean --package --out`
+  rather than reimplementing the check, and a dirty tree refuses with
+  `condition: package-not-integrated` citing `clean.json`.
+- `tests/study/test_integrate_restore.py` (NEW) — 7 tests.
+
+**Test counts.** `tests/study` 298 → **305 passed, 1 skipped**.
+
+**What the tests prove.** Byte movement is caught inside the workspace on the same run
+where `git status --porcelain --untracked-files=all` returns empty — the two are asserted
+side by side, so the vacuous-in-its-own-harness failure mode is closed by evidence rather
+than by comment. The restore covers changed, added and removed in one fixture and puts the
+tree back to its entry digests, and a separate test proves it rewrites nothing outside the
+moved set (an untouched file's mtime is unchanged after a restore).
+
+**Digest keys are package-relative, not repo-relative** (the plan said repo-relative). The
+backup mirrors the package tree, so a repo-relative key would have to be un-mapped on every
+copy and unlink. Mechanism uses package-relative keys; `cite_moved` renders the repo-relative
+paths the return and `moved_files.txt` cite. One test pins the citation form.
+
+**Gate 0 step 4 (the before-digest and the backup) is not wired into `run()` yet.** Phase 3's
+Changes Required lists the mechanism, not the wiring, and there is no sequence for it to hand
+its baseline to until Phase 5. `package_digests` and `backup` are called by the gate-2 path
+when it lands.
+
+**A guard added, not in the plan.** `build_return` now raises when it is asked to emit a
+`CANDIDATE` with any gate not `pass`. That is the ten-gate invariant made mechanical; it also
+means that until the sequence exists, a fully valid request exits **2** with
+`seam-internal-error` — the seam saying it is incomplete rather than minting an empty
+candidate. No test encodes that interim state.
 ### Phase 4 Completion
 ### Phase 5 Completion
 ### Phase 6 Completion

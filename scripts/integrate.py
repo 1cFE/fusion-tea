@@ -62,6 +62,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import shutil
 import subprocess
 import sys
 import traceback
@@ -491,6 +492,30 @@ def assert_environment(env: dict[str, str]) -> None:
         )
 
 
+def assert_package_clean(request: Request, env: dict[str, str]) -> str:
+    """Gate 0, step 3: the package tree is git-clean, through the producer's own subcommand.
+
+    ``preflight.py clean`` is exactly this check and it already exists, so it is invoked
+    rather than reimplemented. Inside the gitignored test workspace git has nothing to say,
+    which is why the byte gates run on the seam's own digest instead (D8).
+    """
+    out = request.out_dir / "clean.json"
+    done = run_producer(
+        [sys.executable, "scripts/study/preflight.py", "clean",
+         "--package", str(request.package), "--out", str(out)],
+        env,
+    )
+    if done.returncode != 0:
+        raise SeamBlocker(
+            gate=PRECONDITIONS, producer="scripts/study/preflight.py", scope="request",
+            mode=REFUSED, condition="package-not-integrated",
+            detail="the package tree is not git-clean, so the identity a candidate would "
+                   "carry is not reproducible from what is committed: " + done.stderr.strip(),
+            evidence=(manifest_mod.repo_relative_posix(out),) if out.is_file() else (),
+        )
+    return manifest_mod.repo_relative_posix(out)
+
+
 # ------------------------------------------------------------------- the return
 
 
@@ -555,7 +580,20 @@ def fill_not_reached(results: list[dict]) -> list[dict]:
 def build_return(*, request: Request | None, args: argparse.Namespace, argv: list[str],
                  env: dict[str, str], results: list[dict], blocker: SeamBlocker | None,
                  candidate: dict | None) -> dict:
-    """The one document every invocation ends in, whatever it ends in."""
+    """The one document every invocation ends in, whatever it ends in.
+
+    Enforces the invariant the two return classes rest on: a ``CANDIDATE`` exists only when
+    all ten gates passed. Reaching here with no blocker and an unpassed gate means the
+    sequence lost track of its own stop rule, which is a fault in the seam and not a
+    verdict about the package — so it raises, and the caller sees exit 2.
+    """
+    gates = fill_not_reached(results)
+    if blocker is None and any(gate["status"] != PASS for gate in gates):
+        unpassed = [gate["gate"] for gate in gates if gate["status"] != PASS]
+        raise RuntimeError(
+            "the sequence produced no blocker but these gates did not pass: "
+            + ", ".join(unpassed)
+        )
     return {
         "schema_version": RETURN_SCHEMA_VERSION,
         "tool": {
@@ -568,7 +606,7 @@ def build_return(*, request: Request | None, args: argparse.Namespace, argv: lis
         "exit_code": 1 if blocker is not None else 0,
         "candidate": candidate,
         "blocker": blocker.document() if blocker is not None else None,
-        "gates": fill_not_reached(results),
+        "gates": gates,
         "toolchain": toolchain_block(env),
     }
 
@@ -604,6 +642,89 @@ def emit(document: dict, out_dir: Path | None) -> None:
         common.write_document(document, out_dir / "integration_return.json")
 
 
+# --------------------------------------------------- the package's own content digest
+
+
+def resolve_package(package: Path) -> Path:
+    """The real package root. The tracked root is a symlink, and git resolves through it."""
+    return Path(package).resolve()
+
+
+def package_digests(package_root: Path) -> dict[str, str]:
+    """Every file under the package tree, package-relative path to sha256.
+
+    The seam judges byte movement with this rather than with git, because a package inside
+    a gitignored directory reports clean whatever its bytes do — which is exactly where the
+    gate tests run, and a gate that is silently vacuous in its own test harness proves
+    nothing. ``preflight``'s ``check_package_clean`` stays the producer's own git gate on
+    the real tree; the two are complementary, not redundant.
+
+    No mtime is read here or anywhere: 95 of a package's 153 files move mtime on a
+    byte-identical regeneration, so any mtime detector reports a false positive every run.
+    """
+    root = resolve_package(package_root)
+    return {
+        manifest_mod.package_relative_posix(path, root): manifest_mod.sha256_file(path)
+        for path in sorted(p for p in root.rglob("*") if p.is_file() and not p.is_symlink())
+    }
+
+
+def moved_paths(before: dict[str, str], after: dict[str, str]) -> list[str]:
+    """Every package-relative path whose bytes are not what they were: changed, added, removed."""
+    return sorted(
+        path for path in set(before) | set(after) if before.get(path) != after.get(path)
+    )
+
+
+def backup(package_root: Path, backup_dir: Path) -> Path:
+    """Copy the resolved package tree aside, before the first gate that writes into it."""
+    root = resolve_package(package_root)
+    if backup_dir.exists():
+        shutil.rmtree(backup_dir)
+    shutil.copytree(root, backup_dir, symlinks=True)
+    return backup_dir
+
+
+def restore(package_root: Path, backup_dir: Path, before: dict[str, str]) -> list[str]:
+    """Put back exactly what moved: replace changed, delete added, restore removed.
+
+    Git-independent on purpose. ``git checkout --`` matches no pathspec inside an ignored
+    directory and ``git status --untracked-files=all`` names nothing there, so a git restore
+    is a silent no-op precisely where the restore test runs. The before-digest is the
+    restore set, so nothing outside it is touched.
+    """
+    root = resolve_package(package_root)
+    moved = moved_paths(before, package_digests(root))
+    for relative in moved:
+        target = root / relative
+        if relative in before:
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(backup_dir / relative, target)
+        else:
+            target.unlink()
+    return moved
+
+
+def cite_moved(package_root: Path, moved: list[str]) -> list[str]:
+    """The moved set as the return cites it: repo-relative, one path per line."""
+    root = resolve_package(package_root)
+    return [manifest_mod.repo_relative_posix(root / relative) for relative in moved]
+
+
+# ------------------------------------------------------------------ producer subprocesses
+
+
+def run_producer(argv: list[str], env: dict[str, str]) -> subprocess.CompletedProcess:
+    """Invoke a producer from the repo root under the seam's environment.
+
+    A subprocess, never an import: each producer's own exit code and its own output
+    document are the evidence the return cites, and an in-process call would leave neither.
+    """
+    return subprocess.run(
+        argv, capture_output=True, text=True, env=env, cwd=str(manifest_mod.repo_root()),
+    )
+
+
 # ------------------------------------------------------------------------- the CLI
 
 
@@ -616,6 +737,8 @@ def run(args: argparse.Namespace, argv: list[str]) -> tuple[dict, Path | None]:
     try:
         request = build_request(args)
         assert_environment(env)
+        request.out_dir.mkdir(parents=True, exist_ok=True)
+        assert_package_clean(request, env)
     except SeamBlocker as exc:
         blocker = exc
     document = build_return(
