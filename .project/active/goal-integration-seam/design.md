@@ -16,6 +16,7 @@ One fusion-tea-side CLI runs the eight producer-owned gates in the spec's order 
 - **Spec:** `.project/active/goal-integration-seam/spec.md` (revised through spec review, 2026-08-26)
 - **Spec review:** `.project/active/goal-integration-seam/spec_review.md` · **Lens:** `product-lens.md` · **Align:** `align.md`
 - **Spike:** `.project/active/goal-integration-seam/spike_regen_determinism.md` — R-D4 CONFIRMED
+- **Spike:** `.project/active/goal-integration-seam/spike_snapshot_stability.md` — B2 CONFIRMED; snapshot recapture is byte-identical to the tracked file and there is no `captured_at` key
 - **Epic:** `.project/backlog/epic_goal_strategy_task_harness.md` § Item 3
 - **Sibling precedent:** `.project/active/goal-research-seam/design.md` (Item 2)
 - **Referents:** `work/completed/20260822_WI-030_computed-beta-peak-field/plan.md` Phases 3–5; `.project/completed/20260821_stellarator-model-migration/plan.md` Phases 2–3; `.project/active/run-study-first-consumer/plan.md` Phase 3
@@ -47,7 +48,7 @@ Everything below was read or run in this worktree.
 
 **A package-copy factory already exists** — `package_copy` (`tests/study/conftest.py:191`) copies a package, manifest and axes into `tmp_path` and rewrites `package.path` to a repo-relative path. It does not exercise `package_clean`, and `tmp_path` is outside the repo, so it cannot carry the seam's git-backed gates unchanged. `stock_route_run` (`:274`) and the `STOP_PARSER_TEAX_ROOT` / `STUDY_REQUIRE_TEAX` skip machinery (`:239-270`) are directly reusable.
 
-**Snapshot recapture is not byte-stable.** The tracked `stellarator.snapshot.json` carries `captured_at`. The one recorded comparison — recapture from the staged models path, diff against the committed file — found `captured_at` as the **only** differing top-level key (`work/analysis/20260725-091831_audit_WI-029_handshake-lcoe-construction.md:190`). Attempting to measure this again here failed on sandbox restrictions (the licence export forms this session can run are blocked), so it stands on that recorded evidence and is de-risked first in the plan (B2).
+**Snapshot recapture is byte-stable, and the tracked snapshot carries no `captured_at`.** Measured by spike (`spike_snapshot_stability.md`): three recaptures — twice from the real `models/` root, once from a `/tmp` copy — all produced a file byte-identical to the tracked `stellarator.snapshot.json`, with **zero** differing key paths on a fully recursive comparison, in 1.65 s each. The `captured_at` key does not exist in the file: it belonged to the pre-v6 flat format, and the v6 envelope dropped the whole `capture` block as unverifiable (`sysml_codegen/snapshot/envelope.py:38-46`). The WI-029 comparison this used to rest on (`work/analysis/20260725-091831_audit_WI-029_handshake-lcoe-construction.md:190`) measured that older format; the migration commit `89f78130` replaced it. The models path does not leak either — v6 records root-relative referents, so the absolute-vs-relative `document_path` hazard WI-027 recorded is gone. Gate 4 therefore compares **whole-file bytes**, with no exclusion.
 
 **There is no teax pin anywhere.** Confirmed by the spec (R-B1.1b) and re-checked: `simkit` exposes no `__version__`, and `verify.py:441` writes `getattr(simkit, "__version__", "unrecorded")`.
 
@@ -68,7 +69,7 @@ The consequence, stated plainly rather than buried: **the seam refuses model wor
 ## Key Bets
 
 - **B1.** Regeneration on the pin, in place on an already-sealed package, is byte-stable. *If false → gate 2 refuses on every invocation and the seam returns nothing but blockers.* CONFIRMED by spike: zero bytes across two in-place runs, both fingerprints held, 1.8 s (`spike_regen_determinism.md`).
-- **B2.** Snapshot recapture from the same models path differs from the tracked snapshot only in `captured_at`. *If false → gate 4 refuses on every invocation, and its comparison has to narrow to `instance_graph.fingerprint` alone, which is a weaker gate.* Evidence is one recorded comparison (`WI-029 audit:190`), not a measurement made here. De-risk first (Next-Stage Handoff).
+- **B2.** Snapshot recapture from the same models path is byte-identical to the tracked snapshot. CONFIRMED by spike, and stronger than the bet was written: zero bytes and zero key paths differ across three recaptures, 1.65 s each; there is no `captured_at` key to exclude, and the models path does not affect the bytes (`spike_snapshot_stability.md`). The reserved fallback — narrowing to `instance_graph.fingerprint` alone — is not needed and is not carried. One residual: the `authority` block pins the toolchain versions into the file, so gate 4's byte comparison is also a toolchain-lineage check, and gate 1a is what should catch a pin drift first.
 - **B3.** By the time model work is audited, its package is regenerated and committed. *If false → the seam's normal return is `BLOCKER` and it is a linter rather than a seam.* Held by WI-030's phase order and by the epic's Item 6 flow (invoke the seam, then run a study).
 - **B4.** Executing the manifest's own pinned baseline point produces enough evidence for gates 7 and 8 to judge. *If false → the seam needs a probe set wider than one point, and Open Question 4's boundary gets re-argued.* One completed case carries all six catalog verdicts, which is what `verify_store`'s completeness check demands (`verify.py:388`).
 - **B5.** A goal agent can act on `refused` versus `could not run` without further interpretation. *If false → the whole R-A6 distinction is decoration and the retry rule stays a human judgment.*
@@ -98,7 +99,7 @@ The consequence, stated plainly rather than buried: **the seam refuses model wor
 | 1b | teax revision | the seam: `git -C $STOP_PARSER_TEAX_ROOT rev-parse HEAD` (R-B5) | env unset/unreadable, or `--expected-teax-revision` absent | revision differs |
 | 2 | regeneration | `sysml-codegen generate --smart-regen --preserve-handwritten`, in place | `SYSIDE_LICENSE_KEY` unset, or non-zero exit | exit 0 and any package byte moved (D8) |
 | 3 | handwritten preservation | the same digest comparison, scoped to `generated/handwritten/` | gate 2 could not run | any byte under that subtree moved |
-| 4 | census / snapshot | `capture_instance_graph_snapshot` to `--out-dir`; `_by_entry_type` on the sealed package (D9) | capture or import raises; `--census-file` absent | snapshot differs outside `captured_at`; census counts, classes, or bound fingerprint differ |
+| 4 | census / snapshot | `capture_instance_graph_snapshot` to `--out-dir`; `_by_entry_type` on the sealed package (D9) | capture or import raises; `SYSIDE_LICENSE_KEY` unset; `--census-file` absent | recaptured snapshot differs from the tracked one in any byte (B2); census counts, classes, or bound fingerprint differ |
 | 5 | model-family spine | `pytest tests/models/test_model_family_spines.py --junitxml` | as 1a (licence failures land as `<error>`) | as 1a |
 | 6 | manifest | `manifest.load` → `validate` → `assert_package_identity` → `assert_pin_matches` over the live `indicator_input_fingerprint` | `ManifestError` from `load` (unreadable/not JSON) | `ManifestError` from any of the three assertions |
 | 7 | preflight | `preflight.py gates --package --manifest --groups --identity --baseline-result --out` | its own `DID_NOT_RUN` on the stopping gate | its own `FAIL` |
@@ -167,7 +168,7 @@ Baseline execution (D6) sits between gates 6 and 7, because both 7 and 8 read wh
 
 ## Potential Risks
 
-- **B2 unmeasured.** If snapshot recapture differs in more than `captured_at`, gate 4 refuses everything. De-risked first; the fallback is a narrower comparison on `instance_graph.fingerprint`, recorded as weaker if taken.
+- **B2 measured and closed.** Snapshot recapture is byte-identical to the tracked file (`spike_snapshot_stability.md`); gate 4 compares whole-file bytes and the weaker `instance_graph.fingerprint` fallback is dropped. What remains is that the snapshot's `authority` block pins the toolchain, so a version bump moves the bytes and refuses gate 4 — correct behavior, but a refusal there reads as model drift unless the return names the cause.
 - **The gitignored workspace makes `check_package_clean` vacuous in tests.** D8's own digest is what keeps the byte gates real there; the risk is that a future edit removes the digest comparison believing git covers it. The invariant is stated and one test asserts movement is caught inside the workspace.
 - **Wall clock.** Two pytest suites, a generation, a snapshot capture and a baseline execution per invocation. Generation is 1.8 s; the spine suite and the baseline run dominate. Acceptable for a hop that happens once per model change, and a reason not to call the seam in a loop.
 - **The restore path is exercised rarely and matters most.** It is covered by its own test (a deliberately stale package), not left to the success path.
@@ -201,7 +202,7 @@ SC6 is verified at `/_my_audit` by a fresh session that did not build the seam, 
 
 - **Fixed:** the prove-don't-perform shape and its derivation; one CLI, flags-optional, one JSON return; `preflight`'s status vocabulary imported; the per-producer detection table; caller-supplied teax revision; caller-named baseline route; seam-owned content digests plus the bounded restore; the gitignored in-repo workspace.
 - **Open for the plan:** exact flag spellings and return field names; the workspace directory's name and `.gitignore` line; the wording of the operator guide; whether the four refusal fixtures share one workspace or take one each.
-- **De-risk first:** B2, the snapshot comparison, before gate 4 is written — one recapture against the tracked snapshot, listing every differing key. It is the one bet resting on a recorded comparison rather than a measurement, and gate 4's shape depends on the answer.
+- **B2 is done, no de-risking left.** The snapshot comparison was measured (`spike_snapshot_stability.md`): recapture is byte-identical to the tracked file, so gate 4 is written as a whole-file byte comparison. Gate 4's `could not run` set gains `SYSIDE_LICENSE_KEY` unset, which capture needs and generate needs too.
 
 ---
 
