@@ -1,0 +1,130 @@
+# Spec: Lean Goal Contract and Operator Runbook
+
+**Status:** Draft
+**Owner:** Reid W
+**Created:** 2026-08-25
+**Complexity:** MEDIUM
+**Branch:** `feat/run-study-first-consumer`
+**Epic:** `.project/backlog/epic_goal_strategy_task_harness.md` — Item 1
+
+---
+
+## Problem
+
+The approved concept-design defines a goal layer above the native workflows: a grounded question, one revisable strategy, one bounded task at a time, a round that ends in a mandatory result and a fresh review. None of it exists on disk. The decisions that shape it live only in shaping files, and there is no place in the repository where an architecture decision belongs.
+
+Three specific gaps make the layer unoperable today:
+
+- **The rulings are unfiled.** Seven decisions were approved (`.project/concepts/goal-strategy-task-harness-design.md` § Recorded Rulings and ADR Candidates). No project ADR directory exists — the design checked and found zero entries. A decision that lives only in a review's Resolutions section is challengeable at its root and invisible to anyone who did not read the review.
+- **One ruling contradicts live project guidance.** The Goal evidence seam ruling (`[OWNER]` 2026-08-23) permits goal inputs to cite `.project/` artifacts while each PM stays mutable only through its native operations. `CLAUDE.md:73` currently reads "**CRITICAL: Do not cross-reference between them.**" Until that wording is amended, an agent following CLAUDE.md and an agent following the ruling do different things.
+- **Writer ownership of the discovery log contradicts an owner ruling.** The owner ruled (`[OWNER]` 2026-08-23, review 1 resolution C1) that the study executor writes first-sighting rows and a goal round appends joined `<study-id>#<n>` disposition rows. Three textual homes still say the executor is the sole writer: runbook step 14 (`.claude/skills/run-study/runbook.md:221`), the administrator prohibition (`runbook.md:270`), and the `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md` header. Twenty-two rows sit in that log today, several `unrouted`, with no consumer.
+
+There is also no shared operating document. The owner's stated bar is `[OWNER-VERBATIM]` "I just want really good documentation and clean patterns so that it can be easily operated and managed by a human" and, on operators, `[OWNER-VERBATIM]` the operator "shouldn't have to be me (who built this and therefore is mostly familiar)" (`.project/concepts/goal-driven-model-development-harness.md` § Owner's Words). Every downstream epic item — the cold-grounding proof, the resume proof, the closure proof — reads this item's contract as its input. Until the contract is written down, nothing after it can be tested.
+
+## Success Criteria
+
+Verbatim from epic Item 1:
+
+- [ ] The architecture decisions are live, provenance-graded, and cited by the runbook and affected project guidance.
+- [ ] The three lean files and their decision/task/round conventions are sufficient to derive current goal state without copying native stage state.
+- [ ] The independent pre-execution disposition checkpoint and the post-round `RoundReview` have distinct timing and responsibilities.
+- [ ] Runbook step 14, the administrator section, and the discovery-log header agree on writer ownership and joined `<study-id>#<n>` disposition rows.
+- [ ] `GOAL_RUNBOOK.md` describes the same artifacts, gates, returns, and reviews for human and goal-agent operation.
+- [ ] Documentation and contract tests pass; no hardening-path mechanism enters the implementation.
+
+## Known Requirements
+
+### Architecture records
+
+- **[INHERITED]** File the seven approved decisions in a repository-native ADR home: Strategy and Task, Round Boundary, Lean-First Persistence, Finding Disposition, Review Topology, Goal Evidence Seam, and Supersession (split). Source: `.project/concepts/goal-strategy-task-harness-design.md` § Recorded Rulings and ADR Candidates. This is filing, not re-deciding — the decisions, their reasons, their affected seams, and their rejected alternatives are already written there.
+- **[INHERITED]** Each filed decision carries its recorded provenance grade unchanged: Strategy and Task `[AGENT]` ratified by owner; Round Boundary `[OWNER]` purpose with `[AGENT]` mechanism; Lean-First Persistence `[OWNER]` 2026-08-23 with the separate `learnings.md` file as an `[AGENT]` mechanism; Finding Disposition `[OWNER]` 2026-08-23; Review Topology `[AGENT]`; Goal Evidence Seam `[OWNER]` 2026-08-23; Supersession split into the agent-grade task-as-authority-unit half and the owner-ruled finding-obligation half. Source: same table, plus review 1 § ADR Candidate Assessment.
+- **[NEED]** `[OWNER]` Goal input references may cite `.project/` artifacts **by path and digest**, while each PM remains mutable only through its native operations. The approved CLAUDE.md amendment must say this. Source: review 1 § Resolutions, "Goal evidence seam (P5)"; design § First-Build Persistence carries the same term as "for mutable evidence, a digest".
+- **[NEED]** `[OWNER]` The evidence-citation digest above is **not** barred by the hardening rule. The hardening table's barred row is *authority* digests — envelope immutability and stale-authority guards. Citing mutable evidence by digest is the owner's own wording for the evidence seam. If design finds these genuinely collide, it surfaces the collision to the owner rather than resolving it silently.
+- **[INHERITED]** The Goal Evidence Seam record must name CLAUDE.md's live "do not cross-reference" rule (`CLAUDE.md:73`) as the surface it amends. Source: review 1 § ADR Candidate Assessment and § Resolutions (filing note, stated twice).
+
+### Lean artifact contract
+
+The home is `work/orchestration/goals/{goal}/` holding `goal.md`, `trail.md`, and `learnings.md`. For goal-driven runs this directory succeeds the flat orchestration-brief pattern rather than sitting beside it. All items below are **[INHERITED]** from `.project/concepts/goal-strategy-task-harness-design.md` unless marked otherwise.
+
+- **[INHERITED]** *Grounding.* `goal.md` is co-developed with the operator and records the question, consumer, definition of answered, package and comparison invariants, grounding evidence, limits, reserved gates, and the owner-held close rule. A goal without repository evidence stays draft and cannot authorize a task. (§ Goal and strategy; the owner's grounding words are quoted in `goal-driven-model-development-harness.md` § Owner's Words, "goal doc".)
+- **[INHERITED]** *One strategy per round.* One `StrategyRevision` records approach, assumptions, abandonment conditions, intended model increment, and intended study question. It contains no future task list. (§ Goal and strategy)
+- **[INHERITED]** *One active task.* At most one task is active. Each task records a six-line scope — Objective, Why now, Scope, Inputs, Done when, Stop when — written before work begins. Scope is a reviewable record, not a technical sandbox: only an unresolved owner gate prevents execution, and every other bound is checked retrospectively by the fresh round review. (§ Task; review 2 resolution MA2)
+- **[INHERITED]** *Write-ahead start.* Before the task's first native side effect, append one start entry naming the task, the native target, and the expected artifact. Routine native stage changes stay in native artifacts and create no goal events. (§ Task-grain invocation)
+- **[INHERITED]** *Six-value task return.* `COMPLETE | BOUNDED_NEGATIVE | PREREQUISITE | STRATEGY_BLOCKER | OWNER_GATE | MECHANICAL_FAILURE`, each with evidence refs and the goal-level reading. `PREREQUISITE` is discovered as a return, never predicted in scope. `STRATEGY_BLOCKER` closes the round. `MECHANICAL_FAILURE` permits a `RetryCheck` only when task, inputs, scope, and meaning are identical, within the retry cap. (§ Task-grain invocation)
+- **[INHERITED]** *Five decision fields.* Every goal-level decision records the finding or trigger; the decision and its reason; the tier (`execution detail | reserved gate | premise surprise`); who decided; and what changed, resolving to paths, ids, commits, or `none`. These fields make `trail.md` the replay record without a second ledger. (§ Task-grain invocation; review 2 resolution MA3)
+- **[INHERITED]** *Round limits.* A round has at most one promoted pin and at most one committed study. A valid study reading — including an adverse or inconclusive one — closes it. It also closes on a strategy blocker, changed comparison meaning, owner gate, declared limit, or answered goal, and may close with neither pin nor study. (§ Round Semantics)
+- **[INHERITED]** *`RoundResult`, mandatory even when intent failed.* Records intent met or unmet, the task sequence, the last semantic outcome, the stop reason (derived from the last outcome plus limits, not maintained as a second enum), evidence refs, the learning delta, and the finding dispositions. (§ Round Semantics)
+- **[INHERITED]** *`RoundReview`, by a fresh non-author agent.* Checks native evidence by citation, goal and strategy fidelity, every recorded task scope, retry classification, touched-finding dispositions, the learning delta, and constraints carried forward. Returns `PASS | FINDINGS | OWNER_GATE` and never resumes the closed round. After a pass it recommends owner-held closure or writes the next strategy. (§ Review Pattern)
+- **[NEED]** `[OWNER 2026-08-25]` *One pre-execution disposition checkpoint.* A lightweight fresh non-author checkpoint reads a study reading and its proposed dispositions **before any semantic follow-up task executes**, and the author revises through it. Routine native stages receive no separate goal critics. Source: epic § Product-Lens, `epic-plan-F2` owner disposition; owner's placement words at `goal-driven-model-development-harness.md` § Owner's Words ("critic placement"). This checkpoint and `RoundReview` are separate: different timing (before follow-up execution vs. after round close) and different responsibility (the reading and the proposed dispositions vs. the whole round's scope, retry, learning, and carry-forward).
+- **[NEED]** `[OWNER]` *The checkpoint loop is capped and its failure is owner-visible.* The author revises through the checkpoint until it passes **or a declared cap is hit**, and hitting the cap produces a recorded stop the owner can see — it does not silently permit execution. Source: `goal-driven-model-development-harness.md` § Success Criteria 5 ("loop with their critic until it passes or a declared cap is hit") and 7 (a blocker is a stage that failed past its retry cap; no run ends silently). The cap's numeric value is design's; the existence of a cap and of the owner-visible stop is not.
+- **[INHERITED]** *The post-execution audit of dispositions has a named home.* Owner criterion 5 also requires that, after dispositions execute, something checks that each landed and that the finding moved. In this contract that responsibility sits inside `RoundReview` — it accounts for every touched discovery row and what changed — not in a third critic. Recording this placement is what keeps criterion 5 from going homeless while review topology stays collapsed (design § Review Pattern; review 1 resolution P4, `[AGENT]` inference the owner may override).
+- **[INHERITED]** *Append-oriented trail.* Corrections are dated amendments. Git supplies history; there is no first-build sealing scheme. (§ First-Build Persistence)
+- **[INHERITED]** *Cite, don't restate.* Goal artifacts cite native artifacts by path or native id. Routine stage progress exists only in native artifacts. (§ Design Principles; § Required Invariants)
+- **[INHERITED]** *`learnings.md`.* Accepted observations, failed assumptions, constraints, and decision implications, each with evidence, scope, implication, and optional supersession. `RoundResult` proposes the delta; the fresh `RoundReview` accepts or corrects it before append. Mechanical failures create no learning. (§ Findings and Learning)
+- **[INHERITED]** *Interruption.* An invocation with no return is an interruption. A resumer inspects native artifacts as truth, then appends either the missing task result or an interruption stop event. (§ Task-grain invocation)
+- **[INHERITED]** *External mutation voids authority.* If a referenced native work item changes outside an active goal task, the task loses authority; re-ground or close the round before more work. (§ Required Invariants)
+
+### Writer ownership
+
+- **[NEED]** `[OWNER]` The three textual homes must agree: the study executor writes first-sighting rows; a goal round appends joined `<study-id>#<n>` disposition rows; the administrator remains read-only and never appends. The homes are runbook step 14 (`.claude/skills/run-study/runbook.md:221`), the administrator prohibition (`runbook.md:270`), and the `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md` header. Source: review 1 § Resolutions C1/P1 option (a); review 2 minor `mi1` names the three sites.
+- **[INHERITED]** Every open discovery row a round's evidence touches receives a joined disposition recording `model fix | research | declared seam | upstream filing`, status, the responsible task or owner, and what changed or the concrete next reference. No touched row returns as `unrouted`. Source: design § Findings and Learning; upstream owner criterion 4 of `study-driven-model-development.md`, ruled to hold as settled.
+- **[NEED]** `[OWNER 2026-08-25]` Item 6's pending runbook findings `#6`, `#10`, and `#11` must survive these edits intact. Run-Study Item 6 Phase 4 lands their sentences; this item must not clobber or pre-empt them. Context: `.project/active/run-study-first-consumer/plan.md` Phase 3/4 notes.
+
+### Operating surface
+
+- **[INHERITED]** `work/orchestration/GOAL_RUNBOOK.md` is the shared operator deliverable — one document, not copied into each goal directory. It describes the loop stage by stage with the same artifacts, gates, and reviews whether a human or an agent runs it. Source: design § First-Build Persistence; review 2 minor `mi3`; owner success criterion 8 in `goal-driven-model-development-harness.md`.
+- **[INHERITED]** The smallest fusion-tea-owned instructions and templates a human and a goal agent need to follow the same contract. Smallest is the requirement, not a preference — the lean-first ruling governs (`[OWNER]` 2026-08-23, review 1 resolution P2/M4).
+- **[NEED]** `[OWNER-VERBATIM]` The runbook and templates meet the owner's stated documentation bar: "I just want really good documentation and clean patterns so that it can be easily operated and managed by a human," operable by someone who "shouldn't have to be me (who built this and therefore is mostly familiar)" (`goal-driven-model-development-harness.md` § Owner's Words). This is a requirement on this item's own deliverable, not only background motivation. `[REFERENT]` `work/orchestration/handshake-lcoe-construction.md` is the proven prose bar to match.
+- **[INHERITED]** Where the runbook describes the `research` and `integrate` seams, label them pending native repair and name the interim hand patterns: the documented WI-031 hand pattern for research, the current manual integration pattern for integration. A goal round may not silently absorb either repair. Source: design § Native seams.
+- **[NEED]** `[OWNER 2026-08-25]` The parallel Item 2 agent owns the research seam in a separate worktree. This item does not touch `scripts/zotero_*`, research entry surfaces, or `knowledge/` registry files.
+- **[NEED]** `[OWNER 2026-08-25]` Work lands on the current branch `feat/run-study-first-consumer`. No child branch. This item does not wait on Run-Study Item 6 Phase 4 or Item 7 — the Phase 4 gate applies only to *closing* Item 6.
+- **[INFERRED]** "Documentation and contract tests" means lightweight consistency checks — for example, a test asserting the three writer-ownership homes agree, and that the templates exist and parse. It does not mean goal-agent machinery. This is the orchestrator's reading, unchallenged at the 2026-08-25 Align, and remains challengeable.
+- **[INFERRED]** No executable goal-agent code is in scope. This item produces records, conventions, documentation, templates, and the consistency tests that guard them.
+
+## Non-Goals
+
+`[OWNER]` (review 1 resolution P2/M4, restated as the epic's hardening rule). None of the following enters this build without a recorded observed failure of the prose-and-native-facts route:
+
+- Task-envelope files, a machine event ledger, authority/envelope digests, idempotency keys or effect-query machinery, a reconciliation operation.
+- Denser per-stage trail events. Logging stays at task grain plus genuine stops. (The design's fifth hardening row; it belongs in this list.)
+- Concurrent goal runs; unattended dispatch.
+
+This bar does not touch the evidence-citation digest required above — that is the owner's own wording for the Goal Evidence Seam, not a control-plane mechanism.
+
+Also out of scope:
+
+- Replacing or mirroring coding-PM, modeling-PM, research, integration, or run-study state. The goal layer cites native state; it never reproduces it.
+- Automating owner-reserved gates, close, archive, commits, or pushes. Merge/push and item close stay owner-held.
+- Repairing the research seam or the integration seam. Those are epic Items 2 and 3, with their own producers and failure contracts.
+- Proving the contract works. The cold-grounding, resume, continuity, and closure proofs are epic Items 4–6. This item is what those items read.
+
+## Open Questions / Deferred to design
+
+- **Where the ADR home lives and what a record looks like.** No project ADR directory exists. Path, file naming, record template, and numbering are design choices. Note the coordination point: epic Item 2 will file decisions into the same home once it exists (Align 2026-08-25, ruling 3).
+- **Where the goal templates live and what form they take.** Separate template files, sections embedded in `GOAL_RUNBOOK.md`, or a skill — all open.
+- **What the goal-agent entry surface is.** A skill, a command, or plain instructions the agent reads. The requirement is that a human and an agent follow the same contract; the mechanism is design's.
+- **The shape and home of the consistency tests.** Whether they live in `tests/`, what they assert, and how they detect drift between the three writer-ownership homes.
+- **Default numeric limits.** The retry cap and the declared round/time/iteration limits need concrete defaults. The design explicitly assigns this: "Detailed design must define prose section conventions and default limits."
+- **Section conventions for the three prose files.** Heading structure, entry format, and how a dated amendment is written.
+- **How the pre-execution disposition checkpoint is invoked and recorded** — where its verdict lands in `trail.md`, what a revision iteration looks like, and the cap's numeric value. That a cap exists and that hitting it stops visibly to the owner is a requirement above, not an open question.
+
+---
+
+## Related Artifacts
+
+- **Epic:** `.project/backlog/epic_goal_strategy_task_harness.md` — Item 1
+- **Align:** `.project/active/goal-harness-contract/align.md` — owner rulings, 2026-08-25
+- **Required Reading:**
+  - `.project/concepts/goal-strategy-task-harness-design.md` — complete first-build contract and hardening boundary
+  - `.project/concepts/goal-strategy-task-harness-design-review.md` § Resolutions — owner rulings
+  - `.project/concepts/goal-strategy-task-harness-design-review-2.md` § Resolutions — verified trims
+  - `.project/concepts/goal-driven-model-development-harness.md` § Owner's Words and Success Criteria
+  - `work/orchestration/handshake-lcoe-construction.md` — proven prose referent
+  - `CLAUDE.md` — current two-PM rule
+  - `.claude/skills/run-study/runbook.md` and `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md` header — writer rules to amend
+- **Product-lens:** `.project/active/goal-harness-contract/product-lens.md`
+- **Design:** `.project/active/goal-harness-contract/design.md` (to be created)
+
+---
+
+**Next Steps:** After approval, proceed to `/_my_design`.
