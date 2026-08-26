@@ -1,6 +1,6 @@
 # Implementation Plan: Lean Goal Contract and Operator Runbook
 
-**Status:** Draft
+**Status:** In Progress — Phase 1 complete
 **Created:** 2026-08-25
 **Last Updated:** 2026-08-25
 **Branch:** `feat/run-study-first-consumer` (`[OWNER 2026-08-25]` — no child branch; merge/push and item close stay owner-held)
@@ -93,34 +93,34 @@ def test_register_is_coherent(repo_root):
 
 **See `design.md` for:** register charter and separation → `design.md#key-decisions` (D1–D4); record form and frontmatter → `design.md#implementation-notes`; the seven records and their grades → `design.md#component-overview`.
 
-- [ ] `tests/orchestration/__init__.py` (if the suite needs it), `tests/orchestration/conftest.py` with a single `repo_root` fixture (`design.md#next-stage-handoff` — "probably one `repo_root` fixture")
-- [ ] `tests/orchestration/test_goal_contract.py` (NEW) — the stencil above only; the other four tests come in Phase 6
-- [ ] `.project/adr/README.md` — charter; the separation from `modeling_project/ARCHITECTURE.md` stated explicitly (`AD-XXX` = model architecture, `ADR-NNN` = repository/orchestration/tooling); record form; grade vocabulary; the filing procedure
-- [ ] `.project/adr/template.md` — frontmatter block from `design.md#implementation-notes`, then Context · Decision · Rationale · Rejected alternatives · Affected seams · Consequences
-- [ ] `.project/adr/INDEX.md` — one line per record, plus the **"Prior art, outside the register"** line for `exploration/phase_1a/ADR-001_csv-source-of-truth.md` with its one-line note (D3 — not renumbered, not moved)
-- [ ] `.project/scripts/adr.sh` (NEW, ~40 lines, `chmod +x`) — `new <slug>` mints the next id, copies the template, appends the index row; `supersede <old> <new>` flips status and cross-links; `list` prints the index. No other logic (D4)
-- [ ] `.project/adr/001-strategy-and-task.md` — grade `[AGENT]` ratified by owner
-- [ ] `.project/adr/002-round-boundary.md` — split grade: `[OWNER]` purpose + `[AGENT]` mechanism
-- [ ] `.project/adr/003-lean-first-persistence.md` — split grade: `[OWNER]` 2026-08-23 + `[AGENT]` separate-`learnings.md` mechanism
-- [ ] `.project/adr/004-finding-disposition.md` — `[OWNER]` 2026-08-23
-- [ ] `.project/adr/005-review-topology.md` — `[AGENT]`, owner may override
-- [ ] `.project/adr/006-goal-evidence-seam.md` — `[OWNER]` 2026-08-23; frontmatter `amends: CLAUDE.md:73`; names that surface in Affected seams
-- [ ] `.project/adr/007-supersession.md` — split candidate: `[AGENT]` task-as-authority half, owner-ruled finding-obligation half
+- [x] `tests/orchestration/__init__.py` (if the suite needs it), `tests/orchestration/conftest.py` with a single `repo_root` fixture (`design.md#next-stage-handoff` — "probably one `repo_root` fixture")
+- [x] `tests/orchestration/test_goal_contract.py` (NEW) — the stencil above only; the other four tests come in Phase 6
+- [x] `.project/adr/README.md` — charter; the separation from `modeling_project/ARCHITECTURE.md` stated explicitly (`AD-XXX` = model architecture, `ADR-NNN` = repository/orchestration/tooling); record form; grade vocabulary; the filing procedure
+- [x] `.project/adr/template.md` — frontmatter block from `design.md#implementation-notes`, then Context · Decision · Rationale · Rejected alternatives · Affected seams · Consequences
+- [x] `.project/adr/INDEX.md` — one line per record, plus the **"Prior art, outside the register"** line for `exploration/phase_1a/ADR-001_csv-source-of-truth.md` with its one-line note (D3 — not renumbered, not moved)
+- [x] `.project/scripts/adr.sh` (NEW, ~40 lines, `chmod +x`) — `new <slug>` mints the next id, copies the template, appends the index row; `supersede <old> <new>` flips status and cross-links; `list` prints the index. No other logic (D4)
+- [x] `.project/adr/001-strategy-and-task.md` — grade `[AGENT]` ratified by owner
+- [x] `.project/adr/002-round-boundary.md` — split grade: `[OWNER]` purpose + `[AGENT]` mechanism
+- [x] `.project/adr/003-lean-first-persistence.md` — split grade: `[OWNER]` 2026-08-23 + `[AGENT]` separate-`learnings.md` mechanism
+- [x] `.project/adr/004-finding-disposition.md` — `[OWNER]` 2026-08-23
+- [x] `.project/adr/005-review-topology.md` — `[AGENT]`, owner may override
+- [x] `.project/adr/006-goal-evidence-seam.md` — `[OWNER]` 2026-08-23; frontmatter `amends: CLAUDE.md:73`; names that surface in Affected seams
+- [x] `.project/adr/007-supersession.md` — split candidate: `[AGENT]` task-as-authority half, owner-ruled finding-obligation half
 
 **Grades are copied, not re-derived** (`design.md#implementation-notes`). Each grade comes verbatim from `goal-strategy-task-harness-design.md` § Recorded Rulings, including both split grades and the split candidate.
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/orchestration -q` → the register test passes
-- [ ] `uv run ruff check tests/orchestration` → clean
-- [ ] `bash .project/scripts/adr.sh list` → prints the seven records
-- [ ] `bash .project/scripts/adr.sh new scratch-check` → mints `008-scratch-check.md` and an index row; **delete both and revert the index edit** before commit
+- [x] `uv run python -m pytest tests/orchestration -q` → the register test passes
+- [x] `uv run ruff check tests/orchestration` → clean
+- [x] `bash .project/scripts/adr.sh list` → prints the seven records
+- [x] `bash .project/scripts/adr.sh new scratch-check` → mints `008-scratch-check.md` and an index row; **delete both and revert the index edit** before commit
 
 **Manual:**
-- [ ] Read `INDEX.md` cold: is the stray `ADR-001` visible and explained where a reader will hit it?
-- [ ] Diff each record's Decision and Rationale against § Recorded Rulings — nothing invented, nothing dropped
-- [ ] `git status` shows only `.project/adr/`, `.project/scripts/adr.sh`, and `tests/orchestration/` — nothing else in this commit
+- [x] Read `INDEX.md` cold: is the stray `ADR-001` visible and explained where a reader will hit it?
+- [x] Diff each record's Decision and Rationale against § Recorded Rulings — nothing invented, nothing dropped
+- [x] `git status` shows only `.project/adr/`, `.project/scripts/adr.sh`, and `tests/orchestration/` — nothing else in this commit
 
 **Commit:** one commit, message naming it as the ADR home landing complete (D5).
 
@@ -555,10 +555,28 @@ That the item as built actually satisfies the criteria as written — and, speci
 [TO BE FILLED DURING IMPLEMENTATION]
 
 ### Phase 1 Completion
-**Completed:**
+**Completed:** 2026-08-25
+
 **Actual Changes:**
+- `tests/orchestration/conftest.py` (NEW) — one `repo_root` fixture. No `__init__.py`: `tests/study/` has none either, and pytest collects without it.
+- `tests/orchestration/test_goal_contract.py` (NEW) — `test_register_is_coherent` only, written first and observed failing against the empty register before any record existed. Frontmatter is parsed with `split("---", 2)[1]` rather than the stencil's `split("---")[1]`, so a record whose body contains a `---` still parses.
+- `.project/adr/README.md`, `template.md`, `INDEX.md` (NEW) — charter, the `AD-XXX` vs `ADR-NNN` separation, record form, grade vocabulary, filing procedure; index table plus the "Prior art, outside the register" entry for `exploration/phase_1a/ADR-001_csv-source-of-truth.md`.
+- `.project/scripts/adr.sh` (NEW, executable) — `list`, `new <slug>`, `supersede <old> <new>`.
+- `.project/adr/001-strategy-and-task.md` … `007-supersession.md` (NEW) — the seven records, grades copied verbatim from `goal-strategy-task-harness-design.md` § Recorded Rulings. `006` carries `amends: CLAUDE.md:73`; `004` carries `amends: exploration/stellarator_e2e/studies/DISCOVERY_LOG.md:3`.
+
+**Validation run:**
+- `uv run python -m pytest tests/orchestration -q` → 1 passed (red before the records landed, green after).
+- `uv run ruff check tests/orchestration` → clean.
+- `uv run python -m pytest tests/study -q` → 231 passed, 43 skipped (untouched, confirmed green).
+- `bash .project/scripts/adr.sh list` → prints the index; `new scratch-check` → mints `008-scratch-check.md` and an in-table index row; `supersede 001 008` → flips `001` to `status: superseded`, inserts a `> Superseded by …` pointer, sets `supersedes: 001` on the successor, and flips the index row. All scratch artifacts deleted and the index reverted before commit.
+
 **Issues:**
+- The first `new` appended its index row after the "Prior art" section rather than into the table. Fixed: the row is inserted after the last existing table row.
+- `supersede` initially wrote `status: superseded by ADR-NNN`, which breaks the README's stated `accepted | superseded` vocabulary. Fixed: status becomes `superseded` and the successor pointer is a body line, so no frontmatter field is added beyond the design's six.
+
 **Deviations:**
+- **`005-review-topology.md` also records the pre-execution disposition checkpoint.** The Recorded Rulings row covers only the collapsed round critic. The checkpoint is `[OWNER 2026-08-25]` from `spec.md` and the epic's Product-Lens, and it is part of the review topology a reader of this record needs; filing the topology without it would contradict `GOAL_RUNBOOK.md` in Phase 2. It is written inline with its own owner grade and source, and the record's frontmatter grade stays the copied `[AGENT]` inference. Nothing was invented — the text is the spec's.
+- `test_register_is_coherent` globs `*.md` and filters on the `NNN-slug` name pattern rather than the stencil's `[0-9][0-9][0-9]-*.md` glob, so `README.md`, `INDEX.md`, and `template.md` are excluded by an explicit rule a reader can see.
 
 ### Phase 2 Completion
 
