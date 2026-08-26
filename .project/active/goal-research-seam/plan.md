@@ -554,7 +554,7 @@ Prove no regression anywhere the seam reaches, and map every success criterion t
 
 ## Handoff lines (not this plan's scope)
 
-- **R-F2 / ADR.** The manifest-identity decision is written as an ADR candidate at `design.md` Appendix A. It is **not filed by this plan** — coordination happens when Item 1's ADR home exists. Carry this line into `/_my_close`.
+- **R-F2 / ADR.** The manifest-identity decision is written as an ADR candidate at `design.md` Appendix A. Filed 2026-08-25 as ADR-008 (`.project/adr/008-source-identity-raw-bytes-sha256.md`) after Item 1 landed the register (`007d9488`); R-F2 satisfied.
 - **Live-network acquisition proof** belongs to epic Item 5.
 - **Pre-seam registry drift** (13 dirs vs 11 rows, the loose `COST_MODELING.md`, the two-extraction `iter_cryoplant_iter_org` slug) is reported by `verify` as legacy and repaired by nobody in this item (D14).
 

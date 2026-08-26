@@ -239,7 +239,7 @@ SC9 is verified by a non-author walking `docs/research_seam_operator_guide.md` a
 
 ## Appendix A — ADR candidate (R-F2)
 
-To be filed into the ADR home Item 1 establishes, at coordination time; this item does not create that home.
+Filed 2026-08-25 as `.project/adr/008-source-identity-raw-bytes-sha256.md`, after Item 1 landed the register (commit `007d9488`, imported path-scoped).
 
 **Title:** Non-Zotero source identity is the SHA-256 of the source as fetched.
 **Grade:** `[AGENT]`, delegated by the owner at Align (`align.md:8`, "make sure you use your judgement").
