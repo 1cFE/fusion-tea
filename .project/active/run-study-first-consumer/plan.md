@@ -1,6 +1,6 @@
 # Implementation Plan: Run-Study First Consumer (RUN-STUDY Item 6)
 
-**Status:** In Progress — Phases 1–3 complete (Phase 2 certified `881d4448`; Phase 3 record `829dda6d`, synthesis and addendum committed 2026-08-23); Phase 4 (close) not started — its items (merge to `main`, the oracle-retirement BACKLOG row, WI-030's DI note) are the owner's call
+**Status:** In Progress — Phases 1–3 complete (Phase 2 certified `881d4448`; Phase 3 record `829dda6d`, synthesis and addendum committed 2026-08-23); Phase 4 (close) not started — its items (merge to `main`, the oracle-retirement BACKLOG row, WI-030's DI note) are the owner's call; **Phase 4 now gated on epic Item 7 (end-to-end explainer, spec approved 2026-08-23)**
 **Created:** 2026-08-21
 **Last Updated:** 2026-08-23
 **Branch:** `feat/run-study-first-consumer`, cut from `main` at `8d6c443b` (migration PR #107 merged 2026-08-21). One branch for all four phases; Phase 1 is a reviewable first commit.
@@ -213,6 +213,9 @@ def test_arms_share_one_store_when_fingerprints_agree(record):
 ---
 
 ## Phase 4: Close
+
+### Gate
+- [ ] Epic Item 7 (`.project/active/run-study-e2e-explainer/`, the end-to-end explainer) closed — **[OWNER 2026-08-23]** the explainer is "to be done BEFORE phase 4"
 
 ### Goal
 Discharge the epic's Item 6 criteria and leave the follow-ups where they belong.
