@@ -448,17 +448,17 @@ def test_max_captures_plus_one_is_refused_and_named_in_return(): ...
 
 **See design.md for:** the mapping table → `design.md#architecture` (Vocabulary mapping); why R-D6 binds → same section; negative keying → D9; shapes → `design.md#component-overview` and *Field spellings* above.
 
-- [ ] `tests/research/test_negative.py`, `tests/research/test_return_contract.py` (NEW) — `MAPPING_TABLE_ROWS` covers all five rows of D13's table, including keeper-duplicate → `REGISTERED` with `pre_existing: true`
-- [ ] `scripts/research_seam.py` (NEW) — `open` (validate, request key, negative check, `--override-reason`, create run dir), `log` (candidate/triage/failure into `run.jsonl` + `process_log.md`), `close` (read receipts, compute class, write `return.json`, write the negative on `BOUNDED_NEGATIVE`)
-- [ ] `knowledge/research/requests/` layout created on first use — `<request-id>.json`, `negatives/<request-key>.json`, `runs/<request-id>/<utc-stamp>/{run.jsonl,process_log.md,receipts/,return.json}`
+- [x] `tests/research/test_negative.py`, `tests/research/test_return_contract.py` (NEW) — `MAPPING_TABLE_ROWS` covers all five rows of D13's table, including keeper-duplicate → `REGISTERED` with `pre_existing: true`
+- [x] `scripts/research_seam.py` (NEW) — `open` (validate, request key, negative check, `--override-reason`, create run dir), `log` (candidate/triage/failure into `run.jsonl` + `process_log.md`), `close` (read receipts, compute class, write `return.json`, write the negative on `BOUNDED_NEGATIVE`)
+- [x] `knowledge/research/requests/` layout created on first use — `<request-id>.json`, `negatives/<request-key>.json`, `runs/<request-id>/<utc-stamp>/{run.jsonl,process_log.md,receipts/,return.json}`
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/research/test_negative.py tests/research/test_return_contract.py -q` → pass
+- [x] `uv run python -m pytest tests/research/test_negative.py tests/research/test_return_contract.py -q` → pass
 
 **Manual:**
-- [ ] `open` → `register --run` → `close` by hand against the loopback fixture → `return.json` names a repo path (R-A4)
+- [x] `open` → `register --run` → `close` by hand against the loopback fixture → `return.json` names a repo path (R-A4)
 
 **What We Know Works After This Phase:** SC6 and SC7's return-class half. Disk is the truth of what was registered (R-B9).
 
@@ -667,6 +667,19 @@ Crash-recovery machinery (D7); search counting in code (D8); DI minting (R-C3); 
 - The plan's expected first-`verify` output was "13 dirs + loose `COST_MODELING.md` vs 11 rows". The actual run reports **3** findings, not 14: the other 11 directories each match a manifest row and are correct. The baseline records exactly the three that do not.
 
 ### Phase 7 Completion
+**Completed:** 2026-08-25
+**Actual Changes:**
+- `scripts/research_seam.py` (NEW) — `open_run` validates the six required request fields, computes the request key, refuses when a durable negative already answers it (unless a non-empty `--override-reason` is given, which is appended to the negative's `reopened[]`), and creates `runs/<request-id>/<utc-stamp>/` with `run.json`, `run.jsonl`, `process_log.md` and `receipts/`. Four separate log entry points — `log_search`, `log_candidate`, `log_failure`, `log_fault` — rather than one function branching on a kind flag. `close` reads the receipts and the run record, computes the class, and writes `return.json`, plus the negative when the class is `BOUNDED_NEGATIVE`. `SeamHome` makes the location injectable, and `open` records it in `run.json` so `close` finds the same home without re-deriving it.
+- The request key hashes `{question, consumer, gap_type, where_to_look}` with `where_to_look` sorted. Priority and limits are deliberately out: raising a limit is not a new request (D9).
+- `tests/research/test_negative.py` (8), `tests/research/test_return_contract.py` (17) — all five mapping-table rows plus keeper-vs-rejected duplicates, `pre_existing` marking, queued candidates riding inside a `REGISTERED` return, an agent claim of a negative being overridden by a registered receipt, both limits being named, the run-scoped-fault cases, native references in every return, and `close` refusing a directory that is not a run. `MAPPING_TABLE_ROWS` is parametrized with readable ids.
+- Manual walk done: `open` → `register --run` → `close` against the loopback fixture returns `REGISTERED` naming `knowledge/sources/widget_coil_note/` and the `source_id` (R-A4).
+
+**Issues:**
+- None.
+
+**Deviations:**
+- **The BLOCKER-vs-OPERATOR_QUEUE tie is resolved explicitly.** The mapping table lists `BLOCKER` last but conditions it only on "run-scoped `precondition_failed` and zero registrations", which overlaps the `OPERATOR_QUEUE` row. `_seam_class` resolves it by the spec's own boundary: a run-scoped fault outranks the queue **only when the run never got as far as a candidate**, because with a named candidate on the receipts something *is* established about the search. Stated in the function's docstring.
+- A run-scoped fault is recorded through `log --fault`, which is how a `BLOCKER` reaches `close`. `open` itself returns a non-zero exit and a message for a malformed or negative-blocked request, and creates no run directory — so no `return.json` can exist for a request that was never attempted, which is the invariant the design asked for.
 
 ### Phase 8 Completion
 
