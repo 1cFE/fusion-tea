@@ -617,26 +617,26 @@ def test_guide_states_the_repo_scoped_gates_and_the_census_scope():
 
 **See `design.md` for:** the guide's contents → `design.md#component-overview`; the mapping → D14 and *Field spellings* above; the ADR text → `design.md` Appendix A.
 
-- [ ] `tests/study/test_integrate_guide_contract.py` (NEW)
-- [ ] `docs/integration_seam_operator_guide.md` (NEW) — assembling a request, with **where each input comes from** (the concept-design's seam row names only two of the eight); the full invocation, led with, so nobody discovers `--census-file` late; the D16 environment an operator must export, spelled as copy-pasteable lines; reading `CANDIDATE` versus `BLOCKER`; the D18 exit-code contract; the fourteen `condition` slugs with the goal-class mapping table above and one operator action each; citing a candidate in a study; that `--census-file` reaches gate 4 only; that gates 1a and 5 judge the **repository**, so a dirty working tree can refuse gate 5 for reasons unrelated to `--package`, and `scope` in the return is what tells them which happened; and the prove-don't-perform boundary in the operator's own words — *the seam refuses model work that has not been regenerated and committed; that work belongs to the modeling item, and the fix is to finish it there, not to re-run the seam.*
-- [ ] `.project/adr/009-integration-is-a-fixed-point-proof.md` (NEW) — `design.md` Appendix A, in the six-section form `.project/adr/README.md` fixes, `grade: "[AGENT] 2026-08-26"` per `align.md:8`; add the row to `.project/adr/INDEX.md`
-- [ ] `.project/backlog/BACKLOG.md` § Flagged — **five R-F5 rows plus the teax-pin row**, each naming its home and what the seam does instead:
+- [x] `tests/study/test_integrate_guide_contract.py` (NEW)
+- [x] `docs/integration_seam_operator_guide.md` (NEW) — assembling a request, with **where each input comes from** (the concept-design's seam row names only two of the eight); the full invocation, led with, so nobody discovers `--census-file` late; the D16 environment an operator must export, spelled as copy-pasteable lines; reading `CANDIDATE` versus `BLOCKER`; the D18 exit-code contract; the fourteen `condition` slugs with the goal-class mapping table above and one operator action each; citing a candidate in a study; that `--census-file` reaches gate 4 only; that gates 1a and 5 judge the **repository**, so a dirty working tree can refuse gate 5 for reasons unrelated to `--package`, and `scope` in the return is what tells them which happened; and the prove-don't-perform boundary in the operator's own words — *the seam refuses model work that has not been regenerated and committed; that work belongs to the modeling item, and the fix is to finish it there, not to re-run the seam.*
+- [x] `.project/adr/009-integration-is-a-fixed-point-proof.md` (NEW) — `design.md` Appendix A, in the six-section form `.project/adr/README.md` fixes, `grade: "[AGENT] 2026-08-26"` per `align.md:8`; add the row to `.project/adr/INDEX.md`
+- [x] `.project/backlog/BACKLOG.md` § Flagged — **five R-F5 rows plus the teax-pin row**, each naming its home and what the seam does instead:
   1. Census derivation has no importable home outside a test module — home `tests/models/test_model_family_spines.py` (`_by_entry_type`, `:169`); the seam imports a private test helper
   2. **fusion-tea has no automated teax revision pin** — home `tests/test_dependency_provenance.py`; the seam does the `rev-parse` comparison itself against a caller-supplied expectation (R-B5)
   3. The model-family spine suite is not parameterizable by package — home `tests/models/test_model_family_spines.py`; consequence: gate 5 is repo-scoped and its refusal path is untestable (the coverage boundary above)
   4. `verify.py` collapses both R-A6 modes into one exit code and writes no summary when it refuses — home `scripts/study/verify.py` (`:527-529`); consequence: gate 8's residual (D15)
   5. `assert_read_set_covered` has no caller outside the indicator reader — home `scripts/study/manifest.py` / `indicators.py:808`; consequence: R-B1.6's fourth assertion is covered by nothing
-- [ ] The open `verify.py` `teax.revision: "unrecorded"` row (`DISCOVERY_LOG.md 20260821-power-cycle-ab#8`) — cite as still open in the guide and in row 4; the seam recording the revision does **not** discharge it (R-E4)
+- [x] The open `verify.py` `teax.revision: "unrecorded"` row (`DISCOVERY_LOG.md 20260821-power-cycle-ab#8`) — cite as still open in the guide and in row 4; the seam recording the revision does **not** discharge it (R-E4)
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/study/test_integrate_guide_contract.py -q` → pass
-- [ ] `uv run python -m pytest tests/study -q` → green
+- [x] `uv run python -m pytest tests/study/test_integrate_guide_contract.py -q` → pass
+- [x] `uv run python -m pytest tests/study -q` → green
 
 **Manual:**
-- [ ] Read the guide once as a stranger; every command in it is copy-pasteable and every input has a stated source
-- [ ] `uv run agentic-mbse status` → no new parser warnings from the BACKLOG edit
+- [x] Read the guide once as a stranger; every command in it is copy-pasteable and every input has a stated source
+- [x] `uv run agentic-mbse status` → no new parser warnings from the BACKLOG edit
 
 **What We Know Works After This Phase:** SC6 has something to be walked against, the decision is challengeable at its root, and no producer shortfall is absorbed silently.
 
@@ -1082,6 +1082,61 @@ guard is what made it legible instead of a mystery gate refusal. Recorded as a p
 defect: the alternative is a per-session directory, which would cost the `repo_root()`-relative
 resolution the whole fixture exists to get.
 ### Phase 9 Completion
+
+**Completed:** 2026-08-26
+
+**Changes made**
+- `docs/integration_seam_operator_guide.md` (NEW) — the SC6 walk target.
+- `.project/adr/009-integration-is-a-fixed-point-proof.md` (NEW), in the six-section form
+  `.project/adr/README.md` fixes, `grade: "[AGENT] 2026-08-26"` per `align.md:8`; row added to
+  `.project/adr/INDEX.md`.
+- `.project/backlog/BACKLOG.md` § Flagged — **six rows**: the five R-F5 filings plus the
+  restated `verify.py` `teax.revision` row.
+- `tests/study/test_integrate_guide_contract.py` (NEW) — 10 tests.
+
+**Test counts.** `tests/study` 331 → **341 passed, 1 skipped**.
+
+**What the guide leads with.** The full invocation, before anything else, so nobody discovers
+`--census-file` late — and before *that*, one short section saying the seam proves rather than
+performs, because that is the thing a stranger gets wrong first. The consequence is in the
+operator's words: *the seam refuses model work that has not been regenerated and committed;
+that work belongs to the modeling item, and re-running the seam will not change the answer.*
+
+**Every input has a stated source.** The concept-design's seam row named two of the eight; the
+guide's table gives all eleven flags a "where you get it" — a file and a field, or a command to
+run. The four that are optional to argparse are marked "gate N cannot judge without it" rather
+than "optional", because that is what they are.
+
+**The sealed-wheel home is recorded**, per the orchestrator's instruction:
+`/home/reid/1cfe/stop-parser-sealed-wheels/`, outside the repository, sha256-verified against
+`tests/test_dependency_provenance.py::WHEEL_HASHES`, with the check to run before reading a
+gate-1a hash mismatch as real toolchain drift. The `uv run --env-file` invocation form is
+recorded beside it.
+
+**Three boundaries are stated in the guide, not just in the design.** A § "What the seam does
+not check" says `assert_read_set_covered` is run by nothing anywhere, that gate 5's refusal path
+has no test, and that `verify.py`'s `teax.revision: "unrecorded"` row is **not** discharged by
+the seam recording the revision. A stranger reading a `CANDIDATE` learns what it does not cover
+without opening the design.
+
+**The guide-contract test checks completeness, not quality.** It fails if a condition slug, an
+environment variable, an exit code, a CLI flag or a gate name is missing from the guide — all
+read from `scripts/integrate.py` rather than hard-coded, so adding a slug without documenting it
+breaks the build. SC6 itself stays what the spec fixed: a fresh session walks the guide at
+`/_my_audit`. This test exists so that walk is not wasted on a guide with an obvious hole.
+
+**One thing the guide gained that the plan did not list:** a ten-row gate table with each gate's
+slug, scope and producer. The guide-contract test wanted every `gate` value present, and a
+reader who gets `"gate": "census-snapshot"` back needs somewhere to look it up. Numbered the
+requirements' way — step 1 splits into 1a and 1b — so it agrees with the design rather than
+inventing a second numbering.
+
+**Filings.** Each of the six rows names its home, what the seam does instead, and the
+consequence of leaving it. The `verify.py` teax row is restated rather than moved: it stays open
+in `DISCOVERY_LOG.md` and the row says explicitly that the seam recording the checkout revision
+does not discharge it, because the summary `verify.py` writes is still unrecorded.
+`uv run agentic-mbse status` reports no new warnings — the four it does report are pre-existing
+(`work/BACKLOG.md` epic status drift, and the known escaped-pipe rows in `VALIDATION_MATRIX.md`).
 ### Phase 10 Completion
 
 ---

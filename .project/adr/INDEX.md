@@ -12,6 +12,7 @@ Repository, orchestration, and tooling decisions. Model-architecture decisions (
 | `006` | [Goal artifacts may cite `.project/` by path and digest](006-goal-evidence-seam.md) | accepted | `[OWNER]` 2026-08-23 | 2026-08-25 |
 | `007` | [The task is the authority unit; the finding stays the traceability unit](007-supersession.md) | accepted | `[AGENT]` half; `[OWNER]` 2026-08-23 half | 2026-08-25 |
 | `008` | [A non-Zotero source's durable identity is the raw-bytes SHA-256, as fetched](008-source-identity-raw-bytes-sha256.md) | accepted | `[AGENT]` delegated by owner at Align 2026-08-25 | 2026-08-25 |
+| `009` | [Integration is a fixed-point proof, not a transformation](009-integration-is-a-fixed-point-proof.md) | accepted | `[AGENT]` delegated by owner at Align 2026-08-26 | 2026-08-26 |
 
 ## Prior art, outside the register
 
