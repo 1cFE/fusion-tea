@@ -493,20 +493,20 @@ def test_command_is_committed_and_calls_only_the_two_clis():
 
 **See design.md for:** command contract → D4 and `design.md#component-overview`; guide contents → same section; filings → `design.md#integration-strategy`.
 
-- [ ] `.gitignore` — add `!.claude/commands/research-acquire.md` beside the existing `manage-concept.md` negation (`.claude/commands/*` is ignored today, so without this the command is not committed)
-- [ ] `tests/research/test_command_contract.py` (NEW)
-- [ ] `.claude/commands/research-acquire.md` (NEW) — bounded request in; search → triage → capture → register → close; WebFetch triage-only and never quoted or cited (R-C2); no DI minted (R-C3); the owner's `/research` approval gate is where insights are still made (R-C4)
-- [ ] `docs/research_seam_operator_guide.md` (NEW) — forming a request; invoking both entry points; reading the four return classes; three operator actions (act on a queued source, act on a bounded negative, read a `verify` report); states the term-scan blind spot (B3) and the ARIES-CS exception route (PROTOCOL §6, owner-only, outside this seam); notes the `--local-pdf` breaking change
-- [ ] Upstream filings (R-F1) — two issues against `agentic-mbse`, recorded with their URLs in the guide: (1) `approve-research` empty-insight-list refusal (`pm/operations.py:664-668`); (2) `extract` should expose a `--register` hook or return provenance JSON, citing all four measured asymmetries — flat vs nested output, `--save-source` writing no `raw.pdf` on the local-PDF path, no `file://` support, `raw.html` written re-encoded rather than as fetched bytes
+- [x] `.gitignore` — add `!.claude/commands/research-acquire.md` beside the existing `manage-concept.md` negation (`.claude/commands/*` is ignored today, so without this the command is not committed)
+- [x] `tests/research/test_command_contract.py` (NEW)
+- [x] `.claude/commands/research-acquire.md` (NEW) — bounded request in; search → triage → capture → register → close; WebFetch triage-only and never quoted or cited (R-C2); no DI minted (R-C3); the owner's `/research` approval gate is where insights are still made (R-C4)
+- [x] `docs/research_seam_operator_guide.md` (NEW) — forming a request; invoking both entry points; reading the four return classes; three operator actions (act on a queued source, act on a bounded negative, read a `verify` report); states the term-scan blind spot (B3) and the ARIES-CS exception route (PROTOCOL §6, owner-only, outside this seam); notes the `--local-pdf` breaking change
+- [x] Upstream filings (R-F1) — two issues against `agentic-mbse`, recorded with their URLs in the guide: (1) `approve-research` empty-insight-list refusal (`pm/operations.py:664-668`); (2) `extract` should expose a `--register` hook or return provenance JSON, citing all four measured asymmetries — flat vs nested output, `--save-source` writing no `raw.pdf` on the local-PDF path, no `file://` support, `raw.html` written re-encoded rather than as fetched bytes
 
 ### Validation
 
 **Automated:**
-- [ ] `uv run python -m pytest tests/research/test_command_contract.py -q` → pass
-- [ ] `git status --porcelain .claude/commands/research-acquire.md` → tracked, not ignored
+- [x] `uv run python -m pytest tests/research/test_command_contract.py -q` → pass
+- [x] `git status --porcelain .claude/commands/research-acquire.md` → tracked, not ignored
 
 **Manual:**
-- [ ] Read the guide once as a stranger; every command in it is copy-pasteable
+- [x] Read the guide once as a stranger; every command in it is copy-pasteable
 
 **What We Know Works After This Phase:** SC7 fully, and SC9 has something to be walked against.
 
@@ -682,6 +682,24 @@ Crash-recovery machinery (D7); search counting in code (D8); DI minting (R-C3); 
 - A run-scoped fault is recorded through `log --fault`, which is how a `BLOCKER` reaches `close`. `open` itself returns a non-zero exit and a message for a malformed or negative-blocked request, and creates no run directory — so no `return.json` can exist for a request that was never attempted, which is the invariant the design asked for.
 
 ### Phase 8 Completion
+**Completed:** 2026-08-25
+**Actual Changes:**
+- `.claude/commands/research-acquire.md` (NEW) — four standing rules (WebFetch is triage-only; no DI minting; no registry writes; no hold-out waiver), then the six-step process with copy-pasteable commands, an outcome table saying what to do with each `register` result, and the four return classes. It carries no registry logic.
+- `.gitignore` — `!.claude/commands/research-acquire.md`, beside the existing `manage-concept.md` negation. Without it the command would not be committed.
+- `docs/research_seam_operator_guide.md` (NEW) — standalone registration first (SC2 is the common case), then the two hashes and why they differ, forming a request and what makes two requests the same, running an invocation by hand, the four classes with the queue-vs-blocker boundary, then the three operator actions as their own sections. Ends with what the seam does **not** protect you from — the term-scan blind spot stated undiluted, the path bar's real and narrower job, unscored extraction quality, and no supersession — and the two upstream filings.
+- `tests/research/test_command_contract.py` (10 tests) — the command is tracked and not ignored, calls both CLIs, never names a registry file or `--index`/`--summarize`, states the three prohibitions; the guide covers all four classes, the three operator actions, the blind spot, the `--local-pdf` break, and both filing ids.
+
+**Upstream filings (R-F1):** the pattern **is** established in `~/1cfe/agentic-mbse/.project/backlog/BACKLOG.md` — existing entries carry `**Status**: Filed <date> (fusion-tea, <session>)` and a `**Downstream**:` line (e.g. `PM-MATRIX-ESCAPED-PIPE`). Both filings were written as entries there, in that pattern, under P2:
+- `[PM-APPROVE-RESEARCH-EMPTY-INSIGHTS]` — `approve-research` refuses an empty insight list (`pm/operations.py:664-668`); a source-only round legitimately mints no DI.
+- `[EXTRACT-PROVENANCE-HOOK]` — `extract` should return provenance JSON or expose a `--register` hook, citing all four measured asymmetries with the actual hashes from the Phase 4 measurement.
+
+**⚠ The edit to `~/1cfe/agentic-mbse/.project/backlog/BACKLOG.md` is left uncommitted in that repository.** It is a different repo on a different branch; committing there was not authorised. Someone needs to commit it. No GitHub issues were opened.
+
+**Issues:**
+- None.
+
+**Deviations:**
+- SC9 is not verified here. It needs a non-author to walk the guide, which happens at `/_my_audit`. The test asserts the guide covers what SC9 requires it to cover; it cannot assert a stranger understood it.
 
 ### Phase 9 Completion
 
