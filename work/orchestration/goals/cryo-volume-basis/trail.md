@@ -84,3 +84,65 @@ This session cannot pick, and it also cannot review its own work under either op
 **The material to review:** this goal directory; `work/BACKLOG.md:100-104,195`; `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md` (newest row, id `20260823-magnet-technology-ab#2`). Uncommitted; the operator owns the commit.
 
 **Resume at:** `GOAL_RUNBOOK.md` § Running one task (option 1) or § Opening and closing a round, then § The fresh review (option 2).
+
+### Resumption note — 2026-08-26
+
+The handoff stop above put a choice to the operator: continue round 1, or close it. The operator's continuation brief names this session the round agent and directs it to take the open round from where the trail stands and decide what it needs next. That is option 1. Round 1 continues under its existing strategy revision, which this session does not re-author.
+
+**Cited-ref walk (`GOAL_RUNBOOK.md` § When a cited artifact moves), run before any work.** Every ref round 1 cites still stands at the digest it was cited at: `20260823-magnet-technology-ab/record.md@e204aee7`, `epic-mfe-cost-modeling.md@f22bd288`, `stellarator_plant.sysml@ba5c9945`, `mfe_plant.sysml@ba5c9945`, `mfe_magnet_cost.sysml@8f3b510c`, `mfe_cryo_plant.sysml@8f3b510c`, `KNOWLEDGE.md@ffa5c54c`, `STUDY_POLICY.md@ad2fb4ea`. The one moved path is `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md`, now at `@4464c354`, moved by T-001's own append — the round's work, not an external mutation. No task is voided; the strategy and the comparison meaning stand. The working tree is clean, so T-001's writes are committed.
+
+### T-002 scope
+
+- **Objective:** does a defensible route exist from quantities the package already carries to the 136.56 m³ anchor, and at what tolerance — argued natively, in `WI-032`'s spec stage, not as prose in this trail.
+- **Why now:** it is the strategy's stated next move and the goal's crux. T-001 routed the row without touching the question. The triggering evidence is `goal.md` § Grounding evidence: dividing the model's own `total_kAm` by DI-010's REBCO band gives 173.8–192.4 m³ against a held 136.56 m³, so "the identity already holds, just wire it up" is ruled out and something has to explain the 27–41 % gap before any requirement can be written.
+- **Scope:** authorized — take `WI-032` through the modeling PM's spec stage per `.claude/commands/spec-model.md`, producing `work/active/WI-032_cold-volume-basis/spec.md`. Explicitly excluded — any edit under `models/`, `knowledge/`, or `exploration/`; design or plan stages; minting an SV-XXX in `modeling_project/VALIDATION_MATRIX.md`; any DI mint or amendment to DI-010; any change to `f_carnot_cryo`; discovery row `#3`; hand-editing `work/BACKLOG.md`; closing or archiving any item; `git commit`, push, or merge.
+- **Inputs:** `goal.md` (this task adds no constraint narrower than what it already carries), `work/completed/20260822_WI-030_computed-beta-peak-field/spec.md@ffa5c54c` as the precedent shape, `models/library/analyses/mfe_magnet_cost.sysml@8f3b510c`, `models/designs/stellarator_09/stellarator_plant.sysml@ba5c9945`, `models/library/analyses/mfe_cryo_plant.sysml@8f3b510c`, `knowledge/KNOWLEDGE.md@ffa5c54c` DI-009/DI-010, `modeling_project/STUDY_POLICY.md@ad2fb4ea`, `exploration/stellarator_e2e/studies/20260823-magnet-technology-ab/record.md@e204aee7`.
+- **Done when:** `work/active/WI-032_cold-volume-basis/spec.md` exists and states either a derivation route with a stated tolerance against the 136.56 m³ anchor, or the bounded negative that no route reaches the anchor from carried quantities without a further sourced input, with the arithmetic shown either way.
+- **Stop when:** the spec's own load-bearing requirement turns out to need a decision `goal.md` § Reserved gates holds for the owner (owner gate); or closing the gap requires coil thickness, radial build, or a re-basing of `f_carnot_cryo` (strategy blocker — the strategy's declared abandonment condition).
+
+### T-002 start — 2026-08-26
+
+Argue the cold-volume derivation in `WI-032`'s spec stage · native target: the modeling PM, `work/active/WI-032_cold-volume-basis/` · expected artifact: `spec.md` carrying the derivation, the route or the bounded negative, and the tolerance.
+
+### T-002 return — 2026-08-26
+
+**Outcome:** `OWNER_GATE`. The spec exists and the derivation is argued, so § T-002 scope's "Done when" is met — but the spec's load-bearing requirement is reserved gate 2, and § T-002 scope's "Stop when" names exactly that. The task stops until the owner rules.
+
+**Evidence refs.**
+
+- `work/active/WI-032_cold-volume-basis/spec.md` — the native artifact. Carries the derivation, three assessed routes, five proposed-and-gated modeling requirements, scope boundaries, and three open decisions for the owner. Its banner states the item stops at spec; no design, no plan, nothing under `models/`.
+- `models/library/analyses/mfe_magnet_cost.sysml@8f3b510c:44`, `models/designs/stellarator_09/stellarator_plant.sysml@ba5c9945:138-139,570`, `knowledge/KNOWLEDGE.md@ffa5c54c` DI-010 — the three quantities the derivation works from.
+- `exploration/stellarator_e2e/generated/contracts/model_contract.json:1832` and `exploration/stellarator_e2e/studies/20260823-magnet-technology-ab/study.py:44-47` — read this task, and the reason the gate is real rather than formal: `vol_cold_cryo` is a package entry point *and* an arm-definition key of the committed study.
+- `exploration/stellarator_e2e/studies/20260823-magnet-technology-ab/record.md@e204aee7` certification addendum — the sensitivity the tolerance has to be read against.
+- `uv run agentic-mbse status` — one new warning, `spec.md Status='active' overrides BACKLOG.md status='backlog' for WI-032`, which is the tooling resolving the transition itself. The other warnings are on `work/BACKLOG.md` epic statuses and `modeling_project/VALIDATION_MATRIX.md`, neither touched by this task.
+
+**Goal-level reading.** The question is now sharper than `goal.md` § Grounding evidence could make it, and in a way that bears on the answer.
+
+The 27–41 % gap is explained and it decomposes. `G` is `8π²` exactly, so the magnet calc factorises into `I_link × L_proxy` where `I_link = 2πR₀B/μ₀` is the Ampère's-law current and `L_proxy = 4π r_coil = 37.699 m` is a cost-proxy length built from the coil *bore* radius, which falls out of the radial build and is not a winding length. Substituting Stellaris's actual winding geometry — 48 coils × 25 m — leaves a residual: DI-010's 112–124 A/mm² gives 115.2–127.6 m³ against the held 136.56 m³, and reproducing the anchor needs 104.6 A/mm², below the sourced band. Read the other way, the real winding packs carry 7–18 % more ampere-turn-metres than Ampère's law on the magnetic axis accounts for, which is what a modular quasi-isodynamic coil set should do: the shaping currents largely do not link the axis. **Ampère's law on axis is a lower bound on modular-coil current, not an estimate of it.**
+
+Two consequences for the goal.
+
+1. **The finding's identity is false as stated.** "Volume should follow from the two" needs a third input — a winding length. Neither the coil count nor the circumference is anywhere in the models; both are sourced and citable but live in a doc comment. This does not trip the strategy's abandonment condition, because the route reaches the anchor from *sourced* quantities rather than needing new evidence, but it does mean the change is a modelling addition and not a wiring-up.
+2. **The case for computing is arm B, not arm A.** For arm A the held value is the better basis on its own terms — it is cross-checked twice, against turns × (20 mm)² and against the Table 8 masses. What computing buys is that arm B's 390 m³ stops being a hand ratio taken off arm A's held number (`study.py:38-42`) and becomes the same formula at Nb₃Sn's own `J_eng` and ceiling field. That is the honest reason to open the gate, and the spec says so.
+
+The goal is not answered. `goal.md` § Answered when needs a decision with its reasoning, in either direction; the reasoning is now on the record natively and the decision is the owner's.
+
+**Decision fields.**
+
+1. *Finding or trigger:* the handoff stop closing T-001 put the continue-or-close choice to the operator.
+   *Decision and reason:* round 1 continues under its existing strategy revision, which this session did not re-author. The operator's continuation brief names this session the round agent and directs it to take the open round as it stands — that is the first of the two options the handoff laid out.
+   *Tier:* reserved gate, resolved by the operator. *Who decided:* the operator, 2026-08-26. *What changed:* `work/orchestration/goals/cryo-volume-basis/trail.md` (resumption note, T-002 scope and start).
+2. *Finding or trigger:* the spec's central requirement is reserved gate 2, so the task could have stopped before writing the spec.
+   *Decision and reason:* write the spec first, then surface the gate. The gate is only decidable once the derivation route and its tolerance are on the table; stopping earlier would have handed the owner a decision with no evidence under it. Writing a spec mutates neither `models/` nor `knowledge/`, and the banner blocks the stages that would.
+   *Tier:* execution detail. *Who decided:* the round agent, 2026-08-26. *What changed:* `work/active/WI-032_cold-volume-basis/spec.md`.
+3. *Finding or trigger:* `.claude/commands/spec-model.md:69` has the spec stage mint `SV-XXX` entries in `modeling_project/VALIDATION_MATRIX.md`.
+   *Decision and reason:* not done, and scoped out. An `SV` entry is a verification contract for a change that is not authorized; minting one would put a pending obligation in a project-wide matrix for work the owner may rule against. If gate 2 opens, the entries are minted then.
+   *Tier:* execution detail. *Who decided:* the round agent, 2026-08-26. *What changed:* `none`.
+4. *Finding or trigger:* `work/BACKLOG.md` still reads `status: backlog` for `WI-032` while the spec reads `active`, and there is no `agentic-mbse pm` operation for that transition.
+   *Decision and reason:* left alone. `CLAUDE.md` bars hand-editing `BACKLOG.md` for state transitions, and the dashboard resolves the precedence itself rather than reporting a defect. Not a goal-level problem.
+   *Tier:* execution detail. *Who decided:* the round agent, 2026-08-26. *What changed:* `none`.
+5. *Finding or trigger:* a form factor fitted at the design point would reproduce 136.56 m³ exactly and make the tolerance look tight.
+   *Decision and reason:* rejected in the spec and recorded there as a rejected alternative. A value calibrated to the point it is validated against cannot be validated, and it would bury the modular-coil discrepancy — the one physically interesting thing the derivation found — inside a fudge factor.
+   *Tier:* execution detail. *Who decided:* the round agent, 2026-08-26. *What changed:* the spec's § The three routes.
+
+**Next task:** none. The task stops on the gate, and the gate is the operator's to take to the owner. Round 1 remains open with no round result: `GOAL_RUNBOOK.md` § Opening and closing a round closes a round on an owner gate *that is not resolved*, and whether this one resolves is not this session's to decide.
