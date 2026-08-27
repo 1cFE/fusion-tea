@@ -318,7 +318,7 @@ Gate: CLEAR
    - Record one bounded task and write-ahead start, invoke a native/manual seam far enough to leave an observable artifact, then intentionally end without a task return.
    - Give the goal directory and repository to a different fresh session; it must inspect native facts, append the correct return/stop, and avoid duplicate side effects or completed work.
 3. **Bounded closure and review**:
-   - Close a round with no promoted pin or committed study using a legitimate bounded-negative, owner gate, or declared limit.
+   - Close a round with no promoted pin or committed study on a runbook close trigger reachable without a study — an unresolved owner gate or a declared limit. A task-level `BOUNDED_NEGATIVE` may be the round's last semantic outcome, but it is not a close trigger. *(Wording corrected 2026-08-27: the original named a trigger the shipped contract does not have; surfaced at `goal-cold-pickup-proof/spec.md` § A close trigger the epic names does not exist.)*
    - Seed one scope or comparison-meaning drift; the fresh `RoundReview` must catch it, account for touched findings, and accept or correct the learning delta.
 4. **Evidence**:
    - Preserve the goal files, cold-agent inputs/outputs, native refs, and a concise proof report.
@@ -329,16 +329,16 @@ Gate: CLEAR
 - Treating a clean-boundary handoff as proof of interruption recovery.
 
 **Success Criteria**:
-- [ ] A fresh non-builder creates a grounded goal from an operator question; a deliberately ungrounded draft is rejected before task start with the missing fields named.
+- [x] A fresh non-builder creates a grounded goal from an operator question; a deliberately ungrounded draft is rejected before task start with the missing fields named. *(Closed 2026-08-27 `[OWNER]`: rejection measured at 2 of 5 field classes; the runbook amended to the five-class written rule on that evidence — `GOAL_RUNBOOK.md` § Grounding a goal. No re-probe.)*
 - [x] The goal directory alone identifies the active strategy, one task, open gate/limit state, and relevant native evidence.
 - [x] A second fresh session resolves an unreturned write-ahead start without repeating the completed native effect.
 - [x] A no-pin/no-study round closes with a mandatory `RoundResult`, five-field decisions, and no silent stop.
-- [ ] Fresh `RoundReview` catches the seeded drift, accounts for every touched discovery row, and accepts or corrects the learning delta.
+- [x] Fresh `RoundReview` catches the seeded drift, accounts for every touched discovery row, and accepts or corrects the learning delta. *(Closed 2026-08-27 `[OWNER]`: accepted as not exercised as designed — the seed was neutralized at the writer; the review demonstrated the faculty on a real organic drift, accounted for every touched row, and corrected the delta. The covering branch was declared before the run.)*
 - [x] The proof records any prose failure; no hardening mechanism is promoted without that evidence.
 
-**Certification status — partial, 2026-08-26** (`.project/active/goal-cold-pickup-proof/audit.md`, verdict Certify). Four of six criteria verified and checked. The two left open are the epic's to dispose, not the audit's:
+**Certification status — complete, 2026-08-27** (`.project/active/goal-cold-pickup-proof/audit.md`, verdict Certify 2026-08-26). Four criteria verified by the audit; the remaining two disposed by owner ruling 2026-08-27, recorded on the checkboxes above. The audit-time state of those two, kept for the record:
 
-- *Criterion 1* is half met. A fresh non-builder did ground a real goal from an operator question. The other half — an ungrounded draft rejected "with the missing fields named" — was **measured at two of five field classes**, not assumed: grounding evidence and the answer contract refuse; invariants, limits, and reserved gates sail through, and three sessions ran full tasks unguarded (`gate-probe-record.md`). The epic's five-class assumption predates Item 1's shipped gate, which defends one by written rule (`GOAL_RUNBOOK.md:72`). Owner's call whether to amend Item 1's text or the epic's criterion.
+- *Criterion 1* is half met. A fresh non-builder did ground a real goal from an operator question. The other half — an ungrounded draft rejected "with the missing fields named" — was **measured at two of five field classes**, not assumed: grounding evidence and the answer contract refuse; invariants, limits, and reserved gates sail through, and three sessions ran full tasks unguarded (`gate-probe-record.md`). The epic's five-class assumption predated Item 1's shipped gate, which defended one class by written rule. **Disposed 2026-08-27 `[OWNER]`: the runbook was amended to the five-class rule**, promoted on the probe record's evidence.
 - *Criterion 5* did not exercise. The seeded drift was neutralized at the writer — the round agent narrowed the widened frame back to the goal's question — so no drift reached the reviewer. The branch covering this outcome was declared before the run. The review did catch a real organic drift, accounted for every touched row, and corrected the learning delta, so the faculty is demonstrated; the designed test is not.
 
 **Estimated Effort**: 1 day (spec 1h, design 1.5h, plan 1h, execute 4.5h)

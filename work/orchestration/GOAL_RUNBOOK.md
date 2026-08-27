@@ -69,7 +69,9 @@ Then stop. The operator starts the fresh session; that session picks up from the
 
 **Where:** `work/orchestration/goals/<goal>/goal.md`. The goal slug names the directory.
 
-**Who checks it:** the operator. A goal whose § Grounding evidence is empty stays `Status: draft`, and **a draft goal authorizes no task** — not one, not a small one. Grounding is what stops a run from spending a week on a question the repository already answered.
+**Who checks it:** the operator, and any session asked to run the goal. A goal hollow in **any** of the five field classes — grounding evidence, answer contract (§ Answered when), invariants, limits, or reserved gates — is not grounded and **authorizes no task**, not one, not a small one: refuse to open a round or start a task, and name the missing class. Grounding evidence has the mechanical tell (empty means `Status: draft`); the other four are checked by reading the file. Grounding is what stops a run from spending a week on a question the repository already answered.
+
+*(Amended 2026-08-27 `[OWNER]`. The shipped rule defended grounding evidence alone; a five-session probe measured cold sessions running full tasks on goals missing invariants, limits, or reserved gates — `.project/active/goal-cold-pickup-proof/gate-probe-record.md`. Written rule promoted on that recorded failure, per the hardening rule.)*
 
 Revisions to a grounded goal are rare and are written as dated amendments, never by editing what is there.
 
@@ -231,7 +233,9 @@ Every goal restates these numbers in its own `Limits` section, explicitly. They 
 
 ## The discovery log
 
-`exploration/<pkg>/studies/DISCOVERY_LOG.md` is the study producer's record of findings, one row per finding sighting, joined to a committed record's § 15 by `<study-id>#<n>`. A goal round has exactly one write outside its own directory, and this is it.
+`exploration/<pkg>/studies/DISCOVERY_LOG.md` is the study producer's record of findings, one row per finding sighting, joined to a committed record's § 15 by `<study-id>#<n>`. This is the goal layer's **own pen's** one write outside the goal directory. Work a task performs through a native workflow's own operation — a `pm add-item`, a spec written through the owning PM — is that workflow's write, not the goal layer's (§ What this is, and what it is not).
+
+*(Amended 2026-08-27. The prior sentence — "a goal round has exactly one write outside its own directory" — contradicted this file's own routing of findings to native work items through the owning PM. The reading above was recorded before the Item 4 proof run and validated in it: the round agent read it the same way unprompted.)*
 
 **What a round owes.** Every open row the round's evidence touched gets a disposition: one of `model fix | research | declared seam | upstream filing`, its status, the responsible task or owner, and what changed or the concrete next reference. **No touched row returns as `unrouted`** (ADR-004).
 
