@@ -12,9 +12,9 @@ Inputs:
 Outputs:
     - total_capital: total_capital result
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:624
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:658
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:624
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:658
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_plant/mfe_power_plant/total_capital_impl.py
@@ -56,9 +56,9 @@ Inputs:
 Outputs:
     - total_capital: total_capital result
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:624
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:658
 
-    SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:624
+    SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:658
 
     Calculation Specification:
 

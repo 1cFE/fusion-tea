@@ -264,7 +264,7 @@ def test_bounds_is_authoritative_and_axis_varying():
         ]
         assert unreachable == group["constraints_unreachable"]
     by_axis = {g["axis"]: g["bounds"] for g in doc["groups"]}
-    assert by_axis["R"] != by_axis["beta"]  # bounds vary per axis, not a constant block
+    assert by_axis["R"] != by_axis["B"]  # bounds vary per axis, not a constant block
 
 
 def test_lists_are_sorted_by_a_stated_key():

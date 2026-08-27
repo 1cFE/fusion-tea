@@ -8,9 +8,9 @@ Inputs:
 Outputs:
     - special_materials_capital: special_materials_capital result
 
-SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:658
+SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:694
 
-SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:658
+SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:694
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/stellarator_09/stellaris/special_materials_capital_impl.py
@@ -40,9 +40,9 @@ Inputs:
 Outputs:
     - special_materials_capital: special_materials_capital result
 
-SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:658
+SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:694
 
-    SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:658
+    SysML Source: root-0/designs/stellarator_09/stellarator_plant.sysml:694
 
     Calculation Specification:
 

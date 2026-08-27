@@ -305,8 +305,12 @@ Field names marked **(Item 3)** are copied from
                   // Resolved at snapshot time over the oracle's own source files, the
                   // same recipe as tools[]. Names WHICH oracle verified this study;
                   // the manifest carries no digest (gap G1, run-study-cold-pickup).
+                  // `files` is part of the shape: the digest is over a named list,
+                  // and the list is what says which sources it covers.
                   "source_digest": { "recipe": "tool-source-digest/v1",
-                                     "digest": "<sha256>" } }
+                                     "digest": "<sha256>",
+                                     "files": [ { "path": "<repo-relative POSIX>",
+                                                  "sha256": "<sha256>" } ] } }
     }
   },
 
@@ -365,7 +369,9 @@ Field names marked **(Item 3)** are copied from
   "tools": [
     { "path": "scripts/study/<tool>.py",       // (Item 3) report tool.path
       "source_digest": { "recipe": "tool-source-digest/v1",             // (Item 3) name
-                         "digest": "<sha256>" } }
+                         "digest": "<sha256>",
+                         "files": [ { "path": "<repo-relative POSIX>",
+                                      "sha256": "<sha256>" } ] } }
   ],
 
   "teax": { "revision": "<revision as run>",

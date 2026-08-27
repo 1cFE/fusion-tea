@@ -4,6 +4,118 @@ Historical record of completed work.
 
 ---
 
+## [2026-08-27] - Goal Harness Item 2: Native Research Acquisition and Registration Seam
+
+**Type**: Item (Goal Strategy and Task Harness epic, Item 2)
+**Duration**: 2 days (spec 2026-08-25 → close 2026-08-27)
+
+### Summary
+Research was the one hop in the model-development loop with no callable boundary. Modeling has the `work/` PM, generation has sysml-codegen, studies have the run-study skill; research had a reading command, an extraction primitive, and a Zotero-shaped registry writer, with nothing joining them. The loop had already run this hop by hand once — WI-031 registered two URL sources through shell steps and hand-written `SOURCE_INDEX.md` blocks, leaving `MANIFEST.jsonl` untouched because it had no slot for a non-Zotero source. This item builds the missing boundary at the producer: a bounded request goes in, exactly one of four returns comes out, every registered source is MR-4-citable by repo-relative path with provenance to re-fetch and verify it, and the ARIES-CS hold-out is checked in code before any byte is written.
+
+### Deliverables
+- `scripts/source_registry.py` — the single write door into `knowledge/`: capture into staging, provenance verification, dedupe, a fixed commit ladder under a lock with exact rollback, receipts, two index-writer profiles, and `verify` (0 faults / 3 legacy on the current repo)
+- `scripts/holdout_guard.py` — parses both §3 barred lists of `knowledge/holdout/aries-cs/PROTOCOL.md` and fails closed on a bad parse; no waiver exists in code
+- `scripts/research_seam.py` — bounded request, request-key negatives, run record, and the four return classes computed from receipts and triage log rather than agent claims
+- `.claude/commands/research-acquire.md` and `docs/research_seam_operator_guide.md` — the acquisition protocol and operator documentation (SC9)
+- `scripts/zotero_ingest.py` / `zotero_lib.py` extended; both Zotero paths are now callers of `register`, and the local-PDF path finally writes its manifest row
+- `tests/research/` — 150 tests, offline against a loopback HTTP fixture and a generated PDF, running the real extraction subprocess
+- `.project/adr/008-source-identity-raw-bytes-sha256.md` — the R-F2 decision, filed 2026-08-25 into Item 1's register
+- Workflow record: `20260827_goal-research-seam/{align,spec,spec-review,design,design-review,plan,audit,product-lens}.md` and the stage briefs
+
+### Notes
+- Audited 2026-08-26, verdict **Needs Work**, two HIGH findings, both real and both reproduced by the auditor: the staging sweep deleted every in-flight registration's working directory outside the commit lock, and a candidate blocked at triage (a paywall — the spec's own first-named reason to queue) could not reach `OPERATOR_QUEUE`, so the documented sequence closed the run `BOUNDED_NEGATIVE` and wrote a durable negative that then blocked its own request.
+- Fix pass complete the same day (`9637f1b7`), all eight findings addressed: the sweep is now lock-held and age-thresholded with each attempt owning its own staging directory; `close` reads the queue from triage failures as well as receipts; design D7 amended and D13 corrected against the spec's class table, which is the authority. Regression tests reproduce both audited failures. 150 tests green, all nine success criteria marked.
+- **The hold-out invariant did not change owners.** `--holdout-ack` was deleted at design review; there is no override in code, and the human exception path stays PROTOCOL §6, outside this seam. Extending the protocol with a machine-readable exception was surfaced as an owner question, not resolved.
+- Two breaking-ish operator changes: `zotero_ingest.py --local-pdf` now requires `--use-for` / `--validation` / `--caveat`, and index blocks insert before `## How Sources Are Used` — a missing anchor raises instead of appending at end.
+- Two `agentic-mbse` defects were filed upstream rather than worked around (`PM-APPROVE-RESEARCH-EMPTY-INSIGHTS`, `EXTRACT-PROVENANCE-HOOK`); the entries sit uncommitted in that repository for the owner's commit. Carried in `.project/CURRENT_WORK.md` § Housekeeping owed.
+- Product-lens gate CLEAR at both levels; the epic's `epic-plan-F1`/`F2` are FIXED and land in other items. No product ledger exists in this repository (`.project/product/`, `product.sh` absent), so the promise scan filed nothing — gap noted, not worked around.
+- Closed on owner authorization 2026-08-27 under the one-PR ship ruling, with the audit verdict superseded by the orchestrator-verified fix pass rather than by a re-audit.
+
+### Lessons Learned
+[TODO: Add lessons learned]
+
+---
+
+## [2026-08-27] - Goal Harness Item 4: Goal Grounding, Cold-Pickup Resume, and Round-Review Proof
+
+**Type**: Item
+**Duration**: 2 days (spec 2026-08-26 → close 2026-08-27)
+
+### Summary
+Item 1 shipped the lean goal contract — the runbook, the three templates, the `run-goal` skill, and ADRs 001–007 — and every file in it was written by the person who designed the layer. No session that was not that person's had ever used it: `work/orchestration/goals/` did not exist, no goal had been grounded, no round opened, no round reviewed. Three bets carried the epic's critical path untested, and the owner's hardening rule made a recorded proof run the only admissible evidence in either direction. This item is that run. It is a proof, not a build: thirteen kept cold sessions across twelve fresh agents grounded a real goal at `work/orchestration/goals/cryo-volume-basis/`, probed the grounding gate one field class at a time, took a real mid-task process kill and resumed it from disk, closed a bounded round, reviewed it fresh, and had a standalone reader answer four questions from the goal directory alone. Its output includes the places the prose failed.
+
+### Deliverables
+- Workflow record: `20260827_goal-cold-pickup-proof/{spec,spec-review,design,design-review,plan,audit,product-lens,align}.md` and the stage briefs
+- `verification_record.md` — the proof report: three ancestry predicates, eight Required Invariant checks, and a § Failures section enumerating every point where the prose route was ambiguous, misread, or failed
+- `sessions/` — fifteen kept cold-session transcripts with their input briefs, the evidence the proof rests on; `probes/`, `gate-probe-record.md`, `seed-record.md`, `freshness-record.md`, `interruption-state.md`, `operator-notes.md`
+- Four re-runnable auditor scripts (`audit-c4-order.py`, `audit-fence-sweep.py`, `audit-brief-ordering.py`, `audit-reader-and-writes.py`)
+- `work/orchestration/goals/cryo-volume-basis/{goal,trail,learnings}.md` — the first live goal, kept as product, closed by owner ruling R3 (`e891b23a`) with WI-032 archived to `work/completed/20260827_WI-032_cold-volume-basis/`
+- `.project/adr/003-lean-first-persistence.md` § Amendment 2026-08-27 — the hardening measurement recorded against the decision it tested
+
+### Notes
+- Audited 2026-08-26, verdict **Certify** — with Criterion 8 certified as *not exercised as designed, not as a pass*. Eight of nine spec criteria met. The seeded drift was neutralized at the writer, and the audit confirmed the branch covering that outcome was declared in `design.md:269` and `plan.md` before the round agent ran (ancestry-checked). The review did catch a real organic drift, so the faculty is demonstrated; the designed test is not.
+- Findings F1–F4 (conservative hand-tally slips in `verification_record.md`) fixed; the audit's one unreachable check — the external `~/goal-proof-logs/` cross-check — closed post-audit in `41b2fcc6`: fifteen log directories, one per enumerated run plus two Phase 0 mechanism checks, no unenumerated run.
+- **Hardening verdict: no mechanism promoted.** Ten recorded prose failures, every one caught by a cold session, the fresh review, or the operator. Two table rows were exercised directly and neither triggered; the idempotency row stays untested rather than passed, because the resume was attended. Recorded as a dated amendment on ADR-003 at close.
+- Two *written-rule* repairs, distinct from machinery, went to the owner and were taken into Item 1: the grounding gate's measured reach of 2 of 5 field classes (three sessions ran full tasks unguarded and none noticed), and the `GOAL_RUNBOOK.md:234` vs `:244` contradiction. The five-class rule was promoted into the runbook on the probe record (`4a8de283`).
+- Epic Item 4 criteria 1 and 5 closed 2026-08-27 by owner ruling; the audit-time state of both is kept verbatim in the epic. Product-lens gate CLEAR — two `BLOCK` findings at the spec hop (the missing five decision fields, the grounding gate that could not hold as written), both resolved by citation in the same-hop disposition and re-checked at the implementation hop; parent epic gate CLEAR.
+- Item 1's contract was left untouched by the run itself: `git diff` over `GOAL_RUNBOOK.md`, `goal-templates/`, and `.project/adr/` across the run is empty. The runbook amendment and the ADR-003 amendment are owner-authorized post-run acts, dated in place.
+- No product ledger exists in this repository (`.project/product/`, `product.sh` absent), so the promise scan filed nothing. Gap noted, not worked around.
+
+### Lessons Learned
+[TODO: Add lessons learned]
+
+## [2026-08-27] - Goal Harness Item 3: Verified Package Integration Seam
+
+**Type**: Item
+**Duration**: 2 days (spec 2026-08-26 → close 2026-08-27)
+
+### Summary
+Integration is the hop between an audited model change and a study that can run against it. Every gate that hop needs already existed and already failed closed — `sysml-codegen generate`, the model-family spine suite, `manifest.py`, `preflight.py`, `verify.py`, `identity.py`, and the dependency-provenance suite. What did not exist was a boundary that owned them together: the sequence lived in two work-item plans and a pile of shell commands, and neither was callable. The cost had already been paid once, when a scaffold commit changed a manifest without re-pinning the fixtures and Run-Study Item 6's Phase 2 opened with eleven red tests. This item built that boundary. `scripts/integrate.py` runs the ten gates in the producers' own order, stops at the first non-pass, and returns one verified study-ready candidate identity or one named blocker — never both, never a caveated candidate. The blocker says whether a gate *refused* or *could not run*, because the goal layer's retry rule reads that distinction and a round closes or continues on it.
+
+### Deliverables
+- Workflow record: `20260827_goal-integration-seam/{spec,spec_review,design,design_review,plan,audit,product-lens,align}.md`, two spike findings, and the stage briefs
+- `scripts/integrate.py` — the seam CLI, ten producer-owned gates, two return classes, two modes, fourteen `condition` slugs closed at the constructor
+- `docs/integration_seam_operator_guide.md` — the operator surface, including the `condition` → goal-class mapping and the stated coverage boundaries
+- `.project/adr/009-integration-is-a-fixed-point-proof.md` — the prove-don't-perform decision
+- Nine test modules under `tests/study/test_integrate_*.py`, including six real refusals driven from real producers and no mocks in the gate path
+- Six `.project/backlog/BACKLOG.md` § Flagged rows routing each producer shortfall back to its own home
+
+### Notes
+- Audited 2026-08-26, verdict **POSITIVE — Certify**; spec SC1–SC6 all met. SC6's operator-guide walk was performed from the shipped guide alone, end to end, with zero source reads.
+- Six non-blocking findings (reporting, coverage and documentation) fixed the same day in `2a9707df`, chiefly finding 1: the gate that stopped the sequence was recorded `not reached` even when it had run and refused. It now carries its own `fail` / `did not run` verdict per design D4, and the refusal tests pin that row rather than stepping over it.
+- Product-lens gate **CLEAR** — four `BLOCK` findings raised across the spec and design passes, all four resolved by citation and re-checked against the shipped code at close. Parent epic gate CLEAR.
+- Regression gate `pytest tests/models tests/study tests/test_dependency_provenance.py` — **395 passed, 14 skipped, 0 failed**. R-B2 frozen-producer diff over `scripts/study/`, `tests/models/` and `tests/test_dependency_provenance.py` empty.
+- Two coverage boundaries are stated rather than closed: gate 5's refusal path has no hermetic driver, and `manifest.assert_read_set_covered` has no caller anywhere in the repository. Both are named in the guide, disclosed at runtime in gate 6's own passing detail, and filed.
+- The three sealed wheels that `tests/test_dependency_provenance.py` pins now live at `/home/reid/1cfe/stop-parser-sealed-wheels/`; run anything in this area as `uv run --env-file ~/1cfe/agentic-mbse/.env --env-file .venv/integration.env python -m pytest ...`.
+
+### Lessons Learned
+[TODO: Add lessons learned]
+
+## [2026-08-27] - Goal Harness Item 1: Lean Goal Contract and Operator Runbook
+
+**Type**: Item
+**Duration**: 2 days (spec 2026-08-25 → close 2026-08-27)
+
+### Summary
+The approved concept-design defined a goal layer above the native workflows — a grounded question, one revisable strategy, one bounded task at a time, a round ending in a mandatory result and a review by a fresh agent. None of it existed on disk: seven approved rulings lived only in shaping files, the repository had no home where an architecture decision belongs, one ruling contradicted live project guidance at `CLAUDE.md:73`, and five textual homes still made the study executor the sole writer of the discovery log. This item wrote the contract down. It created `.project/adr/` and filed the seven decisions with their recorded provenance grades, amended CLAUDE.md's evidence seam, defined the three-file lean artifact contract with its decision/task/round conventions, aligned all five writer-ownership homes on joined `<study-id>#<n>` disposition rows, and wrote the operator runbook that every downstream epic item reads as its input.
+
+### Deliverables
+- Workflow record: `20260827_goal-harness-contract/{spec,spec-review,design,design-review,plan,audit,product-lens,align}.md`
+- `.project/adr/` — `README.md`, `INDEX.md`, `template.md`, records `001`–`007`, and `.project/scripts/adr.sh`
+- `work/orchestration/GOAL_RUNBOOK.md` and the `goal.md` / `trail.md` / `learnings.md` templates
+- `.claude/skills/run-goal/SKILL.md` — the fusion-tea-owned goal-agent door
+- `CLAUDE.md` evidence-seam amendment; six writer-ownership edits across `.claude/skills/run-study/runbook.md` and `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md`
+- Contract and documentation tests under `tests/orchestration/`, including the append-as-update guarantee and the register-coherence check
+
+### Notes
+- Audited 2026-08-25, verdict **Needs Work** on two prose-sized defects; both fixed the same day (`audit-F1` ADR-005's split grade restored on frontmatter and index; `audit-F2` § What "fresh" means, stating the owner's session boundary and the agent's recorded handoff stop). Product-lens gate CLEAR.
+- Amended 2026-08-27 by owner ruling on Item 4's proof-run evidence (`4a8de283`): the grounding gate now refuses on all five field classes, and the discovery-log sentence is scoped to the goal layer's own pen. Both amendments are dated in place with their evidence cited.
+- `tests/study tests/orchestration` — 287 passed, 84 skipped, re-run at close.
+- The runtime half of the contract is proved by epic Items 4–6, not here; any finding those runs raise against the runbook is an Item 1 defect.
+
+### Lessons Learned
+[TODO: Add lessons learned]
+
 ## [2026-08-21] - Stellarator Model Migration
 
 **Type**: Item

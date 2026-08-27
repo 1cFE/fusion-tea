@@ -27,7 +27,7 @@ def test_a_group_with_no_constraint_reach_exits_zero(tmp_path):
     assert group["no_constraint_response"] is True
     assert group["constraints_reachable"] == []
     assert group["objectives_reachable"] == ["lcoe", "lcoe_1cfe", "total_capital"]
-    assert group["objectives_unreachable"] == ["cas27", "cas72", "fuel"]
+    assert group["objectives_unreachable"] == ["beta", "cas27", "cas72", "fuel", "magnet_capital"]
 
 
 def test_the_empty_result_still_carries_the_whole_catalog(tmp_path):
@@ -36,8 +36,8 @@ def test_the_empty_result_still_carries_the_whole_catalog(tmp_path):
     rc, out, err = run_tool_raw(REAL_PACKAGE, REAL_MANIFEST, EXTRAS)
     assert rc == 0, err
     group = group_by_axis(json.loads(out), "land_cost")
-    assert len(group["bounds"]) == 5
-    assert len(group["constraints_unreachable"]) == 5
+    assert len(group["bounds"]) == 6
+    assert len(group["constraints_unreachable"]) == 6
     assert all(not any(o["reached"] for o in c["operands"]) for c in group["bounds"])
 
 

@@ -145,6 +145,22 @@ package stellarator_09 {
             // Stellarator conductor->installed markup. Source: costing_constants.
             //   yaml:75 (coil_markup.stellarator = 5.87).
             :>> coil_markup = 5.87;
+            // Peak-on-winding / axis-averaged field ratio [1] = 24.9 / 9.0 written
+            // as its IEEE-754 double so that 9.0 * peak_ratio == 24.9 exactly and
+            // peak_field_ok reads margin 0.0 at the design point (2.7667 would
+            // read 24.9003, violated). A redefinition expression is dropped by the
+            // pinned codegen, hence the literal (WI-030).
+            :>> peak_ratio = 2.7666666666666666 {
+                doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: peak conductor magnetic field strength 24.9 T; axis av. magnetic field strength 9.0 T) **Basis**: Stellaris coil-set peak/axis field ratio, 24.9/9.0 */
+            }
+            // Conductor peak-field ceiling [T]. [OWNER 2026-08-21]: the field
+            // Stellaris designs to (Table 2), not 1costingFE's REBCO engineering
+            // ceiling of 23.0 T (defaults.py:611), which the Stellaris winding
+            // exceeds by 1.9 T; the disagreement is disclosed, the design value
+            // is bound (WI-030).
+            :>> B_max = 24.9 {
+                doc /* **Source**: stellaris-design-details.md; /home/reid/1cfe/1costingfe/src/costingfe/defaults.py (pin 0254385) **Ref**: Table 2 image (images/page_002_table_0.png: peak conductor magnetic field strength 24.9 T); defaults.py:605-612 (MAGNET_TABLE rebco_hts b_max = 23.0, not bound -- owner ruling 2026-08-21) **Basis**: Stellaris REBCO design peak field; the HTS arm's ceiling for the Item 6 A/B */
+            }
         }
 
         // ---------------------------------------------------------------------
@@ -445,6 +461,26 @@ package stellarator_09 {
         }
         :>> alpha_T = 1.19 {  // temperature profile exponent [1].
             doc /* **Source**: stellaris-design-details.md Fig. 16 temperature panel **Ref**: images/stellaris-high-field-quasi-isodynamic-stellarator.pdf-9-1.png, digitized fit (prototype/digitize_fig16.py; all three species, rms log-residual 0.02); corroborated by a/L_T ~= 2.25 at rho=0.6 (line 714) and the rho=0.8 Dirichlet values 4.2/5.2 keV (line 762) **Basis**: T(rho) = T0*(1-rho^2)^alpha_T (Eq. 2, image-verified) exponent, fixed blind to the fusion power */
+        }
+
+        // Beta referents (WI-030): electron and helium peaks from the Table 5
+        // image, Point A; the electron density exponent from the printed
+        // vol-av/peak pair. The computed beta (beta_calc) at this point is
+        // 0.026834 vs the printed 2.76 % (-2.8 %; helium on the electron
+        // exponent would give -3.3 %, the recorded tolerance) -- thermal beta,
+        // fast-particle pressure excluded. Quasineutrality at the peak:
+        // 2 x 1.96 + 2 x 0.56 = 5.04 ~= 5.06.
+        :>> n_e0 = 5.06e20 {  // peak electron density [m^-3].
+            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: peak el. density 5.06e20 m^-3, Point A; the extracted text "4.55" is an extraction artifact) **Basis**: Stellaris Point-A peak electron density */
+        }
+        :>> T_e0 = 15.40 {    // peak electron temperature [keV].
+            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: peak el. temperature 15.40 keV, Point A) **Basis**: Stellaris Point-A peak electron temperature; ions at T_i0 = 14.63 */
+        }
+        :>> n_He0 = 0.56e20 { // peak helium-ash density [m^-3].
+            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: peak helium ash density 0.56e20 m^-3, Point A) **Basis**: Stellaris Point-A peak helium-ash density; shares the fuel exponent alpha_n (the Fig. 16 helium curve is dotted and cannot be digitized) */
+        }
+        :>> alpha_n_e = 0.596 { // electron density profile exponent [1].
+            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: vol.-av. el. density 3.17e20 and peak el. density 5.06e20, Point A): for n(rho) = n0*(1-rho^2)^alpha, <n>/n0 = 1/(1+alpha), so alpha = 5.06/3.17 - 1 = 0.596; corroborated by the Fig. 16 density-panel digitization (images/stellaris-high-field-quasi-isodynamic-stellarator.pdf-9-0.png, electrons: alpha = 0.62, rms log-residual 0.03, WI-022 prototype/digitize_fig16.py re-run 2026-08-21) **Basis**: electron density exponent derived from two printed numbers; Point B's pair 6.89/4.21 gives 0.637 (SV-036 override) */
         }
 
         // Power-balance inputs.
@@ -823,11 +859,11 @@ package stellarator_09 {
         // VIABILITY CONSTRAINTS (WI-018 additions: beta, wall load, TBR)
         // ---------------------------------------------------------------------
 
-        // Beta.
-        // volume-averaged plasma beta.
-        attribute beta : Real = 0.0276 {
-            doc /* **Source**: stellaris-design-details.md / analyst-patch-spec-anchors.md **Ref**: analyst-patch-spec-anchors.md line 44 (beta = 0.0276, details.md 2.3) **Basis**: Stellaris vol-avg operating beta */
-        }
+        // Beta (WI-030): computed by beta_calc ('Volume-Averaged Beta') from the
+        // profile referents above and magnet.B. The printed Table 5 value,
+        // vol. av. beta 2.76 % (Point A) / 2.81 % (Point B), is the cross-check,
+        // not an input: computed 0.026834 / 0.028691 (SV-036). The former bound
+        // beta = 0.0276 (analyst-patch-spec-anchors.md line 44) is retired.
         // design/optimization beta target.
         attribute beta_limit : Real = 0.05 {
             doc /* **Source**: stellaris-design-details.md **Ref**: line 273 (coils + boundary optimized at <beta>_V = 5%) **Basis**: Stellaris design beta target */
@@ -872,7 +908,7 @@ package stellarator_09 {
 
         // Asserted viability constraints.
         assert constraint beta_ok : 'Beta Limit' {
-            in beta_in = beta;
+            in beta_in = beta_calc.beta;
             in beta_limit_in = beta_limit;
         }
         assert constraint wall_load_ok : 'Neutron Wall Load Limit' {

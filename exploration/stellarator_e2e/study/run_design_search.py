@@ -7,10 +7,10 @@ machinery (PreparedListStrategy -> StudyRunner -> StudyStore -> StudyQuery, no
 hand-rolled sweep loops):
 
   A. 2D grid over the two causal geometry levers — major radius R, minor
-     radius a — LCOE + all 5 viability verdicts recorded per point.
+     radius a — LCOE + all 6 viability verdicts recorded per point.
   B. 1D sweep over availability (operations lever), same recording.
 
-Axis rule compliance (.project/active/demo-study-parameterization-policy/policy.md §2):
+Axis rule compliance (modeling_project/STUDY_POLICY.md §2):
 axes are causal design levers, declared at the SysML-attribute level and
 expanded to their complete entry-key set. `magnet__R0` rides with R as a
 DECLARED PHYSICAL-IDENTITY TIE [AGENT]: the magnet-cost Ampere's-law current

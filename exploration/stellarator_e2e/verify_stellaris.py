@@ -60,6 +60,10 @@ IN = dict(
     # reference-only in profile mode; profile referents per the spec)
     n_e=3.17e20, sigma_v=0.0, E_fus=2.817e-12,
     n_D0=1.96e20, n_T0=1.96e20, T_i0=14.63, alpha_n=0.33, alpha_T=1.19,
+    # beta referents (WI-030): Table 5 image Point A electron/helium peaks, the
+    # electron exponent from the printed vol-av/peak pair 3.17/5.06
+    n_e0=5.06e20, T_e0=15.40, n_He0=0.56e20, alpha_n_e=0.596,
+    beta_mu0=1.25663706212e-6, beta_e_keV=1.602176634e-16,  # 'Volume-Averaged Beta' defaults
     # power balance
     p_input=50.0, mn=1.2, eta_th=0.333, eta_p=0.5, eta_pin=0.5,
     p_pump=1.0, f_sub=0.03,  # p_pump: 1costingFE steady_state_stellarator.yaml:21 (WI-019)
@@ -82,6 +86,9 @@ IN = dict(
     #   images (the old 5.86 cited a phantom Table 3 text row).
     magnet_G=78.95683520871486, magnet_B=9.0, magnet_R0=12.7,
     magnet_cost_per_kAm=50.0, magnet_coil_markup=5.87,  # r_coil now from radial build (WI-021)
+    # conductor facts (WI-030): peak/axis ratio 24.9/9.0 as its float64 value; REBCO
+    # ceiling bound to the Stellaris design value (owner 2026-08-21)
+    magnet_peak_ratio=2.7666666666666666, magnet_B_max=24.9,
     mu0=1.25663706212e-6,
     # blanket / shield / structure / vessel / power supplies (unit costs in $)
     # volumes now forward-computed from the radial build (WI-021)
@@ -376,10 +383,21 @@ def compute():
     # --- Neutron wall load ---
     wall_load = p_fus * (1.0 - 0.2002) / wall_area
 
+    # --- Volume-averaged thermal beta and conductor peak field (WI-030) ---
+    # Mirrors 'Volume-Averaged Beta' / 'Conductor Peak Field' operation for
+    # operation (bit-exact bar): <n T> = n0 T0 / (1 + alpha_n + alpha_T) per species.
+    beta_p_e = p["n_e0"] * p["T_e0"] / (1.0 + p["alpha_n_e"] + p["alpha_T"])
+    beta_p_fuel = (p["n_D0"] + p["n_T0"]) * p["T_i0"] / (1.0 + p["alpha_n"] + p["alpha_T"])
+    beta_p_He = p["n_He0"] * p["T_i0"] / (1.0 + p["alpha_n"] + p["alpha_T"])
+    beta_p_avg = (beta_p_e + beta_p_fuel + beta_p_He) * p["beta_e_keV"]
+    beta = 2.0 * p["beta_mu0"] * beta_p_avg / (p["magnet_B"] ** 2)
+    B_peak = p["magnet_B"] * p["magnet_peak_ratio"]
+
     return dict(
         V=V, p_fus=p_fus, p_th=p_th, p_the=p_the, p_et=p_et,
         p_cryo=p_cryo,  # derived cryoplant electrical (WI-024 chain output)
         q_eng=q_eng, rec_frac=rec_frac, p_net=p_net, wall_load=wall_load,
+        beta=beta, B_peak=B_peak,  # WI-030 physics channels
         magnet=magnet, heating=heating, divertor=divertor, blanket=blanket,
         shield=shield, structure=structure, vessel=vessel,
         power_supplies=power_supplies, turbine=turbine, electric=electric,

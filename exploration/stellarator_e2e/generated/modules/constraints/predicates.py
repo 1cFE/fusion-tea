@@ -94,3 +94,8 @@ def constraint_pred_definition_mfe_viability__neutron_wall_load_limit(wall_load,
 def constraint_pred_definition_mfe_viability__tbr_floor(tbr_in, tbr_floor_in):
     value = _cmp('>=', tbr_in, tbr_floor_in)
     return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((tbr_in - tbr_floor_in)) if (_fin(tbr_in) and _fin(tbr_floor_in)) else None))
+
+# definition:mfe_viability::'Conductor Peak Field Limit'
+def constraint_pred_definition_mfe_viability__conductor_peak_field_limit(B_peak, B_max_in):
+    value = _cmp('<=', B_peak, B_max_in)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((B_max_in - B_peak)) if (_fin(B_peak) and _fin(B_max_in)) else None))

@@ -253,4 +253,105 @@ package mfe_plasma_scaling {
         out attribute wall_load : Real =
             p_fus * (1.0 - ash_frac_in) / wall_area;
     }
+
+    calc def 'Volume-Averaged Beta' {
+        doc /*
+        Volume-averaged thermal plasma beta [1] from peak densities, peak
+        temperatures, profile exponents, and the axis-averaged field (WI-030).
+
+          beta = 2 * mu0 * <p> / B^2
+          <p>  = e_keV * Sigma_s n_s0 * T_s0 / (1 + alpha_n,s + alpha_T)   [Pa]
+
+        over s in {electrons, D, T, He ash}: ions at T_i0, electrons at T_e0;
+        fuel and ash share alpha_n, electrons carry alpha_n_e, one alpha_T for
+        all species. The 1/(1 + alpha_n + alpha_T) factor is the volume average
+        of (1-rho^2)^(alpha_n+alpha_T) over dV/V = 2*rho*d(rho) -- the same
+        u = 1 - rho^2 substitution 'DT Fusion Power' documents. Thermal only:
+        fast-particle pressure is excluded, so the value sits a few percent
+        under a source's printed equilibrium beta.
+
+        Concept-agnostic: any MFE instance with (1-rho^2)^alpha profiles binds
+        its own peaks and exponents; B enters the physics here, not only the
+        magnet cost (mfe_magnet_cost.sysml).
+
+        **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/tokamak.py (pin 0254385);
+            knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
+        **Ref**: tokamak.py:36-40 (_EV exact, KEV_TO_J; MU_0 1.25663706127e-6 --
+            this calc keeps the model's 1.25663706212e-6 from mfe_magnet_cost.sysml:41,
+            7e-10 apart); tokamak.py:117-126 (compute_beta_N: electron + ion pressure
+            over B^2 -- NOTE its mu0*n_e*(T_e + n_i T_i)/B^2 is half the standard
+            2*mu0*p/B^2 used here; the printed Stellaris 2.76 % validates the
+            standard form); images/page_007_eq_0.png, page_007_eq_1.png (Eqs. 2-3
+            profile forms); images/page_009_table_0.png (Table 5: vol. av. beta
+            2.76 % / 2.81 %, the cross-check)
+        **Basis**: beta = 2*mu0*<p>/B^2 with <p> the volume-averaged thermal
+            pressure of all species over (1-rho^2)^alpha profiles; MFE-generic
+        */
+
+        // peak electron density [m^-3]
+        in attribute n_e0_in : Real;
+        // peak electron temperature [keV]
+        in attribute T_e0_in : Real;
+        // peak deuterium density [m^-3]
+        in attribute n_D0_in : Real;
+        // peak tritium density [m^-3]
+        in attribute n_T0_in : Real;
+        // peak helium-ash density [m^-3]
+        in attribute n_He0_in : Real;
+        // peak ion temperature [keV]
+        in attribute T_i0_in : Real;
+        // fuel and ash density profile exponent [1]
+        in attribute alpha_n_in : Real;
+        // electron density profile exponent [1]
+        in attribute alpha_n_e_in : Real;
+        // temperature profile exponent, all species [1]
+        in attribute alpha_T_in : Real;
+        // axis-averaged on-axis field [T]
+        in attribute B_in : Real;
+        // vacuum permeability [T m/A]; declared after the bound formals (ledger D13)
+        in attribute mu0 : Real default 1.25663706212e-6;
+        // keV -> J (exact SI elementary charge x 1e3)
+        in attribute e_keV : Real default 1.602176634e-16;
+
+        // vol-avg electron pressure / e_keV [keV m^-3]
+        attribute p_e : Real = n_e0_in * T_e0_in / (1.0 + alpha_n_e_in + alpha_T_in);
+        // vol-avg fuel-ion pressure / e_keV [keV m^-3]
+        attribute p_fuel : Real = (n_D0_in + n_T0_in) * T_i0_in / (1.0 + alpha_n_in + alpha_T_in);
+        // vol-avg helium-ash pressure / e_keV [keV m^-3]
+        attribute p_He : Real = n_He0_in * T_i0_in / (1.0 + alpha_n_in + alpha_T_in);
+        // vol-avg thermal pressure [Pa]
+        attribute p_avg : Real = (p_e + p_fuel + p_He) * e_keV;
+        // volume-averaged thermal beta [1]
+        out attribute beta : Real = 2.0 * mu0 * p_avg / (B_in ** 2);
+    }
+
+    calc def 'Conductor Peak Field' {
+        doc /*
+        Peak magnetic field on the winding pack [T] from the axis-averaged field
+        and the coil set's peak/axis ratio (WI-030):
+
+          B_peak = B_axis * peak_ratio
+
+        peak_ratio is a coil-geometry fact bound per instance (Stellaris:
+        24.9 T peak on the conductor at 9.0 T axis-averaged, Table 2 image);
+        it is the quantity a conductor ceiling ('Conductor Peak Field Limit')
+        is compared against. Kept as a calc, not an inline plant expression,
+        so the product is a module-graph edge the study tooling can trace and
+        no plant-level derived expression is introduced.
+
+        **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md;
+            /home/reid/1cfe/1costingfe/src/costingfe/defaults.py (pin 0254385)
+        **Ref**: images/page_002_table_0.png (Table 2: axis av. 9.0 T, peak
+            conductor 24.9 T); defaults.py:597-603 (MagnetProperties.b_max,
+            "peak field ceiling at the conductor" -- the bounded quantity)
+        **Basis**: peak-on-winding = axis field x coil-set ratio; MFE-generic
+        */
+
+        // axis-averaged on-axis field [T]
+        in attribute B_axis_in : Real;
+        // peak-on-winding / axis-averaged field ratio [1]
+        in attribute peak_ratio_in : Real;
+        // peak field on the conductor [T]
+        out attribute B_peak : Real = B_axis_in * peak_ratio_in;
+    }
 }

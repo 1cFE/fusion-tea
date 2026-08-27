@@ -97,7 +97,9 @@ def test_parity_holds_at_the_committed_order_of_magnitude(summary):
 def test_every_catalog_constraint_is_rederived_with_its_operand_count(summary):
     rederived = {c["source_local_identity"]: c["operands_resolved"]
                  for c in summary["constraints_rederived"]}
-    assert set(rederived) == {"beta_ok", "net_positive", "recirc_ok", "tbr_ok", "wall_load_ok"}
+    assert set(rederived) == {
+        "beta_ok", "net_positive", "peak_field_ok", "recirc_ok", "tbr_ok", "wall_load_ok",
+    }
     assert rederived["net_positive"] == 1  # the other operand is the literal 0.0
     assert all(count >= 1 for count in rederived.values())
 

@@ -8,6 +8,7 @@ import hashlib
 import json
 import os
 import re
+from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 from typing import NamedTuple
@@ -20,33 +21,93 @@ RAW_DIR = Path("knowledge/raw")
 SOURCES_DIR = Path("knowledge/sources")
 SOURCE_INDEX_PATH = Path("knowledge/SOURCE_INDEX.md")
 MANIFEST_PATH = Path("knowledge/MANIFEST.jsonl")
+STAGING_DIR = Path("knowledge/.staging")
+LOCK_PATH = Path("knowledge/.registry.lock")
+BASELINE_PATH = Path("knowledge/.registry_baseline.json")
+
+
+@dataclass(frozen=True)
+class RegistryPaths:
+    """Every path the registry writes or reads, so callers can point at a temp tree.
+
+    The module constants above stay the production values; `default_paths()`
+    wraps them. Nothing in the seam reads the constants directly.
+    """
+
+    raw: Path
+    sources: Path
+    index: Path
+    manifest: Path
+    staging: Path
+    lock: Path
+    baseline: Path
+
+    @classmethod
+    def under(cls, knowledge_dir: Path) -> "RegistryPaths":
+        return cls(
+            raw=knowledge_dir / "raw",
+            sources=knowledge_dir / "sources",
+            index=knowledge_dir / "SOURCE_INDEX.md",
+            manifest=knowledge_dir / "MANIFEST.jsonl",
+            staging=knowledge_dir / ".staging",
+            lock=knowledge_dir / ".registry.lock",
+            baseline=knowledge_dir / ".registry_baseline.json",
+        )
+
+
+def default_paths() -> RegistryPaths:
+    """The repository's own registry paths."""
+    return RegistryPaths(
+        raw=RAW_DIR,
+        sources=SOURCES_DIR,
+        index=SOURCE_INDEX_PATH,
+        manifest=MANIFEST_PATH,
+        staging=STAGING_DIR,
+        lock=LOCK_PATH,
+        baseline=BASELINE_PATH,
+    )
 
 
 def load_manifest() -> dict[str, dict]:
-    """Load manifest as {zotero_key: entry_dict}. Returns empty dict if file missing."""
-    if not MANIFEST_PATH.exists():
-        return {}
-    entries = {}
-    for line in MANIFEST_PATH.read_text().splitlines():
-        line = line.strip()
-        if not line:
-            continue
-        entry = json.loads(line)
-        entries[entry["zotero_key"]] = entry
-    return entries
+    """Load Zotero-sourced rows as {zotero_key: entry_dict}.
+
+    Non-Zotero rows (URL and local-PDF sources registered through the seam)
+    carry no `zotero_key` and are skipped — this view is the Zotero library
+    diff, not the whole registry. Use `load_manifest_rows` for that.
+    """
+    return {row["zotero_key"]: row for row in _manifest_lines() if "zotero_key" in row}
 
 
 def manifest_keys() -> set[str]:
-    """Return set of Zotero keys present in the manifest."""
+    """Return set of Zotero keys present in the manifest. Non-Zotero rows are skipped."""
+    return set(load_manifest())
+
+
+def _manifest_lines() -> list[dict]:
     if not MANIFEST_PATH.exists():
-        return set()
-    keys = set()
-    for line in MANIFEST_PATH.read_text().splitlines():
-        line = line.strip()
-        if not line:
-            continue
-        keys.add(json.loads(line)["zotero_key"])
-    return keys
+        return []
+    return [
+        json.loads(line)
+        for line in MANIFEST_PATH.read_text().splitlines()
+        if line.strip()
+    ]
+
+
+def load_manifest_rows(paths: RegistryPaths) -> list[dict]:
+    """Every manifest row, in file order, Zotero and non-Zotero alike."""
+    if not paths.manifest.exists():
+        return []
+    return [
+        json.loads(line)
+        for line in paths.manifest.read_text().splitlines()
+        if line.strip()
+    ]
+
+
+def truncate_manifest(byte_len: int, paths: RegistryPaths) -> None:
+    """Cut the manifest back to a previously recorded length (rollback rung)."""
+    with open(paths.manifest, "r+b") as f:
+        f.truncate(byte_len)
 
 
 def append_manifest_entry(zotero_key: str, slug: str, title: str) -> None:

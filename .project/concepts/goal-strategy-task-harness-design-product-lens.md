@@ -1,0 +1,30 @@
+# Product-Lens Ledger: Goal Strategy and Task Harness
+
+Appended per `/_my_design_review` Stage 0. Lens run by a fresh `general-purpose` subagent whose entire instruction set was `~/.claude/scripts/product-lens.md`. Verdict block verbatim:
+
+---
+
+## design-review — 2026-08-23 — rev `.project/concepts/goal-strategy-task-harness-design.md` (revised 2026-08-23)
+
+**Point (re-derived):** The goal layer must let a non-builder operator ground a question and run the study→analysis→disposition loop with criticism, disk-resume, and replayable judgment (goal-harness concept criteria 1–8), while honoring three owner-grade constraints of 2026-08-23: (1) criterion 4 of `study-driven-model-development.md` **holds** — every round dispositions the open `DISCOVERY_LOG.md` rows its evidence touches, joined `<study-id>#<n>`, goal agent appends, runbook sole-writer rule amended (C1 ruling); (2) **lean first, harden on evidence** — first build is goal file + brief-pattern prose trail + fresh-round discipline + the log join; envelopes/ledger/digests/idempotency/reconciliation stay a hardening path (P2 ruling, owner: "yeah I agree with (a)"); (3) goal evidence seam — cite `.project/` by path+digest, mutate each PM only natively, CLAUDE.md's contrary rule named as an amended surface.
+[source: `.project/concepts/study-driven-model-development.md` §Success Criteria 4–5 + `.project/concepts/goal-driven-model-development-harness.md` §Owner's Words/§Success Criteria + `goal-strategy-task-harness-design-review.md` §Resolutions, grade: **owner/HARD**]
+
+**Falsifier:** the design would show a round able to close without dispositioning touched open log rows; or first-build inclusion of control-plane machinery the P2 ruling deferred; or an owner ruling (log join, runbook amendment, evidence-seam ADR surface, inline ruling citations) missing or silently altered.
+
+**Oracle result on the owner-grade constraints — all three hold.** The C1 join is faithfully incorporated (Findings section: first sightings study-owned, goal rounds append joined dispositions, "no touched row returns as `unrouted`"; Required Invariants; validation runs on the six live `unrouted` rows I verified in `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md`). Lean-first is faithfully incorporated (three prose files; the four deferred mechanisms tabled with promote-only-when conditions, each requiring a recorded observed failure). The evidence seam carries owner grade and names CLAUDE.md as the surface to amend. M2's cite-don't-restate invariant is now stated; M1/P3 coarse task grain and P4 single-critic collapse are implemented; M3's ruling citations and the three parked-decision dispositions are inline. The previously blocking silent drop is gone.
+
+**Findings:**
+- design-review-F1 [DO] The concept's replay-judgment discipline is dropped without saying so: criterion 6 requires one entry per decision with five fields (finding, decision + reason, **tier**, **who decided**, what changed) and the owner's verbatim asks for a synthesized log "so that I can 'replay' the evolutions"; the design's `trail.md` sections carry decisions and reasons but never the tier or who-decided fields, and no synthesized replay view exists. The P2 ruling deferred the JSONL *event* ledger, not the decision-entry discipline — conflating them is an `[AGENT]` move on a distinct obligation. — `goal-driven-model-development-harness.md` criterion 6 + Owner's Words ("we may want a summarized log…", hedged) (**agent/INHERITED**) — disposition: DISPOSE-and-proceed — add the five fields to the trail's decision/return entries (cheap prose) or record criterion 6 as explicitly deferred to hardening, owner-visible.
+- design-review-F2 [DO] The concept's scope item "one end-to-end operator document for the loop, stage by stage, usable without the orchestrator" (backing success criterion 8) has no deliverable in the design — the hand-operable invoke/return pattern satisfies the substance, but nothing in Validation and First Slice commits to the document itself. — `goal-driven-model-development-harness.md` §Scope/criterion 8 (**agent/ratified**) — disposition: DISPOSE-and-proceed — name it (the design + trail pattern may *be* it, but say so).
+- design-review-F3 [DO] "One runbook sentence" understates the amendment: the runbook asserts executor-sole-writer at `.claude/skills/run-study/runbook.md:221` **and** separately forbids administrator appends at `:270`; the amendment must touch both and distinguish the goal agent's disposition append from the administrator role, or a fresh reader will read `:270` as forbidding what the C1 ruling permits. — my verification against the runbook (**AGENT/INFERRED**) — disposition: DISPOSE-and-proceed — implementation note for the runbook edit.
+
+**Gate: DISPOSED (design-review-F1, design-review-F2, design-review-F3)** — no owner/`[HARD]` contradiction remains; all three findings are lower-authority and carry recorded dispositions above.
+
+---
+
+### Smell check (§4, design smells)
+
+- **Smell 2 — consumer compensating for a producer/platform guarantee: does not fire.** The revision internalized this smell: resume reads native filesystem/registry facts as truth (using the natives' crash-safe guarantees rather than shadowing them), and the idempotency/effect-query row of the hardening table explicitly says "repair the native owner first." The prior version's goal-side effects ledger — which did fire this smell — is gone from the first build.
+- **Smell 7 — ownership change without saying so: does not fire, on three checked candidates.** Every invariant whose owner moves is declared with its authority: the `DISCOVERY_LOG.md` writer split (owner-ruled, runbook amendment named), the cross-PM evidence seam (owner-ruled, CLAUDE.md named as the surface an ADR must amend), and the goal directory superseding the flat `work/orchestration/*.md` brief (stated outright). RoundReview correcting disposition bookkeeping matches the owner's own C1 mechanism ("accepted or corrected by the fresh RoundReview") — stated, not smuggled.
+
+Neither smell escalates; the F1–F3 dispositions above are the only items the stage's judgment must carry.

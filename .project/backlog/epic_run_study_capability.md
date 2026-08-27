@@ -1,7 +1,7 @@
 # Epic: Run-Study Capability
 
 **Epic ID**: RUN-STUDY
-**Status**: Active — Items 1–5 complete (Item 5 owner-approved 2026-08-20); Item 6 remaining
+**Status**: Active — Items 1–5 complete (Item 5 owner-approved 2026-08-20); Item 6 Phases 1–3 certified 2026-08-23, Phase 4 (close) gated on Item 7; Item 7 (end-to-end explainer) spec approved 2026-08-23
 **Priority**: High
 **Created**: 2026-08-19
 **Estimated Effort**: ~6–9 days
@@ -60,7 +60,9 @@ The value path is evidence-first. De-risk the only novel algorithm against the r
 
 **A/B ownership — [OWNER-VERBATIM] (2026-08-19):** "I'm fine with this epic owning the A/B proof -- the demo epic is on hold." The A/B run is therefore Item 6 here. The demo epic may consume the resulting evidence when resumed, but it does not co-own or duplicate the run.
 
-**Critical path**: Item 1 → Item 3 → Item 4 → Item 6.
+**Critical path**: Item 1 → Item 3 → Item 4 → Item 6 (Phases 1–3) → Item 7 → Item 6 Phase 4 (close).
+
+**Item 7 — [OWNER 2026-08-23]:** "there is a gap in the epic and study plan. Specifically, I need a RIGOROUS and deep HTML explainer. It needs to convey, by example, HOW this end-to-end work." Added as Item 7, sequenced before Item 6's close so the explainer is written while the two studies and their context are on the branch.
 
 **Parallel work**: after Item 1, Items 2 and 3 can proceed together. Item 5 can run after Item 2 while Item 4 promotes the tools. Item 6 waits for both branches so the first consumer uses corrected record and tooling contracts.
 
@@ -176,7 +178,7 @@ Gate: CLEAR
 - `.project/concepts/run-study-skill.md`
 - `.project/concepts/run-study-skill-design.md` — Core Model, Required Invariants, and execute/administer flows
 - `.project/completed/20260821_demo-proof-of-life/plan.md`
-- `.project/active/demo-study-parameterization-policy/policy.md`
+- `modeling_project/STUDY_POLICY.md` (ratified and moved 2026-08-21; was `.project/active/demo-study-parameterization-policy/policy.md`)
 
 **Scope**:
 1. Create `.claude/skills/run-study/SKILL.md` with collaborative intake and explicit execute/administer mode selection; add the narrow `.gitignore` negation.
@@ -389,13 +391,13 @@ Gate: CLEAR
 - ✅ The proof-of-life package and study layer provide a verified execution base.
 - ✅ Items 2–5 will provide the capability contract, tools, and legacy gap corrections.
 - ⚠️ The delivered A/B representation and resulting teax compatibility tuples must be confirmed from the executable revision at spec time.
-- ⚠️ The study policy is still Draft pending owner Align.
+- ✅ Owner Align held 2026-08-21 — `.project/active/run-study-first-consumer/align.md`: policy ratified whole (owner reviews the final draft before commit); the magnet comparison is left to design-stage research and may need new modeling; oracle verification runs for this demo only, then leaves the study contract; 1costingFE handshake stays outside the study.
 - ❌ No A/B study, capability-compliant record, or new-record cold-pickup proof exists.
 
 **Required Reading**:
 - `.project/concepts/run-study-skill.md`
 - `.project/concepts/run-study-skill-design.md` — execute flow, A/B store rule, and proof obligations
-- `.project/active/demo-study-parameterization-policy/policy.md`
+- `modeling_project/STUDY_POLICY.md`
 - `.project/backlog/epic_stellarator_mbse_demo.md` — Item 5 historical scope and the on-hold boundary
 - Items 1–5 outputs
 - Teax evaluation/study and compatibility documentation at the executable revision selected during Align
@@ -409,7 +411,7 @@ Gate: CLEAR
 6. Spawn a fresh-context administrator that reads only the new record and writes `synthesis.md`; it must recover each arm's framing, LCOE, named constraint outcomes, and evidence-backed findings without execution-session memory.
 
 **Out of Scope**:
-- Visualization or search-process animation.
+- Visualization or search-process animation (the end-to-end explainer is Item 7, which gates this item's Phase 4).
 - Optimizer/adaptive study-layer strategies.
 - Closing model gaps found by the study; route them as new modeling or research items.
 - Resuming the broader demo epic.
@@ -440,6 +442,46 @@ Gate: CLEAR
 
 ---
 
+### Item 7: End-to-End Explainer for the A/B Demo
+
+**Type**: Documentation/Implementation (interactive HTML)
+
+**Objective**: A rigorous, deep HTML explainer that shows an outside reader, by worked example on the two completed studies, how the whole chain works: the SysML model → sysml-codegen package and its inputs → teax → the A/B arms, and the run-study process on top of it — goal-only prompt → axes and indicators → owner rulings → preflight → execution → verification → immutable record → fresh-administrator synthesis → discovery log. **[OWNER-VERBATIM 2026-08-23]** "this is explanation BY EXAMPLE. SHOW how this works. DEMONSTRATE the value."
+
+**Current State**:
+- ✅ Two certified records exist with every process artifact (`exploration/stellarator_e2e/studies/20260821-power-cycle-ab/`, `.../20260823-magnet-technology-ab/`; 22 discovery-log rows).
+- ✅ Toolchain explainers exist for earlier work (`docs/demo/closed-loop.html`, `docs/demo/index.html`); none covers the study-process layer or these studies.
+- ❌ No artifact explains the capability end to end for a reader who knows SysML v2 and fusion-tea only from prior publications.
+
+**Required Reading**:
+- `.project/active/run-study-e2e-explainer/spec.md` — approved 2026-08-23; carries the owner's MUST-list verbatim and the product-lens ledger
+- `.project/concepts/run-study-skill.md`
+- `.claude/skills/html-explainer/{SKILL,explainer-guidelines}.md`
+- The two records with their addenda, `axes.json`, `indicators.json`, `results/`, `synthesis.md`; `exploration/stellarator_e2e/studies/{ANNEX,DISCOVERY_LOG}.md`
+- `knowledge/holdout/aries-cs/PROTOCOL.md` — never read the hold-out
+
+**Scope**: per the spec. Reader: "vague concept of SysMLv2 from our prior publications, and only has knowledge about fusion-tea from prior publications" [OWNER]. Page lives in `exploration/stellarator_e2e/studies/` beside the records [OWNER].
+
+**Out of Scope**:
+- The demo epic's write-up (1costingFE handshake framing, ARIES-CS hold-out) — [OWNER 2026-08-23] "do not worry about the other Item 8".
+- Any change to the tools, runbook, records, or package; re-running a study.
+
+**Success Criteria**: the spec's Success Criteria govern. Headline: a fresh subagent with the reader profile, given the page alone, answers a fixed question list covering both layers, and every number on the page traces to a committed artifact.
+
+**Estimated Effort**: 1.5–2 days (story outline + owner review 2h, design 2h, build 8–10h, reader test + fixes 2h)
+
+**Location**: `.project/active/run-study-e2e-explainer/`
+
+**Dependencies**: Item 6 Phases 1–3 (complete). Item 6 Phase 4 depends on this item.
+
+**Deliverables**:
+- `.project/active/run-study-e2e-explainer/{spec,design,plan}.md`
+- Story outline reviewed by the owner before HTML
+- The explainer page(s) under `exploration/stellarator_e2e/studies/` with any figure-regeneration script
+- Reader-test question list and result
+
+---
+
 ## Dependencies
 
 **External**:
@@ -449,7 +491,7 @@ Gate: CLEAR
 
 **Internal**:
 - `.project/concepts/run-study-skill-design.md` is the accepted technical frame.
-- `.project/active/demo-study-parameterization-policy/policy.md` remains the rulebook until Item 6 dispositions it.
+- `modeling_project/STUDY_POLICY.md` is the rulebook (ratified and moved by Item 6, 2026-08-21).
 - `exploration/stellarator_e2e/study/` supplies the immutable proof-of-life evidence used for promotion and the legacy cold-pickup exercise.
 - The Stellarator MBSE Demo epic is on hold by owner decision (2026-08-19); it may consume this epic's A/B evidence later but does not own the proof.
 
@@ -459,6 +501,7 @@ Item 1 — Reachability spike
   ├─> Item 2 — Skill/runbook/record ──> Item 5 — Legacy cold pickup ──┐
   └─> Item 3 — Indicators/manifest ──> Item 4 — Tools/adapter ──────┤
                                                                       └─> Item 6 — A/B proof + new-record cold pickup
+                                                                            └─> Item 7 — End-to-end explainer ──> Item 6 Phase 4 (close)
 ```
 
 ---
@@ -488,6 +531,7 @@ Item 1 — Reachability spike
 | 4. Quality Tools and Era Adapter Promotion | 1.5–2 days | Item 3 |
 | 5. Cold-Pickup Administrator Exercise | 0.5–1 day | Item 2 |
 | 6. First A/B Consumer and Policy Cutover | 1.5–2 days | Items 2–5 |
+| 7. End-to-End Explainer for the A/B Demo | 1.5–2 days | Item 6 Phases 1–3; gates Item 6 Phase 4 |
 
 ---
 
@@ -506,5 +550,5 @@ Item 1 — Reachability spike
 
 ---
 
-**Last Updated**: 2026-08-20
-**Next Action**: Items 1-5 COMPLETE. Next: Item 6 — owner Align first (policy disposition; and whether verification/oracle is mandatory, package-conditional, or outside the general study contract), then the first A/B consumer and new-record cold pickup. Criteria 1-4 and 7-8 land with Item 6.
+**Last Updated**: 2026-08-23
+**Next Action**: Items 1-5 COMPLETE; Item 6 Phases 1–3 certified. Next: Item 7 (spec approved 2026-08-23) — `/_my_design`, story outline for owner review, build, reader test. Then Item 6 Phase 4 (close): oracle-retirement BACKLOG row, criteria checked with evidence, merge to `main`.

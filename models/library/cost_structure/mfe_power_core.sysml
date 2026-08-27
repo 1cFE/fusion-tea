@@ -76,6 +76,8 @@ package mfe_power_core {
           G            -- geometry factor (tokamak 4*pi^2, stellarator 8*pi^2)
           coil_markup  -- conductor -> installed magnet manufacturing markup
           cost_per_kAm -- conductor cost [$/kA-m], by coil material
+          peak_ratio   -- peak-on-winding / axis-averaged field ratio (WI-030)
+          B_max        -- conductor peak-field ceiling [T] (WI-030)
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
         **Ref**: cas22.py:427 (total_kAm), cas22.py:440-444 (SC coil cost)
@@ -88,6 +90,10 @@ package mfe_power_core {
         attribute G : Real;
         attribute coil_markup : Real;
         attribute cost_per_kAm : Real;
+        // peak-on-winding / axis-averaged field ratio [1] (coil-set geometry fact, WI-030)
+        attribute peak_ratio : Real;
+        // conductor peak-field ceiling [T] (conductor technology fact, WI-030)
+        attribute B_max : Real;
     }
 
     part def 'Heating and CD' :> 'CAS22.1.4 Heating and Current Drive' {

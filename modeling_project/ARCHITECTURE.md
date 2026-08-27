@@ -4,6 +4,8 @@ Structural decisions about how the domain is decomposed into model packages. The
 
 *Previous decisions (AD-001 through AD-005) archived to `archive/modeling_project/ARCHITECTURE.md`.*
 
+**Scope.** This file owns *model*-architecture decisions, numbered `AD-XXX`. Repository, orchestration, and tooling decisions are numbered `ADR-NNN` and live in `.project/adr/` (see its `README.md`). An `ADR-NNN` citation resolves there; an `AD-XXX` citation resolves here.
+
 ---
 
 ## AD-001: Plain `Real` for All Numeric Values

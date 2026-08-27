@@ -75,6 +75,8 @@ CH = dict(
     cas70=f"{P}cas70_calc__cas70", cas80=f"{P}cas80_calc__levelized",
     annual_fuel=f"{P}fuel_calc__annual_fuel",
     annual_om_levelized=f"{P}cas70_calc__annual_total",
+    # WI-030 physics channels
+    beta=f"{P}beta_calc__beta", B_peak=f"{P}peak_field_calc__B_peak",
     cas90_1cfe=f"{P}cas90_1cfe_calc__cas90", lcoe_1cfe=f"{P}lcoe_1cfe_calc__lcoe",
 )
 

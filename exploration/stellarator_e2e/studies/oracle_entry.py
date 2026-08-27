@@ -53,6 +53,29 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}magnet__R0": "magnet_R0",
     f"{P}a": "a",
     f"{P}availability": "availability",
+    # WI-030: the magnet A/B levers and the beta referents (Item 6 study 1).
+    f"{P}magnet__B": "magnet_B",
+    f"{P}magnet__B_max": "magnet_B_max",
+    f"{P}magnet__peak_ratio": "magnet_peak_ratio",
+    f"{P}n_e0": "n_e0",
+    f"{P}T_e0": "T_e0",
+    f"{P}n_He0": "n_He0",
+    f"{P}alpha_n_e": "alpha_n_e",
+    f"{P}n_D0": "n_D0",
+    f"{P}n_T0": "n_T0",
+    f"{P}T_i0": "T_i0",
+    # Item 6 study 2 (20260821-power-cycle-ab): the power-conversion block that
+    # defines the arms, and the discount-rate lever. Oracle input names per
+    # `verify_stellaris.IN` (eta_th, turbine_per_mw, heat_rej_per_mw, discount_rate).
+    f"{P}eta_th": "eta_th",
+    f"{P}turbine__cost_per_mw": "turbine_per_mw",
+    f"{P}heat_rejection__cost_per_mw": "heat_rej_per_mw",
+    f"{P}discount_rate": "discount_rate",
+    # Item 6 study 1 (20260823-magnet-technology-ab): the conductor block that
+    # defines the arms. Oracle input names per `verify_stellaris.IN`.
+    f"{P}magnet__cost_per_kAm": "magnet_cost_per_kAm",
+    f"{P}T_cold_cryo": "T_cold_cryo",
+    f"{P}vol_cold_cryo": "vol_cold_cryo",
 }
 
 #: Oracle output name -> qualified channel name. Only channels the package records
@@ -68,6 +91,8 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "rec_frac": f"{P}pb__rec_frac",
     "p_net": f"{P}pb__p_net",
     "wall_load": f"{P}wall_load_calc__wall_load",
+    "beta": f"{P}beta_calc__beta",  # WI-030 computed volume-averaged beta
+    "B_peak": f"{P}peak_field_calc__B_peak",  # WI-030 peak field on the conductor
     "magnet": f"{P}magnet_cost__capital_cost",
     "heating": f"{P}heating_cost__cost",
     "divertor": f"{P}divertor_cost__cost",
@@ -119,8 +144,8 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
 
 #: constraint_id -> source_name -> {"kind", "key"} (design D12).
 #:
-#: Hand-authored because it cannot be inferred: of the nine `feature_ref` operands
-#: across the five constraints, `net_positive.net_electric` resolves to no parameter
+#: Hand-authored because it cannot be inferred: of the eleven `feature_ref` operands
+#: across the six constraints, `net_positive.net_electric` resolves to no parameter
 #: and no key by name at all (it is the `pb__p_net` channel), and the three that
 #: could be name-matched use three different composition rules. A tool that guessed
 #: would compare the wrong number and read as a pass.
@@ -130,8 +155,15 @@ OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
     # (beta, beta_limit, tbr, tbr_floor, wall_load_limit), bare where it did not
     # (net_electric, rec_frac, threshold, wall_load).
     f"{P}beta_ok__82b78aad420730d5": {
-        "beta_in": {"kind": "input", "key": f"{P}beta"},
+        # WI-030: beta is computed ('Volume-Averaged Beta'), no longer a bound input.
+        "beta_in": {"kind": "channel", "key": f"{P}beta_calc__beta"},
         "beta_limit_in": {"kind": "input", "key": f"{P}beta_limit"},
+    },
+    f"{P}peak_field_ok__49c6b8228a73cac5": {
+        # WI-030: B_peak is the 'Conductor Peak Field' output; the ceiling is a
+        # magnet-part attribute (entry point magnet__B_max).
+        "B_peak": {"kind": "channel", "key": f"{P}peak_field_calc__B_peak"},
+        "B_max_in": {"kind": "input", "key": f"{P}magnet__B_max"},
     },
     f"{P}net_positive__484521d56c02667a": {
         # No parameter and no key contains "net_electric": it is the power-balance

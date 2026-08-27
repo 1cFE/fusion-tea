@@ -45,7 +45,7 @@ PACKAGE_DIR = E2E / "generated"
 MANIFEST_PATH = HERE / "manifest.json"
 P = "stellarator_09__stellaris__"
 BASELINE_RESULT_SCHEMA_VERSION = "study-baseline-result/v1"
-EXPECTED_CONSTRAINT_COUNT = 5
+EXPECTED_CONSTRAINT_COUNT = 6  # WI-030 added peak_field_ok
 
 # --- Axis declarations: SysML attribute -> complete entry-key expansion ------
 AXES: dict[str, list[str]] = {

@@ -6,7 +6,7 @@ right, which route fits, and what a result means are the study's to argue and th
 record's to carry — this file only says that they must be argued and where the argument
 lands.
 
-**The rulebook** is `.project/active/demo-study-parameterization-policy/policy.md`. This
+**The rulebook** is `modeling_project/STUDY_POLICY.md`. This
 runbook does not restate it. Where a step must satisfy a rule, the step names the rule
 and the policy says what it is.
 
@@ -218,7 +218,10 @@ Collect every finding the study produced — the model-development findings from
 and whatever the run and the reviews turned up — into the record's findings register,
 each with an id, a kind, a disposition, and a home. `Home` is never blank; `unrouted`
 is a stated state. Then append one log row per finding, joined to the record by the
-same `<study-id>#<n>` id. The executor is the sole writer of the log. This happens
+same `<study-id>#<n>` id. The executor is the sole writer of first-sighting rows. A
+goal round may later append a joined disposition row under the same `<study-id>#<n>`
+id; it never edits a first-sighting row and never mints a new id
+(`work/orchestration/GOAL_RUNBOOK.md`). This happens
 before the record is committed, so § 15 is filled when step 15 freezes it.
 
 **Calls:** none
@@ -268,7 +271,9 @@ elsewhere.
    mandatory and is empty only when nothing was missing.
 
 The sequence ends there. An administrator does not append to `DISCOVERY_LOG.md` — a
-finding from a synthesis is filed by whoever acts on the synthesis.
+finding from a synthesis is filed by whoever acts on the synthesis. The goal round's
+joined disposition append is not an administrator act — the administrator stays
+read-only.
 
 #### `synthesis.md`
 
@@ -288,15 +293,19 @@ file it as a process finding against the contract, not as a weakness of the read
 ## `DISCOVERY_LOG.md`
 
 One file per package at `exploration/<pkg>/studies/DISCOVERY_LOG.md`. An append-only
-index, newest row last — one row per finding, never a second copy of the finding's
-account.
+index, newest row last — one row per finding *sighting*, plus any joined disposition
+rows a goal round later appends under the same id — never a second copy of the
+finding's account.
 
 | Date | Kind | Record | Finding | Disposition | Home |
 |---|---|---|---|---|---|
 | YYYY-MM-DD | `model` \| `process` | `<study-id>#<n>` | one line | one line | path, or `unrouted` |
 
 `<study-id>#<n>` is the id the record's § 15 uses, so log and record join without
-ambiguity.
+ambiguity. A row is either a first sighting, written by the executor at step 14, or a
+joined disposition update, written by a goal round. `Disposition` and `Home` carry
+that row's own state; for an id with more than one row, the newest row is its current
+state — scan for the id rather than stopping at the first row that matches.
 
 ---
 

@@ -109,7 +109,7 @@ Entry point and role selector. Two modes: **execute** (run a study from intake t
 ### The runbook — `.claude/skills/run-study/runbook.md`
 The ordered obligations, distilled from `.project/completed/20260821_demo-proof-of-life/plan.md`: intake → axis-group declaration → indicators and framing → preflight gates → run on the stock teax lifecycle → verification → review passes → report → record commit; and the administrator sequence. Each step names what it produces in the record and which tool (if any) it calls. The runbook is universal; each package's annex lives beside its manifest and is linked, never inlined. Responsible for: process. Not responsible for: rules (policy) or facts (tools).
 
-### The policy — `.project/active/demo-study-parameterization-policy/policy.md`
+### The policy — `modeling_project/STUDY_POLICY.md` *(moved 2026-08-21 at ratification; was `.project/active/demo-study-parameterization-policy/policy.md`)*
 The rulebook. Ratification stays with the Item-5 Align (demo epic). Post-ratification home, named now (`[AGENT]`, override at Align): `modeling_project/STUDY_POLICY.md`, beside the repo's other durable project docs; the capability epic owns the move and the citation updates, and the runbook cites the stable path from then on. Until then it stays at its current path (moving early would break the epic's, plan's, and concept's references and pre-empt ratification). Gains one section (axis forces and framing) and one amendment (H1's 5–95% feasible-fraction bar applies to search-framed studies; a sensitivity-framed sweep at 100% feasible is expected behavior).
 
 ### Tools — `scripts/study/` — and the two execution routes
@@ -145,7 +145,7 @@ intake ──► declare axis ──► indicators.py ──► framing ──�
 ## Prior Art
 
 - `.project/concepts/study-driven-model-development.md` — this design **builds on** its owner-settled items: the discovery log is a deliverable (kept, as the per-package log); discovery lives inside orchestration (kept: indicators at intake, verification and findings are runbook obligations, not a later QA pass); study understanding focuses on LCOE and constraint violations (the indicator builder reports constraint and objective response, nothing else). It **answers** that concept's Open Question 12 (instruct-plus-enforce hybrid) and states the boundary it asked for: "no hand-rolled sweep loops" governs the inner sweep, which the stock study layer owns; the outer loop is the agent under the runbook. It **replaces** that concept's Key Concept 2 (a maintained classification of every input key; ungraded there, representation left open in its Question 3) with per-axis derivation plus a declared residue — a re-derivation against its recorded reasoning, surfaced here rather than resolved silently. `exploration/ife_e2e/sweep_ife.py` is a pre-study-layer hand-rolled sweep on the IFE package (constraints did not survive codegen there); it is not a study in this design's sense and is not migrated.
-- `.project/active/demo-study-parameterization-policy/policy.md` — the rulebook; extended, not superseded.
+- `modeling_project/STUDY_POLICY.md` — the rulebook; extended, not superseded (moved 2026-08-21).
 - `.project/adr/` — absent; no decision entries exist (0).
 
 ---

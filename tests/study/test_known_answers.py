@@ -15,10 +15,10 @@ import pytest
 from scripts.study import manifest
 from tests.study.conftest import DATA_DIR, run_tool
 
-CASES = ["availability", "interest_rate", "R", "R+tie", "a", "beta"]
+CASES = ["availability", "interest_rate", "R", "R+tie", "a", "B"]
 
 EXPECTED_SEMANTIC_FINGERPRINT = (
-    "1be51d890e5e2f973da919a9ff3cb5ef04a75652e5f906f13cea2a519f97b3aa"
+    "1ca93d0c988c2828bb1ce3fef18be85be86947a296a33b236d77daeb0f1ab860"
 )
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,
@@ -34,25 +34,31 @@ FIXTURE_CONTRACT = {
     "R": (
         False,
         ["net_positive", "recirc_ok", "wall_load_ok"],
-        ["cas27", "cas72", "fuel", "lcoe", "lcoe_1cfe", "total_capital"],
+        ["cas27", "cas72", "fuel", "lcoe", "lcoe_1cfe", "magnet_capital", "total_capital"],
         55,
         68,
     ),
     "R+tie": (
         False,
         ["net_positive", "recirc_ok", "wall_load_ok"],
-        ["cas27", "cas72", "fuel", "lcoe", "lcoe_1cfe", "total_capital"],
+        ["cas27", "cas72", "fuel", "lcoe", "lcoe_1cfe", "magnet_capital", "total_capital"],
         55,
         68,
     ),
     "a": (
         False,
         ["net_positive", "recirc_ok", "wall_load_ok"],
-        ["cas27", "cas72", "fuel", "lcoe", "lcoe_1cfe", "total_capital"],
+        ["cas27", "cas72", "fuel", "lcoe", "lcoe_1cfe", "magnet_capital", "total_capital"],
         55,
         68,
     ),
-    "beta": (False, ["beta_ok"], [], 2, 2),
+    # WI-030: the bound-input beta axis retired; the field reaches both field-dependent
+    # verdicts through calcs ("Volume-Averaged Beta", "Conductor Peak Field") and the
+    # magnet cost, and the computed beta is itself a catalogued objective.
+    # Item 6 (design D9, 2026-08-21): `magnet_capital` declared as a catalogued objective,
+    # so every axis that reaches the magnet-cost module reaches one more objective.
+    "B": (False, ["beta_ok", "peak_field_ok"],
+          ["beta", "lcoe", "lcoe_1cfe", "magnet_capital", "total_capital"], 21, 21),
 }
 
 
@@ -109,17 +115,23 @@ def test_availability_reaches_no_constraint(report):
     group = group_by_axis(report, "availability")
     assert group["no_constraint_response"] is True
     assert group["constraints_reachable"] == []
-    assert len(group["constraints_unreachable"]) == 5
+    assert len(group["constraints_unreachable"]) == 6
 
 
-def test_beta_is_a_bound_versus_bound_comparison(report):
-    group = group_by_axis(report, "beta")
-    (beta_ok,) = group["constraints_reachable"]
-    assert beta_ok["source_local_identity"] == "beta_ok"
-    assert beta_ok["operator"] == "<="
-    assert beta_ok["bound_vs_bound"] is True
-    assert [o["class"] for o in beta_ok["operands"]] == ["bound", "bound"]
-    assert group["objectives_reachable"] == []
+def test_B_reaches_both_field_constraints_through_calcs(report):
+    """WI-030: beta_ok and peak_field_ok are computed-vs-bound comparisons whose computed
+    operand the on-axis field reaches through a library calc; neither is bound-vs-bound,
+    which is what made the retired beta axis a non-verdict."""
+    group = group_by_axis(report, "B")
+    reached = {c["source_local_identity"]: c for c in group["constraints_reachable"]}
+    assert set(reached) == {"beta_ok", "peak_field_ok"}
+    for constraint in reached.values():
+        assert constraint["operator"] == "<="
+        assert constraint["bound_vs_bound"] is False
+        assert [o["class"] for o in constraint["operands"]] == ["computed", "bound"]
+        computed, bound = constraint["operands"]
+        assert computed["reached"] is True and bound["reached"] is False
+    assert "beta" in group["objectives_reachable"]
 
 
 def test_r_reaches_net_positive_through_a_computed_operand(report):

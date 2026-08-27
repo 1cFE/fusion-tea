@@ -1,0 +1,567 @@
+{
+  "snapshot_schema_version": "1",
+  "study_id": "20260823-magnet-technology-ab",
+  "package": {
+    "path": "exploration/stellarator_e2e/pkg/stellarator_tea",
+    "package_name": "stellarator_tea",
+    "repo_commit": "317b5bcd18df454a884a896c7dbe2531866b7622",
+    "git_clean": true,
+    "note": "manifest package.path is the committed alias of exploration/stellarator_e2e/generated; identity gate and run both resolved it to the same sealed tree (results/package_identity.json). git_clean: preflight package_clean before the run and results/postrun_clean.json after, both pass; repo_commit is HEAD at execution (the record itself is committed after this value is resolved)."
+  },
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "00badf7f32d9b1b7365e04141293829717393060ca0a561da9e7f696e19c2141",
+      "files": [
+        {
+          "path": "contracts/model_contract.json",
+          "sha256": "f3dcfe518dbd00126bc49238e52f1312dc261c82c55941b377fceb71a337461e"
+        },
+        {
+          "path": "inputs/mfe_account_costs_params.json",
+          "sha256": "5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3"
+        },
+        {
+          "path": "inputs/mfe_magnet_cost_params.json",
+          "sha256": "0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113"
+        },
+        {
+          "path": "inputs/mfe_plant_params.json",
+          "sha256": "ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814"
+        },
+        {
+          "path": "inputs/mfe_plasma_scaling_params.json",
+          "sha256": "b108a2244facc72035571c31c65a05b0440154dfddfc50c32a8ea799f2d938c8"
+        },
+        {
+          "path": "inputs/stellarator_plant_params.json",
+          "sha256": "96acb34db2b7e68c893e3e57c463a362ecc97b4beef667ba875ee4ea2e1dad07"
+        },
+        {
+          "path": "pipelines/pipeline.yaml",
+          "sha256": "bd460b65d25d99600cae674bdb26612c352d6397c28d2e79e2710be652cf0d5f"
+        }
+      ]
+    },
+    "recorded_provenance.executable_fingerprint": "7447efea9f205dc64543a976e6a3c21a9fd468726f2de78aaf8d845e6f2d9a97",
+    "recorded_provenance.semantic_fingerprint": "1ca93d0c988c2828bb1ce3fef18be85be86947a296a33b236d77daeb0f1ab860"
+  },
+  "manifest": {
+    "path": "exploration/stellarator_e2e/studies/manifest.json",
+    "schema_version": "study-package-manifest/v1",
+    "digest": "84e7d068fbcc66777b20c94399b8d808349d03a4a22e8bad7a57671d23ab6790",
+    "content_used": {
+      "fingerprint_names": [
+        "indicator_inputs",
+        "recorded_provenance.executable_fingerprint",
+        "recorded_provenance.semantic_fingerprint"
+      ],
+      "ties": [
+        {
+          "key": "stellarator_09__stellaris__magnet__R0",
+          "rides_with": [
+            "stellarator_09__stellaris__R"
+          ],
+          "note": "Magnet coil major radius is the same physical quantity as the plasma major radius. Its suffix is R0, not R, so no suffix scan will ever surface it -- the tie must be declared. Advisory here: a group holding R but not this key earns a tie_candidate warning, never an added key. Since the model migration the plasma major radius is one plant-level entry point (R), not the geom__R / rb__R fan-out."
+        }
+      ],
+      "objective_catalog": [
+        {
+          "name": "lcoe",
+          "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+          "note": "Headline levelized cost of electricity. Exit-point filename is stellaris__lcoe.json; the catalog keys on the channel, never the filename."
+        },
+        {
+          "name": "lcoe_1cfe",
+          "channel": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+          "note": "LCOE variant using the 1costingfe CAS90 rollup."
+        },
+        {
+          "name": "cas72",
+          "channel": "stellarator_09__stellaris__cas72_calc__cost",
+          "note": "Levelized annual replacement cost."
+        },
+        {
+          "name": "fuel",
+          "channel": "stellarator_09__stellaris__fuel_calc__annual_fuel",
+          "note": "Annual fuel cost."
+        },
+        {
+          "name": "total_capital",
+          "channel": "stellarator_09__stellaris__total_capital__total_capital",
+          "note": "Total capital cost including interest during construction."
+        },
+        {
+          "name": "cas27",
+          "channel": "stellarator_09__stellaris__special_materials_capital__special_materials_capital",
+          "note": "CAS27 special-materials capital, computed in-package from the radial-build blanket volume since the model migration (2026-08-21). Declared as an objective so generic verification compares it against the oracle's own recompute: on the era route this value was glue-fed to both sides and never independently verified."
+        },
+        {
+          "name": "beta",
+          "channel": "stellarator_09__stellaris__beta_calc__beta",
+          "note": "Volume-averaged thermal beta computed by 'Volume-Averaged Beta' from the profile referents and magnet__B (WI-030); replaces the retired bound input beta. Compared against the oracle's closed form so a magnet study verifies the physics lever it moves."
+        },
+        {
+          "name": "magnet_capital",
+          "channel": "stellarator_09__stellaris__magnet_cost__capital_cost",
+          "note": "CAS22.1.3 magnet capital. Declared as an objective (Item 6 design D9, 2026-08-21) so generic verification compares it against the oracle: a magnet-technology study moves this channel first, and it was a known coverage gap (ANNEX \u00a7 Oracle)."
+        }
+      ],
+      "baseline": {
+        "point": {
+          "stellarator_09__stellaris__R": 12.7,
+          "stellarator_09__stellaris__magnet__R0": 12.7,
+          "stellarator_09__stellaris__a": 1.3,
+          "stellarator_09__stellaris__availability": 0.85
+        },
+        "headline": {
+          "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+          "value": 275.2642200420774
+        },
+        "verdicts": [
+          {
+            "source_local_identity": "beta_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "net_positive",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "peak_field_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "recirc_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "tbr_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "wall_load_ok",
+            "expected": "satisfied"
+          }
+        ]
+      },
+      "oracle": {
+        "kind": "python_callable",
+        "module": "oracle_entry",
+        "callable": "evaluate",
+        "sys_path": "exploration/stellarator_e2e/studies",
+        "note": "Package-owned oracle seam. evaluate(point) takes a mapping of qualified entry keys to floats and returns a mapping of qualified channel names to floats; it wraps the independent pure-Python oracle verify_stellaris.py, which is imported and never modified. The module also publishes a fixed-name companion, operand_bindings() -> {constraint_id: {source_name: {kind, key}}}, which says which qualified input key or channel each predicate operand means. A generic verifier requires both and fails closed on anything unresolved: on this package one operand of five constraints resolves to nothing by name at all, so a tool that inferred bindings would compare the wrong number and read as a pass.",
+        "source_digest": {
+          "recipe": "tool-source-digest/v1",
+          "digest": "29b45edf13abf467469391ba6b6fdf6d9eae16bb6bfeaf4ce720f614cd940c4e",
+          "files": [
+            {
+              "path": "exploration/stellarator_e2e/studies/oracle_entry.py",
+              "sha256": "10ea73ab3bca2478af6cf6d1e7bc57226b4fe13b283c8124600b6735c459396b"
+            },
+            {
+              "path": "exploration/stellarator_e2e/verify_stellaris.py",
+              "sha256": "6c71941af300edd60767378807b0643d53e9b82fd86618f7b6f55572fd8ba6e5"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "stores": [
+    {
+      "store_id": "20260823-magnet-technology-ab",
+      "path": "exploration/stellarator_e2e/studies/_work/20260823-magnet-technology-ab/20260823-magnet-technology-ab.db",
+      "compatibility_tuple": {
+        "study_id": "20260823-magnet-technology-ab",
+        "executable_fingerprint": "7447efea9f205dc64543a976e6a3c21a9fd468726f2de78aaf8d845e6f2d9a97",
+        "model_contract_fingerprint": "1ca93d0c988c2828bb1ce3fef18be85be86947a296a33b236d77daeb0f1ab860",
+        "study_definition_fingerprint": "338fb6abbf579ea23cf2405b152a8b140b46ecddfbe827c4726ba3134d78f619",
+        "input_schema_version": "input-v1",
+        "evidence_schema_version": "v2",
+        "strategy_identity": "prepared-list/v1",
+        "strategy_config": "dd76b90478676985b1e5691bb65ffe013338274b391e81e76ccaa516750ede79"
+      },
+      "note": "beside the record directory, not inside it (study 20260821-power-cycle-ab finding #11); gitignored (studies/.gitignore `**/_work/`); its compatibility tuple and the verification summary's digest of it are the committed identity"
+    }
+  ],
+  "arms": [
+    {
+      "arm_id": "arm-rebco",
+      "store_id": "20260823-magnet-technology-ab",
+      "effective_executable_fingerprint": {
+        "value": "7447efea9f205dc64543a976e6a3c21a9fd468726f2de78aaf8d845e6f2d9a97",
+        "inputs": null,
+        "no_adapter": true,
+        "note": "no adapter exists; the sealed fingerprint is the identity"
+      },
+      "entry_models": {
+        "mfe_account_costs_params": "stellarator_tea.schemas.mfe_account_costs_params.MfeAccountCostsParams",
+        "mfe_magnet_cost_params": "stellarator_tea.schemas.mfe_magnet_cost_params.MfeMagnetCostParams",
+        "mfe_plant_params": "stellarator_tea.schemas.mfe_plant_params.MfePlantParams",
+        "mfe_plasma_scaling_params": "stellarator_tea.schemas.mfe_plasma_scaling_params.MfePlasmaScalingParams",
+        "stellarator_plant_params": "stellarator_tea.schemas.stellarator_plant_params.StellaratorPlantParams"
+      },
+      "strategy": "prepared-list/v1 config dd76b90478676985b1e5691bb65ffe013338274b391e81e76ccaa516750ede79 (one PreparedListStrategy shared by both arms, arm-major order)",
+      "window": {
+        "bounds": {
+          "B": {
+            "values": "3.0 to 10.0 T: step 0.125 over the whole range, step 0.05 across 4.0-5.0 T, plus the exact node 4.69 T (74 values)",
+            "keys": [
+              "stellarator_09__stellaris__magnet__B"
+            ]
+          },
+          "density": {
+            "values": "0.36 to 1.26 x Point A: step 0.02 over the whole range, every 0.01 across 0.40-0.60 (56 values); floor 0.36 is the package's evaluability limit (record.md section 11)",
+            "keys": [
+              "stellarator_09__stellaris__n_D0",
+              "stellarator_09__stellaris__n_T0 (tie, same scale)",
+              "stellarator_09__stellaris__n_e0 (tie, same scale)",
+              "stellarator_09__stellaris__n_He0 (tie, same scale)"
+            ],
+            "point_a_peaks_m3": {
+              "n_D0": 1.96e+20,
+              "n_T0": 1.96e+20,
+              "n_e0": 5.06e+20,
+              "n_He0": 5.6e+19
+            }
+          },
+          "points_per_arm": 4144,
+          "R": {
+            "held": 12.7,
+            "declined": true,
+            "keys": [
+              "stellarator_09__stellaris__R",
+              "stellarator_09__stellaris__magnet__R0 (tie, same value)"
+            ]
+          },
+          "a": {
+            "held": 1.3,
+            "declined": true
+          },
+          "temperature": {
+            "held": "T_i0 14.63 keV, T_e0 15.40 keV (package values, not in the proposal)",
+            "declined": true
+          },
+          "availability": {
+            "held": 0.85,
+            "not_proposed": true
+          },
+          "discount_rate": {
+            "held": 0.07,
+            "not_proposed": true
+          },
+          "conductor_block": {
+            "stellarator_09__stellaris__magnet__cost_per_kAm": 50.0,
+            "stellarator_09__stellaris__T_cold_cryo": 20.0,
+            "stellarator_09__stellaris__magnet__B_max": 24.9,
+            "stellarator_09__stellaris__vol_cold_cryo": 136.56
+          }
+        },
+        "provenance": "engineered"
+      },
+      "verification": {
+        "command": "scripts/study/verify.py --package exploration/stellarator_e2e/generated --manifest exploration/stellarator_e2e/studies/manifest.json --identity exploration/stellarator_e2e/studies/20260823-magnet-technology-ab/results/package_identity.json --store exploration/stellarator_e2e/studies/_work/20260823-magnet-technology-ab/20260823-magnet-technology-ab.db --sample-size 48 --out exploration/stellarator_e2e/studies/20260823-magnet-technology-ab/results/verification_summary.json",
+        "tool_revision": "f02358bbe56b968495fae741dd949db7abd3db543a81fe9f7dffb929f77f0f06",
+        "sampling_scheme": "stratified-by-verdict-combination/v1: one case per observed verdict combination across the whole store (arm-blind), then seeded random fill; seed e3d6721851cb47c9 (derived); strata 11, sampled rows 48 of 8288",
+        "tolerance": "relative deviation < 1e-09 on every compared channel: stellarator_09__stellaris__beta_calc__beta, stellarator_09__stellaris__cas72_calc__cost, stellarator_09__stellaris__fuel_calc__annual_fuel, stellarator_09__stellaris__lcoe_1cfe_calc__lcoe, stellarator_09__stellaris__lcoe_calc__lcoe, stellarator_09__stellaris__magnet_cost__capital_cost, stellarator_09__stellaris__peak_field_calc__B_peak, stellarator_09__stellaris__special_materials_capital__special_materials_capital, stellarator_09__stellaris__total_capital__total_capital, stellarator_09__stellaris__wall_load_calc__wall_load",
+        "summary_sha256": "7a2e909892ee9991c495bd9cba86b138e04396c89c3496ee0ffc6da1f3069fc2"
+      },
+      "glue_ledger": [],
+      "glue_ledger_none": true,
+      "artifacts": [
+        {
+          "path": "results/points.csv",
+          "sha256": "291c33e04e48c47af01da8c08b9f11bfba07733dc53c34cab808034517f3c2ca"
+        },
+        {
+          "path": "results/oracle_operands.csv",
+          "sha256": "2ff344be8306d5c0de52b6f1766c9fe0543c04247ff3fe3514c3d1e87bae8ee3"
+        },
+        {
+          "path": "results/verification_summary.json",
+          "sha256": "7a2e909892ee9991c495bd9cba86b138e04396c89c3496ee0ffc6da1f3069fc2"
+        },
+        {
+          "path": "results/baseline_result.json",
+          "sha256": "0bef83f43f34c7274d801e8f0ff95b1bc358580dd016c7ee11b9f8fbf43628ea"
+        },
+        {
+          "path": "results/package_identity.json",
+          "sha256": "370b523b936a57e2d081b0a2887c4c414ee583bea0c3c8841c282d0aa0294cc5"
+        },
+        {
+          "path": "results/preflight_results.json",
+          "sha256": "d6f82adac00e6e16b3dab936989019d08ce60d8e2a8131b0f79db9720e582bbb"
+        },
+        {
+          "path": "results/postrun_clean.json",
+          "sha256": "6de0a2fadb7632c1d73eaf1121722a103d818245a92b2216094242c243fc83a6"
+        },
+        {
+          "path": "results/oracle_scan.json",
+          "sha256": "43d884806571b0ea6429396ba2d95cbea031b20cbb998d74c110abe6c32907ee"
+        },
+        {
+          "path": "study.py",
+          "sha256": "c42e7e4fefe0ff0a6e61734db1b38e907a6422c8d0391877b68e5285cadf5b4f"
+        },
+        {
+          "path": "axes.json",
+          "sha256": "0db9ac023c0fa88a75c3fab645de1ce9374ad29611b57d4ea7361761ff5e8303"
+        }
+      ]
+    },
+    {
+      "arm_id": "arm-nb3sn",
+      "store_id": "20260823-magnet-technology-ab",
+      "effective_executable_fingerprint": {
+        "value": "7447efea9f205dc64543a976e6a3c21a9fd468726f2de78aaf8d845e6f2d9a97",
+        "inputs": null,
+        "no_adapter": true,
+        "note": "no adapter exists; the sealed fingerprint is the identity"
+      },
+      "entry_models": {
+        "mfe_account_costs_params": "stellarator_tea.schemas.mfe_account_costs_params.MfeAccountCostsParams",
+        "mfe_magnet_cost_params": "stellarator_tea.schemas.mfe_magnet_cost_params.MfeMagnetCostParams",
+        "mfe_plant_params": "stellarator_tea.schemas.mfe_plant_params.MfePlantParams",
+        "mfe_plasma_scaling_params": "stellarator_tea.schemas.mfe_plasma_scaling_params.MfePlasmaScalingParams",
+        "stellarator_plant_params": "stellarator_tea.schemas.stellarator_plant_params.StellaratorPlantParams"
+      },
+      "strategy": "prepared-list/v1 config dd76b90478676985b1e5691bb65ffe013338274b391e81e76ccaa516750ede79 (one PreparedListStrategy shared by both arms, arm-major order)",
+      "window": {
+        "bounds": {
+          "B": {
+            "values": "3.0 to 10.0 T: step 0.125 over the whole range, step 0.05 across 4.0-5.0 T, plus the exact node 4.69 T (74 values)",
+            "keys": [
+              "stellarator_09__stellaris__magnet__B"
+            ]
+          },
+          "density": {
+            "values": "0.36 to 1.26 x Point A: step 0.02 over the whole range, every 0.01 across 0.40-0.60 (56 values); floor 0.36 is the package's evaluability limit (record.md section 11)",
+            "keys": [
+              "stellarator_09__stellaris__n_D0",
+              "stellarator_09__stellaris__n_T0 (tie, same scale)",
+              "stellarator_09__stellaris__n_e0 (tie, same scale)",
+              "stellarator_09__stellaris__n_He0 (tie, same scale)"
+            ],
+            "point_a_peaks_m3": {
+              "n_D0": 1.96e+20,
+              "n_T0": 1.96e+20,
+              "n_e0": 5.06e+20,
+              "n_He0": 5.6e+19
+            }
+          },
+          "points_per_arm": 4144,
+          "R": {
+            "held": 12.7,
+            "declined": true,
+            "keys": [
+              "stellarator_09__stellaris__R",
+              "stellarator_09__stellaris__magnet__R0 (tie, same value)"
+            ]
+          },
+          "a": {
+            "held": 1.3,
+            "declined": true
+          },
+          "temperature": {
+            "held": "T_i0 14.63 keV, T_e0 15.40 keV (package values, not in the proposal)",
+            "declined": true
+          },
+          "availability": {
+            "held": 0.85,
+            "not_proposed": true
+          },
+          "discount_rate": {
+            "held": 0.07,
+            "not_proposed": true
+          },
+          "conductor_block": {
+            "stellarator_09__stellaris__magnet__cost_per_kAm": 7.0,
+            "stellarator_09__stellaris__T_cold_cryo": 4.5,
+            "stellarator_09__stellaris__magnet__B_max": 13.0,
+            "stellarator_09__stellaris__vol_cold_cryo": 390.0
+          }
+        },
+        "provenance": "engineered"
+      },
+      "verification": {
+        "command": "scripts/study/verify.py --package exploration/stellarator_e2e/generated --manifest exploration/stellarator_e2e/studies/manifest.json --identity exploration/stellarator_e2e/studies/20260823-magnet-technology-ab/results/package_identity.json --store exploration/stellarator_e2e/studies/_work/20260823-magnet-technology-ab/20260823-magnet-technology-ab.db --sample-size 48 --out exploration/stellarator_e2e/studies/20260823-magnet-technology-ab/results/verification_summary.json",
+        "tool_revision": "f02358bbe56b968495fae741dd949db7abd3db543a81fe9f7dffb929f77f0f06",
+        "sampling_scheme": "stratified-by-verdict-combination/v1: one case per observed verdict combination across the whole store (arm-blind), then seeded random fill; seed e3d6721851cb47c9 (derived); strata 11, sampled rows 48 of 8288",
+        "tolerance": "relative deviation < 1e-09 on every compared channel: stellarator_09__stellaris__beta_calc__beta, stellarator_09__stellaris__cas72_calc__cost, stellarator_09__stellaris__fuel_calc__annual_fuel, stellarator_09__stellaris__lcoe_1cfe_calc__lcoe, stellarator_09__stellaris__lcoe_calc__lcoe, stellarator_09__stellaris__magnet_cost__capital_cost, stellarator_09__stellaris__peak_field_calc__B_peak, stellarator_09__stellaris__special_materials_capital__special_materials_capital, stellarator_09__stellaris__total_capital__total_capital, stellarator_09__stellaris__wall_load_calc__wall_load",
+        "summary_sha256": "7a2e909892ee9991c495bd9cba86b138e04396c89c3496ee0ffc6da1f3069fc2"
+      },
+      "glue_ledger": [],
+      "glue_ledger_none": true,
+      "artifacts": [
+        {
+          "path": "results/points.csv",
+          "sha256": "291c33e04e48c47af01da8c08b9f11bfba07733dc53c34cab808034517f3c2ca"
+        },
+        {
+          "path": "results/oracle_operands.csv",
+          "sha256": "2ff344be8306d5c0de52b6f1766c9fe0543c04247ff3fe3514c3d1e87bae8ee3"
+        },
+        {
+          "path": "results/verification_summary.json",
+          "sha256": "7a2e909892ee9991c495bd9cba86b138e04396c89c3496ee0ffc6da1f3069fc2"
+        },
+        {
+          "path": "results/baseline_result.json",
+          "sha256": "0bef83f43f34c7274d801e8f0ff95b1bc358580dd016c7ee11b9f8fbf43628ea"
+        },
+        {
+          "path": "results/package_identity.json",
+          "sha256": "370b523b936a57e2d081b0a2887c4c414ee583bea0c3c8841c282d0aa0294cc5"
+        },
+        {
+          "path": "results/preflight_results.json",
+          "sha256": "d6f82adac00e6e16b3dab936989019d08ce60d8e2a8131b0f79db9720e582bbb"
+        },
+        {
+          "path": "results/postrun_clean.json",
+          "sha256": "6de0a2fadb7632c1d73eaf1121722a103d818245a92b2216094242c243fc83a6"
+        },
+        {
+          "path": "results/oracle_scan.json",
+          "sha256": "43d884806571b0ea6429396ba2d95cbea031b20cbb998d74c110abe6c32907ee"
+        },
+        {
+          "path": "study.py",
+          "sha256": "c42e7e4fefe0ff0a6e61734db1b38e907a6422c8d0391877b68e5285cadf5b4f"
+        },
+        {
+          "path": "axes.json",
+          "sha256": "0db9ac023c0fa88a75c3fab645de1ce9374ad29611b57d4ea7361761ff5e8303"
+        }
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "path": "scripts/study/indicators.py",
+      "source_digest": {
+        "recipe": "tool-source-digest/v1",
+        "digest": "e53d7027da93de75e2b92f6e1006ebf7d040d98c229cb9e16993a1735356334e",
+        "files": [
+          {
+            "path": "scripts/study/indicators.py",
+            "sha256": "5c2c30532e058a76739a4ee95b619f2bc48209683feddec9d6aa76c821bd49df"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+          },
+          {
+            "path": "scripts/study/schemas/axis_declaration.v1.schema.json",
+            "sha256": "cffa3d8adc0eae833245091b529ecfb5ad784ad6fea2c3714c460c6d3061eb2b"
+          },
+          {
+            "path": "scripts/study/schemas/indicators.v1.schema.json",
+            "sha256": "96390664ce8eb5938bfe19eb435603e107892bd5082edf8a03514d588a081996"
+          },
+          {
+            "path": "scripts/study/schemas/study_package_manifest.v1.schema.json",
+            "sha256": "5fd44712cd032647df701a24f237f2dda7ccd75c2f101a5c6244c9b6bca47032"
+          }
+        ]
+      }
+    },
+    {
+      "path": "scripts/study/preflight.py",
+      "source_digest": {
+        "recipe": "tool-source-digest/v1",
+        "digest": "fee08e143c556b0ea0bd7d32035257283220f8f671b3b2f2aa52ecf8a3c92681",
+        "files": [
+          {
+            "path": "scripts/study/common.py",
+            "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+          },
+          {
+            "path": "scripts/study/identity.py",
+            "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+          },
+          {
+            "path": "scripts/study/preflight.py",
+            "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+          },
+          {
+            "path": "scripts/study/schemas/baseline_result.v1.schema.json",
+            "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+          },
+          {
+            "path": "scripts/study/schemas/package_identity.v1.schema.json",
+            "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+          },
+          {
+            "path": "scripts/study/schemas/preflight_results.v1.schema.json",
+            "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+          }
+        ]
+      }
+    },
+    {
+      "path": "scripts/study/verify.py",
+      "source_digest": {
+        "recipe": "tool-source-digest/v1",
+        "digest": "f02358bbe56b968495fae741dd949db7abd3db543a81fe9f7dffb929f77f0f06",
+        "files": [
+          {
+            "path": "scripts/study/common.py",
+            "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+          },
+          {
+            "path": "scripts/study/identity.py",
+            "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+          },
+          {
+            "path": "scripts/study/schemas/package_identity.v1.schema.json",
+            "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+          },
+          {
+            "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+            "sha256": "579054e23911be543927d9e9daa72ece44a68f76be9ab9ba53fce0244ef540e1"
+          },
+          {
+            "path": "scripts/study/verify.py",
+            "sha256": "bd339a8024f0c1f1fc8b1c9b0cdbee930c063861a2c2f5973b0ad091e09b9ef7"
+          }
+        ]
+      }
+    }
+  ],
+  "teax": {
+    "revision": "744745f",
+    "module_path": "../teax/packages/teax-simkit/simkit",
+    "era_pin": null
+  },
+  "indicators": {
+    "path": "indicators.json",
+    "sha256": "78d2dcb1a8872939931359a27684511d0b4d569a5ab91998a02608390fb09edb",
+    "output_schema_version": "study-indicators/v1",
+    "axis_declaration": {
+      "path": "axes.json",
+      "schema_version": "study-axis-declaration/v1",
+      "digest": "0db9ac023c0fa88a75c3fab645de1ce9374ad29611b57d4ea7361761ff5e8303",
+      "groups_declared": [
+        "B",
+        "R",
+        "a",
+        "conductor_block",
+        "density",
+        "temperature"
+      ],
+      "subset": false
+    }
+  }
+}

@@ -1,0 +1,290 @@
+{
+ "scanned": [
+  {
+   "arm": "arm-rankine-paper",
+   "points": [
+    {
+     "label": "baseline",
+     "lcoe": 275.264,
+     "p_net": 915.1,
+     "rec_frac": 0.1514,
+     "wall_load": 3.131,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": true
+    },
+    {
+     "label": "R=4,a=0.8",
+     "lcoe": 7154.771,
+     "p_net": 8.3,
+     "rec_frac": 0.9424,
+     "wall_load": 1.845,
+     "net_positive": true,
+     "recirc_ok": false,
+     "wall_load_ok": true
+    },
+    {
+     "label": "R=9,a=2.2",
+     "lcoe": 162.926,
+     "p_net": 1975.1,
+     "rec_frac": 0.0903,
+     "wall_load": 5.459,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": false
+    },
+    {
+     "label": "R=20,a=0.8",
+     "lcoe": 540.632,
+     "p_net": 499.5,
+     "rec_frac": 0.2314,
+     "wall_load": 1.845,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": true
+    },
+    {
+     "label": "R=20,a=2.2",
+     "lcoe": 173.167,
+     "p_net": 4529.2,
+     "rec_frac": 0.0572,
+     "wall_load": 5.459,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": false
+    },
+    {
+     "label": "avail=0.50",
+     "lcoe": 455.095,
+     "p_net": 915.1,
+     "rec_frac": 0.1514,
+     "wall_load": 3.131,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": true
+    },
+    {
+     "label": "avail=0.95",
+     "lcoe": 247.558,
+     "p_net": 915.1,
+     "rec_frac": 0.1514,
+     "wall_load": 3.131,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": true
+    },
+    {
+     "label": "disc=0.03",
+     "lcoe": 162.983,
+     "p_net": 915.1,
+     "rec_frac": 0.1514,
+     "wall_load": 3.131,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": true
+    },
+    {
+     "label": "disc=0.12",
+     "lcoe": 485.399,
+     "p_net": 915.1,
+     "rec_frac": 0.1514,
+     "wall_load": 3.131,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": true
+    }
+   ]
+  },
+  {
+   "arm": "arm-rankine-upstream",
+   "points": [
+    {
+     "label": "baseline",
+     "lcoe": 229.191,
+     "p_net": 1125.5,
+     "rec_frac": 0.131,
+     "wall_load": 3.131,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": true
+    },
+    {
+     "label": "R=4,a=0.8",
+     "lcoe": 1684.256,
+     "p_net": 36.2,
+     "rec_frac": 0.7896,
+     "wall_load": 1.845,
+     "net_positive": true,
+     "recirc_ok": false,
+     "wall_load_ok": true
+    },
+    {
+     "label": "R=9,a=2.2",
+     "lcoe": 138.647,
+     "p_net": 2398.9,
+     "rec_frac": 0.0802,
+     "wall_load": 5.459,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": false
+    },
+    {
+     "label": "R=20,a=0.8",
+     "lcoe": 437.805,
+     "p_net": 626.3,
+     "rec_frac": 0.1976,
+     "wall_load": 1.845,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": true
+    },
+    {
+     "label": "R=20,a=2.2",
+     "lcoe": 147.577,
+     "p_net": 5466.8,
+     "rec_frac": 0.0527,
+     "wall_load": 5.459,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": false
+    },
+    {
+     "label": "avail=0.50",
+     "lcoe": 379.173,
+     "p_net": 1125.5,
+     "rec_frac": 0.131,
+     "wall_load": 3.131,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": true
+    },
+    {
+     "label": "avail=0.95",
+     "lcoe": 206.097,
+     "p_net": 1125.5,
+     "rec_frac": 0.131,
+     "wall_load": 3.131,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": true
+    },
+    {
+     "label": "disc=0.03",
+     "lcoe": 135.944,
+     "p_net": 1125.5,
+     "rec_frac": 0.131,
+     "wall_load": 3.131,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": true
+    },
+    {
+     "label": "disc=0.12",
+     "lcoe": 403.732,
+     "p_net": 1125.5,
+     "rec_frac": 0.131,
+     "wall_load": 3.131,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": true
+    }
+   ]
+  },
+  {
+   "arm": "arm-sco2",
+   "points": [
+    {
+     "label": "baseline",
+     "lcoe": 194.638,
+     "p_net": 1345.4,
+     "rec_frac": 0.116,
+     "wall_load": 3.131,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": true
+    },
+    {
+     "label": "R=4,a=0.8",
+     "lcoe": 951.667,
+     "p_net": 65.5,
+     "rec_frac": 0.6765,
+     "wall_load": 1.845,
+     "net_positive": true,
+     "recirc_ok": false,
+     "wall_load_ok": true
+    },
+    {
+     "label": "R=9,a=2.2",
+     "lcoe": 119.333,
+     "p_net": 2841.6,
+     "rec_frac": 0.0727,
+     "wall_load": 5.459,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": false
+    },
+    {
+     "label": "R=20,a=0.8",
+     "lcoe": 365.087,
+     "p_net": 758.8,
+     "rec_frac": 0.1727,
+     "wall_load": 1.845,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": true
+    },
+    {
+     "label": "R=20,a=2.2",
+     "lcoe": 127.173,
+     "p_net": 6446.4,
+     "rec_frac": 0.0493,
+     "wall_load": 5.459,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": false
+    },
+    {
+     "label": "avail=0.50",
+     "lcoe": 322.142,
+     "p_net": 1345.4,
+     "rec_frac": 0.116,
+     "wall_load": 3.131,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": true
+    },
+    {
+     "label": "avail=0.95",
+     "lcoe": 175.013,
+     "p_net": 1345.4,
+     "rec_frac": 0.116,
+     "wall_load": 3.131,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": true
+    },
+    {
+     "label": "disc=0.03",
+     "lcoe": 115.704,
+     "p_net": 1345.4,
+     "rec_frac": 0.116,
+     "wall_load": 3.131,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": true
+    },
+    {
+     "label": "disc=0.12",
+     "lcoe": 342.418,
+     "p_net": 1345.4,
+     "rec_frac": 0.116,
+     "wall_load": 3.131,
+     "net_positive": true,
+     "recirc_ok": true,
+     "wall_load_ok": true
+    }
+   ]
+  }
+ ],
+ "note": "oracle recompute (oracle_entry.evaluate) at the window corners and the baseline of each arm; no package point was run"
+}

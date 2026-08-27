@@ -93,4 +93,30 @@ package mfe_viability {
 
         tbr_in >= tbr_floor_in
     }
+
+    constraint def 'Conductor Peak Field Limit' {
+        doc /*
+        Conductor-technology bound: the peak field on the winding pack must not
+        exceed the conductor's field ceiling. Above it the superconductor cannot
+        carry the design current (REBCO ~23 T engineering ceiling, Nb3Sn ~13 T,
+        NbTi ~9 T per 1costingFE's MAGNET_TABLE). Pair with 'Conductor Peak
+        Field' (mfe_plasma_scaling), which forward-computes B_peak from the
+        axis field and the coil set's peak/axis ratio. B_max is bound per
+        instance and is the technology lever of a magnet A/B.
+
+        **Source**: /home/reid/1cfe/1costingfe/src/costingfe/defaults.py (pin 0254385);
+            knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
+        **Ref**: defaults.py:605-614 (MAGNET_TABLE b_max: rebco_hts 23.0, nb3sn 13.0,
+            nbti 9.0, "engineering ceilings"); images/page_002_table_0.png (Table 2:
+            24.9 T peak conductor field, the Stellaris design value)
+        **Basis**: peak field on the conductor <= conductor ceiling
+        */
+
+        // peak field on the conductor [T]
+        in attribute B_peak : Real;
+        // conductor peak-field ceiling [T]
+        in attribute B_max_in : Real;
+
+        B_peak <= B_max_in
+    }
 }

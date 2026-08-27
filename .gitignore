@@ -17,11 +17,13 @@ wheels/
 # Tool-owned files (managed by agentic-mbse init --dev)
 .claude/commands/*
 !.claude/commands/manage-concept.md
+!.claude/commands/research-acquire.md
 .claude/agents/
 .claude/skills/*
 !.claude/skills/browser-inspect/
 !.claude/skills/concept-research-navigation/
 !.claude/skills/run-study/
+!.claude/skills/run-goal/
 .claude/hooks/
 modeling_project/MODELING_GUIDE.md
 modeling_project/MODELING_PROCESS.md
@@ -31,6 +33,11 @@ work/backlog/epic_template.md
 
 # Project-specific
 knowledge/LOCAL_SOURCES.yaml
+knowledge/.staging/
+knowledge/.registry.lock
+
+# The integration seam's test workspace (tests/study/conftest.py: integration_workspace)
+/.integration_workspace/
 
 # Explorer build artifacts
 exploration/concept_explorer/dist/

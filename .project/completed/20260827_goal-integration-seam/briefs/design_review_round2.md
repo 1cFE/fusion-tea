@@ -1,0 +1,5 @@
+Round-2 verification pass (final round). The design author has revised `design.md` and appended a Resolutions block to your `design_review.md`; the product-lens ledger carries the update too. All committed shortly after this message.
+
+Your job now is narrow: verify the resolutions, don't re-open the review. For each of M1–M8, check the design text (and where a code claim is new — e.g. D9's set-vs-sorted-list normalization `test_model_family_spines.py:358`, the fifth fixture at `tests/test_dependency_provenance.py:88-89`, D7's restore-by-copy semantics, gate 0's six-variable sweep) confirm it holds. Confirm your lens F1/F2 are genuinely resolved and state the final gate. Confirm the two stated coverage boundaries (gate 5 refusal, `assert_read_set_covered`) are recorded loudly enough that the plan and audit stages will see them, and that the three new R-F5 filings appear in Integration Strategy.
+
+Return a short verdict: APPROVED (plan may start) or the specific residual must-fix. Append your verdict block to `design_review.md`. End with `ARTIFACT: .project/active/goal-integration-seam/design_review.md`.

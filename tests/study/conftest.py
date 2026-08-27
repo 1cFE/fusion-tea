@@ -16,6 +16,8 @@ from pathlib import Path
 
 import pytest
 
+from scripts import integrate
+
 REPO_ROOT = Path(__file__).resolve().parents[2]
 REAL_PACKAGE = REPO_ROOT / "exploration" / "stellarator_e2e" / "pkg" / "stellarator_tea"
 REAL_MANIFEST = REPO_ROOT / "exploration" / "stellarator_e2e" / "studies" / "manifest.json"
@@ -289,3 +291,210 @@ def stock_route_run(tmp_path_factory, stock_simkit_session_path):
         "store": out / "_work" / "stellarator-availability-sweep-v1.db",
         "simkit": stock_simkit_session_path,
     }
+
+
+# --------------------------------------------- the integration seam's hermetic workspace
+#
+# The seam's gates run producers that regenerate a package in place and read
+# ``repo_root()``-relative paths, so a gate test needs a package tree *inside* the worktree
+# (``tmp_path`` is outside it, and git errors rather than judging there) that no test may
+# write into if it were tracked. The answer is a gitignored directory at the repo root,
+# materialized from the committed state and removed in a ``finally``.
+#
+# The equality assertion is the point, not a formality. Two of the seam's ten gates judge
+# the **repository** — the toolchain pin and the model-family spine suite, whose producers
+# accept no package argument. Those gates only mean something while the workspace really is
+# the committed state, so that is checked before the seam ever sees it rather than hoped.
+
+WORKSPACE_ROOT = REPO_ROOT / ".integration_workspace"
+E2E = REPO_ROOT / "exploration" / "stellarator_e2e"
+REAL_MODELS = E2E / "models"
+REAL_SNAPSHOT = E2E / "stellarator.snapshot.json"
+REAL_ROUTE_DIR = E2E / "studies"
+REAL_CENSUS = REPO_ROOT / "tests" / "models" / "data" / "mfe_census.json"
+
+
+@dataclass
+class IntegrationWorkspace:
+    """A committed-state copy of everything one integration request names.
+
+    ``source_digests`` maps each workspace-relative path to the sha256 of the **tracked**
+    file it came from, so a test can prove materialization moved no byte.
+    ``entry_digests`` is what the workspace actually holds once it is ready — the same
+    values, except for the one file the manifest schema forces the fixture to rewrite,
+    ``package.path``. A restore is proven against ``entry_digests``.
+    """
+
+    root: Path
+    package: Path
+    models: Path
+    manifest: Path
+    axes: Path
+    census: Path
+    snapshot: Path
+    route_sys_path: Path
+    source_digests: dict[str, str]
+    entry_digests: dict[str, str]
+    repo_clean_over_sources: bool
+    expected_teax_revision: str
+    expected_semantic_fingerprint: str
+    expected_executable_fingerprint: str
+
+    def request_argv(self, out_dir, **overrides) -> list[str]:
+        """A complete integration request against this workspace.
+
+        The expected lineage is read off the workspace itself — the package's own contracts
+        and the teax checkout's own HEAD — because that is what a caller integrating
+        *already-audited* work supplies. A refusal fixture overrides one value and nothing
+        else, so the test names exactly the drift it is driving.
+        """
+        request = {
+            "--audited-work": "exploration/stellarator_e2e/generated@HEAD",
+            "--models-root": str(self.models),
+            "--package": str(self.package),
+            "--manifest": str(self.manifest),
+            "--groups": str(self.axes),
+            "--census-file": str(self.census),
+            "--expected-teax-revision": self.expected_teax_revision,
+            "--expected-semantic-fingerprint": self.expected_semantic_fingerprint,
+            "--expected-executable-fingerprint": self.expected_executable_fingerprint,
+            "--route-sys-path": str(self.route_sys_path),
+            "--route-module": "study_route",
+            "--route-callable": "execute_baseline",
+            "--out-dir": str(out_dir),
+        }
+        request.update(overrides)
+        return [
+            token
+            for flag, value in request.items()
+            if value is not None
+            for token in (flag, value)
+        ]
+
+
+def _copy_tree_digests(source: Path, destination: Path, root: Path) -> dict[str, str]:
+    """Copy a tree and return the *source* digest of every file, keyed workspace-relative."""
+    from scripts.study import manifest as manifest_mod
+
+    # Interpreter bytecode caches are not artifacts and the repository ignores them; copying
+    # them would put files in the workspace that no tracked digest can be compared against.
+    shutil.copytree(source, destination, symlinks=True,
+                    ignore=shutil.ignore_patterns(integrate.CACHE_DIRECTORY))
+    digests = {}
+    for path in sorted(source.rglob("*")):
+        if not path.is_file() or path.is_symlink():
+            continue
+        if integrate.CACHE_DIRECTORY in path.relative_to(source).parts:
+            continue
+        relative = destination / path.relative_to(source)
+        digests[str(relative.relative_to(root))] = manifest_mod.sha256_file(path)
+    return digests
+
+
+def _copy_file_digest(source: Path, destination: Path, root: Path) -> dict[str, str]:
+    from scripts.study import manifest as manifest_mod
+
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_bytes(source.read_bytes())
+    return {str(destination.relative_to(root)): manifest_mod.sha256_file(source)}
+
+
+def _repo_clean_over(paths) -> bool:
+    done = subprocess.run(
+        ["git", "status", "--porcelain", "--untracked-files=all", "--", *(str(p) for p in paths)],
+        cwd=str(REPO_ROOT), capture_output=True, text=True,
+    )
+    assert done.returncode == 0, done.stderr
+    return not done.stdout.strip()
+
+
+@pytest.fixture
+def integration_workspace(stock_simkit_path):
+    """The committed stellarator package and its inputs, materialized inside the worktree.
+
+    Function-scoped: the refusal fixtures doctor different files, and a shared workspace
+    would couple their assertions to each other's mutations.
+    """
+    from scripts.study import manifest as manifest_mod
+
+    assert not WORKSPACE_ROOT.exists(), f"a previous run left {WORKSPACE_ROOT} behind"
+    root = WORKSPACE_ROOT
+    root.mkdir()
+    try:
+        digests: dict[str, str] = {}
+        # The package root is a tracked symlink to ``../generated``; the layout is mirrored
+        # so the seam's resolve-before-digesting is exercised the way production hits it.
+        digests |= _copy_tree_digests(REAL_PACKAGE.resolve(), root / "generated", root)
+        (root / "pkg").mkdir()
+        (root / "pkg" / REAL_PACKAGE.name).symlink_to(Path("..") / "generated")
+        digests |= _copy_tree_digests(REAL_MODELS, root / "models", root)
+        digests |= _copy_file_digest(REAL_SNAPSHOT, root / REAL_SNAPSHOT.name, root)
+        digests |= _copy_file_digest(REAL_MANIFEST, root / "studies" / "manifest.json", root)
+        digests |= _copy_file_digest(KNOWN_ANSWER_DECLARATION, root / "studies" / "axes.json", root)
+        digests |= _copy_file_digest(REAL_CENSUS, root / "mfe_census.json", root)
+
+        for relative, digest in digests.items():
+            assert manifest_mod.sha256_file(root / relative) == digest, relative
+
+        package = root / "pkg" / REAL_PACKAGE.name
+        manifest_path = root / "studies" / "manifest.json"
+        # package.path is repo-relative by schema, and the workspace is a different root.
+        data = json.loads(manifest_path.read_text())
+        data["package"]["path"] = os.path.relpath(package.resolve(), REPO_ROOT)
+        manifest_path.write_text(json.dumps(data, indent=2) + "\n")
+        entry_digests = dict(digests)
+        entry_digests[str(manifest_path.relative_to(root))] = manifest_mod.sha256_file(
+            manifest_path
+        )
+
+        yield IntegrationWorkspace(
+            root=root,
+            package=package,
+            models=root / "models",
+            manifest=manifest_path,
+            axes=root / "studies" / "axes.json",
+            census=root / "mfe_census.json",
+            snapshot=root / REAL_SNAPSHOT.name,
+            route_sys_path=REAL_ROUTE_DIR,
+            source_digests=digests,
+            entry_digests=entry_digests,
+            repo_clean_over_sources=_repo_clean_over(
+                [REAL_PACKAGE.resolve(), REAL_MODELS, REAL_SNAPSHOT, REAL_MANIFEST, REAL_CENSUS]
+            ),
+            expected_teax_revision=integrate.teax_revision(
+                Path(os.environ["STOP_PARSER_TEAX_ROOT"])
+            ),
+            expected_semantic_fingerprint=manifest_mod.read_semantic_fingerprint(package),
+            expected_executable_fingerprint=manifest_mod.read_executable_fingerprint(package),
+        )
+    finally:
+        shutil.rmtree(root, ignore_errors=True)
+
+
+# ------------------------------------------------------ invoking the seam from a test
+#
+# A subprocess, never an import: the exit code is half the contract (0 candidate, 1
+# blocker, 2 the seam itself broke), and an in-process call would answer a different
+# question than the one a goal agent's Bash tool asks.
+
+SEAM_CLI = REPO_ROOT / "scripts" / "integrate.py"
+
+
+def run_seam_raw(argv, env=None):
+    return subprocess.run(
+        [sys.executable, str(SEAM_CLI), *argv],
+        capture_output=True, text=True, cwd=str(REPO_ROOT), env=env,
+    )
+
+
+def read_return(done, out_dir) -> dict:
+    """The return document: under ``--out-dir`` when gate 0 accepted the request, else stdout."""
+    written = Path(out_dir) / "integration_return.json"
+    if written.is_file():
+        return json.loads(written.read_text())
+    assert done.stdout, f"the seam wrote no return document\n{done.stderr}"
+    return json.loads(done.stdout)
+
+
+def run_seam(argv, out_dir, env=None) -> dict:
+    return read_return(run_seam_raw(argv, env), out_dir)
