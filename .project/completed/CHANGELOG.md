@@ -4,6 +4,33 @@ Historical record of completed work.
 
 ---
 
+## [2026-08-27] - Goal Harness Item 3: Verified Package Integration Seam
+
+**Type**: Item
+**Duration**: 2 days (spec 2026-08-26 → close 2026-08-27)
+
+### Summary
+Integration is the hop between an audited model change and a study that can run against it. Every gate that hop needs already existed and already failed closed — `sysml-codegen generate`, the model-family spine suite, `manifest.py`, `preflight.py`, `verify.py`, `identity.py`, and the dependency-provenance suite. What did not exist was a boundary that owned them together: the sequence lived in two work-item plans and a pile of shell commands, and neither was callable. The cost had already been paid once, when a scaffold commit changed a manifest without re-pinning the fixtures and Run-Study Item 6's Phase 2 opened with eleven red tests. This item built that boundary. `scripts/integrate.py` runs the ten gates in the producers' own order, stops at the first non-pass, and returns one verified study-ready candidate identity or one named blocker — never both, never a caveated candidate. The blocker says whether a gate *refused* or *could not run*, because the goal layer's retry rule reads that distinction and a round closes or continues on it.
+
+### Deliverables
+- Workflow record: `20260827_goal-integration-seam/{spec,spec_review,design,design_review,plan,audit,product-lens,align}.md`, two spike findings, and the stage briefs
+- `scripts/integrate.py` — the seam CLI, ten producer-owned gates, two return classes, two modes, fourteen `condition` slugs closed at the constructor
+- `docs/integration_seam_operator_guide.md` — the operator surface, including the `condition` → goal-class mapping and the stated coverage boundaries
+- `.project/adr/009-integration-is-a-fixed-point-proof.md` — the prove-don't-perform decision
+- Nine test modules under `tests/study/test_integrate_*.py`, including six real refusals driven from real producers and no mocks in the gate path
+- Six `.project/backlog/BACKLOG.md` § Flagged rows routing each producer shortfall back to its own home
+
+### Notes
+- Audited 2026-08-26, verdict **POSITIVE — Certify**; spec SC1–SC6 all met. SC6's operator-guide walk was performed from the shipped guide alone, end to end, with zero source reads.
+- Six non-blocking findings (reporting, coverage and documentation) fixed the same day in `2a9707df`, chiefly finding 1: the gate that stopped the sequence was recorded `not reached` even when it had run and refused. It now carries its own `fail` / `did not run` verdict per design D4, and the refusal tests pin that row rather than stepping over it.
+- Product-lens gate **CLEAR** — four `BLOCK` findings raised across the spec and design passes, all four resolved by citation and re-checked against the shipped code at close. Parent epic gate CLEAR.
+- Regression gate `pytest tests/models tests/study tests/test_dependency_provenance.py` — **395 passed, 14 skipped, 0 failed**. R-B2 frozen-producer diff over `scripts/study/`, `tests/models/` and `tests/test_dependency_provenance.py` empty.
+- Two coverage boundaries are stated rather than closed: gate 5's refusal path has no hermetic driver, and `manifest.assert_read_set_covered` has no caller anywhere in the repository. Both are named in the guide, disclosed at runtime in gate 6's own passing detail, and filed.
+- The three sealed wheels that `tests/test_dependency_provenance.py` pins now live at `/home/reid/1cfe/stop-parser-sealed-wheels/`; run anything in this area as `uv run --env-file ~/1cfe/agentic-mbse/.env --env-file .venv/integration.env python -m pytest ...`.
+
+### Lessons Learned
+[TODO: Add lessons learned]
+
 ## [2026-08-27] - Goal Harness Item 1: Lean Goal Contract and Operator Runbook
 
 **Type**: Item

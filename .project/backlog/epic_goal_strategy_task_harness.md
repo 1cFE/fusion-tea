@@ -266,7 +266,7 @@ Gate: CLEAR
 - Automatically committing, pushing, closing modeling work, or selecting among multiple valid model designs.
 - A goal-side effects ledger, idempotency wrapper, or duplicate verification implementation.
 
-**Success Criteria**:
+**Success Criteria** *(audited 2026-08-26 — `.project/completed/20260827_goal-integration-seam/audit.md`; verdict POSITIVE, spec SC1–SC6 all met; six non-blocking findings fixed same day in `2a9707df`; product-lens gate CLEAR; closed 2026-08-27)*:
 - [x] A known audited model change produces one candidate return with resolvable package, manifest, pin, semantic fingerprint, executable fingerprint, and verification evidence.
 - [x] Each existing producer-owned gate is invoked rather than reimplemented, and a deliberate failure reports its native blocker without promoting a candidate.
 - [x] Re-running against unchanged inputs does not produce a second conflicting candidate identity.
@@ -275,14 +275,14 @@ Gate: CLEAR
 
 **Estimated Effort**: 1.5 days (spec 1h, design 2h, plan 1h, execute 8h)
 
-**Location**: `.project/active/goal-integration-seam/`
+**Location**: `.project/completed/20260827_goal-integration-seam/` (closed 2026-08-27 by owner authorization; archived from `.project/active/goal-integration-seam/`)
 
 **Dependencies**: None; may proceed in parallel with Items 1 and 2.
 
 **Deliverables**:
-- `.project/active/goal-integration-seam/spec.md`
-- `.project/active/goal-integration-seam/design.md`
-- `.project/active/goal-integration-seam/plan.md`
+- `.project/completed/20260827_goal-integration-seam/spec.md`
+- `.project/completed/20260827_goal-integration-seam/design.md`
+- `.project/completed/20260827_goal-integration-seam/plan.md`
 - Production integration entry surface and native return contract at the path chosen in design
 - Integration fixtures and tests covering success, gate failure, and identity stability
 - Operator documentation for the verified integration seam
