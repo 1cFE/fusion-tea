@@ -4,6 +4,38 @@ Historical record of completed work.
 
 ---
 
+## [2026-08-27] - Goal Harness Item 2: Native Research Acquisition and Registration Seam
+
+**Type**: Item (Goal Strategy and Task Harness epic, Item 2)
+**Duration**: 2 days (spec 2026-08-25 → close 2026-08-27)
+
+### Summary
+Research was the one hop in the model-development loop with no callable boundary. Modeling has the `work/` PM, generation has sysml-codegen, studies have the run-study skill; research had a reading command, an extraction primitive, and a Zotero-shaped registry writer, with nothing joining them. The loop had already run this hop by hand once — WI-031 registered two URL sources through shell steps and hand-written `SOURCE_INDEX.md` blocks, leaving `MANIFEST.jsonl` untouched because it had no slot for a non-Zotero source. This item builds the missing boundary at the producer: a bounded request goes in, exactly one of four returns comes out, every registered source is MR-4-citable by repo-relative path with provenance to re-fetch and verify it, and the ARIES-CS hold-out is checked in code before any byte is written.
+
+### Deliverables
+- `scripts/source_registry.py` — the single write door into `knowledge/`: capture into staging, provenance verification, dedupe, a fixed commit ladder under a lock with exact rollback, receipts, two index-writer profiles, and `verify` (0 faults / 3 legacy on the current repo)
+- `scripts/holdout_guard.py` — parses both §3 barred lists of `knowledge/holdout/aries-cs/PROTOCOL.md` and fails closed on a bad parse; no waiver exists in code
+- `scripts/research_seam.py` — bounded request, request-key negatives, run record, and the four return classes computed from receipts and triage log rather than agent claims
+- `.claude/commands/research-acquire.md` and `docs/research_seam_operator_guide.md` — the acquisition protocol and operator documentation (SC9)
+- `scripts/zotero_ingest.py` / `zotero_lib.py` extended; both Zotero paths are now callers of `register`, and the local-PDF path finally writes its manifest row
+- `tests/research/` — 150 tests, offline against a loopback HTTP fixture and a generated PDF, running the real extraction subprocess
+- `.project/adr/008-source-identity-raw-bytes-sha256.md` — the R-F2 decision, filed 2026-08-25 into Item 1's register
+- Workflow record: `20260827_goal-research-seam/{align,spec,spec-review,design,design-review,plan,audit,product-lens}.md` and the stage briefs
+
+### Notes
+- Audited 2026-08-26, verdict **Needs Work**, two HIGH findings, both real and both reproduced by the auditor: the staging sweep deleted every in-flight registration's working directory outside the commit lock, and a candidate blocked at triage (a paywall — the spec's own first-named reason to queue) could not reach `OPERATOR_QUEUE`, so the documented sequence closed the run `BOUNDED_NEGATIVE` and wrote a durable negative that then blocked its own request.
+- Fix pass complete the same day (`9637f1b7`), all eight findings addressed: the sweep is now lock-held and age-thresholded with each attempt owning its own staging directory; `close` reads the queue from triage failures as well as receipts; design D7 amended and D13 corrected against the spec's class table, which is the authority. Regression tests reproduce both audited failures. 150 tests green, all nine success criteria marked.
+- **The hold-out invariant did not change owners.** `--holdout-ack` was deleted at design review; there is no override in code, and the human exception path stays PROTOCOL §6, outside this seam. Extending the protocol with a machine-readable exception was surfaced as an owner question, not resolved.
+- Two breaking-ish operator changes: `zotero_ingest.py --local-pdf` now requires `--use-for` / `--validation` / `--caveat`, and index blocks insert before `## How Sources Are Used` — a missing anchor raises instead of appending at end.
+- Two `agentic-mbse` defects were filed upstream rather than worked around (`PM-APPROVE-RESEARCH-EMPTY-INSIGHTS`, `EXTRACT-PROVENANCE-HOOK`); the entries sit uncommitted in that repository for the owner's commit. Carried in `.project/CURRENT_WORK.md` § Housekeeping owed.
+- Product-lens gate CLEAR at both levels; the epic's `epic-plan-F1`/`F2` are FIXED and land in other items. No product ledger exists in this repository (`.project/product/`, `product.sh` absent), so the promise scan filed nothing — gap noted, not worked around.
+- Closed on owner authorization 2026-08-27 under the one-PR ship ruling, with the audit verdict superseded by the orchestrator-verified fix pass rather than by a re-audit.
+
+### Lessons Learned
+[TODO: Add lessons learned]
+
+---
+
 ## [2026-08-27] - Goal Harness Item 4: Goal Grounding, Cold-Pickup Resume, and Round-Review Proof
 
 **Type**: Item

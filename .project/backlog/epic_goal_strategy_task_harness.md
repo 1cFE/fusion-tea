@@ -164,7 +164,7 @@ Gate: CLEAR
 
 ---
 
-### Item 2: Native Research Acquisition and Registration Seam
+### Item 2: Native Research Acquisition and Registration Seam ✅
 
 **Type**: Code/Integration
 
@@ -205,14 +205,16 @@ Gate: CLEAR
 - Goal-layer routing, dispatch, or shadow copies of research state.
 
 **Success Criteria**:
-- [ ] A URL and a local PDF each register through one operation into a citable repo path with source URL, raw hash, extract hash, manifest identity, and complete index metadata.
-- [ ] A duplicate is detected without a second registry entry; a failed registration leaves no partial source/index/manifest state.
-- [ ] A barred URL/title/content case writes nothing to `knowledge/sources/` and records the matched rule or operator queue outcome.
-- [ ] An adequate zero-source search returns a durable bounded negative with the queries and candidates attempted.
-- [ ] The research entry surface consumes and returns the bounded contract while keeping the owner approval gate.
-- [ ] Focused registration/acquisition tests and affected knowledge-pipeline regressions pass.
+- [x] A URL and a local PDF each register through one operation into a citable repo path with source URL, raw hash, extract hash, manifest identity, and complete index metadata. — SC1, `tests/research/test_register_url_chain.py`, `test_register_pdf_chain.py`
+- [x] A duplicate is detected without a second registry entry; a failed registration leaves no partial source/index/manifest state. — SC3/SC4, `test_duplicate.py`, `test_rollback.py` (parametrized over all three commit rungs)
+- [x] A barred URL/title/content case writes nothing to `knowledge/sources/` and records the matched rule or operator queue outcome. — SC5, `test_holdout.py`, `test_holdout_guard_parse.py`
+- [x] An adequate zero-source search returns a durable bounded negative with the queries and candidates attempted. — SC6, `test_negative.py`
+- [x] The research entry surface consumes and returns the bounded contract while keeping the owner approval gate. — SC7, `test_return_contract.py`, `test_command_contract.py`
+- [x] Focused registration/acquisition tests and affected knowledge-pipeline regressions pass. — SC8, 150 tests green at `9637f1b7`
 
 **Estimated Effort**: 2 days (spec 1.5h, design 3h, plan 1.5h, execute 10h)
+
+**Closed** 2026-08-27 — archived to `.project/completed/20260827_goal-research-seam/`. Audited 2026-08-26 Needs Work; both HIGH findings fixed and orchestrator-verified the same day (`9637f1b7`), and the owner authorized the close under the one-PR ship ruling. `ADR-008` records the source-identity decision. Product-lens gate CLEAR.
 
 **Location**: `.project/active/goal-research-seam/`
 
