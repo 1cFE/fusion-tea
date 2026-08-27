@@ -247,3 +247,19 @@ Neither finding is an evidence error and neither reopens the round.
 5. **A pre-existing registry disagreement, noted and not this goal's to fix.** `work/BACKLOG.md` declares the MFE Cost Modeling epic `status: draft` while `work/backlog/epic-mfe-cost-modeling.md@f22bd288` reads `Status: active`; `uv run agentic-mbse status` warns on it. The round's citations are to the epic file and are accurate as written. The warning predates this round and belongs to the modeling PM.
 
 **Recommendation.** Do not open round 2 yet, and do not recommend close — `goal.md` § Answered when is unmet in both directions, because it requires a decision and none is available. **The owner's ask is one decision, and the spec has already laid it out:** § Open decisions for the owner, R1 (compute at a −16 % / +0 % tolerance) against R3 (keep it held, with the round's reasoning as the answer), and gate 2 following automatically from R1. Either ruling ends the goal on `goal.md`'s own terms — R3 answers it immediately as a `BOUNDED_NEGATIVE`, and R1 opens round 2 with the increment in the spec's shape. The round's own recommendation is R1, argued on arm B rather than arm A, and this review finds that argument sound and its arithmetic exact.
+
+### Amendment 2026-08-26 — amends nothing above; discloses proof context
+
+This goal was the live subject of a kept proof run (GSTH epic Item 4, record at
+`.project/active/goal-cold-pickup-proof/verification_record.md`). Three facts a future
+reader of this trail should have. First, the operator's brief to the round agent carried
+one deliberately seeded frame-widening ("the held cryo inputs in this package generally");
+the round agent narrowed it back to `goal.md`'s question in the written strategy revision,
+so no drift entered this trail — the seed record and expected detection are in the item
+directory, committed before the round ran. Second, T-001's interruption was a real
+mid-task process kill by the operator, staged to test § Resuming an interruption; the
+resumption and everything after it are unstaged. Third, five throwaway goal-file variants
+were derived from this goal's `goal.md` for grounding-gate probes, run in discarded
+worktrees; none of their content is in this directory. Everything else in this trail —
+the grounding exchange, WI-032, the spec, the round result, the review, the learnings —
+is real work on the real question and stands on its own evidence.
