@@ -56,3 +56,12 @@ Gate: CLEAR. All five findings dispositioned in `spec.md` at this revision; no f
 - **spec-F4 — FIXED.** The resume criterion now carries all three parts of owner SC 3 — no re-running, no duplicate side effects, no lost open gates — and requires the cited-ref external-mutation walk from `GOAL_RUNBOOK.md` § When a cited artifact moves.
 - **spec-F5 — FIXED.** New `[INHERITED]` requirement: grounding evidence is checked for substance (package, responsive entry keys and constraints, discovery log, knowledge base), and well-formed citations carrying none of it do not pass.
 - **Smells.** Deliverable naming reconciled — the proof report *is* the epic's `verification_record.md`, stated as one artifact under one name. The operator-notes artifact is restored to a named artifact in the item directory rather than prose with no home. The open-question list keeps seven entries but now marks the three that are load-bearing on proof validity and requires design to settle them before anything runs.
+
+### Note — 2026-08-26 — spec-review revision, gate unchanged
+
+Gate stays CLEAR. `spec-review.md` (verdict Revise) landed after the disposition block above; ten findings incorporated. Two touch this ledger's reasoning and neither reopens it:
+
+- **spec-F1's fix survives and sharpened.** The five-decision-field criterion is unchanged; the spec-review's L3-2 added the git-ancestry ordering predicate that makes its sibling criteria auditable.
+- **The reverse check's "§ hardening bar states the owner's rule in both directions" was right but the list was wrong.** Review L1-3 found the `[OWNER]` hardening list carried seven items where the owner's ruling names five (`goal-strategy-task-harness-design-review.md:209`); "concurrent goal run" and "unattended dispatcher" are ADR-003 premises, barred outright, not proof-gated. Corrected in both the Problem section and § The hardening bar. This strengthens the reverse check rather than contradicting it — as previously written, a recorded failure could have appeared to promote unattended dispatch, against the spec's own Non-Goal.
+
+spec-F5's substance requirement and spec-F4's three-part resume criterion are untouched by the revision.
