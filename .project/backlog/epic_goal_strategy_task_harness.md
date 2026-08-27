@@ -99,7 +99,7 @@ Gate: CLEAR
 
 **Decomposition provenance**: Item boundaries, ordering, and estimates are `[AGENT]` recommendations ratified by the owner on 2026-08-25. The grounding and pre-execution critic additions are `[OWNER 2026-08-25]` dispositions of product-lens findings `epic-plan-F1` and `epic-plan-F2`.
 
-### Item 1: Lean Goal Contract and Operator Runbook
+### Item 1: Lean Goal Contract and Operator Runbook ✅
 
 **Type**: Implementation
 
@@ -138,7 +138,7 @@ Gate: CLEAR
 - Replacing or mirroring coding-PM, modeling-PM, research, integration, or run-study state.
 - Automating owner-reserved gates, close, archive, commits, or pushes.
 
-**Success Criteria** *(audited 2026-08-25 — `.project/active/goal-harness-contract/audit.md`; verdict Needs Work; `audit-F1`/`audit-F2` fixed same day, product-lens gate CLEAR)*:
+**Success Criteria** *(audited 2026-08-25 — `.project/completed/20260827_goal-harness-contract/audit.md`; verdict Needs Work; `audit-F1`/`audit-F2` fixed same day, product-lens gate CLEAR; closed 2026-08-27)*:
 - [x] The architecture decisions are live, provenance-graded, and cited by the runbook and affected project guidance. — *verified; `audit-F1` fixed 2026-08-25: ADR-005 frontmatter and index now write the split grade.*
 - [x] The three lean files and their decision/task/round conventions are sufficient to derive current goal state without copying native stage state.
 - [x] The independent pre-execution disposition checkpoint and the post-round `RoundReview` have distinct timing and responsibilities.
@@ -148,14 +148,14 @@ Gate: CLEAR
 
 **Estimated Effort**: 1.5 days (spec 1h, design 2h, plan 1h, execute 8h)
 
-**Location**: `.project/active/goal-harness-contract/`
+**Location**: `.project/completed/20260827_goal-harness-contract/` (closed 2026-08-27 by owner authorization; archived from `.project/active/goal-harness-contract/`)
 
 **Dependencies**: Run-Study Capability Item 6 Phase 4 must close or explicitly coordinate its overlapping runbook and discovery-log edits.
 
 **Deliverables**:
-- `.project/active/goal-harness-contract/spec.md`
-- `.project/active/goal-harness-contract/design.md`
-- `.project/active/goal-harness-contract/plan.md`
+- `.project/completed/20260827_goal-harness-contract/spec.md`
+- `.project/completed/20260827_goal-harness-contract/design.md`
+- `.project/completed/20260827_goal-harness-contract/plan.md`
 - `work/orchestration/GOAL_RUNBOOK.md`
 - Goal instructions and artifact templates at the repository-native paths chosen in design
 - Project ADR records and the approved CLAUDE.md evidence-seam amendment

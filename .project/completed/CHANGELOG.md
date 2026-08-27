@@ -4,6 +4,31 @@ Historical record of completed work.
 
 ---
 
+## [2026-08-27] - Goal Harness Item 1: Lean Goal Contract and Operator Runbook
+
+**Type**: Item
+**Duration**: 2 days (spec 2026-08-25 → close 2026-08-27)
+
+### Summary
+The approved concept-design defined a goal layer above the native workflows — a grounded question, one revisable strategy, one bounded task at a time, a round ending in a mandatory result and a review by a fresh agent. None of it existed on disk: seven approved rulings lived only in shaping files, the repository had no home where an architecture decision belongs, one ruling contradicted live project guidance at `CLAUDE.md:73`, and five textual homes still made the study executor the sole writer of the discovery log. This item wrote the contract down. It created `.project/adr/` and filed the seven decisions with their recorded provenance grades, amended CLAUDE.md's evidence seam, defined the three-file lean artifact contract with its decision/task/round conventions, aligned all five writer-ownership homes on joined `<study-id>#<n>` disposition rows, and wrote the operator runbook that every downstream epic item reads as its input.
+
+### Deliverables
+- Workflow record: `20260827_goal-harness-contract/{spec,spec-review,design,design-review,plan,audit,product-lens,align}.md`
+- `.project/adr/` — `README.md`, `INDEX.md`, `template.md`, records `001`–`007`, and `.project/scripts/adr.sh`
+- `work/orchestration/GOAL_RUNBOOK.md` and the `goal.md` / `trail.md` / `learnings.md` templates
+- `.claude/skills/run-goal/SKILL.md` — the fusion-tea-owned goal-agent door
+- `CLAUDE.md` evidence-seam amendment; six writer-ownership edits across `.claude/skills/run-study/runbook.md` and `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md`
+- Contract and documentation tests under `tests/orchestration/`, including the append-as-update guarantee and the register-coherence check
+
+### Notes
+- Audited 2026-08-25, verdict **Needs Work** on two prose-sized defects; both fixed the same day (`audit-F1` ADR-005's split grade restored on frontmatter and index; `audit-F2` § What "fresh" means, stating the owner's session boundary and the agent's recorded handoff stop). Product-lens gate CLEAR.
+- Amended 2026-08-27 by owner ruling on Item 4's proof-run evidence (`4a8de283`): the grounding gate now refuses on all five field classes, and the discovery-log sentence is scoped to the goal layer's own pen. Both amendments are dated in place with their evidence cited.
+- `tests/study tests/orchestration` — 287 passed, 84 skipped, re-run at close.
+- The runtime half of the contract is proved by epic Items 4–6, not here; any finding those runs raise against the runbook is an Item 1 defect.
+
+### Lessons Learned
+[TODO: Add lessons learned]
+
 ## [2026-08-21] - Stellarator Model Migration
 
 **Type**: Item

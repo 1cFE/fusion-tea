@@ -1,6 +1,6 @@
 # Spec: Lean Goal Contract and Operator Runbook
 
-**Status:** Audited 2026-08-25 — **Needs Work** (2 blocking defects: `audit-F1`, `audit-F2`; see `audit.md`)
+**Status:** **Closed 2026-08-27** by owner authorization. Audited 2026-08-25 — Needs Work (2 blocking defects: `audit-F1`, `audit-F2`; see `audit.md`); both fixed the same day, product-lens gate CLEAR. Amended 2026-08-27 by owner ruling on Item 4's probe evidence (`4a8de283`): five-class grounding rule and own-pen discovery-log sentence in `GOAL_RUNBOOK.md`.
 **Owner:** Reid W
 **Created:** 2026-08-25
 **Complexity:** MEDIUM

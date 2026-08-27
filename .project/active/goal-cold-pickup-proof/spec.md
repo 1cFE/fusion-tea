@@ -141,7 +141,7 @@ The last four — evidence location, task shape, the session-to-role map, and ho
 - **Epic:** `.project/backlog/epic_goal_strategy_task_harness.md` § Item 4
 - **Align record:** `.project/active/goal-cold-pickup-proof/align.md`
 - **Required Reading:**
-  - `.project/active/goal-harness-contract/` — Item 1's spec, design, plan
+  - `.project/completed/20260827_goal-harness-contract/` — Item 1's spec, design, plan (archived 2026-08-27)
   - `work/orchestration/GOAL_RUNBOOK.md`, `work/orchestration/goal-templates/`, `.claude/skills/run-goal/SKILL.md`
   - `.project/adr/001-strategy-and-task.md` through `007-supersession.md`
   - `.project/concepts/goal-driven-model-development-harness.md` § Owner's Words, Success Criteria 1, 3, 6–8
