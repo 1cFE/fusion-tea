@@ -12,6 +12,10 @@
 - **Explorer** — UX v3 Phase 1 + Themes A/B1/F merged; 1costingfe v0.1.0 migration 2026-06-28; web hosting (#97; operator runbook `.project/completed/20260821_explorer-web-hosting/RUNBOOK.md`); OOM Layers 1–2 (#98), JAX pre-warm (#99), numpy-only deploy on 1costingfe v0.1.1 (#100).
 - **`.project/` archival pass done 2026-08-21** (on this branch): 56 item dirs and 6 epics moved to `completed/` with the `20260821_` prefix, 3 empty dirs deleted, live path references rewritten. `active/` now holds 5 dirs. Record: `.project/completed/CHANGELOG.md`, report `.project/reports/2026-08-21-1339-status-report.md`.
 
+## Shipped for merge (2026-08-27)
+
+- **PR #108** — https://github.com/1cFE/fusion-tea/pull/108 — the whole `feat/goal-integration-seam` branch: GSTH Items 1–4, all closed and archived (`.project/completed/20260827_*`), plus Run-Study Item 6 Phases 1–3 (pre-existing lineage; Phase 4 still open). Pre-PR gate report: `.project/reports/2026-08-27-pre-pr-goal-integration-seam.md` (570/14/0; scope finding resolved by owner's one-PR ruling). **Owner: merge with a merge commit** (`! gh pr merge 108 --repo 1cFE/fusion-tea --merge --admin`), then `feat/goal-research-seam` can be deleted — strict ancestor, zero unique commits.
+
 ## Next up (in order, 2026-08-21)
 
 0. **Run-study end-to-end explainer** (`.project/active/run-study-e2e-explainer/`, new run-study epic Item 7) — spec approved 2026-08-23 (product-lens DISPOSED); story outline drafted 2026-08-23 (`story-outline.md`, html-explainer Step 1, owner review pending); next `/_my_design`; gates Item 6 Phase 4. Deep HTML explainer of the two A/B studies for an outside reader, to live in `exploration/stellarator_e2e/studies/`.
