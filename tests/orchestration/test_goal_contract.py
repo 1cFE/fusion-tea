@@ -1,7 +1,7 @@
 """Consistency checks for the goal layer's documents.
 
 Lightweight-consistency altitude only: these tests check that the surfaces
-described by `.project/active/goal-harness-contract/design.md` exist and still
+described by `.project/completed/20260827_goal-harness-contract/design.md` exist and still
 agree with each other. They check documents, never runtime behaviour.
 """
 

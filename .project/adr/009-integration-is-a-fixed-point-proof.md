@@ -15,7 +15,7 @@ Integration is the hop between an audited model change and a study that can run 
 
 Two existing constraints closed the question rather than leaving it open. The stock preflight route's sixth gate refuses a package tree that is not git-clean, and the seam may not commit (`spec.md` R-F1). So a candidate can exist only when the whole sequence moved zero bytes in the tracked tree. `spec.md` R-C6 says the same thing from the other side: failure is reported, never repaired, and a seam that regenerates to fix a stale package is repairing.
 
-Decided during the design of GSTH Item 3 (`.project/active/goal-integration-seam/design.md`, § Core Concept), grade delegated by the owner at Align (`align.md:8`, "just get it done — you are responsible for quality and alignment").
+Decided during the design of GSTH Item 3 (`.project/completed/20260827_goal-integration-seam/design.md`, § Core Concept), grade delegated by the owner at Align (`align.md:8`, "just get it done — you are responsible for quality and alignment").
 
 ## Decision
 
@@ -46,7 +46,7 @@ The consequence is counter-intuitive enough to state in the operator's own words
 - `scripts/integrate.py` — the seam itself.
 - `docs/integration_seam_operator_guide.md` — states the prove-don't-perform boundary in the operator's words.
 - `tests/study/conftest.py` (`integration_workspace`) and `tests/study/test_integrate_*.py`.
-- `.project/active/goal-integration-seam/design.md` — D7, D8, D19–D21 record the mechanism.
+- `.project/completed/20260827_goal-integration-seam/design.md` — D7, D8, D19–D21 record the mechanism.
 
 ## Consequences
 

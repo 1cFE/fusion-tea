@@ -71,7 +71,7 @@ Then stop. The operator starts the fresh session; that session picks up from the
 
 **Who checks it:** the operator, and any session asked to run the goal. A goal hollow in **any** of the five field classes — grounding evidence, answer contract (§ Answered when), invariants, limits, or reserved gates — is not grounded and **authorizes no task**, not one, not a small one: refuse to open a round or start a task, and name the missing class. Grounding evidence has the mechanical tell (empty means `Status: draft`); the other four are checked by reading the file. Grounding is what stops a run from spending a week on a question the repository already answered.
 
-*(Amended 2026-08-27 `[OWNER]`. The shipped rule defended grounding evidence alone; a five-session probe measured cold sessions running full tasks on goals missing invariants, limits, or reserved gates — `.project/active/goal-cold-pickup-proof/gate-probe-record.md`. Written rule promoted on that recorded failure, per the hardening rule.)*
+*(Amended 2026-08-27 `[OWNER]`. The shipped rule defended grounding evidence alone; a five-session probe measured cold sessions running full tasks on goals missing invariants, limits, or reserved gates — `.project/completed/20260827_goal-cold-pickup-proof/gate-probe-record.md`. Written rule promoted on that recorded failure, per the hardening rule.)*
 
 Revisions to a grounded goal are rare and are written as dated amendments, never by editing what is there.
 
