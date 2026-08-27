@@ -1,6 +1,6 @@
 # Implementation Plan: Goal Grounding, Cold-Pickup Resume, and Round-Review Proof
 
-**Status:** Complete (all 11 phases; audit pending)
+**Status:** Complete (all 11 phases) — **certified 2026-08-26** (`audit.md`, Certify; criterion 8 certified as not-exercised-as-designed, not as a pass). Phase completion is carried by the dated `**Completed:**` notes under § Implementation Notes, not by the step-level checkboxes, which were left unticked (audit finding F4).
 **Created:** 2026-08-26
 **Last Updated:** 2026-08-26
 **Branch:** `feat/goal-integration-seam` (no child branch, except the throwaway `gate-pN` branches in Phase 3, which are deleted)

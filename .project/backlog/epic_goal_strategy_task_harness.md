@@ -330,11 +330,16 @@ Gate: CLEAR
 
 **Success Criteria**:
 - [ ] A fresh non-builder creates a grounded goal from an operator question; a deliberately ungrounded draft is rejected before task start with the missing fields named.
-- [ ] The goal directory alone identifies the active strategy, one task, open gate/limit state, and relevant native evidence.
-- [ ] A second fresh session resolves an unreturned write-ahead start without repeating the completed native effect.
-- [ ] A no-pin/no-study round closes with a mandatory `RoundResult`, five-field decisions, and no silent stop.
+- [x] The goal directory alone identifies the active strategy, one task, open gate/limit state, and relevant native evidence.
+- [x] A second fresh session resolves an unreturned write-ahead start without repeating the completed native effect.
+- [x] A no-pin/no-study round closes with a mandatory `RoundResult`, five-field decisions, and no silent stop.
 - [ ] Fresh `RoundReview` catches the seeded drift, accounts for every touched discovery row, and accepts or corrects the learning delta.
-- [ ] The proof records any prose failure; no hardening mechanism is promoted without that evidence.
+- [x] The proof records any prose failure; no hardening mechanism is promoted without that evidence.
+
+**Certification status — partial, 2026-08-26** (`.project/active/goal-cold-pickup-proof/audit.md`, verdict Certify). Four of six criteria verified and checked. The two left open are the epic's to dispose, not the audit's:
+
+- *Criterion 1* is half met. A fresh non-builder did ground a real goal from an operator question. The other half — an ungrounded draft rejected "with the missing fields named" — was **measured at two of five field classes**, not assumed: grounding evidence and the answer contract refuse; invariants, limits, and reserved gates sail through, and three sessions ran full tasks unguarded (`gate-probe-record.md`). The epic's five-class assumption predates Item 1's shipped gate, which defends one by written rule (`GOAL_RUNBOOK.md:72`). Owner's call whether to amend Item 1's text or the epic's criterion.
+- *Criterion 5* did not exercise. The seeded drift was neutralized at the writer — the round agent narrowed the widened frame back to the goal's question — so no drift reached the reviewer. The branch covering this outcome was declared before the run. The review did catch a real organic drift, accounted for every touched row, and corrected the learning delta, so the faculty is demonstrated; the designed test is not.
 
 **Estimated Effort**: 1 day (spec 1h, design 1.5h, plan 1h, execute 4.5h)
 

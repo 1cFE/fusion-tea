@@ -65,3 +65,61 @@ Gate stays CLEAR. `spec-review.md` (verdict Revise) landed after the disposition
 - **The reverse check's "§ hardening bar states the owner's rule in both directions" was right but the list was wrong.** Review L1-3 found the `[OWNER]` hardening list carried seven items where the owner's ruling names five (`goal-strategy-task-harness-design-review.md:209`); "concurrent goal run" and "unattended dispatcher" are ADR-003 premises, barred outright, not proof-gated. Corrected in both the Problem section and § The hardening bar. This strengthens the reverse check rather than contradicting it — as previously written, a recorded failure could have appeared to promote unattended dispatch, against the spec's own Non-Goal.
 
 spec-F5's substance requirement and spec-F4's three-part resume criterion are untouched by the revision.
+
+---
+
+## implementation — 2026-08-26 — rev `ab5fa06e` (the executed proof run)
+
+Run inline by the auditing session rather than by a delegated lens agent — this session is barred
+from spawning subagents. Method otherwise per the lens spec: the point was re-derived from SOURCES
+independently, without inheriting the spec's or design's framing.
+
+SOURCES: `.project/backlog/epic_goal_strategy_task_harness.md` § Hardening rule;
+`.project/adr/003-lean-first-persistence.md`; `.project/concepts/goal-driven-model-development-harness.md`
+§ Owner's Words, SC 1/3/6; `work/orchestration/GOAL_RUNBOOK.md`. WORK: the thirteen kept cold runs,
+the kept goal directory `work/orchestration/goals/cryo-volume-basis/`, and the five records.
+
+Point (re-derived): The lean goal route — prose on disk, no envelopes, no ledger, no digests, no
+idempotency keys, no reconciliation — either carries multi-session goal work or it does not, and
+the owner has bound the first build to whichever answer a recorded proof run produces. The point of
+this item is therefore *measurement that can come back negative*, not a demonstration.
+
+Falsifier: the proof produces evidence that reads as a certificate for the lean route rather than
+as measurement of it — a criterion quietly satisfied by a substitute, a shortfall softened, or a
+contract repaired mid-run so the route looks better than it is.
+
+Findings: none at `[DO]`. The falsifier does not fire, and the two places it could have are the two
+places the run reported against itself:
+
+- The grounding gate was measured at two of five field classes against an epic that assumed five,
+  with the three undefended classes named and routed to Item 1's owner. `git diff e0d72cf0..HEAD`
+  over `GOAL_RUNBOOK.md`, `goal-templates/`, and `.project/adr/` is empty — the contract was left
+  alone rather than repaired to make the criterion pass.
+- Criterion 8 did not exercise, and is recorded as "NOT EXERCISED AS DESIGNED" in every artifact
+  that touches it, on a branch declared in `design.md:269` and `plan.md:400` before the run
+  (`e8ea658b` and `c6e5aeca` are ancestors of `a6caab37`).
+
+Reverse check: CLEAR. Every artifact in the item traces to a spec criterion, a design invariant, or
+an owner-requested deliverable (`operator-notes.md`, at Align). No orphan work. Nothing from the
+hardening path entered the build: the hardening verdict promotes no mechanism, and the two items it
+does send to the owner are written-rule evidence, correctly distinguished from machinery.
+
+Smells (product-lens spec §4):
+- *A test passes only because it selects one favorable route* — **checked hardest, does not fire.**
+  The available substitution was letting the review's organic finding 1 stand in for the seeded
+  drift and calling Criterion 8 met. Five artifacts independently refuse it
+  (`verification_record.md:19`, `sessions/12-reviewer/meta.md`, `plan.md:717,726`,
+  `freshness-record.md` run 08b, `trail.md:256-259`).
+- *A special category exempts a case whose meaning is unchanged* — does not fire; the downgrade is
+  a pre-declared branch, not a category invented after the miss.
+- *Two representations manually kept in sync* — does not fire; the trail cites native state and
+  never restates it, and the discovery-log join is machine-checked.
+- *Correctness depends on downstream knowledge of an internal representation* — does not fire; run
+  13 answered four questions correctly from the goal directory and its citations alone.
+- *A baseline preserves behavior contradicting the product's reason for existing* — does not fire.
+
+Gate: **CLEAR.** No `[DO]` finding, no fired smell. Earlier blocks in this ledger (spec-F1,
+spec-F2) were resolved by citation in the same-hop disposition block and remain resolved.
+
+Epic ledger state: `.project/backlog/epic_goal_strategy_task_harness.md` § Product-Lens reads CLEAR
+(second block, 2026-08-25). This hop does not change that gate.
