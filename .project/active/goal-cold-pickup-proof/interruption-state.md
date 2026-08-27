@@ -10,6 +10,7 @@ hash unchanged, and the resumer's transcript shows no second `add-item` invocati
   - `  - id: WI-032` / `    name: 'Cold-volume basis: vol_cold_cryo computed or held'` / `    scale: standard` / `    status: backlog` / `    completed: null` (frontmatter, line 100)
   - `| WI-032 | Cold-volume basis: vol_cold_cryo computed or held | standard | backlog |  |` (rendered table, line 195)
 - Pre-resume SHA-256 of `grep "WI-032" work/BACKLOG.md`: `79b7ab7f78066feeec9e2125f78be2f77e5550a2078af05ebe1e46f3f8955f96`
-- Post-resume row text: *(slot)*
-- Post-resume SHA-256: *(slot)*
-- Round-agent transcript ordering: trail written (event 71) → start line appended (event 74) → `pm add-item` → WI-032 (event 77) → killed. Resumer refs filled post-resume below.
+- Post-resume rows: identical to pre-resume (frontmatter block at `work/BACKLOG.md:100-104`, rendered table row at `:195`), verified by hash below.
+- Post-resume SHA-256 of `grep "WI-032" work/BACKLOG.md`: `79b7ab7f78066feeec9e2125f78be2f77e5550a2078af05ebe1e46f3f8955f96` — identical.
+- Round-agent transcript ordering: trail written (event 71) → start line appended (event 74) → `pm add-item` → WI-032 (event 77) → killed.
+- Resumer transcript: zero occurrences of `add-item` in any tool input (checked across all 130 events); the session itself ran `tests/study/test_records.py` (7 passed) after its one DISCOVERY_LOG append.
