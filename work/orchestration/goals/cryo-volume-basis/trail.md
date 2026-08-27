@@ -263,3 +263,15 @@ were derived from this goal's `goal.md` for grounding-gate probes, run in discar
 worktrees; none of their content is in this directory. Everything else in this trail —
 the grounding exchange, WI-032, the spec, the round result, the review, the learnings —
 is real work on the real question and stands on its own evidence.
+
+## Goal close — 2026-08-27
+
+### Owner ruling — 2026-08-27
+
+Reserved gate 2 is ruled: **R3 — `vol_cold_cryo` stays a held, settable input.** `[OWNER 2026-08-27]`
+
+- **Basis:** the product frame — the system sets design parameters and observes performance attributes, and the knob stays a sweepable parameter. The measured sensitivity supports it: swinging the volume across its full sourced range (285–390 m³) moves `rec_frac` by 0.005 and turns no verdict (record `@e204aee7`, certification addendum). The held 136.56 m³ is the better number at the anchor (double cross-checked); the computed route is honestly 7.0–18.5 % low. The committed study stays reproducible as written.
+- **Reversal condition:** reopen through a new work item if a future study's verdicts turn on cryoplant load. The derivation stands ready in WI-032's spec.
+- **Effect:** `goal.md` § Answered when is met on its "no" branch — a recorded decision with reasoning (WI-032's spec, this trail) and a final row `#2` disposition. WI-032 closes as the `BOUNDED_NEGATIVE` its spec's R3 branch describes.
+
+**The goal is closed by the owner** per § Close rule: the fresh review's recommendation put exactly this one decision to the owner, and the owner has ruled. No round is open; no further work under this goal.

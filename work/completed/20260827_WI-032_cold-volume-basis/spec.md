@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Epic: MFE Cost Modeling — Tokamak & Stellarator
 Owner: reid
 Created: 2026-08-26
-Updated: '2026-08-26'
+Updated: '2026-08-27'
 ---
 
 # WI-032: Cold-Volume Basis — `vol_cold_cryo` Computed or Held
@@ -126,6 +126,9 @@ Every new bound value SHALL carry `Source / Ref / Basis`: `n_coils = 48` and `c_
 - Re-running study `20260823-magnet-technology-ab`.
 
 ## Open decisions for the owner
+
+**Ruled 2026-08-27 `[OWNER]`: R3 — keep it held.** The knob stays a settable design parameter (the product sets parameters and observes attributes); measured sensitivity across the full sourced volume range turns no verdict; the held value is the better number at the anchor. Decisions 2 and 3 fall with it: gate 2 is not opened, and the `J_eng` point value is moot. **Reversal condition:** reopen through a new work item if a future study's verdicts turn on cryoplant load — this spec's derivation stands ready. The item closes as the `BOUNDED_NEGATIVE` § The three routes' R3 branch describes.
+
 
 1. **R1 or R3** — compute at a −16 % tolerance, or keep it held with the reasoning as the answer. § The three routes is the argument; the recommendation is R1, and the reason is arm B, not arm A.
 2. **Reserved gate 2** — retiring `vol_cold_cryo` as a settable input, which follows automatically from R1 and is what makes the committed study non-reproducible as written (MR-WI032-5).

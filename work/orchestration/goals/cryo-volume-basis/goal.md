@@ -119,3 +119,7 @@ The owner closes this goal, on the fresh round review's recommendation, once § 
 ## Amendments
 
 None.
+
+### Amendment 2026-08-27 — amends § Status
+
+Goal answered and closed 2026-08-27 by owner ruling on reserved gate 2: **R3 — keep `vol_cold_cryo` held**, reversal condition recorded. See `trail.md` § Goal close. `[OWNER 2026-08-27]`
