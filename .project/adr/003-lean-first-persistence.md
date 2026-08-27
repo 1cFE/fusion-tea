@@ -49,3 +49,20 @@ Keeping learning in its own file is what makes cross-round memory readable witho
 ## Consequences
 
 Being wrong is a designed outcome: a run that cannot be reconstructed from task-grain prose is the evidence that promotes the ledger. That evidence must be *recorded*, not routed around. First unattended dispatch is a pressure test, not permission to pre-build every mechanism.
+
+## Amendment — 2026-08-27: the proof run happened, and promoted nothing
+
+*(Recorded at the close of GSTH Item 4. Grade: `[OWNER]` hardening rule 2026-08-23 unchanged; the verdict below is `[AGENT]` measurement, ratified by the owner's Item 4 criteria ruling 2026-08-27, `4a8de283`.)*
+
+The run this record's promote-only-when table was waiting for has been made. Thirteen kept cold sessions ran the prose route against a real goal at `work/orchestration/goals/cryo-volume-basis/` — grounding, a real mid-task process kill and a resume from disk, a bounded round close, a fresh round review, and a standalone reader. Certified 2026-08-26; record at `.project/completed/20260827_goal-cold-pickup-proof/verification_record.md`, audit at `audit.md` in the same directory.
+
+**No mechanism is promoted.** The route failed in ten recorded places, and every one was caught by a cold session, the fresh review, or the operator — none needed an envelope, a ledger, a digest, an idempotency key, or a reconciliation pass. Two table rows were exercised directly and neither triggered:
+
+- *Append-only event ledger* — "a real resume or replay cannot be reconstructed from the trail." A real interruption was reconstructed from native facts, with no repeat of the landed effect.
+- *Idempotency keys and effect queries* — "a native mutating procedure cannot resolve interrupted unattended work." The resume was attended, so this row is untested, not passed.
+
+The one cost the run did record against the replay record: an interrupted session's in-flight goal-level decisions die with it and are not backfilled. That is a known, priced consequence of the lean route, not a promotion trigger.
+
+Two pieces of evidence went to the owner as *written-rule* repairs rather than machinery, and were taken: the grounding gate's undefended field classes (measured reach 2 of 5) and the `GOAL_RUNBOOK.md:234`/`:244` contradiction. The five-class rule was promoted into the runbook on that probe record. Amending prose on recorded evidence is what this decision asks for; it is not a hardening promotion.
+
+A future round that re-opens the hardening question starts from this measurement, not from the untested table.

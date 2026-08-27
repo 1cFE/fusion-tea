@@ -4,6 +4,34 @@ Historical record of completed work.
 
 ---
 
+## [2026-08-27] - Goal Harness Item 4: Goal Grounding, Cold-Pickup Resume, and Round-Review Proof
+
+**Type**: Item
+**Duration**: 2 days (spec 2026-08-26 → close 2026-08-27)
+
+### Summary
+Item 1 shipped the lean goal contract — the runbook, the three templates, the `run-goal` skill, and ADRs 001–007 — and every file in it was written by the person who designed the layer. No session that was not that person's had ever used it: `work/orchestration/goals/` did not exist, no goal had been grounded, no round opened, no round reviewed. Three bets carried the epic's critical path untested, and the owner's hardening rule made a recorded proof run the only admissible evidence in either direction. This item is that run. It is a proof, not a build: thirteen kept cold sessions across twelve fresh agents grounded a real goal at `work/orchestration/goals/cryo-volume-basis/`, probed the grounding gate one field class at a time, took a real mid-task process kill and resumed it from disk, closed a bounded round, reviewed it fresh, and had a standalone reader answer four questions from the goal directory alone. Its output includes the places the prose failed.
+
+### Deliverables
+- Workflow record: `20260827_goal-cold-pickup-proof/{spec,spec-review,design,design-review,plan,audit,product-lens,align}.md` and the stage briefs
+- `verification_record.md` — the proof report: three ancestry predicates, eight Required Invariant checks, and a § Failures section enumerating every point where the prose route was ambiguous, misread, or failed
+- `sessions/` — fifteen kept cold-session transcripts with their input briefs, the evidence the proof rests on; `probes/`, `gate-probe-record.md`, `seed-record.md`, `freshness-record.md`, `interruption-state.md`, `operator-notes.md`
+- Four re-runnable auditor scripts (`audit-c4-order.py`, `audit-fence-sweep.py`, `audit-brief-ordering.py`, `audit-reader-and-writes.py`)
+- `work/orchestration/goals/cryo-volume-basis/{goal,trail,learnings}.md` — the first live goal, kept as product, closed by owner ruling R3 (`e891b23a`) with WI-032 archived to `work/completed/20260827_WI-032_cold-volume-basis/`
+- `.project/adr/003-lean-first-persistence.md` § Amendment 2026-08-27 — the hardening measurement recorded against the decision it tested
+
+### Notes
+- Audited 2026-08-26, verdict **Certify** — with Criterion 8 certified as *not exercised as designed, not as a pass*. Eight of nine spec criteria met. The seeded drift was neutralized at the writer, and the audit confirmed the branch covering that outcome was declared in `design.md:269` and `plan.md` before the round agent ran (ancestry-checked). The review did catch a real organic drift, so the faculty is demonstrated; the designed test is not.
+- Findings F1–F4 (conservative hand-tally slips in `verification_record.md`) fixed; the audit's one unreachable check — the external `~/goal-proof-logs/` cross-check — closed post-audit in `41b2fcc6`: fifteen log directories, one per enumerated run plus two Phase 0 mechanism checks, no unenumerated run.
+- **Hardening verdict: no mechanism promoted.** Ten recorded prose failures, every one caught by a cold session, the fresh review, or the operator. Two table rows were exercised directly and neither triggered; the idempotency row stays untested rather than passed, because the resume was attended. Recorded as a dated amendment on ADR-003 at close.
+- Two *written-rule* repairs, distinct from machinery, went to the owner and were taken into Item 1: the grounding gate's measured reach of 2 of 5 field classes (three sessions ran full tasks unguarded and none noticed), and the `GOAL_RUNBOOK.md:234` vs `:244` contradiction. The five-class rule was promoted into the runbook on the probe record (`4a8de283`).
+- Epic Item 4 criteria 1 and 5 closed 2026-08-27 by owner ruling; the audit-time state of both is kept verbatim in the epic. Product-lens gate CLEAR — two `BLOCK` findings at the spec hop (the missing five decision fields, the grounding gate that could not hold as written), both resolved by citation in the same-hop disposition and re-checked at the implementation hop; parent epic gate CLEAR.
+- Item 1's contract was left untouched by the run itself: `git diff` over `GOAL_RUNBOOK.md`, `goal-templates/`, and `.project/adr/` across the run is empty. The runbook amendment and the ADR-003 amendment are owner-authorized post-run acts, dated in place.
+- No product ledger exists in this repository (`.project/product/`, `product.sh` absent), so the promise scan filed nothing. Gap noted, not worked around.
+
+### Lessons Learned
+[TODO: Add lessons learned]
+
 ## [2026-08-27] - Goal Harness Item 3: Verified Package Integration Seam
 
 **Type**: Item

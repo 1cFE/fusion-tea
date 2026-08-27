@@ -289,7 +289,7 @@ Gate: CLEAR
 
 ---
 
-### Item 4: Goal Grounding, Cold-Pickup Resume, and Round-Review Proof
+### Item 4: Goal Grounding, Cold-Pickup Resume, and Round-Review Proof ✅
 
 **Type**: Testing/Validation
 
@@ -336,25 +336,25 @@ Gate: CLEAR
 - [x] Fresh `RoundReview` catches the seeded drift, accounts for every touched discovery row, and accepts or corrects the learning delta. *(Closed 2026-08-27 `[OWNER]`: accepted as not exercised as designed — the seed was neutralized at the writer; the review demonstrated the faculty on a real organic drift, accounted for every touched row, and corrected the delta. The covering branch was declared before the run.)*
 - [x] The proof records any prose failure; no hardening mechanism is promoted without that evidence.
 
-**Certification status — complete, 2026-08-27** (`.project/active/goal-cold-pickup-proof/audit.md`, verdict Certify 2026-08-26). Four criteria verified by the audit; the remaining two disposed by owner ruling 2026-08-27, recorded on the checkboxes above. The audit-time state of those two, kept for the record:
+**Certification status — complete, 2026-08-27** (`.project/completed/20260827_goal-cold-pickup-proof/audit.md`, verdict Certify 2026-08-26). Four criteria verified by the audit; the remaining two disposed by owner ruling 2026-08-27, recorded on the checkboxes above. The audit-time state of those two, kept for the record:
 
 - *Criterion 1* is half met. A fresh non-builder did ground a real goal from an operator question. The other half — an ungrounded draft rejected "with the missing fields named" — was **measured at two of five field classes**, not assumed: grounding evidence and the answer contract refuse; invariants, limits, and reserved gates sail through, and three sessions ran full tasks unguarded (`gate-probe-record.md`). The epic's five-class assumption predated Item 1's shipped gate, which defended one class by written rule. **Disposed 2026-08-27 `[OWNER]`: the runbook was amended to the five-class rule**, promoted on the probe record's evidence.
 - *Criterion 5* did not exercise. The seeded drift was neutralized at the writer — the round agent narrowed the widened frame back to the goal's question — so no drift reached the reviewer. The branch covering this outcome was declared before the run. The review did catch a real organic drift, accounted for every touched row, and corrected the learning delta, so the faculty is demonstrated; the designed test is not.
 
 **Estimated Effort**: 1 day (spec 1h, design 1.5h, plan 1h, execute 4.5h)
 
-**Location**: `.project/active/goal-cold-pickup-proof/`
+**Location**: `.project/completed/20260827_goal-cold-pickup-proof/` (closed 2026-08-27 by owner authorization; archived from `.project/active/goal-cold-pickup-proof/`)
 
 **Dependencies**: Item 1.
 
 **Deliverables**:
-- `.project/active/goal-cold-pickup-proof/spec.md`
-- `.project/active/goal-cold-pickup-proof/design.md`
-- `.project/active/goal-cold-pickup-proof/plan.md`
-- `.project/active/goal-cold-pickup-proof/verification_record.md`
-- `work/orchestration/goals/{proof-goal}/goal.md`
-- `work/orchestration/goals/{proof-goal}/trail.md`
-- `work/orchestration/goals/{proof-goal}/learnings.md`
+- `.project/completed/20260827_goal-cold-pickup-proof/spec.md`
+- `.project/completed/20260827_goal-cold-pickup-proof/design.md`
+- `.project/completed/20260827_goal-cold-pickup-proof/plan.md`
+- `.project/completed/20260827_goal-cold-pickup-proof/verification_record.md`
+- `work/orchestration/goals/cryo-volume-basis/goal.md`
+- `work/orchestration/goals/cryo-volume-basis/trail.md`
+- `work/orchestration/goals/cryo-volume-basis/learnings.md`
 - Cold non-builder and resumer evidence referenced from the verification record
 
 ---
