@@ -370,16 +370,16 @@ test ! -s $GOAL/trail.md || echo "trail should be the untouched template"
 
 ### Steps
 
-- [ ] **[RUN] as `sessions/01-grounding/`** with the grounding brief drafted verbatim in Phase 0. Nothing is added to it at run time.
-- [ ] Keep the final message as `output.md`. It carries the **gate (a) questions** — this is where the ask is written, because no trail exists yet (`design.md#owner-pause-points`).
-- [ ] Commit brief-then-output per [RUN], with the current `goal.md` state in the output commit.
-- [ ] Note in a scratch file what the session asked for, what it could not find, and what the operator had to supply. Raw material for `operator-notes.md`.
+- [x] **[RUN] as `sessions/01-grounding/`** with the grounding brief drafted verbatim in Phase 0. Nothing is added to it at run time.
+- [x] Keep the final message as `output.md`. It carries the **gate (a) questions** — this is where the ask is written, because no trail exists yet (`design.md#owner-pause-points`).
+- [x] Commit brief-then-output per [RUN], with the current `goal.md` state in the output commit.
+- [x] Note in a scratch file what the session asked for, what it could not find, and what the operator had to supply. Raw material for `operator-notes.md`.
 
 ### Validation
 
-- [ ] `goal.md` is `draft` and no `### Round 1` heading exists anywhere
-- [ ] Tool-input fence check on this transcript (command in Phase 13, Invariant 2) returns nothing
-- [ ] A row exists in `freshness-record.md`
+- [x] `goal.md` is `draft` and no `### Round 1` heading exists anywhere
+- [x] Tool-input fence check on this transcript (command in Phase 13, Invariant 2) returns nothing
+- [x] A row exists in `freshness-record.md`
 
 ### **WAIT: owner ruling — gate (a)**
 
@@ -1186,7 +1186,39 @@ See `design.md#potential-risks` for the full analysis. Phase-specific mitigation
 **No deviations from plan.**
 
 ### Phase 1 Completion
-**Completed:**
+**Completed:** 2026-08-27. Session 01 kept. Parked at gate (a).
+
+**The run.** `b56a1223-b046-4341-a0f3-366c4598286d`, exit 0, 26 turns, 25 tool calls, $2.31, 21:31–21:36Z. Brief on stdin, direct `claude -p --output-format stream-json --verbose`, teed to `~/goal-proof-logs-item5/01-grounding/`. Never through `orchestrate-stage.sh`.
+
+**Commits:** `554e86db` (brief, alone) → `7b2f3a30` (transcript, output, meta, freshness row, `goal.md` state). Invariant 1 holds: `git merge-base --is-ancestor 554e86db 7b2f3a30` → OK.
+
+**What it produced.** `goal.md` at `Status: draft` with four of the five field classes filled and three owner-held headings parked (§ Question wording, § Answered when, § Close rule). `trail.md` and `learnings.md` verified byte-identical to the templates — no round opened. No commit by the session.
+
+**Validation, all passing:** `goal.md` is `draft`; no dated `### Round 1` entry; fence sweep CLEAN across 25 tool calls; freshness row present.
+
+**Harness error 08a reproduced, exactly as the plan predicted.** The unanchored check `grep -rn '### Round 1'` returned two hits — both the trail template's literal `### Round 1 result — YYYY-MM-DD` placeholders. Re-run date-anchored (`— 2026-08-27`) it returns nothing, and `diff -q` against the template confirms `trail.md` is byte-identical. **A live instance of the failure Invariant 9 exists to catch.** For § Failures.
+
+**The session did work the brief did not ask for, and it was right to.** It verified all three cited shas were still current, ran an arithmetic check off the study's own oracle scan (the re-basing is of the same order as the entire existing recirculating sum, so "negligible, leave it held" is not available without measuring), and stated plainly what that does *not* establish. It also found a **band discrepancy nobody had recorded**: DI-008 says ~60–190 MW; the research file it was minted from says the same three sources bracket 30–190 MW. It recorded it rather than resolving it, correctly — amending a DI is a reserved gate.
+
+---
+
+#### PREMISE SURPRISE — design bet B2 is measured and false
+
+**What B2 claimed.** Row `#3`'s ambient text tells a reader that re-sourcing is the shape of the work, "but not which prerequisite blocks it, not that DI-008's strongest primary is un-ingested, and not whether the gap is satisfiable from what is already here. *If false → the discovery is staged before the run and criterion 1's word 'real' is hollow, whatever the trail says.*"
+
+**What happened.** Walking the three evidence pointers R-A1 *requires* the brief to give it, session 01 established all three of those on its own and wrote them into `goal.md` § Grounding evidence:
+
+- **Moscato et al., SOFT 2018, EUROfusion WPBOP-CPR(18) 20276**, by name and report number — "**Open PDF, not ingested.** This is the only source in the set that is a helium-primary *pumping-system design* rather than a single reported figure, and it is the one not in the repository."
+- **Cismondi 2017 and Kessel/ARIES-ACT are ingested but unregistered** in `SOURCE_INDEX.md`, with the exact dossier paths and line numbers, verified.
+- **The `research` seam is unrepaired**, and registering a source runs the WI-031 hand pattern.
+
+**Why this is structural, not a mishap.** DI-008 *is* one of the three required grounding pointers, and DI-008's own model implication points one hop to the un-ingested primary. **You cannot ground this goal honestly without the grounding session finding the gap.** Re-grounding on a narrower evidence set would violate R-A1 and would not help.
+
+**The consequence for the proof.** `goal.md` is on session 03's allowlist — it is the round agent's primary input. If T-001 runs against it as it stands, a `PREREQUISITE` return restates its input rather than discovering anything. That is precisely the staged-discovery failure mode R-A2a calls "the whole proof."
+
+**What is NOT broken.** Invariant 3 binds *briefs*, and no brief contains any denied string — the mechanical fence held, and the self-checks passed. Invariant 2 held. § Question is a proper value question, not an errand, so the Phase 2 contingency for an errand-shaped question does not apply. § Invariants carries the channel and stops short of the comparison-meaning conclusion, as R-A6 requires. The guard did everything it was designed to do; the leak came through required evidence, which no fence on the brief could have closed.
+
+**Not resolved by the operator.** Capture-fidelity Rule 4: a premise surprise is surfaced, never absorbed in either direction. Deleting a true finding from `goal.md` to protect a proof would be backwards, and the operator writes no goal file in any case. Parked for the owner at gate (a).
 
 ### Phase 2 Completion
 **Completed:**
