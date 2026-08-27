@@ -1,6 +1,6 @@
 # Implementation Plan: Goal Grounding, Cold-Pickup Resume, and Round-Review Proof
 
-**Status:** Draft
+**Status:** Complete (all 11 phases; audit pending)
 **Created:** 2026-08-26
 **Last Updated:** 2026-08-26
 **Branch:** `feat/goal-integration-seam` (no child branch, except the throwaway `gate-pN` branches in Phase 3, which are deleted)
@@ -702,30 +702,37 @@ See `design.md#potential-risks` for the full analysis. Phase-specific mitigation
 [TO BE FILLED DURING EXECUTION]
 
 ### Phase 0 Completion
-**Completed:**
-**Actual result:**
-**Issues:**
-**Deviations:**
+**Completed:** 2026-08-26 — All three mechanism checks passed; runner amendment recorded (direct claude -p stream-json for cold runs) before any brief was committed. Evidence: operator-notes.md § Mechanism notes, ~/goal-proof-logs/00-derisk*/.
 
 ### Phase 1 Completion
+**Completed:** 2026-08-26 — C01 = 0a7008a0. sessions/, probes/, five record skeletons.
 
 ### Phase 2 Completion
+**Completed:** 2026-08-26 — Two turns (budget four). C-GROUND = c3e47e11. Premise gap found by the session unprompted. Fence clean (tool-input check).
 
 ### Phase 3 Completion
+**Completed:** 2026-08-26 — Five probes sequential in throwaway worktrees; C-PROBE-CLOSED = 1ea90295. Measured reach: 2 of 5 classes. Deviations: probe p2 attempt 04a discarded (harness timeout); fixture commit message neutralized from p3.
 
 ### Phase 4 Completion
+**Completed:** 2026-08-26 — C-SEED = e626b901; C-INTERRUPTED = a6caab37. Attempt 08a discarded (template-placeholder poll false-positive; polls date-anchored after). Kill landed start(74)<mint(77)<kill; seed did not propagate (B4 false, recorded).
 
 ### Phase 5 Completion
+**Completed:** 2026-08-26 — Resumer 4464c354: Stop(interruption)+completed scoped remaining half+COMPLETE return; row hash identical; zero add-item.
 
 ### Phase 6 Completion
+**Completed:** 2026-08-26 — Continuation 2e257062: T-002 spec'd WI-032 via PM, OWNER_GATE. Operator ruling (run 11, resumed session): round closed trigger 4, result 57129cb9.
 
 ### Phase 7 Completion
+**Completed:** 2026-08-26 — Review 328d437b: FINDINGS; learnings settled+appended same commit; organic drift caught (finding 1); seed had been neutralized at writer.
 
 ### Phase 8 Completion
+**Completed:** 2026-08-26 — Reader 0c03d923: four answers correct from the goal directory alone.
 
 ### Phase 9 Completion
+**Completed:** 2026-08-26 — Disclosure amendment d36009e8; freshness record closed (13 kept/2 discarded/12 sessions); operator-notes.md written.
 
 ### Phase 10 Completion
+**Completed:** 2026-08-26 — verification_record.md drafted; three ancestry checks pasted OK; eight invariants checked; hardening verdict: nothing promoted. Next: /_my_audit as a fresh session.
 
 ---
 
