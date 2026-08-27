@@ -128,11 +128,11 @@ echo "exit=$?"   # expect exit=1 (no matches)
 
 ### Steps
 
-- [ ] `mkdir -p .project/active/goal-research-model-proof/sessions ~/goal-proof-logs-item5`
-- [ ] Confirm the direct-invocation surface before committing any brief: `claude -p --help | grep -E 'resume|output-format|verbose|permission-mode'`. **If the flag spelling differs from the [RUN] block above, fix this plan's commands now** — do not improvise per-run.
-- [ ] Copy the three templates into place as the empty starting point:
+- [x] `mkdir -p .project/active/goal-research-model-proof/sessions ~/goal-proof-logs-item5`
+- [x] Confirm the direct-invocation surface before committing any brief: `claude -p --help | grep -E 'resume|output-format|verbose|permission-mode'`. **If the flag spelling differs from the [RUN] block above, fix this plan's commands now** — do not improvise per-run.
+- [x] Copy the three templates into place as the empty starting point:
   `mkdir -p work/orchestration/goals/p-pump-basis && cp work/orchestration/goal-templates/{goal.md,trail.md,learnings.md} work/orchestration/goals/p-pump-basis/`
-- [ ] **Write `covering-branches.md` in full** (`design.md#component-overview`; the design is explicit that it is finished here, not stubbed). Two tables:
+- [x] **Write `covering-branches.md` in full** (`design.md#component-overview`; the design is explicit that it is finished here, not stubbed). Two tables:
 
   **Table 1 — the branch table.** Each honest outcome, which criteria it covers, which it leaves non-exercised, and why that is a declared stop rather than a miss (R-H4):
 
@@ -148,14 +148,14 @@ echo "exit=$?"   # expect exit=1 (no matches)
 
   **Table 2 — D8's seam class → goal outcome mapping**, copied from `design.md#key-decisions` D8 including the `BLOCKER` split, and stated in the file as **the item taking a judgment the runbook leaves to the round agent**, with the reason (four classes against six outcomes is exactly where an honest queue gets quietly re-graded into a blocker, and a mapping written after the return is not a mapping). The mapping is a reading of the return, never a re-grade of it — the seam's class stays verbatim in the trail beside it (R-D3).
 
-- [ ] Create the record skeletons, each with its headings and an explicit "not yet populated" line:
-  - [ ] `freshness-record.md` — enumeration table (run NN, role, session, brief path, transcript path, session id, kept/discarded, reason) plus the closing-statement placeholder
-  - [ ] `operator-notes.md` — headings only; written in Phase 12 from the kept transcripts
-  - [ ] `verification_record.md` — the nine-criterion table skeleton, the two ordering predicates, the ten invariant slots, § Failures, § Hardening verdict; written in Phase 13
-- [ ] **Draft the two sensitive briefs** into `sessions/01-grounding/brief.md` and a held draft at `sessions/05a-round-agent-t002/brief.draft.md`. Both texts are below, verbatim. The 05a brief is **drafted now and committed later** — Phase 5 commits it, only after T-001's return is on disk (`design.md#next-stage-handoff`).
-- [ ] **Run the self-check** from the test stencil against `sessions/01-grounding/brief.md`. Expected: no matches, exit 1. **A match stops the phase** — fix the brief, do not annotate around it.
-- [ ] Also grep the drafted `goal.md` starting point and the commit message you are about to use with the same pattern. The commit message is read by nobody in the round, but it is in `git log`, which is the artifact the proof's central claim is checked against.
-- [ ] Commit: `proof: item scaffolding — sessions/, covering-branches.md complete, record skeletons` **plus** the goal-template copies. Record the sha as **C-COVER**.
+- [x] Create the record skeletons, each with its headings and an explicit "not yet populated" line:
+  - [x] `freshness-record.md` — enumeration table (run NN, role, session, brief path, transcript path, session id, kept/discarded, reason) plus the closing-statement placeholder
+  - [x] `operator-notes.md` — headings only; written in Phase 12 from the kept transcripts
+  - [x] `verification_record.md` — the nine-criterion table skeleton, the two ordering predicates, the ten invariant slots, § Failures, § Hardening verdict; written in Phase 13
+- [x] **Draft the two sensitive briefs** into `sessions/01-grounding/brief.md` and a held draft at `sessions/05a-round-agent-t002/brief.draft.md`. Both texts are below, verbatim. The 05a brief is **drafted now and committed later** — Phase 5 commits it, only after T-001's return is on disk (`design.md#next-stage-handoff`).
+- [x] **Run the self-check** from the test stencil against `sessions/01-grounding/brief.md`. Expected: no matches, exit 1. **A match stops the phase** — fix the brief, do not annotate around it.
+- [x] Also grep the drafted `goal.md` starting point and the commit message you are about to use with the same pattern. The commit message is read by nobody in the round, but it is in `git log`, which is the artifact the proof's central claim is checked against.
+- [x] Commit: `proof: item scaffolding — sessions/, covering-branches.md complete, record skeletons` **plus** the goal-template copies. Record the sha as **C-COVER**.
 
 ### The grounding brief — session 01, verbatim
 
@@ -332,10 +332,10 @@ Do not run `git commit` — the operator owns commits.
 
 ### Validation
 
-- [ ] `git log --oneline -1` shows the scaffolding commit; its sha recorded as **C-COVER**
-- [ ] `covering-branches.md` has both tables **filled**, not stubbed: `grep -c '^|' covering-branches.md` returns a two-table count, and no line contains "TBD" or "not yet populated"
-- [ ] The Invariant-3 self-check returns no matches on `sessions/01-grounding/brief.md`
-- [ ] `ls work/orchestration/goals/` shows `cryo-volume-basis` and `p-pump-basis`, nothing else
+- [x] `git log --oneline -1` shows the scaffolding commit; its sha recorded as **C-COVER**
+- [x] `covering-branches.md` has both tables **filled**, not stubbed: `grep -c '^|' covering-branches.md` returns a two-table count, and no line contains "TBD" or "not yet populated"
+- [x] The Invariant-3 self-check returns no matches on `sessions/01-grounding/brief.md`
+- [x] `ls work/orchestration/goals/` shows `cryo-volume-basis` and `p-pump-basis`, nothing else
 
 ### What We Know Works After This Phase
 
@@ -1164,7 +1164,26 @@ See `design.md#potential-risks` for the full analysis. Phase-specific mitigation
 [TO BE FILLED DURING EXECUTION]
 
 ### Phase 0 Completion
-**Completed:**
+**Completed:** 2026-08-27. **C-COVER = `e02ce403`.**
+
+**Changes made:**
+- Created `covering-branches.md` in full — Table 1 (seven honest outcomes against the nine criteria) and Table 2 (D8's seam-class mapping with the `BLOCKER` split), plus the statement that the item is taking a judgment the runbook leaves to the round agent.
+- Created `freshness-record.md`, `operator-notes.md`, `verification_record.md` as skeletons with their headings and explicit "not yet populated" lines.
+- Copied the three templates to `work/orchestration/goals/p-pump-basis/`.
+- Drafted both sensitive briefs verbatim: `sessions/01-grounding/brief.md` and `sessions/05a-round-agent-t002/brief.draft.md`.
+
+**The Invariant-3 self-check — the phase's proof point — passed.** Run against `sessions/01-grounding/brief.md`, the `goal.md` starting point, and the commit message: no match on any of `Moscato|SOFT 2018|WPBOP|research_seam|source_registry|research-acquire|not ingested`, exit 1 on each.
+
+**Flag check.** `claude -p --help` confirms `--resume`, `--output-format`, `--verbose`, and `--permission-mode` all exist with the spellings the [RUN] block uses. No plan command needed fixing.
+
+**Execution details, recorded so they are not improvised later:**
+- **Both briefs were extracted from `plan.md` by line range (`sed -n '163,251p'` and `sed -n '259,328p'`) rather than retyped**, so "verbatim" is true by construction rather than by care. 89 and 70 lines.
+- **`sessions/01-grounding/brief.md` is deliberately NOT in the C-COVER commit.** [RUN] step 2 says commit the brief *alone*, immediately before its run; Phase 1 does that. Invariant 1 (brief commit an ancestor of the output commit) holds either way, and this reading honours [RUN] literally. C-COVER carries the four item records and the three template copies.
+- **`sessions/05a-round-agent-t002/brief.draft.md` stays untracked until Phase 5**, per the design's de-risk-first instruction. Committing it now would put the five seam paths inside Invariant 3's window and break the proof's central claim. Consequence for the executor: **every `git add` from here to Phase 5 must name explicit paths — never `git add -A`.**
+
+**For § Failures (Phase 13):** `covering-branches.md` contains the strings `research_seam_operator_guide.md` and `docs/research_seam_operator_guide.md:108` in the `BLOCKER` split, and it is committed at C-COVER — before T-001. This is not an Invariant-3 violation: Invariant 3 binds *briefs*, and `covering-branches.md` is inside the item directory that every session is denied from reading. Recorded here so an auditor grepping the whole item diff for those strings does not trip over it.
+
+**No deviations from plan.**
 
 ### Phase 1 Completion
 **Completed:**
