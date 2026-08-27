@@ -7,7 +7,7 @@ in `operator-notes.md` instead (they exercised no goal artifact and played no ro
 | NN | Role | Session id | Brief (committed first) | Transcript | Kept? | Note |
 |---|---|---|---|---|---|---|
 | 01 | grounding turn 1 | 8fce7649-b573-4b1d-8a23-1a708ebe74b2 | sessions/01-grounding/brief.md | sessions/01-grounding/transcript.jsonl | kept | wrote goal.md, asked 6 operator questions |
-
+| 02 | grounding turn 2 (resume of 01) | 8fce7649-b573-4b1d-8a23-1a708ebe74b2 | sessions/02-grounding/brief.md | sessions/02-grounding/transcript.jsonl | kept | goal.md finished, Status: grounded |
 
 ## Closing statement
 
