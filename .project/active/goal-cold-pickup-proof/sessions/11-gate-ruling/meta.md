@@ -1,0 +1,4 @@
+# Run 11 — operator gate ruling (resume of run 10's session)
+- Session: `b60e4011-d78e-44df-af54-2d3511248d69` (resumed); cost $1.66; 61 events; kept.
+- Command: `claude -p --model opus --resume b60e4011-... --output-format stream-json --verbose --permission-mode bypassPermissions --max-budget-usd 10 < brief.md`, log dir `~/goal-proof-logs/11-gate-ruling/`.
+- The operator ruled gate 2 not granted in-round; the session closed Round 1 on derived trigger 4, wrote the full `### Round 1 result` (five-field decisions, three proposed learnings not appended, disposition accounting incl. two read-but-untouched rows with reasoning), superseded its own T-001 disposition row with the T-002-close row, re-ran the join test, and ended on a handoff stop naming the fresh review and the unresolved gate as the owner's.

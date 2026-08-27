@@ -146,3 +146,63 @@ The goal is not answered. `goal.md` § Answered when needs a decision with its r
    *Tier:* execution detail. *Who decided:* the round agent, 2026-08-26. *What changed:* the spec's § The three routes.
 
 **Next task:** none. The task stops on the gate, and the gate is the operator's to take to the owner. Round 1 remains open with no round result: `GOAL_RUNBOOK.md` § Opening and closing a round closes a round on an owner gate *that is not resolved*, and whether this one resolves is not this session's to decide.
+
+### Round 1 result — 2026-08-26
+
+**Intent: unmet.** The strategy revision declared one model increment — `vol_cold_cryo` computed in `models/designs/stellarator_09/stellarator_plant.sysml` — and it did not land. Nothing under `models/`, `knowledge/`, or `exploration/models/` moved this round. It also declared no committed study, and none was committed, so that half of the intent is met vacuously rather than by achievement.
+
+What the round did produce, against the goal rather than against the strategy: the discovery row is routed and stays routed, and the question the goal exists to answer is now argued on the record with its arithmetic shown. `goal.md` § Answered when is **not** met in either direction, because it requires a decision, and the decision is owner-held and was not available.
+
+**Task sequence.** Two tasks, no retries, no checkpoints.
+
+1. `T-001` — route discovery row `20260823-magnet-technology-ab#2` to a native home. Interrupted after the mint landed and before the row was appended; resumed under the same scope by a second session; returned `COMPLETE`.
+2. `T-002` — argue the derivation in `WI-032`'s spec stage. Returned `OWNER_GATE`.
+
+No pin was promoted and no study was committed, so the round stayed inside its bound (`GOAL_RUNBOOK.md` § Opening and closing a round) with room to spare. No pre-execution disposition checkpoint was owed: a checkpoint is triggered by a study reading, and this round produced none.
+
+**Last semantic outcome.** `T-002` → `OWNER_GATE` on reserved gate 2, retiring `vol_cold_cryo` as a settable input.
+
+**Stop reason, derived.** Read off the last semantic outcome plus `goal.md` § Limits, not maintained separately.
+
+- Limits: retry cap not approached (zero retries); checkpoint revision cap not engaged (no checkpoint was owed); round limit 6 not reached (this is round 1); no time or iteration limit declared. **No declared limit fired**, so trigger 5 is not the reason.
+- The last semantic outcome is an owner gate. The operator ruled on 2026-08-26 that gate 2 is **not granted in this round**: `goal.md` § Reserved gates makes any model or knowledge mutation beyond the goal directory owner sign-off, the owner was not present in this round, and the operator does not hold that authority on the owner's behalf. The gate therefore stands unresolved.
+- Derived stop reason: **close trigger 4 — an owner gate that is not resolved.**
+
+The round did not close on a strategy blocker. The strategy's own abandonment condition — no route to the anchor from carried quantities without a new sourced input — was tested and did *not* fire: a route exists and reaches the anchor from quantities that are sourced and citable (48 coils × 25 m, raw.pdf sec. 2.9, already cited in the held value's own doc), even though the model does not carry them yet. The strategy survives the round intact and is available to round 2 if the owner opens the gate.
+
+**Evidence refs.**
+
+- `work/active/WI-032_cold-volume-basis/spec.md` — the round's substantive product. Derivation, three assessed routes, five proposed-and-gated modeling requirements, scope boundaries, three open decisions for the owner.
+- `work/BACKLOG.md:100-104,195` — `WI-032` under the MFE Cost Modeling epic, minted by the modeling PM's own operation at `a6caab37`.
+- `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md` — two joined rows under `20260823-magnet-technology-ab#2`, dated 2026-08-26, the later superseding the earlier. `tests/study/test_records.py` 7 passed after the second append, so the multi-row join under one id holds.
+- `models/library/analyses/mfe_magnet_cost.sysml@8f3b510c:44`, `models/designs/stellarator_09/stellarator_plant.sysml@ba5c9945:138-139,570`, `knowledge/KNOWLEDGE.md@ffa5c54c` DI-010 — the three quantities the derivation works from.
+- `exploration/stellarator_e2e/generated/contracts/model_contract.json:1832`, `exploration/stellarator_e2e/studies/20260823-magnet-technology-ab/study.py:38-42,44-47` — why gate 2 is a real gate: the value is a package entry point and an arm-definition key, and arm B's 390 m³ is derived from arm A's held number.
+- `exploration/stellarator_e2e/studies/20260823-magnet-technology-ab/record.md@e204aee7` § 15 `#2` and the 2026-08-23 certification addendum — the finding as sighted, and the sensitivity band the tolerance is read against.
+- Cited-ref walk at round close: every ref above still stands at the digest it is cited at. The paths that moved this round — `work/BACKLOG.md`, `DISCOVERY_LOG.md`, and the new `work/active/WI-032_cold-volume-basis/` — moved by this round's own tasks. No external mutation; no task is voided.
+
+**Proposed learning delta.** Three claims, for the fresh review to accept, correct, or reject. Not appended to `learnings.md` by this session — that write belongs to the review (`GOAL_RUNBOOK.md` § The five surfaces).
+
+- **Proposed L-001 — `total_kAm` is a cost proxy, not a count of winding ampere-turn-metres.** `G = 78.95683520871486` is `8π²` exactly, so `mfe_magnet_cost.sysml@8f3b510c:44` factorises into `I_link × L_proxy` with `I_link = 2πR₀B/μ₀` and `L_proxy = 4π r_coil = 37.699 m`, and `r_coil` is the coil *bore* radius falling out of the radial build (`stellarator_plant.sysml@ba5c9945:138-139`), not a winding length. *Scope:* the MFE magnet cost calc as built, at any design point; the factorisation is algebraic, not a fit. *Implication:* any strategy wanting a conductor volume or conductor length out of this package must supply a winding length; the package carries none, and neither coil count nor circumference appears anywhere under `models/`.
+- **Proposed L-002 — Ampère's law on the magnetic axis is a lower bound on modular-stellarator coil current, not an estimate of it.** At Stellaris's own geometry (48 × 25 m) the sourced `J_eng` band 112–124 A/mm² gives 115.2–127.6 m³ against the 136.56 m³ geometric anchor; reproducing the anchor needs 104.6 A/mm², below the band. Read the other way, the winding packs carry 7–18 % more ampere-turn-metres than the axis-linking law accounts for — the shaping currents of a modular quasi-isodynamic coil set largely do not link the axis. *Scope:* modular stellarator coil topology; not established for tokamak TF coils, where the axis-linking law is closer to the whole story. *Implication:* a computed cold volume from carried quantities lands *below* a geometric anchor by roughly the size of the effect being modelled, so the tolerance must be wide. A tight tolerance is obtainable only by calibrating a form factor at the design point, and a value calibrated to the point it is validated against cannot be validated.
+- **Proposed L-003 — the case for computing this volume is arm B, not arm A.** Arm A's held 136.56 m³ has an independent double cross-check (each side² equals turns × (20 mm)² against the Table 8 turns row; the no-casing masses imply ~7540 kg/m³, consistent with the Table 7 mix), where the ampere-turn route is a provable lower bound. Arm B's 390 m³ is a hand ratio taken off arm A's held number (`study.py:38-42`). *Scope:* this comparison and this package. *Implication:* the goal's answer should be argued on what computing does for the comparison, not on arm A's accuracy — and a round that argues it on arm A's accuracy is arguing the weaker case.
+
+**Finding dispositions.** One discovery row was touched.
+
+- `20260823-magnet-technology-ab#2` — dispositioned `model fix`, routed to `WI-032`, status "spec landed; blocked on an unresolved owner gate". Two joined rows under the id, the 2026-08-26 T-002-close row superseding the 2026-08-26 T-001 row whose "routed, not yet answered" and `status: backlog` reference went stale when the spec landed. **Not left `unrouted`** (ADR-004).
+
+Two rows were read but not touched, and the reasoning is recorded so the review can disagree:
+
+- `20260823-magnet-technology-ab#3` (no coil-thickness / radial-build / stress coupling) is still `unrouted`. This round produced no evidence bearing on it. L-001 states that `r_coil` is the bore radius from the radial build, which is adjacent, but it neither confirms nor changes `#3`'s claim about the missing coupling. `goal.md` § Reserved gates item 5 bars this goal from widening to `#3`, so routing it here would be acting through a gate, not discharging an obligation.
+- `20260823-magnet-technology-ab#11` (headline sensitivity to held cryo assumptions) was cited for its certification-addendum numbers, which are the quantification its own disposition already points to. The row is dispositioned, its home is executor practice at runbook step 11, and it is not this goal's to move.
+
+**Round 1 is closed.** It is unreviewed. The round agent's last act is the round result, and this session wrote both task returns, so it cannot review the round (`GOAL_RUNBOOK.md` § What "fresh" means).
+
+### Stop — 2026-08-26
+
+Kind: handoff
+
+**What is true on disk.** Round 1 is closed: strategy revision, T-001 (scope, start, interruption stop, `COMPLETE` return), a resumption note, T-002 (scope, start, `OWNER_GATE` return), and the round result above. `WI-032` exists under the MFE Cost Modeling epic with a spec and nothing further — no design, no plan, no edit under `models/`, `knowledge/`, or `exploration/`. Discovery row `20260823-magnet-technology-ab#2` carries two joined disposition rows and is not `unrouted`. `learnings.md` is still the unfilled template; the round result proposes three claims and does not append them. Nothing is committed — the operator owns commits.
+
+**What the owner must see:** a fresh session is needed to review round 1, and separately, reserved gate 2 is unresolved and is what closed the round. The gate is the owner's, not the operator's, and round 2 has nothing to pursue until it is ruled on — the strategy survived intact but its next move is the gated one.
+
+**The material to review:** this goal directory; `work/active/WI-032_cold-volume-basis/spec.md`; `work/BACKLOG.md:100-104,195`; `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md` (the two newest rows under `20260823-magnet-technology-ab#2`). Resume at `GOAL_RUNBOOK.md` § The fresh review.
