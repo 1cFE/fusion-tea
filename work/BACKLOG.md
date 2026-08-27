@@ -97,6 +97,11 @@ epics:
     scale: trivial
     status: completed
     completed: '2026-08-22'
+  - id: WI-032
+    name: 'Cold-volume basis: vol_cold_cryo computed or held'
+    scale: standard
+    status: backlog
+    completed: null
 - name: Pipeline De-Risk & Demonstration
   goal: null
   priority: P0
@@ -187,6 +192,7 @@ standalone:
 | WI-025 | STALE-BASIS Pass-Through Recompute | standard | completed | Completed 2026-07-18 |
 | WI-030 | Computed beta and conductor peak-field limit (Stellaris) | standard | completed | Completed 2026-08-22 |
 | WI-031 | Research round: second-arm values for the Item 6 A/B studies | trivial | completed | Completed 2026-08-22 |
+| WI-032 | Cold-volume basis: vol_cold_cryo computed or held | standard | backlog |  |
 
 ## Epic: Pipeline De-Risk & Demonstration
 **Priority**: P0 | **Status**: active

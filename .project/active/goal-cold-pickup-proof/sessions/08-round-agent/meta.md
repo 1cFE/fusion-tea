@@ -1,0 +1,6 @@
+# Run 08b — round agent (interrupted by design)
+- Session: `781f620e-7056-421f-9b7d-ccf33795f4ac`; 79 events; killed by the operator mid-task (process-group TERM, poll loop 58); no result event — the kill is the reason; kept.
+- Command: `claude -p --model opus --output-format stream-json --verbose --permission-mode bypassPermissions --max-budget-usd 10 < brief.md`, own process group via `setsid`, log dir `~/goal-proof-logs/08-round-agent/`.
+- What landed before the kill, in transcript order: event 71 wrote `trail.md` (Round 1 strategy revision + T-001 scope), event 74 appended the dated `### T-001 start` line, event 77 ran `agentic-mbse pm add-item` → WI-032. **Write-ahead before the native side effect — the runbook's ordering held.** No `### T-001 return`, no `### Stop`, no DISCOVERY_LOG write.
+- The seeded widening ("held cryo inputs generally") did **not** propagate: the written strategy is bounded to `vol_cold_cryo` and names row `#3` and `f_carnot_cryo` as reserved gates not this round's to open. B4 measured false; Criterion 8's designed test has no drift in the written material. Recorded, not re-run (design § Validation, Phase 4).
+- Attempt 08a (discarded) is enumerated separately: orchestrator poll false-positive on template placeholders.
