@@ -253,18 +253,18 @@ What a round invokes, and what it gets back. The two `study.*` seams are the stu
 
 | Seam | Invoke with | Native return | The goal-level question |
 |---|---|---|---|
-| `research` — **pending native repair** | question, evidence, source and search limits | registered sources or a bounded negative | Is the evidence enough? |
+| `research` | question, evidence, source and search limits | registered sources, a queued candidate, or a bounded negative | Is the evidence enough? |
 | `model` | bounded change objective, work item, goal invariants | audited item or blocker | Did it land without comparison drift? |
 | `integrate` — **pending native repair** | audited item(s), expected lineage | verified candidate pin and fingerprint | Is there one study-ready candidate? |
 | `study.execute` | pin, question, protocol rulings | committed study record or blocker | Did it run against the exact contract? |
 | `study.read` | committed record only | native synthesis and findings | What does the evidence establish? |
 
-**Two seams are not repaired yet, and a goal round may not silently absorb either repair.**
+**One seam — `integrate` — is not repaired yet, and a goal round may not silently absorb its repair.**
 
-- **`research`** has no native tracked procedure for search → triage → capture → holdout check → register. Until it does, use the hand pattern documented by WI-031 (`work/completed/20260822_WI-031_research-round-item6-values/spec.md`): a modeling-PM work item runs the round, insights land in `knowledge/research/approved/`, and the DIs are minted at close.
+- **`research`** is native: `scripts/source_registry.py` is the one write door into `knowledge/`, `scripts/research_seam.py` carries a bounded request and computes its return from receipts on disk, and `/research-acquire` drives search and triage between them. Operator guide: `docs/research_seam_operator_guide.md`. (Repaired by GSTH Item 2; row flipped on the first live registrations — WI-033, 2026-08-28.)
 - **`integrate`** has no native tracked procedure for regeneration → verification → pin. **There is no written pattern to follow** — unlike `research`, this seam has no documented hand pattern anywhere in the repository. Until epic Item 3 lands the repair, integration work is a `PREREQUISITE` return naming the seam, handed to the operator. Do not improvise one and do not treat someone's remembered practice as the pattern.
 
-"May not silently absorb" means: if a task finds itself performing the repair rather than the hand pattern, that is a `PREREQUISITE` return naming the seam, not a quiet expansion of scope. The repairs have their own owners and their own failure contracts.
+"May not silently absorb" means: if a task finds itself performing the repair rather than the documented pattern, that is a `PREREQUISITE` return naming the seam, not a quiet expansion of scope. The repair has its own owner and its own failure contract.
 
 ## The decisions behind this
 
