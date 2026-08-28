@@ -545,3 +545,16 @@ So DI-008's stated 2 % floor is a divertor-relative figure read as a plant-relat
 The review entry names one correction made to proposed L-001 on accept (the attribution of the ~1–6 % spread to optimization). A second, smaller one was made and not named, so it is recorded here rather than left as an unexplained difference between the proposed delta and the appended one.
 
 Proposed L-001's implication read "a re-based value carries a **factor-of-two** range". The range it refers to is ~130–195 MW, which is a factor of 1.5. The appended L-001 says factor-of-1.5. Arithmetic only; the claim's substance is unchanged.
+
+## Goal close — 2026-08-28
+
+### Owner ruling — 2026-08-28
+
+All three rulings the round 1 result asked for are ruled, on the review's recommendation. `[OWNER 2026-08-28]`
+
+- **Ruling 1 — DI-008 (gate 4): corrected.** The 2 % floor is a divertor-relative figure read as plant-relative; the Stellaris band restated against the model's computed `p_th` (~130–195 MW for the helium-primary subset); the 2–6 % basis not narrowed (ARIES-ACT's ~1 % plant-level figure stays in evidence). Amendment applied at `knowledge/KNOWLEDGE.md` DI-008, dated, citing this trail.
+- **Ruling 2 — the answer's shape (gate 2): `p_pump` stays a held, settable input, re-based.** The fraction form would assert a linearity across swept (R, a) that no source establishes, and would retire a study lever in two committed studies. Re-derive the scalar when the design point moves.
+- **Ruling 3 — the value and the sources (gates 3 and 4): land ~195 MW; register Cismondi; ingest Moscato.** Granted as a mandate to WI-033 ("P_pump re-base: helium-primary circulator basis", MFE Cost Modeling epic, minted 2026-08-28): land 6 % of `p_th` at the baseline geometry (≈195 MW) in both homes of the twin with ~130 MW recorded as the documented lower bound (the `f_uplift_cryo` pattern); register Cismondi; ingest the Moscato PDF and revisit the value at first-order grade. The choice of the traceability-first end (~195 MW) over the direction-of-travel end (~130 MW) is made knowingly, per review Finding 2. Package regeneration is explicitly out of the WI's first scope — it waits on the `integrate` seam (GSTH Item 6), and the committed studies stay reproducible at their pins.
+- **"Keep 1.0 MW" was tested and is unavailable** on the evidence; recorded as the `BOUNDED_NEGATIVE` on the first half of § Question.
+
+**Effect:** `goal.md` § Answered when is met; the goal is **closed by the owner** per § Close rule. Discovery row `20260821-power-cycle-ab#3` receives its final joined row for this goal, routed to WI-033. The two `goal.md` amendments the review recommended are applied in § Amendments, operator's pen.

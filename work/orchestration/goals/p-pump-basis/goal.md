@@ -170,3 +170,12 @@ The close itself therefore stays owner-held, consistent with § Reserved gates a
 ## Amendments
 
 None.
+
+### Amendment 2026-08-28 — two corrections from the round 1 review, operator's pen
+
+- **§ Invariants, the LCOE channel.** The channel statement routes LCOE through `p_net`. Corrected: `p_th` also reaches nine cost accounts directly (`models/designs/generic_mfe/mfe_plant.sysml@ba5c9945:330,338,366,405,431,505,515,526,544`), so a power-balance input moves capital as well as net power, and an LCOE effect cannot be estimated from `p_net` alone (accepted learning L-003). The channel is corrected, not widened — no new coupling exists in the model.
+- **§ Grounding evidence, Moscato.** "It is the one not in the repository" is imprecise: the source PDF is absent; its figures are present at second-order grade in the approved research artifact cited in the same bullet (`knowledge/research/approved/20260821-165616_wi031-item6-second-arm-values.md@ffa5c54c:43`). This imprecision produced the round's first overstated claim (corrected at C-001.r1/r2).
+
+### Goal close — 2026-08-28
+
+**The owner has ruled** `[OWNER 2026-08-28]` per § Close rule, on the round 1 review's recommendation. Rulings recorded in full in `trail.md` § Goal close. Effect: § Answered when is met — a written, sourced answer (**1.0 MW is not defensible; the helium-primary evidence supports ~4–6 % of thermal power, ~130–195 MW at the baseline point**), with the model change routed through WI-033 under the MFE Cost Modeling epic. **The goal is closed.** No round is open; further work runs under WI-033, not under this goal.
