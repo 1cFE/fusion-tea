@@ -4,6 +4,35 @@ Historical record of completed work.
 
 ---
 
+## [2026-08-28] - Goal Harness Item 5: Research-to-Model Round Proof
+
+**Type**: Item (Goal Strategy and Task Harness epic, Item 5)
+**Duration**: 2 days (spec 2026-08-27 → close 2026-08-28)
+
+### Summary
+The goal layer had never run the sequence it exists for, and the owner's central requirement — that criticism sits before work compounds on a misread — had never bound on a live round. This item ran one, on a real open question rather than a rehearsal: `p_pump` = 1.0 MW in two committed A/B studies, roughly 100× below admissible helium-primary circulator figures, with the discovery row still open and DI-008's strongest primary not ingested. Eight cold sessions grounded the goal at `work/orchestration/goals/p-pump-basis/`, ran a bounded task, put the reading and the proposed dispositions through a fresh critic that refused and then released, appended joined disposition rows, closed through a `RoundResult`, and had a fresh reviewer close the round. What it proves is the **model → critic → disposition → review** spine. It does **not** prove the research half: `T-001` came back `COMPLETE` because the repository could answer the question, so the Item 2 seam was never invoked, no work item was minted during the round, and the runbook `research` row is still stale. Four of nine criteria therefore carry no live evidence — three non-exercised under a covering branch declared before the round opened (`covering-branches.md@e02ce403`), one retired by owner ruling — and the record says so in every row rather than manufacturing a research need to light them up. The goal was closed by owner ruling with the answer written and sourced (1.0 MW is not defensible; ~4–6 % of thermal power, ~130–195 MW at the baseline point), and the model change routed to **WI-033** in the modeling PM.
+
+### Deliverables
+- `20260828_goal-research-model-proof/verification_record.md` — the proof report: all nine criterion rows settled against disk, both ordering predicates as git-ancestry checks, ten pasted invariant outputs, and a § Failures section with eight entries covering every point the prose route was ambiguous, misread, or failed
+- `covering-branches.md` — the four possible outcomes and which criteria each covers, committed at `e02ce403` before the round opened, amended at `08af1532`; both ancestors of the outcome commit `71d2abe8`
+- `sessions/` — eight kept cold-session transcripts with their input briefs, plus `freshness-record.md` and `operator-notes.md`
+- Workflow record: `{align,spec,spec-review,design,design-review,plan,audit,product-lens}.md` and the stage briefs
+- `work/orchestration/goals/p-pump-basis/{goal,trail,learnings}.md` — the second live goal, kept as goal-layer state, closed by owner ruling
+- Two joined `DISCOVERY_LOG.md` disposition rows appended under existing ids `#3` and `#5`; DI-008 corrected to a divertor-relative floor; WI-033 minted
+- `.project/adr/003-lean-first-persistence.md` § Amendment 2026-08-28 — the second hardening measurement recorded against the decision it tests
+
+### Notes
+- Audited 2026-08-28, verdict **POSITIVE**. The auditor re-ran all nine criterion rows, both ancestry predicates, and all ten invariant checks against disk — including the fence sweep over 174 tool calls across eight transcripts, all clean — and every figure in the record reproduced exactly. Five findings, all citation and bookkeeping defects in the item's own records, all fixed the same day (`c389afc1`) as objectively verifiable corrections with the verification recorded; no re-audit, per the pipeline rule.
+- **Honest scope, stated in the epic.** Item 5 does not discharge the research-seam half. The epic's Item 5 criteria 1, 3 and 4 stay `[ ]` with their dispositions named, and Item 6's Current State now says plainly that no research return exists and that `GOAL_RUNBOOK.md:256`/`:264` still route a research disposition to the pre-seam hand pattern. Whichever item next runs the seam live owes both.
+- **Hardening verdict: nothing promoted.** Eight recorded failures, every one caught by a cold session, the fresh reviewer, the operator, or the audit trail. The item contains no code at all. Two things the run added over Item 4's measurement: the trail carried an owner-visible critic-versus-author disagreement without an in-place edit, and a three-step mid-run sandbox degradation was absorbed by stopping cleanly and saying why.
+- **The negative result is the valuable one.** Criterion 1's bet — that a bounded task would discover a prerequisite blind — measured false, and the cause generalizes: a need selected *because* it is documented carries its own answer in the evidence pointers the grounding step must walk. Retired by owner ruling, with the measurement kept as the item's finding rather than discarded.
+- Product-lens gate **CLEAR** at close (run at close rather than at spec, which `spec-review.md:30` had flagged); two findings, both dispositioned in the same hop. No product ledger exists in this repository (`.project/product/`, `product.sh` absent), so the promise scan filed nothing — gap noted, not worked around, as in the Item 2/3/4 closes.
+
+### Lessons Learned
+[TODO: Add lessons learned]
+
+---
+
 ## [2026-08-27] - Goal Harness Item 2: Native Research Acquisition and Registration Seam
 
 **Type**: Item (Goal Strategy and Task Harness epic, Item 2)

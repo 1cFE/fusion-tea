@@ -170,7 +170,7 @@ Which criteria each of these four outcomes covers is declared before the run, no
   - `knowledge/research/approved/20260821-165616_wi031-item6-second-arm-values.md@ffa5c54c` § R4 — the prior routing of this same need
 - **Review:** `.project/active/goal-research-model-proof/spec-review.md` — verdict Revise, 2026-08-27; this revision applies it
 - **Align:** `.project/active/goal-research-model-proof/align.md` — owner rulings, settled
-- **Product-lens:** `.project/active/goal-research-model-proof/product-lens.md` (to be created at close; not yet run)
+- **Product-lens:** `.project/completed/20260828_goal-research-model-proof/product-lens.md` — run at close 2026-08-28, gate **CLEAR** (two findings, both dispositioned in the same hop)
 - **Design:** `.project/active/goal-research-model-proof/design.md` (to be created)
 
 **Requirement numbering note (revision 2026-08-27):** no requirement the review cited was renumbered. Two were split so each half carries its true grade — R-A7 (owner-ruled removal) / R-A7a (inferred recording obligation), and R-C3 (owner-graded cap existence and cap-stops-work) / R-C3a (inherited cap number). Added: R-A2a (staged-discovery discipline), R-G4 (runbook prose around the flipped row), R-H4 (pre-declared covering branch, promoted from Open Question 4).
