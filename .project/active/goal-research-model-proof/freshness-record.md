@@ -17,3 +17,5 @@ Nothing about an owner gate is mirrored here. Where this record needs to point a
 ## Closing statement
 
 *Not yet populated — written at Phase 12.* Closure is a statement about completeness, not a count: that these runs, kept and discarded, are all the runs there were, and that no other input existed — no context injection, no prior turn beyond the recorded resume turns, no verbal hint from the operator.
+| 02 | grounding turn 2 | resume of b56a1223 (session 01) | b56a1223-b046-4341-a0f3-366c4598286d | 2026-08-28 | kept | goal.md → Status: grounded (C-GROUND b8a791ce) |
+| 03 | round agent, T-001 | new | a94a3ddd-5202-4988-90b7-20b64bee85cb | 2026-08-28 | kept | strategy revision, T-001 scope/start/return COMPLETE, proposed dispositions, handoff stop |
