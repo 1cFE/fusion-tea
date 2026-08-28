@@ -90,6 +90,17 @@ The item SHALL NOT regenerate, promote, or pin any package, and SHALL leave `exp
 - Any fraction-of-`p_th` form for `p_pump` (Ruling 2), and any change to `eta_p` or power-balance structure.
 - Edits under `knowledge/concept_research/` (the Cismondi ingest there stays as-is; registration is additive in `knowledge/sources/`).
 
+## Scope Amendment — 2026-08-28 `[OWNER 2026-08-28]` ("fix it")
+
+Phase 1 hit a seam defect: `scripts/source_registry.py` hardcoded the URL raw artifact as
+`raw.html` (`:485`), so every PDF-URL registration died `capture_failed` — the URL-PDF case
+was never covered by Item 2's tests (`test_register_url_chain.py` fixtures HTML only). Owner
+ruled to fix the defect rather than route through `--local-pdf` (which would swap `source_url`
+provenance for `origin_path`). Added to scope: the `:485` raw-artifact resolution fix
+(accept `raw.html` or `raw.pdf`) plus one PDF-URL regression test in
+`tests/research/test_register_url_chain.py`. MR-WI033-3/4 unchanged — they now pass through
+the fixed door.
+
 ## Success Criteria
 
 1. `p_pump = 195.0` with the MR-WI033-2 doc comment, byte-identical in both twins; `uv run syside check` clean on the edited file.

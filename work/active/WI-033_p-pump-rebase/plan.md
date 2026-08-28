@@ -37,12 +37,18 @@ Five phases = the design's six-commit sequence, with registrations isolated firs
 
 ## Phase 0 — Branch + preflight
 
-- [ ] `git checkout -b feat/wi033-p-pump-rebase` (from clean `main`)
-- [ ] Commit the three PM artifacts (spec.md, design.md, plan.md, VALIDATION_MATRIX SV-037 row) — the item's paper trail lands first
-- [ ] `uv run python scripts/source_registry.py register --help` — confirm flag names against design § D4 before first live call
-- [ ] Confirm registry duplicate expectation: `grep -ci "cismondi\|moscato\|17709\|20276" knowledge/SOURCE_INDEX.md` → 0
+- [x] `git checkout -b feat/wi033-p-pump-rebase` (from clean `main`)
+- [x] Commit the three PM artifacts (spec.md, design.md, plan.md, VALIDATION_MATRIX SV-037 row) — the item's paper trail lands first
+- [x] `uv run python scripts/source_registry.py register --help` — confirm flag names against design § D4 before first live call
+- [x] Confirm registry duplicate expectation: `grep -ci "cismondi\|moscato\|17709\|20276" knowledge/SOURCE_INDEX.md` → 0
 
 **Gate**: branch exists; PM artifacts committed; registry interface matches D4.
+
+**Deviation (owner-ruled 2026-08-28):** first Cismondi call returned `capture_failed` — seam
+defect at `source_registry.py:485` (URL raw artifact hardcoded `raw.html`; PDF URLs store
+`raw.pdf`). Fixed + regression test (`tests/research` 150 passed; targeted PDF-URL test
+passed). Commit **C-FIX** precedes C-REG-CIS. Failed-attempt receipt kept at
+`registry-cismondi-attempt1-capture_failed.json`. Spec § Scope Amendment / design § D1a.
 
 ## Phase 1 — Registrations (C-REG-CIS, C-REG-MOS)
 

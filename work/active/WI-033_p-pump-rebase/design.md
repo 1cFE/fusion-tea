@@ -34,6 +34,18 @@ The mandate is "register Cismondi; ingest the Moscato PDF" — two known sources
 
 *Rejected*: wrapping Moscato in a full seam request to exercise the four-class return (manufactured ceremony, contradicts the owner framing correction). *Rejected*: leaving the flip to the first real goal-round seam use (keeps the runbook instructing hand-registration, which the epic SC forbids and which WI-033 itself would otherwise have to follow — following it violates the SC too).
 
+### D1a. Amendment 2026-08-28 — the write door needed a fix first `[OWNER 2026-08-28]`
+
+The first live Cismondi call returned `capture_failed`: `source_registry.py:485` assumed every
+URL capture stores `raw.html`, but the extractor saves PDF URLs as `raw.pdf`
+(`agentic-mbse .../extract_cli.py:282`). Diagnosis evidence: probe extraction of the Cismondi
+URL succeeded with `content_hash_sha256` identical to the 2026-04 concept-research extraction;
+rollback held (registry files untouched, `verify` 0 faults). Fix (owner-ruled over the
+`--local-pdf` workaround): resolve the raw artifact as whichever of `raw.html`/`raw.pdf` the
+capture stored; regression test serves the fixture PDF over loopback. Downstream is
+extension-agnostic (the artifact is only hashed and holdout-checked), so nothing else moves.
+The commit sequence gains **C-FIX** before C-REG-CIS.
+
 ### D2. Commit order carries the proof
 
 1. **C-REG-CIS** — registry commit, Cismondi (registry-authored).
