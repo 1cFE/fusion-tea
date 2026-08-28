@@ -352,3 +352,104 @@ Neither error touches any conclusion. Neither configuration has a helium-primary
 - The C-001.r1 inversion above. It is corrected here and nowhere else, because no entry is edited in place.
 
 **What this gate does not decide.** Whether the value lands, in what shape, and at what grade Moscato's figures are admitted are reserved gates 2, 3 and 4, referred to the owner by D-3 and D-4 and untouched by this verdict. The central conclusion — 1.0 MW is not defensible for a helium-primary loop at this plant scale — is confirmed, and it survives at any precision, at either end of the range, with or without the Moscato leg, and even against ARIES-ACT's ~1 %.
+
+### Round 1 result — 2026-08-28
+
+**Intent: met.** The strategy declared it would ask the repository first, derive a value on a stated basis, and land nothing, on the ground that `goal.md` § Answered when calls a trail-only answer complete. That is what happened, and the answer it produced is written and sourced in both directions the contract allows: **1.0 MW is not defensible for a helium-primary loop at this plant scale, and the repository supports ~4–6 % of thermal power — ~130–195 MW held, ~130–200 MW computed — at the baseline point.**
+
+Two of the strategy's declared fields were not reached, and the reading "intent unmet" is available to the fresh review on them. The **model increment did not land** — nothing under `models/`, `knowledge/` or `work/` moved this round — though the strategy said in advance that this round proposes it and does not land it (reserved gate 3). The **intended study question was not asked**: no study ran, no pin was promoted. Neither is needed for § Answered when, which asks for a written sourced answer, not for a measured consequence. The counter-reading is recorded so the review can take it rather than have to find it.
+
+**Task sequence.** One task, no retries, two checkpoint submissions.
+
+1. `T-001` — what value, if any, do repository-native sources support for `stellarator_09`'s primary-coolant pumping power, and on what basis? Returned `COMPLETE` 2026-08-28.
+2. `C-001.r1` — verdict `REVISE`: three required changes and two observations.
+3. `T-001 return — revised r2` — all three required changes applied, both observations taken, one of the checkpoint's own passing statements disputed with the evidence.
+4. `C-001.r2` — verdict `PASS`, no required changes, one revision of two left unused. It adjudicated the dispute in the revision's favour: ACT1 is SCLL, ACT2 is DCLL, and `C-001.r1`'s parenthetical correction was inverted. Recorded there and nowhere else, because no entry is edited in place.
+
+No pin was promoted and no study was committed, so the round stayed well inside its bound (`GOAL_RUNBOOK.md` § Opening and closing a round). No retry was taken, so the retry cap was never engaged.
+
+**Last semantic outcome.** `T-001` → `COMPLETE`, with its reading and dispositions passed at `C-001.r2`.
+
+**Stop reason, derived.** Read off the last semantic outcome plus `goal.md` § Limits, not maintained as a second status.
+
+- Limits: retry cap 2 — zero retries taken, not approached. Checkpoint revision cap 2 — one revision used, cap not hit. Round limit 6 — this is round 1. Tasks per round — none declared. **No declared limit fired**, so trigger 5 is not the reason.
+- The last semantic outcome is `COMPLETE`, not a blocker: trigger 2 does not apply. The channel was traced, not widened — `p_pump` still reaches the verdicts through the same two power-balance terms — so trigger 3 does not apply.
+- **Trigger 4 was tested and does not apply.** The round met three reserved gates (2, 3, 4) and referred all three. None of them *stopped* the round: `T-001`'s scope excluded every gated action before the work began, so the task reached its objective and returned `COMPLETE` rather than `OWNER_GATE`. An unresolved gate that the round is waiting on is what trigger 4 names, and this round is not waiting on one — the answer is complete without them, because § Answered when says a trail-only answer is complete and puts any model change behind the owner's gate by design.
+- `goal.md` § Answered when asks for "a written, sourced answer either way — a better number, or 'keep 1.0 MW, here's why'". A better number is on the record, written, sourced, with the admissibility of each source stated and the weaker one graded. The contract explicitly does not fix the answer's shape, and it explicitly does not require a model change.
+- Derived stop reason: **close trigger 6 — the goal answered.**
+
+**This closes the round, not the goal.** `goal.md` § Close rule is owner-held: the fresh review hands the owner a recommendation once § Answered when is met, and the owner's ruling closes the goal. This result carries the recommendation; it does not close anything.
+
+**Evidence refs.**
+
+- `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md` — two joined rows appended 2026-08-28, under `20260821-power-cycle-ab#3` and `#5`. `uv run python -m pytest tests/study/test_records.py` — 7 passed after the append, so the multi-row join under one id holds.
+- `knowledge/concept_research/31-laser-icf-oec-architecture/iter-02/sources/scipub-wp-content-uploads-eurofusion-wppmicpr17-17709.md@0bf791d1:176` — Cismondi 2017: 2037 MW fusion, 2389 MW deposited in the HCPB, "~150MW" helium pumping, helium at 80 bar, the HCPB-representative-for-HCLL statement, and the statement that the figure is expected to fall.
+- `knowledge/research/approved/20260821-165616_wi031-item6-second-arm-values.md@ffa5c54c:43` — Moscato 2018's figures, at second-order grade: the source PDF is not ingested.
+- `knowledge/concept_research/33-state-backed-tokamak-best/iter-02/sources/osti-servlets-purl-1178069.md@aff7a2f9:100,157,175,197,290` — ARIES-ACT. Read at all five lines this round, three of them for the first time at round close (see the DI-008 note below).
+- `knowledge/KNOWLEDGE.md@ffa5c54c` DI-007, DI-008.
+- `models/library/analyses/mfe_power_balance.sysml@8f3b510c:119,135`; `models/library/analyses/mfe_cryo_plant.sysml@8f3b510c:47-52`; `models/designs/stellarator_09/stellarator_plant.sysml@ba5c9945:490,502,508,530,548,551,567-600,626,629`; `models/designs/generic_mfe/mfe_plant.sysml@ba5c9945:305,330,338,366,405,431,505,515,526,544`.
+- `exploration/stellarator_e2e/studies/20260821-power-cycle-ab/results/baseline_result.json@ffa5c54c`, `oracle_scan.json@ffa5c54c`, `points.csv@0d176a8c`; `record.md@881d4448` § 4, § 13, § 15, § 17.
+- `.project/adr/004-finding-disposition.md@007d9488`.
+- **Cited-ref walk at round close.** Every ref above stands at the digest it is cited at, checked with `git log -1` at this session's HEAD. The one path that moved this round — `DISCOVERY_LOG.md` — moved by this round's own ADR-004 duty, after the checkpoint passed. No external mutation; no task is voided.
+
+**One thing found at round close that was not in the passed reading.** `C-001.r2` observed that ARIES-ACT's plant-level pumping fraction sits at a line neither prior entry had cited. I read it rather than inherit it: `…purl-1178069.md@aff7a2f9:100` says "a total pumping power for He and LiPb of ~1% of the total thermal power (~2% to 3% of thermal power **in the He-cooled divertor**)". So the ~2–3 % is measured against *divertor* thermal power, not plant thermal power, and the plant-level ARIES-ACT figure is ~1 %. **DI-008's stated 2 % floor is a divertor-relative figure read as a plant-relative one.** That also settles the 60–190 vs 30–190 discrepancy `goal.md` § Grounding evidence logged and left open: the research file's 30 MW end is the correctly-read plant-level figure and DI-008's 60 MW end is not. It strengthens D-2 rather than changing it, and it is new since the checkpoint passed, so the fresh review should weigh it as unreviewed. Amending DI-008 is reserved gate 4 and this round does not.
+
+I also read `:157` and `:197`, which the checkpoint cited: ACT1 is self-cooled PbLi with SiC, ACT2 is dual-cooled with "about half of the heat removed by He", at He:LiPb thermal power ratios of 27:73 and 49:51. So ARIES-ACT is not irrelevant to a helium question — it is a *partially* helium-cooled machine reporting ~1 % at plant level, and that is the strongest thing standing against the ~4–6 % this round derived. It is stated here beside the conclusion rather than left out of it.
+
+**Proposed learning delta.** Three claims, for the fresh review to accept, correct, or reject. Not appended to `learnings.md` by this session — that write belongs to the review (`GOAL_RUNBOOK.md` § The five surfaces).
+
+- **Proposed L-001 — the repository's helium-cooling evidence spans ~1–6 % of thermal power, and the spread is design optimization, not measurement uncertainty; the helium-*primary-blanket* subset is ~4–6 %.** *Evidence:* Cismondi ~150 MW / 2389 MW HCPB at 80 bar (`…@0bf791d1:176`); Moscato ≈131 MW / 2101.7 MWth and a near-term 8-loop design at 83–94 MW, at second-order grade (`…@ffa5c54c:43`); ARIES-ACT ~1 % plant-level for a 49:51 He:LiPb blanket (`…@aff7a2f9:100,197`). The EU DEMO figures are a preliminary unoptimized layout whose own authors expect them to fall (9 km of pipe → ~3 km with larger diameters); ARIES-ACT is an optimized advanced study with a high-temperature Brayton cycle. *Scope:* helium-cooled blankets at DEMO/Stellaris scale; the ~4–6 % subset holds for HCPB and, on the source's own representativeness statement, HCLL. Not established for any other coolant or for a machine whose helium share is small. *Implication:* a re-based value carries a factor-of-two range that no further reading of these three sources will close; closing it needs a loop design, which is reserved gate 5 and a different goal. A number quoted to better than one significant figure from this evidence is false precision — a lesson this round had to be told twice before it took.
+- **Proposed L-002 — a missing power-balance operand column is recoverable post hoc when the record commits the driving channel and every other term of the sum is bound.** *Evidence:* the reconstruction from `points.csv@0d176a8c`'s `p_fus` and `eta_th` columns plus the design's bound inputs reproduces `oracle_scan.json@ffa5c54c` exactly at the baseline (0.1514 / 915.1) and at both grid corners (0.9424 / 8.3 and 0.0572 / 4529.2). *Scope:* this package as configured. It fails the moment any recirculating term becomes geometry-dependent — `p_cryo` is recoverable only because every cryo input is bound (`mfe_cryo_plant.sysml@8f3b510c:47-52`). *Implication:* finding `#5` is a cost, not a wall, for this package: a later round can locate a `rec_frac` fence from committed evidence without a pin. It cannot locate an LCOE fence that way, which is L-003.
+- **Proposed L-003 — `p_th` is a cost driver as well as a power-balance quantity, so a power-balance input reaches LCOE by two paths, not one.** *Evidence:* nine cost accounts take `p_th` directly in `mfe_plant.sysml@ba5c9945` (lines 330, 338, 366, 405, 431, 505, 515, 526, 544) — blanket, shield, divertor, heat rejection, buildings, coolant, aux cooling, waste, and I&C. `p_pump` enters `p_th` through `eta_p·p_pump` (`mfe_power_balance.sysml@8f3b510c:119`). *Scope:* the MFE plant spine as built. *Implication:* `goal.md` § Invariants routes LCOE through `p_net`, which is the larger path but not the only one, so an LCOE effect cannot be estimated from `p_net` alone and needs a package run. Any future goal-level channel statement about a power-balance input must name both paths.
+
+**Finding dispositions.** Two rows touched and dispositioned, both appended 2026-08-28 under their existing ids. Neither returns as `unrouted` (ADR-004).
+
+- `20260821-power-cycle-ab#3` — `model fix`, routed to goal `p-pump-basis` round 1 task T-001, status "routed, not yet answered". The finding is confirmed and sharpened: the row's own "~100×" understates it; the factor is ~130–195×. Nothing landed, no work item minted — reserved gates 2, 3 and 4.
+- `20260821-power-cycle-ab#5` — `declared seam`. The evidence-layer gap stays with sysml-codegen / teax outside this repository; the concrete next reference is the reconstruction recipe, verified at the baseline and both grid corners. `upstream filing` was considered and rejected: it would name an action outside this repository that this round cannot perform and did not.
+
+Rows read but not touched, with the reasoning recorded so the review can disagree:
+
+- `20260821-power-cycle-ab#10` — its Home is "runbook step 9; applied as executor practice in study 1", a real routing, not `unrouted`. Both checkpoints concurred. No row owed.
+- `20260821-power-cycle-ab#1` and `#2` — still `unrouted`. This task reasoned only from the baseline row of the oracle scan; its evidence bears on neither the availability nor the discount-rate finding. `C-001.r2` checked this independently and agreed.
+
+**Recommendation to the owner.** `goal.md` § Close rule: the fresh review hands this to the owner, and the owner's ruling closes the goal. Three rulings are asked for, in the order they depend on each other.
+
+**Ruling 1 — DI-008 (reserved gate 4). Recommended: correct its floor and its Stellaris band; do not narrow its 2–6 % basis.**
+
+- Its **2 % floor is a misread**: `…@aff7a2f9:100` measures ~2–3 % against divertor thermal power, and the plant-level figure in the same sentence is ~1 %. Recommend the DI say so, which also settles the 60–190 vs 30–190 discrepancy `goal.md` logged, in the research file's favour.
+- Its **60–190 MW Stellaris band** was computed against the paper's printed ~3150 MWth. Against the model's computed `p_th` at the baseline geometry the same fractions give ~65–195 MW, and the helium-primary-blanket subset alone gives ~130–195 MW.
+- Do **not** narrow the basis to 4–6 %. ARIES-ACT's ~1 % is a real plant-level figure for a machine that removes about half its blanket heat with helium. It is not a helium-primary-blanket figure, but it is not nothing, and a basis that excluded it would hide the strongest evidence against this round's own number.
+
+**Ruling 2 — the answer's shape (reserved gate 2). Recommended: `p_pump` stays a held, settable input, re-based.**
+
+Three reasons, and one that cuts the other way, stated.
+
+- The two forms differ by ~3 % at the design point (129.5 vs 132.1 MW at 4 %; 194.3 vs 200.3 MW at 6 %) — far inside the ~one-significant-figure precision the sources carry. Internalizing buys no accuracy.
+- It costs a lever. Retiring `p_pump` as a settable input under `STUDY_POLICY.md@ad2fb4ea` § 2 rule 3 removes an axis from two committed studies and changes what is comparable across rounds.
+- The fraction form asserts that pumping power scales linearly with thermal power across a swept (R, a) window. No source in the repository establishes that; Cismondi and Moscato each give one plant at one design point. DI-007's standing instruction is exactly this — a dependency the upstream model does not have must be declared, not assumed.
+- **Against:** DI-008's basis *is* a fraction, and a held scalar is only right at the geometry it was derived at. A study that sweeps R and a with a held scalar is carrying a value that is wrong away from the baseline in a known direction. This is the real argument for internalizing and the owner should weigh it; the recommendation stands because the linearity it needs is unsourced, not because the objection is weak. Precedent runs the same way — `cryo-volume-basis` closed on the owner ruling the analogous value stays held, with a reversal condition.
+
+**Ruling 3 — the value and the sources (reserved gates 3 and 4). Recommended: land ~195 MW, register Cismondi, ingest Moscato.**
+
+- **Land 6 % of `p_th` at the baseline geometry, ≈195 MW**, in both homes of the twin, through a work item minted under the MFE Cost Modeling epic. Reason: it is the only figure re-derivable at a line in an ingested source, and it errs in the direction the current model is optimistic. Record the ~130 MW near-term figure as a documented lower bound rather than averaging to a number no source states — the pattern `f_uplift_cryo` already uses in this design (`stellarator_plant.sysml@ba5c9945`, WI-024 D6).
+- **Register Cismondi in `SOURCE_INDEX.md`** through the WI-031 hand pattern. The answer's authority now rests on it and it is unregistered.
+- **Ingest the Moscato PDF.** It is the only helium-primary pumping-system *design* in the set and the only source that would convert the range's lower half from second-order to first-order grade.
+- **A "keep 1.0 MW" ruling is not available on this evidence.** `goal.md` § Answered when makes a reasoned "keep it" a first-class outcome, and this round tested it: 1.0 MW is ~0.03 % of thermal power against a sourced ~1–6 %, and it fails at every end of the range including ARIES-ACT's. The honest "keep it held" ruling here is Ruling 2 — keep the *form*, change the number.
+
+**What round 2 would face, if the owner opens the gates.** Stated as a constraint, not as a plan. Landing the value makes the committed package stale, and a study measuring where the `recirc_ok` fence moves needs a regenerated, verified, pinned package. The `integrate` seam is unrepaired and has no documented hand pattern anywhere in the repository, so that is a `PREREQUISITE` return to the operator, per `goal.md` § Grounding evidence and `GOAL_RUNBOOK.md` § The native seams. The `rec_frac` half of the question could be answered without a pin by L-002's recipe; the LCOE half could not, by L-003.
+
+**Two items for the fresh review, carried forward from `C-001.r2` and not resolved here.**
+
+- **The LCOE channel.** `goal.md` § Invariants routes LCOE through `p_net`; `p_th` also reaches nine cost accounts directly. The round traced this rather than widening the channel, and both checkpoints confirmed the count. Its substance is proposed L-003; whether `goal.md` § Invariants also needs an operator amendment is the review's call, not this round's — a round does not edit `goal.md`.
+- **`goal.md` § Grounding evidence on Moscato.** It says "it is the one not in the repository". The source PDF is absent; the figures are present in the artifact cited in the same bullet. An operator amendment in `goal.md` § Amendments, if the review agrees.
+
+**Round 1 is closed. It is unreviewed.** The round agent's last act is the round result, and this session wrote the task, both returns, and this result, so it cannot review the round (`GOAL_RUNBOOK.md` § What "fresh" means).
+
+### Stop — 2026-08-28
+
+Third stop of this date; it follows the round 1 result above.
+
+- **Kind:** `handoff`.
+- **What is true on disk:** round 1 is closed — strategy revision, `T-001` (scope, start, return), `C-001.r1`, the r2 revision and its dispositions, `C-001.r2`, and the result above. Two joined disposition rows are appended to `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md` under `20260821-power-cycle-ab#3` and `#5`; `tests/study/test_records.py` passes 7. That append is the round's only write outside this goal directory. `models/`, `knowledge/` and `work/` are unchanged: `p_pump` is still 1.0 MW at `stellarator_plant.sysml@ba5c9945:502` in both homes of the twin, no source is registered, no DI is amended, no work item is minted. `learnings.md` is still the unfilled template — the result proposes three claims and does not append them. Nothing is committed; the operator owns commits.
+- **What the owner must see:** a fresh session is needed to review round 1. Separately, the goal is answered on `goal.md` § Answered when's terms and its close is owner-held — the result carries three recommended rulings (DI-008's floor and band; the answer's shape; the value and the two sources), each with the argument against it stated. One item in the result is newer than the passing checkpoint and is unreviewed: the ARIES-ACT plant-level reading at `…purl-1178069.md@aff7a2f9:100` that makes DI-008's 2 % floor a divertor-relative figure.
+- **The material to review:** this goal directory; the two newest rows of `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md`; the evidence refs listed in the result. Resume at `GOAL_RUNBOOK.md` § The fresh review.
