@@ -24,6 +24,10 @@
 
 - **PR #108** — https://github.com/1cFE/fusion-tea/pull/108 — the whole `feat/goal-integration-seam` branch: GSTH Items 1–4, all closed and archived (`.project/completed/20260827_*`), plus Run-Study Item 6 Phases 1–3 (pre-existing lineage; Phase 4 still open). Pre-PR gate report: `.project/reports/2026-08-27-pre-pr-goal-integration-seam.md` (570/14/0; scope finding resolved by owner's one-PR ruling). **Owner: merge with a merge commit** (`! gh pr merge 108 --repo 1cFE/fusion-tea --merge --admin`), then `feat/goal-research-seam` can be deleted — strict ancestor, zero unique commits.
 
+## Shipped for merge (2026-08-28)
+
+- **PR #109** — https://github.com/1cFE/fusion-tea/pull/109 — `feat/goal-research-model-proof`: GSTH Item 5 closed and archived (`.project/completed/20260828_goal-research-model-proof/`), goal `p-pump-basis` closed by owner ruling, DI-008 amended, WI-033 minted. Gate READY (`.project/reports/2026-08-28-pre-pr-goal-research-model-proof.md`, 570/14/0). **Owner: merge with a merge commit** (`! gh pr merge 109 --repo 1cFE/fusion-tea --merge --admin`).
+
 ## Next up (in order, 2026-08-21)
 
 0. **Run-study end-to-end explainer** (`.project/active/run-study-e2e-explainer/`, new run-study epic Item 7) — spec approved 2026-08-23 (product-lens DISPOSED); story outline drafted 2026-08-23 (`story-outline.md`, html-explainer Step 1, owner review pending); next `/_my_design`; gates Item 6 Phase 4. Deep HTML explainer of the two A/B studies for an outside reader, to live in `exploration/stellarator_e2e/studies/`.
