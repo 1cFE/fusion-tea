@@ -142,7 +142,7 @@ echo "exit=$?"   # expect exit=1 (no matches)
   | `BOUNDED_NEGATIVE` | 1, 2, 3, 5, 6, 7, 8, 9 | 4 | R-D6: a bounded negative is cited by whatever was waiting on it |
   | `REGISTERED` → premise moves → `STRATEGY_BLOCKER` close on trigger 2 via gate (c) | 1, 2, 3, 5, 6, 7, 8, 9 | 4 | R-E3, B6: a peer outcome, not a fallback. Criterion 3 is met by honest routing |
   | `REGISTERED` → premise holds → gate (b) → T-003 mints and specs | 1–9 | — | the advance path; ceiling is `spec-model` (D3) |
-  | No prerequisite (T-001 returns `COMPLETE`) | 2, 5, 6, 8, 9 | 1, 3, 4 | R-B3: a prerequisite is never manufactured. Criterion 1 goes unmet and owner-visible |
+  | The repository answers it (T-001 returns `COMPLETE`) | 2, 5, 6, 8, 9 | 3, 4 | R-B3: a research need is never manufactured |
   | Checkpoint hits its cap → `### Stop` kind `cap` | 1, 2, 8, 9 | 3, 4 | R-C3: the cap stops the work, it never releases it |
   | Owner rules no gate before close → trigger 4 | 1, 2, 3, 5, 6, 7, 8, 9 | 4 | near-certain per the spec; a park at a declared gate is a declared stop |
 
@@ -451,11 +451,15 @@ A real goal exists at `work/orchestration/goals/p-pump-basis/`, grounded on the 
 
 ### Goal
 
-The round opens under one strategy revision, and its first task attempts to re-base `p_pump` from repository-native sources under the goal's invariants. **The prerequisite emerges as its return, or it does not.** Spec criterion 1.
+The round opens under one strategy revision, and its first task attempts to re-base `p_pump` from repository-native sources under the goal's invariants. **Either the current data answers the question, or the task returns that research is needed to establish a defensible value.**
+
+**Framing, per Ruling 2 `[OWNER 2026-08-28]`.** T-001's return is a judgment about **the sufficiency of the repository's current data** — not the identification of one missing document. The task is graded on the work it did: did it honestly test whether an admissible, citable basis exists here, and can it evidence its answer? Criterion 1 as originally written is retired (`covering-branches.md` § Amendment 2026-08-28), so this phase no longer carries it.
 
 ### Assumption Under Test
 
-**B1** — the repository holds no admissible, citable basis for a helium-primary circulator `p_pump` at this scale, so an honest bounded attempt runs out of evidence. And **B2** — row `#3`'s ambient "re-sourcing is a separate modeling item" tells a reader the *shape* of the work but not the prerequisite's identity, so a task that establishes it has made a real discovery.
+**B1** — the repository holds no admissible, citable basis for a helium-primary circulator `p_pump` at this scale, so an honest bounded attempt runs out of evidence and returns that research is needed.
+
+**B2 is already measured and false** (Phase 1 notes; `covering-branches.md` § Amendment 2026-08-28). It is not under test here. Blindness is not what T-001 is being graded on.
 
 ### Ancestor required
 
@@ -491,22 +495,22 @@ sed -n '/^### T-001 scope/,/^### T-001 start/p' $GOAL/trail.md
 
 ### Conditional branch — T-001 returns `COMPLETE` (B1 false)
 
-Lands on `covering-branches.md` **row "No prerequisite (T-001 returns `COMPLETE`)"**: covers criteria 2, 5, 6, 8, 9; leaves 1, 3, 4 non-exercised.
+The repository's current data answers the question. Lands on `covering-branches.md` **row "The repository answers it"**: covers criteria 2, 5, 6, 8, 9; leaves 3 and 4 non-exercised.
 
-- [ ] **Do not manufacture a prerequisite** (R-B3). This is the single rule that keeps the item honest.
+- [ ] **Do not manufacture a research need** (R-B3). This is the single rule that keeps the item honest.
 - [ ] The round continues to a close on whatever trigger fits, through the checkpoint (Phase 4) and the review (Phase 10). The seam is not invoked, so Phases 5–7 are skipped and Phase 11's flip does **not** land — R-G3 requires the flip to rest on a seam run that happened.
-- [ ] `verification_record.md` records criterion 1 unmet, owner-visible, with T-001's return as the evidence, and the item ships the smaller proof.
+- [ ] `verification_record.md` records that the repository's current data answered the question, with T-001's return as the evidence. The seam is not invoked, criteria 3 and 4 go non-exercised under the declared branch, and the item ships the smaller proof.
 
 ### Validation
 
 - [ ] `git merge-base --is-ancestor <C-COVER> <C-T001>` → OK, output pasted for Phase 13
 - [ ] `### T-001 scope` names no research task and lists no future tasks
-- [ ] Tool-input fence check on session 03's transcript returns nothing. **If it shows a read of `.project/backlog/epic_goal_strategy_task_harness.md` or of row `#3`'s Home column, that is not a run to discard** — it is a second ambient hint, recorded in § Failures, and criterion 1 is judged on the work T-001 actually did (`design.md#the-grounding-guard`).
+- [ ] Tool-input fence check on session 03's transcript returns nothing. **If it shows a read of `.project/backlog/epic_goal_strategy_task_harness.md`, that is not a run to discard** — it is recorded in § Failures. What T-001 is graded on is the work it did: whether it honestly tested the sufficiency of the repository's current data and can evidence its answer (Ruling 1, `[OWNER 2026-08-28]`).
 - [ ] Every goal-level decision carries all five fields
 
 ### What We Know Works After This Phase
 
-Criterion 1 has its evidence or its honest negative, and `git log` shows the covering-branch declaration predates the task that produced the outcome.
+A real bounded modeling task has either answered the `p_pump` question from the repository or returned that research is needed to establish a defensible value — with its reasoning and evidence on the trail — and `git log` shows the covering-branch declaration predates the task that produced the outcome.
 
 ---
 
@@ -1113,7 +1117,7 @@ git diff $BASE..HEAD -- $ITEM | grep -niE 'envelope|event ledger|digest|idempote
 - [ ] **Three entries are known before the run and are written whatever else happened:**
   1. **The stale `research` seam row.** The shipped runbook instructed a hand-write that Item 2 had already replaced, and only an operator ruling stopped it. Record whether the round agent or the critic noticed the staleness **before** the ruling arrived — from T-001's return and the checkpoint transcript, either way.
   2. **The `:140` trigger-phrase tension (R-C2).** The runbook phrases the checkpoint trigger as "after a study reading produces proposed dispositions." This round executed no study; it read committed study evidence. The reading this run acted on: the checkpoint fires on **the reading**, and a reading of committed study evidence is a reading — basis, the epic's own Item 5 scope step 2, which names no freshly executed study (`epic:389`) and which the owner ratified with the decomposition. **Recorded as an orchestrator execution-detail decision, loudly, in this section and in the run summary that goes to the owner.** If the owner reads `:140` narrowly, it is that runbook sentence that gets amended, not this item's checkpoint.
-  3. **Ambient hints the fence could not remove.** Row `#3`'s Home column ("re-sourcing is a separate modeling item; item not yet minted") is grounding evidence R-A1 requires, so it could not be withheld. State plainly what it does and does not carry, and judge criterion 1 on whether T-001 actually searched repository-native sources and returned a specific, evidenced gap. Add the "research" string in the item-directory denial line (Phase 0), and any transcript showing a session reached `.project/backlog/` anyway.
+  3. **The recorded gap is the readable gap — bet B2 measured false, and criterion 1 retired.** The full write-up is `covering-branches.md` § Amendment 2026-08-28 and the Phase 1 completion note; § Failures carries it as a measured prose failure with its general result: a need selected because it is documented has a prerequisite legible to anyone who reads the documentation, so a deliberately chosen need cannot yield blind discovery. State that the brief fence held (Invariants 2 and 3 clean) and that the leak came through evidence R-A1 requires. Record the owner's ruling and characterization verbatim. Add the "research" string in the item-directory denial line (Phase 0), the `research_seam_operator_guide.md` strings in `covering-branches.md` (Phase 0 note), and any transcript showing a session reached `.project/backlog/` anyway.
 - [ ] Add everything else that actually happened: aborted runs, the `pm approve-research` empty-insight refusal if it bit, harness errors, anything the executor had to decide in the moment.
 - [ ] **State the hardening verdict explicitly.** Either name a mechanism and cite the recorded run failure that promotes it under the owner's rule, or say plainly that none is proposed. **Silence is not an option.**
 - [ ] Do not grade the run against a predicted outcome. If the seam queued, if the premise moved, if T-001 returned `COMPLETE` — the record says so, and `covering-branches.md` already said which criteria that outcome covers.
@@ -1214,7 +1218,11 @@ See `design.md#potential-risks` for the full analysis. Phase-specific mitigation
 
 **Why this is structural, not a mishap.** DI-008 *is* one of the three required grounding pointers, and DI-008's own model implication points one hop to the un-ingested primary. **You cannot ground this goal honestly without the grounding session finding the gap.** Re-grounding on a narrower evidence set would violate R-A1 and would not help.
 
-**The consequence for the proof.** `goal.md` is on session 03's allowlist — it is the round agent's primary input. If T-001 runs against it as it stands, a `PREREQUISITE` return restates its input rather than discovering anything. That is precisely the staged-discovery failure mode R-A2a calls "the whole proof."
+**The general result.** The recorded gap *is* the readable gap. A need selected because it is documented is a need whose prerequisite is legible to anyone who reads the documentation. So a deliberately chosen need cannot yield blind discovery — not for this need, and not for any other. That is the item's finding about the goal layer, and it is worth more than the check it defeats.
+
+**Ruled at gate (a), `[OWNER 2026-08-28]`.** Criterion 1 is **retired as unreachable by construction**. The owner's characterization of the retired check, recorded as given: it was **"a stupid test to begin with and was never going to work."** It tested the wrong thing.
+
+**The framing this run carries from here (Ruling 2, `[OWNER 2026-08-28]`).** The workflow intent is not "the agent notices a specific source is missing." It is: *the agent recognizes that the repository's current data cannot answer the question and returns "research is needed"; a bounded, open-ended research round then runs through the seam — search, evaluate, register what is admissible, or return a bounded negative.* T-001's expected return is therefore **"research is needed to establish a defensible value"**, a judgment about the sufficiency of the current data. No artifact frames T-002 as fetching a known document; the request stays a question with `where_to_look` and limits, and any particular paper is one candidate a search may surface. T-001 still runs as a real bounded task and is graded on the work it does, not on blindness.
 
 **What is NOT broken.** Invariant 3 binds *briefs*, and no brief contains any denied string — the mechanical fence held, and the self-checks passed. Invariant 2 held. § Question is a proper value question, not an errand, so the Phase 2 contingency for an errand-shaped question does not apply. § Invariants carries the channel and stops short of the comparison-meaning conclusion, as R-A6 requires. The guard did everything it was designed to do; the leak came through required evidence, which no fence on the brief could have closed.
 
