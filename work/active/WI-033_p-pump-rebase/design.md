@@ -48,8 +48,8 @@ The commit sequence gains **C-FIX** before C-REG-CIS.
 
 ### D2. Commit order carries the proof
 
-1. **C-REG-CIS** — registry commit, Cismondi (registry-authored).
-2. **C-REG-MOS** — registry commit, Moscato (registry-authored).
+1. **C-REG-CIS** — Cismondi registration (registry writes the four artifacts atomically; the git commit is the operator's — corrected 2026-08-28, the guide's "commits four things or none" is the filesystem transaction, not git).
+2. **C-REG-MOS** — Moscato registration (same).
 3. **C-MODEL** — both twins: value + doc comment citing the registered paths from 1–2.
 4. **C-TESTS** — census re-derive if (and only if) the MFE semantic fingerprint moved; nothing else.
 5. **C-FLIP** — the four `GOAL_RUNBOOK.md` edits + the `goal.md` dated amendment, one commit. `git merge-base --is-ancestor C-REG-MOS C-FLIP` is the recorded predicate (C-REG-CIS is then an ancestor by transitivity).

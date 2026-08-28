@@ -217,6 +217,22 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: b7c7046ac962ca8f1e515198d513f37c653de22802fe313798057ea91ddee428
 - **Date Added**: 2026-08-21
 
+### Progress in EU Breeding Blanket design and integration
+- **Type**: url
+- **Location**: knowledge/sources/progress_in_eu_breeding_blanket_design_and_integration/
+- **Use for**: Helium-primary circulator power basis for the stellarator p_pump re-base (WI-033, DI-008): ~150 MW pumping power for the EU DEMO HCPB helium PHTS, one order of magnitude above water-cooled (~15 MW); HCPB PHTS representative for HCLL. Serves RQ-2/RQ-5.
+- **Validation**: Re-derive the ~150 MW helium pumping-power figure and the ~15 MW water comparison in the PHTS discussion (same sentence), plus the 9 km to ~3 km pipe-length reduction lever; cross-check against the concept-research extraction at knowledge/concept_research/31-laser-icf-oec-architecture/iter-02/sources/scipub-wp-content-uploads-eurofusion-wppmicpr17-17709.md:174.
+- **Caveat**: EUROfusion preprint WPPMI-CPR(17) 17709, not the journal version. The ~150 MW figure is preliminary for one unoptimized loop layout; the paper's own authors expect it to fall (pressure-drop reduction studies ongoing, larger-pipe option stated).
+
+#### Extended Metadata
+- **Source URL**: https://scipub.euro-fusion.org/wp-content/uploads/eurofusion/WPPMICPR17_17709_submitted-4.pdf
+- **Source ID**: dd240e3cbbec185112b1aef9340739ee7c624d3684b26d703062c89d772dffa2
+- **Raw SHA256**: dd240e3cbbec185112b1aef9340739ee7c624d3684b26d703062c89d772dffa2
+- **Raw Artifact SHA256**: dd240e3cbbec185112b1aef9340739ee7c624d3684b26d703062c89d772dffa2
+- **Extracted Path**: knowledge/sources/progress_in_eu_breeding_blanket_design_and_integration/
+- **Extract SHA256**: f33d50a0b3733b23a1dfc1ea8d8f5a5949fbedce6f809e979142c0686a9d1ea5
+- **Date Added**: 2026-08-28
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md
