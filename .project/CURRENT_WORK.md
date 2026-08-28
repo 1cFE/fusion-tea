@@ -1,6 +1,6 @@
 # Current Work
 
-**Last Updated**: 2026-08-27
+**Last Updated**: 2026-08-28
 
 ---
 
@@ -11,6 +11,12 @@
 - **CONSTRAINT-EXEC fusion-side items done** — Items 8, 9, 14 Appendix C committed 2026-07-20. Record: `work/active/20260713_constraint-exec-acceptance/brief.md`.
 - **Explorer** — UX v3 Phase 1 + Themes A/B1/F merged; 1costingfe v0.1.0 migration 2026-06-28; web hosting (#97; operator runbook `.project/completed/20260821_explorer-web-hosting/RUNBOOK.md`); OOM Layers 1–2 (#98), JAX pre-warm (#99), numpy-only deploy on 1costingfe v0.1.1 (#100).
 - **`.project/` archival pass done 2026-08-21** (on this branch): 56 item dirs and 6 epics moved to `completed/` with the `20260821_` prefix, 3 empty dirs deleted, live path references rewritten. `active/` now holds 5 dirs. Record: `.project/completed/CHANGELOG.md`, report `.project/reports/2026-08-21-1339-status-report.md`.
+
+## GSTH Item 5 — Research-to-Model Round Proof (2026-08-28)
+
+- **Audited POSITIVE, five findings, not yet closed.** `.project/active/goal-research-model-proof/audit.md`, branch `feat/goal-research-model-proof` at `eef3865c`. A fresh audit re-ran all nine criterion rows, both ordering predicates, and all ten invariant checks against disk — including the Invariant 2 fence sweep over eight transcripts, 174 tool calls, all CLEAN — and every pasted figure reproduced exactly. Covering-branch discipline confirmed by reading the `covering-branches.md` blob at `e02ce403`: the branch the round closed on was declared before the round opened, with the same covers set. Owner-ruling chain traces verbatim to `c8362239`. Hardening verdict holds under a sweep wider than the one that produced it — nothing promoted, no code in the diff at all.
+- **Live round:** `work/orchestration/goals/p-pump-basis/`. T-001 returned `COMPLETE` — the repository answers it — so criteria 3, 4 and 7 went non-exercised under the pre-declared branch, and criterion 1 was retired `[OWNER 2026-08-28]`. **What Item 5 proves is the model → critic → disposition → review spine, not the research seam**; the seam was never invoked and the runbook `research` row is still stale.
+- **Owed before close:** repair the five audit findings (chiefly the `covering-branches.md:32@e02ce403` citation, which points at the wrong row — the declaration is at `:36` of that blob; the freshness record's "twelve entries" for nine; and `operator-notes.md`'s skeleton text at `:7`/`:9`/`:11`/`:17` plus the stale `:45` tee status). Then the **`product-lens.md` ledger entry**, which does not exist and which this audit does not clear (`spec-review.md:30`, finding L1-5). Then owner-held: the three goal-close rulings in `### Round 1 review`, the two `goal.md` § Amendments, and Item 5 `close`/`pre_pr`.
 
 ## Shipped for merge (2026-08-27)
 

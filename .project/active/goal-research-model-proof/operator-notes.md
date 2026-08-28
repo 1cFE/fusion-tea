@@ -4,12 +4,6 @@
 
 Every judgment call here is graded `[AGENT]` and **never** written as a contract repair. Where a session got something wrong, the correction was another turn of that session, not the operator's pen.
 
-*Not yet populated.*
-
-## What the runbook prompted for unprompted, and what the operator had to supply
-
-## Where the exchange stalled, and what each stall cost in turns
-
 ## The D5 ruling as an operator judgment
 
 What it overrode, why it was delivered after the checkpoint rather than before, and that it was `[AGENT]`-graded in the brief itself so the round agent knew it was reading an operator judgment rather than a contract.
@@ -42,7 +36,7 @@ The second probe used a flat file under the already-existing log root, so it was
 
 **What is unchanged.** Invariant 1's brief-ancestry check and Invariant 2's fence sweep both read the same files they always would. Cold sessions still may not read the item directory, the denial is still in every brief, and the sweep still targets tool-call *inputs*. A transcript being written into the item directory during a run is not a session read of it.
 
-**Status: authorized, not yet exercised.** No cold run has used it — the `claude` binary was blocked before session 02 could start (see the run's blocked return). The first run to use it should confirm the transcript lands complete and well-formed.
+**Status: authorized; exercised from session 02 onward (see Post-run notes below).** At the time of this entry no cold run had used it — the `claude` binary was blocked before session 02 could start (see the run's blocked return). The first run to use it should confirm the transcript lands complete and well-formed.
 
 ## Post-run notes — 2026-08-28 (Phase 12)
 

@@ -11,7 +11,7 @@ self-certifying — a fresh `/_my_audit` re-runs every row.
 |---|---|---|---|
 | 1 | Bounded task returns a real `PREREQUISITE`, no predicted task list | **Retired `[OWNER 2026-08-28]`** — unreachable-by-construction on a deliberately chosen need (§ Failures 3). T-001 ran as a real bounded task and returned `COMPLETE` on evidence. | `trail.md` `### T-001 scope`/`### T-001 return — 2026-08-28`; ruling at `briefs/implement_resume_gate_a.md@c8362239`; `covering-branches.md` § Amendment 2026-08-28 (`08af1532`) |
 | 2 | Fresh critic reviews reading + dispositions before any follow-up executes | **MET — bound and released.** `C-001.r1` refused (three required changes); the author revised; `C-001.r2` passed. No follow-up executed before the pass: the dispositions landed in `2b9ee81e`, after `b209766c`. Critic sessions `832ac26a…` and `2a8ee4ea…` are distinct from the author `a94a3ddd…` (per-session `meta.md`). | `trail.md:134` (`C-001.r1`), `:307` (`C-001.r2`); sessions 04/04b |
-| 3 | Item 2 seam invoked natively, return routed as it stands | **Non-exercised under the declared covering branch** "The repository answers it" (`covering-branches.md:32`, committed before the round). The seam was never invoked because T-001 answered from repository holdings. No hand-written registry step exists either (Invariant 6). | `covering-branches.md:32@e02ce403`; Invariant 6 output below |
+| 3 | Item 2 seam invoked natively, return routed as it stands | **Non-exercised under the declared covering branch** "The repository answers it" (`covering-branches.md`, row "The repository answers it" — line 32 in the working tree; at `@e02ce403` the same row reads "No prerequisite (T-001 returns `COMPLETE`)", renamed by the `08af1532` amendment; both commits precede C-T001). The seam was never invoked because T-001 answered from repository holdings. No hand-written registry step exists either (Invariant 6). | `covering-branches.md` row as above (`e02ce403`, renamed `08af1532`); Invariant 6 output below |
 | 4 | Newly authorized modeling task advances the native work item | **Non-exercised, same branch.** No WI minted — reserved gates 2/3/4 referred to the owner with a recommendation (`### Round 1 result`, Rulings 1–3). | `trail.md` § Round 1 result; `work/BACKLOG.md` unchanged |
 | 5 | Every touched finding gets a joined disposition; learning cites evidence | **MET.** Rows `#3` (model fix) and `#5` (declared seam) appended under existing ids, `2b9ee81e`; no removed lines (Invariant 7 = 0); `tests/study/test_records.py` 7 passed. `learnings.md` L-001–L-003 cite sources at line, appended only in the reviewer's commit `104a68b5` (R-F4). | `DISCOVERY_LOG.md` diff; `learnings.md@104a68b5` |
 | 6 | Round closes through `RoundResult` + fresh `RoundReview`, no mirroring | **MET.** `### Round 1 result — 2026-08-28` with derived trigger 6; `### Round 1 review — 2026-08-28` verdict `FINDINGS` (neither finding reopens); reviewer session `cbc65841…` authored nothing prior. All evidence cited `<path>@<sha>`; no PM state mirrored. | `trail.md:457`; sessions 07/08 |
@@ -76,7 +76,7 @@ sweep plus a read of the whole item diff; mechanical completeness is not claimed
 ## Honest-outcome test
 
 The round closed on "the repository answers it" (T-001 `COMPLETE`). `covering-branches.md`
-lists exactly this outcome at line 32 — covering criteria 2, 5, 6, 8, 9; leaving 3, 4
+lists exactly this outcome (working-tree line 32) — covering criteria 2, 5, 6, 8, 9; leaving 3, 4
 non-exercised and cancelling criterion 7's flip — and its commits (`e02ce403` original
 table, `08af1532` criterion-1 amendment) are both ancestors of C-T001 `71d2abe8`. The
 outcome was declared before the run and the run was graded against the declaration.
@@ -84,6 +84,6 @@ outcome was declared before the run and the run was graded against the declarati
 ## Still owed at close (outside this record)
 
 - Fresh `/_my_audit` of this item (the orchestrator does not certify its own record).
-- `product-lens.md` ledger entry (spec review A9).
+- `product-lens.md` ledger entry (spec review L1-5, `spec-review.md`).
 - Owner rulings: goal close (three rulings in `### Round 1 review`), the two `goal.md`
   § Amendments the review recommends, and Item 5 close/`pre_pr` (owner-held).

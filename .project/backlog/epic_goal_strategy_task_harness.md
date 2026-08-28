@@ -401,12 +401,15 @@ Gate: CLEAR
 - A critic per native research/modeling stage.
 
 **Success Criteria**:
-- [ ] A bounded model task returns a real `PREREQUISITE` with native evidence and no predicted future task list.
-- [ ] A fresh critic reviews the reading and proposed dispositions before research/model follow-up begins; revisions and final verdict are recorded.
-- [ ] The Item 2 seam returns registered MR-4-citable evidence or an honest strategy blocker, with no hand-written registry step.
-- [ ] Under the positive path, a newly authorized modeling task advances the native work item under the same strategy and preserves comparison meaning.
-- [ ] Every touched finding receives a joined disposition update, and accepted learning cites the research/model evidence.
-- [ ] The round closes through `RoundResult` and fresh `RoundReview` without mirroring modeling-PM state.
+
+*Audit 2026-08-28 (`.project/active/goal-research-model-proof/audit.md`, verdict POSITIVE, item not yet closed): three of six marked. The round closed on "the repository answers it" — a branch declared before it opened at `covering-branches.md:36@e02ce403` — so the seam never ran. Criteria 1, 3 and 4 stay open, and **Item 5 does not discharge the research-seam half of this epic**. Whatever item next runs the seam live owes them, along with the still-stale `GOAL_RUNBOOK.md` `research` row.*
+
+- [ ] A bounded model task returns a real `PREREQUISITE` with native evidence and no predicted future task list. — **retired `[OWNER 2026-08-28]`** as unreachable by construction on a deliberately chosen need; the measurement is kept as the item's finding about the goal layer.
+- [x] A fresh critic reviews the reading and proposed dispositions before research/model follow-up begins; revisions and final verdict are recorded. — `C-001.r1` refused, author revised, `C-001.r2` passed; critic sessions distinct from the author's; dispositions landed after the pass.
+- [ ] The Item 2 seam returns registered MR-4-citable evidence or an honest strategy blocker, with no hand-written registry step. — **non-exercised**; no hand-written registry step either (`knowledge/` diff vs base empty).
+- [ ] Under the positive path, a newly authorized modeling task advances the native work item under the same strategy and preserves comparison meaning. — **non-exercised**; no WI minted, `work/` untouched.
+- [x] Every touched finding receives a joined disposition update, and accepted learning cites the research/model evidence. — two joined rows appended under existing ids, zero removed lines; three learnings appended by the reviewer.
+- [x] The round closes through `RoundResult` and fresh `RoundReview` without mirroring modeling-PM state. — fresh reviewer, verdict `FINDINGS`, no mirroring.
 
 **Estimated Effort**: 1.5 days (spec 1h, design 2h, plan 1h, execute 8h)
 

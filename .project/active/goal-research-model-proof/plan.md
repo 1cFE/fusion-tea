@@ -1126,16 +1126,18 @@ git diff $BASE..HEAD -- $ITEM | grep -niE 'envelope|event ledger|digest|idempote
 
 ### Validation
 
-- [ ] Nine criterion rows, each with a path an auditor can open
-- [ ] Two ancestry predicates, output pasted
-- [ ] Ten invariant checks, each with its command and output
-- [ ] § Failures has at least its three known entries
-- [ ] Hardening verdict stated either way
+*Verified by the fresh audit, 2026-08-28 (`audit.md`, POSITIVE).*
+
+- [x] Nine criterion rows, each with a path an auditor can open — all nine re-run against disk; one citation points at the wrong row of the right table (`audit.md` Finding 3)
+- [x] Two ancestry predicates, output pasted — both re-run: `e02ce403 → 71d2abe8` OK, `08af1532 → 71d2abe8` OK; Invariant 5 correctly non-exercised
+- [x] Ten invariant checks, each with its command and output — all ten re-run, every figure reproduced exactly (fence sweep 8/8 CLEAN over 174 tool calls; `0 fault(s), 3 legacy`; 7 passed; 261 passed / 84 skipped; 0-line runbook diff)
+- [x] § Failures has at least its three known entries — eight entries, all resolving to real artifacts; a ninth is owed
+- [x] Hardening verdict stated either way — stated, and it survives a sweep wider than this battery's
 
 ### Hand-off — the orchestrator does not certify its own record
 
-- [ ] Run `/_my_audit` as a **fresh session**. It re-runs every row against disk, including the Invariant 2 tool-input sweep.
-- [ ] **Still owed at close, outside the design:** the `product-lens.md` ledger entry the spec marks "to be created at close; not yet run" (spec review A9).
+- [x] Run `/_my_audit` as a **fresh session**. It re-runs every row against disk, including the Invariant 2 tool-input sweep. — done 2026-08-28, `audit.md`, verdict **POSITIVE** with five findings; every row re-run, none overturned.
+- [ ] **Still owed at close, outside the design:** the `product-lens.md` ledger entry the spec marks "to be created at close; not yet run" (`spec-review.md:30`, finding **L1-5** — this line and `verification_record.md:88` both cite it as "A9", a label that does not appear in the review). The audit did not clear this gate.
 
 ---
 
