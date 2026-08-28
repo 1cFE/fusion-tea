@@ -233,6 +233,22 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: f33d50a0b3733b23a1dfc1ea8d8f5a5949fbedce6f809e979142c0686a9d1ea5
 - **Date Added**: 2026-08-28
 
+### Progress in the design development of EU DEMO Helium-Cooled Pebble Bed primary heat transfer system
+- **Type**: url
+- **Location**: knowledge/sources/progress_in_the_design_development_of_eu_demo_helium_cooled/
+- **Use for**: Helium-primary pumping-system design basis (EU DEMO HCPB PHTS) for the stellarator p_pump re-base (WI-033, DI-008): 2101.7 MWth blanket, 9 loops x 2 compressors (6.8 MW IB / 7.5 MW OB, ~131 MW total, 6.2%); near-term 8-loop design 83-94 MW (~4%) — the documented lower bound. Serves RQ-2/RQ-5.
+- **Validation**: Re-derive the per-compressor powers (6.8 IB / 7.5 OB MW; near-term 5.9/5.2 MW), the loop count, and the 2101.7 MWth blanket power at their printed tables; the ~131 MW and 83-94 MW totals must reconstruct arithmetically from loops x compressors x per-compressor power.
+- **Caveat**: SOFT 2018 preprint (EUROfusion WPBOP-CPR(18) 20276), not the journal version. Title from the research-file attribution pending verification against the PDF title page. Second-order quotes of these figures exist in knowledge/research/approved/20260821-165616_wi031-item6-second-arm-values.md:43 — this registration upgrades them to first-order.
+
+#### Extended Metadata
+- **Source URL**: https://scipub.euro-fusion.org/wp-content/uploads/eurofusion/WPBOPCPR18_20276_submitted.pdf
+- **Source ID**: 75f2417ab3d005af0599251e3b81739b6bcae99c1d6ac5b1cd0116d7194ffba4
+- **Raw SHA256**: 75f2417ab3d005af0599251e3b81739b6bcae99c1d6ac5b1cd0116d7194ffba4
+- **Raw Artifact SHA256**: 75f2417ab3d005af0599251e3b81739b6bcae99c1d6ac5b1cd0116d7194ffba4
+- **Extracted Path**: knowledge/sources/progress_in_the_design_development_of_eu_demo_helium_cooled/
+- **Extract SHA256**: cee0b99c95543866c498ecaa0479120abe96e3bb7733cbc76ede72e439475e5c
+- **Date Added**: 2026-08-28
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md
