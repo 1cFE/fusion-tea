@@ -54,12 +54,12 @@ passed). Commit **C-FIX** precedes C-REG-CIS. Failed-attempt receipt kept at
 
 Design ref: § D4 (drafted flags, verified titles), § Research Findings (URLs, hashes).
 
-- [ ] Register Cismondi: `--url .../WPPMICPR17_17709_submitted-4.pdf`, title "Progress in EU Breeding Blanket design and integration", D4 flags → expect `registered`, exit 0; keep JSON output for verification_record
-- [ ] Register Moscato: `--url .../WPBOPCPR18_20276_submitted.pdf` (unsuffixed; sha256 75f2417a… expected on raw), title re-verified against PDF title page, D4 flags → expect `registered`, exit 0; keep JSON
-- [ ] If either returns anything but `registered` → STOP, surface (design Risk 1; no improvising)
-- [ ] Record C-REG-CIS / C-REG-MOS commit SHAs (registry-authored commits)
-- [ ] First-order re-derivation, Cismondi: locate "~150MW … (~15MW)" + HCPB-representative-for-HCLL + 9km→3km in the REGISTERED extraction; note exact line numbers for D3 Ref
-- [ ] First-order re-derivation, Moscato: locate 2101.7 MWth; 9 loops / 2 compressors; 6.8/7.5 MW; near-term 5.9/5.2 MW; reconstruct ≈131 MW and 83–94 MW arithmetically; note line numbers; cross-check tables vs `images/` if garbled (design Risk 2: unreconstructable figure → STOP, surface)
+- [x] Register Cismondi: `--url .../WPPMICPR17_17709_submitted-4.pdf`, title "Progress in EU Breeding Blanket design and integration", D4 flags → expect `registered`, exit 0; keep JSON output for verification_record
+- [x] Register Moscato: `--url .../WPBOPCPR18_20276_submitted.pdf` (unsuffixed; sha256 75f2417a… expected on raw), title re-verified against PDF title page, D4 flags → expect `registered`, exit 0; keep JSON
+- [x] If either returns anything but `registered` → STOP, surface (design Risk 1; no improvising)
+- [x] Record C-REG-CIS / C-REG-MOS commit SHAs (registry-authored commits)
+- [x] First-order re-derivation, Cismondi: locate "~150MW … (~15MW)" + HCPB-representative-for-HCLL + 9km→3km in the REGISTERED extraction; note exact line numbers for D3 Ref
+- [x] First-order re-derivation, Moscato: locate 2101.7 MWth; 9 loops / 2 compressors; 6.8/7.5 MW; near-term 5.9/5.2 MW; reconstruct ≈131 MW and 83–94 MW arithmetically; note line numbers; cross-check tables vs `images/` if garbled (design Risk 2: unreconstructable figure → STOP, surface)
 
 **Gate**: two `registered` outcomes committed; all warrant figures re-derived at noted lines.
 
@@ -67,11 +67,11 @@ Design ref: § D4 (drafted flags, verified titles), § Research Findings (URLs, 
 
 Design ref: § D3 (full doc-comment text; fill `{...}` from Phase 1).
 
-- [ ] REFINE `models/designs/stellarator_09/stellarator_plant.sysml:502` — value 195.0 + D3 doc comment with real paths/lines
-- [ ] REFINE `exploration/stellarator_e2e/models/designs/stellarator_09/stellarator_plant.sysml:502` — identical bytes
-- [ ] `cmp` the two files → identical
-- [ ] `set -a; source ~/1cfe/agentic-mbse/.env; set +a; uv run agentic-mbse validate models/` → L1 0/0; L2 = 12 pre-existing WARNs, none new
-- [ ] Commit C-MODEL (both twins only)
+- [x] REFINE `models/designs/stellarator_09/stellarator_plant.sysml:502` — value 195.0 + D3 doc comment with real paths/lines
+- [x] REFINE `exploration/stellarator_e2e/models/designs/stellarator_09/stellarator_plant.sysml:502` — identical bytes
+- [x] `cmp` the two files → identical
+- [x] `set -a; source ~/1cfe/agentic-mbse/.env; set +a; uv run agentic-mbse validate models/` → L1 0/0; L2 = 12 pre-existing WARNs, none new
+- [x] Commit C-MODEL (both twins only)
 
 **Gate**: validate matches prototype baseline; twins identical; commit contains exactly two files.
 
@@ -79,10 +79,10 @@ Design ref: § D3 (full doc-comment text; fill `{...}` from Phase 1).
 
 Design ref: § D7.
 
-- [ ] `set -a; source ~/1cfe/agentic-mbse/.env; set +a; uv run python -m pytest tests/models`
-- [ ] If green → no C-TESTS; done
-- [ ] If ONLY the census fingerprint assert fails → re-derive `tests/models/data/mfe_census.json` per the test's own instruction; verify `by_entry_type` unchanged (names only — if it also moved, STOP: the edit did more than intended, design Risk 3); rerun suite green; commit C-TESTS (fixture only, old→new fingerprint in message)
-- [ ] Any other failure → STOP, surface
+- [x] `set -a; source ~/1cfe/agentic-mbse/.env; set +a; uv run python -m pytest tests/models`
+- [x] If green → no C-TESTS; done
+- [x] If ONLY the census fingerprint assert fails → re-derive `tests/models/data/mfe_census.json` per the test's own instruction; verify `by_entry_type` unchanged (names only — if it also moved, STOP: the edit did more than intended, design Risk 3); rerun suite green; commit C-TESTS (fixture only, old→new fingerprint in message)
+- [x] Any other failure → STOP, surface
 
 **Gate**: `tests/models` green; working tree clean except intended commits.
 
@@ -90,14 +90,14 @@ Design ref: § D7.
 
 Design ref: § D5; recipe at `.project/completed/20260828_goal-research-model-proof/design.md:231`.
 
-- [ ] `GOAL_RUNBOOK.md:256` — `research` row: drop "— **pending native repair**"; Native-return column → the native classes (registered sources, a queued candidate, or a bounded negative); question column unchanged
-- [ ] `:262` — "Two seams are not repaired yet" → one seam, naming `integrate`
-- [ ] `:264` — WI-031 hand-pattern bullet → pointer to `docs/research_seam_operator_guide.md`, `scripts/research_seam.py`, `scripts/source_registry.py`, `/research-acquire`
-- [ ] `:267` — closing sentence made singular
-- [ ] Verify `integrate` row `:258` and bullet `:265` byte-untouched in the diff
-- [ ] Append `goal.md` § Amendments entry per D5 text, with real C-REG SHAs
-- [ ] Commit C-FLIP (two files only); message names the resting evidence per D5 ("write door live; bookkeeper not yet run end-to-end")
-- [ ] `git merge-base --is-ancestor <C-REG-MOS> <C-FLIP>` → true (record in verification_record)
+- [x] `GOAL_RUNBOOK.md:256` — `research` row: drop "— **pending native repair**"; Native-return column → the native classes (registered sources, a queued candidate, or a bounded negative); question column unchanged
+- [x] `:262` — "Two seams are not repaired yet" → one seam, naming `integrate`
+- [x] `:264` — WI-031 hand-pattern bullet → pointer to `docs/research_seam_operator_guide.md`, `scripts/research_seam.py`, `scripts/source_registry.py`, `/research-acquire`
+- [x] `:267` — closing sentence made singular
+- [x] Verify `integrate` row `:258` and bullet `:265` byte-untouched in the diff
+- [x] Append `goal.md` § Amendments entry per D5 text, with real C-REG SHAs
+- [x] Commit C-FLIP (two files only); message names the resting evidence per D5 ("write door live; bookkeeper not yet run end-to-end")
+- [x] `git merge-base --is-ancestor <C-REG-MOS> <C-FLIP>` → true (record in verification_record)
 
 **Gate**: diff confined to the named spots; predicate true.
 
@@ -105,11 +105,11 @@ Design ref: § D5; recipe at `.project/completed/20260828_goal-research-model-pr
 
 Design ref: § D6; spec § Success Criteria (all six).
 
-- [ ] DI-008 disposition: figures confirmed → paragraph in verification_record only; moved → STOP and surface to owner before any DI edit
-- [ ] Write `verification_record.md`: registry JSONs, re-derivation lines, validate/test outputs, ancestry predicate, regen-fence check (`git diff main --stat` shows zero touches under committed packages / `exploration/stellarator_e2e/studies/`)
-- [ ] Spec success criteria 1–6 checked off explicitly
-- [ ] `uv run agentic-mbse pm update-validation SV-037 --status passing`
-- [ ] Commit C-CLOSE
+- [x] DI-008 disposition: figures confirmed → paragraph in verification_record only; moved → STOP and surface to owner before any DI edit
+- [x] Write `verification_record.md`: registry JSONs, re-derivation lines, validate/test outputs, ancestry predicate, regen-fence check (`git diff main --stat` shows zero touches under committed packages / `exploration/stellarator_e2e/studies/`)
+- [x] Spec success criteria 1–6 checked off explicitly
+- [x] `uv run agentic-mbse pm update-validation SV-037 --status passing`
+- [x] Commit C-CLOSE
 - [ ] Report to owner; owner sequences: PR open (+ `/_my_pre_pr` if shipping alone), then `pm close-item WI-033` after any audit they want
 
 **Gate**: all spec criteria evidenced; SV-037 passing; branch pushed only when owner says.
