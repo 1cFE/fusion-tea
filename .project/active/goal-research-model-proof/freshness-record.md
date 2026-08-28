@@ -19,3 +19,4 @@ Nothing about an owner gate is mirrored here. Where this record needs to point a
 ## Closing statement
 
 *Not yet populated — written at Phase 12.* Closure is a statement about completeness, not a count: that these runs, kept and discarded, are all the runs there were, and that no other input existed — no context injection, no prior turn beyond the recorded resume turns, no verbal hint from the operator.
+| 04 | Checkpoint critic r1 | new | `sessions/04-checkpoint/brief.md` | `sessions/04-checkpoint/transcript.jsonl` | see meta.md | kept | Verdict: does not pass — three required changes; re-derived all arithmetic; C-001.r1 in trail |
