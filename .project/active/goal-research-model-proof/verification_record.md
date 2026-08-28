@@ -1,55 +1,89 @@
-# Verification record — nine criteria, ten invariants, two predicates
+# Verification Record — GSTH Item 5: Research-to-Model Round Proof
 
-**Status:** skeleton, opened 2026-08-27 at Phase 0. Written at Phase 13, against disk.
-
-Every row below is settled by a path, a commit, or a return file an auditor can open — not by the operator's recollection. The orchestrator writes this record and does not certify it; `/_my_audit` runs as a fresh session afterwards and re-runs every row.
+**Written:** 2026-08-28, by the orchestrator-as-operator, after Phase 12. Every claim
+below names the disk evidence that settles it; predicate outputs are pasted verbatim
+from the check battery run at HEAD `6f1f5d70` (2026-08-28). This record is not
+self-certifying — a fresh `/_my_audit` re-runs every row.
 
 ## The nine criteria
 
-| # | Criterion | Producing run(s) | What settles it | Verdict |
-|---|---|---|---|---|
-| 1 | Real `PREREQUISITE`, no predicted task list | | | |
-| 2 | Fresh critic before any follow-up | | | |
-| 3 | Seam invoked natively, return routed as it stands | | | |
-| 4 | Modeling task advances the native item | | | |
-| 5 | Joined dispositions; learning cites the evidence | | | |
-| 6 | `RoundResult` + fresh `RoundReview`, no mirroring | | | |
-| 7 | Runbook `research` row flipped, later than the seam run | | | |
-| 8 | Every prose ambiguity, misread, and failure recorded | | | |
-| 9 | No hardening mechanism without a recorded failure | | | |
+| # | Criterion | Verdict | What settles it |
+|---|---|---|---|
+| 1 | Bounded task returns a real `PREREQUISITE`, no predicted task list | **Retired `[OWNER 2026-08-28]`** — unreachable-by-construction on a deliberately chosen need (§ Failures 3). T-001 ran as a real bounded task and returned `COMPLETE` on evidence. | `trail.md` `### T-001 scope`/`### T-001 return — 2026-08-28`; ruling at `briefs/implement_resume_gate_a.md@c8362239`; `covering-branches.md` § Amendment 2026-08-28 (`08af1532`) |
+| 2 | Fresh critic reviews reading + dispositions before any follow-up executes | **MET — bound and released.** `C-001.r1` refused (three required changes); the author revised; `C-001.r2` passed. No follow-up executed before the pass: the dispositions landed in `2b9ee81e`, after `b209766c`. Critic sessions `832ac26a…` and `2a8ee4ea…` are distinct from the author `a94a3ddd…` (per-session `meta.md`). | `trail.md:134` (`C-001.r1`), `:307` (`C-001.r2`); sessions 04/04b |
+| 3 | Item 2 seam invoked natively, return routed as it stands | **Non-exercised under the declared covering branch** "The repository answers it" (`covering-branches.md:32`, committed before the round). The seam was never invoked because T-001 answered from repository holdings. No hand-written registry step exists either (Invariant 6). | `covering-branches.md:32@e02ce403`; Invariant 6 output below |
+| 4 | Newly authorized modeling task advances the native work item | **Non-exercised, same branch.** No WI minted — reserved gates 2/3/4 referred to the owner with a recommendation (`### Round 1 result`, Rulings 1–3). | `trail.md` § Round 1 result; `work/BACKLOG.md` unchanged |
+| 5 | Every touched finding gets a joined disposition; learning cites evidence | **MET.** Rows `#3` (model fix) and `#5` (declared seam) appended under existing ids, `2b9ee81e`; no removed lines (Invariant 7 = 0); `tests/study/test_records.py` 7 passed. `learnings.md` L-001–L-003 cite sources at line, appended only in the reviewer's commit `104a68b5` (R-F4). | `DISCOVERY_LOG.md` diff; `learnings.md@104a68b5` |
+| 6 | Round closes through `RoundResult` + fresh `RoundReview`, no mirroring | **MET.** `### Round 1 result — 2026-08-28` with derived trigger 6; `### Round 1 review — 2026-08-28` verdict `FINDINGS` (neither finding reopens); reviewer session `cbc65841…` authored nothing prior. All evidence cited `<path>@<sha>`; no PM state mirrored. | `trail.md:457`; sessions 07/08 |
+| 7 | Runbook `research` row flipped, later than the seam run | **Non-exercised.** R-G3 requires the flip to rest on a seam run; none happened. `GOAL_RUNBOOK.md` diff vs base is empty (Invariant 8 = 0 lines). The stale row remains, recorded in § Failures 1. | Invariant 8 output below |
+| 8 | Every prose ambiguity/misread/failure recorded | **MET.** § Failures below, eight entries, each resolving to a run artifact. | this file |
+| 9 | No hardening mechanism without a recorded failure | **MET.** § Hardening verdict below: nothing promoted. Check: keyword sweep over the item diff (hits are the rule's own prose in spec/review text, no mechanism) PLUS a read of the whole item diff. Mechanical completeness is not claimed. | Invariant 10 output below |
 
-*Not yet populated.*
+## The ordering predicates (pasted)
 
-## The two ordering predicates
+```
+## Invariant 4 — C-COVER -> C-T001 (e02ce403 2026-08-27 -> 71d2abe8 2026-08-28)
+git merge-base --is-ancestor e02ce403 71d2abe8 && echo OK   -> OK
+Also: the criterion-1 amendment 08af1532 (2026-08-28) precedes C-T001 71d2abe8 — the
+renamed branch row predates the outcome it covers.
+## Invariant 5 — C-SEAM -> C-FLIP
+NON-EXERCISED: no seam run, no flip. Nothing to order.
+```
 
-Output pasted verbatim, not summarized.
+## The ten invariants (battery of 2026-08-28, HEAD 6f1f5d70)
 
-- **Invariant 4** — `git merge-base --is-ancestor <C-COVER> <C-T001>`: *not yet run*
-- **Invariant 5** — `git merge-base --is-ancestor <C-SEAM> <C-FLIP>`: *not yet run*
+```
+Inv 1  brief-ancestry: 8 sessions OK (01,02,03,04,04b,05,07,08); 05a "brief= out=NONE (no run)" — drafted, never run
+Inv 2  tool-input fence sweep: 8 transcripts CLEAN
+Inv 3  pre-T-001 briefs (01,02,03,04) denial grep: no output, exit 1
+Inv 4  OK (pasted above)
+Inv 5  non-exercised (pasted above)
+Inv 6  knowledge/SOURCE_INDEX.md, MANIFEST.jsonl, sources/ diff vs e44498d4: empty; source_registry.py verify: 0 fault(s), 3 legacy entry(ies)
+Inv 7  DISCOVERY_LOG removed lines: 0; tests/study/test_records.py: 7 passed
+Inv 8  GOAL_RUNBOOK.md diff vs e44498d4: 0 lines
+Inv 9  this record greps clean for literal YYYY-MM-DD placeholders (checked at commit; the check's own pattern string is exempt)
+Inv 10 keyword sweep over item diff: hits only in prose quoting the rule (spec, review, ADR list); plus whole-diff read: no mechanism. tests/study: 261 passed, 84 skipped
+```
 
-## The ten invariant checks
+Invariant 1's 05a row is the correct shape, not a violation: the brief was drafted at
+Phase 0, held untracked per design, committed post-window at `71244a3b` as a
+drafted-never-run record, and no session ever ran from it.
 
-Each with its command and its output.
+## § Failures — every point the prose route was ambiguous, misread, or failed
 
-1. One committed brief per cold session, its commit an ancestor of that session's output commit — *not yet run*
-2. No cold session's tool-call **inputs** read the item directory, any `.orchestrate-logs/`, `~/goal-proof-logs-item5/`, or the epic — *not yet run*
-3. No brief committed before T-001's return names the errand — *not yet run*
-4. `C-COVER` ancestor of `C-T001` — *see above*
-5. `C-SEAM` ancestor of `C-FLIP` — *see above*
-6. Every `knowledge/` write is `source_registry.py`'s; `verify` reports zero faults — *not yet run*
-7. No first-sighting `DISCOVERY_LOG.md` row edited, no id minted; `tests/study/test_records.py` passes — *not yet run*
-8. The `GOAL_RUNBOOK.md` diff touches only the four spots; the `integrate` row and its bullet are byte-unchanged — *not yet run*
-9. Every pasted predicate that reads a goal file shows its date anchor — *not yet run*
-10. No hardening mechanism in the item's diff without a recorded run failure promoting it — *not yet run*
+1. **The stale `research` seam row was never repaired and never bit.** `GOAL_RUNBOOK.md:256/:264` still routes a round to the WI-031 hand pattern (stale since Item 2), and `goal.md:130` carries the same instruction into the goal file. The designed override (design D5, T-002 brief) was never delivered because no task needed the seam. Nobody — round agent, either critic, reviewer — flagged the staleness unprompted, and none had cause to. **The row remains stale on this branch**; its repair still owes to whichever item next runs the seam live (Item 5's flip requirement was branch-cancelled, criterion 7).
+2. **The `:140` trigger-phrase tension (R-C2).** The runbook phrases the checkpoint trigger as "after a study reading". This round read committed study evidence; the checkpoint fired on the reading. Orchestrator execution-detail decision, basis the owner-ratified epic scope sentence (`epic:389`); recorded here and in the owner run summary. If the owner reads `:140` narrowly, the runbook sentence is what gets amended.
+3. **Bet B2 measured false; criterion 1 retired `[OWNER 2026-08-28]`.** The grounding session, walking only the three evidence pointers R-A1 requires, learned the prerequisite's identity (DI-008's source line carries "open PDF, not ingested"). The brief fence held (Inv 2/3 clean); the leak came through required evidence. General result: **a recorded gap is a readable gap — a need selected because it is documented cannot yield blind discovery.** Owner's ruling: option B; characterization verbatim: "this sounds like a stupid test to begin with and was never going to work." Ambient-hint notes: the string "research" appears inside every brief's item-directory denial path (`goal-research-model-proof`) — not a denial-list string; `covering-branches.md` carries seam-guide strings at C-COVER — it is not a brief and no session may read it.
+4. **Harness error 08a reproduced** (Phase 1): an unanchored `grep '### Round 1'` matched the trail template's literal `YYYY-MM-DD` placeholders; the date-anchored form returned nothing. A live instance of the failure Invariant 9 exists to catch.
+5. **Freshness row for session 02 recorded one phase late** (added at C-T001 `71d2abe8`, owed at C-GROUND `b8a791ce`), then rehomed at `8f731fa7` after a malformed append. Operator bookkeeping failure, twice; caught both times before the close.
+6. **Mid-run sandbox degradation, three steps** (git writes → home-dir writes → `claude` invocation), each refusal quoted in `operator-notes.md` § Mechanism notes. The execution subagent stopped cleanly at each wall; the orchestrator absorbed the operator role from Phase 2. The authorized in-repo tee deviation was exercised from session 02 on; only the out-of-tree transcript copy was lost.
+7. **`C-001.r1`'s own correction was inverted** (ACT1/ACT2 blanket assignment) — a critic error, disputed by the author with line evidence and adjudicated for the author by the fresh `C-001.r2` at a line neither had cited (`:157`). The disagreement lives in the entries; nothing was edited in place.
+8. **A load-bearing citation was one line off** (review Finding 1): the HCPB-representative-for-HCLL warrant is at `:174`, cited as `:176` by the r2 return and repeated unchecked by both checkpoints. Caught by the fresh review; conclusion unaffected; correct cite `:174,176`.
 
-## § Failures
-
-Every point where the prose route was ambiguous, misread, or failed, **whether or not it promoted anything**. Three entries are known before the run and are written whatever else happens: the stale `research` seam row; the `:140` checkpoint trigger-phrase tension and the reading this run acted on; and the ambient hints the fence could not remove.
-
-*Not yet populated.*
+Session-numbering note: design table's session 05 (T-002) never ran; the label 05 was
+reused for the r2 revision resume and 05a holds the never-used seam brief; 06 never
+existed. The freshness record's closing statement enumerates this.
 
 ## § Hardening verdict
 
-Either a mechanism is named with the recorded run failure that promotes it under the owner's rule, or the record says plainly that none is proposed. **Silence is not an option.**
+**Nothing is promoted.** Eight recorded failures above; every one was caught by a cold
+session, a fresh reviewer, the operator, or the audit trail itself — no envelope, event
+ledger, digest comparison, idempotency key, reconciliation pass, or dispatcher was
+needed to catch any of them, and none enters the item. Check: Invariant 10's keyword
+sweep plus a read of the whole item diff; mechanical completeness is not claimed
+(a dispatcher need not call itself one).
 
-*Not yet populated.*
+## Honest-outcome test
+
+The round closed on "the repository answers it" (T-001 `COMPLETE`). `covering-branches.md`
+lists exactly this outcome at line 32 — covering criteria 2, 5, 6, 8, 9; leaving 3, 4
+non-exercised and cancelling criterion 7's flip — and its commits (`e02ce403` original
+table, `08af1532` criterion-1 amendment) are both ancestors of C-T001 `71d2abe8`. The
+outcome was declared before the run and the run was graded against the declaration.
+
+## Still owed at close (outside this record)
+
+- Fresh `/_my_audit` of this item (the orchestrator does not certify its own record).
+- `product-lens.md` ledger entry (spec review A9).
+- Owner rulings: goal close (three rulings in `### Round 1 review`), the two `goal.md`
+  § Amendments the review recommends, and Item 5 close/`pre_pr` (owner-held).
