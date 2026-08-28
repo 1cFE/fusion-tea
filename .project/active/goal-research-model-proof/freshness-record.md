@@ -11,11 +11,11 @@ Nothing about an owner gate is mirrored here. Where this record needs to point a
 | Run | Role | Session | Brief | Transcript | Session id | Kept / discarded | Reason |
 |---|---|---|---|---|---|---|---|
 | 01 | Grounding turn 1 | new | `sessions/01-grounding/brief.md` | `sessions/01-grounding/transcript.jsonl` | `b56a1223-b046-4341-a0f3-366c4598286d` | kept | Completed successfully (exit 0, 26 turns, 25 tool calls). Wrote `goal.md` to `draft` and put five numbered questions to the owner. Fence sweep CLEAN |
+| 02 | Grounding turn 2 | resume of 01 | `sessions/02-grounding/brief.md` | `sessions/02-grounding/transcript.jsonl` | `b56a1223-b046-4341-a0f3-366c4598286d` | kept | Completed (exit 0). goal.md → `Status: grounded` (C-GROUND `b8a791ce`). Owner charter verbatim. Fence sweep pending Phase 13 |
+| 03 | Round agent, T-001 | new | `sessions/03-round-agent/brief.md` | `sessions/03-round-agent/transcript.jsonl` | `a94a3ddd-5202-4988-90b7-20b64bee85cb` | kept | Completed (exit 0, 57 turns). T-001 `COMPLETE` (C-T001 `71d2abe8`), proposed dispositions, handoff stop. Fence sweep pending Phase 13 |
 
 *Populated as runs happen. The closing statement is written at Phase 12.*
 
 ## Closing statement
 
 *Not yet populated — written at Phase 12.* Closure is a statement about completeness, not a count: that these runs, kept and discarded, are all the runs there were, and that no other input existed — no context injection, no prior turn beyond the recorded resume turns, no verbal hint from the operator.
-| 02 | grounding turn 2 | resume of b56a1223 (session 01) | b56a1223-b046-4341-a0f3-366c4598286d | 2026-08-28 | kept | goal.md → Status: grounded (C-GROUND b8a791ce) |
-| 03 | round agent, T-001 | new | a94a3ddd-5202-4988-90b7-20b64bee85cb | 2026-08-28 | kept | strategy revision, T-001 scope/start/return COMPLETE, proposed dispositions, handoff stop |
