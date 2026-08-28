@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Epic: MFE Cost Modeling — Tokamak & Stellarator
 Owner: reid
 Created: 2026-08-28
-Updated: 2026-08-28
+Updated: '2026-08-28'
 ---
 
 # WI-033 Spec — P_pump Re-base: Helium-Primary Circulator Basis

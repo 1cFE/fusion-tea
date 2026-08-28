@@ -105,8 +105,8 @@ epics:
   - id: WI-033
     name: 'P_pump re-base: helium-primary circulator basis'
     scale: standard
-    status: backlog
-    completed: null
+    status: completed
+    completed: '2026-08-28'
 - name: Pipeline De-Risk & Demonstration
   goal: null
   priority: P0
@@ -198,7 +198,7 @@ standalone:
 | WI-030 | Computed beta and conductor peak-field limit (Stellaris) | standard | completed | Completed 2026-08-22 |
 | WI-031 | Research round: second-arm values for the Item 6 A/B studies | trivial | completed | Completed 2026-08-22 |
 | WI-032 | Cold-volume basis: vol_cold_cryo computed or held | standard | completed | Completed 2026-08-27 |
-| WI-033 | P_pump re-base: helium-primary circulator basis | standard | backlog |  |
+| WI-033 | P_pump re-base: helium-primary circulator basis | standard | completed | Completed 2026-08-28 |
 
 ## Epic: Pipeline De-Risk & Demonstration
 **Priority**: P0 | **Status**: active
