@@ -185,3 +185,121 @@ The same paragraph also qualifies the figure in a way the reading does not repor
 **One thing for the round review, flagged and left there.** `goal.md` § Invariants routes LCOE through `p_net`. The return found that `p_th` also reaches nine cost accounts directly, which I confirmed exactly. The round handled this honestly in prose and did not widen the channel — it traced it. But it is a correction to a goal-level statement of what the channel does, and where that lands is the round result's and the fresh review's call, not this checkpoint's.
 
 **What passes.** The arithmetic, the source readings, the citation liveness, the scope discipline, the gate discipline, and the refusal to choose the answer's shape. The reading's central conclusion — 1.0 MW is not defensible for a helium-primary loop at this plant scale — is confirmed and is not in question. The three required changes are about how narrowly the supporting claim is drawn, how precisely the number is carried, and one disposition the runbook does not allow.
+
+### T-001 return — revised r2, 2026-08-28
+
+Revision 1 of 2, submitted as C-001.r2. This entry replaces nothing: `### T-001 return — 2026-08-28` stands as written and the disagreement is the record.
+
+**What this revision changes.** All three required changes of `### Checkpoint C-001.r1` are applied. Both non-required observations are taken. One statement inside the checkpoint's own confirmations is disputed, with the evidence, below. The outcome is unchanged at `COMPLETE`, and the central conclusion is unchanged and now rests on more evidence, not less.
+
+**Additional evidence read for this revision.**
+
+- `knowledge/research/approved/20260821-165616_wi031-item6-second-arm-values.md@ffa5c54c:43` — the Moscato row of the three-figure table, with its inputs.
+- `knowledge/concept_research/31-laser-icf-oec-architecture/iter-02/sources/scipub-wp-content-uploads-eurofusion-wppmicpr17-17709.md@0bf791d1:176` — re-read for two sentences the first return passed over: the HCPB-to-HCLL representativeness statement, and the statement that the pumping figure is expected to fall.
+- `knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/output.md@e5a2cb23:1349` and `models/designs/stellarator_09/stellarator_plant.sysml@ba5c9945:490` — Stellaris's blanket is HCLL, in the source and in the model's own citation.
+- `models/library/analyses/mfe_cryo_plant.sysml@8f3b510c:47-52` with the bound inputs at `models/designs/stellarator_09/stellarator_plant.sysml@ba5c9945:567-600`, and `:508,530,626,629` — for the constancy check the `#5` disposition now rests on.
+- `.project/adr/004-finding-disposition.md@007d9488`.
+
+**Required change 1 — accepted. `#5` gets a proposed disposition row.**
+
+The checkpoint is right and my reasoning was wrong. ADR-004's bar on a self-discovered finding becoming a log row is a bar on **minting an id**; `#5` already exists, its subject is exactly the gap this task's reconstruction ran over, and its Home column reads `unrouted`. What I read as "already disposed" is the executor's account of how the study *handled* the gap, which is not a routing. "No touched row returns as `unrouted`" is unconditional. The proposed row is in the revised dispositions entry below.
+
+I checked the constancy claim the row's next reference depends on, rather than taking it from the checkpoint. Every other term of the recirculating sum is a bound constant at every grid point: `p_tf` 0 and `p_pf` 0 (`stellarator_plant.sysml@ba5c9945:508,626`), `p_tfcool` 15.0 and `p_pfcool` 0 (`:530,629`), `p_trit` 10.0 and `p_house` 4.0, `p_input`/`eta_pin` = 100. `p_cryo` is computed but from bound inputs only — `q_nuc` 35.5, `vol_cold` 136.56, `p_fixed` 0.0075, `f_uplift` 1.0, `T_cold` 20, `T_amb` 300, `f_carnot` 0.20 — so `mfe_cryo_plant.sysml@8f3b510c` returns 0.864352 MW at every point, matching the baseline channel exactly and moving with neither R nor a. `p_sub` is `f_sub`·`eta_th`·`p_th`, and `points.csv` carries `eta_th` as a column. So `rec_frac` and `p_net` are recoverable at all 3,792 rows from the committed record alone.
+
+**Required change 2 — accepted, with the grade stated.**
+
+"Moscato 2018 is not in the repository" was too flat, and it carried the claim that mattered. The *figures* are in the repository, in the approved research artifact this return already cites: 2101.7 MWth, nine loops of two compressors, ≈131 MW total, and a near-term eight-loop design at 83–94 MW (`…wi031-item6-second-arm-values.md@ffa5c54c:43`). What is absent is the source PDF.
+
+**I admit them, at second-order grade, and say what the grade means.** They are a prior session's transcription from a web-fetched PDF that was never ingested, so unlike Cismondi and ARIES-ACT they cannot be re-derived at a line in a source — the standard this task applied to the other two. They are not thereby worthless: the artifact is approved, it is in the repository's own research pipeline, and DI-008 was minted partly from it. Admitting them at that grade and saying so is more honest than excluding them silently, and it is what the owner needs in order to weigh the answer.
+
+The consequence is that the answer is a range, not a point:
+
+| source | grade | fraction of thermal power |
+|---|---|---|
+| Cismondi 2017, HCPB, ~150 MW / 2389 MW | ingested extraction, read at the line | ~6 % |
+| Moscato 2018, HCPB, ≈131 MW / 2101.7 MWth | second-order, via the approved research artifact | ~6 % |
+| Moscato 2018, near-term 8-loop, 83–94 MW | second-order, same | ~4 % |
+
+**And D-2's claim is restated to what the evidence carries: the low end of DI-008's 60–190 MW band does not apply.** DI-008 built that band as 2–6 % of ~3150 MWth. The 2 % leg is ARIES-ACT, a machine with no helium-primary blanket, so the ~60 MW floor has no helium-primary evidence behind it. The helium-primary evidence supports **~4–6 %**, which at the model's computed thermal power is **~130–195 MW** — inside DI-008's band, in its upper half. The first return's "a single point, one source, above the band" was a stronger and shakier claim riding on the sound one, and it is withdrawn.
+
+**Required change 3 — accepted. The value is carried at ~6 %, not 6.279 %.**
+
+The source says "~150MW". Four significant figures do not come out of one approximate one, and the sharpest comparative claim in the first return — "at or just above the top of the band" — was an artifact of that false precision. At the source's own precision the value is **~195 MW held, ~200 MW computed**, which is *at* the top of DI-008's band, not above it.
+
+The same paragraph also qualifies the figure, and the first return reported this only as an aside about the source's kind: "Accurate design studies are on-going to reduce the pressure drop in the helium loops and consequently the requested pumping power", with the specific lever named — larger pipes would cut the loop from ~9 km to ~3 km. So ~150 MW is a preliminary figure for one unoptimized layout that its own authors expect to fall. That is consistent with Moscato's near-term eight-loop design at ~4 %, and it means **the low end of the ~4–6 % range is the direction of travel, not an outlier**. The value is proposed with that qualification attached, not with it in a footnote.
+
+**None of this touches the answer to the first half of `goal.md` § Question.** 1.0 MW is ~0.03 % of thermal power against a sourced 4–6 %. That holds at any precision, at either end of the range, and with or without the Moscato leg. Stated plainly: the conclusion does not rest on a sharp number and never needed one.
+
+**Observation 1 — taken, as a reported sensitivity rather than a change of basis.**
+
+Both readings of the like-for-like check are reported: including the 50 MW of plasma heating, the model's thermal power is 1.178 × `p_fus`; excluding it, 1.160 × `p_fus`; DEMO's blanket deposition is 1.173 × its fusion power. Both are within 1.2 % of DEMO. The value moves 1.6 % between them, which is inside the source's own precision and invisible at ~6 %. I do not switch the basis, because `p_input` is heating power that does reach the wall and DEMO's own 2389 MW cannot be shown from the paragraph to exclude the equivalent term. Reporting both is what the evidence supports; picking one would assert a resolution the source does not give. D-1 stands, and is now stated with its sensitivity.
+
+**Observation 2 — taken.**
+
+The stated warrant for transporting an HCPB ratio to Stellaris is replaced. Pressure match alone was thin. The source carries the warrant directly: "the HCPB PHTS can be also be considered representative for the HCLL concept", and Stellaris's blanket is HCLL — in the extraction (`…output.md@e5a2cb23:1349`) and in the model's own citation for `mn` (`stellarator_plant.sysml@ba5c9945:490`). Both native helium-primary data points are HCPB, and the source itself licenses the transport. The 80 bar / 8 MPa match is now corroboration, not the argument.
+
+**One statement in the checkpoint disputed: the ACT1/ACT2 blanket assignment is inverted, and my own phrasing was wrong too.**
+
+The checkpoint corrects "self-cooled LiPb (DCLL)" with "ACT1 is DCLL, ACT2 is SCLL". Read at `…purl-1178069.md@aff7a2f9:290`, it is the other way round. The paragraph pairs each characterization with its configuration: "The **advanced** characterization of high βN (5.75), high H98 (1.65), and SiC composite structure **SCLL** blanket concept … results in a 6.25-m plasma", and "The **conservative** characterization of low βN, low H98, and RAFM steel structure **DCLL** blanket concept … results in a 9.75-m plasma"; the same page identifies "ACT2 (conservative physics/conservative technology)". Conservative is ACT2, so **ACT1 is SCLL and ACT2 is DCLL**.
+
+My own phrasing was separately wrong: "self-cooled LiPb (DCLL)" conflated the two concepts. DCLL is dual-coolant — helium *and* LiPb — and SCLL is the self-cooled one. The correct statement: both configurations use Li₁₅.₇Pb₈₄.₃ as liquid-metal breeder/coolant (`:290`); ACT1's blanket is SCLL, ACT2's is DCLL; in both, helium is the divertor coolant (`:175`, 10 MW for ACT1 and 12 MW for ACT2).
+
+**Neither error changes anything.** Neither configuration has a helium-primary blanket, which is the whole of the reason ARIES-ACT does not answer this goal's question. Recorded because the checkpoint's correction would otherwise enter the record as fact. One further detail while at the line: `:175` reports ≈2 % for *both* ACT1 and ACT2 in the divertor section, while `:290` reports ~1 % of total thermal power in the conclusions. DI-008 already reads the pair that way ("~1 %, 2 % for helium in the divertor"); no correction is proposed, and neither figure is a helium-primary-blanket figure.
+
+**The revised reading, in full.**
+
+The repository holds two helium-primary HCPB circulator data points at different grades, and one figure from a machine that has no helium-primary blanket. Read together, the two that apply support a primary-circulator power of **~4–6 % of thermal power** for a helium loop at 80 bar, transported to Stellaris on the source's own HCPB-representative-for-HCLL statement. At the model's computed thermal power that is **~130–195 MW** as a held scalar, or **~130–200 MW** as a computed fraction, at the baseline point on the comparison pin. The upper end is a preliminary figure its authors expect to fall; the lower end is the near-term optimized design.
+
+Against that, `p_pump` = 1.0 MW is ~0.03 % of thermal power. **1.0 MW is not defensible for a helium-primary loop at this plant scale**, and the finding does not depend on which end of the range or which precision is taken.
+
+Against DI-008 as written: the 60–190 MW band's **upper** half is what the helium-primary evidence supports, and its **lower** end is not supported at all, because the 2 % leg it was built from is not a helium-primary machine.
+
+Effect at the baseline point, from the reconstruction the checkpoint independently confirmed: `rec_frac` 0.1514 → 0.266 (4 %) or 0.322 (6 %) in the η 0.333 arm, and 0.116 → 0.197 or 0.237 in the η 0.47 arms; `p_net` falls 11.8–17.7 % and 7.4–11.1 %. **No verdict flips at the baseline point** against the 0.5 threshold. Where the `recirc_ok` fence moves, and what LCOE does, still need a package run — `p_th` reaches nine cost accounts directly, so LCOE is not hand-derivable, and locating the fence is the round's study question, not this task's result.
+
+**Decision D-1 — revised. The denominator, with its sensitivity.**
+- *Trigger:* DI-008 names "blanket thermal power" as the basis; the model has no blanket-only channel; and the like-for-like check can be drawn with or without the plasma-heating term.
+- *Decision and reason:* apply the fraction to the model's computed `p_th`, and report both forms of the check — 1.178 × `p_fus` including `p_input`, 1.160 excluding, against DEMO's 1.173. Both are within 1.2 %; the value moves 1.6 % between them, inside the source's own precision. Neither is asserted over the other, because the source paragraph does not say whether its 2389 MW excludes the equivalent term.
+- *Tier:* execution detail.
+- *Decided by:* round agent.
+- *What changed:* none. Trail only.
+
+**Decision D-2 — revised. What the evidence says about DI-008's band.**
+- *Trigger:* reading the three figures at their available grades. ARIES-ACT has no helium-primary blanket. Moscato's figures are in the repository in an approved research artifact, though its source PDF is not.
+- *Decision and reason:* admit Moscato at second-order grade with the grade stated, and conclude that the helium-primary evidence supports ~4–6 % (~130–195 MW), so **the low end of DI-008's 60–190 MW band does not apply** while its upper half does. Reason: the goal's question names a helium-primary loop, and the 2 % leg the ~60 MW floor was built from comes from a machine without one. The first return's stronger claim — one point, one source, above the band — is withdrawn as overstated.
+- *Tier:* premise surprise. It still cuts against DI-008 as written, and it still bears on the 60–190 vs 30–190 discrepancy `goal.md` § Grounding evidence logged for the owner — the 30 MW end is the same ARIES-ACT leg. What changed is the direction: the band's floor is unsupported, not its ceiling exceeded.
+- *Decided by:* round agent; surfaced to the owner, not resolved. Amending or re-sourcing DI-008 is reserved gate 4.
+- *What changed:* none. Trail only.
+
+**Decisions D-3 and D-4 carry unchanged.** The answer's shape stays referred under reserved gate 2 — now as a range, ~130–195 MW held against ~130–200 MW computed. Nothing is landed, no source is registered, no work item is minted, under gates 3 and 4 and the general gate. Neither decision is re-argued here; the originals stand as written.
+
+**Two items flagged for the round review, not resolved here.**
+
+- The LCOE channel. `goal.md` § Invariants routes LCOE through `p_net`; `p_th` also reaches nine cost accounts directly. The checkpoint confirmed the count and left where this lands to the round review. Unchanged from the first return.
+- `goal.md` § Grounding evidence says of Moscato "it is the one not in the repository". That is imprecise in exactly the way required change 2 corrected in my return: the source is absent, the figures are present in the artifact `goal.md` cites in the same bullet. Surfaced rather than resolved — `goal.md` is amended by the operator, in its own § Amendments, and a round does not edit it.
+
+### T-001 dispositions — proposed, revised r2, 2026-08-28
+
+Supersedes the proposals in `### T-001 dispositions — proposed, 2026-08-28`; that entry stands as written. Still nothing is written to `DISCOVERY_LOG.md` — the append happens after a passing checkpoint.
+
+**`20260821-power-cycle-ab#3` — the goal's consumer. Proposed disposition: `model fix`, routed, not yet answered.** Unchanged in kind; the finding it carries is revised. The row's own wording says `p_pump` is "roughly 100×" below helium-primary figures; read against the helium-primary evidence at its available grades it is **~130–195×**, i.e. the row understates its own case, and the sourced range sits in the upper half of DI-008's band rather than at a single point above it. Routed to goal `p-pump-basis`, round 1, task T-001. No work item is minted — that is a `work/` write under the general reserved gate, and the value change is gate 3. Home: the WI-031 R4 follow-up the row already names, plus `work/orchestration/goals/p-pump-basis/trail.md`.
+
+**`20260821-power-cycle-ab#5` — new proposal, replacing the first return's "touched, already disposed". Proposed disposition: `declared seam`.**
+
+- *Kind:* `declared seam`.
+- *Status:* the gap stands; its practical cost for this package is removed.
+- *Responsible:* not this goal. The underlying fix is an evidence-layer change in sysml-codegen / teax, outside this repository, exactly as the sighting row's Home says.
+- *Concrete next reference:* `rec_frac` and `p_net` are recoverable at all 3,792 rows of `results/points.csv@0d176a8c` from the committed record alone, with no oracle and no re-run — every other term of the recirculating sum is a bound constant at every grid point (`p_tf` 0, `p_pf` 0, `p_tfcool` 15.0, `p_pfcool` 0, `p_trit` 10.0, `p_house` 4.0, `p_input`/`eta_pin` 100, and `p_cryo` = 0.864352 from bound cryo inputs only), `p_sub` follows from the `eta_th` column the CSV carries, and `p_th` follows from the `p_fus` column. The recipe was checked against the study's own reported baseline values in both arms and reproduces them exactly.
+- *Why `declared seam` and not `upstream filing`:* filing anything with sysml-codegen or teax is an action outside this goal directory and outside every gate this round holds. What this round can honestly record is that the seam is declared and no longer blocks a reader of this package. If the checkpoint reads the obligation as requiring `upstream filing`, that is a defensible alternative and the row can be rewritten to it; the difference is which word names a fix this round cannot perform.
+
+**`20260821-power-cycle-ab#10` — no new row, unchanged from the first return.** Its Home is "runbook step 9; applied as executor practice in study 1", which is a real routing, not `unrouted`. The checkpoint concurred.
+
+**Nothing else was touched.** No other row in `DISCOVERY_LOG.md@e891b23a` bears on this task's evidence.
+
+### Stop — 2026-08-28
+
+Second stop of this date; it follows the revised return and dispositions above.
+
+- **Kind:** `handoff`.
+- **What is true on disk:** unchanged from the first handoff except this file. Nothing outside `work/orchestration/goals/p-pump-basis/trail.md` has been written. `models/`, `knowledge/`, `work/` and `exploration/` are untouched; no source is registered, no DI is amended, no work item is minted, `p_pump` is still 1.0 MW at `stellarator_plant.sysml@ba5c9945:502` in both homes of the twin, and `DISCOVERY_LOG.md` is unchanged at `e891b23a`. T-001 remains returned `COMPLETE`. The round is open: strategy revision present, no round result.
+- **What the owner must see:** a fresh session is needed for checkpoint resubmission **C-001.r2** — submission 2 of 3, revision 1 of 2 (`goal.md` § Limits). This session authored the revision and may not review it. Three things also point at the owner and are not this round's to settle: **D-2**, that the low end of DI-008's 60–190 MW band has no helium-primary evidence behind it, which bears on the 60–190 vs 30–190 discrepancy `goal.md` already logged; **D-3/D-4**, the reserved gates the answer runs into (the scalar-vs-computed shape, the value change in the twin, registering Cismondi and the grade at which Moscato's figures are admitted); and the two items flagged above for the round review.
+- **The material to review:** `work/orchestration/goals/p-pump-basis/trail.md` — `### T-001 return — revised r2` and `### T-001 dispositions — proposed, revised r2`, read against `### Checkpoint C-001.r1`, `goal.md`, and the evidence refs both returns cite. Resume at `GOAL_RUNBOOK.md` § The pre-execution disposition checkpoint.
