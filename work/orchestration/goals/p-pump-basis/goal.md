@@ -1,28 +1,30 @@
 # Goal: p-pump-basis — is `p_pump` = 1.0 MW defensible for a helium-primary loop at this plant scale, and what sourced value should the model carry?
 
-Drafted 2026-08-27 by a grounding session working from the repository. Procedure is `work/orchestration/GOAL_RUNBOOK.md` § Grounding a goal; this file does not restate it.
+Drafted 2026-08-27 and grounded 2026-08-28 by a grounding session working from the repository, with the owner's answers of 2026-08-28. Procedure is `work/orchestration/GOAL_RUNBOOK.md` § Grounding a goal; this file does not restate it.
 
 Provenance vocabulary is the shaping register: `[AGENT]` for anything this session or the operator supplied, `[INHERITED: <path>]` for anything carried from a repository artifact. **The operator acts under authority the owner delegated, so nothing the operator said is `[OWNER]`.** Where a repository artifact records the owner deciding something, that item carries `[OWNER <date>]` at its point of use and cites the artifact.
 
 ## Status
 
-`draft` — 2026-08-27. `[AGENT]`
+`grounded` — 2026-08-28. `[AGENT]`
 
-§ Grounding evidence is non-empty, which clears the mechanical tell. The goal is **not** grounded, and **authorizes no task**, because the answer contract is not settled: § Question is this session's restatement rather than the operator's sentence, § Answered when is unwritten, and § Close rule is unwritten. Those three are owner-held and this was a headless exchange with no channel to ask (`GOAL_RUNBOOK.md` § Grounding a goal: a goal hollow in any of the five field classes authorizes no task, not one, not a small one). The open questions are in the grounding session's handback, numbered.
+All five field classes are non-hollow (`GOAL_RUNBOOK.md` § Grounding a goal). § Grounding evidence is non-empty, which clears the mechanical tell; § Answered when, § Invariants, § Limits and § Reserved gates are filled and are checked by reading them.
 
-§ Invariants, § Limits, § Reserved gates and § Grounding evidence are filled and are the operator's or the repository's, marked at each point of use. When the owner's answers arrive, the three unsettled headings are filled and this line changes to `grounded`. From that point nothing here is edited in place; corrections go in § Amendments.
+How it got here, in two passes. The first pass (2026-08-27) filled § Consumer, § Invariants, § Grounding evidence, § Limits and § Reserved gates from the repository and the operator's brief, and left § Question, § Answered when and § Close rule unwritten because the answer contract is not an agent's to write. It held the goal at `draft`, which authorizes no task. The second pass (2026-08-28) filled those three from the owner's and the operator's answers, at the grade each carries: § Question and § Answered when are the owner's own sentences, `[OWNER 2026-08-28]`; § Close rule is the operator's, `[AGENT]`. Nothing else was reopened.
+
+From here nothing in this file is edited in place. Corrections go in § Amendments.
 
 ## Question
 
-**Unsettled — needs the operator's own sentence.** `[AGENT]`
+> Is `p_pump` = 1.0 MW defensible for a helium-primary loop at this plant scale, and if not, what sourced value should the model carry?
 
-The operator's question as it reached this session, verbatim:
+`[OWNER 2026-08-28]` — the owner's own sentence, approved verbatim.
 
-> Is `p_pump` = 1.0 MW defensible for a helium-primary loop at this plant scale, and what sourced value should the model carry? `[AGENT]` — operator, 2026-08-27
+The two halves are joined by "and if not": **the second clause is conditional on the first.** If 1.0 MW is defensible, the goal never reaches the question of what to replace it with.
 
 It restates discovery row `20260821-power-cycle-ab#3`, whose own wording is: "`p_pump` = 1.0 MW (held, cycle-independent in every arm) is roughly 100× below helium-primary circulator figures (2–6 % of blanket thermal power), per DI-008. It suppresses the recirculating fraction in every arm equally, so it does not bias the A/B, but it understates `rec_frac` everywhere." `[INHERITED: exploration/stellarator_e2e/studies/20260821-power-cycle-ab/record.md@881d4448 § 15]`
 
-Why this is left unsettled rather than adopted as written: the sentence carries two questions, and which one the goal ends on decides what "answered" means. The first ("is 1.0 MW defensible?") can end on a reasoned no with the value still held. The second ("what sourced value should the model carry?") ends only on a value, or on a recorded finding that no admissible value exists. § Answered when has to say which, and that is the operator's call. See handback question 1.
+The first pass asked which of the sentence's two halves ends the goal, because an unconditional reading ("what sourced value should the model carry?") would end only on a value and would rule out a reasoned "keep 1.0 MW" before any evidence was in. The owner's wording answers it: conditional, so both directions remain live. § Answered when says so in the owner's own terms.
 
 ## Consumer
 
@@ -30,13 +32,21 @@ Discovery row `20260821-power-cycle-ab#3`, an open finding in a committed A/B st
 
 The row is a first sighting and nothing has appended under the id since (`exploration/stellarator_e2e/studies/DISCOVERY_LOG.md@e891b23a`, scanned whole for the id per `GOAL_RUNBOOK.md` § The discovery log). Its `Home` column reads "`knowledge/research/approved/20260821-165616_wi031-item6-second-arm-values.md` (follow-up R4); item not yet minted" — so the row is routed to a research finding and to **no work item**. `[INHERITED: exploration/stellarator_e2e/studies/DISCOVERY_LOG.md@e891b23a]`
 
-**There is no work item for this.** `[AGENT]` — operator, 2026-08-27. What the answer changes is the row's disposition, and the runbook requires that a touched row not return as `unrouted` (ADR-004). Whether the goal mints a work item under the MFE Cost Modeling epic (`work/backlog/epic-mfe-cost-modeling.md@f22bd288`, `Status: active`) is a step the round would take, not a premise of the goal. See handback question 4.
+**There is no work item for this.** `[AGENT]` — operator, 2026-08-27. What the answer changes is the row's disposition, and the runbook requires that a touched row not return as `unrouted` (ADR-004). Whether the goal mints a work item under the MFE Cost Modeling epic (`work/backlog/epic-mfe-cost-modeling.md@f22bd288`, `Status: active`) is a step the round would take, not a premise of the goal. Confirmed by the operator, 2026-08-28: the follow-up work item is what proposes the shape of the answer, so a work item is a route the goal may take and not something § Answered when requires (§ Answered when).
 
 ## Answered when
 
-**Unsettled — owner-held. This is why § Status is `draft`.** `[AGENT]`
+> A written, sourced answer either way — a better number, or "keep 1.0 MW, here's why" — with any model change coming back to the owner first.
 
-The condition that ends this goal has to be concrete enough that two people read it the same way, and it has to cover both directions, because the evidence in § Grounding evidence makes both live: a sourced re-basing lands, or 1.0 MW stays held with the optimism disclosed and a reversal condition recorded. What it cannot be settled from is the repository — the row's own disposition, the study's § 17, and DI-008 all say "a dedicated modeling item" without saying what would end the question. See handback questions 1, 3 and 4.
+`[OWNER 2026-08-28]` — the owner's own sentence, approved verbatim.
+
+Three things it settles, made explicit so two readers read them the same way:
+
+- **Both directions end the goal.** A reasoned "keep 1.0 MW, with the optimism disclosed" is a complete answer, not a failure of the goal. So is a better sourced number. This is the `cryo-volume-basis` shape, and the runbook's `BOUNDED_NEGATIVE` is a first-class result.
+- **The answer must be written and sourced.** An unsourced opinion does not end this goal, in either direction. "Sourced" is the standard § Grounding evidence already applies to the three circulator figures: an admissible citation, with its admissibility stated.
+- **A trail-only answer is complete.** The goal does **not** have to land a model change to be answered. Any model change comes back to the owner first — that is the existing reserved gate (§ Reserved gates 3), which this sentence confirms rather than adds to.
+
+**What the contract does not fix: the shape of the answer.** `[AGENT]` — operator, 2026-08-28. A re-based scalar in MW and a fraction of computed `p_th` are both admissible answers to § Question. Choosing between them is the work, not a premise of it. Two bounds on that work, both already written where they belong and not restated here: the follow-up work item is what proposes the shape, and retiring `p_pump` as a settable input is gate material under `STUDY_POLICY.md@ad2fb4ea` § 2 rule 3 (§ Invariants, the axis rule; § Reserved gates 2).
 
 ## Invariants
 
@@ -94,7 +104,9 @@ Tracked artifacts cited `<path>@<commit-sha>`. Every path below was checked with
   - **Cismondi et al. 2017**, EUROfusion WPPMI-CPR(17) 17709 — "In case of helium the pumping power is ~150MW, one order of magnitude higher than in case of water (~15MW)" for a 2389 MW HCPB blanket → **6.3 %**. Ingested at `knowledge/concept_research/31-laser-icf-oec-architecture/iter-02/sources/scipub-wp-content-uploads-eurofusion-wppmicpr17-17709.md@0bf791d1:176` (verified by this session at that line). **Not registered in `knowledge/SOURCE_INDEX.md@ffa5c54c`** — a grep for "Cismondi", "Moscato" and the OSTI id returns nothing.
   - **Kessel et al., ARIES-ACT overview** — "a pumping power requirement of ~1% of the total thermal power"; "12 MW for He in the divertor and Ppump/Pthermal ≈ 2% for ACT2" → **1–2 %**. Ingested at `knowledge/concept_research/33-state-backed-tokamak-best/iter-02/sources/osti-servlets-purl-1178069.md@aff7a2f9:175,290` (verified at those lines). Also unregistered. Note this is a DCLL / He+LiPb machine, not a helium-primary blanket — it is the low end of the band for a reason a round has to weigh.
   - **Moscato et al., SOFT 2018** (EUROfusion WPBOP-CPR(18) 20276) — 2101.7 MWth, 9 loops × 2 compressors, ≈131 MW total (**6.2 %**); an 8-loop near-term design at 83–94 MW (**~4 %**). **Open PDF, not ingested.** This is the only source in the set that is a helium-primary *pumping-system design* rather than a single reported figure, and it is the one not in the repository.
-- **A band discrepancy this session found, unresolved.** DI-008 states "~60-190 MW for Stellaris"; the research file it was minted from states the same three sources "bracket 30–190 MW" (`…wi031-item6-second-arm-values.md@ffa5c54c:47`), the lower end coming from ARIES-ACT's 1 %. `[AGENT]` The two numbers are not the same band, and which one the goal works against changes whether ~1 % is inside the sourced range. Neither figure is this session's to correct — amending a DI is a reserved gate (§ Reserved gates 4). See handback question 2.
+- **A band discrepancy this session found, unresolved.** DI-008 states "~60-190 MW for Stellaris"; the research file it was minted from states the same three sources "bracket 30–190 MW" (`…wi031-item6-second-arm-values.md@ffa5c54c:47`), the lower end coming from ARIES-ACT's 1 %. `[AGENT]` The two numbers are not the same band, and which one the goal works against changes whether ~1 % is inside the sourced range. Neither figure is this session's to correct — amending a DI is a reserved gate (§ Reserved gates 4).
+
+  **Open item for the owner, logged and not reconciled inside this goal.** `[AGENT]` — operator, 2026-08-28. **This goal works against DI-008 as written**, i.e. the 60–190 MW band and the 2–6 % basis. The discrepancy with the research file it was minted from stands as a recorded open item pointing at the owner; a round of this goal does not resolve it, and resolving it stays gate material. It was recorded nowhere in the repository before this grounding session found it.
 
 **A check this session ran, and what it found.** `[AGENT]`
 
@@ -104,7 +116,7 @@ So DI-008's 60–190 MW is of the **same order as the entire existing recirculat
 
 **What this establishes and what it does not.** It establishes that the shift is not a small perturbation, so "the effect is negligible, leave it held" is not available without measuring. It does **not** establish where any fence lands, and it must not be read as one: it is a hand derivation from five oracle-scan points, it ignores the second-order feedback (a larger `p_pump` raises `p_th` by `eta_p·Δp_pump`, which raises `p_et` and `p_sub` in turn), and the governing quantity `rec_frac` has no per-point package evidence at all — that is finding `20260821-power-cycle-ab#10`, and the study's own § 17 says the five power-balance channels exported empty. Measuring the fence needs a package run, which needs a pin, which is a `PREREQUISITE` (below). **This settles nothing about whether comparison meaning survives.** `[AGENT]`
 
-**A modelling question the evidence raises and does not answer.** `[AGENT]` DI-008's basis is a *fraction of blanket thermal power*, and `p_th` is a quantity the model computes and that moves with the swept geometry. So "carry a sourced value" has at least two shapes: a re-based scalar in MW held at the design point, or a fraction of computed `p_th`. The second is an internalization: it retires `p_pump` as a settable input (§ Invariants, the axis rule; § Reserved gates 2), and it is algebraically self-referential, because `p_th` already contains `eta_p·p_pump` — closed-form solvable, but a real design question, and `STUDY_POLICY.md@ad2fb4ea` § 1 is the file that governs when an equality may be internalized as a calc. Choosing between the shapes is the goal's own work and is deliberately not settled here. See handback question 3.
+**A modelling question the evidence raises and does not answer.** `[AGENT]` DI-008's basis is a *fraction of blanket thermal power*, and `p_th` is a quantity the model computes and that moves with the swept geometry. So "carry a sourced value" has at least two shapes: a re-based scalar in MW held at the design point, or a fraction of computed `p_th`. The second is an internalization: it retires `p_pump` as a settable input (§ Invariants, the axis rule; § Reserved gates 2), and it is algebraically self-referential, because `p_th` already contains `eta_p·p_pump` — closed-form solvable, but a real design question, and `STUDY_POLICY.md@ad2fb4ea` § 1 is the file that governs when an equality may be internalized as a calc. Choosing between the shapes is the goal's own work and is deliberately not settled here — confirmed by the operator, 2026-08-28, and written into § Answered when as a property of the answer contract.
 
 **The rules the work would run under.**
 
@@ -149,9 +161,11 @@ Two decisions in this area are already on the record as the owner's and are not 
 
 ## Close rule
 
-**Unsettled — owner-held.** `[AGENT]`
+`[AGENT]` — operator, 2026-08-28, under authority the owner delegated. Not an owner grade: the owner did not state this rule, the operator did.
 
-What the repository and the operator's brief establish: the close ruling is the owner's if the round ends on a judgment call (§ Reserved gates), and the `cryo-volume-basis` precedent had the owner close on the fresh round review's recommendation. Neither settles who closes *this* goal or on what, and this session will not write an owner's rule on a precedent. See handback question 5.
+The fresh round review hands the owner a recommendation once § Answered when is met in either direction. **The owner's ruling closes the goal.** The review recommends; it does not close, and neither does the operator. This is the `cryo-volume-basis` pattern.
+
+The close itself therefore stays owner-held, consistent with § Reserved gates and with `GOAL_RUNBOOK.md` § The fresh review ("After a pass, the same fresh agent either recommends the owner-held close or writes the next strategy revision").
 
 ## Amendments
 
