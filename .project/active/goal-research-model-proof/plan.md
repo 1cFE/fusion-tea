@@ -1229,7 +1229,20 @@ See `design.md#potential-risks` for the full analysis. Phase-specific mitigation
 **Not resolved by the operator.** Capture-fidelity Rule 4: a premise surprise is surfaced, never absorbed in either direction. Deleting a true finding from `goal.md` to protect a proof would be backwards, and the operator writes no goal file in any case. Parked for the owner at gate (a).
 
 ### Phase 2 Completion
-**Completed:**
+**Completed:** **NOT STARTED — blocked before session 02 could run.**
+
+**The block.** After the gate (a) resume, the session sandbox tightened twice. First, every write outside `/home/reid/1cfe/fusion-tea` was refused, which took away the `~/goal-proof-logs-item5/NN-<role>/` teeing the [RUN] block requires. That was surfaced and the orchestrator authorized the in-repo tee (below). Then the `claude` binary itself became unavailable — `claude -p …` and even `claude --version` return "This command requires approval". **No cold session can be launched**, so Phases 2–10 cannot proceed.
+
+**Authorized deviation, recorded but not yet exercised — the in-repo tee.** `[AGENT]`, orchestrator-ruled, execution-detail tier. Each cold run tees directly to `sessions/NN-<role>/transcript.jsonl` instead of to `~/goal-proof-logs-item5/NN-<role>/`. That is where [RUN] step 4 copies the transcript anyway.
+
+- **Given up:** only the copy outside the tree.
+- **Not given up:** kill-recoverability. `tee` and shell redirection write incrementally, so a killed run still leaves its partial transcript at the in-repo path. (The operator's first framing said kill-recoverability was lost; that was wrong, and this corrected statement replaces it.)
+- **Unchanged:** Invariant 1's brief-ancestry check and Invariant 2's fence sweep read the same files either way. Cold sessions still may not read the item directory, the denial stays in every brief, and the sweep still targets tool-call *inputs*. A transcript written into the item directory during a run is not a session read of it.
+- Full write-up with the sandbox refusal text quoted: `operator-notes.md` § Mechanism notes. Belongs in `verification_record.md` § Failures at Phase 13 as a measured harness failure.
+
+**On disk at the block.** HEAD `0e69a043`. Session 02's brief is written and committed, Invariant-3 self-check passed. `goal.md` is untouched since `7b2f3a30` and still `Status: draft`, so it authorizes no task. `trail.md` and `learnings.md` are still byte-identical to the templates — no round has opened. `sessions/05a-round-agent-t002/` is still deliberately untracked. Nothing is half-applied and no transcript is stranded.
+
+**To resume:** restore the ability to invoke `claude`, then run session 02 as `--resume b56a1223-b046-4341-a0f3-366c4598286d` with `sessions/02-grounding/brief.md` on stdin, teed per the authorized deviation. Phase 2's validation and contingencies are unchanged.
 
 ### Phase 3 Completion
 **Completed:**
