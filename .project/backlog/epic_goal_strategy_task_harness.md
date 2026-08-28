@@ -361,7 +361,7 @@ Gate: CLEAR
 
 ---
 
-### Item 5: Research-to-Model Round Proof
+### Item 5: Research-to-Model Round Proof ✅ *(model half only — see the scope note under Success Criteria)*
 
 **Type**: Execution
 
@@ -401,16 +401,19 @@ Gate: CLEAR
 - A critic per native research/modeling stage.
 
 **Success Criteria**:
-- [ ] A bounded model task returns a real `PREREQUISITE` with native evidence and no predicted future task list.
-- [ ] A fresh critic reviews the reading and proposed dispositions before research/model follow-up begins; revisions and final verdict are recorded.
-- [ ] The Item 2 seam returns registered MR-4-citable evidence or an honest strategy blocker, with no hand-written registry step.
-- [ ] Under the positive path, a newly authorized modeling task advances the native work item under the same strategy and preserves comparison meaning.
-- [ ] Every touched finding receives a joined disposition update, and accepted learning cites the research/model evidence.
-- [ ] The round closes through `RoundResult` and fresh `RoundReview` without mirroring modeling-PM state.
+
+*Audit 2026-08-28 (`.project/completed/20260828_goal-research-model-proof/audit.md`, verdict POSITIVE; item closed 2026-08-28, five audit findings fixed at `c389afc1`, product-lens gate CLEAR at close): three of six marked. The round closed on "the repository answers it" — a branch declared before it opened in `covering-branches.md@e02ce403` (the "No prerequisite" row, later renamed "The repository answers it") — so the seam never ran. Criteria 1, 3 and 4 stay open, and **Item 5 does not discharge the research-seam half of this epic**. Whatever item next runs the seam live owes them, along with the still-stale `GOAL_RUNBOOK.md` `research` row.*
+
+- [ ] A bounded model task returns a real `PREREQUISITE` with native evidence and no predicted future task list. — **retired `[OWNER 2026-08-28]`** as unreachable by construction on a deliberately chosen need; the measurement is kept as the item's finding about the goal layer.
+- [x] A fresh critic reviews the reading and proposed dispositions before research/model follow-up begins; revisions and final verdict are recorded. — `C-001.r1` refused, author revised, `C-001.r2` passed; critic sessions distinct from the author's; dispositions landed after the pass.
+- [ ] The Item 2 seam returns registered MR-4-citable evidence or an honest strategy blocker, with no hand-written registry step. — **non-exercised**; no hand-written registry step either (`knowledge/` diff vs base empty).
+- [ ] Under the positive path, a newly authorized modeling task advances the native work item under the same strategy and preserves comparison meaning. — **non-exercised**; no WI minted, `work/` untouched.
+- [x] Every touched finding receives a joined disposition update, and accepted learning cites the research/model evidence. — two joined rows appended under existing ids, zero removed lines; three learnings appended by the reviewer.
+- [x] The round closes through `RoundResult` and fresh `RoundReview` without mirroring modeling-PM state. — fresh reviewer, verdict `FINDINGS`, no mirroring.
 
 **Estimated Effort**: 1.5 days (spec 1h, design 2h, plan 1h, execute 8h)
 
-**Location**: `.project/active/goal-research-model-proof/`
+**Location**: `.project/completed/20260828_goal-research-model-proof/` (closed 2026-08-28 by owner authorization; archived from `.project/active/goal-research-model-proof/`)
 
 **Dependencies**: Items 2 and 4.
 
@@ -433,7 +436,9 @@ Gate: CLEAR
 
 **Current State**:
 - ✅ Item 3 supplies a verified candidate-or-blocker integration return.
-- ✅ Item 5 supplies a grounded goal, audited model work, disposition history, and accepted research/model learning.
+- ✅ Item 5 supplies a grounded goal (`work/orchestration/goals/p-pump-basis/`, closed by owner ruling 2026-08-28), a full disposition history with a bound pre-execution critic, joined discovery-log rows, and accepted learning — plus a follow-up modeling mandate in **WI-033**.
+- ❌ **Item 5 supplies no research return and no landed model change.** `T-001` returned `COMPLETE` — the repository answered the question — so the Item 2 seam never ran, no work item was minted during the round, and `p_pump` is unchanged at `models/designs/stellarator_09/stellarator_plant.sysml:502`. Item 5's criteria 1, 3, 4 and 7 stay open (`.project/completed/20260828_goal-research-model-proof/verification_record.md`). Do not plan Item 6 against a research return that does not exist.
+- ❌ **`GOAL_RUNBOOK.md:256`/`:264` still route a research disposition to the WI-031 hand pattern**, stale since Item 2 shipped the seam, and `work/orchestration/goals/p-pump-basis/goal.md:130` carries the same instruction. Whichever item next runs the seam live owes the repair; until then a round hitting a research disposition will be told to register sources by hand, which is what epic SC "no hand-written index entries" forbids.
 - ✅ Run-study execute and administer modes already produce committed, independently readable evidence.
 - ❌ No goal round has consumed the native integration return, promoted one pin, committed one study, and closed after a valid reading.
 - ❌ Human and goal-agent routes have not been compared against the same artifact and native-state contract.

@@ -66,3 +66,18 @@ The one cost the run did record against the replay record: an interrupted sessio
 Two pieces of evidence went to the owner as *written-rule* repairs rather than machinery, and were taken: the grounding gate's undefended field classes (measured reach 2 of 5) and the `GOAL_RUNBOOK.md:234`/`:244` contradiction. The five-class rule was promoted into the runbook on that probe record. Amending prose on recorded evidence is what this decision asks for; it is not a hardening promotion.
 
 A future round that re-opens the hardening question starts from this measurement, not from the untested table.
+
+## Amendment — 2026-08-28: a second run, on a real open question, promoted nothing either
+
+*(Recorded at the close of GSTH Item 5. Grade: `[OWNER]` hardening rule 2026-08-23 unchanged; the verdict below is `[AGENT]` measurement, audited POSITIVE 2026-08-28 and re-verified against disk by the auditor.)*
+
+Item 4's measurement was taken on a rehearsal-shaped goal. Item 5 took a second one on a live open question the repository actually had: `p_pump` = 1.0 MW in two committed A/B studies, roughly 100× below admissible helium-primary circulator figures. Eight cold sessions ran a full round at `work/orchestration/goals/p-pump-basis/` — grounding, a bounded task, a pre-execution critic that refused and released, joined discovery-log dispositions, a fresh round review, and an owner close. Record at `.project/completed/20260828_goal-research-model-proof/verification_record.md`, audit at `audit.md` in the same directory.
+
+**No mechanism is promoted.** Eight recorded prose failures, and every one was caught by a cold session, the fresh reviewer, the operator, or the audit trail itself. No envelope, event ledger, digest comparison, idempotency key, reconciliation pass, or dispatcher was needed to catch any of them, and none entered the item — verified by a keyword sweep over the item diff plus a whole-diff read, both re-run by the auditor over a wider scope than the plan specified. The item ships no code at all.
+
+Two things this run adds that Item 4's could not:
+
+- **The replay record held under an owner-visible disagreement.** The critic's own correction was inverted, the author disputed it with line evidence, and a fresh second critic adjudicated at a line neither had cited. The disagreement lives in the `C-001.r1`/`.r2` entries; nothing was edited in place. That is the trail doing the job the second ledger was proposed for.
+- **The mid-run sandbox degraded three times** (git writes, then home-directory writes, then `claude` invocation) and the lean route absorbed it: the execution subagent stopped cleanly at each wall, each refusal was quoted into `operator-notes.md`, and the operator role moved to the orchestrator. An unattended dispatcher would have had to handle this; an attended prose route simply stopped and said why. The row stays untested rather than passed, for the same reason it did in Item 4.
+
+Two measurements are now on this record, taken on different goal shapes, and neither promotes anything. A future round re-opening the hardening question starts from both.
