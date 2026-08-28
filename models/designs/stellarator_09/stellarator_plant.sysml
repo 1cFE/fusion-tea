@@ -499,8 +499,29 @@ package stellarator_09 {
         :>> eta_pin = 0.5 {   // input-power wall-plug efficiency (ECRH).
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:105 (eta_source_ecrh = 0.50) x steady_state_stellarator.yaml:15 (eta_couple = 1.0) = 0.50 **Basis**: gyrotron wall-plug x ECRH coupling */
         }
-        :>> p_pump = 1.0 {    // primary coolant pumping power [MW].
-            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:21 (p_pump = 1.0) **Basis**: 1costingFE stellarator primary-coolant pumping power */
+        :>> p_pump = 195.0 {  // primary coolant pumping power [MW] -- helium-primary circulator basis (WI-033).
+            doc /*
+            Re-based from the 1costingFE default 1.0 MW -- a ~150x understatement
+            for a helium-cooled ~3240 MWth plant (DI-008, amended 2026-08-28) --
+            to 6% of the baseline computed p_th (3238.1 MW -> 194.3), landed
+            rounded at 195.0 [OWNER 2026-08-28]. HELD, SETTABLE INPUT by owner
+            ruling (goal p-pump-basis, trail, Goal close Ruling 2): a computed
+            fraction of p_th would assert a linearity across swept (R, a) that
+            no source establishes, and would retire a study lever in two
+            committed studies. Re-derive the scalar when the design point moves.
+            KNOWING TRACEABILITY-FIRST CHOICE (Ruling 3): the documented lower
+            bound is ~130 MW (~4% of blanket thermal -- Moscato's near-term
+            8-loop design, 16 compressors x 5.9/5.2 MW = 83-94 MW at
+            2101.7 MWth; the f_uplift_cryo exclude-with-documented-bound
+            pattern). Cismondi's ~150 MW (~6.3% of the 2389 MW deposited; the
+            2017 9-loop layout reconstructs as 3x2x6.8 + 6x2x7.5 = 130.8 MW
+            from Moscato Table 3) is a preliminary figure for one unoptimized
+            layout its own authors expect to fall (larger pipes: ~9 km of loop
+            piping -> ~3 km).
+            **Source**: knowledge/sources/progress_in_eu_breeding_blanket_design_and_integration/ (Cismondi et al., EUROfusion WPPMI-CPR(17) 17709); knowledge/sources/progress_in_the_design_development_of_eu_demo_helium_cooled/ (Moscato et al., EUROfusion WPBOP-CPR(18) 20276)
+            **Ref**: Cismondi output.md:174 (helium pumping power ~150MW, one order of magnitude above water ~15MW; 9km->3km pipe lever), :172 (HCPB PHTS representative for HCLL); Moscato output.md:81 (2101.7 MW blanket thermal), :89-:91 (9 loops: 3 IB + 6 OB), :145/:154 (Table 3: circulator power 6.8 IB / 7.5 OB MW, 2 compressors per loop per Table 1); Moscato raw.pdf p.7 Table 4 (near-term 5.9 STHE / 5.2 CWHE MW -- table body absent from output.md, re-derived from the registered raw PDF)
+            **Basis**: 6% of the baseline computed p_th = 3238.1 MW (goal p-pump-basis trail:149, baseline_result.json@ffa5c54c), rounded to 195.0 [OWNER 2026-08-28]; ~130 MW recorded as documented lower bound per Ruling 3
+            */
         }
         :>> f_sub = 0.03 {    // subsystem/control power fraction.
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:17 (f_sub = 0.03) **Basis**: 1costingFE stellarator subsystem power fraction */
