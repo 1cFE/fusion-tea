@@ -1,6 +1,6 @@
 # Implementation Plan: GSTH Item 6 — Integration-to-Study Closure and Route Equivalence
 
-**Status:** In Progress — Phases 0 and 1 complete (2026-08-29); Phase 2 not started
+**Status:** Complete pending audit (2026-08-29)
 **Created:** 2026-08-29
 **Last Updated:** 2026-08-29
 **Branch:** `feat/wi033-p-pump-rebase` (owner-ruled: one PR ships WI-033 + Item 6)
@@ -429,15 +429,15 @@ Reference shape: 570 passed / 14 skipped / 0 failed at the 2026-08-28 gate, befo
 `.project/active/goal-integration-study-proof/verification_record.md` — the commit chain, each success criterion with its check and result, deviations, and what remains owner-held.
 
 ### Changes Required
-- [ ] Commit table (commit → SHA → content), in branch order, mirroring WI-033's record shape.
-- [ ] Each spec/epic success criterion: the check run and the result, with paths.
-- [ ] Deviations, each with the ruling that authorized it — including D1, D2, D3 from § Decisions above.
-- [ ] Owner-held remainder, stated as such: goal close ruling; any ruling an adverse reading requested; push, PR, merge; `pm close-item` / archive of native work.
-- [ ] Update `.project/CURRENT_WORK.md`.
+- [x] Commit table (commit → SHA → content), in branch order, mirroring WI-033's record shape.
+- [x] Each spec/epic success criterion: the check run and the result, with paths.
+- [x] Deviations, each with the ruling that authorized it — including D1, D2, D3 from § Decisions above.
+- [x] Owner-held remainder, stated as such: goal close ruling; any ruling an adverse reading requested; push, PR, merge; `pm close-item` / archive of native work.
+- [x] Update `.project/CURRENT_WORK.md`.
 
 ### Validation
-- [ ] Every SHA in the table resolves; ancestry is linear (`git merge-base --is-ancestor` over each predecessor).
-- [ ] Every criterion row has a check and a result — no row reads "see above."
+- [x] Every SHA in the table resolves; ancestry is linear (`git merge-base --is-ancestor` over each predecessor).
+- [x] Every criterion row has a check and a result — no row reads "see above."
 - [ ] Fresh-session audit (`/_my_audit`) after the record is written.
 
 **Commit point (orchestrator):** verification record + `CURRENT_WORK.md`.
@@ -550,6 +550,20 @@ See CLAUDE.md and `docs/integration_seam_operator_guide.md § The environment`. 
 **Deviations:** The stencil's `set -a; source ~/1cfe/agentic-mbse/.env; set +a` could not be run — this session's tool harness refuses `set -a` because it defeats static environment-variable analysis. The same variables were supplied with `uv run --env-file ~/1cfe/agentic-mbse/.env`, which produces what the validation line asks for (13 spine tests included, green). Recorded in `epic_evidence.md` § 1 as well, so the substitution is not read as the command run verbatim. Separately, the plan's Phase-7 checkbox says the seam reports the `assert_read_set_covered` non-run "on every invocation including the CANDIDATE one"; the accurate statement, carried from the round review's correction, is that three of five invocations reached gate 6 and all three reported it — runs 1 and 2 refused earlier. `epic_evidence.md` states the corrected version.
 
 ### Phase 8 Completion
+**Completed:** 2026-08-29.
+
+**Actual Changes:**
+- `.project/active/goal-integration-study-proof/verification_record.md` — the 43-commit table in branch order with ancestry verified, all six spec Align rulings and all eight success criteria each with the check run and its result, fourteen deviations each with its authorizing ruling, the owner-held remainder, and a closing section on what a reader should *not* conclude from the record.
+- `.project/CURRENT_WORK.md` § GSTH rewritten current through Item 6 implemented; the other nine sections are byte-unchanged.
+
+**Verification:** `git merge-base --is-ancestor` run over each of the 42 consecutive pairs from `45b61e1e` to `f0cc7ada` — every pair returns ancestor → descendant, and `git log --merges` over the range returns zero. The branch is a linear chain. Every SHA in the commit table resolves. No criterion row reads "see above"; each names the artifact read and the value found.
+
+**Issues:** None.
+
+**Deviations:**
+- The fresh-session audit (`/_my_audit`) is deliberately **not** ticked. It runs after this leg by contract — a stage agent certifying its own work is what the audit exists to prevent — so the plan's header status reads "Complete pending audit" rather than "Complete".
+- **Phases 2 through 6 carry completion notes but unticked checkboxes.** Their notes were written at Phase 7 from the committed record, which is where the evidence is; the finer-grained boxes were never ticked as those phases ran, because each phase's stage agent was briefed to produce its artifact rather than to maintain the plan. Rather than bulk-tick them now from prose I did not watch being earned, the state is recorded here and left for the audit to resolve. An auditor should read the completion notes and the commits as the record of those phases, and the unticked boxes as bookkeeping debt rather than as unfinished work.
+- Plan line 157 stays unticked by design and carries an inline note saying why: T-002 returned `PREREQUISITE`, not `COMPLETE`, and the pin lives in `### T-003 return`.
 
 ---
 
