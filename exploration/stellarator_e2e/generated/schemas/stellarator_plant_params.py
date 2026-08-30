@@ -97,7 +97,7 @@ class StellaratorPlantParams(BaseModel):
     stellarator_09__stellaris__p_nbi: float = Field(default=0.0, description="Entry point: p_nbi")
     stellarator_09__stellaris__p_pf: float = Field(default=0.0, description="Entry point: p_pf")
     stellarator_09__stellaris__p_pfcool: float = Field(default=0.0, description="Entry point: p_pfcool")
-    stellarator_09__stellaris__p_pump: float = Field(default=1.0, description="Entry point: p_pump")
+    stellarator_09__stellaris__p_pump: float = Field(default=195.0, description="Entry point: p_pump")
     stellarator_09__stellaris__p_tf: float = Field(default=0.0, description="Entry point: p_tf")
     stellarator_09__stellaris__p_tfcool: float = Field(default=15.0, description="Entry point: p_tfcool")
     stellarator_09__stellaris__p_trit: float = Field(default=10.0, description="Entry point: p_trit")

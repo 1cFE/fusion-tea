@@ -89,16 +89,16 @@ Any hollow class → refuse to open the round and name the class (GOAL_RUNBOOK �
 ```
 
 ### Changes Required
-- [ ] Create `work/orchestration/goals/<new-slug>/` from `work/orchestration/goal-templates/` (`goal.md`, `trail.md`, `learnings.md`). The headings are the contract; copy, do not invent.
-- [ ] `goal.md`: owner's § Question and § Answered when verbatim. Grounding evidence cites `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md` row `#3` (2026-08-28 disposition), `work/orchestration/goals/p-pump-basis/` (closed; its § "Constraints carried into round 2" informs the invariants), `work/completed/20260828_WI-033_p-pump-rebase/verification_record.md@83ccd8f9`. Limits restated explicitly, never inherited silently.
-- [ ] `goal.md` § Reserved gates: the four from spec § Align ruling 4, plus the study layer's own § 4 axis ruling (below).
-- [ ] `trail.md`: `## Round 1 — <strategy-slug>` + `### Strategy revision — 2026-08-29`. Carries approach, assumptions, abandon conditions, the intended model increment, the intended study question. **No future task list.**
-- [ ] `trail.md`: `### T-001 scope` — six lines, before any work. Objective: is there one study-ready candidate for the stellarator package on WI-033's audited model change?
+- [x] Create `work/orchestration/goals/<new-slug>/` from `work/orchestration/goal-templates/` (`goal.md`, `trail.md`, `learnings.md`). The headings are the contract; copy, do not invent.
+- [x] `goal.md`: owner's § Question and § Answered when verbatim. Grounding evidence cites `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md` row `#3` (2026-08-28 disposition), `work/orchestration/goals/p-pump-basis/` (closed; its § "Constraints carried into round 2" informs the invariants), `work/completed/20260828_WI-033_p-pump-rebase/verification_record.md@83ccd8f9`. Limits restated explicitly, never inherited silently.
+- [x] `goal.md` § Reserved gates: the four from spec § Align ruling 4, plus the study layer's own § 4 axis ruling (below).
+- [x] `trail.md`: `## Round 1 — <strategy-slug>` + `### Strategy revision — 2026-08-29`. Carries approach, assumptions, abandon conditions, the intended model increment, the intended study question. **No future task list.**
+- [x] `trail.md`: `### T-001 scope` — six lines, before any work. Objective: is there one study-ready candidate for the stellarator package on WI-033's audited model change?
 
 ### Validation
-- [ ] Five-class grounding check above passes; record it in the trail.
-- [ ] `p-pump-basis` untouched — `git diff --stat` shows zero lines under `work/orchestration/goals/p-pump-basis/`.
-- [ ] Round-open test: the `## Round 1` section carries a `### Strategy revision` and no `### Round 1 result`.
+- [x] Five-class grounding check above passes; record it in the trail.
+- [x] `p-pump-basis` untouched — `git diff --stat` shows zero lines under `work/orchestration/goals/p-pump-basis/`.
+- [x] Round-open test: the `## Round 1` section carries a `### Strategy revision` and no `### Round 1 result`.
 
 **Commit point (orchestrator):** `goal(<slug>): ground successor goal, open round 1, T-001 scope`
 
