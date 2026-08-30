@@ -408,16 +408,16 @@ uv run python scripts/source_registry.py verify   # expect 0 faults, 3 known leg
 Reference shape: 570 passed / 14 skipped / 0 failed at the 2026-08-28 gate, before the 21 integrate reds appeared. Any red that is not explained is a stop.
 
 ### Changes Required
-- [ ] Run every command above; quote outputs verbatim in `epic_evidence.md`.
-- [ ] Map each of the seven epic § Item 6 success criteria to its evidence path/commit, plus spec criterion 8.
-- [ ] Epic Success Criterion 7 — "no hardening-path mechanism is present unless its promoting failure is recorded and owner-visible": walk what this item added and confirm none of it is control-plane machinery (ADR-003). If Phase 6 or the round surfaced a real failure that would justify hardening, record the failure; do not build on it.
-- [ ] Record any observed failure worth later hardening, with its evidence.
-- [ ] Name in `epic_evidence.md` the seam's own standing self-report: `assert_read_set_covered` is not run at gate 6 ("out of reach here and covered by nothing else (filed)") — stated on every invocation including the CANDIDATE one. Same honesty class as spec criterion 8. *(Added 2026-08-29 at Phase 1 close.)*
+- [x] Run every command above; quote outputs verbatim in `epic_evidence.md`.
+- [x] Map each of the seven epic § Item 6 success criteria to its evidence path/commit, plus spec criterion 8.
+- [x] Epic Success Criterion 7 — "no hardening-path mechanism is present unless its promoting failure is recorded and owner-visible": walk what this item added and confirm none of it is control-plane machinery (ADR-003). If Phase 6 or the round surfaced a real failure that would justify hardening, record the failure; do not build on it.
+- [x] Record any observed failure worth later hardening, with its evidence.
+- [x] Name in `epic_evidence.md` the seam's own standing self-report: `assert_read_set_covered` is not run at gate 6 ("out of reach here and covered by nothing else (filed)") — stated on every invocation including the CANDIDATE one. Same honesty class as spec criterion 8. *(Added 2026-08-29 at Phase 1 close.)*
 
 ### Validation
-- [ ] Canonical battery exit 0.
-- [ ] `tests/models` green with the environment sourced (13 spine tests included).
-- [ ] Every epic criterion row cites a path or commit that resolves.
+- [x] Canonical battery exit 0.
+- [x] `tests/models` green with the environment sourced (13 spine tests included).
+- [x] Every epic criterion row cites a path or commit that resolves.
 
 **Commit point (orchestrator):** `epic_evidence.md` + any fixture updates the regressions required.
 
@@ -513,16 +513,41 @@ See CLAUDE.md and `docs/integration_seam_operator_guide.md § The environment`. 
 - **`.integration_workspace/` was removed once.** The interrupted session left it behind; `tests/study/conftest.py:420` asserts it absent, and it alone produced 57 errors on a battery run. It is gitignored scaffolding owned solely by the suite.
 
 ### Phase 2 Completion
+**Completed:** 2026-08-29, committed `611bc87a`.
+**Actual Changes:** One committed study record, `exploration/stellarator_e2e/studies/20260829-p-pump-fence/` — `record.md` (seventeen sections), `snapshot.json` (sha256 `f59a698e…`), `study.py`, `axes.json`, `indicators.json`, seven `results/` artifacts. Store beside the record at `studies/_work/20260829-p-pump-fence/`, gitignored; the baseline executor's work directory likewise. `points.csv` carries `case_id`; `oracle_operands.csv` carries the unrecorded predicate operands. Three first-sighting rows appended to `DISCOVERY_LOG.md`. Preflight 6/6; verification passed at worst deviation 6.35e-16 with zero verdict mismatches; `tests/study/test_records.py` green.
+**Issues:** Step 9 refused on the first attempt — 42 of 948 points returned `execution_failed` because `p_net` goes negative and the CAS10 land term takes `sqrt` of a negative. Diagnosed, ruled, and turned into a disclosed evaluability bound rather than a window change.
+**Deviations:** The owner adopted the comparand's window in place of the runbook's step-7 scan, so the fence positions subtract against `20260821-power-cycle-ab`'s on the same grid. One arm rather than the comparand's four — the package's own configuration is that study's `arm-rankine-paper`. The evaluability pre-screen (42 points) was not predicted by the plan; it follows `20260823-magnet-technology-ab/record.md:224-226`'s precedent.
 
 ### Phase 3 Completion
+**Completed:** 2026-08-29, committed `47fb5cb5`.
+**Actual Changes:** `synthesis.md` by a fresh administrator session (`885bf5c5`) that read the record directory and nothing else. Headline: answered — LCOE half outright, fence half answered in `a` and unbounded in R at small `a`. Every headline number in record §§ 3–6 and § 11 recomputed from the committed artifacts and all reproduced.
+**Issues:** Fifteen facts the record does not support, three of them missing artifacts the record's own prose relied on.
+**Deviations:** None. The administer pass was a different session from the executor by contract, and the record was the only seam.
 
 ### Phase 4 Completion
+**Completed:** 2026-08-29, committed across `309519e3`, `df3d9947`, `7cb6a48d`, `91cdb4ad`, the disposition/round-result commit, and `4bf5d709`.
+**Actual Changes:** `### T-005 return` (`ANSWERED`), seven joined disposition rows under existing ids only, the record addendum `ADDENDUM-2026-08-29-artifacts.md` with three artifacts, `### Round 1 result` closing the round, the fresh `### Round 1 review` (verdict `FINDINGS`, answer upheld), and `learnings.md` L-001…L-004 appended after that acceptance.
+**Issues:** Checkpoint C-001.r1 **REFUSED** with three blocking findings — a row would have asserted a number no artifact held; two touched rows were undispositioned; the `#3` row misstated the annex's current state. r2 passed. The review then corrected L-001, L-003 and L-004 and caught an over-claim in the round result's own honesty statement (five seam invocations reported the `assert_read_set_covered` non-run; three did).
+**Deviations:** `### T-005 scope` and `### T-005 start` were written after the administer pass had run, because the round owed a scope before that task and did not write one — recorded as a sequencing defect rather than backdated. The administrator's record-contract finding is routed without a discovery-log id per `GOAL_RUNBOOK.md:248`.
 
 ### Phase 5 Completion
+**Completed:** 2026-08-29, committed `c4c7d723`.
+**Actual Changes:** The `GOAL_RUNBOOK.md` `integrate` row flipped from "pending native repair" to native. Every seam the runbook lists is now native.
+**Issues:** None.
+**Deviations:** None. The flip ran on this round's own evidence, which was its stated precondition — the premise conflict surfaced at grounding (the runbook said one thing, the repository another) is discharged by the flip rather than by argument.
 
 ### Phase 6 Completion
+**Completed:** 2026-08-29, committed `cb417e5e`.
+**Actual Changes:** `.project/active/goal-integration-study-proof/route_equivalence.md`. Five dimensions: same contract on artifact set, gates and reviewer-visible evidence; identical on native end states and return classes, with byte-identical pin and both fingerprints from an independent hand-route `integrate` invocation. Findings F-1…F-4. Isolation held — worktree parallel to the repo, zero commits either tree, main tree clean at exit.
+**Issues:** The first hand-route launch was killed by a harness fault mid-`integrate` and relaunched clean — an environment incident. F-1 is the significant finding: gate 1a maps "different checkout" to `toolchain-drift`, which the operator guide maps to `STRATEGY_BLOCKER`, so an operator trusting the guide would have mis-closed the round when nothing had moved.
+**Deviations:** `study.execute` was fixture-substituted by the committed record — the plan's own isolation design, since a second committed study is out of scope. Steps 7–15 of the study runbook were not walked by hand. The hand administrator's synthesis was preserved beside the report as `route_equivalence_hand_synthesis.md`, a recorded deviation from "only this file survives", kept for audit.
 
 ### Phase 7 Completion
+**Completed:** 2026-08-29.
+**Actual Changes:** `.project/active/goal-integration-study-proof/epic_evidence.md` — the full regression stencil with outputs quoted verbatim, all eight success criteria mapped to evidence that resolves, three honest limits, the observed failures and carve-outs (F-1…F-4, the timeout arc, the harness kill, the stale-expectation class, the record-contract gap), the SC 7 walk, and the proof chain.
+**Regressions:** Canonical battery **574 passed, 14 skipped**, exit 0 — against the plan's reference shape of 570/14 at the 2026-08-28 gate, +4 passed with skips unchanged and the 21 integrate reds green. `tests/models` 48 passed / 13 skipped, the 13 being pre-existing template and foundation-library skips, with the 13 spine tests confirmed passing separately. `tests/research` 150 passed. `agentic-mbse validate models/` L1 clean over 22 files, L2 the 12 known placeholder WARNs (exit 1 is the designed L2 stop). `source_registry.py verify` **0 faults, 3 known legacy**. No unexplained red.
+**Issues:** None in the regressions.
+**Deviations:** The stencil's `set -a; source ~/1cfe/agentic-mbse/.env; set +a` could not be run — this session's tool harness refuses `set -a` because it defeats static environment-variable analysis. The same variables were supplied with `uv run --env-file ~/1cfe/agentic-mbse/.env`, which produces what the validation line asks for (13 spine tests included, green). Recorded in `epic_evidence.md` § 1 as well, so the substitution is not read as the command run verbatim. Separately, the plan's Phase-7 checkbox says the seam reports the `assert_read_set_covered` non-run "on every invocation including the CANDIDATE one"; the accurate statement, carried from the round review's correction, is that three of five invocations reached gate 6 and all three reported it — runs 1 and 2 refused earlier. `epic_evidence.md` states the corrected version.
 
 ### Phase 8 Completion
 
