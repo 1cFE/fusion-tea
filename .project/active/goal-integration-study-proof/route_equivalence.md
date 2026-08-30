@@ -40,3 +40,7 @@ Routing: F-1–F-4 carry to `epic_evidence.md` as observed failures/carve-outs (
 ## Conclusion
 
 One runbook, two operators, one contract: **met on all five dimensions, with byte-identical native identity** — and the exercise earned its cost by finding the two places (F-1, F-2) where the written pattern is not yet hand-reproducible from a fresh checkout.
+
+## Addendum 2026-08-30 — F-1 and F-2 fixed and re-proven (`close-F1`)
+
+The product-lens close gate blocked on the gap this report named: the evidence claimed equivalence met while the hand route had needed an undocumented correction. Resolution, per the finding's own remedy: the guide/env contract was repaired at `f3249f7c` (checkout carve-out on the `toolchain-drift` row; § Running from a second checkout or worktree; the scoped CLAUDE.md exception), and a fresh operator re-ran the isolated integration from a clean worktree following **only the committed guide** — exit 0, `CANDIDATE`, the same pin `20c2c364d6c7…`, all ten gates, verdict "guide alone sufficed" (session `0d76b3a4`, brief `briefs/hand-rerun-f1.md`). F-3 and F-4 remain recorded carve-out findings with their fix homes; they did not block equivalence and were not acted on here.

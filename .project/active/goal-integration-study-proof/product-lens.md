@@ -29,3 +29,10 @@ Epic: GSTH (`.project/backlog/epic_goal_strategy_task_harness.md` § Item 6)
 ### Gate
 
 **BLOCKED (`close-F1`).** The earlier epic-plan product-lens block remains historically CLEAR for its two planning findings, but it does not resolve this item-local close finding. Item close and any epic claim that route equivalence is proved remain blocked until a later ledger block cites `close-F1` with an authorized resolution.
+
+## close — 2026-08-30 — rev `f3249f7c` (resolution block)
+
+Resolves:
+- **close-F1: FIXED** — authority: the finding's own first expected remedy (repair the environment/guide contract and re-run the isolated hand integration without an undocumented correction). Basis: `f3249f7c` adds the checkout-kind carve-out to the guide's `toolchain-drift` row, documents the sealed-interpreter pattern in a new § Running from a second checkout or worktree, and scopes the always-`uv` exception in CLAUDE.md; a fresh guide-only operator (session `0d76b3a4`, brief `briefs/hand-rerun-f1.md`) then re-ran the isolated integration from a clean worktree following **only the committed guide**: exit 0, `CANDIDATE`, pin `20c2c364d6c7…`, all ten gates pass, verdict verbatim "Guide alone sufficed. No undocumented correction at any step." The evidence over-claim is amended in `epic_evidence.md` (criterion 5, § 4 F-1/F-2 rows, § 6 conclusion) to tell the failure-then-repair story rather than a clean pass.
+
+Gate: **CLEAR**
