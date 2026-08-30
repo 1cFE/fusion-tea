@@ -1,0 +1,5 @@
+exploration/stellarator_e2e/generated/contracts/model_contract.json
+exploration/stellarator_e2e/generated/contracts/package_contract.json
+exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json
+exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py
+exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py
