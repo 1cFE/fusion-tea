@@ -1,0 +1,13 @@
+p_pump_MW,R,a,rec_frac,recirc_ok,source
+130.0,13.0,1.0,0.4114661435264187,satisfied,oracle (verify_stellaris via oracle_entry)
+150.0,13.0,1.0,0.43882656328708336,satisfied,oracle (verify_stellaris via oracle_entry)
+195.0,13.0,1.0,0.49942479474890145,satisfied,oracle (verify_stellaris via oracle_entry)
+130.0,16.0,0.9,0.4125771299838545,satisfied,oracle (verify_stellaris via oracle_entry)
+150.0,16.0,0.9,0.440011425776959,satisfied,oracle (verify_stellaris via oracle_entry)
+195.0,16.0,0.9,0.5007705115890174,violated,oracle (verify_stellaris via oracle_entry)
+130.0,9.0,1.2,0.4125771299838545,satisfied,oracle (verify_stellaris via oracle_entry)
+150.0,9.0,1.2,0.4400114257769591,satisfied,oracle (verify_stellaris via oracle_entry)
+195.0,9.0,1.2,0.5007705115890175,violated,oracle (verify_stellaris via oracle_entry)
+130.0,18.0,0.85,0.41132772374654797,satisfied,oracle (verify_stellaris via oracle_entry)
+150.0,18.0,0.85,0.43867893680883663,satisfied,oracle (verify_stellaris via oracle_entry)
+195.0,18.0,0.85,0.4992571209050643,satisfied,oracle (verify_stellaris via oracle_entry)
