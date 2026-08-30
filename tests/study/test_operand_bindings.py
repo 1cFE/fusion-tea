@@ -27,7 +27,7 @@ BASELINE_POINT = {
     "stellarator_09__stellaris__a": 1.3,
     "stellarator_09__stellaris__availability": 0.85,
 }
-PINNED_LCOE = 275.2642200420774
+PINNED_LCOE = 333.0670332813743  # p_pump 195 MW pin (WI-033; GSTH Item 6, 2026-08-29)
 
 
 @pytest.fixture
