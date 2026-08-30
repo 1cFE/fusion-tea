@@ -1,0 +1,49 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "R",
+      "note": "Plasma major radius (one plant-level entry point) with its declared physical-identity tie: the magnet-cost Ampere's-law current runs on the same major radius under a separately authored attribute (manifest `ties`, ANNEX § Declared ties). Declared identically to 20260821-power-cycle-ab/axes.json so the two studies' fence positions are comparable key-for-key.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__R",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09__stellaris__magnet__R0",
+          "provenance": "tie"
+        }
+      ]
+    },
+    {
+      "axis": "a",
+      "note": "Plasma minor radius, one plant-level entry point.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__a",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "availability",
+      "note": "Plant capacity factor, one plant-level entry point since the migration (the consuming calcs bind it by the `_in` convention). Declared so its reach is traced and on the record; not proposed as a swept axis of this study.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__availability",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "discount_rate",
+      "note": "Discount / interest rate, one plant-level entry point; reaches CAS71/CAS72/CAS80 levelization and IDC. Declared so its reach is traced and on the record; not proposed as a swept axis of this study.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__discount_rate",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}
