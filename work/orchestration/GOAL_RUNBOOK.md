@@ -17,7 +17,7 @@ So the goal layer **cites, and never restates**. If you find yourself copying a 
 Three things this is not:
 
 - **Not a plan.** A strategy carries no future task list. The next task is chosen from the evidence in hand, after the previous one returned.
-- **Not a control plane.** There are no envelope files, no event ledger, no idempotency keys, and no digests that a procedure compares. That machinery is on a hardening path and is promoted only when a real run demonstrates prose failing, with the failure recorded (ADR-003).
+- **Not a control plane.** There are no envelope files, no event ledger, no idempotency keys, and no digests that a procedure compares. That machinery is on a hardening path and is promoted only when a real run demonstrates prose failing, with the failure recorded (ADR-0003).
 - **Not an automation of the owner's judgment.** Merge, push, item close, archive, and every reserved gate stay owner-held.
 
 ## The five surfaces
@@ -45,7 +45,7 @@ That is a *session* boundary, not a work boundary. It is stronger than "someone 
 **Who obtains the reviewer, by path:**
 
 - **A human operator** starts a new session for the reviewer, or asks a second person. Nothing else is needed.
-- **A goal agent cannot start a session.** It has no dispatch, and building one is barred — unattended dispatch is on the hardening path, not in this build (ADR-003). So when an agent reaches a gate that needs a fresh critic, its move is **to stop and hand back**. It does not review its own work, and it does not wave the gate through.
+- **A goal agent cannot start a session.** It has no dispatch, and building one is barred — unattended dispatch is on the hardening path, not in this build (ADR-0003). So when an agent reaches a gate that needs a fresh critic, its move is **to stop and hand back**. It does not review its own work, and it does not wave the gate through.
 
 **The agent's handoff, exactly.** Append to `trail.md`:
 
@@ -79,7 +79,7 @@ Revisions to a grounded goal are rare and are written as dated amendments, never
 
 **Do:** open a round by writing one strategy revision. Then run tasks under it until the round closes.
 
-**Write:** `## Round N — <strategy-slug>`, then `### Strategy revision — YYYY-MM-DD` carrying the approach, the assumptions it rests on, the conditions under which you would abandon it, the model increment you intend, and the study question you intend. **No future task list** (ADR-001). If you can predict all the tasks, the strategy is a plan and the round has stopped being an experiment.
+**Write:** `## Round N — <strategy-slug>`, then `### Strategy revision — YYYY-MM-DD` carrying the approach, the assumptions it rests on, the conditions under which you would abandon it, the model increment you intend, and the study question you intend. **No future task list** (ADR-0001). If you can predict all the tasks, the strategy is a plan and the round has stopped being an experiment.
 
 **A round is bounded.** At most one promoted pin and at most one committed study. A *pin* is the exact package version a study runs against — promoting one fixes what "the model" means for that study, so that two results are comparable. The study layer owns the term and its identity rules (`.claude/skills/run-study/runbook.md`; `modeling_project/STUDY_POLICY.md`). That is the bound that makes a round finite and comparable.
 
@@ -149,7 +149,7 @@ The return also carries the evidence refs, the goal-level reading of them, and f
 
 **Who checks it:** the fresh checkpoint reviewer, and then the round review, which sees the whole sequence.
 
-**The cap stops the work; it does not release it.** If the checkpoint has not passed after the declared number of revisions, write `### Stop — YYYY-MM-DD` of kind `cap`, naming the unresolved dispositions and what the owner has to decide. The round stops there. Hitting the cap never permits execution (ADR-005).
+**The cap stops the work; it does not release it.** If the checkpoint has not passed after the declared number of revisions, write `### Stop — YYYY-MM-DD` of kind `cap`, naming the unresolved dispositions and what the owner has to decide. The round stops there. Hitting the cap never permits execution (ADR-0005).
 
 Routine native stages get no separate goal critics. Their own reviews are native, and the round review reads their evidence rather than repeating it.
 
@@ -167,7 +167,7 @@ The round agent's last act is the round result; it does not review it. If no fre
 - Goal and strategy fidelity. Did the round pursue the strategy it declared?
 - Every recorded task scope. Did the work stay inside it? Drift is not prevented; it is caught here.
 - Retry classification. Was each retry genuinely mechanical, with task, inputs, scope, and meaning identical?
-- **Every discovery row the round's evidence touched** — that its disposition landed, and that the finding actually moved. This is the post-execution audit; it lives here, not in a third critic (ADR-005).
+- **Every discovery row the round's evidence touched** — that its disposition landed, and that the finding actually moved. This is the post-execution audit; it lives here, not in a third critic (ADR-0005).
 - Whether any cited native artifact moved outside its task (see § When a cited artifact moves).
 - The learning delta — accepted, corrected, or rejected before it is appended to `learnings.md`.
 - The constraints carried forward into the next strategy.
@@ -203,7 +203,7 @@ A task's authority rests on the native artifacts it cited. If one of them change
 
 **Who checks it:** the resumer and the fresh reviewer. Nothing else can catch it, and that is deliberate.
 
-**This is a reading, not a machine check.** No goal procedure compares a cited digest against a stored or computed one, and no goal procedure recomputes one — that mechanism is the stale-authority guard on the hardening path, barred until a real run shows this reading failing (ADR-003, ADR-006). **Digests are read by people.** A citation digest tells a reader which version was cited; that is its whole job.
+**This is a reading, not a machine check.** No goal procedure compares a cited digest against a stored or computed one, and no goal procedure recomputes one — that mechanism is the stale-authority guard on the hardening path, barred until a real run shows this reading failing (ADR-0003, ADR-0006). **Digests are read by people.** A citation digest tells a reader which version was cited; that is its whole job.
 
 **Writing a citation.** For a tracked artifact, `<path>@<commit-sha>`. Git already supplies the content digest, so nothing new is needed. For evidence that is not tracked, cite the tracked native record that already hashes it: a study store is cited through its committed record directory `@<sha>`, whose `snapshot.json` carries the store identity and fingerprints; an R2-synced research binary is cited through its tracked extracted markdown `@<sha>`. Where nothing native hashes it, cite the path and write **"unpinned; no native digest"** in the citation, so a reader can see the citation pins nothing rather than mistake it for one that does.
 
@@ -237,7 +237,7 @@ Every goal restates these numbers in its own `Limits` section, explicitly. They 
 
 *(Amended 2026-08-27. The prior sentence — "a goal round has exactly one write outside its own directory" — contradicted this file's own routing of findings to native work items through the owning PM. The reading above was recorded before the Item 4 proof run and validated in it: the round agent read it the same way unprompted.)*
 
-**What a round owes.** Every open row the round's evidence touched gets a disposition: one of `model fix | research | declared seam | upstream filing`, its status, the responsible task or owner, and what changed or the concrete next reference. **No touched row returns as `unrouted`** (ADR-004).
+**What a round owes.** Every open row the round's evidence touched gets a disposition: one of `model fix | research | declared seam | upstream filing`, its status, the responsible task or owner, and what changed or the concrete next reference. **No touched row returns as `unrouted`** (ADR-0004).
 
 **How to write it.** Append a new row under the *same* `<study-id>#<n>` id. Never edit a first-sighting row — that is the executor's account and it stands as written. Row kind is positional: for a given id, the earliest row in file order is the sighting and later rows are disposition updates. No column marks it.
 
@@ -262,7 +262,7 @@ What a round invokes, and what it gets back. The two `study.*` seams are the stu
 **Every seam is native now. A goal round still may not silently absorb a seam repair.**
 
 - **`research`** is native: `scripts/source_registry.py` is the one write door into `knowledge/`, `scripts/research_seam.py` carries a bounded request and computes its return from receipts on disk, and `/research-acquire` drives search and triage between them. Operator guide: `docs/research_seam_operator_guide.md`. (Repaired by GSTH Item 2; row flipped on the first live registrations — WI-033, 2026-08-28.)
-- **`integrate`** is native: `scripts/integrate.py` proves regeneration → verification → pin in one invocation and returns exactly one `CANDIDATE` pin and fingerprints or a named `BLOCKER`; it performs nothing and commits nothing (ADR-009 — a fixed-point proof, not a mutator). Operator guide: `docs/integration_seam_operator_guide.md`. (Repaired by GSTH Item 3; row flipped on the first live goal-round invocation — GSTH Item 6, goal `p-pump-fence`, 2026-08-29.)
+- **`integrate`** is native: `scripts/integrate.py` proves regeneration → verification → pin in one invocation and returns exactly one `CANDIDATE` pin and fingerprints or a named `BLOCKER`; it performs nothing and commits nothing (ADR-0009 — a fixed-point proof, not a mutator). Operator guide: `docs/integration_seam_operator_guide.md`. (Repaired by GSTH Item 3; row flipped on the first live goal-round invocation — GSTH Item 6, goal `p-pump-fence`, 2026-08-29.)
 
 "May not silently absorb" means: if a task finds itself repairing a seam rather than invoking its documented procedure, that is a `PREREQUISITE` return naming the seam, not a quiet expansion of scope. A seam repair has its own owner and its own failure contract.
 
@@ -272,10 +272,10 @@ Cited, not restated. Read the record when you want to challenge the rule.
 
 | Record | What it decides |
 |---|---|
-| [ADR-001](../../.project/adr/001-strategy-and-task.md) | One bounded task at a time, under one revisable strategy with no forward task list |
-| [ADR-002](../../.project/adr/002-round-boundary.md) | One agent per round; a fresh agent reviews it and authors the next |
-| [ADR-003](../../.project/adr/003-lean-first-persistence.md) | Prose files and native facts first; the hardening path and what promotes it |
-| [ADR-004](../../.project/adr/004-finding-disposition.md) | Joined disposition rows, appended, never editing a sighting |
-| [ADR-005](../../.project/adr/005-review-topology.md) | One fresh round critic plus the capped pre-execution checkpoint |
-| [ADR-006](../../.project/adr/006-goal-evidence-seam.md) | Citing `.project/` by path and digest, while each PM stays natively mutated |
-| [ADR-007](../../.project/adr/007-supersession.md) | The task is the authority unit; the finding is the traceability unit |
+| [ADR-0001](../../.project/adr/0001-strategy-and-task.md) | One bounded task at a time, under one revisable strategy with no forward task list |
+| [ADR-0002](../../.project/adr/0002-round-boundary.md) | One agent per round; a fresh agent reviews it and authors the next |
+| [ADR-0003](../../.project/adr/0003-lean-first-persistence.md) | Prose files and native facts first; the hardening path and what promotes it |
+| [ADR-0004](../../.project/adr/0004-finding-disposition.md) | Joined disposition rows, appended, never editing a sighting |
+| [ADR-0005](../../.project/adr/0005-review-topology.md) | One fresh round critic plus the capped pre-execution checkpoint |
+| [ADR-0006](../../.project/adr/0006-goal-evidence-seam.md) | Citing `.project/` by path and digest, while each PM stays natively mutated |
+| [ADR-0007](../../.project/adr/0007-supersession.md) | The task is the authority unit; the finding is the traceability unit |

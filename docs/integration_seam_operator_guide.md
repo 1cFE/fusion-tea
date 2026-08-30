@@ -52,7 +52,7 @@ Nine inputs. Four of them are optional to `argparse` but **not** optional to the
 
 | Flag | Where you get it | Required? |
 |---|---|---|
-| `--audited-work` | The work item you are integrating, cited `PATH@COMMIT` — ADR-006's citation form. Repeat it for several items. | Yes |
+| `--audited-work` | The work item you are integrating, cited `PATH@COMMIT` — ADR-0006's citation form. Repeat it for several items. | Yes |
 | `--models-root` | The SysML tree the package was generated from. For the stellarator package: `exploration/stellarator_e2e/models`. | Yes |
 | `--package` | The generated package root. Supply it **once**; two values refuse as ambiguous lineage. | Yes |
 | `--manifest` | The study-package manifest beside the route, `studies/manifest.json`. Once, same rule. | Yes |
@@ -283,6 +283,6 @@ Stated so you do not assume otherwise.
 
 ## Related
 
-- `.project/adr/009-integration-is-a-fixed-point-proof.md` — why the seam proves rather than performs.
+- `.project/adr/0009-integration-is-a-fixed-point-proof.md` — why the seam proves rather than performs.
 - `scripts/study/preflight.py`, `scripts/study/verify.py`, `scripts/study/manifest.py` — the producers, each with its own module docstring.
 - `tests/study/test_integrate_*.py` — the seam's own tests, including five real refusals from real producers.
