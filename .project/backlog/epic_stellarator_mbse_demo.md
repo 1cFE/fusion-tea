@@ -316,6 +316,21 @@ Design-point headline **re-baselined** (not a regression): total capital $16,145
 
 ---
 
+### Item 10: Maturation phase — depth rubric, grading, goal-directed refinement
+
+**Status**: Active (picked up 2026-08-30, branch `feat/demo-maturation`)
+
+**Type**: Mixed — rubric/grading as coding-PM item (`.project/active/demo-depth-rubric/`); maturation goals run goal-native under `work/orchestration/goals/`
+**Effort**: rubric+grading ~1 day; goals sized at grounding
+**Dependencies**: Item 1 (bands ratified); precedes Item 7 — this phase raises model depth until the owner-ratified reveal-readiness condition says Item 7 is worth triggering.
+**Required Reading**: `.project/concepts/stellarator-demo-maturation.md` (governing concept for this phase), `knowledge/holdout/aries-cs/PROTOCOL.md` (incl. §8 clean-room split), `.project/active/demo-depth-rubric/spec.md`
+
+**Objective**: Make "ARIES-level quality" measurable without unsealing anything: depth rubric (frozen `rubric.md@dc0f0b6d`), fresh-grader initial grading, gap report ending in candidate goal areas; then grade → goal → re-grade rounds per the concept.
+
+**Decision record**: design stage owner-skipped; grading by fresh non-author agent [OWNER 2026-08-30]. Related small item, separately executed: 1costingFE closure = pin (concept OQ5).
+
+---
+
 ### Item 9 (stretch): Optimum rediscovery at ARIES-CS-era assumptions
 
 **Type**: Modeling/Execution (modeling PM, register at pick-up); post-reveal only
