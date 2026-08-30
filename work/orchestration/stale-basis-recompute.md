@@ -37,3 +37,13 @@ Executed powers at pick-up (WI-024 close, commit `72f7d054`): p_fus 2748.1, p_th
 
 - Everything downstream of spec (design, plan, implement) parks until the post-spec owner checkpoint.
 - Checkpoint substance (outcome-level only): confirmation of the three-account scope; what the re-baselined headline records look like (which SVs re-record, successor-bar treatment); any honesty question the spec sweep surfaces (e.g. constants that turn out unsourced or fuel-key ambiguities). Grouped-vs-per-building CAS21 representation is design's, not the checkpoint's.
+
+---
+
+## Addendum — 2026-08-30: 1costingFE anchor closed — pin `[OWNER]`
+
+**Ruling ([OWNER-VERBATIM] 2026-08-30, recorded in `.project/concepts/stellarator-demo-maturation.md` § Owner's Words):** "I'm done caring about the 1costingFE reproduction. we showed we could do it. pin it, or archive those models. but let's move on -- I do not want to be anchored to 1costingFE." Mechanism ruled the same day: **pin** — record the state where the handshake holds; no file moves.
+
+**The pin:** the Anchor A handshake verdict (A-4 form, criterion-3 **MET**) was produced from an executed run and independently audit-confirmed at commit **`f22bd288`** (WI-029 implement, 2026-07-25; owner-closed 2026-08-02). Citable artifacts at that commit: `exploration/stellarator_e2e/HANDSHAKE_REPORT.md` (auditor reproduced byte-identical), `exploration/stellarator_e2e/handshake_comparison.json` (last re-baselined `31161dbe`), records `work/completed/20260802_WI-029_handshake-lcoe-construction/`.
+
+**Effect on the successor bar above (ruling-3 bullet and its 2026-07-19 G-8 amendment):** retired as a live gate. Anchor A is closed evidence at the pinned state — maturation-phase work (demo epic Item 10, goals under `work/orchestration/goals/`) neither re-runs nor preserves the handshake, and no future session re-inherits the reproduction duty. Any claim about the handshake cites the pin, not the working tree. The bar's text above stays for the record of items it governed (WI-019–025, Items 3–4).
