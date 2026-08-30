@@ -443,6 +443,8 @@ Gate: CLEAR
 - ❌ No goal round has consumed the native integration return, promoted one pin, committed one study, and closed after a valid reading.
 - ❌ Human and goal-agent routes have not been compared against the same artifact and native-state contract.
 
+> **Amendment 2026-08-29** (Item 6 Align, owner-blessed): the two Item-5-gap ❌ lines above are discharged in substance by **WI-033** (`work/completed/20260828_WI-033_p-pump-rebase/verification_record.md`): `p_pump` = 195.0 MW landed in both twin homes (C-MODEL `ffb22724`), Cismondi and Moscato registered through the native seam (C-REG-CIS `39bd3b41`, C-REG-MOS `891b95bc`), and the `GOAL_RUNBOOK.md` `research` row flipped native (C-FLIP `9f0019e8`; the `integrate` row byte-untouched — that flip is Item 6's own). WI-033 audited POSITIVE and closed 2026-08-28 (`83ccd8f9`). Pre_pr 2026-08-28: NOT READY on the seam's designed model↔package refusal; owner routing: Item 6 rides `feat/wi033-p-pump-rebase`, one PR (`.project/pre_pr/2026-08-28-pre-pr-wi033-p-pump-rebase.md`). The remaining two ❌ lines (no round has consumed the integrate return; routes not compared) are Item 6's work. Goal `p-pump-basis` closed by owner ruling 2026-08-28; Item 6's round runs under a new successor goal on row `20260821-power-cycle-ab#3`'s open tail (`[OWNER 2026-08-29]`, Item 6 spec § Align rulings).
+
 **Required Reading**:
 - Items 1, 3, 4, and 5 artifacts
 - `.project/concepts/goal-strategy-task-harness-design.md` § Native seams, Round Semantics, Findings and Learning, System Confidence, and Validation and Handoff
