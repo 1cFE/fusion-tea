@@ -20,6 +20,8 @@ While sealed, **all stellarator-demo model-development and research sessions** a
 
 Not blocked: sessions verifying quarantine integrity (checksums against `manifest.json` — content-free by construction), and the separate 38-concept analysis pipeline (the blocklist binds the demo's sessions, not that track).
 
+Also not blocked: yardstick sessions, per §8.
+
 Every demo work item created while sealed must list this file as Required Reading.
 
 ## 3. Clean-room admissibility
@@ -38,7 +40,7 @@ The demo is clean-room: model-development sessions may not read ARIES-CS-*inform
 
 ### Barred by default, documented-exception path
 
-These general costing sources contain ARIES-CS-specific data points. A demo session may use one only after the owner approves a written exception, logged in §6 with date, scope (which sections or values), and rationale.
+These general costing sources contain ARIES-CS-specific data points. A demo session may use one only after the owner approves a written exception, logged in §6 with date, scope (which sections or values), and rationale. Yardstick sessions are exempt from this default (§8); the exception path continues to govern model-facing sessions.
 
 - `knowledge/sources/aries_cost_account_documentation/**` — Waganer ARIES cost-account doc
 - `knowledge/sources/tea_dt_mfe_cost_analysis/**` — Araiinejad & Shirvan 2025 TEA paper
@@ -84,6 +86,7 @@ If the blind is violated before reveal (a sealed PDF or barred artifact read in 
 - 2026-07-12 — sealed. Four PDFs ingested (see §7); no content read. Exceptions granted: none. Violations: none.
 - 2026-07-13 — owner ratified the two ingestion-time barred-list additions (Helios design-paper extraction in `knowledge/sources/`; concept-36 ARIES-CS stub).
 - 2026-07-13 — contamination disclosure (no barred file read). Planning the demo's WI-009→011 Stage-2 build surfaced that the pre-quarantine WI-009 `design.md` carries an ARIES-CS ~$9700/kW anchor and barred-doc citations; the $/kW figure entered the planning session's context. Added to §5 inventory. Owner ratified the mitigation (build WI-009 sourced from 1costingFE only, ARIES-CS anchor dropped, barred citations re-pointed). Status remains `sealed`; no reveal.
+- 2026-08-30 — owner-approved amendment (clean-room split, §8): yardstick sessions exempted from §2/§3, sealed PDFs excluded, Waganer readable in yardstick sessions; model-facing sessions unchanged. Status remains `sealed`; no reveal. Ruling captured in `.project/concepts/stellarator-demo-maturation.md`.
 
 ## 7. Provenance
 
@@ -97,3 +100,12 @@ curl -fsSL http://web.archive.org/web/20170808114520id_/http://aries.ucsd.edu/LI
 ```
 
 Integrity: SHA256, byte size, and page count per file in `manifest.json`. Page counts (18/21/31/22) match the FS&T Vol 54 No 3 table of contents exactly (pp 655–672, 673–693, 694–724, 725–746). Verify any time with `sha256sum -c` semantics against the manifest — no content read required.
+
+## 8. Clean-room split (owner ruling, 2026-08-30)
+
+The clean room exists so the model is never built from ARIES-CS data. It binds the sessions that build the model, not the ones that build the yardstick.
+
+- **Yardstick sessions** — sessions producing the depth rubric, gradings against it, or the maturation phase's gap reports, and touching no model file — are exempt from §2 blocking and §3 admissibility, including the two barred-by-default costing sources (the Waganer ARIES cost-account doc explicitly). The four sealed PDFs in this directory are **not** covered by the exemption: they stay unread until the §6 reveal.
+- **Model-facing sessions** — anything building, refining, researching for, or reviewing the model — keep the full clean room exactly as §2/§3 state it.
+- **The firewall between the two is the yardstick's output:** rubrics and gradings carry depth prescriptions only — what to model and how deeply — never ARIES-CS-specific values or design facts. §4 binds every session as always.
+- **Source register:** any source ingested for yardstick work is barred for model-facing sessions until screened clean; screening verdicts are recorded as rows below this line. (None yet — no yardstick ingestion planned.)
