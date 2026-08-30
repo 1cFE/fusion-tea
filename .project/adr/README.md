@@ -69,6 +69,14 @@ challenge re-derives against) · **Invariants established** (may be omitted) · 
 alternatives** (one-liners, phrased as decision records, never as instructions to future
 agents).
 
+## Legacy IDs and prior art
+
+The 2026-08-30 register migration widened filenames and frontmatter ids without changing ordinals: `ADR-001` through `ADR-010` in artifacts written before 2026-08-30 refer to `0001-...` through `0010-...` in this directory. For example, `ADR-009` in a pre-2026-08-30 artifact means `0009-integration-is-a-fixed-point-proof.md`.
+
+`exploration/phase_1a/ADR-001_csv-source-of-truth.md` — CSV is the source of truth for the concept ontology (2026-05-17). Written before this register existed, in its own style, and it already owns the id `ADR-001`. It is not renumbered and not moved: it has inbound citations, and breaking them for tidiness is not worth it. Register ids are scoped to this directory, so that prior-art `ADR-001` and `0001-strategy-and-task.md` are different ids. New decisions go here.
+
+`ADR-00X` was also used loosely in at least one committed modeling artifact: `work/completed/20260303_WI-008_hif-concept-instantiation/design.md:49-107` writes "ADR-002" for what is a modeling calculation-placement decision, meaning an `AD-XXX`. Read an `ADR-NNN` citation against the directory it came from: inside `work/` and `modeling_project/` it may mean an `AD-XXX`; only a citation resolving to a file in this directory is a register id.
+
 ## Cross-seam placement
 
 **A decision lives in the repo that must uphold it, not the repo that discovered it.**

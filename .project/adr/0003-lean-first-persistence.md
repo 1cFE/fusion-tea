@@ -1,17 +1,16 @@
 ---
-status: accepted
+id: 0003
+title: Begin with prose files and native facts; harden only on an observed failure
 date: 2026-08-25
-deciders: [Reid W]
-grade: "[OWNER] lean-first ruling, 2026-08-23; [AGENT] separate `learnings.md` mechanism"
-supersedes: none
-amends: none
+owner: Reid W
+status: active
+amended_by: []
+superseded_by: null
+provenance: "[OWNER] lean-first ruling, 2026-08-23; [AGENT] separate `learnings.md` mechanism"
+seams: []
+supersedes: null
+promoted_to: null
 ---
-
-# ADR-003: Begin with prose files and native facts; harden only on an observed failure
-
-## Context
-
-The concept design carried a full control plane: immutable task envelopes, an append-only event ledger, authority digests, idempotency keys and effect queries, and a reconciliation operation. The review asked what failure each catches that git plus a fresh review does not (`.project/concepts/goal-strategy-task-harness-design-review.md` M4/P2). The owner ruled option (a) — lean first, harden on evidence — on 2026-08-23. Owner's words: "yeah I agree with (a)."
 
 ## Decision
 
@@ -29,28 +28,23 @@ Every control-plane mechanism stays on the hardening path and is promoted only w
 | Idempotency keys and effect queries | A native mutating procedure cannot resolve interrupted unattended work — repair its owner first |
 | Hand-run or dispatched reconciliation | Both routes exist and need one machine-consumed return |
 
-## Rationale
+## Why
+
+The concept design carried a full control plane: immutable task envelopes, an append-only event ledger, authority digests, idempotency keys and effect queries, and a reconciliation operation. The review asked what failure each catches that git plus a fresh review does not (`.project/concepts/goal-strategy-task-harness-design-review.md` M4/P2). The owner ruled option (a) — lean first, harden on evidence — on 2026-08-23. Owner's words: "yeah I agree with (a)."
 
 The threats the machinery catches are drift, replay ambiguity, and concurrent mutation. This is a single-operator, serialized, git-tracked system with no concurrent goal runs and no unattended dispatch, so git plus a fresh reviewer already covers most of them. Building the control plane first would cost the whole first build and prove nothing, because there is no failure yet to measure it against.
 
 Keeping learning in its own file is what makes cross-round memory readable without scanning the whole trail — the trail grows monotonically and the learning is the part a new round actually needs.
 
-## Rejected alternatives
-
-- **A first-build control plane** — envelopes, ledger, digests, idempotency keys, and reconciliation before any observed friction. Cost is certain, benefit is hypothetical.
-- **Learning inline in the trail** — readable only by scanning everything, which is the failure mode a resumer hits first.
-
-## Affected seams
+## Invariants established
 
 - `work/orchestration/goal-templates/` — all three files.
 - `work/orchestration/GOAL_RUNBOOK.md` — the whole document is prose-and-native-facts by this ruling.
 - The item's Non-Goals: no mechanism from the hardening table enters without a recorded failure.
 
-## Consequences
-
 Being wrong is a designed outcome: a run that cannot be reconstructed from task-grain prose is the evidence that promotes the ledger. That evidence must be *recorded*, not routed around. First unattended dispatch is a pressure test, not permission to pre-build every mechanism.
 
-## Amendment — 2026-08-27: the proof run happened, and promoted nothing
+### Amendment — 2026-08-27: the proof run happened, and promoted nothing
 
 *(Recorded at the close of GSTH Item 4. Grade: `[OWNER]` hardening rule 2026-08-23 unchanged; the verdict below is `[AGENT]` measurement, ratified by the owner's Item 4 criteria ruling 2026-08-27, `4a8de283`.)*
 
@@ -67,7 +61,7 @@ Two pieces of evidence went to the owner as *written-rule* repairs rather than m
 
 A future round that re-opens the hardening question starts from this measurement, not from the untested table.
 
-## Amendment — 2026-08-28: a second run, on a real open question, promoted nothing either
+### Amendment — 2026-08-28: a second run, on a real open question, promoted nothing either
 
 *(Recorded at the close of GSTH Item 5. Grade: `[OWNER]` hardening rule 2026-08-23 unchanged; the verdict below is `[AGENT]` measurement, audited POSITIVE 2026-08-28 and re-verified against disk by the auditor.)*
 
@@ -81,3 +75,8 @@ Two things this run adds that Item 4's could not:
 - **The mid-run sandbox degraded three times** (git writes, then home-directory writes, then `claude` invocation) and the lean route absorbed it: the execution subagent stopped cleanly at each wall, each refusal was quoted into `operator-notes.md`, and the operator role moved to the orchestrator. An unattended dispatcher would have had to handle this; an attended prose route simply stopped and said why. The row stays untested rather than passed, for the same reason it did in Item 4.
 
 Two measurements are now on this record, taken on different goal shapes, and neither promotes anything. A future round re-opening the hardening question starts from both.
+
+## Rejected alternatives
+
+- **A first-build control plane** — envelopes, ledger, digests, idempotency keys, and reconciliation before any observed friction. Cost is certain, benefit is hypothetical.
+- **Learning inline in the trail** — readable only by scanning everything, which is the failure mode a resumer hits first.

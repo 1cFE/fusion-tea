@@ -1,5 +1,5 @@
 ---
-id: 010
+id: 0010
 title: The independent oracle mirrors the model's audited held bindings — and is demo-scoped, not permanent
 date: 2026-08-30
 owner: Reid W
