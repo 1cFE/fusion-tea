@@ -66,7 +66,12 @@ IN = dict(
     beta_mu0=1.25663706212e-6, beta_e_keV=1.602176634e-16,  # 'Volume-Averaged Beta' defaults
     # power balance
     p_input=50.0, mn=1.2, eta_th=0.333, eta_p=0.5, eta_pin=0.5,
-    p_pump=1.0, f_sub=0.03,  # p_pump: 1costingFE steady_state_stellarator.yaml:21 (WI-019)
+    # p_pump: 1cfe upstream default 1.0 (1costingFE steady_state_stellarator.yaml:21,
+    #   WI-019); re-based to 195.0 by WI-033 [OWNER 2026-08-28] (helium-primary
+    #   circulator basis, 6% of p_th; work/completed/20260828_WI-033_p-pump-rebase/).
+    #   The oracle mirrors the model's held design-point bindings (module docstring);
+    #   edit made under explicit owner ruling 2026-08-29, GSTH Item 6 round p-pump-fence.
+    p_pump=195.0, f_sub=0.03,
     # p_tf = 0.0 (WI-024): modeled zero for the SC coil set (recirc_power_factor
     #   = 0 in 1cfe's own SC model; ~7.5 kW joint loss counted as 20 K heat in
     #   the cryo chain). The old 111.0 mapped a phantom "conduction power to
