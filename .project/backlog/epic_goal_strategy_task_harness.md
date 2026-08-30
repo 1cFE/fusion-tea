@@ -428,7 +428,7 @@ Gate: CLEAR
 
 ---
 
-### Item 6: Integration-to-Study Closure and Route Equivalence
+### Item 6: Integration-to-Study Closure and Route Equivalence ✅
 
 **Type**: Testing/Integration
 
@@ -472,17 +472,17 @@ Gate: CLEAR
 - Fixing adverse study findings in the same closed round.
 
 **Success Criteria**:
-- [ ] The native integration return resolves to exactly one study-ready pin and fingerprint, and the study executes against that exact contract.
-- [ ] One committed study record passes verification and yields a fresh administrator reading; an adverse or inconclusive reading closes the round without self-repair.
-- [ ] Every touched/new finding has a joined disposition with status and changed/next reference; no touched row remains `unrouted`.
-- [ ] `RoundReview` accounts for the pre-execution critic, task scopes/returns, comparison meaning, findings, and learning before a next strategy is written.
-- [ ] Human and goal-agent routes meet the same artifact/native-state contract in the equivalence report without duplicate side effects.
-- [ ] Item-level and project-defined regressions pass, and the epic proof report maps every epic success criterion to evidence.
-- [ ] No hardening-path mechanism is present unless its promoting failure is recorded and owner-visible.
+- [x] The native integration return resolves to exactly one study-ready pin and fingerprint, and the study executes against that exact contract.
+- [x] One committed study record passes verification and yields a fresh administrator reading; an adverse or inconclusive reading closes the round without self-repair.
+- [x] Every touched/new finding has a joined disposition with status and changed/next reference; no touched row remains `unrouted`.
+- [x] `RoundReview` accounts for the pre-execution critic, task scopes/returns, comparison meaning, findings, and learning before a next strategy is written.
+- [x] Human and goal-agent routes meet the same artifact/native-state contract in the equivalence report without duplicate side effects.
+- [x] Item-level and project-defined regressions pass, and the epic proof report maps every epic success criterion to evidence.
+- [x] No hardening-path mechanism is present unless its promoting failure is recorded and owner-visible.
 
 **Estimated Effort**: 2 days (spec 1.5h, design 3h, plan 1.5h, execute 10h)
 
-**Location**: `.project/active/goal-integration-study-proof/`
+**Location**: `.project/completed/20260830_goal-integration-study-proof/` (closed 2026-08-30; audit POSITIVE `be495769`, product-lens CLEAR after `close-F1` resolution `8fc1cbb0`; evidence per-criterion in its `verification_record.md` § 3)
 
 **Dependencies**: Items 3 and 5.
 

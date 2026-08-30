@@ -4,6 +4,30 @@ Historical record of completed work.
 
 ---
 
+## [2026-08-30] - Goal Harness Item 6: Integration-to-Study Closure and Route Equivalence
+
+**Type**: Item (Goal Strategy and Task Harness epic, Item 6 — the epic-verdict deliverable)
+**Duration**: 2 days (spec 2026-08-29 → close 2026-08-30)
+
+### Summary
+The goal loop's back half had never run: no round had consumed the native `integrate` return, promoted a pin, committed a study against it, and closed on the reading — and the documented human and goal-agent routes had never been compared. This item did all of it live, under a real successor goal (`p-pump-fence`) grounded on the open tail of discovery row `20260821-power-cycle-ab#3`. The seam refused four times for four designed reasons before returning one CANDIDATE; the 906-point study moved the `recirc_ok` fence from a 32-point corner to a 184-point band and put LCOE +21.0 % at baseline, with a 42-point net-negative region disclosed as an evaluability bound; a fresh administrator read the committed record alone; a checkpoint critic refused once and passed the revision; a fresh RoundReview upheld the answer; the owner closed the goal. Route equivalence came back byte-identical on native identity — and the product-lens close gate then blocked on the one over-claim in the evidence, which was resolved the honest way: repair the guide/env contract, re-run the hand integration from documentation alone, amend the evidence to the failure-then-repair story.
+
+### Deliverables
+- `20260830_goal-integration-study-proof/` — spec (lean shape), plan (9 phases), audit (POSITIVE), `epic_evidence.md` (all 7 epic criteria + criterion 8 mapped), `route_equivalence.md` + hand synthesis, `verification_record.md`, `product-lens.md` (BLOCK → CLEAR), 21 stage briefs
+- `exploration/stellarator_e2e/studies/20260829-p-pump-fence/` — committed study record, fresh-administrator synthesis, addendum with re-derived artifacts
+- `work/orchestration/goals/p-pump-fence/` — goal closed by owner ruling; trail with five seam returns kept as evidence; four accepted learnings
+- Seven joined `DISCOVERY_LOG.md` disposition rows; **WI-034** minted (CAS10 land-term guard); `GOAL_RUNBOOK.md` `integrate` row flipped native; `docs/integration_seam_operator_guide.md` secondary-checkout contract
+
+### Notes
+- The stale-expectation class was the round's recurring discovery: five hand-maintained expectations of package output (manifest headline, independent oracle, two test fixture sets, annex prose), found one at a time by gate 8, the battery, and a human read — accepted as learning L-001, not promoted to machinery.
+- The oracle carry (`p_pump` 1.0 → 195.0 in `verify_stellaris.py`) was an explicit owner override of a written prohibition; ADR candidate pending owner yes/no at close.
+- Hardening verdict: nothing promoted. F-1/F-2 (fresh-checkout reproducibility) fixed at close as documentation; F-3/F-4 recorded with fix homes.
+
+### Lessons Learned
+[TODO: Add lessons learned]
+
+---
+
 ## [2026-08-28] - Goal Harness Item 5: Research-to-Model Round Proof
 
 **Type**: Item (Goal Strategy and Task Harness epic, Item 5)
