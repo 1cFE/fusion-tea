@@ -51,3 +51,8 @@ warn_unused_configs = true
 [tool.pytest.ini_options]
 pythonpath = [".", "scripts"]
 markers = ["slow: long-running integration tests"]
+# Bare `pytest` at the repo root otherwise sweeps generated TEA packages (which import
+# simkit/<package> from their own roots) and proof_of_concept/tests, whose __init__.py
+# binds the top-level name `tests` and hides our namespace-package tests/ tree.
+testpaths = ["tests"]
+norecursedirs = ["archive", "exploration", "generated", "proof_of_concept", ".venv", "_work"]
