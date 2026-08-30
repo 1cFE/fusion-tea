@@ -132,3 +132,37 @@ Regenerate, recapture, re-pin and re-derive the known-answer fixtures · native 
 ### T-003 start — 2026-08-29
 
 Carry `p_pump` to the independent oracle and re-run the seam · native target `exploration/stellarator_e2e/verify_stellaris.py`, then `scripts/integrate.py` · expected artifact a `CANDIDATE` `integration_return.json` and a green `tests/study`.
+
+### Amendment 2026-08-29 — amends `### T-002 return — 2026-08-29`
+
+Amends the third paragraph of that entry's § Reading, which stated the finding as being about the independent oracle. A third instance appeared after that entry was written, and the claim is sharper at class level than at instance level. The original paragraph stands as written; this is what the round close should propose as the learning.
+
+**An audited held-input change reaches the package by regeneration, but every hand-maintained expectation of the package's output is invisible to the model layer. Only the integrate seam and the battery find them, one class at a time.**
+
+Three instances this round, each found by a different mechanism, each after the previous was discharged:
+
+1. The manifest's own `baseline.headline.value` — found by integrate gate 7 `preflight`, sub-gate `baseline_headline` (`evidence/integration-run-3/preflight_results.json`).
+2. The independent oracle's held `p_pump` — found by integrate gate 8 `verification` (`evidence/integration-run-4/verify_stderr.txt`), on the first live invocation that ever reached that gate.
+3. Two test-side expectation sets — the nine-anchor gate in `exploration/stellarator_e2e/run_stellaris_single.py` and `PINNED_LCOE` in `tests/study/test_operand_bindings.py` — found by the `tests/study` battery, which the seam does not run.
+
+The shape that matters: none of the three is reachable from `models/`, so no model audit could have caught them; and no single mechanism found more than one, so each discharge was needed before the next became visible. `.project/active/goal-integration-study-proof/plan.md` § Phase 1b predicted exactly one member of this class (the six known-answer fixtures) and named it "the regression the pre_pr gate could not see." The class is larger than that, and the plan's enumeration was the only map available.
+
+### T-003 return — 2026-08-29
+
+- **Outcome:** `COMPLETE`.
+
+- **Evidence.** `work/orchestration/goals/p-pump-fence/evidence/integration-run-5/integration_return.json` — exit 0, `class: "CANDIDATE"`, all ten gates pass. Pin `20c2c364d6c79592b87e8d467b0a4c29a2695fe89c3a5a83e247dfd7a7d758d6`, semantic fingerprint `f08daa7b1bcc62f838d33821646b676548c14edd535cb3b4482fd358bbfaed2e`, executable fingerprint `f97f084818723224bdd7f604a63e1941dadeb3e99af0cca3c9c6d30280d312f0`. Gate 6 confirms the pin recomputes over the live package and is the manifest's own value, not a newly minted one; gate 9 confirms both fingerprints are the lineage the request named. `evidence/integration-run-5/verification_summary.json` — outcome `pass`, ten channels at tolerance 1e-9, worst deviation 3.481852797503249e-16, `not_independently_verified: []`. `tests/study` green: 344 passed, 1 skipped, exit 0.
+
+- **Reading.** Three things.
+
+  **The discharge took three commits, not one, and that is the finding rather than an accident.** The owner-ruled oracle carry was T-003's stated objective, and it moved package-oracle parity from 38 disagreeing channels to a worst deviation of 3.48e-16 — the same order as the committed `20260821-power-cycle-ab` record measured at its own pin. But the battery then surfaced the third instance of the class, discharged under this same task by the orchestrator's ruling. The Amendment above states the class-level claim.
+
+  **The candidate is one, and it is the manifest's own.** § Answered when requires a regenerated and pinned package, and this is it: exactly one pin, certified by the seam rather than promoted by hand, against the audited model WI-033 landed. Nothing in this round minted a second.
+
+  **The seam's oracle-verification gate now has working evidence behind it.** ADR-009 designs gate 8 as the independent check that stops a package from certifying its own arithmetic. This round is the first time it was reached live, and it refused, correctly, on a real inconsistency that four other mechanisms had passed over. Run 5 is the same gate passing on the discharged tree. That pair — a refusal and a pass on the same gate, on the same package, either side of one known change — is the evidence Phase 5's runbook flip needs.
+
+- **Decision.** *Trigger:* the oracle carry was authorized but barred in writing by `exploration/stellarator_e2e/studies/oracle_entry.py`'s own header. *Decision and reason:* make the edit at one line and record the override in the file itself, rather than either silently editing or refusing a ruled-in change — because the prohibition protects the oracle as *independent evidence*, and independence lives in its arithmetic rather than in its parameterization; a held input carrying two different values in two implementations compares two different plants. *Tier:* reserved — an owner ruling, because it overrides a written prohibition and moves what the `lcoe_1cfe` reconciliation channel means. *Decided by:* the owner `[OWNER 2026-08-29]`, on the round agent's recommendation, via the orchestrator. *What changed:* `exploration/stellarator_e2e/verify_stellaris.py` at `2f0f5133`.
+
+- **Decision.** *Trigger:* the battery's last two reds were a third instance of the stale-expectation class, outside T-003's stated objective. *Decision and reason:* discharge them inside T-003 rather than opening a fourth task — because T-003's done-condition already named a green battery and its stop-condition explicitly excluded "another stale pre-WI-033 pin" as a stopping cause, so the task was written to absorb exactly this. *Tier:* execution detail. *Decided by:* the orchestrator, on the round agent's recommendation. *What changed:* `exploration/stellarator_e2e/run_stellaris_single.py` and `tests/study/test_operand_bindings.py` at `6e05c12f`.
+
+- **What this does not answer.** The round now has a study-ready candidate and nothing more. § Answered when asks where the `recirc_ok` fence moves and what LCOE does, and neither is answered by a baseline point. The one substantive fact in hand — six verdicts hold and LCOE moves +21.0 % at the baseline point — bounds the study rather than replacing it.

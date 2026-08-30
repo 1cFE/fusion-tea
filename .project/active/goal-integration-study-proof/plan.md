@@ -1,6 +1,6 @@
 # Implementation Plan: GSTH Item 6 — Integration-to-Study Closure and Route Equivalence
 
-**Status:** Draft
+**Status:** In Progress — Phases 0 and 1 complete (2026-08-29); Phase 2 not started
 **Created:** 2026-08-29
 **Last Updated:** 2026-08-29
 **Branch:** `feat/wi033-p-pump-rebase` (owner-ruled: one PR ships WI-033 + Item 6)
@@ -154,16 +154,16 @@ Full invocation, every flag's provenance, and the blocker-condition table: `docs
 
 **1c — Re-run the seam.**
 - [x] Same invocation, fresh `--out-dir`, with the *new* expected fingerprints. Expect exit 0, `class: "CANDIDATE"`.
-- [ ] Record the pin and both fingerprints in `trail.md` as `### T-002 return` = `COMPLETE`, citing `integration_return.json`. **Exactly one** candidate — a second promoted pin is out of scope.
+- [ ] Record the pin and both fingerprints in `trail.md` as `### T-002 return` = `COMPLETE`, citing `integration_return.json`. **Exactly one** candidate — a second promoted pin is out of scope. **Left open deliberately:** T-002 returned `PREREQUISITE`, not `COMPLETE` — the pin and both fingerprints are recorded in `### T-003 return` instead. See Phase 1 Completion § Deviations.
 
 **1d — Turn the battery green.**
-- [ ] `uv run --env-file ~/1cfe/agentic-mbse/.env --env-file .venv/integration.env python -m pytest tests/study` — the 13 failures and 8 errors in `tests/study/test_integrate_*` from `.project/reports/2026-08-28-pre-pr-wi033-p-pump-rebase.md` must be green.
+- [x] `uv run --env-file ~/1cfe/agentic-mbse/.env --env-file .venv/integration.env python -m pytest tests/study` — the 13 failures and 8 errors in `tests/study/test_integrate_*` from `.project/reports/2026-08-28-pre-pr-wi033-p-pump-rebase.md` must be green.
 
 ### Validation
 **Automated:**
 - [x] `integration_return.json` from 1a: exit 1, gate 2. From 1c: exit 0, `CANDIDATE`.
 - [x] `uv run agentic-mbse validate models/` → L1 clean; L2 = the 12 known pre-existing placeholder-binding WARNs, count and locations unchanged.
-- [ ] `tests/study` green, including the 21 formerly-red integrate tests and `test_known_answers.py`.
+- [x] `tests/study` green, including the 21 formerly-red integrate tests and `test_known_answers.py`.
 
 **Manual:**
 - [x] `git diff --stat` shows zero lines under `exploration/stellarator_e2e/studies/2026*` — prior committed records untouched.
@@ -412,6 +412,7 @@ Reference shape: 570 passed / 14 skipped / 0 failed at the 2026-08-28 gate, befo
 - [ ] Map each of the seven epic § Item 6 success criteria to its evidence path/commit, plus spec criterion 8.
 - [ ] Epic Success Criterion 7 — "no hardening-path mechanism is present unless its promoting failure is recorded and owner-visible": walk what this item added and confirm none of it is control-plane machinery (ADR-003). If Phase 6 or the round surfaced a real failure that would justify hardening, record the failure; do not build on it.
 - [ ] Record any observed failure worth later hardening, with its evidence.
+- [ ] Name in `epic_evidence.md` the seam's own standing self-report: `assert_read_set_covered` is not run at gate 6 ("out of reach here and covered by nothing else (filed)") — stated on every invocation including the CANDIDATE one. Same honesty class as spec criterion 8. *(Added 2026-08-29 at Phase 1 close.)*
 
 ### Validation
 - [ ] Canonical battery exit 0.
@@ -486,6 +487,30 @@ See CLAUDE.md and `docs/integration_seam_operator_guide.md § The environment`. 
 - § Question and § Answered when were agent-drafted and adopted verbatim by the owner ("use your drafts"), not owner-originated as the phase's reserved gate anticipated. Graded `[AGENT] (adopted verbatim by owner ruling, 2026-08-29)` in `goal.md` and flagged in the trail as weaker provenance than the predecessor goal's contract. The phase did not stop, because the gate's purpose — that the contract is the owner's and not the agent's to reinterpret — is met by the adoption.
 
 ### Phase 1 Completion
+**Completed:** 2026-08-29. Commits `8099217b`, `cc249b89`, `2f0f5133`, `b962ae91`, `6e05c12f` (all by the orchestrator; the round agent made working-tree writes only).
+
+**Outcome:** one `CANDIDATE`, pin `20c2c364d6c79592b87e8d467b0a4c29a2695fe89c3a5a83e247dfd7a7d758d6`, semantic `f08daa7b1bcc62f838d33821646b676548c14edd535cb3b4482fd358bbfaed2e`, executable `f97f084818723224bdd7f604a63e1941dadeb3e99af0cca3c9c6d30280d312f0`. `tests/study`: 344 passed, 1 skipped, exit 0. The phase's stated goal is met and Phase 2 is unblocked.
+
+**Actual Changes:**
+- Regenerated the package in place; recaptured `exploration/stellarator_e2e/stellarator.snapshot.json`; re-pinned the manifest's two fingerprints and its indicator digest; re-derived the six known-answer fixtures and `EXPECTED_SEMANTIC_FINGERPRINT` from the new package (`8099217b`).
+- Re-pinned the manifest's `baseline.headline.value`, 275.2642200420774 → 333.0670332813743 (`cc249b89`).
+- Carried WI-033's `p_pump` to the independent oracle, `verify_stellaris.py` 1.0 → 195.0, under owner ruling (`2f0f5133`).
+- Re-pinned eight of the nine anchors in `run_stellaris_single.py` and `PINNED_LCOE` in `tests/study/test_operand_bindings.py` (`6e05c12f`).
+- Five seam invocations, all kept as evidence under `work/orchestration/goals/p-pump-fence/evidence/`. Trail entries: `T-001` return, `T-002` scope/start/return, an Amendment, `T-003` scope/start/return.
+
+**Issues:**
+- **The plan's 1b enumeration was incomplete, and the phase's real cost was discovering by how much.** 1b named the manifest's fingerprints, the snapshot and the six known-answer fixtures, and called those fixtures "the regression the pre_pr gate could not see." Three further members of that class existed. Each was found only after the previous one was discharged, by a different mechanism — preflight gate 7, verification gate 8, then the battery — so the phase took five seam runs where it budgeted two. The class-level statement is in the trail's `### Amendment 2026-08-29`: an audited held-input change reaches the package by regeneration, but every hand-maintained expectation of the package's output is invisible to the model layer.
+- **Gate 8 caught a real inconsistency four other mechanisms had passed over.** The independent oracle held `p_pump` = 1.0 while the model held 195.0, so at the baseline point 38 channels disagreed and the oracle reproduced the pre-WI-033 LCOE exactly. WI-033's verification record never mentions the oracle. This is the first time integrate gate 8 has been reached in a live invocation, and the refusal/pass pair either side of one known change is the evidence Phase 5's runbook flip needs.
+- **Editing the oracle required overriding a written prohibition.** `exploration/stellarator_e2e/studies/oracle_entry.py` forbids the study seam from modifying `verify_stellaris.py`. The round agent stopped rather than override it; the owner ruled the carry authorized `[OWNER 2026-08-29]` on the reasoning that the oracle's independence is its arithmetic, not its parameterization. Recorded in the commit, in a comment in the file, and in the trail's `### T-003 scope`.
+
+**Deviations from Plan:**
+- **The round agent's session hit a wall-clock timeout after `### T-002 start`** — an invocation with no return (`GOAL_RUNBOOK.md` § interruption). Three fresh sessions resumed from native artifacts per that section, briefed at `briefs/implement-p1-resume.md`, `-2.md`, `-3.md`, `-4.md`. No prior trail entry was edited. Work the interrupted session had done but not recorded was found already committed at `8099217b`.
+- **A seam run the plan did not predict.** 1a/1c anticipated two invocations. Run 2 refused at preconditions with `package-not-integrated` because the regenerated tree was not yet committed — the clean gate requires a candidate's identity to be reproducible from what is committed. That forced the 1b commit to land mid-task, before the seam could return a candidate, which is why every commit in this phase is the orchestrator's rather than a single commit at the phase's end.
+- **1b's commit was performed by the orchestrator mid-task**, not by the agent at a phase boundary, for the reason above. The headline re-pin (`cc249b89`), the oracle carry (`2f0f5133`), the trail-and-evidence commit (`b962ae91`) and the expectation-set re-pins (`6e05c12f`) were likewise the orchestrator's, under the round's no-commit rule for stage agents.
+- **Two artifacts outside 1b's enumeration were re-pinned under the same task scopes.** The manifest headline was ruled inside T-002's grant to "re-pin the manifest"; the two expectation sets were ruled inside T-003, whose done-condition already named a green battery. No T-004 was minted.
+- **T-002 returned `PREREQUISITE`, not `COMPLETE` as plan line 157 anticipated.** Its arc ended at run 4's gate-8 refusal, whose discharge lay outside its scope. The pin and both fingerprints are recorded in `### T-003 return`. Line 157 is left unticked deliberately rather than ticked loosely.
+- **Kept seam evidence is trimmed.** Each `evidence/integration-run-N/` holds the JSON returns, the preflight results, the baseline result, the identity document, the clean report, the junit XML, and where they exist `verify_stderr.txt` and `verification_summary.json`. Dropped: `_backup/` (1.3 MB package copy), `recaptured.snapshot.json` (640 KB) and `_work/` (the teax store) — all reproducible from a re-run. Ruled acceptable by the orchestrator; matches what runs 1 and 2 kept.
+- **`.integration_workspace/` was removed once.** The interrupted session left it behind; `tests/study/conftest.py:420` asserts it absent, and it alone produced 57 errors on a battery run. It is gitignored scaffolding owned solely by the suite.
 
 ### Phase 2 Completion
 
