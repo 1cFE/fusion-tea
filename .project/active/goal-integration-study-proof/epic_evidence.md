@@ -20,7 +20,7 @@ uv run --env-file ~/1cfe/agentic-mbse/.env --env-file .venv/integration.env \
 574 passed, 14 skipped in 383.72s (0:06:23)
 ```
 
-Exit 0. Against the plan's reference shape — 570 passed / 14 skipped at the 2026-08-28 gate, before the 21 integrate reds appeared — this is **+4 passed, skips unchanged, zero failures**. The four added tests are this branch's own; the 21 reds the pre_pr gate recorded are green, which is what Phase 1 § 1d set out to prove.
+Exit 0. Against the 2026-08-28 pre_pr gate — 550 passed plus 21 reds = 571 non-skipped / 14 skipped — this is **+3 tests, skips unchanged, zero failures**. The three added tests are this branch's own; the 21 reds the pre_pr gate recorded are green, which is what Phase 1 § 1d set out to prove.
 
 ### Model-family spines with the environment sourced
 
@@ -161,6 +161,6 @@ What this item added, enumerated, with the ADR-003 question asked of each: is it
 
 ## 6. The proof chain, in one pass
 
-`8099217b` regenerate → `cc249b89` re-pin the manifest headline → `2f0f5133` carry `p_pump` to the independent oracle `[OWNER 2026-08-29]` → `6e05c12f` re-pin the two expectation sets → `b962ae91` trail and kept seam returns → `02a086b0` Phase 1 close, battery green at 344 → `0534c77b` annex re-pin → `611bc87a` the study record → `47fb5cb5` the fresh administrator's synthesis → `df3d9947` checkpoint C-001.r1 REFUSED → `7cb6a48d` the record addendum → `91cdb4ad` checkpoint C-001.r2 PASS → seven disposition rows and `### Round 1 result` → `4bf5d709` fresh review, FINDINGS, answer upheld, learnings accepted → `5d740688` goal closed by owner ruling, WI-034 minted → `c4c7d723` runbook `integrate` row flipped native → `cb417e5e` route equivalence.
+`8099217b` regenerate → `cc249b89` re-pin the manifest headline → `2f0f5133` carry `p_pump` to the independent oracle `[OWNER 2026-08-29]` → `6e05c12f` re-pin the two expectation sets → `b962ae91` trail and kept seam returns → `02a086b0` Phase 1 close, battery green at 344 → `0534c77b` annex re-pin → `611bc87a` the study record → `47fb5cb5` the fresh administrator's synthesis → `df3d9947` checkpoint C-001.r1 REFUSED → `7cb6a48d` the record addendum → `91cdb4ad` checkpoint C-001.r2 PASS → seven disposition rows and `### Round 1 result` → `4bf5d709` fresh review, FINDINGS, answer upheld, learnings accepted → `c4c7d723` runbook `integrate` row flipped native → `5d740688` goal closed by owner ruling, WI-034 minted → `cb417e5e` route equivalence.
 
 One question asked, one pin promoted, one study committed, one reading taken by a session that had not run it, one round closed, one goal closed by its owner, and two operators proved against the same contract.

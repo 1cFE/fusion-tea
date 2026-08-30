@@ -1,6 +1,6 @@
 # Implementation Plan: GSTH Item 6 — Integration-to-Study Closure and Route Equivalence
 
-**Status:** Complete pending audit (2026-08-29)
+**Status:** Complete (2026-08-29; audit POSITIVE)
 **Created:** 2026-08-29
 **Last Updated:** 2026-08-29
 **Branch:** `feat/wi033-p-pump-rebase` (owner-ruled: one PR ships WI-033 + Item 6)
@@ -438,7 +438,7 @@ Reference shape: 570 passed / 14 skipped / 0 failed at the 2026-08-28 gate, befo
 ### Validation
 - [x] Every SHA in the table resolves; ancestry is linear (`git merge-base --is-ancestor` over each predecessor).
 - [x] Every criterion row has a check and a result — no row reads "see above."
-- [ ] Fresh-session audit (`/_my_audit`) after the record is written.
+- [x] Fresh-session audit (`/_my_audit`) after the record is written. — **POSITIVE** (`audit.md`, `be495769`, session `7db26564`; 7 doc-accuracy findings fixed in the close-out pass).
 
 **Commit point (orchestrator):** verification record + `CURRENT_WORK.md`.
 
@@ -567,4 +567,4 @@ See CLAUDE.md and `docs/integration_seam_operator_guide.md § The environment`. 
 
 ---
 
-**Status**: Draft → In Progress → Complete
+**Status**: Complete (2026-08-29; audit POSITIVE `be495769`)
