@@ -256,7 +256,7 @@ For any task that involves seeing what a page renders, verifying a UI change too
 
 **IMPORTANT: Always use `uv` for Python commands.**
 
-This project uses `uv` for Python package management and script execution. Do NOT use bare `python`, `pip`, or `python3` commands.
+This project uses `uv` for Python package management and script execution. Do NOT use bare `python`, `pip`, or `python3` commands. One documented exception: integration-seam invocations from a second checkout or worktree run the primary checkout's sealed interpreter directly — see `docs/integration_seam_operator_guide.md` § Running from a second checkout or worktree.
 
 ### Correct Usage
 

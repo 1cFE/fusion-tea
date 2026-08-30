@@ -94,6 +94,18 @@ uv run --env-file ~/1cfe/agentic-mbse/.env --env-file .venv/integration.env pyth
 
 The seam adds two things to whatever it inherits, for every subprocess it launches: the repository root and `$STOP_PARSER_TEAX_ROOT/packages/teax-simkit` on `PYTHONPATH`, and `STUDY_REQUIRE_TEAX=1` so a teax-dependent producer fails loudly instead of skipping and reporting green. If you invoke a producer by hand, do the same.
 
+**Running from a second checkout or worktree.** Both files above are checkout-local facts, and `uv run` is not usable from a secondary checkout: it resolves that checkout's own venv, and the seam launches every producer via `sys.executable`, so the producers would run outside the sealed environment (`--no-sync` does not redirect this). The working pattern, proven by the 2026-08-29 route-equivalence exercise, is to run the primary checkout's sealed interpreter directly, from the secondary checkout's root, with the environment sourced:
+
+```bash
+set -a
+source ~/1cfe/agentic-mbse/.env
+source /path/to/primary-checkout/.venv/integration.env
+set +a
+/path/to/primary-checkout/.venv/bin/python scripts/integrate.py ...
+```
+
+`STOP_PARSER_WHEEL_TARGET` keeps naming the primary checkout's `site-packages` — that is correct, because that venv's interpreter is the one running. This is the one documented exception to the repository's always-`uv` rule, scoped to secondary checkouts (CLAUDE.md § Python Environment).
+
 **All six variables are checked before any producer runs.** That is deliberate. `tests/test_dependency_provenance.py` reads the four wheel variables inside its *test body*, so an absent one raises a `KeyError` that pytest records as a test failure — which any seam that let gate 1a run first would report as a genuine toolchain refusal. Checking first is what keeps "you forgot to export a variable" from reading as "your toolchain drifted".
 
 ---
@@ -203,7 +215,7 @@ The right-hand column is the class a goal-layer caller maps the slug to. That ma
 | `input-missing` | A required flag was absent, or an optional one its gate needed. | Add the flag. `detail` names it. | `STRATEGY_BLOCKER` |
 | `input-invalid` | Something you supplied is unusable: `--out-dir` inside the package, a path that does not resolve, two `--package` values, or zero-or-several `*.snapshot.json` beside the models root. | Fix the value. You supplied it; do not re-supply the same thing. | `STRATEGY_BLOCKER` |
 | `env-missing` | A variable was not exported, or a producer could not run past the environment sweep. | Export the variable from the block above, or read `detail` for the producer that could not run. | `MECHANICAL_FAILURE` |
-| `toolchain-drift` | A pinned wheel, an installed revision, or the teax checkout is not what was expected. | Check the sealed-wheel paths first. If they are right, the toolchain genuinely moved and the audited work's lineage no longer holds. | `STRATEGY_BLOCKER` |
+| `toolchain-drift` | A pinned wheel, an installed revision, or the teax checkout is not what was expected. | Check the sealed-wheel paths first, **and** that `STOP_PARSER_WHEEL_TARGET` names the `site-packages` of the interpreter actually running — from a second checkout or worktree the default venv fails that check as a path mismatch, which is environment misconfiguration, not drift (see § Running from a second checkout or worktree). Only if both are right has the toolchain genuinely moved and the audited work's lineage no longer held. | `STRATEGY_BLOCKER` |
 | `package-not-integrated` | Regenerating on the pin rewrote the package, or the tree was not git-clean. | **Go back to the modeling item.** Regenerate, recapture, re-pin, commit there. Re-running the seam will not change this. | `PREREQUISITE` |
 | `handwritten-lost` | Regeneration did not preserve a hand-written implementation. | Same: the modeling item's work. A stubbed normative file is a failed gate even when the seal is clean. | `PREREQUISITE` |
 | `census-stale` | The census does not match the sealed package, or is bound to a different semantic fingerprint. | Re-derive `tests/models/data/mfe_census.json` from the new package. Never hand-patch it to match. | `PREREQUISITE` |
