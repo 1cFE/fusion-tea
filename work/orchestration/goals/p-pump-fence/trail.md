@@ -182,3 +182,35 @@ The shape that matters: none of the three is reachable from `models/`, so no mod
 Prepare and run one study against the T-003 candidate · native target `exploration/stellarator_e2e/studies/20260829-p-pump-fence/` (record path, not yet created) · expected artifact a committed record with `points.csv`, `snapshot.json` and a verification summary.
 
 **This leg reaches the framing gate and stops there.** The axis declaration and the indicator run are the task's first artifacts and were produced in the same session as this entry, immediately before it. They deposit only into this goal's own evidence directory (`evidence/study-prep/`) and mutate nothing outside it: the runbook's steps 1 and 3 deposit into the record directory, and that is deferred until execution is authorized, so no record directory exists yet.
+
+### T-004 execution — 2026-08-29
+
+Two events at task grain; the runbook's stage motion is in the record and is not restated here.
+
+**The framing gate was ruled, and the study ran to a refusal first.** The owner approved search framing on `R` and `a` with one arm, declined `availability` and `discount_rate`, and adopted the comparand's window in place of the runbook's step-7 scan (`exploration/stellarator_e2e/studies/20260829-p-pump-fence/record.md` § 2 carries all three in the owner's words). Preflight then passed six of six against the T-003 pin, and step 9 refused: 42 of 948 points returned `execution_failed`.
+
+**Decision.** *Trigger:* 42 points unevaluable at `p_pump` = 195 MW — `p_net` below zero, the CAS10 land term taking the square root of a negative, the package failing and the independent oracle returning complex. *Decision and reason:* pre-screen those points out with the oracle, disclose the boundary as a result, and run the remaining 906 — rather than shrinking the window (which would destroy the comparability the whole study rests on) or reading the refusal as the answer (which would leave no committed record, and § Answered when requires one). The pattern is not new: `20260823-magnet-technology-ab/record.md:224-226` established it for that study's density floor, an evaluability limit derived from the oracle and disclosed as a bound rather than a design screen. *Tier:* execution detail, under an existing committed precedent. *Decided by:* the orchestrator, on the round agent's recommendation. *What changed:* `exploration/stellarator_e2e/studies/20260829-p-pump-fence/` — the study's own pre-screen and its `results/excluded_points.csv`.
+
+**Decision.** *Trigger:* the mechanism behind those 42 points is already on the discovery log. *Decision and reason:* cite `20260823-magnet-technology-ab#1` for the mechanism and mint a narrower sighting for what is actually new — that the unobservable region has moved *into* the window studies sweep — rather than re-minting the known defect under a new id, which would split one problem across two rows and break the log's join discipline. *Tier:* execution detail. *Decided by:* the orchestrator (correcting the round agent's initial plan to mint the mechanism itself). *What changed:* record § 15 and three sighting rows in `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md`.
+
+### T-004 return — 2026-08-29
+
+- **Outcome:** `COMPLETE`. One committed-ready study record, verified, answering both halves of the goal's question — with two disclosed limits that a reader must carry with the answer.
+
+- **Evidence.** `exploration/stellarator_e2e/studies/20260829-p-pump-fence/` — `record.md` (seventeen sections, no unreplaced placeholders), `snapshot.json` (sha256 `f59a698e611c36fca7e893d4b2fc3f34c6c542e227fdf47990d4d8e5e701eeea`), `axes.json`, `indicators.json`, and `results/` (`points.csv`, `oracle_operands.csv`, `excluded_points.csv`, `verification_summary.json`, `preflight_results.json`, `baseline_result.json`, `package_identity.json`). Store beside the record at `studies/_work/20260829-p-pump-fence/`, gitignored. `tests/study/test_records.py` green, 10 passed, including the discovery-log join over this record.
+
+- **Reading.** The round's question is answered, and the answer is larger than the question expected.
+
+  **The fence moved, and changed character.** At 1.0 MW the comparand put `recirc_ok` violations in a bounded small-machine corner — 32 points, R ≤ 8.0 m at a = 0.80, gone above a = 1.10 m. At 195 MW there are 184 violating points, the fence reaches a = 1.70 m, and at a = 0.80 every R in the window violates. It is no longer a corner but a diagonal region, and the window that contained it at 1.0 MW does not contain it now.
+
+  **LCOE at the baseline point rose 21.0 %** — 275.264 → 333.067 $/MWh, with `p_net` down 162.7 MW and `rec_frac` up from 0.151 to 0.323. All six verdicts still hold at that point, so the shift is an objective effect and not a feasibility one there.
+
+  **Both halves survive the sourced band, which is what makes them worth carrying.** Re-evaluated across ~130–195 MW (the goal's own sourced range), the fence still reaches R = 16.0 m at a = 0.80 at the bottom of the band — double the comparand's 8.0 m — and the LCOE shift is still +13 %. The headline does not depend on the top of the band being right.
+
+  **Two limits, disclosed rather than smoothed.** The fence's extent in R is unbounded by this study at small `a`, and the best feasible point sits on the window's R edge with the objective still falling, so no constrained optimum is claimed. Both are consequences of adopting a window built for a different pin, and both are recorded as facts the record does not contain rather than left to inference.
+
+  **The reading is not adverse, but it is not clean either.** § Answered when is met: a committed, verified study on the regenerated, pinned package locates the fence and quantifies the LCOE shift against the named comparand. What it cannot do is bound the fence in R. A reader who needs that must widen the window, and that is next-round work, not a repair inside this one.
+
+- **Decision.** *Trigger:* the study completed and verified. *Decision and reason:* return `COMPLETE` rather than `INCONCLUSIVE`, even though the fence is unbounded in R at small `a` — because the contract asks where the fence *moved* relative to a named comparand, and that is answered decisively at every `a` the comparand also covered; the unbounded direction is a window limit the record states, not a failure to measure. *Tier:* execution detail. *Decided by:* the round agent. *What changed:* the record directory and three discovery-log rows.
+
+- **Not done here, by contract.** No synthesis. The record is the seam, and Phase 3's administrator is a fresh session that reads the record directory and nothing else (`.claude/skills/run-study/SKILL.md` § Three roles). This entry states the round agent's reading as the *executor's*; it does not pre-empt the administrator's.
