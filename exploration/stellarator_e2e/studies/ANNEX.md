@@ -36,7 +36,7 @@ different precisions. None of the three is swept today.
 The pinned baseline point, its headline, and its six expected verdicts live in
 `manifest.json` → `baseline`. Today: `R = 12.7 m`, `a = 1.3 m`,
 `availability = 0.85`, headline `stellarator_09__stellaris__lcoe_calc__lcoe` =
-`275.2642200420774`, all six viability constraints satisfied (six since WI-030 added `peak_field_ok`).
+`333.0670332813743`, all six viability constraints satisfied (six since WI-030 added `peak_field_ok`).
 
 The route executes exactly that point before preflight runs and deposits
 `baseline_result.json`; preflight's `baseline_headline` gate compares the two at
