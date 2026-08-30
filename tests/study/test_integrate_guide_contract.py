@@ -8,13 +8,14 @@ rather than waste the walk. These tests check the guide is complete, not that it
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 from scripts import integrate
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 GUIDE = REPO_ROOT / "docs" / "integration_seam_operator_guide.md"
-ADR = REPO_ROOT / ".project" / "adr" / "009-integration-is-a-fixed-point-proof.md"
+ADR = REPO_ROOT / ".project" / "adr" / "0009-integration-is-a-fixed-point-proof.md"
 
 
 def guide() -> str:
@@ -84,5 +85,5 @@ def test_guide_states_what_the_seam_does_not_check():
 def test_the_decision_of_record_is_filed_and_indexed():
     assert ADR.is_file()
     index = (REPO_ROOT / ".project" / "adr" / "INDEX.md").read_text()
-    assert ADR.name in index
+    assert re.search(r"^- 0009 \u00b7 ", index, re.M), "0009 missing from the register index"
     assert ADR.name in guide()

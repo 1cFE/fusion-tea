@@ -1,0 +1,4 @@
+p_pump_MW,source,recirc_ok_violated_up_to_R_at_a_0.80,baseline_R,baseline_a,baseline_rec_frac,baseline_p_net_MW,baseline_lcoe,baseline_lcoe_shift_vs_275.2642200420774_pct,recirc_threshold
+130.0,"oracle (verify_stellaris via oracle_entry), p_pump held at the stated value; no package run exists at 130 or 150 MW",16.0,12.7,1.3,0.26628913106704394,806.9152328595106,311.1218879874102,13.0266,0.5
+150.0,"oracle (verify_stellaris via oracle_entry), p_pump held at the stated value; no package run exists at 130 or 150 MW",17.0,12.7,1.3,0.2837065084500854,790.1453328595104,317.55388631667523,15.3633,0.5
+195.0,"oracle (verify_stellaris via oracle_entry), p_pump held at the stated value; no package run exists at 130 or 150 MW",20.0,12.7,1.3,0.32251371864383627,752.4130578595104,333.0670332813744,20.999,0.5

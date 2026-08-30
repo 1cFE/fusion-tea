@@ -10,7 +10,7 @@ import re
 import pytest
 import yaml
 
-ADR_FILE = re.compile(r"^\d{3}-.*\.md$")
+ADR_FILE = re.compile(r"^\d{4}-.*\.md$")
 
 RUNBOOK_STUDY = ".claude/skills/run-study/runbook.md"
 DISCOVERY_LOG = "exploration/stellarator_e2e/studies/DISCOVERY_LOG.md"
@@ -51,24 +51,17 @@ def test_register_is_coherent(repo_root):
     adr = repo_root / ".project" / "adr"
     files = {p.name.split("-")[0] for p in adr.glob("*.md") if ADR_FILE.match(p.name)}
     assert files, "the register holds at least one record"
-    indexed = set(re.findall(r"^\| `(\d{3})`", (adr / "INDEX.md").read_text(), re.M))
+    indexed = set(re.findall(r"^- (\d{4}) · ", (adr / "INDEX.md").read_text(), re.M))
     assert files == indexed
 
     for p in sorted(adr.glob("*.md")):
         if not ADR_FILE.match(p.name):
             continue
         fm = _frontmatter(p)
-        assert fm["grade"], f"{p.name} carries a capture-fidelity grade"
-        # `adr.sh new` and template.md seed this placeholder deliberately, so a record
-        # filed without copying its grade from the source fails here rather than
-        # shipping under the weaker default (audit smell: the first owner-graded
-        # record came out under-graded).
-        assert "GRADE" not in str(fm["grade"]), (
-            f"{p.name} still carries the grade placeholder — copy the grade from its source"
-        )
-        if fm["amends"] != "none":
-            amended = repo_root / str(fm["amends"]).split(":")[0]
-            assert amended.exists(), f"{p.name} amends a surface that exists"
+        assert fm["provenance"], f"{p.name} carries a capture-fidelity provenance grade"
+        if fm["promoted_to"] is not None:
+            promoted = repo_root / str(fm["promoted_to"]).split(":")[0]
+            assert promoted.exists(), f"{p.name} names an existing promoted surface"
 
 
 @pytest.mark.parametrize("path,present,absent", WRITER_HOMES)
@@ -76,7 +69,7 @@ def test_writer_ownership_agrees(repo_root, path, present, absent):
     """SC4: the five homes agree on writer ownership and joined disposition rows.
 
     A goal round appends a disposition row under an existing `<study-id>#<n>` id
-    (ADR-004). Every home that used to forbid that has to say so, or an operator
+    (ADR-0004). Every home that used to forbid that has to say so, or an operator
     following one document contradicts an operator following another.
     """
     text = (repo_root / path).read_text()
@@ -168,8 +161,8 @@ def test_the_amendments_are_live(repo_root):
     assert re.search(r"Do not cross-reference \*state\* between them", claude)
     assert re.search(r"cite a `\.project/` artifact by path and digest", claude)
     assert re.search(r"[Cc]iting is not mirroring", claude)
-    assert "006-goal-evidence-seam.md" in claude, "CLAUDE.md cites the record"
-    record = (repo_root / ".project/adr/006-goal-evidence-seam.md").read_text()
+    assert "0006-goal-evidence-seam.md" in claude, "CLAUDE.md cites the record"
+    record = (repo_root / ".project/adr/0006-goal-evidence-seam.md").read_text()
     assert "CLAUDE.md" in record, "the record names the surface it amends"
 
 
@@ -183,7 +176,7 @@ def test_the_hardening_boundary_is_stated_and_not_crossed(repo_root):
 
     This checks *documents*, not runtime behaviour, and does not claim otherwise —
     a goal agent that compares a digest anyway is caught by review, not by this
-    test. Design I6 and the ADR-003 hardening table are the rule; this is the
+    test. Design I6 and the ADR-0003 hardening table are the rule; this is the
     prose guard on it.
     """
     for rel in [RUNBOOK, *TEMPLATES]:
@@ -208,7 +201,7 @@ def test_fresh_is_defined_at_owner_strength_with_an_agent_move(repo_root):
     `.project/concepts/goal-driven-model-development-harness.md:47` ([OWNER], SC 5)
     reads "The critic is never the author's session" — a session boundary, not a
     work boundary. An agent cannot start a session and dispatch stays barred
-    (ADR-003), so the contract has to define the move it makes instead: a recorded
+    (ADR-0003), so the contract has to define the move it makes instead: a recorded
     handoff stop. Without that, the gate has no agent path and gets waved through.
     """
     runbook = (repo_root / RUNBOOK).read_text()

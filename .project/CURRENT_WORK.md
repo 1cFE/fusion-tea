@@ -1,6 +1,6 @@
 # Current Work
 
-**Last Updated**: 2026-08-28
+**Last Updated**: 2026-08-30
 
 ---
 
@@ -12,21 +12,11 @@
 - **Explorer** — UX v3 Phase 1 + Themes A/B1/F merged; 1costingfe v0.1.0 migration 2026-06-28; web hosting (#97; operator runbook `.project/completed/20260821_explorer-web-hosting/RUNBOOK.md`); OOM Layers 1–2 (#98), JAX pre-warm (#99), numpy-only deploy on 1costingfe v0.1.1 (#100).
 - **`.project/` archival pass done 2026-08-21** (on this branch): 56 item dirs and 6 epics moved to `completed/` with the `20260821_` prefix, 3 empty dirs deleted, live path references rewritten. `active/` now holds 5 dirs. Record: `.project/completed/CHANGELOG.md`, report `.project/reports/2026-08-21-1339-status-report.md`.
 
-## GSTH — where the epic stands (2026-08-28)
+## GSTH — epic closed (2026-08-30)
 
-- **Items 1–5 are closed and archived.** Item 5 closed today; see § Recently Completed below and `.project/completed/20260828_goal-research-model-proof/`. Branch `feat/goal-research-model-proof`, audited at `eef3865c`, findings fixed at `c389afc1`. **`/_my_pre_pr` has not run on this branch** — it is the branch gate and is still owed before a PR.
-- **Item 6 (Integration-to-Study Closure and Route Equivalence) is the epic's remaining critical-path item.** `.project/backlog/epic_goal_strategy_task_harness.md` § Item 6, location `.project/active/goal-integration-study-proof/` (not yet created). It also owns the epic-evidence deliverable — the question of whether Items 1–5 together discharge the epic, which the Item 5 audit explicitly declined as out of its scope.
-- **Two things Item 6 must not inherit as green.** (1) Item 5 supplied **no research return and no landed model change** — `T-001` returned `COMPLETE` because the repository answered the question, so the Item 2 seam was never invoked and Item 5's criteria 1, 3, 4 and 7 stay open. (2) `GOAL_RUNBOOK.md:256`/`:264` still route a research disposition to the pre-seam WI-031 hand pattern, and `work/orchestration/goals/p-pump-basis/goal.md:130` carries the same instruction; whichever item next runs the seam live owes the repair. Both are written into Item 6's Current State block in the epic.
-- **Live follow-up: `WI-033`** ("P_pump re-base: helium-primary circulator basis", MFE Cost Modeling epic, `work/BACKLOG.md`, status `backlog`). The owner's mandate: land 6 % of `p_th` at the baseline geometry (≈195 MW) in both homes of the twin with ~130 MW recorded as the documented lower bound, register Cismondi, ingest the Moscato PDF and revisit at first-order grade. Package regeneration is explicitly **out** of WI-033's first scope — it waits on the `integrate` seam (Item 6), and the committed studies stay reproducible at their pins.
-- **Goal `p-pump-basis` is closed by owner ruling** (`work/orchestration/goals/p-pump-basis/`, 2026-08-28). It stays in place as goal-layer state; it was not archived with the item. No round is open under it — further work runs under WI-033.
-
-## Shipped for merge (2026-08-27)
-
-- **PR #108** — https://github.com/1cFE/fusion-tea/pull/108 — the whole `feat/goal-integration-seam` branch: GSTH Items 1–4, all closed and archived (`.project/completed/20260827_*`), plus Run-Study Item 6 Phases 1–3 (pre-existing lineage; Phase 4 still open). Pre-PR gate report: `.project/reports/2026-08-27-pre-pr-goal-integration-seam.md` (570/14/0; scope finding resolved by owner's one-PR ruling). **Owner: merge with a merge commit** (`! gh pr merge 108 --repo 1cFE/fusion-tea --merge --admin`), then `feat/goal-research-seam` can be deleted — strict ancestor, zero unique commits.
-
-## Shipped for merge (2026-08-28)
-
-- **PR #109** — https://github.com/1cFE/fusion-tea/pull/109 — `feat/goal-research-model-proof`: GSTH Item 5 closed and archived (`.project/completed/20260828_goal-research-model-proof/`), goal `p-pump-basis` closed by owner ruling, DI-008 amended, WI-033 minted. Gate READY (`.project/reports/2026-08-28-pre-pr-goal-research-model-proof.md`, 570/14/0). **Owner: merge with a merge commit** (`! gh pr merge 109 --repo 1cFE/fusion-tea --merge --admin`).
+- **The epic is closed and archived** to `.project/completed/20260830_epic_goal_strategy_task_harness.md` — all six items closed 2026-08-27 → 2026-08-30, all eleven epic success criteria ticked (per-criterion evidence: `.project/completed/20260830_goal-integration-study-proof/epic_evidence.md` § 2), product-lens gate CLEAR. Product ledger entry **0001** ("A non-builder runs a goal round from the runbook and native records alone") filed at close; `ADR-0010` records the oracle-carry ruling (the "pending owner yes/no" is discharged). Every seam `GOAL_RUNBOOK.md` lists is native.
+- **Owner-held remainder: merge PR #110** — https://github.com/1cFE/fusion-tea/pull/110 (opened 2026-08-30, merge with a merge commit). It ships WI-033 + Item 6 + this epic close on `feat/wi033-p-pump-rebase` (spec § Align ruling 2), the branch gate ran 2026-08-30: **READY** (`.project/reports/2026-08-30-pre-pr-wi033-gsth-epic-close.md`). PRs #108 and #109 are **merged** (2026-08-27 / 2026-08-28); `origin/main` (`0a3815d4`, the #109 merge) is this branch's base.
+- **Live follow-up: `WI-034`** ("CAS10 land-term guard", MFE Cost Modeling epic, `work/BACKLOG.md`, status `backlog`), minted at `5d740688`. One defect, two sightings: `net_positive` cannot read violated because CAS10's land term takes `sqrt(p_net)` and fails first. Four recorded hardening candidates (`epic_evidence.md` § 4): F-1/F-2 fixed at close as documentation, F-3/F-4 recorded with fix homes; no mechanism promoted, per epic SC 7.
 
 ## Next up (in order, 2026-08-21)
 
@@ -37,6 +27,17 @@
 4. **Explorer UX v3 — Phase 2**: pick by leverage, D1 top candidate. Epic: `.project/backlog/epic_explorer_ux_v3.md`.
 
 ## Recently Completed
+
+### 2026-08-30: Epic — Goal Strategy and Task Harness (closed)
+
+- Closed the whole epic: the lean goal layer (`goal.md`/`trail.md`/`learnings.md` per goal plus the shared `GOAL_RUNBOOK.md`), the native research and integration seams, and three live proofs — cold grounding and mid-task resume, a research-to-model round where the pre-execution checkpoint refused then passed, and integration-to-study closure with hand/goal-agent route equivalence byte-identical on native identity. Three goals grounded and closed under the contract.
+- Close bookkeeping: epic archived to `.project/completed/20260830_epic_goal_strategy_task_harness.md`, all 11 criteria ticked against `epic_evidence.md` § 2, product ledger entry 0001 filed (`.project/product/`), CHANGELOG epic entry added. The three declared limits stand recorded, not worked around: research-seam bookkeeper never run end to end, `assert_read_set_covered` unexercised at gate 6, route equivalence fixture-substituted `study.execute`.
+
+### 2026-08-30: Goal Harness Item 6 — Integration-to-Study Closure and Route Equivalence
+
+- The epic's last critical-path item and its verdict deliverable: the first live end-to-end trip through `integrate → study.execute → study.read → dispositions → fresh review`, run under a real successor goal (`p-pump-fence`, closed by owner ruling `5d740688`). The seam's refusal ladder was exercised live (stale package, unclean tree, stale baseline pin, stale oracle) before returning one CANDIDATE (`20c2c364…`); one 906-point study answered the goal's question — `recirc_ok` fence 32 → 184 points, LCOE +21.0 % at baseline, a 42-point disclosed evaluability bound — read by a fresh administrator, closed through a refuse-then-pass checkpoint and a fresh RoundReview, seven joined discovery rows, four accepted learnings, WI-034 minted.
+- Route equivalence: hand and goal-agent routes met the same contract on all five dimensions with byte-identical native identity. The product-lens close gate **blocked** on the one over-claim (`close-F1`: the hand route had needed an undocumented env correction) and was cleared the honest way — guide/env contract repaired (`f3249f7c`), then a fresh guide-only operator reproduced the CANDIDATE with "guide alone sufficed" (`8fc1cbb0`). The runbook's `integrate` row flipped native (`c4c7d723`): **every seam is now native**.
+- Audit POSITIVE (`be495769`, battery re-run reproduced 574/14 exactly; 7 doc-accuracy findings fixed `e5305a5b`). Honest limits carried in `epic_evidence.md`, stated not buried: research bookkeeper never run end-to-end; `assert_read_set_covered` unexercised; `study.execute` fixture-substituted in the equivalence. Archive: `.project/completed/20260830_goal-integration-study-proof/`.
 
 ### 2026-08-28: Goal Harness Item 5 — Research-to-Model Round Proof
 

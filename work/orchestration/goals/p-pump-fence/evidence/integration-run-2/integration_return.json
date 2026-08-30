@@ -1,0 +1,198 @@
+{
+  "schema_version": "integration-seam-return/v1",
+  "tool": {
+    "path": "scripts/integrate.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "1aa085461236a4c449b73e318b56908400b375d354c3b990705c090e933c1513",
+      "files": [
+        {
+          "path": "scripts/integrate.py",
+          "sha256": "f4d3c9056111aa3844a3cfb8008488f56002d66863e05b4bb407f4bdd79b5f87"
+        },
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+        },
+        {
+          "path": "scripts/study/preflight.py",
+          "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+        }
+      ]
+    }
+  },
+  "command": [
+    "scripts/integrate.py",
+    "--audited-work",
+    "work/completed/20260828_WI-033_p-pump-rebase@83ccd8f9",
+    "--models-root",
+    "exploration/stellarator_e2e/models",
+    "--package",
+    "exploration/stellarator_e2e/pkg/stellarator_tea",
+    "--manifest",
+    "exploration/stellarator_e2e/studies/manifest.json",
+    "--groups",
+    "tests/study/data/axes.known_answers.json",
+    "--census-file",
+    "tests/models/data/mfe_census.json",
+    "--expected-semantic-fingerprint",
+    "f08daa7b1bcc62f838d33821646b676548c14edd535cb3b4482fd358bbfaed2e",
+    "--expected-executable-fingerprint",
+    "f97f084818723224bdd7f604a63e1941dadeb3e99af0cca3c9c6d30280d312f0",
+    "--expected-teax-revision",
+    "744745f895677f3344b9884627369a6a47ed987f",
+    "--route-sys-path",
+    "exploration/stellarator_e2e/studies",
+    "--route-module",
+    "study_route",
+    "--route-callable",
+    "execute_baseline",
+    "--out-dir",
+    "/tmp/integration-run-2"
+  ],
+  "request": {
+    "audited_work": [
+      {
+        "path": "work/completed/20260828_WI-033_p-pump-rebase",
+        "commit": "83ccd8f9"
+      }
+    ],
+    "models_root": "exploration/stellarator_e2e/models",
+    "package": [
+      "exploration/stellarator_e2e/generated"
+    ],
+    "manifest": [
+      "exploration/stellarator_e2e/studies/manifest.json"
+    ],
+    "groups": "tests/study/data/axes.known_answers.json",
+    "census": "tests/models/data/mfe_census.json",
+    "expected": {
+      "semantic_fingerprint": "f08daa7b1bcc62f838d33821646b676548c14edd535cb3b4482fd358bbfaed2e",
+      "executable_fingerprint": "f97f084818723224bdd7f604a63e1941dadeb3e99af0cca3c9c6d30280d312f0",
+      "teax_revision": "744745f895677f3344b9884627369a6a47ed987f"
+    }
+  },
+  "class": "BLOCKER",
+  "exit_code": 1,
+  "candidate": null,
+  "blocker": {
+    "gate": "preconditions",
+    "producer": "scripts/study/preflight.py",
+    "scope": "request",
+    "mode": "refused",
+    "condition": "package-not-integrated",
+    "detail": "the package tree is not git-clean, so the identity a candidate would carry is not reproducible from what is committed: [preflight] clean: fail\n  fail         package_clean: the package tree is not git-clean \u2014 a run mutated the committed package:\nM exploration/stellarator_e2e/generated/contracts/model_contract.json\n M exploration/stellarator_e2e/generated/contracts/package_contract.json\n M exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json\n M exploration/stellarator_e2e/generated/modules/stellarator_09/stellaris/special_materials_capital.py\n M exploration/stellarator_e2e/generated/schemas/stellarator_plant_params.py\n[preflight] refusing: package_clean",
+    "expected": null,
+    "actual": null,
+    "evidence": [
+      "../../../../tmp/integration-run-2/clean.json"
+    ]
+  },
+  "gates": [
+    {
+      "gate": "pinned-packages",
+      "producer": "tests/test_dependency_provenance.py",
+      "scope": "repo",
+      "status": "not reached",
+      "checked": "the pinned package revisions and installed wheel artifacts",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    },
+    {
+      "gate": "teax-revision",
+      "producer": "scripts/integrate.py",
+      "scope": "request",
+      "status": "not reached",
+      "checked": "the teax checkout's revision against the expected one",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    },
+    {
+      "gate": "regeneration",
+      "producer": "sysml-codegen generate",
+      "scope": "request",
+      "status": "not reached",
+      "checked": "regeneration in place moves no package byte",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    },
+    {
+      "gate": "handwritten-preservation",
+      "producer": "sysml-codegen generate",
+      "scope": "request",
+      "status": "not reached",
+      "checked": "the handwritten implementations survive regeneration byte for byte",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    },
+    {
+      "gate": "census-snapshot",
+      "producer": "sysml_codegen.snapshot.capture; the spine census helper",
+      "scope": "request",
+      "status": "not reached",
+      "checked": "the recaptured snapshot and the re-derived entry-point census",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    },
+    {
+      "gate": "model-family-spine",
+      "producer": "tests/models/test_model_family_spines.py",
+      "scope": "repo",
+      "status": "not reached",
+      "checked": "the canonical tree, the family twins and the tracked census",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    },
+    {
+      "gate": "manifest",
+      "producer": "scripts/study/manifest.py",
+      "scope": "request",
+      "status": "not reached",
+      "checked": "the manifest's schema, package identity and recomputed pin",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    },
+    {
+      "gate": "preflight",
+      "producer": "scripts/study/preflight.py",
+      "scope": "request",
+      "status": "not reached",
+      "checked": "the six mechanical gates a study passes",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    },
+    {
+      "gate": "verification",
+      "producer": "scripts/study/verify.py",
+      "scope": "request",
+      "status": "not reached",
+      "checked": "oracle parity and re-derived verdicts over an executed store",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    },
+    {
+      "gate": "lineage",
+      "producer": "scripts/integrate.py",
+      "scope": "request",
+      "status": "not reached",
+      "checked": "the live fingerprints against the lineage the request named",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    }
+  ],
+  "toolchain": {
+    "agentic_mbse": "0.1.3",
+    "sysml_codegen": "0.1.1",
+    "costingfe": "0.1.0",
+    "teax_revision": "744745f895677f3344b9884627369a6a47ed987f",
+    "teax_module_path": "/home/reid/1cfe/teax/packages/teax-simkit/simkit"
+  }
+}

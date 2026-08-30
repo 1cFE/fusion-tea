@@ -1,0 +1,359 @@
+{
+  "snapshot_schema_version": "study-record-snapshot/v1",
+  "study_id": "20260829-p-pump-fence",
+  "package": {
+    "path": "exploration/stellarator_e2e/generated",
+    "package_name": "stellarator_tea",
+    "semantic_fingerprint": "f08daa7b1bcc62f838d33821646b676548c14edd535cb3b4482fd358bbfaed2e",
+    "executable_fingerprint": "f97f084818723224bdd7f604a63e1941dadeb3e99af0cca3c9c6d30280d312f0",
+    "identity_kind": null,
+    "identity_digest": null
+  },
+  "fingerprints": {
+    "semantic": "f08daa7b1bcc62f838d33821646b676548c14edd535cb3b4482fd358bbfaed2e",
+    "executable": "f97f084818723224bdd7f604a63e1941dadeb3e99af0cca3c9c6d30280d312f0",
+    "indicator_inputs": "20c2c364d6c79592b87e8d467b0a4c29a2695fe89c3a5a83e247dfd7a7d758d6"
+  },
+  "manifest": {
+    "path": "exploration/stellarator_e2e/studies/manifest.json",
+    "schema_version": "study-package-manifest/v1",
+    "digest": "db5a6ac8cb971fe30dd4f30af1b549b651b5f71ef5136001994eeb282931321d",
+    "content_used": {
+      "fingerprint_names": [
+        "indicator_inputs",
+        "recorded_provenance.executable_fingerprint",
+        "recorded_provenance.semantic_fingerprint"
+      ],
+      "ties": [
+        {
+          "key": "stellarator_09__stellaris__magnet__R0",
+          "rides_with": [
+            "stellarator_09__stellaris__R"
+          ],
+          "note": "Magnet coil major radius is the same physical quantity as the plasma major radius. Its suffix is R0, not R, so no suffix scan will ever surface it -- the tie must be declared. Advisory here: a group holding R but not this key earns a tie_candidate warning, never an added key. Since the model migration the plasma major radius is one plant-level entry point (R), not the geom__R / rb__R fan-out."
+        }
+      ],
+      "baseline": {
+        "point": {
+          "stellarator_09__stellaris__R": 12.7,
+          "stellarator_09__stellaris__magnet__R0": 12.7,
+          "stellarator_09__stellaris__a": 1.3,
+          "stellarator_09__stellaris__availability": 0.85
+        },
+        "headline": {
+          "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+          "value": 333.0670332813743
+        },
+        "verdicts": [
+          {
+            "source_local_identity": "beta_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "net_positive",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "peak_field_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "recirc_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "tbr_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "wall_load_ok",
+            "expected": "satisfied"
+          }
+        ]
+      },
+      "objective_catalog": [
+        {
+          "name": "lcoe",
+          "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+          "note": "Headline levelized cost of electricity. Exit-point filename is stellaris__lcoe.json; the catalog keys on the channel, never the filename."
+        },
+        {
+          "name": "lcoe_1cfe",
+          "channel": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+          "note": "LCOE variant using the 1costingfe CAS90 rollup."
+        },
+        {
+          "name": "cas72",
+          "channel": "stellarator_09__stellaris__cas72_calc__cost",
+          "note": "Levelized annual replacement cost."
+        },
+        {
+          "name": "fuel",
+          "channel": "stellarator_09__stellaris__fuel_calc__annual_fuel",
+          "note": "Annual fuel cost."
+        },
+        {
+          "name": "total_capital",
+          "channel": "stellarator_09__stellaris__total_capital__total_capital",
+          "note": "Total capital cost including interest during construction."
+        },
+        {
+          "name": "cas27",
+          "channel": "stellarator_09__stellaris__special_materials_capital__special_materials_capital",
+          "note": "CAS27 special-materials capital, computed in-package from the radial-build blanket volume since the model migration (2026-08-21). Declared as an objective so generic verification compares it against the oracle's own recompute: on the era route this value was glue-fed to both sides and never independently verified."
+        },
+        {
+          "name": "beta",
+          "channel": "stellarator_09__stellaris__beta_calc__beta",
+          "note": "Volume-averaged thermal beta computed by 'Volume-Averaged Beta' from the profile referents and magnet__B (WI-030); replaces the retired bound input beta. Compared against the oracle's closed form so a magnet study verifies the physics lever it moves."
+        },
+        {
+          "name": "magnet_capital",
+          "channel": "stellarator_09__stellaris__magnet_cost__capital_cost",
+          "note": "CAS22.1.3 magnet capital. Declared as an objective (Item 6 design D9, 2026-08-21) so generic verification compares it against the oracle: a magnet-technology study moves this channel first, and it was a known coverage gap (ANNEX \u00a7 Oracle)."
+        }
+      ],
+      "oracle": {
+        "kind": "python_callable",
+        "module": "oracle_entry",
+        "callable": "evaluate",
+        "sys_path": "exploration/stellarator_e2e/studies",
+        "note": "Package-owned oracle seam. evaluate(point) takes a mapping of qualified entry keys to floats and returns a mapping of qualified channel names to floats; it wraps the independent pure-Python oracle verify_stellaris.py, which is imported and never modified. The module also publishes a fixed-name companion, operand_bindings() -> {constraint_id: {source_name: {kind, key}}}, which says which qualified input key or channel each predicate operand means. A generic verifier requires both and fails closed on anything unresolved: on this package one operand of five constraints resolves to nothing by name at all, so a tool that inferred bindings would compare the wrong number and read as a pass."
+      }
+    }
+  },
+  "stores": [
+    {
+      "store_id": "20260829-p-pump-fence",
+      "path": "exploration/stellarator_e2e/studies/_work/20260829-p-pump-fence/20260829-p-pump-fence.db",
+      "compatibility_tuple": {
+        "digest": "2fc21e6da133ab1dda0b79a9f42f568d4ece05f5281d6fef5afa27b587cbf6a2",
+        "evidence_schema_version": "v2",
+        "executable_fingerprint": "f97f084818723224bdd7f604a63e1941dadeb3e99af0cca3c9c6d30280d312f0",
+        "input_schema_version": "input-v1",
+        "model_contract_fingerprint": "f08daa7b1bcc62f838d33821646b676548c14edd535cb3b4482fd358bbfaed2e",
+        "strategy_config": "6339c86e144a29aaddaf992c1eb28fd58c059e85c90dbffee1bcf85967356c7a",
+        "strategy_identity": "prepared-list/v1",
+        "study_definition_fingerprint": "a89a8ecfdb57245f604eef4a805a721514458b9fbd6862583077d8a745547783",
+        "study_id": "20260829-p-pump-fence"
+      },
+      "note": "beside the record directory, not inside it (study 20260821-power-cycle-ab finding #11); gitignored (studies/.gitignore `**/_work/`); its compatibility tuple and the verification summary's digest of it are the committed identity"
+    }
+  ],
+  "arms": [
+    {
+      "arm_id": "arm-package-default",
+      "store_id": "20260829-p-pump-fence",
+      "effective_executable_fingerprint": {
+        "value": "f97f084818723224bdd7f604a63e1941dadeb3e99af0cca3c9c6d30280d312f0",
+        "inputs": null,
+        "no_adapter": true,
+        "note": "no adapter exists; the sealed fingerprint is the identity"
+      },
+      "entry_models": null,
+      "strategy": "prepared-list/v1 config 6339c86e144a29aaddaf992c1eb28fd58c059e85c90dbffee1bcf85967356c7a (one PreparedListStrategy, row-major over (R, a) then the baseline point)",
+      "window": {
+        "provenance": "engineered",
+        "adopted_from": "exploration/stellarator_e2e/studies/20260821-power-cycle-ab",
+        "bounds": {
+          "R": {
+            "values": "4.0 to 20.0 m, step 0.5 (33 values); study_route.R_VALUES",
+            "keys": [
+              "stellarator_09__stellaris__R",
+              "stellarator_09__stellaris__magnet__R0"
+            ]
+          },
+          "a": {
+            "values": "0.80 to 2.20 m, step 0.05 (29 values); study_route.A_VALUES",
+            "keys": [
+              "stellarator_09__stellaris__a"
+            ]
+          }
+        },
+        "validity_mask": {
+          "rule": "R > a + 2.25",
+          "kind": "derived geometric bound from held-fixed radial-build thicknesses",
+          "excluded_nodes": 10,
+          "source": "exploration/stellarator_e2e/studies/ANNEX.md \u00a7 Validity masks"
+        },
+        "evaluability_exclusion": {
+          "rule": "oracle p_net > 0, pre-screened before execution",
+          "kind": "evaluability bound, not a design screen",
+          "excluded_points": 42,
+          "artifact": "results/excluded_points.csv",
+          "pattern_authority": "exploration/stellarator_e2e/studies/20260823-magnet-technology-ab/record.md:224-226"
+        },
+        "counts": {
+          "grid_nodes": 957,
+          "masked": 10,
+          "grid_proposed": 947,
+          "baseline_appended": 1,
+          "proposed": 948,
+          "excluded_unevaluable": 42,
+          "evaluated": 906
+        },
+        "held": {
+          "stellarator_09__stellaris__availability": 0.85,
+          "stellarator_09__stellaris__discount_rate": 0.07
+        }
+      },
+      "verification": {
+        "outcome": "pass",
+        "tolerance": 1e-09,
+        "sampled_rows": 48,
+        "channels_checked": 10,
+        "worst_channel_rel_dev": 6.3463049825272075e-16,
+        "verdicts_rederived": true,
+        "verdict_mismatches": [],
+        "not_independently_verified": [],
+        "summary_digest": "6004d063acb37dac456463ee3c4b4a60de62dad2a4f1418a1bdd69ef520a659e"
+      },
+      "glue_ledger": []
+    }
+  ],
+  "tools": {
+    "route": {
+      "path": "exploration/stellarator_e2e/studies/study_route.py",
+      "sha256": "e884677763fd7cc9549712456185aa1983c6c642060d905741ff543e535e7c8d"
+    },
+    "study": {
+      "path": "exploration/stellarator_e2e/studies/20260829-p-pump-fence/study.py",
+      "sha256": "8c6d41ac55ac019bb1e0ac7c676f5b534f6dbf7ffe20c03bbfc2d3ccd907c9f6"
+    },
+    "oracle_seam": {
+      "path": "exploration/stellarator_e2e/studies/oracle_entry.py",
+      "sha256": "10ea73ab3bca2478af6cf6d1e7bc57226b4fe13b283c8124600b6735c459396b"
+    },
+    "oracle": {
+      "path": "exploration/stellarator_e2e/verify_stellaris.py",
+      "sha256": "877d169e020b58f21759090532c9552c27606f2905a5c8080057875312c3d3c1"
+    },
+    "verify": {
+      "path": "scripts/study/verify.py",
+      "source_digest": {
+        "recipe": "tool-source-digest/v1",
+        "digest": "f02358bbe56b968495fae741dd949db7abd3db543a81fe9f7dffb929f77f0f06",
+        "files": [
+          {
+            "path": "scripts/study/common.py",
+            "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+          },
+          {
+            "path": "scripts/study/identity.py",
+            "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+          },
+          {
+            "path": "scripts/study/schemas/package_identity.v1.schema.json",
+            "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+          },
+          {
+            "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+            "sha256": "579054e23911be543927d9e9daa72ece44a68f76be9ab9ba53fce0244ef540e1"
+          },
+          {
+            "path": "scripts/study/verify.py",
+            "sha256": "bd339a8024f0c1f1fc8b1c9b0cdbee930c063861a2c2f5973b0ad091e09b9ef7"
+          }
+        ]
+      }
+    },
+    "preflight": {
+      "path": "scripts/study/preflight.py",
+      "source_digest": {
+        "recipe": "tool-source-digest/v1",
+        "digest": "fee08e143c556b0ea0bd7d32035257283220f8f671b3b2f2aa52ecf8a3c92681",
+        "files": [
+          {
+            "path": "scripts/study/common.py",
+            "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+          },
+          {
+            "path": "scripts/study/identity.py",
+            "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+          },
+          {
+            "path": "scripts/study/preflight.py",
+            "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+          },
+          {
+            "path": "scripts/study/schemas/baseline_result.v1.schema.json",
+            "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+          },
+          {
+            "path": "scripts/study/schemas/package_identity.v1.schema.json",
+            "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+          },
+          {
+            "path": "scripts/study/schemas/preflight_results.v1.schema.json",
+            "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+          }
+        ]
+      }
+    }
+  },
+  "teax": {
+    "module_path": "../teax/packages/teax-simkit/simkit",
+    "revision": "unrecorded"
+  },
+  "indicators": {
+    "path": "exploration/stellarator_e2e/studies/20260829-p-pump-fence/indicators.json",
+    "sha256": "3b22a82202fba1b91f06f4a652168d6eedb9557f101bd58d5250554bec0bdacd",
+    "axis_declaration": {
+      "path": "exploration/stellarator_e2e/studies/20260829-p-pump-fence/axes.json",
+      "sha256": "7be9fd1ea0c2ab0a44748fe068e8eb1f9659a82066517dcbc4770640874fe26c",
+      "subset": false,
+      "groups_declared": [
+        "R",
+        "a",
+        "availability",
+        "discount_rate"
+      ]
+    },
+    "indicator_input_fingerprint": "20c2c364d6c79592b87e8d467b0a4c29a2695fe89c3a5a83e247dfd7a7d758d6"
+  },
+  "results": {
+    "baseline_result.json": {
+      "path": "exploration/stellarator_e2e/studies/20260829-p-pump-fence/results/baseline_result.json",
+      "sha256": "c12e1a9130e866305391d06a077f9e7fca4fc8812deca2d1f0d9040388dc8c05",
+      "bytes": 5865
+    },
+    "excluded_points.csv": {
+      "path": "exploration/stellarator_e2e/studies/20260829-p-pump-fence/results/excluded_points.csv",
+      "sha256": "bc5eee997dd4ca9f351a8575a2c3f0ded45c2c6f58dcd794381640d547855803",
+      "bytes": 10115
+    },
+    "oracle_operands.csv": {
+      "path": "exploration/stellarator_e2e/studies/20260829-p-pump-fence/results/oracle_operands.csv",
+      "sha256": "7991ffef921378e4904ee11cdcf1da45046f3f25a177a1d3de3e93c924d481c5",
+      "bytes": 222155
+    },
+    "package_identity.json": {
+      "path": "exploration/stellarator_e2e/studies/20260829-p-pump-fence/results/package_identity.json",
+      "sha256": "eab69251d741040112228256869388c18ded5dd3812a8304d0ad10067d0262c9",
+      "bytes": 616
+    },
+    "points.csv": {
+      "path": "exploration/stellarator_e2e/studies/20260829-p-pump-fence/results/points.csv",
+      "sha256": "e84da016dbe84193470b3c3b63c0fe8a04da429c27a34edd9611003215f243f4",
+      "bytes": 311804
+    },
+    "preflight_results.json": {
+      "path": "exploration/stellarator_e2e/studies/20260829-p-pump-fence/results/preflight_results.json",
+      "sha256": "969ccabe1fcc81c55484001f7db2f69c7afee66ef47129b9f86fd23589f1538c",
+      "bytes": 3695
+    },
+    "verification_summary.json": {
+      "path": "exploration/stellarator_e2e/studies/20260829-p-pump-fence/results/verification_summary.json",
+      "sha256": "6004d063acb37dac456463ee3c4b4a60de62dad2a4f1418a1bdd69ef520a659e",
+      "bytes": 8534
+    }
+  }
+}

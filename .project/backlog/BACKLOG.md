@@ -69,23 +69,24 @@ Turn the verified proof-of-life study discipline into a durable `run-study` skil
 
 ---
 
-### Goal Strategy and Task Harness
+### ~~Goal Strategy and Task Harness~~ ✅
 
 **Priority**: P1
 **Effort**: ~9.5 days (6 items)
-**Status**: Ready — scope and decomposition approved; product-lens findings `epic-plan-F1` and `epic-plan-F2` owner-resolved 2026-08-25
+**Status**: Complete (2026-08-30) — all six items closed and archived 2026-08-27 → 2026-08-30
+**Archived to**: `.project/completed/20260830_epic_goal_strategy_task_harness.md`
 
 Build a lean, disk-resumable goal layer above the native research, modeling, integration, and study workflows. Repair the research-registration and verified-integration seams, then prove cold grounding, interruption recovery, independent disposition criticism, finding closure, and human/goal-agent route equivalence on a real goal.
 
 **Items**:
-- [ ] Item 1: Lean Goal Contract and Operator Runbook
-- [ ] Item 2: Native Research Acquisition and Registration Seam
-- [ ] Item 3: Verified Package Integration Seam
-- [ ] Item 4: Goal Grounding, Cold-Pickup Resume, and Round-Review Proof
-- [ ] Item 5: Research-to-Model Round Proof
-- [ ] Item 6: Integration-to-Study Closure and Route Equivalence
+- [x] Item 1: Lean Goal Contract and Operator Runbook
+- [x] Item 2: Native Research Acquisition and Registration Seam
+- [x] Item 3: Verified Package Integration Seam
+- [x] Item 4: Goal Grounding, Cold-Pickup Resume, and Round-Review Proof
+- [x] Item 5: Research-to-Model Round Proof
+- [x] Item 6: Integration-to-Study Closure and Route Equivalence
 
-**File**: `epic_goal_strategy_task_harness.md`
+**File**: `.project/completed/20260830_epic_goal_strategy_task_harness.md`
 
 ---
 

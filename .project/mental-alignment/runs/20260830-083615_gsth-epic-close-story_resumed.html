@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GSTH Epic Close — The Story</title>
+<style>
+  :root{
+    --ink:#1a2330; --muted:#5a6a7a; --paper:#fdfcf9; --panel:#f3f1ea; --line:#d8d2c4;
+    --accent:#8a4b0f; --good:#2e6b45; --bad:#a33327; --warn:#8a6d1a; --judge:#eef0f6; --judgeline:#7d8bb0;
+    --feas:#cfe3d4; --recirc:#f2c9c0; --wall:#e8d9a8; --excl:#d9d9de;
+  }
+  html{background:var(--paper);}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--ink);max-width:60rem;margin:0 auto;padding:1.5rem 1.2rem 4rem;line-height:1.55;}
+  h1,h2,h3{font-family:'Helvetica Neue',Arial,sans-serif;line-height:1.2;}
+  h1{font-size:1.7rem;margin:.2rem 0 .3rem;}
+  h2{font-size:1.25rem;margin:2.4rem 0 .6rem;border-bottom:2px solid var(--line);padding-bottom:.25rem;}
+  h3{font-size:1.02rem;margin:1.4rem 0 .4rem;color:var(--accent);}
+  p{margin:.6rem 0;}
+  code{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:.86em;background:var(--panel);padding:.05em .3em;border-radius:3px;}
+  .meta{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:.8rem 1rem;font-size:.85rem;color:var(--muted);margin:1rem 0 0;}
+  .meta dt{font-weight:bold;color:var(--ink);float:left;clear:left;width:8.5rem;}
+  .meta dd{margin:0 0 .3rem 9rem;}
+  .meta ul{margin:.1rem 0 .3rem;padding-left:1.1rem;}
+  table{border-collapse:collapse;margin:.8rem 0;font-size:.88rem;width:100%;}
+  th,td{border:1px solid var(--line);padding:.35rem .55rem;text-align:left;vertical-align:top;}
+  th{background:var(--panel);font-family:'Helvetica Neue',Arial,sans-serif;font-size:.82rem;}
+  .num{text-align:right;font-variant-numeric:tabular-nums;}
+  figure{margin:1.2rem 0;padding:0;}
+  figcaption{font-size:.82rem;color:var(--muted);margin-top:.35rem;}
+  .scroll{overflow-x:auto;}
+  svg{max-width:100%;height:auto;display:block;}
+  .tag{display:inline-block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:.7rem;font-weight:bold;letter-spacing:.03em;padding:.1em .45em;border-radius:3px;vertical-align:middle;}
+  .tag.owner{background:#3d2f14;color:#f7e9c8;}
+  .tag.agent{background:#2f3a4d;color:#dbe6f5;}
+  .tag.inherit{background:#4a4a4a;color:#eee;}
+  .up{color:var(--bad);font-weight:bold;} .down{color:var(--good);font-weight:bold;}
+  details{margin:.7rem 0;border:1px solid var(--line);border-radius:5px;background:#fff;}
+  details summary{cursor:pointer;padding:.45rem .8rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:.86rem;font-weight:bold;background:var(--panel);border-radius:5px;}
+  details[open] summary{border-bottom:1px solid var(--line);border-radius:5px 5px 0 0;}
+  details .inner{padding:.4rem .9rem .7rem;}
+  .callout{border-left:4px solid var(--accent);background:#faf5ec;padding:.6rem .9rem;margin:1rem 0;font-size:.93rem;}
+  .judge{background:var(--judge);border:2px solid var(--judgeline);border-radius:8px;padding:1rem 1.3rem;margin-top:2.6rem;}
+  .judge h2{border:none;margin-top:0;color:#3b4a75;}
+  .judge .banner{font-family:'Helvetica Neue',Arial,sans-serif;font-size:.78rem;font-weight:bold;letter-spacing:.06em;color:#3b4a75;text-transform:uppercase;}
+  .sources{font-size:.8rem;color:var(--muted);margin-top:2.5rem;border-top:1px solid var(--line);padding-top:.8rem;}
+  .sources ul{columns:2;column-gap:2rem;padding-left:1.1rem;margin:.3rem 0;}
+  .onepara{background:#f0ece0;border:1px solid var(--line);border-radius:6px;padding:.9rem 1.1rem;margin:1.4rem 0;}
+  .legend span{display:inline-block;margin-right:1rem;font-size:.8rem;}
+  .legend i{display:inline-block;width:.9em;height:.9em;border:1px solid #999;margin-right:.3em;vertical-align:-.1em;}
+  @media (max-width:640px){ .meta dt{float:none;width:auto;} .meta dd{margin-left:0;} .sources ul{columns:1;} }
+</style>
+</head>
+<body>
+
+<h1>GSTH Epic Close — The Story</h1>
+<p style="color:var(--muted);font-size:.95rem;">Goal Strategy and Task Harness epic (<code>.project/backlog/epic_goal_strategy_task_harness.md</code>) — what was done, how the TEA process grew, and what the experiments actually showed. Rendered from the checkpoint synthesis of 2026-08-30.</p>
+
+<div class="meta">
+<dl>
+<dt>Question</dt><dd>"We have completed this epic, and are in the process of closing it. I want a very clear, understandable story for: What was done; How we expanded or enhanced our TEA process; How we demonstrated the capabilities — Specifics around the tests and outcomes. MUST be plainly explained so a general audience understands the model enhancements and experiments."</dd>
+<dt>Date</dt><dd>2026-08-30 08:36 (amended same morning after the close landed at <code>e4e895a1</code>)</dd>
+<dt>Policy / shape</dt><dd>discovered / checkpoint</dd>
+<dt>Evidence</dt><dd><ul>
+<li><code>.project/backlog/epic_goal_strategy_task_harness.md</code></li>
+<li><code>.project/CURRENT_WORK.md</code> (§ GSTH; Items 1, 2, 4, 5 close summaries)</li>
+<li><code>.project/completed/20260830_goal-integration-study-proof/</code> — <code>epic_evidence.md</code>, <code>route_equivalence.md</code>, <code>product-lens.md</code> (close-F1 block and its <code>8fc1cbb0</code> resolution)</li>
+<li><code>work/completed/20260828_WI-033_p-pump-rebase/verification_record.md</code></li>
+<li><code>work/orchestration/goals/p-pump-fence/</code> — <code>goal.md</code>, <code>learnings.md</code></li>
+<li><code>exploration/stellarator_e2e/studies/20260829-p-pump-fence/synthesis.md</code></li>
+<li>git log (close-F1 repair <code>f3249f7c</code>; resolution <code>8fc1cbb0</code>; archive <code>e4e895a1</code>)</li>
+<li>adversarial review by a fresh subagent, findings folded in 2026-08-30</li>
+</ul></dd>
+<dt>Code inspected</dt><dd>Not inspected — the seams (<code>scripts/source_registry.py</code>, <code>research_seam.py</code>, <code>integrate.py</code>) and study code are named from records, not read; test counts and study numbers are quoted from committed records and regression transcripts, not re-run.</dd>
+<dt>Limits</dt><dd>Item 3's audit and the Item 1/4 archives were read via their CURRENT_WORK close summaries, not in full; the 20 stage briefs and eight Item 5 transcripts were skipped; the p-pump-basis goal directory was skipped (its outcome is carried in WI-033's record).</dd>
+</dl>
+</div>
+
+<!-- ============================================================ Section 1 -->
+<h2>1. What was built: a paper trail that lets a stranger run the investigation</h2>
+
+<p>The TEA project already had good specialist tools before this epic: research a source, edit the SysML plant model, regenerate the cost package, sweep it in a study, read the results. What it did not have was anything connecting them. <em>Why</em> one step should follow another — which question is being pursued, what the last result decided, whether the current plan still holds — lived in the builder's head and chat history. If the builder walked away mid-run, the run died.</p>
+
+<p>The epic built the <strong>goal layer</strong>: for each question the project pursues, one directory holding three plain-text files, plus a shared runbook that a human and an AI agent follow identically. A goal cannot start until it is "grounded" — five field classes present and non-hollow — and every round of work ends with a review by a fresh session that had no part in the work.</p>
+
+<figure>
+<svg viewBox="0 0 680 300" role="img" aria-labelledby="fig1t" font-family="Helvetica,Arial,sans-serif">
+  <title id="fig1t">Layer diagram: the goal layer above, five specialist workflows below, connected by citation arrows labeled "cite, never copy"</title>
+  <!-- goal layer -->
+  <rect x="20" y="18" width="640" height="108" rx="8" fill="#f5efdf" stroke="#8a4b0f" stroke-width="1.5"/>
+  <text x="34" y="40" font-size="13" font-weight="bold" fill="#8a4b0f">GOAL LAYER — work/orchestration/goals/{goal}/ + GOAL_RUNBOOK.md</text>
+  <rect x="36" y="52" width="180" height="58" rx="5" fill="#fff" stroke="#b09566"/>
+  <text x="46" y="72" font-size="12" font-weight="bold">goal.md</text>
+  <text x="46" y="88" font-size="10.5" fill="#5a6a7a">question · evidence · answer</text>
+  <text x="46" y="101" font-size="10.5" fill="#5a6a7a">contract · limits · gates</text>
+  <rect x="230" y="52" width="180" height="58" rx="5" fill="#fff" stroke="#b09566"/>
+  <text x="240" y="72" font-size="12" font-weight="bold">trail.md</text>
+  <text x="240" y="88" font-size="10.5" fill="#5a6a7a">append-only log: tasks,</text>
+  <text x="240" y="101" font-size="10.5" fill="#5a6a7a">decisions, returns, reviews</text>
+  <rect x="424" y="52" width="180" height="58" rx="5" fill="#fff" stroke="#b09566"/>
+  <text x="434" y="72" font-size="12" font-weight="bold">learnings.md</text>
+  <text x="434" y="88" font-size="10.5" fill="#5a6a7a">lessons accepted only after</text>
+  <text x="434" y="101" font-size="10.5" fill="#5a6a7a">independent review</text>
+  <!-- arrows -->
+  <g stroke="#8a4b0f" stroke-width="1.4" fill="none">
+    <path d="M110 126 v46"/><path d="M250 126 v46"/><path d="M390 126 v46"/><path d="M530 126 v46"/>
+  </g>
+  <g fill="#8a4b0f"><path d="M106 168 l4 9 4-9z"/><path d="M246 168 l4 9 4-9z"/><path d="M386 168 l4 9 4-9z"/><path d="M526 168 l4 9 4-9z"/></g>
+  <text x="340" y="160" font-size="11.5" font-style="italic" fill="#8a4b0f" text-anchor="middle">cite, never copy — native records stay the only truth</text>
+  <!-- native layer -->
+  <rect x="20" y="182" width="640" height="100" rx="8" fill="#eef2f0" stroke="#2e6b45" stroke-width="1.5"/>
+  <text x="34" y="204" font-size="13" font-weight="bold" fill="#2e6b45">NATIVE SPECIALIST WORKFLOWS — keep ownership of their own state</text>
+  <g font-size="11">
+    <rect x="34" y="214" width="116" height="52" rx="5" fill="#fff" stroke="#7ba68c"/>
+    <text x="44" y="234" font-weight="bold">research</text><text x="44" y="250" fill="#5a6a7a">register sources</text>
+    <rect x="158" y="214" width="116" height="52" rx="5" fill="#fff" stroke="#7ba68c"/>
+    <text x="168" y="234" font-weight="bold">model</text><text x="168" y="250" fill="#5a6a7a">SysML plant edits</text>
+    <rect x="282" y="214" width="116" height="52" rx="5" fill="#fff" stroke="#7ba68c"/>
+    <text x="292" y="234" font-weight="bold">integrate</text><text x="292" y="250" fill="#5a6a7a">verified package</text>
+    <rect x="406" y="214" width="116" height="52" rx="5" fill="#fff" stroke="#7ba68c"/>
+    <text x="416" y="234" font-weight="bold">study.execute</text><text x="416" y="250" fill="#5a6a7a">sweep the design</text>
+    <rect x="530" y="214" width="116" height="52" rx="5" fill="#fff" stroke="#7ba68c"/>
+    <text x="540" y="234" font-weight="bold">study.read</text><text x="540" y="250" fill="#5a6a7a">fresh reading</text>
+  </g>
+</svg>
+<figcaption>The goal layer's three files sit above five native workflows and point at their records by path and commit; they never restate them. Text equivalent: goal.md holds the question and answer contract, trail.md the append-only task log, learnings.md the reviewed lessons; below sit research, model, integrate, study-execute, and study-read, each owning its own state.</figcaption>
+</figure>
+
+<p>Two deliberate design choices, both <span class="tag owner">OWNER</span> rulings (<code>.project/concepts/goal-strategy-task-harness-design-review.md</code> § Resolutions): the files <strong>cite</strong> the specialist workflows' records rather than copying them, and <strong>no automation machinery</strong> — event ledgers, retry logic, dispatchers — may be added unless a recorded run failure proves plain files failed. That rule was then measured: across the three proof runs roughly two dozen failures were recorded (ten in Experiment 1, eight in Experiment 2, six in Experiment 3), every one caught by the route's existing defenses — a fresh session, a reviewer, an existing gate or test battery, or the operator reading files. Nothing earned promotion; the epic ships almost no control code. The verdicts are dated amendments on ADR-003.</p>
+
+<details><summary>Detail: what Item 1 actually filed — the nine architecture decisions and the contract's moving parts</summary><div class="inner">
+<p>Item 1 (closed 2026-08-27, <code>.project/completed/20260827_goal-harness-contract/</code>) filed the decision records the design reviews had left in shaping files, in <code>.project/adr/</code>:</p>
+<table>
+<tr><th>ADR</th><th>Decides</th></tr>
+<tr><td>001</td><td>Strategy and task — one active strategy, bounded tasks, six-value task returns</td></tr>
+<tr><td>002</td><td>Round boundary — what opens and what closes a round</td></tr>
+<tr><td>003</td><td>Lean-first persistence — prose files first; machinery only after a recorded failure (now carries three dated measurement amendments)</td></tr>
+<tr><td>004</td><td>Finding disposition — joined <code>&lt;study-id&gt;#&lt;n&gt;</code> rows; no touched row left unrouted</td></tr>
+<tr><td>005</td><td>Review topology — one pre-execution critic checkpoint + one post-round fresh review; no per-stage critics</td></tr>
+<tr><td>006</td><td>Goal evidence seam — goals may cite either PM's artifacts by path@commit; never mirror state</td></tr>
+<tr><td>007</td><td>Supersession — how a goal or ruling is superseded</td></tr>
+<tr><td>008</td><td>Source identity = sha256 of raw bytes (filed by Item 2)</td></tr>
+<tr><td>009</td><td>Integration is a fixed-point proof — re-running on unchanged inputs returns the same identity (filed by Item 3)</td></tr>
+</table>
+<p>The grounding gate's five field classes (<code>GOAL_RUNBOOK.md</code> § Grounding a goal): grounding evidence, answer contract, invariants, limits, reserved owner gates. Item 1 also amended the writer rules so three roles never collide on the study discovery log: the study executor writes first sightings, the goal agent appends joined disposition rows, the administrator stays read-only.</p>
+</div></details>
+
+<!-- ============================================================ Section 2 -->
+<h2>2. Two process repairs: research and integration each became one honest command</h2>
+
+<p>Two steps in the TEA loop still ran on hand-copied patterns. The epic replaced both with "seams" — single producer-owned operations with an unambiguous return (Items 2 and 3, both closed 2026-08-27). The point of a seam is that its answer is computed from receipts on disk, not from what an agent claims happened.</p>
+
+<div class="scroll">
+<table>
+<tr><th style="width:9rem">Seam</th><th>Before</th><th>Now — one call</th><th>Possible returns (exactly one)</th></tr>
+<tr>
+<td><strong>Research</strong><br><code>scripts/source_registry.py</code><br><code>scripts/research_seam.py</code></td>
+<td>Shell steps + hand-edited <code>SOURCE_INDEX.md</code> blocks; no durable record of a failed search, so the same dead end could be re-searched forever</td>
+<td>Captures a URL or local PDF and writes the citable file, raw + extract hashes, manifest row, and index entry <em>together</em> — or rolls back leaving nothing. ARIES-CS holdout quarantine enforced in code; the waiver flag was deleted</td>
+<td><code>REGISTERED</code> · <code>OPERATOR_QUEUE</code> (e.g. paywalled) · <code>BOUNDED_NEGATIVE</code> (durable "searched, found nothing", with the queries kept) · <code>BLOCKER</code></td>
+</tr>
+<tr>
+<td><strong>Integration</strong><br><code>scripts/integrate.py</code></td>
+<td>A regenerate → verify → pin sequence scattered across work-item plans, followed by hand each time</td>
+<td>One invocation runs regeneration plus ten gates (below) and fails closed on anything dirty, drifted, or unverifiable</td>
+<td>exactly one pinned, fingerprinted <code>CANDIDATE</code> package · or a named blocker with the failed gate and evidence path</td>
+</tr>
+</table>
+</div>
+
+<details><summary>Detail: the ten integration gates, in firing order</summary><div class="inner">
+<p>From <code>docs/integration_seam_operator_guide.md</code>. The sequence stops at the first non-pass; the stopping gate carries its own verdict and everything after reads "not reached".</p>
+<table>
+<tr><th>#</th><th>Gate</th><th>What it refuses</th></tr>
+<tr><td>0</td><td><code>preconditions</code></td><td>Missing inputs, unexported environment variables, dirty package tree — checked <em>before</em> any producer runs, so "you forgot a variable" never reads as "your toolchain drifted"</td></tr>
+<tr><td>1a</td><td><code>pinned-packages</code></td><td>Sealed-wheel hashes or pinned revisions that don't match (<code>tests/test_dependency_provenance.py</code>)</td></tr>
+<tr><td>1b</td><td><code>teax-revision</code></td><td>The teax checkout not at the expected revision</td></tr>
+<tr><td>2</td><td><code>regeneration</code></td><td>Codegen rewriting any byte outside <code>handwritten/</code></td></tr>
+<tr><td>3</td><td><code>handwritten-preservation</code></td><td>A hand-written implementation lost in regeneration</td></tr>
+<tr><td>4</td><td><code>census-snapshot</code></td><td>The regenerated entry-point census diverging from the tracked one</td></tr>
+<tr><td>5</td><td><code>model-family-spine</code></td><td>The canonical model tree and family twins out of step (13 spine tests)</td></tr>
+<tr><td>6</td><td><code>manifest</code></td><td>A manifest that isn't this package's, or a pin that doesn't recompute</td></tr>
+<tr><td>7</td><td><code>preflight</code></td><td>Any of the six mechanical study-preflight gates, incl. the baseline headline not reproducing</td></tr>
+<tr><td>8</td><td><code>verification</code></td><td>Oracle parity or re-derived verdict mismatch over the executed store</td></tr>
+<tr><td>9</td><td><code>lineage</code></td><td>Live fingerprints that don't match the pair the request named</td></tr>
+</table>
+<p>Research seam test evidence: 150 tests green at close, covering the URL and PDF registration chains, duplicate detection, rollback at all three commit rungs, holdout refusal, bounded negatives, and the request/return contract (<code>.project/completed/20260827_goal-research-seam/</code>). Integration: audit POSITIVE, ADR-009 makes a re-run on unchanged inputs a fixed point — the route-equivalence exercise in § 6 leans on exactly that.</p>
+</div></details>
+
+<!-- ============================================================ Section 3 -->
+<h2>3. Experiment 1 — strangers can start, resume, and close a goal (Item 4)</h2>
+
+<p>The first proof asked: does the paper trail actually work for someone who didn't build it? Thirteen kept cold sessions across twelve fresh agents — none the builder — grounded a real goal (<code>work/orchestration/goals/cryo-volume-basis/</code>) and ran it through a full bounded round. Audit verdict: Certify (<code>.project/completed/20260827_goal-cold-pickup-proof/</code>). Every ordering claim is a git-ancestry check, not a timestamp.</p>
+
+<div class="callout"><strong>The rehearsal question was itself real modeling substance.</strong> The stellarator's magnet coils sit inside a cryogenic cold mass that the cryoplant must hold near 4&nbsp;K — and the size of that cold mass drives the cryoplant's cost. The model already computes how much electrical current the coils must carry (Ampère's law inside the magnet-cost calculation). Given the current density the superconductor can sustain (insight DI-010), the volume of the winding pack follows from those two numbers. So the goal asked: should the model <em>derive</em> the cold volume (<code>vol_cold_cryo</code>) instead of holding a hand-entered figure? — the operator's question verbatim, restating discovery row <code>20260823-magnet-technology-ab#2</code>.</div>
+
+<h3>The run, session by session</h3>
+<p>From the item's closed enumeration (<code>freshness-record.md</code>: thirteen kept runs, two discarded harness-fault attempts, twelve distinct session ids — "all the cold runs there were").</p>
+<div class="scroll">
+<table>
+<tr><th>#</th><th>Role</th><th>What happened</th></tr>
+<tr><td>01–02</td><td>Grounding (one session, resumed)</td><td>A fresh non-builder co-developed <code>goal.md</code> from the operator's question, asking six operator questions; reached <code>Status: grounded</code></td></tr>
+<tr><td>03–07</td><td>Gate probes, one per field class</td><td>A deliberately hollow draft submitted five times, once per required field class — see the measurement below</td></tr>
+<tr><td>08b</td><td>Round agent — <strong>killed mid-task</strong></td><td>Wrote strategy, scope, and the write-ahead start; minted WI-032 through the modeling PM; then killed by design before writing any return</td></tr>
+<tr><td>09</td><td><strong>Resumer</strong> (different fresh session)</td><td>Read only the goal directory + repository, recognized the interruption, found the already-landed WI-032 mint, completed the remaining half, wrote the return — <em>no duplicate side effect, no re-mint</em></td></tr>
+<tr><td>10–11</td><td>Round continuation + owner gate</td><td>Second task hit a reserved owner gate and stopped there; after the ruling, the round closed on a derived trigger with a mandatory RoundResult</td></tr>
+<tr><td>12</td><td>Fresh round review</td><td>Verdict FINDINGS; settled and appended the learnings</td></tr>
+<tr><td>13</td><td>Standalone reader</td><td>Answered four state questions from the goal directory alone; wrote nothing</td></tr>
+</table>
+</div>
+
+<h3>The grounding gate, measured — 2 of 5 field classes actually refuse</h3>
+<figure>
+<svg viewBox="0 0 640 150" role="img" aria-labelledby="fig3t" font-family="Helvetica,Arial,sans-serif">
+  <title id="fig3t">Bar chart: hollow drafts for grounding evidence and answer contract were refused; hollow invariants, limits, and reserved gates were not caught</title>
+  <g font-size="12">
+    <text x="10" y="28">grounding evidence</text><rect x="175" y="14" width="150" height="20" fill="#2e6b45"/><text x="333" y="28" fill="#2e6b45" font-weight="bold">REFUSED</text>
+    <text x="10" y="56">answer contract</text><rect x="175" y="42" width="150" height="20" fill="#2e6b45"/><text x="333" y="56" fill="#2e6b45" font-weight="bold">REFUSED</text>
+    <text x="10" y="84">invariants</text><rect x="175" y="70" width="150" height="20" fill="#a33327"/><text x="333" y="84" fill="#a33327" font-weight="bold">sailed through</text>
+    <text x="10" y="112">limits</text><rect x="175" y="98" width="150" height="20" fill="#a33327"/><text x="333" y="112" fill="#a33327" font-weight="bold">sailed through</text>
+    <text x="10" y="140">reserved gates</text><rect x="175" y="126" width="150" height="20" fill="#a33327"/><text x="333" y="140" fill="#a33327" font-weight="bold">sailed through</text>
+  </g>
+</svg>
+<figcaption>The probe result, per field class (<code>gate-probe-record.md</code>). Text equivalent: hollow grounding evidence and a hollow answer contract were refused before task start; hollow invariants, limits, and reserved gates were not caught — three probe sessions ran full tasks unguarded. The measurement was not hidden: the runbook was amended to a written five-class rule on this evidence (<span class="tag owner">OWNER</span> disposition 2026-08-27).</figcaption>
+</figure>
+
+<p><strong>One honest miss, stated as the record states it.</strong> The deliberately seeded reviewer test — a planted scope drift — was neutralized before it reached the reviewer: the round agent narrowed the widened frame back to the goal's question on its own. The branch covering that outcome was declared in the design <em>before</em> the run (ancestry-checked by the audit). The fresh reviewer instead caught a <em>real</em> organic drift, accounted for every touched row, and corrected the learning delta — so the reviewing faculty is demonstrated; the designed test is not.</p>
+
+<!-- ============================================================ Section 4 -->
+<h2>4. Experiment 2 — a real model error found, criticized, and fixed: p_pump 1.0 → 195 MW (Item 5 + WI-033)</h2>
+
+<p>The second proof ran on a genuine open error, and this is where the epic touched the TEA model itself. The model (<code>models/designs/stellarator_09/stellarator_plant.sysml</code>) describes a whole stellarator power plant: plasma physics feeding a power balance, the power balance feeding costed subsystems, the costs rolling up to LCOE — the levelized cost of the electricity it sells.</p>
+
+<p>One of its inputs, <strong><code>p_pump</code></strong>, is the electrical power for the compressors that push helium coolant through the breeding blanket — the meter-thick shell around the plasma that absorbs the fusion neutrons and turns their energy into ~3.2&nbsp;GW of usable heat. Helium is a gas — thin stuff. To carry gigawatts of heat you must move enormous mass flow through narrow channels, and compressing gas is expensive: the EU-DEMO engineering literature puts helium pumping near <strong>6&nbsp;% of thermal power (~150&nbsp;MW)</strong>, where water — dense, pumpable as a liquid — does the same job for <strong>~15&nbsp;MW</strong>. The model carried <strong>1.0&nbsp;MW</strong>: a water-like placeholder in a helium-cooled plant, roughly two orders of magnitude low. Both committed A/B studies had been built on it.</p>
+
+<figure>
+<svg viewBox="0 0 680 190" role="img" aria-labelledby="fig4a" font-family="Helvetica,Arial,sans-serif">
+  <title id="fig4a">The helium coolant loop: plasma to blanket to circulators to steam plant, with the water-vs-helium pumping comparison</title>
+  <!-- plasma -->
+  <ellipse cx="80" cy="85" rx="52" ry="44" fill="#f6d8e8" stroke="#a3527d" stroke-width="1.5"/>
+  <text x="80" y="80" font-size="12" font-weight="bold" text-anchor="middle" fill="#7c3a5e">plasma</text>
+  <text x="80" y="96" font-size="10.5" text-anchor="middle" fill="#7c3a5e">fusion neutrons</text>
+  <!-- blanket -->
+  <rect x="170" y="35" width="130" height="100" rx="8" fill="#f2e3c8" stroke="#8a6d1a" stroke-width="1.5"/>
+  <text x="235" y="60" font-size="12" font-weight="bold" text-anchor="middle" fill="#6d5410">breeding blanket</text>
+  <text x="235" y="78" font-size="10.5" text-anchor="middle" fill="#6d5410">absorbs neutron heat</text>
+  <text x="235" y="93" font-size="10.5" text-anchor="middle" fill="#6d5410">~3.2 GW thermal</text>
+  <text x="235" y="112" font-size="10.5" text-anchor="middle" fill="#6d5410">helium flows through</text>
+  <!-- circulators -->
+  <rect x="350" y="120" width="140" height="52" rx="8" fill="#dce7f5" stroke="#3a5b8c" stroke-width="1.5"/>
+  <text x="420" y="140" font-size="12" font-weight="bold" text-anchor="middle" fill="#2b4368">helium circulators</text>
+  <text x="420" y="157" font-size="10.5" text-anchor="middle" fill="#2b4368">p_pump — electric drive</text>
+  <!-- steam plant -->
+  <rect x="530" y="35" width="130" height="70" rx="8" fill="#dfeee2" stroke="#2e6b45" stroke-width="1.5"/>
+  <text x="595" y="60" font-size="12" font-weight="bold" text-anchor="middle" fill="#1f4a30">steam plant</text>
+  <text x="595" y="78" font-size="10.5" text-anchor="middle" fill="#1f4a30">heat → electricity</text>
+  <text x="595" y="93" font-size="10.5" text-anchor="middle" fill="#1f4a30">η ≈ 0.33</text>
+  <!-- loop arrows -->
+  <g stroke="#3a5b8c" stroke-width="2.2" fill="none">
+    <path d="M300 65 C 380 55, 450 55, 528 62"/>
+    <path d="M560 105 C 520 135, 500 142, 492 145"/>
+    <path d="M350 150 C 250 160, 200 150, 195 137"/>
+  </g>
+  <g fill="#3a5b8c"><path d="M521 57 l9 5 -7 7z"/><path d="M494 139 l0 10 -9-5z"/><path d="M200 144 l-6-9 11 1z"/></g>
+  <text x="410" y="48" font-size="10" fill="#3a5b8c">hot helium out</text>
+  <text x="240" y="168" font-size="10" fill="#3a5b8c">cold helium pushed back in</text>
+  <g stroke="#a3527d" stroke-width="1.6" fill="none"><path d="M133 75 h32"/></g><g fill="#a3527d"><path d="M162 70 l9 5 -9 5z"/></g>
+  <!-- comparison box -->
+  <rect x="350" y="8" width="0" height="0" fill="none"/>
+  <text x="20" y="182" font-size="11.5" fill="#1a2330" font-weight="bold">Pumping the same heat: water ~15 MW · helium ~150 MW (Cismondi) — the model said 1.0 MW.</text>
+</svg>
+<figcaption>The physical system. Fusion neutrons deposit heat in the blanket; helium carries it to the steam plant; the circulators that push the helium draw <code>p_pump</code> of electricity. Text equivalent: helium's low density makes this pumping ~10× a water loop's — ~150&nbsp;MW vs ~15&nbsp;MW for a plant this size — and the model's held value was 1.0&nbsp;MW.</figcaption>
+</figure>
+
+<h3>How the round ran — the critic bound for the first time</h3>
+<p>The goal round (<code>p-pump-basis</code>, closed 2026-08-28) wrote its reading and proposed dispositions, and the new pre-execution checkpoint did what it was built for: a fresh non-author critic <strong>refused</strong> the first version (C-001.r1) with three required changes; the author revised; r2 passed; only then did the dispositions land. That is the <span class="tag owner">OWNER</span>-required checkpoint binding and releasing on a live round for the first time — the thing Item 5 exists to prove. Honest limit, kept honest in every record: the repository itself answered the basis question, so the research seam's request path never ran, and 4 of 9 item criteria were recorded as non-exercised or retired rather than dressed up (audit POSITIVE, <code>.project/completed/20260828_goal-research-model-proof/</code>).</p>
+
+<p><strong>WI-033</strong> then landed the fix through the modeling PM: two EU-DEMO sources registered through the new research seam — zero hand-edited index entries — and <code>p_pump</code> set to <strong>195.0&nbsp;MW</strong> in both model twins, first-order re-derived in the verification record (<code>work/completed/20260828_WI-033_p-pump-rebase/verification_record.md</code>).</p>
+
+<figure>
+<svg viewBox="0 0 680 170" role="img" aria-labelledby="fig4b" font-family="Helvetica,Arial,sans-serif">
+  <title id="fig4b">Number line 0 to 200 megawatts showing the old 1.0 MW value, the sourced band 83 to 195 MW, and the landed 195 MW</title>
+  <line x1="40" y1="110" x2="660" y2="110" stroke="#1a2330" stroke-width="1.5"/>
+  <g font-size="10.5" fill="#5a6a7a" text-anchor="middle">
+    <g stroke="#8a8a8a"><line x1="40" y1="105" x2="40" y2="115"/><line x1="195" y1="105" x2="195" y2="115"/><line x1="350" y1="105" x2="350" y2="115"/><line x1="505" y1="105" x2="505" y2="115"/><line x1="660" y1="105" x2="660" y2="115"/></g>
+    <text x="40" y="130">0</text><text x="195" y="130">50</text><text x="350" y="130">100</text><text x="505" y="130">150</text><text x="660" y="130">200 MW</text>
+  </g>
+  <!-- sourced band 83-195 -->
+  <rect x="297" y="96" width="350" height="28" fill="#dfeee2" stroke="#2e6b45" stroke-dasharray="4 3"/>
+  <text x="470" y="90" font-size="10.5" fill="#2e6b45" text-anchor="middle">sourced band ~83–195 MW</text>
+  <!-- markers -->
+  <g>
+    <circle cx="43.1" cy="110" r="6" fill="#a33327"/>
+    <text x="43" y="155" font-size="11" fill="#a33327" font-weight="bold" text-anchor="middle">1.0 — the model, before</text>
+    <line x1="314" y1="96" x2="326" y2="96" stroke="#2e6b45" stroke-width="0"/>
+    <circle cx="331" cy="110" r="4.5" fill="#2e6b45"/><text x="331" y="60" font-size="10.5" fill="#2e6b45" text-anchor="middle">83–94</text><text x="331" y="72" font-size="9.5" fill="#5a6a7a" text-anchor="middle">Moscato near-term</text>
+    <circle cx="445" cy="110" r="4.5" fill="#2e6b45"/><text x="445" y="60" font-size="10.5" fill="#2e6b45" text-anchor="middle">130.8</text><text x="445" y="72" font-size="9.5" fill="#5a6a7a" text-anchor="middle">Moscato 9-loop</text>
+    <circle cx="505" cy="110" r="4.5" fill="#2e6b45"/><text x="508" y="40" font-size="10.5" fill="#2e6b45" text-anchor="middle">~150</text><text x="508" y="52" font-size="9.5" fill="#5a6a7a" text-anchor="middle">Cismondi</text>
+    <circle cx="644.5" cy="110" r="7" fill="#8a4b0f"/>
+    <text x="612" y="40" font-size="11.5" fill="#8a4b0f" font-weight="bold" text-anchor="middle">195 — landed</text>
+    <text x="612" y="53" font-size="9.5" fill="#8a4b0f" text-anchor="middle">= 6 % of p_th (3238.1 MW)</text>
+  </g>
+</svg>
+<figcaption>The sourced evidence and the landed value on one axis. Text equivalent: the old 1.0&nbsp;MW sits at the origin, far below every source; Moscato's near-term design gives 83–94&nbsp;MW, his 9-loop reconstruction 130.8&nbsp;MW, Cismondi ~150&nbsp;MW; the landed 195.0&nbsp;MW = 6&nbsp;% of the baseline computed thermal power, at the top of the band.</figcaption>
+</figure>
+
+<h3>Why 195, and why a held number — two owner rulings</h3>
+<ul>
+<li><strong>Why the top of the band</strong> <span class="tag owner">OWNER 2026-08-28</span>: 195.0 is 6&nbsp;% of the baseline computed thermal power (3238.1&nbsp;MW → 194.3, rounded), deliberately erring against the direction the model had been optimistic. The documented lower bound, ~130&nbsp;MW, is recorded beside it. Cismondi's ~150&nbsp;MW is a preliminary figure for one unoptimized layout its own authors expect to fall (a ~9&nbsp;km piping run they intend to shrink to ~3&nbsp;km).</li>
+<li><strong>Why held, not computed</strong> <span class="tag owner">OWNER 2026-08-28</span>: a formula computing p_pump as a fraction of p_th would assert that pumping scales linearly across every swept machine geometry — a linearity no source establishes — and would silently retire a lever that two committed studies sweep. So it stays a held, settable input, with the rule "re-derive the scalar when the design point moves" (doc comment, <code>stellarator_plant.sysml:502-523</code>).</li>
+</ul>
+
+<details><summary>Detail: the first-order re-derivation from the registered sources</summary><div class="inner">
+<p>WI-033's verification record re-derives the band from the registered extractions, not from memory:</p>
+<ul>
+<li><strong>Cismondi</strong> (<code>output.md:174</code>): "In case of helium the pumping power is ~150MW, one order of magnitude higher than in case of water (~15MW)" — plus the 9&nbsp;km → ~3&nbsp;km piping lever in the same passage.</li>
+<li><strong>Moscato</strong>: blanket thermal 2101.7&nbsp;MW across 9 loops (3 inboard + 6 outboard), 2 compressors per loop at 6.8 / 7.5&nbsp;MW → 3×2×6.8 + 6×2×7.5 = <strong>130.8&nbsp;MW ≈ 6.2&nbsp;%</strong>. The near-term table (absent from the text extract, re-derived from the registered raw PDF p.7): 16 compressors at 5.9 / 5.2&nbsp;MW → <strong>83–94&nbsp;MW ≈ 4&nbsp;%</strong>.</li>
+</ul>
+<p>Registration receipts <code>39bd3b41</code> / <code>891b95bc</code>; both raw hashes byte-identical to earlier independent probes of the same URLs. The registration surfaced and fixed a real seam defect on the way (a hard-coded <code>raw.html</code> that broke PDF-URL capture — <span class="tag owner">OWNER</span>-ruled in-session fix + regression test).</p>
+</div></details>
+
+<!-- ============================================================ Section 5 -->
+<h2>5. Experiment 3 — the full loop, and what the fix does to the economics (Item 6)</h2>
+
+<p>The final proof drove the corrected model through the entire chain: integrate → study → fresh reading → criticized closure, under successor goal <code>p-pump-fence</code> asking: <em>with p_pump re-based to 195&nbsp;MW, where does the recirculation fence move, and what happens to LCOE?</em> Evidence map: <code>.project/completed/20260830_goal-integration-study-proof/epic_evidence.md</code>.</p>
+
+<h3>Integration: five invocations, and the refusals were half the value</h3>
+<p>The first two refusals were the seam working as designed — a not-yet-regenerated package (the exact stale-package detection WI-033 relied on) and tree hygiene. The next two surfaced the real finding: an audited input change reaches the package by regeneration, but every <em>hand-maintained expectation</em> of the package's output is invisible to the model layer. Five were stale; run 5 returned exactly one verified candidate pin (<code>20c2c364…</code>, ten gates pass).</p>
+<table>
+<tr><th>Stale expectation of the package's output</th><th>Caught by</th></tr>
+<tr><td>Manifest's pinned baseline headline</td><td>integrate gate 7 (preflight)</td></tr>
+<tr><td>Independent oracle's own held <code>p_pump</code></td><td>integrate gate 8 (verification)</td></tr>
+<tr><td>Nine-anchor gate in <code>run_stellaris_single.py</code></td><td><code>tests/study</code> battery</td></tr>
+<tr><td><code>PINNED_LCOE</code> in <code>tests/study/test_operand_bindings.py</code></td><td><code>tests/study</code> battery</td></tr>
+<tr><td><code>ANNEX.md</code> § Baseline pin literal</td><td><strong>an unaided human read, for an unrelated reason</strong></td></tr>
+</table>
+<p>That tail is the point — it bounds how far the gates can be trusted to enumerate this class, is recorded as learning L-001, and is the strongest case for a future expectation-coverage checker. Building one was deliberately deferred to the owner-visible hardening path.</p>
+
+<h3>The physics of the +21 %: the power-balance chain, drawn with the study's numbers</h3>
+<p>The model's balance (<code>models/library/analyses/mfe_power_balance.sysml:119-147</code>) in words: fusion heat — neutron power multiplied in the blanket, plus alpha and heating power, <em>plus half the pump work, which the model recovers as coolant heat</em> — makes thermal power <code>p_th</code>. The steam plant converts p_th to gross electricity at η ≈ 0.33. Then the plant pays its own bills — coils, pumps, cryogenics, heating — out of that gross, and only the remainder is sold. A 195&nbsp;MW pump bill therefore hits <strong>twice</strong>: it inflates p_th, and nine capital cost accounts scale with p_th (more heat means physically bigger blankets, heat exchangers, turbine plant — p-pump-basis learning L-003); and it inflates the recirculating sum, shrinking net power. Cost up, saleable output down — both ends of the LCOE ratio move the wrong way.</p>
+
+<figure>
+<svg viewBox="0 0 680 250" role="img" aria-labelledby="fig5a" font-family="Helvetica,Arial,sans-serif">
+  <title id="fig5a">Power flow at the baseline design, before and after: thermal power to gross electricity, split into recirculating and net-to-grid</title>
+  <g font-size="11.5">
+    <text x="10" y="22" font-weight="bold">p_pump = 1.0 MW (the old record)</text>
+    <!-- p_th bar scaled: 3238 -> 324px -->
+    <rect x="10" y="32" width="324" height="26" fill="#f2e3c8" stroke="#8a6d1a"/>
+    <text x="20" y="49" fill="#6d5410">p_th 3238 MW thermal</text>
+    <text x="345" y="49" fill="#5a6a7a">×η≈0.33 →</text>
+    <!-- gross 1078 -> 216px, split net 915 (183px) recirc 163 (33px) -->
+    <rect x="415" y="32" width="183" height="26" fill="#dfeee2" stroke="#2e6b45"/>
+    <rect x="598" y="32" width="33" height="26" fill="#f2c9c0" stroke="#a33327"/>
+    <text x="425" y="49" fill="#1f4a30">net to grid 915 MW</text>
+    <text x="418" y="76" font-size="10" fill="#a33327">recirculating ≈163 MW (15.1 %) →</text>
+  </g>
+  <g font-size="11.5">
+    <text x="10" y="128" font-weight="bold">p_pump = 195 MW (corrected)</text>
+    <!-- p_th 3335 -> 334px -->
+    <rect x="10" y="138" width="334" height="26" fill="#f2e3c8" stroke="#8a6d1a"/>
+    <text x="20" y="155" fill="#6d5410">p_th 3335 MW (+97 recovered pump heat)</text>
+    <text x="352" y="155" fill="#5a6a7a">→</text>
+    <!-- gross 1111 -> 222px : net 752 (150px) recirc 358 (72px) -->
+    <rect x="415" y="138" width="150" height="26" fill="#dfeee2" stroke="#2e6b45"/>
+    <rect x="565" y="138" width="72" height="26" fill="#f2c9c0" stroke="#a33327"/>
+    <text x="422" y="155" fill="#1f4a30">net 752 MW</text>
+    <text x="418" y="182" font-size="10" fill="#a33327">recirculating ≈358 MW (32.3 %) →</text>
+  </g>
+  <g font-size="11">
+    <text x="10" y="218" fill="#1a2330"><tspan font-weight="bold">Net power −163 MW</tspan> while the plant got <tspan font-weight="bold">hotter and costlier</tspan> — nine capital accounts scale with p_th.</text>
+    <text x="10" y="238" fill="#5a6a7a">Bars to scale. Sources: record § 3 comparison table + oracle operands (gross at 1.0 MW derived as p_net ÷ (1 − rec_frac)).</text>
+  </g>
+</svg>
+<figcaption>Text equivalent: at 1.0&nbsp;MW the baseline plant makes 3238&nbsp;MW thermal → ~1078&nbsp;MW gross electric, recirculates 15.1&nbsp;% (~163&nbsp;MW) and sells 915&nbsp;MW. At 195&nbsp;MW it makes 3335&nbsp;MW thermal (half the pump work returns as heat) → 1111&nbsp;MW gross, recirculates 32.3&nbsp;% (~358&nbsp;MW) and sells 752&nbsp;MW. Exact record values: p_net 915.081 → 752.413&nbsp;MW; rec_frac 0.1514 → 0.3225.</figcaption>
+</figure>
+
+<table>
+<tr><th>Baseline geometry (R 12.7 m, a 1.3 m)</th><th class="num">p_pump = 1.0 MW</th><th class="num">p_pump = 195 MW</th><th class="num">shift</th></tr>
+<tr><td>LCOE ($/MWh)</td><td class="num">275.264</td><td class="num">333.067</td><td class="num up">+57.80 (+21.0 %)</td></tr>
+<tr><td>LCOE, 1cfe accounting</td><td class="num">269.862</td><td class="num">326.512</td><td class="num up">+21.0 %</td></tr>
+<tr><td>Net electric power (MW)</td><td class="num">915.081</td><td class="num">752.413</td><td class="num up">−162.7</td></tr>
+<tr><td>Recirculating fraction</td><td class="num">0.1514</td><td class="num">0.3225</td><td class="num up">+0.171</td></tr>
+</table>
+<p style="font-size:.86rem;color:var(--muted);">All six design constraints remain satisfied at the baseline point — the re-basing moves the objective by a fifth without flipping a verdict there. The 1.0&nbsp;MW column is the committed <code>20260821-power-cycle-ab</code> Rankine arm at its own pin; the comparison is exact, not approximate, because that arm <em>is</em> the package's pre-WI-033 pinned headline.</p>
+
+<h3>The design space: where can this machine live at all?</h3>
+<p>The study swept 948 grid points of machine geometry — R, the radius of the torus ring (4–20&nbsp;m), and a, the thickness of the plasma tube (0.8–2.2&nbsp;m); 906 evaluated. Bigger plasma makes more fusion power, but the ~195&nbsp;MW pump bill is a held input, nearly size-independent — so small machines spend an outsized share of their output running their own pumps. The recirculation fence (<code>rec_frac ≤ 0.5</code>: no more than half the gross electricity consumed internally) accordingly swallowed the small-machine region.</p>
+
+<figure>
+<div class="scroll">
+<svg viewBox="0 0 680 430" role="img" aria-labelledby="fig5b" font-family="Helvetica,Arial,sans-serif">
+  <title id="fig5b">Design-space map over major radius R and minor radius a at p_pump 195 MW, showing the recirculation-fenced region, the wall-load band, the feasible band, the baseline point and the best feasible point</title>
+  <!-- plot frame -->
+  <rect x="70" y="40" width="540" height="320" fill="#fff" stroke="#8a8a8a"/>
+  <!-- feasible base fill -->
+  <rect x="70" y="154.3" width="540" height="205.7" fill="#cfe3d4"/>
+  <rect x="70" y="40" width="540" height="114.3" fill="#e8d9a8"/>
+  <!-- recirc violated polygon (over feasible fill) -->
+  <polygon points="70,360 610,360 525.6,360 525.6,348.6 475,348.6 475,337.1 407.5,337.1 407.5,325.7 356.9,325.7 356.9,314.3 323.1,314.3 323.1,302.9 289.4,302.9 289.4,291.4 255.6,291.4 255.6,280 238.8,280 238.8,268.6 205,268.6 205,257.1 188.1,257.1 188.1,245.7 171.2,245.7 171.2,234.3 154.4,234.3 154.4,222.9 137.5,222.9 137.5,211.4 120.6,211.4 120.6,200 103.8,200 103.8,177.1 86.9,177.1 86.9,165.7 70,165.7" fill="#f2c9c0" stroke="#a33327" stroke-width="1.2"/>
+  <!-- excluded corner marker (approximate) -->
+  <path d="M70,360 L238,360 L70,268 Z" fill="#d9d9de" stroke="#6b6b74" stroke-dasharray="3 3" opacity="0.9"/>
+  <text x="92" y="342" font-size="9.5" fill="#3d3d46">42 pts: model</text>
+  <text x="92" y="353" font-size="9.5" fill="#3d3d46">unevaluable</text>
+  <!-- comparand fence anchors -->
+  <g stroke="#7c3a5e" stroke-width="2" stroke-dasharray="6 4" fill="none">
+    <path d="M205,360 L205,348.6 L70,348.6" opacity="0"/>
+    <line x1="205" y1="360" x2="205" y2="291.4"/>
+  </g>
+  <text x="211" y="300" font-size="9.5" fill="#7c3a5e">old fence reach (R ≤ 8, gone above a = 1.10)</text>
+  <!-- wall load label -->
+  <text x="340" y="100" font-size="11" fill="#6d5410" text-anchor="middle" font-weight="bold">wall_load_ok violated — every a ≥ 1.70 m (353 pts, unchanged; not a p_pump effect)</text>
+  <text x="150" y="240" font-size="11" fill="#7c1f14" font-weight="bold">recirc_ok</text>
+  <text x="150" y="253" font-size="10" fill="#7c1f14">violated (184 pts)</text>
+  <text x="430" y="215" font-size="11.5" fill="#1f4a30" font-weight="bold">feasible (370 pts)</text>
+  <!-- baseline and best points -->
+  <circle cx="363.6" cy="245.7" r="6" fill="#1a2330"/>
+  <text x="373" y="243" font-size="10.5" font-weight="bold">baseline (12.7, 1.3) — LCOE 333.07</text>
+  <rect x="601" y="157" width="14" height="14" fill="#8a4b0f" transform="rotate(45 608 164)"/>
+  <text x="455" y="150" font-size="10.5" fill="#8a4b0f" font-weight="bold">best feasible 225.73 at (20.0, 1.65)</text>
+  <text x="466" y="162" font-size="9.5" fill="#8a4b0f">on the window edge — not an optimum</text>
+  <!-- both-violated point -->
+  <circle cx="70" cy="154.3" r="4" fill="#5b1f68"/>
+  <text x="80" y="146" font-size="9.5" fill="#5b1f68">the single both-violated point (4.0, 1.70) — new</text>
+  <!-- axes -->
+  <g font-size="10.5" fill="#1a2330" text-anchor="middle">
+    <text x="70" y="378">4</text><text x="137.5" y="378">6</text><text x="205" y="378">8</text><text x="272.5" y="378">10</text><text x="340" y="378">12</text><text x="407.5" y="378">14</text><text x="475" y="378">16</text><text x="542.5" y="378">18</text><text x="610" y="378">20</text>
+    <text x="340" y="400" font-weight="bold">R — major radius of the torus ring (m)</text>
+  </g>
+  <g font-size="10.5" fill="#1a2330" text-anchor="end">
+    <text x="64" y="364">0.8</text><text x="64" y="318">1.0</text><text x="64" y="272">1.2</text><text x="64" y="226">1.4</text><text x="64" y="181">1.6</text><text x="64" y="135">1.8</text><text x="64" y="89">2.0</text><text x="64" y="44">2.2</text>
+  </g>
+  <text x="18" y="200" font-size="10.5" font-weight="bold" transform="rotate(-90 18 200)" text-anchor="middle">a — minor radius, plasma-tube thickness (m)</text>
+  <!-- unbounded note -->
+  <text x="340" y="425" font-size="10" fill="#7c1f14" text-anchor="middle">At a = 0.80 every R from 4 to 20 m violates recirc_ok — the fence runs off the window's edge, so its true extent in R is unknown there.</text>
+</svg>
+</div>
+<figcaption>The corrected design space. The recirculation-fenced region (red, 184 points) is drawn exactly from the record's per-a fence table; the wall-load band (tan, a ≥ 1.70) and the baseline/best points are exact; the unevaluable corner (grey, 42 points) is drawn approximately — its exact staircase is in <code>results/excluded_points.csv</code>. The dashed purple line marks the old fence's whole reach at 1.0&nbsp;MW: 32 points, R ≤ 8.0&nbsp;m at a = 0.80, vanishing above a = 1.10. Text equivalent: feasibility fell from 563/948 (59.4&nbsp;%) to 370/906 (40.8&nbsp;%); the fence changed character from a small-machine corner to a band spanning the whole R range at thin plasmas; the best feasible LCOE (225.73&nbsp;$/MWh) sits on the R = 20 edge with the objective still falling, so the record refuses to call it an optimum.</figcaption>
+</figure>
+
+<details><summary>Detail: the math is robust across the sourced band — the fence re-drawn at 130, 150, and 195 MW</summary><div class="inner">
+<p>Because p_pump is a held value with a sourced band, the record re-evaluates its headline claims across that band with the independent oracle (record § Near-fence re-evaluation):</p>
+<table>
+<tr><th class="num">held p_pump</th><th>recirc fence reach at a = 0.80</th><th class="num">baseline rec_frac</th><th class="num">baseline LCOE</th><th class="num">shift vs 275.264</th></tr>
+<tr><td class="num">130 MW</td><td>R ≤ 16.0 m</td><td class="num">0.2663</td><td class="num">311.12</td><td class="num up">+13.0 %</td></tr>
+<tr><td class="num">150 MW</td><td>R ≤ 17.0 m</td><td class="num">0.2837</td><td class="num">317.55</td><td class="num up">+15.4 %</td></tr>
+<tr><td class="num">195 MW</td><td>R ≤ 20.0 m (whole window)</td><td class="num">0.3225</td><td class="num">333.07</td><td class="num up">+21.0 %</td></tr>
+</table>
+<p>Both headline claims survive the whole band: even at the documented lower bound the fence reaches double the old record's 8.0&nbsp;m, and LCOE still shifts +13&nbsp;%. Two knife-edge grid points (rec_frac within 0.0008 of the 0.5 threshold) do flip inside the band, so the fence's position at one specific a is band-sensitive even though its scale is not.</p>
+</div></details>
+
+<h3>A model defect, surfaced and routed — not patched</h3>
+<p>42 points with negative net power cannot be evaluated at all: the CAS10 land-cost term takes √p_net, the square root of a negative fails, and the package crashes <em>before</em> the net-power constraint can report "violated". At 1.0&nbsp;MW this region lay entirely outside the swept space (the old record shows p_net = +8.3&nbsp;MW at the worst corner; the same corner is −154.4&nbsp;MW now). The study pre-screened the 42 out with the package-owned oracle, disclosed the boundary as a result (sharp: smallest evaluated p_net is +0.061&nbsp;MW), and the <span class="tag owner">OWNER</span> routed the producer defect to backlog item <strong>WI-034</strong> — the guard must survive a net-negative point. Nothing was patched in-round.</p>
+
+<h3>Judgment gates on the way out</h3>
+<p>The critic refused the first checkpoint again (C-001.r1 → revise → r2 pass). A fresh administrator (a session that had not run the study) read the record directory alone and reproduced every recomputable headline number exactly; it also found three prose numbers with no committed artifact behind them — repaired by addendum, accepted as learning L-004 ("a record can be arithmetically perfect and still fail its own contract"). The fresh round review returned FINDINGS with the answer upheld, corrected three learnings before accepting them; seven joined disposition rows closed every touched finding; the owner closed the goal (<code>5d740688</code>). The study's own verification harness: 48 sampled rows across all four verdict combinations, 10 channels at 1e-9 tolerance, worst deviation 6.3×10⁻¹⁶, zero mismatches.</p>
+
+<!-- ============================================================ Section 6 -->
+<h2>6. Route equivalence, and where the close actually stands</h2>
+
+<p>The last claim — human and agent can operate the same contract — was tested by a fresh session playing a human operator, following the runbook literally in an isolated worktree (<code>route_equivalence.md</code>). Five comparison dimensions:</p>
+
+<table>
+<tr><th>Dimension</th><th>Verdict</th><th>Decisive evidence</th></tr>
+<tr><td>Required artifact set</td><td>same contract</td><td>Every obligation produced or located, incl. an independently re-derived axis declaration that matched <code>axes.json</code> <em>before</em> opening it</td></tr>
+<tr><td>Native end states</td><td><strong>identical</strong></td><td><code>integrate</code> → CANDIDATE, <strong>byte-identical pin <code>20c2c364…</code> and both fingerprints</strong>; tree git-clean after</td></tr>
+<tr><td>Gates</td><td>same contract</td><td>Ten seam gates re-run by hand; six preflight gates verified; append-only trail verified mechanically</td></tr>
+<tr><td>Return classes</td><td><strong>identical</strong></td><td>CANDIDATE; reading ANSWERED reached independently, every headline number reproduced</td></tr>
+<tr><td>Reviewer-visible evidence</td><td>same contract</td><td>Same artifact shapes, incl. a synthesis with a mandatory what-the-record-does-not-support section</td></tr>
+</table>
+
+<p><em>And</em> the exercise earned its cost by finding the two places the written pattern failed a stranger: the operator guide would have <strong>mis-closed the round as a strategy blocker</strong> over a checkout-path mismatch that was really an environment setting (F-1), and <code>uv run</code> cannot honor the sealed toolchain from a second checkout, forcing an undocumented interpreter workaround (F-2). Declared limit that survives everything below: <code>study.execute</code> was fixture-substituted — a hand operator re-derives the same declarations and finds every deposit, but nobody proved a hand operator would produce the same 906 points.</p>
+
+<figure>
+<svg viewBox="0 0 680 120" role="img" aria-labelledby="fig6t" font-family="Helvetica,Arial,sans-serif">
+  <title id="fig6t">Close-arc timeline: falsifier occurs, product lens blocks, guide repaired, guide-only re-run passes, gate clear, item archived</title>
+  <line x1="30" y1="60" x2="650" y2="60" stroke="#8a8a8a" stroke-width="2"/>
+  <g font-size="9.8" text-anchor="middle">
+    <circle cx="70" cy="60" r="7" fill="#a33327"/><text x="70" y="38" font-weight="bold" fill="#a33327">falsifier occurs</text><text x="70" y="86">hand route needed an</text><text x="70" y="97">undocumented fix</text>
+    <circle cx="195" cy="60" r="7" fill="#a33327"/><text x="195" y="38" font-weight="bold" fill="#a33327">lens BLOCKS</text><text x="195" y="86">close-F1, 08-30</text><text x="195" y="97">(d9a84ae7)</text>
+    <circle cx="320" cy="60" r="7" fill="#8a6d1a"/><text x="320" y="38" font-weight="bold" fill="#8a6d1a">guide repaired</text><text x="320" y="86">carve-out + sealed-interp</text><text x="320" y="97">contract (f3249f7c)</text>
+    <circle cx="455" cy="60" r="7" fill="#2e6b45"/><text x="455" y="38" font-weight="bold" fill="#2e6b45">guide-only re-run passes</text><text x="455" y="86">"guide alone sufficed" —</text><text x="455" y="97">same pin, ten gates (8fc1cbb0)</text>
+    <circle cx="580" cy="60" r="7" fill="#2e6b45"/><text x="580" y="38" font-weight="bold" fill="#2e6b45">CLEAR → archived</text><text x="580" y="86">Item 6 closed</text><text x="580" y="97">(e4e895a1)</text>
+  </g>
+</svg>
+<figcaption>The close arc, all on 2026-08-30. Text equivalent: the product-lens close review blocked on close-F1 because the evidence declared route equivalence met after the falsifier — a documented-route operator hitting an undocumented correction — had occurred; the guide and environment contract were repaired; a fresh guide-only operator (session <code>0d76b3a4</code>) re-ran the isolated integration and reproduced the CANDIDATE with no undocumented correction at any step; the gate cleared and Item 6 archived to <code>.project/completed/20260830_goal-integration-study-proof/</code>.</figcaption>
+</figure>
+
+<p>All six GSTH items are now complete; the Item 6 audit is POSITIVE (fresh session, battery reproduced 574 passed / 14 skipped). What remains is close-out bookkeeping — the epic file's Lessons Learned section is still TBD — and the shipping gate: <code>/_my_pre_pr</code>, then one PR carrying WI-033 + Item 6 on <code>feat/wi033-p-pump-rebase</code>.</p>
+
+<div class="onepara">
+<p style="margin:0"><strong>The one-paragraph version for a general audience.</strong> We built a written procedure that lets anyone — a new person or a fresh AI session — pick up a research question about our fusion cost model, run it through evidence-gathering, model changes, and design-space studies, and hand it off mid-stream, with every claim checked by someone who didn't make it. We proved it three times, on progressively more real work. Along the way it caught and fixed a real error of roughly two orders of magnitude (~130–195× against the sourced band) in the model's coolant pumping power, and the corrected model says the reference stellarator's electricity is about 21&nbsp;% more expensive and its viable design space about a third smaller than we previously recorded — which is the system working: the process exists to make the numbers trustworthy, and it just made two committed studies' numbers honestly obsolete.</p>
+</div>
+
+<!-- ============================================================ Judgment -->
+<div class="judge">
+<p class="banner">Agent judgment — the synthesis agent's own assessment, visibly separate from the evidence. Not settled truth.</p>
+<h2 style="padding-bottom:0">Judgment</h2>
+<p><strong>Concerns</strong></p>
+<ul>
+<li>The research seam's request/return bookkeeper (<code>research_seam.py</code> open→log→close) has <strong>never run end to end</strong> — both live rounds found the answer without it. Only the registration write door has live evidence (WI-033). The records say this plainly (epic_evidence § 3), but any story claiming "the research seam is proven" overclaims.</li>
+<li><code>assert_read_set_covered</code> at integrate gate 6 has no live evidence on any invocation that reached it, and nothing else covers it (filed).</li>
+<li>Route equivalence carries a declared limit that survives the close: <code>study.execute</code> was fixture-substituted, and the close-F1 re-run re-proved integration only. "Same contract" holds for grounding/integrate/read/review, not the sweep itself.</li>
+<li>The record-contract class is real: the study record needed an addendum for uncommitted prose numbers (L-004), and that addendum sits inside the administrator's read scope, so no second administrator of this record can be blind (route-equivalence F-3). "Every claim checked by someone who didn't make it" holds once per record, not repeatably.</li>
+<li>The stale-expectation class (5 artifacts, 1 caught only by an unaided human read) bounds how much the gates can be trusted; the obvious checker was correctly deferred, but it is the sharpest open risk to the next model change.</li>
+<li>The epic's demonstrated TEA-model substance is one parameter correction plus its consequences. That is real and quantified, but most of the epic is process; the story should not imply broad model enhancement.</li>
+</ul>
+<p><strong>Unresolved uncertainty</strong>: the epic-level Lessons Learned section is still TBD in the epic file; the pre_pr gate has not run on the branch. Both are named remainders, not open questions about the evidence.</p>
+<p><strong>Disagreements between sources</strong>: none open. The one that existed — epic_evidence criterion 5 ("met") vs the product-lens ("BLOCKED") — has been closed <span class="tag owner">OWNER 2026-08-30</span>: the <code>8fc1cbb0</code> resolution amended the evidence to the failure-then-repair story and cleared the block. CURRENT_WORK (rev <code>d6b7b400</code>) predates the close commits; git log is the current truth.</p>
+<p><strong>Suggested spot checks</strong>: read the <code>8fc1cbb0</code> re-run verdict in the archived product-lens resolution block; re-run the regression stencil from epic_evidence § 1; open <code>results/points.csv</code> and recompute the +21&nbsp;% baseline shift and the 370/906 feasible count.</p>
+</div>
+
+<!-- ============================================================ Appendix -->
+<h2>Appendix — the numbers in one place</h2>
+<div class="scroll">
+<table>
+<tr><th>Quantity</th><th>Before (1.0 MW record)</th><th>After (195 MW)</th><th>Where</th></tr>
+<tr><td>p_pump (helium pumping power)</td><td class="num">1.0 MW</td><td class="num">195.0 MW</td><td><code>stellarator_plant.sysml</code>; WI-033</td></tr>
+<tr><td>Baseline LCOE</td><td class="num">275.264 $/MWh</td><td class="num">333.067 $/MWh (+21.0 %)</td><td>study § 2 / <code>results/baseline_result.json</code></td></tr>
+<tr><td>Feasible fraction of swept grid</td><td class="num">563/948 = 59.4 %</td><td class="num">370/906 = 40.84 %</td><td>study synthesis § 2</td></tr>
+<tr><td>recirc_ok violations</td><td class="num">32 points (corner, R ≤ 8 m at a = 0.8)</td><td class="num">184 points (band; unbounded in R at a = 0.80)</td><td>study § 6</td></tr>
+<tr><td>Best feasible LCOE</td><td class="num">209.0 at (14.0, 1.65), interior</td><td class="num">225.725 at (20.0, 1.65), window edge — not an optimum</td><td>study § 3</td></tr>
+<tr><td>Excluded (negative net power, model crash)</td><td class="num">0 (region outside swept space)</td><td class="num">42 points, p_net −154.4 to −0.9 MW → WI-034</td><td><code>results/excluded_points.csv</code></td></tr>
+</table>
+</div>
+<p style="font-size:.88rem;">Source basis for 195 MW: Cismondi (~150 MW helium vs ~15 MW water); Moscato loop data → 130.8 MW full-loop / 83–94 MW near-term band (~4–6 % of thermal power; better than one significant figure is false precision — p-pump-basis learning L-001). Both registered via the native seam, receipts <code>39bd3b41</code> / <code>891b95bc</code>. Neither source states 195 MW directly: the landed value is 6 % of the baseline thermal power (3238.1 MW), set by <span class="tag owner">OWNER 2026-08-28</span> ruling at the top of the sourced ~130–195 MW band, deliberately erring against the direction the model had been optimistic (p-pump-basis trail Ruling 3; doc comment at <code>stellarator_plant.sysml:523</code>).</p>
+<p style="font-size:.88rem;">Test and verification tallies quoted from records: canonical battery 574 passed / 14 skipped; <code>tests/research</code> 150 passed; model-family spines 13/13; registry verify 0 faults / 3 known legacy; study verification 48 sampled rows, 10 channels at 1e-9, worst deviation 6.3463e-16, zero verdict mismatches.</p>
+
+<div class="sources">
+<strong>Sources the detail layer drew on</strong> (beyond the synthesis's own evidence list):
+<ul>
+<li><code>exploration/stellarator_e2e/studies/20260829-p-pump-fence/record.md</code> (§ 3 comparison, § 6 fence table, near-fence band re-evaluation, § 11 exclusion)</li>
+<li><code>…/20260829-p-pump-fence/results/baseline_result.json</code>, <code>results/oracle_operands.csv</code> (baseline power-balance row)</li>
+<li><code>.project/completed/20260827_goal-cold-pickup-proof/freshness-record.md</code> (session roster)</li>
+<li><code>docs/integration_seam_operator_guide.md</code> (ten-gate table, blocker semantics)</li>
+<li><code>.project/adr/</code> directory listing (ADR titles 001–009)</li>
+<li><code>models/library/analyses/mfe_power_balance.sysml:100-147</code> (power-balance chain, verified in source)</li>
+<li><code>models/designs/stellarator_09/stellarator_plant.sysml:495-530</code> (p_pump doc comment, owner rulings, source refs)</li>
+<li><code>work/completed/20260828_WI-033_p-pump-rebase/verification_record.md</code> (re-derivation detail)</li>
+<li><code>.project/completed/20260830_goal-integration-study-proof/epic_evidence.md</code>, <code>route_equivalence.md</code> (stale-expectation table, five dimensions, close arc)</li>
+</ul>
+Derived values are marked where they appear: gross electricity at p_pump = 1.0 MW (≈1078 MW) and both recirculating totals were computed from the record's p_net and rec_frac; the unevaluable corner in the design-space map is approximate. Everything else is quoted from committed artifacts.
+</div>
+
+</body>
+</html>

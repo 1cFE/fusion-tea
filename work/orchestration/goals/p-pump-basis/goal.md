@@ -179,3 +179,7 @@ None.
 ### Goal close — 2026-08-28
 
 **The owner has ruled** `[OWNER 2026-08-28]` per § Close rule, on the round 1 review's recommendation. Rulings recorded in full in `trail.md` § Goal close. Effect: § Answered when is met — a written, sourced answer (**1.0 MW is not defensible; the helium-primary evidence supports ~4–6 % of thermal power, ~130–195 MW at the baseline point**), with the model change routed through WI-033 under the MFE Cost Modeling epic. **The goal is closed.** No round is open; further work runs under WI-033, not under this goal.
+
+### Amendment 2026-08-28 — the research seam repair is live; § seams bullets superseded (WI-033, operator's pen)
+
+The `research` seam repair (GSTH Item 2) has now been used live: Cismondi and Moscato registered natively through `scripts/source_registry.py` (fusion-tea commits `39bd3b41` / `891b95bc`, receipts in `work/active/WI-033_p-pump-rebase/`), and `GOAL_RUNBOOK.md` § The native seams is flipped per the archived Item 5 recipe (`.project/completed/20260828_goal-research-model-proof/design.md:231`). This goal's § "The two seams that will bite" research bullet and reserved gate 4's hand-pattern sentence describe the pre-flip state and are superseded on this point. The flip rests on the seam's write door running live; the request/return bookkeeper (`scripts/research_seam.py`) has not yet run end-to-end. `integrate` remains unrepaired (GSTH Item 6).

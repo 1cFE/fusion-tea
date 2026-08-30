@@ -18,7 +18,7 @@ from tests.study.conftest import DATA_DIR, run_tool
 CASES = ["availability", "interest_rate", "R", "R+tie", "a", "B"]
 
 EXPECTED_SEMANTIC_FINGERPRINT = (
-    "1ca93d0c988c2828bb1ce3fef18be85be86947a296a33b236d77daeb0f1ab860"
+    "f08daa7b1bcc62f838d33821646b676548c14edd535cb3b4482fd358bbfaed2e"
 )
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,

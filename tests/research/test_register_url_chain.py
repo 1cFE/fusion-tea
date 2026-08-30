@@ -151,3 +151,58 @@ def test_manifest_and_index_carry_the_same_raw_artifact_hash(local_site, knowled
     block = _block_for(knowledge_tree, METADATA.title)
     assert f"- **Raw Artifact SHA256**: {row['raw_artifact_sha256']}" in block
     assert result.raw_artifact_sha256 == row["raw_artifact_sha256"]
+
+
+# --- the PDF-URL leg (WI-033) -------------------------------------------------
+#
+# A URL that serves a PDF stores raw.pdf, not raw.html: the extractor downloads
+# the document and runs the PDF pipeline, saving the fetched bytes beside the
+# extraction (extract_cli --save-source). Before WI-033 the raw-artifact check
+# hardcoded raw.html, so every PDF-URL registration died with capture_failed.
+
+
+@pytest.fixture
+def local_pdf_site(generated_pdf):
+    """Serve the generated fixture PDF over loopback, like `local_site`."""
+    import threading
+    from functools import partial
+    from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+
+    class _QuietHandler(SimpleHTTPRequestHandler):
+        def log_message(self, *args):
+            pass
+
+    server = ThreadingHTTPServer(
+        ("127.0.0.1", 0),
+        partial(_QuietHandler, directory=str(generated_pdf.parent)),
+    )
+    thread = threading.Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    try:
+        yield f"http://127.0.0.1:{server.server_address[1]}/{generated_pdf.name}"
+    finally:
+        server.shutdown()
+        server.server_close()
+
+
+@pytest.mark.slow
+def test_a_pdf_url_registers_with_raw_pdf_and_url_provenance(
+    local_pdf_site, generated_pdf, knowledge_tree
+):
+    result = source_registry.register(
+        UrlSource(url=local_pdf_site), METADATA, paths=knowledge_tree.paths
+    )
+    assert result.outcome == "registered", result.reason
+
+    row = _only_row(knowledge_tree)
+    assert row["source_kind"] == "url"
+    assert row["source_url"] == local_pdf_site
+    assert "origin_path" not in row and "zotero_key" not in row
+
+    # The raw artifact is the fetched PDF, stored flattened in the source dir.
+    assert (result.path / "raw.pdf").is_file()
+    assert not (result.path / "raw.html").exists()
+    assert (result.path / "raw.pdf").read_bytes() == generated_pdf.read_bytes()
+    assert row["raw_artifact_sha256"] == hashlib.sha256(
+        (result.path / "raw.pdf").read_bytes()).hexdigest()
+    assert (result.path / "output.md").is_file()

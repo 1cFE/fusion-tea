@@ -1664,7 +1664,7 @@
       "qualified_name": "stellarator_09__stellaris__p_pfcool"
     },
     {
-      "default_value": 1.0,
+      "default_value": 195.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
@@ -1846,5 +1846,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "1ca93d0c988c2828bb1ce3fef18be85be86947a296a33b236d77daeb0f1ab860"
+  "semantic_fingerprint": "f08daa7b1bcc62f838d33821646b676548c14edd535cb3b4482fd358bbfaed2e"
 }

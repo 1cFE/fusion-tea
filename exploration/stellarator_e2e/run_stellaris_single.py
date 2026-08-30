@@ -74,16 +74,18 @@ def _numeric_outputs(outputs) -> dict[str, float]:
 def _anchor_gate(values: dict[str, float]) -> bool:
     total = values[f"{P}total_capital__total_capital"]
     magnet = values[CH["magnet"]]
+    # Anchors re-pinned at p_pump = 195 MW (WI-033 [OWNER 2026-08-28]; carried by
+    #   GSTH Item 6 / goal p-pump-fence, 2026-08-29). Pre-WI-033 values in git history.
     anchors = [
-        ("total capital $", total, 16_129_706_216.04),
-        ("LCOE $/MWh", values[CH["lcoe"]], 275.264220),
-        ("p_net MW", values[CH["p_net"]], 915.081088),
-        ("q_eng", values[CH["q_eng"]], 6.606662),
-        ("rec_frac", values[CH["rec_frac"]], 0.151362),
-        ("magnet %", magnet / total * 100, 39.203876),
-        ("CAS70 $/yr", values[CH["cas70"]], 170_974_516.955938),
+        ("total capital $", total, 16_090_040_845.584444),
+        ("LCOE $/MWh", values[CH["lcoe"]], 333.067033),
+        ("p_net MW", values[CH["p_net"]], 752.413058),
+        ("q_eng", values[CH["q_eng"]], 3.100643),
+        ("rec_frac", values[CH["rec_frac"]], 0.322514),
+        ("magnet %", magnet / total * 100, 39.300521),
+        ("CAS70 $/yr", values[CH["cas70"]], 165_595_630.876151),
         ("CAS80 $/yr", values[CH["cas80"]], 773_037.517724),
-        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 269.861538),
+        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 326.512476),
     ]
 
     print("\n=== NINE ANCHORS (single-pass, graph rollup, no bridge) ===")

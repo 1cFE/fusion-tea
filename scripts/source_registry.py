@@ -482,10 +482,19 @@ def _capture(
             outcome="capture_failed", reason=f"extract produced no {EXTRACT_OUTPUT}"
         )
 
-    raw_artifact = staged_input if staged_input is not None else staging / "raw.html"
-    if not raw_artifact.is_file():
+    if staged_input is not None:
+        raw_artifact = staged_input
+    else:
+        # The web backend stores the fetched page as raw.html; for a PDF URL the
+        # extractor downloads the document and saves it as raw.pdf instead
+        # (extract_cli --save-source). Accept whichever one this capture stored
+        # (WI-033: the raw.html-only check failed every PDF-URL registration).
+        stored = [p for p in (staging / "raw.html", staging / "raw.pdf") if p.is_file()]
+        raw_artifact = stored[0] if stored else None
+    if raw_artifact is None or not raw_artifact.is_file():
         return RegistrationResult(
-            outcome="capture_failed", reason=f"no stored raw artifact at {raw_artifact.name}"
+            outcome="capture_failed",
+            reason="no stored raw artifact at raw.html or raw.pdf",
         )
 
     match = FRONTMATTER_HASH_RE.search(extract.read_text())

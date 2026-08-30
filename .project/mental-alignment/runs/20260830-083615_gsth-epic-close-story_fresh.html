@@ -1,0 +1,832 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GSTH Epic Close — Detail Render</title>
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink2: #52514e; --muted: #898781;
+  --hairline: #e1e0d9; --baseline: #c3c2b7; --border: rgba(11,11,11,0.10);
+  --blue: #2a78d6; --orange: #eb6834; --aqua: #1baf7a; --violet: #4a3aa7; --red: #d03b3b;
+  --good: #0ca30c; --warn: #fab219; --serious: #ec835a;
+  --map-feasible: #b7d3f6; --map-recirc: #eb6834; --map-wall: #4a3aa7; --map-excl: #52514e; --map-both: #d03b3b;
+  --panel-tint: #f3f2ee; --judgment-tint: #fdf6ec;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #ffffff; --ink2: #c3c2b7; --muted: #898781;
+    --hairline: #2c2c2a; --baseline: #383835; --border: rgba(255,255,255,0.10);
+    --blue: #3987e5; --orange: #d95926; --aqua: #199e70; --violet: #9085e9; --red: #e66767;
+    --map-feasible: #184f95; --map-recirc: #d95926; --map-wall: #9085e9; --map-excl: #898781; --map-both: #e66767;
+    --panel-tint: #222220; --judgment-tint: #26211a;
+  }
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--page); color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.55; font-size: 16px; }
+main { max-width: 980px; margin: 0 auto; padding: 32px 20px 80px; }
+h1 { font-size: 1.9rem; line-height: 1.2; margin-bottom: 6px; }
+h2 { font-size: 1.35rem; margin: 44px 0 10px; padding-top: 18px; border-top: 1px solid var(--hairline); }
+h3 { font-size: 1.05rem; margin: 24px 0 8px; }
+p { margin: 10px 0; }
+ul, ol { margin: 10px 0 10px 24px; }
+li { margin: 5px 0; }
+a { color: var(--blue); }
+code { font-family: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace; font-size: 0.86em; background: var(--panel-tint); padding: 1px 5px; border-radius: 4px; }
+.sub { color: var(--ink2); }
+.small { font-size: 0.85rem; color: var(--ink2); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.chip { font-size: 0.78rem; border: 1px solid var(--border); border-radius: 999px; padding: 2px 10px; background: var(--surface); color: var(--ink2); }
+.prov { font-size: 0.72rem; font-weight: 600; border-radius: 4px; padding: 1px 5px; white-space: nowrap; vertical-align: 1px; }
+.prov-owner { background: color-mix(in srgb, var(--blue) 14%, transparent); color: var(--blue); }
+.prov-agent { background: var(--panel-tint); color: var(--ink2); border: 1px solid var(--border); }
+.prov-render { background: color-mix(in srgb, var(--orange) 14%, transparent); color: var(--orange); }
+.panel { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin: 16px 0; }
+.panel.tint { background: var(--panel-tint); }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 0.9rem; }
+th { text-align: left; color: var(--ink2); font-weight: 600; border-bottom: 2px solid var(--baseline); padding: 6px 10px 6px 0; }
+td { border-bottom: 1px solid var(--hairline); padding: 7px 10px 7px 0; vertical-align: top; }
+td:last-child, th:last-child { padding-right: 0; }
+.tablewrap { overflow-x: auto; }
+.num { font-variant-numeric: tabular-nums; text-align: right; }
+figure { margin: 20px 0; }
+figcaption { font-size: 0.85rem; color: var(--ink2); margin-top: 8px; max-width: 66em; }
+.figbox { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; overflow-x: auto; }
+svg text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+.flowrow { display: flex; flex-wrap: wrap; gap: 14px; margin: 14px 0; align-items: stretch; }
+.flowcard { flex: 1 1 200px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; font-size: 0.88rem; }
+.flowcard h4 { font-size: 0.92rem; margin-bottom: 6px; }
+.verdict { font-weight: 700; }
+.v-met { color: var(--good); }
+.v-block { color: var(--red); }
+.v-warn { color: var(--orange); }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.82rem; color: var(--ink2); margin: 8px 0; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { display: inline-block; width: 13px; height: 13px; border-radius: 3px; border: 1px solid var(--border); }
+.bar-row { display: grid; grid-template-columns: 190px 1fr 110px; gap: 10px; align-items: center; margin: 4px 0; font-size: 0.85rem; }
+.bar-track { position: relative; height: 26px; }
+.bar { position: absolute; height: 10px; border-radius: 0 4px 4px 0; }
+.bar.before { top: 2px; background: var(--baseline); }
+.bar.after { top: 14px; background: var(--orange); }
+.timeline { list-style: none; margin: 14px 0; padding: 0; border-left: 3px solid var(--hairline); }
+.timeline li { margin: 0 0 10px 0; padding: 0 0 0 16px; position: relative; }
+.timeline li::before { content: ""; position: absolute; left: -8px; top: 6px; width: 11px; height: 11px; border-radius: 50%; background: var(--baseline); border: 2px solid var(--surface); }
+.timeline li.tl-block::before { background: var(--red); }
+.timeline li.tl-ok::before { background: var(--good); }
+.timeline li.tl-key::before { background: var(--blue); }
+.timeline li.tl-warn::before { background: var(--orange); }
+details { margin: 10px 0; }
+summary { cursor: pointer; color: var(--blue); font-size: 0.9rem; }
+details[open] summary { margin-bottom: 8px; }
+.judgment { background: var(--judgment-tint); border: 2px solid var(--orange); border-radius: 12px; padding: 20px 22px; margin: 40px 0; }
+.judgment h2 { border-top: none; padding-top: 0; margin-top: 0; }
+.meta { background: var(--panel-tint); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; margin: 18px 0 28px; font-size: 0.9rem; }
+.meta dt { font-weight: 600; color: var(--ink2); margin-top: 8px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.meta dd { margin: 2px 0 0 0; }
+.bignum { font-size: 1.9rem; font-weight: 700; line-height: 1.1; }
+.statrow { display: flex; flex-wrap: wrap; gap: 14px; margin: 16px 0; }
+.stat { flex: 1 1 180px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+.stat .lbl { font-size: 0.78rem; color: var(--ink2); text-transform: uppercase; letter-spacing: 0.04em; }
+.stat .delta { font-size: 0.85rem; margin-top: 2px; }
+.up-bad { color: var(--red); font-weight: 600; }
+.down-bad { color: var(--red); font-weight: 600; }
+.quote { border-left: 4px solid var(--blue); padding: 4px 0 4px 16px; margin: 14px 0; color: var(--ink2); font-size: 1.02rem; }
+.gap { border-left: 4px solid var(--warn); padding: 6px 12px; margin: 10px 0; background: var(--panel-tint); border-radius: 0 8px 8px 0; font-size: 0.9rem; }
+hr.soft { border: none; border-top: 1px solid var(--hairline); margin: 24px 0; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>GSTH epic close — the story, with the detail</h1>
+<p class="sub">Goal Strategy and Task Harness epic (<code>.project/backlog/epic_goal_strategy_task_harness.md</code>) — what was built, how the TEA process grew, and what the experiments showed. Detail render of the checkpoint synthesis of 2026-08-30; the narrative below is the synthesis agent's, the detail layer is drawn from the committed records it points at.</p>
+
+<div class="meta">
+  <dl>
+    <dt>Owner's question</dt>
+    <dd>"We have completed this epic, and are in the process of closing it. I want a very clear, understandable story for: What was done; How we expanded or enhanced our TEA process; How we demonstrated the capabilities — Specifics around the tests and outcomes. MUST be plainly explained so a general audience understands the model enhancements and experiments."</dd>
+    <dt>Snapshot</dt>
+    <dd>2026-08-30 08:36 · policy <code>discovered</code> · shape <code>checkpoint</code> — this page is a point-in-time reading; git log after 2026-08-30 is the current truth.</dd>
+    <dt>Synthesis evidence base</dt>
+    <dd>Epic file; <code>CURRENT_WORK.md</code> close summaries; the Item 6 archive (<code>.project/completed/20260830_goal-integration-study-proof/</code> — epic evidence, route equivalence, product-lens); WI-033 verification record; the <code>p-pump-fence</code> goal directory; the <code>20260829-p-pump-fence</code> study; git log; an adversarial review by a fresh subagent folded in 2026-08-30.</dd>
+    <dt>Code inspected</dt>
+    <dd>Not inspected — the seams (<code>scripts/source_registry.py</code>, <code>research_seam.py</code>, <code>integrate.py</code>) and study code are named from records, not read; test counts and study numbers are quoted from committed records and regression transcripts, not re-run.</dd>
+    <dt>Declared limits</dt>
+    <dd>Item 3's audit and the Item 1/4 archives were read via their <code>CURRENT_WORK</code> close summaries, not in full; the 20 stage briefs and the eight Item 5 transcripts were skipped; the <code>p-pump-basis</code> goal directory was skipped (its outcome is carried in WI-033's record and CURRENT_WORK).</dd>
+  </dl>
+</div>
+
+<div class="chips" role="note">
+  <span class="chip"><span class="prov prov-owner">[OWNER]</span> the owner decided it</span>
+  <span class="chip"><span class="prov prov-agent">[AGENT]</span> an agent inferred or drafted it</span>
+  <span class="chip"><span class="prov prov-render">[RENDER]</span> computed by this render agent from committed inputs, cross-checked against record values</span>
+</div>
+
+<!-- ============================================================ SECTION 1 -->
+<h2 id="s1">1 · What was built: a paper trail that lets a stranger run the investigation</h2>
+
+<p>The TEA project already had good specialist tools before this epic: research a source, edit the SysML plant model, regenerate the cost package, sweep it in a study, read the results. What it did not have was anything connecting them. <em>Why</em> one step should follow another — which question is being pursued, what the last result decided, whether the current plan still holds — lived in the builder's head and chat history. If the builder walked away mid-run, the run died.</p>
+
+<p>The epic built the <strong>goal layer</strong>: for each question the project pursues, one directory of plain-text files plus a shared runbook that a human and an AI agent follow identically.</p>
+
+<figure>
+<div class="figbox">
+<svg viewBox="0 0 920 320" width="920" height="320" role="img" aria-label="Layer diagram: the goal layer (goal.md, trail.md, learnings.md, runbook) sits above the four specialist workflows (research pipeline, modeling PM, integration seam, study runbook). Arrows from the goal layer down to each workflow are labeled cite, never copy. Each workflow keeps its own records.">
+  <!-- goal layer -->
+  <rect x="120" y="18" width="680" height="110" rx="10" fill="none" stroke="var(--blue)" stroke-width="2"/>
+  <text x="460" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="var(--blue)">The goal layer — work/orchestration/goals/{goal}/ + GOAL_RUNBOOK.md</text>
+  <g font-size="12" fill="var(--ink)">
+    <rect x="145" y="52" width="180" height="58" rx="7" fill="var(--panel-tint)" stroke="var(--border)"/>
+    <text x="235" y="72" text-anchor="middle" font-weight="600">goal.md</text>
+    <text x="235" y="90" text-anchor="middle" fill="var(--ink2)" font-size="11">question · evidence · contract</text>
+    <rect x="345" y="52" width="180" height="58" rx="7" fill="var(--panel-tint)" stroke="var(--border)"/>
+    <text x="435" y="72" text-anchor="middle" font-weight="600">trail.md</text>
+    <text x="435" y="90" text-anchor="middle" fill="var(--ink2)" font-size="11">append-only run log</text>
+    <rect x="545" y="52" width="180" height="58" rx="7" fill="var(--panel-tint)" stroke="var(--border)"/>
+    <text x="635" y="72" text-anchor="middle" font-weight="600">learnings.md</text>
+    <text x="635" y="90" text-anchor="middle" fill="var(--ink2)" font-size="11">accepted only after fresh review</text>
+  </g>
+  <!-- arrows -->
+  <g stroke="var(--muted)" stroke-width="1.6" fill="none">
+    <line x1="240" y1="128" x2="150" y2="210"/>
+    <line x1="380" y1="128" x2="360" y2="210"/>
+    <line x1="540" y1="128" x2="565" y2="210"/>
+    <line x1="690" y1="128" x2="775" y2="210"/>
+  </g>
+  <g fill="var(--muted)">
+    <polygon points="150,210 158,199 163,208"/>
+    <polygon points="360,210 362,197 371,202"/>
+    <polygon points="565,210 558,199 568,197"/>
+    <polygon points="775,210 764,206 771,197"/>
+  </g>
+  <text x="460" y="180" text-anchor="middle" font-size="12.5" font-style="italic" fill="var(--ink2)">cites by path + commit sha — never copies their state</text>
+  <!-- native layer -->
+  <g font-size="12" fill="var(--ink)">
+    <rect x="40" y="214" width="200" height="72" rx="8" fill="var(--surface)" stroke="var(--baseline)"/>
+    <text x="140" y="238" text-anchor="middle" font-weight="600">Research pipeline</text>
+    <text x="140" y="256" text-anchor="middle" fill="var(--ink2)" font-size="11">knowledge/ sources, index</text>
+    <rect x="255" y="214" width="200" height="72" rx="8" fill="var(--surface)" stroke="var(--baseline)"/>
+    <text x="355" y="238" text-anchor="middle" font-weight="600">Modeling PM</text>
+    <text x="355" y="256" text-anchor="middle" fill="var(--ink2)" font-size="11">work/ items, SysML models</text>
+    <rect x="470" y="214" width="200" height="72" rx="8" fill="var(--surface)" stroke="var(--baseline)"/>
+    <text x="570" y="238" text-anchor="middle" font-weight="600">Integration seam</text>
+    <text x="570" y="256" text-anchor="middle" fill="var(--ink2)" font-size="11">model → pinned package</text>
+    <rect x="685" y="214" width="200" height="72" rx="8" fill="var(--surface)" stroke="var(--baseline)"/>
+    <text x="785" y="238" text-anchor="middle" font-weight="600">Study runbook</text>
+    <text x="785" y="256" text-anchor="middle" fill="var(--ink2)" font-size="11">sweeps, records, admin reads</text>
+  </g>
+  <text x="460" y="310" text-anchor="middle" font-size="11.5" fill="var(--muted)">Each specialist workflow keeps its own stage records exactly as before. The goal layer decides what to work on next and what the evidence means.</text>
+</svg>
+</div>
+<figcaption><strong>The shape of the layer.</strong> Three plain-text files per goal, one shared runbook, four specialist workflows underneath that keep full ownership of their own state. The goal layer's one verb toward them is <em>cite</em> — path plus commit sha — never copy, so there is never a second copy to drift out of agreement (<code>work/orchestration/GOAL_RUNBOOK.md</code> § "What this is").</figcaption>
+</figure>
+
+<h3>What the detail layer adds: the grounding gate, measured</h3>
+<p>A goal cannot start until it is <strong>grounded</strong> — five field classes present and non-hollow. The runbook (<code>GOAL_RUNBOOK.md</code> § Grounding a goal) is blunt about the consequence: a goal hollow in <em>any</em> class "authorizes no task, not one, not a small one." The five classes:</p>
+<ol>
+  <li><strong>Grounding evidence</strong> — repository paths for what is already known. This is what stops a run from spending a week on a question the repo already answered.</li>
+  <li><strong>Answer contract</strong> ("Answered when") — the condition that ends the goal, concrete enough that two people would agree it was met.</li>
+  <li><strong>Invariants</strong> — what a comparison must preserve, so a later round cannot drift the meaning of "better".</li>
+  <li><strong>Limits</strong> — retry caps, checkpoint-revision caps, round limits.</li>
+  <li><strong>Reserved gates</strong> — the decisions the owner keeps (merge, push, close, model mutations).</li>
+</ol>
+<p class="small">The five-class rule was not designed in from the start — it was <em>promoted on measured failure</em>. The shipped rule defended only class 1; Experiment 1's probe (§3 below) showed cold sessions running full tasks on goals missing the other classes, and the owner amended the runbook on that record (amendment note dated 2026-08-27 <span class="prov prov-owner">[OWNER]</span> inside § Grounding a goal).</p>
+
+<h3>The two owner rulings that shaped everything</h3>
+<div class="flowrow">
+  <div class="flowcard">
+    <h4>Cite, never copy <span class="prov prov-owner">[OWNER]</span></h4>
+    <p>Goal files cite the specialist workflows' own records by <code>path@sha</code>. Copying a work item's status or a study's numbers into the trail creates a second copy that will disagree with the first. Source: <code>.project/concepts/goal-strategy-task-harness-design-review.md</code> § Resolutions.</p>
+  </div>
+  <div class="flowcard">
+    <h4>Lean-first / hardening rule <span class="prov prov-owner">[OWNER]</span></h4>
+    <p>No automation machinery — task envelopes, event ledgers, digests, idempotency keys, retry logic, dispatchers — enters the build unless a <em>recorded run failure</em> proves the plain-files route failed. ADR-003 (<code>.project/adr/003-lean-first-persistence.md</code>).</p>
+  </div>
+</div>
+
+<p><strong>The lean rule's scoreboard, from ADR-003's dated amendments and the Item 6 evidence:</strong> the three proof runs recorded roughly two dozen failures of the prose route — <strong>10</strong> in Experiment 1 (Item 4 close, ADR-003 amendment 2026-08-27), <strong>8</strong> in Experiment 2 (Item 5 close, amendment 2026-08-28), and <strong>6</strong> in Experiment 3 (four route-equivalence findings, the stale-expectation class, the record-contract gap — <code>epic_evidence.md</code> § 4). Every one was caught by a cold session, a fresh reviewer, an existing gate or test battery, or the operator reading files. <strong>Nothing was promoted.</strong> The epic ships almost no control code; both ADR amendments end with the same verdict: "No mechanism is promoted."</p>
+
+<p class="small">Provenance: the contract is Item 1, closed 2026-08-27 (<code>.project/completed/20260827_goal-harness-contract/</code>).</p>
+
+<!-- ============================================================ SECTION 2 -->
+<h2 id="s2">2 · Two process repairs: research and integration each became one honest command</h2>
+
+<p>Two steps in the TEA loop still ran on hand-copied patterns. The epic replaced both with "seams" — single producer-owned operations with an unambiguous return (Items 2 and 3, both closed 2026-08-27). The unglamorous idea doing the work: <strong>a return class is computed from receipts on disk, not from what an agent claims it did.</strong></p>
+
+<div class="tablewrap">
+<table>
+  <caption class="small" style="text-align:left; margin-bottom:6px;">The two seams — what each replaced, and every answer it is allowed to give.</caption>
+  <thead><tr><th>Seam</th><th>The old manual pattern</th><th>The one call now</th><th>Possible returns (exactly one)</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Research</strong><br><code>scripts/source_registry.py</code> + <code>scripts/research_seam.py</code></td>
+      <td>Shell steps and hand-edited index files (<code>SOURCE_INDEX.md</code>, <code>MANIFEST.jsonl</code> blocks written by hand; WI-031 era).</td>
+      <td>One operation captures a URL or PDF and writes the citable file, content hashes, manifest row, and index entry <em>together</em> — or rolls back leaving nothing. The ARIES-CS holdout quarantine is enforced in code, with no waiver flag.</td>
+      <td><code>REGISTERED</code> · <code>OPERATOR_QUEUE</code> · <code>BOUNDED_NEGATIVE</code> (a durable "we searched and found nothing" — the search is never silently repeated) · <code>BLOCKER</code></td>
+    </tr>
+    <tr>
+      <td><strong>Integration</strong><br><code>scripts/integrate.py</code></td>
+      <td>A hand-followed regeneration → spine-test → preflight → verification → manifest re-pin sequence scattered across work-item plans and shell commands.</td>
+      <td>One invocation runs regeneration and about ten gates (lineage, preflight, independent verification) and returns exactly one pinned, fingerprinted candidate package — or a named blocker. Fails closed on anything dirty or drifted.</td>
+      <td><code>CANDIDATE</code> (one pin + semantic and executable fingerprints) · a named blocker class (e.g. <code>PREREQUISITE</code>, <code>toolchain-drift</code>)</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3>How each is known to work</h3>
+<ul>
+  <li><strong>Research seam:</strong> 150 tests (<code>tests/research</code>, green at every regression point on this branch), covering rollback, duplicate detection, and holdout refusal (<code>.project/completed/20260827_goal-research-seam/</code>). Live evidence: both EU-DEMO sources in §4 below went through it with zero hand-edited index entries, and one real defect — the seam hardcoded <code>raw.html</code> for URL captures while the extractor stores PDF URLs as <code>raw.pdf</code> — was caught by its own <code>capture_failed</code> return with rollback intact, fixed the same day with a regression test (WI-033 verification record, deviation C-FIX).</li>
+  <li><strong>Integration seam:</strong> item audit POSITIVE (<code>.project/completed/20260827_goal-integration-seam/</code>). Live evidence: five real invocations in Experiment 3 (§5 below), including two designed refusals; the "refuse a stale package" behavior is precisely what WI-033 relied on as its detection mechanism.</li>
+</ul>
+
+<div class="gap"><strong>Two honest gaps, carried as first-class facts</strong> (epic_evidence § 3): the research seam's request/return <em>bookkeeper</em> (<code>research_seam.py</code>'s open → log → close cycle) has never run end to end — both live rounds found their answer in the repository before it was needed, and only the registration write door has live evidence. And <code>assert_read_set_covered</code> at integrate gate 6 has no live evidence on any invocation that reached the gate — the seam itself prints this on every such run. Both were made success criteria so they could not be quietly dropped.</div>
+
+<!-- ============================================================ SECTION 3 -->
+<h2 id="s3">3 · Experiment 1 — strangers can start, resume, and close a goal (Item 4)</h2>
+
+<p>The first proof asked: does the paper trail actually work for someone who didn't build it? <strong>Thirteen kept cold sessions across twelve fresh agents</strong> — none the builder — ran a real goal end to end (<code>work/orchestration/goals/cryo-volume-basis/</code>; run enumeration in <code>.project/completed/20260827_goal-cold-pickup-proof/freshness-record.md</code>, which closes with a completeness statement: every cold session there was is a row, kept or discarded).</p>
+
+<p><strong>The rehearsal question was real modeling substance.</strong> The magnet coils sit in a cryogenic cold mass the cryoplant must hold near 4 K. The model already computes how much electrical current the coils carry (Ampère's law inside the magnet-cost calc gives total kiloamp-meters), and domain insight DI-010 gives the current density the superconductor sustains — so the winding-pack volume should follow from the two. The goal asked: should the model <em>derive</em> that cold volume (<code>vol_cold_cryo</code>, held at 136.56 m³) instead of holding a hand-entered number? The stakes were quantified before the goal opened: DI-010 puts Nb₃Sn current density 4–8× below the REBCO value the held volume assumes, so "holding the REBCO volume flatters LTS" — the held number was potentially flattering an entire magnet technology in the A/B comparison.</p>
+
+<figure>
+<div class="figbox">
+<div class="tablewrap">
+<table>
+  <thead><tr><th>#</th><th>Role</th><th>What it did</th><th>Outcome</th></tr></thead>
+  <tbody>
+    <tr><td>01–02</td><td>Grounding (two turns, one session)</td><td>Wrote <code>goal.md</code> from the operator's question; asked six operator questions</td><td>Status: grounded</td></tr>
+    <tr><td>03–07</td><td>Gate probes P1–P5 (five fresh sessions)</td><td>Each handed a deliberately hollowed goal draft — one field class emptied per probe</td><td>2 refused, 3 ran anyway — see below</td></tr>
+    <tr><td>08</td><td>Round agent</td><td>Opened the round, wrote the task's write-ahead start, minted WI-032 — then <strong>killed mid-task by design</strong>, before its return</td><td>Died with work landed but unrecorded</td></tr>
+    <tr><td>09</td><td>Resumer (different fresh session)</td><td>Reconstructed the state <em>from files on disk alone</em>: found the landed work, did not repeat it, completed the remaining half</td><td>Return <code>COMPLETE</code>, no duplicate side effects</td></tr>
+    <tr><td>10–11</td><td>Continuation + owner gate ruling</td><td>Specced WI-032 through the modeling PM, stopped at the reserved owner gate; ruling closed the round</td><td>Round 1 result written</td></tr>
+    <tr><td>12</td><td>Fresh round review</td><td>A session with no memory of the run reviewed the closed round</td><td><span class="verdict v-warn">FINDINGS</span> — caught a real organic scope drift</td></tr>
+    <tr><td>13</td><td>Standalone reader</td><td>Answered four questions about the run from the goal directory alone; wrote nothing</td><td>All four answered</td></tr>
+  </tbody>
+</table>
+</div>
+</div>
+<figcaption><strong>The thirteen kept cold runs</strong> (plus two discarded harness-fault attempts, 04a/08a, enumerated in the same record). The kill-and-resume arc is rows 08–09: the interruption was intentional, after the write-ahead start; the resumer was a different session working from disk. Ordering claims throughout the proof are git-ancestry checks (<code>git merge-base --is-ancestor</code>), not timestamps.</figcaption>
+</figure>
+
+<h3>The grounding gate, probed one field class at a time</h3>
+<p>Each probe hollowed exactly one of the five required field classes and handed the draft to a fresh session (<code>gate-probe-record.md</code>):</p>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Probe</th><th>Class removed</th><th>What the session did</th><th>Verdict</th></tr></thead>
+  <tbody>
+    <tr><td>P1</td><td>Grounding evidence</td><td>Stopped at the gate before any strategy or task; refused to reconstruct the evidence itself, naming that as operator-reserved</td><td><span class="verdict v-met">refused unprompted</span></td></tr>
+    <tr><td>P2</td><td>Answer contract</td><td>Refused to open a round; <em>derived</em> the refusal from first principles — three obligations (close rule, intent-met judgment, strategy target) break without an answer contract — even though no written rule covered this class</td><td><span class="verdict v-met">refused unprompted</span></td></tr>
+    <tr><td>P3</td><td>Invariants</td><td>Opened Round 1, ran the task, never mentioned the missing invariants</td><td><span class="verdict v-block">started the task</span></td></tr>
+    <tr><td>P4</td><td>Limits</td><td>Opened Round 1, ran the task, never mentioned the missing limits</td><td><span class="verdict v-block">started the task</span></td></tr>
+    <tr><td>P5</td><td>Reserved gates</td><td>Opened Round 1, ran the task to a return; the absent section went unmentioned</td><td><span class="verdict v-block">started the task</span></td></tr>
+  </tbody>
+</table>
+</div>
+<p>The measured reach of the shipped gate was <strong>2 of 5 classes</strong> — and the measurement was not hidden: the runbook was amended to the written five-class rule on that evidence (owner disposition 2026-08-27). This is the epic's method in miniature: probe, record the failure honestly, repair the <em>prose</em>, promote no machinery.</p>
+
+<p><strong>One honest miss, carried as such.</strong> The deliberately seeded reviewer test — a planted scope drift the fresh review was supposed to catch — was neutralized before it reached the reviewer: the covering branch was declared before the run. The reviewer instead caught a <em>real</em> organic drift, so the faculty is demonstrated; the designed test is not. Audit verdict for the item: <strong>Certify</strong> (<code>.project/completed/20260827_goal-cold-pickup-proof/</code>).</p>
+
+<!-- ============================================================ SECTION 4 -->
+<h2 id="s4">4 · Experiment 2 — a real model error found, criticized, and fixed: p_pump 1.0 → 195 MW</h2>
+
+<p>The second proof ran on a genuine open error, and this is where the epic touched the TEA model itself. The model (<code>models/designs/stellarator_09/stellarator_plant.sysml</code>) describes a whole stellarator power plant: plasma physics feeding a power balance, the power balance feeding costed subsystems, the costs rolling up to LCOE (levelized cost of electricity).</p>
+
+<h3>The physical system, plainly</h3>
+<p>One of the model's inputs, <strong>p_pump</strong>, is the electrical power for the compressors that push helium coolant through the breeding blanket — the meter-thick shell around the plasma that absorbs the fusion neutrons — and carry roughly 3.2&nbsp;GW of heat off to the steam plant. Helium is a gas: thin stuff, low density, little heat carried per cubic meter. To move 3.2&nbsp;GW of heat you must push an enormous volume of it through kilometers of piping, and that volume flow is what the compressors pay for. The EU-DEMO engineering literature puts the bill near <strong>6% of thermal power (~150&nbsp;MW)</strong>; water, dense and heat-hungry, does the same job for <strong>~15&nbsp;MW</strong>. The model carried <strong>1.0&nbsp;MW</strong> — a water-like placeholder in a helium-cooled plant, roughly two orders of magnitude low — and both committed A/B studies had been built on it.</p>
+
+<figure>
+<div class="figbox">
+<svg viewBox="0 0 920 300" width="920" height="300" role="img" aria-label="Diagram of the helium coolant loop: the plasma emits 2748 megawatts of fusion power, mostly as neutrons into the breeding blanket; helium circulators drive gas through the blanket to steam generators which feed the turbine. The circulators cost about 150 megawatts for helium versus about 15 megawatts for water. The model previously carried 1 megawatt.">
+  <!-- plasma -->
+  <ellipse cx="120" cy="130" rx="85" ry="70" fill="none" stroke="var(--red)" stroke-width="2.5"/>
+  <text x="120" y="120" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">Plasma</text>
+  <text x="120" y="140" text-anchor="middle" font-size="11.5" fill="var(--ink2)">2748 MW fusion</text>
+  <text x="120" y="156" text-anchor="middle" font-size="11.5" fill="var(--ink2)">(80% neutrons)</text>
+  <!-- blanket -->
+  <rect x="255" y="55" width="170" height="150" rx="10" fill="var(--panel-tint)" stroke="var(--baseline)" stroke-width="2"/>
+  <text x="340" y="85" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">Breeding blanket</text>
+  <text x="340" y="105" text-anchor="middle" font-size="11.5" fill="var(--ink2)">absorbs neutron heat,</text>
+  <text x="340" y="121" text-anchor="middle" font-size="11.5" fill="var(--ink2)">amplifies it ×1.2</text>
+  <text x="340" y="141" text-anchor="middle" font-size="11.5" fill="var(--ink2)">~3.2 GW must be</text>
+  <text x="340" y="157" text-anchor="middle" font-size="11.5" fill="var(--ink2)">carried away by helium</text>
+  <line x1="207" y1="130" x2="251" y2="130" stroke="var(--muted)" stroke-width="2"/>
+  <polygon points="251,130 241,124 241,136" fill="var(--muted)"/>
+  <!-- helium loop -->
+  <path d="M 425 100 C 520 70, 560 70, 640 100" fill="none" stroke="var(--orange)" stroke-width="4"/>
+  <polygon points="640,100 626,92 630,105" fill="var(--orange)"/>
+  <path d="M 640 165 C 560 195, 520 195, 425 165" fill="none" stroke="var(--orange)" stroke-width="4"/>
+  <polygon points="425,165 439,172 435,159" fill="var(--orange)"/>
+  <text x="532" y="66" text-anchor="middle" font-size="11.5" fill="var(--orange)" font-weight="600">hot helium →</text>
+  <text x="532" y="212" text-anchor="middle" font-size="11.5" fill="var(--orange)" font-weight="600">← cold helium, re-pressurized</text>
+  <!-- circulator -->
+  <circle cx="532" cy="238" r="26" fill="none" stroke="var(--orange)" stroke-width="2.5"/>
+  <text x="532" y="243" text-anchor="middle" font-size="11" font-weight="700" fill="var(--orange)">⟳</text>
+  <text x="532" y="285" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">Circulators (p_pump)</text>
+  <line x1="532" y1="212" x2="532" y2="196" stroke="var(--orange)" stroke-width="2"/>
+  <!-- steam plant -->
+  <rect x="644" y="55" width="160" height="150" rx="10" fill="var(--panel-tint)" stroke="var(--baseline)" stroke-width="2"/>
+  <text x="724" y="85" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">Steam generators</text>
+  <text x="724" y="105" text-anchor="middle" font-size="11.5" fill="var(--ink2)">+ turbine (η = ⅓)</text>
+  <text x="724" y="130" text-anchor="middle" font-size="11.5" fill="var(--ink2)">heat → electricity</text>
+  <line x1="804" y1="130" x2="860" y2="130" stroke="var(--muted)" stroke-width="2"/>
+  <polygon points="860,130 850,124 850,136" fill="var(--muted)"/>
+  <text x="866" y="126" font-size="11.5" fill="var(--ink2)">grid</text>
+  <!-- annotation -->
+  <rect x="618" y="228" width="286" height="58" rx="8" fill="none" stroke="var(--hairline)"/>
+  <text x="630" y="248" font-size="11.5" fill="var(--ink)">helium pumping: <tspan font-weight="700">~150 MW</tspan> (Cismondi)</text>
+  <text x="630" y="264" font-size="11.5" fill="var(--ink)">same duty with water: <tspan font-weight="700">~15 MW</tspan></text>
+  <text x="630" y="280" font-size="11.5" fill="var(--red)">the model carried: <tspan font-weight="700">1.0 MW</tspan></text>
+</svg>
+</div>
+<figcaption><strong>The system p_pump pays for.</strong> Fusion neutrons deposit ~3.2&nbsp;GW in the blanket; helium — a thin gas — must be forced around the loop in enormous volume to carry that heat to the steam plant. The registered Cismondi source states the physics comparison directly: "In case of helium the pumping power is ~150&nbsp;MW, one order of magnitude higher than in case of water (~15&nbsp;MW)" (registered extract, <code>knowledge/sources/progress_in_eu_breeding_blanket_design_and_integration/output.md:174</code>).</figcaption>
+</figure>
+
+<h3>How the number 195 was built</h3>
+<p>The goal round (<code>p-pump-basis</code>, closed 2026-08-28) traced the basis; WI-033 landed the fix. Two EU-DEMO sources were registered through the new research seam — zero hand-edited index entries — and re-derived to first order in the verification record (<code>work/completed/20260828_WI-033_p-pump-rebase/verification_record.md</code>):</p>
+<div class="flowrow">
+  <div class="flowcard">
+    <h4>Cismondi et al. (EUROfusion, 2017)</h4>
+    <p>States <strong>~150&nbsp;MW</strong> helium pumping (~6.3% of the 2389&nbsp;MW deposited) for a preliminary 9-loop layout its own authors expect to fall — larger pipes would shrink ~9&nbsp;km of loop piping toward ~3&nbsp;km. Registered receipt commit <code>39bd3b41</code>.</p>
+  </div>
+  <div class="flowcard">
+    <h4>Moscato et al. (EUROfusion, 2018)</h4>
+    <p>Loop-by-loop compressor data: 9 loops (3 inboard + 6 outboard), 2 compressors each at 6.8 / 7.5&nbsp;MW → 3×2×6.8 + 6×2×7.5 = <strong>130.8&nbsp;MW</strong> (~6.2% of 2101.7&nbsp;MW blanket thermal). A near-term 8-loop table (re-derived from the registered raw PDF — the table body was absent from the text extract) gives 16 compressors × 5.9 / 5.2&nbsp;MW = <strong>83–94&nbsp;MW</strong> (~4%). Receipt commit <code>891b95bc</code>.</p>
+  </div>
+</div>
+
+<figure>
+<div class="figbox">
+<svg viewBox="0 0 920 190" width="920" height="190" role="img" aria-label="Number line from 0 to 210 megawatts. The old model value 1.0 megawatt sits at the far left. The sourced band runs from about 83 to 195 megawatts: Moscato near-term 83 to 94, Moscato full-loop 130.8, Cismondi about 150, and the landed value 195 at 6 percent of thermal power, at the top of the band.">
+  <line x1="60" y1="110" x2="880" y2="110" stroke="var(--baseline)" stroke-width="2"/>
+  <!-- ticks every 25 MW: scale x = 60 + MW*3.9 -->
+  <g font-size="10.5" fill="var(--muted)" text-anchor="middle">
+    <line x1="60" y1="110" x2="60" y2="118" stroke="var(--muted)"/><text x="60" y="132">0</text>
+    <line x1="255" y1="110" x2="255" y2="118" stroke="var(--muted)"/><text x="255" y="132">50</text>
+    <line x1="450" y1="110" x2="450" y2="118" stroke="var(--muted)"/><text x="450" y="132">100</text>
+    <line x1="645" y1="110" x2="645" y2="118" stroke="var(--muted)"/><text x="645" y="132">150</text>
+    <line x1="840" y1="110" x2="840" y2="118" stroke="var(--muted)"/><text x="840" y="132">200 MW</text>
+  </g>
+  <!-- sourced band 83-195: x 383.7 - 820.5 -->
+  <rect x="384" y="96" width="437" height="28" fill="var(--orange)" opacity="0.16"/>
+  <text x="600" y="168" text-anchor="middle" font-size="11.5" fill="var(--ink2)">sourced band ~83–195 MW (~4–6% of thermal power; better than 1 significant figure is false precision — L-001)</text>
+  <!-- markers -->
+  <g>
+    <line x1="63.9" y1="88" x2="63.9" y2="124" stroke="var(--red)" stroke-width="3"/>
+    <text x="66" y="80" font-size="12" font-weight="700" fill="var(--red)">1.0 — the old record</text>
+    <rect x="384" y="104" width="43" height="12" fill="var(--orange)" opacity="0.75"/>
+    <text x="405" y="60" text-anchor="middle" font-size="11" fill="var(--ink)">83–94</text>
+    <text x="405" y="46" text-anchor="middle" font-size="10.5" fill="var(--ink2)">Moscato near-term</text>
+    <line x1="405" y1="64" x2="405" y2="102" stroke="var(--muted)" stroke-width="1"/>
+    <line x1="570" y1="90" x2="570" y2="124" stroke="var(--orange)" stroke-width="3"/>
+    <text x="570" y="60" text-anchor="middle" font-size="11" fill="var(--ink)">130.8</text>
+    <text x="570" y="46" text-anchor="middle" font-size="10.5" fill="var(--ink2)">Moscato 9-loop</text>
+    <line x1="570" y1="64" x2="570" y2="88" stroke="var(--muted)" stroke-width="1"/>
+    <line x1="645" y1="90" x2="645" y2="124" stroke="var(--orange)" stroke-width="3"/>
+    <text x="668" y="60" text-anchor="middle" font-size="11" fill="var(--ink)">~150</text>
+    <text x="668" y="46" text-anchor="middle" font-size="10.5" fill="var(--ink2)">Cismondi</text>
+    <line x1="655" y1="64" x2="647" y2="88" stroke="var(--muted)" stroke-width="1"/>
+    <line x1="820.5" y1="82" x2="820.5" y2="124" stroke="var(--blue)" stroke-width="4"/>
+    <text x="810" y="60" text-anchor="middle" font-size="12" font-weight="700" fill="var(--blue)">195 landed</text>
+    <text x="810" y="46" text-anchor="middle" font-size="10.5" fill="var(--ink2)">6% of p_th, top of band</text>
+    <line x1="815" y1="64" x2="820" y2="80" stroke="var(--muted)" stroke-width="1"/>
+  </g>
+</svg>
+</div>
+<figcaption><strong>Where 195 sits.</strong> Neither source states 195&nbsp;MW directly. The landed value is 6% of the baseline computed thermal power (3238.1&nbsp;MW → 194.3, rounded to 195.0), set by owner ruling <span class="prov prov-owner">[OWNER 2026-08-28]</span> at the <em>top</em> of the sourced band — deliberately erring against the direction the model had been optimistic, with ~130&nbsp;MW recorded as the documented lower bound (Ruling 3, <code>work/orchestration/goals/p-pump-basis/trail.md</code>; doc comment at <code>stellarator_plant.sysml:502-523</code>). The old 1.0&nbsp;MW is 83–195× below the band.</figcaption>
+</figure>
+
+<h3>Why 195 stays a held input, not a formula <span class="prov prov-owner">[OWNER]</span></h3>
+<p>It would be easy to write <code>p_pump = 0.06 × p_th</code> and call it physics. The owner ruled against it, for a reason worth internalizing: a computed fraction would assert that pumping power scales linearly with thermal power <em>across every swept geometry</em> — a 4&nbsp;m machine and a 20&nbsp;m machine alike — and no source establishes that. It would also silently retire p_pump as a lever that two committed studies sweep. So the model holds 195.0 as a settable input with the full derivation in its doc comment, to be re-derived when the design point moves. Choosing traceability over false sophistication is the recorded, knowing choice.</p>
+
+<h3>The critic gate, live for the first time</h3>
+<p>The round's study reading and proposed dispositions went to a fresh non-author critic <em>before</em> any follow-up work could execute — the owner's pre-execution checkpoint binding on a live round, the thing Item 5 exists to prove:</p>
+<ul class="timeline">
+  <li class="tl-block"><strong>C-001.r1 — REFUSED.</strong> The critic returned three required changes. (The critic's own correction contained an inversion; the author disputed it with line evidence.)</li>
+  <li class="tl-key"><strong>Author revised.</strong> A fresh second critic adjudicated the disputed point at a line neither party had cited — the disagreement lives permanently in the trail entries, nothing edited in place.</li>
+  <li class="tl-ok"><strong>C-001.r2 — PASS.</strong> Only then did the dispositions land (commit order verified by git ancestry). Critic sessions distinct from the author's, verified per-session.</li>
+</ul>
+<p class="small"><strong>Honest limit, recorded rather than dressed up:</strong> the repository itself answered the basis question (task T-001 returned <code>COMPLETE</code>), so the research seam's request path never ran in this round; 4 of the item's 9 criteria were recorded as non-exercised or retired rather than claimed (<code>.project/completed/20260828_goal-research-model-proof/verification_record.md</code>, audit POSITIVE — eight cold sessions, eight recorded prose failures, nothing promoted).</p>
+
+<!-- ============================================================ SECTION 5 -->
+<h2 id="s5">5 · Experiment 3 — the full loop, and what the fix does to the economics (Item 6)</h2>
+
+<p>The final proof drove the corrected model through the entire chain: integrate → study → fresh reading → criticized closure. Evidence map: <code>.project/completed/20260830_goal-integration-study-proof/epic_evidence.md</code>.</p>
+
+<h3>Integration: five invocations before a candidate</h3>
+<ul class="timeline">
+  <li class="tl-warn"><strong>Runs 1–2 — refused, by design.</strong> One refusal at gate 2 on the not-yet-regenerated package — the exact stale-package detection WI-033's close named as its own safety net — and one at preconditions on tree hygiene.</li>
+  <li class="tl-warn"><strong>Runs 3–4 — refused, surfacing the real finding.</strong> The audited input change reaches the package by regeneration, but hand-maintained <em>expectations of the package's output</em> are invisible to the model layer. Five were stale (table below).</li>
+  <li class="tl-ok"><strong>Run 5 — <code>CANDIDATE</code>.</strong> Exit 0, all ten gates pass, exactly one verified pin (<code>20c2c364…</code>) with semantic and executable fingerprints. Gate 6 confirmed the pin is the manifest's own value, not newly minted.</li>
+</ul>
+
+<div class="tablewrap">
+<table>
+  <caption class="small" style="text-align:left; margin-bottom:6px;">The stale-expectation class — five artifacts still carrying the pre-fix number, and what caught each (learning L-001, <code>work/orchestration/goals/p-pump-fence/learnings.md</code>).</caption>
+  <thead><tr><th>Stale artifact</th><th>What it held</th><th>Caught by</th></tr></thead>
+  <tbody>
+    <tr><td>Manifest <code>baseline.headline.value</code></td><td>old baseline LCOE</td><td>integrate gate 7 (preflight)</td></tr>
+    <tr><td>Independent oracle's held <code>p_pump</code> (<code>verify_stellaris.py</code>)</td><td>1.0 MW</td><td>integrate gate 8 (verification)</td></tr>
+    <tr><td>Nine-anchor gate (<code>run_stellaris_single.py</code>)</td><td>old anchors</td><td><code>tests/study</code> battery</td></tr>
+    <tr><td><code>PINNED_LCOE</code> test constant (<code>tests/study/test_operand_bindings.py</code>)</td><td>275.264…</td><td><code>tests/study</code> battery</td></tr>
+    <tr><td><strong><code>ANNEX.md</code> § Baseline pin literal</strong></td><td>275.264…</td><td><strong>no mechanism</strong> — a person reading the annex for an unrelated purpose</td></tr>
+  </tbody>
+</table>
+</div>
+<p>The tail is the point: four fell to mechanisms, and the fifth was found only by an unaided human read. That bounds how far the gates can be trusted to enumerate the class, and it is the recorded case for a future expectation-coverage checker — which, under the lean rule, was deliberately <em>not built</em>.</p>
+
+<h3>What the model says: the power balance, before and after</h3>
+<p>The physics of why a 195&nbsp;MW pump bill moves LCOE by a fifth is the model's power-balance chain (<code>models/library/analyses/mfe_power_balance.sysml:119-147</code>). The plant makes heat, turns a third of it into electricity, then <strong>pays its own bills out of that gross</strong> — and only the remainder is sold. The pump bill hits this chain twice:</p>
+<ol>
+  <li><strong>Into the heat.</strong> The model recovers half the pump work as coolant heat (<code>eta_p</code> = 0.5), so p_th gains 0.5 × 194 ≈ +97&nbsp;MW. That sounds helpful — more heat, more gross electricity — but nine capital cost accounts scale with p_th (bigger blankets, heat exchangers, turbine plant to handle the extra heat; learning L-003 of <code>p-pump-basis</code>), so capital rises with it.</li>
+  <li><strong>Into the bills.</strong> The full 195&nbsp;MW joins the recirculating sum — the electricity the plant consumes to run itself — which more than doubles, from 163 to 358&nbsp;MW.</li>
+</ol>
+
+<figure>
+<div class="figbox">
+<svg viewBox="0 0 940 430" width="940" height="430" role="img" aria-label="The power balance chain as a pipeline with before and after values. Fusion power 2748 megawatts splits into alpha 550 and neutrons 2198. The blanket multiplies neutron power by 1.2 to 2637. Adding alpha power, 50 megawatts heating, and half the pump work gives thermal power: 3238 before, 3335 after. The turbine at one third efficiency gives gross electricity 1078 before, 1111 after. Subtracting recirculating power 163 before, 358 after, leaves net power 915 before, 752 after — a loss of 163 megawatts of saleable power.">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker>
+  </defs>
+  <text x="20" y="26" font-size="13" fill="var(--ink2)">Each box: <tspan fill="var(--muted)">gray = at p_pump 1.0 MW</tspan> → <tspan fill="var(--orange)" font-weight="700">orange = at 195 MW</tspan>. All values MW, <tspan font-weight="600">[RENDER]</tspan>-computed, matching the records.</text>
+  <!-- fusion -->
+  <rect x="20" y="60" width="150" height="86" rx="9" fill="var(--surface)" stroke="var(--red)" stroke-width="2"/>
+  <text x="95" y="84" text-anchor="middle" font-size="12.5" font-weight="700">Fusion power</text>
+  <text x="95" y="104" text-anchor="middle" font-size="13">2748</text>
+  <text x="95" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink2)">unchanged</text>
+  <!-- split -->
+  <line x1="170" y1="85" x2="230" y2="85" stroke="var(--muted)" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="170" y1="120" x2="230" y2="120" stroke="var(--muted)" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="200" y="76" text-anchor="middle" font-size="10.5" fill="var(--ink2)">α 20%</text>
+  <text x="200" y="140" text-anchor="middle" font-size="10.5" fill="var(--ink2)">neutrons 80%</text>
+  <rect x="234" y="62" width="128" height="44" rx="8" fill="var(--surface)" stroke="var(--baseline)"/>
+  <text x="298" y="80" text-anchor="middle" font-size="11.5" font-weight="600">Alpha heat</text>
+  <text x="298" y="97" text-anchor="middle" font-size="12">550</text>
+  <rect x="234" y="118" width="128" height="60" rx="8" fill="var(--surface)" stroke="var(--baseline)"/>
+  <text x="298" y="136" text-anchor="middle" font-size="11.5" font-weight="600">Neutrons 2198</text>
+  <text x="298" y="153" text-anchor="middle" font-size="11" fill="var(--ink2)">blanket ×1.2</text>
+  <text x="298" y="170" text-anchor="middle" font-size="12">→ 2637</text>
+  <!-- gather to p_th -->
+  <line x1="362" y1="84" x2="452" y2="120" stroke="var(--muted)" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="362" y1="148" x2="452" y2="138" stroke="var(--muted)" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="392" y1="222" x2="459" y2="168" stroke="var(--muted)" stroke-width="1.6" marker-end="url(#arr)"/>
+  <rect x="238" y="196" width="172" height="52" rx="8" fill="var(--surface)" stroke="var(--baseline)"/>
+  <text x="324" y="215" text-anchor="middle" font-size="11.5" font-weight="600">+ heating 50</text>
+  <text x="324" y="233" text-anchor="middle" font-size="11.5">+ ½ · p_pump: <tspan fill="var(--muted)">0.5</tspan> → <tspan fill="var(--orange)" font-weight="700">97.5</tspan></text>
+  <!-- p_th -->
+  <rect x="456" y="98" width="160" height="92" rx="9" fill="var(--surface)" stroke="var(--blue)" stroke-width="2.5"/>
+  <text x="536" y="122" text-anchor="middle" font-size="12.5" font-weight="700">Thermal power p_th</text>
+  <text x="536" y="144" text-anchor="middle" font-size="13"><tspan fill="var(--muted)">3238</tspan> → <tspan fill="var(--orange)" font-weight="700">3335</tspan></text>
+  <text x="536" y="164" text-anchor="middle" font-size="10.5" fill="var(--ink2)">+3.0% — and nine capital</text>
+  <text x="536" y="178" text-anchor="middle" font-size="10.5" fill="var(--ink2)">cost accounts scale with it</text>
+  <!-- turbine -->
+  <line x1="616" y1="144" x2="672" y2="144" stroke="var(--muted)" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="644" y="134" text-anchor="middle" font-size="10.5" fill="var(--ink2)">× ⅓</text>
+  <rect x="676" y="98" width="160" height="92" rx="9" fill="var(--surface)" stroke="var(--blue)" stroke-width="2.5"/>
+  <text x="756" y="122" text-anchor="middle" font-size="12.5" font-weight="700">Gross electricity</text>
+  <text x="756" y="144" text-anchor="middle" font-size="13"><tspan fill="var(--muted)">1078</tspan> → <tspan fill="var(--orange)" font-weight="700">1111</tspan></text>
+  <text x="756" y="164" text-anchor="middle" font-size="10.5" fill="var(--ink2)">the plant pays its own</text>
+  <text x="756" y="178" text-anchor="middle" font-size="10.5" fill="var(--ink2)">bills out of this</text>
+  <!-- split to recirc and net -->
+  <line x1="756" y1="190" x2="620" y2="258" stroke="var(--orange)" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="796" y1="190" x2="836" y2="256" stroke="var(--aqua)" stroke-width="2" marker-end="url(#arr)"/>
+  <!-- recirc -->
+  <rect x="440" y="262" width="240" height="150" rx="9" fill="var(--surface)" stroke="var(--orange)" stroke-width="2.5"/>
+  <text x="560" y="284" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--orange)">Recirculating (self-use)</text>
+  <text x="560" y="304" text-anchor="middle" font-size="13"><tspan fill="var(--muted)">163</tspan> → <tspan fill="var(--orange)" font-weight="700">358</tspan></text>
+  <g font-size="10.5" fill="var(--ink2)">
+    <text x="456" y="326">heating wall-plug 100 · pumps <tspan fill="var(--orange)" font-weight="700">1 → 195</tspan></text>
+    <text x="456" y="342">subsystems 32 → 33 · coil cooling 15</text>
+    <text x="456" y="358">tritium + housekeeping 14 · cryoplant 0.9</text>
+    <text x="456" y="374">coil drive 0 (superconducting, DC)</text>
+  </g>
+  <text x="560" y="398" text-anchor="middle" font-size="11" font-weight="600">rec_frac: <tspan fill="var(--muted)">0.151</tspan> → <tspan fill="var(--orange)" font-weight="700">0.323</tspan> (limit 0.5)</text>
+  <!-- net -->
+  <rect x="716" y="262" width="204" height="150" rx="9" fill="var(--surface)" stroke="var(--aqua)" stroke-width="2.5"/>
+  <text x="818" y="286" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--aqua)">Net to grid</text>
+  <text x="818" y="310" text-anchor="middle" font-size="14"><tspan fill="var(--muted)">915</tspan> → <tspan fill="var(--orange)" font-weight="700">752</tspan></text>
+  <text x="818" y="334" text-anchor="middle" font-size="11.5" fill="var(--ink2)">−163 MW of saleable</text>
+  <text x="818" y="350" text-anchor="middle" font-size="11.5" fill="var(--ink2)">power (−17.8%)</text>
+  <text x="818" y="378" text-anchor="middle" font-size="11" fill="var(--ink2)">this is the denominator</text>
+  <text x="818" y="394" text-anchor="middle" font-size="11" fill="var(--ink2)">of LCOE</text>
+</svg>
+</div>
+<figcaption><strong>The double hit, in the model's own arithmetic.</strong> p_th = 1.2·p_neutron + p_alpha + p_input + 0.5·p_pump; gross = p_th/3; recirculating = pumps + heating wall-plug + subsystems + cooling + tritium/housekeeping + cryoplant; net = gross − recirculating (<code>mfe_power_balance.sysml:119-147</code>). Values <span class="prov prov-render">[RENDER]</span>: this render agent re-ran the chain from the model's committed inputs at both p_pump values; the results match the study's committed operands (<code>results/oracle_operands.csv</code> baseline row: p_th 3335.12, gross 1110.60, rec_frac 0.32251, p_net 752.41) and the comparand's oracle scan (rec_frac 0.1514, p_net 915.1) to the digit.</figcaption>
+</figure>
+
+<div class="panel tint">
+<p style="margin:0"><strong>Why that is +21% on LCOE.</strong> LCOE is roughly annualized cost ÷ electricity sold. The sold side fell 17.8% (915 → 752&nbsp;MW): scaling that alone is 1/(1−0.178) ≈ +21.6%. The cost side rose slightly (p_th +3% feeding nine capital accounts). Together: <strong>275.3 → 333.1 $/MWh, +21.0%</strong> — verified at the baseline point with all six viability verdicts still satisfied there. <span class="small">Cross-pin caveat, carried from the record's own § 12: the study proves 333.07 under the new pin and quotes 275.26 from the old record at its own pin; the license to attribute the difference to p_pump alone lives at the goal layer, in WI-033's audited single-change delta — the record is candid that it cannot license that attribution by itself.</span></p>
+</div>
+
+<h3>The study: 906 points across the machine-size window</h3>
+<p>The study (<code>exploration/stellarator_e2e/studies/20260829-p-pump-fence/</code>) swept machine geometry: <strong>R</strong>, the radius of the torus ring (4–20&nbsp;m), and <strong>a</strong>, the thickness of the plasma tube (0.8–2.2&nbsp;m). Sweeping them asks: how big does this machine have to be? 948 points proposed, 906 evaluated, 42 unevaluable (below).</p>
+
+<div class="statrow">
+  <div class="stat"><div class="lbl">Baseline LCOE</div><div class="bignum">333.1 <span style="font-size:0.9rem; font-weight:400">$/MWh</span></div><div class="delta up-bad">+21.0% vs 275.3 at 1.0 MW</div></div>
+  <div class="stat"><div class="lbl">Feasible share of grid</div><div class="bignum">40.8%</div><div class="delta down-bad">was 59.4% (370/906 vs 563/948)</div></div>
+  <div class="stat"><div class="lbl">recirc_ok violations</div><div class="bignum">184 <span style="font-size:0.9rem; font-weight:400">pts</span></div><div class="delta up-bad">was 32 — corner → band</div></div>
+  <div class="stat"><div class="lbl">Best feasible LCOE</div><div class="bignum">225.7</div><div class="delta">at (R 20.0, a 1.65) — window edge, <em>not</em> an optimum</div></div>
+</div>
+
+<figure>
+<div class="figbox">
+<div style="display:flex;flex-wrap:wrap;gap:22px;justify-content:center"><div><svg viewBox="0 0 549 440" width="549" height="440" role="img" aria-label="Design space map at p pump equals 1 megawatt: a large feasible region of 563 points covers most radii, with a small 32-point recirculation-fence corner at small R and small a, and a wall-load fence band at a of 1.7 meters and above.">
+<text x="46" y="20" font-size="12.5" font-weight="700" fill="var(--ink)">Before — p_pump = 1.0 MW (study 20260821-power-cycle-ab)</text>
+<text x="46" y="48" font-size="10.5" fill="var(--ink2)">a — minor radius, m ↑</text>
+<rect x="46" y="394" width="134" height="11" fill="var(--map-recirc)"/>
+<rect x="181" y="394" width="359" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="382" width="104" height="11" fill="var(--map-recirc)"/>
+<rect x="151" y="382" width="389" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="370" width="89" height="11" fill="var(--map-recirc)"/>
+<rect x="136" y="370" width="404" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="358" width="59" height="11" fill="var(--map-recirc)"/>
+<rect x="106" y="358" width="434" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="346" width="44" height="11" fill="var(--map-recirc)"/>
+<rect x="91" y="346" width="449" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="334" width="29" height="11" fill="var(--map-recirc)"/>
+<rect x="76" y="334" width="464" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="322" width="14" height="11" fill="var(--map-recirc)"/>
+<rect x="61" y="322" width="479" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="310" width="494" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="298" width="494" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="286" width="494" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="274" width="494" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="262" width="494" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="250" width="494" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="238" width="494" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="226" width="494" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="214" width="494" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="202" width="494" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="190" width="494" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="178" width="494" height="11" fill="var(--map-wall)"/>
+<rect x="61" y="166" width="479" height="11" fill="var(--map-wall)"/>
+<rect x="61" y="154" width="479" height="11" fill="var(--map-wall)"/>
+<rect x="61" y="142" width="479" height="11" fill="var(--map-wall)"/>
+<rect x="61" y="130" width="479" height="11" fill="var(--map-wall)"/>
+<rect x="61" y="118" width="479" height="11" fill="var(--map-wall)"/>
+<rect x="61" y="106" width="479" height="11" fill="var(--map-wall)"/>
+<rect x="61" y="94" width="479" height="11" fill="var(--map-wall)"/>
+<rect x="61" y="82" width="479" height="11" fill="var(--map-wall)"/>
+<rect x="61" y="70" width="479" height="11" fill="var(--map-wall)"/>
+<rect x="61" y="58" width="479" height="11" fill="var(--map-wall)"/>
+<text x="54" y="420" text-anchor="middle" font-size="10" fill="var(--muted)">4</text>
+<text x="114" y="420" text-anchor="middle" font-size="10" fill="var(--muted)">6</text>
+<text x="174" y="420" text-anchor="middle" font-size="10" fill="var(--muted)">8</text>
+<text x="234" y="420" text-anchor="middle" font-size="10" fill="var(--muted)">10</text>
+<text x="294" y="420" text-anchor="middle" font-size="10" fill="var(--muted)">12</text>
+<text x="354" y="420" text-anchor="middle" font-size="10" fill="var(--muted)">14</text>
+<text x="414" y="420" text-anchor="middle" font-size="10" fill="var(--muted)">16</text>
+<text x="474" y="420" text-anchor="middle" font-size="10" fill="var(--muted)">18</text>
+<text x="534" y="420" text-anchor="middle" font-size="10" fill="var(--muted)">20</text>
+<text x="294" y="436" text-anchor="middle" font-size="10.5" fill="var(--ink2)">R — major radius, m</text>
+<text x="40" y="403" text-anchor="end" font-size="10" fill="var(--muted)">0.8</text>
+<text x="40" y="331" text-anchor="end" font-size="10" fill="var(--muted)">1.1</text>
+<text x="40" y="259" text-anchor="end" font-size="10" fill="var(--muted)">1.4</text>
+<text x="40" y="187" text-anchor="end" font-size="10" fill="var(--muted)">1.7</text>
+<text x="40" y="115" text-anchor="end" font-size="10" fill="var(--muted)">2.0</text>
+<text x="324" y="272" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">feasible — 563 pts</text>
+<text x="144" y="380" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">recirc</text>
+<text x="294" y="128" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">wall-load fence — 353 pts</text>
+<circle cx="314" cy="280" r="6.5" fill="none" stroke="var(--ink)" stroke-width="2.2"/>
+<text x="326" y="284" font-size="10" font-weight="700" fill="var(--ink)">baseline</text>
+</svg></div><div><svg viewBox="0 0 549 440" width="549" height="440" role="img" aria-label="Design space map at p pump equals 195 megawatts: the recirculation fence has grown to a 184-point band across all small minor radii, spanning the full R range at a of 0.8; a 42-point unevaluable crash region sits in the small-machine corner; the feasible region shrinks to 370 points at larger R and mid minor radius; the wall-load band at a of 1.7 and above is unchanged; one point at R 4 and a 1.7 violates both fences.">
+<text x="46" y="20" font-size="12.5" font-weight="700" fill="var(--ink)">After — p_pump = 195 MW (study 20260829-p-pump-fence)</text>
+<text x="46" y="48" font-size="10.5" fill="var(--ink2)">a — minor radius, m ↑</text>
+<rect x="46" y="394" width="164" height="11" fill="var(--map-excl)"/>
+<rect x="211" y="394" width="329" height="11" fill="var(--map-recirc)"/>
+<rect x="46" y="382" width="119" height="11" fill="var(--map-excl)"/>
+<rect x="166" y="382" width="299" height="11" fill="var(--map-recirc)"/>
+<rect x="466" y="382" width="74" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="370" width="104" height="11" fill="var(--map-excl)"/>
+<rect x="151" y="370" width="269" height="11" fill="var(--map-recirc)"/>
+<rect x="421" y="370" width="119" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="358" width="74" height="11" fill="var(--map-excl)"/>
+<rect x="121" y="358" width="239" height="11" fill="var(--map-recirc)"/>
+<rect x="361" y="358" width="179" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="346" width="59" height="11" fill="var(--map-excl)"/>
+<rect x="106" y="346" width="209" height="11" fill="var(--map-recirc)"/>
+<rect x="316" y="346" width="224" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="334" width="44" height="11" fill="var(--map-excl)"/>
+<rect x="91" y="334" width="194" height="11" fill="var(--map-recirc)"/>
+<rect x="286" y="334" width="254" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="322" width="29" height="11" fill="var(--map-excl)"/>
+<rect x="76" y="322" width="179" height="11" fill="var(--map-recirc)"/>
+<rect x="256" y="322" width="284" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="310" width="14" height="11" fill="var(--map-excl)"/>
+<rect x="61" y="310" width="164" height="11" fill="var(--map-recirc)"/>
+<rect x="226" y="310" width="314" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="298" width="14" height="11" fill="var(--map-excl)"/>
+<rect x="61" y="298" width="149" height="11" fill="var(--map-recirc)"/>
+<rect x="211" y="298" width="329" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="286" width="134" height="11" fill="var(--map-recirc)"/>
+<rect x="181" y="286" width="359" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="274" width="119" height="11" fill="var(--map-recirc)"/>
+<rect x="166" y="274" width="374" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="262" width="104" height="11" fill="var(--map-recirc)"/>
+<rect x="151" y="262" width="389" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="250" width="89" height="11" fill="var(--map-recirc)"/>
+<rect x="136" y="250" width="404" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="238" width="74" height="11" fill="var(--map-recirc)"/>
+<rect x="121" y="238" width="419" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="226" width="59" height="11" fill="var(--map-recirc)"/>
+<rect x="106" y="226" width="434" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="214" width="44" height="11" fill="var(--map-recirc)"/>
+<rect x="91" y="214" width="449" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="202" width="44" height="11" fill="var(--map-recirc)"/>
+<rect x="91" y="202" width="449" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="190" width="29" height="11" fill="var(--map-recirc)"/>
+<rect x="76" y="190" width="464" height="11" fill="var(--map-feasible)"/>
+<rect x="46" y="178" width="14" height="11" fill="var(--map-both)"/>
+<rect x="61" y="178" width="479" height="11" fill="var(--map-wall)"/>
+<rect x="61" y="166" width="479" height="11" fill="var(--map-wall)"/>
+<rect x="61" y="154" width="479" height="11" fill="var(--map-wall)"/>
+<rect x="61" y="142" width="479" height="11" fill="var(--map-wall)"/>
+<rect x="61" y="130" width="479" height="11" fill="var(--map-wall)"/>
+<rect x="61" y="118" width="479" height="11" fill="var(--map-wall)"/>
+<rect x="61" y="106" width="479" height="11" fill="var(--map-wall)"/>
+<rect x="61" y="94" width="479" height="11" fill="var(--map-wall)"/>
+<rect x="61" y="82" width="479" height="11" fill="var(--map-wall)"/>
+<rect x="61" y="70" width="479" height="11" fill="var(--map-wall)"/>
+<rect x="61" y="58" width="479" height="11" fill="var(--map-wall)"/>
+<text x="54" y="420" text-anchor="middle" font-size="10" fill="var(--muted)">4</text>
+<text x="114" y="420" text-anchor="middle" font-size="10" fill="var(--muted)">6</text>
+<text x="174" y="420" text-anchor="middle" font-size="10" fill="var(--muted)">8</text>
+<text x="234" y="420" text-anchor="middle" font-size="10" fill="var(--muted)">10</text>
+<text x="294" y="420" text-anchor="middle" font-size="10" fill="var(--muted)">12</text>
+<text x="354" y="420" text-anchor="middle" font-size="10" fill="var(--muted)">14</text>
+<text x="414" y="420" text-anchor="middle" font-size="10" fill="var(--muted)">16</text>
+<text x="474" y="420" text-anchor="middle" font-size="10" fill="var(--muted)">18</text>
+<text x="534" y="420" text-anchor="middle" font-size="10" fill="var(--muted)">20</text>
+<text x="294" y="436" text-anchor="middle" font-size="10.5" fill="var(--ink2)">R — major radius, m</text>
+<text x="40" y="403" text-anchor="end" font-size="10" fill="var(--muted)">0.8</text>
+<text x="40" y="331" text-anchor="end" font-size="10" fill="var(--muted)">1.1</text>
+<text x="40" y="259" text-anchor="end" font-size="10" fill="var(--muted)">1.4</text>
+<text x="40" y="187" text-anchor="end" font-size="10" fill="var(--muted)">1.7</text>
+<text x="40" y="115" text-anchor="end" font-size="10" fill="var(--muted)">2.0</text>
+<text x="398" y="272" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">feasible — 370 pts</text>
+<text x="264" y="368" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">recirculation fence — 184 pts</text>
+<text x="294" y="128" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">wall-load fence — 352 pts</text>
+<text x="122" y="332" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">crash</text>
+<circle cx="314" cy="280" r="6.5" fill="none" stroke="var(--ink)" stroke-width="2.2"/>
+<text x="326" y="284" font-size="10" font-weight="700" fill="var(--ink)">baseline</text>
+</svg></div></div>
+<div class="legend" aria-hidden="true">
+  <span><span class="sw" style="background:var(--map-feasible)"></span> feasible (all 6 verdicts satisfied)</span>
+  <span><span class="sw" style="background:var(--map-recirc)"></span> recirculation fence (rec_frac &gt; 0.5)</span>
+  <span><span class="sw" style="background:var(--map-wall)"></span> wall-load fence (&gt; 4.05 MW/m²)</span>
+  <span><span class="sw" style="background:var(--map-excl)"></span> unevaluable (p_net &lt; 0, model crash)</span>
+  <span><span class="sw" style="background:var(--map-both)"></span> both fences (1 point)</span>
+</div>
+</div>
+<figcaption><strong>The design-space window, before and after — every point drawn from the committed CSVs</strong> (<code>results/points.csv</code>, <code>results/excluded_points.csv</code>; comparand arm <code>arm-rankine-paper</code> of <code>20260821-power-cycle-ab</code>). Read it physically: bigger plasma (up and right) makes more fusion power, but the ~195&nbsp;MW pump bill is a held input, nearly size-independent — so small machines spend an outsized share of their output running their own pumps. The recirculation fence accordingly swallowed the small-machine region: from a 32-point corner to a 184-point band that at a&nbsp;=&nbsp;0.80&nbsp;m spans the <em>entire</em> R range — the record says plainly the fence is unbounded there rather than faking a fence at the window edge. The 42-point crash region (dark) did not exist at 1.0&nbsp;MW: the comparand evaluated the (4.0,&nbsp;0.80) corner at p_net = +8.3&nbsp;MW; here the same corner is −154.4&nbsp;MW. The wall-load fence (top band, a ≥ 1.70&nbsp;m) is untouched by p_pump — thick plasmas push heat flux past the 4.05&nbsp;MW/m² wall limit regardless (4.16 at a = 1.70, constant in R). One new point at (4.0,&nbsp;1.70) violates both fences; the comparand had none. Ten grid nodes at R = 4.0, a ≥ 1.75 are excluded by the study's standing build-stack mask and drawn empty; the baseline (R&nbsp;12.7, a&nbsp;1.3) is ringed.</figcaption>
+</figure>
+
+<figure>
+<div class="figbox">
+<svg viewBox="0 0 620 250" width="620" height="250" role="img" aria-label="Line chart of LCOE versus major radius along the a equals 1.65 meter row. LCOE falls steeply from 415.8 dollars per megawatt hour at R of 4 meters, flattens, and is still decreasing when it reaches 225.7 at the window edge of R equals 20 meters.">
+<line x1="58" y1="173.7" x2="590" y2="173.7" stroke="var(--hairline)" stroke-width="1"/>
+<text x="50" y="177.7" text-anchor="end" font-size="10" fill="var(--muted)">250</text>
+<line x1="58" y1="130.5" x2="590" y2="130.5" stroke="var(--hairline)" stroke-width="1"/>
+<text x="50" y="134.5" text-anchor="end" font-size="10" fill="var(--muted)">300</text>
+<line x1="58" y1="87.2" x2="590" y2="87.2" stroke="var(--hairline)" stroke-width="1"/>
+<text x="50" y="91.2" text-anchor="end" font-size="10" fill="var(--muted)">350</text>
+<line x1="58" y1="44.0" x2="590" y2="44.0" stroke="var(--hairline)" stroke-width="1"/>
+<text x="50" y="48.0" text-anchor="end" font-size="10" fill="var(--muted)">400</text>
+<line x1="590.0" y1="18" x2="590.0" y2="210" stroke="var(--muted)" stroke-width="1.2" stroke-dasharray="4 4"/>
+<text x="584.0" y="30" text-anchor="end" font-size="10" fill="var(--ink2)">window edge</text>
+<polyline points="58.0,30.3 74.6,72.5 91.2,99.9 107.9,119.1 124.5,133.2 141.1,144.0 157.8,152.4 174.4,159.2 191.0,164.7 207.6,169.3 224.2,173.1 240.9,176.3 257.5,179.0 274.1,181.3 290.8,183.3 307.4,185.0 324.0,186.5 340.6,187.8 357.2,188.9 373.9,189.9 390.5,190.7 407.1,191.5 423.8,192.1 440.4,192.6 457.0,193.1 473.6,193.5 490.2,193.8 506.9,194.0 523.5,194.3 540.1,194.4 556.8,194.6 573.4,194.7 590.0,194.7" fill="none" stroke="var(--blue)" stroke-width="2.2" stroke-linejoin="round"/>
+<circle cx="590.0" cy="194.7" r="4.5" fill="var(--blue)" stroke="var(--surface)" stroke-width="2"/>
+<text x="582.0" y="184.7" text-anchor="end" font-size="11" font-weight="700" fill="var(--blue)">225.7 — still falling</text>
+<circle cx="58.0" cy="30.3" r="3.5" fill="var(--blue)" stroke="var(--surface)" stroke-width="1.5"/>
+<text x="66.0" y="34.3" font-size="10.5" fill="var(--ink2)">415.8</text>
+<text x="58.0" y="224" text-anchor="middle" font-size="10" fill="var(--muted)">4</text>
+<text x="191.0" y="224" text-anchor="middle" font-size="10" fill="var(--muted)">8</text>
+<text x="324.0" y="224" text-anchor="middle" font-size="10" fill="var(--muted)">12</text>
+<text x="457.0" y="224" text-anchor="middle" font-size="10" fill="var(--muted)">16</text>
+<text x="590.0" y="224" text-anchor="middle" font-size="10" fill="var(--muted)">20</text>
+<text x="324" y="244" text-anchor="middle" font-size="10.5" fill="var(--ink2)">R — major radius, m (LCOE, $/MWh, along a = 1.65 m, all points feasible for R ≥ 5.0)</text>
+</svg>
+</div>
+<figcaption><strong>Why the record refuses to call 225.7 an optimum.</strong> LCOE along the a&nbsp;=&nbsp;1.65&nbsp;m row (the best-feasible row), from the committed points: the objective is still falling as R reaches the window's 20&nbsp;m edge — 226.5 at 17.5&nbsp;m, 225.8 at 19.5, 225.7 at 20.0. The cheapest feasible machine in the window sits <em>on the window's boundary</em> with the curve still descending, so the true constrained optimum lies outside the swept frame. Learning L-002: an inherited window buys comparability and can silently cost containment — adopting the comparand's grid made the fences subtractable, and carried a frame built for a 1.0&nbsp;MW machine to a 195&nbsp;MW one that no longer contains its fence.</figcaption>
+</figure>
+
+<h3>A model defect, surfaced and routed — not patched</h3>
+<p>42 points have negative net power, and they <em>crash</em> rather than report: the CAS10 land-cost account takes √p_net, which is undefined for a plant that consumes more than it makes, so the package returns <code>execution_failed</code> before the net-power constraint can say "violated". The boundary is razor-sharp in the data: the worst crash is p_net = −154.4&nbsp;MW at (4.0, 0.80); the smallest surviving point is +0.06&nbsp;MW at (8.0, 0.85). The exclusion also hands <code>net_positive</code> a clean sheet it did not earn — satisfied at all 906 evaluated points only because every point that would violate it cannot be evaluated at all (learning L-003 of this goal). Disclosed as a result, routed by owner ruling to backlog item <strong>WI-034</strong> — not patched in-round.</p>
+
+<h3>How trustworthy are these numbers?</h3>
+<ul>
+  <li>A fresh administrator (a session with no memory of the run, reading only the record directory) <strong>recomputed every headline number and reproduced every one</strong> — verdict counts, fence positions at all nineteen a values, feasible fraction, best-feasible point and its neighbors, the exclusion staircase (<code>synthesis.md</code> § 4: "Nothing in §§ 3–6 was found overstated by the arithmetic").</li>
+  <li>The study's own verification harness: 48 rows sampled across all four verdict combinations, 10 channels at tolerance 1e-9, worst relative deviation <strong>6.3×10⁻¹⁶</strong>, zero verdict mismatches.</li>
+  <li>And still: the administrator found <strong>three prose numbers with no committed artifact behind them</strong> (a held-value band table, the sourced-band citation, two rec_frac endpoints). Repaired by addendum, accepted as learning L-004: <em>"a record can be arithmetically perfect and still fail its own contract"</em> — recomputation checks the numbers that are there; nothing was checking for the numbers that were not.</li>
+</ul>
+<p>The critic refused the first checkpoint again (C-001.r1 → revise → C-001.r2 pass); the fresh round review returned FINDINGS with the answer upheld and corrected three of the four learnings before accepting them; seven joined disposition rows closed every touched finding; the owner closed the goal and minted WI-034.</p>
+
+<!-- ============================================================ SECTION 6 -->
+<h2 id="s6">6 · Route equivalence, and where the close actually stands</h2>
+
+<p>The last claim — human and agent can operate the same contract — was tested by a fresh session playing a human operator, following the runbook literally in an isolated worktree, with zero commits in either tree (<code>route_equivalence.md</code>).</p>
+
+<div class="tablewrap">
+<table>
+  <caption class="small" style="text-align:left; margin-bottom:6px;">The five comparison dimensions, verbatim verdicts.</caption>
+  <thead><tr><th>Dimension</th><th>Verdict</th><th>Decisive evidence</th></tr></thead>
+  <tbody>
+    <tr><td>1. Required artifact set</td><td class="verdict v-met">same contract</td><td>Hand route produced or located every obligation, including an independent grounding verdict and its own synthesis</td></tr>
+    <tr><td>2. Native end states</td><td class="verdict v-met">identical</td><td><code>integrate</code> → <code>CANDIDATE</code>, exit 0, ten gates, <strong>byte-identical pin <code>20c2c364…</code> and both fingerprints</strong></td></tr>
+    <tr><td>3. Gates</td><td class="verdict v-met">same contract</td><td>Ten seam gates re-run by hand; six preflight gates verified; append-only trail verified mechanically (eleven commits, zero removed lines)</td></tr>
+    <tr><td>4. Return classes</td><td class="verdict v-met">identical</td><td><code>CANDIDATE</code>; reading <code>ANSWERED</code> reached independently, every headline number reproduced</td></tr>
+    <tr><td>5. Reviewer-visible evidence</td><td class="verdict v-met">same contract</td><td>Same artifact shapes left for a fresh reviewer, including a mandatory what-the-record-does-not-support section</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p><em>And</em> the exercise earned its cost by finding the two places the written pattern failed a stranger — which is exactly what happened next:</p>
+
+<ul class="timeline">
+  <li class="tl-warn"><strong>Falsifier occurs (2026-08-29).</strong> The hand operator's first <code>integrate</code> run was refused as <code>toolchain-drift</code> — but nothing had drifted: a checkout-local path variable (<code>STOP_PARSER_WHEEL_TARGET</code> hard-coded to the main tree) tripped the gate, and the operator guide maps that condition to <code>STRATEGY_BLOCKER</code>. An operator trusting the guide's table would have <strong>mis-closed the round as a strategy failure when nothing had moved</strong> (F-1). Worse, <code>uv run</code> cannot honor the sealed toolchain from a second checkout at all, forcing an undocumented direct-interpreter workaround (F-2).</li>
+  <li class="tl-block"><strong>The close review blocks (2026-08-30, product-lens finding <code>close-F1</code>).</strong> The evidence table said route equivalence "met" while the falsifier — a documented-route operator needing an undocumented correction — had actually occurred. Gate: <span class="verdict v-block">BLOCKED</span>. The fired smell, in the lens's words: a test passed only because it selected one route — the report selected the corrected run to declare equivalence while leaving the documented misclassification in place.</li>
+  <li class="tl-key"><strong>Repaired the right way (<code>f3249f7c</code>, same morning).</strong> The guide's blocker table gained a checkout-kind carve-out; the sealed-interpreter pattern was documented in a new § Running from a second checkout or worktree; the always-<code>uv</code> rule in CLAUDE.md gained a scoped exception. Documentation of an existing contract — no control-plane machinery, so the lean-rule walk is unchanged.</li>
+  <li class="tl-ok"><strong>Re-proven from the guide alone (session <code>0d76b3a4</code>).</strong> A fresh operator re-ran the isolated integration from a clean worktree following only the committed guide: exit 0, <code>CANDIDATE</code>, same pin, all ten gates. Verdict verbatim: <em>"Guide alone sufficed. No undocumented correction at any step."</em> Lens gate: <span class="verdict v-met">CLEAR</span> (<code>8fc1cbb0</code>).</li>
+  <li class="tl-ok"><strong>Closed and archived (<code>e4e895a1</code>).</strong> Item 6 archived to <code>.project/completed/20260830_goal-integration-study-proof/</code>. All six GSTH items complete; epic audit POSITIVE (fresh session; battery reproduced 574 passed / 14 skipped).</li>
+</ul>
+
+<p class="small">Two further route findings remain recorded carve-outs with named fix homes, not blockers: F-3 (a record addendum sits inside the administrator's read scope, so no second administrator of this record can be blind) and F-4 (the runbook should say the operator <em>re-derives</em> the grounded verdict rather than reading the assertion — the hand operator re-derived).</p>
+
+<p><strong>What remains</strong> is close-out bookkeeping, both named: the epic file's Lessons Learned section is still TBD (<code>epic_goal_strategy_task_harness.md:557</code> — "What Went Well: TBD"), and the shipping gate — <code>/_my_pre_pr</code>, then one PR carrying WI-033 + Item 6 on <code>feat/wi033-p-pump-rebase</code>.</p>
+
+<!-- ============================================================ ONE-PARAGRAPH -->
+<h2 id="summary">The one-paragraph version, for a general audience</h2>
+<div class="quote">
+<p>We built a written procedure that lets anyone — a new person or a fresh AI session — pick up a research question about our fusion cost model, run it through evidence-gathering, model changes, and design-space studies, and hand it off mid-stream, with every claim checked by someone who didn't make it. We proved it three times, on progressively more real work. Along the way it caught and fixed a real error of roughly two orders of magnitude (~130–195× against the sourced band) in the model's coolant pumping power, and the corrected model says the reference stellarator's electricity is about 21% more expensive and its viable design space about a third smaller than we previously recorded — which is the system working: the process exists to make the numbers trustworthy, and it just made two committed studies' numbers honestly obsolete.</p>
+</div>
+
+<!-- ============================================================ APPENDIX -->
+<h2 id="appendix">Appendix — the numbers in one place</h2>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Quantity</th><th class="num">Before (1.0 MW record)</th><th class="num">After (195 MW)</th><th>Where</th></tr></thead>
+  <tbody>
+    <tr><td>p_pump (helium pumping power)</td><td class="num">1.0 MW</td><td class="num">195.0 MW</td><td><code>stellarator_plant.sysml:502</code>; WI-033</td></tr>
+    <tr><td>Thermal power p_th <span class="prov prov-render">[RENDER]</span></td><td class="num">3238.1 MW</td><td class="num">3335.1 MW (+3.0%)</td><td>chain re-run; matches <code>oracle_operands.csv</code></td></tr>
+    <tr><td>Recirculating power <span class="prov prov-render">[RENDER]</span></td><td class="num">163.2 MW</td><td class="num">358.2 MW (+119%)</td><td>chain re-run; rec_frac matches both records</td></tr>
+    <tr><td>Net electric power</td><td class="num">915.1 MW</td><td class="num">752.4 MW (−17.8%)</td><td>comparand oracle scan; <code>oracle_operands.csv</code></td></tr>
+    <tr><td>Recirculating fraction rec_frac</td><td class="num">0.1514</td><td class="num">0.3225 (limit 0.5)</td><td>same</td></tr>
+    <tr><td>Baseline LCOE</td><td class="num">275.264 $/MWh</td><td class="num">333.067 $/MWh (+21.0%)</td><td>study § 2 / <code>results/baseline_result.json</code></td></tr>
+    <tr><td>Feasible fraction of swept grid</td><td class="num">563/948 = 59.4%</td><td class="num">370/906 = 40.84%</td><td>study synthesis § 2; recomputed from <code>points.csv</code> for the maps above</td></tr>
+    <tr><td>recirc_ok violations</td><td class="num">32 (corner, R ≤ 8 m at a = 0.8)</td><td class="num">184 (band; unbounded in R at a = 0.80)</td><td>study § 6</td></tr>
+    <tr><td>Best feasible LCOE</td><td class="num">—</td><td class="num">225.725 $/MWh at (R 20.0, a 1.65) — window edge, not an optimum</td><td>study § 2</td></tr>
+    <tr><td>Excluded (negative net power, model crash)</td><td class="num">—</td><td class="num">42 points, p_net −154.4 to −0.9 MW → WI-034</td><td><code>results/excluded_points.csv</code></td></tr>
+  </tbody>
+</table>
+</div>
+<p class="small">Source basis for 195 MW: Cismondi ~150 MW helium vs ~15 MW water; Moscato loop data → 130.8 MW full-loop / 83–94 MW near-term (~4–6% of thermal power; one significant figure is the honest precision — L-001 of <code>p-pump-basis</code>). Both registered via the native seam, receipts <code>39bd3b41</code> / <code>891b95bc</code>. The landed value is 6% of baseline p_th, set by owner ruling at the top of the band. Test tallies quoted from records: canonical battery 574 passed / 14 skipped; <code>tests/research</code> 150 passed; model-family spines 13/13; registry verify 0 faults / 3 known legacy; study verification worst deviation 6.3463e-16.</p>
+
+<!-- ============================================================ JUDGMENT -->
+<div class="judgment">
+<h2 id="judgment" style="margin-top:0">Judgment — the synthesis agent's assessment, not system truth</h2>
+<p class="small">Rendered verbatim in substance from the checkpoint synthesis of 2026-08-30. These are one agent's graded concerns about the story above; they are part of the snapshot, not part of the record.</p>
+<h3>Concerns</h3>
+<ul>
+  <li>The research seam's request/return bookkeeper (<code>research_seam.py</code> open→log→close) has <strong>never run end to end</strong> — both live rounds found the answer without it. Only the registration write door has live evidence (WI-033). The records say this plainly (epic_evidence § 3), but any story claiming "the research seam is proven" overclaims.</li>
+  <li><code>assert_read_set_covered</code> at integrate gate 6 has no live evidence on any invocation that reached it, and nothing else covers it (filed, epic_evidence § 3).</li>
+  <li>Route equivalence carries a declared limit that survives the close: <code>study.execute</code> was fixture-substituted, and the close-F1 re-run re-proved integration only. No one proved a hand operator would produce the same 906 points (steps 7–15 not walked); "same contract" holds for grounding/integrate/read/review, not the sweep itself.</li>
+  <li>The record-contract class is real: the study record needed an addendum for uncommitted prose numbers (L-004), and that addendum sits inside the administrator's read scope, so no second administrator of this record can be blind (route-equivalence F-3). "Every claim checked by someone who didn't make it" holds once per record, not repeatably.</li>
+  <li>The stale-expectation class (5 artifacts, 1 caught only by an unaided human read) bounds how much the gates can be trusted; the obvious checker was correctly deferred, but it is the sharpest open risk to the next model change.</li>
+  <li>The epic's demonstrated TEA-model substance is one parameter correction plus its consequences. That is real and quantified, but most of the epic is process; the story should not imply broad model enhancement.</li>
+</ul>
+<h3>Unresolved uncertainty</h3>
+<p>The epic-level Lessons Learned section is still TBD in the epic file; the pre_pr gate has not run on the branch. Both are named remainders, not open questions about the evidence.</p>
+<h3>Disagreements between sources</h3>
+<p>None open. The one that existed — epic_evidence criterion 5 ("met") vs the product-lens ("BLOCKED") — has been closed <span class="prov prov-owner">[OWNER 2026-08-30]</span>: the <code>8fc1cbb0</code> resolution amended the evidence to the failure-then-repair story and cleared the block. <code>CURRENT_WORK.md</code> (rev <code>d6b7b400</code>) predates the close commits; git log is the current truth.</p>
+<h3>Suggested spot checks</h3>
+<ul>
+  <li>Read the <code>8fc1cbb0</code> re-run verdict in the archived product-lens resolution block.</li>
+  <li>Re-run the regression stencil from epic_evidence § 1.</li>
+  <li>Open <code>results/points.csv</code> and recompute the +21% baseline shift and the 370/906 feasible count. (This render did the second recomputation independently for the maps above; both reproduced.)</li>
+</ul>
+</div>
+
+<!-- ============================================================ SOURCES -->
+<h2 id="sources">What this detail render drew on</h2>
+<p class="small">Beyond the synthesis itself (<code>.project/mental-alignment/runs/20260830-083615_gsth-epic-close-story.md</code>), this render read and, where marked <span class="prov prov-render">[RENDER]</span>, recomputed from:</p>
+<ul class="small">
+  <li><code>.project/backlog/epic_goal_strategy_task_harness.md</code> (why/criteria/strategy, item sections, Lessons Learned TBD)</li>
+  <li><code>.project/completed/20260830_goal-integration-study-proof/</code> — <code>epic_evidence.md</code>, <code>route_equivalence.md</code>, <code>product-lens.md</code> (in full)</li>
+  <li><code>work/completed/20260828_WI-033_p-pump-rebase/verification_record.md</code> (in full)</li>
+  <li><code>work/orchestration/GOAL_RUNBOOK.md</code> (§ Grounding a goal and structure) and <code>work/orchestration/goals/p-pump-fence/goal.md</code>, <code>learnings.md</code> (in full)</li>
+  <li><code>work/orchestration/goals/cryo-volume-basis/goal.md</code> (question and grounding)</li>
+  <li><code>.project/completed/20260827_goal-cold-pickup-proof/</code> — <code>freshness-record.md</code>, <code>gate-probe-record.md</code>; <code>.project/completed/20260828_goal-research-model-proof/verification_record.md</code></li>
+  <li><code>.project/adr/003-lean-first-persistence.md</code> (both dated amendments)</li>
+  <li><code>models/library/analyses/mfe_power_balance.sysml:90-147</code> and <code>models/designs/stellarator_09/stellarator_plant.sysml:480-660</code> (equations and every held input used in the [RENDER] chain)</li>
+  <li><code>exploration/stellarator_e2e/studies/20260829-p-pump-fence/</code> — <code>synthesis.md</code> (in full), <code>results/baseline_result.json</code>, <code>results/oracle_operands.csv</code> (baseline row), <code>results/points.csv</code> and <code>results/excluded_points.csv</code> (all 948 points, for the maps and the LCOE slice)</li>
+  <li><code>exploration/stellarator_e2e/studies/20260821-power-cycle-ab/results/points.csv</code> (comparand arm, for the before-map)</li>
+</ul>
+<p class="small">Not read (inheriting the synthesis's declared limits): the 20 stage briefs, the eight Item 5 transcripts, the <code>p-pump-basis</code> goal directory, the seam and study source code. Where a claim above rests only on a record's prose rather than an artifact this render could check, the nearest record is named at the point of use.</p>
+
+<p class="small" style="margin-top:30px; color:var(--muted)">Static detail render · mental-alignment skill · 2026-08-30 · no scripts, no external resources · narrative inherited from the checkpoint synthesis; detail layer from the committed records listed above.</p>
+
+</main>
+</body>
+</html>

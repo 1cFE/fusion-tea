@@ -90,7 +90,7 @@
   "stellarator_09__stellaris__p_nbi": 0.0,
   "stellarator_09__stellaris__p_pf": 0.0,
   "stellarator_09__stellaris__p_pfcool": 0.0,
-  "stellarator_09__stellaris__p_pump": 1.0,
+  "stellarator_09__stellaris__p_pump": 195.0,
   "stellarator_09__stellaris__p_tf": 0.0,
   "stellarator_09__stellaris__p_tfcool": 15.0,
   "stellarator_09__stellaris__p_trit": 10.0,
