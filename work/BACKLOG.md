@@ -107,6 +107,12 @@ epics:
     scale: standard
     status: completed
     completed: '2026-08-28'
+  - id: WI-034
+    name: 'CAS10 land-term guard: net-negative power yields violated verdict, not
+      execution_failed'
+    scale: standard
+    status: backlog
+    completed: null
 - name: Pipeline De-Risk & Demonstration
   goal: null
   priority: P0
@@ -199,6 +205,7 @@ standalone:
 | WI-031 | Research round: second-arm values for the Item 6 A/B studies | trivial | completed | Completed 2026-08-22 |
 | WI-032 | Cold-volume basis: vol_cold_cryo computed or held | standard | completed | Completed 2026-08-27 |
 | WI-033 | P_pump re-base: helium-primary circulator basis | standard | completed | Completed 2026-08-28 |
+| WI-034 | CAS10 land-term guard: net-negative power yields violated verdict, not execution_failed | standard | backlog |  |
 
 ## Epic: Pipeline De-Risk & Demonstration
 **Priority**: P0 | **Status**: active

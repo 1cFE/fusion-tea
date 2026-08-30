@@ -544,3 +544,16 @@ Two things travel with the answer and neither is a reason to keep the goal open.
 **Two things the close ruling should say out loud.** Whether `0534c77b`'s annex edit is ratified or reverted (finding 1). And whether round 2 is opened — because the CAS10 land-term guard's responsible actor is written as round 2 task T-001, with the MFE Cost Modeling epic as the stated fallback, and one of the two becomes real on the ruling.
 
 Nothing was written by this reviewer except this entry and the accepted learning delta in `learnings.md`. No commits, no writes to `DISCOVERY_LOG.md`, the record directory or any prior entry in this file.
+
+## Goal close — 2026-08-29
+
+### Owner ruling — 2026-08-29
+
+Ruled by the owner in session, on the round 1 review's recommendation. Verbatim: "1. close 2. ratify 3. route to MFE epic". `[OWNER 2026-08-29]`
+
+- **Close.** § Answered when is met in the contract's own terms — pin, both halves, comparand at its own pin, reading class `ANSWERED` — checked independently by the fresh review (`### Round 1 review — 2026-08-29`) rather than taken from the trail. The goal is **closed by the owner** per § Close rule.
+- **Ratify.** The annex re-pin `0534c77b` is **ratified**. Review finding 1 stands as the record of the authorization gap (a correct one-line change with no covering task scope, performed at orchestrator tier); the ratification closes the gap without editing history.
+- **Route.** No round 2. The CAS10 land-term guard — one defect, two sightings (`20260829-p-pump-fence#1`, `20260823-magnet-technology-ab#1`) — is minted as **WI-034** ("CAS10 land-term guard: net-negative power yields violated verdict, not execution_failed", standard, P2) under the MFE Cost Modeling — Tokamak & Stellarator epic, the fallback actor the dispositions named. Two final rows appended under the existing ids; the WI's own record carries it from here.
+- **Carried, not opened:** the fence's extent in R at a ≤ 0.85 needs a wider window — available to a future goal, deliberately not chased now.
+
+**Effect:** goal `p-pump-fence` is closed. Discovery row `20260821-power-cycle-ab#3` is final for this goal unconditionally (its landed row said "subject to the owner's close ruling"; the ruling has landed).

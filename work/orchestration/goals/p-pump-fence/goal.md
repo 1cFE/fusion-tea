@@ -138,4 +138,6 @@ The fresh round review hands the owner a recommendation once § Answered when is
 
 ## Amendments
 
-None.
+### 2026-08-29 — goal closed by owner ruling
+
+§ Answered when met; closed per § Close rule on the round 1 review's recommendation. Ruling and effects recorded at `trail.md` § Goal close. Operator's pen.
