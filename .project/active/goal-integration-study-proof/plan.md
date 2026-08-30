@@ -138,22 +138,22 @@ Full invocation, every flag's provenance, and the blocker-condition table: `docs
 ### Changes Required
 
 **1a — Run the seam on the tree as it stands.**
-- [ ] Invoke as above; keep `integration_return.json` as evidence.
-- [ ] Confirm the blocker is gate 2 `package-not-integrated` naming `sysml-codegen generate` and no earlier gate. An earlier-gate blocker means something *other* than the known divergence is stale — stop, name it, and treat it as a new finding.
-- [ ] `trail.md`: `### T-001 return` = `PREREQUISITE`, naming the seam's blocker condition, with the five decision fields. Per ADR-009 § Consequences a regeneration-gate refusal is a prerequisite, **not** a strategy blocker. Then `### T-002 scope` for the discharge (D3: this is the task the evidence chose, written after the return).
+- [x] Invoke as above; keep `integration_return.json` as evidence.
+- [x] Confirm the blocker is gate 2 `package-not-integrated` naming `sysml-codegen generate` and no earlier gate. An earlier-gate blocker means something *other* than the known divergence is stale — stop, name it, and treat it as a new finding.
+- [x] `trail.md`: `### T-001 return` = `PREREQUISITE`, naming the seam's blocker condition, with the five decision fields. Per ADR-009 § Consequences a regeneration-gate refusal is a prerequisite, **not** a strategy blocker. Then `### T-002 scope` for the discharge (D3: this is the task the evidence chose, written after the return).
 
 **1b — Discharge the prerequisite: regenerate, recapture, re-pin, commit.**
-- [ ] Regenerate in place, per `exploration/stellarator_e2e/studies/AFTER_MIGRATION_RECORD.md` § 1 and the flags gate 2 uses:
+- [x] Regenerate in place, per `exploration/stellarator_e2e/studies/AFTER_MIGRATION_RECORD.md` § 1 and the flags gate 2 uses:
       `uv run sysml-codegen generate --models exploration/stellarator_e2e/models --output exploration/stellarator_e2e/generated --package-name stellarator_tea --overwrite --smart-regen --preserve-handwritten`
-- [ ] Recapture `exploration/stellarator_e2e/stellarator.snapshot.json` (`capture_instance_graph_snapshot`, as `scripts/integrate.py:1070` invokes it).
-- [ ] Re-pin `exploration/stellarator_e2e/studies/manifest.json` — `fingerprints.recorded_provenance.{semantic,executable}_fingerprint` and `fingerprints.indicator_inputs.digest`.
-- [ ] Confirm the two handwritten implementations survive byte-identical (`dt_fusion_power_impl.py`, `levelized_replacement_cost_impl.py`); `--preserve-handwritten` is what gate 3 checks.
-- [ ] **Re-derive, never patch, the six known-answer fixtures** — `tests/study/data/{availability,interest_rate,R,R+tie,a,B}.expected.json` and `EXPECTED_SEMANTIC_FINGERPRINT` in `tests/study/test_known_answers.py:20`. That file's own docstring states the rule: derived from the new package, never edited to match. `test_fixture_binding` fails first and says so. **This is the regression the pre_pr gate could not see** — the 21 reds were the integrate suite against a stale package; re-deriving the package moves the known-answer values too, because `p_pump` feeds `rec_frac` → `p_net` → LCOE.
-- [ ] Check `tests/models/data/mfe_census.json` — WI-033 already re-derived it at `18a5ce86`; confirm it still matches, do not re-derive twice.
-- [ ] Commit the regenerated package, snapshot, manifest and re-derived fixtures together.
+- [x] Recapture `exploration/stellarator_e2e/stellarator.snapshot.json` (`capture_instance_graph_snapshot`, as `scripts/integrate.py:1070` invokes it).
+- [x] Re-pin `exploration/stellarator_e2e/studies/manifest.json` — `fingerprints.recorded_provenance.{semantic,executable}_fingerprint` and `fingerprints.indicator_inputs.digest`.
+- [x] Confirm the two handwritten implementations survive byte-identical (`dt_fusion_power_impl.py`, `levelized_replacement_cost_impl.py`); `--preserve-handwritten` is what gate 3 checks.
+- [x] **Re-derive, never patch, the six known-answer fixtures** — `tests/study/data/{availability,interest_rate,R,R+tie,a,B}.expected.json` and `EXPECTED_SEMANTIC_FINGERPRINT` in `tests/study/test_known_answers.py:20`. That file's own docstring states the rule: derived from the new package, never edited to match. `test_fixture_binding` fails first and says so. **This is the regression the pre_pr gate could not see** — the 21 reds were the integrate suite against a stale package; re-deriving the package moves the known-answer values too, because `p_pump` feeds `rec_frac` → `p_net` → LCOE.
+- [x] Check `tests/models/data/mfe_census.json` — WI-033 already re-derived it at `18a5ce86`; confirm it still matches, do not re-derive twice.
+- [x] Commit the regenerated package, snapshot, manifest and re-derived fixtures together.
 
 **1c — Re-run the seam.**
-- [ ] Same invocation, fresh `--out-dir`, with the *new* expected fingerprints. Expect exit 0, `class: "CANDIDATE"`.
+- [x] Same invocation, fresh `--out-dir`, with the *new* expected fingerprints. Expect exit 0, `class: "CANDIDATE"`.
 - [ ] Record the pin and both fingerprints in `trail.md` as `### T-002 return` = `COMPLETE`, citing `integration_return.json`. **Exactly one** candidate — a second promoted pin is out of scope.
 
 **1d — Turn the battery green.**
@@ -161,13 +161,13 @@ Full invocation, every flag's provenance, and the blocker-condition table: `docs
 
 ### Validation
 **Automated:**
-- [ ] `integration_return.json` from 1a: exit 1, gate 2. From 1c: exit 0, `CANDIDATE`.
-- [ ] `uv run agentic-mbse validate models/` → L1 clean; L2 = the 12 known pre-existing placeholder-binding WARNs, count and locations unchanged.
+- [x] `integration_return.json` from 1a: exit 1, gate 2. From 1c: exit 0, `CANDIDATE`.
+- [x] `uv run agentic-mbse validate models/` → L1 clean; L2 = the 12 known pre-existing placeholder-binding WARNs, count and locations unchanged.
 - [ ] `tests/study` green, including the 21 formerly-red integrate tests and `test_known_answers.py`.
 
 **Manual:**
-- [ ] `git diff --stat` shows zero lines under `exploration/stellarator_e2e/studies/2026*` — prior committed records untouched.
-- [ ] The candidate's `pin` is the manifest's own value, not a newly minted number (`tests/study/test_integrate_success.py:68` is the same assertion).
+- [x] `git diff --stat` shows zero lines under `exploration/stellarator_e2e/studies/2026*` — prior committed records untouched.
+- [x] The candidate's `pin` is the manifest's own value, not a newly minted number (`tests/study/test_integrate_success.py:68` is the same assertion).
 
 **What We Know Works After This Phase:** the seam runs live, refuses correctly, and returns one verified study-ready identity; the branch's known red set is green.
 
@@ -472,10 +472,18 @@ See CLAUDE.md and `docs/integration_seam_operator_guide.md § The environment`. 
 [TO BE FILLED DURING IMPLEMENTATION]
 
 ### Phase 0 Completion
-**Completed:**
+**Completed:** 2026-08-29, committed `67c4ff45`.
+
 **Actual Changes:**
+- Created `work/orchestration/goals/p-pump-fence/` from `work/orchestration/goal-templates/` — `goal.md`, `trail.md`, `learnings.md`, headings copied not invented.
+- `goal.md` grounded: twelve cited artifacts as `<path>@<sha>`, four explicit limits, the four owner Align-ruling reserved gates plus the study layer's framing gate.
+- `trail.md`: `## Round 1 — integrate-then-fence`, the grounding check, `### Strategy revision — 2026-08-29` (blocker-first, four assumptions, four abandonment conditions, no model increment, no future task list), `### T-001 scope`.
+
 **Issues:**
+- A premise conflict was surfaced rather than resolved: `GOAL_RUNBOOK.md@9f0019e8` § The native seams still marks `integrate` "pending native repair" and says not to improvise a pattern, while the repository now holds `scripts/integrate.py`, ADR-009 and an operator guide. Recorded in the trail's grounding check. Resolved *for this round only* by the owner's routing ruling; the runbook row stays as written until Phase 5 flips it on this round's evidence.
+
 **Deviations:**
+- § Question and § Answered when were agent-drafted and adopted verbatim by the owner ("use your drafts"), not owner-originated as the phase's reserved gate anticipated. Graded `[AGENT] (adopted verbatim by owner ruling, 2026-08-29)` in `goal.md` and flagged in the trail as weaker provenance than the predecessor goal's contract. The phase did not stop, because the gate's purpose — that the contract is the owner's and not the agent's to reinterpret — is met by the adoption.
 
 ### Phase 1 Completion
 

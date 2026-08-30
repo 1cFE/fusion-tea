@@ -1,0 +1,1 @@
+channel off tolerance on case stellarator-baseline-point-v1:c0000, channel stellarator_09__stellaris__cas72_calc__cost: store 97066502.3745164, oracle 95399746.5004968, relative deviation 1.747e-02 (tolerance 1e-09)
