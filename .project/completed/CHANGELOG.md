@@ -4,6 +4,26 @@ Historical record of completed work.
 
 ---
 
+## [2026-08-30] - Epic: Goal Strategy and Task Harness
+
+**Type**: Epic (GSTH — 6 items)
+**Duration**: 7 days (epic created 2026-08-23 → closed 2026-08-30; items closed 2026-08-27 → 2026-08-30)
+
+### Summary
+Research, modeling, package generation, and study procedures worked separately, with no durable layer owning why one should follow another, and the research and integration seams still depended on documented hand patterns. This epic built the lean goal layer — `goal.md`/`trail.md`/`learnings.md` per goal plus the shared `work/orchestration/GOAL_RUNBOOK.md` — repaired both seams as native callable returns, and proved the joins live: cold grounding, ungrounded rejection, and mid-task resume (Item 4); a research-to-model round where the owner's pre-execution checkpoint bound and released for the first time (Item 5); and integration-to-study closure with hand and goal-agent routes byte-identical on native identity (Item 6). All eleven epic success criteria are ticked at close; the three declared limits are recorded in the epic evidence, not worked around.
+
+### Deliverables
+- `.project/completed/20260830_epic_goal_strategy_task_harness.md` — the epic record (criteria ticked with per-criterion evidence pointer, product-lens gate CLEAR)
+- Item archives: `20260827_goal-harness-contract/`, `20260827_goal-research-seam/`, `20260827_goal-integration-seam/`, `20260827_goal-cold-pickup-proof/`, `20260828_goal-research-model-proof/`, `20260830_goal-integration-study-proof/`
+- `work/orchestration/GOAL_RUNBOOK.md` with every seam row native; `scripts/research_seam.py` + `scripts/source_registry.py` (research seam); the integrate seam + `docs/integration_seam_operator_guide.md`
+- Three goals grounded and closed under the contract: `work/orchestration/goals/cryo-volume-basis/`, `p-pump-basis/`, `p-pump-fence/`
+- ADR-0008 (source identity), ADR-0009 (integration fixed-point proof), ADR-0010 (oracle mirrors audited bindings); product ledger entry 0001; WI-033 landed, WI-034 minted
+
+### Lessons Learned
+[TODO: Add lessons learned]
+
+---
+
 ## [2026-08-30] - Goal Harness Item 6: Integration-to-Study Closure and Route Equivalence
 
 **Type**: Item (Goal Strategy and Task Harness epic, Item 6 — the epic-verdict deliverable)

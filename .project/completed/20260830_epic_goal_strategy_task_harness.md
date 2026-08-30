@@ -1,7 +1,7 @@
 # Epic: Goal Strategy and Task Harness
 
 **Epic ID**: GSTH
-**Status**: Ready
+**Status**: Complete (2026-08-30)
 **Priority**: High (P1; `[AGENT]` recommendation ratified by owner, 2026-08-25)
 **Created**: 2026-08-23
 **Estimated Effort**: 9.5 days (`[AGENT]` decomposition ratified by owner, 2026-08-25)
@@ -45,17 +45,19 @@ Build the lean goal layer that lets an operator or fresh agent ground a question
 
 ## Success Criteria
 
-- [ ] `[INHERITED: goal-strategy-task-harness-design.md]` A non-builder grounds an operator-chosen question into `work/orchestration/goals/{goal}/goal.md`; the goal cannot start without repository evidence, an answer contract, limits, invariants, and reserved gates.
-- [ ] `[OWNER 2026-08-25]` A fresh non-author critic reviews the study reading and proposed dispositions before any semantic follow-up task executes; the author revises until the checkpoint passes or its declared cap produces an owner-visible stop.
-- [ ] `[INHERITED: goal-strategy-task-harness-design.md]` The shared `work/orchestration/GOAL_RUNBOOK.md` lets a human and a goal agent operate the same loop with the same artifacts, gates, task returns, and fresh round review.
-- [ ] `[INHERITED: goal-strategy-task-harness-design.md]` The native research seam accepts a bounded request and returns registered MR-4-citable sources or a recorded bounded negative, with provenance, hashes, holdout enforcement, and no hand-written registry step.
-- [ ] `[INHERITED: goal-strategy-task-harness-design.md]` The native integration seam takes audited model work through regeneration, verification, and pinning, then returns exactly one study-ready candidate fingerprint or a blocker.
-- [ ] `[OWNER]` Every open `DISCOVERY_LOG.md` row touched by a round receives a joined `<study-id>#<n>` disposition update with status and changed reference; no touched row returns as `unrouted`. The runbook step, administrator prohibition, and log header agree on writer ownership. Source: `goal-strategy-task-harness-design-review.md` § Resolutions, C1.
-- [ ] `[INHERITED: goal-strategy-task-harness-design.md]` A fresh session resumes an intentionally interrupted task from its write-ahead start and native filesystem facts without duplicating side effects or repeating completed native work.
-- [ ] `[INHERITED: goal-strategy-task-harness-design.md]` A real round proves `model → research → model → integrate → study.execute → study.read`, including a valid adverse or inconclusive reading that closes the round and carries accepted learning into the next strategy.
-- [ ] `[INHERITED: goal-strategy-task-harness-design.md]` Fresh `RoundReview` catches a seeded scope or comparison-meaning drift, accounts for every touched finding, and accepts or corrects the learning delta before another strategy starts.
-- [ ] `[AGENT]` Hand-operated and goal-agent-operated paths produce equivalent goal artifacts and native end states in a documented comparison, and all item-level tests and project-defined regression checks pass.
-- [ ] `[OWNER]` First-build scope contains no control-plane mechanism from the hardening path unless the epic records the observed run failure that promotes it. Source: `goal-strategy-task-harness-design-review.md` § Resolutions, P2/M4.
+*All eleven ticked at epic close 2026-08-30 — per-criterion evidence: `.project/completed/20260830_goal-integration-study-proof/epic_evidence.md` § 2 and the per-item audit blocks below. Where a criterion rests on owner disposition rather than live exercise, the record says so: Item 4's seeded-drift and rejection-probe closes (`[OWNER 2026-08-27]`), Item 5's research-seam gap lines amended `[OWNER 2026-08-29]` at `5e026531` citing WI-033, and the three declared limits in `epic_evidence.md` § 3.*
+
+- [x] `[INHERITED: goal-strategy-task-harness-design.md]` A non-builder grounds an operator-chosen question into `work/orchestration/goals/{goal}/goal.md`; the goal cannot start without repository evidence, an answer contract, limits, invariants, and reserved gates.
+- [x] `[OWNER 2026-08-25]` A fresh non-author critic reviews the study reading and proposed dispositions before any semantic follow-up task executes; the author revises until the checkpoint passes or its declared cap produces an owner-visible stop.
+- [x] `[INHERITED: goal-strategy-task-harness-design.md]` The shared `work/orchestration/GOAL_RUNBOOK.md` lets a human and a goal agent operate the same loop with the same artifacts, gates, task returns, and fresh round review.
+- [x] `[INHERITED: goal-strategy-task-harness-design.md]` The native research seam accepts a bounded request and returns registered MR-4-citable sources or a recorded bounded negative, with provenance, hashes, holdout enforcement, and no hand-written registry step.
+- [x] `[INHERITED: goal-strategy-task-harness-design.md]` The native integration seam takes audited model work through regeneration, verification, and pinning, then returns exactly one study-ready candidate fingerprint or a blocker.
+- [x] `[OWNER]` Every open `DISCOVERY_LOG.md` row touched by a round receives a joined `<study-id>#<n>` disposition update with status and changed reference; no touched row returns as `unrouted`. The runbook step, administrator prohibition, and log header agree on writer ownership. Source: `goal-strategy-task-harness-design-review.md` § Resolutions, C1.
+- [x] `[INHERITED: goal-strategy-task-harness-design.md]` A fresh session resumes an intentionally interrupted task from its write-ahead start and native filesystem facts without duplicating side effects or repeating completed native work.
+- [x] `[INHERITED: goal-strategy-task-harness-design.md]` A real round proves `model → research → model → integrate → study.execute → study.read`, including a valid adverse or inconclusive reading that closes the round and carries accepted learning into the next strategy.
+- [x] `[INHERITED: goal-strategy-task-harness-design.md]` Fresh `RoundReview` catches a seeded scope or comparison-meaning drift, accounts for every touched finding, and accepts or corrects the learning delta before another strategy starts.
+- [x] `[AGENT]` Hand-operated and goal-agent-operated paths produce equivalent goal artifacts and native end states in a documented comparison, and all item-level tests and project-defined regression checks pass.
+- [x] `[OWNER]` First-build scope contains no control-plane mechanism from the hardening path unless the epic records the observed run failure that promotes it. Source: `goal-strategy-task-harness-design-review.md` § Resolutions, P2/M4.
 
 ---
 
@@ -216,7 +218,7 @@ Gate: CLEAR
 
 **Closed** 2026-08-27 — archived to `.project/completed/20260827_goal-research-seam/`. Audited 2026-08-26 Needs Work; both HIGH findings fixed and orchestrator-verified the same day (`9637f1b7`), and the owner authorized the close under the one-PR ship ruling. `ADR-008` records the source-identity decision. Product-lens gate CLEAR.
 
-**Location**: `.project/active/goal-research-seam/`
+**Location**: `.project/completed/20260827_goal-research-seam/` (closed 2026-08-27 by owner authorization; archived from `.project/active/goal-research-seam/`)
 
 **Dependencies**: None; may proceed in parallel with Items 1 and 3.
 
@@ -569,5 +571,5 @@ Item 3: Native Integration Seam ────────────────
 
 ---
 
-**Last Updated**: 2026-08-25
-**Next Action**: Start Item 1 with `$my-spec` after Run-Study Capability Item 6 Phase 4 closes or explicitly coordinates the overlapping edits; Items 2 and 3 may be scheduled in parallel.
+**Last Updated**: 2026-08-30
+**Next Action**: None — epic closed 2026-08-30 and archived to `.project/completed/20260830_epic_goal_strategy_task_harness.md`.
