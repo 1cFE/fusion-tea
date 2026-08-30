@@ -255,16 +255,16 @@ What a round invokes, and what it gets back. The two `study.*` seams are the stu
 |---|---|---|---|
 | `research` | question, evidence, source and search limits | registered sources, a queued candidate, or a bounded negative | Is the evidence enough? |
 | `model` | bounded change objective, work item, goal invariants | audited item or blocker | Did it land without comparison drift? |
-| `integrate` — **pending native repair** | audited item(s), expected lineage | verified candidate pin and fingerprint | Is there one study-ready candidate? |
+| `integrate` | audited item(s), expected lineage | verified `CANDIDATE` pin and fingerprints, or a named `BLOCKER` | Is there one study-ready candidate? |
 | `study.execute` | pin, question, protocol rulings | committed study record or blocker | Did it run against the exact contract? |
 | `study.read` | committed record only | native synthesis and findings | What does the evidence establish? |
 
-**One seam — `integrate` — is not repaired yet, and a goal round may not silently absorb its repair.**
+**Every seam is native now. A goal round still may not silently absorb a seam repair.**
 
 - **`research`** is native: `scripts/source_registry.py` is the one write door into `knowledge/`, `scripts/research_seam.py` carries a bounded request and computes its return from receipts on disk, and `/research-acquire` drives search and triage between them. Operator guide: `docs/research_seam_operator_guide.md`. (Repaired by GSTH Item 2; row flipped on the first live registrations — WI-033, 2026-08-28.)
-- **`integrate`** has no native tracked procedure for regeneration → verification → pin. **There is no written pattern to follow** — unlike `research`, this seam has no documented hand pattern anywhere in the repository. Until epic Item 3 lands the repair, integration work is a `PREREQUISITE` return naming the seam, handed to the operator. Do not improvise one and do not treat someone's remembered practice as the pattern.
+- **`integrate`** is native: `scripts/integrate.py` proves regeneration → verification → pin in one invocation and returns exactly one `CANDIDATE` pin and fingerprints or a named `BLOCKER`; it performs nothing and commits nothing (ADR-009 — a fixed-point proof, not a mutator). Operator guide: `docs/integration_seam_operator_guide.md`. (Repaired by GSTH Item 3; row flipped on the first live goal-round invocation — GSTH Item 6, goal `p-pump-fence`, 2026-08-29.)
 
-"May not silently absorb" means: if a task finds itself performing the repair rather than the documented pattern, that is a `PREREQUISITE` return naming the seam, not a quiet expansion of scope. The repair has its own owner and its own failure contract.
+"May not silently absorb" means: if a task finds itself repairing a seam rather than invoking its documented procedure, that is a `PREREQUISITE` return naming the seam, not a quiet expansion of scope. A seam repair has its own owner and its own failure contract.
 
 ## The decisions behind this
 
