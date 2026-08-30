@@ -15,16 +15,8 @@
 ## GSTH — epic closed (2026-08-30)
 
 - **The epic is closed and archived** to `.project/completed/20260830_epic_goal_strategy_task_harness.md` — all six items closed 2026-08-27 → 2026-08-30, all eleven epic success criteria ticked (per-criterion evidence: `.project/completed/20260830_goal-integration-study-proof/epic_evidence.md` § 2), product-lens gate CLEAR. Product ledger entry **0001** ("A non-builder runs a goal round from the runbook and native records alone") filed at close; `ADR-0010` records the oracle-carry ruling (the "pending owner yes/no" is discharged). Every seam `GOAL_RUNBOOK.md` lists is native.
-- **Owner-held remainder.** Push, PR and merge — reserved gate 4; one PR ships WI-033 + Item 6 + this epic close on `feat/wi033-p-pump-rebase` (spec § Align ruling 2), with `/_my_pre_pr` as the branch gate first. PRs #108 and #109 still await the owner's merge — see § Shipped for merge.
+- **Owner-held remainder.** Push, PR and merge — reserved gate 4; one PR ships WI-033 + Item 6 + this epic close on `feat/wi033-p-pump-rebase` (spec § Align ruling 2), the branch gate ran 2026-08-30: **READY** (`.project/reports/2026-08-30-pre-pr-wi033-gsth-epic-close.md`). PRs #108 and #109 are **merged** (2026-08-27 / 2026-08-28); `origin/main` (`0a3815d4`, the #109 merge) is this branch's base.
 - **Live follow-up: `WI-034`** ("CAS10 land-term guard", MFE Cost Modeling epic, `work/BACKLOG.md`, status `backlog`), minted at `5d740688`. One defect, two sightings: `net_positive` cannot read violated because CAS10's land term takes `sqrt(p_net)` and fails first. Four recorded hardening candidates (`epic_evidence.md` § 4): F-1/F-2 fixed at close as documentation, F-3/F-4 recorded with fix homes; no mechanism promoted, per epic SC 7.
-
-## Shipped for merge (2026-08-27)
-
-- **PR #108** — https://github.com/1cFE/fusion-tea/pull/108 — the whole `feat/goal-integration-seam` branch: GSTH Items 1–4, all closed and archived (`.project/completed/20260827_*`), plus Run-Study Item 6 Phases 1–3 (pre-existing lineage; Phase 4 still open). Pre-PR gate report: `.project/reports/2026-08-27-pre-pr-goal-integration-seam.md` (570/14/0; scope finding resolved by owner's one-PR ruling). **Owner: merge with a merge commit** (`! gh pr merge 108 --repo 1cFE/fusion-tea --merge --admin`), then `feat/goal-research-seam` can be deleted — strict ancestor, zero unique commits.
-
-## Shipped for merge (2026-08-28)
-
-- **PR #109** — https://github.com/1cFE/fusion-tea/pull/109 — `feat/goal-research-model-proof`: GSTH Item 5 closed and archived (`.project/completed/20260828_goal-research-model-proof/`), goal `p-pump-basis` closed by owner ruling, DI-008 amended, WI-033 minted. Gate READY (`.project/reports/2026-08-28-pre-pr-goal-research-model-proof.md`, 570/14/0). **Owner: merge with a merge commit** (`! gh pr merge 109 --repo 1cFE/fusion-tea --merge --admin`).
 
 ## Next up (in order, 2026-08-21)
 

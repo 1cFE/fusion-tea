@@ -20,7 +20,10 @@ Research, modeling, package generation, and study procedures worked separately, 
 - ADR-0008 (source identity), ADR-0009 (integration fixed-point proof), ADR-0010 (oracle mirrors audited bindings); product ledger entry 0001; WI-033 landed, WI-034 minted
 
 ### Lessons Learned
-[TODO: Add lessons learned]
+- The recurring discovery was the stale-expectation class: five hand-maintained expectations of package output (manifest headline, independent oracle, two test fixture sets, annex prose) surfaced one at a time across the round. Accepted as learning L-001 (`work/orchestration/goals/p-pump-fence/learnings.md`), deliberately not promoted to machinery per the epic's hardening rule.
+- Route equivalence earned its keep by failing first: the guide was not hand-reproducible from a fresh checkout (`close-F1`), and the honest resolution — repair the guide/env contract, then a fresh guide-only re-run — proved more than a clean first pass would have. Record: Item 6 `product-lens.md` resolution block, `route_equivalence.md`.
+- Lean-first held across all six items: no control-plane mechanism was promoted; four hardening candidates are recorded with fix homes (`epic_evidence.md` § 4), and the three declared limits are stated rather than worked around (§ 3).
+- Register renames need a repo-wide reference sweep: the four-digit ADR migration updated `tests/orchestration` but missed a `tests/study` consumer of the old filename/index format, caught at the pre-PR battery (fixed `e64d2136`).
 
 ---
 
