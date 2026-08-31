@@ -1,0 +1,421 @@
+{
+ "snapshot_schema_version": "1",
+ "study_id": "20260830-stress-fence",
+ "package": {
+  "path": "exploration/stellarator_e2e/pkg/stellarator_tea",
+  "package_name": "stellarator_tea",
+  "repo_commit": "a7e03073d806b50f4ec954edcc3931f336cb8785",
+  "git_clean": true
+ },
+ "fingerprints": {
+  "indicator_inputs": {
+   "recipe": "indicator-input-fingerprint/v1",
+   "digest": "287479a32470e48c9f48f2338f66eadfdb782098fb9b1e82a31234da7729fdfa",
+   "files": [
+    {
+     "path": "contracts/model_contract.json",
+     "sha256": "ff4391c53e2d64fa7109c42ad6a4b0a158933b957b189044e855beada29b6f6c"
+    },
+    {
+     "path": "inputs/mfe_account_costs_params.json",
+     "sha256": "5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3"
+    },
+    {
+     "path": "inputs/mfe_magnet_cost_params.json",
+     "sha256": "0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113"
+    },
+    {
+     "path": "inputs/mfe_magnet_field_params.json",
+     "sha256": "e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180"
+    },
+    {
+     "path": "inputs/mfe_plant_params.json",
+     "sha256": "ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814"
+    },
+    {
+     "path": "inputs/mfe_plasma_scaling_params.json",
+     "sha256": "b108a2244facc72035571c31c65a05b0440154dfddfc50c32a8ea799f2d938c8"
+    },
+    {
+     "path": "inputs/stellarator_plant_params.json",
+     "sha256": "e45c92a59a859567b4ee0412562d7d7f89457d42a34779ea96da75e0fc1f14ed"
+    },
+    {
+     "path": "pipelines/pipeline.yaml",
+     "sha256": "88df54e1356190061a1459b2753c52788e5ec5d89ccd3a61f2dc7b08b47bbe3c"
+    }
+   ]
+  },
+  "recorded_provenance.executable_fingerprint": "75f90a24dc419fd9f29a2c8d9ee26beae1f2d4fb126eca498c651538941551be",
+  "recorded_provenance.semantic_fingerprint": "819a5a05220e5caff7d317c02c32ef4fed37f7f091e776fba8dff7f168235fd4"
+ },
+ "manifest": {
+  "path": "exploration/stellarator_e2e/studies/manifest.json",
+  "schema_version": "study-package-manifest/v1",
+  "digest": "d5293415c33a6e2f2b9219e09343f97c2372070f69e012b3397574ec319df180",
+  "content_used": {
+   "fingerprint_names": [
+    "indicator_inputs",
+    "recorded_provenance.executable_fingerprint",
+    "recorded_provenance.semantic_fingerprint"
+   ],
+   "ties": [
+    {
+     "key": "stellarator_09__stellaris__magnet__R0",
+     "rides_with": [
+      "stellarator_09__stellaris__R"
+     ],
+     "note": "Magnet coil major radius is the same physical quantity as the plasma major radius. Its suffix is R0, not R, so no suffix scan will ever surface it -- the tie must be declared. Advisory here: a group holding R but not this key earns a tie_candidate warning, never an added key. Since the model migration the plasma major radius is one plant-level entry point (R), not the geom__R / rb__R fan-out."
+    }
+   ],
+   "objective_catalog": [
+    {
+     "name": "lcoe",
+     "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+     "note": "Headline levelized cost of electricity. Exit-point filename is stellaris__lcoe.json; the catalog keys on the channel, never the filename."
+    },
+    {
+     "name": "lcoe_1cfe",
+     "channel": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+     "note": "LCOE variant using the 1costingfe CAS90 rollup."
+    },
+    {
+     "name": "cas72",
+     "channel": "stellarator_09__stellaris__cas72_calc__cost",
+     "note": "Levelized annual replacement cost."
+    },
+    {
+     "name": "fuel",
+     "channel": "stellarator_09__stellaris__fuel_calc__annual_fuel",
+     "note": "Annual fuel cost."
+    },
+    {
+     "name": "total_capital",
+     "channel": "stellarator_09__stellaris__total_capital__total_capital",
+     "note": "Total capital cost including interest during construction."
+    },
+    {
+     "name": "cas27",
+     "channel": "stellarator_09__stellaris__special_materials_capital__special_materials_capital",
+     "note": "CAS27 special-materials capital, computed in-package from the radial-build blanket volume since the model migration (2026-08-21). Declared as an objective so generic verification compares it against the oracle's own recompute: on the era route this value was glue-fed to both sides and never independently verified."
+    },
+    {
+     "name": "beta",
+     "channel": "stellarator_09__stellaris__beta_calc__beta",
+     "note": "Volume-averaged thermal beta computed by 'Volume-Averaged Beta' from the profile referents and magnet__B (WI-030); replaces the retired bound input beta. Compared against the oracle's closed form so a magnet study verifies the physics lever it moves."
+    },
+    {
+     "name": "magnet_capital",
+     "channel": "stellarator_09__stellaris__magnet_capital_rollup__capital_cost",
+     "note": "CAS22.1.3 magnet capital \u2014 since WI-035 the decomposed rollup (winding pack + casing structure), the channel the plant's magnet.capital_cost reads. The old conductor-proxy lump is the separate magnet_capital_1cfe comparison objective."
+    },
+    {
+     "name": "magnet_capital_1cfe",
+     "channel": "stellarator_09__stellaris__magnet_cost__capital_cost",
+     "note": "1cfe-form comparison channel (WI-035 D6): the retained 'Magnet Coil Cost' conductor-proxy lump, now responding to the computed field. Kept as an objective so the decomposed rollup and the calibrated lump stay observable side by side."
+    }
+   ],
+   "baseline": {
+    "point": {
+     "stellarator_09__stellaris__R": 12.7,
+     "stellarator_09__stellaris__magnet__R0": 12.7,
+     "stellarator_09__stellaris__a": 1.3,
+     "stellarator_09__stellaris__availability": 0.85
+    },
+    "headline": {
+     "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+     "value": 304.48161969642837
+    },
+    "verdicts": [
+     {
+      "source_local_identity": "beta_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "net_positive",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "peak_field_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "recirc_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "tbr_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "wall_load_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "wp_stress_ok",
+      "expected": "satisfied"
+     }
+    ]
+   },
+   "oracle": {
+    "kind": "python_callable",
+    "module": "oracle_entry",
+    "callable": "evaluate",
+    "sys_path": "exploration/stellarator_e2e/studies",
+    "note": "Package-owned oracle seam. evaluate(point) takes a mapping of qualified entry keys to floats and returns a mapping of qualified channel names to floats; it wraps the independent pure-Python oracle verify_stellaris.py, which is imported and never modified. The module also publishes a fixed-name companion, operand_bindings() -> {constraint_id: {source_name: {kind, key}}}, which says which qualified input key or channel each predicate operand means. A generic verifier requires both and fails closed on anything unresolved: on this package one operand of five constraints resolves to nothing by name at all, so a tool that inferred bindings would compare the wrong number and read as a pass.",
+    "source_digest": {
+     "recipe": "tool-source-digest/v1",
+     "digest": "c0af84639bdefe57ce2c823806a57d4ebb007fb12fe8859a6f468de976d155f0",
+     "files": [
+      {
+       "path": "exploration/stellarator_e2e/verify_stellaris.py",
+       "sha256": "a86ffaec926a929e25cb30d95894ba8b963b6c3f6612793de2ee4939c269ac1e"
+      },
+      {
+       "path": "exploration/stellarator_e2e/studies/oracle_entry.py",
+       "sha256": "9741d11611c0d85b4f050f8ae2dc1451ce485447c84ee74aa9f6f5c6bf710b67"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "stores": [
+  {
+   "store_id": "20260830-stress-fence",
+   "path": "exploration/stellarator_e2e/studies/_work/20260830-stress-fence/20260830-stress-fence.db",
+   "compatibility_tuple": {
+    "study_id": "20260830-stress-fence",
+    "executable_fingerprint": "75f90a24dc419fd9f29a2c8d9ee26beae1f2d4fb126eca498c651538941551be",
+    "model_contract_fingerprint": "819a5a05220e5caff7d317c02c32ef4fed37f7f091e776fba8dff7f168235fd4",
+    "study_definition_fingerprint": "1eac1c758d5b4bbf89b1656ca74e77ead70f6aab60bc122ad66665a624cda035",
+    "input_schema_version": "input-v1",
+    "evidence_schema_version": "v2",
+    "strategy_identity": "prepared-list/v1",
+    "strategy_config": "87f88d10968368cebafb57ac834af71b2ca2a845731a7e81a0c5fe99eeeea0a6"
+   },
+   "note": "outside the record directory and not committed (the 20260821-power-cycle-ab#11 convention); the committed per-point evidence is results/points.csv + results/oracle_operands.csv"
+  }
+ ],
+ "arms": [
+  {
+   "arm_id": "arm-grid-R-I",
+   "store_id": "20260830-stress-fence",
+   "effective_executable_fingerprint": {
+    "value": "75f90a24dc419fd9f29a2c8d9ee26beae1f2d4fb126eca498c651538941551be",
+    "inputs": null,
+    "no_adapter": true,
+    "note": "no adapter exists; the sealed fingerprint is the identity"
+   },
+   "entry_models": null,
+   "strategy": "prepared-list/v1 config 87f88d10968368cebafb57ac834af71b2ca2a845731a7e81a0c5fe99eeeea0a6 (one PreparedListStrategy over both arms' proposals; grid rows are the wp_side = 0.36 proposals incl. the appended baseline)",
+   "window": {
+    "bounds": {
+     "R": {
+      "values": "4.0..20.0 step 0.5 (33, study_route.R_VALUES \u2014 the comparand's grid object)"
+     },
+     "I_coil": {
+      "values": "2.0e6..26.0e6 A step 0.5e6 (49)"
+     },
+     "held": {
+      "a": 1.3,
+      "availability": 0.85,
+      "discount_rate": 0.07,
+      "wp_side": 0.36
+     }
+    },
+    "provenance": "engineered"
+   },
+   "verification": {
+    "command": "uv run python scripts/study/verify.py --package exploration/stellarator_e2e/pkg/stellarator_tea --manifest exploration/stellarator_e2e/studies/manifest.json --identity results/package_identity.json --store ../_work/20260830-stress-fence/20260830-stress-fence.db --out results/verification_summary.json",
+    "tool_revision": "83a3acb1df59bf9a48eeca260404cdb38d3bea5a6a9b4397e2a964b58f308ba6",
+    "sampling_scheme": "stratified-by-verdict-combination/v1 (12 rows, one store spanning both arms)",
+    "tolerance": "rel < 1e-9 on every compared channel; worst observed 4.37e-16",
+    "summary_sha256": "985bc732415e1e37380f41e19e7d857f4b1727856f2703c4eb3656914d203ebb"
+   },
+   "glue_ledger": [],
+   "glue_ledger_none": true,
+   "artifacts": [
+    {
+     "path": "results/baseline_result.json",
+     "sha256": "07ea4f62bb53ae5f2e9e64b45b9f1bf87c3729e3216b29653c88c6022db85992"
+    },
+    {
+     "path": "results/excluded_points.csv",
+     "sha256": "ef806e7f1eb823573e43caa31112c420833c2b8acb4e91572607afd2a8c625bd"
+    },
+    {
+     "path": "results/oracle_operands.csv",
+     "sha256": "d9801df0b4da62697e5e6a306428507b7d0eb4ffc121f5915c618b1193f9f270"
+    },
+    {
+     "path": "results/package_identity.json",
+     "sha256": "ea4c9721c84d96c0edc0d1bb13ff01d32c551d4cecbe5d3194ff8cf70437a4bf"
+    },
+    {
+     "path": "results/points.csv",
+     "sha256": "90d9bcf027452c8cf2547250c6797418b60f96e06821635e72a6c37fc9050532"
+    },
+    {
+     "path": "results/preflight_results.json",
+     "sha256": "df100ccbab227ec6ed42a71a129be26b361a4a074e8cb67b7a777182d0a8ee0d"
+    },
+    {
+     "path": "results/verification_summary.json",
+     "sha256": "985bc732415e1e37380f41e19e7d857f4b1727856f2703c4eb3656914d203ebb"
+    },
+    {
+     "path": "results/window_scan.json",
+     "sha256": "67b8edc87c15413fa3db7d49ddd283550e52511406ab9b76a07225e5ad3701f4"
+    }
+   ]
+  },
+  {
+   "arm_id": "arm-transect-wp-side",
+   "store_id": "20260830-stress-fence",
+   "effective_executable_fingerprint": {
+    "value": "75f90a24dc419fd9f29a2c8d9ee26beae1f2d4fb126eca498c651538941551be",
+    "inputs": null,
+    "no_adapter": true,
+    "note": "no adapter exists; the sealed fingerprint is the identity"
+   },
+   "entry_models": null,
+   "strategy": "prepared-list/v1 config 87f88d10968368cebafb57ac834af71b2ca2a845731a7e81a0c5fe99eeeea0a6 (one PreparedListStrategy over both arms' proposals; transect rows are the wp_side != 0.36 proposals at the baseline point)",
+   "window": {
+    "bounds": {
+     "wp_side": {
+      "values": "0.20..0.52 step 0.02 m, excluding 0.36 (16)"
+     },
+     "held": {
+      "R": 12.7,
+      "I_coil": 15400000.0,
+      "a": 1.3,
+      "availability": 0.85,
+      "discount_rate": 0.07
+     }
+    },
+    "provenance": "engineered"
+   },
+   "verification": {
+    "command": "uv run python scripts/study/verify.py --package exploration/stellarator_e2e/pkg/stellarator_tea --manifest exploration/stellarator_e2e/studies/manifest.json --identity results/package_identity.json --store ../_work/20260830-stress-fence/20260830-stress-fence.db --out results/verification_summary.json",
+    "tool_revision": "83a3acb1df59bf9a48eeca260404cdb38d3bea5a6a9b4397e2a964b58f308ba6",
+    "sampling_scheme": "stratified-by-verdict-combination/v1 (12 rows, one store spanning both arms)",
+    "tolerance": "rel < 1e-9 on every compared channel; worst observed 4.37e-16",
+    "summary_sha256": "985bc732415e1e37380f41e19e7d857f4b1727856f2703c4eb3656914d203ebb"
+   },
+   "glue_ledger": [],
+   "glue_ledger_none": true,
+   "artifacts": [
+    {
+     "path": "results/baseline_result.json",
+     "sha256": "07ea4f62bb53ae5f2e9e64b45b9f1bf87c3729e3216b29653c88c6022db85992"
+    },
+    {
+     "path": "results/excluded_points.csv",
+     "sha256": "ef806e7f1eb823573e43caa31112c420833c2b8acb4e91572607afd2a8c625bd"
+    },
+    {
+     "path": "results/oracle_operands.csv",
+     "sha256": "d9801df0b4da62697e5e6a306428507b7d0eb4ffc121f5915c618b1193f9f270"
+    },
+    {
+     "path": "results/package_identity.json",
+     "sha256": "ea4c9721c84d96c0edc0d1bb13ff01d32c551d4cecbe5d3194ff8cf70437a4bf"
+    },
+    {
+     "path": "results/points.csv",
+     "sha256": "90d9bcf027452c8cf2547250c6797418b60f96e06821635e72a6c37fc9050532"
+    },
+    {
+     "path": "results/preflight_results.json",
+     "sha256": "df100ccbab227ec6ed42a71a129be26b361a4a074e8cb67b7a777182d0a8ee0d"
+    },
+    {
+     "path": "results/verification_summary.json",
+     "sha256": "985bc732415e1e37380f41e19e7d857f4b1727856f2703c4eb3656914d203ebb"
+    },
+    {
+     "path": "results/window_scan.json",
+     "sha256": "67b8edc87c15413fa3db7d49ddd283550e52511406ab9b76a07225e5ad3701f4"
+    }
+   ]
+  }
+ ],
+ "tools": [
+  {
+   "path": "scripts/study/indicators.py",
+   "source_digest": {
+    "recipe": "tool-source-digest/v1",
+    "digest": "32b92f15a54f8e1d331c8ac647c25021071abf822ba9cbfc4957b9a1f10e149b",
+    "files": [
+     {
+      "path": "scripts/study/indicators.py",
+      "sha256": "5c2c30532e058a76739a4ee95b619f2bc48209683feddec9d6aa76c821bd49df"
+     }
+    ]
+   }
+  },
+  {
+   "path": "scripts/study/preflight.py",
+   "source_digest": {
+    "recipe": "tool-source-digest/v1",
+    "digest": "43964b71a5f8181bb64093fe26b8bda6a130de4cc3d2d35e386d04f2f6e76598",
+    "files": [
+     {
+      "path": "scripts/study/preflight.py",
+      "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+     }
+    ]
+   }
+  },
+  {
+   "path": "scripts/study/verify.py",
+   "source_digest": {
+    "recipe": "tool-source-digest/v1",
+    "digest": "83a3acb1df59bf9a48eeca260404cdb38d3bea5a6a9b4397e2a964b58f308ba6",
+    "files": [
+     {
+      "path": "scripts/study/verify.py",
+      "sha256": "bd339a8024f0c1f1fc8b1c9b0cdbee930c063861a2c2f5973b0ad091e09b9ef7"
+     }
+    ]
+   }
+  },
+  {
+   "path": "scripts/study/manifest.py",
+   "source_digest": {
+    "recipe": "tool-source-digest/v1",
+    "digest": "951ef9940c6a64d3d8c8c173bf8e5ac2ad9fd121c3a555eb81cbceda188af82c",
+    "files": [
+     {
+      "path": "scripts/study/manifest.py",
+      "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+     }
+    ]
+   }
+  }
+ ],
+ "teax": {
+  "revision": "744745f895677f3344b9884627369a6a47ed987f",
+  "era_pin": null
+ },
+ "indicators": {
+  "path": "indicators.json",
+  "sha256": "7fd64f0a58d6a57840faa2a4f704b4704aa71e40ebd30a9f8796567493cb68cc",
+  "output_schema_version": "study-indicators/v1",
+  "axis_declaration": {
+   "path": "exploration/stellarator_e2e/studies/20260830-stress-fence/axes.json",
+   "schema_version": "study-axis-declaration/v1",
+   "digest": "2ea11bafe2574065a259aa35f6055d5fcd5fe4a2b6fe2b241c54c1031a95b519",
+   "groups_declared": [
+    "I_coil",
+    "R+tie",
+    "wp_side",
+    "a",
+    "availability",
+    "discount_rate"
+   ],
+   "subset": false
+  }
+ }
+}
