@@ -35,7 +35,8 @@ EXPECTED_VERDICTS = {
     "recirc_ok": "satisfied",
     "tbr_ok": "satisfied",
     "wall_load_ok": "satisfied",
-    "peak_field_ok": "satisfied",  # WI-030 conductor peak-field limit
+    "peak_field_ok": "satisfied",  # WI-030 conductor peak-field limit,
+    "wp_stress_ok": "satisfied",  # WI-035
 }
 
 
@@ -107,9 +108,9 @@ def _anchor_gate(values: dict[str, float]) -> bool:
 
 
 def _assert_generated_verdicts(outputs) -> None:
-    """The model's six design-point verdicts remain a separate assertion gate."""
+    """The model's seven design-point verdicts remain a separate assertion gate."""
     report = outputs["constraint_report"]
-    print("=== SIX VERDICTS (generated ConstraintReport) ===")
+    print("=== SEVEN VERDICTS (generated ConstraintReport) ===")
     verdicts = {}
     for channel, value in outputs.items():
         if channel.endswith("__evaluation") and hasattr(value, "status"):
@@ -120,8 +121,8 @@ def _assert_generated_verdicts(outputs) -> None:
     assert report.headline == "full_satisfaction", (
         f"headline {report.headline!r} != full_satisfaction"
     )
-    assert report.assessed_entry_count == 6, (
-        f"assessed_entry_count {report.assessed_entry_count} != 6"
+    assert report.assessed_entry_count == 7, (
+        f"assessed_entry_count {report.assessed_entry_count} != 7"
     )
     for name, expected in EXPECTED_VERDICTS.items():
         actual = verdicts.get(name)
@@ -132,7 +133,7 @@ def _assert_generated_verdicts(outputs) -> None:
     print(
         "VERDICT PARITY: PASS -- "
         f"headline={report.headline}, assessed_entry_count={report.assessed_entry_count}, "
-        "all six == satisfied"
+        "all seven == satisfied"
     )
 
 

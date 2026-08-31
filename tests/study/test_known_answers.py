@@ -142,7 +142,11 @@ def test_the_declared_tie_extends_reach_through_the_field(report):
     assert tied_reach - plain_reach == {"beta_ok", "peak_field_ok", "wp_stress_ok"}
     assert set(plain["objectives_reachable"]) < set(tied["objectives_reachable"])
     assert "beta" in tied["objectives_reachable"]
-    assert "magnet_capital" in tied["objectives_reachable"]
+    # The decomposed rollup (magnet_capital) does NOT respond to R: the winding
+    # length is the held c_coil, not a bore-derived proxy — a disclosed WI-035
+    # limitation. The 1cfe-form comparison lump still scales with R0.
+    assert "magnet_capital_1cfe" in tied["objectives_reachable"]
+    assert "magnet_capital" not in tied["objectives_reachable"]
     assert len(tied["declared_keys"]) == 2
 
 

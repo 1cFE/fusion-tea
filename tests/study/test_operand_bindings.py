@@ -1,15 +1,16 @@
 """DE-RISK 1 (review L1): the package can publish every predicate operand's binding.
 
 The design's earlier bet was that a generic tool could resolve a predicate operand
-to a package key by name. That bet is false on this package: of the eleven
-``feature_ref`` operands across the six catalog constraints, ``net_positive``'s
+to a package key by name. That bet is false on this package: of the thirteen
+``feature_ref`` operands across the seven catalog constraints (WI-035 added
+wp_stress_ok), ``net_positive``'s
 ``net_electric`` matches no parameter and no channel at all, and the three that
 could be name-matched use three different composition rules. So D12 moved the
 obligation to the package: it *publishes* the bindings, and ``verify.py`` consumes
 them as data and fails closed on anything unresolved.
 
 This test proves the publication is possible and correct against the real contract,
-before anything consumes it. It resolves all six constraints — no sampling.
+before anything consumes it. It resolves all seven constraints — no sampling.
 """
 
 import json
@@ -86,7 +87,7 @@ def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
                 f"a package {binding['kind']}"
             )
             resolved += 1
-    assert resolved == 11, f"expected eleven feature_ref operands across the six, found {resolved}"
+    assert resolved == 13, f"expected thirteen feature_ref operands across the seven, found {resolved}"
 
 
 def test_the_operand_that_resolves_to_nothing_by_name_is_bound_explicitly(
