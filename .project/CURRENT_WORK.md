@@ -1,13 +1,13 @@
 # Current Work
 
-**Updated 2026-08-30 (magnet-closure round 1 closed — awaiting fresh review).**
+**Updated 2026-08-30 (magnet-closure: goal measured at target — three owner rulings pending).**
 
 ## Where things stand
 
-- **Goal `magnet-closure` round 1 is closed and unreviewed** (`work/orchestration/goals/magnet-closure/trail.md`): WI-035 landed the full magnet closure (field from coil current, wp_stress_ok limit, decomposed cost accounts), the integrate seam returned a CANDIDATE pin (287479a3…), and study `20260830-stress-fence` committed a valid reading — the stress fence binds for R ≥ 16.5 m, the coil-sizing flip sits at 0.28–0.30 m, comparand fences unmoved 99/99.
-- **Next action: a FRESH session runs the round review** (`GOAL_RUNBOOK.md` § The fresh review) — this closing session authored everything and may not review it. After a pass: recommend close (the goal's § Answered when now needs the fresh Row-3 re-grade) or write round 2's strategy.
-- New unrouted sightings for the next round: `20260830-stress-fence#1` (held winding length → magnet capital R-flat) and `#2` (wp_side costless). `magnet-ab#4` stays owner-gated (Rung C).
-- WI-035 is at `work/active/` awaiting audit + owner close; SV-038/039/040 `passing`; merge/push owner-held. New baseline headline: LCOE 304.482, total capital $14.574B.
+- **Goal `magnet-closure` round 2 closed** (`work/orchestration/goals/magnet-closure/trail.md`, close commit `0cf0cf41`): the fresh non-author Row-3 re-grade at the frozen `rubric.md@dc0f0b6d` reads **R3.P = 3 (was 1), R3.S = 3 (was 2)** — the goal's § Answered when target, the demo epic Item 10 chain's first measured maturation delta. Deposit: `.project/active/demo-depth-rubric/grading-r3-regrade.md`.
+- **Three owner rulings pending** (trail § Round 2 Stop): (1) the § Answered when "affected studies re-run clean" reading (new study clean + the restated non-reproducible B-axis comparand — or re-run something first); (2) the goal close itself; (3) the routing proposal for `20260830-stress-fence#1`/`#2` — one modeling item, the winding-pack sizing chain, MFE Cost Modeling epic.
+- **A fresh session should review round 2** (`GOAL_RUNBOOK.md` § The fresh review) before or at close.
+- WI-035 at `work/active/` awaits item close; merge/push owner-held; `magnet-ab#4` stays behind the Rung C gate. Baseline: LCOE 304.482, total capital $14.574B, seven verdicts satisfied.
 
 ---
 
