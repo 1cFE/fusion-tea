@@ -27,7 +27,7 @@ BASELINE_POINT = {
     "stellarator_09__stellaris__a": 1.3,
     "stellarator_09__stellaris__availability": 0.85,
 }
-PINNED_LCOE = 333.0670332813743  # p_pump 195 MW pin (WI-033; GSTH Item 6, 2026-08-29)
+PINNED_LCOE = 304.48161969642837  # WI-035 pin (decomposed magnet capital; goal magnet-closure, 2026-08-30)
 
 
 @pytest.fixture
@@ -65,7 +65,7 @@ def package_inputs(package_path):
 
 def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
     entries = catalog_entries(real_package_path)
-    assert len(entries) == 6, f"expected the six viability constraints, found {len(entries)}"
+    assert len(entries) == 7, f"expected the seven viability constraints, found {len(entries)}"
     bindings = oracle_entry.operand_bindings()
     channels = oracle_entry.evaluate(BASELINE_POINT)
     inputs = package_inputs(real_package_path)

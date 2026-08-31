@@ -89,8 +89,17 @@ IN = dict(
     p_cryo_direct=0.0,
     # magnet — B = 9.0 (WI-023): axis-averaged B_0 printed in the Table 2/5
     #   images (the old 5.86 cited a phantom Table 3 text row).
-    magnet_G=78.95683520871486, magnet_B=9.0, magnet_R0=12.7,
-    magnet_cost_per_kAm=50.0, magnet_coil_markup=5.87,  # r_coil now from radial build (WI-021)
+    # magnet (WI-035, inversion): B is COMPUTED from the coil-set current; the
+    #   held magnet_B=9.0 is retired. Lever and coil-set facts mirror the
+    #   stellarator_plant bindings (Table 2/8 images; design D2/D3/D4/D5).
+    magnet_G=78.95683520871486, magnet_R0=12.7,
+    magnet_cost_per_kAm=50.0, magnet_coil_markup=5.87,  # 1cfe-form comparison channel
+    magnet_n_coils=48.0, magnet_I_coil=15400000.0,
+    magnet_k_link=0.7731331164622419, magnet_two_pi=6.283185307179586,
+    magnet_f_set=0.8701298701298701, magnet_c_coil=25.0,
+    magnet_wp_side=0.36, magnet_k_sigma=0.6102331403536223,
+    magnet_sigma_allow=800000000.0, magnet_f_wp_fab=6.65,
+    magnet_m_casing=63000.0, magnet_steel_price=6.0, magnet_f_steel_fab=3.0,
     # conductor facts (WI-030): peak/axis ratio 24.9/9.0 as its float64 value; REBCO
     # ceiling bound to the Stellaris design value (owner 2026-08-21)
     magnet_peak_ratio=2.7666666666666666, magnet_B_max=24.9,
@@ -236,10 +245,24 @@ def compute():
     rec_frac = 1.0 / q_eng
     p_net = (1.0 - rec_frac) * p_et
 
+    # --- Coil-set field, peak field, winding-pack stress (WI-035) ---
+    # Mirror 'Coil Set Axis Field' / 'Conductor Peak Field' / 'Winding Pack
+    # Stress' statement forms for operation (bit-exact bar).
+    B_axis = (p["mu0"] * p["magnet_k_link"] * p["magnet_n_coils"] * p["magnet_I_coil"]
+              / (p["magnet_two_pi"] * p["magnet_R0"]))
+    B_peak = B_axis * p["magnet_peak_ratio"]
+    sigma_wp = p["magnet_k_sigma"] * p["magnet_I_coil"] * B_peak / p["magnet_wp_side"]
+
     # --- Account costs ($) ---
-    total_kAm = (p["magnet_G"] * p["magnet_B"] * p["magnet_R0"] * r_coil
+    total_kAm = (p["magnet_G"] * B_axis * p["magnet_R0"] * r_coil
                  / (p["mu0"] * 1000.0))
     magnet = total_kAm * p["magnet_cost_per_kAm"] * p["magnet_coil_markup"]
+    # WI-035 decomposed magnet accounts (design D4/D5/D6); `magnet` above stays
+    # the 1cfe-form comparison channel, the rollup enters the powercore sum.
+    kAm_wind = p["magnet_n_coils"] * p["magnet_I_coil"] * p["magnet_f_set"] * p["magnet_c_coil"] / 1000.0
+    winding_pack = kAm_wind * p["magnet_cost_per_kAm"] * p["magnet_f_wp_fab"]
+    magnet_structure = p["magnet_n_coils"] * p["magnet_m_casing"] * p["magnet_steel_price"] * p["magnet_f_steel_fab"]
+    magnet_capital_rollup = winding_pack + magnet_structure
     blanket = (p["blanket_unit_cost"] * p["blanket_structure_factor"] * blanket_vol
                * (p_th / p["p_th_ref"]) ** p["alpha_06"])
     shield = (p["shield_unit_cost"] * shield_vol * p["shield_scale"]
@@ -272,7 +295,7 @@ def compute():
     annual_om_unlevelized = ((p["om_annual_ref"] * (((p_net * p["n_mod"]) / p["ref_net_power"]) ** p["om_alpha"]))
                  + p["om_direct"])
 
-    powercore_capital = (magnet + heating + divertor + blanket + shield
+    powercore_capital = (magnet_capital_rollup + heating + divertor + blanket + shield
                          + structure + vessel + power_supplies)
     bop_capital = turbine + electric + heat_rejection + misc
 
@@ -285,8 +308,10 @@ def compute():
     installation = p["installation_frac"] * reactor_equipment_subtotal
     coolant = (p["coolant_primary_base"] * (n * p_net / p["coolant_ref_net"])
                + p["coolant_intermediate_base"] * (n * p_th / p["coolant_p_th_ref"]) ** p["coolant_alpha"])
-    aux_cooling = (p["aux_per_mw"] * (n * p_th)
-                   + p["aux_cryo_base"] * (p_cryo / p["aux_p_cryo_ref"]) ** p["aux_alpha"])
+    # WI-035 D7: the aux and cryoplant terms as their own channels; sum bit-identical.
+    aux_cost = p["aux_per_mw"] * (n * p_th)
+    cryo_cost = p["aux_cryo_base"] * (p_cryo / p["aux_p_cryo_ref"]) ** p["aux_alpha"]
+    aux_cooling = aux_cost + cryo_cost
     waste = p["waste_base"] * (n * p_th / p["waste_ref"]) ** p["waste_alpha"]
     fuel_handling = p["fuel_handling_base"] * (n * p_net / p["fuel_ref"]) ** p["fuel_alpha"]
     other_rpe = p["other_rpe_base"] * (n * p_net / p["other_ref"]) ** p["other_alpha"]
@@ -395,14 +420,18 @@ def compute():
     beta_p_fuel = (p["n_D0"] + p["n_T0"]) * p["T_i0"] / (1.0 + p["alpha_n"] + p["alpha_T"])
     beta_p_He = p["n_He0"] * p["T_i0"] / (1.0 + p["alpha_n"] + p["alpha_T"])
     beta_p_avg = (beta_p_e + beta_p_fuel + beta_p_He) * p["beta_e_keV"]
-    beta = 2.0 * p["beta_mu0"] * beta_p_avg / (p["magnet_B"] ** 2)
-    B_peak = p["magnet_B"] * p["magnet_peak_ratio"]
+    # WI-035: beta reads the computed axis field (B_peak computed above).
+    beta = 2.0 * p["beta_mu0"] * beta_p_avg / (B_axis ** 2)
 
     return dict(
         V=V, p_fus=p_fus, p_th=p_th, p_the=p_the, p_et=p_et,
         p_cryo=p_cryo,  # derived cryoplant electrical (WI-024 chain output)
         q_eng=q_eng, rec_frac=rec_frac, p_net=p_net, wall_load=wall_load,
         beta=beta, B_peak=B_peak,  # WI-030 physics channels
+        B_axis=B_axis, sigma_wp=sigma_wp,  # WI-035 field + stress channels
+        winding_pack=winding_pack, magnet_structure=magnet_structure,
+        magnet_capital_rollup=magnet_capital_rollup,
+        aux_cost=aux_cost, cryo_cost=cryo_cost,  # WI-035 aux split
         magnet=magnet, heating=heating, divertor=divertor, blanket=blanket,
         shield=shield, structure=structure, vessel=vessel,
         power_supplies=power_supplies, turbine=turbine, electric=electric,

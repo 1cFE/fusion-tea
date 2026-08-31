@@ -12,9 +12,9 @@ Inputs:
 Outputs:
     - overnight_capital: overnight_capital result
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:639
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:688
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:639
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:688
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_plant/mfe_power_plant/overnight_capital_impl.py
@@ -56,9 +56,9 @@ Inputs:
 Outputs:
     - overnight_capital: overnight_capital result
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:639
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:688
 
-    SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:639
+    SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:688
 
     Calculation Specification:
 

@@ -15,10 +15,10 @@ import pytest
 from scripts.study import manifest
 from tests.study.conftest import DATA_DIR, run_tool
 
-CASES = ["availability", "interest_rate", "R", "R+tie", "a", "B"]
+CASES = ["availability", "interest_rate", "R", "R+tie", "a", "I_coil"]
 
 EXPECTED_SEMANTIC_FINGERPRINT = (
-    "f08daa7b1bcc62f838d33821646b676548c14edd535cb3b4482fd358bbfaed2e"
+    "819a5a05220e5caff7d317c02c32ef4fed37f7f091e776fba8dff7f168235fd4"
 )
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,
@@ -29,36 +29,16 @@ EXPECTED_SEMANTIC_FINGERPRINT = (
 #: more channel because CAS27 is now computed in-package and declared as the
 #: `cas27` objective, and each swept attribute is one plant-level entry point.
 FIXTURE_CONTRACT = {
-    "availability": (True, [], ["cas72", "fuel", "lcoe", "lcoe_1cfe"], 6, 8),
-    "interest_rate": (True, [], ["cas72", "lcoe", "lcoe_1cfe"], 8, 11),
-    "R": (
-        False,
-        ["net_positive", "recirc_ok", "wall_load_ok"],
-        ["cas27", "cas72", "fuel", "lcoe", "lcoe_1cfe", "magnet_capital", "total_capital"],
-        55,
-        68,
-    ),
-    "R+tie": (
-        False,
-        ["net_positive", "recirc_ok", "wall_load_ok"],
-        ["cas27", "cas72", "fuel", "lcoe", "lcoe_1cfe", "magnet_capital", "total_capital"],
-        55,
-        68,
-    ),
-    "a": (
-        False,
-        ["net_positive", "recirc_ok", "wall_load_ok"],
-        ["cas27", "cas72", "fuel", "lcoe", "lcoe_1cfe", "magnet_capital", "total_capital"],
-        55,
-        68,
-    ),
-    # WI-030: the bound-input beta axis retired; the field reaches both field-dependent
-    # verdicts through calcs ("Volume-Averaged Beta", "Conductor Peak Field") and the
-    # magnet cost, and the computed beta is itself a catalogued objective.
-    # Item 6 (design D9, 2026-08-21): `magnet_capital` declared as a catalogued objective,
-    # so every axis that reaches the magnet-cost module reaches one more objective.
-    "B": (False, ["beta_ok", "peak_field_ok"],
-          ["beta", "lcoe", "lcoe_1cfe", "magnet_capital", "total_capital"], 21, 21),
+    # Re-derived from the live report on the WI-035 package (2026-08-30): the
+    # B axis is retired (the field is computed); I_coil is the magnet lever and
+    # reaches wp_stress_ok and both magnet-capital objectives. Every axis gains
+    # the magnet_capital_1cfe objective where it already reached magnet_capital.
+    "availability": (True, [], ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'], 6, 8),
+    "interest_rate": (True, [], ['cas72', 'lcoe', 'lcoe_1cfe'], 8, 11),
+    "R": (False, ['net_positive', 'recirc_ok', 'wall_load_ok'], ['cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'total_capital'], 55, 70),
+    "R+tie": (False, ['beta_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'total_capital'], 62, 77),
+    "a": (False, ['net_positive', 'recirc_ok', 'wall_load_ok'], ['cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'total_capital'], 55, 70),
+    "I_coil": (False, ['beta_ok', 'peak_field_ok', 'wp_stress_ok'], ['beta', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'total_capital'], 26, 26),
 }
 
 
@@ -115,16 +95,17 @@ def test_availability_reaches_no_constraint(report):
     group = group_by_axis(report, "availability")
     assert group["no_constraint_response"] is True
     assert group["constraints_reachable"] == []
-    assert len(group["constraints_unreachable"]) == 6
+    assert len(group["constraints_unreachable"]) == 7
 
 
-def test_B_reaches_both_field_constraints_through_calcs(report):
-    """WI-030: beta_ok and peak_field_ok are computed-vs-bound comparisons whose computed
-    operand the on-axis field reaches through a library calc; neither is bound-vs-bound,
-    which is what made the retired beta axis a non-verdict."""
-    group = group_by_axis(report, "B")
+def test_I_coil_reaches_the_field_constraints_through_calcs(report):
+    """WI-035: the coil-current lever reaches beta_ok and peak_field_ok through the
+    computed field ('Coil Set Axis Field') and wp_stress_ok through 'Winding Pack
+    Stress' — all computed-vs-bound, none bound-vs-bound. The retired B axis (and
+    before it the retired bound beta) lived here."""
+    group = group_by_axis(report, "I_coil")
     reached = {c["source_local_identity"]: c for c in group["constraints_reachable"]}
-    assert set(reached) == {"beta_ok", "peak_field_ok"}
+    assert set(reached) == {"beta_ok", "peak_field_ok", "wp_stress_ok"}
     for constraint in reached.values():
         assert constraint["operator"] == "<="
         assert constraint["bound_vs_bound"] is False
@@ -147,14 +128,21 @@ def test_r_reaches_net_positive_through_a_computed_operand(report):
     assert literal["value"] == 0.0
 
 
-def test_the_declared_tie_does_not_change_reach(report):
-    """R+tie differs from R only in the declared key list and the tie warning."""
+def test_the_declared_tie_extends_reach_through_the_field(report):
+    """WI-035 inverted the old invariant: magnet__R0 now feeds 'Coil Set Axis
+    Field', so declaring the physical-identity tie ADDS the field-side reach —
+    beta_ok, peak_field_ok, wp_stress_ok — that plain R (plant geometry only)
+    cannot see. Before WI-035 the tie changed nothing; that this test had to
+    flip is the design response the rubric row asked for."""
     plain = group_by_axis(report, "R")
     tied = group_by_axis(report, "R+tie")
-    traced = ("constraints_reachable", "constraints_unreachable", "bounds",
-              "objectives_reachable", "objectives_unreachable", "trace_size",
-              "no_constraint_response", "sibling_candidates")
-    assert {k: plain[k] for k in traced} == {k: tied[k] for k in traced}
+    plain_reach = {c["source_local_identity"] for c in plain["constraints_reachable"]}
+    tied_reach = {c["source_local_identity"] for c in tied["constraints_reachable"]}
+    assert plain_reach < tied_reach
+    assert tied_reach - plain_reach == {"beta_ok", "peak_field_ok", "wp_stress_ok"}
+    assert set(plain["objectives_reachable"]) < set(tied["objectives_reachable"])
+    assert "beta" in tied["objectives_reachable"]
+    assert "magnet_capital" in tied["objectives_reachable"]
     assert len(tied["declared_keys"]) == 2
 
 

@@ -12,9 +12,9 @@ Inputs:
 Outputs:
     - cas2x_pre_contingency: cas2x_pre_contingency result
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:574
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:623
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:574
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:623
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_plant/mfe_power_plant/cas2x_pre_contingency_impl.py
@@ -56,9 +56,9 @@ Inputs:
 Outputs:
     - cas2x_pre_contingency: cas2x_pre_contingency result
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:574
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:623
 
-    SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:574
+    SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:623
 
     Calculation Specification:
 

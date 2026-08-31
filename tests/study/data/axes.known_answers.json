@@ -1,69 +1,69 @@
 {
-  "schema_version": "study-axis-declaration/v1",
-  "groups": [
+ "schema_version": "study-axis-declaration/v1",
+ "groups": [
+  {
+   "axis": "availability",
+   "note": "Plant capacity factor. One plant-level entry point since the model migration (the four consuming calcs bind it by the `_in` convention); it reaches replacement costing, fuel throughput, and the two LCOE variants.",
+   "keys": [
     {
-      "axis": "availability",
-      "note": "Plant capacity factor. One plant-level entry point since the model migration (the four consuming calcs bind it by the `_in` convention); it reaches replacement costing, fuel throughput, and the two LCOE variants.",
-      "keys": [
-        {
-          "key": "stellarator_09__stellaris__availability",
-          "provenance": "fan_out"
-        }
-      ]
-    },
-    {
-      "axis": "interest_rate",
-      "note": "Discount / interest rate. One plant-level entry point (`discount_rate`) since the model migration; it reaches CAS71, CAS72, CAS80 levelization and IDC.",
-      "keys": [
-        {
-          "key": "stellarator_09__stellaris__discount_rate",
-          "provenance": "fan_out"
-        }
-      ]
-    },
-    {
-      "axis": "R",
-      "note": "Plasma major radius, one plant-level entry point since the model migration (was the geom__R / rb__R fan-out).",
-      "keys": [
-        {
-          "key": "stellarator_09__stellaris__R",
-          "provenance": "fan_out"
-        }
-      ]
-    },
-    {
-      "axis": "R+tie",
-      "note": "R together with its declared physical-identity tie, the magnet coil major radius.",
-      "keys": [
-        {
-          "key": "stellarator_09__stellaris__R",
-          "provenance": "fan_out"
-        },
-        {
-          "key": "stellarator_09__stellaris__magnet__R0",
-          "provenance": "tie"
-        }
-      ]
-    },
-    {
-      "axis": "a",
-      "note": "Plasma minor radius, one plant-level entry point since the model migration (was the geom__a / rb__a fan-out).",
-      "keys": [
-        {
-          "key": "stellarator_09__stellaris__a",
-          "provenance": "fan_out"
-        }
-      ]
-    },
-    {
-      "axis": "B",
-      "note": "Axis-averaged on-axis field, one magnet-part entry point. Since WI-030 it reaches beta_ok through 'Volume-Averaged Beta' and peak_field_ok through 'Conductor Peak Field' (both computed-vs-bound), and the magnet cost. The retired bound-input beta axis lived here before.",
-      "keys": [
-        {
-          "key": "stellarator_09__stellaris__magnet__B",
-          "provenance": "fan_out"
-        }
-      ]
+     "key": "stellarator_09__stellaris__availability",
+     "provenance": "fan_out"
     }
-  ]
+   ]
+  },
+  {
+   "axis": "interest_rate",
+   "note": "Discount / interest rate. One plant-level entry point (`discount_rate`) since the model migration; it reaches CAS71, CAS72, CAS80 levelization and IDC.",
+   "keys": [
+    {
+     "key": "stellarator_09__stellaris__discount_rate",
+     "provenance": "fan_out"
+    }
+   ]
+  },
+  {
+   "axis": "R",
+   "note": "Plasma major radius, one plant-level entry point since the model migration (was the geom__R / rb__R fan-out).",
+   "keys": [
+    {
+     "key": "stellarator_09__stellaris__R",
+     "provenance": "fan_out"
+    }
+   ]
+  },
+  {
+   "axis": "R+tie",
+   "note": "R together with its declared physical-identity tie, the magnet coil major radius.",
+   "keys": [
+    {
+     "key": "stellarator_09__stellaris__R",
+     "provenance": "fan_out"
+    },
+    {
+     "key": "stellarator_09__stellaris__magnet__R0",
+     "provenance": "tie"
+    }
+   ]
+  },
+  {
+   "axis": "a",
+   "note": "Plasma minor radius, one plant-level entry point since the model migration (was the geom__a / rb__a fan-out).",
+   "keys": [
+    {
+     "key": "stellarator_09__stellaris__a",
+     "provenance": "fan_out"
+    }
+   ]
+  },
+  {
+   "axis": "I_coil",
+   "note": "Peak single-coil current, one magnet-part entry point \u2014 the WI-035 lever. Replaces the retired B axis (WI-035 inversion: the axis field is computed by 'Coil Set Axis Field' from n_coils, I_coil, k_link, R0; at fixed geometry B = k*I, so the old swept window translates linearly). Reaches beta_ok and peak_field_ok through the computed field, wp_stress_ok through 'Winding Pack Stress', and both magnet cost channels. The retired bound-input beta axis lived here before WI-030; the retired bound field lived here before WI-035.",
+   "keys": [
+    {
+     "key": "stellarator_09__stellaris__magnet__I_coil",
+     "provenance": "fan_out"
+    }
+   ]
+  }
+ ]
 }

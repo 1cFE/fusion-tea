@@ -53,8 +53,21 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}magnet__R0": "magnet_R0",
     f"{P}a": "a",
     f"{P}availability": "availability",
-    # WI-030: the magnet A/B levers and the beta referents (Item 6 study 1).
-    f"{P}magnet__B": "magnet_B",
+    # WI-030/WI-035: the magnet levers and the beta referents. magnet__B retired
+    # (WI-035 inversion — the field is a channel now); the coil-set current and
+    # its facts are the entry keys.
+    f"{P}magnet__n_coils": "magnet_n_coils",
+    f"{P}magnet__I_coil": "magnet_I_coil",
+    f"{P}magnet__k_link": "magnet_k_link",
+    f"{P}magnet__f_set": "magnet_f_set",
+    f"{P}magnet__c_coil": "magnet_c_coil",
+    f"{P}magnet__wp_side": "magnet_wp_side",
+    f"{P}magnet__k_sigma": "magnet_k_sigma",
+    f"{P}magnet__sigma_allow": "magnet_sigma_allow",
+    f"{P}magnet__f_wp_fab": "magnet_f_wp_fab",
+    f"{P}magnet__m_casing": "magnet_m_casing",
+    f"{P}magnet__steel_price": "magnet_steel_price",
+    f"{P}magnet__f_steel_fab": "magnet_f_steel_fab",
     f"{P}magnet__B_max": "magnet_B_max",
     f"{P}magnet__peak_ratio": "magnet_peak_ratio",
     f"{P}n_e0": "n_e0",
@@ -93,7 +106,14 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "wall_load": f"{P}wall_load_calc__wall_load",
     "beta": f"{P}beta_calc__beta",  # WI-030 computed volume-averaged beta
     "B_peak": f"{P}peak_field_calc__B_peak",  # WI-030 peak field on the conductor
-    "magnet": f"{P}magnet_cost__capital_cost",
+    "B_axis": f"{P}field_calc__B_axis",  # WI-035 computed axis field
+    "sigma_wp": f"{P}wp_stress__sigma_wp",  # WI-035 winding-pack stress operand
+    "winding_pack": f"{P}winding_pack_cost__cost",  # WI-035 sub-account
+    "magnet_structure": f"{P}magnet_structure_cost__cost",  # WI-035 sub-account
+    "magnet_capital_rollup": f"{P}magnet_capital_rollup__capital_cost",  # WI-035 rollup
+    "aux_cost": f"{P}aux_cooling__aux_cost",  # WI-035 aux split
+    "cryo_cost": f"{P}aux_cooling__cryo_cost",  # WI-035 cryoplant sub-account
+    "magnet": f"{P}magnet_cost__capital_cost",  # WI-035: the 1cfe-form comparison channel
     "heating": f"{P}heating_cost__cost",
     "divertor": f"{P}divertor_cost__cost",
     "blanket": f"{P}blanket_cost__cost",
@@ -185,6 +205,11 @@ OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
     f"{P}wall_load_ok__ab2c790419af93bb": {
         "wall_load": {"kind": "channel", "key": f"{P}wall_load_calc__wall_load"},
         "wall_load_limit_in": {"kind": "input", "key": f"{P}wall_load_limit"},
+    },
+    f"{P}wp_stress_ok__f38a102195da1dd0": {
+        # WI-035: computed winding-pack stress vs the held sourced allowable.
+        "sigma_in": {"kind": "channel", "key": f"{P}wp_stress__sigma_wp"},
+        "sigma_allow_in": {"kind": "input", "key": f"{P}magnet__sigma_allow"},
     },
 }
 

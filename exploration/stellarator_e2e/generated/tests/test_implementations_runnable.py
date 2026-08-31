@@ -8,7 +8,7 @@ Tests verify that handwritten implementation functions:
 4. Tolerate NotImplementedError (before agent implements)
 5. Validate return types (after agent implements)
 
-Generated from 44 calculation definitions.
+Generated from 49 calculation definitions.
 """
 
 import importlib
@@ -47,20 +47,20 @@ def create_dummy_input(input_class: type[BaseModel]) -> BaseModel:
 
 # Generated test classes for each module
 
-class TestConductor_Peak_FieldRunnable:
-    """Verify conductor_peak_field implementation runs without error.
+class TestMagnet_Structure_CostRunnable:
+    """Verify magnet_structure_cost implementation runs without error.
 
-    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:328
+    SysML Source: root-0/analyses/mfe_magnet_cost.sysml:103
     """
 
     def test_import_and_run(self):
-        """Test that run_conductor_peak_field can be imported and called."""
+        """Test that run_magnet_structure_cost can be imported and called."""
         # Import implementation module (ADR-003: namespaced path)
-        impl = importlib.import_module("stellarator_tea.handwritten.mfe_plasma_scaling.conductor_peak_field_impl")
-        func = getattr(impl, "run_conductor_peak_field")
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_magnet_cost.magnet_structure_cost_impl")
+        func = getattr(impl, "run_magnet_structure_cost")
 
         # Import module wrapper for Input schema (ADR-003: namespaced path)
-        module = importlib.import_module("stellarator_tea.modules.mfe_plasma_scaling.conductor_peak_field")
+        module = importlib.import_module("stellarator_tea.modules.mfe_magnet_cost.magnet_structure_cost")
 
         # Find Input class
         input_class = None
@@ -127,20 +127,60 @@ class TestCryoplant_Electrical_PowerRunnable:
             # Expected for stencils - test passes
             pass
 
-class TestVolume_Averaged_BetaRunnable:
-    """Verify volume_averaged_beta implementation runs without error.
+class TestWinding_Pack_CostRunnable:
+    """Verify winding_pack_cost implementation runs without error.
 
-    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:257
+    SysML Source: root-0/analyses/mfe_magnet_cost.sysml:56
     """
 
     def test_import_and_run(self):
-        """Test that run_volume_averaged_beta can be imported and called."""
+        """Test that run_winding_pack_cost can be imported and called."""
         # Import implementation module (ADR-003: namespaced path)
-        impl = importlib.import_module("stellarator_tea.handwritten.mfe_plasma_scaling.volume_averaged_beta_impl")
-        func = getattr(impl, "run_volume_averaged_beta")
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_magnet_cost.winding_pack_cost_impl")
+        func = getattr(impl, "run_winding_pack_cost")
 
         # Import module wrapper for Input schema (ADR-003: namespaced path)
-        module = importlib.import_module("stellarator_tea.modules.mfe_plasma_scaling.volume_averaged_beta")
+        module = importlib.import_module("stellarator_tea.modules.mfe_magnet_cost.winding_pack_cost")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestMagnet_CapitalRunnable:
+    """Verify magnet_capital implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_magnet_cost.sysml:137
+    """
+
+    def test_import_and_run(self):
+        """Test that run_magnet_capital can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_magnet_cost.magnet_capital_impl")
+        func = getattr(impl, "run_magnet_capital")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_magnet_cost.magnet_capital")
 
         # Find Input class
         input_class = None
@@ -223,6 +263,166 @@ class TestHeating_CostRunnable:
 
         # Import module wrapper for Input schema (ADR-003: namespaced path)
         module = importlib.import_module("stellarator_tea.modules.mfe_account_costs.heating_cost")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestCoil_Set_Axis_FieldRunnable:
+    """Verify coil_set_axis_field implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_magnet_field.sysml:4
+    """
+
+    def test_import_and_run(self):
+        """Test that run_coil_set_axis_field can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_magnet_field.coil_set_axis_field_impl")
+        func = getattr(impl, "run_coil_set_axis_field")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_magnet_field.coil_set_axis_field")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestConductor_Peak_FieldRunnable:
+    """Verify conductor_peak_field implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:328
+    """
+
+    def test_import_and_run(self):
+        """Test that run_conductor_peak_field can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_plasma_scaling.conductor_peak_field_impl")
+        func = getattr(impl, "run_conductor_peak_field")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_plasma_scaling.conductor_peak_field")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestVolume_Averaged_BetaRunnable:
+    """Verify volume_averaged_beta implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:257
+    """
+
+    def test_import_and_run(self):
+        """Test that run_volume_averaged_beta can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_plasma_scaling.volume_averaged_beta_impl")
+        func = getattr(impl, "run_volume_averaged_beta")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_plasma_scaling.volume_averaged_beta")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestWinding_Pack_StressRunnable:
+    """Verify winding_pack_stress implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_magnet_field.sysml:48
+    """
+
+    def test_import_and_run(self):
+        """Test that run_winding_pack_stress can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_magnet_field.winding_pack_stress_impl")
+        func = getattr(impl, "run_winding_pack_stress")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_magnet_field.winding_pack_stress")
 
         # Find Input class
         input_class = None
@@ -805,7 +1005,9 @@ class TestAux_Cooling_CostRunnable:
             result = func(dummy_input)
 
             # If implemented, verify return type
-            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+            assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
+            assert len(result) == 3, f"Expected 3 outputs"
+            assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
 
         except NotImplementedError:
             # Expected for stencils - test passes
@@ -974,7 +1176,7 @@ class TestAnnual_OM_CostRunnable:
 class TestLevelized_Annual_CostRunnable:
     """Verify levelized_annual_cost implementation runs without error.
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:670
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:672
     """
 
     def test_import_and_run(self):
@@ -1296,7 +1498,7 @@ class TestPlant_Power_Law_CostRunnable:
 class TestDT_Fuel_CostRunnable:
     """Verify dt_fuel_cost implementation runs without error.
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:730
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:732
     """
 
     def test_import_and_run(self):
@@ -1376,7 +1578,7 @@ class TestPlant_Power_Law_CostRunnable:
 class TestLevelized_Annual_CostRunnable:
     """Verify levelized_annual_cost implementation runs without error.
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:670
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:672
     """
 
     def test_import_and_run(self):
@@ -1458,7 +1660,7 @@ class TestInstallation_Labor_CostRunnable:
 class TestLevelized_Replacement_CostRunnable:
     """Verify levelized_replacement_cost implementation runs without error.
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:794
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:796
     """
 
     def test_import_and_run(self):
@@ -1498,7 +1700,7 @@ class TestLevelized_Replacement_CostRunnable:
 class TestAnnual_Cost_RollupRunnable:
     """Verify annual_cost_rollup implementation runs without error.
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:891
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:893
     """
 
     def test_import_and_run(self):
@@ -1620,7 +1822,7 @@ class TestIndirect_CostRunnable:
 class TestSupplementary_CostRunnable:
     """Verify supplementary_cost implementation runs without error.
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:591
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:593
     """
 
     def test_import_and_run(self):
@@ -1660,7 +1862,7 @@ class TestSupplementary_CostRunnable:
 class TestIDC_Closed_Form_CostRunnable:
     """Verify idc_closed_form_cost implementation runs without error.
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:643
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:645
     """
 
     def test_import_and_run(self):
@@ -1700,7 +1902,7 @@ class TestIDC_Closed_Form_CostRunnable:
 class Testn_1cfe_Form_Capital_ChargeRunnable:
     """Verify n_1cfe_form_capital_charge implementation runs without error.
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:913
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:915
     """
 
     def test_import_and_run(self):
@@ -1740,7 +1942,7 @@ class Testn_1cfe_Form_Capital_ChargeRunnable:
 class Testn_1cfe_Form_LCOERunnable:
     """Verify n_1cfe_form_lcoe implementation runs without error.
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:943
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:945
     """
 
     def test_import_and_run(self):

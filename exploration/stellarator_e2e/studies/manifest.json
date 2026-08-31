@@ -7,11 +7,12 @@
   "fingerprints": {
     "indicator_inputs": {
       "recipe": "indicator-input-fingerprint/v1",
-      "digest": "20c2c364d6c79592b87e8d467b0a4c29a2695fe89c3a5a83e247dfd7a7d758d6",
+      "digest": "287479a32470e48c9f48f2338f66eadfdb782098fb9b1e82a31234da7729fdfa",
       "files": [
         "contracts/model_contract.json",
         "inputs/mfe_account_costs_params.json",
         "inputs/mfe_magnet_cost_params.json",
+        "inputs/mfe_magnet_field_params.json",
         "inputs/mfe_plant_params.json",
         "inputs/mfe_plasma_scaling_params.json",
         "inputs/stellarator_plant_params.json",
@@ -19,8 +20,8 @@
       ]
     },
     "recorded_provenance": {
-      "executable_fingerprint": "f97f084818723224bdd7f604a63e1941dadeb3e99af0cca3c9c6d30280d312f0",
-      "semantic_fingerprint": "f08daa7b1bcc62f838d33821646b676548c14edd535cb3b4482fd358bbfaed2e"
+      "executable_fingerprint": "099e119f7686784d28e6caf19e7e1887a82c85547a370e083dfb7dd1943eb900",
+      "semantic_fingerprint": "819a5a05220e5caff7d317c02c32ef4fed37f7f091e776fba8dff7f168235fd4"
     }
   },
   "objective_catalog": [
@@ -61,8 +62,13 @@
     },
     {
       "name": "magnet_capital",
+      "channel": "stellarator_09__stellaris__magnet_capital_rollup__capital_cost",
+      "note": "CAS22.1.3 magnet capital \u2014 since WI-035 the decomposed rollup (winding pack + casing structure), the channel the plant's magnet.capital_cost reads. The old conductor-proxy lump is the separate magnet_capital_1cfe comparison objective."
+    },
+    {
+      "name": "magnet_capital_1cfe",
       "channel": "stellarator_09__stellaris__magnet_cost__capital_cost",
-      "note": "CAS22.1.3 magnet capital. Declared as an objective (Item 6 design D9, 2026-08-21) so generic verification compares it against the oracle: a magnet-technology study moves this channel first, and it was a known coverage gap (ANNEX \u00a7 Oracle)."
+      "note": "1cfe-form comparison channel (WI-035 D6): the retained 'Magnet Coil Cost' conductor-proxy lump, now responding to the computed field. Kept as an objective so the decomposed rollup and the calibrated lump stay observable side by side."
     }
   ],
   "ties": [
@@ -83,7 +89,7 @@
     },
     "headline": {
       "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
-      "value": 333.0670332813743
+      "value": 304.48161969642837
     },
     "verdicts": [
       {
@@ -108,6 +114,10 @@
       },
       {
         "source_local_identity": "wall_load_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "wp_stress_ok",
         "expected": "satisfied"
       }
     ]

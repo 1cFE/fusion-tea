@@ -33,7 +33,7 @@ def test_fingerprint_read_set_is_the_three_legs(real_package_path):
     files = [f["path"] for f in manifest.indicator_input_fingerprint(real_package_path)["files"]]
     assert "pipelines/pipeline.yaml" in files
     assert "contracts/model_contract.json" in files
-    assert sum(1 for p in files if p.startswith("inputs/")) == 5  # one per generated input group
+    assert sum(1 for p in files if p.startswith("inputs/")) == 6  # one per generated input group (WI-035: +mfe_magnet_field)
     assert all(
         p.startswith(("pipelines/", "inputs/")) or p == "contracts/model_contract.json"
         for p in files
@@ -264,7 +264,7 @@ def test_bounds_is_authoritative_and_axis_varying():
         ]
         assert unreachable == group["constraints_unreachable"]
     by_axis = {g["axis"]: g["bounds"] for g in doc["groups"]}
-    assert by_axis["R"] != by_axis["B"]  # bounds vary per axis, not a constant block
+    assert by_axis["R"] != by_axis["I_coil"]  # bounds vary per axis, not a constant block
 
 
 def test_lists_are_sorted_by_a_stated_key():

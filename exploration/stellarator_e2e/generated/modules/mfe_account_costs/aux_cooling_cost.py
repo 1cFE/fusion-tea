@@ -24,6 +24,8 @@ Inputs:
     - aux_per_mw_in: aux_per_mw_in parameter
 
 Outputs:
+    - aux_cost: aux_cost result
+    - cryo_cost: cryo_cost result
     - cost: cost result
 
 SysML Source: root-0/analyses/mfe_account_costs.sysml:559
@@ -38,6 +40,7 @@ from pydantic import BaseModel, Field, RootModel
 from simkit.core.base import ModuleBase, ModuleResult
 
 from stellarator_tea.primitives import Float
+from stellarator_tea.schemas.aux_cooling_cost_output import Aux_Cooling_CostOutput
 
 
 class Aux_Cooling_CostInput(BaseModel):
@@ -61,7 +64,7 @@ class Aux_Cooling_CostInput(BaseModel):
     aux_per_mw_in: float = Field(..., description="aux_per_mw_in input")
 
 
-class Aux_Cooling_CostModule(ModuleBase[Aux_Cooling_CostInput, Float]):
+class Aux_Cooling_CostModule(ModuleBase[Aux_Cooling_CostInput, Aux_Cooling_CostOutput]):
     """TEAx module for Aux_Cooling_Cost calculation.
 
 Auxiliary cooling + cryoplant account:
@@ -86,6 +89,8 @@ Inputs:
     - aux_per_mw_in: aux_per_mw_in parameter
 
 Outputs:
+    - aux_cost: aux_cost result
+    - cryo_cost: cryo_cost result
     - cost: cost result
 
 SysML Source: root-0/analyses/mfe_account_costs.sysml:559
@@ -96,7 +101,9 @@ SysML Source: root-0/analyses/mfe_account_costs.sysml:559
         n_mod_in = 1.0
         p_cryo_ref = 30.0
         alpha = 0.7
-        cost = aux_per_mw_in * (n_mod_in * p_th_in) + cryo_base * (p_cryo / p_cryo_ref) ** alpha
+        aux_cost = aux_per_mw_in * (n_mod_in * p_th_in)
+        cryo_cost = cryo_base * (p_cryo / p_cryo_ref) ** alpha
+        cost = aux_cost + cryo_cost
         
 Documentation:
 Auxiliary cooling + cryoplant account:
@@ -114,7 +121,8 @@ its own cryoplant).
     IMPLEMENTATION: See stellarator_tea.handwritten.mfe_account_costs.aux_cooling_cost_impl
     for manual implementation.
 
-    NOTE: Single-output module - returns Float directly (no MultiOutput needed).
+    NOTE: Uses MultiOutput pattern for type-safe multi-output support.
+    TEAx automatically extracts aux_cost, cryo_cost, cost fields to separate channels.
     """
 
     name: str = "Aux_Cooling_CostModule"
@@ -139,7 +147,7 @@ its own cryoplant).
         return Aux_Cooling_CostInput(alpha=alpha, p_th_in=p_th_in, p_cryo_ref=p_cryo_ref, p_cryo=p_cryo, cryo_base=cryo_base, n_mod_in=n_mod_in, aux_per_mw_in=aux_per_mw_in)
 
     def run(
-        self, alpha: float, p_th_in: float, p_cryo_ref: float, p_cryo: float, cryo_base: float, n_mod_in: float, aux_per_mw_in: float    ) -> ModuleResult[Float]:
+        self, alpha: float, p_th_in: float, p_cryo_ref: float, p_cryo: float, cryo_base: float, n_mod_in: float, aux_per_mw_in: float    ) -> ModuleResult[Aux_Cooling_CostOutput]:
         """Execute calculation.
 
         Args:
@@ -152,7 +160,7 @@ its own cryoplant).
             aux_per_mw_in: aux_per_mw_in input
 
         Returns:
-            Module result with Float (single-output mode)
+            Module result with Aux_Cooling_CostOutput (aux_cost, cryo_cost, cost)
         """
         # Validate inputs
         validated_inputs = self.validate_and_fill_default(alpha, p_th_in, p_cryo_ref, p_cryo, cryo_base, n_mod_in, aux_per_mw_in)
@@ -162,9 +170,16 @@ its own cryoplant).
             run_aux_cooling_cost,
         )
 
-        # Execute implementation - returns single value
-        cost = run_aux_cooling_cost(validated_inputs)
+        # Execute implementation - returns tuple of values
+        aux_cost, cryo_cost, cost = run_aux_cooling_cost(validated_inputs)
 
-        # Single output - return Float directly (RootModel[float])
-        # TEAx assigns entire return value to the one channel declared in YAML
-        return ModuleResult(data=Float(cost))
+
+        # Return MultiOutput container (TEAx auto-extracts to channels)
+        # MultiOutput fields use plain float (not RootModel[float])
+        return ModuleResult(
+            data=Aux_Cooling_CostOutput(
+                aux_cost=aux_cost,
+                cryo_cost=cryo_cost,
+                cost=cost,
+            )
+        )

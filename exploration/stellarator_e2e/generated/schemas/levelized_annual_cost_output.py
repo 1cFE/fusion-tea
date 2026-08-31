@@ -30,7 +30,7 @@ Flat-Real (+ - * / **) -- Rung A, lowers to generated arithmetic.
 costs.py:41-44 (_total_project_time, NOAK omits licensing_time)
 *Basis**: Growing-annuity present value annuitized by the capital recovery factor
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:670
+SysML Source: root-0/analyses/mfe_account_costs.sysml:672
     """
     levelized: float = Field(description="levelized output")
     crf: float = Field(description="crf output")

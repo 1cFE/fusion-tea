@@ -8,7 +8,9 @@ SysML Expressions:
     n_mod_in = 1.0
     p_cryo_ref = 30.0
     alpha = 0.7
-    cost = aux_per_mw_in * (n_mod_in * p_th_in) + cryo_base * (p_cryo / p_cryo_ref) ** alpha
+    aux_cost = aux_per_mw_in * (n_mod_in * p_th_in)
+    cryo_cost = cryo_base * (p_cryo / p_cryo_ref) ** alpha
+    cost = aux_cost + cryo_cost
     
 Documentation:
 Auxiliary cooling + cryoplant account:
@@ -29,7 +31,7 @@ AUTO_IMPLEMENTED = True
 from stellarator_tea.modules.mfe_account_costs.aux_cooling_cost import Aux_Cooling_CostInput
 
 
-def run_aux_cooling_cost(inputs: Aux_Cooling_CostInput) -> float:
+def run_aux_cooling_cost(inputs: Aux_Cooling_CostInput) -> tuple[float, float, float]:
     """Execute Aux_Cooling_Cost calculation.
 
 Auxiliary cooling + cryoplant account:
@@ -50,7 +52,9 @@ SysML Expressions:
     n_mod_in = 1.0
     p_cryo_ref = 30.0
     alpha = 0.7
-    cost = aux_per_mw_in * (n_mod_in * p_th_in) + cryo_base * (p_cryo / p_cryo_ref) ** alpha
+    aux_cost = aux_per_mw_in * (n_mod_in * p_th_in)
+    cryo_cost = cryo_base * (p_cryo / p_cryo_ref) ** alpha
+    cost = aux_cost + cryo_cost
     
 Documentation:
 Auxiliary cooling + cryoplant account:
@@ -69,10 +73,16 @@ Args:
     inputs: Input parameters validated against Aux_Cooling_CostInput schema
 
 Returns:
-    float: cost
+    tuple[float, ...]: (aux_cost, cryo_cost, cost)
 
 Example:
     >>> inputs = Aux_Cooling_CostInput(...)
-    >>> result = run_aux_cooling_cost(inputs)
+    >>> aux_cost, cryo_cost, cost = run_aux_cooling_cost(inputs)
     """
-    return ((inputs.aux_per_mw_in * (inputs.n_mod_in * inputs.p_th_in)) + (inputs.cryo_base * ((inputs.p_cryo / inputs.p_cryo_ref) ** inputs.alpha)))
+    aux_cost = (inputs.aux_per_mw_in * (inputs.n_mod_in * inputs.p_th_in))
+    cryo_cost = (inputs.cryo_base * ((inputs.p_cryo / inputs.p_cryo_ref) ** inputs.alpha))
+    return (
+        aux_cost,
+        cryo_cost,
+        (aux_cost + cryo_cost),  # cost
+    )

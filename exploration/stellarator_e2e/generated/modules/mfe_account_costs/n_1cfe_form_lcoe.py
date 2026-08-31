@@ -26,9 +26,9 @@ Inputs:
 Outputs:
     - lcoe: lcoe result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:943
+SysML Source: root-0/analyses/mfe_account_costs.sysml:945
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:943
+SysML Source: root-0/analyses/mfe_account_costs.sysml:945
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/n_1cfe_form_lcoe_impl.py
@@ -86,9 +86,9 @@ Inputs:
 Outputs:
     - lcoe: lcoe result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:943
+SysML Source: root-0/analyses/mfe_account_costs.sysml:945
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:943
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:945
 
     Calculation Specification:
         n_mod_in = 1.0

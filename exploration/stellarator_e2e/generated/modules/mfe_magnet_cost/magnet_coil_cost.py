@@ -26,7 +26,13 @@ cost_per_kAm is $/kA-m). Apply the M$ scaling downstream if desired.
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
 *Ref**: cas22.py:427 (total_kAm), cas22.py:441-444 (SC coil cost)
 *Basis**: MFE coil conductor-quantity cost model; magnet cost rises
-with B, R0, r_coil (SV-018)
+    with B, R0, r_coil (SV-018)
+
+WI-035: retained as the live 1cfe-form COMPARISON channel (exposed as
+magnet_capital_1cfe); the CAS22.1.3 rollup is now 'Magnet Capital'
+(winding pack + structure below), and B is computed by
+'Coil Set Axis Field' (mfe_magnet_field), so this channel responds
+to the coil-current lever too.
 
 Inputs:
     - coil_markup: coil_markup parameter
@@ -102,7 +108,13 @@ cost_per_kAm is $/kA-m). Apply the M$ scaling downstream if desired.
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
 *Ref**: cas22.py:427 (total_kAm), cas22.py:441-444 (SC coil cost)
 *Basis**: MFE coil conductor-quantity cost model; magnet cost rises
-with B, R0, r_coil (SV-018)
+    with B, R0, r_coil (SV-018)
+
+WI-035: retained as the live 1cfe-form COMPARISON channel (exposed as
+magnet_capital_1cfe); the CAS22.1.3 rollup is now 'Magnet Capital'
+(winding pack + structure below), and B is computed by
+'Coil Set Axis Field' (mfe_magnet_field), so this channel responds
+to the coil-current lever too.
 
 Inputs:
     - coil_markup: coil_markup parameter
@@ -150,7 +162,13 @@ cost_per_kAm is $/kA-m). Apply the M$ scaling downstream if desired.
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
 *Ref**: cas22.py:427 (total_kAm), cas22.py:441-444 (SC coil cost)
 *Basis**: MFE coil conductor-quantity cost model; magnet cost rises
-with B, R0, r_coil (SV-018)
+    with B, R0, r_coil (SV-018)
+
+WI-035: retained as the live 1cfe-form COMPARISON channel (exposed as
+magnet_capital_1cfe); the CAS22.1.3 rollup is now 'Magnet Capital'
+(winding pack + structure below), and B is computed by
+'Coil Set Axis Field' (mfe_magnet_field), so this channel responds
+to the coil-current lever too.
 
     IMPLEMENTATION: See stellarator_tea.handwritten.mfe_magnet_cost.magnet_coil_cost_impl
     for manual implementation.

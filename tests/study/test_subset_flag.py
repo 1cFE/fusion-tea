@@ -10,7 +10,7 @@ import hashlib
 from tests.study.conftest import DATA_DIR, REAL_MANIFEST, REAL_PACKAGE, run_tool
 
 KNOWN_ANSWERS = DATA_DIR / "axes.known_answers.json"
-ALL_AXES = ["B", "R", "R+tie", "a", "availability", "interest_rate"]
+ALL_AXES = ["I_coil", "R", "R+tie", "a", "availability", "interest_rate"]
 
 
 def test_a_full_run_covers_the_whole_declaration():

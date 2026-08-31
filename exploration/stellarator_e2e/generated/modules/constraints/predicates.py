@@ -70,6 +70,11 @@ def _norm0(x):
     """Normalize an exact-boundary signed zero (-0.0) to 0.0 (`[HARD]`)."""
     return 0.0 if x == 0.0 else x
 
+# definition:mfe_viability::'Winding Pack Stress Limit'
+def constraint_pred_definition_mfe_viability__winding_pack_stress_limit(sigma_in, sigma_allow_in):
+    value = _cmp('<=', sigma_in, sigma_allow_in)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((sigma_allow_in - sigma_in)) if (_fin(sigma_in) and _fin(sigma_allow_in)) else None))
+
 # definition:mfe_viability::'Economic Recirculating Threshold'
 def constraint_pred_definition_mfe_viability__economic_recirculating_threshold(rec_frac, threshold):
     value = _cmp('<=', rec_frac, threshold)

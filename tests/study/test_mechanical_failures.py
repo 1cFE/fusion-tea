@@ -128,7 +128,7 @@ def test_the_computed_quantity_message_names_the_producing_module(real_copy, tmp
 def test_the_corrupt_line_carries_file_line_and_key_path(real_copy, tmp_path):
     corrupt_pipeline_line(real_copy)
     _, _, err = real_copy.run(out=tmp_path / "c.json")
-    assert "pipeline.yaml:77" in err  # the rb R_in line; moved from :49 when WI-030 added two modules
+    assert "pipeline.yaml:83" in err  # the rb R_in line; moved from :77 when WI-035 added the field/stress/cost modules
     assert "key path modules.stellarator_09__stellaris__rb.inputs.R_in" in err
     assert "floatonly_one_token" in err
 

@@ -39,9 +39,9 @@ Outputs:
     - levelized: levelized result
     - crf: crf result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:670
+SysML Source: root-0/analyses/mfe_account_costs.sysml:672
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:670
+SysML Source: root-0/analyses/mfe_account_costs.sysml:672
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_account_costs/levelized_annual_cost_impl.py
@@ -111,9 +111,9 @@ Outputs:
     - levelized: levelized result
     - crf: crf result
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:670
+SysML Source: root-0/analyses/mfe_account_costs.sysml:672
 
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:670
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:672
 
     Calculation Specification:
         disc_pow_n = (1.0 + interest_rate) ** operational_years_in
