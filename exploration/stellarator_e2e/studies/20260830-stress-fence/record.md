@@ -198,3 +198,12 @@ No snapshot content is restated here.
 - No magnet-capital response to R at fixed I — absent by construction (finding `#1`), so this record cannot support R-scaling claims about the decomposed magnet cost.
 - No absolute-LCOE comparison against any pre-WI-035 record: the headline re-based (333.067 → 304.482 at the baseline) when the magnet account decomposed; only per-R verdicts of the three field-independent fences subtract against the comparand.
 - No confinement response to field: B still reaches beta and the magnet accounts only (standing row-1 gate), so "the optimum sits on the beta floor" is a fact about this package, not about stellarator physics.
+
+## Addendum 2026-08-30
+
+Corrections from the administrator's independent recount (`synthesis.md`), none touching a snapshot value or a result artifact:
+
+- § 14's disposition line says the held-`c_coil` MAJOR was "minted as finding `20260830-stress-fence#3`"; the register mints it as **`#1`**. Stale id; § 15 and the discovery log are correct as written.
+- § 13's baseline conductor-fence margin reads "5.3e-15 T"; the float64 arithmetic is 24.9 − 24.899999999999995 = **3.55e-15 T**. The on-fence-by-construction claim stands.
+- § 6's "band at R 12.7 is I ∈ [11.5, 15.0] MA on the grid" is the **R = 12.5 grid row's** band; 12.7 is off-grid (the appended baseline point).
+- The record names the package by its tracked root (`pkg/stellarator_tea`) and the snapshot's package block by the same path; the seam resolves that root to `exploration/stellarator_e2e/generated` — one package, two spellings, fingerprints agree throughout.

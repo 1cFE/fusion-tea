@@ -149,3 +149,92 @@ Task T-003: plan and implement WI-035 through the native modeling PM. Native tar
 ### T-004 start — 2026-08-30
 
 Task T-004: regeneration hop + integrate seam for WI-035. Native targets: two commits (item state; regenerated package identity) and `scripts/integrate.py`. Expected artifact: `integration_return.json` naming a `CANDIDATE`.
+
+### T-004 return — 2026-08-30
+
+**Outcome:** `COMPLETE`. The seam returned a **`CANDIDATE`**: pin `287479a32470e48c9f48f2338f66eadfdb782098fb9b1e82a31234da7729fdfa`, semantic `819a5a05…`, executable `75f90a24…`, package `exploration/stellarator_e2e/generated`, all ten gates `pass` (regeneration byte-stable, handwritten 64/64 preserved, census 186 entry points as bound, spine suite green, manifest pin recomputed, six preflight gates, oracle parity with every verdict re-derived, lineage as named).
+
+**Evidence refs.**
+
+- `work/orchestration/goals/magnet-closure/evidence/T-004_integration_return.json` (+ `T-004_verification_summary.json`) — the seam return, copied from the transient out-dir (goal `p-pump-fence` evidence-dir precedent).
+- Commits `6d80583d` (audited item state), `ef1724d1` (regeneration hop: snapshot, manifest re-pin, oracle extension, I_coil axis, fixtures), `936081b0`, `<follow-through>`, `a7e03073` (fingerprint fix + anchors + subset tests). `tests/study`: 345 passed with the only two failures being the clean-tree tests run pre-commit; both pass post-commit. `tests/models`: green via the seam's spine gate.
+- New baseline headline: LCOE 333.067 → **304.482** $/MWh, total capital $16.090B → **$14.574B**, magnet share 39.30% → **37.06%** (rollup); `lcoe_1cfe` 326.512 → 298.545; p_net/q_eng/rec_frac unchanged to the digit (power balance untouched). Seven verdicts satisfied, `wp_stress_ok` margin 150 MPa.
+
+**Goal-level reading.** The round's one pin exists and is proven. The known-answer re-derivation itself produced semantic evidence for the goal: the I_coil lever reaches `beta_ok`/`peak_field_ok`/`wp_stress_ok` (all computed-vs-bound); the R+tie group's reach *extended* through the field (the old tie-changes-nothing invariant flipped — the design response the rubric row asks for); and the decomposed rollup is R-independent because the winding length is the held `c_coil` — a disclosed limitation for the study to probe.
+
+**Decision fields.**
+
+1. *Finding or trigger:* first seam run refused at `preflight: manifest_currency` — the manifest pinned the pre-reseal executable fingerprint (`099e119f…`); the reseal (after removing the generator's backup file from the sealed tree) had changed it to `75f90a24…`.
+   *Decision and reason:* re-pin and re-run; classified mechanical (identical task, inputs, meaning; retry 1 of the cap of 2). *Tier:* execution detail. *Who decided:* the round agent, 2026-08-30. *What changed:* `studies/manifest.json` recorded_provenance; second run `CANDIDATE`.
+2. *Finding or trigger:* the suite carried ~30 sites pinned to the six-constraint / B-axis / old-headline world (route count, oracle maps, expected fixtures, anchors, axis declaration).
+   *Decision and reason:* re-derive, never patch-to-match, per each fixture's own binding rule; the B axis is *replaced* by I_coil with the linear mapping recorded (MR-WI035-7 restatement). The manifest's `magnet_capital` objective re-pointed to the rollup, with `magnet_capital_1cfe` added so lump and rollup stay observable side by side. *Tier:* execution detail. *Who decided:* the round agent, 2026-08-30. *What changed:* commits `ef1724d1`..`a7e03073`.
+3. *Finding or trigger:* my rewritten tie test initially asserted the rollup reachable from R — the report refuted it (the winding length is held `c_coil`, not bore-derived).
+   *Decision and reason:* assert the true reach (`magnet_capital_1cfe` only) and record the R-independence as a disclosed limitation in the test comment — evidence over expectation. *Tier:* premise surprise (small, contained). *Who decided:* the round agent, 2026-08-30. *What changed:* `tests/study/test_known_answers.py`.
+
+**Next task:** T-005 — the round's one committed study, per the strategy's intended question.
+
+### T-005 scope
+
+- **Objective:** execute the round's one committed study against the T-004 candidate pin — the strategy's intended question: where does the new structural fence bind in the (R, I_coil) space and along the winding-pack-sizing axis, and do feasibility and the constrained optimum move now that the field is derived rather than cited?
+- **Why now:** the pin exists and is proven (`T-004 return`); a valid study reading is the round's closing trigger, and the strategy's abandonment conditions are all untriggered.
+- **Scope:** authorized — the record directory `exploration/stellarator_e2e/studies/20260830-stress-fence/` per the run-study skill (execute mode), first-sighting discovery-log rows at step 14, and the study commit at step 15. Excluded — any `models/` or library/tool edit, rubric edits, the re-grade, disposition rows for prior studies' findings (the round result owes those), any second study or pin.
+- **Inputs:** the candidate (`evidence/T-004_integration_return.json`), `goal.md@11fa3e3d` invariants (comparisons against this pin; SV-016 untouched), `.claude/skills/run-study/` runbook + `modeling_project/STUDY_POLICY.md`.
+- **Done when:** a committed study record with its § 15 findings register and log rows — a disappointing or adverse reading still counts (a valid reading closes the round either way).
+- **Stop when:** an axis traces `no_constraint_response` (owner ruling required before execution), a mechanical failure past the retry cap, or a strategy blocker.
+
+### T-005 start — 2026-08-30
+
+Task T-005: execute study `20260830-stress-fence` through the run-study runbook against pin `287479a3…`. Native targets: the record directory, `DISCOVERY_LOG.md` first-sighting rows, one study commit. Expected artifact: the committed record.
+
+### T-005 return — 2026-08-30
+
+**Outcome:** `COMPLETE`. The round's one committed study exists: `exploration/stellarator_e2e/studies/20260830-stress-fence/` at commit `04b258d4` — record, snapshot, indicators, axes, results, § 15 findings register, and two first-sighting discovery-log rows. `tests/study/test_records.py` 13/13.
+
+**Evidence refs.**
+
+- The record (`record.md@04b258d4`): 1,634 points, two arms, zero evaluability exclusions; verification pass at worst rel dev 4.37e-16 with all seven verdicts re-derived; the pre-execution critique (FINDINGS, none blocking) and its dispositions in § 14.
+- The reading, in one line each: the new stress fence is **the binding ceiling for R ≥ 16.5 m** (handover from the conductor limit at ≈16 m); the coil-sizing flip is located (0.28–0.30 m); feasible fraction 12.4 % (H1 holds); the three field-independent fences agree with the `20260829-p-pump-fence` comparand 99/99 per-R — the increment moved nothing it should not have; the constrained optimum rides the beta floor to the window's R edge, scoped by the engineered frame and finding `#1`.
+- Findings sighted: `20260830-stress-fence#1` (magnet capital R-flat at fixed I — held `c_coil`), `#2` (`wp_side` costless — zero objectives reachable). Both `unrouted`, homes stated.
+
+**Goal-level reading.** This is the evidence the goal's § Answered when needs pointed at: field, feasibility, and now a structural limit all execute from the coil-set's own design quantities, the limit demonstrably pushes back on both field choice (the R ≥ 16.5 ceiling) and coil sizing (the transect flip), and the decomposed cost accounts respond to the lever. The two sighted findings bound what the increment does *not* yet do (winding length and pack sizing still held facts). Dispositions for the round-touched rows (`20260823-magnet-technology-ab#3`/`#4`) are proposed in the round result, not here.
+
+**Decision fields.**
+
+1. *Finding or trigger:* the record-closed contract bars every `<` character; two prose uses (tolerance notation, the template's id sentence) tripped it.
+   *Decision and reason:* reword prose rather than relax anything; the record-contract test is the checker. *Tier:* execution detail. *Who decided:* the round agent, 2026-08-30. *What changed:* `record.md` wording only, pre-commit.
+2. *Finding or trigger:* the critique's MAJOR finding (R-flat magnet capital) landed before execution.
+   *Decision and reason:* mint it as finding `#1` and restate it at every optimum-claim site rather than narrowing the window or dropping the optimum claim — the confound is disclosed, not hidden, and the claim is scoped. *Tier:* execution detail. *Who decided:* the round agent, 2026-08-30. *What changed:* record §§ 3/11/14/15; log row.
+3. *Finding or trigger:* the availability/discount-rate `no_constraint_response` traces on declined axes.
+   *Decision and reason:* no owner ruling sought — the fails-closed rule binds only axes that reach execution, and the availability gap already stands committed as `20260821-power-cycle-ab#1`; re-minting would duplicate a sighting. *Tier:* execution detail. *Who decided:* the round agent, 2026-08-30. *What changed:* record § 8 nils.
+
+**Next:** the administrator synthesis (native administer role, fresh subagent), then the round result.
+
+### Round 1 result — 2026-08-30
+
+**Intent:** met. The strategy's three moves all landed and were exercised: field derived from the coil-set current, one structural limit with a computed operand asserted and binding, magnet cost decomposed into separately sized accounts — and the round stayed inside its bounds: one promoted pin (the T-004 `CANDIDATE`, `287479a3…`), one committed study (`20260830-stress-fence@04b258d4`).
+
+**Task sequence:** T-001 spec (`OWNER_GATE`, resolved in-session: inversion ruled `[OWNER 2026-08-30]`, requirement set approved under delegation) → T-002 design (`COMPLETE`) → T-003 implement (`COMPLETE`) → T-004 regeneration hop + integrate seam (`COMPLETE`; one mechanical retry inside the cap — the stale post-reseal executable fingerprint) → T-005 study (`COMPLETE`). No task exceeded its recorded scope knowingly; the two suite-maintenance edits and the T-004 fixture re-derivations are recorded in their returns.
+
+**Last semantic outcome:** a valid study reading — the executor's record plus the fresh administrator's synthesis (`20260830-stress-fence/synthesis.md`), which independently recomputed every § 4 verdict count, the ceiling handover at R ≈ 16 m, the transect flip, and both LCOE headline numbers, and caught three record defects now standing as the record's Addendum. **Stop reason (derived): closing trigger 1 — a valid study reading.**
+
+**The reading, against the goal question:** the magnet system's field, feasibility, and cost now derive from its own engineering design. Executed evidence: `B_axis` computes from (n_coils, I_coil, k_link, R0) and reproduces the design point to 1 ulp; `wp_stress_ok` is a computed-operand fence that **binds first for R ≥ 16.5 m** (taking over from the conductor ceiling) and flips on the coil-sizing transect between 0.28 and 0.30 m; the decomposed winding-pack + casing accounts respond to the current lever, with the retired lump kept as a live comparison channel; the three fences the increment should not have moved agree with the committed comparand 99/99 per-R. What the increment does **not** yet do is bounded by the two new sightings: the winding length (`c_coil`) and pack sizing (`wp_side`) are still held facts with no cost consequence.
+
+**Evidence refs.** WI-035 `spec.md`/`design.md`/`plan.md` (with implementation record) at `6d80583d`; `evidence/T-004_integration_return.json`; `20260830-stress-fence` record + synthesis; SV-038/039/040 flipped to `passing` on the executed evidence (`pm update-validation`, 2026-08-30); commits `6d80583d`, `ef1724d1`, `936081b0`, `a7e03073`, `04b258d4` + this close commit.
+
+**Proposed learning delta** (for `learnings.md`, subject to the fresh review):
+
+1. The Row-3 target state is now executed evidence, not intention: a stress limit with a computed operand pushes back on both field choice and coil sizing, and the fence structure has its own regime (R ≥ 16.5 m) rather than shadowing the conductor ceiling. The re-grade (goal § Answered when) has something to measure.
+2. The WI-030 `peak_ratio` convention generalizes: held float64 coil-set facts anchored on printed pairs (`k_link`, `k_sigma`, `f_set`) make an inverted derivation exact-to-a-ulp — and when no float reproduces the printed value exactly, bind the side that cannot flip a verdict, and say so.
+3. Internalization relocates artifacts rather than finishing them: deriving the field exposed that the winding length and pack sizing are still held (`#1`, `#2`) — each internalization's honest residue is the next round's natural target.
+
+**Finding dispositions** (rows appended to `DISCOVERY_LOG.md`, 2026-08-30): `20260823-magnet-technology-ab#3` — routed and substantially discharged by WI-035 with the open half carried by the successor sightings; `20260823-magnet-technology-ab#4` — blocked on the standing Rung C owner gate, re-sighted, untouched by design. The round's own sightings `20260830-stress-fence#1`/`#2` stand `unrouted` with stated homes, for the next round (or the owner) to route.
+
+### Stop — 2026-08-30
+
+Kind: handoff
+
+**What is true on disk:** Round 1 is closed — strategy revision, five task scope/start/return triples, an owner-gate resolution, a round result, and the two disposition rows — all committed on `feat/demo-maturation` through the close commit. WI-035 sits at `work/active/` with spec/design/plan complete, SV-038/039/040 `passing`; item close, merge, and push remain owner-held. The candidate pin and the committed study stand as the round's two bounded artifacts.
+
+**What the owner must see:** a fresh session is needed to review the round (`GOAL_RUNBOOK.md` § The fresh review) — this session authored every part of it and may not review it. The review checks the cited evidence, scope fidelity, the one retry's classification, the landed dispositions, and the proposed learning delta; it then recommends close or writes the next strategy revision.
+
+**The material to review:** `work/orchestration/goals/magnet-closure/` (goal.md, this trail, evidence/), `work/active/WI-035_magnet-closure/`, `exploration/stellarator_e2e/studies/20260830-stress-fence/` (record, synthesis, Addendum), `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md` (the four 2026-08-30 rows). Resume at `GOAL_RUNBOOK.md` § The fresh review.
