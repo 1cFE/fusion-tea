@@ -28,16 +28,16 @@ def test_a_group_run_is_visibly_narrower():
 
 
 def test_several_groups_can_be_selected():
-    doc = run_tool(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWERS, group=("B", "R"))
+    doc = run_tool(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWERS, group=("I_coil", "R"))
     assert doc["axis_declaration"]["subset"] is True
-    assert [g["axis"] for g in doc["groups"]] == ["B", "R"]
+    assert [g["axis"] for g in doc["groups"]] == ["I_coil", "R"]
 
 
 def test_a_subset_group_is_byte_identical_to_its_full_run_counterpart():
     """The debugging aid answers the same question, just about fewer axes."""
     full = run_tool(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWERS)
-    subset = run_tool(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWERS, group=("B",))
-    assert next(g for g in full["groups"] if g["axis"] == "B") == subset["groups"][0]
+    subset = run_tool(REAL_PACKAGE, REAL_MANIFEST, KNOWN_ANSWERS, group=("I_coil",))
+    assert next(g for g in full["groups"] if g["axis"] == "I_coil") == subset["groups"][0]
 
 
 def test_the_axis_declaration_digest_matches_the_file_bytes():

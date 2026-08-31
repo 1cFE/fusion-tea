@@ -77,6 +77,11 @@ CH = dict(
     annual_om_levelized=f"{P}cas70_calc__annual_total",
     # WI-030 physics channels
     beta=f"{P}beta_calc__beta", B_peak=f"{P}peak_field_calc__B_peak",
+    # WI-035 field, stress, and decomposed magnet accounts
+    B_axis=f"{P}field_calc__B_axis", sigma_wp=f"{P}wp_stress__sigma_wp",
+    winding_pack=f"{P}winding_pack_cost__cost",
+    magnet_structure=f"{P}magnet_structure_cost__cost",
+    magnet_capital_rollup=f"{P}magnet_capital_rollup__capital_cost",
     cas90_1cfe=f"{P}cas90_1cfe_calc__cas90", lcoe_1cfe=f"{P}lcoe_1cfe_calc__lcoe",
 )
 
