@@ -119,4 +119,29 @@ package mfe_viability {
 
         B_peak <= B_max_in
     }
+
+    constraint def 'Winding Pack Stress Limit' {
+        doc /*
+        Structural bound (WI-035): the computed winding-pack stress must not
+        exceed the structural allowable. Pair with 'Winding Pack Stress'
+        (mfe_magnet_field), which forward-computes the operand from coil
+        current, the derived peak field, and the winding-pack side -- a
+        computed operand against a held sourced limit (the ladder working,
+        grading note G6), unlike the retired held-vs-held pattern.
+
+        **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
+        **Ref**: raw.pdf sec. 2.10 (design stress limit 800 MPa for cryogenic
+            AISI 316LN, von Mises as membrane+bending proxy, ASME BPVC VIII-2 /
+            Eurocode framing; Fig. 49 caption); sec. 2.9 (WP peak ~600-650 MPa,
+            "well below the imposed stress limit of 800 MPa")
+        **Basis**: winding-pack stress <= structural design allowable
+        */
+
+        // computed winding-pack stress [Pa]
+        in attribute sigma_in : Real;
+        // structural allowable stress [Pa]
+        in attribute sigma_allow_in : Real;
+
+        sigma_in <= sigma_allow_in
+    }
 }

@@ -94,6 +94,33 @@ package mfe_power_core {
         attribute peak_ratio : Real;
         // conductor peak-field ceiling [T] (conductor technology fact, WI-030)
         attribute B_max : Real;
+
+        // ------- WI-035 coil-set current, limit, and cost-decomposition -------
+        // parameters (all concept-set; see mfe_magnet_field / mfe_magnet_cost)
+        // number of field coils [1]
+        attribute n_coils : Real;
+        // peak single-coil current [A]
+        attribute I_coil : Real;
+        // coil-set transfer fact [1] (set distribution x axis linkage, WI-035)
+        attribute k_link : Real;
+        // set-mean over peak coil current ratio [1]
+        attribute f_set : Real;
+        // typical winding circumference [m]
+        attribute c_coil : Real;
+        // winding-pack cross-section side, worst coil [m]
+        attribute wp_side : Real;
+        // stress concentration transfer fact [1] (coil-set structural fact)
+        attribute k_sigma : Real;
+        // structural allowable stress [Pa]
+        attribute sigma_allow : Real;
+        // winding fabrication markup [1]
+        attribute f_wp_fab : Real;
+        // casing steel mass per coil [kg]
+        attribute m_casing : Real;
+        // fabricated structural steel price [$/kg]
+        attribute steel_price : Real;
+        // casing fabrication markup [1]
+        attribute f_steel_fab : Real;
     }
 
     part def 'Heating and CD' :> 'CAS22.1.4 Heating and Current Drive' {

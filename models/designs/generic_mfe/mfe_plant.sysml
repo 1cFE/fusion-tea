@@ -6,6 +6,7 @@ package mfe_plant {
     private import mfe_power_balance::*;
     private import mfe_cryo_plant::*;
     private import mfe_magnet_cost::*;
+    private import mfe_magnet_field::*;
     private import mfe_account_costs::*;
     private import mfe_lcoe_dcf::*;
     private import mfe_viability::*;
@@ -47,8 +48,11 @@ package mfe_plant {
 
         // MFE-divergent power core (WI-009 mfe_power_core).
         part magnet : 'Magnet System' {
-            :>> capital_cost = magnet_cost.capital_cost;
+            :>> capital_cost = magnet_capital_rollup.capital_cost;   // WI-035: decomposed rollup
             :>> r_coil = rb.r_coil;   // coil bore = radial-build vessel_or (WI-021)
+            // WI-035: the axis field is COMPUTED from the coil-set current
+            // (reference redefinition, WI-021 pattern); B is no longer settable.
+            :>> B = field_calc.B_axis;
         }
         part heating : 'Heating and CD' {
             :>> capital_cost = heating_cost.cost;
@@ -210,9 +214,27 @@ package mfe_plant {
 
         // Peak field on the winding (WI-030), compared against the conductor
         // ceiling by peak_field_ok below.
+        // WI-035: axis field derived from the coil-set current (inversion
+        // ruling 2026-08-30); EXPOSEd into magnet.B above, so beta_calc,
+        // peak_field_calc, and magnet_cost read the computed field unchanged.
+        calc field_calc : 'Coil Set Axis Field' {
+            in n_coils = magnet.n_coils;
+            in I_coil = magnet.I_coil;
+            in k_link = magnet.k_link;
+            in R0 = magnet.R0;
+        }
+
         calc peak_field_calc : 'Conductor Peak Field' {
             in B_axis_in = magnet.B;
             in peak_ratio_in = magnet.peak_ratio;
+        }
+
+        // WI-035: computed winding-pack stress operand for wp_stress_ok.
+        calc wp_stress : 'Winding Pack Stress' {
+            in I_coil = magnet.I_coil;
+            in B_peak_in = peak_field_calc.B_peak;
+            in wp_side = magnet.wp_side;
+            in k_sigma = magnet.k_sigma;
         }
 
         calc fusion : 'DT Fusion Power' {
@@ -312,7 +334,9 @@ package mfe_plant {
         // ACCOUNT COST CALCS  (bind subsystem drivers + spine powers -> cost)
         // =====================================================================
 
-        // Magnet (CAS22.1.3) -- WI-009 'Magnet Coil Cost'.
+        // Magnet (CAS22.1.3). WI-035: 'Magnet Coil Cost' is retained as the
+        // 1cfe-form COMPARISON channel (magnet_capital_1cfe); the rollup reads
+        // the decomposed sub-accounts below.
         calc magnet_cost : 'Magnet Coil Cost' {
             in G = magnet.G;
             in B = magnet.B;
@@ -320,6 +344,31 @@ package mfe_plant {
             in r_coil = rb.r_coil;
             in cost_per_kAm = magnet.cost_per_kAm;
             in coil_markup = magnet.coil_markup;
+        }
+
+        // Winding-pack account (real winding length, WI-035 D4).
+        calc winding_pack_cost : 'Winding Pack Cost' {
+            in n_coils = magnet.n_coils;
+            in I_coil = magnet.I_coil;
+            in f_set = magnet.f_set;
+            in c_coil = magnet.c_coil;
+            in cost_per_kAm = magnet.cost_per_kAm;
+            in f_wp_fab = magnet.f_wp_fab;
+        }
+
+        // Magnet casing-structure account (WI-035 D5; casings only --
+        // inter-coil plates/rings/legs stay CAS22.1.5).
+        calc magnet_structure_cost : 'Magnet Structure Cost' {
+            in n_coils = magnet.n_coils;
+            in m_casing = magnet.m_casing;
+            in steel_price = magnet.steel_price;
+            in f_steel_fab = magnet.f_steel_fab;
+        }
+
+        // CAS22.1.3 rollup (WI-035 D6): reference-binding envelope.
+        calc magnet_capital_rollup : 'Magnet Capital' {
+            in winding_cost = winding_pack_cost.cost;
+            in structure_cost_in = magnet_structure_cost.cost;
         }
 
         // Blanket (CAS22.1.1).
@@ -838,6 +887,12 @@ package mfe_plant {
             in B_max_in = magnet.B_max;
         }
 
+        // WI-035: computed stress operand vs held sourced allowable (800 MPa).
+        assert constraint wp_stress_ok : 'Winding Pack Stress Limit' {
+            in sigma_in = wp_stress.sigma_wp;
+            in sigma_allow_in = magnet.sigma_allow;
+        }
+
         // =====================================================================
         // EXPOSED DERIVED OUTPUTS
         // =====================================================================
@@ -850,6 +905,9 @@ package mfe_plant {
 
         // Per-account CAS breakdown (reads each subsystem's capital_cost, $).
         attribute magnet_capital : Real = magnet.capital_cost;
+        // WI-035: 1cfe-form comparison channel + the cryoplant sub-account.
+        attribute magnet_capital_1cfe : Real = magnet_cost.capital_cost;
+        attribute cryoplant_capital : Real = aux_cooling.cryo_cost;
         attribute heating_capital : Real = heating.capital_cost;
         attribute divertor_capital : Real = divertor.capital_cost;
         attribute blanket_capital : Real = blanket.capital_cost;

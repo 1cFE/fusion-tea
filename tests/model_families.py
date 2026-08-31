@@ -61,6 +61,7 @@ MFE = Family(
         "analyses/mfe_cryo_plant.sysml",
         "analyses/mfe_lcoe_dcf.sysml",
         "analyses/mfe_magnet_cost.sysml",
+        "analyses/mfe_magnet_field.sysml",
         "analyses/mfe_plasma_scaling.sysml",
         "analyses/mfe_power_balance.sysml",
         "analyses/mfe_viability.sysml",

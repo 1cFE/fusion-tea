@@ -126,11 +126,14 @@ package stellarator_09 {
             // Source: costing_constants.yaml coil geometry (stellarator G=8pi^2);
             //   literal to stay in the codegen envelope (no redef expr drop).
             :>> G = 78.95683520871486;
-            // Axis-averaged (loop-center) field [T]. Source: Table 2 image
-            //   (page_002_table_0.png: "Axis av. magnetic field strength [T] 9.0") and
-            //   Table 5 image (page_009_table_0.png: "Axis averaged B_0 [T] 9.0", Points
-            //   A and B). NOT the 24.9 T peak-on-winding printed beside it in Table 2.
-            :>> B = 9.0;
+            // Axis-averaged field [T]: COMPUTED (WI-035, inversion ruling
+            // 2026-08-30). The held ':>> B = 9.0' is retired; the generic plant
+            // EXPOSEs field_calc.B_axis into magnet.B from the coil-set current
+            // below. The printed 9.0 T (Table 2 image page_002_table_0.png;
+            // Table 5 image page_009_table_0.png Points A/B) remains the
+            // cross-check: computed B_axis = 9.0 T minus one ulp
+            // (8.999999999999998), low side bound so peak_field_ok cannot
+            // flip on rounding (WI-035 design D2).
             // Major radius [m]. Source: stellaris-design-details.md Table 2 /
             //   line 251 (R ~= 12.7 m).
             :>> R0 = 12.7;
@@ -160,6 +163,69 @@ package stellarator_09 {
             // is bound (WI-030).
             :>> B_max = 24.9 {
                 doc /* **Source**: stellaris-design-details.md; /home/reid/1cfe/1costingfe/src/costingfe/defaults.py (pin 0254385) **Ref**: Table 2 image (images/page_002_table_0.png: peak conductor magnetic field strength 24.9 T); defaults.py:605-612 (MAGNET_TABLE rebco_hts b_max = 23.0, not bound -- owner ruling 2026-08-21) **Basis**: Stellaris REBCO design peak field; the HTS arm's ceiling for the Item 6 A/B */
+            }
+
+            // ----------------- WI-035 coil-set current, limit, cost -----------------
+            // Number of toroidal field coils [1].
+            :>> n_coils = 48.0 {
+                doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: "Number of toroidal field coils [1] 48"); raw.pdf sec. 2.9 (48 = 4 periods x (6 independent + 6 mirrored)) **Basis**: Stellaris coil count */
+            }
+            // Peak single-coil current [A].
+            :>> I_coil = 15400000.0 {
+                doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: "Peak coil current (single coil) [MA] 15.4"); Table 8 image (images/page_022_table_0.png: coil 0, I = 15.4 MA) **Basis**: Stellaris peak coil current -- the WI-035 design lever */
+            }
+            // Coil-set transfer fact [1], float64 of the printed set: (2*pi*R0*B/mu0)/(n_coils*I_coil)
+            // = 571.4999996889 MA / 739.2 MA at (9.0 T, 12.7 m, 48, 15.4 MA). Decomposes as
+            // set-distribution 643.2/739.2 = 0.870 (Table 8) x axis-linkage 571.5/643.2 = 0.888
+            // (the modular-coil shaping current that does not link the axis, WI-032). No float64
+            // value reproduces 9.0 T exactly; this one gives 9.0 minus one ulp (low side, WI-035 D2).
+            :>> k_link = 0.7731331164622419 {
+                doc /* **Source**: stellaris-design-details.md; work/completed/20260827_WI-032_cold-volume-basis/spec.md **Ref**: Table 2 image (page_002_table_0.png: 9.0 T, 15.4 MA, 48 coils, R 12.7 m); Table 8 image (page_022_table_0.png: per-coil ampere-turns 15.4/14.6/13.8/12.9/12.5/11.2 MA x 8) **Basis**: coil-set geometry fact from the printed pair (peak_ratio convention, WI-030) */
+            }
+            // Set-mean over peak coil current [1] = (8 x 80.4 MA)/(48 x 15.4 MA) = 643.2/739.2.
+            :>> f_set = 0.8701298701298701 {
+                doc /* **Source**: stellaris-design-details.md **Ref**: Table 8 image (images/page_022_table_0.png: per-coil ampere-turns, image-verified -- the iter-01 text table misprints coils 1 and 4) **Basis**: Stellaris coil-set current distribution */
+            }
+            // Typical winding circumference [m] ("typical but approximate" -- the same
+            // printed weak link vol_cold_cryo carries; per-coil circumferences unprinted).
+            :>> c_coil = 25.0 {
+                doc /* **Source**: stellaris-design-details.md **Ref**: raw.pdf sec. 2.9 ("typical circumference of 25 m") **Basis**: Stellaris typical coil circumference */
+            }
+            // Winding-pack cross-section side, worst coil [m] (coil 0).
+            :>> wp_side = 0.36 {
+                doc /* **Source**: stellaris-design-details.md **Ref**: Table 8 image (images/page_022_table_0.png: cross-section side length 360 mm, coil 0 -- the highest-force coil, 174 MN/m) **Basis**: Stellaris worst-coil winding-pack side */
+            }
+            // Stress concentration fact [1] = float64 of sigma_anchor*wp_side/(I_coil*B_peak)
+            // at the printed worst-coil pair (650e6 Pa x 0.36 m)/(15.4e6 A x 24.9 T); the
+            // printed "<650" bound taken AS the value (conservative). Roundtrip: exactly 650 MPa.
+            :>> k_sigma = 0.6102331403536223 {
+                doc /* **Source**: stellaris-design-details.md **Ref**: Table 8 image (images/page_022_table_0.png: "Peak stress on WP [MPa] <650"); raw.pdf sec. 2.9 structural analysis (peak ~600 MPa) **Basis**: coil-set structural fact from the printed pair (peak_ratio convention) */
+            }
+            // Structural allowable stress [Pa].
+            :>> sigma_allow = 800000000.0 {
+                doc /* **Source**: stellaris-design-details.md **Ref**: raw.pdf sec. 2.10 ("design limit of 800 MPa for cryogenic AISI 316LN", Fig. 49; von Mises as membrane+bending proxy, ASME BPVC VIII-2 / Eurocode framing; yield ~1000 MPa at 20-30 K) **Basis**: Stellaris support-structure design stress limit */
+            }
+            // Winding fabrication markup [1] = 3.5 (winding/insulation/cooling/jointing/test)
+            // x 1.9 (documented NCSX non-planar production penalty). Content-mapped: no casing,
+            // cryostat, or quench content (casings are the account below; NI quench protection
+            // is passive, printed sec. 2.9).
+            :>> f_wp_fab = 6.65 {
+                doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385) **Ref**: costing_constants.yaml:50 (coil_cu_fab_markup 3.5, content list); :60-72 (stellarator 5.87 = 3.09 x 1.9 NCSX overrun; winding path handled separately) **Basis**: content-mapped fabrication build-up on the conductor base (WI-035 D4) */
+            }
+            // Casing steel mass per coil [kg]: the PRINTED FLOOR of the sec. 2.10 cast-part
+            // range (63-200 t) -- a KNOWING LOWER BOUND (f_uplift_cryo pattern): no total is
+            // printed, so the lightest cast part per casing bounds from below; band
+            // [$54.4M, $172.8M] disclosed in WI-035 design D5. The parameter names the seam.
+            :>> m_casing = 63000.0 {
+                doc /* **Source**: stellaris-design-details.md; WI-035 design ruling D5 (2026-08-30) **Ref**: raw.pdf sec. 2.10 ("cast with parts weighing between 63 tons and 200 tons") **Basis**: explicit lower-bound assumption parameter -- printed floor, seam named */
+            }
+            // Fabricated structural steel price [$/kg].
+            :>> steel_price = 6.0 {
+                doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385) **Ref**: costing_constants.yaml:52 (coil_steel_price_per_kg = 6.0) **Basis**: fabricated structural steel rate at the pin */
+            }
+            // Casing fabrication markup [1].
+            :>> f_steel_fab = 3.0 {
+                doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385) **Ref**: costing_constants.yaml:53 (coil_steel_fab_markup = 3.0, "coil-case / inter-coil support fabrication") **Basis**: coil-case fabrication build-up at the pin */
             }
         }
 

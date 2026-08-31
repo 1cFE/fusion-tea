@@ -582,9 +582,11 @@ package mfe_account_costs {
         in attribute p_cryo_ref : Real default 30.0;
         // cas22.py:694
         in attribute alpha : Real default 0.7;
-        out attribute cost : Real =
-            aux_per_mw_in * (n_mod_in * p_th_in)
-            + cryo_base * (p_cryo / p_cryo_ref) ** alpha;
+        // WI-035 D7: the aux term and the cryoplant term as their own
+        // outputs; cost stays their exact sum (same operations, bit-identical).
+        out attribute aux_cost : Real = aux_per_mw_in * (n_mod_in * p_th_in);
+        out attribute cryo_cost : Real = cryo_base * (p_cryo / p_cryo_ref) ** alpha;
+        out attribute cost : Real = aux_cost + cryo_cost;
     }
 
     // ---- CAS50 supplementary (consumes cas20 / cas23..28 / cas30 aggregates) ----
