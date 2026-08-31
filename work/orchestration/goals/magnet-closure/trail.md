@@ -315,3 +315,42 @@ Per Round 1 review finding 2: decision field 3 leaned on `20260821-power-cycle-a
 ### T-001 start — 2026-08-30
 
 Task T-001 (round 2): author the Row-3 evidence map, then obtain the fresh re-grade. Native targets: `.project/active/demo-depth-rubric/evidence-map-r3-regrade.md` and `.project/active/demo-depth-rubric/grading-r3-regrade.md`. Expected artifact: the two cell records.
+
+### T-001 return — 2026-08-30
+
+**Outcome:** `COMPLETE`. Both cell records exist at `.project/active/demo-depth-rubric/grading-r3-regrade.md`, produced by a clean-context non-author grader against `rubric.md@dc0f0b6d` at the current model sha and the WI-035 package identity: **R3.P = 3** (was 1), **R3.S = 3** (was 2) — the row's target. Five evidence-integrity findings attached, none blocking a level (the two record defects the review already amended, plus the three disclosed assumptions: on-fence-by-construction `k_link`, the `m_casing` floor, the `k_sigma` extrapolation).
+
+**Evidence refs.** The grader's own judgments on the flagged cruxes: P2's first conjunct satisfied (the derivation genuinely computes the field from geometry and current; `k_link` is a held sourced coil-set fact of the kind the anchors permit); P3's conjunction fully evidenced in the committed study (the stress ceiling for R ≥ 16.5 m = field choice; the transect flip = coil sizing); S3's cryoplant conjunct met as written (the anchor tests separately sized sub-accounts, not a CAS22.1.3 home — power supplies, which the same anchor names, never lived there either). The `c_coil`/`f_set`/`wp_side` holds defeat the P4/S4 bars and went to `why_not_next`, not to the scores.
+
+**Goal-level reading.** The goal's § Answered when measurement is taken and reads at target. Of its remaining conjuncts: the validation battery is green (398 passed / 14 skipped, verified by the Round 1 reviewer's own run), and the round's study ran clean at the pin. One reading stays owner-held: whether "affected studies re-run clean" is satisfied by the new study plus the recorded restatement of the deliberately non-reproducible B-axis comparand (MR-WI035-7), or whether the owner wants a re-run first.
+
+**Decision fields.**
+
+1. *Finding or trigger:* the grader's `why_not_next` sentences lean on the open rows `20260830-stress-fence#1`/`#2` and the Rung C gate behind `magnet-ab#4` — touched rows.
+   *Decision and reason:* disposition rows appended (below, and in the round result): a routing *proposal* for `#1`/`#2` — one modeling item, the winding-pack sizing chain — left un-minted pending the owner's ruling; `#4` unchanged, still owner-gated. *Tier:* execution detail (the minting itself is the owner's). *Who decided:* the round agent, 2026-08-30. *What changed:* `DISCOVERY_LOG.md`, three rows.
+
+### Round 2 result — 2026-08-30
+
+**Intent:** met. The round was declared as a measurement round — no model increment, no pin, no study — and that is what it was: one task, one deposit, nothing under `models/` touched.
+
+**Task sequence:** T-001 (`COMPLETE`). No retries, no gates tripped, no anchor contest — rubric v1's Row-3 anchors were gradeable as written.
+
+**Last semantic outcome:** the fresh Row-3 re-grade at the frozen yardstick: **R3.P 1 → 3, R3.S 2 → 3** — the first measured maturation delta of the demo epic's Item 10 chain. **Stop reason (derived): closing trigger 6 — the goal's answer condition is measured at target; the close itself is owner-held** (goal § Close rule), with one owner reading outstanding (the "affected studies re-run clean" conjunct, stated in the T-001 return).
+
+**Evidence refs.** `grading-r3-regrade.md` (both cells, protocol § 4 fields complete); `evidence-map-r3-regrade.md` (author side, pointers only); `learnings.md` § Round 1; commits `ffa38c05` + this close commit.
+
+**Proposed learning delta** (subject to the fresh review):
+
+1. The frozen-yardstick loop closes end to end: ground → derive → integrate → study → re-grade moved Row 3 from (1, 2) to (3, 3) in one derive-and-limit round plus one measurement round, with zero rubric-anchor contests — the yardstick held still while the model moved, which is what it was frozen for.
+
+**Finding dispositions:** `20260830-stress-fence#1`/`#2` — routing proposed to the owner (one modeling item, the winding-pack sizing chain: winding length from coil geometry, `wp_side` into the sizing/cost chain, under the MFE Cost Modeling epic); not minted pending the ruling. `magnet-ab#4` — unchanged, re-touched by the grader's `why_not_next`, still blocked on the Rung C gate. Rows appended.
+
+### Stop — 2026-08-30
+
+Kind: handoff
+
+**What is true on disk:** Round 2 is closed — strategy, one task triple, a result — and committed. The re-grade reads P3/S3 at the frozen rubric; the battery is green; WI-035 sits audited-by-use at `work/active/` awaiting item close; the routing proposal for the winding-pack sizing chain awaits a ruling.
+
+**What the owner must see:** (1) a fresh session for the round 2 review (this session authored the round; the Round 1 reviewer authored the review this round transcribed its strategy from — a third session is cleanest, though the runbook's bar is only that the critic not be this session); (2) three owner rulings: the § Answered when "affected studies re-run clean" reading, the goal close itself, and the `#1`/`#2` routing proposal. Merge, push, and WI-035 item close remain owner-held throughout.
+
+**The material to review:** this trail's Round 2 section; `grading-r3-regrade.md` + `evidence-map-r3-regrade.md`; the three 2026-08-30 disposition rows appended today. Resume at `GOAL_RUNBOOK.md` § The fresh review.
