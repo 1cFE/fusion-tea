@@ -238,3 +238,80 @@ Kind: handoff
 **What the owner must see:** a fresh session is needed to review the round (`GOAL_RUNBOOK.md` § The fresh review) — this session authored every part of it and may not review it. The review checks the cited evidence, scope fidelity, the one retry's classification, the landed dispositions, and the proposed learning delta; it then recommends close or writes the next strategy revision.
 
 **The material to review:** `work/orchestration/goals/magnet-closure/` (goal.md, this trail, evidence/), `work/active/WI-035_magnet-closure/`, `exploration/stellarator_e2e/studies/20260830-stress-fence/` (record, synthesis, Addendum), `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md` (the four 2026-08-30 rows). Resume at `GOAL_RUNBOOK.md` § The fresh review.
+
+### Round 1 review — 2026-08-30
+
+**Reviewer:** a fresh session — this session did not author any part of round 1 (`GOAL_RUNBOOK.md` § What "fresh" means); it picked up from the § Stop handoff. **Verdict: `FINDINGS`.** Two record defects, neither touching the round's evidence or its conclusion. Both are fixed by appended `### Amendment` entries; the round stays closed and is not resumed.
+
+**What I re-derived myself, from the committed artifacts, rather than reading off the trail.**
+
+- **The field derivation.** From the held facts in `stellarator_plant.sysml:170-205` — `n_coils` 48, `I_coil` 15.4 MA, `k_link` 0.7731331164622419, `R0` 12.7, `mu0` — μ0·n·I·k/(2πR0) reproduces `8.999999999999998`, exactly the recorded `B_axis`, one ulp under 9.0 and on the low side as D2 said it would be. `k_sigma·I·B_peak/wp_side` reproduces `649999999.9999999` Pa against the 800 MPa allowable. Both claims hold.
+- **The ceiling handover.** Recounted from `results/points.csv` independently of the record and the synthesis: the constraint that kills the first infeasible point above each R's band is `peak_field_ok` alone for R ≤ 15.0 m, both ceilings at 15.5 and 16.0 m, and `wp_stress_ok` alone for every R from 16.5 to 20.0 m. The record's "binding ceiling for R ≥ 16.5 m" is exact.
+- **The coil-sizing flip and finding `#2`.** The transect arm flips `wp_stress_ok` between 0.28 m (835.7 MPa, violated) and 0.30 m (780.0 MPa, satisfied), and LCOE and magnet capital are bit-identical at all 16 transect points. The sighting that `wp_side` is costless is not an inference; it is visible in the committed column.
+- **The 99/99 comparand agreement — the one claim the fresh administrator could not check.** `synthesis.md` § What the record does not support flags it as unverifiable from inside the record directory. It is verifiable from outside, and I checked it: over the 33 shared R values, the three field-independent fences (`recirc_ok`, `wall_load_ok`, `net_positive`) each carry a single verdict per R in both studies and agree at every one — 99/99, zero mismatches. The trail and the round result both scope the claim to the field-independent fences, which is the honest scoping; the field-side fences are not comparable across the re-baseline and are not compared.
+- **The rollup identity.** `magnet_capital == winding_pack + magnet_structure` at all 1,634 points. The baseline decomposes to $5.346B + $54.4M = $5.401B against the retired lump's $6.3235B — the same lump figure SV-040 names, so the −14.6 % delta is explained against the right number and not fitted to it.
+- **The entry-point delta.** Census 173 → 186 by diff, not by assertion: `magnet__B` removed, twelve magnet levers and two `field_calc` library defaults added. `vol_cold_cryo` and `p_pump` both still settable, so the standing rulings are intact, and `mfe_plasma_scaling.sysml` has not moved since WI-030 — no confinement coupling crept in.
+- **The candidate pin.** `evidence/T-004_integration_return.json` reads `CANDIDATE`, all ten gates `pass`, pin `287479a3…`, semantic `819a5a05…`, executable `75f90a24…` — and the committed manifest carries that same executable fingerprint, so the retry's re-pin recorded the sealed tree's real identity rather than moving a goalpost.
+- **Cited artifacts have not moved.** Every `@sha` citation in `goal.md` resolves and its artifact's latest commit is at or before the cited sha; the two model twins are byte-identical; the working tree is clean. No external mutation (§ When a cited artifact moves).
+- **Tests.** `tests/models` and `tests/study` pass in full at the round's HEAD, the integrate family included: **398 passed, 14 skipped** in 6m16s, under the SysIDE key, the teax checkout at `744745f8…`, and the four sealed-wheel variables (`STOP_PARSER_WHEEL_TARGET`, `_AGENTIC_WHEEL`, `_CODEGEN_WHEEL`, `_COSTINGFE_WHEEL`). The round's green claim is verified by a run of my own, not only by the seam return. Two false alarms of my own making are recorded so nobody re-chases them: exporting `PYTHONPATH` at the teax simkit makes `test_simkit_probe_refuses_without_the_teax_root` fail by construction, and two concurrent pytest runs race over `.integration_workspace` and error the whole integrate family at fixture setup. Without the sealed-wheel variables the seam refuses at `preconditions: env-missing` and the family errors rather than running. Neither is a repository defect.
+
+**Scope, strategy, and retry fidelity.**
+
+- **Strategy fidelity: yes.** All three declared moves landed and were exercised, and no abandonment condition was reached. The round stayed inside its bound: one promoted pin, one committed study.
+- **Scope drift: none knowing, two recorded stretches.** T-003 also touched `tests/model_families.py`, and T-004's follow-through touched `run_stellaris_single.py` alongside the fixtures. Both are the suites' own maintenance mandate rather than new work, and both are recorded in their returns' decision fields. `ef1724d1` touched nothing under `models/`, as its scope required.
+- **Retry classification: accepted, with the reasoning stated.** The one retry re-ran the same seam invocation with the same expected fingerprints after correcting a stale provenance pin. Read literally, "inputs identical" bends — an input file changed between attempts. Read for what the rule protects, it holds: the correction moved a record onto the sealed tree's already-existing identity, and the seam then recomputed the pin itself and passed its own manifest gate. Mechanical is the right call.
+- **Owner gates: honoured.** T-001 stopped at the spec checkpoint rather than proceeding; the inversion ruling is `[OWNER 2026-08-30]` and recorded in the spec; Rung C was left untouched and is named as the blocker on `magnet-ab#4`.
+
+**Findings.**
+
+1. **A citation that resolves to nothing.** The T-004 return's evidence refs read "Commits `936081b0`, `<follow-through>`, `a7e03073`" — `<follow-through>` is an unreplaced placeholder. Its referent is commit `a9b30762` ("test/route follow-through": `run_stellaris_single.py`, `test_known_answers.py`, `test_operand_bindings.py`, `test_verify.py`), and the round result's commit list omits that commit too. Nothing about the work is wrong; the record just points at nothing where it should point at a sha. **Fix:** one `### Amendment` naming `a9b30762` in both places.
+2. **A touched discovery row with no disposition.** `20260821-power-cycle-ab#1` is load-bearing in the T-005 return — decision field 3 declines to seek an owner ruling on the availability `no_constraint_response` precisely because that gap already stands committed under that id. Under ADR-0004 that is a row the round's evidence touched, and it got neither a log row nor a mention in the round result's disposition paragraph. The row's own 2026-08-29 disposition already gives the shape the update would take ("standing, re-confirmed at the new pin; no new work routed"). **Fix:** one appended disposition row under that id, or an `### Amendment` recording that the standing disposition still holds at the new pin.
+
+Not findings, but worth carrying:
+
+- The round's own sightings `20260830-stress-fence#1`/`#2` stand `unrouted` with homes stated. That is the log's established shape for a first sighting — the executor mints, a later round routes — and routing them now would mean minting work the owner has not gated. The round result says so explicitly. No action.
+- `k_link` is a single held ratio, so `B_axis` is exactly proportional to `I_coil`/`R0`. MR-WI035-1 permits held coil-set geometry facts, and the doc comment states the basis, so this is inside the requirement. But it is the thing the Row-3 re-grade will have to weigh: how much design response a derivation buys when one constant carries the whole transfer.
+- `f_wp_fab` = 6.65 is still a fabrication markup, and finding `#2` shows the winding-pack account does not respond to pack sizing. The decomposition is real — two separately sized accounts with different drivers, rollup identity exact — but it is one honest step, not a finished sizing chain. SV-040's conjunction also names a cryoplant sub-account: D7 exposed the existing computed cryo capital rather than newly sizing it, and it sits outside CAS22.1.3 by the design's own account boundary. `passing` is defensible on that reading; the re-grade should look at it directly rather than inherit the flag.
+
+**Learning delta: all three accepted as proposed, unchanged.** Each is supported by evidence I re-derived above: the fence has its own regime (1); the held-float64 convention makes the inverted derivation exact to a ulp and the low-side bind is recorded (2); and the two new sightings are the internalization's honest residue (3). Appended to `learnings.md`.
+
+**Constraints carried into the next strategy.**
+
+- The goal is **not** answered. § Answered when needs a fresh non-author Row-3 re-grade against `rubric.md@dc0f0b6d`; it has not happened. Round 1 produced the thing to measure, not the measurement.
+- Round 2's natural strategy is that re-grade, run by a grader who did not author WI-035 and did not write this review. If it lands P3/S3, the close condition is met and the close is the owner's. If a cell falls short, what it names is the next increment.
+- `20260830-stress-fence#1` (winding length held at `c_coil`) and `#2` (costless `wp_side`) are the routing debt round 2 inherits, and together they are the same gap: the winding-pack account is not yet sized by coil geometry.
+- `magnet-ab#4` stays blocked on the Rung C owner gate. No round may assume it.
+
+**Recommendation.** Land the two amendments, then open round 2 as the fresh Row-3 re-grade. Do not recommend close yet — the goal's own close condition is a measurement nobody has taken.
+
+### Amendment 2026-08-30 — amends "T-004 return — 2026-08-30" and "Round 1 result — 2026-08-30" (evidence refs)
+
+Per Round 1 review finding 1: the T-004 return's commit list contains the unreplaced placeholder `<follow-through>`; its referent is commit `a9b30762` ("test/route follow-through: seven-verdict world in the single runner, verify set, operand counts; tie-test asserts the rollup's disclosed R-independence" — `run_stellaris_single.py`, `test_known_answers.py`, `test_operand_bindings.py`, `test_verify.py`). The round result's commit list omits the same commit. Both lists are to be read as: `6d80583d`, `ef1724d1`, `936081b0`, `a9b30762`, `a7e03073` (and, for the round result, `04b258d4` plus the close commit `591d3c3a`).
+
+### Amendment 2026-08-30 — amends "T-005 return — 2026-08-30" (decision field 3) and "Round 1 result — 2026-08-30" (finding dispositions)
+
+Per Round 1 review finding 2: decision field 3 leaned on `20260821-power-cycle-ab#1` (declining an owner ruling because that gap already stands committed), which makes it a row the round's evidence touched — and it received no disposition. Discharged today: one appended disposition row under that id in `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md` — standing, re-confirmed at the WI-035 pin, no new work routed. The round result's disposition paragraph is to be read as covering three touched rows, not two.
+
+## Round 2 — fresh-regrade
+
+### Strategy revision — 2026-08-30
+
+- **Approach:** measure. Run the goal's own close condition: a fresh non-author Row-3 re-grade against the frozen `rubric.md@dc0f0b6d` at the current model state — same rubric sha + new model sha, the grading protocol's valid progress comparison (rubric § Grading protocol 7). The strategy is a transcription of the Round 1 review's Recommendation and Constraints ("open round 2 as the fresh Row-3 re-grade, run by a grader who did not author WI-035 and did not write this review"); the transcription is this agent's, the substance the reviewer's. The author side of the protocol (a pointer-only evidence map, no proposed scores) is supplied by this agent as the WI-035 author; the grading itself is executed by a clean-context grader that authored neither the model change nor the review (the fresh-administrator precedent from T-005, accepted at the Round 1 review).
+- **Assumptions:** the evidence is sufficient and committed (item record, candidate pin, study record + synthesis, learnings); rubric v1's Row-3 anchors are gradeable as written (a contest goes to the owner — reserved gate 4, never around it); a clean-context grader session satisfies protocol § 2.
+- **Abandonment conditions:** the grader cannot complete the cell records; or a Row-3 anchor proves contestable (owner gate); or grading reveals the evidence is materially incomplete (that names the next increment instead).
+- **Intended model increment:** none — this is a measurement round; any model edit would move the thing being measured.
+- **Intended study question:** none. A round may close with neither a pin nor a study; this one intends exactly that.
+- **Carried debt (from the review):** sightings `20260830-stress-fence#1`/`#2` (one gap: the winding-pack account is not yet sized by coil geometry) await routing — proposed to the owner at this round's end alongside the re-grade result; `magnet-ab#4` stays behind the Rung C gate.
+
+### T-001 scope
+
+- **Objective:** obtain the fresh non-author Row-3 re-grade — cell records `R3.P` and `R3.S` per the grading protocol § 4 (rubric_version `rubric.md@dc0f0b6d`, the current model sha, the WI-035 package identity), deposited as a new grading file; the old grading is never edited.
+- **Why now:** round 2's strategy is this measurement; every input it needs is committed.
+- **Scope:** authorized — the author's pointer-only evidence map and the grader's deposit under `.project/active/demo-depth-rubric/`; a clean-context grader agent; trail entries. Excluded — any `models/` or rubric edit, any score negotiation (a disagreement is preserved per protocol § 5, not argued away), any routing of the carried sightings (that is the round result's proposal, owner-ruled).
+- **Inputs:** `rubric.md@dc0f0b6d` § Row 3 + § Grading protocol; the evidence map; `goal.md@11fa3e3d` § Answered when.
+- **Done when:** both cell records exist with integer scores, anchors quoted, evidence cited, `why_not_next` stated, grader named.
+- **Stop when:** grader blocked, an anchor contest (owner gate), or the retry cap.
+
+### T-001 start — 2026-08-30
+
+Task T-001 (round 2): author the Row-3 evidence map, then obtain the fresh re-grade. Native targets: `.project/active/demo-depth-rubric/evidence-map-r3-regrade.md` and `.project/active/demo-depth-rubric/grading-r3-regrade.md`. Expected artifact: the two cell records.
