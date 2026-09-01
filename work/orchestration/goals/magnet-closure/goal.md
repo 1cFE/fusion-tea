@@ -68,4 +68,6 @@ The owner closes — on the § Answered when condition, or by redirect at any ro
 
 ## Amendments
 
-(none)
+### 2026-09-01 — goal closed by owner ruling
+
+§ Answered when met — a fresh non-author Row-3 re-grade at `rubric.md@dc0f0b6d` reads R3.P = 3 (was 1) and R3.S = 3 (was 2), the validation battery is green, and the "affected studies re-run clean" conjunct is satisfied on the owner's reading (a) of 2026-09-01. Closed per § Close rule on the round 2 review's recommendation. Ruling, the reading against all three affected studies, and the effects are recorded at `trail.md` § Goal close. Operator's pen.

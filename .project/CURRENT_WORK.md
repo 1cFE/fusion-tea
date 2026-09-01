@@ -1,12 +1,13 @@
 # Current Work
 
-**Updated 2026-08-30 (magnet-closure: goal measured at target — three owner rulings pending).**
+**Updated 2026-09-01 (magnet-closure: goal closed at target; WI-036 minted).**
 
 ## Where things stand
 
-- **Goal `magnet-closure` round 2 closed** (`work/orchestration/goals/magnet-closure/trail.md`, close commit `0cf0cf41`): the fresh non-author Row-3 re-grade at the frozen `rubric.md@dc0f0b6d` reads **R3.P = 3 (was 1), R3.S = 3 (was 2)** — the goal's § Answered when target, the demo epic Item 10 chain's first measured maturation delta. Deposit: `.project/active/demo-depth-rubric/grading-r3-regrade.md`.
-- **Three owner rulings pending** (trail § Round 2 Stop): (1) the § Answered when "affected studies re-run clean" reading (new study clean + the restated non-reproducible B-axis comparand — or re-run something first); (2) the goal close itself; (3) the routing proposal for `20260830-stress-fence#1`/`#2` — one modeling item, the winding-pack sizing chain, MFE Cost Modeling epic.
-- **A fresh session should review round 2** (`GOAL_RUNBOOK.md` § The fresh review) before or at close.
+- **Goal `magnet-closure` is closed, answered at target** (`work/orchestration/goals/magnet-closure/trail.md` § Goal close, owner ruling 2026-09-01 "a / close / mint"). The fresh non-author Row-3 re-grade at the frozen `rubric.md@dc0f0b6d` reads **R3.P = 3 (was 1), R3.S = 3 (was 2)** — the demo epic Item 10 chain's first measured maturation delta. Deposit: `.project/active/demo-depth-rubric/grading-r3-regrade.md`.
+- **Round 2 fresh review: `FINDINGS`** (trail § Round 2 review, 2026-09-01). Scores unchanged and independently spot-checked from `points.csv` and the cited lines. Two findings discharged by amendments: the grader's spawn prompt is now deposited verbatim at `work/orchestration/goals/magnet-closure/evidence/round2_T-001_grader_prompt.md` (independence is evidence, not attestation), and the "affected studies re-run clean" reading is recorded against all three affected studies by name.
+- **Disclosed at the close:** the cryoplant account was *exposed* (D7), not newly sized; and of the four sub-accounts the S3 anchor names, only the winding pack responds to a magnet design lever. Both weighed against the written anchor and accepted; recorded in `learnings.md` § Round 2.
+- **WI-036 minted** — "Winding-pack sizing chain: winding length from coil geometry, wp_side into the sizing and cost chain" (standard, P1, MFE Cost Modeling epic), routing `20260830-stress-fence#1`/`#2`. Backlog only; no work started. Its spec must carry the coil-shape-factor caveat (`c_coil` = 25 m is a printed *typical* circumference; per-coil values unprinted) — the item is not a route to S4.
 - WI-035 at `work/active/` awaits item close; merge/push owner-held; `magnet-ab#4` stays behind the Rung C gate. Baseline: LCOE 304.482, total capital $14.574B, seven verdicts satisfied.
 
 ---
