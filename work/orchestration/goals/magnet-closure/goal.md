@@ -71,3 +71,12 @@ The owner closes — on the § Answered when condition, or by redirect at any ro
 ### 2026-09-01 — goal closed by owner ruling
 
 § Answered when met — a fresh non-author Row-3 re-grade at `rubric.md@dc0f0b6d` reads R3.P = 3 (was 1) and R3.S = 3 (was 2), the validation battery is green, and the "affected studies re-run clean" conjunct is satisfied on the owner's reading (a) of 2026-09-01. Closed per § Close rule on the round 2 review's recommendation. Ruling, the reading against all three affected studies, and the effects are recorded at `trail.md` § Goal close. Operator's pen.
+
+### 2026-09-01 — reserved gate 1 was not an owner ruling (provenance correction)
+
+§ Reserved gates item 1 names "Rung C confinement (`mfe_plasma_scaling.sysml:163`), held `p_pump` (WI-033)" as owner scope rulings a strategy may only propose reopening. Half of that is wrong, and the goal ran two rounds under it.
+
+- **Confinement was never ruled out of scope by the owner.** The owner, in session 2026-09-01: "I'm not sure when I ever ruled anything out of scope"; "nothing is sacred here." The phrase originated as an agent's scope note in a model doc comment — the item then being built did not cover the closure — was recorded honestly as `[AGENT]` in the concept's Non-Goals, and was then promoted here to owner grade. The `[INHERITED]` tag on the gate is accurate about the path and wrong about the authority: an `[AGENT]` item cannot be inherited as an owner ruling. Effect on this closed goal's record: `20260823-magnet-technology-ab#4` was never blocked by an owner gate, and the two rounds' "blocked on the standing Rung C owner gate" statements are to be read as blocked on an agent's scope note that no one had re-derived. Nothing else in the goal's evidence or its scores depends on it — the strategy declined confinement coupling on its own terms, and the re-grade scored what was built.
+- **The `p_pump` ruling is real but narrower than the gate implies.** It bars expressing `p_pump` as a fixed fraction of thermal power, for a stated reason `[OWNER-VERBATIM 2026-08-28]`. The owner's context, given 2026-09-01: it was approving a change from a hard-coded wrong value to a hard-coded better one, not settling how pumping power must be represented. Computing pumping power from a loop model is outside what it rejected.
+
+Full correction and its two deliberately-unedited stale homes: `.project/concepts/stellarator-demo-maturation.md` § Corrections — 2026-09-01, which is the authority until they land.
