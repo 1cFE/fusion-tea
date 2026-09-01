@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Epic: MFE Cost Modeling — Tokamak & Stellarator
 Owner: reid
 Created: 2026-08-30
-Updated: 2026-08-30
+Updated: '2026-09-01'
 ---
 
 # WI-035: Magnet Closure — Derived Field, Structural Limit, Decomposed Cost Accounts
