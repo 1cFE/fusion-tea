@@ -251,3 +251,7 @@ No snapshot content is restated here.
 
 ---
 
+
+## Addendum 2026-09-01
+
+Statement corrections from the administrator's checks (`synthesis.md`); no result artifact changes. (1) § 6's "required ≈ 72–139 MW" understated the below-ceiling range at p=50: the committed range in `oracle_operands.csv` is 90.6–1566 MW across the whole slice (the 72–139 figure described the near-baseline neighborhood only). (2) § 4's "satisfied in a 15–21 MA band at p=110" is wrong as a band: sustainment is satisfied up to 24 MA at most densities in that slice; the 18→22 non-monotonicity claim belongs to the p=50 oracle scan edge, where it stands. (3) The required-aux minimum reads 72.4 MW at T = 17 in the committed transect (the "≈ 72.6 near T = 18" figure was the round-1 prototype's finer scan; the committed grid is 1 keV). (4) `arm_of` labels the p-transect's p = 110 point into `arm-grid-I-ne-p110` — a labeling artifact: the "four feasible grid points" include one off-grid transect point at baseline density; the § 3 optimum (an on-grid point) is unaffected. (5) § 1 lists three arm ids where four ran (the p110 slice is its own arm id). The synthesis is the reading of record for all five.
