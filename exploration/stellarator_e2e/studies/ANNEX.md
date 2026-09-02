@@ -24,19 +24,28 @@ Its suffix is `R0`, not `R`, so no suffix scan will ever surface it. That is why
 tie has to be declared rather than found. The tie **data** lives in the manifest
 (`manifest.json` → `ties`); this section says why it is there and never restates it.
 
-Known held-fixed semantic duplicates, recorded so a later study does not rediscover
-them as surprises: `pb__p_input` and `heating_cost__p_ecrh` are both the 50 MW
-installed heating power, and the two `ash_frac` entries carry the same fraction at
-different precisions. None of the three is swept today.
+`stellarator_09__stellaris__p_ecrh` rides with `stellarator_09__stellaris__p_input`
+(declared by `20260901-sustainment-fence`, the first study to sweep installed
+heating): both are the installed ECRH power — the power balance consumes the coupled
+50 MW and the heating account prices the same 50 MW — so sweeping one while holding
+the other would heat the plasma with a system that was never bought. Formerly listed
+here as a known held-fixed semantic duplicate; promoted to a tie when the axis went
+live. The remaining known duplicate: the two `ash_frac` entries carry the same
+fraction at different precisions; neither is swept today.
 
 ---
 
 ## § Baseline pin
 
-The pinned baseline point, its headline, and its six expected verdicts live in
-`manifest.json` → `baseline`. Today: `R = 12.7 m`, `a = 1.3 m`,
-`availability = 0.85`, headline `stellarator_09__stellaris__lcoe_calc__lcoe` =
-`333.0670332813743`, all six viability constraints satisfied (six since WI-030 added `peak_field_ok`).
+The pinned baseline point, its headline, and its expected verdicts live in
+`manifest.json` → `baseline`. Today (WI-037 regeneration, 2026-09-01): `R = 12.7 m`,
+`a = 1.3 m`, `availability = 0.85`, headline
+`stellarator_09__stellaris__lcoe_calc__lcoe` = `307.08712042841586`, **eight**
+verdicts — seven satisfied and `sustainment_ok` **expected violated** (the disclosed
+WI-037 baseline state: required sustained coupled heating ~90.6 MW vs 50 installed).
+The baseline also sits at exact equality on the conductor ceiling (B_peak 24.90 T vs
+B_max 24.9, `<=` satisfied by the WI-035 one-ulp-low design convention) — a
+by-construction fact of the design point, not a discovery any study makes.
 
 The route executes exactly that point before preflight runs and deposits
 `baseline_result.json`; preflight's `baseline_headline` gate compares the two at
@@ -79,7 +88,7 @@ sweeps.
 from its own blanket volume, so parity verifies it for the first time. The evidence
 layer records only single-field float channels, so 46 of them appear in a study store
 and 6 do not: the `pb__*` power-balance fields, which are fields of one multi-field
-model. `net_positive` and `recirc_ok` reach their operands through those six, which
+model — and since WI-037 the `sustain__*` sustainment fields share the same limitation (`20260901-sustainment-fence#3`); their per-point values are exported oracle-side in that study's `oracle_operands.csv`. `net_positive` and `recirc_ok` reach their operands through those six, which
 is why channel operands resolve from the oracle's return rather than from the store.
 
 **The operand-binding table, and why it exists.** A predicate operand in

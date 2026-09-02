@@ -1,0 +1,73 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "I_coil",
+      "note": "Peak single-coil current, the field lever since WI-035 (B_axis is computed). WI-037 gives it the confinement channel: it now reaches sustainment_ok and, through the computed ash/fuel, the whole fusion-derived chain.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__I_coil",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "n_e0",
+      "note": "Peak electron density, an operating-point lever (WI-037: the fuel peaks are computed from it by quasi-neutrality with the converged ash; the line-averaged ISS04 density derives from it).",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__n_e0",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "T_i0",
+      "note": "Peak ion temperature, an operating-point lever (WI-037: T_e0 rides the held 0.95 ratio inside the sustainment calc; sweeping T_i0 moves fusion, stored energy, tau_E, radiation, ash, and the required heating).",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__T_i0",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "p_input+tie",
+      "note": "Installed plasma-coupled ECRH power together with its declared physical-identity tie, the heating account's installed power (manifest.ties; promoted from the annex's known duplicate when this axis went live).",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__p_input",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09__stellaris__p_ecrh",
+          "provenance": "tie"
+        }
+      ]
+    },
+    {
+      "axis": "R+tie",
+      "note": "DECLINED for this study (critique finding 2 traced it): geometry structure is 20260829-p-pump-fence / 20260830-stress-fence territory; re-sweeping would spend the round's one study re-measuring known structure. Declared with its physical-identity tie so the declination is traced at full group completeness.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__R",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09__stellaris__magnet__R0",
+          "provenance": "tie"
+        }
+      ]
+    },
+    {
+      "axis": "a",
+      "note": "DECLINED for this study (traced): same grounds as R+tie.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__a",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}

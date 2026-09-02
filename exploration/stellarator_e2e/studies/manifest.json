@@ -89,6 +89,13 @@
         "stellarator_09__stellaris__R"
       ],
       "note": "Magnet coil major radius is the same physical quantity as the plasma major radius. Its suffix is R0, not R, so no suffix scan will ever surface it -- the tie must be declared. Advisory here: a group holding R but not this key earns a tie_candidate warning, never an added key. Since the model migration the plasma major radius is one plant-level entry point (R), not the geom__R / rb__R fan-out."
+    },
+    {
+      "key": "stellarator_09__stellaris__p_ecrh",
+      "rides_with": [
+        "stellarator_09__stellaris__p_input"
+      ],
+      "note": "The heating-cost installed ECRH power is the same physical quantity as the power balance's installed plasma-coupled heating (both 50 MW; the annex's known held-fixed semantic duplicate, promoted to a declared tie by 20260901-sustainment-fence when p_input became a swept axis). Sweeping p_input while holding p_ecrh would heat a plasma with a heating system that was never bought."
     }
   ],
   "baseline": {

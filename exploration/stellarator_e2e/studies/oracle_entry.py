@@ -85,6 +85,7 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}f_W_core": "f_W_core",
     f"{P}Ti_over_Te": "Ti_over_Te",
     f"{P}p_input": "p_input",
+    f"{P}p_ecrh": "p_ecrh",  # rides with p_input (declared tie, 20260901-sustainment-fence)
     f"{P}sustain__ash_frac_in": "sustain_ash_frac",
     f"{P}sustain__R_w_sync_in": "R_w_sync",
     f"{P}sustain__kappa_sync_in": "kappa_sync",
