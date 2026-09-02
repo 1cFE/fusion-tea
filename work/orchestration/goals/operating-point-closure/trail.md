@@ -225,3 +225,24 @@ Task T-005: execute study `20260901-sustainment-fence` through the run-study run
 - **Dispositions reviewed:** `evidence/T-005_proposed_dispositions.md` (r1).
 - **Verdict:** `REVISE`.
 - **Revision:** 1 of 2. The reviewer independently recounted the crux evidence and upheld all five readings — including the hardest, the `20260823-magnet-technology-ab#4` discharge ("field rewarded by the physics and capped by the conductor — the inversion of the sighted mechanism"), with a not-final caution to carry onto the appended row. Required changes: dispositions 2 and 5 must bear an ADR-0004 class (`model fix`) with status/actor named (the C-001.r2 and rows-53/54 precedents), and class-bearing rows for `#1` and `#4` must be promised at round close. Author revised in place as § Revision r2 of the same document.
+
+### Checkpoint C-001.r2 — 2026-09-01
+
+- **Reviewer:** the same fresh checkpoint session (no execution context), re-reviewing the resubmission.
+- **Reading reviewed:** `20260901-sustainment-fence/synthesis.md` + record § 15/Addendum.
+- **Dispositions reviewed:** `evidence/T-005_proposed_dispositions.md` including § Revision r2.
+- **Verdict:** `PASS`.
+- **Revision:** 2 of 2 used. What the author changed: dispositions 2 and 5 re-classed `model fix` with status/actor/next-reference per the r1 verdict; class-bearing log rows for `#1` and `#4` committed for round close; the not-final caution and the "by this goal" qualifier adopted. All five per-disposition rulings PASS; the gated follow-up (T-006, the Row-1 re-grade) may execute on this reading.
+
+### T-006 scope (round 2)
+
+- **Objective:** the goal's § Answered when act — a fresh non-author re-grade of rubric Row 1 against `rubric.md@dc0f0b6d`, from the pointer-only evidence map.
+- **Why now:** the increment is landed, pinned, studied, and the reading checkpointed (C-001.r2 PASS); the re-grade is the measured answer.
+- **Scope:** authorized — one fresh grader session producing `.project/active/demo-depth-rubric/grading-r1-regrade.md` per the grading protocol (same rubric sha, new model sha, cell record format, evidence-integrity findings never levels); excluded — any model/study/rubric edit, any score by this session.
+- **Inputs:** `evidence-map-r1-regrade.md` (pointers only); the grading protocol at `rubric.md@dc0f0b6d`.
+- **Done when:** the re-grade cell(s) exist with the anchor test applied as written and the delta stated per protocol §7.
+- **Stop when:** the grader contests an anchor (rubric-revision path — owner-gated) or a mechanical failure past cap.
+
+### T-006 start — 2026-09-01 (round 2)
+
+Task T-006: spawn the fresh Row-1 re-grade. Native target: `.project/active/demo-depth-rubric/grading-r1-regrade.md`. Expected artifact: the re-grade record; grader prompt deposited at `evidence/round2_T-006_grader_prompt.md`.
