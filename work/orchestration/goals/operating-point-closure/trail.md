@@ -127,3 +127,25 @@ Task T-001 (round 2): spec/SV amendment + disposition row. Native targets: WI-03
 - **Decision:** trigger — SV descriptions cannot be amended through a pm operation (`update-validation` is status-only). Decision and reason — amend the two rows by direct format-preserving edit with a dated marker, verified by the parser, rather than minting SV-044/045 (which would orphan two permanently-pending rows) or treating the gap as a seam repair (no seam contract exists for description amendment; the magnet-closure hand-edit revert concerned *adding* rows, for which an operation exists). Tier — execution detail. Who decided — the round agent, 2026-09-01. What changed — `modeling_project/VALIDATION_MATRIX.md` SV-042/043.
 
 **Next task:** T-002 — the WI-037 design under the amended spec.
+
+### T-002 scope (round 2)
+
+- **Objective:** produce the WI-037 design under the amended spec — mechanisms for the sustainment chain (line-averaged density, ISS04 closed form, composed radiation, required sustained heating, forward ash/quasi-neutral fuel), the `sustainment_ok` constraint, wiring, retirement mechanics, tolerances, and discretization/convergence contracts.
+- **Why now:** T-001 discharged the amend-first constraints; design is the native next stage.
+- **Scope:** authorized — `work/active/WI-037_operating-point-closure/design.md`, reads anywhere admissible, throwaway prototypes outside `models/`; excluded — plan/implement, edits under `models/` or `exploration/`, source ingestion, discovery-log writes.
+- **Inputs:** amended `spec.md`; round-2 strategy revision; round-1 evidence (image verification already performed there is cited, not redone).
+- **Done when:** design.md exists, requirements-complete against amended MR-WI037-1..7, with stated tolerances and their bases, the executable-seam contract fixed, and the retirement/restatement mechanics named.
+- **Stop when:** prerequisite, strategy blocker, or declared limit.
+
+### T-002 start — 2026-09-01 (round 2)
+
+Task T-002 (round 2): write the WI-037 design. Native target: `work/active/WI-037_operating-point-closure/design.md`.
+
+### T-002 return — 2026-09-01 (round 2)
+
+- **Outcome:** `COMPLETE`. `work/active/WI-037_operating-point-closure/design.md` exists, requirements-complete against amended MR-WI037-1..7: eight decisions (D1 one-calc coupled block; D2 handwritten seam with the normative discretization/convergence contract; D3 the `sustainment_ok` power limit, coupled-to-coupled; D4 wiring by reference redefinition; D5 retirement/lever set; D6 per-stage tolerances with bases; D7 the MR-WI037-7 restatement; D8 decision records for what is deliberately not done), four risks with fallbacks, file list. All quantitative bases cite the round-1 image verification rather than repeating it; the Sudo density limit is recorded as omitted-with-surfaced-gap (formula not admissibly printed).
+- **Evidence:** `work/active/WI-037_operating-point-closure/design.md`; prototype backing at `evidence/T-002_prototype/` (round 1).
+- **Reading:** the design keeps every standing ruling intact, adds pushback without moving the baseline physics point (D7: computed values reproduce the held ones to sub-percent at the printed levers), and localizes all new executable risk in one oracle-mirrored impl. Design approved under the 2026-09-01 delegation; recorded in the design header.
+- **Decision:** trigger — where to put the ash↔W↔τ_E fixed point. Decision and reason — one calc def owns the coupled block with every stage exposed as an output (D1): splitting would expose partial iterations to the network; legibility is preserved by per-stage outputs and the documented semantic. Tier — execution detail. Who decided — the round agent, 2026-09-01. What changed — design.md D1/D2.
+
+**Next task:** T-003 — plan + implement through the native PM.
