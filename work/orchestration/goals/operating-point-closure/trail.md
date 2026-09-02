@@ -195,3 +195,25 @@ Task T-004 (round 2): invoke the integrate seam for the WI-037 increment. Native
 - **Decision:** trigger — a stale `.integration_workspace` from a timeout-killed test run poisoned every integrate fixture. Decision and reason — remove and re-run; classified mechanical (identical task/inputs/meaning). Tier — execution detail. Who decided — the round agent, 2026-09-01. What changed — none (untracked directory removed).
 
 **Next task:** T-005 — the round's one committed study, per the strategy's intended question.
+
+### T-005 scope (round 2)
+
+- **Objective:** execute the round's one committed study against the T-004 candidate pin — the strategy's intended question: with the sustainment fence active, is field rewarded (does the constrained optimum leave the beta floor — the `magnet-ab#4` pathology), and where do the power, beta, wall-load, conductor-ceiling, and stress fences bind over the field lever (I_coil), the operating-point levers (n_e0, T_i0), and heating (p_input) — is the L-003 three-way trade visible in a committed record?
+- **Why now:** the pin exists and is proven (T-004); a valid study reading is the round's closing trigger; no abandonment condition is triggered.
+- **Scope:** authorized — the record directory `exploration/stellarator_e2e/studies/20260901-sustainment-fence/` per the run-study skill (execute mode), first-sighting discovery-log rows at the runbook's step, the study commit. Excluded — any `models/` or library/tool edit, rubric edits, the re-grade, disposition rows for prior studies' findings (the round result owes those), any second study or pin.
+- **Inputs:** the candidate (`evidence/T-004_integration_return.json`, pin `35e922c5…`); `goal.md` invariants (comparisons against this pin; SV-016 untouched); `.claude/skills/run-study/` runbook + `modeling_project/STUDY_POLICY.md`.
+- **Done when:** a committed study record with its § 15 findings register and log rows — an adverse or disappointing reading still closes the round.
+- **Stop when:** an axis traces `no_constraint_response` needing a ruling the delegation does not cover, a mechanical failure past the retry cap, or a strategy blocker.
+
+### T-005 start — 2026-09-01 (round 2)
+
+Task T-005: execute study `20260901-sustainment-fence` through the run-study runbook against pin `35e922c5…`. Native targets: the record directory, DISCOVERY_LOG first-sighting rows, one study commit. Expected artifact: the committed record.
+
+### T-005 return — 2026-09-01 (round 2)
+
+- **Outcome:** `COMPLETE`. The round's one committed study exists: `exploration/stellarator_e2e/studies/20260901-sustainment-fence/` at commit `1d28454f` — record, snapshot, indicators, four results CSVs, verification summary, four § 15 findings with joined DISCOVERY_LOG rows. `tests/study/test_records.py`: 16 passed.
+- **Evidence:** the record directory (all claims cite `results/`); pre-execution critique deposited at `evidence/T-005_precritique.md` (verdict MAJOR, all seven findings dispositioned before any point ran — record § 14).
+- **Reading (executor-level; the fresh administrator's synthesis is the reading of record):** the strategy's question is answered in the committed evidence. (a) Field is rewarded: I_coil reaches all seven constraints and the fusion chain; the p=110 feasible optimum (LCOE 293.468) sits at beta 0.0311 — **off the 0.05 beta floor** — bounded below by `sustainment_ok` and above by the conductor ceiling. The `magnet-ab#4` pathology is inverted: the fence that stops field is magnet technology, not plasma stability. (b) The L-003 three-way trade is visible: sustainment relief vs conductor ceiling vs stress, with the p=50 slice's pre-registered empty feasible set showing the deadlock at the printed installed power. (c) The machine's honest state: no feasible operating point at 50 MW installed anywhere in the swept space; feasibility needs ≥ ~91 MW installed or a conductor-grade change.
+- **Decision:** trigger — the store cannot carry the six sustainment quantities (multi-field module, the pb__* limitation), discovered when the first export shipped empty columns. Decision and reason — correct pre-commit by oracle-side export (the documented pb precedent), disclose in record § 13/§ 15 (#3) and the ANNEX; not a retry (no point re-ran; the export pass is not the task's meaning). Tier — execution detail. Who decided — the round agent, 2026-09-01. What changed — `study.py` exports, `oracle_operands.csv`, ANNEX § Oracle.
+
+**Next:** the study.read seam — a fresh administrator writes the synthesis; then the goal-level dispositions go to the pre-execution checkpoint before the re-grade task.
