@@ -118,3 +118,12 @@ No future task list. One pin, one committed study, close on the first valid read
 ### T-001 start — 2026-09-01
 
 Task T-001 (round 2): spec/SV amendment + disposition row. Native targets: WI-037 spec, VALIDATION_MATRIX, DISCOVERY_LOG. Expected artifacts: amended spec § Amendments, two amended SV descriptions, one appended log row.
+
+### T-001 return — 2026-09-01 (round 2)
+
+- **Outcome:** `COMPLETE`. All three targets landed: the spec carries the dated forward-sustainment amendment (MR-WI037-2/-3 rewritten, § Open decisions 2 re-ruled to computed ash, § Amendments records the supersession and its evidence); SV-042/043 descriptions amended in place with the 2026-09-01 marker (format-preserving; `agentic-mbse status` parses with no new warning class — the two 'rel dev' Invalid-Type warnings and the epic-status warnings predate this task); the `20260823-magnet-technology-ab#4` disposition row is appended (`model fix` — routed → WI-037 under this goal, increment not yet landed).
+- **Evidence:** `work/active/WI-037_operating-point-closure/spec.md` § Amendments; `modeling_project/VALIDATION_MATRIX.md` SV-042/043; `exploration/stellarator_e2e/studies/DISCOVERY_LOG.md` (newest #4 row).
+- **Reading:** the review's carried constraints 1–3 are discharged (the evidence repairs landed with the review commit); implementation is now unblocked. The known spec-frontmatter/backlog status warning ("spec Status='active' overrides BACKLOG.md status='backlog'") is the parser's documented resolution order, matching the WI-035 pattern; not repaired here.
+- **Decision:** trigger — SV descriptions cannot be amended through a pm operation (`update-validation` is status-only). Decision and reason — amend the two rows by direct format-preserving edit with a dated marker, verified by the parser, rather than minting SV-044/045 (which would orphan two permanently-pending rows) or treating the gap as a seam repair (no seam contract exists for description amendment; the magnet-closure hand-edit revert concerned *adding* rows, for which an operation exists). Tier — execution detail. Who decided — the round agent, 2026-09-01. What changed — `modeling_project/VALIDATION_MATRIX.md` SV-042/043.
+
+**Next task:** T-002 — the WI-037 design under the amended spec.

@@ -37,15 +37,15 @@ The goal question (`goal.md` § Question): can the plasma operating point be sol
 The model SHALL compute the global energy confinement time from an admissible confinement scaling — ISS04 Eq. A.7 with its `f_ren` renormalization multiplier — from minor radius, major radius, rotational transform, the WI-035-derived field, density, and heating power. `f_ren` and ι are held, sourced facts (the `k_link`/`peak_ratio` pattern: sourced machine/quality constants, never silent calibrations), image-verified.
 **Validation:** SV-041.
 
-#### MR-WI037-2: The operating temperature is solved from the steady-state power balance
-**Type:** Functional | **Priority:** P0 | **Source:** rubric Row 1 P3 anchor ("links field and heating to density and temperature")
-The model SHALL solve the operating temperature from steady state — stored plasma energy over τ_E balanced against heating power (alpha heating from the existing Bosch-Hale machinery plus external heating) — so that temperature is computed from field, density, and heating rather than typed in. The held peak temperatures retire as settable entry points; density remains a design lever. At the Stellaris design point the solved temperature SHALL reproduce the printed point-A value within a tolerance design states with its basis. The solve SHALL either converge or fail loudly at each point — a non-convergent point returns no defaulted or clamped value.
-**Validation:** SV-042.
+#### MR-WI037-2: Required sustained heating is computed from the machine; ash and fuel are computed forward *(amended 2026-09-01, round 2 — supersedes the solved-temperature form refuted by round 1, trail § T-002 return / § Round 1 review)*
+**Type:** Functional | **Priority:** P0 | **Source:** rubric Row 1 P3 anchor ("links field and heating to density and temperature"); goal learnings L-001/L-002
+The model SHALL compute the required sustained coupled heating p_aux_required = p_rad + W/τ_E − f_α·p_α forward from the machine (a, R, ι_2/3, derived B), the density and temperature levers, and the validated chain: ISS04 closed form (P = W/τ_E substitution), composed radiation (bremsstrahlung + W line + Albajar synchrotron per the pinned 1costingFE forms), alpha heating from the existing Bosch-Hale machinery. Helium ash and quasi-neutral fuel densities SHALL be computed forward from the printed A.5/A.6 chain (damped fixed point — converges or fails loudly, never clamps), retiring n_D0/n_T0/n_He0 as settable entry points; n_e0 and T_i0 remain design levers (T_e0 through the held 0.95 ratio). At the printed point-A levers each chain stage SHALL reproduce its printed counterpart within a tolerance design states with its basis (the validated set: τ_E, composed radiation, ash, fusion power, each ≤4% in prototype); the W-form delta (+9.2%) is disclosed and never tuned.
+**Validation:** SV-042 (amended).
 
-#### MR-WI037-3: A beta, density, or power limit pushes back on the solved operating point
-**Type:** Functional | **Priority:** P0 | **Source:** rubric Row 1 P3 anchor, second conjunct; STUDY_POLICY §9
-After the closure, at least one executable viability constraint SHALL push back on the operating-point choice with a fully machine-responsive computed operand: `beta_ok`'s beta must respond to field and heating through the solved temperature (not only through its denominator), and a density limit SHALL be added if and only if an admissible printed basis survives image verification — otherwise the gap is surfaced with options, never defaulted. The structural test for the field-reward pathology: field SHALL reach fusion power and the power balance through the confinement channel, so that the study-visible optimum is no longer forced to the beta floor by construction.
-**Validation:** SV-043.
+#### MR-WI037-3: A power limit pushes back on the operating-point choice, alongside beta *(amended 2026-09-01, round 2 — supersedes the solved-temperature phrasing)*
+**Type:** Functional | **Priority:** P0 | **Source:** rubric Row 1 P3 anchor, second conjunct ("a beta, density, or power limit"); STUDY_POLICY §9; goal learning L-003
+The model SHALL assert an executable power limit — `sustainment_ok`: p_aux_required ≤ installed coupled heating — in the stellarator instance, with a fully computed operand that responds to field (≈B^−2.15 through the ISS04 closed form), heating, density, temperature, and geometry, so that field is rewarded through the confinement channel and the `20260823-magnet-technology-ab#4` pathology is structurally closed. `beta_ok` continues to push back with its computed operand. A density limit SHALL be added if and only if an admissible printed basis survives image verification — otherwise the gap is surfaced with options, never defaulted. The expected baseline consequence — `sustainment_ok` violated at the printed point-A levers (≈90 MW required vs 50 installed, the W-form fidelity gap) — is the one explained verdict change: recorded in the item record, never fitted away.
+**Validation:** SV-043 (amended).
 
 #### MR-WI037-4: Library stays concept-agnostic; values live in the instance
 **Type:** Constraint | **Priority:** P0 | **Source:** project MR-3
@@ -98,7 +98,7 @@ Retiring the held temperatures (and any other lever the design retires) changes 
 ## Open decisions (ruled by the round agent under the 2026-09-01 delegation)
 
 1. **Lever direction — solve T, keep n as the lever.** `[AGENT] (delegated by owner 2026-09-01)` Temperature is the solved quantity (it is what confinement physics determines at given machine and density); density stays a design lever (it is what an operator chooses, and the anchor's "or density limit" pushback presumes it is choosable). Held T_i0/T_e0 retire as entry points with the MR-WI037-7 restatement; the T_e0/T_i0 = 0.95 ratio stays a held sourced fact.
-2. **Ash treatment — held ash retained, disclosed.** `[AGENT] (delegated by owner 2026-09-01)` n_He0 stays a held sourced referent at this increment (the source's own ash treatment is a heuristic f_ash suppression factor; solving ash needs the particle-confinement ratio τ*, a further held fact chain). Consequence disclosed at the claim site: solved-T operating points away from the design point carry the design-point ash assumption. Coupling ash is future work, not silently absorbed here.
+2. **Ash treatment — computed, superseding the held-ash ruling of 2026-09-01 (same delegation, re-ruled on evidence).** `[AGENT] (delegated by owner 2026-09-01)` The printed A.5/A.6 chain (n_He/τ*_α = n_D·n_T·⟨σv⟩; f_suppr; τ*/τ_E = 8.0, all image-verified) reproduces the printed point-A ash density to +3.6% (goal learning L-001), so ash is computed forward and n_D0/n_T0/n_He0 retire via quasi-neutrality. The original held-ash ruling assumed the chain was unsourced extra scope; the round-1 prototype showed it is printed, cheap, and load-bearing (it is the burn's self-poisoning brake). Re-ruled at the round-1 review's carried constraint 1.
 
 ## Related artifacts
 
@@ -106,3 +106,9 @@ Retiring the held temperatures (and any other lever the design retires) changes 
 - Epic: `work/backlog/epic-mfe-cost-modeling.md`
 - Precedents: `work/completed/20260718_WI-022_predictive-confinement/spec.md` (Rung-B seam, A.7/A.8 identification); `work/completed/20260901_WI-035_magnet-closure/spec.md` (derived-field precedent and spec shape)
 - Design and plan: not created — next native stage.
+
+## Amendments
+
+### Amendment 2026-09-01 — forward-sustainment architecture (round 2)
+
+MR-WI037-2 and MR-WI037-3 originally required a solved operating temperature. Round 1's prototype refuted that architecture at this machine (no stable feasible burn inside the model's own limits; the printed point on the unstable branch ≈90 MW short of self-sustaining; ~×3 power-to-temperature error amplification) — trail § T-002 return, § Round 1 result, learnings L-001..L-003, evidence `work/orchestration/goals/operating-point-closure/evidence/T-002_prototype/`. Both requirements and their SV rows (SV-042/043) are amended to the forward-sustainment form above per the round-1 review's carried constraint 1; § Open decisions 2 is re-ruled (ash computed). Amended by the round agent under the owner's 2026-09-01 delegation; the round-1 fresh review is the independent check on this supersession.
