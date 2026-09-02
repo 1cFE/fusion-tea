@@ -71,3 +71,7 @@ The owner closes — on the § Answered when condition, or by redirect at any ro
 ## Amendments
 
 None.
+
+### 2026-09-02 — goal closed by owner ruling
+
+§ Answered when met in the affirmative direction: a fresh non-author Row-1 re-grade at `rubric.md@dc0f0b6d` reads **R1.P = 3 (was 2), Row 1 at target** (`.project/active/demo-depth-rubric/grading-r1-regrade.md`), the validation battery is green, and the "affected studies re-run clean" conjunct is satisfied on the owner's reading of 2026-09-02 (the magnet-closure (a) analogue). Closed per § Close rule on the round-2 review's recommendation, after two rounds of the six allowed. The five close rulings — anchor stands ("links"); conjunct satisfied; both escape routes minted (WI-038, WI-039), neither grounded; Row 4's target raise deferred to the next rubric version; admin executed with merge/push owner-held — are recorded at `trail.md` § Goal close. Owner present; rulings taken one at a time.

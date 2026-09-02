@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Epic: MFE Cost Modeling — Tokamak & Stellarator
 Owner: reid
 Created: 2026-09-01
-Updated: 2026-09-01
+Updated: '2026-09-02'
 ---
 
 # WI-037: Operating-Point Closure — ISS04 Confinement Solve, Machine-Responsive Temperature
