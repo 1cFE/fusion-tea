@@ -149,3 +149,25 @@ Task T-002 (round 2): write the WI-037 design. Native target: `work/active/WI-03
 - **Decision:** trigger — where to put the ash↔W↔τ_E fixed point. Decision and reason — one calc def owns the coupled block with every stage exposed as an output (D1): splitting would expose partial iterations to the network; legibility is preserved by per-stage outputs and the documented semantic. Tier — execution detail. Who decided — the round agent, 2026-09-01. What changed — design.md D1/D2.
 
 **Next task:** T-003 — plan + implement through the native PM.
+
+### T-003 scope (round 2)
+
+- **Objective:** land the WI-037 model increment — plan, then the model edits in both trees plus the handwritten impl — through the native plan/implement stages, validated.
+- **Why now:** spec amended, design approved under delegation; implement is the native next stage and everything upstream is settled.
+- **Scope:** authorized — `work/active/WI-037_operating-point-closure/plan.md`; edits under `models/` and the byte-identical `exploration/stellarator_e2e/models/` twins per the design's file list; the handwritten impl under `exploration/stellarator_e2e/generated/handwritten/`; `tests/models` census re-derivation if the suite instructs it; VALIDATION_MATRIX status updates through `pm` operations. Excluded — package regeneration/verification/pinning (the `integrate` seam, a later task), study execution, source ingestion, discovery-log writes, merge/push/item close.
+- **Inputs:** amended `spec.md`, `design.md` (approved), round-2 strategy; `goal.md`.
+- **Done when:** edits landed identically in both trees; L1 clean with the offender list unchanged; `tests/models` green (census re-derived if instructed); the implementation record written into plan.md.
+- **Stop when:** prerequisite, strategy blocker, or declared limit.
+
+### T-003 start — 2026-09-01 (round 2)
+
+Task T-003 (round 2): plan + implement WI-037. Native targets: plan.md; `mfe_plasma_sustainment.sysml` (new), `mfe_viability.sysml`, `mfe_plant.sysml`, `stellarator_plant.sysml`, twins, handwritten impl. Expected artifacts: plan.md with implementation record; the increment on disk in both trees.
+
+### T-003 return — 2026-09-01 (round 2)
+
+- **Outcome:** `COMPLETE`. The § T-003 scope done-when holds in full: edits landed identically in both trees (diff-verified), L1 clean with the offender set identical to the HEAD baseline (verified by a true-baseline sweep via stash), `tests/models` 48 passed / 13 skipped with the census re-derived from the new package per the suite's own instruction string, and the implementation record is written into `plan.md`.
+- **Evidence:** `work/active/WI-037_operating-point-closure/plan.md` § Implementation record; the four model files + twins; `exploration/stellarator_e2e/generated/handwritten/mfe_plasma_sustainment/plasma_sustainment_impl.py`; `tests/model_families.py`, `tests/models/data/mfe_census.json` (fingerprint `5b9abdfc…`, 193 entry points).
+- **Reading:** the increment is on disk and self-consistent: the impl reproduces the round-1 prototype at the full discretization contract (p_aux_required 89.544 MW at point-A levers — the expected `sustainment_ok` violation, disclosed at the assert site), the generation tests prove the new model generates clean, and the retirement/held-fact census delta is exactly the designed set (−4 entry points, +8 held facts, +3 calc defaults). Comparison-meaning consequences are recorded at the binding sites and in design D7; the formal restatement rides the integrate return.
+- **Decision:** trigger — the census fixture is fingerprint-bound and the suite failed with "re-derive from the new package". Decision and reason — re-derive now via the test module's own `_generate`/`_contract` helpers (the suite's stated resolution; generation is hermetic in tmp) rather than defer the whole suite-green state to integrate; the integrate seam's census gate re-verifies freshness against the real regeneration. Tier — execution detail. Who decided — the round agent, 2026-09-01. What changed — `tests/models/data/mfe_census.json`, `tests/model_families.py`.
+
+**Next task:** T-004 — the `integrate` seam (regeneration → verification → pin), including the oracle mirror and caller-order verification.

@@ -144,4 +144,32 @@ package mfe_viability {
 
         sigma_in <= sigma_allow_in
     }
+
+    constraint def 'Sustainment Limit' {
+        doc /*
+        Operating-point power bound (WI-037): the required sustained
+        plasma-coupled heating computed by 'Plasma Sustainment'
+        (mfe_plasma_sustainment) must not exceed the installed plasma-coupled
+        heating power. A fully computed operand -- it responds to field
+        (~B^-2.15 through the ISS04 closed form), heating, density,
+        temperature, and geometry -- against a held sourced installed power:
+        the rubric Row 1 P3 anchor's power-limit pushback, and the structural
+        close of the field-never-rewarded pathology (discovery row
+        20260823-magnet-technology-ab#4).
+
+        **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
+        **Ref**: images/page_031_eq_1.png / page_031_eq_2.png (Eq. A.2/A.3,
+            the steady-state balance the operand rearranges);
+            images/page_002_table_0.png (Table 2: "Required plasma-coupled
+            ECRH power [MW] 50" -- the installed side, coupled-to-coupled)
+        **Basis**: p_aux_required <= installed plasma-coupled heating
+        */
+
+        // required sustained plasma-coupled heating [MW] (computed)
+        in attribute p_aux_required_in : Real;
+        // installed plasma-coupled heating [MW]
+        in attribute p_aux_installed_in : Real;
+
+        p_aux_required_in <= p_aux_installed_in
+    }
 }

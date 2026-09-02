@@ -3,6 +3,7 @@ package mfe_plant {
     private import mfe_power_core::*;
     private import mfe_subsystems::*;
     private import mfe_plasma_scaling::*;
+    private import mfe_plasma_sustainment::*;
     private import mfe_power_balance::*;
     private import mfe_cryo_plant::*;
     private import mfe_magnet_cost::*;
@@ -174,10 +175,10 @@ package mfe_plant {
         attribute sigma_v : Real default 0.0;
         // per-event D-T fusion energy [J]
         attribute E_fus : Real;
-        // peak deuterium density [m^-3]
-        attribute n_D0 : Real default 0.0;
-        // peak tritium density [m^-3]
-        attribute n_T0 : Real default 0.0;
+        // WI-037: n_D0 and n_T0 retired as plant attributes -- the fuel peaks
+        // are computed by the sustainment chain (quasi-neutrality with the
+        // converged ash), wired below. The operating-point levers are n_e0
+        // and T_i0.
         // peak ion temperature [keV]
         attribute T_i0 : Real default 1.0;
         // density profile exponent
@@ -186,25 +187,69 @@ package mfe_plant {
         attribute alpha_T : Real default 0.0;
 
         // Beta inputs (WI-030). No defaults: a beta without its peaks is not a
-        // beta. The fuel peaks, T_i0, and the two exponents above are shared
-        // with the fusion-power profile integral.
-        // peak electron density [m^-3]
+        // beta. WI-037: T_e0 and n_He0 retired as plant attributes -- both are
+        // computed by the sustainment chain below (T_e0 from the held ratio,
+        // n_He0 from the converged A.5/A.6 ash balance).
+        // peak electron density [m^-3] (operating-point lever)
         attribute n_e0 : Real;
-        // peak electron temperature [keV]
-        attribute T_e0 : Real;
-        // peak helium-ash density [m^-3]
-        attribute n_He0 : Real;
         // electron density profile exponent [1]
         attribute alpha_n_e : Real;
+
+        // Sustainment held facts (WI-037). No defaults for the physics facts:
+        // a sustainment without its machine and quality facts is not a
+        // sustainment (the WI-030 no-defaults precedent) -- every MFE concept
+        // binds them from source.
+        // rotational transform at s = 2/3 [1]
+        attribute iota_23 : Real;
+        // ISS04 renormalization multiplier [1]
+        attribute f_ren : Real;
+        // fast-particle (alpha) confinement fraction [1]
+        attribute f_alpha_fast : Real;
+        // particle-to-energy confinement time ratio tau_star/tau_E [1]
+        attribute tau_ratio_ash : Real;
+        // helium suppression factor [1]
+        attribute f_suppr_ash : Real;
+        // core effective charge [1]
+        attribute Z_eff_core : Real;
+        // core tungsten fraction n_W/n_e [1]
+        attribute f_W_core : Real;
+        // ion-to-electron temperature ratio T_i0/T_e0 [1]
+        attribute Ti_over_Te : Real;
+
+        // Operating-point sustainment chain (WI-037): line-averaged density,
+        // ISS04 tau_E (closed form), converged ash + quasi-neutral fuel,
+        // composed radiation, and the required sustained coupled heating.
+        // Reads the derived field (WI-035) through magnet.B; its computed
+        // fuel/ash/T_e0 feed fusion and beta below by reference redefinition.
+        calc sustain : 'Plasma Sustainment' {
+            in n_e0_in = n_e0;
+            in T_i0_in = T_i0;
+            in V = geom.V;
+            in a_in = a;
+            in R_in = R;
+            in B_in = magnet.B;
+            in alpha_n_in = alpha_n;
+            in alpha_n_e_in = alpha_n_e;
+            in alpha_T_in = alpha_T;
+            in E_fus_in = E_fus;
+            in iota_23_in = iota_23;
+            in f_ren_in = f_ren;
+            in f_alpha_in = f_alpha_fast;
+            in tau_ratio_in = tau_ratio_ash;
+            in f_suppr_in = f_suppr_ash;
+            in Z_eff_in = Z_eff_core;
+            in f_W_in = f_W_core;
+            in r_TiTe_in = Ti_over_Te;
+        }
 
         // Volume-averaged beta (WI-030): B enters the physics here, read from
         // the magnet part the way magnet_cost reads it.
         calc beta_calc : 'Volume-Averaged Beta' {
             in n_e0_in = n_e0;
-            in T_e0_in = T_e0;
-            in n_D0_in = n_D0;
-            in n_T0_in = n_T0;
-            in n_He0_in = n_He0;
+            in T_e0_in = sustain.T_e0;
+            in n_D0_in = sustain.n_D0;
+            in n_T0_in = sustain.n_T0;
+            in n_He0_in = sustain.n_He0;
             in T_i0_in = T_i0;
             in alpha_n_in = alpha_n;
             in alpha_n_e_in = alpha_n_e;
@@ -242,8 +287,8 @@ package mfe_plant {
             in sigma_v_in = sigma_v;
             in E_fus_in = E_fus;
             in V = geom.V;
-            in n_D0_in = n_D0;
-            in n_T0_in = n_T0;
+            in n_D0_in = sustain.n_D0;
+            in n_T0_in = sustain.n_T0;
             in T_i0_in = T_i0;
             in alpha_n_in = alpha_n;
             in alpha_T_in = alpha_T;

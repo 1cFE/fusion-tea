@@ -513,13 +513,12 @@ package stellarator_09 {
         // (spec errata). The fuel term is n_D*n_T with the diluted peak fuel
         // densities -- quasineutrality closes at the peak: 2x1.96 (fuel) +
         // 2x0.56 (He ash) ~= 5.06 = printed peak n_e.
-        :>> n_D0 = 1.96e20 {  // peak deuterium density [m^-3].
-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: peak D density 1.96e20, Point A) **Basis**: Stellaris Point-A peak deuterium density (ash/impurity-diluted) */
-        }
-        :>> n_T0 = 1.96e20 {  // peak tritium density [m^-3].
-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: peak T density 1.96e20, Point A) **Basis**: Stellaris Point-A peak tritium density (50:50 fuel mix) */
-        }
-        :>> T_i0 = 14.63 {    // peak ion temperature [keV].
+        // WI-037 retirement note: the held fuel peaks n_D0 = n_T0 = 1.96e20
+        // (Table 5 image, Point A) retire as entry points -- the sustainment
+        // chain computes them by quasi-neutrality with the converged A.5/A.6
+        // ash (computed 1.945e20 at this lever point, -0.8% vs the retired
+        // referents; the printed pair remains the cross-check, not an input).
+        :>> T_i0 = 14.63 {    // peak ion temperature [keV] (operating-point lever).
             doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: peak ion temperature 14.63 keV, Point A; the extracted text "24.60" is an extraction artifact) **Basis**: Stellaris Point-A peak ion temperature */
         }
         :>> alpha_n = 0.33 {  // fuel density profile exponent [1].
@@ -539,19 +538,49 @@ package stellarator_09 {
         :>> n_e0 = 5.06e20 {  // peak electron density [m^-3].
             doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: peak el. density 5.06e20 m^-3, Point A; the extracted text "4.55" is an extraction artifact) **Basis**: Stellaris Point-A peak electron density */
         }
-        :>> T_e0 = 15.40 {    // peak electron temperature [keV].
-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: peak el. temperature 15.40 keV, Point A) **Basis**: Stellaris Point-A peak electron temperature; ions at T_i0 = 14.63 */
-        }
-        :>> n_He0 = 0.56e20 { // peak helium-ash density [m^-3].
-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: peak helium ash density 0.56e20 m^-3, Point A) **Basis**: Stellaris Point-A peak helium-ash density; shares the fuel exponent alpha_n (the Fig. 16 helium curve is dotted and cannot be digitized) */
-        }
+        // WI-037 retirement note: the held T_e0 = 15.40 keV and n_He0 =
+        // 0.56e20 (Table 5 image, Point A) retire as entry points -- T_e0 is
+        // computed from the T_i0 lever through the held 0.95 ratio (ratio-exact
+        // at this point) and n_He0 from the converged A.5/A.6 ash balance
+        // (computed 5.80e19 here, +3.6% vs the retired referent; goal evidence
+        // work/orchestration/goals/operating-point-closure/evidence/
+        // T-002_prototype/NOTES.md). The printed pair remains the cross-check.
         :>> alpha_n_e = 0.596 { // electron density profile exponent [1].
             doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: vol.-av. el. density 3.17e20 and peak el. density 5.06e20, Point A): for n(rho) = n0*(1-rho^2)^alpha, <n>/n0 = 1/(1+alpha), so alpha = 5.06/3.17 - 1 = 0.596; corroborated by the Fig. 16 density-panel digitization (images/stellaris-high-field-quasi-isodynamic-stellarator.pdf-9-0.png, electrons: alpha = 0.62, rms log-residual 0.03, WI-022 prototype/digitize_fig16.py re-run 2026-08-21) **Basis**: electron density exponent derived from two printed numbers; Point B's pair 6.89/4.21 gives 0.637 (SV-036 override) */
         }
 
+        // Sustainment held facts (WI-037). Every value image-verified against
+        // the raw PDF or page images in goal round 1 (evidence NOTES.md);
+        // the iter-01 AND iter-02 text extractions of these tables are
+        // corrupted -- the raw PDF and images govern.
+        :>> iota_23 = 0.92 {  // rotational transform at s = 2/3 [1].
+            doc /* **Source**: stellaris-design-details.md **Ref**: iter-02 raw PDF p.7 Fig. 11(a) (iota(s) at s = 2/3 on the <beta>_V ~= 3% curve, read 0.92 +/- 0.01 -- the WI-022 figure-digitization precedent), bracketed by raw PDF Table 3 (axis 0.86, edge 0.98; the iter-02 output.md extraction of Table 3 prints axis 0.98 / edge 0.80 and is garbled). The 0.41 ISS04 exponent makes the read tolerance +/-0.45% in tau_E. **Basis**: rotational transform at the ISS04 reference surface */
+        }
+        :>> f_ren = 1.0 {     // ISS04 renormalization multiplier [1].
+            doc /* **Source**: stellaris-design-details.md **Ref**: Table 4 image (images/page_008_table_0.png: f_ren 1.0) and Table 5 image (images/page_009_table_0.png: f_ren 1.0, both operating points) **Basis**: Stellaris ISS04 confinement fidelity at the operating points; never a calibration knob */
+        }
+        :>> f_alpha_fast = 0.95 { // fast-particle (alpha) confinement [1].
+            doc /* **Source**: stellaris-design-details.md **Ref**: Table 4 image (images/page_008_table_0.png: f_alpha 0.95); raw PDF sec. 2.5 ("conservative value of the fast particle confinement of 95%") **Basis**: alpha heating fraction retained in the core */
+        }
+        :>> tau_ratio_ash = 8.0 { // tau_star/tau_E [1].
+            doc /* **Source**: stellaris-design-details.md **Ref**: Table 4 image (images/page_008_table_0.png: tau_star/tau_E 8.0); Table 5 image (ratio 8.00, both points) **Basis**: particle-to-energy confinement time ratio for the A.5 helium balance */
+        }
+        :>> f_suppr_ash = 0.5 { // helium suppression factor [1].
+            doc /* **Source**: stellaris-design-details.md **Ref**: Table 4 image (images/page_008_table_0.png: f_suppr 0.5); raw PDF appendix A ("choosing a value of f_suppr = 1/2" -- the extracted text "= 12" is an artifact) **Basis**: Eq. A.6 ash suppression (birth vs thermalization displacement) */
+        }
+        :>> Z_eff_core = 1.20 { // core effective charge [1].
+            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: Vol av. Z_eff (core) 1.20, Point A) **Basis**: Stellaris core Z_eff for bremsstrahlung */
+        }
+        :>> f_W_core = 7.76e-6 { // core tungsten fraction n_W/n_e [1].
+            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: Rel. tungsten fraction core 7.76e-6, Point A) **Basis**: Stellaris core tungsten content for line radiation (1costingFE W cooling-curve fit, radiation.py:83-96) */
+        }
+        :>> Ti_over_Te = 0.95 { // T_i0/T_e0 [1].
+            doc /* **Source**: stellaris-design-details.md **Ref**: raw PDF sec. 2.5 ("fixed ion-to-electron temperature ratio of 0.95"); cross-check: printed Point-A pair 14.63/15.40 = 0.950 (Table 5 image) **Basis**: Stellaris fixed ion-to-electron temperature ratio */
+        }
+
         // Power-balance inputs.
-        :>> p_input = 50.0 {  // plasma heating power [MW] (ECRH wallplug).
-            doc /* **Source**: stellaris-design-details.md **Ref**: line 237 / line 710 (50 MW ECRH to reach point A); analyst-patch-spec-anchors.md line 29 **Basis**: Stellaris auxiliary heating power */
+        :>> p_input = 50.0 {  // installed plasma-coupled heating power [MW].
+            doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: "Required plasma-coupled ECRH power [MW] 50"); raw PDF sec. 2.5 (50 MW to reach point A). WI-037 correction: this is plasma-coupled power, not wallplug -- the power balance already treats it so (p_th adds p_input directly; wallplug enters recirculation as p_input/eta_pin, mfe_power_balance.sysml:119,136), and sustainment_ok compares it coupled-to-coupled. **Basis**: Stellaris installed plasma-coupled ECRH power */
         }
         :>> mn = 1.2 {        // blanket neutron energy multiplier.
             doc /* **Source**: stellaris-design-details.md **Ref**: line 1664/1831 (power multiplication 1.20, HCLL blanket) **Basis**: Stellaris HCLL blanket energy multiplication */
@@ -1005,6 +1034,19 @@ package stellarator_09 {
         assert constraint tbr_ok : 'TBR Floor' {
             in tbr_in = tbr;
             in tbr_floor_in = tbr_floor;
+        }
+        // Sustainment (WI-037): required sustained plasma-coupled heating vs
+        // installed. The operand is fully computed (ISS04 closed form, composed
+        // radiation, converged ash) and responds to field, heating, density,
+        // temperature, and geometry. At this lever point the verdict is
+        // EXPECTED VIOLATED (p_aux_required ~= 90 MW vs 50 installed): the
+        // model's closure sits ~17% of alpha power short of self-sustaining at
+        // the printed operating point, dominated by the disclosed W-form delta
+        // (+9.2%, never tuned) -- the recorded, explained verdict change of the
+        // WI-037 increment (goal learnings L-001/L-002; design D6/D7).
+        assert constraint sustainment_ok : 'Sustainment Limit' {
+            in p_aux_required_in = sustain.p_aux_required;
+            in p_aux_installed_in = p_input;
         }
 
         // Exposed neutron wall load (headline physics output).
