@@ -217,3 +217,11 @@ Task T-005: execute study `20260901-sustainment-fence` through the run-study run
 - **Decision:** trigger — the store cannot carry the six sustainment quantities (multi-field module, the pb__* limitation), discovered when the first export shipped empty columns. Decision and reason — correct pre-commit by oracle-side export (the documented pb precedent), disclose in record § 13/§ 15 (#3) and the ANNEX; not a retry (no point re-ran; the export pass is not the task's meaning). Tier — execution detail. Who decided — the round agent, 2026-09-01. What changed — `study.py` exports, `oracle_operands.csv`, ANNEX § Oracle.
 
 **Next:** the study.read seam — a fresh administrator writes the synthesis; then the goal-level dispositions go to the pre-execution checkpoint before the re-grade task.
+
+### Checkpoint C-001.r1 — 2026-09-01
+
+- **Reviewer:** fresh non-author session (third session of the round's gate chain: not the executor, not the administrator).
+- **Reading reviewed:** `20260901-sustainment-fence/synthesis.md` (the administrator's reading of record) + record § 15/Addendum.
+- **Dispositions reviewed:** `evidence/T-005_proposed_dispositions.md` (r1).
+- **Verdict:** `REVISE`.
+- **Revision:** 1 of 2. The reviewer independently recounted the crux evidence and upheld all five readings — including the hardest, the `20260823-magnet-technology-ab#4` discharge ("field rewarded by the physics and capped by the conductor — the inversion of the sighted mechanism"), with a not-final caution to carry onto the appended row. Required changes: dispositions 2 and 5 must bear an ADR-0004 class (`model fix`) with status/actor named (the C-001.r2 and rows-53/54 precedents), and class-bearing rows for `#1` and `#4` must be promised at round close. Author revised in place as § Revision r2 of the same document.

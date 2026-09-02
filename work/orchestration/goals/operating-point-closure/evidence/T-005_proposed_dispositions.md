@@ -13,3 +13,13 @@ Author: the round agent (2026-09-01). Status: PROPOSED — nothing below execute
 ## The follow-up task this gates
 
 T-006: fresh non-author Row-1 re-grade against `rubric.md@dc0f0b6d` (the goal's § Answered when). The reading it rests on: the sustainment chain links field and heating to density and temperature (ISS04 executable at every point), and a power limit pushes back with a fully computed operand — demonstrated binding in a committed study (fence anatomy § 4; the optimum's bounds § 3).
+
+## Revision r2 — 2026-09-01 (after checkpoint C-001.r1: REVISE)
+
+The r1 verdict upheld all five readings and dispositions 1/3/4; dispositions 2 and 5 failed ADR-0004's disposition-class requirement as worded. Corrected forms, superseding the r1 wording for #1 and #4 only:
+
+2′. **`20260901-sustainment-fence#1`** — class **`model fix`**, status **routed as a close proposal, not minted**; responsible actor: the owner at the goal-close ruling, with the next strategy author executing the mint. Concrete next reference: the choice between a conductor-grade (B_max) arm study and a rubric-Row-4 heating-system item — `model fix` because the finding names model structure both candidate routes repair (the machine's only escapes from the deadlock are an unmodeled conductor-grade lever consequence chain or a heating system with structure); the round is at its one-pin/one-study bound, so minting is the next selection act's. **A class-bearing log row in this form is appended at round close** (the rows-53/54 template).
+
+5′. **`20260901-sustainment-fence#4`** — class **`model fix`**, status **not minted, pending the grade→goal selection act**; responsible actor: the owner/next strategy author at the re-grade-fed selection. Concrete next reference: rubric Row 4 (heating-system structure; its P3 deferral "rides on row 1" is unblocked by this goal). The Home column retains unrouted-with-pointer per the C-001.r2 precedent; the disposition itself bears the class. **A class-bearing log row in this form is appended at round close.**
+
+Also adopted from r1's notes: the `#4`-discharge row will carry the not-final caution (WI-037 close and goal close stay owner-held), and disposition 4's wording is read as "nothing further owed *by this goal*" (the upstream store limitation stands under `20260821-power-cycle-ab#5`).
