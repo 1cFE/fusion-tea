@@ -2,7 +2,7 @@
 
 The design's earlier bet was that a generic tool could resolve a predicate operand
 to a package key by name. That bet is false on this package: of the thirteen
-``feature_ref`` operands across the seven catalog constraints (WI-035 added
+``feature_ref`` operands across the eight catalog constraints (WI-035 added
 wp_stress_ok), ``net_positive``'s
 ``net_electric`` matches no parameter and no channel at all, and the three that
 could be name-matched use three different composition rules. So D12 moved the
@@ -10,7 +10,7 @@ obligation to the package: it *publishes* the bindings, and ``verify.py`` consum
 them as data and fails closed on anything unresolved.
 
 This test proves the publication is possible and correct against the real contract,
-before anything consumes it. It resolves all seven constraints — no sampling.
+before anything consumes it. It resolves all eight constraints — no sampling.
 """
 
 import json
@@ -28,7 +28,7 @@ BASELINE_POINT = {
     "stellarator_09__stellaris__a": 1.3,
     "stellarator_09__stellaris__availability": 0.85,
 }
-PINNED_LCOE = 304.48161969642837  # WI-035 pin (decomposed magnet capital; goal magnet-closure, 2026-08-30)
+PINNED_LCOE = 307.08712042841586  # WI-037 pin (sustainment closure, computed quasi-neutral fuel; goal operating-point-closure, 2026-09-01)
 
 
 @pytest.fixture
@@ -66,7 +66,7 @@ def package_inputs(package_path):
 
 def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
     entries = catalog_entries(real_package_path)
-    assert len(entries) == 7, f"expected the seven viability constraints, found {len(entries)}"
+    assert len(entries) == 8, f"expected the eight viability constraints, found {len(entries)}"
     bindings = oracle_entry.operand_bindings()
     channels = oracle_entry.evaluate(BASELINE_POINT)
     inputs = package_inputs(real_package_path)
@@ -87,7 +87,7 @@ def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
                 f"a package {binding['kind']}"
             )
             resolved += 1
-    assert resolved == 13, f"expected thirteen feature_ref operands across the seven, found {resolved}"
+    assert resolved == 15, f"expected fifteen feature_ref operands across the eight, found {resolved}"
 
 
 def test_the_operand_that_resolves_to_nothing_by_name_is_bound_explicitly(

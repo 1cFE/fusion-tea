@@ -33,9 +33,10 @@ Source: knowledge/concept_research/09-qi-stellarator-hts (Eqs. A.2/A.3, A.5/A.6,
     /home/reid/1cfe/1costingfe/src/costingfe/layers/reactivity.py:54-70
     (Bosch-Hale sigv_dt).
 
-NOTE (integration): the return-tuple order below is the calc def's output
-declaration order; verify against the regenerated caller's unpack order at the
-integrate stage and align if codegen orders differently.
+Return-tuple order matches the regenerated caller's unpack
+(modules/mfe_plasma_sustainment/plasma_sustainment.py): (n_bar19, n_T0, W_th,
+p_brems, n_He0, n_D0, p_aux_required, p_rad, p_alpha_heat, tau_E, p_sync,
+p_line, T_e0) -- verified at the T-004 regeneration, 2026-09-01.
 """
 
 import math
@@ -129,9 +130,9 @@ def _p_sync_albajar(T_e0: float, n_e0_20: float, B: float, R: float, a: float,
 def run_plasma_sustainment(inputs: Plasma_SustainmentInput) -> tuple[
     float, float, float, float, float, float, float, float, float, float, float, float, float
 ]:
-    """Execute the sustainment chain. Returns outputs in calc-decl order:
-    (n_bar19, n_He0, n_D0, n_T0, T_e0, W_th, tau_E, p_brems, p_line, p_sync,
-    p_rad, p_alpha_heat, p_aux_required)."""
+    """Execute the sustainment chain. Returns outputs in the generated
+    caller's unpack order: (n_bar19, n_T0, W_th, p_brems, n_He0, n_D0,
+    p_aux_required, p_rad, p_alpha_heat, tau_E, p_sync, p_line, T_e0)."""
     n_e0 = inputs.n_e0_in
     T_i0 = inputs.T_i0_in
     V = inputs.V
@@ -208,11 +209,11 @@ def run_plasma_sustainment(inputs: Plasma_SustainmentInput) -> tuple[
     p_alpha_heat = inputs.f_alpha_in * inputs.ash_frac_in * p_fus
     p_aux_required = p_rad + W_th / tau_E - p_alpha_heat
 
-    out = (n_bar19, n_He0, n_D0, n_T0, T_e0, W_th, tau_E,
-           p_brems, p_line, p_sync, p_rad, p_alpha_heat, p_aux_required)
+    out = (n_bar19, n_T0, W_th, p_brems, n_He0, n_D0, p_aux_required,
+           p_rad, p_alpha_heat, tau_E, p_sync, p_line, T_e0)
     for name, v in zip(
-        ("n_bar19", "n_He0", "n_D0", "n_T0", "T_e0", "W_th", "tau_E",
-         "p_brems", "p_line", "p_sync", "p_rad", "p_alpha_heat", "p_aux_required"), out):
+        ("n_bar19", "n_T0", "W_th", "p_brems", "n_He0", "n_D0", "p_aux_required",
+         "p_rad", "p_alpha_heat", "tau_E", "p_sync", "p_line", "T_e0"), out):
         if not math.isfinite(v):
             raise SustainmentError(f"non-finite output {name}: {v}")
     return out

@@ -15,14 +15,14 @@ from stellarator_tea.schemas.constraint_types import (
     CoverageAccount,
 )
 
-EXPECTED_IDS = ('stellarator_09_stellaris_wp_stress_ok_f38a102195da1dd0', 'stellarator_09_stellaris_recirc_ok_afc3be66f0a3421b', 'stellarator_09_stellaris_beta_ok_82b78aad420730d5', 'stellarator_09_stellaris_net_positive_484521d56c02667a', 'stellarator_09_stellaris_wall_load_ok_ab2c790419af93bb', 'stellarator_09_stellaris_tbr_ok_2cd198f674d413e4', 'stellarator_09_stellaris_peak_field_ok_49c6b8228a73cac5')
+EXPECTED_IDS = ('stellarator_09_stellaris_wp_stress_ok_f38a102195da1dd0', 'stellarator_09_stellaris_recirc_ok_afc3be66f0a3421b', 'stellarator_09_stellaris_beta_ok_82b78aad420730d5', 'stellarator_09_stellaris_net_positive_484521d56c02667a', 'stellarator_09_stellaris_wall_load_ok_ab2c790419af93bb', 'stellarator_09_stellaris_tbr_ok_2cd198f674d413e4', 'stellarator_09_stellaris_peak_field_ok_49c6b8228a73cac5', 'stellarator_09_stellaris_sustainment_ok_77add152ed8eafce')
 
 #: The coverage account, derived at generation from the sealed catalog by
 #: `generation/coverage.py::coverage_account` and baked here exactly the way
 #: CATALOG_FINGERPRINT and EXPECTED_IDS are. Which gates are applicable and which were
 #: assessed depends on the model, never on this candidate's input values, so recomputing it
 #: per evaluation would recompute a constant.
-COVERAGE = {'authored_usage_total': 7, 'applicable_gate_total': 7, 'assessed_gate_count': 7, 'unassessed_gate_count': 0, 'inapplicable_gate_count': 0, 'unassessed_reasons': {}, 'coverage_state': 'complete'}
+COVERAGE = {'authored_usage_total': 8, 'applicable_gate_total': 8, 'assessed_gate_count': 8, 'unassessed_gate_count': 0, 'inapplicable_gate_count': 0, 'unassessed_reasons': {}, 'coverage_state': 'complete'}
 
 
 class ConstraintReportAggregatorInput(BaseModel):
@@ -35,6 +35,7 @@ class ConstraintReportAggregatorInput(BaseModel):
     stellarator_09_stellaris_wall_load_ok_ab2c790419af93bb: ConstraintEvaluation
     stellarator_09_stellaris_tbr_ok_2cd198f674d413e4: ConstraintEvaluation
     stellarator_09_stellaris_peak_field_ok_49c6b8228a73cac5: ConstraintEvaluation
+    stellarator_09_stellaris_sustainment_ok_77add152ed8eafce: ConstraintEvaluation
 
 
 class ConstraintReportAggregatorOutput(MultiOutput):
@@ -47,7 +48,7 @@ class ConstraintReportAggregatorModule(
     name: str = "constraint_report_aggregator"
     version: str = "v0.1"
 
-    CATALOG_FINGERPRINT = "d0365bced10dbbb6af559346769d5ac8157d076c6101f6387045f31f452039d4"
+    CATALOG_FINGERPRINT = "cd7b93906028a80c7a3bf30e9c7cf07e8006bc6bf07af1729859e60cf95b109c"
 
     def run(self, **evaluations) -> ModuleResult[ConstraintReportAggregatorOutput]:
         validated = ConstraintReportAggregatorInput(**evaluations)

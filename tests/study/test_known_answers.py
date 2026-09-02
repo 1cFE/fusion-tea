@@ -18,7 +18,8 @@ from tests.study.conftest import DATA_DIR, run_tool
 CASES = ["availability", "interest_rate", "R", "R+tie", "a", "I_coil"]
 
 EXPECTED_SEMANTIC_FINGERPRINT = (
-    "819a5a05220e5caff7d317c02c32ef4fed37f7f091e776fba8dff7f168235fd4"
+    # WI-037 sustainment closure (goal operating-point-closure, 2026-09-01)
+    "5b9abdfce2e086b6f5408a067ac15f2f264bee505cae4204a25b82f5e036baa4"
 )
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,
@@ -29,16 +30,22 @@ EXPECTED_SEMANTIC_FINGERPRINT = (
 #: more channel because CAS27 is now computed in-package and declared as the
 #: `cas27` objective, and each swept attribute is one plant-level entry point.
 FIXTURE_CONTRACT = {
-    # Re-derived from the live report on the WI-035 package (2026-08-30): the
-    # B axis is retired (the field is computed); I_coil is the magnet lever and
-    # reaches wp_stress_ok and both magnet-capital objectives. Every axis gains
-    # the magnet_capital_1cfe objective where it already reached magnet_capital.
+    # Re-derived from the live report on the WI-037 package (2026-09-01,
+    # goal operating-point-closure): the sustainment chain gives every
+    # machine/operating lever a path to sustainment_ok and, through the
+    # computed ash -> quasi-neutral fuel, to beta_ok and the fusion-derived
+    # chain. The headline structural change: I_coil (the field lever) now
+    # reaches net_positive/recirc_ok/wall_load_ok and the fuel/replacement
+    # objectives through ISS04 confinement -- the 20260823-magnet-technology-ab#4
+    # "field never rewarded" pathology closed structurally. availability and
+    # interest_rate are untouched (still no_constraint_response -- the Row 11
+    # finding stands).
     "availability": (True, [], ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'], 6, 8),
     "interest_rate": (True, [], ['cas72', 'lcoe', 'lcoe_1cfe'], 8, 11),
-    "R": (False, ['net_positive', 'recirc_ok', 'wall_load_ok'], ['cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'total_capital'], 55, 70),
-    "R+tie": (False, ['beta_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'total_capital'], 62, 77),
-    "a": (False, ['net_positive', 'recirc_ok', 'wall_load_ok'], ['cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'total_capital'], 55, 70),
-    "I_coil": (False, ['beta_ok', 'peak_field_ok', 'wp_stress_ok'], ['beta', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'total_capital'], 26, 26),
+    "R": (False, ['beta_ok', 'net_positive', 'recirc_ok', 'sustainment_ok', 'wall_load_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 59, 86),
+    "R+tie": (False, ['beta_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 64, 91),
+    "a": (False, ['beta_ok', 'net_positive', 'recirc_ok', 'sustainment_ok', 'wall_load_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 59, 86),
+    "I_coil": (False, ['beta_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 63, 85),
 }
 
 
@@ -95,18 +102,26 @@ def test_availability_reaches_no_constraint(report):
     group = group_by_axis(report, "availability")
     assert group["no_constraint_response"] is True
     assert group["constraints_reachable"] == []
-    assert len(group["constraints_unreachable"]) == 7
+    assert len(group["constraints_unreachable"]) == 8
 
 
 def test_I_coil_reaches_the_field_constraints_through_calcs(report):
-    """WI-035: the coil-current lever reaches beta_ok and peak_field_ok through the
-    computed field ('Coil Set Axis Field') and wp_stress_ok through 'Winding Pack
-    Stress' — all computed-vs-bound, none bound-vs-bound. The retired B axis (and
-    before it the retired bound beta) lived here."""
+    """WI-035 gave the coil-current lever the field-side constraints (beta_ok,
+    peak_field_ok, wp_stress_ok). WI-037 extends its reach through the ISS04
+    sustainment chain: B feeds tau_E, the ash/fuel state, and p_aux_required,
+    so I_coil now also reaches sustainment_ok and — through the computed fuel —
+    the whole fusion-derived chain (net_positive, recirc_ok, wall_load_ok).
+    This is the structural close of discovery row 20260823-magnet-technology-ab#4
+    ("field is never rewarded"): the field lever finally has a path to fusion
+    power. All computed-vs-bound except net_positive (computed vs literal 0)."""
     group = group_by_axis(report, "I_coil")
     reached = {c["source_local_identity"]: c for c in group["constraints_reachable"]}
-    assert set(reached) == {"beta_ok", "peak_field_ok", "wp_stress_ok"}
-    for constraint in reached.values():
+    assert set(reached) == {
+        "beta_ok", "peak_field_ok", "wp_stress_ok",
+        "sustainment_ok", "net_positive", "recirc_ok", "wall_load_ok",
+    }
+    for name in ("beta_ok", "peak_field_ok", "wp_stress_ok", "sustainment_ok"):
+        constraint = reached[name]
         assert constraint["operator"] == "<="
         assert constraint["bound_vs_bound"] is False
         assert [o["class"] for o in constraint["operands"]] == ["computed", "bound"]
@@ -139,8 +154,16 @@ def test_the_declared_tie_extends_reach_through_the_field(report):
     plain_reach = {c["source_local_identity"] for c in plain["constraints_reachable"]}
     tied_reach = {c["source_local_identity"] for c in tied["constraints_reachable"]}
     assert plain_reach < tied_reach
-    assert tied_reach - plain_reach == {"beta_ok", "peak_field_ok", "wp_stress_ok"}
-    assert set(plain["objectives_reachable"]) < set(tied["objectives_reachable"])
+    # WI-037: plain R now reaches beta_ok on its own (R feeds tau_E through the
+    # sustainment chain, the converged ash moves the fuel peaks, and beta reads
+    # the computed fuel), so beta_ok left the tie-exclusive set; the tie still
+    # adds the two field-side fences only R0 can see.
+    assert tied_reach - plain_reach == {"peak_field_ok", "wp_stress_ok"}
+    # WI-037: the objective sets are now EQUAL -- plain R reaches every
+    # objective the tie reaches (beta and the sustainment objectives arrive
+    # through the ash/fuel chain), so the tie's added value is purely
+    # fence-side (the two conductor/stress limits R0 alone feeds).
+    assert set(plain["objectives_reachable"]) == set(tied["objectives_reachable"])
     assert "beta" in tied["objectives_reachable"]
     # The decomposed rollup (magnet_capital) does NOT respond to R: the winding
     # length is the held c_coil, not a bore-derived proxy — a disclosed WI-035

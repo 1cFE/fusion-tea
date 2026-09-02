@@ -104,3 +104,8 @@ def constraint_pred_definition_mfe_viability__tbr_floor(tbr_in, tbr_floor_in):
 def constraint_pred_definition_mfe_viability__conductor_peak_field_limit(B_peak, B_max_in):
     value = _cmp('<=', B_peak, B_max_in)
     return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((B_max_in - B_peak)) if (_fin(B_peak) and _fin(B_max_in)) else None))
+
+# definition:mfe_viability::'Sustainment Limit'
+def constraint_pred_definition_mfe_viability__sustainment_limit(p_aux_required_in, p_aux_installed_in):
+    value = _cmp('<=', p_aux_required_in, p_aux_installed_in)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((p_aux_installed_in - p_aux_required_in)) if (_fin(p_aux_required_in) and _fin(p_aux_installed_in)) else None))

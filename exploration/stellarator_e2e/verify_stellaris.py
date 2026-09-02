@@ -45,6 +45,119 @@ def _profile_integral(alpha_n, alpha_T, T_i0):
         acc += f if 0 < i < n else 0.5 * f
     return acc / n
 
+# --- WI-037 sustainment mirrors (identical to plasma_sustainment_impl.py,
+# same discretization/convergence contract; bit-exact bar) ---
+ASH_TOL = 1e12
+ASH_CAP = 200
+KEV_TO_J = 1.602176634e-16
+
+
+def _trapz_rho(f):
+    acc = 0.0
+    n = N_INTERVALS
+    for i in range(n + 1):
+        rho = i / n
+        u = 1.0 - rho * rho
+        v = f(u, rho)
+        acc += v if 0 < i < n else 0.5 * v
+    return acc / n
+
+
+def _lz_w(T_keV):
+    T = max(T_keV, 0.01)
+    if T < 0.1:
+        return 5.0e-31 * T ** -1.0
+    if T < 1.0:
+        return 1.5e-31 * T ** 0.5
+    if T < 10.0:
+        return 5.0e-31
+    return 5.0e-31 * T ** -0.5
+
+
+def _p_sync_albajar(T_e0, n_e0_20, B, R, a, kappa, R_w, alpha_n, alpha_T):
+    A = R / a
+    p_a0 = 6.04e3 * a * n_e0_20 / B
+    correction = (1 - R_w) ** 0.62 / (
+        1 + 0.12 * T_e0 / p_a0 ** 0.41 * (1 - R_w) ** 0.41
+    ) ** 1.51
+    beta_t = 2.0
+    K = (
+        (alpha_n + 3.87 * alpha_T + 1.46) ** (-0.79)
+        * (1.98 + alpha_T) ** 1.36
+        * beta_t ** 2.14
+        * (beta_t ** 1.53 + 1.87 * alpha_T - 0.16) ** (-1.33)
+    )
+    G = 0.93 * (1 + 0.85 * math.exp(-0.82 * A))
+    return (
+        3.84e-8 * correction * R * a ** 1.38 * kappa ** 0.79
+        * B ** 2.62 * n_e0_20 ** 0.38 * T_e0 * (16 + T_e0) ** 2.61 * K * G
+    )
+
+
+def _sustainment(p, V, B_axis):
+    """Mirror of run_plasma_sustainment (same names, same statement order)."""
+    n_e0 = p["n_e0"]
+    T_i0 = p["T_i0"]
+    a = p["a"]
+    R = p["magnet_R0"]
+    B = B_axis
+    alpha_n = p["alpha_n"]
+    alpha_n_e = p["alpha_n_e"]
+    alpha_T = p["alpha_T"]
+    T_e0 = T_i0 / p["Ti_over_Te"]
+    n_bar19 = n_e0 * _trapz_rho(lambda u, rho: u ** alpha_n_e) / 1e19
+    C = (0.134 * p["f_ren"] * a ** 2.28 * B ** 0.84
+         * p["iota_23"] ** 0.41 * n_bar19 ** 0.54 * R ** 0.64)
+    fus_I = _profile_integral(alpha_n, alpha_T, T_i0)
+    sigv_peak = _sigv_dt(T_i0)
+
+    def state(n_He0):
+        n_fuel = n_e0 - 2.0 * n_He0
+        if n_fuel <= 0.0:
+            raise RuntimeError("oracle sustainment: non-positive fuel")
+        n_D0 = n_T0 = 0.5 * n_fuel
+        p_avg = KEV_TO_J * (
+            n_e0 * T_e0 / (1.0 + alpha_n_e + alpha_T)
+            + (n_D0 + n_T0 + n_He0) * T_i0 / (1.0 + alpha_n + alpha_T)
+        )
+        W_th = 1.5 * p_avg * V * 1e-6
+        tau_E = (C * W_th ** -0.61) ** (1.0 / 0.39)
+        return n_D0, n_T0, W_th, tau_E
+
+    n_He0 = 0.0
+    converged = False
+    for _ in range(ASH_CAP):
+        n_D0, n_T0, W_th, tau_E = state(n_He0)
+        n_He_new = (p["f_suppr_ash"] * p["tau_ratio_ash"] * tau_E
+                    * n_D0 * n_T0 * sigv_peak)
+        if abs(n_He_new - n_He0) < ASH_TOL:
+            n_He0 = n_He_new
+            converged = True
+            break
+        n_He0 = 0.5 * (n_He0 + n_He_new)
+    if not converged:
+        raise RuntimeError("oracle sustainment: ash fixed point did not converge")
+    n_D0, n_T0, W_th, tau_E = state(n_He0)
+    p_fus = n_D0 * n_T0 * fus_I * p["E_fus"] * V * 1e-6
+    p_brems = (5.35e-37 * p["Z_eff_core"] * n_e0 ** 2
+               * _trapz_rho(lambda u, rho: (u ** (2.0 * alpha_n_e))
+                            * math.sqrt(max(T_e0 * (u ** alpha_T), 1e-9)) * 2.0 * rho)
+               * V * 1e-6)
+    p_line = (p["f_W_core"] * n_e0 ** 2
+              * _trapz_rho(lambda u, rho: (u ** (2.0 * alpha_n_e))
+                           * _lz_w(T_e0 * (u ** alpha_T)) * 2.0 * rho)
+              * V * 1e-6)
+    p_sync = _p_sync_albajar(T_e0, n_e0 / 1e20, B, R, a,
+                             p["kappa_sync"], p["R_w_sync"], alpha_n_e, alpha_T)
+    p_rad = p_brems + p_line + p_sync
+    p_alpha_heat = p["f_alpha_fast"] * p["sustain_ash_frac"] * p_fus
+    p_aux_required = p_rad + W_th / tau_E - p_alpha_heat
+    return dict(n_bar19=n_bar19, n_He0=n_He0, n_D0=n_D0, n_T0=n_T0, T_e0=T_e0,
+                W_th=W_th, tau_E=tau_E, p_brems=p_brems, p_line=p_line,
+                p_sync=p_sync, p_rad=p_rad, p_alpha_heat=p_alpha_heat,
+                p_aux_required=p_aux_required)
+
+
 # --- Stellaris design-point inputs (from stellarator_plant.sysml bindings) ---
 IN = dict(
     # geometry (WI-022 errata rebind: a = 1.3 per the Table 2 image; f_shape
@@ -59,10 +172,16 @@ IN = dict(
     # fusion power (WI-022: sigma_v = 0 -> profile-integrated path; n_e is
     # reference-only in profile mode; profile referents per the spec)
     n_e=3.17e20, sigma_v=0.0, E_fus=2.817e-12,
-    n_D0=1.96e20, n_T0=1.96e20, T_i0=14.63, alpha_n=0.33, alpha_T=1.19,
-    # beta referents (WI-030): Table 5 image Point A electron/helium peaks, the
-    # electron exponent from the printed vol-av/peak pair 3.17/5.06
-    n_e0=5.06e20, T_e0=15.40, n_He0=0.56e20, alpha_n_e=0.596,
+    T_i0=14.63, alpha_n=0.33, alpha_T=1.19,
+    # WI-037: n_D0/n_T0/T_e0/n_He0 retired -- computed by the sustainment
+    # chain below (quasi-neutral fuel, converged A.5/A.6 ash, held Ti/Te
+    # ratio). n_e0 and T_i0 are the operating-point levers.
+    n_e0=5.06e20, alpha_n_e=0.596,
+    # WI-037 sustainment held facts (image-verified; see stellarator_plant
+    # bindings): Fig. 11(a) read, Tables 2/4/5, raw PDF sec. 2.5.
+    iota_23=0.92, f_ren=1.0, f_alpha_fast=0.95, tau_ratio_ash=8.0,
+    f_suppr_ash=0.5, Z_eff_core=1.20, f_W_core=7.76e-6, Ti_over_Te=0.95,
+    sustain_ash_frac=0.2002, R_w_sync=0.6, kappa_sync=1.0,
     beta_mu0=1.25663706212e-6, beta_e_keV=1.602176634e-16,  # 'Volume-Averaged Beta' defaults
     # power balance
     p_input=50.0, mn=1.2, eta_th=0.333, eta_p=0.5, eta_pin=0.5,
@@ -216,12 +335,24 @@ def compute():
     r_coil = vessel_or
     # CAS27 PbLi inventory keyed to the computed blanket volume (WI-021)
     special_materials_capital = blanket_vol * 0.50 * 9400.0 * 5.0
-    # --- DT Fusion Power (WI-022: 0D bypass or profile-integrated) ---
+    # --- Coil-set field, peak field, winding-pack stress (WI-035; moved ahead
+    # of the plasma chain at WI-037 because sustainment reads B_axis) ---
+    B_axis = (p["mu0"] * p["magnet_k_link"] * p["magnet_n_coils"] * p["magnet_I_coil"]
+              / (p["magnet_two_pi"] * p["magnet_R0"]))
+    B_peak = B_axis * p["magnet_peak_ratio"]
+    sigma_wp = p["magnet_k_sigma"] * p["magnet_I_coil"] * B_peak / p["magnet_wp_side"]
+
+    # --- Plasma Sustainment (WI-037): computed ash, quasi-neutral fuel,
+    # ISS04 tau_E, composed radiation, required sustained heating ---
+    sust = _sustainment(p, V, B_axis)
+
+    # --- DT Fusion Power (WI-022: 0D bypass or profile-integrated; WI-037:
+    # the fuel peaks are the sustainment chain's computed values) ---
     if p["sigma_v"] > 0.0:
         p_fus = 0.25 * (p["n_e"] ** 2) * p["sigma_v"] * p["E_fus"] * V * 1.0e-6
     else:
         integral = _profile_integral(p["alpha_n"], p["alpha_T"], p["T_i0"])
-        p_fus = p["n_D0"] * p["n_T0"] * integral * p["E_fus"] * V * 1.0e-6
+        p_fus = sust["n_D0"] * sust["n_T0"] * integral * p["E_fus"] * V * 1.0e-6
     # --- MFE Power Balance (WI-019 faithful form; physics.py:290-328) ---
     p_alpha = (3.52 / 17.58) * p_fus
     p_neutron = p_fus - p_alpha
@@ -244,14 +375,6 @@ def compute():
     q_eng = p_et / recirculating
     rec_frac = 1.0 / q_eng
     p_net = (1.0 - rec_frac) * p_et
-
-    # --- Coil-set field, peak field, winding-pack stress (WI-035) ---
-    # Mirror 'Coil Set Axis Field' / 'Conductor Peak Field' / 'Winding Pack
-    # Stress' statement forms for operation (bit-exact bar).
-    B_axis = (p["mu0"] * p["magnet_k_link"] * p["magnet_n_coils"] * p["magnet_I_coil"]
-              / (p["magnet_two_pi"] * p["magnet_R0"]))
-    B_peak = B_axis * p["magnet_peak_ratio"]
-    sigma_wp = p["magnet_k_sigma"] * p["magnet_I_coil"] * B_peak / p["magnet_wp_side"]
 
     # --- Account costs ($) ---
     total_kAm = (p["magnet_G"] * B_axis * p["magnet_R0"] * r_coil
@@ -416,9 +539,9 @@ def compute():
     # --- Volume-averaged thermal beta and conductor peak field (WI-030) ---
     # Mirrors 'Volume-Averaged Beta' / 'Conductor Peak Field' operation for
     # operation (bit-exact bar): <n T> = n0 T0 / (1 + alpha_n + alpha_T) per species.
-    beta_p_e = p["n_e0"] * p["T_e0"] / (1.0 + p["alpha_n_e"] + p["alpha_T"])
-    beta_p_fuel = (p["n_D0"] + p["n_T0"]) * p["T_i0"] / (1.0 + p["alpha_n"] + p["alpha_T"])
-    beta_p_He = p["n_He0"] * p["T_i0"] / (1.0 + p["alpha_n"] + p["alpha_T"])
+    beta_p_e = p["n_e0"] * sust["T_e0"] / (1.0 + p["alpha_n_e"] + p["alpha_T"])
+    beta_p_fuel = (sust["n_D0"] + sust["n_T0"]) * p["T_i0"] / (1.0 + p["alpha_n"] + p["alpha_T"])
+    beta_p_He = sust["n_He0"] * p["T_i0"] / (1.0 + p["alpha_n"] + p["alpha_T"])
     beta_p_avg = (beta_p_e + beta_p_fuel + beta_p_He) * p["beta_e_keV"]
     # WI-035: beta reads the computed axis field (B_peak computed above).
     beta = 2.0 * p["beta_mu0"] * beta_p_avg / (B_axis ** 2)
@@ -429,6 +552,12 @@ def compute():
         q_eng=q_eng, rec_frac=rec_frac, p_net=p_net, wall_load=wall_load,
         beta=beta, B_peak=B_peak,  # WI-030 physics channels
         B_axis=B_axis, sigma_wp=sigma_wp,  # WI-035 field + stress channels
+        # WI-037 sustainment channels
+        n_bar19=sust["n_bar19"], n_He0=sust["n_He0"], n_D0=sust["n_D0"],
+        n_T0=sust["n_T0"], T_e0=sust["T_e0"], W_th=sust["W_th"],
+        tau_E=sust["tau_E"], p_brems=sust["p_brems"], p_line=sust["p_line"],
+        p_sync=sust["p_sync"], p_rad=sust["p_rad"],
+        p_alpha_heat=sust["p_alpha_heat"], p_aux_required=sust["p_aux_required"],
         winding_pack=winding_pack, magnet_structure=magnet_structure,
         magnet_capital_rollup=magnet_capital_rollup,
         aux_cost=aux_cost, cryo_cost=cryo_cost,  # WI-035 aux split

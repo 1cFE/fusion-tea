@@ -17,6 +17,7 @@ modules:
       mfe_magnet_field_params: MfeMagnetFieldParams ../inputs/mfe_magnet_field_params.json
       mfe_plant_params: MfePlantParams ../inputs/mfe_plant_params.json
       mfe_plasma_scaling_params: MfePlasmaScalingParams ../inputs/mfe_plasma_scaling_params.json
+      mfe_plasma_sustainment_params: MfePlasmaSustainmentParams ../inputs/mfe_plasma_sustainment_params.json
       stellarator_plant_params: StellaratorPlantParams ../inputs/stellarator_plant_params.json
 
 
@@ -132,25 +133,6 @@ modules:
     outputs:
       root: RootModel[float] stellarator_09__stellaris__peak_field_calc__B_peak
 
-  # mfe_plasma_scaling.Volume_Averaged_BetaModule
-  stellarator_09__stellaris__beta_calc:
-    module_type: mfe_plasma_scaling.Volume_Averaged_BetaModule
-    inputs:
-      n_D0_in: float stellarator_plant_params.stellarator_09__stellaris__n_D0
-      mu0: float mfe_plasma_scaling_params.stellarator_09__stellaris__beta_calc__mu0
-      alpha_n_in: float stellarator_plant_params.stellarator_09__stellaris__alpha_n
-      T_e0_in: float stellarator_plant_params.stellarator_09__stellaris__T_e0
-      alpha_n_e_in: float stellarator_plant_params.stellarator_09__stellaris__alpha_n_e
-      n_He0_in: float stellarator_plant_params.stellarator_09__stellaris__n_He0
-      alpha_T_in: float stellarator_plant_params.stellarator_09__stellaris__alpha_T
-      T_i0_in: float stellarator_plant_params.stellarator_09__stellaris__T_i0
-      e_keV: float mfe_plasma_scaling_params.stellarator_09__stellaris__beta_calc__e_keV
-      B_in: float stellarator_09__stellaris__field_calc__B_axis.root
-      n_e0_in: float stellarator_plant_params.stellarator_09__stellaris__n_e0
-      n_T0_in: float stellarator_plant_params.stellarator_09__stellaris__n_T0
-    outputs:
-      root: RootModel[float] stellarator_09__stellaris__beta_calc__beta
-
   # mfe_magnet_field.Winding_Pack_StressModule
   stellarator_09__stellaris__wp_stress:
     module_type: mfe_magnet_field.Winding_Pack_StressModule
@@ -188,17 +170,57 @@ modules:
     outputs:
       root: RootModel[float] stellarator_09__stellaris__geom__V
 
+  # mfe_plasma_sustainment.Plasma_SustainmentModule
+  stellarator_09__stellaris__sustain:
+    module_type: mfe_plasma_sustainment.Plasma_SustainmentModule
+    inputs:
+      iota_23_in: float stellarator_plant_params.stellarator_09__stellaris__iota_23
+      Z_eff_in: float stellarator_plant_params.stellarator_09__stellaris__Z_eff_core
+      ash_frac_in: float mfe_plasma_sustainment_params.stellarator_09__stellaris__sustain__ash_frac_in
+      alpha_n_e_in: float stellarator_plant_params.stellarator_09__stellaris__alpha_n_e
+      alpha_T_in: float stellarator_plant_params.stellarator_09__stellaris__alpha_T
+      kappa_sync_in: float mfe_plasma_sustainment_params.stellarator_09__stellaris__sustain__kappa_sync_in
+      V: float stellarator_09__stellaris__geom__V.root
+      n_e0_in: float stellarator_plant_params.stellarator_09__stellaris__n_e0
+      T_i0_in: float stellarator_plant_params.stellarator_09__stellaris__T_i0
+      f_suppr_in: float stellarator_plant_params.stellarator_09__stellaris__f_suppr_ash
+      R_in: float stellarator_plant_params.stellarator_09__stellaris__R
+      tau_ratio_in: float stellarator_plant_params.stellarator_09__stellaris__tau_ratio_ash
+      f_ren_in: float stellarator_plant_params.stellarator_09__stellaris__f_ren
+      f_W_in: float stellarator_plant_params.stellarator_09__stellaris__f_W_core
+      E_fus_in: float stellarator_plant_params.stellarator_09__stellaris__E_fus
+      alpha_n_in: float stellarator_plant_params.stellarator_09__stellaris__alpha_n
+      B_in: float stellarator_09__stellaris__field_calc__B_axis.root
+      f_alpha_in: float stellarator_plant_params.stellarator_09__stellaris__f_alpha_fast
+      r_TiTe_in: float stellarator_plant_params.stellarator_09__stellaris__Ti_over_Te
+      R_w_sync_in: float mfe_plasma_sustainment_params.stellarator_09__stellaris__sustain__R_w_sync_in
+      a_in: float stellarator_plant_params.stellarator_09__stellaris__a
+    outputs:
+      n_bar19: float stellarator_09__stellaris__sustain__n_bar19
+      n_T0: float stellarator_09__stellaris__sustain__n_T0
+      W_th: float stellarator_09__stellaris__sustain__W_th
+      p_brems: float stellarator_09__stellaris__sustain__p_brems
+      n_He0: float stellarator_09__stellaris__sustain__n_He0
+      n_D0: float stellarator_09__stellaris__sustain__n_D0
+      p_aux_required: float stellarator_09__stellaris__sustain__p_aux_required
+      p_rad: float stellarator_09__stellaris__sustain__p_rad
+      p_alpha_heat: float stellarator_09__stellaris__sustain__p_alpha_heat
+      tau_E: float stellarator_09__stellaris__sustain__tau_E
+      p_sync: float stellarator_09__stellaris__sustain__p_sync
+      p_line: float stellarator_09__stellaris__sustain__p_line
+      T_e0: float stellarator_09__stellaris__sustain__T_e0
+
   # mfe_plasma_scaling.DT_Fusion_PowerModule
   stellarator_09__stellaris__fusion:
     module_type: mfe_plasma_scaling.DT_Fusion_PowerModule
     inputs:
-      n_T0_in: float stellarator_plant_params.stellarator_09__stellaris__n_T0
+      n_T0_in: float stellarator_09__stellaris__sustain__n_T0
       n_e_in: float stellarator_plant_params.stellarator_09__stellaris__n_e
       T_i0_in: float stellarator_plant_params.stellarator_09__stellaris__T_i0
       V: float stellarator_09__stellaris__geom__V.root
       E_fus_in: float stellarator_plant_params.stellarator_09__stellaris__E_fus
       sigma_v_in: float stellarator_plant_params.stellarator_09__stellaris__sigma_v
-      n_D0_in: float stellarator_plant_params.stellarator_09__stellaris__n_D0
+      n_D0_in: float stellarator_09__stellaris__sustain__n_D0
       alpha_T_in: float stellarator_plant_params.stellarator_09__stellaris__alpha_T
       alpha_n_in: float stellarator_plant_params.stellarator_09__stellaris__alpha_n
     outputs:
@@ -301,6 +323,25 @@ modules:
       n_mod_in: float mfe_plant_params.stellarator_09__stellaris__n_mod
     outputs:
       root: RootModel[float] stellarator_09__stellaris__electric_cost__cost
+
+  # mfe_plasma_scaling.Volume_Averaged_BetaModule
+  stellarator_09__stellaris__beta_calc:
+    module_type: mfe_plasma_scaling.Volume_Averaged_BetaModule
+    inputs:
+      n_D0_in: float stellarator_09__stellaris__sustain__n_D0
+      mu0: float mfe_plasma_scaling_params.stellarator_09__stellaris__beta_calc__mu0
+      alpha_n_in: float stellarator_plant_params.stellarator_09__stellaris__alpha_n
+      T_e0_in: float stellarator_09__stellaris__sustain__T_e0
+      alpha_n_e_in: float stellarator_plant_params.stellarator_09__stellaris__alpha_n_e
+      n_He0_in: float stellarator_09__stellaris__sustain__n_He0
+      alpha_T_in: float stellarator_plant_params.stellarator_09__stellaris__alpha_T
+      T_i0_in: float stellarator_plant_params.stellarator_09__stellaris__T_i0
+      e_keV: float mfe_plasma_scaling_params.stellarator_09__stellaris__beta_calc__e_keV
+      B_in: float stellarator_09__stellaris__field_calc__B_axis.root
+      n_e0_in: float stellarator_plant_params.stellarator_09__stellaris__n_e0
+      n_T0_in: float stellarator_09__stellaris__sustain__n_T0
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__beta_calc__beta
 
   # mfe_account_costs.Linear_Power_CostModule
   stellarator_09__stellaris__heat_rejection_cost:
@@ -853,6 +894,15 @@ modules:
     outputs:
       evaluation: ConstraintEvaluation stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5__evaluation
 
+  # stellarator_09.StellarisSustainmentOkConstraintModule
+  stellarator_09__stellaris__sustainment_ok__77add152ed8eafce:
+    module_type: stellarator_09.StellarisSustainmentOkConstraintModule
+    inputs:
+      p_aux_required_in: float stellarator_09__stellaris__sustain__p_aux_required
+      p_aux_installed_in: float stellarator_plant_params.stellarator_09__stellaris__p_input
+    outputs:
+      evaluation: ConstraintEvaluation stellarator_09__stellaris__sustainment_ok__77add152ed8eafce__evaluation
+
   # constraints.ConstraintReportAggregatorModule
   constraint_report_aggregator:
     module_type: constraints.ConstraintReportAggregatorModule
@@ -864,6 +914,7 @@ modules:
       stellarator_09_stellaris_wall_load_ok_ab2c790419af93bb: ConstraintEvaluation stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb__evaluation
       stellarator_09_stellaris_tbr_ok_2cd198f674d413e4: ConstraintEvaluation stellarator_09__stellaris__tbr_ok__2cd198f674d413e4__evaluation
       stellarator_09_stellaris_peak_field_ok_49c6b8228a73cac5: ConstraintEvaluation stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5__evaluation
+      stellarator_09_stellaris_sustainment_ok_77add152ed8eafce: ConstraintEvaluation stellarator_09__stellaris__sustainment_ok__77add152ed8eafce__evaluation
     outputs:
       constraint_report: ConstraintReport constraint_report
 
@@ -885,10 +936,22 @@ modules:
       stellarator_09__stellaris__heating_cost__cost: RootModel[float] stellaris__heating_capital.json
       stellarator_09__stellaris__field_calc__B_axis: RootModel[float] stellaris__magnet__B.json
       stellarator_09__stellaris__peak_field_calc__B_peak: RootModel[float] stellarator_09__stellaris__peak_field_calc__B_peak.json
-      stellarator_09__stellaris__beta_calc__beta: RootModel[float] stellarator_09__stellaris__beta_calc__beta.json
       stellarator_09__stellaris__wp_stress__sigma_wp: RootModel[float] stellarator_09__stellaris__wp_stress__sigma_wp.json
       stellarator_09__stellaris__magnet_cost__capital_cost: RootModel[float] stellaris__magnet_capital_1cfe.json
       stellarator_09__stellaris__geom__V: RootModel[float] stellarator_09__stellaris__geom__V.json
+      stellarator_09__stellaris__sustain__n_bar19: float stellarator_09__stellaris__sustain__n_bar19.json
+      stellarator_09__stellaris__sustain__n_T0: float stellarator_09__stellaris__sustain__n_T0.json
+      stellarator_09__stellaris__sustain__W_th: float stellarator_09__stellaris__sustain__W_th.json
+      stellarator_09__stellaris__sustain__p_brems: float stellarator_09__stellaris__sustain__p_brems.json
+      stellarator_09__stellaris__sustain__n_He0: float stellarator_09__stellaris__sustain__n_He0.json
+      stellarator_09__stellaris__sustain__n_D0: float stellarator_09__stellaris__sustain__n_D0.json
+      stellarator_09__stellaris__sustain__p_aux_required: float stellarator_09__stellaris__sustain__p_aux_required.json
+      stellarator_09__stellaris__sustain__p_rad: float stellarator_09__stellaris__sustain__p_rad.json
+      stellarator_09__stellaris__sustain__p_alpha_heat: float stellarator_09__stellaris__sustain__p_alpha_heat.json
+      stellarator_09__stellaris__sustain__tau_E: float stellarator_09__stellaris__sustain__tau_E.json
+      stellarator_09__stellaris__sustain__p_sync: float stellarator_09__stellaris__sustain__p_sync.json
+      stellarator_09__stellaris__sustain__p_line: float stellarator_09__stellaris__sustain__p_line.json
+      stellarator_09__stellaris__sustain__T_e0: float stellarator_09__stellaris__sustain__T_e0.json
       stellarator_09__stellaris__fusion__p_fus: RootModel[float] stellarator_09__stellaris__fusion__p_fus.json
       stellarator_09__stellaris__pb__p_the: float stellaris__p_the.json
       stellarator_09__stellaris__pb__p_et: float stellaris__p_et.json
@@ -902,6 +965,7 @@ modules:
       stellarator_09__stellaris__owner__cost: RootModel[float] stellaris__owner_capital.json
       stellarator_09__stellaris__other_rpe__cost: RootModel[float] stellaris__other_rpe_capital.json
       stellarator_09__stellaris__electric_cost__cost: RootModel[float] stellaris__electric_capital.json
+      stellarator_09__stellaris__beta_calc__beta: RootModel[float] stellarator_09__stellaris__beta_calc__beta.json
       stellarator_09__stellaris__heat_rejection_cost__cost: RootModel[float] stellaris__heat_rejection_capital.json
       stellarator_09__stellaris__remote_handling__cost: RootModel[float] stellaris__remote_handling_capital.json
       stellarator_09__stellaris__coolant__cost: RootModel[float] stellaris__coolant_capital.json
@@ -954,4 +1018,5 @@ modules:
       stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb__evaluation: ConstraintEvaluation stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb__evaluation.json
       stellarator_09__stellaris__tbr_ok__2cd198f674d413e4__evaluation: ConstraintEvaluation stellarator_09__stellaris__tbr_ok__2cd198f674d413e4__evaluation.json
       stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5__evaluation: ConstraintEvaluation stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5__evaluation.json
+      stellarator_09__stellaris__sustainment_ok__77add152ed8eafce__evaluation: ConstraintEvaluation stellarator_09__stellaris__sustainment_ok__77add152ed8eafce__evaluation.json
       constraint_report: ConstraintReport constraint_report.json

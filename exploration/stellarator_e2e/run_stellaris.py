@@ -83,6 +83,14 @@ CH = dict(
     magnet_structure=f"{P}magnet_structure_cost__cost",
     magnet_capital_rollup=f"{P}magnet_capital_rollup__capital_cost",
     cas90_1cfe=f"{P}cas90_1cfe_calc__cas90", lcoe_1cfe=f"{P}lcoe_1cfe_calc__lcoe",
+    # WI-037 sustainment channels
+    n_bar19=f"{P}sustain__n_bar19", n_He0=f"{P}sustain__n_He0",
+    n_D0=f"{P}sustain__n_D0", n_T0=f"{P}sustain__n_T0",
+    T_e0=f"{P}sustain__T_e0", W_th=f"{P}sustain__W_th",
+    tau_E=f"{P}sustain__tau_E", p_brems=f"{P}sustain__p_brems",
+    p_line=f"{P}sustain__p_line", p_sync=f"{P}sustain__p_sync",
+    p_rad=f"{P}sustain__p_rad", p_alpha_heat=f"{P}sustain__p_alpha_heat",
+    p_aux_required=f"{P}sustain__p_aux_required",
 )
 
 failures = []

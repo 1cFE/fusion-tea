@@ -37,7 +37,15 @@ EXPECTED_VERDICTS = {
     "wall_load_ok": "satisfied",
     "peak_field_ok": "satisfied",  # WI-030 conductor peak-field limit,
     "wp_stress_ok": "satisfied",  # WI-035
+    # WI-037: the sustainment power limit is EXPECTED VIOLATED at the printed
+    # point-A levers (p_aux_required ~= 90.6 MW vs 50 installed) -- the
+    # disclosed, explained verdict of the closure (design D6/D7; the W-form
+    # fidelity delta, never tuned). The report headline is 'violation'
+    # accordingly; every other verdict stays satisfied.
+    "sustainment_ok": "violated",
 }
+EXPECTED_HEADLINE = "violation"
+EXPECTED_VERDICT_COUNT = 8
 
 
 def _execute_package():
@@ -75,22 +83,25 @@ def _numeric_outputs(outputs) -> dict[str, float]:
 def _anchor_gate(values: dict[str, float]) -> bool:
     total = values[f"{P}total_capital__total_capital"]
     magnet = values[CH["magnet_capital_rollup"]]
-    # Anchors re-pinned on the WI-035 decomposed magnet capital (goal
-    #   magnet-closure, 2026-08-30): the magnet anchor reads the CAS22.1.3
-    #   rollup (winding pack + casing structure); the old conductor-proxy lump
-    #   survives as CH["magnet"] = magnet_capital_1cfe. p_net/q_eng/rec_frac and
-    #   CAS70/80 are unchanged (the power balance is untouched). Pre-WI-035
-    #   values (p_pump-195 era) in git history.
+    # Anchors re-derived on the WI-037 sustainment closure (goal
+    #   operating-point-closure, 2026-09-01): the fuel peaks are now the
+    #   computed quasi-neutral values (n_D0 1.96e20 -> 1.95189e20, -0.55%,
+    #   converged ash 0.578e20 vs the printed 0.56e20 referent), so every
+    #   fusion-derived headline moves ~1%: p_fus 2748.06 -> 2725.36 MW,
+    #   LCOE 304.481620 -> 307.087120. Verified bit-exact against the
+    #   extended oracle before pinning (never patched-to-match; the
+    #   printed-referent deltas are the design D6 tolerances). Pre-WI-037
+    #   values in git history.
     anchors = [
-        ("total capital $", total, 14_573_943_975.500229),
-        ("LCOE $/MWh", values[CH["lcoe"]], 304.481620),
-        ("p_net MW", values[CH["p_net"]], 752.413058),
-        ("q_eng", values[CH["q_eng"]], 3.100643),
-        ("rec_frac", values[CH["rec_frac"]], 0.322514),
-        ("magnet %", magnet / total * 100, 37.059508),
-        ("CAS70 $/yr", values[CH["cas70"]], 165_595_630.876151),
-        ("CAS80 $/yr", values[CH["cas80"]], 773_037.517724),
-        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 298.544671),
+        ("total capital $", total, 14_542_872_713.455379),
+        ("LCOE $/MWh", values[CH["lcoe"]], 307.087120),
+        ("p_net MW", values[CH["p_net"]], 743.910232),
+        ("q_eng", values[CH["q_eng"]], 3.078430),
+        ("rec_frac", values[CH["rec_frac"]], 0.324841),
+        ("magnet %", magnet / total * 100, 37.138687),
+        ("CAS70 $/yr", values[CH["cas70"]], 164_039_066.821278),
+        ("CAS80 $/yr", values[CH["cas80"]], 766_653.689449),
+        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 301.095115),
     ]
 
     print("\n=== NINE ANCHORS (single-pass, graph rollup, no bridge) ===")
@@ -112,9 +123,9 @@ def _anchor_gate(values: dict[str, float]) -> bool:
 
 
 def _assert_generated_verdicts(outputs) -> None:
-    """The model's seven design-point verdicts remain a separate assertion gate."""
+    """The model's eight design-point verdicts remain a separate assertion gate."""
     report = outputs["constraint_report"]
-    print("=== SEVEN VERDICTS (generated ConstraintReport) ===")
+    print("=== EIGHT VERDICTS (generated ConstraintReport) ===")
     verdicts = {}
     for channel, value in outputs.items():
         if channel.endswith("__evaluation") and hasattr(value, "status"):
@@ -122,11 +133,11 @@ def _assert_generated_verdicts(outputs) -> None:
             verdicts[name] = value.status
             print(f"  {name:14s} {value.status}")
 
-    assert report.headline == "full_satisfaction", (
-        f"headline {report.headline!r} != full_satisfaction"
+    assert report.headline == EXPECTED_HEADLINE, (
+        f"headline {report.headline!r} != {EXPECTED_HEADLINE!r}"
     )
-    assert report.assessed_entry_count == 7, (
-        f"assessed_entry_count {report.assessed_entry_count} != 7"
+    assert report.assessed_entry_count == EXPECTED_VERDICT_COUNT, (
+        f"assessed_entry_count {report.assessed_entry_count} != {EXPECTED_VERDICT_COUNT}"
     )
     for name, expected in EXPECTED_VERDICTS.items():
         actual = verdicts.get(name)
@@ -137,7 +148,7 @@ def _assert_generated_verdicts(outputs) -> None:
     print(
         "VERDICT PARITY: PASS -- "
         f"headline={report.headline}, assessed_entry_count={report.assessed_entry_count}, "
-        "all seven == satisfied"
+        "seven satisfied + sustainment_ok violated (expected, WI-037)"
     )
 
 
@@ -161,6 +172,17 @@ def _oracle_gate(values: dict[str, float], oracle: dict[str, float]) -> bool:
         # WI-030 physics channels
         "beta": values[CH["beta"]],
         "B_peak": values[CH["B_peak"]],
+        # WI-037 sustainment channels (bit-exact vs the oracle mirror)
+        "n_bar19": values[CH["n_bar19"]],
+        "n_He0": values[CH["n_He0"]],
+        "n_D0": values[CH["n_D0"]],
+        "tau_E": values[CH["tau_E"]],
+        "W_th": values[CH["W_th"]],
+        "p_brems": values[CH["p_brems"]],
+        "p_line": values[CH["p_line"]],
+        "p_sync": values[CH["p_sync"]],
+        "p_rad": values[CH["p_rad"]],
+        "p_aux_required": values[CH["p_aux_required"]],
     }
 
     print("\n=== BIT-EXACT vs ORACLE (rel<1e-9) ===")

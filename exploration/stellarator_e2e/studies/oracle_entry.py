@@ -71,12 +71,23 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}magnet__B_max": "magnet_B_max",
     f"{P}magnet__peak_ratio": "magnet_peak_ratio",
     f"{P}n_e0": "n_e0",
-    f"{P}T_e0": "T_e0",
-    f"{P}n_He0": "n_He0",
     f"{P}alpha_n_e": "alpha_n_e",
-    f"{P}n_D0": "n_D0",
-    f"{P}n_T0": "n_T0",
     f"{P}T_i0": "T_i0",
+    # WI-037: n_D0/n_T0/T_e0/n_He0 retired as entry keys (computed by the
+    # sustainment chain); the sustainment held facts and the coupled-heating
+    # lever are entry keys instead. Oracle input names per `verify_stellaris.IN`.
+    f"{P}iota_23": "iota_23",
+    f"{P}f_ren": "f_ren",
+    f"{P}f_alpha_fast": "f_alpha_fast",
+    f"{P}tau_ratio_ash": "tau_ratio_ash",
+    f"{P}f_suppr_ash": "f_suppr_ash",
+    f"{P}Z_eff_core": "Z_eff_core",
+    f"{P}f_W_core": "f_W_core",
+    f"{P}Ti_over_Te": "Ti_over_Te",
+    f"{P}p_input": "p_input",
+    f"{P}sustain__ash_frac_in": "sustain_ash_frac",
+    f"{P}sustain__R_w_sync_in": "R_w_sync",
+    f"{P}sustain__kappa_sync_in": "kappa_sync",
     # Item 6 study 2 (20260821-power-cycle-ab): the power-conversion block that
     # defines the arms, and the discount-rate lever. Oracle input names per
     # `verify_stellaris.IN` (eta_th, turbine_per_mw, heat_rej_per_mw, discount_rate).
@@ -157,6 +168,20 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     # the package's in-package producer — the ingredient the era route could not verify.
     "special_materials": f"{P}special_materials_capital__special_materials_capital",
     "annual_fuel": f"{P}fuel_calc__annual_fuel",
+    # WI-037 sustainment channels
+    "n_bar19": f"{P}sustain__n_bar19",
+    "n_He0": f"{P}sustain__n_He0",
+    "n_D0": f"{P}sustain__n_D0",
+    "n_T0": f"{P}sustain__n_T0",
+    "T_e0": f"{P}sustain__T_e0",
+    "W_th": f"{P}sustain__W_th",
+    "tau_E": f"{P}sustain__tau_E",
+    "p_brems": f"{P}sustain__p_brems",
+    "p_line": f"{P}sustain__p_line",
+    "p_sync": f"{P}sustain__p_sync",
+    "p_rad": f"{P}sustain__p_rad",
+    "p_alpha_heat": f"{P}sustain__p_alpha_heat",
+    "p_aux_required": f"{P}sustain__p_aux_required",
     "cas72_annual": f"{P}cas72_calc__cost",
     "cas90_1cfe": f"{P}cas90_1cfe_calc__cas90",
     "lcoe_1cfe": f"{P}lcoe_1cfe_calc__lcoe",
@@ -210,6 +235,12 @@ OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
         # WI-035: computed winding-pack stress vs the held sourced allowable.
         "sigma_in": {"kind": "channel", "key": f"{P}wp_stress__sigma_wp"},
         "sigma_allow_in": {"kind": "input", "key": f"{P}magnet__sigma_allow"},
+    },
+    f"{P}sustainment_ok__77add152ed8eafce": {
+        # WI-037: computed required sustained coupled heating vs the installed
+        # plasma-coupled heating (the p_input entry key, coupled-to-coupled).
+        "p_aux_required_in": {"kind": "channel", "key": f"{P}sustain__p_aux_required"},
+        "p_aux_installed_in": {"kind": "input", "key": f"{P}p_input"},
     },
 }
 

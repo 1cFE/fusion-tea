@@ -7,7 +7,7 @@
   "fingerprints": {
     "indicator_inputs": {
       "recipe": "indicator-input-fingerprint/v1",
-      "digest": "287479a32470e48c9f48f2338f66eadfdb782098fb9b1e82a31234da7729fdfa",
+      "digest": "35e922c5cc15eacabf301e6007b94e7dee1bfe1f45f6c23c24233098f0125289",
       "files": [
         "contracts/model_contract.json",
         "inputs/mfe_account_costs_params.json",
@@ -15,13 +15,14 @@
         "inputs/mfe_magnet_field_params.json",
         "inputs/mfe_plant_params.json",
         "inputs/mfe_plasma_scaling_params.json",
+        "inputs/mfe_plasma_sustainment_params.json",
         "inputs/stellarator_plant_params.json",
         "pipelines/pipeline.yaml"
       ]
     },
     "recorded_provenance": {
-      "executable_fingerprint": "75f90a24dc419fd9f29a2c8d9ee26beae1f2d4fb126eca498c651538941551be",
-      "semantic_fingerprint": "819a5a05220e5caff7d317c02c32ef4fed37f7f091e776fba8dff7f168235fd4"
+      "executable_fingerprint": "41e06ecb430cf894309ea5d00174d26c079ebe3d63c892b4dbaad8f0dcb44244",
+      "semantic_fingerprint": "5b9abdfce2e086b6f5408a067ac15f2f264bee505cae4204a25b82f5e036baa4"
     }
   },
   "objective_catalog": [
@@ -69,6 +70,16 @@
       "name": "magnet_capital_1cfe",
       "channel": "stellarator_09__stellaris__magnet_cost__capital_cost",
       "note": "1cfe-form comparison channel (WI-035 D6): the retained 'Magnet Coil Cost' conductor-proxy lump, now responding to the computed field. Kept as an objective so the decomposed rollup and the calibrated lump stay observable side by side."
+    },
+    {
+      "name": "p_aux_required",
+      "channel": "stellarator_09__stellaris__sustain__p_aux_required",
+      "note": "WI-037 required sustained plasma-coupled heating; the sustainment_ok operand. Responds to field (~B^-2.15 through ISS04), density, temperature, geometry, and heating."
+    },
+    {
+      "name": "tau_E",
+      "channel": "stellarator_09__stellaris__sustain__tau_E",
+      "note": "WI-037 ISS04 energy confinement time (closed form, line-averaged density)."
     }
   ],
   "ties": [
@@ -89,7 +100,7 @@
     },
     "headline": {
       "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
-      "value": 304.48161969642837
+      "value": 307.08712042841586
     },
     "verdicts": [
       {
@@ -107,6 +118,10 @@
       {
         "source_local_identity": "recirc_ok",
         "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "sustainment_ok",
+        "expected": "violated"
       },
       {
         "source_local_identity": "tbr_ok",
