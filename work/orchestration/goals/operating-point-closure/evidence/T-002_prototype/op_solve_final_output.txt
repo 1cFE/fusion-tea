@@ -1,0 +1,10 @@
+@printed T=14.63,n_e0=5.06e20: n_He0=5.801e+19 (printed 0.56e20) p_fus=2720 tauE=1.458 rad=228.7 g=-89.6
+pointA levers paux=  0: no burn
+pointA levers paux= 50: no burn
+
+field-reward map (paux=50, iota=0.92): T_burn/p_fus/wall/beta
+B= 8.0: n=0.70: no burn                   | n=0.85: no burn                   | n=1.00: no burn                   | n=1.15: no burn                  
+B= 9.0: n=0.70: no burn                   | n=0.85: no burn                   | n=1.00: no burn                   | n=1.15:T=20.3,P= 6667,w= 7.6,b=4.26 VIO
+B=10.0: n=0.70: no burn                   | n=0.85:T=19.9,P= 3546,w= 4.0,b=2.51 OK  | n=1.00:T=23.2,P= 6116,w= 7.0,b=3.41 VIO | n=1.15:T=25.7,P= 9203,w=10.5,b=4.34 VIO
+B=11.0: n=0.70:T=20.8,P= 2555,w= 2.9,b=1.78 OK  | n=0.85:T=24.0,P= 4548,w= 5.2,b=2.48 VIO | n=1.00:T=26.7,P= 7126,w= 8.1,b=3.23 VIO | n=1.15:T=29.1,P=10286,w=11.7,b=4.03 VIO
+B=12.0: n=0.70:T=23.2,P= 2876,w= 3.3,b=1.66 OK  | n=0.85:T=26.3,P= 4894,w= 5.6,b=2.27 VIO | n=1.00:T=29.0,P= 7491,w= 8.5,b=2.93 VIO | n=1.15:T=31.4,P=10647,w=12.1,b=3.64 VIO

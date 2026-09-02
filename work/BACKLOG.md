@@ -124,6 +124,11 @@ epics:
     scale: standard
     status: backlog
     completed: null
+  - id: WI-037
+    name: 'Operating-Point Closure: ISS04 Confinement Solve, Machine-Responsive Temperature'
+    scale: standard
+    status: backlog
+    completed: null
 - name: Pipeline De-Risk & Demonstration
   goal: null
   priority: P0
@@ -219,6 +224,7 @@ standalone:
 | WI-034 | CAS10 land-term guard: net-negative power yields violated verdict, not execution_failed | standard | backlog |  |
 | WI-035 | Magnet closure: derived field, structural limit, decomposed cost accounts | standard | completed | Completed 2026-09-01 |
 | WI-036 | Winding-pack sizing chain: winding length from coil geometry, wp_side into the sizing and cost chain | standard | backlog |  |
+| WI-037 | Operating-Point Closure: ISS04 Confinement Solve, Machine-Responsive Temperature | standard | backlog |  |
 
 ## Epic: Pipeline De-Risk & Demonstration
 **Priority**: P0 | **Status**: active

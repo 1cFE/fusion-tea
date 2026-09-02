@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/c3fbbb8c-d527-4684-87a1-7112dc33ffcd/scratchpad/op_landscape.py", line 1, in <module>
+    exec(open('op_solve_proto4.py').read().split("print(f\"@14.63")[0])
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'op_solve_proto4.py'
