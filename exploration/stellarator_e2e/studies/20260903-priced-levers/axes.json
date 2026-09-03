@@ -3,32 +3,59 @@
   "groups": [
     {
       "axis": "I_coil",
-      "note": "Peak single-coil current, the field lever. Since WI-036 it also SIZES the winding pack (wp_side = sqrt(I_coil / j_wp)), so it now reaches the conductor's own strain check as well as the structural one, and stress grows as sqrt(I_coil * j_wp) rather than linearly.",
-      "keys": [
-        {"key": "stellarator_09__stellaris__magnet__I_coil", "provenance": "fan_out"}
-      ]
+      "note": "SWEPT. Peak single-coil current, the field lever. Since WI-036 it also SIZES the winding pack (wp_side = sqrt(I_coil / j_wp)), so it reaches the conductor's strain check as well as the structural one, and stress grows as sqrt(I_coil * j_wp) rather than linearly.",
+      "keys": [{"key": "stellarator_09__stellaris__magnet__I_coil", "provenance": "fan_out"}]
     },
     {
       "axis": "j_wp",
-      "note": "Winding-pack current density [A/mm^2] -- the lever WI-036 minted. It replaced the held wp_side: the pack is now sized by the current it carries at a chosen current density, so j_wp trades winding-pack cross-section against stress. Lower j_wp means a wider, heavier, colder pack. The source's own coil set spans 112-124 A/mm^2.",
-      "keys": [
-        {"key": "stellarator_09__stellaris__magnet__j_wp", "provenance": "fan_out"}
-      ]
+      "note": "SWEPT. Winding-pack current density [A/mm^2], the lever WI-036 minted; it replaced the held wp_side. Trades pack cross-section against stress. Critique MAJOR 1: it reaches NO magnet capital -- conductor cost is ampere-metre-proportional and blind to cross-section -- so this axis is swept to MEASURE how little the priced chain charges for pack sizing, not to price it.",
+      "keys": [{"key": "stellarator_09__stellaris__magnet__j_wp", "provenance": "fan_out"}]
+    },
+    {
+      "axis": "T_i0",
+      "note": "SWEPT (added by critique MAJOR 2). Peak ion temperature; T_e0 rides the held 0.95 ratio inside the sustainment calc. The first design held it at 14.63 keV and drew a fence conclusion the dropped axis contradicts: with T free there are points at the printed 50 MW BELOW the conductor ceiling whose only violated fence is the neutron wall load, two of them self-sustaining at negative required auxiliary heating.",
+      "keys": [{"key": "stellarator_09__stellaris__T_i0", "provenance": "fan_out"}]
     },
     {
       "axis": "n_e0",
-      "note": "Peak electron density, an operating-point lever (WI-037: the fuel peaks are computed from it by quasi-neutrality with the converged ash; the line-averaged ISS04 density derives from it).",
-      "keys": [
-        {"key": "stellarator_09__stellaris__n_e0", "provenance": "fan_out"}
-      ]
+      "note": "SWEPT. Peak electron density; the fuel peaks are computed from it by quasi-neutrality with the converged ash, and the line-averaged ISS04 density derives from it. Window widened past the first design's 0.9-1.1x on critique MAJOR 3, which found that window could not reach the beta limit and so could not have tested beta_ok.",
+      "keys": [{"key": "stellarator_09__stellaris__n_e0", "provenance": "fan_out"}]
     },
     {
       "axis": "p_input+tie",
-      "note": "Installed plasma-coupled ECRH power together with its declared physical-identity tie, the heating account's installed power (manifest.ties; declared by 20260901-sustainment-fence). Swept here only to separate the two arms, at the two levels the predecessor study established: the printed 50 MW and the 110 MW where feasibility was found.",
+      "note": "SWEPT at two levels only. Installed plasma-coupled ECRH power with its declared physical-identity tie (manifest.ties; declared by 20260901-sustainment-fence). Held at the printed 50 MW and at 110 MW to separate the arms, not searched.",
       "keys": [
         {"key": "stellarator_09__stellaris__p_input", "provenance": "fan_out"},
         {"key": "stellarator_09__stellaris__p_ecrh", "provenance": "tie"}
       ]
+    },
+    {
+      "axis": "B_max",
+      "note": "DECLINED, traced (critique MINOR 4; runbook step 3 requires indicators for declined axes too). The conductor peak-field ceiling. WI-036 priced the winding pack but gave the conductor GRADE no cost consequence, so B_max is free in every channel -- sweeping it would manufacture feasible points that cost nothing, the exact unpriced-lever defect goal `priced-levers` exists to remove. That consequence chain is WI-038's purpose and does not exist yet.",
+      "keys": [{"key": "stellarator_09__stellaris__magnet__B_max", "provenance": "fan_out"}]
+    },
+    {
+      "axis": "sigma_allow",
+      "note": "DECLINED, traced. Structural allowable stress. Goal T-002 established the applicable allowable depends on stress category (666 MPa primary membrane vs 1.0-1.333 GPa peak under the ITER criteria) and that the conductor's own axial limit arrives at almost the same place; it is not relaxed to open a region. Critique MINOR 7 adds the stronger reason: it never binds where the machine is field-feasible.",
+      "keys": [{"key": "stellarator_09__stellaris__magnet__sigma_allow", "provenance": "fan_out"}]
+    },
+    {
+      "axis": "eps_cond_allow",
+      "note": "DECLINED, traced. The WI-036 conductor strain limit, 0.4%. Settable by design because practitioners enforce 0.2-0.4% and the tape this design specifies is the weakest of five measured (0.45-0.47% irreversible), but held here: a sensitivity in it is named future work, and critique MINOR 7 shows it never binds where the machine is field-feasible.",
+      "keys": [{"key": "stellarator_09__stellaris__magnet__eps_cond_allow", "provenance": "fan_out"}]
+    },
+    {
+      "axis": "R+tie",
+      "note": "DECLINED, traced. Major radius with its declared R0 tie. Geometry belongs to the two prior fence studies; sweeping it here would confound the winding-pack question with a machine-size question. NOTE: since WI-036 this axis also reaches magnet_capital through c_coil = k_coil * R0, which it did not before -- relevant to the wall-load finding, since wall area scales with machine size.",
+      "keys": [
+        {"key": "stellarator_09__stellaris__R", "provenance": "fan_out"},
+        {"key": "stellarator_09__stellaris__magnet__R0", "provenance": "tie"}
+      ]
+    },
+    {
+      "axis": "a",
+      "note": "DECLINED, traced. Minor radius. Same reason as R+tie: geometry is a separate question, and holding it keeps this study's comparison readable.",
+      "keys": [{"key": "stellarator_09__stellaris__a", "provenance": "fan_out"}]
     }
   ]
 }

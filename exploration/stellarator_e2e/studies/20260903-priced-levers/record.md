@@ -1,79 +1,48 @@
-# Record template
-
-Copy this file to `exploration/<pkg>/studies/<study-id>/record.md` and fill it in.
-Everything below the line marked **END OF RECORD** is template guidance and is not
-copied into the record.
-
-**The values/arguments split.** A study record is two files. `snapshot.json` holds
-resolved values and digests — things a checker parses and a human skims past.
-`record.md` holds arguments and judgments — things a human must read and no checker
-can validate. Neither restates the other. The worked example is the sweep window:
-its bounds and its `engineered | sourced` provenance are values and live in
-`snapshot.json` under `arms[].window`; *how the window was chosen* is an argument and
-lives here in §11. When a fact feels like both, ask which half a checker could
-evaluate — that half is the value, the rest is the argument.
-
-**Fixed headings.** All seventeen headings below appear in every record, verbatim and
-in order. A missing fact is then a visibly missing heading rather than a judgement
-call. Addendum headings may follow §17.
-
-**The explicit-nil rule.** Every conditional obligation is discharged by content or by
-a stated nil that names the condition — "not applicable: `<axis>` is sensitivity-framed",
-"glue ledger: none — no adapter on this route", "single fingerprint, no cross-arm
-correlation needed". Silence discharges nothing.
-
-**Weight.** Sections are short and adaptive. Presence is what is mandatory, not length.
-
-**Placeholders.** Every `<...>` token is typed, not an example value. An unreplaced
-`<...>` in a committed record is a commit-blocking defect.
-
-**Immutability.** Once committed, this file is corrected by appending
-`## Addendum <YYYY-MM-DD>` at the end, never by editing prior text. An addendum may
-correct this record's *statement* of a fact; it may never alter `snapshot.json`,
-`indicators.json`, or anything under `results/`. A changed snapshot value is a
-different study and gets a new study id.
-
----
+# Study record — `20260903-priced-levers`
 
 ## 1. Study header
 
-- **Study id:** `<study-id: YYYYMMDD-goal-slug>`
-- **Package:** `<pkg>`
-- **Date executed:** `<YYYY-MM-DD>`
-- **Executor:** `<session or person>`
+- **Study id:** `20260903-priced-levers`
+- **Package:** `stellarator_tea` (`exploration/stellarator_e2e/pkg/stellarator_tea`)
+- **Date executed:** 2026-09-03
+- **Executor:** round agent, goal `priced-levers` round 1, task T-007
 - **Mode:** execute
-- **Arms:** `<arm ids, comma-separated — or: single arm>`
-
-Arms are variants of the same question, run to be compared. Two studies asking different
-questions of the same package are two records, not two arms of one.
+- **Arms:** `arm-fence-p50`, `arm-search-p110`, `arm-transect-jwp`
 
 ## 2. Intake
 
-The owner's goal and scope, in their own words, verbatim.
+The owner's goal and scope, in their own words, verbatim:
 
-> `<goal and scope, verbatim as given>`
+> "Run a committed study at pin 6262dbf4 for goal priced-levers round 1: three arms at p=50, p=110, and a j_wp transect, sweeping the new winding-pack sizing lever."
 
-`<anything the executor added to make the goal executable, marked as the executor's
-own and separated from the quote above>`
+and, on the round's question:
+
+> "run it"
+
+**Executor's own additions, kept separate from the quote.** The `T_i0` axis was **not** in the owner's three-arm description; it was added by the pre-execution framing critique (MAJOR 2) and is the change that most altered what this study found. The arm names, windows, and the decision to hold `B_max`, `sigma_allow`, `eps_cond_allow`, `R`+tie and `a` as traced declined axes are the executor's, under the goal's standing delegation ([OWNER-VERBATIM 2026-09-02] "no gates. USE YOUR BEST JUDGEMENT ALONG THE WAY!"). The goal-level question this study serves — "with the field lever priced, does a feasible operating point exist at the printed 50 MW installed heating, and what does it cost" — is the executor's phrasing of the round strategy, not the owner's words.
 
 ## 3. Objective and result
 
-- **LCOE objective channel(s):** `<qualified channel name(s)>`
-- **LCOE result:** `<value with units, and what point or region it belongs to>`
+- **LCOE objective channel(s):** `stellarator_09__stellaris__lcoe_calc__lcoe` (headline); `stellarator_09__stellaris__lcoe_1cfe_calc__lcoe` (comparison form)
+- **LCOE result:** **271.359 $/MWh**, the constrained optimum of `arm-search-p110`, at I_coil 15.20 MA, `j_wp` 130.0 A/mm², T_i0 18.00 keV, n_e0 4.554e20 (0.90×). `arm-fence-p50` has **no feasible point** and therefore no constrained optimum. The pinned baseline reproduces at 307.08712042841586 with `sustainment_ok` violated.
 
-`<one or two sentences: what the objective did over the studied space>`
+Over the studied space the objective ranges widely and is dominated by feasibility rather than by the swept magnet levers: across the 87 feasible points at 110 MW LCOE spans 271.359–463.230, while across the entire `j_wp` transect — a 2.33× swing in winding-pack cross-section — it spans only 365.206–365.572, a 0.100% range.
 
 ## 4. Constraint outcomes
 
-Every executing constraint, by qualified identity, with its status.
+Every executing constraint, by qualified identity, over all 439 executed points.
 
 | `constraint_id` | `source_local_identity` | Status | Note |
 |---|---|---|---|
-| `<qualified id>` | `<local identity>` | `<satisfied \| violated \| indeterminate>` | `<where and why, one line>` |
-
-A short display name is not a qualified identity. If the executed artifacts carry only
-the short name, the qualified identity was dropped on export and recovering it is part
-of this section, not optional.
+| `stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb` | `wall_load_ok` | mixed | violated **264 / 439** — the dominant fence in this machine; max observed wall load 9.474 against a 4.05 limit |
+| `stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5` | `peak_field_ok` | mixed | violated 144 / 439; the baseline sits at exact equality (24.90 vs 24.9) by the WI-035 design convention |
+| `stellarator_09__stellaris__sustainment_ok__77add152ed8eafce` | `sustainment_ok` | mixed | violated 132 / 439; violated at the pinned baseline (90.6 MW required vs 50 installed — the disclosed WI-037 state) |
+| `stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0` | `wp_stress_ok` | mixed | violated 32 / 439, only in `arm-fence-p50` at I ≥ 17 MA |
+| `stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b` | `recirc_ok` | mixed | violated 15 / 439 |
+| `stellarator_09__stellaris__beta_ok__82b78aad420730d5` | `beta_ok` | mixed | violated 3 / 439; max observed beta 0.0509 against a 0.050 limit — the window reaches the fence, unlike the pre-critique window which topped out at 0.036 |
+| `stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60` | `cond_strain_ok` | satisfied everywhere | **violated 0 / 439.** The conductor check WI-036 added is inert across the entire explored space; max observed strain 0.235% against a 0.400% limit |
+| `stellarator_09__stellaris__net_positive__484521d56c02667a` | `net_positive` | satisfied everywhere | violated 0 / 439 |
+| `stellarator_09__stellaris__tbr_ok__2cd198f674d413e4` | `tbr_ok` | satisfied everywhere | violated 0 / 439 — held-vs-held and structurally inert, unchanged since first recorded |
 
 ## 5. Framing
 
@@ -81,368 +50,202 @@ of this section, not optional.
 
 | Axis | Framing proposed | Why |
 |---|---|---|
-| `<axis>` | `<search \| sensitivity>` | `<one line>` |
+| `I_coil` | search | The field lever; since WI-036 it also sizes the winding pack, so it carries both magnet fences and the confinement chain. |
+| `j_wp` | search | The lever WI-036 minted; expected to trade pack cross-section against stress at a real cost. |
+| `T_i0` | search | Added by the pre-execution critique. Held at 14.63 keV in the first design, which produced a fence conclusion the dropped axis contradicts. |
+| `n_e0` | search | Operating-point lever; window widened past the first design's so it can reach the beta limit. |
+| `p_input+tie` | sensitivity | Two levels only (50, 110 MW), to separate the arms. Not searched. |
 
 **As judged after the run.**
 
 | Axis | Framing judged | Changed? | Why |
 |---|---|---|---|
-| `<axis>` | `<search \| sensitivity>` | `<yes \| no>` | `<what the result showed>` |
+| `I_coil` | search | no | A bounded feasible band exists at 110 MW (14.8–15.4 MA) with a constrained optimum inside it, and the p50 arm's emptiness is located rather than assumed. |
+| `j_wp` | **sensitivity** | **yes** | It reaches no feasible boundary anywhere: every transect point is feasible, and in the grids it never flips a verdict that another axis had not already flipped. It measures a response, not a boundary. |
+| `T_i0` | search | no | It moves the constrained optimum by 16.645 $/MWh and relocates which fence binds — the largest structural effect in the study. |
+| `n_e0` | search | no | It reaches `beta_ok` (3 violations at the window's top) and co-determines the wall-load fence. |
+| `p_input+tie` | sensitivity | no | Two levels; no boundary claim is made in `p_input`. |
 
 ## 6. Per-axis account
 
-One pair of subsections per axis. Both ship present; the `**Applies:**` line
-discharges the one the axis's framing does not owe.
+#### `I_coil` — feasible structure (search framing)
+**Applies:** yes
 
-#### `<axis>` — feasible structure (search framing)
-**Applies:** `<yes \| not applicable — this axis is sensitivity-framed>`
+At 110 MW the feasible band is **14.8 – 15.4 MA**, bounded below by `sustainment_ok` and above by `peak_field_ok`; the constrained optimum sits at 15.20 MA. At 50 MW no band exists: below ~15 MA the machine cannot sustain, and above ~15.4 MA `peak_field_ok` fails. The 0.2 MA step resolves the band, which the pre-critique 1.0 MA step could not have.
 
-`<which constraint is active, where the boundary sits, whether a constrained optimum
-was found and where>`
+#### `I_coil` — observed response (sensitivity framing)
+**Applies:** not applicable — this axis is search-framed.
 
-#### `<axis>` — observed response (sensitivity framing)
-**Applies:** `<yes \| not applicable — this axis is search-framed>`
+#### `j_wp` — feasible structure (search framing)
+**Applies:** not applicable — judged sensitivity after the run.
 
-`<the observed response; an explicit statement that no boundary claim is made; and,
-for any constraint that goes violated anywhere in the sweep, where in the swept space
-it does — locating a violation is a fact about the run, not a boundary claim>`
+#### `j_wp` — observed response (sensitivity framing)
+**Applies:** yes
+
+Over the transect (60 → 140 A/mm², a 2.33× swing in winding-pack cross-section): `wp_side` 0.50662 → 0.33166 m, cold volume **270.45 → 115.91 m³**, cryoplant electrical 1.20 → 0.81 MW, cryoplant capital **$20.98M → $16.00M**, winding-pack stress 461.9 → 705.5 MPa, conductor strain 0.154% → 0.235%. **Magnet capital is $5,401.0M at every point — a delta of exactly zero.** LCOE moves 365.572 → 365.206, a span of 0.366 $/MWh (0.100%).
+
+**No boundary claim is made in `j_wp`:** every transect point is feasible and no verdict flips along it. Where `wp_stress_ok` does go violated in the swept space is in `arm-fence-p50` at I ≥ 17 MA (32 points), which is a fact about where the violation lives, not a boundary in this axis.
+
+#### `T_i0` — feasible structure (search framing)
+**Applies:** yes
+
+The single largest structural effect in the study. At 110 MW the feasible T range is 14.63–18.00 keV and the optimum sits at the **top** of it: restricting to the predecessor's 14.63 keV slice raises the best feasible LCOE from 271.359 to **288.004**, so the temperature axis is worth **16.645 $/MWh**. At 50 MW it relocates which fence binds — see § 6 `n_e0` and § 15 finding #1.
+
+#### `T_i0` — observed response (sensitivity framing)
+**Applies:** not applicable — this axis is search-framed.
+
+#### `n_e0` — feasible structure (search framing)
+**Applies:** yes
+
+At 110 MW the feasible density band is 0.80–1.10× baseline. Above it `wall_load_ok` fails; at the very top of the swept window `beta_ok` fails (3 points, max beta 0.0509 against 0.050). Density and temperature together are what carry the machine into the wall-limited region at 50 MW.
+
+#### `n_e0` — observed response (sensitivity framing)
+**Applies:** not applicable — this axis is search-framed.
+
+#### `p_input+tie` — feasible structure (search framing)
+**Applies:** not applicable — this axis is sensitivity-framed.
+
+#### `p_input+tie` — observed response (sensitivity framing)
+**Applies:** yes
+
+Two levels only. At 50 MW: 0 of 240 feasible. At 110 MW: 87 of 192 feasible. **No boundary claim is made in `p_input`** — this study does not locate the sustainment flip in installed power; the predecessor `20260901-sustainment-fence` committed that at one grid step between 90 and 100 MW and this study neither refines nor contradicts it.
 
 ## 7. Axis groups
 
-Every declared qualified entry key, with its per-key provenance.
-
 | Axis | Entry key | Provenance | Note |
 |---|---|---|---|
-| `<axis>` | `<qualified entry key>` | `<fan_out \| tie>` | `<for a tie: the physical identity claimed and who declared it>` |
+| `I_coil` | `stellarator_09__stellaris__magnet__I_coil` | fan_out | |
+| `j_wp` | `stellarator_09__stellaris__magnet__j_wp` | fan_out | The WI-036 sizing lever that replaced the held `wp_side`. |
+| `T_i0` | `stellarator_09__stellaris__T_i0` | fan_out | `T_e0` rides the held 0.95 ratio inside the sustainment calc. |
+| `n_e0` | `stellarator_09__stellaris__n_e0` | fan_out | |
+| `p_input+tie` | `stellarator_09__stellaris__p_input` | fan_out | |
+| `p_input+tie` | `stellarator_09__stellaris__p_ecrh` | **tie** | Same installed ECRH power; declared by `20260901-sustainment-fence`, data in `manifest.json → ties`. |
+| `B_max` (declined) | `stellarator_09__stellaris__magnet__B_max` | fan_out | Traced, not swept — § 8. |
+| `sigma_allow` (declined) | `stellarator_09__stellaris__magnet__sigma_allow` | fan_out | Traced, not swept — § 8. |
+| `eps_cond_allow` (declined) | `stellarator_09__stellaris__magnet__eps_cond_allow` | fan_out | Traced, not swept — § 8. |
+| `R+tie` (declined) | `stellarator_09__stellaris__R` | fan_out | Traced, not swept — § 8. |
+| `R+tie` (declined) | `stellarator_09__stellaris__magnet__R0` | **tie** | Same physical major radius; ANNEX § Declared ties. |
+| `a` (declined) | `stellarator_09__stellaris__a` | fan_out | Traced, not swept — § 8. |
+
+Twelve declared keys across ten groups; all validated as package inputs at preflight.
 
 ## 8. Indicators and rulings
 
-Per proposed axis, including axes proposed and declined.
+Per proposed axis, including the five proposed and declined. Source: `indicators.json`, run over all ten groups (`subset: false`).
 
-| Axis | Indicator | Ruling | Note |
-|---|---|---|---|
-| `<axis>` | `<no_constraint_response \| constraints_reachable>` | `<the user's ruling, for no_constraint_response axes>` | `<incl. whether the axis was swept or declined, and why>` |
+| Axis | `no_constraint_response` | Constraints reachable | Objectives reachable | Modules fired | Ruling |
+|---|---|---|---|---|---|
+| `I_coil` | false | 8 / 9 | 10 / 11 | 68 | swept |
+| `R+tie` | false | 8 / 9 | 11 / 11 | 71 | **declined** — geometry belongs to the two prior fence studies; sweeping it would confound the winding-pack question with a machine-size one. Note it reaches `magnet_capital` only since WI-036. |
+| `a` | false | 5 / 9 | 10 / 11 | 59 | **declined** — same reason. |
+| `T_i0` | false | 5 / 9 | 8 / 11 | 55 | swept (added by critique MAJOR 2) |
+| `n_e0` | false | 5 / 9 | 8 / 11 | 55 | swept |
+| `j_wp` | false | 4 / 9 | 4 / 11 | 53 | swept |
+| `p_input+tie` | false | 3 / 9 | 4 / 11 | 48 | swept, two levels |
+| `B_max` | false | **1 / 9** | **0 / 11** | 2 | **declined** — see below |
+| `sigma_allow` | false | **1 / 9** | **0 / 11** | 2 | **declined** — see below |
+| `eps_cond_allow` | false | **1 / 9** | **0 / 11** | 2 | **declined** — see below |
 
-**Not derivable, disclosed in every record.** These are not decidable from the
-indicator run and no indicator output claims them: monotonicity of any channel in any
-axis; identity of the same physical quantity across differing key names; intra-module
-operand dependency. `constraints_reachable` is a *possible* path and never a statement
-that a constraint responds. `unresisted` is the agent's recorded judgment, never a
-tool output.
+**No axis reported `no_constraint_response`, so no owner ruling was owed under runbook step 4's fail-closed condition.**
 
-**Model-development findings.** Every `no_constraint_response` axis carries one, in
-addition to the user's ruling. The ruling does not discharge it.
+**The three fence-limit axes are traced evidence for their own declining.** `B_max`, `sigma_allow` and `eps_cond_allow` each reach exactly **one constraint and zero objectives**, firing two modules. That is the structural signature of a pure fence-relaxer: moving one relaxes a verdict and changes no cost anywhere. Sweeping any of them would manufacture feasible points that cost nothing — precisely the unpriced-lever defect goal `priced-levers` exists to remove. For `B_max` specifically, the consequence chain that would make it a priceable design option is WI-038's purpose and does not exist in this package.
 
-| Axis | What should push back and is not modeled | Finding id |
-|---|---|---|
-| `<axis>` | `<the missing constraint or coupling, stated as a model gap>` | `<study-id>#<n>` |
+**Model-development findings recorded alongside the rulings** (a ruling does not discharge a finding):
+
+- **MD-1.** `magnet__B_max` is a held literal with **no cost, mass, or stress consequence** — one inequality and nothing else. Every feasibility claim this study makes at the conductor ceiling is a claim about where that literal is set, not about physics. Home: WI-038.
+- **MD-2.** `j_wp` reaches no magnet capital: the winding pack's cross-section has no conductor-cost consequence, because conductor cost is ampere-metre-proportional. 85% of the pack (steel, insulation, copper, helium) has no cost home at all. Home: **unrouted** — see § 15 finding #2.
+- **MD-3.** `tbr_ok` remains held-vs-held and reaches no swept axis; unchanged since first recorded. Home: standing, rubric Row 2c.
 
 ## 9. Preflight results
 
-Every mechanical gate that ran, with its outcome. The identity and baseline gates
-read the documents the route-preparation step deposited in `results/`; name those
-files in the detail column so a cold reader can open what the gate read. A gate that did not run is stated as
-such with its condition.
+`results/preflight_results.json`. **All six gates ran; all six pass.**
 
 | Gate | Outcome | Detail |
 |---|---|---|
-| Declared-group key validation | `<pass \| fail \| did not run, with the condition>` | `<detail>` |
-| Suffix-sibling scan (warnings only) | `<pass \| warnings with count>` | `<the siblings found, or none>` |
-| Baseline gate against the pinned headline | `<pass \| fail>` | `<expected vs observed>` |
-| Manifest / package fingerprint match | `<pass \| fail>` | `<detail>` |
-| Package cleanliness | `<pass \| fail>` | `<detail>` |
+| `declared_keys` | pass | 12 declared keys across 10 groups, all package inputs |
+| `sibling_scan` | pass | no suffix-sibling findings (warnings only by contract; never gates) |
+| `identity` | pass | kind `sealed`, digest `cc64dc5a4d151cf7…` recomputed from 0 allowed-modified files and 0 declared sources |
+| `manifest_currency` | pass | both recorded package fingerprints match the package on disk |
+| `baseline_headline` | pass | headline reproduces at relative deviation 0.000e+00; **9/9** pinned verdicts match |
+| `package_clean` | pass | package tree byte-untouched (git clean) |
 
 ## 10. Execution route and why
 
-- **Route:** `<teax-study CLI \| study-local direct-API>`
-- **Why this route:** `<what about this study forced or allowed it>`
+**Route: study-local direct-API definition** (`study.py` + `study_route.py`, `StudyRunner` + `PreparedListStrategy`). Chosen because the arms are coordinated axis-group blocks — each proposal carries all four swept axes plus both declared ties plus every held key — which is not a plain Cartesian product over independent keys and so is outside the `teax-study` CLI's shape. The route was exercised at step 5 (identity + baseline emitted) and gated at step 6 before this rationale was written, so this is an account of a route already known to load.
 
-The rationale is recorded after the route was first exercised and gated, so it accounts
-for a route already known to load rather than predicting one.
-
-**Glue disclosure.** What the harness supplies that the model does not, and what that
-means for the claims. The ledger's entries are values and live in `snapshot.json`
-under `glue_ledger`; this is the argument about them.
-
-`<per rung: what it supplies, why the model cannot, and which claims it scopes — or:
-glue ledger: none. No adapter on this route, so nothing is harness-supplied.>`
+**Glue ledger: none.** `results/package_identity.json` records `kind: sealed`, zero allowed-modified files and zero adapter sources. The harness supplies no value the model does not compute.
 
 ## 11. Study definition and window provenance
 
-`<how the window was chosen: what was scanned, with what, and what the scan showed
-that fixed these bounds. The bounds themselves and their engineered|sourced
-provenance are snapshot values under arms[].window — do not restate them here.>`
+**Window provenance: `engineered`** — fixed after an oracle scan, not before, and the scan is committed at `results/window_scan.json`.
 
-`<if engineered: state plainly that the window is engineered and what claims that
-costs. If sourced: name the source.>`
+**The scan, and its own history.** A first scan covered `I_coil` × `j_wp` at two heating levels and held `n_e0` and `T_i0` at baseline; the windows were nonetheless described as scan-derived across all axes. The pre-execution critique caught both that misstatement (MAJOR 3) and its consequence (MAJOR 2). The committed scan is the **second**: 6144 candidates over `I_coil` × `j_wp` × `T_i0` × `n_e0` at both heating levels, 8 oracle errors, covering every axis the study claims to search.
+
+What the scan fixed: at 50 MW the feasible set is empty (0/3072) with 70 candidates blocked by the conductor ceiling alone and 40 by wall load alone — **both fences bind independently**, which is why the p50 arm samples both regions. At 110 MW, 28 feasible candidates in a band at I = 15.0 MA (0.5 MA scan resolution), T 14.63–17, n 0.8–1.1×; the executed arm refines I to 0.2 MA over that band. The density window was widened until beta reached 0.0906 in the scan against a 0.050 limit, so `beta_ok` is testable — the pre-critique window topped out at 0.036 and could not have tested it.
+
+**Executed windows.** `I_P50` = 15.0/15.4/16/17/18 MA; `I_P110` = 14.8/15.0/15.2/15.4 MA; `J_VALUES` = 90 / 118.8271604938272 / 130 A/mm²; `T_P50` = 14.63/17/18/19 keV; `T_P110` = 14.63/16/17/18 keV; `NE_P50` = 1.0/1.1/1.2/1.4×; `NE_P110` = 0.8/0.9/1.0/1.1×; `J_TRANSECT` = 60/70/80/100/110/120/140 A/mm², chosen disjoint from `J_VALUES` so no transect point can be attributed to a grid arm.
+
+**Validity mask:** the evaluability pre-screen (oracle `p_net > 0`, the `20260829-p-pump-fence` pattern) ran over all 439 proposals and **excluded none** — `results/excluded_points.csv` is empty of rows. The predecessor excluded 10 on the same screen; this study's windows do not reach the negative-net region.
+
+**Arms are tagged at construction**, not inferred from values afterwards. The first design inferred the arm by value-matching and mislabelled three transect points into a grid arm, carrying an off-window current column — the one sitting exactly on the conductor ceiling (critique MINOR 5).
 
 ## 12. Cross-fingerprint correlation and what it means
 
-`<when the arms span fingerprints: which boundary was crossed; that constraints were
-matched by definition qualified name plus local identity; every predicate_ir
-difference, disclosed; and what the correlation licenses and does not license. The
-compatibility tuples themselves are snapshot values under stores[]. When they do not
-span fingerprints, discharge the nil by naming the condition: "single fingerprint — no
-cross-arm correlation needed".>`
+**Semantic fingerprint `3cb690aab05e…`; executable fingerprint `cc64dc5a4d15…`; indicator-input pin `6262dbf42c70…`.** All three are recorded in `snapshot.json` and were verified against the package at preflight.
+
+**A semantic boundary crosses between this record and `20260901-sustainment-fence`, and it is load-bearing for one number this record reports.** WI-036 added a ninth constraint (`cond_strain_ok`), retired two entry points (`wp_side`, `c_coil`), and added six (`j_wp`, `f_wp_vol`, `k_coil`, `E_wp`, `f_cond`, `eps_cond_allow`), moving the entry-point census 193 → 197.
+
+What the comparison to the predecessor's committed optimum of **293.468 $/MWh** licenses, and what it does not:
+
+- **Licensed:** an LCOE comparison at a shared operating point, because the pinned baseline headline is unchanged across the boundary (307.08712042841586, reproducing at relative deviation 0.000e+00). On that basis this study's best feasible point at the predecessor's own T = 14.63 keV slice is **288.004**, and its best overall is **271.359**.
+- **Not licensed:** any feasibility-structure comparison. The constraint set changed, so "how many points were feasible" is not comparable across the boundary, and neither is any statement about which fence bound in the predecessor versus here.
+- **Not licensed:** attributing the 271.359 − 293.468 gap to WI-036. The dominant term is the **temperature axis** (worth 16.645 $/MWh by this study's own measurement), which the predecessor swept only as a transect at baseline current and density and never inside its feasible grid.
 
 ## 13. Verification
 
-`<the outcome: what passed, what did not, and what the result licenses. The command,
-sampling scheme, tolerance, and summary digest are snapshot values under
-arms[].verification — do not restate them here.>`
+`results/verification_summary.json`. **Outcome: pass.** 1 store, **15 sampled rows** stratified by verdict combination so the sample cannot miss a produced verdict, **13 channels** compared against the package-owned oracle at relative deviation < 1e-9 with **worst observed 2.74e-16**, and **9 verdicts re-derived** from the oracle's own operands rather than compared to themselves.
 
-`<what verification did not cover, named. A value that is identical by construction on
-both sides is not independently verified, and saying so here is part of the outcome.>`
+**What verification did not cover, stated as part of the outcome:**
+
+- The six `sustain__*` sustainment quantities and the `pb__*` power-balance quantities are fields of multi-field modules and cannot reach the evidence store (ANNEX § Oracle; `20260901-sustainment-fence#3`). They are exported oracle-side in `results/oracle_operands.csv` and are **oracle-derived on both sides** — consistent with the verified verdicts, but not independently verified numbers.
+- `aux_cooling__cryo_cost` is in the same class and is likewise oracle-side only. This was discovered by executing: the first execution declared it as a store channel and it came back as an empty column across all 439 rows. The column was moved to the oracle export and the study re-executed rather than leaving a blank or inventing a value — see § 15 finding #4.
+- `p_fus` sits outside generic channel coverage, as in every prior record on this package.
 
 ## 14. Review outcomes
 
-Each named lens, its verdict, and its disposition. The pre-execution framing critique
-is one of them.
-
 | Lens | Verdict | Disposition |
 |---|---|---|
-| `<lens name, e.g. pre-execution framing critique>` | `<what it found>` | `<what was done about it>` |
+| **Pre-execution framing critique** (fresh non-author session, before any point ran) | **MAJOR** — 3 major, 5 minor | **All eight accepted.** Both major findings were independently reproduced by the executor before dispositioning. Full text: `work/orchestration/goals/priced-levers/evidence/T-007_precritique.md`; spawn prompt deposited at `T-007_precritique_prompt.md`. The critique added the `T_i0` axis, re-scoped the p50 arm from search to fence anatomy, forced the scan to cover all four axes, widened the density window until it could test `beta_ok`, refined the current step to resolve the band, forced arms to be tagged at construction, and required this record's § 12 boundary treatment. |
+| Correctness | pass | Preflight 6/6; verification pass at worst 2.74e-16; the pinned baseline reproduces exactly with 9/9 verdicts. |
+| Honesty | findings, all dispositioned | The first study framing claimed the transect priced the winding pack; the WI-036 design's own D8 had already disclosed that the pack's non-conductor mass has no cost home. The framing was corrected before execution and the contradiction is recorded as § 15 finding #2 rather than quietly repaired. |
+| Readability | pass | Every number in §§ 3–6 traces to `results/points.csv`, `results/oracle_operands.csv`, or `results/window_scan.json`. |
 
 ## 15. Findings
 
-Each finding gets an id used verbatim in `DISCOVERY_LOG.md` as `<study-id>#<n>`.
-
-| Id | Kind | Finding | Disposition | Home |
+| id | kind | finding | disposition | home |
 |---|---|---|---|---|
-| `<study-id>#<n>` | `<model \| process>` | `<one line>` | `<one line>` | `<home, or unrouted>` |
-
-**Homes a finding may route to:** tool, runbook step, policy rule, skill, modeling
-item, research round, documented seam. `unrouted` is a stated state, not a blank.
+| `20260903-priced-levers#1` | `model` | **At the printed 50 MW the machine can sustain itself and stay under the conductor ceiling — and then the first wall cannot take it.** 27 of 240 points are blocked by `wall_load_ok` **alone**: at I = 15.4 MA, T = 17–18 keV, n = 1.2×, required sustained heating is 26.3–36.3 MW against 50 installed (satisfied, with margin) and B_peak is 24.90 T against the 24.9 T ceiling (satisfied), while wall load reads 5.76–6.46 against a 4.05 limit. Only 6 points are blocked by the ceiling alone. The deadlock at the printed power is **sustainment against neutron wall load**, and no conductor grade touches it. | first-order reading; pre-registered as a fence-anatomy result, not as a search outcome | goal `priced-levers` round result; candidate follow-on a wall-load / machine-size item |
+| `20260903-priced-levers#2` | `model` | **The winding-pack sizing lever is real physics and almost no economics.** Over a 2.33× swing in pack cross-section, cold volume moves 270.45 → 115.91 m³ and cryoplant capital $20.98M → $16.00M, while **magnet capital is unchanged at $5,401.0M — a delta of exactly zero** — and LCOE moves 0.100%. Conductor cost is ampere-metre-proportional and blind to cross-section; the pack's ~85% non-conductor mass (steel, insulation, copper, helium) has no cost home in the model. The stress relief that made an 18 MA point legal costs 0.026 $/MWh. | disclosed at the claim site; the WI-036 design D8 disclosed the cause and this study measures the consequence | **unrouted** — a stated state; candidate home a WI-036 follow-on giving winding-pack mass a cost account |
+| `20260903-priced-levers#3` | `model` | **`cond_strain_ok` is inert across the entire explored space** — violated 0 / 439, max observed strain 0.235% against a 0.400% limit, never binding before `wp_stress_ok` or `peak_field_ok`. The conductor check WI-036 added to close a real two-check gap does not change any verdict in this study's windows. It is reachable from both field levers (so it is not structurally dead like `tbr_ok`), and it would bind at a 0.2% limit, which is the value other projects enforce and which this model holds settable. | disclosed; the limit remains settable and a sensitivity in it is named future work | goal `priced-levers` round result; standing at WI-036 |
+| `20260903-priced-levers#4` | `process` | **A declared store channel came back empty across all 439 rows.** `aux_cooling__cryo_cost` is a field of a multi-field module, the documented `pb__*` limitation, and the study declared it as a store channel on the first execution. Caught by inspecting the exported CSV, not by any gate — the store accepted the declaration and produced a blank column silently. | column moved to the oracle-side export and the study re-executed; the blank was not left and no value was invented | documented seam, ANNEX § Oracle; joins `20260901-sustainment-fence#3` |
+| `20260903-priced-levers#5` | `model` | **The temperature axis is worth 16.645 $/MWh at the feasible optimum** — restricting to the predecessor's held 14.63 keV slice raises the best feasible LCOE from 271.359 to 288.004, and the optimum sits at the top of the swept T range. The predecessor swept T only as a transect at baseline current and density, never inside its feasible grid, so this lever's value was not visible to it. | disclosed at the claim site with the § 12 boundary caveat | goal `priced-levers` round result |
 
 ## 16. Snapshot
 
-- **File:** `snapshot.json`
-- **sha256:** `<digest>`
-- **Schema version:** `<snapshot_schema_version>`
+`snapshot.json`, resolved at this commit. Its own sha256 is **`838ec6a90fb7965739435bd99312238cf28f7db95424f3e66c5be49ce074c261`**. Nothing in this record cites a live file for content: deleting or editing the manifest or the package cannot change what this record says.
 
-No snapshot content is restated here.
+Carried in it: the three package fingerprints and the sealed executable fingerprint; the manifest digest with the tie and baseline content actually used; per-arm windows with their `engineered` provenance and the scan they were fixed from; digests for all eight `results/` artifacts plus `indicators.json`, `axes.json`, `study.py` and `scan.py`; the preflight outcome; the counts (439 proposed, 439 evaluated, 0 excluded, 94 feasible — 87 in `arm-search-p110`, 7 in `arm-transect-jwp`, **0 in `arm-fence-p50`**); and the teax revision `744745f8…`.
+
+**The per-point store is uncommitted** (`_work/`, gitignored by the studies convention). Every value this record cites is in `results/points.csv` or `results/oracle_operands.csv`, both digested above.
 
 ## 17. What this record does not contain
 
-`<every fact a reader might expect and will not find, stated rather than left to
-inference. Gaps in the record itself only — the glue disclosure belongs in §10 and a
-framing-conditional nil belongs in §6.>`
-
----
-
-**END OF RECORD**
-
----
-
-# Template guidance (not copied into the record)
-
-### Appendix: `snapshot.json` shape
-
-`snapshot.json` sits beside `record.md` in the record directory and holds resolved
-values only. It is written once, at record commit, from values resolved at execution
-time — never by citing a live file. Deleting or editing the manifest, the adapter, or
-the package cannot change what a committed snapshot says.
-
-**Scoping rule.** Any field that can differ between arms is arm-scoped, under `arms[]`.
-Only genuinely study-wide facts stay top-level. A single-arm study is the one-element
-case of this shape, not a different shape. A store's compatibility tuple is stated once
-in `stores[]` and referenced by `store_id`, so two arms sharing a store cannot drift.
-
-Field names marked **(Item 3)** are copied from
-`.project/completed/20260821_run-study-indicators/design.md` and are not this contract's to rename.
-
-```jsonc
-{
-  "snapshot_schema_version": "1",
-  "study_id": "<YYYYMMDD>-<goal-slug>",
-
-  "package": {
-    "path": "<repo-relative POSIX>",          // (Item 3) manifest package.path
-    "package_name": "<contracts/package_contract.json package_name>",   // (Item 3)
-    "repo_commit": "<sha at execution>",
-    "git_clean": true                          // the package cleanliness gate's result
-  },
-
-  // Every fingerprint the manifest declares, keyed by the dotted path that names it
-  // inside the manifest's `fingerprints` block. The set is open above the floor.
-  "fingerprints": {
-    "indicator_inputs": {                      // (Item 3) fingerprints.indicator_inputs
-      "recipe": "indicator-input-fingerprint/v1",                       // (Item 3)
-      "digest": "<sha256>",
-      // `files` uses the REPORT's {path, sha256} object shape (study-indicators/v1),
-      // copied here under the manifest's dotted name — the manifest itself stores files
-      // as a flat path list; the snapshot keeps the richer per-file digest shape.
-      "files": [ { "path": "<repo-relative POSIX>", "sha256": "<sha256>" } ]
-    },
-    "recorded_provenance.executable_fingerprint": "<sealed>",           // (Item 3)
-    "recorded_provenance.semantic_fingerprint": "<model contract>"      // (Item 3)
-  },
-
-  "manifest": {
-    "path": "<repo-relative POSIX>",           // (Item 3) report manifest.path
-    "schema_version": "study-package-manifest/v1",                      // (Item 3)
-    "digest": "<sha256 of manifest bytes>",    // (Item 3) report manifest.digest
-
-    // The manifest content actually used, copied in. Nothing here is resolved by
-    // reading the live manifest at read time.
-    "content_used": {
-      "fingerprint_names": [ "indicator_inputs",
-                             "recorded_provenance.executable_fingerprint",
-                             "recorded_provenance.semantic_fingerprint" ],
-      "ties": [ { "key": "<qualified key>",                             // (Item 3)
-                  "rides_with": [ "<qualified key>" ],
-                  "note": "<who declared the physical identity, and on what grounds>" } ],
-      "objective_catalog": [ { "name": "<objective name>",              // (Item 3)
-                               "channel": "<qualified channel>",
-                               "note": "<...>" } ],
-      "baseline": { "point": { "<qualified key>": 0 },                  // (Item 3)
-                    "headline": { "channel": "<qualified channel>", "value": 0 },
-                    "verdicts": [ { "source_local_identity": "<local identity>",
-                                    "expected": "<satisfied | violated>" } ] },
-      "oracle": { "kind": "python_callable",                            // (Item 3)
-                  "module": "<module>", "callable": "<callable>",
-                  "note": "<how it is parameterized>",
-                  // Resolved at snapshot time over the oracle's own source files, the
-                  // same recipe as tools[]. Names WHICH oracle verified this study;
-                  // the manifest carries no digest (gap G1, run-study-cold-pickup).
-                  // `files` is part of the shape: the digest is over a named list,
-                  // and the list is what says which sources it covers.
-                  "source_digest": { "recipe": "tool-source-digest/v1",
-                                     "digest": "<sha256>",
-                                     "files": [ { "path": "<repo-relative POSIX>",
-                                                  "sha256": "<sha256>" } ] } }
-    }
-  },
-
-  "stores": [
-    { "store_id": "<stable id, referenced by arms[]>",
-      "path": "<repo-relative POSIX>",
-      "compatibility_tuple": { "<the complete teax tuple, every field>": "<value>" } }
-  ],
-
-  "arms": [
-    { "arm_id": "arm-<slug>",
-      "store_id": "<resolves into stores[]>",
-
-      "effective_executable_fingerprint": {
-        "value": "<sha256>",
-        "inputs": { "sealed_fingerprint": "<sealed>",
-                    "allowed_modified_files": [ { "path": "<repo-relative POSIX>",
-                                                  "sha256": "<sha256>" } ],
-                    "adapter_source_digest": "<sha256>" }
-      },
-      // ...or the explicit nil, when no adapter exists:
-      // "effective_executable_fingerprint": {
-      //   "value": "<sealed>", "inputs": null,
-      //   "no_adapter": true,
-      //   "note": "no adapter exists; the sealed fingerprint is the identity" },
-
-      "entry_models": { "<the complete map, as the study definition carried it>": "<...>" },
-      "strategy": "<strategy identity as the study definition carried it>",
-
-      "window": {
-        "bounds": { "<axis>": { "<the swept values or their generating rule>": "<...>" } },
-        "provenance": "<engineered | sourced>"
-        // How it was chosen is an argument and lives in record.md §11.
-      },
-
-      "verification": {
-        "command": "<the command as run>",
-        "tool_revision": "<revision or source digest of the verification tool>",
-        "sampling_scheme": "<how rows were sampled>",
-        "tolerance": "<numeric tolerance and the channels it applies to>",
-        "summary_sha256": "<sha256 of results/verification_summary.json>"
-        // The outcome and what it licenses live in record.md §13.
-      },
-
-      "glue_ledger": [ { "rung": "<id>",
-                         "supplies": "<what the harness supplies>",
-                         "keys": [ "<qualified key>" ],
-                         "why_the_model_cannot": "<...>" } ],
-      // ...or, for an arm with no glue:
-      // "glue_ledger": [], "glue_ledger_none": true,
-
-      "artifacts": [ { "path": "results/<file>", "sha256": "<sha256>" } ]
-    }
-  ],
-
-  "tools": [
-    { "path": "scripts/study/<tool>.py",       // (Item 3) report tool.path
-      "source_digest": { "recipe": "tool-source-digest/v1",             // (Item 3) name
-                         "digest": "<sha256>",
-                         "files": [ { "path": "<repo-relative POSIX>",
-                                      "sha256": "<sha256>" } ] } }
-  ],
-
-  "teax": { "revision": "<revision as run>",
-            "era_pin": "<the era pin and its worktree path, or null when none>" },
-
-  "indicators": {
-    "path": "indicators.json",                 // inside the record directory
-    "sha256": "<sha256>",
-    "output_schema_version": "study-indicators/v1",                     // (Item 3)
-    "axis_declaration": { "path": "<repo-relative POSIX>",              // (Item 3)
-                          "schema_version": "study-axis-declaration/v1",
-                          "digest": "<sha256 of file bytes>",
-                          "groups_declared": [ "<axis>" ],
-                          "subset": false }
-  }
-}
-```
-
-#### The rules that govern it
-
-**1. Fingerprint completeness is checkable from inside the record.**
-`manifest.content_used.fingerprint_names` lists the fingerprint names the manifest
-declared, and the rule is internal: *every name listed there appears as a key under
-`fingerprints`*. An administrator audits completeness without opening the live
-manifest — which it may not do.
-
-The names are **derived at snapshot time** by flattening the manifest's `fingerprints`
-block to dotted paths, one name per fingerprint value. For the schema as Item 3
-accepts it that is exactly three: `indicator_inputs`,
-`recorded_provenance.executable_fingerprint`, and
-`recorded_provenance.semantic_fingerprint`. The `fingerprints` map above is keyed by
-those same dotted paths, so the check is a set comparison. The manifest itself carries
-no flat names list and needs no change to support this. (Settled by orchestrator ruling
-2026-08-19; the plan raised it as an open seam.)
-
-**The floor holds independently of what the manifest declares.** Three fingerprints are
-present in every snapshot:
-
-| Spec floor fingerprint | Snapshot key |
-|---|---|
-| sealed package fingerprint | `fingerprints["recorded_provenance.executable_fingerprint"]` |
-| model-contract / semantic fingerprint | `fingerprints["recorded_provenance.semantic_fingerprint"]` |
-| indicator-input fingerprint | `fingerprints["indicator_inputs"]` |
-
-The set stays open above that floor: a manifest that grows a fourth fingerprint lands
-in `fingerprints` and in `fingerprint_names` without this template being revised.
-
-**2. `arms[].effective_executable_fingerprint` carries its three inputs or its explicit
-nil.** The three inputs are the sealed fingerprint, the digest of each allowed-modified
-file, and the adapter source digest. When no adapter exists, the nil form states so and
-records that the sealed fingerprint is the identity. A bare value with neither is a
-defective snapshot.
-
-**3. Stores are named once and referenced by id.** `stores[]` holds one entry per
-complete teax compatibility tuple; each arm names its `store_id`. Two arms sharing a
-store reference the same entry, so the tuple is stated once and cannot drift between
-arms. Every `arms[].store_id` must resolve into `stores[]`.
-
-**4. `arms[].verification` is the values half only.** Command, tool revision, sampling
-scheme, tolerance, and the digest of `results/verification_summary.json` live here. The
-outcome, what it licenses, and what it did not cover live in `record.md` §13. Neither
-restates the other.
-
-**5. The glue ledger is arm-scoped, and an arm with no glue states it.** `glue_ledger`
-is a list; an arm with no glue carries `[]` together with a `glue_ledger_none: true`
-sibling, because an empty list and a forgotten field look identical in JSON. Glue is
-arm-scoped rather than study-wide because a sealed-versus-adapter A/B differs in
-exactly this field, and that difference is what the comparison is about. The
-interpretive half — what each rung means for the claims — lives in `record.md` §10.
-
-**6. `indicators.axis_declaration.subset` is `false` in any record-feeding run.** Item 3
-sets `subset: true` when the indicator run was narrowed with `--group`, which is a
-debugging aid. A snapshot carrying `subset: true` is a defective record: the study
-declared axes the indicator run did not trace.
+- **No claim that the conductor ceiling is irrelevant at 50 MW.** It appears in 144 of 439 verdicts and blocks 6 points alone. Finding #1 says the wall load is the *more common sole* blocker and that a conductor grade cannot fix the wall-limited region — not that the ceiling does not bind.
+- **No priced conductor-grade option.** `B_max` was held and is a free lever in this package (§ 8, MD-1). Every feasibility statement at the ceiling is a statement about where that literal is set.
+- **No geometry claim.** `R` and `a` were declined. The wall-load finding is about *this* machine at *this* size; wall area scales with machine size and this study did not sweep it. That is the most obvious next question and this record does not answer it.
+- **No sustainment-fact or conductor-fact sensitivity.** `f_ren`, `E_wp`, `f_cond`, `eps_cond_allow`, `k_sigma`, `f_wp_vol` and `k_coil` are held sourced values. An `f_ren` arm would materially move the sustainment threshold, and an `eps_cond_allow` arm at 0.2% would make finding #3's inert constraint bind. Neither was run.
+- **No boundary in `p_input`.** Two levels only; the sustainment flip in installed power stands where `20260901-sustainment-fence` committed it.
+- **No feasibility comparison across the WI-036 semantic boundary** (§ 12). The 271.359 vs 293.468 comparison is licensed for LCOE at a shared point and for nothing else.
+- **No independent verification of the sustainment, power-balance or cryo-cost quantities** (§ 13) — oracle-derived on both sides.
+- **No statement about T_i0 below 14.63 keV or above 19 keV**, nor about densities below 0.8× or above 1.4×. The windows are `engineered` and the structure inside them is not a claim about the frame's rightness.
+- **The teax revision that executed this run** is `744745f895677f3344b9884627369a6a47ed987f`, recorded in the integration return this pin came from; the study's own `verification_summary.json` records `teax.revision` as unrecorded, the same gap the predecessor record carries.
