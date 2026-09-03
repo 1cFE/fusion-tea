@@ -75,6 +75,11 @@ def constraint_pred_definition_mfe_viability__winding_pack_stress_limit(sigma_in
     value = _cmp('<=', sigma_in, sigma_allow_in)
     return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((sigma_allow_in - sigma_in)) if (_fin(sigma_in) and _fin(sigma_allow_in)) else None))
 
+# definition:mfe_viability::'Conductor Strain Limit'
+def constraint_pred_definition_mfe_viability__conductor_strain_limit(eps_cond, eps_cond_allow_in):
+    value = _cmp('<=', eps_cond, eps_cond_allow_in)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((eps_cond_allow_in - eps_cond)) if (_fin(eps_cond) and _fin(eps_cond_allow_in)) else None))
+
 # definition:mfe_viability::'Economic Recirculating Threshold'
 def constraint_pred_definition_mfe_viability__economic_recirculating_threshold(rec_frac, threshold):
     value = _cmp('<=', rec_frac, threshold)

@@ -19,6 +19,22 @@
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::wp_stress_ok"
       },
       {
+        "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "declaration_id": "08bee78c-2ca8-55c7-947d-ff86c73748b1",
+        "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+        "evaluation_channel": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "stellarator_09__stellaris",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"eps_cond\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"eps_cond\",\"qualified_name\":\"mfe_viability::'Conductor Strain Limit'::eps_cond\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"eps_cond_allow_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"eps_cond_allow_in\",\"qualified_name\":\"mfe_viability::'Conductor Strain Limit'::eps_cond_allow_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"<=\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Conductor Strain Limit'",
+        "source_form": "definition_typed",
+        "source_local_identity": "cond_strain_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::cond_strain_ok"
+      },
+      {
         "constraint_id": "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b",
         "declaration_id": "0bfb80d1-59cb-5933-9bb7-06c3804ccf00",
         "definition_qualified_name": "mfe_viability::'Economic Recirculating Threshold'",
@@ -132,7 +148,7 @@
       }
     ],
     "excluded_records": [],
-    "fingerprint": "cd7b93906028a80c7a3bf30e9c7cf07e8006bc6bf07af1729859e60cf95b109c",
+    "fingerprint": "997b44c233e131784c3efc8f1700673bdd6bbe93866a33fb12beeaeb3de79809",
     "source_records": [
       {
         "definition_qualified_name": "mfe_viability::'Beta Limit'",
@@ -146,6 +162,13 @@
         "formal_names": [
           "B_max_in",
           "B_peak"
+        ]
+      },
+      {
+        "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+        "formal_names": [
+          "eps_cond",
+          "eps_cond_allow_in"
         ]
       },
       {
@@ -208,6 +231,24 @@
         "source_form": "definition_typed",
         "source_local_identity": "wp_stress_ok",
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::wp_stress_ok"
+      },
+      {
+        "declaration_id": "08bee78c-2ca8-55c7-947d-ff86c73748b1",
+        "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+        "disposition_detail": "mfe_plant::'MFE Power Plant'::cond_strain_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_def",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "source_form": "definition_typed",
+        "source_local_identity": "cond_strain_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::cond_strain_ok"
       },
       {
         "declaration_id": "0bfb80d1-59cb-5933-9bb7-06c3804ccf00",
@@ -340,12 +381,17 @@
   "evaluation_semantics": "kleene-three-valued",
   "outputs": [
     {
+      "channel_name": "stellarator_09__stellaris__wp_sizing__wp_side",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__magnet_structure_cost__cost",
       "field_name": "root",
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__cryo_elec__p_elec",
+      "channel_name": "stellarator_09__stellaris__coil_length__c_coil",
       "field_name": "root",
       "python_type": "float"
     },
@@ -406,6 +452,11 @@
     },
     {
       "channel_name": "stellarator_09__stellaris__wp_stress__sigma_wp",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cond_strain__eps_cond",
       "field_name": "root",
       "python_type": "float"
     },
@@ -490,6 +541,31 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__beta_calc__beta",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__wall_load_calc__wall_load",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_calc__annual_fuel",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__wp_volume__vol_cold_total",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cryo_elec__p_elec",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__pb__p_the",
       "field_name": "p_the",
       "python_type": "float"
@@ -550,11 +626,6 @@
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__beta_calc__beta",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
       "channel_name": "stellarator_09__stellaris__heat_rejection_cost__cost",
       "field_name": "root",
       "python_type": "float"
@@ -586,11 +657,6 @@
     },
     {
       "channel_name": "stellarator_09__stellaris__buildings_cost__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__wall_load_calc__wall_load",
       "field_name": "root",
       "python_type": "float"
     },
@@ -646,11 +712,6 @@
     },
     {
       "channel_name": "stellarator_09__stellaris__waste__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__fuel_calc__annual_fuel",
       "field_name": "root",
       "python_type": "float"
     },
@@ -781,6 +842,11 @@
     },
     {
       "channel_name": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
     },
@@ -1737,6 +1803,13 @@
       "qualified_name": "stellarator_09__stellaris__magnet__B_max"
     },
     {
+      "default_value": 200000000000.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__E_wp"
+    },
+    {
       "default_value": 78.95683520871486,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -1758,13 +1831,6 @@
       "qualified_name": "stellarator_09__stellaris__magnet__R0"
     },
     {
-      "default_value": 25.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__c_coil"
-    },
-    {
       "default_value": 5.87,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -1777,6 +1843,20 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__magnet__cost_per_kAm"
+    },
+    {
+      "default_value": 0.004,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__eps_cond_allow"
+    },
+    {
+      "default_value": 0.6666666666666666,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__f_cond"
     },
     {
       "default_value": 0.8701298701298701,
@@ -1798,6 +1878,27 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__magnet__f_wp_fab"
+    },
+    {
+      "default_value": 0.8780864197530865,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__f_wp_vol"
+    },
+    {
+      "default_value": 118.8271604938272,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__j_wp"
+    },
+    {
+      "default_value": 1.968503937007874,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__k_coil"
     },
     {
       "default_value": 0.7731331164622419,
@@ -1847,13 +1948,6 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__magnet__steel_price"
-    },
-    {
-      "default_value": 0.36,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__wp_side"
     },
     {
       "default_value": 1.6021766339999998e-13,
@@ -2157,7 +2251,7 @@
       "qualified_name": "stellarator_09__stellaris__vessel_t"
     },
     {
-      "default_value": 136.56,
+      "default_value": 0.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
@@ -2178,5 +2272,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "5b9abdfce2e086b6f5408a067ac15f2f264bee505cae4204a25b82f5e036baa4"
+  "semantic_fingerprint": "3cb690aab05ee11eff2f8832d968b9c3bd64be2ec768d4130dee19fc30cd2059"
 }

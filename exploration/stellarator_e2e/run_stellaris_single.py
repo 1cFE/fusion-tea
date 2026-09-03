@@ -45,7 +45,7 @@ EXPECTED_VERDICTS = {
     "sustainment_ok": "violated",
 }
 EXPECTED_HEADLINE = "violation"
-EXPECTED_VERDICT_COUNT = 8
+EXPECTED_VERDICT_COUNT = 9   # WI-036 added cond_strain_ok (was 8)
 
 
 def _execute_package():
@@ -125,7 +125,7 @@ def _anchor_gate(values: dict[str, float]) -> bool:
 def _assert_generated_verdicts(outputs) -> None:
     """The model's eight design-point verdicts remain a separate assertion gate."""
     report = outputs["constraint_report"]
-    print("=== EIGHT VERDICTS (generated ConstraintReport) ===")
+    print("=== NINE VERDICTS (generated ConstraintReport) ===")
     verdicts = {}
     for channel, value in outputs.items():
         if channel.endswith("__evaluation") and hasattr(value, "status"):
@@ -148,7 +148,7 @@ def _assert_generated_verdicts(outputs) -> None:
     print(
         "VERDICT PARITY: PASS -- "
         f"headline={report.headline}, assessed_entry_count={report.assessed_entry_count}, "
-        "seven satisfied + sustainment_ok violated (expected, WI-037)"
+        "eight satisfied + sustainment_ok violated (expected, WI-037)"
     )
 
 

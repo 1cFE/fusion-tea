@@ -120,6 +120,55 @@ package mfe_viability {
         B_peak <= B_max_in
     }
 
+    constraint def 'Conductor Strain Limit' {
+        doc /*
+        Conductor bound (WI-036): the strain in the HTS tape stack must not
+        exceed the conductor's strain limit. This is a SECOND check, distinct
+        from 'Winding Pack Stress Limit', because the structure and the
+        conductor fail in different ways at different limits -- every surveyed
+        HTS fusion design, including the Stellaris source itself, performs
+        both, and this model previously performed only the structural one.
+        REBCO is brittle and its performance is governed by strain.
+
+        Pair with 'Conductor Strain' (mfe_magnet_field), which forward-computes
+        the operand from the winding-pack stress, the pack's effective modulus,
+        and a sourced load-sharing factor -- a computed operand against a held
+        sourced limit.
+
+        The limit is bound per instance and is settable, because the band
+        practitioners enforce spans 0.2% to 0.4%: measurements show no
+        discernible strain effect below 0.4%, while the weakest measured
+        commercial tape reaches its irreversible limit at 0.45%, and some
+        projects choose 0.2% for margin.
+
+        NAMED GAP, declared rather than valued (MR-WI036-7): REBCO's mechanical
+        limit is strongly anisotropic and this constraint covers only the axial
+        direction. Through-thickness tension delaminates the tape stack at
+        about 3.6 MPa -- two orders of magnitude below the axial limit -- and
+        transverse compression is limited to roughly 200 MPa on bare tape.
+        This model computes no through-thickness or transverse stress, so it
+        asserts no such constraint and must not be read as checking one.
+
+        **Source**: knowledge/sources/electro_mechanical_properties_of_rebco_coated_conductors/;
+            knowledge/sources/conceptual_design_of_hts_magnets_for_fusion_nuclear_science/;
+            knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
+        **Ref**: output.md:173,197 (irreversible strain by manufacturer at
+            4.2 K/19 T: Bruker 0.70-0.72%, SuNAM 0.67-0.69%, SuperPower
+            0.66-0.68%, Fujikura 0.55-0.57%, SuperOx 0.45-0.47%; "Remaining
+            below 0.4% strain, there are no discernible differences");
+            Zhai et al. FNSF (transverse load limit ~200 MPa on the tape);
+            raw.pdf p. 24 (Stellaris HTS stack strain below 0.2%)
+        **Basis**: axial conductor strain <= irreversible strain limit
+        */
+
+        // strain in the HTS tape stack [1]
+        in attribute eps_cond : Real;
+        // conductor strain limit [1]
+        in attribute eps_cond_allow_in : Real;
+
+        eps_cond <= eps_cond_allow_in
+    }
+
     constraint def 'Winding Pack Stress Limit' {
         doc /*
         Structural bound (WI-035): the computed winding-pack stress must not

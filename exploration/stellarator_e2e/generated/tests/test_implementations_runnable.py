@@ -8,7 +8,7 @@ Tests verify that handwritten implementation functions:
 4. Tolerate NotImplementedError (before agent implements)
 5. Validate return types (after agent implements)
 
-Generated from 50 calculation definitions.
+Generated from 54 calculation definitions.
 """
 
 import importlib
@@ -46,6 +46,46 @@ def create_dummy_input(input_class: type[BaseModel]) -> BaseModel:
 
 
 # Generated test classes for each module
+
+class TestWinding_Pack_SizingRunnable:
+    """Verify winding_pack_sizing implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_magnet_field.sysml:84
+    """
+
+    def test_import_and_run(self):
+        """Test that run_winding_pack_sizing can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_magnet_field.winding_pack_sizing_impl")
+        func = getattr(impl, "run_winding_pack_sizing")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_magnet_field.winding_pack_sizing")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
 
 class TestMagnet_Structure_CostRunnable:
     """Verify magnet_structure_cost implementation runs without error.
@@ -87,20 +127,20 @@ class TestMagnet_Structure_CostRunnable:
             # Expected for stencils - test passes
             pass
 
-class TestCryoplant_Electrical_PowerRunnable:
-    """Verify cryoplant_electrical_power implementation runs without error.
+class TestCoil_Winding_LengthRunnable:
+    """Verify coil_winding_length implementation runs without error.
 
-    SysML Source: root-0/analyses/mfe_cryo_plant.sysml:4
+    SysML Source: root-0/analyses/mfe_magnet_field.sysml:124
     """
 
     def test_import_and_run(self):
-        """Test that run_cryoplant_electrical_power can be imported and called."""
+        """Test that run_coil_winding_length can be imported and called."""
         # Import implementation module (ADR-003: namespaced path)
-        impl = importlib.import_module("stellarator_tea.handwritten.mfe_cryo_plant.cryoplant_electrical_power_impl")
-        func = getattr(impl, "run_cryoplant_electrical_power")
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_magnet_field.coil_winding_length_impl")
+        func = getattr(impl, "run_coil_winding_length")
 
         # Import module wrapper for Input schema (ADR-003: namespaced path)
-        module = importlib.import_module("stellarator_tea.modules.mfe_cryo_plant.cryoplant_electrical_power")
+        module = importlib.import_module("stellarator_tea.modules.mfe_magnet_field.coil_winding_length")
 
         # Find Input class
         input_class = None
@@ -409,6 +449,46 @@ class TestWinding_Pack_StressRunnable:
             # Expected for stencils - test passes
             pass
 
+class TestConductor_StrainRunnable:
+    """Verify conductor_strain implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_magnet_field.sysml:197
+    """
+
+    def test_import_and_run(self):
+        """Test that run_conductor_strain can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_magnet_field.conductor_strain_impl")
+        func = getattr(impl, "run_conductor_strain")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_magnet_field.conductor_strain")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
 class TestMagnet_Coil_CostRunnable:
     """Verify magnet_coil_cost implementation runs without error.
 
@@ -545,6 +625,206 @@ class TestDT_Fusion_PowerRunnable:
 
         # Import module wrapper for Input schema (ADR-003: namespaced path)
         module = importlib.import_module("stellarator_tea.modules.mfe_plasma_scaling.dt_fusion_power")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestVolume_Averaged_BetaRunnable:
+    """Verify volume_averaged_beta implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:257
+    """
+
+    def test_import_and_run(self):
+        """Test that run_volume_averaged_beta can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_plasma_scaling.volume_averaged_beta_impl")
+        func = getattr(impl, "run_volume_averaged_beta")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_plasma_scaling.volume_averaged_beta")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestNeutron_Wall_LoadRunnable:
+    """Verify neutron_wall_load implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:221
+    """
+
+    def test_import_and_run(self):
+        """Test that run_neutron_wall_load can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_plasma_scaling.neutron_wall_load_impl")
+        func = getattr(impl, "run_neutron_wall_load")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_plasma_scaling.neutron_wall_load")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestDT_Fuel_CostRunnable:
+    """Verify dt_fuel_cost implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_account_costs.sysml:732
+    """
+
+    def test_import_and_run(self):
+        """Test that run_dt_fuel_cost can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_account_costs.dt_fuel_cost_impl")
+        func = getattr(impl, "run_dt_fuel_cost")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_account_costs.dt_fuel_cost")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestWinding_Pack_Cold_VolumeRunnable:
+    """Verify winding_pack_cold_volume implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_magnet_field.sysml:154
+    """
+
+    def test_import_and_run(self):
+        """Test that run_winding_pack_cold_volume can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_magnet_field.winding_pack_cold_volume_impl")
+        func = getattr(impl, "run_winding_pack_cold_volume")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_magnet_field.winding_pack_cold_volume")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestCryoplant_Electrical_PowerRunnable:
+    """Verify cryoplant_electrical_power implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_cryo_plant.sysml:4
+    """
+
+    def test_import_and_run(self):
+        """Test that run_cryoplant_electrical_power can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_cryo_plant.cryoplant_electrical_power_impl")
+        func = getattr(impl, "run_cryoplant_electrical_power")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_cryo_plant.cryoplant_electrical_power")
 
         # Find Input class
         input_class = None
@@ -853,46 +1133,6 @@ class TestLinear_Power_CostRunnable:
             # Expected for stencils - test passes
             pass
 
-class TestVolume_Averaged_BetaRunnable:
-    """Verify volume_averaged_beta implementation runs without error.
-
-    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:257
-    """
-
-    def test_import_and_run(self):
-        """Test that run_volume_averaged_beta can be imported and called."""
-        # Import implementation module (ADR-003: namespaced path)
-        impl = importlib.import_module("stellarator_tea.handwritten.mfe_plasma_scaling.volume_averaged_beta_impl")
-        func = getattr(impl, "run_volume_averaged_beta")
-
-        # Import module wrapper for Input schema (ADR-003: namespaced path)
-        module = importlib.import_module("stellarator_tea.modules.mfe_plasma_scaling.volume_averaged_beta")
-
-        # Find Input class
-        input_class = None
-        for attr_name in dir(module):
-            if attr_name.endswith("Input") and not attr_name.startswith("_"):
-                candidate = getattr(module, attr_name)
-                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
-                    input_class = candidate
-                    break
-
-        assert input_class is not None, "No Input class found in module"
-
-        # Create dummy input
-        dummy_input = create_dummy_input(input_class)
-
-        # Call function - expect NotImplementedError or valid return
-        try:
-            result = func(dummy_input)
-
-            # If implemented, verify return type
-            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
-
-        except NotImplementedError:
-            # Expected for stencils - test passes
-            pass
-
 class TestLinear_Power_CostRunnable:
     """Verify linear_power_cost implementation runs without error.
 
@@ -1069,46 +1309,6 @@ class TestBuildings_CostRunnable:
 
         # Import module wrapper for Input schema (ADR-003: namespaced path)
         module = importlib.import_module("stellarator_tea.modules.mfe_account_costs.buildings_cost")
-
-        # Find Input class
-        input_class = None
-        for attr_name in dir(module):
-            if attr_name.endswith("Input") and not attr_name.startswith("_"):
-                candidate = getattr(module, attr_name)
-                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
-                    input_class = candidate
-                    break
-
-        assert input_class is not None, "No Input class found in module"
-
-        # Create dummy input
-        dummy_input = create_dummy_input(input_class)
-
-        # Call function - expect NotImplementedError or valid return
-        try:
-            result = func(dummy_input)
-
-            # If implemented, verify return type
-            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
-
-        except NotImplementedError:
-            # Expected for stencils - test passes
-            pass
-
-class TestNeutron_Wall_LoadRunnable:
-    """Verify neutron_wall_load implementation runs without error.
-
-    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:221
-    """
-
-    def test_import_and_run(self):
-        """Test that run_neutron_wall_load can be imported and called."""
-        # Import implementation module (ADR-003: namespaced path)
-        impl = importlib.import_module("stellarator_tea.handwritten.mfe_plasma_scaling.neutron_wall_load_impl")
-        func = getattr(impl, "run_neutron_wall_load")
-
-        # Import module wrapper for Input schema (ADR-003: namespaced path)
-        module = importlib.import_module("stellarator_tea.modules.mfe_plasma_scaling.neutron_wall_load")
 
         # Find Input class
         input_class = None
@@ -1511,46 +1711,6 @@ class TestPlant_Power_Law_CostRunnable:
 
         # Import module wrapper for Input schema (ADR-003: namespaced path)
         module = importlib.import_module("stellarator_tea.modules.mfe_account_costs.plant_power_law_cost")
-
-        # Find Input class
-        input_class = None
-        for attr_name in dir(module):
-            if attr_name.endswith("Input") and not attr_name.startswith("_"):
-                candidate = getattr(module, attr_name)
-                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
-                    input_class = candidate
-                    break
-
-        assert input_class is not None, "No Input class found in module"
-
-        # Create dummy input
-        dummy_input = create_dummy_input(input_class)
-
-        # Call function - expect NotImplementedError or valid return
-        try:
-            result = func(dummy_input)
-
-            # If implemented, verify return type
-            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
-
-        except NotImplementedError:
-            # Expected for stencils - test passes
-            pass
-
-class TestDT_Fuel_CostRunnable:
-    """Verify dt_fuel_cost implementation runs without error.
-
-    SysML Source: root-0/analyses/mfe_account_costs.sysml:732
-    """
-
-    def test_import_and_run(self):
-        """Test that run_dt_fuel_cost can be imported and called."""
-        # Import implementation module (ADR-003: namespaced path)
-        impl = importlib.import_module("stellarator_tea.handwritten.mfe_account_costs.dt_fuel_cost_impl")
-        func = getattr(impl, "run_dt_fuel_cost")
-
-        # Import module wrapper for Input schema (ADR-003: namespaced path)
-        module = importlib.import_module("stellarator_tea.modules.mfe_account_costs.dt_fuel_cost")
 
         # Find Input class
         input_class = None

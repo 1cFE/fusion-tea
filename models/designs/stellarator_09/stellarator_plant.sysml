@@ -186,14 +186,37 @@ package stellarator_09 {
             :>> f_set = 0.8701298701298701 {
                 doc /* **Source**: stellaris-design-details.md **Ref**: Table 8 image (images/page_022_table_0.png: per-coil ampere-turns, image-verified -- the iter-01 text table misprints coils 1 and 4) **Basis**: Stellaris coil-set current distribution */
             }
-            // Typical winding circumference [m] ("typical but approximate" -- the same
-            // printed weak link vol_cold_cryo carries; per-coil circumferences unprinted).
-            :>> c_coil = 25.0 {
-                doc /* **Source**: stellaris-design-details.md **Ref**: raw.pdf sec. 2.9 ("typical circumference of 25 m") **Basis**: Stellaris typical coil circumference */
+            // Coil-shape factor [1] = typical circumference / major radius
+            // = 25.0 / 12.7 as its IEEE-754 double, so c_coil reproduces the
+            // printed 25 m exactly at R0 = 12.7 m. WI-036 D3: winding length
+            // now responds to machine scale; the SHAPE stays held because
+            // per-coil circumferences are unprinted. This is the residual held
+            // quantity the WI-036 mint record predicted -- "one held constant
+            // traded for a smaller one" -- and it is named here, not buried.
+            // c_coil itself is computed (mfe_plant.sysml, coil_length calc).
+            :>> k_coil = 1.9685039370078741 {
+                doc /* **Source**: stellaris-design-details.md **Ref**: raw.pdf sec. 2.9 ("typical circumference of 25 m"; coils approximately 7 x 5 x 10 m); images/page_002_table_0.png (Table 2: major radius 12.7 m) **Basis**: coil circumference over major radius at the printed pair (25.0 / 12.7); the printed circumference is "typical but approximate", the same weak link the pre-WI-036 held value carried */
             }
-            // Winding-pack cross-section side, worst coil [m] (coil 0).
-            :>> wp_side = 0.36 {
-                doc /* **Source**: stellaris-design-details.md **Ref**: Table 8 image (images/page_022_table_0.png: cross-section side length 360 mm, coil 0 -- the highest-force coil, 174 MN/m) **Basis**: Stellaris worst-coil winding-pack side */
+            // Winding-pack current density [A/mm^2], worst coil (coil 0).
+            // Bound as the float64 of the printed pair (15.4 MA, 360 mm) so
+            // that wp_side reproduces 0.360000 m exactly; the printed j_WP is
+            // 119 A/mm^2 (Table 8), and the design range across the six unique
+            // coils is 112-124. WI-036 D1: this is the sizing LEVER that
+            // replaced the held wp_side -- the pack is now sized by the current
+            // it carries, so stress grows as sqrt(I_coil * j_wp) rather than
+            // linearly in current, and a wider pack costs cold mass through
+            // the cryo chain. wp_side itself is computed (mfe_plant.sysml).
+            :>> j_wp = 118.8271604938272 {
+                doc /* **Source**: stellaris-design-details.md **Ref**: Table 8 image (images/page_022_table_0.png, image-verified -- the markdown extraction of this table is garbled: j_WP 119/112/120/112/122/124 A/mm^2; I total amp-turns 15.4/14.6/13.8/12.9/12.5/11.2 MA; cross-section side 360/360/340/340/320/300 mm, coil 0 the highest-force coil at 174 MN/m) **Basis**: Stellaris worst-coil winding-pack current density; the relation I = j_wp * side^2 closes across all six unique coils to better than 1% (-0.58% .. +0.52%) */
+            }
+            // Winding-pack set-distribution factor [1] = printed total winding-pack
+            // volume over the worst-coil-uniform reference = 136.56 / (48 * 0.36^2 * 25)
+            // = 136.56 / 155.52. WI-036 D2: the model carries one winding pack while
+            // the machine has six unique cross-sections; this is the same shape as the
+            // f_set coil-current distribution fact, and it moves the six-cross-section
+            // arithmetic out of a doc comment and into model content.
+            :>> f_wp_vol = 0.8780864197530865 {
+                doc /* **Source**: stellaris-design-details.md **Ref**: Table 8 image (images/page_022_table_0.png: cross-section side lengths 360/360/340/340/320/300 mm, image-verified); raw.pdf sec. 2.9 (48 coils = 4 periods x 12, so 8 occurrences of each of six unique coils; typical circumference 25 m) **Basis**: sum over the six unique coils of side^2 x 8 x 25 m = 136.56 m^3, expressed as a distribution factor on the worst coil */
             }
             // Stress concentration fact [1] = float64 of sigma_anchor*wp_side/(I_coil*B_peak)
             // at the printed worst-coil pair (650e6 Pa x 0.36 m)/(15.4e6 A x 24.9 T); the
@@ -204,6 +227,37 @@ package stellarator_09 {
             // Structural allowable stress [Pa].
             :>> sigma_allow = 800000000.0 {
                 doc /* **Source**: stellaris-design-details.md **Ref**: raw.pdf sec. 2.10 ("design limit of 800 MPa for cryogenic AISI 316LN", Fig. 49; von Mises as membrane+bending proxy, ASME BPVC VIII-2 / Eurocode framing; yield ~1000 MPa at 20-30 K) **Basis**: Stellaris support-structure design stress limit */
+            }
+            // ---- WI-036 conductor check: the SECOND of the two checks ----
+            // Winding-pack effective elastic modulus [Pa]. Cryogenic AISI 316LN,
+            // the load-bearing constituent of the pack (radial plates and casing).
+            :>> E_wp = 200000000000.0 {
+                doc /* **Source**: stellaris-design-details.md **Ref**: raw.pdf sec. 2.10 (AISI 316LN chosen as the support-structure material; yield ~1000 MPa at the 20-30 K operating range) **Basis**: austenitic stainless elastic modulus at cryogenic temperature, the pack's load-bearing constituent */
+            }
+            // Conductor load-sharing factor [1] = HTS stack strain over
+            // pack-average strain, from the source's own reported pair:
+            // 0.002 / (600e6 / 200e9) = 2/3. The tape stack sees less strain
+            // than the pack average because the soldered Cu jacket offloads it.
+            // Both anchors are printed BOUNDS taken as values ("<0.2%", and the
+            // paired k_sigma anchor is "<650"), so the operand OVER-estimates
+            // strain -- conservative, disclosed, and not corrected, because
+            // correcting it needs numbers the source does not print. This is a
+            // composition standing in for an FE result, calibrated from the
+            // source's own numbers rather than assumed (the k_sigma convention).
+            :>> f_cond = 0.6666666666666666 {
+                doc /* **Source**: stellaris-design-details.md **Ref**: raw.pdf p. 24 (winding-pack peak von Mises "in the range of 600 MPa"; "The peak strain on the HTS stack due to the deformation of the winding pack is below 0.2%, which is within acceptable limits, even when adding strain from bending") **Basis**: stack strain over pack-average strain at the printed pair, both figures taken at their printed bounds */
+            }
+            // Conductor strain limit [1]. 0.4% -- the strain below which the
+            // registered measurements report no discernible effect on any of
+            // five commercial tapes. SETTABLE and deliberately so: the band
+            // practitioners enforce spans 0.2% to 0.4%, and SuperOx (the tape
+            // this design specifies) is the WEAKEST of the five measured, with
+            // its irreversible limit at 0.45-0.47%. At this limit the structure
+            // binds first (the operand reads 0.217% at the design point and
+            // 0.267% at the 800 MPa stress fence, binding at 1200 MPa); at a
+            // 0.2% choice the conductor would bind first.
+            :>> eps_cond_allow = 0.004 {
+                doc /* **Source**: knowledge/sources/electro_mechanical_properties_of_rebco_coated_conductors/ **Ref**: output.md:197 ("Remaining below 0.4% strain, there are no discernible differences in the samples' strain dependencies"; irreversible stress limits 740-840 MPa at 4.2 K/19 T); output.md:173 (irreversible strain at 4.2 K/19 T: Bruker 0.70-0.72%, SuNAM 0.67-0.69%, SuperPower 0.66-0.68%, Fujikura 0.55-0.57%, SuperOx 0.45-0.47%; Fujikura and SuperOx fully de-laminate, "indicating an interfacial weakness") **Basis**: axial irreversible strain limit for commercial REBCO coated conductor, taken at the no-discernible-effect bound; measured at 4.2 K and 77 K, which the source states bracket identically -- the 20 K operating point is bracketed, not measured (the one source measuring through 20 K, Pierro et al. 2019, is paywalled and recorded as a queued research gap) */
             }
             // Winding fabrication markup [1] = 3.5 (winding/insulation/cooling/jointing/test)
             // x 1.9 (documented NCSX non-planar production penalty). Content-mapped: no casing,
@@ -683,21 +737,40 @@ package stellarator_09 {
         :>> q_nuc_cryo = 35.5 {   // winding-pack mean nuclear heating [W/m^3].
             doc /* **Source**: stellaris-design-details.md **Ref**: Table 6 image (images/page_020_table_0.png: "Mean cryogenic nuclear heating (winding pack) [W/m^3] 35.5"); sec. 2.8 raw.pdf (magnets at 20 K; EU DEMO ~50 W/m^3 as viability reference) **Basis**: Stellaris winding-pack volumetric nuclear heating at 20 K */
         }
-        :>> vol_cold_cryo = 136.56 {  // total winding-pack volume [m^3] (COMPUTED).
+        :>> vol_cold_cryo = 0.0 {  // ADDITIONAL cold volume [m^3] beyond the winding pack.
             doc /*
-            Computed from sourced geometry (WI-024 design D5): six unique square
-            winding-pack cross-sections (Table 8 image side lengths 360/360/340/340/
-            320/300 mm) x 8 occurrences each (sec. 2.9: 48 coils = 4 periods x
-            (6 independent + 6 mirrored)) x 25 m typical circumference (sec. 2.9,
-            printed but approximate -- per-coil circumferences are not printed; the
-            documented weak link). Sum of side^2 = 2x0.36^2 + 2x0.34^2 + 0.32^2
-            + 0.30^2 = 0.6828 m^2; x8 x25 = 136.56 m^3. Cross-checks: each side^2
-            equals turns x (20 mm)^2 exactly (sec. 2.9 unit cell; Table 8 turns
-            row); Table 8 no-casing masses (128.7 t x 8 = 1029.6 t) imply
-            ~7540 kg/m^3, consistent with the Table 7 material mix.
+            WI-036: the winding-pack cold volume is now COMPUTED IN THE MODEL
+            (mfe_magnet_field 'Winding Pack Cold Volume'), from the sized pack
+            cross-section, the computed winding length and the held set-distribution
+            factor f_wp_vol -- reproducing the 136.56 m^3 this slot previously held
+            as a literal. The arithmetic below was correct; it lived in this doc
+            comment rather than in the model, which is exactly the defect WI-036
+            closes. A wider winding pack now raises cryogenic load and cryoplant
+            capital instead of being free.
+
+            This slot is NOT retired. The plant sums the computed winding-pack
+            volume with this attribute (mfe_plant.sysml, cryo_elec), so it stays a
+            live settable entry point for cold mass beyond the winding pack, and a
+            concept that knows its cold volume directly can bind it and zero
+            f_wp_vol. The standing [OWNER 2026-08-27] WI-032 ruling bars retiring
+            vol_cold_cryo as a settable input; it does not bar modelling the chain
+            behind it -- the same width the owner drew for p_pump ("stays a held
+            settable input -- the ruling bars only the fixed-fraction form, not
+            loop modelling"). Bound to zero here because the winding pack IS the
+            whole of this machine's printed cold mass; any non-zero value would
+            double-count it.
+
+            The retired arithmetic, kept for the record: six unique square winding-pack
+            cross-sections (Table 8 image side lengths 360/360/340/340/320/300 mm)
+            x 8 occurrences each (sec. 2.9: 48 coils = 4 periods x (6 independent
+            + 6 mirrored)) x 25 m typical circumference. Sum of side^2 = 2x0.36^2
+            + 2x0.34^2 + 0.32^2 + 0.30^2 = 0.6828 m^2; x8 x25 = 136.56 m^3.
+            Cross-checks: each side^2 equals turns x (20 mm)^2 exactly (sec. 2.9
+            unit cell; Table 8 turns row); Table 8 no-casing masses (128.7 t x 8
+            = 1029.6 t) imply ~7540 kg/m^3, consistent with the Table 7 material mix.
             **Source**: stellaris-design-details.md
             **Ref**: Table 8 image (images/page_022_table_0.png: side lengths, turns, masses); raw.pdf sec. 2.9 (square winding pack; 20 mm x 20 mm unit cell; 25 m typical circumference; 48 = 4 x (6+6) symmetry); Table 7 image (images/page_021_table_0.png: material fractions)
-            **Basis**: cross-section x circumference x symmetry; mass cross-checked
+            **Basis**: additive non-winding-pack cold volume; zero for this machine because the computed winding-pack chain now carries the whole printed cold mass
             */
         }
         :>> p_fixed_cryo = 0.0075 {  // resistive-joint losses [MW] at 20 K.

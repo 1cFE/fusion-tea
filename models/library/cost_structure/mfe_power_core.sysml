@@ -109,6 +109,18 @@ package mfe_power_core {
         attribute c_coil : Real;
         // winding-pack cross-section side, worst coil [m]
         attribute wp_side : Real;
+        // winding-pack current density [A/mm^2] -- the WI-036 sizing lever
+        attribute j_wp : Real;
+        // winding-pack set-distribution factor [1] (WI-036 cold volume)
+        attribute f_wp_vol : Real;
+        // coil-shape factor [1] = typical circumference / major radius (WI-036)
+        attribute k_coil : Real;
+        // winding-pack effective elastic modulus [Pa] (WI-036 conductor strain)
+        attribute E_wp : Real;
+        // conductor load-sharing factor [1] (WI-036 conductor strain)
+        attribute f_cond : Real;
+        // conductor strain limit [1] (WI-036)
+        attribute eps_cond_allow : Real;
         // stress concentration transfer fact [1] (coil-set structural fact)
         attribute k_sigma : Real;
         // structural allowable stress [Pa]

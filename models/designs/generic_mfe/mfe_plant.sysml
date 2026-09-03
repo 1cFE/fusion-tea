@@ -54,6 +54,12 @@ package mfe_plant {
             // WI-035: the axis field is COMPUTED from the coil-set current
             // (reference redefinition, WI-021 pattern); B is no longer settable.
             :>> B = field_calc.B_axis;
+            // WI-036: the winding-pack side and the winding length are now
+            // COMPUTED too -- the pack is sized by the current it carries and
+            // the length follows machine scale. j_wp and k_coil are the
+            // settable levers that replaced them.
+            :>> wp_side = wp_sizing.wp_side;
+            :>> c_coil = coil_length.c_coil;
         }
         part heating : 'Heating and CD' {
             :>> capital_cost = heating_cost.cost;
@@ -274,12 +280,50 @@ package mfe_plant {
             in peak_ratio_in = magnet.peak_ratio;
         }
 
-        // WI-035: computed winding-pack stress operand for wp_stress_ok.
+        // WI-036: the winding pack is sized by the current it carries, so
+        // wp_side stops being an entry point and becomes a consequence of
+        // coil current and the chosen winding-pack current density.
+        calc wp_sizing : 'Winding Pack Sizing' {
+            in I_coil = magnet.I_coil;
+            in j_wp = magnet.j_wp;
+        }
+
+        // WI-036: winding length responds to machine scale through a held
+        // coil-shape factor, instead of resting on a printed constant.
+        calc coil_length : 'Coil Winding Length' {
+            in R0 = magnet.R0;
+            in k_coil = magnet.k_coil;
+        }
+
+        // WI-036: a wider winding pack now costs cold mass -- this feeds the
+        // WI-024 cryoplant chain, which already reaches cryoplant capital.
+        calc wp_volume : 'Winding Pack Cold Volume' {
+            in n_coils = magnet.n_coils;
+            in wp_side = wp_sizing.wp_side;
+            in c_coil = coil_length.c_coil;
+            in f_wp_vol = magnet.f_wp_vol;
+            // WI-036: vol_cold_cryo stays a live settable slot and enters here
+            // as an ADDITIVE term, so modelling the winding-pack chain does not
+            // retire it (the standing [OWNER 2026-08-27] WI-032 ruling bars
+            // retiring the input, not modelling the chain behind it).
+            in vol_extra = vol_cold_cryo;
+        }
+
+        // WI-035 stress operand, now consuming the WI-036 computed wp_side.
         calc wp_stress : 'Winding Pack Stress' {
             in I_coil = magnet.I_coil;
             in B_peak_in = peak_field_calc.B_peak;
-            in wp_side = magnet.wp_side;
+            in wp_side = wp_sizing.wp_side;
             in k_sigma = magnet.k_sigma;
+        }
+
+        // WI-036: the conductor's own operand, checked separately from the
+        // structure's -- the second of the two checks every surveyed HTS
+        // fusion design performs.
+        calc cond_strain : 'Conductor Strain' {
+            in sigma_wp = wp_stress.sigma_wp;
+            in E_wp = magnet.E_wp;
+            in f_cond = magnet.f_cond;
         }
 
         calc fusion : 'DT Fusion Power' {
@@ -338,7 +382,10 @@ package mfe_plant {
 
         calc cryo_elec : 'Cryoplant Electrical Power' {
             in q_nuc = q_nuc_cryo;
-            in vol_cold = vol_cold_cryo;
+            // WI-036: the cold volume is now computed from the sized winding
+            // pack, with vol_cold_cryo carried into that calc as an additive
+            // settable term (see the wp_volume usage above).
+            in vol_cold = wp_volume.vol_cold_total;
             in p_fixed = p_fixed_cryo;
             in f_uplift = f_uplift_cryo;
             in T_cold = T_cold_cryo;
@@ -936,6 +983,17 @@ package mfe_plant {
         assert constraint wp_stress_ok : 'Winding Pack Stress Limit' {
             in sigma_in = wp_stress.sigma_wp;
             in sigma_allow_in = magnet.sigma_allow;
+        }
+
+        // WI-036: the conductor's own check, distinct from the structure's.
+        // The structural operand above is a PEAK stress quantity (its k_sigma
+        // is anchored to the source's printed "Peak stress on WP" row), and
+        // the ITER criteria carry 666 MPa primary membrane against 1.0-1.333
+        // GPa peak; sigma_allow stays at the source's own 800 MPa design limit
+        // and is not re-categorised to open feasibility (WI-036 MR-6).
+        assert constraint cond_strain_ok : 'Conductor Strain Limit' {
+            in eps_cond = cond_strain.eps_cond;
+            in eps_cond_allow_in = magnet.eps_cond_allow;
         }
 
         // =====================================================================
