@@ -117,11 +117,14 @@ def test_I_coil_reaches_the_field_constraints_through_calcs(report):
     power. All computed-vs-bound except net_positive (computed vs literal 0)."""
     group = group_by_axis(report, "I_coil")
     reached = {c["source_local_identity"]: c for c in group["constraints_reachable"]}
+    # WI-036 adds cond_strain_ok: the winding-pack sizing chain runs off I_coil,
+    # so the conductor's own check is reached by the same lever that reaches the
+    # structure's -- the conductor is not left unchecked by the field sweep.
     assert set(reached) == {
-        "beta_ok", "peak_field_ok", "wp_stress_ok",
+        "beta_ok", "peak_field_ok", "wp_stress_ok", "cond_strain_ok",
         "sustainment_ok", "net_positive", "recirc_ok", "wall_load_ok",
     }
-    for name in ("beta_ok", "peak_field_ok", "wp_stress_ok", "sustainment_ok"):
+    for name in ("beta_ok", "peak_field_ok", "wp_stress_ok", "cond_strain_ok", "sustainment_ok"):
         constraint = reached[name]
         assert constraint["operator"] == "<="
         assert constraint["bound_vs_bound"] is False
@@ -159,18 +162,22 @@ def test_the_declared_tie_extends_reach_through_the_field(report):
     # sustainment chain, the converged ash moves the fuel peaks, and beta reads
     # the computed fuel), so beta_ok left the tie-exclusive set; the tie still
     # adds the two field-side fences only R0 can see.
-    assert tied_reach - plain_reach == {"peak_field_ok", "wp_stress_ok"}
-    # WI-037: the objective sets are now EQUAL -- plain R reaches every
-    # objective the tie reaches (beta and the sustainment objectives arrive
-    # through the ash/fuel chain), so the tie's added value is purely
-    # fence-side (the two conductor/stress limits R0 alone feeds).
-    assert set(plain["objectives_reachable"]) == set(tied["objectives_reachable"])
+    # WI-036 adds cond_strain_ok to the tie-exclusive set for the same reason as
+    # wp_stress_ok: both hang off B_peak, which only R0 feeds.
+    assert tied_reach - plain_reach == {"peak_field_ok", "wp_stress_ok", "cond_strain_ok"}
+    # WI-036: the objective sets are equal again EXCEPT magnet_capital, which is
+    # now tie-exclusive. c_coil = k_coil * R0 means the winding length -- and so
+    # the ampere-metre conductor cost -- responds to the major radius, and only
+    # the tie carries R0. Under WI-037 the two sets were equal and the tie's
+    # added value was purely fence-side; that is no longer the whole story.
+    assert set(tied["objectives_reachable"]) - set(plain["objectives_reachable"]) == {"magnet_capital"}
     assert "beta" in tied["objectives_reachable"]
-    # The decomposed rollup (magnet_capital) does NOT respond to R: the winding
-    # length is the held c_coil, not a bore-derived proxy — a disclosed WI-035
-    # limitation. The 1cfe-form comparison lump still scales with R0.
+    # WI-036 closed the disclosed WI-035 limitation recorded here: the winding
+    # length was the held c_coil, so the decomposed rollup could not respond to R.
+    # It is now c_coil = k_coil * R0, so magnet_capital DOES respond to the major
+    # radius through the winding length (MR-WI036-4).
     assert "magnet_capital_1cfe" in tied["objectives_reachable"]
-    assert "magnet_capital" not in tied["objectives_reachable"]
+    assert "magnet_capital" in tied["objectives_reachable"]
     assert len(tied["declared_keys"]) == 2
 
 

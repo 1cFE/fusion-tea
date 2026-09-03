@@ -101,6 +101,7 @@ def test_every_catalog_constraint_is_rederived_with_its_operand_count(summary):
         "beta_ok", "net_positive", "peak_field_ok", "recirc_ok", "tbr_ok", "wall_load_ok",
         "wp_stress_ok",  # WI-035
         "sustainment_ok",  # WI-037
+        "cond_strain_ok",  # WI-036: the conductor's own check, separate from the structure's
     }
     assert rederived["net_positive"] == 1  # the other operand is the literal 0.0
     assert all(count >= 1 for count in rederived.values())
