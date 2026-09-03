@@ -122,7 +122,7 @@ epics:
     name: 'Winding-pack sizing chain: winding length from coil geometry, wp_side into
       the sizing and cost chain'
     scale: standard
-    status: backlog
+    status: active
     completed: null
   - id: WI-037
     name: 'Operating-Point Closure: ISS04 Confinement Solve, Machine-Responsive Temperature'
@@ -233,7 +233,7 @@ standalone:
 | WI-033 | P_pump re-base: helium-primary circulator basis | standard | completed | Completed 2026-08-28 |
 | WI-034 | CAS10 land-term guard: net-negative power yields violated verdict, not execution_failed | standard | backlog |  |
 | WI-035 | Magnet closure: derived field, structural limit, decomposed cost accounts | standard | completed | Completed 2026-09-01 |
-| WI-036 | Winding-pack sizing chain: winding length from coil geometry, wp_side into the sizing and cost chain | standard | backlog |  |
+| WI-036 | Winding-pack sizing chain: winding length from coil geometry, wp_side into the sizing and cost chain | standard | active | Goal `priced-levers` round 1 |
 | WI-037 | Operating-Point Closure: ISS04 Confinement Solve, Machine-Responsive Temperature | standard | completed | Completed 2026-09-02 |
 | WI-038 | Conductor-Grade Lever: B_max Consequence Chain (Cost, Stress) | standard | backlog |  |
 | WI-039 | Heating System Structure: Sources, Transmission, Launchers | standard | backlog |  |

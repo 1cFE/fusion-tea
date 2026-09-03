@@ -81,3 +81,26 @@ Task T-002 under § T-002 scope: run the research seam on the governing structur
 - **Decision:** trigger — the hold-out guard refused a candidate (`arXiv:2409.01925`, `term:aries-cs matched 4x`) **after** the research subagent had already fetched and reported its contents into this session. Decision and reason — do not register, do not cite, do not use any of its numbers; record the refusal durably (it is in the REQ-036-03 `return.json` `queued[]`) and **surface the disclosure to the owner** rather than absorb it. `PROTOCOL.md` §3 holds that bibliographic ARIES-CS mentions do not taint a source, so the matches may be citations — but that is the owner's call through the §6 exception path, not the round agent's. Every strain number this task relies on rests on Barth 2015 and Stellaris' own reported limit, both registered and independently verified. Tier — **reserved gate** (clean-room protocol is owner-held ground, whatever this goal's gate list says). Who decided — surfaced to the owner, 2026-09-03; the round agent took only the conservative half (refuse and disclose). What changed — `evidence/T-002_criterion_return.md` § 6; the REQ-036-03 return.
 
 **Next task:** not chosen — the owner has the clean-room disclosure in front of them. The increment's shape is now clear enough to scope: WI-036 carries the winding-pack sizing chain plus a second, conductor-strain check, with the transverse limits declared as a named gap.
+
+### T-003 scope
+
+- **Objective:** produce the WI-036 spec — the winding-pack sizing chain, its cost and cryo consequences, and a second conductor-strain check — through the native modelling PM, at outcome level.
+- **Why now:** T-001 and T-002 have settled every input the spec needs. The sizing relation is image-verified from the model's own primary source, the criterion question is answered, and the escape route named by both the literature and the evidence is cross-section, which is exactly this item.
+- **Scope:** authorized — activating WI-036 in `work/BACKLOG.md`, `work/active/WI-036_*/spec.md`, VALIDATION_MATRIX entries through `pm add-validation`; excluded — design/plan/implement stages, any edit under `models/` or `exploration/`, source ingestion, discovery-log writes.
+- **Inputs:** `goal.md`; `evidence/T-001_research_return.md`; `evidence/T-002_criterion_return.md`. Narrower constraint: `sigma_allow` is not changed by this item in either direction (T-002 ruling), and the transverse/delamination limits are carried as a named gap with no value assigned.
+- **Done when:** the spec exists, requirements-complete at outcome level, with SV rows registered.
+- **Stop when:** a discovered prerequisite, a strategy blocker, or a declared limit.
+
+### T-003 start — 2026-09-03
+
+Task T-003: activate WI-036 and write its spec through the modelling PM. Native target: `work/BACKLOG.md` row, `work/active/WI-036_winding-pack-sizing/spec.md`, `modeling_project/VALIDATION_MATRIX.md` SV rows.
+
+### T-003 return — 2026-09-03
+
+- **Outcome:** `COMPLETE`. The spec exists, requirements-complete at outcome level, with its SV rows registered.
+- **Evidence:** `work/BACKLOG.md` — WI-036 flipped `backlog` → `active` with the goal named in its row. `work/active/WI-036_winding-pack-sizing/spec.md` — eleven outcome-level requirements (MR-WI036-1..11). `modeling_project/VALIDATION_MATRIX.md` — SV-044..047 added `pending` via `pm add-validation`. The parser's pre-existing 'Invalid Type' warning on an older row was not touched.
+- **Reading:** the increment now has a native, auditable contract, and it is wider than the goal's grounding anticipated in one respect — it carries a **second constraint** (conductor strain), not just a sizing chain. That follows from T-002: every surveyed HTS design runs two checks and this model runs one. Nothing under `models/` moved.
+- **Decision:** trigger — the radial build carries a separate held coil thickness (`coil_t = 0.30`) inconsistent with the 0.36 m winding pack, from a different source, with no relation between them. Decision and reason — **record it as a known defect and exclude it from this item**. Reconciling the two would move vessel, blanket and shield volumes at the same time as the magnet chain, making this item's comparison unreadable; the item that fixes it should do so alone. Tier — execution detail under the standing delegation. Who decided — the round agent, 2026-09-03. What changed — spec § Scope boundaries, § Current state.
+- **Decision:** trigger — the conductor strain check may bind before the stress check at the design point, changing the baseline verdict set. Decision and reason — accept that as a **disclosed finding rather than a reason to loosen the limit**, recorded as risk 4 in the spec. The precedent is the disclosed `sustainment_ok` violation the predecessor goal carried: an explained verdict change is a finding, never something to tune away. Tier — execution detail. Who decided — the round agent, 2026-09-03. What changed — spec § Assumptions & risks.
+
+**Next task:** the WI-036 design (native next stage) — the sizing mechanism, the conductor-strain operand's honest meaning, and the tolerances.
