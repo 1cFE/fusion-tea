@@ -104,3 +104,30 @@ Task T-003: activate WI-036 and write its spec through the modelling PM. Native 
 - **Decision:** trigger — the conductor strain check may bind before the stress check at the design point, changing the baseline verdict set. Decision and reason — accept that as a **disclosed finding rather than a reason to loosen the limit**, recorded as risk 4 in the spec. The precedent is the disclosed `sustainment_ok` violation the predecessor goal carried: an explained verdict change is a finding, never something to tune away. Tier — execution detail. Who decided — the round agent, 2026-09-03. What changed — spec § Assumptions & risks.
 
 **Next task:** the WI-036 design (native next stage) — the sizing mechanism, the conductor-strain operand's honest meaning, and the tolerances.
+
+### T-004 scope
+
+- **Objective:** produce the WI-036 design — the sizing mechanism, the cold-volume and winding-length relations, the conductor-strain operand's honest meaning, and tolerances — under the spec's requirements.
+- **Why now:** the spec is complete; design is the native next stage and the place the conductor operand's meaning gets fixed rather than assumed.
+- **Scope:** authorized — `work/active/WI-036_winding-pack-sizing/design.md`, source and image verification reads; excluded — plan/implement stages, any edit under `models/` or `exploration/`, source ingestion, discovery-log writes.
+- **Inputs:** the WI-036 spec; `goal.md`; `evidence/T-001_research_return.md`, `evidence/T-002_criterion_return.md`.
+- **Done when:** design.md exists, requirements-complete against MR-WI036-1..11, every quantitative basis image-verified, and the conductor operand's meaning stated honestly enough that a reviewer can judge it.
+- **Stop when:** a discovered prerequisite, a strategy blocker, or a declared limit.
+
+### T-004 start — 2026-09-03
+
+Task T-004: write the WI-036 design. Native target: `work/active/WI-036_winding-pack-sizing/design.md`.
+
+### T-004 return — 2026-09-03
+
+- **Outcome:** `COMPLETE`. The design exists and answers every requirement; all five derived constants reproduce their printed anchors exactly or within the stated tolerance.
+- **Evidence:** `work/active/WI-036_winding-pack-sizing/design.md` — eight decisions D1–D8 with a tolerance table and a decision record of what the item deliberately does not do. Derived constants: `j_WP` = 118.8271604938 A/mm² (printed 119; reproduces the printed 15.4 MA / 360 mm pair exactly); `f_wp_vol` = 0.8780864197530865 (reproduces the printed 136.56 m³ exactly from the six printed sides); `k_coil` = 1.9685039370078741 (reproduces the printed 25 m at R = 12.7); `f_cond` = 0.6666666667; `E_wp` = 200 GPa; `eps_cond_allow` = 0.004.
+- **Reading.** Three things worth carrying to the study.
+  1. **Stress now grows as √I rather than linearly.** Substituting the sizing relation into the existing stress form gives σ = k_sigma·B_peak·√(I_coil·j_WP). That is the relief the sizing chain buys, and it falls out of two sourced relations rather than a new assumption.
+  2. **The conductor check does not bind first, and the model now shows that rather than assuming it.** With load sharing calibrated from the source's own reported pair (~600 MPa pack von Mises against <0.2% stack strain), the operand reads 0.217% at the design point and 0.267% at the 800 MPa stress fence; it would bind at σ_wp = 1200 MPa. The structure governs — which is what a sound magnet design should show. The margin is not generous: the default sits at 0.4% against SuperOx's 0.45% irreversible limit, and a designer choosing the 0.2% that other projects enforce would find the conductor binding first. Hence settable.
+  3. **A wider pack buys no conductor, and that is correct.** Ampere-metres are set by current and length, so the existing cross-section-blind winding-pack cost is right and is not changed. The cost consequence lands through the cryo chain, which was already live and waiting for an input.
+- **Decision:** trigger — the model carries one winding pack while the machine has six unique coil sizes, and MR-WI036-2 needs a total cold volume. Decision and reason — use a held **set-distribution factor** (`f_wp_vol`, the printed-total to worst-coil-uniform ratio) rather than introduce per-coil geometry. Per-coil representation is a much larger change with no cost consequence of its own, and the factor is the same shape as the existing `f_set` coil-current distribution fact. It reproduces the held 136.56 m³ exactly and moves the six-cross-section arithmetic out of a doc comment into model content. Tier — execution detail under the standing delegation. Who decided — the round agent, 2026-09-03. What changed — design D2.
+- **Decision:** trigger — MR-WI036-4 asks winding length to follow coil geometry, but per-coil circumferences are unprinted and no printed relation yields the 25 m typical value. Decision and reason — make length respond to machine **scale** through a held **shape** factor (`c_coil = k_coil · R`), which is exactly the trade the WI-036 mint record predicted ("one held constant traded for a smaller one") and the honest limit of what the source supports. The residual held quantity is named in the design rather than buried. Tier — execution detail. Who decided — the round agent, 2026-09-03. What changed — design D3.
+- **Decision:** trigger — the conductor strain operand cannot be derived rigorously without a finite-element result the source does not publish. Decision and reason — compose it as `f_cond · σ_wp / E_wp` with `f_cond` **calibrated from the source's own reported pair** rather than assumed, note that both anchors are printed bounds taken as values (so the operand over-estimates strain), and report the design-point value rather than tune it. This is the `k_sigma` convention applied to a second quantity. Tier — execution detail. Who decided — the round agent, 2026-09-03. What changed — design D4, risk 1.
+
+**Next task:** the WI-036 plan and implementation, through the native modelling PM with its validation levels.
