@@ -1,5 +1,5 @@
 {
-  "derived_against_semantic_fingerprint": "5b9abdfce2e086b6f5408a067ac15f2f264bee505cae4204a25b82f5e036baa4",
+  "derived_against_semantic_fingerprint": "3cb690aab05ee11eff2f8832d968b9c3bd64be2ec768d4130dee19fc30cd2059",
   "group": {
     "axis": "R",
     "declared_keys": [
@@ -143,6 +143,32 @@
     ],
     "constraints_unreachable": [
       {
+        "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+        "source_local_identity": "cond_strain_ok",
+        "operator": "<=",
+        "operand_classes": [
+          "bound",
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "eps_cond",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__cond_strain__eps_cond",
+            "reached": false
+          },
+          {
+            "operand": "eps_cond_allow_in",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__magnet__eps_cond_allow",
+            "reached": false,
+            "entry_type": "design_attribute"
+          }
+        ]
+      },
+      {
         "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
         "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
         "source_local_identity": "peak_field_ok",
@@ -243,6 +269,32 @@
             "operand": "beta_limit_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__beta_limit",
+            "reached": false,
+            "entry_type": "design_attribute"
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+        "source_local_identity": "cond_strain_ok",
+        "operator": "<=",
+        "operand_classes": [
+          "bound",
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "eps_cond",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__cond_strain__eps_cond",
+            "reached": false
+          },
+          {
+            "operand": "eps_cond_allow_in",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__magnet__eps_cond_allow",
             "reached": false,
             "entry_type": "design_attribute"
           }

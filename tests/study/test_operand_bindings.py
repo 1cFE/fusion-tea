@@ -66,7 +66,7 @@ def package_inputs(package_path):
 
 def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
     entries = catalog_entries(real_package_path)
-    assert len(entries) == 8, f"expected the eight viability constraints, found {len(entries)}"
+    assert len(entries) == 9, f"expected the nine viability constraints, found {len(entries)}"
     bindings = oracle_entry.operand_bindings()
     channels = oracle_entry.evaluate(BASELINE_POINT)
     inputs = package_inputs(real_package_path)

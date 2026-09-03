@@ -18,8 +18,8 @@ from tests.study.conftest import DATA_DIR, run_tool
 CASES = ["availability", "interest_rate", "R", "R+tie", "a", "I_coil"]
 
 EXPECTED_SEMANTIC_FINGERPRINT = (
-    # WI-037 sustainment closure (goal operating-point-closure, 2026-09-01)
-    "5b9abdfce2e086b6f5408a067ac15f2f264bee505cae4204a25b82f5e036baa4"
+    # WI-036 winding-pack sizing chain (goal priced-levers, 2026-09-03)
+    "3cb690aab05ee11eff2f8832d968b9c3bd64be2ec768d4130dee19fc30cd2059"
 )
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,
@@ -30,22 +30,23 @@ EXPECTED_SEMANTIC_FINGERPRINT = (
 #: more channel because CAS27 is now computed in-package and declared as the
 #: `cas27` objective, and each swept attribute is one plant-level entry point.
 FIXTURE_CONTRACT = {
-    # Re-derived from the live report on the WI-037 package (2026-09-01,
-    # goal operating-point-closure): the sustainment chain gives every
-    # machine/operating lever a path to sustainment_ok and, through the
-    # computed ash -> quasi-neutral fuel, to beta_ok and the fusion-derived
-    # chain. The headline structural change: I_coil (the field lever) now
-    # reaches net_positive/recirc_ok/wall_load_ok and the fuel/replacement
-    # objectives through ISS04 confinement -- the 20260823-magnet-technology-ab#4
-    # "field never rewarded" pathology closed structurally. availability and
+    # Re-derived from the live report on the WI-036 package (2026-09-03, goal
+    # priced-levers): the winding pack is now sized by the current it carries and
+    # the winding length follows machine scale, so two reaches EXPANDED.
+    # (1) cond_strain_ok -- the new conductor check -- is reachable from both
+    # field levers (I_coil, R+tie), so the conductor is checked by the same
+    # sweeps that check the structure, not left inert.
+    # (2) R+tie now reaches magnet_capital, which it did not before: c_coil =
+    # k_coil * R means the major radius finally reaches the magnet conductor
+    # cost through the winding length (MR-WI036-4). availability and
     # interest_rate are untouched (still no_constraint_response -- the Row 11
     # finding stands).
     "availability": (True, [], ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'], 6, 8),
     "interest_rate": (True, [], ['cas72', 'lcoe', 'lcoe_1cfe'], 8, 11),
     "R": (False, ['beta_ok', 'net_positive', 'recirc_ok', 'sustainment_ok', 'wall_load_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 59, 86),
-    "R+tie": (False, ['beta_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 64, 91),
+    "R+tie": (False, ['beta_ok', 'cond_strain_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 71, 98),
     "a": (False, ['beta_ok', 'net_positive', 'recirc_ok', 'sustainment_ok', 'wall_load_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 59, 86),
-    "I_coil": (False, ['beta_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 63, 85),
+    "I_coil": (False, ['beta_ok', 'cond_strain_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 68, 90),
 }
 
 
@@ -102,7 +103,7 @@ def test_availability_reaches_no_constraint(report):
     group = group_by_axis(report, "availability")
     assert group["no_constraint_response"] is True
     assert group["constraints_reachable"] == []
-    assert len(group["constraints_unreachable"]) == 8
+    assert len(group["constraints_unreachable"]) == 9
 
 
 def test_I_coil_reaches_the_field_constraints_through_calcs(report):

@@ -1,5 +1,5 @@
 {
-  "derived_against_semantic_fingerprint": "5b9abdfce2e086b6f5408a067ac15f2f264bee505cae4204a25b82f5e036baa4",
+  "derived_against_semantic_fingerprint": "3cb690aab05ee11eff2f8832d968b9c3bd64be2ec768d4130dee19fc30cd2059",
   "group": {
     "axis": "R+tie",
     "declared_keys": [
@@ -38,6 +38,32 @@
             "operand": "beta_limit_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__beta_limit",
+            "reached": false,
+            "entry_type": "design_attribute"
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+        "source_local_identity": "cond_strain_ok",
+        "operator": "<=",
+        "operand_classes": [
+          "bound",
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "eps_cond",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__cond_strain__eps_cond",
+            "reached": true
+          },
+          {
+            "operand": "eps_cond_allow_in",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__magnet__eps_cond_allow",
             "reached": false,
             "entry_type": "design_attribute"
           }
@@ -254,6 +280,32 @@
         ]
       },
       {
+        "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+        "source_local_identity": "cond_strain_ok",
+        "operator": "<=",
+        "operand_classes": [
+          "bound",
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "eps_cond",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__cond_strain__eps_cond",
+            "reached": true
+          },
+          {
+            "operand": "eps_cond_allow_in",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__magnet__eps_cond_allow",
+            "reached": false,
+            "entry_type": "design_attribute"
+          }
+        ]
+      },
+      {
         "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
         "definition_qualified_name": "mfe_viability::'Net Power Positive'",
         "source_local_identity": "net_positive",
@@ -441,18 +493,17 @@
       "fuel",
       "lcoe",
       "lcoe_1cfe",
+      "magnet_capital",
       "magnet_capital_1cfe",
       "p_aux_required",
       "tau_E",
       "total_capital"
     ],
-    "objectives_unreachable": [
-      "magnet_capital"
-    ],
+    "objectives_unreachable": [],
     "sibling_candidates": [],
     "trace_size": {
-      "modules_fired": 64,
-      "channels_tainted": 91
+      "modules_fired": 71,
+      "channels_tainted": 98
     },
     "warnings": [],
     "not_derivable": {

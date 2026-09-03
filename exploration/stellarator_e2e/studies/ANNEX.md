@@ -38,11 +38,15 @@ fraction at different precisions; neither is swept today.
 ## § Baseline pin
 
 The pinned baseline point, its headline, and its expected verdicts live in
-`manifest.json` → `baseline`. Today (WI-037 regeneration, 2026-09-01): `R = 12.7 m`,
+`manifest.json` → `baseline`. Today (WI-036 regeneration, 2026-09-03): `R = 12.7 m`,
 `a = 1.3 m`, `availability = 0.85`, headline
-`stellarator_09__stellaris__lcoe_calc__lcoe` = `307.08712042841586`, **eight**
-verdicts — seven satisfied and `sustainment_ok` **expected violated** (the disclosed
+`stellarator_09__stellaris__lcoe_calc__lcoe` = `307.08712042841586`, **nine**
+verdicts — eight satisfied and `sustainment_ok` **expected violated** (the disclosed
 WI-037 baseline state: required sustained coupled heating ~90.6 MW vs 50 installed).
+WI-036 added the ninth, `cond_strain_ok`, and left the headline untouched: the
+winding-pack sizing chain is neutral at the design point by construction (`wp_side`
+reproduces 0.360000 m and `c_coil` 25.0 m from the new levers `j_wp` and `k_coil`),
+so all nine anchors reproduce exactly across the regeneration.
 The baseline also sits at exact equality on the conductor ceiling (B_peak 24.90 T vs
 B_max 24.9, `<=` satisfied by the WI-035 one-ulp-low design convention) — a
 by-construction fact of the design point, not a discovery any study makes.

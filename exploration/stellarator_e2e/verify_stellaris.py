@@ -203,7 +203,7 @@ IN = dict(
     #   0.0075 MW (sec. 2.9 joints), f_uplift 1.0 (lower-bound seam, D6),
     #   T_cold 20 K (sec. 2.9), T_amb 300 K (D4 assumption), f_carnot 0.20
     #   (THE assumption, D4), p_cryo_direct 0.0 (0.8 default retired, D2).
-    q_nuc_cryo=35.5, vol_cold_cryo=136.56, p_fixed_cryo=0.0075,
+    q_nuc_cryo=35.5, vol_cold_cryo=0.0, p_fixed_cryo=0.0075,  # WI-036: additive slot; the pack volume is computed
     f_uplift_cryo=1.0, T_cold_cryo=20.0, T_amb_cryo=300.0, f_carnot_cryo=0.20,
     p_cryo_direct=0.0,
     # magnet — B = 9.0 (WI-023): axis-averaged B_0 printed in the Table 2/5
@@ -215,8 +215,17 @@ IN = dict(
     magnet_cost_per_kAm=50.0, magnet_coil_markup=5.87,  # 1cfe-form comparison channel
     magnet_n_coils=48.0, magnet_I_coil=15400000.0,
     magnet_k_link=0.7731331164622419, magnet_two_pi=6.283185307179586,
-    magnet_f_set=0.8701298701298701, magnet_c_coil=25.0,
-    magnet_wp_side=0.36, magnet_k_sigma=0.6102331403536223,
+    magnet_f_set=0.8701298701298701, magnet_k_sigma=0.6102331403536223,
+    # WI-036: the winding pack is SIZED by the current it carries and the winding
+    # length follows machine scale, so wp_side and c_coil are computed here too --
+    # the oracle mirrors the model's chain independently. j_wp and k_coil are the
+    # float64s of the printed pairs (15.4 MA / 360 mm; 25 m / 12.7 m).
+    magnet_j_wp=118.8271604938272, magnet_k_coil=1.9685039370078741,
+    magnet_f_wp_vol=0.8780864197530865,
+    # WI-036 conductor check: pack modulus, tape load-sharing (from the source's own
+    # 600 MPa / <0.2% pair), and the axial irreversible-strain limit.
+    magnet_E_wp=200000000000.0, magnet_f_cond=0.6666666666666666,
+    magnet_eps_cond_allow=0.004,
     magnet_sigma_allow=800000000.0, magnet_f_wp_fab=6.65,
     magnet_m_casing=63000.0, magnet_steel_price=6.0, magnet_f_steel_fab=3.0,
     # conductor facts (WI-030): peak/axis ratio 24.9/9.0 as its float64 value; REBCO
@@ -340,7 +349,16 @@ def compute():
     B_axis = (p["mu0"] * p["magnet_k_link"] * p["magnet_n_coils"] * p["magnet_I_coil"]
               / (p["magnet_two_pi"] * p["magnet_R0"]))
     B_peak = B_axis * p["magnet_peak_ratio"]
-    sigma_wp = p["magnet_k_sigma"] * p["magnet_I_coil"] * B_peak / p["magnet_wp_side"]
+    # WI-036: the pack sizes itself from the current, and the winding length from
+    # machine scale; both were held inputs before this item.
+    wp_side = (p["magnet_I_coil"] / p["magnet_j_wp"]) ** 0.5 / 1000.0
+    c_coil = p["magnet_k_coil"] * p["magnet_R0"]
+    sigma_wp = p["magnet_k_sigma"] * p["magnet_I_coil"] * B_peak / wp_side
+    # WI-036: the conductor's own operand, checked separately from the structure's.
+    eps_cond = p["magnet_f_cond"] * sigma_wp / p["magnet_E_wp"]
+    # WI-036: a wider pack now costs cold mass, which reaches the cryoplant.
+    vol_cold_total = (p["magnet_f_wp_vol"] * p["magnet_n_coils"] * wp_side * wp_side
+                      * c_coil + p["vol_cold_cryo"])
 
     # --- Plasma Sustainment (WI-037): computed ash, quasi-neutral fuel,
     # ISS04 tau_E, composed radiation, required sustained heating ---
@@ -368,7 +386,7 @@ def compute():
     # cryoplant_electrical_power_impl.py statement forms verbatim (bit-exact):
     cop_carnot = (p["T_cold_cryo"] / (p["T_amb_cryo"] - p["T_cold_cryo"]))
     cop = (p["f_carnot_cryo"] * cop_carnot)
-    p_cold = ((((p["q_nuc_cryo"] * p["vol_cold_cryo"]) * 1e-06) + p["p_fixed_cryo"]) * p["f_uplift_cryo"])
+    p_cold = ((((p["q_nuc_cryo"] * vol_cold_total) * 1e-06) + p["p_fixed_cryo"]) * p["f_uplift_cryo"])
     p_cryo = ((p_cold / cop) + p["p_cryo_direct"])
     recirculating = (p_coils + p["p_pump"] + p_sub + p_aux + p_cool + p_cryo
                      + p["p_input"] / p["eta_pin"])
@@ -382,7 +400,7 @@ def compute():
     magnet = total_kAm * p["magnet_cost_per_kAm"] * p["magnet_coil_markup"]
     # WI-035 decomposed magnet accounts (design D4/D5/D6); `magnet` above stays
     # the 1cfe-form comparison channel, the rollup enters the powercore sum.
-    kAm_wind = p["magnet_n_coils"] * p["magnet_I_coil"] * p["magnet_f_set"] * p["magnet_c_coil"] / 1000.0
+    kAm_wind = p["magnet_n_coils"] * p["magnet_I_coil"] * p["magnet_f_set"] * c_coil / 1000.0
     winding_pack = kAm_wind * p["magnet_cost_per_kAm"] * p["magnet_f_wp_fab"]
     magnet_structure = p["magnet_n_coils"] * p["magnet_m_casing"] * p["magnet_steel_price"] * p["magnet_f_steel_fab"]
     magnet_capital_rollup = winding_pack + magnet_structure
@@ -552,6 +570,7 @@ def compute():
         q_eng=q_eng, rec_frac=rec_frac, p_net=p_net, wall_load=wall_load,
         beta=beta, B_peak=B_peak,  # WI-030 physics channels
         B_axis=B_axis, sigma_wp=sigma_wp,  # WI-035 field + stress channels
+        eps_cond=eps_cond,  # WI-036 conductor strain operand
         # WI-037 sustainment channels
         n_bar19=sust["n_bar19"], n_He0=sust["n_He0"], n_D0=sust["n_D0"],
         n_T0=sust["n_T0"], T_e0=sust["T_e0"], W_th=sust["W_th"],

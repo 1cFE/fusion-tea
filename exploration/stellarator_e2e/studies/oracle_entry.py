@@ -60,8 +60,12 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}magnet__I_coil": "magnet_I_coil",
     f"{P}magnet__k_link": "magnet_k_link",
     f"{P}magnet__f_set": "magnet_f_set",
-    f"{P}magnet__c_coil": "magnet_c_coil",
-    f"{P}magnet__wp_side": "magnet_wp_side",
+    f"{P}magnet__j_wp": "magnet_j_wp",
+    f"{P}magnet__k_coil": "magnet_k_coil",
+    f"{P}magnet__f_wp_vol": "magnet_f_wp_vol",
+    f"{P}magnet__E_wp": "magnet_E_wp",
+    f"{P}magnet__f_cond": "magnet_f_cond",
+    f"{P}magnet__eps_cond_allow": "magnet_eps_cond_allow",
     f"{P}magnet__k_sigma": "magnet_k_sigma",
     f"{P}magnet__sigma_allow": "magnet_sigma_allow",
     f"{P}magnet__f_wp_fab": "magnet_f_wp_fab",
@@ -120,6 +124,7 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "B_peak": f"{P}peak_field_calc__B_peak",  # WI-030 peak field on the conductor
     "B_axis": f"{P}field_calc__B_axis",  # WI-035 computed axis field
     "sigma_wp": f"{P}wp_stress__sigma_wp",  # WI-035 winding-pack stress operand
+    "eps_cond": f"{P}cond_strain__eps_cond",  # WI-036 conductor strain operand
     "winding_pack": f"{P}winding_pack_cost__cost",  # WI-035 sub-account
     "magnet_structure": f"{P}magnet_structure_cost__cost",  # WI-035 sub-account
     "magnet_capital_rollup": f"{P}magnet_capital_rollup__capital_cost",  # WI-035 rollup
@@ -236,6 +241,15 @@ OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
         # WI-035: computed winding-pack stress vs the held sourced allowable.
         "sigma_in": {"kind": "channel", "key": f"{P}wp_stress__sigma_wp"},
         "sigma_allow_in": {"kind": "input", "key": f"{P}magnet__sigma_allow"},
+    },
+    f"{P}cond_strain_ok__251d4c803804ab60": {
+        # WI-036: the conductor's own check, separate from the structure's.
+        # The operand is computed ('Conductor Strain'); the limit is a magnet-part
+        # attribute and stays settable, because the band practitioners enforce
+        # spans 0.2% to 0.4% and the tape this design specifies is the weakest
+        # of the five measured.
+        "eps_cond": {"kind": "channel", "key": f"{P}cond_strain__eps_cond"},
+        "eps_cond_allow_in": {"kind": "input", "key": f"{P}magnet__eps_cond_allow"},
     },
     f"{P}sustainment_ok__77add152ed8eafce": {
         # WI-037: computed required sustained coupled heating vs the installed
