@@ -1,0 +1,22 @@
+{
+  "request_id": "REQ-038-01",
+  "run": "knowledge/research/requests/runs/REQ-038-01/20260903T041654389335",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "development_and_large_volume_production_of_extremely_high",
+      "path": "knowledge/sources/development_and_large_volume_production_of_extremely_high/",
+      "source_id": "2925a09fba687fbcf37d86bada14da7a0925e63a207b932650311de475f97f9b",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://dspace.mit.edu/bitstream/handle/1721.1/135577/s41598-021-81559-z.pdf",
+      "reason": "UnicodeDecodeError: 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte"
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

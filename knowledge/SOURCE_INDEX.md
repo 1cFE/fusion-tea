@@ -249,6 +249,70 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: cee0b99c95543866c498ecaa0479120abe96e3bb7733cbc76ede72e439475e5c
 - **Date Added**: 2026-08-28
 
+### Development and large volume production of extremely high current density YBa2Cu3O7 superconducting wires for fusion
+- **Type**: url
+- **Location**: knowledge/sources/development_and_large_volume_production_of_extremely_high/
+- **Use for**: REBCO 2G tape engineering current density at 20 K and its field dependence -- the basis for making the conductor peak-field ceiling a computed consequence of tape quantity rather than a held constant (WI-038); serves the priced-levers goal's conductor half.
+- **Validation**: Check J_E > 1000 A/mm2 at 20 K and 20 T with field perpendicular to the tape, the SPARC 700 A/mm2 design target, and the stated critical-current field exponent Jc proportional to B^-0.6 at 20 K, against the paper's results figures and text.
+- **Caveat**: Publisher open-access version of record, Scientific Reports 11:2084, DOI 10.1038/s41598-021-81559-z. Tape-level measurements, not winding-pack values; the B^-0.6 exponent is stated for 20 K and must not be extrapolated below the pinning-force saturation near 15 T without re-reading the source.
+
+#### Extended Metadata
+- **Source URL**: https://www.nature.com/articles/s41598-021-81559-z.pdf
+- **Source ID**: 2925a09fba687fbcf37d86bada14da7a0925e63a207b932650311de475f97f9b
+- **Raw SHA256**: 2925a09fba687fbcf37d86bada14da7a0925e63a207b932650311de475f97f9b
+- **Raw Artifact SHA256**: 2925a09fba687fbcf37d86bada14da7a0925e63a207b932650311de475f97f9b
+- **Extracted Path**: knowledge/sources/development_and_large_volume_production_of_extremely_high/
+- **Extract SHA256**: 0226f85989db80e1a033faa0e13031bd24cc33a114c11045c148986b85fc4f80
+- **Date Added**: 2026-09-02
+
+### In-Plane and Out-of-Plane TF Coil Support for the US FNSF Reactor (PPPL-5297)
+- **Type**: url
+- **Location**: knowledge/sources/in_plane_and_out_of_plane_tf_coil_support_for_the_us_fnsf/
+- **Use for**: Provenance and standing of the cryogenic structural design allowable used for the stellarator winding-pack stress limit -- it names both the ITER-based two-thirds-yield allowable and the optimistic improved-316 allowable, and the qualification routes above them; serves WI-036 and the priced-levers goal's structural half.
+- **Validation**: Check the two stated allowables against the report's stress-allowable table or text: two-thirds of 1000 MPa yield equals 666 MPa on the ITER basis, and 800 MPa described as optimistic for improved 316 metallurgy; also check the limit-analysis route with a factor of safety of 2.0 against burst.
+- **Caveat**: Open DOE-funded PPPL report, September 2016, for a tokamak FNSF TF coil rather than a stellarator modular coil; the allowables are structural-design practice and transfer, the coil geometry does not.
+
+#### Extended Metadata
+- **Source URL**: https://bp-pub.pppl.gov/pub_report/2016/PPPL-5297%20Report.pdf
+- **Source ID**: 2db022af7ac779858853fa18337ff0800dbed73e4bf0bfcececca3100f61c40b
+- **Raw SHA256**: 2db022af7ac779858853fa18337ff0800dbed73e4bf0bfcececca3100f61c40b
+- **Raw Artifact SHA256**: 2db022af7ac779858853fa18337ff0800dbed73e4bf0bfcececca3100f61c40b
+- **Extracted Path**: knowledge/sources/in_plane_and_out_of_plane_tf_coil_support_for_the_us_fnsf/
+- **Extract SHA256**: c365528e625048dc42a1a9f0316f985a313de8b7148b3a2946d2755972c6eb63
+- **Date Added**: 2026-09-02
+
+### HTS Potential and Needs for Future Accelerator Magnets
+- **Type**: url
+- **Location**: knowledge/sources/hts_potential_and_needs_for_future_accelerator_magnets/
+- **Use for**: Present-day REBCO conductor price per kiloampere-metre and the stated mechanism by which a higher operating field increases the conductor quantity a magnet needs -- the price leg of the conductor-grade consequence chain (WI-038).
+- **Validation**: Check the quoted REBCO price band of 150-200 USD per kA-m and the price-to-raw-material ratio, and the passage stating that more superconductor is needed at higher field because critical current density falls with field and because mechanical and protection limits force lower current density.
+- **Caveat**: CERN accelerator-magnet study, arXiv:2503.23048. Its cost-versus-field model is calibrated on accelerator dipoles (LHC, HL-LHC, FCC, HE-LHC, Tripler), not on fusion TF or stellarator modular coils, so the price and the mechanism transfer but the calibrated cost curve does not.
+
+#### Extended Metadata
+- **Source URL**: https://arxiv.org/pdf/2503.23048
+- **Source ID**: 7abb60eaf88d1089c764324b4c66d9eb315f30a9e779064ac6fab9c10e644bc3
+- **Raw SHA256**: 7abb60eaf88d1089c764324b4c66d9eb315f30a9e779064ac6fab9c10e644bc3
+- **Raw Artifact SHA256**: 7abb60eaf88d1089c764324b4c66d9eb315f30a9e779064ac6fab9c10e644bc3
+- **Extracted Path**: knowledge/sources/hts_potential_and_needs_for_future_accelerator_magnets/
+- **Extract SHA256**: fd34e0953d39878b0da4020ac28c42f18e2ffc81640cca57356bc65e6283887a
+- **Date Added**: 2026-09-02
+
+### General approach for the determination of the magneto-angular dependence of the critical current of YBCO coated conductors
+- **Type**: local_pdf
+- **Location**: knowledge/sources/general_approach_for_the_determination_of_the_magneto/
+- **Use for**: The functional form for critical current versus field and angle in REBCO coated conductors -- the parameterization the Stellaris coil design fitted, and the form a computed conductor field ceiling would use (WI-038).
+- **Validation**: Check the critical-current form I_c(B,theta) = I_c0 * [1 + (B/B0)^alpha]^(-beta) * epsilon_theta with the Blatter anisotropy factor, and the fitted parameter table for the five commercial tapes, against the paper's equations and Table 3.
+- **Caveat**: Open-access copy retrieved from CORE (core.ac.uk/download/77415971.pdf); Supercond. Sci. Technol. 30 (2017) 025010, DOI 10.1088/1361-6668/30/2/025010. CRITICAL LIMIT: the published fits are at 77 K and external fields up to 400 mT only -- nothing at 20 K, nothing above 0.4 T. Above the fitted range the form degenerates to a power law with exponent alpha*beta, which spans 0.58 to 1.50 across the five fitted tapes. Any use at fusion fields is extrapolation and must be labelled so.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/claude-1000/-home-reid-1cfe-fusion-tea/598bdfcb-2263-4df3-8d58-af1534ad97b7/scratchpad/zhang2016.pdf
+- **Source ID**: bb1c32361a3739d682eb0307e6c7d113c4b84f90462e1c7b4fbef9db77c0efc1
+- **Raw SHA256**: bb1c32361a3739d682eb0307e6c7d113c4b84f90462e1c7b4fbef9db77c0efc1
+- **Raw Artifact SHA256**: bb1c32361a3739d682eb0307e6c7d113c4b84f90462e1c7b4fbef9db77c0efc1
+- **Extracted Path**: knowledge/sources/general_approach_for_the_determination_of_the_magneto/
+- **Extract SHA256**: f97d3877ff916a86c773bdb7525ec60b13c591d5bb1614ac4ffb5d6553dce1ee
+- **Date Added**: 2026-09-02
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

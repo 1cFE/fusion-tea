@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "capture_failed",
+  "candidate": "https://dspace.mit.edu/bitstream/handle/1721.1/135577/s41598-021-81559-z.pdf",
+  "slug": null,
+  "path": null,
+  "source_id": null,
+  "triage": "keeper",
+  "reason": "UnicodeDecodeError: 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-03T04:23:58.383147+00:00"
+}
