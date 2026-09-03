@@ -1,0 +1,34 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "I_coil",
+      "note": "Peak single-coil current, the field lever. Since WI-036 it also SIZES the winding pack (wp_side = sqrt(I_coil / j_wp)), so it now reaches the conductor's own strain check as well as the structural one, and stress grows as sqrt(I_coil * j_wp) rather than linearly.",
+      "keys": [
+        {"key": "stellarator_09__stellaris__magnet__I_coil", "provenance": "fan_out"}
+      ]
+    },
+    {
+      "axis": "j_wp",
+      "note": "Winding-pack current density [A/mm^2] -- the lever WI-036 minted. It replaced the held wp_side: the pack is now sized by the current it carries at a chosen current density, so j_wp trades winding-pack cross-section against stress. Lower j_wp means a wider, heavier, colder pack. The source's own coil set spans 112-124 A/mm^2.",
+      "keys": [
+        {"key": "stellarator_09__stellaris__magnet__j_wp", "provenance": "fan_out"}
+      ]
+    },
+    {
+      "axis": "n_e0",
+      "note": "Peak electron density, an operating-point lever (WI-037: the fuel peaks are computed from it by quasi-neutrality with the converged ash; the line-averaged ISS04 density derives from it).",
+      "keys": [
+        {"key": "stellarator_09__stellaris__n_e0", "provenance": "fan_out"}
+      ]
+    },
+    {
+      "axis": "p_input+tie",
+      "note": "Installed plasma-coupled ECRH power together with its declared physical-identity tie, the heating account's installed power (manifest.ties; declared by 20260901-sustainment-fence). Swept here only to separate the two arms, at the two levels the predecessor study established: the printed 50 MW and the 110 MW where feasibility was found.",
+      "keys": [
+        {"key": "stellarator_09__stellaris__p_input", "provenance": "fan_out"},
+        {"key": "stellarator_09__stellaris__p_ecrh", "provenance": "tie"}
+      ]
+    }
+  ]
+}
