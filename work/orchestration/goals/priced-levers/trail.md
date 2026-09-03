@@ -131,3 +131,51 @@ Task T-004: write the WI-036 design. Native target: `work/active/WI-036_winding-
 - **Decision:** trigger — the conductor strain operand cannot be derived rigorously without a finite-element result the source does not publish. Decision and reason — compose it as `f_cond · σ_wp / E_wp` with `f_cond` **calibrated from the source's own reported pair** rather than assumed, note that both anchors are printed bounds taken as values (so the operand over-estimates strain), and report the design-point value rather than tune it. This is the `k_sigma` convention applied to a second quantity. Tier — execution detail. Who decided — the round agent, 2026-09-03. What changed — design D4, risk 1.
 
 **Next task:** the WI-036 plan and implementation, through the native modelling PM with its validation levels.
+
+### T-005 scope
+
+- **Objective:** implement WI-036 through the native modelling PM — plan, model edits, regeneration, and the validation battery — with the MR-WI036-11 restatement recorded before regeneration.
+- **Why now:** spec and design are complete; implement is the native next stage.
+- **Scope:** authorized — `work/active/WI-036_winding-pack-sizing/plan.md`, edits under `models/library/` and `models/designs/`, the staged model twin at `exploration/stellarator_e2e/models/`, snapshot recapture and package regeneration, the oracle mirror and study-route constants, and **the tests/models and tests/study fixture surface** (named here in advance per the round-2 review's carried constraint 6: runner anchors, known-answer fixtures, the census, suite constants, the manifest, the ANNEX); excluded — the integrate seam, any study execution, discovery-log writes, any change to `sigma_allow`.
+- **Inputs:** the WI-036 spec and design; `goal.md`.
+- **Done when:** the battery is green and every changed expectation is re-derived from live evidence with its own explanation.
+- **Stop when:** a discovered prerequisite, a strategy blocker, or a declared limit.
+
+### T-005 start — 2026-09-03
+
+Task T-005: implement WI-036. Native targets: `models/`, the staged twin, `exploration/stellarator_e2e/generated`, and the named fixture surface. Expected artifacts: plan with implementation record, regenerated package, green battery.
+
+### T-005 return — 2026-09-03
+
+- **Outcome:** `COMPLETE`. Battery green: `tests/models` **48 passed / 13 skipped** (the WI-037 baseline count), `tests/study` **353 passed / 1 skipped, zero failures**.
+- **Evidence:** `work/active/WI-036_winding-pack-sizing/plan.md` § Implementation record and § MR-WI036-11 restatement; commits `4f3dd511`, `7f0e41e7`, and the battery-green commit.
+- **Reading.** Four results.
+  1. **The design point reproduces all nine anchors exactly** — LCOE 307.087120, total capital 14,542,872,713.455379, and the rest — and oracle bit-exactness holds at reldev 0.00e+00 on every channel. The sizing chain is neutral at the design point by construction (`wp_side` 0.360000 m, `c_coil` 25.0 m, cold volume 136.56 m³), so nothing moved that should not have.
+  2. **`cond_strain_ok` evaluates satisfied and is not inert.** It reads 0.217% against its 0.4% limit at the design point, and it is **reachable from both field levers** (`I_coil`, `R+tie`) in the live indicator report — so the conductor is checked by the same sweeps that check the structure. That matters because this model already carries one constraint, `tbr_ok`, that is held-vs-held and reaches nothing from any axis.
+  3. **A disclosed WI-035 limitation is closed.** The known-answer suite carried the comment "the decomposed rollup (magnet_capital) does NOT respond to R: the winding length is the held `c_coil` … a disclosed WI-035 limitation." With `c_coil = k_coil · R0`, `magnet_capital` moved into the tie-exclusive reachable set. The suite caught it; it is not an author's claim.
+  4. **`vol_cold_cryo` survives as a settable entry point** in the regenerated census — the standing `[OWNER 2026-08-27]` WI-032 ruling holds. The plan's check was written to catch the opposite outcome and report it as a genuine conflict.
+- **Decision:** trigger — the pinned codegen refused an expression in a calc input binding (`SI_EXPRESSION_SOURCE_UNSUPPORTED`). Decision and reason — move the additive cold-volume arithmetic **inside** the `Winding Pack Cold Volume` calc as a `vol_extra` input. Not a workaround: a calc is the right home for arithmetic, and the design reads better for it. Tier — execution detail. Who decided — the round agent, 2026-09-03. What changed — `mfe_magnet_field.sysml`, `mfe_plant.sysml`; plan § Implementation record.
+- **Decision:** trigger — the independent oracle (`verify_stellaris.py`) still took `wp_side` and `c_coil` as inputs and knew nothing of the conductor operand. Decision and reason — **update the mirror to compute the same chain independently**, rather than feed it the package's answers. Bit-exact parity then holds at reldev 0.00e+00 across all nine channels, which is evidence the two derivations agree rather than evidence they were wired together. Tier — execution detail. Who decided — the round agent, 2026-09-03. What changed — `verify_stellaris.py`, `oracle_entry.py`.
+- **Decision:** trigger — the fixture surface came in at roughly the size L-006 predicted. Decision and reason — every changed expectation is **re-derived from live evidence, never patched to match**: the census and the six known-answer expectation files by re-running the suites' own generation helpers against the regenerated package; the manifest re-pinned from `indicators.py --print-fingerprint`; counts and line numbers moved with their reason written at the site. Tier — execution detail. Who decided — the round agent, 2026-09-03. What changed — the surface named in § T-005 scope.
+
+### T-006 scope
+
+- **Objective:** obtain one study-ready `CANDIDATE` pin for the WI-036 package through the native integrate seam.
+- **Why now:** the item is implemented and the battery is green; a committed study needs a verified pin.
+- **Scope:** authorized — `scripts/integrate.py` and its out-dir, evidence deposit in the goal directory, and **the tests/models and tests/study fixture surface the seam's own gates reach** (named per carried constraint 6); excluded — any model edit, any study execution, discovery-log writes.
+- **Inputs:** `goal.md`; the WI-036 item at its committed sha.
+- **Done when:** the seam returns `CANDIDATE` with a pin, or a named `BLOCKER`.
+- **Stop when:** a `BLOCKER` naming the seam, a strategy blocker, or a declared limit.
+
+### T-006 start — 2026-09-03
+
+Task T-006: run the integration seam against the WI-036 package. Native target: `scripts/integrate.py`. Expected artifact: an integration return carrying a `CANDIDATE` pin.
+
+### T-006 return — 2026-09-03
+
+- **Outcome:** `COMPLETE`. The seam returns **`CANDIDATE`** with all ten gates `pass`.
+- **Evidence:** `evidence/T-006_integration_return.json`, `evidence/T-006_verification_summary.json`. Pin **`6262dbf42c709600dc03736d8c54058c9a08ec4369ccd0327a26474cd34be784`**; semantic fingerprint `3cb690aab05e…`, executable fingerprint `cc64dc5a4d15…`, teax revision `744745f8…`. Gate detail: regeneration rewrote no byte outside `handwritten/`; 70 handwritten files byte-identical; the snapshot recaptures byte-identically and **197 entry points re-derive to the census as bound**; preflight six of six; verification — oracle parity holds and every verdict re-derived.
+- **Reading:** there is one study-ready candidate at a verified pin, and the census gate independently confirms the entry-point change this item intended (193 → 197, with `wp_side` and `c_coil` retired). The seam's own standing disclosure — `assert_read_set_covered` is out of reach at this gate and covered by nothing else — is carried forward unchanged; it is a known seam limitation, not a finding of this round.
+- **Decision:** trigger — none at goal level; the seam ran its documented procedure and returned a candidate. Tier — execution detail. Who decided — n/a. What changed — `evidence/T-006_*`.
+
+**Next task:** the committed study — with the field lever priced, does a feasible operating point exist at the printed 50 MW installed heating, and what does it cost.
