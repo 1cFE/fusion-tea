@@ -1,0 +1,15 @@
+{
+  "request_id": "REQ-036-01",
+  "question": "What structural design allowable stresses are used for fusion magnet support structures at 4-20 K, and are there sourced higher-strength alternatives to cryogenic AISI 316LN at its 800 MPa design limit?",
+  "consumer": "WI-036",
+  "gap_type": "unsourced_value",
+  "priority": "P1",
+  "where_to_look": [
+    "IEEE Transactions on Applied Superconductivity",
+    "Fusion Engineering and Design",
+    "Cryogenics",
+    "ITER magnet structural design reports",
+    "ASME BPVC Section VIII Division 2 cryogenic practice"
+  ],
+  "limits": {"max_searches": 5, "max_captures": 2}
+}
