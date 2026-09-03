@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "holdout_hit",
+  "candidate": "https://arxiv.org/pdf/2409.01925",
+  "slug": null,
+  "path": null,
+  "source_id": null,
+  "triage": "keeper",
+  "reason": "term:aries-cs matched 4x",
+  "rule_id": "term:aries-cs",
+  "captured": false,
+  "at": "2026-09-03T18:27:44.087207+00:00"
+}

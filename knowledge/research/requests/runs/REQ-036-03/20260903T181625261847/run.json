@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-036-03",
+  "request_key": "a026efb06530e8a7fcf9705bcf1f07c4cc064c51dcc73bcc947d2c20872699d3",
+  "request_path": "knowledge/research/requests/REQ-036-03.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 6,
+    "max_captures": 3
+  },
+  "opened_at": "2026-09-03T18:16:25.262006+00:00",
+  "override_reason": null
+}

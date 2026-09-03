@@ -1,0 +1,15 @@
+{
+  "request_id": "REQ-036-03",
+  "question": "At what stress or strain does the critical current of REBCO coated conductor degrade at about 20 K, and does that conductor limit bind before the structural steel allowable in a fusion winding pack?",
+  "consumer": "WI-036",
+  "gap_type": "unsourced_value",
+  "priority": "P0",
+  "where_to_look": [
+    "Superconductor Science and Technology",
+    "IEEE Transactions on Applied Superconductivity",
+    "Fusion Engineering and Design",
+    "REBCO coated conductor mechanical characterisation studies",
+    "HTS fusion magnet design papers"
+  ],
+  "limits": {"max_searches": 6, "max_captures": 3}
+}

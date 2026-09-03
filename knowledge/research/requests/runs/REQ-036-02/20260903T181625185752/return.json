@@ -1,0 +1,22 @@
+{
+  "request_id": "REQ-036-02",
+  "run": "knowledge/research/requests/runs/REQ-036-02/20260903T181625185752",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "coil_concepts_for_demo_and_next_step_reactors_5th_iaea_demo",
+      "path": "knowledge/sources/coil_concepts_for_demo_and_next_step_reactors_5th_iaea_demo/",
+      "source_id": "791a59109280e4b532a6ba579f51dc81193d625489865c943999a1c715eb8230",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "ITER_D_2FMHHS MSDC Part 1 (Mitchell & Jong)",
+      "reason": "ITER IDM document, not publicly downloadable; it is the governing criteria document and all content reaches us second-hand through open sources"
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

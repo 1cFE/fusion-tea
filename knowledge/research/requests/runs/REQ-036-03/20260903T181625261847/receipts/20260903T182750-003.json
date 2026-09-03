@@ -1,0 +1,13 @@
+{
+  "attempt": 3,
+  "outcome": "registered",
+  "candidate": "https://www.osti.gov/servlets/purl/1819054",
+  "slug": "conceptual_design_of_hts_magnets_for_fusion_nuclear_science",
+  "path": "knowledge/sources/conceptual_design_of_hts_magnets_for_fusion_nuclear_science/",
+  "source_id": "61aab82addaaff0bb06f08b5c11228f52a5251fc241cabf72b5e1378f1ce251c",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-03T18:27:50.564794+00:00"
+}

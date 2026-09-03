@@ -1,0 +1,15 @@
+{
+  "request_id": "REQ-036-02",
+  "question": "What structural design criterion governs a superconducting fusion magnet winding pack at 20 K, what stress category and quantity is the allowable applied to, and is a composite winding pack judged by the same criterion as its steel case?",
+  "consumer": "WI-036",
+  "gap_type": "unsourced_value",
+  "priority": "P0",
+  "where_to_look": [
+    "ITER Magnet Structural Design Criteria",
+    "Fusion Engineering and Design",
+    "IEEE Transactions on Applied Superconductivity",
+    "ASME BPVC Section VIII Division 2 limit analysis practice",
+    "national-lab fusion magnet design reports"
+  ],
+  "limits": {"max_searches": 6, "max_captures": 3}
+}

@@ -313,6 +313,54 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: f97d3877ff916a86c773bdb7525ec60b13c591d5bb1614ac4ffb5d6553dce1ee
 - **Date Added**: 2026-09-02
 
+### Coil Concepts for DEMO and Next Step Reactors (5th IAEA DEMO Programme Workshop, 2018)
+- **Type**: url
+- **Location**: knowledge/sources/coil_concepts_for_demo_and_next_step_reactors_5th_iaea_demo/
+- **Use for**: The stress-category structure behind fusion magnet structural allowables -- what the ITER Magnet Structural Design Criteria set for primary membrane, membrane-plus-bending and peak stress, and the correction needed before a smeared winding-pack stress can be compared to a steel allowable; the criterion basis for the winding-pack stress fence (WI-036).
+- **Validation**: Check the primary membrane allowable Sm = two-thirds yield = 666 MPa stated as yield-only under the ITER criteria, the peak limit of 2.0 Sm reduced to 1.5 Sm where local plasticity may affect insulation bonding, and the statement that smeared central-solenoid winding-pack stress must be multiplied by about two to obtain metal stress.
+- **Caveat**: Conference slide deck, PPPL, 2018 -- authoritative as a secondary account of the ITER Magnet Structural Design Criteria (ITER_D_2FMHHS), which is an ITER IDM document and not publicly available. Tokamak TF and CS geometry; the criteria structure transfers, the geometry does not.
+
+#### Extended Metadata
+- **Source URL**: https://nucleus.iaea.org/sites/fusion-portal/Shared%20Documents/ACTIVITIES/DEMO/2018/Materials/Titus.pdf
+- **Source ID**: 791a59109280e4b532a6ba579f51dc81193d625489865c943999a1c715eb8230
+- **Raw SHA256**: 791a59109280e4b532a6ba579f51dc81193d625489865c943999a1c715eb8230
+- **Raw Artifact SHA256**: 791a59109280e4b532a6ba579f51dc81193d625489865c943999a1c715eb8230
+- **Extracted Path**: knowledge/sources/coil_concepts_for_demo_and_next_step_reactors_5th_iaea_demo/
+- **Extract SHA256**: 9d098146c01e6871af7fe47ed317110dfb9136b77fee3bcd4e5fd8e429bd3bca
+- **Date Added**: 2026-09-03
+
+### Electro-mechanical properties of REBCO coated conductors from various industrial manufacturers at 77 K, self-field and 4.2 K, 19 T
+- **Type**: url
+- **Location**: knowledge/sources/electro_mechanical_properties_of_rebco_coated_conductors/
+- **Use for**: The irreversible strain and stress limits of REBCO coated conductor by manufacturer -- the conductor's own mechanical limit, which the winding-pack stress fence must be checked against separately from the structural steel allowable (WI-036). This is the common authority behind both the Stellaris strain claim and the MANTA 700 MPa conductor limit.
+- **Validation**: Check the irreversible strain limits ranging from about 0.45 percent for SuperOx tape to about 0.72 percent for Bruker tape, the irreversible stresses in the 740 to 840 MPa band at 4.2 K, and the statement that the irreversible strain limits are identical between 77 K self-field and 4.2 K at 19 T.
+- **Caveat**: arXiv preprint of Supercond. Sci. Technol. 28 (2015) 045011; the journal version is paywalled. Measured at 77 K self-field and 4.2 K / 19 T -- NOT at the 20 K fusion operating point, which is bracketed rather than measured. Uniaxial tension on bare tape; compressive limits are not measured and must not be assumed symmetric. SuperOx, the manufacturer Stellaris specifies, is the weakest of the five in strain.
+
+#### Extended Metadata
+- **Source URL**: https://arxiv.org/pdf/1502.06713
+- **Source ID**: 15ec2a340eaba7b7797f8a9be2a0170aa1b5c33a6d6b6bf744ca8923deab3a53
+- **Raw SHA256**: 15ec2a340eaba7b7797f8a9be2a0170aa1b5c33a6d6b6bf744ca8923deab3a53
+- **Raw Artifact SHA256**: 15ec2a340eaba7b7797f8a9be2a0170aa1b5c33a6d6b6bf744ca8923deab3a53
+- **Extracted Path**: knowledge/sources/electro_mechanical_properties_of_rebco_coated_conductors/
+- **Extract SHA256**: 4003bfeaecc87f7bf7565fa4f54510aace72ad886b97a351b48d63bd95a174d3
+- **Date Added**: 2026-09-03
+
+### Conceptual Design of HTS Magnets for Fusion Nuclear Science Facility
+- **Type**: url
+- **Location**: knowledge/sources/conceptual_design_of_hts_magnets_for_fusion_nuclear_science/
+- **Use for**: A design-level transverse stress limit on REBCO tape -- the conductor's limit perpendicular to the tape, which is far below any structural steel allowable and is a separate check the winding-pack fence does not currently make (WI-036).
+- **Validation**: Check the statement that transverse load effects impose a limit of about 200 MPa on the tape without critical-current performance degradation, and the accompanying list of REBCO tape issues including delamination at high field from screening currents.
+- **Caveat**: Open DOE/OSTI report. The 200 MPa figure is stated for bare tape; impregnated or soldered cable stacks tolerate substantially more, so this is a floor for an unsupported tape rather than a limit for a jacketed stack.
+
+#### Extended Metadata
+- **Source URL**: https://www.osti.gov/servlets/purl/1819054
+- **Source ID**: 61aab82addaaff0bb06f08b5c11228f52a5251fc241cabf72b5e1378f1ce251c
+- **Raw SHA256**: 61aab82addaaff0bb06f08b5c11228f52a5251fc241cabf72b5e1378f1ce251c
+- **Raw Artifact SHA256**: 61aab82addaaff0bb06f08b5c11228f52a5251fc241cabf72b5e1378f1ce251c
+- **Extracted Path**: knowledge/sources/conceptual_design_of_hts_magnets_for_fusion_nuclear_science/
+- **Extract SHA256**: c2f583abae16fae91410e55d8eb68780597a4599ef54652819dca56eefc88495
+- **Date Added**: 2026-09-03
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

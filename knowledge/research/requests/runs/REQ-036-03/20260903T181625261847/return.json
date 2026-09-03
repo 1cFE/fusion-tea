@@ -1,0 +1,32 @@
+{
+  "request_id": "REQ-036-03",
+  "run": "knowledge/research/requests/runs/REQ-036-03/20260903T181625261847",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "electro_mechanical_properties_of_rebco_coated_conductors",
+      "path": "knowledge/sources/electro_mechanical_properties_of_rebco_coated_conductors/",
+      "source_id": "15ec2a340eaba7b7797f8a9be2a0170aa1b5c33a6d6b6bf744ca8923deab3a53",
+      "pre_existing": false
+    },
+    {
+      "slug": "conceptual_design_of_hts_magnets_for_fusion_nuclear_science",
+      "path": "knowledge/sources/conceptual_design_of_hts_magnets_for_fusion_nuclear_science/",
+      "source_id": "61aab82addaaff0bb06f08b5c11228f52a5251fc241cabf72b5e1378f1ce251c",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://arxiv.org/pdf/2409.01925",
+      "reason": "term:aries-cs matched 4x"
+    },
+    {
+      "candidate": "https://doi.org/10.1109/TASC.2019.2902458",
+      "reason": "Pierro et al. 2019, IEEE, paywalled -- the only identified source measuring irreversible strain THROUGH 20 K (4.2-40 K at 15 T), and one of the two authorities Stellaris cites; worth manual acquisition"
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}
