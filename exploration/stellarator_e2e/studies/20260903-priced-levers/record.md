@@ -203,7 +203,7 @@ What the comparison to the predecessor's committed optimum of **293.468 $/MWh** 
 
 ## 13. Verification
 
-`results/verification_summary.json`. **Outcome: pass.** 1 store, **15 sampled rows** stratified by verdict combination so the sample cannot miss a produced verdict, **13 channels** compared against the package-owned oracle at relative deviation < 1e-9 with **worst observed 2.74e-16**, and **9 verdicts re-derived** from the oracle's own operands rather than compared to themselves.
+`results/verification_summary.json`. **Outcome: pass.** 1 store, **15 sampled rows** stratified by verdict combination so the sample cannot miss a produced verdict, **13 channels** compared against the package-owned oracle at relative deviation below 1e-9 with **worst observed 2.74e-16**, and **9 verdicts re-derived** from the oracle's own operands rather than compared to themselves.
 
 **What verification did not cover, stated as part of the outcome:**
 
@@ -232,7 +232,7 @@ What the comparison to the predecessor's committed optimum of **293.468 $/MWh** 
 
 ## 16. Snapshot
 
-`snapshot.json`, resolved at this commit. Its own sha256 is **`838ec6a90fb7965739435bd99312238cf28f7db95424f3e66c5be49ce074c261`**. Nothing in this record cites a live file for content: deleting or editing the manifest or the package cannot change what this record says.
+`snapshot.json`, resolved at this commit. Its own sha256 is **`59049340ff4a94b7e94ac45d01f87c1b127e90d5e0967c106a26f49a5e58eaae`** (updated 2026-09-03 by the Addendum below, which added one identity field per arm; the value at the original commit `76876b82` was `838ec6a90fb7965739435bd99312238cf28f7db95424f3e66c5be49ce074c261`, and `synthesis.md` stamps that original). Nothing in this record cites a live file for content: deleting or editing the manifest or the package cannot change what this record says.
 
 Carried in it: the three package fingerprints and the sealed executable fingerprint; the manifest digest with the tie and baseline content actually used; per-arm windows with their `engineered` provenance and the scan they were fixed from; digests for all eight `results/` artifacts plus `indicators.json`, `axes.json`, `study.py` and `scan.py`; the preflight outcome; the counts (439 proposed, 439 evaluated, 0 excluded, 94 feasible — 87 in `arm-search-p110`, 7 in `arm-transect-jwp`, **0 in `arm-fence-p50`**); and the teax revision `744745f8…`.
 
@@ -249,3 +249,33 @@ Carried in it: the three package fingerprints and the sealed executable fingerpr
 - **No independent verification of the sustainment, power-balance or cryo-cost quantities** (§ 13) — oracle-derived on both sides.
 - **No statement about T_i0 below 14.63 keV or above 19 keV**, nor about densities below 0.8× or above 1.4×. The windows are `engineered` and the structure inside them is not a claim about the frame's rightness.
 - **The teax revision that executed this run** is `744745f895677f3344b9884627369a6a47ed987f`, recorded in the integration return this pin came from; the study's own `verification_summary.json` records `teax.revision` as unrecorded, the same gap the predecessor record carries.
+
+## Addendum — 2026-09-03 — statement corrections and record-contract closure (evidence untouched)
+
+Written by the resuming executor of goal `priced-levers` round 1, after the fresh administrator's read (`synthesis.md`, which stamps the pre-addendum `snapshot.json` digest `838ec6a9…`). Every correction below was re-derived by the executor from `results/points.csv` and `results/oracle_operands.csv` before it was written. No value in `results/`, `indicators.json`, `axes.json`, `study.py` or `scan.py` changed. Per step 15, the sections above are not rewritten; this addendum supersedes the statements it names.
+
+### A. Statements the record gets wrong, corrected
+
+1. **Maximum conductor strain (§ 4, § 15 #3).** The record says 0.235%. That is the transect arm's maximum. The study-wide maximum is **0.286%** (`arm-fence-p50`, I = 18 MA, `j_wp` = 130). Finding #3's reading stands — 0.286% is under the 0.400% limit and `cond_strain_ok` is violated 0 / 439 — and its 0.2% remark strengthens: at a 0.2% limit **323 of 439 points and the pinned baseline itself (0.217%)** would violate.
+2. **Where `wp_stress_ok` is violated (§ 4, § 6).** The record says "I ≥ 17 MA". All 32 violations are at **I = 18 MA** in `arm-fence-p50`; every 17 MA point satisfies (σ 656–789 MPa against 800).
+3. **The 27 wall-alone points (§ 15 #1).** The count is correct and the reading stands. The coordinates quoted — I 15.4 MA, T 17–18 keV, n 1.2×, required heating 26.3–36.3 MW, wall load 5.76–6.46 — describe **6 of the 27** (that cell across the three `j_wp` values). The full set spans I 15.0–15.4 MA, T 17–19 keV, n 1.2–1.4×, wall load 5.76–9.23 MW/m², and required sustained heating **−47.8 to +49.3 MW against 50 installed, negative at 12 of the 27** (oracle-side, `results/oracle_operands.csv` `p_aux_required_MW`; the plasma is self-sustaining with the heating off at those twelve). The corrected range makes the finding sharper, not weaker: the wall blocks points across the whole hot, dense corner, not one cell of it.
+4. **"The stress relief that made an 18 MA point legal costs 0.026 $/MWh" (§ 15 #2).** Not one value. At 18 MA, moving `j_wp` from 118.83 to 90 flips `wp_stress_ok` from violated (821 MPa) to satisfied (715 MPa) at every (T, n) cell, and the LCOE delta across those sixteen cells is **0.023–0.135 $/MWh**; the record's 0.026 is the T = 18 keV, n = 1.4× cell. The claim's meaning — the relief is nearly free — stands.
+5. **"No statement about T_i0 … above 19 keV" (§ 17).** True of `arm-fence-p50`. For `arm-search-p110` the window tops at **18 keV, the level the optimum sits on**; so the constrained optimum (271.359) is **window-bounded, not fence-bounded, in T** — and in `j_wp` (130 is the top of `J_VALUES`) — and sits 0.007 MW/m² under the wall fence (4.043 against 4.05). § 6 `T_i0`'s "the optimum sits at the top of it" already says this; § 17 is corrected to match.
+
+### B. Record-contract closure
+
+`tests/study/test_records.py` failed two of its three checks on this record at resume, which means step 15's fail-closed condition was not run before the record was committed:
+
+1. **A literal less-than sign in § 13** (the § 13 phrase "relative deviation less-than 1e-9", written with the symbol) tripped the placeholder check. Replaced with "below 1e-9". Prose only.
+2. **`snapshot.json` `arms[]` lacked `effective_executable_fingerprint`**, which every prior record's arms carry and the closure test reads. Added to each of the three arms with `value` = the sealed executable fingerprint `cc64dc5a4d151cf7…` (already carried by this snapshot's `fingerprints.sealed_executable_fingerprint` and by `results/package_identity.json`), `inputs: null`, `no_adapter: true`. **This is an edit to a file step 15 says is never edited.** It is disclosed here rather than done silently: the snapshot was incomplete, not wrong; no `evaluated`, `feasible`, `window`, `verification`, `stores`, `counts` or digest field changed (the diff is eighteen added lines and nothing removed — `git diff` on the commit shows it); and the record's own closure contract could not be met any other way. The digest moved from `838ec6a90fb7965739435bd99312238cf28f7db95424f3e66c5be49ce074c261` to `59049340ff4a94b7e94ac45d01f87c1b127e90d5e0967c106a26f49a5e58eaae`; § 16 is updated to the new value and names the old one.
+
+### C. Disclosures the administrator surfaced, answered from outside the record
+
+- **`results/_work/`** is a gitignored working directory (`exploration/stellarator_e2e/studies/.gitignore`: `**/_work/`), not evidence; it is correctly absent from `results_artifacts`.
+- **The two package path spellings are one tree:** `exploration/stellarator_e2e/pkg/stellarator_tea` is a symlink to `../generated`. The identical sealed digest in all four artifacts is the evidence of that.
+- **`results/verification_summary.json` lists nothing under `not_independently_verified`** while § 13 names three classes of oracle-side-only quantities. The caveat lives in prose, not in the artifact. Filed as a study-tooling contract gap alongside `20260903-priced-levers#4`; no finding id is minted here (a goal round may not mint one).
+- **`teax.revision` unrecorded** in the verification artifact — the same gap the predecessor record carries, already disclosed in § 17.
+
+### D. What this addendum does not change
+
+Every § 15 finding id, class, and disposition; every violation count in § 4; the feasible counts; the constrained optimum and the 14.63 keV slice comparison; the transect's magnet-capital delta of exactly zero; the § 12 boundary treatment. The administrator's independent recount agrees with all of them (`synthesis.md` § 2.2).

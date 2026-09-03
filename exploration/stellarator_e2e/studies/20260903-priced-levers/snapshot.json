@@ -103,6 +103,12 @@
   {
    "arm_id": "arm-fence-p50",
    "store_id": "20260903-priced-levers",
+   "effective_executable_fingerprint": {
+    "value": "cc64dc5a4d151cf7db69069230b0a591f799e6d65320649bfd3b292beafb2d16",
+    "inputs": null,
+    "no_adapter": true,
+    "note": "no adapter exists; the sealed fingerprint is the identity (added 2026-09-03 by the record Addendum; value = fingerprints.sealed_executable_fingerprint = results/package_identity.json digest)"
+   },
    "evaluated": 240,
    "feasible": 0,
    "window": {
@@ -144,6 +150,12 @@
   {
    "arm_id": "arm-search-p110",
    "store_id": "20260903-priced-levers",
+   "effective_executable_fingerprint": {
+    "value": "cc64dc5a4d151cf7db69069230b0a591f799e6d65320649bfd3b292beafb2d16",
+    "inputs": null,
+    "no_adapter": true,
+    "note": "no adapter exists; the sealed fingerprint is the identity (added 2026-09-03 by the record Addendum; value = fingerprints.sealed_executable_fingerprint = results/package_identity.json digest)"
+   },
    "evaluated": 192,
    "feasible": 87,
    "window": {
@@ -184,6 +196,12 @@
   {
    "arm_id": "arm-transect-jwp",
    "store_id": "20260903-priced-levers",
+   "effective_executable_fingerprint": {
+    "value": "cc64dc5a4d151cf7db69069230b0a591f799e6d65320649bfd3b292beafb2d16",
+    "inputs": null,
+    "no_adapter": true,
+    "note": "no adapter exists; the sealed fingerprint is the identity (added 2026-09-03 by the record Addendum; value = fingerprints.sealed_executable_fingerprint = results/package_identity.json digest)"
+   },
    "evaluated": 7,
    "feasible": 7,
    "window": {
