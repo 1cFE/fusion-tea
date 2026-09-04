@@ -188,12 +188,19 @@ def test_a_planted_channel_deviation_fails_naming_case_and_channel(promoted_run,
 
 
 def test_a_planted_verdict_mismatch_fails_naming_the_constraint(promoted_run, monkeypatch):
-    """Flip the threshold the package's own predicate reads, so re-derivation disagrees."""
+    """Flip the threshold the package's own predicate reads, so re-derivation disagrees.
+
+    Since WI-041 the fence compares the source-anchored peak (4.088 at the
+    baseline) with the printed 4.05, so the store records wall_load_ok VIOLATED
+    at every availability-sweep point; a planted limit of 0.0 would agree with
+    the store and plant nothing. The plant is an unreachable limit instead, so
+    re-derivation reads satisfied against the store's violated. Before WI-041
+    (store: satisfied) the plant was 0.0."""
     real = verify.package_input_values
 
     def flipped(package_root):
         values = dict(real(package_root))
-        values["stellarator_09__stellaris__wall_load_limit"] = 0.0
+        values["stellarator_09__stellaris__wall_load_limit"] = 1.0e9
         return values
 
     monkeypatch.setattr(verify, "package_input_values", flipped)
