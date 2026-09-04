@@ -425,6 +425,22 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: 05058e109aa2c0deb6dcc1a1784a858ea56ed34014718381a316370f168b0e59
 - **Date Added**: 2026-09-03
 
+### Measurements of the strain dependence of critical current of commercial REBCO tapes at 15 T between 4.2 and 40 K for high field magnets (Pierro, Delgado, Chiesa, Wang, Prestemon; IEEE Trans. Appl. Supercond. 29(5), 2019)
+- **Type**: local_pdf
+- **Location**: knowledge/sources/measurements_of_the_strain_dependence_of_critical_current/
+- **Use for**: The through-20 K strain tolerance of REBCO tape: normalized critical current versus applied strain at 12-15 T and 4.2, 20, 40 K on SuperPower SCS4030-AP; the only identified measurement between 4.2 K and 77 K, and one of the two authorities Stellaris cites for its conductor. Serves the conductor-strain check (cond_strain_ok, WI-036) whose eps_cond_allow = 0.4% was held on a 4.2 K measurement, and any eps_cond_allow sensitivity arm in a fence study. RQ-3 / RQ-5.
+- **Validation**: Table II: Ic and n at zero mechanical strain per condition (15 T 4.2 K 260 A; 12 T 4.2 K 278 A; 15 T 20 K 125 A; 15 T 40 K 44 A). Fig. 4: Ic/Ic0 vs applied strain -0.7 to +0.7% at 4.2, 20, 40 K and 15 T. Fig. 5: 12 T vs 15 T at 4.2 K. Fig. 2: FEA residual thermal strain vs temperature (-0.05% at 77 K, about -0.10% at 4.2 K). Text (sec. III.B): applied strain -0.60% to +0.65%; reversibility defined as Ic after release above 99% of Ic0; reversible in most samples; at 4.2 K only two samples degraded irreversibly, at -0.4% strain; less than 5% Ic reduction at 4.2 and 20 K at high strain, stronger at 40 K; conclusion: reversible Ic reduction up to 0.6% in both tension and compression at all tested temperatures.
+- **Caveat**: Author's accepted version (IEEE copyright). One tape type only (SuperPower SCS4030-AP, 30 um substrate, 40 um Cu, artificial pinning), five samples per condition; measures tape strain tolerance, not a design allowable or a stress limit; strain applied by a Cu-Ni3-Si U-spring with residual thermal strain from FEA, and current sharing into the holder corrected for (Table I); the two irreversible degradations were in compression at 4.2 K; no data above 15 T. The model's eps_cond_allow stays a settable value; this source bounds it, it does not set it.
+
+#### Extended Metadata
+- **Origin Path**: /home/reid/1cfe/Pierro-strain.pdf
+- **Source ID**: 943526b1bd0fad4672601d83e19217cf0f9b711d4982f343556ccb3cbbe0dc12
+- **Raw SHA256**: 943526b1bd0fad4672601d83e19217cf0f9b711d4982f343556ccb3cbbe0dc12
+- **Raw Artifact SHA256**: 943526b1bd0fad4672601d83e19217cf0f9b711d4982f343556ccb3cbbe0dc12
+- **Extracted Path**: knowledge/sources/measurements_of_the_strain_dependence_of_critical_current/
+- **Extract SHA256**: 4da4d5c7d6680b87c1672c0d37de083875020092157583822bc7b4f05a9b5d39
+- **Date Added**: 2026-09-04
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md
