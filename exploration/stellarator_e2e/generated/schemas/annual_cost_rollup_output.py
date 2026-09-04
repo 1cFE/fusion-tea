@@ -14,7 +14,7 @@ economics, it makes the two sums producer channels the DCF core and the
 economics.py:88-92 (compute_lcoe)
 *Basis**: 1costingFE CAS70 composition and LCOE annual-cost numerator
 
-SysML Source: root-0/analyses/mfe_account_costs.sysml:893
+SysML Source: root-0/analyses/mfe_account_costs.sysml:899
     """
     cas70: float = Field(description="cas70 output")
     annual_total: float = Field(description="annual_total output")

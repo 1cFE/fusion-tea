@@ -7,7 +7,7 @@
   "fingerprints": {
     "indicator_inputs": {
       "recipe": "indicator-input-fingerprint/v1",
-      "digest": "2649e0ea2a987f3e56e9f659c4b4c48c9b670e6a0f8e47831c5fc253608455ad",
+      "digest": "c1b0f0d1e7764e557383fac4bfcd7d534978ec170ef9a106bf8e665b7061ca90",
       "files": [
         "contracts/model_contract.json",
         "inputs/mfe_account_costs_params.json",
@@ -21,8 +21,8 @@
       ]
     },
     "recorded_provenance": {
-      "executable_fingerprint": "b0c5f3eda9014fa1c84573c300c63f7fc04ecc1f8ea47047caa7775c010c6c78",
-      "semantic_fingerprint": "48731d1570bb20cdeae45faa20545aae46aeda5982a4fbc2129d7784a66595ba"
+      "executable_fingerprint": "d4be395197a060590238ff74aa0c5e30fa65c94f0c9390055697da61d62be708",
+      "semantic_fingerprint": "d468f3b69ad00c46b259bfeca2123d7db5a527c3a0da55e69b54793845417736"
     }
   },
   "objective_catalog": [
@@ -100,7 +100,7 @@
     },
     "headline": {
       "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
-      "value": 307.08712042841586
+      "value": 313.5134115016116
     },
     "verdicts": [
       {
@@ -133,7 +133,7 @@
       },
       {
         "source_local_identity": "wall_load_ok",
-        "expected": "satisfied"
+        "expected": "violated"
       },
       {
         "source_local_identity": "wp_stress_ok",

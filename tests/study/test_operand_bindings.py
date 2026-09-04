@@ -28,7 +28,13 @@ BASELINE_POINT = {
     "stellarator_09__stellaris__a": 1.3,
     "stellarator_09__stellaris__availability": 0.85,
 }
-PINNED_LCOE = 307.08712042841586  # WI-037 pin (sustainment closure, computed quasi-neutral fuel; goal operating-point-closure, 2026-09-01)
+# WI-041 pin (source-anchored wall-load fence; goal wall-and-heating round 2, 2026-09-04):
+# the CAS72 lifetime operand moved from the circular-torus average to the peak (4.088
+# MW/m^2), so the core is replaced 5 times instead of 4 and CAS72 rose 95,898,253 ->
+# 131,494,480 $/yr; +35,596,226 / (8760 h x 743.910232 MW x 0.85) = +6.426 $/MWh on
+# the WI-037 pin 307.08712042841586. Re-pinned from the executed baseline after the
+# oracle read bit-exact (run_stellaris_single.py), never before.
+PINNED_LCOE = 313.5134115016116
 
 
 @pytest.fixture

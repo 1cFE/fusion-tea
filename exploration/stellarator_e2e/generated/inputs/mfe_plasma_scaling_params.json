@@ -3,5 +3,7 @@
   "stellarator_09__stellaris__beta_calc__mu0": 1.25663706212e-06,
   "stellarator_09__stellaris__geom__pi": 3.14159265358979,
   "stellarator_09__stellaris__rb__pi": 3.14159265358979,
-  "stellarator_09__stellaris__wall_load_calc__ash_frac_in": 0.2002
+  "stellarator_09__stellaris__wall_load_calc__ash_frac_in": 0.2002,
+  "stellarator_09__stellaris__wall_peak_cal__ash_frac_in": 0.2002,
+  "stellarator_09__stellaris__wall_peak_cal__pi": 3.14159265358979
 }

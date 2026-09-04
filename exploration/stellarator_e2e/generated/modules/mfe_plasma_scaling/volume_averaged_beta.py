@@ -50,9 +50,9 @@ Inputs:
 Outputs:
     - beta: beta result
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:257
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:351
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:257
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:351
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_plasma_scaling/volume_averaged_beta_impl.py
@@ -146,9 +146,9 @@ Inputs:
 Outputs:
     - beta: beta result
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:257
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:351
 
-    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:257
+    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:351
 
     Calculation Specification:
         mu0 = 1.25663706212e-06

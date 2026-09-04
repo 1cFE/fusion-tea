@@ -406,6 +406,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__wall_peak_cal__calibration",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__rb__wall_area",
       "field_name": "wall_area",
       "python_type": "float"
@@ -566,12 +571,12 @@
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__wall_load_calc__wall_load",
+      "channel_name": "stellarator_09__stellaris__fuel_calc__annual_fuel",
       "field_name": "root",
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__fuel_calc__annual_fuel",
+      "channel_name": "stellarator_09__stellaris__wall_load_calc__wall_load",
       "field_name": "root",
       "python_type": "float"
     },
@@ -748,6 +753,11 @@
     {
       "channel_name": "stellarator_09__stellaris__cas80_calc__crf",
       "field_name": "crf",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
+      "field_name": "root",
       "python_type": "float"
     },
     {
@@ -1319,6 +1329,20 @@
       "qualified_name": "stellarator_09__stellaris__wall_load_calc__ash_frac_in"
     },
     {
+      "default_value": 0.2002,
+      "entry_type": "library_default",
+      "param_group": "mfe_plasma_scaling_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__wall_peak_cal__ash_frac_in"
+    },
+    {
+      "default_value": 3.14159265358979,
+      "entry_type": "library_default",
+      "param_group": "mfe_plasma_scaling_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__wall_peak_cal__pi"
+    },
+    {
       "default_value": 0.6,
       "entry_type": "library_default",
       "param_group": "mfe_plasma_sustainment_params",
@@ -1415,13 +1439,6 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__alpha_n_e"
-    },
-    {
-      "default_value": 0.2002275312855518,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__ash_frac"
     },
     {
       "default_value": 200000000.0,
@@ -2299,6 +2316,55 @@
       "qualified_name": "stellarator_09__stellaris__wall_load_limit"
     },
     {
+      "default_value": 12.7,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__wall_peak_R_ref"
+    },
+    {
+      "default_value": 1.3,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__wall_peak_a_ref"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__wall_peak_calibration_direct"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__wall_peak_kappa_ref"
+    },
+    {
+      "default_value": 2700.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__wall_peak_p_fus_ref"
+    },
+    {
+      "default_value": 4.05,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__wall_peak_q_ref"
+    },
+    {
+      "default_value": 0.1,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__wall_peak_standoff_ref"
+    },
+    {
       "default_value": 1960000.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -2306,5 +2372,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "48731d1570bb20cdeae45faa20545aae46aeda5982a4fbc2129d7784a66595ba"
+  "semantic_fingerprint": "d468f3b69ad00c46b259bfeca2123d7db5a527c3a0da55e69b54793845417736"
 }

@@ -79,6 +79,8 @@
     "modules/mfe_plasma_scaling/dt_fusion_power.py",
     "modules/mfe_plasma_scaling/mfe_radial_build.py",
     "modules/mfe_plasma_scaling/neutron_wall_load.py",
+    "modules/mfe_plasma_scaling/neutron_wall_load_peak.py",
+    "modules/mfe_plasma_scaling/neutron_wall_load_peak_calibration.py",
     "modules/mfe_plasma_scaling/plasma_geometry.py",
     "modules/mfe_plasma_scaling/volume_averaged_beta.py",
     "modules/mfe_plasma_sustainment/__init__.py",

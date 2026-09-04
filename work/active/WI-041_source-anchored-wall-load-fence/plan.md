@@ -137,7 +137,7 @@ Every canonical file under `models/` edited here is copied byte-for-byte to its 
 **Checklist.**
 - [x] Write `## MR-WI041-11 restatement` at the end of this plan: (a) the fence's meaning change and the one multiplier that re-reads a committed wall-load column; (b) the lifetime operand's change, why CAS72 does not re-read, and the D2 convention change (0.79977 → 0.7998, 3.4 × 10⁻⁵); (c) the disclosed baseline verdict and its derivation (4.05 × 2725.363 / 2700 = 4.088 > 4.05); (d) the declared CAS72 and LCOE moves; (e) per-study statements for the seven studies above, including that the `20260903-wall-and-heating` shadow columns are superseded; (f) the census and entry-key changes
 - [x] ~~Write a dated restatement note into the two record dirs~~ **Not done as written, by decision before execution:** committed study records are append-only under the study runbook and WI-039's precedent kept its restatement in the plan (§ MR-WI039-9) with no file added to any record dir; the restatement below names both studies and the round trail cites it
-- [ ] **Commit A**: the four library files, the two plants, the twins, this plan through phase 4, the spec, the design; message names the restatement as preceding regeneration
+- [x] **Commit A**: the four library files, the two plants, the twins, this plan through phase 4, the spec, the design; message names the restatement as preceding regeneration — `df6dc964`
 
 **Gate.** `git log` shows commit A before any regeneration commit.
 
@@ -152,16 +152,16 @@ Every canonical file under `models/` edited here is copied byte-for-byte to its 
 **Files.** `exploration/stellarator_e2e/generated/**` — REGENERATE; `generated/handwritten/mfe_account_costs/levelized_replacement_cost_impl.py` — REFINE (by hand); `exploration/stellarator_e2e/verify_stellaris.py` — REFINE; `exploration/stellarator_e2e/studies/oracle_entry.py` — REFINE.
 
 **Checklist.**
-- [ ] Regenerate with `--smart-regen --preserve-handwritten`; confirm exit 0, the two new modules, the lifetime wrapper's `q_n_in`, and the impl preserved byte-identical (then edited)
-- [ ] Edit the handwritten impl: `levelized_replacement_cost(cost_per_event, q_n, fluence_limit, availability, interest_rate, operational_years)`; drop the two neutron-power lines; `run_…` reads `inputs.q_n_in`; docstring says the operand is the peak and why
-- [ ] `exploration/stellarator_e2e/run_stellaris_single.py` (found while mapping callers): its three synthetic CAS72 guard cases call the old signature — restate each with `q_n = p_fus × (1 − ash_frac) / firstwall_area` at the same values so every guard stays live; `EXPECTED_VERDICTS["wall_load_ok"]` → `violated` with the derivation; the nine anchors (LCOE, CAS70) re-pinned from the executed baseline **after** oracle parity, never before
-- [ ] Execute at the baseline (`study_route.execute_baseline` through the seam's route, or `run_stellaris_single.py`); record every row of the expected-behaviour table with before/after — **the average bit-identical, the calibration 1.316440857, the peak 4.088044684, `wall_load_ok` violated, CAS72 131,494,480, LCOE moved by ΔCAS72 / annual MWh, everything else identical**
-- [ ] **If any other value moves, stop and derive why before continuing** (`goal.md` § Invariants)
-- [ ] Oracle: add the six facts and the direct term to `IN`, drop `ash_frac`; compute `A_ref`, `p_n_ref`, `calibration`, `wall_load_peak` **from the design's table with the generated module closed**; `_oracle_levelized_replacement_cost` takes `q_n`; return `wall_peak_calibration` and `wall_load_peak`
-- [ ] `oracle_entry.py`: seven entry keys added, `ash_frac` removed, two channels mapped
-- [ ] Parity at the baseline: average, calibration, peak, CAS72, LCOE
-- [ ] **Perturbation:** `wall_peak_q_ref` 4.05 → 4.50 alone; confirm the calibration, the peak, the fence margin, CAS72 and LCOE move in both model and oracle and the average does not; restore 4.05; record the numbers
-- [ ] **Identity from channels:** `neutron_wall_load_peak × 2700 / p_fus = 4.05` to float precision at the baseline; record it
+- [x] Regenerate with `--smart-regen --preserve-handwritten`; confirm exit 0, the two new modules, the lifetime wrapper's `q_n_in`, and the impl preserved byte-identical (then edited)
+- [x] Edit the handwritten impl: `levelized_replacement_cost(cost_per_event, q_n, fluence_limit, availability, interest_rate, operational_years)`; drop the two neutron-power lines; `run_…` reads `inputs.q_n_in`; docstring says the operand is the peak and why
+- [x] `exploration/stellarator_e2e/run_stellaris_single.py` (found while mapping callers): its three synthetic CAS72 guard cases call the old signature — restate each with `q_n = p_fus × (1 − ash_frac) / firstwall_area` at the same values so every guard stays live; `EXPECTED_VERDICTS["wall_load_ok"]` → `violated` with the derivation; the nine anchors (LCOE, CAS70) re-pinned from the executed baseline **after** oracle parity, never before
+- [x] Execute at the baseline (`study_route.execute_baseline` through the seam's route, or `run_stellaris_single.py`); record every row of the expected-behaviour table with before/after — **the average bit-identical, the calibration 1.316440857, the peak 4.088044684, `wall_load_ok` violated, CAS72 131,494,480, LCOE moved by ΔCAS72 / annual MWh, everything else identical**
+- [x] **If any other value moves, stop and derive why before continuing** (`goal.md` § Invariants)
+- [x] Oracle: add the six facts and the direct term to `IN`, drop `ash_frac`; compute `A_ref`, `p_n_ref`, `calibration`, `wall_load_peak` **from the design's table with the generated module closed**; `_oracle_levelized_replacement_cost` takes `q_n`; return `wall_peak_calibration` and `wall_load_peak`
+- [x] `oracle_entry.py`: seven entry keys added, `ash_frac` removed, two channels mapped
+- [x] Parity at the baseline: average, calibration, peak, CAS72, LCOE
+- [x] **Perturbation:** `wall_peak_q_ref` 4.05 → 4.50 alone; confirm the calibration, the peak, the fence margin, CAS72 and LCOE move in both model and oracle and the average does not; restore 4.05; record the numbers
+- [x] **Identity from channels:** `neutron_wall_load_peak × 2700 / p_fus = 4.05` to float precision at the baseline; record it
 
 **Gate.** Model and oracle agree on every row; the identity holds; the perturbation moves both together. If the oracle disagrees, find out which is wrong before touching either.
 
@@ -174,16 +174,16 @@ Every canonical file under `models/` edited here is copied byte-for-byte to its 
 **Design reference.** Phase 4's surface table; spec MR-WI041-5, MR-WI041-10; § Validation plan item 8.
 
 **Checklist.**
-- [ ] Recapture `exploration/stellarator_e2e/stellarator.snapshot.json` (`sysml_codegen.snapshot.capture.capture_instance_graph_snapshot`, the producer the seam's gate 4 uses)
-- [ ] `manifest.json`: the three fingerprints re-pinned from the package's contracts; `baseline.verdicts` `wall_load_ok` → `violated` **with the derivation in a `note`**; `baseline.headline.value` re-pinned to the executed LCOE
-- [ ] `tests/models/data/mfe_census.json` re-derived from a live generation (expect 205; record the retired and minted keys)
-- [ ] Six `tests/study/data/*.expected.json` re-derived by running the reachability tool; `test_known_answers.py`'s fingerprint and `FIXTURE_CONTRACT` re-read from the live report, with the comment saying what moved and why
-- [ ] `uv run agentic-mbse pm add-validation` ×3: the design-point identity; the disclosed verdict change; lifetime-by-peak inside the source's ~4–6 FPY band. Then `pm update-validation SV-0xx --status passing` for each with the evidence
-- [ ] `uv run agentic-mbse pm trace-element` for the two new calc defs
-- [ ] Full `uv run agentic-mbse validate models` — Levels 1–6; 4–6 reviewed; any new residue recorded
-- [ ] `tests/models` — expect 48 passed / 13 skipped or better, every delta explained
-- [ ] `rm -rf .integration_workspace`; `tests/study` — expect 359 passed / 1 skipped or better, every delta explained
-- [ ] Verify each spec success criterion and record where its evidence is
+- [x] Recapture `exploration/stellarator_e2e/stellarator.snapshot.json` (`sysml_codegen.snapshot.capture.capture_instance_graph_snapshot`, the producer the seam's gate 4 uses)
+- [x] `manifest.json`: the three fingerprints re-pinned from the package's contracts; `baseline.verdicts` `wall_load_ok` → `violated` **with the derivation in a `note`**; `baseline.headline.value` re-pinned to the executed LCOE
+- [x] `tests/models/data/mfe_census.json` re-derived from a live generation (expect 205; record the retired and minted keys)
+- [x] Six `tests/study/data/*.expected.json` re-derived by running the reachability tool; `test_known_answers.py`'s fingerprint and `FIXTURE_CONTRACT` re-read from the live report, with the comment saying what moved and why
+- [x] `uv run agentic-mbse pm add-validation` ×3: the design-point identity; the disclosed verdict change; lifetime-by-peak inside the source's ~4–6 FPY band. Then `pm update-validation SV-0xx --status passing` for each with the evidence
+- [x] `uv run agentic-mbse pm trace-element` for the two new calc defs
+- [x] Full `uv run agentic-mbse validate models` — Levels 1–6; 4–6 reviewed; any new residue recorded
+- [x] `tests/models` — expect 48 passed / 13 skipped or better, every delta explained
+- [x] `rm -rf .integration_workspace`; `tests/study` — expect 359 passed / 1 skipped or better, every delta explained (first run on the uncommitted tree: 16 failed / 24 errors, all but two the git-clean gate and one my shell's `PYTHONPATH` leaking into a negative test; the two genuine sites below fixed; the run of record is after commit B — see the phase-6 record)
+- [x] Verify each spec success criterion and record where its evidence is (§ Spec success criteria, verified)
 - [ ] **Commit B**: the regenerated package, the impl, the oracle, the pin files, the fixtures, this plan
 
 **Gate.** Both batteries green with every delta explained; no expectation patched to match.
@@ -265,3 +265,60 @@ No committed record, snapshot, `results/` file or `DISCOVERY_LOG.md` row is edit
 ### (f) The census and the entry keys
 
 One entry point retires (`stellarator_09__stellaris__ash_frac`; not swept by any committed study — grep of every `axes.json`, `study.py` and fixture is empty) and seven are minted (`stellarator_09__stellaris__wall_peak_q_ref`, `…p_fus_ref`, `…R_ref`, `…a_ref`, `…kappa_ref`, `…standoff_ref`, `…calibration_direct`): 199 → 205 predicted; `tests/models/data/mfe_census.json` is re-derived from the live generation in phase 6, and the phase record states the actual count. `oracle_entry.py` maps the seven keys and drops the one; two channels (`wall_peak_calc__wall_load_peak`, `wall_peak_cal__calibration`) are added. The six known-answer fixtures are re-derived by running the reachability tool; the `cas72` reach now passes through the two new modules, so `FIXTURE_CONTRACT`'s trace sizes for `R`, `R+tie`, `a` and `I_coil` are expected to grow by two modules — read off the live report, never typed.
+
+
+### Phase 5 — 2026-09-04
+
+**Regeneration, twice — a gotcha worth recording.** The first `sysml-codegen generate --smart-regen --preserve-handwritten` reported `New: 2, Preserved: 65, Regenerated: 1`: the two new modules were stencilled and auto-implemented (their arithmetic matches the design table line for line), and the lifetime calc's handwritten impl was **re-stencilled to a `NotImplementedError` stub** because its interface changed, the old body moved to `handwritten/backup/levelized_replacement_cost_impl_20260904_120019.py`. The package is sealed at generation, so a hand edit afterwards reads as a seal violation (`TAMPER` on the impl, `MISSING` on the backup once removed) and the package will not load. The working sequence: restore the guarded chain by hand on the new signature, delete the codegen's backup directory (the old body is in git at `df6dc964` and every earlier commit), then regenerate **again** — `New: 0, Preserved: 68, Regenerated: 0`, the impl byte-identical through the second run, no backup directory recreated, seal clean. The seam's `handwritten-lost` condition is exactly this stub; a manual-stage interface change always needs the second regeneration.
+
+**Baseline parity, every row of the design's table** (`study_route.execute_baseline` at the regenerated package, executable identity `d4be3951…`, against the pinned `evidence/T-003_baseline_result.json`): 58 → 60 channels; **exactly five differ** —
+
+| channel | before | after |
+|---|---|---|
+| `wall_load_calc__wall_load` (average) | 3.105376639122585 | 3.105376639122585 (unchanged) |
+| `wall_peak_cal__calibration` | — | 1.3164408570995383 |
+| `wall_peak_calc__wall_load_peak` | — | 4.088044684423419 |
+| `cas72_calc__cost` | 95,898,253.47855279 | 131,494,479.60591842 |
+| `lcoe_calc__lcoe` | 307.08712042841586 | 313.5134115016116 |
+| `lcoe_1cfe_calc__lcoe` | 301.0951146207506 | 307.52140569394635 |
+
+Every other channel bit-identical; verdicts: `wall_load_ok` `satisfied` → `violated`, the other eight unchanged. The calibration, the peak and CAS72 land on the design's predictions to the last digit. The LCOE move, derived now that the annual energy is known (`p_net` 743.910232 MW × 8760 h × 0.85): +35,596,226 / 5,539,086 MWh = **+6.426 $/MWh**.
+
+**Independence.** `verify_stellaris.py` computes the average, the calibration (through its own torus-area convention at the six reference facts), the peak and the peak-driven CAS72 from the design's table, with `ash_frac` dropped from `IN` and the seven reference keys added; `oracle_entry.py` maps the seven entry keys and the two new channels. Parity at the baseline: zero relative deviation on the average, the calibration, the peak, CAS72, LCOE and `p_fus`. **Perturbation** (`wall_peak_q_ref` 4.05 → 4.50 alone, model through `study_route.run_points`, oracle through `IN`): the average stays 3.105376639; the calibration 1.316441 → 1.462712; the peak 4.088045 → 4.542272; CAS72 131,494,480 → 152,915,091; LCOE 313.513412 → 317.380537 — model and oracle agree to zero relative deviation on every one. **Identity from channels:** `neutron_wall_load_peak × 2700 / p_fus` = 4.049999999999999 (float-exact 4.05).
+
+**`run_stellaris_single.py`.** The three synthetic CAS72 guard cases restated as `q_n = p_fus × (1 − ash) / area` at the same values (every guard still binds: cap, floor, outer max); `EXPECTED_VERDICTS["wall_load_ok"]` → `violated` with the derivation; the three moved anchors (LCOE 313.513412, CAS70 199,635,292.948643, `lcoe_1cfe` 307.521406) re-pinned **after** the script's own oracle gate read bit-exact on each, never before; the parity message corrected ("seven satisfied + sustainment_ok violated + wall_load_ok violated"). Full run: anchors green, verdict parity PASS, bit-exact vs oracle PASS on every channel, guard spot-check PASS.
+
+### Phase 6 — 2026-09-04
+
+- **Snapshot** recaptured through `capture_instance_graph_snapshot` (changed, one line).
+- **Manifest** re-pinned from the package's own contracts: indicator-input `c1b0f0d1…` (was `2649e0ea…`), executable `d4be3951…` (was `b0c5f3ed…`), semantic `d468f3b6…` (was `48731d15…`); headline 313.5134115016116; `wall_load_ok` expected `violated`. **Deviation from MR-WI041-5's letter, recorded:** the manifest's verdict schema admits only `source_local_identity` and `expected` (`scripts/study/manifest.py:337`), so no derivation note can sit beside the flip there; the derivation is § MR-WI041-11 restatement (c) of this plan, the SV-051 row, and commit B's message, all of which the manifest's git history reaches.
+- **Census** re-derived through the seam's own helper (`scripts/integrate.py::rederived_census`): **199 → 207**, not the 205 predicted — one design attribute retired (`stellarator_09__stellaris__ash_frac`), seven minted (`wall_peak_q_ref`, `…p_fus_ref`, `…R_ref`, `…a_ref`, `…kappa_ref`, `…standoff_ref`, `…calibration_direct`), and **two library defaults minted that the prediction missed**: the calibration calc's defaulted formals `wall_peak_cal__ash_frac_in` and `wall_peak_cal__pi` are entry points of the library-default class, exactly as `sustain__ash_frac_in` and every other defaulted formal are. Nothing else moved.
+- **Six known-answer fixtures** re-derived by running `scripts/study/indicators.py` on the live package: the same reachable constraints and the same objectives on every axis; `R`, `R+tie`, `a` and `I_coil` fire **one** more module and taint one more channel (59→60/86→87, 71→72/98→99, 59→60/86→87, 68→69/90→91) — the new peak module — and `availability` and `interest_rate` are unchanged. The calibration module is reached by no axis, because its inputs are the six held facts: the constancy assumption, visible in the trace. `wall_load_ok`'s operand classes are unchanged (computed vs bound). `test_known_answers.py`'s fingerprint and `FIXTURE_CONTRACT` read off that report, with the comment saying what moved. (The plan's phase-4 prediction "two modules" was wrong by one for the reason just given; the fixture, not the prediction, is the record.)
+- **SV rows** SV-050 (design-point identity), SV-051 (disclosed verdict change, with the perturbation), SV-052 (lifetime by the peak inside the source's ~4–6 FPY band; the declared CAS72 and LCOE moves), all `passing` on the evidence above. **Traceability rows** for both new calc defs.
+- **Validation** Levels 1–6 as in the phases 1–3 record (nothing under `models/` changed since). **`tests/models`: 48 passed / 13 skipped** — the recorded baseline exactly, the census and spine tests green on the re-derived fixture and the synced twins.
+
+### Spec success criteria, verified — 2026-09-04
+
+| criterion (spec § Success criteria / MR) | where the evidence is |
+|---|---|
+| **Functional.** `wall_load_ok` reads a computed peak; peak, calibration and average exist as named, exposed quantities; the lifetime calc reads the peak; the model regenerates and executes at the baseline | `stellarator_plant.sysml` (`wall_load_ok` bound to `wall_peak_calc.wall_load_peak`; `neutron_wall_load`, `neutron_wall_load_peak`, `wall_peak_calibration` exposed); `mfe_plant.sysml` (`cas72_calc.q_n_in = wall_peak_calc.wall_load_peak`); the regenerated package at `d4be3951…`; § Phase 5 record |
+| **MR-WI041-1** like with like | the constraint's operand is `wall_peak_calc.wall_load_peak` against the printed peak; `mfe_viability.sysml` doc names both bases |
+| **MR-WI041-2** calibration computed from printed factors, never typed in | `'Neutron Wall Load Peak Calibration'` computes it from six bound facts; no literal near 1.316 under `models/` (`grep -rn '1\.316' models/` finds only doc text naming the result) |
+| **MR-WI041-3** design-point identity | SV-050 passing: `peak × 2700 / p_fus` = 4.049999999999999 |
+| **MR-WI041-4** average retained; 2.87 a comparand of unstated basis | `neutron_wall_load` bit-identical (3.105376639); the rewritten cross-check block at `stellarator_plant.sysml` (the "WHAT THE SOURCE PRINTS" comment) says what T-001 § 2 established and calls 4.05 / 2.87 "NOT a peaking factor" |
+| **MR-WI041-5** verdict change disclosed and derived, never tuned | manifest `wall_load_ok` expected `violated`; SV-051; § MR-WI041-11 restatement (c); no limit, calibration, power or geometry adjusted (the model diff touches none of them) — the schema deviation on the manifest note recorded in § Phase 6 |
+| **MR-WI041-6** lifetime operand is the peak, decided explicitly, move declared | `mfe_plant.sysml` comment above `cas72_calc` and the calc def's doc; § MR-WI041-11 restatement (b), (d); SV-052; CAS72 131,494,479.61 and LCOE 313.5134115 bit-exact against the oracle |
+| **MR-WI041-7** constancy assumption stated | the library calc's doc ("CONSTANCY ASSUMPTION") and the instance's `wall_peak_q_ref` doc ("CONSTANCY (design D4)"); visible in the trace (the calibration module is reached by no sweep) |
+| **MR-WI041-8** independent verification | `verify_stellaris.py` computes the chain from the design's table; zero relative deviation at the baseline and under the `q_ref` perturbation; `run_stellaris_single.py` bit-exact gate PASS on every channel |
+| **MR-WI041-9** library concept-agnostic and dormant-safe | both calc defs in `models/library/analyses/`; the seven `wall_peak_*` attributes default to the dormant values in the generic plant (calibration 1.0 → peak = average); the Stellaris facts only in `stellarator_plant.sysml` |
+| **MR-WI041-10** every value sourced, page images cited | each of the six bindings cites its page image (`page_002_table_0.png`, `page_001_table_0.png`, `pdf-17-1.png`, `pdf-17-2.png`) or the line for the standoff; traceability rows for both calc defs; nothing defaulted in |
+| **MR-WI041-11** restatement before regeneration | § MR-WI041-11 restatement is in commit `df6dc964` (commit A); the regenerated package is in commit B, after it |
+| **MR-WI041-12** nothing outside the wall chain and the lifetime operand changes; doc comments corrected | the baseline diff: exactly five channels differ (the two new ones, CAS72, LCOE, `lcoe_1cfe`) and one verdict; `p_fus`, geometry, `wall_area`, `wall_load_limit`, every heating number unchanged; `stellarator_plant.sysml` cross-check block rewritten, the two archived WI-039 paths corrected, `mfe_heating_chain.sysml` EI-5 sentence added |
+| **Quality.** Levels 1–3 pass; no new Level 4–6 residue class; batteries green | § Phases 1–3 record (Level 6 230 → 237 attributed); `tests/models` 48 / 13; `tests/study` — see the phase-6 line |
+| **Verification.** identity; baseline 4.0869 → executed 4.088045 (the design's 4.0869 used 0.8 for the neutron share in one line; the calc's 0.2002 gives 4.088045, and the design's own table says 4.088044684) violated; CAS72 and LCOE moved by the declared amounts, oracle agreeing; everything else bit-identical | § Phase 5 record |
+
+**The study battery's first run (on the uncommitted tree, before commit B): 319 passed, 16 failed, 24 errors, 1 skipped.** Read, not waved through:
+- **Git-clean class (13 failures, 24 errors):** `test_common`, `test_integration_workspace`, every `test_integrate_*`, `test_preflight_gates` and the `test_verify` tests behind the `promoted_run` fixture gate on a git-clean `generated/` and refuse an uncommitted package by design (`package tree is not git-clean: exploration/stellarator_e2e/generated`). The WI-039 precedent ran this battery after its re-pin commit for the same reason; the run of record is after commit B.
+- **`test_integrate_preconditions::test_simkit_probe_refuses_without_the_teax_root` (1):** my shell had `PYTHONPATH` pointing at `teax-simkit` for the baseline scripts, so the negative test found simkit with the root unset. An invocation artifact; the plan's invocation (no `PYTHONPATH` export) is used for the run of record.
+- **Two genuine restatement sites the surface table missed, fixed:** (i) `oracle_entry.OPERAND_BINDINGS` still bound `wall_load_ok`'s operand to `wall_load_calc__wall_load` — the verifier re-derived the fence from the average and read `satisfied` where the store says `violated` (`test_verify`: three failures and the nine errors behind `summary`); rebound to `wall_peak_calc__wall_load_peak`, which is precisely the operand change this item makes, and which the constraint id (`…__ab2c790419af93bb`, unchanged: it hashes the definition and the local identity, not the binding) did not flag. (ii) `test_mechanical_failures::test_the_corrupt_line_carries_file_line_and_key_path` pins the pipeline line of `rb.inputs.R_in` — :87 → :103 now that the wall modules sit above it; re-pinned with the history in its comment.
+- **`test_operand_bindings::test_the_shim_reproduces_the_pinned_headline` (1):** `PINNED_LCOE` 307.08712042841586 → 313.5134115016116 with the derivation, as § MR-WI041-11 (d) says.

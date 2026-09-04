@@ -34,7 +34,12 @@ EXPECTED_VERDICTS = {
     "net_positive": "satisfied",
     "recirc_ok": "satisfied",
     "tbr_ok": "satisfied",
-    "wall_load_ok": "satisfied",
+    # WI-041: the fence now compares the computed PEAK (the circular-torus
+    # average x the source-anchored calibration 1.316441) with the printed
+    # 4.05. At the baseline the peak is 4.05 x 2725.363 / 2700 = 4.088 --
+    # EXPECTED VIOLATED by the model's 0.94% fusion-power excess over the
+    # source's 2700 MW; the disclosed, never-tuned verdict change of WI-041.
+    "wall_load_ok": "violated",
     "peak_field_ok": "satisfied",  # WI-030 conductor peak-field limit,
     "wp_stress_ok": "satisfied",  # WI-035
     # WI-037: the sustainment power limit is EXPECTED VIOLATED at the printed
@@ -92,16 +97,24 @@ def _anchor_gate(values: dict[str, float]) -> bool:
     #   extended oracle before pinning (never patched-to-match; the
     #   printed-referent deltas are the design D6 tolerances). Pre-WI-037
     #   values in git history.
+    # WI-041 (goal wall-and-heating round 2, 2026-09-04): the CAS72 lifetime
+    #   operand moved from the circular-torus average to the source-anchored
+    #   PEAK (4.088 MW/m^2), so the core lives 4.40 FPY instead of 5.80 and is
+    #   replaced 5 times instead of 4: CAS72 95,898,253 -> 131,494,480 $/yr,
+    #   CAS70 164,039,066.82 -> 199,635,292.95, LCOE 307.087120 -> 313.513412,
+    #   lcoe_1cfe 301.095115 -> 307.521406. Re-pinned from the executed
+    #   baseline after the oracle gate below read bit-exact on every one of
+    #   them (never before); every other anchor unchanged to the digit.
     anchors = [
         ("total capital $", total, 14_542_872_713.455379),
-        ("LCOE $/MWh", values[CH["lcoe"]], 307.087120),
+        ("LCOE $/MWh", values[CH["lcoe"]], 313.513412),
         ("p_net MW", values[CH["p_net"]], 743.910232),
         ("q_eng", values[CH["q_eng"]], 3.078430),
         ("rec_frac", values[CH["rec_frac"]], 0.324841),
         ("magnet %", magnet / total * 100, 37.138687),
-        ("CAS70 $/yr", values[CH["cas70"]], 164_039_066.821278),
+        ("CAS70 $/yr", values[CH["cas70"]], 199_635_292.948643),
         ("CAS80 $/yr", values[CH["cas80"]], 766_653.689449),
-        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 301.095115),
+        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 307.521406),
     ]
 
     print("\n=== NINE ANCHORS (single-pass, graph rollup, no bridge) ===")
@@ -148,7 +161,8 @@ def _assert_generated_verdicts(outputs) -> None:
     print(
         "VERDICT PARITY: PASS -- "
         f"headline={report.headline}, assessed_entry_count={report.assessed_entry_count}, "
-        "eight satisfied + sustainment_ok violated (expected, WI-037)"
+        "seven satisfied + sustainment_ok violated (expected, WI-037) "
+        "+ wall_load_ok violated (expected, WI-041: the source-anchored peak)"
     )
 
 
@@ -212,9 +226,9 @@ def _cas72_guard_gate() -> bool:
             "clip CAP binds (low wall loading, high fluence limit)",
             dict(
                 cost_per_event=671_160_000.0,
-                p_fus=100.0,
-                ash_frac=0.2002275312855518,
-                firstwall_area=660.0791423448563,
+                # WI-041: the impl takes the wall load directly; the same
+                # synthetic point expressed as q_n = p_fus x (1 - ash) / area.
+                q_n=100.0 * (1.0 - 0.2002275312855518) / 660.0791423448563,
                 fluence_limit=500.0,
                 availability=0.9,
                 interest_rate=0.07,
@@ -226,9 +240,9 @@ def _cas72_guard_gate() -> bool:
             "clip FLOOR binds (extreme wall loading) -> n_rep = 53, cost nonzero",
             dict(
                 cost_per_event=671_160_000.0,
-                p_fus=200_000.0,
-                ash_frac=0.2002275312855518,
-                firstwall_area=660.0791423448563,
+                # WI-041: the impl takes the wall load directly; the same
+                # synthetic point expressed as q_n = p_fus x (1 - ash) / area.
+                q_n=200_000.0 * (1.0 - 0.2002275312855518) / 660.0791423448563,
                 fluence_limit=18.0,
                 availability=0.9,
                 interest_rate=0.07,
@@ -240,9 +254,9 @@ def _cas72_guard_gate() -> bool:
             "outer max binds (replacement interval >= plant life -> n_rep = 0)",
             dict(
                 cost_per_event=671_160_000.0,
-                p_fus=50.0,
-                ash_frac=0.2002275312855518,
-                firstwall_area=660.0791423448563,
+                # WI-041: the impl takes the wall load directly; the same
+                # synthetic point expressed as q_n = p_fus x (1 - ash) / area.
+                q_n=50.0 * (1.0 - 0.2002275312855518) / 660.0791423448563,
                 fluence_limit=18.0,
                 availability=0.9,
                 interest_rate=0.07,
@@ -269,8 +283,7 @@ def _cas72_guard_gate() -> bool:
         )
 
     cap_arguments = guard_cases[0][1]
-    neutron_power = cap_arguments["p_fus"] * (1 - cap_arguments["ash_frac"])
-    neutron_flux = neutron_power / cap_arguments["firstwall_area"]
+    neutron_flux = cap_arguments["q_n"]
     raw_lifetime = cap_arguments["fluence_limit"] / max(neutron_flux, 1e-6)
     capped_lifetime = cap_arguments["operational_years"] * cap_arguments["availability"]
     assert raw_lifetime > capped_lifetime, (
@@ -282,8 +295,7 @@ def _cas72_guard_gate() -> bool:
     )
 
     floor_arguments = guard_cases[1][1]
-    floor_neutron_power = floor_arguments["p_fus"] * (1 - floor_arguments["ash_frac"])
-    floor_neutron_flux = floor_neutron_power / floor_arguments["firstwall_area"]
+    floor_neutron_flux = floor_arguments["q_n"]
     floor_raw_lifetime = floor_arguments["fluence_limit"] / max(floor_neutron_flux, 1e-6)
     assert floor_raw_lifetime < 0.5, (
         f"clip floor case does not bind: raw {floor_raw_lifetime} >= 0.5"

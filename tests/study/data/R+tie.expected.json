@@ -1,5 +1,5 @@
 {
-  "derived_against_semantic_fingerprint": "48731d1570bb20cdeae45faa20545aae46aeda5982a4fbc2129d7784a66595ba",
+  "derived_against_semantic_fingerprint": "d468f3b69ad00c46b259bfeca2123d7db5a527c3a0da55e69b54793845417736",
   "group": {
     "axis": "R+tie",
     "declared_keys": [
@@ -183,7 +183,7 @@
           {
             "operand": "wall_load",
             "class": "computed",
-            "ref": "stellarator_09__stellaris__wall_load_calc__wall_load",
+            "ref": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
             "reached": true
           },
           {
@@ -443,7 +443,7 @@
           {
             "operand": "wall_load",
             "class": "computed",
-            "ref": "stellarator_09__stellaris__wall_load_calc__wall_load",
+            "ref": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
             "reached": true
           },
           {
@@ -498,8 +498,8 @@
     "objectives_unreachable": [],
     "sibling_candidates": [],
     "trace_size": {
-      "modules_fired": 71,
-      "channels_tainted": 98
+      "modules_fired": 72,
+      "channels_tainted": 99
     },
     "warnings": [],
     "not_derivable": {

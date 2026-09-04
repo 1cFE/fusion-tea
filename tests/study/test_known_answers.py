@@ -18,8 +18,9 @@ from tests.study.conftest import DATA_DIR, run_tool
 CASES = ["availability", "interest_rate", "R", "R+tie", "a", "I_coil"]
 
 EXPECTED_SEMANTIC_FINGERPRINT = (
-    # WI-039 heating power chain (goal wall-and-heating, 2026-09-03)
-    "48731d1570bb20cdeae45faa20545aae46aeda5982a4fbc2129d7784a66595ba"
+    # WI-041 source-anchored wall-load fence (goal wall-and-heating round 2, 2026-09-04);
+    # was 48731d15... at WI-039 (heating power chain, 2026-09-03)
+    "d468f3b69ad00c46b259bfeca2123d7db5a527c3a0da55e69b54793845417736"
 )
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,
@@ -30,6 +31,17 @@ EXPECTED_SEMANTIC_FINGERPRINT = (
 #: more channel because CAS27 is now computed in-package and declared as the
 #: `cas27` objective, and each swept attribute is one plant-level entry point.
 FIXTURE_CONTRACT = {
+    # WI-041 (goal wall-and-heating round 2, 2026-09-04) re-derived every expectation
+    # file on the source-anchored-fence package. Same reachable constraints and the
+    # same objectives on every axis; R, R+tie, a and I_coil each fire ONE more module
+    # and taint ONE more channel -- the new 'Neutron Wall Load Peak' module, which
+    # now sits between the average and both wall_load_ok and the CAS72 lifetime
+    # chain. The calibration module is reached by NO axis: its inputs are the six
+    # held source facts, so a sweep moves the peak only through the model's own
+    # wall_area -- the constancy assumption, visible structurally. wall_load_ok's
+    # operand classes are unchanged (computed vs bound); what changed is that the
+    # computed operand is now the peak, and the baseline verdict is violated.
+    #
     # WI-039 (goal wall-and-heating, 2026-09-03) re-derived every expectation file
     # on the heating-chain package and this contract is UNCHANGED, field for field:
     # same reachable constraints, same objectives, same trace sizes for all six axes.
@@ -51,10 +63,10 @@ FIXTURE_CONTRACT = {
     # finding stands).
     "availability": (True, [], ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'], 6, 8),
     "interest_rate": (True, [], ['cas72', 'lcoe', 'lcoe_1cfe'], 8, 11),
-    "R": (False, ['beta_ok', 'net_positive', 'recirc_ok', 'sustainment_ok', 'wall_load_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 59, 86),
-    "R+tie": (False, ['beta_ok', 'cond_strain_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 71, 98),
-    "a": (False, ['beta_ok', 'net_positive', 'recirc_ok', 'sustainment_ok', 'wall_load_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 59, 86),
-    "I_coil": (False, ['beta_ok', 'cond_strain_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 68, 90),
+    "R": (False, ['beta_ok', 'net_positive', 'recirc_ok', 'sustainment_ok', 'wall_load_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 60, 87),
+    "R+tie": (False, ['beta_ok', 'cond_strain_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 72, 99),
+    "a": (False, ['beta_ok', 'net_positive', 'recirc_ok', 'sustainment_ok', 'wall_load_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 60, 87),
+    "I_coil": (False, ['beta_ok', 'cond_strain_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 69, 91),
 }
 
 

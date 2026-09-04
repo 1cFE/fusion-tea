@@ -17,7 +17,6 @@ class StellaratorPlantParams(BaseModel):
     stellarator_09__stellaris__alpha_T: float = Field(default=1.19, description="Entry point: alpha_T")
     stellarator_09__stellaris__alpha_n: float = Field(default=0.33, description="Entry point: alpha_n")
     stellarator_09__stellaris__alpha_n_e: float = Field(default=0.596, description="Entry point: alpha_n_e")
-    stellarator_09__stellaris__ash_frac: float = Field(default=0.2002275312855518, description="Entry point: ash_frac")
     stellarator_09__stellaris__aux_cryo_base: float = Field(default=200000000.0, description="Entry point: aux_cryo_base")
     stellarator_09__stellaris__aux_per_mw: float = Field(default=1100.0, description="Entry point: aux_per_mw")
     stellarator_09__stellaris__availability: float = Field(default=0.85, description="Entry point: availability")
@@ -143,6 +142,13 @@ class StellaratorPlantParams(BaseModel):
     stellarator_09__stellaris__vessel_t: float = Field(default=0.1, description="Entry point: vessel_t")
     stellarator_09__stellaris__vol_cold_cryo: float = Field(default=0.0, description="Entry point: vol_cold_cryo")
     stellarator_09__stellaris__wall_load_limit: float = Field(default=4.05, description="Entry point: wall_load_limit")
+    stellarator_09__stellaris__wall_peak_R_ref: float = Field(default=12.7, description="Entry point: wall_peak_R_ref")
+    stellarator_09__stellaris__wall_peak_a_ref: float = Field(default=1.3, description="Entry point: wall_peak_a_ref")
+    stellarator_09__stellaris__wall_peak_calibration_direct: float = Field(default=0.0, description="Entry point: wall_peak_calibration_direct")
+    stellarator_09__stellaris__wall_peak_kappa_ref: float = Field(default=1.0, description="Entry point: wall_peak_kappa_ref")
+    stellarator_09__stellaris__wall_peak_p_fus_ref: float = Field(default=2700.0, description="Entry point: wall_peak_p_fus_ref")
+    stellarator_09__stellaris__wall_peak_q_ref: float = Field(default=4.05, description="Entry point: wall_peak_q_ref")
+    stellarator_09__stellaris__wall_peak_standoff_ref: float = Field(default=0.1, description="Entry point: wall_peak_standoff_ref")
     stellarator_09__stellaris__waste_base: float = Field(default=1960000.0, description="Entry point: waste_base")
 
     model_config = {"frozen": True, "extra": "forbid", "populate_by_name": True}

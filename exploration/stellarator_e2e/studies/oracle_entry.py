@@ -96,6 +96,15 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}eta_couple_heat": "eta_couple_heat",
     f"{P}p_delivered_direct_heat": "p_delivered_direct_heat",
     f"{P}p_coupled_direct_heat": "p_coupled_direct_heat",
+    # WI-041: the six source-anchored peak-calibration facts and the dormant
+    # direct term are entry keys (the retired exact ash_frac never was one here).
+    f"{P}wall_peak_q_ref": "wall_peak_q_ref",
+    f"{P}wall_peak_p_fus_ref": "wall_peak_p_fus_ref",
+    f"{P}wall_peak_R_ref": "wall_peak_R_ref",
+    f"{P}wall_peak_a_ref": "wall_peak_a_ref",
+    f"{P}wall_peak_kappa_ref": "wall_peak_kappa_ref",
+    f"{P}wall_peak_standoff_ref": "wall_peak_standoff_ref",
+    f"{P}wall_peak_calibration_direct": "wall_peak_calibration_direct",
     f"{P}sustain__ash_frac_in": "sustain_ash_frac",
     f"{P}sustain__R_w_sync_in": "R_w_sync",
     f"{P}sustain__kappa_sync_in": "kappa_sync",
@@ -126,6 +135,8 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "rec_frac": f"{P}pb__rec_frac",
     "p_net": f"{P}pb__p_net",
     "wall_load": f"{P}wall_load_calc__wall_load",
+    "wall_peak_calibration": f"{P}wall_peak_cal__calibration",  # WI-041
+    "wall_load_peak": f"{P}wall_peak_calc__wall_load_peak",  # WI-041 the fence and lifetime operand
     "beta": f"{P}beta_calc__beta",  # WI-030 computed volume-averaged beta
     "B_peak": f"{P}peak_field_calc__B_peak",  # WI-030 peak field on the conductor
     "B_axis": f"{P}field_calc__B_axis",  # WI-035 computed axis field
@@ -245,7 +256,10 @@ OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
         "tbr_floor_in": {"kind": "input", "key": f"{P}tbr_floor"},
     },
     f"{P}wall_load_ok__ab2c790419af93bb": {
-        "wall_load": {"kind": "channel", "key": f"{P}wall_load_calc__wall_load"},
+        # WI-041: the fence's operand is the source-anchored PEAK, not the
+        # circular-torus average (the constraint id did not move: it hashes
+        # the definition and the local identity, not the binding).
+        "wall_load": {"kind": "channel", "key": f"{P}wall_peak_calc__wall_load_peak"},
         "wall_load_limit_in": {"kind": "input", "key": f"{P}wall_load_limit"},
     },
     f"{P}wp_stress_ok__f38a102195da1dd0": {

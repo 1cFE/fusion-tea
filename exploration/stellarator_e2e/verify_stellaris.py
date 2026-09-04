@@ -291,12 +291,16 @@ IN = dict(
     fuel_cost_per_rxn=1.7260641119988767e-23, fuel_q_eff=17.58,
     mev_to_joules=1.6021766339999998e-13,
     burn_fraction=0.05, fuel_recovery=0.99,
-    fluence_limit=18.0, ash_frac=0.2002275312855518,
+    fluence_limit=18.0,
+    # WI-041 source-anchored peak calibration: six printed Stellaris facts (each
+    # confirmed against its page image) and the dormant direct term, zeroed.
+    wall_peak_q_ref=4.05, wall_peak_p_fus_ref=2700.0, wall_peak_R_ref=12.7,
+    wall_peak_a_ref=1.3, wall_peak_kappa_ref=1.0, wall_peak_standoff_ref=0.10,
+    wall_peak_calibration_direct=0.0,
 )
 
 
-def _oracle_levelized_replacement_cost(cost_per_event, p_fus, ash_frac,
-                                       firstwall_area, fluence_limit,
+def _oracle_levelized_replacement_cost(cost_per_event, q_n, fluence_limit,
                                        availability, interest_rate,
                                        operational_years):
     """ORACLE MIRROR of the CAS72 handwritten rung — an independent statement
@@ -307,8 +311,9 @@ def _oracle_levelized_replacement_cost(cost_per_event, p_fus, ash_frac,
       * clip   (0.5, n * availability) — floor first, then cap (jnp.clip order)
       * outer  max(0, ceil(n/t) - 1)   — the first core is capital, not a replacement
     """
-    p_neutron = p_fus * (1.0 - ash_frac)
-    q_n = p_neutron / firstwall_area
+    # WI-041: q_n is the wall load handed in -- the plant's PEAK (the oracle
+    # computes its own peak below and passes it here); the neutron-power lines
+    # that used to sit here are gone with the three inputs they needed.
     fpy_raw = fluence_limit / max(q_n, 1e-6)                      # inner max
     fpy_cap = operational_years * availability
     core_lifetime_fpy = min(max(fpy_raw, 0.5), fpy_cap)           # clip
@@ -542,10 +547,24 @@ def compute():
     annual_fuel = annual_fuel_raw * burn_correction
     cas80_annual = _levelized_annual_cost(annual_fuel)
 
+    # --- Neutron wall load: average, source-anchored calibration, peak (WI-041) ---
+    # Written from the WI-041 design's table, not transcribed from the generated
+    # modules: the average over the oracle's own wall_area; the calibration from
+    # the six reference facts through the oracle's own torus-area convention at
+    # the source's point; the peak as their product. The peak is what the fence
+    # compares and what CAS72's lifetime reads.
+    wall_load = p_fus * (1.0 - 0.2002) / wall_area
+    A_ref = (p["wall_peak_kappa_ref"] * 4.0 * (p["pi"] ** 2) * p["wall_peak_R_ref"]
+             * (p["wall_peak_a_ref"] + p["wall_peak_standoff_ref"]))
+    p_n_ref = p["wall_peak_p_fus_ref"] * (1.0 - 0.2002)
+    wall_peak_calibration = (p["wall_peak_q_ref"] * A_ref / p_n_ref
+                             + p["wall_peak_calibration_direct"])
+    wall_load_peak = wall_load * wall_peak_calibration
+
     replacement_cost_per_event = (blanket + divertor) * n
     cas72_annual = _oracle_levelized_replacement_cost(
         cost_per_event=replacement_cost_per_event,
-        p_fus=p_fus, ash_frac=p["ash_frac"], firstwall_area=wall_area,
+        q_n=wall_load_peak,
         fluence_limit=p["fluence_limit"], availability=p["availability"],
         interest_rate=i_rate, operational_years=n_life,
     )
@@ -571,9 +590,6 @@ def compute():
     lcoe_1cfe = ((cas90_1cfe + cas70_annual + cas80_annual)
                  / (8760.0 * p_net * n * p["availability"]))
 
-    # --- Neutron wall load ---
-    wall_load = p_fus * (1.0 - 0.2002) / wall_area
-
     # --- Volume-averaged thermal beta and conductor peak field (WI-030) ---
     # Mirrors 'Volume-Averaged Beta' / 'Conductor Peak Field' operation for
     # operation (bit-exact bar): <n T> = n0 T0 / (1 + alpha_n + alpha_T) per species.
@@ -588,6 +604,7 @@ def compute():
         V=V, p_fus=p_fus, p_th=p_th, p_the=p_the, p_et=p_et,
         p_cryo=p_cryo,  # derived cryoplant electrical (WI-024 chain output)
         q_eng=q_eng, rec_frac=rec_frac, p_net=p_net, wall_load=wall_load,
+        wall_peak_calibration=wall_peak_calibration, wall_load_peak=wall_load_peak,  # WI-041
         beta=beta, B_peak=B_peak,  # WI-030 physics channels
         B_axis=B_axis, sigma_wp=sigma_wp,  # WI-035 field + stress channels
         eps_cond=eps_cond,  # WI-036 conductor strain operand

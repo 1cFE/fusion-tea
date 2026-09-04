@@ -72,6 +72,22 @@ modules:
     outputs:
       root: RootModel[float] stellarator_09__stellaris__magnet_capital_rollup__capital_cost
 
+  # mfe_plasma_scaling.Neutron_Wall_Load_Peak_CalibrationModule
+  stellarator_09__stellaris__wall_peak_cal:
+    module_type: mfe_plasma_scaling.Neutron_Wall_Load_Peak_CalibrationModule
+    inputs:
+      calibration_direct: float stellarator_plant_params.stellarator_09__stellaris__wall_peak_calibration_direct
+      R_ref: float stellarator_plant_params.stellarator_09__stellaris__wall_peak_R_ref
+      pi: float mfe_plasma_scaling_params.stellarator_09__stellaris__wall_peak_cal__pi
+      a_ref: float stellarator_plant_params.stellarator_09__stellaris__wall_peak_a_ref
+      kappa_ref: float stellarator_plant_params.stellarator_09__stellaris__wall_peak_kappa_ref
+      p_fus_ref: float stellarator_plant_params.stellarator_09__stellaris__wall_peak_p_fus_ref
+      standoff_ref: float stellarator_plant_params.stellarator_09__stellaris__wall_peak_standoff_ref
+      q_peak_ref: float stellarator_plant_params.stellarator_09__stellaris__wall_peak_q_ref
+      ash_frac_in: float mfe_plasma_scaling_params.stellarator_09__stellaris__wall_peak_cal__ash_frac_in
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__wall_peak_cal__calibration
+
   # mfe_plasma_scaling.MFE_Radial_BuildModule
   stellarator_09__stellaris__rb:
     module_type: mfe_plasma_scaling.MFE_Radial_BuildModule
@@ -273,16 +289,6 @@ modules:
     outputs:
       root: RootModel[float] stellarator_09__stellaris__beta_calc__beta
 
-  # mfe_plasma_scaling.Neutron_Wall_LoadModule
-  stellarator_09__stellaris__wall_load_calc:
-    module_type: mfe_plasma_scaling.Neutron_Wall_LoadModule
-    inputs:
-      ash_frac_in: float mfe_plasma_scaling_params.stellarator_09__stellaris__wall_load_calc__ash_frac_in
-      wall_area: float stellarator_09__stellaris__rb__wall_area
-      p_fus: float stellarator_09__stellaris__fusion__p_fus.root
-    outputs:
-      root: RootModel[float] stellarator_09__stellaris__wall_load_calc__wall_load
-
   # mfe_account_costs.DT_Fuel_CostModule
   stellarator_09__stellaris__fuel_calc:
     module_type: mfe_account_costs.DT_Fuel_CostModule
@@ -297,6 +303,16 @@ modules:
       q_eff: float stellarator_plant_params.stellarator_09__stellaris__fuel_q_eff
     outputs:
       root: RootModel[float] stellarator_09__stellaris__fuel_calc__annual_fuel
+
+  # mfe_plasma_scaling.Neutron_Wall_LoadModule
+  stellarator_09__stellaris__wall_load_calc:
+    module_type: mfe_plasma_scaling.Neutron_Wall_LoadModule
+    inputs:
+      ash_frac_in: float mfe_plasma_scaling_params.stellarator_09__stellaris__wall_load_calc__ash_frac_in
+      wall_area: float stellarator_09__stellaris__rb__wall_area
+      p_fus: float stellarator_09__stellaris__fusion__p_fus.root
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__wall_load_calc__wall_load
 
   # mfe_magnet_field.Winding_Pack_Cold_VolumeModule
   stellarator_09__stellaris__wp_volume:
@@ -641,6 +657,15 @@ modules:
       levelized: float stellarator_09__stellaris__cas80_calc__levelized
       crf: float stellarator_09__stellaris__cas80_calc__crf
 
+  # mfe_plasma_scaling.Neutron_Wall_Load_PeakModule
+  stellarator_09__stellaris__wall_peak_calc:
+    module_type: mfe_plasma_scaling.Neutron_Wall_Load_PeakModule
+    inputs:
+      wall_load: float stellarator_09__stellaris__wall_load_calc__wall_load.root
+      calibration_in: float stellarator_09__stellaris__wall_peak_cal__calibration.root
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__wall_peak_calc__wall_load_peak
+
   # source: computed_attribute (mfe_plant.mfe_power_plant.powercore_capitalModule)
   stellarator_09__stellaris__powercore_capital:
     module_type: mfe_plant.mfe_power_plant.powercore_capitalModule
@@ -715,14 +740,12 @@ modules:
   stellarator_09__stellaris__cas72_calc:
     module_type: mfe_account_costs.Levelized_Replacement_CostModule
     inputs:
+      q_n_in: float stellarator_09__stellaris__wall_peak_calc__wall_load_peak.root
       cost_per_event: float stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event.root
-      ash_frac_in: float stellarator_plant_params.stellarator_09__stellaris__ash_frac
       operational_years_in: float stellarator_plant_params.stellarator_09__stellaris__operational_years
       availability_in: float stellarator_plant_params.stellarator_09__stellaris__availability
       fluence_limit_in: float stellarator_plant_params.stellarator_09__stellaris__fluence_limit
       interest_rate: float stellarator_plant_params.stellarator_09__stellaris__discount_rate
-      firstwall_area: float stellarator_09__stellaris__rb__wall_area
-      p_fus: float stellarator_09__stellaris__fusion__p_fus.root
     outputs:
       root: RootModel[float] stellarator_09__stellaris__cas72_calc__cost
 
@@ -935,7 +958,7 @@ modules:
   stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb:
     module_type: stellarator_09.StellarisWallLoadOkConstraintModule
     inputs:
-      wall_load: float stellarator_09__stellaris__wall_load_calc__wall_load.root
+      wall_load: float stellarator_09__stellaris__wall_peak_calc__wall_load_peak.root
       wall_load_limit_in: float stellarator_plant_params.stellarator_09__stellaris__wall_load_limit
     outputs:
       evaluation: ConstraintEvaluation stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb__evaluation
@@ -993,6 +1016,7 @@ modules:
       stellarator_09__stellaris__coil_length__c_coil: RootModel[float] stellaris__magnet__c_coil.json
       stellarator_09__stellaris__winding_pack_cost__cost: RootModel[float] stellarator_09__stellaris__winding_pack_cost__cost.json
       stellarator_09__stellaris__magnet_capital_rollup__capital_cost: RootModel[float] stellaris__magnet_capital.json
+      stellarator_09__stellaris__wall_peak_cal__calibration: RootModel[float] stellaris__wall_peak_calibration.json
       stellarator_09__stellaris__rb__wall_area: float stellarator_09__stellaris__rb__wall_area.json
       stellarator_09__stellaris__rb__shield_vol: float stellaris__shield__shield_vol.json
       stellarator_09__stellaris__rb__structure_vol: float stellaris__structure__structure_vol.json
@@ -1025,8 +1049,8 @@ modules:
       stellarator_09__stellaris__sustain__T_e0: float stellarator_09__stellaris__sustain__T_e0.json
       stellarator_09__stellaris__fusion__p_fus: RootModel[float] stellarator_09__stellaris__fusion__p_fus.json
       stellarator_09__stellaris__beta_calc__beta: RootModel[float] stellarator_09__stellaris__beta_calc__beta.json
-      stellarator_09__stellaris__wall_load_calc__wall_load: RootModel[float] stellaris__neutron_wall_load.json
       stellarator_09__stellaris__fuel_calc__annual_fuel: RootModel[float] stellarator_09__stellaris__fuel_calc__annual_fuel.json
+      stellarator_09__stellaris__wall_load_calc__wall_load: RootModel[float] stellaris__neutron_wall_load.json
       stellarator_09__stellaris__wp_volume__vol_cold_total: RootModel[float] stellarator_09__stellaris__wp_volume__vol_cold_total.json
       stellarator_09__stellaris__cryo_elec__p_elec: RootModel[float] stellarator_09__stellaris__cryo_elec__p_elec.json
       stellarator_09__stellaris__pb__p_the: float stellaris__p_the.json
@@ -1062,6 +1086,7 @@ modules:
       stellarator_09__stellaris__inc_cost__cost: RootModel[float] stellaris__inc_capital.json
       stellarator_09__stellaris__cas80_calc__levelized: float stellaris__cas80_annual.json
       stellarator_09__stellaris__cas80_calc__crf: float stellarator_09__stellaris__cas80_calc__crf.json
+      stellarator_09__stellaris__wall_peak_calc__wall_load_peak: RootModel[float] stellaris__neutron_wall_load_peak.json
       stellarator_09__stellaris__powercore_capital__powercore_capital: RootModel[float] stellarator_09__stellaris__powercore_capital__powercore_capital.json
       stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal: RootModel[float] stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal.json
       stellarator_09__stellaris__installation__cost: RootModel[float] stellaris__installation_capital.json

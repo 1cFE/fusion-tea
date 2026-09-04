@@ -1,5 +1,5 @@
 {
-  "derived_against_semantic_fingerprint": "48731d1570bb20cdeae45faa20545aae46aeda5982a4fbc2129d7784a66595ba",
+  "derived_against_semantic_fingerprint": "d468f3b69ad00c46b259bfeca2123d7db5a527c3a0da55e69b54793845417736",
   "group": {
     "axis": "availability",
     "declared_keys": [
@@ -205,7 +205,7 @@
           {
             "operand": "wall_load",
             "class": "computed",
-            "ref": "stellarator_09__stellaris__wall_load_calc__wall_load",
+            "ref": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
             "reached": false
           },
           {
@@ -437,7 +437,7 @@
           {
             "operand": "wall_load",
             "class": "computed",
-            "ref": "stellarator_09__stellaris__wall_load_calc__wall_load",
+            "ref": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
             "reached": false
           },
           {

@@ -33,7 +33,12 @@ its heating powers outright binds the direct terms and leaves the
 chain unbound; a concept deriving them binds the chain and zeroes
 the direct terms. eta_source and eta_couple default to 1.0 (not 0)
 so a dormant chain's eta_pin_eff stays defined -- the mode is
-selected by the powers, never by an efficiency.
+selected by the powers, never by an efficiency. A dormant concept
+must ALSO bind eta_source to its former lumped efficiency: with the
+efficiencies left at 1.0, p_wallplug_total = p_coupled_direct /
+eta_pin_eff equals its coupled power with no conversion loss (the
+WI-039 grader's EI-5; the WI-039 restatement table binds
+eta_source = eta_pin_effective for exactly this reason).
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/defaults.py
 *Ref**: defaults.py:102-108 ("Heating wall-plug source efficiency
