@@ -22,6 +22,7 @@ wheels/
 .claude/skills/*
 !.claude/skills/browser-inspect/
 !.claude/skills/concept-research-navigation/
+!.claude/skills/narrate-goal/
 !.claude/skills/run-study/
 !.claude/skills/run-goal/
 .claude/hooks/

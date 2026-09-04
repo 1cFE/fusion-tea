@@ -6,6 +6,7 @@ agree with each other. They check documents, never runtime behaviour.
 """
 
 import re
+from pathlib import Path
 
 import pytest
 import yaml
@@ -85,6 +86,19 @@ TEMPLATES = [
     "work/orchestration/goal-templates/learnings.md",
 ]
 SKILL = ".claude/skills/run-goal/SKILL.md"
+NARRATOR_SKILL = ".claude/skills/narrate-goal/SKILL.md"
+NARRATIVE_DIR = "work/narratives"
+NARRATIVE_NAME = re.compile(r"^\d{8}-\d{6}Z-([a-z0-9]+(?:-[a-z0-9]+)*)\.md$")
+NARRATIVE_HEADINGS = [
+    "At a glance",
+    "Starting point and motivation",
+    "Story in one picture",
+    "Research learnings",
+    "Model changes",
+    "Study results",
+    "Outcome and follow-on issues",
+    "Evidence and visual index",
+]
 
 GOAL_HEADINGS = [
     "Status", "Question", "Consumer", "Answered when", "Invariants",
@@ -213,3 +227,100 @@ def test_fresh_is_defined_at_owner_strength_with_an_agent_move(repo_root):
     # The stop kind is in the trail vocabulary too, or the move has nowhere to land.
     trail = (repo_root / TEMPLATES[1]).read_text()
     assert "handoff" in trail
+
+
+def _narrative_paths(repo_root: Path) -> list[Path]:
+    return sorted(
+        path for path in (repo_root / NARRATIVE_DIR).glob("*.md")
+        if NARRATIVE_NAME.match(path.name)
+    )
+
+
+def _ordinary_prose_lines(text: str):
+    """Yield prose paragraphs; repository Markdown keeps each paragraph on one line."""
+    fenced = False
+    for line in text.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("```"):
+            fenced = not fenced
+            continue
+        if fenced or not stripped:
+            continue
+        if re.match(r"^(?:#{1,6}\s|[-*+]\s|\d+\.\s|\||---$|!\[)", stripped):
+            continue
+        yield stripped
+
+
+def _local_link_targets(path: Path, text: str):
+    for target in re.findall(r"!?\[[^\]]*\]\(([^)]+)\)", text):
+        if target.startswith(("http://", "https://", "mailto:", "#")):
+            continue
+        relative = target.split("#", 1)[0]
+        if relative:
+            yield (path.parent / relative).resolve(), target
+
+
+def test_narratives_are_separate_from_the_goal_contract(repo_root):
+    """Narratives are presentation snapshots, never a fourth goal artifact."""
+    runbook = (repo_root / RUNBOOK).read_text()
+    goal_skill = (repo_root / SKILL).read_text()
+    assert "## The five surfaces" in runbook
+    assert "narrative.md" not in runbook
+    assert "work/narratives" not in goal_skill
+    assert not list((repo_root / "work/orchestration/goals").glob("*/narrative.md"))
+    assert not list((repo_root / "work/orchestration/goals").glob("*/SUMMARY.md"))
+    for goal_file in (repo_root / "work/orchestration/goals").glob("*/[gtl]*.md"):
+        assert "work/narratives/" not in goal_file.read_text(), goal_file
+
+
+def test_narrator_skill_is_discoverable_and_carries_the_contract(repo_root):
+    """The separate skill is the one complete, user-invocable authoring contract."""
+    text = (repo_root / NARRATOR_SKILL).read_text()
+    frontmatter = yaml.safe_load(text.split("---", 2)[1])
+    assert frontmatter["name"] == "narrate-goal"
+    assert frontmatter["user-invocable"] is True
+    assert "summar" in frontmatter["description"].lower()
+    for phrase in [
+        NARRATIVE_DIR,
+        "YYYYMMDD-HHMMSSZ",
+        "must not overwrite",
+        "provisional",
+        "base commit",
+        "fewer than 250",
+        "60 words",
+    ]:
+        assert phrase in text, phrase
+    for heading in NARRATIVE_HEADINGS:
+        assert heading in text, heading
+
+
+def test_shipped_narratives_meet_the_snapshot_contract(repo_root):
+    """The worked examples exercise the same contract future invocations must follow."""
+    paths = _narrative_paths(repo_root)
+    assert len(paths) >= 3
+    observed_slugs = set()
+    for path in paths:
+        name_match = NARRATIVE_NAME.match(path.name)
+        assert name_match, path.name
+        observed_slugs.add(name_match.group(1))
+    assert {
+        "operating-point-closure",
+        "priced-levers",
+        "wall-and-heating",
+    } <= observed_slugs
+    for path in paths:
+        text = path.read_text()
+        name_match = NARRATIVE_NAME.match(path.name)
+        assert text.startswith(f"# Narrative: {name_match.group(1)}\n")
+        assert len(text.splitlines()) < 250, path
+        headings = re.findall(r"^##\s+(.*)$", text, re.M)
+        assert headings == NARRATIVE_HEADINGS, path
+        for field in ["Goal status", "Narrative cutoff", "Review status"]:
+            assert re.search(rf"^- \*\*{field}:\*\*", text, re.M), (path, field)
+        assert "not evidence, state, or a decision record" in text
+        story = text.split("## Story in one picture", 1)[1].split("\n## ", 1)[0]
+        assert "```mermaid" in story or re.search(r"^\|.+\|$", story, re.M) or "![" in story
+        for paragraph in _ordinary_prose_lines(text):
+            assert len(paragraph.split()) <= 60, (path, paragraph)
+        for target, written_target in _local_link_targets(path, text):
+            assert target.exists(), f"{path}: unresolved link {written_target}"
