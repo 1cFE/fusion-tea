@@ -286,6 +286,8 @@ def test_narrator_skill_is_discoverable_and_carries_the_contract(repo_root):
         "must not overwrite",
         "provisional",
         "base commit",
+        "Goal closed",
+        "Git commit-time proxy",
         "fewer than 250",
         "60 words",
     ]:
@@ -317,6 +319,26 @@ def test_shipped_narratives_meet_the_snapshot_contract(repo_root):
         assert headings == NARRATIVE_HEADINGS, path
         for field in ["Goal status", "Narrative cutoff", "Review status"]:
             assert re.search(rf"^- \*\*{field}:\*\*", text, re.M), (path, field)
+        goal_status = re.search(r"^- \*\*Goal status:\*\* (.+)$", text, re.M)
+        assert goal_status
+        assert re.match(r"(?:Open|Closed)\b", goal_status.group(1)), path
+        goal_closed = re.search(r"^- \*\*Goal closed:\*\* (.+)$", text, re.M)
+        if goal_status.group(1).startswith("Closed"):
+            assert goal_closed, path
+            close_value = goal_closed.group(1)
+            assert re.search(r"\b\d{4}-\d{2}-\d{2}\b", close_value), path
+            has_exact_time = re.search(
+                r"\b\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2})?(?:Z|[+-]\d{2}:\d{2})\b",
+                close_value,
+            )
+            has_proxy_time = (
+                "approximately" in close_value
+                and "Git commit-time proxy" in close_value
+            )
+            assert has_exact_time or has_proxy_time, path
+        else:
+            assert "no owner close" in goal_status.group(1).lower(), path
+            assert goal_closed is None, path
         assert "not evidence, state, or a decision record" in text
         story = text.split("## Story in one picture", 1)[1].split("\n## ", 1)[0]
         assert "```mermaid" in story or re.search(r"^\|.+\|$", story, re.M) or "![" in story

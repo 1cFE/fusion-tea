@@ -2,7 +2,7 @@
 
 This is the human-facing engineering story of the goal. It summarizes cited records; it is not evidence, state, or a decision record. If this account and a cited source disagree, the source wins.
 
-- **Goal status:** Grounded. Round 1 `heating-chain-first` closed and was independently reviewed on 2026-09-04. Round 2 `source-anchored-wall-fence` is open; its source-basis task returned and its wall-fence model task has started.
+- **Goal status:** Open (`grounded`); no owner close is recorded at this cutoff. Round 1 `heating-chain-first` closed and was independently reviewed on 2026-09-04. Round 2 `source-anchored-wall-fence` is open; its source-basis task returned and its wall-fence model task has started.
 - **Narrative cutoff:** Provisional working tree over base commit `19b79f929df632af78992711e1b5a6bc5989f011` at 2026-09-04T18:42:54Z; uncommitted source content was included and the exact source state may not be recoverable from Git.
 - **Review status:** Round 1's study reading, dispositions, result, eight learnings, and Row-4 re-grade were independently reviewed. Round 2's T-001 source-basis reading is complete but not yet covered by a fresh round review; T-002 has only started ([trail.md](../orchestration/goals/wall-and-heating/trail.md)).
 

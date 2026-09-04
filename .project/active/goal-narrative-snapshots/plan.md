@@ -15,6 +15,7 @@
 - [x] Add the discoverable, user-invocable `/narrate-goal` skill as the sole authoring contract.
 - [x] Move and relink the three worked examples under `work/narratives/` with UTC migration timestamps.
 - [x] Bring the wall-and-heating snapshot to a coherent, visibly provisional working-tree cutoff.
+- [x] Make goal-level closure status visible and add an honestly labeled close-time proxy without changing the goal contract.
 - [x] Run focused validation, fix failures, and record the results.
 - [x] Synchronize the spec and current-work status.
 
@@ -53,3 +54,11 @@
 - No technical design was created, as explicitly approved in the specification.
 - No separate generator or validator script was added. The skill writes Markdown directly and reuses the existing orchestration contract test, keeping one procedural surface.
 - Unrelated concurrent changes under the round-2 modeling work, backlog, and goal trail were preserved and not folded into this coding item.
+
+### Closure Metadata Follow-up
+
+**Completed:** 2026-09-04T21:43:15Z
+
+- Amended the narrator contract and examples so `Goal status` begins with `Open` or `Closed`, only an owner close entry counts as goal closure, and closed goals show the authoritative date plus an explicitly labeled Git commit-time proxy when the trail has no time.
+- Filed the missing machine-readable goal status and closure timestamp contract as a P2 item in `.project/backlog/BACKLOG.md`; `GOAL_RUNBOOK.md`, the goal templates, and `/run-goal` remain unchanged.
+- Extended the focused contract checks for open/closed wording and conditional close metadata. `UV_CACHE_DIR=/tmp/fusion-tea-goal-narrative-uv-cache uv run pytest tests/orchestration/test_goal_contract.py -q` passed: 29 tests. `git diff --check` passed; narrative line counts are 162, 202, and 246.

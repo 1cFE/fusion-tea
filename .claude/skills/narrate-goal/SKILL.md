@@ -26,9 +26,11 @@ Use the generation time in UTC and name the output `work/narratives/YYYYMMDD-HHM
 
 1. Record the base commit with `git rev-parse HEAD` and the UTC generation time.
 2. Read `goal.md`, then `trail.md`, then `learnings.md`. Follow the authoritative native records they cite when those records are needed to support the story.
-3. Do not use an earlier narrative, `CURRENT_WORK.md`, `SUMMARY.md`, or other orientation prose as evidence. They may help locate a source, but every retained claim must resolve to a goal file or native record.
-4. Check the goal files and every cited native record actually used with `git status --short -- <paths>` immediately before writing. If relevant files changed while drafting, reread them before creating the snapshot.
-5. Dirty sources are allowed. When any relevant input is dirty, label the cutoff `Provisional`, record the base commit, state that uncommitted source content was included, and say that the exact source state may not be recoverable from Git.
+3. Determine goal-level closure from the authoritative trail. A closed round, an accepted learning, or a review that recommends closure does not close the goal. Treat the goal as closed only when the trail records the owner's close ruling; current goals use a `## Goal close — YYYY-MM-DD` heading. Otherwise report it as open at this cutoff.
+4. For a closed goal, take the calendar date and disposition from the close entry. If that entry has no explicit time, find the commit that first introduced its close heading and use the commit time only as a rough proxy. Label it `Git commit-time proxy` and include the short commit id. If the entry is uncommitted or its introducing commit cannot be identified, state that the rough time is unavailable; never infer one from nearby work.
+5. Do not use an earlier narrative, `CURRENT_WORK.md`, `SUMMARY.md`, or other orientation prose as evidence. They may help locate a source, but every retained claim must resolve to a goal file or native record.
+6. Check the goal files and every cited native record actually used with `git status --short -- <paths>` immediately before writing. If relevant files changed while drafting, reread them before creating the snapshot.
+7. Dirty sources are allowed. When any relevant input is dirty, label the cutoff `Provisional`, record the base commit, state that uncommitted source content was included, and say that the exact source state may not be recoverable from Git.
 
 For a clean cutoff, identify the base commit in `Narrative cutoff`. For a provisional cutoff, use this meaning without softening it: `Provisional working tree over <base-commit>; uncommitted source content was included and the exact source state may not be recoverable from Git.`
 
@@ -38,7 +40,8 @@ Start with `# Narrative: <canonical-goal-slug>`, followed by this authority warn
 
 Then include these metadata bullets:
 
-- `Goal status` — the status supported by the goal and trail at the cutoff.
+- `Goal status` — begin with `Open` or `Closed` so closure state is unmistakable. For an open goal, say that no owner close is recorded at this cutoff. For a closed goal, distinguish an ordinary close from `Closed by redirect` when the owner ruling does.
+- `Goal closed` — include only for a closed goal. Give the authoritative close date and either the explicit artifact time or an approximate time, short commit id, and `Git commit-time proxy` label. Cite the trail close entry in this bullet.
 - `Narrative cutoff` — the commit or provisional working-tree basis.
 - `Review status` — the actual review state of the summarized authoritative records. If source records have mixed review states, enumerate them here or label the affected claims where they appear. Do not imply that the narrative itself was independently reviewed.
 
@@ -72,5 +75,5 @@ Before reporting completion:
 
 1. Confirm the target did not exist before this invocation and that no file outside the one new snapshot changed.
 2. Run `uv run pytest tests/orchestration/test_goal_contract.py -q`. Fix failures caused by the new narrative. If an unrelated contract failure remains, stop and report it without editing outside this skill's boundary.
-3. Recheck the line count, paragraph ceiling, heading order, purposeful visual, metadata, authority warning, and local links.
+3. Recheck the line count, paragraph ceiling, heading order, purposeful visual, closure metadata, authority warning, and local links.
 4. Report the output path, the cutoff and whether it is provisional, and the validation result.

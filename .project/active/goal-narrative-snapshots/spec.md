@@ -22,6 +22,7 @@ The three worked examples establish the quality bar as well as the content scope
 - [x] Two normal invocations for the same goal produce two chronologically sortable files; the first remains unchanged and neither invocation overwrites an existing file.
 - [x] A generated narrative follows the worked example's eight-section scope, is easy to skim, contains no large prose blocks, uses helpful visuals, and is fewer than 250 lines in full.
 - [x] Every narrative uses the worked examples' `Goal status`, `Narrative cutoff`, and `Review status` metadata, labels any dirty-source snapshot provisional, preserves mixed source-review states, and states its non-authoritative status clearly enough that a reader cannot mistake it for goal state or a review verdict.
+- [x] Every narrative makes goal-level closure explicit; a closed goal shows the authoritative close date and either an explicit close time or a clearly labeled rough Git commit-time proxy.
 - [x] Quantitative and decision-bearing claims resolve to authoritative evidence at the declared cutoff, and all local links resolve from the narrative's new location.
 - [x] The three existing drafts are represented as timestamped snapshots outside the goal directories, the stale wall account is regenerated from a coherent cutoff, and live references to the deleted `SUMMARY.md` are repaired.
 - [x] Focused checks protect the objective contract: separation, filename/no-overwrite behavior, required headings, paragraph and file limits, metadata and authority warning, at least one purposeful visual, and valid source links; the skill's author checklist covers interpretive quality that cannot be judged mechanically.
@@ -52,6 +53,8 @@ The three worked examples establish the quality bar as well as the content scope
 - **[INFERRED] NAR-22 — Migration timestamps are honest:** The three untracked worked examples receive their migration timestamps when placed in `work/narratives/`; their headers retain the actual evidence cutoff and do not claim an unrecoverable historical generation time. Basis: the filename describes snapshot creation, while the separate cutoff field describes source chronology.
 - **[INFERRED] NAR-23 — Objective checks and human judgment stay separate:** Automated checks cover deterministic structure and boundaries. The skill requires the author to judge whether the narrative is easy to skim and whether each visual materially improves interpretation; a passing structural check is not a quality verdict. Basis: the owner-stated quality requirements.
 - **[INFERRED] NAR-24 — Minimal mechanism:** The feature adds no automatic post-round dispatch, mutable `latest` pointer, narrative registry, synchronization mechanism, HTML publication step, correction mode, or narrative review gate. Source: `.project/concepts/goal-narrative-snapshots.md` § Non-Goals and the specification question pass.
+- **[NEED] NAR-25 — Visible goal closure:** `Goal status` makes the goal-level closure state unmistakable. When the goal is closed, the narrative also shows the close date and rough time. A closed round, accepted learning, or reviewer recommendation is not reported as goal closure; closure requires the owner's close ruling in the authoritative trail. Source: owner request 2026-09-04.
+- **[INFERRED] NAR-26 — Honest close-time proxy:** The close entry supplies the authoritative calendar date and disposition. Until the goal contract records a time, the commit that introduced the close entry supplies only a rough time, labeled `Git commit-time proxy` with its commit id. If no such commit is available, the time is reported unavailable rather than inferred. Basis: owner-ratified recommendation 2026-09-04; the stronger status contract is deferred to `.project/backlog/BACKLOG.md`.
 
 ## Non-Goals
 
@@ -70,6 +73,7 @@ The three worked examples establish the quality bar as well as the content scope
 - **[INFERRED] Metadata:** Keep the three worked-example fields and do not add a narrative-review lifecycle; enumerate or locally label mixed source-review states instead of flattening them.
 - **[INFERRED] Migration:** Use migration time for the filename and preserve the evidence cutoff separately in the header.
 - **[INFERRED] Quality checks:** Test objective rules; require author judgment for skimmability and whether visuals help.
+- **[INFERRED] Closure metadata:** Treat only an owner close entry in the trail as goal closure. Show its date and disposition, and label a Git-derived rough time as a proxy rather than artifact authority.
 - **[INFERRED] Process:** Skip technical design. The change is a bounded authoring skill and file migration with no new runtime architecture or cross-component interface.
 
 ---

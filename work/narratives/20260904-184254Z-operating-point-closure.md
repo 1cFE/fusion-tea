@@ -2,7 +2,8 @@
 
 This is the human-facing engineering story of the goal. It summarizes cited records; it is not evidence, state, or a decision record. If this account and a cited source disagree, the source wins.
 
-- **Goal status:** Closed 2026-09-02 after two rounds.
+- **Goal status:** Closed by owner ruling after two rounds.
+- **Goal closed:** 2026-09-02 at approximately 06:16 PDT (`dd0b5896`; Git commit-time proxy). The date and disposition come from [the owner close entry](../orchestration/goals/operating-point-closure/trail.md#goal-close--2026-09-02).
 - **Narrative cutoff:** Clean sources at base commit `19b79f929df632af78992711e1b5a6bc5989f011`; owner close recorded in [goal.md](../orchestration/goals/operating-point-closure/goal.md) and [trail.md](../orchestration/goals/operating-point-closure/trail.md).
 - **Review status:** The round results, six learnings, and Row-1 re-grade were independently reviewed.
 
