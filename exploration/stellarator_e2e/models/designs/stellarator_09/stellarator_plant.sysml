@@ -633,8 +633,74 @@ package stellarator_09 {
         }
 
         // Power-balance inputs.
-        :>> p_input = 50.0 {  // installed plasma-coupled heating power [MW].
-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: "Required plasma-coupled ECRH power [MW] 50"); raw PDF sec. 2.5 (50 MW to reach point A). WI-037 correction: this is plasma-coupled power, not wallplug -- the power balance already treats it so (p_th adds p_input directly; wallplug enters recirculation as p_input/eta_pin, mfe_power_balance.sysml:119,136), and sustainment_ok compares it coupled-to-coupled. **Basis**: Stellaris installed plasma-coupled ECRH power */
+        // Heating power chain (WI-039). The installed wall-plug draw is the
+        // entry point; source-output power (the cost driver) and plasma-coupled
+        // power (the physics driver, and what sustainment_ok compares against
+        // the plasma's requirement) are computed from it.
+        :>> p_wallplug_heat = 100.0 {
+            doc /*
+            Installed wall-plug electrical power for ECRH [MW].
+
+            The source prints the *coupled* figure, not this one: Table 2 image
+            "Required plasma-coupled ECRH power [MW] 50" (raw PDF sec. 2.5, 50 MW
+            to reach point A). 100.0 is that printed 50 MW divided by this chain's
+            own stated efficiencies (eta_source_heat 0.50 x eta_couple_heat 1.00
+            = 0.50). It is an exact algebraic restatement of a sourced value under
+            stated assumptions, not a new number.
+
+            WI-037's correction is preserved and now lives in the chain: the 50 MW
+            is plasma-coupled power, not wall-plug, and sustainment_ok compares it
+            coupled-to-coupled (heat.p_coupled into p_aux_installed_in below).
+
+            Consequence, recorded so it is not later mistaken for a lost anchor
+            (WI-039 design D1): with wall-plug as the entry point, a study that
+            sweeps eta_source_heat moves coupled power off the printed 50 MW. That
+            is the chain deriving something, which is the point of it.
+
+            **Source**: stellaris-design-details.md
+            **Ref**: Table 2 image (images/page_002_table_0.png: "Required
+                plasma-coupled ECRH power [MW] 50"); raw PDF sec. 2.5
+            **Basis**: Stellaris installed plasma-coupled ECRH power, divided by
+                the chain's stated wall-plug-to-plasma efficiency (WI-039 D1)
+            */
+        }
+        :>> eta_source_heat = 0.50 {
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:105 (eta_source_ecrh = 0.50); defaults.py:104-108 (per-method wall-plug source efficiency, "wall-plug -> delivered power, before plasma coupling") **Basis**: gyrotron wall-plug efficiency, ITER-procurement-calibrated */
+        }
+        :>> eta_couple_heat = 1.00 {
+            doc /*
+            Source output -> plasma-coupled fraction [1]. THE DEPOSITION
+            ASSUMPTION, stated rather than defaulted (WI-039 MR-WI039-3).
+
+            What it asserts: all power leaving the gyrotrons reaches the plasma.
+            No transmission-line loss, no window loss, no shine-through, no
+            unabsorbed first pass.
+
+            Its status: this is the pinned 1costingFE per-concept value for ECRH
+            (steady_state_stellarator.yaml:15, "ECRH coupling; eta_pin = 0.50 x
+            1.0 = 0.50"). It is an idealisation, not a measurement.
+
+            Its direction: optimistic. A real ECRH chain's transmission and
+            single-pass absorption losses would put it below 1.0, which would
+            raise both the wall-plug draw and the recirculating power for the
+            same coupled power. The model carries no admissible source for either
+            loss, so the gap is named here rather than guessed at (a missing
+            input is surfaced, never defaulted).
+
+            If a coupling figure is later sourced it enters at this one attribute
+            and the whole chain re-derives.
+
+            **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml
+            **Ref**: steady_state_stellarator.yaml:15 (eta_couple = 1.0)
+            **Basis**: pinned 1costingFE per-concept ECRH coupling value, carried
+                as a stated assumption (WI-039 design D2)
+            */
+        }
+        :>> p_delivered_direct_heat = 0.0 {
+            doc /* **Source**: WI-039 design D4 **Ref**: work/active/WI-039_heating-system-structure/design.md (dormancy by additive direct terms) **Basis**: the chain is live, so the direct source-output term is zeroed -- coexisting would double-count (the p_cryo = 0.0 precedent below) */
+        }
+        :>> p_coupled_direct_heat = 0.0 {
+            doc /* **Source**: WI-039 design D4 **Ref**: work/active/WI-039_heating-system-structure/design.md (dormancy by additive direct terms) **Basis**: the chain is live, so the direct plasma-coupled term is zeroed -- coexisting would double-count */
         }
         :>> mn = 1.2 {        // blanket neutron energy multiplier.
             doc /* **Source**: stellaris-design-details.md **Ref**: line 1664/1831 (power multiplication 1.20, HCLL blanket) **Basis**: Stellaris HCLL blanket energy multiplication */
@@ -644,9 +710,6 @@ package stellarator_09 {
         }
         :>> eta_p = 0.5 {     // pumping-power capture efficiency.
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:14 (eta_p = 0.5) **Basis**: 1costingFE stellarator pumping efficiency */
-        }
-        :>> eta_pin = 0.5 {   // input-power wall-plug efficiency (ECRH).
-            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:105 (eta_source_ecrh = 0.50) x steady_state_stellarator.yaml:15 (eta_couple = 1.0) = 0.50 **Basis**: gyrotron wall-plug x ECRH coupling */
         }
         :>> p_pump = 195.0 {  // primary coolant pumping power [MW] -- helium-primary circulator basis (WI-033).
             doc /*
@@ -842,9 +905,12 @@ package stellarator_09 {
         :>> heating_ecrh_per_mw = 5282900.0 {  // ECRH capital [$/MW].
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/defaults.py **Ref**: defaults.py:98-100 (heating_ecrh_per_mw = 5.2829 M$/MW) x 1e6 **Basis**: gyrotron ECRH per-MW capital */
         }
-        :>> p_ecrh = 50.0 {   // delivered ECRH power [MW].
-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 line 237 (ECRD/ECRH power = 50 MW) **Basis**: Stellaris ECRH installed power */
-        }
+        // p_ecrh retired as a held value (WI-039): the heating cost account now
+        // reads the chain's source-output power (heat.p_delivered), so installed
+        // ECRH power and plasma-coupled power descend from one wall-plug input
+        // instead of being two constants kept equal by a study-layer declaration.
+        // Table 2 line 237 (ECRD/ECRH power = 50 MW) remains the source of record
+        // for that power; it is now reproduced, not asserted.
 
         // Divertor (CAS22.1.8) driver.
         :>> divertor_base = 60000000.0 {  // divertor cost at 1 GWth [$].
@@ -1119,7 +1185,7 @@ package stellarator_09 {
         // WI-037 increment (goal learnings L-001/L-002; design D6/D7).
         assert constraint sustainment_ok : 'Sustainment Limit' {
             in p_aux_required_in = sustain.p_aux_required;
-            in p_aux_installed_in = p_input;
+            in p_aux_installed_in = heat.p_coupled;
         }
 
         // Exposed neutron wall load (headline physics output).

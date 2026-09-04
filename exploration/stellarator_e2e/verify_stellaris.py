@@ -184,7 +184,14 @@ IN = dict(
     sustain_ash_frac=0.2002, R_w_sync=0.6, kappa_sync=1.0,
     beta_mu0=1.25663706212e-6, beta_e_keV=1.602176634e-16,  # 'Volume-Averaged Beta' defaults
     # power balance
-    p_input=50.0, mn=1.2, eta_th=0.333, eta_p=0.5, eta_pin=0.5,
+    mn=1.2, eta_th=0.333, eta_p=0.5,
+    # Heating power chain (WI-039). Wall-plug is the entry point; the source
+    # prints the coupled 50 MW, and 100.0 is that value divided by this chain's
+    # own stated efficiencies (0.50 x 1.00). eta_couple = 1.00 is the stated
+    # deposition assumption (all gyrotron output reaches the plasma), not a
+    # sourced coupling figure -- see stellarator_plant.sysml eta_couple_heat.
+    p_wallplug_heat=100.0, eta_source_heat=0.50, eta_couple_heat=1.00,
+    p_delivered_direct_heat=0.0, p_coupled_direct_heat=0.0,
     # p_pump: 1cfe upstream default 1.0 (1costingFE steady_state_stellarator.yaml:21,
     #   WI-019); re-based to 195.0 by WI-033 [OWNER 2026-08-28] (helium-primary
     #   circulator basis, 6% of p_th; work/completed/20260828_WI-033_p-pump-rebase/).
@@ -243,7 +250,7 @@ IN = dict(
     # divertor
     divertor_base=60000000.0, divertor_p_th_ref=1000.0, divertor_alpha=0.5,
     # heating (ECRH-only)
-    heating_ecrh_per_mw=5282900.0, p_ecrh=50.0,
+    heating_ecrh_per_mw=5282900.0,  # p_ecrh retired (WI-039): the chain supplies it
     # BOP per-MW rates ($/MW)
     turbine_per_mw=202840.0, electric_per_mw=86400.0,
     heat_rej_per_mw=35060.0, misc_per_mw=52590.0, n_mod=1.0,
@@ -377,7 +384,20 @@ def compute():
     p_cool = p["p_tfcool"] + p["p_pfcool"]
     p_aux = p["p_trit"] + p["p_house"]
     p_coils = p["p_tf"] + p["p_pf"]
-    p_th = (p["mn"] * p_neutron + p_alpha + p["p_input"]
+    # Heating power chain (WI-039), written from the WI-039 design's stated
+    # equations rather than from the generated module:
+    #   p_delivered      = p_wallplug * eta_source + p_delivered_direct
+    #   p_coupled        = p_wallplug * eta_source * eta_couple + p_coupled_direct
+    #   eta_pin_eff      = eta_source * eta_couple
+    #   p_wallplug_total = p_wallplug + p_coupled_direct / eta_pin_eff
+    heat_eta_pin_eff = p["eta_source_heat"] * p["eta_couple_heat"]
+    heat_delivered = (p["p_wallplug_heat"] * p["eta_source_heat"]
+                      + p["p_delivered_direct_heat"])
+    heat_coupled = (p["p_wallplug_heat"] * p["eta_source_heat"] * p["eta_couple_heat"]
+                    + p["p_coupled_direct_heat"])
+    heat_wallplug_total = (p["p_wallplug_heat"]
+                           + p["p_coupled_direct_heat"] / heat_eta_pin_eff)
+    p_th = (p["mn"] * p_neutron + p_alpha + heat_coupled
             + p["eta_p"] * p["p_pump"])
     p_the = p["eta_th"] * p_th
     p_et = p_the
@@ -389,7 +409,7 @@ def compute():
     p_cold = ((((p["q_nuc_cryo"] * vol_cold_total) * 1e-06) + p["p_fixed_cryo"]) * p["f_uplift_cryo"])
     p_cryo = ((p_cold / cop) + p["p_cryo_direct"])
     recirculating = (p_coils + p["p_pump"] + p_sub + p_aux + p_cool + p_cryo
-                     + p["p_input"] / p["eta_pin"])
+                     + heat_wallplug_total)
     q_eng = p_et / recirculating
     rec_frac = 1.0 / q_eng
     p_net = (1.0 - rec_frac) * p_et
@@ -414,7 +434,7 @@ def compute():
               * (p_et / p["p_et_ref"]) ** p["alpha_06"])
     power_supplies = p["power_supplies_base"] * (p_et / p["p_et_ref"]) ** p["alpha_07"]
     divertor = p["divertor_base"] * (p_th / p["divertor_p_th_ref"]) ** p["divertor_alpha"]
-    heating = p["heating_ecrh_per_mw"] * p["p_ecrh"]  # ECRH-only; others zero
+    heating = p["heating_ecrh_per_mw"] * heat_delivered  # ECRH-only; others zero
     turbine = p["n_mod"] * p_the * p["turbine_per_mw"]
     electric = p["n_mod"] * p_et * p["electric_per_mw"]
     heat_rejection = p["n_mod"] * p_th * p["heat_rej_per_mw"]

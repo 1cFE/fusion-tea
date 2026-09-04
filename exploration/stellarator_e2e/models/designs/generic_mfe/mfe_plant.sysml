@@ -6,6 +6,7 @@ package mfe_plant {
     private import mfe_plasma_sustainment::*;
     private import mfe_power_balance::*;
     private import mfe_cryo_plant::*;
+    private import mfe_heating_chain::*;
     private import mfe_magnet_cost::*;
     private import mfe_magnet_field::*;
     private import mfe_account_costs::*;
@@ -339,16 +340,12 @@ package mfe_plant {
         }
 
         // Power-balance inputs (WI-011).
-        // plasma heating power [MW]
-        attribute p_input : Real;
         // neutron energy multiplier
         attribute mn : Real;
         // thermal-to-electric efficiency
         attribute eta_th : Real;
         // pumping-power capture efficiency
         attribute eta_p : Real;
-        // input-power wall-plug efficiency
-        attribute eta_pin : Real;
         // primary coolant pumping power [MW]
         attribute p_pump : Real;
         // subsystem/control fraction
@@ -394,13 +391,39 @@ package mfe_plant {
             in p_direct = p_cryo;
         }
 
+        // Heating power chain (WI-039). Dormant by default, on the WI-024
+        // cryoplant pattern: a concept that knows its heating powers outright
+        // binds the direct terms and leaves the chain unbound; a concept
+        // deriving them binds the chain and zeroes the direct terms. The
+        // efficiencies default to 1.0 (not 0) so a dormant chain's effective
+        // efficiency stays defined -- the mode is selected by the powers,
+        // never by an efficiency.
+        // installed wall-plug electrical power for heating [MW]
+        attribute p_wallplug_heat : Real default 0.0;
+        // wall-plug -> source output conversion efficiency [1]
+        attribute eta_source_heat : Real default 1.0;
+        // source output -> plasma-coupled fraction [1] (deposition assumption)
+        attribute eta_couple_heat : Real default 1.0;
+        // directly-specified source-output heating power [MW] (dormant path)
+        attribute p_delivered_direct_heat : Real default 0.0;
+        // directly-specified plasma-coupled heating power [MW] (dormant path)
+        attribute p_coupled_direct_heat : Real default 0.0;
+
+        calc heat : 'Heating Power Chain' {
+            in p_wallplug = p_wallplug_heat;
+            in eta_source = eta_source_heat;
+            in eta_couple = eta_couple_heat;
+            in p_delivered_direct = p_delivered_direct_heat;
+            in p_coupled_direct = p_coupled_direct_heat;
+        }
+
         calc pb : 'MFE Power Balance Calc' {
             in p_nrl = fusion.p_fus;
-            in p_input_in = p_input;
+            in p_input_in = heat.p_coupled;
             in mn_in = mn;
             in eta_th_in = eta_th;
             in eta_p_in = eta_p;
-            in eta_pin_in = eta_pin;
+            in p_wallplug_in = heat.p_wallplug_total;
             in p_pump_in = p_pump;
             in f_sub_in = f_sub;
             in p_tf_in = p_tf;
@@ -514,7 +537,6 @@ package mfe_plant {
         attribute heating_icrf_per_mw : Real;
         attribute p_icrf : Real;
         attribute heating_ecrh_per_mw : Real;
-        attribute p_ecrh : Real;
         attribute heating_lhcd_per_mw : Real;
         attribute p_lhcd : Real;
         calc heating_cost : 'Heating Cost' {
@@ -523,7 +545,7 @@ package mfe_plant {
             in icrf_per_mw = heating_icrf_per_mw;
             in p_icrf_in = p_icrf;
             in ecrh_per_mw = heating_ecrh_per_mw;
-            in p_ecrh_in = p_ecrh;
+            in p_ecrh_in = heat.p_delivered;
             in lhcd_per_mw = heating_lhcd_per_mw;
             in p_lhcd_in = p_lhcd;
         }

@@ -10,9 +10,9 @@ Inputs:
 Outputs:
     - replacement_cost_per_event: replacement_cost_per_event result
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:864
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:886
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:864
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:886
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_plant/mfe_power_plant/replacement_cost_per_event_impl.py
@@ -48,9 +48,9 @@ Inputs:
 Outputs:
     - replacement_cost_per_event: replacement_cost_per_event result
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:864
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:886
 
-    SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:864
+    SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:886
 
     Calculation Specification:
 

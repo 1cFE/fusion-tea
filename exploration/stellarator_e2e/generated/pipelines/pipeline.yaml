@@ -99,6 +99,21 @@ modules:
       blanket_vol: float stellarator_09__stellaris__rb__blanket_vol
       vessel_vol: float stellarator_09__stellaris__rb__vessel_vol
 
+  # mfe_heating_chain.Heating_Power_ChainModule
+  stellarator_09__stellaris__heat:
+    module_type: mfe_heating_chain.Heating_Power_ChainModule
+    inputs:
+      p_coupled_direct: float stellarator_plant_params.stellarator_09__stellaris__p_coupled_direct_heat
+      eta_couple: float stellarator_plant_params.stellarator_09__stellaris__eta_couple_heat
+      p_delivered_direct: float stellarator_plant_params.stellarator_09__stellaris__p_delivered_direct_heat
+      eta_source: float stellarator_plant_params.stellarator_09__stellaris__eta_source_heat
+      p_wallplug: float stellarator_plant_params.stellarator_09__stellaris__p_wallplug_heat
+    outputs:
+      p_wallplug_total: float stellarator_09__stellaris__heat__p_wallplug_total
+      p_delivered: float stellarator_09__stellaris__heat__p_delivered
+      p_coupled: float stellarator_09__stellaris__heat__p_coupled
+      eta_pin_eff: float stellarator_09__stellaris__heat__eta_pin_eff
+
   # mfe_account_costs.Heating_CostModule
   stellarator_09__stellaris__heating_cost:
     module_type: mfe_account_costs.Heating_CostModule
@@ -107,7 +122,7 @@ modules:
       p_nbi_in: float stellarator_plant_params.stellarator_09__stellaris__p_nbi
       ecrh_per_mw: float stellarator_plant_params.stellarator_09__stellaris__heating_ecrh_per_mw
       p_lhcd_in: float stellarator_plant_params.stellarator_09__stellaris__p_lhcd
-      p_ecrh_in: float stellarator_plant_params.stellarator_09__stellaris__p_ecrh
+      p_ecrh_in: float stellarator_09__stellaris__heat__p_delivered
       p_icrf_in: float stellarator_plant_params.stellarator_09__stellaris__p_icrf
       nbi_per_mw: float stellarator_plant_params.stellarator_09__stellaris__heating_nbi_per_mw
       lhcd_per_mw: float stellarator_plant_params.stellarator_09__stellaris__heating_lhcd_per_mw
@@ -321,13 +336,13 @@ modules:
       p_pfcool_in: float stellarator_plant_params.stellarator_09__stellaris__p_pfcool
       eta_p_in: float stellarator_plant_params.stellarator_09__stellaris__eta_p
       p_pf_in: float stellarator_plant_params.stellarator_09__stellaris__p_pf
+      p_wallplug_in: float stellarator_09__stellaris__heat__p_wallplug_total
       p_house_in: float stellarator_plant_params.stellarator_09__stellaris__p_house
       mn_in: float stellarator_plant_params.stellarator_09__stellaris__mn
       eta_th_in: float stellarator_plant_params.stellarator_09__stellaris__eta_th
       p_tf_in: float stellarator_plant_params.stellarator_09__stellaris__p_tf
-      eta_pin_in: float stellarator_plant_params.stellarator_09__stellaris__eta_pin
       p_pump_in: float stellarator_plant_params.stellarator_09__stellaris__p_pump
-      p_input_in: float stellarator_plant_params.stellarator_09__stellaris__p_input
+      p_input_in: float stellarator_09__stellaris__heat__p_coupled
       p_trit_in: float stellarator_plant_params.stellarator_09__stellaris__p_trit
     outputs:
       p_the: float stellarator_09__stellaris__pb__p_the
@@ -948,7 +963,7 @@ modules:
     module_type: stellarator_09.StellarisSustainmentOkConstraintModule
     inputs:
       p_aux_required_in: float stellarator_09__stellaris__sustain__p_aux_required
-      p_aux_installed_in: float stellarator_plant_params.stellarator_09__stellaris__p_input
+      p_aux_installed_in: float stellarator_09__stellaris__heat__p_coupled
     outputs:
       evaluation: ConstraintEvaluation stellarator_09__stellaris__sustainment_ok__77add152ed8eafce__evaluation
 
@@ -984,6 +999,10 @@ modules:
       stellarator_09__stellaris__rb__r_coil: float stellaris__magnet__r_coil.json
       stellarator_09__stellaris__rb__blanket_vol: float stellaris__blanket__blanket_vol.json
       stellarator_09__stellaris__rb__vessel_vol: float stellaris__vessel__vessel_vol.json
+      stellarator_09__stellaris__heat__p_wallplug_total: float stellarator_09__stellaris__heat__p_wallplug_total.json
+      stellarator_09__stellaris__heat__p_delivered: float stellarator_09__stellaris__heat__p_delivered.json
+      stellarator_09__stellaris__heat__p_coupled: float stellarator_09__stellaris__heat__p_coupled.json
+      stellarator_09__stellaris__heat__eta_pin_eff: float stellarator_09__stellaris__heat__eta_pin_eff.json
       stellarator_09__stellaris__heating_cost__cost: RootModel[float] stellaris__heating_capital.json
       stellarator_09__stellaris__field_calc__B_axis: RootModel[float] stellaris__magnet__B.json
       stellarator_09__stellaris__peak_field_calc__B_peak: RootModel[float] stellarator_09__stellaris__peak_field_calc__B_peak.json

@@ -9,9 +9,9 @@ Inputs:
 Outputs:
     - reactor_equipment_subtotal: reactor_equipment_subtotal result
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:631
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:653
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:631
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:653
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_plant/mfe_power_plant/reactor_equipment_subtotal_impl.py
@@ -44,9 +44,9 @@ Inputs:
 Outputs:
     - reactor_equipment_subtotal: reactor_equipment_subtotal result
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:631
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:653
 
-    SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:631
+    SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:653
 
     Calculation Specification:
 

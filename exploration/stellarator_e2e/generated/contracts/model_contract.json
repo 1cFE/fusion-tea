@@ -436,6 +436,26 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__heat__p_wallplug_total",
+      "field_name": "p_wallplug_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat__p_delivered",
+      "field_name": "p_delivered",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat__p_coupled",
+      "field_name": "p_coupled",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heat__eta_pin_eff",
+      "field_name": "eta_pin_eff",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__heating_cost__cost",
       "field_name": "root",
       "python_type": "float"
@@ -1572,6 +1592,13 @@
       "qualified_name": "stellarator_09__stellaris__electric_plant__cost_per_mw"
     },
     {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__eta_couple_heat"
+    },
+    {
       "default_value": 0.5,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -1583,7 +1610,7 @@
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__eta_pin"
+      "qualified_name": "stellarator_09__stellaris__eta_source_heat"
     },
     {
       "default_value": 0.333,
@@ -2017,14 +2044,21 @@
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__p_cryo"
+      "qualified_name": "stellarator_09__stellaris__p_coupled_direct_heat"
     },
     {
-      "default_value": 50.0,
+      "default_value": 0.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__p_ecrh"
+      "qualified_name": "stellarator_09__stellaris__p_cryo"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__p_delivered_direct_heat"
     },
     {
       "default_value": 0.0075,
@@ -2046,13 +2080,6 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__p_icrf"
-    },
-    {
-      "default_value": 50.0,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__p_input"
     },
     {
       "default_value": 0.0,
@@ -2109,6 +2136,13 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__p_trit"
+    },
+    {
+      "default_value": 100.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__p_wallplug_heat"
     },
     {
       "default_value": 80000000.0,
@@ -2272,5 +2306,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "3cb690aab05ee11eff2f8832d968b9c3bd64be2ec768d4130dee19fc30cd2059"
+  "semantic_fingerprint": "48731d1570bb20cdeae45faa20545aae46aeda5982a4fbc2129d7784a66595ba"
 }

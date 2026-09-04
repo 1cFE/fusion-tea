@@ -58,8 +58,11 @@ package mfe_power_balance {
         in attribute eta_th_in : Real;
         // Pumping power capture efficiency
         in attribute eta_p_in : Real;
-        // Input power wall-plug efficiency
-        in attribute eta_pin_in : Real;
+        // Wall-plug electrical power drawn by the heating system [MW].
+        // WI-039: arrives computed from the heating chain ('Heating Power
+        // Chain', mfe_heating_chain.sysml) rather than being derived here
+        // from a held coupled power and a held lumped efficiency.
+        in attribute p_wallplug_in : Real default 0.0;
 
         // === PUMPING / SUBSYSTEM POWER ===
         // Primary coolant pumping power [MW]
@@ -129,11 +132,13 @@ package mfe_power_balance {
         // Subsystem power. Source: physics.py:315 (p_sub = f_sub * p_et)
         attribute p_sub : Real = f_sub_in * p_et;
 
-        // Recirculating power.
+        // Recirculating power. The wall-plug heating term arrives computed
+        // from the heating chain (WI-039); it was previously derived here as
+        // p_input_in / eta_pin_in from two held constants.
         // Source: physics.py:321-323
         attribute recirculating : Real =
             p_coils + p_pump_in + p_sub + p_aux + p_cool + p_cryo
-            + p_input_in / eta_pin_in;
+            + p_wallplug_in;
 
         // === OUTPUTS ===
 
