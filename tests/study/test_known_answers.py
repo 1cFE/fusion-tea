@@ -122,7 +122,10 @@ def test_I_coil_reaches_the_field_constraints_through_calcs(report):
     the whole fusion-derived chain (net_positive, recirc_ok, wall_load_ok).
     This is the structural close of discovery row 20260823-magnet-technology-ab#4
     ("field is never rewarded"): the field lever finally has a path to fusion
-    power. All computed-vs-bound except net_positive (computed vs literal 0)."""
+    power. Computed-vs-bound throughout, with two exceptions: net_positive is
+    computed vs a literal 0, and since WI-039 sustainment_ok is computed vs
+    *computed* — its installed side is the heating chain's coupled power, not the
+    held p_input it used to be."""
     group = group_by_axis(report, "I_coil")
     reached = {c["source_local_identity"]: c for c in group["constraints_reachable"]}
     # WI-036 adds cond_strain_ok: the winding-pack sizing chain runs off I_coil,
@@ -132,13 +135,23 @@ def test_I_coil_reaches_the_field_constraints_through_calcs(report):
         "beta_ok", "peak_field_ok", "wp_stress_ok", "cond_strain_ok",
         "sustainment_ok", "net_positive", "recirc_ok", "wall_load_ok",
     }
-    for name in ("beta_ok", "peak_field_ok", "wp_stress_ok", "cond_strain_ok", "sustainment_ok"):
+    # The limit side of each field constraint is a bound design value; sustainment_ok
+    # is the one whose limit side is itself computed (WI-039 heating chain), so it
+    # gets its own assertion rather than a weakened shared one.
+    for name in ("beta_ok", "peak_field_ok", "wp_stress_ok", "cond_strain_ok"):
         constraint = reached[name]
         assert constraint["operator"] == "<="
         assert constraint["bound_vs_bound"] is False
         assert [o["class"] for o in constraint["operands"]] == ["computed", "bound"]
         computed, bound = constraint["operands"]
         assert computed["reached"] is True and bound["reached"] is False
+
+    sustainment = reached["sustainment_ok"]
+    assert sustainment["operator"] == "<="
+    assert sustainment["bound_vs_bound"] is False
+    assert [o["class"] for o in sustainment["operands"]] == ["computed", "computed"]
+    required, installed = sustainment["operands"]
+    assert required["reached"] is True and installed["reached"] is False
     assert "beta" in group["objectives_reachable"]
 
 
