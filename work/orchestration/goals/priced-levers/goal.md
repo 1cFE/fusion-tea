@@ -118,3 +118,13 @@ None.
 - The **conductor ceiling stays necessary but not sufficient**, and is not dropped: a feasible point at 50 MW needs structural relief *and* a defensible ceiling at ~29 T. It is researched as an input to the same increment rather than as the lead question.
 
 **Ruling.** Recorded under the owner's standing 2026-09-02 delegation ("no gates. USE YOUR BEST JUDGEMENT ALONG THE WAY!") and the follow-on instruction of the same date authorizing research agents, use of 1costingFE, and unblocking by judgment. Surfaced to the owner in session before any work; not resolved silently. `[AGENT] (delegated by owner 2026-09-02)`
+
+### Amendment 2026-09-03 — amends § Status, § Answered when, § Amendment 2026-09-02, and the WI-036 paths in § Grounding evidence
+
+**Status: closed by redirect, 2026-09-03** `[OWNER 2026-09-03]` — trail § Goal close, on the round-1 review's recommendation (`evidence/round1_review.md`). Round 1 of 6.
+
+**§ Answered when.** (a), the heating half, is redirected verbatim into `work/orchestration/goals/wall-and-heating/goal.md` § Answered when (a) and is that goal's to meet. (b), the conductor half, is **recorded open, not negative**: neither branch was met — the `B_max` consequence chain was not built (the round narrowed to WI-036 after T-001), and a labelled-extrapolation basis exists, so the sourced-negative branch does not apply. Its vehicle is WI-038, sequenced after `wall-and-heating`'s wall half and after WI-040.
+
+**§ Amendment 2026-09-02 is superseded in one sentence.** "Raising `B_max` alone opens no feasible region at 50 MW" was true of the predecessor's grid at T = 14.63 keV and is **false at pin `6262dbf4…` with temperature swept**: three 50 MW points (`20260903-priced-levers` `c0148/c0164/c0180`, I 17 MA, T 17 keV, n 1.0×, B_peak 27.49 T, σ ≤ 789 MPa) fail the conductor ceiling alone and need no stress relief, and read 262.08–262.16 $/MWh against the 110 MW optimum 271.359 (round-1 review F3; `learnings.md` L-001). The amendment's other reading — the stress form is a real relief channel — stands, with the measured qualifier that the relief is nearly free in cost (L-002).
+
+**Paths.** `work/active/WI-036_winding-pack-sizing/` → `work/completed/20260903_WI-036_winding-pack-sizing/` (closed `[OWNER 2026-09-03]`). Every citation to the active path in § Grounding evidence, § Amendment 2026-09-02 and the trail resolves there.

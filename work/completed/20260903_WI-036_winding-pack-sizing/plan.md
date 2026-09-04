@@ -1,7 +1,7 @@
 ---
-Status: active
+Status: complete
 Created: 2026-09-03
-Updated: 2026-09-03
+Updated: '2026-09-03'
 Related Artifacts:
   Spec: work/active/WI-036_winding-pack-sizing/spec.md
   Design: work/active/WI-036_winding-pack-sizing/design.md

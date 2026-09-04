@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
-Epic: "MFE Cost Modeling — Tokamak & Stellarator"
+Epic: MFE Cost Modeling — Tokamak & Stellarator
 Owner: reid
 Created: 2026-09-03
-Updated: 2026-09-03
+Updated: '2026-09-03'
 ---
 
 # WI-036: Winding-Pack Sizing Chain — Current-Sized Pack, Its Cost and Cryo Consequences, and a Conductor-Strain Check

@@ -122,8 +122,8 @@ epics:
     name: 'Winding-pack sizing chain: winding length from coil geometry, wp_side into
       the sizing and cost chain'
     scale: standard
-    status: active
-    completed: null
+    status: completed
+    completed: '2026-09-03'
   - id: WI-037
     name: 'Operating-Point Closure: ISS04 Confinement Solve, Machine-Responsive Temperature'
     scale: standard
@@ -136,6 +136,12 @@ epics:
     completed: null
   - id: WI-039
     name: 'Heating System Structure: Sources, Transmission, Launchers'
+    scale: standard
+    status: backlog
+    completed: null
+  - id: WI-040
+    name: 'Winding-pack mass cost account: steel, insulation, copper and helium priced
+      by mass (sequenced before WI-038)'
     scale: standard
     status: backlog
     completed: null
@@ -233,10 +239,11 @@ standalone:
 | WI-033 | P_pump re-base: helium-primary circulator basis | standard | completed | Completed 2026-08-28 |
 | WI-034 | CAS10 land-term guard: net-negative power yields violated verdict, not execution_failed | standard | backlog |  |
 | WI-035 | Magnet closure: derived field, structural limit, decomposed cost accounts | standard | completed | Completed 2026-09-01 |
-| WI-036 | Winding-pack sizing chain: winding length from coil geometry, wp_side into the sizing and cost chain | standard | active | Goal `priced-levers` round 1 |
+| WI-036 | Winding-pack sizing chain: winding length from coil geometry, wp_side into the sizing and cost chain | standard | completed | Completed 2026-09-03 |
 | WI-037 | Operating-Point Closure: ISS04 Confinement Solve, Machine-Responsive Temperature | standard | completed | Completed 2026-09-02 |
-| WI-038 | Conductor-Grade Lever: B_max Consequence Chain (Cost, Stress) | standard | backlog |  |
+| WI-038 | Conductor-Grade Lever: B_max Consequence Chain (Cost, Stress) | standard | backlog | Not a minor fence: cheapest sole-blocked 50 MW point is ceiling-blocked at 262.08 $/MWh (see epic file § Item WI-038); run after `wall-and-heating`'s wall half and after WI-040 [OWNER 2026-09-03] |
 | WI-039 | Heating System Structure: Sources, Transmission, Launchers | standard | backlog |  |
+| WI-040 | Winding-pack mass cost account: steel, insulation, copper and helium priced by mass (sequenced before WI-038) | standard | backlog | Home of `20260903-priced-levers#2`; epic file § Item WI-040 |
 
 ## Epic: Pipeline De-Risk & Demonstration
 **Priority**: P0 | **Status**: active

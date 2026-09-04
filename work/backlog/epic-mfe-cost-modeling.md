@@ -166,6 +166,14 @@ These were not planned epic items. Each was registered at pick-up when executing
 
 ---
 
+### Item WI-038: Conductor-Grade Lever — annotation (owner ruling 2026-09-03)
+
+Backlog, unstarted. **Do not read this item as a minor fence.** Goal `priced-levers` round 1 measured (study `20260903-priced-levers`; round-1 review finding F1): at the printed 50 MW, by count the first wall is the blocker, but by cost the conductor ceiling is — point `c0180` (I 17 MA, T 17 keV, n 1.0×, p 50 MW, B_peak 27.49 T against the 24.9 T ceiling, every other verdict satisfied) reads **262.08 $/MWh against 271.359 at 110 MW, conductor unpriced**; the sourced tape penalty for that field step is ×1.06–1.16 (T-001 basis). **Sequencing `[OWNER 2026-09-03]`:** run after goal `wall-and-heating`'s wall half (an honest wall fence may close both escapes) and after WI-040 (so the conductor grade is not priced against a free winding pack). Record: `work/orchestration/goals/priced-levers/learnings.md` L-001; `work/orchestration/goals/priced-levers/evidence/round1_review.md` § Recommendation.
+
+### Item WI-040: Winding-pack mass cost account (minted 2026-09-03)
+
+Backlog. Home of discovery row `20260903-priced-levers#2`: about 85% of the winding pack (steel, insulation, copper, helium) has no cost account, so the WI-036 sizing lever moves physics and no magnet capital — the stress relief that makes an 18 MA point legal costs 0.02–0.14 $/MWh. Shape precedent: the WI-035 casing-structure account. **Sequenced before WI-038 `[OWNER 2026-09-03]`:** pricing the conductor grade against a free pack would reproduce the "priced but free" defect this round found. Sources: WI-036 design D8 (`work/completed/20260903_WI-036_winding-pack-sizing/design.md`); `exploration/stellarator_e2e/studies/20260903-priced-levers/record.md` § 6 `j_wp`, § 15 #2.
+
 ## Sequencing
 
 ```
