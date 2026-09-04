@@ -1,0 +1,13 @@
+{
+  "attempt": 2,
+  "outcome": "registered",
+  "candidate": "https://iopscience.iop.org/article/10.1088/1741-4326/ac6a67/pdf",
+  "slug": "a_deterministic_method_for_the_fast_evaluation_and",
+  "path": "knowledge/sources/a_deterministic_method_for_the_fast_evaluation_and/",
+  "source_id": "bb5e3791a82ec537cc8ee82d8b00c817a29afa558051ea02566844586d8473d1",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-04T04:01:27.940970+00:00"
+}

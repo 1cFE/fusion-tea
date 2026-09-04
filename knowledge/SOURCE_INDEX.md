@@ -361,6 +361,70 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: c2f583abae16fae91410e55d8eb68780597a4599ef54652819dca56eefc88495
 - **Date Added**: 2026-09-03
 
+### Neutronics analyses for a stellarator power reactor based on the HELIAS concept
+- **Type**: url
+- **Location**: knowledge/sources/neutronics_analyses_for_a_stellarator_power_reactor_based/
+- **Use for**: Establishes the first-wall neutron wall load peaking of the HELIAS-5B stellarator reactor: Table 2 prints maximum NWL 1.936 MW/m2 and average NWL 0.953 MW/m2 (KIT DAGMC/MCNP5), and 1.958 / 0.926 MW/m2 from the independent IPP nflux ray-tracing code, for 3000 MW fusion power. The text states the average was formed as total NWL divided by total plasma-facing area, so the implied peak-to-average ratio (2.03 KIT, 2.11 IPP) is defined on the shaped plasma-facing first-wall surface, NOT on a circular-torus flat-wall area. Serves RQ-1 (stellarator first-wall loading) and the goal wall-and-heating peaking-factor question.
+- **Validation**: Read Table 2 on the results page (section 4.1, Neutron Wall Loading): columns KIT (DAGMC) and IPP (nflux), rows Maximum NWL, Average NWL, Statistical Error, Surfaces. The averaging definition is the sentence immediately above Table 2: 'The average NWL was determined by calculating the total NWL divided by the total plasma facing area.'
+- **Caveat**: ISFNT-13 conference paper, author manuscript hosted on pure.mpg.de. Explicitly a FIRST, rough neutronics model: layered homogenized blanket, fixed 50 cm breeding zone, no blanket gaps, and a DAGMC model with a lost-particle rate (6 per million) above the developers' QA criterion. The NWL tally itself was run on a clean tungsten-only model. Values are for HELIAS-5B specifically and are not a generic stellarator peaking factor.
+
+#### Extended Metadata
+- **Source URL**: https://pure.mpg.de/rest/items/item_3017527_3/component/file_3215814/content
+- **Source ID**: a6e1b6e0b3735a375c0069546ee99b29078d9ecec6af418218b7a642a0fa2434
+- **Raw SHA256**: a6e1b6e0b3735a375c0069546ee99b29078d9ecec6af418218b7a642a0fa2434
+- **Raw Artifact SHA256**: a6e1b6e0b3735a375c0069546ee99b29078d9ecec6af418218b7a642a0fa2434
+- **Extracted Path**: knowledge/sources/neutronics_analyses_for_a_stellarator_power_reactor_based/
+- **Extract SHA256**: aa1ab5819571880c67e9f6e976c3e73f6dc078ec4adc206ac4453fb21b4dd15b
+- **Date Added**: 2026-09-03
+
+### A deterministic method for the fast evaluation and optimisation of the 3D neutron wall load for generic stellarator configurations
+- **Type**: url
+- **Location**: knowledge/sources/a_deterministic_method_for_the_fast_evaluation_and/
+- **Use for**: Establishes published first-wall neutron-wall-load peaking factors for helical-axis (HELIAS) and quasi-axisymmetric stellarator reactors, defined explicitly in Eq. (19) as pf = q_max / <q>, the maximum NWL on the first wall over the AVERAGE NWL OF THE FIRST WALL SURFACE (the shaped 3D wall, area S_FW in Table 1), not over a circular-torus or plasma-surface area. Table 1 values at 3 GW fusion power with a first wall placed equidistant 30 cm from the LCFS: HELIAS-3 pf 1.59, HELIAS-4 pf 1.67, HELIAS-5 pf 1.69 (Q_max 1.9, Q_avg 1.1 MW/m2, S_FW 2110 m2), compact quasi-axisymmetric stellarator pf 1.51. Two optimised HELIAS-5 walls give pf 1.23 (Q_max 1.2, Q_avg 0.96 MW/m2, S_FW 2452 m2, keeping 1.4 m to the coils) and pf 1.12 (Q_max 0.9, Q_avg 0.5 MW/m2, S_FW 2883 m2, coil constraint ignored). Serves RQ-1 and the wall-and-heating peaking-factor question.
+- **Validation**: Read Eq. (19) in section 4 for the definition of pf and Table 1 for the per-configuration values (rows R, a, A, V_p, S_FW, Q_max, Q_min, Q_avg, pf; columns HELIAS-3, HELIAS-4, HELIAS-5, QA-stellarator, HELIAS-5*, HELIAS-5**). The sentence above Eq. (19) states the first wall is equidistant at d = 30 cm from the LCFS in all Table 1 base cases and that density is scaled so P_fus = 3 GW throughout. The conclusion restates 1.69 -> 1.23 -> 1.12 for HELIAS-5.
+- **Caveat**: Open-access Nuclear Fusion 62 (2022) 076040, IOP/IAEA. The NWL is computed by a deterministic 1/r^2 line-of-sight method, not Monte Carlo transport; it is benchmarked against nflux and MCNP but neglects wall-to-wall reflection and neutron scattering in the blanket. The peaking factor is strongly dependent on the assumed wall geometry -- the same HELIAS-5 plasma spans pf 1.12 to 1.69 across wall choices -- so a single number must be quoted with its wall. All values are per-configuration design-study results, not measurements.
+
+#### Extended Metadata
+- **Source URL**: https://iopscience.iop.org/article/10.1088/1741-4326/ac6a67/pdf
+- **Source ID**: bb5e3791a82ec537cc8ee82d8b00c817a29afa558051ea02566844586d8473d1
+- **Raw SHA256**: bb5e3791a82ec537cc8ee82d8b00c817a29afa558051ea02566844586d8473d1
+- **Raw Artifact SHA256**: bb5e3791a82ec537cc8ee82d8b00c817a29afa558051ea02566844586d8473d1
+- **Extracted Path**: knowledge/sources/a_deterministic_method_for_the_fast_evaluation_and/
+- **Extract SHA256**: 2392601756dd3f12a0aa8118a9859acdec6c036372d8468ce8d2b47c3f558c58
+- **Date Added**: 2026-09-03
+
+### The Helias Reactor (Beidler et al., IAEA-CN-77/FTP1/16)
+- **Type**: url
+- **Location**: knowledge/sources/the_helias_reactor_beidler_et_al_iaea_cn_77_ftp1_16/
+- **Use for**: Published first-wall surface area for the HELIAS-line quasi-isodynamic stellarator reactor alongside its radii: HSR5/22 first wall 2600 m2 at major radius 22 m and average minor radius 1.8 m; HSR4/18 first wall 2500 m2 at 18 m and 2.1 m. Supports an areal shape/standoff factor against the circular-cross-section torus 4*pi^2*R*a, and prints averaged neutron wall loading (<1 MW/m2 at 3000 MW fusion power) with peak wall loading 1.7 MW/m2. Serves REQ-WALL-02 and the wall-and-heating goal.
+- **Validation**: Table I on page 1 gives the major and average minor radii for HSR4/18 and HSR5/22; the first-wall areas 2600 m2 and 2500 m2, the averaged neutron wall loading and the 1.7 MW/m2 peak appear in the blanket paragraph beginning 'Two major differences between a tokamak reactor and a Helias reactor'.
+- **Caveat**: 2001 IAEA Fusion Energy Conference proceedings paper; a design-study snapshot of HSR4/18 and HSR5/22, superseded in detail by later HELIAS 5-B work. The 2600 m2 first-wall area is stated without a definition of the wall surface or of the plasma-to-wall standoff, so a ratio against 4*pi^2*R*a mixes 3D shaping with radial gap. It also states 'less than 1 MW/m2' rather than a single averaged value.
+
+#### Extended Metadata
+- **Source URL**: https://www-pub.iaea.org/mtcd/publications/pdf/csp_008c/pdf/ft_4.pdf
+- **Source ID**: 06c61f90626d75cb7c46cbb7177cc31091ca5e6f3143e249a9d2a797e9fe8a51
+- **Raw SHA256**: 06c61f90626d75cb7c46cbb7177cc31091ca5e6f3143e249a9d2a797e9fe8a51
+- **Raw Artifact SHA256**: 06c61f90626d75cb7c46cbb7177cc31091ca5e6f3143e249a9d2a797e9fe8a51
+- **Extracted Path**: knowledge/sources/the_helias_reactor_beidler_et_al_iaea_cn_77_ftp1_16/
+- **Extract SHA256**: 6c57c6cc9fc5f23544ac210cace8fae24c78df3d38e913b9d0b35b2327dbe772
+- **Date Added**: 2026-09-03
+
+### A deterministic method for the fast evaluation and optimisation of the 3D neutron wall load for generic stellarator configurations (Lion, Warmer, Xu, Nucl. Fusion 62 2022 076040)
+- **Type**: local_pdf
+- **Location**: knowledge/sources/a_deterministic_method_for_the_fast_evaluation_and_2/
+- **Use for**: Establishes published first-wall neutron-wall-load peaking factors for helical-axis (HELIAS) and quasi-axisymmetric stellarator reactors. Eq. (19) defines pf = q_max / <q>: maximum NWL on the first wall over the AVERAGE NWL OF THE FIRST WALL SURFACE -- the shaped 3D wall of area S_FW in Table 1 -- not a circular-torus area and not the plasma surface. Table 1, at 3 GW fusion power with the first wall equidistant 30 cm from the LCFS: HELIAS-3 pf 1.59, HELIAS-4 pf 1.67, HELIAS-5 pf 1.69 (Q_max 1.9, Q_avg 1.1 MW/m2, S_FW 2110 m2), compact quasi-axisymmetric stellarator pf 1.51. Two optimised HELIAS-5 walls give pf 1.23 (Q_max 1.2, Q_avg 0.96 MW/m2, S_FW 2452 m2, keeping 1.4 m to the coils) and pf 1.12 (Q_max 0.9, Q_avg 0.5 MW/m2, S_FW 2883 m2, coil constraint ignored). Serves RQ-1 and the wall-and-heating first-wall peaking-factor question.
+- **Validation**: Read Eq. (19) in section 4 for the definition of pf, and Table 1 for the per-configuration values (rows R, a, A, V_p, S_FW, Q_max, Q_min, Q_avg, pf; columns HELIAS-3, HELIAS-4, HELIAS-5, QA-stellarator, HELIAS-5*, HELIAS-5**). The paragraph above Eq. (19) states the wall is equidistant at d = 30 cm from the LCFS in all base cases and that n0 is scaled so P_fus = 3 GW throughout. The conclusion restates the HELIAS-5 sequence 1.69 -> 1.23 -> 1.12.
+- **Caveat**: Open-access Nuclear Fusion 62 (2022) 076040 (IOP/IAEA, CC BY 4.0). Registered from the publisher PDF held locally because iopscience.iop.org serves a Radware bot-check page to the extractor -- the earlier URL registration under slug a_deterministic_method_for_the_fast_evaluation_and captured that bot-check page instead of the paper and is junk that an operator must remove. NWL is computed by a deterministic 1/r^2 line-of-sight method, not Monte Carlo transport; benchmarked against nflux and MCNP but neglecting wall reflection and blanket scattering. The peaking factor depends strongly on the assumed wall: the same HELIAS-5 plasma spans pf 1.12 to 1.69 across wall choices, so no single number transfers without its wall definition. Design-study results, not measurements.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/claude-1000/-home-reid-1cfe-fusion-tea/23253093-d9a2-4820-96f5-668f3f9c2631/scratchpad/lion_2022_nf_stellarator_nwl.pdf
+- **Source ID**: 15c2dc7ed897d6ae13b1fd60d33dbbc0b851528a746619274444c8857d98f0fe
+- **Raw SHA256**: 15c2dc7ed897d6ae13b1fd60d33dbbc0b851528a746619274444c8857d98f0fe
+- **Raw Artifact SHA256**: 15c2dc7ed897d6ae13b1fd60d33dbbc0b851528a746619274444c8857d98f0fe
+- **Extracted Path**: knowledge/sources/a_deterministic_method_for_the_fast_evaluation_and_2/
+- **Extract SHA256**: 05058e109aa2c0deb6dcc1a1784a858ea56ed34014718381a316370f168b0e59
+- **Date Added**: 2026-09-03
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

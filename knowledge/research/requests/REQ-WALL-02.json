@@ -1,0 +1,15 @@
+{
+  "request_id": "REQ-WALL-02",
+  "question": "Is there a published first-wall surface area, or an areal shape factor relative to a circular-cross-section torus, for a quasi-isodynamic stellarator reactor of known major and minor radius?",
+  "consumer": "20260903-priced-levers#1",
+  "gap_type": "unsourced_value",
+  "priority": "P0",
+  "where_to_look": [
+    "Fusion Engineering and Design",
+    "Nuclear Fusion stellarator reactor studies",
+    "HELIAS reactor systems studies",
+    "stellarator blanket and first-wall engineering design papers",
+    "stellarator systems code geometry treatments"
+  ],
+  "limits": {"max_searches": 6, "max_captures": 3}
+}

@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "https://pure.mpg.de/rest/items/item_3017527_3/component/file_3215814/content",
+  "slug": "neutronics_analyses_for_a_stellarator_power_reactor_based",
+  "path": "knowledge/sources/neutronics_analyses_for_a_stellarator_power_reactor_based/",
+  "source_id": "a6e1b6e0b3735a375c0069546ee99b29078d9ecec6af418218b7a642a0fa2434",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-04T04:00:24.879964+00:00"
+}

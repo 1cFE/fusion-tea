@@ -1,0 +1,34 @@
+{
+  "request_id": "REQ-WALL-01",
+  "run": "knowledge/research/requests/runs/REQ-WALL-01/20260904T035638551421",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "neutronics_analyses_for_a_stellarator_power_reactor_based",
+      "path": "knowledge/sources/neutronics_analyses_for_a_stellarator_power_reactor_based/",
+      "source_id": "a6e1b6e0b3735a375c0069546ee99b29078d9ecec6af418218b7a642a0fa2434",
+      "pre_existing": false
+    },
+    {
+      "slug": "a_deterministic_method_for_the_fast_evaluation_and",
+      "path": "knowledge/sources/a_deterministic_method_for_the_fast_evaluation_and/",
+      "source_id": "bb5e3791a82ec537cc8ee82d8b00c817a29afa558051ea02566844586d8473d1",
+      "pre_existing": false
+    },
+    {
+      "slug": "a_deterministic_method_for_the_fast_evaluation_and_2",
+      "path": "knowledge/sources/a_deterministic_method_for_the_fast_evaluation_and_2/",
+      "source_id": "15c2dc7ed897d6ae13b1fd60d33dbbc0b851528a746619274444c8857d98f0fe",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://iopscience.iop.org/article/10.1088/1741-4326/ac6a67/pdf",
+      "reason": "iopscience.iop.org serves a Radware bot-check page to the extractor, so the URL registration captured that interstitial instead of the open-access paper. It committed a junk registry entry at slug 'a_deterministic_method_for_the_fast_evaluation_and' (title 'We apologize for the inconvenience...', 1415-byte output.md) which an operator must remove -- the registry CLI has no unregister. The paper itself IS registered, correctly, from the publisher PDF at slug 'a_deterministic_method_for_the_fast_evaluation_and_2'. Nothing about the question is blocked; only the junk entry needs a human."
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}
