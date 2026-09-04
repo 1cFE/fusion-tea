@@ -1,0 +1,751 @@
+{
+ "snapshot_schema_version": "1",
+ "study_id": "20260903-wall-and-heating",
+ "package": {
+  "path": "exploration/stellarator_e2e/pkg/stellarator_tea",
+  "package_name": "stellarator_tea",
+  "repo_commit": "83312053c36a31cc85a0ce3ae6ad5e23588381c2",
+  "repo_commit_note": "HEAD when the 639 points executed (the critique commit 83312053); the package tree is byte-identical at the record commit (git diff over exploration/stellarator_e2e/generated is empty)",
+  "git_clean": true
+ },
+ "fingerprints": {
+  "indicator_inputs": "2649e0ea2a987f3e56e9f659c4b4c48c9b670e6a0f8e47831c5fc253608455ad",
+  "recorded_provenance.executable_fingerprint": "b0c5f3eda9014fa1c84573c300c63f7fc04ecc1f8ea47047caa7775c010c6c78",
+  "recorded_provenance.semantic_fingerprint": "48731d1570bb20cdeae45faa20545aae46aeda5982a4fbc2129d7784a66595ba",
+  "sealed_executable_fingerprint": "b0c5f3eda9014fa1c84573c300c63f7fc04ecc1f8ea47047caa7775c010c6c78"
+ },
+ "manifest": {
+  "path": "exploration/stellarator_e2e/studies/manifest.json",
+  "schema_version": "study-package-manifest/v1",
+  "digest": "9a6d121e93f07e884ecde53ae32a32929d27a0dc8f55cea29821de26fa5daf5c",
+  "content_used": {
+   "fingerprint_names": [
+    "indicator_inputs",
+    "recorded_provenance.executable_fingerprint",
+    "recorded_provenance.semantic_fingerprint"
+   ],
+   "ties": [
+    {
+     "key": "stellarator_09__stellaris__magnet__R0",
+     "rides_with": [
+      "stellarator_09__stellaris__R"
+     ],
+     "note": "Magnet coil major radius is the same physical quantity as the plasma major radius. Its suffix is R0, not R, so no suffix scan will ever surface it -- the tie must be declared. Advisory here: a group holding R but not this key earns a tie_candidate warning, never an added key. Since the model migration the plasma major radius is one plant-level entry point (R), not the geom__R / rb__R fan-out."
+    }
+   ],
+   "ties_note": "one tie only: the p_input/p_ecrh tie the predecessor record carried was REMOVED by WI-039 (both powers now descend from p_wallplug_heat through the chain), not rewritten",
+   "objective_catalog": [
+    {
+     "name": "lcoe",
+     "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+     "note": "Headline levelized cost of electricity. Exit-point filename is stellaris__lcoe.json; the catalog keys on the channel, never the filename."
+    },
+    {
+     "name": "lcoe_1cfe",
+     "channel": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+     "note": "LCOE variant using the 1costingfe CAS90 rollup."
+    },
+    {
+     "name": "cas72",
+     "channel": "stellarator_09__stellaris__cas72_calc__cost",
+     "note": "Levelized annual replacement cost."
+    },
+    {
+     "name": "fuel",
+     "channel": "stellarator_09__stellaris__fuel_calc__annual_fuel",
+     "note": "Annual fuel cost."
+    },
+    {
+     "name": "total_capital",
+     "channel": "stellarator_09__stellaris__total_capital__total_capital",
+     "note": "Total capital cost including interest during construction."
+    },
+    {
+     "name": "cas27",
+     "channel": "stellarator_09__stellaris__special_materials_capital__special_materials_capital",
+     "note": "CAS27 special-materials capital, computed in-package from the radial-build blanket volume since the model migration (2026-08-21). Declared as an objective so generic verification compares it against the oracle's own recompute: on the era route this value was glue-fed to both sides and never independently verified."
+    },
+    {
+     "name": "beta",
+     "channel": "stellarator_09__stellaris__beta_calc__beta",
+     "note": "Volume-averaged thermal beta computed by 'Volume-Averaged Beta' from the profile referents and magnet__B (WI-030); replaces the retired bound input beta. Compared against the oracle's closed form so a magnet study verifies the physics lever it moves."
+    },
+    {
+     "name": "magnet_capital",
+     "channel": "stellarator_09__stellaris__magnet_capital_rollup__capital_cost",
+     "note": "CAS22.1.3 magnet capital \u2014 since WI-035 the decomposed rollup (winding pack + casing structure), the channel the plant's magnet.capital_cost reads. The old conductor-proxy lump is the separate magnet_capital_1cfe comparison objective."
+    },
+    {
+     "name": "magnet_capital_1cfe",
+     "channel": "stellarator_09__stellaris__magnet_cost__capital_cost",
+     "note": "1cfe-form comparison channel (WI-035 D6): the retained 'Magnet Coil Cost' conductor-proxy lump, now responding to the computed field. Kept as an objective so the decomposed rollup and the calibrated lump stay observable side by side."
+    },
+    {
+     "name": "p_aux_required",
+     "channel": "stellarator_09__stellaris__sustain__p_aux_required",
+     "note": "WI-037 required sustained plasma-coupled heating; the sustainment_ok operand. Responds to field (~B^-2.15 through ISS04), density, temperature, geometry, and heating."
+    },
+    {
+     "name": "tau_E",
+     "channel": "stellarator_09__stellaris__sustain__tau_E",
+     "note": "WI-037 ISS04 energy confinement time (closed form, line-averaged density)."
+    }
+   ],
+   "baseline": {
+    "point": {
+     "stellarator_09__stellaris__R": 12.7,
+     "stellarator_09__stellaris__magnet__R0": 12.7,
+     "stellarator_09__stellaris__a": 1.3,
+     "stellarator_09__stellaris__availability": 0.85
+    },
+    "headline": {
+     "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+     "value": 307.08712042841586
+    },
+    "verdicts": [
+     {
+      "source_local_identity": "beta_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "cond_strain_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "net_positive",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "peak_field_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "recirc_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "sustainment_ok",
+      "expected": "violated"
+     },
+     {
+      "source_local_identity": "tbr_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "wall_load_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "wp_stress_ok",
+      "expected": "satisfied"
+     }
+    ]
+   },
+   "oracle": {
+    "kind": "python_callable",
+    "module": "oracle_entry",
+    "callable": "evaluate",
+    "sys_path": "exploration/stellarator_e2e/studies",
+    "note": "Package-owned oracle seam. evaluate(point) takes a mapping of qualified entry keys to floats and returns a mapping of qualified channel names to floats; it wraps the independent pure-Python oracle verify_stellaris.py, which is imported and never modified. The module also publishes a fixed-name companion, operand_bindings() -> {constraint_id: {source_name: {kind, key}}}, which says which qualified input key or channel each predicate operand means. A generic verifier requires both and fails closed on anything unresolved: on this package one operand of five constraints resolves to nothing by name at all, so a tool that inferred bindings would compare the wrong number and read as a pass.",
+    "source_digest": {
+     "recipe": "tool-source-digest/v1",
+     "digest": "61d9572956e150bc318419c322047fec234cc04a77ba292b8737d3dc48fafaee",
+     "files": [
+      {
+       "path": "exploration/stellarator_e2e/studies/oracle_entry.py",
+       "sha256": "2ca7987d3d24daf87bd519c94b3dd9dd77438ea7619962c53cf9fa9122a44ed7"
+      },
+      {
+       "path": "exploration/stellarator_e2e/verify_stellaris.py",
+       "sha256": "80419cb78708231bd96b206afbc32c505f7fd0afc8b3aa780a13d559b243c913"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "stores": [
+  {
+   "store_id": "20260903-wall-and-heating",
+   "path": "exploration/stellarator_e2e/studies/_work/20260903-wall-and-heating/20260903-wall-and-heating.db",
+   "committed": false,
+   "note": "uncommitted per the study-store convention (**/_work/ is gitignored); results/*.csv carry every value this record cites",
+   "compatibility_tuple": {
+    "digest": "0a8d48d9700a5e1881186c21c432c25df09e6c5dc05787d50cdaa77238e916e6",
+    "evidence_schema_version": "v2",
+    "executable_fingerprint": "b0c5f3eda9014fa1c84573c300c63f7fc04ecc1f8ea47047caa7775c010c6c78",
+    "input_schema_version": "input-v1",
+    "model_contract_fingerprint": "48731d1570bb20cdeae45faa20545aae46aeda5982a4fbc2129d7784a66595ba",
+    "strategy_config": "7b19dd07c7694d7d41778bdd831e04d8c835a3406a2d0105d7158c058a0dfb29",
+    "strategy_identity": "prepared-list/v1",
+    "study_definition_fingerprint": "3c422d18e1e332d2e7b07eefd38d874898020e04b57f2d9cb8d26e2c14f33abc",
+    "study_id": "20260903-wall-and-heating"
+   },
+   "cases_total": 639,
+   "cases_completed": 639
+  }
+ ],
+ "arms": [
+  {
+   "arm_id": "arm-fence-p100",
+   "store_id": "20260903-wall-and-heating",
+   "effective_executable_fingerprint": {
+    "value": "b0c5f3eda9014fa1c84573c300c63f7fc04ecc1f8ea47047caa7775c010c6c78",
+    "inputs": null,
+    "no_adapter": true,
+    "note": "no adapter exists; the sealed fingerprint is the identity (results/package_identity.json digest)"
+   },
+   "entry_models": "as study_route.prepare() bound them from the package pipeline spec; one prepared evaluator, PreparedListStrategy over the arm's proposals (study.py proposals())",
+   "strategy": "prepared-list/v1",
+   "evaluated": 240,
+   "feasible": 0,
+   "feasible_under_wall_shadow_lo": 0,
+   "window": {
+    "provenance": "engineered",
+    "fixed_from": "results/window_scan.json (6160 oracle candidates over p_wallplug_heat x eta_source_heat x I_coil x T_i0 x n_e0; 0 oracle errors; scanned before the step-4 critique, disclosed in scan.py and record.md section 11)",
+    "values": {
+     "p_wallplug_heat_MW": 100.0,
+     "eta_source_heat": [
+      0.4,
+      0.5,
+      0.6
+     ],
+     "I_coil_MA": [
+      14.0,
+      15.0,
+      15.4,
+      16.0,
+      17.0
+     ],
+     "T_i0_keV": [
+      14.63,
+      17.0,
+      19.0,
+      22.0
+     ],
+     "n_e0_mult": [
+      0.9,
+      1.0,
+      1.1,
+      1.2
+     ]
+    }
+   },
+   "verification": {
+    "command": "scripts/study/verify.py --package exploration/stellarator_e2e/pkg/stellarator_tea --manifest exploration/stellarator_e2e/studies/manifest.json --identity exploration/stellarator_e2e/studies/20260903-wall-and-heating/results/package_identity.json --store exploration/stellarator_e2e/studies/_work/20260903-wall-and-heating/20260903-wall-and-heating.db --sample-size 20 --out exploration/stellarator_e2e/studies/20260903-wall-and-heating/results/verification_summary.json",
+    "tool_revision": "f02358bbe56b968495fae741dd949db7abd3db543a81fe9f7dffb929f77f0f06",
+    "sampling_scheme": "stratified-by-verdict-combination/v1 (seed 7bbcbadce8794a6c, derived; 11 strata observed; 20 rows sampled across all four arms from the one store)",
+    "tolerance": "rel dev below 1e-09 on the 13 channels named in results/verification_summary.json channels_checked",
+    "summary_sha256": "573265df88899d092b910a4d227f2b9f41210a4f9703598045ca10cc3125719e",
+    "note": "the pinned baseline point is a member of this arm by construction (I 15.4 MA, T 14.63 keV, n 1.0x, 100 MW, eta 0.50): points.csv is_baseline_point = True at c0113"
+   },
+   "glue_ledger": [],
+   "glue_ledger_none": true,
+   "artifacts": [
+    {
+     "path": "results/baseline_result.json",
+     "sha256": "1d7cb2af5b7ea56e48a9db25c8693bf67e939ead902de5957e51f45da162f769"
+    },
+    {
+     "path": "results/excluded_points.csv",
+     "sha256": "ba1618e34b6ffcdbb69312981a1cf86b41cf12e6273c65bb947d26ee8b1756f9"
+    },
+    {
+     "path": "results/oracle_operands.csv",
+     "sha256": "40569def1f1b24efb0e7dfae20df5cec31043061518cbfa188c5fd0462349bc5"
+    },
+    {
+     "path": "results/package_identity.json",
+     "sha256": "79d95c37763a65df5157ee0a8f78389d0a8e185aa7f48b21e60f1d54a7465300"
+    },
+    {
+     "path": "results/points.csv",
+     "sha256": "1fd018dc62771c930a82806eabe97e6e332fcbce0a0d2b927972fe553fc04db3"
+    },
+    {
+     "path": "results/preflight_results.json",
+     "sha256": "9847a52b7ff68b58453df823901905934239eb3d967b2b609b4647d1885a45fb"
+    },
+    {
+     "path": "results/verification_summary.json",
+     "sha256": "573265df88899d092b910a4d227f2b9f41210a4f9703598045ca10cc3125719e"
+    },
+    {
+     "path": "results/window_scan.json",
+     "sha256": "7deaef7f03c33dc8026d337db955ed6ea375f98ec3c803ec72bdf91890feab6e"
+    }
+   ]
+  },
+  {
+   "arm_id": "arm-search-p220",
+   "store_id": "20260903-wall-and-heating",
+   "effective_executable_fingerprint": {
+    "value": "b0c5f3eda9014fa1c84573c300c63f7fc04ecc1f8ea47047caa7775c010c6c78",
+    "inputs": null,
+    "no_adapter": true,
+    "note": "no adapter exists; the sealed fingerprint is the identity (results/package_identity.json digest)"
+   },
+   "entry_models": "as study_route.prepare() bound them from the package pipeline spec; one prepared evaluator, PreparedListStrategy over the arm's proposals (study.py proposals())",
+   "strategy": "prepared-list/v1",
+   "evaluated": 384,
+   "feasible": 91,
+   "feasible_under_wall_shadow_lo": 51,
+   "window": {
+    "provenance": "engineered",
+    "fixed_from": "results/window_scan.json (6160 oracle candidates over p_wallplug_heat x eta_source_heat x I_coil x T_i0 x n_e0; 0 oracle errors; scanned before the step-4 critique, disclosed in scan.py and record.md section 11)",
+    "values": {
+     "p_wallplug_heat_MW": 220.0,
+     "eta_source_heat": [
+      0.45,
+      0.5,
+      0.55,
+      0.6
+     ],
+     "I_coil_MA": [
+      14.0,
+      14.25,
+      14.5,
+      14.75,
+      15.0,
+      15.25
+     ],
+     "T_i0_keV": [
+      14.63,
+      16.0,
+      17.0,
+      18.0
+     ],
+     "n_e0_mult": [
+      0.8,
+      0.9,
+      1.0,
+      1.1
+     ]
+    }
+   },
+   "verification": {
+    "command": "scripts/study/verify.py --package exploration/stellarator_e2e/pkg/stellarator_tea --manifest exploration/stellarator_e2e/studies/manifest.json --identity exploration/stellarator_e2e/studies/20260903-wall-and-heating/results/package_identity.json --store exploration/stellarator_e2e/studies/_work/20260903-wall-and-heating/20260903-wall-and-heating.db --sample-size 20 --out exploration/stellarator_e2e/studies/20260903-wall-and-heating/results/verification_summary.json",
+    "tool_revision": "f02358bbe56b968495fae741dd949db7abd3db543a81fe9f7dffb929f77f0f06",
+    "sampling_scheme": "stratified-by-verdict-combination/v1 (seed 7bbcbadce8794a6c, derived; 11 strata observed; 20 rows sampled across all four arms from the one store)",
+    "tolerance": "rel dev below 1e-09 on the 13 channels named in results/verification_summary.json channels_checked",
+    "summary_sha256": "573265df88899d092b910a4d227f2b9f41210a4f9703598045ca10cc3125719e",
+    "note": "I bracketed after critique F4: at 14.0 MA every one of the 64 points is infeasible (sustainment_ok violated at all 64, wall_load_ok at 28 of them), so a fence catches the bottom of the window; 15.25 MA is the top and the executed optimum sits at 14.25 MA, inside the window"
+   },
+   "glue_ledger": [],
+   "glue_ledger_none": true,
+   "artifacts": [
+    {
+     "path": "results/baseline_result.json",
+     "sha256": "1d7cb2af5b7ea56e48a9db25c8693bf67e939ead902de5957e51f45da162f769"
+    },
+    {
+     "path": "results/excluded_points.csv",
+     "sha256": "ba1618e34b6ffcdbb69312981a1cf86b41cf12e6273c65bb947d26ee8b1756f9"
+    },
+    {
+     "path": "results/oracle_operands.csv",
+     "sha256": "40569def1f1b24efb0e7dfae20df5cec31043061518cbfa188c5fd0462349bc5"
+    },
+    {
+     "path": "results/package_identity.json",
+     "sha256": "79d95c37763a65df5157ee0a8f78389d0a8e185aa7f48b21e60f1d54a7465300"
+    },
+    {
+     "path": "results/points.csv",
+     "sha256": "1fd018dc62771c930a82806eabe97e6e332fcbce0a0d2b927972fe553fc04db3"
+    },
+    {
+     "path": "results/preflight_results.json",
+     "sha256": "9847a52b7ff68b58453df823901905934239eb3d967b2b609b4647d1885a45fb"
+    },
+    {
+     "path": "results/verification_summary.json",
+     "sha256": "573265df88899d092b910a4d227f2b9f41210a4f9703598045ca10cc3125719e"
+    },
+    {
+     "path": "results/window_scan.json",
+     "sha256": "7deaef7f03c33dc8026d337db955ed6ea375f98ec3c803ec72bdf91890feab6e"
+    }
+   ]
+  },
+  {
+   "arm_id": "arm-transect-eta",
+   "store_id": "20260903-wall-and-heating",
+   "effective_executable_fingerprint": {
+    "value": "b0c5f3eda9014fa1c84573c300c63f7fc04ecc1f8ea47047caa7775c010c6c78",
+    "inputs": null,
+    "no_adapter": true,
+    "note": "no adapter exists; the sealed fingerprint is the identity (results/package_identity.json digest)"
+   },
+   "entry_models": "as study_route.prepare() bound them from the package pipeline spec; one prepared evaluator, PreparedListStrategy over the arm's proposals (study.py proposals())",
+   "strategy": "prepared-list/v1",
+   "evaluated": 7,
+   "feasible": 4,
+   "feasible_under_wall_shadow_lo": 0,
+   "window": {
+    "provenance": "engineered",
+    "fixed_from": "results/window_scan.json (6160 oracle candidates over p_wallplug_heat x eta_source_heat x I_coil x T_i0 x n_e0; 0 oracle errors; scanned before the step-4 critique, disclosed in scan.py and record.md section 11)",
+    "values": {
+     "p_wallplug_heat_MW": 220.0,
+     "eta_source_heat": [
+      0.35,
+      0.425,
+      0.475,
+      0.525,
+      0.575,
+      0.625,
+      0.65
+     ],
+     "I_coil_MA": [
+      14.5
+     ],
+     "T_i0_keV": [
+      16.0
+     ],
+     "n_e0_mult": [
+      1.0
+     ]
+    }
+   },
+   "verification": {
+    "command": "scripts/study/verify.py --package exploration/stellarator_e2e/pkg/stellarator_tea --manifest exploration/stellarator_e2e/studies/manifest.json --identity exploration/stellarator_e2e/studies/20260903-wall-and-heating/results/package_identity.json --store exploration/stellarator_e2e/studies/_work/20260903-wall-and-heating/20260903-wall-and-heating.db --sample-size 20 --out exploration/stellarator_e2e/studies/20260903-wall-and-heating/results/verification_summary.json",
+    "tool_revision": "f02358bbe56b968495fae741dd949db7abd3db543a81fe9f7dffb929f77f0f06",
+    "sampling_scheme": "stratified-by-verdict-combination/v1 (seed 7bbcbadce8794a6c, derived; 11 strata observed; 20 rows sampled across all four arms from the one store)",
+    "tolerance": "rel dev below 1e-09 on the 13 channels named in results/verification_summary.json channels_checked",
+    "summary_sha256": "573265df88899d092b910a4d227f2b9f41210a4f9703598045ca10cc3125719e",
+    "note": "a sustainment-crossing locator at fixed wall-plug, not an optimum hunt (critique F1); values chosen disjoint from ETA_P220"
+   },
+   "glue_ledger": [],
+   "glue_ledger_none": true,
+   "artifacts": [
+    {
+     "path": "results/baseline_result.json",
+     "sha256": "1d7cb2af5b7ea56e48a9db25c8693bf67e939ead902de5957e51f45da162f769"
+    },
+    {
+     "path": "results/excluded_points.csv",
+     "sha256": "ba1618e34b6ffcdbb69312981a1cf86b41cf12e6273c65bb947d26ee8b1756f9"
+    },
+    {
+     "path": "results/oracle_operands.csv",
+     "sha256": "40569def1f1b24efb0e7dfae20df5cec31043061518cbfa188c5fd0462349bc5"
+    },
+    {
+     "path": "results/package_identity.json",
+     "sha256": "79d95c37763a65df5157ee0a8f78389d0a8e185aa7f48b21e60f1d54a7465300"
+    },
+    {
+     "path": "results/points.csv",
+     "sha256": "1fd018dc62771c930a82806eabe97e6e332fcbce0a0d2b927972fe553fc04db3"
+    },
+    {
+     "path": "results/preflight_results.json",
+     "sha256": "9847a52b7ff68b58453df823901905934239eb3d967b2b609b4647d1885a45fb"
+    },
+    {
+     "path": "results/verification_summary.json",
+     "sha256": "573265df88899d092b910a4d227f2b9f41210a4f9703598045ca10cc3125719e"
+    },
+    {
+     "path": "results/window_scan.json",
+     "sha256": "7deaef7f03c33dc8026d337db955ed6ea375f98ec3c803ec72bdf91890feab6e"
+    }
+   ]
+  },
+  {
+   "arm_id": "arm-couple-132",
+   "store_id": "20260903-wall-and-heating",
+   "effective_executable_fingerprint": {
+    "value": "b0c5f3eda9014fa1c84573c300c63f7fc04ecc1f8ea47047caa7775c010c6c78",
+    "inputs": null,
+    "no_adapter": true,
+    "note": "no adapter exists; the sealed fingerprint is the identity (results/package_identity.json digest)"
+   },
+   "entry_models": "as study_route.prepare() bound them from the package pipeline spec; one prepared evaluator, PreparedListStrategy over the arm's proposals (study.py proposals())",
+   "strategy": "prepared-list/v1",
+   "evaluated": 8,
+   "feasible": 8,
+   "feasible_under_wall_shadow_lo": 0,
+   "window": {
+    "provenance": "engineered",
+    "fixed_from": "results/window_scan.json (6160 oracle candidates over p_wallplug_heat x eta_source_heat x I_coil x T_i0 x n_e0; 0 oracle errors; scanned before the step-4 critique, disclosed in scan.py and record.md section 11)",
+    "values": {
+     "p_wallplug_heat_MW": "132.0 / eta_source_heat (377.14, 330.0, 293.33, 264.0, 240.0, 203.08, 188.57, 176.0)",
+     "eta_source_heat": [
+      0.35,
+      0.4,
+      0.45,
+      0.5,
+      0.55,
+      0.65,
+      0.7,
+      0.75
+     ],
+     "I_coil_MA": [
+      14.25
+     ],
+     "T_i0_keV": [
+      16.0
+     ],
+     "n_e0_mult": [
+      1.0
+     ]
+    }
+   },
+   "verification": {
+    "command": "scripts/study/verify.py --package exploration/stellarator_e2e/pkg/stellarator_tea --manifest exploration/stellarator_e2e/studies/manifest.json --identity exploration/stellarator_e2e/studies/20260903-wall-and-heating/results/package_identity.json --store exploration/stellarator_e2e/studies/_work/20260903-wall-and-heating/20260903-wall-and-heating.db --sample-size 20 --out exploration/stellarator_e2e/studies/20260903-wall-and-heating/results/verification_summary.json",
+    "tool_revision": "f02358bbe56b968495fae741dd949db7abd3db543a81fe9f7dffb929f77f0f06",
+    "sampling_scheme": "stratified-by-verdict-combination/v1 (seed 7bbcbadce8794a6c, derived; 11 strata observed; 20 rows sampled across all four arms from the one store)",
+    "tolerance": "rel dev below 1e-09 on the 13 channels named in results/verification_summary.json channels_checked",
+    "summary_sha256": "573265df88899d092b910a4d227f2b9f41210a4f9703598045ca10cc3125719e",
+    "note": "constant coupled power 132 MW (the search arm's cheapest feasible point's own coupled power); eta 0.60 is excluded because 132/0.60 = 220.0 is exactly search-grid case c0550, which the arm cites instead of duplicating (finding #5)"
+   },
+   "glue_ledger": [],
+   "glue_ledger_none": true,
+   "artifacts": [
+    {
+     "path": "results/baseline_result.json",
+     "sha256": "1d7cb2af5b7ea56e48a9db25c8693bf67e939ead902de5957e51f45da162f769"
+    },
+    {
+     "path": "results/excluded_points.csv",
+     "sha256": "ba1618e34b6ffcdbb69312981a1cf86b41cf12e6273c65bb947d26ee8b1756f9"
+    },
+    {
+     "path": "results/oracle_operands.csv",
+     "sha256": "40569def1f1b24efb0e7dfae20df5cec31043061518cbfa188c5fd0462349bc5"
+    },
+    {
+     "path": "results/package_identity.json",
+     "sha256": "79d95c37763a65df5157ee0a8f78389d0a8e185aa7f48b21e60f1d54a7465300"
+    },
+    {
+     "path": "results/points.csv",
+     "sha256": "1fd018dc62771c930a82806eabe97e6e332fcbce0a0d2b927972fe553fc04db3"
+    },
+    {
+     "path": "results/preflight_results.json",
+     "sha256": "9847a52b7ff68b58453df823901905934239eb3d967b2b609b4647d1885a45fb"
+    },
+    {
+     "path": "results/verification_summary.json",
+     "sha256": "573265df88899d092b910a4d227f2b9f41210a4f9703598045ca10cc3125719e"
+    },
+    {
+     "path": "results/window_scan.json",
+     "sha256": "7deaef7f03c33dc8026d337db955ed6ea375f98ec3c803ec72bdf91890feab6e"
+    }
+   ]
+  }
+ ],
+ "glue_ledger": "none -- results/package_identity.json records kind sealed, zero allowed-modified files and zero adapter sources",
+ "results_artifacts": {
+  "results/baseline_result.json": "1d7cb2af5b7ea56e48a9db25c8693bf67e939ead902de5957e51f45da162f769",
+  "results/excluded_points.csv": "ba1618e34b6ffcdbb69312981a1cf86b41cf12e6273c65bb947d26ee8b1756f9",
+  "results/oracle_operands.csv": "40569def1f1b24efb0e7dfae20df5cec31043061518cbfa188c5fd0462349bc5",
+  "results/package_identity.json": "79d95c37763a65df5157ee0a8f78389d0a8e185aa7f48b21e60f1d54a7465300",
+  "results/points.csv": "1fd018dc62771c930a82806eabe97e6e332fcbce0a0d2b927972fe553fc04db3",
+  "results/preflight_results.json": "9847a52b7ff68b58453df823901905934239eb3d967b2b609b4647d1885a45fb",
+  "results/verification_summary.json": "573265df88899d092b910a4d227f2b9f41210a4f9703598045ca10cc3125719e",
+  "results/window_scan.json": "7deaef7f03c33dc8026d337db955ed6ea375f98ec3c803ec72bdf91890feab6e"
+ },
+ "indicators": {
+  "path": "indicators.json",
+  "digest": "29641b2fb8166661244ae27e0f1aa7624904e9510bbe94c7eb1a4d087eba5809",
+  "output_schema_version": "study-indicators/v1",
+  "groups": 10,
+  "subset": false,
+  "axis_declaration": {
+   "path": "exploration/stellarator_e2e/studies/20260903-wall-and-heating/axes.json",
+   "schema_version": "study-axis-declaration/v1",
+   "digest": "a011661aa350456cf227ba4b2630efcea78c1fff6eea31c18b4d1e856849c9ce",
+   "groups_declared": [
+    "p_wallplug_heat",
+    "eta_source_heat",
+    "T_i0",
+    "n_e0",
+    "I_coil",
+    "eta_couple_heat",
+    "R+tie",
+    "a",
+    "B_max",
+    "j_wp"
+   ],
+   "subset": false
+  }
+ },
+ "pre_change_indicators": {
+  "path": "pre_wi039_indicators.json",
+  "digest": "eee4804d55178efe023156cb4b3efa8cb36288ed1d4c6612ed4f8f4710a1bb1d",
+  "note": "indicators run over the pre-WI-039 package (pin 6262dbf4, semantic 3cb690aa) for the two retired groups eta_pin and p_input+tie; the structural comparison in record.md section 8 reads from it"
+ },
+ "axes_declaration": {
+  "path": "axes.json",
+  "digest": "a011661aa350456cf227ba4b2630efcea78c1fff6eea31c18b4d1e856849c9ce"
+ },
+ "study_definition": {
+  "path": "study.py",
+  "digest": "b626b92ba3c80901ef603e7232614e864f652a5bca9f308c3dc144c572610dd3"
+ },
+ "scan": {
+  "path": "scan.py",
+  "digest": "f98260387286880b6c9d58f8662599e04e9d3d0b5b545f29df303231787e9e1c"
+ },
+ "tools": [
+  {
+   "path": "scripts/study/preflight.py",
+   "source_digest": {
+    "recipe": "tool-source-digest/v1",
+    "digest": "fee08e143c556b0ea0bd7d32035257283220f8f671b3b2f2aa52ecf8a3c92681",
+    "files": [
+     {
+      "path": "scripts/study/common.py",
+      "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+     },
+     {
+      "path": "scripts/study/identity.py",
+      "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+     },
+     {
+      "path": "scripts/study/manifest.py",
+      "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+     },
+     {
+      "path": "scripts/study/preflight.py",
+      "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+     },
+     {
+      "path": "scripts/study/schemas/baseline_result.v1.schema.json",
+      "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+     },
+     {
+      "path": "scripts/study/schemas/package_identity.v1.schema.json",
+      "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+     },
+     {
+      "path": "scripts/study/schemas/preflight_results.v1.schema.json",
+      "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+     }
+    ]
+   }
+  },
+  {
+   "path": "scripts/study/verify.py",
+   "source_digest": {
+    "recipe": "tool-source-digest/v1",
+    "digest": "f02358bbe56b968495fae741dd949db7abd3db543a81fe9f7dffb929f77f0f06",
+    "files": [
+     {
+      "path": "scripts/study/common.py",
+      "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+     },
+     {
+      "path": "scripts/study/identity.py",
+      "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+     },
+     {
+      "path": "scripts/study/manifest.py",
+      "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+     },
+     {
+      "path": "scripts/study/schemas/package_identity.v1.schema.json",
+      "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+     },
+     {
+      "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+      "sha256": "579054e23911be543927d9e9daa72ece44a68f76be9ab9ba53fce0244ef540e1"
+     },
+     {
+      "path": "scripts/study/verify.py",
+      "sha256": "bd339a8024f0c1f1fc8b1c9b0cdbee930c063861a2c2f5973b0ad091e09b9ef7"
+     }
+    ]
+   }
+  },
+  {
+   "path": "scripts/study/indicators.py",
+   "source_digest": {
+    "recipe": "tool-source-digest/v1",
+    "digest": "e53d7027da93de75e2b92f6e1006ebf7d040d98c229cb9e16993a1735356334e",
+    "files": [
+     {
+      "path": "scripts/study/indicators.py",
+      "sha256": "5c2c30532e058a76739a4ee95b619f2bc48209683feddec9d6aa76c821bd49df"
+     },
+     {
+      "path": "scripts/study/manifest.py",
+      "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+     },
+     {
+      "path": "scripts/study/schemas/axis_declaration.v1.schema.json",
+      "sha256": "cffa3d8adc0eae833245091b529ecfb5ad784ad6fea2c3714c460c6d3061eb2b"
+     },
+     {
+      "path": "scripts/study/schemas/indicators.v1.schema.json",
+      "sha256": "96390664ce8eb5938bfe19eb435603e107892bd5082edf8a03514d588a081996"
+     },
+     {
+      "path": "scripts/study/schemas/study_package_manifest.v1.schema.json",
+      "sha256": "5fd44712cd032647df701a24f237f2dda7ccd75c2f101a5c6244c9b6bca47032"
+     }
+    ]
+   }
+  }
+ ],
+ "preflight": {
+  "gates_run": 6,
+  "outcome": "pass",
+  "gates": [
+   {
+    "gate": "declared_keys",
+    "status": "pass"
+   },
+   {
+    "gate": "sibling_scan",
+    "status": "pass"
+   },
+   {
+    "gate": "identity",
+    "status": "pass"
+   },
+   {
+    "gate": "manifest_currency",
+    "status": "pass"
+   },
+   {
+    "gate": "baseline_headline",
+    "status": "pass"
+   },
+   {
+    "gate": "package_clean",
+    "status": "pass"
+   }
+  ]
+ },
+ "counts": {
+  "proposed": 639,
+  "evaluated": 639,
+  "excluded": 0,
+  "feasible_total": 103,
+  "by_arm": {
+   "arm-couple-132": 8,
+   "arm-fence-p100": 240,
+   "arm-search-p220": 384,
+   "arm-transect-eta": 7
+  },
+  "feasible_by_arm": {
+   "arm-couple-132": 8,
+   "arm-search-p220": 91,
+   "arm-transect-eta": 4
+  },
+  "feasible_under_wall_shadow_lo_by_arm": {
+   "arm-search-p220": 51
+  },
+  "feasible_under_wall_shadow_hi_total": 0
+ },
+ "teax": {
+  "revision": "744745f895677f3344b9884627369a6a47ed987f",
+  "era_pin": null,
+  "revision_source": "git rev-parse HEAD in the teax checkout at record commit; results/verification_summary.json records teax.revision as unrecorded (the 20260821-power-cycle-ab#8 tool gap)"
+ }
+}

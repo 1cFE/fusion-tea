@@ -106,7 +106,7 @@ sweeps.
 from its own blanket volume, so parity verifies it for the first time. The evidence
 layer records only single-field float channels, so 46 of them appear in a study store
 and 6 do not: the `pb__*` power-balance fields, which are fields of one multi-field
-model — and since WI-037 the `sustain__*` sustainment fields share the same limitation (`20260901-sustainment-fence#3`); their per-point values are exported oracle-side in that study's `oracle_operands.csv`. `net_positive` and `recirc_ok` reach their operands through those six, which
+model — and since WI-037 the `sustain__*` sustainment fields share the same limitation (`20260901-sustainment-fence#3`); their per-point values are exported oracle-side in that study's `oracle_operands.csv`. Since WI-039 the four `heat__*` heating-chain fields (`p_delivered`, `p_coupled`, `eta_pin_eff`, `p_wallplug_total`) share it too — `20260903-wall-and-heating#4`, the fourth committed sighting of the class: declaring one of them as a store channel yields a silent blank column, and the counts in this paragraph are the migration-era counts, which the WI-037 and WI-039 fields add to on the second side. `net_positive` and `recirc_ok` reach their operands through those six, which
 is why channel operands resolve from the oracle's return rather than from the store.
 
 **The operand-binding table, and why it exists.** A predicate operand in
