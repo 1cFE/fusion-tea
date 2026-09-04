@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Epic: MFE Cost Modeling — Tokamak & Stellarator
 Owner: reid
 Created: 2026-09-03
-Updated: '2026-09-03'
+Updated: '2026-09-04'
 ---
 
 # WI-039: Heating System Structure — the wall-plug to plasma-coupled power chain as real model structure

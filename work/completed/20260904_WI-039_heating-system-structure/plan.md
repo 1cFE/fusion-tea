@@ -1,7 +1,7 @@
 ---
-Status: draft
+Status: complete
 Created: 2026-09-03
-Updated: '2026-09-03'
+Updated: '2026-09-04'
 Related Artifacts:
   Spec: ./spec.md
   Design: ./design.md
@@ -67,14 +67,14 @@ uv run --env-file ~/1cfe/agentic-mbse/.env --env-file .venv/integration.env pyth
 - `models/library/analyses/mfe_power_balance.sysml` — REFINE
 
 **Checklist.**
-- [ ] Re-read `mfe_heating_chain.sysml` against the design's nine-quantity table; confirm names, defaults, units, and the four output expressions match exactly
-- [ ] Confirm the doc comment's `Source`/`Ref`/`Basis` triple resolves (`defaults.py:102-108`, `cas22.py:446-459`, `physics.py:321-323`)
-- [ ] `mfe_power_balance.sysml`: remove `in attribute eta_pin_in` (`:62`)
-- [ ] `mfe_power_balance.sysml`: add `in attribute p_wallplug_in : Real default 0.0;` with a unit comment
-- [ ] `mfe_power_balance.sysml`: change `recirculating` (`:134-136`) — drop `+ p_input_in / eta_pin_in`, add `+ p_wallplug_in`
-- [ ] Update the `recirculating` doc/source comment to say the wall-plug heating term now arrives computed from the chain, and keep the `physics.py:321-323` citation
-- [ ] Check the header doc comment at `:23-33` for statements about `p_input`/`eta_pin` that are no longer true; correct them **by amendment of the wrong sentence**, not by adding a new paragraph beside it
-- [ ] `uv run agentic-mbse validate models` — Level 1 clean
+- [x] Re-read `mfe_heating_chain.sysml` against the design's nine-quantity table; confirm names, defaults, units, and the four output expressions match exactly
+- [x] Confirm the doc comment's `Source`/`Ref`/`Basis` triple resolves (`defaults.py:102-108`, `cas22.py:446-459`, `physics.py:321-323`)
+- [x] `mfe_power_balance.sysml`: remove `in attribute eta_pin_in` (`:62`)
+- [x] `mfe_power_balance.sysml`: add `in attribute p_wallplug_in : Real default 0.0;` with a unit comment
+- [x] `mfe_power_balance.sysml`: change `recirculating` (`:134-136`) — drop `+ p_input_in / eta_pin_in`, add `+ p_wallplug_in`
+- [x] Update the `recirculating` doc/source comment to say the wall-plug heating term now arrives computed from the chain, and keep the `physics.py:321-323` citation
+- [x] Check the header doc comment at `:23-33` for statements about `p_input`/`eta_pin` that are no longer true; correct them **by amendment of the wrong sentence**, not by adding a new paragraph beside it
+- [x] `uv run agentic-mbse validate models` — Level 1 clean
 
 **Test requirements.** None new yet; `tests/models/test_power_balance.py` will fail on the changed interface and is repaired in Phase 5, deliberately — a test patched before the interface settles is a test patched twice.
 
@@ -93,17 +93,17 @@ uv run --env-file ~/1cfe/agentic-mbse/.env --env-file .venv/integration.env pyth
 **Files.** `models/designs/generic_mfe/mfe_plant.sysml` — REFINE.
 
 **Checklist.**
-- [ ] Add the five chain attributes beside the cryo block (`:369-382`), same comment style: `p_wallplug_heat` (0.0), `eta_source_heat` (1.0), `eta_couple_heat` (1.0), `p_delivered_direct_heat` (0.0), `p_coupled_direct_heat` (0.0)
-- [ ] Write the dormancy comment on that block, mirroring the cryo block's (`:370-374`): a concept knowing its heating powers binds the direct terms; a concept deriving them binds the chain and zeroes the direct terms
-- [ ] Add `calc heat : 'Heating Power Chain'` with its five input bindings — **attribute references only, no expressions**
-- [ ] Remove `attribute p_input` (`:343`) and `attribute eta_pin` (`:351`)
-- [ ] Remove `attribute p_ecrh` (`:517`); its role passes to `p_delivered_direct_heat`
-- [ ] `calc pb`: `in p_input_in = heat.p_coupled;` (was `= p_input`) and `in p_wallplug_in = heat.p_wallplug_total;` (replacing `in eta_pin_in`)
-- [ ] Heating cost calc (`:526`): `in p_ecrh_in = heat.p_delivered;`
-- [ ] Add the `mfe_heating_chain` import
-- [ ] Grep the whole plant for every other reader of `p_input`, `eta_pin`, `p_ecrh` and re-route each; **`sustainment_ok`'s `p_aux_installed_in` (`stellarator_plant.sysml:1122`) is one of them** and must read `heat.p_coupled`
-- [ ] `uv run agentic-mbse validate models` — Levels 1–3
-- [ ] Run codegen; confirm no `SI_EXPRESSION_SOURCE_UNSUPPORTED` and that the chain appears as a module with its four outputs
+- [x] Add the five chain attributes beside the cryo block (`:369-382`), same comment style: `p_wallplug_heat` (0.0), `eta_source_heat` (1.0), `eta_couple_heat` (1.0), `p_delivered_direct_heat` (0.0), `p_coupled_direct_heat` (0.0)
+- [x] Write the dormancy comment on that block, mirroring the cryo block's (`:370-374`): a concept knowing its heating powers binds the direct terms; a concept deriving them binds the chain and zeroes the direct terms
+- [x] Add `calc heat : 'Heating Power Chain'` with its five input bindings — **attribute references only, no expressions**
+- [x] Remove `attribute p_input` (`:343`) and `attribute eta_pin` (`:351`)
+- [x] Remove `attribute p_ecrh` (`:517`); its role passes to `p_delivered_direct_heat`
+- [x] `calc pb`: `in p_input_in = heat.p_coupled;` (was `= p_input`) and `in p_wallplug_in = heat.p_wallplug_total;` (replacing `in eta_pin_in`)
+- [x] Heating cost calc (`:526`): `in p_ecrh_in = heat.p_delivered;`
+- [x] Add the `mfe_heating_chain` import
+- [x] Grep the whole plant for every other reader of `p_input`, `eta_pin`, `p_ecrh` and re-route each; **`sustainment_ok`'s `p_aux_installed_in` (`stellarator_plant.sysml:1122`) is one of them** and must read `heat.p_coupled`
+- [x] `uv run agentic-mbse validate models` — Levels 1–3
+- [x] Run codegen; confirm no `SI_EXPRESSION_SOURCE_UNSUPPORTED` and that the chain appears as a module with its four outputs
 
 **Test requirements.** None; Phase 3 is the first phase with a checkable number.
 
@@ -122,14 +122,14 @@ uv run --env-file ~/1cfe/agentic-mbse/.env --env-file .venv/integration.env pyth
 **Files.** `models/designs/stellarator_09/stellarator_plant.sysml` — REFINE.
 
 **Checklist.**
-- [ ] `:>> p_wallplug_heat = 100.0` with a doc comment carrying: the source (Table 2 image, "Required plasma-coupled ECRH power [MW] 50"), the derivation (that 50 divided by the chain's stated `eta_source x eta_couple = 0.50`), and D1's fidelity note that a future `eta_source` sweep moves coupled power off the printed 50
-- [ ] `:>> eta_source_heat = 0.50` citing `costing_constants.yaml:105` / `defaults.py:104-108`, basis "gyrotron wall-plug, ITER procurement calibrated"
-- [ ] `:>> eta_couple_heat = 1.00` carrying **D2's stated-assumption paragraph in full** — what it asserts, that it is an idealisation and not a measurement, its direction of optimism, and that a sourced figure would enter at this one attribute (MR-WI039-3; this doc comment is the requirement's evidence)
-- [ ] `:>> p_delivered_direct_heat = 0.0` and `:>> p_coupled_direct_heat = 0.0`, each saying the chain is live so the direct term is zeroed (the `p_cryo = 0.0` precedent at `:724`)
-- [ ] Remove the `p_input` (`:636-638`), `eta_pin` (`:648`), and `p_ecrh` (`:845`) bindings; **preserve the WI-037 coupled-power correction's substance** — it now belongs on the chain's `p_coupled`, and losing it would re-open a closed question
-- [ ] Regenerate; execute at the baseline
-- [ ] Compare against `20260903-priced-levers/results/baseline_result.json`: coupled power 50.0, delivered 50.0, `heating_cost__cost` $264.145M, wall-plug term 100.0, `q_eng`, `rec_frac`, LCOE 307.08712042841586, and **all nine constraint verdicts** including `sustainment_ok` violated and `cond_strain_ok` satisfied
-- [ ] `uv run agentic-mbse validate models` — Levels 1–3
+- [x] `:>> p_wallplug_heat = 100.0` with a doc comment carrying: the source (Table 2 image, "Required plasma-coupled ECRH power [MW] 50"), the derivation (that 50 divided by the chain's stated `eta_source x eta_couple = 0.50`), and D1's fidelity note that a future `eta_source` sweep moves coupled power off the printed 50
+- [x] `:>> eta_source_heat = 0.50` citing `costing_constants.yaml:105` / `defaults.py:104-108`, basis "gyrotron wall-plug, ITER procurement calibrated"
+- [x] `:>> eta_couple_heat = 1.00` carrying **D2's stated-assumption paragraph in full** — what it asserts, that it is an idealisation and not a measurement, its direction of optimism, and that a sourced figure would enter at this one attribute (MR-WI039-3; this doc comment is the requirement's evidence)
+- [x] `:>> p_delivered_direct_heat = 0.0` and `:>> p_coupled_direct_heat = 0.0`, each saying the chain is live so the direct term is zeroed (the `p_cryo = 0.0` precedent at `:724`)
+- [x] Remove the `p_input` (`:636-638`), `eta_pin` (`:648`), and `p_ecrh` (`:845`) bindings; **preserve the WI-037 coupled-power correction's substance** — it now belongs on the chain's `p_coupled`, and losing it would re-open a closed question
+- [x] Regenerate; execute at the baseline
+- [x] Compare against `20260903-priced-levers/results/baseline_result.json`: coupled power 50.0, delivered 50.0, `heating_cost__cost` $264.145M, wall-plug term 100.0, `q_eng`, `rec_frac`, LCOE 307.08712042841586, and **all nine constraint verdicts** including `sustainment_ok` violated and `cond_strain_ok` satisfied
+- [x] `uv run agentic-mbse validate models` — Levels 1–3
 
 **Test requirements.** Record every compared number in the phase notes with its before/after, whether or not it moved.
 
@@ -148,13 +148,13 @@ uv run --env-file ~/1cfe/agentic-mbse/.env --env-file .venv/integration.env pyth
 **Files.** `exploration/stellarator_e2e/verify_stellaris.py` — REFINE.
 
 **Checklist.**
-- [ ] Replace the `p_input=50.0, ..., eta_pin=0.5` defaults (`:187`) with `p_wallplug_heat=100.0, eta_source_heat=0.50, eta_couple_heat=1.00`
-- [ ] Write the oracle's own chain arithmetic — delivered, coupled, wall-plug total — **from `design.md`, with the file's other source-facing code closed**
-- [ ] `p_th` (`:380`) takes the oracle's own coupled power; `recirculating` (`:391-392`) takes the oracle's own wall-plug total; the `p["p_input"] / p["eta_pin"]` term goes
-- [ ] Heating cost (`:417`) takes the oracle's own delivered power
-- [ ] Run the parity check; record the agreement and its tolerance
-- [ ] **Perturbation test:** set `eta_source_heat` to 0.45 alone and confirm coupled power, heating cost, wall-plug draw, `q_eng`, and `sustainment_ok`'s margin all move; confirm the oracle moves with the model; restore 0.50. Record the numbers — this is the grader's stated `why_not_next` test and its evidence
-- [ ] Note in the phase record that the oracle was written independently and by what means
+- [x] Replace the `p_input=50.0, ..., eta_pin=0.5` defaults (`:187`) with `p_wallplug_heat=100.0, eta_source_heat=0.50, eta_couple_heat=1.00`
+- [x] Write the oracle's own chain arithmetic — delivered, coupled, wall-plug total — **from `design.md`, with the file's other source-facing code closed**
+- [x] `p_th` (`:380`) takes the oracle's own coupled power; `recirculating` (`:391-392`) takes the oracle's own wall-plug total; the `p["p_input"] / p["eta_pin"]` term goes
+- [x] Heating cost (`:417`) takes the oracle's own delivered power
+- [x] Run the parity check; record the agreement and its tolerance
+- [x] **Perturbation test:** set `eta_source_heat` to 0.45 alone and confirm coupled power, heating cost, wall-plug draw, `q_eng`, and `sustainment_ok`'s margin all move; confirm the oracle moves with the model; restore 0.50. Record the numbers — this is the grader's stated `why_not_next` test and its evidence
+- [x] Note in the phase record that the oracle was written independently and by what means
 
 **Test requirements.** The perturbation numbers are recorded in the implementation notes and become the round's evidence for the P2 anchor's "verified".
 
@@ -187,18 +187,18 @@ uv run --env-file ~/1cfe/agentic-mbse/.env --env-file .venv/integration.env pyth
 **The handshake is the sharp edge.** `emit_1cfe_point.py` calls `model._effective_eta_pin(p)`; with `eta_pin` retired that call breaks. The handshake compares this model against 1costingFE, which still has `eta_pin`, so the seam must translate rather than propagate: emit `eta_pin_effective` from the chain's `eta_pin_eff` output. **If the handshake cannot be honestly translated, that is a `PREREQUISITE` return, not a thing to force.**
 
 **Checklist.**
-- [ ] Restate both committed study definitions: coupled 50–110 MW becomes wall-plug 100–220 MW at `eta_pin_eff = 0.50`; **write the restatement note into each study's record dir** naming what changed and why the experiment is the same experiment
-- [ ] Remove the `p_input`/`p_ecrh` tie from `studies/manifest.json`; record in the round trail that a workaround was removed because the model now declares the invariant itself
-- [ ] Re-derive every changed expectation **by running it**, not by editing the number to match; note each one's derivation
-- [ ] Repair `emit_1cfe_point.py` and `handshake_1costingfe.py` to emit `eta_pin_effective` from `eta_pin_eff`; re-run the handshake and record its agreement
-- [ ] `tests/models/test_power_balance.py` and `mfe_census.json` updated to the new interface
-- [ ] Six `tests/study/data/*.expected.json` re-derived
-- [ ] Create the SV rows (`uv run agentic-mbse pm add-validation`) now that element names are fixed: the baseline chain identity, and the perturbation response
-- [ ] Traceability rows for the new elements (`uv run agentic-mbse pm trace-element`)
-- [ ] Full `uv run agentic-mbse validate models` — Levels 1–6, with 4–6 reviewed and any residue recorded
-- [ ] `tests/models` → expect 48 passed / 13 skipped or better, with any delta explained
-- [ ] `rm -rf .integration_workspace`; `tests/study` → expect 356 passed / 1 skipped or better, with any delta explained
-- [ ] Verify each spec success criterion explicitly and record where its evidence is
+- [x] Restate both committed study definitions: coupled 50–110 MW becomes wall-plug 100–220 MW at `eta_pin_eff = 0.50`; **write the restatement note into each study's record dir** naming what changed and why the experiment is the same experiment
+- [x] Remove the `p_input`/`p_ecrh` tie from `studies/manifest.json`; record in the round trail that a workaround was removed because the model now declares the invariant itself
+- [x] Re-derive every changed expectation **by running it**, not by editing the number to match; note each one's derivation
+- [ ] **NOT DONE AS WRITTEN (close note 2026-09-04):** Repair `emit_1cfe_point.py` and `handshake_1costingfe.py` to emit `eta_pin_effective` from `eta_pin_eff`; re-run the handshake and record its agreement — `emit_1cfe_point.py` needed no change; `handshake_1costingfe.py` was already broken before this item (`FileNotFoundError` on a file the package stopped generating at the migration) and was left broken with the keys it would need written into § MR-WI039-9 restatement; trail § T-002 return, decision 3.
+- [x] `tests/models/test_power_balance.py` and `mfe_census.json` updated to the new interface
+- [x] Six `tests/study/data/*.expected.json` re-derived
+- [x] Create the SV rows (`uv run agentic-mbse pm add-validation`) now that element names are fixed: the baseline chain identity, and the perturbation response
+- [x] Traceability rows for the new elements (`uv run agentic-mbse pm trace-element`)
+- [x] Full `uv run agentic-mbse validate models` — Levels 1–6, with 4–6 reviewed and any residue recorded
+- [x] `tests/models` → expect 48 passed / 13 skipped or better, with any delta explained
+- [x] `rm -rf .integration_workspace`; `tests/study` → expect 356 passed / 1 skipped or better, with any delta explained
+- [x] Verify each spec success criterion explicitly and record where its evidence is
 
 **Gate.** Both batteries green with every delta explained; every restated expectation carries its derivation; no expectation patched to match.
 
@@ -213,6 +213,19 @@ uv run --env-file ~/1cfe/agentic-mbse/.env --env-file .venv/integration.env pyth
 5. **`tests/study` costs ~7.5 minutes per run.** *Mitigation:* run it once at the end of Phase 5, not per checklist item.
 
 ---
+
+
+## Implementation record — 2026-09-04 (written at close)
+
+The checklists above were ticked at close, not during implementation — the implementing session recorded its outcomes in the goal trail and the validation matrix instead of here, and the fresh Row-4 grader named the gap (EI-3, `.project/active/demo-depth-rubric/grading-r4-regrade.md`). Each tick rests on evidence outside this file, cited here so the record is pointable:
+
+- **Phases 1–4 (library, plant wiring and codegen, instance and baseline parity, oracle and perturbation):** commit `b45b4b01` (the four model files and their twins, the handwritten impl, the oracle); the goal trail `work/orchestration/goals/wall-and-heating/trail.md` § T-002 return (the reading, the baseline unchanged in every number, the perturbation numbers); `modeling_project/VALIDATION_MATRIX.md` SV-048 (baseline identity) and SV-049 (perturbation response), both `passing`. The perturbation test: `eta_source_heat` 0.50 → 0.45 alone moves heating capital 264,145,000 → 237,730,500 and LCOE 307.087120428 → 306.798743084, model and oracle agreeing at both settings — re-executed independently by the grader on both sides.
+- **Phase 5 (restatement, regression, traceability):** commits `015f026e` (re-pin, census 197 → 199, snapshot, oracle seam, fixture re-derivation) and `6678968e` (batteries green: `tests/models` 48 passed / 13 skipped; `tests/study` 356 passed / 1 skipped; SV rows); § MR-WI039-9 restatement below (written after the regeneration commit, disclosed as a deviation in its first paragraph); the `p_input`/`p_ecrh` tie removed from `exploration/stellarator_e2e/studies/manifest.json`.
+- **Integration:** `work/orchestration/goals/wall-and-heating/evidence/T-003_integration_return.json` — `CANDIDATE`, ten gates first run; pin `2649e0ea…`, semantic `48731d15…`, executable `b0c5f3ed…`.
+- **The grade (the item's purpose):** `.project/active/demo-depth-rubric/grading-r4-regrade.md` — R4.P = 2 (was 1), R4.S = 2, at `rubric.md@dc0f0b6d`; the goal's § Answered when (a) met per the round-1 review and confirmed by the owner `[OWNER 2026-09-04]`.
+- **Spec success criteria:** verified by the round-1 review (`work/orchestration/goals/wall-and-heating/evidence/round1_review.md` § Checks, T-002 model state) rather than itemised here.
+
+One checklist item is left unticked and annotated in place (Phase 5, the 1costingFE handshake): not done as written, for the reason the trail records.
 
 ## MR-WI039-9 restatement — entry-point retirement and committed-study consequences (2026-09-03)
 
