@@ -339,6 +339,45 @@ package mfe_plant {
             in alpha_T_in = alpha_T;
         }
 
+        // ---- Neutron wall load: average, source-anchored calibration, peak (WI-041) ----
+        // The circular-torus AVERAGE over the model's own first-wall area, and the
+        // PEAK that a peak design limit and the fluence-limited lifetime both read.
+        // The peak is the average times a calibration computed from a source's
+        // own printed peak at its own design point ('Neutron Wall Load Peak
+        // Calibration'). Declared in the generic plant so one peak reaches both
+        // the concept's fence and the CAS72 lifetime chain below.
+        calc wall_load_calc : 'Neutron Wall Load' {
+            in p_fus = fusion.p_fus;
+            in wall_area = rb.wall_area;
+        }
+        // Reference facts for the peak calibration. Dormant by default (the
+        // WI-024 / WI-039 additive-direct-term pattern): a concept with no source
+        // peak leaves q_ref at 0 and the direct term at 1.0, so the calibration is
+        // 0 x A_ref / p_n_ref + 1.0 = 1.0 and the peak equals the average -- the
+        // pre-WI-041 fence semantics exactly. A concept anchoring to a source
+        // binds its six printed facts and zeroes the direct term. p_fus_ref
+        // defaults to 1.0, never 0, so the dormant division stays defined.
+        attribute wall_peak_q_ref : Real default 0.0;
+        attribute wall_peak_p_fus_ref : Real default 1.0;
+        attribute wall_peak_R_ref : Real default 1.0;
+        attribute wall_peak_a_ref : Real default 1.0;
+        attribute wall_peak_kappa_ref : Real default 1.0;
+        attribute wall_peak_standoff_ref : Real default 0.0;
+        attribute wall_peak_calibration_direct : Real default 1.0;
+        calc wall_peak_cal : 'Neutron Wall Load Peak Calibration' {
+            in q_peak_ref = wall_peak_q_ref;
+            in p_fus_ref = wall_peak_p_fus_ref;
+            in R_ref = wall_peak_R_ref;
+            in a_ref = wall_peak_a_ref;
+            in kappa_ref = wall_peak_kappa_ref;
+            in standoff_ref = wall_peak_standoff_ref;
+            in calibration_direct = wall_peak_calibration_direct;
+        }
+        calc wall_peak_calc : 'Neutron Wall Load Peak' {
+            in wall_load = wall_load_calc.wall_load;
+            in calibration_in = wall_peak_cal.calibration;
+        }
+
         // Power-balance inputs (WI-011).
         // neutron energy multiplier
         attribute mn : Real;
@@ -886,20 +925,15 @@ package mfe_plant {
         attribute replacement_cost_per_event : Real =
             (blanket.capital_cost + divertor.capital_cost) * n_mod;
 
-        // Charged-particle (ash) share of the fusion energy; the neutron power
-        // that damages the first wall is the complement. Default 0.2002 is the
-        // rounded model value; the exact 1cfe constant is E_ALPHA_DT / Q_DT =
-        // 3.52 / 17.58. Source: physics.py:31, :177-179 (pin 0254385).
-        attribute ash_frac : Real default 0.2002;
-
         // Core fluence limit [MW-yr/m^2] (instance binds; DT 18.0, defaults.py:291).
         attribute fluence_limit : Real;
 
+        // The lifetime operand is the PEAK wall load (WI-041): the source and its
+        // cited method set in-vessel lifetime by the peak load. Before WI-041 the
+        // calc computed its own neutron power over the circular-torus area.
         calc cas72_calc : 'Levelized Replacement Cost' {
             in cost_per_event = replacement_cost_per_event;
-            in p_fus = fusion.p_fus;
-            in ash_frac_in = ash_frac;
-            in firstwall_area = rb.wall_area;
+            in q_n_in = wall_peak_calc.wall_load_peak;
             in fluence_limit_in = fluence_limit;
             in availability_in = availability;
             in interest_rate = discount_rate;

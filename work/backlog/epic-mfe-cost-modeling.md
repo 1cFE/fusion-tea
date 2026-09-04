@@ -174,6 +174,10 @@ Backlog, unstarted. **Do not read this item as a minor fence.** Goal `priced-lev
 
 Backlog. Home of discovery row `20260903-priced-levers#2`: about 85% of the winding pack (steel, insulation, copper, helium) has no cost account, so the WI-036 sizing lever moves physics and no magnet capital — the stress relief that makes an 18 MA point legal costs 0.02–0.14 $/MWh. Shape precedent: the WI-035 casing-structure account. **Sequenced before WI-038 `[OWNER 2026-09-03]`:** pricing the conductor grade against a free pack would reproduce the "priced but free" defect this round found. Sources: WI-036 design D8 (`work/completed/20260903_WI-036_winding-pack-sizing/design.md`); `exploration/stellarator_e2e/studies/20260903-priced-levers/record.md` § 6 `j_wp`, § 15 #2.
 
+### Item WI-041: Source-Anchored Wall-Load Fence (minted 2026-09-04)
+
+Active. Goal `wall-and-heating` round 2 (`source-anchored-wall-fence`), task T-002. The wall-load check compares a circular-torus **average** operand to the source's printed **peak** limit; this item makes it compare like with like — a computed peak, the model's average times a calibration computed in the model from the source's own printed peak (4.05 MW/m² at 2700 MW, Table 2 image) and the model's own reference area at the source's geometry — and moves the CAS72 lifetime operand to the peak, because the source sets first-wall lifetime by the peak damage (Table 6). Expected and disclosed: the baseline flips to `wall_load_ok` violated (≈ 4.087 against 4.05) and CAS72 rises about 37 %; neither is tuned. Basis: `work/orchestration/goals/wall-and-heating/evidence/round2_T-001_source_basis.md`. Spec: `work/active/WI-041_source-anchored-wall-load-fence/spec.md`. Home of discovery rows `20260903-priced-levers#1` and `20260903-wall-and-heating#1`, `#3` (routed to round 2 at the round-1 close).
+
 ## Sequencing
 
 ```

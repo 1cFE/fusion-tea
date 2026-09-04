@@ -254,6 +254,100 @@ package mfe_plasma_scaling {
             p_fus * (1.0 - ash_frac_in) / wall_area;
     }
 
+    calc def 'Neutron Wall Load Peak Calibration' {
+        doc /*
+        Source-anchored peak calibration [1]: the multiplier that carries a
+        circular-torus AVERAGE neutron wall load onto a source's own printed
+        3D PEAK, evaluated at the source's design point (WI-041).
+
+          A_ref       = kappa_ref * 4*pi^2 * R_ref * (a_ref + standoff_ref)  [m^2]
+          p_n_ref     = p_fus_ref * (1 - ash_frac)                           [MW]
+          calibration = q_peak_ref * A_ref / p_n_ref + calibration_direct    [1]
+
+        A_ref is the SAME circular-torus first-wall area the model's own
+        'MFE Radial Build' computes (wall_area = kappa*4*pi^2*R*vacuum_or),
+        evaluated at the source's printed radii and minimum standoff. So
+        calibration x ('Neutron Wall Load' at the source's power and geometry)
+        reproduces the source's printed peak exactly, whatever ash_frac both
+        share. Every factor is a printed source figure or the model's own
+        convention; nothing is a transferred peaking factor or a shaped-wall
+        area. The decomposition calibration = p_f x (A_torus / A_wall) is a
+        cross-check a concept records in its doc text, never an input.
+
+        CONSTANCY ASSUMPTION (stated): the calibration is fixed at the source's
+        design point and carried unchanged over sweeps of geometry, density,
+        temperature and current -- the wall's peaking factor and shape factor
+        are taken as constant. Re-anchoring at a new design point, or a sourced
+        peaking factor on a re-shaped wall, would change it.
+
+        Dormant-safe (the WI-024 / WI-039 additive-direct-term pattern): a
+        concept with no source peak binds q_peak_ref = 0 and calibration_direct
+        = 1.0, so the calibration is 1.0 and the peak equals the average; a
+        concept anchoring to a source binds its six reference facts and zeroes
+        calibration_direct. p_fus_ref must never be 0 (a dormant concept binds
+        1.0) so the division stays defined.
+
+        **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md; /home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py (pin 0254385)
+        **Ref**: Table 2 image (images/page_002_table_0.png: peak neutron wall load, peak fusion power, radii); geometry.py:67-81 (torus surface area); work/orchestration/goals/wall-and-heating/evidence/round2_T-001_source_basis.md section 5 (the identity and its decomposition)
+        **Basis**: a source's printed 3D peak per unit of the model's own circular-torus average at the source's design point; MFE-generic
+        */
+
+        // the source's printed peak neutron wall load [MW/m^2]
+        in attribute q_peak_ref : Real;
+        // the source's fusion power at that peak [MW]; never 0
+        in attribute p_fus_ref : Real;
+        // the source's major radius [m], minor radius [m], elongation [1] and
+        // minimum plasma-to-wall standoff [m]: the model's own wall-area
+        // convention evaluated at the source's design point
+        in attribute R_ref : Real;
+        in attribute a_ref : Real;
+        in attribute kappa_ref : Real;
+        in attribute standoff_ref : Real;
+        // additive direct term [1]: 1.0 leaves a dormant concept at peak = average
+        in attribute calibration_direct : Real;
+        // Charged-particle share of fusion energy. Must equal the value the
+        // paired 'Neutron Wall Load' usage carries, so the identity is exact.
+        // Declared last with pi: usages bind the formals above by name and
+        // leave these two at their defaults; a skipped default must not
+        // precede a bound formal on the exact route (migration ledger).
+        in attribute ash_frac_in : Real default 0.2002;
+        in attribute pi : Real default 3.14159265358979;
+
+        // The model's own circular-torus first-wall area at the source's point.
+        attribute A_ref : Real =
+            kappa_ref * 4.0 * (pi ** 2) * R_ref * (a_ref + standoff_ref);
+        // The source's neutron power at that point.
+        attribute p_n_ref : Real = p_fus_ref * (1.0 - ash_frac_in);
+
+        out attribute calibration : Real =
+            q_peak_ref * A_ref / p_n_ref + calibration_direct;
+    }
+
+    calc def 'Neutron Wall Load Peak' {
+        doc /*
+        Peak neutron wall load [MW/m^2] on the first wall (WI-041):
+
+          wall_load_peak = wall_load * calibration
+
+        wall_load is the forward-computed circular-torus average ('Neutron
+        Wall Load'); calibration is the source-anchored multiplier ('Neutron
+        Wall Load Peak Calibration'), 1.0 for a concept with no source peak.
+        The peak is what a peak design limit is compared against ('Neutron
+        Wall Load Limit') and what sets the fluence-limited in-vessel
+        lifetime ('Levelized Replacement Cost'): the source and its cited
+        method both set lifetime by the peak load, not the average.
+
+        **Source**: knowledge/sources/a_deterministic_method_for_the_fast_evaluation_and_2/output.md
+        **Ref**: output.md line 88 ("the lifetime of the blanket is determined by the peak loads"); line 302 (the peaking factor q_max / <q> on the first wall)
+        **Basis**: peak = average x source-anchored calibration; MFE-generic
+        */
+
+        in attribute wall_load : Real;
+        in attribute calibration_in : Real;
+
+        out attribute wall_load_peak : Real = wall_load * calibration_in;
+    }
+
     calc def 'Volume-Averaged Beta' {
         doc /*
         Volume-averaged thermal plasma beta [1] from peak densities, peak

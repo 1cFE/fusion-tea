@@ -697,10 +697,10 @@ package stellarator_09 {
             */
         }
         :>> p_delivered_direct_heat = 0.0 {
-            doc /* **Source**: WI-039 design D4 **Ref**: work/active/WI-039_heating-system-structure/design.md (dormancy by additive direct terms) **Basis**: the chain is live, so the direct source-output term is zeroed -- coexisting would double-count (the p_cryo = 0.0 precedent below) */
+            doc /* **Source**: WI-039 design D4 **Ref**: work/completed/20260904_WI-039_heating-system-structure/design.md (dormancy by additive direct terms) **Basis**: the chain is live, so the direct source-output term is zeroed -- coexisting would double-count (the p_cryo = 0.0 precedent below) */
         }
         :>> p_coupled_direct_heat = 0.0 {
-            doc /* **Source**: WI-039 design D4 **Ref**: work/active/WI-039_heating-system-structure/design.md (dormancy by additive direct terms) **Basis**: the chain is live, so the direct plasma-coupled term is zeroed -- coexisting would double-count */
+            doc /* **Source**: WI-039 design D4 **Ref**: work/completed/20260904_WI-039_heating-system-structure/design.md (dormancy by additive direct terms) **Basis**: the chain is live, so the direct plasma-coupled term is zeroed -- coexisting would double-count */
         }
         :>> mn = 1.2 {        // blanket neutron energy multiplier.
             doc /* **Source**: stellaris-design-details.md **Ref**: line 1664/1831 (power multiplication 1.20, HCLL blanket) **Basis**: Stellaris HCLL blanket energy multiplication */
@@ -1097,18 +1097,14 @@ package stellarator_09 {
         :>> fluence_limit = 18.0 {     // core fluence limit [MW-yr/m^2], DT.
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:153 (fluence_limit_dt = 18.0, "ARIES FS 200 dpa = 18 MW yr/m^2") **Basis**: DT first-wall/blanket neutron-fluence replacement limit */
         }
-        :>> ash_frac = 0.2002275312855518 {  // charged-particle share of D-T energy.
-            doc /*
-            E_ALPHA_DT / Q_DT = 3.52 / 17.58. Bound exactly (not the calc def's
-            rounded 0.2002) because the CAS72 neutron-power chain feeds a
-            fluence-limited lifetime that is compared under A-2 at 1e-6 -- the
-            rounded value shifts q_n by 3.4e-5 relative and would miss the bar.
-            **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py (pin 0254385)
-            **Ref**: physics.py:31-33 (E_ALPHA_DT = 3.52, Q_DT = 17.58);
-                physics.py:177-179 (p_neutron = p_fus * (1 - ash_frac))
-            **Basis**: Alpha share of the D-T fusion energy; the complement is the neutron power
-            */
-        }
+        // WI-041 retired the exact ash_frac binding (E_ALPHA_DT / Q_DT =
+        // 0.2002275...) that fed the CAS72 chain's own neutron power: the chain
+        // now reads the peak wall load, whose average carries the calc's 0.2002
+        // default. The exact binding's purpose -- a 1e-6 A-2 comparison against
+        // 1costingFE's CAS72 -- is moot: that handshake has been broken since
+        // the migration, and the peak operand departs from 1cfe's average-based
+        // chain by design. The convention change is 3.4e-5 relative on the
+        // operand, folded into the declared CAS72 move (WI-041 plan, restatement).
 
         // ---------------------------------------------------------------------
         // VIABILITY CONSTRAINTS (WI-018 additions: beta, wall load, TBR)
@@ -1124,31 +1120,103 @@ package stellarator_09 {
             doc /* **Source**: stellaris-design-details.md **Ref**: line 273 (coils + boundary optimized at <beta>_V = 5%) **Basis**: Stellaris design beta target */
         }
 
-        // Neutron wall load (forward-computed from fusion power + first-wall area).
-        // First-wall area [m^2] is the physically correct reference area (neutron
-        // flux crosses the first wall, which stands off outboard of the plasma).
-        // Forward-computed (WI-021) as rb.wall_area = kappa*4*pi^2*R*vacuum_or over
-        // the first-wall standoff radius (vacuum_or = a + vacuum_t = 1.40 m at the
-        // WI-022 a = 1.3), = 701.926 m^2 at the Stellaris build (R=12.7, kappa=1.0).
-        // Bound directly into wall_load_calc (the `in V = geom.V` idiom) so it
-        // forward-computes through codegen without a top-level derived-attribute
-        // offender. 1costingFE torus geometry, no shape factor on material geometry
-        // (owner Option 1, WI-021).
-        // CROSS-CHECK: wall load = p_fus x (1 - 0.2002) / 701.926 ~= 3.13 MW/m^2
-        // at the WI-022 profile-integrated p_fus ~= 2748 MW -- above the printed
-        // 2.87 avg (Table 5 image; the model's flat-wall average vs the source's
-        // shaped-wall average) and below the 4.05 printed peak limit;
-        // wall_load_ok passes.
-        // Source: geometry.py _torus_surface_area / compute_geometry firstwall_area;
-        //   stellaris-design-details.md Table 5 image (avg 2.87 MW/m^2).
-        // first-wall design limit [MW/m^2] (WI-022 corrected).
-        attribute wall_load_limit : Real = 4.05 {
-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: peak neutron wall load 4.05 MW/m^2; the extracted text row "Table 5 ... 4.95" has no counterpart in the printed Table 5 image -- extraction artifact) **Basis**: Stellaris first-wall peak neutron-load design value */
+        // Neutron wall load -- the AVERAGE, the source-anchored PEAK, and the fence
+        // (WI-021 forward computation; WI-041 source-anchored peak).
+        // The generic plant's wall_load_calc forward-computes the circular-torus
+        // average over rb.wall_area = kappa*4*pi^2*R*vacuum_or at the first-wall
+        // standoff radius (vacuum_or = a + vacuum_t = 1.40 m), = 701.926 m^2 at the
+        // Stellaris build (R = 12.7, a = 1.3, kappa = 1.0). 1costingFE torus
+        // geometry, no shape factor on material geometry (owner Option 1, WI-021).
+        // vacuum_t = 0.10 m is the source's MINIMUM plasma-to-wall distance (line
+        // 1295: "a minimum distance of 100 mm"); the source's averaged SOL gap is
+        // 16.6 cm (Fig. 34 image, pdf-17-2.png). The calibration below absorbs the
+        // difference at the design point.
+        //
+        // WHAT THE SOURCE PRINTS (every figure confirmed against its page image;
+        // the extracted text of Tables 2, 5 and 6 was rewritten by the extraction
+        // and is not trusted -- decisions.json pages 2, 9, 20 `claude_replace`):
+        //   - peak neutron wall load 4.05 MW/m^2 at ~2700 MW, Table 2 image
+        //     (page_002_table_0.png), a 3D value on the design's own CAD first
+        //     wall by the method of Lion 2022 [240] (lines 1606-1607; Fig. 33 image
+        //     pdf-17-1.png, colour scale 0-4 MW/m^2). The ONLY printed peak: the
+        //     Table 5 image (page_009_table_0.png) has no peak row, and the
+        //     extracted "4.95" (line 748) is an artifact.
+        //   - "Av. neutron wall power" 2.87 MW/m^2, Table 5 image. Its basis is
+        //     NOT STATED. By the source's own cited definition (neutron power per
+        //     first-wall area) it cannot be an average over the Fig. 33 wall: neutron
+        //     power over the printed 940 m^2 plasma surface is already only 2.30,
+        //     and the source's damage map (Fig. 38: peak 3.9 / mean 2.2 DPA/GWf/yr)
+        //     puts the wall average near 2.28. It equals fusion power over the
+        //     printed plasma surface, 2700 / 940 = 2.872, to three figures. It is a
+        //     REPORTED COMPARAND of unstated basis, never a limit, and 4.05 / 2.87 =
+        //     1.41 is NOT a peaking factor. The model's average, 3.105 MW/m^2, is
+        //     on a different basis (the circular torus at the minimum standoff) and
+        //     is not comparable to it.
+        // THE FENCE (WI-041): wall_load_ok compares the computed PEAK -- the average
+        // times wall_peak_calibration, 1.316441, computed by the generic plant's
+        // wall_peak_cal from the six reference facts bound below -- against the
+        // printed 4.05. At the source's own design point the peak equals 4.05 by
+        // construction; at this baseline, whose p_fus (2725.4 MW) sits 0.94% above
+        // the source's 2700, the peak reads 4.05 x 2725.363 / 2700 = 4.088 MW/m^2:
+        // EXPECTED VIOLATED, disclosed here and never tuned (goal wall-and-heating
+        // § Invariants, on the sustainment_ok precedent). The same peak sets the
+        // CAS72 lifetime (cas72_calc.q_n_in): 18 / 4.088 = 4.40 FPY, beside the
+        // source's own ~4 FPY (Table 6 image; text lines 1811-1813).
+        // Evidence of record: work/orchestration/goals/wall-and-heating/evidence/
+        //   round2_T-001_source_basis.md; WI-041 spec, design D1-D5.
+
+        // The source's printed peak [MW/m^2] -- the anchor of the calibration.
+        :>> wall_peak_q_ref = 4.05 {
+            doc /*
+            Peak neutron wall load on the design's own first wall at ~2700 MW,
+            computed on the CAD wall (minimum 100 mm from the plasma) with the
+            3D method of Lion 2022 [240]. The calibration this anchors,
+            1.316441 = 4.05 x 701.926 / (2700 x 0.7998), decomposes as
+            p_f x (A_torus / A_wall); it is carried as ONE computed quantity
+            (WI-041 design D3) and the decomposition is a cross-check only:
+            the source's own damage peaking 3.9 / 2.2 = 1.77 (Fig. 38 caption,
+            lines 1783-1786; Lion 2022 line 366 calls the wall load a relative
+            indicator of dpa) implies a wall area of ~945 m^2 -- the printed
+            940 m^2 plasma surface plus a standoff; the round-1 external band
+            p_f = 1.5-2.1 (Lion, Haeussler, Beidler; unoptimised equidistant
+            walls) implies 800-1120 m^2. Both bracket the wall the source
+            describes. CONSTANCY (design D4): the calibration is fixed at this
+            design point and carried unchanged over sweeps of R, a, n_e0, T_i0
+            and I_coil -- a sweep of R or a moves the peak through the model's
+            own wall_area while the wall's shape is assumed to scale with it;
+            a re-shaped wall would need a new anchor.
+            **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
+            **Ref**: Table 2 image (images/page_002_table_0.png: "Peak neutron wall load 4.05"); Fig. 33 image (images/stellaris-high-field-quasi-isodynamic-stellarator.pdf-17-1.png, caption lines 1579-1580); lines 1606-1607 (the method), 1295 (the standoff)
+            **Basis**: Stellaris 3D first-wall peak neutron load at 2700 MW
+            */
+        }
+        // The source's fusion power at that peak [MW].
+        :>> wall_peak_p_fus_ref = 2700.0 {
+            doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: "Peak fusion power ~2700"); Fig. 33 caption lines 1579-1580 ("at 2700 MW fusion power") **Basis**: the fusion power the printed peak belongs to */
+        }
+        // The source's radii [m], elongation [1] and minimum standoff [m]: the
+        // model's own wall-area convention evaluated at the source's design point.
+        :>> wall_peak_R_ref = 12.7 {
+            doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: "Major plasma radius 12.7"); Table 1 image (images/page_001_table_0.png) **Basis**: Stellaris major radius; equals the model's R */
+        }
+        :>> wall_peak_a_ref = 1.3 {
+            doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: "Minor plasma radius 1.3"); Table 1 and Table 5 images agree; the extracted text's "1.5" is a rewrite artifact **Basis**: Stellaris minor radius; equals the model's a */
+        }
+        :>> wall_peak_kappa_ref = 1.0 {
+            doc /* **Source**: models/designs/stellarator_09/stellarator_plant.sysml **Ref**: kappa = 1.0 (QI stellarator ~ circular average; the model's own convention) **Basis**: the model's wall-area convention at the source's point */
+        }
+        :>> wall_peak_standoff_ref = 0.10 {
+            doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md **Ref**: line 1295 ("the first wall is positioned at a minimum distance of 100 mm from the plasma"); the averaged SOL gap is 16.6 cm (Fig. 34 image, pdf-17-2.png) -- the model's vacuum_t is the minimum, and the calibration absorbs the difference at the design point **Basis**: Stellaris minimum plasma-to-wall standoff; equals the model's vacuum_t */
+        }
+        // The chain is live: the direct term is zeroed (WI-041 design D1; the
+        // p_cryo = 0.0 and p_coupled_direct_heat = 0.0 precedents).
+        :>> wall_peak_calibration_direct = 0.0 {
+            doc /* **Source**: WI-041 design D1 **Ref**: work/active/WI-041_source-anchored-wall-load-fence/design.md (dormancy by an additive direct term) **Basis**: the calibration is anchored, so the dormant direct term is zeroed */
         }
 
-        calc wall_load_calc : 'Neutron Wall Load' {
-            in p_fus = fusion.p_fus;
-            in wall_area = rb.wall_area;
+        // first-wall PEAK design limit [MW/m^2] (WI-022; WI-041 confirmed).
+        attribute wall_load_limit : Real = 4.05 {
+            doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: "Peak neutron wall load 4.05"); the Table 5 image (images/page_009_table_0.png) prints no peak row, so the extracted "4.95" (line 748) is a rewrite artifact of that page (decisions.json page 9) **Basis**: Stellaris first-wall peak neutron-load design value, the only printed peak */
         }
 
         // TBR.
@@ -1166,8 +1234,13 @@ package stellarator_09 {
             in beta_in = beta_calc.beta;
             in beta_limit_in = beta_limit;
         }
+        // Wall load (WI-041): the computed PEAK against the printed peak. At this
+        // baseline the verdict is EXPECTED VIOLATED (4.088 against 4.05, by the
+        // model's 0.94% fusion-power excess over the source's 2700 MW) -- the
+        // disclosed, explained verdict change of the WI-041 increment, never
+        // tuned. Before WI-041 the operand was the circular-torus average.
         assert constraint wall_load_ok : 'Neutron Wall Load Limit' {
-            in wall_load = wall_load_calc.wall_load;
+            in wall_load = wall_peak_calc.wall_load_peak;
             in wall_load_limit_in = wall_load_limit;
         }
         assert constraint tbr_ok : 'TBR Floor' {
@@ -1188,7 +1261,11 @@ package stellarator_09 {
             in p_aux_installed_in = heat.p_coupled;
         }
 
-        // Exposed neutron wall load (headline physics output).
+        // Exposed neutron wall load (headline physics output): the circular-torus
+        // average, unchanged by WI-041 and retained as the reported quantity.
         attribute neutron_wall_load : Real = wall_load_calc.wall_load;
+        // Exposed source-anchored peak and its calibration (WI-041).
+        attribute neutron_wall_load_peak : Real = wall_peak_calc.wall_load_peak;
+        attribute wall_peak_calibration : Real = wall_peak_cal.calibration;
     }
 }

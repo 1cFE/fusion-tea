@@ -59,15 +59,19 @@ package mfe_viability {
 
     constraint def 'Neutron Wall Load Limit' {
         doc /*
-        First-wall lifetime bound: the neutron wall load [MW/m^2] must stay at or
-        below the first-wall material/design limit. Excessive neutron flux drives
-        displacement damage (DPA) and shortens the first-wall replacement
-        interval below viability. Pair with 'Neutron Wall Load' (mfe_plasma_
-        scaling), which forward-computes the load from fusion power and wall area.
+        First-wall peak-load bound: the PEAK neutron wall load [MW/m^2] must stay
+        at or below the first-wall design limit, which is itself a peak on the
+        same wall basis. Excessive neutron flux drives displacement damage (DPA)
+        and shortens the first-wall replacement interval below viability; the
+        source and its cited method set that lifetime by the peak load. Pair
+        with 'Neutron Wall Load Peak' (mfe_plasma_scaling): the forward-computed
+        circular-torus average put on the source's peak basis by a source-
+        anchored calibration (WI-041). Comparing the AVERAGE with a peak limit,
+        as the model did before WI-041, compares two different quantities.
 
         **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
-        **Ref**: Table 2 image (images/page_002_table_0.png: peak neutron wall load 4.05 MW/m^2), lines 1757-1766 (DPA-limited first-wall lifetime)
-        **Basis**: Neutron wall load must not exceed the first-wall design limit
+        **Ref**: Table 2 image (images/page_002_table_0.png: peak neutron wall load 4.05 MW/m^2); Table 6 image (images/page_020_table_0.png: peak DPA 10.7 DPA/FPY -> first-wall lifetime ~4-6 FPY); lines 1757-1766 and 1811-1813 (DPA-limited first-wall lifetime)
+        **Basis**: Peak neutron wall load must not exceed the first-wall peak design limit
         */
 
         in attribute wall_load : Real;
