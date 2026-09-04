@@ -1,0 +1,860 @@
+{
+ "snapshot_schema_version": "1",
+ "study_id": "20260904-wall-and-heating",
+ "package": {
+  "path": "exploration/stellarator_e2e/pkg/stellarator_tea",
+  "package_name": "stellarator_tea",
+  "repo_commit": "f690b0cda619cc74994d12dbf9782d4833f69492",
+  "repo_commit_note": "the commit the study executed against; the record itself lands in the next commit",
+  "git_clean": true
+ },
+ "fingerprints": {
+  "indicator_inputs": {
+   "recipe": "indicator-input-fingerprint/v1",
+   "digest": "c1b0f0d1e7764e557383fac4bfcd7d534978ec170ef9a106bf8e665b7061ca90",
+   "files": [
+    {
+     "path": "contracts/model_contract.json",
+     "sha256": "1236f796789aa2736ba0c4ca69c1ed11468caaaf07ad7b5941b360e395474ee9"
+    },
+    {
+     "path": "inputs/mfe_account_costs_params.json",
+     "sha256": "5b7f9baef4118fd7f4bf2df2bf6f15153208b84c2ad1507300b5f54fe83740b3"
+    },
+    {
+     "path": "inputs/mfe_magnet_cost_params.json",
+     "sha256": "0009a95e44bd67b7ab7622bb51b9b8bddd01683ebdb969c7402116bc4de34113"
+    },
+    {
+     "path": "inputs/mfe_magnet_field_params.json",
+     "sha256": "e46eb97bf88cdf3f9ac409bdcc35d87fd99022ab4b23ed78f516fb4172446180"
+    },
+    {
+     "path": "inputs/mfe_plant_params.json",
+     "sha256": "ff041fec8a149e6c789ca1bd5cf0cc1c6f55c6d96da3f96179f9541131b94814"
+    },
+    {
+     "path": "inputs/mfe_plasma_scaling_params.json",
+     "sha256": "488d4d621b02646fe237a85b0e6c01092532674344629787f0d1c4bbea1040f2"
+    },
+    {
+     "path": "inputs/mfe_plasma_sustainment_params.json",
+     "sha256": "d7c0adfe722dde2bdd7b0edb52f0365ab6b1210e2a25cfab36136a055ebeec14"
+    },
+    {
+     "path": "inputs/stellarator_plant_params.json",
+     "sha256": "304c051c7541cda8bfc96b74de5cc5536ecba2a690a272a7620ccd144b5fd3b6"
+    },
+    {
+     "path": "pipelines/pipeline.yaml",
+     "sha256": "cfb62956b528e9810c2687c9a3b36c07f320fb3865d3ebdcfcb589b68dfc4a57"
+    }
+   ]
+  },
+  "recorded_provenance.executable_fingerprint": "d4be395197a060590238ff74aa0c5e30fa65c94f0c9390055697da61d62be708",
+  "recorded_provenance.semantic_fingerprint": "d468f3b69ad00c46b259bfeca2123d7db5a527c3a0da55e69b54793845417736",
+  "sealed_executable_fingerprint": "d4be395197a060590238ff74aa0c5e30fa65c94f0c9390055697da61d62be708"
+ },
+ "manifest": {
+  "path": "exploration/stellarator_e2e/studies/manifest.json",
+  "schema_version": "study-package-manifest/v1",
+  "digest": "d23a9a60b774f4500b5d5c70a82919abcd7593d2303363b77f7485614ad666e4",
+  "content_used": {
+   "fingerprint_names": [
+    "indicator_inputs",
+    "recorded_provenance.executable_fingerprint",
+    "recorded_provenance.semantic_fingerprint"
+   ],
+   "ties": [
+    {
+     "key": "stellarator_09__stellaris__magnet__R0",
+     "rides_with": [
+      "stellarator_09__stellaris__R"
+     ],
+     "note": "Magnet coil major radius is the same physical quantity as the plasma major radius. Its suffix is R0, not R, so no suffix scan will ever surface it -- the tie must be declared. Advisory here: a group holding R but not this key earns a tie_candidate warning, never an added key. Since the model migration the plasma major radius is one plant-level entry point (R), not the geom__R / rb__R fan-out."
+    }
+   ],
+   "ties_note": "one declared tie (magnet__R0 rides with R); swept in every arm",
+   "objective_catalog": [
+    {
+     "name": "lcoe",
+     "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+     "note": "Headline levelized cost of electricity. Exit-point filename is stellaris__lcoe.json; the catalog keys on the channel, never the filename."
+    },
+    {
+     "name": "lcoe_1cfe",
+     "channel": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+     "note": "LCOE variant using the 1costingfe CAS90 rollup."
+    },
+    {
+     "name": "cas72",
+     "channel": "stellarator_09__stellaris__cas72_calc__cost",
+     "note": "Levelized annual replacement cost."
+    },
+    {
+     "name": "fuel",
+     "channel": "stellarator_09__stellaris__fuel_calc__annual_fuel",
+     "note": "Annual fuel cost."
+    },
+    {
+     "name": "total_capital",
+     "channel": "stellarator_09__stellaris__total_capital__total_capital",
+     "note": "Total capital cost including interest during construction."
+    },
+    {
+     "name": "cas27",
+     "channel": "stellarator_09__stellaris__special_materials_capital__special_materials_capital",
+     "note": "CAS27 special-materials capital, computed in-package from the radial-build blanket volume since the model migration (2026-08-21). Declared as an objective so generic verification compares it against the oracle's own recompute: on the era route this value was glue-fed to both sides and never independently verified."
+    },
+    {
+     "name": "beta",
+     "channel": "stellarator_09__stellaris__beta_calc__beta",
+     "note": "Volume-averaged thermal beta computed by 'Volume-Averaged Beta' from the profile referents and magnet__B (WI-030); replaces the retired bound input beta. Compared against the oracle's closed form so a magnet study verifies the physics lever it moves."
+    },
+    {
+     "name": "magnet_capital",
+     "channel": "stellarator_09__stellaris__magnet_capital_rollup__capital_cost",
+     "note": "CAS22.1.3 magnet capital \u2014 since WI-035 the decomposed rollup (winding pack + casing structure), the channel the plant's magnet.capital_cost reads. The old conductor-proxy lump is the separate magnet_capital_1cfe comparison objective."
+    },
+    {
+     "name": "magnet_capital_1cfe",
+     "channel": "stellarator_09__stellaris__magnet_cost__capital_cost",
+     "note": "1cfe-form comparison channel (WI-035 D6): the retained 'Magnet Coil Cost' conductor-proxy lump, now responding to the computed field. Kept as an objective so the decomposed rollup and the calibrated lump stay observable side by side."
+    },
+    {
+     "name": "p_aux_required",
+     "channel": "stellarator_09__stellaris__sustain__p_aux_required",
+     "note": "WI-037 required sustained plasma-coupled heating; the sustainment_ok operand. Responds to field (~B^-2.15 through ISS04), density, temperature, geometry, and heating."
+    },
+    {
+     "name": "tau_E",
+     "channel": "stellarator_09__stellaris__sustain__tau_E",
+     "note": "WI-037 ISS04 energy confinement time (closed form, line-averaged density)."
+    }
+   ],
+   "baseline": {
+    "point": {
+     "stellarator_09__stellaris__R": 12.7,
+     "stellarator_09__stellaris__magnet__R0": 12.7,
+     "stellarator_09__stellaris__a": 1.3,
+     "stellarator_09__stellaris__availability": 0.85
+    },
+    "headline": {
+     "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+     "value": 313.5134115016116
+    },
+    "verdicts": [
+     {
+      "source_local_identity": "beta_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "cond_strain_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "net_positive",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "peak_field_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "recirc_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "sustainment_ok",
+      "expected": "violated"
+     },
+     {
+      "source_local_identity": "tbr_ok",
+      "expected": "satisfied"
+     },
+     {
+      "source_local_identity": "wall_load_ok",
+      "expected": "violated"
+     },
+     {
+      "source_local_identity": "wp_stress_ok",
+      "expected": "satisfied"
+     }
+    ]
+   },
+   "oracle": {
+    "kind": "python_callable",
+    "module": "oracle_entry",
+    "callable": "evaluate",
+    "sys_path": "exploration/stellarator_e2e/studies",
+    "note": "Package-owned oracle seam. evaluate(point) takes a mapping of qualified entry keys to floats and returns a mapping of qualified channel names to floats; it wraps the independent pure-Python oracle verify_stellaris.py, which is imported and never modified. The module also publishes a fixed-name companion, operand_bindings() -> {constraint_id: {source_name: {kind, key}}}, which says which qualified input key or channel each predicate operand means. A generic verifier requires both and fails closed on anything unresolved: on this package one operand of five constraints resolves to nothing by name at all, so a tool that inferred bindings would compare the wrong number and read as a pass.",
+    "source_digest": {
+     "recipe": "tool-source-digest/v1",
+     "digest": "8d811fd279da8c4e37887ca3a3300c5adf6143420b3b09a75b7af01cb3b0f7e8",
+     "files": [
+      {
+       "path": "exploration/stellarator_e2e/studies/oracle_entry.py",
+       "sha256": "314a07e0ac52c8bd1d6d582242aab2a4a54d947c36e55bdc5bb7e45092f2015d"
+      },
+      {
+       "path": "exploration/stellarator_e2e/verify_stellaris.py",
+       "sha256": "f7db96d16a29043bbab03f89948cff372838f9e461195e880af49a17db08a60f"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "stores": [
+  {
+   "store_id": "20260904-wall-and-heating",
+   "path": "exploration/stellarator_e2e/studies/_work/20260904-wall-and-heating/20260904-wall-and-heating.db",
+   "committed": false,
+   "note": "uncommitted per the study-store convention (**/_work/ is gitignored); results/*.csv carry every value this record cites",
+   "compatibility_tuple": {
+    "digest": "fea496843a649d17d4e7f94cc2b016f28d7c015e23c7643c4cd7878ae68beb77",
+    "evidence_schema_version": "v2",
+    "executable_fingerprint": "d4be395197a060590238ff74aa0c5e30fa65c94f0c9390055697da61d62be708",
+    "input_schema_version": "input-v1",
+    "model_contract_fingerprint": "d468f3b69ad00c46b259bfeca2123d7db5a527c3a0da55e69b54793845417736",
+    "strategy_config": "da444de75d946c0348c558322f03640e1080d0db8f83834c1d9a4d1d7e19cbc0",
+    "strategy_identity": "prepared-list/v1",
+    "study_definition_fingerprint": "8fad72ef1ea37eddd0db32fb396189f3dc00c38c82d9c6144bd2717ebc6c20ac",
+    "study_id": "20260904-wall-and-heating"
+   },
+   "cases_total": 6311,
+   "cases_completed": 6311
+  }
+ ],
+ "arms": [
+  {
+   "arm_id": "arm-fence-p100",
+   "store_id": "20260904-wall-and-heating",
+   "effective_executable_fingerprint": {
+    "value": "d4be395197a060590238ff74aa0c5e30fa65c94f0c9390055697da61d62be708",
+    "inputs": null,
+    "no_adapter": true,
+    "note": "no adapter exists; the sealed fingerprint is the identity (results/package_identity.json digest)"
+   },
+   "entry_models": "the package's complete entry-model map as PreparedEvaluator.entry_models carried it (study_route.definition); one proposal per point carries every swept key, the R tie and every held key (study.py point())",
+   "strategy": "prepared-list/v1",
+   "evaluated": 2974,
+   "feasible": 458,
+   "feasible_under_wall_shadow_lo": 576,
+   "feasible_under_wall_shadow_hi": 204,
+   "window": {
+    "provenance": "engineered",
+    "fixed_from": "results/window_scan.json (14,400 oracle candidates over p_wallplug_heat x R+tie x a x I_coil x T_i0 x n_e0; 101 oracle errors, all at R 9.7) and results/window_edges.json (84 one-axis transects through the best point at each level); both passes before the step-4 critique, disclosed in scan.py, edges.py and record.md section 11; plus the pinned baseline point as an explicit member; R 9.7 and T 13 keV dropped on the critique (F6) as known-blocked rows, bracketed by the transects",
+    "values": {
+     "p_wallplug_heat_MW": 100.0,
+     "R_m": [
+      11.2,
+      12.7,
+      14.2,
+      15.7,
+      17.2
+     ],
+     "a_m": [
+      1.3,
+      1.5,
+      1.7,
+      1.8,
+      2.0,
+      2.2
+     ],
+     "I_coil_MA": [
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      18.0
+     ],
+     "T_i0_keV": [
+      14.63,
+      16.0,
+      17.0,
+      18.0
+     ],
+     "n_e0_mult": [
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0
+     ],
+     "validity_mask": "R > a + 2.25 (ANNEX section Validity masks)"
+    }
+   },
+   "verification": {
+    "command": "scripts/study/verify.py --package exploration/stellarator_e2e/pkg/stellarator_tea --manifest exploration/stellarator_e2e/studies/manifest.json --identity exploration/stellarator_e2e/studies/20260904-wall-and-heating/results/package_identity.json --store exploration/stellarator_e2e/studies/_work/20260904-wall-and-heating/20260904-wall-and-heating.db --sample-size 20 --out exploration/stellarator_e2e/studies/20260904-wall-and-heating/results/verification_summary.json",
+    "tool_revision": "f02358bbe56b968495fae741dd949db7abd3db543a81fe9f7dffb929f77f0f06",
+    "sampling_scheme": "stratified-by-verdict-combination/v1",
+    "tolerance": "1e-09",
+    "summary_sha256": "e29c6caad22f6c880d846b89461af366683bc051c56dc384715abb1fea931844",
+    "note": "one store, one verification run over all three arms; the sample is stratified over the verdict combinations the whole study produced"
+   },
+   "glue_ledger": [],
+   "glue_ledger_none": true,
+   "artifacts": [
+    {
+     "path": "results/baseline_result.json",
+     "sha256": "f481830e2ded5d11f65debc5659b7bd1d9aa7b371de991ca50a24fc26ffbcf1d"
+    },
+    {
+     "path": "results/excluded_points.csv",
+     "sha256": "1b2b3ce5c83a3e2493d5e799aab75efb1c8a0b81bbb1547d8d81be5c9acc6537"
+    },
+    {
+     "path": "results/oracle_operands.csv",
+     "sha256": "514ed97ea7cbd762026e2f9cb33b9f184d4fb2e2746a45b5e36cad413c63d23f"
+    },
+    {
+     "path": "results/package_identity.json",
+     "sha256": "61e3e9b284744a8ed7fc56359d955338dc84104713e533e92c7065df42e2337c"
+    },
+    {
+     "path": "results/points.csv",
+     "sha256": "650438741f3f079d0889001b5d92b8fe28457c0bc97ab54535aba436c520027e"
+    },
+    {
+     "path": "results/preflight_results.json",
+     "sha256": "4e0962aa1e13f594e009c56581b82fa921e6148a74b1091f534838e015556a61"
+    },
+    {
+     "path": "results/verification_summary.json",
+     "sha256": "e29c6caad22f6c880d846b89461af366683bc051c56dc384715abb1fea931844"
+    },
+    {
+     "path": "results/window_edges.json",
+     "sha256": "63f22f7b861fe49d494e80851cb1653a6518869f32c0bc75721ebd15d1dcefa6"
+    },
+    {
+     "path": "results/window_scan.json",
+     "sha256": "89a781a24f18df5563312a9b45436fd4c2047dd2a08ec8f43b3414695b93ea70"
+    }
+   ]
+  },
+  {
+   "arm_id": "arm-search-p220",
+   "store_id": "20260904-wall-and-heating",
+   "effective_executable_fingerprint": {
+    "value": "d4be395197a060590238ff74aa0c5e30fa65c94f0c9390055697da61d62be708",
+    "inputs": null,
+    "no_adapter": true,
+    "note": "no adapter exists; the sealed fingerprint is the identity (results/package_identity.json digest)"
+   },
+   "entry_models": "the package's complete entry-model map as PreparedEvaluator.entry_models carried it (study_route.definition); one proposal per point carries every swept key, the R tie and every held key (study.py point())",
+   "strategy": "prepared-list/v1",
+   "evaluated": 2962,
+   "feasible": 598,
+   "feasible_under_wall_shadow_lo": 778,
+   "feasible_under_wall_shadow_hi": 215,
+   "window": {
+    "provenance": "engineered",
+    "fixed_from": "results/window_scan.json (14,400 oracle candidates over p_wallplug_heat x R+tie x a x I_coil x T_i0 x n_e0; 101 oracle errors, all at R 9.7) and results/window_edges.json (84 one-axis transects through the best point at each level); both passes before the step-4 critique, disclosed in scan.py, edges.py and record.md section 11; the (R 12.7, a 1.3) column kept here and cited by arm-reread-p220 for the 24 shared cases (F7)",
+    "values": {
+     "p_wallplug_heat_MW": 220.0,
+     "R_m": [
+      11.2,
+      12.7,
+      14.2,
+      15.7,
+      17.2
+     ],
+     "a_m": [
+      1.3,
+      1.5,
+      1.7,
+      1.8,
+      2.0,
+      2.2
+     ],
+     "I_coil_MA": [
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      18.0
+     ],
+     "T_i0_keV": [
+      14.63,
+      16.0,
+      17.0,
+      18.0
+     ],
+     "n_e0_mult": [
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0
+     ],
+     "validity_mask": "R > a + 2.25 (ANNEX section Validity masks)"
+    }
+   },
+   "verification": {
+    "command": "scripts/study/verify.py --package exploration/stellarator_e2e/pkg/stellarator_tea --manifest exploration/stellarator_e2e/studies/manifest.json --identity exploration/stellarator_e2e/studies/20260904-wall-and-heating/results/package_identity.json --store exploration/stellarator_e2e/studies/_work/20260904-wall-and-heating/20260904-wall-and-heating.db --sample-size 20 --out exploration/stellarator_e2e/studies/20260904-wall-and-heating/results/verification_summary.json",
+    "tool_revision": "f02358bbe56b968495fae741dd949db7abd3db543a81fe9f7dffb929f77f0f06",
+    "sampling_scheme": "stratified-by-verdict-combination/v1",
+    "tolerance": "1e-09",
+    "summary_sha256": "e29c6caad22f6c880d846b89461af366683bc051c56dc384715abb1fea931844",
+    "note": "one store, one verification run over all three arms; the sample is stratified over the verdict combinations the whole study produced"
+   },
+   "glue_ledger": [],
+   "glue_ledger_none": true,
+   "artifacts": [
+    {
+     "path": "results/baseline_result.json",
+     "sha256": "f481830e2ded5d11f65debc5659b7bd1d9aa7b371de991ca50a24fc26ffbcf1d"
+    },
+    {
+     "path": "results/excluded_points.csv",
+     "sha256": "1b2b3ce5c83a3e2493d5e799aab75efb1c8a0b81bbb1547d8d81be5c9acc6537"
+    },
+    {
+     "path": "results/oracle_operands.csv",
+     "sha256": "514ed97ea7cbd762026e2f9cb33b9f184d4fb2e2746a45b5e36cad413c63d23f"
+    },
+    {
+     "path": "results/package_identity.json",
+     "sha256": "61e3e9b284744a8ed7fc56359d955338dc84104713e533e92c7065df42e2337c"
+    },
+    {
+     "path": "results/points.csv",
+     "sha256": "650438741f3f079d0889001b5d92b8fe28457c0bc97ab54535aba436c520027e"
+    },
+    {
+     "path": "results/preflight_results.json",
+     "sha256": "4e0962aa1e13f594e009c56581b82fa921e6148a74b1091f534838e015556a61"
+    },
+    {
+     "path": "results/verification_summary.json",
+     "sha256": "e29c6caad22f6c880d846b89461af366683bc051c56dc384715abb1fea931844"
+    },
+    {
+     "path": "results/window_edges.json",
+     "sha256": "63f22f7b861fe49d494e80851cb1653a6518869f32c0bc75721ebd15d1dcefa6"
+    },
+    {
+     "path": "results/window_scan.json",
+     "sha256": "89a781a24f18df5563312a9b45436fd4c2047dd2a08ec8f43b3414695b93ea70"
+    }
+   ]
+  },
+  {
+   "arm_id": "arm-reread-p220",
+   "store_id": "20260904-wall-and-heating",
+   "effective_executable_fingerprint": {
+    "value": "d4be395197a060590238ff74aa0c5e30fa65c94f0c9390055697da61d62be708",
+    "inputs": null,
+    "no_adapter": true,
+    "note": "no adapter exists; the sealed fingerprint is the identity (results/package_identity.json digest)"
+   },
+   "entry_models": "the package's complete entry-model map as PreparedEvaluator.entry_models carried it (study_route.definition); one proposal per point carries every swept key, the R tie and every held key (study.py point())",
+   "strategy": "prepared-list/v1",
+   "evaluated": 360,
+   "feasible": 24,
+   "feasible_under_wall_shadow_lo": 47,
+   "feasible_under_wall_shadow_hi": 0,
+   "window": {
+    "provenance": "sourced",
+    "fixed_from": "exploration/stellarator_e2e/studies/20260903-wall-and-heating/study.py (round 1's arm-search-p220 window, all four source efficiencies): the predecessor record's own executed grid, re-executed at this pin less the 24 members the geometry grid carries",
+    "values": {
+     "p_wallplug_heat_MW": 220.0,
+     "R_m": [
+      12.7
+     ],
+     "a_m": [
+      1.3
+     ],
+     "I_coil_MA": [
+      14.0,
+      14.25,
+      14.5,
+      14.75,
+      15.0,
+      15.25
+     ],
+     "T_i0_keV": [
+      14.63,
+      16.0,
+      17.0,
+      18.0
+     ],
+     "n_e0_mult": [
+      0.8,
+      0.9,
+      1.0,
+      1.1
+     ],
+     "eta_source_heat": [
+      0.45,
+      0.5,
+      0.55,
+      0.6
+     ]
+    }
+   },
+   "verification": {
+    "command": "scripts/study/verify.py --package exploration/stellarator_e2e/pkg/stellarator_tea --manifest exploration/stellarator_e2e/studies/manifest.json --identity exploration/stellarator_e2e/studies/20260904-wall-and-heating/results/package_identity.json --store exploration/stellarator_e2e/studies/_work/20260904-wall-and-heating/20260904-wall-and-heating.db --sample-size 20 --out exploration/stellarator_e2e/studies/20260904-wall-and-heating/results/verification_summary.json",
+    "tool_revision": "f02358bbe56b968495fae741dd949db7abd3db543a81fe9f7dffb929f77f0f06",
+    "sampling_scheme": "stratified-by-verdict-combination/v1",
+    "tolerance": "1e-09",
+    "summary_sha256": "e29c6caad22f6c880d846b89461af366683bc051c56dc384715abb1fea931844",
+    "note": "one store, one verification run over all three arms; the sample is stratified over the verdict combinations the whole study produced"
+   },
+   "glue_ledger": [],
+   "glue_ledger_none": true,
+   "artifacts": [
+    {
+     "path": "results/baseline_result.json",
+     "sha256": "f481830e2ded5d11f65debc5659b7bd1d9aa7b371de991ca50a24fc26ffbcf1d"
+    },
+    {
+     "path": "results/excluded_points.csv",
+     "sha256": "1b2b3ce5c83a3e2493d5e799aab75efb1c8a0b81bbb1547d8d81be5c9acc6537"
+    },
+    {
+     "path": "results/oracle_operands.csv",
+     "sha256": "514ed97ea7cbd762026e2f9cb33b9f184d4fb2e2746a45b5e36cad413c63d23f"
+    },
+    {
+     "path": "results/package_identity.json",
+     "sha256": "61e3e9b284744a8ed7fc56359d955338dc84104713e533e92c7065df42e2337c"
+    },
+    {
+     "path": "results/points.csv",
+     "sha256": "650438741f3f079d0889001b5d92b8fe28457c0bc97ab54535aba436c520027e"
+    },
+    {
+     "path": "results/preflight_results.json",
+     "sha256": "4e0962aa1e13f594e009c56581b82fa921e6148a74b1091f534838e015556a61"
+    },
+    {
+     "path": "results/verification_summary.json",
+     "sha256": "e29c6caad22f6c880d846b89461af366683bc051c56dc384715abb1fea931844"
+    },
+    {
+     "path": "results/window_edges.json",
+     "sha256": "63f22f7b861fe49d494e80851cb1653a6518869f32c0bc75721ebd15d1dcefa6"
+    },
+    {
+     "path": "results/window_scan.json",
+     "sha256": "89a781a24f18df5563312a9b45436fd4c2047dd2a08ec8f43b3414695b93ea70"
+    }
+   ]
+  },
+  {
+   "arm_id": "arm-transect-ash",
+   "store_id": "20260904-wall-and-heating",
+   "effective_executable_fingerprint": {
+    "value": "d4be395197a060590238ff74aa0c5e30fa65c94f0c9390055697da61d62be708",
+    "inputs": null,
+    "no_adapter": true,
+    "note": "no adapter exists; the sealed fingerprint is the identity (results/package_identity.json digest)"
+   },
+   "entry_models": "the package's complete entry-model map as PreparedEvaluator.entry_models carried it (study_route.definition); one proposal per point carries every swept key, the R tie and every held key (study.py point())",
+   "strategy": "prepared-list/v1",
+   "evaluated": 15,
+   "feasible": 0,
+   "feasible_under_wall_shadow_lo": 3,
+   "feasible_under_wall_shadow_hi": 0,
+   "window": {
+    "provenance": "engineered",
+    "fixed_from": "the pre-execution critique's oracle probes (evidence round2_T-004_precritique.md, F2): tau*/tau_E 4 and 16 flip and close the a-reversal; the transect brackets the source's 8 through three anchors (the scan's best point at each level and the design column); each anchor's 8 member is a grid or baseline case",
+    "values": {
+     "tau_ratio_ash": [
+      2.0,
+      4.0,
+      6.0,
+      12.0,
+      16.0
+     ],
+     "anchors": [
+      {
+       "R": 14.2,
+       "a": 1.8,
+       "I": 14000000.0,
+       "T": 16.0,
+       "n": 0.8,
+       "wallplug": 100.0
+      },
+      {
+       "R": 14.2,
+       "a": 1.8,
+       "I": 14000000.0,
+       "T": 14.63,
+       "n": 0.9,
+       "wallplug": 220.0
+      },
+      {
+       "R": 12.7,
+       "a": 1.3,
+       "I": 15400000.0,
+       "T": 14.63,
+       "n": 1.0,
+       "wallplug": 100.0
+      }
+     ],
+     "held": "every other key at the anchor's values"
+    }
+   },
+   "verification": {
+    "command": "scripts/study/verify.py --package exploration/stellarator_e2e/pkg/stellarator_tea --manifest exploration/stellarator_e2e/studies/manifest.json --identity exploration/stellarator_e2e/studies/20260904-wall-and-heating/results/package_identity.json --store exploration/stellarator_e2e/studies/_work/20260904-wall-and-heating/20260904-wall-and-heating.db --sample-size 20 --out exploration/stellarator_e2e/studies/20260904-wall-and-heating/results/verification_summary.json",
+    "tool_revision": "f02358bbe56b968495fae741dd949db7abd3db543a81fe9f7dffb929f77f0f06",
+    "sampling_scheme": "stratified-by-verdict-combination/v1",
+    "tolerance": "1e-09",
+    "summary_sha256": "e29c6caad22f6c880d846b89461af366683bc051c56dc384715abb1fea931844",
+    "note": "one store, one verification run over all three arms; the sample is stratified over the verdict combinations the whole study produced"
+   },
+   "glue_ledger": [],
+   "glue_ledger_none": true,
+   "artifacts": [
+    {
+     "path": "results/baseline_result.json",
+     "sha256": "f481830e2ded5d11f65debc5659b7bd1d9aa7b371de991ca50a24fc26ffbcf1d"
+    },
+    {
+     "path": "results/excluded_points.csv",
+     "sha256": "1b2b3ce5c83a3e2493d5e799aab75efb1c8a0b81bbb1547d8d81be5c9acc6537"
+    },
+    {
+     "path": "results/oracle_operands.csv",
+     "sha256": "514ed97ea7cbd762026e2f9cb33b9f184d4fb2e2746a45b5e36cad413c63d23f"
+    },
+    {
+     "path": "results/package_identity.json",
+     "sha256": "61e3e9b284744a8ed7fc56359d955338dc84104713e533e92c7065df42e2337c"
+    },
+    {
+     "path": "results/points.csv",
+     "sha256": "650438741f3f079d0889001b5d92b8fe28457c0bc97ab54535aba436c520027e"
+    },
+    {
+     "path": "results/preflight_results.json",
+     "sha256": "4e0962aa1e13f594e009c56581b82fa921e6148a74b1091f534838e015556a61"
+    },
+    {
+     "path": "results/verification_summary.json",
+     "sha256": "e29c6caad22f6c880d846b89461af366683bc051c56dc384715abb1fea931844"
+    },
+    {
+     "path": "results/window_edges.json",
+     "sha256": "63f22f7b861fe49d494e80851cb1653a6518869f32c0bc75721ebd15d1dcefa6"
+    },
+    {
+     "path": "results/window_scan.json",
+     "sha256": "89a781a24f18df5563312a9b45436fd4c2047dd2a08ec8f43b3414695b93ea70"
+    }
+   ]
+  }
+ ],
+ "glue_ledger": "none -- no adapter on this route (sealed package, stock teax); stated per arm as glue_ledger_none",
+ "results_artifacts": {
+  "results/baseline_result.json": "f481830e2ded5d11f65debc5659b7bd1d9aa7b371de991ca50a24fc26ffbcf1d",
+  "results/excluded_points.csv": "1b2b3ce5c83a3e2493d5e799aab75efb1c8a0b81bbb1547d8d81be5c9acc6537",
+  "results/oracle_operands.csv": "514ed97ea7cbd762026e2f9cb33b9f184d4fb2e2746a45b5e36cad413c63d23f",
+  "results/package_identity.json": "61e3e9b284744a8ed7fc56359d955338dc84104713e533e92c7065df42e2337c",
+  "results/points.csv": "650438741f3f079d0889001b5d92b8fe28457c0bc97ab54535aba436c520027e",
+  "results/preflight_results.json": "4e0962aa1e13f594e009c56581b82fa921e6148a74b1091f534838e015556a61",
+  "results/verification_summary.json": "e29c6caad22f6c880d846b89461af366683bc051c56dc384715abb1fea931844",
+  "results/window_edges.json": "63f22f7b861fe49d494e80851cb1653a6518869f32c0bc75721ebd15d1dcefa6",
+  "results/window_scan.json": "89a781a24f18df5563312a9b45436fd4c2047dd2a08ec8f43b3414695b93ea70"
+ },
+ "indicators": {
+  "path": "indicators.json",
+  "digest": "c319ab83148f938c6931fc77aa0cd48efbc169b7d4fef433932be350094f11dc",
+  "output_schema_version": "study-indicators/v1",
+  "groups": 14,
+  "subset": false,
+  "axis_declaration": {
+   "path": "exploration/stellarator_e2e/studies/20260904-wall-and-heating/axes.json",
+   "schema_version": "study-axis-declaration/v1",
+   "digest": "f49d0d7ef62041bdb7e7e5b9bc361a6fc2597de12601b5bf5052c3180edca4f8",
+   "groups_declared": [
+    "B_max",
+    "I_coil",
+    "R+tie",
+    "T_i0",
+    "a",
+    "eta_couple_heat",
+    "eta_source_heat",
+    "f_suppr_ash",
+    "iota_23",
+    "j_wp",
+    "n_e0",
+    "p_wallplug_heat",
+    "tau_ratio_ash",
+    "wall_peak_q_ref"
+   ],
+   "subset": false
+  }
+ },
+ "axes_declaration": {
+  "path": "exploration/stellarator_e2e/studies/20260904-wall-and-heating/axes.json",
+  "digest": "f49d0d7ef62041bdb7e7e5b9bc361a6fc2597de12601b5bf5052c3180edca4f8"
+ },
+ "study_definition": {
+  "path": "exploration/stellarator_e2e/studies/20260904-wall-and-heating/study.py",
+  "digest": "be8d53d9d12d31e7886f8ff7c41180cc89e280a84cfa634315fd9962605975ab"
+ },
+ "scan": {
+  "path": "exploration/stellarator_e2e/studies/20260904-wall-and-heating/scan.py",
+  "digest": "ca1bb76451d7cff9090fd86d2ef817a2b0cef3d10093a90f486bff40eeb65d6b"
+ },
+ "edges": {
+  "path": "exploration/stellarator_e2e/studies/20260904-wall-and-heating/edges.py",
+  "digest": "82d4e2b2dd8d9cf6df4682e5f76f6ea82c6d335223bb3c56ae0e43fe6d8c67ee"
+ },
+ "tools": [
+  {
+   "path": "scripts/study/preflight.py",
+   "source_digest": {
+    "recipe": "tool-source-digest/v1",
+    "digest": "5135bb5b4e79072bba38788326b4acc41b87ae6ad1eac422f4ed52e119df849a",
+    "files": [
+     {
+      "path": "scripts/study/common.py",
+      "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+     },
+     {
+      "path": "scripts/study/identity.py",
+      "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+     },
+     {
+      "path": "scripts/study/manifest.py",
+      "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+     },
+     {
+      "path": "scripts/study/preflight.py",
+      "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+     }
+    ]
+   }
+  },
+  {
+   "path": "scripts/study/verify.py",
+   "source_digest": {
+    "recipe": "tool-source-digest/v1",
+    "digest": "f02358bbe56b968495fae741dd949db7abd3db543a81fe9f7dffb929f77f0f06",
+    "files": [
+     {
+      "path": "scripts/study/common.py",
+      "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+     },
+     {
+      "path": "scripts/study/identity.py",
+      "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+     },
+     {
+      "path": "scripts/study/manifest.py",
+      "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+     },
+     {
+      "path": "scripts/study/schemas/package_identity.v1.schema.json",
+      "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+     },
+     {
+      "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+      "sha256": "579054e23911be543927d9e9daa72ece44a68f76be9ab9ba53fce0244ef540e1"
+     },
+     {
+      "path": "scripts/study/verify.py",
+      "sha256": "bd339a8024f0c1f1fc8b1c9b0cdbee930c063861a2c2f5973b0ad091e09b9ef7"
+     }
+    ]
+   }
+  },
+  {
+   "path": "scripts/study/indicators.py",
+   "source_digest": {
+    "recipe": "tool-source-digest/v1",
+    "digest": "e53d7027da93de75e2b92f6e1006ebf7d040d98c229cb9e16993a1735356334e",
+    "files": [
+     {
+      "path": "scripts/study/indicators.py",
+      "sha256": "5c2c30532e058a76739a4ee95b619f2bc48209683feddec9d6aa76c821bd49df"
+     },
+     {
+      "path": "scripts/study/manifest.py",
+      "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+     },
+     {
+      "path": "scripts/study/schemas/axis_declaration.v1.schema.json",
+      "sha256": "cffa3d8adc0eae833245091b529ecfb5ad784ad6fea2c3714c460c6d3061eb2b"
+     },
+     {
+      "path": "scripts/study/schemas/indicators.v1.schema.json",
+      "sha256": "96390664ce8eb5938bfe19eb435603e107892bd5082edf8a03514d588a081996"
+     },
+     {
+      "path": "scripts/study/schemas/study_package_manifest.v1.schema.json",
+      "sha256": "5fd44712cd032647df701a24f237f2dda7ccd75c2f101a5c6244c9b6bca47032"
+     }
+    ]
+   }
+  }
+ ],
+ "preflight": {
+  "gates_run": 6,
+  "outcome": "pass",
+  "gates": [
+   {
+    "gate": "declared_keys",
+    "status": "pass"
+   },
+   {
+    "gate": "sibling_scan",
+    "status": "pass"
+   },
+   {
+    "gate": "identity",
+    "status": "pass"
+   },
+   {
+    "gate": "manifest_currency",
+    "status": "pass"
+   },
+   {
+    "gate": "baseline_headline",
+    "status": "pass"
+   },
+   {
+    "gate": "package_clean",
+    "status": "pass"
+   }
+  ]
+ },
+ "counts": {
+  "proposed": 6376,
+  "evaluated": 6311,
+  "excluded": 65,
+  "feasible_total": 1080,
+  "by_arm": {
+   "arm-fence-p100": 2974,
+   "arm-reread-p220": 360,
+   "arm-search-p220": 2962,
+   "arm-transect-ash": 15
+  },
+  "feasible_by_arm": {
+   "arm-fence-p100": 458,
+   "arm-reread-p220": 24,
+   "arm-search-p220": 598
+  },
+  "feasible_under_wall_shadow_lo_by_arm": {
+   "arm-fence-p100": 576,
+   "arm-reread-p220": 47,
+   "arm-search-p220": 778,
+   "arm-transect-ash": 3
+  },
+  "feasible_under_wall_shadow_hi_by_arm": {
+   "arm-fence-p100": 204,
+   "arm-search-p220": 215
+  }
+ },
+ "teax": {
+  "revision": "744745f895677f3344b9884627369a6a47ed987f",
+  "era_pin": null,
+  "revision_source": "git rev-parse HEAD in the teax checkout at record commit; results/verification_summary.json records teax.revision as unrecorded (the 20260821-power-cycle-ab#8 tool gap)"
+ }
+}

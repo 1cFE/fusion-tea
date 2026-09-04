@@ -1,0 +1,306 @@
+# Record — `20260904-wall-and-heating`
+
+## 1. Study header
+
+- **Study id:** `20260904-wall-and-heating`
+- **Package:** `stellarator_tea` (`exploration/stellarator_e2e/pkg/stellarator_tea` → `exploration/stellarator_e2e/generated`), the WI-041 package: indicator-input pin `c1b0f0d1e7764e557383fac4bfcd7d534978ec170ef9a106bf8e665b7061ca90`, semantic `d468f3b69ad00c46…`, sealed executable `d4be395197a06059…`
+- **Date executed:** 2026-09-04
+- **Executor:** the round-2 agent of goal `wall-and-heating` (this session), task T-004
+- **Mode:** execute
+- **Arms:** `arm-fence-p100`, `arm-search-p220`, `arm-reread-p220`, `arm-transect-ash`
+
+## 2. Intake
+
+The owner's goal and scope, in their own words, verbatim.
+
+> run the (b)(ii) study at the new pin
+
+`[OWNER 2026-09-04, verbatim]` — the whole intake. What "(b)(ii)" names is the goal contract's answer condition, inherited verbatim from `work/orchestration/goals/wall-and-heating/goal.md` § Answered when (b): *"(ii) One committed study at a promoted pin sweeps the levers that reach wall load in this model (the geometry pair `R` and `a`, the power-density levers `n_e0` and `T_i0`, with `I_coil` and `p_input`) and reports whether a feasible region exists at the printed 50 MW installed, its LCOE, and what the machine pays to get under the wall through the consequence chain the model already carries (wall load → in-vessel lifetime → CAS72 replacement)."* `[INHERITED: goal.md § Answered when (b)(ii), AGENT-proposed wording adopted at grounding 2026-09-03]`. "The new pin" is the round's promoted pin (trail § T-003 return (round 2)): the WI-041 package, in which the wall-load fence compares a computed peak with the printed peak for the first time.
+
+**What the executor added to make it executable, marked as the executor's own** (from the round-2 strategy's intended study question, `trail.md` § Strategy revision — 2026-09-04, and § T-004 scope (round 2)): `p_input` in the contract's wording is now `p_wallplug_heat` (WI-039 retired `p_input`), taken at the two levels 100 MW (the printed 50 MW coupled at the held 0.50) and 220 MW as sensitivity, not searched; source efficiency held at 0.50 because round 1 answered it; `R` swept with its declared `magnet__R0` tie; the `a` window bracketing the committed a ≥ 1.70 violation; T interior or fence-caught; `j_wp` held; `B_max` declined; the six WI-041 reference facts held by definition; one shadow column re-reading the peak at the round-1 external band so the anchor's sensitivity is data; and the consequence chain — the peak, the fluence-limited core life and replacement count re-derived from it, and CAS72 — reported per point. The second question the strategy put beside the contract's: at 220 MW, where does round 1's 267.159 optimum go under the honest fence.
+
+## 3. Objective and result
+
+- **LCOE objective channel(s):** `stellarator_09__stellaris__lcoe_calc__lcoe` (with `stellarator_09__stellaris__lcoe_1cfe_calc__lcoe` as the 1cfe-form comparison channel, exported and not read here)
+- **LCOE result:** **212.460 $/MWh — the cheapest feasible *driven* point at the printed 100 MW wall-plug** (`c1721`: R 14.2 m, a 2.2 m, I 15 MA, T 16 keV, n 0.9×; peak 4.030 against 4.05; `p_aux_required` +7.4 MW against 50 coupled; core life 4.47 FPY, five replacements, CAS72 24.3 $/MWh of it; `p_net` 1,572 MW). At 220 MW the cheapest driven point is **219.448** (`c4639`: R 14.2, a 2.2, I 13 MA, T 14.63, n 0.9×). At the **machine as designed** (R 12.7, a 1.3) nothing is feasible at 100 MW, and at 220 MW the cheapest driven point is **378.556** (`c6256`, in the re-read arm at `eta_source` 0.60: I 14.75 MA, T 17 keV, n 0.8×). The pinned baseline reads 313.513 (`c2973`), `wall_load_ok` violated at 4.088.
+
+Over the studied space the objective falls with fusion power almost without limit: the cheapest point in the whole study that passes every fence but the wall reads 150–156 $/MWh at a peak of 9.2 MW/m² and thirteen core replacements (§ 6, § 15 #5). What stops it is the wall fence, not the lifetime chain. The (b)(ii) region — feasible **and** driven, not ignited — exists at 100 MW only at minor radii of 1.5 m and above and is a knife-edge in the held ash-transport ratio (§ 6 `a`, § 15 #1–#3): every number in this section is conditional on that, and on the calibration and magnet constancy the record discloses in § 11.
+
+## 4. Constraint outcomes
+
+Every executing constraint, by qualified identity, over the 6,311 evaluated points (`results/points.csv`; "alone" means that column `violated` with the other eight `satisfied`).
+
+| `constraint_id` | `source_local_identity` | Status | Note |
+|---|---|---|---|
+| `stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb` | `wall_load_ok` | mixed | violated **2,667 / 6,311** (1,190 at 100 MW, 1,189 at 220, 279 in the re-read arm, 9 on the transect); alone 1,060. **The computed PEAK against the printed 4.05, on the source's own basis (WI-041)** — the round-1 caveat is retired; what travels with every verdict instead is the constancy assumption (§ 11). Violated at the baseline (4.088), at every a ≤ 1.5 on the design column, above n 0.9–1.0× and above T 16–17 keV at the best points, and at large R |
+| `stellarator_09__stellaris__sustainment_ok__77add152ed8eafce` | `sustainment_ok` | mixed | violated 2,450 (1,431 / 825 / 188 / 6); alone 904. Computed-vs-computed; **one-sided**: 787 points at each level have `p_aux_required` below zero and pass it (§ 15 #4). Violated at the baseline (90.6 MW required against 50) |
+| `stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5` | `peak_field_ok` | mixed | violated 1,615 (813 / 802 / 0 / 0); alone 476. Catches small R at every current (B ∝ I / R) and 18 MA at every R below 17 |
+| `stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b` | `recirc_ok` | mixed | violated 822 (207 / 592 / 23 / 0); alone 139, almost all at n 0.6–0.7× — the bottom of the density window at 220 MW |
+| `stellarator_09__stellaris__beta_ok__82b78aad420730d5` | `beta_ok` | mixed | violated 736 (368 / 368 / 0 / 0); alone 2 (R 17.2, a 2.2). Live for the first time as a fence at large R and n; never decisive |
+| `stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0` | `wp_stress_ok` | mixed | violated 427 (217 / 210 / 0 / 0); never alone |
+| `stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60` | `cond_strain_ok` | satisfied | 0 / 6,311 — inert in this window, as in round 1 |
+| `stellarator_09__stellaris__net_positive__484521d56c02667a` | `net_positive` | satisfied | 0 / 6,311 (the pre-screen excluded 65 proposals the oracle could not close, § 11) |
+| `stellarator_09__stellaris__tbr_ok__2cd198f674d413e4` | `tbr_ok` | satisfied | held-vs-held; unreachable from every declared axis |
+
+Feasible / ignited / **feasible driven** per arm: `arm-fence-p100` 458 / 201 of those / **257**; `arm-search-p220` 598 / 198 / **400**; `arm-reread-p220` 24 / 0 / 24; `arm-transect-ash` 0 / 8 / 0.
+
+## 5. Framing
+
+**As proposed at intake** — the framing submitted to the pre-execution critique (step 4).
+
+| Axis | Framing proposed | Why |
+|---|---|---|
+| `R+tie` | search | The open measurement: at fixed coil current the peak rises with `R` (~R^0.83 on the baseline column, the scan) through fusion power, while the conductor ceiling catches small `R` (B ∝ I / R) and the wall, sustainment and beta catch large `R` together; a bounded feasible band in `R` is expected at both levels. |
+| `a` | search | Where the two fences' deadlock is sharpest. The scan shows the wall load falling with `a` past 1.3 at this pin (the converged ash balance) and sustainment relaxing, so the feasible set opens at a ≥ 1.5–1.8 — outside every earlier window — and its top is caught by nothing modeled (§ 11). |
+| `n_e0` | search | The strongest wall lever; bottom caught by sustainment or `recirc_ok`, top by the wall. |
+| `T_i0` | search | Bottom caught by sustainment (13 keV), top by the wall (17–18 keV); the optimum expected interior at 14.63–16 keV. |
+| `I_coil` | search | Bottom caught by the wall and sustainment, top by the conductor ceiling; LCOE rises with current through the magnet account so the optimum is expected at the lowest feasible current, interior. |
+| `p_wallplug_heat` | sensitivity | Two levels (100 and 220 MW at the held 0.50); not searched, no boundary claim in installed power. |
+| `tau_ratio_ash` | sensitivity | Added on the critique (F2; scope amendment 2026-09-04): a transect over a held transport assumption through three anchors, to show how fragile the `a`-reversal is to the design-point facts it rests on. An assumption's fragility test, not a design lever; no boundary claim. |
+| `eta_source_heat` | (re-read only) | Not a swept axis of this study: the re-read arm carries round 1's four values because the predecessor's grid had them; every other arm holds 0.50. |
+
+**As judged after the run.**
+
+| Axis | Framing judged | Changed? | Why |
+|---|---|---|---|
+| `R+tie` | search | no | A bounded feasible band, **11.2–17.2 m, with the constrained optimum interior at 14.2** at both levels (cheapest driven by R at 100 MW: 226.3 / 217.0 / 212.5 / 213.3 / 216.8 over 11.2 → 17.2); the ceiling catches every current below 11.2 and the wall, sustainment and beta catch 17.2 together on the design column. The open measurement is answered (§ 6). |
+| `a` | search, **edge** | no — but the structure found is one-sided | The bottom boundary is real (sustainment and the wall at 1.3–1.5 on the design column; nothing driven at a 1.3 at 100 MW anywhere). The top is not a boundary: the cheapest driven point sits at the window's edge 2.2 at both levels (51 of 257 and 87 of 400 driven points are at 2.2; cheapest per `a` monotone 271.6 → 212.5 at 100 MW) and nothing modeled catches it. **The `a`-coordinate of every optimum here is an edge, not an optimum**; under the magnet shadow the trend flattens (219.9 at 2.0 against 221.1 at 2.2 at 100 MW), which is what pricing the coil bore would do (§ 15 #3). |
+| `n_e0` | search | no | Interior optimum at 0.9× at both levels (0.6 / 0.7 / 0.8 / 0.9 / 1.0×: 214.8 / 213.3 / 226.6 / 212.5 / 238.6 at 100 MW — the non-monotone middle is the grid's coupling with `a` and `T`, not a second optimum); bottom caught by sustainment and `recirc_ok`, top by the wall. |
+| `T_i0` | search | no | Interior optimum at 16 keV at 100 MW (226.6 / 212.5 / 219.4 / 214.8 over 14.63 / 16 / 17 / 18) and at 14.63 at 220 MW; the wall catches 17–18 keV at the best points and ignition takes over above 16 keV (§ 6). |
+| `I_coil` | search | no | Cheapest at 15 MA at 100 MW and at 13 MA at 220 with the ceiling catching 18 MA below R 17 and the wall and sustainment catching 13 MA at the best `a`; the bottom of the window is fence-caught at 100 MW and is the optimum at 220 — an edge in current at 220 MW, disclosed (§ 17). |
+| `p_wallplug_heat` | sensitivity | no | Two levels; no boundary claim. The driven optimum at 220 MW (219.4) is **dearer** than at 100 MW (212.5): the 100 MW optimum sits 7 MW from ignition and the extra installed heating buys nothing it needs (§ 6). |
+| `tau_ratio_ash` | sensitivity | no | Fifteen points, no boundary claim; the response is a knife-edge (§ 6). |
+
+## 6. Per-axis account
+
+#### `R+tie` — feasible structure (search framing)
+**Applies:** yes
+
+**The open measurement, answered at this pin: at fixed coil current the peak wall load rises with `R`.** On the design column (a 1.3, I 15 MA, T 14.63, n 1.0×, 100 MW) the peak runs **3.752 / 4.179 / 4.541 / 4.846 / 5.102 MW/m² over R 11.2 / 12.7 / 14.2 / 15.7 / 17.2 m** (`points.csv`, `arm-fence-p100`), about R^0.83, because fusion power rises faster than the first-wall area (2,206 → 4,606 MW: the axis field falls as I / R, confinement degrades, the ash clears and the fuel concentration rises), while the required heating rises 53 → 512 MW and the field ceiling catches 11.2 (B_peak 27.5 T). The pre-WI-037 constancy in `R` (`20260829-p-pump-fence`, held fuel densities) does not hold here and the goal's invariant was right to call it open. **The feasible driven band is 11.2–17.2 m at both levels with the optimum interior at 14.2** (cheapest driven by R at 100 MW 226.33 / 217.00 / 212.46 / 213.33 / 216.76; at 220 MW 258.59 / 237.30 / 219.45 / 228.22 / 229.56); large `R` is caught by the wall, sustainment and beta together (beta alone fires twice, both at R 17.2, a 2.2), small `R` by the ceiling. Every driven point at 11.2 and 12.7 needs a ≥ 1.7.
+
+#### `R+tie` — observed response (sensitivity framing)
+**Applies:** not applicable — this axis is search-framed.
+
+#### `a` — feasible structure (search framing)
+**Applies:** yes
+
+**The finding that opens the printed level, and its three conditions.** On the design column at 100 MW the peak runs **4.179 / 4.123 / 3.955 / 3.846 / 3.603 / 3.346 over a 1.3 / 1.5 / 1.7 / 1.8 / 2.0 / 2.2** while the required heating runs 102.7 / 54.0 / **47.6** / 58.2 / 103.5 / 176.5 MW against 50 coupled and the helium fraction He/n_e runs 0.110 / 0.141 / 0.171 / 0.185 / 0.212 / 0.236 — the wall load falls with `a` past 1.3 because the converged ash dilutes the fuel faster than the volume grows, and the sustainment requirement has a minimum near a 1.7. **So the machine as designed — R 12.7, I 15 MA, T 14.63 keV, n 1.0×, 100 MW wall-plug — is feasible and driven at a = 1.7 m and at no other `a` on that column** (`c1032`-class row: LCOE 257.35, peak 3.955, `p_aux_required` 47.6). Twenty-three driven points sit at (R 12.7, a 1.7) at 100 MW, the cheapest 239.92 (I 13 MA, T 18 keV, n 0.7×, peak 3.977, 39.8 MW required). The committed `20260829-p-pump-fence` reading — violated at every a ≥ 1.70 — was measured with held fuel densities and **reverses at this pin**; it does not transfer, and this record supersedes it for the WI-037-class packages.
+
+The reading's three conditions, each disclosed before the number is read: **(1) the ash-transport ratio.** `arm-transect-ash` through the design column at 100 MW: τ*/τ_E 2 / 4 / 6 / **8** / 12 / 16 gives peak 5.854 / 5.110 / 4.540 / 4.088 / 3.417 / 2.940 with `p_aux_required` −91.7 / −14.3 / 44.4 / 90.6 / 158.4 / 205.8 — the wall fails below the source's value and sustainment fails above it; through the scan's best point (R 14.2, a 1.8, I 14, T 16, n 0.8×) the only value at which the point is feasible is **8 itself** (peak 4.512 and ignited at 6; sustainment 141.9 MW at 12), and at 220 MW the same (4.541 at 6; 184.7 MW at 12). The reversal is real modeled physics whose **sign** is set by a Table-4 fact of the design at A = 9.8 carried to A = 5.8–6.5, exactly as the calibration is; `f_suppr_ash` enters only in the same product and `iota_23` is held at the design's 0.92 (critique probes: 0.70 → 4.512 violated, 1.10 → 3.643). **(2) `a` is unbounded and unpriced.** The cheapest driven point by `a` at 100 MW is 271.6 / 239.9 / 232.3 / 220.0 / 212.5 over 1.5 / 1.7 / 1.8 / 2.0 / 2.2 — monotone to the window's edge, where 51 of 257 driven points sit; nothing modeled catches the top (§ 11), and the magnet rollup is the same at every `a` (5,489 M$ on the best column). Under the magnet shadow (the rollup's level scaled by the 1cfe form's coil-bore shape) the same sequence reads 287.7 / 248.4 / 242.3 / **219.9 / 221.1**: pricing the bore turns the edge into an interior optimum near a 2.0, and at 220 MW the shadow prefers a 1.8 (251.6) to 2.0 (237.6)–2.2 (227.4) less sharply. **(3) ignition.** Past a ≈ 2.0 and above 16 keV the plasma's alpha heating exceeds its losses and the one-sided fence passes it: 201 of the 458 "feasible" points at 100 MW are ignited (460 ignited points at a 2.2, 444 at 2.0, 332 at 1.8; 722 at 18 keV); the cheapest feasible point allowing ignition is 200.27 (`c1680`: a 2.2, I 13 MA, T 16, n 0.8×, `p_aux_required` −25.5 MW, peak 4.050 on the fence), against the driven 212.46. Every number this record reports as the (b)(ii) region is on the driven set.
+
+#### `a` — observed response (sensitivity framing)
+**Applies:** not applicable — this axis is search-framed; the top edge is disclosed above.
+
+#### `n_e0` — feasible structure (search framing)
+**Applies:** yes
+
+The strongest wall lever. At the 100 MW best column (R 14.2, a 2.2, I 15, T 16) the peak crosses the limit between 0.9× and 1.0× and the wall takes every point above; below 0.8× sustainment (100 MW) or `recirc_ok` (220 MW: 83 of its 139 alone-violations at 0.6×, 28 at 0.7×) takes over. The driven optimum is at **0.9× at both levels, interior** (cheapest by n at 100 MW 214.83 / 213.33 / 226.63 / 212.46 / 238.62 over 0.6 → 1.0×; at 220 MW 234.48 / 232.63 / 228.22 / 219.45 / 237.30). Density carries the machine into the wall-limited region at every geometry, as in round 1.
+
+#### `n_e0` — observed response (sensitivity framing)
+**Applies:** not applicable — this axis is search-framed.
+
+#### `T_i0` — feasible structure (search framing)
+**Applies:** yes
+
+At 100 MW the driven optimum is at **16 keV, interior** (226.63 / 212.46 / 219.36 / 214.83 over 14.63 / 16 / 17 / 18); at 220 MW at 14.63 keV, the window's bottom (219.45 / 231.70 / 235.37 / 234.48), because the extra installed heating lets a cooler, denser plasma be driven. Temperature relieves sustainment and loads the wall at every geometry, and above 16 keV it ignites the large-`a` plasmas (588 ignited points at 17 keV, 722 at 18). The window's bottom, 14.63 keV, is the design temperature; 13 keV is bracketed by the committed transects (no feasible point in the critique's 240-point probe), not executed.
+
+#### `T_i0` — observed response (sensitivity framing)
+**Applies:** not applicable — this axis is search-framed.
+
+#### `I_coil` — feasible structure (search framing)
+**Applies:** yes
+
+At 100 MW the driven optimum is at 15 MA (213.33 / 216.76 / 212.46 / 232.96 / 227.13 over 13 / 14 / 15 / 16 / 18 MA); at 220 MW it is at 13 MA, **the bottom of the window** (219.45 / 229.56 / 231.70 / 236.85 / 243.14), an edge in current disclosed in § 17. The ceiling catches 18 MA at every R below 17.2 (802–813 violations per level) and small R at every current; the wall and sustainment catch 13 MA at the best `a`. LCOE rises with current through the magnet account except where the field relieves the wall.
+
+#### `I_coil` — observed response (sensitivity framing)
+**Applies:** not applicable — this axis is search-framed.
+
+#### `p_wallplug_heat` — feasible structure (search framing)
+**Applies:** not applicable — this axis is sensitivity-framed.
+
+#### `p_wallplug_heat` — observed response (sensitivity framing)
+**Applies:** yes
+
+Two levels. The driven optimum at 220 MW (219.448) is **7 $/MWh dearer** than at 100 MW (212.460): the 100 MW optimum sits 7.4 MW from ignition, so the second 110 MW of coupled power is capital and recirculating draw the plasma does not need. Where `sustainment_ok` goes violated: 1,431 points at 100 MW and 825 at 220 in the geometry grids, 188 of 360 in the re-read arm, and 6 of 15 on the transect (the high-τ ends). **No boundary claim is made in installed power**; the printed level's feasibility is a geometry result, not a heating one, which is the round-1 learning L-001 confirmed from the other side.
+
+#### `tau_ratio_ash` — feasible structure (search framing)
+**Applies:** not applicable — this axis is sensitivity-framed.
+
+#### `tau_ratio_ash` — observed response (sensitivity framing)
+**Applies:** yes
+
+Fifteen points, three anchors; every one is violated except the anchors' own τ*/τ_E = 8 members, which live in the grids (`c2973`, `c1500`, `c4459`). Through the best point at 100 MW: peak 6.157 / 5.202 / 4.512 / (3.989) / 3.246 / 2.743 and `p_aux_required` −331.1 / −174.0 / −61.5 / (+23.1) / +141.9 / +221.2 MW over 2 / 4 / 6 / (8) / 12 / 16; He/n_e 0.049 → 0.199. Below 8 the plasma ignites and blows the wall; above it the ash dilutes the fuel until 100 MW cannot sustain it. **No boundary claim is made**; the record's reading is that the (b)(ii) region is conditional on the source's own ash-transport value to within a factor of about 1.5 in either direction.
+
+## 7. Axis groups
+
+| Axis | Entry key | Provenance | Note |
+|---|---|---|---|
+| `R+tie` | `stellarator_09__stellaris__R` | fan_out | Swept. |
+| `R+tie` | `stellarator_09__stellaris__magnet__R0` | **tie** | Same physical major radius; declared in `manifest.json → ties`, reasons in ANNEX § Declared ties. |
+| `a` | `stellarator_09__stellaris__a` | fan_out | Swept, bracketing a ≥ 1.70. |
+| `n_e0` | `stellarator_09__stellaris__n_e0` | fan_out | Swept. |
+| `T_i0` | `stellarator_09__stellaris__T_i0` | fan_out | Swept; `T_e0` rides the held 0.95 ratio inside the sustainment calc. |
+| `I_coil` | `stellarator_09__stellaris__magnet__I_coil` | fan_out | Swept. |
+| `p_wallplug_heat` | `stellarator_09__stellaris__p_wallplug_heat` | fan_out | Two levels, sensitivity. No tie since WI-039 (both heating powers descend from this key). |
+| `tau_ratio_ash` | `stellarator_09__stellaris__tau_ratio_ash` | fan_out | Swept as a sensitivity transect (15 points); held at 8.0 everywhere else — § 8. |
+| `eta_source_heat` (declined) | `stellarator_09__stellaris__eta_source_heat` | fan_out | Held at 0.50 — § 8; the re-read arm carries round 1's four values. |
+| `eta_couple_heat` (declined) | `stellarator_09__stellaris__eta_couple_heat` | fan_out | Held at 1.00 — § 8. |
+| `f_suppr_ash` (declined) | `stellarator_09__stellaris__f_suppr_ash` | fan_out | Held at 0.50 — § 8; degenerate with `tau_ratio_ash` in the ash balance. |
+| `iota_23` (declined) | `stellarator_09__stellaris__iota_23` | fan_out | Held at 0.92 — § 8. |
+| `j_wp` (declined) | `stellarator_09__stellaris__magnet__j_wp` | fan_out | Held at 118.827 — § 8. |
+| `B_max` (declined) | `stellarator_09__stellaris__magnet__B_max` | fan_out | Not swept — § 8. |
+| `wall_peak_q_ref` (declined) | `stellarator_09__stellaris__wall_peak_q_ref` | fan_out | The source anchor, held by definition — § 8. |
+
+Fifteen declared keys across fourteen groups, all validated as package inputs at preflight (§ 9, re-run over the final declaration). Every held key — `availability`, `discount_rate`, `eta_couple_heat`, both dormant direct-heat terms, `j_wp`, `eta_source_heat` outside the re-read arm, `tau_ratio_ash` outside the transect arm — is asserted per case in `study.py` `export()`, and the six `wall_peak_*` reference facts are checked per case through the store's calibration channel against the baseline's to 1e-9.
+
+## 8. Indicators and rulings
+
+Per proposed axis, including the seven proposed and declined. Source: `indicators.json`, run over all fourteen groups (`subset: false`), tool digest `e53d7027…`.
+
+| Axis | Indicator | Constraints reachable | Objectives reachable | Modules fired | Ruling |
+|---|---|---|---|---|---|
+| `R+tie` | `constraints_reachable` | 8 / 9 (all but `tbr_ok`) | 11 / 11 | 72 | swept — the open measurement |
+| `I_coil` | `constraints_reachable` | 8 / 9 | 10 / 11 | 69 | swept |
+| `a` | `constraints_reachable` | 5 / 9 (`beta_ok`, `net_positive`, `recirc_ok`, `sustainment_ok`, `wall_load_ok`) | 10 / 11 | 60 | swept, bracketing a ≥ 1.70 |
+| `T_i0` | `constraints_reachable` | 5 / 9 (the same five) | 8 / 11 | 56 | swept |
+| `n_e0` | `constraints_reachable` | 5 / 9 (the same five) | 8 / 11 | 56 | swept |
+| `p_wallplug_heat` | `constraints_reachable` | 3 / 9 (`net_positive`, `recirc_ok`, `sustainment_ok`) | 4 / 11 | 49 | swept, two levels, sensitivity |
+| `tau_ratio_ash` | `constraints_reachable` | 5 / 9 (the same five as `n_e0`) | 8 / 11 | 56 | **swept as a sensitivity transect** (critique F2; scope amendment) — a held assumption's fragility test through three anchors, not a design lever |
+| `f_suppr_ash` | `constraints_reachable` | 5 / 9 (the same five) | 8 / 11 | 56 | **declined, held at 0.50** — enters the ash balance only in the product with `tau_ratio_ash`, whose transect carries its whole sensitivity |
+| `iota_23` | `constraints_reachable` | 5 / 9 (the same five) | 8 / 11 | 56 | **declined, held at 0.92** — a configuration property of the QI shape at the design point, not a lever; the critique's probe (0.70 → 4.512 violated; 1.10 → 3.643) is recorded in § 11 |
+| `eta_source_heat` | `constraints_reachable` | 3 / 9 (the same three as wall-plug) | 4 / 11 | 49 | **declined, held at 0.50** — round 1 answered it (L-001, L-002); the re-read arm carries the predecessor's four values as its grid, not as a sweep |
+| `eta_couple_heat` | `constraints_reachable` | 3 / 9 | 4 / 11 | 49 | **declined, held at 1.00** — degenerate with the source efficiency in the fence; the optimistic end of the stated assumption, so every feasibility claim here is at the most generous coupling |
+| `j_wp` | `constraints_reachable` | 4 / 9 | 4 / 11 | 53 | **declined, held** — checked inert in round 1 (F7) |
+| `B_max` | `constraints_reachable` | 1 / 9 (`peak_field_ok`) | 0 / 11 | 2 | **declined** — a pure fence-relaxer as bound; unpriced, WI-038 after WI-040 |
+| `wall_peak_q_ref` | `constraints_reachable` | 1 / 9 (`wall_load_ok`) | 3 / 11 (`cas72`, `lcoe`, `lcoe_1cfe`) | 8 | **declined, held by definition** — the source anchor of the calibration; sweeping it would tune the disclosed verdict; its sensitivity is the shadow column's job. Its reach is itself a reading: the anchor reaches exactly the fence and the lifetime chain, nothing upstream |
+
+**No axis reported `no_constraint_response`, so no owner ruling was owed under runbook step 4's fail-closed condition.**
+
+**What the indicators say about the fence this round changed.** `wall_load_ok` is reached by every geometry and plasma lever (`R+tie`, `a`, `n_e0`, `T_i0`, `I_coil`), by the three transport facts, and by the anchor — and by nothing in the heating chain; its operand classes are computed-vs-bound as before, and the computed operand is now `wall_peak_calc__wall_load_peak`. The calibration module (`wall_peak_cal`) is fired by no swept axis — its inputs are the six held reference facts — which is the WI-041 constancy assumption visible structurally: a sweep moves the peak only through the model's own wall area and fusion power.
+
+**Not derivable, disclosed in every record.** Monotonicity of any channel in any axis; identity of the same physical quantity across differing key names; intra-module operand dependency. `constraints_reachable` is a possible path and never a statement that a constraint responds. `unresisted` is the agent's recorded judgment, never a tool output. Every monotone response reported in § 6 is an executed observation on the swept grids, not an indicator claim.
+
+**Model-development findings.** No axis reported `no_constraint_response`, so the table's obligation is discharged by a stated nil: none owed. Observations carried beside the rulings, because a ruling does not discharge them:
+
+| Axis | What should push back and is not modeled | Finding id |
+|---|---|---|
+| `a` | **Nothing bounds the minor radius from above** — no aspect-ratio, coil-space or shaping fence; no ash-fraction bound; the Sudo density limit (a surfaced gap, `operating-point-closure/evidence/round2_review.md`) falls with `a` while `n_e0` is held; and the magnet account is blind to `a` (winding length `k_coil × R0`, casing mass held). An axis that is neither bounded nor priced will always read "bigger is cheaper" (critique F2, F3) | § 15 |
+| `sustainment_ok` (every plasma lever) | The fence is one-sided: a point whose alpha heating exceeds its losses (`p_aux_required` below zero) passes it, though the plasma as modeled has no steady state there at any non-negative installed power (critique F1) | § 15 |
+| `eta_couple_heat` | The deposition and coupling fraction is a held assumption at its optimistic end (1.00) with no sourced figure; standing at WI-039 as a stated assumption | none — disclosed, not a new sighting |
+| `B_max` | One inequality and nothing else; every feasibility claim at the ceiling is a claim about where that literal is set; standing route WI-038 | none — standing at `20260901-sustainment-fence#1` |
+| `j_wp` | Reaches almost no cost after WI-036 priced the pack | none — standing at `20260903-wall-and-heating#7` → WI-040 |
+| `availability` | Replacements cost no availability: the lifetime chain's push-back is understated by construction (Row 2b; `20260821-power-cycle-ab#1`, standing) | none — standing, restated in § 15's lifetime finding |
+| (none) | `tbr_ok` remains held-vs-held and reaches no swept axis; rubric Row 2c | none — standing |
+
+## 9. Preflight results
+
+`results/preflight_results.json`. **All six gates ran; all six pass.** The identity gate read `results/package_identity.json` and the baseline gate read `results/baseline_result.json`, both deposited by `study_route.execute_baseline` at step 5, before any study point ran.
+
+| Gate | Outcome | Detail |
+|---|---|---|
+| Declared-group key validation (`declared_keys`) | pass | 15 declared keys across 14 groups, all package inputs (re-run after the critique added the three transport groups; the earlier run read 12 across 11) |
+| Suffix-sibling scan (warnings only; `sibling_scan`) | pass | no suffix-sibling findings |
+| Identity (`identity`), against `results/package_identity.json` | pass | kind `sealed`, digest `d4be395197a06059…` recomputed from 0 allowed-modified files and 0 declared sources; every other sealed artifact matches |
+| Baseline gate against the pinned headline (`baseline_headline`), against `results/baseline_result.json` | pass | `stellarator_09__stellaris__lcoe_calc__lcoe` reproduces at relative deviation 0.000e+00 (313.5134115016116); **9/9** pinned verdicts match — `sustainment_ok` and **`wall_load_ok`** expected-violated, the WI-041 disclosure |
+| Manifest / package fingerprint match (`manifest_currency`) | pass | both recorded package fingerprints match the package on disk |
+| Package cleanliness (`package_clean`) | pass | package tree byte-untouched (git clean) |
+
+## 10. Execution route and why
+
+- **Route:** study-local direct-API definition (`study.py` + `study_route.py`, `StudyRunner` + `PreparedListStrategy`)
+- **Why this route:** the arms are coordinated axis-group blocks — every proposal carries five swept keys, the declared `R` tie, and every held key including the two dormant direct-heat terms; the 220 MW geometry grid omits one column that a third arm carries at a different sub-grid; the pinned baseline is a single explicit member; and the derived geometric mask (`R > a + 2.25`, ANNEX § Validity masks) is applied at construction — none of which is a plain Cartesian product over independent keys, so the `teax-study` CLI's shape does not fit. The route was exercised at step 5 (identity and baseline emitted) and gated at step 6 before this rationale was written, so this is an account of a route already known to load.
+
+**Glue disclosure — glue ledger: none.** `results/package_identity.json` records `kind: sealed`, zero allowed-modified files and zero adapter sources. The harness supplies no value the model does not compute; the package is sealed at runtime contract 2.0.0 on stock teax.
+
+## 11. Study definition and window provenance
+
+**Window provenance: `engineered`** — fixed after two oracle passes, both committed: `results/window_scan.json` (14,400 candidates over `p_wallplug_heat` × `R` × `a` × `I_coil` × `T_i0` × `n_e0`, `scan.py`; 101 oracle errors, every one at R 9.7 m — the sustainment closure's ash balance drives the fuel density non-positive at small major radius with high current and density, `oracle sustainment: non-positive fuel`) and `results/window_edges.json` (84 one-axis transects through the scan's best point at each level, `edges.py`, 0 errors), the second pass run so that every executed window edge is either fence-caught or disclosed as not caught.
+
+**The ordering deviation, recorded rather than hidden.** The runbook puts the scan at step 7, after the step-4 critique; both passes ran **before** the critique so it could read real numbers, as the two predecessor studies did and disclosed. No study point ran through the sealed package; the only execution before the critique was the manifest's pinned baseline point (step 5), a route-preparation act.
+
+**What the scan fixed — the reading that reshaped the study.** Under the honest fence a feasible region exists at the printed 100 MW wall-plug: 70 of 7,154 scanned candidates, all at a 1.5–1.8 m, T 14.63–16 keV, n 0.8–1.0×, at every R from 11.2 to 15.7 m and every current 13–18 MA; the cheapest, LCOE 233.433, at R 14.2, a 1.8, I 14 MA, T 16 keV, n 0.8× (peak 3.989 against 4.05; core life 4.51 FPY, five replacements). At 220 MW: 151 feasible, cheapest 259.844 at R 14.2, a 1.8, I 14 MA, T 14.63 keV, n 0.9×. **The `a`-dependence reverses the committed `20260829-p-pump-fence` reading.** On the baseline column (R 12.7, I 15 MA, T 14.63, n 1.0×) the peak runs 4.063 / 4.147 / 4.179 / 4.169 / 4.123 / 4.049 / 3.955 / 3.846 over a 1.1 → 1.8: it crests at a 1.3 and falls, because with the WI-037 converged ash the fuel dilution outpaces the volume growth, while the sustainment requirement falls from 198.7 MW (a 1.1) to a minimum of 45.9 MW at a 1.6 and rises again to 58.2 at a 1.8. The predecessor's "violated at every a ≥ 1.70" was measured with held fuel densities and does not transfer. **The `R`-dependence is measured for the first time at a WI-037-class pin:** at fixed current the peak rises with `R` — 3.254 / 3.752 / 4.179 / 4.541 / 4.846 over 9.7 → 15.7 m on the baseline column, ~R^0.83 — because fusion power grows faster than the wall area (the axis field falls as I / R, confinement degrades, ash clears, fuel concentration rises), while the conductor ceiling catches every current in the window at R 9.7 (B_peak 27.5–31.75 T against 24.9).
+
+**What the transects fixed, edge by edge** (`results/window_edges.json`; anchors at the two best scanned points): `R` — bottom caught by the ceiling, top caught by the wall, sustainment and beta together (15.7–17.2 m); `I_coil` — bottom caught by the wall and sustainment (13 MA), top by the ceiling (18 MA); `T_i0` — bottom caught by sustainment (13 keV), top by the wall (17 keV at 100 MW, 16 keV at 220 MW); `n_e0` — bottom caught by sustainment (100 MW) or `recirc_ok` (220 MW) at 0.6×, top by the wall at 0.9–1.0×; **`a` — bottom caught by sustainment and the wall (1.3–1.6), top caught by nothing**: feasibility continues to 2.2 m, the ANNEX's historical maximum, with LCOE still falling (233.4 → 219.4 at 100 MW) and the plasma ignited past a ≈ 2.0 (`p_aux_required` −13 to −19 MW). The executed `a` window stops at 2.2 by engineering choice; the absence of any modeled bound on the minor radius — no aspect-ratio, coil-space or shaping fence — is filed as a finding (§ 15) and the executed optimum's `a` coordinate is read as an edge, not an optimum (§ 6).
+
+**What the critique changed about the windows and the arms (§ 14).** F6 dropped the all-blocked R 9.7 m and T 13 keV rows from the executed grids — the conductor ceiling at 9.7 m depends on (I, R) alone (27.5 T at 13 MA against 24.9) and 13 keV had no feasible point in the critique's 240-point probe — so those brackets are carried by the committed transects (`results/window_edges.json`, `results/window_scan.json`) rather than by 2,975 executed points whose verdicts were known. F7 kept the (R 12.7, a 1.3) column in the 220 MW geometry grid and made the re-read arm cite the 24 cases it shares with it. F5 widened the re-read arm to round 1's four source efficiencies, so the predecessor's 267.159 point (`c0550`, at 0.60) is re-executed. F2 added `arm-transect-ash`. The executed windows are snapshot values under `arms[].window` and are not restated: five R, six a, five I, four T, five n at both levels (3,000 geometry points per level), the pinned baseline as an explicit 3,001st member of `arm-fence-p100`, 360 re-read points, 15 transect points — 6,376 proposals, no two arms sharing a point (`proposals()` asserts it, and asserts no duplicate inside an arm).
+
+**What the record must say about `a`, on the critique (F2, F3), before any result is read.** The reversal of the committed `a`-dependence is modeled physics, but its **sign** is carried by three held design-point transport facts — `tau_ratio_ash` 8.0 and `f_suppr_ash` 0.50 (Stellaris Table 4; they enter the ash balance only as their product 4.0) and `iota_23` 0.92 — carried unchanged from a = 1.3, A = 9.8 to a = 2.2, A = 6.5, exactly as the calibration is. The critique's oracle probes: at τ*/τ_E = 4 the peak **rises** with `a` (4.504 / 5.202 / 5.257 over 1.3 / 1.8 / 2.2 at the best column) and no 100 MW point survives; at 16 it falls to 2.35 at a 2.2 but sustainment blocks everything (`p_aux_required` 221–354 MW); at `iota_23` 0.70 the best scanned point reads 4.512 (violated), at 1.10, 3.643. The transect arm measures the first of these; the other two are held and named. The helium fraction the mechanism runs on, He/n_e, is exported per point (0.074 / 0.137 / 0.185 over a 1.3 / 1.8 / 2.2 at the best column; the design's own value is 0.11). And the magnet account does not price `a`: the rollup that enters `total_capital` is 5,489 M$ at every `a` on the best column, while the 1cfe-form comparison channel, which scales with the coil bore, runs 5,749 → 6,707 → 7,473 M$ over 1.3 / 1.8 / 2.2 — `points.csv` carries `lcoe_magnet_shadow` (the executed LCOE with the rollup's design-point level scaled by the 1cfe form's shape) beside the executed number.
+
+**What the wall-anchor shadow does and does not bound (F8).** The 1.15× / 1.83× band re-reads the peak's **value** at the round-1 external bounds and flips the verdict accordingly; it says nothing about a peaking factor that changes with aspect ratio — the question `a` raises — and the shadow rows' LCOE and CAS72 stay at the executed calibration's lifetime. At 100 MW nothing can survive the 1.83× end (it needs an average at or below 2.21 MW/m²), which is data, not a defect.
+
+**Validity mask.** `R > a + 2.25` (ANNEX § Validity masks, the held radial-build stack) is applied at construction; it excludes nothing in these windows (R ≥ 11.2 against a ≤ 2.2). The evaluability pre-screen (oracle `p_net` above zero, exception-hardened) runs over every proposal before execution; an oracle exception is a recorded reason in `results/excluded_points.csv`, never a crash.
+
+**Arms are tagged at construction**, and the pinned baseline is a member of `arm-fence-p100` by construction (`is_baseline_point` true once).
+
+## 12. Cross-fingerprint correlation and what it means
+
+**Within this record: single fingerprint — no cross-arm correlation needed.** All four arms ran from one store against one sealed executable fingerprint `d4be395197a06059…`, semantic `d468f3b69ad00c46…`, indicator-input pin `c1b0f0d1e7764e55…`, verified against the package at preflight and recorded in `snapshot.json`.
+
+**A semantic boundary crosses between this record and `20260903-wall-and-heating` (semantic `48731d15…`, pin `2649e0ea…`), and `arm-reread-p220` was built to cross it point by point.** WI-041 changed the wall fence's operand from the circular-torus average to the calibrated peak, moved the CAS72 lifetime operand to the same peak, retired the exact `ash_frac` binding, minted the seven `wall_peak_*` reference facts and two library defaults (census 199 → 207), and changed no other quantity. The constraint set is the same nine `constraint_id`s — `wall_load_ok`'s id is unchanged because it hashes the definition and the local identity, not the binding. What the re-read licenses, recounted from the two `results/points.csv` files on (`I_coil_A`, `T_i0_keV`, `n_e0`, `eta_source_heat`) at R 12.7, a 1.3, 220 MW:
+
+- **All 384 of round 1's points reproduce the circular-torus average to every digit** (worst relative deviation 0.0 — 360 executed here in the re-read arm and 24 in the geometry grid's design column). The WI-041 increment is neutral on every quantity upstream of the fence at every point the two grids share, not only at the pinned baseline.
+- **The wall verdict flips exactly as the restatement multiplier says:** 88 points stay satisfied, **152 flip satisfied → violated**, 144 stay violated. **Round 1's 91 feasible points become 26**, all driven — the count the round-1 reviewer predicted from the 1.316 re-read (`evidence/round1_review.md` grounds 2).
+- **CAS72 rises 22.2–117.7 M$/yr and LCOE 7.24–10.07 $/MWh across the 384**, the declared lifetime move (WI-041 plan § MR-WI041-11 (d)) measured at every point rather than at the baseline alone.
+- **Round 1's 267.159 optimum (`c0550`: I 14.25 MA, T 16 keV, n 1.0×, `eta_source` 0.60) is `c6222` here: average 4.0037 bit-identical, peak 5.2706 — violated by 30 % — LCOE 275.879 with the moved CAS72 (212.3 M$/yr, seven replacements, core life 3.42 FPY).** The cheapest survivor at the machine as designed is `c6256` (I 14.75 MA, T 17 keV, n 0.8×, 0.60): **378.556**, which is round 1's `c0584` at 371.005 plus its own CAS72 move (93.3 → 128.3 M$/yr). So under the honest fence the 220 MW level at the design geometry costs 111 $/MWh more than round 1 read, and the answer to "where does 267.159 go" is: it is a wall-violated point, and the machine as designed pays 378.556 to be feasible at 220 MW.
+- **Not licensed:** feasibility-count comparisons between the geometry arms and any predecessor arm — the grids differ; and any claim that the re-read's 0.45–0.60 efficiencies say anything new about source efficiency (round 1 answered that; they are here only because the predecessor's grid had them).
+
+## 13. Verification
+
+`results/verification_summary.json`. **Outcome: pass.** 1 store, **21 sampled rows** stratified by verdict combination over **21 observed strata** (so the sample cannot miss a produced verdict combination), **13 channels** compared against the package-owned oracle at relative deviation below 1e-9 with **worst observed 4.62e-16** (`c0622`, `total_capital`), and **9 verdicts re-derived** from the oracle's own operands through the package's published bindings — `wall_load_ok` through its rebound operand `wall_peak_calc__wall_load_peak` — with 0 mismatches.
+
+**What verification did not cover, stated as part of the outcome:**
+
+- The `pb__*`, `sustain__*` and `heat__*` fields are fields of multi-field modules and do not reach the evidence store (ANNEX § Oracle; `20260903-wall-and-heating#4`); they are exported oracle-side in `results/oracle_operands.csv` and are **oracle-derived on both sides**. The `ignited`, `feasible_driven`, `p_aux_required_MW_oracle`, `p_net_MW_oracle` and `He_over_ne_oracle` columns in `points.csv`, and every sustainment-margin and net-electric number in § 6, are in this class: consistent with the verified verdicts (`sustainment_ok` re-derives from `p_aux_required` against `heat__p_coupled` through the bindings) but not independently verified numbers.
+- The consequence-chain re-derivations (`core_life_fpy_from_peak`, `n_replacements_from_peak`, `cas72_at_limit_oracle`, `cas72_from_peak_oracle`, `lifetime_charge_above_limit_per_MWh`, `cas72_per_MWh`) and the magnet shadow (`magnet_capital_shadow`, `lcoe_magnet_shadow`) are study-side arithmetic on store channels and oracle operands, labelled as such; `cas72_from_peak_oracle` reproduces the store's `cas72` to float precision at every row (the same clip), which checks the re-derivation, not the model.
+- `p_fus` sits outside generic channel coverage, as in every prior record on this package; `aux_cooling__cryo_cost` and `aux_cost` are oracle-side only.
+- `verification_summary.json`'s `not_independently_verified` list is **empty although the coverage above is incomplete** — the known tooling gap first filed beside `20260903-priced-levers#4`. An empty list is not proof of full coverage.
+- The tool records `teax.revision` as unrecorded (`20260821-power-cycle-ab#8`); the revision that executed this run, `744745f895677f33…`, is carried in `snapshot.json` from the teax checkout and from the round's integration return.
+
+## 14. Review outcomes
+
+| Lens | Verdict | Disposition |
+|---|---|---|
+| **Pre-execution framing critique** (fresh non-author session, 2026-09-04, before any point ran) | **MAJOR** — 4 major (F1–F4), 5 minor (F5–F9), 1 hygiene (F10) | **All ten accepted**, before any point ran; the scope amendment of 2026-09-04 in the goal trail authorizes the three changes past the written scope. Full text `work/orchestration/goals/wall-and-heating/evidence/round2_T-004_precritique.md`; spawn prompt `round2_T-004_precritique_prompt.md`. **F1** — the one-sided sustainment fence passes ignited points: `points.csv` carries `ignited` and `feasible_driven`, every (b)(ii) claim is made on the driven set, the ignited set is counted separately, and the fence is filed (§ 15). **F2** — the `a`-reversal's sign rests on held transport facts: `tau_ratio_ash`, `f_suppr_ash` and `iota_23` declared and traced, a 15-point τ*/τ_E transect added as a sensitivity arm, He/n_e exported, the conditionality written into § 11 and § 6. **F3** — the magnet account is blind to `a`: the 1cfe-form channel and `lcoe_magnet_shadow` exported, the blindness filed (§ 15). **F4** — "the wall costs 94 $/MWh" withdrawn before it was written: the price is read per point as the lifetime charge above the limit and on size-matched pairs, and the finding is that the chain prices the wall too weakly to bound it (§ 15). **F5** — the re-read arm runs all four of round 1's efficiencies; what § 12 may claim across the boundary is stated there. **F6** — 2,975 known-blocked points dropped, their brackets carried by the transects. **F7** — the (12.7, 1.3) column kept in the search arm; the re-read arm cites the 24 shared cases. **F8** — the shadow's limits stated in § 11. **F9** — the held axes stated in § 11 and § 17. **F10** — § 1 lists four arms. |
+| Correctness | pass | Preflight 6/6 (re-run over the final fourteen-group declaration); verification pass at worst 4.62e-16 with 9 verdicts re-derived through the rebound wall operand; the pinned baseline reproduces exactly (`c2973`: 313.513, `wall_load_ok` and `sustainment_ok` violated, 9/9 verdicts); 384 points shared with the predecessor reproduce the average to every digit across the WI-041 boundary (§ 12); every held key asserted per case, the calibration checked per case to 1e-9. |
+| Honesty | findings, all dispositioned | **The headline was cut down before it was written, four times, on the critique** (§ 14 row above): the (b)(ii) region is reported on the driven set (201 of 458 "feasible" points at 100 MW are ignited); its conditionality on the held ash-transport ratio is data (the transect) and is stated at the claim site; the `a`-optimum is reported as an edge with the magnet-shadow reading beside it; and "the wall costs 94 $/MWh" was withdrawn for the lifetime charge and the size-matched reading. **Two grid facts a reader would otherwise infer wrongly are stated:** the 220 MW current optimum sits on the window's bottom edge (13 MA), and the 220 MW temperature optimum on its bottom edge (14.63 keV) — both disclosed in § 6 and § 17. |
+| Readability | pass | Every number in §§ 3–6 and § 12 traces to `results/points.csv`, `results/oracle_operands.csv`, `results/window_scan.json`, `results/window_edges.json`, `results/baseline_result.json`, `results/verification_summary.json` or round 1's `results/points.csv` (§ 12 only), or is arithmetic on them shown in place; the critique's probe numbers in § 11 cite the critique file by path. |
+
+## 15. Findings
+
+Each finding gets an id used verbatim in `DISCOVERY_LOG.md` as `20260904-wall-and-heating#n`.
+
+| Id | Kind | Finding | Disposition | Home |
+|---|---|---|---|---|
+| `20260904-wall-and-heating#1` | `model` | **Under the honest fence a feasible, driven region exists at the printed 100 MW wall-plug, but not at the machine's own minor radius.** 257 driven points at a 1.5–2.2 m (R 11.2–17.2, I 13–18 MA, T 14.63–18 keV, n 0.6–1.0×); cheapest 212.460 $/MWh at R 14.2, a 2.2, I 15 MA, T 16 keV, n 0.9× (peak 4.030, 7.4 MW required, five core replacements, 24.3 $/MWh of CAS72). On the design column (R 12.7, I 15 MA, T 14.63, n 1.0×) the only feasible driven `a` is **1.7 m** (257.35; peak 3.955; 47.6 MW required); at a 1.3 nothing is feasible at 100 MW anywhere in the window, and at 220 MW the design geometry's cheapest driven point is 378.556. The committed `20260829-p-pump-fence` reading (wall violated at every a ≥ 1.70) reverses at this pin: with the converged ash the peak falls with `a` past 1.3 (4.179 → 3.346 over 1.3 → 2.2) while the sustainment requirement has a minimum near 1.7. | **The (b)(ii) answer, conditional on #2, #3 and #4 and on the WI-041 constancy assumption**: a positive with its conditions stated, for the round result and the fresh review; no re-grade is claimed (the wall half is study-shaped) | goal `wall-and-heating` round 2 result; `goal.md` § Answered when (b)(ii) |
+| `20260904-wall-and-heating#2` | `model` | **The `a`-reversal is a knife-edge in the held ash-transport ratio.** Through the best point the only τ*/τ_E at which it is feasible is the source's own 8: at 6 the wall fails (peak 4.512) and the plasma ignites; at 12 sustainment fails (141.9 MW required); the design column reads peak 5.854 → 2.940 and `p_aux_required` −91.7 → +205.8 over 2 → 16. `f_suppr_ash` enters only in the same product; `iota_23` is held at 0.92 (the critique's probes: 0.70 → 4.512 violated; 1.10 → 3.643). These are Stellaris Table-4 facts at A = 9.8 carried to A = 5.8–6.5 — the same constancy the calibration assumes, now shown to carry the sign of the headline. | `research` — how the particle-to-energy confinement ratio, helium suppression and the ISS04 iota scale with aspect ratio in QI stellarators is the sourced input any `a`-claim needs before it is more than conditional; a research-seam request is the next round's act. Until then every geometry result on this package carries this condition at the claim site | research seam (`scripts/research_seam.py`), next round; standing beside the Sudo-limit gap (`operating-point-closure/evidence/round2_review.md`) |
+| `20260904-wall-and-heating#3` | `model` | **Nothing in the model bounds the minor radius from above, and the magnet account does not price it.** Feasibility and falling LCOE continue to the window's edge a 2.2 (51 of 257 driven points at 100 MW and 87 of 400 at 220 sit there; cheapest per `a` monotone 271.6 → 212.5); no aspect-ratio, coil-space or shaping fence exists; the magnet rollup is 5,489 M$ at every `a` on the best column (winding length `k_coil × R0`, WI-036 D3; held casing mass; B_peak = B_axis × a held ratio) while the 1cfe-form channel rises 5,749 → 7,473 M$ over 1.3 → 2.2. Under the shadow that scales the rollup by the 1cfe form's shape, the `a`-optimum moves interior (219.9 at 2.0 against 221.1 at 2.2 at 100 MW). Re-sighting of `20260830-stress-fence#1` (magnet blind to `R` at held `c_coil`) on `a`. | `model fix` — two candidate increments, not minted here (one-pin/one-study bound): (i) a coil-bore term in the winding length and casing mass (the WI-036 seam); (ii) a bound on the plasma minor radius the source can support — at minimum a re-anchoring rule for the calibration, since the wall the peak was anchored on was A = 9.8 | `work/backlog/epic-mfe-cost-modeling.md` (candidate items); WI-036's design D3 |
+| `20260904-wall-and-heating#4` | `model` | **The sustainment fence is one-sided and passes ignited points.** `p_aux_required ≤ p_coupled` admits `p_aux_required` below zero: 787 points at each level are ignited, 201 of the 458 "feasible" points at 100 MW and 198 of 598 at 220; the cheapest feasible point allowing ignition is 200.27 (`c1680`, −25.5 MW required, peak 4.050 on the fence) against the cheapest driven 212.46. Past ignition the plasma as modeled has no steady state at any non-negative installed power (the critique's T-transect: −18 → −263 MW over 16 → 22 keV with the peak 3.24 → 6.92). | `model fix` — a second inequality (`p_aux_required ≥ 0`, or a burn-control lever the model does not have) in `mfe_viability.sysml`; not minted here. Every feasibility claim in this record is made on `feasible_driven` | `models/library/analyses/mfe_viability.sysml` 'Sustainment Limit' (candidate item); rubric Row 1 |
+| `20260904-wall-and-heating#5` | `model` | **The lifetime chain prices the wall far too weakly to bound it.** The lifetime charge above the limit — CAS72 at the executed peak less CAS72 the same core would cost at exactly 4.05, per MWh — runs 0–28 $/MWh over the violated points (median about 8); a point 2.3× over the limit (peak 9.21, thirteen replacements) pays 27–28 $/MWh and reads 150–155 $/MWh, the cheapest in the study. Size-matched (p_net within ±10 %), the cheapest driven wall-only-blocked point is 26.5 $/MWh under the cheapest driven feasible point at 100 MW (17.1 at 220) after paying a charge of 14–15. Replacements cost no availability (held at 0.85), so the chain is understated by construction. The fence, not the chain, stops the design. | `model fix` — the Row-2b coupling (lifetime → availability) the goal named as a follow-on candidate, and a review of the replaceable-account cost basis; standing at `20260821-power-cycle-ab#1` (availability reaches no constraint); not minted here | `goal.md` § Answered when (follow-on candidate); rubric Row 2b; `20260821-power-cycle-ab#1` |
+| `20260904-wall-and-heating#6` | `model` | **Round 1's 220 MW result under the honest fence, point by point.** All 384 of the predecessor's points reproduce the average to every digit; 152 wall verdicts flip to violated; 91 feasible become 26, all driven; CAS72 +22–118 M$/yr and LCOE +7.2–10.1 $/MWh at every point; the 267.159 optimum is violated by 30 % (peak 5.271) and the machine as designed pays **378.556** for its cheapest feasible 220 MW point (`c6256`; round 1's `c0584` plus its lifetime move). | `model fix` — **discharged**: the honest fence is built (WI-041) and measured; the routings of `20260903-wall-and-heating#1`, `#3` and `20260903-priced-levers#1` to this round land on this row | WI-041; this record |
+| `20260904-wall-and-heating#7` | `model` | **`R`'s effect on wall load at a WI-037-class pin is measured: the peak rises with `R` at fixed coil current** (3.752 → 5.102 over 11.2 → 17.2 on the design column, about R^0.83; fusion power 2,206 → 4,606 MW), the conductor ceiling catches small `R` at every current and the wall, sustainment and beta catch large `R` together; the driven band is 11.2–17.2 with an interior optimum at 14.2. The pre-WI-037 constancy (`20260829-p-pump-fence`) does not transfer. | answered; carried to the round's learning delta; the `goal.md` § Invariants open-measurement clause is closed by this row | goal `wall-and-heating` round 2 result / `learnings.md` |
+| `20260904-wall-and-heating#8` | `model` | **The sustainment closure has no bound of its own at extreme confinement and fails as an exception.** 65 proposals (R 11.2–12.7, a 2.0–2.2, I 16–18 MA) were excluded by the pre-screen because the oracle's ash balance drove the fuel density non-positive (54) or returned a complex value (11); the package would not have closed them either. The closure's validity edge is a `RuntimeError`, not a verdict. | `declared seam` — the pre-screen records each with its reason (`results/excluded_points.csv`); a fence on the ash fraction (or on He/n_e) would turn the edge into a verdict; standing beside the WI-037 learnings | `exploration/stellarator_e2e/studies/ANNEX.md` § Validity masks (candidate); WI-037's `mfe_plasma_sustainment.sysml` |
+
+**Homes a finding may route to:** tool, runbook step, policy rule, skill, modeling item, research round, documented seam. `unrouted` is a stated state, not a blank; no row above is unrouted.
+
+## 16. Snapshot
+
+- **File:** `snapshot.json`
+- **sha256:** `61df6dc449782db4a165daff8c952be28dc2fbd4a58c48ac4f67226f2e5f5936`
+- **Schema version:** `1`
+
+No snapshot content is restated here. It carries the three package fingerprints and the sealed executable fingerprint; the manifest digest with the tie, baseline (the flipped `wall_load_ok` expectation included), objective catalog and oracle content actually used, the oracle's own source digest included; the one store's complete compatibility tuple; per-arm windows with their `engineered` or `sourced` provenance, evaluated and feasible counts and the wall-shadow survivor counts; digests for all nine `results/` artifacts plus `indicators.json`, `axes.json`, `study.py`, `scan.py` and `edges.py`; the three tools' source digests; the preflight outcome; the counts (6,376 proposed, 6,311 evaluated, 65 excluded, 1,080 feasible — 458 in `arm-fence-p100`, 598 in `arm-search-p220`, 24 in `arm-reread-p220`, 0 on the transect; the driven counts are `points.csv` columns, § 4); and the teax revision. **The per-point store is uncommitted** (`_work/`, gitignored by the studies convention); every value this record cites is in `results/points.csv` or `results/oracle_operands.csv`, both digested.
+
+## 17. What this record does not contain
+
+- **No claim that the (b)(ii) region is buildable.** It exists at a minor radius 1.15–1.7× the design's, at an aspect ratio the peak calibration, the ash-transport facts and the QI shape were never anchored on; every number carries § 15 #2 and #3 at the claim site, and the model has no bound on `a`.
+- **No claim about ignited operation.** Points with `p_aux_required` below zero pass the fence as modeled and are counted, but the record makes no feasibility claim on them (§ 15 #4); the burn-control question is not asked by this model.
+- **No boundary in `a` above.** The optimum's `a`-coordinate at both levels is the window's edge (2.2). The magnet shadow's interior optimum (near 2.0) is a shadow, not an executed result.
+- **No boundary in current at 220 MW and no boundary in temperature below 14.63 keV.** The 220 MW driven optimum sits at the window's bottom current (13 MA) and bottom temperature (14.63 keV); 13 keV and R 9.7 m are bracketed by the committed transects, not executed (§ 11).
+- **No priced conductor option, no `eta_couple_heat` sensitivity, no new source-efficiency claim.** `B_max` held; coupling at its optimistic 1.00; the re-read arm's four efficiencies are the predecessor's grid, not a sweep.
+- **No claim about the calibration's constancy.** The wall-anchor shadow bounds its value (nothing at 100 MW survives the 1.83× end); a peaking factor that changes with aspect ratio is outside every column here.
+- **No independent verification of the oracle-derived columns** (§ 13): the ignition reading, the sustainment margins, He/n_e, the lifetime and magnet re-derivations.
+- **No feasibility-count comparison across the WI-041 boundary except at the 384 shared points** (§ 12); the geometry grids are new.
+- **The teax revision that executed this run** is `744745f895677f3344b9884627369a6a47ed987f`, from the teax checkout and the round's integration return; `results/verification_summary.json` records it as unrecorded.
+- **`results/_work/`** is the baseline executor's gitignored working directory, not evidence, and is absent from the snapshot's artifact list; the study store under `studies/_work/` is uncommitted per the convention and every value cited is in `results/`.
+- **Two stale statements in `study.py`'s first docstring paragraph** describe the study before the critique's revision was folded in ("Four arms" is right; the windows comment block at the constants is the current one). `study.py` is left as digested and executed rather than edited after the fact (`20260821-power-cycle-ab#9` precedent).
+- **The execution was launched twice.** A first launch, through the harness's background runner, was killed during the pre-screen before any point ran (no store, no export); the executed run is the second, launched detached (`setsid nohup`). Nothing from the first launch survives and no point ran twice.
