@@ -88,8 +88,14 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}Z_eff_core": "Z_eff_core",
     f"{P}f_W_core": "f_W_core",
     f"{P}Ti_over_Te": "Ti_over_Te",
-    f"{P}p_input": "p_input",
-    f"{P}p_ecrh": "p_ecrh",  # rides with p_input (declared tie, 20260901-sustainment-fence)
+    # WI-039: p_input, p_ecrh and eta_pin retired as entry points -- installed
+    # wall-plug power is now the lever and the chain derives both. The declared
+    # p_input/p_ecrh tie went with them: the invariant it maintained is structural.
+    f"{P}p_wallplug_heat": "p_wallplug_heat",
+    f"{P}eta_source_heat": "eta_source_heat",
+    f"{P}eta_couple_heat": "eta_couple_heat",
+    f"{P}p_delivered_direct_heat": "p_delivered_direct_heat",
+    f"{P}p_coupled_direct_heat": "p_coupled_direct_heat",
     f"{P}sustain__ash_frac_in": "sustain_ash_frac",
     f"{P}sustain__R_w_sync_in": "R_w_sync",
     f"{P}sustain__kappa_sync_in": "kappa_sync",
@@ -188,6 +194,11 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "p_rad": f"{P}sustain__p_rad",
     "p_alpha_heat": f"{P}sustain__p_alpha_heat",
     "p_aux_required": f"{P}sustain__p_aux_required",
+    # WI-039 heating-chain channels
+    "heat_coupled": f"{P}heat__p_coupled",
+    "heat_delivered": f"{P}heat__p_delivered",
+    "heat_wallplug_total": f"{P}heat__p_wallplug_total",
+    "heat_eta_pin_eff": f"{P}heat__eta_pin_eff",
     "cas72_annual": f"{P}cas72_calc__cost",
     "cas90_1cfe": f"{P}cas90_1cfe_calc__cas90",
     "lcoe_1cfe": f"{P}lcoe_1cfe_calc__lcoe",
@@ -253,9 +264,11 @@ OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
     },
     f"{P}sustainment_ok__77add152ed8eafce": {
         # WI-037: computed required sustained coupled heating vs the installed
-        # plasma-coupled heating (the p_input entry key, coupled-to-coupled).
+        # plasma-coupled heating, coupled-to-coupled. WI-039: the installed side
+        # is no longer the held p_input entry key -- it is the heating chain's
+        # computed coupled power, so both operands are now computed.
         "p_aux_required_in": {"kind": "channel", "key": f"{P}sustain__p_aux_required"},
-        "p_aux_installed_in": {"kind": "input", "key": f"{P}p_input"},
+        "p_aux_installed_in": {"kind": "channel", "key": f"{P}heat__p_coupled"},
     },
 }
 

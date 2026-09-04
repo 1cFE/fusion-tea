@@ -597,6 +597,9 @@ def compute():
         tau_E=sust["tau_E"], p_brems=sust["p_brems"], p_line=sust["p_line"],
         p_sync=sust["p_sync"], p_rad=sust["p_rad"],
         p_alpha_heat=sust["p_alpha_heat"], p_aux_required=sust["p_aux_required"],
+        # WI-039 heating-chain channels
+        heat_eta_pin_eff=heat_eta_pin_eff, heat_delivered=heat_delivered,
+        heat_coupled=heat_coupled, heat_wallplug_total=heat_wallplug_total,
         winding_pack=winding_pack, magnet_structure=magnet_structure,
         magnet_capital_rollup=magnet_capital_rollup,
         aux_cost=aux_cost, cryo_cost=cryo_cost,  # WI-035 aux split

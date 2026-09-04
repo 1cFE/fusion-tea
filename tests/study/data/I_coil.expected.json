@@ -1,5 +1,5 @@
 {
-  "derived_against_semantic_fingerprint": "3cb690aab05ee11eff2f8832d968b9c3bd64be2ec768d4130dee19fc30cd2059",
+  "derived_against_semantic_fingerprint": "48731d1570bb20cdeae45faa20545aae46aeda5982a4fbc2129d7784a66595ba",
   "group": {
     "axis": "I_coil",
     "declared_keys": [
@@ -146,7 +146,6 @@
         "source_local_identity": "sustainment_ok",
         "operator": "<=",
         "operand_classes": [
-          "bound",
           "computed"
         ],
         "bound_vs_bound": false,
@@ -159,10 +158,9 @@
           },
           {
             "operand": "p_aux_installed_in",
-            "class": "bound",
-            "ref": "stellarator_09__stellaris__p_input",
-            "reached": false,
-            "entry_type": "design_attribute"
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__heat__p_coupled",
+            "reached": false
           }
         ]
       },
@@ -382,7 +380,6 @@
         "source_local_identity": "sustainment_ok",
         "operator": "<=",
         "operand_classes": [
-          "bound",
           "computed"
         ],
         "bound_vs_bound": false,
@@ -395,10 +392,9 @@
           },
           {
             "operand": "p_aux_installed_in",
-            "class": "bound",
-            "ref": "stellarator_09__stellaris__p_input",
-            "reached": false,
-            "entry_type": "design_attribute"
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__heat__p_coupled",
+            "reached": false
           }
         ]
       },

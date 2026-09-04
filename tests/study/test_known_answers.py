@@ -18,8 +18,8 @@ from tests.study.conftest import DATA_DIR, run_tool
 CASES = ["availability", "interest_rate", "R", "R+tie", "a", "I_coil"]
 
 EXPECTED_SEMANTIC_FINGERPRINT = (
-    # WI-036 winding-pack sizing chain (goal priced-levers, 2026-09-03)
-    "3cb690aab05ee11eff2f8832d968b9c3bd64be2ec768d4130dee19fc30cd2059"
+    # WI-039 heating power chain (goal wall-and-heating, 2026-09-03)
+    "48731d1570bb20cdeae45faa20545aae46aeda5982a4fbc2129d7784a66595ba"
 )
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,
@@ -30,6 +30,14 @@ EXPECTED_SEMANTIC_FINGERPRINT = (
 #: more channel because CAS27 is now computed in-package and declared as the
 #: `cas27` objective, and each swept attribute is one plant-level entry point.
 FIXTURE_CONTRACT = {
+    # WI-039 (goal wall-and-heating, 2026-09-03) re-derived every expectation file
+    # on the heating-chain package and this contract is UNCHANGED, field for field:
+    # same reachable constraints, same objectives, same trace sizes for all six axes.
+    # What moved is inside sustainment_ok, and it moved in the right direction --
+    # its p_aux_installed_in operand was `bound` to the held design attribute
+    # p_input and is now `computed` from the chain's heat.p_coupled, so the fence
+    # is computed-vs-computed rather than computed-vs-held.
+    #
     # Re-derived from the live report on the WI-036 package (2026-09-03, goal
     # priced-levers): the winding pack is now sized by the current it carries and
     # the winding length follows machine scale, so two reaches EXPANDED.

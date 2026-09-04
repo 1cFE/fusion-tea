@@ -59,6 +59,7 @@ MFE = Family(
     owned=(
         "analyses/mfe_account_costs.sysml",
         "analyses/mfe_cryo_plant.sysml",
+        "analyses/mfe_heating_chain.sysml",
         "analyses/mfe_lcoe_dcf.sysml",
         "analyses/mfe_magnet_cost.sysml",
         "analyses/mfe_magnet_field.sysml",

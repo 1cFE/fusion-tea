@@ -211,3 +211,61 @@ uv run --env-file ~/1cfe/agentic-mbse/.env --env-file .venv/integration.env pyth
 3. **The handshake cannot be honestly translated.** *Mitigation:* named above; a `PREREQUISITE` return is the honest outcome, not a forced fixture.
 4. **The restatement is larger than the ~30 sites budgeted.** *Mitigation:* the mapping is exact, so the work is mechanical; if it runs long the round still closes on it, because a half-restated study is worse than a slow one.
 5. **`tests/study` costs ~7.5 minutes per run.** *Mitigation:* run it once at the end of Phase 5, not per checklist item.
+
+---
+
+## MR-WI039-9 restatement — entry-point retirement and committed-study consequences (2026-09-03)
+
+**An ordering deviation, recorded first.** MR-WI039-9 and the WI-037 precedent both say this restatement is written *before* the regeneration commit. It was written after. The regeneration was reversible and was in fact re-run (the package regenerates idempotently now), and no committed study was touched in between, so nothing was lost — but the sequence was not followed and saying so is cheaper than the alternative.
+
+### What retired, what replaced it
+
+| retired entry point | value | replaced by |
+|---|---|---|
+| `stellarator_09__stellaris__p_input` | 50.0 | `p_wallplug_heat = 100.0` through the chain (`p_coupled = p_wallplug x eta_source x eta_couple`) |
+| `stellarator_09__stellaris__p_ecrh` | 50.0 | the chain's `p_delivered`, which the heating account now reads |
+| `stellarator_09__stellaris__eta_pin` | 0.5 | `eta_source_heat = 0.50` and `eta_couple_heat = 1.00`, whose product the chain exposes as `eta_pin_eff` |
+
+Minted, and settable: `p_wallplug_heat`, `eta_source_heat`, `eta_couple_heat`, `p_delivered_direct_heat`, `p_coupled_direct_heat`.
+
+**Census, re-derived from a live generation and not patched to match** (`/tmp` scratch script against `tests/model_families.materialize_canonical_subset` + `run_codegen`, the same path the spine suite uses): entry points **197 → 199**; the three retired keys leave `design_attribute` and the five new ones enter it; semantic fingerprint `3cb690aab05e…` → `48731d1570bb…`. `tests/models/data/mfe_census.json` was rewritten from that generation's own model contract.
+
+### The mapping, and why it preserves meaning
+
+At `eta_source_heat x eta_couple_heat = 0.50`, a point that swept installed plasma-coupled power `p` is the same point as one that sweeps wall-plug power `2p`:
+
+- `p_coupled = p_wallplug x 0.50` → the power balance's `p_th` term and `sustainment_ok`'s installed side are unchanged.
+- `p_delivered = p_wallplug x 0.50` → the heating account's driver is unchanged, so `heating_cost__cost` is unchanged.
+- `p_wallplug_total = p_wallplug` → the recirculating term equals the old `p_input / eta_pin` exactly.
+
+So the coupled-power sweeps of both committed studies map to wall-plug sweeps by a factor of exactly 2: **50 → 100 MW** and **110 → 220 MW**. The mapping is exact in IEEE arithmetic (multiplication and division by 0.5 are exact), not approximate.
+
+### The two committed studies
+
+`20260901-sustainment-fence` and `20260903-priced-levers` each swept the axis `p_input+tie` — `p_input` fanned out with `p_ecrh` riding as a declared tie.
+
+**They are not replayable as written at this package, and their record dirs are not edited.** That is the standing position for every committed study at a moved pin (`goal.md` § Invariants: the five prior committed studies "stand at their own pins and are not reproducible as written at `6262dbf4…`"). Their `axes.json`, `study.py`, `scan.py`, `indicators.json` and `snapshot.json` describe what ran, at the pin it ran on. Rewriting them would falsify a record rather than restate it.
+
+**What a replay at this package would do instead:** sweep `stellarator_09__stellaris__p_wallplug_heat` over 100 and 220 MW, with no tie declared, and read the same channels. Every measured result carries over unchanged, because every channel it read is unchanged at the mapped points.
+
+### The tie is gone, and that is the point
+
+`studies/manifest.json` declared `p_ecrh` as riding with `p_input`, on the reasoning that "sweeping `p_input` while holding `p_ecrh` would heat a plasma with a heating system that was never bought." That is true, and it was a study-layer declaration compensating for the model not knowing the two constants were one physical quantity.
+
+They now descend from one wall-plug input, so the invariant holds structurally and the declaration has nothing left to do. The tie entry is **removed** from `manifest.json`, not rewritten. Only the `magnet__R0` / `R` tie remains, which is a genuinely different case: two model attributes for one physical radius, with no chain relating them.
+
+### The 1costingFE handshake — a pre-existing break, not one this item caused
+
+`handshake_1costingfe.py` injects `pb__eta_pin` and `heating_cost__p_ecrh` at the calc-input level, and `emit_1cfe_point.py:110` emits `eta_pin_effective`. Both would need translation through the chain's dormant path (`eta_source = eta_pin_effective`, `eta_couple = 1.0`, `p_coupled_direct = p_input`, `p_delivered_direct = p_ecrh`, which reproduces the old arithmetic exactly and is a fair exercise of design D4).
+
+**It was not translated, because the script does not run at this pin and has not for some time.** Verified here: it raises `FileNotFoundError` on `generated/inputs/system_design.json`, a file the package stopped generating at the model migration — and it fails there *before* reaching any heating key. Confirmed against the pre-WI-039 tree at `860ce7d1`, where that file is equally absent. `tests/study/test_no_retired_identifiers.py:36` already classifies the script as a historical record rather than an executable path.
+
+Repairing a script that is broken for an unrelated and older reason is not this item's work, and repairing only the heating keys would leave it broken while looking repaired. The keys it would need are written above so that whoever revives it does not have to re-derive them. `emit_1cfe_point.py` needs no change at all: `model._effective_eta_pin` is *1costingFE's* method on *1costingFE's* params, and nothing in it refers to this model.
+
+### The test surface, re-derived
+
+- `tests/model_families.py` — `analyses/mfe_heating_chain.sysml` added to the MFE family's owned paths (the ownership test proved the omission).
+- `tests/models/test_power_balance.py` — the interface test now expects `p_wallplug_in`; two stale comments describing `p_input / eta_pin` as the model's recirculating form were **amended**, not annotated beside.
+- `tests/models/data/mfe_census.json` — re-derived, above.
+- `exploration/stellarator_e2e/stellarator.snapshot.json` — recaptured through `capture_instance_graph_snapshot`, the producer the seam's gate 4 uses.
+- `tests/study/data/*.expected.json` — six files named `p_input`; each re-derived by running, never edited to match.

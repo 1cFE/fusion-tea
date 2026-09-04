@@ -7,7 +7,7 @@
   "fingerprints": {
     "indicator_inputs": {
       "recipe": "indicator-input-fingerprint/v1",
-      "digest": "6262dbf42c709600dc03736d8c54058c9a08ec4369ccd0327a26474cd34be784",
+      "digest": "2649e0ea2a987f3e56e9f659c4b4c48c9b670e6a0f8e47831c5fc253608455ad",
       "files": [
         "contracts/model_contract.json",
         "inputs/mfe_account_costs_params.json",
@@ -21,8 +21,8 @@
       ]
     },
     "recorded_provenance": {
-      "executable_fingerprint": "cc64dc5a4d151cf7db69069230b0a591f799e6d65320649bfd3b292beafb2d16",
-      "semantic_fingerprint": "3cb690aab05ee11eff2f8832d968b9c3bd64be2ec768d4130dee19fc30cd2059"
+      "executable_fingerprint": "b0c5f3eda9014fa1c84573c300c63f7fc04ecc1f8ea47047caa7775c010c6c78",
+      "semantic_fingerprint": "48731d1570bb20cdeae45faa20545aae46aeda5982a4fbc2129d7784a66595ba"
     }
   },
   "objective_catalog": [
@@ -89,13 +89,6 @@
         "stellarator_09__stellaris__R"
       ],
       "note": "Magnet coil major radius is the same physical quantity as the plasma major radius. Its suffix is R0, not R, so no suffix scan will ever surface it -- the tie must be declared. Advisory here: a group holding R but not this key earns a tie_candidate warning, never an added key. Since the model migration the plasma major radius is one plant-level entry point (R), not the geom__R / rb__R fan-out."
-    },
-    {
-      "key": "stellarator_09__stellaris__p_ecrh",
-      "rides_with": [
-        "stellarator_09__stellaris__p_input"
-      ],
-      "note": "The heating-cost installed ECRH power is the same physical quantity as the power balance's installed plasma-coupled heating (both 50 MW; the annex's known held-fixed semantic duplicate, promoted to a declared tie by 20260901-sustainment-fence when p_input became a swept axis). Sweeping p_input while holding p_ecrh would heat a plasma with a heating system that was never bought."
     }
   ],
   "baseline": {

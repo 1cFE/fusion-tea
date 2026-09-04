@@ -274,7 +274,7 @@ class TestMFEPowerBalanceCalcInterface:
         # `_in` names are the D-5 rename (models/stellarator_migration_ledger.md)
         required_inputs = [
             "p_nrl", "p_input_in",  # Primary
-            "mn_in", "eta_th_in", "eta_p_in", "eta_pin_in",  # Efficiencies
+            "mn_in", "eta_th_in", "eta_p_in", "p_wallplug_in",  # Efficiencies
             "p_pump_in", "f_sub_in",  # Pumping / subsystem
             "p_tf_in", "p_pf_in",  # Coil power
             "p_tfcool_in", "p_pfcool_in",  # Cooling
@@ -419,7 +419,11 @@ class TestNumericalValidation:
     MN = 1.1             # Neutron energy multiplier
     ETA_TH = 0.46        # Thermal-to-electric efficiency
     ETA_P = 0.5          # Pumping power capture efficiency
-    ETA_PIN = 0.5        # Input power wall plug efficiency
+    ETA_PIN = 0.5        # Heating wall-plug efficiency: WI-039 moved this out of
+                         # the power balance into 'Heating Power Chain'. It is kept
+                         # here as the test-case constant that produces this suite's
+                         # wall-plug heating term (P_INPUT / ETA_PIN), which the
+                         # power balance now receives as p_wallplug_in.
     FPCPPF = 0.06        # Primary coolant pumping power fraction
     F_SUB = 0.03         # Subsystem and control fraction
     P_TF = 1.0           # TF coil power [MW]
@@ -566,7 +570,9 @@ class TestNumericalValidation:
 
         Formula (simplified, no direct conversion):
         Numerator: eta_th*(mn*p_neutron + p_pump + p_input)
-        Denominator: p_coils + p_pump + p_sub + p_aux + p_cool + p_cryo + p_input/eta_pin
+        Denominator: p_coils + p_pump + p_sub + p_aux + p_cool + p_cryo + p_wallplug
+        where p_wallplug arrives from the heating chain (WI-039); this suite forms
+        it as p_input/eta_pin, which is what the chain computes at these values.
 
         Note: Full PyFECONS includes eta_de*p_alpha in numerator (deferred).
         Source: PowerBalance.py:29-48
