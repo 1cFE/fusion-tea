@@ -38,15 +38,29 @@ fraction at different precisions; neither is swept today.
 ## § Baseline pin
 
 The pinned baseline point, its headline, and its expected verdicts live in
-`manifest.json` → `baseline`. Today (WI-036 regeneration, 2026-09-03): `R = 12.7 m`,
+`manifest.json` → `baseline`. Today (**WI-039 regeneration, 2026-09-03**): `R = 12.7 m`,
 `a = 1.3 m`, `availability = 0.85`, headline
 `stellarator_09__stellaris__lcoe_calc__lcoe` = `307.08712042841586`, **nine**
 verdicts — eight satisfied and `sustainment_ok` **expected violated** (the disclosed
-WI-037 baseline state: required sustained coupled heating ~90.6 MW vs 50 installed).
-WI-036 added the ninth, `cond_strain_ok`, and left the headline untouched: the
-winding-pack sizing chain is neutral at the design point by construction (`wp_side`
-reproduces 0.360000 m and `c_coil` 25.0 m from the new levers `j_wp` and `k_coil`),
-so all nine anchors reproduce exactly across the regeneration.
+WI-037 baseline state: required sustained coupled heating ~90.6 MW vs 50 coupled).
+Two regenerations have now left that headline untouched, each for its own reason.
+WI-036 added the ninth verdict, `cond_strain_ok`: its winding-pack sizing chain is
+neutral at the design point by construction (`wp_side` reproduces 0.360000 m and
+`c_coil` 25.0 m from the levers `j_wp` and `k_coil`). WI-039 added the heating power
+chain and changed no verdict at all: 100 MW wall-plug × `eta_source_heat` 0.50 ×
+`eta_couple_heat` 1.00 reproduces the 50 MW coupled power exactly, and source-output
+power reproduces the heating account's $264,145,000 to the dollar.
+
+**What WI-039 changed about the fence, and what a study must not misread.**
+`sustainment_ok` used to compare a computed requirement against a *held* installed
+power (the `p_input` entry key). Its installed side is now the chain's **computed**
+coupled power, so the fence is computed-vs-computed and both sides move under a
+heating sweep. A study probing that fence with the oracle must read
+`heat__p_coupled`, not the swept `p_wallplug_heat` key.
+`p_input`, `p_ecrh` and `eta_pin` are retired as entry points, and the
+`p_input`/`p_ecrh` tie is **removed** from `manifest.json` rather than rewritten:
+both powers now descend from one wall-plug input, so the invariant that tie
+maintained holds structurally.
 The baseline also sits at exact equality on the conductor ceiling (B_peak 24.90 T vs
 B_max 24.9, `<=` satisfied by the WI-035 one-ulp-low design convention) — a
 by-construction fact of the design point, not a discovery any study makes.

@@ -1,0 +1,53 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "p_wallplug_heat",
+      "note": "SWEPT at two levels only. Installed wall-plug electrical power for heating [MW] -- the entry point WI-039 minted. 100 and 220 MW are the predecessor study's 50 and 110 MW plasma-coupled levels restated at eta_pin_eff = 0.50, an exact mapping. NO TIE IS DECLARED, and that is the change: the heating account's installed power and the power balance's coupled power now descend from this one key through the chain, so the invariant the p_input/p_ecrh tie maintained holds structurally and the declaration was removed from manifest.json.",
+      "keys": [{"key": "stellarator_09__stellaris__p_wallplug_heat", "provenance": "fan_out"}]
+    },
+    {
+      "axis": "eta_source_heat",
+      "note": "SWEPT. Wall-plug to source-output conversion efficiency [1] -- gyrotron wall-plug efficiency. THIS AXIS DID NOT EXIST BEFORE THIS ROUND: the old lumped eta_pin was a held constant whose only appearance was a division inside the recirculating sum, so sweeping it moved recirculating power and nothing else. Through the chain it now moves coupled power (hence fusion performance and the sustainment fence), heating capital (through source-output power), and recirculating power together. Swept to measure whether heating-technology efficiency is an economic lever at all.",
+      "keys": [{"key": "stellarator_09__stellaris__eta_source_heat", "provenance": "fan_out"}]
+    },
+    {
+      "axis": "T_i0",
+      "note": "SWEPT, and the window reaches PAST 18 keV. Peak ion temperature; T_e0 rides the held 0.95 ratio inside the sustainment calc. 20260903-priced-levers#5 is the reason for the window: that study's optimum sat at the top of its swept window, so its temperature conclusion was window-edge-limited and could not be read as an optimum.",
+      "keys": [{"key": "stellarator_09__stellaris__T_i0", "provenance": "fan_out"}]
+    },
+    {
+      "axis": "n_e0",
+      "note": "SWEPT. Peak electron density; the fuel peaks are computed from it by quasi-neutrality with the converged ash, and the line-averaged ISS04 density derives from it. Carried at the predecessor study's widened window, which was widened on critique so the range could actually reach the beta limit.",
+      "keys": [{"key": "stellarator_09__stellaris__n_e0", "provenance": "fan_out"}]
+    },
+    {
+      "axis": "I_coil",
+      "note": "SWEPT. Peak single-coil current, the field lever; since WI-036 it also sizes the winding pack, so it reaches the conductor strain check as well as the structural one. Carried because the heating question cannot be read without the field fences that bound the same operating point.",
+      "keys": [{"key": "stellarator_09__stellaris__magnet__I_coil", "provenance": "fan_out"}]
+    },
+    {
+      "axis": "eta_couple_heat",
+      "note": "DECLINED, traced (runbook step 3 requires indicators for declined axes too). The source-output to plasma-coupled fraction -- the stated deposition assumption held at 1.00. It is NOT a sourced number; it is the pinned 1costingFE per-concept default carried as an explicitly stated assumption (WI-039 MR-WI039-3, stellarator_plant.sysml eta_couple_heat). Sweeping an assumption produces a sensitivity to a value nobody measured, which reads as knowledge the model does not have. It is declined until a coupling figure is sourced, and the gap is named in the model text rather than swept over.",
+      "keys": [{"key": "stellarator_09__stellaris__eta_couple_heat", "provenance": "fan_out"}]
+    },
+    {
+      "axis": "R+tie",
+      "note": "DECLINED, traced. Plasma major radius with its declared magnet__R0 tie. Geometry belongs to this goal's WALL half and to round 2: R's effect on wall load at this pin is an open measurement, not a known (the pre-WI-037 'constant in R' result was measured with held fuel densities and does not transfer), and sweeping it here would confound the heating question with the wall question this round deliberately did not touch.",
+      "keys": [
+        {"key": "stellarator_09__stellaris__R", "provenance": "fan_out"},
+        {"key": "stellarator_09__stellaris__magnet__R0", "provenance": "tie"}
+      ]
+    },
+    {
+      "axis": "a",
+      "note": "DECLINED, traced. Plasma minor radius. Same reason as R+tie: it is the wall half's lever, and the committed 20260829-p-pump-fence result that wall_load_ok is violated at every a >= 1.70 makes it the most confounding axis to add to a heating study.",
+      "keys": [{"key": "stellarator_09__stellaris__a", "provenance": "fan_out"}]
+    },
+    {
+      "axis": "B_max",
+      "note": "DECLINED, traced. The conductor peak-field ceiling. It remains unpriced -- WI-036 priced the winding pack but gave the conductor GRADE no cost consequence, and WI-038 is its vehicle, sequenced after this goal's wall half and after WI-040. Sweeping it would manufacture feasible points that cost nothing.",
+      "keys": [{"key": "stellarator_09__stellaris__magnet__B_max", "provenance": "fan_out"}]
+    }
+  ]
+}
