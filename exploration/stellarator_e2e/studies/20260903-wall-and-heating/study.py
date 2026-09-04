@@ -24,12 +24,26 @@ would have published:
   eta_source rises exactly linearly. Efficiency at fixed wall-plug buys **feasibility and
   never economics**. Verified against the oracle at the transect anchor: LCOE 269.823 to
   273.675 monotone over eta 0.35 to 0.65, with `p_wallplug_total` = 220.0 at every one.
-* **F1, the consequence: `arm-couple-110` exists.** Asking "does efficiency pay" only at
+* **F1, the consequence: `arm-couple-132` exists.** Asking "does efficiency pay" only at
   fixed wall-plug asks it in the one parameterization where the answer is forced. At fixed
   *coupled* power the arithmetic inverts: `p_delivered = p_wallplug x eta_source =
   P_coupled` is constant, so heating capital is constant and the whole effect of efficiency
   lands on the wall-plug draw and hence on recirculating power. That is where efficiency
   can pay, and it is the honest place to ask.
+* **And a claim this study must NOT make, checked before making it.** The falling LCOE
+  curve of `arm-couple-132` is **not** new to WI-039. The pre-change model divided a held
+  coupled power by a held `eta_pin` inside the recirculating sum, so sweeping `eta_pin` at
+  held `p_input` moved recirculating power and LCOE the same way -- verified by running
+  the pre-change oracle directly from a scratch worktree, which produces a falling curve
+  of the same sign and comparable size. (Its absolute numbers are not quoted as a matched
+  comparison: the pre-change oracle takes different input key names and the probe was not
+  confirmed to sit at an identical operating point.) What IS new is narrower and real:
+  (i) `eta_source_heat` reaches `sustainment_ok` and `eta_pin` did not, so at fixed
+  installed hardware efficiency now moves the plasma's own fence; and (ii) **the
+  fixed-wall-plug experiment was not expressible before**, because wall-plug power was not
+  a quantity in the model -- it was the expression `p_input / eta_pin`, and holding it
+  fixed meant moving two held constants together by hand. The two experiments give
+  opposite-signed answers, and only one of them could be asked before.
 * **F3. The structural claim was inflated; the true version is smaller and cleaner.** The
   first design said "both efficiencies and the wall-plug power now reach `sustainment_ok`".
   `pre_wi039_indicators.json` shows the pre-change `p_input+tie` **already reached it**.
@@ -59,13 +73,17 @@ The arms:
   hunt -- it locates the **sustainment crossing**, whose analytic value at the anchor is
   `eta* = p_aux_required / p_wallplug = 115.24 / 220 = 0.52382`, and shows the monotone
   LCOE rise on either side of it.
-- `arm-couple-110`: the constant-coupled-power transect. `p_wallplug = 110 / eta_source`,
+- `arm-couple-132`: the constant-coupled-power transect. `p_wallplug = 132 / eta_source`,
   so delivered power and heating capital are held and only the wall-plug draw moves. This
-  is the arm that can answer the headline question.
+  is the arm that can answer the headline question. 132 MW is the coupled power the search
+  arm's cheapest feasible point actually runs at; the first design held 110 MW here, which
+  is below the 128.64 MW the anchor requires, so every point came back sustainment-blocked
+  and the arm measured nothing. Its `eta = 0.60` member is the p220 grid point at
+  `p_wallplug = 220`, cited rather than duplicated.
 
 **A scope extension, stated plainly rather than slipped in.** `trail.md` § T-004 scope
 authorizes `p_wallplug_heat` "at the two levels the predecessor study used".
-`arm-couple-110` sweeps it continuously as the reciprocal of efficiency, which is a third
+`arm-couple-132` sweeps it continuously as the reciprocal of efficiency, which is a third
 level set and therefore outside the scope as written. It is added because the critique
 showed the scope as written could only produce a forced answer to the study's own
 question, and running hundreds of points to report "efficiency does not pay" from a
@@ -139,7 +157,7 @@ STUDY_ID = "20260903-wall-and-heating"
 ARM_P100 = "arm-fence-p100"
 ARM_P220 = "arm-search-p220"
 ARM_ETA = "arm-transect-eta"
-ARM_COUPLE = "arm-couple-110"
+ARM_COUPLE = "arm-couple-132"
 P = route.P
 
 HELD = {"a": 1.3, "availability": 0.85, "discount_rate": 0.07, "R": 12.7,
@@ -183,8 +201,20 @@ TRANSECT_AT = {"I_coil": 14.5e6, "T_i0": 16.0, "ne_mult": 1.0, "wallplug": 220.0
 # delivered power and heating capital are held and only the wall-plug draw moves. This is
 # the parameterization in which source efficiency can actually pay, and the one the study's
 # headline question needs. Anchored at the search arm's cheapest feasible point.
-COUPLE_TARGET = 110.0
-ETA_COUPLE = [0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70]
+# REVISED after the first execution exposed two defects in this arm's own design:
+#   (a) 110 MW coupled is BELOW the sustainment requirement at the anchor (128.64 MW), so
+#       all nine points came back sustainment-blocked and the arm measured nothing. The
+#       anchor had been chosen as "the search arm's cheapest feasible point", but its
+#       feasibility there depended on 132 MW of coupled power, not 110. The target is now
+#       132.0 MW -- the coupled power that point actually runs at -- so the arm sits just
+#       above its own fence and measures economics rather than re-measuring the fence.
+#   (b) eta = 0.60 gives p_wallplug = 132/0.60 = 220.0, which is an EXACT member of the
+#       p220 grid, and two arms sharing one point silently mis-tagged it (see
+#       `_arms_by_id`). 0.60 is therefore excluded here and the curve reads its 0.60 point
+#       from `arm-search-p220`, where that exact case already lives. The overlap is stated
+#       rather than engineered around, and `proposals()` now asserts no arm shares a point.
+COUPLE_TARGET = 132.0
+ETA_COUPLE = [0.35, 0.40, 0.45, 0.50, 0.55, 0.65, 0.70, 0.75]   # 0.60 lives in the p220 grid
 COUPLE_AT = {"I_coil": 14.25e6, "T_i0": 16.0, "ne_mult": 1.0}
 
 
@@ -222,6 +252,18 @@ def proposals():
     out += [point(eta, COUPLE_AT["I_coil"], NE0 * COUPLE_AT["ne_mult"],
                   COUPLE_AT["T_i0"], COUPLE_TARGET / eta, ARM_COUPLE)
             for eta in ETA_COUPLE]
+    # Two arms sharing one point is not an error to survive quietly: `_arms_by_id` keys on
+    # the input tuple, so a shared point silently takes whichever arm was appended last,
+    # and the first execution of this study lost one `arm-search-p220` case that way. It
+    # is the same class as the predecessor's value-matching mis-tag. Fail loudly instead.
+    seen = {}
+    for arm, proposal in out:
+        key = _key(proposal)
+        if key in seen and seen[key] != arm:
+            raise route.RouteError(
+                f"arms {seen[key]!r} and {arm!r} share a point; arm tagging would be "
+                f"ambiguous. Exclude it from one arm and cite the other's case instead.")
+        seen[key] = arm
     return out
 
 
@@ -314,14 +356,16 @@ CHANNELS = {
     "B_peak": f"{P}peak_field_calc__B_peak",
     "sigma_wp": f"{P}wp_stress__sigma_wp",
     "eps_cond": f"{P}cond_strain__eps_cond",
-    # WI-039 heating-chain channels. These ARE single-field float channels and do
-    # appear in the store -- unlike the pb__* and sustain__* fields, which are fields
-    # of multi-field modules (ANNEX Oracle; 20260901-sustainment-fence#3) and are
-    # exported oracle-side in oracle_operands.csv instead.
-    "heat_coupled": f"{P}heat__p_coupled",
-    "heat_delivered": f"{P}heat__p_delivered",
-    "heat_wallplug_total": f"{P}heat__p_wallplug_total",
-    "heat_eta_pin_eff": f"{P}heat__eta_pin_eff",
+    # The four WI-039 heat__* chain channels are NOT declared here, and the first
+    # execution of this study is why. They were declared, on the reasoning that they
+    # are single-field floats and so unlike the pb__* and sustain__* fields -- and all
+    # four came back BLANK IN ALL 639 ROWS. `Heating Power Chain` has four outputs, so
+    # it is a multi-field module exactly like the other two, and the evidence store
+    # records only single-field float channels (ANNEX Oracle). This is the third
+    # sighting of that tooling gap, filed beside `20260903-priced-levers#4`. The chain's
+    # per-point values are exported oracle-side in `oracle_operands.csv`, labelled as
+    # such, exactly as p_net/rec_frac/q_eng are. A blank column is the finding, not a
+    # value to invent.
     "heating_capital": f"{P}heating_cost__cost",
     "total_capital": f"{P}total_capital__total_capital",
     "magnet_capital": f"{P}magnet_capital_rollup__capital_cost",
