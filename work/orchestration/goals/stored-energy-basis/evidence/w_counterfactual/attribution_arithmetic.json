@@ -1,0 +1,94 @@
+{
+ "model family, printed peaks": {
+  "W_MJ": 551.3321402021995,
+  "vs_printed_pct": 9.250399326701576,
+  "note": "alpha_n_e 0.596 / alpha_n 0.33 / alpha_T 1.19 -- the bound exponents on the printed peaks"
+ },
+ "caption exponents on every species 0.35/1.2": {
+  "W_MJ": 574.646284610244,
+  "vs_printed_pct": 13.870263471761435,
+  "note": "a NAIVE reading: the caption's alpha_n is the ion density's (Eq. 3); the figure's electron curve digitizes at 0.62 (WI-022), as quasi-neutrality with a peaked ash requires"
+ },
+ "model family, ions at the electron exponent": {
+  "W_MJ": 525.9684227408909,
+  "vs_printed_pct": 4.224397650032885,
+  "note": "alpha_n := alpha_n_e = 0.596 for the fuel and ash too (quasi-neutral shapes)"
+ },
+ "  same, alpha_T 1.2 exactly": {
+  "W_MJ": 524.0872767368104,
+  "vs_printed_pct": 3.851635140554932,
+  "note": ""
+ },
+ "figure-consistent, ash peaked alpha_He 1": {
+  "W_MJ": 558.5816186096819,
+  "vs_printed_pct": 10.686935224349913,
+  "note": "fuel 0.33 / He 1 / T 1.19, electrons by quasi-neutrality; <n_e> 3.51e20 (printed 3.17), effective alpha_n_e 0.443"
+ },
+ "figure-consistent, ash peaked alpha_He 2": {
+  "W_MJ": 539.1407063313843,
+  "vs_printed_pct": 6.834579675296615,
+  "note": "fuel 0.33 / He 2 / T 1.19, electrons by quasi-neutrality; <n_e> 3.32e20 (printed 3.17), effective alpha_n_e 0.524"
+ },
+ "figure-consistent, ash peaked alpha_He 3": {
+  "W_MJ": 527.191475085186,
+  "vs_printed_pct": 4.466754202949774,
+  "note": "fuel 0.33 / He 3 / T 1.19, electrons by quasi-neutrality; <n_e> 3.23e20 (printed 3.17), effective alpha_n_e 0.568"
+ },
+ "exponent_sum_for_printed_W": 1.9036917185299158,
+ "printed_beta_implies": {
+  "p_avg_Pa": 889516.9764563716,
+  "W_MJ_at_V425_B9": 567.0670724909369,
+  "B_T_that_reconciles_beta_with_printed_W": 8.490249114451569,
+  "model_beta_at_baseline": 0.026834157382368398
+ },
+ "printed_ne_ratio": {
+  "volav_over_peak": 0.6264822134387352,
+  "alpha_ne_if_volume_average": 0.5962145110410093,
+  "volav_over_peak_at_paper_alpha_n": 0.7407407407407407
+ },
+ "model_family_quasineutrality": [
+  {
+   "rho": 0.5,
+   "n_e": 4.262722190770739e+20,
+   "n_D+n_T+2n_He": 4.5835371253750864e+20,
+   "charge_excess_pct": 7.526057768881755
+  },
+  {
+   "rho": 0.7,
+   "n_e": 3.3873676981761874e+20,
+   "n_D+n_T+2n_He": 4.035791251430619e+20,
+   "charge_excess_pct": 19.142402332157605
+  },
+  {
+   "rho": 0.8,
+   "n_e": 2.7523699478758264e+20,
+   "n_D+n_T+2n_He": 3.597579184070911e+20,
+   "charge_excess_pct": 30.708416826284
+  },
+  {
+   "rho": 0.9,
+   "n_e": 1.8805620295137542e+20,
+   "n_D+n_T+2n_He": 2.913528191835823e+20,
+   "charge_excess_pct": 54.92858763021802
+  },
+  {
+   "rho": 0.95,
+   "n_e": 1.2635640692494146e+20,
+   "n_D+n_T+2n_He": 2.3377714990460935e+20,
+   "charge_excess_pct": 85.01408483661474
+  }
+ ],
+ "p_fus_at_printed_peaks": {
+  "model 0.33/1.19": 2748.0567839298205,
+  "paper 0.35/1.2": 2710.5396648297624,
+  "ions at 0.596/1.19": 2471.713944414242
+ },
+ "printed_pair_balance": {
+  "f_alpha_P_alpha_MW": 513.5129999999999,
+  "W_over_tau_E_MW": 345.6506849315068,
+  "p_rad_MW": 228.9,
+  "residual_MW_at_p_aux_0": -61.037684931506874,
+  "tau_E_for_balance_s": 1.7731094503764764
+ },
+ "fast_alpha_energy_MJ_order": 11.828641638225257
+}

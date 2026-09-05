@@ -1,0 +1,6 @@
+unmodified  W  551.327 MJ tauE 1.4578 s W/tauE  378.18 MW rad  228.66 p_fus  2719.8 n_He0 5.801e+19 beta 0.02683  residual g(p_aux=0)   -89.55 MW  -> required   89.55 MW vs 50 coupled
+W_forced    W  501.668 MJ tauE 1.6898 s W/tauE  296.89 MW rad  228.66 p_fus  2568.7 n_He0 6.350e+19 beta 0.02668  residual g(p_aux=0)   -37.00 MW  -> required   37.00 MW vs 50 coupled
+  unmodified  paux   0: no burn
+  unmodified  paux  50: no burn
+  W_forced    paux   0: T_burn 23.12 keV p_fus 6328 wall-proxy 7.21 beta 4.22%
+  W_forced    paux  50: T_burn 24.97 keV p_fus 7241 wall-proxy 8.25 beta 4.57%

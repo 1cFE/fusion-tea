@@ -1,0 +1,52 @@
+{
+ "W_printed_MJ": 504.65,
+ "W_scale": 0.9151423789440755,
+ "unmodified": {
+  "W_th": 551.4442469403324,
+  "tau_E": 1.4499090192149997,
+  "p_rad": 228.61155958621015,
+  "p_alpha_heat": 518.3368123536601,
+  "p_aux_required": 90.60498839408979,
+  "n_He0": 5.7810972452112966e+19,
+  "p_coupled": 50.0,
+  "beta": 0.026839612876848863,
+  "p_fus": 2725.3631229489465,
+  "lcoe": 313.5134115016116,
+  "wall_load_peak": 4.088044684423419,
+  "verdicts": {
+   "beta_ok": "satisfied",
+   "cond_strain_ok": "satisfied",
+   "net_positive": "satisfied",
+   "peak_field_ok": "satisfied",
+   "recirc_ok": "satisfied",
+   "sustainment_ok": "violated",
+   "wall_load_ok": "violated",
+   "wp_stress_ok": "satisfied"
+  },
+  "W_over_tau_E": 380.33024116153973
+ },
+ "W_forced": {
+  "W_th": 501.6669281628082,
+  "tau_E": 1.6811392435065056,
+  "p_rad": 228.61155958621015,
+  "p_alpha_heat": 489.55167965480445,
+  "p_aux_required": 37.468789306714655,
+  "n_He0": 6.330816136301761e+19,
+  "p_coupled": 50.0,
+  "beta": 0.02668095936789402,
+  "p_fus": 2574.013773882983,
+  "lcoe": 332.5845242490501,
+  "wall_load_peak": 3.8610206608244746,
+  "verdicts": {
+   "beta_ok": "satisfied",
+   "cond_strain_ok": "satisfied",
+   "net_positive": "satisfied",
+   "peak_field_ok": "satisfied",
+   "recirc_ok": "satisfied",
+   "sustainment_ok": "satisfied",
+   "wall_load_ok": "satisfied",
+   "wp_stress_ok": "satisfied"
+  },
+  "W_over_tau_E": 298.4089093753089
+ }
+}
