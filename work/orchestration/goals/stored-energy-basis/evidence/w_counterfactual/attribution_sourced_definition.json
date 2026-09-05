@@ -1,0 +1,93 @@
+{
+ "SOURCED: paper rules (1.2/0.35, Ti/Te 0.95, A.5 ash, QN electrons)": {
+  "W_MJ": 518.3078477198306,
+  "vs_printed_pct": 2.7064000237452923,
+  "beta_pct": 2.5226815823089357,
+  "p_fus_MW": 2710.5396598660063,
+  "n_e0": 5.04e+20,
+  "n_e_volav": 3.155982004420527e+20,
+  "alpha_He_eff": 4.127962086071991,
+  "W_e_MJ": 273.5271942242099,
+  "W_i_MJ": 244.7806534956207,
+  "note": "the registered definition applied with the paper's own rules"
+ },
+ "  same, T_i peak at the printed 14.63 (ratio 0.950)": {
+  "W_MJ": 518.3078477198306,
+  "vs_printed_pct": 2.7064000237452923,
+  "beta_pct": 2.5226815823089357,
+  "p_fus_MW": 2710.5396598660072,
+  "n_e0": 5.04e+20,
+  "n_e_volav": 3.1559820044205274e+20,
+  "alpha_He_eff": 4.127962086071991,
+  "W_e_MJ": 273.52719422420995,
+  "W_i_MJ": 244.78065349562078,
+  "note": ""
+ },
+ "  same, ash power-law alpha_He 2 (NOTES sec 7 bracket)": {
+  "W_MJ": 533.3798215257165,
+  "vs_printed_pct": 5.693019226338358,
+  "beta_pct": 2.596039126279027,
+  "p_fus_MW": 2710.5396598660063,
+  "n_e0": 5.04e+20,
+  "n_e_volav": 3.277032829737866e+20,
+  "alpha_He_eff": 2.0,
+  "W_e_MJ": 283.7454815502342,
+  "W_i_MJ": 249.6343399754823,
+  "note": ""
+ },
+ "  same, ash power-law alpha_He 3": {
+  "W_MJ": 521.4819654083651,
+  "vs_printed_pct": 3.335374102519606,
+  "beta_pct": 2.5381304864074803,
+  "p_fus_MW": 2710.5396598660063,
+  "n_e0": 5.04e+20,
+  "n_e_volav": 3.1836994964045326e+20,
+  "alpha_He_eff": 3.0,
+  "W_e_MJ": 275.6791384198265,
+  "W_i_MJ": 245.8028269885386,
+  "note": ""
+ },
+ "  same, ash at the fuel exponent 0.35 (the model's ash shape)": {
+  "W_MJ": 573.4126079907996,
+  "vs_printed_pct": 13.625801642881141,
+  "beta_pct": 2.7908846674921355,
+  "p_fus_MW": 2710.5396598660063,
+  "n_e0": 5.04e+20,
+  "n_e_volav": 3.733327924548685e+20,
+  "alpha_He_eff": 0.35,
+  "W_e_MJ": 310.8863537299517,
+  "W_i_MJ": 262.5262542608481,
+  "note": ""
+ },
+ "MODEL family: 1.19/0.33, ash at 0.33, n_e at 0.596, printed peaks": {
+  "W_MJ": 551.3321395902558,
+  "vs_printed_pct": 9.250399205440573,
+  "beta_pct": 2.6834157352584183,
+  "p_fus_MW": 2748.0567789661163,
+  "n_e0": 5.06e+20,
+  "n_e_volav": 3.170425695576225e+20,
+  "alpha_He_eff": 0.33,
+  "W_e_MJ": 285.6805727757655,
+  "W_i_MJ": 265.6515668144903,
+  "note": "the model's bound exponents (NOTES sec 7 row 1)"
+ },
+ "  model exponents but A.5 ash and QN electrons": {
+  "W_MJ": 524.5231075457568,
+  "vs_printed_pct": 3.937998126574227,
+  "beta_pct": 2.552932178669969,
+  "p_fus_MW": 2748.0567789661163,
+  "n_e0": 5.04e+20,
+  "n_e_volav": 3.203137585752521e+20,
+  "alpha_He_eff": 4.050487007216448,
+  "W_e_MJ": 276.8139302131642,
+  "W_i_MJ": 247.7091773325926,
+  "note": "what the ash shape alone is worth at the model's exponents"
+ },
+ "printed_pair": {
+  "beta_pct_implied_by_printed_W_at_B0": 2.4562068008670366,
+  "W_MJ_implied_by_printed_beta_at_B0": 567.0670724909369,
+  "B_T_reconciling_printed_beta_with_printed_W": 8.490249114451569,
+  "sourced_W_over_printed": 1.027064000237453,
+  "model_W_over_sourced": 1.063715592993059
+ }
+}

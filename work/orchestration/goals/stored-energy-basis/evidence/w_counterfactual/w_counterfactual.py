@@ -6,7 +6,8 @@ with ONE change: inside `_sustainment.state()` the line
 
     W_th = 1.5 * p_avg * V * 1e-6
 
-becomes `... * W_SCALE`, where W_SCALE = 504.65 / W_th(baseline, unmodified). Everything
+becomes `... * W_SCALE`, where W_SCALE = 504.65 / W_th(baseline, unmodified) -- or, with an optional
+target argument (2026-09-05, T-002), <target> / W_th, written to suffixed files. Everything
 else -- the ash fixed point, ISS04 tau_E, the composed radiation, the alpha heating, the
 fences and the cost chain -- is the oracle's own code, untouched on disk. The patch is
 applied to the function's SOURCE at import (asserting the line occurs exactly once) and
@@ -110,23 +111,23 @@ def sustain_state(ch):
         "lcoe": ch[f"{P}lcoe_calc__lcoe"], "wall_load_peak": ch[f"{P}wall_peak_calc__wall_load_peak"]}
 
 
-def baseline_scale():
+def baseline_scale(target=W_PRINTED_MJ):
     set_scale(1.0)
     ch0 = oe.evaluate(BASELINE_POINT)
-    return W_PRINTED_MJ / ch0[f"{P}sustain__W_th"], ch0
+    return target / ch0[f"{P}sustain__W_th"], ch0
 
 
-def run_baseline():
+def run_baseline(target=W_PRINTED_MJ, suffix=""):
     B = bounds()
-    s, ch0 = baseline_scale()
+    s, ch0 = baseline_scale(target)
     set_scale(s); ch1 = oe.evaluate(BASELINE_POINT); set_scale(1.0)
-    out = {"W_printed_MJ": W_PRINTED_MJ, "W_scale": s,
+    out = {"W_printed_MJ": W_PRINTED_MJ, "W_target_MJ": target, "W_scale": s,
            "unmodified": sustain_state(ch0) | {"verdicts": verdicts(ch0, B)},
            "W_forced": sustain_state(ch1) | {"verdicts": verdicts(ch1, B)}}
     # the two-term decomposition of the required-heating move: W/tau_E and everything else
     for k, ch in (("unmodified", ch0), ("W_forced", ch1)):
         out[k]["W_over_tau_E"] = ch[f"{P}sustain__W_th"] / ch[f"{P}sustain__tau_E"]
-    (HERE / "baseline_counterfactual.json").write_text(json.dumps(out, indent=1) + "\n")
+    (HERE / f"baseline_counterfactual{suffix}.json").write_text(json.dumps(out, indent=1) + "\n")
     for k in ("unmodified", "W_forced"):
         o = out[k]
         print(f"{k:11s} W_th {o['W_th']:8.3f} MJ  tau_E {o['tau_E']:.4f} s  W/tau_E {o['W_over_tau_E']:7.2f} MW  p_rad {o['p_rad']:7.2f}  "
@@ -165,7 +166,7 @@ def load_rows():
     return list(csv.DictReader((STUDY / "results" / "points.csv").open()))
 
 
-def run_window(scale, workers=10):
+def run_window(scale, workers=10, suffix=""):
     rows = load_rows()
     with Pool(workers, initializer=_init, initargs=(scale,)) as pool:
         res = pool.map(_eval_row, rows, chunksize=25)
@@ -193,7 +194,7 @@ def run_window(scale, workers=10):
     for o in out_rows:
         for k in o:
             if k not in keys: keys.append(k)
-    with (HERE / "window_counterfactual.csv").open("w", newline="") as f:
+    with (HERE / f"window_counterfactual{suffix}.csv").open("w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=keys); w.writeheader(); w.writerows(out_rows)
     summary = {"W_scale": scale, "points": len(rows), "oracle_errors": errs, "flips": {f"{k}:{a}->{b}": n for (k, a, b), n in sorted(flips.items())},
                "flips_by_arm": {f"{arm}|{k}:{a}->{b}": n for (arm, k, a, b), n in sorted(flips_arm.items())}, "arms": {}}
@@ -209,7 +210,7 @@ def run_window(scale, workers=10):
                                 "cheapest_driven_forced": None if best is None else {k: best[k] for k in ("case_id", "R", "a", "I_coil_A", "n_e0", "T_i0_keV", "lcoe_forced", "p_aux_required_forced", "wall_load_peak_forced")},
                                 "driven_on_design_geometry_forced": len(col),
                                 "driven_a_values_forced": sorted(set(float(o["a"]) for o in drv))}
-    (HERE / "window_summary.json").write_text(json.dumps(summary, indent=1) + "\n")
+    (HERE / f"window_summary{suffix}.json").write_text(json.dumps(summary, indent=1) + "\n")
     print(json.dumps(summary, indent=1))
 
 
@@ -228,12 +229,17 @@ def run_parity(n):
 
 if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else "baseline"
+    # optional W target (MJ) as the last argument for baseline/window: outputs get the suffix _<target>
+    tgt = None; args = sys.argv[2:]
+    if args and "." in args[-1]:
+        tgt = float(args[-1]); args = args[:-1]
+    sfx = f"_{sys.argv[-1]}" if tgt is not None else ""
     if mode == "baseline":
-        run_baseline()
+        run_baseline(tgt or W_PRINTED_MJ, suffix=sfx)
     elif mode == "parity":
-        run_parity(int(sys.argv[2]) if len(sys.argv) > 2 else 40)
+        run_parity(int(args[0]) if args else 40)
     elif mode == "window":
-        s = run_baseline()
-        run_window(s, workers=int(sys.argv[2]) if len(sys.argv) > 2 else 10)
+        s = run_baseline(tgt or W_PRINTED_MJ, suffix=sfx)
+        run_window(s, workers=int(args[0]) if args else 10, suffix=sfx)
     else:
         raise SystemExit(f"unknown mode {mode}")
