@@ -1,0 +1,15 @@
+{
+  "request_id": "REQ-W-01",
+  "question": "How does the Stellaris design paper (Lion et al., Fusion Engineering and Design 2025, doi 10.1016/j.fusengdes.2025.114868) define the 'Total plasma energy' (printed 504.65 MJ) and the 'Vol. av.' quantities in its Table 5 -- which profile set is integrated (the Fig. 16 profiles or another), over which volume element, thermal only or including fast alphas -- and to which magnetic field is its printed volume-averaged beta (2.76 %) referenced?",
+  "consumer": "model element W_th, models/library/analyses/mfe_plasma_sustainment.sysml:25 (goal stored-energy-basis, Answered when (b))",
+  "gap_type": "unsourced_value",
+  "priority": "P1",
+  "where_to_look": [
+    "The Stellaris paper itself, read from the raw PDF pages (knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf): the systems-code and plasma sections, Table 5's notes, Fig. 16's caption, the beta definition wherever it is stated, Appendix A; never the extracted output.md for tables or captions",
+    "Supplementary material for doi 10.1016/j.fusengdes.2025.114868 at the publisher (Fusion Engineering and Design, Elsevier)",
+    "Proxima Fusion publications and technology pages (https://www.proximafusion.com/technology and its publications listing; the concept-09 dossier cites the technology page)",
+    "The 0.5-D stellarator systems-code papers by Lion and co-authors that the Stellaris paper cites (Nuclear Fusion / Fusion Engineering and Design), for the code's definition of stored energy, volume averaging and beta",
+    "The paper's ISS04 and 'Aurora' references, for the density and energy definitions those scalings take"
+  ],
+  "limits": {"max_searches": 6, "max_captures": 3}
+}
