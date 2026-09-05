@@ -49,3 +49,75 @@ Proposed row:
 ## Rows not touched
 
 `#3` (`a` unbounded and unpriced), `#5` (the lifetime chain's price), `#8` (the closure's validity edge): the reading reaches `#8`'s edge — 61 points fail it under the forced W, none feasible in the record — but the edge is the record's own declared seam and this reading adds no disposition to it; noted in the trail, no row.
+
+---
+
+## Revision r2 — 2026-09-05
+
+Submitted after C-001.r1 `REVISE` (`round1_C-001_checkpoint.md` § r1). r1's text above is kept; the rows below replace it as the text to land. Every "current state" is re-based on `DISCOVERY_LOG.md` at `feat/demo-maturation` `e0f66f7a` (the four rows dated 2026-09-05: the F4 rows under `#6` and `#8`, the close rows under `#1` and `#6`) and on `wall-and-heating/trail.md` § Goal close — 2026-09-05. **These rows land only after this branch is rebased onto `feat/demo-maturation` at or after `e0f66f7a`**, so that they follow the close rows in file order.
+
+**What the reading is, in one paragraph (r2).** Every executed point of `20260904-wall-and-heating` (6,311; record dir at `a5b0b96a`) was re-evaluated through the oracle with the model's stored thermal energy scaled by one constant (0.9151) to the paper's printed 504.65 MJ, the closure left live, and every verdict compared with the record's column by case id. The scale is multiplicative and geometry-independent: the sign of each move is robust, the location of any boundary is not a claim (`NOTES.md` § 6). Only a W decrease was evaluated; a W above the model's 551 MJ was not. Nothing under `models/`, the generated package, or the study store was written; the pin `c1b0f0d1…` stands. Sixty committed points re-evaluated unmodified reproduce the record exactly, and the fresh checkpoint recounted every number from the data. Whether the counterfactual is a sensitivity or a correction is decided by T-001's return (REQ-W-01, the paper's own definitions; trail § T-001 return): on the arithmetic alone, no reading of the paper's plotted profiles with its printed peaks reaches 504.65 MJ (527–575 across readings; the printed β implies 567 at the axis field), so until that return says otherwise the printed value is not shown to be the right target.
+
+**Row conventions.** Kind `model`. Disposition class from the ADR-0004 set, status, responsible actor, concrete next reference. A row that changes nothing says so. The `wall-and-heating` close rows are final for that goal; a row below is this goal's, appended under the same id.
+
+### `20260904-wall-and-heating#1` — the (b)(ii) answer, a conditional positive
+
+Current state (`e0f66f7a`, close row): `model fix — closed [OWNER 2026-09-05]` — goal `wall-and-heating` closed on § Answered when; the four conditions stand as disclosed facts; the geometry question carried, not minted; row final for that goal. L-009 landed at `a11db053` with the four conditions in its Scope line.
+
+Row to land:
+
+> `declared seam` — **W-sensitivity, recorded here beside the four conditions the record states.** With the model's stored energy scaled to the printed 504.65 MJ (a 9 % decrease; constant scale, closure live, oracle-side), the design geometry opens at 100 MW — six feasible driven points at R 12.7, a 1.3 (cheapest `c0625` 315.09; the pinned baseline `c2973` itself 332.585 at 37.5 MW required) where the record has none — so "never at the design's minor radius" is W-conditional; the cheapest driven point barely moves and is a different point (212.460 at `c1721` → 212.314 at `c1676`); and the driven set is reshaped: 332 of the 657 driven points in the two search arms stop being driven (305 ignite, 25 fail `recirc_ok`, 2 fail `sustainment_ok`) and 15 of the re-read arm's 24 (all `recirc_ok`), 347 of 681 in all, while 446 points become driven (257 → 332 at 100 MW). Direction stated: the driven set grows and the design column opens as W falls; a W above the model's 551 MJ was not evaluated, and the paper's own readings run up to 567–575 (`NOTES.md` § 7), so the region's existence under a W increase is untested. The condition is a seam, not a fix: the stored-energy basis the model carries is the owner's ruling (`stored-energy-basis/goal.md` § Answered when (c)), W is never tuned, and the printed value is not shown to be the right target. **Surfaced, not re-ruled:** the owner's (b) close ruling of 2026-09-05 was made on four conditions; this fifth post-dates it, and the record shows no sign it was before the owner. **Class condition:** if REQ-W-01 (T-001) returns a definition under which 504.65 MJ follows from the paper's own profiles and peaks, the +9.2 % becomes a model error and this row's class becomes `model fix` on the W basis; the row is then resubmitted before landing. Responsible: the owner at `stored-energy-basis` § Answered when (c), via that goal's round-1 result; the next goal that inherits `#1`'s conditions (the geometry question, if grounded). The helium-ash shape (`NOTES.md` § 7 item 2, about 2 of the 9 points) is that goal's own finding, surfaced and deferred there, not this finding's disposition. | `work/orchestration/goals/stored-energy-basis/evidence/w_counterfactual/NOTES.md` §§ 5, 8 at `3687d2f6`; `stored-energy-basis/trail.md` § Round 1 result
+
+### `20260904-wall-and-heating#2` — the ash knife-edge
+
+Current state (`8906d4e7`, unchanged at `e0f66f7a`): `research` — open; the aspect-ratio scaling of the transport facts; carried as written at the `wall-and-heating` close (ruling 4; nothing minted).
+
+Row to land:
+
+> `research` — open, unchanged in class and routing; **the knife-edge's location is W-sensitive**: on the design column at τ*/τ_E = 6 (`c6308`) the plasma goes from not ignited (+44.4 MW required; wall 4.54, violated) to ignited (−12.2 MW; wall 4.33, still violated); at 12 (`c6309`), 158.4 → 109.0 MW required; nothing on the transect is feasible in either state, so the shape stands and the flip points move with W. Any research return on the transport facts is read at a stated W basis. Responsible: unchanged — the owner (mint or carry) and the next strategy author of a geometry goal, if grounded; the `wall-and-heating` close carried this row as written. | unchanged, plus `NOTES.md` § 5 at `3687d2f6`
+
+### `20260904-wall-and-heating#4` — the one-sided sustainment fence
+
+Current state (`8906d4e7`, unchanged at `e0f66f7a`): `model fix` — open; a second inequality or a burn-control lever, not minted; carried as written at the close.
+
+Row to land:
+
+> `model fix` — open, unchanged in class and routing; **the ignited set is the most W-sensitive set in the study**: 787 → 1,282 ignited per level under the forced W, and 305 of the record's driven points cross into ignition, so the one-sided fence's pass-through grows as W falls and the `feasible_driven` reading every record claim rests on is the reading W moves most. A second inequality, if minted, is evaluated at a stated W basis and its verdict counts reported beside the sustainment counts. Responsible: unchanged — the owner (mint or carry); the `wall-and-heating` close carried this row as written. | unchanged, plus `NOTES.md` § 5 at `3687d2f6`
+
+### `20260904-wall-and-heating#6` — round 1's 220 MW result re-executed
+
+Current state (`e0f66f7a`): F4 row — `model fix`, discharged by WI-041 at `cb355321`, confirmed by the round-2 reviewer's recount; close row — WI-041 closed and archived to `work/completed/20260905_WI-041_source-anchored-wall-load-fence/`; row final for that goal.
+
+Row to land:
+
+> `model fix` — **discharged, unchanged**; re-sighted under the forced W: the re-read arm goes 24 → 58 driven (all at the design geometry), cheapest `c5944` 371.70 against the record's 378.556; 25 of the arm's wall verdicts flip violated → satisfied through `p_fus`, all 25 among round 1's satisfied points (142 of the predecessor's 152 flipped points sit inside the 360-row arm, and every flip-back is among them). The discharge stands: the fence's form and WI-041's arithmetic are untouched and the peak moves through fusion power, not through the fence; the survivor count is W-conditional. Responsible: none owed beyond this row. | unchanged, plus `NOTES.md` § 5 at `3687d2f6`
+
+### `20260904-wall-and-heating#7` — `R`'s effect on wall load
+
+Current state (`8906d4e7`, unchanged at `e0f66f7a`): `model fix — none owed`, discharged as a measurement, to L-010.
+
+Row to land:
+
+> `model fix — none owed` — **unchanged**: the field chain does not read W (zero field, stress or strain flips over 6,250 points), and the wall peak still rises with `R` on the design column under the forced W (3.521 → 4.916 over R 11.2 → 17.2; record 3.752 → 5.102); the exponent was not re-measured and is not claimed here. Row written so the touched set is complete. | unchanged
+
+### `20260904-wall-and-heating#8` — the closure's validity edge
+
+Current state (`e0f66f7a`, F4 row): `declared seam` — recorded; the 65 pre-screen exclusions listed with reasons in `results/excluded_points.csv`; the candidate ash-fraction fence an ANNEX note beside WI-037, not minted; responsible: the next strategy author if a geometry goal is grounded, otherwise standing.
+
+Row to land:
+
+> `declared seam` — unchanged, standing; **the edge moves inward with W**: 61 evaluated points (28 at 100 MW, 33 at 220; 55 non-positive fuel, 6 non-real) fall off the closure's validity edge under the forced W, none of them feasible, ignited or driven in the record, at R 11.2–12.7, a mostly 2.0–2.2, I mostly 16–18 MA — the same corner as the record's 65 excluded proposals, reached by more points because the longer τ_E drives more ash. The 61 carry only `case_id`, `arm_id` and `error` in `window_counterfactual.csv` and join to the record's `points.csv` by id. Responsible: unchanged from the 2026-09-05 row. | unchanged, plus `NOTES.md` § 5 at `3687d2f6`; `exploration/stellarator_e2e/studies/ANNEX.md` § Validity masks (candidate)
+
+### Rows not touched (r2)
+
+`#3` (`a` unbounded and unpriced) and `#5` (the lifetime chain's price): the reading re-measures neither; no row.
+
+### What changed from r1, by the checkpoint's numbered changes
+
+1. Every current state and actor re-based on `e0f66f7a` and the `wall-and-heating` close; the two past-event actors removed everywhere; the rebase condition stated in the intro.
+2. `#1`: responsible re-routed to the owner at (c) and to the geometry goal if grounded (a); the (b)-ruling fact surfaced (b); "recorded here beside the four the record states" (c); the 332 / 657 and 15 / 24 decomposition with 347 / 681 (d); the robustness sentence replaced by a direction-stated claim with the untested direction named (e); the class condition on T-001's return added (f); the ash shape homed in this goal, not in `#1` (g).
+3. `#2`: "not ignited (+44.4 MW required; wall 4.54, violated)"; actor line.
+4. `#4`: actor line.
+5. `#6`: current state (the F4 row and the close row); the 142-of-152 note.
+6. `#8`: a row, `declared seam`, unchanged, standing, with the 61-point content and the join note; moved out of "Rows not touched".
+7. Intro: tied to T-001's return; the corrected counts carried; the untested direction stated.

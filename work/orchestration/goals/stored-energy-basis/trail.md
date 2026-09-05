@@ -64,3 +64,11 @@ No future task list. The first task is chosen by the owner's answer to the resea
 ### T-001 start — 2026-09-05
 
 T-001 · the research seam on `knowledge/research/requests/REQ-W-01.json` (written and opened after this line; the run directory is named in the spawn prompt) · expected artifacts: the run's `return.json` and receipts, and the deposited spawn prompt at `evidence/T-001_REQ-W-01_prompt.md`.
+
+### Checkpoint C-001.r1 — 2026-09-05
+
+- **Reviewer:** a fresh non-author session spawned from the deposited prompt (`evidence/round1_C-001_checkpoint_prompt.md`, `dfc9eca7`), run in parallel with T-001 (the dispositions rest on the counterfactual, not on the research return; the checkpoint's `r2` exists for the case the return changes a row).
+- **Reading reviewed:** `evidence/w_counterfactual/NOTES.md` §§ 1–8 at `3687d2f6` — every number in §§ 3, 5, 7 recounted from the data and reproduced; sixty points re-run unmodified reproduce the record; "the reading is right."
+- **Dispositions reviewed:** `evidence/round1_proposed_dispositions.md` (`dfc9eca7`).
+- **Verdict:** `REVISE`. Deposited verbatim at `evidence/round1_C-001_checkpoint.md` § r1. Grounds: the `wall-and-heating` goal was **closed by the owner on 2026-09-05** (`feat/demo-maturation` at `e0f66f7a`: review `FINDINGS` at `a11db053`, L-009..L-012 landed with four conditions, two F4 rows under `#6` and `#8`, two close rows under `#1` and `#6`, WI-041 archived), so every "current state" in the file is stale and two named actors are past events; `#1` mixes a three-arm numerator with a two-arm denominator (347 of 681, or 332 of 657) and claims robustness in a direction the counterfactual never tested (W was only lowered); `#2` uses "driven" against the record's definition; `#8` needs a row (61 points fall off the closure's validity edge). `declared seam` ruled the right class for `#1`, conditional on T-001 not returning a reconciling definition. One gate-adjacent fact surfaced by the reviewer: the owner's (b) close ruling on `wall-and-heating` was made on four conditions, without the fifth in front of them.
+- **Revision:** 0 of 2 at this entry; the author's r2 follows T-001's return (change 2(f) depends on it) and is appended to the dispositions file as a section, r1's text kept.
