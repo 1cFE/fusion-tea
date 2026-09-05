@@ -17,7 +17,7 @@ The three local exporters on `main` are in scope. Five later exporters in the re
 
 ## Validation
 
-After owner-supplied review: the revised numeric-evidence and publication tests pass (55 tests). They include first/all execution failures, export-column additions with zero evaluations, missing persisted columns, and NaN/infinity refusal before CSV replacement. TEAx's revised scalar contract passes 454 tests; the codegen live/snapshot acceptance passes against that runtime. The full study suite is being rerun for the runner integration change.
+After owner-supplied review: the revised numeric-evidence and publication tests pass (56 tests). They include first/all execution failures, export-column additions with zero evaluations, missing persisted columns on complete and partial resumes, and NaN/infinity refusal before CSV replacement. Existing completed cases are validated under the store lease before any remaining proposal executes. TEAx's revised scalar contract passes 454 tests; the codegen live/snapshot acceptance passes against that runtime. The full study suite is being rerun for the runner integration change.
 
 The initial numeric-evidence and publication suites passed 35 tests. Owner-supplied review exposed two regressions those tests missed: a failed first proposal aborted before recording its failure, and column-map changes unnecessarily invalidated a store. The revised tests assert recorded first/all execution failures, column additions without re-evaluation, rejection of absent persisted columns, and refusal of nonfinite values in each local export. Updated validation results are recorded below.
 

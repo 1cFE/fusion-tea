@@ -122,8 +122,11 @@ def export(cases, path: Path) -> Path:
 
 
 def export_oracle_operands(cases, path: Path) -> Path:
-    """Finding #10: the power-balance operands the store does not record, recomputed by
-    the package-owned oracle per case and labelled as oracle-derived. Not package evidence."""
+    """Finding #10: recompute power-balance operands independently for each case.
+
+    Historical v2 evidence omitted these fields; v3 publishes them. This export
+    remains labelled as oracle-derived rather than recovered package evidence.
+    """
     import oracle_entry as oe  # the seam, beside the route
 
     import json

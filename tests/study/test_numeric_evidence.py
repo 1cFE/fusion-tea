@@ -138,10 +138,12 @@ def test_adding_persisted_column_reuses_store_without_evaluation(
     )
 
 
+@pytest.mark.parametrize("interrupted", [False, True], ids=["complete", "partial"])
 def test_resume_refuses_a_required_column_absent_from_persisted_evidence(
     stock_simkit_path,
     monkeypatch,
     tmp_path,
+    interrupted,
 ):
     from simkit.evaluation.evaluator import PreparedEvaluator
 
@@ -152,24 +154,34 @@ def test_resume_refuses_a_required_column_absent_from_persisted_evidence(
     def evaluate(self, typed_inputs):
         evidence = original_evaluate(self, typed_inputs)
         calls.append(evidence)
+        if interrupted and len(calls) == 2:
+            raise RuntimeError("interrupted after one durable case")
         outputs = dict(evidence.outputs)
         del outputs[channel]
         return evidence.model_copy(update={"outputs": outputs})
 
     monkeypatch.setattr(PreparedEvaluator, "evaluate", evaluate)
-    proposals = [route.proposal_for(**route.BASELINE)]
-    route.run_points(
-        "incomplete-resume",
-        proposals,
-        tmp_path,
-        required_channels={"lcoe": route.CHANNELS["lcoe"]},
-    )
+    proposals = [route.proposal_for(**route.BASELINE)] * (2 if interrupted else 1)
+
+    def initial_run():
+        route.run_points(
+            "incomplete-resume",
+            proposals,
+            tmp_path,
+            required_channels={"lcoe": route.CHANNELS["lcoe"]},
+        )
+
+    if interrupted:
+        with pytest.raises(RuntimeError, match="interrupted"):
+            initial_run()
+    else:
+        initial_run()
     with pytest.raises(route.RouteError, match="required result channels.*pb__p_net"):
         route.run_points(
             "incomplete-resume", proposals, tmp_path, required_channels={"p_net": channel}
         )
     assert (tmp_path / "incomplete-resume.db").exists()
-    assert len(calls) == 1  # Resume validates stored evidence without re-executing it.
+    assert len(calls) == len(proposals)  # Resume refuses before running any remaining work.
 
 
 @pytest.mark.parametrize("failures", [1, 2], ids=["first-fails", "all-fail"])

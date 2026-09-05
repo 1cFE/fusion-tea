@@ -219,11 +219,12 @@ def export(cases, path: Path) -> Path:
 
 
 def export_oracle_operands(cases, path: Path) -> Path:
-    """Finding `20260821-power-cycle-ab#10`: the power-balance operands the store does
-    not record, recomputed per case by the package-owned oracle and labelled as
-    oracle-derived. Not package evidence -- and for this study it is the artifact the
-    fence question is asked of, because `recirc_ok`'s computed operand is `pb__rec_frac`
-    and the evidence layer records only single-field float channels (ANNEX, Oracle)."""
+    """Recompute the power-balance operands independently for each case.
+
+    Finding `20260821-power-cycle-ab#10`: historical v2 evidence omitted these
+    fields, so this study used oracle-derived `pb__rec_frac` to read its fence.
+    V3 publishes the fields; this export retains its independent oracle provenance.
+    """
     import oracle_entry as oe  # the seam, beside the route
 
     plant = json.loads((route.PACKAGE_DIR / "inputs" / "stellarator_plant_params.json").read_text())

@@ -219,6 +219,9 @@ def run_points(
     try:
         store.acquire_lease()
         try:
+            for case in StudyQuery(store, Path(package_dir).resolve()).cases():
+                if case.state == "completed":
+                    required_outputs(case, required_channels)
             StudyRunner(store, study, _RequiredOutputsEvaluator(prepared, required_channels)).run()
         finally:
             store.release_lease()
