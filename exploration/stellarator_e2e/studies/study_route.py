@@ -187,7 +187,7 @@ class _RequiredOutputsEvaluator:
 
     def evaluate(self, typed_inputs):
         evidence = self.prepared.evaluate(typed_inputs)
-        required_outputs(evidence, self.channels)
+        require_published(evidence, self.channels)
         return evidence
 
 
@@ -197,8 +197,10 @@ def run_points(
 ):
     """Execute proposals through `StudyRunner`. Returns (cases, db path).
 
-    Check successful evidence before persistence and before evaluating another proposal.
-    The store is left on disk so incompatible evidence cannot silently replace it.
+    Every declared column must be published: existing completed cases are checked under
+    the lease, new evidence before it is persisted. A nonfinite value is a model result and
+    is kept; the exporter refuses it. The store is left on disk so incompatible evidence
+    cannot silently replace it.
     """
     from simkit.study.query import StudyQuery
     from simkit.study.runner import StudyRunner
@@ -221,7 +223,7 @@ def run_points(
         try:
             for case in StudyQuery(store, Path(package_dir).resolve()).cases():
                 if case.state == "completed":
-                    required_outputs(case, required_channels)
+                    require_published(case, required_channels)
             StudyRunner(store, study, _RequiredOutputsEvaluator(prepared, required_channels)).run()
         finally:
             store.release_lease()
@@ -232,9 +234,6 @@ def run_points(
         cases = StudyQuery(reopened, Path(package_dir).resolve()).cases()
     finally:
         reopened.close()
-    for case in cases:
-        if case.state == "completed":
-            required_outputs(case, required_channels)
     return cases, db
 
 
@@ -286,8 +285,9 @@ def short_verdicts(case, package_dir: Path = PACKAGE_DIR) -> dict[str, str]:
     return _short_verdicts(case, _export_catalog(package_dir))
 
 
-def required_outputs(case, channels: dict[str, str]) -> dict:
-    """Resolve the study's declared columns or refuse incomplete numeric evidence."""
+def require_published(case, channels: dict[str, str]) -> None:
+    """Refuse evidence that lacks a declared column. An absent or null value is a tooling
+    omission, never a result, so this is checked during execution."""
     missing = [
         f"{name} ({channel})"
         for name, channel in channels.items()
@@ -295,6 +295,12 @@ def required_outputs(case, channels: dict[str, str]) -> dict:
     ]
     if missing:
         raise RouteError(f"case is missing required result channels: {missing}")
+
+
+def required_outputs(case, channels: dict[str, str]) -> dict:
+    """Resolve the declared columns for export. A nonfinite value is a model result: it is
+    persisted by the run and refused only here, before any CSV byte is written."""
+    require_published(case, channels)
     nonfinite = [
         f"{name} ({channel})"
         for name, channel in channels.items()

@@ -212,3 +212,39 @@ def test_execution_failures_remain_recorded_cases(
     assert [case.state for case in cases] == ["execution_failed"] * failures + ["completed"] * (
         2 - failures
     )
+
+
+def test_nonfinite_declared_value_is_persisted_and_refused_only_at_export(
+    stock_simkit_path, monkeypatch, tmp_path
+):
+    """[OWNER 2026-09-05] A nonfinite value is a model result, not a tooling omission:
+    the run keeps it and the exporter refuses it."""
+    import math
+
+    from simkit.evaluation.evaluator import PreparedEvaluator
+
+    original = PreparedEvaluator.evaluate
+    channel = f"{route.P}pb__p_net"
+    calls = []
+
+    def evaluate(self, inputs):
+        calls.append(inputs)
+        evidence = original(self, inputs)
+        outputs = dict(evidence.outputs)
+        outputs[channel] = float("nan")
+        return evidence.model_copy(update={"outputs": outputs})
+
+    monkeypatch.setattr(PreparedEvaluator, "evaluate", evaluate)
+    required = {"p_net": channel, "lcoe": route.CHANNELS["lcoe"]}
+    proposals = [route.proposal_for(**route.BASELINE)]
+    cases, db = route.run_points(
+        "nonfinite-result", proposals, tmp_path, required_channels=required
+    )
+    assert [case.state for case in cases] == ["completed"]
+    assert math.isnan(cases[0].outputs[channel])
+    resumed, _ = route.run_points(
+        "nonfinite-result", proposals, tmp_path, required_channels=required
+    )
+    assert len(calls) == 1  # the result is kept; the resume re-executes nothing
+    with pytest.raises(route.RouteError, match="nonfinite.*pb__p_net"):
+        route.required_outputs(resumed[0], required)
