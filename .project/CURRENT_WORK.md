@@ -1,5 +1,7 @@
 # Current Work
 
+**2026-09-05 — numeric study evidence repair:** `fix/numeric-study-evidence`, based on current `main`, adds shared required-output validation to all three local exporters, checks their declarations against actual evidence before bulk execution, binds declarations into store compatibility, and refuses missing verification comparisons. Requirements, design decisions, and validation are in [the repair record](research/20260905_numeric-evidence-fix.md). Runtime prerequisite: [TEAx PR #5](https://github.com/rwestwood89/teax/pull/5), evidence v3; use a fresh study store. Historical evidence is unchanged.
+
 **Last Updated**: 2026-08-30
 
 ---

@@ -203,8 +203,7 @@ def export(cases, path: Path) -> Path:
             "availability": float(inp[f"{P}availability"]),
             "discount_rate": float(inp[f"{P}discount_rate"]),
         }
-        for name, channel in CHANNELS.items():
-            row[name] = case.outputs.get(channel)
+        row.update(route.required_outputs(case, CHANNELS))
         verdicts = route.short_verdicts(case)
         row.update(verdicts)
         row["feasible"] = all(status == "satisfied" for status in verdicts.values())
@@ -273,7 +272,7 @@ def run(record_dir: Path = HERE) -> dict[str, object]:
     evaluable, unevaluable = screen(proposals())
     excluded_path = export_excluded(unevaluable, record_dir / "results" / "excluded_points.csv")
 
-    cases, db = route.run_points(STUDY_ID, evaluable, work_dir)
+    cases, db = route.run_points(STUDY_ID, evaluable, work_dir, required_channels=CHANNELS)
     completed = route._completed(cases, STUDY_ID)
     return {
         "points": export(completed, record_dir / "results" / "points.csv"),

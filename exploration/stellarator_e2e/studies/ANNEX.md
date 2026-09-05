@@ -47,6 +47,10 @@ generation that no longer exists, and preflight fails until they are re-declared
 That is `manifest_currency`, and it is deliberate: the pin is a claim about a
 specific package, and a stale claim gating a new package is worse than no gate.
 
+**Numeric publication (evidence v3).** `study_route.run_points(..., required_channels=CHANNELS)` uses the exporter's column map to check actual evidence from the first proposal before opening a study store. That map is also bound into the study definition fingerprint. All returned completed cases and every export row must contain every declared value; absent or null values raise `RouteError` before CSV publication. The shared route defaults to its own `CHANNELS` map. A new study with its own exporter passes its own map.
+
+TEAx's numeric publication repair starts at revision `ca5d490f03af01900693a6e4a520bcaeb941d38a`. Point `STOP_PARSER_TEAX_ROOT` at that revision or a descendant and use a fresh store for v3 evidence. The package fingerprint and arithmetic need not change. Existing v2 stores remain readable, but v3 execution cannot resume them. Re-querying cannot recover values that were never stored; historical exports and their limitations remain attached to their original runs. Record the TEAx revision and evidence version in any rerun's provenance.
+
 ---
 
 ## § Oracle
@@ -74,13 +78,7 @@ mechanical failure, never a silently skipped one. The oracle's module-global `IN
 `_profile_integral` is memoized — exactly, since it depends only on inputs no study
 sweeps.
 
-**Return.** 52 oracle outputs are mapped to qualified channels, CAS27
-(`special_materials_capital`) among them since the migration -- the oracle recomputes it
-from its own blanket volume, so parity verifies it for the first time. The evidence
-layer records only single-field float channels, so 46 of them appear in a study store
-and 6 do not: the `pb__*` power-balance fields, which are fields of one multi-field
-model. `net_positive` and `recirc_ok` reach their operands through those six, which
-is why channel operands resolve from the oracle's return rather than from the store.
+**Return.** 52 oracle outputs are mapped to qualified channels, including CAS27 (`special_materials_capital`), which the oracle recomputes from its own blanket volume. TEAx evidence v2 omitted six plain numeric `pb__*` power-balance fields. Evidence v3 publishes them alongside wrapped numeric outputs. `verify.py` requires both the store and oracle to provide every declared objective and channel-bound predicate operand before comparing values; missing or null coverage refuses verification. Oracle operands still independently re-derive verdicts. This repair does not change the oracle's demo scope recorded in `.project/adr/0010-oracle-mirrors-audited-bindings.md`.
 
 **The operand-binding table, and why it exists.** A predicate operand in
 `contracts/model_contract.json` carries a short `source_name` and a SysML qualified

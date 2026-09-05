@@ -109,8 +109,7 @@ def export(cases, path: Path) -> Path:
     for case in cases:
         inp = case.inputs
         row = {"arm_id": arm_of(inp), "B": float(inp[f"{P}magnet__B"]), "density_scale": density_scale_of(inp)}
-        for name, channel in CHANNELS.items():
-            row[name] = case.outputs.get(channel)
+        row.update(route.required_outputs(case, CHANNELS))
         verdicts = route.short_verdicts(case)
         row.update(verdicts)
         row["feasible"] = all(s == "satisfied" for s in verdicts.values())
@@ -151,7 +150,9 @@ def run(record_dir: Path = HERE) -> dict[str, Path]:
     """Every proposal through the stock lifecycle, one store beside the record, then exports."""
     record_dir = Path(record_dir)
     work_dir = record_dir.parent / "_work" / STUDY_ID          # beside the record (finding #11)
-    cases, db = route.run_points(STUDY_ID, [p for _, p in proposals()], work_dir)
+    cases, db = route.run_points(
+        STUDY_ID, [p for _, p in proposals()], work_dir, required_channels=CHANNELS,
+    )
     completed = route._completed(cases, STUDY_ID)
     return {
         "points": export(completed, record_dir / "results" / "points.csv"),

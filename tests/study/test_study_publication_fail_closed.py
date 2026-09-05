@@ -10,6 +10,7 @@ from __future__ import annotations
 import csv
 import importlib
 import json
+from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
@@ -65,6 +66,10 @@ def _missing_result(case):
     case.outputs.pop(next(iter(study_route.CHANNELS.values())))
 
 
+def _null_result(case):
+    case.outputs[next(iter(study_route.CHANNELS.values()))] = None
+
+
 def _no_checks(case):
     case.verdicts.clear()
 
@@ -79,8 +84,8 @@ def _unexpected_check(case):
 
 @pytest.mark.parametrize(
     "mutate",
-    [_missing_result, _no_checks, _missing_check, _unexpected_check],
-    ids=["missing-result", "no-checks", "missing-check", "unexpected-check"],
+    [_missing_result, _null_result, _no_checks, _missing_check, _unexpected_check],
+    ids=["missing-result", "null-result", "no-checks", "missing-check", "unexpected-check"],
 )
 def test_export_refuses_incomplete_or_unknown_case_data_without_replacing_csv(
     mutate, tmp_path
@@ -95,6 +100,59 @@ def test_export_refuses_incomplete_or_unknown_case_data_without_replacing_csv(
         study_route.export_csv([case], ["R", "a"], output)
 
     assert output.read_bytes() == previous
+
+
+LOCAL_STUDIES = sorted(Path(study_route.HERE).glob("*/study.py"))
+
+
+@pytest.fixture(params=LOCAL_STUDIES, ids=lambda path: path.parent.name)
+def local_study(request):
+    spec = importlib.util.spec_from_file_location(request.param.parent.name, request.param)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def _local_case(study):
+    proposal = study.proposals()[0]
+    inputs = proposal[-1] if isinstance(proposal, tuple) else proposal
+    case = _case()
+    case.candidate_id = "test-candidate"
+    case.inputs = inputs
+    case.outputs = {
+        channel: float(index) for index, channel in enumerate(study.CHANNELS.values())
+    }
+    return case
+
+
+@pytest.mark.parametrize("missing", [True, False], ids=["absent", "null"])
+@pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
+def test_local_export_refuses_incomplete_results_before_publishing(
+    local_study, missing, bad_index, tmp_path
+):
+    cases = [_local_case(local_study), _local_case(local_study)]
+    channel = next(reversed(local_study.CHANNELS.values()))
+    if missing:
+        del cases[bad_index].outputs[channel]
+    else:
+        cases[bad_index].outputs[channel] = None
+    output = tmp_path / "points.csv"
+    previous = b"previous evidence\n"
+    output.write_bytes(previous)
+
+    with pytest.raises(local_study.route.RouteError, match=channel):
+        local_study.export(cases, output)
+
+    assert output.read_bytes() == previous
+
+
+def test_local_export_preserves_all_complete_values_including_zero(local_study, tmp_path):
+    case = _local_case(local_study)
+    output = local_study.export([case], tmp_path / "points.csv")
+    with output.open(newline="") as handle:
+        row = next(csv.DictReader(handle))
+    for name, channel in local_study.CHANNELS.items():
+        assert float(row[name]) == case.outputs[channel]
 
 
 def _command(monkeypatch, stock_simkit_path):

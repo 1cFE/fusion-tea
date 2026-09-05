@@ -150,7 +150,7 @@ def prepare(package_dir: Path, work_dir: Path):
     )
 
 
-def definition(study_id: str, prepared, proposals, package_dir: Path):
+def definition(study_id: str, prepared, proposals, package_dir: Path, required_channels=None):
     from simkit.study.definition import StudyDefinition
     from simkit.study.identity import digest_of
     from simkit.study.model_contract import load_model_contract
@@ -172,32 +172,62 @@ def definition(study_id: str, prepared, proposals, package_dir: Path):
         input_schema_version="input-v1",
         evidence_schema_version=prepared.EVIDENCE_SCHEMA_VERSION,
         study_definition_fingerprint=digest_of(
-            {"proposals": [sorted(p.items()) for p in proposals]}
+            {
+                "proposals": [sorted(p.items()) for p in proposals],
+                "required_channels": sorted((required_channels or CHANNELS).items()),
+            }
         ),
     )
 
 
-def run_points(study_id: str, proposals, work_dir: Path, package_dir: Path = PACKAGE_DIR):
+def run_points(
+    study_id: str, proposals, work_dir: Path, package_dir: Path = PACKAGE_DIR,
+    *, required_channels=None,
+):
     """Execute proposals through `StudyRunner`. Returns (cases, db path).
 
-    The store is left on disk: a definition that unlinked would leave nothing for a
-    lineage refusal to refuse.
+    Check the export declaration against actual evidence before the bulk run.
+    The store is left on disk so incompatible evidence cannot silently replace it.
     """
+    from simkit.study.bridge import CandidateBridge
     from simkit.study.query import StudyQuery
     from simkit.study.runner import StudyRunner
     from simkit.study.store import StudyStore
 
     work_dir = Path(work_dir)
+    proposals = list(proposals)
+    if not proposals:
+        raise RouteError("cannot run a study with no proposals")
+    required_channels = dict(CHANNELS if required_channels is None else required_channels)
+    if not required_channels:
+        raise RouteError("a study must declare required result channels")
     work_dir.mkdir(parents=True, exist_ok=True)
     prepared = prepare(package_dir, work_dir)
-    study = definition(study_id, prepared, proposals, package_dir)
+    first = validate_proposal(proposals[0])
+    if first is None:
+        raise RouteError("the first proposal must be valid for the output publication check")
+    evidence = prepared.evaluate(CandidateBridge(prepared.entry_models).build(first))
+    required_outputs(evidence, required_channels)
+    study = definition(study_id, prepared, proposals, package_dir, required_channels)
     db = work_dir / f"{study_id}.db"
     store = StudyStore.create_or_open(db, study.compatibility())
-    store.acquire_lease()
-    StudyRunner(store, study, prepared).run()
-    store.release_lease()
-    store.close()
-    return StudyQuery(StudyStore(db), Path(package_dir).resolve()).cases(), db
+    try:
+        store.acquire_lease()
+        try:
+            StudyRunner(store, study, prepared).run()
+        finally:
+            store.release_lease()
+    finally:
+        store.close()
+    reopened = StudyStore(db)
+    try:
+        cases = StudyQuery(reopened, Path(package_dir).resolve()).cases()
+    finally:
+        reopened.close()
+    for case in cases:
+        if case.state == "completed":
+            required_outputs(case, required_channels)
+    return cases, db
 
 
 def write_identity_document(package_dir: Path, out_path: Path) -> Path:
@@ -248,6 +278,18 @@ def short_verdicts(case, package_dir: Path = PACKAGE_DIR) -> dict[str, str]:
     return _short_verdicts(case, _export_catalog(package_dir))
 
 
+def required_outputs(case, channels: dict[str, str]) -> dict:
+    """Resolve the study's declared columns or refuse incomplete numeric evidence."""
+    missing = [
+        f"{name} ({channel})"
+        for name, channel in channels.items()
+        if channel not in case.outputs or case.outputs[channel] is None
+    ]
+    if missing:
+        raise RouteError(f"case is missing required result channels: {missing}")
+    return {name: case.outputs[channel] for name, channel in channels.items()}
+
+
 def csv_rows(cases, axes: list[str], package_dir: Path = PACKAGE_DIR) -> list[dict]:
     """Validate every case and build rows without publishing any bytes."""
     cases = list(cases)
@@ -259,16 +301,8 @@ def csv_rows(cases, axes: list[str], package_dir: Path = PACKAGE_DIR) -> list[di
         missing_inputs = [axis for axis in axes if AXES[axis][0] not in case.inputs]
         if missing_inputs:
             raise RouteError(f"case is missing required axes: {missing_inputs}")
-        missing_outputs = [
-            name
-            for name, channel in CHANNELS.items()
-            if channel not in case.outputs or case.outputs[channel] is None
-        ]
-        if missing_outputs:
-            raise RouteError(f"case is missing required result channels: {missing_outputs}")
         row = {axis: case.inputs[AXES[axis][0]] for axis in axes}
-        for name, channel in CHANNELS.items():
-            row[name] = case.outputs[channel]
+        row.update(required_outputs(case, CHANNELS))
         verdicts = _short_verdicts(case, catalog)
         row.update(verdicts)
         row["feasible"] = all(status == "satisfied" for status in verdicts.values())
