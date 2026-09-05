@@ -1,5 +1,5 @@
 ---
-Status: draft
+Status: complete
 Created: 2026-09-05
 Updated: 2026-09-05
 Related Artifacts:
@@ -191,9 +191,9 @@ Every canonical file under `models/` edited here is copied byte-for-byte to its 
 - [x] `pm trace-element` for the changed sustainment calc (its new Source lines) and the beta calc
 - [x] Full `agentic-mbse validate models --complete` — Levels 1–6; 4–6 reviewed; any new residue recorded
 - [x] `tests/models` — expect 48 passed / 13 skipped or better, every delta explained
-- [ ] `rm -rf .integration_workspace`; `tests/study` — expect 362 passed / 1 skipped or better, every delta explained (the first run on the uncommitted tree trips the git-clean gate; the run of record is after commit B)
+- [x] `rm -rf .integration_workspace`; `tests/study` — expect 362 passed / 1 skipped or better, every delta explained (the first run on the uncommitted tree trips the git-clean gate; the run of record is after commit B)
 - [x] Verify each spec success criterion and record where its evidence is (§ Spec success criteria, verified)
-- [ ] **Commit B** with an explicit pathspec: the regenerated package, the impl, the oracle, `oracle_entry.py`, `run_stellaris_single.py`, the pin files, the fixtures, the census, `VALIDATION_MATRIX.md`, the traceability rows, this plan
+- [x] **Commit B** with an explicit pathspec: the regenerated package, the impl, the oracle, `oracle_entry.py`, `run_stellaris_single.py`, the pin files, the fixtures, the census, `VALIDATION_MATRIX.md`, the traceability rows, this plan
 
 **Gate.** Both batteries green with every delta explained; no expectation patched to match; commit B after commit A in `git log`.
 
@@ -242,6 +242,8 @@ Every canonical file under `models/` edited here is copied byte-for-byte to its 
 - **Validation** Levels 1–6 on the committed models (unchanged since commit A): Level 1 0/0; Level 2 the 12 pre-existing placeholder literals; Level 3 0 circular; Level 4 10/10 executable; Level 5 94/94; Level 6 the pre-existing residue minus the retired attribute (236 issues; design attrs 207).
 - **`tests/models`: 48 passed / 13 skipped** — the recorded baseline exactly, the census and spine tests green on the re-derived fixture and the synced twins, the beta test on its restated formals.
 - **A restatement site the phase-4 surface table missed, found while re-pinning:** `exploration/stellarator_e2e/studies/ANNEX.md` § Baseline pin still described the WI-039 state (headline 307.087, `sustainment_ok` expected violated) — WI-041 had not restated it either. Rewritten to the WI-042 state with the pin's history (WI-039 → WI-041 → WI-042), and § Oracle's multi-field note extended with the four new `sustain__*` fields the store never keeps.
+- **`tests/study`, three runs.** On the uncommitted tree (before commit B): 13 failed / 16 errors / 333 passed — every one the git-clean gate except two genuine restatement sites the surface table missed: `test_single_point_gate.py` (the runner's gate families are four since the W–β identity gate; the parametrization restated with an `identity-failure` case) and `test_operand_bindings.py` (`PINNED_LCOE` 313.513 → 322.318, the manifest's headline; the reason in the comment). Both restated in commit B (`9ac167b8`). The run at `9ac167b8`: **362 passed / 1 skipped / 1 failed** — `test_verify.py::test_a_planted_verdict_mismatch_fails_naming_the_constraint`: the store now records `wall_load_ok` satisfied at the baseline geometry, so WI-041's unreachable-limit plant agreed with the store and planted nothing; the plant reversed to 0.0 (the pre-WI-041 direction) with the history in its docstring (`0c20e373`). **The run of record at `0c20e373`: 363 passed / 1 skipped** (one more test than WI-041's 362: the added identity-failure case). Nothing patched to match.
+- **Commit B** `9ac167b8` (the regenerated package, the impl, the oracle, `oracle_entry.py`, the two runners, the pin files, the fixtures, the census, the SV and traceability rows, the annex, the two study tests, this plan), then `0c20e373` (the verify test).
 
 
 
