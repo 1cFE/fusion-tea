@@ -1,6 +1,6 @@
 # What the `wall-and-heating` round-2 review should be told, if the owner rules it goes in front of it
 
-Goal `stored-energy-basis`, round 1. Written 2026-09-05 by the round agent, owner not in session. **Not sent.** Whether this evidence goes in front of the `wall-and-heating` round-2 fresh review and the owner's close-packet rulings is a reserved gate (`goal.md` § Reserved gates, fourth bullet). This file supplies the path; the act is `wall-and-heating`'s own pen, recorded in that goal's trail.
+Goal `stored-energy-basis`, round 1. Written 2026-09-05 by the round agent, owner not in session. **Not sent.** **Addendum below (same day): the review returned at 06:51; path (a) is closed, path (b) applies.** Whether this evidence goes in front of the `wall-and-heating` round-2 fresh review and the owner's close-packet rulings is a reserved gate (`goal.md` § Reserved gates, fourth bullet). This file supplies the path; the act is `wall-and-heating`'s own pen, recorded in that goal's trail.
 
 ## State checked 2026-09-05
 
@@ -36,3 +36,13 @@ Either way this goal's trail cites the `wall-and-heating` entry when it exists; 
 | the one-sided fence (condition 3): 201 of 458 "feasible" points ignited | 1,282 ignited per level; 305 of the record's driven points ignite |
 | the calibration's constancy (condition 4) | untouched; the peak moves through `p_fus` |
 | `R`'s effect (#7; L-010) | stands; not re-measured |
+
+## Addendum 2026-09-05 — the review returned; path (a) is closed
+
+`work/orchestration/goals/wall-and-heating/evidence/round2_review.md` appeared in the primary checkout at 06:51 on 2026-09-05 (untracked; 257 lines), after § State checked above was written. Verdict `FINDINGS`; recommendation: close the goal on § Answered when; close packet of five items; twelve constraints carried forward; L-009..L-012 in the forms to append. No mention of this goal, the counterfactual, or 504.65 MJ. **Path (a) is closed.** Path (b) applies, and the review's own structure gives it three homes, in the owner's order of preference:
+
+1. **Close-packet item 1, the (b) ruling.** The review reads the four conditions on the (b)(ii) positive as "disclosed facts of the model the contract accepts." W-sensitivity is a fifth such fact: the design geometry's closure at 100 MW, the ignited count, and the driven set all move under a 9 % change in W (§ The three readings above). The owner's ruling can name it in the same sentence.
+2. **Close-packet item 5(b), the L-009 landing.** When the round agent appends L-009 to `wall-and-heating/learnings.md` in the review's corrected form, its Scope or Implication line carries "W-sensitive: under the model's stored energy scaled to the printed 504.65 MJ the design column opens (six driven points) — `stored-energy-basis/evidence/w_counterfactual/NOTES.md` § 5 at `3687d2f6`, oracle-side, constant scale." That is that goal's pen, on the owner's say-so.
+3. **A thirteenth constraint carried forward**, if the geometry question is grounded as its own goal (close-packet item 5(c)): any claim on this package that rests on the sustainment fence or on the driven set carries W-sensitivity as a stated condition beside the τ*/τ_E condition, and `NOTES.md` §§ 5, 8 is grounding evidence for that goal.
+
+The paste-ready text under § Path (a) is superseded for the reviewer and stays as the plain-language statement of what moves; the table under § The three readings is the reference either home cites.
