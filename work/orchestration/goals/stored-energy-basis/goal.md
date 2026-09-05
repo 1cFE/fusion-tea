@@ -90,3 +90,11 @@ The owner closes — at grounding on the deposited evidence, on § Answered when
 ## Amendments
 
 None.
+
+### Amendment 2026-09-05 — amends § Status
+
+**Status: `grounded`, 2026-09-05.** The owner ratified grounding in chat on 2026-09-05: *"agreed with grounding the goal"* `[OWNER-VERBATIM 2026-09-05]`. The goal is grounded under the slug it was drafted with. A grounded goal authorizes tasks.
+
+**What the ratification covers, and what it does not.** The owner ratified grounding. § Question and § Answered when were not separately adopted or reworded, and the owner was not in session when this amendment was written, so both stand as `[AGENT] (grounding ratified by owner 2026-09-05; wording not separately reviewed)`. The first bullet of § Reserved gates (ratification of the wording) stays open in that narrower form: the owner may reword either section by a later amendment, and a rewording that changes what (b) requires is an abandonment condition of round 1 (trail § Round 1 § Strategy revision). Every other reserved gate is untouched by this amendment.
+
+**State at grounding.** § Answered when (a) is met by the grounding evidence and (b) has its first pass (`evidence/w_counterfactual/NOTES.md` at `3687d2f6`, the goal's first commit after the branch was rebased onto `feat/demo-maturation` at `1928925b`; formerly `89fc9f06`); (c) is the owner's. Round 1 opens on this amendment (trail § Round 1). This amendment records the state change and the provenance of the wording; it decides nothing else.
