@@ -110,3 +110,7 @@ The owner closes — on the § Answered when condition, or by redirect at any ro
 ## Amendments
 
 None.
+
+### Amendment 2026-09-05 — amends § Status
+
+**What changed.** § Status reads `closed — 2026-09-05`, on the § Answered when condition: (a) met at round 1 (fresh re-grade R4.P = 2, R4.S = 2 at `rubric.md@dc0f0b6d`; confirmed `[OWNER 2026-09-04]`); (b)(i) met by WI-041, archived at `work/completed/20260905_WI-041_source-anchored-wall-load-fence/`; (b)(ii) answered by the committed study `exploration/stellarator_e2e/studies/20260904-wall-and-heating/` (record `@9df54941`, Addenda `@9b1a4ef1` and `@a5b0b96a`) as a conditional positive whose four conditions are disclosed facts of the model. Ruling `[OWNER-VERBATIM 2026-09-05]` "great, close it." on the round-2 review's recommendation (`trail.md` § Round 2 review; `evidence/round2_review.md`), at round 2 of 6. The record of the close is `trail.md` § Goal close — 2026-09-05. Nothing else in this file changes; the follow-on candidates the review names are carried in the discovery log and the epic file, not written into this goal.

@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Epic: MFE Cost Modeling — Tokamak & Stellarator
 Owner: reid
 Created: 2026-09-04
-Updated: 2026-09-04
+Updated: '2026-09-05'
 ---
 
 # WI-041: Source-Anchored Wall-Load Fence — a computed peak against the printed peak, and lifetime by the peak
