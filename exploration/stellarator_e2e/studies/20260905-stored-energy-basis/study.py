@@ -146,7 +146,8 @@ COMMITTED_RESULTS = STUDIES / COMMITTED_ID / "results"
 # 0.915 (the printed 504.65 MJ; NOTES.md section 5, 3687d2f6) and 0.940 (the sourced 518.3 MJ;
 # 498a329e). Joined per point by the committed case id so the record can say where the rule
 # fell relative to each -- predictions the rule tested, never bounds (critique F2).
-GOAL_EVIDENCE = STUDIES.parents[2] / "work"   # the repository root / "orchestration" / "goals" / "stored-energy-basis" / "evidence" / "w_counterfactual"
+# STUDIES.parents[2] is the repository root.
+GOAL_EVIDENCE = STUDIES.parents[2] / "work" / "orchestration" / "goals" / "stored-energy-basis" / "evidence" / "w_counterfactual"
 COUNTERFACTUALS = {"cf0915": GOAL_EVIDENCE / "window_counterfactual.csv",
                    "cf0940": GOAL_EVIDENCE / "window_counterfactual_518.3.csv"}
 ARM_P100 = "arm-fence-p100"
