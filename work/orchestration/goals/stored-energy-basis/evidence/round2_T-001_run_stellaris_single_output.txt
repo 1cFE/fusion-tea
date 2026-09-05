@@ -1,0 +1,75 @@
+
+=== NINE ANCHORS (single-pass, graph rollup, no bridge) ===
+  total capital $  exec=  14442862261.866261  expect=14442862261.86626   OK
+  LCOE $/MWh       exec=          322.318439  expect=322.318439          OK
+  p_net MW         exec=          716.633806  expect=716.633806          OK
+  q_eng            exec=            3.006952  expect=3.006952            OK
+  rec_frac         exec=            0.332563  expect=0.332563            OK
+  magnet %         exec=           37.395856  expect=37.395856           OK
+  CAS70 $/yr       exec=    193529567.738861  expect=193529567.738861    OK
+  CAS80 $/yr       exec=       746174.847154  expect=746174.847154       OK
+  lcoe_1cfe $/MWh (comparison) exec=          316.141142  expect=316.141142          OK
+  magnet capital $ = 5,401,032,000.00
+=== NINE VERDICTS (generated ConstraintReport) ===
+  wp_stress_ok   satisfied
+  cond_strain_ok satisfied
+  recirc_ok      satisfied
+  beta_ok        satisfied
+  net_positive   satisfied
+  wall_load_ok   satisfied
+  tbr_ok         satisfied
+  peak_field_ok  satisfied
+  sustainment_ok satisfied
+VERDICT PARITY: PASS -- headline=full_satisfaction, assessed_entry_count=9, nine satisfied (WI-042: sustainment_ok and wall_load_ok flipped to satisfied by the sourced ash profile; disclosed, never tuned)
+ANCHORS GREEN
+
+=== BIT-EXACT vs ORACLE (rel<1e-9) ===
+  total_capital    exec=14442862261.866260529 oracle=14442862261.866258621 reldev=1.32e-16 OK
+  lcoe             exec=       322.318439486 oracle=       322.318439486 reldev=1.76e-16 OK
+  p_net            exec=       716.633806370 oracle=       716.633806370 reldev=0.00e+00 OK
+  q_eng            exec=         3.006952411 oracle=         3.006952411 reldev=0.00e+00 OK
+  rec_frac         exec=         0.332562629 oracle=         0.332562629 reldev=0.00e+00 OK
+  cas20_capital    exec=10796804686.376846313 oracle=10796804686.376844406 reldev=1.77e-16 OK
+  overnight_capital exec=14442862261.866260529 oracle=14442862261.866258621 reldev=1.32e-16 OK
+  cas71_annual     exec=  66879911.953133821 oracle=  66879911.953133821 reldev=0.00e+00 OK
+  cas72_annual     exec= 126649655.785726920 oracle= 126649655.785726920 reldev=0.00e+00 OK
+  cas70_annual     exec= 193529567.738860726 oracle= 193529567.738860726 reldev=0.00e+00 OK
+  cas80_annual     exec=    746174.847153914 oracle=    746174.847153914 reldev=0.00e+00 OK
+  annual_fuel      exec=    518520.466265852 oracle=    518520.466265852 reldev=0.00e+00 OK
+  cas90_1cfe       exec=1492670879.513313055 oracle=1492670879.513312817 reldev=1.60e-16 OK
+  lcoe_1cfe        exec=       316.141141767 oracle=       316.141141767 reldev=1.80e-16 OK
+  beta             exec=         0.025304999 oracle=         0.025304999 reldev=0.00e+00 OK
+  B_peak           exec=        24.900000000 oracle=        24.900000000 reldev=0.00e+00 OK
+  n_bar19          exec=        37.776614511 oracle=        37.776614511 reldev=0.00e+00 OK
+  n_He0            exec=60435561326503559168.000000000 oracle=60435561326503559168.000000000 reldev=0.00e+00 OK
+  n_D0             exec=192564438673496440832.000000000 oracle=192564438673496440832.000000000 reldev=0.00e+00 OK
+  tau_E            exec=         1.557333622 oracle=         1.557333622 reldev=0.00e+00 OK
+  W_th             exec=       519.914213988 oracle=       519.914213988 reldev=0.00e+00 OK
+  p_brems          exec=        91.447233579 oracle=        91.447233579 reldev=0.00e+00 OK
+  p_line           exec=       114.011833218 oracle=       114.011833218 reldev=0.00e+00 OK
+  p_sync           exec=        14.262578427 oracle=        14.262578427 reldev=0.00e+00 OK
+  p_rad            exec=       219.721645224 oracle=       219.721645224 reldev=0.00e+00 OK
+  p_aux_required   exec=        49.079600788 oracle=        49.079600788 reldev=0.00e+00 OK
+  p_avg            exec=    815551.680637826 oracle=    815551.680637826 reldev=0.00e+00 OK
+  n_e_volav        exec=317173922797849608192.000000000 oracle=317173922797849608192.000000000 reldev=0.00e+00 OK
+  alpha_n_e_eff    exec=         0.595339224 oracle=         0.595339224 reldev=0.00e+00 OK
+  alpha_He_eff     exec=         4.051846994 oracle=         4.051846994 reldev=0.00e+00 OK
+BIT-EXACT vs oracle: PASS
+
+=== W-BETA IDENTITY (one pressure integral, WI-042; rel<1e-12) ===
+  W from beta = 519.914213988 MJ  W_th = 519.914213988 MJ  reldev=0.00e+00 OK
+
+=== WI-029 CAS72 GUARD-LIVE SPOT-CHECK (impl vs oracle mirror, rel<1e-9) ===
+  clip CAP binds (low wall loading, high fluence limit)
+    expect: core_lifetime_fpy == operational_years * availability
+    impl=0.000000  mirror=0.000000  reldev=0.00e+00 OK
+  clip FLOOR binds (extreme wall loading) -> n_rep = 53, cost nonzero
+    expect: core_lifetime_fpy == 0.5 (floor), n_rep = 53
+    impl=1,219,445,700.972802  mirror=1,219,445,700.972802  reldev=0.00e+00 OK
+  outer max binds (replacement interval >= plant life -> n_rep = 0)
+    expect: n_rep == 0 (cost == 0)
+    impl=0.000000  mirror=0.000000  reldev=0.00e+00 OK
+    [guard live] raw FPY 4126.668 > cap 27.000 -> clip BINDS
+    [guard live] raw FPY 0.07428 < floor 0.500 -> clip FLOOR BINDS, cost nonzero
+    [guard live] n_rep floored to 0 -> cost exactly 0.0 -> outer max BINDS
+GUARD-LIVE SPOT-CHECK: PASS

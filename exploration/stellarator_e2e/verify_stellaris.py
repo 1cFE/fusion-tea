@@ -95,39 +95,62 @@ def _p_sync_albajar(T_e0, n_e0_20, B, R, a, kappa, R_w, alpha_n, alpha_T):
 
 
 def _sustainment(p, V, B_axis):
-    """Mirror of run_plasma_sustainment (same names, same statement order)."""
+    """Mirror of run_plasma_sustainment (same names, same statement order).
+
+    WI-042: the helium ash follows the source's own rule -- Eq. A.5 applied
+    pointwise with tau* uniform in rho, so n_He(rho) = n_He0 * S(rho) with S the
+    fusion-rate shape -- the electrons close by quasi-neutrality pointwise, the
+    ISS04 line average and the radiation integrals take the derived electron
+    profile, and p_avg (the one volume-averaged thermal pressure) feeds both W
+    and beta. Written from the WI-042 design (work/active/WI-042_sourced-helium-
+    ash-profile/design.md, section Research findings and D1-D6).
+    """
     n_e0 = p["n_e0"]
     T_i0 = p["T_i0"]
     a = p["a"]
     R = p["magnet_R0"]
     B = B_axis
     alpha_n = p["alpha_n"]
-    alpha_n_e = p["alpha_n_e"]
     alpha_T = p["alpha_T"]
     T_e0 = T_i0 / p["Ti_over_Te"]
-    n_bar19 = n_e0 * _trapz_rho(lambda u, rho: u ** alpha_n_e) / 1e19
-    C = (0.134 * p["f_ren"] * a ** 2.28 * B ** 0.84
-         * p["iota_23"] ** 0.41 * n_bar19 ** 0.54 * R ** 0.64)
-    fus_I = _profile_integral(alpha_n, alpha_T, T_i0)
     sigv_peak = _sigv_dt(T_i0)
+
+    # The ash shape: the fusion-rate profile normalised to its peak, S(0) = 1.
+    def S(u):
+        return (u ** (2.0 * alpha_n)) * _sigv_dt(T_i0 * (u ** alpha_T)) / sigv_peak
+
+    # Profile integrals that do not depend on the ash amount (computed once).
+    I_line_fuel = _trapz_rho(lambda u, rho: u ** alpha_n)             # chord average of the fuel shape
+    I_line_S = _trapz_rho(lambda u, rho: S(u))                         # chord average of the ash shape
+    I_W_S = _trapz_rho(lambda u, rho: S(u) * (u ** alpha_T) * 2.0 * rho)   # <S u^alpha_T>_V
+    I_vol_S = _trapz_rho(lambda u, rho: S(u) * 2.0 * rho)              # <S>_V
+    fus_I = _profile_integral(alpha_n, alpha_T, T_i0)
+    C_geo = (0.134 * p["f_ren"] * a ** 2.28 * B ** 0.84
+             * p["iota_23"] ** 0.41 * R ** 0.64)
 
     def state(n_He0):
         n_fuel = n_e0 - 2.0 * n_He0
         if n_fuel <= 0.0:
             raise RuntimeError("oracle sustainment: non-positive fuel")
         n_D0 = n_T0 = 0.5 * n_fuel
+        # Line-averaged density of the DERIVED electron profile (ISS04's n19);
+        # the prefactor is re-evaluated at every iterate (WI-042 D3).
+        n_bar19 = (2.0 * n_D0 * I_line_fuel + 2.0 * n_He0 * I_line_S) / 1e19
+        C = C_geo * n_bar19 ** 0.54
+        # The one volume-averaged thermal pressure [Pa]: the closed-form fuel
+        # term plus the ash-weighted integral.
         p_avg = KEV_TO_J * (
-            n_e0 * T_e0 / (1.0 + alpha_n_e + alpha_T)
-            + (n_D0 + n_T0 + n_He0) * T_i0 / (1.0 + alpha_n + alpha_T)
+            2.0 * n_D0 * (T_e0 + T_i0) / (1.0 + alpha_n + alpha_T)
+            + n_He0 * (2.0 * T_e0 + T_i0) * I_W_S
         )
         W_th = 1.5 * p_avg * V * 1e-6
         tau_E = (C * W_th ** -0.61) ** (1.0 / 0.39)
-        return n_D0, n_T0, W_th, tau_E
+        return n_D0, n_T0, W_th, tau_E, n_bar19, p_avg
 
     n_He0 = 0.0
     converged = False
     for _ in range(ASH_CAP):
-        n_D0, n_T0, W_th, tau_E = state(n_He0)
+        n_D0, n_T0, W_th, tau_E, n_bar19, p_avg = state(n_He0)
         n_He_new = (p["f_suppr_ash"] * p["tau_ratio_ash"] * tau_E
                     * n_D0 * n_T0 * sigv_peak)
         if abs(n_He_new - n_He0) < ASH_TOL:
@@ -137,25 +160,49 @@ def _sustainment(p, V, B_axis):
         n_He0 = 0.5 * (n_He0 + n_He_new)
     if not converged:
         raise RuntimeError("oracle sustainment: ash fixed point did not converge")
-    n_D0, n_T0, W_th, tau_E = state(n_He0)
+    n_D0, n_T0, W_th, tau_E, n_bar19, p_avg = state(n_He0)
     p_fus = n_D0 * n_T0 * fus_I * p["E_fus"] * V * 1e-6
-    p_brems = (5.35e-37 * p["Z_eff_core"] * n_e0 ** 2
-               * _trapz_rho(lambda u, rho: (u ** (2.0 * alpha_n_e))
+
+    # The derived electron profile and its diagnostics.
+    def n_e(u):
+        return 2.0 * n_D0 * (u ** alpha_n) + 2.0 * n_He0 * S(u)
+
+    n_e_volav = 2.0 * n_D0 / (1.0 + alpha_n) + 2.0 * n_He0 * I_vol_S
+    alpha_n_e_eff = n_e0 / n_e_volav - 1.0
+    xs = []
+    ys = []
+    for k in range(1, 1701):
+        rho_k = k / 2000.0
+        u_k = 1.0 - rho_k * rho_k
+        xs.append(math.log(u_k))
+        ys.append(math.log(S(u_k)))
+    mx = sum(xs) / 1700.0
+    my = sum(ys) / 1700.0
+    sxy = 0.0
+    sxx = 0.0
+    for x, y in zip(xs, ys):
+        sxy += (x - mx) * (y - my)
+        sxx += (x - mx) * (x - mx)
+    alpha_He_eff = sxy / sxx
+
+    p_brems = (5.35e-37 * p["Z_eff_core"]
+               * _trapz_rho(lambda u, rho: (n_e(u) ** 2)
                             * math.sqrt(max(T_e0 * (u ** alpha_T), 1e-9)) * 2.0 * rho)
                * V * 1e-6)
-    p_line = (p["f_W_core"] * n_e0 ** 2
-              * _trapz_rho(lambda u, rho: (u ** (2.0 * alpha_n_e))
+    p_line = (p["f_W_core"]
+              * _trapz_rho(lambda u, rho: (n_e(u) ** 2)
                            * _lz_w(T_e0 * (u ** alpha_T)) * 2.0 * rho)
               * V * 1e-6)
     p_sync = _p_sync_albajar(T_e0, n_e0 / 1e20, B, R, a,
-                             p["kappa_sync"], p["R_w_sync"], alpha_n_e, alpha_T)
+                             p["kappa_sync"], p["R_w_sync"], alpha_n_e_eff, alpha_T)
     p_rad = p_brems + p_line + p_sync
     p_alpha_heat = p["f_alpha_fast"] * p["sustain_ash_frac"] * p_fus
     p_aux_required = p_rad + W_th / tau_E - p_alpha_heat
     return dict(n_bar19=n_bar19, n_He0=n_He0, n_D0=n_D0, n_T0=n_T0, T_e0=T_e0,
                 W_th=W_th, tau_E=tau_E, p_brems=p_brems, p_line=p_line,
                 p_sync=p_sync, p_rad=p_rad, p_alpha_heat=p_alpha_heat,
-                p_aux_required=p_aux_required)
+                p_aux_required=p_aux_required, p_avg=p_avg, n_e_volav=n_e_volav,
+                alpha_n_e_eff=alpha_n_e_eff, alpha_He_eff=alpha_He_eff)
 
 
 # --- Stellaris design-point inputs (from stellarator_plant.sysml bindings) ---
@@ -176,13 +223,13 @@ IN = dict(
     # WI-037: n_D0/n_T0/T_e0/n_He0 retired -- computed by the sustainment
     # chain below (quasi-neutral fuel, converged A.5/A.6 ash, held Ti/Te
     # ratio). n_e0 and T_i0 are the operating-point levers.
-    n_e0=5.06e20, alpha_n_e=0.596,
+    n_e0=5.06e20,   # WI-042: alpha_n_e retired -- the electron profile is derived
     # WI-037 sustainment held facts (image-verified; see stellarator_plant
     # bindings): Fig. 11(a) read, Tables 2/4/5, raw PDF sec. 2.5.
     iota_23=0.92, f_ren=1.0, f_alpha_fast=0.95, tau_ratio_ash=8.0,
     f_suppr_ash=0.5, Z_eff_core=1.20, f_W_core=7.76e-6, Ti_over_Te=0.95,
     sustain_ash_frac=0.2002, R_w_sync=0.6, kappa_sync=1.0,
-    beta_mu0=1.25663706212e-6, beta_e_keV=1.602176634e-16,  # 'Volume-Averaged Beta' defaults
+    beta_mu0=1.25663706212e-6,  # 'Volume-Averaged Beta' default (e_keV retired at WI-042)
     # power balance
     mn=1.2, eta_th=0.333, eta_p=0.5,
     # Heating power chain (WI-039). Wall-plug is the entry point; the source
@@ -591,14 +638,10 @@ def compute():
                  / (8760.0 * p_net * n * p["availability"]))
 
     # --- Volume-averaged thermal beta and conductor peak field (WI-030) ---
-    # Mirrors 'Volume-Averaged Beta' / 'Conductor Peak Field' operation for
-    # operation (bit-exact bar): <n T> = n0 T0 / (1 + alpha_n + alpha_T) per species.
-    beta_p_e = p["n_e0"] * sust["T_e0"] / (1.0 + p["alpha_n_e"] + p["alpha_T"])
-    beta_p_fuel = (sust["n_D0"] + sust["n_T0"]) * p["T_i0"] / (1.0 + p["alpha_n"] + p["alpha_T"])
-    beta_p_He = sust["n_He0"] * p["T_i0"] / (1.0 + p["alpha_n"] + p["alpha_T"])
-    beta_p_avg = (beta_p_e + beta_p_fuel + beta_p_He) * p["beta_e_keV"]
+    # WI-042: beta reads the sustainment chain's one volume-averaged pressure
+    # ('Volume-Averaged Beta' on p_avg_in) -- W and beta share <p> by construction.
     # WI-035: beta reads the computed axis field (B_peak computed above).
-    beta = 2.0 * p["beta_mu0"] * beta_p_avg / (B_axis ** 2)
+    beta = 2.0 * p["beta_mu0"] * sust["p_avg"] / (B_axis ** 2)
 
     return dict(
         V=V, p_fus=p_fus, p_th=p_th, p_the=p_the, p_et=p_et,
@@ -614,6 +657,9 @@ def compute():
         tau_E=sust["tau_E"], p_brems=sust["p_brems"], p_line=sust["p_line"],
         p_sync=sust["p_sync"], p_rad=sust["p_rad"],
         p_alpha_heat=sust["p_alpha_heat"], p_aux_required=sust["p_aux_required"],
+        # WI-042 derived-profile channels
+        p_avg=sust["p_avg"], n_e_volav=sust["n_e_volav"],
+        alpha_n_e_eff=sust["alpha_n_e_eff"], alpha_He_eff=sust["alpha_He_eff"],
         # WI-039 heating-chain channels
         heat_eta_pin_eff=heat_eta_pin_eff, heat_delivered=heat_delivered,
         heat_coupled=heat_coupled, heat_wallplug_total=heat_wallplug_total,

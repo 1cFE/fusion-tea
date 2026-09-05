@@ -75,7 +75,8 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}magnet__B_max": "magnet_B_max",
     f"{P}magnet__peak_ratio": "magnet_peak_ratio",
     f"{P}n_e0": "n_e0",
-    f"{P}alpha_n_e": "alpha_n_e",
+    # WI-042: alpha_n_e retired as an entry key -- the electron profile is derived
+    # inside the sustainment chain by quasi-neutrality from the fuel and the ash.
     f"{P}T_i0": "T_i0",
     # WI-037: n_D0/n_T0/T_e0/n_He0 retired as entry keys (computed by the
     # sustainment chain); the sustainment held facts and the coupled-heating
@@ -205,6 +206,13 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "p_rad": f"{P}sustain__p_rad",
     "p_alpha_heat": f"{P}sustain__p_alpha_heat",
     "p_aux_required": f"{P}sustain__p_aux_required",
+    # WI-042 derived-profile channels: the one volume-averaged pressure (beta's
+    # input), the derived electron profile's volume average and effective
+    # exponent, and the ash shape's effective exponent (a diagnostic).
+    "p_avg": f"{P}sustain__p_avg",
+    "n_e_volav": f"{P}sustain__n_e_volav",
+    "alpha_n_e_eff": f"{P}sustain__alpha_n_e_eff",
+    "alpha_He_eff": f"{P}sustain__alpha_He_eff",
     # WI-039 heating-chain channels
     "heat_coupled": f"{P}heat__p_coupled",
     "heat_delivered": f"{P}heat__p_delivered",

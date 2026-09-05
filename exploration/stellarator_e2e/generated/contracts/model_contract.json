@@ -511,6 +511,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__sustain__p_avg",
+      "field_name": "p_avg",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__sustain__p_brems",
       "field_name": "p_brems",
       "python_type": "float"
@@ -523,6 +528,11 @@
     {
       "channel_name": "stellarator_09__stellaris__sustain__n_D0",
       "field_name": "n_D0",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__sustain__alpha_n_e_eff",
+      "field_name": "alpha_n_e_eff",
       "python_type": "float"
     },
     {
@@ -553,6 +563,16 @@
     {
       "channel_name": "stellarator_09__stellaris__sustain__p_line",
       "field_name": "p_line",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__sustain__n_e_volav",
+      "field_name": "n_e_volav",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__sustain__alpha_He_eff",
+      "field_name": "alpha_He_eff",
       "python_type": "float"
     },
     {
@@ -1294,13 +1314,6 @@
       "qualified_name": "stellarator_09__stellaris__recirc_ok__threshold"
     },
     {
-      "default_value": 1.602176634e-16,
-      "entry_type": "library_default",
-      "param_group": "mfe_plasma_scaling_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__beta_calc__e_keV"
-    },
-    {
       "default_value": 1.25663706212e-06,
       "entry_type": "library_default",
       "param_group": "mfe_plasma_scaling_params",
@@ -1432,13 +1445,6 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__alpha_n"
-    },
-    {
-      "default_value": 0.596,
-      "entry_type": "design_attribute",
-      "param_group": "stellarator_plant_params",
-      "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__alpha_n_e"
     },
     {
       "default_value": 200000000.0,
@@ -2372,5 +2378,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "d468f3b69ad00c46b259bfeca2123d7db5a527c3a0da55e69b54793845417736"
+  "semantic_fingerprint": "c37fb58a2b19973d1698aeace5184890107efdf0136d20a502ffe88a0eb956a4"
 }

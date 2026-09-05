@@ -454,7 +454,7 @@ class TestCoil_Set_Axis_FieldRunnable:
 class TestConductor_Peak_FieldRunnable:
     """Verify conductor_peak_field implementation runs without error.
 
-    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:422
+    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:404
     """
 
     def test_import_and_run(self):
@@ -686,7 +686,7 @@ class TestPlasma_SustainmentRunnable:
 
             # If implemented, verify return type
             assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
-            assert len(result) == 13, f"Expected 13 outputs"
+            assert len(result) == 17, f"Expected 17 outputs"
             assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
 
         except NotImplementedError:

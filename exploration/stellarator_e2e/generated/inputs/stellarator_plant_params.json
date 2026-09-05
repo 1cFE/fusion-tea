@@ -9,7 +9,6 @@
   "stellarator_09__stellaris__a": 1.3,
   "stellarator_09__stellaris__alpha_T": 1.19,
   "stellarator_09__stellaris__alpha_n": 0.33,
-  "stellarator_09__stellaris__alpha_n_e": 0.596,
   "stellarator_09__stellaris__aux_cryo_base": 200000000.0,
   "stellarator_09__stellaris__aux_per_mw": 1100.0,
   "stellarator_09__stellaris__availability": 0.85,

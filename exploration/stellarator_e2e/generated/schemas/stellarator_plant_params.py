@@ -16,7 +16,6 @@ class StellaratorPlantParams(BaseModel):
     stellarator_09__stellaris__a: float = Field(default=1.3, description="Entry point: a")
     stellarator_09__stellaris__alpha_T: float = Field(default=1.19, description="Entry point: alpha_T")
     stellarator_09__stellaris__alpha_n: float = Field(default=0.33, description="Entry point: alpha_n")
-    stellarator_09__stellaris__alpha_n_e: float = Field(default=0.596, description="Entry point: alpha_n_e")
     stellarator_09__stellaris__aux_cryo_base: float = Field(default=200000000.0, description="Entry point: aux_cryo_base")
     stellarator_09__stellaris__aux_per_mw: float = Field(default=1100.0, description="Entry point: aux_per_mw")
     stellarator_09__stellaris__availability: float = Field(default=0.85, description="Entry point: availability")

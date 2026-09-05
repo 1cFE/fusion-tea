@@ -38,12 +38,20 @@ fraction at different precisions; neither is swept today.
 ## § Baseline pin
 
 The pinned baseline point, its headline, and its expected verdicts live in
-`manifest.json` → `baseline`. Today (**WI-039 regeneration, 2026-09-03**): `R = 12.7 m`,
+`manifest.json` → `baseline`. Today (**WI-042 regeneration, 2026-09-05**): `R = 12.7 m`,
 `a = 1.3 m`, `availability = 0.85`, headline
-`stellarator_09__stellaris__lcoe_calc__lcoe` = `307.08712042841586`, **nine**
-verdicts — eight satisfied and `sustainment_ok` **expected violated** (the disclosed
-WI-037 baseline state: required sustained coupled heating ~90.6 MW vs 50 coupled).
-Two regenerations have now left that headline untouched, each for its own reason.
+`stellarator_09__stellaris__lcoe_calc__lcoe` = `322.31843948570247`, **nine**
+verdicts, **all satisfied** — `sustainment_ok` by 0.92 MW (required sustained coupled
+heating 49.08 MW vs 50 coupled, a margin inside the source's own 2.7 % residual on its
+printed stored energy: on the boundary, never tuned) and `wall_load_ok` at 3.979 against
+4.05, both flipped from violated by the helium ash on the source's own profile rule
+(WI-042; goal `stored-energy-basis` L-002/L-003). History of the pin: the WI-039
+regeneration (2026-09-03) left the headline at `307.08712042841586` with
+`sustainment_ok` expected violated (the WI-037 profile family: ~90.6 MW vs 50); WI-041
+(2026-09-04) moved it to `313.5134115016116` and flipped `wall_load_ok` to expected
+violated (the source-anchored peak 4.088 against 4.05); WI-042 moved it to the value
+above and flipped both back. Two earlier regenerations had left the headline untouched,
+each for its own reason.
 WI-036 added the ninth verdict, `cond_strain_ok`: its winding-pack sizing chain is
 neutral at the design point by construction (`wp_side` reproduces 0.360000 m and
 `c_coil` 25.0 m from the levers `j_wp` and `k_coil`). WI-039 added the heating power
@@ -106,7 +114,7 @@ sweeps.
 from its own blanket volume, so parity verifies it for the first time. The evidence
 layer records only single-field float channels, so 46 of them appear in a study store
 and 6 do not: the `pb__*` power-balance fields, which are fields of one multi-field
-model — and since WI-037 the `sustain__*` sustainment fields share the same limitation (`20260901-sustainment-fence#3`); their per-point values are exported oracle-side in that study's `oracle_operands.csv`. Since WI-039 the four `heat__*` heating-chain fields (`p_delivered`, `p_coupled`, `eta_pin_eff`, `p_wallplug_total`) share it too — `20260903-wall-and-heating#4`, the fourth committed sighting of the class: declaring one of them as a store channel yields a silent blank column, and the counts in this paragraph are the migration-era counts, which the WI-037 and WI-039 fields add to on the second side. `net_positive` and `recirc_ok` reach their operands through those six, which
+model — and since WI-037 the `sustain__*` sustainment fields share the same limitation (`20260901-sustainment-fence#3`; WI-042 added four more of them — `p_avg`, `n_e_volav`, `alpha_n_e_eff`, `alpha_He_eff` — which the store likewise never keeps); their per-point values are exported oracle-side in that study's `oracle_operands.csv`. Since WI-039 the four `heat__*` heating-chain fields (`p_delivered`, `p_coupled`, `eta_pin_eff`, `p_wallplug_total`) share it too — `20260903-wall-and-heating#4`, the fourth committed sighting of the class: declaring one of them as a store channel yields a silent blank column, and the counts in this paragraph are the migration-era counts, which the WI-037 and WI-039 fields add to on the second side. `net_positive` and `recirc_ok` reach their operands through those six, which
 is why channel operands resolve from the oracle's return rather than from the store.
 
 **The operand-binding table, and why it exists.** A predicate operand in

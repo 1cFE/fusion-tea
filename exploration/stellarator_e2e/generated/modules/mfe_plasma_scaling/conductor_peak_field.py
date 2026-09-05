@@ -28,9 +28,9 @@ Inputs:
 Outputs:
     - B_peak: B_peak result
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:422
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:404
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:422
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:404
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_plasma_scaling/conductor_peak_field_impl.py
@@ -82,9 +82,9 @@ Inputs:
 Outputs:
     - B_peak: B_peak result
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:422
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:404
 
-    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:422
+    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:404
 
     Calculation Specification:
         B_peak = B_axis_in * peak_ratio_in

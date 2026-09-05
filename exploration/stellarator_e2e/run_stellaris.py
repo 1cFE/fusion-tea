@@ -91,6 +91,11 @@ CH = dict(
     p_line=f"{P}sustain__p_line", p_sync=f"{P}sustain__p_sync",
     p_rad=f"{P}sustain__p_rad", p_alpha_heat=f"{P}sustain__p_alpha_heat",
     p_aux_required=f"{P}sustain__p_aux_required",
+    # WI-042 derived-profile channels: the one volume-averaged pressure (beta's
+    # input), the derived electron profile's volume average and effective
+    # exponent, and the ash shape's effective exponent.
+    p_avg=f"{P}sustain__p_avg", n_e_volav=f"{P}sustain__n_e_volav",
+    alpha_n_e_eff=f"{P}sustain__alpha_n_e_eff", alpha_He_eff=f"{P}sustain__alpha_He_eff",
 )
 
 failures = []

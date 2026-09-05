@@ -1,11 +1,10 @@
 {
-  "derived_against_semantic_fingerprint": "d468f3b69ad00c46b259bfeca2123d7db5a527c3a0da55e69b54793845417736",
-  "entry_points": 207,
+  "derived_against_semantic_fingerprint": "c37fb58a2b19973d1698aeace5184890107efdf0136d20a502ffe88a0eb956a4",
+  "entry_points": 205,
   "by_entry_type": {
     "library_default": [
       "stellarator_09__stellaris__aux_cooling__alpha",
       "stellarator_09__stellaris__aux_cooling__p_cryo_ref",
-      "stellarator_09__stellaris__beta_calc__e_keV",
       "stellarator_09__stellaris__beta_calc__mu0",
       "stellarator_09__stellaris__blanket_cost__alpha",
       "stellarator_09__stellaris__blanket_cost__p_th_ref",
@@ -79,7 +78,6 @@
       "stellarator_09__stellaris__a",
       "stellarator_09__stellaris__alpha_T",
       "stellarator_09__stellaris__alpha_n",
-      "stellarator_09__stellaris__alpha_n_e",
       "stellarator_09__stellaris__aux_cryo_base",
       "stellarator_09__stellaris__aux_per_mw",
       "stellarator_09__stellaris__availability",

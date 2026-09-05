@@ -10,9 +10,9 @@ Inputs:
 Outputs:
     - cas23_to_28_capital: cas23_to_28_capital result
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:806
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:803
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:806
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:803
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_plant/mfe_power_plant/cas23_to_28_capital_impl.py
@@ -48,9 +48,9 @@ Inputs:
 Outputs:
     - cas23_to_28_capital: cas23_to_28_capital result
 
-SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:806
+SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:803
 
-    SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:806
+    SysML Source: root-0/designs/generic_mfe/mfe_plant.sysml:803
 
     Calculation Specification:
 

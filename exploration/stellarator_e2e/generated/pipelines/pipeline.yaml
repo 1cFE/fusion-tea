@@ -221,7 +221,6 @@ modules:
       iota_23_in: float stellarator_plant_params.stellarator_09__stellaris__iota_23
       Z_eff_in: float stellarator_plant_params.stellarator_09__stellaris__Z_eff_core
       ash_frac_in: float mfe_plasma_sustainment_params.stellarator_09__stellaris__sustain__ash_frac_in
-      alpha_n_e_in: float stellarator_plant_params.stellarator_09__stellaris__alpha_n_e
       alpha_T_in: float stellarator_plant_params.stellarator_09__stellaris__alpha_T
       kappa_sync_in: float mfe_plasma_sustainment_params.stellarator_09__stellaris__sustain__kappa_sync_in
       V: float stellarator_09__stellaris__geom__V.root
@@ -243,15 +242,19 @@ modules:
       n_bar19: float stellarator_09__stellaris__sustain__n_bar19
       n_T0: float stellarator_09__stellaris__sustain__n_T0
       W_th: float stellarator_09__stellaris__sustain__W_th
+      p_avg: float stellarator_09__stellaris__sustain__p_avg
       p_brems: float stellarator_09__stellaris__sustain__p_brems
       n_He0: float stellarator_09__stellaris__sustain__n_He0
       n_D0: float stellarator_09__stellaris__sustain__n_D0
+      alpha_n_e_eff: float stellarator_09__stellaris__sustain__alpha_n_e_eff
       p_aux_required: float stellarator_09__stellaris__sustain__p_aux_required
       p_rad: float stellarator_09__stellaris__sustain__p_rad
       p_alpha_heat: float stellarator_09__stellaris__sustain__p_alpha_heat
       tau_E: float stellarator_09__stellaris__sustain__tau_E
       p_sync: float stellarator_09__stellaris__sustain__p_sync
       p_line: float stellarator_09__stellaris__sustain__p_line
+      n_e_volav: float stellarator_09__stellaris__sustain__n_e_volav
+      alpha_He_eff: float stellarator_09__stellaris__sustain__alpha_He_eff
       T_e0: float stellarator_09__stellaris__sustain__T_e0
 
   # mfe_plasma_scaling.DT_Fusion_PowerModule
@@ -274,18 +277,9 @@ modules:
   stellarator_09__stellaris__beta_calc:
     module_type: mfe_plasma_scaling.Volume_Averaged_BetaModule
     inputs:
-      n_D0_in: float stellarator_09__stellaris__sustain__n_D0
       mu0: float mfe_plasma_scaling_params.stellarator_09__stellaris__beta_calc__mu0
-      alpha_n_in: float stellarator_plant_params.stellarator_09__stellaris__alpha_n
-      T_e0_in: float stellarator_09__stellaris__sustain__T_e0
-      alpha_n_e_in: float stellarator_plant_params.stellarator_09__stellaris__alpha_n_e
-      n_He0_in: float stellarator_09__stellaris__sustain__n_He0
-      alpha_T_in: float stellarator_plant_params.stellarator_09__stellaris__alpha_T
-      T_i0_in: float stellarator_plant_params.stellarator_09__stellaris__T_i0
-      e_keV: float mfe_plasma_scaling_params.stellarator_09__stellaris__beta_calc__e_keV
       B_in: float stellarator_09__stellaris__field_calc__B_axis.root
-      n_e0_in: float stellarator_plant_params.stellarator_09__stellaris__n_e0
-      n_T0_in: float stellarator_09__stellaris__sustain__n_T0
+      p_avg_in: float stellarator_09__stellaris__sustain__p_avg
     outputs:
       root: RootModel[float] stellarator_09__stellaris__beta_calc__beta
 
@@ -1037,15 +1031,19 @@ modules:
       stellarator_09__stellaris__sustain__n_bar19: float stellarator_09__stellaris__sustain__n_bar19.json
       stellarator_09__stellaris__sustain__n_T0: float stellarator_09__stellaris__sustain__n_T0.json
       stellarator_09__stellaris__sustain__W_th: float stellarator_09__stellaris__sustain__W_th.json
+      stellarator_09__stellaris__sustain__p_avg: float stellarator_09__stellaris__sustain__p_avg.json
       stellarator_09__stellaris__sustain__p_brems: float stellarator_09__stellaris__sustain__p_brems.json
       stellarator_09__stellaris__sustain__n_He0: float stellarator_09__stellaris__sustain__n_He0.json
       stellarator_09__stellaris__sustain__n_D0: float stellarator_09__stellaris__sustain__n_D0.json
+      stellarator_09__stellaris__sustain__alpha_n_e_eff: float stellarator_09__stellaris__sustain__alpha_n_e_eff.json
       stellarator_09__stellaris__sustain__p_aux_required: float stellarator_09__stellaris__sustain__p_aux_required.json
       stellarator_09__stellaris__sustain__p_rad: float stellarator_09__stellaris__sustain__p_rad.json
       stellarator_09__stellaris__sustain__p_alpha_heat: float stellarator_09__stellaris__sustain__p_alpha_heat.json
       stellarator_09__stellaris__sustain__tau_E: float stellarator_09__stellaris__sustain__tau_E.json
       stellarator_09__stellaris__sustain__p_sync: float stellarator_09__stellaris__sustain__p_sync.json
       stellarator_09__stellaris__sustain__p_line: float stellarator_09__stellaris__sustain__p_line.json
+      stellarator_09__stellaris__sustain__n_e_volav: float stellarator_09__stellaris__sustain__n_e_volav.json
+      stellarator_09__stellaris__sustain__alpha_He_eff: float stellarator_09__stellaris__sustain__alpha_He_eff.json
       stellarator_09__stellaris__sustain__T_e0: float stellarator_09__stellaris__sustain__T_e0.json
       stellarator_09__stellaris__fusion__p_fus: RootModel[float] stellarator_09__stellaris__fusion__p_fus.json
       stellarator_09__stellaris__beta_calc__beta: RootModel[float] stellarator_09__stellaris__beta_calc__beta.json

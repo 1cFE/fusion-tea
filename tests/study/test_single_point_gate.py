@@ -1,4 +1,9 @@
-"""The single-point demo command's exit code agrees with its three gate families."""
+"""The single-point demo command's exit code agrees with its four gate families.
+
+WI-042 added the fourth: the W-beta identity gate (one pressure integral -- beta x
+B_axis^2 x 1.5 V / (2 mu0) = W_th from the package's own channels), between the oracle
+gate and the CAS72 guard gate.
+"""
 
 from __future__ import annotations
 
@@ -22,12 +27,13 @@ def _runner(monkeypatch, stock_simkit_path):
 @pytest.mark.parametrize(
     "gate_results, expected",
     [
-        ((True, True, True), 0),
-        ((False, True, True), 1),
-        ((True, False, True), 1),
-        ((True, True, False), 1),
+        ((True, True, True, True), 0),
+        ((False, True, True, True), 1),
+        ((True, False, True, True), 1),
+        ((True, True, False, True), 1),
+        ((True, True, True, False), 1),
     ],
-    ids=["green", "anchor-failure", "oracle-failure", "guard-failure"],
+    ids=["green", "anchor-failure", "oracle-failure", "identity-failure", "guard-failure"],
 )
 def test_command_status_covers_each_accumulated_gate_family(
     monkeypatch, stock_simkit_path, gate_results, expected

@@ -34,22 +34,28 @@ EXPECTED_VERDICTS = {
     "net_positive": "satisfied",
     "recirc_ok": "satisfied",
     "tbr_ok": "satisfied",
-    # WI-041: the fence now compares the computed PEAK (the circular-torus
+    # WI-041: the fence compares the computed PEAK (the circular-torus
     # average x the source-anchored calibration 1.316441) with the printed
-    # 4.05. At the baseline the peak is 4.05 x 2725.363 / 2700 = 4.088 --
-    # EXPECTED VIOLATED by the model's 0.94% fusion-power excess over the
-    # source's 2700 MW; the disclosed, never-tuned verdict change of WI-041.
-    "wall_load_ok": "violated",
+    # 4.05; at the WI-041 baseline it read 4.088 -- VIOLATED. WI-042: the
+    # helium ash on the source's own profile rule re-closes the fixed point
+    # with more ash and less fuel, p_fus 2725.36 -> 2652.56 MW, so the peak
+    # reads 4.05 x 2652.563 / 2700 = 3.979 -- EXPECTED SATISFIED. Disclosed,
+    # never tuned (WI-042 plan, MR-WI042-14 restatement (b)).
+    "wall_load_ok": "satisfied",
     "peak_field_ok": "satisfied",  # WI-030 conductor peak-field limit,
     "wp_stress_ok": "satisfied",  # WI-035
-    # WI-037: the sustainment power limit is EXPECTED VIOLATED at the printed
-    # point-A levers (p_aux_required ~= 90.6 MW vs 50 installed) -- the
-    # disclosed, explained verdict of the closure (design D6/D7; the W-form
-    # fidelity delta, never tuned). The report headline is 'violation'
-    # accordingly; every other verdict stays satisfied.
-    "sustainment_ok": "violated",
+    # WI-037: the sustainment power limit read VIOLATED at the printed point-A
+    # levers (p_aux_required ~= 90.6 MW vs 50 coupled) under the WI-037 profile
+    # family (the ash at the fuel's exponent). WI-042: with the ash on the
+    # source's own rule and the electrons by quasi-neutrality, W 551.4 -> 519.9
+    # MJ, tau_E 1.450 -> 1.557 s, p_aux_required 90.605 -> 49.080 MW --
+    # EXPECTED SATISFIED by about 0.9 MW, a margin inside the source's own
+    # 2.7 % residual on its printed stored energy (goal stored-energy-basis
+    # L-002): on the boundary, disclosed, never tuned. The report headline is
+    # 'full_satisfaction' accordingly.
+    "sustainment_ok": "satisfied",
 }
-EXPECTED_HEADLINE = "violation"
+EXPECTED_HEADLINE = "full_satisfaction"
 EXPECTED_VERDICT_COUNT = 9   # WI-036 added cond_strain_ok (was 8)
 
 
@@ -105,16 +111,29 @@ def _anchor_gate(values: dict[str, float]) -> bool:
     #   lcoe_1cfe 301.095115 -> 307.521406. Re-pinned from the executed
     #   baseline after the oracle gate below read bit-exact on every one of
     #   them (never before); every other anchor unchanged to the digit.
+    # WI-042 (goal stored-energy-basis round 2, 2026-09-05): the helium ash on
+    #   the source's own profile rule (A.5 pointwise) with the electrons by
+    #   quasi-neutrality re-closes the fixed point -- W 551.444 -> 519.914 MJ,
+    #   tau_E 1.450 -> 1.557 s, more ash (n_He0 5.78e19 -> 6.04e19), less fuel
+    #   at the peak (n_D0 1.9519e20 -> 1.9256e20), p_fus 2725.36 -> 2652.56 MW
+    #   -- so every fusion-derived headline moves ~3-4 %: p_net 743.91 ->
+    #   716.63, total capital 14,542,872,713 -> 14,442,862,262 (the
+    #   power-scaled accounts), CAS72 131,494,480 -> 126,649,656 (lifetime by
+    #   the lower peak), CAS70 199,635,292.95 -> 193,529,567.74, LCOE
+    #   313.513412 -> 322.318439, lcoe_1cfe 307.521406 -> 316.141142. Re-pinned
+    #   from the executed baseline after the oracle gate below read bit-exact
+    #   on every channel, the four new ones included (never before); nothing
+    #   tuned. Pre-WI-042 values in git history.
     anchors = [
-        ("total capital $", total, 14_542_872_713.455379),
-        ("LCOE $/MWh", values[CH["lcoe"]], 313.513412),
-        ("p_net MW", values[CH["p_net"]], 743.910232),
-        ("q_eng", values[CH["q_eng"]], 3.078430),
-        ("rec_frac", values[CH["rec_frac"]], 0.324841),
-        ("magnet %", magnet / total * 100, 37.138687),
-        ("CAS70 $/yr", values[CH["cas70"]], 199_635_292.948643),
-        ("CAS80 $/yr", values[CH["cas80"]], 766_653.689449),
-        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 307.521406),
+        ("total capital $", total, 14_442_862_261.866261),
+        ("LCOE $/MWh", values[CH["lcoe"]], 322.318439),
+        ("p_net MW", values[CH["p_net"]], 716.633806),
+        ("q_eng", values[CH["q_eng"]], 3.006952),
+        ("rec_frac", values[CH["rec_frac"]], 0.332563),
+        ("magnet %", magnet / total * 100, 37.395856),
+        ("CAS70 $/yr", values[CH["cas70"]], 193_529_567.738861),
+        ("CAS80 $/yr", values[CH["cas80"]], 746_174.847154),
+        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 316.141142),
     ]
 
     print("\n=== NINE ANCHORS (single-pass, graph rollup, no bridge) ===")
@@ -161,8 +180,8 @@ def _assert_generated_verdicts(outputs) -> None:
     print(
         "VERDICT PARITY: PASS -- "
         f"headline={report.headline}, assessed_entry_count={report.assessed_entry_count}, "
-        "seven satisfied + sustainment_ok violated (expected, WI-037) "
-        "+ wall_load_ok violated (expected, WI-041: the source-anchored peak)"
+        "nine satisfied (WI-042: sustainment_ok and wall_load_ok flipped to "
+        "satisfied by the sourced ash profile; disclosed, never tuned)"
     )
 
 
@@ -197,6 +216,11 @@ def _oracle_gate(values: dict[str, float], oracle: dict[str, float]) -> bool:
         "p_sync": values[CH["p_sync"]],
         "p_rad": values[CH["p_rad"]],
         "p_aux_required": values[CH["p_aux_required"]],
+        # WI-042 derived-profile channels (bit-exact vs the oracle mirror)
+        "p_avg": values[CH["p_avg"]],
+        "n_e_volav": values[CH["n_e_volav"]],
+        "alpha_n_e_eff": values[CH["alpha_n_e_eff"]],
+        "alpha_He_eff": values[CH["alpha_He_eff"]],
     }
 
     print("\n=== BIT-EXACT vs ORACLE (rel<1e-9) ===")
@@ -314,7 +338,24 @@ def _cas72_guard_gate() -> bool:
     return all_ok
 
 
-def _run_gate_families() -> tuple[bool, bool, bool]:
+def _w_beta_identity_gate(values: dict[str, float]) -> bool:
+    """WI-042 (design D2, MR-WI042-4): W and beta read ONE volume-averaged
+    pressure, so beta * B_axis^2 * 1.5 * V / (2 mu0) must equal W_th to float
+    precision -- from the executed package's own channels, not the oracle."""
+    from verify_stellaris import IN as oracle_inputs
+    mu0 = oracle_inputs["beta_mu0"]   # the calc's default, 1.25663706212e-6
+    w_from_beta_mj = (values[CH["beta"]] * values[CH["B_axis"]] ** 2
+                      * 1.5 * values[CH["V"]] / (2.0 * mu0)) * 1e-6
+    w_th = values[CH["W_th"]]
+    relative_deviation = abs(w_from_beta_mj - w_th) / abs(w_th)
+    ok = relative_deviation < 1e-12
+    print("\n=== W-BETA IDENTITY (one pressure integral, WI-042; rel<1e-12) ===")
+    print(f"  W from beta = {w_from_beta_mj:.9f} MJ  W_th = {w_th:.9f} MJ  "
+          f"reldev={relative_deviation:.2e} {'OK' if ok else '*** FAIL'}")
+    return ok
+
+
+def _run_gate_families() -> tuple[bool, bool, bool, bool]:
     oracle = oracle_compute()
     outputs = _execute_package()
     values = _numeric_outputs(outputs)
@@ -322,13 +363,14 @@ def _run_gate_families() -> tuple[bool, bool, bool]:
     _assert_generated_verdicts(outputs)
     print("ANCHORS", "GREEN" if anchors_ok else "*** STOP -- DEVIATION ***")
     oracle_ok = _oracle_gate(values, oracle)
+    identity_ok = _w_beta_identity_gate(values)
     guards_ok = _cas72_guard_gate()
-    return anchors_ok, oracle_ok, guards_ok
+    return anchors_ok, oracle_ok, identity_ok, guards_ok
 
 
 def main() -> int:
-    anchors_ok, oracle_ok, guards_ok = _run_gate_families()
-    return 0 if anchors_ok and oracle_ok and guards_ok else 1
+    anchors_ok, oracle_ok, identity_ok, guards_ok = _run_gate_families()
+    return 0 if anchors_ok and oracle_ok and identity_ok and guards_ok else 1
 
 
 if __name__ == "__main__":

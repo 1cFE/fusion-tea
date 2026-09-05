@@ -34,7 +34,11 @@ BASELINE_POINT = {
 # 131,494,480 $/yr; +35,596,226 / (8760 h x 743.910232 MW x 0.85) = +6.426 $/MWh on
 # the WI-037 pin 307.08712042841586. Re-pinned from the executed baseline after the
 # oracle read bit-exact (run_stellaris_single.py), never before.
-PINNED_LCOE = 313.5134115016116
+# WI-042 (goal stored-energy-basis round 2, 2026-09-05): the manifest's pinned headline
+# after the helium ash moved to the source's own profile rule (W 551.4 -> 519.9 MJ; the
+# re-closed fixed point takes p_fus 2725.4 -> 2652.6 MW and LCOE 313.513412 -> 322.318439);
+# was 313.5134115016116 at WI-041 and 307.08712042841586 at WI-039.
+PINNED_LCOE = 322.31843948570247
 
 
 @pytest.fixture
