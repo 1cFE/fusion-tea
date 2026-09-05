@@ -88,3 +88,60 @@ Nothing here tunes W, re-rules the inherited invariants, decides the basis, or w
 7. **Intro paragraph:** tie "a sensitivity, not a correction" to T-001's return; carry the corrected 347 / 681 (or 332 / 657) wherever the number appears.
 
 Not required for this checkpoint, noted for the round result: `goal.md` § Question's "347 of the record's 257 + 400 driven points" and "every reading reproduces the printed fusion power" carry the same two imprecisions; the round agent should not repeat them.
+
+## r2 — 2026-09-05 (the same fresh reviewer, resumed with the r2 resubmission; verbatim)
+
+# Checkpoint C-001.r2 — goal `stored-energy-basis`, round 1 (same fresh reviewer, 2026-09-05)
+
+**Reviewer:** the C-001.r1 session, resumed with the r2 resubmission. Worked from the worktree at `498a329e` (merge `ea6d5256` on top; primary checkout unchanged at `e0f66f7a`). Nothing under `knowledge/holdout/` opened. No file edited; no state-changing git. The seam's run directory was read only after its return was committed at `d4059ef1` (`return.json` only).
+
+**Read:** `round1_proposed_dispositions.md` § Revision r2 and § r2 addendum; `trail.md` § T-001 return, § T-002 scope/start; `attribution_sourced_definition.py/.json/_output.txt`; `baseline_counterfactual_518.3.json`; `window_summary_518.3.json`; the diff of `w_counterfactual.py` since `3687d2f6`; `SOURCE_INDEX.md` blocks for the two registered sources; the Stellaris extraction at lines 703–725 and 761 (the profile and ash-rule sentences); `DISCOVERY_LOG.md` at `e0f66f7a`.
+
+## Verdict: `REVISE` — one row, exact text below; everything else passes
+
+`#2`, `#4`, `#6`, `#7`, `#8` as written in r2: **PASS**. The `#1` row to land (the addendum's) is right in class and in direction; it needs four exact insertions and one sentence replaced, all in that row, because as written it states a boundary location as a robust fact ("survives the paper's own rules") where the data show a 0.03 MW/m² / 1.4 MW margin, and its concrete next reference has no shas.
+
+## 1. Recounts
+
+**The 518.3 window** (`window_counterfactual_518.3.csv`, scale 518.3 / 551.444 = 0.939896): 6,311 rows, ids equal to `points.csv`; **35** error rows (16 at 100 MW, 19 at 220; 32 non-positive fuel, 3 non-real), all among the 504.65 run's 61, none feasible, ignited or driven in the record. Record columns identical to `points.csv` for every evaluated row (verdicts, flags, `p_aux`, LCOE, inputs; worst deviation 0.0). Flips: `sustainment_ok` v→s **890** (429 / 276 / 185), s→v **18** (9 / 9 / 0); `wall_load_ok` v→s **273** (128 / 127 / 18); `recirc_ok` s→v **145** (46 / 82 / 17); `beta_ok` v→s **14** (7 / 7 / 0). Forced flags internally consistent (0 inconsistencies). Per arm, record → forced: 100 MW **458 / 787 / 257 → 689 / 1,152 / 314**, forced driven `a` values 1.5–2.2 only, **0 at R 12.7, a 1.3**, cheapest driven **`c1676` 208.718** (44.02 MW; peak 3.809); 220 search 598 / 787 / 400 → **743 / 1,152 / 395**, **5** design-geometry driven (cheapest `c3572` 365.51), cheapest driven `c4660` 224.986; re-read 24 / 0 / 24 → **58 / 12 / 58**, all 58 at (12.7, 1.3), cheapest **`c6112` 365.955**; transect 0 / 8 / 0 → 0 / 8 / 0. Driven lost 282 (132 / 138 / 12), gained 368. `c1721` 222.044, still driven; `c0821` 269.959, driven. Realized W ratio across the window 0.9350–0.9383.
+
+**The 518.3 baseline** (`baseline_counterfactual_518.3.json`): `p_aux_required` 90.605 → **51.377 MW** (violated by 1.38 MW); wall peak 4.088 → **3.930** (satisfied); `p_fus` 2,725.4 → 2,619.9; LCOE 313.5 → 326.49; τ_E 1.4499 → 1.6078; realized W_th **516.17 MJ** (the ash re-closes; the scale targets 518.3).
+
+**The design column at 518.3, 100 MW — the margin that matters:** of the six points that open at 504.65, `c0625` fails **only the wall, by 0.029 MW/m²** (peak 4.079 against 4.05; 49.84 MW required, under 50); `c2973` fails **only sustainment, by 1.38 MW** (peak 3.930); the other four fail sustainment by 9.5–13.6 MW. 101 design-column rows, 8 ignited.
+
+**The sourced arithmetic**, reproduced independently with a Bosch–Hale D-T reactivity (not the oracle's `_sigv_dt`): paper rules (1.2 / 0.35, T_i/T_e 0.95, A.5 ash pointwise, quasi-neutral electrons) **518.3 MJ**, β 2.52 %, p_fus 2,711, ⟨n_e⟩ 3.16, n_e0 5.04; model family 551.3; model exponents with the A.5 ash 524.5; sourced rules with the ash at 0.35 573.4; A.5 ash effective exponent **4.12**. Decomposition in points of 504.65: 5.3 (ash shape) + 1.2 (exponents and the 0.95 ratio) + 2.7 (the paper's) = 9.2. Matches `attribution_sourced_definition.json` to the digit.
+
+**The source claim behind the class.** The Stellaris extraction (line 713) states the ash rule in the paper's own words: "Helium ash profiles are obtained using a fixed ratio of particle-to-energy confinement time … a helium suppression factor f_eff heuristically reducing the amplitude of the resulting helium ash profile"; T_i/T_e 0.95 and the Eq. (2)–(3) profile forms are also the paper's own. The thermal-only, effective-radius definition of W is the **sister code's** (Lion 2021 Eqs. 8–11; Lion 2023 Eqs. 2.10–2.12), and both registrations' caveat lines say it is not settled that the printed 504.65 is that W (Stellaris adds a fast-particle pressure model the sister code lacks). Applying A.5 pointwise is a reading, corroborated by Fig. 16's ash curve and by reproducing the printed n_e0 and ⟨n_e⟩.
+
+**Numbers I could not reproduce: none.**
+
+## 2. The class of `#1` — ruling: `model fix` — open, not minted, owner-gated
+
+r1 ruled `declared seam` because the target was not established: no reading of the paper reached 504.65, so a fix had nothing to aim at. T-001 changed the basis of that ruling without triggering its literal condition. The printed number still follows from nothing (518.3 is the nearest any sourced rule gets), but the paper's **own stated ash rule** — a profile from the fixed τ*/τ_E ratio, peaked at an effective exponent of about 4 — is now registered and reproduced, and the model gives the ash the fuel's exponent 0.33 instead. That is a sourced discrepancy in the model's W-form worth about five points on the same peaks, independent of 504.65, with a concrete increment (the A.5 ash shape with electrons by quasi-neutrality). A finding with a sourced rule to aim at and a nameable increment is `model fix` under ADR-0004; leaving it `declared seam` would give `#1`'s W-condition no consumer, which is the loss ADR-0004 exists to stop. `research` is wrong for the same reason as in r1: REQ-W-01 has returned; what remains queued (the author query) bears on the 2.7 residual points and the β row, not on the ash-shape gap.
+
+The reserved gates hold under this class: the row mints nothing, changes nothing under `models/`, names the increment as a candidate through the modelling PM, and routes the ruling to § Answered when (c); the WI-032 precedent (ADR-0004) makes a reasoned "keep the present family" an acceptable close of an open `model fix` row. The candidate's target is the rule, never the printed number — the row already says so, and the split in provenance (the ash rule is Stellaris's own; the volume element and thermal-only definition are the sister code's) must be in the row because the `model fix` case rests on the first, stronger half. The ash-shape candidate is still this goal's own finding for its home (learnings, a candidate item); routing `#1` to it is the WI-032 pattern, not a new id.
+
+## 3. Direction and location in the addendum's `#1` row
+
+Direction: honest. Two scales, both W down, named as such; the untested upward direction named with the β-implied 567. Location: **not yet honest.** "The record's 'never at the design's minor radius at 100 MW' survives the paper's own rules and fails only at the printed number" states a boundary location as a fact. The data: at 518.3 the column is closed by 0.03 MW/m² on one point and 1.4 MW on another; at 504.65 it opens; the flip lies inside the 2.7 % between the sourced and the printed value, inside the reach of the constant-scale assumption (`NOTES.md` § 6, which the T-002 scope says travels with the second scale). The honest sentence is that the a-1.3 verdict at 100 MW is not decidable at this pin from W's basis alone. The same phrase is in the `498a329e` commit message; that is not the row and is not mine to rule on.
+
+## 4. Per-row rulings
+
+- **`#1` (addendum row): `REVISE`** — class right (§ 2); numbers right at both scales (§ 1); the five exact changes below.
+- **`#2`: `PASS`** — "not ignited (+44.4 MW required; wall 4.54, violated)"; actor line re-based. Optional, not required: at 518.3 `c6308` reads +2.7 MW (not ignited by 2.7 MW) and `c6309` 121.9 MW, which shows the knife-edge's location moving inside the sourced-vs-printed band.
+- **`#4`: `PASS`** — unchanged in class and routing; actor line re-based. (At 518.3 the ignited set is 1,152 per level; optional.)
+- **`#6`: `PASS`** — current state re-based on the F4 and close rows; the 25 flip-backs and the 142-of-152 note verified in r1. (At 518.3: 24 → 58, cheapest `c6112` 365.96, 18 wall flips; optional.)
+- **`#7`: `PASS`** — unchanged; both claims verified.
+- **`#8`: `PASS`** — the 61-point row with the join note; class, status and actor unchanged from the 2026-09-05 row. (At 518.3: 35, a subset of the 61; optional.)
+- **`#3`, `#5` — no row: sound.**
+
+## Required changes (r3), all in the addendum's `#1` row
+
+1. **Replace** the sentence "— so the record's 'never at the design's minor radius at 100 MW' survives the paper's own rules and fails only at the printed number." **with:** "— so the record's 'never at the design's minor radius at 100 MW' holds at the sourced scale by a margin of 0.03 MW/m² on the wall (`c0625`: peak 4.079 against 4.05, 49.8 MW required) and 1.4 MW on sustainment (`c2973`), and fails at the printed scale; the flip lies inside the 2.7 % between the paper's own rules and its printed number, so which side of it the design column sits on is not decidable at this pin from W's basis alone."
+2. **After** "at the sourced 518.3 (scale 0.940)" **insert:** "realized 516.2 MJ at the baseline as the ash re-closes; a second constant-scale, one-direction counterfactual under the same caveat as `NOTES.md` § 6".
+3. **Replace** "REQ-W-01 (`stored-energy-basis` T-001) sourced the definition of W in the same author's systems code — thermal, from the imposed profiles, over the effective-radius element (…)" **with:** "REQ-W-01 (`stored-energy-basis` T-001) registered the same author's systems code (…, both at `d4059ef1`), whose W is thermal, from the imposed profiles, over the effective-radius element — the sister code's definition, which the registrations' caveat lines say is not settled to be the printed 504.65; the profile rules applied with it — Eqs. (2)–(3) with α_T 1.2 / α_n 0.35, T_i/T_e 0.95, and 'helium ash profiles obtained using a fixed ratio of particle-to-energy confinement time' (Appendix A's A.5 balance applied pointwise, corroborated by Fig. 16's ash curve and by reproducing the printed n_e0 5.04 / ⟨n_e⟩ 3.16) — are the Stellaris paper's own (p. 8–9, Appendix A);". Keep the rest of the sentence ("applied with the paper's own rules it reproduces …") as is.
+4. **Replace** "W is never tuned and the printed 504.65 is not a target." **with:** "W is never tuned; no admissible source reproduces the printed 504.65, so the candidate's target is the paper's stated ash rule, not the printed number."
+5. **After** the class label "`model fix` — **open, not minted, owner-gated: the helium-ash profile shape; W-sensitivity disclosed.**" **insert:** "(The `wall-and-heating` close row stands as that goal's final state; this row re-opens the finding on this goal's evidence.)"
+6. **Reference column:** replace "`attribution_sourced_definition.json` and `baseline_counterfactual_518.3.json` (T-002 commit)" with "`attribution_sourced_definition.py/.json` and `baseline_counterfactual_518.3.json` at `5cc30ac0`; `window_summary_518.3.json` and `window_counterfactual_518.3.csv` at `498a329e`".
+
+Nothing else needs to change for r3 to pass. The optional second-scale additions to `#2`, `#4`, `#6`, `#8` are not conditions of the pass.
