@@ -145,3 +145,32 @@ Direction: honest. Two scales, both W down, named as such; the untested upward d
 6. **Reference column:** replace "`attribution_sourced_definition.json` and `baseline_counterfactual_518.3.json` (T-002 commit)" with "`attribution_sourced_definition.py/.json` and `baseline_counterfactual_518.3.json` at `5cc30ac0`; `window_summary_518.3.json` and `window_counterfactual_518.3.csv` at `498a329e`".
 
 Nothing else needs to change for r3 to pass. The optional second-scale additions to `#2`, `#4`, `#6`, `#8` are not conditions of the pass.
+
+## r3 — 2026-09-05 (the same fresh reviewer, resumed with the r3 resubmission; verbatim)
+
+# Checkpoint C-001.r3 — goal `stored-energy-basis`, round 1 (same fresh reviewer, 2026-09-05)
+
+**Reviewer:** the C-001.r1/r2 session, resumed with the r3 resubmission. Worktree at `fd1e398e`; primary checkout unchanged at `e0f66f7a`. Nothing under `knowledge/holdout/` opened. No file edited; no state-changing git.
+
+**What I checked:** `round1_proposed_dispositions.md` § Revision r3 in full; `git diff 498a329e fd1e398e` on that file (12 insertions, **0 deletions** — r1, r2 and the addendum untouched; the `#2`, `#4`, `#6`, `#7`, `#8` rows are byte-identical to the r2 text I passed); a sentence-level diff of the r3 `#1` row against the addendum's row (the only differences are the six changes; nothing else moved); the row's column separators (exactly one ` | `, so it lands as a valid `Disposition | Home` pair); the four cited shas (`3687d2f6`, `5cc30ac0`, `498a329e`, `d4059ef1`) resolve and carry the files named. Every number in the new sentences was recounted in r2 and stands: `c0625` peak 4.079 against 4.05 at 49.84 MW; `c2973` 51.38 MW (1.38 short); realized 516.17 MJ at the baseline; n_e0 5.04 / ⟨n_e⟩ 3.16; the 2.7 % between 518.3 and 504.65.
+
+## Verdict: `PASS`
+
+The reading is right and the dispositions follow from it. The rows may be appended after the branch is rebased onto `feat/demo-maturation` at or after `e0f66f7a`, and the T-002 return and round result may cite them.
+
+## Per-change confirmation
+
+1. **Applied.** The "survives the paper's own rules" sentence is replaced by the margin statement verbatim as required: 0.03 MW/m² on the wall at `c0625` (49.8 MW required), 1.4 MW on sustainment at `c2973`, fails at the printed scale, the flip inside the 2.7 %, not decidable at this pin from W's basis alone. Location is no longer claimed as fact.
+2. **Applied.** After "(scale 0.940": the realized 516.2 MJ at the baseline and the second constant-scale, one-direction caveat tied to `NOTES.md` § 6.
+3. **Applied.** The provenance split is in the row: the thermal, effective-radius W is the sister code's definition, not settled to be the printed 504.65; the profile forms, T_i/T_e 0.95 and the ash-from-τ*/τ_E rule are the Stellaris paper's own, with A.5 applied pointwise named as the reading and its corroboration (Fig. 16, the reproduced n_e0 and ⟨n_e⟩) stated. The rest of the sentence is unchanged.
+4. **Applied.** "W is never tuned; no admissible source reproduces the printed 504.65, so the candidate's target is the paper's stated ash rule, not the printed number."
+5. **Applied.** The finality of the `wall-and-heating` close row and this row's re-opening on this goal's evidence, immediately after the class label.
+6. **Applied.** The reference column carries `attribution_sourced_definition.py/.json` and `baseline_counterfactual_518.3.json` at `5cc30ac0`, and `window_summary_518.3.json` / `window_counterfactual_518.3.csv` at `498a329e`, beside `NOTES.md` §§ 5, 8 at `3687d2f6` and the trail sections.
+
+## Per-row rulings
+
+- **`#1` (r3 row): `PASS`.** Class `model fix` — open, not minted, owner-gated, as ruled in r2; status, responsible actor (the owner at § Answered when (c); the geometry goal if grounded) and concrete next reference present; direction honest at both scales with the upward direction named as untested; the (b)-ruling fact surfaced, not re-ruled; nothing tuned, nothing minted, no basis decided, no write in the other goal's directory.
+- **`#2`, `#4`, `#6`, `#7`, `#8`: `PASS`**, unchanged from r2. Not taking the optional second-scale additions is fine; the rows are true as written at the 504.65 scale they cite.
+- **`#3`, `#5`: no row, sound.**
+
+ADR-0004 checklist: every row names a class from the set, a status, a responsible actor and a concrete next reference; no touched row returns `unrouted`; rows that change nothing say so; no sighting row is edited; no id is minted; the `wall-and-heating` close rows stand as that goal's final state.

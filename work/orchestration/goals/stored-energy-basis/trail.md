@@ -102,3 +102,11 @@ T-002 · the second-scale evaluation (`w_counterfactual.py baseline 518.3`, then
 - **Dispositions reviewed:** `evidence/round1_proposed_dispositions.md` § Revision r2 and § r2 addendum (`498a329e`).
 - **Verdict:** `REVISE` — one row. `#2`, `#4`, `#6`, `#7`, `#8` `PASS` as written in r2; `#1`'s class ruled **`model fix` — open, not minted, owner-gated** (a sourced rule to aim at — the paper's own ash rule — and a nameable increment; `declared seam` would leave the W-condition with no consumer; the reserved gates hold because the row mints nothing and routes the ruling to (c)); `#1`'s direction honest, its location not — "survives the paper's own rules" stated a boundary as fact where the data show a 0.03 MW/m² margin on `c0625` and 1.4 MW on `c2973`, the flip inside the 2.7 % between the sourced and printed values, not decidable at this pin from W's basis alone. Six exact changes required, all in the `#1` row (the margin sentence; the realized 516.2 MJ and the second-scale caveat; the provenance split between the sister code's definition of W and the Stellaris paper's own profile and ash rules; the candidate's target is the ash rule, not the printed number; the `wall-and-heating` close row's finality stated; shas in the reference column). Deposited verbatim at `evidence/round1_C-001_checkpoint.md` § r2.
 - **Revision:** 1 of 2. The author applied the six changes exactly as `## Revision r3` in the dispositions file (r1, r2 and the addendum kept); resubmitted as submission 3 of 3.
+
+### Checkpoint C-001.r3 — 2026-09-05
+
+- **Reviewer:** the same fresh non-author session, resumed a second time.
+- **Reading reviewed:** unchanged from r2.
+- **Dispositions reviewed:** `evidence/round1_proposed_dispositions.md` § Revision r3 (`fd1e398e`): the six changes applied, 12 insertions and 0 deletions against r2, the other five rows byte-identical.
+- **Verdict:** `PASS`. Each of the six changes confirmed applied; `#1` `model fix` — open, not minted, owner-gated; `#2`, `#4`, `#6`, `#7`, `#8` pass unchanged; no row under `#3`, `#5`; the ADR-0004 checklist met. Deposited verbatim at `evidence/round1_C-001_checkpoint.md` § r3. The rows may land once the branch carries `feat/demo-maturation` at or after `e0f66f7a` (it does, by the merge `ea6d5256`).
+- **Revision:** 2 of 2 used; the cap was reached with a pass on the third submission.
