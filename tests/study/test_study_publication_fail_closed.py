@@ -125,17 +125,20 @@ def _local_case(study):
     return case
 
 
-@pytest.mark.parametrize("missing", [True, False], ids=["absent", "null"])
+@pytest.mark.parametrize(
+    "bad_value", ["absent", None, float("nan"), float("inf"), -float("inf")],
+    ids=["absent", "null", "nan", "positive-inf", "negative-inf"],
+)
 @pytest.mark.parametrize("bad_index", [0, 1], ids=["first-case", "later-case"])
 def test_local_export_refuses_incomplete_results_before_publishing(
-    local_study, missing, bad_index, tmp_path
+    local_study, bad_value, bad_index, tmp_path
 ):
     cases = [_local_case(local_study), _local_case(local_study)]
     channel = next(reversed(local_study.CHANNELS.values()))
-    if missing:
+    if bad_value == "absent":
         del cases[bad_index].outputs[channel]
     else:
-        cases[bad_index].outputs[channel] = None
+        cases[bad_index].outputs[channel] = bad_value
     output = tmp_path / "points.csv"
     previous = b"previous evidence\n"
     output.write_bytes(previous)

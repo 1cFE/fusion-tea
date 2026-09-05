@@ -29,6 +29,7 @@ from __future__ import annotations
 
 import csv
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -150,7 +151,7 @@ def prepare(package_dir: Path, work_dir: Path):
     )
 
 
-def definition(study_id: str, prepared, proposals, package_dir: Path, required_channels=None):
+def definition(study_id: str, prepared, proposals, package_dir: Path):
     from simkit.study.definition import StudyDefinition
     from simkit.study.identity import digest_of
     from simkit.study.model_contract import load_model_contract
@@ -172,12 +173,22 @@ def definition(study_id: str, prepared, proposals, package_dir: Path, required_c
         input_schema_version="input-v1",
         evidence_schema_version=prepared.EVIDENCE_SCHEMA_VERSION,
         study_definition_fingerprint=digest_of(
-            {
-                "proposals": [sorted(p.items()) for p in proposals],
-                "required_channels": sorted((required_channels or CHANNELS).items()),
-            }
+            {"proposals": [sorted(p.items()) for p in proposals]}
         ),
     )
+
+
+class _RequiredOutputsEvaluator:
+    """Validate successful evidence without intercepting the runner's failure handling."""
+
+    def __init__(self, prepared, channels):
+        self.prepared = prepared
+        self.channels = channels
+
+    def evaluate(self, typed_inputs):
+        evidence = self.prepared.evaluate(typed_inputs)
+        required_outputs(evidence, self.channels)
+        return evidence
 
 
 def run_points(
@@ -186,10 +197,9 @@ def run_points(
 ):
     """Execute proposals through `StudyRunner`. Returns (cases, db path).
 
-    Check the export declaration against actual evidence before the bulk run.
+    Check successful evidence before persistence and before evaluating another proposal.
     The store is left on disk so incompatible evidence cannot silently replace it.
     """
-    from simkit.study.bridge import CandidateBridge
     from simkit.study.query import StudyQuery
     from simkit.study.runner import StudyRunner
     from simkit.study.store import StudyStore
@@ -203,18 +213,13 @@ def run_points(
         raise RouteError("a study must declare required result channels")
     work_dir.mkdir(parents=True, exist_ok=True)
     prepared = prepare(package_dir, work_dir)
-    first = validate_proposal(proposals[0])
-    if first is None:
-        raise RouteError("the first proposal must be valid for the output publication check")
-    evidence = prepared.evaluate(CandidateBridge(prepared.entry_models).build(first))
-    required_outputs(evidence, required_channels)
-    study = definition(study_id, prepared, proposals, package_dir, required_channels)
+    study = definition(study_id, prepared, proposals, package_dir)
     db = work_dir / f"{study_id}.db"
     store = StudyStore.create_or_open(db, study.compatibility())
     try:
         store.acquire_lease()
         try:
-            StudyRunner(store, study, prepared).run()
+            StudyRunner(store, study, _RequiredOutputsEvaluator(prepared, required_channels)).run()
         finally:
             store.release_lease()
     finally:
@@ -287,6 +292,13 @@ def required_outputs(case, channels: dict[str, str]) -> dict:
     ]
     if missing:
         raise RouteError(f"case is missing required result channels: {missing}")
+    nonfinite = [
+        f"{name} ({channel})"
+        for name, channel in channels.items()
+        if not math.isfinite(case.outputs[channel])
+    ]
+    if nonfinite:
+        raise RouteError(f"case has nonfinite required result channels: {nonfinite}")
     return {name: case.outputs[channel] for name, channel in channels.items()}
 
 

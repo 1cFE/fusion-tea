@@ -37,25 +37,21 @@ def test_verification_refuses_partial_numeric_coverage(side, missing, kind):
     assert f"{side}=['required']" in str(exc.value)
 
 
-def test_missing_publication_refuses_before_bulk_run_or_store_creation(
+def test_missing_publication_refuses_before_bulk_run_or_evidence_commit(
     stock_simkit_path,
     monkeypatch,
     tmp_path,
 ):
+    from simkit.evaluation.evaluator import PreparedEvaluator
+    from simkit.study.store import StudyStore
+
     calls = []
 
-    def evaluate(inputs):
+    def evaluate(self, inputs):
         calls.append(inputs)
         return SimpleNamespace(outputs={"control": 1.0})
 
-    monkeypatch.setattr(
-        route,
-        "prepare",
-        lambda *_: SimpleNamespace(
-            entry_models={},
-            evaluate=evaluate,
-        ),
-    )
+    monkeypatch.setattr(PreparedEvaluator, "evaluate", evaluate)
     with pytest.raises(route.RouteError, match="required result channels.*missing"):
         route.run_points(
             "missing-output",
@@ -64,7 +60,13 @@ def test_missing_publication_refuses_before_bulk_run_or_store_creation(
             required_channels={"missing": "not-published"},
         )
     assert len(calls) == 1
-    assert not (tmp_path / "missing-output.db").exists()
+    store = StudyStore(tmp_path / "missing-output.db")
+    try:
+        assert store.conn.execute("SELECT count(*) FROM cases").fetchone()[0] == 0
+        store.acquire_lease()  # Refusal released the previous lease.
+        store.release_lease()
+    finally:
+        store.close()
 
 
 def test_real_multi_output_values_survive_reopened_store_and_export(
@@ -109,19 +111,34 @@ def test_real_multi_output_values_survive_reopened_store_and_export(
     assert ",," not in path.read_text()
 
 
-def test_required_channel_map_change_refuses_store_resume(stock_simkit_path, tmp_path):
-    from simkit.study.store import IncompatibleStore
+def test_adding_persisted_column_reuses_store_without_evaluation(
+    stock_simkit_path,
+    monkeypatch,
+    tmp_path,
+):
+    from simkit.evaluation.evaluator import PreparedEvaluator
 
     proposals = [route.proposal_for(**route.BASELINE)]
     required = {"lcoe": route.CHANNELS["lcoe"]}
-    route.run_points("map-binding", proposals, tmp_path, required_channels=required)
+    original, db = route.run_points("map-binding", proposals, tmp_path, required_channels=required)
     changed = dict(required, p_net=f"{route.P}pb__p_net")
 
-    with pytest.raises(IncompatibleStore, match="study_definition_fingerprint"):
-        route.run_points("map-binding", proposals, tmp_path, required_channels=changed)
+    def unexpected_evaluation(*args):
+        pytest.fail("a presentation-only change re-executed a stored case")
+
+    monkeypatch.setattr(PreparedEvaluator, "evaluate", unexpected_evaluation)
+    resumed, resumed_db = route.run_points(
+        "map-binding", proposals, tmp_path, required_channels=changed
+    )
+    assert resumed_db == db
+    assert resumed[0].evidence_digest == original[0].evidence_digest
+    assert (
+        route.required_outputs(resumed[0], changed)["p_net"]
+        == original[0].outputs[changed["p_net"]]
+    )
 
 
-def test_resume_refuses_incomplete_stored_evidence_despite_complete_preflight(
+def test_resume_refuses_a_required_column_absent_from_persisted_evidence(
     stock_simkit_path,
     monkeypatch,
     tmp_path,
@@ -135,17 +152,51 @@ def test_resume_refuses_incomplete_stored_evidence_despite_complete_preflight(
     def evaluate(self, typed_inputs):
         evidence = original_evaluate(self, typed_inputs)
         calls.append(evidence)
-        if len(calls) == 2:  # Admit complete evidence, then persist one incomplete case.
-            outputs = dict(evidence.outputs)
-            del outputs[channel]
-            return evidence.model_copy(update={"outputs": outputs})
-        return evidence
+        outputs = dict(evidence.outputs)
+        del outputs[channel]
+        return evidence.model_copy(update={"outputs": outputs})
 
     monkeypatch.setattr(PreparedEvaluator, "evaluate", evaluate)
     proposals = [route.proposal_for(**route.BASELINE)]
-    required = {"p_net": channel}
-    for _ in range(2):
-        with pytest.raises(route.RouteError, match="required result channels.*pb__p_net"):
-            route.run_points("incomplete-resume", proposals, tmp_path, required_channels=required)
+    route.run_points(
+        "incomplete-resume",
+        proposals,
+        tmp_path,
+        required_channels={"lcoe": route.CHANNELS["lcoe"]},
+    )
+    with pytest.raises(route.RouteError, match="required result channels.*pb__p_net"):
+        route.run_points(
+            "incomplete-resume", proposals, tmp_path, required_channels={"p_net": channel}
+        )
     assert (tmp_path / "incomplete-resume.db").exists()
-    assert len(calls) == 3  # Resume checks a fresh point but does not re-execute the stored case.
+    assert len(calls) == 1  # Resume validates stored evidence without re-executing it.
+
+
+@pytest.mark.parametrize("failures", [1, 2], ids=["first-fails", "all-fail"])
+def test_execution_failures_remain_recorded_cases(
+    stock_simkit_path, monkeypatch, tmp_path, failures
+):
+    from simkit.evaluation.evaluator import PreparedEvaluator
+    from simkit.evaluation.failure import EvaluationFailed, EvaluationFailure, EvaluationPhase
+
+    original = PreparedEvaluator.evaluate
+    calls = []
+
+    def evaluate(self, inputs):
+        calls.append(inputs)
+        if len(calls) <= failures:
+            raise EvaluationFailed(
+                EvaluationFailure(
+                    phase=EvaluationPhase.MODULE_EXECUTION,
+                    cause="fence probe execution failed",
+                )
+            )
+        return original(self, inputs)
+
+    monkeypatch.setattr(PreparedEvaluator, "evaluate", evaluate)
+    proposals = [route.proposal_for(**route.BASELINE)] * 2
+    cases, db = route.run_points("execution-failure", proposals, tmp_path)
+    assert len(calls) == 2 and db.exists()
+    assert [case.state for case in cases] == ["execution_failed"] * failures + ["completed"] * (
+        2 - failures
+    )
