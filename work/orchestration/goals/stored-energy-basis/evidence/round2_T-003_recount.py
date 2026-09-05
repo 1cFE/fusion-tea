@@ -118,3 +118,65 @@ out["committed_executed_now_excluded"] = sum(e["class_vs_committed"] == "committ
 out["excluded_in_both"] = sum(e["class_vs_committed"] == "excluded_in_both" for e in exc)
 
 print(json.dumps(out, indent=1, default=str))
+
+# ---- second pass (added after the first read): the per-axis, transect, re-read and geometry readings section 6 states ----
+def cheapest_by(rows, keyf, cond="feasible_driven"):
+    d = defaultdict(list)
+    for r in rows:
+        if b(r[cond]) and f(r["lcoe"]) is not None: d[keyf(r)].append(f(r["lcoe"]))
+    return {str(k): min(v) for k, v in sorted(d.items())}
+p100 = [p for p in pts if p["arm_id"] == "arm-fence-p100"]; p220 = [p for p in pts if p["arm_id"] == "arm-search-p220"]
+out2 = {}
+out2["p100_driven_ranges"] = {ax: sorted({r[ax] for r in p100 if b(r["feasible_driven"])}) for ax in ("R", "a", "I_coil_A", "T_i0_keV", "n_e0")}
+out2["p100_driven_by_a"] = dict(Counter(r["a"] for r in p100 if b(r["feasible_driven"])))
+out2["p100_driven_by_T"] = dict(Counter(r["T_i0_keV"] for r in p100 if b(r["feasible_driven"])))
+out2["p100_driven_by_R"] = dict(Counter(r["R"] for r in p100 if b(r["feasible_driven"])))
+out2["p100_driven_by_I"] = dict(Counter(r["I_coil_A"] for r in p100 if b(r["feasible_driven"])))
+out2["p100_driven_by_n"] = dict(Counter(r["n_e0"] for r in p100 if b(r["feasible_driven"])))
+out2["p100_cheapest_driven_by_R"] = cheapest_by(p100, lambda r: float(r["R"]))
+out2["p100_cheapest_driven_by_a"] = cheapest_by(p100, lambda r: float(r["a"]))
+out2["p100_cheapest_driven_by_I"] = cheapest_by(p100, lambda r: float(r["I_coil_A"]))
+out2["p100_cheapest_driven_by_n"] = cheapest_by(p100, lambda r: round(float(r["n_e0"]) / 5.06e20, 2))
+out2["p220_cheapest_driven_by_T"] = cheapest_by(p220, lambda r: float(r["T_i0_keV"]))
+out2["p220_driven_by_T"] = dict(Counter(r["T_i0_keV"] for r in p220 if b(r["feasible_driven"])))
+out2["p100_ignited_by_T"] = dict(Counter(r["T_i0_keV"] for r in p100 if b(r["ignited"])))
+out2["p100_ignited_by_a"] = dict(Counter(r["a"] for r in p100 if b(r["ignited"])))
+# the committed driven points' fate at the rule (both-class, per arm)
+for a in ("arm-fence-p100", "arm-search-p220", "arm-reread-p220"):
+    rows = [p for p in both if p["arm_id"] == a and b(p["committed_feasible_driven"])]
+    out2[f"{a}_committed_driven_fate"] = dict(Counter(p["state_here"] for p in rows))
+# the committed headline points at the rule
+for cid, tag in (("c1721", "committed cheapest driven 100 MW"), ("c4639", "committed cheapest driven 220 MW"), ("c0821", "committed design-column a 1.7 driven"), ("c6256", "committed design cheapest 220 (re-read)"), ("c1676", "cf cheapest driven"), ("c2973", "baseline")):
+    r = next((p for p in both if p["committed_case_id"].endswith(":" + cid)), None)
+    out2[f"committed_{cid}"] = ({k: r[k] for k in ("case_id", "R", "a", "I_coil_A", "T_i0_keV", "n_e0", "eta_source_heat", "lcoe", "committed_lcoe", "p_aux_required_MW_oracle", "committed_p_aux_required_MW", "cf0915_p_aux_required_MW", "cf0940_p_aux_required_MW", "wall_load_peak", "committed_wall_load_peak", "W_ratio_vs_committed", "state_here", "state_committed")} if r else None, tag)
+# the transect arm at the rule beside the committed reading
+tr = sorted([p for p in pts if p["arm_id"] == "arm-transect-ash"], key=lambda p: (float(p["p_wallplug_heat_MW"]), float(p["R"]), float(p["a"]), float(p["tau_ratio_ash"])))
+out2["transect"] = [{k: p[k] for k in ("R", "a", "I_coil_A", "T_i0_keV", "n_e0", "p_wallplug_heat_MW", "tau_ratio_ash", "wall_load_peak", "wall_load_ok", "sustainment_ok", "p_aux_required_MW_oracle", "He_over_ne_oracle", "W_th_MJ_oracle", "alpha_He_eff_oracle", "feasible_driven", "ignited", "committed_p_aux_required_MW", "committed_wall_load_peak", "committed_feasible_driven", "committed_ignited")} for p in tr]
+# the re-read arm: driven at the rule by efficiency, beside the committed
+rr = [p for p in pts if p["arm_id"] == "arm-reread-p220"]
+out2["reread_driven_by_eta"] = dict(Counter(p["eta_source_heat"] for p in rr if b(p["feasible_driven"])))
+out2["reread_committed_driven_by_eta"] = dict(Counter(p["eta_source_heat"] for p in rr if b(p["committed_feasible_driven"])))
+out2["reread_wall_flips"] = {f"{a}->{b_}": n for (a, b_), n in Counter((p["committed_wall_load_ok"], p["wall_load_ok"]) for p in rr).items()}
+out2["reread_cheapest_driven"] = cheapest([p for p in rr])
+# W ratio structure
+out2["W_ratio_by_R_a"] = out["W_ratio_by_R_a"]
+out2["W_ratio_by_He_over_ne_bin"] = {k: v for k, v in list(out["W_ratio_by_He_over_ne_bin"].items())}
+above1 = [p for p in both if f(p["W_ratio_vs_committed"]) and f(p["W_ratio_vs_committed"]) > 1.0]
+out2["W_ratio_above_1"] = {"n": len(above1), "by_arm": dict(Counter(p["arm_id"] for p in above1)), "He_over_ne_max": max(f(p["He_over_ne_oracle"]) for p in above1) if above1 else None,
+                          "by_R_a": {f"R{R}_a{a}": n for (R, a), n in Counter((p["R"], p["a"]) for p in above1).items()}, "example": ({k: above1[0][k] for k in ("case_id", "R", "a", "I_coil_A", "T_i0_keV", "n_e0", "W_ratio_vs_committed", "He_over_ne_oracle", "alpha_n_e_eff_oracle")} if above1 else None)}
+he = [f(p["He_over_ne_oracle"]) for p in pts if f(p["He_over_ne_oracle"]) is not None]
+out2["He_over_ne_range_all"] = {"min": min(he), "max": max(he)}
+out2["rule_vs_scales_per_arm"] = out["rule_vs_scales_per_arm"]
+out2["design_column_220_committed_driven"] = out["design_column_220"]["committed_feasible_driven"]
+out2["design_column_220_cf"] = {"cf0915": out["design_column_220"]["cf0915_feasible_driven"], "cf0940": out["design_column_220"]["cf0940_feasible_driven"]}
+out2["design_column_220_driven_by_arm"] = dict(Counter(p["arm_id"] for p in design_col(pts, 220.0) if b(p["feasible_driven"])))
+out2["design_column_220_driven_by_eta"] = dict(Counter(p["eta_source_heat"] for p in design_col(pts, 220.0) if b(p["feasible_driven"])))
+out2["design_column_220_cheapest_driven"] = cheapest(design_col(pts, 220.0))
+out2["design_column_100_ignited_by_a_all_a"] = dict(Counter(r["a"] for r in pts if abs(float(r["R"]) - 12.7) < 1e-9 and abs(float(r["p_wallplug_heat_MW"]) - 100.0) < 1e-9 and b(r["ignited"])))
+out2["R12.7_100MW_driven_by_a"] = dict(Counter(r["a"] for r in pts if abs(float(r["R"]) - 12.7) < 1e-9 and abs(float(r["p_wallplug_heat_MW"]) - 100.0) < 1e-9 and b(r["feasible_driven"])))
+# lifetime charge / shadow readings on the driven set (inherited columns, read not re-derived)
+drv = [p for p in p100 if b(p["feasible_driven"])]
+out2["p100_driven_shadow_hi_survivors"] = sum(b(p["feasible_shadow_hi"]) for p in drv)
+out2["p100_driven_shadow_lo_survivors"] = sum(b(p["feasible_shadow_lo"]) for p in drv)
+print("\n=== SECOND PASS ===")
+print(json.dumps(out2, indent=1, default=str))

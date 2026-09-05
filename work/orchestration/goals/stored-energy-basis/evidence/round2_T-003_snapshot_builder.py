@@ -11,7 +11,7 @@ the digests recomputed, never copied.
 import csv, json, subprocess, sys
 from collections import Counter
 from pathlib import Path
-ROOT = Path(__file__).resolve().parents[4]
+ROOT = Path(__file__).resolve().parents[5]   # work/orchestration/goals/<goal>/evidence/<this file> -> the repository root
 sys.path.insert(0, str(ROOT))
 from scripts.study import manifest as m
 from scripts.study import common
