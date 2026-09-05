@@ -193,14 +193,16 @@ package mfe_plant {
         // temperature profile exponent
         attribute alpha_T : Real default 0.0;
 
-        // Beta inputs (WI-030). No defaults: a beta without its peaks is not a
-        // beta. WI-037: T_e0 and n_He0 retired as plant attributes -- both are
-        // computed by the sustainment chain below (T_e0 from the held ratio,
-        // n_He0 from the converged A.5/A.6 ash balance).
+        // Operating-point lever (WI-030/WI-037). No default: a plasma without
+        // its peak density is not a plasma. WI-037: T_e0 and n_He0 retired as
+        // plant attributes -- both are computed by the sustainment chain below
+        // (T_e0 from the held ratio, n_He0 from the converged A.5/A.6 ash
+        // balance). WI-042: the electron density profile exponent retired too
+        // -- the electron profile is derived inside the chain by
+        // quasi-neutrality from the fuel profile and the ash on the
+        // fusion-rate profile (Eq. A.5 pointwise), never bound at a point.
         // peak electron density [m^-3] (operating-point lever)
         attribute n_e0 : Real;
-        // electron density profile exponent [1]
-        attribute alpha_n_e : Real;
 
         // Sustainment held facts (WI-037). No defaults for the physics facts:
         // a sustainment without its machine and quality facts is not a
@@ -227,7 +229,9 @@ package mfe_plant {
         // ISS04 tau_E (closed form), converged ash + quasi-neutral fuel,
         // composed radiation, and the required sustained coupled heating.
         // Reads the derived field (WI-035) through magnet.B; its computed
-        // fuel/ash/T_e0 feed fusion and beta below by reference redefinition.
+        // fuel/ash/T_e0 feed fusion below, and its one volume-averaged
+        // pressure feeds beta (WI-042: the electron profile and the ash
+        // profile are derived inside from the fuel and temperature profiles).
         calc sustain : 'Plasma Sustainment' {
             in n_e0_in = n_e0;
             in T_i0_in = T_i0;
@@ -236,7 +240,6 @@ package mfe_plant {
             in R_in = R;
             in B_in = magnet.B;
             in alpha_n_in = alpha_n;
-            in alpha_n_e_in = alpha_n_e;
             in alpha_T_in = alpha_T;
             in E_fus_in = E_fus;
             in iota_23_in = iota_23;
@@ -250,17 +253,11 @@ package mfe_plant {
         }
 
         // Volume-averaged beta (WI-030): B enters the physics here, read from
-        // the magnet part the way magnet_cost reads it.
+        // the magnet part the way magnet_cost reads it. WI-042: reads the
+        // sustainment chain's one volume-averaged pressure -- W and beta can
+        // never disagree about the plasma's pressure.
         calc beta_calc : 'Volume-Averaged Beta' {
-            in n_e0_in = n_e0;
-            in T_e0_in = sustain.T_e0;
-            in n_D0_in = sustain.n_D0;
-            in n_T0_in = sustain.n_T0;
-            in n_He0_in = sustain.n_He0;
-            in T_i0_in = T_i0;
-            in alpha_n_in = alpha_n;
-            in alpha_n_e_in = alpha_n_e;
-            in alpha_T_in = alpha_T;
+            in p_avg_in = sustain.p_avg;
             in B_in = magnet.B;
         }
 

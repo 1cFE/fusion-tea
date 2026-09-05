@@ -582,12 +582,22 @@ package stellarator_09 {
             doc /* **Source**: stellaris-design-details.md Fig. 16 temperature panel **Ref**: images/stellaris-high-field-quasi-isodynamic-stellarator.pdf-9-1.png, digitized fit (prototype/digitize_fig16.py; all three species, rms log-residual 0.02); corroborated by a/L_T ~= 2.25 at rho=0.6 (line 714) and the rho=0.8 Dirichlet values 4.2/5.2 keV (line 762) **Basis**: T(rho) = T0*(1-rho^2)^alpha_T (Eq. 2, image-verified) exponent, fixed blind to the fusion power */
         }
 
-        // Beta referents (WI-030): electron and helium peaks from the Table 5
-        // image, Point A; the electron density exponent from the printed
-        // vol-av/peak pair. The computed beta (beta_calc) at this point is
-        // 0.026834 vs the printed 2.76 % (-2.8 %; helium on the electron
-        // exponent would give -3.3 %, the recorded tolerance) -- thermal beta,
-        // fast-particle pressure excluded. Quasineutrality at the peak:
+        // Beta and density referents (WI-030; WI-042). The peak electron
+        // density is the operating-point lever, from the Table 5 image. The
+        // electron density profile is DERIVED (WI-042): the ash follows the
+        // fusion-rate profile (Eq. A.5 pointwise) and the electrons close by
+        // quasi-neutrality, so the point-A exponent 0.596 that WI-030 bound
+        // from the printed vol-av/peak pair (3.17e20 / 5.06e20, Table 5 image:
+        // <n>/n0 = 1/(1+alpha) for a power law) retires as an entry point and
+        // becomes the cross-check: the derived profile gives
+        // sustain.alpha_n_e_eff = 0.5953 and sustain.n_e_volav = 3.172e20 at
+        // this lever point (SV row, WI-042). The computed beta (beta_calc)
+        // reads the same volume-averaged pressure as W_th and is 0.02531 at
+        // this point against the printed 2.76 % -- thermal, fast-particle
+        // pressure excluded; and the printed 2.76 % is inconsistent with the
+        // printed 504.65 MJ at the only field the paper names (goal
+        // stored-energy-basis L-002), so the pair is a cross-check with a
+        // stated caveat, not a target. Quasineutrality at the peak:
         // 2 x 1.96 + 2 x 0.56 = 5.04 ~= 5.06.
         :>> n_e0 = 5.06e20 {  // peak electron density [m^-3].
             doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: peak el. density 5.06e20 m^-3, Point A; the extracted text "4.55" is an extraction artifact) **Basis**: Stellaris Point-A peak electron density */
@@ -596,12 +606,14 @@ package stellarator_09 {
         // 0.56e20 (Table 5 image, Point A) retire as entry points -- T_e0 is
         // computed from the T_i0 lever through the held 0.95 ratio (ratio-exact
         // at this point) and n_He0 from the converged A.5/A.6 ash balance
-        // (computed 5.80e19 here, +3.6% vs the retired referent; goal evidence
-        // work/orchestration/goals/operating-point-closure/evidence/
-        // T-002_prototype/NOTES.md). The printed pair remains the cross-check.
-        :>> alpha_n_e = 0.596 { // electron density profile exponent [1].
-            doc /* **Source**: stellaris-design-details.md **Ref**: Table 5 image (images/page_009_table_0.png: vol.-av. el. density 3.17e20 and peak el. density 5.06e20, Point A): for n(rho) = n0*(1-rho^2)^alpha, <n>/n0 = 1/(1+alpha), so alpha = 5.06/3.17 - 1 = 0.596; corroborated by the Fig. 16 density-panel digitization (images/stellaris-high-field-quasi-isodynamic-stellarator.pdf-9-0.png, electrons: alpha = 0.62, rms log-residual 0.03, WI-022 prototype/digitize_fig16.py re-run 2026-08-21) **Basis**: electron density exponent derived from two printed numbers; Point B's pair 6.89/4.21 gives 0.637 (SV-036 override) */
-        }
+        // (computed 5.80e19 at WI-037; 6.04e19 after WI-042, +8% vs the
+        // retired referent, because tau_E rises 7% at the lower W; goal
+        // evidence work/orchestration/goals/operating-point-closure/evidence/
+        // T-002_prototype/NOTES.md and work/active/WI-042_sourced-helium-ash-
+        // profile/prototype/). The printed pair remains the cross-check.
+        // WI-042 retirement note: alpha_n_e = 0.596 (bound 2026-08-21 from
+        // the printed vol-av/peak pair) retires -- see the referent comment
+        // above; the derived profile reproduces the pair it was bound from.
 
         // Sustainment held facts (WI-037). Every value image-verified against
         // the raw PDF or page images in goal round 1 (evidence NOTES.md);
@@ -1251,11 +1263,16 @@ package stellarator_09 {
         // installed. The operand is fully computed (ISS04 closed form, composed
         // radiation, converged ash) and responds to field, heating, density,
         // temperature, and geometry. At this lever point the verdict is
-        // EXPECTED VIOLATED (p_aux_required ~= 90 MW vs 50 installed): the
-        // model's closure sits ~17% of alpha power short of self-sustaining at
-        // the printed operating point, dominated by the disclosed W-form delta
-        // (+9.2%, never tuned) -- the recorded, explained verdict change of the
-        // WI-037 increment (goal learnings L-001/L-002; design D6/D7).
+        // EXPECTED SATISFIED by about 0.9 MW (p_aux_required ~= 49.1 MW vs
+        // 50 coupled) since WI-042 put the helium ash on the source's own
+        // profile rule with the electrons by quasi-neutrality (W 551 -> 520 MJ;
+        // it read VIOLATED at ~90 MW under the WI-037 profile family, whose
+        // ash carried the fuel's exponent -- goal stored-energy-basis L-003).
+        // The margin is inside the source's own 2.7 % residual on its printed
+        // stored energy (L-002): the design point's sustainment is
+        // undetermined within the source's precision -- on the boundary --
+        // and nothing here is tuned (goal stored-energy-basis, owner ruling
+        // 2026-09-05; WI-042 design § Expected baseline behaviour).
         assert constraint sustainment_ok : 'Sustainment Limit' {
             in p_aux_required_in = sustain.p_aux_required;
             in p_aux_installed_in = heat.p_coupled;

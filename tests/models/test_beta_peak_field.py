@@ -2,7 +2,7 @@
 
 The two calc defs and the constraint def exist in the library with exactly the
 design's formals (work/completed/20260822_WI-030_computed-beta-peak-field/design.md,
-Elements 1-4), the defaulted constants are declared last (the pinned codegen
+Elements 1-4; the beta calc's formals restated by WI-042 design D2), the defaulted constants are declared last (the pinned codegen
 refuses a usage that binds later formals by name while skipping an earlier
 defaulted one), and the magnet part def carries the two conductor facts.
 """
@@ -18,10 +18,11 @@ PLASMA = REPO / "models/library/analyses/mfe_plasma_scaling.sysml"
 VIABILITY = REPO / "models/library/analyses/mfe_viability.sysml"
 POWER_CORE = REPO / "models/library/cost_structure/mfe_power_core.sysml"
 
-BETA_FORMALS = [
-    "n_e0_in", "T_e0_in", "n_D0_in", "n_T0_in", "n_He0_in", "T_i0_in",
-    "alpha_n_in", "alpha_n_e_in", "alpha_T_in", "B_in", "mu0", "e_keV",
-]
+# WI-042: the beta calc reads the plant's one volume-averaged pressure from the
+# sustainment calc instead of recomputing it from peaks and exponents
+# (work/active/WI-042_sourced-helium-ash-profile/design.md D2); the nine profile
+# formals and e_keV retired with the closed-form body.
+BETA_FORMALS = ["p_avg_in", "B_in", "mu0"]
 PEAK_FORMALS = ["B_axis_in", "peak_ratio_in"]
 LIMIT_FORMALS = ["B_peak", "B_max_in"]
 
@@ -52,9 +53,9 @@ def test_volume_averaged_beta_has_the_design_formals_in_order(library_model):
     inputs = [n for n in names if n in BETA_FORMALS]
     assert inputs == BETA_FORMALS
     assert names.index("mu0") > names.index("B_in"), "defaulted constants must come last"
-    assert names.index("e_keV") > names.index("mu0")
-    for intermediate in ("p_e", "p_fuel", "p_He", "p_avg", "beta"):
-        assert intermediate in names
+    assert "beta" in names
+    for retired in ("p_e", "p_fuel", "p_He", "p_avg", "e_keV", "alpha_n_e_in"):
+        assert retired not in names, f"{retired}: the closed-form pressure body retired at WI-042"
 
 
 def test_conductor_peak_field_has_the_design_formals(library_model):
@@ -89,4 +90,6 @@ def test_new_library_definitions_carry_no_concept_value():
     # doc text may quote constants; the executable lines are what MR-3 governs
     code_lines = [ln for ln in plasma.splitlines() if ln.strip().startswith(("in attribute", "attribute", "out attribute"))]
     code_numbers = set(re.findall(r"\d+\.\d+(?:e[+-]?\d+)?", "\n".join(code_lines)))
-    assert code_numbers == {"1.25663706212e-6", "1.602176634e-16", "1.0", "2.0"}, code_numbers
+    # WI-042 (design D2): e_keV and the closed-form body (its 1.0 + alpha terms)
+    # retired; the beta calc's executable lines carry mu0 and the factor 2 only.
+    assert code_numbers == {"1.25663706212e-6", "2.0"}, code_numbers
