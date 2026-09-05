@@ -441,6 +441,38 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: 4da4d5c7d6680b87c1672c0d37de083875020092157583822bc7b4f05a9b5d39
 - **Date Added**: 2026-09-04
 
+### A general stellarator version of the systems code PROCESS (Lion, Warmer, Wang, Beidler, Muldrew, Wolf, Nucl. Fusion 61 2021 126021)
+- **Type**: local_pdf
+- **Location**: knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/
+- **Use for**: Establishes, for the stellarator version of PROCESS by the Stellaris paper's first author (Stellaris ref [12]), what the 0D power balance's stored energy is: Eq. (8) writes the confinement loss as W/tau_E 'where W is the total plasma energy', and Eq. (10)-(11) define 'The stored energy W' as W = V * 3/2 * integral_0^1 d(rho) sqrt(g) n(rho) T(rho), from the imposed profiles for 'particle species averaged density n and temperature T', with rho the effective radius so that sqrt(g) ~ rho -- a thermal energy of the species from n and T, integrated over the plasma volume V with a circular-equivalent volume element, and no fast-alpha term. Eq. (12)-(13) give the profile forms T_e = T0 (1-rho^2)^alpha_T and n_e = n0 (1-rho^2)^alpha_n with the ion profiles as user-defined multiples of the electron profiles. Eq. (9) states that the ISS04 scaling takes 'the line averaged electron density' and the toroidal field B_t. Eq. (3)-(5) define the plasma volume V from the VMEC boundary and its scaling with R and a. Serves REQ-W-01 (goal stored-energy-basis, Answered when (b)) and RQ-2.
+- **Validation**: Read Section 3.2 on journal page 4 of the PDF: Eq. (8) with the sentence 'where W is the total plasma energy'; Eq. (10) with the sentence 'The stored energy W in equation (8) is obtained from the imposed profiles for particle species averaged density n and temperature T'; Eq. (11) 'sqrt(g)(rho) ~ rho'; Eq. (9) and the sentence naming n as the line averaged electron density. Section 3.1 Eq. (3)-(5) for V. Table 3 (journal page 15) prints 'Plasma beta (volume averaged) (%)' for the Helias 5 design points. The equations exist only as images in the extraction; check them on the PDF page.
+- **Caveat**: CC-BY 4.0 open-access Nucl. Fusion 61 (2021) 126021, registered from the publisher PDF held locally because iopscience serves a bot-check page to the extractor. This is the definition used by stellarator-PROCESS, not a statement by the Stellaris paper: Stellaris (Section 2.3, Appendix A) never names the code behind its Table 5, cites this paper only for its profile assumptions, and adds a fast-particle pressure model (its ref [142]) that this paper does not have. This paper nowhere defines the reference field of its printed volume-averaged beta, and does not say whether that beta includes fast-alpha pressure. Whether Stellaris's 'Total plasma energy' of 504.65 MJ is this W is not settled by this source.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/claude-1000/-home-reid-1cfe-fusion-tea/cf4cbd0c-47f2-43ea-be9f-34ba243b7af5/scratchpad/lion_2021_nf_stellarator_process.pdf
+- **Source ID**: db74f1c6d04aa505a763c9aa8a168f39324ef345aa3fe454d89bea2eabb18793
+- **Raw SHA256**: db74f1c6d04aa505a763c9aa8a168f39324ef345aa3fe454d89bea2eabb18793
+- **Raw Artifact SHA256**: db74f1c6d04aa505a763c9aa8a168f39324ef345aa3fe454d89bea2eabb18793
+- **Extracted Path**: knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/
+- **Extract SHA256**: b0bfb0c0dc24645945121f5ffbb27d0d2059fb804a5f44910cbb5b66f9d765c0
+- **Date Added**: 2026-09-05
+
+### Systems Code Models for Stellarator Fusion Power Plants and Application to Stellarator Optimisation (J. Lion, PhD thesis, TU Berlin 2023, doi 10.14279/depositonce-18188)
+- **Type**: local_pdf
+- **Location**: knowledge/sources/systems_code_models_for_stellarator_fusion_power_plants_and/
+- **Use for**: Stellaris ref [110] and the ancestor text of its Appendix A. Section 2.2.2 (thesis p. 31-32) defines the 0D model's energy: Eq. (2.10) p_conf = w/tau_E 'where w is the volume averaged total plasma energy density which is obtained from the imposed profiles for particle species averaged density n and temperature T', Eq. (2.11) w = 3/2 integral_0^1 d(rho) sqrt(g) n(rho) T(rho), Eq. (2.12) sqrt(g) ~ rho for the effective radius -- thermal, from n and T, with no fast-alpha term; Eq. (2.13) ISS04 with n 'the line averaged electron density' and B_t 'the toroidal magnetic field'. Appendix A (thesis p. 143-145) carries the p = <p>_V = integral_V p dV notation with V 'usually taken of the confining plasma volume up to a certain core radius r', and P = W/tau_E 'where W is the plasma energy' -- the text Stellaris Appendix A reproduces almost verbatim. Footnote 2 on thesis p. 40: 'Usually the volume averaged beta is denoted by <beta>_V'; Eq. (2.33) bounds <beta>_V by the configuration's beta limits. Fig. 4.7 caption (thesis p. 112) names B 'the axis averaged magnetic field strength' and Eq. (2.87) 'the average toroidal magnetic field on axis'. Serves REQ-W-01 (goal stored-energy-basis, Answered when (b)) and RQ-2.
+- **Validation**: PDF pages 39-40 (thesis p. 31-32) for Eq. (2.6)-(2.13) and the sentence defining w; PDF p. 48 footnote 2 and PDF p. 49 Eq. (2.33) for the beta notation and bounds; PDF p. 151-152 (thesis p. 143-144) for Appendix A, Eq. (A.1)-(A.9), and the 'core radius' clause; PDF p. 120 Fig. 4.7 caption for 'axis averaged magnetic field strength'. Compare Appendix A sentence by sentence with Stellaris Appendix A (Stellaris PDF p. 32). Equations exist only as images in the extraction; check the PDF page.
+- **Caveat**: Open-access TU Berlin doctoral thesis (2023), 197 pages, 56 MB PDF. Documents stellarator-PROCESS, not the code behind Stellaris Table 5, which the Stellaris paper never names; Stellaris adds a fast-particle pressure model (its ref [142]) absent here. Never states the reference field of the volume-averaged beta, nor whether beta includes fast-alpha pressure, nor whether the Appendix A 'core radius' clause applies to any printed stored energy. The beta on thesis p. 3 (beta = 3 mu0 n T / B^2) is an introductory generic definition, not the code's. Whether Stellaris's 'Total plasma energy' of 504.65 MJ is this w times V is not settled by this source.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/claude-1000/-home-reid-1cfe-fusion-tea/cf4cbd0c-47f2-43ea-be9f-34ba243b7af5/scratchpad/lion_2023_phd_thesis_stellarator_systems_code_models.pdf
+- **Source ID**: 4eafe5a7c38b39c0d73307541b370e9adf3288cee2ac0ec059acf6c557de3bf0
+- **Raw SHA256**: 4eafe5a7c38b39c0d73307541b370e9adf3288cee2ac0ec059acf6c557de3bf0
+- **Raw Artifact SHA256**: 4eafe5a7c38b39c0d73307541b370e9adf3288cee2ac0ec059acf6c557de3bf0
+- **Extracted Path**: knowledge/sources/systems_code_models_for_stellarator_fusion_power_plants_and/
+- **Extract SHA256**: 4d58343e8b46f79cb2bd806aba9a9837cf454057ccd54fbef7218e9ee51b5964
+- **Date Added**: 2026-09-05
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

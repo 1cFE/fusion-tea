@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-W-01",
+  "request_key": "5392c774fafb2f9ab1862193e3720c58082348e597c9266a73b68cbf32efc5b2",
+  "request_path": "knowledge/research/requests/REQ-W-01.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 6,
+    "max_captures": 3
+  },
+  "opened_at": "2026-09-05T14:59:16.479025+00:00",
+  "override_reason": null
+}

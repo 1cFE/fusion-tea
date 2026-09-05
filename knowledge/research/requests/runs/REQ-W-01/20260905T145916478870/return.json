@@ -1,0 +1,32 @@
+{
+  "request_id": "REQ-W-01",
+  "run": "knowledge/research/requests/runs/REQ-W-01/20260905T145916478870",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "a_general_stellarator_version_of_the_systems_code_process",
+      "path": "knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/",
+      "source_id": "db74f1c6d04aa505a763c9aa8a168f39324ef345aa3fe454d89bea2eabb18793",
+      "pre_existing": false
+    },
+    {
+      "slug": "systems_code_models_for_stellarator_fusion_power_plants_and",
+      "path": "knowledge/sources/systems_code_models_for_stellarator_fusion_power_plants_and/",
+      "source_id": "4eafe5a7c38b39c0d73307541b370e9adf3288cee2ac0ec059acf6c557de3bf0",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "jlion@proximafusion.com (J. Lion, corresponding author, Stellaris paper p.1; Data availability p.34: 'Data will be made available on request')",
+      "reason": "author query; a person must send it. Ask: for Table 5 point A, what 'Total plasma energy' 504.65 MJ integrates (species, thermal only or with fast-alpha pressure, volume element and volume), how 'Vol. av.' is formed, and which field the 2.76 % volume-averaged beta is referenced to (the 9.0 T axis-averaged B0 or another)."
+    },
+    {
+      "candidate": "https://iopscience.iop.org/article/10.1088/0029-5515/45/12/024",
+      "reason": "paywalled: IOP purchase wall on the ISS04 paper (Yamada et al. 2005, Stellaris ref [141]); ResearchGate copy is request-only; www.ipp.mpg.de/ISS returns 404; iscdb.nifs.ac.jp does not resolve. Would establish only ISS04's own density and stored-energy definitions; Lion 2021 Eq. (9) already restates the density as line-averaged. Low priority for REQ-W-01."
+    }
+  ],
+  "negative": null,
+  "limit_reached": "max_searches",
+  "reason": "at least one source is registered and citable"
+}
