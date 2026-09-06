@@ -114,8 +114,7 @@ def export(cases, path: Path) -> Path:
                "R": inp[f"{P}R"], "a": inp[f"{P}a"],
                "availability": inp[f"{P}availability"], "discount_rate": inp[f"{P}discount_rate"],
                "eta_th": inp[BLOCK_KEYS[0]]}
-        for name, channel in CHANNELS.items():
-            row[name] = case.outputs.get(channel)
+        row.update(route.required_outputs(case, CHANNELS))
         verdicts = route.short_verdicts(case)
         row.update(verdicts)
         row["feasible"] = all(s == "satisfied" for s in verdicts.values())
@@ -131,7 +130,7 @@ def run(out_dir: Path = HERE) -> Path:
     """Every proposal through the stock lifecycle, one store, then the export."""
     out_dir = Path(out_dir)
     props = [p for _, _, p in proposals()]
-    cases, db = route.run_points(STUDY_ID, props, out_dir / "_work")
+    cases, db = route.run_points(STUDY_ID, props, out_dir / "_work", required_channels=CHANNELS)
     completed = route._completed(cases, STUDY_ID)
     return export(completed, out_dir / "results" / "points.csv")
 

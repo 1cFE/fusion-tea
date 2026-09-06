@@ -29,6 +29,7 @@ from __future__ import annotations
 
 import csv
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -177,27 +178,63 @@ def definition(study_id: str, prepared, proposals, package_dir: Path):
     )
 
 
-def run_points(study_id: str, proposals, work_dir: Path, package_dir: Path = PACKAGE_DIR):
+class _RequiredOutputsEvaluator:
+    """Validate successful evidence without intercepting the runner's failure handling."""
+
+    def __init__(self, prepared, channels):
+        self.prepared = prepared
+        self.channels = channels
+
+    def evaluate(self, typed_inputs):
+        evidence = self.prepared.evaluate(typed_inputs)
+        require_published(evidence, self.channels)
+        return evidence
+
+
+def run_points(
+    study_id: str, proposals, work_dir: Path, package_dir: Path = PACKAGE_DIR,
+    *, required_channels=None,
+):
     """Execute proposals through `StudyRunner`. Returns (cases, db path).
 
-    The store is left on disk: a definition that unlinked would leave nothing for a
-    lineage refusal to refuse.
+    Every declared column must be published: existing completed cases are checked under
+    the lease, new evidence before it is persisted. A nonfinite value is a model result and
+    is kept; the exporter refuses it. The store is left on disk so incompatible evidence
+    cannot silently replace it.
     """
     from simkit.study.query import StudyQuery
     from simkit.study.runner import StudyRunner
     from simkit.study.store import StudyStore
 
     work_dir = Path(work_dir)
+    proposals = list(proposals)
+    if not proposals:
+        raise RouteError("cannot run a study with no proposals")
+    required_channels = dict(CHANNELS if required_channels is None else required_channels)
+    if not required_channels:
+        raise RouteError("a study must declare required result channels")
     work_dir.mkdir(parents=True, exist_ok=True)
     prepared = prepare(package_dir, work_dir)
     study = definition(study_id, prepared, proposals, package_dir)
     db = work_dir / f"{study_id}.db"
     store = StudyStore.create_or_open(db, study.compatibility())
-    store.acquire_lease()
-    StudyRunner(store, study, prepared).run()
-    store.release_lease()
-    store.close()
-    return StudyQuery(StudyStore(db), Path(package_dir).resolve()).cases(), db
+    try:
+        store.acquire_lease()
+        try:
+            for case in StudyQuery(store, Path(package_dir).resolve()).cases():
+                if case.state == "completed":
+                    require_published(case, required_channels)
+            StudyRunner(store, study, _RequiredOutputsEvaluator(prepared, required_channels)).run()
+        finally:
+            store.release_lease()
+    finally:
+        store.close()
+    reopened = StudyStore(db)
+    try:
+        cases = StudyQuery(reopened, Path(package_dir).resolve()).cases()
+    finally:
+        reopened.close()
+    return cases, db
 
 
 def write_identity_document(package_dir: Path, out_path: Path) -> Path:
@@ -248,6 +285,32 @@ def short_verdicts(case, package_dir: Path = PACKAGE_DIR) -> dict[str, str]:
     return _short_verdicts(case, _export_catalog(package_dir))
 
 
+def require_published(case, channels: dict[str, str]) -> None:
+    """Refuse evidence that lacks a declared column. An absent or null value is a tooling
+    omission, never a result, so this is checked during execution."""
+    missing = [
+        f"{name} ({channel})"
+        for name, channel in channels.items()
+        if channel not in case.outputs or case.outputs[channel] is None
+    ]
+    if missing:
+        raise RouteError(f"case is missing required result channels: {missing}")
+
+
+def required_outputs(case, channels: dict[str, str]) -> dict:
+    """Resolve the declared columns for export. A nonfinite value is a model result: it is
+    persisted by the run and refused only here, before any CSV byte is written."""
+    require_published(case, channels)
+    nonfinite = [
+        f"{name} ({channel})"
+        for name, channel in channels.items()
+        if not math.isfinite(case.outputs[channel])
+    ]
+    if nonfinite:
+        raise RouteError(f"case has nonfinite required result channels: {nonfinite}")
+    return {name: case.outputs[channel] for name, channel in channels.items()}
+
+
 def csv_rows(cases, axes: list[str], package_dir: Path = PACKAGE_DIR) -> list[dict]:
     """Validate every case and build rows without publishing any bytes."""
     cases = list(cases)
@@ -259,16 +322,8 @@ def csv_rows(cases, axes: list[str], package_dir: Path = PACKAGE_DIR) -> list[di
         missing_inputs = [axis for axis in axes if AXES[axis][0] not in case.inputs]
         if missing_inputs:
             raise RouteError(f"case is missing required axes: {missing_inputs}")
-        missing_outputs = [
-            name
-            for name, channel in CHANNELS.items()
-            if channel not in case.outputs or case.outputs[channel] is None
-        ]
-        if missing_outputs:
-            raise RouteError(f"case is missing required result channels: {missing_outputs}")
         row = {axis: case.inputs[AXES[axis][0]] for axis in axes}
-        for name, channel in CHANNELS.items():
-            row[name] = case.outputs[channel]
+        row.update(required_outputs(case, CHANNELS))
         verdicts = _short_verdicts(case, catalog)
         row.update(verdicts)
         row["feasible"] = all(status == "satisfied" for status in verdicts.values())

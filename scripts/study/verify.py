@@ -283,12 +283,23 @@ def check_case(case, evaluate, bindings, catalog_entries, objectives,
         for binding in table.values()
         if binding.get("kind") == "channel"
     }
-    wanted = (set(objectives) | binding_channels) & set(channels)
+    wanted = set(objectives) | binding_channels
+    missing_store = sorted(
+        channel for channel in wanted
+        if channel not in case.outputs or case.outputs[channel] is None
+    )
+    missing_oracle = sorted(
+        channel for channel in wanted
+        if channel not in channels or channels[channel] is None
+    )
+    if missing_store or missing_oracle:
+        raise VerifyError(
+            f"case {case.candidate_id}: missing required numeric comparisons: "
+            f"store={missing_store}, oracle={missing_oracle}"
+        )
     compared = []
     worst = (0.0, None, None, None)
     for channel in sorted(wanted):
-        if channel not in case.outputs:
-            continue  # the era records only single-field float channels
         deviation = common.relative_deviation(case.outputs[channel], channels[channel])
         compared.append(channel)
         if deviation > worst[0]:

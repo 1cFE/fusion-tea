@@ -93,6 +93,8 @@
 - **Provenance note honored throughout:** the old "Rung C" confinement gate was never an owner ruling (concept § Corrections 2026-09-01); this goal is confinement work done in the open, grounded owner-present with "no gates" and full delegation.
 - Branch: `feat/demo-maturation`, ~20 commits this session (grounding → round 1 → review → round 2 → close packet). Merge/push owner-held.
 
+**2026-09-05 — numeric study evidence repair:** `fix/numeric-study-evidence`, based on current `main`, validates successful evidence before persistence and every local export, preserves execution failures as cases, and refuses missing verification comparisons. Export-column changes reuse persisted evidence without execution. Requirements, review corrections, and validation are in [the repair record](research/20260905_numeric-evidence-fix.md). Runtime prerequisite: [TEAx PR #5](https://github.com/rwestwood89/teax/pull/5), evidence v3; use a fresh store when moving from v2. Historical evidence is unchanged.
+
 ---
 
 ## Previous status
