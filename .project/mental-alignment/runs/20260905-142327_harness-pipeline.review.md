@@ -1,0 +1,27 @@
+# Review — 20260905-142327_harness-pipeline.md
+
+artifact: /home/reid/1cfe/fusion-tea/.project/mental-alignment/runs/20260905-142327_harness-pipeline.md
+question: I want you to RESUME the $my-mental-model for .project/mental-alignment/runs/20260905-135058_harness-pipeline.md
+
+  I am not happy with the current iteration. For reference, see:
+  - .project/concepts/physical-innovation-narrative.md
+  - .project/research/20260905_1cfe-writing-style.md
+  - .project/research/20260905_1cfe-writing-style-sources/README.md
+  In addition to the usual guidance for the mental model. Start a fresh agent to fully revise the synthesis to improve the content and the writing.
+reviewed against: /home/reid/.agents/skills/my-mental-model/design_synthesis.md, /home/reid/.agents/skills/my-mental-model/feedback/synthesis.md, /home/reid/1cfe/fusion-tea/.project/mental-alignment/feedback-synthesis.md
+
+## Findings
+
+1. The numbered headings do not deliver the answer when read alone. “Understanding the end goal,” “Structural setup,” and “Behavioral view” describe section functions that could label many systems; only the worked-example heading says what its section is about. Replace them with the concrete claims the sections establish, such as why connected machine models improve investment decisions, why the four tool boundaries exist, and why each result can change the next task. — narrative headings at lines 44, 58, and 73 (cites: Design Synthesis rules 2–3 and “Before delivering”; project-local feedback “Section titles must state their content”; shared feedback “Heading that names what is present”)
+
+2. The structural section still becomes a repository inventory before it gives the reader a usable model of the transformation. The opening sentence says the responsibilities can change independently, then the four bullets catalogue what each repository “supplies”; the relationship among research evidence, system relationships, generated calculation dependencies, and executed study evidence appears only indirectly. Recast the section around that causal chain and attach repository names to the steps, so the parts arrive as instances of the reason for the split. — “The tools separate responsibilities…” and the four repository bullets at lines 60–65 (cites: Design Synthesis, “You are building a mental model, not an inventory,” rule 6, and “A document that restates the artifacts in order”; shared feedback “Structure presented as an inventory”)
+
+3. Several abstractions perform decisions or actions that belong to people or programs. Examples include “A larger investigation decides,” “The study joins them,” “The result directed further work,” and “The product promise has declared live-test limits.” Name the agent, owner, calculation, or recorded evidence that actually makes the decision or performs the action, then sweep the full document for the same pattern. — lines 42, 50, 79, 99, and 110 (cites: Design Synthesis rules 1 and 4; shared feedback “Abstraction performing a verb”)
+
+4. The prose still relies on long runs of similarly shaped declarative sentences, which makes the revised opening and process explanation read as dry fact sequences. The strongest examples are “Research establishes… A system model connects… Repeated calculations test… A larger investigation decides…” and “An agent argues… Code generation constructs… Package checks establish… TEAx evaluates…”. Combine only the relationships that belong together, vary sentence length around real turns in the argument, and use a list or flow cue when the content is inherently sequential. — lines 50 and 77 (cites: Design Synthesis opening reader test, rules 4 and 11; shared feedback “Repetitive sentence structure”)
+
+5. The judgment mixes separate findings instead of making concerns, uncertainty, source disagreement, and spot checks visibly distinguishable. In particular, the third bullet combines a disagreement about feasible-point attribution with an unrelated publication-boundary defect, while no item plainly states the unresolved questions left by the evidence. Split the categories and give each issue its own short item so the owner can tell what is disputed, what is unknown, and what to verify. — Judgment at lines 105–112, especially line 111 (cites: Design Synthesis § 4 Judgment and rule 1)
+
+6. Several source and visual annotations are fragments rather than sentences, despite the instruction that every sentence stand on its own with a subject and verb. “Detail: …”, “Visual cue: …”, and the final “Reading structure: …” / “Writing references: …” constructions read like production notes rather than one engineer explaining the system to another. Rewrite each as a direct instruction or factual sentence. — lines 56, 62–65, 71, 85, 103, and 116–118 (cites: Design Synthesis rules 1 and 4; shared feedback “Thought compressed into a fragment”)
+
+7. The two densest judgment sentences fail the one-read test. “The product promise has declared live-test limits…” requires the reader to unpack an artifact, an assurance distinction, two parenthetical examples, and a publication consequence at once; the following bullet then moves from a count disagreement to a dropped-output defect and finally to a general assurance claim. State each concern in plain language first, then give its consequence and reference separately. — lines 110–111 (cites: Design Synthesis opening reader test and rules 1 and 11)

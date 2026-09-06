@@ -1,0 +1,28 @@
+{
+  "20260821-power-cycle-ab": {
+    "rows": 3792,
+    "blank_cells_by_column": {
+      "p_net": 3792,
+      "rec_frac": 3792,
+      "q_eng": 3792,
+      "p_th": 3792,
+      "p_et": 3792
+    },
+    "oracle_operands_exists": false
+  },
+  "20260901-sustainment-fence": {
+    "rows": 334,
+    "blank_cells_by_column": {},
+    "oracle_operands_exists": true
+  },
+  "20260903-priced-levers": {
+    "rows": 439,
+    "blank_cells_by_column": {},
+    "oracle_operands_exists": true
+  },
+  "20260903-wall-and-heating": {
+    "rows": 639,
+    "blank_cells_by_column": {},
+    "oracle_operands_exists": true
+  }
+}
