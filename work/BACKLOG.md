@@ -153,6 +153,16 @@ epics:
   - id: WI-042
     name: Sourced Helium-Ash Profile
     scale: standard
+    status: completed
+    completed: '2026-09-06'
+  - id: WI-043
+    name: Burn-Control Lever or Second Sustainment Inequality
+    scale: standard
+    status: backlog
+    completed: null
+  - id: WI-044
+    name: Minor-Radius Bound and Wall-Peak Calibration Re-Anchoring
+    scale: standard
     status: backlog
     completed: null
 - name: Pipeline De-Risk & Demonstration
@@ -255,7 +265,9 @@ standalone:
 | WI-039 | Heating System Structure: Sources, Transmission, Launchers | standard | completed | Completed 2026-09-04 |
 | WI-040 | Winding-pack mass cost account: steel, insulation, copper and helium priced by mass (sequenced before WI-038) | standard | backlog |  |
 | WI-041 | Source-Anchored Wall-Load Fence | standard | completed | Completed 2026-09-05 |
-| WI-042 | Sourced Helium-Ash Profile | standard | backlog |  |
+| WI-042 | Sourced Helium-Ash Profile | standard | completed | Completed 2026-09-06 |
+| WI-043 | Burn-Control Lever or Second Sustainment Inequality | standard | backlog |  |
+| WI-044 | Minor-Radius Bound and Wall-Peak Calibration Re-Anchoring | standard | backlog |  |
 
 ## Epic: Pipeline De-Risk & Demonstration
 **Priority**: P0 | **Status**: active

@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Epic: MFE Cost Modeling — Tokamak & Stellarator
 Owner: reid
 Created: 2026-09-05
-Updated: 2026-09-05
+Updated: '2026-09-06'
 ---
 
 # WI-042: Sourced Helium-Ash Profile — the ash shape from the paper's own rule, electrons by quasi-neutrality, one pressure integral
@@ -147,4 +147,6 @@ Goal: `work/orchestration/goals/stored-energy-basis/` (`goal.md`, `trail.md` § 
 
 ## Amendments
 
-None.
+### Amendment 2026-09-06 — amends MR-WI042-9's reading clause and the 'Read:' paragraph of § What the rule gives at the baseline; at the close of goal `stored-energy-basis` `[OWNER 2026-09-06]`
+
+The sentence "the sustainment margin (about 0.9 MW, about 0.2 % of W) is inside the source's own 2.7 % residual, so the design point's sustainment is undetermined within the source's precision" — in MR-WI042-9 and in the 'Read:' paragraph — is superseded in its reasoning; every number stands. The corrected reading (goal `stored-energy-basis` L-004, accepted by its round-2 review on 2026-09-06): the model's W at the rule, 519.9 MJ, sits above both the sourced-rules 518.3 and the printed 504.65, and the verdict is satisfied throughout that band, so the residual is not what makes the design point undecidable; what does is the source's two-sided internal spread on its own stored energy (the printed β row implies 567 MJ and the fast-alpha term about 12 MJ upward; the printed W 2.7 % downward) against a flip about 1 MJ above the model's own W on the constant-scale pairs' slope (0.96–1.11 MW/MJ). "The machine needs 90 MW" is decided as a statement about the retired profile family; "the machine is feasible" is the undecidable one: satisfied on every fence, on the boundary. The model's own doc comment on `sustainment_ok` (`models/designs/stellarator_09/stellarator_plant.sysml`) still carries the older sentence and is corrected by the next model item that touches the sustainment calc, never by an edit of the pinned model outside an item `[OWNER 2026-09-06]`. SV-043, SV-054 (`modeling_project/VALIDATION_MATRIX.md`) and `exploration/stellarator_e2e/studies/ANNEX.md` § Baseline pin carry the same dated correction. Also per that review's F3: under τ*/τ_E 8 → 4 the ash amount does not halve; it falls 39 % (6.04e19 → 3.66e19), the shape unchanged.
