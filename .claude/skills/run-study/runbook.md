@@ -124,6 +124,14 @@ showed, and what that fixed — and record the window's provenance as `engineere
 mask applied to the candidate range is a derived bound from held-fixed inputs, and the
 derivation is recorded.
 
+A restated window — one inherited from an earlier record and re-run at a changed
+package — is scanned again here, not inherited as scanned: re-read its edges at the new
+package from an anchor that is feasible at the new package, and state each edge as caught
+or not caught before any point runs. The old edges were fixed by the old package's fences,
+and a package change that moves a fence can move the feasible region across an edge the
+old scan called caught (`20260905-stored-energy-basis`, pre-execution critique F1; goal
+`stored-energy-basis` L-008; added 2026-09-06 `[OWNER]`).
+
 **Calls:** the package-owned oracle, per the annex
 **Deposits:** record.md § 11 Study definition and window provenance + snapshot `arms[].window`
 **Fails closed when:** the oracle is unavailable or fails to run on the candidate range

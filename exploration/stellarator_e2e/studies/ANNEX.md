@@ -42,8 +42,11 @@ The pinned baseline point, its headline, and its expected verdicts live in
 `a = 1.3 m`, `availability = 0.85`, headline
 `stellarator_09__stellaris__lcoe_calc__lcoe` = `322.31843948570247`, **nine**
 verdicts, **all satisfied** — `sustainment_ok` by 0.92 MW (required sustained coupled
-heating 49.08 MW vs 50 coupled, a margin inside the source's own 2.7 % residual on its
-printed stored energy: on the boundary, never tuned) and `wall_load_ok` at 3.979 against
+heating 49.08 MW vs 50 coupled: on the boundary, never tuned — undecidable from the
+source's own two-sided spread on its stored energy, not from its 2.7 % residual; the
+model's 519.9 MJ sits above both the sourced-rules 518.3 and the printed 504.65, and the
+verdict is satisfied throughout that band; corrected 2026-09-06 at the close of goal
+`stored-energy-basis`, its L-004) and `wall_load_ok` at 3.979 against
 4.05, both flipped from violated by the helium ash on the source's own profile rule
 (WI-042; goal `stored-energy-basis` L-002/L-003). History of the pin: the WI-039
 regeneration (2026-09-03) left the headline at `307.08712042841586` with
