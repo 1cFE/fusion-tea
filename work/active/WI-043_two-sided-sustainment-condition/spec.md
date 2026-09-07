@@ -134,4 +134,6 @@ SV entries SHALL be created at implementation once names are fixed (the WI-039/W
 
 ## Amendments
 
-None.
+### Amendment 2026-09-07 — amends MR-WI043-2's stated basis (the falling-branch sentence)
+
+**What changed.** MR-WI043-2 required the model text to state "the falling-branch reading that makes the lower bound the heating system's hold authority", and the landed `'Burn Hold'` doc text said "Every point in this model's operating window sits on the falling branch". The round's study (`exploration/stellarator_e2e/studies/20260907-burn-control/`, § 3, § 15 #2; the pre-execution critique's F1) measured otherwise: over the committed window 84 of the 1,839 fence-feasible points sit on the rising branch — all driven, at 16–18 keV and n_e0 0.6–0.8× — and every ignited point is falling. The basis paragraph is narrowed to the measured pattern: the bound rests on "no non-negative heating closes an ignited point's balance", and the branch decides how a driven point is held (feedback on the falling branch; stable under fixed heating on the rising branch), not whether. Doc text only; the def's formal and predicate, the assert and every number are unchanged. Folded into this item before its close on the owner's ruling `[OWNER-VERBATIM 2026-09-07]` "ok do 2 then 1" (the round-1 review's close-packet item 4, recommendation "fold it into WI-043 before its close"); `goal.md` § Amendment 2026-09-07 is the goal-side record. The twin synced; Levels 1–3 re-run; the regeneration check and any fingerprint consequence recorded in the plan's close record.

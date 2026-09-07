@@ -256,20 +256,27 @@ package mfe_viability {
         positive and no larger than what is installed.
 
         What a negative requirement means, and why it is a bound: alpha heating
-        alone exceeds every loss at the chosen density and temperature. Every
-        point in this model's operating window sits on the falling branch of the
-        ignition curve (d p_aux_required / d T below zero: goal burn-control
-        evidence/grounding_probe/summary.md section Reading (c)); a DRIVEN point
-        there is held by feedback on its own auxiliary power, so the installed
-        heating is the control authority. A point with a negative requirement
-        has no such authority -- no non-negative heating closes its balance --
-        and left alone at its density the plasma as modeled settles far outside
-        the other limits (the probe: 20-41 keV, the wall peak at 2.3-5.4x its
-        limit). The model has no burn-control mechanism (fuelling, impurity
-        seeding, confinement degradation) that would arrest that, and no
-        admissible source quantifies one (goal burn-control
-        evidence/grounding_sources.md section Q2). So this bound is the HOLD
-        condition: the point is one the installed heating system can hold.
+        alone exceeds every loss at the chosen density and temperature. A point
+        with a negative requirement has no heating authority -- no non-negative
+        heating closes its balance -- and left alone at its density the plasma
+        as modeled settles far outside the other limits (the grounding probe:
+        20-41 keV, the wall peak at 2.3-5.4x its limit; goal burn-control
+        evidence/grounding_probe/summary.md section Reading (b)). The model has
+        no burn-control mechanism (fuelling, impurity seeding, confinement
+        degradation) that would arrest that, and no admissible source quantifies
+        one (evidence/grounding_sources.md section Q2). So this bound is the
+        HOLD condition: the point is one the installed heating system can hold.
+        Where a DRIVEN point sits on the ignition curve decides HOW it is held,
+        not whether: measured over the committed window at this pin (study
+        20260907-burn-control, the branch column), the 13 and 14.63 keV rows sit
+        on the falling branch everywhere (d p_aux_required / d T below zero: a
+        temperature rise needs less heating, so the point is held by feedback on
+        its own auxiliary power), while at 16-18 keV and low density (n_e0
+        0.6-0.8x) 84 driven points sit on the rising branch (a temperature rise
+        needs more heating: stable under fixed heating); every ignited point
+        measured is on the falling branch. The bound rests on the first
+        sentence, not on the branch (goal burn-control, goal.md Amendment
+        2026-09-07; WI-043 spec Amendment 2026-09-07).
 
         It is NOT a statement that ignition is infeasible. The sister systems
         codes define an ignited design point as the solution of the same
