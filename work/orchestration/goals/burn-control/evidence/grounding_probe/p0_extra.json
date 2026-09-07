@@ -1,0 +1,773 @@
+{
+ "stable_root": {
+  "T": 21.1611328125,
+  "p_aux_required": 49.100603886590534,
+  "dpaux_dT": 22.31883574750327,
+  "channels": {
+   "p_aux_required": 49.100603886590534,
+   "heat_coupled": 50.0,
+   "lcoe": 184.2242436783844,
+   "p_fus": 5567.810220656267,
+   "wall_load_peak": 8.351715330984401,
+   "wall_load_avg": 6.344162964818187,
+   "beta": 0.037119479930853655,
+   "B_peak": 24.899999999999995,
+   "p_net": 1808.9095023646357,
+   "rec_frac": 0.17768126456629768,
+   "q_eng": 5.628055397066769,
+   "sigma_wp": 650000000.0,
+   "eps_cond": 0.0021666666666666666,
+   "W_th": 762.6534611809795,
+   "tau_E": 0.8711579814332283,
+   "p_rad": 232.5944886963348,
+   "p_alpha_heat": 1058.9418258666153,
+   "n_He0": 6.033778717471218e+19,
+   "p_th": 6605.906485757827,
+   "total_capital": 18168727098.7019,
+   "n_e0": 5.06e+20,
+   "T": 21.1611328125
+  },
+  "verdicts": {
+   "beta_ok": true,
+   "peak_field_ok": true,
+   "net_positive": true,
+   "recirc_ok": true,
+   "wall_load_ok": false,
+   "wp_stress_ok": true,
+   "cond_strain_ok": true,
+   "sustainment_ok": true,
+   "tbr_ok": true,
+   "all_satisfied": false,
+   "violated": [
+    "wall_load_ok"
+   ]
+  }
+ },
+ "0.3": {
+  "scan": [
+   [
+    5.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    5.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    6.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    6.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    7.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    7.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    8.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    8.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    9.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    9.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    10.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    10.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    11.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    11.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    12.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    12.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    13.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    13.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    14.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    14.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    14.63,
+    null,
+    "TypeError: float() argument must be a st"
+   ]
+  ],
+  "max": null,
+  "lowest_evaluable_T": null,
+  "at_T_op": "TypeError: float() argument must be a string or a real number, not 'complex'"
+ },
+ "0.4": {
+  "scan": [
+   [
+    5.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    5.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    6.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    6.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    7.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    7.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    8.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    8.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    9.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    9.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    10.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    10.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    11.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    11.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    12.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    12.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    13.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    13.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    14.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    14.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    14.63,
+    null,
+    "TypeError: float() argument must be a st"
+   ]
+  ],
+  "max": null,
+  "lowest_evaluable_T": null,
+  "at_T_op": "TypeError: float() argument must be a string or a real number, not 'complex'"
+ },
+ "0.5": {
+  "scan": [
+   [
+    5.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    5.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    6.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    6.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    7.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    7.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    8.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    8.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    9.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    9.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    10.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    10.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    11.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    11.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    12.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    12.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    13.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    13.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    14.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    14.5,
+    76.62813111164607,
+    ""
+   ],
+   [
+    14.63,
+    77.3200319498047,
+    ""
+   ]
+  ],
+  "max": [
+   14.63,
+   77.3200319498047
+  ],
+  "lowest_evaluable_T": 14.5,
+  "at_T_op": {
+   "p_aux_required": 77.3200319498047,
+   "lcoe": 6486.924143015837,
+   "p_fus": 809.047053874066,
+   "wall_load_peak": 1.213570580811099,
+   "p_net": 25.9108663280439,
+   "rec_frac": 0.9283485860641434,
+   "violated": [
+    "recirc_ok",
+    "sustainment_ok"
+   ]
+  }
+ },
+ "0.6": {
+  "scan": [
+   [
+    5.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    5.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    6.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    6.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    7.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    7.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    8.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    8.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    9.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    9.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    10.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    10.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    11.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    11.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    12.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    12.5,
+    79.12687006313118,
+    ""
+   ],
+   [
+    13.0,
+    77.72426961962154,
+    ""
+   ],
+   [
+    13.5,
+    77.00290248845909,
+    ""
+   ],
+   [
+    14.0,
+    76.9857123461079,
+    ""
+   ],
+   [
+    14.5,
+    77.69947895466817,
+    ""
+   ],
+   [
+    14.63,
+    78.00804049846201,
+    ""
+   ]
+  ],
+  "max": [
+   12.5,
+   79.12687006313118
+  ],
+  "lowest_evaluable_T": 12.5,
+  "at_T_op": {
+   "p_aux_required": 78.00804049846201,
+   "lcoe": 1284.9682582738865,
+   "p_fus": 1113.1971232698882,
+   "wall_load_peak": 1.6697956849048323,
+   "p_net": 139.8688717754719,
+   "rec_frac": 0.7080630374631219,
+   "violated": [
+    "recirc_ok",
+    "sustainment_ok"
+   ]
+  }
+ },
+ "0.7": {
+  "scan": [
+   [
+    5.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    5.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    6.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    6.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    7.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    7.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    8.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    8.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    9.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    9.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    10.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    10.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    11.0,
+    101.57503614487402,
+    ""
+   ],
+   [
+    11.5,
+    95.46646487645262,
+    ""
+   ],
+   [
+    12.0,
+    90.14814228004175,
+    ""
+   ],
+   [
+    12.5,
+    85.6047438067236,
+    ""
+   ],
+   [
+    13.0,
+    81.83655438759581,
+    ""
+   ],
+   [
+    13.5,
+    78.85387695685435,
+    ""
+   ],
+   [
+    14.0,
+    76.67857934770856,
+    ""
+   ],
+   [
+    14.5,
+    75.33828328797586,
+    ""
+   ],
+   [
+    14.63,
+    75.12997463938444,
+    ""
+   ]
+  ],
+  "max": [
+   11.0,
+   101.57503614487402
+  ],
+  "lowest_evaluable_T": 11.0,
+  "at_T_op": {
+   "p_aux_required": 75.12997463938444,
+   "lcoe": 717.2095642201095,
+   "p_fus": 1452.6443316532848,
+   "wall_load_peak": 2.1789664974799274,
+   "p_net": 267.0518998737738,
+   "rec_frac": 0.5623699429900888,
+   "violated": [
+    "recirc_ok",
+    "sustainment_ok"
+   ]
+  }
+ },
+ "0.85": {
+  "scan": [
+   [
+    5.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    5.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    6.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    6.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    7.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    7.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    8.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    8.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    9.0,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    9.5,
+    null,
+    "TypeError: float() argument must be a st"
+   ],
+   [
+    10.0,
+    148.95846619841765,
+    ""
+   ],
+   [
+    10.5,
+    135.59813733925913,
+    ""
+   ],
+   [
+    11.0,
+    123.43661441872388,
+    ""
+   ],
+   [
+    11.5,
+    112.35881953271107,
+    ""
+   ],
+   [
+    12.0,
+    102.28673301075389,
+    ""
+   ],
+   [
+    12.5,
+    93.17741495102536,
+    ""
+   ],
+   [
+    13.0,
+    85.01280828257887,
+    ""
+   ],
+   [
+    13.5,
+    77.7910903957258,
+    ""
+   ],
+   [
+    14.0,
+    71.52841521103784,
+    ""
+   ],
+   [
+    14.5,
+    66.25042629193933,
+    ""
+   ],
+   [
+    14.63,
+    65.04269536729618,
+    ""
+   ]
+  ],
+  "max": [
+   10.0,
+   148.95846619841765
+  ],
+  "lowest_evaluable_T": 10.0,
+  "at_T_op": {
+   "p_aux_required": 65.04269536729618,
+   "lcoe": 438.18823795848954,
+   "p_fus": 2020.9929509308581,
+   "wall_load_peak": 3.0314894263962877,
+   "p_net": 479.99899924590216,
+   "rec_frac": 0.4215179150856032,
+   "violated": [
+    "sustainment_ok"
+   ]
+  }
+ }
+}
