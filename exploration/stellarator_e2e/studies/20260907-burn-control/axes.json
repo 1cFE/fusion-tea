@@ -1,0 +1,149 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "R+tie",
+      "note": "SWEPT, with its declared magnet__R0 tie (ANNEX section Declared ties; tie data in manifest.json). Plasma major radius, the wall half's geometry lever. Its effect on the wall load at this pin is the OPEN MEASUREMENT goal.md section Invariants names: in the average wall load R cancels exactly at fixed (n, T, a) -- p_fus is proportional to R through the volume and the circular-torus wall area is proportional to R -- so any R response of the wall load comes only through the WI-037 sustainment state (ISS04 tau_E ~ R^0.64 with B_axis ~ I_coil / R at fixed current, feeding the converged ash and fuel densities and so p_fus). R reaches the field fences through B_axis ~ 1/R and the magnet cost through the winding length. The pre-WI-037 constancy in R (20260829-p-pump-fence) does not transfer and is not assumed.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__R",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "stellarator_09__stellaris__magnet__R0",
+          "provenance": "tie"
+        }
+      ]
+    },
+    {
+      "axis": "a",
+      "note": "SWEPT, with a window that BRACKETS the committed a >= 1.70 violation (20260829-p-pump-fence: wall_load_ok violated at every a >= 1.70 at that pin, on the average fence). Plasma minor radius. The average wall load scales as a^2 / (a + 0.10) at fixed (n, T) -- more plasma per unit of first-wall area as a grows -- so under the honest fence (the peak = average x 1.316441) the baseline a = 1.3 already reads 4.088 against 4.05, and the a-boundary is expected BELOW 1.3 at the baseline density and temperature, while ISS04 confinement (tau_E ~ a^2.28) pulls the sustainment boundary the other way. The a-direction is where the deadlock between the two fences is expected to be sharpest. CRITIQUE F2/F3: nothing bounds a from above in the model -- no aspect-ratio, coil-space or shaping fence, no ash-fraction bound, and the Sudo density limit (a surfaced gap) falls with a while n_e0 is held; the magnet account is blind to a (winding length k_coil x R0, held casing mass); and the sign of the wall load's a-response is set by the held transport facts tau_ratio_ash x f_suppr_ash and iota_23, carried from the design point. All disclosed; the transect arm measures the first.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__a",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "n_e0",
+      "note": "SWEPT. Peak electron density; the fuel peaks are computed from it by quasi-neutrality with the converged ash, and the line-averaged ISS04 density derives from it. The strongest wall lever (p_fus ~ n^2 at fixed T); the window reaches the beta limit so beta_ok is testable, and reaches below 0.9x so recirc_ok is testable (round 1 caught 0.8x by recirc_ok).",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__n_e0",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "T_i0",
+      "note": "SWEPT, interior or fence-caught, past 18 keV where the scan shows anything (20260903-priced-levers#5; goal.md section Invariants). Peak ion temperature; T_e0 rides the held 0.95 ratio inside the sustainment calc. Temperature relieves sustainment and loads the wall; round 1 found the 220 MW optimum interior at 16 keV and nothing feasible above 18 keV at either level under the average fence.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__T_i0",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "I_coil",
+      "note": "SWEPT, under the conductor ceiling. Peak single-coil current, the field lever; B_axis ~ I_coil / R, so with R swept the field fences are reached along a diagonal, and the ceiling (24.9 T) is reached at a different current at each R. Since WI-036 it also sizes the winding pack and reaches the conductor strain check.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__I_coil",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "p_wallplug_heat",
+      "note": "SWEPT as SENSITIVITY at two levels, not searched: 100 MW (the printed 50 MW coupled at the held eta_source 0.50 and eta_couple 1.00) and 220 MW (110 MW coupled), the two levels every study on this package since 20260901-sustainment-fence has reported. No tie: since WI-039 both the heating account and the coupled power descend from this one key through the chain.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__p_wallplug_heat",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "eta_source_heat",
+      "note": "DECLINED, traced, HELD at 0.50. Round 1 answered this axis (learnings L-001 and L-002: at the printed level the escape is not source efficiency; whether efficiency pays depends on what is held) and the round-1 review carried 'source efficiency held at 0.50' into round 2's strategy. Sweeping it here would confound the wall question with the answered heating one.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__eta_source_heat",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "eta_couple_heat",
+      "note": "DECLINED, traced, held at its disclosed 1.00 -- degenerate with eta_source_heat in the sustainment fence (they enter only as their product), and the OPTIMISTIC end of the stated deposition assumption: every feasibility claim in this study is made at the most generous possible coupling (round 1 F6; the WI-039 grader's EI note).",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__eta_couple_heat",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "j_wp",
+      "note": "DECLINED, traced, held at 118.8271604938272. Winding-pack current density; checked inert in round 1 (critique F7: a 53% swing moves LCOE by 0.03% and moves B_peak, wall load and p_aux_required not at all). Held and asserted per case.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__j_wp",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "B_max",
+      "note": "DECLINED, traced. The conductor peak-field ceiling: a pure fence-relaxer as bound, still unpriced (WI-038 is its vehicle, sequenced after this goal's wall half and after WI-040). Sweeping it would manufacture feasible points that cost nothing.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__magnet__B_max",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "wall_peak_q_ref",
+      "note": "DECLINED, traced, HELD by definition -- the source anchor of the WI-041 calibration (the printed 4.05 MW/m^2 peak at 2700 MW, Table 2 image), one of six reference facts (with p_fus_ref, R_ref, a_ref, kappa_ref, standoff_ref) that fix the calibration at the source's design point. It is a source fact, not a design lever; sweeping it would be tuning the disclosed baseline verdict. The calibration's SENSITIVITY is the shadow column's job instead: points.csv carries the peak re-read at the round-1 external band (net 1.15x and 1.83x on the average, the shaped-wall route of T-001 round 1) beside the executed fence, so the choice of anchor is data.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__wall_peak_q_ref",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "tau_ratio_ash",
+      "note": "SWEPT as a SENSITIVITY TRANSECT through an ASSUMPTION, not a design lever (scope amendment 2026-09-04; critique F2). The particle-to-energy confinement-time ratio tau*/tau_E, a Stellaris Table-4 fact (8.0) at a = 1.3, A = 9.8. With the WI-037 converged ash balance it sets, with f_suppr_ash, how much helium accumulates and so how fast the fuel dilutes as confinement improves with a -- the mechanism behind the wall load FALLING with a past 1.3 at this pin, which is the reading that opens the printed level. The critique showed the sign flips at tau*/tau_E = 4 (the peak RISES with a; no 100 MW point survives) and sustainment closes at 16. Swept 2/4/6/12/16 through three anchors (15 points); every other arm holds 8.0 and asserts it per case. Framed sensitivity; no boundary claim.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__tau_ratio_ash",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "f_suppr_ash",
+      "note": "DECLINED, traced, held at 0.50. The helium suppression heuristic (Stellaris Table 4). It enters the ash balance only in the product f_suppr_ash x tau_ratio_ash, so the tau_ratio_ash transect delivers its whole sensitivity (critique F2: tau*/tau_E = 4 and f_suppr = 0.25 are identical).",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__f_suppr_ash",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "iota_23",
+      "note": "DECLINED, traced, held at 0.92. The rotational transform at two-thirds radius in the ISS04 scaling, a Stellaris configuration fact at the design point. The critique probed it: at 0.70 the scan's best 100 MW point reads 4.512 (violated), at 1.10, 3.643. A configuration property of the QI shape, not a design lever the model can re-optimise; held, and named as one of the three design-point transport facts the a-reversal is conditional on.",
+      "keys": [
+        {
+          "key": "stellarator_09__stellaris__iota_23",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}
