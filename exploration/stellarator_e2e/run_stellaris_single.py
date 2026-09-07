@@ -54,9 +54,19 @@ EXPECTED_VERDICTS = {
     # L-002): on the boundary, disclosed, never tuned. The report headline is
     # 'full_satisfaction' accordingly.
     "sustainment_ok": "satisfied",
+    # WI-043 (goal burn-control): the lower half of the operating-point
+    # condition, p_aux_required >= 0 -- the HOLD condition: a point with a
+    # negative requirement is one the installed heating cannot hold (no
+    # non-negative heating closes its balance), not a point that needs no
+    # heating. EXPECTED SATISFIED at the baseline (49.08 MW >= 0): the model
+    # reads the machine as designed as a driven point; the source's own
+    # Table 5 reads its point A as ignited at 0 MW, the difference inside the
+    # source's two-sided spread on its stored energy (goal stored-energy-basis
+    # L-004). Nothing moved with this verdict: every channel bit-identical.
+    "burn_hold_ok": "satisfied",
 }
 EXPECTED_HEADLINE = "full_satisfaction"
-EXPECTED_VERDICT_COUNT = 9   # WI-036 added cond_strain_ok (was 8)
+EXPECTED_VERDICT_COUNT = 10  # WI-043 added burn_hold_ok (was 9; WI-036 added cond_strain_ok, was 8)
 
 
 def _execute_package():
@@ -180,8 +190,10 @@ def _assert_generated_verdicts(outputs) -> None:
     print(
         "VERDICT PARITY: PASS -- "
         f"headline={report.headline}, assessed_entry_count={report.assessed_entry_count}, "
-        "nine satisfied (WI-042: sustainment_ok and wall_load_ok flipped to "
-        "satisfied by the sourced ash profile; disclosed, never tuned)"
+        "ten satisfied (WI-043: burn_hold_ok added, the lower half of the "
+        "sustainment condition; nothing moved. WI-042: sustainment_ok and "
+        "wall_load_ok flipped to satisfied by the sourced ash profile; "
+        "disclosed, never tuned)"
     )
 
 

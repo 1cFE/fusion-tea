@@ -1,5 +1,5 @@
 ---
-Status: draft
+Status: complete
 Created: 2026-09-07
 Updated: 2026-09-07
 Related Artifacts:
@@ -115,20 +115,20 @@ unset PYTHONPATH   # for tests/study and validate; the single runner sets its ow
 **Files.** `exploration/stellarator_e2e/generated/**` — REGENERATE; `exploration/stellarator_e2e/studies/oracle_entry.py` — REFINE (one binding); `exploration/stellarator_e2e/run_stellaris_single.py` — REFINE; `evidence/baseline_after/`, `evidence/ignited_points/` — NEW.
 
 **Checklist.**
-- [ ] Regenerate:
+- [x] Regenerate:
   ```bash
   /home/reid/1cfe/fusion-tea/.venv/bin/sysml-codegen generate --models exploration/stellarator_e2e/models \
     --output exploration/stellarator_e2e/generated --package-name stellarator_tea \
     --overwrite --smart-regen --preserve-handwritten
   ```
   Expect `New: 1` (the `burn_hold_ok` constraint module), `Regenerated: 0`, every handwritten impl preserved byte-identical, no `generated/handwritten/backup/`, seal clean. **Any `Regenerated` on a manual-stage calc is a stop** (nothing here changes an interface; see memory `gotcha_codegen_manual_stage_regen`)
-- [ ] Read the new constraint id (`stellarator_09__stellaris__burn_hold_ok__<hash>`) and its evaluation channel from `generated/contracts/model_contract.json`; record both here
-- [ ] `oracle_entry.py` `OPERAND_BINDINGS`: add the entry per D4 with a comment (WI-043; same channel as `sustainment_ok`'s first operand)
-- [ ] `run_stellaris_single.py`: `EXPECTED_VERDICTS["burn_hold_ok"] = "satisfied"` with its comment (the hold condition; 49.08 ≥ 0; the paper's point A ignited at 0 MW; L-004); `EXPECTED_VERDICT_COUNT = 10`; the parity message "ten satisfied (WI-043: burn_hold_ok added; nothing moved)"
-- [ ] Execute the single runner (`PYTHONPATH=$HOME/1cfe/teax/packages/teax-simkit:$PWD/exploration/stellarator_e2e/pkg`) → `evidence/baseline_after/run_stellaris_single_output.txt`; verdict parity 10 / `full_satisfaction`; the oracle gate passes
-- [ ] `study_route.execute_baseline(evidence/baseline_after)`; diff `baseline_result.json` before/after: **every channel bit-identical; the verdict list gains `burn_hold_ok: satisfied`; nothing else** — record the diff here
-- [ ] **If any channel moves, stop and derive why before continuing** (`goal.md` § Invariants)
-- [ ] Execute the package at P1 (`c2835`) and P3 (`c2132`) through the study route's `run_points` with the proposals rebuilt from `evidence/grounding_probe/selected_points.json` (the study's `point()` shape); deposit the two results under `evidence/ignited_points/`; expect `burn_hold_ok` violated, `sustainment_ok` satisfied, every channel equal to the probe's recorded values; re-derive both verdicts from the oracle channel through the seam's binding and record agreement
+- [x] Read the new constraint id (`stellarator_09__stellaris__burn_hold_ok__<hash>`) and its evaluation channel from `generated/contracts/model_contract.json`; record both here
+- [x] `oracle_entry.py` `OPERAND_BINDINGS`: add the entry per D4 with a comment (WI-043; same channel as `sustainment_ok`'s first operand)
+- [x] `run_stellaris_single.py`: `EXPECTED_VERDICTS["burn_hold_ok"] = "satisfied"` with its comment (the hold condition; 49.08 ≥ 0; the paper's point A ignited at 0 MW; L-004); `EXPECTED_VERDICT_COUNT = 10`; the parity message "ten satisfied (WI-043: burn_hold_ok added; nothing moved)"
+- [x] Execute the single runner (`PYTHONPATH=$HOME/1cfe/teax/packages/teax-simkit:$PWD/exploration/stellarator_e2e/pkg`) → `evidence/baseline_after/run_stellaris_single_output.txt`; verdict parity 10 / `full_satisfaction`; the oracle gate passes
+- [x] `study_route.execute_baseline(evidence/baseline_after)`; diff `baseline_result.json` before/after: **every channel bit-identical; the verdict list gains `burn_hold_ok: satisfied`; nothing else** — record the diff here
+- [x] **If any channel moves, stop and derive why before continuing** (`goal.md` § Invariants)
+- [x] Execute the package at P1 (`c2835`) and P3 (`c2132`) through the study route's `run_points` with the proposals rebuilt from `evidence/grounding_probe/selected_points.json` (the study's `point()` shape); deposit the two results under `evidence/ignited_points/`; expect `burn_hold_ok` violated, `sustainment_ok` satisfied, every channel equal to the probe's recorded values; re-derive both verdicts from the oracle channel through the seam's binding and record agreement
 
 **Test requirements.** The seam's binding is exercised by `tests/study/test_operand_bindings.py` (phase 5).
 
@@ -145,19 +145,19 @@ unset PYTHONPATH   # for tests/study and validate; the single runner sets its ow
 **Files.** `exploration/stellarator_e2e/stellarator.snapshot.json`, `studies/manifest.json`, `tests/models/data/mfe_census.json`, `tests/study/data/*.expected.json`, `tests/study/test_known_answers.py`, `tests/study/test_operand_bindings.py`, `tests/study/test_valid_empty.py` — RE-DERIVE / RESTATE; `modeling_project/VALIDATION_MATRIX.md`, the traceability rows — via `pm` ops.
 
 **Checklist.**
-- [ ] Snapshot recaptured from the twin tree (`capture_instance_graph_snapshot([Path("exploration/stellarator_e2e/models")], …)`)
-- [ ] `manifest.json`: the three fingerprints from the package's contracts (`files` as path strings); `baseline.verdicts` gains `{"source_local_identity": "burn_hold_ok", "expected": "satisfied"}`; `baseline.headline.value` re-pinned from the executed LCOE (expected 322.318439…, unchanged); `m.load(manifest)` validates
-- [ ] `mfe_census.json` re-derived (`integ.rederived_census(pkg)` + the new semantic fingerprint); expect 205 — record the actual count and any key delta
+- [x] Snapshot recaptured from the twin tree (`capture_instance_graph_snapshot([Path("exploration/stellarator_e2e/models")], …)`)
+- [x] `manifest.json`: the three fingerprints from the package's contracts (`files` as path strings); `baseline.verdicts` gains `{"source_local_identity": "burn_hold_ok", "expected": "satisfied"}`; `baseline.headline.value` re-pinned from the executed LCOE (expected 322.318439…, unchanged); `m.load(manifest)` validates
+- [x] `mfe_census.json` re-derived (`integ.rederived_census(pkg)` + the new semantic fingerprint); expect 205 — record the actual count and any key delta
 - [ ] The six fixtures re-derived via `scripts/study/indicators.py --package … --manifest … --groups tests/study/data/axes.known_answers.json`; `EXPECTED_SEMANTIC_FINGERPRINT` and `FIXTURE_CONTRACT` restated **from the report** (predicted: `burn_hold_ok` reachable on R, R+tie, a, I_coil; modules fired +1 on those four; availability and interest_rate unchanged) with a dated comment saying what moved and why
 - [ ] The literal nine-counts restated from the live package, each with a WI-043 comment: `tests/study/test_operand_bindings.py:79` ("the nine viability constraints" → ten), `tests/study/test_valid_empty.py:39-40` (bounds / constraints_unreachable), `tests/study/test_known_answers.py:137` (constraints_unreachable on the axes that reach none). These are counts of the constraint set, not fitted numbers; the produced reports are the source
-- [ ] `uv run agentic-mbse validate models --complete` — Levels 1–6; compare with the pre-change run (`scratchpad/validate_proto.txt`: 236 / design attrs 207); record any new residue
-- [ ] `tests/models` — expect 48 / 13 or better; every delta explained
+- [x] `uv run agentic-mbse validate models --complete` — Levels 1–6; compare with the pre-change run (`scratchpad/validate_proto.txt`: 236 / design attrs 207); record any new residue
+- [x] `tests/models` — expect 48 / 13 or better; every delta explained
 - [ ] `rm -rf .integration_workspace`; `tests/study` — expect green apart from the branch's 64 pre-existing fail-closed cases (`test_study_publication_fail_closed.py`); every other delta explained; the operand-bindings test sees ten
-- [ ] `pm add-validation` ×3 then `pm update-validation … --status passing` with the evidence paths: (1) the baseline identity — every channel and the nine existing verdicts bit-identical, `burn_hold_ok` satisfied at 49.0796 MW; (2) the ignited-point disagreement — P1 and P3 `burn_hold_ok` violated with `sustainment_ok` satisfied, package and oracle agreeing; (3) the committed-column re-read identity — the new verdict equals the sign of the committed `p_aux_required_MW_oracle` at every re-executed point (status `pending` until the round's study measures it)
-- [ ] `pm trace-element` for `'Burn Hold'` (`mfe_viability.sysml`, type constraint) and for the `burn_hold_ok` assert
-- [ ] Verify each spec success criterion and record where its evidence is (§ Spec success criteria, verified — below)
+- [x] `pm add-validation` ×3 then `pm update-validation … --status passing` with the evidence paths: (1) the baseline identity — every channel and the nine existing verdicts bit-identical, `burn_hold_ok` satisfied at 49.0796 MW; (2) the ignited-point disagreement — P1 and P3 `burn_hold_ok` violated with `sustainment_ok` satisfied, package and oracle agreeing; (3) the committed-column re-read identity — the new verdict equals the sign of the committed `p_aux_required_MW_oracle` at every re-executed point (status `pending` until the round's study measures it)
+- [x] `pm trace-element` for `'Burn Hold'` (`mfe_viability.sysml`, type constraint) and for the `burn_hold_ok` assert
+- [x] Verify each spec success criterion and record where its evidence is (§ Spec success criteria, verified — below)
 - [ ] **Commit B** with an explicit pathspec: the regenerated package, the seam, the single runner, the pin files, the fixtures and the three test files, the SV/trace rows, `evidence/baseline_after/`, `evidence/ignited_points/`, this plan; never `git add -A`
-- [ ] Note for the modelling PM: the epic file's § Item WI-043 status line and the BACKLOG row are owner-facing; the round's trail records the item's landing; the row moves at close through `pm close-item`
+- [x] Note for the modelling PM: the epic file's § Item WI-043 status line and the BACKLOG row are owner-facing; the round's trail records the item's landing; the row moves at close through `pm close-item`
 
 **Gate.** Both batteries as expected with every delta explained; no expectation patched to match; the SV rows `passing` (two) and `pending` (one, the study's).
 
@@ -203,4 +203,18 @@ Library: the installed-side paragraph added to 'Sustainment Limit' (doc text; fo
 
 ### Phase 3 — 2026-09-07
 
-The restatement above; commit A (sha in the trail's T-001 return).
+The restatement above; commit A `b7e2d534`.
+
+### Phase 4 — 2026-09-07
+
+Regeneration report: `Stencils - New: 0, Preserved: 68, Regenerated: 0`; no `handwritten/backup/`; seal clean; the new module `generated/modules/stellarator_09/stellarisburnholdokconstraintmodule.py` plus seven regenerated contract/aggregator/pipeline files (78 insertions, 14 deletions). The constraint id read from `model_contract.json`: `stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58`, evaluation channel `…__evaluation`, predicate `constraint_pred_definition_mfe_viability__burn_hold(p_aux_required_in)` = `_cmp('>=', p_aux_required_in, 0.0)`. Seam binding added (`oracle_entry.py`); single runner restated (`burn_hold_ok: satisfied`, count 10, message "ten satisfied (WI-043 …)"). **Baseline parity:** verdict parity PASS at 10 / `full_satisfaction`; bit-exact vs oracle PASS; guard-live PASS (`evidence/baseline_after/run_stellaris_single_output.txt`). **Baseline diff** (`evidence/baseline_before/baseline_result.json` vs `baseline_after/`): 102 channels compared, **0 differing**; the verdict list gains exactly `burn_hold_ok: satisfied` (the other nine unchanged, re-indexed alphabetically); `executed_under.identity_digest` moved to the new executable fingerprint `cd2c1c4aa535…` and the store path — nothing else. **Ignited points** (`evidence/ignited_points/results.json`): P1 (`c2835`) and P3 (`c2132`) executed through the study route's `run_points` at the new package — both `completed`; `burn_hold_ok` **violated**, `sustainment_ok` **satisfied** at both; the oracle seam re-derives both verdicts identically from the published binding; `p_aux_required` −125.6278 / −188.7637 MW and LCOE 200.9397 / 220.4019 equal the committed record's to every printed digit. **One deviation, feasibility concern 2 realized:** a fifth literal nine-count, `study_route.py:49` `EXPECTED_CONSTRAINT_COUNT = 9`, refused the verdict export ("expected exactly 9 catalogued checks, found 10") on the first attempt; restated to 10 with a WI-043 comment and the executions re-run. The three test literals (`test_operand_bindings.py:79`, `test_valid_empty.py:39-40`, `test_known_answers.py:137`) restated to ten at the same time, each with the comment.
+
+### Phase 5 — 2026-09-07
+
+Re-pin in the recipe's order, every number produced, none typed: snapshot recaptured from the twin tree; `manifest.json` — indicator `ec984adc1572…` → `1d4a06b0e0e9…`, executable `8ac14fdf3745…` → `cd2c1c4aa535…`, semantic `c37fb58a2b19…` → `baab7e4c7541…`, the tenth verdict `burn_hold_ok: satisfied`, the headline re-pinned from the executed LCOE and **unchanged to the digit** (322.31843948570247); `m.load` validates. Census re-derived: **205 entry points at the new fingerprint, no key minted, none retired** (design D2 confirmed). The six fixtures re-derived from `scripts/study/indicators.py`'s report; `FIXTURE_CONTRACT` restated from the report: `burn_hold_ok` reachable on R, R+tie, a and I_coil and on neither availability nor interest_rate (as predicted); trace sizes: modules fired 60 → 61 (R, a), 69 → 70 (I_coil), 72 → 73 (R+tie); channels tainted 91 → 92, 95 → 96, 103 → 104 on the same four — **one deviation from the design's prediction:** the design expected the tainted-channel count unchanged; the new module's own evaluation channel counts as tainted, so each of the four axes taints one more. availability and interest_rate unchanged (6/8, 8/11). `validate models --complete`: Level 1 0/0; Level 2 the 12 pre-existing; Levels 3–5 pass; Level 6 236 issues / design attrs 207 — identical to the pre-change residue. `tests/models`: **48 passed / 13 skipped**. SV-057 (baseline identity) and SV-058 (ignited-point disagreement) added and `passing`; SV-059 (the committed-column re-read identity) `pending` for the round's study. Trace rows for `'Burn Hold'` and `burn_hold_ok` (`data/traceability_matrix.csv`). The `pm` tool warns on every call about a pre-existing invalid type `rel dev` in SV-026 / SV-034 — not this item's, left as found. `tests/study` runs after commit B (the package-clean gate); its run of record is appended below.
+
+### Spec success criteria, verified
+
+- **Functional.** The verdict exists (`model_contract.json`; `predicates.py:99-101`); binding published (`oracle_entry.py`); satisfied at the baseline, violated at P1 and P3 (phase 4); the basis (MR-WI043-2), the disclosure (MR-WI043-3) and the corrected reasoning (MR-WI043-4) in `mfe_viability.sysml` 'Burn Hold' / 'Sustainment Limit' and `stellarator_plant.sysml` at the assert site.
+- **Quality.** Levels 1–3 pass, no new Level 4–6 residue (phase 5); `tests/models` 48 / 13; traceability rows landed; `tests/study` — the run of record below.
+- **Verification.** MR-WI043-5 (baseline identity: 0 of 102 channels differ; SV-057); MR-WI043-6 (P1/P3; SV-058); MR-WI043-7 (the restatement, commit A before commit B); MR-WI043-9 (every pin re-derived; census 205); MR-WI043-10 (the commit-B stat: the regenerated package, the seam, the route's count, the single runner, the pin files, the fixtures and three test literals, the matrix and trace rows, this item — nothing else).

@@ -95,6 +95,11 @@ def constraint_pred_definition_mfe_viability__net_power_positive(net_electric):
     value = _cmp('>', net_electric, 0.0)
     return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((net_electric - 0.0)) if (_fin(net_electric) and _fin(0.0)) else None))
 
+# definition:mfe_viability::'Burn Hold'
+def constraint_pred_definition_mfe_viability__burn_hold(p_aux_required_in):
+    value = _cmp('>=', p_aux_required_in, 0.0)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((p_aux_required_in - 0.0)) if (_fin(p_aux_required_in) and _fin(0.0)) else None))
+
 # definition:mfe_viability::'Neutron Wall Load Limit'
 def constraint_pred_definition_mfe_viability__neutron_wall_load_limit(wall_load, wall_load_limit_in):
     value = _cmp('<=', wall_load, wall_load_limit_in)

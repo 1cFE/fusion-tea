@@ -83,6 +83,22 @@
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::net_positive"
       },
       {
+        "constraint_id": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58",
+        "declaration_id": "7b8980c5-1176-5a84-ba5e-040ab0715d9a",
+        "definition_qualified_name": "mfe_viability::'Burn Hold'",
+        "evaluation_channel": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "stellarator_09__stellaris",
+        "owner_qualified_name": "stellarator_09::stellaris",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"p_aux_required_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"p_aux_required_in\",\"qualified_name\":\"mfe_viability::'Burn Hold'::p_aux_required_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Burn Hold'",
+        "source_form": "definition_typed",
+        "source_local_identity": "burn_hold_ok",
+        "usage_qualified_name": "stellarator_09::stellaris::burn_hold_ok"
+      },
+      {
         "constraint_id": "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb",
         "declaration_id": "7df093ac-40d0-5ae5-b14e-a2591836c009",
         "definition_qualified_name": "mfe_viability::'Neutron Wall Load Limit'",
@@ -148,13 +164,19 @@
       }
     ],
     "excluded_records": [],
-    "fingerprint": "997b44c233e131784c3efc8f1700673bdd6bbe93866a33fb12beeaeb3de79809",
+    "fingerprint": "ae13c6db2b9d1c82227652193667253c3bb1323283ba6d7f55dd0bac2c88ca25",
     "source_records": [
       {
         "definition_qualified_name": "mfe_viability::'Beta Limit'",
         "formal_names": [
           "beta_in",
           "beta_limit_in"
+        ]
+      },
+      {
+        "definition_qualified_name": "mfe_viability::'Burn Hold'",
+        "formal_names": [
+          "p_aux_required_in"
         ]
       },
       {
@@ -303,6 +325,24 @@
         "source_form": "definition_typed",
         "source_local_identity": "net_positive",
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::net_positive"
+      },
+      {
+        "declaration_id": "7b8980c5-1176-5a84-ba5e-040ab0715d9a",
+        "definition_qualified_name": "mfe_viability::'Burn Hold'",
+        "disposition_detail": "stellarator_09::stellaris::burn_hold_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "stellarator_09::stellaris",
+        "source_form": "definition_typed",
+        "source_local_identity": "burn_hold_ok",
+        "usage_qualified_name": "stellarator_09::stellaris::burn_hold_ok"
       },
       {
         "declaration_id": "7df093ac-40d0-5ae5-b14e-a2591836c009",
@@ -912,6 +952,11 @@
     },
     {
       "channel_name": "stellarator_09__stellaris__net_positive__484521d56c02667a__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
     },
@@ -2378,5 +2423,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "c37fb58a2b19973d1698aeace5184890107efdf0136d20a502ffe88a0eb956a4"
+  "semantic_fingerprint": "baab7e4c75412f8cb754f1876bb33c4770e6bf646ce8f46cdf49d51acb94322f"
 }

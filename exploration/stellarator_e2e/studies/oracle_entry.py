@@ -292,6 +292,14 @@ OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
         "p_aux_required_in": {"kind": "channel", "key": f"{P}sustain__p_aux_required"},
         "p_aux_installed_in": {"kind": "channel", "key": f"{P}heat__p_coupled"},
     },
+    f"{P}burn_hold_ok__03c3f94b878e5b58": {
+        # WI-043 (goal burn-control): the lower half of the operating-point
+        # condition, p_aux_required >= 0, on the same computed operand the
+        # sustainment limit reads. One operand, a literal zero on the other
+        # side (the balance's own closing value; not an entry point). The id's
+        # hash is codegen's, read from generated/contracts/model_contract.json.
+        "p_aux_required_in": {"kind": "channel", "key": f"{P}sustain__p_aux_required"},
+    },
 }
 
 

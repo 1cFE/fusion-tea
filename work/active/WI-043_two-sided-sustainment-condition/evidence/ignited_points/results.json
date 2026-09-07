@@ -1,0 +1,114 @@
+{
+  "P1": {
+    "case_id_in_20260905": "20260905-stored-energy-basis:c2835",
+    "state": "completed",
+    "proposal": {
+      "stellarator_09__stellaris__R": 15.7,
+      "stellarator_09__stellaris__magnet__R0": 15.7,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__availability": 0.85,
+      "stellarator_09__stellaris__discount_rate": 0.07,
+      "stellarator_09__stellaris__magnet__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__T_i0": 17.0,
+      "stellarator_09__stellaris__magnet__I_coil": 13000000.0,
+      "stellarator_09__stellaris__n_e0": 3.542e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 100.0,
+      "stellarator_09__stellaris__eta_source_heat": 0.5,
+      "stellarator_09__stellaris__eta_couple_heat": 1.0,
+      "stellarator_09__stellaris__p_delivered_direct_heat": 0.0,
+      "stellarator_09__stellaris__p_coupled_direct_heat": 0.0,
+      "stellarator_09__stellaris__tau_ratio_ash": 8.0
+    },
+    "package_verdicts": {
+      "beta_ok": "satisfied",
+      "burn_hold_ok": "violated",
+      "cond_strain_ok": "satisfied",
+      "net_positive": "satisfied",
+      "peak_field_ok": "satisfied",
+      "recirc_ok": "satisfied",
+      "sustainment_ok": "satisfied",
+      "tbr_ok": "satisfied",
+      "wall_load_ok": "satisfied",
+      "wp_stress_ok": "satisfied"
+    },
+    "oracle_rederived": {
+      "burn_hold_ok": "violated",
+      "sustainment_ok": "satisfied"
+    },
+    "oracle_p_aux_required_MW": -125.62778017231119,
+    "oracle_p_coupled_MW": 50.0,
+    "package_outputs": {
+      "lcoe": 200.93968999420014,
+      "wall_load": 3.0384170062887796,
+      "p_fus": 5415.682600642084,
+      "plasma_volume": 1504.6778685231916,
+      "total_capital": 20716230116.37248,
+      "magnet_capital": 6939392343.704442,
+      "overnight_capital": 20716230116.37248,
+      "lcoe_1cfe": 197.31521625775275
+    },
+    "probe_recorded": {
+      "lcoe": "200.93968999420014",
+      "p_fus": "5415.682600642084",
+      "wall_load_peak": "3.9998962879846145",
+      "beta": "0.04240393089484527",
+      "p_aux_required_MW_oracle": "-125.62778017231119"
+    }
+  },
+  "P3": {
+    "case_id_in_20260905": "20260905-stored-energy-basis:c2132",
+    "state": "completed",
+    "proposal": {
+      "stellarator_09__stellaris__R": 14.2,
+      "stellarator_09__stellaris__magnet__R0": 14.2,
+      "stellarator_09__stellaris__a": 2.2,
+      "stellarator_09__stellaris__availability": 0.85,
+      "stellarator_09__stellaris__discount_rate": 0.07,
+      "stellarator_09__stellaris__magnet__j_wp": 118.8271604938272,
+      "stellarator_09__stellaris__T_i0": 16.0,
+      "stellarator_09__stellaris__magnet__I_coil": 15000000.0,
+      "stellarator_09__stellaris__n_e0": 4.554e+20,
+      "stellarator_09__stellaris__p_wallplug_heat": 100.0,
+      "stellarator_09__stellaris__eta_source_heat": 0.5,
+      "stellarator_09__stellaris__eta_couple_heat": 1.0,
+      "stellarator_09__stellaris__p_delivered_direct_heat": 0.0,
+      "stellarator_09__stellaris__p_coupled_direct_heat": 0.0,
+      "stellarator_09__stellaris__tau_ratio_ash": 8.0
+    },
+    "package_verdicts": {
+      "beta_ok": "satisfied",
+      "burn_hold_ok": "violated",
+      "cond_strain_ok": "satisfied",
+      "net_positive": "satisfied",
+      "peak_field_ok": "satisfied",
+      "recirc_ok": "satisfied",
+      "sustainment_ok": "satisfied",
+      "tbr_ok": "satisfied",
+      "wall_load_ok": "satisfied",
+      "wp_stress_ok": "satisfied"
+    },
+    "oracle_rederived": {
+      "burn_hold_ok": "violated",
+      "sustainment_ok": "satisfied"
+    },
+    "oracle_p_aux_required_MW": -188.76369604665683,
+    "oracle_p_coupled_MW": 50.0,
+    "package_outputs": {
+      "lcoe": 220.40190478127508,
+      "wall_load": 2.9053647359832024,
+      "p_fus": 4683.765877004582,
+      "plasma_volume": 1360.918836498683,
+      "total_capital": 19538757421.22329,
+      "magnet_capital": 8006991165.812818,
+      "overnight_capital": 19538757421.22329,
+      "lcoe_1cfe": 216.34898112605526
+    },
+    "probe_recorded": {
+      "lcoe": "220.40190478127508",
+      "p_fus": "4683.765877004582",
+      "wall_load_peak": "3.8247408432245007",
+      "beta": "0.028125057277171312",
+      "p_aux_required_MW_oracle": "-188.76369604665683"
+    }
+  }
+}

@@ -7,7 +7,7 @@
   "fingerprints": {
     "indicator_inputs": {
       "recipe": "indicator-input-fingerprint/v1",
-      "digest": "ec984adc1572792c0d64d26776621ebb154d5b62187a1647e386abd3ff9eb096",
+      "digest": "1d4a06b0e0e9e4e3633bdc85cc2a310e1fdb56806da447e6dea978baf17e6cc2",
       "files": [
         "contracts/model_contract.json",
         "inputs/mfe_account_costs_params.json",
@@ -21,8 +21,8 @@
       ]
     },
     "recorded_provenance": {
-      "executable_fingerprint": "8ac14fdf3745be9682723902c11a2245f423f2fc6d5bc4726b7fed3b09b5c18e",
-      "semantic_fingerprint": "c37fb58a2b19973d1698aeace5184890107efdf0136d20a502ffe88a0eb956a4"
+      "executable_fingerprint": "cd2c1c4aa53544e32d1208e5dad100a7c1d9bd12dbfedb6df251b3ad28cc5656",
+      "semantic_fingerprint": "baab7e4c75412f8cb754f1876bb33c4770e6bf646ce8f46cdf49d51acb94322f"
     }
   },
   "objective_catalog": [
@@ -105,6 +105,10 @@
     "verdicts": [
       {
         "source_local_identity": "beta_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "burn_hold_ok",
         "expected": "satisfied"
       },
       {

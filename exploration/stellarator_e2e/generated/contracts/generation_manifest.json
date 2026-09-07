@@ -91,6 +91,7 @@
     "modules/stellarator_09/stellaris/__init__.py",
     "modules/stellarator_09/stellaris/special_materials_capital.py",
     "modules/stellarator_09/stellarisbetaokconstraintmodule.py",
+    "modules/stellarator_09/stellarisburnholdokconstraintmodule.py",
     "modules/stellarator_09/stellariscondstrainokconstraintmodule.py",
     "modules/stellarator_09/stellarisnetpositiveconstraintmodule.py",
     "modules/stellarator_09/stellarispeakfieldokconstraintmodule.py",

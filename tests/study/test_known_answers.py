@@ -18,10 +18,11 @@ from tests.study.conftest import DATA_DIR, run_tool
 CASES = ["availability", "interest_rate", "R", "R+tie", "a", "I_coil"]
 
 EXPECTED_SEMANTIC_FINGERPRINT = (
-    # WI-042 sourced helium-ash profile (goal stored-energy-basis round 2, 2026-09-05);
-    # was d468f3b6... at WI-041 (source-anchored wall-load fence, 2026-09-04) and
-    # 48731d15... at WI-039 (heating power chain, 2026-09-03)
-    "c37fb58a2b19973d1698aeace5184890107efdf0136d20a502ffe88a0eb956a4"
+    # WI-043 two-sided sustainment condition (goal burn-control round 1, 2026-09-07);
+    # was c37fb58a... at WI-042 (sourced helium-ash profile, 2026-09-05), d468f3b6...
+    # at WI-041 (source-anchored wall-load fence, 2026-09-04) and 48731d15... at
+    # WI-039 (heating power chain, 2026-09-03)
+    "baab7e4c75412f8cb754f1876bb33c4770e6bf646ce8f46cdf49d51acb94322f"
 )
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,
@@ -32,6 +33,15 @@ EXPECTED_SEMANTIC_FINGERPRINT = (
 #: more channel because CAS27 is now computed in-package and declared as the
 #: `cas27` objective, and each swept attribute is one plant-level entry point.
 FIXTURE_CONTRACT = {
+    # WI-043 (goal burn-control round 1, 2026-09-07) re-derived every expectation file on
+    # the two-sided-sustainment package. ONE more reachable constraint -- burn_hold_ok, the
+    # lower half of the operating-point condition (p_aux_required >= 0) -- on every axis
+    # that reaches sustain (R, R+tie, a, I_coil), and on neither availability nor
+    # interest_rate; each of those four axes fires ONE more module (the new constraint
+    # module) and taints ONE more channel (that module's own evaluation channel -- the
+    # verdict's operand is an existing channel). Same objectives on every axis. No number
+    # in the package moved.
+    #
     # WI-042 (goal stored-energy-basis round 2, 2026-09-05) re-derived every expectation
     # file on the sourced-ash-profile package. Same reachable constraints, the same
     # objectives and the same modules fired on every axis; R, R+tie, a and I_coil each
@@ -74,10 +84,10 @@ FIXTURE_CONTRACT = {
     # finding stands).
     "availability": (True, [], ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'], 6, 8),
     "interest_rate": (True, [], ['cas72', 'lcoe', 'lcoe_1cfe'], 8, 11),
-    "R": (False, ['beta_ok', 'net_positive', 'recirc_ok', 'sustainment_ok', 'wall_load_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 60, 91),
-    "R+tie": (False, ['beta_ok', 'cond_strain_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 72, 103),
-    "a": (False, ['beta_ok', 'net_positive', 'recirc_ok', 'sustainment_ok', 'wall_load_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 60, 91),
-    "I_coil": (False, ['beta_ok', 'cond_strain_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 69, 95),
+    "R": (False, ['beta_ok', 'burn_hold_ok', 'net_positive', 'recirc_ok', 'sustainment_ok', 'wall_load_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 61, 92),
+    "R+tie": (False, ['beta_ok', 'burn_hold_ok', 'cond_strain_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 73, 104),
+    "a": (False, ['beta_ok', 'burn_hold_ok', 'net_positive', 'recirc_ok', 'sustainment_ok', 'wall_load_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 61, 92),
+    "I_coil": (False, ['beta_ok', 'burn_hold_ok', 'cond_strain_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 70, 96),
 }
 
 
@@ -134,7 +144,7 @@ def test_availability_reaches_no_constraint(report):
     group = group_by_axis(report, "availability")
     assert group["no_constraint_response"] is True
     assert group["constraints_reachable"] == []
-    assert len(group["constraints_unreachable"]) == 9
+    assert len(group["constraints_unreachable"]) == 10  # WI-043: burn_hold_ok joined the nine
 
 
 def test_I_coil_reaches_the_field_constraints_through_calcs(report):
