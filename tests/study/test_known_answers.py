@@ -164,9 +164,12 @@ def test_I_coil_reaches_the_field_constraints_through_calcs(report):
     # WI-036 adds cond_strain_ok: the winding-pack sizing chain runs off I_coil,
     # so the conductor's own check is reached by the same lever that reaches the
     # structure's -- the conductor is not left unchecked by the field sweep.
+    # WI-043 adds burn_hold_ok: the lower half of the sustainment condition reads the
+    # same computed operand, so every lever that reaches sustainment_ok reaches it.
     assert set(reached) == {
         "beta_ok", "peak_field_ok", "wp_stress_ok", "cond_strain_ok",
         "sustainment_ok", "net_positive", "recirc_ok", "wall_load_ok",
+        "burn_hold_ok",
     }
     # The limit side of each field constraint is a bound design value; sustainment_ok
     # is the one whose limit side is itself computed (WI-039 heating chain), so it
@@ -185,6 +188,14 @@ def test_I_coil_reaches_the_field_constraints_through_calcs(report):
     assert [o["class"] for o in sustainment["operands"]] == ["computed", "computed"]
     required, installed = sustainment["operands"]
     assert required["reached"] is True and installed["reached"] is False
+    # burn_hold_ok (WI-043): computed vs the literal 0.0, the net_positive shape, on the
+    # sustainment operand -- reached exactly where sustainment_ok's required side is.
+    burn_hold = reached["burn_hold_ok"]
+    assert burn_hold["operator"] == ">="
+    assert burn_hold["bound_vs_bound"] is False
+    assert [o["class"] for o in burn_hold["operands"]] == ["computed", "literal"]
+    assert burn_hold["operands"][0]["ref"] == required["ref"]
+    assert burn_hold["operands"][0]["reached"] is True
     assert "beta" in group["objectives_reachable"]
 
 

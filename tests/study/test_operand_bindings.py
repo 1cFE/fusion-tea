@@ -97,7 +97,7 @@ def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
                 f"a package {binding['kind']}"
             )
             resolved += 1
-    assert resolved == 17, f"expected seventeen feature_ref operands across the nine, found {resolved}"
+    assert resolved == 18, f"expected eighteen feature_ref operands across the ten (WI-043: burn_hold_ok adds one), found {resolved}"
 
 
 def test_the_operand_that_resolves_to_nothing_by_name_is_bound_explicitly(
