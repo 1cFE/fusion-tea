@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Epic: MFE Cost Modeling — Tokamak & Stellarator
 Owner: reid
 Created: 2026-09-07
-Updated: 2026-09-07
+Updated: '2026-09-07'
 ---
 
 # WI-043: Two-Sided Sustainment Condition — the operating point is one the installed heating can hold

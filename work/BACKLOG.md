@@ -158,8 +158,8 @@ epics:
   - id: WI-043
     name: Burn-Control Lever or Second Sustainment Inequality
     scale: standard
-    status: backlog
-    completed: null
+    status: completed
+    completed: '2026-09-07'
   - id: WI-044
     name: Minor-Radius Bound and Wall-Peak Calibration Re-Anchoring
     scale: standard
@@ -266,7 +266,7 @@ standalone:
 | WI-040 | Winding-pack mass cost account: steel, insulation, copper and helium priced by mass (sequenced before WI-038) | standard | backlog |  |
 | WI-041 | Source-Anchored Wall-Load Fence | standard | completed | Completed 2026-09-05 |
 | WI-042 | Sourced Helium-Ash Profile | standard | completed | Completed 2026-09-06 |
-| WI-043 | Burn-Control Lever or Second Sustainment Inequality | standard | backlog |  |
+| WI-043 | Burn-Control Lever or Second Sustainment Inequality | standard | completed | Completed 2026-09-07 |
 | WI-044 | Minor-Radius Bound and Wall-Peak Calibration Re-Anchoring | standard | backlog |  |
 
 ## Epic: Pipeline De-Risk & Demonstration
