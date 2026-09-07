@@ -1268,14 +1268,37 @@ package stellarator_09 {
         // profile rule with the electrons by quasi-neutrality (W 551 -> 520 MJ;
         // it read VIOLATED at ~90 MW under the WI-037 profile family, whose
         // ash carried the fuel's exponent -- goal stored-energy-basis L-003).
-        // The margin is inside the source's own 2.7 % residual on its printed
-        // stored energy (L-002): the design point's sustainment is
-        // undetermined within the source's precision -- on the boundary --
-        // and nothing here is tuned (goal stored-energy-basis, owner ruling
-        // 2026-09-05; WI-042 design § Expected baseline behaviour).
+        // Why the design point is on the boundary and not settled (goal
+        // stored-energy-basis L-004, corrected here by WI-043 per the owner's
+        // ruling of 2026-09-06): the model's stored energy at the rule (519.9
+        // MJ) sits above the source's own rules on its printed peaks (518.3)
+        // and above the printed 504.65, and the verdict is satisfied throughout
+        // that band; what makes the point undecidable is that the source's own
+        // stored energy spreads both ways by more than the margin (its beta row
+        // implies 567 MJ and the fast-alpha term adds ~12 MJ upward; the printed
+        // W sits 2.7 % downward). Nothing here is tuned. The installed side
+        // (50 MW coupled) is the source's start-up sizing read in its point-B
+        // sense -- see 'Sustainment Limit' (mfe_viability); the source's own
+        // point A runs ignited at 0 MW auxiliary power (Table 5, raw PDF p. 10).
         assert constraint sustainment_ok : 'Sustainment Limit' {
             in p_aux_required_in = sustain.p_aux_required;
             in p_aux_installed_in = heat.p_coupled;
+        }
+        // Burn hold (WI-043; goal burn-control): the same operand must not be
+        // NEGATIVE -- the lower half of the operating-point condition
+        // 0 <= p_aux_required <= installed coupled heating. At this lever point
+        // EXPECTED SATISFIED (p_aux_required ~= 49.08 MW >= 0): the model reads
+        // the machine as designed as a DRIVEN point on the falling branch of the
+        // ignition curve, held by feedback on its own heating. The source's own
+        // Table 5 reads its point A as IGNITED (fusion gain infinity, auxiliary
+        // power at the operation point 0 MW); the 49 MW between the two readings
+        // sits inside the source's two-sided spread on its own stored energy
+        // (goal stored-energy-basis L-004) and nothing here is tuned. The ignited
+        // points of the committed studies (p_aux_required below zero) read
+        // VIOLATED here and SATISFIED on sustainment_ok, by design: they are
+        // points this heating system cannot hold, not points that need no heating.
+        assert constraint burn_hold_ok : 'Burn Hold' {
+            in p_aux_required_in = sustain.p_aux_required;
         }
 
         // Exposed neutron wall load (headline physics output): the circular-torus

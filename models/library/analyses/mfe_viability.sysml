@@ -210,12 +210,32 @@ package mfe_viability {
         close of the field-never-rewarded pathology (discovery row
         20260823-magnet-technology-ab#4).
 
+        What the installed side IS (WI-043; goal burn-control): Table 2's
+        "Required plasma-coupled ECRH power 50" is what the source installs to
+        REACH its design point along a start-up path ("about 50 MW of auxiliary
+        heating power would need to be installed to reach the desired operation
+        point", raw PDF p. 9); the design point itself runs IGNITED, with fusion
+        gain infinity and 0 MW of auxiliary power at the operation point
+        (Table 5, raw PDF p. 10). This limit reads the number in the source's
+        point-B sense -- a DRIVEN operating point held under the installed
+        heating (point B: fusion gain 182 at 14.77 MW) -- and says nothing about
+        reaching the point from cold: the access requirement is not modelled
+        (goal burn-control, goal.md section Limits). The installed side is not
+        moved by that reading. Pair with 'Burn Hold' (below) for the lower half
+        of the operating-point condition 0 <= p_aux_required <= installed.
+
         **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
         **Ref**: images/page_031_eq_1.png / page_031_eq_2.png (Eq. A.2/A.3,
             the steady-state balance the operand rearranges);
             images/page_002_table_0.png (Table 2: "Required plasma-coupled
-            ECRH power [MW] 50" -- the installed side, coupled-to-coupled)
-        **Basis**: p_aux_required <= installed plasma-coupled heating
+            ECRH power [MW] 50" -- the installed side, coupled-to-coupled);
+            raw PDF p. 9 (the start-up path and the 50 MW to reach point A) and
+            p. 10 (Table 5: fusion gain infinity / 182, aux. power at operation
+            point 0 / 14.77 MW for points A / B -- read from the page render,
+            work/orchestration/goals/burn-control/evidence/grounding_sources_table5.png;
+            the extracted table is corrupted)
+        **Basis**: p_aux_required <= installed plasma-coupled heating (the upper
+            half of 0 <= p_aux_required <= installed; 'Burn Hold' is the lower)
         */
 
         // required sustained plasma-coupled heating [MW] (computed)
@@ -224,5 +244,65 @@ package mfe_viability {
         in attribute p_aux_installed_in : Real;
 
         p_aux_required_in <= p_aux_installed_in
+    }
+
+    constraint def 'Burn Hold' {
+        doc /*
+        Operating-point hold bound (WI-043; goal burn-control): the required
+        sustained plasma-coupled heating computed by 'Plasma Sustainment'
+        (mfe_plasma_sustainment) must not be NEGATIVE. Pair with 'Sustainment
+        Limit' on the same operand: together they say an operating point is one
+        whose power balance closes with an auxiliary heating that is zero or
+        positive and no larger than what is installed.
+
+        What a negative requirement means, and why it is a bound: alpha heating
+        alone exceeds every loss at the chosen density and temperature. Every
+        point in this model's operating window sits on the falling branch of the
+        ignition curve (d p_aux_required / d T below zero: goal burn-control
+        evidence/grounding_probe/summary.md section Reading (c)); a DRIVEN point
+        there is held by feedback on its own auxiliary power, so the installed
+        heating is the control authority. A point with a negative requirement
+        has no such authority -- no non-negative heating closes its balance --
+        and left alone at its density the plasma as modeled settles far outside
+        the other limits (the probe: 20-41 keV, the wall peak at 2.3-5.4x its
+        limit). The model has no burn-control mechanism (fuelling, impurity
+        seeding, confinement degradation) that would arrest that, and no
+        admissible source quantifies one (goal burn-control
+        evidence/grounding_sources.md section Q2). So this bound is the HOLD
+        condition: the point is one the installed heating system can hold.
+
+        It is NOT a statement that ignition is infeasible. The sister systems
+        codes define an ignited design point as the solution of the same
+        balance with P_aux = 0 exactly (an equality; "Require ignited design
+        points, Q ~ infinity"), and leave the over-ignited region outside the
+        described space; this bound is the inequality form of that practice.
+        The design source's own point A is such an ignited point (Table 5:
+        fusion gain infinity, auxiliary power at the operation point 0 MW).
+
+        **Source**: knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/output.md
+            (Lion et al. 2021, the PROCESS stellarator version);
+            knowledge/sources/systems_code_models_for_stellarator_fusion_power_plants_and/output.md
+            (Lion 2023);
+            knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
+            (Stellaris; Table 5 read from the raw PDF page render, the extracted
+            table is corrupted -- goal burn-control evidence/grounding_sources_table5.png)
+        **Ref**: Lion 2021 output.md L164 ("imposes a power balance as an
+            equality constraint"), L211, Eq. 7 image (P_loss =! ... + P_aux);
+            Lion 2023 Tables 4.2 / 4.5 / 4.7 ("Require ignited design points,
+            Q ~ infinity"), L2154 (the over-ignited points "would be ignited,
+            given the imposed models"); Stellaris raw PDF p. 9 (Fig. 15 caption:
+            white where "the plasma would ignite (high T, high n)"), p. 10
+            (Table 5: fusion gain infinity / 182; aux. power at operation point
+            0 / 14.77 MW for points A / B)
+        **Basis**: 0 <= p_aux_required, the lower half of the operating-point
+            condition 0 <= p_aux_required <= installed coupled heating; the
+            literal zero is the balance's own closing value, not a sourced
+            number, and is not an entry point
+        */
+
+        // required sustained plasma-coupled heating [MW] (computed)
+        in attribute p_aux_required_in : Real;
+
+        p_aux_required_in >= 0.0
     }
 }
