@@ -1,0 +1,2669 @@
+
+
+===== PDF PAGE 2 =====
+J. Lion et al.
+15]. As more detailed cost estimates become available alongside greater
+maturity of the fusion ecosystem, there are indications that the price
+of fusion energy will be competitive even relatively early in fusion’s
+technological development [16]. The fuel for fusion is not subject to
+resource scarcity, as the reactants, deuterium and lithium-6 – as well
+as neutron multipliers such as Pb, Be, Ti, Mn, or Zr – are abundantly
+available on Earth, capable of providing virtually limitless resources
+for future generations. The promise of fusion technology is therefore of
+the highest relevance for providing human civilization with sustainable
+energy in the coming centuries.
+Under this premise, fusion is being globally pursued through various
+concepts. Among the magnetic confinement approaches, large-scale
+projects aiming to close the gap toward a fusion power plant include
+(but are not limited to) the international research tokamak ITER [17];
+the STEP spherical tokamak program [18] in the UK; the high-field
+conventional tokamak concept of SPARC [19] in the United States, and
+CFETR [20] in China. Various demonstration device conceptual studies
+are additionally under investigation [21,22].
+While tokamaks have historically been viewed as the clearest path
+to a fusion power plant, they are prone to plasma disruptions [23],
+which pose a significant challenge for commercially viable operation.
+Extensive ongoing scientific efforts aim to solve this issue through pre-
+diction [24–26] and mitigation methods [27–30], but there have been
+no experimental demonstrations that would indicate reliable usage in
+a power plant setting.
+The stellarator is a similar technology to the tokamak, with com-
+parable energy confinement properties [31,32]. However, stellarators
+with no net toroidal current in the plasma avoid problematic current-
+driven plasma disruptions by design. These stellarators have the ability
+to run in steady-state, intrinsically reducing thermal and mechanical
+component fatigue and eliminating the need for an expensive plasma
+current drive system. Although in principle tokamaks can also operate
+in long pulses or even in steady-state, achieving the required steady-
+state current drive is both technologically challenging and economi-
+cally demanding, requiring high electrical efficiencies. The absence of
+current-driven disruptions in current-free stellarators greatly reduces
+the need for active control of the plasma—circumventing the need for
+in-vessel coils, which present challenges in environments subjected to
+high neutron fluxes. Other advantages of stellarators over tokamaks
+include the absence of a Greenwald-like density limit [33–35], allowing
+operation at significantly higher densities. This is advantageous because
+fusion power scales favorably with the square of the fuel density. Fur-
+thermore, stellarators do not exhibit the unfavorable ‘Eich-scaling’ [36]
+of heat exhaust deposition width on divertor plates seen in tokamaks.
+On the contrary, stellarators have shown large wetted areas on divertor
+plates [37–40] and good access to almost complete ‘detachment’ [41–
+43], an operation scenario that eases the heat exhaust challenge on the
+plasma-facing components.
+Among the most prominently discussed options, the quasi-iso-
+dynamic (QI) stellarator [44] is particularly promising for reactor appli-
+cations due to its intrinsically minimized self-induced currents, like the
+bootstrap current [45,46]. Optimized stellarator concepts without QI
+symmetry can, in general, feature significant toroidal plasma currents.
+Such concepts present a strong dependency of plasma equilibrium
+properties on plasma profile shapes, are potentially subject to current-
+driven disruptions, and – since their bootstrap current does not vanish
+– likely do not have the ability to use the island divertor concept as
+an exhaust concept without employing further (unexplored) control
+systems. Among the investigated stellarator options, the modular, low-
+shear, QI stellarator holds the highest technological readiness level,
+following exploration in Wendelstein 7-AS (W7-AS) [47] and the more
+recent Wendelstein 7-X (W7-X) stellarator [48–50].
+W7-X went into operation in 2015, and reached its full design
+specifications only recently, in 2022. Within a few years, W7-X exper-
+iments have demonstrated the reduction of neoclassical transport to a
+level at which turbulence is the major driver for heat transport in the
+Table 1
+Comparison of the design concept presented in this paper (Stellaris) against the two
+most recent Wendelstein stellarators. W7-AS values are extracted from [47]. W7-X
+values are taken from [31].
+W7-AS
+W7-X
+Stellaris
+Minor radius [m]
+0.18
+0.5
+1.3
+Major radius [m]
+2.0
+5.5
+12.7
+Av. magnetic field strength [T]
+2.6
+2.5
+9.0
+Av. power density [MW∕m3]
+10
+0.3
+6.1
+Peak ion temperature [keV]
+1.7
+3.4
+15
+Peak electron density [1020 m−3]
+4
+2
+5
+Peak triple product [keV s m−3]
+4.6 × 1018
+5.1 × 1019
+12.4 × 1021
+plasma [51]. It is difficult to overstate the importance of this achieve-
+ment: W7-X’s results demonstrate that optimized stellarators can now
+be designed to achieve neoclassical transport levels similar to those
+of tokamaks. Therefore, optimized stellarators are now fundamentally
+limited by the same physical (turbulent) phenomena that also constrain
+tokamaks, while maintaining the critical steady-state capability and
+stability advantages of stellarators.
+Historically, stellarator reactor concept studies such as the ARIES-CS
+study [52], the extrapolation of LHD to heliotron-based fusion reac-
+tors [53,54], or the HELIAS studies [55–60] have provided important
+platforms for the fusion community to discuss the extrapolation of
+physics and the validity of concepts from experiment to reactor scale.
+However, despite successful operation of W7-X [50,51,61,62], one can-
+not merely scale W7-X to an economically attractive reactor size, due to
+a number of known limitations including high fusion-born fast particle
+losses [63], insufficient plasma-coil distance to fit a neutron shield
+and blanket at moderate machine sizes [12,64], and high turbulent
+transport levels, particularly ITG transport [65,66]. Moreover, W7-X’s
+usage of NbTi as a superconductor [67] does not easily scale to the
+magnetic field strength required for a reactor.
+In recent years, the community has proposed various solutions
+to address these challenges. For example, fast particle losses can be
+mitigated through precise numerical optimization techniques [68–72].
+The issue of insufficient plasma-coil distance has been tackled with
+new cost functions for stellarator optimization [73] and more com-
+pact blanket designs [10]. Turbulent transport suppression has been
+demonstrated in the presence of strong density gradients [74–77] as
+well as in plasma geometry optimization efforts [71,78–81]. Addi-
+tionally, advances in high-temperature superconductors (HTS) have
+paved the way for achieving higher magnetic field strengths in modern
+devices [82–85]. Despite this, there is currently no comprehensive
+stellarator reactor concept study that simultaneously integrates these
+developments into a single, coherent design. Therefore, it remains
+unclear whether these advancements can be effectively combined to
+create a stellarator that is viable for commercial power plants while
+remaining feasible from an engineering perspective.
+In this paper, we aim to bridge that existing gap by presenting
+a stellarator configuration optimized for all essential reactor aspects,
+including an engineering feasibility study. We argue that the config-
+uration and concept introduced here offer a promising pathway to a
+D-T stellarator power plant. This study extends recent breakthroughs in
+the numerical optimization of QI stellarator plasma shapes, specifically
+the ‘SQuiD’ configurations [70,71], toward a viable stellarator fusion
+reactor.
+The design introduced here represents the first of a new class of QI
+stellarator designs harnessing the high-field potential of HTS magnets.
+In this paper, the first conceptual design within this class is denoted as
+Stellaris.
+Relevant machine parameters of Stellaris are highlighted in Table 1,
+providing a comparison to the two most recent Wendelstein stellarators.
+Note that not all peak values displayed in this table were achieved
+in the same experiment for each device—peak density values were
+achieved independently of the peak temperatures. Stellaris represents
+Fusion Engineering and Design xxx (xxxx) xxx 
+2 
+
+
+===== PDF PAGE 3 =====
+J. Lion et al.
+a significant leap in scale and performance, being approximately 2.6
+times larger in major radius than W7-X and operating at a magnetic
+field strength that is 3.6 times higher. This substantial increase in size
+and magnetic field strength results in an anticipated triple product that
+is roughly 200 times larger than that of W7-X.
+The paper is structured as follows. In Section 2.1, we provide an
+overview of Stellaris. We present an analysis of plasma properties
+in Section 2.2, and the physics basis in Section 2.3. An engineering
+analysis is then presented, focusing on fueling (Section 2.4), heating
+(Section 2.5), divertor design (Section 2.6), a thermal analysis of the
+first wall (Section 2.7), neutronics for the first wall, the blanket and
+neutron shield (Section 2.8), magnets (Section 2.9), support structures
+(Section 2.10), and a remote maintenance solution (Section 2.11). In
+Section 3, we summarize the achievements presented in this paper and
+the impact we anticipate they will have on fusion research.
+2. Concept and analysis
+In this section, we provide an overview of the Stellaris concept and
+proceed through different aspects of analysis, ranging from physics to
+engineering properties.
+2.1. Overview
+Stellaris is a quasi-isodynamic stellarator device with modular coils,
+a minimized toroidal plasma current, a magnetic island chain at the
+edge allowing for an island divertor, and HTS superconducting mag-
+nets. The device closely follows the W7-X stellarator model, with the
+addition of multiple improvements necessary for a reactor candidate.
+The device features a 4-fold discrete rotational symmetry (‘number of
+field periods’) in addition to ‘stellarator symmetry’, an internal discrete
+flip-mirror symmetry [86].
+The underlying plasma configuration of Stellaris belongs to the class
+of recently proposed SQuID-configurations [71], adapted to meet the
+requirements of a power plant by dedicated optimization for larger coil-
+plasma distances. Key parameters of the device are displayed in Table 2.
+The major radius is approximately 12.7 m while the minor radius is
+1.3 m. By comparison, ITER has a minor radius of about 2.0 m [87]
+and the ARC tokamak concept approximately 1.1 m [10]. We adopt
+high-temperature superconductors for the modular coils, and remote
+maintenance is enabled through the splitting of modular sectors. The
+device is sized to provide about 2700 MW of peak fusion power. Con-
+sidering the power multiplication incurred in the blanket (Section 2.8),
+Stellaris is predicted to produce approximately 3150 MW of thermal
+power and (assuming a simple electrical conversion efficiency of 1/3)
+nearly 1 GW of electrical power.
+A schematic view of the device is shown in Fig. 1. A comparison
+of component sizes with ITER and ARC is shown in Fig. 2. We note
+that the displayed machines have different plasma volumes and fusion
+power targets: for ITER, 𝑉= 840 m3 and 𝑃fusion = 500 MW; for ARC,
+𝑉
+= 141 m3 and 𝑃fusion = 500 MW; for Stellaris, 𝑉
+= 425 m3 and
+𝑃fusion ≈ 2700 MW. As shown in Fig. 2, although Stellaris has a larger
+volume than ARC, its non-planar magnets are analogous in size to the
+TF magnets of ARC, and are smaller than the ARC Poloidal Field (PF)
+magnets (not shown).
+In the following section, we survey the different subsystems of
+Stellaris, beginning with attributes of the plasma configuration with
+different profile shapes and proceeding to expected physics properties,
+followed by requirements of the heating system to achieve the chosen
+operational point, analysis and design of the divertor concept, the
+first wall, blanket, shield, coils, and support structure, and finally, the
+remote maintenance concept.
+Table 2
+Key parameters of Stellaris, the high-field stellarator fusion power plant concept
+presented in this paper. ECRH stands for ‘electron cyclotron resonance heating’.
+Variable
+Value
+Minor plasma radius [m]
+1.3
+Major plasma radius [m]
+12.7
+Plasma aspect ratio [1]
+9.8
+Plasma volume [m3]
+428
+Plasma surface area [m2]
+940
+Axis av. magnetic field strength [T]
+9.0
+Peak conductor magnetic field strength [T]
+24.9
+Peak coil current (single coil) [MA]
+15.4
+Number of toroidal field coils [1]
+48
+Stored magnetic energy [GJ]
+111
+Required plasma-coupled ECRH power [MW]
+50
+Peak fusion power [MW]
+∼2700
+Peak thermal power (after blanket multiplication) [MW]
+∼3150
+Peak electric power [MW]
+∼1000
+Peak neutron wall load [MW m−2]
+4.05
+Fig. 1. Overview of Stellaris. Pictured here are the non-planar modular coils (green),
+the support structure (light grey) and the cryostat (outermost grey shell). The red region
+indicates the blanket. Blue ‘stripes’ around the (pink) plasma show the location of the
+magnetic islands which are used to divert the plasma at the edge. One sector splitting
+interface is shown in blue. The inner radius of the cryostat is 6.5 m, its outer radius
+is 18 m. A person is shown for scale.
+Fig. 2. Size comparison between one of the ITER TF coils (a), one of the ARC tokamak
+TF coils [10] (b), and one of the non-planar stellarator coils of Stellaris (c).
+2.2. Plasma properties
+The stellarator plasma and its properties are of central importance to
+all reactor subsystems. The stellarator configuration employed here is
+a variant of the family introduced in [71], called ‘SQuIDs’. The plasma
+configuration for Stellaris was optimized to allow for distant coils using
+the target formulation from [73] and low fast particle losses using a
+precise QI formulation from [70].
+Fusion Engineering and Design xxx (xxxx) xxx 
+3 
+
+
+===== PDF PAGE 4 =====
+J. Lion et al.
+Fig. 3. Visualization of the QI stellarator configuration used for Stellaris. Shown is the
+VMEC free-boundary plasma boundary at ⟨𝛽⟩𝑉= 3% with its magnetic field strength.
+Corresponding coils are shown with their (correctly sized) winding packs for one
+rotationally symmetric module (one full field period).
+Fig. 4. Comparison between the proposed QI configuration (SQuID) and 3 previously
+published configurations: W7-X [91],QIPC [92,93], and Hydra [94]. Radial values are
+normalized by the largest (outermost) and smallest value in the set of configura-
+tions. The metrics included in the plot summarize a subset of the reactor-relevant
+requirements listed in Section 2.2; see Section 2.2 for a description of each dimension.
+Each configuration is evaluated at its optimized volume-averaged plasma 𝛽value. The
+meaning of the axis labels are explained in the main text.
+The configuration used for this study satisfies all relevant reactor re-
+quirements simultaneously, including feasible modular coils that leave
+sufficient space for the required thickness of shielding and breeding
+materials surrounding the plasma, good flux surface quality at finite
+𝛽, equilibrium resiliency with respect to finite 𝛽effects, ideal-MHD
+stability, reduced neoclassical transport, and compatibility with the
+island divertor concept. Additionally, at a sufficiently high peak elec-
+tron temperature of about 19 keV, the configuration has the ability to
+prevent impurity accumulation in the plasma core by creating a positive
+radial electric field. Details on the methodology used to obtain the
+stellarator configuration are obtainable from Ref. [71]. The rotational
+transform is chosen to have values between 0.86 on the axis and 0.98
+at the edge, avoiding low order resonances in the main confinement
+volume. The corresponding set of electromagnetic coils is optimized by
+minimizing the normal component of the magnetic field vector on the
+last flux surface of the plasma boundary, as introduced in [88]. The
+total magnetic field is the superposition of the vacuum field generated
+by the electromagnetic coils and the field generated by the plasma
+currents. We use the virtual casing principle [89], as numerically
+implemented by [90], to compute the field generated by the plasma
+currents. The coils, together with plasma boundary at the targeted 𝛽
+value of ⟨𝛽⟩𝑉= 3%, are shown in Fig. 3.
+Table 3 presents several high-level plasma and engineering param-
+eters of the stellarator plasma and its coil-set.
+In this paper, unless otherwise stated, we use the free-boundary
+equilibria obtained with the VMEC code [95] for analysis. The term
+Table 3
+Main configuration parameters of Stellaris scaled to a minor
+radius of 𝑎= 1.3 m. Coil information provided in this table
+refers to the center filament. Additional information is given
+in Section 2.2 and in Section 2.9.
+Description
+Value
+Aspect ratio [1]
+9.8
+Optimized vol. av. 𝛽[1]
+0.03
+Axis rotational transform [1]
+0.86
+Edge rotational transform [1]
+0.98
+Edge mirror ratio [%]
+26.66
+Minimum coil-plasma distance [m]
+1.37
+Minimum coil-coil separation [m]
+0.67
+Minimum radius of curvature [m]
+0.64
+‘free-boundary’ refers to a plasma equilibrium that is obtained consis-
+tently with the vacuum field produced by the electromagnetic coils.
+The engineering feasibility of the coil-set of Stellaris will be discussed
+in more detail in Section 2.9.
+We visualize the performance of the plasma in a number of relevant
+metrics in Fig. 4, by comparing it to previously published QI stellarator
+plasma configurations [91–94]. The diagram showcases a ‘performance’
+plot where outermost values depict highest performance and innermost
+values depict lowest performance. In this diagram, W7-X [91] refers to
+the standard configuration of the W7-X experiment at ⟨𝛽⟩𝑉∼ 4% [96].
+The QIPC [92,93] stellarator configuration is a high-𝛽, ⟨𝛽⟩𝑉∼ 8.5%,
+configuration with improved QI quality and MHD stability with respect
+to W7-X. Hydra [94] is a proposed QI stellarator configuration that
+achieves low neoclassical transport, good confinement of fast particles,
+and reduced integrated bootstrap current with respect to W7-X.
+Fig. 4 summarizes the following properties:
+• ‘𝐴’ refers to the configuration aspect ratio 𝐴= 𝑅
+𝑎, where 𝑎is the
+plasma minor radius, and 𝑅is the major plasma radius;
+• ‘𝛥Shafranov’ denotes the Shafranov shift at a volume-averaged 𝛽of
+⟨𝛽⟩𝑉∼ 3.0%, indicative of the equilibrium resiliency;
+• ‘𝑓𝛼’ denotes the fraction of confined collision-less energetic parti-
+cles when launched from mid-radius (𝜌= 0.5) evaluated with the
+SIMPLE code [97,98];
+• ‘−𝜕𝑠⟨𝐽⟩
+⟨𝐽⟩‘ measures the strength of the maximum-𝐽property at 𝑠=
+0.5, and the maximum value across all bounce orbits have been
+considered. The maximum-𝐽property benefits the confinement of
+energetic particles [70,99], improves MHD stability [100–102],
+and suppresses TEM driven turbulence [76,103–105];
+• ‘𝐷∗
+11’ refer to the mono-energetic radial transport coefficients and
+indicates the degree of neoclassical particle and energy confine-
+ment quality [106];
+• ‘𝐷∗
+31’ is the mono-energetic bootstrap current coefficient. Both,
+𝐷∗
+11 and 𝐷∗
+31 are obtained with the SFINCS code [107] at mid-
+radius, for a reference collisionality and normalized radial electric
+field strength of 𝜈∗
+= 1 × 10−4 and 𝜈∗
+𝐸
+= 1 × 10−4, respec-
+tively. Background information, including nomenclature for the
+normalization chosen can be found in [106] and in [108];
+• ‘𝛾Cobravmec’ is the highest growth rate in the plasma volume for
+the ideal-MHD infinite-𝑛ballooning mode evaluated with the
+COBRAVMEC code [109];
+• and finally, ‘𝐿𝛁𝐁’ is the minimum magnetic field gradient length
+at the plasma boundary, as proposed in [73], which influences
+the feasibility and distance of the modular coils from the plasma.
+For consistency, all dimensions in Fig. 4 are normalized using the
+minimum and maximum values across all configurations analyzed.
+Fixed-boundary metrics (i.e., metrics obtained from the equilibrium
+magnetic field using the optimized plasma boundary as boundary con-
+dition) are used for the comparison, as coil information is not available
+for every configuration. Fig. 4 demonstrates that the proposed QI
+plasma configuration presented in this paper improves upon the W7-X
+Fusion Engineering and Design xxx (xxxx) xxx 
+4 
+
+
+===== PDF PAGE 5 =====
+J. Lion et al.
+configuration in all evaluated metrics.
+In the following paragraphs, we offer a more detailed analysis of
+performance metrics that are particularly important for reactor-relevant
+plasma configurations.
+Fast particle confinement. To evaluate the configuration’s confinement
+of fusion-born alpha particles, we evaluate both collisionless and colli-
+sional losses.
+We first simulate collisionless trajectories within the plasma vol-
+ume using the symplectic gyro-center code SIMPLE [97,98] and ne-
+glect radial electric fields and slowing-down effects. Any wave-particle
+interactions of the fast particle population are neglected in SIMPLE.
+In SIMPLE simulations, we launch a total of 2 × 105 particles, each
+with an initial energy of 𝐸𝛼= 3.5 MeV, close to the original alpha
+particle energy of a D-T fusion reaction. At initialization, we distribute
+the particles uniformly in their pitch angle. Particles are launched from
+flux surfaces equally spaced in effective minor radius. Within each
+flux surface, the number of launched particles is proportional to an
+alpha particle birth profile rate, 𝜆birth(𝜌) = 𝑛𝐷𝑛𝑇⟨𝜎 𝑣⟩𝑇. For the analysis
+presented in this section, the required kinetic profiles are taken from
+the chosen physics design point (Point A) introduced in Section 2.3. On
+each flux surface, particles are launched following a volumetric uniform
+distribution (i.e., they are initialized proportionally to the Jacobian √𝑔
+derived from the VMEC equilibrium). The particles are considered lost
+if they cross the 𝑠= 1 boundary of the plasma.
+Sub-figure (a) in Fig. 5 shows the fraction of lost energetic particles
+at different volume-averaged plasma 𝛽values as a function of time
+after their birth, as obtained from SIMPLE. At the optimized design
+point, with ⟨𝛽⟩𝑉= 3.0%, the cumulative lost fraction of fusion-born fast
+particles after 100 ms is approximately 0.7%. This time frame of 100 ms is
+a representative value for the alpha-electron momentum exchange time
+at realistic temperatures and densities in stellarator reactors. Note that
+the configuration was optimized for the full pressure operating point
+⟨𝛽⟩𝑉= 3.0%;
+As a comparison, we perform a single collisional alpha particle con-
+finement calculation at 𝛽= 3% using the Monte-Carlo code ANTS [63].
+The code integrates drift orbits in 3D space using a grid-based interpo-
+lation of all field-related quantities required. The calculation includes
+pitch-angle scattering and slowing down from collisions with the ther-
+mal background plasma, assumed to consist of electrons, deuterons and
+tritons. As before, particles are considered lost in this simulation if
+they cross the 𝑠= 1 boundary of the VMEC equilibrium. ANTS allows
+for differentiation between particle and energy losses. Loss fractions of
+both the energy and the particle loss of the fast particle population as
+a function of the slowing down time are shown in sub-figure (b) of
+Fig. 5. We find total alpha particle energy losses at around 0.8% with
+this higher level of fidelity analysis, consistent with the values obtained
+with SIMPLE.
+Ultimately, the confinement of fast particles is constrained not
+only by power balance considerations, since fast particles need to be
+confined to reheat the plasma, but also by the heat load induced by
+these particles on the first wall. To estimate the magnitude of that
+heat load, we calculate the lost power from energetic particles as a
+function of the volume-averaged plasma 𝛽, as shown in Fig. 6. As the
+plasma 𝛽increases from vacuum to the desired target design point,
+the lost fusion power remains below approximately 10 MW. Following
+the methodology outlined in [110], we estimate the peak heat load on
+the wall using conservative assumptions, such as assuming no energy
+loss of fast particles during their slowing-down period. By applying a
+heuristic peaking factor of 320, which was determined in [110] for a
+HELIAS-5 configuration, the estimated peak heat load on the wall at
+the target design point for this study is about 1.4 MW m−2. This value is
+of the same order of magnitude as the photon wall loads, demonstrated
+later in this paper, in Section 2.7, and is therefore in line with the
+technological limits of a solid first wall.
+Fig. 5.
+(a): Lost fraction of energetic particles initialized from a realistic birth profile
+at different volume-averaged plasma 𝛽, as obtained with SIMPLE using collision-less
+simulations. (b): Results of collisional slowing-down simulations using code ANTS at
+⟨𝛽⟩𝑉= 3% using a realistic alpha particle birth profile. .
+Fig. 6. Lost fusion power from energetic particles initialized from a realistic birth
+profile at different volume-averaged plasma 𝛽as obtained from the VMEC free boundary
+equilibrium and using the SIMPLE code assuming collisionless fast particle trajectories
+according to realistic birth profiles of a priori plasma background profiles.
+Neoclassical transport. Neoclassical parallel and radial transport must
+be minimized for QI configurations to be reactor-relevant. Fig. 7 shows
+the mono-energetic neoclassical radial transport coefficient as a func-
+tion of the mono-energetic collisionality 𝜈∗
+=
+𝑅0𝜈
+𝜄𝑣
+for the SQuID
+configuration used here and for the standard configuration of W7-X.
+Both configurations have been scaled to the same plasma minor radius
+and the same axis-averaged magnetic field strength.
+The figure illustrates that with a finite radial electric field, the pro-
+posed configuration exhibits about one order of magnitude lower radial
+neoclassical transport coefficients compared to W7-X. Furthermore, the
+transport coefficients remain of a similar size across different plasma
+𝛽values. This highlights the resiliency of the equilibrium properties
+against diamagnetic effects. The neoclassical mono-energetic transport
+coefficients have been evaluated with the SFINCS code [107] on the
+VMEC free-boundary equilibrium.
+Fusion Engineering and Design xxx (xxxx) xxx 
+5 
+
+
+===== PDF PAGE 9 =====
+J. Lion et al.
+Fig. 14. Radial electric field profiles, 𝐸𝑟, evaluated with the NTSS code for two
+operational scenarios as a function of the normalized minor plasma radius 𝜌. The ‘Ion-
+root’ label refers to an 𝐸𝑟profile obtained from the 0-D design point labeled as ‘A‘ in
+Section 2.3 (red dot in Fig. 15). This regime exhibits a purely negative electric field.
+‘Electron-root’ refers to a profile obtained by operating at higher temperature and lower
+density, namely at 𝑇𝑒,0 = 19.8 k eV and 𝑛𝑖,0 = 1.7 ⋅1020 m−3, which allows for a positive
+radial electric field. All profiles use a fixed ratio between electron and ion temperatures
+of 𝑇𝑖∕𝑇𝑒= 0.95.
+Fig. 15. POPCON plot illustrating the operational space of Stellaris. The 𝑦-axis
+represents the on-axis ion (fuel) density 𝑛𝑖,0 = 𝑛𝐷 ,0 + 𝑛𝑇 ,0 in units of 1020 m−3, and the
+𝑥-axis denotes the peak electron temperature 𝑇𝑒,0 in keV. The color gradient indicates
+the auxiliary power required, in MW, as shown by the color bar on the right. Contour
+lines depict various operational constraints and performance metrics including fusion
+power (𝑃fus), wall power load (𝑝wall), volume averaged plasma beta (𝛽) and fusion
+gain (𝑄). The red circles marks specific operating points of interest at constant fusion
+power, labeled by ‘A’ and ‘B’. The red dashed line shows a possible path to reach the
+design point from start-up with minimized auxiliary power. The dark gray line indicates
+the Sudo density limit [131]. The light gray line indicates above which temperature
+an ‘electron root’ appears in the center of the plasma at 𝑇𝑖∕𝑇𝑒= 0.95. White regions
+correspond to areas where the auxiliary power is beyond the color bar limits and would
+be either inaccessible (high 𝑇, low 𝑛or high 𝑛low 𝑇) or the plasma would ignite (high
+𝑇, high 𝑛).
+where 𝑇𝑒,0 and 𝑛𝑖,0 are varied to match the integrated power balance,
+and 𝛼𝑇= 1.2 (a peaked profile shape) and 𝛼𝑛= 0.35 (a flat profile shape)
+are fixed for this study, informed by density profiles observed in W7-X,
+e.g. [135]. These profiles are in line with the assumptions of previous
+stellarator reactor studies [12,136].
+Appendix A describes the model fidelity used in this section. In sum-
+mary, we use the fusion cross-section model from Bosch and Hale [137]
+Table 4
+Assumed parameters for the 0D studies in this sec-
+tion. 𝑓ren refers to the proportionality factor of the
+ISS04 energy confinement time scaling, 𝑓𝛼measures
+how much of the alpha particle energy re-heats the
+plasma, 𝜏⋆∕𝜏𝑖is the ratio between particle and energy
+confinement time (for all species), 𝑓suppr is a heuristic
+factor used to model the suppression of helium ash,
+and 𝑛𝑊∕𝑛𝑒is the ratio between core tungsten density
+and central fuel density.
+Variable
+Assumption
+𝑓ren
+1.0
+𝑓𝛼
+0.95
+𝜏⋆∕𝜏𝐸
+8.0
+𝑓suppr
+0.5
+𝑛𝑊∕𝑛𝑖
+10−5
+for the fusion reaction rates. For line and continuum radiation, we
+use a priori assumed impurity fractions and calculate the cooling
+factors using the Aurora code [138], relying on the Atomic Data and
+Analysis Structure (ADAS) database [139]. Synchrotron radiation is
+modeled using the model described in [140]. We apply the ISS04
+energy confinement time scaling law from [141], with a modification to
+replace the heating power by the ratio of plasma energy divided by the
+energy confinement time. Then, an averaged global energy confinement
+time is assumed: 𝜏𝐸= 𝜏ISS04
+𝐸
+(𝑇 , 𝐵 , 𝑎, 𝐴, 𝜄2∕3
+). Helium ash profiles are
+obtained using a fixed ratio of particle-to-energy confinement time.
+Fast particle pressures are modeled using the model of [142]. For the
+purpose of this analysis, we take a conservative value of the fast particle
+confinement of 95% and a fixed ion-to-electron temperature ratio of
+0.95. An important assumption is a helium suppression factor 𝑓suppr,
+heuristically reducing the amplitude of the resulting helium ash profile
+in the analysis. This factor accounts for the distinction between alpha
+particle birth location and thermalization location [110]. Assumed
+parameters are summarized in Table 4.
+Fig. 15 shows a scan of the peak electron temperature 𝑇𝑒,0 and
+the peak ion density 𝑛𝑖,0, along with the required auxiliary power to
+support the operation point and relevant operational constraints, in a
+power-output-contour (POPCON) plot. Two chosen operation points are
+indicated with two red circles (labeled ‘A’ and ‘B’). The red dashed line
+indicates a path to reach the operation point ‘A’ with minimal auxiliary
+heating power. According to the employed model, about 50 MW of
+auxiliary heating power would need to be installed to reach the desired
+operation point.
+Table 5 summarizes machine and plasma parameters for both op-
+eration points. It is worth highlighting that the ratio of the volume-
+averaged electron density over the Sudo limit density [131], ⟨𝑛𝑒⟩𝑉∕𝑛Sudo
+at the chosen operation point ‘B’ is slightly greater than one. However,
+as suggested by recent research [143], the Sudo limit strongly depends
+on the impurity fraction in the edge, and higher fidelity models should
+be employed to calculate the density limit more accurately. Ultimately,
+although only the two operation points with the highest fusion power
+are shown here, the performance of the plasma equilibrium is suffi-
+ciently resilient at lower 𝛽values, indicating that all other operation
+points with 𝑃aux < 50 MW are likely feasible (e.g. an operation point
+with lower fusion power and lower fusion gain could be chosen, too,
+which would result in higher component lifetimes and easier burn-
+control). However, to keep the same output power of the machine,
+scaling should be done along lines of constant fusion power (dashed
+black lines in Fig. 15).
+Profiles at the operation point ‘A’ are shown in Fig. 16. The profiles
+have a constant ratio between the minor plasma radius and the profile
+gradients when 𝑇𝑒,0 and 𝑛𝑖,0 are scaled (e.g. at 𝜌= 0.6 we find ratios of
+𝑎∕𝐿𝑇= 2.25 and 𝑎∕𝐿𝑛= 0.66).
+An important aspect to discuss is the control scheme required to
+support the suggested operation points. Compared to tokamaks, stel-
+larators usually require very limited effort on control systems. In the
+Fusion Engineering and Design xxx (xxxx) xxx 
+9 
+
+
+===== PDF PAGE 10 =====
+J. Lion et al.
+Table 5
+Selected plasma and machine parameters for the two design points shown in Fig. 15.
+A-priori profiles are used according to Eq. (3). Ratios taken for 𝜏⋆∕𝜏𝐸are assumptions.
+𝑛𝑂1 refers to the cut-off density of electron cyclotron resonance heating (ECRH) in the
+first ordinary (O1) mode. In further studies, until not otherwise stated, values for point
+A are taken. Point B would violate the ‘Sudo- density limit’ [131], but might still be
+feasible with sufficient plasma purity.
+Description
+Point A
+Point B
+Minor plasma radius [m]
+1.3
+1.3
+Major plasma radius [m]
+12.74
+12.74
+Axis averaged 𝐵0 [T]
+9.0
+9.0
+Aspect ratio [1]
+9.8
+9.8
+Plasma volume [m3]
+425
+425
+Plasma surface area [m2]
+327
+327
+𝑓r en [1]
+1.0
+1.0
+Vol av. 𝑍ef f (core) [1]
+1.20
+1.21
+Vol. av. beta [%]
+2.76
+2.81
+Vol. av. el. density [1020 m−3]
+3.17
+4.21
+Peak helium ash density [1020 m−3]
+0.56
+0.83
+Peak el. density [1020 m−3]
+5.06
+6.89
+Peak D density [1020 m−3]
+1.96
+2.60
+Peak T density [1020 m−3]
+1.96
+2.60
+𝑛𝑒,0∕𝑛𝑂1 [1]
+0.64
+0.87
+⟨𝑛𝑒⟩𝑉∕𝑛Sudo [1]
+1.00
+1.55
+Peak el. temperature [keV]
+15.40
+12.25
+Peak ion temperature [keV]
+14.63
+11.64
+Fusion gain [1]
+∞
+182
+Aux. power at operation point [MW]
+0
+14.77
+Fusion power [MW]
+2700
+2700
+Peak fusion heating [MW∕m3]
+5.51
+6.02
+𝑃∕𝑆LCFS (no edge radiation) [MW∕m2]
+1.18
+0.91
+Total plasma energy [MJ]
+504.65
+533.14
+Av. neutron wall power [MW∕m2]
+2.87
+2.87
+Av. photon wall power [MW∕m2]
+0.70
+0.72
+Peak triple product [k eVs∕m3]
+3.93 × 1021
+5.66 × 1021
+Confinement time [s]
+1.46
+1.99
+Alpha slowing down time [ms]
+43.76
+23.75
+Ratio 𝜏⋆∕𝜏𝐸[1]
+8.00
+8.00
+Tritium burn rate [g/day]
+416.57
+416.49
+Rel. tungsten fraction core 𝑛𝑊∕𝑛𝑒[10−6]
+7.76
+7.55
+Fig. 16. Steady-state density profiles (a) and temperature profiles (b) for the chosen
+design point (Point A) as a function of the normalized radius 𝜌= 𝑟∕𝑎. The shape of
+the profile corresponds to the analytical expression used in Eq. (3) for 𝛼𝑇= 1.2 and
+𝛼𝑛= 0.35.
+case of Stellaris, the requirements are reduced to achieving density
+control, detachment and edge radiation control, and potentially con-
+trol of the edge island locations through an array of control coils.
+If the chosen design point is thermally unstable, an additional con-
+trol scheme or confinement degradation scheme should be employed
+to achieve burn-control. While density control is widely adopted in
+current experimental fusion devices, resilient mechanisms for tem-
+perature control are not yet well-established, but are conceptually
+straightforward: plasma confinement degradation can be achieved by
+tuning coil currents or controlling the tritium fraction in the core.
+Alternatively, it may be possible to use electron-cyclotron-current-
+drive (ECCD)-induced confinement degradation [144]. We expect the
+temperature to be ultimately limited by temperature gradient-driven
+turbulence or electromagnetic turbulence, such as kinetic ballooning
+modes. However, no tools or workflows currently exist to predict limits
+with high confidence.
+To contextualize the confinement time model utilized in this section,
+we compare the resulting profiles at the operation point against a
+higher fidelity transport simulation of the selected stellarator configu-
+ration. This simulation assumes that turbulent timescales are distinctly
+separated from those governing significant changes in the density and
+temperature profiles.
+For this analysis, turbulent diffusivities are computed using flux-
+tube simulations with GENE [145] and then passed to the transport
+solver TANGO [146,147], similar to the approach described in [148].
+The transport equations are solved with fixed density profiles, and the
+electron and ion temperature values are constrained by a Dirichlet
+boundary condition set to 4.2 and 5.2 keV respectively at 𝜌= 0.8,
+informed by the assumed kinetic profiles of Fig. 16 at this location.
+The GENE simulations are conducted at the flux-tube with field-line
+label 𝛼= 0, specifically at 𝜌∈ {0.1, 0.4, 0.6, 0.8}.
+To reduce any thermal runaway effects and allow for a more di-
+rect comparison of the resulting profiles, we set the power source in
+TANGO fix to the fusion heating profile expected at the 0.5 D design
+point. We distribute this heating 80% to the electrons and 20% to
+the ions, following [149]. Note that by choosing fixed fusion heating
+profiles, the resulting profiles will change, while the heating sources
+are not updated. The purpose is not a fully integrated, fully consistent
+temperature profile simulation, but instead a qualitative comparison
+to determine whether the assumed temperature gradients can be sup-
+ported by full electrostatic turbulence. For this reason, other radiation
+losses, such as Bremsstrahlung, were neglected as a heat sink for the
+electrons. In order to obtain the profiles, an iterative loop is established
+between the heat fluxes obtained with GENE and the transport solver
+TANGO, following a methodology similar to that in [148,150]. The
+equilibrium is treated as fixed and is not updated within this simula-
+tion workflow. It is worth noting that if electromagnetic effects were
+included, one might expect stabilization of turbulence levels, leading to
+lower stiffness—provided that the system remains below the threshold
+for kinetic ballooning instability. We also remark that the effect of
+the neoclassical 𝐸× 𝐵shear is not included in this simulation. Recent
+studies show that even moderate neoclassical 𝐸× 𝐵shear in W7-X can
+change turbulence levels significantly [151].
+Fig. 17 shows the resulting temperature profiles for the given as-
+sumptions. We find that the GENE+TANGO results indicate that peak
+temperature values of the 0.5 D profiles are supportable by electrostatic
+turbulence level within the used model fidelity, when making favorable
+assumptions of the edge temperature value. However, the simulations
+demonstrate high sensitivity to the assumption of the edge temperature,
+which again highlights the importance of coupling core- and edge-
+transport simulations for first-principle profile prediction simulations
+in stellarators.
+On high confinement regimes in stellarators. Before concluding this sec-
+tion, we put the assumptions taken on confinement quality into per-
+spective: significant uncertainties still exist in predicting the maximum
+achievable density and temperatures of a stellarator dominated by
+turbulent transport. keVs
+Experimentally, a wide range of confinement properties has been
+observed in both W7-X and W7-AS. In W7-X, confinement times devi-
+ate significantly between ‘ion-temperature clamping’ experiments [65]
+and higher performance experiments in quasi-steady state after pellet
+injections [75]. In W7-AS, several articles report on high-confinement
+(H-Mode) in different forms [47,152,153] with significantly reduced
+transport levels.
+It has been hypothesized that the ratio of heating power over
+plasma boundary surface area, 𝑃∕𝑆, is decisive for achieving the tran-
+sition from low- to high-confinement, as seen in tokamaks [32,154]. In
+ASDEX-Upgrade (AUG), within 2 < ̄𝑛19 < 6, the 𝑃∕𝑆threshold value to
+access H-mode is 𝑃∕𝑆≃ 0.07 MW∕m2. Instead, W7-X has only reached
+Fusion Engineering and Design xxx (xxxx) xxx 
+10 
+
+
+===== PDF PAGE 11 =====
+J. Lion et al.
+Fig. 17. Comparison of the 0.5 D deuterium temperature profile and results of two
+electrostatic GENE+TANGO simulations with different assumptions on the boundary
+value for the temperature at 𝜌= 0.8. Fixed density profiles and fixed heating power
+were assumed and were taken from Design Point A from Table 5. All radiative losses
+were neglected for the GENE+TANGO simulations.
+a maximum value of 𝑃∕𝑆≃ 0.02 MW∕m2 [32]. For the design point in
+this paper, 𝑃∕𝑆is on the order of 1.18 MW∕m2, significantly higher
+than the values measured in W7-X and AUG, even when accounting
+for respective magnetic field and density dependencies [154]. This
+suggests that, if there indeed exists a 𝑃∕𝑆threshold above which H-
+mode behavior occurs, the chosen physics design point of Stellaris may
+need to be corrected to account for confinement enhancement due to
+H-mode. In that case, resilient operation in an electron-root regime
+would ensure low impurity retention, addressing a common issue with
+many tokamak H-mode regimes. This point alone would justify the need
+for an intermediate-step device on the path toward a stellarator power
+plant, to determine whether H-mode physics follows analogous patterns
+as in tokamaks.
+Isotope effects are another potential confinement-enhancing effect
+not typically covered in the ISS04 confinement time scaling laws. While
+this effect is not significantly observed in the neoclassically dominated
+heliotron LHD [155,156], it could still be relevant in optimized stel-
+larators where confinement is ultimately limited by turbulence, as is
+the case with W7-X and the Stellaris concept. Related multi-machine
+regression fits in tokamaks suggest a decrease of turbulence levels for
+deuterium-tritium plasmas compared to pure hydrogen plasmas [157],
+and initial first-principle studies seem to support those findings [158].
+Future deuterium campaigns in W7-X will shed more light on whether
+such an effect could be exploited in future stellarator power plant
+designs.
+2.4. Fueling & density profile control
+As indicated by W7-X experiments, density profile control is a highly
+promising mechanism to reliably suppress ITG turbulence [74,75,135,
+159,160]. The required density steepening can be achieved by either
+(a) increasing the core density by means of fueling (with cryogenic
+pellets or using neutral beam injection) or leveraging turbulent par-
+ticle pinches [49,161,162], or (b) decreasing the edge density, for
+example using boronization [163], efficient edge pumping, or active
+boron powder injection [164]. An overview of density profile induced
+enhancements of plasma performance in W7-X is given in [135].
+A stellarator reactor would greatly benefit from the possibility of
+externally controlling the steepening of density gradients. As no reliable
+predictive capability is yet available for turbulent particle pinches, we
+suggest density profile control for Stellaris via both core fueling with
+cryogenic pellets and edge fueling via gas puffing.
+Fig. 18. (a): the pellet injection location, chosen in the 𝜑= 0 plane (the bean-shaped
+plane). (b): corresponding plot of the magnetic field magnitude and the toroidal flux
+over a straight line in the bean-shaped plane located at 𝑍= 0 and 𝜑= 0, where 𝑍is
+the Cartesian coordinate and 𝑝ℎ𝑖is the cylindrical toroidal angle.
+While the technology of pellet injectors is well-established and
+has been demonstrated in various experiments [165–170], the pellet
+deposition profiles cannot yet be fully simulated predicatively, and first
+simulations are just becoming available [171]. From these simulations,
+it is understood that the plasmoid drift effect that enables central
+fueling is strongest if the pellet injection takes place from a high-
+field region of the machine. Experimental studies show less pronounced
+sensitivities of the injection path to high- and low-field side [172].
+Other control parameters, such as pellet sizes and injection speeds, are
+relatively inefficient to achieve central fueling.
+We therefore propose the installation of a high-frequency pellet
+injector on the inboard side of the machine (e.g. in the bean-shaped
+plane of the stellarator plasma), where the distance in real space
+between the outermost plasma layer and the center is the smallest.
+Fig. 18 offers a visualization of the injection location in the bean
+shaped plane. Launching the pellet from a high-field region of the
+machine maximizes the plasmoid drift effects according to current
+understanding [171], potentially enhancing central fuel deposition. In
+the concept presented in this paper, the space in the high-field side
+bean plane is densely filled with structural material, posing a challenge
+for installing a pellet port. However, the port opening can be as small
+as 10 mm in diameter, as the cryogenic pellets are usually only a few
+millimeters wide. Dedicated studies are needed to determine the port
+opening that maximizes central fueling efficiency.
+Gas puffing is used in almost all tokamak and stellarator exper-
+iments, and is an established method for plasma startup and edge
+fueling. Further research is needed, both theoretically and on experi-
+mental devices, to determine how the penetration of gas fueling via the
+plasma edge is expected to vary in large and high-density stellarators,
+where neutral particles may be unable to reach the confinement re-
+gion. Analogous challenges exist for high-field, high-density tokamaks,
+where gas fueling is considered a control variable. Given uncertainties
+regarding gas penetration through the edge, we consider high-speed
+pellet injectors to be an important necessity for Stellaris.
+2.5. Heating
+There are different schemes available for heating fusion plasmas, of
+which the most promising are:
+• Ion Cyclotron Resonance Heating (ICRH) [173–175], which re-
+quires installing antennas within the plasma vessel, resulting in
+antenna straps being in contact with the plasma—and therefore
+usually needing to be protected by highly conducting Faraday
+shield bars. With such a heating scheme, sputtering naturally
+occurs at the antenna, resulting in a significant impurity source
+for the core plasma. Additionally, the effect of strong, unshielded
+neutron irradiation on the antennas must be considered;
+Fusion Engineering and Design xxx (xxxx) xxx 
+11 
+
+
+===== PDF PAGE 12 =====
+J. Lion et al.
+• Lower Hybrid Heating (LHH) [176,177], which also needs launch-
+ers that are close to the plasma;
+• Neutral Beam Injection (NBI) is seen as difficult for reactor ap-
+plications due to large port requirements, which cause prob-
+lems with tritium breeding performance and free neutron stream-
+ing [178]. The negative ion NBI apparatus reaching MeV energies
+for reactor applications also poses major challenges for economic
+viability of the reactor, due to large capital costs. Wall-plug
+efficiencies of NBI systems typically remain below 30% [179];
+• Electron Cyclotron Resonance Heating (ECRH), which features
+high levels of theoretical understanding at both an engineer-
+ing and physics level. Reactor-relevant ECRH technology was
+demonstrated by W7-X [180–183] and ECRH systems will also
+be implemented in ITER [184] and DTT [185–187] in addition to
+being conceptualized for EU-DEMO [188,189]. While W7-X uses a
+quasi-optical transmission in air, DTT and DEMO will use evacu-
+ated quasi-optical transmission systems. ITER, on the other hand,
+will make use of overmoded waveguides. ECRH offers particularly
+a high technological readiness level for reactor applications;
+• Other heating schemes, such as Transit Time Magnetic Pump-
+ing [190] and Alfvén Wave Heating [191–194], have been inves-
+tigated experimentally, but have not received widespread accep-
+tance and are not considered in more detail here.
+Due to the above arguments and wide acceptance for reactor applica-
+tions [188,189], we have selected ECRH as the primary heating method
+for Stellaris. The microwaves used for this technology are generated by
+a set of MW-class microwave sources that can be installed far away
+from the torus hall and can be guided through a system of actively
+cooled mirrors (as in W7-X, DTT and DEMO) or waveguides (as in ITER)
+toward the injection port. Such a concept is highly attractive, as the
+complexity of the heating system can be mostly decoupled from that of
+the torus building.
+Gyrotrons are the only known microwave sources capable of provid-
+ing the necessary MW-class output power as continuous waves [195–
+197]. Hence, gyrotrons are used in all large-scale magnetic confinement
+fusion devices that use ECRH.
+For ITER, the gyrotron efficiency is expected to be 50% [184],
+leveraging beam energy recuperation via a depressed collector [198].
+As of today, most gyrotron designs use Single-stage Depressed Col-
+lectors (SDCs). In the future, Multi-stage Depressed Collectors might
+increase the gyrotron efficiency to above 60% [199–202], making it
+an attractive heating solution even for steady-state applications in
+non-ignited plasma scenarios.
+While W7-X now uses a gyrotron class of 1.0 MW and 1.5 MW
+operating at 140 GHz [203], ITER will operate with 170 GHz gy-
+rotrons [204]. For future high-field machines to be heated via ECRH, it
+is necessary to demonstrate efficient operation of 240 GHz high-power
+gyrotrons. The technological development of gyrotrons is constantly
+progressing toward higher power and higher frequencies [200,205–
+207], ultimately enabling higher magnetic fields and more economical
+operation.
+For the heating scheme of Stellaris, we propose using the first
+ordinary (O1) mode as the default scheme, noting that it has been well-
+studied for ITER [208]. To ensure that high-density plasmas can be
+heated, we choose the location of ports such that the first extraordinary
+(X1) mode can also be used. The X1 mode would permit heating far
+from the plasma cut-off density 𝑛crit
+𝑋1 , which is given by the constraint
+𝑛𝑒< 𝑛crit
+𝑋1 = 2 𝑚𝑒𝜖0
+𝑒2
+𝜔2
+gyro,
+(4)
+where 𝑛𝑒is the electron density, 𝑚𝑒is the electron mass, 𝑒is the elemen-
+tary charge and 𝜔gyro is the local electron gyro-frequency. Although not
+yet experimentally investigated in stellarators, X1 mode heating is well-
+studied in tokamaks [209,210]. A requirement for X1 mode heating is
+a port design that allows a beamline with a monotonically decaying
+magnetic field strength to permit wave propagation. It is worth noting
+that X1 mode heating from a high-field region would heat the high-
+energy tail of the electron distribution function. Further study is needed
+to determine how this would impact plasma performance.
+The injection beam path for the proposed device is illustrated in
+Fig. 19, showing an access point on the inboard side of the device. This
+unusual placement of an ECRH port not only enables the injection of
+the ECRH via a high-field region, but also frees access at the outboard
+side of the device, easing remote maintenance requirements. This is
+especially relevant for the remote maintenance concept of Stellaris,
+which uses sector splitting, as described in Section 2.11. It is worth
+noting that inboard access ports are particularly enabled by the high
+aspect ratio of Stellaris, and likely cannot be replicated in a comparable
+tokamak at lower aspect ratio.
+A total of eight ports, each with 300 mm of diameter and a circular
+cross-section, are situated between the coils on the inboard side of
+every half module. Stress analyses (presented in Section 2.10) indicate
+that peak stresses around the port opening stay within design limits.
+The ECRH ports are installed with stellarator symmetry and can be
+adjusted to include a non-zero toroidal component. This set-up allows
+for the possibility of canceling small amounts of residual net toroidal
+currents by varying the relative ECRH power between the stellarator-
+symmetric ports, without requiring movable mirrors near the vessel or
+remote-steering launchers.
+The port diameter was chosen to be as small as is reasonably
+possible in order to mitigate degradation of the tritium breeding per-
+formance of the blanket. Still, in reality, specific neutron shielding
+techniques would need to be employed, such as a labyrinth path to
+ensure that free neutron streaming through the port is minimized. Such
+considerations are outside the scope of this paper.
+We anticipate Stellaris to operate with 50 MW of ECRH power in
+the plasma, necessitating approximately 6.25 MW of power to be trans-
+mitted through each port. To achieve this, we propose a configuration
+of 7 waveguides per port with outer diameters of 90 mm, fitting well
+within the 300 mm circular cross-section of the ports. Each waveguide
+would have an inner diameter of 60 mm, close to the design of the ECRH
+upper launchers for ITER, which have inner diameters of 50 mm [211].
+Assuming a transmission loss of 10% between the gyrotron output
+and the launcher, each port would require seven 1 MW gyrotrons to
+deliver approximately 6.3 MW into the plasma. Greater margins could
+be achieved by increasing the output power per gyrotron, providing
+greater flexibility and robustness in achieving the desired power levels.
+We remark that the high mirror ratio of QI stellarators allows for
+the use of a broad range of gyrotron frequencies, as the gyrofrequency
+scales linearly with the magnetic field strength. In this study, the
+magnetic field strength at the plasma boundary varies between 7.3 T
+and 13 T in the toroidal direction, corresponding to gyro-frequencies
+ranging from 200 GHz to 363 GHz. To minimize the required gyrotron
+frequencies, the chosen port location enables heating close to the
+toroidal low-field region of the stellarator, shown on the right-hand-
+side of Fig. 19. The potential effects of a resulting skewed distribution
+function of the electron population caused by the heating of trapped
+particles at the bottom of the magnetic mirror are yet to be investigated,
+but may be sufficiently small when the dominant heating term is the
+fusion heating at the operation point.
+In order to validate the contention that wave absorption can take
+place with the given port set-up, we plot the local gyro- (electron
+cyclotron) frequency and the cut-off density along the beam-path in
+the plasma. Fig. 20 shows the cold resonance at ⟨𝛽⟩𝑉= 0% and ⟨𝛽⟩𝑉=
+2% along the chosen beam-path in a cross section of the plasma, as
+well as the relativistically shifted broadening of the resonance. We
+chose a value of ⟨𝛽⟩𝑉
+= 2% for the analysis here as the auxiliary
+heating is maximized between 1% and 2% volume averaged plasma
+𝛽, as shown in earlier in Fig. 15. We model the relativistic shift
+on the gyro-frequency by employing a Maxwell-Jüttner distribution;
+the broadening experienced at the target design point (Point A from
+Table 5) is shown in Fig. 21. Fig. 21 visualizes this information again
+Fusion Engineering and Design xxx (xxxx) xxx 
+12 
+
+
+===== PDF PAGE 14 =====
+J. Lion et al.
+Fig. 23. Visualization of edge islands (colored tubes) together with the LCFS of the
+plasma boundary in vacuum (semi-transparent) in side and top view. Dark red plates
+show the discrete target plates of the island divertor as used for the analysis in this
+section.
+remains viable, as it allows for effective heating despite higher plasma
+densities due to its higher cut-off density.
+2.6. The island divertor
+QI stellarators, through their minimization of parallel plasma cur-
+rents, allow for several stable X-points induced by deliberately placed
+magnetic islands at the plasma edge. The island divertor concept is an
+attractive candidate for a stellarator reactor due to its ease of access
+to detached conditions [41], its observed large wetted areas [38], and
+its comparably high technological readiness level, compared to other
+stellarator divertor concepts. Compared to tokamaks, stellarators with
+an island divertor usually feature very large connection lengths [39],
+which broaden strike lines on divertor plates due to the effect of cross-
+field transport over long physical distances [39]. While stellarators at
+reactor scale can have connection lengths in the range of kilometers,
+typical tokamak values range between 5 and 50 m for comparable
+machines [212].
+The island divertor has been well studied in W7-X [37,42,213], al-
+though the W7-X open geometry has been found to provide insufficient
+neutral gas compression for effective pumping and density control. For
+Stellaris, we propose using a shape-optimized tungsten-based island
+divertor that operates with strong detachment in steady-state. This
+section describes initial efforts toward such a design.
+For an island divertor to function effectively, it is crucial to suffi-
+ciently suppress the bootstrap current to prevent significant changes in
+the rotational transform at the plasma edge. Such changes could shift
+the location of the magnetic islands relative to the installed divertor
+plates, potentially preventing the desired intersection between the is-
+lands and the target plates. Keeping the resonant island structures intact
+ensures that the magnetic islands consistently intersect the divertor
+target plates at the intended locations. As shown in Fig. 8, the total
+bootstrap current for the stellarator design is calculated to be approxi-
+mately 23 kA. This low value supports the use of resonant islands at the
+edge to create the required X-points, as the edge rotational transform
+is only calculated to change by 0.5% from vacuum conditions to the
+equilibrium where the steady-state bootstrap current is achieved.
+Fig. 13 shows that the stellarator concept presented in this paper
+offers the desired magnetic island chain at the edge across a wide range
+of plasma 𝛽values, from start-up (where no kinetic pressure is present
+in the stellarator) to the final plasma 𝛽(where the islands are slightly
+larger, but still preserved). This feature is necessary for installing a set
+of divertor plates at the edge that cross the islands.
+To meet the functional requirements of a divertor solution, the
+system must efficiently exhaust particles while managing the heat
+fluxes that impact material surfaces. Additionally, the divertor must
+support robust tritium recycling and effectively remove helium ash. A
+number of these issues are currently being addressed within a design
+effort to upgrade the Wendelstein 7-X divertor, including tungsten-
+based plasma-facing components and enhanced geometrical features for
+Fig. 24. Visualization of target plates (black) in the cross section at toroidal angle
+of 𝜑= 45◦, superposed with a Poincaré plot of the vacuum field. 𝑅is the cylindrical
+major radius (which is 0 in the center of the device) and 𝑍is the Cartesian coordinate.
+improved neutral gas pumping efficiency [214].
+In this paper, we focus primarily on demonstrating the feasibility of
+placing a set of target plates that intersect the 4/4 island chain, with an
+emphasis on the thermal aspects of the divertor design. Other critical
+aspects of the Stellaris divertor – such as recycling efficiency, ash re-
+moval, neutral gas compression, and erosion rates – are acknowledged,
+but left for further exploration in subsequent studies.
+The divertor plates proposed for Stellaris are optimized to limit heat
+loads by following a two-step design approach, as outlined in [215].
+In the first step, the plates are strategically positioned and adjusted
+to ensure that a significant portion of the power crossing the Scrape-
+Off Layer (SOL) is captured by the plates. The second step involves
+optimizing the length of the plates to ensure that the heat loads remain
+below the desired flux limits. This approach aims to minimize the
+divertor plate area, while ensuring that heat flux constraints are met.
+A smaller divertor area is beneficial because it reduces the absorp-
+tion of neutrons that are crucial for tritium breeding in the breeding
+blanket, a topic further explored in Section 2.8. The location of the
+target plates is illustrated in Fig. 23, showing a 3D visualization of
+their placement, and in Fig. 24, where we display a cross section at
+𝜑= 45◦. Unlike typical tokamak designs [212] and similar to the design
+of the W7-X divertor [216], the selected divertor plates are toroidally
+discontinuous.
+To model the resulting heat flux, we utilize the code EMC3-Lite
+[217]. The physics model employed by EMC3-Lite is based on an
+anisotropic heat diffusion model along a set of field lines within a 3D
+geometry, described by the equation
+𝜅𝑒
+𝑛𝑒
+∇2
+∥𝑇+ 𝜒⟂∇2
+⟂𝑇= 0,
+(5)
+where the Bohm sheath boundary condition [218,219] is applied as
+𝑄∥,PFC = −𝜅𝑒∇∥𝑇PFC = 𝑛𝑐𝑠𝛾 𝑇PFC.
+(6)
+In this context, 𝜅𝑒
+=
+𝜅𝑒0𝑇5∕2 represents the Spitzer heat conduc-
+tivity [220,221], with 𝜅𝑒0 being a constant and 𝑇the temperature
+(assumed identical for ions and electrons). Here, 𝑛𝑒denotes the elec-
+tron density, and 𝜒⟂is the perpendicular thermal diffusivity, which
+accounts for turbulent transport. 𝑄∥,PFC represents the parallel heat flux
+(expressed as power per unit area) on the Plasma Facing Components
+(PFCs), while 𝑇PFC refers to the plasma temperature at the PFCs. The
+ion sound speed, 𝑐𝑠, is given by
+√
+2𝑘𝐵𝑇∕𝑚𝑖, where 𝑘𝐵is the Boltzmann
+constant and 𝑚𝑖is the ion mass, with 𝛾being the sheath transmission
+factor.
+A key advantage of the EMC3-Lite model compared to commonly
+employed diffusive field line tracing (DFLT) methods [222–227] is
+Fusion Engineering and Design xxx (xxxx) xxx 
+14 
+
+
+===== PDF PAGE 16 =====
+J. Lion et al.
+Fig. 26. Visualization of the chosen first wall geometry, which leaves sufficient space
+for the divertor target plates crossing the magnetic islands, shown here in different
+colors for qualitative distinction. The chosen first wall geometry is the same across all
+analyses in this paper.
+magnetic islands that are used for the island divertor solution, and is
+shaped to maximize the breeder volume outside of it (see Fig. 26 for a
+visualization of the geometry).
+While multiple first wall concepts for stellarators are currently being
+explored, we select a straightforward approach for this analysis: a solid
+EUROFER97 wall with a 2 mm-thick tungsten armor serving as the
+plasma-facing surface. This choice is justified by the low loss of fast
+particles, as demonstrated in Fig. 6, which permits the use of a solid
+wall rather than more complex designs—such as those requiring liquid
+walls to handle highly localized heat loads due to significant losses of
+fusion-born 𝛼particles.
+The first wall in this design incorporates several rectangular cooling
+channels running in the toroidal direction, utilizing pressurized helium
+gas as the primary coolant. We simulate helium at 8 MPa with an inlet
+temperature of 350 ◦C; the helium’s outlet temperature is computed
+dynamically and is below 370 ◦C. Here inlet temperature refers to the
+temperature at the front of the first wall; similarly, the outlet temperature
+is the temperature of the helium after flowing along the plasma-facing
+side. Our study does not take into account the other two sides of
+the first wall module. The conceptual dimensions of this first wall
+design are illustrated in Fig. 27. Although an interlayer between the
+EUROFER97 and tungsten layers will be included in the actual design,
+it is omitted from our model due to its negligible impact on the overall
+temperature distribution.
+It is important to note that the feasibility of this manufacturing
+process will be the focus of subsequent studies. However, we empha-
+size that the helium-cooled lithium lead (HCLL) blanket design serves
+as a precedent, indicating the potential practicality of our proposed
+approach.
+In estimating the first wall temperature, we begin by calculating the
+heat loads consistent with the design point outlined in Section 2.3 and
+100% radiation of the heating power. The radiation source is divided
+into two parts: core radiation and edge radiation.
+First, core radiation is computed using the ‘0.5D-profiles’ introduced
+in Section 2.3, considering contributions from Bremsstrahlung, tung-
+sten impurity radiation, and synchrotron radiation. For edge radiation,
+we model a Gaussian profile centered around 𝜌= 1 (discarding any
+emission at 𝜌 > 1) to represent line radiation from partially ionized
+impurities, such as Argon or Krypton [239]. These impurities would
+need to be injected into the plasma to enable significant radiation of the
+core heating power, facilitating a radiating edge and achieving divertor
+detachment. Fig. 28 illustrates the combined emission region in one
+cross section of the plasma from both core and edge as assumed and
+calculated for the first wall power estimates.
+Fig. 27. Cross section at constant toroidal angle through the first wall design as used
+for the FEM analysis in this section. Actual dimensions are 𝐻= 12 mm, 𝑊= 12 mm,
+𝑤= 5 mm, 𝐿= 27 mm, 𝑑= 3 mm, ℎ= 5 mm. Channel cross sections are square in our
+study for ease of modeling, but would be rounded in the actual wall. The wall section
+in our model is a single strip wrapping around the poloidal direction, mainly due to
+the fact that we have not fixed a tile design yet. This is not fully realistic, but it allows
+us to perform a reliable analysis. The sector is defined by the toroidal angle and the
+channels follow the parametrization of the surface, meaning they are not all the same
+length, but they are all around one meter long.
+Fig. 28. Cross section through the plasma illustrating emission from both the plasma
+core (green color legend) and edge (red color legend).
+The first wall is also subjected to a volumetric heat load due to
+neutrons produced by fusion reactions in the plasma. We include this
+aspect in our model and simulations by incorporating the power density
+data presented in the later Section 2.8, visually represented in Fig. 37.
+We determine the peak temperatures in the first wall using a two-
+step process. First, to calculate the heat load on the first wall, we follow
+the method suggested in [240], where the first wall power density, 𝑝𝑊,
+is obtained by integrating over a source volume 𝑉:
+𝑝𝑊= ∫𝑉
+𝜙𝑠
+4𝜋‖⃗𝑟𝑊−⃗𝑟𝑆‖2
+(
+⃗𝑛⋅
+⃗𝑟𝑊−⃗𝑟𝑆
+‖⃗𝑟𝑊−⃗𝑟𝑆‖
+)
+𝑑 𝑉 .
+(7)
+Here, 𝜙𝑠is the local emission; ⃗𝑟𝑆is the position vector of the source;
+⃗𝑟𝑊is the position vector to the wall; and ⃗𝑛is the normal vector of the
+wall.
+To implement this method, a regularization is necessary. We choose
+to set the heat flux from a volume element on a surface area to zero
+if the distance exceeds a characteristic length for the machine; in this
+case, 8 m, since for the chosen configuration, this is a clear upper bound
+on the distance between two points that have a direct line of sight to
+each other. When computing the integral in Eq. (7) numerically, we set
+the integrand to zero for contributions that satisfy
+(
+⃗𝑛⋅
+⃗𝑟𝑊−⃗𝑟𝑆
+‖⃗𝑟𝑊−⃗𝑟𝑆‖
+)
+< 0.
+We verified a posteriori that this algorithm works effectively, as the
+total emitted power from the LCFS and the total absorbed power by
+Fusion Engineering and Design xxx (xxxx) xxx 
+16 
+
+
+===== PDF PAGE 17 =====
+J. Lion et al.
+Fig. 29. Visualization of the calculated first wall heat loads, distinguished by source.
+The left-hand half shows the received core radiation, the right-hand half the received
+edge radiation. Strong deviations in the toroidal and poloidal direction are observed.
+The total power at the wall is the sum of both sources and its values span the range
+0.18 MW m−2 to 0.77 MW m−2.
+Fig. 30. Simulated temperature in a toroidal segment of the first wall, using the meth-
+ods and parameters described in the text. With the current design, peak temperatures
+are simulated to stay below 500 ◦C and peak in the central module.
+the first wall differ by only about 2%. The volume integral is carried
+out in VMEC coordinates [241], and the Jacobian determinant √𝑔is
+obtained directly from the VMEC code.
+In the second step, we solve the heat equation as a Finite Element
+problem within a small toroidal section of the first wall. To obtain a
+conservative estimate, we select a section that includes the geometry
+points with the highest anticipated radiation load; the volumetric neu-
+tron load does not show significant enough variability to affect the
+results if we changed section. For simplicity, the analysis omits the
+divertor plates, recognizing that they could potentially shield some of
+the heat loads on the first wall. We also assume that all radiation is
+absorbed in the first layer of the wall, which we model as a Neumann
+boundary condition in the Finite Element analysis. Any reflection or
+black-body radiation effects of the first wall are neglected.
+The method employed for this calculation is detailed in Appendix B.
+The power loading on the first wall, distinguished by source is shown in
+Fig. 29. The resulting temperature distribution for this design is shown
+in Fig. 30. With the given assumptions, the steady-state temperature
+remains below 500 ◦C—a design limit typically imposed for EURO-
+FER97 steels [238]. We conclude that a helium-cooled first wall can be
+designed to withstand the heat fluxes anticipated for the high power
+density design point proposed in this study. We note that evaluating
+thermal stresses due to temperature asymmetries is beyond the scope
+of this study, and warrants further investigation.
+2.8. Lithium blanket & neutron shield
+In this section, we explore a potential breeding blanket and shield
+design for Stellaris. Research on stellarator breeding blankets in the
+Fig. 31. The geometry used in the neutronics simulations. Light green is the first wall,
+orange is the homogenized breeding blanket, blue is the neutron shield, gray is the
+vacuum vessel and green are the divertor modules. Coils are shown in turquoise. The
+brown section shows the sector interface that will be introduced in Section 2.11.
+literature addresses a range of topics, from balance of plant con-
+siderations [242] to detailed neutronics analyses [64,243–248] and
+evaluations of structural capabilities [249,250].
+Previous investigations into stellarator breeding blanket concepts
+have primarily focused on dual-cooled lithium-lead and helium-cooled
+pebble bed designs as potential breeders. These concepts aim to opti-
+mize both tritium breeding and structural integrity, balancing neutron
+economy with effective heat transfer and material endurance.
+However, prior reactor studies for stellarators have consistently
+highlighted a critical challenge: the close proximity of the optimized
+stellarator coils to the plasma. This proximity has been shown to be
+insufficient to provide adequate neutron shielding, posing a significant
+risk to the integrity and longevity of the coils in realistic reactor
+settings [52,64]. Furthermore, the limited distance between the plasma
+and the coils has been identified as the primary constraint on overall
+machine size, directly influencing the feasibility of achieving a viable
+reactor configuration [12]. The Stellaris concept strategically addresses
+this challenge. By ensuring that the coils are positioned farther away
+from the plasma in relative terms, this design provides greater space
+for tritium breeding and neutron shielding, allowing the overall reactor
+size to be reduced. The blanket concept itself was chosen from different
+available options and finally adapted to match a set of requirements
+that is in line with the overall machine design.
+In the current breeding blanket design, the primary tritium breeding
+material is a liquid lead-lithium (PbLi) eutectic alloy with 16 atomic
+percent lithium. This material serves a dual role as a neutron multiplier
+and tritium carrier. The liquid breeding material allows for drainage
+to ease remote maintenance operations. The breeding zone is actively
+cooled using water at pressurized water reactor (PWR) conditions,
+ensuring efficient thermal management. EUROFER97, a low-activation
+steel known for its structural integrity under fusion-relevant conditions,
+is selected as the structural material for the blanket [251]. The nuclear
+data cross sections for the materials are derived from the ENDF/B-VIII.0
+library [252], with interpolations adjusted for material temperature.
+To further enhance neutron management, an In-vessel Neutron Shield
+(INS) composed primarily of tungsten-carbide (WC) is incorporated.
+This material not only serves as a neutron shield, but also functions as
+a neutron reflector, effectively increasing the backscatter to the blanket
+and boosting the tritium breeding ratio (TBR).
+The Vacuum Vessel (VV) design is modeled after the EU DEMO
+project [253], utilizing SS316LN as the structural material. The design
+includes a neutron shield in the bulk cooling region, with a thickness
+reduced from the originally proposed 60 mm to 50 mm. Boron-carbide
+(BC) is chosen for the shield due to its superior absorption cross section
+in the thermal neutron range compared to WC.
+Active cooling is essential for maintaining the structural integrity
+of the breeding blanket, as the chosen structural material, EUROFER97,
+has a maximum operating temperature limit of 550 ◦C [254]. The breed-
+ing blanket’s composition is optimized for both thermal management
+and tritium breeding, consisting of 73.5% PbLi eutectic, 12.5% water,
+Fusion Engineering and Design xxx (xxxx) xxx 
+17 
+
+
+===== PDF PAGE 18 =====
+J. Lion et al.
+Fig. 32. Cross section visualization of the radial build at the 𝜑= 0, 𝜑= 𝜋∕8 and
+𝜑= 𝜋∕4 cross sections (where 𝜑is the cylindrical toroidal angle). The thin green line
+is the first wall, red is the homogenized breeding blanket, blue is the shield, and white
+is the vacuum vessel. Note that the divertor is not included in this visualization.
+and 14% EUROFER97 by volume. This composition accounts for the
+segmentation effect in the structural budget, ensuring the blanket’s
+performance and durability.
+To achieve a tritium breeding ratio (TBR) above 1.05, considered
+sufficient to close the fusion fuel cycle [255], a lithium-6 enrichment
+level of 70 % has been chosen.
+The decision to use a water-cooled breeding blanket simplifies the
+power plant’s primary and secondary cycles, aligning them with those
+of a conventional PWR. The high water content in the blanket has
+a significant thermalization effect, which shifts the neutron spectrum
+toward thermal energies—increasing the reaction rate and improving
+tritium production. Additionally, the high heat capacity of water com-
+pared to gas cooling reduces the need for large cooling ports, which
+helps in optimizing the overall design.
+The first wall, as described earlier, is proposed to be helium-cooled,
+while the breeding blanket utilizes water cooling. This necessitates the
+use of two distinct cooling loops. The choice of helium cooling in
+the first wall is driven by two main considerations. First, the lower
+pressure in the helium loop allows for a thinner first wall, enhancing
+thermal efficiency. Second, helium cooling offers greater resilience
+against critical heat flux events, which are particularly challenging to
+manage in high-pressure water cooling systems.
+For the breeding blanket segmentation, one potential configuration
+is the single module segment (SMS) design [256]. In this configuration,
+each toroidal section of the reactor is split into poloidal segments
+approximately every meter. Each segment is supplied independently to
+ensure modularity and improve detectability of failures within a mod-
+ule. Within each segment, the manifold configuration directs helium
+through back manifolds located behind the neutron shield, routing it ra-
+dially toward the first wall, while the breeding blanket’s water cooling
+system is fed through separate manifolds and distributed poloidally.
+This modular approach reduces the need for complex manifold
+systems at the back of the blanket, thereby creating more space for a
+sufficiently large INS. The simplified geometry of the SMS design not
+only facilitates maintenance but also enhances the overall efficiency of
+neutron shielding and tritium breeding, making it a compelling choice
+for the reactor’s blanket configuration.
+Given the varying plasma-to-coil distance across different poloidal
+and toroidal positions, we implement variable thicknesses for both the
+blanket and the shield. This design strategy enables the optimization of
+TBR while ensuring adequate neutron shielding at the cryogenic coils.
+For instance, the INS thickness at various toroidal angles is shown in
+Fig. 32, with a minimum thickness of 100 mm and a maximum thickness
+of 225 mm. Additionally, the averaged thicknesses for each layer of the
+radial build are illustrated in Fig. 34. To optimize the thickness of
+the INS, we use a simple one-dimensional exponential decay model
+for the fast neutron flux within the radial build, using two material
+fractions for INS and BB. In particular, we vary the shielding thickness,
+using a fixed first wall and outer shield surface, in order to minimize
+Fig. 33. The distribution of the neutron wall load on the first wall of Stellaris operating
+in full power, at 2700 MW fusion power.
+Fig. 34. Averaged component thicknesses and gaps of the radial build. Values are only
+approximate, as large variations in both toroidal and poloidal directions exist.
+the neutron flux variation in a point-by-point fashion. The choices of
+materials for INS and BB are kept constant during this optimization.
+In the following neutronics simulations, we employ the 3D neu-
+tron Monte-Carlo simulation code OpenMC [257,258], integrated with
+DAGMC [259] for efficient particle transport simulations. The CAD-to-
+DAGMC tool [260] was utilized to convert the detailed CAD geometry
+into a meshed representation suitable for the analysis. A comprehen-
+sive three-dimensional (3D) 90-degree reactor model is initialized,
+incorporating multiple material layers, each homogenized into a single
+OpenMC material for simplification. The reactor geometry used in the
+neutronics analysis is depicted in Fig. 31, which illustrates the various
+reactor layers, including the magnets described separately by their
+casings and winding packs. For the particle sources, we employ a
+neutron source function based on the plasma profiles introduced in Sec-
+tion 2.3, utilizing the nuclear reaction rates from [137]. The neutronics
+simulations presented in this section are consistent across both physics
+design Point A and Point B, as defined in Table 5, because the fusion
+power remains constant and the effects of plasma temperature on the
+neutron source distribution are neglected.
+To approximate the neutron source, we use a monoenergetic source
+at 14.06 MeV, with the spatial distribution discretized into 30 radial
+points, 50 poloidal points, and 100 toroidal points. This source is
+then represented as multiple point sources in the OpenMC simulation
+environment. The resulting neutron wall load is shown in Fig. 33, using
+the method proposed in [240].
+We proceed to analyze the chosen breeding blanket and shielding
+concept through five key evaluation steps:
+• Tritium Breeding Ratio Analysis: We assess whether the design
+achieves sufficient tritium breeding using a multi-layer 3D model
+that includes separately homogenized materials for each layer.
+• Power Multiplication: Due to endo- and exothermal nuclear reac-
+tions within the blanket, we estimate to which degree the total
+neutron power is amplified by the blanket, a critical value to
+estimate the commercial viability of a fusion power plant.
+• Neutron Shielding for Superconductor Protection: We evaluate
+the effectiveness of neutron shielding in minimizing fast neutron
+flux into the superconducting coils—ensuring long operational
+Fusion Engineering and Design xxx (xxxx) xxx 
+18 
+
+
+===== PDF PAGE 19 =====
+J. Lion et al.
+lifetimes for the device, as fast neutron fluences are measured
+to significantly degrade the performance of superconducting coils
+after 3 × 1022 m−2 [261]. The neutron fluence on the copper
+stabilizer should also be considered as the conductivity has been
+shown to reduce with neutron irradiation by 5% after a neutron
+fluence of 1.5 × 1023 m−2 [262]. One strategy to potentially address
+a conductivity decrease would be to make the copper stabilizer
+thicker to accommodate the anticipated decrease in conductivity.
+• Neutron Shielding for Cryogenic Area Protection: We determine
+whether the neutron shielding sufficiently reduces nuclear heat-
+ing in the cryogenic regions to acceptable levels, ensuring the
+integrity of the cryogenic components.
+• Lifetime Estimation of Key Components: We estimate the opera-
+tional lifetime of the main components of the machine, consider-
+ing the neutron flux and the resulting material degradation over
+time.
+Safety and activation calculations, as well as structural and thermal
+simulations, fall outside the scope of this analysis.
+Tritium breeding ratio analysis. We performed a neutronics simulation
+using 15 × 106 particles per batch over 5 batches, tallying TBR, nuclear
+heating, and neutron flux. Periodic boundary conditions were applied
+at the 𝜑= 0 and 𝜑= 𝜋∕2 surfaces, where 𝜑represents the toroidal
+angle. No particle loss was observed during the simulation, ensuring
+accurate results.
+The simulation was focused solely on neutron transport, with the
+nuclear heating tally assuming that secondary gamma power is de-
+posited locally. The computed TBR, accounting for the remote main-
+tenance solution discussed in Section 2.11 and a conceptual divertor
+model, is 1.1070 ± 0.0002. After considering a 3% reduction due to the
+heating ports, the final TBR stands at 1.074, which includes margins to
+account for uncertainties and potential incomplete models.
+Power multiplication. Using the same 3D neutronic simulation that was
+employed for the TBR calculation, we also tallied the power multiplica-
+tion within the blanket, which primarily results from exothermal (Li-6,
+n) reactions. From this analysis, we obtained a power multiplication
+factor of 1.2. The initial 2160 MW of neutron power produced by
+the reactor is thus amplified within the blanket to a nuclear power of
+approximately 2611 MW. This thermal power is what can be extracted
+from the blanket and shield systems, contributing to the overall energy
+balance of the power plant. Corresponding simulation results are shown
+in Fig. 37.
+Neutron shielding for superconductor protection. To ensure sufficient sta-
+tistical accuracy in the estimation of fast neutron fluxes in the volume
+of the superconducting magnets, we performed a dedicated simulation
+with a total of 2.5 × 109 Monte Carlo particles.
+The resulting fast neutron flux (𝐸𝑛> 0.1 MeV) at the magnets is
+illustrated in Fig. 36. The average fast neutron flux is estimated to
+be 1.8 × 1013 1∕m2∕s. As the statistics of the Monte Carlo simulation
+even at 2.5 × 109 launched particles is particularly low, and assuming
+local shielding can be used in severely loaded sections, we consider
+the 99th quantile for the lifetime estimation of the coils due to fast
+neutron flux, which is about 9.5 × 1013 1∕m2∕s. Estimating the allowable
+fluence for ReBCO superconductors (from degradation of the critical
+current density in the superconductor by fission neutrons [261]) as
+3 × 1022 1∕m2, the magnet system would have a lifetime of approximately
+10 full power years at a fusion power of 2700 MW.
+Additionally, the neutron spectra at the coils are presented in
+Fig. 35, providing further insight into the distribution of neutron energy
+levels impacting the superconducting magnets.
+Fig. 35. Neutron flux per unit lethargy, as obtained from OpenMC with the set-
+up described in the text. The spectra describe the winding pack of all six coils
+independently at full power.
+Fig. 36. Fast neutron flux, as obtained from OpenMC with the set-up described in
+the text. The figure shows the unstructured mesh tally on the magnet. The maximum
+neutron flux is 7.27 × 1013 1∕m2∕s∕GWf (neutron flux normalized by GW fusion power),
+and the mean value is 6.6 × 1012 1∕m2∕s∕GWf.
+Neutron shielding for cryogenic area protection. For the nuclear heating
+at the winding pack, we obtain an average value of 35.5 W∕m3. This
+heat load will need to be managed by the cryo-plant of Stellaris and
+is in the order of the EU DEMO target, which is about 50 W∕m3 peak
+nuclear heating [263].
+However, it is important to note that the EU DEMO requirement is
+designed for a 4 K cryogenic environment, whereas the magnets in Stel-
+laris are anticipated to be cooled to 20 K. Operating at this higher tem-
+perature offers an increase in efficiency of the cryogenic plant. Overall,
+maintaining an average nuclear heating below 50 W∕m3 is considered
+an applicable reference for ensuring viable power plant efficiency,
+considering the parasitic power consumption by the cryo-plant.
+It should also be noted that local differences in nuclear heating
+power density can lead to local temperature variations within the
+winding pack, which again can affect quench behavior. However, these
+temperature differences are highly dependent on the detailed cooling
+design within the winding pack and a respective analysis is left for
+further studies.
+Lifetime estimation of key components. To estimate the operational life-
+time of key reactor components, we calculate the Displacements-Per-
+Atom (DPA) in regions experiencing the highest neutron flux, specifi-
+cally the first wall and the divertor.
+Neutron damage was tallied using OpenMC via the ‘444 Microscopic
+Cross-Section Type (MT) reaction’ for iron isotopes in the first wall and
+copper isotopes in the divertor. DPA values were evaluated using two
+models: the NRT model [264] and the more recently developed ARC
+model [265].
+The ARC model, which has shown good agreement with molecular
+dynamics simulations, particularly at higher energies [266], provides
+Fusion Engineering and Design xxx (xxxx) xxx 
+19 
+
+
+===== PDF PAGE 21 =====
+J. Lion et al.
+Table 6
+Key neutronics values as obtained from a 3D OpenMC calculation. FPY are full power
+years. ‘Power Multiplication’ is sometimes also called ‘Energy Multiplication’ in the
+literature.
+Description
+Value
+TBR
+1.074
+Power Multiplication
+1.20
+Fast neutron flux (99th quantile) at coils [1∕m2s]
+9.5 × 1013
+Coil lifetime (99th quantile) [FPY]
+∼10
+Peak fast neutron flux at coils [1∕m2s]
+2.0 × 1014
+Peak DPA in the first wall [DPA∕FPY]
+10.7
+Estimated first wall structure lifetime [FPY]
+∼4–6
+Peak nuclear heating (blanket) [MW∕m3]
+35
+Mean cryogenic nuclear heating (winding pack) [W∕m3]
+35.5
+the safety margin relative to the yield strength limit might be exceeded.
+Going forward, several strategies could be employed to manage
+elevated neutron irradiation levels, including:
+• Targeted Replacement of High-DPA Sections: replacing only the
+first wall sections experiencing the highest Displacements-Per-
+Atom (DPA) levels could be an efficient strategy. These targeted
+replacements would not only extend the overall reactor lifespan,
+but also provide valuable samples for material characterization
+under high DPA conditions, contributing to better understanding
+and prediction of material behavior. Analysis of first wall replace-
+ment has not been performed, but it may be necessary to limit the
+amount of first wall replacements so that such replacements can
+be carried out during scheduled maintenance periods.
+• Increasing Radial Distance Between Plasma and First Wall: by
+increasing the distance between the plasma and the first wall,
+the neutron flux density at the wall can be reduced, lowering the
+DPA rate and extending the lifespan of the wall and other reactor
+components. Non-constant offsets between the first wall and the
+plasma could be considered to optimally utilize the available
+space while remaining within first wall, breeding and shielding
+limits. Non-uniform offsets could also help reduce heterogeneity
+of DPA across the first wall by moving parts of the first wall that
+have the highest DPA outwards. The magnitude of any achievable
+reduction in DPA by optimizing the offsetting of the first wall
+to the plasma has not been studied within this paper, but is
+investigated in similar contexts [240].
+• Applying Treatments to Enhance EUROFER97 Properties: en-
+hancements to the properties of EUROFER, as explored in studies
+such as [276], could improve its resilience to radiation damage
+and potentially increase the lifespan of the first wall without
+requiring major design changes.
+• Using a More Neutron-Resilient Material: exploring the use of al-
+ternative materials such as Oxide Dispersion Strengthened (ODS)
+steels or other Reduced Activation Ferritic/Martensitic (RAFM)
+steels could offer greater resistance to neutron damage compared
+to EUROFER97. However, these materials currently have a lower
+technological readiness level, and their implementation would
+require further research and development [277,278].
+Additionally, the feasibility of using ferromagnetic steels such as EU-
+ROFER – which would affect the magnetic field quality in the plasma,
+and hence the confining properties – would need to be validated.
+In conclusion, we have presented a preliminary conceptual study for
+the blanket and neutron shield system of Stellaris. This study includes
+estimates of the TBR, fast neutron fluxes at the superconducting mag-
+nets, nuclear heating in the cryogenic areas, and DPAs at the first wall.
+Key parameters are summarized in Table 6. It is important to emphasize
+that this study employs a simplified homogeneous model for the shield
+and breeder zones.
+Future work should focus on advancing this preliminary model by
+conducting a detailed analysis of a heterogeneous blanket configu-
+ration. This will involve evaluating the neutronics, mechanical, and
+Fig. 39. Physical dimensions of the first coil of the coilset, including its casing (in
+mm). With casing, the coil is about 10.4 m tall, has 6.5 m of radial extent, and extends
+over 4.8 m in toroidal direction.
+thermal performance of such a blanket, alongside a thorough manu-
+facturability assessment. A critical risk to address is the interaction
+between lead-lithium and water, a well-documented exothermic reac-
+tion [279]. To mitigate this, we currently rely on established designs
+like the WCLL, which incorporates double-walled tubes to bolster the
+reactor’s safety and reliability [280]. Additionally, further research—
+including simulation and experimental studies—will be necessary to
+address corrosion challenges and to understand the magnetohydrody-
+namic effects in liquid lithium-lead, similar to the studies performed
+in [245]. Activated corrosion products, activated lithium-lead and ac-
+tivated water will also require careful shielding considerations, due
+to their mobility around the building. These steps will be crucial for
+refining the blanket and shield design to ensure it meets the demands
+of a commercial fusion reactor.
+2.9. Magnets
+In Fig. 39 we display a selected coil of Stellaris with its correspond-
+ing casing, including physical dimensions in millimeters. The coils have
+an approximate size of 7 × 5 × 10 m, with a typical circumference of
+25 m, and the conductor needs to be manufactured using superconduct-
+ing material, for which multiple options exist. High-temperature su-
+perconductors (HTS), particularly ReBCO-based superconductors, have
+important advantages for high-field magnetic confinement fusion. Most
+notably, they allow for designs with higher magnetic field strengths,
+as the superconducting material can withstand much larger critical
+current densities at high magnetic field strengths compared to con-
+ventional low-temperature superconductors [281–283]. The technology
+is also reaching maturity, with ReBCO-based coils tested at relevant
+parameters—despite outstanding problems such as quench manage-
+ment and high stored energy. At the time of writing, the current
+record for the highest field strength achieved by a tested magnet has
+45.5 T [284] of peak field on the HTS. The SPARC tokamak [19] is
+currently being constructed using ReBCO-based magnets.
+Despite their advantages, ReBCO-coated conductors pose several
+challenges for cable design, which typically involve assembling hun-
+dreds of individual HTS tapes in a specific arrangement. The major
+limitations for cables, especially in fusion applications, can be at-
+tributed to three key aspects. First, the mechanical stress and strain
+that the conductor and the cable endure during the manufacturing
+process and operation result in significant limitations. Second, the
+anisotropic behavior of the ReBCO material under magnetic fields leads
+to critical current density values that are much lower for magnetic
+fields perpendicular to the flat face of the tape than for magnetic
+fields parallel to the tape, especially for the fields and temperatures of
+interest. Third, ensuring electro-thermal stability (i.e., avoiding quench
+events and loss of superconducting state) is crucial during the design
+process.
+Several successful cabling techniques have been developed over the
+past decade to address these challenges. Among these are concepts such
+Fusion Engineering and Design xxx (xxxx) xxx 
+21 
+
+
+===== PDF PAGE 22 =====
+J. Lion et al.
+as CORC, VIPER, CroCo, and BRAST [83,85,281,285–287]. Addition-
+ally, HTS ‘stack in groove’ approaches – as applied in the Toroidal Field
+Model Coil (TFMC) built in collaboration between MIT’s Plasma Science
+and Fusion Center (PSFC) and Commonwealth Fusion System (CFS) for
+the SPARC project – have shown promising characteristics [288,289].
+For the superconducting magnets in this study, we propose a Non-
+Insulated (NI) concept. The NI method in the present work ensures
+that there is electric insulation between pancakes (azimuthally insu-
+lated) and only steel (electrical contact) between radial turns. More
+specifically, referring to Fig. 40, electric insulation between pancakes
+implies that current can only move in the 𝛷-coordinate direction
+(azimuthal) through the joints/connections at the first and last turns
+of each pancake (the yellow sheet represents the electric insulation).
+On the other hand, radial electric contact means that current can leak
+in the 𝑟-coordinate direction (radially outward), particularly during
+transients. The terminology of such a concept is coherent with the
+current literature (e.g. TFMC and FSU/NHMFL [282,289]).
+Unlike low-temperature-superconducting (LTS) magnets, HTS mag-
+nets are fundamentally unlikely to quench unless they have a serious
+defect in them. Nevertheless, demonstration of quench management is
+necessary for risk mitigation purposes. NI coils offer a self-protecting
+mechanism without complex external systems, allowing current to
+bypass local hotspots and enhance thermal stability. They are passively
+protected by natural current redistribution. However, large stored mag-
+netic energy and highly non-uniform critical current distributions (es-
+pecially with low critical current regions) can still cause damage [288,
+289]. To mitigate quench damage, it is crucial to ensure that the ratio of
+operational current density to critical current density, 𝑗op∕𝑗crit, varies
+only very weakly along a turn, and does not exceed a critical limit,
+which we take here to be 80%.
+For the conductor design discussed here, we consider a fully pre-
+soldered, field-aligned Stack Tape Cable (STC), enveloped in a copper
+jacket that constrains the tape stack in the chosen orientation, similar
+to the CroCo concept [286]. We exploit the anisotropic properties of Re-
+BCO tapes and align the ‘ab plane’ (flat face) of the ReBCO tapes/stacks
+with the magnetic field orientation, generalizing and extending to the
+whole winding pack an approach proposed for the helical (heliotron)
+reactor with the STARS conductor [290,291]. Field alignment improves
+performance, but adds design complexity requiring precise calibration
+and advanced manufacturing techniques. Additionally, we utilize grad-
+ing techniques (i.e., intentionally reducing the number of tapes where
+the magnetic field is lower [292]) to achieve an almost constant 𝑗op∕𝑗crit
+ratio along the turns.
+The conductor is wound in non-planar stacked ‘radial’ plates made
+of stainless steel 316 (SS316), similar to concepts in previous de-
+signs [293,294]. Fig. 40 shows a cross section of the winding pack for
+a 256-turn coil (coil 4) and the geometric and material details of the
+single unit cell. For each coil, we select a square winding pack with a
+variable number of turns, ranging from 225 to 324 turns per coil.
+We note that the winding pack orientation is fully decoupled from
+the HTS tape stack orientation. The winding pack orientation is chosen
+so that a flat face is tangential to the plasma at each point, allowing
+for a vacuum vessel surface that is as flat as possible and maximizing
+available space for the radial build while minimizing peak fields within
+the winding pack. Conversely, the orientation of the HTS tape stack is
+chosen to align with the magnetic field orientation at each point along
+the cable for each turn inside a winding pack.
+Each turn is sized at 20 mm × 20 mm, with a 6 mm × 6 mm soldered
+tape stack embedded in a 15 mm diameter round copper former.
+With these dimensions, the current per turn is constrained to a
+maximum value of 50 kA, allowing for the use of ‘off-the-shelf’ current
+leads to realize the connection between the superconductor in the coils
+at cryogenic temperatures to the bus bars, which are connected to
+the coil power supplies, at room temperature. The coils are cooled to
+20 K using supercritical helium channels at 15–20 bar. This approach
+entails using the casing as the pressure vessel itself, eliminating the
+Fig. 40. A perpendicular cross section through the winding pack of the coil. The casing
+is not shown here, and the stacks are not aligned with the field for the sake of clarity.
+Note that 𝛷represents the toroidal coordinate, 𝛩the poloidal coordinate and 𝑟the
+radial coordinate.
+Table 7
+Material fractions in a winding pack of one of the Stellaris coils.
+Material
+Fraction [%]
+Tape stack
+9
+Copper jacket
+35
+Solder
+12
+Steel
+36
+Helium (cooling)
+8
+need for leak-tight pressure seals between the plates/turns. However,
+issues such as uncontrolled helium flow distribution could arise; the
+cooling concept is still under exploration. Alternative designs include
+closed channels with welded lids or soldered-in copper/steel pipes. In
+this paper, the operating temperature (Top) is set to 20 K to provide
+a consistent basis for analysis, but it may be desirable to lower the
+operating temperature to around 10–15 K to provide more margin.
+In the chosen unit cell configuration, the current density per turn
+is about 112 A∕mm2, and the current density per copper fraction is
+approximately 355 A∕mm2, aligning the winding pack design with
+similar proposed designs [288,289]. The resulting material fractions of
+each winding pack are summarized in Table 7. We summarize major
+coil features in Table 8. Note that we report the specs for only six
+coils due to symmetry (i.e., 48 coils divided into four periods, with
+each period containing 12 coils: six independent and six mirrored),
+simplifying the representation.
+In the following paragraphs, we discuss a high-level concept of a
+magnet system for the first version of the coils for the Stellaris class
+of stellarators, focusing on how the above challenges are addressed.
+Our focus here is on the feasibility of the concept, as opposed to a full
+engineering analysis. Some important design aspects, such as screening
+currents and field quality, are not covered in this short analysis. Instead,
+to validate the proposed design, we discuss the maximum field on the
+conductor and the operational critical current margin, the winding-
+induced curvature and torsion, the structural integrity of the winding
+pack, the contact resistance between turns, and peak temperatures and
+currents during a quench event.
+Peak fields and critical current density. The peak magnetic field in stel-
+larator coils can vary significantly from one coil to the next, especially
+in QI stellarators with a large magnetic mirror ratio. The peak field is
+also heavily dependent on the size of the winding pack, and is a decisive
+parameter for force and critical current density calculations. Here,
+we compute the peak fields using a 3D magneto-static model carried
+out by means of finite element analysis with the commercial software
+COMSOL MultiPhysics® [295]. For this calculation, we assume that the
+current density distribution is uniform across the winding pack cross-
+section. Fig. 41 shows the peak fields for each independent coil. At the
+chosen 9 T axis-averaged magnetic field strength, the peak field inside
+Fusion Engineering and Design xxx (xxxx) xxx 
+22 
+
+
+===== PDF PAGE 23 =====
+J. Lion et al.
+Table 8
+The main coil parameters for every unique coil in Stellaris. ‘WP’ stands for ‘winding
+pack’. 𝑗op refers to the operational current density (in the text , 𝑗is used equivalently).
+Minimal distances are with respect to the neighboring coil.
+Coil Number
+0
+1
+2
+3
+4
+5
+I (total Amp-turns) [MA]
+15.4
+14.6
+13.8
+12.9
+12.5
+11.2
+Number of turns
+324
+324
+289
+289
+256
+225
+Turn current [kA]
+47.6
+44.9
+47.8
+44.7
+48.9
+49.8
+𝑗WP [A∕mm2]
+119
+112
+120
+112
+122
+124
+𝑗tape-stack [A∕mm2]
+1323
+1249
+1330
+1243
+1360
+1384
+Cross section side length [mm]
+360
+360
+340
+340
+320
+300
+Min. casing-to-casing dist. [mm]
+11.4
+114
+91.4
+135
+326
+475
+Min. casing-to-LCFS dist. [m]
+1.06
+1.04
+1.05
+1.08
+1.11
+1.07
+Coil mass, no casing [ton]
+24.2
+25.4
+21.6
+21.5
+19.0
+17.0
+Peak field [T]
+24.6
+23.1
+22.0
+21.0
+21.4
+19.5
+Max. curvature [m−1]
+1.97
+1.75
+1.94
+1.42
+2.12
+1.86
+Min. curvature radius [m]
+0.51
+0.57
+0.52
+0.60
+0.47
+0.54
+Max. torsion [rad/m]
+5.27
+3.76
+4.46
+3.76
+3.99
+3.91
+Max. 𝑗op∕𝑗crit no grading [%]
+60.5
+46.5
+50.2
+54.1
+56.3
+55.8
+Max. 𝑗op∕𝑗crit with grading [%]
+80
+80
+80
+80
+80
+80
+Tape length no grading [km]
+807
+847
+721
+717
+636
+567
+Tape length with grading [km]
+167
+161
+146
+134
+131
+118
+Max. turn linear force [kN/m]
+540
+404
+398
+400
+450
+380
+Max. WP linear force [MN/m]
+174
+131
+115
+115
+115
+85
+Peak stress on WP [MPa]
+<650
+Self-inductance [H]
+1.30
+1.44
+1.10
+1.10
+0.90
+0.62
+Total energy [GJ]
+110.58 (2.76 GJ per coil)
+Turn-to-turn contact res. [μΩ]
+11.2
+11.2
+10
+10
+8.85
+8.85
+Charging time [h]
+≃600 (26 days)
+Max. temp. during quench [K]
+<300
+Fig. 41. Results of a 3D magnetostatic finite-element simulation in one half-module,
+taking into account the field generated by Stellaris. Pictured is the magnetic field
+strength at the surface of the winding pack. The size for each winding pack is consistent
+with values reported in Table 8. The labels indicate the maximum value of the field
+for each coil and the colormap indicates the norm of magnetic field in Tesla (T).
+the winding pack reaches 24.59 T.
+We now evaluate the effect of the high magnetic field strength
+in terms of the critical current of the HTS tape stack cable. ReBCO-
+based HTS tapes have a strong dependence of the critical current on
+the magnitude of the field component orthogonal to the direction of
+the current and the angle between the field and the so-called ̂𝑐-axis
+of the ReBCO crystal, which is usually (but not always) orthogonal to
+the flat side of the tape. We model this effect by using the magneto-
+angular parametrization of the critical current density as a function
+of the field strength and the angle between the field and the 𝑐-axis
+suggested in [296]. We fit this model to a dataset of measurements
+of the critical current of a commercial ReBCO 2G HTS wire collected
+at 20 K and different field strengths and angles with respect to the
+tape [297]. The critical current values presented here are calculated at
+20 K, since we assume that the temperature is uniform in the winding
+pack and that there are no transients. Later, a temperature dependency
+Fig. 42. (a): Critical current density parametrization as a function of the field strength
+and angle between the field and the plane, at 20K, for a commercial ReBCO 2G HTS
+tape. Here the magnetic field always refers to the component on the plane orthogonal
+to the current direction. (b): Ratio of operational current density over critical current
+density along coil 0. A representative turn is shown in orange, while the distribution
+across turns is illustrated by the maximum and minimum values (dashed blue), the
+median (solid blue), and the interval between the 16 % and the 84 % quantiles (shaded
+region).
+Fig. 43. A cross section of coil 5, displaying all turns as thin layers to emphasize
+the field-aligned orientation of each turn. The turns are colored according to the ratio
+𝑗op∕𝑗crit, before applying any grading.
+will be considered for the quench modeling. The left plot of Fig. 42
+shows the model we use for 𝑗crit as a result of our fit.
+We exploit the high anisotropy of 𝑗crit with respect to the inclination
+angle to maintain a high critical current despite the large field values
+inside the coil winding pack by orienting the tapes within the winding
+pack optimally. To obtain the actual orientation of the tapes, we employ
+a simple optimization algorithm to balance the required level of field
+alignment while minimizing torsion in the tapes. Fig. 43 shows a cross
+section of the winding pack of coil 5, illustrating the chosen orientation.
+Each turn is represented simplistically as a flat cable to highlight the
+orientation of the tape stack.
+With this orientation, we calculate 𝑗crit along the coils. To do so, we
+compute the magnetic field using a Biot–Savart integration over a finite
+coil with a square cross-section and uniform current density [12,298].
+Illustrative results of the critical current density calculations are
+shown in the right-hand-side plot of Fig. 42, which displays the ratio
+of the operational current density to the critical current density for the
+turns present in coil 0, the coil experiencing the highest magnetic field
+strengths. The horizontal orange line indicates the 𝑗op∕𝑗crit ratio along a
+representative turn inside the coil. To illustrate the distribution across
+turns, we display the maximum and minimum values, as well as the
+median and the interval between the 16% and 84% quantiles for each
+cross section along the winding pack central filament path.
+The safety margin of 80% is not exceeded at any point, and a
+grading technique can be employed to tune the critical current density
+so that a relatively constant 𝑗op∕𝑗crit is achieved. This grading could
+Fusion Engineering and Design xxx (xxxx) xxx 
+23 
+
+
+===== PDF PAGE 31 =====
+J. Lion et al.
+all usually considered ECRH schemes and can heat effectively at the
+target densities and temperatures.
+We simulate the neutron-induced deterioration to reach a peak of
+11 DPA per full power year in dedicated regions of the first wall using
+the ARC-DPA model [265]. Average values are simulated to stay within
+6 DPA per full power year at the first wall.
+Overall, based on the fidelity of the analysis conducted in this paper,
+we find the suggested concept to be feasible under all investigated
+aspects.
+3.2. Further improvements and ongoing research
+The Stellaris reactor concept presented here is only the first version
+of a QI stellarator reactor design fully leveraging HTS magnets. The
+analysis in this paper is meant to demonstrate physics and engineering
+feasibility to a sufficient extent to motivate further efforts on the QI-
+HTS stellarator concept. The following is a non-comprehensive list of
+further studies that would elevate the presented concept:
+• in-depth studies of economic viability;
+• use of a lower aspect ratio stellarator configuration to optimize
+economic viability;
+• conceptualization of plasma diagnostics solutions aligned with
+reactor requirements;
+• high-fidelity prediction of kinetic profiles and plasma perfor-
+mance evaluations, including electromagnetic effects and impu-
+rities;
+• investigations of H-mode access in stellarator reactor candidates;
+• simulations of flux surface degradation at finite beta, as recently
+simulated in [118];
+• simulations of effects of ECRH heating in X1 mode, particu-
+larly examining the impact of heating superthermal and trapped
+particles as in the current concept;
+• density control using cryogenic pellets, including deposition pro-
+files and effects on the device performance;
+• full neutronics and structural calculations of a blanket design
+that is not fully homogenized and includes open ports, including
+thermal stress analysis and estimation of pumping requirements;
+• examination of the maintenance concept, including estimates for
+the duration of maintenance operations, structural stability sim-
+ulations during sector extraction, and studies on activation and
+nuclear containment;
+• higher fidelity simulation of fast particle physics, especially in-
+cluding collisional losses and wave-particle scattering between
+fast particles and Alfvén waves;
+• optimization of a Stellaris device to maximize coil tolerances,
+assessing trade-offs with plasma performance;
+• divertor design, to include heat load calculations in attached and
+detached conditions, active control schemes (including stable de-
+tachment steady-state detachment conditions), particle recycling,
+neutral gas compression, and pumping;
+• further tritium blanket analyses, including simulating MHD ef-
+fects in the PbLi, estimations of corrosion, simulation of tritium
+transport and a respective TBR target, water activation and safety
+relevant analyses;
+• analysis of ferromagnetic effects of non-magnetic steel, such as
+EUROFER, and the liquid PbLi blanket on the magnetic field
+quality;
+• high fidelity quench modeling in a detailed HTS coil design in 3D,
+as opposed to the simplified analysis presented in this study for
+an initial feasibility assessment.
+We note that several of these topics are already under examination
+by the authors, especially those related to quench modeling and neu-
+tronics. Economic aspects – including parasitic electricity consumption
+and availability – are outside the scope of this paper, but are paramount
+to assessing the feasibility of a commercial power plant. It is also worth
+noting that stellarators with lower aspect ratios would potentially
+require smaller capital costs, though at the expense of overall fusion
+power. Appendix C shows an example of a stellarator configuration
+with comparable physics performance to Stellaris, but at a lower aspect
+ratio.
+Multiple models should be developed and compared for all of the
+above topics, and collaborative efforts between public and private
+research institutions are recommended to accelerate progress.
+3.3. Conclusion
+Stellaris is a first-of-a-kind concept for a high-field, QI stellarator
+fusion power plant. It combines significant physics performance im-
+provements, an integrated and self-consistent engineering feasibility
+study, and novel concepts for key subsystems and operations. Due to
+the QI symmetry of the magnetic field, Stellaris is designed to operate
+as an intrinsically steady-state device without disruptions. While the
+basic concept of a modular QI stellarator operating in steady-state
+has already been demonstrated by the W7-X experiment [51], it has
+only recently become possible to optimize QI stellarator plasma and
+coil shapes to target reactor viability [71]. The latter requires not
+only excellent confinement of fusion-born fast particles, but also the
+feasibility of reactor-relevant magnets and engineering systems.
+New stellarator configurations presented in the literature often per-
+form well in one metric but poorly in others. For example, a con-
+figuration optimized for good fast particle confinement may not be
+ideally-MHD stable, or an MHD stable configuration with good fast
+particle confinement may not be feasible with realistic coils. Until
+now, no single consistent stellarator reactor study has been presented
+that fulfills all relevant performance aspects of stellarator configuration
+simultaneously, including an engineering feasibility analysis that builds
+credibility for a reactor candidate. This paper aims to address this
+gap, suggesting a new stellarator concept alongside a broad range of
+analyses targeted at indicating viability for a power plant prototype.
+As part of the Stellaris concept, several novel engineering design so-
+lutions are suggested and corresponding analyses have been performed.
+Of particular relevance are the suggested concepts for high-field HTS
+magnets, the support structure, and a high power density first wall
+and blanket system handling tritium breeding and neutron shield-
+ing. Additionally, a remote maintenance solution is conceptualized
+that overcomes the limitations of port-based scheduled maintenance
+in stellarators—a major challenge on the path to commercial energy
+production.
+The main value of this paper is in showcasing a baseline QI stel-
+larator design for prototypical power plant applications. The authors
+hope and anticipate that Stellaris will serve as a foundation for fur-
+ther research and development on burning plasma physics, as well as
+engineering solutions for economically viable fusion power plants.
+Given increasing demand for clean energy and heightened invest-
+ment in fusion technology – including HTS magnets and neutron-
+resilient materials – QI stellarators are now positioned to play a promi-
+nent role in the global race to commercial fusion.
+CRediT authorship contribution statement
+J. Lion: Writing – original draft, Visualization, Supervision, Soft-
+ware, Methodology, Investigation, Conceptualization. J.-C. Anglès:
+Writing – original draft, Software, Methodology, Conceptualization.
+L. Bonauer: Software. A. Bañón Navarro: Software, Methodology.
+S.A. Cadena Ceron: Software. R. Davies: Software, Methodology.
+M. Drevlak: Software, Methodology. N. Foppiani: Writing – original
+draft, Visualization, Software, Methodology. J. Geiger: Methodology.
+A. Goodman: Methodology. W. Guo: Visualization, Methodology. E.
+Fusion Engineering and Design xxx (xxxx) xxx 
+31 
+
+
+===== PDF PAGE 32 =====
+J. Lion et al.
+Guiraud: Software. F. Hernández: Writing – review & editing, Super-
+vision. S. Henneberg: Supervision, Methodology. R. Herrero: Writing
+– original draft, Visualization, Software, Methodology. C. Hintze:
+Methodology. H. Höchter: Software. J. Jelonnek: Writing – review
+& editing, Investigation. F. Jenko: Writing – review & editing, Su-
+pervision. R. Jorge: Supervision, Methodology. M. Kaiser: Software.
+M. Kubie: Writing – review & editing, Supervision, Software, Method-
+ology, Conceptualization. E. Lascas Neto: Software, Methodology.
+H. Laqua: Writing – review & editing, Supervision. M. Leoni: Writ-
+ing – original draft, Software, Methodology. J.F. Lobsien: Software,
+Methodology. V. Maurin: Writing – original draft, Software, Method-
+ology. A. Merlo: Writing – original draft, Visualization, Software,
+Methodology, Investigation. D. Middleton-Gear: Writing – original
+draft, Visualization, Methodology, Investigation. M. Pascu: Software.
+G.G. Plunk: Writing – review & editing, Supervision, Methodology. N.
+Riva: Writing – original draft, Visualization, Software, Methodology,
+Investigation. M. Savtchouk: Software. F. Sciortino: Writing – review
+& editing, Methodology. J. Schilling: Writing – review & editing,
+Visualization, Methodology. J. Shimwell: Writing – review & editing,
+Validation, Investigation. A. Di Siena: Supervision, Methodology. R.
+Slade: Writing – review & editing, Methodology, Conceptualization. T.
+Stange: Writing – review & editing, Methodology. T.N. Todd: Writing –
+review & editing, Supervision, Conceptualization. L. Wegener: Writing
+– review & editing, Conceptualization. F. Wilms: Software, Methodol-
+ogy. P. Xanthopoulos: Supervision, Investigation. M. Zheng: Software,
+Investigation.
+Declaration of competing interest
+The authors declare the following financial interests/personal rela-
+tionships which may be considered as potential competing interests:
+Eduardo Lascas Neto reports financial support was provided by Proxima
+Fusion GmbH. All Proxima Fusion Co-Authors reports a relationship
+with Proxima Fusion GmbH that includes: employment and equity or
+stocks. Martin Kubie, Wei Guo has patent #US63/665,597 pending to
+Proxima Fusion GmbH. Victor Maurin, Jean-Claude Angles has patent
+#EP24197718 pending to Proxima Fusion GmbH. Tom Todd, Martin
+Kubie, David Middleton-Gear, Wei Guo has patent #US63/688,883
+pending to Proxima Fusion GmbH. Jorrit Lion, Rodrigo Herrero has
+patent #EP24197765 pending to Proxima Fusion GmbH. If there are
+other authors, they declare that they have no known competing fi-
+nancial interests or personal relationships that could have appeared to
+influence the work reported in this paper.
+Acknowledgments
+The authors would like to thank Alan Rochford, Fabrice Moncade,
+Bernhard Auchmann, Chuanren Wu, Felix Schauer, and Nikola Jaksic
+for their contributions and advice along the way.
+We are grateful to Felix Warmer, Cesar Luongo, Craig Beidler, Per
+Helander, Hartmut Zohm, and Christian Bachmann, for feedback on the
+draft and their key role in driving the field forward over many years.
+We are also thankful to Yasuhiro Suzuki for access and support with
+the HINT-3D code.
+We thank all open source developers whose software have en-
+abled this work, particularly the following developer communities:
+simsopt, OpenMC, Gmsh, FEniCS-X, Open-CASCADE.
+The work presented here was independently funded by Proxima
+Fusion. Some optimizations and simulations were performed at the Max
+Planck Computing and Data Facility (Germany). Part of the work was
+funded by the European Union (EU) via the Euratom Research and
+Training Programme (Grant Agreement No. 101052200—EUROfusion).
+A. Goodman is supported by a grant from the Simons Foundation,
+United States (Grant No. 560651).
+Appendix A. Confinement time scaling
+For the physics design point exploration performed in Section 2.3,
+we restrict ourselves to a simple ‘0.5D’ power balance, where the
+power balance is enforced only globally, after integration of both sides
+of the power balance equation. We introduce the terminology 𝑝≡
+⟨𝑝⟩𝑉≡∫𝑉𝑝𝑑 𝑉, where 𝑉is the plasma volume. Then, the integrated
+steady-state power balance can be written as
+𝑝loss
+!= 𝑝heat,
+(A.1)
+⇒𝑝rad + 𝑝conf = 𝑓𝛼𝑝𝛼+ 𝑝aux.
+(A.2)
+In these equations, 𝑝loss is the (volume averaged) loss power density,
+𝑝heat the heating power density, 𝑝rad the loss power density by radia-
+tion, 𝑝conf the loss power density due to finite confinement, 𝑝aux is the
+auxiliary power density and 𝑝𝛼is the heating power density by fusion
+alpha particles. 𝑓𝛼is the fraction of the total alpha power absorbed in
+the plasma. When writing the volume averaged confinement loss power
+density 𝑝conf in terms of the plasma energy density 𝑤and the energy
+confinement time 𝜏𝐸, we arrive at
+𝑝rad + 𝑤
+𝜏𝐸
+= 𝑓𝛼𝐸𝛼𝑛𝐷𝑛𝑇⟨𝜎 𝑣⟩𝑇+ 𝑝aux.
+(A.3)
+Here, 𝑝aux is the auxiliary heating power density. 𝐸𝛼is the energy
+carried by fast fusion alpha particles (3.5 MeV), 𝑛𝐷and 𝑛𝑇are densities
+of deuterium and tritium in the plasma respectively. ⟨𝜎 𝑣⟩𝑇is the
+Maxwellian averaged fusion reactivity.
+The radiation term 𝑝rad we split in line and continuum radiation,
+where we use a priori assumed impurity fractions and calculate the
+cooling factors using the ‘Aurora’ code [138], relying on the Atomic
+Data and Analysis Structure (ADAS) database [139]. For synchrotron
+radiation, we take the model suggested in Ref. [140],
+𝑝sy nc
+[W∕m−3] = 1.32 ⋅10−7 (𝐵 𝑇𝑒
+)2.5
+√𝑛𝑒
+𝑎
+(
+1.0 + 18.0 𝑎
+𝑅
+√
+𝑇𝑒
+)
+.
+(A.4)
+Here 𝑎, 𝑅are given in m, 𝑇𝑒in k eV, 𝐵in T and 𝑛𝑒in 1020 m−3.
+To resolve the helium fraction 𝑓He, one introduces the alpha particle
+balance equation,
+𝑛He
+𝜏⋆
+𝛼
+= 𝑛𝐷𝑛𝑇⟨𝜎 𝑣⟩𝑇,
+(A.5)
+and then usually 𝜏⋆
+𝛼
+is assumed to be proportional to the energy
+confinement time: 𝜏⋆
+𝛼= 𝜌⋆𝜏𝐸, where we use 𝜌⋆∼ 8, where 𝜌⋆shall
+not be confused with the normalized minor plasma radius. Determining
+reasonable values for 𝜌⋆, and validity of that model in general, is a
+subject of active research [161,347]. In this article we introduce a new
+heuristic value 𝑓suppr which is used to suppress the resulting helium
+density by a constant factor,
+𝑛′
+He = 𝑓suppr𝑛He.
+(A.6)
+This assumption is informed by two considerations: first, by suppression
+of helium ash due to a positive ambipolar radial electric field, and
+second, by the effect that fast particles do not slow down directly in
+the core, but are radially displaced due to their finite drift orbit. This
+effect was quantified in [110] by employing Monte-Carlo slowing down
+simulations in various stellarators. We capture it here heuristically by
+choosing a value of 𝑓suppr = 1
+2.
+To extrapolate to a reactor, one can use the ISS04 inter-machine
+scaling, which reads [141]
+𝜏𝐸= 0.134 𝑓ren𝑎2.28𝐵0.84𝜄0.41
+2∕3 𝑛0.54
+19 𝑅0.64𝑃−0.61.
+(A.7)
+where 𝑓ren is a multiplier for the ISS04 scaling and the other variables
+have their usual meanings. Rewriting the heating power 𝑃in terms of
+temperature 𝑇, 𝑃= 𝑊∕𝜏𝐸, where 𝑊is the stored plasma energy, one
+arrives at
+𝜏𝐸= 0.152 𝑓2.56
+ren 𝑎2.72𝐵2.15𝜄1.05
+2∕3 𝑛−0.18
+19
+𝑅0.08𝑇−1.56
+keV ,
+(A.8)
+Fusion Engineering and Design xxx (xxxx) xxx 
+32 
+
+
+===== PDF PAGE 33 =====
+J. Lion et al.
+which closely resembles the so called ‘Gyro-Bohm scaling’, which scales
+as 𝜏𝐺 𝐵∼
+𝐿
+𝜌2𝑣𝑡ℎ∼𝑎3𝐵2
+𝑇3∕2 . A similar approach was also shown in [348].
+Note that this scaling can also be derived from invariance principles
+of the Maxwell–Vlasov equations [349]. A more careful considera-
+tion might retrieve other factors such as sensitivity in aspect ratio
+and iota [350], 𝜏∼𝜏𝐺 𝐵𝑓(𝐴, 𝜄), but this was not yet retrieved from
+simulations or data.
+Appendix B. First wall simulations
+What follows is a brief outline of the method employed to calculate
+the first wall temperature in Section 2.7.
+We estimated the temperature by numerically solving a heat equa-
+tion with the Finite Element Method (FEM). We solved a steady-state
+heat equation with two different values for the thermal conductivity 𝑘,
+one for the EUROFER97 steel and one for the tungsten (W):
+𝑘Eurofer(𝑇) = 1.103 × 10−7𝑇3 − 8.4884 × 10−5𝑇2
++ 1.0197 × 10−2𝑇+ 31.776 ,
+(B.1)
+𝑘𝑊= 108.34 − 1.052 × 10−2(𝑇+ 273.15) +
+23 419.9
+𝑇+ 273.15 ,
+(B.2)
+where the temperature is expressed in Celsius.
+The expression for the EUROFER97 conductivity comes from a
+fit of the experimental data in [251]. The expression for tungsten is
+from [351]. Both values for 𝑘Eurofer and 𝑘W are expressed in [W m−1 K−1].
+The governing equations include a volumetric source term rep-
+resenting the neutron load (obtained from the neutronics analysis)
+and boundary conditions modeling heat input and output: a Neumann
+boundary condition on the plasma-facing surface prescribing a heat
+flux equal to the previously computed radiation load (combining edge
+radiation and core radiation), a homogeneous Neumann boundary
+condition at the blanket-facing surface, and a Robin boundary condition
+at the pipes where the heat flux is −ℎ(𝑇−𝑇𝑐), where 𝑇is the unknown
+temperature, 𝑇𝑐is the temperature of the coolant, and ℎis the heat
+transfer coefficient. As detailed in the main text, we considered only
+a limited portion of the wall: at its sides, we applied a homogeneous
+Neumann boundary condition. The entire problem then reads
+⎧
+⎪
+⎪
+⎪
+⎨
+⎪
+⎪
+⎪⎩
+−∇⋅(𝑘(𝑇) ∇𝑇) = 𝑓𝑛𝑙
+in 𝛺
+𝑘(𝑇) 𝜕𝑛𝑇= 𝑤𝑟𝑙
+on 𝛤pfs
+𝑘(𝑇) 𝜕𝑛𝑇= 0
+on 𝛤outer
+𝑘(𝑇) 𝜕𝑛𝑇= 0
+on 𝛤sides
+𝑘(𝑇) 𝜕𝑛𝑇= −ℎ(𝑇) (𝑇−𝑇𝑐(⃗𝑥))
+on 𝛤pipes
+(B.3)
+where 𝑘is a piecewise constant function that evaluates to 𝑘Eurofer and
+𝑘𝑊(Eqs. (B.1) and (B.2)) on the respective subdomains, 𝛺is the
+computational domain, 𝛤pfs is the plasma-facing part of the boundary,
+𝛤outer is the blanket-facing part of the boundary, 𝛤sides are the lateral
+walls of the wall sector that we are simulating and 𝛤pipes is the part of
+the boundary between the EUROFER97 and the pipes. The value of the
+heat transfer coefficient can be computed from experimental data. We
+used the Dittus–Bölter equation, according to which the heat transfer
+coefficient for Helium is given by [352]
+ℎ= 0.023 𝑘
+𝑑
+(
+𝑗𝑑
+𝜇
+)0.8 (
+𝜇
+𝑐𝑝
+𝑘
+)0.4
+.
+(B.4)
+The quantities in Eq. (B.4) refer to the coolant: in our case, Helium.
+The values and meaning of all relevant thermo-physical properties of
+Helium and the cooling system are given in Table B.9.
+The values listed here are for a temperature of 350 ◦C at a pressure
+of 8 MPa, but in the code we implemented temperature-dependence for
+the thermal conductivity and the dynamic viscosity as
+𝜇(𝑇) = −7.2571 × 10−12 𝑇2 + 4.2094 × 10−8 𝑇+ 1.9366 × 10−5,
+(B.5)
+𝑘(𝑇) = −6.1429 × 10−8 𝑇2 + 3.3172 × 10−4 𝑇+ 0.15473,
+(B.6)
+Table B.9
+Thermo-physical properties of Helium at 350 ◦C and cooling
+system hydraulic parameters.
+Variable
+Value
+Thermal conductivity, 𝑘
+0.2633 W m−1 K−1
+Hydraulic diameter, 𝑑
+12 mm
+Mass flow, 𝑚
+0.075 k g∕s
+Mass flux, 𝑗
+𝑗=
+𝑚
+𝑑2
+Dynamic viscosity, 𝜇
+3.33 × 10−5 Pa s
+Specific heat, 𝑐𝑝
+5188.7 J k g−1 K−1
+where the expressions are fits from experimental data from the NIST
+database [353].
+In the Robin boundary condition, the temperature of the coolant
+cannot be taken as a constant, as this would violate energy conservation
+in that the energy flowing out of the wall and into the pipes must
+increase the temperature of the coolant in the pipes. To find the
+temperature of the coolant along the pipe, we implemented a fixed-
+point iteration in our solution strategy, in which we first solved for the
+heat in the first wall with an initial guess of what the final temperature
+will be at the pipes’ outlet and then computed the actual heat 𝑄that
+flows into each pipe with the calculated solution. We used this value
+to update the outlet temperature according to the equation
+𝑄= 𝑚 𝑐𝑝(𝑇out −𝑇in)
+(B.7)
+where 𝑇in and 𝑇out are a pipe’s inlet and outlet temperature. We note
+that this update must be done for each pipe independently, for the
+reasons outlined above.
+We then iterated the solver and continued until the temperature in
+the whole domain after two successive solutions had a relative change
+in the 𝐿2 norm, which is less than a given tolerance (in our case, 10−5).
+Having the inlet and outlet temperatures of a pipe does not tell us
+how the temperature varies along that pipe. Computing this value as a
+function of the temperature along the pipe is a complex operation, so
+we instead assumed that the temperature varies linearly along the pipe
+for simplicity.
+For the purpose of this analysis, we developed C++ code based on
+OpenCASCADE for the CAD design. We used gmsh [354] for meshing,
+and performed a Finite Element Analysis using C++ code based on
+FEniCS-X [355–358]. Since the geometry is not particularly complex,
+in all our simulations we used a rather coarse tetrahedral mesh with
+high-order (3) continuous polynomial elements. Our design for the first
+wall, like most designs, comprises tiles which are physically separate,
+meaning we can avoid simulating a full wall in favor of just one column
+at a time, which is more convenient computationally.
+Appendix C. Toward smaller aspect ratios
+We encourage the reader to interpret the results in this publication
+as a high-level ‘version 1’ of what a QI stellarator fusion power plant
+may look like. Although economic viability was not a central consid-
+eration of the presented concept, at the time of writing it is already
+evident that more commercially attractive Stellaris designs are possible.
+Rapid iteration of such concepts is possible due to new computational
+tools that were partly developed for the present effort, and partly made
+available by international public research over the recent years.
+This paper has described a QI configuration with an aspect ratio
+A ≃ 10, corresponding to a major radius of R0 ≃ 12.5 m. The major
+radius could be further reduced if an equivalently- or better-performing
+configuration at lower aspect ratio could be found. For example, a
+configuration with aspect ratio 6 and the same minor radius (upon
+which plasma confinement most directly depends) would result in
+a major plasma radius of R0
+≃ 7.8 m. On the other hand, such a
+device would only 3∕5 of the fusion power as the Stellaris concept
+demonstrated here.
+Fusion Engineering and Design xxx (xxxx) xxx 
+33 
+
+
+===== PDF PAGE 34 =====
+J. Lion et al.
+Fig. C.55. Comparison between alternative configurations with reduced aspect ratios
+from the SQuID family of QI configurations. The reference configuration used through-
+out the paper is labeled as ‘SQuID’. The properties shown here match those presented in
+Fig. 4, thus indicating normalized quantities where the outermost value is normalized
+by the best performing configuration and innermost value refers to the worst performing
+configuration. Here also an ITG-turbulence proxy is shown, following Ref. [71], a proxy
+used that is expected to correlate with mitigation of ITG turbulence. For this, we
+compute a flux-surface averaged value of the flux compression |𝛁𝑟| in regions of ‘bad’
+curvature (identified by the drift curvature [78,359], 𝐾𝑑= 𝐁× 𝜿⋅𝛁𝛼). The value at
+𝑠= 0.5 (the approximate location of the strongest temperature gradient) is reported.
+The spider plot dimensions have been normalized to reflect the best and worst values
+observed across all shown configurations. This plot focuses on fixed boundary metrics.
+To validate the existence of equivalent lower aspect ratio stellarator
+configurations, in Fig. C.55 we compare the SQuID-configuration used
+in this paper with alternative plasma configurations at aspect ratios
+of approximately 9 and 8. These alternative configurations share key
+features: minimal Shafranov shift, excellent fast particle confinement,
+reduced bootstrap current, low radial neoclassical transport, and the
+maximum-𝐽property. Additionally, they are ideal-MHD stable, and
+allow for sufficiently distant coils.
+These stellarator configurations have recently been obtained and
+verified for engineering feasibility, though not to the same depth
+and extent as the configuration discussed in this report. Neoclassical
+transport is found to be slightly higher in the low aspect ratio config-
+urations, though still much lower than in W7-X and well within the
+bounds considered necessary for a reactor. Ongoing work on physics,
+engineering, and economic optimization for these new configurations –
+and others that are certain to emerge in the near future – promises to
+further accelerate progress.
+Appendix D. Mercier criterion
+Within this article, to evaluate ideal MHD stability, we adopt the
+definition of the Mercier criterion used in the VMEC code:
+𝐷Merc = 𝐷𝑆+ 𝐷𝑊+ 𝐷𝐼+ 𝐷𝐺,
+𝐷𝑆= (𝜓′′𝜒′)2
+4
+𝑠
+𝜄2𝜋2 ,
+𝐷𝑊=
+𝑠
+𝜄2𝜋2 ∬
+|||
+√
+𝑔||| 𝑑 𝜃 𝑑 𝜁𝐵2
+𝑔𝑠𝑠
+𝑑 𝑝
+𝑑 𝑠
+(
+𝑉′′
+−𝑑 𝑝
+𝑑 𝑠∬
+𝑔 𝑑 𝜃 𝑑 𝜁
+𝐵2
+)
+,
+𝐷𝐼=
+𝑠
+𝜄2𝜋2
+[
+∬
+|||
+√
+𝑔||| 𝑑 𝜃 𝑑 𝜁𝐵2
+𝑔𝑠𝑠𝜓′′𝐼′ − (𝜓′′𝜒′)
+(D.1)
+∬
+|||
+√𝑔||| ( ⃗𝐽⋅⃗𝐵) 𝑑 𝜃 𝑑 𝜁
+𝑔𝑠𝑠
+]
+,
+𝐷𝐺=
+𝑠
+𝜄2𝜋2
+[
+∬
+|||
+√
+𝑔||| 𝑑 𝜃 𝑑 𝜁
+( ⃗𝐽⋅⃗𝐵
+𝑔𝑠𝑠
+)2
+−
+𝑠
+𝜄2𝜋2
+⎛
+⎜
+⎜⎝∬
+|||
+√𝑔||| 𝑑 𝜃 𝑑 𝜁( ⃗𝐽⋅⃗𝐵)2
+𝑔𝑠𝑠𝐵2
+⎞
+⎟
+⎟⎠
+⎛
+⎜
+⎜⎝∬
+|||
+√𝑔||| 𝑑 𝜃 𝑑 𝜁 𝐵2
+𝑔𝑠𝑠
+⎞
+⎟
+⎟⎠
+]
+,
+where 𝜓is the toroidal flux, 𝜒is the poloidal flux, 𝑠is the normalized
+toroidal flux, 𝜄is the rotational transform, 𝑔𝑠𝑠= |∇𝑠⋅∇𝑠|, 𝑉is the
+plasma volume, and |||
+√𝑔||| = (∇𝜓⋅∇𝜃× ∇𝜙)−1.
+Data availability
+Data will be made available on request.
+References
+[1] J.-Y. Lee, J. Marotzke, G. Bala, L. Cao, S. Corti, J. Dunne, F. Engelbrecht, E.
+Fischer, J. Fyfe, C. Jones, A. Maycock, J. Mutemi, O. Ndiaye, S. Panickal, T.
+Zhou, Future global climate: Scenario-based projections and near-term informa-
+tion, in: V. Masson-Delmotte, P. Zhai, A. Pirani, S. Connors, C. Péan, S. Berger,
+N. Caud, Y. Chen, L. Goldfarb, M. Gomis, M. Huang, K. Leitzell, E. Lonnoy, J.
+Matthews, T. Maycock, T. Waterfield, O. Yelek¸ci, R. Yu, B. Zhou (Eds.), Climate
+Change 2021: The Physical Science Basis. Contribution of Working Group I To
+the Sixth Assessment Report of the Intergovernmental Panel on Climate Change,
+Cambridge University Press, Cambridge, United Kingdom and New York, NY,
+USA, 2021, pp. 553–672, http://dx.doi.org/10.1017/9781009157896.006.
+[2] I.C. Change, et al., Mitigation of climate change, in: Contribution of Working
+Group III to the Fifth Assessment Report of the Intergovernmental Panel on
+Climate Change, vol. 1454, 2014, p. 147.
+[3] A. de Vries, The growing energy footprint of artificial intelligence, Joule 7 (10)
+(2023) 2191–2194, http://dx.doi.org/10.1016/j.joule.2023.09.004.
+[4] G.P. Thiel, A.K. Stark, To decarbonize industry, we must decarbonize heat,
+Joule 5 (3) (2021) 531–550, http://dx.doi.org/10.1016/j.joule.2020.12.007.
+[5] M. Wappler, D. Unguder, X. Lu, H. Ohlmeyer, H. Teschke, W. Lueke, Building
+the green hydrogen market–Current state and outlook on green hydrogen
+demand and electrolyzer manufacturing, Int. J. Hydrog. Energy 47 (79) (2022)
+33551–33570, http://dx.doi.org/10.1016/j.ijhydene.2022.07.253.
+[6] N. Salmon, R. Bañares-Alcántara, Green ammonia as a spatial energy vector: a
+review, Sustain. Energy Fuels 5 (11) (2021) 2814–2839, http://dx.doi.org/10.
+1039/d1se00345c.
+[7] N. Ghaffour, T.M. Missimer, G.L. Amy, Technical review and evaluation of the
+economics of water desalination: Current and future challenges for better water
+supply sustainability, Desalination 309 (2013) 197–207, http://dx.doi.org/10.
+1016/j.desal.2012.10.015.
+[8] R. Hanna, A. Abdulla, Y. Xu, D.G. Victor, Emergency deployment of direct air
+capture as a response to the climate crisis, Nat. Commun. 12 (1) (2021) 368,
+http://dx.doi.org/10.1038/s41467-020-20437-0.
+[9] C. Bustreo, U. Giuliani, D. Maggio, G. Zollino, How fusion power can contribute
+to a fully decarbonized European power mix after 2050, Fusion Eng. Des. 146
+(2019) 2189–2193, http://dx.doi.org/10.1016/j.fusengdes.2019.03.150.
+[10] B. Sorbom, J. Ball, T. Palmer, F. Mangiarotti, J. Sierchio, P. Bonoli, C. Kasten,
+D. Sutherland, H. Barnard, C. Haakonsen, J. Goh, C. Sung, D. Whyte, ARC: A
+compact, high-field, fusion nuclear science facility and demonstration power
+plant with demountable magnets, Fusion Eng. Des. 100 (2015) 378–405, http:
+//dx.doi.org/10.1016/j.fusengdes.2015.07.008.
+[11] F. Warmer, S. Torrisi, C.D. Beidler, A. Dinklage, K. Egorov, Y. Feng, J. Geiger,
+H. Lux, F. Schauer, Y. Turkin, R. Wolf, P. Xanthopoulos, Systems code analysis
+of HELIAS-type fusion reactor and economic comparison to tokamaks, IEEE
+Trans. Plasma Sci. 44 (2016) 1576–1585, http://dx.doi.org/10.1109/TPS.2016.
+2545868.
+[12] J. Lion, F. Warmer, H. Wang, C. Beidler, S. Muldrew, R. Wolf, A general
+stellarator version of the systems code PROCESS, Nucl. Fusion 61 (12) (2021)
+126021, http://dx.doi.org/10.1088/1741-4326/ac2dbf.
+[13] D. Maisonnier, I. Cook, S. Pierre, B. Lorenzo, G. Luciano, N. Prachai, P. Aldo,
+P. Team, et al., DEMO and fusion power plant conceptual studies in Europe,
+Fusion Eng. Des. 81 (8–14) (2006) 1123–1130, http://dx.doi.org/10.1016/j.
+fusengdes.2005.08.055.
+Fusion Engineering and Design xxx (xxxx) xxx 
+34 
