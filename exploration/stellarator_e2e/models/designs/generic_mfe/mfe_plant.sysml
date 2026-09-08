@@ -60,6 +60,10 @@ package mfe_plant {
             // the length follows machine scale. j_wp and k_coil are the
             // settable levers that replaced them.
             :>> wp_side = wp_sizing.wp_side;
+            // WI-044: the casing mass is COMPUTED from the coil set's stored
+            // energy (which sees the coil bore); m_casing_ref is the settable
+            // anchor that replaced the held mass.
+            :>> m_casing = casing_mass.m_casing;
             :>> c_coil = coil_length.c_coil;
         }
         part heating : 'Heating and CD' {
@@ -273,9 +277,38 @@ package mfe_plant {
             in R0 = magnet.R0;
         }
 
+        // WI-044: the peak field sees the coil bore -- the eq.-39 factor
+        // R / (R - a_coil), normalised at the reference geometry so the
+        // printed ratio is reproduced exactly there. a_coil is the radial
+        // build's coil-centre radius (design D1).
         calc peak_field_calc : 'Conductor Peak Field' {
             in B_axis_in = magnet.B;
             in peak_ratio_in = magnet.peak_ratio;
+            in R_in = magnet.R0;
+            in a_coil_in = rb.r_coil_centre;
+            in R_ref_in = magnet.R_ref;
+            in a_coil_ref_in = magnet.a_coil_ref;
+        }
+
+        // WI-044: stored magnetic energy from the coil-set inductance shape
+        // (thesis eq. 2.82, W = 1/2 L I^2), anchored at the printed reference.
+        calc stored_energy : 'Coil Set Stored Energy' {
+            in I_coil = magnet.I_coil;
+            in a_coil = rb.r_coil_centre;
+            in R0 = magnet.R0;
+            in W_mag_ref = magnet.W_mag_ref;
+            in I_ref = magnet.I_ref;
+            in a_coil_ref = magnet.a_coil_ref;
+            in R_ref = magnet.R_ref;
+        }
+
+        // WI-044: casing mass from stored energy (Lion 2021 eq. 56), anchored
+        // at the instance's reference mass; feeds 'Magnet Structure Cost'
+        // through magnet.m_casing.
+        calc casing_mass : 'Magnet Casing Mass' {
+            in W_mag = stored_energy.W_mag;
+            in W_mag_ref = magnet.W_mag_ref;
+            in m_casing_ref = magnet.m_casing_ref;
         }
 
         // WI-036: the winding pack is sized by the current it carries, so
@@ -511,7 +544,7 @@ package mfe_plant {
         // inter-coil plates/rings/legs stay CAS22.1.5).
         calc magnet_structure_cost : 'Magnet Structure Cost' {
             in n_coils = magnet.n_coils;
-            in m_casing = magnet.m_casing;
+            in m_casing = magnet.m_casing;   // WI-044: computed (casing_mass)
             in steel_price = magnet.steel_price;
             in f_steel_fab = magnet.f_steel_fab;
         }

@@ -3,9 +3,10 @@ package mfe_plasma_scaling {
 
     calc def 'Plasma Geometry' {
         doc /*
-        Plasma volume [m^3].
+        Plasma volume [m^3] and aspect ratio [1].
 
           V = 2 * pi^2 * R * a^2 * kappa * f_shape
+          A = R / a                                  (reported, WI-044)
 
         The elongated-torus term (2*pi^2*R*a^2*kappa) is the smooth-torus
         volume. f_shape is a dimensionless shape/packing factor: 1.0 for a pure
@@ -39,6 +40,13 @@ package mfe_plasma_scaling {
 
         out attribute V : Real =
             2.0 * (pi ** 2) * R_in * (a_in ** 2) * kappa_in * f_shape_in;
+
+        // Plasma aspect ratio [1] = R / a (WI-044). A REPORTED derived quantity:
+        // not held, not bounded, asserted on by nothing. The sister systems
+        // codes hold it as a fixed configuration input and derive a; this
+        // model leaves a a free lever and reports A so a design search is read
+        // at the geometry it chose (goal minor-radius, reserved gate 1).
+        out attribute A : Real = R_in / a_in;
     }
 
     calc def 'MFE Radial Build' {
@@ -127,6 +135,13 @@ package mfe_plasma_scaling {
         // coil-bore radius [m] = vessel outer radius.
         out attribute wall_area : Real = kappa_in * 4.0 * (pi ** 2) * R_in * vacuum_or;
         out attribute r_coil : Real = vessel_or;
+        // Coil-centre minor radius [m] = vessel_or + coil_t / 2 (WI-044): the
+        // "average minor coil radius" a_coil of the sourced coil-bore shapes
+        // (Lion 2021 eq. 39; Lion 2023 eq. 2.82), read at the coil's centre
+        // filament, which is where the Stellaris coil tables are stated
+        // (Table 3: "Coil information ... refers to the center filament").
+        // r_coil above (vessel_or) stays the 1cfe conductor-quantity bore.
+        out attribute r_coil_centre : Real = vessel_or + coil_t_in / 2.0;
     }
 
     calc def 'DT Fusion Power' {
@@ -403,31 +418,74 @@ package mfe_plasma_scaling {
 
     calc def 'Conductor Peak Field' {
         doc /*
-        Peak magnetic field on the winding pack [T] from the axis-averaged field
-        and the coil set's peak/axis ratio (WI-030):
+        Peak magnetic field on the winding pack [T] from the axis-averaged field,
+        the coil set's peak/axis ratio at its reference geometry, and the coil
+        bore (WI-030; geometry-aware since WI-044):
 
-          B_peak = B_axis * peak_ratio
+          bore_factor     = R / (R - a_coil)
+          bore_factor_ref = R_ref / (R_ref - a_coil_ref)
+          B_peak = B_axis * peak_ratio * (bore_factor / bore_factor_ref)
 
-        peak_ratio is a coil-geometry fact bound per instance (Stellaris:
-        24.9 T peak on the conductor at 9.0 T axis-averaged, Table 2 image);
-        it is the quantity a conductor ceiling ('Conductor Peak Field Limit')
-        is compared against. Kept as a calc, not an inline plant expression,
-        so the product is a module-graph edge the study tooling can trace and
-        no plant-level derived expression is introduced.
+        The shape is Lion 2021 eq. 39, B_max = mu0 I N / (R - a_coil) x
+        (a0(C) + R a1(C) / sqrt(A_wp)): the field on the coil rises as the coil
+        bore a_coil approaches the major radius R. With B_axis ~ N I / R
+        ('Coil Set Axis Field'), the peak/axis ratio carries the factor
+        R / (R - a_coil) times the configuration term in parentheses. The
+        configuration coefficients a0(C), a1(C) are not printed for any
+        instance in the corpus, so the ratio is ANCHORED: peak_ratio is the
+        printed peak/axis pair at the reference geometry (R_ref, a_coil_ref),
+        and the eq.-39 factor is applied normalised to that geometry, so the
+        anchor reproduces the printed peak to the double and only the bore
+        dependence responds away from it. The winding-pack term
+        R a1(C) / sqrt(A_wp) is NOT carried: a1(C) is unprinted and the corpus
+        offers no second anchor to separate it from a0(C) (WI-044 design D2).
+        a_coil is the coil-centre minor radius from the radial build
+        ('MFE Radial Build' r_coil_centre; WI-044 design D1). Disclosed limit:
+        the peak/axis ratio at another geometry is the anchored shape's
+        prediction, not a printed fact; a changed coil count or shape is a
+        different configuration C.
+
+        Kept as a calc, not an inline plant expression, so the product is a
+        module-graph edge the study tooling can trace; the factors are
+        intermediate attributes so the executed arithmetic is exactly
+        (B_axis * peak_ratio) * bore_norm, and bore_norm evaluates to exactly
+        1.0 at the reference geometry (the two factors are the same
+        expression on the same floats).
 
         **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md;
+            knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/;
             /home/reid/1cfe/1costingfe/src/costingfe/defaults.py (pin 0254385)
         **Ref**: images/page_002_table_0.png (Table 2: axis av. 9.0 T, peak
-            conductor 24.9 T); defaults.py:597-603 (MagnetProperties.b_max,
-            "peak field ceiling at the conductor" -- the bounded quantity)
-        **Basis**: peak-on-winding = axis field x coil-set ratio; MFE-generic
+            conductor 24.9 T); images/lion_2021_nf_stellarator_process.pdf-0009-19.png
+            (eq. 39) with output.md L455 (a_coil "the average minor coil
+            radius", N the number of coils, A_wp the winding-pack area);
+            defaults.py:597-603 (MagnetProperties.b_max, "peak field ceiling
+            at the conductor" -- the bounded quantity)
+        **Basis**: peak-on-winding = axis field x printed coil-set ratio x the
+            eq.-39 bore factor normalised at the reference geometry; the
+            configuration coefficients absorbed by the anchor; MFE-generic
         */
 
         // axis-averaged on-axis field [T]
         in attribute B_axis_in : Real;
-        // peak-on-winding / axis-averaged field ratio [1]
+        // peak-on-winding / axis-averaged field ratio at the reference geometry [1]
         in attribute peak_ratio_in : Real;
+        // major radius [m]
+        in attribute R_in : Real;
+        // coil-centre minor radius, the coil bore of eq. 39 [m]
+        in attribute a_coil_in : Real;
+        // reference major radius at which peak_ratio was read [m]
+        in attribute R_ref_in : Real;
+        // reference coil-centre minor radius at which peak_ratio was read [m]
+        in attribute a_coil_ref_in : Real;
+
+        // eq.-39 bore factor at the operating geometry and at the reference
+        attribute bore_factor : Real = R_in / (R_in - a_coil_in);
+        attribute bore_factor_ref : Real = R_ref_in / (R_ref_in - a_coil_ref_in);
+        // normalised bore factor [1]: exactly 1.0 at the reference geometry
+        attribute bore_norm : Real = bore_factor / bore_factor_ref;
+
         // peak field on the conductor [T]
-        out attribute B_peak : Real = B_axis_in * peak_ratio_in;
+        out attribute B_peak : Real = B_axis_in * peak_ratio_in * bore_norm;
     }
 }

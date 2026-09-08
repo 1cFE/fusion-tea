@@ -100,6 +100,44 @@ package mfe_magnet_cost {
         out attribute cost : Real = kAm_wind * cost_per_kAm * f_wp_fab;
     }
 
+    calc def 'Magnet Casing Mass' {
+        doc /*
+        Casing steel mass per coil [kg] from the coil set's stored magnetic
+        energy, anchored at a reference (WI-044):
+
+          m_casing = m_casing_ref * (W_mag / W_mag_ref)^0.78
+
+        Lion 2021 eq. 56, M_struct = 1.348 W_mag^0.78, "an empirical scaling
+        law from existing machines" (L607) that Stellarator-PROCESS uses for
+        the total coil support-structure mass because "the total mass is a
+        good proxy, both for the cost and the support structure complexity".
+        The source prints no units for the constant, so the constant is
+        absorbed by the anchor: m_casing_ref is the instance's casing mass at
+        its reference stored energy and only the exponent is carried. The
+        anchor keeps whatever seam the instance's reference carries (for
+        Stellaris the printed cast-part FLOOR, a knowing lower bound -- WI-035
+        design D5); the scale responds to the bore through W_mag and the seam
+        stays named at the binding. Disclosed limit (the source's own): the
+        law "does not show whether the design point has local unsupportable
+        forces" (L609).
+
+        **Source**: knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/
+        **Ref**: images/lion_2021_nf_stellarator_process.pdf-0012-18.png (eq. 56);
+            output.md L607 (the empirical law and its role), L609 (its limit)
+        **Basis**: reference casing mass scaled by the sourced W_mag^0.78 law;
+            concept-agnostic (MR-3) -- all values bound by instances
+        */
+
+        // coil-set stored magnetic energy [J]
+        in attribute W_mag : Real;
+        // reference stored magnetic energy [J]
+        in attribute W_mag_ref : Real;
+        // reference casing steel mass per coil [kg] at W_mag_ref
+        in attribute m_casing_ref : Real;
+
+        out attribute m_casing : Real = m_casing_ref * (W_mag / W_mag_ref) ** 0.78;
+    }
+
     calc def 'Magnet Structure Cost' {
         doc /*
         Magnet casing-structure capital [$] on a steel-mass basis (WI-035 D5):
@@ -108,9 +146,12 @@ package mfe_magnet_cost {
 
         Covers the COIL CASINGS only; inter-coil plates, support rings, and
         legs remain CAS22.1.5 primary structure ('Structure Cost') -- the
-        boundary that prevents double counting. m_casing is bound per
-        instance; for Stellaris the printed cast-part floor is used as a
-        knowing lower bound with the seam named in the binding doc.
+        boundary that prevents double counting. m_casing is COMPUTED by
+        'Magnet Casing Mass' (WI-044) from the coil set's stored energy,
+        anchored at the instance's reference mass; for Stellaris the reference
+        is the printed cast-part floor, a knowing lower bound with the seam
+        named in the binding doc, so the scale responds to the coil bore and
+        the seam stays.
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385);
             knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
@@ -124,7 +165,7 @@ package mfe_magnet_cost {
 
         // number of field coils [1]
         in attribute n_coils : Real;
-        // casing steel mass per coil [kg]
+        // casing steel mass per coil [kg] (computed, 'Magnet Casing Mass')
         in attribute m_casing : Real;
         // fabricated structural steel price [$/kg]
         in attribute steel_price : Real;

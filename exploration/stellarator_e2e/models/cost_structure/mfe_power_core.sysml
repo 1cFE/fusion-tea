@@ -76,7 +76,8 @@ package mfe_power_core {
           G            -- geometry factor (tokamak 4*pi^2, stellarator 8*pi^2)
           coil_markup  -- conductor -> installed magnet manufacturing markup
           cost_per_kAm -- conductor cost [$/kA-m], by coil material
-          peak_ratio   -- peak-on-winding / axis-averaged field ratio (WI-030)
+          peak_ratio   -- peak-on-winding / axis-averaged field ratio at the
+                          reference geometry (WI-030; bore-normalised since WI-044)
           B_max        -- conductor peak-field ceiling [T] (WI-030)
 
         **Source**: /home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py
@@ -90,7 +91,9 @@ package mfe_power_core {
         attribute G : Real;
         attribute coil_markup : Real;
         attribute cost_per_kAm : Real;
-        // peak-on-winding / axis-averaged field ratio [1] (coil-set geometry fact, WI-030)
+        // peak-on-winding / axis-averaged field ratio at the reference geometry
+        // [1] (coil-set geometry fact, WI-030; the eq.-39 bore factor normalised
+        // at (R_ref, a_coil_ref) multiplies it since WI-044)
         attribute peak_ratio : Real;
         // conductor peak-field ceiling [T] (conductor technology fact, WI-030)
         attribute B_max : Real;
@@ -127,8 +130,25 @@ package mfe_power_core {
         attribute sigma_allow : Real;
         // winding fabrication markup [1]
         attribute f_wp_fab : Real;
-        // casing steel mass per coil [kg]
+        // casing steel mass per coil [kg] -- COMPUTED since WI-044 by
+        // 'Magnet Casing Mass' from the stored energy (the generic plant binds
+        // it by reference, the WI-036 wp_side pattern); m_casing_ref below is
+        // the settable anchor
         attribute m_casing : Real;
+        // ------- WI-044 coil-bore anchors: the reference point at which the
+        // peak/axis ratio, the stored energy and the casing mass were read;
+        // every sourced shape is normalised to exactly 1.0 there -------
+        // reference casing steel mass per coil [kg] at W_mag_ref
+        attribute m_casing_ref : Real;
+        // reference coil-set stored magnetic energy [J] at (I_ref, a_coil_ref, R_ref)
+        attribute W_mag_ref : Real;
+        // reference peak single-coil current [A]
+        attribute I_ref : Real;
+        // reference major radius [m]
+        attribute R_ref : Real;
+        // reference coil-centre minor radius [m] (the radial build's
+        // r_coil_centre at the reference minor radius)
+        attribute a_coil_ref : Real;
         // fabricated structural steel price [$/kg]
         attribute steel_price : Real;
         // casing fabrication markup [1]

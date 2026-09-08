@@ -153,6 +153,13 @@ package stellarator_09 {
             // peak_field_ok reads margin 0.0 at the design point (2.7667 would
             // read 24.9003, violated). A redefinition expression is dropped by the
             // pinned codegen, hence the literal (WI-030).
+            // WI-044: this ratio is the ANCHOR at the reference geometry (R_ref,
+            // a_coil_ref below). 'Conductor Peak Field' now multiplies it by the
+            // eq.-39 bore factor R / (R - a_coil) normalised at that geometry --
+            // exactly 1.0 at the design point, so the executed B_peak is unchanged
+            // there (24.9 minus one ulp, because the computed B_axis is one ulp
+            // under 9.0 -- WI-035 D2, low side) and rises with the coil bore away
+            // from it (a 1.4 on this column already reads 25.16 T, violated).
             :>> peak_ratio = 2.7666666666666666 {
                 doc /* **Source**: stellaris-design-details.md **Ref**: Table 2 image (images/page_002_table_0.png: peak conductor magnetic field strength 24.9 T; axis av. magnetic field strength 9.0 T) **Basis**: Stellaris coil-set peak/axis field ratio, 24.9/9.0 */
             }
@@ -266,12 +273,64 @@ package stellarator_09 {
             :>> f_wp_fab = 6.65 {
                 doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385) **Ref**: costing_constants.yaml:50 (coil_cu_fab_markup 3.5, content list); :60-72 (stellarator 5.87 = 3.09 x 1.9 NCSX overrun; winding path handled separately) **Basis**: content-mapped fabrication build-up on the conductor base (WI-035 D4) */
             }
-            // Casing steel mass per coil [kg]: the PRINTED FLOOR of the sec. 2.10 cast-part
-            // range (63-200 t) -- a KNOWING LOWER BOUND (f_uplift_cryo pattern): no total is
-            // printed, so the lightest cast part per casing bounds from below; band
+            // Reference casing steel mass per coil [kg]: the PRINTED FLOOR of the sec. 2.10
+            // cast-part range (63-200 t) -- a KNOWING LOWER BOUND (f_uplift_cryo pattern): no
+            // total is printed, so the lightest cast part per casing bounds from below; band
             // [$54.4M, $172.8M] disclosed in WI-035 design D5. The parameter names the seam.
-            :>> m_casing = 63000.0 {
-                doc /* **Source**: stellaris-design-details.md; WI-035 design ruling D5 (2026-08-30) **Ref**: raw.pdf sec. 2.10 ("cast with parts weighing between 63 tons and 200 tons") **Basis**: explicit lower-bound assumption parameter -- printed floor, seam named */
+            // WI-044: the held m_casing is retired; the per-coil mass is COMPUTED by
+            // 'Magnet Casing Mass' as m_casing_ref * (W_mag / W_mag_ref)^0.78 (Lion 2021
+            // eq. 56), so it equals this floor at the design point and scales with the
+            // coil bore through the stored energy. The seam is unchanged: the anchor is
+            // still a lower bound, and everything scaled from it inherits that.
+            :>> m_casing_ref = 63000.0 {
+                doc /* **Source**: stellaris-design-details.md; WI-035 design ruling D5 (2026-08-30); knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/ **Ref**: raw.pdf sec. 2.10 ("cast with parts weighing between 63 tons and 200 tons"); images/lion_2021_nf_stellarator_process.pdf-0012-18.png (eq. 56, the shape the reference is scaled by) **Basis**: explicit lower-bound assumption parameter -- printed floor, seam named; the WI-044 anchor of the casing-mass shape */
+            }
+            // ---- WI-044 coil-bore anchors: the reference point at which the printed
+            // magnet facts were read. Each sourced shape -- eq. 39 (peak field), eq. 2.82
+            // with W = 1/2 L I^2 (stored energy), eq. 56 (casing mass) -- is normalised
+            // to exactly 1.0 here, so the design point reproduces its anchors to the
+            // double and only the bore dependence responds away from it. The
+            // configuration coefficients a0(C), a1(C), L(C) and eq. 56's constant are
+            // not printed for Stellaris; the anchors carry them (the WI-041 calibration
+            // pattern). What is NOT modelled, disclosed here once: (i) the sourced bound
+            // on the minor radius -- the coil-plasma distance inside a fixed coil set
+            // (Lion 2021 eq. 57-59) -- needs the unprinted f_geo; this radial build
+            // grows the coil bore outward from a, so the stack always fits and the
+            // fences catching a larger bore below are the anchored shapes' consequence,
+            // never a sourced bound on a; (ii) the transport facts bound in the
+            // sustainment chain (tau*/tau_E 8, helium suppression 0.5, iota 0.92) are
+            // point-A facts carried unchanged to every other geometry -- no admissible
+            // source gives their aspect-ratio dependence; (iii) the wall-peak calibration
+            // (WI-041) is anchored at this geometry and carried constant across a sweep.
+            // Reference coil-set stored magnetic energy [J]: Table 2's 111 GJ at the
+            // printed peak coil current 15.4 MA. Table 8 sums the per-coil energies to
+            // 110.58 GJ; the 0.4 % gap to the rounded headline is disclosed, not
+            // reconciled -- Table 2 is the anchor.
+            :>> W_mag_ref = 111000000000.0 {
+                doc /* **Source**: stellaris-design-details.md; knowledge/sources/systems_code_models_for_stellarator_fusion_power_plants_and/ **Ref**: work/orchestration/goals/minor-radius/evidence/grounding_sources/stellaris_p03_table2.png (Table 2 render: "Stored magnetic energy [GJ] 111"); stellaris_p23_table8.png (Table 8 render: total energy 110.58 GJ); images/lion_2023_phd_thesis_stellarator_systems_code_models.pdf-0074-12.png (eq. 2.82, the shape the reference is scaled by) **Basis**: printed coil-set stored energy at the design point; the WI-044 anchor of the inductance shape */
+            }
+            // Reference peak single-coil current [A]: the current at which the printed
+            // 24.9 T and 111 GJ were read (= I_coil at the design point; I_coil is the
+            // lever, I_ref the anchor).
+            :>> I_ref = 15400000.0 {
+                doc /* **Source**: stellaris-design-details.md **Ref**: images/page_002_table_0.png (Table 2: "Peak coil current (single coil) [MA] 15.4") **Basis**: the reference current of the WI-044 stored-energy anchor */
+            }
+            // Reference major radius [m] (= R0 at the design point; R0 is the lever).
+            :>> R_ref = 12.7 {
+                doc /* **Source**: stellaris-design-details.md **Ref**: images/page_002_table_0.png (Table 2: major plasma radius 12.7 m) **Basis**: the reference geometry of the WI-044 anchors */
+            }
+            // Reference coil-centre minor radius [m] = the radial build's r_coil_centre
+            // at a = 1.3 with the bound thicknesses: 1.3 + 1.70 (the layer stack to
+            // vessel_or) + 0.30 / 2 = 3.15, written as the float64 the executed build
+            // produces (3.1500000000000004) so the normalised ratios are exactly 1.0 at
+            // the design point (the k_link / j_wp convention). Eq. 39's a_coil is "the
+            // average minor coil radius" and Stellaris states its coil facts at the
+            // centre filament (Table 3); the paper's own averaged build from the LCFS to
+            // the coil centre is 1.50 m (Fig. 34), i.e. a_coil about 2.80 m -- this
+            // model's 1cfe layer stack is 0.35 m thicker, and the anchor absorbs the
+            // offset (only the ratio to this reference enters any shape).
+            :>> a_coil_ref = 3.1500000000000004 {
+                doc /* **Source**: stellaris-design-details.md; models/library/analyses/mfe_plasma_scaling.sysml ('MFE Radial Build' r_coil_centre) **Ref**: images/page_002_table_0.png (Table 2: minor plasma radius 1.3 m); work/orchestration/goals/minor-radius/evidence/grounding_sources/stellaris_p04_table3.png (Table 3: coil information "refers to the center filament"), stellaris_p18_fig34.png (Fig. 34: averaged build to the coil centre 1.50 m); the radial-build thicknesses bound below (geometry.py:106-114 layer sum) **Basis**: the executed coil-centre radius at the design minor radius, float64 of the layer sum; the WI-044 reference geometry */
             }
             // Fabricated structural steel price [$/kg].
             :>> steel_price = 6.0 {
