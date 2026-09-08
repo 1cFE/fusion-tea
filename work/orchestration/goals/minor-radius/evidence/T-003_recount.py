@@ -5,8 +5,8 @@ reproduce every one. Usage:
     uv run python T-003_recount.py <record_dir>
 Bases: "here" = this record (the WI-044 pin; ten verdicts); "committed" = the 20260907-burn-control record's own
 columns joined per point (the WI-043 pin; ten verdicts). Both at the WI-042 profile family, the held coupling 1.00
-and the same executor. Comparisons are over the `executed_in_both` class only; the transect arm's 35 new points
-carry no committed row.
+and the same executor. Comparisons are over the `executed_in_both` class only; the transect arm's 69 new points
+carry no committed row (the count after the pre-execution critique's F1 and F6).
 """
 import csv, json, sys
 from collections import Counter, defaultdict
