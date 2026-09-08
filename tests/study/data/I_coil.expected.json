@@ -1,5 +1,5 @@
 {
-  "derived_against_semantic_fingerprint": "39e931fa87dbacc77e59170183cbd97c2731979c21e9e3181c0e796a487158e1",
+  "derived_against_semantic_fingerprint": "a331cd82e48f19d5ce2c684188abce9b8da07ab408576c7164880c9d44d4bc92",
   "group": {
     "axis": "I_coil",
     "declared_keys": [
@@ -85,6 +85,80 @@
             "ref": "stellarator_09__stellaris__magnet__eps_cond_allow",
             "reached": false,
             "entry_type": "design_attribute"
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+        "definition_qualified_name": "mfe_viability::'Cycle Fit Domain'",
+        "source_local_identity": "cycle_domain_ok",
+        "operator": ">=",
+        "operand_classes": [
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "domain_product_in",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__cycle__domain_product",
+            "reached": true
+          },
+          {
+            "operand": "<literal>",
+            "class": "literal",
+            "reached": false,
+            "value": 0.0
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+        "definition_qualified_name": "mfe_viability::'Loop Capacity'",
+        "source_local_identity": "loop_capacity_ok",
+        "operator": "<=",
+        "operand_classes": [
+          "bound",
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "mdot_loop_in",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__primary_loop__mdot_loop",
+            "reached": true
+          },
+          {
+            "operand": "mdot_loop_rated_in",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__mdot_loop_ref",
+            "reached": false,
+            "entry_type": "design_attribute"
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+        "definition_qualified_name": "mfe_viability::'Loop Pressure Margin'",
+        "source_local_identity": "loop_pressure_ok",
+        "operator": ">",
+        "operand_classes": [
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "p_loop_margin_in",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__primary_loop__p_loop_margin",
+            "reached": true
+          },
+          {
+            "operand": "<literal>",
+            "class": "literal",
+            "reached": false,
+            "value": 0.0
           }
         ]
       },
@@ -347,6 +421,80 @@
         ]
       },
       {
+        "constraint_id": "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3",
+        "definition_qualified_name": "mfe_viability::'Cycle Fit Domain'",
+        "source_local_identity": "cycle_domain_ok",
+        "operator": ">=",
+        "operand_classes": [
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "domain_product_in",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__cycle__domain_product",
+            "reached": true
+          },
+          {
+            "operand": "<literal>",
+            "class": "literal",
+            "reached": false,
+            "value": 0.0
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
+        "definition_qualified_name": "mfe_viability::'Loop Capacity'",
+        "source_local_identity": "loop_capacity_ok",
+        "operator": "<=",
+        "operand_classes": [
+          "bound",
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "mdot_loop_in",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__primary_loop__mdot_loop",
+            "reached": true
+          },
+          {
+            "operand": "mdot_loop_rated_in",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__mdot_loop_ref",
+            "reached": false,
+            "entry_type": "design_attribute"
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
+        "definition_qualified_name": "mfe_viability::'Loop Pressure Margin'",
+        "source_local_identity": "loop_pressure_ok",
+        "operator": ">",
+        "operand_classes": [
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "p_loop_margin_in",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__primary_loop__p_loop_margin",
+            "reached": true
+          },
+          {
+            "operand": "<literal>",
+            "class": "literal",
+            "reached": false,
+            "value": 0.0
+          }
+        ]
+      },
+      {
         "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
         "definition_qualified_name": "mfe_viability::'Net Power Positive'",
         "source_local_identity": "net_positive",
@@ -542,8 +690,8 @@
     ],
     "sibling_candidates": [],
     "trace_size": {
-      "modules_fired": 73,
-      "channels_tainted": 99
+      "modules_fired": 79,
+      "channels_tainted": 122
     },
     "warnings": [],
     "not_derivable": {

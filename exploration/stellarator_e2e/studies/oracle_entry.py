@@ -118,7 +118,35 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     # Item 6 study 2 (20260821-power-cycle-ab): the power-conversion block that
     # defines the arms, and the discount-rate lever. Oracle input names per
     # `verify_stellaris.IN` (eta_th, turbine_per_mw, heat_rej_per_mw, discount_rate).
-    f"{P}eta_th": "eta_th",
+    # WI-045 (goal plant-closure): eta_th retired as an entry key (it is the cycle
+    # calc's channel now); eta_p and p_pump were never mapped. The five flags and
+    # directs plus the circuit and fit facts are the entry keys. Study levers per
+    # design D7: loop_live, cycle_live, p_pump_direct, eta_p_direct, eta_th_direct,
+    # n_loops, loop_dT_blanket, loop_T_in, f_loss, dT_approach; the fit coefficients
+    # and domain are swapped together through a declared arm binding, never alone.
+    f"{P}loop_live": "loop_live",
+    f"{P}cycle_live": "cycle_live",
+    f"{P}p_pump_direct": "p_pump_direct",
+    f"{P}eta_p_direct": "eta_p_direct",
+    f"{P}eta_th_direct": "eta_th_direct",
+    f"{P}loop_T_in": "loop_T_in",
+    f"{P}loop_dT_blanket": "loop_dT_blanket",
+    f"{P}loop_cp": "loop_cp",
+    f"{P}loop_gamma": "loop_gamma",
+    f"{P}loop_p": "loop_p",
+    f"{P}n_loops": "n_loops",
+    f"{P}mdot_loop_ref": "mdot_loop_ref",
+    f"{P}dp_loop_ref": "dp_loop_ref",
+    f"{P}f_loss": "f_loss",
+    f"{P}eta_is": "eta_is",
+    f"{P}eta_drive": "eta_drive",
+    f"{P}dT_approach": "dT_approach",
+    f"{P}a_fit": "a_fit",
+    f"{P}b_fit": "b_fit",
+    f"{P}T_offset_fit": "T_offset_fit",
+    f"{P}T2_min": "T2_min",
+    f"{P}T2_max": "T2_max",
+    f"{P}delta_eta": "delta_eta",
     f"{P}turbine__cost_per_mw": "turbine_per_mw",
     f"{P}heat_rejection__cost_per_mw": "heat_rej_per_mw",
     f"{P}discount_rate": "discount_rate",
@@ -229,6 +257,28 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "heat_delivered": f"{P}heat__p_delivered",
     "heat_wallplug_total": f"{P}heat__p_wallplug_total",
     "heat_eta_pin_eff": f"{P}heat__eta_pin_eff",
+    # WI-045 (goal plant-closure): the source heat, the loop and the cycle. The
+    # usage is named primary_loop because `loop` is a SysML keyword.
+    "q_source": f"{P}source_heat__q_source",
+    "loop_mdot": f"{P}primary_loop__mdot",
+    "loop_T_out": f"{P}primary_loop__T_out",
+    "loop_mdot_loop": f"{P}primary_loop__mdot_loop",
+    "loop_dp_loop": f"{P}primary_loop__dp_loop",
+    "loop_p_loop_margin": f"{P}primary_loop__p_loop_margin",
+    "loop_r_comp": f"{P}primary_loop__r_comp",
+    "loop_T_comp_in": f"{P}primary_loop__T_comp_in",
+    "loop_w_fluid": f"{P}primary_loop__w_fluid",
+    "loop_p_elec": f"{P}primary_loop__p_elec",
+    "loop_q_ihx": f"{P}primary_loop__q_ihx",
+    "loop_capacity_margin": f"{P}primary_loop__capacity_margin",
+    "loop_p_pump_total": f"{P}primary_loop__p_pump_total",
+    "loop_q_recovered_total": f"{P}primary_loop__q_recovered_total",
+    "cycle_T2_C": f"{P}cycle__T2_C",
+    "cycle_eta_fit": f"{P}cycle__eta_fit",
+    "cycle_eta_th": f"{P}cycle__eta_th",
+    "cycle_margin_low": f"{P}cycle__margin_low",
+    "cycle_margin_high": f"{P}cycle__margin_high",
+    "cycle_domain_product": f"{P}cycle__domain_product",
     "cas72_annual": f"{P}cas72_calc__cost",
     "cas90_1cfe": f"{P}cas90_1cfe_calc__cas90",
     "lcoe_1cfe": f"{P}lcoe_1cfe_calc__lcoe",
@@ -310,6 +360,21 @@ OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
         # side (the balance's own closing value; not an entry point). The id's
         # hash is codegen's, read from generated/contracts/model_contract.json.
         "p_aux_required_in": {"kind": "channel", "key": f"{P}sustain__p_aux_required"},
+    },
+    # WI-045 (goal plant-closure): the loop's two fences and the cycle's domain
+    # fence, all on computed operands ('Primary Coolant Loop', 'Power Cycle
+    # Efficiency' outputs); the rated per-loop flow is the instance's reference
+    # figure (entry point mdot_loop_ref). Ids read from model_contract.json at the
+    # 2026-09-08 regeneration.
+    f"{P}loop_pressure_ok__5905ab54f5e8a945": {
+        "p_loop_margin_in": {"kind": "channel", "key": f"{P}primary_loop__p_loop_margin"},
+    },
+    f"{P}loop_capacity_ok__d77f6027ceb27852": {
+        "mdot_loop_in": {"kind": "channel", "key": f"{P}primary_loop__mdot_loop"},
+        "mdot_loop_rated_in": {"kind": "input", "key": f"{P}mdot_loop_ref"},
+    },
+    f"{P}cycle_domain_ok__ba3fa9c3653b3fd3": {
+        "domain_product_in": {"kind": "channel", "key": f"{P}cycle__domain_product"},
     },
 }
 

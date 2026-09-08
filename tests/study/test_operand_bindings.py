@@ -38,7 +38,14 @@ BASELINE_POINT = {
 # after the helium ash moved to the source's own profile rule (W 551.4 -> 519.9 MJ; the
 # re-closed fixed point takes p_fus 2725.4 -> 2652.6 MW and LCOE 313.513412 -> 322.318439);
 # was 313.5134115016116 at WI-041 and 307.08712042841586 at WI-039.
-PINNED_LCOE = 322.31843948570247
+# WI-045 (goal plant-closure round 1, 2026-09-08): the three held plant multipliers
+# (p_pump 195 MW, eta_p 0.5, eta_th 0.333) became computed producers -- the representative
+# helium loop (175.44 MW draw, all fluid work recovered) and the Kovari 2016 helium-Rankine
+# fit (0.41136) -- so the headline moved by design: 322.318439 -> 237.252800 at the held
+# availability 0.85. Re-pinned from the executed baseline after the oracle read bit-exact
+# (run_stellaris_single.py); the compatibility proposal (loop_live 0, cycle_live 0, the
+# three directs at the held values) reproduces 322.31843948570247 bit-for-bit.
+PINNED_LCOE = 237.2528002420958
 
 
 @pytest.fixture
@@ -76,7 +83,7 @@ def package_inputs(package_path):
 
 def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
     entries = catalog_entries(real_package_path)
-    assert len(entries) == 10, f"expected the ten viability constraints (WI-043: burn_hold_ok joined the nine), found {len(entries)}"
+    assert len(entries) == 13, f"expected the thirteen viability constraints (WI-045: the two loop fences and the cycle domain fence joined the ten; WI-043: burn_hold_ok joined the nine), found {len(entries)}"
     bindings = oracle_entry.operand_bindings()
     channels = oracle_entry.evaluate(BASELINE_POINT)
     inputs = package_inputs(real_package_path)
@@ -97,7 +104,7 @@ def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
                 f"a package {binding['kind']}"
             )
             resolved += 1
-    assert resolved == 18, f"expected eighteen feature_ref operands across the ten (WI-043: burn_hold_ok adds one), found {resolved}"
+    assert resolved == 22, f"expected twenty-two feature_ref operands across the thirteen (WI-045 adds four: one, two, one; WI-043 added one), found {resolved}"
 
 
 def test_the_operand_that_resolves_to_nothing_by_name_is_bound_explicitly(

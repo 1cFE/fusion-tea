@@ -85,6 +85,11 @@ def constraint_pred_definition_mfe_viability__economic_recirculating_threshold(r
     value = _cmp('<=', rec_frac, threshold)
     return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((threshold - rec_frac)) if (_fin(rec_frac) and _fin(threshold)) else None))
 
+# definition:mfe_viability::'Cycle Fit Domain'
+def constraint_pred_definition_mfe_viability__cycle_fit_domain(domain_product_in):
+    value = _cmp('>=', domain_product_in, 0.0)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((domain_product_in - 0.0)) if (_fin(domain_product_in) and _fin(0.0)) else None))
+
 # definition:mfe_viability::'Beta Limit'
 def constraint_pred_definition_mfe_viability__beta_limit(beta_in, beta_limit_in):
     value = _cmp('<=', beta_in, beta_limit_in)
@@ -119,3 +124,13 @@ def constraint_pred_definition_mfe_viability__conductor_peak_field_limit(B_peak,
 def constraint_pred_definition_mfe_viability__sustainment_limit(p_aux_required_in, p_aux_installed_in):
     value = _cmp('<=', p_aux_required_in, p_aux_installed_in)
     return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((p_aux_installed_in - p_aux_required_in)) if (_fin(p_aux_required_in) and _fin(p_aux_installed_in)) else None))
+
+# definition:mfe_viability::'Loop Capacity'
+def constraint_pred_definition_mfe_viability__loop_capacity(mdot_loop_in, mdot_loop_rated_in):
+    value = _cmp('<=', mdot_loop_in, mdot_loop_rated_in)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((mdot_loop_rated_in - mdot_loop_in)) if (_fin(mdot_loop_in) and _fin(mdot_loop_rated_in)) else None))
+
+# definition:mfe_viability::'Loop Pressure Margin'
+def constraint_pred_definition_mfe_viability__loop_pressure_margin(p_loop_margin_in):
+    value = _cmp('>', p_loop_margin_in, 0.0)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((p_loop_margin_in - 0.0)) if (_fin(p_loop_margin_in) and _fin(0.0)) else None))

@@ -231,7 +231,21 @@ IN = dict(
     sustain_ash_frac=0.2002, R_w_sync=0.6, kappa_sync=1.0,
     beta_mu0=1.25663706212e-6,  # 'Volume-Averaged Beta' default (e_keV retired at WI-042)
     # power balance
-    mn=1.2, eta_th=0.333, eta_p=0.5,
+    mn=1.2,
+    # WI-045 (goal plant-closure): eta_th, eta_p and p_pump are retired as held
+    # scalars. The loop and the cycle are computed below; the five flags/directs
+    # select the mode -- live at the instance; the round's compatibility arm binds
+    # loop_live 0, cycle_live 0, p_pump_direct 195.0, eta_p_direct 0.5,
+    # eta_th_direct 0.333 and reproduces the WI-044 pin bit-for-bit (packet s. 3).
+    loop_live=1.0, cycle_live=1.0, p_pump_direct=0.0, eta_p_direct=0.0, eta_th_direct=0.0,
+    # The representative circuit (Moscato 2017 reference; WI-045 design D1-D2) and
+    # the fit (Kovari 2016 Table 4, helium-primary Rankine row; D4). Mirrors the
+    # instance bindings in stellarator_plant.sysml.
+    loop_T_in=573.15, loop_dT_blanket=200.0, loop_cp=5193.0, loop_gamma=1.6666666666666667,
+    loop_p=8.0e6, n_loops=14.0, mdot_loop_ref=225.07777777777778, dp_loop_ref=329187.1856931558,
+    f_loss=1.0, eta_is=0.772796639536644, eta_drive=1.0,
+    dT_approach=20.0, a_fit=0.1802, b_fit=0.7823, T_offset_fit=273.0,
+    T2_min=384.0, T2_max=642.0, delta_eta=0.0,
     # Heating power chain (WI-039). Wall-plug is the entry point; the source
     # prints the coupled 50 MW, and 100.0 is that value divided by this chain's
     # own stated efficiencies (0.50 x 1.00). eta_couple = 1.00 is the stated
@@ -244,7 +258,9 @@ IN = dict(
     #   circulator basis, 6% of p_th; work/completed/20260828_WI-033_p-pump-rebase/).
     #   The oracle mirrors the model's held design-point bindings (module docstring);
     #   edit made under explicit owner ruling 2026-08-29, GSTH Item 6 round p-pump-fence.
-    p_pump=195.0, f_sub=0.03,
+    #   WI-045 (goal plant-closure): the held 195.0 lives in p_pump_direct above
+    #   (0.0 while the loop is live); the loop's own draw replaces it.
+    f_sub=0.03,
     # p_tf = 0.0 (WI-024): modeled zero for the SC coil set (recirc_power_factor
     #   = 0 in 1cfe's own SC model; ~7.5 kW joint loss counted as 20 K heat in
     #   the cryo chain). The old 111.0 mapped a phantom "conduction power to
@@ -476,9 +492,45 @@ def compute():
                     + p["p_coupled_direct_heat"])
     heat_wallplug_total = (p["p_wallplug_heat"]
                            + p["p_coupled_direct_heat"] / heat_eta_pin_eff)
+    # --- WI-045 (goal plant-closure): the reactor source heat, the representative
+    # primary loop and the temperature-compatible cycle, written from the WI-045
+    # design's stated equations (D1-D5, D9), not from the generated modules.
+    #   q_source   = mn*p_neutron + p_alpha + p_coupled           (no pump credit)
+    #   mdot       = q_source*1e6/(cp*dT);  mdot_loop = mdot/n_loops
+    #   dp_loop    = f_loss*dp_ref*(mdot_loop/mdot_loop_ref)^2;  r = p/(p - dp)
+    #   T_comp_in  = T_in/(1 + (r^k - 1)/eta_is);  w_fluid = mdot*cp*(T_in - T_comp_in)/1e6
+    #   p_elec     = w_fluid/eta_drive;  q_ihx = q_source + w_fluid
+    #   p_pump_total      = loop_live*p_elec + p_pump_direct
+    #   q_recovered_total = loop_live*w_fluid + eta_p_direct*p_pump_direct
+    #   eta_fit    = a*ln(T2_C + 273) - b - delta_eta;  eta_th = cycle_live*eta_fit + eta_th_direct
+    # In the dormant mode the two totals are the old held scalars to the bit
+    # (0.0*x + held), so the sums below are the pre-WI-045 sums exactly.
+    q_source = p["mn"] * p_neutron + p_alpha + heat_coupled
+    loop_mdot = q_source * 1.0e6 / (p["loop_cp"] * p["loop_dT_blanket"])
+    loop_T_out = p["loop_T_in"] + p["loop_dT_blanket"]
+    loop_mdot_loop = loop_mdot / p["n_loops"]
+    loop_dp_loop = p["f_loss"] * p["dp_loop_ref"] * (loop_mdot_loop / p["mdot_loop_ref"]) ** 2
+    loop_p_loop_margin = p["loop_p"] - loop_dp_loop
+    loop_r_comp = p["loop_p"] / (p["loop_p"] - loop_dp_loop)
+    loop_k_isen = (p["loop_gamma"] - 1.0) / p["loop_gamma"]
+    loop_T_comp_in = p["loop_T_in"] / (1.0 + (loop_r_comp ** loop_k_isen - 1.0) / p["eta_is"])
+    loop_w_fluid = loop_mdot * p["loop_cp"] * (p["loop_T_in"] - loop_T_comp_in) / 1.0e6
+    loop_p_elec = loop_w_fluid / p["eta_drive"]
+    loop_q_ihx = q_source + loop_w_fluid
+    loop_capacity_margin = p["mdot_loop_ref"] - loop_mdot_loop
+    loop_p_pump_total = p["loop_live"] * loop_p_elec + p["p_pump_direct"]
+    loop_q_recovered_total = (p["loop_live"] * loop_w_fluid
+                              + p["eta_p_direct"] * p["p_pump_direct"])
+    cycle_T2_C = loop_T_out - p["dT_approach"] - 273.15
+    cycle_eta_fit = (p["a_fit"] * math.log(cycle_T2_C + p["T_offset_fit"])
+                     - p["b_fit"] - p["delta_eta"])
+    cycle_eta_th = p["cycle_live"] * cycle_eta_fit + p["eta_th_direct"]
+    cycle_margin_low = cycle_T2_C - p["T2_min"]
+    cycle_margin_high = p["T2_max"] - cycle_T2_C
+    cycle_domain_product = cycle_margin_low * cycle_margin_high
     p_th = (p["mn"] * p_neutron + p_alpha + heat_coupled
-            + p["eta_p"] * p["p_pump"])
-    p_the = p["eta_th"] * p_th
+            + loop_q_recovered_total)
+    p_the = cycle_eta_th * p_th
     p_et = p_the
     p_sub = p["f_sub"] * p_et
     # Cryoplant electrical chain (WI-024) — mirrors the generated
@@ -487,7 +539,7 @@ def compute():
     cop = (p["f_carnot_cryo"] * cop_carnot)
     p_cold = ((((p["q_nuc_cryo"] * vol_cold_total) * 1e-06) + p["p_fixed_cryo"]) * p["f_uplift_cryo"])
     p_cryo = ((p_cold / cop) + p["p_cryo_direct"])
-    recirculating = (p_coils + p["p_pump"] + p_sub + p_aux + p_cool + p_cryo
+    recirculating = (p_coils + loop_p_pump_total + p_sub + p_aux + p_cool + p_cryo
                      + heat_wallplug_total)
     q_eng = p_et / recirculating
     rec_frac = 1.0 / q_eng
@@ -693,6 +745,17 @@ def compute():
         # WI-039 heating-chain channels
         heat_eta_pin_eff=heat_eta_pin_eff, heat_delivered=heat_delivered,
         heat_coupled=heat_coupled, heat_wallplug_total=heat_wallplug_total,
+        # WI-045 source-heat, loop and cycle channels
+        q_source=q_source,
+        loop_mdot=loop_mdot, loop_T_out=loop_T_out, loop_mdot_loop=loop_mdot_loop,
+        loop_dp_loop=loop_dp_loop, loop_p_loop_margin=loop_p_loop_margin,
+        loop_r_comp=loop_r_comp, loop_T_comp_in=loop_T_comp_in,
+        loop_w_fluid=loop_w_fluid, loop_p_elec=loop_p_elec, loop_q_ihx=loop_q_ihx,
+        loop_capacity_margin=loop_capacity_margin,
+        loop_p_pump_total=loop_p_pump_total, loop_q_recovered_total=loop_q_recovered_total,
+        cycle_T2_C=cycle_T2_C, cycle_eta_fit=cycle_eta_fit, cycle_eta_th=cycle_eta_th,
+        cycle_margin_low=cycle_margin_low, cycle_margin_high=cycle_margin_high,
+        cycle_domain_product=cycle_domain_product,
         winding_pack=winding_pack, magnet_structure=magnet_structure,
         magnet_capital_rollup=magnet_capital_rollup,
         aux_cost=aux_cost, cryo_cost=cryo_cost,  # WI-035 aux split
@@ -721,6 +784,51 @@ def compute():
         cas71_annual=cas71_annual, cas72_annual=cas72_annual,
         cas70_annual=cas70_annual, cas80_annual=cas80_annual,
         cas90_1cfe=cas90_1cfe, lcoe_1cfe=lcoe_1cfe,
+    )
+
+
+def reconstruct_reference_circuit(eta_is=None):
+    """WI-045 MR-WI045-13: the Moscato 2017 reference circuit reconstructed in the
+    oracle's own arithmetic -- a reconstruction of the source's numbers at the
+    source's point, NOT a validation of the loop law off design.
+
+    Printed (output.md:79-81, :89-91, Table 2 :128, Table 3 :151-154; raw p. 6):
+    2101.7 MW blanket heat at 2025.7 kg/s over 300->500 C in 9 loops; per-path
+    losses IB 214+62+87.9 = 363.9 kPa, OB 174+56.6+85.1 = 315.7 kPa; IHX duties
+    3x208.1 + 6x267.8 = 2231.1 MW; circulators 3x2x6.8 + 6x2x7.5 = 130.8 MW.
+    """
+    cp = IN["loop_cp"]
+    Q_ref, mdot_ref, n_ref = 2101.7, 2025.7, 9.0
+    dT = 200.0
+    cp_implied = Q_ref * 1.0e6 / (mdot_ref * dT)
+    dp_ib = (214.0 + 62.0 + 87.9) * 1e3
+    dp_ob = (174.0 + 56.6 + 85.1) * 1e3
+    w_ib, w_ob = 3.0 * 208.1, 6.0 * 267.8
+    dp_weighted = (w_ib * dp_ib + w_ob * dp_ob) / (w_ib + w_ob)
+    Q_ihx = 3.0 * 208.1 + 6.0 * 267.8
+    W_check = Q_ihx - Q_ref
+    P_circ_printed = 3.0 * 2.0 * 6.8 + 6.0 * 2.0 * 7.5
+    p_loop, gamma = IN["loop_p"], IN["loop_gamma"]
+    k = (gamma - 1.0) / gamma
+    r = p_loop / (p_loop - dp_weighted)
+    T_in = IN["loop_T_in"]
+    dT_actual = W_check * 1.0e6 / (mdot_ref * cp)
+    T1 = T_in - dT_actual
+    eta_is_closed = (r ** k - 1.0) * T1 / dT_actual
+    eta = IN["eta_is"] if eta_is is None else eta_is
+    # the loop law at the reference per-loop flow (ratio 1): the same statements as compute()
+    mdot_loop = mdot_ref / n_ref
+    dp_loop = 1.0 * dp_weighted * (mdot_loop / IN["mdot_loop_ref"]) ** 2
+    r_comp = p_loop / (p_loop - dp_loop)
+    T_comp_in = T_in / (1.0 + (r_comp ** k - 1.0) / eta)
+    w_fluid = mdot_ref * cp * (T_in - T_comp_in) / 1.0e6
+    return dict(
+        cp_bound=cp, cp_implied=cp_implied, cp_discrepancy=(cp_implied - cp) / cp,
+        dp_ib_kPa=dp_ib / 1e3, dp_ob_kPa=dp_ob / 1e3, dp_weighted_kPa=dp_weighted / 1e3,
+        Q_ihx_MW=Q_ihx, W_check_MW=W_check, P_circ_printed_MW=P_circ_printed,
+        residual_printed_minus_fluid_MW=P_circ_printed - W_check,
+        r=r, dT_actual_K=dT_actual, T1_K=T1, eta_is_closed_form=eta_is_closed,
+        eta_is_bound=eta, w_fluid_reproduced_MW=w_fluid, w_residual_MW=w_fluid - W_check,
     )
 
 

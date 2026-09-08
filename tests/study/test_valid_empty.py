@@ -36,8 +36,8 @@ def test_the_empty_result_still_carries_the_whole_catalog(tmp_path):
     rc, out, err = run_tool_raw(REAL_PACKAGE, REAL_MANIFEST, EXTRAS)
     assert rc == 0, err
     group = group_by_axis(json.loads(out), "land_cost")
-    assert len(group["bounds"]) == 10  # WI-043: burn_hold_ok joined the nine
-    assert len(group["constraints_unreachable"]) == 10
+    assert len(group["bounds"]) == 13  # WI-045 (2026-09-08): three loop/cycle fences joined the ten (WI-043: burn_hold_ok joined the nine)
+    assert len(group["constraints_unreachable"]) == 13
     assert all(not any(o["reached"] for o in c["operands"]) for c in group["bounds"])
 
 

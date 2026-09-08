@@ -9,7 +9,7 @@ Complete all stages in order for a production-ready system.
 
 **Objective**: Implement each calculation definition in its handwritten file.
 
-**Total**: 3 functions to implement
+**Total**: 4 functions to implement
 
 **Instructions for each function**:
 1. Open the SysML source file at the line number shown below
@@ -28,6 +28,7 @@ Complete all stages in order for a production-ready system.
 |--------|--------|----------|--------------|------------|
 | [ ] | Plasma_Sustainment | `run_plasma_sustainment` | `root-0/analyses/mfe_plasma_sustainment.sysml:4` | High |
 | [ ] | DT_Fusion_Power | `run_dt_fusion_power` | `root-0/analyses/mfe_plasma_scaling.sysml:147` | High |
+| [ ] | Power_Cycle_Efficiency | `run_power_cycle_efficiency` | `root-0/analyses/mfe_power_cycle.sysml:4` | High |
 | [ ] | Levelized_Replacement_Cost | `run_levelized_replacement_cost` | `root-0/analyses/mfe_account_costs.sysml:796` | High |
 
 **11 computed attribute module(s) auto-implemented** (not included in manual count above).
@@ -55,7 +56,7 @@ pytest tests/test_implementations_runnable.py -v
 All tests should pass (or pytest.skip for NotImplementedError stubs)
 
 **Test Coverage**:
-- 3 implementation functions
+- 4 implementation functions
 - Each function tested for: imports, signature, return type
 - Tests tolerate NotImplementedError (pass before implementation)
 - Tests verify return types (pass after implementation)
@@ -90,7 +91,7 @@ All tests should pass (or pytest.skip for NotImplementedError stubs)
 ## Completion Criteria
 
 The implementation is complete when:
-- Stage 1: All 3 functions implemented
+- Stage 1: All 4 functions implemented
 - Stage 2: All validations pass
 - Stage 3: Integration tests pass
 

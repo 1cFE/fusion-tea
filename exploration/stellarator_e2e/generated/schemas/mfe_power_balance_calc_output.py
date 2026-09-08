@@ -27,6 +27,16 @@ with p_wall = p_ash + p_input_eff - p_rad at f_dec = 0
 Charged-particle power reaches the wall as radiation or as transport;
 both are recovered thermally, so no radiation model is needed here.
 
+WI-045 (goal plant-closure): the recovered term arrives as
+q_recovered_in from 'Primary Coolant Loop' (the loop's fluid work when
+the loop is live; eta_p_direct * p_pump_direct when it is dormant) at
+the position eta_p * p_pump occupied, and the pump draw arrives as
+p_pump_total_in (loop_live * p_elec + p_pump_direct) at the position
+p_pump occupied. In the dormant mode both are the old held scalars to
+the bit, so this calc's sums are unchanged in every operand and
+position; the credit's meaning is unchanged. The reactor's source heat
+without the credit is published by 'Reactor Source Heat' below.
+
 Validity conditions (documented regime, WI-019 MR-WI019-4):
   1. f_dec = 0 -- no direct energy conversion (standing WI-009
      deviation, out of scope).

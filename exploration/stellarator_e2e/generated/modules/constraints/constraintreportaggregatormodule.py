@@ -15,14 +15,14 @@ from stellarator_tea.schemas.constraint_types import (
     CoverageAccount,
 )
 
-EXPECTED_IDS = ('stellarator_09_stellaris_wp_stress_ok_f38a102195da1dd0', 'stellarator_09_stellaris_cond_strain_ok_251d4c803804ab60', 'stellarator_09_stellaris_recirc_ok_afc3be66f0a3421b', 'stellarator_09_stellaris_beta_ok_82b78aad420730d5', 'stellarator_09_stellaris_net_positive_484521d56c02667a', 'stellarator_09_stellaris_burn_hold_ok_03c3f94b878e5b58', 'stellarator_09_stellaris_wall_load_ok_ab2c790419af93bb', 'stellarator_09_stellaris_tbr_ok_2cd198f674d413e4', 'stellarator_09_stellaris_peak_field_ok_49c6b8228a73cac5', 'stellarator_09_stellaris_sustainment_ok_77add152ed8eafce')
+EXPECTED_IDS = ('stellarator_09_stellaris_wp_stress_ok_f38a102195da1dd0', 'stellarator_09_stellaris_cond_strain_ok_251d4c803804ab60', 'stellarator_09_stellaris_recirc_ok_afc3be66f0a3421b', 'stellarator_09_stellaris_cycle_domain_ok_ba3fa9c3653b3fd3', 'stellarator_09_stellaris_beta_ok_82b78aad420730d5', 'stellarator_09_stellaris_net_positive_484521d56c02667a', 'stellarator_09_stellaris_burn_hold_ok_03c3f94b878e5b58', 'stellarator_09_stellaris_wall_load_ok_ab2c790419af93bb', 'stellarator_09_stellaris_tbr_ok_2cd198f674d413e4', 'stellarator_09_stellaris_peak_field_ok_49c6b8228a73cac5', 'stellarator_09_stellaris_sustainment_ok_77add152ed8eafce', 'stellarator_09_stellaris_loop_capacity_ok_d77f6027ceb27852', 'stellarator_09_stellaris_loop_pressure_ok_5905ab54f5e8a945')
 
 #: The coverage account, derived at generation from the sealed catalog by
 #: `generation/coverage.py::coverage_account` and baked here exactly the way
 #: CATALOG_FINGERPRINT and EXPECTED_IDS are. Which gates are applicable and which were
 #: assessed depends on the model, never on this candidate's input values, so recomputing it
 #: per evaluation would recompute a constant.
-COVERAGE = {'authored_usage_total': 10, 'applicable_gate_total': 10, 'assessed_gate_count': 10, 'unassessed_gate_count': 0, 'inapplicable_gate_count': 0, 'unassessed_reasons': {}, 'coverage_state': 'complete'}
+COVERAGE = {'authored_usage_total': 13, 'applicable_gate_total': 13, 'assessed_gate_count': 13, 'unassessed_gate_count': 0, 'inapplicable_gate_count': 0, 'unassessed_reasons': {}, 'coverage_state': 'complete'}
 
 
 class ConstraintReportAggregatorInput(BaseModel):
@@ -31,6 +31,7 @@ class ConstraintReportAggregatorInput(BaseModel):
     stellarator_09_stellaris_wp_stress_ok_f38a102195da1dd0: ConstraintEvaluation
     stellarator_09_stellaris_cond_strain_ok_251d4c803804ab60: ConstraintEvaluation
     stellarator_09_stellaris_recirc_ok_afc3be66f0a3421b: ConstraintEvaluation
+    stellarator_09_stellaris_cycle_domain_ok_ba3fa9c3653b3fd3: ConstraintEvaluation
     stellarator_09_stellaris_beta_ok_82b78aad420730d5: ConstraintEvaluation
     stellarator_09_stellaris_net_positive_484521d56c02667a: ConstraintEvaluation
     stellarator_09_stellaris_burn_hold_ok_03c3f94b878e5b58: ConstraintEvaluation
@@ -38,6 +39,8 @@ class ConstraintReportAggregatorInput(BaseModel):
     stellarator_09_stellaris_tbr_ok_2cd198f674d413e4: ConstraintEvaluation
     stellarator_09_stellaris_peak_field_ok_49c6b8228a73cac5: ConstraintEvaluation
     stellarator_09_stellaris_sustainment_ok_77add152ed8eafce: ConstraintEvaluation
+    stellarator_09_stellaris_loop_capacity_ok_d77f6027ceb27852: ConstraintEvaluation
+    stellarator_09_stellaris_loop_pressure_ok_5905ab54f5e8a945: ConstraintEvaluation
 
 
 class ConstraintReportAggregatorOutput(MultiOutput):
@@ -50,7 +53,7 @@ class ConstraintReportAggregatorModule(
     name: str = "constraint_report_aggregator"
     version: str = "v0.1"
 
-    CATALOG_FINGERPRINT = "ae13c6db2b9d1c82227652193667253c3bb1323283ba6d7f55dd0bac2c88ca25"
+    CATALOG_FINGERPRINT = "9d45cc8d63b1b10641bba95e2fee979b1a9f6945fbdd51caa6b2a498b2824b1a"
 
     def run(self, **evaluations) -> ModuleResult[ConstraintReportAggregatorOutput]:
         validated = ConstraintReportAggregatorInput(**evaluations)

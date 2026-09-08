@@ -69,9 +69,22 @@ EXPECTED_VERDICTS = {
     # source's two-sided spread on its stored energy (goal stored-energy-basis
     # L-004). Nothing moved with this verdict: every channel bit-identical.
     "burn_hold_ok": "satisfied",
+    # WI-045 (goal plant-closure, 2026-09-08): the primary loop and the cycle are
+    # computed producers. loop_pressure_ok: the per-path loss (300.5 kPa) against
+    # the 8 MPa loop -- the loss law's own domain. loop_capacity_ok: the per-loop
+    # flow (215.05 kg/s at 14 loops) against the reference's rated 225.08 -- the
+    # sizing rule puts the design point 4.5 % under the rating, so SATISFIED here
+    # by construction and VIOLATED one step off the design column (a 1.4) and at
+    # the committed cheapest machine at this count (design D6). cycle_domain_ok:
+    # the turbine inlet 480 C inside the fit's 384-642 C. The design point MOVED
+    # as predicted (LCOE 322.318 -> 237.253 at the held availability); the
+    # compatibility proposal reproduces the WI-044 pin bit-for-bit.
+    "loop_pressure_ok": "satisfied",
+    "loop_capacity_ok": "satisfied",
+    "cycle_domain_ok": "satisfied",
 }
 EXPECTED_HEADLINE = "full_satisfaction"
-EXPECTED_VERDICT_COUNT = 10  # WI-043 added burn_hold_ok (was 9; WI-036 added cond_strain_ok, was 8)
+EXPECTED_VERDICT_COUNT = 13  # WI-045 added loop_pressure_ok, loop_capacity_ok, cycle_domain_ok (was 10; WI-043 added burn_hold_ok, was 9)
 
 
 def _execute_package():
@@ -139,16 +152,33 @@ def _anchor_gate(values: dict[str, float]) -> bool:
     #   from the executed baseline after the oracle gate below read bit-exact
     #   on every channel, the four new ones included (never before); nothing
     #   tuned. Pre-WI-042 values in git history.
+    # WI-045 (goal plant-closure, 2026-09-08): the three held plant multipliers
+    #   p_pump 195 MW, eta_p 0.5 and eta_th 0.333 became computed producers --
+    #   the representative helium loop (175.44 MW draw at 14 loops, all fluid
+    #   work recovered into the IHX duty) and the Kovari 2016 helium-Rankine fit
+    #   (0.41136 at a 480 C turbine inlet) -- so every power-derived headline
+    #   moves by design at the held availability 0.85: p_th 3224.35 -> 3302.29,
+    #   p_net 716.63 -> 1012.36, rec_frac 0.332563 -> 0.254747, total capital
+    #   14,442,862,262 -> 14,955,212,350 (the power-scaled accounts), CAS70
+    #   193,529,567.74 -> 207,927,742.74, LCOE 322.318439 -> 237.252800,
+    #   lcoe_1cfe 316.141142 -> 232.724887. Predicted before regeneration
+    #   (design section Expected baseline behaviour; prototype/proto_results.json)
+    #   and re-pinned from the executed baseline after the oracle gate below read
+    #   bit-exact on every channel, the twenty new ones included (never before).
+    #   The compatibility proposal (loop_live 0, cycle_live 0, p_pump_direct 195,
+    #   eta_p_direct 0.5, eta_th_direct 0.333) reproduces the WI-044 pin's 106
+    #   channels bit-for-bit (evidence/compat_mode/diff_vs_pin.json). Nothing
+    #   tuned. Pre-WI-045 values in git history.
     anchors = [
-        ("total capital $", total, 14_442_862_261.866261),
-        ("LCOE $/MWh", values[CH["lcoe"]], 322.318439),
-        ("p_net MW", values[CH["p_net"]], 716.633806),
-        ("q_eng", values[CH["q_eng"]], 3.006952),
-        ("rec_frac", values[CH["rec_frac"]], 0.332563),
-        ("magnet %", magnet / total * 100, 37.395856),
-        ("CAS70 $/yr", values[CH["cas70"]], 193_529_567.738861),
+        ("total capital $", total, 14_955_212_350.385998),
+        ("LCOE $/MWh", values[CH["lcoe"]], 237.252800),
+        ("p_net MW", values[CH["p_net"]], 1012.364870),
+        ("q_eng", values[CH["q_eng"]], 3.925458),
+        ("rec_frac", values[CH["rec_frac"]], 0.254747),
+        ("magnet %", magnet / total * 100, 36.114713),
+        ("CAS70 $/yr", values[CH["cas70"]], 207_927_742.739444),
         ("CAS80 $/yr", values[CH["cas80"]], 746_174.847154),
-        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 316.141142),
+        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 232.724887),
     ]
 
     print("\n=== NINE ANCHORS (single-pass, graph rollup, no bridge) ===")
@@ -195,8 +225,10 @@ def _assert_generated_verdicts(outputs) -> None:
     print(
         "VERDICT PARITY: PASS -- "
         f"headline={report.headline}, assessed_entry_count={report.assessed_entry_count}, "
-        "ten satisfied (WI-043: burn_hold_ok added, the lower half of the "
-        "sustainment condition; nothing moved. WI-042: sustainment_ok and "
+        "thirteen satisfied (WI-045: three fences added -- the loop's pressure "
+        "and capacity, the cycle's fit domain; the design point moved as "
+        "predicted, the compatibility proposal reproduces the WI-044 pin. "
+        "WI-043: burn_hold_ok, nothing moved. WI-042: sustainment_ok and "
         "wall_load_ok flipped to satisfied by the sourced ash profile; "
         "disclosed, never tuned)"
     )
@@ -238,6 +270,25 @@ def _oracle_gate(values: dict[str, float], oracle: dict[str, float]) -> bool:
         "n_e_volav": values[CH["n_e_volav"]],
         "alpha_n_e_eff": values[CH["alpha_n_e_eff"]],
         "alpha_He_eff": values[CH["alpha_He_eff"]],
+        # WI-045 source-heat, loop and cycle channels (bit-exact vs the oracle,
+        # which derives them from the design's equations, not the modules)
+        "q_source": values[f"{P}source_heat__q_source"],
+        "loop_mdot": values[f"{P}primary_loop__mdot"],
+        "loop_mdot_loop": values[f"{P}primary_loop__mdot_loop"],
+        "loop_dp_loop": values[f"{P}primary_loop__dp_loop"],
+        "loop_r_comp": values[f"{P}primary_loop__r_comp"],
+        "loop_T_comp_in": values[f"{P}primary_loop__T_comp_in"],
+        "loop_w_fluid": values[f"{P}primary_loop__w_fluid"],
+        "loop_p_elec": values[f"{P}primary_loop__p_elec"],
+        "loop_q_ihx": values[f"{P}primary_loop__q_ihx"],
+        "loop_capacity_margin": values[f"{P}primary_loop__capacity_margin"],
+        "loop_p_pump_total": values[f"{P}primary_loop__p_pump_total"],
+        "loop_q_recovered_total": values[f"{P}primary_loop__q_recovered_total"],
+        "cycle_T2_C": values[f"{P}cycle__T2_C"],
+        "cycle_eta_fit": values[f"{P}cycle__eta_fit"],
+        "cycle_eta_th": values[f"{P}cycle__eta_th"],
+        "cycle_domain_product": values[f"{P}cycle__domain_product"],
+        "p_th": values[CH["p_th"]] if "p_th" in CH else values[f"{P}pb__p_th"],
     }
 
     print("\n=== BIT-EXACT vs ORACLE (rel<1e-9) ===")
