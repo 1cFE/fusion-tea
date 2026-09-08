@@ -64,6 +64,9 @@ for p in both:
 out["flips_by_R_a"] = {f"R{k[0]}_a{k[1]}": dict(c) for k, c in sorted(by_Ra.items(), key=lambda kv: (float(kv[0][0]), float(kv[0][1])))}
 out["feasible_transitions_both"] = dict(Counter(p["feasible_transition"] for p in both))
 out["feasible_transitions_per_arm"] = {a: dict(Counter(p["feasible_transition"] for p in both if p["arm_id"] == a)) for a in arms}
+out["violated_per_constraint_per_arm"] = {v: {a: sum(p[v] == "violated" for p in pts if p["arm_id"] == a) for a in arms} for v in VERD}
+out["violated_alone_per_arm"] = {v: {a: sum(p[v] == "violated" and all(p[w] == "satisfied" for w in VERD if w != v) for p in pts if p["arm_id"] == a) for a in arms} for v in VERD}
+out["flips_per_arm_per_verdict"] = {v: {a: sum(1 for p in both if p["arm_id"] == a and p[f"flip_{v}"] not in ("", "None")) for a in arms} for v in ("peak_field_ok", "wp_stress_ok")}
 out["violated_per_constraint_here_all"] = {v: sum(p[v] == "violated" for p in pts) for v in VERD}
 out["violated_alone_here_all"] = {v: sum(p[v] == "violated" and all(p[w] == "satisfied" for w in VERD if w != v) for p in pts) for v in VERD}
 
@@ -106,7 +109,7 @@ for lvl in ("100.0", "220.0"):
 tr = [p for p in pts if p["arm_id"] == "arm-transect-a"]
 out["transect_a"] = {}
 for (Rv, lvl) in sorted({(p["R"], p["p_wallplug_heat_MW"]) for p in tr}, key=lambda t: (float(t[0]), float(t[1]))):
-    col = [p for p in pts if p["p_wallplug_heat_MW"] == lvl and p["R"] == Rv and ((Rv == "12.7" and f(p["I_coil_A"]) == 15.4e6 and f(p["T_i0_keV"]) == 14.63 and abs(f(p["n_e0"]) - 5.06e20) < 1e12) or (Rv == "15.7" and f(p["I_coil_A"]) == 13.0e6 and f(p["T_i0_keV"]) == 13.0 and abs(f(p["n_e0"]) - 5.06e20) < 1e12)) and f(p["eta_source_heat"]) == 0.5 and f(p["tau_ratio_ash"]) == 8.0]
+    col = [p for p in pts if p["p_wallplug_heat_MW"] == lvl and p["R"] == Rv and ((Rv == "12.7" and f(p["I_coil_A"]) == 15.4e6 and f(p["T_i0_keV"]) == 14.63 and abs(f(p["n_e0"]) - 5.06e20) < 1e12) or (Rv in ("15.7", "14.2") and f(p["I_coil_A"]) == 13.0e6 and f(p["T_i0_keV"]) == 13.0 and abs(f(p["n_e0"]) - 5.06e20) < 1e12)) and f(p["eta_source_heat"]) == 0.5 and f(p["tau_ratio_ash"]) == 8.0]
     out["transect_a"][f"R{Rv}_{lvl}MW"] = [{"a": p["a"], "arm": p["arm_id"], "lcoe": round(f(p["lcoe"]), 3), "committed_lcoe": (round(f(p["committed_lcoe"]), 3) if f(p["committed_lcoe"]) is not None else None), "B_peak": round(f(p["B_peak"]), 3), "m_casing_t": round(f(p["m_casing_t"]), 2), "W_mag_GJ": round(f(p["W_mag_GJ"]), 1), "A": round(f(p["aspect_ratio"]), 2), "feasible": b(p["feasible"]), "violated": [v for v in VERD if p[v] == "violated"]} for p in sorted(col, key=lambda p: f(p["a"]))]
 
 # --- the design column and the shadow ---

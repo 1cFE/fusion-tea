@@ -685,6 +685,12 @@ def export(cases, arms, oracle, path):
         row["committed_excluded"] = ck in COMMITTED_EXCLUDED
         TEN = ("beta_ok", "burn_hold_ok", "cond_strain_ok", "net_positive", "peak_field_ok", "recirc_ok",
                "sustainment_ok", "tbr_ok", "wall_load_ok", "wp_stress_ok")
+        # Critique F5: every committed non-magnet, non-cost-rollup channel; the closed list of channels EXPECTED
+        # to move is the complement -- B_peak, sigma_wp, eps_cond, magnet_capital, total_capital,
+        # overnight_capital, lcoe, lcoe_1cfe (through the capital chain) and the five new channels.
+        PHYS = ("p_fus", "wall_load", "wall_load_peak", "wall_peak_calibration", "beta", "B_axis", "cas72",
+                "replacement_cost_per_event", "fuel", "p_cryo", "vol_cold", "special_materials",
+                "heating_capital", "plasma_volume", "magnet_capital_1cfe_form")
         for name in PHYS:
             row[f"committed_{name}"] = _as_float(com[name]) if com and name in com else None
         for name, src_, conv in (("committed_lcoe", "lcoe", _as_float), ("committed_lcoe_1cfe", "lcoe_1cfe", _as_float),
@@ -716,12 +722,6 @@ def export(cases, arms, oracle, path):
             return (abs(float(a_) - float(b_)) / max(abs(float(b_)), 1e-300)) if (a_ is not None and b_ is not None and b_ != "") else None
         # Physics identity (WI-044 moved no physics number): over the non-magnet channels the committed
         # row carries; `max_physics_reldev_vs_committed` names its channel.
-        # Critique F5: every committed non-magnet, non-cost-rollup channel; the closed list of channels EXPECTED
-        # to move is the complement -- B_peak, sigma_wp, eps_cond, magnet_capital, total_capital,
-        # overnight_capital, lcoe, lcoe_1cfe (through the capital chain) and the five new channels.
-        PHYS = ("p_fus", "wall_load", "wall_load_peak", "wall_peak_calibration", "beta", "B_axis", "cas72",
-                "replacement_cost_per_event", "fuel", "p_cryo", "vol_cold", "special_materials",
-                "heating_capital", "plasma_volume", "magnet_capital_1cfe_form")
         worst_name, worst_dev = None, None
         if com:
             for name in PHYS:
@@ -846,6 +846,43 @@ def export_oracle_operands(cases, arms, oracle, path):
     return path
 
 
+def run_export_only(record_dir: Path = HERE):
+    """`phase="export"`: reopen the finished store and re-run the exports only. Used once, after the
+    execute phase's export raised on a name-ordering slip in `export()` (2026-09-08, recorded in
+    record.md section 11): every point had executed and the store was complete; no point goes through
+    the sealed package here and the store is not written."""
+    global EXPECTED_CALIBRATION, COMMITTED, COMMITTED_EXCLUDED, PREDICTION
+    import pickle
+    from simkit.study.query import StudyQuery
+    from simkit.study.store import StudyStore
+    record_dir = Path(record_dir)
+    COMMITTED, COMMITTED_EXCLUDED = load_committed()
+    PREDICTION = load_prediction()
+    tagged = proposals(); arms = _arms_by_id(tagged)
+    base = json.loads((record_dir / "results" / "baseline_result.json").read_text())["channels"]
+    EXPECTED_CALIBRATION = float(base[CHANNELS["wall_peak_calibration"]])
+    with (record_dir / "results" / "_work" / "screen.pkl").open("rb") as handle:
+        cached = pickle.load(handle)
+    assert cached["study_id"] == STUDY_ID and cached["proposed"] == len(tagged) and cached["stamp"] == _cache_stamp(record_dir)
+    evaluable = cached["evaluable"]
+    db = record_dir.parent / "_work" / STUDY_ID / f"{STUDY_ID}.db"
+    store = StudyStore(db)
+    try:
+        cases = StudyQuery(store, route.PACKAGE_DIR.resolve()).cases()
+    finally:
+        store.close()
+    completed = route._completed(cases, STUDY_ID)
+    executed_keys = {_key(case.inputs) for case in completed}
+    screened_keys = {_key(c) for _, c, _, _, _ in evaluable}
+    if executed_keys != screened_keys or len(completed) != len(evaluable):
+        raise route.RouteError(f"executed set differs from the screened set: {len(completed)} executed, {len(evaluable)} screened")
+    by_key = {_key(c): ops for _, c, _, ops, _ in evaluable}
+    oracle = {case.candidate_id: by_key[_key(case.inputs)] for case in completed}
+    return {"points": export(completed, arms, oracle, record_dir / "results" / "points.csv"),
+            "oracle_operands": export_oracle_operands(completed, arms, oracle, record_dir / "results" / "oracle_operands.csv"),
+            "store": db, "counts": {"evaluated": len(completed), "excluded": len(cached["unevaluable"])}}
+
+
 def _cache_stamp(record_dir):
     """What the screen cache is bound to: the oracle's source digest and the sealed package identity
     the route deposited at step 5."""
@@ -930,4 +967,4 @@ def run(record_dir: Path = HERE, phase: str = "all"):
 
 if __name__ == "__main__":
     phase = sys.argv[1] if len(sys.argv) > 1 else "all"
-    print(run(phase=phase))
+    print(run_export_only() if phase == "export" else run(phase=phase))
