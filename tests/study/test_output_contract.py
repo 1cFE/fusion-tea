@@ -264,7 +264,11 @@ def test_bounds_is_authoritative_and_axis_varying():
         ]
         assert unreachable == group["constraints_unreachable"]
     by_axis = {g["axis"]: g["bounds"] for g in doc["groups"]}
-    assert by_axis["R"] != by_axis["I_coil"]  # bounds vary per axis, not a constant block
+    # bounds vary per axis, not a constant block. WI-044 (2026-09-07): R and I_coil
+    # now reach the same nine constraints (the radial build's coil-centre radius
+    # feeds the peak field; the trace is module-level), so their bounds blocks are
+    # equal; a geometry axis against an economic one still differs.
+    assert by_axis["R"] != by_axis["availability"]
 
 
 def test_lists_are_sorted_by_a_stated_key():

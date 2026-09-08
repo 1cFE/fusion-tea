@@ -128,7 +128,7 @@ def test_the_computed_quantity_message_names_the_producing_module(real_copy, tmp
 def test_the_corrupt_line_carries_file_line_and_key_path(real_copy, tmp_path):
     corrupt_pipeline_line(real_copy)
     _, _, err = real_copy.run(out=tmp_path / "c.json")
-    assert "pipeline.yaml:103" in err  # the rb R_in line; :84 -> :87 when WI-036 added the winding-pack sizing modules; :87 -> :103 when WI-041 added the wall-load average, peak-calibration and peak modules above it
+    assert "pipeline.yaml:83" in err  # the rb R_in line; :84 -> :87 when WI-036 added the winding-pack sizing modules; :87 -> :103 when WI-041 added the wall-load average, peak-calibration and peak modules above it; :103 -> :83 when WI-044 (2026-09-07) made the peak field read the radial build, so the regenerated pipeline orders rb earlier
     assert "key path modules.stellarator_09__stellaris__rb.inputs.R_in" in err
     assert "floatonly_one_token" in err
 

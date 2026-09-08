@@ -181,25 +181,32 @@ def test_the_declared_tie_extends_reach_through_the_field(report):
     Field', so declaring the physical-identity tie ADDS the field-side reach —
     beta_ok, peak_field_ok, wp_stress_ok — that plain R (plant geometry only)
     cannot see. Before WI-035 the tie changed nothing; that this test had to
-    flip is the design response the rubric row asked for."""
+    flip is the design response the rubric row asked for.
+
+    WI-044 (goal minor-radius round 1, 2026-09-07) flipped it again, at the
+    REACHABILITY level only: 'Conductor Peak Field' now takes the radial
+    build's coil-centre radius (r_coil_centre), the radial build takes plain R,
+    and the trace is module-level (the report's own not_derivable statement:
+    intra-module operand dependency is not resolved), so every rb output --
+    r_coil_centre included -- counts as tainted when R moves, and plain R
+    "reaches" the three magnet fences and magnet_capital exactly as the tie
+    does. The executed response still differs: bore_factor, W_mag and the
+    winding length read magnet__R0, not plant R, so plain R moves none of
+    them (WI-044 evidence/offdesign_points, design D1). The tie's exclusive
+    reach is therefore empty on the report; what the tie adds is now only
+    visible in executed channels, not in reachability. Restated from the
+    report, never patched; the tie-exclusive sets are asserted empty so a
+    future package that separates them again has to say so here."""
     plain = group_by_axis(report, "R")
     tied = group_by_axis(report, "R+tie")
     plain_reach = {c["source_local_identity"] for c in plain["constraints_reachable"]}
     tied_reach = {c["source_local_identity"] for c in tied["constraints_reachable"]}
-    assert plain_reach < tied_reach
-    # WI-037: plain R now reaches beta_ok on its own (R feeds tau_E through the
-    # sustainment chain, the converged ash moves the fuel peaks, and beta reads
-    # the computed fuel), so beta_ok left the tie-exclusive set; the tie still
-    # adds the two field-side fences only R0 can see.
-    # WI-036 adds cond_strain_ok to the tie-exclusive set for the same reason as
-    # wp_stress_ok: both hang off B_peak, which only R0 feeds.
-    assert tied_reach - plain_reach == {"peak_field_ok", "wp_stress_ok", "cond_strain_ok"}
-    # WI-036: the objective sets are equal again EXCEPT magnet_capital, which is
-    # now tie-exclusive. c_coil = k_coil * R0 means the winding length -- and so
-    # the ampere-metre conductor cost -- responds to the major radius, and only
-    # the tie carries R0. Under WI-037 the two sets were equal and the tie's
-    # added value was purely fence-side; that is no longer the whole story.
-    assert set(tied["objectives_reachable"]) - set(plain["objectives_reachable"]) == {"magnet_capital"}
+    assert plain_reach == tied_reach
+    assert tied_reach - plain_reach == set()
+    assert {"peak_field_ok", "wp_stress_ok", "cond_strain_ok"} <= tied_reach
+    # WI-044: magnet_capital is reachable from plain R through the same
+    # module-level path (rb -> stored energy -> casing mass -> structure cost).
+    assert set(tied["objectives_reachable"]) - set(plain["objectives_reachable"]) == set()
     assert "beta" in tied["objectives_reachable"]
     # WI-036 closed the disclosed WI-035 limitation recorded here: the winding
     # length was the held c_coil, so the decomposed rollup could not respond to R.

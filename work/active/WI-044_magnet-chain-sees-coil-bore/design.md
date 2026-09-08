@@ -1,5 +1,5 @@
 ---
-Status: draft
+Status: approved
 Created: 2026-09-07
 Updated: 2026-09-07
 Related Artifacts:
