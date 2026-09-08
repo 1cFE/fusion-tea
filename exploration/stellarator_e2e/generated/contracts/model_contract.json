@@ -752,11 +752,6 @@
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__fuel_calc__annual_fuel",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
       "channel_name": "stellarator_09__stellaris__wall_load_calc__wall_load",
       "field_name": "root",
       "python_type": "float"
@@ -1047,16 +1042,6 @@
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__cas80_calc__levelized",
-      "field_name": "levelized",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__cas80_calc__crf",
-      "field_name": "crf",
-      "python_type": "float"
-    },
-    {
       "channel_name": "stellarator_09__stellaris__wall_peak_calc__wall_load_peak",
       "field_name": "root",
       "python_type": "float"
@@ -1092,8 +1077,73 @@
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__cas72_calc__cost",
+      "channel_name": "stellarator_09__stellaris__calendar__availability",
+      "field_name": "availability",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__calendar__coil_life_margin_fpy",
+      "field_name": "coil_life_margin_fpy",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__calendar__replacement_pv",
+      "field_name": "replacement_pv",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__calendar__planned_downtime_yr",
+      "field_name": "planned_downtime_yr",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__calendar__terminal_downtime_yr",
+      "field_name": "terminal_downtime_yr",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__calendar__unplanned_downtime_yr",
+      "field_name": "unplanned_downtime_yr",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__calendar__productive_fpy",
+      "field_name": "productive_fpy",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__calendar__dated_energy_ratio",
+      "field_name": "dated_energy_ratio",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__calendar__cas72_annual",
+      "field_name": "cas72_annual",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__calendar__n_replacements",
+      "field_name": "n_replacements",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__calendar__physical_life_fpy",
+      "field_name": "physical_life_fpy",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel_calc__annual_fuel",
       "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cas80_calc__levelized",
+      "field_name": "levelized",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__cas80_calc__crf",
+      "field_name": "crf",
       "python_type": "float"
     },
     {
@@ -1790,11 +1840,11 @@
       "qualified_name": "stellarator_09__stellaris__aux_per_mw"
     },
     {
-      "default_value": 0.85,
+      "default_value": 0.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__availability"
+      "qualified_name": "stellarator_09__stellaris__availability_direct"
     },
     {
       "default_value": 0.7823,
@@ -1886,6 +1936,13 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__cas28_capital"
+    },
+    {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__coil_life_fpy"
     },
     {
       "default_value": 0.3,
@@ -2525,6 +2582,13 @@
       "qualified_name": "stellarator_09__stellaris__other_rpe_base"
     },
     {
+      "default_value": 0.5833333333333334,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__outage_years"
+    },
+    {
       "default_value": 41200000.0,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -2756,6 +2820,13 @@
       "qualified_name": "stellarator_09__stellaris__turbine__cost_per_mw"
     },
     {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__unplanned_fraction"
+    },
+    {
       "default_value": 0.1,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -2847,5 +2918,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "a331cd82e48f19d5ce2c684188abce9b8da07ab408576c7164880c9d44d4bc92"
+  "semantic_fingerprint": "e6a7baa5a822b47b8457023e1d2ebd88132bfd25ba826b4c02102fab21212a89"
 }

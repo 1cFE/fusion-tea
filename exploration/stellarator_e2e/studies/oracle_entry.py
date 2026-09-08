@@ -52,7 +52,13 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}R": "R",
     f"{P}magnet__R0": "magnet_R0",
     f"{P}a": "a",
-    f"{P}availability": "availability",
+    # WI-046 (goal plant-closure round 1, 2026-09-08): availability retired as an entry
+    # key -- the lifecycle calendar produces it. The four calendar levers replace it;
+    # availability_direct > 0 selects the held mode (the compatibility bridge).
+    f"{P}availability_direct": "availability_direct",
+    f"{P}outage_years": "outage_years",
+    f"{P}unplanned_fraction": "unplanned_fraction",
+    f"{P}coil_life_fpy": "coil_life_fpy",
     # WI-030/WI-035: the magnet levers and the beta referents. magnet__B retired
     # (WI-035 inversion — the field is a channel now); the coil-set current and
     # its facts are the entry keys.
@@ -279,7 +285,19 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "cycle_margin_low": f"{P}cycle__margin_low",
     "cycle_margin_high": f"{P}cycle__margin_high",
     "cycle_domain_product": f"{P}cycle__domain_product",
-    "cas72_annual": f"{P}cas72_calc__cost",
+    # WI-046: CAS72 is the lifecycle calendar's output (the retired cas72_calc__cost
+    # channel is gone); the other ten calendar channels beside it.
+    "cas72_annual": f"{P}calendar__cas72_annual",
+    "calendar_availability": f"{P}calendar__availability",
+    "calendar_coil_life_margin_fpy": f"{P}calendar__coil_life_margin_fpy",
+    "calendar_replacement_pv": f"{P}calendar__replacement_pv",
+    "calendar_planned_downtime_yr": f"{P}calendar__planned_downtime_yr",
+    "calendar_terminal_downtime_yr": f"{P}calendar__terminal_downtime_yr",
+    "calendar_unplanned_downtime_yr": f"{P}calendar__unplanned_downtime_yr",
+    "calendar_productive_fpy": f"{P}calendar__productive_fpy",
+    "calendar_dated_energy_ratio": f"{P}calendar__dated_energy_ratio",
+    "calendar_n_replacements": f"{P}calendar__n_replacements",
+    "calendar_physical_life_fpy": f"{P}calendar__physical_life_fpy",
     "cas90_1cfe": f"{P}cas90_1cfe_calc__cas90",
     "lcoe_1cfe": f"{P}lcoe_1cfe_calc__lcoe",
 }

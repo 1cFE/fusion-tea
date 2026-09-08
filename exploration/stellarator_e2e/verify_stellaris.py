@@ -339,7 +339,13 @@ IN = dict(
     # rollup rates / financing
     contingency_rate=0.10, indirect_fraction=0.20,
     reference_construction_time=6.0, construction_years=8.0,
-    availability=0.85, discount_rate=0.07,
+    # WI-046 (goal plant-closure round 1, 2026-09-08): availability retired as an input --
+    # the lifecycle calendar produces it. availability_direct 0.0 = the live calendar;
+    # a value in (0, 1] selects the retired periodic chain at that availability (the
+    # compatibility bridge: 0.85 reproduces every pre-WI-046 channel to the bit).
+    availability_direct=0.0, outage_years=0.5833333333333334, unplanned_fraction=0.0,
+    coil_life_fpy=10.0,
+    discount_rate=0.07,
     operational_years=30.0,
     # WI-028 CAS22 tail + CAS40 + CAS50 + CAS28 bases ($; M$ x 1e6) and their
     # account-structural refs/exponents (instance bindings + library defaults).
@@ -395,6 +401,95 @@ def _oracle_levelized_replacement_cost(cost_per_event, q_n, fluence_limit,
     disc_pow_n = (1.0 + interest_rate) ** operational_years
     crf = interest_rate * disc_pow_n / (disc_pow_n - 1.0)
     return crf * pv
+
+
+def _oracle_lifecycle_calendar(cost_per_event, q_n, fluence_limit, interest_rate,
+                               operational_years, outage_years, unplanned_fraction,
+                               coil_life_fpy, availability_direct):
+    """ORACLE DERIVATION of 'Lifecycle Calendar' (WI-046, design D1) -- the CLOSED FORM,
+    independent of the handwritten impl's interval walk (never an import of it).
+
+    Live mode (availability_direct == 0): the event dates are t_k = k*L/b + (k-1)*d for
+    every k whose restart t_k + d falls strictly before N (L = fluence/q_n, b = 1 - u);
+    the productive time, downtimes, PV, CAS72, coil margin and the year-binned energy
+    ratio are derived FROM THE DATES. Held mode (0 < availability_direct <= 1): the
+    retired periodic chain through _oracle_levelized_replacement_cost, with the design's
+    D2 readings for the non-cost outputs. Invalid inputs raise, as the impl does.
+    """
+    N, d, u, C, i = (operational_years, outage_years, unplanned_fraction,
+                     cost_per_event, interest_rate)
+    if not math.isfinite(availability_direct) or availability_direct < 0.0 or availability_direct > 1.0:
+        raise ValueError(f"oracle calendar: availability_direct {availability_direct!r} outside [0, 1]")
+    if availability_direct > 0.0:
+        A = availability_direct
+        cost = _oracle_levelized_replacement_cost(
+            cost_per_event=C, q_n=q_n, fluence_limit=fluence_limit, availability=A,
+            interest_rate=i, operational_years=N)
+        core_lifetime_fpy = min(max(fluence_limit / max(q_n, 1e-6), 0.5), N * A)
+        core_lifetime_cal = core_lifetime_fpy / A
+        n_rep = max(0.0, float(math.ceil(N / core_lifetime_cal)) - 1.0)
+        s = (1.0 + i) ** (-core_lifetime_cal)
+        pv = C * s * (1.0 - s ** n_rep) / (1.0 - s)
+        F = N * A
+        return dict(availability=A, coil_life_margin_fpy=coil_life_fpy - F, replacement_pv=pv,
+                    planned_downtime_yr=0.0, terminal_downtime_yr=0.0,
+                    unplanned_downtime_yr=N - F, productive_fpy=F, dated_energy_ratio=1.0,
+                    cas72_annual=cost, n_replacements=n_rep, physical_life_fpy=core_lifetime_fpy,
+                    events=[k * core_lifetime_cal for k in range(1, int(n_rep) + 1)])
+    for name, v in dict(q_n=q_n, fluence_limit=fluence_limit, N=N, d=d, u=u, C=C, i=i,
+                        coil_life=coil_life_fpy).items():
+        if not math.isfinite(v):
+            raise ValueError(f"oracle calendar: non-finite input {name}={v!r}")
+    if (N <= 0.0 or fluence_limit <= 0.0 or q_n < 0.0 or d < 0.0 or C < 0.0
+            or not (0.0 <= u < 1.0) or i <= -1.0):
+        raise ValueError("oracle calendar: input outside domain")
+    b = 1.0 - u
+    L = math.inf if q_n == 0.0 else fluence_limit / q_n
+    events = []
+    k = 1
+    while True:
+        t_k = k * L / b + (k - 1) * d
+        if t_k >= N or t_k + d >= N:
+            break
+        events.append(t_k)
+        k += 1
+    K = len(events)
+    t_next = (K + 1) * L / b + K * d          # the next limit's date
+    # online segments (the calendar's production intervals), from the dates
+    segments = []
+    start = 0.0
+    for t_k in events:
+        segments.append((start, t_k))
+        start = t_k + d
+    if t_next < N:                             # limit reached, restart not strictly before N
+        segments.append((start, t_next))
+        online = (K + 1) * L / b
+        T_term = N - t_next
+    else:                                      # the horizon ends mid-run
+        segments.append((start, N))
+        online = N - K * d
+        T_term = 0.0
+    F = b * online
+    T_p = K * d
+    T_u = u * online
+    pv = sum(C / (1.0 + i) ** t_k for t_k in events)
+    crf = (1.0 / N) if i == 0.0 else (i * (1.0 + i) ** N / ((1.0 + i) ** N - 1.0))
+    # the year-binned energy ratio (design D3): year y covers (y-1, y]
+    if F == 0.0:
+        raise ValueError("oracle calendar: zero productive time -- energy undefined")
+    n_years = int(math.ceil(N - 1e-12))
+    E_avg = F / N
+    num = den = 0.0
+    for y in range(1, n_years + 1):
+        y0, y1 = float(y - 1), min(float(y), N)
+        on_y = sum(max(0.0, min(s1, y1) - max(s0, y0)) for s0, s1 in segments)
+        disc = (1.0 + i) ** (-y)
+        num += b * on_y * disc
+        den += E_avg * (y1 - y0) * disc
+    return dict(availability=F / N, coil_life_margin_fpy=coil_life_fpy - F, replacement_pv=pv,
+                planned_downtime_yr=T_p, terminal_downtime_yr=T_term, unplanned_downtime_yr=T_u,
+                productive_fpy=F, dated_energy_ratio=num / den, cas72_annual=crf * pv,
+                n_replacements=float(K), physical_life_fpy=L, events=events)
 
 
 def compute():
@@ -664,14 +759,6 @@ def compute():
 
     cas71_annual = _levelized_annual_cost(annual_om_unlevelized)
 
-    # CAS80 raw annual DT fuel (costs.py:476-544, DT branch), then levelized.
-    annual_fuel_raw = (n * p_fus * (3600.0 * 8760.0) * 1.0e6 * p["availability"]
-                       * p["fuel_cost_per_rxn"]
-                       / (p["fuel_q_eff"] * p["mev_to_joules"]))
-    burn_correction = (1.0 + (1.0 - p["burn_fraction"]) / p["burn_fraction"]
-                       * (1.0 - p["fuel_recovery"]))
-    annual_fuel = annual_fuel_raw * burn_correction
-    cas80_annual = _levelized_annual_cost(annual_fuel)
 
     # --- Neutron wall load: average, source-anchored calibration, peak (WI-041) ---
     # Written from the WI-041 design's table, not transcribed from the generated
@@ -688,12 +775,25 @@ def compute():
     wall_load_peak = wall_load * wall_peak_calibration
 
     replacement_cost_per_event = (blanket + divertor) * n
-    cas72_annual = _oracle_levelized_replacement_cost(
-        cost_per_event=replacement_cost_per_event,
-        q_n=wall_load_peak,
-        fluence_limit=p["fluence_limit"], availability=p["availability"],
-        interest_rate=i_rate, operational_years=n_life,
+    # WI-046: one lifecycle calendar produces availability and CAS72 (the closed form
+    # above); the periodic chain survives as its held mode.
+    cal = _oracle_lifecycle_calendar(
+        cost_per_event=replacement_cost_per_event, q_n=wall_load_peak,
+        fluence_limit=p["fluence_limit"], interest_rate=i_rate, operational_years=n_life,
+        outage_years=p["outage_years"], unplanned_fraction=p["unplanned_fraction"],
+        coil_life_fpy=p["coil_life_fpy"], availability_direct=p["availability_direct"],
     )
+    availability = cal["availability"]
+    cas72_annual = cal["cas72_annual"]
+    # (WI-046: the fuel block moved below the calendar -- it reads the calendar's availability)
+    # CAS80 raw annual DT fuel (costs.py:476-544, DT branch), then levelized.
+    annual_fuel_raw = (n * p_fus * (3600.0 * 8760.0) * 1.0e6 * availability
+                       * p["fuel_cost_per_rxn"]
+                       / (p["fuel_q_eff"] * p["mev_to_joules"]))
+    burn_correction = (1.0 + (1.0 - p["burn_fraction"]) / p["burn_fraction"]
+                       * (1.0 - p["fuel_recovery"]))
+    annual_fuel = annual_fuel_raw * burn_correction
+    cas80_annual = _levelized_annual_cost(annual_fuel)
     cas70_annual = cas71_annual + cas72_annual
     annual_om = cas70_annual + cas80_annual   # the DCF numerator (WI-029)
 
@@ -704,7 +804,7 @@ def compute():
     crf = d * discount_pow_n / (discount_pow_n - 1.0)
     idc_factor = (1.0 + d) ** (p["construction_years"] / 2.0)
     annual_capital = total_capital * idc_factor * crf
-    annual_energy_mwh = 8760.0 * p_net * p["availability"]
+    annual_energy_mwh = 8760.0 * p_net * availability
     lcoe = (annual_capital + annual_om) / annual_energy_mwh
 
     # --- WI-029 Option (ii): 1cfe-form comparison channels ------------------
@@ -714,7 +814,7 @@ def compute():
     crf_71 = i_rate * disc_pow_n_71 / (disc_pow_n_71 - 1.0)
     cas90_1cfe = crf_71 * (overnight_capital + idc_capital)
     lcoe_1cfe = ((cas90_1cfe + cas70_annual + cas80_annual)
-                 / (8760.0 * p_net * n * p["availability"]))
+                 / (8760.0 * p_net * n * availability))
 
     # --- Volume-averaged thermal beta and conductor peak field (WI-030) ---
     # WI-042: beta reads the sustainment chain's one volume-averaged pressure
@@ -782,6 +882,18 @@ def compute():
         # WI-029 annual-cost side + Option-(ii) comparison channels ($/yr, $/MWh)
         annual_om_unlevelized=annual_om_unlevelized, annual_fuel=annual_fuel,
         cas71_annual=cas71_annual, cas72_annual=cas72_annual,
+        # WI-046 lifecycle calendar channels (the closed-form derivation)
+        calendar_availability=cal["availability"],
+        calendar_coil_life_margin_fpy=cal["coil_life_margin_fpy"],
+        calendar_replacement_pv=cal["replacement_pv"],
+        calendar_planned_downtime_yr=cal["planned_downtime_yr"],
+        calendar_terminal_downtime_yr=cal["terminal_downtime_yr"],
+        calendar_unplanned_downtime_yr=cal["unplanned_downtime_yr"],
+        calendar_productive_fpy=cal["productive_fpy"],
+        calendar_dated_energy_ratio=cal["dated_energy_ratio"],
+        calendar_cas72_annual=cal["cas72_annual"],
+        calendar_n_replacements=cal["n_replacements"],
+        calendar_physical_life_fpy=cal["physical_life_fpy"],
         cas70_annual=cas70_annual, cas80_annual=cas80_annual,
         cas90_1cfe=cas90_1cfe, lcoe_1cfe=lcoe_1cfe,
     )

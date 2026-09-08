@@ -2,11 +2,11 @@
  "schema_version": "study-axis-declaration/v1",
  "groups": [
   {
-   "axis": "availability",
-   "note": "Plant capacity factor. One plant-level entry point since the model migration (the four consuming calcs bind it by the `_in` convention); it reaches replacement costing, fuel throughput, and the two LCOE variants.",
+   "axis": "availability_direct",
+   "note": "The lifecycle calendar's held-mode switch (WI-046, 2026-09-08): 0 = the live calendar produces availability; a value in (0, 1] selects the retired periodic chain at that availability. One plant-level entry point; every nonzero value reaches replacement costing, fuel throughput and the two LCOE variants through the held mode -- the axis that used to be `availability`, renamed, its known answer re-derived.",
    "keys": [
     {
-     "key": "stellarator_09__stellaris__availability",
+     "key": "stellarator_09__stellaris__availability_direct",
      "provenance": "fan_out"
     }
    ]

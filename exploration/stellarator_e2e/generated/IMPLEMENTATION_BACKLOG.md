@@ -29,7 +29,7 @@ Complete all stages in order for a production-ready system.
 | [ ] | Plasma_Sustainment | `run_plasma_sustainment` | `root-0/analyses/mfe_plasma_sustainment.sysml:4` | High |
 | [ ] | DT_Fusion_Power | `run_dt_fusion_power` | `root-0/analyses/mfe_plasma_scaling.sysml:147` | High |
 | [ ] | Power_Cycle_Efficiency | `run_power_cycle_efficiency` | `root-0/analyses/mfe_power_cycle.sysml:4` | High |
-| [ ] | Levelized_Replacement_Cost | `run_levelized_replacement_cost` | `root-0/analyses/mfe_account_costs.sysml:796` | High |
+| [ ] | Lifecycle_Calendar | `run_lifecycle_calendar` | `root-0/analyses/mfe_lifecycle.sysml:4` | High |
 
 **11 computed attribute module(s) auto-implemented** (not included in manual count above).
 

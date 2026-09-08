@@ -1,0 +1,52 @@
+{
+ "channels_compared": 126,
+ "channels_moved": 0,
+ "diff": {},
+ "channels_gone": [
+  "stellarator_09__stellaris__cas72_calc__cost"
+ ],
+ "new_channels": {
+  "stellarator_09__stellaris__calendar__availability": 0.85,
+  "stellarator_09__stellaris__calendar__coil_life_margin_fpy": -15.5,
+  "stellarator_09__stellaris__calendar__replacement_pv": 1593782236.8175108,
+  "stellarator_09__stellaris__calendar__planned_downtime_yr": 0.0,
+  "stellarator_09__stellaris__calendar__terminal_downtime_yr": 0.0,
+  "stellarator_09__stellaris__calendar__unplanned_downtime_yr": 4.5,
+  "stellarator_09__stellaris__calendar__productive_fpy": 25.5,
+  "stellarator_09__stellaris__calendar__dated_energy_ratio": 1.0,
+  "stellarator_09__stellaris__calendar__cas72_annual": 128437178.4450173,
+  "stellarator_09__stellaris__calendar__n_replacements": 5.0,
+  "stellarator_09__stellaris__calendar__physical_life_fpy": 4.5239260339489915
+ },
+ "lcoe_compat": 237.2528002420958,
+ "verdicts_before": {
+  "beta_ok": "satisfied",
+  "burn_hold_ok": "satisfied",
+  "cond_strain_ok": "satisfied",
+  "cycle_domain_ok": "satisfied",
+  "loop_capacity_ok": "satisfied",
+  "loop_pressure_ok": "satisfied",
+  "net_positive": "satisfied",
+  "peak_field_ok": "satisfied",
+  "recirc_ok": "satisfied",
+  "sustainment_ok": "satisfied",
+  "tbr_ok": "satisfied",
+  "wall_load_ok": "satisfied",
+  "wp_stress_ok": "satisfied"
+ },
+ "case_verdicts": {
+  "stellarator_09__stellaris__beta_ok__82b78aad420730d5": "satisfied",
+  "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": "satisfied",
+  "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": "satisfied",
+  "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": "satisfied",
+  "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": "satisfied",
+  "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": "satisfied",
+  "stellarator_09__stellaris__net_positive__484521d56c02667a": "satisfied",
+  "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": "satisfied",
+  "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": "satisfied",
+  "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": "satisfied",
+  "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": "satisfied",
+  "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": "satisfied",
+  "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": "satisfied"
+ }
+}

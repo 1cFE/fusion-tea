@@ -15,16 +15,20 @@ import pytest
 from scripts.study import manifest
 from tests.study.conftest import DATA_DIR, run_tool
 
-CASES = ["availability", "interest_rate", "R", "R+tie", "a", "I_coil"]
+# WI-046 (goal plant-closure round 1, 2026-09-08): the `availability` axis is renamed
+# `availability_direct` -- the lifecycle calendar produces availability; the lever is its
+# held-mode switch (design D5). The known answer is re-derived, its no-response claim kept.
+CASES = ["availability_direct", "interest_rate", "R", "R+tie", "a", "I_coil"]
 
 EXPECTED_SEMANTIC_FINGERPRINT = (
-    # WI-045 the primary loop and the temperature-compatible cycle (goal
-    # plant-closure round 1, 2026-09-08); was 39e931fa... at WI-044 (the magnet
+    # WI-046 the lifecycle calendar (goal plant-closure round 1, 2026-09-08); was
+    # a331cd82... at WI-045 (the primary loop and the temperature-compatible cycle,
+    # 2026-09-08), 39e931fa... at WI-044 (the magnet
     # chain sees the coil bore, 2026-09-07), baab7e4c... at WI-043 (two-sided sustainment condition,
     # 2026-09-07), c37fb58a... at WI-042 (sourced helium-ash profile, 2026-09-05),
     # d468f3b6... at WI-041 (source-anchored wall-load fence, 2026-09-04) and
     # 48731d15... at WI-039 (heating power chain, 2026-09-03)
-    "a331cd82e48f19d5ce2c684188abce9b8da07ab408576c7164880c9d44d4bc92"
+    "e6a7baa5a822b47b8457023e1d2ebd88132bfd25ba826b4c02102fab21212a89"
 )
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,
@@ -35,6 +39,17 @@ EXPECTED_SEMANTIC_FINGERPRINT = (
 #: more channel because CAS27 is now computed in-package and declared as the
 #: `cas27` objective, and each swept attribute is one plant-level entry point.
 FIXTURE_CONTRACT = {
+    # WI-046 (goal plant-closure round 1, 2026-09-08) re-derived every expectation file on
+    # the lifecycle-calendar package. No verdict added (thirteen). What moved, read off the
+    # report: 'Lifecycle Calendar' publishes eleven channels where the retired CAS72 calc
+    # published one, so every axis reaching it taints ten more channels (R, a: 127 -> 137;
+    # R+tie: 132 -> 142; I_coil: 122 -> 132; availability_direct: 8 -> 18; interest_rate:
+    # 11 -> 22 with one more module fired, 8 -> 9); `availability_direct` reaches the same
+    # four objectives `availability` did (every nonzero value selects the held mode, whose
+    # response is the retired chain's); `interest_rate` now also reaches `fuel` -- the trace
+    # is module-level (the report's own not_derivable statement), and the calendar module
+    # takes the discount rate and produces the availability the fuel calc reads, though the
+    # executed live availability F/N does not depend on the rate. Counts from the report.
     # WI-045 (goal plant-closure round 1, 2026-09-08) re-derived every expectation file on
     # the loop-and-cycle package. Three verdicts added (loop_pressure_ok, loop_capacity_ok,
     # cycle_domain_ok). What moved, read off the report: the reactor source heat, the
@@ -48,12 +63,12 @@ FIXTURE_CONTRACT = {
     # WI-044 (goal minor-radius round 1, 2026-09-07) had re-derived every file on the
     # coil-bore package; WI-043 (goal burn-control round 1, 2026-09-07) had added
     # burn_hold_ok on every axis reaching the sustainment operand; earlier history in git.
-    "availability": (True, [], ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'], 6, 8),
-    "interest_rate": (True, [], ['cas72', 'lcoe', 'lcoe_1cfe'], 8, 11),
-    "R": (False, ['beta_ok', 'burn_hold_ok', 'cond_strain_ok', 'cycle_domain_ok', 'loop_capacity_ok', 'loop_pressure_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 77, 127),
-    "R+tie": (False, ['beta_ok', 'burn_hold_ok', 'cond_strain_ok', 'cycle_domain_ok', 'loop_capacity_ok', 'loop_pressure_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 82, 132),
-    "a": (False, ['beta_ok', 'burn_hold_ok', 'cond_strain_ok', 'cycle_domain_ok', 'loop_capacity_ok', 'loop_pressure_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 77, 127),
-    "I_coil": (False, ['beta_ok', 'burn_hold_ok', 'cond_strain_ok', 'cycle_domain_ok', 'loop_capacity_ok', 'loop_pressure_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 79, 122),
+    "availability_direct": (True, [], ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'], 6, 18),
+    "interest_rate": (True, [], ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'], 9, 22),
+    "R": (False, ['beta_ok', 'burn_hold_ok', 'cond_strain_ok', 'cycle_domain_ok', 'loop_capacity_ok', 'loop_pressure_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 77, 137),
+    "R+tie": (False, ['beta_ok', 'burn_hold_ok', 'cond_strain_ok', 'cycle_domain_ok', 'loop_capacity_ok', 'loop_pressure_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 82, 142),
+    "a": (False, ['beta_ok', 'burn_hold_ok', 'cond_strain_ok', 'cycle_domain_ok', 'loop_capacity_ok', 'loop_pressure_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 77, 137),
+    "I_coil": (False, ['beta_ok', 'burn_hold_ok', 'cond_strain_ok', 'cycle_domain_ok', 'loop_capacity_ok', 'loop_pressure_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 79, 132),
 }
 
 
@@ -104,10 +119,16 @@ def test_matches_the_item_1_fixture_contract(axis, report):
     assert group["sibling_candidates"] == []  # every declared group, per the contract
 
 
-def test_availability_reaches_no_constraint(report):
+def test_availability_direct_reaches_no_constraint(report):
     """The original finding, now mechanical: the availability sweep that ran to
-    completion could not have been a design search, because nothing constrains it."""
-    group = group_by_axis(report, "availability")
+    completion could not have been a design search, because nothing constrains it.
+
+    WI-046 (goal plant-closure round 1, 2026-09-08): the lever is now the lifecycle
+    calendar's held-mode switch `availability_direct`. Every nonzero value selects the
+    retired periodic chain at that availability, so the sweep's response is the old one
+    and still reaches no constraint; the live chain's response to design lives on the
+    wall-load axes (`a`, `R`, `I_coil`), which now reach the eleven calendar channels."""
+    group = group_by_axis(report, "availability_direct")
     assert group["no_constraint_response"] is True
     assert group["constraints_reachable"] == []
     assert len(group["constraints_unreachable"]) == 13  # WI-045: three loop/cycle fences joined the ten (WI-043: burn_hold_ok joined the nine)

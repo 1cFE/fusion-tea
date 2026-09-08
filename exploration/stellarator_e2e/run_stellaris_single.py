@@ -13,6 +13,7 @@ Run (repository root, with STOP_PARSER_TEAX_ROOT exported):
 from __future__ import annotations
 
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -169,16 +170,26 @@ def _anchor_gate(values: dict[str, float]) -> bool:
     #   eta_p_direct 0.5, eta_th_direct 0.333) reproduces the WI-044 pin's 106
     #   channels bit-for-bit (evidence/compat_mode/diff_vs_pin.json). Nothing
     #   tuned. Pre-WI-045 values in git history.
+    # WI-046 (goal plant-closure round 1, 2026-09-08): the lifecycle calendar produces
+    #   availability and CAS72 -- availability 0.85 -> 0.9027777777777779 (five dated
+    #   events, the first at 4.52 yr), CAS72 128,437,178.45 -> 138,213,460.01 $/yr,
+    #   CAS80 746,174.85 -> 792,505.97 (fuel follows productive time), LCOE 237.252800
+    #   -> 224.609525, lcoe_1cfe 232.724887 -> 220.346320; capital, p_net, q_eng,
+    #   rec_frac and the magnet share unchanged. Predicted before regeneration
+    #   (plan section Predictions: 224.6095247280447) and re-pinned from the executed
+    #   live baseline after the oracle gate read bit-exact on every channel, the
+    #   eleven calendar channels included. The held mode (availability_direct 0.85)
+    #   reproduces WI-045's baseline bit-for-bit (evidence/compat_mode/).
     anchors = [
         ("total capital $", total, 14_955_212_350.385998),
-        ("LCOE $/MWh", values[CH["lcoe"]], 237.252800),
+        ("LCOE $/MWh", values[CH["lcoe"]], 224.609525),
         ("p_net MW", values[CH["p_net"]], 1012.364870),
         ("q_eng", values[CH["q_eng"]], 3.925458),
         ("rec_frac", values[CH["rec_frac"]], 0.254747),
         ("magnet %", magnet / total * 100, 36.114713),
-        ("CAS70 $/yr", values[CH["cas70"]], 207_927_742.739444),
-        ("CAS80 $/yr", values[CH["cas80"]], 746_174.847154),
-        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 232.724887),
+        ("CAS70 $/yr", values[CH["cas70"]], 217_704_024.300825),
+        ("CAS80 $/yr", values[CH["cas80"]], 792_505.965114),
+        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 220.346320),
     ]
 
     print("\n=== NINE ANCHORS (single-pass, graph rollup, no bridge) ===")
@@ -246,6 +257,18 @@ def _oracle_gate(values: dict[str, float], oracle: dict[str, float]) -> bool:
         "overnight_capital": values[f"{P}overnight_capital__overnight_capital"],
         "cas71_annual": values[CH["cas71"]],
         "cas72_annual": values[CH["cas72"]],
+        # WI-046 lifecycle calendar channels (the oracle's closed form vs the impl's walk)
+        "calendar_availability": values[f"{P}calendar__availability"],
+        "calendar_coil_life_margin_fpy": values[f"{P}calendar__coil_life_margin_fpy"],
+        "calendar_replacement_pv": values[f"{P}calendar__replacement_pv"],
+        "calendar_planned_downtime_yr": values[f"{P}calendar__planned_downtime_yr"],
+        "calendar_terminal_downtime_yr": values[f"{P}calendar__terminal_downtime_yr"],
+        "calendar_unplanned_downtime_yr": values[f"{P}calendar__unplanned_downtime_yr"],
+        "calendar_productive_fpy": values[f"{P}calendar__productive_fpy"],
+        "calendar_dated_energy_ratio": values[f"{P}calendar__dated_energy_ratio"],
+        "calendar_cas72_annual": values[f"{P}calendar__cas72_annual"],
+        "calendar_n_replacements": values[f"{P}calendar__n_replacements"],
+        "calendar_physical_life_fpy": values[f"{P}calendar__physical_life_fpy"],
         "cas70_annual": values[CH["cas70"]],
         "cas80_annual": values[CH["cas80"]],
         "annual_fuel": values[CH["annual_fuel"]],
@@ -308,10 +331,20 @@ def _oracle_gate(values: dict[str, float], oracle: dict[str, float]) -> bool:
 
 
 def _cas72_guard_gate() -> bool:
-    from stellarator_tea.handwritten.mfe_account_costs.levelized_replacement_cost_impl import (
-        levelized_replacement_cost as cas72_impl,
+    """WI-029's three guard cases, restated by WI-046 (goal plant-closure round 1,
+    2026-09-08) onto the lifecycle calendar's HELD MODE (the retired periodic chain
+    carried verbatim) against the oracle mirror, plus a fourth family: the LIVE
+    calendar's boundary cases (the lifetime research's synthetic values) against the
+    oracle's independent closed-form derivation."""
+    from stellarator_tea.handwritten.mfe_lifecycle.lifecycle_calendar_impl import (
+        lifecycle_calendar_held as held_impl,
+        lifecycle_calendar_live as live_impl,
     )
     from verify_stellaris import _oracle_levelized_replacement_cost as cas72_mirror
+    from verify_stellaris import _oracle_lifecycle_calendar as calendar_oracle
+
+    def cas72_impl(**arguments):
+        return held_impl(coil_life_fpy=10.0, **arguments)["cas72_annual"]
 
     guard_cases = [
         (
@@ -332,8 +365,6 @@ def _cas72_guard_gate() -> bool:
             "clip FLOOR binds (extreme wall loading) -> n_rep = 53, cost nonzero",
             dict(
                 cost_per_event=671_160_000.0,
-                # WI-041: the impl takes the wall load directly; the same
-                # synthetic point expressed as q_n = p_fus x (1 - ash) / area.
                 q_n=200_000.0 * (1.0 - 0.2002275312855518) / 660.0791423448563,
                 fluence_limit=18.0,
                 availability=0.9,
@@ -346,8 +377,6 @@ def _cas72_guard_gate() -> bool:
             "outer max binds (replacement interval >= plant life -> n_rep = 0)",
             dict(
                 cost_per_event=671_160_000.0,
-                # WI-041: the impl takes the wall load directly; the same
-                # synthetic point expressed as q_n = p_fus x (1 - ash) / area.
                 q_n=50.0 * (1.0 - 0.2002275312855518) / 660.0791423448563,
                 fluence_limit=18.0,
                 availability=0.9,
@@ -358,7 +387,7 @@ def _cas72_guard_gate() -> bool:
         ),
     ]
 
-    print("\n=== WI-029 CAS72 GUARD-LIVE SPOT-CHECK (impl vs oracle mirror, rel<1e-9) ===")
+    print("\n=== WI-029 CAS72 GUARD-LIVE SPOT-CHECK, WI-046 HELD MODE (impl vs oracle mirror, rel<1e-9) ===")
     all_ok = True
     for label, arguments, expected_guard in guard_cases:
         implementation = cas72_impl(**arguments)
@@ -402,6 +431,80 @@ def _cas72_guard_gate() -> bool:
 
     assert cas72_impl(**guard_cases[2][1]) == 0.0, "outer max case did not return 0"
     print("    [guard live] n_rep floored to 0 -> cost exactly 0.0 -> outer max BINDS")
+
+    # ---- WI-046: the LIVE calendar's boundary cases (spec MR-WI046-12; the lifetime
+    # research's synthetic values, lines 100-110) -- the impl's interval walk against
+    # the oracle's closed form on every one of the eleven outputs, and the research's
+    # expected values where it states them.
+    print("\n=== WI-046 LIVE CALENDAR BOUNDARY CASES (walk vs closed form, rel<1e-9) ===")
+    base = dict(cost_per_event=671_160_000.0, q_n=4.5, fluence_limit=18.0,  # L = 4 FPY
+                interest_rate=0.07, operational_years=10.0, outage_years=7.0 / 12.0,
+                unplanned_fraction=0.0, coil_life_fpy=10.0)
+    live_cases = [
+        ("L 4, d 7/12, N 10 -> two events at 4 and 8.5833, A 53/60", dict(base),
+         dict(n_replacements=2.0, availability=53.0 / 60.0, planned_downtime_yr=7.0 / 6.0)),
+        ("N 8.7 -> one event, terminal 0.1167 yr", dict(base, operational_years=8.7),
+         dict(n_replacements=1.0, terminal_downtime_yr=8.7 - (8.0 + 7.0 / 12.0), productive_fpy=8.0)),
+        ("N 9+2/12 -> restart exactly at retirement is not strictly before: one event",
+         dict(base, operational_years=9.0 + 2.0 / 12.0), dict(n_replacements=1.0)),
+        ("N 9+2/12+1e-6 -> two events", dict(base, operational_years=9.0 + 2.0 / 12.0 + 1e-6),
+         dict(n_replacements=2.0)),
+        ("q_n 0 -> infinite life, no event, A = 1 - u = 1", dict(base, q_n=0.0),
+         dict(n_replacements=0.0, availability=1.0, replacement_pv=0.0)),
+        ("d 0, u 0 -> A 1.0 with events still charged", dict(base, outage_years=0.0),
+         dict(availability=1.0)),
+        ("i 0 -> ratio 1.0, CAS72 = PV / N", dict(base, interest_rate=0.0),
+         dict(dated_energy_ratio=1.0)),
+        ("u 0.05", dict(base, unplanned_fraction=0.05), {}),
+        ("u 0.10", dict(base, unplanned_fraction=0.10), {}),
+    ]
+    keys = ("availability", "coil_life_margin_fpy", "replacement_pv", "planned_downtime_yr",
+            "terminal_downtime_yr", "unplanned_downtime_yr", "productive_fpy",
+            "dated_energy_ratio", "cas72_annual", "n_replacements", "physical_life_fpy")
+    productive = {}
+    for label, arguments, expected in live_cases:
+        impl = live_impl(**arguments)
+        orac = calendar_oracle(availability_direct=0.0, **arguments)
+        worst = 0.0
+        for key in keys:
+            a, b = impl[key], orac[key]
+            if math.isinf(a) or math.isinf(b):
+                ok_key = math.isinf(a) and math.isinf(b)
+                dev = 0.0 if ok_key else float("inf")
+            else:
+                dev = abs(a - b) / (abs(b) or 1.0)
+            worst = max(worst, dev)
+        for key, value in expected.items():
+            dev = abs(impl[key] - value) / (abs(value) or 1.0)
+            worst = max(worst, dev)
+        # the time identity F + T_p + T_u + T_term = N (spec MR-WI046-4)
+        balance = abs(impl["productive_fpy"] + impl["planned_downtime_yr"]
+                      + impl["unplanned_downtime_yr"] + impl["terminal_downtime_yr"]
+                      - arguments["operational_years"])
+        ok = worst < 1e-9 and balance < 1e-9
+        all_ok &= ok
+        productive[arguments["unplanned_fraction"]] = impl["productive_fpy"]
+        print(f"  {label}: n={impl['n_replacements']:.0f} A={impl['availability']:.6f} "
+              f"events={[round(x, 4) for x in impl['events']]} worst reldev={worst:.2e} "
+              f"time balance={balance:.2e} {'OK' if ok else '*** FAIL'}")
+    monotone = productive[0.0] >= productive[0.05] >= productive[0.10]
+    all_ok &= monotone
+    print(f"  productive_fpy non-increasing in u: {productive} {'OK' if monotone else '*** FAIL'}")
+
+    # D6: the baseline's event dates in both modes, from the oracle's inputs (diagnostic).
+    from verify_stellaris import IN as oracle_inputs, compute as oracle_compute
+    o = oracle_compute()
+    common = dict(cost_per_event=(o["blanket"] + o["divertor"]) * oracle_inputs["n_mod"],
+                  q_n=o["wall_load_peak"], fluence_limit=oracle_inputs["fluence_limit"],
+                  interest_rate=oracle_inputs["discount_rate"],
+                  operational_years=oracle_inputs["operational_years"],
+                  outage_years=oracle_inputs["outage_years"],
+                  unplanned_fraction=oracle_inputs["unplanned_fraction"],
+                  coil_life_fpy=oracle_inputs["coil_life_fpy"])
+    live_events = calendar_oracle(availability_direct=0.0, **common)["events"]
+    held_events = calendar_oracle(availability_direct=0.85, **common)["events"]
+    print(f"  baseline event dates, live (7 months, u 0): {[round(x, 4) for x in live_events]}")
+    print(f"  baseline event dates, held (0.85, periodic): {[round(x, 4) for x in held_events]}")
     print("GUARD-LIVE SPOT-CHECK:", "PASS" if all_ok else "*** FAIL ***")
     return all_ok
 

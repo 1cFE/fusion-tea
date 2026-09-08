@@ -26,7 +26,8 @@ BASELINE_POINT = {
     "stellarator_09__stellaris__R": 12.7,
     "stellarator_09__stellaris__magnet__R0": 12.7,
     "stellarator_09__stellaris__a": 1.3,
-    "stellarator_09__stellaris__availability": 0.85,
+    # WI-046: availability retired as an entry key; availability_direct 0.0 = the live calendar
+    "stellarator_09__stellaris__availability_direct": 0.0,
 }
 # WI-041 pin (source-anchored wall-load fence; goal wall-and-heating round 2, 2026-09-04):
 # the CAS72 lifetime operand moved from the circular-torus average to the peak (4.088
@@ -45,7 +46,14 @@ BASELINE_POINT = {
 # availability 0.85. Re-pinned from the executed baseline after the oracle read bit-exact
 # (run_stellaris_single.py); the compatibility proposal (loop_live 0, cycle_live 0, the
 # three directs at the held values) reproduces 322.31843948570247 bit-for-bit.
-PINNED_LCOE = 237.2528002420958
+# WI-046 (goal plant-closure round 1, 2026-09-08): the lifecycle calendar produces
+# availability and CAS72 -- availability 0.85 -> 0.9027777777777779 (five dated events,
+# the first at 4.52 yr), CAS72 128,437,178.45 -> 138,213,460.01 $/yr, so the headline
+# moved 237.252800 -> 224.609525; predicted before regeneration (plan section
+# Predictions) and re-pinned from the executed baseline after the oracle read bit-exact
+# on every channel, the eleven calendar channels included. The held mode
+# (availability_direct 0.85) reproduces WI-045's 237.2528002420958 bit-for-bit.
+PINNED_LCOE = 224.60952472804465
 
 
 @pytest.fixture

@@ -25,7 +25,7 @@ def _case(package_dir=study_route.PACKAGE_DIR, *, state="completed"):
         inputs={
             study_route.AXES["R"][0]: study_route.BASELINE["R"],
             study_route.AXES["a"][0]: study_route.BASELINE["a"],
-            study_route.AXES["availability"][0]: study_route.BASELINE["availability"],
+            study_route.AXES["availability_direct"][0]: study_route.BASELINE["availability_direct"],  # WI-046
         },
         outputs={
             channel: float(index)

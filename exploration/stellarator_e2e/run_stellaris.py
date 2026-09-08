@@ -71,7 +71,7 @@ CH = dict(
     contingency=f"{P}contingency__cost", indirect=f"{P}indirect__cost",
     lcoe=f"{P}lcoe_calc__lcoe",
     # WI-029 annual-cost side + Option-(ii) 1cfe-form comparison channels
-    cas71=f"{P}cas71_calc__levelized", cas72=f"{P}cas72_calc__cost",
+    cas71=f"{P}cas71_calc__levelized", cas72=f"{P}calendar__cas72_annual",  # WI-046: CAS72 is the lifecycle calendar's output
     cas70=f"{P}cas70_calc__cas70", cas80=f"{P}cas80_calc__levelized",
     annual_fuel=f"{P}fuel_calc__annual_fuel",
     annual_om_levelized=f"{P}cas70_calc__annual_total",

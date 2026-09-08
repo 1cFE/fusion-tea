@@ -52,14 +52,17 @@ EXPECTED_CONSTRAINT_COUNT = 13  # WI-045 (2026-09-08): loop_pressure_ok, loop_ca
 AXES: dict[str, list[str]] = {
     "R": [f"{P}R"],
     "a": [f"{P}a"],
-    "availability": [f"{P}availability"],
+    # WI-046 (goal plant-closure round 1, 2026-09-08): the `availability` axis is renamed
+    # `availability_direct` -- the lifecycle calendar produces availability; this lever is
+    # its held-mode switch (0 = live; (0, 1] = the retired periodic chain at that value).
+    "availability_direct": [f"{P}availability_direct"],
 }
 #: Declared physical-identity tie: the magnet-cost Ampere's-law current runs on the
 #: major radius, so this is the same physical quantity under a separately authored
 #: attribute — a tie, not mechanical fan-out. The tie *data* is in the manifest.
 R_TIE = f"{P}magnet__R0"
 
-BASELINE = {"R": 12.7, "a": 1.3, "availability": 0.85}
+BASELINE = {"R": 12.7, "a": 1.3, "availability_direct": 0.0}  # WI-046: the instance is live
 #: The plasma plus the held-fixed radial-build stack must fit inside the major radius
 #: or the torus self-intersects. A derived geometric bound from held-fixed inputs, not
 #: a design screen. Itemized in ANNEX.md § Validity masks.
@@ -86,7 +89,7 @@ class RouteError(Exception):
     """The route could not do what it was asked. Never a silent skip."""
 
 
-def proposal_for(R: float, a: float, availability: float) -> dict[str, float]:
+def proposal_for(R: float, a: float, availability_direct: float) -> dict[str, float]:
     """One proposal: the axis expansions plus the declared tie. Nothing else."""
     point: dict[str, float] = {}
     for key in AXES["R"]:
@@ -94,8 +97,8 @@ def proposal_for(R: float, a: float, availability: float) -> dict[str, float]:
     point[R_TIE] = R
     for key in AXES["a"]:
         point[key] = a
-    for key in AXES["availability"]:
-        point[key] = availability
+    for key in AXES["availability_direct"]:
+        point[key] = availability_direct
     return point
 
 
@@ -353,7 +356,7 @@ def export_csv(
 
 def design_search_proposals() -> list[dict[str, float]]:
     grid = [
-        proposal_for(R, a, BASELINE["availability"])
+        proposal_for(R, a, BASELINE["availability_direct"])
         for R in R_VALUES
         for a in A_VALUES
         if R > a + BUILD_STACK_M
@@ -363,6 +366,9 @@ def design_search_proposals() -> list[dict[str, float]]:
 
 
 def availability_sweep_proposals() -> list[dict[str, float]]:
+    # WI-046: the sweep runs over availability_direct 0.5-0.95, every value of which
+    # selects the held mode, so its response is the retired periodic chain's -- the
+    # sweep keeps its meaning as the historical comparison it always was.
     return [proposal_for(BASELINE["R"], BASELINE["a"], av) for av in AVAIL_VALUES]
 
 
@@ -393,7 +399,7 @@ def run_availability_sweep(out_dir: Path, package_dir: Path = PACKAGE_DIR) -> Pa
         package_dir,
     )
     return export_csv(
-        _completed(cases, "availability sweep"), ["availability"],
+        _completed(cases, "availability sweep"), ["availability_direct"],
         out_dir / "availability_sweep.csv",
     )
 

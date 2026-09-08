@@ -269,21 +269,6 @@ modules:
     outputs:
       root: RootModel[float] stellarator_09__stellaris__beta_calc__beta
 
-  # mfe_account_costs.DT_Fuel_CostModule
-  stellarator_09__stellaris__fuel_calc:
-    module_type: mfe_account_costs.DT_Fuel_CostModule
-    inputs:
-      fuel_recovery_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_recovery
-      availability_in: float stellarator_plant_params.stellarator_09__stellaris__availability
-      p_fus: float stellarator_09__stellaris__fusion__p_fus.root
-      mev_to_joules_in: float stellarator_plant_params.stellarator_09__stellaris__mev_to_joules
-      n_mod_in: float mfe_plant_params.stellarator_09__stellaris__n_mod
-      burn_fraction_in: float stellarator_plant_params.stellarator_09__stellaris__burn_fraction
-      cost_per_rxn: float stellarator_plant_params.stellarator_09__stellaris__fuel_cost_per_rxn
-      q_eff: float stellarator_plant_params.stellarator_09__stellaris__fuel_q_eff
-    outputs:
-      root: RootModel[float] stellarator_09__stellaris__fuel_calc__annual_fuel
-
   # mfe_plasma_scaling.Neutron_Wall_LoadModule
   stellarator_09__stellaris__wall_load_calc:
     module_type: mfe_plasma_scaling.Neutron_Wall_LoadModule
@@ -734,19 +719,6 @@ modules:
     outputs:
       root: RootModel[float] stellarator_09__stellaris__inc_cost__cost
 
-  # mfe_account_costs.Levelized_Annual_CostModule
-  stellarator_09__stellaris__cas80_calc:
-    module_type: mfe_account_costs.Levelized_Annual_CostModule
-    inputs:
-      inflation_rate_in: float stellarator_plant_params.stellarator_09__stellaris__inflation_rate
-      operational_years_in: float stellarator_plant_params.stellarator_09__stellaris__operational_years
-      annual_cost: float stellarator_09__stellaris__fuel_calc__annual_fuel.root
-      interest_rate: float stellarator_plant_params.stellarator_09__stellaris__discount_rate
-      project_time: float stellarator_plant_params.stellarator_09__stellaris__construction_years
-    outputs:
-      levelized: float stellarator_09__stellaris__cas80_calc__levelized
-      crf: float stellarator_09__stellaris__cas80_calc__crf
-
   # mfe_plasma_scaling.Neutron_Wall_Load_PeakModule
   stellarator_09__stellaris__wall_peak_calc:
     module_type: mfe_plasma_scaling.Neutron_Wall_Load_PeakModule
@@ -826,25 +798,66 @@ modules:
     outputs:
       root: RootModel[float] stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event
 
-  # mfe_account_costs.Levelized_Replacement_CostModule
-  stellarator_09__stellaris__cas72_calc:
-    module_type: mfe_account_costs.Levelized_Replacement_CostModule
+  # mfe_lifecycle.Lifecycle_CalendarModule
+  stellarator_09__stellaris__calendar:
+    module_type: mfe_lifecycle.Lifecycle_CalendarModule
     inputs:
-      q_n_in: float stellarator_09__stellaris__wall_peak_calc__wall_load_peak.root
-      cost_per_event: float stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event.root
-      operational_years_in: float stellarator_plant_params.stellarator_09__stellaris__operational_years
-      availability_in: float stellarator_plant_params.stellarator_09__stellaris__availability
-      fluence_limit_in: float stellarator_plant_params.stellarator_09__stellaris__fluence_limit
       interest_rate: float stellarator_plant_params.stellarator_09__stellaris__discount_rate
+      q_n_in: float stellarator_09__stellaris__wall_peak_calc__wall_load_peak.root
+      operational_years_in: float stellarator_plant_params.stellarator_09__stellaris__operational_years
+      outage_years_in: float stellarator_plant_params.stellarator_09__stellaris__outage_years
+      fluence_limit_in: float stellarator_plant_params.stellarator_09__stellaris__fluence_limit
+      unplanned_fraction_in: float stellarator_plant_params.stellarator_09__stellaris__unplanned_fraction
+      cost_per_event: float stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event.root
+      availability_direct_in: float stellarator_plant_params.stellarator_09__stellaris__availability_direct
+      coil_life_fpy_in: float stellarator_plant_params.stellarator_09__stellaris__coil_life_fpy
     outputs:
-      root: RootModel[float] stellarator_09__stellaris__cas72_calc__cost
+      availability: float stellarator_09__stellaris__calendar__availability
+      coil_life_margin_fpy: float stellarator_09__stellaris__calendar__coil_life_margin_fpy
+      replacement_pv: float stellarator_09__stellaris__calendar__replacement_pv
+      planned_downtime_yr: float stellarator_09__stellaris__calendar__planned_downtime_yr
+      terminal_downtime_yr: float stellarator_09__stellaris__calendar__terminal_downtime_yr
+      unplanned_downtime_yr: float stellarator_09__stellaris__calendar__unplanned_downtime_yr
+      productive_fpy: float stellarator_09__stellaris__calendar__productive_fpy
+      dated_energy_ratio: float stellarator_09__stellaris__calendar__dated_energy_ratio
+      cas72_annual: float stellarator_09__stellaris__calendar__cas72_annual
+      n_replacements: float stellarator_09__stellaris__calendar__n_replacements
+      physical_life_fpy: float stellarator_09__stellaris__calendar__physical_life_fpy
+
+  # mfe_account_costs.DT_Fuel_CostModule
+  stellarator_09__stellaris__fuel_calc:
+    module_type: mfe_account_costs.DT_Fuel_CostModule
+    inputs:
+      fuel_recovery_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_recovery
+      availability_in: float stellarator_09__stellaris__calendar__availability
+      p_fus: float stellarator_09__stellaris__fusion__p_fus.root
+      mev_to_joules_in: float stellarator_plant_params.stellarator_09__stellaris__mev_to_joules
+      n_mod_in: float mfe_plant_params.stellarator_09__stellaris__n_mod
+      burn_fraction_in: float stellarator_plant_params.stellarator_09__stellaris__burn_fraction
+      cost_per_rxn: float stellarator_plant_params.stellarator_09__stellaris__fuel_cost_per_rxn
+      q_eff: float stellarator_plant_params.stellarator_09__stellaris__fuel_q_eff
+    outputs:
+      root: RootModel[float] stellarator_09__stellaris__fuel_calc__annual_fuel
+
+  # mfe_account_costs.Levelized_Annual_CostModule
+  stellarator_09__stellaris__cas80_calc:
+    module_type: mfe_account_costs.Levelized_Annual_CostModule
+    inputs:
+      inflation_rate_in: float stellarator_plant_params.stellarator_09__stellaris__inflation_rate
+      operational_years_in: float stellarator_plant_params.stellarator_09__stellaris__operational_years
+      annual_cost: float stellarator_09__stellaris__fuel_calc__annual_fuel.root
+      interest_rate: float stellarator_plant_params.stellarator_09__stellaris__discount_rate
+      project_time: float stellarator_plant_params.stellarator_09__stellaris__construction_years
+    outputs:
+      levelized: float stellarator_09__stellaris__cas80_calc__levelized
+      crf: float stellarator_09__stellaris__cas80_calc__crf
 
   # mfe_account_costs.Annual_Cost_RollupModule
   stellarator_09__stellaris__cas70_calc:
     module_type: mfe_account_costs.Annual_Cost_RollupModule
     inputs:
       cas71: float stellarator_09__stellaris__cas71_calc__levelized
-      cas72: float stellarator_09__stellaris__cas72_calc__cost.root
+      cas72: float stellarator_09__stellaris__calendar__cas72_annual
       cas80: float stellarator_09__stellaris__cas80_calc__levelized
     outputs:
       cas70: float stellarator_09__stellaris__cas70_calc__cas70
@@ -968,7 +981,7 @@ modules:
       cas70: float stellarator_09__stellaris__cas70_calc__cas70
       cas80: float stellarator_09__stellaris__cas80_calc__levelized
       n_mod_in: float mfe_plant_params.stellarator_09__stellaris__n_mod
-      availability_in: float stellarator_plant_params.stellarator_09__stellaris__availability
+      availability_in: float stellarator_09__stellaris__calendar__availability
       cas90: float stellarator_09__stellaris__cas90_1cfe_calc__cas90.root
       net_electric_mw: float stellarator_09__stellaris__pb__p_net
     outputs:
@@ -991,7 +1004,7 @@ modules:
     module_type: mfe_lcoe_dcf.LCOE_DCFModule
     inputs:
       discount_rate_in: float stellarator_plant_params.stellarator_09__stellaris__discount_rate
-      availability_in: float stellarator_plant_params.stellarator_09__stellaris__availability
+      availability_in: float stellarator_09__stellaris__calendar__availability
       construction_years_in: float stellarator_plant_params.stellarator_09__stellaris__construction_years
       net_electric_mw: float stellarator_09__stellaris__pb__p_net
       annual_om_in: float stellarator_09__stellaris__cas70_calc__annual_total
@@ -1180,7 +1193,6 @@ modules:
       stellarator_09__stellaris__sustain__T_e0: float stellarator_09__stellaris__sustain__T_e0.json
       stellarator_09__stellaris__fusion__p_fus: RootModel[float] stellarator_09__stellaris__fusion__p_fus.json
       stellarator_09__stellaris__beta_calc__beta: RootModel[float] stellarator_09__stellaris__beta_calc__beta.json
-      stellarator_09__stellaris__fuel_calc__annual_fuel: RootModel[float] stellarator_09__stellaris__fuel_calc__annual_fuel.json
       stellarator_09__stellaris__wall_load_calc__wall_load: RootModel[float] stellaris__neutron_wall_load.json
       stellarator_09__stellaris__stored_energy__W_mag: RootModel[float] stellarator_09__stellaris__stored_energy__W_mag.json
       stellarator_09__stellaris__casing_mass__m_casing: RootModel[float] stellaris__magnet__m_casing.json
@@ -1239,8 +1251,6 @@ modules:
       stellarator_09__stellaris__precon_cost__cost: RootModel[float] stellaris__preconstruction_capital.json
       stellarator_09__stellaris__waste__cost: RootModel[float] stellaris__waste_capital.json
       stellarator_09__stellaris__inc_cost__cost: RootModel[float] stellaris__inc_capital.json
-      stellarator_09__stellaris__cas80_calc__levelized: float stellaris__cas80_annual.json
-      stellarator_09__stellaris__cas80_calc__crf: float stellarator_09__stellaris__cas80_calc__crf.json
       stellarator_09__stellaris__wall_peak_calc__wall_load_peak: RootModel[float] stellaris__neutron_wall_load_peak.json
       stellarator_09__stellaris__powercore_capital__powercore_capital: RootModel[float] stellarator_09__stellaris__powercore_capital__powercore_capital.json
       stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal: RootModel[float] stellarator_09__stellaris__reactor_equipment_subtotal__reactor_equipment_subtotal.json
@@ -1248,7 +1258,20 @@ modules:
       stellarator_09__stellaris__cas22_capital__cas22_capital: RootModel[float] stellarator_09__stellaris__cas22_capital__cas22_capital.json
       stellarator_09__stellaris__bop_capital__bop_capital: RootModel[float] stellarator_09__stellaris__bop_capital__bop_capital.json
       stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event: RootModel[float] stellarator_09__stellaris__replacement_cost_per_event__replacement_cost_per_event.json
-      stellarator_09__stellaris__cas72_calc__cost: RootModel[float] stellaris__cas72_annual.json
+      stellarator_09__stellaris__calendar__availability: float stellaris__availability.json
+      stellarator_09__stellaris__calendar__coil_life_margin_fpy: float stellarator_09__stellaris__calendar__coil_life_margin_fpy.json
+      stellarator_09__stellaris__calendar__replacement_pv: float stellarator_09__stellaris__calendar__replacement_pv.json
+      stellarator_09__stellaris__calendar__planned_downtime_yr: float stellarator_09__stellaris__calendar__planned_downtime_yr.json
+      stellarator_09__stellaris__calendar__terminal_downtime_yr: float stellarator_09__stellaris__calendar__terminal_downtime_yr.json
+      stellarator_09__stellaris__calendar__unplanned_downtime_yr: float stellarator_09__stellaris__calendar__unplanned_downtime_yr.json
+      stellarator_09__stellaris__calendar__productive_fpy: float stellarator_09__stellaris__calendar__productive_fpy.json
+      stellarator_09__stellaris__calendar__dated_energy_ratio: float stellarator_09__stellaris__calendar__dated_energy_ratio.json
+      stellarator_09__stellaris__calendar__cas72_annual: float stellaris__cas72_annual.json
+      stellarator_09__stellaris__calendar__n_replacements: float stellarator_09__stellaris__calendar__n_replacements.json
+      stellarator_09__stellaris__calendar__physical_life_fpy: float stellarator_09__stellaris__calendar__physical_life_fpy.json
+      stellarator_09__stellaris__fuel_calc__annual_fuel: RootModel[float] stellarator_09__stellaris__fuel_calc__annual_fuel.json
+      stellarator_09__stellaris__cas80_calc__levelized: float stellaris__cas80_annual.json
+      stellarator_09__stellaris__cas80_calc__crf: float stellarator_09__stellaris__cas80_calc__crf.json
       stellarator_09__stellaris__cas70_calc__cas70: float stellaris__cas70_annual.json
       stellarator_09__stellaris__cas70_calc__annual_total: float stellaris__annual_om.json
       stellarator_09__stellaris__special_materials_capital__special_materials_capital: RootModel[float] stellarator_09__stellaris__special_materials_capital__special_materials_capital.json

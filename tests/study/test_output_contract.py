@@ -268,7 +268,7 @@ def test_bounds_is_authoritative_and_axis_varying():
     # now reach the same nine constraints (the radial build's coil-centre radius
     # feeds the peak field; the trace is module-level), so their bounds blocks are
     # equal; a geometry axis against an economic one still differs.
-    assert by_axis["R"] != by_axis["availability"]
+    assert by_axis["R"] != by_axis["availability_direct"]  # WI-046: the axis renamed
 
 
 def test_lists_are_sorted_by_a_stated_key():

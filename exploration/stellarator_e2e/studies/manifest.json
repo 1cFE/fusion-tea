@@ -1,167 +1,167 @@
 {
-  "schema_version": "study-package-manifest/v1",
-  "package": {
-    "name": "stellarator_tea",
-    "path": "exploration/stellarator_e2e/pkg/stellarator_tea"
+ "schema_version": "study-package-manifest/v1",
+ "package": {
+  "name": "stellarator_tea",
+  "path": "exploration/stellarator_e2e/pkg/stellarator_tea"
+ },
+ "fingerprints": {
+  "indicator_inputs": {
+   "recipe": "indicator-input-fingerprint/v1",
+   "digest": "19a97a940e68d3ecc94529480069d38d2cfb874ea856774117acaae5c8b4f24e",
+   "files": [
+    "contracts/model_contract.json",
+    "inputs/mfe_account_costs_params.json",
+    "inputs/mfe_magnet_cost_params.json",
+    "inputs/mfe_magnet_field_params.json",
+    "inputs/mfe_plant_params.json",
+    "inputs/mfe_plasma_scaling_params.json",
+    "inputs/mfe_plasma_sustainment_params.json",
+    "inputs/stellarator_plant_params.json",
+    "pipelines/pipeline.yaml"
+   ]
   },
-  "fingerprints": {
-    "indicator_inputs": {
-      "recipe": "indicator-input-fingerprint/v1",
-      "digest": "1b6e6b313d93f5f0e35727ff2e13c13e1ea0ee591f1a3cb7001da4e878ca9b92",
-      "files": [
-        "contracts/model_contract.json",
-        "inputs/mfe_account_costs_params.json",
-        "inputs/mfe_magnet_cost_params.json",
-        "inputs/mfe_magnet_field_params.json",
-        "inputs/mfe_plant_params.json",
-        "inputs/mfe_plasma_scaling_params.json",
-        "inputs/mfe_plasma_sustainment_params.json",
-        "inputs/stellarator_plant_params.json",
-        "pipelines/pipeline.yaml"
-      ]
-    },
-    "recorded_provenance": {
-      "executable_fingerprint": "f5373d2d25f196cd8e1a708c5773d72269db5a81a34ecdc99885fe72414b77fe",
-      "semantic_fingerprint": "a331cd82e48f19d5ce2c684188abce9b8da07ab408576c7164880c9d44d4bc92"
-    }
-  },
-  "objective_catalog": [
-    {
-      "name": "lcoe",
-      "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
-      "note": "Headline levelized cost of electricity. Exit-point filename is stellaris__lcoe.json; the catalog keys on the channel, never the filename."
-    },
-    {
-      "name": "lcoe_1cfe",
-      "channel": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
-      "note": "LCOE variant using the 1costingfe CAS90 rollup."
-    },
-    {
-      "name": "cas72",
-      "channel": "stellarator_09__stellaris__cas72_calc__cost",
-      "note": "Levelized annual replacement cost."
-    },
-    {
-      "name": "fuel",
-      "channel": "stellarator_09__stellaris__fuel_calc__annual_fuel",
-      "note": "Annual fuel cost."
-    },
-    {
-      "name": "total_capital",
-      "channel": "stellarator_09__stellaris__total_capital__total_capital",
-      "note": "Total capital cost including interest during construction."
-    },
-    {
-      "name": "cas27",
-      "channel": "stellarator_09__stellaris__special_materials_capital__special_materials_capital",
-      "note": "CAS27 special-materials capital, computed in-package from the radial-build blanket volume since the model migration (2026-08-21). Declared as an objective so generic verification compares it against the oracle's own recompute: on the era route this value was glue-fed to both sides and never independently verified."
-    },
-    {
-      "name": "beta",
-      "channel": "stellarator_09__stellaris__beta_calc__beta",
-      "note": "Volume-averaged thermal beta computed by 'Volume-Averaged Beta' from the profile referents and magnet__B (WI-030); replaces the retired bound input beta. Compared against the oracle's closed form so a magnet study verifies the physics lever it moves."
-    },
-    {
-      "name": "magnet_capital",
-      "channel": "stellarator_09__stellaris__magnet_capital_rollup__capital_cost",
-      "note": "CAS22.1.3 magnet capital \u2014 since WI-035 the decomposed rollup (winding pack + casing structure), the channel the plant's magnet.capital_cost reads. The old conductor-proxy lump is the separate magnet_capital_1cfe comparison objective."
-    },
-    {
-      "name": "magnet_capital_1cfe",
-      "channel": "stellarator_09__stellaris__magnet_cost__capital_cost",
-      "note": "1cfe-form comparison channel (WI-035 D6): the retained 'Magnet Coil Cost' conductor-proxy lump, now responding to the computed field. Kept as an objective so the decomposed rollup and the calibrated lump stay observable side by side."
-    },
-    {
-      "name": "p_aux_required",
-      "channel": "stellarator_09__stellaris__sustain__p_aux_required",
-      "note": "WI-037 required sustained plasma-coupled heating; the sustainment_ok operand. Responds to field (~B^-2.15 through ISS04), density, temperature, geometry, and heating."
-    },
-    {
-      "name": "tau_E",
-      "channel": "stellarator_09__stellaris__sustain__tau_E",
-      "note": "WI-037 ISS04 energy confinement time (closed form, line-averaged density)."
-    }
-  ],
-  "ties": [
-    {
-      "key": "stellarator_09__stellaris__magnet__R0",
-      "rides_with": [
-        "stellarator_09__stellaris__R"
-      ],
-      "note": "Magnet coil major radius is the same physical quantity as the plasma major radius. Its suffix is R0, not R, so no suffix scan will ever surface it -- the tie must be declared. Advisory here: a group holding R but not this key earns a tie_candidate warning, never an added key. Since the model migration the plasma major radius is one plant-level entry point (R), not the geom__R / rb__R fan-out."
-    }
-  ],
-  "baseline": {
-    "point": {
-      "stellarator_09__stellaris__R": 12.7,
-      "stellarator_09__stellaris__magnet__R0": 12.7,
-      "stellarator_09__stellaris__a": 1.3,
-      "stellarator_09__stellaris__availability": 0.85
-    },
-    "headline": {
-      "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
-      "value": 237.2528002420958
-    },
-    "verdicts": [
-      {
-        "source_local_identity": "beta_ok",
-        "expected": "satisfied"
-      },
-      {
-        "source_local_identity": "burn_hold_ok",
-        "expected": "satisfied"
-      },
-      {
-        "source_local_identity": "cond_strain_ok",
-        "expected": "satisfied"
-      },
-      {
-        "source_local_identity": "cycle_domain_ok",
-        "expected": "satisfied"
-      },
-      {
-        "source_local_identity": "loop_capacity_ok",
-        "expected": "satisfied"
-      },
-      {
-        "source_local_identity": "loop_pressure_ok",
-        "expected": "satisfied"
-      },
-      {
-        "source_local_identity": "net_positive",
-        "expected": "satisfied"
-      },
-      {
-        "source_local_identity": "peak_field_ok",
-        "expected": "satisfied"
-      },
-      {
-        "source_local_identity": "recirc_ok",
-        "expected": "satisfied"
-      },
-      {
-        "source_local_identity": "sustainment_ok",
-        "expected": "satisfied"
-      },
-      {
-        "source_local_identity": "tbr_ok",
-        "expected": "satisfied"
-      },
-      {
-        "source_local_identity": "wall_load_ok",
-        "expected": "satisfied"
-      },
-      {
-        "source_local_identity": "wp_stress_ok",
-        "expected": "satisfied"
-      }
-    ]
-  },
-  "oracle": {
-    "kind": "python_callable",
-    "module": "oracle_entry",
-    "callable": "evaluate",
-    "sys_path": "exploration/stellarator_e2e/studies",
-    "note": "Package-owned oracle seam. evaluate(point) takes a mapping of qualified entry keys to floats and returns a mapping of qualified channel names to floats; it wraps the independent pure-Python oracle verify_stellaris.py, which is imported and never modified. The module also publishes a fixed-name companion, operand_bindings() -> {constraint_id: {source_name: {kind, key}}}, which says which qualified input key or channel each predicate operand means. A generic verifier requires both and fails closed on anything unresolved: on this package one operand of five constraints resolves to nothing by name at all, so a tool that inferred bindings would compare the wrong number and read as a pass."
+  "recorded_provenance": {
+   "executable_fingerprint": "e0d9b1ac19a440ff66a5a8cfa22a4d7d8aac2eaa64b64831fef6dd79216a1ce1",
+   "semantic_fingerprint": "e6a7baa5a822b47b8457023e1d2ebd88132bfd25ba826b4c02102fab21212a89"
   }
+ },
+ "objective_catalog": [
+  {
+   "name": "lcoe",
+   "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+   "note": "Headline levelized cost of electricity. Exit-point filename is stellaris__lcoe.json; the catalog keys on the channel, never the filename."
+  },
+  {
+   "name": "lcoe_1cfe",
+   "channel": "stellarator_09__stellaris__lcoe_1cfe_calc__lcoe",
+   "note": "LCOE variant using the 1costingfe CAS90 rollup."
+  },
+  {
+   "name": "cas72",
+   "channel": "stellarator_09__stellaris__calendar__cas72_annual",
+   "note": "Levelized annual replacement cost -- the lifecycle calendar's output since WI-046 (2026-09-08; the retired cas72_calc__cost channel is gone)."
+  },
+  {
+   "name": "fuel",
+   "channel": "stellarator_09__stellaris__fuel_calc__annual_fuel",
+   "note": "Annual fuel cost."
+  },
+  {
+   "name": "total_capital",
+   "channel": "stellarator_09__stellaris__total_capital__total_capital",
+   "note": "Total capital cost including interest during construction."
+  },
+  {
+   "name": "cas27",
+   "channel": "stellarator_09__stellaris__special_materials_capital__special_materials_capital",
+   "note": "CAS27 special-materials capital, computed in-package from the radial-build blanket volume since the model migration (2026-08-21). Declared as an objective so generic verification compares it against the oracle's own recompute: on the era route this value was glue-fed to both sides and never independently verified."
+  },
+  {
+   "name": "beta",
+   "channel": "stellarator_09__stellaris__beta_calc__beta",
+   "note": "Volume-averaged thermal beta computed by 'Volume-Averaged Beta' from the profile referents and magnet__B (WI-030); replaces the retired bound input beta. Compared against the oracle's closed form so a magnet study verifies the physics lever it moves."
+  },
+  {
+   "name": "magnet_capital",
+   "channel": "stellarator_09__stellaris__magnet_capital_rollup__capital_cost",
+   "note": "CAS22.1.3 magnet capital \u2014 since WI-035 the decomposed rollup (winding pack + casing structure), the channel the plant's magnet.capital_cost reads. The old conductor-proxy lump is the separate magnet_capital_1cfe comparison objective."
+  },
+  {
+   "name": "magnet_capital_1cfe",
+   "channel": "stellarator_09__stellaris__magnet_cost__capital_cost",
+   "note": "1cfe-form comparison channel (WI-035 D6): the retained 'Magnet Coil Cost' conductor-proxy lump, now responding to the computed field. Kept as an objective so the decomposed rollup and the calibrated lump stay observable side by side."
+  },
+  {
+   "name": "p_aux_required",
+   "channel": "stellarator_09__stellaris__sustain__p_aux_required",
+   "note": "WI-037 required sustained plasma-coupled heating; the sustainment_ok operand. Responds to field (~B^-2.15 through ISS04), density, temperature, geometry, and heating."
+  },
+  {
+   "name": "tau_E",
+   "channel": "stellarator_09__stellaris__sustain__tau_E",
+   "note": "WI-037 ISS04 energy confinement time (closed form, line-averaged density)."
+  }
+ ],
+ "ties": [
+  {
+   "key": "stellarator_09__stellaris__magnet__R0",
+   "rides_with": [
+    "stellarator_09__stellaris__R"
+   ],
+   "note": "Magnet coil major radius is the same physical quantity as the plasma major radius. Its suffix is R0, not R, so no suffix scan will ever surface it -- the tie must be declared. Advisory here: a group holding R but not this key earns a tie_candidate warning, never an added key. Since the model migration the plasma major radius is one plant-level entry point (R), not the geom__R / rb__R fan-out."
+  }
+ ],
+ "baseline": {
+  "point": {
+   "stellarator_09__stellaris__R": 12.7,
+   "stellarator_09__stellaris__magnet__R0": 12.7,
+   "stellarator_09__stellaris__a": 1.3,
+   "stellarator_09__stellaris__availability_direct": 0.0
+  },
+  "headline": {
+   "channel": "stellarator_09__stellaris__lcoe_calc__lcoe",
+   "value": 224.60952472804465
+  },
+  "verdicts": [
+   {
+    "source_local_identity": "beta_ok",
+    "expected": "satisfied"
+   },
+   {
+    "source_local_identity": "burn_hold_ok",
+    "expected": "satisfied"
+   },
+   {
+    "source_local_identity": "cond_strain_ok",
+    "expected": "satisfied"
+   },
+   {
+    "source_local_identity": "cycle_domain_ok",
+    "expected": "satisfied"
+   },
+   {
+    "source_local_identity": "loop_capacity_ok",
+    "expected": "satisfied"
+   },
+   {
+    "source_local_identity": "loop_pressure_ok",
+    "expected": "satisfied"
+   },
+   {
+    "source_local_identity": "net_positive",
+    "expected": "satisfied"
+   },
+   {
+    "source_local_identity": "peak_field_ok",
+    "expected": "satisfied"
+   },
+   {
+    "source_local_identity": "recirc_ok",
+    "expected": "satisfied"
+   },
+   {
+    "source_local_identity": "sustainment_ok",
+    "expected": "satisfied"
+   },
+   {
+    "source_local_identity": "tbr_ok",
+    "expected": "satisfied"
+   },
+   {
+    "source_local_identity": "wall_load_ok",
+    "expected": "satisfied"
+   },
+   {
+    "source_local_identity": "wp_stress_ok",
+    "expected": "satisfied"
+   }
+  ]
+ },
+ "oracle": {
+  "kind": "python_callable",
+  "module": "oracle_entry",
+  "callable": "evaluate",
+  "sys_path": "exploration/stellarator_e2e/studies",
+  "note": "Package-owned oracle seam. evaluate(point) takes a mapping of qualified entry keys to floats and returns a mapping of qualified channel names to floats; it wraps the independent pure-Python oracle verify_stellaris.py, which is imported and never modified. The module also publishes a fixed-name companion, operand_bindings() -> {constraint_id: {source_name: {kind, key}}}, which says which qualified input key or channel each predicate operand means. A generic verifier requires both and fails closed on anything unresolved: on this package one operand of five constraints resolves to nothing by name at all, so a tool that inferred bindings would compare the wrong number and read as a pass."
+ }
 }
