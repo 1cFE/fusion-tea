@@ -312,4 +312,57 @@ package mfe_viability {
 
         p_aux_required_in >= 0.0
     }
+
+    constraint def 'Loop Pressure Margin' {
+        doc /*
+        Primary-loop pressure domain (WI-045): the per-path pressure loss must
+        stay below the loop's nominal pressure, so the compressor pressure ratio
+        p_loop / (p_loop - dp_loop) is finite and positive. A domain condition of
+        the constant-loss-coefficient law, not a sourced operating limit; the
+        operand is computed by 'Primary Coolant Loop'.
+        **Source**: models/library/analyses/mfe_primary_loop.sysml
+        **Ref**: r_comp = p_loop / (p_loop - dp_loop)
+        **Basis**: p_loop - dp_loop > 0, the law's own domain
+        */
+        // loop pressure less the per-path loss [Pa] (computed)
+        in attribute p_loop_margin_in : Real;
+        p_loop_margin_in > 0.0
+    }
+
+    constraint def 'Loop Capacity' {
+        doc /*
+        Primary-loop capacity (WI-045): the per-loop mass flow must not exceed
+        the rated per-loop flow -- the reference circuit's own per-loop flow, at
+        which its compressors and exchangers were sized. A plant whose source heat
+        outgrows its loop count must add loops (a study lever) rather than run
+        each loop past its rating; the draw is cubic in the per-loop flow, so this
+        is the fence through which coolant choices push back on feasibility (rubric
+        Row 7's P3 anchor). Both operands are the loop's: the computed per-loop
+        flow and the instance's rated flow.
+        **Source**: knowledge/sources/progress_in_the_design_development_of_eu_demo_helium_cooled/output.md
+        **Ref**: output.md:81 (2025.7 kg/s), :89-91 (9 loops): 225.08 kg/s per loop
+        **Basis**: mdot_loop <= the reference per-loop flow
+        */
+        // computed per-loop mass flow [kg/s]
+        in attribute mdot_loop_in : Real;
+        // rated per-loop mass flow [kg/s]
+        in attribute mdot_loop_rated_in : Real;
+        mdot_loop_in <= mdot_loop_rated_in
+    }
+
+    constraint def 'Cycle Fit Domain' {
+        doc /*
+        Secondary-cycle fit domain (WI-045): the turbine-inlet temperature must
+        lie inside the printed fit's range, read as the product of the two margins
+        (T2 - T2_min)(T2_max - T2) >= 0 -- one constraint for a two-sided bound,
+        valid because T2_min < T2_max. Outside the domain the fit is not evidence;
+        the point reads violated and its efficiency is published, never clamped.
+        **Source**: knowledge/sources/process_a_systems_code_for_fusion_power_plants_part_2/output.md
+        **Ref**: output.md:355 (Table 4 T2 ranges: 384-642 C helium Rankine; 135-750 C sCO2)
+        **Basis**: the fit's stated validity interval
+        */
+        // (T2 - T2_min) * (T2_max - T2) [C^2] (computed)
+        in attribute domain_product_in : Real;
+        domain_product_in >= 0.0
+    }
 }

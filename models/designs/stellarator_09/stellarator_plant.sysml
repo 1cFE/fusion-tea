@@ -417,8 +417,11 @@ package stellarator_09 {
         part :>> turbine {
             doc /*
             cost_per_mw: defaults.py:580 (POWER_CYCLE_DEFAULTS RANKINE turbine_per_mw
-            = 0.20284 M$/MW) x 1e6. Stellaris uses a steam (Rankine) cycle at
-            eta_th = 1/3 (details.md line 251).
+            = 0.20284 M$/MW) x 1e6. The per-MW rate is the 1costingFE RANKINE
+            preset's; the cycle's efficiency is computed by 'Power Cycle
+            Efficiency' on Kovari 2016's helium-primary Rankine row (WI-045) --
+            the Stellaris paper assumes a simple 1/3 and names no cycle
+            (details.md line 251).
             **Source**: /home/reid/1cfe/1costingfe/src/costingfe/defaults.py
             **Ref**: defaults.py:578-581 (RANKINE preset)
             **Basis**: turbine plant linear in thermal-electric power
@@ -776,35 +779,175 @@ package stellarator_09 {
         :>> mn = 1.2 {        // blanket neutron energy multiplier.
             doc /* **Source**: stellaris-design-details.md **Ref**: line 1664/1831 (power multiplication 1.20, HCLL blanket) **Basis**: Stellaris HCLL blanket energy multiplication */
         }
-        :>> eta_th = 0.333 {  // thermal-to-electric efficiency (1/3).
-            doc /* **Source**: stellaris-design-details.md **Ref**: line 251 (single-element conversion efficiency 1/3) **Basis**: Stellaris steam-cycle thermal efficiency */
-        }
-        :>> eta_p = 0.5 {     // pumping-power capture efficiency.
-            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:14 (eta_p = 0.5) **Basis**: 1costingFE stellarator pumping efficiency */
-        }
-        :>> p_pump = 195.0 {  // primary coolant pumping power [MW] -- helium-primary circulator basis (WI-033).
+        // ---- Primary loop and cycle (WI-045, goal plant-closure) ----
+        // LIVE: the loop and the fit feed the power balance. The compatibility
+        // arm of the round's study sets loop_live 0, cycle_live 0, p_pump_direct
+        // 195.0, eta_p_direct 0.5, eta_th_direct 0.333 and reproduces the
+        // WI-044 pin bit-for-bit (goal plant-closure, packet section 3).
+        //
+        // DISCLOSURES (WI-045 MR-WI045-14):
+        // (a) The representative circuit is EU DEMO HCPB's (Moscato 2017; HCPB
+        //     PHTS representative of HCLL, Cismondi output.md:172), NOT Stellaris'
+        //     layout, transferred at fixed circuit with the loop count sized once
+        //     at the design point.
+        // (b) Stellaris' own printed thermal statement is local -- 350 C inlet and
+        //     under 370 C outlet on one plasma-facing first-wall segment (raw PDF
+        //     p. 16 sec. 2.7, Fig. 27) -- not a blanket outlet or a cycle hot-side
+        //     temperature; the paper assumes a simple 1/3 conversion and names no
+        //     cycle; its conclusion lists pumping estimates as future work (p. 31).
+        // (c) The 195 MW held value is kept as p_pump_direct (the compatibility
+        //     term) and as the study's named historical comparison arm; the live
+        //     chain is a hydraulic law (mdot^3 / n_loops^2 at fixed count), not the
+        //     fraction of p_th the owner rejected [OWNER 2026-08-28]; a real loop
+        //     calculation needs no reopening of WI-033 [OWNER 2026-09-01].
+        // (d) eta_is is a source-point calibration on the reference's own energy
+        //     check, never a validation; eta_drive 1.0 reads the printed circulator
+        //     figure as the boundary, so the electrical draw is a LOWER BOUND.
+        // (e) The fit's literal 273 is the printed convention (the physical 273.15
+        //     converts kelvin to Celsius); delta_eta 0 (no divertor loop); the sCO2
+        //     row is a study arm on the same heat, not a second live cycle.
+        // (f) The loss law is a constant loss coefficient at the reference's
+        //     nominal density (constant ideal-gas properties; the reference's own
+        //     implied cp 0.10 % under ideal helium) and at the reference's fixed
+        //     geometry -- no R/a transfer of the circuit is supported.
+        // (g) Surfaced missing inputs: the compressor drive losses (retrieval
+        //     target: Moscato's preliminary circulator design); a helium property
+        //     table over 8 MPa / 300-500 C; the loop's own geometry for any R/a
+        //     transfer (pipe routing, channel count). None is defaulted.
+        :>> loop_live = 1.0;
+        :>> cycle_live = 1.0;
+        :>> p_pump_direct = 0.0 {  // the held 195.0 MW lives here in the dormant mode.
             doc /*
-            Re-based from the 1costingFE default 1.0 MW -- a ~150x understatement
-            for a helium-cooled ~3240 MWth plant (DI-008, amended 2026-08-28) --
-            to 6% of the baseline computed p_th (3238.1 MW -> 194.3), landed
-            rounded at 195.0 [OWNER 2026-08-28]. HELD, SETTABLE INPUT by owner
-            ruling (goal p-pump-basis, trail, Goal close Ruling 2): a computed
-            fraction of p_th would assert a linearity across swept (R, a) that
-            no source establishes, and would retire a study lever in two
-            committed studies. Re-derive the scalar when the design point moves.
-            KNOWING TRACEABILITY-FIRST CHOICE (Ruling 3): the documented lower
-            bound is ~130 MW (~4% of blanket thermal -- Moscato's near-term
-            8-loop design, 16 compressors x 5.9/5.2 MW = 83-94 MW at
-            2101.7 MWth; the f_uplift_cryo exclude-with-documented-bound
-            pattern). Cismondi's ~150 MW (~6.3% of the 2389 MW deposited; the
-            2017 9-loop layout reconstructs as 3x2x6.8 + 6x2x7.5 = 130.8 MW
-            from Moscato Table 3) is a preliminary figure for one unoptimized
-            layout its own authors expect to fall (larger pipes: ~9 km of loop
-            piping -> ~3 km).
-            **Source**: knowledge/sources/progress_in_eu_breeding_blanket_design_and_integration/ (Cismondi et al., EUROfusion WPPMI-CPR(17) 17709); knowledge/sources/progress_in_the_design_development_of_eu_demo_helium_cooled/ (Moscato et al., EUROfusion WPBOP-CPR(18) 20276)
-            **Ref**: Cismondi output.md:174 (helium pumping power ~150MW, one order of magnitude above water ~15MW; 9km->3km pipe lever), :172 (HCPB PHTS representative for HCLL); Moscato output.md:81 (2101.7 MW blanket thermal), :89-:91 (9 loops: 3 IB + 6 OB), :145/:154 (Table 3: circulator power 6.8 IB / 7.5 OB MW, 2 compressors per loop per Table 1); Moscato raw.pdf p.7 Table 4 (near-term 5.9 STHE / 5.2 CWHE MW -- table body absent from output.md, re-derived from the registered raw PDF)
-            **Basis**: 6% of the baseline computed p_th = 3238.1 MW (goal p-pump-basis trail:149, baseline_result.json@ffa5c54c), rounded to 195.0 [OWNER 2026-08-28]; ~130 MW recorded as documented lower bound per Ruling 3
+            Dormant-mode primary pump electrical draw [MW]. Zero while the loop
+            is live. The value the compatibility arm binds is the WI-033 held
+            figure, 195.0 MW -- 6 % of the then-baseline p_th 3238.1 MW, landed
+            rounded [OWNER 2026-08-28] as a HELD, SETTABLE INPUT (goal p-pump-basis
+            Ruling 2: a fraction of p_th would assert a linearity across swept
+            (R, a) no source establishes), with ~130 MW the documented lower bound
+            (Ruling 3; Moscato's near-term 8-loop layout). WI-045 replaces the
+            held scalar by a hydraulic law (mdot^3 / n_loops^2 at fixed count) --
+            not the rejected fraction -- under the concept correction
+            [OWNER 2026-09-01] that a real loop calculation needs no reopening of
+            WI-033; the 195.0 MW stays as this term and as the study's named
+            historical comparison arm.
+            **Source**: work/orchestration/goals/p-pump-basis/trail.md (Goal close, Rulings 2-3);
+                .project/concepts/stellarator-demo-maturation.md (Corrections 2026-09-01)
+            **Ref**: WI-033 spec line 22 (the reason of record); Moscato output.md:145-154
+            **Basis**: the pre-WI-045 held value, kept for the attribution bridge
             */
+        }
+        :>> eta_p_direct = 0.0 {  // the held 0.5 lives here in the dormant mode.
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:14 (eta_p = 0.5) **Basis**: the pre-WI-045 pumping-heat capture fraction; zero while the loop recovers its own fluid work */
+        }
+        :>> eta_th_direct = 0.0 {  // the held 0.333 lives here in the dormant mode.
+            doc /* **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md **Ref**: line 251 (single-element conversion efficiency 1/3) **Basis**: the source's simple 1/3 assumption -- it names no cycle (the earlier comment's "steam-cycle" overstated it); the pre-WI-045 held efficiency, kept for the attribution bridge */
+        }
+        // The representative circuit: EU DEMO HCPB's (Moscato 2017), transferred
+        // at fixed circuit with the loop count sized at the design point. NOT
+        // Stellaris' layout: the paper's own thermal statement is local -- 350 C
+        // inlet and under 370 C outlet on one plasma-facing first-wall segment
+        // (raw PDF p. 16 sec. 2.7, Fig. 27) -- and its conclusion lists pumping
+        // estimates as future work (p. 31). HCPB's PHTS is representative of
+        // HCLL (Cismondi output.md:172), Stellaris' blanket class.
+        :>> loop_T_in = 573.15 {  // 300 C blanket inlet [K].
+            doc /* **Source**: knowledge/sources/progress_in_the_design_development_of_eu_demo_helium_cooled/output.md **Ref**: output.md:79 (helium at 8 MPa and 300 C ... outlet manifold at 500 C; the 300-500 C EUROFER window) **Basis**: the reference circuit's blanket inlet */
+        }
+        :>> loop_dT_blanket = 200.0 {  // 300 -> 500 C [K].
+            doc /* **Source**: knowledge/sources/progress_in_the_design_development_of_eu_demo_helium_cooled/output.md **Ref**: output.md:79 **Basis**: the reference circuit's blanket rise; held, so the outlet is 500 C by construction and the flow follows the heat */
+        }
+        :>> loop_cp = 5193.0 {  // ideal helium [J/(kg K)].
+            doc /* **Source**: NIST JANAF helium (cp 20.786 J/(mol K)); NIST WebBook (M 4.002602 g/mol) **Ref**: knowledge/research/pending/20260907-163520_primary-loop-cycle-closure-prework.md section D line 86 **Basis**: ideal-gas helium; the reference's own implied cp is 5187.6 (0.10 % under), reported by the reconstruction, not fitted */
+        }
+        :>> loop_gamma = 1.6666666666666667 {  // monatomic ideal gas [1].
+            doc /* **Source**: NASA compressor thermodynamics **Ref**: knowledge/research/pending/20260907-163520_primary-loop-cycle-closure-prework.md section D line 84 **Basis**: gamma = 5/3 for helium */
+        }
+        :>> loop_p = 8000000.0 {  // 8 MPa [Pa].
+            doc /* **Source**: knowledge/sources/progress_in_the_design_development_of_eu_demo_helium_cooled/output.md **Ref**: output.md:79 **Basis**: the reference circuit's pressure */
+        }
+        :>> n_loops = 14.0 {  // sized at the design point, then held.
+            doc /*
+            The smallest integer for which the design point's per-loop flow does
+            not exceed the reference per-loop flow: 3010.64 / 225.08 = 13.38 -> 14
+            (per-loop 215.05 kg/s, 4.5 % under the rating). A settable input and a
+            study lever, never a computed ceil (outside the codegen envelope and a
+            size optimizer the goal does not authorize). Off the design point a
+            bigger plant exceeds the rating at this count and must add loops:
+            the committed cheapest machine c2823 needs 27.
+            **Source**: work/active/WI-045_primary-loop-and-cycle/prototype/proto.py (the sizing rule on the reference's 2025.7 kg/s over 9 loops)
+            **Ref**: Moscato output.md:81, :89-91
+            **Basis**: capacity by count, sized once at the design point
+            */
+        }
+        :>> mdot_loop_ref = 225.07777777777778 {  // 2025.7 / 9 [kg/s], the rated per-loop flow.
+            doc /* **Source**: knowledge/sources/progress_in_the_design_development_of_eu_demo_helium_cooled/output.md **Ref**: output.md:81 (2025.7 kg/s), :89-91 (9 loops) **Basis**: the reference per-loop flow; the loss law's anchor and 'Loop Capacity''s rating */
+        }
+        :>> dp_loop_ref = 329187.1856931558 {  // flow-weighted per-path loss [Pa].
+            doc /*
+            The IB path 214 + 62 + 87.9 = 363.9 kPa and the OB path 174 + 56.6 +
+            85.1 = 315.7 kPa (in-vessel, ex-vessel piping, IHX -- Table 3's kPa
+            basis; Table 2 prints the IHX row's unit as MPa, the source's own
+            inconsistency, cited not corrected), weighted by IHX duty over 3 IB
+            and 6 OB loops (weighting by flow share at the common 200 K rise):
+            (3*208.1*363.9 + 6*267.8*315.7) / 2231.1 = 329.187 kPa. Each path is
+            a serial sum; the two paths are parallel and never added.
+            **Source**: knowledge/sources/progress_in_the_design_development_of_eu_demo_helium_cooled/output.md; raw.pdf p. 6
+            **Ref**: Table 3 :151-154; Table 2 :128
+            **Basis**: the representative path's loss at the reference per-loop flow (design D1)
+            */
+        }
+        :>> f_loss = 1.0;
+        :>> eta_is = 0.772796639536644 {  // SOURCE-POINT CALIBRATION, not a validation.
+            doc /*
+            The isentropic efficiency at which the reference circuit's fluid work
+            on this calc's own compressor form equals the source's energy check:
+            IHX duty 2231.1 - blanket heat 2101.7 = 129.4 MW at 2025.7 kg/s, i.e.
+            a 12.301 K compressor rise from 560.85 K to 573.15 K against the
+            isentropic 9.506 K at pressure ratio 8 / (8 - 0.3292):
+            eta_is = (r^0.4 - 1) * T1 / dT = 0.772796639536644. The same number
+            fits this efficiency and is therefore NOT evidence for it; the
+            reconstruction (SV row) is a reconstruction of the source's arithmetic
+            at the source's point. The 130.8 MW printed circulator total stands
+            1.4 MW above the fluid work and is not folded in (design D2).
+            **Source**: knowledge/sources/progress_in_the_design_development_of_eu_demo_helium_cooled/output.md
+            **Ref**: Table 2 :128 (IHX duties), :81 (blanket heat, flow), Table 3 :151-154
+            **Basis**: source-point calibration on the reference's own energy check
+            */
+        }
+        :>> eta_drive = 1.0 {  // the source's printed circulator boundary; a LOWER BOUND.
+            doc /*
+            The source prints one circulator figure per unit (6.8 IB / 7.5 OB MW)
+            whose motor/shaft boundary it does not resolve; the total 130.8 MW
+            agrees with the fluid work (129.4 MW) within 1.4 MW, so the printed
+            figure is read as the fluid-work boundary and the electrical draw is
+            the fluid work -- a lower bound on the true draw (drive losses are a
+            surfaced missing input; retrieval target: Moscato's preliminary
+            circulator design). The WI-033 documented-lower-bound pattern.
+            **Source**: knowledge/sources/progress_in_the_design_development_of_eu_demo_helium_cooled/output.md
+            **Ref**: Table 3 :154 (circulator power 6.8 / 7.5 MW)
+            **Basis**: printed boundary; no admissible drive efficiency
+            */
+        }
+        // The cycle: Kovari et al. 2016 Table 4, helium-primary steam Rankine row.
+        :>> dT_approach = 20.0 {  // T1 - T2 [K].
+            doc /* **Source**: knowledge/sources/process_a_systems_code_for_fusion_power_plants_part_2/output.md **Ref**: output.md:355 (Table 4, T1-T2 = 20 C for the helium row); render work/orchestration/goals/plant-closure/evidence/grounding_sources/kovari2016_p9_table4.png **Basis**: the fit's stated primary-to-secondary approach; one approach only -- the reference's HITEC intermediate loop is not modelled (design D4) */
+        }
+        :>> a_fit = 0.1802 {
+            doc /* **Source**: knowledge/sources/process_a_systems_code_for_fusion_power_plants_part_2/output.md **Ref**: output.md:355 (0.1802 ln(T2 + 273) - 0.7823 - delta_eta) **Basis**: the printed helium-primary Rankine fit, used literally */
+        }
+        :>> b_fit = 0.7823 {
+            doc /* **Source**: knowledge/sources/process_a_systems_code_for_fusion_power_plants_part_2/output.md **Ref**: output.md:355 **Basis**: as a_fit */
+        }
+        :>> T_offset_fit = 273.0 {  // the fit's literal, not the physical 273.15.
+            doc /* **Source**: knowledge/sources/process_a_systems_code_for_fusion_power_plants_part_2/output.md **Ref**: output.md:355 (ln(T2 + 273)) **Basis**: the printed fit convention (research section D: "the literal 273 is a fit convention, not a replacement for physical Celsius-to-kelvin conversion elsewhere") */
+        }
+        :>> T2_min = 384.0 {
+            doc /* **Source**: knowledge/sources/process_a_systems_code_for_fusion_power_plants_part_2/output.md **Ref**: output.md:355 (T2 range 384-642 C) **Basis**: the fit's stated domain */
+        }
+        :>> T2_max = 642.0 {
+            doc /* **Source**: knowledge/sources/process_a_systems_code_for_fusion_power_plants_part_2/output.md **Ref**: output.md:355 **Basis**: the fit's stated domain */
+        }
+        :>> delta_eta = 0.0 {  // no low-temperature divertor loop in the model.
+            doc /* **Source**: knowledge/sources/process_a_systems_code_for_fusion_power_plants_part_2/output.md **Ref**: output.md:355 (the -delta_eta term; the text: divertor heat used in a separate feedwater preheater for Rankine) **Basis**: not applied -- the model carries no divertor coolant loop; the sCO2 row (0.4347 ln(T2 + 273) - 2.5043, 135-750 C) is a study arm on the same heat, not a second live cycle */
         }
         :>> f_sub = 0.03 {    // subsystem/control power fraction.
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:17 (f_sub = 0.03) **Basis**: 1costingFE stellarator subsystem power fraction */

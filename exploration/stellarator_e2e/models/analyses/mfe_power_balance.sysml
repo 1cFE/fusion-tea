@@ -26,6 +26,16 @@ package mfe_power_balance {
         Charged-particle power reaches the wall as radiation or as transport;
         both are recovered thermally, so no radiation model is needed here.
 
+        WI-045 (goal plant-closure): the recovered term arrives as
+        q_recovered_in from 'Primary Coolant Loop' (the loop's fluid work when
+        the loop is live; eta_p_direct * p_pump_direct when it is dormant) at
+        the position eta_p * p_pump occupied, and the pump draw arrives as
+        p_pump_total_in (loop_live * p_elec + p_pump_direct) at the position
+        p_pump occupied. In the dormant mode both are the old held scalars to
+        the bit, so this calc's sums are unchanged in every operand and
+        position; the credit's meaning is unchanged. The reactor's source heat
+        without the credit is published by 'Reactor Source Heat' below.
+
         Validity conditions (documented regime, WI-019 MR-WI019-4):
           1. f_dec = 0 -- no direct energy conversion (standing WI-009
              deviation, out of scope).
@@ -56,8 +66,11 @@ package mfe_power_balance {
         in attribute mn_in : Real;
         // Thermal-to-electric efficiency
         in attribute eta_th_in : Real;
-        // Pumping power capture efficiency
-        in attribute eta_p_in : Real;
+        // Recovered pump heat entering the thermal sum [MW] (WI-045): the loop's
+        // fluid work when the loop is live, or eta_p_direct * p_pump_direct when
+        // it is dormant -- formed inside 'Primary Coolant Loop' so that in the
+        // dormant mode the value is exactly the old eta_p * p_pump scalar.
+        in attribute q_recovered_in : Real;
         // Wall-plug electrical power drawn by the heating system [MW].
         // WI-039: arrives computed from the heating chain ('Heating Power
         // Chain', mfe_heating_chain.sysml) rather than being derived here
@@ -65,8 +78,9 @@ package mfe_power_balance {
         in attribute p_wallplug_in : Real default 0.0;
 
         // === PUMPING / SUBSYSTEM POWER ===
-        // Primary coolant pumping power [MW]
-        in attribute p_pump_in : Real;
+        // Primary pump electrical draw entering the recirculating sum [MW]
+        // (WI-045): loop_live * p_elec + p_pump_direct, formed in the loop calc.
+        in attribute p_pump_total_in : Real;
         // Subsystem and control fraction
         in attribute f_sub_in : Real;
 
@@ -119,7 +133,7 @@ package mfe_power_balance {
         // thermal power (WI-010).
         // Source: physics.py:290-303 (p_input_eff, p_transport, p_wall, p_th)
         out attribute p_th : Real =
-            mn_in * p_neutron + p_alpha + p_input_in + eta_p_in * p_pump_in;
+            mn_in * p_neutron + p_alpha + p_input_in + q_recovered_in;
 
         // Thermal electric power. Exposed for the plant cost spine (WI-010).
         // Source: physics.py:306 (p_the = eta_th*p_th)
@@ -137,7 +151,7 @@ package mfe_power_balance {
         // p_input_in / eta_pin_in from two held constants.
         // Source: physics.py:321-323
         attribute recirculating : Real =
-            p_coils + p_pump_in + p_sub + p_aux + p_cool + p_cryo
+            p_coils + p_pump_total_in + p_sub + p_aux + p_cool + p_cryo
             + p_wallplug_in;
 
         // === OUTPUTS ===
@@ -150,5 +164,26 @@ package mfe_power_balance {
 
         // Net electric power [MW]. Source: physics.py:328 (p_net=(1-rec_frac)*p_et)
         out attribute p_net : Real = (1.0 - rec_frac) * p_et;
+    }
+    calc def 'Reactor Source Heat' {
+        doc /*
+        The reactor's heat with no pump credit (WI-045, goal plant-closure):
+          q_source = mn * p_neutron + p_alpha + p_input
+        the first three terms of 'MFE Power Balance Calc''s thermal sum in the
+        same order, published as its own producer so the primary loop can size
+        its flow from it without a dependency cycle (the power balance consumes
+        the loop's recovered heat). The alpha/neutron split is the inlined D-T
+        ratio 3.52/17.58 exactly as the power balance forms it, so q_source
+        equals the power balance's own partial sum to the bit.
+        **Source**: models/library/analyses/mfe_power_balance.sysml ('MFE Power Balance Calc', p_th)
+        **Ref**: WI-019 collapse p_th = mn*p_neutron + p_alpha + p_input + (recovered pump heat)
+        **Basis**: reactor source heat before the loop's own recovered work; the heat ledger's one source (packet § 5)
+        */
+        in attribute p_nrl : Real;
+        in attribute p_input_in : Real;
+        in attribute mn_in : Real;
+        attribute p_alpha : Real = (3.52 / 17.58) * p_nrl;
+        attribute p_neutron : Real = p_nrl - p_alpha;
+        out attribute q_source : Real = mn_in * p_neutron + p_alpha + p_input_in;
     }
 }

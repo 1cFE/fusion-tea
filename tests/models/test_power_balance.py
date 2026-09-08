@@ -271,11 +271,13 @@ class TestMFEPowerBalanceCalcInterface:
         input_names = [p.declared_name for p in inputs if p.declared_name]
 
         # Required inputs per current model (analyses/mfe_power_balance.sysml); the
-        # `_in` names are the D-5 rename (models/stellarator_migration_ledger.md)
+        # `_in` names are the D-5 rename (models/stellarator_migration_ledger.md).
+        # WI-045 (2026-09-08): eta_p_in and p_pump_in retired; q_recovered_in and
+        # p_pump_total_in arrive from 'Primary Coolant Loop' at the same positions.
         required_inputs = [
             "p_nrl", "p_input_in",  # Primary
-            "mn_in", "eta_th_in", "eta_p_in", "p_wallplug_in",  # Efficiencies
-            "p_pump_in", "f_sub_in",  # Pumping / subsystem
+            "mn_in", "eta_th_in", "q_recovered_in", "p_wallplug_in",  # Efficiencies / recovered heat
+            "p_pump_total_in", "f_sub_in",  # Pumping / subsystem
             "p_tf_in", "p_pf_in",  # Coil power
             "p_tfcool_in", "p_pfcool_in",  # Cooling
             "p_trit_in", "p_house_in", "p_cryo"  # Auxiliary

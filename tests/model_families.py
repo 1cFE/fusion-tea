@@ -66,6 +66,8 @@ MFE = Family(
         "analyses/mfe_plasma_scaling.sysml",
         "analyses/mfe_plasma_sustainment.sysml",
         "analyses/mfe_power_balance.sysml",
+        "analyses/mfe_power_cycle.sysml",  # WI-045 (2026-09-08): the cycle fit, handwritten stage
+        "analyses/mfe_primary_loop.sysml",  # WI-045 (2026-09-08): the representative helium circuit
         "analyses/mfe_viability.sysml",
         "cost_structure/cas_hierarchy.sysml",
         "cost_structure/mfe_power_core.sysml",

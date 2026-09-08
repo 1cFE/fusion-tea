@@ -40,20 +40,20 @@ Levels 1–3 after every model edit; the held-mode identity before anything else
 
 **Files.** `models/library/analyses/mfe_power_balance.sysml` (the source-heat calc; the two formals; the two sums), `mfe_primary_loop.sysml` (NEW), `mfe_power_cycle.sysml` (NEW), `mfe_viability.sysml` (three constraint defs), `models/designs/generic_mfe/mfe_plant.sysml` (imports; the attribute block replacing 413–421; the three usages; the `pb` lines; the three asserts), `models/designs/stellarator_09/stellarator_plant.sysml` (the block replacing 779–808; the turbine comment; the disclosure block); their six twins under `exploration/stellarator_e2e/models/` — COPY byte-for-byte.
 
-- [ ] Write the four library files and the two design files from design § Proposed design verbatim; re-read each against the design (formals, expressions, the dormancy defaults, every `Source`/`Ref`/`Basis`)
-- [ ] `uv run agentic-mbse validate models` — Level 1 0 errors; Level 2 the 12 pre-existing warnings only; Level 3 pass. **If Level 3 rejects `r_comp ** k_isen` or the chained outputs, stop:** that is the design's risk 4, a form question, not a number
-- [ ] `uv run agentic-mbse validate models --complete` → `prototype/validate_complete.txt`; Level 6 residue: expect the WI-044 residue plus 23 design attrs (207 → 230); record the actual
-- [ ] Copy each of the six files to its twin (`cp`); `cmp` clean on all six; `diff -rq` between the two trees shows no other difference
-- [ ] `uv run python -m pytest tests/models -q` — expect 47 / 1 / 13 with the one failure the census fingerprint test (re-derived in phase 4), as at WI-044 phase 1; any other delta explained here
+- [x] Write the four library files and the two design files from design § Proposed design verbatim; re-read each against the design (formals, expressions, the dormancy defaults, every `Source`/`Ref`/`Basis`)
+- [x] `uv run agentic-mbse validate models` — Level 1 0 errors; Level 2 the 12 pre-existing warnings only; Level 3 pass. **If Level 3 rejects `r_comp ** k_isen` or the chained outputs, stop:** that is the design's risk 4, a form question, not a number
+- [x] `uv run agentic-mbse validate models --complete` → `prototype/validate_complete.txt`; Level 6 residue: expect the WI-044 residue plus 23 design attrs (207 → 230); record the actual
+- [x] Copy each of the six files to its twin (`cp`); `cmp` clean on all six; `diff -rq` between the two trees shows no other difference
+- [x] `uv run python -m pytest tests/models -q` — expect 47 / 1 / 13 with the one failure the census fingerprint test (re-derived in phase 4), as at WI-044 phase 1; any other delta explained here
 
 **Gate.** Levels 1–3; twins identical; `tests/models` as expected with every delta explained.
 
 ## Phase 2 — The restatement and the predictions, written before regeneration; `evidence/baseline_before/`; commit A
 
-- [ ] Write `## MR-WI045-16 restatement` at the end of this plan (the section below, filled): (a) the committed columns keep their meaning; (b) live differs everywhere, held equals bit-for-bit; (c) three verdicts, the count sites; (d) the entry-point delta; (e) DI-007 scoped
-- [ ] Copy design § Expected baseline behaviour (both modes) and § Off-design predictions into `## Predictions` below with the exact `proto_results.json` values (the prediction of record precedes execution in git order)
-- [ ] `evidence/baseline_before/`: `study_route.execute_baseline(...)` on the unchanged package → `baseline_result.json`, `package_identity.json` (remove `_work/`); the single runner's output → `run_stellaris_single_output.txt`; confirm `package_identity.json` carries the WI-044 pin (indicator `30abb21be6d7…`, executable `7d295fec2c78…`) and 106 channels, ten verdicts, LCOE 322.31843948570247
-- [ ] **Commit A** with an explicit pathspec: the four library files, the two design files, the six twins, `work/active/WI-045_primary-loop-and-cycle/` (spec, design, plan, `prototype/`, `evidence/baseline_before/`); message names the restatement as preceding regeneration
+- [x] Write `## MR-WI045-16 restatement` at the end of this plan (the section below, filled): (a) the committed columns keep their meaning; (b) live differs everywhere, held equals bit-for-bit; (c) three verdicts, the count sites; (d) the entry-point delta; (e) DI-007 scoped
+- [x] Copy design § Expected baseline behaviour (both modes) and § Off-design predictions into `## Predictions` below with the exact `proto_results.json` values (the prediction of record precedes execution in git order)
+- [x] `evidence/baseline_before/`: `study_route.execute_baseline(...)` on the unchanged package → `baseline_result.json`, `package_identity.json` (remove `_work/`); the single runner's output → `run_stellaris_single_output.txt`; confirm `package_identity.json` carries the WI-044 pin (indicator `30abb21be6d7…`, executable `7d295fec2c78…`) and 106 channels, ten verdicts, LCOE 322.31843948570247
+- [x] **Commit A** with an explicit pathspec: the four library files, the two design files, the six twins, `work/active/WI-045_primary-loop-and-cycle/` (spec, design, plan, `prototype/`, `evidence/baseline_before/`); message names the restatement as preceding regeneration
 
 **Gate.** The restatement and the predictions are in git before any regenerated byte.
 
@@ -170,3 +170,17 @@ Every existing channel at P0 held is the entering pin's exactly; at P1 / P3 / P4
 ## Phase records
 
 *(appended as each phase completes)*
+
+### Phase 1 record — 2026-09-08
+
+- The six model files written from design § Proposed design verbatim (`scratchpad/wi045_phase1_edits.py`, string-replacement with single-occurrence asserts). **One deviation forced by the parser:** `loop` is a SysML keyword (the `loop` action), so Level 1 refused `calc loop : 'Primary Coolant Loop'` and every `loop.<output>` reference; the usage is named **`primary_loop`** and the channels the study will see are `primary_loop__*` (not the packet's / design's `loop__*`). The plant attributes `loop_live`, `loop_T_in`, … are ordinary identifiers and unaffected. Recorded for the packet's next amendment and the oracle seam's channel map (phase 3).
+- Levels 1–3: Level 1 0 errors (27 files); Level 2 the 12 pre-existing placeholder warnings (`prototype/validate_complete.txt` line 31, the same as before the change); Level 3 pass; Levels 4–5 pass; Level 6 236 → **248** issues (the five printed sites are the same expressions shifted by line numbers; the delta is the new design-attribute references — the design predicted 23 design attrs, the tool counts 12 more issues). No new residue class.
+- Twins: the six files copied byte-for-byte, `cmp` clean; `diff -rq` between the trees shows only the IFE-only files the twin tree never carried.
+- `tests/models`: first run 4 failed / 6 errors — `test_owned_paths_cover_every_canonical_file` (the two new library files were not in the MFE family's owned list) and the interface test `test_has_all_required_inputs` (it lists the calc's formals by name). Restated: `tests/model_families.py` MFE `owned` +2 (the WI-039 precedent, dated comment); `tests/models/test_power_balance.py` `required_inputs` `eta_p_in` → `q_recovered_in`, `p_pump_in` → `p_pump_total_in` (dated comment). Final: **47 passed / 1 failed / 13 skipped**, the one failure the census fingerprint test, re-derived in phase 4 — as at WI-044 phase 1.
+
+### Phase 2 record — 2026-09-08
+
+- The MR-WI045-16 restatement and the § Predictions table were written by the design task (T-003) and stand above; this record confirms they precede commit A in git order.
+- `evidence/baseline_before/`: `study_route.execute_baseline` on the unchanged package → `baseline_result.json` (106 channels, 10 verdicts, LCOE 322.31843948570247) and `package_identity.json` (sealed executable `7d295fec2c78…`, the WI-044 pin); `_work/` removed; the single runner's output → `run_stellaris_single_output.txt` (anchors green, verdict parity 10 / `full_satisfaction`, bit-exact vs oracle PASS).
+- Commit A: the four library files, the two design files, the six twins, the two test restatements, and this item's directory.
+

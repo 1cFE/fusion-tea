@@ -7,6 +7,8 @@ package mfe_plant {
     private import mfe_power_balance::*;
     private import mfe_cryo_plant::*;
     private import mfe_heating_chain::*;
+    private import mfe_primary_loop::*;
+    private import mfe_power_cycle::*;
     private import mfe_magnet_cost::*;
     private import mfe_magnet_field::*;
     private import mfe_account_costs::*;
@@ -411,12 +413,38 @@ package mfe_plant {
         // Power-balance inputs (WI-011).
         // neutron energy multiplier
         attribute mn : Real;
-        // thermal-to-electric efficiency
-        attribute eta_th : Real;
-        // pumping-power capture efficiency
-        attribute eta_p : Real;
-        // primary coolant pumping power [MW]
-        attribute p_pump : Real;
+        // ---- Primary loop and cycle (WI-045, goal plant-closure) ----
+        // The loop and the cycle are computed producers; the five attributes
+        // below select the mode. Dormant defaults: a concept that binds no
+        // circuit reads no loop and zero efficiency and MUST bind its own direct
+        // terms (the WI-039 EI-5 lesson) -- the mode is selected by the flags,
+        // never by a fact. Every circuit and fit fact is unbound here (the
+        // WI-044 D6 convention) and bound by the concrete instance.
+        attribute loop_live : Real default 0.0;
+        attribute cycle_live : Real default 0.0;
+        attribute p_pump_direct : Real default 0.0;
+        attribute eta_p_direct : Real default 0.0;
+        attribute eta_th_direct : Real default 0.0;
+        // circuit facts (instance-bound)
+        attribute loop_T_in : Real;
+        attribute loop_dT_blanket : Real;
+        attribute loop_cp : Real;
+        attribute loop_gamma : Real;
+        attribute loop_p : Real;
+        attribute n_loops : Real;
+        attribute mdot_loop_ref : Real;
+        attribute dp_loop_ref : Real;
+        attribute f_loss : Real default 1.0;
+        attribute eta_is : Real;
+        attribute eta_drive : Real default 1.0;
+        // fit facts (instance-bound)
+        attribute dT_approach : Real;
+        attribute a_fit : Real;
+        attribute b_fit : Real;
+        attribute T_offset_fit : Real;
+        attribute T2_min : Real;
+        attribute T2_max : Real;
+        attribute delta_eta : Real default 0.0;
         // subsystem/control fraction
         attribute f_sub : Real;
         // TF coil power [MW]
@@ -486,14 +514,52 @@ package mfe_plant {
             in p_coupled_direct = p_coupled_direct_heat;
         }
 
+        // WI-045: the reactor's source heat (no pump credit), the representative
+        // primary loop and the temperature-compatible cycle, upstream of the
+        // power balance. Dataflow: fusion, heat -> source_heat -> primary_loop -> cycle -> pb.
+        calc source_heat : 'Reactor Source Heat' {
+            in p_nrl = fusion.p_fus;
+            in p_input_in = heat.p_coupled;
+            in mn_in = mn;
+        }
+        calc primary_loop : 'Primary Coolant Loop' {
+            in q_source_in = source_heat.q_source;
+            in T_in_in = loop_T_in;
+            in dT_blanket_in = loop_dT_blanket;
+            in cp_in = loop_cp;
+            in gamma_in = loop_gamma;
+            in p_loop_in = loop_p;
+            in n_loops_in = n_loops;
+            in mdot_loop_ref_in = mdot_loop_ref;
+            in dp_loop_ref_in = dp_loop_ref;
+            in f_loss_in = f_loss;
+            in eta_is_in = eta_is;
+            in eta_drive_in = eta_drive;
+            in loop_live_in = loop_live;
+            in p_pump_direct_in = p_pump_direct;
+            in eta_p_direct_in = eta_p_direct;
+        }
+        calc cycle : 'Power Cycle Efficiency' {
+            in T_hot_in = primary_loop.T_out;
+            in dT_approach_in = dT_approach;
+            in a_fit_in = a_fit;
+            in b_fit_in = b_fit;
+            in T_offset_fit_in = T_offset_fit;
+            in T2_min_in = T2_min;
+            in T2_max_in = T2_max;
+            in delta_eta_in = delta_eta;
+            in cycle_live_in = cycle_live;
+            in eta_th_direct_in = eta_th_direct;
+        }
+
         calc pb : 'MFE Power Balance Calc' {
             in p_nrl = fusion.p_fus;
             in p_input_in = heat.p_coupled;
             in mn_in = mn;
-            in eta_th_in = eta_th;
-            in eta_p_in = eta_p;
+            in eta_th_in = cycle.eta_th;
+            in q_recovered_in = primary_loop.q_recovered_total;
             in p_wallplug_in = heat.p_wallplug_total;
-            in p_pump_in = p_pump;
+            in p_pump_total_in = primary_loop.p_pump_total;
             in f_sub_in = f_sub;
             in p_tf_in = p_tf;
             in p_pf_in = p_pf;
@@ -1080,6 +1146,18 @@ package mfe_plant {
         assert constraint cond_strain_ok : 'Conductor Strain Limit' {
             in eps_cond = cond_strain.eps_cond;
             in eps_cond_allow_in = magnet.eps_cond_allow;
+        }
+
+        // WI-045: the loop's two domain/capacity fences and the cycle's domain fence.
+        assert constraint loop_pressure_ok : 'Loop Pressure Margin' {
+            in p_loop_margin_in = primary_loop.p_loop_margin;
+        }
+        assert constraint loop_capacity_ok : 'Loop Capacity' {
+            in mdot_loop_in = primary_loop.mdot_loop;
+            in mdot_loop_rated_in = mdot_loop_ref;
+        }
+        assert constraint cycle_domain_ok : 'Cycle Fit Domain' {
+            in domain_product_in = cycle.domain_product;
         }
 
         // =====================================================================
