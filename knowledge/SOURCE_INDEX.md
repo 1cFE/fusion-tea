@@ -473,6 +473,22 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: 4d58343e8b46f79cb2bd806aba9a9837cf454057ccd54fbef7218e9ee51b5964
 - **Date Added**: 2026-09-05
 
+### PROCESS: a systems code for fusion power plants - Part 2: Engineering (Kovari et al. 2016)
+- **Type**: local_pdf
+- **Location**: knowledge/sources/process_a_systems_code_for_fusion_power_plants_part_2/
+- **Use for**: Table 4 secondary-cycle efficiency fits (helium-primary steam Rankine 0.1802 ln(T2+273)-0.7823, domain 384-642 C; sCO2 0.4347 ln(T2+273)-2.5043, 135-750 C; 20 C approach) and section 8 availability definitions (eq. 54 planned/unplanned overlap, eq. 55-59 blanket/divertor lifetimes and outages); serves RQ-1/RQ-2 for the stellarator demo's power-cycle and lifecycle closures (goal plant-closure, WI-045 / WI-046).
+- **Validation**: Compare the two fit rows and their T2 ranges against Table 4 on journal page 17 (PDF page 9); check eq. 54's sign (the overlap term is ADDED back) against the printed equation, not the live PROCESS documentation page which prints it with the wrong sign.
+- **Caveat**: A systems-code engineering paper: its fits are correlations on other codes' cycle modelling (Dostal for Rankine with a 0.0179 benchmark adjustment already inside the printed fit; CCFE/industry for sCO2), not measured plant efficiencies; its lifetime scalings are stated by its authors as very loose; screened section-level for the hold-out's barred names (zero matches), not a claim the whole paper is clean of ARIES-CS content.
+
+#### Extended Metadata
+- **Origin Path**: /tmp/claude-1000/-home-reid-1cfe-fusion-tea/62c1de19-8042-4dea-b909-a71da826820c/scratchpad/kovari2016.pdf
+- **Source ID**: f1acb2ed2d10c31bb82f4b8d6fcf5b8d7800d06d4bc465e19f305726d9f916f1
+- **Raw SHA256**: f1acb2ed2d10c31bb82f4b8d6fcf5b8d7800d06d4bc465e19f305726d9f916f1
+- **Raw Artifact SHA256**: f1acb2ed2d10c31bb82f4b8d6fcf5b8d7800d06d4bc465e19f305726d9f916f1
+- **Extracted Path**: knowledge/sources/process_a_systems_code_for_fusion_power_plants_part_2/
+- **Extract SHA256**: c842218c4258b3d495dc89ecd19b9393c99d0b42aa6d865943491ecca3649a81
+- **Date Added**: 2026-09-08
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md
