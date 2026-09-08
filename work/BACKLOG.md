@@ -163,8 +163,8 @@ epics:
   - id: WI-044
     name: Minor-Radius Bound and Wall-Peak Calibration Re-Anchoring
     scale: standard
-    status: backlog
-    completed: null
+    status: completed
+    completed: '2026-09-08'
 - name: Pipeline De-Risk & Demonstration
   goal: null
   priority: P0
@@ -267,7 +267,7 @@ standalone:
 | WI-041 | Source-Anchored Wall-Load Fence | standard | completed | Completed 2026-09-05 |
 | WI-042 | Sourced Helium-Ash Profile | standard | completed | Completed 2026-09-06 |
 | WI-043 | Burn-Control Lever or Second Sustainment Inequality | standard | completed | Completed 2026-09-07 |
-| WI-044 | Minor-Radius Bound and Wall-Peak Calibration Re-Anchoring | standard | backlog |  |
+| WI-044 | Minor-Radius Bound and Wall-Peak Calibration Re-Anchoring | standard | completed | Completed 2026-09-08 |
 
 ## Epic: Pipeline De-Risk & Demonstration
 **Priority**: P0 | **Status**: active

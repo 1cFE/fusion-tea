@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Epic: MFE Cost Modeling — Tokamak & Stellarator
 Owner: reid
 Created: 2026-09-07
-Updated: 2026-09-07
+Updated: '2026-09-08'
 ---
 
 # WI-044: The Magnet Chain Sees the Coil Bore — peak field, stored energy and casing mass from coil geometry, anchored at the design point
