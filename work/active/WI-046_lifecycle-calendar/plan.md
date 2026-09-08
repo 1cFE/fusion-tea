@@ -105,8 +105,8 @@ Levels 1–3 after every model edit; the held-mode diff before anything else aft
 
 ## Phase 5 — The `tests/study` run of record; commit C
 
-- [ ] After commit B, `tests/study` on the clean tree (detached; ~11 min last time); record the count and the failing set; confirm the failing set equals the pre-existing fail-closed set or explain every difference
-- [ ] **Commit C**: any test-file restatement the run forced, and this plan's phase-5 record
+- [x] After commit B, `tests/study` on the clean tree (detached; ~11 min last time); record the count and the failing set; confirm the failing set equals the pre-existing fail-closed set or explain every difference
+- [x] **Commit C**: any test-file restatement the run forced, and this plan's phase-5 record
 
 ---
 
@@ -182,3 +182,11 @@ The LCOE column is the exact form (`lcoe_exact`: the numerator with the calendar
 - **Validation** (`evidence/validate_complete_after.txt`): unchanged from phase 1 (Level 2 the 12 placeholders; Level 6 252). **`tests/models`: 63 passed / 13 skipped.** The affected `tests/study` files cannot run before commit B (the git-clean gate refuses the uncommitted package tree — the WI-045 phase-4 note); they are phase 5's.
 - **SV-066, SV-067, SV-068** added and `passing`; two trace rows (`'Lifecycle Calendar'`; the four instance bindings).
 - Commit B: the regenerated package (the retired module and impl deleted), the new impl, the oracle, the seam, the route, the two runner files, the pin files (snapshot, manifest, census), the axes file and the six fixtures (one moved), the five restated study tests, the new models test, the two PM matrices, this item's `evidence/` and plan.
+
+### Phase 5 record — 2026-09-08
+
+- **The run of record** (`evidence/tests_study_run_of_record.txt`, one battery, detached with `setsid nohup` on the tree at commit B `9f6058f6`, polled with short foreground loops): **86 failed / 424 passed / 1 skipped in 11:36** — the entry count exactly; every failure in `test_study_publication_fail_closed.py` (the 75 pre-existing fail-closed cases + 11 for `20260907-minor-radius`), no other failing test, no errors. The eight restated and neighbouring files had already passed in isolation on the committed tree (107 passed / 1 skipped: `test_known_answers`, `test_operand_bindings`, `test_valid_empty`, `test_subset_flag`, `test_output_contract`, `test_verify`, `test_numeric_evidence`, `test_committed_store`); no test-file restatement was forced by the battery — WI-045's two late sites (`test_verify`, `test_numeric_evidence`) did not move for this item (no verdict added; the cycle channel unchanged).
+- **A launch that did not fire, recorded:** the first detached launch was guarded by `pgrep -f 'pytest tests/study'`, whose pattern matched the tool shell's own command line (the recorded gotcha), so the guard refused and six minutes of polling read an absent file; relaunched with a bracket pattern (`[p]ython3 -m pytest tests/study`) — the one run above is the run of record. No second battery ran.
+- **Commit C:** this plan and the run of record.
+- The tree is handed to WI-047's plan (packet § 9); its `evidence/baseline_before/` is this item's `evidence/baseline_live/` (live: 136 channels, thirteen verdicts, LCOE 224.60952472804465, availability 0.9027777777777779; held: WI-045's 237.2528002420958 through the compatibility proposal `availability_direct 0.85`).
+
