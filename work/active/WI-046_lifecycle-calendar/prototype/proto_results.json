@@ -1,0 +1,409 @@
+{
+ "design_point": {
+  "q_peak": 3.9788448937763854,
+  "fluence_limit": 18.0,
+  "N": 30.0,
+  "i": 0.07,
+  "cost_per_event": 816069911.5659939,
+  "coil_life": 10.0,
+  "physical_life_fpy": 4.5239260339489915,
+  "held_L_cal": 5.322265922292932
+ },
+ "held": {
+  "physical_life_fpy": 4.5239260339489915,
+  "n_replacements": 5.0,
+  "productive_fpy": 25.5,
+  "planned_downtime_yr": 0.0,
+  "unplanned_downtime_yr": 4.5,
+  "terminal_downtime_yr": 0.0,
+  "availability": 0.85,
+  "replacement_pv": 1571600794.5219266,
+  "cas72_annual": 126649655.78572692,
+  "coil_life_margin_fpy": -15.5,
+  "dated_energy_ratio": 1.0,
+  "events": [
+   5.322265922292932,
+   10.644531844585863,
+   15.966797766878795,
+   21.289063689171726,
+   26.611329611464658
+  ]
+ },
+ "held_equals_mirror": true,
+ "mirror": 126649655.78572692,
+ "baseline_lcoe": 322.3184394857024,
+ "live": {
+  "7mo_u0": {
+   "physical_life_fpy": 4.5239260339489915,
+   "n_replacements": 5.0,
+   "productive_fpy": 27.083333333333336,
+   "planned_downtime_yr": 2.916666666666667,
+   "unplanned_downtime_yr": 0.0,
+   "terminal_downtime_yr": 0.0,
+   "availability": 0.9027777777777779,
+   "replacement_pv": 1691226685.2130158,
+   "cas72_annual": 136289876.0833351,
+   "coil_life_margin_fpy": -17.083333333333336,
+   "dated_energy_ratio": 1.0051616112988944,
+   "events": [
+    4.5239260339489915,
+    9.631185401231317,
+    14.738444768513641,
+    19.845704135795966,
+    24.95296350307829
+   ],
+   "identity_residual": 3.552713678800501e-15
+  },
+  "7mo_u005": {
+   "physical_life_fpy": 4.5239260339489915,
+   "n_replacements": 5.0,
+   "productive_fpy": 25.72916666666667,
+   "planned_downtime_yr": 2.916666666666667,
+   "unplanned_downtime_yr": 1.354166666666667,
+   "terminal_downtime_yr": 0.0,
+   "availability": 0.8576388888888891,
+   "replacement_pv": 1628962456.2871566,
+   "cas72_annual": 131272225.8068076,
+   "coil_life_margin_fpy": -15.729166666666671,
+   "dated_energy_ratio": 1.0092808735586443,
+   "events": [
+    4.762027404156833,
+    10.107388141647,
+    15.452748879137168,
+    20.798109616627332,
+    26.143470354117497
+   ],
+   "identity_residual": 7.105427357601002e-15
+  },
+  "7mo_u010": {
+   "physical_life_fpy": 4.5239260339489915,
+   "n_replacements": 5.0,
+   "productive_fpy": 24.375000000000007,
+   "planned_downtime_yr": 2.916666666666667,
+   "unplanned_downtime_yr": 2.7083333333333344,
+   "terminal_downtime_yr": 0.0,
+   "availability": 0.8125000000000002,
+   "replacement_pv": 1563272840.8402607,
+   "cas72_annual": 125978535.94991434,
+   "coil_life_margin_fpy": -14.375000000000007,
+   "dated_energy_ratio": 1.0134202110184956,
+   "events": [
+    5.026584482165546,
+    10.636502297664425,
+    16.246420113163303,
+    21.85633792866218,
+    27.46625574416106
+   ],
+   "identity_residual": 1.0658141036401503e-14
+  },
+  "5mo_u0": {
+   "physical_life_fpy": 4.5239260339489915,
+   "n_replacements": 6.0,
+   "productive_fpy": 27.5,
+   "planned_downtime_yr": 2.5,
+   "unplanned_downtime_yr": 0.0,
+   "terminal_downtime_yr": 0.0,
+   "availability": 0.9166666666666666,
+   "replacement_pv": 1830170535.2824168,
+   "cas72_annual": 147486861.25041518,
+   "coil_life_margin_fpy": -17.5,
+   "dated_energy_ratio": 1.0118678661630118,
+   "events": [
+    4.5239260339489915,
+    9.464518734564649,
+    14.405111435180306,
+    19.345704135795962,
+    24.286296836411623,
+    29.226889537027283
+   ],
+   "identity_residual": 0.0
+  },
+  "5mo_u005": {
+   "physical_life_fpy": 4.5239260339489915,
+   "n_replacements": 5.0,
+   "productive_fpy": 26.520833333333332,
+   "planned_downtime_yr": 2.0833333333333335,
+   "unplanned_downtime_yr": 1.3958333333333333,
+   "terminal_downtime_yr": 0.0,
+   "availability": 0.8840277777777777,
+   "replacement_pv": 1653471590.9159946,
+   "cas72_annual": 133247328.8197153,
+   "coil_life_margin_fpy": -16.520833333333332,
+   "dated_energy_ratio": 1.0051571938643915,
+   "events": [
+    4.762027404156833,
+    9.940721474980332,
+    15.119415545803832,
+    20.298109616627332,
+    25.476803687450833
+   ],
+   "identity_residual": -3.552713678800501e-15
+  },
+  "5mo_u010": {
+   "physical_life_fpy": 4.5239260339489915,
+   "n_replacements": 5.0,
+   "productive_fpy": 25.124999999999996,
+   "planned_downtime_yr": 2.0833333333333335,
+   "unplanned_downtime_yr": 2.791666666666667,
+   "terminal_downtime_yr": 0.0,
+   "availability": 0.8374999999999999,
+   "replacement_pv": 1586250943.053476,
+   "cas72_annual": 127830258.56678806,
+   "coil_life_margin_fpy": -15.124999999999996,
+   "dated_energy_ratio": 1.0080957729663487,
+   "events": [
+    5.026584482165546,
+    10.46983563099776,
+    15.913086779829973,
+    21.356337928662185,
+    26.7995890774944
+   ],
+   "identity_residual": -3.552713678800501e-15
+  },
+  "10mo_u0": {
+   "physical_life_fpy": 4.5239260339489915,
+   "n_replacements": 5.0,
+   "productive_fpy": 25.833333333333336,
+   "planned_downtime_yr": 4.166666666666667,
+   "unplanned_downtime_yr": 0.0,
+   "terminal_downtime_yr": 0.0,
+   "availability": 0.8611111111111112,
+   "replacement_pv": 1653666657.5758622,
+   "cas72_annual": 133263048.54027896,
+   "coil_life_margin_fpy": -15.833333333333336,
+   "dated_energy_ratio": 1.012757014874591,
+   "events": [
+    4.5239260339489915,
+    9.881185401231317,
+    15.238444768513641,
+    20.595704135795966,
+    25.95296350307829
+   ],
+   "identity_residual": 3.552713678800501e-15
+  }
+ },
+ "lcoe_live": {
+  "7mo_u0": {
+   "lcoe_oracle_availability_only": 304.6095238201181,
+   "lcoe_with_live_cas72": null
+  },
+  "7mo_u005": {
+   "lcoe_oracle_availability_only": 319.62453155167805,
+   "lcoe_with_live_cas72": null
+  },
+  "7mo_u010": {
+   "lcoe_oracle_availability_only": 336.25567046054186,
+   "lcoe_with_live_cas72": null
+  },
+  "5mo_u0": {
+   "lcoe_oracle_availability_only": 301.81938077733946,
+   "lcoe_with_live_cas72": null
+  },
+  "5mo_u005": {
+   "lcoe_oracle_availability_only": 310.66601796749694,
+   "lcoe_with_live_cas72": null
+  },
+  "5mo_u010": {
+   "lcoe_oracle_availability_only": 326.82949312111447,
+   "lcoe_with_live_cas72": null
+  },
+  "10mo_u0": {
+   "lcoe_oracle_availability_only": 318.41536090237776,
+   "lcoe_with_live_cas72": null
+  }
+ },
+ "synthetic": {
+  "L4_d7over12_N10": {
+   "physical_life_fpy": 4.0,
+   "n_replacements": 2.0,
+   "productive_fpy": 8.833333333333334,
+   "planned_downtime_yr": 1.1666666666666667,
+   "unplanned_downtime_yr": 0.0,
+   "terminal_downtime_yr": 0.0,
+   "availability": 0.8833333333333334,
+   "replacement_pv": 2.0,
+   "cas72_annual": 0.2,
+   "coil_life_margin_fpy": -8.833333333333334,
+   "dated_energy_ratio": 0.9999999999999996,
+   "events": [
+    4.0,
+    8.583333333333332
+   ],
+   "identity_residual": 0.0
+  },
+  "L4_N8.7": {
+   "physical_life_fpy": 4.0,
+   "n_replacements": 1.0,
+   "productive_fpy": 8.0,
+   "planned_downtime_yr": 0.5833333333333334,
+   "unplanned_downtime_yr": 0.0,
+   "terminal_downtime_yr": 0.11666666666666714,
+   "availability": 0.9195402298850576,
+   "replacement_pv": 1.0,
+   "cas72_annual": 0.1149425287356322,
+   "coil_life_margin_fpy": -8.0,
+   "dated_energy_ratio": 1.0,
+   "events": [
+    4.0
+   ],
+   "identity_residual": 1.7763568394002505e-15
+  },
+  "L4_N9.1667_equality": {
+   "physical_life_fpy": 4.0,
+   "n_replacements": 1.0,
+   "productive_fpy": 8.0,
+   "planned_downtime_yr": 0.5833333333333334,
+   "unplanned_downtime_yr": 0.0,
+   "terminal_downtime_yr": 0.5833333333333339,
+   "availability": 0.8727272727272728,
+   "replacement_pv": 1.0,
+   "cas72_annual": 0.1090909090909091,
+   "coil_life_margin_fpy": -8.0,
+   "dated_energy_ratio": 0.9999999999999997,
+   "events": [
+    4.0
+   ],
+   "identity_residual": 1.7763568394002505e-15
+  },
+  "L4_N9.1667_plus": {
+   "physical_life_fpy": 4.0,
+   "n_replacements": 2.0,
+   "productive_fpy": 8.000001,
+   "planned_downtime_yr": 1.1666666666666667,
+   "unplanned_downtime_yr": 0.0,
+   "terminal_downtime_yr": 0.0,
+   "availability": 0.8727272866115687,
+   "replacement_pv": 2.0,
+   "cas72_annual": 0.2181817943801679,
+   "coil_life_margin_fpy": -8.000001,
+   "dated_energy_ratio": 1.0,
+   "events": [
+    4.0,
+    8.583333333333332
+   ],
+   "identity_residual": 0.0
+  },
+  "q0": {
+   "physical_life_fpy": Infinity,
+   "n_replacements": 0.0,
+   "productive_fpy": 28.5,
+   "planned_downtime_yr": 0.0,
+   "unplanned_downtime_yr": 1.5,
+   "terminal_downtime_yr": 0.0,
+   "availability": 0.95,
+   "replacement_pv": 0,
+   "cas72_annual": 0.0,
+   "coil_life_margin_fpy": -18.5,
+   "dated_energy_ratio": 1.0,
+   "events": [],
+   "identity_residual": 0.0
+  },
+  "no_outage_u0": {
+   "physical_life_fpy": 4.5239260339489915,
+   "n_replacements": 6.0,
+   "productive_fpy": 30.0,
+   "planned_downtime_yr": 0.0,
+   "unplanned_downtime_yr": 0.0,
+   "terminal_downtime_yr": 0.0,
+   "availability": 1.0,
+   "replacement_pv": 1915719500.5810602,
+   "cas72_annual": 154380944.68792972,
+   "coil_life_margin_fpy": -20.0,
+   "dated_energy_ratio": 1.0,
+   "events": [
+    4.5239260339489915,
+    9.047852067897983,
+    13.571778101846974,
+    18.095704135795966,
+    22.61963016974496,
+    27.14355620369395
+   ],
+   "identity_residual": 0.0
+  },
+  "long_horizon": {
+   "availability": 0.8858611111111057,
+   "asymptote": 0.8857834914219881,
+   "n": 587.0
+  }
+ },
+ "lcoe_exact": {
+  "7mo_u0": {
+   "lcoe": 305.18438420593134,
+   "cas72_periodic_at_live_A": 133031924.39409044,
+   "annual_energy_mwh": 5667379.018708722
+  },
+  "7mo_u005": {
+   "lcoe": 320.3074063018397,
+   "cas72_periodic_at_live_A": 127595621.27690892,
+   "annual_energy_mwh": 5384010.067773285
+  },
+  "7mo_u010": {
+   "lcoe": 337.05664558147316,
+   "cas72_periodic_at_live_A": 121893049.31452812,
+   "annual_energy_mwh": 5100641.11683785
+  },
+  "5mo_u0": {
+   "lcoe": 302.5082526147392,
+   "cas72_periodic_at_live_A": 143522700.40951252,
+   "annual_energy_mwh": 5754569.465150394
+  },
+  "5mo_u005": {
+   "lcoe": 311.1060608649256,
+   "cas72_periodic_at_live_A": 130805235.11001453,
+   "annual_energy_mwh": 5549671.916012462
+  },
+  "5mo_u010": {
+   "lcoe": 327.3516276941358,
+   "cas72_periodic_at_live_A": 125085092.2313689,
+   "annual_energy_mwh": 5257583.920432859
+  },
+  "10mo_u0": {
+   "lcoe": 319.38468283459656,
+   "cas72_periodic_at_live_A": 128023080.59529538,
+   "annual_energy_mwh": 5405807.6793837035
+  }
+ },
+ "stepping_points": {
+  "q_column": "wall_load_peak",
+  "picks": {
+   "20260907-minor-radius:c3343": {
+    "q_peak": 9.039002095466296,
+    "feasible_flag": "False",
+    "committed_lcoe": 152.90699605561582,
+    "live_n": 11.0,
+    "live_A": 0.7861111111111112,
+    "live_events": [
+     1.991370265200877,
+     4.566073863735087,
+     7.140777462269297,
+     9.715481060803507,
+     12.290184659337717,
+     14.864888257871927,
+     17.43959185640614,
+     20.01429545494035,
+     22.58899905347456,
+     25.16370265200877,
+     27.73840625054298
+    ],
+    "held_n": 12.0,
+    "held_L_cal": 2.3427885472951493
+   },
+   "20260907-minor-radius:c7752": {
+    "q_peak": 4.039614298587742,
+    "feasible_flag": "True",
+    "committed_lcoe": 221.4492403756646,
+    "live_n": 5.0,
+    "live_A": 0.8911741898870316,
+    "live_events": [
+     4.455870949435157,
+     9.495075232203646,
+     14.534279514972138,
+     19.57348379774063,
+     24.612688080509116
+    ],
+    "held_n": 5.0,
+    "held_L_cal": 5.242201116982538
+   }
+  }
+ }
+}

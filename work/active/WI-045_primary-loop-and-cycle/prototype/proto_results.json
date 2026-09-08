@@ -1,0 +1,441 @@
+{
+ "reference": {
+  "cp": 5193.0,
+  "cp_nist": 5193.121874220819,
+  "cp_implied": 5187.589475243125,
+  "cp_discrepancy": -0.0010418880718033874,
+  "dp_ib_kPa": 363.9,
+  "dp_ob_kPa": 315.7,
+  "dp_weighted_kPa": 329.1871856931558,
+  "Q_ihx_MW": 2231.1000000000004,
+  "W_check_MW": 129.40000000000055,
+  "P_circ_printed_MW": 130.8,
+  "residual_printed_minus_fluid_MW": 1.3999999999994657,
+  "mdot_loop_ref": 225.07777777777778,
+  "paths": {
+   "weighted": {
+    "dp_kPa": 329.1871856931558,
+    "r": 1.0429142508964875,
+    "dT_actual_K": 12.301011531951204,
+    "dT_is_K": 9.506180374793395,
+    "eta_is": 0.772796639536644,
+    "eta_is_repr": "0.772796639536644",
+    "w_fluid_reproduced_MW": 129.4000000000004,
+    "w_residual_MW": -1.4210854715202004e-13,
+    "T_comp_in_K": 560.8489884680488,
+    "exact_ulp_hit": null
+   },
+   "ob_path": {
+    "dp_kPa": 315.7,
+    "r": 1.041083768202699,
+    "dT_actual_K": 12.301011531951204,
+    "dT_is_K": 9.10554321407767,
+    "eta_is": 0.7402271911075378,
+    "eta_is_repr": "0.7402271911075378",
+    "w_fluid_reproduced_MW": 129.4000000000004,
+    "w_residual_MW": -1.4210854715202004e-13,
+    "T_comp_in_K": 560.8489884680488,
+    "exact_ulp_hit": null
+   },
+   "ib_path": {
+    "dp_kPa": 363.9,
+    "r": 1.0476552166681945,
+    "dT_actual_K": 12.301011531951204,
+    "dT_is_K": 10.541876484374836,
+    "eta_is": 0.8569926511322169,
+    "eta_is_repr": "0.8569926511322169",
+    "w_fluid_reproduced_MW": 129.4000000000004,
+    "w_residual_MW": -1.4210854715202004e-13,
+    "T_comp_in_K": 560.8489884680488,
+    "exact_ulp_hit": null
+   }
+  }
+ },
+ "held_mode_identity": {
+  "q_recovered_held": 97.5,
+  "q_recovered_eq": true,
+  "p_pump_total_held": 195.0,
+  "p_pump_total_eq": true,
+  "eta_th_held": 0.333,
+  "eta_th_eq": true,
+  "p_th_new_vs_oracle": true,
+  "p_th_old_form_eq": true,
+  "recirc_eq": true,
+  "q_eng_eq": true
+ },
+ "circuit": {
+  "T_in": 573.15,
+  "dT_blanket": 200.0,
+  "cp": 5193.0,
+  "gamma": 1.6666666666666667,
+  "p_loop": 8000000.0,
+  "n_loops": 14,
+  "mdot_loop_ref": 225.07777777777778,
+  "dp_loop_ref": 329187.1856931558,
+  "f_loss": 1.0,
+  "eta_is": 0.772796639536644,
+  "eta_drive": 1.0,
+  "eta_is_repr": "0.772796639536644"
+ },
+ "fit": {
+  "dT_approach": 20.0,
+  "a_fit": 0.1802,
+  "b_fit": 0.7823,
+  "T_offset_fit": 273.0,
+  "T2_min": 384.0,
+  "T2_max": 642.0,
+  "delta_eta": 0.0
+ },
+ "sco2_arm": {
+  "a_fit": 0.4347,
+  "b_fit": 2.5043,
+  "T2_min": 135.0,
+  "T2_max": 750.0
+ },
+ "P0_design_point": {
+  "q_source": 3126.852676294579,
+  "p_fus": 2652.5632625175904,
+  "loop": {
+   "mdot": 3010.6418989934327,
+   "T_out": 773.15,
+   "mdot_loop": 215.04584992810234,
+   "dp_loop": 300496.77482532675,
+   "p_loop_margin": 7699503.225174673,
+   "r_comp": 1.0390280731155237,
+   "T_comp_in": 561.9287138794313,
+   "w_fluid": 175.4365426878376,
+   "p_elec": 175.4365426878376,
+   "q_ihx": 3302.2892189824165,
+   "p_elec_live": 175.4365426878376,
+   "q_recovered_live": 175.4365426878376,
+   "capacity_margin": 10.03192784967544
+  },
+  "cycle": {
+   "T2_C": 480.0,
+   "eta_fit": 0.41135655404954075,
+   "eta_th": 0.41135655404954075,
+   "margin_low": 96.0,
+   "margin_high": 162.0,
+   "domain_product": 15552.0
+  },
+  "held": {
+   "p_th": 3224.352676294579,
+   "p_et": 1073.7094412060949,
+   "p_net": 716.633806369912,
+   "q_eng": 3.006952411353088,
+   "rec_frac": 0.3325626292668907,
+   "lcoe": 322.3184394857024,
+   "lcoe_1cfe": 316.14114176653953,
+   "total_capital": 14442862261.866259,
+   "cas72_annual": 126649655.78572692,
+   "annual_fuel": 518520.46626585175,
+   "wall_load_peak": 3.9788448937763854,
+   "B_peak": 24.899999999999995,
+   "beta": 0.025304999208981403,
+   "p_aux_required": 49.07960078792678
+  },
+  "live": {
+   "p_th": 3302.2892189824165,
+   "p_et": 1358.4183135955561,
+   "p_net": 1012.3648698998519,
+   "q_eng": 3.9254581578158096,
+   "rec_frac": 0.2547473338899163,
+   "lcoe": 237.25280024209582,
+   "lcoe_1cfe": 232.72488725077486,
+   "total_capital": 14955212350.386,
+   "cas72_annual": 128437178.4450173,
+   "annual_fuel": 518520.46626585175,
+   "wall_load_peak": 3.9788448937763854,
+   "B_peak": 24.899999999999995,
+   "beta": 0.025304999208981403,
+   "p_aux_required": 49.07960078792678
+  },
+  "verdicts_new": {
+   "loop_pressure_ok": true,
+   "loop_capacity_ok": true,
+   "cycle_domain_ok": true
+  },
+  "fences_live": {
+   "net_positive": true,
+   "recirc_ok_rec_frac": 0.2547473338899163,
+   "peak_field_ok": true,
+   "wall_load_ok": true,
+   "burn_hold_ok": true,
+   "sustainment_ok": true
+  },
+  "cycle_sco2": {
+   "T2_C": 480.0,
+   "eta_fit": 0.37518115452461354,
+   "eta_th": 0.37518115452461354,
+   "margin_low": 345.0,
+   "margin_high": 270.0,
+   "domain_product": 93150.0
+  },
+  "loop_only_lcoe": 305.8147241377531,
+  "cycle_only_lcoe": 247.70504890284698,
+  "energy_check_closes": true
+ },
+ "P1_design_a1.4": {
+  "q_source": 3317.267553799019,
+  "p_fus": 2816.720458796918,
+  "loop": {
+   "mdot": 3193.979928556729,
+   "T_out": 773.15,
+   "mdot_loop": 228.1414234683378,
+   "dp_loop": 338209.6364963469,
+   "p_loop_margin": 7661790.363503654,
+   "r_comp": 1.0441423767096765,
+   "T_comp_in": 560.5091320743434,
+   "w_fluid": 209.66570510819685,
+   "p_elec": 209.66570510819685,
+   "q_ihx": 3526.933258907216,
+   "p_elec_live": 209.66570510819685,
+   "q_recovered_live": 209.66570510819685,
+   "capacity_margin": -3.0636456905600085
+  },
+  "cycle": {
+   "T2_C": 480.0,
+   "eta_fit": 0.41135655404954075,
+   "eta_th": 0.41135655404954075,
+   "margin_low": 96.0,
+   "margin_high": 162.0,
+   "domain_product": 15552.0
+  },
+  "held": {
+   "p_th": 3414.767553799019,
+   "p_et": 1137.1175954150733,
+   "p_net": 778.139715952621,
+   "q_eng": 3.1676536646710334,
+   "rec_frac": 0.3156910779587553,
+   "lcoe": 304.8952318776791,
+   "lcoe_1cfe": 299.07725646365606,
+   "total_capital": 14770218113.479998,
+   "cas72_annual": 135875749.32846627,
+   "annual_fuel": 550609.7540722674,
+   "wall_load_peak": 3.9434086423156858,
+   "B_peak": 25.163492063492054,
+   "beta": 0.024663165906134422,
+   "p_aux_required": 9.675800908992073
+  },
+  "live": {
+   "p_th": 3526.933258907216,
+   "p_et": 1450.8271117467891,
+   "p_net": 1067.7722416861886,
+   "q_eng": 3.787517729554681,
+   "rec_frac": 0.26402516671983356,
+   "lcoe": 231.32525675570017,
+   "lcoe_1cfe": 226.92762618578854,
+   "total_capital": 15319860629.421677,
+   "cas72_annual": 138480120.7055251,
+   "annual_fuel": 550609.7540722674,
+   "wall_load_peak": 3.9434086423156858,
+   "B_peak": 25.163492063492054,
+   "beta": 0.024663165906134422,
+   "p_aux_required": 9.675800908992073
+  },
+  "verdicts_new": {
+   "loop_pressure_ok": true,
+   "loop_capacity_ok": false,
+   "cycle_domain_ok": true
+  },
+  "fences_live": {
+   "net_positive": true,
+   "recirc_ok_rec_frac": 0.26402516671983356,
+   "peak_field_ok": false,
+   "wall_load_ok": true,
+   "burn_hold_ok": true,
+   "sustainment_ok": true
+  }
+ },
+ "P3_c2823_14loops": {
+  "q_source": 6271.340445165246,
+  "p_fus": 5363.434926736221,
+  "loop": {
+   "mdot": 6038.263475029122,
+   "T_out": 773.15,
+   "mdot_loop": 431.30453393065153,
+   "dp_loop": 1208775.7277886579,
+   "p_loop_margin": 6791224.272211342,
+   "r_comp": 1.177990842201278,
+   "T_comp_in": 526.972538236968,
+   "w_fluid": 1447.9729180478694,
+   "p_elec": 1447.9729180478694,
+   "q_ihx": 7719.313363213116,
+   "p_elec_live": 1447.9729180478694,
+   "q_recovered_live": 1447.9729180478694,
+   "capacity_margin": -206.22675615287375
+  },
+  "cycle": {
+   "T2_C": 480.0,
+   "eta_fit": 0.41135655404954075,
+   "eta_th": 0.41135655404954075,
+   "margin_low": 96.0,
+   "margin_high": 162.0,
+   "domain_product": 15552.0
+  },
+  "held": {
+   "p_th": 6368.840445165246,
+   "p_et": 2120.823868240027,
+   "p_net": 1732.3200175085026,
+   "q_eng": 5.458951987854613,
+   "rec_frac": 0.18318534440765497,
+   "lcoe": 202.16521550623165,
+   "lcoe_1cfe": 198.51391122466734,
+   "total_capital": 20636383739.745564,
+   "cas72_annual": 322338889.29971546,
+   "annual_fuel": 1048439.0017368634,
+   "wall_load_peak": 3.961307380117835,
+   "B_peak": 17.230561284209355,
+   "beta": 0.04426083817156456,
+   "p_aux_required": 33.34053528836671
+  },
+  "live": {
+   "p_th": 7719.313363213116,
+   "p_et": 3175.390144719918,
+   "p_net": 1502.2763876461277,
+   "q_eng": 1.897892555897424,
+   "rec_frac": 0.5269002172397199,
+   "lcoe": 250.52954946775412,
+   "lcoe_1cfe": 246.00440525295588,
+   "total_capital": 22178885081.063305,
+   "cas72_annual": 361262128.897429,
+   "annual_fuel": 1048439.0017368634,
+   "wall_load_peak": 3.961307380117835,
+   "B_peak": 17.230561284209355,
+   "beta": 0.04426083817156456,
+   "p_aux_required": 33.34053528836671
+  },
+  "verdicts_new": {
+   "loop_pressure_ok": true,
+   "loop_capacity_ok": false,
+   "cycle_domain_ok": true
+  },
+  "fences_live": {
+   "net_positive": true,
+   "recirc_ok_rec_frac": 0.5269002172397199,
+   "peak_field_ok": true,
+   "wall_load_ok": true,
+   "burn_hold_ok": true,
+   "sustainment_ok": true
+  }
+ },
+ "P4_c2823_resized": {
+  "n_loops": 27,
+  "q_source": 6271.340445165246,
+  "p_fus": 5363.434926736221,
+  "loop": {
+   "mdot": 6038.263475029122,
+   "T_out": 773.15,
+   "mdot_loop": 223.63938796404156,
+   "dp_loop": 324993.1997895433,
+   "p_loop_margin": 7675006.800210456,
+   "r_comp": 1.0423443533340755,
+   "T_comp_in": 561.0069165915522,
+   "w_fluid": 380.7670505420672,
+   "p_elec": 380.7670505420672,
+   "q_ihx": 6652.107495707313,
+   "p_elec_live": 380.7670505420672,
+   "q_recovered_live": 380.7670505420672,
+   "capacity_margin": 1.4383898137362223
+  },
+  "cycle": {
+   "T2_C": 480.0,
+   "eta_fit": 0.41135655404954075,
+   "eta_th": 0.41135655404954075,
+   "margin_low": 96.0,
+   "margin_high": 162.0,
+   "domain_product": 15552.0
+  },
+  "held": {
+   "p_th": 6368.840445165246,
+   "p_et": 2120.823868240027,
+   "p_net": 1732.3200175085026,
+   "q_eng": 5.458951987854613,
+   "rec_frac": 0.18318534440765497,
+   "lcoe": 202.16521550623165,
+   "lcoe_1cfe": 198.51391122466734,
+   "total_capital": 20636383739.745564,
+   "cas72_annual": 322338889.29971546,
+   "annual_fuel": 1048439.0017368634,
+   "wall_load_peak": 3.961307380117835,
+   "B_peak": 17.230561284209355,
+   "beta": 0.04426083817156456,
+   "p_aux_required": 33.34053528836671
+  },
+  "live": {
+   "p_th": 6652.107495707313,
+   "p_et": 2736.3880166012805,
+   "p_net": 2143.6501908768514,
+   "q_eng": 4.616523356269589,
+   "rec_frac": 0.21661322229463523,
+   "lcoe": 171.23178310298275,
+   "lcoe_1cfe": 168.13853265865237,
+   "total_capital": 21633482957.77672,
+   "cas72_annual": 330761570.08463556,
+   "annual_fuel": 1048439.0017368634,
+   "wall_load_peak": 3.961307380117835,
+   "B_peak": 17.230561284209355,
+   "beta": 0.04426083817156456,
+   "p_aux_required": 33.34053528836671
+  },
+  "verdicts_new": {
+   "loop_pressure_ok": true,
+   "loop_capacity_ok": true,
+   "cycle_domain_ok": true
+  },
+  "fences_live": {
+   "net_positive": true,
+   "recirc_ok_rec_frac": 0.21661322229463523,
+   "peak_field_ok": true,
+   "wall_load_ok": true,
+   "burn_hold_ok": true,
+   "sustainment_ok": true
+  }
+ },
+ "synthetic": {
+  "T_hot_350C": {
+   "T2_C": 330.0,
+   "eta_fit": 0.3713254788502389,
+   "eta_th": 0.3713254788502389,
+   "margin_low": -54.0,
+   "margin_high": 312.0,
+   "domain_product": -16848.0
+  },
+  "n_loops_7": {
+   "mdot": 3010.6418989934327,
+   "T_out": 773.15,
+   "mdot_loop": 430.0916998562047,
+   "dp_loop": 1201987.099301307,
+   "p_loop_margin": 6798012.9006986935,
+   "r_comp": 1.176814477533246,
+   "T_comp_in": 527.2401529043744,
+   "w_fluid": 717.7666412961582,
+   "p_elec": 717.7666412961582,
+   "q_ihx": 3844.6193175907374,
+   "p_elec_live": 717.7666412961582,
+   "q_recovered_live": 717.7666412961582,
+   "capacity_margin": -205.0139220784269
+  },
+  "dp_at_p_loop_margin_zero_flow_multiple": 5.159707540653946
+ },
+ "threshold_q_source_capacity_14_loops_MW": 3272.72092,
+ "window_extreme_c3598": {
+  "q_source": 6978.9372704374555,
+  "loop": {
+   "mdot": 6719.562170650352,
+   "T_out": 773.15,
+   "mdot_loop": 479.9687264750251,
+   "dp_loop": 1496937.145680758,
+   "p_loop_margin": 6503062.854319242,
+   "r_comp": 1.2301895551703785,
+   "T_comp_in": 515.5159940947939,
+   "w_fluid": 2011.120559282276,
+   "p_elec": 2011.120559282276,
+   "q_ihx": 8990.057829719732,
+   "p_elec_live": 2011.120559282276,
+   "q_recovered_live": 2011.120559282276,
+   "capacity_margin": -254.89094869724732
+  },
+  "finite": true
+ }
+}
