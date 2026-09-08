@@ -1,5 +1,5 @@
 {
-  "derived_against_semantic_fingerprint": "baab7e4c75412f8cb754f1876bb33c4770e6bf646ce8f46cdf49d51acb94322f",
+  "derived_against_semantic_fingerprint": "39e931fa87dbacc77e59170183cbd97c2731979c21e9e3181c0e796a487158e1",
   "group": {
     "axis": "a",
     "declared_keys": [
@@ -63,6 +63,32 @@
         ]
       },
       {
+        "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
+        "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
+        "source_local_identity": "cond_strain_ok",
+        "operator": "<=",
+        "operand_classes": [
+          "bound",
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "eps_cond",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__cond_strain__eps_cond",
+            "reached": true
+          },
+          {
+            "operand": "eps_cond_allow_in",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__magnet__eps_cond_allow",
+            "reached": false,
+            "entry_type": "design_attribute"
+          }
+        ]
+      },
+      {
         "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
         "definition_qualified_name": "mfe_viability::'Net Power Positive'",
         "source_local_identity": "net_positive",
@@ -83,6 +109,32 @@
             "class": "literal",
             "reached": false,
             "value": 0.0
+          }
+        ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
+        "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
+        "source_local_identity": "peak_field_ok",
+        "operator": "<=",
+        "operand_classes": [
+          "bound",
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "B_peak",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__peak_field_calc__B_peak",
+            "reached": true
+          },
+          {
+            "operand": "B_max_in",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__magnet__B_max",
+            "reached": false,
+            "entry_type": "design_attribute"
           }
         ]
       },
@@ -161,61 +213,35 @@
             "entry_type": "design_attribute"
           }
         ]
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
+        "definition_qualified_name": "mfe_viability::'Winding Pack Stress Limit'",
+        "source_local_identity": "wp_stress_ok",
+        "operator": "<=",
+        "operand_classes": [
+          "bound",
+          "computed"
+        ],
+        "bound_vs_bound": false,
+        "operands": [
+          {
+            "operand": "sigma_in",
+            "class": "computed",
+            "ref": "stellarator_09__stellaris__wp_stress__sigma_wp",
+            "reached": true
+          },
+          {
+            "operand": "sigma_allow_in",
+            "class": "bound",
+            "ref": "stellarator_09__stellaris__magnet__sigma_allow",
+            "reached": false,
+            "entry_type": "design_attribute"
+          }
+        ]
       }
     ],
     "constraints_unreachable": [
-      {
-        "constraint_id": "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60",
-        "definition_qualified_name": "mfe_viability::'Conductor Strain Limit'",
-        "source_local_identity": "cond_strain_ok",
-        "operator": "<=",
-        "operand_classes": [
-          "bound",
-          "computed"
-        ],
-        "bound_vs_bound": false,
-        "operands": [
-          {
-            "operand": "eps_cond",
-            "class": "computed",
-            "ref": "stellarator_09__stellaris__cond_strain__eps_cond",
-            "reached": false
-          },
-          {
-            "operand": "eps_cond_allow_in",
-            "class": "bound",
-            "ref": "stellarator_09__stellaris__magnet__eps_cond_allow",
-            "reached": false,
-            "entry_type": "design_attribute"
-          }
-        ]
-      },
-      {
-        "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
-        "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
-        "source_local_identity": "peak_field_ok",
-        "operator": "<=",
-        "operand_classes": [
-          "bound",
-          "computed"
-        ],
-        "bound_vs_bound": false,
-        "operands": [
-          {
-            "operand": "B_peak",
-            "class": "computed",
-            "ref": "stellarator_09__stellaris__peak_field_calc__B_peak",
-            "reached": false
-          },
-          {
-            "operand": "B_max_in",
-            "class": "bound",
-            "ref": "stellarator_09__stellaris__magnet__B_max",
-            "reached": false,
-            "entry_type": "design_attribute"
-          }
-        ]
-      },
       {
         "constraint_id": "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4",
         "definition_qualified_name": "mfe_viability::'TBR Floor'",
@@ -237,32 +263,6 @@
             "operand": "tbr_floor_in",
             "class": "bound",
             "ref": "stellarator_09__stellaris__tbr_floor",
-            "reached": false,
-            "entry_type": "design_attribute"
-          }
-        ]
-      },
-      {
-        "constraint_id": "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0",
-        "definition_qualified_name": "mfe_viability::'Winding Pack Stress Limit'",
-        "source_local_identity": "wp_stress_ok",
-        "operator": "<=",
-        "operand_classes": [
-          "bound",
-          "computed"
-        ],
-        "bound_vs_bound": false,
-        "operands": [
-          {
-            "operand": "sigma_in",
-            "class": "computed",
-            "ref": "stellarator_09__stellaris__wp_stress__sigma_wp",
-            "reached": false
-          },
-          {
-            "operand": "sigma_allow_in",
-            "class": "bound",
-            "ref": "stellarator_09__stellaris__magnet__sigma_allow",
             "reached": false,
             "entry_type": "design_attribute"
           }
@@ -335,7 +335,7 @@
             "operand": "eps_cond",
             "class": "computed",
             "ref": "stellarator_09__stellaris__cond_strain__eps_cond",
-            "reached": false
+            "reached": true
           },
           {
             "operand": "eps_cond_allow_in",
@@ -385,7 +385,7 @@
             "operand": "B_peak",
             "class": "computed",
             "ref": "stellarator_09__stellaris__peak_field_calc__B_peak",
-            "reached": false
+            "reached": true
           },
           {
             "operand": "B_max_in",
@@ -513,7 +513,7 @@
             "operand": "sigma_in",
             "class": "computed",
             "ref": "stellarator_09__stellaris__wp_stress__sigma_wp",
-            "reached": false
+            "reached": true
           },
           {
             "operand": "sigma_allow_in",
@@ -532,18 +532,17 @@
       "fuel",
       "lcoe",
       "lcoe_1cfe",
+      "magnet_capital",
       "magnet_capital_1cfe",
       "p_aux_required",
       "tau_E",
       "total_capital"
     ],
-    "objectives_unreachable": [
-      "magnet_capital"
-    ],
+    "objectives_unreachable": [],
     "sibling_candidates": [],
     "trace_size": {
-      "modules_fired": 61,
-      "channels_tainted": 92
+      "modules_fired": 71,
+      "channels_tainted": 104
     },
     "warnings": [],
     "not_derivable": {

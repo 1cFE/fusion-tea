@@ -21,9 +21,9 @@ Inputs:
 Outputs:
     - capital_cost: capital_cost result
 
-SysML Source: root-0/analyses/mfe_magnet_cost.sysml:137
+SysML Source: root-0/analyses/mfe_magnet_cost.sysml:178
 
-SysML Source: root-0/analyses/mfe_magnet_cost.sysml:137
+SysML Source: root-0/analyses/mfe_magnet_cost.sysml:178
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_magnet_cost/magnet_capital_impl.py
@@ -68,9 +68,9 @@ Inputs:
 Outputs:
     - capital_cost: capital_cost result
 
-SysML Source: root-0/analyses/mfe_magnet_cost.sysml:137
+SysML Source: root-0/analyses/mfe_magnet_cost.sysml:178
 
-    SysML Source: root-0/analyses/mfe_magnet_cost.sysml:137
+    SysML Source: root-0/analyses/mfe_magnet_cost.sysml:178
 
     Calculation Specification:
         capital_cost = winding_cost + structure_cost_in

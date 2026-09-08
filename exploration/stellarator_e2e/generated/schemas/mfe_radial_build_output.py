@@ -26,11 +26,12 @@ admissible per PROTOCOL.md section 3.
 (CAS22 aggregation)
 *Basis**: forward radial build; torus branch; MFE-generic
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:44
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:52
     """
     wall_area: float = Field(description="wall_area output")
     shield_vol: float = Field(description="shield_vol output")
     structure_vol: float = Field(description="structure_vol output")
+    r_coil_centre: float = Field(description="r_coil_centre output")
     r_coil: float = Field(description="r_coil output")
     blanket_vol: float = Field(description="blanket_vol output")
     vessel_vol: float = Field(description="vessel_vol output")

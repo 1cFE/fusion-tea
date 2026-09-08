@@ -45,13 +45,14 @@ Outputs:
     - wall_area: wall_area result
     - shield_vol: shield_vol result
     - structure_vol: structure_vol result
+    - r_coil_centre: r_coil_centre result
     - r_coil: r_coil result
     - blanket_vol: blanket_vol result
     - vessel_vol: vessel_vol result
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:44
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:52
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:44
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:52
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_plasma_scaling/mfe_radial_build_impl.py
@@ -147,13 +148,14 @@ Outputs:
     - wall_area: wall_area result
     - shield_vol: shield_vol result
     - structure_vol: structure_vol result
+    - r_coil_centre: r_coil_centre result
     - r_coil: r_coil result
     - blanket_vol: blanket_vol result
     - vessel_vol: vessel_vol result
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:44
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:52
 
-    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:44
+    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:52
 
     Calculation Specification:
         pi = 3.14159265358979
@@ -180,6 +182,7 @@ SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:44
         vessel_vol = C * (vessel_or ** 2 - gap1_or ** 2)
         wall_area = kappa_in * 4.0 * pi ** 2 * R_in * vacuum_or
         r_coil = vessel_or
+        r_coil_centre = vessel_or + coil_t_in / 2.0
         
 Documentation:
 Forward radial build [m, m^2, m^3] for an MFE torus: cumulative layer
@@ -208,7 +211,7 @@ admissible per PROTOCOL.md section 3.
     for manual implementation.
 
     NOTE: Uses MultiOutput pattern for type-safe multi-output support.
-    TEAx automatically extracts wall_area, shield_vol, structure_vol, r_coil, blanket_vol, vessel_vol fields to separate channels.
+    TEAx automatically extracts wall_area, shield_vol, structure_vol, r_coil_centre, r_coil, blanket_vol, vessel_vol fields to separate channels.
     """
 
     name: str = "MFE_Radial_BuildModule"
@@ -262,7 +265,7 @@ admissible per PROTOCOL.md section 3.
             ht_shield_t_in: ht_shield_t_in input
 
         Returns:
-            Module result with MFE_Radial_BuildOutput (wall_area, shield_vol, structure_vol, r_coil, blanket_vol, vessel_vol)
+            Module result with MFE_Radial_BuildOutput (wall_area, shield_vol, structure_vol, r_coil_centre, r_coil, blanket_vol, vessel_vol)
         """
         # Validate inputs
         validated_inputs = self.validate_and_fill_default(reflector_t_in, lt_shield_t_in, gap2_t_in, vacuum_t_in, gap1_t_in, vessel_t_in, kappa_in, blanket_t_in, R_in, firstwall_t_in, coil_t_in, structure_t_in, a_in, pi, ht_shield_t_in)
@@ -273,7 +276,7 @@ admissible per PROTOCOL.md section 3.
         )
 
         # Execute implementation - returns tuple of values
-        wall_area, shield_vol, structure_vol, r_coil, blanket_vol, vessel_vol = run_mfe_radial_build(validated_inputs)
+        wall_area, shield_vol, structure_vol, r_coil_centre, r_coil, blanket_vol, vessel_vol = run_mfe_radial_build(validated_inputs)
 
 
         # Return MultiOutput container (TEAx auto-extracts to channels)
@@ -283,6 +286,7 @@ admissible per PROTOCOL.md section 3.
                 wall_area=wall_area,
                 shield_vol=shield_vol,
                 structure_vol=structure_vol,
+                r_coil_centre=r_coil_centre,
                 r_coil=r_coil,
                 blanket_vol=blanket_vol,
                 vessel_vol=vessel_vol,

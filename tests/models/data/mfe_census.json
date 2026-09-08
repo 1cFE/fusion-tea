@@ -1,6 +1,6 @@
 {
-  "derived_against_semantic_fingerprint": "baab7e4c75412f8cb754f1876bb33c4770e6bf646ce8f46cdf49d51acb94322f",
-  "entry_points": 205,
+  "derived_against_semantic_fingerprint": "39e931fa87dbacc77e59170183cbd97c2731979c21e9e3181c0e796a487158e1",
+  "entry_points": 209,
   "by_entry_type": {
     "library_default": [
       "stellarator_09__stellaris__aux_cooling__alpha",
@@ -139,7 +139,11 @@
       "stellarator_09__stellaris__magnet__E_wp",
       "stellarator_09__stellaris__magnet__G",
       "stellarator_09__stellaris__magnet__I_coil",
+      "stellarator_09__stellaris__magnet__I_ref",
       "stellarator_09__stellaris__magnet__R0",
+      "stellarator_09__stellaris__magnet__R_ref",
+      "stellarator_09__stellaris__magnet__W_mag_ref",
+      "stellarator_09__stellaris__magnet__a_coil_ref",
       "stellarator_09__stellaris__magnet__coil_markup",
       "stellarator_09__stellaris__magnet__cost_per_kAm",
       "stellarator_09__stellaris__magnet__eps_cond_allow",
@@ -152,7 +156,7 @@
       "stellarator_09__stellaris__magnet__k_coil",
       "stellarator_09__stellaris__magnet__k_link",
       "stellarator_09__stellaris__magnet__k_sigma",
-      "stellarator_09__stellaris__magnet__m_casing",
+      "stellarator_09__stellaris__magnet__m_casing_ref",
       "stellarator_09__stellaris__magnet__n_coils",
       "stellarator_09__stellaris__magnet__peak_ratio",
       "stellarator_09__stellaris__magnet__sigma_allow",

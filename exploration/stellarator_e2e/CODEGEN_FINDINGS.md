@@ -40,3 +40,12 @@ WI-027 tried to un-strip the five asserts and regenerate at `constraint-exec-epi
 ## Reproduce
 
 `source /home/reid/1cfe/fusion-tea/.env` (SYSIDE_LICENSE_KEY) → `sysml-codegen snapshot` → `uv run python bridge_v11_generate.py` (from the sysml-codegen dir) → run `run_stellaris.py` with the pipeline-spike exec venv. See the WI-018 codegen agent report for exact paths.
+
+## Finding 10 (2026-09-07, WI-044) — a preserved AUTO_IMPLEMENTED stencil goes stale when only its expression and inputs change
+
+`sysml-codegen generate --smart-regen --preserve-handwritten` decides whether to keep a `handwritten/<pkg>/<calc>_impl.py` by its **output** signature. When a calc def's `out` set changes (WI-044: `'MFE Radial Build'` +`r_coil_centre`, `'Plasma Geometry'` +`A`), the stencil is regenerated (`Regenerated: 2`, a `handwritten/backup/` dir created and sealed in). When a calc def's **expression and input set change but its outputs do not** (`'Conductor Peak Field'`: four new formals, three new intermediates, `B_peak = B_axis_in * peak_ratio_in * bore_norm`), the old stencil is reported `Preserved` and kept verbatim — its body still `return (inputs.B_axis_in * inputs.peak_ratio_in)`, silently ignoring the new inputs. The module wrapper's "Calculation Specification" docstring shows the new expression; the impl the wrapper calls computes the old one. Nothing fails: the package seals, executes, and returns the pre-change number.
+
+- **Impact**: silent wrong arithmetic after an interface-preserving expression change. Caught at WI-044 only because the design predicted the off-design values before execution and the plan asked for the generated body to be read (design risk 1).
+- **Harness handling (WI-044 phase 3)**: delete the stale stencil and regenerate (`New: 1, Preserved: 69, Regenerated: 0`); a checker over every AUTO_IMPLEMENTED impl compares its "SysML Expressions" block to its module's "Calculation Specification" (48 checked, 0 stale after the third pass). Not hand-patched: the stencil is the tool's content.
+- **Upstream fix candidate**: preservation should key on the expression digest (or the full interface, inputs included), not the output signature alone; and `--preserve-handwritten` should never apply to AUTO_IMPLEMENTED stencils at all — they carry no hand-written content to preserve.
+- **Evidence**: `work/active/WI-044_magnet-chain-sees-coil-bore/evidence/regen_output{,_2,_3}.txt`; plan § Phase 3 record.

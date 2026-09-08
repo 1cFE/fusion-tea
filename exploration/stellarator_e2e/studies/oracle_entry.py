@@ -69,7 +69,13 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}magnet__k_sigma": "magnet_k_sigma",
     f"{P}magnet__sigma_allow": "magnet_sigma_allow",
     f"{P}magnet__f_wp_fab": "magnet_f_wp_fab",
-    f"{P}magnet__m_casing": "magnet_m_casing",
+    # WI-044: magnet__m_casing retired (the casing mass is computed from the stored
+    # energy); the five coil-bore anchors are the entry keys that replaced it.
+    f"{P}magnet__m_casing_ref": "magnet_m_casing_ref",
+    f"{P}magnet__W_mag_ref": "magnet_W_mag_ref",
+    f"{P}magnet__I_ref": "magnet_I_ref",
+    f"{P}magnet__R_ref": "magnet_R_ref",
+    f"{P}magnet__a_coil_ref": "magnet_a_coil_ref",
     f"{P}magnet__steel_price": "magnet_steel_price",
     f"{P}magnet__f_steel_fab": "magnet_f_steel_fab",
     f"{P}magnet__B_max": "magnet_B_max",
@@ -143,6 +149,11 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "B_axis": f"{P}field_calc__B_axis",  # WI-035 computed axis field
     "sigma_wp": f"{P}wp_stress__sigma_wp",  # WI-035 winding-pack stress operand
     "eps_cond": f"{P}cond_strain__eps_cond",  # WI-036 conductor strain operand
+    # WI-044: the coil-bore channels
+    "W_mag": f"{P}stored_energy__W_mag",  # stored magnetic energy (eq. 2.82 shape, anchored)
+    "m_casing": f"{P}casing_mass__m_casing",  # computed casing mass (eq. 56 shape, anchored)
+    "r_coil_centre": f"{P}rb__r_coil_centre",  # the coil bore the shapes take
+    "A": f"{P}geom__A",  # reported aspect ratio
     "winding_pack": f"{P}winding_pack_cost__cost",  # WI-035 sub-account
     "magnet_structure": f"{P}magnet_structure_cost__cost",  # WI-035 sub-account
     "magnet_capital_rollup": f"{P}magnet_capital_rollup__capital_cost",  # WI-035 rollup

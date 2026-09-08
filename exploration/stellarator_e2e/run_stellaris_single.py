@@ -42,7 +42,12 @@ EXPECTED_VERDICTS = {
     # reads 4.05 x 2652.563 / 2700 = 3.979 -- EXPECTED SATISFIED. Disclosed,
     # never tuned (WI-042 plan, MR-WI042-14 restatement (b)).
     "wall_load_ok": "satisfied",
-    "peak_field_ok": "satisfied",  # WI-030 conductor peak-field limit,
+    # WI-030 conductor peak-field limit. WI-044: the operand now sees the coil
+    # bore (eq. 39's R/(R - a_coil) normalised at the reference geometry); at the
+    # baseline the factor is exactly 1.0, so the executed peak is unchanged at
+    # 24.9 minus one ulp and the verdict stays SATISFIED at equality. Off the
+    # design column it rises with a (a 1.4 on the design column reads 25.16 T).
+    "peak_field_ok": "satisfied",
     "wp_stress_ok": "satisfied",  # WI-035
     # WI-037: the sustainment power limit read VIOLATED at the printed point-A
     # levers (p_aux_required ~= 90.6 MW vs 50 coupled) under the WI-037 profile

@@ -2,9 +2,10 @@
 
 TEAx module for Plasma_Geometry calculation.
 
-Plasma volume [m^3].
+Plasma volume [m^3] and aspect ratio [1].
 
   V = 2 * pi^2 * R * a^2 * kappa * f_shape
+  A = R / a                                  (reported, WI-044)
 
 The elongated-torus term (2*pi^2*R*a^2*kappa) is the smooth-torus
 volume. f_shape is a dimensionless shape/packing factor: 1.0 for a pure
@@ -27,6 +28,7 @@ Inputs:
     - kappa_in: kappa_in parameter
 
 Outputs:
+    - A: A result
     - V: V result
 
 SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:4
@@ -41,6 +43,7 @@ from pydantic import BaseModel, Field, RootModel
 from simkit.core.base import ModuleBase, ModuleResult
 
 from stellarator_tea.primitives import Float
+from stellarator_tea.schemas.plasma_geometry_output import Plasma_GeometryOutput
 
 
 class Plasma_GeometryInput(BaseModel):
@@ -60,12 +63,13 @@ class Plasma_GeometryInput(BaseModel):
     kappa_in: float = Field(..., description="kappa_in input")
 
 
-class Plasma_GeometryModule(ModuleBase[Plasma_GeometryInput, Float]):
+class Plasma_GeometryModule(ModuleBase[Plasma_GeometryInput, Plasma_GeometryOutput]):
     """TEAx module for Plasma_Geometry calculation.
 
-Plasma volume [m^3].
+Plasma volume [m^3] and aspect ratio [1].
 
   V = 2 * pi^2 * R * a^2 * kappa * f_shape
+  A = R / a                                  (reported, WI-044)
 
 The elongated-torus term (2*pi^2*R*a^2*kappa) is the smooth-torus
 volume. f_shape is a dimensionless shape/packing factor: 1.0 for a pure
@@ -88,6 +92,7 @@ Inputs:
     - kappa_in: kappa_in parameter
 
 Outputs:
+    - A: A result
     - V: V result
 
 SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:4
@@ -98,11 +103,13 @@ SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:4
         f_shape_in = 1.0
         pi = 3.14159265358979
         V = 2.0 * pi ** 2 * R_in * a_in ** 2 * kappa_in * f_shape_in
+        A = R_in / a_in
         
 Documentation:
-Plasma volume [m^3].
+Plasma volume [m^3] and aspect ratio [1].
 
   V = 2 * pi^2 * R * a^2 * kappa * f_shape
+  A = R / a                                  (reported, WI-044)
 
 The elongated-torus term (2*pi^2*R*a^2*kappa) is the smooth-torus
 volume. f_shape is a dimensionless shape/packing factor: 1.0 for a pure
@@ -120,7 +127,8 @@ and the Anchor A handshake unchanged).
     IMPLEMENTATION: See stellarator_tea.handwritten.mfe_plasma_scaling.plasma_geometry_impl
     for manual implementation.
 
-    NOTE: Single-output module - returns Float directly (no MultiOutput needed).
+    NOTE: Uses MultiOutput pattern for type-safe multi-output support.
+    TEAx automatically extracts A, V fields to separate channels.
     """
 
     name: str = "Plasma_GeometryModule"
@@ -143,7 +151,7 @@ and the Anchor A handshake unchanged).
         return Plasma_GeometryInput(f_shape_in=f_shape_in, pi=pi, R_in=R_in, a_in=a_in, kappa_in=kappa_in)
 
     def run(
-        self, f_shape_in: float, pi: float, R_in: float, a_in: float, kappa_in: float    ) -> ModuleResult[Float]:
+        self, f_shape_in: float, pi: float, R_in: float, a_in: float, kappa_in: float    ) -> ModuleResult[Plasma_GeometryOutput]:
         """Execute calculation.
 
         Args:
@@ -154,7 +162,7 @@ and the Anchor A handshake unchanged).
             kappa_in: kappa_in input
 
         Returns:
-            Module result with Float (single-output mode)
+            Module result with Plasma_GeometryOutput (A, V)
         """
         # Validate inputs
         validated_inputs = self.validate_and_fill_default(f_shape_in, pi, R_in, a_in, kappa_in)
@@ -164,9 +172,15 @@ and the Anchor A handshake unchanged).
             run_plasma_geometry,
         )
 
-        # Execute implementation - returns single value
-        V = run_plasma_geometry(validated_inputs)
+        # Execute implementation - returns tuple of values
+        A, V = run_plasma_geometry(validated_inputs)
 
-        # Single output - return Float directly (RootModel[float])
-        # TEAx assigns entire return value to the one channel declared in YAML
-        return ModuleResult(data=Float(V))
+
+        # Return MultiOutput container (TEAx auto-extracts to channels)
+        # MultiOutput fields use plain float (not RootModel[float])
+        return ModuleResult(
+            data=Plasma_GeometryOutput(
+                A=A,
+                V=V,
+            )
+        )

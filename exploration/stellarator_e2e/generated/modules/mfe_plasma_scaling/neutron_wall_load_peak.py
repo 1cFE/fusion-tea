@@ -25,9 +25,9 @@ Inputs:
 Outputs:
     - wall_load_peak: wall_load_peak result
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:326
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:341
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:326
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:341
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_plasma_scaling/neutron_wall_load_peak_impl.py
@@ -76,9 +76,9 @@ Inputs:
 Outputs:
     - wall_load_peak: wall_load_peak result
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:326
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:341
 
-    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:326
+    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:341
 
     Calculation Specification:
         wall_load_peak = wall_load * calibration_in

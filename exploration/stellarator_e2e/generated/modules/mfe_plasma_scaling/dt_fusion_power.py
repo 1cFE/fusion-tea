@@ -73,9 +73,9 @@ Inputs:
 Outputs:
     - p_fus: p_fus result
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:132
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:147
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:132
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:147
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_plasma_scaling/dt_fusion_power_impl.py
@@ -186,9 +186,9 @@ Inputs:
 Outputs:
     - p_fus: p_fus result
 
-SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:132
+SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:147
 
-    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:132
+    SysML Source: root-0/analyses/mfe_plasma_scaling.sysml:147
 
     Calculation Specification:
         sigma_v_in = 0.0

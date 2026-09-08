@@ -8,9 +8,12 @@ Magnet casing-structure capital [$] on a steel-mass basis (WI-035 D5):
 
 Covers the COIL CASINGS only; inter-coil plates, support rings, and
 legs remain CAS22.1.5 primary structure ('Structure Cost') -- the
-boundary that prevents double counting. m_casing is bound per
-instance; for Stellaris the printed cast-part floor is used as a
-knowing lower bound with the seam named in the binding doc.
+boundary that prevents double counting. m_casing is COMPUTED by
+'Magnet Casing Mass' (WI-044) from the coil set's stored energy,
+anchored at the instance's reference mass; for Stellaris the reference
+is the printed cast-part floor, a knowing lower bound with the seam
+named in the binding doc, so the scale responds to the coil bore and
+the seam stays.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385);
 knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
@@ -30,9 +33,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_magnet_cost.sysml:103
+SysML Source: root-0/analyses/mfe_magnet_cost.sysml:141
 
-SysML Source: root-0/analyses/mfe_magnet_cost.sysml:103
+SysML Source: root-0/analyses/mfe_magnet_cost.sysml:141
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/mfe_magnet_cost/magnet_structure_cost_impl.py
@@ -68,9 +71,12 @@ Magnet casing-structure capital [$] on a steel-mass basis (WI-035 D5):
 
 Covers the COIL CASINGS only; inter-coil plates, support rings, and
 legs remain CAS22.1.5 primary structure ('Structure Cost') -- the
-boundary that prevents double counting. m_casing is bound per
-instance; for Stellaris the printed cast-part floor is used as a
-knowing lower bound with the seam named in the binding doc.
+boundary that prevents double counting. m_casing is COMPUTED by
+'Magnet Casing Mass' (WI-044) from the coil set's stored energy,
+anchored at the instance's reference mass; for Stellaris the reference
+is the printed cast-part floor, a knowing lower bound with the seam
+named in the binding doc, so the scale responds to the coil bore and
+the seam stays.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385);
 knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
@@ -90,9 +96,9 @@ Inputs:
 Outputs:
     - cost: cost result
 
-SysML Source: root-0/analyses/mfe_magnet_cost.sysml:103
+SysML Source: root-0/analyses/mfe_magnet_cost.sysml:141
 
-    SysML Source: root-0/analyses/mfe_magnet_cost.sysml:103
+    SysML Source: root-0/analyses/mfe_magnet_cost.sysml:141
 
     Calculation Specification:
         cost = n_coils * m_casing * steel_price * f_steel_fab
@@ -104,9 +110,12 @@ Magnet casing-structure capital [$] on a steel-mass basis (WI-035 D5):
 
 Covers the COIL CASINGS only; inter-coil plates, support rings, and
 legs remain CAS22.1.5 primary structure ('Structure Cost') -- the
-boundary that prevents double counting. m_casing is bound per
-instance; for Stellaris the printed cast-part floor is used as a
-knowing lower bound with the seam named in the binding doc.
+boundary that prevents double counting. m_casing is COMPUTED by
+'Magnet Casing Mass' (WI-044) from the coil set's stored energy,
+anchored at the instance's reference mass; for Stellaris the reference
+is the printed cast-part floor, a knowing lower bound with the seam
+named in the binding doc, so the scale responds to the coil bore and
+the seam stays.
 
 *Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml (pin 0254385);
 knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md

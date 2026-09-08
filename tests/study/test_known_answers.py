@@ -18,11 +18,12 @@ from tests.study.conftest import DATA_DIR, run_tool
 CASES = ["availability", "interest_rate", "R", "R+tie", "a", "I_coil"]
 
 EXPECTED_SEMANTIC_FINGERPRINT = (
-    # WI-043 two-sided sustainment condition (goal burn-control round 1, 2026-09-07);
-    # was c37fb58a... at WI-042 (sourced helium-ash profile, 2026-09-05), d468f3b6...
-    # at WI-041 (source-anchored wall-load fence, 2026-09-04) and 48731d15... at
-    # WI-039 (heating power chain, 2026-09-03)
-    "baab7e4c75412f8cb754f1876bb33c4770e6bf646ce8f46cdf49d51acb94322f"
+    # WI-044 the magnet chain sees the coil bore (goal minor-radius round 1,
+    # 2026-09-07); was baab7e4c... at WI-043 (two-sided sustainment condition,
+    # 2026-09-07), c37fb58a... at WI-042 (sourced helium-ash profile, 2026-09-05),
+    # d468f3b6... at WI-041 (source-anchored wall-load fence, 2026-09-04) and
+    # 48731d15... at WI-039 (heating power chain, 2026-09-03)
+    "39e931fa87dbacc77e59170183cbd97c2731979c21e9e3181c0e796a487158e1"
 )
 
 #: axis -> (no_constraint_response, reachable constraints, reachable objectives,
@@ -33,61 +34,24 @@ EXPECTED_SEMANTIC_FINGERPRINT = (
 #: more channel because CAS27 is now computed in-package and declared as the
 #: `cas27` objective, and each swept attribute is one plant-level entry point.
 FIXTURE_CONTRACT = {
-    # WI-043 (goal burn-control round 1, 2026-09-07) re-derived every expectation file on
-    # the two-sided-sustainment package. ONE more reachable constraint -- burn_hold_ok, the
-    # lower half of the operating-point condition (p_aux_required >= 0) -- on every axis
-    # that reaches sustain (R, R+tie, a, I_coil), and on neither availability nor
-    # interest_rate; each of those four axes fires ONE more module (the new constraint
-    # module) and taints ONE more channel (that module's own evaluation channel -- the
-    # verdict's operand is an existing channel). Same objectives on every axis. No number
-    # in the package moved.
-    #
-    # WI-042 (goal stored-energy-basis round 2, 2026-09-05) re-derived every expectation
-    # file on the sourced-ash-profile package. Same reachable constraints, the same
-    # objectives and the same modules fired on every axis; R, R+tie, a and I_coil each
-    # taint FOUR more channels -- the sustainment calc's four new outputs (p_avg, the
-    # one volume-averaged pressure that beta now reads; n_e_volav; alpha_n_e_eff;
-    # alpha_He_eff), reached by every axis that reaches sustain. No axis reaches a
-    # plant-level electron exponent any more: alpha_n_e retired as an entry point and
-    # the electron profile is derived inside the chain. availability and interest_rate
-    # unchanged.
-    #
-    # WI-041 (goal wall-and-heating round 2, 2026-09-04) re-derived every expectation
-    # file on the source-anchored-fence package. Same reachable constraints and the
-    # same objectives on every axis; R, R+tie, a and I_coil each fire ONE more module
-    # and taint ONE more channel -- the new 'Neutron Wall Load Peak' module, which
-    # now sits between the average and both wall_load_ok and the CAS72 lifetime
-    # chain. The calibration module is reached by NO axis: its inputs are the six
-    # held source facts, so a sweep moves the peak only through the model's own
-    # wall_area -- the constancy assumption, visible structurally. wall_load_ok's
-    # operand classes are unchanged (computed vs bound); what changed is that the
-    # computed operand is now the peak, and the baseline verdict is violated.
-    #
-    # WI-039 (goal wall-and-heating, 2026-09-03) re-derived every expectation file
-    # on the heating-chain package and this contract is UNCHANGED, field for field:
-    # same reachable constraints, same objectives, same trace sizes for all six axes.
-    # What moved is inside sustainment_ok, and it moved in the right direction --
-    # its p_aux_installed_in operand was `bound` to the held design attribute
-    # p_input and is now `computed` from the chain's heat.p_coupled, so the fence
-    # is computed-vs-computed rather than computed-vs-held.
-    #
-    # Re-derived from the live report on the WI-036 package (2026-09-03, goal
-    # priced-levers): the winding pack is now sized by the current it carries and
-    # the winding length follows machine scale, so two reaches EXPANDED.
-    # (1) cond_strain_ok -- the new conductor check -- is reachable from both
-    # field levers (I_coil, R+tie), so the conductor is checked by the same
-    # sweeps that check the structure, not left inert.
-    # (2) R+tie now reaches magnet_capital, which it did not before: c_coil =
-    # k_coil * R means the major radius finally reaches the magnet conductor
-    # cost through the winding length (MR-WI036-4). availability and
-    # interest_rate are untouched (still no_constraint_response -- the Row 11
-    # finding stands).
+    # WI-044 (goal minor-radius round 1, 2026-09-07) re-derived every expectation file on
+    # the coil-bore package. No verdict added. What moved, read off the report: the
+    # peak field now takes the radial build's coil-centre radius, so the `a` axis (and the
+    # untied `R` axis, through the radial-build module's outputs -- the trace is
+    # module-level) newly reaches peak_field_ok, wp_stress_ok, cond_strain_ok and the
+    # magnet_capital objective; every magnet-reaching axis fires the two new modules
+    # ('Coil Set Stored Energy', 'Magnet Casing Mass') plus the geometry module's new
+    # outputs, and taints their channels (R, a: 61 -> 71 fired, 92 -> 104 tainted;
+    # R+tie: 73 -> 76, 104 -> 109; I_coil: 70 -> 73, 96 -> 99). availability and
+    # interest_rate unchanged.
+    # WI-043 (goal burn-control round 1, 2026-09-07) had added burn_hold_ok on every axis
+    # reaching the sustainment operand; the earlier history is in git.
     "availability": (True, [], ['cas72', 'fuel', 'lcoe', 'lcoe_1cfe'], 6, 8),
     "interest_rate": (True, [], ['cas72', 'lcoe', 'lcoe_1cfe'], 8, 11),
-    "R": (False, ['beta_ok', 'burn_hold_ok', 'net_positive', 'recirc_ok', 'sustainment_ok', 'wall_load_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 61, 92),
-    "R+tie": (False, ['beta_ok', 'burn_hold_ok', 'cond_strain_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 73, 104),
-    "a": (False, ['beta_ok', 'burn_hold_ok', 'net_positive', 'recirc_ok', 'sustainment_ok', 'wall_load_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 61, 92),
-    "I_coil": (False, ['beta_ok', 'burn_hold_ok', 'cond_strain_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 70, 96),
+    "R": (False, ['beta_ok', 'burn_hold_ok', 'cond_strain_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 71, 104),
+    "R+tie": (False, ['beta_ok', 'burn_hold_ok', 'cond_strain_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 76, 109),
+    "a": (False, ['beta_ok', 'burn_hold_ok', 'cond_strain_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas27', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 71, 104),
+    "I_coil": (False, ['beta_ok', 'burn_hold_ok', 'cond_strain_ok', 'net_positive', 'peak_field_ok', 'recirc_ok', 'sustainment_ok', 'wall_load_ok', 'wp_stress_ok'], ['beta', 'cas72', 'fuel', 'lcoe', 'lcoe_1cfe', 'magnet_capital', 'magnet_capital_1cfe', 'p_aux_required', 'tau_E', 'total_capital'], 73, 99),
 }
 
 

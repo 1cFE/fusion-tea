@@ -426,22 +426,12 @@
       "python_type": "float"
     },
     {
-      "channel_name": "stellarator_09__stellaris__magnet_structure_cost__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
       "channel_name": "stellarator_09__stellaris__coil_length__c_coil",
       "field_name": "root",
       "python_type": "float"
     },
     {
       "channel_name": "stellarator_09__stellaris__winding_pack_cost__cost",
-      "field_name": "root",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "stellarator_09__stellaris__magnet_capital_rollup__capital_cost",
       "field_name": "root",
       "python_type": "float"
     },
@@ -463,6 +453,11 @@
     {
       "channel_name": "stellarator_09__stellaris__rb__structure_vol",
       "field_name": "structure_vol",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__rb__r_coil_centre",
+      "field_name": "r_coil_centre",
       "python_type": "float"
     },
     {
@@ -531,8 +526,13 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__geom__A",
+      "field_name": "A",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__geom__V",
-      "field_name": "root",
+      "field_name": "V",
       "python_type": "float"
     },
     {
@@ -637,6 +637,26 @@
     },
     {
       "channel_name": "stellarator_09__stellaris__wall_load_calc__wall_load",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__stored_energy__W_mag",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__casing_mass__m_casing",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet_structure_cost__cost",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__magnet_capital_rollup__capital_cost",
       "field_name": "root",
       "python_type": "float"
     },
@@ -1919,11 +1939,39 @@
       "qualified_name": "stellarator_09__stellaris__magnet__I_coil"
     },
     {
+      "default_value": 15400000.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__I_ref"
+    },
+    {
       "default_value": 12.7,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__magnet__R0"
+    },
+    {
+      "default_value": 12.7,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__R_ref"
+    },
+    {
+      "default_value": 111000000000.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__W_mag_ref"
+    },
+    {
+      "default_value": 3.1500000000000004,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__magnet__a_coil_ref"
     },
     {
       "default_value": 5.87,
@@ -2014,7 +2062,7 @@
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
-      "qualified_name": "stellarator_09__stellaris__magnet__m_casing"
+      "qualified_name": "stellarator_09__stellaris__magnet__m_casing_ref"
     },
     {
       "default_value": 48.0,
@@ -2423,5 +2471,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "baab7e4c75412f8cb754f1876bb33c4770e6bf646ce8f46cdf49d51acb94322f"
+  "semantic_fingerprint": "39e931fa87dbacc77e59170183cbd97c2731979c21e9e3181c0e796a487158e1"
 }

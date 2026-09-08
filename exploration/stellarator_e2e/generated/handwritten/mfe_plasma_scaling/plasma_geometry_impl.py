@@ -8,11 +8,13 @@ SysML Expressions:
     f_shape_in = 1.0
     pi = 3.14159265358979
     V = 2.0 * pi ** 2 * R_in * a_in ** 2 * kappa_in * f_shape_in
+    A = R_in / a_in
     
 Documentation:
-Plasma volume [m^3].
+Plasma volume [m^3] and aspect ratio [1].
 
   V = 2 * pi^2 * R * a^2 * kappa * f_shape
+  A = R / a                                  (reported, WI-044)
 
 The elongated-torus term (2*pi^2*R*a^2*kappa) is the smooth-torus
 volume. f_shape is a dimensionless shape/packing factor: 1.0 for a pure
@@ -33,12 +35,13 @@ AUTO_IMPLEMENTED = True
 from stellarator_tea.modules.mfe_plasma_scaling.plasma_geometry import Plasma_GeometryInput
 
 
-def run_plasma_geometry(inputs: Plasma_GeometryInput) -> float:
+def run_plasma_geometry(inputs: Plasma_GeometryInput) -> tuple[float, float]:
     """Execute Plasma_Geometry calculation.
 
-Plasma volume [m^3].
+Plasma volume [m^3] and aspect ratio [1].
 
   V = 2 * pi^2 * R * a^2 * kappa * f_shape
+  A = R / a                                  (reported, WI-044)
 
 The elongated-torus term (2*pi^2*R*a^2*kappa) is the smooth-torus
 volume. f_shape is a dimensionless shape/packing factor: 1.0 for a pure
@@ -59,11 +62,13 @@ SysML Expressions:
     f_shape_in = 1.0
     pi = 3.14159265358979
     V = 2.0 * pi ** 2 * R_in * a_in ** 2 * kappa_in * f_shape_in
+    A = R_in / a_in
     
 Documentation:
-Plasma volume [m^3].
+Plasma volume [m^3] and aspect ratio [1].
 
   V = 2 * pi^2 * R * a^2 * kappa * f_shape
+  A = R / a                                  (reported, WI-044)
 
 The elongated-torus term (2*pi^2*R*a^2*kappa) is the smooth-torus
 volume. f_shape is a dimensionless shape/packing factor: 1.0 for a pure
@@ -82,10 +87,13 @@ Args:
     inputs: Input parameters validated against Plasma_GeometryInput schema
 
 Returns:
-    float: V
+    tuple[float, ...]: (A, V)
 
 Example:
     >>> inputs = Plasma_GeometryInput(...)
-    >>> result = run_plasma_geometry(inputs)
+    >>> A, V = run_plasma_geometry(inputs)
     """
-    return (((((2.0 * (inputs.pi ** 2)) * inputs.R_in) * (inputs.a_in ** 2)) * inputs.kappa_in) * inputs.f_shape_in)
+    return (
+        (inputs.R_in / inputs.a_in),  # A
+        (((((2.0 * (inputs.pi ** 2)) * inputs.R_in) * (inputs.a_in ** 2)) * inputs.kappa_in) * inputs.f_shape_in),  # V
+    )

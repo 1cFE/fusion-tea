@@ -281,7 +281,15 @@ IN = dict(
     magnet_E_wp=200000000000.0, magnet_f_cond=0.6666666666666666,
     magnet_eps_cond_allow=0.004,
     magnet_sigma_allow=800000000.0, magnet_f_wp_fab=6.65,
-    magnet_m_casing=63000.0, magnet_steel_price=6.0, magnet_f_steel_fab=3.0,
+    magnet_steel_price=6.0, magnet_f_steel_fab=3.0,
+    # WI-044 coil-bore anchors (the reference point at which the printed magnet facts
+    # were read; every sourced shape is normalised to exactly 1.0 there). The held
+    # magnet_m_casing is retired: the casing mass is computed from the stored energy.
+    magnet_m_casing_ref=63000.0,          # the printed cast-part floor (WI-035 D5 seam)
+    magnet_W_mag_ref=111000000000.0,      # Table 2: stored magnetic energy 111 GJ
+    magnet_I_ref=15400000.0,              # Table 2: peak coil current 15.4 MA
+    magnet_R_ref=12.7,                    # Table 2: major radius
+    magnet_a_coil_ref=3.1500000000000004, # the executed coil-centre radius at a = 1.3
     # conductor facts (WI-030): peak/axis ratio 24.9/9.0 as its float64 value; REBCO
     # ceiling bound to the Stellaris design value (owner 2026-08-21)
     magnet_peak_ratio=2.7666666666666666, magnet_B_max=24.9,
@@ -401,13 +409,32 @@ def compute():
     vessel_vol = C * ((vessel_or ** 2) - (gap1_or ** 2))
     wall_area = p["kappa"] * 4.0 * (p["pi"] ** 2) * p["R"] * vacuum_or
     r_coil = vessel_or
+    # WI-044: the coil-centre minor radius -- eq. 39's / eq. 2.82's a_coil (design D1) --
+    # and the reported aspect ratio.
+    r_coil_centre = vessel_or + p["coil_t"] / 2.0
+    A = p["R"] / p["a"]
     # CAS27 PbLi inventory keyed to the computed blanket volume (WI-021)
     special_materials_capital = blanket_vol * 0.50 * 9400.0 * 5.0
     # --- Coil-set field, peak field, winding-pack stress (WI-035; moved ahead
     # of the plasma chain at WI-037 because sustainment reads B_axis) ---
     B_axis = (p["mu0"] * p["magnet_k_link"] * p["magnet_n_coils"] * p["magnet_I_coil"]
               / (p["magnet_two_pi"] * p["magnet_R0"]))
-    B_peak = B_axis * p["magnet_peak_ratio"]
+    # WI-044: the peak field sees the coil bore. Lion 2021 eq. 39 has the field on the
+    # coil rising as R / (R - a_coil); with B_axis ~ N I / R the peak/axis ratio carries
+    # that factor. The printed ratio is the anchor at the reference geometry, the factor
+    # is applied normalised there (exactly 1.0 at the design point), and the winding-pack
+    # term of eq. 39 is not carried (a1(C) unprinted, design D2).
+    bore_factor = p["magnet_R0"] / (p["magnet_R0"] - r_coil_centre)
+    bore_factor_ref = p["magnet_R_ref"] / (p["magnet_R_ref"] - p["magnet_a_coil_ref"])
+    bore_norm = bore_factor / bore_factor_ref
+    B_peak = B_axis * p["magnet_peak_ratio"] * bore_norm
+    # WI-044: stored magnetic energy from the coil-set inductance shape, thesis eq. 2.82
+    # L = L(C) (a_coil/a_ref)^2 (R_ref/R) with W = 1/2 L I^2, anchored at the printed 111 GJ.
+    W_mag = (p["magnet_W_mag_ref"] * (p["magnet_I_coil"] / p["magnet_I_ref"]) ** 2
+             * (r_coil_centre / p["magnet_a_coil_ref"]) ** 2 * (p["magnet_R_ref"] / p["magnet_R0"]))
+    # WI-044: casing mass from stored energy, Lion 2021 eq. 56 M = 1.348 W^0.78 with the
+    # constant absorbed by the anchor (no units printed); the 63 t floor keeps its seam.
+    m_casing = p["magnet_m_casing_ref"] * (W_mag / p["magnet_W_mag_ref"]) ** 0.78
     # WI-036: the pack sizes itself from the current, and the winding length from
     # machine scale; both were held inputs before this item.
     wp_side = (p["magnet_I_coil"] / p["magnet_j_wp"]) ** 0.5 / 1000.0
@@ -474,7 +501,7 @@ def compute():
     # the 1cfe-form comparison channel, the rollup enters the powercore sum.
     kAm_wind = p["magnet_n_coils"] * p["magnet_I_coil"] * p["magnet_f_set"] * c_coil / 1000.0
     winding_pack = kAm_wind * p["magnet_cost_per_kAm"] * p["magnet_f_wp_fab"]
-    magnet_structure = p["magnet_n_coils"] * p["magnet_m_casing"] * p["magnet_steel_price"] * p["magnet_f_steel_fab"]
+    magnet_structure = p["magnet_n_coils"] * m_casing * p["magnet_steel_price"] * p["magnet_f_steel_fab"]  # WI-044: computed mass
     magnet_capital_rollup = winding_pack + magnet_structure
     blanket = (p["blanket_unit_cost"] * p["blanket_structure_factor"] * blanket_vol
                * (p_th / p["p_th_ref"]) ** p["alpha_06"])
@@ -651,6 +678,9 @@ def compute():
         beta=beta, B_peak=B_peak,  # WI-030 physics channels
         B_axis=B_axis, sigma_wp=sigma_wp,  # WI-035 field + stress channels
         eps_cond=eps_cond,  # WI-036 conductor strain operand
+        # WI-044 coil-bore channels: the stored energy, the computed casing mass, the
+        # coil-centre radius the shapes take, and the reported aspect ratio
+        W_mag=W_mag, m_casing=m_casing, r_coil_centre=r_coil_centre, A=A,
         # WI-037 sustainment channels
         n_bar19=sust["n_bar19"], n_He0=sust["n_He0"], n_D0=sust["n_D0"],
         n_T0=sust["n_T0"], T_e0=sust["T_e0"], W_th=sust["W_th"],
