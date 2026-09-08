@@ -165,6 +165,21 @@ epics:
     scale: standard
     status: completed
     completed: '2026-09-08'
+  - id: WI-045
+    name: Primary Coolant Loop and Temperature-Compatible Power Cycle
+    scale: standard
+    status: backlog
+    completed: null
+  - id: WI-046
+    name: 'Lifecycle Calendar: Component Life into Availability and Dated Replacement'
+    scale: standard
+    status: backlog
+    completed: null
+  - id: WI-047
+    name: Fuel-Cycle, Divertor-Heat and Vacuum Reduced Flows
+    scale: standard
+    status: backlog
+    completed: null
 - name: Pipeline De-Risk & Demonstration
   goal: null
   priority: P0
@@ -268,6 +283,9 @@ standalone:
 | WI-042 | Sourced Helium-Ash Profile | standard | completed | Completed 2026-09-06 |
 | WI-043 | Burn-Control Lever or Second Sustainment Inequality | standard | completed | Completed 2026-09-07 |
 | WI-044 | Minor-Radius Bound and Wall-Peak Calibration Re-Anchoring | standard | completed | Completed 2026-09-08 |
+| WI-045 | Primary Coolant Loop and Temperature-Compatible Power Cycle | standard | backlog |  |
+| WI-046 | Lifecycle Calendar: Component Life into Availability and Dated Replacement | standard | backlog |  |
+| WI-047 | Fuel-Cycle, Divertor-Heat and Vacuum Reduced Flows | standard | backlog |  |
 
 ## Epic: Pipeline De-Risk & Demonstration
 **Priority**: P0 | **Status**: active
