@@ -305,3 +305,7 @@ Wording notes, recorded: § 11's `R`-transect verdict lists at the far rows omit
 ## Addendum — 2026-09-08 (second) — one more correction after the disposition checkpoint C-001.r1 (evidence untouched)
 
 14. **§ 4, the knife edge, "all 51 lost feasible points stand under either bore":** false by one. `c3711` (R 11.2, a 1.3, 13 MA, 13 keV, n 0.6×, 220 MW) is lost here at 24.936 T and would read 24.865 T — kept — under the alternative bore (`vessel_or`, normalised at its own 3.00 m reference; the formula of item 12). So **50 of the 51 lost points stand under either bore, and one is shape-sensitive**; the 49 shape-sensitive flips of item 12 include that one committed-feasible point (the administrator's "7 of them on committed-feasible points" counts flips within 1 % of the ceiling; the one whose *feasibility* depends on the bore choice is `c3711`). Also recorded: the recount script's docstring (`work/orchestration/goals/minor-radius/evidence/T-003_recount.py`) said "35 new points" — the pre-critique count; the arm carries 69 (item 11); corrected in the script's text, its counts were never affected.
+
+## Addendum — 2026-09-08 (third) — one correction after the disposition checkpoint C-001.r2 (evidence untouched)
+
+15. **Addendum item 14, `c3711`'s coordinates:** the point is R 11.2, a 1.3, 13 MA, **17 keV, n 0.8×**, 220 MW — not "13 keV, n 0.6×". Its fields (24.936 T here, 24.865 T under the alternative bore), its level and its transition were right; the reading and the joined rows name only those.
