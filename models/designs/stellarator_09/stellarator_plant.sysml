@@ -1356,6 +1356,42 @@ package stellarator_09 {
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml **Ref**: steady_state_stellarator.yaml:65 (fuel_recovery = 0.99) **Basis**: 1costingFE NOAK unburned-fuel recycle fraction */
         }
 
+        // ---- WI-047 fuel-cycle flows: the recovery semantics SURFACED ----
+        :>> t_recycle = 0.99 {  // recovery of the unburned tritium stream [1] -- READ FROM THE COST FACTOR.
+            doc /*
+            This is the existing fuel_recovery (0.99) read as the PHYSICAL recovery
+            of the unburned tritium stream. It was sourced as a NOAK feedstock cost
+            factor (1costingFE steady_state_stellarator.yaml:65), not as an isotope-
+            recovery measurement. Under this reading, at a 5 % single-pass burn the
+            required breeding ratio is 1 + 0.95/0.05 x 0.01 = 1.19 against the
+            source-conditioned achieved 1.074: a margin of -0.116, published as
+            fuel.tbr_margin and asserted by NOTHING. The zero-margin recovery is
+            1 - (1.074 - 1) x 0.05/0.95 = 0.99611. This is a conditional semantics
+            conflict put to the owner (goal plant-closure, goal.md section Reserved
+            gates 5; basis packet section 6), not a proven physical deficit; a
+            separate physical-recovery input, if minted, replaces this binding, and
+            the value is never raised to erase the finding.
+            **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml
+            **Ref**: steady_state_stellarator.yaml:65 (fuel_recovery = 0.99); knowledge/research/pending/20260907-163520_demo-breadth-disposition-prework.md:23, :60
+            **Basis**: The existing 0.99 read as physical recovery, disclosed as a reading
+            */
+        }
+        :>> eta_extract = 1.0 {  // breeder-to-supply extraction efficiency [1] -- DORMANT, unsourced.
+            doc /* **Source**: none admissible **Ref**: knowledge/research/pending/20260907-163520_demo-breadth-disposition-prework.md:56, :64 (retrieval target: Lord et al., UKAEA-STEP-PR(24)12) **Basis**: lossless extraction as the declared dormant value; inventory and startup stock are not computed until residence times, extraction efficiency and a reserve policy are sourced */
+        }
+        :>> I_total = 0.0 {  // held tritium inventory [atoms] -- DORMANT, residence times unsourced.
+            doc /* **Source**: none admissible **Ref**: as eta_extract **Basis**: no inventory; the decay term is zero until residence times exist */
+        }
+        :>> G_stock = 0.0 {  // required stock growth [atoms/s] -- a single mature plant.
+            doc /* **Source**: knowledge/research/pending/20260907-163520_demo-breadth-disposition-prework.md:56 **Ref**: "G_stock is a deliberately specified stock-growth requirement, zero for a single mature plant that only sustains itself" **Basis**: self-sustaining plant */
+        }
+        :>> lambda_T = 1.782785958230312e-09 {  // tritium decay constant [1/s].
+            doc /* ln 2 / (4500 d x 86400 s/d) = 1.782785958230312e-09 s^-1; the half-life 4500 +/- 8 d (8 d a standard uncertainty). **Source**: Lucas and Unterweger, J. Res. NIST 105 (2000) 541 (https://nvlpubs.nist.gov/nistpubs/jres/105/4/j54luc2.pdf) **Ref**: p. 541, the evaluated half-life; cited via knowledge/research/pending/20260907-163520_demo-breadth-disposition-prework.md:56 **Basis**: NIST evaluated tritium half-life */
+        }
+        :>> m_T_kg = 5.008267663228036e-27 {  // tritium atomic mass [kg].
+            doc /* 3.01604928 u x 1.66053906892e-27 kg/u (the atomic mass unit fuel_cost_per_rxn above already uses). **Source**: CODATA 2018 (the unit; the instance's fuel_cost_per_rxn doc); the tritium atomic mass 3.01604928 u (AME, as commonly tabulated) **Ref**: fuel_cost_per_rxn doc above (_ATOMIC_MASS) **Basis**: tritium atomic mass */
+        }
+
         // ---- CAS72 scheduled-replacement inputs ----
         :>> fluence_limit = 18.0 {     // core fluence limit [MW-yr/m^2], DT.
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:153 (fluence_limit_dt = 18.0, "ARIES FS 200 dpa = 18 MW yr/m^2") **Basis**: DT first-wall/blanket neutron-fluence replacement limit. Cross-check, not identity (WI-046): 18 / 3.979 = 4.52 FPY sits inside the source's ~4-6 FPY first-wall band (Stellaris Table 6, render work/orchestration/goals/plant-closure/evidence/grounding_sources/stellaris_p21_table6.png); the ARIES-FS 200 dpa convention and the paper's ARC-DPA allowance are not shown to be the same damage measure (research 20260907-163520_lifetime-availability-closure-prework.md line 78) */
@@ -1484,12 +1520,36 @@ package stellarator_09 {
 
         // TBR.
         // achieved tritium breeding ratio.
-        attribute tbr : Real = 1.074 {
-            doc /* **Source**: stellaris-design-details.md **Ref**: line 1659 (final TBR = 1.074) **Basis**: Stellaris 3D-neutronics TBR */
+        :>> tbr = 1.074 {
+            doc /* **Source**: stellaris-design-details.md **Ref**: line 1659 (final TBR = 1.074) **Basis**: Stellaris 3D-neutronics TBR. WI-047: also read by 'Fuel Cycle Flows' as the achieved ratio the required ratio is compared with; the margin is reported, this fence is unchanged. */
         }
         // self-sufficiency floor.
         attribute tbr_floor : Real = 1.05 {
             doc /* **Source**: stellaris-design-details.md **Ref**: line 1530 (TBR > 1.05 self-sufficiency target) **Basis**: D-T tritium self-sufficiency floor */
+        }
+
+        // ---- WI-047 divertor surface heat: the source's fixed-geometry case ----
+        :>> f_rad_total = 0.9 {  // total radiated fraction of the absorbed heating [1].
+            doc /* "we assume that 90% of the net heating power in the plasma core is radiated before reaching the divertor region" -- a TOTAL fraction (core plus edge); the first-wall cooling case on the same page assumes 100 % and is a different load case, never summed with this one. **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md **Ref**: lines 1219-1222; page render work/orchestration/goals/plant-closure/evidence/grounding_sources/stellaris_p15_divertor.png **Basis**: Stellaris section 2.6 operating assumption */
+        }
+        :>> q_target_ref = 9.5 {  // the pessimistic transport case's peak target flux [MW/m^2].
+            doc /* The (T_LCFS 200 eV, chi_perp 1 m^2/s) case: 99 % captured, peak 9.5 MW/m^2 at 50 MW non-radiated. The low case (100 eV, 3 m^2/s; 97 %; 5 MW/m^2 at the same 50 MW) is a study arm on this same attribute, not a second binding; the two are a paired assumption/result set and are never mixed. Fixed target geometry and transport: the peak is scaled in load only. **Source**: stellaris-design-details.md **Ref**: lines 1223-1240; the render stellaris_p15_divertor.png **Basis**: Stellaris section 2.6, the most pessimistic printed case */
+        }
+        :>> p_nonrad_ref = 50.0 {  // the source case's non-radiated load [MW].
+            doc /* "for a total of 500 MW of heating power, the divertor must be capable of handling 50 MW". **Source**: stellaris-design-details.md **Ref**: lines 1221-1222; the render **Basis**: Stellaris section 2.6 */
+        }
+        :>> q_target_limit = 10.0 {  // adopted steady-state target-flux threshold [MW/m^2].
+            doc /* "a commonly applied threshold for steady-state heat fluxes in divertor designs" -- an adopted threshold, not an irradiated-component lifetime or an erosion limit. **Source**: stellaris-design-details.md **Ref**: lines 1243-1246; the render **Basis**: Stellaris section 2.6 */
+        }
+        :>> R_ref_divertor = 12.7 {  // the source case's major radius [m] -- the R-scaled SHADOW only.
+            doc /* The shadow q_target_peak_area_scaled = q_target_peak x R_ref / R publishes what a target whose wetted length grows with R would read; no source supports the scaling (retrieval target: new transport / geometry cases), so nothing asserts on it. Named apart from magnet.R_ref (WI-044), a different chain's anchor. **Source**: stellaris-design-details.md **Ref**: Table 2 image (R 12.7) **Basis**: the source geometry of the divertor case */
+        }
+        // ---- WI-047 exhaust gas load: the boundary pressure DECLARED, not sourced ----
+        :>> T_gas = 300.0 {  // gas temperature at the exhaust boundary [K] -- a convention.
+            doc /* Room-temperature neutral gas, stated as a convention for the pV throughput; the actual exhaust gas temperature, duct conductance and species-dependent pumping speeds are missing inputs (retrieval targets: the W7-X pumping and neutral-compression work Stellaris section 2.6 cites; the ITER torus cryopump technical specifications). **Source**: knowledge/research/pending/20260907-163520_demo-breadth-disposition-prework.md:124-128 **Basis**: declared convention */
+        }
+        :>> p_exhaust = 1.0 {  // pressure at the exhaust boundary [Pa] -- DECLARED, no admissible source.
+            doc /* No admissible source prints this machine's exhaust boundary pressure. At 1 Pa the required effective speed equals the throughput's own numerical value per pascal, so vacuum.S_eff_required is the throughput restated, not a pumping specification; a study reads speeds at declared pressures. Retrieval targets as T_gas. **Source**: none admissible **Ref**: basis packet section 6 **Basis**: declared value, labelled */
         }
 
         // Asserted viability constraints.

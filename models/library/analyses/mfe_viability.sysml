@@ -80,6 +80,36 @@ package mfe_viability {
         wall_load <= wall_load_limit_in
     }
 
+    constraint def 'Divertor Target Heat Limit' {
+        doc /*
+        Divertor target steady-state heat-flux bound (WI-047; goal plant-closure):
+        the PEAK target flux computed by 'Divertor Heat Ledger' (mfe_divertor_heat)
+        -- the source's fixed-geometry transport case scaled in the non-radiated
+        load -- must stay at or below the adopted steady-state threshold. The
+        operand responds to every lever that moves the alpha heating, the coupled
+        heating or the core radiation, so the fence pushes back on the operating
+        point through a modelled response, not through a held value. It says
+        nothing about detachment control, erosion, transients or the irradiated
+        allowable, which the source leaves for later work; the R-scaled shadow the
+        ledger also publishes is NOT this operand. Pair with 'Neutron Wall Load
+        Limit': two surface loads, two fences, never one mapped onto the other.
+
+        **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md
+        **Ref**: lines 1239-1246 ("These values remain below 10 MW m^-2, which is a
+            commonly applied threshold for steady-state heat fluxes in divertor
+            designs"); page render
+            work/orchestration/goals/plant-closure/evidence/grounding_sources/stellaris_p15_divertor.png
+        **Basis**: Peak target heat flux must not exceed the adopted steady-state threshold
+        */
+
+        // peak target heat flux [MW/m^2] (computed)
+        in attribute q_target_peak_in : Real;
+        // adopted steady-state threshold [MW/m^2]
+        in attribute q_target_limit_in : Real;
+
+        q_target_peak_in <= q_target_limit_in
+    }
+
     constraint def 'TBR Floor' {
         doc /*
         Tritium self-sufficiency bound: the tritium breeding ratio (TBR) must be

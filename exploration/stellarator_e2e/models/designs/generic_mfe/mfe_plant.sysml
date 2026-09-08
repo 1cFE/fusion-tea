@@ -14,6 +14,9 @@ package mfe_plant {
     private import mfe_account_costs::*;
     private import mfe_lcoe_dcf::*;
     private import mfe_lifecycle::*;
+    private import mfe_fuel_cycle::*;
+    private import mfe_divertor_heat::*;
+    private import mfe_vacuum::*;
     private import mfe_viability::*;
 
     abstract part def 'MFE Power Plant' {
@@ -1015,6 +1018,75 @@ package mfe_plant {
         // expose for producer aggregation
         attribute cas80_annual : Real = cas80_calc.levelized;
 
+        // ---- Fuel-cycle flows (WI-047): conservation on the same reactions the
+        // cost prices; the margin is reported, never asserted (the recovery
+        // semantics are an owner decision -- see the instance). Dormant-safe by
+        // the WI-024 pattern: a concept binding nothing gets a lossless loop.
+        // recovery fraction of the unburned tritium stream [1]
+        attribute t_recycle : Real default 1.0;
+        // breeder-to-supply extraction efficiency [1]
+        attribute eta_extract : Real default 1.0;
+        // tritium decay constant [1/s]
+        attribute lambda_T : Real default 0.0;
+        // held tritium inventory [atoms]
+        attribute I_total : Real default 0.0;
+        // required stock growth [atoms/s]
+        attribute G_stock : Real default 0.0;
+        // tritium atomic mass [kg]
+        attribute m_T_kg : Real default 0.0;
+        // achieved tritium breeding ratio [1] -- a concept's source-conditioned value;
+        // dormant 1.0 (no breeding claim). Declared here so the fuel flows can read
+        // it on the generic plant; an instance redefines it (WI-047; before, the
+        // Stellaris instance declared it alone for its own tbr_ok fence).
+        attribute tbr : Real default 1.0;
+        calc fuel : 'Fuel Cycle Flows' {
+            in p_fus_in = fusion.p_fus;
+            in q_eff_in = fuel_q_eff;
+            in mev_to_joules_in = mev_to_joules;
+            in burn_fraction_in = burn_fraction;
+            in t_recycle_in = t_recycle;
+            in tbr_available_in = tbr;
+            in eta_extract_in = eta_extract;
+            in lambda_T_in = lambda_T;
+            in I_total_in = I_total;
+            in G_stock_in = G_stock;
+            in m_T_kg_in = m_T_kg;
+        }
+
+        // ---- Divertor surface-heat ledger (WI-047) on the INSTALLED heating
+        // basis (the thermal sum's own operand) -- round 1 of goal plant-closure.
+        // Dormant-safe: q_target_ref 0 and p_nonrad_ref 1 give a zero peak and a
+        // satisfied fence for a concept binding nothing.
+        attribute f_rad_total : Real default 0.0;
+        attribute q_target_ref : Real default 0.0;
+        attribute p_nonrad_ref : Real default 1.0;
+        attribute q_target_limit : Real default 1.0;
+        attribute R_ref_divertor : Real default 1.0;
+        calc divheat : 'Divertor Heat Ledger' {
+            in p_alpha_heat_in = sustain.p_alpha_heat;
+            in p_coupled_in = heat.p_coupled;
+            in p_aux_required_in = sustain.p_aux_required;
+            in p_rad_core_in = sustain.p_rad;
+            in f_rad_total_in = f_rad_total;
+            in q_target_ref_in = q_target_ref;
+            in p_nonrad_ref_in = p_nonrad_ref;
+            in q_target_limit_in = q_target_limit;
+            in R_in = R;
+            in R_ref_in = R_ref_divertor;
+        }
+
+        // ---- Torus exhaust gas load (WI-047): a 50/50 D-T fuel exhausts equal
+        // deuterium and tritium streams; the helium ash is one atom per reaction.
+        attribute T_gas : Real default 1.0;
+        attribute p_exhaust : Real default 1.0;
+        calc vacuum : 'Vacuum Gas Load' {
+            in exhaust_rate_D_in = fuel.exhaust_rate;
+            in exhaust_rate_T_in = fuel.exhaust_rate;
+            in helium_rate_in = fuel.burn_rate;
+            in T_gas_in = T_gas;
+            in p_exhaust_in = p_exhaust;
+        }
+
         // ---- CAS72 and availability from one lifecycle calendar (WI-046) -----
         // Replaceable set = the fluence-limited in-vessel accounts C220101
         // (blanket/first wall) + C220108 (divertor), plant-total (x n_mod), one
@@ -1168,6 +1240,16 @@ package mfe_plant {
         }
         assert constraint cycle_domain_ok : 'Cycle Fit Domain' {
             in domain_product_in = cycle.domain_product;
+        }
+
+        // WI-047: the divertor target peak (fixed-geometry source case, scaled in
+        // load) against the adopted threshold. EXPECTED VIOLATED at the Stellaris
+        // baseline on the pessimistic case (10.535 against 10: the model's absorbed
+        // heating 554.49 MW is 10.9 % above the source's 500) -- the disclosed,
+        // explained verdict change of WI-047, never tuned (the WI-041 precedent).
+        assert constraint divertor_heat_ok : 'Divertor Target Heat Limit' {
+            in q_target_peak_in = divheat.q_target_peak;
+            in q_target_limit_in = q_target_limit;
         }
 
         // =====================================================================

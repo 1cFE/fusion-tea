@@ -69,6 +69,9 @@ MFE = Family(
         "analyses/mfe_power_cycle.sysml",  # WI-045 (2026-09-08): the cycle fit, handwritten stage
         "analyses/mfe_primary_loop.sysml",  # WI-045 (2026-09-08): the representative helium circuit
         "analyses/mfe_lifecycle.sysml",  # WI-046 (2026-09-08): the lifecycle calendar, handwritten stage
+        "analyses/mfe_fuel_cycle.sysml",  # WI-047 (2026-09-08): the tritium flows and the required breeding ratio
+        "analyses/mfe_divertor_heat.sysml",  # WI-047 (2026-09-08): the divertor surface-heat ledger
+        "analyses/mfe_vacuum.sysml",  # WI-047 (2026-09-08): the exhaust gas load
         "analyses/mfe_viability.sysml",
         "cost_structure/cas_hierarchy.sysml",
         "cost_structure/mfe_power_core.sysml",

@@ -1,5 +1,5 @@
 ---
-Status: draft
+Status: active
 Created: 2026-09-08
 Updated: 2026-09-08
 Related Artifacts:
@@ -40,20 +40,20 @@ Levels 1–3 after every model edit; the baseline diff before anything else afte
 
 **Files.** `models/library/analyses/mfe_fuel_cycle.sysml`, `mfe_divertor_heat.sysml`, `mfe_vacuum.sysml` — NEW from design § Proposed design; `mfe_viability.sysml` — one constraint def after `'Neutron Wall Load Limit'`; `models/designs/generic_mfe/mfe_plant.sysml` — three imports, the fuel / divheat / vacuum blocks after `cas80_annual`, the assert after `cond_strain_ok`; `models/designs/stellarator_09/stellarator_plant.sysml` — the thirteen bindings and the `tbr` comment sentence; the six twins — COPY byte-for-byte.
 
-- [ ] Confirm the shared files are at WI-046's commit B (the packet § 9 order); record that commit here
-- [ ] Write the three library files and the constraint def verbatim from the design; add the plant blocks and the assert; add the instance bindings with their docs
-- [ ] `uv run agentic-mbse validate models` — Level 1 0 errors; Level 2 no new warning beyond the recorded set. **If the exact route refuses `in E_fus_J = fuel_q_eff * mev_to_joules;`** (the WI-028 bare-alias class), bind a plant attribute `fuel_E_fus_J : Real = fuel_q_eff * mev_to_joules;` and read it; record which form landed (design risk 2)
-- [ ] Copy the six files to their twins (`cp`); `cmp` clean; `diff -rq` between the trees shows no other difference
-- [ ] `uv run python -m pytest tests/models -q` — the count as WI-046 left it or better; any test counting attributes, formals, channels or constraints by literal recorded here and restated in phase 4 from the live package
+- [x] Confirm the shared files are at WI-046's commit B (the packet § 9 order); record that commit here
+- [x] Write the three library files and the constraint def verbatim from the design; add the plant blocks and the assert; add the instance bindings with their docs
+- [x] `uv run agentic-mbse validate models` — Level 1 0 errors; Level 2 no new warning beyond the recorded set. **If the exact route refuses `in E_fus_J = fuel_q_eff * mev_to_joules;`** (the WI-028 bare-alias class), bind a plant attribute `fuel_E_fus_J : Real = fuel_q_eff * mev_to_joules;` and read it; record which form landed (design risk 2)
+- [x] Copy the six files to their twins (`cp`); `cmp` clean; `diff -rq` between the trees shows no other difference
+- [x] `uv run python -m pytest tests/models -q` — the count as WI-046 left it or better; any test counting attributes, formals, channels or constraints by literal recorded here and restated in phase 4 from the live package
 
 **Gate.** Levels 1–3; twins identical; `tests/models` as expected with every delta explained.
 
 ## Phase 2 — The restatement and the predictions, written before regeneration; `evidence/baseline_before/`; commit A
 
-- [ ] Write `## MR-WI047 restatement` at the end of this plan: (a) no committed study record changes in meaning — the new channels did not exist in any committed record and none of the existing columns' semantics move; (b) one verdict is added and the fourteen-verdict "feasible" is a new set the study reports beside the ten (and beside WI-045's thirteen); (c) the count sites this item moves: `study_route.py` `EXPECTED_CONSTRAINT_COUNT` 13 → 14, `run_stellaris_single.py` `EXPECTED_VERDICT_COUNT` 13 → 14 and `EXPECTED_VERDICTS["divertor_heat_ok"] = "violated"`, `tests/study/test_operand_bindings.py`, `test_valid_empty.py`, `test_known_answers.py`, `studies/manifest.json` `baseline.verdicts`, `oracle_entry.OPERAND_BINDINGS`; (d) the entry points appearing (the thirteen instance facts; `s_per_fpy` and `k_B` if the census counts calc-formal defaults) and none retiring; (e) the expected baseline: every existing channel bit-identical, eighteen new channels at the design's doubles, `divertor_heat_ok` violated
-- [ ] Copy design § Expected baseline behaviour and § Off-design predictions into `## Predictions` below with the exact `proto_results.json` doubles (the prediction of record precedes execution in git order)
-- [ ] `evidence/baseline_before/`: `study_route.execute_baseline(...)` on WI-046's package → `baseline_result.json`, `package_identity.json` (remove `_work/`); the single runner's output → `run_stellaris_single_output.txt`; record the pin's indicator digest here
-- [ ] **Commit A** with an explicit pathspec: the four library files, the plant, the instance, the six twins, `work/active/WI-047_fuel-divertor-vacuum-flows/` (spec, design, plan, `prototype/`, `evidence/baseline_before/`); the message names the restatement as preceding regeneration
+- [x] Write `## MR-WI047 restatement` at the end of this plan: (a) no committed study record changes in meaning — the new channels did not exist in any committed record and none of the existing columns' semantics move; (b) one verdict is added and the fourteen-verdict "feasible" is a new set the study reports beside the ten (and beside WI-045's thirteen); (c) the count sites this item moves: `study_route.py` `EXPECTED_CONSTRAINT_COUNT` 13 → 14, `run_stellaris_single.py` `EXPECTED_VERDICT_COUNT` 13 → 14 and `EXPECTED_VERDICTS["divertor_heat_ok"] = "violated"`, `tests/study/test_operand_bindings.py`, `test_valid_empty.py`, `test_known_answers.py`, `studies/manifest.json` `baseline.verdicts`, `oracle_entry.OPERAND_BINDINGS`; (d) the entry points appearing (the thirteen instance facts; `s_per_fpy` and `k_B` if the census counts calc-formal defaults) and none retiring; (e) the expected baseline: every existing channel bit-identical, eighteen new channels at the design's doubles, `divertor_heat_ok` violated
+- [x] Copy design § Expected baseline behaviour and § Off-design predictions into `## Predictions` below with the exact `proto_results.json` doubles (the prediction of record precedes execution in git order)
+- [x] `evidence/baseline_before/`: `study_route.execute_baseline(...)` on WI-046's package → `baseline_result.json`, `package_identity.json` (remove `_work/`); the single runner's output → `run_stellaris_single_output.txt`; record the pin's indicator digest here
+- [x] **Commit A** with an explicit pathspec: the four library files, the plant, the instance, the six twins, `work/active/WI-047_fuel-divertor-vacuum-flows/` (spec, design, plan, `prototype/`, `evidence/baseline_before/`); the message names the restatement as preceding regeneration
 
 **Gate.** The restatement and the predictions are in git before any regenerated byte.
 
@@ -116,10 +116,61 @@ Levels 1–3 after every model edit; the baseline diff before anything else afte
 3. **The census counts the two calc-formal defaults.** *Mitigation:* the actual delta is recorded, whichever it is.
 4. **A count site beyond the seven named** (the WI-043 evidence found eight literal verdict-count sites). *Mitigation:* the batteries find it; each restated from the live package with a comment.
 
-## Predictions — (to be copied from `prototype/proto_results.json` at phase 2, before regeneration)
+## Predictions — the nineteen new channels at the design point and the two off-design points (2026-09-08, `prototype/proto_results.json`, written before regeneration)
 
-## MR-WI047 restatement — (to be written at phase 2, before regeneration)
+At WI-046's package state (`evidence/baseline_before/baseline_result.json`, sealed executable `e0d9b1ac19a440ff…`, 136 channels, thirteen verdicts, LCOE 224.60952472804465) the ledger's inputs are the pin's own — `fusion__p_fus` 2652.5632625175904, `sustain__p_alpha_heat` 504.49100689822046, `sustain__p_rad` 219.7216452237653, `sustain__p_aux_required` 49.07960078792678, `heat__p_coupled` 50.0 (read from that file) — so the design's predictions stand unchanged here. **Every one of the 136 existing channels is bit-identical after this item; the thirteen existing verdicts are unchanged; one verdict is added, violated.**
+
+| Channel | P0 design point | P3 `c2823` (R 15.7, a 2.2, 13 MA, 13 keV, n 5.06e20, 100 MW) | P4 `c3598` (R 17.2, a 2.2, 14 MA, 13 keV, 100 MW) |
+|---|---|---|---|
+| `fuel__burn_rate` [atoms/s] | 9.417518585656878e+20 | 1.9042052198807694e+21 | 2.120783878472184e+21 |
+| `fuel__inject_rate` | 1.8835037171313755e+22 | 3.8084104397615385e+22 | 4.241567756944368e+22 |
+| `fuel__exhaust_rate` | 1.7893285312748067e+22 | 3.6179899177734618e+22 | 4.02948936909715e+22 |
+| `fuel__loss_rate` | 1.7893285312748084e+20 | 3.617989917773465e+20 | 4.0294893690971534e+20 |
+| `fuel__tbr_required` | 1.1900000000000002 | 1.1900000000000002 | 1.1900000000000002 |
+| `fuel__tbr_margin` | -0.1160000000000001 | -0.1160000000000001 | -0.1160000000000001 |
+| `fuel__burn_kg_per_fpy` [kg/FPY] | 148.74097510492368 | 300.75156064605267 | 334.95815187579154 |
+| `divheat__p_heat_abs` [MW] | 554.4910068982205 | 1070.0716887159617 | 1186.0916196050364 |
+| `divheat__p_sep` | 334.7693616744551 | read at execution (no `p_rad` in the committed CSV); expected > 0 | read at execution; expected > 0 |
+| `divheat__f_rad_edge` | 0.8343662621559043 | read at execution | read at execution |
+| `divheat__f_rad_edge_in_range` | 0.1381992027318891 | read at execution | read at execution |
+| `divheat__p_target_nonrad` [MW] | 55.449100689822046 | 107.00716887159615 | 118.60916196050357 |
+| `divheat__q_target_peak` [MW/m²] (pessimistic 9.5 at 50) | **10.53532913106619** | 20.331362085603267 | 22.53574077249568 |
+| — the same on the low case (5.0 at 50, a study lever) | 5.544910068982205 | 10.700716887159615 | 11.860916196050358 |
+| `divheat__q_target_peak_area_scaled` | 10.53532913106619 | 16.446388438672706 | 16.639762082017157 |
+| `divheat__q_target_margin` | -0.5353291310661898 | -10.331362085603267 | -12.535740772495679 |
+| `divheat__p_heat_operating_minus_installed` [MW] | -0.920399212073221 | -16.65946471163329 (oracle column) | -8.753791607409084 (oracle column) |
+| `vacuum__n_molecules` [/s] | 1.8835037171313755e+22 | 3.8084104397615385e+22 | 4.241567756944368e+22 |
+| `vacuum__Q_total` [Pa·m³/s] | 78.0137257066115 | 157.74234195738987 | 175.68348846172455 |
+| `vacuum__S_eff_required` [m³/s at 1 Pa] | 78.0137257066115 | 157.74234195738987 | 175.68348846172455 |
+| `divertor_heat_ok` | **violated** (low case: satisfied) | violated (low: violated; shadow 16.45: violated) | violated on every reading |
+
+The source case in the oracle's reconstruction: `p_heat_abs` 500, `p_rad_core` 0 → `p_target_nonrad` 50.0, peaks 9.5 / 5.0, doubled 19.0 — exact. The recovery threshold for zero margin: `t_recycle` 0.9961052631578947; `tbr_required` 1.0 and `loss_rate` 0.0 at `t_recycle` 1 for burn fractions 0.01 / 0.05 / 0.2. Absorbed heating at exact satisfaction: 526.3157894736844 MW (pessimistic), 1000.0000000000002 (low).
+
+## MR-WI047 restatement — the comparison meaning at the new pin (2026-09-08, written before regeneration)
+
+(a) **No committed study record changes in meaning.** The nineteen channels this item adds (`fuel__*` 7, `divheat__*` 9, `vacuum__*` 3 — the scratch contract of the final phase-1 text, `scratchpad/gen_probe`, read 2026-09-08) existed in no committed record; no existing column's semantics moves; the ledger reads `sustain__*`, `heat__p_coupled`, `fusion__p_fus` and writes nothing back; the power balance, the calendar, every cost account and every existing verdict operand are untouched. No record is edited.
+(b) **One verdict is added, and it reads VIOLATED at the baseline by design.** `divertor_heat_ok` (`'Divertor Target Heat Limit'`, the fixed-geometry pessimistic case scaled in the non-radiated load: 10.535 against 10.0 at the design point, the model's absorbed heating 554.49 MW being 10.9 % above the source's 500) — the disclosed, explained change on the WI-041 precedent, never tuned. "Feasible" gains a third set the study reports beside the ten and beside WI-045's thirteen; every count names its set.
+(c) **The count sites this item moves, 13 → 14:** `studies/study_route.py` `EXPECTED_CONSTRAINT_COUNT`; `run_stellaris_single.py` `EXPECTED_VERDICT_COUNT` and `EXPECTED_VERDICTS["divertor_heat_ok"] = "violated"` with the headline no longer `full_satisfaction`; `tests/study/test_operand_bindings.py` (fourteen entries; the feature-ref operand count +1); `test_valid_empty.py` (bounds / `constraints_unreachable` 14); `test_known_answers.py` (`constraints_unreachable` on the no-response axes 14; the fixture contract restated from the report); `test_verify.py` (the constraint set by name +1); `studies/manifest.json` `baseline.verdicts` (fourteen, `divertor_heat_ok` `violated`); `oracle_entry.OPERAND_BINDINGS` (+1, the id read from the regenerated contract). `test_numeric_evidence.py`, `test_subset_flag.py`, `test_output_contract.py`, `test_study_publication_fail_closed.py` and `run_stellaris.py` are checked and restated only if the battery finds them moved (no channel this item adds enters their maps).
+(d) **Entry points appearing, none retiring:** the thirteen instance facts (`t_recycle`, `eta_extract`, `lambda_T`, `I_total`, `G_stock`, `m_T_kg`, `f_rad_total`, `q_target_ref`, `p_nonrad_ref`, `q_target_limit`, `R_ref_divertor`, `T_gas`, `p_exhaust`) plus the two library defaults the census counts as entry points (`fuel__s_per_fpy_in`, `vacuum__k_B_in` — design risk 5, confirmed on the scratch contract): +15, so the census is expected 232 → 247; `tbr` keeps its key `stellarator_09__stellaris__tbr` (now declared on the generic plant with a dormant default and redefined by the instance — phase 1 deviation 2).
+(e) **The expected baseline:** every one of the 136 existing channels bit-identical; nineteen new channels at the § Predictions doubles; the thirteen existing verdicts unchanged; `divertor_heat_ok` violated. The held mode of the earlier items is unaffected (this item has no dormant term of its own beyond the generic plant's defaults; with the compatibility proposal of WI-045 / WI-046 the nineteen channels read the same values, since they depend on the plasma chain only).
 
 ## Spec success criteria, verified — (to be written at phase 4)
 
-## Phase records — (appended per phase)
+## Phase records
+
+### Phase 1 record — 2026-09-08
+
+- The shared files were at WI-046's commit C `1c87c343` (the package on disk sealed `e0d9b1ac19a440ff…`, WI-046's live baseline). The three library files, the constraint def, the plant blocks, the assert and the thirteen instance bindings written from design § Proposed design verbatim (`scratchpad/wi047_phase1_edits.py`, single-occurrence asserts), then four deviations the validator and the exact route forced, each recorded here and none changing a value:
+  1. **The `_in` formal convention.** The design's calc formals carried bare names (`in attribute p_fus`, `burn_fraction`, …) and the plant bound `in burn_fraction = burn_fraction;` — Level 2 flagged fourteen self-named bindings, and the codegen projects entry points on the `_in` convention every landed calc uses. Every formal of the three calcs is now `<name>_in` (the bodies renamed with it), and the plant binds `in x_in = x`. The channel names (`fuel__burn_rate`, …) are unchanged.
+  2. **`tbr` on the generic plant.** `fuel.tbr_available_in = tbr` could not resolve: `tbr` was declared by the Stellaris instance alone (with its `tbr_ok` fence). The generic plant now declares `attribute tbr : Real default 1.0;` (dormant: no breeding claim) beside the fuel-flow attributes, and the instance redefines it `:>> tbr = 1.074` with its doc; the entry key `stellarator_09__stellaris__tbr` is unchanged (design D3 kept: one number, one entry point).
+  3. **The per-reaction energy.** `in E_fus_J_in = fuel_q_eff * mev_to_joules;` read as two undefined bindings on the exact route (design risk 2, the WI-028 class). Rather than the plant-attribute fallback, the calc takes the two factors as formals (`q_eff_in`, `mev_to_joules_in` — exactly `'DT Fuel Cost'`'s formals) and forms `E_fus_J` inside; value-identical.
+  4. **A defaulted formal declared between bound ones.** The scratch generation refused with `SI_RENDERING_COLLISION: distinct inputs on 'stellarator_09__stellaris__vacuum' render to one parameter name`; a monkeypatched projection showed the unbound defaulted formal `k_B_in` (declared 4th of 6) taking the name `p_exhaust_in` — the exact route matches an unbound defaulted formal by slot. `k_B_in` is now the last formal, as every landed calc keeps its defaulted formals last; generation then succeeds (`scratchpad/gen_probe`, 91 module wrappers, 76 stencils). A first attempt at this diagnosis — publishing the deuterium exhaust stream as its own fuel output so the vacuum calc's two formals bind two channels — was reverted once the true cause was found: design D1 (two formals on one channel) lands as written. **A codegen finding for the trail:** an unbound defaulted formal declared before a bound one is mis-slotted (candidate for `CODEGEN_FINDINGS.md`).
+- Levels 1–3 (`prototype/validate_complete.txt`): Level 1 0 errors (31 files); Level 2 the 12 pre-existing placeholder literals only (undefined 0, self-named 0); Level 3 pass; Levels 4–5 pass; Level 6 252 → **253** (one new design-attribute reference, the same pre-existing class).
+- Twins: the six files copied byte-for-byte, `cmp` clean on all six; `diff -rq` shows only the IFE-only files the twin tree never carried.
+- `tests/models`: the MFE family's owned list +3 with a dated comment (`tests/model_families.py`, the WI-045 / WI-046 precedent); then **62 passed / 1 failed / 13 skipped**, the one failure the census fingerprint test, re-derived in phase 4 — as at every predecessor's phase 1.
+
+### Phase 2 record — 2026-09-08
+
+- `evidence/baseline_before/`: WI-046's `evidence/baseline_live/` copied (`baseline_result.json` 136 channels / thirteen verdicts / LCOE 224.60952472804465; `package_identity.json` sealed `e0d9b1ac19a440ff…`; the single runner's output) — the package on disk is byte-identical to the one that executed them (WI-046's commit C changed no package byte; `package_contract.json` reads the same fingerprint), the WI-046 phase-2 precedent.
+- The restatement and the predictions written above from `proto_results.json` and the scratch contract; commit A carries them, the model edits, the twins, the family restatement and this item's directory.
+
