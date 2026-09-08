@@ -161,6 +161,29 @@ ENTRY_KEY_TO_ORACLE_INPUT: dict[str, str] = {
     f"{P}magnet__cost_per_kAm": "magnet_cost_per_kAm",
     f"{P}T_cold_cryo": "T_cold_cryo",
     f"{P}vol_cold_cryo": "vol_cold_cryo",
+    # WI-047 (goal plant-closure, 2026-09-08): the fuel-cycle, divertor-heat and
+    # vacuum facts (design D11). Levers for the round's study: t_recycle (the
+    # recovery semantics), burn_fraction,
+    # f_rad_total, q_target_ref / p_nonrad_ref (the low case 5.0 at 50), p_exhaust,
+    # T_gas, R_ref_divertor; the achieved tbr becomes a key too (the adequacy arm).
+    # The two library defaults are LIBRARY_DEFAULT entry points of the package.
+    f"{P}tbr": "tbr",
+    f"{P}burn_fraction": "burn_fraction",
+    f"{P}t_recycle": "t_recycle",
+    f"{P}eta_extract": "eta_extract",
+    f"{P}lambda_T": "lambda_T",
+    f"{P}I_total": "I_total",
+    f"{P}G_stock": "G_stock",
+    f"{P}m_T_kg": "m_T_kg",
+    f"{P}f_rad_total": "f_rad_total",
+    f"{P}q_target_ref": "q_target_ref",
+    f"{P}p_nonrad_ref": "p_nonrad_ref",
+    f"{P}q_target_limit": "q_target_limit",
+    f"{P}R_ref_divertor": "R_ref_divertor",
+    f"{P}T_gas": "T_gas",
+    f"{P}p_exhaust": "p_exhaust",
+    f"{P}fuel__s_per_fpy_in": "s_per_fpy",
+    f"{P}vacuum__k_B_in": "k_B",
 }
 
 #: Oracle output name -> qualified channel name. Only channels the package records
@@ -298,6 +321,26 @@ ORACLE_OUTPUT_TO_CHANNEL: dict[str, str] = {
     "calendar_dated_energy_ratio": f"{P}calendar__dated_energy_ratio",
     "calendar_n_replacements": f"{P}calendar__n_replacements",
     "calendar_physical_life_fpy": f"{P}calendar__physical_life_fpy",
+    # WI-047 fuel / divertor-heat / vacuum channels (nineteen)
+    "fuel_burn_rate": f"{P}fuel__burn_rate",
+    "fuel_inject_rate": f"{P}fuel__inject_rate",
+    "fuel_exhaust_rate": f"{P}fuel__exhaust_rate",
+    "fuel_loss_rate": f"{P}fuel__loss_rate",
+    "fuel_tbr_required": f"{P}fuel__tbr_required",
+    "fuel_tbr_margin": f"{P}fuel__tbr_margin",
+    "fuel_burn_kg_per_fpy": f"{P}fuel__burn_kg_per_fpy",
+    "divheat_p_heat_abs": f"{P}divheat__p_heat_abs",
+    "divheat_p_sep": f"{P}divheat__p_sep",
+    "divheat_f_rad_edge": f"{P}divheat__f_rad_edge",
+    "divheat_f_rad_edge_in_range": f"{P}divheat__f_rad_edge_in_range",
+    "divheat_p_target_nonrad": f"{P}divheat__p_target_nonrad",
+    "divheat_q_target_peak": f"{P}divheat__q_target_peak",
+    "divheat_q_target_peak_area_scaled": f"{P}divheat__q_target_peak_area_scaled",
+    "divheat_q_target_margin": f"{P}divheat__q_target_margin",
+    "divheat_p_heat_operating_minus_installed": f"{P}divheat__p_heat_operating_minus_installed",
+    "vacuum_n_molecules": f"{P}vacuum__n_molecules",
+    "vacuum_Q_total": f"{P}vacuum__Q_total",
+    "vacuum_S_eff_required": f"{P}vacuum__S_eff_required",
     "cas90_1cfe": f"{P}cas90_1cfe_calc__cas90",
     "lcoe_1cfe": f"{P}lcoe_1cfe_calc__lcoe",
 }
@@ -393,6 +436,13 @@ OPERAND_BINDINGS: dict[str, dict[str, dict[str, str]]] = {
     },
     f"{P}cycle_domain_ok__ba3fa9c3653b3fd3": {
         "domain_product_in": {"kind": "channel", "key": f"{P}cycle__domain_product"},
+    },
+    # WI-047: the divertor target peak (computed, the fixed-geometry pessimistic
+    # case scaled in load) against the adopted threshold (an instance input).
+    # The id is read from generated/contracts/model_contract.json, never guessed.
+    f"{P}divertor_heat_ok__26b4658f9fdfd7b7": {
+        "q_target_peak_in": {"kind": "channel", "key": f"{P}divheat__q_target_peak"},
+        "q_target_limit_in": {"kind": "input", "key": f"{P}q_target_limit"},
     },
 }
 

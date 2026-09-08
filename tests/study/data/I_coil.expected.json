@@ -1,5 +1,5 @@
 {
- "derived_against_semantic_fingerprint": "e6a7baa5a822b47b8457023e1d2ebd88132bfd25ba826b4c02102fab21212a89",
+ "derived_against_semantic_fingerprint": "42237b2b07673bfde916b9749bab93634eafa91f1205abde4b7a70dd1881038f",
  "group": {
   "axis": "I_coil",
   "declared_keys": [
@@ -109,6 +109,32 @@
       "class": "literal",
       "reached": false,
       "value": 0.0
+     }
+    ]
+   },
+   {
+    "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+    "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
+    "source_local_identity": "divertor_heat_ok",
+    "operator": "<=",
+    "operand_classes": [
+     "bound",
+     "computed"
+    ],
+    "bound_vs_bound": false,
+    "operands": [
+     {
+      "operand": "q_target_peak_in",
+      "class": "computed",
+      "ref": "stellarator_09__stellaris__divheat__q_target_peak",
+      "reached": true
+     },
+     {
+      "operand": "q_target_limit_in",
+      "class": "bound",
+      "ref": "stellarator_09__stellaris__q_target_limit",
+      "reached": false,
+      "entry_type": "design_attribute"
      }
     ]
    },
@@ -445,6 +471,32 @@
     ]
    },
    {
+    "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+    "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
+    "source_local_identity": "divertor_heat_ok",
+    "operator": "<=",
+    "operand_classes": [
+     "bound",
+     "computed"
+    ],
+    "bound_vs_bound": false,
+    "operands": [
+     {
+      "operand": "q_target_peak_in",
+      "class": "computed",
+      "ref": "stellarator_09__stellaris__divheat__q_target_peak",
+      "reached": true
+     },
+     {
+      "operand": "q_target_limit_in",
+      "class": "bound",
+      "ref": "stellarator_09__stellaris__q_target_limit",
+      "reached": false,
+      "entry_type": "design_attribute"
+     }
+    ]
+   },
+   {
     "constraint_id": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852",
     "definition_qualified_name": "mfe_viability::'Loop Capacity'",
     "source_local_identity": "loop_capacity_ok",
@@ -690,8 +742,8 @@
   ],
   "sibling_candidates": [],
   "trace_size": {
-   "modules_fired": 79,
-   "channels_tainted": 132
+   "modules_fired": 83,
+   "channels_tainted": 152
   },
   "warnings": [],
   "not_derivable": {

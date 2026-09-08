@@ -91,7 +91,7 @@ def package_inputs(package_path):
 
 def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
     entries = catalog_entries(real_package_path)
-    assert len(entries) == 13, f"expected the thirteen viability constraints (WI-045: the two loop fences and the cycle domain fence joined the ten; WI-043: burn_hold_ok joined the nine), found {len(entries)}"
+    assert len(entries) == 14, f"expected the fourteen viability constraints (WI-047: divertor_heat_ok joined the thirteen; WI-045: the two loop fences and the cycle domain fence joined the ten; WI-043: burn_hold_ok joined the nine), found {len(entries)}"
     bindings = oracle_entry.operand_bindings()
     channels = oracle_entry.evaluate(BASELINE_POINT)
     inputs = package_inputs(real_package_path)
@@ -112,7 +112,7 @@ def test_every_constraint_operand_resolves(real_package_path, oracle_entry):
                 f"a package {binding['kind']}"
             )
             resolved += 1
-    assert resolved == 22, f"expected twenty-two feature_ref operands across the thirteen (WI-045 adds four: one, two, one; WI-043 added one), found {resolved}"
+    assert resolved == 24, f"expected twenty-four feature_ref operands across the fourteen (WI-047 adds two: the computed target peak and the adopted threshold; WI-045 added four: one, two, one; WI-043 added one), found {resolved}"
 
 
 def test_the_operand_that_resolves_to_nothing_by_name_is_bound_explicitly(

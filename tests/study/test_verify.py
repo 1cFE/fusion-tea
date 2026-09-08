@@ -106,6 +106,9 @@ def test_every_catalog_constraint_is_rederived_with_its_operand_count(summary):
         # WI-045 (goal plant-closure, 2026-09-08): the loop's pressure-domain and capacity
         # fences and the cycle's fit-domain fence, all on computed operands
         "loop_pressure_ok", "loop_capacity_ok", "cycle_domain_ok",
+        # WI-047 (goal plant-closure, 2026-09-08): the divertor target peak (computed) against
+        # the adopted threshold -- violated at the baseline by design
+        "divertor_heat_ok",
     }
     assert rederived["net_positive"] == 1  # the other operand is the literal 0.0
     assert rederived["burn_hold_ok"] == 1  # likewise: one computed operand against the literal 0.0

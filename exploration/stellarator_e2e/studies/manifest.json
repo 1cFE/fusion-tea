@@ -7,22 +7,24 @@
  "fingerprints": {
   "indicator_inputs": {
    "recipe": "indicator-input-fingerprint/v1",
-   "digest": "19a97a940e68d3ecc94529480069d38d2cfb874ea856774117acaae5c8b4f24e",
+   "digest": "e2b0fe3979af1c75a92d8b58f310e0f07f6059af3f3236f4a812bf2227baa7d9",
    "files": [
     "contracts/model_contract.json",
     "inputs/mfe_account_costs_params.json",
+    "inputs/mfe_fuel_cycle_params.json",
     "inputs/mfe_magnet_cost_params.json",
     "inputs/mfe_magnet_field_params.json",
     "inputs/mfe_plant_params.json",
     "inputs/mfe_plasma_scaling_params.json",
     "inputs/mfe_plasma_sustainment_params.json",
+    "inputs/mfe_vacuum_params.json",
     "inputs/stellarator_plant_params.json",
     "pipelines/pipeline.yaml"
    ]
   },
   "recorded_provenance": {
-   "executable_fingerprint": "e0d9b1ac19a440ff66a5a8cfa22a4d7d8aac2eaa64b64831fef6dd79216a1ce1",
-   "semantic_fingerprint": "e6a7baa5a822b47b8457023e1d2ebd88132bfd25ba826b4c02102fab21212a89"
+   "executable_fingerprint": "234d0b27d2b5327ede2cae1c05a2e1c1ead1d89337fd019782bdda03d841e81d",
+   "semantic_fingerprint": "42237b2b07673bfde916b9749bab93634eafa91f1205abde4b7a70dd1881038f"
   }
  },
  "objective_catalog": [
@@ -118,6 +120,10 @@
    {
     "source_local_identity": "cycle_domain_ok",
     "expected": "satisfied"
+   },
+   {
+    "source_local_identity": "divertor_heat_ok",
+    "expected": "violated"
    },
    {
     "source_local_identity": "loop_capacity_ok",

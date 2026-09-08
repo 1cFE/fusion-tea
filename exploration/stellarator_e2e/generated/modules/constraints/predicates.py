@@ -95,6 +95,11 @@ def constraint_pred_definition_mfe_viability__beta_limit(beta_in, beta_limit_in)
     value = _cmp('<=', beta_in, beta_limit_in)
     return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((beta_limit_in - beta_in)) if (_fin(beta_in) and _fin(beta_limit_in)) else None))
 
+# definition:mfe_viability::'Divertor Target Heat Limit'
+def constraint_pred_definition_mfe_viability__divertor_target_heat_limit(q_target_peak_in, q_target_limit_in):
+    value = _cmp('<=', q_target_peak_in, q_target_limit_in)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((q_target_limit_in - q_target_peak_in)) if (_fin(q_target_peak_in) and _fin(q_target_limit_in)) else None))
+
 # definition:mfe_viability::'Net Power Positive'
 def constraint_pred_definition_mfe_viability__net_power_positive(net_electric):
     value = _cmp('>', net_electric, 0.0)

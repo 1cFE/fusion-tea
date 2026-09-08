@@ -369,6 +369,20 @@ IN = dict(
     mev_to_joules=1.6021766339999998e-13,
     burn_fraction=0.05, fuel_recovery=0.99,
     fluence_limit=18.0,
+    # ---- WI-047 (goal plant-closure round 1, 2026-09-08): the fuel-cycle flows, the
+    # divertor heat ledger and the exhaust gas load -- the thirteen instance facts.
+    # t_recycle READS the cost factor fuel_recovery as the physical recovery of the
+    # unburned stream (an owner decision surfaced, goal.md Reserved gates 5); the
+    # inventory terms are dormant (residence times unsourced); the divertor case is
+    # the source's pessimistic transport case at fixed geometry; p_exhaust 1.0 Pa is
+    # DECLARED, not sourced (the required speed is the throughput's own value).
+    tbr=1.074,  # the achieved TBR the instance binds (Table 6); the oracle never needed it before WI-047 -- tbr_ok binds package inputs directly
+    t_recycle=0.99, eta_extract=1.0, lambda_T=1.782785958230312e-09, I_total=0.0,
+    G_stock=0.0, m_T_kg=5.008267663228036e-27,
+    f_rad_total=0.9, q_target_ref=9.5, p_nonrad_ref=50.0, q_target_limit=10.0,
+    R_ref_divertor=12.7, T_gas=300.0, p_exhaust=1.0,
+    # library defaults the two calcs carry (entry points of the LIBRARY_DEFAULT kind)
+    s_per_fpy=31536000.0, k_B=1.380649e-23,
     # WI-041 source-anchored peak calibration: six printed Stellaris facts (each
     # confirmed against its page image) and the dormant direct term, zeroed.
     wall_peak_q_ref=4.05, wall_peak_p_fus_ref=2700.0, wall_peak_R_ref=12.7,
@@ -606,6 +620,15 @@ def compute():
     loop_mdot_loop = loop_mdot / p["n_loops"]
     loop_dp_loop = p["f_loss"] * p["dp_loop_ref"] * (loop_mdot_loop / p["mdot_loop_ref"]) ** 2
     loop_p_loop_margin = p["loop_p"] - loop_dp_loop
+    # WI-047 (T-006's named shared-line edit on WI-045's block): outside the loss
+    # law's domain the compressor ratio's fractional power takes a complex root and
+    # the seam surfaced it as a raw TypeError (goal plant-closure T-005 return). The
+    # package records execution_failed there; the oracle now DECLARES it, in the
+    # sustainment chain's own pattern (RuntimeError "oracle ...", recorded by the
+    # study pre-screen as a reason), so a screen classifies the region instead of
+    # crashing. WI-045's expected text stands on either side of these three lines.
+    if loop_p_loop_margin <= 0.0:
+        raise RuntimeError("oracle loop: pressure domain -- the per-path loss exceeds the loop pressure (p_loop_margin <= 0)")
     loop_r_comp = p["loop_p"] / (p["loop_p"] - loop_dp_loop)
     loop_k_isen = (p["loop_gamma"] - 1.0) / p["loop_gamma"]
     loop_T_comp_in = p["loop_T_in"] / (1.0 + (loop_r_comp ** loop_k_isen - 1.0) / p["eta_is"])
@@ -797,6 +820,38 @@ def compute():
     cas70_annual = cas71_annual + cas72_annual
     annual_om = cas70_annual + cas80_annual   # the DCF numerator (WI-029)
 
+    # --- WI-047 (goal plant-closure): the fuel-cycle flows, the divertor heat ledger
+    # and the exhaust gas load, written from the WI-047 design's stated equations
+    # (D1-D7), not from the generated modules.
+    #   E_fus_J      = q_eff*mev_to_joules;  burn = p_fus*1e6/E_fus_J;  inject = burn/f_burn
+    #   exhaust      = inject - burn;  loss = (1 - t_recycle)*exhaust
+    #   tbr_required = (burn + loss + lambda_T*I_total + G_stock)/(eta_extract*burn)
+    #   p_heat_abs   = p_alpha_heat + p_coupled (INSTALLED basis);  p_sep = p_heat_abs - p_rad_core
+    #   f_rad_edge   = (f_total*p_heat_abs - p_rad_core)/p_sep;  p_target = p_heat_abs - f_total*p_heat_abs
+    #   q_peak       = q_ref*p_target/p_nonrad_ref;  shadow = q_peak*R_ref/R
+    #   n_molecules  = (D + T)/2 + He;  Q = n*k_B*T_gas;  S_eff = Q/p_exhaust
+    fuel_E_fus_J = p["fuel_q_eff"] * p["mev_to_joules"]
+    fuel_burn_rate = p_fus * 1.0e6 / fuel_E_fus_J
+    fuel_inject_rate = fuel_burn_rate / p["burn_fraction"]
+    fuel_exhaust_rate = fuel_inject_rate - fuel_burn_rate
+    fuel_loss_rate = (1.0 - p["t_recycle"]) * fuel_exhaust_rate
+    fuel_tbr_required = ((fuel_burn_rate + fuel_loss_rate + p["lambda_T"] * p["I_total"] + p["G_stock"])
+                         / (p["eta_extract"] * fuel_burn_rate))
+    fuel_tbr_margin = p["tbr"] - fuel_tbr_required
+    fuel_burn_kg_per_fpy = fuel_burn_rate * p["m_T_kg"] * p["s_per_fpy"]
+    divheat_p_heat_abs = sust["p_alpha_heat"] + heat_coupled
+    divheat_p_sep = divheat_p_heat_abs - sust["p_rad"]
+    divheat_f_rad_edge = (p["f_rad_total"] * divheat_p_heat_abs - sust["p_rad"]) / divheat_p_sep
+    divheat_f_rad_edge_in_range = divheat_f_rad_edge * (1.0 - divheat_f_rad_edge)
+    divheat_p_target_nonrad = divheat_p_heat_abs - p["f_rad_total"] * divheat_p_heat_abs
+    divheat_q_target_peak = p["q_target_ref"] * divheat_p_target_nonrad / p["p_nonrad_ref"]
+    divheat_q_target_peak_area_scaled = divheat_q_target_peak * p["R_ref_divertor"] / p["R"]
+    divheat_q_target_margin = p["q_target_limit"] - divheat_q_target_peak
+    divheat_p_heat_operating_minus_installed = sust["p_aux_required"] - heat_coupled
+    vacuum_n_molecules = (fuel_exhaust_rate + fuel_exhaust_rate) / 2.0 + fuel_burn_rate
+    vacuum_Q_total = vacuum_n_molecules * p["k_B"] * p["T_gas"]
+    vacuum_S_eff_required = vacuum_Q_total / p["p_exhaust"]
+
     # --- LCOE DCF ($/MWh) ---
     d = p["discount_rate"]
     N = p["operational_years"]
@@ -896,7 +951,46 @@ def compute():
         calendar_physical_life_fpy=cal["physical_life_fpy"],
         cas70_annual=cas70_annual, cas80_annual=cas80_annual,
         cas90_1cfe=cas90_1cfe, lcoe_1cfe=lcoe_1cfe,
+        # WI-047 fuel / divertor-heat / vacuum channels
+        fuel_burn_rate=fuel_burn_rate, fuel_inject_rate=fuel_inject_rate,
+        fuel_exhaust_rate=fuel_exhaust_rate, fuel_loss_rate=fuel_loss_rate,
+        fuel_tbr_required=fuel_tbr_required, fuel_tbr_margin=fuel_tbr_margin,
+        fuel_burn_kg_per_fpy=fuel_burn_kg_per_fpy,
+        divheat_p_heat_abs=divheat_p_heat_abs, divheat_p_sep=divheat_p_sep,
+        divheat_f_rad_edge=divheat_f_rad_edge,
+        divheat_f_rad_edge_in_range=divheat_f_rad_edge_in_range,
+        divheat_p_target_nonrad=divheat_p_target_nonrad,
+        divheat_q_target_peak=divheat_q_target_peak,
+        divheat_q_target_peak_area_scaled=divheat_q_target_peak_area_scaled,
+        divheat_q_target_margin=divheat_q_target_margin,
+        divheat_p_heat_operating_minus_installed=divheat_p_heat_operating_minus_installed,
+        vacuum_n_molecules=vacuum_n_molecules, vacuum_Q_total=vacuum_Q_total,
+        vacuum_S_eff_required=vacuum_S_eff_required,
     )
+
+
+def reconstruct_divertor_source_case(f_rad_total=0.9, q_target_ref=9.5, p_nonrad_ref=50.0):
+    """WI-047 (spec MR-WI047-9): the source's own divertor case reconstructed in the
+    oracle's ledger arithmetic -- a reconstruction at the source's point, not a
+    validation of the fixed-geometry scaling off it. Stellaris section 2.6 (text
+    lines 1219-1246; render stellaris_p15_divertor.png): 90 % of the net core
+    heating radiated, 500 MW -> 50 MW to the divertor; peaks 9.5 (200 eV, 1 m^2/s)
+    and 5.0 (100 eV, 3 m^2/s) MW/m^2 at that 50 MW; both below the adopted 10.
+    With p_rad_core = 0 the whole radiated share is the edge's (f_rad_edge = 0.9).
+    Written p - f*p so 500 - 450 = 50 exactly and 9.5*50/50 = 9.5 exactly (design D4).
+    """
+    p_heat_abs = 500.0
+    p_rad_core = 0.0
+    p_sep = p_heat_abs - p_rad_core
+    f_rad_edge = (f_rad_total * p_heat_abs - p_rad_core) / p_sep
+    p_target_nonrad = p_heat_abs - f_rad_total * p_heat_abs
+    q_peak = q_target_ref * p_target_nonrad / p_nonrad_ref
+    q_peak_low = 5.0 * p_target_nonrad / p_nonrad_ref
+    p_target_doubled = 2.0 * p_heat_abs - f_rad_total * (2.0 * p_heat_abs)
+    q_peak_doubled = q_target_ref * p_target_doubled / p_nonrad_ref
+    return dict(p_heat_abs=p_heat_abs, p_sep=p_sep, f_rad_edge=f_rad_edge,
+                p_target_nonrad=p_target_nonrad, q_peak=q_peak, q_peak_low=q_peak_low,
+                q_peak_doubled=q_peak_doubled)
 
 
 def reconstruct_reference_circuit(eta_is=None):

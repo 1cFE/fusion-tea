@@ -83,6 +83,22 @@
         "usage_qualified_name": "stellarator_09::stellaris::beta_ok"
       },
       {
+        "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
+        "declaration_id": "41d78ce2-13b2-5aa6-83e8-3746f32a3562",
+        "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
+        "evaluation_channel": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "stellarator_09__stellaris",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"q_target_peak_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"q_target_peak_in\",\"qualified_name\":\"mfe_viability::'Divertor Target Heat Limit'::q_target_peak_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"q_target_limit_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"q_target_limit_in\",\"qualified_name\":\"mfe_viability::'Divertor Target Heat Limit'::q_target_limit_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"<=\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Divertor Target Heat Limit'",
+        "source_form": "definition_typed",
+        "source_local_identity": "divertor_heat_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::divertor_heat_ok"
+      },
+      {
         "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
         "declaration_id": "5c324c47-2250-52ec-a459-28dd866bc1a9",
         "definition_qualified_name": "mfe_viability::'Net Power Positive'",
@@ -212,7 +228,7 @@
       }
     ],
     "excluded_records": [],
-    "fingerprint": "9d45cc8d63b1b10641bba95e2fee979b1a9f6945fbdd51caa6b2a498b2824b1a",
+    "fingerprint": "8f20ff0d656944ce9e9917e279ed56ce8288ede231252918c8c18fad54f8df6a",
     "source_records": [
       {
         "definition_qualified_name": "mfe_viability::'Beta Limit'",
@@ -245,6 +261,13 @@
         "definition_qualified_name": "mfe_viability::'Cycle Fit Domain'",
         "formal_names": [
           "domain_product_in"
+        ]
+      },
+      {
+        "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
+        "formal_names": [
+          "q_target_limit_in",
+          "q_target_peak_in"
         ]
       },
       {
@@ -392,6 +415,24 @@
         "source_form": "definition_typed",
         "source_local_identity": "beta_ok",
         "usage_qualified_name": "stellarator_09::stellaris::beta_ok"
+      },
+      {
+        "declaration_id": "41d78ce2-13b2-5aa6-83e8-3746f32a3562",
+        "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
+        "disposition_detail": "mfe_plant::'MFE Power Plant'::divertor_heat_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_def",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "source_form": "definition_typed",
+        "source_local_identity": "divertor_heat_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::divertor_heat_ok"
       },
       {
         "declaration_id": "5c324c47-2250-52ec-a459-28dd866bc1a9",
@@ -747,8 +788,103 @@
       "python_type": "float"
     },
     {
+      "channel_name": "stellarator_09__stellaris__fuel__burn_kg_per_fpy",
+      "field_name": "burn_kg_per_fpy",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel__inject_rate",
+      "field_name": "inject_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel__burn_rate",
+      "field_name": "burn_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel__tbr_margin",
+      "field_name": "tbr_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel__tbr_required",
+      "field_name": "tbr_required",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel__loss_rate",
+      "field_name": "loss_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__fuel__exhaust_rate",
+      "field_name": "exhaust_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__vacuum__S_eff_required",
+      "field_name": "S_eff_required",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__vacuum__Q_total",
+      "field_name": "Q_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__vacuum__n_molecules",
+      "field_name": "n_molecules",
+      "python_type": "float"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__beta_calc__beta",
       "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divheat__q_target_peak_area_scaled",
+      "field_name": "q_target_peak_area_scaled",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divheat__p_heat_abs",
+      "field_name": "p_heat_abs",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divheat__f_rad_edge_in_range",
+      "field_name": "f_rad_edge_in_range",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divheat__q_target_margin",
+      "field_name": "q_target_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divheat__p_target_nonrad",
+      "field_name": "p_target_nonrad",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divheat__f_rad_edge",
+      "field_name": "f_rad_edge",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divheat__p_heat_operating_minus_installed",
+      "field_name": "p_heat_operating_minus_installed",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divheat__p_sep",
+      "field_name": "p_sep",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__divheat__q_target_peak",
+      "field_name": "q_target_peak",
       "python_type": "float"
     },
     {
@@ -1247,6 +1383,11 @@
       "python_type": "ConstraintEvaluation"
     },
     {
+      "channel_name": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__net_positive__484521d56c02667a__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
@@ -1630,6 +1771,13 @@
       "qualified_name": "stellarator_09__stellaris__waste__ref_power"
     },
     {
+      "default_value": 31536000.0,
+      "entry_type": "library_default",
+      "param_group": "mfe_fuel_cycle_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__fuel__s_per_fpy_in"
+    },
+    {
       "default_value": 1.25663706212e-06,
       "entry_type": "library_default",
       "param_group": "mfe_magnet_cost_params",
@@ -1728,6 +1876,13 @@
       "qualified_name": "stellarator_09__stellaris__sustain__kappa_sync_in"
     },
     {
+      "default_value": 1.380649e-23,
+      "entry_type": "library_default",
+      "param_group": "mfe_vacuum_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__vacuum__k_B_in"
+    },
+    {
       "default_value": 2.817e-12,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -1735,11 +1890,32 @@
       "qualified_name": "stellarator_09__stellaris__E_fus"
     },
     {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__G_stock"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__I_total"
+    },
+    {
       "default_value": 12.7,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__R"
+    },
+    {
+      "default_value": 12.7,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__R_ref_divertor"
     },
     {
       "default_value": 642.0,
@@ -1768,6 +1944,13 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__T_cold_cryo"
+    },
+    {
+      "default_value": 300.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__T_gas"
     },
     {
       "default_value": 14.63,
@@ -2050,6 +2233,13 @@
       "qualified_name": "stellarator_09__stellaris__eta_drive"
     },
     {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__eta_extract"
+    },
+    {
       "default_value": 0.772796639536644,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -2104,6 +2294,13 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__f_loss"
+    },
+    {
+      "default_value": 0.9,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__f_rad_total"
     },
     {
       "default_value": 1.0,
@@ -2281,6 +2478,13 @@
       "qualified_name": "stellarator_09__stellaris__kappa"
     },
     {
+      "default_value": 1.782785958230312e-09,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__lambda_T"
+    },
+    {
       "default_value": 573.15,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -2328,6 +2532,13 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__lt_shield_t"
+    },
+    {
+      "default_value": 5.008267663228036e-27,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__m_T_kg"
     },
     {
       "default_value": 24.9,
@@ -2617,6 +2828,13 @@
       "qualified_name": "stellarator_09__stellaris__p_delivered_direct_heat"
     },
     {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__p_exhaust"
+    },
+    {
       "default_value": 0.0075,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -2650,6 +2868,13 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__p_nbi"
+    },
+    {
+      "default_value": 50.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__p_nonrad_ref"
     },
     {
       "default_value": 0.0,
@@ -2722,6 +2947,20 @@
       "qualified_name": "stellarator_09__stellaris__q_nuc_cryo"
     },
     {
+      "default_value": 10.0,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__q_target_limit"
+    },
+    {
+      "default_value": 9.5,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__q_target_ref"
+    },
+    {
       "default_value": 0.2,
       "entry_type": "design_attribute",
       "param_group": "stellarator_plant_params",
@@ -2790,6 +3029,13 @@
       "param_group": "stellarator_plant_params",
       "python_type": "float",
       "qualified_name": "stellarator_09__stellaris__supplementary_startup_base"
+    },
+    {
+      "default_value": 0.99,
+      "entry_type": "design_attribute",
+      "param_group": "stellarator_plant_params",
+      "python_type": "float",
+      "qualified_name": "stellarator_09__stellaris__t_recycle"
     },
     {
       "default_value": 8.0,
@@ -2918,5 +3164,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "e6a7baa5a822b47b8457023e1d2ebd88132bfd25ba826b4c02102fab21212a89"
+  "semantic_fingerprint": "42237b2b07673bfde916b9749bab93634eafa91f1205abde4b7a70dd1881038f"
 }

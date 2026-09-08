@@ -13,11 +13,13 @@ modules:
     module_type: EntryPoint
     inputs:
       mfe_account_costs_params: MfeAccountCostsParams ../inputs/mfe_account_costs_params.json
+      mfe_fuel_cycle_params: MfeFuelCycleParams ../inputs/mfe_fuel_cycle_params.json
       mfe_magnet_cost_params: MfeMagnetCostParams ../inputs/mfe_magnet_cost_params.json
       mfe_magnet_field_params: MfeMagnetFieldParams ../inputs/mfe_magnet_field_params.json
       mfe_plant_params: MfePlantParams ../inputs/mfe_plant_params.json
       mfe_plasma_scaling_params: MfePlasmaScalingParams ../inputs/mfe_plasma_scaling_params.json
       mfe_plasma_sustainment_params: MfePlasmaSustainmentParams ../inputs/mfe_plasma_sustainment_params.json
+      mfe_vacuum_params: MfeVacuumParams ../inputs/mfe_vacuum_params.json
       stellarator_plant_params: StellaratorPlantParams ../inputs/stellarator_plant_params.json
 
 
@@ -259,6 +261,46 @@ modules:
     outputs:
       root: RootModel[float] stellarator_09__stellaris__fusion__p_fus
 
+  # mfe_fuel_cycle.Fuel_Cycle_FlowsModule
+  stellarator_09__stellaris__fuel:
+    module_type: mfe_fuel_cycle.Fuel_Cycle_FlowsModule
+    inputs:
+      p_fus_in: float stellarator_09__stellaris__fusion__p_fus.root
+      lambda_T_in: float stellarator_plant_params.stellarator_09__stellaris__lambda_T
+      t_recycle_in: float stellarator_plant_params.stellarator_09__stellaris__t_recycle
+      s_per_fpy_in: float mfe_fuel_cycle_params.stellarator_09__stellaris__fuel__s_per_fpy_in
+      G_stock_in: float stellarator_plant_params.stellarator_09__stellaris__G_stock
+      tbr_available_in: float stellarator_plant_params.stellarator_09__stellaris__tbr
+      mev_to_joules_in: float stellarator_plant_params.stellarator_09__stellaris__mev_to_joules
+      m_T_kg_in: float stellarator_plant_params.stellarator_09__stellaris__m_T_kg
+      eta_extract_in: float stellarator_plant_params.stellarator_09__stellaris__eta_extract
+      burn_fraction_in: float stellarator_plant_params.stellarator_09__stellaris__burn_fraction
+      q_eff_in: float stellarator_plant_params.stellarator_09__stellaris__fuel_q_eff
+      I_total_in: float stellarator_plant_params.stellarator_09__stellaris__I_total
+    outputs:
+      burn_kg_per_fpy: float stellarator_09__stellaris__fuel__burn_kg_per_fpy
+      inject_rate: float stellarator_09__stellaris__fuel__inject_rate
+      burn_rate: float stellarator_09__stellaris__fuel__burn_rate
+      tbr_margin: float stellarator_09__stellaris__fuel__tbr_margin
+      tbr_required: float stellarator_09__stellaris__fuel__tbr_required
+      loss_rate: float stellarator_09__stellaris__fuel__loss_rate
+      exhaust_rate: float stellarator_09__stellaris__fuel__exhaust_rate
+
+  # mfe_vacuum.Vacuum_Gas_LoadModule
+  stellarator_09__stellaris__vacuum:
+    module_type: mfe_vacuum.Vacuum_Gas_LoadModule
+    inputs:
+      exhaust_rate_D_in: float stellarator_09__stellaris__fuel__exhaust_rate
+      exhaust_rate_T_in: float stellarator_09__stellaris__fuel__exhaust_rate
+      p_exhaust_in: float stellarator_plant_params.stellarator_09__stellaris__p_exhaust
+      T_gas_in: float stellarator_plant_params.stellarator_09__stellaris__T_gas
+      helium_rate_in: float stellarator_09__stellaris__fuel__burn_rate
+      k_B_in: float mfe_vacuum_params.stellarator_09__stellaris__vacuum__k_B_in
+    outputs:
+      S_eff_required: float stellarator_09__stellaris__vacuum__S_eff_required
+      Q_total: float stellarator_09__stellaris__vacuum__Q_total
+      n_molecules: float stellarator_09__stellaris__vacuum__n_molecules
+
   # mfe_plasma_scaling.Volume_Averaged_BetaModule
   stellarator_09__stellaris__beta_calc:
     module_type: mfe_plasma_scaling.Volume_Averaged_BetaModule
@@ -268,6 +310,31 @@ modules:
       p_avg_in: float stellarator_09__stellaris__sustain__p_avg
     outputs:
       root: RootModel[float] stellarator_09__stellaris__beta_calc__beta
+
+  # mfe_divertor_heat.Divertor_Heat_LedgerModule
+  stellarator_09__stellaris__divheat:
+    module_type: mfe_divertor_heat.Divertor_Heat_LedgerModule
+    inputs:
+      p_aux_required_in: float stellarator_09__stellaris__sustain__p_aux_required
+      q_target_limit_in: float stellarator_plant_params.stellarator_09__stellaris__q_target_limit
+      f_rad_total_in: float stellarator_plant_params.stellarator_09__stellaris__f_rad_total
+      R_in: float stellarator_plant_params.stellarator_09__stellaris__R
+      q_target_ref_in: float stellarator_plant_params.stellarator_09__stellaris__q_target_ref
+      p_coupled_in: float stellarator_09__stellaris__heat__p_coupled
+      R_ref_in: float stellarator_plant_params.stellarator_09__stellaris__R_ref_divertor
+      p_alpha_heat_in: float stellarator_09__stellaris__sustain__p_alpha_heat
+      p_nonrad_ref_in: float stellarator_plant_params.stellarator_09__stellaris__p_nonrad_ref
+      p_rad_core_in: float stellarator_09__stellaris__sustain__p_rad
+    outputs:
+      q_target_peak_area_scaled: float stellarator_09__stellaris__divheat__q_target_peak_area_scaled
+      p_heat_abs: float stellarator_09__stellaris__divheat__p_heat_abs
+      f_rad_edge_in_range: float stellarator_09__stellaris__divheat__f_rad_edge_in_range
+      q_target_margin: float stellarator_09__stellaris__divheat__q_target_margin
+      p_target_nonrad: float stellarator_09__stellaris__divheat__p_target_nonrad
+      f_rad_edge: float stellarator_09__stellaris__divheat__f_rad_edge
+      p_heat_operating_minus_installed: float stellarator_09__stellaris__divheat__p_heat_operating_minus_installed
+      p_sep: float stellarator_09__stellaris__divheat__p_sep
+      q_target_peak: float stellarator_09__stellaris__divheat__q_target_peak
 
   # mfe_plasma_scaling.Neutron_Wall_LoadModule
   stellarator_09__stellaris__wall_load_calc:
@@ -1057,6 +1124,15 @@ modules:
     outputs:
       evaluation: ConstraintEvaluation stellarator_09__stellaris__beta_ok__82b78aad420730d5__evaluation
 
+  # stellarator_09.StellarisDivertorHeatOkConstraintModule
+  stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7:
+    module_type: stellarator_09.StellarisDivertorHeatOkConstraintModule
+    inputs:
+      q_target_peak_in: float stellarator_09__stellaris__divheat__q_target_peak
+      q_target_limit_in: float stellarator_plant_params.stellarator_09__stellaris__q_target_limit
+    outputs:
+      evaluation: ConstraintEvaluation stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7__evaluation
+
   # stellarator_09.StellarisNetPositiveConstraintModule
   stellarator_09__stellaris__net_positive__484521d56c02667a:
     module_type: stellarator_09.StellarisNetPositiveConstraintModule
@@ -1135,6 +1211,7 @@ modules:
       stellarator_09_stellaris_recirc_ok_afc3be66f0a3421b: ConstraintEvaluation stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__evaluation
       stellarator_09_stellaris_cycle_domain_ok_ba3fa9c3653b3fd3: ConstraintEvaluation stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3__evaluation
       stellarator_09_stellaris_beta_ok_82b78aad420730d5: ConstraintEvaluation stellarator_09__stellaris__beta_ok__82b78aad420730d5__evaluation
+      stellarator_09_stellaris_divertor_heat_ok_26b4658f9fdfd7b7: ConstraintEvaluation stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7__evaluation
       stellarator_09_stellaris_net_positive_484521d56c02667a: ConstraintEvaluation stellarator_09__stellaris__net_positive__484521d56c02667a__evaluation
       stellarator_09_stellaris_burn_hold_ok_03c3f94b878e5b58: ConstraintEvaluation stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58__evaluation
       stellarator_09_stellaris_wall_load_ok_ab2c790419af93bb: ConstraintEvaluation stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb__evaluation
@@ -1192,7 +1269,26 @@ modules:
       stellarator_09__stellaris__sustain__alpha_He_eff: float stellarator_09__stellaris__sustain__alpha_He_eff.json
       stellarator_09__stellaris__sustain__T_e0: float stellarator_09__stellaris__sustain__T_e0.json
       stellarator_09__stellaris__fusion__p_fus: RootModel[float] stellarator_09__stellaris__fusion__p_fus.json
+      stellarator_09__stellaris__fuel__burn_kg_per_fpy: float stellarator_09__stellaris__fuel__burn_kg_per_fpy.json
+      stellarator_09__stellaris__fuel__inject_rate: float stellarator_09__stellaris__fuel__inject_rate.json
+      stellarator_09__stellaris__fuel__burn_rate: float stellarator_09__stellaris__fuel__burn_rate.json
+      stellarator_09__stellaris__fuel__tbr_margin: float stellarator_09__stellaris__fuel__tbr_margin.json
+      stellarator_09__stellaris__fuel__tbr_required: float stellarator_09__stellaris__fuel__tbr_required.json
+      stellarator_09__stellaris__fuel__loss_rate: float stellarator_09__stellaris__fuel__loss_rate.json
+      stellarator_09__stellaris__fuel__exhaust_rate: float stellarator_09__stellaris__fuel__exhaust_rate.json
+      stellarator_09__stellaris__vacuum__S_eff_required: float stellarator_09__stellaris__vacuum__S_eff_required.json
+      stellarator_09__stellaris__vacuum__Q_total: float stellarator_09__stellaris__vacuum__Q_total.json
+      stellarator_09__stellaris__vacuum__n_molecules: float stellarator_09__stellaris__vacuum__n_molecules.json
       stellarator_09__stellaris__beta_calc__beta: RootModel[float] stellarator_09__stellaris__beta_calc__beta.json
+      stellarator_09__stellaris__divheat__q_target_peak_area_scaled: float stellarator_09__stellaris__divheat__q_target_peak_area_scaled.json
+      stellarator_09__stellaris__divheat__p_heat_abs: float stellarator_09__stellaris__divheat__p_heat_abs.json
+      stellarator_09__stellaris__divheat__f_rad_edge_in_range: float stellarator_09__stellaris__divheat__f_rad_edge_in_range.json
+      stellarator_09__stellaris__divheat__q_target_margin: float stellarator_09__stellaris__divheat__q_target_margin.json
+      stellarator_09__stellaris__divheat__p_target_nonrad: float stellarator_09__stellaris__divheat__p_target_nonrad.json
+      stellarator_09__stellaris__divheat__f_rad_edge: float stellarator_09__stellaris__divheat__f_rad_edge.json
+      stellarator_09__stellaris__divheat__p_heat_operating_minus_installed: float stellarator_09__stellaris__divheat__p_heat_operating_minus_installed.json
+      stellarator_09__stellaris__divheat__p_sep: float stellarator_09__stellaris__divheat__p_sep.json
+      stellarator_09__stellaris__divheat__q_target_peak: float stellarator_09__stellaris__divheat__q_target_peak.json
       stellarator_09__stellaris__wall_load_calc__wall_load: RootModel[float] stellaris__neutron_wall_load.json
       stellarator_09__stellaris__stored_energy__W_mag: RootModel[float] stellarator_09__stellaris__stored_energy__W_mag.json
       stellarator_09__stellaris__casing_mass__m_casing: RootModel[float] stellaris__magnet__m_casing.json
@@ -1292,6 +1388,7 @@ modules:
       stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__evaluation: ConstraintEvaluation stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__evaluation.json
       stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3__evaluation: ConstraintEvaluation stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3__evaluation.json
       stellarator_09__stellaris__beta_ok__82b78aad420730d5__evaluation: ConstraintEvaluation stellarator_09__stellaris__beta_ok__82b78aad420730d5__evaluation.json
+      stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7__evaluation: ConstraintEvaluation stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7__evaluation.json
       stellarator_09__stellaris__net_positive__484521d56c02667a__evaluation: ConstraintEvaluation stellarator_09__stellaris__net_positive__484521d56c02667a__evaluation.json
       stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58__evaluation: ConstraintEvaluation stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58__evaluation.json
       stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb__evaluation: ConstraintEvaluation stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb__evaluation.json

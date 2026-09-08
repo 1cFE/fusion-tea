@@ -46,7 +46,7 @@ PACKAGE_DIR = E2E / "generated"
 MANIFEST_PATH = HERE / "manifest.json"
 P = "stellarator_09__stellaris__"
 BASELINE_RESULT_SCHEMA_VERSION = "study-baseline-result/v1"
-EXPECTED_CONSTRAINT_COUNT = 13  # WI-045 (2026-09-08): loop_pressure_ok, loop_capacity_ok, cycle_domain_ok join the ten (WI-043: burn_hold_ok joined the nine)
+EXPECTED_CONSTRAINT_COUNT = 14  # WI-047 (2026-09-08): divertor_heat_ok joins the thirteen (WI-045: three loop/cycle fences joined the ten; WI-043: burn_hold_ok joined the nine)
 
 # --- Axis declarations: SysML attribute -> complete entry-key expansion ------
 AXES: dict[str, list[str]] = {

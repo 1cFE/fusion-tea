@@ -1,0 +1,19 @@
+{
+ "oracle": {
+  "p_heat_abs": 500.0,
+  "p_sep": 500.0,
+  "f_rad_edge": 0.9,
+  "p_target_nonrad": 50.0,
+  "q_peak": 9.5,
+  "q_peak_low": 5.0,
+  "q_peak_doubled": 19.0
+ },
+ "exact": {
+  "p_target_nonrad": true,
+  "q_peak": true,
+  "q_peak_low": true,
+  "doubled": true
+ },
+ "t_recycle_threshold": 0.9961052631578947,
+ "identity_1p19": 1.1900000000000002
+}

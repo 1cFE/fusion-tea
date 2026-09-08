@@ -33,7 +33,7 @@ def test_fingerprint_read_set_is_the_three_legs(real_package_path):
     files = [f["path"] for f in manifest.indicator_input_fingerprint(real_package_path)["files"]]
     assert "pipelines/pipeline.yaml" in files
     assert "contracts/model_contract.json" in files
-    assert sum(1 for p in files if p.startswith("inputs/")) == 7  # one per generated input group (WI-037: +mfe_plasma_sustainment)
+    assert sum(1 for p in files if p.startswith("inputs/")) == 9  # one per generated input group (WI-047 (2026-09-08): +mfe_fuel_cycle, +mfe_vacuum -- the two calc-formal library defaults s_per_fpy and k_B; WI-037: +mfe_plasma_sustainment)
     assert all(
         p.startswith(("pipelines/", "inputs/")) or p == "contracts/model_contract.json"
         for p in files

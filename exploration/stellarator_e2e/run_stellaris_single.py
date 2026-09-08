@@ -83,9 +83,20 @@ EXPECTED_VERDICTS = {
     "loop_pressure_ok": "satisfied",
     "loop_capacity_ok": "satisfied",
     "cycle_domain_ok": "satisfied",
+    # WI-047 (goal plant-closure, 2026-09-08): the divertor target peak -- the
+    # source's fixed-geometry PESSIMISTIC transport case (9.5 MW/m^2 at 50 MW
+    # non-radiated, T_LCFS 200 eV, chi_perp 1 m^2/s) scaled linearly in the
+    # non-radiated load -- against the adopted 10 MW/m^2 threshold. EXPECTED
+    # VIOLATED at the baseline: 10.535 against 10, because the model's absorbed
+    # heating (its own alpha heating 504.49 + the installed 50 MW coupled =
+    # 554.49 MW) is 10.9 % above the source's 500 MW. The disclosed, explained
+    # verdict change of WI-047, never tuned (the WI-041 precedent); on the low
+    # case (5.0 at 50, a study lever) the peak reads 5.545 and the fence is
+    # satisfied. No existing channel moved; the headline is 'violation'.
+    "divertor_heat_ok": "violated",
 }
-EXPECTED_HEADLINE = "full_satisfaction"
-EXPECTED_VERDICT_COUNT = 13  # WI-045 added loop_pressure_ok, loop_capacity_ok, cycle_domain_ok (was 10; WI-043 added burn_hold_ok, was 9)
+EXPECTED_HEADLINE = "violation"  # WI-047: one verdict violated by design (WI-041 pinned 'violation' once before)
+EXPECTED_VERDICT_COUNT = 14  # WI-047 added divertor_heat_ok, violated (was 13; WI-045 added three, was 10; WI-043 added burn_hold_ok, was 9)
 
 
 def _execute_package():
@@ -236,7 +247,9 @@ def _assert_generated_verdicts(outputs) -> None:
     print(
         "VERDICT PARITY: PASS -- "
         f"headline={report.headline}, assessed_entry_count={report.assessed_entry_count}, "
-        "thirteen satisfied (WI-045: three fences added -- the loop's pressure "
+        "thirteen satisfied and divertor_heat_ok VIOLATED (WI-047: the fixed-geometry "
+        "pessimistic divertor case reads 10.535 against 10 -- disclosed, never tuned). "
+        "WI-045: three fences added -- the loop's pressure "
         "and capacity, the cycle's fit domain; the design point moved as "
         "predicted, the compatibility proposal reproduces the WI-044 pin. "
         "WI-043: burn_hold_ok, nothing moved. WI-042: sustainment_ok and "
@@ -269,6 +282,27 @@ def _oracle_gate(values: dict[str, float], oracle: dict[str, float]) -> bool:
         "calendar_cas72_annual": values[f"{P}calendar__cas72_annual"],
         "calendar_n_replacements": values[f"{P}calendar__n_replacements"],
         "calendar_physical_life_fpy": values[f"{P}calendar__physical_life_fpy"],
+        # WI-047 fuel / divertor-heat / vacuum channels (bit-exact vs the oracle's
+        # own derivations of the design's equations)
+        "fuel_burn_rate": values[f"{P}fuel__burn_rate"],
+        "fuel_inject_rate": values[f"{P}fuel__inject_rate"],
+        "fuel_exhaust_rate": values[f"{P}fuel__exhaust_rate"],
+        "fuel_loss_rate": values[f"{P}fuel__loss_rate"],
+        "fuel_tbr_required": values[f"{P}fuel__tbr_required"],
+        "fuel_tbr_margin": values[f"{P}fuel__tbr_margin"],
+        "fuel_burn_kg_per_fpy": values[f"{P}fuel__burn_kg_per_fpy"],
+        "divheat_p_heat_abs": values[f"{P}divheat__p_heat_abs"],
+        "divheat_p_sep": values[f"{P}divheat__p_sep"],
+        "divheat_f_rad_edge": values[f"{P}divheat__f_rad_edge"],
+        "divheat_f_rad_edge_in_range": values[f"{P}divheat__f_rad_edge_in_range"],
+        "divheat_p_target_nonrad": values[f"{P}divheat__p_target_nonrad"],
+        "divheat_q_target_peak": values[f"{P}divheat__q_target_peak"],
+        "divheat_q_target_peak_area_scaled": values[f"{P}divheat__q_target_peak_area_scaled"],
+        "divheat_q_target_margin": values[f"{P}divheat__q_target_margin"],
+        "divheat_p_heat_operating_minus_installed": values[f"{P}divheat__p_heat_operating_minus_installed"],
+        "vacuum_n_molecules": values[f"{P}vacuum__n_molecules"],
+        "vacuum_Q_total": values[f"{P}vacuum__Q_total"],
+        "vacuum_S_eff_required": values[f"{P}vacuum__S_eff_required"],
         "cas70_annual": values[CH["cas70"]],
         "cas80_annual": values[CH["cas80"]],
         "annual_fuel": values[CH["annual_fuel"]],

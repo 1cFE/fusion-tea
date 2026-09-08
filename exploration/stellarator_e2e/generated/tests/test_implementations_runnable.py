@@ -8,7 +8,7 @@ Tests verify that handwritten implementation functions:
 4. Tolerate NotImplementedError (before agent implements)
 5. Validate return types (after agent implements)
 
-Generated from 62 calculation definitions.
+Generated from 65 calculation definitions.
 """
 
 import importlib
@@ -655,6 +655,90 @@ class TestDT_Fusion_PowerRunnable:
             # Expected for stencils - test passes
             pass
 
+class TestFuel_Cycle_FlowsRunnable:
+    """Verify fuel_cycle_flows implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_fuel_cycle.sysml:4
+    """
+
+    def test_import_and_run(self):
+        """Test that run_fuel_cycle_flows can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_fuel_cycle.fuel_cycle_flows_impl")
+        func = getattr(impl, "run_fuel_cycle_flows")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_fuel_cycle.fuel_cycle_flows")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
+            assert len(result) == 7, f"Expected 7 outputs"
+            assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestVacuum_Gas_LoadRunnable:
+    """Verify vacuum_gas_load implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_vacuum.sysml:4
+    """
+
+    def test_import_and_run(self):
+        """Test that run_vacuum_gas_load can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_vacuum.vacuum_gas_load_impl")
+        func = getattr(impl, "run_vacuum_gas_load")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_vacuum.vacuum_gas_load")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
+            assert len(result) == 3, f"Expected 3 outputs"
+            assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
 class TestVolume_Averaged_BetaRunnable:
     """Verify volume_averaged_beta implementation runs without error.
 
@@ -690,6 +774,48 @@ class TestVolume_Averaged_BetaRunnable:
 
             # If implemented, verify return type
             assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestDivertor_Heat_LedgerRunnable:
+    """Verify divertor_heat_ledger implementation runs without error.
+
+    SysML Source: root-0/analyses/mfe_divertor_heat.sysml:4
+    """
+
+    def test_import_and_run(self):
+        """Test that run_divertor_heat_ledger can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("stellarator_tea.handwritten.mfe_divertor_heat.divertor_heat_ledger_impl")
+        func = getattr(impl, "run_divertor_heat_ledger")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("stellarator_tea.modules.mfe_divertor_heat.divertor_heat_ledger")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
+            assert len(result) == 9, f"Expected 9 outputs"
+            assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
 
         except NotImplementedError:
             # Expected for stencils - test passes
