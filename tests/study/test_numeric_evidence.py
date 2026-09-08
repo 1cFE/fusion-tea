@@ -82,6 +82,9 @@ def test_real_multi_output_values_survive_reopened_store_and_export(
         "q_eng": f"{route.P}pb__q_eng",
         "p_th": f"{route.P}pb__p_th",
         "p_et": f"{route.P}pb__p_et",
+        # WI-045 (goal plant-closure, 2026-09-08): the thermal efficiency is the
+        # cycle calc's channel now, not the held 0.333; the identity below reads it.
+        "eta_th": f"{route.P}cycle__eta_th",
         "lcoe": route.CHANNELS["lcoe"],
     }
     cases, db = route.run_points(
@@ -104,7 +107,7 @@ def test_real_multi_output_values_survive_reopened_store_and_export(
     assert values == route.required_outputs(cases[0], required)
     assert all(isinstance(value, float) for value in values.values())
     assert values["p_net"] == pytest.approx(values["p_et"] * (1 - values["rec_frac"]))
-    assert values["p_et"] == pytest.approx(0.333 * values["p_th"])
+    assert values["p_et"] == pytest.approx(values["eta_th"] * values["p_th"])  # WI-045: p_the = eta_th * p_th on the cycle's channel
     assert values["q_eng"] == pytest.approx(1 / values["rec_frac"])
     assert values["lcoe"] > 0
     path = route.write_csv([values], tmp_path / "numeric.csv")

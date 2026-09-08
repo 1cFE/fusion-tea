@@ -105,9 +105,9 @@ Levels 1–3 after every model edit; the held-mode identity before anything else
 
 ## Phase 5 — The `tests/study` run of record; commit C
 
-- [ ] After commit B, `tests/study` on the clean tree (detached, `setsid nohup`, ~11 min); record the count and the failing set; confirm the failing set equals the pre-existing fail-closed set (86) or explain every difference
-- [ ] **Commit C**: any test-file restatement the run forced, and this plan's phase-5 record
-- [ ] Hand the tree to WI-046's plan (packet § 9); its `evidence/baseline_before/` is this item's `evidence/baseline_after/`
+- [x] After commit B, `tests/study` on the clean tree (detached, `setsid nohup`, ~11 min); record the count and the failing set; confirm the failing set equals the pre-existing fail-closed set (86) or explain every difference
+- [x] **Commit C**: any test-file restatement the run forced, and this plan's phase-5 record
+- [x] Hand the tree to WI-046's plan (packet § 9); its `evidence/baseline_before/` is this item's `evidence/baseline_after/`
 
 ---
 
@@ -205,4 +205,12 @@ Every existing channel at P0 held is the entering pin's exactly; at P1 / P3 / P4
 - **Validation** (`evidence/validate_complete_after.txt`): unchanged from phase 1 (Level 2 the 12 placeholders; Level 6 248). **`tests/models`: 48 passed / 13 skipped.** The affected `tests/study` files (`test_known_answers`, `test_operand_bindings`, `test_valid_empty`) green; the full battery is phase 5's run of record on the committed tree (its git-clean gate fails on an uncommitted one — memory `gotcha_repin_after_regeneration`).
 - **SV-063, SV-064, SV-065** added and `passing`; nine trace rows (`data/traceability_matrix.csv`).
 - Commit B: the regenerated package, the four handwritten impls (three new, one regenerated AUTO), the oracle, the seam, the runner, `study_route.py`, the pin files (snapshot, manifest, census), the six fixtures and the three test files, the two PM matrices, and this item's `evidence/` and plan.
+
+### Phase 5 record — 2026-09-08
+
+- **The run of record** (`evidence/tests_study_run_of_record.txt`, one battery, detached with `setsid nohup`, the tree at commit B plus the two restatements below): **86 failed / 424 passed / 1 skipped in 11:32** — the entry count exactly; every failure in `test_study_publication_fail_closed.py` (the 75 pre-existing fail-closed cases + 11 for `20260907-minor-radius`), no other failing test, no errors.
+- **Two count sites the plan's list missed, found by the battery and restated with dated comments (commit C):** `tests/study/test_verify.py` `test_every_catalog_constraint_is_rederived_with_its_operand_count` carries the constraint set by name (+3); `tests/study/test_numeric_evidence.py` `test_real_multi_output_values_survive_reopened_store_and_export` asserted `p_et == 0.333 · p_th` with the held efficiency as a literal — it now declares the cycle's `eta_th` channel in its required map and asserts `p_et == eta_th · p_th` (the identity, on the calc's own channel). Both green in isolation (33 passed / 1 skipped) before the run of record.
+- **A contaminated first run, superseded and recorded:** the first battery after commit B was launched as a harness background command and killed by the harness's memory accounting mid-run; the re-launch overlapped with a second detached launch of the same command (the round agent's), and the two shared `.integration_workspace` — 89 failed / 380 passed / 41 errors, the errors all "a previous run left .integration_workspace behind". Not a regression; the strays were stopped, the workspace removed, and the single detached run above is the run of record (the goal's harness note: detached runs with short polls).
+- **Commit C:** the two test restatements, this plan, and the run of record.
+- The tree is handed to WI-046's plan (packet § 9); its `evidence/baseline_before/` is this item's `evidence/baseline_after/` (live: 126 channels, thirteen verdicts, LCOE 237.2528002420958; held: the WI-044 pin bit-for-bit through the compatibility proposal).
 
