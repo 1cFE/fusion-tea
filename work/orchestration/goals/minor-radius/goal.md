@@ -118,4 +118,6 @@ The owner closes — on the § Answered when condition, or by redirect at any ro
 
 ## Amendments
 
-None.
+### Amendment 2026-09-07 — fact 5 named the wrong point (the round-1 pre-execution critique's F3)
+
+Fact 5 says the cheapest ten-verdict feasible point with `a ≤ R/9.8 + 0.1` at 100 MW in the committed `20260907-burn-control` record is `c1661` at 283.61 $/MWh (R 14.2, a 1.5, 16 MA, 17 keV, n 0.8×) and that "the gap from the headline is about 80 $/MWh". The critique recounted the committed `results/points.csv`: under that filter the cheapest is **`c2502` at 244.57 $/MWh (R 15.7, a 1.7, 15 MA; aspect ratio 9.24)**; the count of 47 stands. Under the strict filter A ≥ 9.8 there are 12 feasible points and the cheapest is `c2440` at 329.63. The gap to the headline 202.19 is therefore 42 $/MWh under the loose filter and 127 under the strict one, not 80; the conclusion the fact carries — that the headline rests on a geometry no source supports and that a supported one costs materially more — stands, with the number corrected and the filter stated. The round's study recomputes the (c) input from its own record with the filter stated. `[AGENT]`, a premise surprise surfaced; fact 5 is not edited in place.

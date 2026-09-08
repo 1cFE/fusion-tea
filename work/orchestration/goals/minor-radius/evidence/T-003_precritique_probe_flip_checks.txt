@@ -1,0 +1,18 @@
+20260907-burn-control:c3706 R11.2 a1.3 I13.0 T16.0 n0.8 wp220 committed feasible=False field=satisfied stress=satisfied Bp 23.835 sig 571.7
+    predicted Bp 24.936 sig 598.1 | oracle Bp 24.936 sig 598.1 eps 0.00199 viol ['field', 'recirc'] p_aux 81.86 (committed 81.86) lcoe 477.850 (committed 478.362) cas72 80811898.3 (committed 80811898.3) casing 53.4t
+20260907-burn-control:c0137 R11.2 a1.5 I13.0 T17.0 n0.7 wp100 committed feasible=True field=satisfied stress=satisfied Bp 23.835 sig 571.7
+    predicted Bp 25.571 sig 613.3 | oracle Bp 25.571 sig 613.3 eps 0.00204 viol ['field'] p_aux 17.74 (committed 17.74) lcoe 352.367 (committed 352.536) cas72 81403292.8 (committed 81403292.8) casing 58.7t
+20260907-burn-control:c0890 R12.7 a1.5 I15.0 T16.0 n0.8 wp100 committed feasible=False field=satisfied stress=satisfied Bp 24.253 sig 624.8
+    predicted Bp 24.772 sig 638.2 | oracle Bp 24.772 sig 638.2 eps 0.00213 viol [] p_aux -5.06 (committed -5.06) lcoe 331.089 (committed 330.984) cas72 108249453.1 (committed 108249453.1) casing 66.6t
+20260907-burn-control:c1015 R12.7 a1.7 I15.0 T16.0 n0.8 wp100 committed feasible=False field=satisfied stress=satisfied Bp 24.253 sig 624.8
+    predicted Bp 25.313 sig 652.2 | oracle Bp 25.313 sig 652.2 eps 0.00217 viol ['field'] p_aux -61.62 (committed -61.62) lcoe 307.673 (committed 307.413) cas72 119002903.5 (committed 119002903.5) casing 72.9t
+20260907-burn-control:c1357 R12.7 a2.2 I14.0 T13.0 n1.0 wp100 committed feasible=True field=satisfied stress=satisfied Bp 22.636 sig 563.4
+    predicted Bp 24.992 sig 622.0 | oracle Bp 24.992 sig 622.0 eps 0.00207 viol ['field'] p_aux 22.03 (committed 22.03) lcoe 283.801 (committed 283.384) cas72 113078694.6 (committed 113078694.6) casing 80.4t
+20260907-burn-control:c0576 R11.2 a2.0 I16.0 T14.63 n0.9 wp100 committed feasible=False field=violated stress=satisfied Bp 29.335 sig 780.5
+    predicted Bp 33.614 sig 894.4 | oracle Bp 33.614 sig 894.4 eps 0.00298 viol ['field', 'stress'] p_aux -22.82 (committed -22.82) lcoe 442.837 (committed 441.151) cas72 61109021.6 (committed 61109021.6) casing 100.9t
+20260907-burn-control:c1561 R14.2 a1.3 I18.0 T17.0 n0.8 wp100 committed feasible=False field=violated stress=satisfied Bp 26.030 sig 734.6
+    predicted Bp 25.153 sig 709.9 | oracle Bp 25.153 sig 709.9 eps 0.00237 viol ['field'] p_aux 43.41 (committed 43.41) lcoe 375.915 (committed 375.621) cas72 129132443.3 (committed 129132443.3) casing 73.7t
+20260907-burn-control:c3598 R17.2 a2.2 I14.0 T13.0 n1.0 wp100 committed feasible=True field=satisfied stress=satisfied Bp 16.714 sig 416.0
+    predicted Bp 16.439 sig 409.2 | oracle Bp 16.439 sig 409.2 eps 0.00136 viol [] p_aux 41.25 (committed 41.25) lcoe 205.387 (committed 205.382) cas72 378689780.6 (committed 378689780.6) casing 63.4t
+20260907-burn-control:c2823 R15.7 a2.2 I13.0 T13.0 n1.0 wp100 committed feasible=True field=satisfied stress=satisfied Bp 17.003 sig 407.8
+    predicted Bp 17.231 sig 413.3 | oracle Bp 17.231 sig 413.3 eps 0.00138 viol [] p_aux 33.34 (committed 33.34) lcoe 202.165 (committed 202.192) cas72 322338889.3 (committed 322338889.3) casing 60.7t
