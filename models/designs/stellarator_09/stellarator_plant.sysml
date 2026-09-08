@@ -1257,8 +1257,57 @@ package stellarator_09 {
             **Basis**: staffing-based DT O&M, power-law scaled, unlevelized
             */
         }
-        :>> availability = 0.85 {      // capacity factor.
-            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/backcasting_bridge.py **Ref**: backcasting_bridge.py:48 (availability = 0.85) **Basis**: 1costingFE reference availability */
+        :>> availability_direct = 0.0 {  // LIVE: the calendar produces availability (WI-046).
+            doc /*
+            The held-mode switch of 'Lifecycle Calendar'. 0.0 selects the live
+            calendar; binding the former constant 0.85 here reproduces the
+            pre-WI-046 package to the bit (the compatibility bridge -- goal
+            plant-closure, Invariants; the study's compatibility arm sets it).
+            History: availability = 0.85 was held here from WI-009 to WI-044,
+            cited to backcasting_bridge.py:48 (1costingFE reference), and read as
+            no_constraint_response by two committed studies.
+            **Source**: work/orchestration/goals/plant-closure/evidence/round1_basis_packet.md **Ref**: sections 3 and 8 (the mode rule) **Basis**: the live calendar is the producer; the held value survives as the bridge
+            */
+        }
+        :>> outage_years = 0.5833333333333334 {  // seven months, the source's ESTIMATE [yr].
+            doc /*
+            Stellaris sec. 2.11: "A provisional, early estimate of the possible
+            overall maintenance duration to replace the in-vessel assemblies,
+            including full replacement of the breeder blankets, has been
+            performed, and a completion time of seven months is estimated."
+            The five-month window and the 90 % overall availability on the same
+            page are TARGETS ("a target overall plant availability of 90% has
+            been set, based on an approximate 4.5 year operating cycle"; "a
+            target on the remote maintenance systems to achieve replacement of
+            the in-vessel components within a five-month window"), and the four
+            years between major maintenance periods is the source's operating
+            assumption -- none is an achieved value and none is bound here. The
+            ~30 days of cooldown and ~30 days of recommissioning (p. 28) are
+            inside the estimate and are not added. 7/12 as the IEEE-754 double.
+            **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf **Ref**: p. 29 (render work/orchestration/goals/plant-closure/evidence/grounding_sources/stellaris_p29_maintenance.png), p. 28 (stellaris_p28_maintenance.png) **Basis**: the source's whole-outage estimate for one bundled in-vessel replacement
+            */
+        }
+        :>> unplanned_fraction = 0.0 {  // NO ADMISSIBLE SOURCE; surfaced, not defaulted.
+            doc /*
+            equivalent availability conditional on the in-vessel maintenance
+            calendar; unplanned failures not modelled. No admissible source gives
+            a reliability basis for this machine; the round's study runs 0.05 and
+            0.10 as declared stress scenarios, never a probability (basis packet
+            section 6). Raising this fraction is not a substitute for reporting
+            the coil-life margin.
+            **Source**: work/orchestration/goals/plant-closure/evidence/round1_basis_packet.md **Ref**: section 6 (the surfaced input and its label) **Basis**: a missing input surfaced with options, never defaulted [OWNER 2026-09-02]
+            */
+        }
+        :>> coil_life_fpy = 10.0 {  // coil lifetime (99th quantile) [FPY], Table 6.
+            doc /*
+            Reported as a margin channel (calendar.coil_life_margin_fpy), NEVER a
+            fence: no admissible source gives the coil dose's response to
+            shielding or geometry, and a direct constraint is not the rubric's
+            "pushes back" [OWNER 2026-09-04]. Replacing in-vessel components does
+            not reset coil dose; at 27 productive FPY the margin reads about
+            -17 FPY -- a disclosed limitation of the 30-year horizon.
+            **Source**: knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf **Ref**: Table 6, p. 21 (render work/orchestration/goals/plant-closure/evidence/grounding_sources/stellaris_p21_table6.png: "Coil lifetime (99th quantile) [FPY] ~10") **Basis**: the source's 3D OpenMC estimate at its own shielding
+            */
         }
         :>> discount_rate = 0.07 {     // discount / interest rate [1/yr].
             doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/adapter.py **Ref**: adapter.py:36 (interest_rate = 0.07); validation.py:92 **Basis**: 1costingFE reference interest rate */
@@ -1309,7 +1358,7 @@ package stellarator_09 {
 
         // ---- CAS72 scheduled-replacement inputs ----
         :>> fluence_limit = 18.0 {     // core fluence limit [MW-yr/m^2], DT.
-            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:153 (fluence_limit_dt = 18.0, "ARIES FS 200 dpa = 18 MW yr/m^2") **Basis**: DT first-wall/blanket neutron-fluence replacement limit */
+            doc /* **Source**: /home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml **Ref**: costing_constants.yaml:153 (fluence_limit_dt = 18.0, "ARIES FS 200 dpa = 18 MW yr/m^2") **Basis**: DT first-wall/blanket neutron-fluence replacement limit. Cross-check, not identity (WI-046): 18 / 3.979 = 4.52 FPY sits inside the source's ~4-6 FPY first-wall band (Stellaris Table 6, render work/orchestration/goals/plant-closure/evidence/grounding_sources/stellaris_p21_table6.png); the ARIES-FS 200 dpa convention and the paper's ARC-DPA allowance are not shown to be the same damage measure (research 20260907-163520_lifetime-availability-closure-prework.md line 78) */
         }
         // WI-041 retired the exact ash_frac binding (E_ALPHA_DT / Q_DT =
         // 0.2002275...) that fed the CAS72 chain's own neutron power: the chain

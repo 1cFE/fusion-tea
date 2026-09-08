@@ -52,6 +52,8 @@ Generation on the repaired tree: `sysml-codegen generate` exits 0 with zero read
 | generated/handwritten/mfe_plasma_scaling/dt_fusion_power_impl.py | 66-70 | D-5 renamed eight formals of `'DT Fusion Power'` | A (follows the model) | `inputs.sigma_v`, `n_e`, `E_fus`, `alpha_n`, `alpha_T`, `T_i0`, `n_D0`, `n_T0` | the same reads with `_in`; `inputs.V` unchanged | The generated input class fields follow the formal names; the normative body is otherwise byte-identical. Signature re-attachment is proved at regeneration (plan Phase 2) | with the D-5 rows | n/a |
 | generated/handwritten/mfe_account_costs/levelized_replacement_cost_impl.py | 96-106 | D-5 renamed four formals of `'Levelized Replacement Cost'` | A (follows the model) | `inputs.ash_frac`, `fluence_limit`, `availability`, `operational_years` | the same reads with `_in` | as above | with the D-5 rows | n/a |
 
+*2026-09-08 (WI-046, goal plant-closure round 1): `'Levelized Replacement Cost'` and this impl were retired; the guarded periodic chain is carried verbatim as the HELD MODE of `'Lifecycle Calendar'` (`models/library/analyses/mfe_lifecycle.sysml`; impl `generated/handwritten/mfe_lifecycle/lifecycle_calendar_impl.py`), selected by `availability_direct > 0`. A history note, not an edit of the row above.*
+
 ## Mechanical rows (generated from the repaired tree and the D-5 census; reviewed, not hand-maintained)
 
 | # | file:line | trigger (diagnostic or rule) | class | replaced form | new form | rationale | revert? | MR-4 Source/Ref/Basis |

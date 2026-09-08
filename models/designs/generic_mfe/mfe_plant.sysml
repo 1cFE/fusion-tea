@@ -13,6 +13,7 @@ package mfe_plant {
     private import mfe_magnet_field::*;
     private import mfe_account_costs::*;
     private import mfe_lcoe_dcf::*;
+    private import mfe_lifecycle::*;
     private import mfe_viability::*;
 
     abstract part def 'MFE Power Plant' {
@@ -1014,37 +1015,44 @@ package mfe_plant {
         // expose for producer aggregation
         attribute cas80_annual : Real = cas80_calc.levelized;
 
-        // ---- CAS72 scheduled replacement (Rung B, handwritten impl) ----------
+        // ---- CAS72 and availability from one lifecycle calendar (WI-046) -----
         // Replaceable set = the fluence-limited in-vessel accounts C220101
-        // (blanket/first wall) + C220108 (divertor), plant-total (x n_mod).
-        // Source: defaults.py:299 (replaceable_accounts), pin 0254385.
+        // (blanket/first wall) + C220108 (divertor), plant-total (x n_mod), one
+        // bundled event. Source: defaults.py:299 (replaceable_accounts), pin 0254385.
         attribute replacement_cost_per_event : Real =
             (blanket.capital_cost + divertor.capital_cost) * n_mod;
 
         // Core fluence limit [MW-yr/m^2] (instance binds; DT 18.0, defaults.py:291).
         attribute fluence_limit : Real;
+        // scheduled outage per bundled replacement [yr] (instance binds)
+        attribute outage_years : Real;
+        // residual unplanned fraction of scheduled-online time [1] (instance binds)
+        attribute unplanned_fraction : Real;
+        // coil dose life [FPY] (instance binds) -- a reported margin's reference
+        attribute coil_life_fpy : Real;
+        // held-mode switch: 0 = the live calendar; (0, 1] = the retired periodic
+        // chain at that availability (the compatibility bridge; instance binds)
+        attribute availability_direct : Real;
 
-        // The lifetime operand is the PEAK wall load (WI-041): the source and its
-        // cited method set in-vessel lifetime by the peak load. Before WI-041 the
-        // calc computed its own neutron power over the circular-torus area.
-        calc cas72_calc : 'Levelized Replacement Cost' {
-            in cost_per_event = replacement_cost_per_event;
+        // The lifetime operand is the PEAK wall load (WI-041); the calendar is
+        // the one producer of availability and CAS72 (WI-046).
+        calc calendar : 'Lifecycle Calendar' {
             in q_n_in = wall_peak_calc.wall_load_peak;
             in fluence_limit_in = fluence_limit;
-            in availability_in = availability;
-            in interest_rate = discount_rate;
             in operational_years_in = operational_years;
+            in outage_years_in = outage_years;
+            in unplanned_fraction_in = unplanned_fraction;
+            in cost_per_event = replacement_cost_per_event;
+            in interest_rate = discount_rate;
+            in coil_life_fpy_in = coil_life_fpy;
+            in availability_direct_in = availability_direct;
         }
         // expose_pure channel for A-2
-        attribute cas72_annual : Real = cas72_calc.cost;
+        attribute cas72_annual : Real = calendar.cas72_annual;
 
-        // CAS70 = CAS71 + CAS72, and the LCOE numerator total = CAS70 + CAS80.
-        // Behind a calc so both sums are PRODUCER channels the LCOE cores can
-        // read (WI-029 codegen-mechanics adaptation; inputs read the calc
-        // outputs directly, the `in cas30 = indirect.cost` idiom).
         calc cas70_calc : 'Annual Cost Rollup' {
             in cas71 = cas71_calc.levelized;
-            in cas72 = cas72_calc.cost;
+            in cas72 = calendar.cas72_annual;
             in cas80 = cas80_calc.levelized;
         }
         // expose_pure channel for A-2
@@ -1062,8 +1070,10 @@ package mfe_plant {
         // only the annual-cost numerator becomes complete.
         // CAS70+CAS80 levelized [$/yr]
         attribute annual_om : Real = cas70_calc.annual_total;
-        // capacity factor [0..1]
-        attribute availability : Real;
+        // capacity factor [0..1] -- the calendar's output, bound by reference
+        // (WI-046; the WI-044 m_casing pattern): one producer, every consumer
+        // (fuel_calc, lcoe_calc, lcoe_1cfe_calc) reads it unchanged.
+        attribute availability : Real = calendar.availability;
         // discount / interest rate [1/yr]
         attribute discount_rate : Real;
         // operating lifetime N [yr]

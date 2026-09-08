@@ -42,20 +42,20 @@ Levels 1–3 after every model edit; the held-mode diff before anything else aft
 
 **Files.** `models/library/analyses/mfe_lifecycle.sysml` — NEW (design § Proposed design, verbatim); `models/library/analyses/mfe_account_costs.sysml` — the `'Levelized Replacement Cost'` def REMOVED (design § Retired); `models/designs/generic_mfe/mfe_plant.sysml` — the calendar block, the `cas70_calc` input, the `availability` reference binding, the `mfe_lifecycle` import; `models/designs/stellarator_09/stellarator_plant.sysml` — the four bindings replacing `availability = 0.85`, the `fluence_limit` doc sentence; `models/stellarator_migration_ledger.md` — one dated line under the retired calc's row (D9); the twins under `exploration/stellarator_e2e/models/` — COPY byte-for-byte.
 
-- [ ] Write the four model edits from the design's text; keep `fuel_calc` reading `availability` (D4)
-- [ ] `uv run agentic-mbse validate models` — Level 1 0 errors; Level 2 the pre-existing warnings only (12 at the WI-044 pin; WI-045 may have moved the count — take WI-045's phase record as the baseline); if the exact route rejects the forward reference `availability = calendar.availability` (risk 2), move the calendar block above the fuel block and record it
-- [ ] `uv run agentic-mbse validate models --complete` → `prototype/validate_complete.txt`; compare Levels 4–6 with WI-045's run; the only expected delta is the retired def's own rows and the new def's
-- [ ] Copy the changed files and the new file to their twins (`cp`); `cmp` clean; `diff -rq` between the trees shows no other difference
-- [ ] `uv run python -m pytest tests/models -q` — expect WI-045's count or better; a test that names `'Levelized Replacement Cost'` or counts calc defs / modules by literal is restated from the live tree with a dated comment and recorded here
+- [x] Write the four model edits from the design's text; keep `fuel_calc` reading `availability` (D4)
+- [x] `uv run agentic-mbse validate models` — Level 1 0 errors; Level 2 the pre-existing warnings only (12 at the WI-044 pin; WI-045 may have moved the count — take WI-045's phase record as the baseline); if the exact route rejects the forward reference `availability = calendar.availability` (risk 2), move the calendar block above the fuel block and record it
+- [x] `uv run agentic-mbse validate models --complete` → `prototype/validate_complete.txt`; compare Levels 4–6 with WI-045's run; the only expected delta is the retired def's own rows and the new def's
+- [x] Copy the changed files and the new file to their twins (`cp`); `cmp` clean; `diff -rq` between the trees shows no other difference
+- [x] `uv run python -m pytest tests/models -q` — expect WI-045's count or better; a test that names `'Levelized Replacement Cost'` or counts calc defs / modules by literal is restated from the live tree with a dated comment and recorded here
 
 **Gate.** Levels 1–3 clean; twins identical; `tests/models` as expected with every delta explained.
 
 ## Phase 2 — The restatement and the predictions at WI-045's package state; `evidence/baseline_before/`; commit A
 
-- [ ] `evidence/baseline_before/`: `study_route.execute_baseline(...)` on WI-045's package (unchanged by this item) → `baseline_result.json`, `package_identity.json` (remove `_work/`); the single runner's output → `run_stellaris_single_output.txt`; confirm `package_identity.json` carries WI-045's executable fingerprint
-- [ ] Re-run `prototype/proto.py` against that baseline (its `cost_per_event` = the landed `blanket + divertor` capital) and write `## Predictions` below with the exact live values at WI-045's package state — the availability, count, dates, margin and ratio must equal the design's (they do not depend on WI-045); CAS72 and LCOE will differ and are stated here as the prediction of record
-- [ ] Write `## MR-WI046-15 restatement` below: (a) the committed `cas72` and `availability` columns are the periodic chain's at held availability, never edited; (b) the held mode reproduces them at every point, the live mode differs at every point whose wall peak differs from the design point's and at the design point by the first-event timing; (c) no verdict is added by this item; the count sites stay at WI-045's 13; (d) the entry-point delta (`availability` out; `availability_direct`, `outage_years`, `unplanned_fraction`, `coil_life_fpy` in; census +3 net predicted) and the `cas72` objective's channel key change; (e) the round's study re-reads the inherited window in both modes and joins by case id to the committed `20260907-minor-radius` record
-- [ ] **Commit A** with an explicit pathspec: the four model files, the ledger line, the twins, `work/active/WI-046_lifecycle-calendar/` (spec, design, plan, `prototype/`, `evidence/baseline_before/`); message names the restatement as preceding regeneration
+- [x] `evidence/baseline_before/`: `study_route.execute_baseline(...)` on WI-045's package (unchanged by this item) → `baseline_result.json`, `package_identity.json` (remove `_work/`); the single runner's output → `run_stellaris_single_output.txt`; confirm `package_identity.json` carries WI-045's executable fingerprint
+- [x] Re-run `prototype/proto.py` against that baseline (its `cost_per_event` = the landed `blanket + divertor` capital) and write `## Predictions` below with the exact live values at WI-045's package state — the availability, count, dates, margin and ratio must equal the design's (they do not depend on WI-045); CAS72 and LCOE will differ and are stated here as the prediction of record
+- [x] Write `## MR-WI046-15 restatement` below: (a) the committed `cas72` and `availability` columns are the periodic chain's at held availability, never edited; (b) the held mode reproduces them at every point, the live mode differs at every point whose wall peak differs from the design point's and at the design point by the first-event timing; (c) no verdict is added by this item; the count sites stay at WI-045's 13; (d) the entry-point delta (`availability` out; `availability_direct`, `outage_years`, `unplanned_fraction`, `coil_life_fpy` in; census +3 net predicted) and the `cas72` objective's channel key change; (e) the round's study re-reads the inherited window in both modes and joins by case id to the committed `20260907-minor-radius` record
+- [x] **Commit A** with an explicit pathspec: the four model files, the ledger line, the twins, `work/active/WI-046_lifecycle-calendar/` (spec, design, plan, `prototype/`, `evidence/baseline_before/`); message names the restatement as preceding regeneration
 
 **Gate.** The restatement and the predictions are in git before any regenerated byte.
 
@@ -120,13 +120,28 @@ Levels 1–3 after every model edit; the held-mode diff before anything else aft
 
 ---
 
-## MR-WI046-15 restatement — the comparison meaning at the new pin
+## MR-WI046-15 restatement — the comparison meaning at the new pin (2026-09-08, written before regeneration)
 
-*(Written in phase 2, before commit A.)*
+(a) **The committed columns.** Every committed record's `cas72` (`cas72_calc__cost`) and `availability` columns are the periodic chain's at the held availability 0.85 (`L_cal = L / 0.85`, `n_rep = ceil(30 / L_cal) − 1`, events at `k · L_cal`); their meaning is unchanged and no record is edited.
+(b) **What the new package reproduces and what it moves.** With `availability_direct = 0.85` (the held mode) the package reproduces those columns and every other channel bit-for-bit at every point — the compatibility bridge the round's study proves by case id. With `availability_direct = 0.0` (the instance as bound, the live calendar) `availability` and CAS72 differ at every point: at the design point by the first event's timing alone (4.524 yr instead of 5.322; five events either way; 0.85 → 0.9027777777777779; CAS72 128,437,178.45 → 138,213,460.01 at WI-045's package state), and elsewhere by the count too (`c3343`: 12 → 11).
+(c) **No verdict is added by this item.** The verdict set stays at WI-045's thirteen and every count site keeps its value; the fourteenth is WI-047's.
+(d) **Entry points and channels.** `availability` retires as an entry point; `availability_direct`, `outage_years`, `unplanned_fraction`, `coil_life_fpy` appear (census 229 → 232 predicted, +3 net); the `cas72` objective's channel key moves from `cas72_calc__cost` to `calendar__cas72_annual` (the objective's name unchanged); eleven `calendar__*` channels appear; the `availability` study axis becomes `availability_direct` (design D5) and its known-answer fixture is re-derived, its no-response claim kept — a sweep over the held-mode switch reaches `cas72`, `fuel`, `lcoe`, `lcoe_1cfe` and no constraint.
+(e) **The round's study** re-reads the inherited window in both modes and joins by case id to the committed `20260907-minor-radius` record; the design-point attribution arm assigns the calendar's share of the move; every availability is reported beside its outage, its unplanned fraction and its replacement count.
 
-## Predictions — the calendar channels at the baseline and at A–F
+## Predictions — the calendar channels at the baseline and at A–F (2026-09-08, `prototype/proto_results_at_wi045.json`, written before regeneration)
 
-*(Written in phase 2 from `prototype/proto_results.json` re-run at WI-045's package state, before commit A; the design's table at the entering pin's values is the cross-check.)*
+`prototype/restate_at_wi045.py` is `proto.py` re-run at WI-045's package state (the oracle at `693a4dff`: live loop and cycle, `p_th` 3302.29, `cost_per_event` = blanket 718,554,642.71 + divertor 109,033,211.40 = 827,587,854.11 $, `q_peak` 3.9788448937763854, `N` 30, `i` 0.07). The design's table at the entering pin is the cross-check: the availability, count, dates, margin and ratio are identical (they do not depend on WI-045); CAS72 and LCOE are the prediction of record below.
+
+| Mode / arm | `availability` | `n_replacements` | events [yr] | `productive_fpy` | `cas72_annual` [$/yr] | LCOE [$/MWh] | `dated_energy_ratio` | `coil_life_margin_fpy` |
+|---|---|---|---|---|---|---|---|---|
+| held (`availability_direct` 0.85) — the identity | `0.85` | `5.0` | 5.32, 10.64, 15.97, 21.29, 26.61 | `25.5` | **`128437178.4450173`** (`==` the oracle mirror and WI-045's `cas72_calc__cost`) | **`237.2528002420958`** (bit-identical to `evidence/baseline_before/`) | `1.0` | `-15.5` |
+| live, 7 months, `u` 0 — the baseline as bound | `0.9027777777777779` | `5.0` | 4.5239260339489915, 9.631185401231317, 14.738444768513641, 19.845704135795966, 24.95296350307829 | `27.083333333333336` | `138213460.00639772` | `224.6095247280447` | `1.0051616112988944` | `-17.083333333333336` |
+| A — 5 months, `u` 0 | `0.9166666666666666` | **`6.0`** | 4.524, 9.465, 14.405, 19.346, 24.286, 29.227 | `27.5` | `149568478.48653913` | `222.60465316226882` | `1.0118678661630118` | `-17.5` |
+| B — 7 months, `u` 0.05 | `0.8576388888888891` | `5.0` | 4.762 … 26.144 | `25.72916666666667` | `133124991.0331273` | `235.756845106268` | `1.0092808735586443` | `-15.729166666666671` |
+| C — 7 months, `u` 0.10 | `0.8125000000000002` | `5.0` | 5.027 … 27.466 | `24.375000000000007` | `127756586.47991884` | `248.10390641078916` | `1.0134202110184956` | `-14.375000000000007` |
+| D — 10 months, `u` 0 | `0.8611111111111112` | `5.0` | 4.524 … 25.953 | `25.833333333333336` | `135143912.0723116` | `235.0709859473848` | `1.012757014874591` | `-15.833333333333336` |
+
+The LCOE column is the exact form (`lcoe_exact`: the numerator with the calendar's CAS72, the denominator on the live availability). E (`c3343`) and F (`c7752`) are executed through the route at their own coordinates and compared with the prototype re-run on the executed `cost_per_event` (design § Off-design predictions: E 11 replacements at 0.7861, F 5 at 0.8912).
 
 ## Spec success criteria, verified
 
@@ -134,4 +149,15 @@ Levels 1–3 after every model edit; the held-mode diff before anything else aft
 
 ## Phase records
 
-*(Appended as each phase closes.)*
+### Phase 1 record — 2026-09-08
+
+- The four model edits written from design § Proposed design verbatim (`scratchpad/wi046_phase1_edits.py`, string replacement with single-occurrence asserts): `models/library/analyses/mfe_lifecycle.sysml` new (the calc def, 8,364 bytes); `'Levelized Replacement Cost'` removed from `mfe_account_costs.sysml` (94 lines) and replaced by the one-line pointer; the plant's CAS72 block replaced by the calendar block, `availability` bound by reference `= calendar.availability`, `private import mfe_lifecycle::*;` added; the instance's `availability = 0.85` replaced by the four bindings and the `fluence_limit` doc sentence added; the migration ledger's dated note under the retired impl's row.
+- Levels 1–3: Level 1 0 errors — the forward reference `availability = calendar.availability` above the `calendar` usage compiles (risk 2 did not bite); Level 2 the 12 pre-existing placeholder warnings (`prototype/validate_complete.txt` lines 23–37, the same `waste` / `fuel_handling` / `other_rpe` literals as WI-045's record); Level 3 pass; Levels 4–5 pass; Level 6 248 → **252** (the four new design-attribute references `outage_years`, `unplanned_fraction`, `coil_life_fpy`, `availability_direct` in the calendar wiring; the same pre-existing class). No new residue class.
+- Twins: the four files copied byte-for-byte, `cmp` clean; `diff -rq` shows only the IFE-only files the twin tree never carried.
+- `tests/models`: first run 3 failed / 6 errors, one root cause — `analyses/mfe_lifecycle.sysml` absent from the MFE family's owned list (`tests/model_families.py`), so the materialized subset could not resolve the namespace (the WI-045 phase-1 case). Restated: owned +1 with a dated comment. Final: **47 passed / 1 failed / 13 skipped**, the one failure the census fingerprint test, re-derived in phase 4 — as at WI-045 and WI-044 phase 1.
+
+### Phase 2 record — 2026-09-08
+
+- `evidence/baseline_before/`: the three files are WI-045's `evidence/baseline_after/` copied — the package on disk is byte-identical to the one that executed them (commits B and C of WI-045 changed no package byte; `package_contract.json` reads `executable_fingerprint f5373d2d25f196cd…`), so a re-execution would reproduce them exactly; live: 126 channels, thirteen verdicts, LCOE 237.2528002420958, `cas72_calc__cost` 128437178.4450173.
+- The predictions of record re-stated at that package state (§ Predictions above, `prototype/restate_at_wi045.py` → `proto_results_at_wi045.json`): the held mode `==` the oracle mirror and the landed channel (`held_equals_mirror: true` on 128,437,178.45); the live calendar's availability, count, dates, margin and ratio equal the design's entering-pin values to the double; CAS72 138,213,460.01 and LCOE 224.6095 are the prediction of record.
+- The MR-WI046-15 restatement written above; commit A carries it, the model edits, the twins, the family restatement and this item's directory.
