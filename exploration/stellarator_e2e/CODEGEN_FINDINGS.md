@@ -49,3 +49,18 @@ WI-027 tried to un-strip the five asserts and regenerate at `constraint-exec-epi
 - **Harness handling (WI-044 phase 3)**: delete the stale stencil and regenerate (`New: 1, Preserved: 69, Regenerated: 0`); a checker over every AUTO_IMPLEMENTED impl compares its "SysML Expressions" block to its module's "Calculation Specification" (48 checked, 0 stale after the third pass). Not hand-patched: the stencil is the tool's content.
 - **Upstream fix candidate**: preservation should key on the expression digest (or the full interface, inputs included), not the output signature alone; and `--preserve-handwritten` should never apply to AUTO_IMPLEMENTED stencils at all — they carry no hand-written content to preserve.
 - **Evidence**: `work/active/WI-044_magnet-chain-sees-coil-bore/evidence/regen_output{,_2,_3}.txt`; plan § Phase 3 record.
+
+## Finding 11 (2026-09-08, WI-047) — an unbound defaulted formal takes a bound formal's parameter name by slot position
+
+On the exact route, a calc def whose formals are `(a_in, b_in, k_B_in = <default>, p_exhaust_in)` — an **unbound defaulted** formal declared *before* bound ones — renders two distinct inputs to one parameter name and generation refuses:
+
+```
+SI_RENDERING_COLLISION: distinct inputs on 'stellarator_09__stellaris__vacuum' render to one parameter name
+```
+
+A monkeypatched projection showed why: the unbound defaulted formal `k_B_in`, declared fourth of six, was matched **by slot** and took the name of the bound formal `p_exhaust_in`. The refusal is the good case. The bad case is the one this class of bug threatens — a projection that matches by position rather than by name can silently bind a value to the wrong parameter wherever the slots happen to line up and the names never collide.
+
+- **Impact**: refused generation here; silent parameter aliasing is the latent risk. Every landed calc in this package happens to keep its defaulted formals last, which is why no predecessor hit it.
+- **Harness handling (WI-047 phase 1, deviation 4)**: `k_B_in` moved to the last formal position; generation then succeeds (91 module wrappers, 76 stencils). The convention "defaulted formals last" is now load-bearing and is stated in the calc's model text.
+- **Upstream fix candidate**: match formals to bound arguments by **name**, never by declaration slot; and if a slot match is kept as a fallback, refuse when a slot match and a name match disagree rather than preferring the slot.
+- **Evidence**: `work/active/WI-047_fuel-divertor-vacuum-flows/plan.md` § Phase 1 record, deviation 4; the scratch generation probe recorded there.

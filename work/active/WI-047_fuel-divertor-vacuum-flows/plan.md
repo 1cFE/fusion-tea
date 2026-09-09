@@ -104,8 +104,8 @@ Levels 1–3 after every model edit; the baseline diff before anything else afte
 
 ## Phase 5 — The `tests/study` run of record; commit C
 
-- [ ] After commit B, `tests/study` on the clean tree (detached if longer than ten minutes); record the count and the failing set; confirm it equals the pre-existing fail-closed set or explain every difference
-- [ ] **Commit C**: any test-file restatement the run forced, and this plan's phase-5 record
+- [x] After commit B, `tests/study` on the clean tree (detached if longer than ten minutes); record the count and the failing set; confirm it equals the pre-existing fail-closed set or explain every difference
+- [x] **Commit C**: any test-file restatement the run forced, and this plan's phase-5 record
 
 ---
 
@@ -195,3 +195,11 @@ The source case in the oracle's reconstruction: `p_heat_abs` 500, `p_rad_core` 0
 - **Validation**: unchanged from phase 1 (Level 2 the 12 placeholders; Level 6 253). **`tests/models`: 63 passed / 13 skipped** (the census fingerprint test green on the re-derived file).
 - **SV-069** (the source case reproduced exactly; oracle parity), **SV-070** (the fuel identities and the threshold), **SV-071** (the molecule count), **SV-072** (the baseline's disclosed verdict; every existing channel identical; P3 / P4 / the low case; the re-derivation) added and `passing`; five trace rows (the three calc defs, the constraint def, the thirteen instance bindings).
 - Commit B: the regenerated package, the three new AUTO impls, the oracle (with the named shared-line edit), the seam, the runner, the route, the pin files (snapshot, manifest, census), the six fixtures and the five restated study tests, the two PM matrices, this item's `evidence/` and plan.
+
+### Phase 5 record — 2026-09-08
+
+- **The first run of record** (detached on the committed tree at commit B `d235dde4`) read **87 failed / 423 passed / 1 skipped** in 12:05 — one failure more than the entry count. The failing set differed from WI-046's run of record (`1c87c343`) by exactly one test, and in one direction only: `tests/study/test_mechanical_failures.py::test_the_corrupt_line_carries_file_line_and_key_path` newly failing, nothing newly passing.
+- **The delta explained, and restated rather than patched.** That test corrupts the radial-build module's `R_in` line in the generated `pipelines/pipeline.yaml` and asserts the parser's error names the file, the line and the key path. The line number is a literal that moves whenever the regenerated pipeline orders modules differently, and the test's own comment records its history (`:84 -> :87` WI-036; `:87 -> :103` WI-041; `:103 -> :83` WI-044). WI-047's three new modules shift it again. The live package was read before the literal was touched: `grep -n` puts the radial-build `R_in` line at **85** (the first of four such lines; its neighbours are the radial-build thicknesses, and the key path the test asserts is `modules.stellarator_09__stellaris__rb.inputs.R_in`), so the restatement is `:83 -> :85` with the history extended in the comment. `tests/study/test_mechanical_failures.py` then reads 19 passed in isolation.
+- **The run of record** (re-run detached on the same package, the test-file restatement in the working tree — the git-clean gate is over the *package* tree, which commit B already carries): **86 failed / 424 passed / 1 skipped** in 12:04, and the failing set is now **identical, test for test, to WI-046's run of record** — the 75 pre-existing fail-closed cases plus the 11 for `20260907-minor-radius`, every one in `test_study_publication_fail_closed.py`, none touching this item's work. Both runs are kept in the evidence file's history through git; the second is the run of record.
+- **One battery at a time**, launched with `setsid nohup` and polled with an `until` loop over the evidence file (memory `gotcha_one_battery_at_a_time`, recorded after T-004's contaminated run); `pgrep` used a bracket pattern so it never matched its own shell.
+- Commit C: the one test-file restatement, this record, and the run of record.
