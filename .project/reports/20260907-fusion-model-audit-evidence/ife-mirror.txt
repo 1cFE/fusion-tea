@@ -1,0 +1,30 @@
+=== IFE LCOE Verification (Hawker Defaults) ===
+
+Physics:
+  Energy on target:        1.00e+06 J
+  Fusion energy/shot:      5.00e+08 J
+  Net electric power:      4.40e+07 W
+  Net electric power:      44000.0 kW
+  Fusion cycle gain:       24.0
+  Recirculating fraction:  0.0417
+
+Economics:
+  Shots per year:          4.42e+06
+  Driver lifetime:         11.3 years
+  Annual capital cost:     $36,900,000
+  Annual operating cost:   $49,918,704
+  Annual energy:           269,808 MWh
+  PVF construction:        3.9927
+  PVF operation:           8.1157
+
+==================================================
+  LCOE: $252.30/MWh
+==================================================
+
+  SV-008 (defaults): $252.30/MWh outside $25-120/MWh
+    Note: Monte Carlo center values (esp. f=0.2 Hz, delta=$10)
+    produce a 44 MW plant — too small for capital assumptions.
+    This is expected: LCOE is nonlinear, center params ≠ center LCOE.
+
+  HIF design point:  $68.69/MWh (250 MW)
+  SV-008 (HIF):      PASS — $68.69/MWh within $25-120/MWh

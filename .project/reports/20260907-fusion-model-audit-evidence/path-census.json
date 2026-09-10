@@ -1,0 +1,1544 @@
+[
+  {
+    "file": "models/designs/generic_ife/ife_plant.sysml",
+    "line": 19,
+    "path": "knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_ife/ife_plant.sysml",
+    "line": 109,
+    "path": "knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_ife/ife_plant.sysml",
+    "line": 140,
+    "path": "knowledge/sources/energy_from_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_ife/ife_plant.sysml",
+    "line": 161,
+    "path": "knowledge/sources/energy_from_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_ife/ife_plant.sysml",
+    "line": 162,
+    "path": "knowledge/sources/accelerators_for_inertial_fusion_energy_production/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_ife/ife_subsystems.sysml",
+    "line": 12,
+    "path": "knowledge/sources/energy_from_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_ife/ife_subsystems.sysml",
+    "line": 31,
+    "path": "knowledge/sources/aries_cost_account_documentation/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_ife/ife_subsystems.sysml",
+    "line": 45,
+    "path": "knowledge/sources/aries_cost_account_documentation/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_ife/ife_subsystems.sysml",
+    "line": 61,
+    "path": "knowledge/sources/aries_cost_account_documentation/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_ife/ife_subsystems.sysml",
+    "line": 76,
+    "path": "knowledge/sources/aries_cost_account_documentation/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_ife/ife_subsystems.sysml",
+    "line": 92,
+    "path": "knowledge/sources/aries_cost_account_documentation/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_ife/ife_subsystems.sysml",
+    "line": 110,
+    "path": "knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_ife/ife_subsystems.sysml",
+    "line": 132,
+    "path": "knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_ife/ife_subsystems.sysml",
+    "line": 149,
+    "path": "knowledge/sources/energy_from_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 1028,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_subsystems.sysml",
+    "line": 32,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_subsystems.sysml",
+    "line": 49,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_subsystems.sysml",
+    "line": 66,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_subsystems.sysml",
+    "line": 82,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_subsystems.sysml",
+    "line": 97,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_subsystems.sysml",
+    "line": 114,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_subsystems.sysml",
+    "line": 128,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_subsystems.sysml",
+    "line": 143,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_subsystems.sysml",
+    "line": 158,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_subsystems.sysml",
+    "line": 177,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/hif_ife/hif_driver.sysml",
+    "line": 17,
+    "path": "knowledge/sources/energy_from_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/hif_ife/hif_driver.sysml",
+    "line": 31,
+    "path": "knowledge/sources/energy_from_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/hif_ife/hif_driver.sysml",
+    "line": 42,
+    "path": "knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/hif_ife/hif_driver.sysml",
+    "line": 54,
+    "path": "knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/hif_ife/hif_driver.sysml",
+    "line": 68,
+    "path": "knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/hif_ife/hif_driver.sysml",
+    "line": 93,
+    "path": "knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 18,
+    "path": "knowledge/sources/energy_from_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 41,
+    "path": "knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 57,
+    "path": "knowledge/sources/energy_from_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 72,
+    "path": "knowledge/sources/accelerators_for_inertial_fusion_energy_production/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 81,
+    "path": "knowledge/sources/energy_from_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 94,
+    "path": "knowledge/sources/energy_from_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 103,
+    "path": "knowledge/sources/energy_from_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 117,
+    "path": "knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 131,
+    "path": "knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 145,
+    "path": "knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 159,
+    "path": "knowledge/sources/energy_from_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 171,
+    "path": "knowledge/sources/energy_from_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 181,
+    "path": "knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 194,
+    "path": "knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 209,
+    "path": "knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 80,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 83,
+    "path": "work/active/WI-022_predictive-confinement/prototype/",
+    "exists": false
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 114,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 117,
+    "path": "knowledge/concept_research/",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 172,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/defaults.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 190,
+    "path": "work/completed/20260827_WI-032_cold-volume-basis/spec.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 267,
+    "path": "knowledge/sources/electro_mechanical_properties_of_rebco_coated_conductors/",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 274,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 286,
+    "path": "knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 310,
+    "path": "knowledge/sources/systems_code_models_for_stellarator_fusion_power_plants_and/",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 337,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 341,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 359,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 373,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 386,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 398,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 407,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 422,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/defaults.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 431,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 440,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/defaults.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 449,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 471,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 479,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 486,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 494,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 501,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 509,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 535,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details/images/page_009_table_0.png",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 546,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 549,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 552,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 555,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 558,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 561,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 564,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 567,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 570,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 573,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 576,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 605,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/reactivity.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 615,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 620,
+    "path": "work/active/WI-022_predictive-confinement/",
+    "exists": false
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 671,
+    "path": "work/active/WI-042_sourced-helium-ash-",
+    "exists": false
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 739,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 764,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 771,
+    "path": "work/completed/20260904_WI-039_heating-system-structure/design.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 774,
+    "path": "work/completed/20260904_WI-039_heating-system-structure/design.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 783,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 804,
+    "path": "knowledge/sources/progress_in_eu_breeding_blanket_design_and_integration/",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 804,
+    "path": "knowledge/sources/progress_in_the_design_development_of_eu_demo_helium_cooled/",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 810,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 829,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 830,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/defaults.py:611-614",
+    "exists": false
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 847,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 853,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 856,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 866,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_dipole.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 911,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 950,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 977,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/defaults.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 988,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1014,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1030,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1045,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1048,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1051,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1054,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1057,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1060,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1063,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1066,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1069,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1072,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1075,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1078,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1081,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1084,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1087,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1090,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1095,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1098,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1101,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1112,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1118,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/backcasting_bridge.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1121,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/adapter.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1124,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/backcasting_bridge.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1135,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/adapter.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1147,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1155,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1158,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1161,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1164,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/steady_state_stellarator.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1169,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1259,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1266,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1271,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1274,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1280,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1285,
+    "path": "work/active/WI-041_source-anchored-wall-load-fence/design.md",
+    "exists": false
+  },
+  {
+    "file": "models/library/analyses/fusion_cycle.sysml",
+    "line": 14,
+    "path": "knowledge/sources/energy_from_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/fusion_cycle.sysml",
+    "line": 40,
+    "path": "knowledge/sources/energy_from_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/fusion_cycle.sysml",
+    "line": 41,
+    "path": "knowledge/sources/accelerators_for_inertial_fusion_energy_production/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/hif_economics.sysml",
+    "line": 19,
+    "path": "knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/hif_economics.sysml",
+    "line": 52,
+    "path": "knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/hif_economics.sysml",
+    "line": 71,
+    "path": "knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/hif_economics.sysml",
+    "line": 94,
+    "path": "knowledge/sources/economic_studies_for_heavy_ion_fusion_electric_power_plants/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/ife_lcoe.sysml",
+    "line": 24,
+    "path": "knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 33,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 62,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 89,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 121,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 150,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 178,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 207,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 239,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 264,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 286,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 319,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 379,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 413,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 462,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 486,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 514,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 536,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 569,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 607,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 658,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 695,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 758,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 859,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 859,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 859,
+    "path": "knowledge/sources/a_deterministic_method_for_the_fast_evaluation_and_2/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 906,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/model.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 937,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/costs.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 962,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_cryo_plant.sysml",
+    "line": 21,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_heating_chain.sysml",
+    "line": 42,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/defaults.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_lcoe_dcf.sysml",
+    "line": 23,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/economics.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_cost.sysml",
+    "line": 27,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_cost.sysml",
+    "line": 72,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_cost.sysml",
+    "line": 73,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_cost.sysml",
+    "line": 124,
+    "path": "knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_cost.sysml",
+    "line": 156,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/data/defaults/costing_constants.yaml",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_cost.sysml",
+    "line": 157,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_cost.sysml",
+    "line": 187,
+    "path": "work/active/WI-035_magnet-closure/design.md",
+    "exists": false
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_field.sysml",
+    "line": 22,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_field.sysml",
+    "line": 23,
+    "path": "work/completed/20260827_WI-032_cold-volume-basis/spec.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_field.sysml",
+    "line": 64,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_field.sysml",
+    "line": 107,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_field.sysml",
+    "line": 138,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_field.sysml",
+    "line": 174,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_field.sysml",
+    "line": 222,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_field.sysml",
+    "line": 223,
+    "path": "knowledge/sources/electro_mechanical_properties_of_rebco_coated_conductors/",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_field.sysml",
+    "line": 267,
+    "path": "knowledge/sources/systems_code_models_for_stellarator_fusion_power_plants_and/",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_field.sysml",
+    "line": 268,
+    "path": "knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 20,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/tokamak.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 70,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 180,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/tokamak.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 181,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/reactivity.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 184,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 252,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 305,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 305,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/geometry.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 355,
+    "path": "knowledge/sources/a_deterministic_method_for_the_fast_evaluation_and_2/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 393,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/tokamak.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 394,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 455,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 456,
+    "path": "knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 457,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/defaults.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_sustainment.sysml",
+    "line": 113,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_sustainment.sysml",
+    "line": 116,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-02/sources/publikationen-1000179851-172386752/tmpissrtbos/raw.pdf",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_sustainment.sysml",
+    "line": 118,
+    "path": "knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_sustainment.sysml",
+    "line": 120,
+    "path": "knowledge/sources/systems_code_models_for_stellarator_fusion_power_plants_and/",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_sustainment.sysml",
+    "line": 122,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/radiation.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_sustainment.sysml",
+    "line": 123,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/reactivity.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_sustainment.sysml",
+    "line": 142,
+    "path": "work/active/WI-042_sourced-helium-ash-profile/",
+    "exists": false
+  },
+  {
+    "file": "models/library/analyses/mfe_power_balance.sysml",
+    "line": 43,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/physics.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_viability.sysml",
+    "line": 11,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/validation.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_viability.sysml",
+    "line": 29,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/validation.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_viability.sysml",
+    "line": 49,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_viability.sysml",
+    "line": 72,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_viability.sysml",
+    "line": 90,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_viability.sysml",
+    "line": 111,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/defaults.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_viability.sysml",
+    "line": 112,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_viability.sysml",
+    "line": 156,
+    "path": "knowledge/sources/electro_mechanical_properties_of_rebco_coated_conductors/",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_viability.sysml",
+    "line": 157,
+    "path": "knowledge/sources/conceptual_design_of_hts_magnets_for_fusion_nuclear_science/",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_viability.sysml",
+    "line": 158,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_viability.sysml",
+    "line": 185,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_viability.sysml",
+    "line": 227,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_viability.sysml",
+    "line": 289,
+    "path": "knowledge/sources/a_general_stellarator_version_of_the_systems_code_process/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_viability.sysml",
+    "line": 291,
+    "path": "knowledge/sources/systems_code_models_for_stellarator_fusion_power_plants_and/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/analyses/mfe_viability.sysml",
+    "line": 293,
+    "path": "knowledge/concept_research/09-qi-stellarator-hts/iter-01/sources/stellaris-design-details.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/cost_structure/cas_hierarchy.sysml",
+    "line": 13,
+    "path": "knowledge/sources/aries_cost_account_documentation/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/cost_structure/cas_hierarchy.sysml",
+    "line": 29,
+    "path": "knowledge/sources/aries_cost_account_documentation/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/cost_structure/cas_hierarchy.sysml",
+    "line": 42,
+    "path": "knowledge/sources/aries_cost_account_documentation/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/cost_structure/cas_hierarchy.sysml",
+    "line": 58,
+    "path": "knowledge/sources/aries_cost_account_documentation/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/cost_structure/cas_hierarchy.sysml",
+    "line": 70,
+    "path": "knowledge/sources/aries_cost_account_documentation/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/cost_structure/cas_hierarchy.sysml",
+    "line": 81,
+    "path": "knowledge/sources/aries_cost_account_documentation/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/cost_structure/cas_hierarchy.sysml",
+    "line": 92,
+    "path": "knowledge/sources/aries_cost_account_documentation/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/cost_structure/cas_hierarchy.sysml",
+    "line": 103,
+    "path": "knowledge/sources/aries_cost_account_documentation/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/cost_structure/cas_hierarchy.sysml",
+    "line": 116,
+    "path": "knowledge/sources/aries_cost_account_documentation/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/cost_structure/cas_hierarchy.sysml",
+    "line": 130,
+    "path": "knowledge/sources/aries_cost_account_documentation/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 22,
+    "path": "knowledge/sources/a_simplified_economic_model_for_inertial_fusion/output.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/cost_structure/mfe_power_core.sysml",
+    "line": 24,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/cost_structure/mfe_power_core.sysml",
+    "line": 36,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/cost_structure/mfe_power_core.sysml",
+    "line": 48,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/cost_structure/mfe_power_core.sysml",
+    "line": 83,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/cost_structure/mfe_power_core.sysml",
+    "line": 164,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/cost_structure/mfe_power_core.sysml",
+    "line": 176,
+    "path": "/home/reid/1cfe/1costingfe/src/costingfe/layers/cas22.py",
+    "exists": true
+  },
+  {
+    "file": "models/library/foundation/costed_component.sysml",
+    "line": 10,
+    "path": "modeling_project/REQUIREMENTS.md",
+    "exists": true
+  },
+  {
+    "file": "models/library/foundation/economic_parameter.sysml",
+    "line": 9,
+    "path": "work/active/WI-006_ife-cost-structure-library/spec.md",
+    "exists": false
+  }
+]

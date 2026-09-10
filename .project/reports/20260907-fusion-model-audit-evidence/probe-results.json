@@ -1,0 +1,265 @@
+{
+  "head": "b244abd8baf463dbad447935f86d0da5278ee751",
+  "executable_fingerprint": "7d295fec2c78ca40220f6dc04c0997913f95e98383c4ec3e819bc4ef641ea968",
+  "equal_interest_inflation": {
+    "error": "ZeroDivisionError",
+    "message": "float division by zero",
+    "finite_limit": 1538661.7740025807
+  },
+  "zero_discount": {
+    "error": "ZeroDivisionError",
+    "message": "float division by zero",
+    "finite_limit": 5.8196794699615
+  },
+  "invalid_coil_bore": {
+    "result": -792.6499999999979
+  },
+  "ife": {
+    "bank_energy_J": 14286000.0,
+    "beam_energy_model_MJ": 5.0001,
+    "gross_electric_MW": 692.3138459999999,
+    "net_electric_MW": 592.3118459999998,
+    "reported_driver_recirc": 0.07222302470027446,
+    "lcoe_total_recirc": 0.14444604940054892,
+    "viable_but_negative_power": {
+      "eta": 0.1,
+      "gain": 100.0,
+      "M": 0.6,
+      "eta_th": 0.3,
+      "eta_gain": 10.0,
+      "cycle_gain": 1.8,
+      "net_per_bank_watt": -0.2
+    }
+  },
+  "baseline_oracle": {
+    "V": 425.0000143721807,
+    "p_fus": 2652.5632625175904,
+    "p_th": 3224.352676294579,
+    "p_the": 1073.7094412060949,
+    "p_et": 1073.7094412060949,
+    "p_cryo": 0.8643515999999999,
+    "q_eng": 3.006952411353088,
+    "rec_frac": 0.3325626292668907,
+    "p_net": 716.633806369912,
+    "wall_load": 3.0224258631282654,
+    "wall_peak_calibration": 1.3164408570995383,
+    "wall_load_peak": 3.9788448937763854,
+    "beta": 0.025304999208981403,
+    "B_peak": 24.899999999999995,
+    "B_axis": 8.999999999999998,
+    "sigma_wp": 650000000.0,
+    "eps_cond": 0.0021666666666666666,
+    "W_mag": 111000000000.0,
+    "m_casing": 63000.0,
+    "r_coil_centre": 3.1500000000000004,
+    "A": 9.769230769230768,
+    "n_bar19": 37.7766145111016,
+    "n_He0": 6.043556132650356e+19,
+    "n_D0": 1.9256443867349644e+20,
+    "n_T0": 1.9256443867349644e+20,
+    "T_e0": 15.400000000000002,
+    "W_th": 519.9142139884984,
+    "tau_E": 1.5573336222276932,
+    "p_brems": 91.44723357920653,
+    "p_line": 114.01183321758131,
+    "p_sync": 14.262578426977447,
+    "p_rad": 219.7216452237653,
+    "p_alpha_heat": 504.49100689822046,
+    "p_aux_required": 49.07960078792678,
+    "p_avg": 815551.6806378263,
+    "n_e_volav": 3.171739227978496e+20,
+    "alpha_n_e_eff": 0.595339224411896,
+    "alpha_He_eff": 4.051846993560424,
+    "heat_eta_pin_eff": 0.5,
+    "heat_delivered": 50.0,
+    "heat_coupled": 50.0,
+    "heat_wallplug_total": 100.0,
+    "winding_pack": 5346600000.0,
+    "magnet_structure": 54432000.0,
+    "magnet_capital_rollup": 5401032000.0,
+    "aux_cost": 3546787.943924037,
+    "cryo_cost": 16700459.69057127,
+    "magnet": 6323469946.334224,
+    "heating": 264145000.0,
+    "divertor": 107738895.64433303,
+    "blanket": 708331015.9216609,
+    "shield": 445718496.41329014,
+    "structure": 30371030.348638207,
+    "vessel": 104957728.26327178,
+    "power_supplies": 78656722.79425913,
+    "turbine": 217791223.05424428,
+    "electric": 92768495.7202066,
+    "heat_rejection": 113045804.83088794,
+    "misc": 56466379.51302853,
+    "buildings": 627992772.9192393,
+    "precon": 18116355.66240931,
+    "annual_om": 194275742.58601463,
+    "special_materials": 23815042.059888843,
+    "powercore_capital": 7140950889.385453,
+    "bop_capital": 480071903.1183673,
+    "remote_handling": 148196621.3181821,
+    "installation": 1020480651.498509,
+    "coolant": 157770171.91155195,
+    "aux_cooling": 20247247.634495307,
+    "waste": 6319731.245537375,
+    "fuel_handling": 95036262.88760391,
+    "other_rpe": 8809183.845010646,
+    "inc": 80586509.79147255,
+    "owner": 34877541.31650543,
+    "supplementary": 713915762.1433414,
+    "idc_capital": 4079752155.4343557,
+    "cas22_capital": 8678397269.517817,
+    "cas28_capital": 5000000.0,
+    "cas2x_pre_contingency": 9815276987.615313,
+    "cas20_capital": 10796804686.376844,
+    "cas30_capital": 2879147916.367159,
+    "cas23_to_28_capital": 508886945.17825615,
+    "overnight_capital": 14442862261.866259,
+    "contingency_capital": 981527698.7615314,
+    "indirect_capital": 2879147916.367159,
+    "total_capital": 14442862261.866259,
+    "lcoe": 322.3184394857024,
+    "annual_om_unlevelized": 46475170.34650845,
+    "annual_fuel": 518520.46626585175,
+    "cas71_annual": 66879911.95313382,
+    "cas72_annual": 126649655.78572692,
+    "cas70_annual": 193529567.73886073,
+    "cas80_annual": 746174.847153914,
+    "cas90_1cfe": 1492670879.5133128,
+    "lcoe_1cfe": 316.14114176653953
+  },
+  "heating_operating_gap": {
+    "installed_coupled_MW": 50.0,
+    "required_coupled_MW": 49.07960078792678,
+    "excess_heat_MW": 0.920399212073221,
+    "net_increase_at_zero_required_MW_fixed_other_loads": 83.8495
+  },
+  "model_inventory": [
+    {
+      "file": "models/designs/generic_ife/ife_plant.sysml",
+      "sha256": "6743e37dd60b8a387633d08016b22848e289010570752037d113d456de4aa1e5",
+      "lines": 171
+    },
+    {
+      "file": "models/designs/generic_ife/ife_subsystems.sysml",
+      "sha256": "0659a4ec57cd53ed2f7f6bd9fab71febdf0a41da5c350cfff6df25a1f12571a5",
+      "lines": 162
+    },
+    {
+      "file": "models/designs/generic_mfe/mfe_plant.sysml",
+      "sha256": "f681a2192233c0052882d214ee42d1bcb4e142c25c88bb1e0945f47376ac9bdf",
+      "lines": 1113
+    },
+    {
+      "file": "models/designs/generic_mfe/mfe_subsystems.sysml",
+      "sha256": "ca00da362a7a0b14766bdd28b0481d5820c191ad4107207b44c0c81a1846cdb1",
+      "lines": 183
+    },
+    {
+      "file": "models/designs/hif_ife/hif_driver.sysml",
+      "sha256": "a5b5f5bdd028ca40a199fbc43575ed0d4023e3140ab0666ca230173a4ffadc3f",
+      "lines": 99
+    },
+    {
+      "file": "models/designs/hif_ife/hif_plant.sysml",
+      "sha256": "9abf924f7bc0e5ed6c8735733a35f2b8f597d9f4e4ab201a64cebac9b427f2cc",
+      "lines": 234
+    },
+    {
+      "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+      "sha256": "3f272cf3c2bf831b70d4af3ca3eacd064b09336dc01af0c2c950888b28db0a0b",
+      "lines": 1370
+    },
+    {
+      "file": "models/library/analyses/fusion_cycle.sysml",
+      "sha256": "b1f4f8018e11ea2370269042d876ce00fd5678ecb70e9b464eda65d8ff644e16",
+      "lines": 52
+    },
+    {
+      "file": "models/library/analyses/hif_economics.sysml",
+      "sha256": "02ddab0039c2225b48de569b55a27fa7af1de73830676ebf572730c6db716309",
+      "lines": 107
+    },
+    {
+      "file": "models/library/analyses/ife_lcoe.sysml",
+      "sha256": "d7006898efb8a06913e5017f30793bbe1e34073e904396a1e487ce70af6f7537",
+      "lines": 127
+    },
+    {
+      "file": "models/library/analyses/mfe_account_costs.sysml",
+      "sha256": "c431cf8405a7407d245a8fd897ae7f0cbf48f64421fcbc44f6e3eced74d8d134",
+      "lines": 976
+    },
+    {
+      "file": "models/library/analyses/mfe_cryo_plant.sysml",
+      "sha256": "8c889cab72a4079cd92de82ffa199bccf129b2d851bdde192909faafc84593d9",
+      "lines": 53
+    },
+    {
+      "file": "models/library/analyses/mfe_heating_chain.sysml",
+      "sha256": "6662bd9ba723da4cacdd9b70e20555611c6c13c835ca47f02ed1bc47feddab97",
+      "lines": 79
+    },
+    {
+      "file": "models/library/analyses/mfe_lcoe_dcf.sysml",
+      "sha256": "391b86fb048be6a3d43dbd3666f929f13da6076be793b1228624d7a65077ff20",
+      "lines": 69
+    },
+    {
+      "file": "models/library/analyses/mfe_magnet_cost.sysml",
+      "sha256": "36ff88699f73cf89b781856aa61b06c1d4450a79ad8fc73fbcf5377f624332b0",
+      "lines": 200
+    },
+    {
+      "file": "models/library/analyses/mfe_magnet_field.sysml",
+      "sha256": "d8c4ca9abbd2a3b0a0296ac250a793aaa0f462ab89f9843c75c910d125cf6168",
+      "lines": 298
+    },
+    {
+      "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+      "sha256": "253769769330155898f092e0978b21a678beab1f0e2f7472fbd8d5adc277fead",
+      "lines": 491
+    },
+    {
+      "file": "models/library/analyses/mfe_plasma_sustainment.sysml",
+      "sha256": "a6a1f8708c80c5873c823a8ae3614f1d61578d57ccf55b90e17390e55a0f387a",
+      "lines": 239
+    },
+    {
+      "file": "models/library/analyses/mfe_power_balance.sysml",
+      "sha256": "dce01193b69853611983ee10445f0f2cd30aa6bac967cf27157e6eaee6f93577",
+      "lines": 154
+    },
+    {
+      "file": "models/library/analyses/mfe_viability.sysml",
+      "sha256": "865a007a9815b06574c74dc83ef54e60cfdbc4e3e1404674d3b83feda20afb41",
+      "lines": 315
+    },
+    {
+      "file": "models/library/cost_structure/cas_hierarchy.sysml",
+      "sha256": "5b786ed074f4093528d227b11a7cf093e1a9be98778765c4f13d9bee19dc4602",
+      "lines": 135
+    },
+    {
+      "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+      "sha256": "2c724fc4c39103acca72621b45a7ded6a43912a4a91247117030bdaa52bae690",
+      "lines": 214
+    },
+    {
+      "file": "models/library/cost_structure/mfe_power_core.sysml",
+      "sha256": "5564c5946c562672d08023eb2e83c466871838493b32269374a76c9fea197f59",
+      "lines": 181
+    },
+    {
+      "file": "models/library/foundation/costed_component.sysml",
+      "sha256": "80865c4b554cc1e20009bf044c9c58bde8ed06c2bba99f5867fa927add30db72",
+      "lines": 20
+    },
+    {
+      "file": "models/library/foundation/economic_parameter.sysml",
+      "sha256": "39400c8a9d773e8cd8fcd24c321f2b027090e8bbb8faf9d8ffb7f97ac0d935e3",
+      "lines": 42
+    }
+  ],
+  "numeric_census_count": 415
+}

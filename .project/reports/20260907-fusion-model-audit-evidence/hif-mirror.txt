@@ -1,0 +1,48 @@
+============================================================
+SV-012: Meier HIF Driver Cost
+============================================================
+
+  Reference case (v=5.0 Hz — Meier baseline):
+  C_dd [$B]: 0.9880 (expected 0.9880, diff 0.0%) — PASS
+
+  Osiris case (v=3.5 Hz):
+  C_dd = $0.9750B
+  gamma = $68.25/J
+  C_dd [$B]: 0.9750 (expected 0.9750, diff 0.0%) — PASS
+  gamma [$/J]: 68.2471 (expected 68.2500, diff 0.0%) — PASS
+
+============================================================
+SV-013: Hawker LCOE with HIF Osiris Parameters
+============================================================
+
+  Net electric power: 592.3 MW
+  Fusion cycle gain: 13.85
+  Recirculating fraction: 0.0722
+  LCOE: $270.12/MWh
+  Positive & finite: PASS
+
+  NOTE: LCOE $270/MWh exceeds Hawker's typical $25-120 range.
+  Root cause: target cost dominance at high rep rate.
+  Target cost alone: $213/MWh of $270/MWh total.
+
+============================================================
+SV-014: Meier COE at Osiris Parameters
+============================================================
+
+  Reactor cost: $0.7304B
+  Driver cost: $0.9750B
+  Target factory cost: $0.1000B
+  Total capital: $3.3039B
+  COE: 4.74 cents/kWh
+  COE [cents/kWh]: 4.7354 (expected 5.0000, diff 5.3%) — PASS
+
+============================================================
+MR-WI008-6: Viability Constraint
+============================================================
+
+  eta * G = 0.35 × 80 = 28.0
+  >= 10: PASS
+
+============================================================
+ALL CHECKS PASSED
+============================================================

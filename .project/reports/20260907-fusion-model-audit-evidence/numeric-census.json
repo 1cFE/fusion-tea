@@ -1,0 +1,2077 @@
+[
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 134,
+    "expression": "attribute f_shape : Real default 1.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 146,
+    "expression": "attribute vacuum_t : Real default 0.10;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 147,
+    "expression": "attribute firstwall_t : Real default 0.05;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 148,
+    "expression": "attribute blanket_t : Real default 0.70;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 149,
+    "expression": "attribute reflector_t : Real default 0.20;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 150,
+    "expression": "attribute ht_shield_t : Real default 0.20;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 151,
+    "expression": "attribute structure_t : Real default 0.15;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 152,
+    "expression": "attribute gap1_t : Real default 0.10;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 153,
+    "expression": "attribute vessel_t : Real default 0.10;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 154,
+    "expression": "attribute coil_t : Real default 0.30;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 155,
+    "expression": "attribute gap2_t : Real default 0.10;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 156,
+    "expression": "attribute lt_shield_t : Real default 0.15;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 171,
+    "expression": "in gap1_t_in = gap1_t;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 174,
+    "expression": "in gap2_t_in = gap2_t;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 186,
+    "expression": "attribute sigma_v : Real default 0.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 194,
+    "expression": "attribute T_i0 : Real default 1.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 196,
+    "expression": "attribute alpha_n : Real default 0.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 198,
+    "expression": "attribute alpha_T : Real default 0.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 240,
+    "expression": "in n_e0_in = n_e0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 241,
+    "expression": "in T_i0_in = T_i0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 249,
+    "expression": "in iota_23_in = iota_23;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 277,
+    "expression": "in R0 = magnet.R0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 287,
+    "expression": "in R_in = magnet.R0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 298,
+    "expression": "in R0 = magnet.R0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 325,
+    "expression": "in R0 = magnet.R0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 365,
+    "expression": "in n_D0_in = sustain.n_D0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 366,
+    "expression": "in n_T0_in = sustain.n_T0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 367,
+    "expression": "in T_i0_in = T_i0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 390,
+    "expression": "attribute wall_peak_q_ref : Real default 0.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 391,
+    "expression": "attribute wall_peak_p_fus_ref : Real default 1.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 392,
+    "expression": "attribute wall_peak_R_ref : Real default 1.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 393,
+    "expression": "attribute wall_peak_a_ref : Real default 1.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 394,
+    "expression": "attribute wall_peak_kappa_ref : Real default 1.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 395,
+    "expression": "attribute wall_peak_standoff_ref : Real default 0.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 396,
+    "expression": "attribute wall_peak_calibration_direct : Real default 1.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 435,
+    "expression": "attribute p_cryo : Real default 0.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 441,
+    "expression": "attribute q_nuc_cryo : Real default 0.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 442,
+    "expression": "attribute vol_cold_cryo : Real default 0.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 443,
+    "expression": "attribute p_fixed_cryo : Real default 0.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 444,
+    "expression": "attribute f_uplift_cryo : Real default 1.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 445,
+    "expression": "attribute T_cold_cryo : Real default 20.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 446,
+    "expression": "attribute T_amb_cryo : Real default 300.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 447,
+    "expression": "attribute f_carnot_cryo : Real default 1.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 471,
+    "expression": "attribute p_wallplug_heat : Real default 0.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 473,
+    "expression": "attribute eta_source_heat : Real default 1.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 475,
+    "expression": "attribute eta_couple_heat : Real default 1.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 477,
+    "expression": "attribute p_delivered_direct_heat : Real default 0.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 479,
+    "expression": "attribute p_coupled_direct_heat : Real default 0.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 527,
+    "expression": "in R0 = magnet.R0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 625,
+    "expression": "attribute n_mod : Real default 1.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 759,
+    "expression": "in ref_power = 1000.0; in alpha = 1.0;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 765,
+    "expression": "in ref_power = 1000.0; in alpha = 0.7;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 771,
+    "expression": "in ref_power = 1000.0; in alpha = 0.8;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 777,
+    "expression": "in ref_power = 3500.0; in alpha = 0.65;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 816,
+    "expression": "in direct_subtotal = cas2x_pre_contingency;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 820,
+    "expression": "attribute cas20_capital : Real = cas2x_pre_contingency + contingency_capital;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 830,
+    "expression": "in direct_cost = cas20_capital;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 844,
+    "expression": "in ref_power = 1000.0; in alpha = 0.5;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 858,
+    "expression": "in cas20 = cas20_capital;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 859,
+    "expression": "in cas23_to_28 = cas23_to_28_capital;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 914,
+    "expression": "attribute cas71_annual : Real = cas71_calc.levelized;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 949,
+    "expression": "attribute cas80_annual : Real = cas80_calc.levelized;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 973,
+    "expression": "attribute cas72_annual : Real = cas72_calc.cost;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 980,
+    "expression": "in cas71 = cas71_calc.levelized;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 981,
+    "expression": "in cas72 = cas72_calc.cost;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 982,
+    "expression": "in cas80 = cas80_calc.levelized;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 985,
+    "expression": "attribute cas70_annual : Real = cas70_calc.cas70;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 998,
+    "expression": "attribute annual_om : Real = cas70_calc.annual_total;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 1031,
+    "expression": "in crf = cas71_calc.crf;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 1036,
+    "expression": "attribute cas90_1cfe : Real = cas90_1cfe_calc.cas90;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 1039,
+    "expression": "in cas90 = cas90_1cfe_calc.cas90;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 1040,
+    "expression": "in cas70 = cas70_calc.cas70;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 1041,
+    "expression": "in cas80 = cas80_calc.levelized;"
+  },
+  {
+    "file": "models/designs/generic_mfe/mfe_plant.sysml",
+    "line": 1047,
+    "expression": "attribute lcoe_1cfe : Real = lcoe_1cfe_calc.lcoe;"
+  },
+  {
+    "file": "models/designs/hif_ife/hif_driver.sysml",
+    "line": 81,
+    "expression": ":>> efficiency = 0.35;"
+  },
+  {
+    "file": "models/designs/hif_ife/hif_driver.sysml",
+    "line": 83,
+    "expression": ":>> energy = 14.286e6;"
+  },
+  {
+    "file": "models/designs/hif_ife/hif_driver.sysml",
+    "line": 84,
+    "expression": ":>> lifetime_shots = 6.0e9;"
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 31,
+    "expression": ":>> beam_energy_mj = 5.0;"
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 32,
+    "expression": ":>> num_chambers = 1.0;"
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 33,
+    "expression": ":>> pulse_rate_ref = 3.5;"
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 48,
+    "expression": ":>> cost_per_target = 10.0;"
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 63,
+    "expression": ":>> blanket_energy_multiple = 1.15;"
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 64,
+    "expression": ":>> yield_cost_constant = 5.0e6;"
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 69,
+    "expression": ":>> availability = 0.90 {"
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 78,
+    "expression": ":>> frequency = 3.5 {"
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 87,
+    "expression": ":>> gain = 80.0 {"
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 100,
+    "expression": ":>> thermal_efficiency = 0.43 {"
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 111,
+    "expression": ":>> discount_rate = 0.08 {"
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 123,
+    "expression": ":>> plant_cost_constant = 2000.0 {"
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 138,
+    "expression": ":>> om_cost_constant = 65.0 {"
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 154,
+    "expression": "attribute thermal_power_gw : Real = 2.054 {"
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 166,
+    "expression": "attribute net_electric_power_gw : Real = 1.0 {"
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 187,
+    "expression": "in num_units = 1.0;"
+  },
+  {
+    "file": "models/designs/hif_ife/hif_plant.sysml",
+    "line": 202,
+    "expression": "in target_factory_cost = 0.1;"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 128,
+    "expression": ":>> G = 78.95683520871486;"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 139,
+    "expression": ":>> R0 = 12.7;"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 147,
+    "expression": ":>> cost_per_kAm = 50.0;"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 150,
+    "expression": ":>> coil_markup = 5.87;"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 163,
+    "expression": ":>> peak_ratio = 2.7666666666666666 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 171,
+    "expression": ":>> B_max = 24.9 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 177,
+    "expression": ":>> n_coils = 48.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 181,
+    "expression": ":>> I_coil = 15400000.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 189,
+    "expression": ":>> k_link = 0.7731331164622419 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 193,
+    "expression": ":>> f_set = 0.8701298701298701 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 204,
+    "expression": ":>> k_coil = 1.9685039370078741 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 216,
+    "expression": ":>> j_wp = 118.8271604938272 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 225,
+    "expression": ":>> f_wp_vol = 0.8780864197530865 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 231,
+    "expression": ":>> k_sigma = 0.6102331403536223 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 235,
+    "expression": ":>> sigma_allow = 800000000.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 241,
+    "expression": ":>> E_wp = 200000000000.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 254,
+    "expression": ":>> f_cond = 0.6666666666666666 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 266,
+    "expression": ":>> eps_cond_allow = 0.004 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 273,
+    "expression": ":>> f_wp_fab = 6.65 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 285,
+    "expression": ":>> m_casing_ref = 63000.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 309,
+    "expression": ":>> W_mag_ref = 111000000000.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 315,
+    "expression": ":>> I_ref = 15400000.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 319,
+    "expression": ":>> R_ref = 12.7 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 332,
+    "expression": ":>> a_coil_ref = 3.1500000000000004 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 336,
+    "expression": ":>> steel_price = 6.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 340,
+    "expression": ":>> f_steel_fab = 3.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 363,
+    "expression": ":>> unit_cost = 600000.0;"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 364,
+    "expression": ":>> structure_factor = 1.0;"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 377,
+    "expression": ":>> unit_cost = 740000.0;"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 378,
+    "expression": ":>> shield_scale = 1.0;"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 390,
+    "expression": ":>> unit_cost = 150000.0;"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 402,
+    "expression": ":>> unit_cost = 720000.0;"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 411,
+    "expression": ":>> base = 80000000.0;"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 426,
+    "expression": ":>> cost_per_mw = 202840.0;"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 435,
+    "expression": ":>> cost_per_mw = 86400.0;"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 444,
+    "expression": ":>> cost_per_mw = 35060.0;"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 453,
+    "expression": ":>> cost_per_mw = 52590.0;"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 466,
+    "expression": ":>> bldg_fixed_base = 168500000.0 {  // fixed-basis base costs [$]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 475,
+    "expression": ":>> bldg_fus_base = 288000000.0 {  // p_fus-scaled base costs [$]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 483,
+    "expression": ":>> bldg_staff_base = 9000000.0 {  // staff-scaled base costs [$]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 490,
+    "expression": ":>> bldg_the_base = 58000000.0 {  // p_the-scaled base costs [$]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 498,
+    "expression": ":>> bldg_th_base = 26000000.0 {  // p_th-scaled base costs [$]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 505,
+    "expression": ":>> bldg_et_base = 29000000.0 {  // p_et-scaled base costs [$]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 525,
+    "expression": ":>> R = 12.7 {        // major radius [m]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 528,
+    "expression": ":>> a = 1.3 {         // minor radius [m] (WI-022 errata rebind)."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 531,
+    "expression": ":>> kappa = 1.0 {     // elongation. QI stellarator ~ circular average."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 534,
+    "expression": ":>> f_shape = 1.0031567 {  // QI shaping correction [1] (WI-022)."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 545,
+    "expression": ":>> blanket_t = 0.80 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 548,
+    "expression": ":>> ht_shield_t = 0.20 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 551,
+    "expression": ":>> structure_t = 0.15 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 554,
+    "expression": ":>> vessel_t = 0.10 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 557,
+    "expression": ":>> vacuum_t = 0.10 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 560,
+    "expression": ":>> firstwall_t = 0.05 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 563,
+    "expression": ":>> reflector_t = 0.20 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 566,
+    "expression": ":>> gap1_t = 0.10 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 569,
+    "expression": ":>> coil_t = 0.30 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 572,
+    "expression": ":>> gap2_t = 0.10 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 575,
+    "expression": ":>> lt_shield_t = 0.15 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 580,
+    "expression": ":>> n_e = 3.17e20 {   // vol-avg electron density [m^-3], point A (WI-022 corrected)."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 583,
+    "expression": ":>> sigma_v = 0.0 {  // 0D bypass OFF -> profile-integrated reactivity (WI-022)."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 614,
+    "expression": ":>> E_fus = 2.817e-12 {  // per-event D-T fusion energy [J]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 634,
+    "expression": ":>> T_i0 = 14.63 {    // peak ion temperature [keV] (operating-point lever)."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 637,
+    "expression": ":>> alpha_n = 0.33 {  // fuel density profile exponent [1]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 640,
+    "expression": ":>> alpha_T = 1.19 {  // temperature profile exponent [1]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 661,
+    "expression": ":>> n_e0 = 5.06e20 {  // peak electron density [m^-3]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 681,
+    "expression": ":>> iota_23 = 0.92 {  // rotational transform at s = 2/3 [1]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 684,
+    "expression": ":>> f_ren = 1.0 {     // ISS04 renormalization multiplier [1]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 687,
+    "expression": ":>> f_alpha_fast = 0.95 { // fast-particle (alpha) confinement [1]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 690,
+    "expression": ":>> tau_ratio_ash = 8.0 { // tau_star/tau_E [1]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 693,
+    "expression": ":>> f_suppr_ash = 0.5 { // helium suppression factor [1]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 696,
+    "expression": ":>> Z_eff_core = 1.20 { // core effective charge [1]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 699,
+    "expression": ":>> f_W_core = 7.76e-6 { // core tungsten fraction n_W/n_e [1]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 702,
+    "expression": ":>> Ti_over_Te = 0.95 { // T_i0/T_e0 [1]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 711,
+    "expression": ":>> p_wallplug_heat = 100.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 738,
+    "expression": ":>> eta_source_heat = 0.50 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 741,
+    "expression": ":>> eta_couple_heat = 1.00 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 770,
+    "expression": ":>> p_delivered_direct_heat = 0.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 773,
+    "expression": ":>> p_coupled_direct_heat = 0.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 776,
+    "expression": ":>> mn = 1.2 {        // blanket neutron energy multiplier."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 779,
+    "expression": ":>> eta_th = 0.333 {  // thermal-to-electric efficiency (1/3)."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 782,
+    "expression": ":>> eta_p = 0.5 {     // pumping-power capture efficiency."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 785,
+    "expression": ":>> p_pump = 195.0 {  // primary coolant pumping power [MW] -- helium-primary circulator basis (WI-033)."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 809,
+    "expression": ":>> f_sub = 0.03 {    // subsystem/control power fraction."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 812,
+    "expression": ":>> p_tf = 0.0 {      // coil electrical drive power [MW] -- modeled zero for the SC coil set (WI-024)."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 834,
+    "expression": ":>> p_tfcool = 15.0 { // coil cooling power [MW]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 852,
+    "expression": ":>> p_trit = 10.0 {   // tritium systems power [MW]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 855,
+    "expression": ":>> p_house = 4.0 {   // housekeeping power [MW]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 858,
+    "expression": ":>> p_cryo = 0.0 {    // direct cryo-electrical term [MW] -- zeroed; chain derives the slot (WI-024)."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 871,
+    "expression": ":>> q_nuc_cryo = 35.5 {   // winding-pack mean nuclear heating [W/m^3]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 874,
+    "expression": ":>> vol_cold_cryo = 0.0 {  // ADDITIONAL cold volume [m^3] beyond the winding pack."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 910,
+    "expression": ":>> p_fixed_cryo = 0.0075 {  // resistive-joint losses [MW] at 20 K."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 913,
+    "expression": ":>> f_uplift_cryo = 1.0 {   // unprinted-loads multiplier -- explicit lower bound (WI-024 D6)."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 926,
+    "expression": ":>> T_cold_cryo = 20.0 {    // coil operating temperature [K]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 929,
+    "expression": ":>> T_amb_cryo = 300.0 {    // heat-rejection reference temperature [K]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 932,
+    "expression": ":>> f_carnot_cryo = 0.20 {  // fraction-of-Carnot plant efficiency -- THE assumption (WI-024 D4)."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 949,
+    "expression": ":>> p_pf = 0.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 952,
+    "expression": ":>> p_pfcool = 0.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 956,
+    "expression": ":>> p_nbi = 0.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 959,
+    "expression": ":>> p_icrf = 0.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 962,
+    "expression": ":>> p_lhcd = 0.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 965,
+    "expression": ":>> heating_nbi_per_mw = 0.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 968,
+    "expression": ":>> heating_icrf_per_mw = 0.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 971,
+    "expression": ":>> heating_lhcd_per_mw = 0.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 976,
+    "expression": ":>> heating_ecrh_per_mw = 5282900.0 {  // ECRH capital [$/MW]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 987,
+    "expression": ":>> divertor_base = 60000000.0 {  // divertor cost at 1 GWth [$]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 993,
+    "expression": ":>> precon_fixed_base = 16000000.0 {  // CAS10 fixed adders [$] (WI-025; WI-029 NOAK fix)."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1020,
+    "expression": ":>> special_materials_capital = rb.blanket_vol * 0.50 * 9400.0 * 5.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1044,
+    "expression": ":>> remote_handling_base = 150000000.0 {  // C220110 rh_base[DT] [$]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1047,
+    "expression": ":>> concept_scale = 1.0 {  // C220110 toroidal (STELLARATOR) scale."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1050,
+    "expression": ":>> installation_frac = 0.14 {  // C220111 fraction of reactor subtotal."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1053,
+    "expression": ":>> coolant_primary_base = 166000000.0 {  // C220200 primary coolant [$]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1056,
+    "expression": ":>> coolant_intermediate_base = 40600000.0 {  // C220200 intermediate [$]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1059,
+    "expression": ":>> aux_per_mw = 1100.0 {  // C220300 aux coolant [$/MW_th]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1062,
+    "expression": ":>> aux_cryo_base = 200000000.0 {  // C220300 cryoplant [$]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1065,
+    "expression": ":>> waste_base = 1960000.0 {  // C220400 radwaste [$]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1068,
+    "expression": ":>> fuel_handling_base = 120000000.0 {  // C220500 fuel handling DT [$]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1071,
+    "expression": ":>> other_rpe_base = 11500000.0 {  // C220600 other reactor plant [$]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1074,
+    "expression": ":>> inc_base = 85000000.0 {  // C220700 instrumentation & control [$]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1077,
+    "expression": ":>> owner_base = 41200000.0 {  // CAS40 owner cost DT [$]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1080,
+    "expression": ":>> supplementary_spares_frac = 0.03 {  // CAS50 spare parts frac (DT)."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1083,
+    "expression": ":>> supplementary_startup_base = 40000000.0 {  // CAS50 startup fuel DT [$]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1086,
+    "expression": ":>> supplementary_decom_base = 272000000.0 {  // CAS50 decom provision DT [$]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1089,
+    "expression": ":>> cas28_capital = 5000000.0 {  // CAS28 digital twin [$] (F-2)."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1094,
+    "expression": ":>> contingency_rate = 0.10 {  // FOAK contingency on direct."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1097,
+    "expression": ":>> indirect_fraction = 0.20 {  // CAS30 indirect fraction of direct."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1100,
+    "expression": ":>> construction_years = 8.0 {  // Yc [yr]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1105,
+    "expression": ":>> om_annual_ref = 54900000.0 {  // CAS70 O&M at 1 GWe, DT [$/yr] (WI-025)."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1117,
+    "expression": ":>> availability = 0.85 {      // capacity factor."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1120,
+    "expression": ":>> discount_rate = 0.07 {     // discount / interest rate [1/yr]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1123,
+    "expression": ":>> operational_years = 30.0 { // operating lifetime N [yr]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1134,
+    "expression": ":>> inflation_rate = 0.02 {    // escalation rate g for CAS71/CAS80 levelization."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1139,
+    "expression": ":>> fuel_cost_per_rxn = 1.7260641119988767e-23 {  // $/reaction."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1154,
+    "expression": ":>> fuel_q_eff = 17.58 {       // per-reaction energy Q_DT [MeV]."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1157,
+    "expression": ":>> mev_to_joules = 1.6021766339999998e-13 {  // 1 MeV in J."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1160,
+    "expression": ":>> burn_fraction = 0.05 {     // single-pass burn fraction (MFE-class)."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1163,
+    "expression": ":>> fuel_recovery = 0.99 {     // unburned-fuel recovery fraction (NOAK)."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1168,
+    "expression": ":>> fluence_limit = 18.0 {     // core fluence limit [MW-yr/m^2], DT."
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1190,
+    "expression": "attribute beta_limit : Real = 0.05 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1240,
+    "expression": ":>> wall_peak_q_ref = 4.05 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1265,
+    "expression": ":>> wall_peak_p_fus_ref = 2700.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1270,
+    "expression": ":>> wall_peak_R_ref = 12.7 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1273,
+    "expression": ":>> wall_peak_a_ref = 1.3 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1276,
+    "expression": ":>> wall_peak_kappa_ref = 1.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1279,
+    "expression": ":>> wall_peak_standoff_ref = 0.10 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1284,
+    "expression": ":>> wall_peak_calibration_direct = 0.0 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1289,
+    "expression": "attribute wall_load_limit : Real = 4.05 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1295,
+    "expression": "attribute tbr : Real = 1.074 {"
+  },
+  {
+    "file": "models/designs/stellarator_09/stellarator_plant.sysml",
+    "line": 1299,
+    "expression": "attribute tbr_floor : Real = 1.05 {"
+  },
+  {
+    "file": "models/library/analyses/fusion_cycle.sysml",
+    "line": 26,
+    "expression": "out attribute f_recirc : Real = 1.0 / fusion_cycle_gain;"
+  },
+  {
+    "file": "models/library/analyses/fusion_cycle.sysml",
+    "line": 48,
+    "expression": "in attribute threshold : Real default 10.0;"
+  },
+  {
+    "file": "models/library/analyses/hif_economics.sysml",
+    "line": 40,
+    "expression": "out attribute gamma : Real = cost_billions * 1.0e9 / bank_energy_joules;"
+  },
+  {
+    "file": "models/library/analyses/ife_lcoe.sysml",
+    "line": 47,
+    "expression": "in attribute construction_years : Real default 5.0;"
+  },
+  {
+    "file": "models/library/analyses/ife_lcoe.sysml",
+    "line": 48,
+    "expression": "in attribute operational_years : Real default 40.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 44,
+    "expression": "in attribute p_th_ref : Real default 2500.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 46,
+    "expression": "in attribute alpha : Real default 0.6;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 73,
+    "expression": "in attribute p_th_ref : Real default 2500.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 75,
+    "expression": "in attribute alpha : Real default 0.6;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 100,
+    "expression": "in attribute p_et_ref : Real default 1100.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 102,
+    "expression": "in attribute alpha : Real default 0.5;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 132,
+    "expression": "in attribute p_et_ref : Real default 1100.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 134,
+    "expression": "in attribute alpha : Real default 0.6;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 160,
+    "expression": "in attribute p_et_ref : Real default 1100.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 162,
+    "expression": "in attribute alpha : Real default 0.7;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 188,
+    "expression": "in attribute p_th_ref : Real default 1000.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 190,
+    "expression": "in attribute alpha : Real default 0.5;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 249,
+    "expression": "in attribute n_mod_in : Real default 1.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 297,
+    "expression": "in attribute reference_construction_time : Real default 6.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 348,
+    "expression": "in attribute n_mod_in : Real default 1.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 352,
+    "expression": "in attribute p_fus_ref : Real default 2300.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 353,
+    "expression": "in attribute p_the_ref : Real default 1100.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 354,
+    "expression": "in attribute p_th_ref : Real default 2500.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 355,
+    "expression": "in attribute p_et_ref : Real default 1100.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 391,
+    "expression": "in attribute n_mod_in : Real default 1.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 394,
+    "expression": "in attribute land_intensity : Real default 0.25;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 395,
+    "expression": "in attribute land_cost : Real default 10000.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 396,
+    "expression": "in attribute ref_net_power : Real default 1000.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 425,
+    "expression": "in attribute n_mod_in : Real default 1.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 427,
+    "expression": "in attribute ref_net_power : Real default 1000.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 429,
+    "expression": "in attribute alpha : Real default 0.5;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 431,
+    "expression": "in attribute om_direct : Real default 0.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 469,
+    "expression": "in attribute n_mod_in : Real default 1.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 496,
+    "expression": "in attribute p_et_ref : Real default 1100.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 498,
+    "expression": "in attribute alpha : Real default 0.5;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 519,
+    "expression": "in attribute installation_frac_in : Real default 0.14;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 546,
+    "expression": "in attribute n_mod_in : Real default 1.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 548,
+    "expression": "in attribute ref_net_power : Real default 1000.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 550,
+    "expression": "in attribute p_th_ref : Real default 3500.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 552,
+    "expression": "in attribute alpha : Real default 0.55;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 580,
+    "expression": "in attribute n_mod_in : Real default 1.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 582,
+    "expression": "in attribute p_cryo_ref : Real default 30.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 584,
+    "expression": "in attribute alpha : Real default 0.7;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 624,
+    "expression": "in attribute n_mod_in : Real default 1.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 628,
+    "expression": "in attribute shipping_frac : Real default 0.015;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 629,
+    "expression": "in attribute tax_frac : Real default 0.01;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 630,
+    "expression": "in attribute insurance_frac : Real default 0.015;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 632,
+    "expression": "in attribute contingency_rate_in : Real default 0.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 633,
+    "expression": "in attribute ref_net_power : Real default 1000.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 717,
+    "expression": "attribute disc_pow_n : Real = (1.0 + interest_rate) ** operational_years_in;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 718,
+    "expression": "out attribute crf : Real = interest_rate * disc_pow_n / (disc_pow_n - 1.0);"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 721,
+    "expression": "attribute a1 : Real = annual_cost * (1.0 + inflation_rate_in) ** project_time;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 767,
+    "expression": "in attribute n_mod_in : Real default 1.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 917,
+    "expression": "out attribute cas70 : Real = cas71 + cas72;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 918,
+    "expression": "out attribute annual_total : Real = cas71 + cas72 + cas80;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 970,
+    "expression": "in attribute n_mod_in : Real default 1.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_account_costs.sysml",
+    "line": 974,
+    "expression": "out attribute lcoe : Real = (cas90 + cas70 + cas80) / annual_energy_mwh;"
+  },
+  {
+    "file": "models/library/analyses/mfe_cryo_plant.sysml",
+    "line": 31,
+    "expression": "in attribute q_nuc : Real default 0.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_cryo_plant.sysml",
+    "line": 33,
+    "expression": "in attribute vol_cold : Real default 0.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_cryo_plant.sysml",
+    "line": 35,
+    "expression": "in attribute p_fixed : Real default 0.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_cryo_plant.sysml",
+    "line": 37,
+    "expression": "in attribute f_uplift : Real default 1.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_cryo_plant.sysml",
+    "line": 39,
+    "expression": "in attribute T_cold : Real default 20.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_cryo_plant.sysml",
+    "line": 41,
+    "expression": "in attribute T_amb : Real default 300.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_cryo_plant.sysml",
+    "line": 43,
+    "expression": "in attribute f_carnot : Real default 1.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_cryo_plant.sysml",
+    "line": 45,
+    "expression": "in attribute p_direct : Real default 0.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_cryo_plant.sysml",
+    "line": 47,
+    "expression": "attribute p_cold : Real = (q_nuc * vol_cold * 1.0e-6 + p_fixed) * f_uplift;"
+  },
+  {
+    "file": "models/library/analyses/mfe_heating_chain.sysml",
+    "line": 54,
+    "expression": "in attribute p_wallplug : Real default 0.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_heating_chain.sysml",
+    "line": 56,
+    "expression": "in attribute eta_source : Real default 1.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_heating_chain.sysml",
+    "line": 58,
+    "expression": "in attribute eta_couple : Real default 1.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_heating_chain.sysml",
+    "line": 60,
+    "expression": "in attribute p_delivered_direct : Real default 0.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_heating_chain.sysml",
+    "line": 62,
+    "expression": "in attribute p_coupled_direct : Real default 0.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_cost.sysml",
+    "line": 47,
+    "expression": "in attribute mu0 : Real default 1.25663706212e-6;"
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_cost.sysml",
+    "line": 50,
+    "expression": "attribute total_kAm : Real = G * B * R0 * r_coil / (mu0 * 1000.0);"
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_cost.sysml",
+    "line": 98,
+    "expression": "attribute kAm_wind : Real = n_coils * I_coil * f_set * c_coil / 1000.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_cost.sysml",
+    "line": 138,
+    "expression": "out attribute m_casing : Real = m_casing_ref * (W_mag / W_mag_ref) ** 0.78;"
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_field.sysml",
+    "line": 41,
+    "expression": "in attribute mu0 : Real default 1.25663706212e-6;"
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_field.sysml",
+    "line": 43,
+    "expression": "in attribute two_pi : Real default 6.283185307179586;"
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_field.sysml",
+    "line": 45,
+    "expression": "out attribute B_axis : Real = mu0 * k_link * n_coils * I_coil / (two_pi * R0);"
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_field.sysml",
+    "line": 121,
+    "expression": "out attribute wp_side : Real = (I_coil / j_wp) ** 0.5 / 1000.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_field.sysml",
+    "line": 151,
+    "expression": "out attribute c_coil : Real = k_coil * R0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_magnet_field.sysml",
+    "line": 192,
+    "expression": "in attribute vol_extra : Real default 0.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 32,
+    "expression": "in attribute f_shape_in : Real default 1.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 39,
+    "expression": "in attribute pi : Real default 3.14159265358979;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 100,
+    "expression": "in attribute pi : Real default 3.14159265358979;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 109,
+    "expression": "attribute gap1_or : Real = structure_or + gap1_t_in;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 110,
+    "expression": "attribute vessel_or : Real = gap1_or + vessel_t_in;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 112,
+    "expression": "attribute gap2_or : Real = coil_or + gap2_t_in;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 113,
+    "expression": "attribute lt_shield_or : Real = gap2_or + lt_shield_t_in;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 116,
+    "expression": "attribute C : Real = kappa_in * 2.0 * (pi ** 2) * R_in;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 119,
+    "expression": "attribute firstwall_vol : Real = C * ((firstwall_or ** 2) - (vacuum_or ** 2));"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 120,
+    "expression": "attribute blanket_layer_vol : Real = C * ((blanket_or ** 2) - (firstwall_or ** 2));"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 121,
+    "expression": "attribute reflector_vol : Real = C * ((reflector_or ** 2) - (blanket_or ** 2));"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 122,
+    "expression": "attribute ht_shield_vol : Real = C * ((ht_shield_or ** 2) - (reflector_or ** 2));"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 123,
+    "expression": "attribute lt_shield_vol : Real = C * ((lt_shield_or ** 2) - (gap2_or ** 2));"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 136,
+    "expression": "out attribute wall_area : Real = kappa_in * 4.0 * (pi ** 2) * R_in * vacuum_or;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 144,
+    "expression": "out attribute r_coil_centre : Real = vessel_or + coil_t_in / 2.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 210,
+    "expression": "in attribute sigma_v_in : Real default 0.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 220,
+    "expression": "in attribute n_D0_in : Real default 0.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 222,
+    "expression": "in attribute n_T0_in : Real default 0.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 224,
+    "expression": "in attribute T_i0_in : Real default 1.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 226,
+    "expression": "in attribute alpha_n_in : Real default 0.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 228,
+    "expression": "in attribute alpha_T_in : Real default 0.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 266,
+    "expression": "in attribute ash_frac_in : Real default 0.2002;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 328,
+    "expression": "in attribute ash_frac_in : Real default 0.2002;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 329,
+    "expression": "in attribute pi : Real default 3.14159265358979;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 335,
+    "expression": "attribute p_n_ref : Real = p_fus_ref * (1.0 - ash_frac_in);"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 413,
+    "expression": "in attribute mu0 : Real default 1.25663706212e-6;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_scaling.sysml",
+    "line": 416,
+    "expression": "out attribute beta : Real = 2.0 * mu0 * p_avg_in / (B_in ** 2);"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_sustainment.sysml",
+    "line": 193,
+    "expression": "in attribute ash_frac_in : Real default 0.2002;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_sustainment.sysml",
+    "line": 196,
+    "expression": "in attribute R_w_sync_in : Real default 0.6;"
+  },
+  {
+    "file": "models/library/analyses/mfe_plasma_sustainment.sysml",
+    "line": 199,
+    "expression": "in attribute kappa_sync_in : Real default 1.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_power_balance.sysml",
+    "line": 65,
+    "expression": "in attribute p_wallplug_in : Real default 0.0;"
+  },
+  {
+    "file": "models/library/analyses/mfe_power_balance.sysml",
+    "line": 101,
+    "expression": "attribute p_alpha : Real = (3.52 / 17.58) * p_nrl;"
+  },
+  {
+    "file": "models/library/analyses/mfe_power_balance.sysml",
+    "line": 149,
+    "expression": "out attribute rec_frac : Real = 1.0 / q_eng;"
+  },
+  {
+    "file": "models/library/analyses/mfe_power_balance.sysml",
+    "line": 152,
+    "expression": "out attribute p_net : Real = (1.0 - rec_frac) * p_et;"
+  },
+  {
+    "file": "models/library/analyses/mfe_viability.sysml",
+    "line": 35,
+    "expression": "in attribute threshold : Real default 0.5;"
+  },
+  {
+    "file": "models/library/analyses/mfe_viability.sysml",
+    "line": 313,
+    "expression": "p_aux_required_in >= 0.0"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 33,
+    "expression": ":>> value = 0.70;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 34,
+    "expression": ":>> min_value = 0.50;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 35,
+    "expression": ":>> max_value = 1.00;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 36,
+    "expression": ":>> sensitivity = -0.127;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 46,
+    "expression": ":>> value = 1.2;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 47,
+    "expression": ":>> min_value = 0.6;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 48,
+    "expression": ":>> max_value = 1.4;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 49,
+    "expression": ":>> sensitivity = -0.038;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 59,
+    "expression": ":>> value = 0.08;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 60,
+    "expression": ":>> min_value = 0.02;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 61,
+    "expression": ":>> max_value = 0.12;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 62,
+    "expression": ":>> sensitivity = 0.247;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 75,
+    "expression": ":>> value = 5.0;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 76,
+    "expression": ":>> min_value = 2.0;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 77,
+    "expression": ":>> max_value = 10.0;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 78,
+    "expression": ":>> sensitivity = 0.075;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 89,
+    "expression": ":>> value = 0.10;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 90,
+    "expression": ":>> min_value = 0.05;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 91,
+    "expression": ":>> max_value = 0.30;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 92,
+    "expression": ":>> sensitivity = -0.063;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 101,
+    "expression": ":>> value = 10.0e6;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 102,
+    "expression": ":>> min_value = 0.5e6;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 103,
+    "expression": ":>> max_value = 50.0e6;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 104,
+    "expression": ":>> sensitivity = 0.011;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 114,
+    "expression": ":>> value = 5.0e7;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 115,
+    "expression": ":>> min_value = 1.0e6;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 116,
+    "expression": ":>> max_value = 1.0e9;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 117,
+    "expression": ":>> sensitivity = -0.134;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 126,
+    "expression": ":>> value = 0.2;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 127,
+    "expression": ":>> min_value = 0.01;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 128,
+    "expression": ":>> max_value = 10.0;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 129,
+    "expression": ":>> sensitivity = 0.035;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 141,
+    "expression": ":>> value = 500.0;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 142,
+    "expression": ":>> min_value = 10.0;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 143,
+    "expression": ":>> max_value = 1000.0;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 144,
+    "expression": ":>> sensitivity = -0.164;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 153,
+    "expression": ":>> value = 30.0;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 154,
+    "expression": ":>> min_value = 10.0;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 155,
+    "expression": ":>> max_value = 100.0;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 156,
+    "expression": ":>> sensitivity = 0.050;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 167,
+    "expression": ":>> value = 3000.0;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 168,
+    "expression": ":>> min_value = 1000.0;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 169,
+    "expression": ":>> max_value = 6000.0;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 170,
+    "expression": ":>> sensitivity = 0.210;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 183,
+    "expression": ":>> value = 10.0;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 184,
+    "expression": ":>> min_value = 1.0;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 185,
+    "expression": ":>> max_value = 100.0;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 186,
+    "expression": ":>> sensitivity = 0.186;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 195,
+    "expression": ":>> value = 0.40;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 196,
+    "expression": ":>> min_value = 0.30;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 197,
+    "expression": ":>> max_value = 0.60;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 198,
+    "expression": ":>> sensitivity = -0.033;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 208,
+    "expression": ":>> value = 5.0e6;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 209,
+    "expression": ":>> min_value = 5.0e5;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 210,
+    "expression": ":>> max_value = 5.0e7;"
+  },
+  {
+    "file": "models/library/cost_structure/ife_cost_parameters.sysml",
+    "line": 211,
+    "expression": ":>> sensitivity = 0.026;"
+  }
+]
