@@ -229,11 +229,21 @@ def test_fresh_is_defined_at_owner_strength_with_an_agent_move(repo_root):
     assert "handoff" in trail
 
 
+# Files in the narrative directory that share its naming scheme but are not goal
+# narratives, so the snapshot contract does not apply to them.
+NARRATIVE_EXEMPT_SLUGS = {
+    # a cross-goal summary table, not the story of one goal
+    "goal-overview",
+}
+
+
 def _narrative_paths(repo_root: Path) -> list[Path]:
-    return sorted(
-        path for path in (repo_root / NARRATIVE_DIR).glob("*.md")
-        if NARRATIVE_NAME.match(path.name)
-    )
+    paths = []
+    for path in (repo_root / NARRATIVE_DIR).glob("*.md"):
+        match = NARRATIVE_NAME.match(path.name)
+        if match and match.group(1) not in NARRATIVE_EXEMPT_SLUGS:
+            paths.append(path)
+    return sorted(paths)
 
 
 def _ordinary_prose_lines(text: str):
