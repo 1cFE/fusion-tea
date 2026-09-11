@@ -1,0 +1,111 @@
+
+======================================================================
+SysML Quality Validation
+Models path: /tmp/wi048-audit-old
+Mode: Complete
+======================================================================
+
+============================================================
+Level 1: Syntax Validation
+============================================================
+Found 11 SysML files
+
+✅ Level 1: Syntax Validation
+   Files checked: 11
+   Errors: 0
+   Warnings: 0
+
+============================================================
+Level 2: Structural Completeness
+============================================================
+Found 11 SysML files
+
+❌ Level 2: Structural Completeness
+   Unused definitions: 0
+   Unbound inputs: 0
+   Undefined bindings: 0
+   Placeholder bindings: 2
+   Self-named bindings: 0
+   Orphaned elements: 0
+
+   Issues found: 2
+   - WARN: Input 'num_units' bound to literal value in calc 'hif_plant_pkg::hif_plant::meier_reactor_cost_calc' - consider binding to attribute or calc output at file:///tmp/wi048-audit-old/designs/hif_ife/hif_plant.sysml:177
+   - WARN: Input 'target_factory_cost' bound to literal value in calc 'hif_plant_pkg::hif_plant::meier_capital_calc' - consider binding to attribute or calc output at file:///tmp/wi048-audit-old/designs/hif_ife/hif_plant.sysml:190
+
+============================================================
+Level 3: Dataflow Integrity
+============================================================
+Found 11 SysML files
+
+✅ Level 3: Dataflow Integrity
+   Documents analyzed: 6
+   Circular dependencies: 0
+
+============================================================
+Level 4: Constraint Coverage
+============================================================
+Found 11 SysML files
+
+✅ Level 4: Constraint Coverage
+   Total constraints: 1
+   ConstraintUsage: 1
+   ConstraintDefinition: 1
+   Constraint usages assessed (incl. satisfy): 1
+   Admitted numerical: 1
+   Malformed numerical: 0
+   Non-numerical: 0
+   Unassessed (satisfy/require/plain): 0
+   Executable share: 100.0%
+
+============================================================
+Level 5: Traceability & Documentation
+============================================================
+
+✅ Level 5: Traceability & Documentation
+   Total elements: 28
+   Documented: 28
+   Missing docs: 0
+   Coverage: 100.0%
+
+============================================================
+Level 6: Architecture & Pipeline Readiness
+============================================================
+
+❌ Level 6: Architecture & Pipeline Readiness
+   Calc defs checked: 6
+   Calc usages checked: 6
+   Bindings validated: 30
+   Design attrs checked: 24
+   Manifests checked: 0
+   L6_MISSING_QUALIFIED_NAME: 0
+   L6_INVALID_QUALIFIED_NAME: 0
+   L6_CALC_DEF_NO_OUTPUT: 0
+   L6_CALC_DEF_NO_DIRECTION: 0
+   L6_INVALID_BINDING_FORMAT: 0
+   L6_DESIGN_ATTR_INCOMPLETE: 18
+   L6_DESIGN_ATTR_UNEXTRACTABLE: 4
+   L6_ANONYMOUS_RETURN: 0
+   L6_BODY_ASSIGNMENT_IMPL_LOSS: 0
+   V4_STATIC_FUNCTION_INVOCATION: 0
+   L6_CONSTRAINT_MALFORMED_NUMERICAL: 0
+   L6_CONSTRAINT_NON_NUMERICAL: 0
+   L6_CALC_DEF_NO_INSTANTIATION: 0
+   L6_ATTR_REDEF_EXPR_DROPPED: 0
+
+   Issues found: 26
+   - ERROR: Unsupported operator '.' in attribute 'ife_plant::'IFE Power Plant'::lcoe' at file:///tmp/wi048-audit-old/designs/generic_ife/ife_plant.sysml:130
+   - ERROR: Unsupported operator '.' in attribute 'ife_plant::'IFE Power Plant'::recirculating_fraction' at file:///tmp/wi048-audit-old/designs/generic_ife/ife_plant.sysml:151
+   - ERROR: Unsupported operator '.' in attribute 'hif_driver::'HIF Driver'::driver_cost_billions' at file:///tmp/wi048-audit-old/designs/hif_ife/hif_driver.sysml:88
+   - ERROR: Unsupported operator '.' in attribute 'hif_plant_pkg::hif_plant::meier_coe' at file:///tmp/wi048-audit-old/designs/hif_ife/hif_plant.sysml:225
+   - ERROR: Design attribute 'ife_plant::'IFE Power Plant'::availability' has no value or binding at file:///tmp/wi048-audit-old/designs/generic_ife/ife_plant.sysml:33
+   ... and 21 more
+
+======================================================================
+Summary
+======================================================================
+Checks run: 6
+✅ Passed: 4
+❌ Failed: 2
+
+❌ Quality checks failed
+   Review issues above and fix before proceeding

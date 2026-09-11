@@ -1,0 +1,28 @@
+Computed Osiris-based point: gain 87 gives 435 MJ; printed yield is 432 MJ.
+Hawker equal driver/cooling allowance, M=1.15, availability=0.90.
+Hawker $/MWh and Meier 1988 cents/kWh retain distinct finance bases.
+{
+  "driver_cost_billions": 0.9845222400000001,
+  "gamma": 55.13324544000002,
+  "bank_j": 17857142.857142854,
+  "thermal_gw": 2.3011499999999994,
+  "net_gw": 0.8712317857142854,
+  "capital_billions": 3.397919111176602,
+  "meier_coe": 5.5899915615840845,
+  "generating": true,
+  "energy_on_target_J": 5000000.0,
+  "fusion_energy_per_shot_J": 435000000.0,
+  "net_electric_power_W": 871231785.7142854,
+  "net_electric_kw": 871231.7857142853,
+  "shots_per_year": 130648464.0,
+  "driver_lifetime_years": 45.92476494786804,
+  "annual_capital_cost": 545832162.2857141,
+  "annual_operating_cost": 1384552425.809735,
+  "annual_energy_MWh": 6868791.398571425,
+  "pvf_construction": 3.992710037078085,
+  "pvf_operation": 8.115691466072386,
+  "lcoe_per_MWh": 240.66646063955102,
+  "fusion_cycle_gain": 12.606300000000001,
+  "recirculating_fraction": 0.07932541665675098
+}
+Printed Osiris reference: 2504 MW thermal, 1000 MW net, 5.6 in 1992 cents/kWh.
