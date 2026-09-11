@@ -68,3 +68,7 @@ The owner closes after fresh review supports every Answered when condition, or r
 ## Amendments
 
 None.
+
+### Amendment 2026-09-11 — pending plant-closure preservation gate
+
+[OWNER-VERBATIM] "yes I approve" answers the explicit request to preserve the historical plant-closure pin and evidence and supersede its unfinished comparison so F04 repair can proceed. The proposed direction remains [AGENT] (ratified by owner, 2026-09-11). This resolves the pending-comparison reserved gate and the corresponding invariant's requirement for an owner ruling before shared MFE mutation. Historical evidence remains unchanged; the unfinished installed-heating comparison is superseded, not certified complete. A replacement comparison follows audited repair and native integration under a subsequent strategy. All other answer conditions, limits and reserved gates remain in force.

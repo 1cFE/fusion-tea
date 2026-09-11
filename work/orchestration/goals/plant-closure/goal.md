@@ -134,3 +134,7 @@ The owner closes — on the § Answered when condition, or by redirect at any ro
 ## Amendments
 
 `### Amendment YYYY-MM-DD — amends <heading>` — what changed and why. Rare.
+
+### Amendment 2026-09-11 — supersede the unfinished installed-heating comparison
+
+[OWNER-VERBATIM] "yes I approve" answers the explicit request in the fusion-audit-remediation conversation to preserve this goal's historical pin and evidence and supersede its unfinished comparison so F04 repair can proceed. The direction is [AGENT] (ratified by owner, 2026-09-11), documented in `work/analysis/20260911-190740_mfe-pending-comparison-preservation.md@0dce6053`. Round 1's pending study under the installed-heating basis will not be executed as the current comparison. Preserve its pin, completed native work and historical evidence; close the round by redirection with unmet study/re-grade objectives. This is not a successful goal close or acceptance of unresolved rubric cells. A replacement comparison requires its own strategy after audited operating-state repair and native integration; it cannot become a second pin in Round 1.

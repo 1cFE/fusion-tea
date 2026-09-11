@@ -664,3 +664,22 @@ The material to review: This trail's Round 3 strategy, T-015 and result; `work/a
 | No study reading exists in Round 3 | Record checkpoint inapplicability; assess the proposed disposition within the round review. | execution detail | Fresh reviewer [AGENT] | Applicability entry and this review |
 | Retained execution and current bindings support F04 | Retain the assessment and unresolved defect; accept no new learning or closure credit. | execution detail | Fresh reviewer [AGENT] | This review; native evidence and learnings unchanged |
 | Repair would change the pending comparison's explicit heating basis | Return OWNER_GATE and retain the concrete preservation recommendation for an owner ruling. | reserved gate | Recommendation [AGENT]; decision reserved by `goal.md` | This review; no shared mutation or next strategy |
+
+### Owner ruling — 2026-09-11
+
+[OWNER-VERBATIM] "yes I approve" answers the explicit question: "Do you approve preserving the historical plant-closure pin and evidence, and superseding its unfinished comparison so F04 repair can proceed?" The recommendation remains [AGENT] (ratified by owner, 2026-09-11). The pending-comparison reserved gate is now resolved. Record the ruling in both goals, preserve historical evidence, and supersede the unfinished comparison through an honest interruption result. The approval accepts neither F04 as a residual nor either goal as answered.
+
+| Finding or trigger | Decision and reason | Tier | Who decided | What changed |
+|---|---|---|---|---|
+| Round 3 review leaves only the pending-comparison preservation choice unresolved | Preserve the historical pin/evidence and supersede the unfinished comparison so F04 repair can proceed. | reserved gate | Owner approval quoted above; recommendation remains agent-originated | Dated amendments to both goals; plant-closure trail ruling and Round 1 interruption result |
+| Next strategy belongs to the fresh reviewer under the runbook | Return the resolved ruling to the reviewer for the next strategy; do not re-request approval or self-author the review continuation. | execution detail | Inherited GOAL_RUNBOOK § The fresh review | Handoff below; no Round 4 or shared mutation |
+
+### Stop — 2026-09-11
+
+Kind: handoff
+
+What is true on disk: The owner preservation gate is resolved. Both goals carry the approval; plant-closure's unfinished comparison is superseded with historical evidence retained and an honest Round 1 result awaiting review. Round 3's fresh review stands without corrective findings; its original OWNER_GATE verdict is preserved as history. F04 repair is authorized through native work after the next strategy is opened.
+
+What the owner must see: No further preservation approval is needed. Return this ruling to the fresh Round 3 reviewer to finish the review disposition and author Round 4. The round author's session cannot replace the reviewer for that step: GOAL_RUNBOOK § The fresh review assigns the next strategy to the same fresh agent. The plant-closure interruption result also awaits fresh review; neither goal is certified answered.
+
+The material to review: Round 3 review, the owner ruling above, amended `goal.md`, and `work/orchestration/goals/plant-closure/{goal.md,trail.md}` with the preserved assessment/native evidence. Resume at `work/orchestration/GOAL_RUNBOOK.md` § The fresh review. Preserve L-001–L-005, all prior evidence, and the owner's resolved ruling; do not repeat the permission question.
