@@ -1,0 +1,775 @@
+{
+  "snapshot_schema_version": "1",
+  "study_id": "20260911-ife-zero-discount",
+  "package": {
+    "path": "exploration/ife_e2e/generated",
+    "package_name": "ife_tea",
+    "repo_commit": "259143bae7655c1c4dd92306f36ef4357636d635",
+    "git_clean": true
+  },
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "8e859f0d05c4dcd8dee695779326caad6040172246f0b638a3e851ffa57e47d3",
+      "files": [
+        {
+          "path": "contracts/model_contract.json",
+          "sha256": "c296c5319b83313465f5e2b677ba1ea6904d6e0bd74a829b72452ef3f9596ead"
+        },
+        {
+          "path": "inputs/hif_driver_params.json",
+          "sha256": "b4d483781b037e744e8b9c7e931236b2f3b8638baa8ea57e228bbd6b1966615e"
+        },
+        {
+          "path": "inputs/hif_plant_params.json",
+          "sha256": "a3ec7359041c3d29bf13d38aae048c264cc200973eb84fcac221b3a79bd4fde7"
+        },
+        {
+          "path": "inputs/ife_plant_params.json",
+          "sha256": "7d69a36b788b84eada95c08b9bcb1533bcb5ff4fd33f5efa01ae8d6f3a142a4a"
+        },
+        {
+          "path": "pipelines/pipeline.yaml",
+          "sha256": "3843f570ced334ad98d5b40217cb04917a2c019015ed0ea4c89d52905f8d9696"
+        }
+      ]
+    },
+    "recorded_provenance.executable_fingerprint": "2810897c4ef9db8cb646aec5616884de42963c41e3b92ac20c2947450ffcbfd7",
+    "recorded_provenance.semantic_fingerprint": "8596c899df17f763bbce6eb50a18c1b5bca83080c40233e40bc01a7bb1aa1888"
+  },
+  "manifest": {
+    "path": "results/context/manifest.json",
+    "schema_version": "study-package-manifest/v1",
+    "digest": "de877abb23922b6ca7614dea3e8dc95bc56f9a00ecb71674a98f8cfe363562d7",
+    "content_used": {
+      "ties": [],
+      "objective_catalog": [
+        {
+          "name": "driver__meier_cost__bank_energy_joules",
+          "channel": "hif_plant_pkg__hif_plant__driver__meier_cost__bank_energy_joules"
+        },
+        {
+          "name": "driver__meier_cost__cost_billions",
+          "channel": "hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions"
+        },
+        {
+          "name": "driver__meier_cost__gamma",
+          "channel": "hif_plant_pkg__hif_plant__driver__meier_cost__gamma"
+        },
+        {
+          "name": "hawker_price__generating",
+          "channel": "hif_plant_pkg__hif_plant__hawker_price__generating"
+        },
+        {
+          "name": "hawker_price__price",
+          "channel": "hif_plant_pkg__hif_plant__hawker_price__price"
+        },
+        {
+          "name": "lcoe_calc__annual_driver_replacement_cost",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__annual_driver_replacement_cost"
+        },
+        {
+          "name": "lcoe_calc__discounted_cost",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__discounted_cost"
+        },
+        {
+          "name": "lcoe_calc__discounted_energy",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__discounted_energy"
+        },
+        {
+          "name": "lcoe_calc__driver_capital_cost",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__driver_capital_cost"
+        },
+        {
+          "name": "lcoe_calc__driver_electric_power",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__driver_electric_power"
+        },
+        {
+          "name": "lcoe_calc__driver_lifetime_years",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__driver_lifetime_years"
+        },
+        {
+          "name": "lcoe_calc__driver_recirculating_fraction",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__driver_recirculating_fraction"
+        },
+        {
+          "name": "lcoe_calc__energy_on_target",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__energy_on_target"
+        },
+        {
+          "name": "lcoe_calc__fusion_energy_per_shot",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__fusion_energy_per_shot"
+        },
+        {
+          "name": "lcoe_calc__fusion_power",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__fusion_power"
+        },
+        {
+          "name": "lcoe_calc__gross_electric_power",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__gross_electric_power"
+        },
+        {
+          "name": "lcoe_calc__net_electric_power",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power"
+        },
+        {
+          "name": "lcoe_calc__net_electric_power_gw",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power_gw"
+        },
+        {
+          "name": "lcoe_calc__other_parasitic_power",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__other_parasitic_power"
+        },
+        {
+          "name": "lcoe_calc__shots_per_year",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__shots_per_year"
+        },
+        {
+          "name": "lcoe_calc__thermal_power",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power"
+        },
+        {
+          "name": "lcoe_calc__thermal_power_gw",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power_gw"
+        },
+        {
+          "name": "lcoe_calc__total_recirculating_fraction",
+          "channel": "hif_plant_pkg__hif_plant__lcoe_calc__total_recirculating_fraction"
+        },
+        {
+          "name": "meier_capital_calc__total_capital_billions",
+          "channel": "hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions"
+        },
+        {
+          "name": "meier_coe_calc__annualized_cost",
+          "channel": "hif_plant_pkg__hif_plant__meier_coe_calc__annualized_cost"
+        },
+        {
+          "name": "meier_coe_calc__energy_denominator",
+          "channel": "hif_plant_pkg__hif_plant__meier_coe_calc__energy_denominator"
+        },
+        {
+          "name": "meier_price__generating",
+          "channel": "hif_plant_pkg__hif_plant__meier_price__generating"
+        },
+        {
+          "name": "meier_price__price",
+          "channel": "hif_plant_pkg__hif_plant__meier_price__price"
+        },
+        {
+          "name": "meier_reactor_cost_calc__reactor_cost_billions",
+          "channel": "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions"
+        },
+        {
+          "name": "pv_factors__construction_factor",
+          "channel": "hif_plant_pkg__hif_plant__pv_factors__construction_factor"
+        },
+        {
+          "name": "pv_factors__operation_factor",
+          "channel": "hif_plant_pkg__hif_plant__pv_factors__operation_factor"
+        },
+        {
+          "name": "recirc_calc__f_recirc",
+          "channel": "hif_plant_pkg__hif_plant__recirc_calc__f_recirc"
+        }
+      ],
+      "baseline": {
+        "point": {
+          "hif_plant_pkg__hif_plant__driver__efficiency": 0.28,
+          "hif_plant_pkg__hif_plant__driver__lifetime_shots": 6000000000.0,
+          "hif_plant_pkg__hif_plant__availability": 0.9,
+          "hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple": 1.15,
+          "hif_plant_pkg__hif_plant__chamber__yield_cost_constant": 5000000.0,
+          "hif_plant_pkg__hif_plant__discount_rate": 0.08,
+          "hif_plant_pkg__hif_plant__driver__beam_energy_mj": 5.0,
+          "hif_plant_pkg__hif_plant__driver__num_chambers": 1.0,
+          "hif_plant_pkg__hif_plant__frequency": 4.6,
+          "hif_plant_pkg__hif_plant__gain": 87.0,
+          "hif_plant_pkg__hif_plant__om_cost_constant": 65.0,
+          "hif_plant_pkg__hif_plant__plant_cost_constant": 2000.0,
+          "hif_plant_pkg__hif_plant__reactor_units": 1.0,
+          "hif_plant_pkg__hif_plant__target_factory__cost_per_target": 10.0,
+          "hif_plant_pkg__hif_plant__target_factory_direct_cost_billions": 0.1,
+          "hif_plant_pkg__hif_plant__thermal_efficiency": 0.45,
+          "hif_plant_pkg__hif_plant__construction_duration": 5.0,
+          "hif_plant_pkg__hif_plant__operational_duration": 40.0,
+          "hif_plant_pkg__hif_plant__viability__threshold": 10.0
+        },
+        "headline": {
+          "channel": "hif_plant_pkg__hif_plant__hawker_price__price",
+          "value": 240.66646063955096
+        },
+        "verdicts": [
+          {
+            "source_local_identity": "net_positive",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "viability",
+            "expected": "satisfied"
+          }
+        ]
+      },
+      "oracle": {
+        "kind": "python_callable",
+        "module": "exploration.ife_e2e.studies.oracle_entry",
+        "callable": "evaluate",
+        "sys_path": "."
+      },
+      "fingerprint_names": [
+        "indicator_inputs",
+        "recorded_provenance.executable_fingerprint",
+        "recorded_provenance.semantic_fingerprint"
+      ]
+    }
+  },
+  "stores": [
+    {
+      "store_id": "ife-main",
+      "path": "results/_work/20260911-ife-zero-discount.db",
+      "compatibility_tuple": {
+        "study_id": "20260911-ife-zero-discount",
+        "executable_fingerprint": "2810897c4ef9db8cb646aec5616884de42963c41e3b92ac20c2947450ffcbfd7",
+        "model_contract_fingerprint": "8596c899df17f763bbce6eb50a18c1b5bca83080c40233e40bc01a7bb1aa1888",
+        "study_definition_fingerprint": "6810f665ebbd218b00844b5022bf5c5f4428e0f2a6bfe4475242c559d359bc0c",
+        "input_schema_version": "input-v1",
+        "evidence_schema_version": "v3",
+        "strategy_identity": "prepared-list/v1",
+        "strategy_config": "4e1f5cd41f321648c2990605f59ddd5c72289840d1bdbc56ea2cdba97dfab208"
+      }
+    }
+  ],
+  "arms": [
+    {
+      "arm_id": "arm-ife",
+      "store_id": "ife-main",
+      "effective_executable_fingerprint": {
+        "value": "2810897c4ef9db8cb646aec5616884de42963c41e3b92ac20c2947450ffcbfd7",
+        "inputs": null,
+        "no_adapter": true,
+        "note": "The sealed fingerprint is the execution identity; no adapter."
+      },
+      "entry_models": {
+        "hif_driver_params": "ife_tea.schemas.hif_driver_params.HifDriverParams",
+        "hif_plant_params": "ife_tea.schemas.hif_plant_params.HifPlantParams",
+        "ife_plant_params": "ife_tea.schemas.ife_plant_params.IfePlantParams"
+      },
+      "strategy": "prepared-list/v1",
+      "window": {
+        "provenance": "engineered",
+        "bounds": {
+          "discount_rate": {
+            "values": [
+              -0.0001,
+              -1e-08,
+              -1e-12,
+              -1e-14,
+              -1e-16,
+              -1e-18,
+              0.0,
+              1e-18,
+              1e-16,
+              1e-14,
+              1e-12,
+              1e-08,
+              0.0001,
+              0.08
+            ],
+            "near_zero_min": -0.0001,
+            "near_zero_max": 0.0001,
+            "separate_baseline_anchor": 0.08
+          }
+        },
+        "scheme": "14 ordinary rates including anchor plus six fixed diagnostic cases",
+        "diagnostics": {
+          "roles": [
+            "counterexample",
+            "zero"
+          ],
+          "rates": [
+            -1e-09,
+            0,
+            1e-09
+          ]
+        },
+        "scan_assessment": "All 14 oracle points finite and generating; retain reviewed numerical regression grid. No engineering edge or intervening response-shape claim."
+      },
+      "verification": {
+        "command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" python exploration/ife_e2e/studies/20260911-ife-zero-discount/execute.py execute'",
+        "tool_revision": {
+          "recipe": "tool-source-digest/v1",
+          "digest": "a7e8ee5802b778bc11507571a03856203af9d90a64a9da5fa1db1646cf1fff2d",
+          "files": [
+            {
+              "path": "scripts/study/common.py",
+              "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+            },
+            {
+              "path": "scripts/study/identity.py",
+              "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+            },
+            {
+              "path": "scripts/study/manifest.py",
+              "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+            },
+            {
+              "path": "scripts/study/schemas/package_identity.v1.schema.json",
+              "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+            },
+            {
+              "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+              "sha256": "579054e23911be543927d9e9daa72ece44a68f76be9ab9ba53fce0244ef540e1"
+            },
+            {
+              "path": "scripts/study/verify.py",
+              "sha256": "4cf1fb8faf9459a0522dea39116a772b4b5067288552ea4fdcf4741908bca77e"
+            }
+          ]
+        },
+        "sampling_scheme": {
+          "scheme": "stratified-by-verdict-combination/v1",
+          "seed": "df23a0846ed396a2",
+          "seed_source": "derived",
+          "sample_size_requested": 100,
+          "strata_observed": 2,
+          "sampled_rows": 20,
+          "sampled_case_ids": [
+            "20260911-ife-zero-discount:c0002",
+            "20260911-ife-zero-discount:c0017",
+            "20260911-ife-zero-discount:c0006",
+            "20260911-ife-zero-discount:c0009",
+            "20260911-ife-zero-discount:c0012",
+            "20260911-ife-zero-discount:c0019",
+            "20260911-ife-zero-discount:c0001",
+            "20260911-ife-zero-discount:c0004",
+            "20260911-ife-zero-discount:c0011",
+            "20260911-ife-zero-discount:c0015",
+            "20260911-ife-zero-discount:c0007",
+            "20260911-ife-zero-discount:c0003",
+            "20260911-ife-zero-discount:c0008",
+            "20260911-ife-zero-discount:c0016",
+            "20260911-ife-zero-discount:c0010",
+            "20260911-ife-zero-discount:c0014",
+            "20260911-ife-zero-discount:c0000",
+            "20260911-ife-zero-discount:c0005",
+            "20260911-ife-zero-discount:c0018",
+            "20260911-ife-zero-discount:c0013"
+          ]
+        },
+        "tolerance": 1e-09,
+        "summary_sha256": "7ba029b73d014afb20dd75c986193e451eb925b2e93693448d4709482352fee8"
+      },
+      "glue_ledger": [],
+      "glue_ledger_none": true,
+      "artifacts": [
+        {
+          "path": "results/1costingfe-driver-identities.json",
+          "sha256": "e2352e25322ff281ef4f7f506c0314ea77e9854afcbb9c09682ede6063ae8b29"
+        },
+        {
+          "path": "results/_work/20260911-ife-zero-discount.db",
+          "sha256": "457a43eece8b0971591b13b3a33b33a566c0413087046c382b59bad3bff4229d"
+        },
+        {
+          "path": "results/_work/20260911-ife-zero-discount.db-shm",
+          "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+        },
+        {
+          "path": "results/_work/20260911-ife-zero-discount.db-wal",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "results/_work/artifacts/0e4317e52685f3da383a7bcc4f9b71d4ca645fb96eebd0bcc5ce3de610775215.json",
+          "sha256": "0e4317e52685f3da383a7bcc4f9b71d4ca645fb96eebd0bcc5ce3de610775215"
+        },
+        {
+          "path": "results/_work/artifacts/10249eec6b9c90615cac71575b7eee5bf97f0ca13454dc84ea5a80cebcd2199e.json",
+          "sha256": "10249eec6b9c90615cac71575b7eee5bf97f0ca13454dc84ea5a80cebcd2199e"
+        },
+        {
+          "path": "results/_work/artifacts/1d9d82c653b7639bb153077a77ba5a0392d443b0c5cc074df207400dfea4b68d.json",
+          "sha256": "1d9d82c653b7639bb153077a77ba5a0392d443b0c5cc074df207400dfea4b68d"
+        },
+        {
+          "path": "results/_work/artifacts/20bd26c21cab57d147c13768616fcfd9886d1466ab1a818a1e97c69ad4ece5e2.json",
+          "sha256": "20bd26c21cab57d147c13768616fcfd9886d1466ab1a818a1e97c69ad4ece5e2"
+        },
+        {
+          "path": "results/_work/artifacts/23bbf481a5a1d1b0529403ce3d27ec7fbb4e02fba8dc7837217dc7bd2b467f44.json",
+          "sha256": "23bbf481a5a1d1b0529403ce3d27ec7fbb4e02fba8dc7837217dc7bd2b467f44"
+        },
+        {
+          "path": "results/_work/artifacts/2460a2c1c16eb7f011b5bafd3fdf83ff8a1698bb6df35a97535229acb1564e7b.json",
+          "sha256": "2460a2c1c16eb7f011b5bafd3fdf83ff8a1698bb6df35a97535229acb1564e7b"
+        },
+        {
+          "path": "results/_work/artifacts/27f0c023bfbfd99a51d48d5d58e9b5abc4a716cebfc0cd8f20efc3f4f6bfa75d.json",
+          "sha256": "27f0c023bfbfd99a51d48d5d58e9b5abc4a716cebfc0cd8f20efc3f4f6bfa75d"
+        },
+        {
+          "path": "results/_work/artifacts/5eb406b22f0b9953e822d549ff0672bb6d5c0d66258a58bbeaad63a3b94baecc.json",
+          "sha256": "5eb406b22f0b9953e822d549ff0672bb6d5c0d66258a58bbeaad63a3b94baecc"
+        },
+        {
+          "path": "results/_work/artifacts/671eb73ffef2cbfa4fd9a11c2e99cf1fca71212950d748c48886ea3d4bd95582.json",
+          "sha256": "671eb73ffef2cbfa4fd9a11c2e99cf1fca71212950d748c48886ea3d4bd95582"
+        },
+        {
+          "path": "results/_work/artifacts/7ad92f7b9257cdec59f14b4b55ff811e437cfdb4ef8b72fbe6baa5c010c776cc.json",
+          "sha256": "7ad92f7b9257cdec59f14b4b55ff811e437cfdb4ef8b72fbe6baa5c010c776cc"
+        },
+        {
+          "path": "results/_work/artifacts/7b640ec0bf8b75edc393bd2db18df0d6c89cd76ccaceda80b28896be5d59d162.json",
+          "sha256": "7b640ec0bf8b75edc393bd2db18df0d6c89cd76ccaceda80b28896be5d59d162"
+        },
+        {
+          "path": "results/_work/artifacts/8b65cbbb3aeeb2f47f7bcda16bb8942106bb3b4f0575469205bcd37c8b122c5c.json",
+          "sha256": "8b65cbbb3aeeb2f47f7bcda16bb8942106bb3b4f0575469205bcd37c8b122c5c"
+        },
+        {
+          "path": "results/_work/artifacts/8e851990085a8910792ee4aa718f99607a01564ef27f26d0caf3e573253f812a.json",
+          "sha256": "8e851990085a8910792ee4aa718f99607a01564ef27f26d0caf3e573253f812a"
+        },
+        {
+          "path": "results/_work/artifacts/9cd2c738bbf9ebe4225f8d93185d316ead3624173acb2429d68f6bff1796bab0.json",
+          "sha256": "9cd2c738bbf9ebe4225f8d93185d316ead3624173acb2429d68f6bff1796bab0"
+        },
+        {
+          "path": "results/_work/artifacts/a18a8b681d5b9fd0a371cfdbed893c9b9e4c195616292e935fab1b2a69a14a56.json",
+          "sha256": "a18a8b681d5b9fd0a371cfdbed893c9b9e4c195616292e935fab1b2a69a14a56"
+        },
+        {
+          "path": "results/_work/artifacts/ad12dad009811061d5270c630414ae7a73f5ec6791bda9fed2efad9593754cda.json",
+          "sha256": "ad12dad009811061d5270c630414ae7a73f5ec6791bda9fed2efad9593754cda"
+        },
+        {
+          "path": "results/_work/artifacts/b3805fe56d77a6f57cf5375676adaa2921e402d23e8a3123a53e43b885f80991.json",
+          "sha256": "b3805fe56d77a6f57cf5375676adaa2921e402d23e8a3123a53e43b885f80991"
+        },
+        {
+          "path": "results/_work/artifacts/b47f37d191f27fa300f8c1f23cf563756e6ff88815bd0896c5fc4bdc5cc762e6.json",
+          "sha256": "b47f37d191f27fa300f8c1f23cf563756e6ff88815bd0896c5fc4bdc5cc762e6"
+        },
+        {
+          "path": "results/_work/artifacts/c53ec9bfd6eeaeaed37690d8baf30a4e1b7574a49d7c27d70803aaa910c1f67f.json",
+          "sha256": "c53ec9bfd6eeaeaed37690d8baf30a4e1b7574a49d7c27d70803aaa910c1f67f"
+        },
+        {
+          "path": "results/_work/artifacts/ffb75cc779b5de28e68b5fe79e2c64be463313df637089b51fddcc653f1454c9.json",
+          "sha256": "ffb75cc779b5de28e68b5fe79e2c64be463313df637089b51fddcc653f1454c9"
+        },
+        {
+          "path": "results/analysis.json",
+          "sha256": "7b066492d985fb36674717b9de2e0c90701275ddf1bf0618d8e4c7b8ac027be9"
+        },
+        {
+          "path": "results/baseline/_work/artifacts/0e4317e52685f3da383a7bcc4f9b71d4ca645fb96eebd0bcc5ce3de610775215.json",
+          "sha256": "0e4317e52685f3da383a7bcc4f9b71d4ca645fb96eebd0bcc5ce3de610775215"
+        },
+        {
+          "path": "results/baseline/_work/ife-baseline-point-v1.db",
+          "sha256": "5302ca8149e0e8bbde801823807579f4f0bea7f0a8cbd63b1dce9b90235a325e"
+        },
+        {
+          "path": "results/baseline/baseline_result.json",
+          "sha256": "58f177b058538a2c0a9793bb7c60ed6bcdb69fe206c961c2d31cd4620491cf30"
+        },
+        {
+          "path": "results/baseline/package_identity.json",
+          "sha256": "8fd95872f26f530bd56512013b3bc8cdcb88a71990a6e5da7ef1115f7c39eea9"
+        },
+        {
+          "path": "results/cases.json",
+          "sha256": "247668e7d32487f828ab4bfcc4e45350f8920087186ec83663087d92111413dd"
+        },
+        {
+          "path": "results/context/1costingfe/cas22.py",
+          "sha256": "66e8102965cab6cc6673eb6f4fed9fee817c962884b243faf5e6ad026cb89f10"
+        },
+        {
+          "path": "results/context/1costingfe/defaults.py",
+          "sha256": "4f492fe4c55d607ca6b3957f0348baf081db930b13e8b5b837d11cbfc5143996"
+        },
+        {
+          "path": "results/context/1costingfe/physics.py",
+          "sha256": "40cc5a3bcba1e2f6ab1e5581f574704370b3841237087e497e146ec7f46af4c4"
+        },
+        {
+          "path": "results/context/1costingfe/pulsed_heavy_ion.yaml",
+          "sha256": "b60a70a767cd22977e8d88bd791c212523fdebda6a4467ba004591f0a445ed4e"
+        },
+        {
+          "path": "results/context/1costingfe/types.py",
+          "sha256": "7af80374f0862b3a33b46cd2cf1962aa8b43ec53b13f61e60acaf89a0a8c7f5c"
+        },
+        {
+          "path": "results/context/ANNEX.md",
+          "sha256": "97b6229c7cf0130b11079e6bdfe9c4e27a35f3bc03e9d6344489abaaa2ee4ec8"
+        },
+        {
+          "path": "results/context/STUDY_POLICY.md",
+          "sha256": "5f166202b553867af16ff2c349ad5e39988dd73e9a07407ece576314e01ad8ef"
+        },
+        {
+          "path": "results/context/WI048-audit.md",
+          "sha256": "f89cba925dfe7406afd9ea04f53299be61fd57383362b6693965ed81d2ff2b82"
+        },
+        {
+          "path": "results/context/WI049-audit.md",
+          "sha256": "6a9400c0d61a7d5cec5c88a34e3258fc264c08d7786e8c62075355f454284623"
+        },
+        {
+          "path": "results/context/WI049-reaudit.md",
+          "sha256": "4fd1a51f3da2480462845fef0cc76d19f908775b6121ff4900d5cb50a6968115"
+        },
+        {
+          "path": "results/context/assessment.md",
+          "sha256": "053ecfa89c458842316a1992a9913f09c0dc08cc8168ffce5df50899e0d42f36"
+        },
+        {
+          "path": "results/context/eligibility.py",
+          "sha256": "fc89a5bcb7266c528e6dcaab00412e6bcb688efdb0ec6c70ab35415e5e4ad5ff"
+        },
+        {
+          "path": "results/context/generating_electricity_price_impl.py",
+          "sha256": "67bc0ed6241856920c8380b4ddcc0293d41f6d6fa131abc6c97b6cc74d1d9377"
+        },
+        {
+          "path": "results/context/goal.md",
+          "sha256": "90f94e7fd0fb199553e5d3f9d72e022102be1c45416e36bda933c7f4151eccf3"
+        },
+        {
+          "path": "results/context/ife_lcoe.sysml",
+          "sha256": "8ff3825be778e5e80a30719db88f19f02542b67b76c984dfec9f97cd181f42a3"
+        },
+        {
+          "path": "results/context/ife_lcoe_impl.py",
+          "sha256": "4ef9931dfda6fdcdc96cf669df4125283b8645743e03405fca6b6df3c55eb5ca"
+        },
+        {
+          "path": "results/context/ife_oracle.py",
+          "sha256": "877dc5e22dd1ba0b2b46746a627314fc3772ce9d2c37bd7b6000b738ad90cf0b"
+        },
+        {
+          "path": "results/context/ife_plant.sysml",
+          "sha256": "be9e8984d9adcbec29f578c8b5082e5bc3b76ea0192c6ad59cd25f12567a9480"
+        },
+        {
+          "path": "results/context/ife_present_value_factors_impl.py",
+          "sha256": "0ac4fa7c3a7fd4723bd68c41b7c405f2fabbc70b85986370c6b33c9b9bdbeabc"
+        },
+        {
+          "path": "results/context/integration_return.json",
+          "sha256": "f5152ef1a0b832adbf384b696fddd2f27f17373370552af6ed141964ec525072"
+        },
+        {
+          "path": "results/context/manifest.json",
+          "sha256": "de877abb23922b6ca7614dea3e8dc95bc56f9a00ecb71674a98f8cfe363562d7"
+        },
+        {
+          "path": "results/context/model_contract.json",
+          "sha256": "c296c5319b83313465f5e2b677ba1ea6904d6e0bd74a829b72452ef3f9596ead"
+        },
+        {
+          "path": "results/context/oracle_entry.py",
+          "sha256": "f6e346a83598302af2afc126ccb5ea50aaf3a341a08cd29adfee3fb222d297e0"
+        },
+        {
+          "path": "results/context/package-audit.md",
+          "sha256": "1f4c4fe4ff4232f1467d7b4bc5872a12a5fde3ab74598f30441b2a86dabe8d4c"
+        },
+        {
+          "path": "results/context/pipeline.yaml",
+          "sha256": "3843f570ced334ad98d5b40217cb04917a2c019015ed0ea4c89d52905f8d9696"
+        },
+        {
+          "path": "results/context/provenance.json",
+          "sha256": "484e6946e211c2c9ba20ac0f1bcc573d82f3a2847c640ec02d682d24c08988e0"
+        },
+        {
+          "path": "results/context/study_route.py",
+          "sha256": "14083884cb4eb0eb4b7f3e1383a9d2cb533dd63f869e2fa03e2e2e92e8b58e19"
+        },
+        {
+          "path": "results/decimal-verification.json",
+          "sha256": "45bd66ff808e1d1042da5ba4e25e2f2a202b06e9ca7e83f8bed47e6e1f2799ef"
+        },
+        {
+          "path": "results/entry-models.json",
+          "sha256": "c971916fa66086a8f78218d43fe5b9413f77cca40710a6e30009484f5f763666"
+        },
+        {
+          "path": "results/oracle-scan.json",
+          "sha256": "91b4d435fcdac9d99a383e4cd0f9a58231eeb809eec261f6f0baf2523c1abefe"
+        },
+        {
+          "path": "results/points.csv",
+          "sha256": "25f0656005a1e98d5fd8fa8a6771400758976d5ab6b1b7ef143e502ee0b863d6"
+        },
+        {
+          "path": "results/post-run-clean.json",
+          "sha256": "edc6d63b212ea282d5f3f684a9ae603ee6977e27e56d115268da232e9a9a2157"
+        },
+        {
+          "path": "results/preflight.json",
+          "sha256": "2eeebc8328e0b00c967d50daf8c9a07b8d4c72031af1a6dd715660067c1002fb"
+        },
+        {
+          "path": "results/proposals.json",
+          "sha256": "608410ecef360a6a191681c870702b42911464d276eea9191910395841abfdcd"
+        },
+        {
+          "path": "results/reference-applicability.md",
+          "sha256": "d53417575db23bc731a20e3cce8dc97d1a59f7365631a53a663189685c7b460a"
+        },
+        {
+          "path": "results/verification_summary.json",
+          "sha256": "7ba029b73d014afb20dd75c986193e451eb925b2e93693448d4709482352fee8"
+        },
+        {
+          "path": "results/window.json",
+          "sha256": "ed6b386965e962437f175a3855f4add7e7c355320e8daa923e93e462e06b2a7d"
+        }
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "path": "scripts/study/indicators.py",
+      "source_digest": {
+        "recipe": "tool-source-digest/v1",
+        "digest": "55509c0ee55e03411acb8d0007554396ace3cfe9e66b27f94c121023c9aa25b9",
+        "files": [
+          {
+            "path": "scripts/study/indicators.py",
+            "sha256": "a1035fa2fdc505d7478039bc05e0e1eb2dab156f08d8ad7cac26d21d4ac4e8a0"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+          },
+          {
+            "path": "scripts/study/schemas/axis_declaration.v1.schema.json",
+            "sha256": "cffa3d8adc0eae833245091b529ecfb5ad784ad6fea2c3714c460c6d3061eb2b"
+          },
+          {
+            "path": "scripts/study/schemas/indicators.v1.schema.json",
+            "sha256": "96390664ce8eb5938bfe19eb435603e107892bd5082edf8a03514d588a081996"
+          },
+          {
+            "path": "scripts/study/schemas/study_package_manifest.v1.schema.json",
+            "sha256": "5fd44712cd032647df701a24f237f2dda7ccd75c2f101a5c6244c9b6bca47032"
+          }
+        ]
+      }
+    },
+    {
+      "path": "scripts/study/preflight.py",
+      "source_digest": {
+        "recipe": "tool-source-digest/v1",
+        "digest": "fee08e143c556b0ea0bd7d32035257283220f8f671b3b2f2aa52ecf8a3c92681",
+        "files": [
+          {
+            "path": "scripts/study/common.py",
+            "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+          },
+          {
+            "path": "scripts/study/identity.py",
+            "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+          },
+          {
+            "path": "scripts/study/preflight.py",
+            "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+          },
+          {
+            "path": "scripts/study/schemas/baseline_result.v1.schema.json",
+            "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+          },
+          {
+            "path": "scripts/study/schemas/package_identity.v1.schema.json",
+            "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+          },
+          {
+            "path": "scripts/study/schemas/preflight_results.v1.schema.json",
+            "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+          }
+        ]
+      }
+    },
+    {
+      "path": "scripts/study/verify.py",
+      "source_digest": {
+        "recipe": "tool-source-digest/v1",
+        "digest": "a7e8ee5802b778bc11507571a03856203af9d90a64a9da5fa1db1646cf1fff2d",
+        "files": [
+          {
+            "path": "scripts/study/common.py",
+            "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+          },
+          {
+            "path": "scripts/study/identity.py",
+            "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+          },
+          {
+            "path": "scripts/study/schemas/package_identity.v1.schema.json",
+            "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+          },
+          {
+            "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+            "sha256": "579054e23911be543927d9e9daa72ece44a68f76be9ab9ba53fce0244ef540e1"
+          },
+          {
+            "path": "scripts/study/verify.py",
+            "sha256": "4cf1fb8faf9459a0522dea39116a772b4b5067288552ea4fdcf4741908bca77e"
+          }
+        ]
+      }
+    }
+  ],
+  "indicators": {
+    "path": "indicators.json",
+    "sha256": "93a23ae50f5a2c729a6404144ba625522f042d8ac799566368cd604a26b5e0df",
+    "output_schema_version": "study-indicators/v1",
+    "axis_declaration": {
+      "path": "exploration/ife_e2e/studies/20260911-ife-zero-discount/axes.json",
+      "schema_version": "study-axis-declaration/v1",
+      "digest": "1700702ed73aeb1edab942bce831441f5ff3837c0b57980dc634a575a68be50b",
+      "groups_declared": [
+        "discount_rate"
+      ],
+      "subset": false
+    }
+  },
+  "protocol": {
+    "path": "protocol.md",
+    "sha256": "759d8d1cc857f031893db9d75d5612f1f7081c7084febbe82271847ce29f4c53",
+    "pre_execution_review": {
+      "path": "pre-execution-review.md",
+      "sha256": "49f5646c136f9cfe0a876ed9c5cfb3c183a8a439e5b29f2e4034a8246eb11876"
+    }
+  },
+  "execution": {
+    "path": "execute.py",
+    "sha256": "7f318f17314449aac1d67b4a33a278c6908a52c9c168ead56ce7056b77dbb733"
+  },
+  "reference_check": {
+    "path": "reference_check.py",
+    "sha256": "f9f1b0e4f3f60031e83d7029bf60e12ee41952de4af14249333bc67e523864be"
+  },
+  "teax": {
+    "revision": "8d877460ac4f6f264561d916e40c1708adb13397",
+    "era_pin": null
+  },
+  "post_execution_review": {
+    "path": "post-execution-review.md",
+    "sha256": "7cb9e46801341fd8764d03c416b63964d9ec2e43ca726a335e0c5b54e97fd039"
+  }
+}

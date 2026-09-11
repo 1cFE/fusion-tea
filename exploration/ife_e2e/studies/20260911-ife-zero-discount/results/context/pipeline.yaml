@@ -1,0 +1,215 @@
+# Generated Pipeline Configuration for ife_tea
+#
+# Auto-generated from SysML calc def dependency analysis
+# DO NOT EDIT - Regenerate using code generator
+
+metadata:
+  run_description: "Generated pipeline for ife_tea"
+  output_folder: "ife_tea_results"
+
+modules:
+  # Entry point - load inputs from JSON
+  entry_fusion:
+    module_type: EntryPoint
+    inputs:
+      hif_driver_params: HifDriverParams ../inputs/hif_driver_params.json
+      hif_plant_params: HifPlantParams ../inputs/hif_plant_params.json
+      ife_plant_params: IfePlantParams ../inputs/ife_plant_params.json
+
+
+  # hif_economics.Meier_HIF_Driver_CostModule
+  hif_plant_pkg__hif_plant__driver__meier_cost:
+    module_type: hif_economics.Meier_HIF_Driver_CostModule
+    inputs:
+      beam_energy_mj_in: float hif_plant_params.hif_plant_pkg__hif_plant__driver__beam_energy_mj
+      num_chambers_in: float hif_plant_params.hif_plant_pkg__hif_plant__driver__num_chambers
+      rep_rate: float hif_plant_params.hif_plant_pkg__hif_plant__frequency
+      driver_efficiency: float hif_driver_params.hif_plant_pkg__hif_plant__driver__efficiency
+    outputs:
+      gamma: float hif_plant_pkg__hif_plant__driver__meier_cost__gamma
+      bank_energy_joules: float hif_plant_pkg__hif_plant__driver__meier_cost__bank_energy_joules
+      cost_billions: float hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions
+
+  # ife_lcoe.IFE_Present_Value_FactorsModule
+  hif_plant_pkg__hif_plant__pv_factors:
+    module_type: ife_lcoe.IFE_Present_Value_FactorsModule
+    inputs:
+      construction_years_in: float ife_plant_params.hif_plant_pkg__hif_plant__construction_duration
+      discount_rate_in: float hif_plant_params.hif_plant_pkg__hif_plant__discount_rate
+      operational_years_in: float ife_plant_params.hif_plant_pkg__hif_plant__operational_duration
+    outputs:
+      operation_factor: float hif_plant_pkg__hif_plant__pv_factors__operation_factor
+      construction_factor: float hif_plant_pkg__hif_plant__pv_factors__construction_factor
+
+  # fusion_cycle.Recirculating_Power_FractionModule
+  hif_plant_pkg__hif_plant__recirc_calc:
+    module_type: fusion_cycle.Recirculating_Power_FractionModule
+    inputs:
+      gain_in: float hif_plant_params.hif_plant_pkg__hif_plant__gain
+      thermal_efficiency_in: float hif_plant_params.hif_plant_pkg__hif_plant__thermal_efficiency
+      eta: float hif_driver_params.hif_plant_pkg__hif_plant__driver__efficiency
+      blanket_multiplier: float hif_plant_params.hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple
+    outputs:
+      root: RootModel[float] hif_plant_pkg__hif_plant__recirc_calc__f_recirc
+
+  # ife_lcoe.IFE_LCOEModule
+  hif_plant_pkg__hif_plant__lcoe_calc:
+    module_type: ife_lcoe.IFE_LCOEModule
+    inputs:
+      pvf_construction: float hif_plant_pkg__hif_plant__pv_factors__construction_factor
+      thermal_efficiency_in: float hif_plant_params.hif_plant_pkg__hif_plant__thermal_efficiency
+      discount_rate_in: float hif_plant_params.hif_plant_pkg__hif_plant__discount_rate
+      driver_lifetime_shots: float hif_driver_params.hif_plant_pkg__hif_plant__driver__lifetime_shots
+      construction_years: float ife_plant_params.hif_plant_pkg__hif_plant__construction_duration
+      availability_in: float hif_plant_params.hif_plant_pkg__hif_plant__availability
+      driver_cost_constant: float hif_plant_pkg__hif_plant__driver__meier_cost__gamma
+      om_cost_constant_in: float hif_plant_params.hif_plant_pkg__hif_plant__om_cost_constant
+      driver_efficiency: float hif_driver_params.hif_plant_pkg__hif_plant__driver__efficiency
+      plant_cost_constant_in: float hif_plant_params.hif_plant_pkg__hif_plant__plant_cost_constant
+      operational_years: float ife_plant_params.hif_plant_pkg__hif_plant__operational_duration
+      yield_cost_constant: float hif_plant_params.hif_plant_pkg__hif_plant__chamber__yield_cost_constant
+      blanket_energy_multiple: float hif_plant_params.hif_plant_pkg__hif_plant__chamber__blanket_energy_multiple
+      target_cost_constant: float hif_plant_params.hif_plant_pkg__hif_plant__target_factory__cost_per_target
+      pvf_operation: float hif_plant_pkg__hif_plant__pv_factors__operation_factor
+      gain_in: float hif_plant_params.hif_plant_pkg__hif_plant__gain
+      driver_energy: float hif_plant_pkg__hif_plant__driver__meier_cost__bank_energy_joules
+      frequency_in: float hif_plant_params.hif_plant_pkg__hif_plant__frequency
+    outputs:
+      thermal_power: float hif_plant_pkg__hif_plant__lcoe_calc__thermal_power
+      fusion_energy_per_shot: float hif_plant_pkg__hif_plant__lcoe_calc__fusion_energy_per_shot
+      discounted_energy: float hif_plant_pkg__hif_plant__lcoe_calc__discounted_energy
+      net_electric_power_gw: float hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power_gw
+      fusion_power: float hif_plant_pkg__hif_plant__lcoe_calc__fusion_power
+      shots_per_year: float hif_plant_pkg__hif_plant__lcoe_calc__shots_per_year
+      driver_recirculating_fraction: float hif_plant_pkg__hif_plant__lcoe_calc__driver_recirculating_fraction
+      other_parasitic_power: float hif_plant_pkg__hif_plant__lcoe_calc__other_parasitic_power
+      net_electric_power: float hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power
+      discounted_cost: float hif_plant_pkg__hif_plant__lcoe_calc__discounted_cost
+      driver_electric_power: float hif_plant_pkg__hif_plant__lcoe_calc__driver_electric_power
+      annual_driver_replacement_cost: float hif_plant_pkg__hif_plant__lcoe_calc__annual_driver_replacement_cost
+      driver_capital_cost: float hif_plant_pkg__hif_plant__lcoe_calc__driver_capital_cost
+      thermal_power_gw: float hif_plant_pkg__hif_plant__lcoe_calc__thermal_power_gw
+      gross_electric_power: float hif_plant_pkg__hif_plant__lcoe_calc__gross_electric_power
+      total_recirculating_fraction: float hif_plant_pkg__hif_plant__lcoe_calc__total_recirculating_fraction
+      energy_on_target: float hif_plant_pkg__hif_plant__lcoe_calc__energy_on_target
+      driver_lifetime_years: float hif_plant_pkg__hif_plant__lcoe_calc__driver_lifetime_years
+
+  # hif_economics.Meier_Reactor_CostModule
+  hif_plant_pkg__hif_plant__meier_reactor_cost_calc:
+    module_type: hif_economics.Meier_Reactor_CostModule
+    inputs:
+      thermal_power_gw_in: float hif_plant_pkg__hif_plant__lcoe_calc__thermal_power_gw
+      num_units: float hif_plant_params.hif_plant_pkg__hif_plant__reactor_units
+    outputs:
+      root: RootModel[float] hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions
+
+  # ife_lcoe.Generating_Electricity_PriceModule
+  hif_plant_pkg__hif_plant__hawker_price:
+    module_type: ife_lcoe.Generating_Electricity_PriceModule
+    inputs:
+      numerator: float hif_plant_pkg__hif_plant__lcoe_calc__discounted_cost
+      net_power: float hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power
+      denominator: float hif_plant_pkg__hif_plant__lcoe_calc__discounted_energy
+    outputs:
+      price: float hif_plant_pkg__hif_plant__hawker_price__price
+      generating: float hif_plant_pkg__hif_plant__hawker_price__generating
+
+  # hif_economics.Meier_Total_Capital_CostModule
+  hif_plant_pkg__hif_plant__meier_capital_calc:
+    module_type: hif_economics.Meier_Total_Capital_CostModule
+    inputs:
+      reactor_cost: float hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions.root
+      target_factory_cost: float hif_plant_params.hif_plant_pkg__hif_plant__target_factory_direct_cost_billions
+      driver_cost: float hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions
+    outputs:
+      root: RootModel[float] hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions
+
+  # hif_economics.Meier_COEModule
+  hif_plant_pkg__hif_plant__meier_coe_calc:
+    module_type: hif_economics.Meier_COEModule
+    inputs:
+      net_electric_power_gw_in: float hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power_gw
+      total_capital_billions: float hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions.root
+      availability_in: float hif_plant_params.hif_plant_pkg__hif_plant__availability
+    outputs:
+      energy_denominator: float hif_plant_pkg__hif_plant__meier_coe_calc__energy_denominator
+      annualized_cost: float hif_plant_pkg__hif_plant__meier_coe_calc__annualized_cost
+
+  # ife_lcoe.Generating_Electricity_PriceModule
+  hif_plant_pkg__hif_plant__meier_price:
+    module_type: ife_lcoe.Generating_Electricity_PriceModule
+    inputs:
+      net_power: float hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power
+      numerator: float hif_plant_pkg__hif_plant__meier_coe_calc__annualized_cost
+      denominator: float hif_plant_pkg__hif_plant__meier_coe_calc__energy_denominator
+    outputs:
+      price: float hif_plant_pkg__hif_plant__meier_price__price
+      generating: float hif_plant_pkg__hif_plant__meier_price__generating
+
+  # hif_plant_pkg.HifPlantNetPositiveConstraintModule
+  hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c:
+    module_type: hif_plant_pkg.HifPlantNetPositiveConstraintModule
+    inputs:
+      net_power: float hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power
+    outputs:
+      evaluation: ConstraintEvaluation hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c__evaluation
+
+  # hif_plant_pkg.HifPlantViabilityConstraintModule
+  hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b:
+    module_type: hif_plant_pkg.HifPlantViabilityConstraintModule
+    inputs:
+      threshold: float ife_plant_params.hif_plant_pkg__hif_plant__viability__threshold
+      eta: float hif_driver_params.hif_plant_pkg__hif_plant__driver__efficiency
+      gain_in: float hif_plant_params.hif_plant_pkg__hif_plant__gain
+    outputs:
+      evaluation: ConstraintEvaluation hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation
+
+  # constraints.ConstraintReportAggregatorModule
+  constraint_report_aggregator:
+    module_type: constraints.ConstraintReportAggregatorModule
+    inputs:
+      hif_plant_pkg_hif_plant_net_positive_1d299cceab19c61c: ConstraintEvaluation hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c__evaluation
+      hif_plant_pkg_hif_plant_viability_81ddf10fb1d1749b: ConstraintEvaluation hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation
+    outputs:
+      constraint_report: ConstraintReport constraint_report
+
+
+  # Exit point - capture all results
+  exit_point:
+    module_type: ExitPoint
+    outputs:
+      hif_plant_pkg__hif_plant__driver__meier_cost__gamma: float hif_plant__driver__cost_per_joule.json
+      hif_plant_pkg__hif_plant__driver__meier_cost__bank_energy_joules: float hif_plant__driver__energy.json
+      hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions: float hif_plant__driver__driver_cost_billions.json
+      hif_plant_pkg__hif_plant__pv_factors__operation_factor: float hif_plant_pkg__hif_plant__pv_factors__operation_factor.json
+      hif_plant_pkg__hif_plant__pv_factors__construction_factor: float hif_plant_pkg__hif_plant__pv_factors__construction_factor.json
+      hif_plant_pkg__hif_plant__recirc_calc__f_recirc: RootModel[float] hif_plant__recirculating_fraction.json
+      hif_plant_pkg__hif_plant__lcoe_calc__thermal_power: float hif_plant__thermal_power.json
+      hif_plant_pkg__hif_plant__lcoe_calc__fusion_energy_per_shot: float hif_plant_pkg__hif_plant__lcoe_calc__fusion_energy_per_shot.json
+      hif_plant_pkg__hif_plant__lcoe_calc__discounted_energy: float hif_plant_pkg__hif_plant__lcoe_calc__discounted_energy.json
+      hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power_gw: float hif_plant__net_electric_power_gw.json
+      hif_plant_pkg__hif_plant__lcoe_calc__fusion_power: float hif_plant__fusion_power.json
+      hif_plant_pkg__hif_plant__lcoe_calc__shots_per_year: float hif_plant_pkg__hif_plant__lcoe_calc__shots_per_year.json
+      hif_plant_pkg__hif_plant__lcoe_calc__driver_recirculating_fraction: float hif_plant__driver_recirculating_fraction.json
+      hif_plant_pkg__hif_plant__lcoe_calc__other_parasitic_power: float hif_plant__other_parasitic_power.json
+      hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power: float hif_plant__net_electric_power.json
+      hif_plant_pkg__hif_plant__lcoe_calc__discounted_cost: float hif_plant_pkg__hif_plant__lcoe_calc__discounted_cost.json
+      hif_plant_pkg__hif_plant__lcoe_calc__driver_electric_power: float hif_plant__driver_electric_power.json
+      hif_plant_pkg__hif_plant__lcoe_calc__annual_driver_replacement_cost: float hif_plant_pkg__hif_plant__lcoe_calc__annual_driver_replacement_cost.json
+      hif_plant_pkg__hif_plant__lcoe_calc__driver_capital_cost: float hif_plant_pkg__hif_plant__lcoe_calc__driver_capital_cost.json
+      hif_plant_pkg__hif_plant__lcoe_calc__thermal_power_gw: float hif_plant__thermal_power_gw.json
+      hif_plant_pkg__hif_plant__lcoe_calc__gross_electric_power: float hif_plant__gross_electric_power.json
+      hif_plant_pkg__hif_plant__lcoe_calc__total_recirculating_fraction: float hif_plant__total_recirculating_fraction.json
+      hif_plant_pkg__hif_plant__lcoe_calc__energy_on_target: float hif_plant_pkg__hif_plant__lcoe_calc__energy_on_target.json
+      hif_plant_pkg__hif_plant__lcoe_calc__driver_lifetime_years: float hif_plant_pkg__hif_plant__lcoe_calc__driver_lifetime_years.json
+      hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions: RootModel[float] hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions.json
+      hif_plant_pkg__hif_plant__hawker_price__price: float hif_plant__lcoe.json
+      hif_plant_pkg__hif_plant__hawker_price__generating: float hif_plant__generating.json
+      hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions: RootModel[float] hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions.json
+      hif_plant_pkg__hif_plant__meier_coe_calc__energy_denominator: float hif_plant_pkg__hif_plant__meier_coe_calc__energy_denominator.json
+      hif_plant_pkg__hif_plant__meier_coe_calc__annualized_cost: float hif_plant_pkg__hif_plant__meier_coe_calc__annualized_cost.json
+      hif_plant_pkg__hif_plant__meier_price__price: float hif_plant__meier_coe.json
+      hif_plant_pkg__hif_plant__meier_price__generating: float hif_plant_pkg__hif_plant__meier_price__generating.json
+      hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c__evaluation: ConstraintEvaluation hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c__evaluation.json
+      hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation: ConstraintEvaluation hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b__evaluation.json
+      constraint_report: ConstraintReport constraint_report.json

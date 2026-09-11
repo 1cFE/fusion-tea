@@ -1,0 +1,5 @@
+# 1costingFE reference applicability
+
+The fresh reference calls in `1costingfe-driver-identities.json` pass bank-energy and driver wall-plug identities for all twenty cases at revision `02543850089be175ea7c28b92a8b2a4184e1637e`. The reference inputs take fusion power from the stored model output, so that supplied quantity is not independently checked by this comparison. Non-driver recirculating inputs are zero solely to isolate the shared driver identity. These choices do not claim auxiliaries vanish in a real plant.
+
+The copied reference code under `context/1costingfe/` applies neutron multiplication to neutron power and thermalizes driver/pump power. This IFE model multiplies total fusion power and retains equal driver/cooling parasitics. Its chamber/rate-dependent Meier driver cost and historical finance differ from the reference's capital/finance conventions. Full DCF, net-power and price equality are therefore not like-for-like checks here. This reference check does not normalize monetary bases or accept those broader residuals. Separate annual-sum and Decimal verification supply the DCF arithmetic evidence.
