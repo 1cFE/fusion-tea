@@ -1,0 +1,117 @@
+--- analyses/mfe_divertor_heat.sysml
++++ analyses/mfe_divertor_heat.sysml
+@@ -60,6 +60,7 @@
+         in attribute p_coupled_in : Real;
+         // required sustained coupled heating [MW] (the sustainment chain's; reported difference only)
+         in attribute p_aux_required_in : Real;
++        in attribute p_installed_coupled_in : Real;
+         // composed core radiation [MW] (bremsstrahlung + line + synchrotron)
+         in attribute p_rad_core_in : Real;
+         // total radiated fraction of the absorbed heating [1], 0 <= f <= 1 (a source assumption)
+@@ -82,6 +83,6 @@
+         out attribute q_target_peak : Real = q_target_ref_in * p_target_nonrad / p_nonrad_ref_in;
+         out attribute q_target_peak_area_scaled : Real = q_target_peak * R_ref_in / R_in;
+         out attribute q_target_margin : Real = q_target_limit_in - q_target_peak;
+-        out attribute p_heat_operating_minus_installed : Real = p_aux_required_in - p_coupled_in;
++        out attribute p_heat_operating_minus_installed : Real = p_aux_required_in - p_installed_coupled_in;
+     }
+ }
+--- analyses/mfe_heating_chain.sysml
++++ analyses/mfe_heating_chain.sysml
+@@ -76,4 +76,23 @@
+         out attribute p_wallplug_total : Real =
+             p_wallplug + p_coupled_direct / eta_pin_eff;
+     }
++    calc def 'Operating Heating Power' {
++        doc /* Sustained heating at held two-stage efficiency. Signed demand remains diagnostic outside burn hold; no clipping at zero or capacity. All powers MW, efficiencies dimensionless. **Source**: models/library/analyses/mfe_heating_chain.sysml **Ref**: Heating Power Chain two-stage identities; work/active/WI-050_mfe-coherent-operating-heating/spec.md MR-WI050-1/2 **Basis**: algebraic inverse at constant efficiencies, supported domain 0 < efficiency <= 1 **Last Updated**: 2026-09-11 */
++        in attribute p_required_in : Real;
++        in attribute eta_source_in : Real;
++        in attribute eta_couple_in : Real;
++        out attribute p_coupled : Real = p_required_in;
++        out attribute p_delivered : Real = p_required_in / eta_couple_in;
++        out attribute p_wallplug : Real = p_delivered / eta_source_in;
++    }
++    constraint def 'Heating Efficiency Positive' {
++        doc /* Constant conversion efficiency domain. **Source**: models/library/analyses/mfe_heating_chain.sysml **Ref**: source-output and plasma-coupling efficiency definitions **Basis**: positive physical fraction for inverse conversion **Last Updated**: 2026-09-11 */
++        in attribute efficiency : Real;
++        efficiency > 0.0
++    }
++    constraint def 'Heating Efficiency Upper' {
++        doc /* Constant conversion efficiency domain. **Source**: models/library/analyses/mfe_heating_chain.sysml **Ref**: source-output and plasma-coupling efficiency definitions **Basis**: positive physical fraction for inverse conversion **Last Updated**: 2026-09-11 */
++        in attribute efficiency : Real;
++        efficiency <= 1.0
++    }
+ }
+--- designs/stellarator_09/stellarator_plant.sysml
++++ designs/stellarator_09/stellarator_plant.sysml
+@@ -711,6 +711,8 @@
+         // entry point; source-output power (the cost driver) and plasma-coupled
+         // power (the physics driver, and what sustainment_ok compares against
+         // the plasma's requirement) are computed from it.
++        :>> p_operating_coupled_heat = sustain.p_aux_required;
++
+         :>> p_wallplug_heat = 100.0 {
+             doc /*
+             Installed wall-plug electrical power for ECRH [MW].
+--- designs/generic_mfe/mfe_plant.sysml
++++ designs/generic_mfe/mfe_plant.sysml
+@@ -518,12 +518,33 @@
+             in p_coupled_direct = p_coupled_direct_heat;
+         }
+ 
++        // Generic legacy/direct behavior defaults to installed coupled capacity.
++        // A sustained concept overrides this exposed demand with its producer.
++        attribute p_operating_coupled_heat : Real default heat.p_coupled;
++        calc operating_heat : 'Operating Heating Power' {
++            in p_required_in = p_operating_coupled_heat;
++            in eta_source_in = eta_source_heat;
++            in eta_couple_in = eta_couple_heat;
++        }
++        assert constraint heating_source_positive_ok : 'Heating Efficiency Positive' {
++            in efficiency = eta_source_heat;
++        }
++        assert constraint heating_source_upper_ok : 'Heating Efficiency Upper' {
++            in efficiency = eta_source_heat;
++        }
++        assert constraint heating_couple_positive_ok : 'Heating Efficiency Positive' {
++            in efficiency = eta_couple_heat;
++        }
++        assert constraint heating_couple_upper_ok : 'Heating Efficiency Upper' {
++            in efficiency = eta_couple_heat;
++        }
++
+         // WI-045: the reactor's source heat (no pump credit), the representative
+         // primary loop and the temperature-compatible cycle, upstream of the
+         // power balance. Dataflow: fusion, heat -> source_heat -> primary_loop -> cycle -> pb.
+         calc source_heat : 'Reactor Source Heat' {
+             in p_nrl = fusion.p_fus;
+-            in p_input_in = heat.p_coupled;
++            in p_input_in = operating_heat.p_coupled;
+             in mn_in = mn;
+         }
+         calc primary_loop : 'Primary Coolant Loop' {
+@@ -558,11 +579,11 @@
+ 
+         calc pb : 'MFE Power Balance Calc' {
+             in p_nrl = fusion.p_fus;
+-            in p_input_in = heat.p_coupled;
++            in p_input_in = operating_heat.p_coupled;
+             in mn_in = mn;
+             in eta_th_in = cycle.eta_th;
+             in q_recovered_in = primary_loop.q_recovered_total;
+-            in p_wallplug_in = heat.p_wallplug_total;
++            in p_wallplug_in = operating_heat.p_wallplug;
+             in p_pump_total_in = primary_loop.p_pump_total;
+             in f_sub_in = f_sub;
+             in p_tf_in = p_tf;
+@@ -1064,8 +1085,9 @@
+         attribute R_ref_divertor : Real default 1.0;
+         calc divheat : 'Divertor Heat Ledger' {
+             in p_alpha_heat_in = sustain.p_alpha_heat;
+-            in p_coupled_in = heat.p_coupled;
++            in p_coupled_in = operating_heat.p_coupled;
+             in p_aux_required_in = sustain.p_aux_required;
++            in p_installed_coupled_in = heat.p_coupled;
+             in p_rad_core_in = sustain.p_rad;
+             in f_rad_total_in = f_rad_total;
+             in q_target_ref_in = q_target_ref;
