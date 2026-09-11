@@ -1,0 +1,251 @@
+{
+  "schema_version": "study-verification-summary/v1",
+  "tool": {
+    "path": "scripts/study/verify.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "a7e8ee5802b778bc11507571a03856203af9d90a64a9da5fa1db1646cf1fff2d",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "e3b8edbbda9e38efb045170f3052382765d67d0dc7da4c2551d1acf823311f61"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+          "sha256": "579054e23911be543927d9e9daa72ece44a68f76be9ab9ba53fce0244ef540e1"
+        },
+        {
+          "path": "scripts/study/verify.py",
+          "sha256": "4cf1fb8faf9459a0522dea39116a772b4b5067288552ea4fdcf4741908bca77e"
+        }
+      ]
+    }
+  },
+  "command": [
+    "scripts/study/verify.py",
+    "--package",
+    "/home/reid/1cfe/fusion-tea-codex-test/exploration/ife_e2e/generated",
+    "--manifest",
+    "/home/reid/1cfe/fusion-tea-codex-test/exploration/ife_e2e/studies/manifest.json",
+    "--identity",
+    "/home/reid/1cfe/fusion-tea-codex-test/.project/active/ife-native-study-package/integration/package_identity.json",
+    "--store",
+    "/home/reid/1cfe/fusion-tea-codex-test/.project/active/ife-native-study-package/integration/_work/ife-baseline-point-v1.db",
+    "--out",
+    "/home/reid/1cfe/fusion-tea-codex-test/.project/active/ife-native-study-package/integration/verification_summary.json"
+  ],
+  "teax": {
+    "module_path": "../teax/packages/teax-simkit/simkit",
+    "revision": "unrecorded"
+  },
+  "package": {
+    "path": "exploration/ife_e2e/generated",
+    "package_name": "ife_tea",
+    "git_clean": true
+  },
+  "identity": {
+    "kind": "sealed",
+    "digest": "045417b231573653d754b68c8e26eec26fcec72fdc3814df27e504416639fe63",
+    "matches_preflight": true
+  },
+  "manifest": {
+    "path": "exploration/ife_e2e/studies/manifest.json",
+    "schema_version": "study-package-manifest/v1",
+    "digest": "843c21a9ef59520612b83c8cd1f91ae12a73efbbc7d216cd82da6d07e4175b10"
+  },
+  "oracle": {
+    "kind": "python_callable",
+    "sys_path": ".",
+    "module": "exploration.ife_e2e.studies.oracle_entry",
+    "callable": "evaluate",
+    "operand_bindings_digest": "2979b2844effc704629a420342aaa081a5bbcf9f0dc54f74cbacbcfbacb38a44"
+  },
+  "stores": [
+    {
+      "path": ".project/active/ife-native-study-package/integration/_work/ife-baseline-point-v1.db",
+      "study_id": "ife-baseline-point-v1",
+      "compatibility": {
+        "digest": "6cc84bc91834a4584f5e5e7666785408072640fc038d86a9b57d301d61720071",
+        "evidence_schema_version": "v3",
+        "executable_fingerprint": "045417b231573653d754b68c8e26eec26fcec72fdc3814df27e504416639fe63",
+        "input_schema_version": "input-v1",
+        "model_contract_fingerprint": "8b7a76a631e6e55dbd45cf617a68fae87def408e4f8494015e40c0c8aac585dd",
+        "strategy_config": "959ac460834f5ce664992ab2c5f5e4ef194f89fba8a550ad5b2b0a325b27834a",
+        "strategy_identity": "prepared-list/v1",
+        "study_definition_fingerprint": "c64c8d4e42740ec329ebb4a681daec0d9c65f70dfd326577387e58e195b92794",
+        "study_id": "ife-baseline-point-v1"
+      },
+      "cases_total": 1,
+      "cases_completed": 1,
+      "sampling": {
+        "scheme": "stratified-by-verdict-combination/v1",
+        "seed": "7ce6c937ad442523",
+        "seed_source": "derived",
+        "sample_size_requested": 12,
+        "strata_observed": 1,
+        "sampled_rows": 1,
+        "sampled_case_ids": [
+          "ife-baseline-point-v1:c0000"
+        ]
+      },
+      "worst_channel_rel_dev": 8.019282484345631e-16,
+      "worst_at": {
+        "case_id": "ife-baseline-point-v1:c0000",
+        "channel": "hif_plant_pkg__hif_plant__lcoe_calc__discounted_energy",
+        "value": 55744991.73561758
+      }
+    }
+  ],
+  "tolerance": 1e-09,
+  "channels_checked": [
+    {
+      "channel": "hif_plant_pkg__hif_plant__driver__meier_cost__bank_energy_joules",
+      "objective": "driver__meier_cost__bank_energy_joules"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__driver__meier_cost__cost_billions",
+      "objective": "driver__meier_cost__cost_billions"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__driver__meier_cost__gamma",
+      "objective": "driver__meier_cost__gamma"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__hawker_price__generating",
+      "objective": "hawker_price__generating"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__hawker_price__price",
+      "objective": "hawker_price__price"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__annual_driver_replacement_cost",
+      "objective": "lcoe_calc__annual_driver_replacement_cost"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__discounted_cost",
+      "objective": "lcoe_calc__discounted_cost"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__discounted_energy",
+      "objective": "lcoe_calc__discounted_energy"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__driver_capital_cost",
+      "objective": "lcoe_calc__driver_capital_cost"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__driver_electric_power",
+      "objective": "lcoe_calc__driver_electric_power"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__driver_lifetime_years",
+      "objective": "lcoe_calc__driver_lifetime_years"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__driver_recirculating_fraction",
+      "objective": "lcoe_calc__driver_recirculating_fraction"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__energy_on_target",
+      "objective": "lcoe_calc__energy_on_target"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__fusion_energy_per_shot",
+      "objective": "lcoe_calc__fusion_energy_per_shot"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__fusion_power",
+      "objective": "lcoe_calc__fusion_power"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__gross_electric_power",
+      "objective": "lcoe_calc__gross_electric_power"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power",
+      "objective": "lcoe_calc__net_electric_power"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__net_electric_power_gw",
+      "objective": "lcoe_calc__net_electric_power_gw"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__other_parasitic_power",
+      "objective": "lcoe_calc__other_parasitic_power"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__shots_per_year",
+      "objective": "lcoe_calc__shots_per_year"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power",
+      "objective": "lcoe_calc__thermal_power"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__thermal_power_gw",
+      "objective": "lcoe_calc__thermal_power_gw"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__lcoe_calc__total_recirculating_fraction",
+      "objective": "lcoe_calc__total_recirculating_fraction"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__meier_capital_calc__total_capital_billions",
+      "objective": "meier_capital_calc__total_capital_billions"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__meier_coe_calc__annualized_cost",
+      "objective": "meier_coe_calc__annualized_cost"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__meier_coe_calc__energy_denominator",
+      "objective": "meier_coe_calc__energy_denominator"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__meier_price__generating",
+      "objective": "meier_price__generating"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__meier_price__price",
+      "objective": "meier_price__price"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__meier_reactor_cost_calc__reactor_cost_billions",
+      "objective": "meier_reactor_cost_calc__reactor_cost_billions"
+    },
+    {
+      "channel": "hif_plant_pkg__hif_plant__recirc_calc__f_recirc",
+      "objective": "recirc_calc__f_recirc"
+    }
+  ],
+  "verdicts_rederived": true,
+  "constraints_rederived": [
+    {
+      "constraint_id": "hif_plant_pkg__hif_plant__net_positive__1d299cceab19c61c",
+      "source_local_identity": "net_positive",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "hif_plant_pkg__hif_plant__viability__81ddf10fb1d1749b",
+      "source_local_identity": "viability",
+      "operands_resolved": 3
+    }
+  ],
+  "verdict_mismatches": [],
+  "not_independently_verified": [],
+  "worst_channel_rel_dev": 8.019282484345631e-16,
+  "outcome": "pass"
+}
