@@ -21,6 +21,11 @@ epics:
     scale: standard
     status: completed
     completed: '2026-03-03'
+  - id: WI-048
+    name: IFE operating point repair
+    scale: standard
+    status: backlog
+    completed: null
 - name: MFE Cost Modeling — Tokamak & Stellarator
   goal: null
   priority: P0
@@ -249,6 +254,7 @@ standalone:
 | WI-006 | IFE Cost Structure Library | standard | completed | Completed 2026-03-02 |
 | WI-007 | Generic IFE Concept Model | standard | completed | Completed 2026-03-02 |
 | WI-008 | HIF Concept Instantiation | standard | completed | Completed 2026-03-03 |
+| WI-048 | IFE operating point repair | standard | backlog |  |
 
 ## Epic: MFE Cost Modeling — Tokamak & Stellarator
 **Priority**: P0 | **Status**: draft
