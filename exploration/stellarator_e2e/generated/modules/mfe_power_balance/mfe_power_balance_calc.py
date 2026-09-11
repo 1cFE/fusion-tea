@@ -2,6 +2,9 @@
 
 TEAx module for MFE_Power_Balance_Calc calculation.
 
+WI-050: coupled auxiliary heat and wall-plug draw describe the same
+sustained operating state. Installed heating remains a procurement and
+capacity concern outside this balance. All powers are MW.
 MFE (Magnetic Fusion Energy) power balance for tokamaks and
 stellarators: fusion power -> net electric power, engineering Q, and
 recirculating power fraction. Faithful to 1costingFE
@@ -133,6 +136,9 @@ class MFE_Power_Balance_CalcInput(BaseModel):
 class MFE_Power_Balance_CalcModule(ModuleBase[MFE_Power_Balance_CalcInput, MFE_Power_Balance_CalcOutput]):
     """TEAx module for MFE_Power_Balance_Calc calculation.
 
+WI-050: coupled auxiliary heat and wall-plug draw describe the same
+sustained operating state. Installed heating remains a procurement and
+capacity concern outside this balance. All powers are MW.
 MFE (Magnetic Fusion Energy) power balance for tokamaks and
 stellarators: fusion power -> net electric power, engineering Q, and
 recirculating power fraction. Faithful to 1costingFE
@@ -230,6 +236,9 @@ SysML Source: root-0/analyses/mfe_power_balance.sysml:4
         p_net = (1.0 - rec_frac) * p_et
         
 Documentation:
+WI-050: coupled auxiliary heat and wall-plug draw describe the same
+sustained operating state. Installed heating remains a procurement and
+capacity concern outside this balance. All powers are MW.
 MFE (Magnetic Fusion Energy) power balance for tokamaks and
 stellarators: fusion power -> net electric power, engineering Q, and
 recirculating power fraction. Faithful to 1costingFE

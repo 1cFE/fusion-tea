@@ -2,7 +2,7 @@
 
 The cross-part capital rollup is compiled by codegen and computed in one teax-simkit
 pass. The package is strict-loaded with no harness glue. This demo/regression command
-checks recorded anchors, all six generated verdicts, numerical agreement with the
+checks recorded anchors, all 18 generated verdicts, numerical agreement with the
 independent demo oracle, and three synthetic CAS72 guard cases. Any failed gate family
 produces a nonzero process exit after the diagnostic output is printed.
 
@@ -31,6 +31,10 @@ create_stellarator_tea_registry = rs.create_stellarator_tea_registry
 P, CH = rs.P, rs.CH
 
 EXPECTED_VERDICTS = {
+    "heating_source_positive_ok": "satisfied",
+    "heating_source_upper_ok": "satisfied",
+    "heating_couple_positive_ok": "satisfied",
+    "heating_couple_upper_ok": "satisfied",
     "beta_ok": "satisfied",
     "net_positive": "satisfied",
     "recirc_ok": "satisfied",
@@ -50,6 +54,7 @@ EXPECTED_VERDICTS = {
     # design column it rises with a (a 1.4 on the design column reads 25.16 T).
     "peak_field_ok": "satisfied",
     "wp_stress_ok": "satisfied",  # WI-035
+    "cond_strain_ok": "satisfied",
     # WI-037: the sustainment power limit read VIOLATED at the printed point-A
     # levers (p_aux_required ~= 90.6 MW vs 50 coupled) under the WI-037 profile
     # family (the ash at the fuel's exponent). WI-042: with the ash on the
@@ -96,7 +101,7 @@ EXPECTED_VERDICTS = {
     "divertor_heat_ok": "violated",
 }
 EXPECTED_HEADLINE = "violation"  # WI-047: one verdict violated by design (WI-041 pinned 'violation' once before)
-EXPECTED_VERDICT_COUNT = 14  # WI-047 added divertor_heat_ok, violated (was 13; WI-045 added three, was 10; WI-043 added burn_hold_ok, was 9)
+EXPECTED_VERDICT_COUNT = 18  # WI-050 adds four scalar efficiency bounds.
 
 
 def _execute_package():
@@ -191,16 +196,18 @@ def _anchor_gate(values: dict[str, float]) -> bool:
     #   live baseline after the oracle gate read bit-exact on every channel, the
     #   eleven calendar channels included. The held mode (availability_direct 0.85)
     #   reproduces WI-045's baseline bit-for-bit (evidence/compat_mode/).
+    # WI-050 anchors follow independent conservation and explicit finance checks
+    # in work/active/WI-050_mfe-coherent-operating-heating/implementation/.
     anchors = [
-        ("total capital $", total, 14_955_212_350.385998),
-        ("LCOE $/MWh", values[CH["lcoe"]], 224.609525),
-        ("p_net MW", values[CH["p_net"]], 1012.364870),
-        ("q_eng", values[CH["q_eng"]], 3.925458),
-        ("rec_frac", values[CH["rec_frac"]], 0.254747),
-        ("magnet %", magnet / total * 100, 36.114713),
-        ("CAS70 $/yr", values[CH["cas70"]], 217_704_024.300825),
+        ("total capital $", total, 14955400261.631914),
+        ("LCOE $/MWh", values[CH["lcoe"]], 224.26923288439),
+        ("p_net MW", values[CH["p_net"]], 1013.9319325539626),
+        ("q_eng", values[CH["q_eng"]], 3.9471016638869605),
+        ("rec_frac", values[CH["rec_frac"]], 0.25335045437244624),
+        ("magnet %", magnet / total * 100, 36.114259100482585),
+        ("CAS70 $/yr", values[CH["cas70"]], 217739093.67437315),
         ("CAS80 $/yr", values[CH["cas80"]], 792_505.965114),
-        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 220.346320),
+        ("lcoe_1cfe $/MWh (comparison)", values[CH["lcoe_1cfe"]], 220.0125640803369),
     ]
 
     print("\n=== NINE ANCHORS (single-pass, graph rollup, no bridge) ===")
@@ -222,9 +229,9 @@ def _anchor_gate(values: dict[str, float]) -> bool:
 
 
 def _assert_generated_verdicts(outputs) -> None:
-    """The model's eight design-point verdicts remain a separate assertion gate."""
+    """Check the exact 18 design-point verdicts and the separate aggregate."""
     report = outputs["constraint_report"]
-    print("=== NINE VERDICTS (generated ConstraintReport) ===")
+    print("=== EIGHTEEN VERDICTS (generated ConstraintReport) ===")
     verdicts = {}
     for channel, value in outputs.items():
         if channel.endswith("__evaluation") and hasattr(value, "status"):
@@ -238,6 +245,7 @@ def _assert_generated_verdicts(outputs) -> None:
     assert report.assessed_entry_count == EXPECTED_VERDICT_COUNT, (
         f"assessed_entry_count {report.assessed_entry_count} != {EXPECTED_VERDICT_COUNT}"
     )
+    assert set(verdicts) == set(EXPECTED_VERDICTS), (set(verdicts), set(EXPECTED_VERDICTS))
     for name, expected in EXPECTED_VERDICTS.items():
         actual = verdicts.get(name)
         assert actual == expected, (
@@ -247,20 +255,18 @@ def _assert_generated_verdicts(outputs) -> None:
     print(
         "VERDICT PARITY: PASS -- "
         f"headline={report.headline}, assessed_entry_count={report.assessed_entry_count}, "
-        "thirteen satisfied and divertor_heat_ok VIOLATED (WI-047: the fixed-geometry "
-        "pessimistic divertor case reads 10.535 against 10 -- disclosed, never tuned). "
-        "WI-045: three fences added -- the loop's pressure "
-        "and capacity, the cycle's fit domain; the design point moved as "
-        "predicted, the compatibility proposal reproduces the WI-044 pin. "
-        "WI-043: burn_hold_ok, nothing moved. WI-042: sustainment_ok and "
-        "wall_load_ok flipped to satisfied by the sourced ash profile; "
-        "disclosed, never tuned)"
+        "seventeen satisfied and divertor_heat_ok VIOLATED. WI-050 coherent "
+        "operating heat gives 10.517842 MW/m^2 against 10; the installed "
+        "capacity ceiling and signed burn-hold demand remain explicit."
     )
 
 
 def _oracle_gate(values: dict[str, float], oracle: dict[str, float]) -> bool:
     total = values[f"{P}total_capital__total_capital"]
     compared = {
+        "operating_heat_coupled": values[CH["operating_heat_coupled"]],
+        "operating_heat_delivered": values[CH["operating_heat_delivered"]],
+        "operating_heat_wallplug": values[CH["operating_heat_wallplug"]],
         "total_capital": total,
         "lcoe": values[CH["lcoe"]],
         "p_net": values[CH["p_net"]],

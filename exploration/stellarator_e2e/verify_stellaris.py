@@ -601,6 +601,10 @@ def compute():
                     + p["p_coupled_direct_heat"])
     heat_wallplug_total = (p["p_wallplug_heat"]
                            + p["p_coupled_direct_heat"] / heat_eta_pin_eff)
+    # Signed sustained operation, with installed capacity retained above.
+    operating_heat_coupled = sust["p_aux_required"]
+    operating_heat_delivered = operating_heat_coupled / p["eta_couple_heat"]
+    operating_heat_wallplug = operating_heat_delivered / p["eta_source_heat"]
     # --- WI-045 (goal plant-closure): the reactor source heat, the representative
     # primary loop and the temperature-compatible cycle, written from the WI-045
     # design's stated equations (D1-D5, D9), not from the generated modules.
@@ -614,7 +618,7 @@ def compute():
     #   eta_fit    = a*ln(T2_C + 273) - b - delta_eta;  eta_th = cycle_live*eta_fit + eta_th_direct
     # In the dormant mode the two totals are the old held scalars to the bit
     # (0.0*x + held), so the sums below are the pre-WI-045 sums exactly.
-    q_source = p["mn"] * p_neutron + p_alpha + heat_coupled
+    q_source = p["mn"] * p_neutron + p_alpha + operating_heat_coupled
     loop_mdot = q_source * 1.0e6 / (p["loop_cp"] * p["loop_dT_blanket"])
     loop_T_out = p["loop_T_in"] + p["loop_dT_blanket"]
     loop_mdot_loop = loop_mdot / p["n_loops"]
@@ -646,7 +650,7 @@ def compute():
     cycle_margin_low = cycle_T2_C - p["T2_min"]
     cycle_margin_high = p["T2_max"] - cycle_T2_C
     cycle_domain_product = cycle_margin_low * cycle_margin_high
-    p_th = (p["mn"] * p_neutron + p_alpha + heat_coupled
+    p_th = (p["mn"] * p_neutron + p_alpha + operating_heat_coupled
             + loop_q_recovered_total)
     p_the = cycle_eta_th * p_th
     p_et = p_the
@@ -658,7 +662,7 @@ def compute():
     p_cold = ((((p["q_nuc_cryo"] * vol_cold_total) * 1e-06) + p["p_fixed_cryo"]) * p["f_uplift_cryo"])
     p_cryo = ((p_cold / cop) + p["p_cryo_direct"])
     recirculating = (p_coils + loop_p_pump_total + p_sub + p_aux + p_cool + p_cryo
-                     + heat_wallplug_total)
+                     + operating_heat_wallplug)
     q_eng = p_et / recirculating
     rec_frac = 1.0 / q_eng
     p_net = (1.0 - rec_frac) * p_et
@@ -826,7 +830,7 @@ def compute():
     #   E_fus_J      = q_eff*mev_to_joules;  burn = p_fus*1e6/E_fus_J;  inject = burn/f_burn
     #   exhaust      = inject - burn;  loss = (1 - t_recycle)*exhaust
     #   tbr_required = (burn + loss + lambda_T*I_total + G_stock)/(eta_extract*burn)
-    #   p_heat_abs   = p_alpha_heat + p_coupled (INSTALLED basis);  p_sep = p_heat_abs - p_rad_core
+    #   p_heat_abs   = p_alpha_heat + p_coupled (sustained operating basis);  p_sep = p_heat_abs - p_rad_core
     #   f_rad_edge   = (f_total*p_heat_abs - p_rad_core)/p_sep;  p_target = p_heat_abs - f_total*p_heat_abs
     #   q_peak       = q_ref*p_target/p_nonrad_ref;  shadow = q_peak*R_ref/R
     #   n_molecules  = (D + T)/2 + He;  Q = n*k_B*T_gas;  S_eff = Q/p_exhaust
@@ -839,7 +843,7 @@ def compute():
                          / (p["eta_extract"] * fuel_burn_rate))
     fuel_tbr_margin = p["tbr"] - fuel_tbr_required
     fuel_burn_kg_per_fpy = fuel_burn_rate * p["m_T_kg"] * p["s_per_fpy"]
-    divheat_p_heat_abs = sust["p_alpha_heat"] + heat_coupled
+    divheat_p_heat_abs = sust["p_alpha_heat"] + operating_heat_coupled
     divheat_p_sep = divheat_p_heat_abs - sust["p_rad"]
     divheat_f_rad_edge = (p["f_rad_total"] * divheat_p_heat_abs - sust["p_rad"]) / divheat_p_sep
     divheat_f_rad_edge_in_range = divheat_f_rad_edge * (1.0 - divheat_f_rad_edge)
@@ -898,6 +902,9 @@ def compute():
         p_avg=sust["p_avg"], n_e_volav=sust["n_e_volav"],
         alpha_n_e_eff=sust["alpha_n_e_eff"], alpha_He_eff=sust["alpha_He_eff"],
         # WI-039 heating-chain channels
+        operating_heat_coupled=operating_heat_coupled,
+        operating_heat_delivered=operating_heat_delivered,
+        operating_heat_wallplug=operating_heat_wallplug,
         heat_eta_pin_eff=heat_eta_pin_eff, heat_delivered=heat_delivered,
         heat_coupled=heat_coupled, heat_wallplug_total=heat_wallplug_total,
         # WI-045 source-heat, loop and cycle channels

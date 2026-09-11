@@ -14,12 +14,12 @@ package mfe_divertor_heat {
           q_target_peak     = q_target_ref * p_target_nonrad / p_nonrad_ref   [MW/m^2]
           q_target_peak_area_scaled = q_target_peak * R_ref / R               [MW/m^2] (reported shadow)
           q_target_margin   = q_target_limit - q_target_peak                  [MW/m^2]
-          p_heat_operating_minus_installed = p_aux_required - p_coupled       [MW]
+          p_heat_operating_minus_installed = p_aux_required - p_installed_coupled [MW]
 
         The absorbed heating is the alpha heating retained in the plasma plus the
-        coupled auxiliary heating on the plant's INSTALLED basis -- the same operand
-        the thermal sum uses (round 1 of goal plant-closure; the operating-versus-
-        installed difference is the last output, reported and never blended in).
+        sustained operating coupled auxiliary heating, also used by the thermal sum.
+        The signed required-minus-installed diagnostic uses a separate installed
+        capacity operand; it does not change the operating heat ledger.
         Radiation is a DESTINATION of that heating, never added to it: the core
         radiation the sustainment chain composes leaves through the first wall; the
         source's radiated fraction f_rad_total is a TOTAL (core plus edge), so the
@@ -56,10 +56,12 @@ package mfe_divertor_heat {
 
         // alpha heating retained in the plasma [MW] (the sustainment chain's)
         in attribute p_alpha_heat_in : Real;
-        // plasma-coupled auxiliary heating on the installed basis [MW] (the thermal sum's operand)
+        // sustained operating plasma-coupled auxiliary heating [MW]
         in attribute p_coupled_in : Real;
         // required sustained coupled heating [MW] (the sustainment chain's; reported difference only)
         in attribute p_aux_required_in : Real;
+        // installed plasma-coupled heating capacity [MW], diagnostic ceiling
+        in attribute p_installed_coupled_in : Real;
         // composed core radiation [MW] (bremsstrahlung + line + synchrotron)
         in attribute p_rad_core_in : Real;
         // total radiated fraction of the absorbed heating [1], 0 <= f <= 1 (a source assumption)
@@ -82,6 +84,6 @@ package mfe_divertor_heat {
         out attribute q_target_peak : Real = q_target_ref_in * p_target_nonrad / p_nonrad_ref_in;
         out attribute q_target_peak_area_scaled : Real = q_target_peak * R_ref_in / R_in;
         out attribute q_target_margin : Real = q_target_limit_in - q_target_peak;
-        out attribute p_heat_operating_minus_installed : Real = p_aux_required_in - p_coupled_in;
+        out attribute p_heat_operating_minus_installed : Real = p_aux_required_in - p_installed_coupled_in;
     }
 }

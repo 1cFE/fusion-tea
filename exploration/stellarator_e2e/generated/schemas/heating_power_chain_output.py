@@ -24,9 +24,9 @@ missing input is surfaced, never defaulted (WI-039 MR-WI039-2).
 p_delivered is the COST driver: the per-MW heating rates are
 calibrated to source procurement (ITER gyrotron for ECRH), so the
 account follows source-output power, not wall-plug power.
-p_coupled is the PHYSICS driver: it enters the thermal sum and is
-what a sustained-heating fence compares against the plasma's
-requirement. p_wallplug_total is the RECIRCULATING driver.
+p_coupled is installed capacity for the sustainment ceiling.
+p_wallplug_total is installed electrical capacity. Operating heat and
+electrical draw are produced separately by Operating Heating Power.
 
 Dormant-safe (the WI-024 cryoplant pattern): a concept that knows
 its heating powers outright binds the direct terms and leaves the

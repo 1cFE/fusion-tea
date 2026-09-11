@@ -13,7 +13,7 @@ SysML Expressions:
     q_target_peak = q_target_ref_in * p_target_nonrad / p_nonrad_ref_in
     q_target_peak_area_scaled = q_target_peak * R_ref_in / R_in
     q_target_margin = q_target_limit_in - q_target_peak
-    p_heat_operating_minus_installed = p_aux_required_in - p_coupled_in
+    p_heat_operating_minus_installed = p_aux_required_in - p_installed_coupled_in
     
 Documentation:
 Divertor surface-heat ledger, reduced to conservation and one sourced
@@ -27,12 +27,12 @@ fixed-geometry case (WI-047):
   q_target_peak     = q_target_ref * p_target_nonrad / p_nonrad_ref   [MW/m^2]
   q_target_peak_area_scaled = q_target_peak * R_ref / R               [MW/m^2] (reported shadow)
   q_target_margin   = q_target_limit - q_target_peak                  [MW/m^2]
-  p_heat_operating_minus_installed = p_aux_required - p_coupled       [MW]
+  p_heat_operating_minus_installed = p_aux_required - p_installed_coupled [MW]
 
 The absorbed heating is the alpha heating retained in the plasma plus the
-coupled auxiliary heating on the plant's INSTALLED basis -- the same operand
-the thermal sum uses (round 1 of goal plant-closure; the operating-versus-
-installed difference is the last output, reported and never blended in).
+sustained operating coupled auxiliary heating, also used by the thermal sum.
+The signed required-minus-installed diagnostic uses a separate installed
+capacity operand; it does not change the operating heat ledger.
 Radiation is a DESTINATION of that heating, never added to it: the core
 radiation the sustainment chain composes leaves through the first wall; the
 source's radiated fraction f_rad_total is a TOTAL (core plus edge), so the
@@ -86,12 +86,12 @@ fixed-geometry case (WI-047):
   q_target_peak     = q_target_ref * p_target_nonrad / p_nonrad_ref   [MW/m^2]
   q_target_peak_area_scaled = q_target_peak * R_ref / R               [MW/m^2] (reported shadow)
   q_target_margin   = q_target_limit - q_target_peak                  [MW/m^2]
-  p_heat_operating_minus_installed = p_aux_required - p_coupled       [MW]
+  p_heat_operating_minus_installed = p_aux_required - p_installed_coupled [MW]
 
 The absorbed heating is the alpha heating retained in the plasma plus the
-coupled auxiliary heating on the plant's INSTALLED basis -- the same operand
-the thermal sum uses (round 1 of goal plant-closure; the operating-versus-
-installed difference is the last output, reported and never blended in).
+sustained operating coupled auxiliary heating, also used by the thermal sum.
+The signed required-minus-installed diagnostic uses a separate installed
+capacity operand; it does not change the operating heat ledger.
 Radiation is a DESTINATION of that heating, never added to it: the core
 radiation the sustainment chain composes leaves through the first wall; the
 source's radiated fraction f_rad_total is a TOTAL (core plus edge), so the
@@ -136,7 +136,7 @@ SysML Expressions:
     q_target_peak = q_target_ref_in * p_target_nonrad / p_nonrad_ref_in
     q_target_peak_area_scaled = q_target_peak * R_ref_in / R_in
     q_target_margin = q_target_limit_in - q_target_peak
-    p_heat_operating_minus_installed = p_aux_required_in - p_coupled_in
+    p_heat_operating_minus_installed = p_aux_required_in - p_installed_coupled_in
     
 Documentation:
 Divertor surface-heat ledger, reduced to conservation and one sourced
@@ -150,12 +150,12 @@ fixed-geometry case (WI-047):
   q_target_peak     = q_target_ref * p_target_nonrad / p_nonrad_ref   [MW/m^2]
   q_target_peak_area_scaled = q_target_peak * R_ref / R               [MW/m^2] (reported shadow)
   q_target_margin   = q_target_limit - q_target_peak                  [MW/m^2]
-  p_heat_operating_minus_installed = p_aux_required - p_coupled       [MW]
+  p_heat_operating_minus_installed = p_aux_required - p_installed_coupled [MW]
 
 The absorbed heating is the alpha heating retained in the plasma plus the
-coupled auxiliary heating on the plant's INSTALLED basis -- the same operand
-the thermal sum uses (round 1 of goal plant-closure; the operating-versus-
-installed difference is the last output, reported and never blended in).
+sustained operating coupled auxiliary heating, also used by the thermal sum.
+The signed required-minus-installed diagnostic uses a separate installed
+capacity operand; it does not change the operating heat ledger.
 Radiation is a DESTINATION of that heating, never added to it: the core
 radiation the sustainment chain composes leaves through the first wall; the
 source's radiated fraction f_rad_total is a TOTAL (core plus edge), so the
@@ -211,7 +211,7 @@ Example:
         (inputs.q_target_limit_in - q_target_peak),  # q_target_margin
         p_target_nonrad,
         f_rad_edge,
-        (inputs.p_aux_required_in - inputs.p_coupled_in),  # p_heat_operating_minus_installed
+        (inputs.p_aux_required_in - inputs.p_installed_coupled_in),  # p_heat_operating_minus_installed
         p_sep,
         q_target_peak,
     )

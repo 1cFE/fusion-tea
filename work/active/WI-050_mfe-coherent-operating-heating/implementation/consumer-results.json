@@ -1,0 +1,413 @@
+{
+  "constraint_count": 18,
+  "parameter_count": 247,
+  "feature_occurrences": 28,
+  "all_indicator_operands": {
+    "stellarator_09__stellaris__wp_stress_ok__f38a102195da1dd0": [
+      "<=",
+      [
+        {
+          "kind": "feature_ref",
+          "name": "sigma_in"
+        },
+        {
+          "kind": "feature_ref",
+          "name": "sigma_allow_in"
+        }
+      ]
+    ],
+    "stellarator_09__stellaris__cond_strain_ok__251d4c803804ab60": [
+      "<=",
+      [
+        {
+          "kind": "feature_ref",
+          "name": "eps_cond"
+        },
+        {
+          "kind": "feature_ref",
+          "name": "eps_cond_allow_in"
+        }
+      ]
+    ],
+    "stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b": [
+      "<=",
+      [
+        {
+          "kind": "feature_ref",
+          "name": "rec_frac"
+        },
+        {
+          "kind": "feature_ref",
+          "name": "threshold"
+        }
+      ]
+    ],
+    "stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3": [
+      ">=",
+      [
+        {
+          "kind": "feature_ref",
+          "name": "domain_product_in"
+        },
+        {
+          "kind": "literal",
+          "value": 0.0
+        }
+      ]
+    ],
+    "stellarator_09__stellaris__beta_ok__82b78aad420730d5": [
+      "<=",
+      [
+        {
+          "kind": "feature_ref",
+          "name": "beta_in"
+        },
+        {
+          "kind": "feature_ref",
+          "name": "beta_limit_in"
+        }
+      ]
+    ],
+    "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": [
+      ">",
+      [
+        {
+          "kind": "feature_ref",
+          "name": "efficiency"
+        },
+        {
+          "kind": "literal",
+          "value": 0.0
+        }
+      ]
+    ],
+    "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7": [
+      "<=",
+      [
+        {
+          "kind": "feature_ref",
+          "name": "q_target_peak_in"
+        },
+        {
+          "kind": "feature_ref",
+          "name": "q_target_limit_in"
+        }
+      ]
+    ],
+    "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": [
+      "<=",
+      [
+        {
+          "kind": "feature_ref",
+          "name": "efficiency"
+        },
+        {
+          "kind": "literal",
+          "value": 1.0
+        }
+      ]
+    ],
+    "stellarator_09__stellaris__net_positive__484521d56c02667a": [
+      ">",
+      [
+        {
+          "kind": "feature_ref",
+          "name": "net_electric"
+        },
+        {
+          "kind": "literal",
+          "value": 0.0
+        }
+      ]
+    ],
+    "stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58": [
+      ">=",
+      [
+        {
+          "kind": "feature_ref",
+          "name": "p_aux_required_in"
+        },
+        {
+          "kind": "literal",
+          "value": 0.0
+        }
+      ]
+    ],
+    "stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb": [
+      "<=",
+      [
+        {
+          "kind": "feature_ref",
+          "name": "wall_load"
+        },
+        {
+          "kind": "feature_ref",
+          "name": "wall_load_limit_in"
+        }
+      ]
+    ],
+    "stellarator_09__stellaris__tbr_ok__2cd198f674d413e4": [
+      ">=",
+      [
+        {
+          "kind": "feature_ref",
+          "name": "tbr_in"
+        },
+        {
+          "kind": "feature_ref",
+          "name": "tbr_floor_in"
+        }
+      ]
+    ],
+    "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": [
+      "<=",
+      [
+        {
+          "kind": "feature_ref",
+          "name": "efficiency"
+        },
+        {
+          "kind": "literal",
+          "value": 1.0
+        }
+      ]
+    ],
+    "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5": [
+      "<=",
+      [
+        {
+          "kind": "feature_ref",
+          "name": "B_peak"
+        },
+        {
+          "kind": "feature_ref",
+          "name": "B_max_in"
+        }
+      ]
+    ],
+    "stellarator_09__stellaris__sustainment_ok__77add152ed8eafce": [
+      "<=",
+      [
+        {
+          "kind": "feature_ref",
+          "name": "p_aux_required_in"
+        },
+        {
+          "kind": "feature_ref",
+          "name": "p_aux_installed_in"
+        }
+      ]
+    ],
+    "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852": [
+      "<=",
+      [
+        {
+          "kind": "feature_ref",
+          "name": "mdot_loop_in"
+        },
+        {
+          "kind": "feature_ref",
+          "name": "mdot_loop_rated_in"
+        }
+      ]
+    ],
+    "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": [
+      ">",
+      [
+        {
+          "kind": "feature_ref",
+          "name": "efficiency"
+        },
+        {
+          "kind": "literal",
+          "value": 0.0
+        }
+      ]
+    ],
+    "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945": [
+      ">",
+      [
+        {
+          "kind": "feature_ref",
+          "name": "p_loop_margin_in"
+        },
+        {
+          "kind": "literal",
+          "value": 0.0
+        }
+      ]
+    ]
+  },
+  "new_bindings": {
+    "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7": {
+      "efficiency": {
+        "kind": "input",
+        "key": "stellarator_09__stellaris__eta_couple_heat"
+      }
+    },
+    "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f": {
+      "efficiency": {
+        "kind": "input",
+        "key": "stellarator_09__stellaris__eta_source_heat"
+      }
+    },
+    "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650": {
+      "efficiency": {
+        "kind": "input",
+        "key": "stellarator_09__stellaris__eta_couple_heat"
+      }
+    },
+    "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5": {
+      "efficiency": {
+        "kind": "input",
+        "key": "stellarator_09__stellaris__eta_source_heat"
+      }
+    }
+  },
+  "cases": {
+    "source_valid_one": {
+      "heating_couple_positive_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      },
+      "heating_source_upper_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      },
+      "heating_couple_upper_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      },
+      "heating_source_positive_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      }
+    },
+    "source_negative": {
+      "heating_couple_positive_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      },
+      "heating_source_upper_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      },
+      "heating_couple_upper_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      },
+      "heating_source_positive_ok": {
+        "satisfied": false,
+        "operands_resolved": 1
+      }
+    },
+    "source_zero": {
+      "heating_couple_positive_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      },
+      "heating_source_upper_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      },
+      "heating_couple_upper_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      },
+      "heating_source_positive_ok": {
+        "satisfied": false,
+        "operands_resolved": 1
+      }
+    },
+    "source_over_one": {
+      "heating_couple_positive_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      },
+      "heating_source_upper_ok": {
+        "satisfied": false,
+        "operands_resolved": 1
+      },
+      "heating_couple_upper_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      },
+      "heating_source_positive_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      }
+    },
+    "couple_valid_one": {
+      "heating_couple_positive_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      },
+      "heating_source_upper_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      },
+      "heating_couple_upper_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      },
+      "heating_source_positive_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      }
+    },
+    "couple_negative": {
+      "heating_couple_positive_ok": {
+        "satisfied": false,
+        "operands_resolved": 1
+      },
+      "heating_source_upper_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      },
+      "heating_couple_upper_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      },
+      "heating_source_positive_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      }
+    },
+    "couple_zero": {
+      "heating_couple_positive_ok": {
+        "satisfied": false,
+        "operands_resolved": 1
+      },
+      "heating_source_upper_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      },
+      "heating_couple_upper_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      },
+      "heating_source_positive_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      }
+    },
+    "couple_over_one": {
+      "heating_couple_positive_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      },
+      "heating_source_upper_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      },
+      "heating_couple_upper_ok": {
+        "satisfied": false,
+        "operands_resolved": 1
+      },
+      "heating_source_positive_ok": {
+        "satisfied": true,
+        "operands_resolved": 1
+      }
+    }
+  }
+}

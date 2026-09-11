@@ -286,6 +286,18 @@ modules:
       loss_rate: float stellarator_09__stellaris__fuel__loss_rate
       exhaust_rate: float stellarator_09__stellaris__fuel__exhaust_rate
 
+  # mfe_heating_chain.Operating_Heating_PowerModule
+  stellarator_09__stellaris__operating_heat:
+    module_type: mfe_heating_chain.Operating_Heating_PowerModule
+    inputs:
+      eta_source_in: float stellarator_plant_params.stellarator_09__stellaris__eta_source_heat
+      p_required_in: float stellarator_09__stellaris__sustain__p_aux_required
+      eta_couple_in: float stellarator_plant_params.stellarator_09__stellaris__eta_couple_heat
+    outputs:
+      p_wallplug: float stellarator_09__stellaris__operating_heat__p_wallplug
+      p_coupled: float stellarator_09__stellaris__operating_heat__p_coupled
+      p_delivered: float stellarator_09__stellaris__operating_heat__p_delivered
+
   # mfe_vacuum.Vacuum_Gas_LoadModule
   stellarator_09__stellaris__vacuum:
     module_type: mfe_vacuum.Vacuum_Gas_LoadModule
@@ -320,10 +332,11 @@ modules:
       f_rad_total_in: float stellarator_plant_params.stellarator_09__stellaris__f_rad_total
       R_in: float stellarator_plant_params.stellarator_09__stellaris__R
       q_target_ref_in: float stellarator_plant_params.stellarator_09__stellaris__q_target_ref
-      p_coupled_in: float stellarator_09__stellaris__heat__p_coupled
+      p_coupled_in: float stellarator_09__stellaris__operating_heat__p_coupled
       R_ref_in: float stellarator_plant_params.stellarator_09__stellaris__R_ref_divertor
       p_alpha_heat_in: float stellarator_09__stellaris__sustain__p_alpha_heat
       p_nonrad_ref_in: float stellarator_plant_params.stellarator_09__stellaris__p_nonrad_ref
+      p_installed_coupled_in: float stellarator_09__stellaris__heat__p_coupled
       p_rad_core_in: float stellarator_09__stellaris__sustain__p_rad
     outputs:
       q_target_peak_area_scaled: float stellarator_09__stellaris__divheat__q_target_peak_area_scaled
@@ -421,7 +434,7 @@ modules:
   stellarator_09__stellaris__source_heat:
     module_type: mfe_power_balance.Reactor_Source_HeatModule
     inputs:
-      p_input_in: float stellarator_09__stellaris__heat__p_coupled
+      p_input_in: float stellarator_09__stellaris__operating_heat__p_coupled
       p_nrl: float stellarator_09__stellaris__fusion__p_fus.root
       mn_in: float stellarator_plant_params.stellarator_09__stellaris__mn
     outputs:
@@ -493,14 +506,14 @@ modules:
       f_sub_in: float stellarator_plant_params.stellarator_09__stellaris__f_sub
       p_pfcool_in: float stellarator_plant_params.stellarator_09__stellaris__p_pfcool
       p_pf_in: float stellarator_plant_params.stellarator_09__stellaris__p_pf
-      p_wallplug_in: float stellarator_09__stellaris__heat__p_wallplug_total
+      p_wallplug_in: float stellarator_09__stellaris__operating_heat__p_wallplug
       p_pump_total_in: float stellarator_09__stellaris__primary_loop__p_pump_total
       p_house_in: float stellarator_plant_params.stellarator_09__stellaris__p_house
       mn_in: float stellarator_plant_params.stellarator_09__stellaris__mn
       q_recovered_in: float stellarator_09__stellaris__primary_loop__q_recovered_total
       eta_th_in: float stellarator_09__stellaris__cycle__eta_th
       p_tf_in: float stellarator_plant_params.stellarator_09__stellaris__p_tf
-      p_input_in: float stellarator_09__stellaris__heat__p_coupled
+      p_input_in: float stellarator_09__stellaris__operating_heat__p_coupled
       p_trit_in: float stellarator_plant_params.stellarator_09__stellaris__p_trit
     outputs:
       p_the: float stellarator_09__stellaris__pb__p_the
@@ -1124,6 +1137,14 @@ modules:
     outputs:
       evaluation: ConstraintEvaluation stellarator_09__stellaris__beta_ok__82b78aad420730d5__evaluation
 
+  # stellarator_09.StellarisHeatingCouplePositiveOkConstraintModule
+  stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7:
+    module_type: stellarator_09.StellarisHeatingCouplePositiveOkConstraintModule
+    inputs:
+      efficiency: float stellarator_plant_params.stellarator_09__stellaris__eta_couple_heat
+    outputs:
+      evaluation: ConstraintEvaluation stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7__evaluation
+
   # stellarator_09.StellarisDivertorHeatOkConstraintModule
   stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7:
     module_type: stellarator_09.StellarisDivertorHeatOkConstraintModule
@@ -1132,6 +1153,14 @@ modules:
       q_target_limit_in: float stellarator_plant_params.stellarator_09__stellaris__q_target_limit
     outputs:
       evaluation: ConstraintEvaluation stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7__evaluation
+
+  # stellarator_09.StellarisHeatingSourceUpperOkConstraintModule
+  stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f:
+    module_type: stellarator_09.StellarisHeatingSourceUpperOkConstraintModule
+    inputs:
+      efficiency: float stellarator_plant_params.stellarator_09__stellaris__eta_source_heat
+    outputs:
+      evaluation: ConstraintEvaluation stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f__evaluation
 
   # stellarator_09.StellarisNetPositiveConstraintModule
   stellarator_09__stellaris__net_positive__484521d56c02667a:
@@ -1167,6 +1196,14 @@ modules:
     outputs:
       evaluation: ConstraintEvaluation stellarator_09__stellaris__tbr_ok__2cd198f674d413e4__evaluation
 
+  # stellarator_09.StellarisHeatingCoupleUpperOkConstraintModule
+  stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650:
+    module_type: stellarator_09.StellarisHeatingCoupleUpperOkConstraintModule
+    inputs:
+      efficiency: float stellarator_plant_params.stellarator_09__stellaris__eta_couple_heat
+    outputs:
+      evaluation: ConstraintEvaluation stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650__evaluation
+
   # stellarator_09.StellarisPeakFieldOkConstraintModule
   stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5:
     module_type: stellarator_09.StellarisPeakFieldOkConstraintModule
@@ -1194,6 +1231,14 @@ modules:
     outputs:
       evaluation: ConstraintEvaluation stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852__evaluation
 
+  # stellarator_09.StellarisHeatingSourcePositiveOkConstraintModule
+  stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5:
+    module_type: stellarator_09.StellarisHeatingSourcePositiveOkConstraintModule
+    inputs:
+      efficiency: float stellarator_plant_params.stellarator_09__stellaris__eta_source_heat
+    outputs:
+      evaluation: ConstraintEvaluation stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5__evaluation
+
   # stellarator_09.StellarisLoopPressureOkConstraintModule
   stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945:
     module_type: stellarator_09.StellarisLoopPressureOkConstraintModule
@@ -1211,14 +1256,18 @@ modules:
       stellarator_09_stellaris_recirc_ok_afc3be66f0a3421b: ConstraintEvaluation stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__evaluation
       stellarator_09_stellaris_cycle_domain_ok_ba3fa9c3653b3fd3: ConstraintEvaluation stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3__evaluation
       stellarator_09_stellaris_beta_ok_82b78aad420730d5: ConstraintEvaluation stellarator_09__stellaris__beta_ok__82b78aad420730d5__evaluation
+      stellarator_09_stellaris_heating_couple_positive_ok_697e87be76f504b7: ConstraintEvaluation stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7__evaluation
       stellarator_09_stellaris_divertor_heat_ok_26b4658f9fdfd7b7: ConstraintEvaluation stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7__evaluation
+      stellarator_09_stellaris_heating_source_upper_ok_14ddae450a8eda6f: ConstraintEvaluation stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f__evaluation
       stellarator_09_stellaris_net_positive_484521d56c02667a: ConstraintEvaluation stellarator_09__stellaris__net_positive__484521d56c02667a__evaluation
       stellarator_09_stellaris_burn_hold_ok_03c3f94b878e5b58: ConstraintEvaluation stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58__evaluation
       stellarator_09_stellaris_wall_load_ok_ab2c790419af93bb: ConstraintEvaluation stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb__evaluation
       stellarator_09_stellaris_tbr_ok_2cd198f674d413e4: ConstraintEvaluation stellarator_09__stellaris__tbr_ok__2cd198f674d413e4__evaluation
+      stellarator_09_stellaris_heating_couple_upper_ok_6cc9307cc149d650: ConstraintEvaluation stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650__evaluation
       stellarator_09_stellaris_peak_field_ok_49c6b8228a73cac5: ConstraintEvaluation stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5__evaluation
       stellarator_09_stellaris_sustainment_ok_77add152ed8eafce: ConstraintEvaluation stellarator_09__stellaris__sustainment_ok__77add152ed8eafce__evaluation
       stellarator_09_stellaris_loop_capacity_ok_d77f6027ceb27852: ConstraintEvaluation stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852__evaluation
+      stellarator_09_stellaris_heating_source_positive_ok_1e184791591370e5: ConstraintEvaluation stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5__evaluation
       stellarator_09_stellaris_loop_pressure_ok_5905ab54f5e8a945: ConstraintEvaluation stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945__evaluation
     outputs:
       constraint_report: ConstraintReport constraint_report
@@ -1259,7 +1308,7 @@ modules:
       stellarator_09__stellaris__sustain__n_He0: float stellarator_09__stellaris__sustain__n_He0.json
       stellarator_09__stellaris__sustain__n_D0: float stellarator_09__stellaris__sustain__n_D0.json
       stellarator_09__stellaris__sustain__alpha_n_e_eff: float stellarator_09__stellaris__sustain__alpha_n_e_eff.json
-      stellarator_09__stellaris__sustain__p_aux_required: float stellarator_09__stellaris__sustain__p_aux_required.json
+      stellarator_09__stellaris__sustain__p_aux_required: float stellaris__p_operating_coupled_heat.json
       stellarator_09__stellaris__sustain__p_rad: float stellarator_09__stellaris__sustain__p_rad.json
       stellarator_09__stellaris__sustain__p_alpha_heat: float stellarator_09__stellaris__sustain__p_alpha_heat.json
       stellarator_09__stellaris__sustain__tau_E: float stellarator_09__stellaris__sustain__tau_E.json
@@ -1276,6 +1325,9 @@ modules:
       stellarator_09__stellaris__fuel__tbr_required: float stellarator_09__stellaris__fuel__tbr_required.json
       stellarator_09__stellaris__fuel__loss_rate: float stellarator_09__stellaris__fuel__loss_rate.json
       stellarator_09__stellaris__fuel__exhaust_rate: float stellarator_09__stellaris__fuel__exhaust_rate.json
+      stellarator_09__stellaris__operating_heat__p_wallplug: float stellarator_09__stellaris__operating_heat__p_wallplug.json
+      stellarator_09__stellaris__operating_heat__p_coupled: float stellarator_09__stellaris__operating_heat__p_coupled.json
+      stellarator_09__stellaris__operating_heat__p_delivered: float stellarator_09__stellaris__operating_heat__p_delivered.json
       stellarator_09__stellaris__vacuum__S_eff_required: float stellarator_09__stellaris__vacuum__S_eff_required.json
       stellarator_09__stellaris__vacuum__Q_total: float stellarator_09__stellaris__vacuum__Q_total.json
       stellarator_09__stellaris__vacuum__n_molecules: float stellarator_09__stellaris__vacuum__n_molecules.json
@@ -1388,13 +1440,17 @@ modules:
       stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__evaluation: ConstraintEvaluation stellarator_09__stellaris__recirc_ok__afc3be66f0a3421b__evaluation.json
       stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3__evaluation: ConstraintEvaluation stellarator_09__stellaris__cycle_domain_ok__ba3fa9c3653b3fd3__evaluation.json
       stellarator_09__stellaris__beta_ok__82b78aad420730d5__evaluation: ConstraintEvaluation stellarator_09__stellaris__beta_ok__82b78aad420730d5__evaluation.json
+      stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7__evaluation: ConstraintEvaluation stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7__evaluation.json
       stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7__evaluation: ConstraintEvaluation stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7__evaluation.json
+      stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f__evaluation: ConstraintEvaluation stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f__evaluation.json
       stellarator_09__stellaris__net_positive__484521d56c02667a__evaluation: ConstraintEvaluation stellarator_09__stellaris__net_positive__484521d56c02667a__evaluation.json
       stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58__evaluation: ConstraintEvaluation stellarator_09__stellaris__burn_hold_ok__03c3f94b878e5b58__evaluation.json
       stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb__evaluation: ConstraintEvaluation stellarator_09__stellaris__wall_load_ok__ab2c790419af93bb__evaluation.json
       stellarator_09__stellaris__tbr_ok__2cd198f674d413e4__evaluation: ConstraintEvaluation stellarator_09__stellaris__tbr_ok__2cd198f674d413e4__evaluation.json
+      stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650__evaluation: ConstraintEvaluation stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650__evaluation.json
       stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5__evaluation: ConstraintEvaluation stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5__evaluation.json
       stellarator_09__stellaris__sustainment_ok__77add152ed8eafce__evaluation: ConstraintEvaluation stellarator_09__stellaris__sustainment_ok__77add152ed8eafce__evaluation.json
       stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852__evaluation: ConstraintEvaluation stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852__evaluation.json
+      stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5__evaluation: ConstraintEvaluation stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5__evaluation.json
       stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945__evaluation: ConstraintEvaluation stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945__evaluation.json
       constraint_report: ConstraintReport constraint_report.json

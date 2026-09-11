@@ -3,6 +3,9 @@ package mfe_power_balance {
 
     calc def 'MFE Power Balance Calc' {
         doc /*
+        WI-050: coupled auxiliary heat and wall-plug draw describe the same
+        sustained operating state. Installed heating remains a procurement and
+        capacity concern outside this balance. All powers are MW.
         MFE (Magnetic Fusion Energy) power balance for tokamaks and
         stellarators: fusion power -> net electric power, engineering Q, and
         recirculating power fraction. Faithful to 1costingFE

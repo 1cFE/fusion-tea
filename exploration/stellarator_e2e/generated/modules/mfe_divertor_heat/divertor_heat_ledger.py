@@ -13,12 +13,12 @@ fixed-geometry case (WI-047):
   q_target_peak     = q_target_ref * p_target_nonrad / p_nonrad_ref   [MW/m^2]
   q_target_peak_area_scaled = q_target_peak * R_ref / R               [MW/m^2] (reported shadow)
   q_target_margin   = q_target_limit - q_target_peak                  [MW/m^2]
-  p_heat_operating_minus_installed = p_aux_required - p_coupled       [MW]
+  p_heat_operating_minus_installed = p_aux_required - p_installed_coupled [MW]
 
 The absorbed heating is the alpha heating retained in the plasma plus the
-coupled auxiliary heating on the plant's INSTALLED basis -- the same operand
-the thermal sum uses (round 1 of goal plant-closure; the operating-versus-
-installed difference is the last output, reported and never blended in).
+sustained operating coupled auxiliary heating, also used by the thermal sum.
+The signed required-minus-installed diagnostic uses a separate installed
+capacity operand; it does not change the operating heat ledger.
 Radiation is a DESTINATION of that heating, never added to it: the core
 radiation the sustainment chain composes leaves through the first wall; the
 source's radiated fraction f_rad_total is a TOTAL (core plus edge), so the
@@ -62,6 +62,7 @@ Inputs:
     - R_ref_in: R_ref_in parameter
     - p_alpha_heat_in: p_alpha_heat_in parameter
     - p_nonrad_ref_in: p_nonrad_ref_in parameter
+    - p_installed_coupled_in: p_installed_coupled_in parameter
     - p_rad_core_in: p_rad_core_in parameter
 
 Outputs:
@@ -103,6 +104,7 @@ class Divertor_Heat_LedgerInput(BaseModel):
         R_ref_in: R_ref_in input
         p_alpha_heat_in: p_alpha_heat_in input
         p_nonrad_ref_in: p_nonrad_ref_in input
+        p_installed_coupled_in: p_installed_coupled_in input
         p_rad_core_in: p_rad_core_in input
     """
     p_aux_required_in: float = Field(..., description="p_aux_required_in input")
@@ -114,6 +116,7 @@ class Divertor_Heat_LedgerInput(BaseModel):
     R_ref_in: float = Field(..., description="R_ref_in input")
     p_alpha_heat_in: float = Field(..., description="p_alpha_heat_in input")
     p_nonrad_ref_in: float = Field(..., description="p_nonrad_ref_in input")
+    p_installed_coupled_in: float = Field(..., description="p_installed_coupled_in input")
     p_rad_core_in: float = Field(..., description="p_rad_core_in input")
 
 
@@ -131,12 +134,12 @@ fixed-geometry case (WI-047):
   q_target_peak     = q_target_ref * p_target_nonrad / p_nonrad_ref   [MW/m^2]
   q_target_peak_area_scaled = q_target_peak * R_ref / R               [MW/m^2] (reported shadow)
   q_target_margin   = q_target_limit - q_target_peak                  [MW/m^2]
-  p_heat_operating_minus_installed = p_aux_required - p_coupled       [MW]
+  p_heat_operating_minus_installed = p_aux_required - p_installed_coupled [MW]
 
 The absorbed heating is the alpha heating retained in the plasma plus the
-coupled auxiliary heating on the plant's INSTALLED basis -- the same operand
-the thermal sum uses (round 1 of goal plant-closure; the operating-versus-
-installed difference is the last output, reported and never blended in).
+sustained operating coupled auxiliary heating, also used by the thermal sum.
+The signed required-minus-installed diagnostic uses a separate installed
+capacity operand; it does not change the operating heat ledger.
 Radiation is a DESTINATION of that heating, never added to it: the core
 radiation the sustainment chain composes leaves through the first wall; the
 source's radiated fraction f_rad_total is a TOTAL (core plus edge), so the
@@ -180,6 +183,7 @@ Inputs:
     - R_ref_in: R_ref_in parameter
     - p_alpha_heat_in: p_alpha_heat_in parameter
     - p_nonrad_ref_in: p_nonrad_ref_in parameter
+    - p_installed_coupled_in: p_installed_coupled_in parameter
     - p_rad_core_in: p_rad_core_in parameter
 
 Outputs:
@@ -206,7 +210,7 @@ SysML Source: root-0/analyses/mfe_divertor_heat.sysml:4
         q_target_peak = q_target_ref_in * p_target_nonrad / p_nonrad_ref_in
         q_target_peak_area_scaled = q_target_peak * R_ref_in / R_in
         q_target_margin = q_target_limit_in - q_target_peak
-        p_heat_operating_minus_installed = p_aux_required_in - p_coupled_in
+        p_heat_operating_minus_installed = p_aux_required_in - p_installed_coupled_in
         
 Documentation:
 Divertor surface-heat ledger, reduced to conservation and one sourced
@@ -220,12 +224,12 @@ fixed-geometry case (WI-047):
   q_target_peak     = q_target_ref * p_target_nonrad / p_nonrad_ref   [MW/m^2]
   q_target_peak_area_scaled = q_target_peak * R_ref / R               [MW/m^2] (reported shadow)
   q_target_margin   = q_target_limit - q_target_peak                  [MW/m^2]
-  p_heat_operating_minus_installed = p_aux_required - p_coupled       [MW]
+  p_heat_operating_minus_installed = p_aux_required - p_installed_coupled [MW]
 
 The absorbed heating is the alpha heating retained in the plasma plus the
-coupled auxiliary heating on the plant's INSTALLED basis -- the same operand
-the thermal sum uses (round 1 of goal plant-closure; the operating-versus-
-installed difference is the last output, reported and never blended in).
+sustained operating coupled auxiliary heating, also used by the thermal sum.
+The signed required-minus-installed diagnostic uses a separate installed
+capacity operand; it does not change the operating heat ledger.
 Radiation is a DESTINATION of that heating, never added to it: the core
 radiation the sustainment chain composes leaves through the first wall; the
 source's radiated fraction f_rad_total is a TOTAL (core plus edge), so the
@@ -270,7 +274,7 @@ source's fixed-geometry case, scaled in load only
     version: str = "v0.1"
 
     def validate_and_fill_default(
-        self, p_aux_required_in: float, q_target_limit_in: float, f_rad_total_in: float, R_in: float, q_target_ref_in: float, p_coupled_in: float, R_ref_in: float, p_alpha_heat_in: float, p_nonrad_ref_in: float, p_rad_core_in: float    ) -> Divertor_Heat_LedgerInput:
+        self, p_aux_required_in: float, q_target_limit_in: float, f_rad_total_in: float, R_in: float, q_target_ref_in: float, p_coupled_in: float, R_ref_in: float, p_alpha_heat_in: float, p_nonrad_ref_in: float, p_installed_coupled_in: float, p_rad_core_in: float    ) -> Divertor_Heat_LedgerInput:
         """Validate inputs and fill defaults.
 
         Args:
@@ -283,15 +287,16 @@ source's fixed-geometry case, scaled in load only
             R_ref_in: R_ref_in input
             p_alpha_heat_in: p_alpha_heat_in input
             p_nonrad_ref_in: p_nonrad_ref_in input
+            p_installed_coupled_in: p_installed_coupled_in input
             p_rad_core_in: p_rad_core_in input
 
         Returns:
             Validated input model
         """
-        return Divertor_Heat_LedgerInput(p_aux_required_in=p_aux_required_in, q_target_limit_in=q_target_limit_in, f_rad_total_in=f_rad_total_in, R_in=R_in, q_target_ref_in=q_target_ref_in, p_coupled_in=p_coupled_in, R_ref_in=R_ref_in, p_alpha_heat_in=p_alpha_heat_in, p_nonrad_ref_in=p_nonrad_ref_in, p_rad_core_in=p_rad_core_in)
+        return Divertor_Heat_LedgerInput(p_aux_required_in=p_aux_required_in, q_target_limit_in=q_target_limit_in, f_rad_total_in=f_rad_total_in, R_in=R_in, q_target_ref_in=q_target_ref_in, p_coupled_in=p_coupled_in, R_ref_in=R_ref_in, p_alpha_heat_in=p_alpha_heat_in, p_nonrad_ref_in=p_nonrad_ref_in, p_installed_coupled_in=p_installed_coupled_in, p_rad_core_in=p_rad_core_in)
 
     def run(
-        self, p_aux_required_in: float, q_target_limit_in: float, f_rad_total_in: float, R_in: float, q_target_ref_in: float, p_coupled_in: float, R_ref_in: float, p_alpha_heat_in: float, p_nonrad_ref_in: float, p_rad_core_in: float    ) -> ModuleResult[Divertor_Heat_LedgerOutput]:
+        self, p_aux_required_in: float, q_target_limit_in: float, f_rad_total_in: float, R_in: float, q_target_ref_in: float, p_coupled_in: float, R_ref_in: float, p_alpha_heat_in: float, p_nonrad_ref_in: float, p_installed_coupled_in: float, p_rad_core_in: float    ) -> ModuleResult[Divertor_Heat_LedgerOutput]:
         """Execute calculation.
 
         Args:
@@ -304,13 +309,14 @@ source's fixed-geometry case, scaled in load only
             R_ref_in: R_ref_in input
             p_alpha_heat_in: p_alpha_heat_in input
             p_nonrad_ref_in: p_nonrad_ref_in input
+            p_installed_coupled_in: p_installed_coupled_in input
             p_rad_core_in: p_rad_core_in input
 
         Returns:
             Module result with Divertor_Heat_LedgerOutput (q_target_peak_area_scaled, p_heat_abs, f_rad_edge_in_range, q_target_margin, p_target_nonrad, f_rad_edge, p_heat_operating_minus_installed, p_sep, q_target_peak)
         """
         # Validate inputs
-        validated_inputs = self.validate_and_fill_default(p_aux_required_in, q_target_limit_in, f_rad_total_in, R_in, q_target_ref_in, p_coupled_in, R_ref_in, p_alpha_heat_in, p_nonrad_ref_in, p_rad_core_in)
+        validated_inputs = self.validate_and_fill_default(p_aux_required_in, q_target_limit_in, f_rad_total_in, R_in, q_target_ref_in, p_coupled_in, R_ref_in, p_alpha_heat_in, p_nonrad_ref_in, p_installed_coupled_in, p_rad_core_in)
 
         # Import handwritten implementation
         from stellarator_tea.handwritten.mfe_divertor_heat.divertor_heat_ledger_impl import (

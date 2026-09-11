@@ -1,0 +1,6 @@
+{
+  "utc": "2026-09-11T21:20:44.561494+00:00",
+  "before_sha256": "c6441710e0592fb39605a1d384752e884ac38d440d17007fbe9ea5cb7cbf622f",
+  "after_sha256": "3c48449e902e601e5041aea717a9d4a61837481806dc4abb20ed37e7e7193faa",
+  "correction": "Source path only: mfe_lifecycle_calendar.sysml -> mfe_lifecycle.sysml. No numeric expectation, control, invariant, equation or tolerance changed. Original first-execution digest remains in execution-start.json."
+}

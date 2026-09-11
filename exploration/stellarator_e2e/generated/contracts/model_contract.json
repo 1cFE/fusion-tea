@@ -83,6 +83,22 @@
         "usage_qualified_name": "stellarator_09::stellaris::beta_ok"
       },
       {
+        "constraint_id": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7",
+        "declaration_id": "3915d148-9609-5752-9262-7a5c2edad4f2",
+        "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Positive'",
+        "evaluation_channel": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "stellarator_09__stellaris",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"efficiency\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"efficiency\",\"qualified_name\":\"mfe_heating_chain::'Heating Efficiency Positive'::efficiency\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_heating_chain::'Heating Efficiency Positive'",
+        "source_form": "definition_typed",
+        "source_local_identity": "heating_couple_positive_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::heating_couple_positive_ok"
+      },
+      {
         "constraint_id": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7",
         "declaration_id": "41d78ce2-13b2-5aa6-83e8-3746f32a3562",
         "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
@@ -97,6 +113,22 @@
         "source_form": "definition_typed",
         "source_local_identity": "divertor_heat_ok",
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::divertor_heat_ok"
+      },
+      {
+        "constraint_id": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f",
+        "declaration_id": "5b8b0e88-075c-5f00-9414-8e2052751df3",
+        "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Upper'",
+        "evaluation_channel": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "stellarator_09__stellaris",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"efficiency\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"efficiency\",\"qualified_name\":\"mfe_heating_chain::'Heating Efficiency Upper'::efficiency\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"<=\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_heating_chain::'Heating Efficiency Upper'",
+        "source_form": "definition_typed",
+        "source_local_identity": "heating_source_upper_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::heating_source_upper_ok"
       },
       {
         "constraint_id": "stellarator_09__stellaris__net_positive__484521d56c02667a",
@@ -163,6 +195,22 @@
         "usage_qualified_name": "stellarator_09::stellaris::tbr_ok"
       },
       {
+        "constraint_id": "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650",
+        "declaration_id": "a69afa2b-1ae1-59e0-b160-fed8fe7143b7",
+        "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Upper'",
+        "evaluation_channel": "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "stellarator_09__stellaris",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"efficiency\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"efficiency\",\"qualified_name\":\"mfe_heating_chain::'Heating Efficiency Upper'::efficiency\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"<=\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_heating_chain::'Heating Efficiency Upper'",
+        "source_form": "definition_typed",
+        "source_local_identity": "heating_couple_upper_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::heating_couple_upper_ok"
+      },
+      {
         "constraint_id": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5",
         "declaration_id": "aaf27a1c-1021-5dd1-89fb-2ae1c096b4ed",
         "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
@@ -211,6 +259,22 @@
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::loop_capacity_ok"
       },
       {
+        "constraint_id": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5",
+        "declaration_id": "daaa4011-3841-5747-99ce-d8816cad782f",
+        "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Positive'",
+        "evaluation_channel": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "stellarator_09__stellaris",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"efficiency\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"efficiency\",\"qualified_name\":\"mfe_heating_chain::'Heating Efficiency Positive'::efficiency\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_heating_chain::'Heating Efficiency Positive'",
+        "source_form": "definition_typed",
+        "source_local_identity": "heating_source_positive_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::heating_source_positive_ok"
+      },
+      {
         "constraint_id": "stellarator_09__stellaris__loop_pressure_ok__5905ab54f5e8a945",
         "declaration_id": "dcf2f6d6-5cd9-57ad-a3db-23d2e47e76e5",
         "definition_qualified_name": "mfe_viability::'Loop Pressure Margin'",
@@ -228,8 +292,20 @@
       }
     ],
     "excluded_records": [],
-    "fingerprint": "8f20ff0d656944ce9e9917e279ed56ce8288ede231252918c8c18fad54f8df6a",
+    "fingerprint": "ee23c3202e4cc383ab0a81baa8e7af5dcc43e1a684a4a9d823b1ff8f30bf4cbb",
     "source_records": [
+      {
+        "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Positive'",
+        "formal_names": [
+          "efficiency"
+        ]
+      },
+      {
+        "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Upper'",
+        "formal_names": [
+          "efficiency"
+        ]
+      },
       {
         "definition_qualified_name": "mfe_viability::'Beta Limit'",
         "formal_names": [
@@ -417,6 +493,24 @@
         "usage_qualified_name": "stellarator_09::stellaris::beta_ok"
       },
       {
+        "declaration_id": "3915d148-9609-5752-9262-7a5c2edad4f2",
+        "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Positive'",
+        "disposition_detail": "mfe_plant::'MFE Power Plant'::heating_couple_positive_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_def",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "source_form": "definition_typed",
+        "source_local_identity": "heating_couple_positive_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::heating_couple_positive_ok"
+      },
+      {
         "declaration_id": "41d78ce2-13b2-5aa6-83e8-3746f32a3562",
         "definition_qualified_name": "mfe_viability::'Divertor Target Heat Limit'",
         "disposition_detail": "mfe_plant::'MFE Power Plant'::divertor_heat_ok profile eligibility admit",
@@ -433,6 +527,24 @@
         "source_form": "definition_typed",
         "source_local_identity": "divertor_heat_ok",
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::divertor_heat_ok"
+      },
+      {
+        "declaration_id": "5b8b0e88-075c-5f00-9414-8e2052751df3",
+        "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Upper'",
+        "disposition_detail": "mfe_plant::'MFE Power Plant'::heating_source_upper_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_def",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "source_form": "definition_typed",
+        "source_local_identity": "heating_source_upper_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::heating_source_upper_ok"
       },
       {
         "declaration_id": "5c324c47-2250-52ec-a459-28dd866bc1a9",
@@ -507,6 +619,24 @@
         "usage_qualified_name": "stellarator_09::stellaris::tbr_ok"
       },
       {
+        "declaration_id": "a69afa2b-1ae1-59e0-b160-fed8fe7143b7",
+        "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Upper'",
+        "disposition_detail": "mfe_plant::'MFE Power Plant'::heating_couple_upper_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_def",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "source_form": "definition_typed",
+        "source_local_identity": "heating_couple_upper_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::heating_couple_upper_ok"
+      },
+      {
         "declaration_id": "aaf27a1c-1021-5dd1-89fb-2ae1c096b4ed",
         "definition_qualified_name": "mfe_viability::'Conductor Peak Field Limit'",
         "disposition_detail": "mfe_plant::'MFE Power Plant'::peak_field_ok profile eligibility admit",
@@ -559,6 +689,24 @@
         "source_form": "definition_typed",
         "source_local_identity": "loop_capacity_ok",
         "usage_qualified_name": "mfe_plant::'MFE Power Plant'::loop_capacity_ok"
+      },
+      {
+        "declaration_id": "daaa4011-3841-5747-99ce-d8816cad782f",
+        "definition_qualified_name": "mfe_heating_chain::'Heating Efficiency Positive'",
+        "disposition_detail": "mfe_plant::'MFE Power Plant'::heating_source_positive_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_def",
+        "owner_qualified_name": "mfe_plant::'MFE Power Plant'",
+        "source_form": "definition_typed",
+        "source_local_identity": "heating_source_positive_ok",
+        "usage_qualified_name": "mfe_plant::'MFE Power Plant'::heating_source_positive_ok"
       },
       {
         "declaration_id": "dcf2f6d6-5cd9-57ad-a3db-23d2e47e76e5",
@@ -820,6 +968,21 @@
     {
       "channel_name": "stellarator_09__stellaris__fuel__exhaust_rate",
       "field_name": "exhaust_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__operating_heat__p_wallplug",
+      "field_name": "p_wallplug",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__operating_heat__p_coupled",
+      "field_name": "p_coupled",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__operating_heat__p_delivered",
+      "field_name": "p_delivered",
       "python_type": "float"
     },
     {
@@ -1383,7 +1546,17 @@
       "python_type": "ConstraintEvaluation"
     },
     {
+      "channel_name": "stellarator_09__stellaris__heating_couple_positive_ok__697e87be76f504b7__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__divertor_heat_ok__26b4658f9fdfd7b7__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heating_source_upper_ok__14ddae450a8eda6f__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
     },
@@ -1408,6 +1581,11 @@
       "python_type": "ConstraintEvaluation"
     },
     {
+      "channel_name": "stellarator_09__stellaris__heating_couple_upper_ok__6cc9307cc149d650__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
       "channel_name": "stellarator_09__stellaris__peak_field_ok__49c6b8228a73cac5__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
@@ -1419,6 +1597,11 @@
     },
     {
       "channel_name": "stellarator_09__stellaris__loop_capacity_ok__d77f6027ceb27852__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "stellarator_09__stellaris__heating_source_positive_ok__1e184791591370e5__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
     },
@@ -3164,5 +3347,5 @@
       "qualified_name": "stellarator_09__stellaris__waste_base"
     }
   ],
-  "semantic_fingerprint": "42237b2b07673bfde916b9749bab93634eafa91f1205abde4b7a70dd1881038f"
+  "semantic_fingerprint": "8f4912c20870b8e0090f9836292403d9d05b0b0e6d46dabf53713772737666cf"
 }

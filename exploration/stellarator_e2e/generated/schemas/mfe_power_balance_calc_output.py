@@ -4,6 +4,9 @@ from simkit.config.schema import MultiOutput
 class MFE_Power_Balance_CalcOutput(MultiOutput):
     """Multi-output container for MFE_Power_Balance_Calc.
 
+WI-050: coupled auxiliary heat and wall-plug draw describe the same
+sustained operating state. Installed heating remains a procurement and
+capacity concern outside this balance. All powers are MW.
 MFE (Magnetic Fusion Energy) power balance for tokamaks and
 stellarators: fusion power -> net electric power, engineering Q, and
 recirculating power fraction. Faithful to 1costingFE

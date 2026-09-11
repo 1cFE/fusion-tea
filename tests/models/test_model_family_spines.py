@@ -14,7 +14,7 @@ is the regression spine for both, replacing the migration-era
 * **census** -- the entry-point classification is exact: IFE has 19 entry points / 18
   design attributes after WI-049 shares two Real durations between factors and costs;
   MFE is the census captured from
-  its first clean 2.0.0 package (`data/mfe_census.json`), bound to the semantic
+  the current WI-050 native package (`data/mfe_census.json`), bound to the semantic
   fingerprint it was derived against;
 * **mutations** -- an off-default mutation of one authored design attribute reaches
   **every and only** its bound consumers, read off shipped public artifacts
@@ -341,7 +341,7 @@ def test_ife_census_is_19_entry_points_18_design_attributes(baselines) -> None:
         assert isinstance(carriers[0][2], (int, float)), carriers
 
 
-def test_mfe_census_is_the_one_captured_from_the_first_clean_package(baselines) -> None:
+def test_mfe_census_matches_current_generated_public_contract(baselines) -> None:
     """Bound to the semantic fingerprint it was derived against: a regenerated model
     re-derives the fixture from the new package, never patches it to match."""
     output = baselines["mfe"]
@@ -349,7 +349,8 @@ def test_mfe_census_is_the_one_captured_from_the_first_clean_package(baselines) 
     assert _contract(output)["semantic_fingerprint"] == (
         expected["derived_against_semantic_fingerprint"]
     ), "model meaning moved — re-derive tests/models/data/mfe_census.json from the new package"
-    assert len(_contract(output)["parameters"]) == expected["entry_points"]
+    assert len(_contract(output)["parameters"]) == expected["entry_points"] == 247
+    assert not any("p_operating_coupled_heat" in str(p) for p in _contract(output)["parameters"])
     assert {k: sorted(v) for k, v in _by_entry_type(output).items()} == expected["by_entry_type"]
     _entry_sources(output)  # identity uniqueness both ways
 

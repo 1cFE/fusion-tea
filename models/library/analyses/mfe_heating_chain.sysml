@@ -23,9 +23,9 @@ package mfe_heating_chain {
         p_delivered is the COST driver: the per-MW heating rates are
         calibrated to source procurement (ITER gyrotron for ECRH), so the
         account follows source-output power, not wall-plug power.
-        p_coupled is the PHYSICS driver: it enters the thermal sum and is
-        what a sustained-heating fence compares against the plasma's
-        requirement. p_wallplug_total is the RECIRCULATING driver.
+        p_coupled is installed capacity for the sustainment ceiling.
+        p_wallplug_total is installed electrical capacity. Operating heat and
+        electrical draw are produced separately by Operating Heating Power.
 
         Dormant-safe (the WI-024 cryoplant pattern): a concept that knows
         its heating powers outright binds the direct terms and leaves the
@@ -50,7 +50,7 @@ package mfe_heating_chain {
             (MR-3) -- all values bound by instances
         */
 
-        // installed wall-plug electrical power drawn by the heating system [MW]
+        // installed wall-plug electrical capacity of the heating system [MW]
         in attribute p_wallplug : Real default 0.0;
         // wall-plug -> source output conversion efficiency [1]
         in attribute eta_source : Real default 1.0;
@@ -68,12 +68,39 @@ package mfe_heating_chain {
         out attribute p_delivered : Real =
             p_wallplug * eta_source + p_delivered_direct;
 
-        // heating power coupled into the plasma [MW] -- the physics driver
+        // installed plasma-coupled heating capacity [MW]
         out attribute p_coupled : Real =
             p_wallplug * eta_source * eta_couple + p_coupled_direct;
 
-        // total wall-plug heating draw [MW] -- the recirculating driver
+        // installed total wall-plug heating capacity [MW]
         out attribute p_wallplug_total : Real =
             p_wallplug + p_coupled_direct / eta_pin_eff;
+    }
+    calc def 'Operating Heating Power' {
+        doc /* Sustained heating at held two-stage efficiency. Signed demand remains diagnostic outside burn hold; no clipping at zero or capacity. All powers MW, efficiencies dimensionless. **Source**: models/library/analyses/mfe_heating_chain.sysml **Ref**: Heating Power Chain two-stage identities; work/active/WI-050_mfe-coherent-operating-heating/spec.md MR-WI050-1/2 **Basis**: algebraic inverse at constant efficiencies, supported domain 0 < efficiency <= 1 **Last Updated**: 2026-09-11 */
+        // signed sustained plasma-coupled demand [MW]
+        in attribute p_required_in : Real;
+        // held wall-plug to source-output fraction [1]
+        in attribute eta_source_in : Real;
+        // held source-output to plasma-coupled fraction [1]
+        in attribute eta_couple_in : Real;
+        // operating coupled power [MW]; negative values are rejected diagnostics
+        out attribute p_coupled : Real = p_required_in;
+        // operating source-output power [MW]
+        out attribute p_delivered : Real = p_required_in / eta_couple_in;
+        // operating electrical draw [MW]
+        out attribute p_wallplug : Real = p_delivered / eta_source_in;
+    }
+    constraint def 'Heating Efficiency Positive' {
+        doc /* Constant conversion efficiency domain. **Source**: models/library/analyses/mfe_heating_chain.sysml **Ref**: source-output and plasma-coupling efficiency definitions **Basis**: positive physical fraction for inverse conversion **Last Updated**: 2026-09-11 */
+        // dimensionless conversion fraction [1]
+        in attribute efficiency : Real;
+        efficiency > 0.0
+    }
+    constraint def 'Heating Efficiency Upper' {
+        doc /* Constant conversion efficiency domain. **Source**: models/library/analyses/mfe_heating_chain.sysml **Ref**: source-output and plasma-coupling efficiency definitions **Basis**: positive physical fraction for inverse conversion **Last Updated**: 2026-09-11 */
+        // dimensionless conversion fraction [1]
+        in attribute efficiency : Real;
+        efficiency <= 1.0
     }
 }

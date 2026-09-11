@@ -53,6 +53,9 @@ P = "stellarator_09__stellaris__"
 
 # Channel names (from the emitted pipeline YAML).
 CH = dict(
+    operating_heat_coupled=f"{P}operating_heat__p_coupled",
+    operating_heat_delivered=f"{P}operating_heat__p_delivered",
+    operating_heat_wallplug=f"{P}operating_heat__p_wallplug",
     V=f"{P}geom__V", p_fus=f"{P}fusion__p_fus", wall_load=f"{P}wall_load_calc__wall_load",
     p_th=f"{P}pb__p_th", p_the=f"{P}pb__p_the", p_et=f"{P}pb__p_et",
     p_cryo=f"{P}cryo_elec__p_elec",  # derived cryoplant electrical (WI-024)

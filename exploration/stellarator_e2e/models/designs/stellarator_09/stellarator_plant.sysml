@@ -711,6 +711,8 @@ package stellarator_09 {
         // entry point; source-output power (the cost driver) and plasma-coupled
         // power (the physics driver, and what sustainment_ok compares against
         // the plasma's requirement) are computed from it.
+        :>> p_operating_coupled_heat = sustain.p_aux_required;
+
         :>> p_wallplug_heat = 100.0 {
             doc /*
             Installed wall-plug electrical power for ECRH [MW].
