@@ -975,3 +975,16 @@ What is true on disk: C-003.r1 and the fresh Round 4 review PASS. Six joined dis
 What the owner must see: The requested stopping boundary is reached. The goal is still grounded and unanswered. The preservation ruling at `dde47316` remains resolved; remaining gates and the six-round limit remain in force.
 
 The material to resume: This strategy, `goal.md`, accepted `learnings.md`, original F06/F07 and the current native model/oracle references above. Resume under GOAL_RUNBOOK § Running one task. Choose and record the next bounded task before native side effects; this session stops before that task.
+
+### T-021 scope
+
+- **Objective:** Establish the current F06 radius-ownership defect, intended geometric meaning and bounded repair contract.
+- **Why now:** Round 5 strategy at `eed3b976` identifies independent plant/magnet radius inputs and an oracle sustainment mismatch; current callers and domain implications must be understood before choosing a binding.
+- **Scope:** Native analyze-models assessment of canonical/twin/generated radius dependencies, supported callers, current oracle/adapter, original untied counterexamples and directly implicated geometry domains. Use retained sources and bounded current-runtime probes. Write a native assessment and evidence; no production mutation, model item, new pin/study, broad F07 repair, alpha normalization, financial/scope change or historical rewrite.
+- **Inputs:** `goal.md`, accepted learnings and Round 5 strategy `eed3b976`; original F06/F07 audit `e341dc34`; current model `b9d096f6` and package consumers `676c7308`; WI-050 audit `55456198` and current native tool/runtime instructions.
+- **Done when:** The native assessment states whether the two radii denote one supported machine quantity, demonstrates the actual untied behavior, identifies affected callers and gives evidence-backed repair/acceptance boundaries or a useful bounded negative.
+- **Stop when:** Conflicting physical meanings without an admissible relation, reserved supported-scope/source decision, missing native capability, strategy blocker or declared limit.
+
+### T-021 start — 2026-09-11
+
+T-021 · native analyze-models · expected timestamped F06 radius-ownership assessment under `work/analysis/`, with reproducible evidence and no production changes.
